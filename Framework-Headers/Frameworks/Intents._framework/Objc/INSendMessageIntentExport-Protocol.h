@@ -11,6 +11,7 @@
 
 @protocol INSendMessageIntentExport <NSObject, JSExport>
 
+@property (copy, nonatomic) NSArray *attachments;
 @property (copy, nonatomic) NSString *content;
 @property (copy, nonatomic) NSString *conversationIdentifier;
 @property (copy, nonatomic) NSArray *recipients;

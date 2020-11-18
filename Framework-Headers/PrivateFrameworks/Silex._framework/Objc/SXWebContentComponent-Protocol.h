@@ -6,11 +6,12 @@
 
 #import <Silex/SXComponent-Protocol.h>
 
-@class NSURL;
+@class NSString, NSURL;
 
 @protocol SXWebContentComponent <SXComponent>
 
 @property (readonly, nonatomic) NSURL *URL;
+@property (readonly, nonatomic) NSString *resourceIdentifier;
 
 @end
 

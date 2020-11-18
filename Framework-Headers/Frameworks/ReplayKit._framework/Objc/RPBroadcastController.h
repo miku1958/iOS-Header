@@ -14,10 +14,12 @@
     NSDictionary *_serviceInfo;
     id<RPBroadcastControllerDelegate> _delegate;
     NSString *_broadcastExtensionBundleID;
+    NSString *_broadcastExtensionBundleIdentifier;
     RPBroadcastViewController *_broadcastViewController;
 }
 
 @property (readonly, nonatomic) NSString *broadcastExtensionBundleID; // @synthesize broadcastExtensionBundleID=_broadcastExtensionBundleID;
+@property (strong, nonatomic) NSString *broadcastExtensionBundleIdentifier; // @synthesize broadcastExtensionBundleIdentifier=_broadcastExtensionBundleIdentifier;
 @property (strong, nonatomic) NSURL *broadcastURL;
 @property (readonly, nonatomic) RPBroadcastViewController *broadcastViewController; // @synthesize broadcastViewController=_broadcastViewController;
 @property (readonly, nonatomic, getter=isBroadcasting) BOOL broadcasting;

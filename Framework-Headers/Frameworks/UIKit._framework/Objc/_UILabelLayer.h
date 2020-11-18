@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)setContentsFormat:(id)arg1;
 - (void)setContentsGravity:(id)arg1;
 - (void)setContentsMultiplyColor:(struct CGColor *)arg1;
+- (void)setContentsScale:(double)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setMasksToBounds:(BOOL)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;

@@ -17,7 +17,6 @@
     NSMutableArray *_stickerConstraints;
     NSMutableArray *_matteConstraints;
     UILabel *_altTextLabel;
-    long long _layoutMode;
     BOOL _drawBarcode;
     long long _validity;
 }
@@ -27,6 +26,7 @@
 
 + (struct PKBarcodeQuietZone)_quiteZoneForBarcode:(id)arg1;
 + (struct CGSize)_sizeForBarcode:(id)arg1;
++ (long long)validityStateForPass:(id)arg1;
 - (void).cxx_destruct;
 - (void)_generateMatteRect:(struct CGRect *)arg1 barcodeRect:(struct CGRect *)arg2 altTextRect:(struct CGRect *)arg3 boundingSize:(struct CGSize)arg4;
 - (id)_resizedBarcode:(id)arg1 desiredSize:(struct CGSize)arg2;
@@ -34,7 +34,7 @@
 - (void)_updateValidity;
 - (struct CGSize)_varianceForBarcode:(id)arg1;
 - (id)barcodeImage;
-- (id)initWithBarcode:(id)arg1 validityState:(long long)arg2 layoutMode:(long long)arg3;
+- (id)initWithBarcode:(id)arg1 validityState:(long long)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

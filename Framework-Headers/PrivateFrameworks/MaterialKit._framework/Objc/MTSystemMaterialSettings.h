@@ -35,9 +35,9 @@
 @property (readonly, weak, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider; // @synthesize vibrantStylingProvider=_vibrantStylingProvider;
 
 + (id)_backdropRows;
-+ (id)_lightOverlayRows;
 + (id)_luminanceRow;
 + (id)_luminanceRows;
++ (id)_overlayRows;
 + (id)settingsControllerModule;
 + (id)sharedMaterialSettings;
 - (void).cxx_destruct;

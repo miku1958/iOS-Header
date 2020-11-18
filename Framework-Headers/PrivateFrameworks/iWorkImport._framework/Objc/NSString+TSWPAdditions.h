@@ -24,6 +24,10 @@
 - (struct _NSRange)tswp_rangeOfWordAtCharacterIndex:(unsigned long long)arg1 range:(struct _NSRange)arg2 includePreviousWord:(BOOL)arg3 includeHyphenation:(BOOL)arg4;
 - (id)tswp_replaceOccurrencesOfCharactersInSet:(id)arg1 minimumConsecutiveLength:(unsigned long long)arg2 replaceString:(id)arg3;
 - (id)tswp_stringByNormalizingParagraphBreaks;
+- (id)tswp_stringWithAddedIsolatesBasedOn:(int)arg1;
+- (id)tswp_stringWithUnambiguousNeutralEnding;
+- (id)tswp_stringWithoutControlCharacters;
 - (unsigned int)tswp_utf32CharacterAtIndex:(unsigned long long)arg1;
+- (unsigned int)tswp_utf32CharacterAtIndex:(unsigned long long)arg1 planeClassification:(long long *)arg2;
 @end
 

@@ -8,6 +8,7 @@
 
 @interface UIAccessibilityElement (Private)
 
+@property (readonly, nonatomic) BOOL _accessibilityUsesFrameInContainerSpace; // @dynamic _accessibilityUsesFrameInContainerSpace;
 @property (weak, nonatomic) id accessibilityDelegate; // @dynamic accessibilityDelegate;
 @property (nonatomic) struct CGRect bounds; // @dynamic bounds;
 

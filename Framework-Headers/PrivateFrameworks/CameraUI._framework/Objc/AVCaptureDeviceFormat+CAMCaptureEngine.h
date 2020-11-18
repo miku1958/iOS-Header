@@ -8,10 +8,17 @@
 
 @interface AVCaptureDeviceFormat (CAMCaptureEngine)
 - (CDStruct_1ef3fb1f)_expectedVideoDimensionsForVideoConfiguration:(long long)arg1;
-- (double)_framesPerSecondForVideoConfiguration:(long long)arg1;
+- (long long)cam_compareUsingBinning:(id)arg1;
 - (long long)cam_compareUsingDimensions:(id)arg1;
+- (long long)cam_compareUsingMaximumFramerate:(id)arg1;
+- (long long)cam_compareUsingQuality:(id)arg1;
 - (CDStruct_1b6d18a9)cam_frameDurationForVideoConfiguration:(long long)arg1;
+- (double)cam_frameRateForVideoConfiguration:(long long)arg1;
+- (double)cam_maximumFrameRate;
+- (BOOL)cam_supportsFrameDuration:(CDStruct_1b6d18a9)arg1;
+- (BOOL)cam_supportsFrameRate:(double)arg1;
+- (BOOL)cam_supportsFrameRate:(double)arg1 width:(long long)arg2 height:(long long)arg3 colorSpace:(long long)arg4;
 - (BOOL)cam_supportsPanoramaConfiguration:(id)arg1;
-- (BOOL)cam_supportsVideoConfiguration:(long long)arg1;
+- (BOOL)cam_supportsVideoConfiguration:(long long)arg1 colorSpace:(long long)arg2;
 @end
 

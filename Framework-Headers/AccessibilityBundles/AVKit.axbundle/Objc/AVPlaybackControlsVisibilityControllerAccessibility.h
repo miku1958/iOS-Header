@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_startTimerToHideRegularViewsAfterDelay:(double)arg1 ifPlaying:(BOOL)arg2;
+- (void)_startTimerToHideRegularItemsAfterDelay:(double)arg1 ifPlaying:(BOOL)arg2;
 
 @end
 

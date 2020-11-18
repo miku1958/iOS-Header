@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NFWeakReference, NSLock, NSString, NSXPCConnection, NSXPCInterface;
 @protocol OS_dispatch_queue;
@@ -29,7 +29,7 @@
 - (void)_setConnection:(id)arg1;
 - (void)dealloc;
 - (id)initWithMachServiceName:(id)arg1 remoteObjectInterface:(id)arg2 exportedObjectInterface:(id)arg3 exportedObject:(id)arg4 delegate:(id)arg5;
-- (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -6,16 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary;
 
 @interface RMMetadataStore : NSObject
 {
-    NSString *_metadataFilePath;
     NSMutableDictionary *__kvStore;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *_kvStore; // @synthesize _kvStore=__kvStore;
-@property (copy, nonatomic) NSString *metadataFilePath; // @synthesize metadataFilePath=_metadataFilePath;
 
 + (void)clear;
 + (id)dataValueForKey:(id)arg1;
@@ -27,6 +25,7 @@
 + (id)sharedStore;
 + (id)stringValueForKey:(id)arg1;
 - (void).cxx_destruct;
+- (id)metadataFilePath;
 - (BOOL)readMetadataWithError:(id *)arg1;
 - (BOOL)writeMetadataWithError:(id *)arg1;
 

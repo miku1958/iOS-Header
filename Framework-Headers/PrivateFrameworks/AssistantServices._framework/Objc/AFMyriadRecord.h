@@ -22,7 +22,7 @@
 
 @property (nonatomic) unsigned char deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (nonatomic) unsigned char deviceGroup; // @synthesize deviceGroup=_deviceGroup;
-@property (strong, nonatomic) NSUUID *deviceID; // @synthesize deviceID=_deviceID;
+@property (copy, nonatomic) NSUUID *deviceID; // @synthesize deviceID=_deviceID;
 @property (nonatomic) unsigned char goodness; // @synthesize goodness=_goodness;
 @property (nonatomic) BOOL isMe; // @synthesize isMe=_isMe;
 @property (nonatomic) unsigned short pHash; // @synthesize pHash=_pHash;
@@ -43,6 +43,8 @@
 - (BOOL)isAnEmergency;
 - (BOOL)isAnEmergencyHandled;
 - (BOOL)isSane;
+- (BOOL)isSlowdown;
+- (int)slowdownDelay;
 
 @end
 

@@ -10,17 +10,13 @@
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 #import <CoreParsec/_CPVisibleSectionHeaderFeedback-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _CPResultSectionForFeedback;
+@class NSData, NSDictionary, NSString;
 
 @interface _CPVisibleSectionHeaderFeedback : PBCodable <_CPProcessableFeedback, _CPVisibleSectionHeaderFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int timestamp:1;
-        unsigned int headerType:1;
-    } _has;
     int _headerType;
     unsigned long long _timestamp;
-    _CPResultSectionForFeedback *_section;
+    NSString *_sectionId;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,19 +25,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasHeaderType;
-@property (readonly, nonatomic) BOOL hasSection;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int headerType; // @synthesize headerType=_headerType;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly, nonatomic) BOOL requiresQueryId;
-@property (strong, nonatomic) _CPResultSectionForFeedback *section; // @synthesize section=_section;
+@property (copy, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 
 - (void).cxx_destruct;
 - (id)init;

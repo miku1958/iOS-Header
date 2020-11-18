@@ -9,13 +9,14 @@
 #import <HMFoundation/NSCopying-Protocol.h>
 #import <HMFoundation/NSMutableCopying-Protocol.h>
 
-@class HMFMessageDestination, HMFMessageInternal, HMFMessageTransport, NSDictionary, NSString, NSUUID;
+@class HMFActivity, HMFMessageDestination, HMFMessageInternal, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
 @interface HMFMessage : HMFObject <NSCopying, NSMutableCopying>
 {
     HMFMessageInternal *_internal;
 }
 
+@property (readonly, nonatomic) HMFActivity *activity;
 @property (strong, nonatomic) HMFMessageDestination *destination;
 @property (readonly, copy, nonatomic) NSDictionary *headers;
 @property (copy, nonatomic) NSUUID *identifier;
@@ -27,6 +28,7 @@
 @property (readonly, weak, nonatomic) HMFMessageTransport *transport;
 @property (readonly, copy, nonatomic) NSDictionary *userInfo;
 
++ (id)activityNameWithMessageName:(id)arg1;
 + (id)messageWithMessage:(id)arg1 messagePayload:(id)arg2;
 + (id)messageWithMessage:(id)arg1 messagePayload:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 + (id)messageWithName:(id)arg1 destination:(id)arg2 payload:(id)arg3;

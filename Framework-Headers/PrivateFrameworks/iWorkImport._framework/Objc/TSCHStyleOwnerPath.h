@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -24,9 +24,9 @@ __attribute__((visibility("hidden")))
 + (unsigned char)styleOwnerPathTypeForStyleOwner:(id)arg1;
 + (id)styleOwnerPathWithUUIDs:(id)arg1;
 + (id)verifiedUUIDs:(id)arg1;
+- (void).cxx_destruct;
 - (id)TSUUUIDPath;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)didInitFromSOS;
 - (Class)genericPropertyMapClass;
 - (unsigned long long)hash;

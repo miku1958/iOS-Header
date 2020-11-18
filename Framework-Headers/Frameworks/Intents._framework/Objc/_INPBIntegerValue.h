@@ -7,31 +7,31 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBIntegerValue-Protocol.h>
 
-@class PBUnknownFields, _INPBValueMetadata;
+@class NSString, _INPBValueMetadata;
 
-@interface _INPBIntegerValue : PBCodable <NSCopying>
+@interface _INPBIntegerValue : PBCodable <_INPBIntegerValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    CDStruct_01ef6375 _has;
     int _value;
     _INPBValueMetadata *_valueMetadata;
-    CDStruct_01ef6375 _has;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasValue;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (nonatomic) int value; // @synthesize value=_value;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIWebFindOnPageHighlighter-Protocol.h>
+#import <UIKitCore/UIWebFindOnPageHighlighter-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, UIView, UIWebBrowserView, UIWebPDFViewHandler;
 @protocol UIWebFindOnPageHighlighterDelegate;

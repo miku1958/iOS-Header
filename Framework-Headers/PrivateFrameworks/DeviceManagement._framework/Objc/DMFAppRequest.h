@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSNumber, NSString, NSURL;
 
-@interface DMFAppRequest : CATTaskRequest
+@interface DMFAppRequest : DMFTaskRequest
 {
     NSString *_bundleIdentifier;
     NSNumber *_storeItemIdentifier;

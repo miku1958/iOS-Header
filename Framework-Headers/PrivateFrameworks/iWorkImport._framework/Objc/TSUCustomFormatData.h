@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *interstitialStrings; // @synthesize interstitialStrings=_interstitialStrings;
 @property (nonatomic) BOOL isComplexFormat; // @synthesize isComplexFormat=_isComplexFormat;
 @property (nonatomic) BOOL isConditional; // @synthesize isConditional=_isConditional;
+@property (readonly, nonatomic) BOOL isCurrency;
 @property (nonatomic) unsigned char minimumIntegerWidth; // @synthesize minimumIntegerWidth=_minimumIntegerWidth;
 @property (nonatomic) unsigned char numberOfHashDecimalPlaceholders; // @synthesize numberOfHashDecimalPlaceholders=_numberOfHashDecimalPlaceholders;
 @property (nonatomic) unsigned char numberOfNonSpaceDecimalPlaceholderDigits; // @synthesize numberOfNonSpaceDecimalPlaceholderDigits=_numberOfNonSpaceDecimalPlaceholderDigits;

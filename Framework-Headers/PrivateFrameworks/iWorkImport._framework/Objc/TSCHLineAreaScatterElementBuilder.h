@@ -16,13 +16,13 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *mPathCacheQueue;
 }
 
-- (unsigned long long)countOfElementsInSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewElementBounds:(struct CGRect **)arg4 outNewClipRects:(struct CGRect **)arg5 outNewElementPaths:(const struct CGPath ***)arg6 outSelectionKnobLocations:(id *)arg7;
+- (void).cxx_destruct;
+- (unsigned long long)countOfElementsInSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewElementBounds:(struct CGRect **)arg4 outNewClipRects:(struct CGRect **)arg5 outNewElementPaths:(const struct CGPath ***)arg6 outSelectionKnobLocations:(id *)arg7 forHighlightPath:(BOOL)arg8;
 - (unsigned long long)countOfErrorBarsInSeries:(id)arg1 forGroups:(id)arg2 forAxisID:(id)arg3 forBodyLayout:(id)arg4 outClipRect:(struct CGRect *)arg5 outNewErrorBarDescriptors:(CDStruct_183601bc **)arg6;
 - (unsigned long long)countOfHitCheckRegionsInSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewElementPaths:(const struct CGPath ***)arg4 outSelectionKnobLocations:(id *)arg5;
 - (unsigned long long)countOfLabelsForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outNewTransforms:(struct CGAffineTransform **)arg4 outNewElementSizes:(struct CGSize **)arg5 outNewClipRect:(struct CGRect **)arg6 outNewStrings:(id *)arg7;
 - (unsigned long long)countOfPointsForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5 outUnitSymbolPath:(const struct CGPath **)arg6 outNewTransformArray:(struct CGAffineTransform **)arg7 outNewGroupIndexArray:(unsigned long long **)arg8;
 - (float)dataPointDimension:(id)arg1 symbolType:(int)arg2 stroke:(id)arg3;
-- (void)dealloc;
 - (long long)hitCheckPoint:(struct CGPoint)arg1 inSeries:(id)arg2 withBodyLayout:(id)arg3;
 - (id)init;
 - (struct CGPoint)labelPointForPosition:(unsigned int)arg1 rect:(struct CGRect)arg2 stringSize:(struct CGSize)arg3 symbolType:(int)arg4;
@@ -47,11 +47,11 @@ __attribute__((visibility("hidden")))
 - (struct CGPath *)p_newPlusPath:(struct CGPoint)arg1 width:(double)arg2 pathLocation:(long long)arg3 stroke:(id)arg4 context:(struct CGContext *)arg5;
 - (struct CGPath *)p_newSquarePath:(struct CGPoint)arg1 width:(double)arg2 pathLocation:(long long)arg3 stroke:(id)arg4 context:(struct CGContext *)arg5;
 - (struct CGPath *)p_newTrianglePath:(struct CGPoint)arg1 width:(double)arg2 pathLocation:(long long)arg3 stroke:(id)arg4;
-- (struct CGPath *)p_newUncachedUnitPathForSymbol:(int)arg1 symbolSize:(double)arg2 stroke:(id)arg3 forHitCheck:(BOOL)arg4;
 - (struct CGPath *)p_newUnitPathForSymbol:(int)arg1 symbolSize:(double)arg2 stroke:(id)arg3 forHitCheck:(BOOL)arg4;
 - (struct CGPath *)p_newYieldPath:(struct CGPoint)arg1 width:(double)arg2 pathLocation:(long long)arg3 stroke:(id)arg4;
 - (id)p_symbolKnobLocationsForSeries:(id)arg1 forGroups:(id)arg2 inBodyLayout:(id)arg3;
 - (void)p_trendlineInfoForSeries:(id)arg1 forBodyLayout:(id)arg2 outVertical:(BOOL *)arg3 outOffsetInBody:(double *)arg4;
+- (id)p_uncachedUnitPathForSymbol:(int)arg1 symbolSize:(double)arg2 stroke:(id)arg3 forHitCheck:(BOOL)arg4;
 - (BOOL)symbolTypeIsClosed:(int)arg1;
 - (struct CGAffineTransform)transformForRenderingLabelInBody:(id)arg1 forSeries:(unsigned long long)arg2 forGroup:(unsigned long long)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5;
 - (struct CGAffineTransform)transformForRenderingSeriesElementForSeries:(id)arg1 forGroups:(id)arg2 forBodyLayout:(id)arg3 outElementSize:(struct CGSize *)arg4 outClipRect:(struct CGRect *)arg5 outNewElementPath:(const struct CGPath **)arg6;

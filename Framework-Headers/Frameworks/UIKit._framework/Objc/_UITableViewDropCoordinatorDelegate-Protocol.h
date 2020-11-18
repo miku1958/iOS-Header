@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITableViewPlaceholderContextDelegate-Protocol.h>
+#import <UIKitCore/_UITableViewPlaceholderContextDelegate-Protocol.h>
 
 @class NSIndexPath, UIDragItem, UIDragPreviewParameters, UIDragPreviewTarget, UITableView, UITableViewCell, _UITableViewDropPlaceholderContextImpl;
 @protocol UIDragAnimating;

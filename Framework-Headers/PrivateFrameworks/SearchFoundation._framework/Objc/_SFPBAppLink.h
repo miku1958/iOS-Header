@@ -13,7 +13,6 @@
 
 @interface _SFPBAppLink : PBCodable <_SFPBAppLink, NSSecureCoding>
 {
-    CDStruct_9f571ec0 _has;
     int _imageAlign;
     NSString *_title;
     _SFPBPunchout *_appPunchout;
@@ -23,10 +22,6 @@
 @property (strong, nonatomic) _SFPBPunchout *appPunchout; // @synthesize appPunchout=_appPunchout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasAppPunchout;
-@property (readonly, nonatomic) BOOL hasImage;
-@property (readonly, nonatomic) BOOL hasImageAlign;
-@property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _SFPBImage *image; // @synthesize image=_image;
 @property (nonatomic) int imageAlign; // @synthesize imageAlign=_imageAlign;

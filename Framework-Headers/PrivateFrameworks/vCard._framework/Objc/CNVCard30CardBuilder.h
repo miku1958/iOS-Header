@@ -11,15 +11,24 @@
 
 @interface CNVCard30CardBuilder : NSObject
 {
+    BOOL _photoHandled;
     id<CNVCardPerson> _person;
     NSMutableArray *_lines;
     long long _groupCount;
     unsigned long long _countOfLinesBeforePhoto;
     CDUnknownBlockType _retrofitPhoto;
-    BOOL _photoHandled;
     NSMutableArray *_unknownProperties;
     id<CNVCardLineFactory> _lineFactory;
 }
+
+@property (nonatomic) unsigned long long countOfLinesBeforePhoto; // @synthesize countOfLinesBeforePhoto=_countOfLinesBeforePhoto;
+@property (nonatomic) long long groupCount; // @synthesize groupCount=_groupCount;
+@property (readonly, nonatomic) id<CNVCardLineFactory> lineFactory; // @synthesize lineFactory=_lineFactory;
+@property (readonly, nonatomic) NSMutableArray *lines; // @synthesize lines=_lines;
+@property (readonly, nonatomic) id<CNVCardPerson> person; // @synthesize person=_person;
+@property (nonatomic) BOOL photoHandled; // @synthesize photoHandled=_photoHandled;
+@property (readonly, copy, nonatomic) CDUnknownBlockType retrofitPhoto; // @synthesize retrofitPhoto=_retrofitPhoto;
+@property (readonly, nonatomic) NSMutableArray *unknownProperties; // @synthesize unknownProperties=_unknownProperties;
 
 + (id)builderWithPerson:(id)arg1;
 + (unsigned long long)estimatedBytesAvailableForPhotoWithOptions:(id)arg1 serializer:(id)arg2;

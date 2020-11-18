@@ -33,7 +33,7 @@
 - (id)_currentGlyphImageForAccessibilityHUD:(BOOL)arg1;
 - (void)_updateAllowedModes;
 - (void)_updateCurrentGlyphImage;
-- (void)_updateFromAllowedModesChangeWithCurrentMode:(long long)arg1;
+- (void)_updateFromAllowedModesChangeWithCurrentMode:(long long)arg1 needsReloadData:(BOOL)arg2;
 - (id)headerView;
 - (id)imageForAccessibilityHUD;
 - (unsigned long long)indexForMode:(long long)arg1;
@@ -44,6 +44,7 @@
 - (double)padHeaderViewContentInsetLeft;
 - (void)prepareHeaderViewForExpanding:(BOOL)arg1;
 - (void)reloadData;
+- (void)setAllowsAutomaticHDR:(BOOL)arg1 needsReloadData:(BOOL)arg2;
 - (BOOL)shouldAllowExpansion;
 - (id)titleForMenuItemAtIndex:(long long)arg1;
 

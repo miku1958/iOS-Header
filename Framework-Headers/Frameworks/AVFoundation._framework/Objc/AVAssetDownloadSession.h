@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAssetDownloadSessionInternal, AVMediaSelection, NSArray, NSError, NSURL;
 
@@ -34,6 +34,7 @@
 - (id)_common_init;
 - (struct OpaqueFigAsset *)_createDuplicateFigAssetFromAVAsset:(id)arg1;
 - (id)_errorForFigNotificationPayload:(struct __CFDictionary *)arg1 key:(struct __CFString *)arg2;
+- (id)_errorFromAssetNotificationPayload:(id)arg1;
 - (struct OpaqueFigAsset *)_figAsset;
 - (id)_figAssetDownloaderNotificationNames;
 - (id)_figAssetNotificationNames;

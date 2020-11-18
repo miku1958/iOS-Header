@@ -18,6 +18,7 @@
     _UIAsyncInvocation *_cancelRequest;
     BOOL _hasPresented;
     BOOL _shouldObserveRoutingContextUIDChanges;
+    BOOL _isRequestingViewController;
     BOOL _shouldUseOverrideAudioSessionValues;
     CDUnknownBlockType _didDismissHandler;
     id<MPMediaControlsViewControllerDelegate> _delegate;
@@ -55,6 +56,7 @@
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
 - (BOOL)prefersStatusBarHidden;
+- (void)prepareRemoteViewController;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (void)setOverrideRouteSharingPolicy:(unsigned long long)arg1 routingContextUID:(id)arg2;
 - (BOOL)shouldAutorotate;

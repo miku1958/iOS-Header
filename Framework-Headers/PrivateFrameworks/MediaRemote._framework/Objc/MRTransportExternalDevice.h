@@ -9,7 +9,7 @@
 #import <MediaRemote/MRProtocolClientConnectionDelegate-Protocol.h>
 
 @class CURunLoopThread, MRExternalClientConnection, MRExternalDeviceTransport, NSData, NSDate, NSDictionary, NSObject, NSString, _MRContentItemProtobuf, _MRDeviceInfoMessageProtobuf, _MRNowPlayingPlayerPathProtobuf, _MROriginProtobuf;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_os_transaction;
 
 @interface MRTransportExternalDevice : MRExternalDevice <MRProtocolClientConnectionDelegate>
 {
@@ -25,10 +25,11 @@
     NSDate *_connectionStateTimestamp;
     unsigned int _connectionState;
     unsigned int _connectionOptions;
-    unsigned int _cachedServerDisconnectError;
+    long long _cachedServerDisconnectError;
     unsigned long long _reconnectionAttemptCount;
     BOOL _forceReconnectOnConnectionFailure;
     BOOL _disconnecting;
+    NSObject<OS_os_transaction> *_transaction;
     BOOL _isCallingClientCallback;
     MRExternalClientConnection *_clientConnection;
     _MROriginProtobuf *_customOrigin;

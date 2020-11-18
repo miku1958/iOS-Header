@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     TSUBezierPath *mCachedPathForClippingConnectionLines;
 }
 
-+ (id)p_childWrapPathsFrom:(id)arg1;
 - (void).cxx_destruct;
 - (id)additionalDependenciesForChildLayout:(id)arg1;
 - (struct CGRect)alignmentFrame;
@@ -33,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)computeInfoGeometryDuringResize;
 - (id)computeLayoutGeometry;
 - (id)descendentWrappables;
+- (BOOL)descendentWrappablesContainsWrappable:(id)arg1;
 - (void)dragBy:(struct CGPoint)arg1;
 - (void)endDynamicOperation;
 - (struct CGRect)frameForCulling;
@@ -44,15 +44,19 @@ __attribute__((visibility("hidden")))
 - (id)layoutGeometryFromInfo;
 - (id)layoutsForProvidingGuidesForChildLayouts;
 - (struct CGSize)minimumSize;
+- (id)p_childWrapPathsFrom:(id)arg1 inDescendents:(id)arg2;
 - (void)p_createDynamicCopies;
 - (void)p_destroyDynamicCopies;
 - (void)p_invalidateDescendentWrapPaths;
+- (void)p_invalidateDescendentWrapPathsInRoot;
 - (void)p_invalidateParentForWrap;
+- (void)p_updateDescendentWrapPathsWithTransform:(struct CGAffineTransform)arg1;
 - (id)pathForClippingConnectionLines;
 - (void)processChangedProperty:(int)arg1;
 - (BOOL)providesGuidesForChildLayouts;
 - (struct CGRect)rectInRootForCalculatingActivityLineEndpoint;
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
+- (struct CGRect)rectInRootForSelectionPath:(id)arg1;
 - (id)reliedOnLayouts;
 - (BOOL)resizeMayChangeAspectRatio;
 - (void)setDynamicGeometry:(id)arg1;
@@ -61,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsInspectorPositioning;
 - (BOOL)supportsRotation;
 - (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
+- (void)updateLayoutGeometryInPreparationForPartitioning;
 - (id)visibleGeometries;
 
 @end

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPrintActivity.h>
+#import <UIKitCore/UIPrintActivity.h>
 
-#import <UIKit/QLPreviewControllerDataSource-Protocol.h>
-#import <UIKit/QLPreviewControllerDelegate-Protocol.h>
-#import <UIKit/UIDocumentPickerDelegate-Protocol.h>
+#import <UIKitCore/QLPreviewControllerDataSource-Protocol.h>
+#import <UIKitCore/QLPreviewControllerDelegate-Protocol.h>
+#import <UIKitCore/UIDocumentPickerDelegate-Protocol.h>
 
 @class NSString, QLPreviewController, UICreatePDFActivityItem;
 
@@ -26,7 +26,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_activityImage;
+- (id)_activityBundleImageConfiguration;
 - (void)_cleanup;
 - (id)_embeddedActivityViewController;
 - (void)_setupQuickLookWithURL:(id)arg1 activityItems:(id)arg2 isPreview:(BOOL)arg3;

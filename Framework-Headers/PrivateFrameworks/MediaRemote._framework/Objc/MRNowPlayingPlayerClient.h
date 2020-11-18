@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 #import <MediaRemote/MRTransactionSourceDelegate-Protocol.h>
 
-@class MRNowPlayingArtwork, MRNowPlayingPlayerClientCallbacks, MRPlaybackQueuePlayerClient, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, _MRContentItemProtobuf, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueProtobuf;
+@class MRNowPlayingArtwork, MRNowPlayingPlayerClientCallbacks, MRPlaybackQueueSubscriptionController, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, _MRContentItemProtobuf, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueProtobuf;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingPlayerClient : NSObject <MRNowPlayingClientState, MRTransactionSourceDelegate>
@@ -22,6 +22,7 @@
     unsigned int _playbackState;
     double _playbackStateSetToPlayTimestamp;
     unsigned long long _capabilities;
+    NSDate *_lastReceivedCommandDate;
     BOOL _coalescingInvalidations;
     BOOL _coalescingRequests;
     BOOL _triggerInvalidation;
@@ -30,20 +31,21 @@
     NSMutableArray *_transactionSources;
     NSMutableDictionary *_cachedContentItemUpdates;
     _MRNowPlayingPlayerPathProtobuf *_playerPath;
-    MRPlaybackQueuePlayerClient *_playbackQueueClient;
+    MRPlaybackQueueSubscriptionController *_subscriptionController;
     MRNowPlayingPlayerClientCallbacks *_clientCallbacks;
 }
 
 @property (nonatomic) unsigned long long capabilities;
 @property (readonly, nonatomic) MRNowPlayingPlayerClientCallbacks *clientCallbacks; // @synthesize clientCallbacks=_clientCallbacks;
+@property (readonly, nonatomic) BOOL hasReceivedCommandRecently;
 @property (nonatomic) double invalidatationTimestamp;
 @property (strong, nonatomic) MRNowPlayingArtwork *nowPlayingArtwork;
 @property (readonly, nonatomic) _MRContentItemProtobuf *nowPlayingContentItem;
 @property (copy, nonatomic) NSDictionary *nowPlayingInfo;
 @property (strong, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue;
-@property (readonly, nonatomic) MRPlaybackQueuePlayerClient *playbackQueueClient; // @synthesize playbackQueueClient=_playbackQueueClient;
 @property (nonatomic) unsigned int playbackState;
 @property (strong, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (readonly, nonatomic) MRPlaybackQueueSubscriptionController *subscriptionController; // @synthesize subscriptionController=_subscriptionController;
 @property (copy, nonatomic) NSArray *supportedCommands;
 
 - (void).cxx_destruct;
@@ -51,7 +53,7 @@
 - (void)_onQueue_sendTransaction:(unsigned long long)arg1 withPackets:(id)arg2;
 - (void)addPendingRequest:(id)arg1;
 - (void)beginSendingTransactions;
-- (void)cacheContentItemUpdates:(id)arg1;
+- (void)cacheContentItemChangesForPendingRequests:(id)arg1;
 - (void)clearCachedContentItemArtworkForItems:(id)arg1;
 - (id)debugDescription;
 - (id)description;

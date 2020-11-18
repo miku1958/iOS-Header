@@ -11,6 +11,7 @@
 
 @interface CKDPipeliningInfo : NSObject
 {
+    BOOL _isCancelled;
     id<CKDURLRequestPipelining> _request;
     id<CKDOperationPipelining> _operation;
     NSObject<OS_dispatch_group> *_perRequestCallbackGroup;
@@ -19,6 +20,7 @@
     NSMutableArray *_perRequestCallbackBlocks;
 }
 
+@property (nonatomic) BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property (weak, nonatomic) id<CKDOperationPipelining> operation; // @synthesize operation=_operation;
 @property (strong, nonatomic) NSMutableArray *perRequestCallbackBlocks; // @synthesize perRequestCallbackBlocks=_perRequestCallbackBlocks;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *perRequestCallbackGroup; // @synthesize perRequestCallbackGroup=_perRequestCallbackGroup;

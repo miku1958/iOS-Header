@@ -7,27 +7,28 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBGetRideStatusIntentResponse-Protocol.h>
 
-@class PBUnknownFields, _INPBRideStatus;
+@class NSString, _INPBRideStatus;
 
-@interface _INPBGetRideStatusIntentResponse : PBCodable <NSCopying>
+@interface _INPBGetRideStatusIntentResponse : PBCodable <_INPBGetRideStatusIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBRideStatus *_rideStatus;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasRideStatus;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBRideStatus *rideStatus; // @synthesize rideStatus=_rideStatus;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

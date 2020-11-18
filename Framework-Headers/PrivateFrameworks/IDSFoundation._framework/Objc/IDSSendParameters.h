@@ -51,6 +51,7 @@
 @property (strong, nonatomic) NSData *groupData;
 @property (nonatomic) BOOL homeKitPayload;
 @property (strong, nonatomic) NSString *identifier;
+@property (nonatomic) BOOL ignoreMaxRetryCount;
 @property (strong, nonatomic) NSArray *interestingRegistrationProperties;
 @property (nonatomic) BOOL isProxiedOutgoingMessage;
 @property (nonatomic) BOOL liveMessageDelivery;
@@ -81,6 +82,7 @@
 @property (nonatomic) BOOL useDictAsTopLevel;
 @property (nonatomic) BOOL wantsAppAck;
 @property (nonatomic) BOOL wantsDeliveryStatus;
+@property (nonatomic) BOOL wantsProgress;
 @property (nonatomic) BOOL wantsResponse;
 
 - (void).cxx_destruct;

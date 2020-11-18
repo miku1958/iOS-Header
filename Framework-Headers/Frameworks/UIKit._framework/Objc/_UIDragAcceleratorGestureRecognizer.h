@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPanGestureRecognizer.h>
+#import <UIKitCore/UIPanGestureRecognizer.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIDragAcceleratorGestureRecognizer : UIPanGestureRecognizer

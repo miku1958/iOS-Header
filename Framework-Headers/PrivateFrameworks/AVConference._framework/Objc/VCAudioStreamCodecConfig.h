@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray;
 
@@ -18,11 +18,15 @@ __attribute__((visibility("hidden")))
     BOOL _octetAligned;
     BOOL _dtmf;
     unsigned int _networkPayload;
+    unsigned short _evsChannelAwareOffset;
+    BOOL _evsHeaderFullOnly;
 }
 
 @property (readonly, nonatomic) long long codecType; // @synthesize codecType=_codecType;
 @property (nonatomic, getter=isDTMF) BOOL dtmf; // @synthesize dtmf=_dtmf;
 @property (nonatomic, getter=isDTXEnabled) BOOL dtxEnabled; // @synthesize dtxEnabled=_dtxEnabled;
+@property (nonatomic) unsigned short evsChannelAwareOffset; // @synthesize evsChannelAwareOffset=_evsChannelAwareOffset;
+@property (nonatomic) BOOL evsHeaderFullOnly; // @synthesize evsHeaderFullOnly=_evsHeaderFullOnly;
 @property (readonly, nonatomic) BOOL isComfortNoise;
 @property (nonatomic) unsigned int networkPayload; // @synthesize networkPayload=_networkPayload;
 @property (nonatomic, getter=isOctetAligned) BOOL octetAligned; // @synthesize octetAligned=_octetAligned;

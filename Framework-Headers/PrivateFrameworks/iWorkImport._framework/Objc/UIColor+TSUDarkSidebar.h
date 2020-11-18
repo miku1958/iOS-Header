@@ -33,6 +33,7 @@
 + (id)tsu_sidebarActiveTintColor;
 + (id)tsu_sidebarBackgroundColor;
 + (id)tsu_sidebarCellBackgroundColor;
++ (id)tsu_sidebarHighContrastBackgroundColor;
 + (id)tsu_sidebarInactiveCellTintColor;
 + (id)tsu_sidebarInactiveTintColor;
 + (id)tsu_sidebarNavigationBarBackgroundColor;
@@ -49,6 +50,9 @@
 + (id)tsu_sliderMaximumTrackTintColor;
 + (id)tsu_sliderMinimumTrackTintColor;
 + (id)tsu_sliderThumbTintColor;
++ (id)tsu_styleUpdateButton6ptBlackColor;
++ (id)tsu_styleUpdateButtonDarkColor;
++ (id)tsu_styleUpdateButtonLightColor;
 + (id)tsu_switchOffOutlineColor;
 + (id)tsu_switchOnTintColor;
 + (id)tsu_switchTintColor;

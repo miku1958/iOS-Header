@@ -6,21 +6,24 @@
 
 #import <TextInput/TITypologyRecord.h>
 
-@class TIAutocorrectionList, TIKeyboardState;
+@class TIAutocorrectionList, TICandidateRequestToken, TIKeyboardState;
 
 @interface TITypologyRecordAutocorrections : TITypologyRecord
 {
     BOOL _listUIDisplayed;
     TIKeyboardState *_keyboardState;
+    TICandidateRequestToken *_requestToken;
     TIAutocorrectionList *_autocorrections;
 }
 
 @property (strong, nonatomic) TIAutocorrectionList *autocorrections; // @synthesize autocorrections=_autocorrections;
 @property (strong, nonatomic) TIKeyboardState *keyboardState; // @synthesize keyboardState=_keyboardState;
 @property (nonatomic) BOOL listUIDisplayed; // @synthesize listUIDisplayed=_listUIDisplayed;
+@property (strong, nonatomic) TICandidateRequestToken *requestToken; // @synthesize requestToken=_requestToken;
 
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)shortDescription;

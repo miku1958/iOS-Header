@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBHandwritingCandidateView.h>
+#import <UIKitCore/UIKBHandwritingCandidateView.h>
 
 @class UIKBCandidateCollectionView;
 

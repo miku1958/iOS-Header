@@ -21,8 +21,9 @@ __attribute__((visibility("hidden")))
     CKRecordZoneID *_zoneID;
     NSArray *_requestedFields;
     NSSet *_desiredAssetKeys;
-    CDUnknownBlockType _recordResponseBlock;
+    CDUnknownBlockType _recordsParsedBlock;
     NSData *_resultsCursor;
+    NSMutableArray *_recordResponses;
 }
 
 @property (strong, nonatomic) NSData *cursor; // @synthesize cursor=_cursor;
@@ -33,7 +34,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (strong, nonatomic) CKQuery *query; // @synthesize query=_query;
 @property (strong, nonatomic) NSMutableArray *queryResponses; // @synthesize queryResponses=_queryResponses;
-@property (copy, nonatomic) CDUnknownBlockType recordResponseBlock; // @synthesize recordResponseBlock=_recordResponseBlock;
+@property (strong, nonatomic) NSMutableArray *recordResponses; // @synthesize recordResponses=_recordResponses;
+@property (copy, nonatomic) CDUnknownBlockType recordsParsedBlock; // @synthesize recordsParsedBlock=_recordsParsedBlock;
 @property (strong, nonatomic) NSArray *requestedFields; // @synthesize requestedFields=_requestedFields;
 @property (strong, nonatomic) NSData *resultsCursor; // @synthesize resultsCursor=_resultsCursor;
 @property (nonatomic) BOOL shouldFetchAssetContent; // @synthesize shouldFetchAssetContent=_shouldFetchAssetContent;
@@ -45,8 +47,10 @@ __attribute__((visibility("hidden")))
 - (id)generateRequestOperations;
 - (id)initWithQuery:(id)arg1 cursor:(id)arg2 limit:(unsigned long long)arg3 requestedFields:(id)arg4 zoneID:(id)arg5;
 - (int)operationType;
+- (void)requestDidComplete;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
+- (BOOL)requestGETPreAuth;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
 

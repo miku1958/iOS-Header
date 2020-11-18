@@ -8,6 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface GEOTimeToLeaveInitialTravelTimeFeedbackCollection : PBCodable <NSCopying>
 {
     int _travelTime;
@@ -18,13 +19,11 @@
 @property (nonatomic) int travelTime; // @synthesize travelTime=_travelTime;
 
 - (int)StringAsTravelTime:(id)arg1;
-- (int)bucketValueForTravelTime:(double)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithTravelTime:(double)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

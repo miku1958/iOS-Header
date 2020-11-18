@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -17,6 +17,7 @@
 
 + (long long)authorizationStatus;
 + (void)requestAuthorization:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (void)_accountStoreDidChangeNotification;
 - (void)_handleInvalidation;
 - (void)_playbackCapabilitiesDidChangeNotification;

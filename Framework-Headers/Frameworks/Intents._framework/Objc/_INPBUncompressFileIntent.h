@@ -7,36 +7,36 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBUncompressFileIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBIntentMetadata, _INPBString;
+@class NSString, _INPBIntentMetadata, _INPBString;
 
-@interface _INPBUncompressFileIntent : PBCodable <NSCopying>
+@interface _INPBUncompressFileIntent : PBCodable <_INPBUncompressFileIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    _INPBString *_entityName;
-    int _entityType;
-    _INPBIntentMetadata *_intentMetadata;
     CDStruct_032f6352 _has;
+    int _entityType;
+    _INPBString *_entityName;
+    _INPBIntentMetadata *_intentMetadata;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;
 @property (nonatomic) int entityType; // @synthesize entityType=_entityType;
 @property (readonly, nonatomic) BOOL hasEntityName;
 @property (nonatomic) BOOL hasEntityType;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsEntityType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)entityTypeAsString:(int)arg1;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

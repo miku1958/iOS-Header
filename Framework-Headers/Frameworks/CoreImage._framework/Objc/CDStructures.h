@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MISSING_TYPE;
+@class NSString;
 
 #pragma mark Blocks
 
@@ -52,6 +52,28 @@ struct CIBurstSupportVector {
     double _field2[7];
 };
 
+struct CIKernelReflection {
+    int _field1;
+    int _field2;
+    char *_field3;
+    char *_field4;
+    struct vector<CI::KernelArgumentType, std::__1::allocator<CI::KernelArgumentType>> _field5;
+    struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> _field6;
+    id _field7;
+    unsigned int _field8;
+    int _field9;
+    unsigned long long _field10;
+    unsigned long long _field11;
+    BOOL _field12;
+};
+
+struct CIPredictionModelImageFeatures {
+    NSString *name;
+    long long width;
+    long long height;
+    unsigned int format;
+};
+
 struct CIRenderDestinationInternal {
     struct RenderDestination *_field1;
     unsigned long long _field2;
@@ -67,10 +89,6 @@ struct CIRenderDestinationInternal {
     id _field12;
 };
 
-struct CPUColorCube {
-    unsigned char data[32768];
-};
-
 struct Context {
     CDUnknownFunctionPointerType *_field1;
     struct atomic<unsigned int> _field2;
@@ -81,29 +99,30 @@ struct Context {
     BOOL _field7;
     BOOL _field8;
     BOOL _field9;
-    struct CGContext *_field10;
-    float _field11;
-    BOOL _field12;
-    struct CGRect _field13;
-    struct CGAffineTransform _field14;
-    unsigned int _field15;
-    unsigned long long _field16;
+    BOOL _field10;
+    struct CGContext *_field11;
+    float _field12;
+    BOOL _field13;
+    struct CGRect _field14;
+    struct CGAffineTransform _field15;
+    unsigned int _field16;
     unsigned long long _field17;
-    int _field18;
-    BOOL _field19;
-    struct TreeCacheElement _field20[1024];
-    unsigned long long _field21;
-    struct ObjectCache<CI::Node> *_field22;
-    struct ObjectCache<CI::Node> *_field23;
-    double _field24;
+    unsigned long long _field18;
+    int _field19;
+    char _field20[64];
+    BOOL _field21;
+    struct ObjectCache<CI::MainProgram, false> *_field22;
+    struct ObjectCache<CI::Node, false> *_field23;
+    struct ObjectCache<CI::Node, false> *_field24;
     double _field25;
-    id _field26;
+    double _field26;
     struct RenderTask *_field27;
     int _field28;
-    BOOL _field29;
-    unsigned long long _field30;
-    id _field31;
+    int _field29;
+    struct Context *_field30;
+    unsigned long long _field31;
     id _field32;
+    id _field33;
 };
 
 struct FastRegistration_Signatures {
@@ -156,30 +175,22 @@ struct Kernel {
     struct SerialIntArray *_field6;
     struct SerialStringArray *_field7;
     struct __CFString *_field8;
-    BOOL _field9;
-    BOOL _field10;
-    BOOL _field11;
+    int _field9;
+    int _field10;
+    struct ISize _field11;
     BOOL _field12;
     BOOL _field13;
-    int _field14;
+    BOOL _field14;
+    BOOL _field15;
+    BOOL _field16;
+    BOOL _field17;
 };
-
-struct MetalFaceMaskCubeInputScaling_t {
-    MISSING_TYPE *offset__scale;
-};
-
-struct MetalFaceMaskEyeQuads_t {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned char _field3;
-    struct MetalFaceMaskQuad_t _field4[16];
-};
-
-struct MetalFaceMaskQuad_t;
 
 struct Node;
 
-struct ObjectCache<CI::Node>;
+struct ObjectCache<CI::MainProgram, false>;
+
+struct ObjectCache<CI::Node, false>;
 
 struct Projections_meanStdTable {
     float *sumTable;
@@ -196,6 +207,7 @@ struct Rectangle {
 struct RenderDestination {
     CDUnknownFunctionPointerType *_field1;
     struct atomic<unsigned int> _field2;
+    struct __CFString *_field3;
 };
 
 struct RenderTask {
@@ -204,17 +216,20 @@ struct RenderTask {
     char *_field3;
     char *_field4;
     int _field5;
-    unsigned long long _field6;
-    struct Node *_field7;
-    struct CGRect _field8;
-    int _field9;
-    unsigned long long _field10;
-    struct __CFString *_field11;
-    struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> _field12;
-    double _field13;
-    unsigned long long _field14;
-    unsigned long long _field15;
+    char _field6[64];
+    unsigned long long _field7;
+    struct Node *_field8;
+    struct CGRect _field9;
+    int _field10;
+    unsigned long long _field11;
+    struct __CFString *_field12;
+    struct __CFString *_field13;
+    struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> _field14;
+    double _field15;
     unsigned long long _field16;
+    unsigned long long _field17;
+    unsigned long long _field18;
+    unsigned long long _field19;
 };
 
 struct SerialIntArray;
@@ -236,17 +251,9 @@ struct SharpnessGridElement_t {
 
 struct Texture {
     union {
-        struct {
-            unsigned int _field1;
-            unsigned int _field2;
-        } _field1;
+        CDStruct_c0454aff _field1;
         void *_field2;
     } _field1;
-};
-
-struct TreeCacheElement {
-    unsigned long long _field1;
-    struct Kernel *_field2;
 };
 
 struct WarpKernel {
@@ -258,12 +265,16 @@ struct WarpKernel {
     struct SerialIntArray *_field6;
     struct SerialStringArray *_field7;
     struct __CFString *_field8;
-    BOOL _field9;
-    BOOL _field10;
-    BOOL _field11;
+    int _field9;
+    int _field10;
+    struct ISize _field11;
     BOOL _field12;
     BOOL _field13;
-    int _field14;
+    BOOL _field14;
+    BOOL _field15;
+    BOOL _field16;
+    BOOL _field17;
+    CDUnknownFunctionPointerType *_field18;
 };
 
 struct __CFString;
@@ -281,6 +292,29 @@ struct __SVMParameters {
     struct CIBurstSupportVector *_field7;
 };
 
+struct __sFILE {
+    char *_field1;
+    int _field2;
+    int _field3;
+    short _field4;
+    short _field5;
+    struct __sbuf _field6;
+    int _field7;
+    void *_field8;
+    CDUnknownFunctionPointerType _field9;
+    CDUnknownFunctionPointerType _field10;
+    CDUnknownFunctionPointerType _field11;
+    CDUnknownFunctionPointerType _field12;
+    struct __sbuf _field13;
+    struct __sFILEX *_field14;
+    int _field15;
+    unsigned char _field16[3];
+    unsigned char _field17[1];
+    struct __sbuf _field18;
+    int _field19;
+    long long _field20;
+};
+
 struct __sbuf {
     char *_field1;
     int _field2;
@@ -296,6 +330,8 @@ struct __va_list_tag {
 struct atomic<unsigned int> {
     _Atomic unsigned int _field1;
 };
+
+struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>;
 
 struct filterShape {
     struct CGRect _field1;
@@ -328,6 +364,22 @@ struct vec4 {
     float _field4;
 };
 
+struct vector<CI::KernelArgumentType, std::__1::allocator<CI::KernelArgumentType>> {
+    int *_field1;
+    int *_field2;
+    struct __compressed_pair<CI::KernelArgumentType *, std::__1::allocator<CI::KernelArgumentType>> {
+        int *_field1;
+    } _field3;
+};
+
+struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> {
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field2;
+    struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
+        struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> *_field1;
+    } _field3;
+};
+
 struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>, std::__1::allocator<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>>>> {
     struct unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>> *_field1;
     struct unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>> *_field2;
@@ -339,6 +391,18 @@ struct vector<std::__1::unique_ptr<CI::TileTask, CI::ObjectDeleter<CI::TileTask>
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    BOOL debug;
+    char base[256];
+    char face[4];
+    char eye[2];
+    char title[4];
+    char passSpec[12];
+    char line1[256];
+    char line2[256];
+    char line3[256];
+} CDStruct_1c6f3adb;
+
+typedef struct {
     BOOL _field1;
     float _field2;
     float _field3;
@@ -346,6 +410,16 @@ typedef struct {
     float _field5;
     float _field6[3];
 } CDStruct_31328b19;
+
+typedef struct {
+    BOOL _field1;
+    int _field2;
+    double _field3;
+    int _field4;
+    int _field5;
+    double _field6;
+    int _field7;
+} CDStruct_0b15f989;
 
 typedef struct {
     BOOL _field1;
@@ -361,19 +435,14 @@ typedef struct {
     float _field11;
     int _field12;
     int _field13;
-    float _field14;
+    int _field14;
     int _field15;
-    int _field16;
-    int _field17;
-    int _field18;
-    int _field19;
-    int _field20;
-    float _field21;
-    int _field22;
-    int _field23;
-    int _field24;
-    int _field25;
-} CDStruct_e0ece3c1;
+} CDStruct_935079c3;
+
+typedef struct {
+    unsigned int _field1;
+    unsigned int _field2;
+} CDStruct_c0454aff;
 
 typedef struct {
     unsigned long long _field1;
@@ -394,9 +463,16 @@ typedef struct {
 } CDStruct_c3faddef;
 
 typedef struct {
-    int *_field1;
+    char *_field1;
     int _field2;
-} CDStruct_84b23d7a;
+    int _field3;
+    int _field4;
+} CDStruct_94ca5ecd;
+
+typedef struct {
+    void *_field1;
+    CDUnknownFunctionPointerType _field2;
+} CDStruct_e5fcc3f9;
 
 typedef struct {
     double i;
@@ -406,7 +482,63 @@ typedef struct {
 typedef struct {
     float _field1;
     float _field2;
-} CDStruct_b2fbf00d;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+} CDStruct_265c7ca9;
+
+typedef struct {
+    float _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+} CDStruct_818bb265;
+
+typedef struct {
+    float a;
+    float b;
+    float c;
+} CDStruct_12b04d25;
+
+typedef struct {
+    float _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+    int _field5;
+    float _field6;
+    float _field7;
+    float _field8;
+    int _field9;
+    int _field10;
+    int _field11;
+} CDStruct_7a0e83b0;
+
+typedef struct {
+    int _field1;
+    int _field2;
+    BOOL _field3;
+    BOOL _field4;
+    float _field5;
+    int _field6;
+    int _field7;
+    int _field8;
+    int _field9;
+} CDStruct_3edab2bb;
+
+typedef struct {
+    int _field1;
+    int _field2;
+} CDStruct_1ef3fb1f;
+
+typedef struct CDStruct_183601bc;
+
+typedef struct {
+    BOOL _field1;
+    struct CGPoint _field2;
+    CDStruct_12b04d25 _field3;
+} CDStruct_7a4a8b82;
 
 typedef struct {
     char _field1[256];
@@ -444,6 +576,46 @@ typedef struct {
 } CDStruct_08ff8b76;
 
 typedef struct {
+    int _field1;
+    CDStruct_7a0e83b0 _field2[4];
+} CDStruct_e6988dbd;
+
+typedef struct {
+    int _field1;
+    float _field2;
+    float _field3;
+    float _field4;
+    float _field5;
+    BOOL _field6;
+    struct {
+        int _field1;
+        int _field2;
+        int _field3;
+        int _field4;
+    } _field7;
+    struct CGPoint _field8;
+    float _field9;
+    float _field10;
+} CDStruct_32eeb3fa;
+
+typedef struct {
+    int _field1;
+    int _field2;
+    CDStruct_183601bc *_field3;
+} CDStruct_f7cf7ab1;
+
+typedef struct {
+    int _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+    CDStruct_12b04d25 _field5[100];
+    CDStruct_12b04d25 _field6[100];
+    CDStruct_12b04d25 _field7[100];
+    CDStruct_12b04d25 _field8[100];
+} CDStruct_5ff5faa0;
+
+typedef struct {
     int origHitX;
     int origHitY;
     int snapHitX;
@@ -462,6 +634,8 @@ typedef struct {
     int finalEyeCase;
     float IOD;
     struct {
+        void *bitmapproc_context;
+        CDUnknownFunctionPointerType bproc;
         int orientation;
         float SNR;
         BOOL N90;
@@ -471,12 +645,170 @@ typedef struct {
         float halfDiagonalSize;
     } O;
     CDStruct_5973fb4f CR;
-} CDStruct_8b259ba7;
+} CDStruct_1c31e7e7;
 
 typedef struct {
-    struct CGPoint _field1;
+    int _field1;
     struct CGPoint _field2;
-} CDStruct_e3b9714e;
+    float _field3;
+    float _field4;
+    float _field5;
+    float _field6;
+    float _field7;
+    float _field8;
+    int _field9;
+    float _field10;
+    CDStruct_818bb265 _field11[32];
+    float _field12;
+    int _field13;
+    BOOL _field14;
+    struct CGPoint _field15;
+    float _field16;
+    float _field17;
+    float _field18;
+    float _field19;
+    float _field20;
+    int _field21;
+    float _field22;
+    BOOL _field23;
+    BOOL _field24;
+    BOOL _field25;
+    BOOL _field26;
+    struct CGPoint _field27;
+    struct CGPoint _field28;
+    struct CGPoint _field29;
+    struct CGPoint _field30;
+    struct CGPoint _field31;
+    struct CGPoint _field32;
+    float _field33;
+    int _field34;
+    int _field35;
+    struct {
+        int _field1;
+        int _field2;
+        int _field3;
+        int _field4;
+    } _field36;
+    int _field37;
+    struct {
+        int _field1;
+        int _field2;
+        int _field3;
+        int _field4;
+    } _field38;
+    int _field39;
+    int _field40;
+    int _field41;
+    int _field42;
+    int _field43;
+    float _field44;
+    float _field45;
+    int _field46;
+    BOOL _field47;
+    float _field48;
+    float _field49;
+    float _field50;
+    float _field51;
+    float _field52;
+    float _field53;
+    int _field54;
+    int _field55;
+    int _field56;
+    int _field57;
+    float _field58;
+    struct {
+        int _field1;
+        int _field2;
+        int _field3;
+        int _field4;
+    } _field59;
+    float _field60;
+    CDStruct_183601bc *_field61;
+    float _field62;
+} CDStruct_9d808415;
+
+typedef struct {
+    CDStruct_5973fb4f FR;
+    struct CGPoint leftEye;
+    struct CGPoint rightEye;
+    float leftDistMatrix[4];
+    float rightDistMatrix[4];
+    CDStruct_5973fb4f LR;
+    CDStruct_5973fb4f RR;
+    float IOD;
+    float IODp;
+    float IOAngle;
+    CDStruct_c3faddef channels[7];
+    CDStruct_c3faddef M;
+} CDStruct_99f3e179;
+
+typedef struct {
+    int _field1;
+    BOOL _field2;
+    CDStruct_183601bc *_field3;
+    CDStruct_183601bc *_field4;
+    int _field5;
+    CDStruct_7a4a8b82 _field6;
+    CDStruct_0b15f989 _field7;
+    struct {
+        int _field1;
+        int _field2;
+        int _field3;
+        int _field4;
+    } _field8;
+    float _field9;
+    float _field10;
+    float _field11;
+    int _field12;
+    float _field13;
+    CDStruct_818bb265 _field14;
+    CDStruct_818bb265 _field15;
+    int _field16;
+    int _field17;
+    int _field18;
+    int _field19;
+    float _field20;
+    struct {
+        int _field1;
+        int _field2;
+        int _field3;
+        int _field4;
+    } _field21;
+    CDStruct_265c7ca9 _field22;
+    BOOL _field23;
+    BOOL _field24;
+    CDStruct_183601bc *_field25;
+    CDStruct_183601bc *_field26;
+    CDStruct_183601bc *_field27;
+    BOOL _field28;
+    CDStruct_183601bc *_field29;
+    CDStruct_183601bc *_field30;
+    CDStruct_183601bc *_field31;
+    int _field32;
+    CDStruct_7a0e83b0 _field33;
+    CDStruct_7a4a8b82 _field34;
+    CDStruct_32eeb3fa _field35;
+    CDStruct_32eeb3fa _field36;
+    int _field37;
+    char _field38[4];
+    char _field39[4];
+    char _field40[12];
+} CDStruct_a3f7b727;
+
+typedef struct {
+    int _field1;
+    float _field2;
+    float _field3;
+    CDStruct_183601bc *_field4;
+    int _field5;
+    int _field6;
+    int _field7;
+    CDStruct_32eeb3fa _field8;
+    BOOL _field9;
+    CDStruct_32eeb3fa _field10;
+    int _field11;
+    int _field12;
+} CDStruct_69e56647;
 
 typedef struct {
     int tag;
@@ -493,7 +825,7 @@ typedef struct {
     int faceIndex;
     BOOL left;
     float IOD;
-    CDStruct_8b259ba7 data;
+    CDStruct_1c31e7e7 data;
     struct {
         struct CGPoint centroid;
         int area;
@@ -513,7 +845,7 @@ typedef struct {
         float ymean;
         float ystd;
     } BI;
-} CDStruct_907e448c;
+} CDStruct_8d997f87;
 
 typedef struct {
     struct CGRect _field1;

@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) short autoscalingType; // @dynamic autoscalingType;
 @property (nonatomic) BOOL isFlippable; // @dynamic isFlippable;
 @property (nonatomic) BOOL optOutOfThinning; // @dynamic optOutOfThinning;
 @property (nonatomic) BOOL preservesVectorRepresentation; // @dynamic preservesVectorRepresentation;

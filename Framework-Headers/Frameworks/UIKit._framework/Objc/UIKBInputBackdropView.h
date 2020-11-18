@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class UIKBBackdropView;
+@class UIKBBackdropView, _UIVisualEffectBackdropView;
 
 __attribute__((visibility("hidden")))
 @interface UIKBInputBackdropView : UIView
@@ -23,8 +23,10 @@ __attribute__((visibility("hidden")))
     BOOL _hasEndRect;
     struct CGRect _savedStartRect;
     struct CGRect _savedEndRect;
+    _UIVisualEffectBackdropView *_captureView;
 }
 
+@property (strong, nonatomic) _UIVisualEffectBackdropView *captureView; // @synthesize captureView=_captureView;
 @property (strong, nonatomic) UIKBBackdropView *inputBackdropFullView; // @synthesize inputBackdropFullView=_inputBackdropFullView;
 @property (strong, nonatomic) UIKBBackdropView *inputBackdropLeftView; // @synthesize inputBackdropLeftView=_inputBackdropLeftView;
 @property (strong, nonatomic) UIKBBackdropView *inputBackdropRightView; // @synthesize inputBackdropRightView=_inputBackdropRightView;
@@ -40,10 +42,11 @@ __attribute__((visibility("hidden")))
 - (void)_setProgress:(double)arg1 withFrame:(struct CGRect)arg2;
 - (void)_setRenderConfig:(id)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1 primaryBackdrop:(BOOL)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutInputBackdropToFullWithRect:(struct CGRect)arg1;
 - (void)layoutInputBackdropToSplitWithLeftViewRect:(struct CGRect)arg1 andRightViewRect:(struct CGRect)arg2 innerCorners:(int)arg3;
-- (void)setTintOpacity:(double)arg1;
+- (void)prepareForSnapshotting;
+- (void)restoreFromSnapshotting;
 - (int)textEffectsVisibilityLevel;
 - (void)transitionToStyle:(long long)arg1 isSplit:(BOOL)arg2;
 

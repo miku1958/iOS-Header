@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 {
     struct ResourceHandle *m_handle;
     NSObject<OS_dispatch_semaphore> *m_semaphore;
-    MessageQueue_9c2548bf *m_messageQueue;
+    MessageQueue_cca993fb *m_messageQueue;
     struct RetainPtr<NSURLRequest> m_requestResult;
     struct Lock m_mutex;
     struct RetainPtr<NSCachedURLResponse> m_cachedResponseResult;
@@ -41,12 +41,9 @@ __attribute__((visibility("hidden")))
 - (id)connection:(id)arg1 willCacheResponse:(id)arg2;
 - (id)connection:(id)arg1 willSendRequest:(id)arg2 redirectResponse:(id)arg3;
 - (void)connectionDidFinishLoading:(id)arg1;
-- (void)continueCanAuthenticateAgainstProtectionSpace:(BOOL)arg1;
-- (void)continueDidReceiveResponse;
-- (void)continueWillCacheResponse:(id)arg1;
 - (void)dealloc;
 - (void)detachHandle;
-- (id)initWithHandle:(struct ResourceHandle *)arg1 messageQueue:(MessageQueue_9c2548bf *)arg2;
+- (id)initWithHandle:(struct ResourceHandle *)arg1 messageQueue:(MessageQueue_cca993fb *)arg2;
 
 @end
 

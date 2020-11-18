@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) int embeddedThumbnailOffset;
 @property (readonly, copy, nonatomic) NSString *filename;
 @property (readonly, nonatomic) long long height;
-@property (readonly, copy, nonatomic) NSString *importSessionID;
 @property (readonly, nonatomic) BOOL isAudio;
 @property (readonly, nonatomic) BOOL isAvalanchePhoto;
 @property (readonly, nonatomic) BOOL isInFlight;

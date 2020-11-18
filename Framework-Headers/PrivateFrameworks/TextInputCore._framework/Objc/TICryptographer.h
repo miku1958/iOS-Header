@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TICryptographing-Protocol.h>
 
@@ -31,7 +31,7 @@
 + (void)setSharedCryptographer:(id)arg1;
 + (id)sharedCryptographer;
 + (id)singletonInstance;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)stringDigestForName:(id)arg1;
 

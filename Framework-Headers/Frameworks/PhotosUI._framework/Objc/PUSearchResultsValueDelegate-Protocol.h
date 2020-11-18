@@ -6,10 +6,11 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class PLSearchIndexDateFormatter, PUSearchResultsValue;
+@class NSString, PLSearchIndexDateFormatter, PSIDate, PUSearchResultsValue;
 
 @protocol PUSearchResultsValueDelegate <NSObject>
 - (PLSearchIndexDateFormatter *)dateFormatter;
 - (BOOL)searchIsFinished:(PUSearchResultsValue *)arg1;
+- (NSString *)stringWithStartDate:(PSIDate *)arg1 endDate:(PSIDate *)arg2;
 @end
 

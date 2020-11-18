@@ -35,6 +35,7 @@
 @property (readonly) NSString *version;
 
 - (void)beginUsing:(void (^)(NSError *))arg1;
+- (BOOL)beginUsingWithError:(id *)arg1;
 - (id<PKPlugIn>)createInstanceWithUUID:(NSUUID *)arg1;
 - (NSUserDefaults *)defaults;
 - (void)endUsing:(void (^)(NSError *))arg1;

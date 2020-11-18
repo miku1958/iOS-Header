@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSTimer, UIWebDocumentView, UIWebSelection, UIWebSelectionGraph, UIWebSelectionHandle, UIWebSelectionNode, UIWebSelectionOutline, UIWebTextRangeView;
 
@@ -31,11 +31,6 @@ __attribute__((visibility("hidden")))
         NSTimer *timer;
     } _autoscrollData;
     struct {
-        UIWebSelectionHandle *activeHandle;
-        struct CGPoint handleCenterStart;
-        double handleOffset;
-    } _blockSelectionData;
-    struct {
         UIWebSelectionHandle *start;
         UIWebSelectionHandle *end;
         struct CGSize startingOffset;
@@ -61,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (void)_didScroll;
 - (void)_subscribeToScrollNotificationsIfNecessary:(id)arg1;
 - (id)activeHandle;
-- (BOOL)activelyManipulatingBlockSelectionHandle;
 - (BOOL)activelyManipulatingTextSelectionHandle;
 - (void)animateSloppyReleaseOfHandleInText:(id)arg1 withMagnifier:(id)arg2;
 - (int)autoscrollDirectionsForHandle:(id)arg1;
@@ -69,15 +63,11 @@ __attribute__((visibility("hidden")))
 - (void)calloutBar:(id)arg1 selectedCommand:(id)arg2;
 - (BOOL)canFlip;
 - (void)clearSelection;
-- (void)computeExpandAndContractThresholdsForActiveHandle;
 - (void)considerFlipping;
-- (void)contractForActiveHandle;
 - (void)dealloc;
-- (struct CGRect)desiredBox;
 - (void)didEndScrollingOrZoomingPage;
 - (void)didEndScrollingOverflow;
 - (void)endSelectionCreationWithPoint:(struct CGPoint)arg1;
-- (void)expandForActiveHandle;
 - (struct CGRect)fetchSelectionBoundingRect;
 - (struct CGRect)fetchSelectionBoundingTextSelectionRect;
 - (id)handleWithPosition:(int)arg1;
@@ -98,26 +88,18 @@ __attribute__((visibility("hidden")))
 - (id)scroller;
 - (struct CGRect)selectionBoundingRect;
 - (void)selectionChanged;
-- (void)setHandleCenters;
 - (void)setOrientationOfMagnifier:(id)arg1 forHandleInText:(id)arg2;
 - (void)setSelectionFrame:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)shiftWebRangeSelectionAnimationDidStop:(id)arg1 finished:(id)arg2;
-- (BOOL)shouldContractForActiveHandle;
-- (BOOL)shouldExpandForActiveHandle;
-- (BOOL)shouldSwitchToBlockModeForHandle:(id)arg1;
 - (void)showControls;
 - (void)showControlsAfterRotation;
 - (void)showCopyCalloutWithAnimation:(BOOL)arg1;
 - (void)showRangeSelection;
 - (void)startSelectionCreationWithPoint:(struct CGPoint)arg1;
 - (void)stopAnyAutoscrolling;
-- (void)switchToBlockModeForHandle:(id)arg1;
-- (void)switchToTextModeForHandle:(id)arg1;
 - (id)tintView;
-- (void)touchChanged:(id)arg1 forHandle:(id)arg2;
 - (void)touchChanged:(id)arg1 forHandleInText:(id)arg2;
 - (void)updateAutoscrollForHandle:(id)arg1;
-- (void)updateForChangedLayoutWhileManipulatingBlockSelectionHandle;
 - (void)updateForChangedLayoutWhileManipulatingTextSelectionHandle;
 - (void)updateFrameAndHandlesWithAnimation:(BOOL)arg1;
 - (BOOL)updateRectForCalloutBar:(id)arg1 inWindow:(id)arg2;

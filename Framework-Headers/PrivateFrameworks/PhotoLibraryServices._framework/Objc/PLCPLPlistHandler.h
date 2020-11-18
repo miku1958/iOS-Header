@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLCPLPlistHandler : NSObject
 {
 }
 
 + (id)_cplPlistPath;
++ (id)_readCPLPlistWithError:(id *)arg1;
 + (void)deleteCPLPlist;
-+ (id)readCPLPlistWithError:(id *)arg1;
-+ (void)saveCPLPlistVersion:(id)arg1 forVersionKey:(id)arg2;
-+ (void)saveStoreUUID:(id)arg1;
++ (id)readCPLPlistObjectWithKey:(id)arg1;
++ (void)saveCPLPlistObject:(id)arg1 forKey:(id)arg2;
 
 @end
 

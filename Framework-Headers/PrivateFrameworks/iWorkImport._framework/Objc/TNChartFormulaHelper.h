@@ -4,31 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TNChartMediator;
 
 __attribute__((visibility("hidden")))
 @interface TNChartFormulaHelper : NSObject
 {
-    TNChartMediator *mChartMediator;
-    BOOL mCreateSpanningReferences;
+    TNChartMediator *_chartMediator;
+    BOOL _createSpanningReferences;
 }
 
-@property (readonly, nonatomic) TNChartMediator *chartMediator; // @synthesize chartMediator=mChartMediator;
-@property (nonatomic) BOOL createSpanningReferences; // @synthesize createSpanningReferences=mCreateSpanningReferences;
+@property (readonly, nonatomic) TNChartMediator *chartMediator; // @synthesize chartMediator=_chartMediator;
+@property (nonatomic) BOOL createSpanningReferences; // @synthesize createSpanningReferences=_createSpanningReferences;
 
++ (id)cellRegionCullingToFirstFoundLevelFrom:(id)arg1 inTable:(id)arg2 byRows:(BOOL)arg3;
++ (id)chartFormulasForSummaryRegion:(id)arg1 inTable:(id)arg2;
+- (void).cxx_destruct;
+- (id)chartFormulaByAppendingCategoryReferences:(vector_2431c21e)arg1 toFormula:(id)arg2 andLocale:(id)arg3;
 - (id)chartFormulaByAppendingRangeReference:(struct TSCERangeRef)arg1 toFormula:(id)arg2 andLocale:(id)arg3;
-- (void)dealloc;
 - (id)formulaStorageForChartGridDirection:(int)arg1;
+- (id)formulaStorageTransformTable:(UUIDData_5fbc143e)arg1 toLevel:(unsigned char)arg2;
 - (id)initWithMediator:(id)arg1;
 - (id)initWithMediator:(id)arg1 createSpanningReferences:(BOOL)arg2;
-- (void)p_addFormulasOfType:(unsigned long long)arg1 rangeList:(id)arg2 byRow:(BOOL)arg3 toFormulaMap:(id)arg4;
+- (unsigned char)p_addFormulasOfType:(unsigned long long)arg1 rangeList:(id)arg2 byRow:(BOOL)arg3 toFormulaMap:(id)arg4;
+- (unsigned char)p_addFormulasOfType:(unsigned long long)arg1 rangeList:(id)arg2 byRow:(BOOL)arg3 toFormulaMap:(id)arg4 ofLevel:(unsigned char)arg5;
 - (void)p_addSeriesForRangeList:(id)arg1 rowLabelRangeList:(id)arg2 columnLabelRangeList:(id)arg3 rowLabels:(id)arg4 columnLabels:(id)arg5 toFormulaMap:(id)arg6;
-- (void)p_addSeriesForRangeList:(id)arg1 rowLabelRangeList:(id)arg2 columnLabelRangeList:(id)arg3 toFormulaMap:(id)arg4;
-- (void)p_addSeriesForTableModel:(id)arg1 seriesRange:(struct TSCERangeCoordinate)arg2 rowLabelRange:(struct TSCERangeCoordinate)arg3 columnLabelRange:(struct TSCERangeCoordinate)arg4 toFormulaMap:(id)arg5;
 - (void)p_addStringFormulasOfType:(unsigned long long)arg1 rangeList:(id)arg2 byRow:(BOOL)arg3 labels:(id)arg4 toFormulaMap:(id)arg5;
 - (BOOL)p_extendExistingSeriesWithSeriesRangeList:(id *)arg1 rowLabelRangeList:(id *)arg2 columnLabelRangeList:(id *)arg3 toFormulaMap:(id)arg4 withLocale:(id)arg5;
+- (unsigned char)p_firstDataCategoryLevelInFormulaMap:(id)arg1 forTable:(UUIDData_5fbc143e)arg2;
 - (BOOL)p_hasOneValuePerSeries;
 - (id)p_labelsOfType:(unsigned long long)arg1 formulaMap:(id)arg2;
 - (id)p_rangeListsForFormula:(id)arg1 argumentIndexes:(id)arg2 byRow:(BOOL)arg3 resolveSpanning:(BOOL)arg4;

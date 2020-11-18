@@ -7,44 +7,45 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBAddTasksIntent-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBIntentMetadata, _INPBSpatialEventTrigger, _INPBTaskList, _INPBTemporalEventTrigger;
+@class NSArray, NSString, _INPBIntentMetadata, _INPBSpatialEventTrigger, _INPBTaskList, _INPBTemporalEventTrigger;
 
-@interface _INPBAddTasksIntent : PBCodable <NSCopying>
+@interface _INPBAddTasksIntent : PBCodable <_INPBAddTasksIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBIntentMetadata *_intentMetadata;
     _INPBSpatialEventTrigger *_spatialEventTrigger;
     _INPBTaskList *_targetTaskList;
-    NSMutableArray *_taskTitles;
+    NSArray *_taskTitles;
     _INPBTemporalEventTrigger *_temporalEventTrigger;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasSpatialEventTrigger;
 @property (readonly, nonatomic) BOOL hasTargetTaskList;
 @property (readonly, nonatomic) BOOL hasTemporalEventTrigger;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBSpatialEventTrigger *spatialEventTrigger; // @synthesize spatialEventTrigger=_spatialEventTrigger;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBTaskList *targetTaskList; // @synthesize targetTaskList=_targetTaskList;
-@property (strong, nonatomic) NSMutableArray *taskTitles; // @synthesize taskTitles=_taskTitles;
+@property (copy, nonatomic) NSArray *taskTitles; // @synthesize taskTitles=_taskTitles;
+@property (readonly, nonatomic) unsigned long long taskTitlesCount;
 @property (strong, nonatomic) _INPBTemporalEventTrigger *temporalEventTrigger; // @synthesize temporalEventTrigger=_temporalEventTrigger;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 + (Class)taskTitlesType;
 - (void).cxx_destruct;
 - (void)addTaskTitles:(id)arg1;
 - (void)clearTaskTitles;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)taskTitlesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)taskTitlesCount;
 - (void)writeTo:(id)arg1;
 
 @end

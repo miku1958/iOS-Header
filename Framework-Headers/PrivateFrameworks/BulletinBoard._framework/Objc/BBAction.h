@@ -41,6 +41,10 @@
 @property (nonatomic) long long behavior; // @synthesize behavior=_behavior;
 @property (copy, nonatomic) NSDictionary *behaviorParameters; // @synthesize behaviorParameters=_behaviorParameters;
 @property (nonatomic) BOOL canBypassPinLock;
+@property (readonly, nonatomic) BOOL hasInteractiveAction;
+@property (readonly, nonatomic) BOOL hasLaunchAction;
+@property (readonly, nonatomic) BOOL hasPluginAction;
+@property (readonly, nonatomic) BOOL hasRemoteViewAction;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) CDUnknownBlockType internalBlock; // @synthesize internalBlock=_internalBlock;
 @property (copy, nonatomic) NSString *launchBundleID; // @synthesize launchBundleID=_launchBundleID;
@@ -69,10 +73,6 @@
 - (BOOL)deliverResponse:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (BOOL)hasInteractiveAction;
-- (BOOL)hasLaunchAction;
-- (BOOL)hasPluginAction;
-- (BOOL)hasRemoteViewAction;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

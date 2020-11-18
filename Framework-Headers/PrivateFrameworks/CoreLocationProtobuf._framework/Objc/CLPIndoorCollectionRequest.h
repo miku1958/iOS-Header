@@ -12,6 +12,7 @@
 
 @interface CLPIndoorCollectionRequest : PBRequest <NSCopying>
 {
+    NSMutableArray *_bundleIds;
     NSMutableArray *_indoorCMAttitudes;
     NSMutableArray *_indoorCMPedometers;
     NSMutableArray *_indoorLocations;
@@ -21,6 +22,7 @@
     CLPMeta *_meta;
 }
 
+@property (strong, nonatomic) NSMutableArray *bundleIds; // @synthesize bundleIds=_bundleIds;
 @property (strong, nonatomic) NSMutableArray *indoorCMAttitudes; // @synthesize indoorCMAttitudes=_indoorCMAttitudes;
 @property (strong, nonatomic) NSMutableArray *indoorCMPedometers; // @synthesize indoorCMPedometers=_indoorCMPedometers;
 @property (strong, nonatomic) NSMutableArray *indoorLocations; // @synthesize indoorLocations=_indoorLocations;
@@ -29,6 +31,7 @@
 @property (strong, nonatomic) NSMutableArray *indoorWifis; // @synthesize indoorWifis=_indoorWifis;
 @property (strong, nonatomic) CLPMeta *meta; // @synthesize meta=_meta;
 
++ (Class)bundleIdType;
 + (Class)indoorCMAttitudeType;
 + (Class)indoorCMPedometerType;
 + (Class)indoorLocationsType;
@@ -36,12 +39,16 @@
 + (Class)indoorPressureType;
 + (Class)indoorWifisType;
 - (void).cxx_destruct;
+- (void)addBundleId:(id)arg1;
 - (void)addIndoorCMAttitude:(id)arg1;
 - (void)addIndoorCMPedometer:(id)arg1;
 - (void)addIndoorLocations:(id)arg1;
 - (void)addIndoorMotionActivity:(id)arg1;
 - (void)addIndoorPressure:(id)arg1;
 - (void)addIndoorWifis:(id)arg1;
+- (id)bundleIdAtIndex:(unsigned long long)arg1;
+- (unsigned long long)bundleIdsCount;
+- (void)clearBundleIds;
 - (void)clearIndoorCMAttitudes;
 - (void)clearIndoorCMPedometers;
 - (void)clearIndoorLocations;

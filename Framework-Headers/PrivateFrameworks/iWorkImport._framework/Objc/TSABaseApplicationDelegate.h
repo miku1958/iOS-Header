@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/TSKApplicationDelegate.h>
+#import <iWorkImport/TSWPApplicationDelegate.h>
 
 @class NSArray, NSString, TSADocumentRoot;
 @protocol TSADownloadDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSABaseApplicationDelegate : TSKApplicationDelegate
+@interface TSABaseApplicationDelegate : TSWPApplicationDelegate
 {
     TSADocumentRoot *mDocumentRoot;
     id<TSADownloadDelegate> _downloadDelegate;
@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 
 + (void)resetSharedConfigurations;
 + (id)sharedDelegate;
-- (BOOL)URLIsValidForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2;
 - (id)appTextDefaults;
 - (id)appTextDefaultsKey;
 - (id)applicationTemplateVariantsForLocale:(struct __CFLocale *)arg1;
@@ -57,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (id)iWorkAuthorPrivateID;
 - (id)iWorkTextDefaultsPassphraseVerifier;
 - (id)init;
-- (id)invalidURLSchemes;
 - (BOOL)isICloudDocumentPreference:(id)arg1 validForKey:(id)arg2;
 - (BOOL)isReadableDocumentType:(id)arg1;
 - (BOOL)isValidIWorkAuthorColorIndex:(unsigned long long)arg1;

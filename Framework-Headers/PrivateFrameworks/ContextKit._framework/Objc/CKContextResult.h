@@ -9,7 +9,7 @@
 #import <ContextKit/NSCopying-Protocol.h>
 #import <ContextKit/NSSecureCoding-Protocol.h>
 
-@class NSString, NSURL;
+@class NSOrderedSet, NSString, NSURL;
 
 @interface CKContextResult : NSObject <NSSecureCoding, NSCopying>
 {
@@ -20,6 +20,7 @@
     NSString *_portraitId;
     NSString *_category;
     NSString *_debug;
+    NSOrderedSet *_relatedItems;
 }
 
 @property (copy, nonatomic) NSString *category; // @synthesize category=_category;
@@ -27,6 +28,7 @@
 @property (nonatomic) long long minPrefix; // @synthesize minPrefix=_minPrefix;
 @property (copy, nonatomic) NSString *portraitId; // @synthesize portraitId=_portraitId;
 @property (copy, nonatomic) NSString *query; // @synthesize query=_query;
+@property (copy, nonatomic) NSOrderedSet *relatedItems; // @synthesize relatedItems=_relatedItems;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
 

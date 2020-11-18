@@ -16,6 +16,7 @@
 - (unsigned long long)_accesibilityRawTraits;
 - (BOOL)_accessibilityServesAsFirstElement;
 - (id)accessibilityCustomActions;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 

@@ -15,6 +15,7 @@
 - (void)rejectValuesWithClusterIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)removeAllRejectionsWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)removeDonatedMeCardValuesForIdentifiers:(NSArray *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
+- (void)removeDonatedMeCardValuesWithBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)synchronousDonatedMeCard:(void (^)(CNEither *))arg1;
 @end
 

@@ -10,9 +10,6 @@
 
 @protocol _CPSkipSearchFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasInput;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
 @property (copy, nonatomic) NSString *input;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long timestamp;

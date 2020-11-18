@@ -9,7 +9,7 @@
 #import <SafariServices/SFServiceViewControllerProtocol-Protocol.h>
 #import <SafariServices/_SFActivityDelegate-Protocol.h>
 
-@class NSDate, NSString, SFBrowserPersonaAnalyticsHelper, SFUserNotification, WKProcessPool, _SFWebViewUsageMonitor;
+@class NSDate, NSString, NSTimer, SFBrowserPersonaAnalyticsHelper, SFUserNotification, WKProcessPool, _SFWebViewUsageMonitor;
 
 __attribute__((visibility("hidden")))
 @interface SFBrowserServiceViewController : _SFBrowserContentViewController <_SFActivityDelegate, SFServiceViewControllerProtocol>
@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
     NSDate *_lastHostApplicationSuspendDate;
     WKProcessPool *_processPool;
     BOOL _canNotifyHostApplicationOfRedirects;
+    BOOL _touchEventsShouldStopRedirectNotifications;
     BOOL _isExpectingClientRedirect;
     BOOL _hasBegunFirstNavigation;
     SFBrowserPersonaAnalyticsHelper *_cachedAnalyticsHelper;
+    NSTimer *_redirectNotificationTimer;
     SFUserNotification *_userNotification;
     NSString *_hostApplicationCallbackURLScheme;
 }
@@ -54,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateRemoteSwipeGestureState;
 - (id)_webDataStoreRootURL;
 - (void)_willAppearInRemoteViewController;
+- (void)browserViewDidReceiveTouchEvent:(id)arg1;
 - (id)bundleIdentifierForProfileInstallation;
 - (void)dealloc;
 - (void)decideCookieSharingForURL:(id)arg1 callbackURLScheme:(id)arg2;
@@ -72,11 +75,13 @@ __attribute__((visibility("hidden")))
 - (void)updateScrollViewIndicatorVerticalInsets:(struct UIEdgeInsets)arg1 horizontalInsets:(struct UIEdgeInsets)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)webViewController:(id)arg1 didChangeFullScreen:(BOOL)arg2;
 - (void)webViewController:(id)arg1 didFinishDocumentLoadForNavigation:(id)arg2;
 - (void)webViewController:(id)arg1 didReceiveServerRedirectForProvisionalNavigation:(id)arg2;
 - (void)webViewController:(id)arg1 didStartProvisionalNavigation:(id)arg2;
 - (void)webViewController:(id)arg1 willPerformClientRedirectToURL:(id)arg2 withDelay:(double)arg3;
 - (void)webViewControllerDidCancelClientRedirect:(id)arg1;
+- (void)webViewControllerWebProcessDidCrash:(id)arg1;
 - (id)websiteDataStoreConfiguration;
 
 @end

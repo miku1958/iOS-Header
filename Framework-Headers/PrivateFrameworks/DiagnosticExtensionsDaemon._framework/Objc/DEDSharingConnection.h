@@ -19,8 +19,6 @@
     NSMutableDictionary *_deviceSessions;
     NSMutableDictionary *_discoveredDevices;
     NSObject<OS_dispatch_queue> *_run_queue;
-    NSObject<OS_dispatch_queue> *_system_info_queue;
-    NSObject<OS_dispatch_queue> *_sessionQueue;
     NSObject<OS_os_log> *_log;
     NSObject<OS_dispatch_semaphore> *_bluetoothSessionSemaphore;
     SFService *_pingService;
@@ -44,9 +42,7 @@
 @property (strong, nonatomic) SFDeviceDiscovery *pongDiscovery; // @synthesize pongDiscovery=_pongDiscovery;
 @property (strong) NSMutableDictionary *pongingDevices; // @synthesize pongingDevices=_pongingDevices;
 @property (strong) NSObject<OS_dispatch_queue> *run_queue; // @synthesize run_queue=_run_queue;
-@property (strong) NSObject<OS_dispatch_queue> *sessionQueue; // @synthesize sessionQueue=_sessionQueue;
 @property BOOL started; // @synthesize started=_started;
-@property (strong) NSObject<OS_dispatch_queue> *system_info_queue; // @synthesize system_info_queue=_system_info_queue;
 @property (strong) NSMutableSet *visiblePingUUIDs; // @synthesize visiblePingUUIDs=_visiblePingUUIDs;
 @property (strong, nonatomic) SFService *workerService; // @synthesize workerService=_workerService;
 

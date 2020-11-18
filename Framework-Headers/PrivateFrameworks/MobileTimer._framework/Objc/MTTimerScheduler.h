@@ -12,13 +12,13 @@
 #import <MobileTimer/MTTimerObserver-Protocol.h>
 
 @class MTScheduledList, NSString;
-@protocol MTNotificationPoster, MTSchedulingDelegate, MTTaskScheduler, MTTimerSchedulerDelegate, MTTimerStorage, NAScheduler;
+@protocol MTNotificationCenter, MTSchedulingDelegate, MTTaskScheduler, MTTimerSchedulerDelegate, MTTimerStorage, NAScheduler;
 
 @interface MTTimerScheduler : NSObject <MTTimerObserver, MTScheduledListDelegate, MTAgentDiagnosticDelegate, MTAgentNotificationListener>
 {
     id<MTTimerSchedulerDelegate> _delegate;
     id<MTTimerStorage> _storage;
-    id<MTNotificationPoster> _notificationPoster;
+    id<MTNotificationCenter> _notificationCenter;
     MTScheduledList *_scheduledTimers;
     id<NAScheduler> _serializer;
     CDUnknownBlockType _currentDateProvider;
@@ -31,7 +31,7 @@
 @property (weak, nonatomic) id<MTTimerSchedulerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<MTNotificationPoster> notificationPoster; // @synthesize notificationPoster=_notificationPoster;
+@property (strong, nonatomic) id<MTNotificationCenter> notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly, nonatomic) MTScheduledList *scheduledTimers; // @synthesize scheduledTimers=_scheduledTimers;
 @property (readonly, nonatomic) id<MTSchedulingDelegate> schedulingDelegate; // @synthesize schedulingDelegate=_schedulingDelegate;
 @property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
@@ -53,11 +53,12 @@
 - (void)_queue_unregisterTimer;
 - (void)_queue_unscheduleTimers:(id)arg1;
 - (void)_queue_updatePersistentTimerForNextTimerWithCompletion:(CDUnknownBlockType)arg1;
+- (id)gatherDiagnostics;
 - (void)handleNotification:(id)arg1;
 - (BOOL)handlesNotification:(id)arg1;
-- (id)initWithStorage:(id)arg1 notificationPoster:(id)arg2;
-- (id)initWithStorage:(id)arg1 notificationPoster:(id)arg2 scheduler:(id)arg3;
-- (id)initWithStorage:(id)arg1 notificationPoster:(id)arg2 scheduler:(id)arg3 schedulingDelegate:(id)arg4 taskScheduler:(id)arg5 currentDateProvider:(CDUnknownBlockType)arg6;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 schedulingDelegate:(id)arg4 taskScheduler:(id)arg5 currentDateProvider:(CDUnknownBlockType)arg6;
 - (id)nextTimer;
 - (void)nextTimerDidChange:(id)arg1;
 - (id)nextTriggerDate;

@@ -50,9 +50,9 @@
 - (void)_addFaceTimeAccountType;
 - (void)_addFacebookAccessKeys;
 - (void)_addFacebookAccountType;
+- (void)_addFacebookAndDAVLegacyAccountTypes;
 - (void)_addFacebookAudienceAccessKey;
 - (void)_addFacebookAudienceAccessKeyToFacebookAccountType;
-- (void)_addFacebookLegacyAccountTypes;
 - (void)_addFindMyiPhoneAccountType;
 - (void)_addFlickrAccountType;
 - (void)_addGameCenterAccountType;
@@ -67,6 +67,7 @@
 - (void)_addLDAPAccountType;
 - (void)_addLinkedInAccessKeys;
 - (void)_addLinkedInAccountType;
+- (void)_addLinkedInLegacyAccountType;
 - (void)_addLiverpoolAccessKeys;
 - (void)_addLiverpoolAccountType;
 - (void)_addMSOAccountType;
@@ -97,8 +98,12 @@
 - (void)_addYelpAccountType;
 - (void)_addYoukuAccountType;
 - (void)_addiTunesStoreAccountType;
+- (void)_addiTunesStoreSandboxAccountType;
 - (void)_allowMultipleAppleIDAuthenticationAccounts;
-- (void)_changeFacebookAccountAccountType;
+- (void)_aolSupportsAuthentication;
+- (void)_changeFacebookAccountToLegacyAccountType;
+- (void)_changeFacebookAndLinkedInAccountsToLegacyAccountTypes;
+- (void)_changeSocialAccountTypeObsoleteAttributes;
 - (void)_configureSMTPAccountType;
 - (void)_createLiverpoolDataclasses;
 - (id)_dataclassWithName:(id)arg1;
@@ -113,6 +118,7 @@
 - (void)_makeTencentWeiboSingleton;
 - (void)_makeTudouYoukuSingletons;
 - (void)_removeAIMAccounts;
+- (void)_removeBTMMType;
 - (void)_removeFacebookAppVersionAccessKey;
 - (void)_removeFacebookPermissionGroupAccessKey;
 - (void)_removeLiverpoolTypes;
@@ -127,6 +133,7 @@
 - (void)_setYahooAccountsProvisionedDataclassesToSupportedOnes;
 - (void)_supportiCloudKeychainSyncDataclass;
 - (void)_supportiCloudNewsDataclass;
+- (void)_switchAolAccountsToOAuth;
 - (void)_switchGoogleToOAuthAuthentication;
 - (void)_switchHotmailToOAuthAuthentication;
 - (void)_switchYahooToOAuthAuthentication;

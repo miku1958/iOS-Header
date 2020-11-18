@@ -6,10 +6,12 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMFLogging-Protocol.h>
+
 @class NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface HMDSecureRemoteStreamInternal : HMFObject
+@interface HMDSecureRemoteStreamInternal : HMFObject <HMFLogging>
 {
     unsigned char _cipherReadKey[32];
     unsigned char _cipherReadNonce[8];
@@ -19,7 +21,6 @@
     NSObject<OS_dispatch_source> *_idleTimer;
     NSObject<OS_dispatch_queue> *_internalQueue;
     CDUnknownBlockType _internalRequestHandler;
-    const char *_label;
     unsigned char _pairVerifyDone;
     struct PairingSessionPrivate *_pairVerifySession;
     NSMutableDictionary *_prepareRequests;
@@ -44,16 +45,21 @@
     unsigned long long _sendUserTimeoutNanos;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_userQueue;
 @property (copy) CDUnknownBlockType findPeerHandler; // @synthesize findPeerHandler=_findPeerHandler;
 @property (copy) CDUnknownBlockType getLocalIdentityHandler; // @synthesize getLocalIdentityHandler=_getLocalIdentityHandler;
+@property (readonly) unsigned long long hash;
 @property (copy) CDUnknownBlockType internalRequestHandler; // @synthesize internalRequestHandler=_internalRequestHandler;
 @property (copy) CDUnknownBlockType requestHandler; // @synthesize requestHandler=_requestHandler;
 @property (readonly) double requestTimeout;
 @property (copy) CDUnknownBlockType startedHandler; // @synthesize startedHandler=_startedHandler;
 @property (copy) CDUnknownBlockType stoppedHandler; // @synthesize stoppedHandler=_stoppedHandler;
+@property (readonly) Class superclass;
 @property (copy) CDUnknownBlockType transportSendMessage; // @synthesize transportSendMessage=_transportSendMessage;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (int)_clientHandleCommitResponse:(id)arg1;
 - (int)_clientHandlePrepareResponse:(id)arg1;
@@ -81,6 +87,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithType:(long long)arg1 commitTimeout:(unsigned long long)arg2 clientIdleTimeout:(unsigned long long)arg3 serverIdleTimeout:(unsigned long long)arg4 sendInternalTimeout:(unsigned long long)arg5 sendUserTimeout:(unsigned long long)arg6;
+- (id)logIdentifier;
 - (void)sendRequest:(id)arg1 options:(id)arg2 responseHandler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;

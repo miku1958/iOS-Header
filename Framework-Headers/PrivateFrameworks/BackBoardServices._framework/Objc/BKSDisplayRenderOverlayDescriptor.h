@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/BKSDisplayRenderOverlayDescribing-Protocol.h>
 #import <BackBoardServices/BSDescriptionProviding-Protocol.h>
@@ -25,7 +25,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) CADisplay *display; // @synthesize display=_display;
+@property (readonly, nonatomic) CADisplay *display; // @synthesize display=_display;
 @property (copy, nonatomic) NSString *displayUUID; // @synthesize displayUUID=_displayUUID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
@@ -38,8 +38,8 @@
 + (id)_classesRequiredToDecode;
 + (id)descriptorWithName:(id)arg1 display:(id)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_initWithName:(id)arg1 displayUUID:(id)arg2;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

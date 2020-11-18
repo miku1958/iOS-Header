@@ -26,6 +26,7 @@
 - (void)accountAdded:(id)arg1;
 - (void)accountChanged:(id)arg1;
 - (void)accountRemoved:(id)arg1;
+- (void)accountsDidNotChange;
 - (void)donating:(id)arg1;
 - (void)donationFailedWithError:(id)arg1;
 - (id)init;

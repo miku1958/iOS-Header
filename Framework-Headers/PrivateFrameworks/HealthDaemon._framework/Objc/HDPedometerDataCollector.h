@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthDaemon/HDAggregateDataCollector.h>
+#import <HealthDaemon/HDCoreMotionDataCollector.h>
 
 #import <HealthDaemon/HDUserCharacteristicsProfileObserver-Protocol.h>
 
-@class CMPedometer, NSNumber, NSString;
+@class NSNumber, NSString;
 
-@interface HDPedometerDataCollector : HDAggregateDataCollector <HDUserCharacteristicsProfileObserver>
+@interface HDPedometerDataCollector : HDCoreMotionDataCollector <HDUserCharacteristicsProfileObserver>
 {
-    CMPedometer *_pedometer;
     NSNumber *_userCondition;
 }
 
@@ -21,22 +20,17 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)createCollectorsForCurrentHardware:(id)arg1;
-+ (Class)sensorDatumClass;
++ (BOOL)isPedometerDataCollectionSupported;
 - (void).cxx_destruct;
-- (id)_queue_pedometer;
-- (void)beginUpdatesFromDatum:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (id)collectedTypes;
+- (Class)coreMotionDatumClass;
 - (void)dealloc;
-- (void)fetchHistoricalSensorDataSinceDatum:(id)arg1 databaseIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)hkObjectsFromSensorData:(id)arg1 baseSensorDatum:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
 - (id)initWithProfile:(id)arg1;
-- (id)pedometer;
-- (id)quantitySamplesFromPedometerData:(id)arg1 toPedometerData:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 containsWorkoutSamples:(BOOL)arg5;
+- (id)persistentIdentifier;
+- (double)queue_differenceFromDatum:(id)arg1 toDatum:(id)arg2 type:(id)arg3;
+- (id)queue_newDataSource;
 - (BOOL)queue_userConditionIsSet;
 - (BOOL)queue_userIsAbleBodied;
-- (void)setPedometer:(id)arg1;
-- (void)setUserCondition:(id)arg1;
-- (void)stopPerformingUpdatesWithErrorEncountered:(BOOL)arg1;
 - (void)userCharacteristicsManager:(id)arg1 didUpdateUserProfile:(id)arg2;
 
 @end

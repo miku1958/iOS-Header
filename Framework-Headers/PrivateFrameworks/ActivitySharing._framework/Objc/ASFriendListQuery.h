@@ -13,6 +13,7 @@
 @interface ASFriendListQuery : HKQuery <ASFriendListQueryClientInterface>
 {
     CDUnknownBlockType _updateHandler;
+    int _mostRecentToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,10 +21,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)clientInterfaceProtocol;
++ (BOOL)supportsTaskServers;
 - (void).cxx_destruct;
-- (void)client_deliverArchivedFriendList:(id)arg1 queryUUID:(id)arg2;
+- (void)client_deliverFriendList:(id)arg1 queryUUID:(id)arg2;
 - (id)initWithUpdateHandler:(CDUnknownBlockType)arg1;
-- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_queryDidDeactivate:(id)arg1;
 - (BOOL)queue_shouldDeactivateAfterInitialResults;

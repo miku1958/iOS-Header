@@ -38,6 +38,7 @@
 + (id)typeStringFromType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)description;
+- (id)descriptiveKey;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -10,6 +10,7 @@
 
 @interface CAMPreciseTimer : NSObject
 {
+    BOOL _fired;
     double _delay;
     double _interval;
     CDUnknownBlockType __handler;
@@ -19,6 +20,7 @@
 @property (strong, nonatomic, setter=_setCurrentTimer:) NSObject<OS_dispatch_source> *_currentTimer; // @synthesize _currentTimer=__currentTimer;
 @property (readonly, copy, nonatomic) CDUnknownBlockType _handler; // @synthesize _handler=__handler;
 @property (readonly, nonatomic) double delay; // @synthesize delay=_delay;
+@property (nonatomic, setter=_setFired:) BOOL fired; // @synthesize fired=_fired;
 @property (readonly, nonatomic) double interval; // @synthesize interval=_interval;
 
 - (void).cxx_destruct;

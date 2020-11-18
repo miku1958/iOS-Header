@@ -21,6 +21,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (void)load;
+- (BOOL)allowsWeakReference;
+- (oneway void)release;
+- (id)retain;
+- (unsigned long long)retainCount;
+- (BOOL)retainWeakReference;
 
 @end
 

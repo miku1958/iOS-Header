@@ -27,6 +27,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStore:(id)arg1;
+- (id)pendingRecordChangeForClientCacheWithLocalScopedIdentifier:(id)arg1;
 - (id)storageForStatusInStore:(id)arg1;
 
 @end

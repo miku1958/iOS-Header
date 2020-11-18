@@ -9,6 +9,8 @@
 @interface NCNotificationSectionSettings (Bulletin)
 
 @property (readonly, nonatomic) unsigned long long contentPreviewSetting;
+@property (readonly, nonatomic) BOOL criticalAlertsEnabled;
+@property (readonly, nonatomic) unsigned long long groupingSetting;
 @property (readonly, nonatomic) BOOL notificationsEnabled;
 @property (readonly, nonatomic) BOOL showsInLockScreen;
 @property (readonly, nonatomic) BOOL showsInNotificationCenter;
@@ -16,6 +18,7 @@
 
 + (id)notificationSectionSettingsForBBSectionInfo:(id)arg1;
 - (unsigned long long)_contentPreviewSettingFromBBContentPreviewSetting:(long long)arg1;
+- (unsigned long long)_groupingSettingFromBBGroupingSetting:(long long)arg1;
 - (id)_notificationSectionSettingsForSubSectionWithIdentifier:(id)arg1;
 - (unsigned long long)contentPreviewSettingForRequestWithSubSectionIdentifiers:(id)arg1;
 @end

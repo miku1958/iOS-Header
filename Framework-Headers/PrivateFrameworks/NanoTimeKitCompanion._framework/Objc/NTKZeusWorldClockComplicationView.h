@@ -19,6 +19,7 @@
     CLKTimeFormatter *_formatter;
 }
 
+@property (nonatomic) BOOL canUseCurvedText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver;
@@ -28,6 +29,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_updateLabels;
+- (void)applyPalette:(id)arg1;
+- (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (struct CGRect)contentFrame;
 - (void)dealloc;
 - (id)init;

@@ -7,8 +7,8 @@
 #import <UIKit/UIAlertController.h>
 
 @interface UIAlertController (CPL)
-+ (id)pu_alertForCPLEnableError:(id)arg1 actionHandler:(CDUnknownBlockType)arg2 cancelHandler:(CDUnknownBlockType)arg3;
-+ (id)pu_alertForStorageUpgradeLoadFailure;
-+ (id)pu_deleteITunesContentAlertWithAssetCount:(long long)arg1 includesPhotos:(BOOL)arg2 includesVideos:(BOOL)arg3 actionHandler:(CDUnknownBlockType)arg4 cancelHandler:(CDUnknownBlockType)arg5;
++ (id)px_alertForCPLEnableError:(id)arg1 actionHandler:(CDUnknownBlockType)arg2 cancelHandler:(CDUnknownBlockType)arg3;
++ (id)px_alertForStorageUpgradeLoadFailure;
++ (id)px_deleteITunesContentAlertWithAssetCount:(long long)arg1 includesPhotos:(BOOL)arg2 includesVideos:(BOOL)arg3 actionHandler:(CDUnknownBlockType)arg4 cancelHandler:(CDUnknownBlockType)arg5;
 @end
 

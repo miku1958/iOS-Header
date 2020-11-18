@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) UIImageView *watchScreenImageView; // @synthesize watchScreenImageView=_watchScreenImageView;
 
 - (void).cxx_destruct;
+- (void)_cleanedImageName:(id *)arg1 withFallbackImage:(id *)arg2;
 - (void)applyScreenStyle;
 - (unsigned long long)deviceSize;
 - (id)image;

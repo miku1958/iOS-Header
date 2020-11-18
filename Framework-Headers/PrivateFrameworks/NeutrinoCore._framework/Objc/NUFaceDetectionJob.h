@@ -11,6 +11,7 @@
 @interface NUFaceDetectionJob : NURenderJob
 {
     NSArray *_faces;
+    CDStruct_d58201db _imageSize;
 }
 
 @property (readonly) NUFaceDetectionRequest *faceDetectionRequest;
@@ -25,6 +26,7 @@
 - (id)result;
 - (id)scalePolicy;
 - (BOOL)wantsCompleteStage;
+- (BOOL)wantsOutputGeometry;
 - (BOOL)wantsOutputImage;
 
 @end

@@ -8,11 +8,15 @@
 
 #import <WebKit/WKFormPeripheral-Protocol.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface WKFormSelectControl : NSObject <WKFormPeripheral>
 {
     struct RetainPtr<NSObject<WKFormControl>> _control;
 }
+
+@property (readonly, nonatomic) NSString *selectFormPopoverTitle;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

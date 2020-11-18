@@ -14,8 +14,8 @@
 #import <EventKitUI/UIScrollViewDelegate-Protocol.h>
 #import <EventKitUI/UIViewControllerPreviewingDelegate-Protocol.h>
 
-@class CalendarOccurrencesCollection, EKDayOccurrenceView, EKDayView, EKDayViewWithGutters, EKEventEditViewController, EKEventGestureController, NSCalendar, NSDateComponents, NSString, NSTimer, ScrollSpringFactory, UIScrollView, UIView;
-@protocol EKDayViewControllerDataSource, EKDayViewControllerDelegate, UIViewControllerPreviewing;
+@class CalendarOccurrencesCollection, EKDayOccurrenceView, EKDayView, EKDayViewWithGutters, EKEventEditViewController, EKEventGestureController, NSCalendar, NSDateComponents, NSObject, NSString, NSTimer, ScrollSpringFactory, UIScrollView, UIView;
+@protocol EKDayViewControllerDataSource, EKDayViewControllerDelegate, OS_dispatch_queue, UIViewControllerPreviewing;
 
 @interface EKDayViewController : UIViewController <BlockableScrollViewDelegate, UIViewControllerPreviewingDelegate, EKDayOccurrenceViewDelegate, EKDayViewDataSource, EKDayViewDelegate, EKEventGestureControllerDelegate, UIScrollViewDelegate>
 {
@@ -53,6 +53,8 @@
     NSDateComponents *_targetDateComponents;
     BOOL _needToCompleteScrollingAnimation;
     BOOL _needToCompleteDeceleration;
+    NSObject<OS_dispatch_queue> *_reloadQueue;
+    NSObject<OS_dispatch_queue> *_protectionQueue;
     id<UIViewControllerPreviewing> _viewControllerPreviewingRegistration;
     BOOL _showsBanner;
     BOOL _allowsDaySwitching;
@@ -63,6 +65,7 @@
     BOOL _animateAllDayAreaHeight;
     BOOL _shouldAutoscrollAfterAppearance;
     BOOL _notifyWhenTapOtherEventDuringDragging;
+    BOOL _preloadExtraDays;
     BOOL _transitionedToSameDay;
     id<EKDayViewControllerDelegate> _delegate;
     id<EKDayViewControllerDataSource> _dataSource;
@@ -99,6 +102,7 @@
 @property (nonatomic) BOOL notifyWhenTapOtherEventDuringDragging; // @synthesize notifyWhenTapOtherEventDuringDragging=_notifyWhenTapOtherEventDuringDragging;
 @property (copy, nonatomic) NSDateComponents *pendingNextDate; // @synthesize pendingNextDate=_pendingNextDate;
 @property (copy, nonatomic) NSDateComponents *pendingPreviousDate; // @synthesize pendingPreviousDate=_pendingPreviousDate;
+@property (nonatomic) BOOL preloadExtraDays; // @synthesize preloadExtraDays=_preloadExtraDays;
 @property (nonatomic) BOOL scrollEventsInToViewIgnoresVisibility;
 @property (nonatomic) BOOL shouldAutoscrollAfterAppearance; // @synthesize shouldAutoscrollAfterAppearance=_shouldAutoscrollAfterAppearance;
 @property (strong, nonatomic) NSTimer *showNowTimer; // @synthesize showNowTimer=_showNowTimer;
@@ -108,12 +112,17 @@
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 - (void).cxx_destruct;
+- (void)__cutLongCallbackTailForDecelerationFromUserInput;
+- (void)__cutLongTailCallbackForScrollAnimationFromExternalSource;
 - (BOOL)_canScrollToNow;
 - (BOOL)_canShowNowAfterScrollViewDidEndDecelerating:(id)arg1;
+- (void)_cancelAllLongTailCuttingCallbacks;
 - (void)_cleanUpTargetDateComponents;
 - (void)_completeDecelerationIfNeeded;
 - (void)_completeScrollingAnimationIfNeeded;
 - (id)_createGutterDayViewWithDayView:(id)arg1;
+- (void)_cutAnimationTailAfterDelayForDecelerationFromUserInput;
+- (void)_cutAnimationTailAfterDelayForScrollAnimationFromExternalSource;
 - (void)_didRespondToApplicationDidBecomeActiveStateChange;
 - (id)_eventGestureSuperview;
 - (id)_eventsForDay:(id)arg1;
@@ -206,7 +215,8 @@
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (void)reloadData;
-- (void)reloadDataBetweenStart:(id)arg1 end:(id)arg2;
+- (void)reloadDataBetweenStart:(id)arg1 end:(id)arg2 completionForCurrentDayReload:(CDUnknownBlockType)arg3;
+- (void)reloadDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)scrollDayViewAppropriatelyWithAnimation:(BOOL)arg1;
 - (void)scrollEventIntoView:(id)arg1 animated:(BOOL)arg2;
 - (void)scrollEventsIntoViewAnimated:(BOOL)arg1;
@@ -224,10 +234,11 @@
 - (id)touchTrackingViewForEventGestureController:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFrameForProposedTimeView;
+- (void)validateInterfaceOrientation;
+- (id)verticalScrollView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
-- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 

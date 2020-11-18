@@ -24,14 +24,17 @@
     NSString *_messageId;
     NSString *_messageIdHeader;
     NSString *_notificationMessageId;
+    NSString *_publisherBulletinId;
     NSString *_remoteId;
     unsigned int _status;
+    unsigned int _statusVersion;
     NSString *_subject;
     NSMutableArray *_tos;
     BOOL _isThreadSpecific;
     struct {
         unsigned int isSpecialMailboxSpecific:1;
         unsigned int status:1;
+        unsigned int statusVersion:1;
         unsigned int isThreadSpecific:1;
     } _has;
 }
@@ -54,8 +57,10 @@
 @property (readonly, nonatomic) BOOL hasMessageId;
 @property (readonly, nonatomic) BOOL hasMessageIdHeader;
 @property (readonly, nonatomic) BOOL hasNotificationMessageId;
+@property (readonly, nonatomic) BOOL hasPublisherBulletinId;
 @property (readonly, nonatomic) BOOL hasRemoteId;
 @property (nonatomic) BOOL hasStatus;
+@property (nonatomic) BOOL hasStatusVersion;
 @property (readonly, nonatomic) BOOL hasSubject;
 @property (nonatomic) unsigned int isSpecialMailboxSpecific; // @synthesize isSpecialMailboxSpecific=_isSpecialMailboxSpecific;
 @property (nonatomic) BOOL isThreadSpecific; // @synthesize isThreadSpecific=_isThreadSpecific;
@@ -63,14 +68,16 @@
 @property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property (strong, nonatomic) NSString *messageIdHeader; // @synthesize messageIdHeader=_messageIdHeader;
 @property (strong, nonatomic) NSString *notificationMessageId; // @synthesize notificationMessageId=_notificationMessageId;
+@property (strong, nonatomic) NSString *publisherBulletinId; // @synthesize publisherBulletinId=_publisherBulletinId;
 @property (strong, nonatomic) NSString *remoteId; // @synthesize remoteId=_remoteId;
 @property (nonatomic) unsigned int status; // @synthesize status=_status;
+@property (nonatomic) unsigned int statusVersion; // @synthesize statusVersion=_statusVersion;
 @property (strong, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (strong, nonatomic) NSMutableArray *tos; // @synthesize tos=_tos;
 
 + (Class)bccType;
 + (Class)ccType;
-+ (id)protoMessageFromMessage:(id)arg1 organizedByThread:(BOOL)arg2 sanitizeMessageId:(BOOL)arg3;
++ (id)protoMessageFromMessage:(id)arg1 organizedByThread:(BOOL)arg2 sanitizeMessageId:(BOOL)arg3 supportsStandaloneMode:(BOOL)arg4;
 + (Class)toType;
 - (void).cxx_destruct;
 - (void)addBcc:(id)arg1;

@@ -14,6 +14,7 @@
 }
 
 - (void)connect;
+- (id)currentStateDictionary;
 - (void)dealloc;
 - (void)submitSample:(id)arg1;
 

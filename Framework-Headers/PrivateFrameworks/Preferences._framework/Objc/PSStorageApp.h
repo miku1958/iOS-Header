@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class LSApplicationProxy, NSArray, NSDate, NSString, PSUsageBundleApp;
 
 @interface PSStorageApp : NSObject
 {
     long long _purgeableSize;
-    long long _specialSize;
     BOOL _isUserApp;
     BOOL _isSystemApp;
     BOOL _isInternalApp;
@@ -25,6 +24,8 @@
     PSUsageBundleApp *_usageBundleApp;
     NSArray *_mediaTypes;
     long long _externalDataSize;
+    long long _sharedDataSize;
+    long long _specialSize;
 }
 
 @property (readonly, nonatomic) NSString *appIdentifier;
@@ -51,7 +52,8 @@
 @property (strong, nonatomic) NSArray *mediaTypes; // @synthesize mediaTypes=_mediaTypes;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long purgeableSize;
-@property (readonly, nonatomic) long long specialSize;
+@property long long sharedDataSize; // @synthesize sharedDataSize=_sharedDataSize;
+@property long long specialSize; // @synthesize specialSize=_specialSize;
 @property (readonly, nonatomic) long long staticSize;
 @property (readonly, nonatomic) long long totalSize;
 @property (strong) PSUsageBundleApp *usageBundleApp; // @synthesize usageBundleApp=_usageBundleApp;

@@ -4,111 +4,60 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ViceroyTrace/VCAdaptiveLearningDelegate-Protocol.h>
 
-@class CallSegment, NSString, VCAdaptiveLearning, VCHistogram;
+@class NSString;
 @protocol OS_dispatch_queue, VCAggregatorDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VCAggregator : NSObject <VCAdaptiveLearningDelegate>
 {
-    BOOL _isDuplicationEnabled;
-    NSString *_localInterfaceType;
-    NSString *_remoteInterfaceType;
-    NSString *_connectionType;
-    NSString *_currentSegmentKey;
-    NSString *_relayServer;
-    int _relayType;
-    NSString *_accessToken;
-    CallSegment *_currentSegment;
     int _interval;
     int _frequency;
-    unsigned int _currentWidth;
-    BOOL _currentDegradedVideoState;
-    double _degradedVideoStartTime;
-    double _degradedVideoDuration;
-    BOOL _currentNoRemoteState;
-    double _noRemoteStartTime;
-    int _callTotalDurationTicks;
-    int _callAggregatedDurationTicks;
-    double _callAverageAudioErasuresRate;
-    double _callAverageTargetBitrate;
-    double _callAverageSendBitrate;
-    double _callAverageReceiveBitrate;
-    double _callAverageRTT;
-    double _callPoorConnectionTotalLength;
-    double _callPoorConnectionMaxLength;
-    unsigned int _callPoorConnectionFrequency;
-    double _callTotalVideoStallTime;
-    double _callMaxVideoStallInterval;
-    double _callTotalAudioStallTime;
-    double _callMaxAudioStallInterval;
-    double _lastReportedAudioStallTime;
-    double _lastReportedVideoStallTime;
-    double _callLastVideoResolutionChangeTime;
-    unsigned int _noRemoteAtCallEnd;
-    unsigned int _remoteNoRemoteAtCallEnd;
-    unsigned int _totalConnectionTime;
-    unsigned int _startConnectionTime;
-    unsigned int _transportConnectionTime;
-    unsigned int _mediaConnectionTime;
-    unsigned int _callMode;
-    unsigned int _callDeviceRole;
-    unsigned int _callTransportType;
-    unsigned int _callErrorCode;
-    unsigned int _callDetailedErrorCode;
-    unsigned int _numberOfSegments;
+    BOOL _isDuplicationEnabled;
+    NSString *_localInterfaceType;
+    NSString *_connectionType;
     unsigned int _switchIntoDupCount;
-    unsigned int _REDState;
-    unsigned long long _lastReportedAudioPacketSent;
-    unsigned long long _lastReportedVideoPacketSent;
-    unsigned int _initialRampUpTime;
-    int _initialBitrateDelta;
-    VCHistogram *_callVideoSwitchPeriodHistogram;
-    VCAdaptiveLearning *_adaptiveLearning;
     NSObject<OS_dispatch_queue> *_stateQueue;
     id<VCAggregatorDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly) id<VCAggregatorDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (unsigned int)RTPeriod;
 - (int)adaptiveLearningState;
-- (id)aggregatedCallReport;
+- (id)aggregatedCallReports;
 - (id)aggregatedSegmentQRReport;
-- (id)aggregatedSegmentReport;
+- (id)aggregatedSegmentReport:(int)arg1;
+- (id)aggregatedSessionReport;
 - (BOOL)changeDuplication:(BOOL)arg1;
-- (id)connectionTypeIndicator;
 - (void)dealloc;
 - (BOOL)didUpdateStringFrom:(id *)arg1 toString:(id)arg2;
-- (id)duplicationIndicator;
 - (void)flushCurrentSegment;
 - (void)initAdaptiveLearningWithParameters:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
-- (id)interfaceTypeIndicator:(BOOL)arg1;
+- (int)initialSettledBitrate;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
+- (int)longTermAverageBWEForSegment:(id)arg1;
+- (int)longTermAverageISBRForSegment:(id)arg1;
+- (int)longTermAverageSARBRForSegment:(id)arg1;
+- (int)longTermAverageSATXBRForSegment:(id)arg1;
+- (int)longTermAverageTBRForSegment:(id)arg1;
+- (int)previousISBRForSegment:(id)arg1;
 - (void)processEventWithCategory:(unsigned short)arg1 type:(unsigned short)arg2 payload:(id)arg3;
-- (void)reset;
 - (void)saveCallSegmentHistory;
-- (void)startNewSegment;
-- (void)updateAdaptiveLearningStats:(unsigned int)arg1 payload:(id)arg2;
-- (void)updateConnectionTimes:(id)arg1;
-- (void)updateErrorCode:(id)arg1;
-- (void)updateNoRemoteState:(BOOL)arg1;
-- (void)updatePauseVideo:(BOOL)arg1;
-- (void)updateRTStats:(id)arg1;
-- (void)updateRedState:(id)arg1;
-- (void)updateRelayInfo:(id)arg1 isRelay:(BOOL)arg2;
-- (void)updateRoleModeTransport:(unsigned short)arg1 deviceRole:(unsigned short)arg2 transportType:(unsigned short)arg3;
-- (void)updateTargetBitrateForSegment:(id)arg1 newValue:(int)arg2;
-- (void)updateVideoFECStats:(id)arg1;
-- (void)updateVideoResolution:(id)arg1;
-- (void)updateVideoSwitchTimes;
+- (int)shortTermAverageBWEForSegment:(id)arg1;
+- (int)shortTermAverageISBRForSegment:(id)arg1;
+- (int)shortTermAverageSARBRForSegment:(id)arg1;
+- (int)shortTermAverageSATXBRForSegment:(id)arg1;
+- (int)shortTermAverageTBRForSegment:(id)arg1;
+- (void)throwNotSupportedExceptionForMethod:(id)arg1;
+- (void)updateSegment:(id)arg1 TBR:(int)arg2 ISBTR:(int)arg3 SATXBR:(int)arg4 SARBR:(int)arg5 BWE:(int)arg6;
 
 @end
 

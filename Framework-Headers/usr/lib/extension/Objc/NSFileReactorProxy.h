@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     unsigned int _effectiveUserIdentifier;
 }
 
+@property unsigned int effectiveUserIdentifier;
+
 + (void)_enumerateParentDirectoriesStartingAtURL:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)_clientProxy;
 - (BOOL)allowedForURL:(id)arg1;
@@ -25,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (id)descriptionWithIndenting:(id)arg1;
-- (unsigned int)effectiveUserIdentifier;
 - (void)forwardUsingProxy:(id)arg1;
 - (id)initWithClient:(id)arg1 reactorID:(id)arg2;
 - (void)invalidate;

@@ -38,6 +38,8 @@
 - (BOOL)canAccessAppleMusic;
 - (BOOL)canAccessRemoteAssets;
 - (BOOL)canAccessiCloudMusicLibrary;
+- (BOOL)canFetchMediaDataFromSender;
+- (BOOL)canPlayEncryptedProgressiveDownloadAssets;
 - (BOOL)canRelayCommunicationChannel;
 - (unsigned int)deviceSubtype;
 - (unsigned int)deviceType;
@@ -59,7 +61,10 @@
 - (id)modelID;
 - (id)modelSpecificInfo;
 - (id)name;
+- (BOOL)parentGroupContainsDiscoverableLeader;
+- (id)parentGroupIdentifier;
 - (id)playingPairedDeviceName;
+- (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (BOOL)requiresAuthorization;
 - (void)setGroupID:(id)arg1;
 - (void)setVolume:(float)arg1;

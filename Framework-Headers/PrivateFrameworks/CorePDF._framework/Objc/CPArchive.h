@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CorePDF/CPDisposable-Protocol.h>
 
 @class NSData, NSMutableString;
 
+__attribute__((visibility("hidden")))
 @interface CPArchive : NSObject <CPDisposable>
 {
     struct __CFArray *selections;

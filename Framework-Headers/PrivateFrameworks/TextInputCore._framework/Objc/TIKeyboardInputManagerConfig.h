@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, TIInputMode;
 
@@ -39,7 +39,7 @@
 @property (nonatomic) BOOL usesWordNgramModelAdaptation;
 
 + (id)configurationForInputMode:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)propertyList;
 
 @end

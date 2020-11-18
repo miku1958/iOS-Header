@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_routeManager;
+- (void)_setIsConnectedToCarplay:(BOOL)arg1;
 - (id)_traceManager;
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
 - (void)audioOutputSettingsManager:(id)arg1 didUpdateCurrentSetting:(id)arg2;

@@ -19,6 +19,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithReuseIdentifier:(id)arg1;
+- (void)prepareForReuse;
 
 @end
 

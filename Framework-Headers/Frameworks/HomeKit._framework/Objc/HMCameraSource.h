@@ -6,16 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class _HMCameraSource;
-@protocol OS_dispatch_queue;
+@class HMFUnfairLock, _HMCameraSource;
 
 @interface HMCameraSource : NSObject
 {
+    HMFUnfairLock *_lock;
     _HMCameraSource *_source;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) _HMCameraSource *source; // @synthesize source=_source;
 
 - (void).cxx_destruct;

@@ -13,9 +13,6 @@
 
 @interface _CPError : PBCodable <_CPError, NSSecureCoding>
 {
-    struct {
-        unsigned int code:1;
-    } _has;
     NSString *_domain;
     NSString *_reason;
     double _code;
@@ -25,9 +22,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
-@property (readonly, nonatomic) BOOL hasCode;
-@property (readonly, nonatomic) BOOL hasDomain;
-@property (readonly, nonatomic) BOOL hasReason;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;

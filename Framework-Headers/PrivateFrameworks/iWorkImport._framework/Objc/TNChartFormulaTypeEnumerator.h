@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class NSArray;
 
 __attribute__((visibility("hidden")))
 @interface TNChartFormulaTypeEnumerator : NSObject
 {
-    unsigned long long **_keys;
+    NSArray *_keys;
     unsigned long long _count;
     unsigned long long _index;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithChartFormulaStorage:(id)arg1;
 - (unsigned long long)nextFormulaType;
 

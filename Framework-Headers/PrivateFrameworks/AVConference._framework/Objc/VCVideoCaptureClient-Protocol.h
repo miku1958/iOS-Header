@@ -10,9 +10,11 @@
 - (void)avConferencePreviewError:(NSString *)arg1;
 - (VCVideoRule *)clientCaptureRule;
 - (BOOL)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
+- (void)sourceFrameRateDidChange:(unsigned int)arg1;
 - (void)thermalLevelDidChange:(int)arg1;
 
 @optional
 - (void)avConferenceScreenCaptureError:(NSString *)arg1;
+- (void)frameRateIsBeingThrottled:(int)arg1 thermalLevelDidChange:(BOOL)arg2 powerLevelDidChange:(BOOL)arg3;
 @end
 

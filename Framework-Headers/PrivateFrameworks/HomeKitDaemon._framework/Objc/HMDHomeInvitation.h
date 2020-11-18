@@ -59,6 +59,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 invitationData:(id)arg2;
 - (id)initWithInvitationData:(id)arg1 forHome:(id)arg2;
+- (void)notifyStateChangedForMessage:(id)arg1;
 - (BOOL)refreshDisplayName;
 - (void)timerDidFire:(id)arg1;
 - (void)updateInvitationState:(long long)arg1;

@@ -16,6 +16,7 @@
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_xpcConnectionQueue;
     NSObject<OS_dispatch_queue> *_cacheQueue;
+    int _notifyToken;
     BOOL _queueAppropriateFailedActions;
     BOOL _hasQueuedPaymentPasses;
     id<NPKCompanionAgentConnectionDelegate> _delegate;
@@ -53,12 +54,14 @@
 - (CDUnknownBlockType)_errorHandlerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleDefaultCardChanged:(id)arg1;
 - (void)_handleServerPaymentPassesChanged:(id)arg1;
+- (void)_invalidateCachedPassWithUniqueID:(id)arg1;
 - (int)_isApplePaySupportedInCurrentRegion;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (void)_removePassWithUniqueIDFromCache:(id)arg1;
 - (void)_savePaymentPass:(id)arg1 atURL:(id)arg2 forDevice:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_setCachedUniqueIDs:(id)arg1;
 - (void)_sharedPaymentWebServiceContextForDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)balancesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginProvisioningFromWatchOfferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)consistencyCheckWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -67,7 +70,6 @@
 - (void)deletePaymentTransactionWithIdentifier:(id)arg1 passUniqueIdentifier:(id)arg2 fromDevice:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)handlePendingUnpairingWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handlePendingiCloudSignoutWithCompletion:(CDUnknownBlockType)arg1;
-- (void)handlePotentialExpressPass:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)initiateLostModeExitAuthWithCompletion:(CDUnknownBlockType)arg1;
 - (void)markAllAppletsForDeletionWithCompletion:(CDUnknownBlockType)arg1;
@@ -79,6 +81,7 @@
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithBalances:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)paymentPassesWithPrimaryAccountIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)peerPaymentAccountForDevice:(id)arg1;
@@ -97,6 +100,8 @@
 - (void)shouldShowWatchOfferForPaymentPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(id)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)transitStateWithPassUniqueIdentifier:(id)arg1 paymentApplication:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(id)arg1 sessionData:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)updateSettings:(unsigned long long)arg1 forPassWithUniqueID:(id)arg2;
 - (id)watchPaymentWebService;
 
 @end

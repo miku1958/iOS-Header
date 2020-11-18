@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreImage/NSCopying-Protocol.h>
 #import <CoreImage/NSSecureCoding-Protocol.h>
@@ -27,7 +27,7 @@
 + (id)_filterArrayFromImageMetadata:(struct CGImageMetadata *)arg1 inputImageExtent:(struct CGRect)arg2;
 + (id)_filterArrayFromProperties:(id)arg1;
 + (id)_filterArrayFromProperties:(id)arg1 inputImageExtent:(struct CGRect)arg2;
-+ (struct CGImageMetadata *)_imageMetadataFromFilters:(id)arg1 inputImageExtent:(struct CGRect)arg2;
++ (const struct CGImageMetadata *)_imageMetadataFromFilters:(id)arg1 inputImageExtent:(struct CGRect)arg2;
 + (id)_propertyArrayFromFilters:(id)arg1 inputImageExtent:(struct CGRect)arg2;
 + (id)allCategories:(BOOL)arg1;
 + (id)customAttributes;
@@ -49,11 +49,13 @@
 + (id)localizedNameForCategory:(id)arg1;
 + (id)localizedNameForFilterName:(id)arg1;
 + (id)localizedReferenceDocumentationForFilterName:(id)arg1;
++ (id)metalFilterWithName:(id)arg1;
++ (id)metalFilterWithName:(id)arg1 withInputParameters:(id)arg2;
 + (void)registerFilterName:(id)arg1 constructor:(id)arg2 classAttributes:(id)arg3;
 + (id)serializedXMPFromFilters:(id)arg1 inputImageExtent:(struct CGRect)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)_copyFilterWithZone:(struct _NSZone *)arg1;
-- (void)_crashed_when_dealloc_called_setValue_nil_forKey_probably_because_the_subclass_already_released_it:(id)arg1;
+- (void)_crashed_when_dealloc_called_setValue_nil_forKey_probably_because_the_subclass_already_released_it:(id)arg1 overridesDealloc:(BOOL)arg2;
 - (BOOL)_filterClassInCategory:(id)arg1;
 - (BOOL)_isIdentity;
 - (id)_serializedXMPString;

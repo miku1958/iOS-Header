@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIPreviewInteractionControllerDelegate_Internal-Protocol.h>
-#import <UIKit/UIViewControllerPreviewing_Internal-Protocol.h>
+#import <UIKitCore/UIPreviewInteractionControllerDelegate_Internal-Protocol.h>
+#import <UIKitCore/UIViewControllerPreviewing_Internal-Protocol.h>
 
 @class NSString, UIGestureRecognizer, UIPreviewInteractionController, UIView, UIViewController;
 @protocol UIViewControllerPreviewingDelegate;

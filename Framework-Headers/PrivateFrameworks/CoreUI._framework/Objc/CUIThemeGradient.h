@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUI/CUIThemeGradientDrawing-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface CUIThemeGradient : NSObject <CUIThemeGradientDrawing>
 {
     id gradientEvaluator;
@@ -24,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (id)_psdGradientColorStopsWithColors:(id)arg1 locations:(id)arg2 colorSpace:(struct CGColorSpace *)arg3;
 - (struct _psdGradientColor)_psdGradientColorWithColor:(id)arg1 colorSpace:(struct CGColorSpace *)arg2;
 - (id)_psdGradientOpacityStopsWithOpacities:(id)arg1 locations:(id)arg2;
+- (void)_tintColorStopsWithEffects:(id)arg1;
 - (int)blendMode;
 - (id)colorLocations;
 - (struct CGFunction *)colorShader;
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)drawInRect:(struct CGRect)arg1 angle:(double)arg2 withContext:(struct CGContext *)arg3;
 - (void)drawRadialGradientInRect:(struct CGRect)arg1 relativeCenterPosition:(struct CGPoint)arg2 withContext:(struct CGContext *)arg3;
 - (id)fillColor;
+- (id)gradientByApplyingEffects:(id)arg1;
 - (id)initWithColors:(id)arg1 colorlocations:(id)arg2 colorMidpoints:(id)arg3 opacities:(id)arg4 opacityLocations:(id)arg5 opacityMidpoints:(id)arg6 smoothingCoefficient:(double)arg7 fillColor:(id)arg8 colorSpace:(struct CGColorSpace *)arg9;
 - (id)initWithColors:(id)arg1 colorlocations:(id)arg2 colorMidpoints:(id)arg3 opacities:(id)arg4 opacityLocations:(id)arg5 opacityMidpoints:(id)arg6 smoothingCoefficient:(double)arg7 fillColor:(id)arg8 colorSpace:(struct CGColorSpace *)arg9 dither:(BOOL)arg10;
 - (id)interpolatedColorAtLocation:(double)arg1;

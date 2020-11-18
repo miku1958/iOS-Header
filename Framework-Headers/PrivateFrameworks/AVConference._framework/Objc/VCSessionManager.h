@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCSessionDelegate-Protocol.h>
 
@@ -27,12 +27,25 @@ __attribute__((visibility("hidden")))
 + (void)addNSError:(id)arg1 toXPCArgumentDictionary:(id)arg2;
 + (id)sharedInstance;
 - (void)dealloc;
+- (void)deregisterBlocksForService;
 - (id)init;
+- (id)participantConfigFromXPCDictionary:(id)arg1;
 - (void)registerBlocksForService;
-- (id)sessionForIDSDestination:(id)arg1;
+- (id)sessionForStreamToken:(unsigned int)arg1;
+- (id)sessionForUUID:(id)arg1;
 - (void)vcSession:(id)arg1 addParticipantWithID:(id)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)vcSession:(id)arg1 didStart:(BOOL)arg2 error:(id)arg3;
 - (void)vcSession:(id)arg1 didStopWithError:(id)arg2;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 audioEnabled:(BOOL)arg3 didSucceed:(BOOL)arg4 error:(id)arg5;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 audioPaused:(BOOL)arg3 didSucceed:(BOOL)arg4 error:(id)arg5;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 didChangeProminence:(unsigned char)arg3 description:(id)arg4;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 didDetectError:(id)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 remoteAudioEnabledDidChange:(BOOL)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 remoteAudioPausedDidChange:(BOOL)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 remoteVideoEnabledDidChange:(BOOL)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 remoteVideoPausedDidChange:(BOOL)arg3;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 videoEnabled:(BOOL)arg3 didSucceed:(BOOL)arg4 error:(id)arg5;
+- (void)vcSession:(id)arg1 participantID:(id)arg2 videoPaused:(BOOL)arg3 didSucceed:(BOOL)arg4 error:(id)arg5;
 - (void)vcSession:(id)arg1 removeParticipantWithID:(id)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)vcSession:(id)arg1 updateConfiguration:(id)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 

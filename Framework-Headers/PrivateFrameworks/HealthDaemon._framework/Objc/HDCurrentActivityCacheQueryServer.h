@@ -12,26 +12,28 @@
 
 @interface HDCurrentActivityCacheQueryServer : HDQueryServer <HDActivityCacheManagerObserver>
 {
-    double _createdTime;
-    double _firstResultsTime;
     NSDateComponents *_statisticsIntervalComponents;
     NSCalendar *_calendar;
     HKActivityCache *_lastActivityCache;
     HDActivityCacheManager *_activityCacheManager;
 }
 
+@property (weak, nonatomic) HDActivityCacheManager *activityCacheManager; // @synthesize activityCacheManager=_activityCacheManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)createTaskServerWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5 error:(id *)arg6;
++ (Class)queryClass;
 - (void).cxx_destruct;
 - (void)_queue_start;
 - (void)_queue_stop;
 - (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
 - (BOOL)_shouldListenForUpdates;
 - (void)activityCacheManager:(id)arg1 changedTodayActivityCache:(id)arg2;
-- (id)initWithQueryUUID:(id)arg1 dataObject:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6 activityCacheManager:(id)arg7;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
+- (BOOL)shouldObserveActivityCache;
 
 @end
 

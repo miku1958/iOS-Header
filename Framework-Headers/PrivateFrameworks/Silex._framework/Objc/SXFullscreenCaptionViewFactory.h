@@ -9,24 +9,24 @@
 #import <Silex/SXFullscreenCaptionViewFactory-Protocol.h>
 
 @class NSString;
-@protocol SXActionProvider, SXComponentActionHandler;
+@protocol SXComponentActionHandler, SXSmartFieldFactory;
 
 @interface SXFullscreenCaptionViewFactory : NSObject <SXFullscreenCaptionViewFactory>
 {
-    id<SXActionProvider> _actionProvider;
+    id<SXSmartFieldFactory> _smartFieldFactory;
     id<SXComponentActionHandler> _actionHandler;
 }
 
 @property (readonly, nonatomic) id<SXComponentActionHandler> actionHandler; // @synthesize actionHandler=_actionHandler;
-@property (readonly, nonatomic) id<SXActionProvider> actionProvider; // @synthesize actionProvider=_actionProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<SXSmartFieldFactory> smartFieldFactory; // @synthesize smartFieldFactory=_smartFieldFactory;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)createCaptionView;
-- (id)initWithActionProvider:(id)arg1 actionHandler:(id)arg2;
+- (id)initWithSmartFieldFactory:(id)arg1 actionHandler:(id)arg2;
 
 @end
 

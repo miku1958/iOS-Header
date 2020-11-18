@@ -9,18 +9,22 @@
 #import <CoreDuet/NSSecureCoding-Protocol.h>
 #import <CoreDuet/_DKProtobufConverting-Protocol.h>
 
-@class NSString, NSUUID, _DKSource;
+@class NSDate, NSString, NSUUID, _DKSource;
 
 @interface _DKObject : NSObject <_DKProtobufConverting, NSSecureCoding>
 {
     NSUUID *_UUID;
     _DKSource *_source;
+    NSDate *_creationDate;
+    NSDate *_localCreationDate;
 }
 
 @property (strong) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (strong) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong) NSDate *localCreationDate; // @synthesize localCreationDate=_localCreationDate;
 @property (strong) _DKSource *source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 

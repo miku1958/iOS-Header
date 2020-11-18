@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (void)addConditionalFormatOfType:(int)arg1 value:(double)arg2 data:(id)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)setFormatType:(int)arg1;
 
 @end
 

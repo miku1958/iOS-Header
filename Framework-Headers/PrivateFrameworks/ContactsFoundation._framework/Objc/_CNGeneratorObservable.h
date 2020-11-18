@@ -22,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithInitialState:(id)arg1 condition:(CDUnknownBlockType)arg2 nextState:(CDUnknownBlockType)arg3 resultSelector:(CDUnknownBlockType)arg4 delay:(CDUnknownBlockType)arg5 scheduler:(id)arg6;
+- (BOOL)isCanceled;
 - (BOOL)isFinished;
 - (void)scheduleNextResultForObserver:(id)arg1;
 - (void)sendCurrentStateToObserver:(id)arg1;

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock;
+@protocol OS_dispatch_queue;
 
 @interface GEONetworkObserver : NSObject
 {
-    NSLock *_lock;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
     unsigned int _networkReachability;
     struct __SCNetworkReachability *_networkReach;
     BOOL _initialized;
@@ -23,7 +23,6 @@
 - (void).cxx_destruct;
 - (void)_networkObserversInitialize;
 - (void)_networkReachableCallBack:(unsigned int)arg1;
-- (void)_networkReachableFirstCallBack:(id)arg1;
 - (void)addNetworkReachableObserver:(id)arg1 selector:(SEL)arg2;
 - (void)dealloc;
 - (id)init;

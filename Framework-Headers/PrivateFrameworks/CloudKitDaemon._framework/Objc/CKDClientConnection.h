@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)clearCachesForZoneWithSetupInfo:(id)arg1 zoneID:(id)arg2 databaseScope:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)clearCachesWithSetupInfo:(id)arg1 options:(unsigned long long)arg2 databaseScope:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)clearContextFromMetadataCache;
+- (void)clearPCSCachesForKnownContextsWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearPILSCacheForLookupInfos:(id)arg1;
 - (void)clearRecordCacheWithSetupInfo:(id)arg1 databaseScope:(long long)arg2;
 - (void)currentDeviceIDWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -101,6 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)showAssetCacheWithSetupInfo:(id)arg1 databaseScope:(long long)arg2;
 - (void)statusForApplicationPermission:(unsigned long long)arg1 setupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)statusGroupsForApplicationPermission:(unsigned long long)arg1 setupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)submitClientEventMetric:(id)arg1 withSetupInfo:(id)arg2;
 - (void)tossConfigWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)triggerAutoBugCaptureSnapshot;
 - (void)updatePushTokens;

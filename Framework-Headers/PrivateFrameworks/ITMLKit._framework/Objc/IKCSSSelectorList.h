@@ -8,14 +8,14 @@
 
 #import <ITMLKit/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class IKMutableArray;
 
 @interface IKCSSSelectorList : NSObject <NSCopying>
 {
-    NSMutableArray *_selectors;
+    IKMutableArray *_selectors;
 }
 
-@property (readonly, nonatomic) NSMutableArray *selectors; // @synthesize selectors=_selectors;
+@property (readonly, nonatomic) IKMutableArray *selectors; // @synthesize selectors=_selectors;
 
 - (void).cxx_destruct;
 - (void)addSelector:(id)arg1;

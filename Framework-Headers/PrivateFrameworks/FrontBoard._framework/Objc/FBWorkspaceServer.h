@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary;
 @protocol FBWorkspaceServerDelegate, OS_dispatch_queue, OS_xpc_object;
@@ -22,8 +22,9 @@
     BOOL _triedToSendMessageInTransaction;
 }
 
-@property (readonly, nonatomic) id<FBWorkspaceServerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, weak, nonatomic) id<FBWorkspaceServerDelegate> delegate; // @synthesize delegate=_delegate;
 
+- (void).cxx_destruct;
 - (id)_handlerForSceneID:(id)arg1;
 - (id)_queue;
 - (void)_queue_clientExited;

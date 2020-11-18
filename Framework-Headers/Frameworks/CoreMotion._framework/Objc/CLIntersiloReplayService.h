@@ -8,13 +8,14 @@
 
 #import <CoreMotion/CLIntersiloServiceProtocol-Protocol.h>
 
-@class NSMapTable, NSString;
+@class NSMapTable, NSSet, NSString;
 @protocol CLIntersiloReplayServiceClientProtocol;
 
 @interface CLIntersiloReplayService : CLIntersiloService <CLIntersiloServiceProtocol>
 {
     struct unique_ptr<CMMsl::Reader, std::__1::default_delete<CMMsl::Reader>> _replayReader;
     struct Item _onDeckMessage;
+    NSSet *_expectedDecodeClasses;
     NSMapTable *_outboundTable;
     id<CLIntersiloReplayServiceClientProtocol> _coordinator;
     CDUnknownFunctionPointerType _filter;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) id<CLIntersiloReplayServiceClientProtocol> coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSSet *expectedDecodeClasses; // @synthesize expectedDecodeClasses=_expectedDecodeClasses;
 @property (nonatomic) CDUnknownFunctionPointerType filter; // @synthesize filter=_filter;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *outboundTable; // @synthesize outboundTable=_outboundTable;
@@ -41,8 +43,8 @@
 - (id)init;
 - (BOOL)loadNextRecordedMessageOnDeck;
 - (void)tryToSendOnDeckMessage;
-- (void)useRecordingFileForPlayback:(id)arg1;
-- (void)useRecordingFileForPlayback:(id)arg1 coordinator:(byref id)arg2 synchronousFilter:(CDUnknownFunctionPointerType)arg3;
+- (void)useRecordingFileForPlayback:(id)arg1 expectedClasses:(id)arg2;
+- (void)useRecordingFileForPlayback:(id)arg1 expectedClasses:(id)arg2 coordinator:(byref id)arg3 synchronousFilter:(CDUnknownFunctionPointerType)arg4;
 
 @end
 

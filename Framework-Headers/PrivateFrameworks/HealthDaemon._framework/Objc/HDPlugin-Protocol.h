@@ -15,5 +15,8 @@
 
 - (id<HDHealthDaemonExtension>)extensionForHealthDaemon:(id<HDHealthDaemon>)arg1;
 - (id<HDProfileExtension>)extensionForProfile:(HDProfile *)arg1;
+
+@optional
++ (BOOL)shouldLoadPluginForDaemon:(id<HDHealthDaemon>)arg1;
 @end
 

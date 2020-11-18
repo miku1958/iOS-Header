@@ -13,7 +13,6 @@
 
 @interface _SFPBTableRowCardSection : PBCodable <_SFPBTableRowCardSection, NSSecureCoding>
 {
-    CDStruct_dff33cb6 _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -27,6 +26,7 @@
     NSString *_punchoutPickerDismissText;
     NSString *_type;
     _SFPBColor *_backgroundColor;
+    NSArray *_richDatas;
     NSString *_tableIdentifier;
     _SFPBTableAlignmentSchema *_alignmentSchema;
     NSArray *_datas;
@@ -40,23 +40,8 @@
 @property (copy, nonatomic) NSArray *datas; // @synthesize datas=_datas;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasAlignRowsToHeader;
-@property (readonly, nonatomic) BOOL hasAlignmentSchema;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasIsSubHeader;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasReducedRowHeight;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasTabGroupIdentifier;
-@property (readonly, nonatomic) BOOL hasTableIdentifier;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasVerticalAlign;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isSubHeader; // @synthesize isSubHeader=_isSubHeader;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -64,6 +49,7 @@
 @property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property (nonatomic) BOOL reducedRowHeight; // @synthesize reducedRowHeight=_reducedRowHeight;
+@property (copy, nonatomic) NSArray *richDatas; // @synthesize richDatas=_richDatas;
 @property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *tabGroupIdentifier; // @synthesize tabGroupIdentifier=_tabGroupIdentifier;
@@ -74,8 +60,10 @@
 - (void).cxx_destruct;
 - (void)addData:(id)arg1;
 - (void)addPunchoutOptions:(id)arg1;
+- (void)addRichData:(id)arg1;
 - (void)clearData;
 - (void)clearPunchoutOptions;
+- (void)clearRichData;
 - (id)dataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)dataCount;
 - (id)dictionaryRepresentation;
@@ -86,7 +74,10 @@
 - (id)punchoutOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)punchoutOptionsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)richDataAtIndex:(unsigned long long)arg1;
+- (unsigned long long)richDataCount;
 - (void)setData:(id)arg1;
+- (void)setRichData:(id)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

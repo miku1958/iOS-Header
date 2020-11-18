@@ -29,13 +29,12 @@
 + (id)_lookupActionWithInfo:(id)arg1 inArray:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_configure:(id)arg1 actionSet:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4;
+- (void)__configureWithContext:(id)arg1 actionSet:(id)arg2;
 - (BOOL)_handleUpdates:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (id)_serializeForAdd;
 - (void)_updateTargetValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCharacteristic:(id)arg1 targetValue:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (void)updateTargetValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

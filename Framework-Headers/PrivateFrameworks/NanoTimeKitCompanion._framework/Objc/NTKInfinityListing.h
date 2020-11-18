@@ -9,10 +9,11 @@
 #import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 #import <NanoTimeKitCompanion/NTKAVListing-Protocol.h>
 
-@class CLKVideo, NSString, NTKInfinityListingAttributes, UIImage;
+@class CLKDevice, CLKVideo, NSString, NTKInfinityListingAttributes, UIImage;
 
 @interface NTKInfinityListing : NSObject <NSCopying, NTKAVListing>
 {
+    CLKDevice *_device;
     NSString *_filename;
     CLKVideo *_video;
     UIImage *_image;
@@ -31,13 +32,13 @@
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) CLKVideo *video;
 
-+ (id)listingWithFilename:(id)arg1;
-+ (id)listingWithFilename:(id)arg1 type:(unsigned long long)arg2 attributes:(id)arg3;
++ (id)listingForDevice:(id)arg1 withFilename:(id)arg2;
++ (id)listingForDevice:(id)arg1 withFilename:(id)arg2 type:(unsigned long long)arg3 attributes:(id)arg4;
 - (void).cxx_destruct;
 - (id)complicationColor;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)discardAssets;
-- (id)initWithFilename:(id)arg1;
+- (id)initForDevice:(id)arg1 withFilename:(id)arg2;
 - (BOOL)snapshotDiffers:(id)arg1;
 
 @end

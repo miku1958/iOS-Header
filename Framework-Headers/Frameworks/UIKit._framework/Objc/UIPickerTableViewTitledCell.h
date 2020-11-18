@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPickerTableViewCell.h>
+#import <UIKitCore/UIPickerTableViewCell.h>
 
 @class NSAttributedString, NSString, UIColor, UILabel;
 

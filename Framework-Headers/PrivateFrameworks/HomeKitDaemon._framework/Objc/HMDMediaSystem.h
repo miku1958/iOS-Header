@@ -26,7 +26,6 @@
     NSString *_configuredName;
     NSUUID *_uuid;
     HMDHome *_home;
-    NSArray *_accessories;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMFMessageDispatcher *_msgDispatcher;
@@ -35,7 +34,7 @@
     HMDMediaSystemSymptomHandler *_symptomsHandler;
 }
 
-@property (strong, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
+@property (readonly, nonatomic) NSArray *accessories;
 @property (strong, nonatomic) HMDApplicationData *appData; // @synthesize appData=_appData;
 @property (strong, nonatomic) HMFTimer *auditSettingsTimer; // @synthesize auditSettingsTimer=_auditSettingsTimer;
 @property (strong, nonatomic) NSArray *components; // @synthesize components=_components;

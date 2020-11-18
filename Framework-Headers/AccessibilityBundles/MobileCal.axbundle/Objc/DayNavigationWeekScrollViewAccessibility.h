@@ -14,8 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityScrollStatus;
-- (long long)_axFirstVisibleIndex;
-- (long long)_axLastVisibleIndex;
 - (id)_axVisibleCells;
 - (id)accessibilityElementAtIndex:(long long)arg1;
 - (long long)accessibilityElementCount;

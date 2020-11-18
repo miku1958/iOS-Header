@@ -14,11 +14,15 @@
 @interface ARImageDetectionResult : NSObject <NSCopying, NSSecureCoding>
 {
     ARReferenceImage *_referenceImage;
-    CDStruct_14d5dc5e _transform;
+    void *_imageContext;
+    CDStruct_14d5dc5e _visionTransform;
+    CDStruct_14d5dc5e _worldTrackingCameraTransformAtDetection;
 }
 
+@property (nonatomic) void *imageContext; // @synthesize imageContext=_imageContext;
 @property (strong, nonatomic) ARReferenceImage *referenceImage; // @synthesize referenceImage=_referenceImage;
-@property (nonatomic) CDStruct_14d5dc5e transform; // @synthesize transform=_transform;
+@property (nonatomic) CDStruct_14d5dc5e visionTransform; // @synthesize visionTransform=_visionTransform;
+@property (nonatomic) CDStruct_14d5dc5e worldTrackingCameraTransformAtDetection; // @synthesize worldTrackingCameraTransformAtDetection=_worldTrackingCameraTransformAtDetection;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

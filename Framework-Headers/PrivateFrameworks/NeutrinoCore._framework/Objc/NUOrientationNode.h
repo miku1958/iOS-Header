@@ -22,6 +22,7 @@
 - (id)_evaluateDepthData:(out id *)arg1;
 - (id)_evaluateImage:(out id *)arg1;
 - (id)_evaluateImageGeometry:(out id *)arg1;
+- (id)_evaluatePortraitEffectsMatte:(out id *)arg1;
 - (id)_evaluateVideo:(out id *)arg1;
 - (id)_transformWithError:(out id *)arg1;
 - (BOOL)canPropagateOriginalDepthData;

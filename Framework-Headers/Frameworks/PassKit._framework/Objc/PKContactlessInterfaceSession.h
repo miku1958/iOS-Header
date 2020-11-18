@@ -19,7 +19,7 @@
     PKFieldProperties *_fieldProperties;
     PKFieldProperties *_fieldPropertiesToLookup;
     unsigned long long _transactionStartTime;
-    BOOL _fieldPresent;
+    _Atomic BOOL _fieldPresent;
     BOOL _handlingExpress;
     unsigned long long _expressActivity;
     BOOL _felicaStateChanged;

@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)lightTextColor;
-- (id)primaryImageColor;
 - (id)separatorColor;
 
 @end

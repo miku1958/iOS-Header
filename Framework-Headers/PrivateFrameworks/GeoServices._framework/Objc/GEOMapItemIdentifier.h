@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) unsigned long long muid;
 @property (readonly, nonatomic) int resultProviderID;
 
++ (id)mapItemIdentifiersFromMapsIdentifiers:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (CDStruct_c3b9c2ee)coordinate;

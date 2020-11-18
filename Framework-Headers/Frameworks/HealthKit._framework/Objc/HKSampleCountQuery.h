@@ -23,12 +23,12 @@
 @property (readonly) Class superclass;
 
 + (id)clientInterfaceProtocol;
++ (Class)configurationClass;
 + (void)configureClientInterface:(id)arg1;
 - (void).cxx_destruct;
 - (void)client_deliverSampleCountDictionary:(id)arg1 forQuery:(id)arg2;
 - (id)initWithSampleType:(id)arg1 predicate:(id)arg2 resultsHandler:(CDUnknownBlockType)arg3;
 - (id)initWithSampleTypes:(id)arg1 predicate:(id)arg2 resultsHandler:(CDUnknownBlockType)arg3;
-- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_populateConfiguration:(id)arg1;
 - (void)queue_validate;

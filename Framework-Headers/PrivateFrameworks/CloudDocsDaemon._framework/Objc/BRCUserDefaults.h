@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) NSSet *blacklistedThumbnailExtensions;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *cacheDeletePushXPCActivity;
 @property (readonly, nonatomic) double cacheDeleteRecomputeInterval;
+@property (readonly, nonatomic) unsigned long long computeEvictableBatchSize;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *configurationUpdateXPCActivity;
 @property (readonly, nonatomic) unsigned long long copyShareIDsBatchSize;
 @property (readonly, nonatomic) long long dbAutovacuumBatchSize;
@@ -58,6 +59,7 @@
 @property (readonly, nonatomic) double downloadSizeRefreshInterval;
 @property (readonly, nonatomic) NSDictionary *downloadThrottleParams;
 @property (readonly, nonatomic) unsigned long long downloadWillRetryProgressMaxCount;
+@property (readonly, nonatomic) double eventMetricTimeout;
 @property (readonly, nonatomic) NSSet *excludedExtensionsWorthPreserving;
 @property (readonly, nonatomic) NSSet *excludedFilenamesWorthPreserving;
 @property (readonly, nonatomic) NSSet *excludedFilenamesWorthWarningAtLogout;

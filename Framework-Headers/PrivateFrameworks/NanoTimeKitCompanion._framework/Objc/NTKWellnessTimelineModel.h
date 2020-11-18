@@ -6,30 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class HKActivitySummary, HKAnchoredObjectQuery, HKCurrentActivityCacheQuery, HKHealthStore, HKObserverQuery, HKQuantityType, HKQueryAnchor, HKSortedSampleArray, HKUnit, NSArray, NSDate, NSHashTable, NSMutableDictionary, _HKCurrentActivitySummaryQuery, _HKDelayedOperation;
+@class HKActivitySummary, HKCurrentActivityCacheQuery, HKHealthStore, HKUnit, NSArray, NSDate, NSHashTable, _HKCurrentActivitySummaryQuery;
 @protocol OS_dispatch_queue;
 
 @interface NTKWellnessTimelineModel : NSObject
 {
     HKHealthStore *_healthStore;
-    HKQuantityType *_calorieGoalType;
     HKUnit *_kcalUnit;
     HKUnit *_minuteUnit;
     HKUnit *_countUnit;
-    HKObserverQuery *_queue_calorieGoalObserverQuery;
-    HKAnchoredObjectQuery *_queue_calorieGoalAnchoredObjectQuery;
-    HKQueryAnchor *_queue_calorieGoalAnchor;
     _HKCurrentActivitySummaryQuery *_queue_currentActivitySummaryQuery;
-    HKCurrentActivityCacheQuery *_queue_currentActivityCacheAndStatisticsQuery;
     NSObject<OS_dispatch_queue> *_queue;
     HKActivitySummary *_queue_currentActivitySummary;
-    HKSortedSampleArray *_queue_calorieGoals;
-    NSArray *_queue_moveActivityStatisticsQuantityInfos;
-    NSArray *_queue_exerciseActivityStatisticsQuantityInfos;
-    NSArray *_queue_standActivityStatisticsStandHourInfos;
-    NSArray *_queue_sortedEntriesKeys;
-    NSMutableDictionary *_queue_wellnessEntriesByDate;
-    _HKDelayedOperation *_delayedProcessingOperation;
+    HKCurrentActivityCacheQuery *_queue_currentActivityCacheQuery;
+    NSArray *_queue_currentMoveChartData;
+    NSArray *_queue_currentExerciseChartData;
+    NSArray *_queue_currentStandChartData;
     NSObject<OS_dispatch_queue> *_subscriber_queue;
     NSHashTable *_subscribers;
     NSDate *_currentDate;
@@ -40,32 +32,15 @@
 - (void).cxx_destruct;
 - (void)_broadcastCurrentEntryUpdate:(id)arg1 toSubscriber:(id)arg2;
 - (void)_broadcastCurrentEntryUpdateToSubscribers:(id)arg1;
-- (void)_broadcastHistoricalDataLoaded:(BOOL)arg1 toSubscriber:(id)arg2;
-- (void)_broadcastHistoricalDataWasUpdatedToSubscribers;
-- (void)_broadcastToAllSubscribersHistoricalDataLoaded:(BOOL)arg1;
-- (id)_createCalorieGoalObserverQuery;
-- (void)_fetchCalorieGoalSamples;
 - (void)_handleTimeChange;
-- (void)_handleTimeTravelPrefChange;
 - (BOOL)_loadingStateForActivitySummary:(id)arg1;
-- (id)_queue_calorieGoalSampleForDate:(id)arg1;
-- (void)_queue_fetchCalorieGoalSamples;
-- (BOOL)_queue_historicalDataLoaded;
-- (void)_queue_processMoveActivityStatistics:(id)arg1 exerciseActivityStatistics:(id)arg2 standActivityStatistics:(id)arg3;
-- (void)_queue_processNewCalorieGoals:(id)arg1 deletedSamples:(id)arg2;
 - (void)_queue_restartQueriesIfQueryInUse:(id)arg1;
 - (void)_queue_restartQueriesPreservingHisoricalData:(BOOL)arg1;
-- (id)_queue_standHourForDate:(id)arg1;
 - (void)_queue_startQueries;
 - (void)_queue_stopQueriesPreservingHistoricalData:(BOOL)arg1;
-- (void)_queue_updateCalorieGoalsWithSamples:(id)arg1 deletedSamples:(id)arg2 anchor:(id)arg3;
+- (void)_queue_updateChartStatisticsWithMoveStatistics:(id)arg1 exerciseStatistics:(id)arg2 standHourStatistics:(id)arg3;
 - (void)_queue_updateCurrentActivitySummaryWithSummary:(id)arg1;
-- (void)_queue_updateMoveActivityStatistics:(id)arg1 exerciseActivityStatistics:(id)arg2 standActivityStatistics:(id)arg3;
-- (void)_restartQueriesIfQueryInUse:(id)arg1;
-- (void)_updateCalorieGoalsWithSamples:(id)arg1 deletedSamples:(id)arg2 anchor:(id)arg3;
-- (void)_updateCurrentActivitySummaryWithSummary:(id)arg1;
-- (void)_updateMoveActivityStatistics:(id)arg1 exerciseActivityStatistics:(id)arg2 standActivityStatistics:(id)arg3;
-- (id)_wellnessEntryModelFromActivitySummary:(id)arg1;
+- (id)_queue_wellnessEntryModelFromCurrentActivitySummary;
 - (void)addSubscriber:(id)arg1;
 - (void)dealloc;
 - (void)getCurrentWellnessEntryWithHandler:(CDUnknownBlockType)arg1;
@@ -73,6 +48,7 @@
 - (void)getWellnessEntriesBeforeDate:(id)arg1 limit:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)removeSubscriber:(id)arg1;
+- (id)switcherWelnessEntry;
 - (id)timelineEndDate;
 - (id)timelineStartDate;
 

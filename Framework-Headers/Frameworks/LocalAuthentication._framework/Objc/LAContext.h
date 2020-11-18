@@ -129,6 +129,7 @@
 - (void)setOptionTransitionStyle:(id)arg1;
 - (void)setOptionUserCancel:(id)arg1;
 - (void)setOptionUserFallback:(id)arg1;
+- (void)setShowingCoachingHint:(BOOL)arg1 event:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)withCurrentContextExecute:(CDUnknownBlockType)arg1 queue:(id)arg2;
 
 @end

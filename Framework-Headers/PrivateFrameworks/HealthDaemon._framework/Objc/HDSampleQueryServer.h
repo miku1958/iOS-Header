@@ -6,13 +6,11 @@
 
 #import <HealthDaemon/HDBatchedQueryServer.h>
 
-@class NSArray, NSObject;
-@protocol OS_dispatch_queue;
+@class NSArray;
 
 @interface HDSampleQueryServer : HDBatchedQueryServer
 {
     BOOL _suspended;
-    NSObject<OS_dispatch_queue> *_batchQueue;
     BOOL _includeTimeZones;
     unsigned long long _limit;
     NSArray *_sortDescriptors;
@@ -22,11 +20,12 @@
 @property (readonly, nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (readonly, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 
++ (Class)queryClass;
++ (id)requiredEntitlements;
++ (BOOL)supportsAnchorBasedAuthorization;
 - (void).cxx_destruct;
 - (void)_queue_start;
-- (id)initWithQueryUUID:(id)arg1 configuration:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
-- (id)requiredEntitlements;
-- (id)sampleClientProxy;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
 
 @end
 

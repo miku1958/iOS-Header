@@ -6,16 +6,21 @@
 
 #import <QuickLook/NSObject-Protocol.h>
 
-@class NSString, NSValue, QLPreviewContext;
+@class NSString, NSValue, QLAppearance, QLPreviewContext;
+@protocol QLCustomItemViewControllerHost;
 
 @protocol QLRemotePreviewService <NSObject>
 - (void)getPrinterProxyWithCompletionHandler:(void (^)(id<QLPrintingProtocol>))arg1;
+- (void)invalidateService;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(QLPreviewContext *)arg2 completionHandler:(void (^)(NSError *, NSDictionary *))arg3;
 - (void)previewControllerDidUpdatePreferredContentSize:(NSValue *)arg1;
 - (void)previewControllerDidUpdateTitle:(NSString *)arg1;
+- (void)previewControllerWantsFullScreen:(BOOL)arg1;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)previewWillAppear:(BOOL)arg1;
 - (void)previewWillDisappear:(BOOL)arg1;
+- (void)setAppearance:(QLAppearance *)arg1 animated:(BOOL)arg2;
+- (void)setHostViewControllerProxy:(id<QLCustomItemViewControllerHost>)arg1;
 @end
 

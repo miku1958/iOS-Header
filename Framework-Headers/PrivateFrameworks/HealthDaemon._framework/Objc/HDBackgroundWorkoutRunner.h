@@ -6,18 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDAssertionObserver-Protocol.h>
 #import <HealthDaemon/HDProcessStateObserver-Protocol.h>
 
-@class BKSProcessAssertion, CLInUseAssertion, HDProfile, HDXPCClient, NSString;
+@class HDAssertionManager, HDDaemon, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDBackgroundWorkoutRunner : NSObject <HDProcessStateObserver>
+@interface HDBackgroundWorkoutRunner : NSObject <HDProcessStateObserver, HDAssertionObserver>
 {
-    HDXPCClient *_client;
-    HDProfile *_profile;
-    BKSProcessAssertion *_assertion;
-    CLInUseAssertion *_coreLocationAssertion;
-    BOOL _shouldAcquireCLAssertion;
+    HDDaemon *_daemon;
+    HDAssertionManager *_assertionManager;
     NSObject<OS_dispatch_queue> *_queue;
 }
 
@@ -27,17 +25,18 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_queue_acquireBackgroundRunningAssertion;
-- (void)_queue_acquireCLInUseAssertion;
-- (BOOL)_queue_hasBackgroundPermission;
-- (void)_queue_releaseAssertion;
-- (void)_queue_releaseBackgroundRunningAssertion;
-- (void)_queue_releaseCLInUseAssertion;
-- (void)_queue_takeAssertion;
-- (id)initWithServer:(id)arg1 profile:(id)arg2;
+- (id)_queue_acquireBKSAssertionForClient:(id)arg1;
+- (id)_queue_acquireCLInUseAssertionForClient:(id)arg1;
+- (BOOL)_queue_hasBackgroundPermissionForBundleIdentifier:(id)arg1 errorOut:(id *)arg2;
+- (void)_queue_releaseBKSAssertion:(id)arg1 forClient:(id)arg2;
+- (void)_queue_releaseCLInUseAssertion:(id)arg1 forClient:(id)arg2;
+- (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
+- (void)assertionManager:(id)arg1 assertionTaken:(id)arg2;
+- (void)dealloc;
+- (BOOL)hasBackgroundPermissionForBundleIdentifier:(id)arg1 errorOut:(id *)arg2;
+- (id)initWithDaemon:(id)arg1;
 - (void)processDidEnterForeground:(id)arg1;
-- (void)start;
-- (void)stop;
+- (id)takeBackgroundRunningAssertionForOwnerIdentifier:(id)arg1 client:(id)arg2 includeCoreLocationAssertion:(BOOL)arg3;
 
 @end
 

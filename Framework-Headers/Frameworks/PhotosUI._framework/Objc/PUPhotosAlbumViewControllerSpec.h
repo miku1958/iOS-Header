@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosUI/PULegacyViewControllerSpec.h>
 
 __attribute__((visibility("hidden")))
-@interface PUPhotosAlbumViewControllerSpec : NSObject
+@interface PUPhotosAlbumViewControllerSpec : PULegacyViewControllerSpec
 {
     long long _fullMomentsSectionHeaderStyle;
 }
@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long fullMomentsSectionHeaderStyle; // @synthesize fullMomentsSectionHeaderStyle=_fullMomentsSectionHeaderStyle;
 @property (readonly, nonatomic) BOOL shouldUseAspectItems;
 
++ (id)padSpec;
++ (id)phoneSpec;
 - (long long)cellFillMode;
 - (void)configureCollectionViewGridLayout:(id)arg1;
 - (id)gridSpec;

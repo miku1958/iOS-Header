@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSRegularExpression, NSString;
 
@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) NSString *sentenceTrailingCharacters; // @synthesize sentenceTrailingCharacters=_sentenceTrailingCharacters;
 
 + (id)loaderWithSentenceDelimiters:(id)arg1 trailingChars:(id)arg2 prefixChars:(id)arg3;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithSentenceDelimiters:(id)arg1 trailingChars:(id)arg2 prefixChars:(id)arg3;
 - (void)startBackgroundLoad;
 

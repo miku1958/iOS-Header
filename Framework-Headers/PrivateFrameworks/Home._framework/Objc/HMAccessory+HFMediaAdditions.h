@@ -6,17 +6,34 @@
 
 #import <HomeKit/HMAccessory.h>
 
+@class NSSet;
+
 @interface HMAccessory (HFMediaAdditions)
 
+@property (readonly, nonatomic) NSSet *hf_fakeDebugSymptoms;
+@property (readonly, nonatomic) BOOL hf_fakeGeneralFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeHardwareFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeHomeKitSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeICloudSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeITunesSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeInternetFixSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeShouldDisplayManualFixOption;
+@property (readonly, nonatomic) BOOL hf_fakeUnreachableError;
+@property (readonly, nonatomic) BOOL hf_fakeVPNProfileExpired;
+@property (nonatomic) BOOL hf_fakeWiFiMismatchSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeWiFiPerformanceSymptom;
+@property (readonly, nonatomic) BOOL hf_fakeWiFiSymptom;
 @property (readonly, nonatomic) BOOL hf_isAirPortExtremeSpeaker;
 @property (readonly, nonatomic) BOOL hf_isAppleTV;
 @property (readonly, nonatomic) BOOL hf_isDumbSpeaker;
 @property (readonly, nonatomic) BOOL hf_isHomePod;
 @property (readonly, nonatomic) BOOL hf_isMediaAccessory;
+@property (readonly, nonatomic) unsigned long long hf_mediaAccessControlCapabilities;
 @property (readonly, nonatomic) BOOL hf_needsSoftwareUpdateToSupportBeingAddedToMediaSystem;
 
+- (void)_pushSymptomUpdate;
 - (id)hf_identifyHomePod;
-- (BOOL)hf_shouldDisplayManualFixOption;
+- (BOOL)hf_shouldDisplayManualFixOptionForSymptom:(long long)arg1;
 - (BOOL)hf_shouldShowSoftwareUpdateInfo;
 @end
 

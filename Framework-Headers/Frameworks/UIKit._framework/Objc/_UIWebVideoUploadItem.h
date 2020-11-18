@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIWebFileUploadItem.h>
+#import <UIKitCore/_UIWebFileUploadItem.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIWebVideoUploadItem : _UIWebFileUploadItem

@@ -15,8 +15,9 @@
 
 @property (copy, nonatomic) NSString *originalInput; // @synthesize originalInput=_originalInput;
 
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)shortDescription;

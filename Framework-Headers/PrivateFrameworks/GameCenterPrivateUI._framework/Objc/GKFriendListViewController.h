@@ -36,6 +36,7 @@
 @property (strong, nonatomic) NSArray *searchPlayers; // @synthesize searchPlayers=_searchPlayers;
 @property (readonly) Class superclass;
 
+- (void)dealloc;
 - (void)hideNoContentPlaceholder;
 - (void)loadData;
 - (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;

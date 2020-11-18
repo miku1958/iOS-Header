@@ -85,7 +85,6 @@
 - (id)serviceTypeFromUTI:(id)arg1;
 - (id)serviceTypeToBTLE:(id)arg1;
 - (id)serviceUTIFromType:(id)arg1;
-- (id)shouldFilterServiceOfType:(id)arg1;
 - (BOOL)supportsAdditionalAuthorizationData:(id)arg1 forService:(id)arg2;
 - (BOOL)updateRawPlist;
 - (BOOL)validateMandatoryCharacteristics:(id)arg1 forService:(id)arg2;

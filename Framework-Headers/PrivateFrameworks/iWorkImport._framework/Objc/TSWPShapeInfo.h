@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     TSWPStorage *_containedStorage;
     BOOL _isTextBox;
     BOOL _preventsComments;
+    BOOL _preventsChangeTracking;
     TSPObject<TSWPFlowInfo> *_textFlow;
 }
 
@@ -30,7 +31,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) int columnDirection;
 @property (strong, nonatomic) TSWPColumns *columns;
-@property (readonly, nonatomic) TSWPStorage *containedStorage;
 @property (nonatomic) long long contentWritingDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -48,11 +48,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;
 @property (strong, nonatomic) TSWPPadding *padding;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @dynamic parentInfo;
+@property (readonly, nonatomic) BOOL preventsChangeTracking; // @synthesize preventsChangeTracking=_preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments; // @synthesize preventsComments=_preventsComments;
 @property (readonly, nonatomic) BOOL shouldIgnoreWPContent;
 @property (nonatomic) BOOL shrinkTextToFit;
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (weak, nonatomic) TSPObject<TSWPFlowInfo> *textFlow; // @synthesize textFlow=_textFlow;
 @property (readonly, nonatomic) BOOL textIsLinked;
 @property (nonatomic) BOOL textIsVertical;
@@ -80,21 +82,23 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)autosizePositionOffsetForGeometry:(id)arg1 size:(struct CGSize)arg2;
 - (struct CGAffineTransform)autosizedTransformForInfoGeometry:(id)arg1 size:(struct CGSize)arg2;
 - (BOOL)canAnchor;
+- (BOOL)canBeDefinedAsTextPlaceholder;
 - (id)childEnumerator;
 - (unsigned long long)chunkCountForTextureDeliveryStyle:(unsigned long long)arg1 byGlyphStyle:(int)arg2 animationFilter:(id)arg3;
+- (id)copyAcceptingTrackedChangesWithContext:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
 - (void)fixPositionOfImportedAutosizedShape;
 - (void)fixupAutosizingTextboxes;
 - (id)i_ownedTextStorage;
 - (void)i_setOwnedTextStorage:(id)arg1;
-- (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 pathSource:(id)arg4;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 pathSource:(id)arg4 wpStorage:(id)arg5;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 wpStorage:(id)arg4;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
 - (BOOL)isLocked;
+- (BOOL)isRightToLeft;
 - (Class)layoutClass;
 - (void)loadFromArchive:(const struct ShapeInfoArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;

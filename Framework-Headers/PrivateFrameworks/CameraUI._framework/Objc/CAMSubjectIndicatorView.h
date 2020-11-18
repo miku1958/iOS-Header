@@ -17,6 +17,7 @@
 @property (nonatomic, getter=isInactive) BOOL inactive;
 @property (nonatomic, getter=isPulsing) BOOL pulsing;
 
++ (struct CGSize)_fixedSubjectIndicatorSizeForReferenceBounds:(struct CGSize)arg1;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
@@ -24,6 +25,8 @@
 - (void)setHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)startScalingWithExpansionWidth:(double)arg1 duration:(double)arg2 repeatCount:(unsigned long long)arg3;
+- (void)startScalingWithExpansionWidth:(double)arg1 duration:(double)arg2 repeatCount:(unsigned long long)arg3 timingFunction:(id)arg4;
+- (void)stopScalingWithDuration:(double)arg1;
 
 @end
 

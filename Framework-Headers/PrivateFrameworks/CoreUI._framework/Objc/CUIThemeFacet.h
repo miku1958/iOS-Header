@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUI/CUIThemeImageSource-Protocol.h>
 #import <CoreUI/NSCoding-Protocol.h>
@@ -12,7 +12,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CUIThemeFacet : NSObject <CUIThemeImageSource, NSCopying, NSCoding>
 {
     struct _renditionkeytoken *_renditionKeyList;
@@ -87,7 +86,7 @@ __attribute__((visibility("hidden")))
 - (void)drawAbsoluteAnimationFrame:(double)arg1 destinationFrame:(struct CGRect)arg2 isFocused:(int)arg3 context:(struct CGContext *)arg4;
 - (void)drawAnimationFrameMappedFrom0_1RangedValue:(double)arg1 destinationFrame:(struct CGRect)arg2 isFocused:(int)arg3 context:(struct CGContext *)arg4;
 - (void)drawAsOnePartWithSlice:(int)arg1 inFrame:(struct CGRect)arg2 isFocused:(int)arg3 context:(struct CGContext *)arg4 effects:(id)arg5;
-- (void)drawGradientInFrame:(struct CGRect)arg1 angle:(double)arg2 alpha:(double)arg3 operation:(int)arg4 isFocused:(int)arg5 keyAdjustment:(id)arg6 context:(struct CGContext *)arg7;
+- (void)drawGradientInFrame:(struct CGRect)arg1 angle:(double)arg2 alpha:(double)arg3 operation:(int)arg4 isFocused:(int)arg5 keyAdjustment:(id)arg6 context:(struct CGContext *)arg7 effects:(id)arg8;
 - (void)drawHighlightInFrame:(struct CGRect)arg1 alpha:(double)arg2 keyAdjustment:(id)arg3 context:(struct CGContext *)arg4;
 - (void)drawHighlightInFrame:(struct CGRect)arg1 alpha:(double)arg2 operation:(int)arg3 keyAdjustment:(id)arg4 context:(struct CGContext *)arg5;
 - (void)drawHighlightInFrame:(struct CGRect)arg1 alpha:(double)arg2 operation:(int)arg3 owner:(id)arg4 userInfo:(id)arg5 context:(struct CGContext *)arg6;
@@ -134,6 +133,7 @@ __attribute__((visibility("hidden")))
 - (id)makeLayer;
 - (id)maskForSlice:(long long)arg1 withKeyAdjustment:(id)arg2;
 - (id)maskWithSize:(struct CGSize)arg1 keyAdjustment:(id)arg2;
+- (id)properties;
 - (id)renditionForSpecificKeyWrapper:(id)arg1;
 - (id)renditionKey;
 - (id)renditionMetricsWithKeyAdjustment:(id)arg1;

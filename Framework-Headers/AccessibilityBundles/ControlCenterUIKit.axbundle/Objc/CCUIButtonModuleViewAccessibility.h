@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (unsigned long long)_accesibilityRawTraits;
 - (id)accessibilityCustomActions;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 

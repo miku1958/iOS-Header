@@ -83,6 +83,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFelicaAppletState:(id)arg1 paymentApplication:(id)arg2;
 - (id)initWithTransitAppletState:(id)arg1 paymentApplication:(id)arg2;
+- (BOOL)isInStation;
 
 @end
 

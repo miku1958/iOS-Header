@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CellularPlanManager/NSCopying-Protocol.h>
 #import <CellularPlanManager/NSSecureCoding-Protocol.h>
@@ -14,6 +14,7 @@
 @interface CTCellularPlan : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _isHomePlan;
+    BOOL _requiresUserConsent;
     NSString *_phoneNumber;
     CTCellularPlanProfile *_profile;
     CTCellularPlanSubscription *_subscription;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) int planType;
 @property (strong, nonatomic) CTCellularPlanProfile *profile; // @synthesize profile=_profile;
 @property (readonly, nonatomic) NSData *profileId;
+@property (nonatomic) BOOL requiresUserConsent; // @synthesize requiresUserConsent=_requiresUserConsent;
 @property (readonly, nonatomic) int status;
 @property (strong, nonatomic) CTCellularPlanSubscription *subscription; // @synthesize subscription=_subscription;
 @property (strong, nonatomic) NSNumber *subscriptionStatusOverride; // @synthesize subscriptionStatusOverride=_subscriptionStatusOverride;
@@ -53,6 +55,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProfile:(id)arg1 subscription:(id)arg2;
 - (long long)planDescriptionCompare:(id)arg1;
+- (id)statusAsString:(id)arg1;
 
 @end
 

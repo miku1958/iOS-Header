@@ -14,16 +14,20 @@
 {
     NSString *_deviceHwIdentifier;
     NSString *_deviceOsVersion;
+    BOOL _deviceDarkMode;
     BOOL _isInternalInstall;
     BOOL _isInternalTool;
     struct {
+        unsigned int deviceDarkMode:1;
         unsigned int isInternalInstall:1;
         unsigned int isInternalTool:1;
     } _has;
 }
 
+@property (nonatomic) BOOL deviceDarkMode; // @synthesize deviceDarkMode=_deviceDarkMode;
 @property (strong, nonatomic) NSString *deviceHwIdentifier; // @synthesize deviceHwIdentifier=_deviceHwIdentifier;
 @property (strong, nonatomic) NSString *deviceOsVersion; // @synthesize deviceOsVersion=_deviceOsVersion;
+@property (nonatomic) BOOL hasDeviceDarkMode;
 @property (readonly, nonatomic) BOOL hasDeviceHwIdentifier;
 @property (readonly, nonatomic) BOOL hasDeviceOsVersion;
 @property (nonatomic) BOOL hasIsInternalInstall;

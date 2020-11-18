@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class MPIdentifierSet, NSMutableDictionary;
+@class MPIdentifierSet, NSMutableDictionary, NSString;
 
 @interface MPModelObject : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     MPIdentifierSet *_identifiers;
 }
 
+@property (readonly, nonatomic) NSString *humanDescription;
 @property (readonly, copy, nonatomic) MPIdentifierSet *identifiers; // @synthesize identifiers=_identifiers;
 @property (readonly, nonatomic) struct MPLibraryAddStatusObserverConfiguration libraryAddStatusObserverConfiguration;
 @property (readonly, nonatomic) long long libraryRemovalSupportedOptions;

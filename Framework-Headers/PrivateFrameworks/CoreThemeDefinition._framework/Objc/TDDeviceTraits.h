@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreThemeDefinition/NSCopying-Protocol.h>
 
@@ -24,6 +24,7 @@
     long long _graphicsPerformanceClass;
     long long _graphicsFeatureSetClassValue;
     NSArray *_graphicsFeatureSetFallbackValues;
+    NSArray *_subtypeFallbackValues;
     long long _dynamicDisplayModeValue;
 }
 
@@ -45,6 +46,7 @@
 @property (nonatomic) long long memoryPerformanceClass; // @synthesize memoryPerformanceClass=_memoryPerformanceClass;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (nonatomic) long long subtype; // @synthesize subtype=_subtype;
+@property (strong, nonatomic) NSArray *subtypeFallbackValues; // @synthesize subtypeFallbackValues=_subtypeFallbackValues;
 
 - (long long)_deploymentTargetFromTraitString:(id)arg1;
 - (id)_deploymentTargetToTraitString:(long long)arg1;

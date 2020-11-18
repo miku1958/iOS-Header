@@ -18,7 +18,7 @@
 - (id)initWithInterfaceName:(id)arg1 andIPv6Address:(char *)arg2;
 - (id)initWithMatchingDictionary:(id)arg1;
 - (id)initWithService:(unsigned int)arg1;
-- (long long)portType;
+- (int)portType;
 
 @end
 

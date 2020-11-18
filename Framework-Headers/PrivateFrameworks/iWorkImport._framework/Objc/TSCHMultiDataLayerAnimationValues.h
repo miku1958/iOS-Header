@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CALayer, NSArray, NSString;
 
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 + (id)animationValuesWithLayer:(id)arg1 key:(id)arg2 values:(id)arg3;
 + (id)animationValuesWithLayer:(id)arg1 key:(id)arg2 values:(id)arg3 keyTimes:(id)arg4;
 + (id)animationValuesWithLayer:(id)arg1 key:(id)arg2 values:(id)arg3 keyTimes:(id)arg4 needPresentationLayerValues:(BOOL)arg5;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)initWithLayer:(id)arg1 key:(id)arg2 values:(id)arg3 keyTimes:(id)arg4 needPresentationLayerValues:(BOOL)arg5;
 

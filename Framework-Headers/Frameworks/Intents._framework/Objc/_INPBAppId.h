@@ -7,26 +7,28 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBAppId-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString;
 
-@interface _INPBAppId : PBCodable <NSCopying>
+@interface _INPBAppId : PBCodable <_INPBAppId, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     NSString *_bundleId;
 }
 
-@property (strong, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasBundleId;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

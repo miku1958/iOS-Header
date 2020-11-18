@@ -8,28 +8,32 @@
 
 #import <ConfigurationEngineModel/CEMRegisteredTypeProtocol-Protocol.h>
 
-@class NSDictionary, NSString;
+@class CEMAssetBaseDescriptor, NSString;
 
 @interface CEMApplicationAppStoreDeclaration : CEMAssetBase <CEMRegisteredTypeProtocol>
 {
+    CEMAssetBaseDescriptor *_payloadDescriptor;
+    NSString *_payloadBundleIdentifier;
+    NSString *_payloadITunesStoreID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadBundleIdentifier;
-@property (readonly, nonatomic) NSDictionary *payloadDescriptor;
-@property (readonly, nonatomic) NSString *payloadITunesStoreID;
+@property (copy, nonatomic) NSString *payloadBundleIdentifier; // @synthesize payloadBundleIdentifier=_payloadBundleIdentifier;
+@property (copy, nonatomic) CEMAssetBaseDescriptor *payloadDescriptor; // @synthesize payloadDescriptor=_payloadDescriptor;
+@property (copy, nonatomic) NSString *payloadITunesStoreID; // @synthesize payloadITunesStoreID=_payloadITunesStoreID;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withDescriptor:(id)arg2 withBundleIdentifier:(id)arg3 withITunesStoreID:(id)arg4;
++ (id)buildWithIdentifier:(id)arg1 withDescriptor:(id)arg2 withBundleIdentifier:(id)arg3 withITunesStoreID:(id)arg4;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

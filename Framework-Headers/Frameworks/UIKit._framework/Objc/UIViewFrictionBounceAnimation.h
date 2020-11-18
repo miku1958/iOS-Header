@@ -4,37 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIIntervalAnimating-Protocol.h>
+#import <UIKitCore/UIIntervalAnimating-Protocol.h>
 
 @class NSString;
+@protocol UIVectorOperatable;
 
 __attribute__((visibility("hidden")))
 @interface UIViewFrictionBounceAnimation : NSObject <UIIntervalAnimating>
 {
     id _stableTarget;
-    id _target;
     id _intermediate;
     id _current;
     double _deceleration;
     double _bounce;
-    CDUnknownBlockType _targetValueGetter;
+    id<UIVectorOperatable> _targetValue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) CDUnknownBlockType targetValueGetter; // @synthesize targetValueGetter=_targetValueGetter;
+@property (strong, nonatomic) id<UIVectorOperatable> targetValue; // @synthesize targetValue=_targetValue;
 
 - (void).cxx_destruct;
 - (id)initWithCurrent:(id)arg1 target:(id)arg2;
-- (id)initWithCurrent:(id)arg1 targetValueGetter:(CDUnknownBlockType)arg2;
 - (BOOL)isStable;
 - (void)setVelocity:(id)arg1;
 - (id)stepWithDelta:(double)arg1;
-- (id)targetValue;
 - (id)updatedTarget;
 - (id)velocity;
 

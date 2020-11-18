@@ -18,8 +18,10 @@
     int _state;
     BOOL _stepDone;
     NSError *_stepError;
+    unsigned int _repairFlags;
     int _wifiChannel;
     BOOL _wifiDirected;
+    BOOL _wifiHomeNetwork;
     NSString *_wifiPassword;
     NSData *_wifiPSK;
     NSString *_wifiSSID;

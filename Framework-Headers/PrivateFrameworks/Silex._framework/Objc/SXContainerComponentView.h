@@ -10,10 +10,12 @@
 #import <Silex/SXDragManagerDataSource-Protocol.h>
 
 @class NSArray, NSString, SXDragManager;
+@protocol SXMediaSharingPolicyProvider;
 
 @interface SXContainerComponentView : SXComponentView <SXDragManagerDataSource, SXComponentHosting>
 {
     NSArray *_componentViews;
+    id<SXMediaSharingPolicyProvider> _mediaSharingPolicyProvider;
     SXDragManager *_dragManager;
 }
 
@@ -22,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SXDragManager *dragManager; // @synthesize dragManager=_dragManager;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<SXMediaSharingPolicyProvider> mediaSharingPolicyProvider; // @synthesize mediaSharingPolicyProvider=_mediaSharingPolicyProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -33,6 +36,7 @@
 - (id)contentViewForBehavior:(id)arg1;
 - (void)didApplyBehavior:(id)arg1;
 - (id)dragManager:(id)arg1 dragableAtLocation:(struct CGPoint)arg2;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 mediaSharingPolicyProvider:(id)arg6;
 - (BOOL)isTransitionable;
 - (struct CGRect)originalFrameForContentView:(id)arg1 behavior:(id)arg2;
 - (void)prepareForTransitionType:(unsigned long long)arg1;
@@ -43,6 +47,7 @@
 - (id)transitionContentView;
 - (BOOL)transitionViewShouldFadeInContent;
 - (BOOL)transitionViewUsesThumbnail;
+- (BOOL)userInteractable;
 - (id)viewForDragManager:(id)arg1;
 
 @end

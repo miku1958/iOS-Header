@@ -37,6 +37,7 @@
 - (BOOL)isExecuting;
 - (BOOL)isFinished;
 - (void)performBlockAsPartOfRunningOperation:(CDUnknownBlockType)arg1;
+- (void)setNetworkBehaviorIsDiscretionary:(BOOL)arg1;
 - (void)start;
 
 @end

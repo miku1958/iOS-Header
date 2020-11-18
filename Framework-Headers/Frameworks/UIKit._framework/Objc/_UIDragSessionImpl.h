@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDragSession-Protocol.h>
-#import <UIKit/_UIDragDropSessionInternal-Protocol.h>
-#import <UIKit/_UIDraggingItemVisualTarget-Protocol.h>
-#import <UIKit/_UIDraggingSessionDelegate-Protocol.h>
+#import <UIKitCore/UIDragSession-Protocol.h>
+#import <UIKitCore/_UIDragDropSessionInternal-Protocol.h>
+#import <UIKitCore/_UIDraggingItemVisualTarget-Protocol.h>
+#import <UIKitCore/_UIDraggingSessionDelegate-Protocol.h>
 
 @class NSArray, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, UIDragInteraction, _UIDraggingSession, _UIInternalDraggingSessionSource;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCConnectionProtocol-Protocol.h>
 
@@ -19,15 +19,18 @@ __attribute__((visibility("hidden")))
     unsigned int _type;
     int _localCellTech;
     int _remoteCellTech;
-    int _cellularMTU;
+    int _connectionMTU;
+    unsigned int _uplinkBitrateCap;
+    unsigned int _downlinkBitrateCap;
 }
 
-@property int cellularMTU;
 @property (readonly) int connectionId;
+@property int connectionMTU;
 @property (readonly) NSUUID *connectionUUID;
 @property (readonly) unsigned int datagramChannelToken; // @synthesize datagramChannelToken=_datagramChannelToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property unsigned int downlinkBitrateCap; // @synthesize downlinkBitrateCap=_downlinkBitrateCap;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isIPv6;
 @property (readonly) BOOL isLocalOnCellular;
@@ -45,10 +48,14 @@ __attribute__((visibility("hidden")))
 @property int remoteCellTech;
 @property (readonly) int remoteConnectionType;
 @property (readonly) NSString *remoteInterfaceTypeString;
+@property (readonly) BOOL serverIsDegraded;
 @property (readonly) NSData *sharedDigestKey;
 @property (readonly) Class superclass;
 @property (readonly) unsigned int type; // @synthesize type=_type;
+@property unsigned int uplinkBitrateCap; // @synthesize uplinkBitrateCap=_uplinkBitrateCap;
 
++ (unsigned int)worstCaseNetworkOverheadInBytesWithNumOfStreamId:(int)arg1 isPriorityIncluded:(BOOL)arg2;
+- (id)connectionQRSessionID;
 - (void)dealloc;
 - (void)getSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (id)initWithLinkContext:(id)arg1 dataChannelToken:(unsigned int)arg2;
@@ -56,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSameAsConnection:(id)arg1;
 - (BOOL)matchesChannelTokenWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (BOOL)matchesSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
+- (int)networkOverheadInBytesWithNumOfStreamId:(int)arg1 isPriorityIncluded:(BOOL)arg2;
+- (void)setCellularMTU:(int)arg1;
 
 @end
 

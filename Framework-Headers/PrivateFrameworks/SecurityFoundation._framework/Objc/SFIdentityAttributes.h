@@ -24,6 +24,7 @@
 @property (readonly, copy, nonatomic) _SFAsymmetricKeySpecifier *keySpecifier;
 @property (copy, nonatomic) NSString *localizedDescription;
 @property (copy, nonatomic) NSString *localizedLabel;
+@property (readonly, copy, nonatomic) NSString *persistentIdentifier;
 @property (readonly, copy, nonatomic) NSString *privateKeyDomain; // @synthesize privateKeyDomain=_privateKeyDomain;
 @property (readonly) Class superclass;
 

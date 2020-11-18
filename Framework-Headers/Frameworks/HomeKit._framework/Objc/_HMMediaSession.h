@@ -9,11 +9,12 @@
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 
-@class NSString, NSUUID, _HMContext;
+@class HMFUnfairLock, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue, _HMMediaSessionDelegate;
 
 @interface _HMMediaSession : NSObject <HMFMessageReceiver, HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     NSUUID *_uuid;
     NSString *_routeUID;
     long long _playbackState;
@@ -21,10 +22,8 @@
     NSUUID *_uniqueIdentifier;
     NSUUID *_messageTargetUUID;
     id<_HMMediaSessionDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_HMMediaSessionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -33,7 +32,6 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (strong, nonatomic) NSUUID *messageTargetUUID; // @synthesize messageTargetUUID=_messageTargetUUID;
 @property (readonly) long long playbackState; // @synthesize playbackState=_playbackState;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -47,7 +45,6 @@
 - (void)_notifyDelegateOfUpdatedRouteUID:(id)arg1;
 - (void)_registerNotificationHandlers;
 - (void)_updatePlaybackState:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)delegateCaller;
 - (id)initWithUUID:(id)arg1 routeUID:(id)arg2 playbackState:(long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)messageDestination;

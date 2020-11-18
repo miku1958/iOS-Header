@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSError, NSMutableArray, NSString, NSURL;
+@class CKAssetDownloadPreauthorization, NSArray, NSData, NSError, NSMutableArray, NSString, NSURL;
 @protocol MMCSOperationMetric;
 
 __attribute__((visibility("hidden")))
@@ -23,13 +23,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSData *authPutRequest; // @synthesize authPutRequest=_authPutRequest;
 @property (nonatomic) BOOL complete; // @synthesize complete=_complete;
 @property (readonly, nonatomic) NSURL *contentBaseURL;
+@property (readonly, nonatomic) CKAssetDownloadPreauthorization *downloadPreauthorization;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (strong, nonatomic) id<MMCSOperationMetric> metrics; // @synthesize metrics=_metrics;
 @property (readonly, nonatomic) NSString *owner;
 @property (readonly, nonatomic) NSString *requestor;
 @property (strong, nonatomic) NSArray *tuple; // @synthesize tuple=_tuple;
-@property (readonly, nonatomic) BOOL usePerItemAuthRequests;
 
 + (id)tupleForItem:(id)arg1;
 - (void).cxx_destruct;

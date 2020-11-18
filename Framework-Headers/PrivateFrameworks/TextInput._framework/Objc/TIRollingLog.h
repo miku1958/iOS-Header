@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 
@@ -20,10 +20,10 @@
 
 @property (readonly, nonatomic) NSArray *currentEntries;
 
+- (void).cxx_destruct;
 - (void)addEntries:(id)arg1;
 - (void)addEntry:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)initWithMaxCount:(unsigned long long)arg1;
 
 @end

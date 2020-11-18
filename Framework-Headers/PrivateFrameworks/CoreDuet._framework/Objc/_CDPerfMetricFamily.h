@@ -10,28 +10,20 @@
 
 @interface _CDPerfMetricFamily : NSObject
 {
-    char _region_path[31];
     NSString *_name;
     NSMutableDictionary *_perfMetrics;
-    struct cdpm_shared_memory_region_s *_sharedMemoryRegion;
 }
 
-@property (readonly, nonatomic) NSString *bundleIdentifier;
-@property (readonly, nonatomic) NSString *identifier;
 @property (readonly) NSString *name; // @synthesize name=_name;
 @property (readonly) NSMutableDictionary *perfMetrics; // @synthesize perfMetrics=_perfMetrics;
-@property (readonly, nonatomic) NSString *process;
-@property (readonly) struct cdpm_shared_memory_region_s *sharedMemoryRegion; // @synthesize sharedMemoryRegion=_sharedMemoryRegion;
 
-+ (id)allPerfMetricFamilies;
-+ (id)defaultPerfMetricFamily;
-+ (id)perfMetricFamilyWithRegionPath:(id)arg1 name:(id)arg2;
-+ (id)regionPathForIdentifier:(id)arg1 signingIdentifier:(id)arg2;
++ (id)perfMetricFamilyWithName:(id)arg1;
 - (void).cxx_destruct;
 - (id)allPerfMetrics;
 - (id)description;
-- (id)initWithRegionPath:(id)arg1 name:(id)arg2;
-- (id)perfMetricWithName:(id)arg1 userInfo:(id)arg2;
+- (id)initWithName:(id)arg1;
+- (id)perfMetricWithName:(id)arg1;
+- (id)perfMetricWithName:(id)arg1 string:(id)arg2;
 
 @end
 

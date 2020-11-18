@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -20,6 +20,7 @@
 @property BOOL visible; // @synthesize visible=_visible;
 
 - (void)addLayerEffectComponent:(id)arg1;
+- (id)colorOverlay;
 - (void)dealloc;
 - (id)dropShadow;
 - (id)init;

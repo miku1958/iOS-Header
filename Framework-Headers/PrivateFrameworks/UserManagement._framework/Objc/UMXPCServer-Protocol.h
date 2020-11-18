@@ -13,8 +13,11 @@
 - (void)addUserSwitchBlockingTask:(NSDictionary *)arg1 forPID:(int)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)addUserSyncTask:(NSDictionary *)arg1 forPID:(int)arg2;
 - (void)addUserSyncTask:(NSDictionary *)arg1 forPID:(int)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)directSwitchToUser:(NSDictionary *)arg1 passcodeData:(NSData *)arg2 context:(NSData *)arg3 preferences:(NSDictionary *)arg4 pid:(int)arg5 completionHandler:(void (^)(NSError *))arg6;
 - (void)fetchUserSwitchBlockingTaskListWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)loginComplete;
+- (void)loginUICheckinForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)logoutToLoginSessionWithPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)reengageUserQuotaForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)registerCriticalUserSwitchStakeholderForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)registerUserSwitchStakeholderForPID:(int)arg1 completionHandler:(void (^)(NSError *))arg2;

@@ -29,9 +29,9 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSData *provisioningPostData; // @synthesize provisioningPostData=_provisioningPostData;
+@property (copy, nonatomic) NSData *provisioningPostData; // @synthesize provisioningPostData=_provisioningPostData;
 @property (nonatomic) int provisioningStatus; // @synthesize provisioningStatus=_provisioningStatus;
-@property (strong, nonatomic) NSURL *provisioningURL; // @synthesize provisioningURL=_provisioningURL;
+@property (copy, nonatomic) NSURL *provisioningURL; // @synthesize provisioningURL=_provisioningURL;
 @property (readonly, nonatomic, getter=isProvisioningURLInvalid) BOOL provisioningURLInvalid;
 @property (nonatomic, getter=isRoamingEnabled) BOOL roamingEnabled; // @synthesize roamingEnabled=_roamingEnabled;
 @property (readonly) Class superclass;

@@ -8,8 +8,7 @@
 
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, NSString, NTKUpNextElementContent, UIImage, UIImageView, UILongPressGestureRecognizer, UIView;
-@protocol NTKUpNextCellDelegate;
+@class CALayer, CLKDevice, NSHashTable, NSString, REContent, UIImage, UIImageView, UIView;
 
 @interface NTKUpNextBaseCell : UICollectionViewCell <UIGestureRecognizerDelegate>
 {
@@ -17,40 +16,46 @@
     UIImageView *_shadowView;
     CALayer *_imageLayer;
     UIView *_overlayView;
-    UILongPressGestureRecognizer *_longPressRecognizer;
     double _darkeningAmount;
     double _contentBrightness;
-    NTKUpNextElementContent *_content;
+    REContent *_content;
+    NSHashTable *_layerProviders;
+    BOOL _paused;
+    CLKDevice *_device;
     UIImage *_contentImage;
-    id<NTKUpNextCellDelegate> _delegate;
     UIImage *_overrideContentImage;
     NSString *_representedElementIdentifier;
 }
 
-@property (readonly, nonatomic) NTKUpNextElementContent *content; // @synthesize content=_content;
+@property (readonly, nonatomic) REContent *content; // @synthesize content=_content;
 @property (readonly, nonatomic) UIImage *contentImage; // @synthesize contentImage=_contentImage;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<NTKUpNextCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CALayer *imageLayer; // @synthesize imageLayer=_imageLayer;
 @property (strong, nonatomic) UIImage *overrideContentImage; // @synthesize overrideContentImage=_overrideContentImage;
+@property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property (strong, nonatomic) NSString *representedElementIdentifier; // @synthesize representedElementIdentifier=_representedElementIdentifier;
 @property (readonly) Class superclass;
 
-+ (void)initialize;
++ (void)clearLabel:(id)arg1;
++ (struct CGSize)suggestedBodyImageSizeForDevice:(id)arg1;
++ (struct CGSize)suggestedHeaderImageSizeForDevice:(id)arg1;
 - (void).cxx_destruct;
 - (void)_updateColorOverlay;
+- (void)addContentsLayerProvider:(id)arg1;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)configureWithContent:(id)arg1;
-- (void)didLongPress:(id)arg1;
+- (void)enumerateContentsLayersWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)removeContentsLayerProvider:(id)arg1;
 - (void)setContentBrightness:(double)arg1 animated:(BOOL)arg2;
 - (void)setContentImage:(id)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1;
-- (id)transitionContext;
+- (id)transitionContextInView:(id)arg1;
 
 @end
 

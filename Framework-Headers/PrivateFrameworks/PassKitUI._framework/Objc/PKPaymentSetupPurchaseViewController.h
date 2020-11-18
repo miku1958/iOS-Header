@@ -14,7 +14,7 @@
 #import <PassKitUI/PKPaymentSetupViewControllerDelegate-Protocol.h>
 #import <PassKitUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class NSDecimalNumber, NSString, PKPaymentAuthorizationCoordinator, PKPaymentProvisioningController, PKPaymentProvisioningMethodMetadata, PKPaymentSetupProduct, PKPaymentSetupPurchaseAmountView, PKPaymentSetupPurchaseController, PKServiceProviderPurchase, RemoteUIController, UIImage, UIImageView, UILabel;
+@class NSDecimalNumber, NSString, PKPaymentAuthorizationCoordinator, PKPaymentProvisioningController, PKPaymentProvisioningMethodMetadata, PKPaymentSetupProduct, PKPaymentSetupPurchaseAmountView, PKPaymentSetupPurchaseController, PKServiceProviderPurchase, RemoteUIController, UIActivityIndicatorView, UIImage, UIImageView, UILabel;
 @protocol PKPaymentSetupViewControllerDelegate;
 
 @interface PKPaymentSetupPurchaseViewController : UIViewController <PKPaymentSetupPurchaseAmountViewDelegate, PKPaymentAuthorizationCoordinatorDelegate, PKPaymentAuthorizationCoordinatorPrivateDelegate, PKPaymentSetupViewControllerDelegate, RemoteUIControllerDelegate, PKPaymentSetupDelegate, PKPaymentSetupRequiresPreflightProtocol>
@@ -35,9 +35,11 @@
     PKServiceProviderPurchase *_purchase;
     RemoteUIController *_termsController;
     UIImage *_cardImage;
+    UIActivityIndicatorView *_activityIndicator;
 }
 
 @property (nonatomic) BOOL acceptedTerms; // @synthesize acceptedTerms=_acceptedTerms;
+@property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (strong, nonatomic) PKPaymentSetupPurchaseAmountView *amountView; // @synthesize amountView=_amountView;
 @property (strong, nonatomic) PKPaymentAuthorizationCoordinator *authorizationCoordinator; // @synthesize authorizationCoordinator=_authorizationCoordinator;
 @property (strong, nonatomic) UIImage *cardImage; // @synthesize cardImage=_cardImage;

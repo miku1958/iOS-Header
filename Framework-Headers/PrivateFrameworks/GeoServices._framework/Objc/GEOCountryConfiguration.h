@@ -9,22 +9,21 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/_GEOCountryConfigurationServerProxyDelegate-Protocol.h>
 
-@class NSLock, NSMutableArray, NSMutableDictionary, NSString;
-@protocol _GEOCountryConfigurationServerProxy;
+@class NSMutableArray, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue, _GEOCountryConfigurationServerProxy;
 
 @interface GEOCountryConfiguration : NSObject <GEOResourceManifestTileGroupObserver, _GEOCountryConfigurationServerProxyDelegate>
 {
+    NSObject<OS_dispatch_queue> *_isolationQueue;
     NSString *_countryCode;
-    NSLock *_countryCodeLock;
     NSMutableArray *_updateCompletionHandlers;
-    NSLock *_supportedFeaturesLock;
     NSMutableDictionary *_supportedFeatures;
     double _urlAuthenticationTimeToLive;
     BOOL _hasURLAuthenticationTimeToLive;
     id<_GEOCountryConfigurationServerProxy> _serverProxy;
 }
 
-@property (copy, nonatomic) NSString *countryCode;
+@property (readonly, copy, nonatomic) NSString *countryCode;
 @property (readonly, nonatomic) BOOL currentCountrySupportsCarIntegration;
 @property (readonly, nonatomic) BOOL currentCountrySupportsCommute;
 @property (readonly, nonatomic) BOOL currentCountrySupportsDirections;
@@ -41,15 +40,18 @@
 + (void)setUseLocalProxy:(BOOL)arg1;
 + (id)sharedConfiguration;
 - (void).cxx_destruct;
-- (id)_countryDefaultForKey:(id)arg1 inCountry:(id)arg2 sourcePtr:(long long *)arg3;
-- (id)_defaultForKey:(id)arg1 inCountry:(id)arg2 defaultValue:(id)arg3 sourcePtr:(long long *)arg4;
+- (id)_countryCodeOnIsolationQueue;
+- (id)_countryDefaultForKey:(id)arg1 inCountry:(id)arg2 sourcePtr:(long long *)arg3 decoder:(CDUnknownBlockType)arg4;
+- (id)_defaultForKey:(id)arg1 inCountry:(id)arg2 defaultValue:(id)arg3 sourcePtr:(long long *)arg4 decoder:(CDUnknownBlockType)arg5;
 - (void)_resetSupportedFeatures;
 - (void)_updateCountryConfiguration:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;
 - (BOOL)countryCode:(id)arg1 supportsFeature:(long long)arg2;
 - (BOOL)currentCountrySupportsFeature:(long long)arg1;
 - (void)dealloc;
 - (id)defaultForKey:(id)arg1 defaultValue:(id)arg2;
+- (id)defaultForKey:(id)arg1 defaultValue:(id)arg2 decoder:(CDUnknownBlockType)arg3;
 - (id)defaultForKey:(id)arg1 defaultValue:(id)arg2 sourcePtr:(long long *)arg3;
+- (id)defaultForKey:(id)arg1 defaultValue:(id)arg2 sourcePtr:(long long *)arg3 decoder:(CDUnknownBlockType)arg4;
 - (id)init;
 - (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;

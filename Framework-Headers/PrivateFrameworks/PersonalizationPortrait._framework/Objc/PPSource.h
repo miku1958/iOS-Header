@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <ProactiveSupport/_PASZonedObject.h>
 
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
+#import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
 
-@interface PPSource : NSObject <NSCopying>
+@interface PPSource : _PASZonedObject <NSCopying, NSSecureCoding>
 {
     NSString *_bundleId;
     NSString *_groupId;
@@ -23,11 +24,13 @@
 @property (readonly, nonatomic) NSString *documentId; // @synthesize documentId=_documentId;
 @property (readonly, nonatomic) NSString *groupId; // @synthesize groupId=_groupId;
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithBundleId:(id)arg1 groupId:(id)arg2 documentId:(id)arg3 date:(id)arg4;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSource:(id)arg1;
 

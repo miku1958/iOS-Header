@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIViewCubicTimingFunction : NSObject <NSCoding, NSCopying>
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithControlPoint1:(struct CGPoint)arg1 controlPoint2:(struct CGPoint)arg2;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

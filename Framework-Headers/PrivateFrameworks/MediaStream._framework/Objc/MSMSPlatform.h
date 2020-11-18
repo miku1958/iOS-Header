@@ -8,14 +8,16 @@
 
 #import <MediaStream/MSPlatform-Protocol.h>
 
-@class NSData, NSString;
+@class ACAccountStore, NSData, NSString;
 
 @interface MSMSPlatform : NSObject <MSPlatform>
 {
     BOOL _isPerfLoggingEnabled;
     NSData *_pushToken;
+    ACAccountStore *_accountStore;
 }
 
+@property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

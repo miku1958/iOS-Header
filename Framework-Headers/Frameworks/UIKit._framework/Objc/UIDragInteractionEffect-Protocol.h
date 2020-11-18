@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInteractionEffect-Protocol.h>
+#import <UIKitCore/UIInteractionEffect-Protocol.h>
 
 @class UIDragInteraction;
 @protocol UIDragInteractionContext;

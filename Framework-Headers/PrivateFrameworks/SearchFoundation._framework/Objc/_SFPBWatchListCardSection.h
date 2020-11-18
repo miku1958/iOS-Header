@@ -13,7 +13,6 @@
 
 @interface _SFPBWatchListCardSection : PBCodable <_SFPBWatchListCardSection, NSSecureCoding>
 {
-    CDStruct_5ff9a38c _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -30,17 +29,8 @@
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasWatchListItem;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;

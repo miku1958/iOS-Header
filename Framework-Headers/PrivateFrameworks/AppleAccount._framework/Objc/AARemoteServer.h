@@ -6,25 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class AAURLSession;
+@class AARemoteServerConfigurationCache, AAURLSession;
+@protocol OS_dispatch_queue;
 
 @interface AARemoteServer : NSObject
 {
+    struct os_unfair_lock_s _configurationLock;
+    NSObject<OS_dispatch_queue> *_configurationQueue;
+    AARemoteServerConfigurationCache *_configurationCache;
     AAURLSession *_session;
+    AAURLSession *_signingSession;
 }
 
-+ (id)newSigningSessionWithError:(id *)arg1;
-+ (id)sharedSession;
+@property (strong, nonatomic) AAURLSession *session; // @synthesize session=_session;
+@property (strong, nonatomic) AAURLSession *signingSession; // @synthesize signingSession=_signingSession;
+
++ (id)sharedServer;
 - (void).cxx_destruct;
 - (id)_bodyDictionaryWithProtocolVersion:(id)arg1;
-- (void)_fetchServerConfigWithContext:(long long)arg1 cachePolicy:(long long)arg2 responseClass:(Class)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_configurationAndResponseWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_configurationCacheInvalidatingIfNecessary;
+- (id)_configurationLock_configurationCacheInvalidatingIfNecessary;
+- (void)_fetchConfigurationAndResponseWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_newURLRequestWithURLString:(id)arg1;
 - (id)_redactedBodyStringWithPropertyList:(id)arg1;
 - (id)_redactedHeadersFromHTTPHeaders:(id)arg1;
+- (void)_setConfigurationCache:(id)arg1;
 - (void)_startRequest:(id)arg1 responseClass:(Class)arg2 mainThread:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)authenticateAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchServerConfigForBuddyWithCachePolicy:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchServerConfigForSettingsWithCachePolicy:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)configurationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)loginDelegates:(id)arg1 parameters:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerAccount:(id)arg1 withHSA:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -16,6 +16,7 @@
     BOOL _supportsAutomaticSelection;
     BOOL _hasAssociatedPeerPaymentAccount;
     NSString *_passIdentifier;
+    NSString *_organizationName;
     NSData *_manifestHash;
     NSString *_displayName;
     NSString *_primaryAccountNumberSuffix;
@@ -35,6 +36,7 @@
 @property (strong, nonatomic) NSDate *ingestedDate; // @synthesize ingestedDate=_ingestedDate;
 @property (copy, nonatomic) NSString *issuerCountryCode; // @synthesize issuerCountryCode=_issuerCountryCode;
 @property (copy, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
+@property (copy, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
 @property (copy, nonatomic) NSString *passIdentifier; // @synthesize passIdentifier=_passIdentifier;
 @property (strong, nonatomic) NSArray *paymentApplications; // @synthesize paymentApplications=_paymentApplications;
 @property (strong, nonatomic) PKCurrencyAmount *peerPaymentAccountBalance; // @synthesize peerPaymentAccountBalance=_peerPaymentAccountBalance;
@@ -58,6 +60,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRemotePaymentInstrument:(id)arg1;
 - (id)protobuf;
+- (id)sortedPaymentApplications:(id)arg1 ascending:(BOOL)arg2;
 
 @end
 

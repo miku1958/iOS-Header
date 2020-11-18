@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCRedundancyControlAlgorithm-Protocol.h>
 
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)computeRedundancyInfo;
 - (id)init;
 - (unsigned int)updateRedundancyPercentageWithPLRThresholds:(unsigned int *)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_5cb394a5)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_48a7b5a5)arg1;
 
 @end
 

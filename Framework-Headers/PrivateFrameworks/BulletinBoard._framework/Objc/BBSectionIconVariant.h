@@ -19,8 +19,10 @@
     NSString *_imagePath;
     NSString *_imageName;
     NSString *_bundlePath;
+    NSString *_applicationIdentifier;
 }
 
+@property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property (nonatomic) long long format; // @synthesize format=_format;
 @property (copy, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;

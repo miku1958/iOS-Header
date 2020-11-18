@@ -4,38 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSError, NSNumber, NSString, NSURL, SKPaymentTransaction;
 
 @interface SKDownload : NSObject
 {
-    NSString *_contentIdentifier;
-    long long _contentLength;
-    NSURL *_contentURL;
-    NSNumber *_downloadID;
-    long long _downloadState;
-    NSError *_error;
-    float _progress;
-    double _timeRemaining;
-    SKPaymentTransaction *_transaction;
-    NSString *_version;
+    id _internal;
 }
 
-@property (copy, nonatomic, getter=_downloadID, setter=_setDownloadID:) NSNumber *_downloadID; // @synthesize _downloadID;
-@property (readonly, nonatomic) NSString *contentIdentifier; // @synthesize contentIdentifier=_contentIdentifier;
-@property (readonly, nonatomic) long long contentLength; // @synthesize contentLength=_contentLength;
-@property (readonly, nonatomic) NSURL *contentURL; // @synthesize contentURL=_contentURL;
-@property (readonly, nonatomic) NSString *contentVersion; // @synthesize contentVersion=_version;
-@property (readonly, nonatomic) long long downloadState; // @synthesize downloadState=_downloadState;
-@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
-@property (readonly, nonatomic) float progress; // @synthesize progress=_progress;
-@property (readonly, nonatomic) double timeRemaining; // @synthesize timeRemaining=_timeRemaining;
-@property (readonly, nonatomic) SKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
+@property (copy, nonatomic, getter=_downloadID, setter=_setDownloadID:) NSNumber *_downloadID;
+@property (readonly, nonatomic) NSString *contentIdentifier;
+@property (readonly, nonatomic) long long contentLength;
+@property (readonly, nonatomic) NSURL *contentURL;
+@property (readonly, nonatomic) NSString *contentVersion;
+@property (readonly, nonatomic) long long downloadState;
+@property (readonly, nonatomic) NSError *error;
+@property (readonly, nonatomic) float progress;
+@property (readonly, nonatomic) long long state;
+@property (readonly, nonatomic) double timeRemaining;
+@property (readonly, nonatomic) SKPaymentTransaction *transaction;
 
++ (id)contentURLForProductID:(id)arg1;
++ (void)deleteContentForProductID:(id)arg1;
+- (void).cxx_destruct;
 - (void)_applyChangeset:(id)arg1;
 - (void)_setContentIdentifier:(id)arg1;
-- (void)_setContentLength:(long long)arg1;
+- (void)_setContentLength:(id)arg1;
 - (void)_setContentURL:(id)arg1;
 - (void)_setDownloadState:(long long)arg1;
 - (void)_setError:(id)arg1;
@@ -44,9 +39,9 @@
 - (void)_setTransaction:(id)arg1;
 - (void)_setVersion:(id)arg1;
 - (id)copyXPCEncoding;
-- (void)dealloc;
 - (id)init;
 - (id)initWithXPCEncoding:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

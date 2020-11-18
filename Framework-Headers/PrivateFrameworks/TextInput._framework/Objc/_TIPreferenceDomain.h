@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -24,7 +24,7 @@
 @property (strong, nonatomic) NSString *notification; // @synthesize notification=_notification;
 
 + (id)domainWithName:(id)arg1 notification:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

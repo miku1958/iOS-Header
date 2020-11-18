@@ -26,6 +26,7 @@
 - (void)setScriptContextDictionary:(NSDictionary *)arg1;
 - (void)setShowsRightBarButton:(BOOL)arg1;
 - (void)setShowsStoreButton:(BOOL)arg1;
+- (void)setVisibleInClientWindow:(NSNumber *)arg1;
 - (void)setupWithClientBundleID:(NSString *)arg1 bagType:(long long)arg2;
 @end
 

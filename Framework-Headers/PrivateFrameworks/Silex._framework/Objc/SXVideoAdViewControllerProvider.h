@@ -9,9 +9,11 @@
 #import <Silex/SXVideoAdViewControllerProviding-Protocol.h>
 
 @class NSString, UIViewController;
+@protocol SXVideoAdViewControllerProviding;
 
 @interface SXVideoAdViewControllerProvider : NSObject <SXVideoAdViewControllerProviding>
 {
+    id<SXVideoAdViewControllerProviding> _viewControllerProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -19,7 +21,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIViewController *viewControllerForModalPresentation;
+@property (readonly, weak, nonatomic) id<SXVideoAdViewControllerProviding> viewControllerProvider; // @synthesize viewControllerProvider=_viewControllerProvider;
 
+- (void).cxx_destruct;
+- (id)initWithViewControllerProvider:(id)arg1;
 
 @end
 

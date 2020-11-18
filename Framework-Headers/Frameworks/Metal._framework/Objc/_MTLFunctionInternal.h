@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     struct MTLFunctionData _functionData;
     unsigned char _publicMetadataInitialized;
     unsigned char _privateMetadataInitialized;
+    unsigned char _sourceArchiveMetadataInitialized;
     struct MTLProgramObject *_programObject;
     NSString *_filePath;
     long long _lineNumber;
@@ -34,22 +35,28 @@ __attribute__((visibility("hidden")))
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 libraryData:(struct MTLLibraryData *)arg3 functionData:(struct MTLFunctionData *)arg4 device:(id)arg5;
 - (void)initializePrivateMetadata;
 - (void)initializePublicMetadata;
+- (void)initializeSourceArchive;
 - (long long)lineNumber;
 - (BOOL)needsFunctionConstantValues;
-- (void)newSpecializedFunctionWithConstants:(id)arg1 functionCache:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)newSpecializedFunctionWithConstants:(id)arg1 functionCache:(id)arg2 error:(id *)arg3;
+- (id)newSpecializedFunctionWithRequestType:(int)arg1 llvmTargetVersion:(unsigned int)arg2 constants:(id)arg3 functionCache:(id)arg4 error:(id *)arg5;
+- (void)newSpecializedFunctionWithRequestType:(int)arg1 llvmTargetVersion:(unsigned int)arg2 constants:(id)arg3 functionCache:(id)arg4 sync:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (long long)patchControlPointCount;
 - (unsigned long long)patchType;
 - (struct MTLProgramObject *)programObject;
+- (unsigned long long)renderTargetArrayIndexType;
 - (id)returnType;
 - (void)setArguments:(id)arg1;
 - (void)setFilePath:(id)arg1;
 - (void)setFunctionConstants:(id)arg1;
 - (void)setLineNumber:(long long)arg1;
 - (void)setReturnType:(id)arg1;
+- (void)setSourceArchiveOffset:(unsigned long long)arg1;
 - (void)setStageInputAttributes:(id)arg1;
+- (void)setUnpackedFilePath:(id)arg1;
 - (void)setVertexAttributes:(id)arg1;
+- (unsigned long long)sourceArchiveOffset;
 - (id)stageInputAttributes;
+- (id)unpackedFilePath;
 - (id)vertexAttributes;
 
 @end

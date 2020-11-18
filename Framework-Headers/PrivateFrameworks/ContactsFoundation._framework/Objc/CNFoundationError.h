@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CNFoundationError : NSObject
 {
 }
 
++ (id)errorWithCode:(unsigned long long)arg1 underlyingError:(id)arg2;
 + (id)errorWithCode:(unsigned long long)arg1 userInfo:(id)arg2;
 + (id)errorWithErrno;
 + (id)errorWithErrno:(int)arg1;

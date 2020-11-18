@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBFormattedText, _SFPBPunchout, _SFPBTableAlignmentSchema;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBFormattedText, _SFPBPunchout, _SFPBRichText, _SFPBTableAlignmentSchema;
 
 @protocol _SFPBTableRowCardSection <NSObject>
 
@@ -15,29 +15,15 @@
 @property (strong, nonatomic) _SFPBColor *backgroundColor;
 @property (nonatomic) BOOL canBeHidden;
 @property (copy, nonatomic) NSArray *datas;
-@property (readonly, nonatomic) BOOL hasAlignRowsToHeader;
-@property (readonly, nonatomic) BOOL hasAlignmentSchema;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasIsSubHeader;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasReducedRowHeight;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasTabGroupIdentifier;
-@property (readonly, nonatomic) BOOL hasTableIdentifier;
 @property (nonatomic) BOOL hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasVerticalAlign;
 @property (nonatomic) BOOL isSubHeader;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
 @property (nonatomic) BOOL reducedRowHeight;
+@property (copy, nonatomic) NSArray *richDatas;
 @property (nonatomic) int separatorStyle;
 @property (copy, nonatomic) NSString *tabGroupIdentifier;
 @property (copy, nonatomic) NSString *tableIdentifier;
@@ -46,13 +32,17 @@
 
 - (void)addData:(_SFPBFormattedText *)arg1;
 - (void)addPunchoutOptions:(_SFPBPunchout *)arg1;
+- (void)addRichData:(_SFPBRichText *)arg1;
 - (void)clearData;
 - (void)clearPunchoutOptions;
+- (void)clearRichData;
 - (_SFPBFormattedText *)dataAtIndex:(unsigned long long)arg1;
 - (unsigned long long)dataCount;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
 - (_SFPBPunchout *)punchoutOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)punchoutOptionsCount;
+- (_SFPBRichText *)richDataAtIndex:(unsigned long long)arg1;
+- (unsigned long long)richDataCount;
 @end
 

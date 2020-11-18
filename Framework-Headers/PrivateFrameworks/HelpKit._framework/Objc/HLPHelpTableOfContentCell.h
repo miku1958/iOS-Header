@@ -6,15 +6,15 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class HLPHelpItem, HLPURLSession, NSLayoutConstraint, UIImageView, UILabel;
+@class HLPHelpItem, NSLayoutConstraint, TPSURLSessionItem, UIImageView, UILabel;
 
 @interface HLPHelpTableOfContentCell : UITableViewCell
 {
-    HLPURLSession *_sectionImageURLSession;
     NSLayoutConstraint *_arrowImageViewLeadingConstraint;
     NSLayoutConstraint *_arrowImageViewWidthConstraint;
     NSLayoutConstraint *_sectionImageWidthConstraint;
     NSLayoutConstraint *_sectionImageLeadingConstraint;
+    NSLayoutConstraint *_labelToArrowViewLeadingConstraint;
     BOOL _showFirstLevelIcon;
     BOOL _ignoreLevels;
     BOOL _closed;
@@ -23,6 +23,7 @@
     UILabel *_nameLabel;
     UIImageView *_arrowImageView;
     UIImageView *_sectionImageView;
+    TPSURLSessionItem *_sectionImageURLSessionItem;
 }
 
 @property (nonatomic) BOOL RTL; // @synthesize RTL=_RTL;
@@ -31,11 +32,15 @@
 @property (strong, nonatomic) HLPHelpItem *helpItem; // @synthesize helpItem=_helpItem;
 @property (nonatomic) BOOL ignoreLevels; // @synthesize ignoreLevels=_ignoreLevels;
 @property (strong, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
+@property (strong, nonatomic) TPSURLSessionItem *sectionImageURLSessionItem; // @synthesize sectionImageURLSessionItem=_sectionImageURLSessionItem;
 @property (strong, nonatomic) UIImageView *sectionImageView; // @synthesize sectionImageView=_sectionImageView;
 @property (nonatomic) BOOL showFirstLevelIcon; // @synthesize showFirstLevelIcon=_showFirstLevelIcon;
 
 - (void).cxx_destruct;
 - (id)accessibilityLabel;
+- (struct CGAffineTransform)arrowTransform;
+- (void)cancelIconRequest;
+- (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (long long)itemLevel;

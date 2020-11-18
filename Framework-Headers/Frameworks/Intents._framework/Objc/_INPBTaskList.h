@@ -7,47 +7,48 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBTaskList-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields, _INPBDataString, _INPBDateTime;
+@class NSArray, NSString, _INPBDataString, _INPBDateTime;
 
-@interface _INPBTaskList : PBCodable <NSCopying>
+@interface _INPBTaskList : PBCodable <_INPBTaskList, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBDateTime *_createdDateTime;
     _INPBDataString *_groupName;
     NSString *_identifier;
     _INPBDateTime *_modifiedDateTime;
-    NSMutableArray *_tasks;
+    NSArray *_tasks;
     _INPBDataString *_title;
 }
 
 @property (strong, nonatomic) _INPBDateTime *createdDateTime; // @synthesize createdDateTime=_createdDateTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDataString *groupName; // @synthesize groupName=_groupName;
 @property (readonly, nonatomic) BOOL hasCreatedDateTime;
 @property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasModifiedDateTime;
 @property (readonly, nonatomic) BOOL hasTitle;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) _INPBDateTime *modifiedDateTime; // @synthesize modifiedDateTime=_modifiedDateTime;
-@property (strong, nonatomic) NSMutableArray *tasks; // @synthesize tasks=_tasks;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *tasks; // @synthesize tasks=_tasks;
+@property (readonly, nonatomic) unsigned long long tasksCount;
 @property (strong, nonatomic) _INPBDataString *title; // @synthesize title=_title;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 + (Class)tasksType;
 - (void).cxx_destruct;
 - (void)addTasks:(id)arg1;
 - (void)clearTasks;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)tasksAtIndex:(unsigned long long)arg1;
-- (unsigned long long)tasksCount;
 - (void)writeTo:(id)arg1;
 
 @end

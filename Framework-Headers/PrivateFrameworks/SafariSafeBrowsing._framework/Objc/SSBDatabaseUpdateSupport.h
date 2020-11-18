@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CTCarrierSpaceClient;
 
@@ -18,7 +18,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL onHighCellularDataPlan; // @synthesize onHighCellularDataPlan=_onHighCellularDataPlan;
 
 - (void).cxx_destruct;
-- (void)_fetchCellularDataPlanInfo;
+- (void)_fetchCellularDataPlan;
+- (void)_fetchCellularDataPlanWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)fetchCellularDataPlanSynchronously;
 - (id)init;
 
 @end

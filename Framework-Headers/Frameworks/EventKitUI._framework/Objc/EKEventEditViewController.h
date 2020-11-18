@@ -19,6 +19,7 @@
     id<EKEventEditViewDelegate> _editViewDelegate;
     EKEventEditor *_editor;
     EKEventEditViewController *_strongSelf;
+    NSString *_suggestionKey;
 }
 
 @property (nonatomic) BOOL canHideDoneAndCancelButtons;
@@ -32,6 +33,7 @@
 @property (nonatomic) BOOL scrollToNotes;
 @property (nonatomic) BOOL showAttachments;
 @property (strong, nonatomic) EKEventEditViewController *strongSelf; // @synthesize strongSelf=_strongSelf;
+@property (strong, nonatomic) NSString *suggestionKey; // @synthesize suggestionKey=_suggestionKey;
 @property (nonatomic) BOOL timeImplicitlySet;
 @property (nonatomic) int transitionForModalViewPresentation; // @synthesize transitionForModalViewPresentation=_transitionForModalViewPresentation;
 
@@ -45,7 +47,9 @@
 - (void)dealloc;
 - (void)editor:(id)arg1 didCompleteWithAction:(long long)arg2;
 - (void)editor:(id)arg1 prepareCalendarItemForEdit:(id)arg2;
+- (void)focusAndSelectStartDate;
 - (void)focusAndSelectTitle;
+- (void)focusTitle;
 - (void)handleTapOutside;
 - (BOOL)hasUnsavedChanges;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

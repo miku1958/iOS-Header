@@ -6,7 +6,7 @@
 
 #import <SpriteKit/SKScene.h>
 
-@class NSArray, NSMutableArray, NTKFaceEditView, NTKVariantNode, SKNode, SKSpriteNode, SKTexture, UIColor;
+@class CLKDevice, NSArray, NSMutableArray, NTKFaceEditView, NTKVariantNode, SKNode, SKSpriteNode, SKTexture, UIColor;
 
 @interface NTKAnalogScene : SKScene
 {
@@ -18,6 +18,7 @@
     SKSpriteNode *_faceCircleSprite;
     BOOL _showContentForUnadornedSnapshot;
     BOOL _shouldHideVariantsBelowCurrent;
+    CLKDevice *_device;
     SKNode *_background;
     SKNode *_circle;
     NSMutableArray *_variantNodes;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) unsigned long long currentDensity; // @synthesize currentDensity=_currentDensity;
 @property (strong, nonatomic) NTKVariantNode *currentVariantNode; // @synthesize currentVariantNode=_currentVariantNode;
 @property (readonly, nonatomic) long long dataMode; // @synthesize dataMode=_dataMode;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (strong, nonatomic) NTKFaceEditView *editView; // @synthesize editView=_editView;
 @property (readonly, nonatomic) SKNode *face;
 @property (strong) UIColor *faceColor;
@@ -45,6 +47,7 @@
 @property (strong, nonatomic) UIColor *tickColor; // @synthesize tickColor=_tickColor;
 @property (readonly, nonatomic) NSMutableArray *variantNodes; // @synthesize variantNodes=_variantNodes;
 
++ (id)sceneWithSize:(struct CGSize)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_applyDataMode:(long long)arg1;
 - (void)_applyShowContentForUnadornedSnapshot;
@@ -62,8 +65,8 @@
 - (void)addNodeToFace:(id)arg1;
 - (id)addVariantNodeWithElements:(id)arg1;
 - (id)addVariantNodeWithElements:(id)arg1 parent:(id)arg2 hidden:(BOOL)arg3;
-- (void)applyLabelPositions:(struct LabelPosition *)arg1 toNodes:(id)arg2;
-- (void)applyLabelPositions:(struct LabelPosition *)arg1 withCenter:(struct CGPoint)arg2 toNodes:(id)arg3;
+- (void)applyLabelPositions:(const struct NTKLabelPosition *)arg1 toNodes:(id)arg2;
+- (void)applyLabelPositions:(const struct NTKLabelPosition *)arg1 withCenter:(struct CGPoint)arg2 toNodes:(id)arg3;
 - (id)auxiliaryScrubbingObscuredNodes;
 - (void)cleanupAfterZoom;
 - (void)didMoveToView:(id)arg1;
@@ -73,7 +76,7 @@
 - (id)faceCircleSprite;
 - (void)forEachActiveVariant:(CDUnknownBlockType)arg1;
 - (id)handColor;
-- (id)initWithSize:(struct CGSize)arg1;
+- (id)initWithSize:(struct CGSize)arg1 forDevice:(id)arg2;
 - (void)invalidateRasterization;
 - (void)performWristRaiseAnimation;
 - (void)preRender;

@@ -56,6 +56,8 @@
     GEOTraitsTransitScheduleFilter *_transitScheduleFilter;
     GEOPDVenueIdentifier *_venueIdentifier;
     GEOWalkingOptions *_walkingOptions;
+    BOOL _appDarkMode;
+    BOOL _deviceDarkMode;
     BOOL _deviceInVehicle;
     BOOL _isAPICall;
     BOOL _isRedoSearch;
@@ -86,6 +88,8 @@
         unsigned int source:1;
         unsigned int timeSinceMapEnteredForeground:1;
         unsigned int timeSinceMapViewportChanged:1;
+        unsigned int appDarkMode:1;
+        unsigned int deviceDarkMode:1;
         unsigned int deviceInVehicle:1;
         unsigned int isAPICall:1;
         unsigned int isRedoSearch:1;
@@ -101,6 +105,7 @@
 
 @property (nonatomic) int action; // @synthesize action=_action;
 @property (strong, nonatomic) NSString *analyticsAppIdentifier; // @synthesize analyticsAppIdentifier=_analyticsAppIdentifier;
+@property (nonatomic) BOOL appDarkMode; // @synthesize appDarkMode=_appDarkMode;
 @property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (strong, nonatomic) NSString *appMajorVersion; // @synthesize appMajorVersion=_appMajorVersion;
 @property (strong, nonatomic) NSString *appMinorVersion; // @synthesize appMinorVersion=_appMinorVersion;
@@ -112,6 +117,7 @@
 @property (nonatomic) double carHeadunitPixelHeight; // @synthesize carHeadunitPixelHeight=_carHeadunitPixelHeight;
 @property (nonatomic) double carHeadunitPixelWidth; // @synthesize carHeadunitPixelWidth=_carHeadunitPixelWidth;
 @property (nonatomic) int deviceBatteryState; // @synthesize deviceBatteryState=_deviceBatteryState;
+@property (nonatomic) BOOL deviceDarkMode; // @synthesize deviceDarkMode=_deviceDarkMode;
 @property (strong, nonatomic) NSMutableArray *deviceDisplayLanguages; // @synthesize deviceDisplayLanguages=_deviceDisplayLanguages;
 @property (nonatomic) BOOL deviceInVehicle; // @synthesize deviceInVehicle=_deviceInVehicle;
 @property (nonatomic) int deviceInterfaceOrientation; // @synthesize deviceInterfaceOrientation=_deviceInterfaceOrientation;
@@ -123,6 +129,7 @@
 @property (readonly, nonatomic) unsigned long long engineTypesCount;
 @property (nonatomic) BOOL hasAction;
 @property (readonly, nonatomic) BOOL hasAnalyticsAppIdentifier;
+@property (nonatomic) BOOL hasAppDarkMode;
 @property (readonly, nonatomic) BOOL hasAppIdentifier;
 @property (readonly, nonatomic) BOOL hasAppMajorVersion;
 @property (readonly, nonatomic) BOOL hasAppMinorVersion;
@@ -134,6 +141,7 @@
 @property (nonatomic) BOOL hasCarHeadunitPixelHeight;
 @property (nonatomic) BOOL hasCarHeadunitPixelWidth;
 @property (nonatomic) BOOL hasDeviceBatteryState;
+@property (nonatomic) BOOL hasDeviceDarkMode;
 @property (nonatomic) BOOL hasDeviceInVehicle;
 @property (nonatomic) BOOL hasDeviceInterfaceOrientation;
 @property (readonly, nonatomic) BOOL hasDeviceKeyboardLocale;
@@ -270,6 +278,7 @@
 - (int)transportTypeAtIndex:(unsigned long long)arg1;
 - (id)transportTypesAsString:(int)arg1;
 - (int)uiActionType;
+- (void)updateAnalyticsShortSession;
 - (void)writeTo:(id)arg1;
 
 @end

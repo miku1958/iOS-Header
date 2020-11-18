@@ -8,7 +8,7 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class AFSpeechSynthesisRecord, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSXPCListenerEndpoint;
+@class AFSpeechSynthesisRecord, CLLocation, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL, NSXPCListenerEndpoint;
 
 @interface AFSpeechRequestOptions : NSObject <NSSecureCoding>
 {
@@ -23,6 +23,7 @@
     BOOL _useBorealisBuffer;
     BOOL _fetchSmartSiriVolume;
     BOOL _suppressStopAlert;
+    BOOL _isOnPhoneCall;
     long long _activationEvent;
     NSString *_activationDeviceIdentifier;
     NSString *_serverCommandId;
@@ -41,6 +42,9 @@
     NSURL *_audioFileURL;
     unsigned long long _bargeInOptions;
     AFSpeechSynthesisRecord *_speechSynthesisRecord;
+    CLLocation *_location;
+    NSString *_locationStatus;
+    NSDictionary *_clientAnalyticsContext;
     NSDictionary *_startContext;
     NSDictionary *_stopContext;
 }
@@ -55,6 +59,7 @@
 @property (copy, nonatomic) NSURL *audioFileURL; // @synthesize audioFileURL=_audioFileURL;
 @property (nonatomic) unsigned long long bargeInOptions; // @synthesize bargeInOptions=_bargeInOptions;
 @property (copy, nonatomic) NSString *btDeviceAddress;
+@property (copy, nonatomic) NSDictionary *clientAnalyticsContext; // @synthesize clientAnalyticsContext=_clientAnalyticsContext;
 @property (nonatomic) double expectedActivationEventTime; // @synthesize expectedActivationEventTime=_expectedActivationEventTime;
 @property (nonatomic) BOOL fetchSmartSiriVolume; // @synthesize fetchSmartSiriVolume=_fetchSmartSiriVolume;
 @property (nonatomic) unsigned long long homeButtonDownEventMachAbsoluteTime; // @synthesize homeButtonDownEventMachAbsoluteTime=_homeButtonDownEventMachAbsoluteTime;
@@ -62,6 +67,9 @@
 @property (copy, nonatomic) NSNumber *homeButtonUpFromBeep; // @synthesize homeButtonUpFromBeep=_homeButtonUpFromBeep;
 @property (nonatomic) BOOL isEyesFree; // @synthesize isEyesFree=_isEyesFree;
 @property (nonatomic) BOOL isInitialBringUp; // @synthesize isInitialBringUp=_isInitialBringUp;
+@property (nonatomic) BOOL isOnPhoneCall; // @synthesize isOnPhoneCall=_isOnPhoneCall;
+@property (copy, nonatomic) CLLocation *location; // @synthesize location=_location;
+@property (copy, nonatomic) NSString *locationStatus; // @synthesize locationStatus=_locationStatus;
 @property (copy, nonatomic) NSNumber *notifyState; // @synthesize notifyState=_notifyState;
 @property (nonatomic) BOOL pendCallbacksUntilAfterContinuation; // @synthesize pendCallbacksUntilAfterContinuation=_pendCallbacksUntilAfterContinuation;
 @property (copy, nonatomic) NSString *recordDeviceIdentifier; // @synthesize recordDeviceIdentifier=_recordDeviceIdentifier;
@@ -85,6 +93,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithActivationEvent:(long long)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isRaiseToSpeak;
+- (BOOL)isVoiceTrigger;
 
 @end
 

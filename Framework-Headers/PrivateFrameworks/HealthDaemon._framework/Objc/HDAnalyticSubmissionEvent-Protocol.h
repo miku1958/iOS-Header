@@ -6,6 +6,10 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
+@class PBCodable;
+
 @protocol HDAnalyticSubmissionEvent <NSObject>
+- (unsigned int)AWDMetricID;
+- (PBCodable *)codableRepresentationForAWDSubmission;
 @end
 

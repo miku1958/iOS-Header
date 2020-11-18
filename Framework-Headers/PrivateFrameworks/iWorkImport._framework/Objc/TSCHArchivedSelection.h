@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSKSelection *selection; // @synthesize selection=mSelection;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithContext:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;

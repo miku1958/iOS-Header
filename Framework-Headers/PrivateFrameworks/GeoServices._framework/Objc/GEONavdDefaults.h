@@ -42,9 +42,11 @@
 @property (readonly, nonatomic) double maximumUserRoutingPreferencesAge;
 @property (readonly, nonatomic) unsigned long long minRandomJitterForHypothesisWakeup;
 @property (readonly, nonatomic) double minimumDistanceToCompareAgainstLocationAccuracy;
+@property (readonly, nonatomic) double minimumDistanceToConsiderLeechedLocationInMeters;
 @property (readonly, nonatomic) double minimumDistanceToGetLocationUpdatesInMeters;
 @property (readonly, nonatomic) double minimumExpirationOffset;
 @property (readonly, nonatomic) double minimumTimeBetweenConsecutiveLocationUpdatesInSeconds;
+@property (readonly, nonatomic) double minimumTimeIntervalToConsiderLeechedLocationInSeconds;
 @property (readonly, nonatomic) double minimumTimerTimeStampFudge;
 @property (readonly, nonatomic) double pendingStopTimeToLive;
 @property (readonly, nonatomic) double predictionsWatchdogInterval;
@@ -56,11 +58,13 @@
 @property (readonly, nonatomic) double refreshTimeIntervalToUseIfError;
 @property (readonly, nonatomic) BOOL shouldAutomaticallyRerouteTrafficIncidents;
 @property (readonly, nonatomic) BOOL shouldLazyLoadRoutes;
+@property (readonly, nonatomic) BOOL shouldMatchToLAR;
 @property (readonly, nonatomic) BOOL shouldPreloadSubscriptions;
 @property (readonly, nonatomic) BOOL shouldRequestInlineShields;
 @property (readonly, nonatomic) BOOL shouldRequestLaneGuidance;
 @property (readonly, nonatomic) BOOL shouldRunNavigationInDaemon;
 @property (readonly, nonatomic) BOOL shouldShowServiceErrorAlert;
+@property (readonly, nonatomic) BOOL shouldSnapToParkingLotSegments;
 @property (readonly, nonatomic) BOOL shouldUseGuidanceEventManager;
 @property (readonly, nonatomic) BOOL shouldUseServerSideETAs;
 @property (readonly, nonatomic) double slowWalkingSpeed;

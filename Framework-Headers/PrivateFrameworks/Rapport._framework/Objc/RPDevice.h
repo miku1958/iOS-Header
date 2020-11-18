@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
@@ -77,6 +77,7 @@
 - (void).cxx_destruct;
 - (void)_updateTXTDictionary:(id)arg1;
 - (id)description;
+- (id)descriptionWithLevel:(int)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

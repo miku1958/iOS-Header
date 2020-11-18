@@ -25,7 +25,8 @@
 @property (readonly, nonatomic) NSString *title;
 
 - (void).cxx_destruct;
-- (void)requestPeopleNamesUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)init;
+- (void)requestPeopleNamesUpdateSinceDate:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)resetToDefault;
 
 @end

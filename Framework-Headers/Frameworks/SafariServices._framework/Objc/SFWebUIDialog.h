@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     int _finalAction;
     CDUnknownBlockType _completionHandler;
+    BOOL _shouldIgnoreGlobalModalUIDisplayPolicy;
     WebUIAlert *_alert;
 }
 
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)newViewControllerRepresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)presentationStyle;
+- (BOOL)shouldIgnoreGlobalModalUIDisplayPolicy;
 
 @end
 

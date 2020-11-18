@@ -38,11 +38,13 @@ __attribute__((visibility("hidden")))
 - (void)setResolveSlice:(unsigned long long)arg1;
 - (void)setResolveTexture:(id)arg1;
 - (void)setSlice:(unsigned long long)arg1;
+- (void)setStencilResolveFilter:(unsigned long long)arg1;
 - (void)setStoreAction:(unsigned long long)arg1;
 - (void)setStoreActionOptions:(unsigned long long)arg1;
 - (void)setTexture:(id)arg1;
 - (void)setYInvert:(BOOL)arg1;
 - (unsigned long long)slice;
+- (unsigned long long)stencilResolveFilter;
 - (unsigned long long)storeAction;
 - (unsigned long long)storeActionOptions;
 - (id)texture;

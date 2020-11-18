@@ -14,10 +14,11 @@
 + (id)_firstSourceWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)_insertSourceWithUUID:(id)arg1 bundleIdentifier:(id)arg2 name:(id)arg3 options:(unsigned long long)arg4 isCurrentDevice:(BOOL)arg5 productType:(id)arg6 deleted:(BOOL)arg7 modificationDate:(id)arg8 provenance:(long long)arg9 database:(id)arg10 error:(id *)arg11;
 + (id)_sourcesWithPredicate:(id)arg1 includeDeleted:(BOOL)arg2 profile:(id)arg3 error:(id *)arg4;
-+ (id)bundleIdentifiersForSourcesWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
-+ (id)columnsDefinition;
++ (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
++ (id)countOfWatchSourcesWithDatabase:(id)arg1 error:(id *)arg2;
 + (id)databaseTable;
 + (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
++ (BOOL)enumerateBundleIdentifiersForSourcesWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3 enumerationHandler:(CDUnknownBlockType)arg4;
 + (id)firstSourceWithPredicate:(id)arg1 database:(id)arg2 error:(id *)arg3;
 + (id)firstSourceWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)indices;

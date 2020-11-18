@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TILanguageModelOfflineLearningStrategy-Protocol.h>
 
-@class NSString, TILanguageModelOfflineLearningTask;
+@class NSMutableDictionary, NSString, NSURL, RKMessageResponseManager, TILanguageModelOfflineLearningTask;
 
 @interface TILanguageModelOfflineLearningStrategyResponseKit : NSObject <TILanguageModelOfflineLearningStrategy>
 {
+    NSMutableDictionary *_recipientModels;
+    NSURL *_directory;
+    RKMessageResponseManager *_trainer;
     TILanguageModelOfflineLearningTask *_learningTask;
 }
 
@@ -21,7 +24,7 @@
 @property (readonly) TILanguageModelOfflineLearningTask *learningTask; // @synthesize learningTask=_learningTask;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)didFinishLearning;
 - (id)filterMessages:(id)arg1;
 - (id)initWithClientIdentifier:(id)arg1 andDirectory:(id)arg2;

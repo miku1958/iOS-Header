@@ -23,6 +23,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (void)_scanAccounts;
 - (void)_scanCloudZones;
 - (void)_scanHomes;
 - (id)initWithHomeManager:(id)arg1;

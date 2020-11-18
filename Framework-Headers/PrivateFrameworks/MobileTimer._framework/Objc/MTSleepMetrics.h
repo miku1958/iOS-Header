@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore;
+@class HKHealthStore, HKObserverQuery, NSMutableSet;
 @protocol MTAlarmStorage, NAScheduler;
 
 @interface MTSleepMetrics : NSObject
@@ -14,17 +14,23 @@
     id<NAScheduler> _serializer;
     id<MTAlarmStorage> _alarmStorage;
     HKHealthStore *_healthStore;
+    HKObserverQuery *_healthObserver;
+    NSMutableSet *_sleepDataObservers;
 }
 
-@property (readonly, weak, nonatomic) id<MTAlarmStorage> alarmStorage; // @synthesize alarmStorage=_alarmStorage;
+@property (strong, nonatomic) id<MTAlarmStorage> alarmStorage; // @synthesize alarmStorage=_alarmStorage;
+@property (strong, nonatomic) HKObserverQuery *healthObserver; // @synthesize healthObserver=_healthObserver;
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
+@property (strong, nonatomic) NSMutableSet *sleepDataObservers; // @synthesize sleepDataObservers=_sleepDataObservers;
 
 + (id)_sharedPublicMetrics;
 + (id)inBedSampleWithInterval:(id)arg1 metadata:(id)arg2;
++ (void)registerSleepDataObserver:(id)arg1;
 + (id)sleepDataForPastWeek;
 + (id)sleepDataForRange:(id)arg1;
 + (id)sleepDataForRange:(id)arg1 intervalComponents:(id)arg2;
++ (void)unregisterSleepDataObserver:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_queue_hasUnprocessedIntervals;
 - (void)_queue_setUnprocessedInBedIntervals:(id)arg1;
@@ -34,10 +40,14 @@
 - (id)initWithAlarmStorage:(id)arg1;
 - (void)logUserWentToBed:(id)arg1;
 - (void)logUserWokeUp:(id)arg1;
+- (void)registerSleepDataObserver:(id)arg1;
 - (void)saveTimeInBed;
 - (id)sleepDataForPastWeek;
 - (id)sleepDataForRange:(id)arg1;
 - (id)sleepDataForRange:(id)arg1 intervalComponents:(id)arg2;
+- (void)sleepMonitor:(id)arg1 bedtimeReminderWasConfirmed:(id)arg2 sleepAlarm:(id)arg3;
+- (void)sleepMonitor:(id)arg1 wakeUpAlarmWasDismissed:(id)arg2 sleepAlarm:(id)arg3;
+- (void)unregisterSleepDataObserver:(id)arg1;
 
 @end
 

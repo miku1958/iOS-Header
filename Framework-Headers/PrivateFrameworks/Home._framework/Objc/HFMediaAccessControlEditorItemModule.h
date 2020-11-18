@@ -24,7 +24,9 @@
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly) Class superclass;
 
++ (id)_descriptionFooterTextForAccessControlDescriptor:(id)arg1 hasNonPeerToPeerMediaAccessories:(BOOL)arg2;
 - (void).cxx_destruct;
+- (BOOL)_hasNonPeerToPeerMediaAccessories;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (BOOL)containsItem:(id)arg1;
 - (void)home:(id)arg1 didUpdateMediaPassword:(id)arg2;

@@ -21,7 +21,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleReply:(id)arg1;
-- (void)_sendXPCMessage;
+- (void)_start;
 - (id)initWithProductId:(id)arg1 bundleId:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithProductId:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

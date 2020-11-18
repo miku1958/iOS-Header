@@ -23,8 +23,8 @@
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) NSArray *workoutEvents; // @synthesize workoutEvents=_workoutEvents;
 
++ (id)firstPartyWorkoutSnapshotWithCurrentWorkoutSnapshot:(id)arg1;
 + (BOOL)supportsSecureCoding;
-+ (id)workoutSnapshotWithState:(long long)arg1 activityType:(unsigned long long)arg2 startDate:(id)arg3 workoutEvents:(id)arg4;
 - (void).cxx_destruct;
 - (id)_initWithState:(long long)arg1 activityType:(unsigned long long)arg2 startDate:(id)arg3 workoutEvents:(id)arg4;
 - (id)description;

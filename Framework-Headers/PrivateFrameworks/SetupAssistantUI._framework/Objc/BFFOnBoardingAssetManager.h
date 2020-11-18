@@ -20,6 +20,7 @@
 - (id)assetFeatureValueForFeature:(long long)arg1;
 - (id)assetTypeForCurrentDevice;
 - (void)downloadAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)featureKey;
 - (id)movieURLForAsset:(id)arg1;
 - (id)placeholderImageForFeature:(long long)arg1;
 - (id)placeholderImageNameForFeature:(long long)arg1;
@@ -31,6 +32,7 @@
 - (void)retrieveMovieForFeature:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)retrieveMovieForFeature:(long long)arg1 language:(id)arg2 useWorldwide:(BOOL)arg3 useLocalAssets:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

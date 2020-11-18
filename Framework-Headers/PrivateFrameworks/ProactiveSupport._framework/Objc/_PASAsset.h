@@ -38,6 +38,7 @@
 - (void)_issueUpdateNotificationsWithCallback:(CDUnknownBlockType)arg1;
 - (void)_loadDefaultBundleVersionWithGuardedData:(id)arg1;
 - (void)_updateAssetMetadata;
+- (BOOL)_updateAssetMetadataUsingQueryResults:(id)arg1;
 - (void)addOverridePath:(id)arg1 forResource:(id)arg2 ofType:(id)arg3;
 - (id)bundlePath;
 - (void)callAssetUpdateHandlers;

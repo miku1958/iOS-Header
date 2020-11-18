@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, UIImage;
+@class NSDate, NSString, UIImage;
 
 @interface SFAirDropNode : NSObject
 {
@@ -17,9 +17,11 @@
     BOOL _classroom;
     BOOL _classroomGroup;
     BOOL _classroomCourse;
+    BOOL _supportsCredentials;
     BOOL _supportsFMF;
     BOOL _supportsPasses;
     BOOL _supportsMixedTypes;
+    NSDate *_discoveryDate;
     id _node;
     NSString *_contactIdentifier;
     NSString *_realName;
@@ -32,13 +34,16 @@
 @property (getter=isClassroomCourse) BOOL classroomCourse; // @synthesize classroomCourse=_classroomCourse;
 @property (getter=isclassroomGroup) BOOL classroomGroup; // @synthesize classroomGroup=_classroomGroup;
 @property (strong) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
+@property (readonly) NSDate *discoveryDate; // @synthesize discoveryDate=_discoveryDate;
 @property (strong) UIImage *displayIcon; // @synthesize displayIcon=_displayIcon;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;
+@property (readonly, getter=isKnown) BOOL known;
 @property (getter=isMe) BOOL me; // @synthesize me=_me;
 @property (getter=isMonogram) BOOL monogram; // @synthesize monogram=_monogram;
 @property (strong) id node; // @synthesize node=_node;
 @property (strong) NSString *realName; // @synthesize realName=_realName;
 @property (strong) NSString *secondaryName; // @synthesize secondaryName=_secondaryName;
+@property (readonly) BOOL supportsCredentials; // @synthesize supportsCredentials=_supportsCredentials;
 @property (readonly) BOOL supportsFMF; // @synthesize supportsFMF=_supportsFMF;
 @property (readonly) BOOL supportsMixedTypes; // @synthesize supportsMixedTypes=_supportsMixedTypes;
 @property (readonly) BOOL supportsPasses; // @synthesize supportsPasses=_supportsPasses;

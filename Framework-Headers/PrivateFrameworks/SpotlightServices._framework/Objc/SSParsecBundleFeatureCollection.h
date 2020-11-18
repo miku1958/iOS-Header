@@ -19,10 +19,12 @@
     NSNumber *_cep;
     NSNumber *_cepMaxRatio;
     NSNumber *_cepAllMaxRatio;
+    NSNumber *_blockIdValue;
     NSNumber *_maxScoreAbsRank;
     NSNumber *_maxScoreRelRank;
 }
 
+@property (strong, nonatomic) NSNumber *blockIdValue; // @synthesize blockIdValue=_blockIdValue;
 @property (strong, nonatomic) NSNumber *cep; // @synthesize cep=_cep;
 @property (strong, nonatomic) NSNumber *cepAllMaxRatio; // @synthesize cepAllMaxRatio=_cepAllMaxRatio;
 @property (strong, nonatomic) NSNumber *cepMaxRatio; // @synthesize cepMaxRatio=_cepMaxRatio;

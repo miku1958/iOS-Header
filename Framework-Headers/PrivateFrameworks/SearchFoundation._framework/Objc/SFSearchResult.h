@@ -25,6 +25,7 @@
     BOOL _isStaticCorrection;
     BOOL _isFuzzyMatch;
     BOOL _publiclyIndexable;
+    BOOL _doNotFold;
     int _auxiliaryBottomTextColor;
     int _topHit;
     int _placement;
@@ -55,6 +56,7 @@
     NSString *_mapsMoreString;
     SFImage *_mapsMoreIcon;
     NSString *_nearbyBusinessesString;
+    NSString *_appleReferrer;
     SFCard *_card;
     SFCard *_inlineCard;
     SFMoreResults *_moreResults;
@@ -98,14 +100,17 @@
     NSString *_fileProviderDomainIdentifier;
     NSString *_fbr;
     NSString *_srf;
+    unsigned long long _blockId;
 }
 
 @property (strong, nonatomic) SFActionItem *action; // @synthesize action=_action;
+@property (copy, nonatomic) NSString *appleReferrer; // @synthesize appleReferrer=_appleReferrer;
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property (copy, nonatomic) NSString *auxiliaryBottomText; // @synthesize auxiliaryBottomText=_auxiliaryBottomText;
 @property (nonatomic) int auxiliaryBottomTextColor; // @synthesize auxiliaryBottomTextColor=_auxiliaryBottomTextColor;
 @property (copy, nonatomic) NSString *auxiliaryMiddleText; // @synthesize auxiliaryMiddleText=_auxiliaryMiddleText;
 @property (copy, nonatomic) NSString *auxiliaryTopText; // @synthesize auxiliaryTopText=_auxiliaryTopText;
+@property (nonatomic) unsigned long long blockId; // @synthesize blockId=_blockId;
 @property (copy, nonatomic) NSString *calendarIdentifier; // @synthesize calendarIdentifier=_calendarIdentifier;
 @property (strong, nonatomic) SFCard *card; // @synthesize card=_card;
 @property (copy, nonatomic) NSString *completedQuery; // @synthesize completedQuery=_completedQuery;
@@ -121,6 +126,7 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *descriptions; // @synthesize descriptions=_descriptions;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) BOOL doNotFold; // @synthesize doNotFold=_doNotFold;
 @property (strong, nonatomic) NSNumber *engagementScore; // @synthesize engagementScore=_engagementScore;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
 @property (copy, nonatomic) NSDictionary *featureScaling; // @synthesize featureScaling=_featureScaling;

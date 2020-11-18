@@ -6,7 +6,7 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class NSArray, NSSet, NSString, WBSPerSitePreference, WBSPerSitePreferenceTimeout, WBSPerSitePreferenceValue;
+@class NSArray, NSSet, NSString, WBSPerSitePreference, WBSPerSitePreferenceTimeout;
 @protocol WBSPerSitePreferenceManagerDelegate;
 
 @protocol WBSPerSitePreferenceManager <NSObject>
@@ -14,12 +14,16 @@
 @property (weak, nonatomic) id<WBSPerSitePreferenceManagerDelegate> delegate;
 
 - (void)getAllDomainsConfiguredForPreference:(WBSPerSitePreference *)arg1 usingBlock:(void (^)(NSSet *))arg2;
-- (void)getDefaultPreferenceValueForPreference:(WBSPerSitePreference *)arg1 completionHandler:(void (^)(WBSPerSitePreferenceValue *))arg2;
-- (void)getValueOfPreference:(WBSPerSitePreference *)arg1 forDomain:(NSString *)arg2 withTimeout:(WBSPerSitePreferenceTimeout *)arg3 usingBlock:(void (^)(WBSPerSitePreferenceValue *, BOOL))arg4;
+- (void)getDefaultPreferenceValueForPreference:(WBSPerSitePreference *)arg1 completionHandler:(void (^)(id))arg2;
+- (void)getValueOfPreference:(WBSPerSitePreference *)arg1 forDomain:(NSString *)arg2 withTimeout:(WBSPerSitePreferenceTimeout *)arg3 usingBlock:(void (^)(id, BOOL))arg4;
+- (NSString *)localizedStringForValue:(id)arg1 inPreference:(WBSPerSitePreference *)arg2;
 - (NSArray *)preferences;
 - (void)removePreferenceValuesForDomains:(NSSet *)arg1 fromPreference:(WBSPerSitePreference *)arg2 completionHandler:(void (^)(BOOL))arg3;
-- (void)setDefaultValue:(WBSPerSitePreferenceValue *)arg1 ofPreference:(WBSPerSitePreference *)arg2 completionHandler:(void (^)(BOOL))arg3;
-- (void)setValue:(WBSPerSitePreferenceValue *)arg1 ofPreference:(WBSPerSitePreference *)arg2 forDomain:(NSString *)arg3 completionHandler:(void (^)(BOOL))arg4;
+- (void)setDefaultValue:(id)arg1 ofPreference:(WBSPerSitePreference *)arg2 completionHandler:(void (^)(BOOL))arg3;
+- (void)setValue:(id)arg1 ofPreference:(WBSPerSitePreference *)arg2 forDomain:(NSString *)arg3 completionHandler:(void (^)(BOOL))arg4;
 - (NSArray *)valuesForPreference:(WBSPerSitePreference *)arg1;
+
+@optional
+- (BOOL)preferenceAppliesToHighLevelDomains:(WBSPerSitePreference *)arg1;
 @end
 

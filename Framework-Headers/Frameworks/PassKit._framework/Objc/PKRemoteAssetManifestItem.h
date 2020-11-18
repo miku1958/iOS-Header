@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString, NSURL;
+@class NSDictionary, NSNumber, NSString, NSURL;
 
 @interface PKRemoteAssetManifestItem : NSObject <NSSecureCoding>
 {
@@ -17,9 +17,12 @@
     NSURL *_passURL;
     NSString *_sha1Hex;
     NSNumber *_size;
+    NSDictionary *_manifest;
 }
 
+@property (readonly, nonatomic) unsigned long long itemType;
 @property (copy, nonatomic) NSURL *localURL; // @synthesize localURL=_localURL;
+@property (copy, nonatomic) NSDictionary *manifest; // @synthesize manifest=_manifest;
 @property (copy, nonatomic) NSURL *passURL; // @synthesize passURL=_passURL;
 @property (readonly, weak, nonatomic) NSString *relativeLocalPath;
 @property (copy, nonatomic) NSURL *remoteURL; // @synthesize remoteURL=_remoteURL;
@@ -27,11 +30,15 @@
 @property (copy, nonatomic) NSNumber *size; // @synthesize size=_size;
 
 + (id)itemWithLocalURL:(id)arg1 passURL:(id)arg2 dictionary:(id)arg3 error:(id *)arg4;
++ (id)sharedURLSession;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)downloadAssetWithCloudStoreCoordinatorDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)downloadAssetWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocalURL:(id)arg1 passURL:(id)arg2 dictionary:(id)arg3 error:(id *)arg4;
+- (BOOL)isZipFile;
 
 @end
 

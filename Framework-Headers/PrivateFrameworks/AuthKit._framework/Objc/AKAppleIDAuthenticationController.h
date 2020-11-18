@@ -35,6 +35,7 @@
 - (void)fetchAuthModeWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchDeviceListWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)fetchDeviceListWithContext:(id)arg1 error:(id *)arg2;
+- (void)fetchDeviceMapWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchURLBagWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchUserInformationForAltDSID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)generateLoginCodeWithCompletion:(CDUnknownBlockType)arg1;

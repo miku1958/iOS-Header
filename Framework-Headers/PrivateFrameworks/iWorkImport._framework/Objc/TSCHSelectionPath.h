@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -27,14 +27,13 @@ __attribute__((visibility("hidden")))
 + (id)seriesSelectionPathWithSeriesIndex:(unsigned long long)arg1;
 + (id)seriesSymbolsSelectionPathWithSeriesIndex:(unsigned long long)arg1;
 + (id)seriesValueLabelSelectionPathWithSeriesIndex:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (id)argumentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)argumentsCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)debuggingName;
 - (id)description;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithArchive:(const struct ChartSelectionPathArchive *)arg1;
 - (id)initWithPathType:(id)arg1 arguments:(id)arg2 subSelection:(id)arg3;
 - (id)initWithType:(id)arg1 name:(id)arg2 arguments:(id)arg3;

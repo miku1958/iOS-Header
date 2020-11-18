@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BKSAssertionClientMultiplexer, BKSProcessAssertionClient, BKSTerminationAssertionClient;
 
+__attribute__((visibility("hidden")))
 @interface BKSAssertionClient : NSObject
 {
     BKSAssertionClientMultiplexer *_multiplexer;

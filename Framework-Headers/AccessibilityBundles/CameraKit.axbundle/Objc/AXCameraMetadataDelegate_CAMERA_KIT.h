@@ -25,7 +25,7 @@
 
 - (void).cxx_destruct;
 - (void)_accessibilityHandleMetadataOutput:(id)arg1;
-- (void)_handleFaceOutput:(id)arg1;
+- (void)_handleMetadataOutputFaces:(id)arg1 QRCodes:(id)arg2;
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
 - (void)dealloc;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSPDecoder-Protocol.h>
 
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)addData:(id)arg1 forPasteboardType:(id)arg2;
 - (void)addItems:(id)arg1;
 - (void)addItems:(id)arg1 isSmartCopy:(BOOL)arg2;
+- (BOOL)canLoadItemsOfClass:(Class)arg1;
 - (long long)clearContents;
 - (BOOL)containsAnyPasteboardTypeInArray:(id)arg1;
 - (BOOL)containsImportableRichTextTypes;

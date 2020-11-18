@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSURL, NSUUID, TSUSafeSaveAssistant;
 
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (nonatomic) BOOL didWriteSupportBundleSuccessfuly; // @synthesize didWriteSupportBundleSuccessfuly=_didWriteSupportBundleSuccessfuly;
 @property (copy, nonatomic) NSUUID *documentUUID; // @synthesize documentUUID=_documentUUID;
+@property (readonly, nonatomic) BOOL isSameDocumentUpdate;
 @property (readonly, nonatomic) NSUUID *originalDocumentUUID; // @synthesize originalDocumentUUID=_originalDocumentUUID;
 @property (copy, nonatomic) NSURL *originalURL; // @synthesize originalURL=_originalURL;
 @property (readonly, nonatomic) NSUUID *originalVersionUUID; // @synthesize originalVersionUUID=_originalVersionUUID;

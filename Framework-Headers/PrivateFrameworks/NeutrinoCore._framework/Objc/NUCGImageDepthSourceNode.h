@@ -10,7 +10,7 @@
 
 @interface NUCGImageDepthSourceNode : NUSourceNode
 {
-    NUCGAuxiliaryImageProperties *_depthImageProperties;
+    NUCGAuxiliaryImageProperties *_auxiliaryImageProperties;
     NUCGImageSourceNode *_sourceNode;
     BOOL _needsAspectRatioCorrection;
     struct CGAffineTransform _aspectTransform;
@@ -25,7 +25,7 @@
 - (id)_evaluateImageWithSourceOptions:(id)arg1 subsampleFactor:(long long *)arg2 error:(out id *)arg3;
 - (BOOL)canPropagateOriginalDepthData;
 - (id)initWithSettings:(id)arg1;
-- (id)initWithSourceNode:(id)arg1 depthImageProperties:(id)arg2;
+- (id)initWithSourceNode:(id)arg1 auxiliaryImageProperties:(id)arg2;
 - (id)pipelineOptionsForPipelineState:(id)arg1 error:(out id *)arg2;
 - (CDStruct_912cb5d2)pixelSize;
 - (long long)sourceOrientation;

@@ -14,7 +14,7 @@
 @property (nonatomic) BOOL preservesRange;
 
 + (id)kernelWithString:(id)arg1;
-- (id)_initWithDict:(id)arg1;
+- (id)_initWithReflection:(struct CIKernelReflection)arg1;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3 options:(id)arg4;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 inputImage:(id)arg3 arguments:(id)arg4;
@@ -23,6 +23,7 @@
 - (BOOL)canReduceOutputChannels;
 - (id)generateGeneralKernelFromWarpKernel:(struct WarpKernel *)arg1 args:(struct SerialObjectPtrArray *)arg2;
 - (id)generateMainFromWarpKernel:(struct WarpKernel *)arg1 args:(struct SerialObjectPtrArray *)arg2;
+- (id)initWithString:(id)arg1;
 - (id)makeGridImage:(struct CGRect)arg1 nx:(int)arg2 ny:(int)arg3;
 - (void)setCanReduceOutputChannels:(BOOL)arg1;
 

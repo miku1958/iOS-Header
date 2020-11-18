@@ -6,13 +6,20 @@
 
 #import <NanoTimeKitCompanion/NTKCDetailTableViewCell.h>
 
-@class NSString, UITextView;
+#import <NanoTimeKitCompanion/UITextViewDelegate-Protocol.h>
 
-@interface NTKCFaceDetailDescriptionCell : NTKCDetailTableViewCell
+@class NSAttributedString, NSString, UITextView;
+
+@interface NTKCFaceDetailDescriptionCell : NTKCDetailTableViewCell <UITextViewDelegate>
 {
     UITextView *_textView;
 }
 
+@property (copy, nonatomic) NSAttributedString *attributedText;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text;
 @property (strong, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 
@@ -22,6 +29,7 @@
 - (id)init;
 - (void)layoutSubviews;
 - (double)rowHeight;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 
 @end
 

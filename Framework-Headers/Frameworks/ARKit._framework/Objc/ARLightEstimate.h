@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <ARKit/NSSecureCoding-Protocol.h>
+
 @class NSData;
 
-@interface ARLightEstimate : NSObject
+@interface ARLightEstimate : NSObject <NSSecureCoding>
 {
     double _ambientIntensity;
     double _ambientColorTemperature;
@@ -18,8 +20,11 @@
 @property (readonly, nonatomic) double ambientIntensity; // @synthesize ambientIntensity=_ambientIntensity;
 @property (readonly, copy, nonatomic) NSData *sphericalHarmonicsCoefficients;
 
++ (BOOL)supportsSecureCoding;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithAmbientIntensity:(double)arg1 temperature:(double)arg2;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

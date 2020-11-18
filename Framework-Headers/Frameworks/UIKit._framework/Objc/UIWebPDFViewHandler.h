@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDocumentPasswordViewDelegate-Protocol.h>
-#import <UIKit/UIWebPDFViewDelegate-Protocol.h>
-#import <UIKit/UIWebPDFViewPrivateDelegate-Protocol.h>
-#import <UIKit/_UIRotatingAlertControllerDelegate-Protocol.h>
-#import <UIKit/_UIWebDoubleTapDelegate-Protocol.h>
-#import <UIKit/_UIWebRotationDelegate-Protocol.h>
+#import <UIKitCore/UIDocumentPasswordViewDelegate-Protocol.h>
+#import <UIKitCore/UIWebPDFViewDelegate-Protocol.h>
+#import <UIKitCore/UIWebPDFViewPrivateDelegate-Protocol.h>
+#import <UIKitCore/_UIRotatingAlertControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIWebDoubleTapDelegate-Protocol.h>
+#import <UIKitCore/_UIWebRotationDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSMapTable, NSString, UIAlertView, UIColor, UIDocumentPasswordView, UIView, UIWebPDFLabelView, UIWebPDFView, WebPDFNSNumberFormatter, _UIHighlightView, _UIRotatingAlertController;
 @protocol UIWebPDFViewHandlerDelegate;

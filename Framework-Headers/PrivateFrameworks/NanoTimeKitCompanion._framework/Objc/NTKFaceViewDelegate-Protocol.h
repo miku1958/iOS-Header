@@ -6,11 +6,12 @@
 
 #import <NanoTimeKitCompanion/NSObject-Protocol.h>
 
-@class NSDate, NSString, NTKFaceView, UIViewController;
+@class NSDate, NSString, NTKComplication, NTKFaceView, UIViewController;
 
 @protocol NTKFaceViewDelegate <NSObject>
 - (BOOL)faceView:(NTKFaceView *)arg1 wantsToDismissPresentedViewControllerAnimated:(BOOL)arg2;
 - (NSString *)faceViewComplicationAppIdentifierForSlot:(NSString *)arg1;
+- (NTKComplication *)faceViewComplicationForSlot:(NSString *)arg1;
 - (BOOL)faceViewComplicationIsEmptyForSlot:(NSString *)arg1;
 - (void)faceViewDidHideOrShowComplicationSlot;
 - (void)faceViewDidLayoutSubviews;

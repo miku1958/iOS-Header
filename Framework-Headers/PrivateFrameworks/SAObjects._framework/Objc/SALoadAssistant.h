@@ -26,6 +26,8 @@
 @property (copy, nonatomic) NSString *linkedAssistantId;
 @property (copy, nonatomic) NSData *linkedSessionValidationData;
 @property (copy, nonatomic) NSString *linkedSpeechId;
+@property (copy, nonatomic) NSString *loggableAssistantId;
+@property (copy, nonatomic) NSString *loggableSharedUserId;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (copy, nonatomic) NSData *sessionValidationData;
 @property (copy, nonatomic) NSString *sharedUserId;

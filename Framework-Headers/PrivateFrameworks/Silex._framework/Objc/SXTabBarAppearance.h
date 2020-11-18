@@ -12,8 +12,8 @@
 {
 }
 
-@property (readonly, nonatomic) NSString *icon2xImageIdentifier; // @dynamic icon2xImageIdentifier;
-@property (readonly, nonatomic) NSString *icon3xImageIdentifier; // @dynamic icon3xImageIdentifier;
+@property (readonly, nonatomic) NSString *icon2xImageIdentifier_v2; // @dynamic icon2xImageIdentifier_v2;
+@property (readonly, nonatomic) NSString *icon3xImageIdentifier_v2; // @dynamic icon3xImageIdentifier_v2;
 @property (readonly, nonatomic) NSString *title; // @dynamic title;
 
 @end

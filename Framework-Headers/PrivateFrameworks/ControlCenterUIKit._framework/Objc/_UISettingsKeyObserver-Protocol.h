@@ -4,11 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ControlCenterUIKit/NSObject-Protocol.h>
+#import <ControlCenterUIKit/PTSettingsKeyObserver-Protocol.h>
 
-@class NSString, _UISettings;
-
-@protocol _UISettingsKeyObserver <NSObject>
-- (void)settings:(_UISettings *)arg1 changedValueForKey:(NSString *)arg2;
+@protocol _UISettingsKeyObserver <PTSettingsKeyObserver>
 @end
 

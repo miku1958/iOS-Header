@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface CMSpringTrackerInternal : NSObject
 {
     struct CLConnectionClient *fLocationdConnection;
     NSObject<OS_dispatch_queue> *fInternalQueue;
-    NSObject<OS_dispatch_source> *fWatchdogTimer;
     BOOL fTrackingStarted;
     CDUnknownBlockType fHandler;
 }
@@ -20,9 +19,7 @@
 - (void)_handleStartStopResponse:(shared_ptr_bdcc6d0f)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)_isTracking;
 - (void)_querySpringDataFromRecord:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_startWatchdogCheckins;
 - (void)_startWithHandler:(CDUnknownBlockType)arg1;
-- (void)_stopWatchdogCheckins;
 - (void)_stopWithHandler:(CDUnknownBlockType)arg1;
 - (void)_teardown;
 - (void)dealloc;

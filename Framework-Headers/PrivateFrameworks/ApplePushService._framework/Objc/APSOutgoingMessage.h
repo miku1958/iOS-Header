@@ -6,12 +6,14 @@
 
 #import <ApplePushService/APSMessage.h>
 
-@class NSString;
+@class APSOutgoingMessageCheckpointTrace, NSString;
 
 @interface APSOutgoingMessage : APSMessage
 {
+    APSOutgoingMessageCheckpointTrace *_checkpointTrace;
 }
 
+@property (strong, nonatomic) APSOutgoingMessageCheckpointTrace *checkpointTrace; // @synthesize checkpointTrace=_checkpointTrace;
 @property (nonatomic, getter=isCritical) BOOL critical;
 @property (nonatomic) unsigned long long payloadFormat;
 @property (nonatomic) unsigned long long payloadLength;
@@ -19,13 +21,17 @@
 @property (nonatomic) unsigned long long timeout;
 
 - (unsigned long long)_effectiveSendTimeout;
+- (void)dealloc;
 - (id)eagernessTimeoutTime;
+- (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasTimedOut;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEager;
 - (unsigned long long)messageID;
 - (id)originator;
 - (long long)priority;
 - (id)rawTimeoutTime;
+- (long long)retries;
 - (long long)sendInterface;
 - (id)sendTimeoutTime;
 - (id)sentTimestamp;
@@ -33,6 +39,7 @@
 - (void)setMessageID:(unsigned long long)arg1;
 - (void)setOriginator:(id)arg1;
 - (void)setPriority:(long long)arg1;
+- (void)setRetries:(long long)arg1;
 - (void)setSendInterface:(long long)arg1;
 - (void)setSent:(BOOL)arg1;
 - (void)setSentTimestamp:(id)arg1;

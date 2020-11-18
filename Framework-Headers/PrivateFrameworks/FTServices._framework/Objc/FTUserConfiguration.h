@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSNumber, NSString;
+
 @interface FTUserConfiguration : NSObject
 {
 }
@@ -13,6 +15,9 @@
 @property (readonly, nonatomic) BOOL _nonWifiFaceTimeEntitled;
 @property (nonatomic) BOOL allowAnyNetwork;
 @property (nonatomic) BOOL cellularFaceTimeEnabled;
+@property (nonatomic) BOOL isDeviceInDualPhoneIdentityMode;
+@property (copy, nonatomic) NSString *selectedPhoneNumberRegistrationSubscriptionLabel;
+@property (readonly, copy, nonatomic) NSNumber *selectedPhoneNumberRegistrationSubscriptionNumber;
 
 + (id)sharedInstance;
 - (BOOL)_adequateInternalOrCarrierInstall;

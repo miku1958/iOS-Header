@@ -10,7 +10,6 @@
 
 @protocol _CPFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long timestamp;
 

@@ -4,24 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ARKit/ARTechnique.h>
+#import <ARKit/ARImageBasedTechnique.h>
 
-@class ARFaceTrackingData, NSObject;
-@protocol OS_dispatch_semaphore;
-
-@interface ARFaceTrackingTechnique : ARTechnique
+@interface ARFaceTrackingTechnique : ARImageBasedTechnique
 {
-    ARFaceTrackingData *_faceTrackingData;
-    NSObject<OS_dispatch_semaphore> *_dataSemaphore;
     BOOL _isFaceTracked;
 }
 
+@property BOOL isFaceTracked; // @synthesize isFaceTracked=_isFaceTracked;
+
 + (BOOL)isSupported;
-- (void).cxx_destruct;
 - (id)init;
 - (id)processData:(id)arg1;
-- (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
 - (unsigned long long)requiredSensorDataTypes;
+- (id)resultDataClasses;
 
 @end
 

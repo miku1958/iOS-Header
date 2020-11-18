@@ -8,5 +8,7 @@
 
 @interface NSManagedObject (PLManagedObject)
 - (id)pl_shortDescription;
+- (id)pointerDescription;
+- (id)truncatedDescriptionWithPropertyKeys:(id)arg1;
 @end
 

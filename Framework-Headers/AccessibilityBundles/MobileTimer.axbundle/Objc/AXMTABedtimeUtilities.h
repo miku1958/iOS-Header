@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)dayStringForRepeatSchedule:(long long)arg1;
++ (id)dayStringForRepeatSchedule:(unsigned long long)arg1;
 
 @end
 

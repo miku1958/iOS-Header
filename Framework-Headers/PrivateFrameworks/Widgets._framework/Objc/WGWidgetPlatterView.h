@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MaterialKit/MTTitledPlatterView.h>
+#import <PlatterKit/PLTitledPlatterView.h>
 
 @class NSString, UIButton, UIView, WGWidgetHostingViewController, WGWidgetListItemViewController;
 
-@interface WGWidgetPlatterView : MTTitledPlatterView
+@interface WGWidgetPlatterView : PLTitledPlatterView
 {
     UIView *_compatibilityDarkeningView;
     NSString *_longerTitle;

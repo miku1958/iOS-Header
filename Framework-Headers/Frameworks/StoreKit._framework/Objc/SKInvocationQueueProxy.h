@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, Protocol;
 
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) id invocationTarget; // @synthesize invocationTarget=_invocationTarget;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithProtocol:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;

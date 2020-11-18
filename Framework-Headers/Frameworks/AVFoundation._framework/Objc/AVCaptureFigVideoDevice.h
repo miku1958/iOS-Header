@@ -22,6 +22,7 @@
     NSArray *_formats;
     AVCaptureDeviceFormat *_activeFormat;
     AVCaptureDeviceFormat *_activeDepthDataFormat;
+    CDStruct_1b6d18a9 _activeDepthDataMinFrameDuration;
     CDStruct_1b6d18a9 _activeMinFrameDuration;
     BOOL _activeMinFrameDurationSetByClient;
     CDStruct_1b6d18a9 _activeMaxFrameDuration;
@@ -43,6 +44,8 @@
     float _exposureTargetBias;
     float _exposureTargetOffsetKVO;
     struct CGPoint _exposurePointOfInterest;
+    CDStruct_1b6d18a9 _activeMaxExposureDuration;
+    CDStruct_1b6d18a9 _activeMaxExposureDurationClientOverride;
     BOOL _adjustingExposure;
     BOOL _waitingForExposureAdjustmentBeforeLocking;
     long long _wbMode;
@@ -85,6 +88,7 @@
     BOOL _highDynamicRangeSceneDetectionEnabled;
     BOOL _automaticallyAdjustsVideoHDREnabled;
     BOOL _videoHDREnabled;
+    BOOL _videoHDRSuspended;
     BOOL _sceneIsHighDynamicRange;
     BOOL _isStillImageStabilizationScene;
     long long _activeColorSpace;
@@ -109,11 +113,14 @@
     NSArray *_availableBoxedMetadataFormatDescriptions;
     NSDictionary *_sessionPresetCompressionSettings;
     NSDictionary *_h264EncoderLimitations;
+    NSDictionary *_hevcEncoderSettings;
     NSObject<OS_dispatch_queue> *_observedHighFrequencyPropertiesQueue;
     NSMutableDictionary *_observedHighFrequencyPropertyCounts;
     NSMutableDictionary *_propertyToFigCaptureSourcePropertyMap;
     NSMutableDictionary *_cachedFigCaptureSourceProperties;
     AVCaptureSystemPressureState *_systemPressureState;
+    int _highestSystemPressureLevelEncountered;
+    BOOL _lowLightVideoCaptureEnabled;
 }
 
 + (BOOL)_cameraAccessIsEnabled;
@@ -149,8 +156,9 @@
 - (void)_performBlockOnMainThread:(CDUnknownBlockType)arg1;
 - (double)_predictedTempForGains:(CDStruct_d6531dd4)arg1;
 - (void)_rampToVideoZoomFactor:(double)arg1 withRate:(float)arg2 duration:(double)arg3 rampType:(int)arg4;
-- (id)_recommendedFrameRateRangeForVideoFormat:(id)arg1 depthFormat:(id)arg2 systemPressureLevel:(id)arg3;
+- (id)_recommendedFrameRateRangeForVideoFormat:(id)arg1 depthFormat:(id)arg2 figSystemPressureLevel:(int)arg3;
 - (void)_reconnectToFigCaptureSource:(struct OpaqueFigCaptureSource *)arg1;
+- (void)_resetVideoHDRSuspended;
 - (void)_restoreFigCaptureSourceProperties;
 - (void)_setActiveFormat:(id)arg1 resetVideoZoomFactorAndMinMaxFrameDurations:(BOOL)arg2;
 - (void)_setActiveVideoMaxFrameDuration:(CDStruct_1b6d18a9)arg1;
@@ -174,7 +182,6 @@
 - (void)_setHighDynamicRangeScene:(BOOL)arg1;
 - (void)_setImageControlMode:(long long)arg1;
 - (void)_setIsStillImageStabilizationScene:(BOOL)arg1;
-- (void)_setLowLightBoostEnabled:(BOOL)arg1;
 - (void)_setMaxAvailableVideoZoomFactor:(double)arg1;
 - (void)_setMinAvailableVideoZoomFactor:(double)arg1;
 - (void)_setPhotoSettingsForSceneMonitoring:(id)arg1;
@@ -195,14 +202,17 @@
 - (double)_whiteBalanceTemperatureForMixingFactor:(double)arg1;
 - (long long)activeColorSpace;
 - (id)activeDepthDataFormat;
+- (CDStruct_1b6d18a9)activeDepthDataMinFrameDuration;
 - (id)activeFormat;
+- (CDStruct_1b6d18a9)activeMaxExposureDuration;
+- (CDStruct_1b6d18a9)activeMaxExposureDurationClientOverride;
 - (CDStruct_1b6d18a9)activeVideoMaxFrameDuration;
 - (CDStruct_1b6d18a9)activeVideoMinFrameDuration;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
+- (BOOL)appliesSessionPresetMaxIntegrationTimeOverrideToActiveFormat;
 - (long long)autoFocusRangeRestriction;
 - (BOOL)automaticallyAdjustsImageControlMode;
 - (BOOL)automaticallyAdjustsVideoHDREnabled;
-- (BOOL)automaticallyEnablesLowLightBoostWhenAvailable;
 - (id)availableBoxedMetadataFormatDescriptions;
 - (id)bravoCameraSelectionBehavior;
 - (BOOL)cachesFigCaptureSourceConfigurationChanges;
@@ -228,6 +238,7 @@
 - (int)faceRectangleAngle;
 - (struct OpaqueFigCaptureSource *)figCaptureSource;
 - (long long)flashMode;
+- (float)focalLength;
 - (long long)focusMode;
 - (struct CGPoint)focusPointOfInterest;
 - (id)formats;
@@ -235,6 +246,7 @@
 - (BOOL)hasFlash;
 - (BOOL)hasMediaType:(id)arg1;
 - (BOOL)hasTorch;
+- (int)hevcTurboModeVersion;
 - (long long)imageControlMode;
 - (id)init;
 - (BOOL)isActiveVideoMaxFrameDurationSet;
@@ -243,6 +255,7 @@
 - (BOOL)isAdjustingFocus;
 - (BOOL)isAdjustingWhiteBalance;
 - (BOOL)isAutoFocusRangeRestrictionSupported;
+- (BOOL)isAutoRedEyeReductionSupported;
 - (BOOL)isCameraIntrinsicMatrixDeliverySupported;
 - (BOOL)isConnected;
 - (BOOL)isDiagnosticsTestSupported:(id)arg1;
@@ -262,6 +275,7 @@
 - (BOOL)isHDRSupported;
 - (BOOL)isHEIFSupported;
 - (BOOL)isHEVCPreferred;
+- (BOOL)isHEVCRelaxedAverageBitRateTargetSupported;
 - (BOOL)isHEVCSupported;
 - (BOOL)isHighDynamicRangeScene;
 - (BOOL)isHighDynamicRangeSceneDetectionEnabled;
@@ -272,8 +286,7 @@
 - (BOOL)isLockedForConfiguration;
 - (BOOL)isLockingFocusWithCustomLensPositionSupported;
 - (BOOL)isLockingWhiteBalanceWithCustomDeviceGainsSupported;
-- (BOOL)isLowLightBoostEnabled;
-- (BOOL)isLowLightBoostSupported;
+- (BOOL)isLowLightVideoCaptureEnabled;
 - (BOOL)isMachineReadableCodeDetectionSupported;
 - (BOOL)isRampingVideoZoom;
 - (BOOL)isRawStillImageCaptureSupported;
@@ -287,6 +300,7 @@
 - (BOOL)isTorchAvailable;
 - (BOOL)isTorchModeSupported:(long long)arg1;
 - (BOOL)isVideoHDREnabled;
+- (BOOL)isVideoHDRSuspended;
 - (BOOL)isVideoStabilizationSupported;
 - (BOOL)isWhiteBalanceModeSupported:(long long)arg1;
 - (BOOL)isWideColorSupported;
@@ -313,13 +327,14 @@
 - (id)runDiagnosticsWithTestType:(id)arg1;
 - (void)setActiveColorSpace:(long long)arg1;
 - (void)setActiveDepthDataFormat:(id)arg1;
+- (void)setActiveDepthDataMinFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setActiveFormat:(id)arg1;
+- (void)setActiveMaxExposureDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setActiveVideoMaxFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setActiveVideoMinFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setAutoFocusRangeRestriction:(long long)arg1;
 - (void)setAutomaticallyAdjustsImageControlMode:(BOOL)arg1;
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(BOOL)arg1;
-- (void)setAutomaticallyEnablesLowLightBoostWhenAvailable:(BOOL)arg1;
 - (void)setCachesFigCaptureSourceConfigurationChanges:(BOOL)arg1;
 - (void)setExposureMode:(long long)arg1;
 - (void)setExposureModeCustomWithDuration:(CDStruct_1b6d18a9)arg1 ISO:(float)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -334,6 +349,7 @@
 - (void)setFocusPointOfInterest:(struct CGPoint)arg1;
 - (void)setHighDynamicRangeSceneDetectionEnabled:(BOOL)arg1;
 - (void)setImageControlMode:(long long)arg1;
+- (void)setLowLightVideoCaptureEnabled:(BOOL)arg1;
 - (void)setProvidesStortorgetMetadata:(BOOL)arg1;
 - (void)setSmileDetectionEnabled:(BOOL)arg1;
 - (void)setSmoothAutoFocusEnabled:(BOOL)arg1;
@@ -341,6 +357,7 @@
 - (void)setTorchMode:(long long)arg1;
 - (BOOL)setTorchModeOnWithLevel:(float)arg1 error:(id *)arg2;
 - (void)setVideoHDREnabled:(BOOL)arg1;
+- (void)setVideoHDRSuspended:(BOOL)arg1;
 - (void)setVideoZoomDownscaleStageHint:(long long)arg1;
 - (void)setVideoZoomDrawOverlay:(BOOL)arg1;
 - (void)setVideoZoomFactor:(double)arg1;

@@ -21,6 +21,9 @@
 @property (nonatomic) unsigned long long managementOptions; // @synthesize managementOptions=_managementOptions;
 @property (copy, nonatomic) NSString *originator; // @synthesize originator=_originator;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;

@@ -30,9 +30,11 @@
 @property (nonatomic) long long position; // @synthesize position=_position;
 
 - (void).cxx_destruct;
-- (id)identifiersForMapping;
+- (id)parentScopedIdentifier;
 - (id)propertiesDescription;
 - (id)relatedIdentifier;
+- (id)scopedIdentifiersForMapping;
+- (void)setParentScopedIdentifier:(id)arg1;
 - (void)setRelatedIdentifier:(id)arg1;
 - (id)translateToClientChangeUsingIDMapping:(id)arg1 error:(id *)arg2;
 - (id)translateToCloudChangeUsingIDMapping:(id)arg1 error:(id *)arg2;

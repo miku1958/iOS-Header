@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADCreativeControllerDelegate-Protocol.h>
-#import <iAd/ADPrivacyViewControllerInternalDelegate-Protocol.h>
 #import <iAd/ADWebViewActionViewControllerDelegate-Protocol.h>
+#import <iAd/NewsTransparencyViewControllerDelegate-Protocol.h>
 
-@class ADAdActionPublicAttributes, ADAdImpressionPublicAttributes, ADAdSpaceConfiguration, ADContext, ADCreativeController, ADMediaAnalyticsEventInfo, ADPrivacyViewController, ADRemoteActionViewController, ADWebViewActionViewController, NSArray, NSString, NSURL, _UIAsyncInvocation;
+@class ADAdActionPublicAttributes, ADAdImpressionPublicAttributes, ADAdSpaceConfiguration, ADContext, ADCreativeController, ADMRAIDAction, ADMediaAnalyticsEventInfo, ADPrivacyDetailsAttributes, ADSInternalSize, ADWebViewActionViewController, NSArray, NSString, NSURL, NewsTransparencyViewController, UIViewController;
 @protocol ADAdRecipient;
 
-@interface ADAdSpace : NSObject <ADPrivacyViewControllerInternalDelegate, ADWebViewActionViewControllerDelegate, ADCreativeControllerDelegate>
+@interface ADAdSpace : NSObject <NewsTransparencyViewControllerDelegate, ADWebViewActionViewControllerDelegate, ADCreativeControllerDelegate>
 {
     id<ADAdRecipient> _recipient;
     BOOL _requiresFastVisibiltyTestOnly;
     BOOL _firedAdStatusEvent;
-    BOOL _isModalInterstitial;
     BOOL _didInstallCreativeView;
     BOOL _hasImpressed;
     BOOL _adLibManagedVideo;
@@ -32,6 +31,7 @@
     BOOL _fastVisibilityContextIsFeed;
     BOOL _shouldTearDownCreativeControllerAfterDismissingRemoteActionViewController;
     BOOL _privacyRequestInProgress;
+    BOOL _actionInProgress;
     float _lastPlayTime;
     float _lastVolume;
     float _totalDuration;
@@ -40,25 +40,29 @@
     NSString *_identifier;
     NSURL *_serverURL;
     NSString *_advertisingSection;
+    ADSInternalSize *_containerSize;
+    ADSInternalSize *_reorientedContainerSize;
     NSString *_authenticationUserName;
     ADContext *_context;
     ADAdImpressionPublicAttributes *_currentAdImpressionPublicAttributes;
     ADAdActionPublicAttributes *_currentActionPublicAttributes;
+    ADPrivacyDetailsAttributes *_currentPrivacyDetailsAttributes;
     unsigned long long _reUseCount;
     long long _pendingAnalyticsVideoState;
     ADMediaAnalyticsEventInfo *_pendingAnalyticsEventInfo;
+    ADMRAIDAction *_mraidAction;
     long long _visibility;
     double _lastSlowCheck;
     ADCreativeController *_creativeController;
-    ADRemoteActionViewController *_remoteActionViewController;
     ADWebViewActionViewController *_webViewActionViewController;
-    _UIAsyncInvocation *_remoteViewControllerRequestCancelationInvocation;
+    UIViewController *_customActionViewController;
     long long _progressMileStoneMet;
     NSArray *_prerollVideoAssets;
-    ADPrivacyViewController *_privacyViewController;
+    NewsTransparencyViewController *_newsViewController;
     struct CGRect _selectedAdFrame;
 }
 
+@property (nonatomic) BOOL actionInProgress; // @synthesize actionInProgress=_actionInProgress;
 @property (nonatomic) BOOL actionViewControllerReadyForPresentation; // @synthesize actionViewControllerReadyForPresentation=_actionViewControllerReadyForPresentation;
 @property (nonatomic) BOOL actionViewControllerWantsDismissal; // @synthesize actionViewControllerWantsDismissal=_actionViewControllerWantsDismissal;
 @property (nonatomic) BOOL adLibManagedVideo; // @synthesize adLibManagedVideo=_adLibManagedVideo;
@@ -67,10 +71,13 @@
 @property (copy, nonatomic) NSString *authenticationUserName; // @synthesize authenticationUserName=_authenticationUserName;
 @property (readonly, nonatomic) ADAdSpaceConfiguration *configuration;
 @property (readonly, nonatomic) NSString *connectionAssertionIdentifier;
+@property (strong, nonatomic) ADSInternalSize *containerSize; // @synthesize containerSize=_containerSize;
 @property (copy, nonatomic) ADContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) ADCreativeController *creativeController; // @synthesize creativeController=_creativeController;
 @property (strong, nonatomic) ADAdActionPublicAttributes *currentActionPublicAttributes; // @synthesize currentActionPublicAttributes=_currentActionPublicAttributes;
 @property (strong, nonatomic) ADAdImpressionPublicAttributes *currentAdImpressionPublicAttributes; // @synthesize currentAdImpressionPublicAttributes=_currentAdImpressionPublicAttributes;
+@property (readonly, nonatomic) ADPrivacyDetailsAttributes *currentPrivacyDetailsAttributes; // @synthesize currentPrivacyDetailsAttributes=_currentPrivacyDetailsAttributes;
+@property (strong, nonatomic) UIViewController *customActionViewController; // @synthesize customActionViewController=_customActionViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didInstallCreativeView; // @synthesize didInstallCreativeView=_didInstallCreativeView;
@@ -79,20 +86,19 @@
 @property (nonatomic) BOOL hasImpressed; // @synthesize hasImpressed=_hasImpressed;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) BOOL isModalInterstitial; // @synthesize isModalInterstitial=_isModalInterstitial;
 @property (nonatomic) float lastPlayTime; // @synthesize lastPlayTime=_lastPlayTime;
 @property (nonatomic) double lastSlowCheck; // @synthesize lastSlowCheck=_lastSlowCheck;
 @property (nonatomic) float lastVolume; // @synthesize lastVolume=_lastVolume;
+@property (strong, nonatomic) ADMRAIDAction *mraidAction; // @synthesize mraidAction=_mraidAction;
+@property (strong, nonatomic) NewsTransparencyViewController *newsViewController; // @synthesize newsViewController=_newsViewController;
 @property (copy, nonatomic) ADMediaAnalyticsEventInfo *pendingAnalyticsEventInfo; // @synthesize pendingAnalyticsEventInfo=_pendingAnalyticsEventInfo;
 @property (nonatomic) long long pendingAnalyticsVideoState; // @synthesize pendingAnalyticsVideoState=_pendingAnalyticsVideoState;
 @property (strong, nonatomic) NSArray *prerollVideoAssets; // @synthesize prerollVideoAssets=_prerollVideoAssets;
 @property (nonatomic) BOOL privacyRequestInProgress; // @synthesize privacyRequestInProgress=_privacyRequestInProgress;
-@property (strong, nonatomic) ADPrivacyViewController *privacyViewController; // @synthesize privacyViewController=_privacyViewController;
 @property (nonatomic) long long progressMileStoneMet; // @synthesize progressMileStoneMet=_progressMileStoneMet;
 @property (nonatomic) unsigned long long reUseCount; // @synthesize reUseCount=_reUseCount;
 @property (readonly, nonatomic) id<ADAdRecipient> recipient;
-@property (strong, nonatomic) ADRemoteActionViewController *remoteActionViewController; // @synthesize remoteActionViewController=_remoteActionViewController;
-@property (strong, nonatomic) _UIAsyncInvocation *remoteViewControllerRequestCancelationInvocation; // @synthesize remoteViewControllerRequestCancelationInvocation=_remoteViewControllerRequestCancelationInvocation;
+@property (strong, nonatomic) ADSInternalSize *reorientedContainerSize; // @synthesize reorientedContainerSize=_reorientedContainerSize;
 @property (nonatomic) BOOL requiresFastVisibiltyTestOnly; // @synthesize requiresFastVisibiltyTestOnly=_requiresFastVisibiltyTestOnly;
 @property (nonatomic) struct CGRect selectedAdFrame; // @synthesize selectedAdFrame=_selectedAdFrame;
 @property (copy, nonatomic) NSURL *serverURL; // @synthesize serverURL=_serverURL;
@@ -116,29 +122,24 @@
 - (void)_considerPresentingWebViewActionViewControllerWithURL:(id)arg1;
 - (void)_handleMRAIDActionPresentation;
 - (void)_notifiyCreativeControllerOfActionViewControllerPresentation;
+- (void)_openURLInBrowser:(id)arg1;
 - (void)_presentPrivacyViewController;
 - (void)_remote_actionViewControllerReadyForPresentation;
 - (void)_remote_close;
 - (void)_remote_creativeDidFailWithError:(id)arg1;
-- (void)_remote_dismissViewController;
 - (void)_remote_dismissViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_remote_openURL:(id)arg1;
 - (void)_remote_pauseBannerMedia;
-- (void)_remote_requestViewControllerWithClassName:(id)arg1 forAdSpaceControllerWithIdentifier:(id)arg2;
 - (void)_remote_resumeBannerMedia;
-- (void)_remote_updateActionViewControllerOrientation:(unsigned long long)arg1;
-- (void)_requestAdFromAdSheet;
+- (void)_requestAdFromAdServingDaemon;
 - (void)_tearDownCreativeController;
+- (void)_tearDownCustomActionViewController;
 - (void)_tearDownWebActionViewController;
 - (id)_updateIdentifier;
 - (id)_videoAssetsForVideoURL:(id)arg1;
-- (void)adPrivacyViewController:(id)arg1 didFailWithError:(id)arg2;
-- (void)adPrivacyViewControllerDidAppear:(id)arg1;
-- (void)adPrivacyViewControllerDidDisappear:(id)arg1;
-- (void)adPrivacyViewControllerDidDismiss:(id)arg1;
-- (void)adPrivacyViewControllerDidLinkOut:(id)arg1;
-- (void)adPrivacyViewControllerDidLoad:(id)arg1;
-- (void)adPrivacyViewControllerDidRenderTransparency:(id)arg1;
+- (void)actionCompletedWithSystemEvent:(int)arg1;
+- (id)adPrivacyDetailsAttributes;
+- (void)beginActionFromFrame:(id)arg1 tapLocation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)canReuseForContext:(id)arg1;
 - (void)cancelBannerViewAction;
 - (void)captureEvent:(id)arg1 forAd:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -166,15 +167,29 @@
 - (void)creativeControllerViewDidRequestCreateCalendarEvent:(id)arg1 withTapLocation:(struct CGPoint)arg2;
 - (void)creativeControllerViewDidRequestExpandURL:(id)arg1 withMaximumSize:(struct CGSize)arg2 withTapLocation:(struct CGPoint)arg3;
 - (void)creativeControllerViewDidRequestOpenURL:(id)arg1 withTapLocation:(struct CGPoint)arg2;
+- (struct CGSize)currentAdSizeForContainerSize:(struct CGSize)arg1;
 - (void)dealloc;
 - (void)determineActionForTapAtLocation:(struct CGPoint)arg1 inFrame:(struct CGRect)arg2 withMRAIDAction:(id)arg3 completeHandler:(CDUnknownBlockType)arg4;
+- (void)dismissCustomActionViewController;
 - (void)executeBannerViewActionFrom:(struct CGRect)arg1 withTapLocation:(struct CGPoint)arg2;
 - (void)impressionPublicAttributesDidLoad:(id)arg1;
 - (id)initForRecipient:(id)arg1;
 - (void)installCreativeView;
 - (void)internalAdTypeDidChange;
+- (long long)modalPresentationStyle;
+- (void)newsTransparencyViewController:(id)arg1 didFailWithError:(id)arg2;
+- (void)newsTransparencyViewControllerDidDismiss:(id)arg1;
+- (void)newsTransparencyViewControllerDidLinkOut:(id)arg1;
+- (void)newsTransparencyViewControllerDidLoad:(id)arg1;
+- (void)newsTransparencyViewControllerDidRenderView:(id)arg1;
+- (void)openURL:(id)arg1 fromFrame:(id)arg2 tapLocation:(id)arg3;
+- (void)presentActionViewController:(id)arg1;
 - (void)proceedWithClosing:(BOOL)arg1;
 - (void)refuseBannerViewAction;
+- (void)reportAdPrivacySheetDidAppear;
+- (void)reportAdPrivacySheetDidDisappear;
+- (void)reportAdPrivacySheetDidLinkOut;
+- (void)reportAdPrivacySheetDidRender;
 - (void)reportNativeClickEvent;
 - (void)safariViewControllerDidFinish:(id)arg1;
 - (void)showAdTransparency;

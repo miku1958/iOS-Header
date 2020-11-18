@@ -6,12 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <TransparencyDetailsView/UIWebViewDelegate-Protocol.h>
+#import <TransparencyDetailsView/WKNavigationDelegate-Protocol.h>
 
-@class ADUserTransparencyResponse, NSString, UIActivityIndicatorView, UILabel, UINavigationBar, UIWebView;
+@class ADUserTransparencyResponse, NSString, UIActivityIndicatorView, UILabel, UINavigationBar, WKWebView;
 @protocol UserTransparencyViewControllerDelegate;
 
-@interface UserTransparencyViewController : UIViewController <UIWebViewDelegate>
+@interface UserTransparencyViewController : UIViewController <WKNavigationDelegate>
 {
     UIActivityIndicatorView *activityIndicator;
     id<UserTransparencyViewControllerDelegate> _delegate;
@@ -24,7 +24,7 @@
     UILabel *_errorLabel;
     double _statusBarOffset;
     UINavigationBar *_transparencyNavBar;
-    UIWebView *_myUserPrivacyWebView;
+    WKWebView *_myUserPrivacyWebView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,7 +33,7 @@
 @property (strong, nonatomic) UILabel *errorLabel; // @synthesize errorLabel=_errorLabel;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isiPad; // @synthesize isiPad=_isiPad;
-@property (strong, nonatomic) UIWebView *myUserPrivacyWebView; // @synthesize myUserPrivacyWebView=_myUserPrivacyWebView;
+@property (strong, nonatomic) WKWebView *myUserPrivacyWebView; // @synthesize myUserPrivacyWebView=_myUserPrivacyWebView;
 @property (nonatomic) double statusBarOffset; // @synthesize statusBarOffset=_statusBarOffset;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UINavigationBar *transparencyNavBar; // @synthesize transparencyNavBar=_transparencyNavBar;
@@ -58,9 +58,10 @@
 - (void)presentViewDelegate;
 - (void)requestUserTransparencyDetailsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)viewDidLayoutSubviews;
-- (void)webView:(id)arg1 didFailLoadWithError:(id)arg2;
-- (BOOL)webView:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(long long)arg3;
-- (void)webViewDidFinishLoad:(id)arg1;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
+- (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
+- (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
+- (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
 
 @end
 

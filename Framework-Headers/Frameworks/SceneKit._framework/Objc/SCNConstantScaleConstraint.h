@@ -8,11 +8,17 @@
 
 @interface SCNConstantScaleConstraint : SCNConstraint
 {
+    float _scale;
+    BOOL _screenSpace;
 }
+
+@property (nonatomic) float scale;
+@property (nonatomic) BOOL screenSpace;
 
 + (id)constantScaleConstraint;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 

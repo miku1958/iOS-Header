@@ -12,13 +12,14 @@
 {
     NSMutableArray *_sections;
     long long _axis;
-    struct CGSize _contentSize;
+    struct CGSize _internalContentSize;
     struct UIEdgeInsets _edgeInsets;
 }
 
 @property (nonatomic) long long axis; // @synthesize axis=_axis;
-@property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
+@property (readonly, nonatomic) struct CGSize contentSize;
 @property (readonly, nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
+@property (nonatomic) struct CGSize internalContentSize; // @synthesize internalContentSize=_internalContentSize;
 @property (readonly, copy, nonatomic) NSArray *sections;
 
 - (void).cxx_destruct;

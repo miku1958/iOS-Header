@@ -68,6 +68,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)isInvisibleAutosizingShape;
 - (double)maxAutoGrowWidthForTextLayout:(id)arg1;
 - (struct CGRect)nonAutosizedFrameForTextLayout:(id)arg1;
+- (BOOL)p_hasVisibleContents;
+- (BOOL)p_isEmptyList;
+- (BOOL)p_isEmptyParagraphWithFillOrBorders;
 - (BOOL)parentAutosizes;
 - (id)pathSource;
 - (double)positionForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2 target:(id)arg3 outWidth:(double *)arg4 outGap:(double *)arg5;

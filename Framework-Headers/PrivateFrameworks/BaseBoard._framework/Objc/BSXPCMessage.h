@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue, OS_xpc_object;
 
@@ -17,7 +17,7 @@
     int _replied;
 }
 
-@property (readonly, strong, nonatomic) NSObject<OS_xpc_object> *payload; // @synthesize payload=_message;
+@property (readonly, nonatomic) NSObject<OS_xpc_object> *payload; // @synthesize payload=_message;
 
 + (id)message:(long long)arg1 withPacker:(CDUnknownBlockType)arg2;
 + (id)message:(long long)arg1 withPacker:(CDUnknownBlockType)arg2 replyHandler:(CDUnknownBlockType)arg3 replyQueue:(id)arg4;
@@ -29,8 +29,8 @@
 + (void)sendMessage:(long long)arg1 toConnection:(id)arg2 withMessagePacker:(CDUnknownBlockType)arg3 replyHandler:(CDUnknownBlockType)arg4 replyQueue:(id)arg5;
 + (void)sendMessageWithPacker:(CDUnknownBlockType)arg1 toConnection:(id)arg2;
 + (void)sendMessageWithPacker:(CDUnknownBlockType)arg1 toConnection:(id)arg2 replyHandler:(CDUnknownBlockType)arg3 replyQueue:(id)arg4;
+- (void).cxx_destruct;
 - (id)_errorForXPCMessageReply:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)forcefullyInvokeReplyHandler:(id)arg1;
 - (id)initWithMessage:(long long)arg1 packer:(CDUnknownBlockType)arg2 replyHandler:(CDUnknownBlockType)arg3 replyQueue:(id)arg4;

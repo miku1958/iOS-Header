@@ -108,6 +108,7 @@ __attribute__((visibility("hidden")))
 - (struct _OpaquePCSShareProtection *)createRecordPCSWithEncryptedZonePCS:(struct __CFData *)arg1 sharePCS:(struct _OpaquePCSShareProtection *)arg2 createLite:(BOOL)arg3 error:(id *)arg4;
 - (struct _OpaquePCSShareProtection *)createRecordPCSWithZonePCS:(struct _OpaquePCSShareProtection *)arg1 sharePCS:(struct _OpaquePCSShareProtection *)arg2 createLite:(BOOL)arg3 error:(id *)arg4;
 - (struct _OpaquePCSShareProtection *)createSharePCSForService:(unsigned long long)arg1 withError:(id *)arg2;
+- (struct _OpaquePCSShareProtection *)createSharePCSFromData:(id)arg1 sharePrivateKey:(id)arg2 error:(id *)arg3;
 - (struct _OpaquePCSShareProtection *)createSharePCSFromData:(id)arg1 sharingIdentity:(struct _PCSIdentityData *)arg2 error:(id *)arg3;
 - (struct _OpaquePCSShareProtection *)createSharePCSFromData:(id)arg1 sharingIdentity:(struct _PCSIdentityData *)arg2 logFailure:(BOOL)arg3 error:(id *)arg4;
 - (struct _OpaquePCSShareProtection *)createSharePCSFromData:(id)arg1 withService:(unsigned long long)arg2 error:(id *)arg3;
@@ -128,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (struct _PCSIdentityData *)debugSharingIdentity;
 - (id)decryptChainPCSForRecordPCS:(id)arg1;
 - (id)decryptPCSDataOnSharePCS:(id)arg1;
+- (id)decryptPCSDataOnSharePCS:(id)arg1 withPublicSharingKey:(id)arg2;
 - (id)etagFromPCSData:(id)arg1;
 - (id)etagFromRecordPCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
 - (id)etagFromSharePCS:(struct _OpaquePCSShareProtection *)arg1 error:(id *)arg2;
@@ -138,6 +140,7 @@ __attribute__((visibility("hidden")))
 - (void)markMissingIdentitiesForService:(id)arg1 fromFailedDecryptError:(struct __CFError *)arg2;
 - (void)markUndecryptableZonePCS:(id)arg1 forManateeService:(id)arg2;
 - (id)newAssetKeyWithType:(unsigned long long)arg1 withError:(id *)arg2;
+- (id)pcsDataFromFetchedShare:(id)arg1 withPublicSharingKey:(id)arg2 withServiceType:(unsigned long long)arg3 error:(id *)arg4;
 - (id)pcsDataFromFetchedShare:(id)arg1 withServiceType:(unsigned long long)arg2 error:(id *)arg3;
 - (void)preflightIdentitiesForService:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)preflightIdentitiesForService:(unsigned long long)arg1 withSyncKeyRegistryRetry:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;

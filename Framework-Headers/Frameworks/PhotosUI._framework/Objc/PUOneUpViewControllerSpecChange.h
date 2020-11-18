@@ -30,7 +30,10 @@ __attribute__((visibility("hidden")))
     BOOL _bufferingIndicatorSizeChanged;
     BOOL _shouldUseCompactCommentsTitleChanged;
     BOOL _tileInitialContentModeChanged;
+    BOOL _shouldCounterrotateReviewScreenBarsChanged;
     BOOL _shouldPinContentToTopChanged;
+    BOOL _shouldLayoutReviewScreenControlBarVerticallyChanged;
+    BOOL _shouldPlaceScrubberInScrubberBarChanged;
 }
 
 @property (nonatomic, setter=_setBackgroundColorOverrideChanged:) BOOL backgroundColorOverrideChanged; // @synthesize backgroundColorOverrideChanged=_backgroundColorOverrideChanged;
@@ -42,14 +45,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setPresentedForPreviewChanged:) BOOL presentedForPreviewChanged; // @synthesize presentedForPreviewChanged=_presentedForPreviewChanged;
 @property (nonatomic, setter=_setProgressIndicatorSizeChanged:) BOOL progressIndicatorSizeChanged; // @synthesize progressIndicatorSizeChanged=_progressIndicatorSizeChanged;
 @property (nonatomic, setter=_setShouldAutoplayOnAppearChanged:) BOOL shouldAutoplayOnAppearChanged; // @synthesize shouldAutoplayOnAppearChanged=_shouldAutoplayOnAppearChanged;
+@property (nonatomic, setter=_setShouldCounterrotateReviewScreenBarsChanged:) BOOL shouldCounterrotateReviewScreenBarsChanged; // @synthesize shouldCounterrotateReviewScreenBarsChanged=_shouldCounterrotateReviewScreenBarsChanged;
 @property (nonatomic, setter=_setShouldDisplayAssetExplorerReviewScreenBadgesChanged:) BOOL shouldDisplayAssetExplorerReviewScreenBadgesChanged; // @synthesize shouldDisplayAssetExplorerReviewScreenBadgesChanged=_shouldDisplayAssetExplorerReviewScreenBadgesChanged;
 @property (nonatomic, setter=_setShouldDisplayBadgesChanged:) BOOL shouldDisplayBadgesChanged; // @synthesize shouldDisplayBadgesChanged=_shouldDisplayBadgesChanged;
 @property (nonatomic, setter=_setShouldDisplayBufferingIndicatorsChanged:) BOOL shouldDisplayBufferingIndicatorsChanged; // @synthesize shouldDisplayBufferingIndicatorsChanged=_shouldDisplayBufferingIndicatorsChanged;
 @property (nonatomic, setter=_setShouldDisplayEmptyPlaceholderChanged:) BOOL shouldDisplayEmptyPlaceholderChanged; // @synthesize shouldDisplayEmptyPlaceholderChanged=_shouldDisplayEmptyPlaceholderChanged;
 @property (nonatomic, setter=_setShouldDisplayPlayButtonsChanged:) BOOL shouldDisplayPlayButtonsChanged; // @synthesize shouldDisplayPlayButtonsChanged=_shouldDisplayPlayButtonsChanged;
 @property (nonatomic, setter=_setShouldDisplayProgressIndicatorsChanged:) BOOL shouldDisplayProgressIndicatorsChanged; // @synthesize shouldDisplayProgressIndicatorsChanged=_shouldDisplayProgressIndicatorsChanged;
+@property (nonatomic, setter=_setShouldLayoutReviewScreenControlBarVerticallyChanged:) BOOL shouldLayoutReviewScreenControlBarVerticallyChanged; // @synthesize shouldLayoutReviewScreenControlBarVerticallyChanged=_shouldLayoutReviewScreenControlBarVerticallyChanged;
 @property (nonatomic, setter=_setShouldPinContentToTopChanged:) BOOL shouldPinContentToTopChanged; // @synthesize shouldPinContentToTopChanged=_shouldPinContentToTopChanged;
 @property (nonatomic, setter=_setShouldPlaceButtonsInNavigationBarChanged:) BOOL shouldPlaceButtonsInNavigationBarChanged; // @synthesize shouldPlaceButtonsInNavigationBarChanged=_shouldPlaceButtonsInNavigationBarChanged;
+@property (nonatomic, setter=_setShouldPlaceScrubberInScrubberBarChanged:) BOOL shouldPlaceScrubberInScrubberBarChanged; // @synthesize shouldPlaceScrubberInScrubberBarChanged=_shouldPlaceScrubberInScrubberBarChanged;
 @property (nonatomic, setter=_setShouldUseCompactCommentsTitleChanged:) BOOL shouldUseCompactCommentsTitleChanged; // @synthesize shouldUseCompactCommentsTitleChanged=_shouldUseCompactCommentsTitleChanged;
 @property (nonatomic, setter=_setShouldUseCompactTitleViewChanged:) BOOL shouldUseCompactTitleViewChanged; // @synthesize shouldUseCompactTitleViewChanged=_shouldUseCompactTitleViewChanged;
 @property (nonatomic, setter=_setShouldUseContentGuideInsetsChanged:) BOOL shouldUseContentGuideInsetsChanged; // @synthesize shouldUseContentGuideInsetsChanged=_shouldUseContentGuideInsetsChanged;

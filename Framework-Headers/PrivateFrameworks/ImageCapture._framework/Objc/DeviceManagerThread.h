@@ -6,11 +6,15 @@
 
 #import <Foundation/NSThread.h>
 
+__attribute__((visibility("hidden")))
 @interface DeviceManagerThread : NSThread
 {
 }
 
++ (void)runBlock:(CDUnknownBlockType)arg1;
 - (void)main;
+- (void)performBlock:(CDUnknownBlockType)arg1;
+- (void)performBlock:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;
 
 @end
 

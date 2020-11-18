@@ -4,16 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CADisplay, NSString;
+@class NSString;
 
 @interface CADisplayMode : NSObject
 {
-    struct Mode _mode;
-    CADisplay *_dpy;
-    unsigned long long _width;
-    unsigned long long _height;
+    struct CADisplayModePriv *_priv;
 }
 
 @property (readonly, copy, nonatomic) NSString *colorGamut;
@@ -28,7 +25,6 @@
 @property (readonly, nonatomic) unsigned long long width;
 
 + (id)_displayModeWithMode:(struct Mode)arg1 display:(id)arg2;
-- (id).cxx_construct;
 - (id)_display;
 - (id)_initWithMode:(struct Mode)arg1 display:(id)arg2;
 - (struct Mode)_mode;

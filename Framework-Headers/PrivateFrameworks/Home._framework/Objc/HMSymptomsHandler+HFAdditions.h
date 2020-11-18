@@ -7,9 +7,6 @@
 #import <HomeKit/HMSymptomsHandler.h>
 
 @interface HMSymptomsHandler (HFAdditions)
-
-@property (readonly, nonatomic) BOOL hf_isFixingSymptom;
-
 + (CDUnknownBlockType)hf_symptomArraySortComparator;
 + (id)hf_symptomTypesSortedByPriority;
 + (void)initialize;

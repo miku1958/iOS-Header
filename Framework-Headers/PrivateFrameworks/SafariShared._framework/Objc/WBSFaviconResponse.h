@@ -6,21 +6,29 @@
 
 #import <SafariShared/WBSSiteMetadataResponse.h>
 
-@class UIImage;
+#import <SafariShared/WBSIconResponse-Protocol.h>
 
-@interface WBSFaviconResponse : WBSSiteMetadataResponse
+@class NSString, UIColor, UIImage;
+
+@interface WBSFaviconResponse : WBSSiteMetadataResponse <WBSIconResponse>
 {
-    BOOL _defaultIcon;
     UIImage *_favicon;
+    unsigned long long _faviconType;
 }
 
-@property (readonly, nonatomic, getter=isDefaultIcon) BOOL defaultIcon; // @synthesize defaultIcon=_defaultIcon;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIColor *extractedBackgroundColor;
 @property (readonly, nonatomic) UIImage *favicon; // @synthesize favicon=_favicon;
+@property (readonly, nonatomic) unsigned long long faviconType; // @synthesize faviconType=_faviconType;
+@property (readonly, nonatomic, getter=isGenerated) BOOL generated;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIImage *icon;
+@property (readonly) Class superclass;
 
-+ (id)responseWithURL:(id)arg1 favicon:(id)arg2 isDefaultIcon:(BOOL)arg3;
 - (void).cxx_destruct;
 - (id)initWithURL:(id)arg1;
-- (id)initWithURL:(id)arg1 favicon:(id)arg2 isDefaultIcon:(BOOL)arg3;
+- (id)initWithURL:(id)arg1 favicon:(id)arg2 faviconType:(unsigned long long)arg3;
 
 @end
 

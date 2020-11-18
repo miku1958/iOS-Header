@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/CABackdropLayerDelegate-Protocol.h>
+#import <UIKitCore/CABackdropLayerDelegate-Protocol.h>
 
 @class CABackdropLayer, NSString;
 
@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (id)init;
+- (void)setContentScaleFactor:(double)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
-- (void)willMoveToWindow:(id)arg1;
 
 @end
 

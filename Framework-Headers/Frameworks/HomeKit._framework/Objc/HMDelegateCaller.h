@@ -37,6 +37,7 @@
 - (void)callCompletion:(CDUnknownBlockType)arg1 room:(id)arg2 error:(id)arg3;
 - (void)callCompletion:(CDUnknownBlockType)arg1 serviceGroup:(id)arg2 error:(id)arg3;
 - (void)callCompletion:(CDUnknownBlockType)arg1 user:(id)arg2 error:(id)arg3;
+- (void)callCompletion:(CDUnknownBlockType)arg1 value:(BOOL)arg2 conflictName:(id)arg3 error:(id)arg4;
 - (void)callCompletion:(CDUnknownBlockType)arg1 value:(BOOL)arg2 error:(id)arg3;
 - (void)callCompletion:(CDUnknownBlockType)arg1 zone:(id)arg2 error:(id)arg3;
 - (id)initWithQueue:(id)arg1;

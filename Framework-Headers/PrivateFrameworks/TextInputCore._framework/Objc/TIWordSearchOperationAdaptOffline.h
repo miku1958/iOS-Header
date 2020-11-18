@@ -21,8 +21,8 @@
 @property (copy, nonatomic) NSString *paragraph; // @synthesize paragraph=_paragraph;
 @property (nonatomic) double timeStamp; // @synthesize timeStamp=_timeStamp;
 
+- (void).cxx_destruct;
 - (void)cancel;
-- (void)dealloc;
 - (id)initWithWordSearch:(id)arg1 paragraph:(id)arg2 adaptationContext:(id)arg3 timeStamp:(double)arg4;
 - (void)perform;
 

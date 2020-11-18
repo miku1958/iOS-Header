@@ -8,6 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface GEOTFPredictedSpeed : PBCodable <NSCopying>
 {
     unsigned int _deltaMinutesInFuture;

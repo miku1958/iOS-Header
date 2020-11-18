@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ScreenReaderOutput/SCROBrailleDisplayCommandDispatcherDelegate-Protocol.h>
 #import <ScreenReaderOutput/SCROBrailleDriverDelegate-Protocol.h>
 
-@class NSLock, NSMutableArray, NSString, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
+@class NSAttributedString, NSLock, NSMutableArray, NSString, SCROBrailleDisplayInput, SCROBrailleDisplayStatus, SCROBrailleEventDispatcher, SCROBrailleLine;
 @protocol SCROBrailleDisplayCommandDispatcherProtocol, SCROBrailleDisplayDelegate, SCROBrailleDriverProtocol, SCROIOElementProtocol;
 
 @interface SCROBrailleDisplay : NSObject <SCROBrailleDisplayCommandDispatcherDelegate, SCROBrailleDriverDelegate>
@@ -49,6 +49,7 @@
     BOOL _isValid;
     BOOL _delegateWantsDisplayCallback;
     unsigned int _persistentKeyModifiers;
+    CDUnknownBlockType _eventHandled;
 }
 
 @property (nonatomic) BOOL automaticBrailleTranslationEnabled; // @synthesize automaticBrailleTranslationEnabled=_automaticBrailleTranslationEnabled;
@@ -56,6 +57,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL delegateWantsDisplayCallback;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSAttributedString *editingString;
+@property (copy, nonatomic) CDUnknownBlockType eventHandled; // @synthesize eventHandled=_eventHandled;
+@property (readonly, nonatomic) BOOL hasEdits;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inputAllowed; // @synthesize inputAllowed=_inputAllowed;
 @property (nonatomic) int inputContractionMode; // @synthesize inputContractionMode=_inputContractionMode;
@@ -65,12 +69,14 @@
 @property (nonatomic) BOOL outputShowEightDot; // @synthesize outputShowEightDot=_outputShowEightDot;
 @property (nonatomic) unsigned int persistentKeyModifiers; // @synthesize persistentKeyModifiers=_persistentKeyModifiers;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) SCROBrailleLine *testingBrailleLine;
 @property (nonatomic) BOOL wordWrapEnabled;
 
 + (BOOL)brailleDriverClassIsValid:(Class)arg1;
 + (id)displayWithIOElement:(id)arg1 driverIdentifier:(id)arg2 delegate:(id)arg3;
 - (void).cxx_destruct;
 - (void)_aggregatedStatusHandler:(id)arg1;
+- (BOOL)_attemptLoad;
 - (void)_blinkerEventHandler;
 - (void)_bulkStatusAttributesHandler:(id)arg1;
 - (void)_configurationChangeHandler;
@@ -137,6 +143,7 @@
 - (void)handleCommandTranslateForDispatcher:(id)arg1;
 - (void)handleEvent:(id)arg1;
 - (void)handleUnsupportedKeyEvent:(id)arg1 forDispatcher:(id)arg2;
+- (void)insertTypingString:(id)arg1;
 - (void)invalidate;
 - (id)ioElement;
 - (BOOL)isLoaded;
@@ -148,6 +155,7 @@
 - (void)panLeft;
 - (void)panRight;
 - (id)realStatus;
+- (void)requestFlushLine;
 - (void)setAggregatedStatus:(id)arg1;
 - (void)setBrailleFormatter:(id)arg1;
 - (void)setKeyboardHelpIsOn:(BOOL)arg1;

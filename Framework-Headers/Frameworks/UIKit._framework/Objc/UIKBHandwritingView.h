@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBKeyView.h>
+#import <UIKitCore/UIKBKeyView.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSMutableArray, NSMutableSet, NSString, UIBezierPath, UIKBHandwritingBezierPathPointFIFO, UIKBHandwritingBoxcarFilterPointFIFO, UIKBHandwritingQuadCurvePointFIFO, UIKBHandwritingStrokePointFIFO, UIKBHandwritingStrokeView;
 

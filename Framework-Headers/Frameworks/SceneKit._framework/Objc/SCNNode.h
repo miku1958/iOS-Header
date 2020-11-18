@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -14,7 +14,7 @@
 #import <SceneKit/UIFocusItem-Protocol.h>
 
 @class MISSING_TYPE, NSArray, NSMutableArray, NSMutableDictionary, NSString, SCNCamera, SCNGeometry, SCNLight, SCNMorpher, SCNNodeComponent, SCNOrderedDictionary, SCNPhysicsBody, SCNPhysicsField, SCNSkinner, UIView;
-@protocol SCNNodeRendererDelegate;
+@protocol SCNNodeRendererDelegate, UIFocusEnvironment, UIFocusItemContainer;
 
 @interface SCNNode : NSObject <NSCopying, NSSecureCoding, SCNAnimatable, SCNActionable, SCNBoundingVolume, UIFocusItem>
 {
@@ -76,6 +76,8 @@
 @property (nonatomic) struct SCNVector3 eulerAngles;
 @property (copy, nonatomic) NSArray *filters;
 @property (nonatomic) long long focusBehavior;
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
+@property (readonly, nonatomic) struct CGRect frame;
 @property (strong, nonatomic) SCNGeometry *geometry;
 @property (readonly, nonatomic) BOOL hasActions;
 @property (readonly) unsigned long long hash;
@@ -86,6 +88,7 @@
 @property (copy, nonatomic) NSString *name;
 @property (nonatomic) double opacity;
 @property (nonatomic) struct SCNVector4 orientation;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (readonly, nonatomic) SCNNode *parentNode;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property (strong, nonatomic) SCNPhysicsBody *physicsBody;
@@ -136,7 +139,7 @@
 + (id)nodeWithGeometry:(id)arg1;
 + (id)nodeWithMDLAsset:(id)arg1;
 + (id)nodeWithMDLObject:(id)arg1;
-+ (id)nodeWithMDLObject:(id)arg1 masterObjects:(id)arg2 sceneNodes:(id)arg3 skinnedMeshes:(id)arg4 options:(id)arg5;
++ (id)nodeWithMDLObject:(id)arg1 masterObjects:(id)arg2 sceneNodes:(id)arg3 skinnedMeshes:(id)arg4 skelNodesMap:(struct SkelNodesMap *)arg5 options:(id)arg6;
 + (id)nodeWithNodeRef:(struct __C3DNode *)arg1;
 + (BOOL)resolveInstanceMethod:(SEL)arg1;
 + (MISSING_TYPE *)simdLocalFront;
@@ -169,7 +172,6 @@
 - (void)_encodeNodePropertiesWithCoder:(id)arg1;
 - (BOOL)_enumerateChildNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (MISSING_TYPE *)_euler;
-- (void)_expandChildArrayIfNeeded;
 - (id)_findComponentWithType:(long long)arg1;
 - (void)_focusableCandidates:(id)arg1;
 - (void)_initChildNodesArray;
@@ -177,7 +179,6 @@
 - (BOOL)_isEffectivelyHidden;
 - (BOOL)_isEligibleForFocus;
 - (BOOL)_isEligibleForFocusInteraction;
-- (id)_parentFocusEnvironment;
 - (id)_particleSystems;
 - (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2 pausedByNode:(BOOL)arg3;
 - (CDStruct_183601bc)_quaternion;
@@ -255,7 +256,7 @@
 - (BOOL)getBoundingBoxMin:(struct SCNVector3 *)arg1 max:(struct SCNVector3 *)arg2;
 - (id)getBoundingSphere;
 - (BOOL)getBoundingSphereCenter:(struct SCNVector3 *)arg1 radius:(double *)arg2;
-- (BOOL)getFrustum:(struct C3DPlane *)arg1 withViewport: /* Error: Ran out of types for this method. */;
+- (BOOL)getFrustum:(CDStruct_7841dd09 *)arg1 withViewport: /* Error: Ran out of types for this method. */;
 - (BOOL)hidden;
 - (id)hitTestWithSegmentFromPoint:(struct SCNVector3)arg1 toPoint:(struct SCNVector3)arg2 options:(id)arg3;
 - (id)identifier;
@@ -296,6 +297,7 @@
 - (void)removeAllActions;
 - (void)removeAllAnimations;
 - (void)removeAllAudioPlayers;
+- (void)removeAllBindings;
 - (void)removeAllChilds;
 - (void)removeAllParticleSystems;
 - (void)removeAnimationForKey:(id)arg1;

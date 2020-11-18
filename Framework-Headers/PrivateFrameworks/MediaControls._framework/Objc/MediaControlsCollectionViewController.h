@@ -9,7 +9,7 @@
 #import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 #import <MediaControls/UIScrollViewDelegate-Protocol.h>
 
-@class MediaControlsCollectionViewCountData, NSArray, NSIndexSet, NSMutableDictionary, NSMutableSet, NSString, UIScrollView, _MediaControlsTapHoldGestureRecognizer;
+@class MediaControlsCollectionViewCountData, NSArray, NSIndexSet, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIScrollView, _MediaControlsTapHoldGestureRecognizer;
 @protocol MediaControlsCollectionItemViewController, MediaControlsCollectionViewDataSource, MediaControlsCollectionViewDelegate;
 
 @interface MediaControlsCollectionViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>
@@ -17,7 +17,7 @@
     NSMutableDictionary *_activeViewControllers;
     UIViewController<MediaControlsCollectionItemViewController> *_inactiveSelectedViewController;
     NSMutableSet *_inactiveViewControllers;
-    CDUnknownBlockType _pendingUpdates;
+    NSMutableArray *_pendingUpdates;
     struct UIEdgeInsets _controlCenterEdgeInsets;
     struct CGSize _lastKnownEnvironmentSize;
     long long _animatedSelectionCount;
@@ -65,6 +65,7 @@
 - (double)_backgroundCornerRadius;
 - (void)_beginAppearanceTransitionForChildViewControllers:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_beginAppearanceTransitionIfNeeded:(BOOL)arg1 forChildViewController:(id)arg2 animated:(BOOL)arg3;
+- (BOOL)_canPerformBatchUpdates;
 - (long long)_closestItemAtPoint:(struct CGPoint)arg1;
 - (void)_commonInit;
 - (void)_dequeueAndPerformBatchUpdatesIfNeeded;

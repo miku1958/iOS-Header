@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIPopoverBackgroundViewMethods-Protocol.h>
+#import <UIKitCore/UIPopoverBackgroundViewMethods-Protocol.h>
 
 @interface UIPopoverBackgroundView : UIView <UIPopoverBackgroundViewMethods>
 {

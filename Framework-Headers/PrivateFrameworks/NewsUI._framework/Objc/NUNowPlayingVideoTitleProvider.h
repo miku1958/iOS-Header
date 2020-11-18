@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/SXNowPlayingVideoTitleProviding-Protocol.h>
+#import <NewsUI/SVVideoTitleProviding-Protocol.h>
 
 @class NSString;
 
-@interface NUNowPlayingVideoTitleProvider : NSObject <SXNowPlayingVideoTitleProviding>
+@interface NUNowPlayingVideoTitleProvider : NSObject <SVVideoTitleProviding>
 {
 }
 

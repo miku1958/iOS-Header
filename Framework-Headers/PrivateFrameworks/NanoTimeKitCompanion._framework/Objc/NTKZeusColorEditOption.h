@@ -4,14 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKFaceColorEditOption.h>
+#import <NanoTimeKitCompanion/NTKEnumeratedEditOption.h>
 
-@interface NTKZeusColorEditOption : NTKFaceColorEditOption
+@interface NTKZeusColorEditOption : NTKEnumeratedEditOption
 {
 }
 
-+ (id)_localizedNameForValue:(unsigned long long)arg1;
-+ (id)_orderedValues;
+@property (readonly, nonatomic) unsigned long long color;
+
++ (id)__orderedValuesForDevice:(id)arg1;
++ (id)_localizedNameForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)_orderedBeginningValuesRestrictedByDevice:(id)arg1;
++ (id)_orderedEndingValuesRestrictedByDevice:(id)arg1;
++ (id)_orderedValuesForDevice:(id)arg1;
++ (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)optionWithColor:(unsigned long long)arg1 forDevice:(id)arg2;
+- (id)_valueToFaceBundleStringDict;
+- (BOOL)optionExistsInOSVersion:(unsigned int)arg1;
+- (long long)swatchStyle;
 
 @end
 

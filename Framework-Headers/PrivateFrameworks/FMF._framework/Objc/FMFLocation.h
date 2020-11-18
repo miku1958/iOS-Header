@@ -10,7 +10,7 @@
 #import <FMF/NSCopying-Protocol.h>
 #import <FMF/NSSecureCoding-Protocol.h>
 
-@class CLLocation, FMAccuracyOverlay, FMFHandle, NSDate, NSString, UIColor, UIImage;
+@class CLLocation, FMAccuracyOverlay, FMFHandle, FMFPlacemark, NSDate, NSString, UIColor, UIImage;
 
 @interface FMFLocation : NSObject <NSCopying, NSSecureCoding, FMAnnotation>
 {
@@ -25,6 +25,7 @@
     UIImage *_largeAnnotationIcon;
     double _distanceFromUser;
     UIColor *_tintColor;
+    FMFPlacemark *_placemark;
     FMFHandle *_handle;
     NSString *_longAddress;
     NSDate *_timestamp;
@@ -58,6 +59,7 @@
 @property (copy, nonatomic) NSString *longAddress; // @synthesize longAddress=_longAddress;
 @property (nonatomic) double maxLocatingInterval; // @synthesize maxLocatingInterval=_maxLocatingInterval;
 @property (strong, nonatomic) FMAccuracyOverlay *overlay; // @synthesize overlay=_overlay;
+@property (strong, nonatomic) FMFPlacemark *placemark; // @synthesize placemark=_placemark;
 @property (readonly, copy, nonatomic) NSString *shortAddress;
 @property (copy, nonatomic) NSString *shortAddressString; // @synthesize shortAddressString=_shortAddressString;
 @property (strong, nonatomic) UIImage *smallAnnotationIcon; // @synthesize smallAnnotationIcon=_smallAnnotationIcon;

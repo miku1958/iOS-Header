@@ -24,11 +24,13 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)playerViewController:(id)arg1 failedToStartPictureInPictureWithError:(id)arg2;
 - (void)playerViewController:(id)arg1 restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)playerViewController:(id)arg1 shouldExitFullScreenWithReason:(long long)arg2;
 - (void)playerViewControllerDidStartPictureInPicture:(id)arg1;
 - (void)playerViewControllerDidStopPictureInPicture:(id)arg1;
-- (void)playerViewControllerFailedToStartPictureInPicture:(id)arg1 withError:(id)arg2;
+- (BOOL)playerViewControllerShouldAutomaticallyDismissAtPictureInPictureStart:(id)arg1;
+- (BOOL)playerViewControllerShouldStartPictureInPictureFromInlineWhenEnteringBackground:(id)arg1;
 - (void)playerViewControllerWillStartPictureInPicture:(id)arg1;
 - (void)playerViewControllerWillStopPictureInPicture:(id)arg1;
 

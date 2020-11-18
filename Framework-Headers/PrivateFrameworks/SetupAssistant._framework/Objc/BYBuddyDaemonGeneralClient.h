@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_daemonConnection;
 - (id)backupMetadata;
+- (void)ensureSilentLoginUpgrade;
 - (id)init;
 - (void)observeFinishSetupTriggers;
 - (void)performSilentICDPUpgrade;

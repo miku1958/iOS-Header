@@ -8,41 +8,40 @@
 
 #import <ConfigurationEngineModel/CEMRegisteredTypeProtocol-Protocol.h>
 
-@class NSDictionary, NSString;
+@class CEMAccountGoogleDeclaration_CommunicationServiceRules, NSString;
 
 @interface CEMAccountGoogleDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadAccountDescription;
+    NSString *_payloadAccountName;
+    NSString *_payloadEmailAddress;
+    CEMAccountGoogleDeclaration_CommunicationServiceRules *_payloadCommunicationServiceRules;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadAccountDescription;
-@property (readonly, nonatomic) NSString *payloadAccountName;
-@property (readonly, nonatomic) NSDictionary *payloadCommunicationServiceRules;
-@property (readonly, nonatomic) NSString *payloadEmailAddress;
+@property (copy, nonatomic) NSString *payloadAccountDescription; // @synthesize payloadAccountDescription=_payloadAccountDescription;
+@property (copy, nonatomic) NSString *payloadAccountName; // @synthesize payloadAccountName=_payloadAccountName;
+@property (copy, nonatomic) CEMAccountGoogleDeclaration_CommunicationServiceRules *payloadCommunicationServiceRules; // @synthesize payloadCommunicationServiceRules=_payloadCommunicationServiceRules;
+@property (copy, nonatomic) NSString *payloadEmailAddress; // @synthesize payloadEmailAddress=_payloadEmailAddress;
 @property (readonly) Class superclass;
 
-+ (id)CommunicationServiceRules_DefaultServiceHandlers_allowedPayloadKeys;
-+ (id)CommunicationServiceRules_allowedPayloadKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withEmailAddress:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withAccountDescription:(id)arg2 withAccountName:(id)arg3 withEmailAddress:(id)arg4 withCommunicationServiceRules:(id)arg5;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadCommunicationServiceRules:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadCommunicationServiceRules_DefaultServiceHandlers:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadCommunicationServiceRules_DefaultServiceHandlers_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validPayloadCommunicationServiceRules_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

@@ -14,10 +14,11 @@
 #import <MobileTimer/NSMutableCopying-Protocol.h>
 #import <MobileTimer/NSSecureCoding-Protocol.h>
 
-@class MTSound, NSDate, NSString, NSURL, NSUUID;
+@class INObject, MTSound, NSDate, NSString, NSURL, NSUUID;
 
 @interface MTAlarm : NSObject <MTScheduleable, MTDiffable, MTDictionarySerializable, NAEquatable, NSSecureCoding, NSCopying, NSMutableCopying>
 {
+    BOOL _bedtimeDoNotDisturb;
     BOOL _enabled;
     BOOL _firing;
     BOOL _sleepAlarm;
@@ -46,8 +47,10 @@
 @property (readonly, nonatomic, getter=isActiveAnywhere) BOOL activeAnywhere;
 @property (readonly, nonatomic, getter=isActiveForThisDevice) BOOL activeForThisDevice;
 @property (readonly, nonatomic) NSUUID *alarmID; // @synthesize alarmID=_alarmID;
+@property (readonly, nonatomic) INObject *alarmIDIntentObject;
 @property (readonly, nonatomic) NSURL *alarmURL;
 @property (nonatomic) BOOL allowsSnooze; // @synthesize allowsSnooze=_allowsSnooze;
+@property (nonatomic) BOOL bedtimeDoNotDisturb; // @synthesize bedtimeDoNotDisturb=_bedtimeDoNotDisturb;
 @property (copy, nonatomic) NSDate *bedtimeForSleepTracking; // @synthesize bedtimeForSleepTracking=_bedtimeForSleepTracking;
 @property (nonatomic) unsigned long long bedtimeHour; // @synthesize bedtimeHour=_bedtimeHour;
 @property (nonatomic) unsigned long long bedtimeMinute; // @synthesize bedtimeMinute=_bedtimeMinute;
@@ -73,13 +76,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long hour; // @synthesize hour=_hour;
+@property (readonly, nonatomic) NSString *intentLabel;
 @property (copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (nonatomic) unsigned long long minute; // @synthesize minute=_minute;
 @property (readonly, nonatomic) NSDate *nextFireDate;
 @property (nonatomic) unsigned long long repeatSchedule; // @synthesize repeatSchedule=_repeatSchedule;
 @property (readonly, nonatomic) BOOL repeats;
 @property (nonatomic, getter=isSleepAlarm) BOOL sleepAlarm; // @synthesize sleepAlarm=_sleepAlarm;
-@property (readonly, nonatomic) long long sleepDuration;
+@property (readonly, nonatomic) unsigned long long sleepDuration;
 @property (copy, nonatomic) NSDate *snoozeFireDate; // @synthesize snoozeFireDate=_snoozeFireDate;
 @property (readonly, nonatomic, getter=isSnoozed) BOOL snoozed;
 @property (copy, nonatomic) MTSound *sound; // @synthesize sound=_sound;
@@ -87,6 +91,7 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) INObject *timeObject;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (BOOL)_date:(id)arg1 isOnDay:(long long)arg2 calendar:(id)arg3;
@@ -95,6 +100,7 @@
 + (id)alarmWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
 + (unsigned long long)defaultActiveStatus;
 + (id)descriptionForActiveStatus:(unsigned long long)arg1;
++ (id)mostRecentlyUpdatedAlarmForAlarms:(id)arg1;
 + (id)sleepAlarm;
 + (id)sleepAlarmWithHour:(long long)arg1 minute:(long long)arg2;
 + (id)sleepAlarmWithHour:(long long)arg1 minute:(long long)arg2 bedtimeHour:(long long)arg3 bedtimeMinute:(long long)arg4;
@@ -102,18 +108,21 @@
 - (void).cxx_destruct;
 - (id)_actualTriggerStartDateForDate:(id)arg1;
 - (void)_copyStateOntoAlarm:(id)arg1;
-- (id)_initForCopy;
-- (id)_initWithCurrentTime;
+- (id)_initCommon;
 - (BOOL)_isEqualToAlarm:(id)arg1 checkLastModified:(BOOL)arg2;
-- (id)_nextDateHelperWithDate:(id)arg1 hour:(long long)arg2 minute:(long long)arg3 calendar:(id)arg4;
+- (id)_nextBedtimeTriggersHelperWithDate:(id)arg1 wakeUpDate:(id)arg2 includeBedtimeNotification:(BOOL)arg3 includeBedtime:(BOOL)arg4 calendar:(id)arg5;
+- (id)_nextDateHelperWithDate:(id)arg1 calendar:(id)arg2;
 - (id)alarmIDString;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dateComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (id)identifier;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithCurrentTimeFromCurrentDateProvider:(CDUnknownBlockType)arg1;
 - (id)initWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
+- (id)initWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2 currentDateProvider:(CDUnknownBlockType)arg3;
 - (id)initWithIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualIgnoringLastModifiedDate:(id)arg1;
@@ -131,9 +140,12 @@
 - (id)nextTriggerAfterDate:(id)arg1 includeSnooze:(BOOL)arg2 includeBedtimeNotification:(BOOL)arg3;
 - (id)nextTriggerAfterDate:(id)arg1 ofType:(unsigned long long)arg2;
 - (id)nextTriggersAfterDate:(id)arg1;
+- (id)nextTriggersAfterDate:(id)arg1 includeBedtime:(BOOL)arg2;
 - (id)nextTriggersAfterDate:(id)arg1 includeSnooze:(BOOL)arg2 includeBedtimeNotification:(BOOL)arg3;
+- (id)nextTriggersAfterDate:(id)arg1 includeSnooze:(BOOL)arg2 includeBedtimeNotification:(BOOL)arg3 includeBedtime:(BOOL)arg4;
 - (void)setActiveForThisDevice:(BOOL)arg1;
 - (BOOL)shouldBeScheduled;
+- (double)sleepDurationSeconds;
 - (id)upcomingTriggersAfterDate:(id)arg1;
 
 @end

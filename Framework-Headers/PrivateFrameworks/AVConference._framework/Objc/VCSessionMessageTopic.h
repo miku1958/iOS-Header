@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,29 +14,29 @@ __attribute__((visibility("hidden")))
 {
     NSArray *associatedStrings;
     NSString *topicKey;
-    long long latestReceivedTopicMessageNumber;
     BOOL allowConcurrent;
     NSObject<OS_dispatch_queue> *outMessageQueue;
-    struct tagHANDLE *handle;
-    unsigned int p2pID;
+    id controlChannelWeak;
     NSObject<OS_dispatch_queue> *inMessageQueue;
     CDUnknownBlockType receiveBlock;
     long long latestOutgoingMessageIndex;
     BOOL isSendingEnabled;
     BOOL shouldEncodeTopicKeyInMessage;
     NSString *topicPrefix;
+    NSMutableDictionary *transactionCache;
 }
 
 @property (nonatomic, setter=setIsSendingEnabled:) BOOL isSendingEnabled; // @synthesize isSendingEnabled;
 @property (readonly) NSString *topicKey; // @synthesize topicKey;
 
+- (void)clearTransactionCacheForParticipant:(id)arg1;
 - (void)dealloc;
-- (id)initWithTopicKey:(id)arg1 strings:(id)arg2 allowConcurrent:(BOOL)arg3 receiveHandler:(CDUnknownBlockType)arg4;
+- (id)initWithTopicKey:(id)arg1 strings:(id)arg2 allowConcurrent:(BOOL)arg3 controlChannel:(id)arg4 receiveHandler:(CDUnknownBlockType)arg5;
 - (BOOL)isStringAssociated:(id)arg1;
-- (void)passMessage:(id)arg1 sequence:(int)arg2;
+- (void)passMessage:(id)arg1 sequence:(int)arg2 fromParticipant:(id)arg3;
 - (void)sendMessage:(id)arg1;
-- (void)sendMessage:(id)arg1 withSequence:(long long)arg2 numRetries:(long long)arg3;
-- (void)setP2PID:(unsigned int)arg1;
+- (void)sendMessage:(id)arg1 participantID:(unsigned long long)arg2;
+- (void)sendMessage:(id)arg1 participantID:(unsigned long long)arg2 withSequence:(long long)arg3 numRetries:(long long)arg4;
 
 @end
 

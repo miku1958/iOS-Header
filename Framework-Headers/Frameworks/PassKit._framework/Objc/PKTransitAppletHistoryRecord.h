@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -25,7 +25,6 @@
     NSData *_startStation;
     NSData *_endStation;
     NSString *_transitDetail;
-    long long _paymentTransactionType;
     long long _recordType;
 }
 
@@ -37,7 +36,7 @@
 @property (copy, nonatomic) NSNumber *loyaltyAmount; // @synthesize loyaltyAmount=_loyaltyAmount;
 @property (copy, nonatomic) NSNumber *loyaltyBalance; // @synthesize loyaltyBalance=_loyaltyBalance;
 @property (readonly, nonatomic) long long paymentTransactionType;
-@property (readonly, nonatomic) long long paymentTransactionType; // @synthesize paymentTransactionType=_paymentTransactionType;
+@property (readonly, nonatomic) long long paymentTransactionType;
 @property (nonatomic) long long recordType; // @synthesize recordType=_recordType;
 @property (copy, nonatomic) NSData *startStation; // @synthesize startStation=_startStation;
 @property (nonatomic) unsigned long long subtype; // @synthesize subtype=_subtype;

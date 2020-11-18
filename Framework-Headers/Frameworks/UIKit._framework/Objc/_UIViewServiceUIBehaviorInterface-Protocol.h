@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIViewServiceImplicitAnimationDecodingProxy_EncodingProxyInterface-Protocol.h>
-#import <UIKit/_UIViewService_FencingControlInterface-Protocol.h>
+#import <UIKitCore/_UIViewServiceImplicitAnimationDecodingProxy_EncodingProxyInterface-Protocol.h>
+#import <UIKitCore/_UIViewService_FencingControlInterface-Protocol.h>
 
 @protocol _UIViewServiceUIBehaviorInterface <_UIViewService_FencingControlInterface, _UIViewServiceImplicitAnimationDecodingProxy_EncodingProxyInterface>
 @end

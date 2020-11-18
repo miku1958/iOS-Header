@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Message/MFCancelable-Protocol.h>
 
@@ -14,7 +14,6 @@
 @interface MFAttachment : NSObject <MFCancelable>
 {
     MFAttachmentManager *_attachmentManager;
-    BOOL _isDataAvailableLocally;
     MFAttachmentPlaceholder *_placeholder;
     NSProgress *_downloadProgress;
     BOOL _isAutoArchive;
@@ -24,7 +23,7 @@
     NSString *_disposition;
     CDUnknownBlockType _fetchCompletionBlock;
     id<MFDataConsumer> _customConsumer;
-    unsigned long long _lastProgressBytes;
+    long long _lastProgressBytes;
     double _lastProgressTime;
 }
 
@@ -47,7 +46,7 @@
 @property (readonly) BOOL isContainedInRFC822;
 @property (readonly) BOOL isDataAvailableLocally;
 @property BOOL isPlaceholder; // @dynamic isPlaceholder;
-@property (nonatomic) unsigned long long lastProgressBytes; // @synthesize lastProgressBytes=_lastProgressBytes;
+@property (nonatomic) long long lastProgressBytes; // @synthesize lastProgressBytes=_lastProgressBytes;
 @property (nonatomic) double lastProgressTime; // @synthesize lastProgressTime=_lastProgressTime;
 @property (strong, nonatomic) MFMailDropMetadata *mailDropMetadata; // @dynamic mailDropMetadata;
 @property (copy, nonatomic) NSString *mimeType; // @dynamic mimeType;
@@ -102,7 +101,7 @@
 - (unsigned long long)sizeOnDisk;
 - (id)textEncodingGuessWithData:(id)arg1;
 - (id)textEncodingNameForData:(id)arg1 mimeType:(id)arg2;
-- (void)updateProgressWithCurrentBytes:(unsigned long long)arg1;
+- (void)updateProgressWithCurrentBytes:(long long)arg1;
 - (void)writeToDiskWithData:(id)arg1;
 
 @end

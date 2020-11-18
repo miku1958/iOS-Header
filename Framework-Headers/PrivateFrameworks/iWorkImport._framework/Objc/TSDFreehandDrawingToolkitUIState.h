@@ -11,32 +11,43 @@
 __attribute__((visibility("hidden")))
 @interface TSDFreehandDrawingToolkitUIState : TSPObject
 {
-    TSUColor *_currentColor;
     unsigned long long _currentToolType;
     unsigned long long _mostRecentPenToolType;
+    TSUColor *_penToolColor;
     double _penToolOpacity;
     double _penToolUnscaledWidth;
+    TSUColor *_pencilToolColor;
     double _pencilToolOpacity;
     double _pencilToolUnscaledWidth;
+    TSUColor *_crayonToolColor;
     double _crayonToolOpacity;
     double _crayonToolUnscaledWidth;
+    TSUColor *_fillToolColor;
     double _fillToolOpacity;
     double _eraserToolScaledWidth;
     BOOL _eraserToolErasesWholeObjects;
 }
 
-@property (strong, nonatomic) TSUColor *currentColor; // @synthesize currentColor=_currentColor;
 @property (nonatomic) unsigned long long currentToolType; // @synthesize currentToolType=_currentToolType;
 @property (readonly, nonatomic) unsigned long long mostRecentPenToolType; // @synthesize mostRecentPenToolType=_mostRecentPenToolType;
 
 - (void).cxx_destruct;
 - (id)copy;
+- (unsigned long long)hash;
 - (id)initWithContext:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToFreehandDrawingToolkitUIState:(id)arg1;
 - (void)loadFromArchive:(const struct FreehandDrawingToolkitUIState *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (double)p_defaultStrokeWidthForToolType:(unsigned long long)arg1;
+- (unsigned long long)p_defaultToolType;
+- (unsigned long long)p_indexOfDefaultStrokeWidthForFreehandDrawingToolType:(unsigned long long)arg1;
+- (void)p_setColor:(id)arg1 forToolType:(unsigned long long)arg2;
+- (void)p_setDefaultToolType:(unsigned long long)arg1;
 - (void)p_setupDefaultValuesFromUnarchive:(BOOL)arg1;
 - (void)saveToArchive:(struct FreehandDrawingToolkitUIState *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (id)strokeWidthsForFreehandDrawingToolType:(unsigned long long)arg1;
 
 @end
 

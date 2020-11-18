@@ -13,10 +13,14 @@
 @interface NNMKProtoAccountAdditionOrUpdate : PBCodable <NSCopying>
 {
     NSString *_accountId;
+    NSString *_defaultEmail;
     NSString *_displayName;
     NSMutableArray *_emails;
     unsigned int _fullSyncVersion;
+    NSString *_localId;
     NSMutableArray *_mailboxes;
+    NSString *_parentId;
+    NSString *_username;
     BOOL _shouldArchive;
     struct {
         unsigned int fullSyncVersion:1;
@@ -25,15 +29,23 @@
 }
 
 @property (strong, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
+@property (strong, nonatomic) NSString *defaultEmail; // @synthesize defaultEmail=_defaultEmail;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (strong, nonatomic) NSMutableArray *emails; // @synthesize emails=_emails;
 @property (nonatomic) unsigned int fullSyncVersion; // @synthesize fullSyncVersion=_fullSyncVersion;
 @property (readonly, nonatomic) BOOL hasAccountId;
+@property (readonly, nonatomic) BOOL hasDefaultEmail;
 @property (readonly, nonatomic) BOOL hasDisplayName;
 @property (nonatomic) BOOL hasFullSyncVersion;
+@property (readonly, nonatomic) BOOL hasLocalId;
+@property (readonly, nonatomic) BOOL hasParentId;
 @property (nonatomic) BOOL hasShouldArchive;
+@property (readonly, nonatomic) BOOL hasUsername;
+@property (strong, nonatomic) NSString *localId; // @synthesize localId=_localId;
 @property (strong, nonatomic) NSMutableArray *mailboxes; // @synthesize mailboxes=_mailboxes;
+@property (strong, nonatomic) NSString *parentId; // @synthesize parentId=_parentId;
 @property (nonatomic) BOOL shouldArchive; // @synthesize shouldArchive=_shouldArchive;
+@property (strong, nonatomic) NSString *username; // @synthesize username=_username;
 
 + (Class)emailType;
 + (Class)mailboxesType;

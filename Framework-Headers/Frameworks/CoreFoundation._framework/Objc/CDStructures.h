@@ -50,14 +50,34 @@ struct NSMethodFrameArgInfo {
     char _field10[0];
 };
 
-struct _CFPrefsShmemEntry {
-    _Atomic int owner;
-    _Atomic unsigned int generation;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
+};
+
+struct __CFArray;
+
+struct __CFPasteboard {
+    struct __CFRuntimeBase {
+        unsigned long long _field1;
+        _Atomic unsigned long long _field2;
+    } _field1;
+    struct __CFString *_field2;
+    id _field3;
+    struct __CFUUID *_field4;
+    struct __CFArray *_field5;
+    unsigned char _field6;
+    id _field7;
+    id _field8;
+    unsigned char _field9;
+    unsigned char _field10;
+    unsigned char _field11;
+    unsigned char _field12;
+};
+
+struct __cfobservers_t {
+    id slot;
+    struct __cfobservers_t *next;
 };
 
 struct __va_list_tag {
@@ -110,6 +130,12 @@ typedef struct {
 } CDStruct_78c06135;
 
 typedef struct {
+    int _field1;
+    long long _field2;
+    long long _field3;
+} CDStruct_b6748e3c;
+
+typedef struct {
     long long _field1;
     CDUnknownFunctionPointerType _field2;
     CDUnknownFunctionPointerType _field3;
@@ -137,6 +163,19 @@ typedef struct {
     unsigned int _field3;
     unsigned int _field4;
 } CDStruct_52991635;
+
+typedef struct {
+    int _field1;
+    long long _field2;
+    struct __CFArray *_field3;
+    struct __CFArray *_field4;
+} CDStruct_9e943ef1;
+
+typedef struct {
+    int _field1;
+    long long _field2;
+    struct __CFArray *_field3;
+} CDStruct_6ea78fe2;
 
 typedef struct {
     CDStruct_78c06135 _field1;
@@ -192,11 +231,4 @@ typedef struct {
         } ;
     } state;
 } CDStruct_a6934631;
-
-#pragma mark Typedef'd Unions
-
-typedef union {
-    struct _CFPrefsShmemEntry entry;
-    _Atomic unsigned long long value;
-} CDUnion_f9025cb3;
 

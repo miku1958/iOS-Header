@@ -6,15 +6,22 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSDictionary, SCRCMathExpression;
+#import <UIAccessibility/WKNavigationDelegate-Protocol.h>
 
-@interface UIAccessibilityMathViewController : UIViewController
+@class NSDictionary, NSString, SCRCMathExpression, UIAccessibilityMathWebView;
+
+@interface UIAccessibilityMathViewController : UIViewController <WKNavigationDelegate>
 {
     SCRCMathExpression *_mathExpression;
+    UIAccessibilityMathWebView *_webView;
     NSDictionary *_mathDictionary;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDictionary *mathDictionary; // @synthesize mathDictionary=_mathDictionary;
+@property (readonly) Class superclass;
 
 + (id)_uiaxBundle;
 - (void).cxx_destruct;

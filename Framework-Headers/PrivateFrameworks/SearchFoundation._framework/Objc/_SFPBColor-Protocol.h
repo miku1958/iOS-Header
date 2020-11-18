@@ -13,10 +13,6 @@
 @property (strong, nonatomic) _SFPBGraphicalFloat *alphaComponent;
 @property (strong, nonatomic) _SFPBGraphicalFloat *blueComponent;
 @property (strong, nonatomic) _SFPBGraphicalFloat *greenComponent;
-@property (readonly, nonatomic) BOOL hasAlphaComponent;
-@property (readonly, nonatomic) BOOL hasBlueComponent;
-@property (readonly, nonatomic) BOOL hasGreenComponent;
-@property (readonly, nonatomic) BOOL hasRedComponent;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBGraphicalFloat *redComponent;
 

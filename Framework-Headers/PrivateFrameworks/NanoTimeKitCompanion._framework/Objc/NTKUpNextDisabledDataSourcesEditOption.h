@@ -15,7 +15,7 @@
 
 @property (readonly, nonatomic) NSSet *disabledBundleIdentifiers; // @synthesize disabledBundleIdentifiers=_disabledBundleIdentifiers;
 
-+ (id)optionWithDisabledDataSourceIdentifiers:(id)arg1;
++ (id)optionWithDisabledDataSourceIdentifiers:(id)arg1 forDevice:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
@@ -24,8 +24,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDisabledDataSourceIdentifiers:(id)arg1;
-- (id)initWithJSONObjectRepresentation:(id)arg1;
+- (id)initWithDisabledDataSourceIdentifiers:(id)arg1 forDevice:(id)arg2;
+- (id)initWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValidOption;
 - (id)localizedName;

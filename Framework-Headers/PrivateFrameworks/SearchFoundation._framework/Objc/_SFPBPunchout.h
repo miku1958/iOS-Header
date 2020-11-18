@@ -13,6 +13,7 @@
 
 @interface _SFPBPunchout : PBCodable <_SFPBPunchout, NSSecureCoding>
 {
+    BOOL _isRunnableInBackground;
     NSString *_name;
     NSString *_bundleIdentifier;
     NSString *_label;
@@ -25,12 +26,8 @@
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasActionTarget;
-@property (readonly, nonatomic) BOOL hasBundleIdentifier;
-@property (readonly, nonatomic) BOOL hasLabel;
-@property (readonly, nonatomic) BOOL hasName;
-@property (readonly, nonatomic) BOOL hasUserActivityData;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isRunnableInBackground; // @synthesize isRunnableInBackground=_isRunnableInBackground;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;

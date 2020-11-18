@@ -17,7 +17,6 @@
     XBSnapshotContainerIdentity *_containerIdentity;
     id<XBSnapshotManifestStore> _store;
     NSMutableDictionary *_variantsByID;
-    BOOL _invalidated;
     NSString *_identifier;
     NSString *_logIdentifier;
     NSString *_groupID;
@@ -33,13 +32,11 @@
     NSDate *_creationDate;
     NSDate *_lastUsedDate;
     NSDate *_expirationDate;
-    BOOL _fullScreen;
     struct CGSize _referenceSize;
     struct CGRect _contentFrame;
     long long _interfaceOrientation;
     long long _contentType;
     long long _fileFormat;
-    BOOL _imageOpaque;
     double _imageScale;
     long long _imageOrientation;
     XBStatusBarSettings *_statusBarSettings;
@@ -49,9 +46,13 @@
     XBApplicationSnapshotGenerationContext *_generationContext;
     UIImage *_cachedImage;
     unsigned long long _imageAccessCount;
-    BOOL _keepImageAccessUntilExpiration;
-    BOOL _hasProtectedContent;
     NSDictionary *_extendedData;
+    BOOL _invalidated;
+    BOOL _fullScreen;
+    BOOL _imageOpaque;
+    BOOL _keepImageAccessUntilExpiration;
+    BOOL _keepImageAccessForPreHeat;
+    BOOL _hasProtectedContent;
     CDUnknownBlockType _imageGenerator;
     struct CGAffineTransform _imageTransform;
 }
@@ -107,10 +108,14 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 
++ (id)_allSecureCodingClassesIncludingDefaultAndClientSpecified;
 + (id)dataForImage:(id)arg1 withFormat:(long long)arg2;
 + (id)normalizeSnapshotName:(id)arg1;
++ (id)secureCodableCustomExtendedDataClasses;
++ (void)setSecureCodableCustomExtendedDataClasses:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_beginPreHeatImageAccess;
 - (void)_cacheImage:(id)arg1;
 - (id)_cachedImage;
 - (void)_commonInitWithIdentifier:(id)arg1;
@@ -119,6 +124,7 @@
 - (id)_createVariantWithIdentifier:(id)arg1;
 - (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 includeVariants:(BOOL)arg2;
 - (id)_determineRelativePathForPath:(id)arg1 location:(long long *)arg2;
+- (void)_endPreHeatImageAccess;
 - (long long)_fileLocation;
 - (BOOL)_hasGenerationContext;
 - (id)_initWithContainerIdentity:(id)arg1 store:(id)arg2 groupID:(id)arg3 generationContext:(id)arg4;
@@ -150,6 +156,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;
 - (void)loadImage;
+- (void)loadImageForPreHeat;
 - (void)purgeImage;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

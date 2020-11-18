@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SCNTransaction : NSObject
 {
@@ -21,6 +21,7 @@
 + (BOOL)disableActions;
 + (void)flush;
 + (BOOL)immediateMode;
++ (struct __C3DScene *)immediateModeRestrictedContext;
 + (void)lock;
 + (void)postCommandWithContext:(struct __C3DScene *)arg1 object:(id)arg2 applyBlock:(CDUnknownBlockType)arg3;
 + (void)postCommandWithContext:(struct __C3DScene *)arg1 object:(id)arg2 key:(id)arg3 applyBlock:(CDUnknownBlockType)arg4;
@@ -30,6 +31,7 @@
 + (void)setCompletionBlock:(CDUnknownBlockType)arg1;
 + (void)setDisableActions:(BOOL)arg1;
 + (void)setImmediateMode:(BOOL)arg1;
++ (void)setImmediateModeRestrictedContext:(struct __C3DScene *)arg1;
 + (void)setValue:(id)arg1 forKey:(id)arg2;
 + (void)unlock;
 + (id)valueForKey:(id)arg1;

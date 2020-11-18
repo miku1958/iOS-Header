@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CPPage;
 
+__attribute__((visibility("hidden")))
 @interface CPZoneFilter : NSObject
 {
     CPPage *page;

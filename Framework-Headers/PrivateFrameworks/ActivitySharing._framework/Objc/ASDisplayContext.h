@@ -34,6 +34,7 @@
 @property (strong, nonatomic) UIFont *unitFont; // @synthesize unitFont=_unitFont;
 
 + (id)_companionContext;
++ (void)_contentSizeChangeForContext:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 + (id)_gizmoContext;
 + (id)displayContextWithName:(id)arg1;
 - (void).cxx_destruct;

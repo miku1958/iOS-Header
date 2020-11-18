@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVWeakReference;
 @protocol AVAssetWriterInputMediaDataRequesterDelegate, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterInputMediaDataRequester : NSObject
 {
     NSObject<OS_dispatch_queue> *_requestQueue;

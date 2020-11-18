@@ -9,7 +9,7 @@
 #import <ModelIO/NSCopying-Protocol.h>
 #import <ModelIO/NSFastEnumeration-Protocol.h>
 
-@class MDLVertexDescriptor, MISSING_TYPE, NSMapTable, NSMutableArray, NSURL;
+@class MDLVertexDescriptor, MISSING_TYPE, NSMapTable, NSMutableArray, NSURL, NSUnitLength;
 @protocol MDLAssetResolver, MDLMeshBufferAllocator, MDLObjectContainerComponent;
 
 @interface MDLAsset : NSObject <NSCopying, NSFastEnumeration>
@@ -23,15 +23,18 @@
     MISSING_TYPE *_upAxis;
     BOOL _isSceneKitBridged;
     NSMapTable *_components;
+    NSURL *_temporaryFolderURL;
     double _frameInterval;
     id<MDLAssetResolver> _resolver;
     id<MDLMeshBufferAllocator> _bufferAllocator;
     MDLVertexDescriptor *_vertexDescriptor;
     double __timeCodesPerSecond;
+    NSUnitLength *_unitLength;
 }
 
 @property (readonly, strong, nonatomic) NSURL *URL;
 @property (readonly, nonatomic) struct MDLAABB _bounds;
+@property (strong, nonatomic) NSURL *_temporaryFolderURL; // @synthesize _temporaryFolderURL;
 @property (nonatomic) double _timeCodesPerSecond; // @synthesize _timeCodesPerSecond=__timeCodesPerSecond;
 @property (strong, nonatomic) id<MDLObjectContainerComponent> animations; // @synthesize animations=_animations;
 @property (readonly, nonatomic) struct boundingBox;
@@ -42,6 +45,7 @@
 @property (strong, nonatomic) id<MDLObjectContainerComponent> masters; // @synthesize masters=_masters;
 @property (strong, nonatomic) id<MDLAssetResolver> resolver; // @synthesize resolver=_resolver;
 @property (nonatomic) double startTime;
+@property (strong, nonatomic) NSUnitLength *unitLength; // @synthesize unitLength=_unitLength;
 @property (nonatomic) MISSING_TYPE *upAxis; // @synthesize upAxis=_upAxis;
 @property (readonly, strong, nonatomic) MDLVertexDescriptor *vertexDescriptor; // @synthesize vertexDescriptor=_vertexDescriptor;
 
@@ -58,6 +62,8 @@
 - (id)components;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (void)dealloc;
+- (id)description;
 - (void)enumerateChildObjectsOfClass:(Class)arg1 usingBlock:(CDUnknownBlockType)arg2 stopPointer:(BOOL *)arg3;
 - (BOOL)exportAssetToURL:(id)arg1;
 - (BOOL)exportAssetToURL:(id)arg1 error:(id *)arg2;
@@ -66,6 +72,7 @@
 - (id)initWithBufferAllocator:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 bufferAllocator:(id)arg2 preserveIndexing:(BOOL)arg3 error:(id *)arg4;
+- (id)initWithURL:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)initWithURL:(id)arg1 vertexDescriptor:(id)arg2 bufferAllocator:(id)arg3;
 - (id)initWithURL:(id)arg1 vertexDescriptor:(id)arg2 bufferAllocator:(id)arg3 preserveTopology:(BOOL)arg4 error:(id *)arg5;
 - (void)loadTextures;

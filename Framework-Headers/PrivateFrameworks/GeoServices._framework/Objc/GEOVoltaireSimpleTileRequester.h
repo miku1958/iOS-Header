@@ -11,7 +11,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface GEOVoltaireSimpleTileRequester : GEOSimpleTileRequester <NSURLConnectionDelegate, GEOSimpleTileRequesterSubclass>
 {
 }
@@ -25,10 +24,11 @@ __attribute__((visibility("hidden")))
 - (id)_localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
 - (int)checksumMethodForIncomingTileDataWithKey:(const struct _GEOTileKey *)arg1;
 - (id)localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
-- (id)newXPCDataRequestForTileKey:(const struct _GEOTileKey *)arg1;
+- (BOOL)needsLocalizationForKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
 - (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
+- (BOOL)useProxyAuthForTileKey:(const struct _GEOTileKey *)arg1;
 
 @end
 

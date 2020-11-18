@@ -8,50 +8,72 @@
 
 #import <Intents/INCacheableObject-Protocol.h>
 #import <Intents/INImageExport-Protocol.h>
+#import <Intents/INImageProxyInjecting-Protocol.h>
+#import <Intents/INKeyImageProducing-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString, NSURL;
 
-@interface INImage : NSObject <INCacheableObject, INImageExport, NSCopying, NSSecureCoding>
+@interface INImage : NSObject <INKeyImageProducing, INCacheableObject, INImageProxyInjecting, INImageExport, NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
-    NSData *_imageData;
-    NSURL *_uri;
-    NSString *_name;
-    NSString *_bundlePath;
     CDStruct_8caa76fc _imageSize;
 }
 
-@property (copy, nonatomic, setter=_setBundlePath:) NSString *_bundlePath; // @synthesize _bundlePath;
-@property (readonly, copy, nonatomic) NSString *_identifier; // @synthesize _identifier;
-@property (copy, nonatomic, setter=_setImageData:) NSData *_imageData; // @synthesize _imageData;
+@property (copy, nonatomic, setter=_setBundleIdentifier:) NSString *_bundleIdentifier;
+@property (copy, nonatomic, setter=_setBundlePath:) NSString *_bundlePath;
+@property (copy, nonatomic, setter=_setIdentifier:) NSString *_identifier; // @synthesize _identifier;
+@property (copy, nonatomic, setter=_setImageData:) NSData *_imageData;
 @property (nonatomic, setter=_setImageSize:) CDStruct_8caa76fc _imageSize; // @synthesize _imageSize;
-@property (copy, nonatomic, setter=_setName:) NSString *_name; // @synthesize _name;
-@property (copy, nonatomic, setter=_setUri:) NSURL *_uri; // @synthesize _uri;
+@property (readonly, nonatomic) BOOL _isEligibleForProxying;
+@property (readonly, nonatomic) BOOL _isSupportedForDonation;
+@property (readonly) INImage *_keyImage;
+@property (copy, nonatomic, setter=_setName:) NSString *_name;
+@property (readonly, nonatomic) BOOL _requiresRetrieval;
+@property (copy, nonatomic, setter=_setUri:) NSURL *_uri;
 @property (readonly, copy, nonatomic) NSString *cacheIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
++ (id)_bundleImageWithURL:(id)arg1;
++ (id)_classesInCluster;
 + (void)buildFromCachePayload:(id)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)imageNamed:(id)arg1;
 + (id)imageWithImageData:(id)arg1;
 + (id)imageWithURL:(id)arg1;
 + (id)imageWithURL:(id)arg1 width:(double)arg2 height:(double)arg3;
 + (void)initialize;
++ (void)registerImageLoadersOnce;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_URLRepresentation;
+- (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
+- (id)_copyWithSubclass:(Class)arg1;
 - (id)_description;
 - (id)_descriptionAtIndent:(unsigned long long)arg1;
 - (id)_dictionaryRepresentation;
+- (id)_in_downscaledImageForFilePersistence;
+- (id)_in_writeableFilePersistenceConfigurationForStoreType:(unsigned long long)arg1;
 - (id)_initWithData:(id)arg1;
 - (id)_initWithIdentifier:(id)arg1;
+- (id)_initWithURLRepresentation:(id)arg1;
+- (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (void)_loadImageDataAndSizeWithHelper:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_preferredImageLoader;
+- (void)_requestProxy:(CDUnknownBlockType)arg1;
+- (void)_retrieveImageDataWithReply:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateCachePayloadWithCompletion:(CDUnknownBlockType)arg1;

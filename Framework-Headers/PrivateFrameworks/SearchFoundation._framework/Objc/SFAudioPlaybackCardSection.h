@@ -10,11 +10,17 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFAudioPlaybackCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFImage, SFRichText, SFText;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFImage, SFRichText;
 
 @interface SFAudioPlaybackCardSection : SFCardSection <SFAudioPlaybackCardSection, NSSecureCoding, NSCopying>
 {
-    CDStruct_29067556 _has;
+    struct {
+        unsigned int canBeHidden:1;
+        unsigned int hasTopPadding:1;
+        unsigned int hasBottomPadding:1;
+        unsigned int separatorStyle:1;
+        unsigned int state:1;
+    } _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -25,14 +31,6 @@
     NSString *_punchoutPickerDismissText;
     NSString *_type;
     SFColor *_backgroundColor;
-    SFImage *_topImage;
-    SFText *_topText;
-    NSString *_topSecondaryText;
-    SFImage *_bottomImage;
-    SFText *_bottomText;
-    SFText *_bottomSubtitle;
-    NSString *_topImageEmoji;
-    NSString *_bottomImageEmoji;
     NSArray *_playCommands;
     NSArray *_stopCommands;
     SFRichText *_detailText;
@@ -42,10 +40,6 @@
 }
 
 @property (strong, nonatomic) SFColor *backgroundColor;
-@property (strong, nonatomic) SFImage *bottomImage; // @synthesize bottomImage=_bottomImage;
-@property (copy, nonatomic) NSString *bottomImageEmoji; // @synthesize bottomImageEmoji=_bottomImageEmoji;
-@property (strong, nonatomic) SFText *bottomSubtitle; // @synthesize bottomSubtitle=_bottomSubtitle;
-@property (strong, nonatomic) SFText *bottomText; // @synthesize bottomText=_bottomText;
 @property (nonatomic) BOOL canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *commands;
@@ -72,10 +66,6 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SFImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property (strong, nonatomic) SFRichText *title; // @synthesize title=_title;
-@property (strong, nonatomic) SFImage *topImage; // @synthesize topImage=_topImage;
-@property (copy, nonatomic) NSString *topImageEmoji; // @synthesize topImageEmoji=_topImageEmoji;
-@property (copy, nonatomic) NSString *topSecondaryText; // @synthesize topSecondaryText=_topSecondaryText;
-@property (strong, nonatomic) SFText *topText; // @synthesize topText=_topText;
 @property (copy, nonatomic) NSString *type;
 
 + (BOOL)supportsSecureCoding;

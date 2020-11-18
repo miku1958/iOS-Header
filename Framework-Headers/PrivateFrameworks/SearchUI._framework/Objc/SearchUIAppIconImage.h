@@ -6,33 +6,31 @@
 
 #import <SearchUI/SearchUIImage.h>
 
-#import <SearchUI/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
-@interface SearchUIAppIconImage : SearchUIImage <NSSecureCoding>
+@interface SearchUIAppIconImage : SearchUIImage
 {
+    NSString *_bundleIdentifier;
     unsigned long long _variant;
-    NSString *_bundleID;
 }
 
-@property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
-@property (readonly) BOOL isValid;
+@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (nonatomic) unsigned long long variant; // @synthesize variant=_variant;
 
-+ (double)cornerRadiusForHomeScreenIcons;
-+ (double)cornerRadiusForSmallSpotlightIcons;
-+ (struct CGSize)homeScreenIconSize;
-+ (double)iconCornerRadiusForFormat:(int)arg1;
-+ (struct CGSize)tinyIconSize;
-+ (struct CGRect)visibleFrameForHomeScreenIcons;
-+ (struct CGRect)visibleFrameForSmallSpotlightIcons;
-+ (struct CGRect)visibleFrameForTinyIcons;
++ (id)appIconForBundleIdentifier:(id)arg1 variant:(unsigned long long)arg2;
++ (id)appIconForBundleIdentifier:(id)arg1 webClipIdentifier:(id)arg2 variant:(unsigned long long)arg3;
++ (id)appIconForImage:(id)arg1 variant:(unsigned long long)arg2;
++ (id)appIconForResult:(id)arg1 variant:(unsigned long long)arg2;
++ (double)cornerRadiusForVariant:(unsigned long long)arg1;
++ (int)iconFormatForVariant:(unsigned long long)arg1;
++ (struct CGSize)sizeForVariant:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)generateImageWithFormat:(int)arg1;
-- (id)initWithBundleID:(id)arg1 variant:(unsigned long long)arg2;
+- (id)initWithBundleIdentifier:(id)arg1 variant:(unsigned long long)arg2;
 - (id)loadImage;
-- (void)setSize;
+- (BOOL)needsTinting;
+- (void)setUiImage:(id)arg1;
+- (id)uiImage;
 
 @end
 

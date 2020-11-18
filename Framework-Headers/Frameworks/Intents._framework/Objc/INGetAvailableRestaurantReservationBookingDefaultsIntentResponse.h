@@ -7,10 +7,11 @@
 #import <Intents/INIntentResponse.h>
 
 #import <Intents/INGetAvailableRestaurantReservationBookingDefaultsIntentResponseExport-Protocol.h>
+#import <Intents/INImageProxyInjecting-Protocol.h>
 
 @class INImage, NSDate, NSNumber, NSString;
 
-@interface INGetAvailableRestaurantReservationBookingDefaultsIntentResponse : INIntentResponse <INGetAvailableRestaurantReservationBookingDefaultsIntentResponseExport>
+@interface INGetAvailableRestaurantReservationBookingDefaultsIntentResponse : INIntentResponse <INImageProxyInjecting, INGetAvailableRestaurantReservationBookingDefaultsIntentResponseExport>
 {
     unsigned long long _defaultPartySize;
     NSDate *_defaultBookingDate;
@@ -25,14 +26,17 @@
 @property (readonly, nonatomic) unsigned long long defaultPartySize; // @synthesize defaultPartySize=_defaultPartySize;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSNumber *maximumPartySize; // @synthesize maximumPartySize=_maximumPartySize;
-@property (strong, nonatomic) NSNumber *minimumPartySize; // @synthesize minimumPartySize=_minimumPartySize;
+@property (copy, nonatomic) NSNumber *maximumPartySize; // @synthesize maximumPartySize=_maximumPartySize;
+@property (copy, nonatomic) NSNumber *minimumPartySize; // @synthesize minimumPartySize=_minimumPartySize;
 @property (copy, nonatomic) INImage *providerImage; // @synthesize providerImage=_providerImage;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
+- (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBackingStore:(id)arg1;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;

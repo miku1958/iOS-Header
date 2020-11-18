@@ -13,11 +13,15 @@
 
 @interface ASDApplicationMetadata : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _isBeta;
     NSString *_accountName;
     NSNumber *_accountID;
     NSString *_altDSID;
     NSString *_artworkPath;
     NSString *_bundleID;
+    NSString *_bundleVersion;
+    NSString *_cohort;
+    NSString *_deviceVendorID;
     NSNumber *_externalVersionIdentifier;
     NSNumber *_installOrder;
     NSNumber *_itemID;
@@ -25,6 +29,7 @@
     NSNumber *_purchaserDSID;
     NSNumber *_storeFront;
     NSString *_vendorName;
+    NSString *_shortVersion;
 }
 
 @property (copy, nonatomic) NSNumber *accountID; // @synthesize accountID=_accountID;
@@ -32,11 +37,16 @@
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (copy, nonatomic) NSString *artworkPath; // @synthesize artworkPath=_artworkPath;
 @property (readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
+@property (copy, nonatomic) NSString *cohort; // @synthesize cohort=_cohort;
+@property (copy, nonatomic) NSString *deviceVendorID; // @synthesize deviceVendorID=_deviceVendorID;
 @property (copy, nonatomic) NSNumber *externalVersionIdentifier; // @synthesize externalVersionIdentifier=_externalVersionIdentifier;
 @property (copy, nonatomic) NSNumber *installOrder; // @synthesize installOrder=_installOrder;
+@property (nonatomic) BOOL isBeta; // @synthesize isBeta=_isBeta;
 @property (copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
 @property (copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
 @property (copy, nonatomic) NSNumber *purchaserDSID; // @synthesize purchaserDSID=_purchaserDSID;
+@property (copy, nonatomic) NSString *shortVersion; // @synthesize shortVersion=_shortVersion;
 @property (copy, nonatomic) NSNumber *storeFront; // @synthesize storeFront=_storeFront;
 @property (copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 

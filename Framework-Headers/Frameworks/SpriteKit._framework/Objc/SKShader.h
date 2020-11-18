@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSPointerArray, NSString;
 
-@interface SKShader : NSObject <NSCopying, NSCoding>
+@interface SKShader : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableArray *_uniforms;
     NSArray *_attributes;
@@ -45,6 +45,7 @@
 + (id)shaderWithFileNamed:(id)arg1;
 + (id)shaderWithSource:(id)arg1;
 + (id)shaderWithSource:(id)arg1 uniforms:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_addTargetNode:(id)arg1;
@@ -79,6 +80,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSource:(id)arg1;
 - (id)initWithSource:(id)arg1 uniforms:(id)arg2;
+- (BOOL)isEqualToShader:(id)arg1;
 - (BOOL)isValid;
 - (void)removeUniformNamed:(id)arg1;
 - (id)uniformNamed:(id)arg1;

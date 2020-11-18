@@ -28,6 +28,7 @@
     BOOL _everBuiltView;
     BOOL _useVariablesWhenUsingInlineStyles;
     BOOL _includeClassNamesWhenUsingInlineStyles;
+    BOOL _includeDarkInterfaceInlineStyles;
     BOOL _allowsTapToLoad;
     BOOL _useInlineStyles;
     BOOL _applyCornerRadiusToLink;
@@ -46,6 +47,7 @@
 @property (nonatomic, setter=_setAllowsTapToLoad:) BOOL _allowsTapToLoad; // @synthesize _allowsTapToLoad;
 @property (readonly, nonatomic) BOOL _canTapToLoad;
 @property (nonatomic, setter=_setIncludeClassNamesWhenUsingInlineStyles:) BOOL _includeClassNamesWhenUsingInlineStyles; // @synthesize _includeClassNamesWhenUsingInlineStyles;
+@property (nonatomic, setter=_setIncludeDarkInterfaceInlineStyles:) BOOL _includeDarkInterfaceInlineStyles; // @synthesize _includeDarkInterfaceInlineStyles;
 @property (nonatomic, setter=_setUseVariablesWhenUsingInlineStyles:) BOOL _useVariablesWhenUsingInlineStyles; // @synthesize _useVariablesWhenUsingInlineStyles;
 @property (nonatomic) BOOL applyCornerRadiusToLink; // @synthesize applyCornerRadiusToLink=_applyCornerRadiusToLink;
 @property (readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;

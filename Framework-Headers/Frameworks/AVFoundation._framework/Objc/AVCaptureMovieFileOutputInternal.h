@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVWeakReference, NSArray, NSMutableArray, NSString;
+@class AVWeakReference, NSArray, NSDictionary, NSMutableArray, NSString;
 
 @interface AVCaptureMovieFileOutputInternal : NSObject
 {
@@ -17,6 +17,7 @@
     NSArray *metadata;
     NSArray *availableVideoCodecs;
     NSString *videoCodec;
+    NSDictionary *videoCompressionProperties;
     BOOL sendLastVideoPreviewFrame;
     BOOL recording;
     BOOL paused;

@@ -35,7 +35,6 @@
 @property (readonly, nonatomic) struct CGSize gridItemSize; // @synthesize gridItemSize=_gridItemSize;
 @property (readonly, nonatomic) BOOL shouldShowTitle; // @synthesize shouldShowTitle=_shouldShowTitle;
 
-+ (struct CGSize)bestItemSizeForAvailableWidth:(double)arg1 screenScale:(double)arg2 bestSpacing:(double *)arg3 bestInset:(double *)arg4;
 + (BOOL)shouldUsePhoneLayoutWithTraitCollection:(id)arg1;
 - (void).cxx_destruct;
 - (void)_computeEditorialWithExtendedTraitCollection:(id)arg1;

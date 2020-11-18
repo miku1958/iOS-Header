@@ -13,7 +13,6 @@
 
 @interface _SFPBScoreboardCardSection : PBCodable <_SFPBScoreboardCardSection, NSSecureCoding>
 {
-    CDStruct_5ff9a38c _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -37,22 +36,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *eventStatus; // @synthesize eventStatus=_eventStatus;
-@property (readonly, nonatomic) BOOL hasAccessibilityDescription;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasEventStatus;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasSubtitle;
-@property (readonly, nonatomic) BOOL hasTeam1;
-@property (readonly, nonatomic) BOOL hasTeam2;
-@property (readonly, nonatomic) BOOL hasTitle;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;

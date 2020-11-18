@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSKStyleMapper-Protocol.h>
 
@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 + (void)replaceReferencedStylesInMap:(id)arg1 withMapper:(id)arg2;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)init;
 - (id)initWithMapper:(id)arg1;
 - (id)mappedStyleForStyle:(id)arg1;
 - (id)mappedStyleForStyle:(id)arg1 bakeComputable:(BOOL)arg2;

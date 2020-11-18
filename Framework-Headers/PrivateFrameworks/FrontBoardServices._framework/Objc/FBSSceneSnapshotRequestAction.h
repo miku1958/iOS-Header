@@ -12,7 +12,7 @@
 {
 }
 
-@property (readonly, strong, nonatomic) FBSSceneSnapshotContext *context;
+@property (readonly, nonatomic) FBSSceneSnapshotContext *context;
 @property (readonly, nonatomic) unsigned long long type;
 
 - (id)initWithType:(unsigned long long)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/MTLLibrarySPI-Protocol.h>
 
@@ -23,6 +23,7 @@
     struct MTLPipelineCollection *_pipelineCollection;
 }
 
+@property (readonly) struct MTLLibraryContainer *cacheEntry; // @synthesize cacheEntry=_cacheEntry;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device; // @synthesize device=_device;

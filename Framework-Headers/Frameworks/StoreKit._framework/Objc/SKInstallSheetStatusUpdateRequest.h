@@ -19,8 +19,9 @@
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (nonatomic) BOOL isInstallSheetOpen; // @synthesize isInstallSheetOpen=_isInstallSheetOpen;
 
+- (void).cxx_destruct;
 - (void)_handleReply:(id)arg1;
-- (void)_sendXPCMessage;
+- (void)_start;
 - (id)initWithAppBundleId:(id)arg1 isInstallSheetOpen:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

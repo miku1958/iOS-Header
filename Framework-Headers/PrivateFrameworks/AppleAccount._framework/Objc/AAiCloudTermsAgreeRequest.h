@@ -12,9 +12,11 @@
 {
     ACAccount *_account;
     ACAccountStore *_accountStore;
+    BOOL _preferPassword;
 }
 
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
+@property (nonatomic) BOOL preferPassword; // @synthesize preferPassword=_preferPassword;
 
 - (void).cxx_destruct;
 - (id)initWithURLString:(id)arg1 account:(id)arg2;

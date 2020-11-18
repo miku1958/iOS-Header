@@ -7,17 +7,8 @@
 #import <BulletinBoard/BBBulletin.h>
 
 @interface BBBulletin (SBUIUtilities)
-- (id)_defaultActionWithFilter:(CDUnknownBlockType)arg1;
-- (id)_launchURLForAction:(id)arg1 context:(id)arg2;
-- (id)_responseForAction:(id)arg1 withOrigin:(int)arg2 context:(id)arg3;
-- (CDUnknownBlockType)actionBlockForAction:(id)arg1 withOrigin:(int)arg2;
-- (CDUnknownBlockType)actionBlockForAction:(id)arg1 withOrigin:(int)arg2 context:(id)arg3;
 - (CDUnknownBlockType)actionBlockForButton:(id)arg1;
-- (BOOL)bulletinAlertShouldOverridePocketMode;
-- (BOOL)bulletinAlertShouldOverrideQuietMode;
 - (void)killSound;
 - (BOOL)playSound;
-- (id)sb_minimalSupplementaryActions;
-- (id)sb_nonPluginDefaultAction;
 @end
 

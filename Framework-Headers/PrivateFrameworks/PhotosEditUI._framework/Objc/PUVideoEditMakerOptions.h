@@ -8,6 +8,7 @@
 
 #import <PhotosEditUI/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface PUVideoEditMakerOptions : NSObject <NSCopying>
 {
     BOOL _shouldApplyTrim;

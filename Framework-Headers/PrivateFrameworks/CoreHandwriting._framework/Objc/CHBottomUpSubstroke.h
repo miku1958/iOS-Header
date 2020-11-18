@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol CHStrokeIdentifier;
 
@@ -24,7 +24,7 @@
 
 @property (readonly, nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property (nonatomic) struct CGPoint coalescedCenter; // @synthesize coalescedCenter=_coalescedCenter;
-@property (readonly, nonatomic) vector_2e7754b6 convexHull; // @synthesize convexHull=_convexHull;
+@property (readonly, nonatomic) vector_2e7754b6 *convexHull; // @synthesize convexHull=_convexHull;
 @property (readonly, nonatomic) double curvature; // @synthesize curvature=_curvature;
 @property (readonly, nonatomic) double endTimestamp; // @synthesize endTimestamp=_endTimestamp;
 @property (nonatomic) long long originalWritingDirectionIndex; // @synthesize originalWritingDirectionIndex=_originalWritingDirectionIndex;
@@ -36,7 +36,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithStrokeIdentifier:(id)arg1 bounds:(struct CGRect)arg2 startTimestamp:(double)arg3 endTimestamp:(double)arg4 convexHull:(vector_2e7754b6)arg5 curvature:(double)arg6;
+- (id)initWithStrokeIdentifier:(id)arg1 bounds:(struct CGRect)arg2 startTimestamp:(double)arg3 endTimestamp:(double)arg4 convexHull:(vector_2e7754b6 *)arg5 curvature:(double)arg6;
 
 @end
 

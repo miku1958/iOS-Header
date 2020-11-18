@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <MediaControls/HMHomeDelegate-Protocol.h>
-#import <MediaControls/HMHomeManagerDelegate-Protocol.h>
+#import <MediaControls/HFHomeManagerObserver-Protocol.h>
+#import <MediaControls/HFHomeObserver-Protocol.h>
 
 @class HMHomeManager, NSMutableSet, NSString;
 @protocol MediaControlsHomeObserverDelegate, OS_dispatch_queue;
 
-@interface MediaControlsHomeObserver : NSObject <HMHomeManagerDelegate, HMHomeDelegate>
+@interface MediaControlsHomeObserver : NSObject <HFHomeObserver, HFHomeManagerObserver>
 {
     HMHomeManager *_homeManager;
     NSMutableSet *_knownUIDs;

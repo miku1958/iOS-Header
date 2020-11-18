@@ -20,12 +20,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *uniqueIdentifier;
 
 - (BOOL)isEqual:(id)arg1;
 - (void)requestData:(CDUnknownBlockType)arg1;
+- (void)requestInfo:(CDUnknownBlockType)arg1;
 - (void)setData:(id)arg1 newContentType:(id)arg2 newFilename:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setDisplayOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)uniqueIdentifier;
 
 @end
 

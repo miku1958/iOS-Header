@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString;
 
@@ -22,6 +22,8 @@
     BOOL _paintJunctions;
     BOOL _paintCoastlines;
     BOOL _paintBuildingNormals;
+    BOOL _paintLoadReason;
+    BOOL _showPreliminaryInfo;
     BOOL _disableRoute;
     BOOL _labelHighlighting;
     BOOL _transitHighlighting;
@@ -49,6 +51,8 @@
     BOOL _hideServerPositionedRoadFeatures;
     BOOL _hideServerPositionedTransitFeatures;
     BOOL _keepTooCloseServerPositionedTransitFeatures;
+    BOOL _overrideNeworkDefaultsBaseSSLPMSwitch;
+    BOOL _labelBaseSSLPMEnabled;
     BOOL _labelHideLineFeatures;
     BOOL _labelHidePointFeatures;
     BOOL _paintTrafficSkeleton;
@@ -137,13 +141,12 @@
     unsigned long long _arSwipeGesture;
     unsigned long long _arPinchGesture;
     BOOL _arRenderAtNativeRate;
-    struct unordered_map<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>>> _customLandmarks;
+    struct unique_ptr<(anonymous namespace)::CustomLandmarksContainer, std::__1::default_delete<(anonymous namespace)::CustomLandmarksContainer>> _customLandmarks;
     BOOL _paintPoiTiles;
     BOOL _paintLandcoverTiles;
     BOOL _paintVenues;
     BOOL _labelCollideContinuously;
     BOOL _useStaticTrafficFeed;
-    BOOL _newRouteTraffic;
     BOOL _showNavCameraDebugConsoleProperties;
     BOOL _showNavCameraDebugOverlay;
     BOOL _disableStylesheetAnimations;
@@ -229,6 +232,7 @@
 @property (nonatomic) BOOL keepTooCloseServerPositionedTransitFeatures; // @synthesize keepTooCloseServerPositionedTransitFeatures=_keepTooCloseServerPositionedTransitFeatures;
 @property (nonatomic) BOOL labelAllowDefaultStyle; // @synthesize labelAllowDefaultStyle=_labelAllowDefaultStyle;
 @property (nonatomic) BOOL labelAutoOffsetRoadText; // @synthesize labelAutoOffsetRoadText=_labelAutoOffsetRoadText;
+@property (nonatomic) BOOL labelBaseSSLPMEnabled; // @synthesize labelBaseSSLPMEnabled=_labelBaseSSLPMEnabled;
 @property (nonatomic) BOOL labelCollideContinuously; // @synthesize labelCollideContinuously=_labelCollideContinuously;
 @property (nonatomic) BOOL labelCollisionEnabled; // @synthesize labelCollisionEnabled=_labelCollisionEnabled;
 @property (nonatomic) BOOL labelFlipAlternatePositionsEnable; // @synthesize labelFlipAlternatePositionsEnable=_labelFlipAlternatePositionsEnable;
@@ -242,7 +246,7 @@
 @property (nonatomic) CDStruct_7a997382 landmark2DStrokeSettings; // @synthesize landmark2DStrokeSettings=_landmark2DStrokeSettings;
 @property (nonatomic) BOOL layoutContinuously; // @synthesize layoutContinuously=_layoutContinuously;
 @property (nonatomic) BOOL loadGreenTraffic; // @synthesize loadGreenTraffic=_loadGreenTraffic;
-@property (nonatomic) BOOL newRouteTraffic; // @synthesize newRouteTraffic=_newRouteTraffic;
+@property (nonatomic) BOOL overrideNeworkDefaultsBaseSSLPMSwitch; // @synthesize overrideNeworkDefaultsBaseSSLPMSwitch=_overrideNeworkDefaultsBaseSSLPMSwitch;
 @property (nonatomic) BOOL overrideVenueCameraSettings; // @synthesize overrideVenueCameraSettings=_overrideVenueCameraSettings;
 @property (nonatomic) BOOL paintBuildingNormals; // @synthesize paintBuildingNormals=_paintBuildingNormals;
 @property (nonatomic) BOOL paintCoastlines; // @synthesize paintCoastlines=_paintCoastlines;
@@ -252,6 +256,7 @@
 @property (nonatomic) BOOL paintLabelCounts; // @synthesize paintLabelCounts=_paintLabelCounts;
 @property (nonatomic) BOOL paintLabelRoadFeatures; // @synthesize paintLabelRoadFeatures=_paintLabelRoadFeatures;
 @property (nonatomic) BOOL paintLandcoverTiles; // @synthesize paintLandcoverTiles=_paintLandcoverTiles;
+@property (nonatomic) BOOL paintLoadReason; // @synthesize paintLoadReason=_paintLoadReason;
 @property (nonatomic) BOOL paintMapTiles; // @synthesize paintMapTiles=_paintMapTiles;
 @property (nonatomic) BOOL paintPoiTiles; // @synthesize paintPoiTiles=_paintPoiTiles;
 @property (nonatomic) BOOL paintPointTiles; // @synthesize paintPointTiles=_paintPointTiles;
@@ -279,6 +284,7 @@
 @property (nonatomic) BOOL showNavCameraDebugConsoleProperties; // @synthesize showNavCameraDebugConsoleProperties=_showNavCameraDebugConsoleProperties;
 @property (nonatomic) BOOL showNavCameraDebugLegend; // @synthesize showNavCameraDebugLegend=_showNavCameraDebugLegend;
 @property (nonatomic) BOOL showNavCameraDebugOverlay; // @synthesize showNavCameraDebugOverlay=_showNavCameraDebugOverlay;
+@property (nonatomic) BOOL showPreliminaryInfo; // @synthesize showPreliminaryInfo=_showPreliminaryInfo;
 @property (nonatomic) BOOL showTrafficCasing; // @synthesize showTrafficCasing=_showTrafficCasing;
 @property (nonatomic) BOOL suppressFootprints; // @synthesize suppressFootprints=_suppressFootprints;
 @property (nonatomic) BOOL texturedTrafficCasing; // @synthesize texturedTrafficCasing=_texturedTrafficCasing;

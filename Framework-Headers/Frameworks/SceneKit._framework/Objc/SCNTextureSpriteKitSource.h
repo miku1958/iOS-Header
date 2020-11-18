@@ -8,6 +8,7 @@
 
 @class SKScene;
 
+__attribute__((visibility("hidden")))
 @interface SCNTextureSpriteKitSource : SCNTextureOffscreenRenderingSource
 {
     SKScene *_scene;

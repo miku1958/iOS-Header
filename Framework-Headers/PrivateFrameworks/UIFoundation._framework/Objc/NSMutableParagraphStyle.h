@@ -12,22 +12,22 @@
 {
 }
 
-@property (nonatomic) long long alignment;
-@property (nonatomic) BOOL allowsDefaultTighteningForTruncation;
-@property (nonatomic) long long baseWritingDirection;
-@property (nonatomic) double defaultTabInterval;
-@property (nonatomic) double firstLineHeadIndent;
-@property (nonatomic) double headIndent;
-@property (nonatomic) float hyphenationFactor;
-@property (nonatomic) long long lineBreakMode;
-@property (nonatomic) double lineHeightMultiple;
-@property (nonatomic) double lineSpacing;
-@property (nonatomic) double maximumLineHeight;
-@property (nonatomic) double minimumLineHeight;
-@property (nonatomic) double paragraphSpacing;
-@property (nonatomic) double paragraphSpacingBefore;
-@property (copy, nonatomic) NSArray *tabStops;
-@property (nonatomic) double tailIndent;
+@property (nonatomic) long long alignment; // @dynamic alignment;
+@property (nonatomic) BOOL allowsDefaultTighteningForTruncation; // @dynamic allowsDefaultTighteningForTruncation;
+@property (nonatomic) long long baseWritingDirection; // @dynamic baseWritingDirection;
+@property (nonatomic) double defaultTabInterval; // @dynamic defaultTabInterval;
+@property (nonatomic) double firstLineHeadIndent; // @dynamic firstLineHeadIndent;
+@property (nonatomic) double headIndent; // @dynamic headIndent;
+@property (nonatomic) float hyphenationFactor; // @dynamic hyphenationFactor;
+@property (nonatomic) long long lineBreakMode; // @dynamic lineBreakMode;
+@property (nonatomic) double lineHeightMultiple; // @dynamic lineHeightMultiple;
+@property (nonatomic) double lineSpacing; // @dynamic lineSpacing;
+@property (nonatomic) double maximumLineHeight; // @dynamic maximumLineHeight;
+@property (nonatomic) double minimumLineHeight; // @dynamic minimumLineHeight;
+@property (nonatomic) double paragraphSpacing; // @dynamic paragraphSpacing;
+@property (nonatomic) double paragraphSpacingBefore; // @dynamic paragraphSpacingBefore;
+@property (copy, nonatomic) NSArray *tabStops; // @dynamic tabStops;
+@property (nonatomic) double tailIndent; // @dynamic tailIndent;
 
 - (void)_mutateTabStops;
 - (void)_setLineBoundsOptions:(unsigned long long)arg1;

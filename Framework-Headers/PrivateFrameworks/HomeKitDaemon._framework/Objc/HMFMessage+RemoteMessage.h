@@ -17,5 +17,6 @@
 @property (readonly, nonatomic) HAPPairingIdentity *remoteUserPairingIdentity;
 @property (readonly, nonatomic, getter=isSecureRemote) BOOL secureRemote;
 
+- (id)hmd_safeUserInfo;
 @end
 

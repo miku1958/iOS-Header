@@ -14,13 +14,19 @@
     NSString *_albumUUID;
     NSArray *_assetUUIDs;
     long long _cloudFeedContent;
+    NSString *_suggestedCMMUUID;
+    NSString *_momentShareUUID;
 }
 
 @property long long actionType; // @synthesize actionType=_actionType;
 @property (copy, nonatomic) NSString *albumUUID; // @synthesize albumUUID=_albumUUID;
 @property (strong, nonatomic) NSArray *assetUUIDs; // @synthesize assetUUIDs=_assetUUIDs;
 @property (nonatomic) long long cloudFeedContent; // @synthesize cloudFeedContent=_cloudFeedContent;
+@property (copy, nonatomic) NSString *momentShareUUID; // @synthesize momentShareUUID=_momentShareUUID;
+@property (copy, nonatomic) NSString *suggestedCMMUUID; // @synthesize suggestedCMMUUID=_suggestedCMMUUID;
 
++ (void)userDidChangeStatusForMomentShare:(id)arg1;
++ (void)userDidChangeStatusForSuggestedCMM:(id)arg1;
 + (void)userDidDeleteSharedAlbum:(id)arg1;
 + (void)userDidDeleteSharedAssets:(id)arg1;
 + (void)userDidLeavePhotosApplication;

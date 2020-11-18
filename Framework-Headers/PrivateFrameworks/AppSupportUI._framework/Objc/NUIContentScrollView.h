@@ -6,41 +6,34 @@
 
 #import <UIKit/UIScrollView.h>
 
-#import <AppSupportUI/_UIMultilineTextContentSizing-Protocol.h>
+@class NUIMultilineSizingHelper, UIView;
 
-@class NSString, UIView;
-
-@interface NUIContentScrollView : UIScrollView <_UIMultilineTextContentSizing>
+@interface NUIContentScrollView : UIScrollView
 {
-    double _preferredMaxLayoutWidth;
-    struct {
-        unsigned int determiningPreferredMaxLayoutWidth:1;
-        unsigned int inSecondConstraintsPass:1;
-    } _containerViewFlags;
-    UIView *_contentView;
+    NUIMultilineSizingHelper *_multilineSizeHelper;
+    UIView *_documentView;
     long long _horizontalAlignment;
     long long _verticalAlignment;
 }
 
-@property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIView *contentView;
+@property (strong, nonatomic) UIView *documentView; // @synthesize documentView=_documentView;
 @property (nonatomic) long long horizontalAlignment; // @synthesize horizontalAlignment=_horizontalAlignment;
-@property (readonly) Class superclass;
 @property (nonatomic) long long verticalAlignment; // @synthesize verticalAlignment=_verticalAlignment;
 
 - (void).cxx_destruct;
 - (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
-- (BOOL)_nui_needsDoubleUpdateConstraintsPass;
+- (BOOL)_needsDoubleUpdateConstraintsPass;
 - (void)_prepareForFirstIntrinsicContentSizeCalculation;
 - (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect)arg1;
 - (void)_resetToBeginningOfDoublePass;
 - (void)_setInSecondConstraintsPass:(BOOL)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithContentView:(id)arg1;
+- (id)initWithDocumentView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
+- (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateConstraints;

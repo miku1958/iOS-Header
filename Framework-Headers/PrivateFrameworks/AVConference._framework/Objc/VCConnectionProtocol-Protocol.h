@@ -11,9 +11,10 @@
 
 @protocol VCConnectionProtocol <NSObject>
 
-@property int cellularMTU;
 @property (readonly) int connectionId;
+@property int connectionMTU;
 @property (readonly) NSUUID *connectionUUID;
+@property unsigned int downlinkBitrateCap;
 @property (readonly) BOOL isIPv6;
 @property (readonly) BOOL isLocalOnCellular;
 @property (readonly) BOOL isLocalOnWiFi;
@@ -28,7 +29,9 @@
 @property int remoteCellTech;
 @property (readonly) int remoteConnectionType;
 @property (readonly) NSString *remoteInterfaceTypeString;
+@property (readonly) BOOL serverIsDegraded;
 @property (readonly) unsigned int type;
+@property unsigned int uplinkBitrateCap;
 
 - (void)getSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (BOOL)isOnSameInterfacesWithConnection:(id<VCConnectionProtocol>)arg1;

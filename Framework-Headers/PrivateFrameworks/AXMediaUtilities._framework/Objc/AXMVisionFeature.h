@@ -91,14 +91,13 @@
 @property (readonly, nonatomic) NSString *value;
 
 + (void)_append:(id)arg1 toList:(id)arg2;
-+ (id)debugNameForFeatureType:(unsigned long long)arg1;
 + (id)featureWithAssetMetadata:(id)arg1;
 + (id)featureWithColorInfo:(id)arg1 canvasSize:(struct CGSize)arg2;
 + (id)featureWithFutharkFeature:(id)arg1 canvasSize:(struct CGSize)arg2 context:(id)arg3;
 + (id)featureWithMediaLegibility:(id)arg1;
 + (id)featureWithMetadata:(id)arg1 canvasSize:(struct CGSize)arg2;
-+ (id)featureWithVisionRequest:(id)arg1 blurResult:(id)arg2 canvasSize:(struct CGSize)arg3;
-+ (id)featureWithVisionRequest:(id)arg1 brightnessResult:(id)arg2 canvasSize:(struct CGSize)arg3;
++ (id)featureWithVisionRequest:(id)arg1 blurValue:(float)arg2 canvasSize:(struct CGSize)arg3;
++ (id)featureWithVisionRequest:(id)arg1 brightnessValue:(float)arg2 canvasSize:(struct CGSize)arg3;
 + (id)featureWithVisionRequest:(id)arg1 classificationResult:(id)arg2 canvasSize:(struct CGSize)arg3;
 + (id)featureWithVisionRequest:(id)arg1 faceResult:(id)arg2 canvasSize:(struct CGSize)arg3;
 + (id)featureWithVisionRequest:(id)arg1 horizonResult:(id)arg2 canvasSize:(struct CGSize)arg3;
@@ -106,6 +105,9 @@
 + (id)featureWithVisionRequest:(id)arg1 rectangleResult:(id)arg2 canvasSize:(struct CGSize)arg3;
 + (id)featureWithVisionRequest:(id)arg1 textResult:(id)arg2 canvasSize:(struct CGSize)arg3 context:(id)arg4;
 + (id)flattenedFeatureList:(id)arg1;
++ (id)nameForFaceExpression:(long long)arg1;
++ (id)nameForFeatureType:(unsigned long long)arg1;
++ (id)nameForOCRType:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)textDocumentWithBoundingBox:(struct CGRect)arg1 regions:(id)arg2 canvasSize:(struct CGSize)arg3 context:(id)arg4;
 + (id)textLineWithBoundingBox:(struct CGRect)arg1 sequences:(id)arg2 canvasSize:(struct CGSize)arg3 context:(id)arg4;

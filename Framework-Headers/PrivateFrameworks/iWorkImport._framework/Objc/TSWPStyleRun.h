@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, TSWPCharacterStyle;
 
@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long runLength; // @synthesize runLength=_runLength;
 
 - (void).cxx_destruct;
+- (BOOL)coalesceWith:(id)arg1;
+- (struct _NSRange)range;
 
 @end
 

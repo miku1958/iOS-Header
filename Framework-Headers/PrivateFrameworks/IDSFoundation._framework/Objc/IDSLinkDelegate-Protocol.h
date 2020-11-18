@@ -11,9 +11,10 @@
 @protocol IDSLinkDelegate <NSObject>
 - (void)link:(id)arg1 didConnectForDeviceUniqueID:(NSString *)arg2 cbuuid:(NSString *)arg3;
 - (void)link:(id)arg1 didDisconnectForDeviceUniqueID:(NSString *)arg2 cbuuid:(NSString *)arg3;
-- (BOOL)link:(id)arg1 didReceivePacket:(CDStruct_3b17df7f *)arg2 fromDeviceUniqueID:(NSString *)arg3 cbuuid:(NSString *)arg4;
+- (BOOL)link:(id)arg1 didReceivePacket:(CDStruct_c4cff10b *)arg2 fromDeviceUniqueID:(NSString *)arg3 cbuuid:(NSString *)arg4;
 
 @optional
+- (void)link:(id)arg1 didAddQREvent:(NSDictionary *)arg2;
 - (void)link:(id)arg1 didCellularMTUChange:(unsigned short)arg2;
 - (void)link:(id)arg1 didConnectOverCloud:(NSString *)arg2 cbuuid:(NSString *)arg3;
 - (void)link:(id)arg1 didConnectUnderlyingLink:(BOOL)arg2 linkUUID:(NSUUID *)arg3 localAttributes:(NSDictionary *)arg4 remoteAttributes:(NSDictionary *)arg5;
@@ -24,6 +25,7 @@
 - (void)link:(id)arg1 didRATChange:(unsigned char)arg2;
 - (void)link:(id)arg1 didReceiveReportEvent:(NSDictionary *)arg2;
 - (void)link:(id)arg1 didReceiveSKEData:(NSData *)arg2;
+- (void)link:(id)arg1 didReceiveSessionInfo:(NSDictionary *)arg2 relayGroupID:(NSString *)arg3 relaySessionID:(NSString *)arg4 success:(BOOL)arg5;
 - (void)link:(id)arg1 hasSpaceAvailable:(BOOL)arg2 deviceUniqueID:(NSString *)arg3 cbuuid:(NSString *)arg4;
 - (void)link:(id)arg1 hostAwakeDidChange:(BOOL)arg2 deviceUniqueID:(NSString *)arg3 cbuuid:(NSString *)arg4;
 @end

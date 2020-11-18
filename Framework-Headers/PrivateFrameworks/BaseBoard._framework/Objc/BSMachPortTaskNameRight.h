@@ -14,12 +14,12 @@
     BSAuditToken *_auditToken;
 }
 
-@property (readonly, strong, nonatomic) BSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (readonly, nonatomic) BSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
 
 + (BOOL)supportsSecureCoding;
 + (id)taskNameForPID:(int)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;

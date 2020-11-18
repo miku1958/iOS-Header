@@ -9,7 +9,6 @@
 @class PDAssertion, PDAssertionCoordinator;
 
 @protocol PDAssertionCoordinatorDelegate <NSObject>
-- (BOOL)assertionCoordinator:(PDAssertionCoordinator *)arg1 assertionExistsOfType:(unsigned long long)arg2;
 - (BOOL)assertionCoordinator:(PDAssertionCoordinator *)arg1 canAcquireAssertion:(PDAssertion *)arg2;
 - (void)assertionCoordinator:(PDAssertionCoordinator *)arg1 didAcquireAssertion:(PDAssertion *)arg2;
 - (void)assertionCoordinator:(PDAssertionCoordinator *)arg1 didInvalidateAssertion:(PDAssertion *)arg2;

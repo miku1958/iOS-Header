@@ -9,20 +9,19 @@
 #import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCollectionSetting, NSData, NSUUID;
-@protocol NSObject><NSCopying><NSSecureCoding, OS_dispatch_queue;
+@class HMAccessoryCollectionSetting, HMFUnfairLock, NSData, NSUUID;
+@protocol NSObject><NSCopying><NSSecureCoding;
 
 @interface HMAccessoryCollectionSettingItem : NSObject <NSCopying, NSSecureCoding>
 {
+    HMFUnfairLock *_lock;
     id<NSObject><NSCopying><NSSecureCoding> _value;
     NSData *_serializedValue;
     NSUUID *_identifier;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMAccessoryCollectionSetting *_setting;
 }
 
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) NSData *serializedValue; // @synthesize serializedValue=_serializedValue;
 @property (weak) HMAccessoryCollectionSetting *setting; // @synthesize setting=_setting;
 @property (readonly, copy) id<NSObject><NSCopying><NSSecureCoding> value; // @synthesize value=_value;

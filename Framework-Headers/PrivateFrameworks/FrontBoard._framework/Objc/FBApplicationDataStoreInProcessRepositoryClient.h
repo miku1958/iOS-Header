@@ -4,48 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBSApplicationDataStoreRepositoryClient-Protocol.h>
 
-@class NSCountedSet, NSHashTable, NSMutableDictionary, NSString;
+@class NSCountedSet, NSHashTable, NSString;
 @protocol FBApplicationDataStoreRepository, OS_dispatch_queue;
 
 @interface FBApplicationDataStoreInProcessRepositoryClient : NSObject <FBSApplicationDataStoreRepositoryClient>
 {
     id<FBApplicationDataStoreRepository> _dataStore;
     NSCountedSet *_prefetchedKeys;
+    struct NSMutableDictionary *_prefetchedKeyValues;
     NSObject<OS_dispatch_queue> *_prefetchQueue;
     NSObject<OS_dispatch_queue> *_clientCalloutQueue;
     NSObject<OS_dispatch_queue> *_observersQueue;
     NSHashTable *_observers;
-    struct NSMutableDictionary *_prefetchedKeyValues;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableDictionary *prefetchedKeyValues; // @synthesize prefetchedKeyValues=_prefetchedKeyValues;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_invalidateCacheIfObjectIsNotEqual:(id)arg1 forKey:(id)arg2 forApplication:(id)arg3;
 - (id)_observers;
 - (id)_prefetchQueue_prefetchedKeysForApplication:(id)arg1;
+- (void)_prefetchQueue_updateNotificationListeners;
 - (void)_repositoryInvalidated:(id)arg1;
-- (void)_sendAndCachePrefetchedKeysWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateCacheIfNecessaryWithObject:(id)arg1 forKey:(id)arg2 forApplication:(id)arg3;
 - (void)_updateNotificationListeners;
 - (void)_valueChanged:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)addPrefetchedKeys:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)availableDataStores:(CDUnknownBlockType)arg1;
-- (void)dealloc;
+- (void)addPrefetchedKeys:(id)arg1;
+- (id)availableDataStores;
 - (id)init;
 - (id)initWithDataStore:(id)arg1;
 - (void)invalidate;
-- (id)objectForKey:(id)arg1 forApplication:(id)arg2 checkPrefetch:(BOOL)arg3;
+- (id)objectForKey:(id)arg1 forApplication:(id)arg2;
 - (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3;
-- (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3 checkPrefetch:(BOOL)arg4;
 - (BOOL)prefetchedObjectIfAvailableForKey:(id)arg1 application:(id)arg2 outObject:(id *)arg3;
 - (void)removeAllObjectsForApplication:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)removeObjectForKey:(id)arg1 forApplication:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;

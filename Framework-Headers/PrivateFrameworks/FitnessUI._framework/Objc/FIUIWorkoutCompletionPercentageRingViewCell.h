@@ -6,24 +6,28 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class HKRingsView, HKWorkout, UIImageView, UILabel, UIView;
+@class FIUIDividerView, HKRingsView, HKWorkout, UIImageView, UILabel;
 
 @interface FIUIWorkoutCompletionPercentageRingViewCell : UITableViewCell
 {
+    BOOL _showDivider;
     HKWorkout *_workout;
     double _currentCompletionFactor;
     HKRingsView *_ringsView;
+    UIImageView *_gradientBackgroundImageView;
     UIImageView *_iconImageView;
     UILabel *_typeLabel;
     UILabel *_secondaryLabel;
-    UIView *_separatorView;
+    FIUIDividerView *_separatorView;
 }
 
 @property (nonatomic) double currentCompletionFactor; // @synthesize currentCompletionFactor=_currentCompletionFactor;
+@property (strong, nonatomic) UIImageView *gradientBackgroundImageView; // @synthesize gradientBackgroundImageView=_gradientBackgroundImageView;
 @property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (strong, nonatomic) HKRingsView *ringsView; // @synthesize ringsView=_ringsView;
 @property (strong, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;
-@property (strong, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
+@property (strong, nonatomic) FIUIDividerView *separatorView; // @synthesize separatorView=_separatorView;
+@property (nonatomic) BOOL showDivider; // @synthesize showDivider=_showDivider;
 @property (strong, nonatomic) UILabel *typeLabel; // @synthesize typeLabel=_typeLabel;
 @property (strong, nonatomic) HKWorkout *workout; // @synthesize workout=_workout;
 

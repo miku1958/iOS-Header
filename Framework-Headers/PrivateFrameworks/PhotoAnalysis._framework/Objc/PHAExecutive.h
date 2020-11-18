@@ -9,17 +9,24 @@
 #import <PhotoAnalysis/NSXPCListenerDelegate-Protocol.h>
 #import <PhotoAnalysis/PHPhotoLibraryAvailabilityObserver-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, PHAPhotoLibraryList, PHASleepWakeMonitor;
-@protocol OS_dispatch_queue, OS_dispatch_source, OS_xpc_object;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, PFSerialQueue, PHAActivityLog, PHAPhotoLibraryList, PHASleepWakeMonitor;
+@protocol OS_dispatch_source, OS_voucher, OS_xpc_object, PFDTransactionDispatchQueue;
 
 @interface PHAExecutive : NSObject <PHPhotoLibraryAvailabilityObserver, NSXPCListenerDelegate>
 {
     BOOL _isPhotoAnalysisAgent;
     BOOL _backgroundAnalysisActivityTriggered;
+    PFSerialQueue<PFDTransactionDispatchQueue> *_executiveStateQueue;
+    _Atomic BOOL _turboMode;
+    NSObject<OS_voucher> *_turboModeBoostVoucher;
+    NSMutableArray *_processingLog;
+    PHAActivityLog *_currentLog;
+    struct os_unfair_lock_s _connectedClientsLock;
+    BOOL _shouldDeferActivity;
     unsigned char _state;
+    PHAActivityLog *_activityLog;
     NSMutableSet *_clients;
     NSMutableDictionary *_managersByLibraryPath;
-    NSObject<OS_dispatch_queue> *_executiveStateQueue;
     PHAPhotoLibraryList *_photoLibraryList;
     PHASleepWakeMonitor *_sleepWakeMonitor;
     long long _countOfCoordinatorsRunningBackgroundAnalysis;
@@ -27,13 +34,13 @@
     NSObject<OS_xpc_object> *_backgroundAnalysisActivity;
 }
 
+@property (readonly) PHAActivityLog *activityLog; // @synthesize activityLog=_activityLog;
 @property (strong) NSObject<OS_xpc_object> *backgroundAnalysisActivity; // @synthesize backgroundAnalysisActivity=_backgroundAnalysisActivity;
 @property (strong) NSObject<OS_dispatch_source> *backgroundAnalysisMonitorTimer; // @synthesize backgroundAnalysisMonitorTimer=_backgroundAnalysisMonitorTimer;
 @property (strong) NSMutableSet *clients; // @synthesize clients=_clients;
 @property long long countOfCoordinatorsRunningBackgroundAnalysis; // @synthesize countOfCoordinatorsRunningBackgroundAnalysis=_countOfCoordinatorsRunningBackgroundAnalysis;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) NSObject<OS_dispatch_queue> *executiveStateQueue; // @synthesize executiveStateQueue=_executiveStateQueue;
 @property (readonly) unsigned long long hash;
 @property (strong) NSMutableDictionary *managersByLibraryPath; // @synthesize managersByLibraryPath=_managersByLibraryPath;
 @property (strong) PHAPhotoLibraryList *photoLibraryList; // @synthesize photoLibraryList=_photoLibraryList;
@@ -45,25 +52,30 @@
 - (void).cxx_destruct;
 - (void)_backgroundActivityDidBegin;
 - (void)_cleanupAfterBackgroundActivityFinishedForDefer:(BOOL)arg1 skipActivityStateCheck:(BOOL)arg2 message:(id)arg3;
-- (void)_dispatchAsyncToQueue:(id)arg1 withTransactionBlock:(CDUnknownBlockType)arg2;
 - (void)_installBackgroundAnalysisMonitor;
 - (void)_localeDidChangeNotification:(id)arg1;
 - (BOOL)_photoAnalysisEnabled;
 - (void)_registerBackgroundActivity;
-- (void)_stopAllBackgroundAnalysisWithCompletion:(CDUnknownBlockType)arg1 queue:(id)arg2;
+- (void)_startBackgroundAnalysis;
+- (void)_stopAllBackgroundAnalysisWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_urlForSystemPhotoLibrary;
+- (void)addProcessingActivityToStatusDictionary:(id)arg1;
 - (void)checkQuiescenceForManager:(id)arg1;
 - (id)clientInfoForManager:(id)arg1;
 - (void)dealloc;
 - (void)dispatchAsyncToExecutiveStateQueue:(CDUnknownBlockType)arg1;
 - (void)dumpAnalysisStatusWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dumpStatusToLog;
+- (void)handleOperation:(id)arg1;
 - (BOOL)hasConnectedClientsForManager:(id)arg1;
+- (BOOL)hasPhotosConnectionForManager:(id)arg1;
 - (id)init;
+- (BOOL)isTurboMode;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (id)managerForPhotoLibraryURL:(id)arg1;
 - (void)photoLibraryDidBecomeUnavailable:(id)arg1;
 - (void)removeClientHandler:(id)arg1;
+- (void)setTurboMode;
 - (void)shutdown;
 - (void)startup;
 - (id)statusAsDictionary;

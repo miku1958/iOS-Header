@@ -41,7 +41,7 @@
 @property (readonly, nonatomic) NSArray *availableElements;
 @property (strong, nonatomic) NSArray *currentApps; // @synthesize currentApps=_currentApps;
 @property (strong, nonatomic) NSArray *customCurrentApps; // @synthesize customCurrentApps=_customCurrentApps;
-@property (nonatomic) id<AXElementFetcherDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<AXElementFetcherDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL didSendFakeScreenChangeOnLastFetch; // @synthesize didSendFakeScreenChangeOnLastFetch=_didSendFakeScreenChangeOnLastFetch;
 @property (strong, nonatomic) NSArray *elementCache; // @synthesize elementCache=_elementCache;
 @property (readonly, nonatomic) AXElementGroupPruner *elementGroupPruner;

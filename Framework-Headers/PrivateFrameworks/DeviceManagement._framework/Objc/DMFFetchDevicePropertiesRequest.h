@@ -4,25 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSArray;
 
-@interface DMFFetchDevicePropertiesRequest : CATTaskRequest
+@interface DMFFetchDevicePropertiesRequest : DMFTaskRequest
 {
     NSArray *_propertyKeys;
 }
 
 @property (copy, nonatomic) NSArray *propertyKeys; // @synthesize propertyKeys=_propertyKeys;
 
-+ (id)allPlatformDevicePropertyKeys;
-+ (id)currentPlatformDevicePropertyKeys;
-+ (id)iOSDevicePropertyKeys;
-+ (id)iOSPlatformDevicePropertyKeys;
-+ (id)macOSDevicePropertyKeys;
++ (id)currentDevicePropertyKeys;
++ (id)devicePropertyKeysForPlatform:(unsigned long long)arg1;
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
-+ (id)tvOSDevicePropertyKeys;
-+ (id)watchOSDevicePropertyKeys;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

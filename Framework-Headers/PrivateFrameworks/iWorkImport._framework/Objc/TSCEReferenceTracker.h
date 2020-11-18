@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_trackedReferences;
     unsigned long long _nextEmptyTrackedReferencesIndex;
     unsigned long long _numberOfTrackedReferences;
-    struct vector<TSCEFormulaID, std::__1::allocator<TSCEFormulaID>> _formulaIDsToRewrite;
 }
 
 @property (readonly, weak, nonatomic) TSCECalculationEngine *calculationEngine;
@@ -32,10 +31,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (struct TSUCellCoord)coordFromIndex:(unsigned long long)arg1;
++ (unsigned long long)indexFromCoord:(const struct TSUCellCoord *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)allTrackedReferences;
-- (void)beginRewriteForCalculationEngine:(id)arg1 spec:(id)arg2;
 - (void)beginTrackingReference:(id)arg1;
 - (id)beginTrackingReferenceWithCellRef:(const struct TSCECellRef *)arg1;
 - (id)beginTrackingReferenceWithRangeRef:(const struct TSCERangeRef *)arg1;
@@ -44,21 +44,24 @@ __attribute__((visibility("hidden")))
 - (void)endTrackingReference:(id)arg1;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 delegate:(id)arg3;
-- (void)invalidateForCalculationEngine:(id)arg1;
+- (void)invalidateForCalcEngine:(id)arg1;
+- (id)linkedResolver;
 - (void)loadFromUnarchiver:(id)arg1;
 - (unsigned long long)numberOfTrackedReferences;
 - (id)objectToArchiveInDependencyTracker;
-- (CDStruct_2a4d9400)recalculateForCalculationEngine:(id)arg1 formulaID:(CDStruct_ed6d627d)arg2 isInCycle:(BOOL)arg3 hasCalculatedPrecedents:(BOOL)arg4;
-- (void)registerWithCalculationEngine:(BOOL)arg1;
-- (void)rewriteForCalculationEngine:(id)arg1 formulaID:(CDStruct_ed6d627d)arg2 rewriteSpec:(id)arg3;
+- (int)ownerKind;
+- (UUIDData_5fbc143e)ownerUID;
+- (CDStruct_2a4d9400)recalculateForCalcEngine:(id)arg1 atFormulaCoord:(struct TSUCellCoord)arg2 recalcOptions:(CDStruct_3d581f42)arg3;
+- (void)registerWithCalcEngine:(BOOL)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)setCalculationEngine:(id)arg1;
 - (void)setFormulaOwnerUID:(const UUIDData_5fbc143e *)arg1;
-- (id)trackedReferenceAtID:(CDStruct_ed6d627d)arg1;
+- (id)trackedReferenceAtCoord:(struct TSUCellCoord)arg1;
 - (void)trackedReferenceWasDeleted:(id)arg1 fromOwnerUID:(const UUIDData_5fbc143e *)arg2;
 - (BOOL)trackedReferencesExistForTable:(const UUIDData_5fbc143e *)arg1;
-- (void)unregisterFromCalculationEngine;
-- (void)writeResultsForCalculationEngine:(id)arg1;
+- (void)unregisterFromCalcEngine;
+- (void)willClose;
+- (void)writeResultsForCalcEngine:(id)arg1;
 
 @end
 

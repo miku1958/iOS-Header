@@ -10,23 +10,23 @@
 #import <UserNotificationsUIKit/_UNNotificationExtensionHostDelegate-Protocol.h>
 
 @class NCMediaPlayPauseButton, NCNotificationAction, NCNotificationRequest, NSMutableArray, NSString, UIView, _UNNotificationExtensionHostViewController;
-@protocol NCNotificationCustomContentDelegate, _UNNotificationExtensionRemoteInterface;
+@protocol NCNotificationCustomContentDelegate;
 
 @interface NCNotificationExtensionContainerViewController : UIViewController <_UNNotificationExtensionHostDelegate, NCNotificationCustomContent>
 {
-    BOOL _userInteractionEnabled;
     BOOL _allowManualDismiss;
     BOOL _defaultContentHidden;
     BOOL _overridesDefaultTitle;
+    BOOL _userInteractionEnabled;
     id<NCNotificationCustomContentDelegate> _delegate;
     NSString *_extensionIdentifier;
     double _contentSizeRatio;
     NCNotificationRequest *_notificationRequest;
     _UNNotificationExtensionHostViewController *_extensionViewController;
-    id<_UNNotificationExtensionRemoteInterface> _remoteService;
     UIView *_blockingView;
     NCMediaPlayPauseButton *_mediaPlayPauseButton;
     NSMutableArray *_queuedRequests;
+    NSMutableArray *_updatedActions;
 }
 
 @property (nonatomic) BOOL allowManualDismiss; // @synthesize allowManualDismiss=_allowManualDismiss;
@@ -45,10 +45,10 @@
 @property (nonatomic) BOOL overridesDefaultTitle; // @synthesize overridesDefaultTitle=_overridesDefaultTitle;
 @property (weak, nonatomic) NCNotificationAction *presentationSourceAction;
 @property (strong, nonatomic) NSMutableArray *queuedRequests; // @synthesize queuedRequests=_queuedRequests;
-@property (strong, nonatomic) id<_UNNotificationExtensionRemoteInterface> remoteService; // @synthesize remoteService=_remoteService;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title;
-@property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
+@property (strong, nonatomic) NSMutableArray *updatedActions; // @synthesize updatedActions=_updatedActions;
+@property (nonatomic) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 
 - (void).cxx_destruct;
 - (void)_addExtensionViewFromViewController:(id)arg1;
@@ -65,30 +65,32 @@
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canResignFirstResponder;
+- (id)cancelTouches;
 - (unsigned long long)customContentLocation;
 - (void)dealloc;
 - (BOOL)didReceiveNotificationRequest:(id)arg1;
 - (id)initWithExtension:(id)arg1 forNotificationRequest:(id)arg2;
 - (void)loadAudioAccessoryView;
-- (void)loadExtension;
 - (void)notificationHost:(id)arg1 extensionDidCompleteResponse:(id)arg2 withOption:(unsigned long long)arg3;
 - (void)notificationHostExtension:(id)arg1 audioAccessoryViewLayerContextId:(unsigned int)arg2;
 - (void)notificationHostExtension:(id)arg1 setDismissEnabled:(BOOL)arg2;
 - (void)notificationHostExtension:(id)arg1 setTitle:(id)arg2;
+- (void)notificationHostExtension:(id)arg1 setUserNotificationActions:(id)arg2;
 - (void)notificationHostExtensionDidUpdateControls:(id)arg1;
 - (void)notificationHostExtensionMediaPlayingDidPause:(id)arg1;
 - (void)notificationHostExtensionMediaPlayingDidStart:(id)arg1;
+- (void)notificationHostExtensionRequestsDefaultAction:(id)arg1;
 - (void)notificationHostExtensionRequestsDismiss:(id)arg1;
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2;
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;
 - (void)playAudioMessage;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)preserveInputViews;
+- (id)remoteService;
 - (BOOL)resignFirstResponder;
 - (BOOL)restoreInputViews;
 - (void)setTitle:(id)arg1;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
-- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 

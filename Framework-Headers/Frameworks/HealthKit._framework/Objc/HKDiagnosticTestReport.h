@@ -14,32 +14,32 @@
 @interface HKDiagnosticTestReport : HKMedicalRecord <NSSecureCoding, NSCopying>
 {
     NSArray *_diagnosticTestCodings;
-    HKMedicalDate *_effectiveEndDate;
-    HKMedicalDate *_effectiveStartDate;
-    HKMedicalDate *_issueDate;
     NSString *_panelName;
     NSArray *_results;
+    HKMedicalDate *_effectiveStartDate;
     HKMedicalCoding *_status;
+    HKMedicalDate *_effectiveEndDate;
+    HKMedicalDate *_issueDate;
 }
 
-@property (readonly, copy, nonatomic) NSArray *diagnosticTestCodings; // @synthesize diagnosticTestCodings=_diagnosticTestCodings;
-@property (readonly, nonatomic) HKDiagnosticTestReportType *diagnosticTestReportType;
-@property (readonly, copy, nonatomic) HKMedicalDate *effectiveEndDate; // @synthesize effectiveEndDate=_effectiveEndDate;
-@property (readonly, copy, nonatomic) HKMedicalDate *effectiveStartDate; // @synthesize effectiveStartDate=_effectiveStartDate;
-@property (readonly, copy, nonatomic) HKMedicalDate *issueDate; // @synthesize issueDate=_issueDate;
-@property (readonly, copy, nonatomic) NSString *panelName; // @synthesize panelName=_panelName;
-@property (readonly, copy, nonatomic) NSArray *results; // @synthesize results=_results;
-@property (readonly, copy, nonatomic) HKMedicalCoding *status; // @synthesize status=_status;
+@property (readonly, copy) NSArray *diagnosticTestCodings;
+@property (readonly, copy) HKDiagnosticTestReportType *diagnosticTestReportType;
+@property (readonly, copy) HKMedicalDate *effectiveEndDate;
+@property (readonly, copy) HKMedicalDate *effectiveStartDate;
+@property (readonly, copy) HKMedicalDate *issueDate;
+@property (readonly, copy) NSString *panelName;
+@property (readonly, copy) NSArray *results;
+@property (readonly, copy) HKMedicalCoding *status;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)defaultDisplayString;
 + (id)diagnosticTestCodingsPreferredSystems;
-+ (id)diagnosticTestReportWithNote:(id)arg1 enteredInError:(BOOL)arg2 modifiedDate:(id)arg3 FHIRIdentifier:(id)arg4 extractionVersion:(long long)arg5 device:(id)arg6 metadata:(id)arg7 diagnosticTestCodings:(id)arg8 panelName:(id)arg9 results:(id)arg10 effectiveStartDate:(id)arg11 status:(id)arg12 effectiveEndDate:(id)arg13 issueDate:(id)arg14;
++ (id)diagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 diagnosticTestCodings:(id)arg9 panelName:(id)arg10 results:(id)arg11 effectiveStartDate:(id)arg12 status:(id)arg13 effectiveEndDate:(id)arg14 issueDate:(id)arg15;
++ (id)diagnosticTestReportWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 diagnosticTestCodings:(id)arg10 panelName:(id)arg11 results:(id)arg12 effectiveStartDate:(id)arg13 status:(id)arg14 effectiveEndDate:(id)arg15 issueDate:(id)arg16;
 + (id)statusPreferredSystems;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_setDiagnosticTestCodings:(id)arg1;
 - (void)_setEffectiveEndDate:(id)arg1;
 - (void)_setEffectiveStartDate:(id)arg1;

@@ -7,44 +7,44 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBFilePropertyValue-Protocol.h>
 
-@class PBUnknownFields, _INPBContact, _INPBDateTimeRange, _INPBLong, _INPBString;
+@class NSString, _INPBContact, _INPBDateTimeRange, _INPBLong, _INPBString;
 
-@interface _INPBFilePropertyValue : PBCodable <NSCopying>
+@interface _INPBFilePropertyValue : PBCodable <_INPBFilePropertyValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    _INPBDateTimeRange *_dateTime;
-    int _fileType;
-    _INPBContact *_person;
-    _INPBLong *_quantity;
-    _INPBString *_value;
     struct {
         unsigned int fileType:1;
     } _has;
+    int _fileType;
+    _INPBDateTimeRange *_dateTime;
+    _INPBContact *_person;
+    _INPBLong *_quantity;
+    _INPBString *_value;
 }
 
 @property (strong, nonatomic) _INPBDateTimeRange *dateTime; // @synthesize dateTime=_dateTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) int fileType; // @synthesize fileType=_fileType;
 @property (readonly, nonatomic) BOOL hasDateTime;
 @property (nonatomic) BOOL hasFileType;
 @property (readonly, nonatomic) BOOL hasPerson;
 @property (readonly, nonatomic) BOOL hasQuantity;
 @property (readonly, nonatomic) BOOL hasValue;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBContact *person; // @synthesize person=_person;
 @property (strong, nonatomic) _INPBLong *quantity; // @synthesize quantity=_quantity;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBString *value; // @synthesize value=_value;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsFileType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)fileTypeAsString:(int)arg1;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

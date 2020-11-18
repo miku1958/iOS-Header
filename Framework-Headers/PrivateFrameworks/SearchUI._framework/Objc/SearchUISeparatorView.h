@@ -8,7 +8,10 @@
 
 @interface SearchUISeparatorView : SearchUIVibrantView
 {
+    double _separatorHeight;
 }
+
+@property double separatorHeight; // @synthesize separatorHeight=_separatorHeight;
 
 - (id)initWithStyle:(unsigned long long)arg1;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;

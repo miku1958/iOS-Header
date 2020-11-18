@@ -26,9 +26,13 @@
 @property (readonly, copy, nonatomic) NSString *transactionNote;
 @property (readonly, copy, nonatomic) INDateComponentsRange *transactionScheduledDate;
 
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
+- (long long)_intentCategory;
+- (BOOL)_isUserConfirmationRequired;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithBillPayee:(id)arg1 fromAccount:(id)arg2 transactionAmount:(id)arg3 transactionScheduledDate:(id)arg4 transactionNote:(id)arg5 billType:(long long)arg6 dueDate:(id)arg7;

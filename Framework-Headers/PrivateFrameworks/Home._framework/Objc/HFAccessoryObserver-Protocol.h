@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Home/HFDemoModeAccessoryObserver-Protocol.h>
 #import <Home/HMAccessoryDelegatePrivate-Protocol.h>
 
-@protocol HFAccessoryObserver <HMAccessoryDelegatePrivate>
+@protocol HFAccessoryObserver <HMAccessoryDelegatePrivate, HFDemoModeAccessoryObserver>
 @end
 

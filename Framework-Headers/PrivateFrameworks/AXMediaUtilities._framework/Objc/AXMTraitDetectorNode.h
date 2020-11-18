@@ -22,10 +22,13 @@
 + (BOOL)isSupported;
 + (BOOL)supportsSecureCoding;
 + (id)title;
+- (id)_blurValueForVisionObservation:(id)arg1;
+- (id)_brightnessValueForVisionObservation:(id)arg1;
 - (void)_evaluateColorInformation:(id)arg1;
 - (void)evaluate:(id)arg1;
 - (void)nodeInitialize;
 - (BOOL)requiresVisionFramework;
+- (BOOL)validateVisionKitSoftLinkSymbols;
 
 @end
 

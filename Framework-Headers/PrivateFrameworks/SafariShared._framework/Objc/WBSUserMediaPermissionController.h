@@ -32,7 +32,7 @@
 @property (readonly, nonatomic) WBSPerSitePreferencesSQLiteStore *perSitePreferencesStore; // @synthesize perSitePreferencesStore=_perSitePreferencesStore;
 @property (readonly) Class superclass;
 
-+ (id)perSitePreferenceValueForMediaCaptureSetting:(long long)arg1;
++ (id)localizedStringForPerSitePreferenceValue:(id)arg1;
 + (id)sharedController;
 - (void).cxx_destruct;
 - (void)_cachedSettingsDidChange;
@@ -59,6 +59,7 @@
 - (BOOL)hasPolicyEntryForTopLevelOrigin:(id)arg1;
 - (id)init;
 - (id)initWithUserMediaPermissionsFileURL:(id)arg1 perSitePreferencesStore:(id)arg2;
+- (id)localizedStringForValue:(id)arg1 inPreference:(id)arg2;
 - (void)performDelayedLaunchOperations;
 - (unsigned long long)permissionForDomain:(id)arg1;
 - (unsigned long long)permissionForOrigin:(id)arg1 topLevelOrigin:(id)arg2;

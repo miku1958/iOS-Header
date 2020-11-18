@@ -26,5 +26,6 @@
 + (void)_matchSnippetExtensionsWithExtensionPointName:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)appAllowedToTalkToSiri:(id)arg1;
 - (BOOL)_intents_extensionSupportsAtLeastOneSiriIntent;
+- (id)_intents_intentsRestrictedWhileProtectedDataUnavailable;
 @end
 

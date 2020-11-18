@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class GEOUserSessionEntity, GEOUserSessionSnapshot, NSData, NSLock;
+@protocol OS_dispatch_queue;
 
 @interface GEOUserSession : NSObject
 {
@@ -29,13 +30,19 @@
     double _previousNavigationSessionStartTime;
     double _previousNavigationSessionEndTime;
     struct GEOSessionID _zeroSessionID;
+    unsigned char _shortSessionMachElapsedShiftFactor;
+    struct GEOSessionID _shortSessionID;
+    double _shortSessionCreationTime;
+    unsigned long long _shortSessionMachTimeBasis;
+    NSObject<OS_dispatch_queue> *_snapshotQueue;
+    int _shortSessionChangedToken;
 }
 
 @property (readonly) GEOUserSessionEntity *cohortSessionEntity;
 @property (readonly) GEOUserSessionEntity *longSessionEntity;
 @property (strong, nonatomic) GEOUserSessionEntity *mapsUserSessionEntity; // @synthesize mapsUserSessionEntity=_mapsUserSessionEntity;
 @property (readonly) GEOUserSessionEntity *navSessionEntity;
-@property BOOL shareSessionWithMaps; // @synthesize shareSessionWithMaps=_shareSessionWithMaps;
+@property (nonatomic) BOOL shareSessionWithMaps; // @synthesize shareSessionWithMaps=_shareSessionWithMaps;
 @property (readonly) struct GEOSessionID usageCollectionSessionID;
 @property (readonly) GEOUserSessionSnapshot *userSessionSnapshot;
 @property BOOL zeroSessionIDMode; // @synthesize zeroSessionIDMode=_zeroSessionIDMode;
@@ -47,22 +54,23 @@
 - (id)_defaultForKey:(id)arg1;
 - (void)_generateNewNavSessionID;
 - (double)_getCFAbsoluteCurrentTime;
-- (void)_mapsSessionEntityWithCallback:(CDUnknownBlockType)arg1;
+- (void)_overrideShortSessionId:(struct GEOSessionID)arg1 sessionMachBasisTime:(unsigned long long)arg2 sessionStartTime:(double)arg3;
 - (void)_renewCohortSessionID;
 - (void)_renewUsageCollectionSessionID;
 - (void)_resetSessionID;
 - (void)_safe_renewCohortSessionID;
 - (void)_safe_renewUsageCollectionSessionID;
 - (void)_setDefault:(id)arg1 forKey:(id)arg2;
+- (void)_shortSessionWithBasisComponentsCompletion:(CDUnknownBlockType)arg1;
 - (void)_updateNavSessionID;
-- (void)_updateSessionID;
 - (void)_updateWithNewUUIDForSessionID:(struct GEOSessionID *)arg1;
 - (void)dealloc;
 - (void)endNavigationSession;
-- (unsigned int)incrementSequenceNumber;
 - (id)init;
 - (void)mapsSessionEntityWithCallback:(CDUnknownBlockType)arg1 shareSessionIDWithMaps:(BOOL)arg2 resetSession:(BOOL)arg3;
+- (void)prepareForNewShortSession;
 - (void)setSharedMapsUserSessionEntity:(id)arg1 shareSessionIDWithMaps:(BOOL)arg2;
+- (id)shortSessionEntity;
 - (void)startNavigationSessionWithDirectionsID:(id)arg1 originalDirectionsID:(id)arg2;
 
 @end

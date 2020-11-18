@@ -41,6 +41,7 @@
 @property (readonly, nonatomic) BOOL isLaneGuidanceForManeuver;
 @property (readonly, nonatomic) BOOL isSticky;
 @property (readonly, nonatomic) NSArray *laneInstructions;
+@property (readonly, nonatomic) NSArray *laneTitles;
 @property (readonly, nonatomic) NSArray *lanes;
 @property (readonly, nonatomic) int maneuverArrow;
 @property (readonly, nonatomic) GEOJunction *maneuverJunction;

@@ -7,9 +7,10 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (SBFImageColorSpaceUtilities)
-- (id)sbf_ASTCSafeImage;
+- (id)sbf_ATXSafeCGImageBackedImage;
 - (struct CGColorSpace *)sbf_colorSpace;
 - (id)sbf_imageByConvertingToColorSpace:(struct CGColorSpace *)arg1 type:(long long)arg2;
 - (id)sbf_imageByManipulatingInDeviceColorSpaceWithBlock:(CDUnknownBlockType)arg1;
+- (id)sbf_imageUsingContextType:(long long)arg1;
 @end
 

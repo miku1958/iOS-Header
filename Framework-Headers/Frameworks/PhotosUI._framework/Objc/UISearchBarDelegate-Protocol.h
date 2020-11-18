@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/UIBarPositioningDelegate-Protocol.h>
+#import <PhotosUICore/UIBarPositioningDelegate-Protocol.h>
 
 @class NSString, UISearchBar;
 

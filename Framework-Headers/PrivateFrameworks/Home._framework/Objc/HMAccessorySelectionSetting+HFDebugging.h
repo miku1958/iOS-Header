@@ -6,19 +6,7 @@
 
 #import <HomeKit/HMAccessorySelectionSetting.h>
 
-#import <Home/HFPrettyDescription-Protocol.h>
-#import <Home/HFStateDumpSerializable-Protocol.h>
-
-@class NSString;
-
-@interface HMAccessorySelectionSetting (HFDebugging) <HFPrettyDescription, HFStateDumpSerializable>
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-- (id)hf_prettyDescriptionOfType:(unsigned long long)arg1;
-- (id)hf_serializedStateDumpRepresentation;
+@interface HMAccessorySelectionSetting (HFDebugging)
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

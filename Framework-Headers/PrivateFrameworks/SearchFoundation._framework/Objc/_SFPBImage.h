@@ -13,12 +13,6 @@
 
 @interface _SFPBImage : PBCodable <_SFPBImage, NSSecureCoding>
 {
-    struct {
-        unsigned int isTemplate:1;
-        unsigned int shouldCropToCircle:1;
-        unsigned int source:1;
-        unsigned int type:1;
-    } _has;
     BOOL _isTemplate;
     BOOL _shouldCropToCircle;
     int _source;
@@ -43,22 +37,6 @@
 @property (strong, nonatomic) _SFPBGraphicalFloat *cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasAppIconImage;
-@property (readonly, nonatomic) BOOL hasContactImage;
-@property (readonly, nonatomic) BOOL hasContentType;
-@property (readonly, nonatomic) BOOL hasCornerRadius;
-@property (readonly, nonatomic) BOOL hasIdentifier;
-@property (readonly, nonatomic) BOOL hasImageData;
-@property (readonly, nonatomic) BOOL hasIsTemplate;
-@property (readonly, nonatomic) BOOL hasKeyColor;
-@property (readonly, nonatomic) BOOL hasLocalImage;
-@property (readonly, nonatomic) BOOL hasMonogramImage;
-@property (readonly, nonatomic) BOOL hasScale;
-@property (readonly, nonatomic) BOOL hasShouldCropToCircle;
-@property (readonly, nonatomic) BOOL hasSize;
-@property (readonly, nonatomic) BOOL hasSource;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasUrlImage;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy) NSData *imageData; // @synthesize imageData=_imageData;

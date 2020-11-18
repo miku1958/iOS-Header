@@ -7,29 +7,31 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBBuildId-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString;
 
-@interface _INPBBuildId : PBCodable <NSCopying>
+@interface _INPBBuildId : PBCodable <_INPBBuildId, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     NSString *_buildNumber;
     NSString *_versionNumber;
 }
 
-@property (strong, nonatomic) NSString *buildNumber; // @synthesize buildNumber=_buildNumber;
+@property (copy, nonatomic) NSString *buildNumber; // @synthesize buildNumber=_buildNumber;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasBuildNumber;
 @property (readonly, nonatomic) BOOL hasVersionNumber;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *versionNumber; // @synthesize versionNumber=_versionNumber;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *versionNumber; // @synthesize versionNumber=_versionNumber;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

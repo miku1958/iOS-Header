@@ -36,6 +36,7 @@
     BOOL _useNarrowDesignatorTextForGerman;
     BOOL _suppressesDesignatorWhitespace;
     BOOL _showSeconds;
+    BOOL _forcesLatinNumbers;
     NSTimeZone *_timeZone;
     double _timeOffset;
     NSDate *_overrideDate;
@@ -51,6 +52,7 @@
 @property (readonly, nonatomic) struct _NSRange designatorRangeInTimeAndDesignatorText;
 @property (readonly, nonatomic) struct _NSRange designatorRangeInTimeAndDesignatorTextWithoutMinutesIfZero;
 @property (readonly, nonatomic) NSString *designatorText;
+@property (readonly, nonatomic) BOOL forcesLatinNumbers; // @synthesize forcesLatinNumbers=_forcesLatinNumbers;
 @property (readonly, nonatomic) struct _NSRange lastBlinkerRangeInTimeText;
 @property (strong, nonatomic) NSDate *overrideDate; // @synthesize overrideDate=_overrideDate;
 @property (readonly, nonatomic) struct _NSRange rangeInTimeSubstringFromSecondsSeparatorText;
@@ -93,6 +95,7 @@
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithForcesLatinNumbers:(BOOL)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)setPaused:(BOOL)arg1 forReason:(id)arg2;
 

@@ -23,7 +23,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isLoginSession;
 @property (readonly, nonatomic) BOOL isMultiUser;
+@property (readonly, copy, nonatomic) UMUser *loginUser;
 @property (readonly, nonatomic) unsigned long long maxNumberOfUsers;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL switchIsOccurring; // @synthesize switchIsOccurring=_switchIsOccurring;
@@ -38,9 +40,12 @@
 - (id)currentUserSwitchContext;
 - (void)currentUserSwitchContextHasBeenUsed;
 - (void)deleteUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)directSwitchToUser:(id)arg1 passcodeData:(id)arg2 context:(id)arg3 preferences:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)disableUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)loadUser:(id)arg1 passcodeData:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)loginUICheckInWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)logoutToLoginSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)registerCriticalUserSwitchStakeHolder:(id)arg1;
 - (void)registerUserListUpdateObserver:(id)arg1;
 - (void)registerUserSwitchStakeHolder:(id)arg1;

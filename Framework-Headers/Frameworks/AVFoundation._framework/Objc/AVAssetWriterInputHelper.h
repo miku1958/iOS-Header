@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAssetWriterInputConfigurationState, AVAssetWriterInputPassDescription, AVOutputSettings, AVWeakReference, NSArray, NSDictionary, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterInputHelper : NSObject
 {
     AVAssetWriterInputConfigurationState *_configurationState;
@@ -23,6 +24,7 @@
 @property (copy, nonatomic) NSString *languageCode;
 @property (nonatomic) long long layer;
 @property (nonatomic) BOOL marksOutputTrackAsEnabled;
+@property (nonatomic) BOOL maximizePowerEfficiency;
 @property (copy, nonatomic) NSString *mediaDataLocation;
 @property (nonatomic) int mediaTimeScale;
 @property (readonly, nonatomic) NSString *mediaType;

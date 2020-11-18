@@ -10,6 +10,7 @@
 
 @class MCProfileInfo, NSArray, NSMutableArray, NSSManager, NSString, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface MCProfileListController : MCURLListenerListController <UITableViewDelegate>
 {
     BOOL _hasFetchedProfilesInfo;
@@ -45,12 +46,19 @@
 
 + (id)specifiersForBlockedApps:(id)arg1;
 - (void).cxx_destruct;
+- (id)_adjustCell:(id)arg1 forAppSigner:(id)arg2;
 - (void)_appSignerApplicationsChanged:(id)arg1;
 - (void)_blockedAppsChanged:(id)arg1;
+- (void)_effectiveSettingsChanged:(id)arg1;
 - (void)_hideProgressIndicatorAndShowBackButton:(BOOL)arg1;
 - (void)_installedApplicationsChanged:(id)arg1;
+- (id)_isUIProfileInstallationEnabled:(id)arg1;
+- (BOOL)_isUIProfileInstallationRestricted;
 - (void)_profileListChanged:(id)arg1;
+- (long long)_resolveIndexPathForProfileIndex:(id)arg1;
+- (int)_resolveIndexPathForTableSection:(id)arg1;
 - (void)_showProgressIndicator;
+- (void)_toggleUIProfileInstallationStatus:(id)arg1;
 - (void)dealloc;
 - (void)fetchRemoteProfileList;
 - (void)handleProfilesInfoResponse:(id)arg1 error:(id)arg2;

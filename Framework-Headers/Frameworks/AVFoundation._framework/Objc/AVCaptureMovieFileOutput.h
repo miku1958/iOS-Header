@@ -43,6 +43,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)outputFileURL;
 - (id)outputSettingsForConnection:(id)arg1;
+- (struct CGSize)outputSizeForSourceFormat:(id)arg1;
 - (void)pauseRecording;
 - (BOOL)recordsVideoOrientationAndMirroringChangesAsMetadataTrackForConnection:(id)arg1;
 - (void)removeConnection:(id)arg1;
@@ -55,6 +56,7 @@
 - (void)setSendsLastVideoPreviewFrame:(BOOL)arg1;
 - (void)startRecordingToOutputFileURL:(id)arg1 recordingDelegate:(id)arg2;
 - (void)stopRecording;
+- (id)supportedOutputSettingsKeysForConnection:(id)arg1;
 
 @end
 

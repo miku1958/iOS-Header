@@ -6,10 +6,11 @@
 
 #import <UIKit/UIControl.h>
 
-@class NTKColoringImageView, UIColor, UIView;
+@class CLKDevice, NTKColoringImageView, UIColor, UIView;
 
 @interface NTKStopwatchButton : UIControl
 {
+    CLKDevice *_device;
     UIView *_innerView;
     NTKColoringImageView *_glyphView;
     UIColor *_glyphColor;
@@ -23,7 +24,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 

@@ -32,7 +32,7 @@
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) NSString *token; // @synthesize token=_token;
 
-+ (BOOL)_acceptsComplicationType:(unsigned long long)arg1;
++ (BOOL)_acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_activate;
 - (void)_afterEventTimerFired:(id)arg1;

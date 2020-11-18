@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class PKPaymentWebService;
-@protocol OS_dispatch_queue, PKSecureElementConsistencyCheckerDelegate;
+@protocol OS_dispatch_queue, PKCloudStoreCoordinatorDelegate, PKSecureElementConsistencyCheckerDelegate;
 
 @interface PKSecureElementConsistencyChecker : NSObject
 {
     NSObject<OS_dispatch_queue> *_processingQueue;
+    id<PKCloudStoreCoordinatorDelegate> _cloudStoreCoordinatorDelegate;
     id<PKSecureElementConsistencyCheckerDelegate> _delegate;
     PKPaymentWebService *_paymentWebService;
 }
@@ -25,6 +26,7 @@
 - (void)_rescheduleWithBackoff;
 - (void)checkConsistencyWithPaymentApplications:(id)arg1 secureElementApplets:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithPaymentWebService:(id)arg1 delegate:(id)arg2;
+- (id)initWithPaymentWebService:(id)arg1 delegate:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3;
 - (void)queue_checkConsistencyWithPaymentApplications:(id)arg1 secureElementApplets:(id)arg2 registeredRegions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)queue_startWithCompletion:(CDUnknownBlockType)arg1;
 - (void)startWithCompletion:(CDUnknownBlockType)arg1;

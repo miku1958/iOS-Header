@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSString;
 
-@interface DMFSetAirPlayRouteRequest : CATTaskRequest
+@interface DMFSetAirPlayRouteRequest : DMFTaskRequest
 {
     BOOL _suppressPasscodePrompt;
     NSString *_routeUID;

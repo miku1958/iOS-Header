@@ -23,6 +23,8 @@
 @property (copy, nonatomic) CDUnknownBlockType parsedMarkupElementEndBlock; // @synthesize parsedMarkupElementEndBlock=_parsedMarkupElementEndBlock;
 @property (copy, nonatomic) CDUnknownBlockType parsedMarkupElementStartBlock; // @synthesize parsedMarkupElementStartBlock=_parsedMarkupElementStartBlock;
 
++ (id)charactersForEntityNames;
++ (id)stringByConvertingToHTML:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithString:(id)arg1;

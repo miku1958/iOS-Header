@@ -32,5 +32,6 @@
 - (void)restoreArchivableContext:(id)arg1;
 - (id)section;
 - (void)setBadgeValue:(id)arg1 animated:(BOOL)arg2 blink:(BOOL)arg3;
+- (id)su_closestNavigationController;
 @end
 

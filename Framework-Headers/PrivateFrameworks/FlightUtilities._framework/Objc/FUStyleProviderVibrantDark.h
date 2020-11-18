@@ -13,9 +13,6 @@ __attribute__((visibility("hidden")))
 
 - (long long)blendMode;
 - (id)compositingFilter;
-- (id)lightTextColor;
-- (id)primaryImageColor;
-- (id)primaryTextColor;
 
 @end
 

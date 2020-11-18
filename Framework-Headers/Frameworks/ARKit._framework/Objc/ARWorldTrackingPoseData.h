@@ -9,13 +9,14 @@
 #import <ARKit/ARResultData-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class ARWorldTrackingState, NSDictionary, NSString;
 
 @interface ARWorldTrackingPoseData : NSObject <ARResultData, NSSecureCoding>
 {
     double _timestamp;
-    NSArray *_synchronizedResultData;
-    CDStruct_ca3abd1f _trackingState;
+    ARWorldTrackingState *_worldTrackingState;
+    NSDictionary *_vioStateDetails;
+    long long _worldMappingStatus;
     CDStruct_14d5dc5e _visionCameraTransform;
     CDStruct_14d5dc5e _cameraTransform;
 }
@@ -25,10 +26,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSArray *synchronizedResultData; // @synthesize synchronizedResultData=_synchronizedResultData;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
-@property (nonatomic) CDStruct_ca3abd1f trackingState; // @synthesize trackingState=_trackingState;
+@property (copy, nonatomic) NSDictionary *vioStateDetails; // @synthesize vioStateDetails=_vioStateDetails;
 @property (nonatomic) CDStruct_14d5dc5e visionCameraTransform; // @synthesize visionCameraTransform=_visionCameraTransform;
+@property (nonatomic) long long worldMappingStatus; // @synthesize worldMappingStatus=_worldMappingStatus;
+@property (copy, nonatomic) ARWorldTrackingState *worldTrackingState; // @synthesize worldTrackingState=_worldTrackingState;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

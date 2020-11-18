@@ -10,7 +10,8 @@
 {
 }
 
-+ (id)_defaultSelectedComplicationSlot;
++ (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
+- (void)_commonInit;
 - (id)_complicationMigrationPaths;
 - (id)_complicationSlotDescriptors;
 - (id)_customEditModes;
@@ -24,7 +25,6 @@
 - (id)_optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
 - (void)dealloc;
-- (id)init;
 
 @end
 

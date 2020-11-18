@@ -9,11 +9,12 @@
 #import <AVKit/AVPictureInPictureViewControllerDelegate-Protocol.h>
 #import <AVKit/PGPictureInPictureProxyDelegate-Protocol.h>
 
-@class AVPictureInPictureViewController, AVPlayerController, AVPlayerLayer, NSString, PGPictureInPictureProxy, __AVPlayerLayerView;
+@class AVObservationController, AVPictureInPictureViewController, AVPlayerController, AVPlayerLayer, NSString, PGPictureInPictureProxy, __AVPlayerLayerView;
 @protocol AVPictureInPictureControllerDelegate, OS_dispatch_source;
 
 @interface AVPictureInPictureController : NSObject <AVPictureInPictureViewControllerDelegate, PGPictureInPictureProxyDelegate>
 {
+    AVObservationController *_keyValueObservationController;
     AVPlayerLayer *_playerLayer;
     __AVPlayerLayerView *_playerLayerView;
     AVPlayerController *_playerController;
@@ -22,6 +23,7 @@
     NSObject<OS_dispatch_source> *_fullScreenCheckTimer;
     BOOL _isPlaying;
     BOOL _isFullScreen;
+    struct CGRect _viewFrameForInteractiveTransitionAnimationWhenEnteringBackground;
     id<AVPictureInPictureControllerDelegate> _delegate;
     struct {
         BOOL pictureInPictureControllerWillStartPictureInPicture;
@@ -32,8 +34,10 @@
         BOOL pictureInPictureController_restoreUserInterfaceForPictureInPictureStopWithCompletionHandler;
     } _delegateRespondsTo;
     BOOL _allowsPictureInPicturePlayback;
+    BOOL _allowsPictureInPictureFromInlineWhenEnteringBackground;
 }
 
+@property (nonatomic) BOOL allowsPictureInPictureFromInlineWhenEnteringBackground; // @synthesize allowsPictureInPictureFromInlineWhenEnteringBackground=_allowsPictureInPictureFromInlineWhenEnteringBackground;
 @property (nonatomic) BOOL allowsPictureInPicturePlayback; // @synthesize allowsPictureInPicturePlayback=_allowsPictureInPicturePlayback;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AVPictureInPictureControllerDelegate> delegate;
@@ -45,6 +49,7 @@
 @property (readonly, nonatomic) BOOL pictureInPictureWasStartedWhenEnteringBackground;
 @property (strong, nonatomic) AVPlayerController *playerController;
 @property (readonly, nonatomic) AVPlayerLayer *playerLayer;
+@property (readonly, nonatomic) __AVPlayerLayerView *playerLayerView; // @synthesize playerLayerView=_playerLayerView;
 @property (readonly) Class superclass;
 
 + (BOOL)isPictureInPictureSupported;
@@ -71,6 +76,7 @@
 - (void)pictureInPictureProxy:(id)arg1 restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)pictureInPictureProxy:(id)arg1 willStartPictureInPictureWithAnimationType:(long long)arg2;
 - (void)pictureInPictureProxy:(id)arg1 willStopPictureInPictureWithAnimationType:(long long)arg2 reason:(long long)arg3;
+- (long long)pictureInPictureProxyInterfaceOrientationForTransitionAnimation:(id)arg1;
 - (void)pictureInPictureProxyPictureInPictureInterruptionBegan:(id)arg1;
 - (void)pictureInPictureProxyPictureInPictureInterruptionEnded:(id)arg1;
 - (struct CGRect)pictureInPictureProxyViewFrameForTransitionAnimation:(id)arg1;

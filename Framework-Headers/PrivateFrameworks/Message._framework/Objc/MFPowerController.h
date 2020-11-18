@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 
@@ -17,11 +17,15 @@
     NSObject<OS_dispatch_queue> *_powerQueue;
     int _pluggedIn;
     int _powerToken;
+    int _batteryNotificationToken;
     NSCountedSet *_identifiers;
     id<MFCancelable> _appStateCancelable;
     BOOL _isForeground;
+    float _batteryLevel;
 }
 
+@property (readonly, nonatomic) float batteryLevel; // @synthesize batteryLevel=_batteryLevel;
+@property (readonly, nonatomic) MFObservable *batteryLevelObservable;
 @property (readonly, getter=isBatterySaverModeEnabled) BOOL batterySaverModeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,20 +39,21 @@
 + (void)powerlog:(id)arg1 eventData:(id)arg2;
 + (id)sharedInstance;
 - (void)_applicationForegroundStateChanged:(BOOL)arg1;
+- (void)_applicationForegroundStateChanged_nts:(BOOL)arg1;
 - (double)_assertionTimeout;
-- (void)_deleteDuetAttributesForAccountWithUniqueId:(id)arg1;
-- (void)_initDuet;
+- (BOOL)_isHoldingTaskAssertion;
 - (void)_lowPowerModeChangedNotification:(id)arg1;
-- (void)_releaseAssertion_nts;
-- (void)_retainAssertion_nts;
+- (void)_releasePowerAssertion_nts;
+- (void)_releaseTaskAssertion_nts;
+- (void)_retainPowerAssertion_nts;
+- (void)_retainTaskAssertion_nts;
 - (void)_setPluggedIn:(unsigned int)arg1;
 - (void)_setupAssertionTimer:(double)arg1;
+- (id)batteryLevelStateChangeNotificationObservable;
 - (id)copyDiagnosticInformation;
 - (void)dealloc;
-- (id)duetIdentifier;
 - (id)init;
 - (id)powerObservable;
-- (void)recordDuetEventForAccount:(id)arg1 event:(id)arg2;
 - (void)releaseAssertionWithIdentifier:(id)arg1;
 - (void)retainAssertionWithIdentifier:(id)arg1;
 - (void)retainAssertionWithIdentifier:(id)arg1 withAccount:(id)arg2;

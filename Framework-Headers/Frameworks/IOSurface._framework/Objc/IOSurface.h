@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IOSurface/NSSecureCoding-Protocol.h>
 
@@ -50,6 +50,7 @@
 - (id)initWithSurfaceID:(unsigned int)arg1;
 - (BOOL)isDisplayable;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isSysMemOnly;
 - (int)lockWithOptions:(unsigned int)arg1 seed:(unsigned int *)arg2;
 - (unsigned long long)protectionOptions;
 - (unsigned long long)registryID;

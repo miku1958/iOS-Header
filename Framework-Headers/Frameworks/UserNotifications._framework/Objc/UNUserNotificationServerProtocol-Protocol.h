@@ -6,11 +6,10 @@
 
 #import <UserNotifications/NSObject-Protocol.h>
 
-@class NSArray, NSNumber, NSSet, NSString, UNNotificationRequest;
+@class NSArray, NSNumber, NSSet, NSString, UNNotificationContent, UNNotificationRequest;
 
 @protocol UNUserNotificationServerProtocol <NSObject>
 - (void)addNotificationRequest:(UNNotificationRequest *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
-- (void)addNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(void))arg3;
 - (void)getAllowsRemoteNotificationsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(BOOL))arg2;
 - (void)getBadgeNumberForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSNumber *))arg2;
 - (void)getDeliveredNotificationsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(NSArray *))arg2;
@@ -22,13 +21,14 @@
 - (void)removeAllPendingNotificationRequestsForBundleIdentifier:(NSString *)arg1;
 - (void)removeDeliveredNotificationsWithIdentifiers:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2;
 - (void)removePendingNotificationRequestsWithIdentifiers:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2;
-- (void)removeSimilarNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(void))arg3;
+- (void)removeSimilarNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2;
+- (void)replaceContentForRequestWithIdentifier:(NSString *)arg1 bundleIdentifier:(NSString *)arg2 replacementContent:(UNNotificationContent *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 forBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)requestTokenForRemoteNotificationsForBundleIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)setBadgeNumber:(NSNumber *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)setBadgeString:(NSString *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(NSError *))arg3;
 - (void)setNotificationCategories:(NSSet *)arg1 forBundleIdentifier:(NSString *)arg2;
-- (void)setNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(void))arg3;
+- (void)setNotificationRequests:(NSArray *)arg1 forBundleIdentifier:(NSString *)arg2;
 - (void)setObservingUserNotifications:(BOOL)arg1 forBundleIdentifier:(NSString *)arg2;
 @end
 

@@ -7,34 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBLongList-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBCondition;
+@class NSArray, NSString, _INPBCondition;
 
-@interface _INPBLongList : PBCodable <NSCopying>
+@interface _INPBLongList : PBCodable <_INPBLongList, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBCondition *_conditionType;
-    NSMutableArray *_dataStrings;
+    NSArray *_dataStrings;
 }
 
 @property (strong, nonatomic) _INPBCondition *conditionType; // @synthesize conditionType=_conditionType;
-@property (strong, nonatomic) NSMutableArray *dataStrings; // @synthesize dataStrings=_dataStrings;
+@property (copy, nonatomic) NSArray *dataStrings; // @synthesize dataStrings=_dataStrings;
+@property (readonly, nonatomic) unsigned long long dataStringsCount;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasConditionType;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (Class)dataStringType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addDataString:(id)arg1;
 - (void)clearDataStrings;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataStringAtIndex:(unsigned long long)arg1;
-- (unsigned long long)dataStringsCount;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

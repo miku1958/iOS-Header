@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <PhotoLibraryServices/PLMomentProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 
 @class CLLocation, NSArray, NSData, NSDate, NSObject, NSOrderedSet, NSString;
 @protocol NSCopying, PLMomentAssetData, PLMomentListData;
 
-@protocol PLMomentData <PLMomentRefreshable>
+@protocol PLMomentData <PLMomentRefreshable, PLMomentProtocol>
 
 @property (strong, nonatomic) CLLocation *approximateLocation;
 @property (strong, nonatomic) NSOrderedSet *assets;
@@ -23,15 +24,19 @@
 @property (nonatomic) BOOL reverseLocationDataContainsLocation;
 @property (nonatomic) BOOL reverseLocationDataIsValid;
 @property (strong, nonatomic) NSDate *startDate;
+@property (readonly, strong, nonatomic) NSString *title;
 @property (readonly, strong, nonatomic) NSObject<NSCopying> *uniqueObjectID;
 @property (nonatomic) BOOL usedLocationsOfInterest;
 @property (strong, nonatomic) NSArray *userTitles;
 @property (strong, nonatomic) NSString *uuid;
 @property (strong, nonatomic) id<PLMomentListData> yearMomentList;
 
++ (NSArray *)sortByTimeSortDescriptors;
 - (void)delete;
 - (BOOL)isDeleted;
 - (void)removeAssetData:(id<PLMomentAssetData>)arg1;
 - (void)replaceAssetDataAtIndex:(unsigned long long)arg1 withAssetData:(id<PLMomentAssetData>)arg2;
+
+@optional
 @end
 

@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class NSArray, NSDictionary, NSSet, NTCatchUpOperationForYouFetchInfo;
+@class NSArray, NSDictionary, NSObject, NSSet, NTCatchUpOperationForYouFetchInfo;
 @protocol FCContentContext, FCFeedPersonalizing, FCNewsAppConfiguration, NTTodayResultOperationInfoProviding;
 
 @interface NTTodayItemOperation : FCOperation
@@ -23,6 +23,7 @@
     NSArray *_feedItems;
     NSDictionary *_resultTodayItemsBySectionDescriptor;
     NSDictionary *_resultAssetFileURLsByRemoteURL;
+    NSObject *_resultAssetsHoldToken;
 }
 
 @property (copy, nonatomic) id<FCNewsAppConfiguration> appConfiguration; // @synthesize appConfiguration=_appConfiguration;
@@ -34,6 +35,7 @@
 @property (copy, nonatomic) NSSet *itemIDsOfLeadingCells; // @synthesize itemIDsOfLeadingCells=_itemIDsOfLeadingCells;
 @property (copy, nonatomic) id<NTTodayResultOperationInfoProviding> operationInfo; // @synthesize operationInfo=_operationInfo;
 @property (strong, nonatomic) NSDictionary *resultAssetFileURLsByRemoteURL; // @synthesize resultAssetFileURLsByRemoteURL=_resultAssetFileURLsByRemoteURL;
+@property (strong, nonatomic) NSObject *resultAssetsHoldToken; // @synthesize resultAssetsHoldToken=_resultAssetsHoldToken;
 @property (strong, nonatomic) NSDictionary *resultTodayItemsBySectionDescriptor; // @synthesize resultTodayItemsBySectionDescriptor=_resultTodayItemsBySectionDescriptor;
 @property (copy, nonatomic) NSDictionary *slotAllocationByDynamicSlotItemID; // @synthesize slotAllocationByDynamicSlotItemID=_slotAllocationByDynamicSlotItemID;
 @property (copy, nonatomic) CDUnknownBlockType todayItemCompletion; // @synthesize todayItemCompletion=_todayItemCompletion;

@@ -6,18 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class NTKColoringLabel, NTKUpNextAccessoryDescription;
+@class NTKColoringLabel, REAccessoryDescription;
 
 @interface NTKUpNextAccessoryView : UIView
 {
-    NTKUpNextAccessoryDescription *_accessoryDescription;
+    REAccessoryDescription *_accessoryDescription;
     NTKColoringLabel *_label;
 }
 
-+ (void)initialize;
 - (void).cxx_destruct;
 - (void)configureWithDescription:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setTextColor:(id)arg1;
 - (id)viewForLastBaselineLayout;
 
 @end

@@ -43,19 +43,21 @@
 @property (nonatomic) BOOL suppressAuthorizationPrompt; // @synthesize suppressAuthorizationPrompt=_suppressAuthorizationPrompt;
 
 - (void).cxx_destruct;
-- (BOOL)_needsAuthorizationForRequestGroup:(id)arg1 overwriteAuthorizationStatus:(BOOL)arg2 error:(id *)arg3;
+- (long long)_authorizationRequestStatusForClientBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 updateAuthorizationStatuses:(BOOL)arg4 error:(id *)arg5;
 - (void)_performNanoSyncImmediatelyWithReason:(id)arg1;
 - (id)_queue_activePromptSessionForBundleIdentifier:(id)arg1;
 - (void)_queue_beginAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_cancelAuthorizationRequestsWithIdentifiers:(id)arg1;
 - (void)_queue_endAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 error:(id)arg2;
 - (void)_queue_enqueueAuthorizationRequestWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 writeTypes:(id)arg3 readTypes:(id)arg4 authorizationNeededHandler:(CDUnknownBlockType)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)_queue_finishRequestGroup:(id)arg1 error:(id)arg2;
 - (void)_queue_handleNextAuthorizationRequestGroup;
+- (void)_queue_requestGroupDidFinishPrompting:(id)arg1 error:(id)arg2;
 - (void)_queue_resetAllAuthorizationRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_queue_resetAuthorizationRecordsForBundleIdentifier:(id)arg1 error:(id *)arg2;
-- (void)_queue_setAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_queue_setAuthorizationStatuses:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)_validateRequiredAuthorizationWithRequestGroup:(id)arg1;
 - (void)applicationsUninstalledNotification:(id)arg1;
+- (long long)authorizationRequestStatusForClientBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 error:(id *)arg4;
 - (void)beginAuthorizationDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)cancelAuthorizationRequestsWithIdentifiers:(id)arg1;
 - (void)dealloc;
@@ -65,11 +67,12 @@
 - (id)enqueueObjectAuthorizationRequestForBundleIdentifier:(id)arg1 samples:(id)arg2 promptIfNeeded:(BOOL)arg3 authorizationNeededHandler:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)handleAuthorizationRequestsForBundleIdentifier:(id)arg1 promptHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleObjectAuthorizationRequestsForBundleIdentifier:(id)arg1 promptHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)hasRequiredAuthorizationStatusesForBundleIdentifier:(id)arg1 requiredReadTypes:(id)arg2 error:(id *)arg3;
 - (id)initWithProfile:(id)arg1;
 - (void)openAppForAuthorization:(id)arg1 sessionIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestRemoteAuthorizationForRequestRecord:(id)arg1 requestSentHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetAllAuthorizationRecordsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setAuthorizationStatuses:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

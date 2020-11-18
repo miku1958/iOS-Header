@@ -4,23 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class NSData, NSDate, NSURL, TSKCommand, TSKStructuredTextImportSettings, TSTCellRegion;
+@class NSArray, NSData, NSDate, NSURL, TSKStructuredTextImportSettings, TSTCellRegion;
 
 __attribute__((visibility("hidden")))
 @interface TSTStructuredTextImportRecord : NSObject <NSCopying>
 {
+    BOOL _pasteWasUpdate;
     TSKStructuredTextImportSettings *_importSettings;
     NSURL *_importSource;
     NSDate *_importDate;
     NSData *_sourceData;
-    unsigned long long _sourceEncoding;
     double _confidence;
     TSTCellRegion *_importedRegion;
-    TSKCommand *_pasteInverseCommand;
+    unsigned long long _sourceColumnCount;
+    unsigned long long _sourceRowCount;
+    NSArray *_pasteInverseCommands;
+    unsigned long long _pasteType;
 }
 
 @property (nonatomic) double confidence; // @synthesize confidence=_confidence;
@@ -28,10 +31,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSKStructuredTextImportSettings *importSettings; // @synthesize importSettings=_importSettings;
 @property (strong, nonatomic) NSURL *importSource; // @synthesize importSource=_importSource;
 @property (strong, nonatomic) TSTCellRegion *importedRegion; // @synthesize importedRegion=_importedRegion;
-@property (strong, nonatomic) TSKCommand *pasteInverseCommand; // @synthesize pasteInverseCommand=_pasteInverseCommand;
+@property (strong, nonatomic) NSArray *pasteInverseCommands; // @synthesize pasteInverseCommands=_pasteInverseCommands;
+@property (nonatomic) unsigned long long pasteType; // @synthesize pasteType=_pasteType;
+@property (nonatomic) BOOL pasteWasUpdate; // @synthesize pasteWasUpdate=_pasteWasUpdate;
 @property (readonly, nonatomic, getter=isReimportable) BOOL reimportable;
+@property (nonatomic) unsigned long long sourceColumnCount; // @synthesize sourceColumnCount=_sourceColumnCount;
 @property (copy, nonatomic) NSData *sourceData; // @synthesize sourceData=_sourceData;
-@property (nonatomic) unsigned long long sourceEncoding; // @synthesize sourceEncoding=_sourceEncoding;
+@property (nonatomic) unsigned long long sourceRowCount; // @synthesize sourceRowCount=_sourceRowCount;
 @property (readonly, nonatomic, getter=isWholeTableImport) BOOL wholeTableImport;
 
 + (id)record;

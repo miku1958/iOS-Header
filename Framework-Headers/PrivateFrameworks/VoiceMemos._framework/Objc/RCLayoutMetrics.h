@@ -12,12 +12,11 @@
 
 @interface RCLayoutMetrics : NSObject <NSCopying>
 {
-    CDStruct_76b83881 _metricInfo;
+    CDStruct_a8723754 _metricInfo;
     NSString *_label;
     double _hPresentedRecordMemoHeight;
 }
 
-@property (readonly, nonatomic) double hDeltaAcousticAnnotationLabelToWaveformRight;
 @property (readonly, nonatomic) double hDeltaAdditionalInsetFromWaveformEdge;
 @property (readonly, nonatomic) double hDeltaControlButtonsSpacing;
 @property (readonly, nonatomic) double hDeltaTrimProgressInset;
@@ -41,7 +40,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithLabel:(id)arg1;
-- (void)setMetricInfo:(CDStruct_76b83881)arg1;
+- (void)setMetricInfo:(CDStruct_a8723754)arg1;
 
 @end
 

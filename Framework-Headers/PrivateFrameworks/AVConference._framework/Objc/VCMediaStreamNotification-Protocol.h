@@ -6,10 +6,10 @@
 
 #import <AVConference/NSObject-Protocol.h>
 
-@class VCMediaStream;
+@class VCMasterKeyIndex, VCMediaStream;
 
 @protocol VCMediaStreamNotification <NSObject>
 - (void)didReceiveRTCPPackets:(struct _RTCPPacketList *)arg1;
-- (void)mediaStream:(VCMediaStream *)arg1 didReceiveNewMasterKeyIndex:(unsigned int)arg2;
+- (void)mediaStream:(VCMediaStream *)arg1 didReceiveNewMasterKeyIndex:(VCMasterKeyIndex *)arg2;
 @end
 

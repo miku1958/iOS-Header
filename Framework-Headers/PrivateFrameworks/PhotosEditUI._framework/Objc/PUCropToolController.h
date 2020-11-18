@@ -13,6 +13,7 @@
 @class NSDictionary, NSMutableDictionary, NSObject, NSString, PLImageGeometry, PLPhotoEditModel, PLPhotoEditRenderer, PUCropAndStraightenView, PUCropAspect, PUCropHandleView, PUCropOverlayView, PUCropToolControllerSpec, PUTiltWheelControl, UIAlertController, UIButton, UIImage, UILongPressGestureRecognizer, UIView;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface PUCropToolController : PUPhotoEditToolController <UIGestureRecognizerDelegate, PUCropAndStraightenViewDelegate, UIPopoverPresentationControllerDelegate>
 {
     BOOL __contentViewsHidden;
@@ -113,7 +114,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, getter=_isTrackingTitlControl, setter=_setTrackingTiltControl:) BOOL trackingTiltControl; // @synthesize trackingTiltControl=_trackingTiltControl;
 
-+ (id)_preCropFilter;
 - (void).cxx_destruct;
 - (void)_accessibilityLongPressChanged:(id)arg1;
 - (struct CGRect)_addHeight:(double)arg1 toRect:(struct CGRect)arg2 anchorTop:(BOOL)arg3;
@@ -192,8 +192,6 @@
 - (void)_updateTiltWheelConstraintsIfNeeded;
 - (struct CGRect)_validatedCropRectFromImageRect:(struct CGRect)arg1;
 - (struct CGRect)_viewCropToMatchPreview;
-- (void)animateBecomingActiveTool;
-- (void)animateResigningActiveTool;
 - (void)baseLivePhotoInvalidated;
 - (void)basePhotoInvalidated;
 - (BOOL)canBecomeActiveTool;

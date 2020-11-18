@@ -9,7 +9,7 @@
 #import <IDS/IDSBaseSocketPairConnectionDelegate-Protocol.h>
 #import <IDS/IDSDaemonListenerProtocol-Protocol.h>
 
-@class CUTWeakReference, IDSBaseSocketPairConnection, NSArray, NSData, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSSet, NSString;
+@class CUTWeakReference, IDSBaseSocketPairConnection, NSArray, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface _IDSGroupSession : NSObject <IDSDaemonListenerProtocol, IDSBaseSocketPairConnectionDelegate>
@@ -19,6 +19,7 @@
     NSString *_uniqueID;
     NSString *_accountID;
     NSSet *_destinations;
+    NSString *_fromID;
     IDSBaseSocketPairConnection *_unreliableSocketPairConnection;
     CUTWeakReference *_delegate;
     NSObject<OS_dispatch_queue> *_queue;
@@ -31,16 +32,13 @@
     unsigned long long _preferredAddressFamily;
     BOOL _preferCellularForCallSetup;
     NSString *_clientUUID;
-    BOOL _disableEncryption;
-    BOOL _enableSingleChannelDirectMode;
     BOOL _alwaysSkipSelf;
     unsigned int _sessionEndedReason;
     NSMutableDictionary *_preferences;
     NSMutableDictionary *_sessionConfig;
     BOOL _useConfServer;
+    NSString *_stableGroupID;
     NSString *_groupID;
-    NSString *_participantID;
-    NSData *_participantData;
     NSDictionary *_participantInfo;
     struct cfs_client_s *_cfs_client;
     int _cfs_requestID;
@@ -67,23 +65,28 @@
 - (void)_broadcastNewSessionToDaemon;
 - (void)_callDelegateWithBlock:(CDUnknownBlockType)arg1;
 - (void)_cleanupSocketPairConnections;
-- (id)_initWithAccount:(id)arg1 destinations:(id)arg2 options:(id)arg3 delegateContext:(id)arg4;
 - (void)daemonDisconnected;
 - (void)dealloc;
+- (void)groupSessionDidTerminate:(id)arg1;
 - (void)groupSessionEnded:(id)arg1 withReason:(unsigned int)arg2 error:(id)arg3;
-- (void)groupSessionParticipantsWithRequestID:(id)arg1;
 - (id)initWithAccount:(id)arg1 destinations:(id)arg2 options:(id)arg3 delegateContext:(id)arg4;
 - (void)joinGroupSession;
+- (void)joinWithOptions:(id)arg1;
 - (void)leaveGroupSession;
-- (void)session:(id)arg1 didGetGroupSessionParticipants:(id)arg2 requestID:(id)arg3 error:(id)arg4;
+- (void)requestActiveParticipants;
+- (void)session:(id)arg1 didReceiveActiveParticipants:(id)arg2 success:(BOOL)arg3;
+- (void)session:(id)arg1 didReceiveReport:(id)arg2;
 - (void)session:(id)arg1 participantDidJoinGroupWithInfo:(id)arg2;
 - (void)session:(id)arg1 participantDidLeaveGroupWithInfo:(id)arg2;
+- (void)sessionDidJoinGroup:(id)arg1 participantInfo:(id)arg2 error:(id)arg3;
+- (void)sessionDidJoinGroup:(id)arg1 participantUpdateDictionary:(id)arg2 error:(id)arg3;
 - (void)sessionDidJoinGroup:(id)arg1 participantsInfo:(id)arg2 error:(id)arg3;
 - (void)sessionDidLeaveGroup:(id)arg1 error:(id)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setParticipantInfo:(id)arg1;
 - (void)setPreferences:(id)arg1;
-- (void)updateMembers:(id)arg1 forGroupID:(id)arg2 isTriggeredLocally:(BOOL)arg3;
+- (void)updateMembers:(id)arg1 withContext:(id)arg2 triggeredLocally:(BOOL)arg3;
+- (void)updateParticipantData:(id)arg1 withContext:(id)arg2;
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
 
 @end

@@ -11,6 +11,7 @@
 }
 
 + (long long)requestType;
+- (id)init;
 - (void)startWithCompletionBlock:(CDUnknownBlockType)arg1;
 
 @end

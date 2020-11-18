@@ -16,20 +16,20 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_queue> *_queue;
     id<_GEOCountryConfigurationServerProxyDelegate> _delegate;
+    NSObject<OS_dispatch_queue> *_delegateQueue;
     int _countryCodeChangedToken;
     int _providersChangedToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<_GEOCountryConfigurationServerProxyDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)init;
-- (void)updateCountryCode:(CDUnknownBlockType)arg1;
+- (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2;
+- (void)updateCountryCodeWithCallbackQueue:(id)arg1 callback:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -38,6 +38,7 @@
 - (unsigned int)doubleTapActionEx:(unsigned int *)arg1 rightAction:(unsigned int *)arg2;
 - (unsigned int)doubleTapCapability;
 - (void)endVoiceCommand;
+- (BOOL)featureCapability:(int)arg1;
 - (unsigned int)getConnectingServiceMask;
 - (id)getServiceSetting:(unsigned int)arg1 key:(id)arg2;
 - (BOOL)inEarDetectEnabled;
@@ -65,12 +66,12 @@
 - (void)setPIN:(id)arg1;
 - (void)setServiceSetting:(unsigned int)arg1 key:(id)arg2 value:(id)arg3;
 - (void)setSyncGroup:(int)arg1 enabled:(BOOL)arg2;
-- (void)setSyncSettings:(CDStruct_8024420c)arg1;
+- (void)setSyncSettings:(CDStruct_df7f102b)arg1;
 - (BOOL)setUserName:(id)arg1;
 - (void)startVoiceCommand;
 - (BOOL)supportsBatteryLevel;
 - (id)syncGroups;
-- (CDStruct_8024420c)syncSettings;
+- (CDStruct_df7f102b)syncSettings;
 - (int)type;
 - (void)unpair;
 - (unsigned int)vendorId;

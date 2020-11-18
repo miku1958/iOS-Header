@@ -18,13 +18,14 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_fetchedTile:(id)arg1;
+- (void)_fetchedTile:(id)arg1 isPreliminary:(BOOL)arg2;
+- (BOOL)allowPreliminaryTiles;
 - (void)clearCaches;
 - (void)dealloc;
-- (void)decodeData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3 origin:(unsigned char)arg4;
+- (void)decodeData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3 isPreliminary:(BOOL)arg4 userInfo:(id)arg5;
 - (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4 taskContext:(shared_ptr_e963992e)arg5;
 - (struct VKTileKey)sourceKeyForRenderKey:(const struct VKTileKey *)arg1;
-- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
+- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3 userInfo:(id)arg4;
 
 @end
 

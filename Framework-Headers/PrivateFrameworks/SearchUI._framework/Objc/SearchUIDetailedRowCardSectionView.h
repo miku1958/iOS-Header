@@ -8,11 +8,11 @@
 
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, SearchUIAccessoryViewController, SearchUIThumbnailView, TLKDetailsView, TLKStackView, UIButton;
+@class NSMutableDictionary, NSString, SearchUIAccessoryViewController, SearchUIImageView, TLKDetailsView, TLKStackView, UIButton;
 
 @interface SearchUIDetailedRowCardSectionView : SearchUICardSectionView <NUIContainerStackViewDelegate>
 {
-    SearchUIThumbnailView *_thumbnailView;
+    SearchUIImageView *_thumbnailView;
     UIButton *_buttonView;
     TLKDetailsView *_detailsView;
     TLKStackView *_innerStackView;
@@ -30,7 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong) TLKStackView *innerStackView; // @synthesize innerStackView=_innerStackView;
 @property (readonly) Class superclass;
-@property (strong) SearchUIThumbnailView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
+@property (strong) SearchUIImageView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 
 + (void)addViewIfNecessary:(id)arg1 toStackView:(id)arg2 removeFromStackView:(id)arg3;
 + (id)dragSubtitleForCardSection:(id)arg1;

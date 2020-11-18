@@ -38,6 +38,7 @@
 @property (nonatomic) struct CGPoint handPosition; // @synthesize handPosition=_handPosition;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned short initialFingerCount; // @synthesize initialFingerCount=_initialFingerCount;
+@property (readonly, nonatomic) BOOL isStylus;
 @property (readonly, nonatomic) unsigned long long length;
 @property (strong, nonatomic) NSArray *paths; // @synthesize paths=_paths;
 @property (readonly) Class superclass;

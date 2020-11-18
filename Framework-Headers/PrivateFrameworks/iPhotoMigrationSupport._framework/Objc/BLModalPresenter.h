@@ -8,7 +8,7 @@
 
 #import <iPhotoMigrationSupport/UIKeyInput-Protocol.h>
 
-@class BLModalPresenterRootViewController, NSMutableArray, NSString;
+@class BLModalPresenterRootViewController, NSMutableArray, NSString, UITextInputPasswordRules;
 
 @interface BLModalPresenter : UIWindow <UIKeyInput>
 {
@@ -28,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long smartDashesType;

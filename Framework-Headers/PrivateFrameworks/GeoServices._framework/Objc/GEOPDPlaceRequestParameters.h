@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAddressObjectGeocodingParameters, GEOPDAutocompleteParameters, GEOPDBatchPopularNearbySearchParameters, GEOPDBrandLookupParameters, GEOPDCanonicalLocationSearchParameters, GEOPDCategorySearchParameters, GEOPDClusterGeocodingParameters, GEOPDExternalTransitLookupParameters, GEOPDFeatureIdGeocodingParameters, GEOPDGeocodingParameters, GEOPDIpGeoLookupParameters, GEOPDLocationDirectedSearchParameters, GEOPDMapsIdentifierPlaceLookupParameters, GEOPDMerchantLookupParameters, GEOPDNearbySearchParameters, GEOPDPlaceLookupParameters, GEOPDPlaceRefinementParameters, GEOPDPopularNearbySearchParameters, GEOPDReverseGeocodingParameters, GEOPDSearchBrowseCategorySuggestionParameters, GEOPDSearchFieldPlaceholderParameters, GEOPDSearchParameters, GEOPDSearchZeroKeywordCategorySuggestionParameters, GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters, GEOPDSiriSearchParameters, GEOPDVendorSpecificPlaceRefinementParameters, GEOPDWifiFingerprintParameters, PBUnknownFields;
+@class GEOPDAddressObjectGeocodingParameters, GEOPDAutocompleteParameters, GEOPDBatchPopularNearbySearchParameters, GEOPDBatchSpatialLookupParameters, GEOPDBrandLookupParameters, GEOPDCanonicalLocationSearchParameters, GEOPDCategorySearchParameters, GEOPDClusterGeocodingParameters, GEOPDExternalTransitLookupParameters, GEOPDFeatureIdGeocodingParameters, GEOPDGeocodingParameters, GEOPDIpGeoLookupParameters, GEOPDLocationDirectedSearchParameters, GEOPDMapsIdentifierPlaceLookupParameters, GEOPDMerchantLookupParameters, GEOPDNearbySearchParameters, GEOPDPlaceLookupParameters, GEOPDPlaceRefinementParameters, GEOPDPopularNearbySearchParameters, GEOPDReverseGeocodingParameters, GEOPDSearchBrowseCategorySuggestionParameters, GEOPDSearchFieldPlaceholderParameters, GEOPDSearchParameters, GEOPDSearchZeroKeywordCategorySuggestionParameters, GEOPDSearchZeroKeywordWithSearchResultsSuggestionParameters, GEOPDSiriSearchParameters, GEOPDVendorSpecificPlaceRefinementParameters, GEOPDWifiFingerprintParameters, PBUnknownFields;
 
 @interface GEOPDPlaceRequestParameters : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     GEOPDAddressObjectGeocodingParameters *_addressObjectGeocodingParameters;
     GEOPDAutocompleteParameters *_autocompleteParameters;
     GEOPDBatchPopularNearbySearchParameters *_batchPopularNearbySearchParameters;
+    GEOPDBatchSpatialLookupParameters *_batchSpatialLookupParameters;
     GEOPDBrandLookupParameters *_brandLookupParameters;
     GEOPDSearchBrowseCategorySuggestionParameters *_browseCategorySuggestionParameters;
     GEOPDCanonicalLocationSearchParameters *_canonicalLocationSearchParameters;
@@ -45,6 +46,7 @@
 @property (strong, nonatomic) GEOPDAddressObjectGeocodingParameters *addressObjectGeocodingParameters; // @synthesize addressObjectGeocodingParameters=_addressObjectGeocodingParameters;
 @property (strong, nonatomic) GEOPDAutocompleteParameters *autocompleteParameters; // @synthesize autocompleteParameters=_autocompleteParameters;
 @property (strong, nonatomic) GEOPDBatchPopularNearbySearchParameters *batchPopularNearbySearchParameters; // @synthesize batchPopularNearbySearchParameters=_batchPopularNearbySearchParameters;
+@property (strong, nonatomic) GEOPDBatchSpatialLookupParameters *batchSpatialLookupParameters; // @synthesize batchSpatialLookupParameters=_batchSpatialLookupParameters;
 @property (strong, nonatomic) GEOPDBrandLookupParameters *brandLookupParameters; // @synthesize brandLookupParameters=_brandLookupParameters;
 @property (strong, nonatomic) GEOPDSearchBrowseCategorySuggestionParameters *browseCategorySuggestionParameters; // @synthesize browseCategorySuggestionParameters=_browseCategorySuggestionParameters;
 @property (strong, nonatomic) GEOPDCanonicalLocationSearchParameters *canonicalLocationSearchParameters; // @synthesize canonicalLocationSearchParameters=_canonicalLocationSearchParameters;
@@ -56,6 +58,7 @@
 @property (readonly, nonatomic) BOOL hasAddressObjectGeocodingParameters;
 @property (readonly, nonatomic) BOOL hasAutocompleteParameters;
 @property (readonly, nonatomic) BOOL hasBatchPopularNearbySearchParameters;
+@property (readonly, nonatomic) BOOL hasBatchSpatialLookupParameters;
 @property (readonly, nonatomic) BOOL hasBrandLookupParameters;
 @property (readonly, nonatomic) BOOL hasBrowseCategorySuggestionParameters;
 @property (readonly, nonatomic) BOOL hasCanonicalLocationSearchParameters;

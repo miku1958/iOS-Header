@@ -14,7 +14,15 @@
 
 @interface SFMapCardSection : SFCardSection <SFMapCardSection, NSSecureCoding, NSCopying>
 {
-    CDStruct_0edb3e2f _has;
+    struct {
+        unsigned int canBeHidden:1;
+        unsigned int hasTopPadding:1;
+        unsigned int hasBottomPadding:1;
+        unsigned int separatorStyle:1;
+        unsigned int interactive:1;
+        unsigned int sizeFormat:1;
+        unsigned int pinBehavior:1;
+    } _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -32,6 +40,7 @@
     NSString *_footnoteLabel;
     NSString *_footnote;
     SFMapRegion *_boundingMapRegion;
+    NSArray *_pins;
 }
 
 @property (strong, nonatomic) SFColor *backgroundColor;
@@ -55,6 +64,7 @@
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
 @property (nonatomic) int pinBehavior; // @synthesize pinBehavior=_pinBehavior;
 @property (strong, nonatomic) SFColor *pinColor; // @synthesize pinColor=_pinColor;
+@property (copy, nonatomic) NSArray *pins; // @synthesize pins=_pins;
 @property (copy, nonatomic) NSArray *punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;

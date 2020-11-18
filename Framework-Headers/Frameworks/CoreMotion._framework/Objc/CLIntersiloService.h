@@ -9,7 +9,7 @@
 #import <CoreMotion/CLIntersiloServiceProtocol-Protocol.h>
 #import <CoreMotion/CLIntersiloUniverse-Protocol.h>
 
-@class CLIntersiloInterface, CLServiceVendor, CLSilo, NSString;
+@class CLServiceVendor, CLSilo, NSString;
 @protocol CLIntersiloUniverse;
 
 @interface CLIntersiloService : NSObject <CLIntersiloServiceProtocol, CLIntersiloUniverse>
@@ -17,15 +17,11 @@
     CLSilo *_silo;
     CLServiceVendor *_vendor;
     BOOL _valid;
-    CLIntersiloInterface *_inboundInterface;
-    CLIntersiloInterface *_outboundInterface;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) CLIntersiloInterface *inboundInterface; // @synthesize inboundInterface=_inboundInterface;
-@property (readonly, nonatomic) CLIntersiloInterface *outboundInterface; // @synthesize outboundInterface=_outboundInterface;
 @property (readonly, nonatomic) CLSilo *silo; // @synthesize silo=_silo;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<CLIntersiloUniverse> universe;
@@ -39,7 +35,6 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithInboundProtocol:(id)arg1 outboundProtocol:(id)arg2;
-- (BOOL)isHydrated;
 - (void)setSilo:(id)arg1;
 - (void)setVendor:(id)arg1;
 

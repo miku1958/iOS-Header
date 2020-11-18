@@ -32,6 +32,8 @@
 - (BOOL)_groupLeaderIsOfDeviceSubtype:(unsigned int)arg1;
 - (unsigned long long)_outputDevicesComposition;
 - (BOOL)canAccessRemoteAssets;
+- (BOOL)canFetchMediaDataFromSender;
+- (BOOL)canPlayEncryptedProgressiveDownloadAssets;
 - (void)dealloc;
 - (id)description;
 - (id)designatedGroupLeaderName;
@@ -48,6 +50,7 @@
 - (BOOL)isProxyGroupPlayer;
 - (BOOL)isRoutingToWirelessDevice;
 - (BOOL)isStereoPair;
+- (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (id)routeName;
 - (id)routeNames;
 - (long long)routeSubtype;

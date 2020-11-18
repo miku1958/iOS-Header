@@ -12,6 +12,7 @@
 @protocol HUQuickControlItemHosting <NSObject>
 
 @property (readonly, copy, nonatomic) NSSet *controlItems;
+@property (nonatomic, getter=areControlsVisible) BOOL controlsVisible;
 @property (readonly, nonatomic) id<HUQuickControlItemUpdating> itemUpdater;
 
 - (void)quickControlItemUpdater:(id<HUQuickControlItemUpdating>)arg1 didUpdateResultsForControlItems:(NSSet *)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIIndexBarViewDelegate-Protocol.h>
+#import <UIKitCore/UIIndexBarViewDelegate-Protocol.h>
 
 @class UIIndexBarAccessoryView, UIIndexBarEntry;
 

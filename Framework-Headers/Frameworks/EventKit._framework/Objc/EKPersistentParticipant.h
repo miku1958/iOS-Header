@@ -24,6 +24,7 @@
 - (id)phoneNumber;
 - (id)proposedStartDate;
 - (int)proposedStartDateStatus;
+- (id)semanticIdentifier;
 - (void)setAddress:(id)arg1;
 - (void)setComment:(id)arg1;
 - (void)setDisplayName:(id)arg1;

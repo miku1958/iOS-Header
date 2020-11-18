@@ -6,9 +6,11 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
-@class NSDate, NSString, PLCloudMaster, PLManagedAsset;
+#import <PhotoLibraryServices/PLCloudResource-Protocol.h>
 
-@interface PLCloudResource : PLManagedObject
+@class CPLScopedIdentifier, NSDate, NSManagedObjectID, NSString, PLCloudMaster, PLManagedAsset;
+
+@interface PLCloudResource : PLManagedObject <PLCloudResource>
 {
 }
 
@@ -16,25 +18,36 @@
 @property (strong, nonatomic) NSString *assetUuid; // @dynamic assetUuid;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
 @property (strong, nonatomic) PLCloudMaster *cloudMaster; // @dynamic cloudMaster;
+@property (readonly, nonatomic) unsigned long long cplType;
 @property (strong, nonatomic) NSDate *dateCreated; // @dynamic dateCreated;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *filePath; // @dynamic filePath;
 @property (nonatomic) unsigned long long fileSize; // @dynamic fileSize;
 @property (strong, nonatomic) NSString *fingerprint; // @dynamic fingerprint;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long height; // @dynamic height;
 @property (nonatomic) BOOL isAvailable; // @dynamic isAvailable;
 @property (nonatomic) BOOL isLocallyAvailable; // @dynamic isLocallyAvailable;
 @property (strong, nonatomic) NSString *itemIdentifier; // @dynamic itemIdentifier;
 @property (strong, nonatomic) NSDate *lastOnDemandDownloadDate; // @dynamic lastOnDemandDownloadDate;
 @property (strong, nonatomic) NSDate *lastPrefetchDate; // @dynamic lastPrefetchDate;
+@property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (nonatomic) short prefetchCount; // @dynamic prefetchCount;
 @property (strong, nonatomic) NSDate *prunedAt; // @dynamic prunedAt;
+@property (readonly, strong, nonatomic) CPLScopedIdentifier *scopedIdentifier;
+@property (readonly, nonatomic) unsigned long long sourceCplType;
+@property (nonatomic) int sourceType; // @dynamic sourceType;
+@property (readonly) Class superclass;
 @property (nonatomic) int type; // @dynamic type;
 @property (strong, nonatomic) NSString *uniformTypeIdentifier; // @dynamic uniformTypeIdentifier;
+@property (readonly, strong, nonatomic) NSString *utiString;
 @property (nonatomic) long long width; // @dynamic width;
 
++ (BOOL)_countOfLocalCloudResourcesOfType:(unsigned long long)arg1 inManagedObjectContext:(id)arg2 forMediumSized:(BOOL)arg3 localCount:(unsigned long long *)arg4 unavailableCount:(unsigned long long *)arg5 error:(id *)arg6;
 + (unsigned long long)bytesNeededToDownloadOriginalResourcesInLibrary:(id)arg1;
-+ (BOOL)countNonLocalOriginalResourcesInLibrary:(id)arg1 outCount:(unsigned long long *)arg2 photoCount:(unsigned long long *)arg3 videoCount:(unsigned long long *)arg4;
 + (BOOL)countOfLocalCloudResourcesOfType:(unsigned long long)arg1 inManagedObjectContext:(id)arg2 localCount:(unsigned long long *)arg3 unavailableCount:(unsigned long long *)arg4 error:(id *)arg5;
++ (BOOL)countOfMediumOriginalLocalCloudResourcesInManagedObjectContext:(id)arg1 localCount:(unsigned long long *)arg2 unavailableCount:(unsigned long long *)arg3 error:(id *)arg4;
 + (id)duplicateCloudResource:(id)arg1 forAsset:(id)arg2 withFilePath:(id)arg3 inManagedObjectContext:(id)arg4;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
@@ -45,7 +58,9 @@
 - (void)_duplicatePropertiesFromCloudResource:(id)arg1 withFilePath:(id)arg2 forAssetUuid:(id)arg3;
 - (void)applyPropertiesFromCloudResource:(id)arg1;
 - (id)cplResourceIncludeFile:(BOOL)arg1;
-- (id)description;
+- (void)createSidecarFileForMasterAssetIfNeeded:(id)arg1;
+- (void)markAsLocallyAvailableWithFilePath:(id)arg1;
+- (void)markAsNotLocallyAvailable;
 - (void)prepareForDeletion;
 
 @end

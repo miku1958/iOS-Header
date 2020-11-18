@@ -11,6 +11,7 @@
 @interface TSgPTPNetworkPort : TSgPTPPort
 {
     unsigned int _connection;
+    BOOL _remoteIsSameDevice;
     BOOL _asCapable;
     BOOL _localSyncLogMeanInterval;
     BOOL _remoteSyncLogMeanInterval;
@@ -24,7 +25,9 @@
     BOOL _hasRemoteFrequencyTolerance;
     BOOL _hasLocalFrequencyStability;
     BOOL _hasRemoteFrequencyStability;
+    BOOL _overridenReceiveMatching;
     unsigned short _remotePortNumber;
+    unsigned short _overridenReceivePortNumber;
     unsigned int _propagationDelay;
     unsigned int _maximumPropagationDelay;
     unsigned int _minimumPropagationDelay;
@@ -39,6 +42,7 @@
     NSString *_sourceAddressString;
     NSString *_destinationAddressString;
     NSString *_interfaceName;
+    unsigned long long _overridenReceiveClockIdentity;
 }
 
 @property (nonatomic, getter=isASCapable) BOOL asCapable; // @synthesize asCapable=_asCapable;
@@ -59,12 +63,16 @@
 @property (nonatomic) unsigned int maximumRawDelay; // @synthesize maximumRawDelay=_maximumRawDelay;
 @property (nonatomic) unsigned int minimumPropagationDelay; // @synthesize minimumPropagationDelay=_minimumPropagationDelay;
 @property (nonatomic) unsigned int minimumRawDelay; // @synthesize minimumRawDelay=_minimumRawDelay;
+@property (nonatomic) unsigned long long overridenReceiveClockIdentity; // @synthesize overridenReceiveClockIdentity=_overridenReceiveClockIdentity;
+@property (nonatomic) BOOL overridenReceiveMatching; // @synthesize overridenReceiveMatching=_overridenReceiveMatching;
+@property (nonatomic) unsigned short overridenReceivePortNumber; // @synthesize overridenReceivePortNumber=_overridenReceivePortNumber;
 @property (nonatomic) unsigned int propagationDelay; // @synthesize propagationDelay=_propagationDelay;
 @property (nonatomic) unsigned int propagationDelayLimit; // @synthesize propagationDelayLimit=_propagationDelayLimit;
 @property (nonatomic) BOOL remoteAnnounceLogMeanInterval; // @synthesize remoteAnnounceLogMeanInterval=_remoteAnnounceLogMeanInterval;
 @property (nonatomic) unsigned long long remoteClockIdentity; // @synthesize remoteClockIdentity=_remoteClockIdentity;
 @property (nonatomic) unsigned int remoteFrequencyStability; // @synthesize remoteFrequencyStability=_remoteFrequencyStability;
 @property (nonatomic) unsigned int remoteFrequencyTolerance; // @synthesize remoteFrequencyTolerance=_remoteFrequencyTolerance;
+@property (nonatomic) BOOL remoteIsSameDevice; // @synthesize remoteIsSameDevice=_remoteIsSameDevice;
 @property (nonatomic) unsigned char remoteLinkType; // @synthesize remoteLinkType=_remoteLinkType;
 @property (nonatomic) unsigned short remotePortNumber; // @synthesize remotePortNumber=_remotePortNumber;
 @property (nonatomic) BOOL remoteSyncLogMeanInterval; // @synthesize remoteSyncLogMeanInterval=_remoteSyncLogMeanInterval;
@@ -89,21 +97,28 @@
 - (unsigned int)_maximumRawDelay;
 - (unsigned int)_minimumPropagationDelay;
 - (unsigned int)_minimumRawDelay;
+- (unsigned long long)_overridenReceiveClockIdentity;
+- (BOOL)_overridenReceiveMatching;
+- (unsigned short)_overridenReceivePortNumber;
 - (unsigned int)_propagationDelay;
 - (unsigned int)_propagationDelayLimit;
 - (BOOL)_remoteAnnounceLogMeanInterval;
 - (unsigned long long)_remoteClockIdentity;
 - (unsigned int)_remoteFrequencyStability;
 - (unsigned int)_remoteFrequencyTolerance;
+- (BOOL)_remoteIsSameDevice;
 - (unsigned char)_remoteLinkType;
 - (unsigned short)_remotePortNumber;
 - (BOOL)_remoteSyncLogMeanInterval;
 - (unsigned char)_remoteTimestampingMode;
 - (id)_sourceAddressString;
 - (void)dealloc;
+- (BOOL)getCurrentPortInfo:(CDStruct_57c52001 *)arg1 error:(id *)arg2;
 - (id)initWithMatchingDictionary:(id)arg1;
 - (id)initWithService:(unsigned int)arg1;
+- (BOOL)overrideReceiveMatchingWithRemoteClockIdentity:(unsigned long long)arg1 remotePortNumber:(unsigned short)arg2 error:(id *)arg3;
 - (BOOL)requestRemoteMessageIntervalsWithPDelayMessageInterval:(BOOL)arg1 syncMessageInterval:(BOOL)arg2 announceMessageInterval:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)restoreReceiveMatchingError:(id *)arg1;
 - (void)updateProperties;
 
 @end

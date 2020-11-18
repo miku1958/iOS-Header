@@ -18,11 +18,15 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSString> _value;
     BOOL _isUserInitiated;
     struct RetainPtr<NSObject<NSSecureCoding>> _userObject;
+    struct RetainPtr<NSString> _placeholder;
+    struct RetainPtr<NSString> _label;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *label;
+@property (readonly, copy, nonatomic) NSString *placeholder;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type;
 @property (readonly, nonatomic, getter=isUserInitiated) BOOL userInitiated;

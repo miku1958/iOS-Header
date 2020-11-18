@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextEffectsWindow.h>
+#import <UIKitCore/UITextEffectsWindow.h>
 
-#import <UIKit/_UIContextCustomBinding-Protocol.h>
+#import <UIKitCore/_UIContextCustomBinding-Protocol.h>
 
 @class CAContext, FBSScene, FBSSceneLayer, NSString, _UIContextBinder;
 
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 + (id)remoteKeyboardWindowForScreen:(id)arg1 create:(BOOL)arg2;
 - (double)_adjustedWindowLevelFromLevel:(double)arg1;
 - (BOOL)_alwaysGetsContexts;
+- (BOOL)_canIgnoreInteractionEvents;
 - (id)_initBasicWithScreen:(id)arg1 options:(id)arg2;
 - (BOOL)_isFullscreen;
 - (BOOL)_isHostedInAnotherProcess;

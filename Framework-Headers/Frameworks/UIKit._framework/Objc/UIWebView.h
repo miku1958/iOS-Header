@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIScrollViewDelegate-Protocol.h>
-#import <UIKit/WebPolicyDelegate-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
+#import <UIKitCore/WebPolicyDelegate-Protocol.h>
 
 @class NSString, NSURLRequest, UIScrollView, UIWebViewInternal;
 @protocol UIWebViewDelegate;
@@ -113,7 +113,6 @@
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
-- (struct CGImage *)createSnapshotWithRect:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;

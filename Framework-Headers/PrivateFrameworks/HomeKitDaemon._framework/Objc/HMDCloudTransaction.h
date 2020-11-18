@@ -13,6 +13,7 @@
     BOOL _needConflictResolution;
     BOOL _iCloudSwitchStateEnabled;
     BOOL _temporaryCache;
+    BOOL _zoneHasNoLocalData;
     BOOL _createZone;
     BOOL _zoneWasCreated;
     BOOL _deleteZone;
@@ -54,6 +55,7 @@
 @property (readonly, nonatomic, getter=isTemporaryCache) BOOL temporaryCache; // @synthesize temporaryCache=_temporaryCache;
 @property (nonatomic) unsigned long long transactionType; // @synthesize transactionType=_transactionType;
 @property (strong, nonatomic) CKServerChangeToken *updatedServerChangeToken; // @synthesize updatedServerChangeToken=_updatedServerChangeToken;
+@property (readonly, nonatomic) BOOL zoneHasNoLocalData; // @synthesize zoneHasNoLocalData=_zoneHasNoLocalData;
 @property (nonatomic, getter=wasZoneCreated) BOOL zoneWasCreated; // @synthesize zoneWasCreated=_zoneWasCreated;
 @property (nonatomic, getter=wasZoneDeleted) BOOL zoneWasDeleted; // @synthesize zoneWasDeleted=_zoneWasDeleted;
 
@@ -72,6 +74,7 @@
 - (void)fetchBatchToUpload:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithType:(unsigned long long)arg1 temporaryCache:(BOOL)arg2;
+- (id)initWithType:(unsigned long long)arg1 temporaryCache:(BOOL)arg2 noLocalData:(BOOL)arg3;
 - (void)loadCloudRecordsAndDetermineDeletesFromCache:(CDUnknownBlockType)arg1;
 - (void)loadObjectChanges;
 - (BOOL)moreChangesToProcess;

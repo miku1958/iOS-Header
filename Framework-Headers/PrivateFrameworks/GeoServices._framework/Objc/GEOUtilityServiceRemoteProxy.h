@@ -22,7 +22,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_getPathSynchronous:(const char *)arg1;
 - (void)getCurrentGeoServicesState:(id)arg1 callback:(CDUnknownBlockType)arg2;
+- (id)getGeoServicesCacheDirectoryPath;
+- (id)getHomeDirectoryPath;
 - (id)init;
 
 @end

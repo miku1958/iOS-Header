@@ -52,6 +52,7 @@
 - (void)_addVerificationRequestRecord:(id)arg1;
 - (void)_archiveBackgroundContext;
 - (void)_archiveContext;
+- (void)_backgroundDownloadCloudStoreAssetsforItem:(id)arg1 cloudStoreCoordinatorDelegate:(id)arg2;
 - (BOOL)_canRegisterForPeerPayment;
 - (void)_canRegisterForPeerPaymentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_cleanupPassDownloadCache;
@@ -65,12 +66,15 @@
 - (id)_fakeVerificationChannelsWithRealChannels:(id)arg1;
 - (void)_handlePassDownloadTask:(id)arg1 data:(id)arg2;
 - (void)_handlePassListDownloadTask:(id)arg1 data:(id)arg2;
-- (void)_handleRemoteAssetDownloadTask:(id)arg1 data:(id)arg2;
+- (void)_handleRemoteAssetDownloadForManifestItem:(id)arg1 taskPassURL:(id)arg2 data:(id)arg3 shouldWriteData:(BOOL)arg4;
+- (void)_handleRemoteCloudStoreAssetForRecordName:(id)arg1 taskRecord:(id)arg2 data:(id)arg3 shouldWriteData:(BOOL)arg4;
+- (void)_handleRemoteURLAssetDownloadTask:(id)arg1 data:(id)arg2;
 - (void)_handleRetryAfterRegisterWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleRetryAfterTSMSyncForPushTopic:(id)arg1 withRequest:(id)arg2 taskIdentifier:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_hasConfiguration;
 - (BOOL)_isSandboxAccount;
 - (id)_movePassToDownloadCache:(id)arg1;
+- (BOOL)_needsRegistrationShouldCheckSecureElementOwnership:(BOOL)arg1;
 - (unsigned long long)_nonceForPass:(id)arg1 serviceURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_passWithData:(id)arg1 response:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_passWithFileURL:(id)arg1;
@@ -91,8 +95,11 @@
 - (void)backgroundDownloadPassesForPushTopic:(id)arg1 sinceLastUpdatedTag:(BOOL)arg2;
 - (void)backgroundDownloadPassesSinceLastUpdatedTag:(BOOL)arg1;
 - (void)backgroundDownloadRemotePassAssets:(id)arg1;
+- (void)backgroundDownloadRemotePassAssets:(id)arg1 cloudStoreCoordinatorDelegate:(id)arg2;
 - (void)backgroundDownloadRemotePassAssets:(id)arg1 forSuffixesAndScreenScales:(id)arg2;
+- (void)backgroundDownloadRemotePassAssets:(id)arg1 forSuffixesAndScreenScales:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3;
 - (void)backgroundDownloadWithPassTypeIdentifier:(id)arg1 serialNumber:(id)arg2;
+- (unsigned long long)browseableBankAppsWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)canBypassTrustExtendedValidation;
 - (unsigned long long)checkMerchantStatus:(id)arg1 forDomain:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (unsigned long long)completeSession:(id)arg1 wrappedPayment:(id)arg2 pass:(id)arg3 applicationData:(id)arg4 completion:(CDUnknownBlockType)arg5;

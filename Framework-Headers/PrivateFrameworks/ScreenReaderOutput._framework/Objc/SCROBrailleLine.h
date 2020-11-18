@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableArray, NSMutableAttributedString, SCROBrailleChunk, SCROBrailleLineVirtualStatus;
+@class NSArray, NSAttributedString, NSData, NSDictionary, NSMutableArray, NSMutableAttributedString, SCROBrailleChunk, SCROBrailleLineVirtualStatus;
 @protocol SCROBrailleDriverProtocol;
 
 @interface SCROBrailleLine : NSObject
@@ -60,6 +60,7 @@
 @property (weak, nonatomic) SCROBrailleChunk *chunkPendingTranslation; // @synthesize chunkPendingTranslation=_chunkPendingTranslation;
 @property (nonatomic) BOOL displayEnabled; // @synthesize displayEnabled=_displayEnabled;
 @property (weak, nonatomic) SCROBrailleChunk *editingChunk; // @synthesize editingChunk=_editingChunk;
+@property (readonly, nonatomic) NSAttributedString *editingString;
 @property (nonatomic) unsigned long long generationID; // @synthesize generationID=_generationID;
 @property (readonly, nonatomic) BOOL hasEdits;
 @property (nonatomic) BOOL isKeyboardHelpOn; // @synthesize isKeyboardHelpOn=_isKeyboardHelpOn;

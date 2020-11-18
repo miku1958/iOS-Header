@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKLRUCacheDelegate-Protocol.h>
 #import <VectorKit/VKTileSourceClient-Protocol.h>
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
     struct VKCameraState _lastCameraState;
     struct CGSize _lastCanvasSize;
     BOOL _tilesChanged;
+    BOOL _tileProviderHasBadTiles;
     VKMapRasterizer *_rasterizer;
     id<VKMapLayer> _debugLayer;
     GEOTileKeyList *_debugLayerKeys;
@@ -63,6 +64,11 @@ __attribute__((visibility("hidden")))
     GEOResourceManifestConfiguration *_manifestConfiguration;
     NSLocale *_locale;
     shared_ptr_e963992e _taskContext;
+    BOOL _enableIntegrityCheck;
+    double _minTimeInLoadingState;
+    double _maxTimeInLoadingState;
+    double _integrityInternval;
+    double _lastIntegrityCheckLog;
 }
 
 @property (nonatomic) id<VKTileProviderClient> client; // @synthesize client=_client;
@@ -98,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (void)_fillHoles:(id)arg1 context:(struct LayoutContext *)arg2;
 - (void)_prefetchTiles;
 - (void)_resizeCache;
+- (unsigned long long)_tileStateForKey:(const struct VKTileKey *)arg1 forLayer:(unsigned char)arg2;
 - (void)_updateTimers:(int)arg1;
 - (void)bestAccuracyFallbackForHoles:(id)arg1 context:(struct LayoutContext *)arg2 previousTiles:(id)arg3;
 - (BOOL)cache:(id)arg1 willEvictObject:(id)arg2 forKey:(const struct VKCacheKey *)arg3;
@@ -105,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (void)cancelLoadForMapTile:(id)arg1;
 - (void)cancelLoadingTiles;
 - (void)changeTileForKey:(const struct VKTileKey *)arg1 toState:(unsigned long long)arg2 withMetadata:(id)arg3 withTile:(id)arg4 forLayer:(unsigned char)arg5;
+- (BOOL)checkMapTileIntegrity:(id)arg1 errors:(id)arg2;
 - (void)clearScene;
 - (void)configureTileSelection;
 - (void)dealloc;
@@ -116,6 +124,7 @@ __attribute__((visibility("hidden")))
 - (void)didStopLoadingTilesWithError:(id)arg1;
 - (void)dirtyTile:(const struct VKTileKey *)arg1 source:(id)arg2;
 - (void)dirtyTilesFromTileSource:(id)arg1;
+- (void)dirtyTilesFromTileSource:(id)arg1 withState:(unsigned long long)arg2;
 - (BOOL)evaluateNeighborTileForRendering:(id)arg1;
 - (BOOL)evaluateSelectedTileForRendering:(id)arg1;
 - (void)flushCaches:(BOOL)arg1;
@@ -128,6 +137,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateRasterizedTiles;
 - (void)invalidateTilesFromTileSource:(id)arg1;
 - (unsigned char)layerForSource:(id)arg1;
+- (void)logIntegrityCheck;
 - (void)logPersistentHoles;
 - (void)populateDebugNode:(shared_ptr_eafb90f9)arg1;
 - (void)populateDebugNodeForKeys:(shared_ptr_eafb90f9)arg1 keys:(id)arg2;
@@ -158,9 +168,8 @@ __attribute__((visibility("hidden")))
 - (void)tileSource:(id)arg1 didFailToLoadTileForKey:(const struct VKTileKey *)arg2 error:(id)arg3;
 - (void)tileSource:(id)arg1 didFetchTile:(id)arg2 forKey:(const struct VKTileKey *)arg3;
 - (void)tileSource:(id)arg1 dirtyTilesWithinRect:(const Box_3d7e3c2c *)arg2 level:(long long)arg3;
-- (void)tileSource:(id)arg1 invalidateKey:(const struct VKTileKey *)arg2;
 - (void)tileSource:(id)arg1 invalidateKeys:(id)arg2;
-- (void)tileSource:(id)arg1 invalidateTilesWithState:(unsigned long long)arg2;
+- (void)tileSource:(id)arg1 invalidateTilesWithStatePredicate:(CDUnknownBlockType)arg2;
 - (BOOL)tileSource:(id)arg1 keyIsNeeded:(const struct VKTileKey *)arg2;
 - (long long)tileSource:(id)arg1 overrideForMaximumZoomLevel:(long long)arg2;
 - (void)tileSourcesDidChange;

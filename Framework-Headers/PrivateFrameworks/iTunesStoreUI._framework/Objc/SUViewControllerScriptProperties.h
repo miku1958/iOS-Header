@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesStoreUI/NSCoding-Protocol.h>
 #import <iTunesStoreUI/NSCopying-Protocol.h>
+#import <iTunesStoreUI/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, SUGradient, UIColor;
 
-@interface SUViewControllerScriptProperties : NSObject <NSCoding, NSCopying>
+@interface SUViewControllerScriptProperties : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _alwaysDispatchesScrollEvents;
     UIColor *_backgroundColor;
@@ -56,6 +56,7 @@
 @property (strong, nonatomic) UIColor *topExtensionColor; // @synthesize topExtensionColor=_topExtensionColor;
 @property (nonatomic) BOOL usesBlurredBackground; // @synthesize usesBlurredBackground=_usesBlurredBackground;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

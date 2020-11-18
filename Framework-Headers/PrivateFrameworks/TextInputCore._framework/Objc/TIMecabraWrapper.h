@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface TIMecabraWrapper : NSObject
 {
@@ -14,7 +14,7 @@
 @property (readonly) struct __Mecabra *mecabraRef; // @synthesize mecabraRef=_mecabraRef;
 
 - (void)dealloc;
-- (id)initWithMecabraRef:(struct __Mecabra *)arg1;
+- (id)initWithInputMethodType:(int)arg1 learningDictionaryDirectoryURL:(struct __CFURL *)arg2 creationOptions:(unsigned long long)arg3;
 
 @end
 

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CNApplicationProxy, NSData, NSString;
+@class CNApplicationProxy, NSData, NSDictionary, NSString, NSURL;
 
 @protocol CNLaunchServicesAdapter
 - (void)applicationForBundleIdentifier:(NSString *)arg1 withReply:(void (^)(CNApplicationProxy *, NSError *))arg2;
 - (void)applicationsAvailableForHandlingURLScheme:(NSString *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
 - (void)applicationsForUserActivityType:(NSString *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
+- (void)openSensitiveURLInBackground:(NSURL *)arg1 withOptions:(NSDictionary *)arg2 withReply:(void (^)(BOOL, NSError *))arg3;
 - (void)openUserActivityData:(NSData *)arg1 inApplication:(CNApplicationProxy *)arg2 withReply:(void (^)(BOOL, NSError *))arg3;
 @end
 

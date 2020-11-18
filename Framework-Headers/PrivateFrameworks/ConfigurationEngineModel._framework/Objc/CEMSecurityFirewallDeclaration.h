@@ -12,34 +12,36 @@
 
 @interface CEMSecurityFirewallDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadEnableFirewall;
+    NSNumber *_payloadBlockAllIncoming;
+    NSNumber *_payloadEnableStealthMode;
+    NSArray *_payloadApplications;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *payloadApplications;
-@property (readonly, nonatomic) NSNumber *payloadBlockAllIncoming;
-@property (readonly, nonatomic) NSNumber *payloadEnableFirewall;
-@property (readonly, nonatomic) NSNumber *payloadEnableStealthMode;
+@property (copy, nonatomic) NSArray *payloadApplications; // @synthesize payloadApplications=_payloadApplications;
+@property (copy, nonatomic) NSNumber *payloadBlockAllIncoming; // @synthesize payloadBlockAllIncoming=_payloadBlockAllIncoming;
+@property (copy, nonatomic) NSNumber *payloadEnableFirewall; // @synthesize payloadEnableFirewall=_payloadEnableFirewall;
+@property (copy, nonatomic) NSNumber *payloadEnableStealthMode; // @synthesize payloadEnableStealthMode=_payloadEnableStealthMode;
 @property (readonly) Class superclass;
 
-+ (id)ApplicationsItem_allowedPayloadKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withEnableFirewall:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withEnableFirewall:(id)arg2 withBlockAllIncoming:(id)arg3 withEnableStealthMode:(id)arg4 withApplications:(id)arg5;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadApplicationsItem:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadApplicationsItem_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSAttributedString, NSData, NSDictionary, NSFileWrapper, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableOrderedSet, NSMutableString, NSString, NSURL;
 
@@ -50,6 +50,7 @@
     } _flags;
 }
 
++ (id)fontNameForFont:(id)arg1;
 - (id)HTMLData;
 - (id)HTMLFileWrapper;
 - (void)_appendAttachment:(id)arg1 atIndex:(unsigned long long)arg2 toString:(id)arg3;

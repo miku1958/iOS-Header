@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInputViewController.h>
+#import <UIKitCore/UIInputViewController.h>
 
-#import <UIKit/_UIKBDelegateAwareInputController-Protocol.h>
+#import <UIKitCore/_UIKBDelegateAwareInputController-Protocol.h>
 
 @class NSArray, NSString, UIKeyboard, UIKeyboardInputMode, UIViewController;
 
@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (void)removeSnapshotView;
 - (void)resetInputMode;
 - (void)resetInputModeInMainThread;
+- (void)setDeferredSystemView:(id)arg1;
 - (void)setInputMode:(id)arg1;
 - (void)setTearingDownInputController;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;

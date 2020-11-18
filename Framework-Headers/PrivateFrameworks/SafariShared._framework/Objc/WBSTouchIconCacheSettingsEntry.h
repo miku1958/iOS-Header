@@ -18,12 +18,14 @@
     BOOL _higherPriorityIconDownloadFailedDueToNetworkError;
     long long _databaseID;
     NSString *_host;
+    NSString *_UUIDString;
     NSDate *_lastRequestDate;
     long long _requestCount;
     UIColor *_extractedColor;
     long long _transparencyAnalysisResult;
 }
 
+@property (copy, nonatomic) NSString *UUIDString; // @synthesize UUIDString=_UUIDString;
 @property (nonatomic) long long databaseID; // @synthesize databaseID=_databaseID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -40,10 +42,10 @@
 @property (readonly) Class superclass;
 @property (nonatomic) long long transparencyAnalysisResult; // @synthesize transparencyAnalysisResult=_transparencyAnalysisResult;
 
-+ (id)entryWithHost:(id)arg1 lastRequestDate:(id)arg2 lastRequestWasInUserLoadedWebpage:(BOOL)arg3 requestCount:(long long)arg4 iconInCache:(BOOL)arg5 requestDidSucceed:(BOOL)arg6 extractedColor:(id)arg7 transparencyAnalysisResult:(long long)arg8 higherPriorityIconDownloadFailedDueToNetworkError:(BOOL)arg9;
++ (id)entryWithHost:(id)arg1 lastRequestDate:(id)arg2 lastRequestWasInUserLoadedWebpage:(BOOL)arg3 requestCount:(long long)arg4 iconInCache:(BOOL)arg5 requestDidSucceed:(BOOL)arg6 extractedColor:(id)arg7 transparencyAnalysisResult:(long long)arg8 higherPriorityIconDownloadFailedDueToNetworkError:(BOOL)arg9 UUIDString:(id)arg10;
 - (void).cxx_destruct;
 - (id)initWithHost:(id)arg1;
-- (id)initWithHost:(id)arg1 lastRequestDate:(id)arg2 lastRequestWasInUserLoadedWebpage:(BOOL)arg3 requestCount:(long long)arg4 iconInCache:(BOOL)arg5 requestDidSucceed:(BOOL)arg6 extractedColor:(id)arg7 transparencyAnalysisResult:(long long)arg8 higherPriorityIconDownloadFailedDueToNetworkError:(BOOL)arg9;
+- (id)initWithHost:(id)arg1 lastRequestDate:(id)arg2 lastRequestWasInUserLoadedWebpage:(BOOL)arg3 requestCount:(long long)arg4 iconInCache:(BOOL)arg5 requestDidSucceed:(BOOL)arg6 extractedColor:(id)arg7 transparencyAnalysisResult:(long long)arg8 higherPriorityIconDownloadFailedDueToNetworkError:(BOOL)arg9 UUIDString:(id)arg10;
 - (id)initWithSQLiteRow:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

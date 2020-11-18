@@ -41,7 +41,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_evaluateNeedForSync;
-- (void)_receivedHomeDataFromSourceVersion:(id)arg1;
+- (void)_receivedHomeDataFromSourceVersion:(id)arg1 forceUpdateVersion:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_requestDataFromResident:(id)arg1 currentUser:(id)arg2;
 - (void)_startRequestForDataSync;
 - (void)_updateResidents;
@@ -54,7 +54,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)logIdentifier;
 - (void)pendingRequestFromResidentChanged;
-- (void)receivedHomeDataFromSourceVersion:(id)arg1;
+- (void)receivedHomeDataFromSourceVersion:(id)arg1 forceUpdateVersion:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)reevaluateNeedForSync;
 - (void)registerForMessages;
 - (void)requestDataSync;

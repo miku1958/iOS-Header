@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_pluginFieldsForRecordDeletesByID;
     NSDictionary *_handlersByRecordID;
     NSDictionary *_parentsByRecordID;
+    NSMapTable *_handlersByAssetNeedingRecordFetch;
     NSMapTable *_handlersByAsset;
     NSMutableDictionary *_modifyHandlersByZoneID;
     long long _savePolicy;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSDictionary *conflictLosersToResolveByRecordID; // @synthesize conflictLosersToResolveByRecordID=_conflictLosersToResolveByRecordID;
 @property (copy, nonatomic) CDUnknownBlockType deleteCompletionBlock; // @synthesize deleteCompletionBlock=_deleteCompletionBlock;
 @property (strong, nonatomic) NSMapTable *handlersByAsset; // @synthesize handlersByAsset=_handlersByAsset;
+@property (strong, nonatomic) NSMapTable *handlersByAssetNeedingRecordFetch; // @synthesize handlersByAssetNeedingRecordFetch=_handlersByAssetNeedingRecordFetch;
 @property (strong, nonatomic) NSDictionary *handlersByRecordID; // @synthesize handlersByRecordID=_handlersByRecordID;
 @property (readonly, nonatomic) BOOL hasDecryptOperation;
 @property (nonatomic) BOOL haveOutstandingHandlers; // @synthesize haveOutstandingHandlers=_haveOutstandingHandlers;
@@ -85,7 +87,9 @@ __attribute__((visibility("hidden")))
 - (void)_continueRecordsModify;
 - (id)_createModifyRequestWithRecordsToSave:(id)arg1 recordsToDelete:(id)arg2 recordsToDeleteToEtags:(id)arg3 handlersByRecordID:(id)arg4;
 - (void)_determineEnvironment;
+- (void)_didCompleteRecordFetchOperation:(id)arg1 assetArrayByRecordID:(id)arg2;
 - (void)_enumerateHandlersInState:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)_fetchAssetRecordsForRereferencing;
 - (void)_fetchContainerScopedUserID;
 - (void)_fetchRecordPCSData;
 - (void)_fetchSharePCSData;
@@ -113,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (void)_uploadAssets;
 - (void)_verifyRecordEncryption;
 - (id)activityCreate;
+- (void)assetArrayByRecordID:(id)arg1 didFetchRecord:(id)arg2 recordID:(id)arg3 error:(id)arg4;
 - (void)callbackWithMetadata:(id)arg1 error:(id)arg2;
 - (void)deleteCallbackWithMetadata:(id)arg1 error:(id)arg2;
 - (void)finishWithError:(id)arg1;

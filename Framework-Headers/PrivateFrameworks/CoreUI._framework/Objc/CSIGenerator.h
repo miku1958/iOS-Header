@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUIPSDGradient, CUIShapeEffectPreset, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSSet, NSString;
 
@@ -24,6 +24,9 @@
     long long _templateRenderingMode;
     BOOL _allowsMultiPassEncoding;
     BOOL _allowsOptimalRowbytesPacking;
+    BOOL _allowsPaletteImageCompression;
+    BOOL _allowsHevcCompression;
+    BOOL _allowsDeepmapImageCompression;
     BOOL _optOutOfThinning;
     BOOL _preservedVectorRepresentation;
     BOOL _isFlippable;
@@ -55,12 +58,19 @@
     NSMutableArray *_mipReferences;
     BOOL _textureOpaque;
     NSArray *_colorComponents;
+    NSString *_systemColorName;
     NSDictionary *_sizesByIndex;
     BOOL _clampMetrics;
+    NSDictionary *_renditionProperties;
+    int _objectVersion;
+    CDStruct_14d5dc5e _transformation;
 }
 
+@property (nonatomic) BOOL allowsDeepmapImageCompression; // @synthesize allowsDeepmapImageCompression=_allowsDeepmapImageCompression;
+@property (nonatomic) BOOL allowsHevcCompression; // @synthesize allowsHevcCompression=_allowsHevcCompression;
 @property (nonatomic) BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
 @property (nonatomic) BOOL allowsOptimalRowbytesPacking; // @synthesize allowsOptimalRowbytesPacking=_allowsOptimalRowbytesPacking;
+@property (nonatomic) BOOL allowsPaletteImageCompression; // @synthesize allowsPaletteImageCompression=_allowsPaletteImageCompression;
 @property (nonatomic) struct CGRect alphaCroppedFrame; // @synthesize alphaCroppedFrame=_alphaCroppedFrame;
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
 @property (nonatomic) BOOL clampMetrics; // @synthesize clampMetrics=_clampMetrics;
@@ -81,12 +91,14 @@
 @property (readonly, nonatomic) NSArray *mipReferences; // @synthesize mipReferences=_mipReferences;
 @property (copy, nonatomic) NSDate *modtime; // @synthesize modtime=_modtime;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) int objectVersion; // @synthesize objectVersion=_objectVersion;
 @property (nonatomic) double opacity; // @synthesize opacity=_opacity;
 @property (nonatomic) BOOL optOutOfThinning; // @synthesize optOutOfThinning=_optOutOfThinning;
 @property (nonatomic) struct CGSize originalUncroppedSize; // @synthesize originalUncroppedSize=_originalUncroppedSize;
 @property (nonatomic) struct CGSize physicalSizeInMeters; // @synthesize physicalSizeInMeters=_physicalSizeInMeters;
 @property (nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property (nonatomic) BOOL preservedVectorRepresentation; // @synthesize preservedVectorRepresentation=_preservedVectorRepresentation;
+@property (copy, nonatomic) NSDictionary *renditionProperties; // @synthesize renditionProperties=_renditionProperties;
 @property (nonatomic) unsigned int scaleFactor; // @synthesize scaleFactor=_scaleFactor;
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (copy, nonatomic) NSDictionary *sizesByIndex; // @synthesize sizesByIndex=_sizesByIndex;
@@ -94,6 +106,7 @@
 @property (nonatomic) long long textureFormat; // @synthesize textureFormat=_textureFormat;
 @property (nonatomic) long long textureInterpretation; // @synthesize textureInterpretation=_textureInterpretation;
 @property (nonatomic) BOOL textureOpaque; // @synthesize textureOpaque=_textureOpaque;
+@property (nonatomic) CDStruct_14d5dc5e transformation; // @synthesize transformation=_transformation;
 @property (copy, nonatomic) NSString *utiType; // @synthesize utiType=_utiType;
 
 + (int)fileEncoding;
@@ -112,6 +125,7 @@
 - (void)formatCSIHeader:(struct _csiheader *)arg1;
 - (id)initWithCanvasSize:(struct CGSize)arg1 sliceCount:(unsigned int)arg2 layout:(short)arg3;
 - (id)initWithColorNamed:(id)arg1 colorSpaceID:(unsigned long long)arg2 components:(id)arg3;
+- (id)initWithColorNamed:(id)arg1 colorSpaceID:(unsigned long long)arg2 components:(id)arg3 linkedToSystemColorWithName:(id)arg4;
 - (id)initWithExternalReference:(id)arg1 tags:(id)arg2;
 - (id)initWithInternalReferenceRect:(struct CGRect)arg1 layout:(short)arg2;
 - (id)initWithLayerStackData:(id)arg1 withCanvasSize:(struct CGSize)arg2;
@@ -129,6 +143,7 @@
 - (void)writeHeader:(struct _csiheader *)arg1 toData:(id)arg2;
 - (unsigned long long)writeMultisizeImageSetToData:(id)arg1;
 - (unsigned long long)writeRawDataToData:(id)arg1;
+- (unsigned long long)writeRecognitionObjectToData:(id)arg1;
 - (unsigned long long)writeResourcesToData:(id)arg1;
 - (unsigned long long)writeTextureToData:(id)arg1;
 

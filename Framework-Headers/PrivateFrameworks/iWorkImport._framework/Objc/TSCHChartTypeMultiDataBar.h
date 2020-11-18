@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)defaultDataFileName;
 - (id)defaultSeriesType:(unsigned long long)arg1;
 - (id)genericToSpecificPropertyMap;
 - (id)init;

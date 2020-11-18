@@ -8,48 +8,44 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 
-@class NSMapTable, NSMutableSet, NSString;
-@protocol HDSQLiteDatabasePoolDelegate, OS_dispatch_queue, OS_dispatch_semaphore;
+@class NSCondition, NSMapTable, NSMutableSet, NSString;
+@protocol HDSQLiteDatabasePoolDelegate, OS_dispatch_semaphore;
 
 @interface HDSQLiteDatabasePool : NSObject <HDDiagnosticObject>
 {
-    NSObject<OS_dispatch_queue> *_cacheQueue;
+    NSCondition *_cacheCondition;
     NSMutableSet *_cache;
     unsigned long long _cacheGeneration;
-    NSObject<OS_dispatch_queue> *_checkoutQueue;
+    long long _cacheSize;
+    long long _concurrentReaderLimit;
+    _Atomic int _count;
+    struct os_unfair_lock_s _checkoutLock;
     NSMapTable *_checkoutMap;
     NSObject<OS_dispatch_semaphore> *_readerSemaphore;
     NSObject<OS_dispatch_semaphore> *_writerSemaphore;
-    unsigned long long _cacheSize;
-    int _backgroundReadersWaiting;
-    int _writersWaiting;
     id<HDSQLiteDatabasePoolDelegate> _delegate;
-    unsigned long long _maxConcurrentBackgroundReaders;
-    unsigned long long _maxConcurrentWriters;
 }
 
-@property (readonly) unsigned long long backgroundReadersWaiting;
-@property unsigned long long cacheSize;
+@property (readonly) long long cacheSize;
+@property (readonly) long long concurrentReaderLimit;
+@property (readonly) long long count;
 @property (readonly, copy) NSString *debugDescription;
-@property id<HDSQLiteDatabasePoolDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak) id<HDSQLiteDatabasePoolDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) unsigned long long maxConcurrentBackgroundReaders; // @synthesize maxConcurrentBackgroundReaders=_maxConcurrentBackgroundReaders;
-@property (readonly) unsigned long long maxConcurrentWriters; // @synthesize maxConcurrentWriters=_maxConcurrentWriters;
 @property (readonly) Class superclass;
-@property (readonly) unsigned long long writersWaiting;
 
 - (void).cxx_destruct;
-- (id)_databaseWithType:(long long)arg1 error:(id *)arg2;
+- (void)_addDatabaseWrapperToCheckoutMap:(id)arg1;
 - (void)_didFlushDatabases:(id)arg1;
-- (id)_semaphoreForDatabaseType:(long long)arg1 waitCounter:(int **)arg2;
+- (id)_removeDatabaseFromCheckoutMap:(id)arg1;
+- (id)_semaphoreForCheckOutOptions:(unsigned long long)arg1;
 - (void)checkInDatabase:(id)arg1 flushImmediately:(BOOL)arg2;
+- (id)checkOutDatabaseWithOptions:(unsigned long long)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (void)flush;
-- (id)initWithDelegate:(id)arg1 maxConcurrentBackgroundReaders:(unsigned long long)arg2;
-- (id)readerDatabaseWithPriority:(long long)arg1 error:(id *)arg2;
-- (id)writerDatabaseWithError:(id *)arg1;
+- (id)initWithConcurrentReaderLimit:(long long)arg1;
 
 @end
 

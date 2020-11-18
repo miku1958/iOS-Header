@@ -16,7 +16,6 @@
 @property (readonly, nonatomic) NSURL *webURL;
 
 - (id)initWithSearchAttributionInfo:(id)arg1 attributionURLs:(id)arg2 poiID:(id)arg3;
-- (id)urlsForDealWithIdentifier:(id)arg1;
 
 @end
 

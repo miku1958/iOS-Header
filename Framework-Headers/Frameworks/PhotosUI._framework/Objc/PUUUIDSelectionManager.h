@@ -7,20 +7,25 @@
 #import <PhotosUICore/PXObservable.h>
 
 #import <PhotosUI/PUMutableUUIDSelectionManager-Protocol.h>
+#import <PhotosUI/_PUOneUpSelectionIndicatorCompatibleManager-Protocol.h>
 
 @class NSMutableSet, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface PUUUIDSelectionManager : PXObservable <PUMutableUUIDSelectionManager>
+@interface PUUUIDSelectionManager : PXObservable <_PUOneUpSelectionIndicatorCompatibleManager, PUMutableUUIDSelectionManager>
 {
     NSMutableSet *__mutableSelectedUUIDs;
 }
 
 @property (readonly, copy, nonatomic) NSMutableSet *_mutableSelectedUUIDs; // @synthesize _mutableSelectedUUIDs=__mutableSelectedUUIDs;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSSet *selectedUUIDs;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -31,6 +36,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSelectedUUID:(id)arg1;
 - (id)mutableChangeObject;
 - (void)performChanges:(CDUnknownBlockType)arg1;
+- (BOOL)pu_isAssetReferenceSelected:(id)arg1;
+- (void)pu_registerSelectionIndicatorObserver:(id)arg1;
+- (void)pu_unregisterSelectionIndicatorObserver:(id)arg1;
 - (void)removeSelectedUUID:(id)arg1;
 - (void)setSelectedUUIDs:(id)arg1;
 

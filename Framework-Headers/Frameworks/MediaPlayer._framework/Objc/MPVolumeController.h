@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPVolumeControllerDataSourceDelegate-Protocol.h>
 
-@class MPAVController, NSString;
+@class NSString;
 @protocol MPVolumeControllerDataSource, MPVolumeControllerDelegate;
 
 @interface MPVolumeController : NSObject <MPVolumeControllerDataSourceDelegate>
 {
     id<MPVolumeControllerDataSource> _dataSource;
-    int _userRecentlyChangedVolumeCount;
+    int _volumeChangeCoalescingCount;
     id<MPVolumeControllerDelegate> _delegate;
-    MPAVController *_player;
 }
 
 @property (readonly, nonatomic) float EUVolumeLimit;
@@ -26,7 +25,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isMuted) BOOL muted;
-@property (strong, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *volumeAudioCategory;
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable;
@@ -37,12 +35,12 @@
 
 - (void).cxx_destruct;
 - (void)_updateVolumeControlAvailability;
-- (void)_userChangedVolume;
 - (void)adjustVolumeValue:(float)arg1;
 - (void)getVolumeValueWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDataSource:(id)arg1;
 - (BOOL)muted;
+- (void)setVolume:(float)arg1 withNoticationDelay:(float)arg2;
 - (void)updateVolumeValue;
 - (void)updateVolumeWarningState;
 - (void)volumeControllerDataSource:(id)arg1 didChangeEUVolumeLimit:(float)arg2;

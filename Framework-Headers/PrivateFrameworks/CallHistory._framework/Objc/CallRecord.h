@@ -6,30 +6,49 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSDate, NSNumber, NSString;
+@class NSDate, NSNumber, NSSet, NSString, NSUUID;
 
 @interface CallRecord : NSManagedObject
 {
 }
 
 @property (strong, nonatomic) NSString *address; // @dynamic address;
-@property (strong, nonatomic) NSNumber *answered; // @dynamic answered;
-@property (strong, nonatomic) NSNumber *call_category; // @dynamic call_category;
-@property (strong, nonatomic) NSNumber *calltype; // @dynamic calltype;
-@property (strong, nonatomic) NSDate *date; // @dynamic date;
-@property (strong, nonatomic) NSString *device_id; // @dynamic device_id;
-@property (strong, nonatomic) NSNumber *disconnected_cause; // @dynamic disconnected_cause;
-@property (strong, nonatomic) NSNumber *duration; // @dynamic duration;
-@property (strong, nonatomic) NSNumber *face_time_data; // @dynamic face_time_data;
-@property (strong, nonatomic) NSNumber *handle_type; // @dynamic handle_type;
-@property (strong, nonatomic) NSString *iso_country_code; // @dynamic iso_country_code;
-@property (strong, nonatomic) NSString *location; // @dynamic location;
-@property (strong, nonatomic) NSString *name; // @dynamic name;
-@property (strong, nonatomic) NSNumber *number_availability; // @dynamic number_availability;
-@property (strong, nonatomic) NSNumber *originated; // @dynamic originated;
-@property (strong, nonatomic) NSNumber *read; // @dynamic read;
-@property (strong, nonatomic) NSString *service_provider; // @dynamic service_provider;
-@property (strong, nonatomic) NSString *unique_id; // @dynamic unique_id;
+@property (copy, nonatomic) NSNumber *answered; // @dynamic answered;
+@property (copy, nonatomic) NSNumber *call_category; // @dynamic call_category;
+@property (copy, nonatomic) NSNumber *calltype; // @dynamic calltype;
+@property (readonly, nonatomic) long long chHandleType;
+@property (readonly, copy, nonatomic) NSSet *chRemoteParticipantHandles;
+@property (copy, nonatomic) NSDate *date; // @dynamic date;
+@property (copy, nonatomic) NSNumber *disconnected_cause; // @dynamic disconnected_cause;
+@property (copy, nonatomic) NSNumber *duration; // @dynamic duration;
+@property (copy, nonatomic) NSNumber *face_time_data; // @dynamic face_time_data;
+@property (copy, nonatomic) NSNumber *handle_type; // @dynamic handle_type;
+@property (copy, nonatomic) NSString *iso_country_code; // @dynamic iso_country_code;
+@property (copy, nonatomic) NSUUID *localParticipantUUID; // @dynamic localParticipantUUID;
+@property (strong, nonatomic) NSString *local_address; // @dynamic local_address;
+@property (copy, nonatomic) NSString *location; // @dynamic location;
+@property (copy, nonatomic) NSString *name; // @dynamic name;
+@property (copy, nonatomic) NSNumber *number_availability; // @dynamic number_availability;
+@property (copy, nonatomic) NSNumber *originated; // @dynamic originated;
+@property (copy, nonatomic) NSUUID *outgoingLocalParticipantUUID; // @dynamic outgoingLocalParticipantUUID;
+@property (copy, nonatomic) NSNumber *read; // @dynamic read;
+@property (strong, nonatomic) NSSet *remoteParticipantHandles; // @dynamic remoteParticipantHandles;
+@property (copy, nonatomic) NSString *service_provider; // @dynamic service_provider;
+@property (readonly, nonatomic) BOOL supportsCallCategory;
+@property (readonly, nonatomic) BOOL supportsHandleType;
+@property (readonly, nonatomic) BOOL supportsLocalParticipantUUID;
+@property (readonly, nonatomic) BOOL supportsOutgoingLocalParticipantUUID;
+@property (readonly, nonatomic) BOOL supportsRemoteParticipantHandles;
+@property (readonly, nonatomic) BOOL supportsServiceProvider;
+@property (copy, nonatomic) NSString *unique_id; // @dynamic unique_id;
+
++ (id)fetchRequest;
+- (id)compositeCallCategoryForContext:(id)arg1;
+- (id)compositeHandleTypeForContext:(id)arg1;
+- (id)compositeLocalParticipantUUIDForContext:(id)arg1;
+- (id)compositeOutgoingLocalParticipantUUIDForContext:(id)arg1;
+- (id)compositeRemoteParticipantHandlesForContext:(id)arg1;
+- (id)compositeServiceProviderForContext:(id)arg1;
 
 @end
 

@@ -8,7 +8,7 @@
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSString, SASyncAppMetaData;
+@class NSSet, NSString, SASyncAppMetaData;
 
 @interface AFSyncInfo : NSObject <NSSecureCoding>
 {
@@ -19,6 +19,7 @@
     long long _count;
     NSString *_key;
     SASyncAppMetaData *_appMetadata;
+    NSSet *_reasons;
 }
 
 @property (copy, nonatomic) NSString *anchor; // @synthesize anchor=_anchor;
@@ -26,6 +27,7 @@
 @property (nonatomic) long long count; // @synthesize count=_count;
 @property (nonatomic) BOOL forVerification; // @synthesize forVerification=_forVerification;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (copy, nonatomic) NSSet *reasons; // @synthesize reasons=_reasons;
 @property (nonatomic) BOOL targetIsLocal; // @synthesize targetIsLocal=_targetIsLocal;
 @property (copy, nonatomic) NSString *validity; // @synthesize validity=_validity;
 

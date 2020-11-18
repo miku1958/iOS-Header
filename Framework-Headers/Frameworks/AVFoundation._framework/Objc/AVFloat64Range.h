@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface AVFloat64Range : NSObject <NSCopying>
 {
     double _minimum;

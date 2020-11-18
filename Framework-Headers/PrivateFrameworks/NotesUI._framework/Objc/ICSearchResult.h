@@ -41,8 +41,8 @@
 @property (strong, nonatomic) NSAttributedString *titleAttributedString; // @synthesize titleAttributedString=_titleAttributedString;
 @property (nonatomic) struct CGRect titleAttributedStringInsideFrame; // @synthesize titleAttributedStringInsideFrame=_titleAttributedStringInsideFrame;
 
-+ (id)attributedStringWithMatchHighlighted:(id)arg1 textCheckingResult:(id)arg2 usingAttributes:(id)arg3 insideFrame:(struct CGRect)arg4;
-+ (id)attributesByHighlightingAttributes:(id)arg1;
++ (id)attributedStringWithMatchHighlighted:(id)arg1 textCheckingResult:(id)arg2 usingAttributes:(id)arg3 highlightColor:(struct UIColor *)arg4 insideFrame:(struct CGRect)arg5;
++ (id)attributesByHighlightingAttributes:(id)arg1 withHighlightColor:(struct UIColor *)arg2;
 + (id)authorNameToHighlightForNote:(id)arg1 fromSearchResult:(id)arg2 matchWordBoundaries:(BOOL)arg3;
 + (id)bestMatchOfString:(id)arg1 withinString:(id)arg2 matchWordBoundaries:(BOOL)arg3;
 + (id)bestMatchTokensForString:(id)arg1;
@@ -50,10 +50,11 @@
 + (BOOL)canFitAttributedString:(id)arg1 ellipses:(id)arg2 shouldPrefixWithEllipses:(BOOL)arg3 insideFrame:(struct CGRect)arg4;
 + (id)firstMatchOfString:(id)arg1 withinString:(id)arg2 matchWordBoundaries:(BOOL)arg3;
 + (id)regularExpressionForSearchingWithString:(id)arg1 matchWordBoundaries:(BOOL)arg2;
-+ (id)stringMatchHighlightedForAttributedString:(id)arg1 fromSearchResult:(id)arg2;
-+ (id)stringMatchHighlightedForString:(id)arg1 atributedString:(id)arg2 highlightString:(id)arg3;
-+ (id)stringMatchHighlightedForString:(id)arg1 fromSearchResult:(id)arg2;
++ (id)stringMatchHighlightedForAttributedString:(id)arg1 highlightColor:(struct UIColor *)arg2 fromSearchResult:(id)arg3;
++ (id)stringMatchHighlightedForString:(id)arg1 atributedString:(id)arg2 highlightString:(id)arg3 highlightColor:(struct UIColor *)arg4;
++ (id)stringMatchHighlightedForString:(id)arg1 highlightColor:(struct UIColor *)arg2 fromSearchResult:(id)arg3;
 - (void).cxx_destruct;
+- (id)attributedTitleWithBaseAttributes:(id)arg1 highlightColor:(struct UIColor *)arg2 insideFrame:(struct CGRect)arg3;
 - (id)bestMatchWithinString:(id)arg1;
 - (id)bestMatchWithinString:(id)arg1 matchWordBoundaries:(BOOL)arg2;
 - (long long)compareByModificationDate:(id)arg1;
@@ -66,8 +67,7 @@
 - (void)prepareDisplayingSnippetWithAccessingObject:(id)arg1;
 - (void)prepareDisplayingTitleWithAccessingObject:(id)arg1;
 - (void)refetchObjectFromContext:(id)arg1;
-- (id)snippetWithMatchHighlightedUsingAttributes:(id)arg1 insideFrame:(struct CGRect)arg2;
-- (id)titleWithMatchHighlightedUsingAttributes:(id)arg1 insideFrame:(struct CGRect)arg2;
+- (id)snippetWithBaseAttributes:(id)arg1 highlightColor:(struct UIColor *)arg2 insideFrame:(struct CGRect)arg3;
 
 @end
 

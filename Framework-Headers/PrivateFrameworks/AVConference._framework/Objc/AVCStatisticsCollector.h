@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary, VCRateControlBandwidthEstimator, VCRateControlOWRDEstimator, VCStatisticsHistory;
-@protocol OS_dispatch_queue;
+@class NSMutableDictionary, VCRateControlBandwidthEstimatorMap, VCRateControlOWRDEstimator, VCStatisticsCollectorQueue, VCStatisticsHistory;
 
 __attribute__((visibility("hidden")))
 @interface AVCStatisticsCollector : NSObject
@@ -15,34 +14,48 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_statistics;
     struct tagVCStatisticsCollection *_statisticsCollection;
     NSMutableDictionary *_statisticChangeHandlerDictionary;
-    VCRateControlBandwidthEstimator *_bandwidthEstimator;
+    VCRateControlBandwidthEstimatorMap *_bandwidthEstimatorMap;
     VCRateControlOWRDEstimator *_owrdEstimator;
     VCStatisticsHistory *_history;
-    NSObject<OS_dispatch_queue> *_statisticsCollectorQueue;
+    VCStatisticsCollectorQueue *_queue;
     unsigned int _radioAccessTechnology;
     unsigned int _mode;
     unsigned int _sharedEstimatedBandwidth;
+    unsigned int _sharedEstimatedBandwidthUncapped;
     unsigned int _sharedRemoteEstimatedBandwidth;
+    unsigned int _estimatedBandwidthCap;
+    unsigned int _expectedBitrate;
+    struct _opaque_pthread_rwlock_t _statisticsCollectionLock;
 }
 
+@property (nonatomic) unsigned int estimatedBandwidthCap; // @synthesize estimatedBandwidthCap=_estimatedBandwidthCap;
+@property (nonatomic) unsigned int expectedBitrate; // @synthesize expectedBitrate=_expectedBitrate;
 @property (nonatomic) unsigned int mode; // @synthesize mode=_mode;
 @property (nonatomic) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
 @property (readonly, nonatomic) unsigned int sharedEstimatedBandwidth; // @synthesize sharedEstimatedBandwidth=_sharedEstimatedBandwidth;
+@property (readonly, nonatomic) unsigned int sharedEstimatedBandwidthUncapped; // @synthesize sharedEstimatedBandwidthUncapped=_sharedEstimatedBandwidthUncapped;
 @property (readonly, nonatomic) unsigned int sharedRemoteEstimatedBandwidth; // @synthesize sharedRemoteEstimatedBandwidth=_sharedRemoteEstimatedBandwidth;
 
-- (void)addEntriesFromStatistics:(CDStruct_5cb394a5)arg1;
-- (void)addPacketLossInfo:(CDStruct_5cb394a5 *)arg1;
-- (BOOL)addStatisticsHistory:(CDStruct_5cb394a5)arg1;
-- (void)computeBWEstimation:(CDStruct_5cb394a5 *)arg1;
-- (void)computeOWRDEstimation:(CDStruct_5cb394a5 *)arg1;
-- (void)computeOtherStatistics:(CDStruct_5cb394a5 *)arg1;
+- (void)addActualBitrateInfo:(CDStruct_48a7b5a5 *)arg1;
+- (void)addEntriesFromStatistics:(CDStruct_48a7b5a5)arg1;
+- (void)addPacketLossInfo:(CDStruct_48a7b5a5 *)arg1;
+- (void)addStatisticsHistory:(CDStruct_48a7b5a5)arg1;
+- (void)computeBWEstimation:(CDStruct_48a7b5a5 *)arg1;
+- (void)computeOWRDEstimation:(CDStruct_48a7b5a5 *)arg1;
+- (void)computeOtherStatistics:(CDStruct_48a7b5a5 *)arg1;
 - (void)dealloc;
 - (id)getStatistics:(id)arg1;
+- (CDStruct_48a7b5a5)getVCStatisticsWithType:(int)arg1 time:(double)arg2;
 - (id)init;
-- (void)recordRemoteEstimatedBandwidthForLargeFrameInfo:(CDStruct_5cb394a5 *)arg1;
+- (id)initForSimulation:(BOOL)arg1;
+- (void)processVCStatistics:(CDStruct_48a7b5a5)arg1;
+- (void)recordRemoteEstimatedBandwidthForLargeFrameInfo:(CDStruct_48a7b5a5 *)arg1;
 - (void)registerStatisticsChangeHandlerWithType:(int)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)setStatistics:(id)arg1;
-- (void)setVCStatistics:(CDStruct_5cb394a5)arg1;
+- (void)setVCStatistics:(CDStruct_48a7b5a5)arg1;
+- (void)start;
+- (void)stop;
+- (void)updateLocalEstimatedBandwidth;
 
 @end
 

@@ -9,6 +9,7 @@
 @interface NSString (ITMLKit)
 + (long long)ik_valueForBooleanAttribute:(id)arg1;
 - (BOOL)ik_attributeBoolValue;
+- (id)ik_sharedInstance;
 - (id)ik_stringByTrimmingControlChars;
 @end
 

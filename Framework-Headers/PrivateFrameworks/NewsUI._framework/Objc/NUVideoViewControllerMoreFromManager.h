@@ -6,30 +6,28 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/SXMoreFromInteractionHandlerFactory-Protocol.h>
-#import <NewsUI/SXMoreFromPublisherActionTitleProviding-Protocol.h>
-#import <NewsUI/SXMoreFromPublisherLogoProviding-Protocol.h>
+#import <NewsUI/SVMoreFromPublisherActionTitleProviding-Protocol.h>
+#import <NewsUI/SVMoreFromPublisherLogoProviding-Protocol.h>
 
-@class NSString, NUVideoViewController;
+@class NSString;
+@protocol NUVideoCallToActionURLProviding;
 
-@interface NUVideoViewControllerMoreFromManager : NSObject <SXMoreFromPublisherActionTitleProviding, SXMoreFromPublisherLogoProviding, SXMoreFromInteractionHandlerFactory>
+@interface NUVideoViewControllerMoreFromManager : NSObject <SVMoreFromPublisherActionTitleProviding, SVMoreFromPublisherLogoProviding>
 {
-    NUVideoViewController *_videoViewController;
+    id<NUVideoCallToActionURLProviding> _callToActionURLProvider;
 }
 
+@property (readonly, nonatomic) id<NUVideoCallToActionURLProviding> callToActionURLProvider; // @synthesize callToActionURLProvider=_callToActionURLProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, weak, nonatomic) NUVideoViewController *videoViewController; // @synthesize videoViewController=_videoViewController;
 
 - (void).cxx_destruct;
 - (id)_callToActionTitleForVideoItem:(id)arg1;
-- (id)_callToActionURLForVideoItem:(id)arg1;
 - (id)actionTitleForVideo:(id)arg1;
-- (id)createInteractionHandlerForVideo:(id)arg1;
 - (id)init;
-- (id)initWithVideoViewController:(id)arg1;
+- (id)initWithCallToActionURLProvider:(id)arg1;
 - (CDUnknownBlockType)moreFromLogoForVideo:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 
 @end

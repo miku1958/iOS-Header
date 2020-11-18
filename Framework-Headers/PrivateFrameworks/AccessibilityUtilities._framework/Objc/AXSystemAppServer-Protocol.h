@@ -25,6 +25,7 @@
 - (BOOL)isSiriTalkingOrListening;
 - (BOOL)isSiriVisible;
 - (BOOL)isSoftwareUpdateUIVisible;
+- (BOOL)isSystemSleeping;
 - (BOOL)openSiri;
 - (int)pid;
 - (void)pid:(void (^)(int))arg1;
@@ -33,5 +34,6 @@
 
 @optional
 - (BOOL)isPasscodeLockVisible;
+- (BOOL)isScreenshotWindowVisible;
 @end
 

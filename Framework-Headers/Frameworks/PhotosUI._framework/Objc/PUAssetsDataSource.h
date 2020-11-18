@@ -14,6 +14,7 @@
 
 @property (readonly, nonatomic) BOOL containsMultipleAssets;
 @property (readonly, nonatomic) NSIndexPath *firstItemIndexPath;
+@property (readonly, nonatomic) NSIndexPath *lastItemIndexPath;
 
 + (id)emptyDataSource;
 - (id)assetAtIndexPath:(id)arg1;

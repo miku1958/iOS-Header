@@ -6,6 +6,7 @@
 
 #import <Foundation/NSBlock.h>
 
+__attribute__((visibility("hidden")))
 @interface __NSStackBlock : NSBlock
 {
 }

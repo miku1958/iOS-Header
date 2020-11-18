@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UINavigationControllerDelegate-Protocol.h>
-#import <UIKit/UIPrinterBrowserOwner-Protocol.h>
+#import <UIKitCore/UINavigationControllerDelegate-Protocol.h>
+#import <UIKitCore/UIPrinterBrowserOwner-Protocol.h>
 
 @class NSString, PKPrinter, UINavigationController, UIPopoverController, UIPrinterBrowserViewController, UIPrinterPickerController, UIWindow;
 

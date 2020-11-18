@@ -25,6 +25,8 @@
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
 
++ (long long)_currentOverridePolicyForType:(long long)arg1;
++ (void)_setCurrentOverridePolicy:(long long)arg1 forType:(long long)arg2;
 + (void)_setWatchPrefersSalientToneAndVibration:(BOOL)arg1;
 + (BOOL)_stopAllAlerts;
 + (BOOL)_watchPrefersSalientToneAndVibration;

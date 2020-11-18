@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoPassKit/NPKPaymentWebServiceTargetDevice.h>
+#import <objc/NSObject.h>
 
 #import <NanoPassKit/IDSServiceDelegate-Protocol.h>
 #import <NanoPassKit/PKPaymentWebServiceArchiver-Protocol.h>
 #import <NanoPassKit/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
-@class IDSService, NPKCompanionAgentConnection, NRActiveDeviceAssertion, NSMutableDictionary, NSObject, NSString;
+@class IDSService, NPKCompanionAgentConnection, NRActiveDeviceAssertion, NSMutableDictionary, NSString;
 @protocol NPKPaymentWebServiceCompanionTargetDeviceDelegate, OS_dispatch_queue;
 
-@interface NPKPaymentWebServiceCompanionTargetDevice : NPKPaymentWebServiceTargetDevice <IDSServiceDelegate, PKPaymentWebServiceTargetDeviceProtocol, PKPaymentWebServiceArchiver>
+@interface NPKPaymentWebServiceCompanionTargetDevice : NSObject <IDSServiceDelegate, PKPaymentWebServiceTargetDeviceProtocol, PKPaymentWebServiceArchiver>
 {
     id<NPKPaymentWebServiceCompanionTargetDeviceDelegate> _delegate;
     unsigned long long _context;
@@ -38,11 +38,10 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *responseQueue; // @synthesize responseQueue=_responseQueue;
 @property (readonly) Class superclass;
 
++ (id)bridgedClientInfoHTTPHeader;
 - (void).cxx_destruct;
 - (BOOL)_deviceIsDaytonaOrLater;
 - (BOOL)_deviceIsFortuneOrLater;
-- (BOOL)_deviceSupportAccessExpressMode;
-- (BOOL)_deviceSupportExpressModeTypeAGeneric;
 - (void)_getPairingInfoAndSetAuthRandomIfNotPaired:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2;
 - (id)_sendProtobuf:(id)arg1 responseExpected:(BOOL)arg2 extraOptions:(id)arg3;
@@ -50,7 +49,7 @@
 - (void)_setNewAuthRandomIfNecessaryReturningPairingState:(CDUnknownBlockType)arg1;
 - (void)_setNewAuthRandomReturningPairingState:(CDUnknownBlockType)arg1;
 - (void)_setOrResetCleanupTimerForRequest:(id)arg1;
-- (BOOL)_shouldAllowSetExpressWithPassInformation:(id)arg1;
+- (id)_supportedRegionsForWebService:(id)arg1;
 - (void)archiveBackgroundContext:(id)arg1;
 - (void)archiveContext:(id)arg1;
 - (id)bridgedClientInfo;
@@ -60,6 +59,7 @@
 - (void)checkTLKsMissingResponse:(id)arg1;
 - (void)checkTLKsMissingWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)claimSecureElementForCurrentUser;
+- (void)claimSecureElementForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cloudStoreStatusResponse:(id)arg1;
 - (void)cloudStoreStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)configurationDataResponse:(id)arg1;
@@ -75,9 +75,11 @@
 - (void)enableServiceModeResponse:(id)arg1;
 - (BOOL)felicaSecureElementIsAvailable;
 - (void)getPairingInfoResponse:(id)arg1;
+- (void)handleBalanceChange:(id)arg1;
 - (void)handleCompanionMigrationResponse:(id)arg1;
 - (void)handleCompanionMigrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleCompanionPeerPaymentRegistration;
+- (void)handleCompanioniCloudSignout;
 - (void)handleDeletePaymentTransactionWithIdentifier:(id)arg1 passUniqueIdentifier:(id)arg2;
 - (void)handlePaymentTransactions:(id)arg1;
 - (void)handlePendingRemovalOfPassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -140,6 +142,10 @@
 - (void)queueTSMConnectionResponse:(id)arg1;
 - (void)registrationDataResponse:(id)arg1;
 - (void)removeAIDsFromSecureElement:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)removeExpressPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeExpressPassWithUniqueIdentifierResponse:(id)arg1;
+- (void)removeExpressPassesWithCardType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeExpressPassesWithCardTypeResponse:(id)arg1;
 - (void)resetApplePayManateeViewResponse:(id)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)retrieveTransactionsForPassWithUniqueID:(id)arg1;
@@ -162,9 +168,11 @@
 - (void)signDataResponse:(id)arg1;
 - (BOOL)supportsAutomaticPassPresentation;
 - (BOOL)supportsCredentialType:(long long)arg1;
-- (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
+- (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (id)trustedDeviceEnrollmentInfoForWebService:(id)arg1;
 - (void)updatePaymentPass:(id)arg1;
+- (void)updatePeerPaymentAccountResponse:(id)arg1;
+- (void)updatePeerPaymentAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updatePushToken:(id)arg1;
 
 @end

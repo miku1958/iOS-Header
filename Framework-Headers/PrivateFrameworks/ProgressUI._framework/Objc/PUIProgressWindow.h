@@ -15,6 +15,7 @@
     BOOL _weCreatedTheContext;
     CAContext *_context;
     int _deviceClass;
+    int _screenClass;
     struct CGSize _displaySize;
     struct CGSize _framebufferSize;
     struct CGSize _layerPositioningSize;

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CorePDF/CPDisposable-Protocol.h>
 
 @class CPLayoutArea, CPList, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface CPListMaker : NSObject <CPDisposable>
 {
     CPLayoutArea *area;

@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSString *customIdentifier; // @dynamic customIdentifier;
 @property (copy, nonatomic) NSString *deviceIdentifier; // @dynamic deviceIdentifier;
 @property (copy, nonatomic) NSDate *endDate; // @dynamic endDate;
 @property (copy, nonatomic) NSString *identifier; // @dynamic identifier;

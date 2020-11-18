@@ -6,7 +6,10 @@
 
 #import <objc/NSObject.h>
 
-@interface MSVPair : NSObject
+#import <MediaServices/NSCopying-Protocol.h>
+#import <MediaServices/NSSecureCoding-Protocol.h>
+
+@interface MSVPair : NSObject <NSSecureCoding, NSCopying>
 {
     id _first;
     id _second;
@@ -16,8 +19,12 @@
 @property (readonly, nonatomic) id second; // @synthesize second=_second;
 
 + (id)pairWithFirst:(id)arg1 second:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFirst:(id)arg1 second:(id)arg2;
 
 @end

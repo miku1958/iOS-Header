@@ -19,8 +19,7 @@ __attribute__((visibility("hidden")))
     VKMapModel *_map;
     struct CGSize _lastCanvasSize;
     VKCamera *_defaultTrackingCamera;
-    float _lastValidCanvasSizeZoomLevel;
-    BOOL _hasLastValidCanvasSizeZoomLevel;
+    optional_44235073 _lastValidCanvasSizeZoomLevel;
     VKTimedAnimation *_horizontalOffsetAnimation;
     double _canonicalSkyHeight;
     struct shared_ptr<md::AnchorContext> _anchorContext;
@@ -59,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_setStyleTransitionProgress:(double)arg1 targetStyle:(struct DisplayStyle)arg2 step:(long long)arg3;
 - (double)_styleTransitionProgress;
 - (void)_updateViewTransform;
+- (optional_44235073)_zoomLevelForCanvasSize:(struct CGSize)arg1;
 - (void)addExternalAnchor:(id)arg1;
 - (void)addOverlay:(id)arg1;
 - (void)addPersistentOverlay:(id)arg1;
@@ -179,6 +179,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsMapDisplayStyle:(struct DisplayStyle)arg1;
 - (unsigned char)targetDisplay;
 - (long long)tileSize;
+- (id)tileStatistics;
 - (void)transferStateFromCanvas:(id)arg1;
 - (id)transitLineMarkersForSelectionAtPoint:(struct CGPoint)arg1;
 - (id)transitLineMarkersInCurrentViewport;

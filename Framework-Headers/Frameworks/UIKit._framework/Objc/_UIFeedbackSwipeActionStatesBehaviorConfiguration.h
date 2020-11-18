@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatesFeedbackGeneratorSwipeActionConfiguration.h>
+#import <UIKitCore/_UIStatesFeedbackGeneratorSwipeActionConfiguration.h>
 
 @interface _UIFeedbackSwipeActionStatesBehaviorConfiguration : _UIStatesFeedbackGeneratorSwipeActionConfiguration
 {

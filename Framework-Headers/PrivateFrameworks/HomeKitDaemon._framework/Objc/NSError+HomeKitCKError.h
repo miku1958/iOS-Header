@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (HomeKitCKError)
+- (id)actualCKErrorFromCKErrorPartialFailure:(id)arg1;
 - (id)conciseCKError;
 - (id)convertToCKError;
 - (id)hmErrorFromCKError;

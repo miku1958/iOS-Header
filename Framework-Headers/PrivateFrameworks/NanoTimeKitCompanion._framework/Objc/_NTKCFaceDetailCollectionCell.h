@@ -13,18 +13,18 @@
     UIImageView *_imageView;
     CAShapeLayer *_outlineView;
     _NTKCFaceDetailCollectionCellLabel *_label;
-    BOOL _circular;
     BOOL _active;
     double _outlineOutset;
     UIImage *_image;
     NSString *_text;
+    long long _style;
     struct CGRect _swatchFrame;
 }
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
-@property (nonatomic) BOOL circular; // @synthesize circular=_circular;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (nonatomic) double outlineOutset; // @synthesize outlineOutset=_outlineOutset;
+@property (nonatomic) long long style; // @synthesize style=_style;
 @property (nonatomic) struct CGRect swatchFrame; // @synthesize swatchFrame=_swatchFrame;
 @property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 

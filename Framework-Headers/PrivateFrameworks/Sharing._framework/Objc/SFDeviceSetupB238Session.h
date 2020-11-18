@@ -111,6 +111,8 @@
     int _finishState;
     unsigned long long _finishStartTicks;
     double _finishSecs;
+    double _iTunesWaitSecs;
+    double _mediaSystemWaitSecs;
     double _totalSecs;
     BOOL _prefForceSiriGreeting;
     BOOL _liveOn;

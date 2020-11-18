@@ -25,7 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)applyElementAttributeCacheScheme:(int)arg1;
++ (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
 + (void)initialize;
 + (struct __AXUIElement *)systemWideAXUIElement;
 + (id)uiApplicationAtCoordinate:(struct CGPoint)arg1;
@@ -40,7 +40,7 @@
 - (id)_attributedValueForRange:(struct _NSRange)arg1;
 - (void *)_cachedValueForAttribute:(long long)arg1;
 - (void)_createCache:(BOOL)arg1;
-- (id)_elementsWithParameter:(long long)arg1 andCount:(unsigned long long)arg2;
+- (id)_elementsWithParameter:(long long)arg1 count:(unsigned long long)arg2 prefetchAttributes:(BOOL)arg3;
 - (void)_invalidate;
 - (long long)_lineEndPosition;
 - (struct _NSRange)_lineRangeForPosition:(unsigned long long)arg1;
@@ -66,6 +66,7 @@
 - (void *)modifyStaticCacheValue:(void *)arg1;
 - (struct _NSRange)nextCursorRangeInDirection:(unsigned long long)arg1 unit:(unsigned long long)arg2 outputRange:(struct _NSRange *)arg3;
 - (struct _NSRange)nextCursorRangeInDirection:(unsigned long long)arg1 unit:(unsigned long long)arg2 outputRange:(struct _NSRange *)arg3 currentCursorRange:(struct _NSRange)arg4;
+- (id)nextElementsIncludingPrefetchedAttributesWithCount:(unsigned long long)arg1;
 - (id)nextElementsWithCount:(unsigned long long)arg1;
 - (id)numberWithAXAttribute:(long long)arg1;
 - (id)objectWithAXAttribute:(long long)arg1;

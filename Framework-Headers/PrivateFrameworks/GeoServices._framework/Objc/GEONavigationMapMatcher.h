@@ -10,17 +10,20 @@
 
 @interface GEONavigationMapMatcher : NSObject
 {
-    GEONavigationMatchResult *_previousMatchResult;
+    BOOL _isSimulation;
     GEOComposedRoute *_route;
+    GEONavigationMatchResult *_previousMatchResult;
     GEORouteMatcher *_routeMatcher;
     GEORoadMatcher *_roadMatcher;
     GEOLocationShifter *_locationShifter;
-    BOOL _isSimulation;
 }
 
 @property (nonatomic) BOOL isSimulation; // @synthesize isSimulation=_isSimulation;
+@property (strong, nonatomic) GEOLocationShifter *locationShifter; // @synthesize locationShifter=_locationShifter;
 @property (strong, nonatomic) GEONavigationMatchResult *previousMatchResult; // @synthesize previousMatchResult=_previousMatchResult;
+@property (strong, nonatomic) GEORoadMatcher *roadMatcher; // @synthesize roadMatcher=_roadMatcher;
 @property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
+@property (strong, nonatomic) GEORouteMatcher *routeMatcher; // @synthesize routeMatcher=_routeMatcher;
 
 - (void).cxx_destruct;
 - (id)_routeMatcherForRoute:(id)arg1;

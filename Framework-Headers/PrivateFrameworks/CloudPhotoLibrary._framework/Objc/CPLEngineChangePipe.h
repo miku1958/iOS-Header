@@ -14,25 +14,29 @@
 {
 }
 
+@property (readonly, nonatomic) unsigned long long countOfQueuedBatches;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isLocked) BOOL locked;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
 @property (readonly) Class superclass;
 
 - (id)allChangeBatches;
 - (BOOL)appendChangeBatch:(id)arg1 error:(id *)arg2;
 - (BOOL)compactChangeBatchesWithError:(id *)arg1;
-- (unsigned long long)countOfQueuedBatches;
 - (BOOL)deleteAllChangeBatchesWithError:(id *)arg1;
+- (BOOL)deleteAllChangesWithScopeFilter:(id)arg1 error:(id *)arg2;
+- (BOOL)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
 - (BOOL)hasQueuedBatches;
-- (BOOL)hasSomeChangeWithIdentifier:(id)arg1;
-- (id)initWithEngineStore:(id)arg1 name:(id)arg2;
+- (BOOL)hasSomeChangeInScopesWithIdentifiers:(id)arg1;
+- (BOOL)hasSomeChangeWithScopeFilter:(id)arg1;
+- (BOOL)hasSomeChangeWithScopedIdentifier:(id)arg1;
 - (id)nextBatch;
 - (id)popAllChangeBatchesWithError:(id *)arg1;
 - (BOOL)popChangeBatch:(id *)arg1 error:(id *)arg2;
 - (BOOL)popNextBatchWithError:(id *)arg1;
+- (unsigned long long)scopeType;
 
 @end
 

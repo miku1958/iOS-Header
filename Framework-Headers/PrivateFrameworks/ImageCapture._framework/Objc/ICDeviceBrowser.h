@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 @protocol ICDeviceBrowserDelegate;
@@ -19,7 +19,6 @@
 @property (readonly) NSArray *devices;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (id)internalDevices;
 - (int)start;

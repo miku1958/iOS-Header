@@ -4,24 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
+#import <Vision/VNRequestRevisionProviding-Protocol.h>
 
 @class NSArray, NSDictionary;
 
-@interface VNFaceRegionMap : NSObject <NSSecureCoding, NSCopying>
+@interface VNFaceRegionMap : NSObject <NSSecureCoding, NSCopying, VNRequestRevisionProviding>
 {
-    struct vImage_Buffer mRegionMap;
-    struct CGRect mUserBBox;
-    struct _Geometry2D_rect2D_ mInternalAlignedBBox;
-    BOOL mDeallocateBuffer;
-    NSDictionary *mPixelValueToRegionLabelMap;
+    unsigned long long _requestRevision;
+    struct vImage_Buffer _regionMap;
+    struct CGRect _userBBox;
+    struct _Geometry2D_rect2D_ _internalAlignedBBox;
+    BOOL _deallocateBuffer;
+    NSDictionary *_pixelValueToRegionLabelMap;
     NSArray *_regionLabels;
 }
 
 @property (copy) NSArray *regionLabels; // @synthesize regionLabels=_regionLabels;
+@property (readonly, nonatomic) unsigned long long requestRevision;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -29,12 +32,11 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)getRegionLabels;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1 regionMap:(struct vImage_Buffer *)arg2 deallocateBuffer:(BOOL)arg3 userBBox:(struct CGRect)arg4 alignedBBox:(struct _Geometry2D_rect2D_)arg5 valueToLabelMap:(id)arg6;
 - (id)regionNameAtImageCoordinate:(struct CGPoint)arg1 imageSize:(struct CGSize)arg2;
 - (id)regionNameAtNormalizedAlignedFaceCoordinate:(struct CGPoint)arg1;
 - (id)regionNameAtNormalizedFaceCoordinate:(struct CGPoint)arg1;
-- (void)setRegionMap:(struct vImage_Buffer *)arg1 deallocateBuffer:(BOOL)arg2 userBBox:(struct CGRect)arg3 alignedBBox:(struct _Geometry2D_rect2D_)arg4 valueToLabelMap:(id)arg5;
 
 @end
 

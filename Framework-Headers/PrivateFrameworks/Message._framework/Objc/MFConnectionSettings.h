@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Message/NSCopying-Protocol.h>
 
@@ -24,6 +24,7 @@
     BOOL _allowsTrustPrompt;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_accountIdentifier;
+    NSString *_networkAccountIdentifier;
 }
 
 @property (copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
@@ -31,6 +32,7 @@
 @property (copy, nonatomic) NSString *certUIService; // @synthesize certUIService=_certUIService;
 @property (copy, nonatomic) NSArray *clientCertificates; // @synthesize clientCertificates=_clientCertificates;
 @property (copy, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
+@property (copy, nonatomic) NSString *networkAccountIdentifier; // @synthesize networkAccountIdentifier=_networkAccountIdentifier;
 @property (nonatomic) unsigned int portNumber; // @synthesize portNumber=_portNumber;
 @property (copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;

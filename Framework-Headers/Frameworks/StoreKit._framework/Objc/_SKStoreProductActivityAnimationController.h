@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <StoreKit/UIViewControllerAnimatedTransitioning-Protocol.h>
 
@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)animateTransition:(id)arg1;
 - (void)endDelayingAnimation;
 - (double)transitionDuration:(id)arg1;

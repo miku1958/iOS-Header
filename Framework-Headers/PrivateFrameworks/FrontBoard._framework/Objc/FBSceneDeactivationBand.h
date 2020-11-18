@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
@@ -24,9 +24,9 @@
 @property (readonly) Class superclass;
 
 + (id)bandWithSceneLevel:(double)arg1;
+- (void).cxx_destruct;
 - (void)addAssertion:(id)arg1;
 - (unsigned long long)deactivationReasonsForScene:(id)arg1 withSettings:(id)arg2;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)initWithSceneLevel:(double)arg1;

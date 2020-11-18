@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <UIKitCore/NSObject-Protocol.h>
+
 @class UIBarButtonItem, UIColor, UIFontDescriptor, UIImage;
 
-@protocol _UIButtonBarAppearanceDelegate
+@protocol _UIButtonBarAppearanceDelegate <NSObject>
 
 @property (readonly, nonatomic) id appearanceStorage;
 @property (readonly, nonatomic) double backButtonMargin;

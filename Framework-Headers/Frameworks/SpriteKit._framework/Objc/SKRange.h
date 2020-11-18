@@ -6,10 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
-@interface SKRange : NSObject <NSCoding, NSCopying>
+@interface SKRange : NSObject <NSSecureCoding, NSCopying>
 {
     double _lowerLimit;
     double _upperLimit;
@@ -24,12 +24,14 @@
 + (id)rangeWithNoLimits;
 + (id)rangeWithUpperLimit:(double)arg1;
 + (id)rangeWithValue:(double)arg1 variance:(double)arg2;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLowerLimit:(double)arg1 upperLimit:(double)arg2;
+- (BOOL)isEqualToRange:(id)arg1;
 
 @end
 

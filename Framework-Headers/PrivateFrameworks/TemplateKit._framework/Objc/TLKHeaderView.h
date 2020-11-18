@@ -30,33 +30,30 @@
     TLKRoundedCornerLabel *_roundedCornerLabel;
 }
 
-@property long long axis; // @synthesize axis=_axis;
+@property (nonatomic) long long axis; // @synthesize axis=_axis;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) TLKImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) TLKImage *image; // @synthesize image=_image;
 @property (strong) TLKImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong) TLKStackView *innerStackView; // @synthesize innerStackView=_innerStackView;
 @property (strong) TLKStackView *outerStackView; // @synthesize outerStackView=_outerStackView;
-@property (strong) NSString *roundedBorderText; // @synthesize roundedBorderText=_roundedBorderText;
+@property (strong, nonatomic) NSString *roundedBorderText; // @synthesize roundedBorderText=_roundedBorderText;
 @property (strong) TLKRoundedCornerLabel *roundedCornerLabel; // @synthesize roundedCornerLabel=_roundedCornerLabel;
-@property (strong) TLKMultilineText *subtitle; // @synthesize subtitle=_subtitle;
-@property (strong) TLKImage *subtitleImage; // @synthesize subtitleImage=_subtitleImage;
+@property (strong, nonatomic) TLKMultilineText *subtitle; // @synthesize subtitle=_subtitle;
+@property (strong, nonatomic) TLKImage *subtitleImage; // @synthesize subtitleImage=_subtitleImage;
 @property (strong) TLKImageView *subtitleImageView; // @synthesize subtitleImageView=_subtitleImageView;
 @property (strong) TLKVibrantLabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (strong) TLKStackView *subtitleStackView; // @synthesize subtitleStackView=_subtitleStackView;
 @property (readonly) Class superclass;
-@property (strong) TLKMultilineText *title; // @synthesize title=_title;
+@property (strong, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
 @property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (strong) TLKMultilineText *trailingText; // @synthesize trailingText=_trailingText;
+@property (strong, nonatomic) TLKMultilineText *trailingText; // @synthesize trailingText=_trailingText;
 @property (strong) UILabel *trailingTextLabel; // @synthesize trailingTextLabel=_trailingTextLabel;
 
 - (void).cxx_destruct;
-- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
-- (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (id)hasImage;
 - (id)init;
-- (id)observableProperties;
 - (void)observedPropertiesChanged;
 - (id)roundedCornerLabelText;
 - (void)styleDidChange:(unsigned long long)arg1;

@@ -6,17 +6,36 @@
 
 #import <QuickLook/QLUbiquitousItemFetcher.h>
 
-@class FPItem, QLURLHandler;
+#import <QuickLook/FPItemCollectionDelegate-Protocol.h>
+
+@class FPItem, FPItemCollection, NSString, QLURLHandler;
 
 __attribute__((visibility("hidden")))
-@interface QLFPItemFetcher : QLUbiquitousItemFetcher
+@interface QLFPItemFetcher : QLUbiquitousItemFetcher <FPItemCollectionDelegate>
 {
     FPItem *_fpItem;
     QLURLHandler *_fetchedURLHandler;
+    FPItemCollection *_itemCollection;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_registerItemCollectionIfNeeded;
+- (void)_unregisterItemCollectionIfNeeded;
+- (void)_urlHandler:(CDUnknownBlockType)arg1;
+- (void)collection:(id)arg1 didDeleteItemsAtIndexPaths:(id)arg2;
+- (void)collection:(id)arg1 didInsertItemsAtIndexPaths:(id)arg2;
+- (void)collection:(id)arg1 didMoveItemsFromIndexPaths:(id)arg2 toIndexPaths:(id)arg3;
+- (void)collection:(id)arg1 didPerformBatchUpdateWithReplayBlock:(CDUnknownBlockType)arg2;
+- (void)collection:(id)arg1 didUpdateItemsAtIndexPaths:(id)arg2 changes:(id)arg3;
+- (void)collection:(id)arg1 didUpdateObservedItem:(id)arg2;
+- (void)dataForCollectionShouldBeReloaded:(id)arg1;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchContentWithAllowedOutputClasses:(id)arg1 inQueue:(id)arg2 updateBlock:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)fileURL;
@@ -24,6 +43,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithFPItem:(id)arg1 shouldZipPackageIfNeeded:(BOOL)arg2;
 - (BOOL)isLongFetchOperation;
 - (id)itemSize;
+- (void)prepareShareableItem:(CDUnknownBlockType)arg1;
+- (id)shareableItem;
 
 @end
 

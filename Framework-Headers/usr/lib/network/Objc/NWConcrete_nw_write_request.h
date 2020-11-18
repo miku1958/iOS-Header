@@ -9,19 +9,21 @@
 #import <network/OS_nw_write_request-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_data, OS_nw_array, OS_nw_outbound_message;
+@protocol OS_dispatch_data, OS_nw_content_context;
 
+__attribute__((visibility("hidden")))
 @interface NWConcrete_nw_write_request : NSObject <OS_nw_write_request>
 {
-    NWConcrete_nw_write_request *nwr_next;
+    NWConcrete_nw_write_request *next;
     CDUnknownBlockType completion;
     NSObject<OS_dispatch_data> *data;
-    NSObject<OS_nw_outbound_message> *message;
-    NSObject<OS_nw_array> *data_array;
-    unsigned long long consumed_data_count;
-    unsigned char variant;
+    NSObject<OS_nw_content_context> *context;
+    unsigned long long consumed_bytes;
+    double relative_priority;
     unsigned int complete:1;
+    unsigned int reported:1;
     unsigned int idempotent:1;
+    unsigned int write_close:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

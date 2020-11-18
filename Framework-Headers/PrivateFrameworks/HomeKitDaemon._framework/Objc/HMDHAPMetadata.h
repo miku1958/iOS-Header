@@ -125,8 +125,10 @@
 - (BOOL)shouldAllowHomeNotificationForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (BOOL)shouldAutoEnableNotificationForCharacteristic:(id)arg1 ofService:(id)arg2;
 - (BOOL)shouldCoalesceCharacteristicNotifications:(id)arg1 forService:(id)arg2;
+- (BOOL)shouldFilterChangeNotificationsForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (BOOL)shouldFilterCharacteristicOfType:(id)arg1;
 - (BOOL)shouldFilterCharacteristicOfTypeFromApp:(id)arg1;
+- (BOOL)shouldFilterEnableNotificationsForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (BOOL)shouldFilterServiceOfType:(id)arg1;
 - (BOOL)shouldFilterServiceOfTypeFromApp:(id)arg1;
 - (BOOL)shouldHomeAppShowTileForServiceType:(id)arg1;

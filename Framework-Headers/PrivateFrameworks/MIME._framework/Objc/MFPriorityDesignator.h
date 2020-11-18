@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface MFPriorityDesignator : NSObject
 {
@@ -12,6 +12,7 @@
 }
 
 + (id)currentDesignator;
++ (id)currentDesignatorIfExists;
 + (void)destroyCurrentDesignator;
 - (int)priority;
 - (void)setPriority:(int)arg1;

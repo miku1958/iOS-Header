@@ -23,7 +23,7 @@
 - (void)parseCodeFromMetadataMachineReadableCodeObject:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)parseCodeFromString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)postNotificationAfterParsingCodeFromImage:(struct CGImage *)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)startQRCodeParsingSessionWithMetadataObject:(id)arg1;
+- (void)startQRCodeParsingSessionWithMetadataObject:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stopQRCodeParsingSession;
 
 @end

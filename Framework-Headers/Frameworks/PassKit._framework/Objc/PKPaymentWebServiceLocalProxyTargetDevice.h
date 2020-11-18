@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentWebServiceArchiver-Protocol.h>
 #import <PassKitCore/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
@@ -32,6 +32,7 @@
 - (void)archiveContext:(id)arg1;
 - (id)bridgedClientInfo;
 - (BOOL)claimSecureElementForCurrentUser;
+- (void)claimSecureElementForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (id)context;
 - (void)contextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;

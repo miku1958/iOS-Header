@@ -31,7 +31,7 @@
 @property (readonly) BOOL hasMoves;
 @property (readonly) NSIndexSet *insertedIndexes;
 @property (readonly) NSArray *insertedObjects;
-@property (readonly, nonatomic) struct __CFArray *movedFromIndexes;
+@property (readonly, nonatomic) const struct __CFArray *movedFromIndexes;
 @property (readonly, nonatomic) NSIndexSet *movedIndexes;
 @property (readonly) NSIndexSet *removedIndexes;
 @property (readonly) NSArray *removedObjects;

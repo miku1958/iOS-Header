@@ -16,6 +16,7 @@
 {
     NSObject<OS_dispatch_queue> *_delegateQueue;
     _Atomic BOOL _inTransaction;
+    _Atomic BOOL _paused;
     NSMutableSet *_pendingMessageIDs;
     BOOL _rejectedNewSessionFromSamePeer;
     BOOL _sessionStarted;

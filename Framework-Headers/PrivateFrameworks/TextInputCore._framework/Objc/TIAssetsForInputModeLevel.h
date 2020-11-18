@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSString;
 
@@ -17,11 +17,11 @@
 
 @property (readonly, nonatomic) NSString *inputModeLevel; // @synthesize inputModeLevel=_inputModeLevel;
 
+- (void).cxx_destruct;
 - (void)addAssertion;
 - (void)addAsset:(id)arg1;
 - (id)assetContentItemsMatching:(id)arg1;
 - (id)assetVersionsForAttributes:(id)arg1;
-- (void)dealloc;
 - (void)gatherStatistics:(id)arg1;
 - (BOOL)hasAssertions;
 - (id)initWithInputModeLevel:(id)arg1;

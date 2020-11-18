@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <CameraUI/PHPhotoLibraryChangeObserver-Protocol.h>
 #import <CameraUI/PLCameraPreviewWellImageChangeObserver-Protocol.h>
 #import <CameraUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 #import <CameraUI/PUOneUpPresentationHelperAssetDisplayDelegate-Protocol.h>
@@ -16,9 +17,9 @@
 #import <CameraUI/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
 @class CAMTransientDataSource, CAMTransientImageManager, NSMutableDictionary, NSMutableSet, NSString, PUOneUpPresentationHelper, PUPhotoKitDataSourceManager, PXPhotosDataSource, UIGestureRecognizer;
-@protocol CAMCameraRollControllerImageWellDelegate, CAMCameraRollControllerPresentationDelegate, CAMCameraRollControllerSessionDelegate, OS_dispatch_source;
+@protocol CAMCameraRollControllerImageWellDelegate, CAMCameraRollControllerPresentationDelegate, CAMCameraRollControllerSessionDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface CAMCameraRollController : NSObject <PXPhotosDataSourceChangeObserver, PUOneUpPresentationHelperDelegate, PUOneUpPresentationHelperAssetDisplayDelegate, PLCameraPreviewWellImageChangeObserver, PUBrowsingViewModelChangeObserver, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, UIInteractionProgressObserver>
+@interface CAMCameraRollController : NSObject <PXPhotosDataSourceChangeObserver, PUOneUpPresentationHelperDelegate, PUOneUpPresentationHelperAssetDisplayDelegate, PLCameraPreviewWellImageChangeObserver, PUBrowsingViewModelChangeObserver, PHPhotoLibraryChangeObserver, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, UIInteractionProgressObserver>
 {
     struct {
         BOOL respondsToSourceAssetRect;
@@ -33,7 +34,6 @@
         BOOL respondsToPreferredPresentationOrientation;
     } _presentationDelegateFlags;
     BOOL _prefersPresentingStatusbarHidden;
-    BOOL _shouldPauseAudioSessionUpdatesForCapture;
     BOOL __allowUpdating;
     BOOL __updateIsScheduled;
     BOOL __transientAssetsAreValid;
@@ -42,6 +42,7 @@
     BOOL __didSetupMechanismsForStoppingCaptureSession;
     BOOL __didStopCaptureSession;
     BOOL __deferringStagedMediaLoading;
+    BOOL __shouldSkipPhotosFrameworkPreheat;
     unsigned short _sessionIdentifier;
     id<CAMCameraRollControllerSessionDelegate> _sessionDelegate;
     id<CAMCameraRollControllerImageWellDelegate> _imageWellDelegate;
@@ -57,6 +58,7 @@
     PXPhotosDataSource *__photosDataSource;
     PXPhotosDataSource *__stagedDataSource;
     NSObject<OS_dispatch_source> *__memoryWarningSource;
+    NSObject<OS_dispatch_queue> *__photosFrameworksPreheatQueue;
 }
 
 @property (readonly, nonatomic) NSMutableDictionary *_HDRUUIDToIgnoredEV0UUIDs; // @synthesize _HDRUUIDToIgnoredEV0UUIDs=__HDRUUIDToIgnoredEV0UUIDs;
@@ -71,7 +73,9 @@
 @property (nonatomic, getter=_isOneUpVisible, setter=_setOneUpVisible:) BOOL _oneUpVisible; // @synthesize _oneUpVisible=__oneUpVisible;
 @property (readonly, nonatomic) PUPhotoKitDataSourceManager *_photoKitDataSourceManager; // @synthesize _photoKitDataSourceManager=__photoKitDataSourceManager;
 @property (strong, nonatomic, setter=_setPhotosDataSource:) PXPhotosDataSource *_photosDataSource; // @synthesize _photosDataSource=__photosDataSource;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_photosFrameworksPreheatQueue; // @synthesize _photosFrameworksPreheatQueue=__photosFrameworksPreheatQueue;
 @property (readonly, nonatomic) NSMutableSet *_sessionAssetUUIDs; // @synthesize _sessionAssetUUIDs=__sessionAssetUUIDs;
+@property (nonatomic, setter=_setShouldSkipPhotosFrameworkPreheat:) BOOL _shouldSkipPhotosFrameworkPreheat; // @synthesize _shouldSkipPhotosFrameworkPreheat=__shouldSkipPhotosFrameworkPreheat;
 @property (strong, nonatomic, setter=_setStagedDataSource:) PXPhotosDataSource *_stagedDataSource; // @synthesize _stagedDataSource=__stagedDataSource;
 @property (nonatomic, setter=_setTransientAssetsAreValid:) BOOL _transientAssetsAreValid; // @synthesize _transientAssetsAreValid=__transientAssetsAreValid;
 @property (readonly, nonatomic) CAMTransientDataSource *_transientDataSource; // @synthesize _transientDataSource=__transientDataSource;
@@ -87,7 +91,6 @@
 @property (strong, nonatomic, setter=_setPreviewGestureRecognizer:) UIGestureRecognizer *previewGestureRecognizer; // @synthesize previewGestureRecognizer=_previewGestureRecognizer;
 @property (weak, nonatomic) id<CAMCameraRollControllerSessionDelegate> sessionDelegate; // @synthesize sessionDelegate=_sessionDelegate;
 @property (nonatomic, setter=_setSessionIdentifier:) unsigned short sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
-@property (nonatomic) BOOL shouldPauseAudioSessionUpdatesForCapture; // @synthesize shouldPauseAudioSessionUpdatesForCapture=_shouldPauseAudioSessionUpdatesForCapture;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -95,7 +98,6 @@
 - (void)_ensureCameraRollViewController;
 - (void)_invalidateTransientAssets;
 - (BOOL)_isPasscodeLocked;
-- (void)_performPreload;
 - (void)_registerBrowsingViewModelChangeObserver;
 - (void)_scheduleStopCaptureSessionAfterDelay:(double)arg1;
 - (void)_scheduleUpdateIfOneUpIsActive;
@@ -140,8 +142,9 @@
 - (BOOL)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
 - (id)persistedThumbnailImage;
+- (void)photoLibraryDidChange:(id)arg1;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
-- (void)ppt_preload;
+- (void)ppt_awaitPreload:(CDUnknownBlockType)arg1;
 - (void)preload;
 - (void)presentCameraRollViewControllerAnimated:(BOOL)arg1 interactive:(BOOL)arg2 deferringStagedMediaLoading:(BOOL)arg3;
 - (void)presentingViewControllerViewDidAppear:(BOOL)arg1;

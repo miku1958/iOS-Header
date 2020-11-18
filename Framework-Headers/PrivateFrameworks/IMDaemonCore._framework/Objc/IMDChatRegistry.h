@@ -4,60 +4,81 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class IMDCKUtilities, IMDCNPersonAliasResolver, IMDChatStore, IMDMessageHistorySyncController, IMDMessageProcessingController, NSArray, NSCache, NSMutableDictionary, NSRecursiveLock;
+#import <IMDaemonCore/TUConversationManagerDelegate-Protocol.h>
 
-@interface IMDChatRegistry : NSObject
+@class IMDCKUtilities, IMDCNPersonAliasResolver, IMDChatStore, IMDMessageHistorySyncController, IMDMessageProcessingController, NSArray, NSCache, NSMutableDictionary, NSRecursiveLock, NSString, TUConversationManager;
+
+@interface IMDChatRegistry : NSObject <TUConversationManagerDelegate>
 {
     NSRecursiveLock *_chatsLock;
+    NSRecursiveLock *_handlesLock;
     NSMutableDictionary *_chats;
     BOOL _isLoading;
     BOOL _doneLoadingAfterMerge;
     NSCache *_allChatsByIDCache;
     NSMutableDictionary *_chatsByGroupID;
     BOOL _hasDumpedLogsForNoExisitingGroup;
+    NSMutableDictionary *_idToHandlesMap;
     IMDCKUtilities *_ckUtilities;
     IMDChatStore *_chatStore;
     IMDMessageProcessingController *_messageProcessingController;
     IMDMessageHistorySyncController *_messageHistorySyncController;
+    NSMutableDictionary *_personCentricGroupedChatsCache;
+    TUConversationManager *_conversationManager;
 }
 
 @property (strong, nonatomic) IMDChatStore *chatStore; // @synthesize chatStore=_chatStore;
 @property (readonly, nonatomic) NSArray *chats;
 @property (strong, nonatomic) IMDCKUtilities *ckUtilities; // @synthesize ckUtilities=_ckUtilities;
 @property (readonly, nonatomic) IMDCNPersonAliasResolver *cnaliasResolver;
+@property (readonly, nonatomic) TUConversationManager *conversationManager; // @synthesize conversationManager=_conversationManager;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasDumpedLogsForNoExisitingGroup; // @synthesize hasDumpedLogsForNoExisitingGroup=_hasDumpedLogsForNoExisitingGroup;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableDictionary *idToHandlesMap; // @synthesize idToHandlesMap=_idToHandlesMap;
 @property (readonly, nonatomic) IMDMessageHistorySyncController *messageHistorySyncController; // @synthesize messageHistorySyncController=_messageHistorySyncController;
 @property (readonly, nonatomic) IMDMessageProcessingController *messageProcessingController; // @synthesize messageProcessingController=_messageProcessingController;
+@property (strong, nonatomic) NSMutableDictionary *personCentricGroupedChatsCache; // @synthesize personCentricGroupedChatsCache=_personCentricGroupedChatsCache;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void)__addChatToGroupIDChatIndex:(id)arg1;
 - (void)__removeChatFromGroupIDChatIndex:(id)arg1;
+- (id)_activeTUConversations;
+- (void)_addTUConversationToMessageStore:(id)arg1 shouldBroadcast:(BOOL)arg2;
 - (id)_aliasToHandlesMap:(id)arg1;
 - (id)_allChatInfo;
 - (id)_allHandles;
 - (BOOL)_chat:(id)arg1 isDuplicateOfChat:(id)arg2;
+- (id)_chatForTUGroupID:(id)arg1;
 - (id)_chatInfoForConnection;
 - (id)_chatInfoForNumberOfChats:(long long)arg1;
 - (id)_chatInfoForSaving;
 - (id)_chatInfoInRange:(struct _NSRange)arg1;
+- (id)_conversationItemForChat:(id)arg1 conversation:(id)arg2;
 - (struct NSArray *)_createGroupChatsArray;
 - (BOOL)_ensureNoExistingGroupForCKRecord:(id)arg1;
 - (id)_existingChatForCKRecord:(id)arg1;
 - (id)_existingChatWithOriginalGroupID:(id)arg1 onService:(id)arg2;
 - (id)_existingiMessageChatForChatIdentifier:(id)arg1 style:(unsigned char)arg2;
-- (id)_findChatWinnerInDuplicateChatArray:(struct NSArray *)arg1;
+- (id)_findChatWinnerInDuplicateChatArray:(struct NSArray *)arg1 fixDisplayName:(BOOL *)arg2;
 - (id)_findLosingChatGUIDsInArrayOfChats:(struct NSArray *)arg1 withWinner:(id)arg2;
 - (void)_forceReloadChats:(BOOL)arg1;
+- (id)_initiatorForConversation:(id)arg1 chat:(id)arg2;
 - (void)_insertChatUsingCKRecord:(id)arg1;
+- (void)_insertCurrentActiveTUConversationsIfNeeded;
 - (BOOL)_isUsingStingRay;
 - (id)_lookupChatUsingID:(id)arg1;
 - (void)_makeAllAttachmentsClassC;
 - (void)_markForksAsSyncedForChat:(id)arg1;
 - (BOOL)_mergeDuplicateGroupsIfNeeded;
+- (id)_messageStore;
 - (void)_populateCNRecordIDForHandles:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_saveChats;
+- (BOOL)_shouldAddNewItemForConversation:(id)arg1;
 - (BOOL)_shouldUpdateSyncStatsForChat:(id)arg1 originalSyncState:(long long)arg2;
 - (BOOL)_shouldUpdateSyncStatsForMessage:(id)arg1 originalSyncState:(long long)arg2;
 - (id)_statsCollector;
@@ -66,17 +87,24 @@
 - (void)_updateSyncStatisticsForMessage:(id)arg1 incrementTotalCount:(unsigned long long)arg2;
 - (void)addChat:(id)arg1;
 - (void)addChat:(id)arg1 firstLoad:(BOOL)arg2;
+- (void)addIMDHandleToRegistry:(id)arg1;
 - (void)addItem:(id)arg1 toChat:(id)arg2;
 - (void)addMessage:(id)arg1 toChat:(id)arg2;
 - (void)addMessage:(id)arg1 toChat:(id)arg2 deferSpotlightIndexing:(BOOL)arg3;
+- (id)allChatsWithIdentifier:(id)arg1 style:(unsigned char)arg2 serviceNames:(id)arg3;
 - (id)allExistingChatsWithIdentifier:(id)arg1 style:(unsigned char)arg2;
-- (id)chatForHandle:(id)arg1 account:(id)arg2 chatIdentifier:(id)arg3 guid:(id)arg4;
-- (id)chatForHandles:(id)arg1 account:(id)arg2 chatIdentifier:(id)arg3 style:(unsigned char)arg4 groupID:(id)arg5 displayName:(id)arg6 guid:(id)arg7;
+- (id)allExistingSupportedServiceChatsWithIdentifier:(id)arg1 style:(unsigned char)arg2;
+- (id)allHandlesForID:(id)arg1;
+- (id)chatForHandle:(id)arg1 account:(id)arg2 chatIdentifier:(id)arg3 guid:(id)arg4 lastAddressedHandle:(id)arg5 lastAddressedSIMID:(id)arg6;
+- (id)chatForHandles:(id)arg1 account:(id)arg2 chatIdentifier:(id)arg3 style:(unsigned char)arg4 groupID:(id)arg5 displayName:(id)arg6 guid:(id)arg7 lastAddressedHandle:(id)arg8 lastAddressedSIMID:(id)arg9;
 - (id)chatForRoom:(id)arg1 account:(id)arg2 chatIdentifier:(id)arg3 guid:(id)arg4;
+- (id)chatIdToLastMessageMapOfOldChats;
 - (id)chatsToUploadToCloudKitWithLimit:(unsigned long long)arg1 isUsingStingRay:(BOOL)arg2;
 - (void)clearPendingDeleteTable;
+- (void)conversationManager:(id)arg1 stateChangedForConversation:(id)arg2;
 - (id)copyRecordIDsAndGUIDsPendingCloudKitDelete;
 - (void)dealloc;
+- (BOOL)doneLoadingAfterMerge;
 - (id)existingChatForID:(id)arg1 account:(id)arg2;
 - (id)existingChatForIDs:(id)arg1 account:(id)arg2 displayName:(id)arg3 groupID:(id)arg4 style:(unsigned char)arg5;
 - (id)existingChatForIDs:(id)arg1 account:(id)arg2 style:(unsigned char)arg3;
@@ -90,23 +118,29 @@
 - (struct NSArray *)findDuplicateUnnamedGroups:(struct NSArray *)arg1;
 - (id)groupChatsBasedOnIdentity;
 - (id)init;
+- (void)invalidatePersonCentricGroupedChatsCache;
 - (BOOL)isBeingSetup;
 - (BOOL)loadChatsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)markChatAsDeferredForSyncingUsingCKRecord:(id)arg1;
 - (void)markDefferredChatsAsNeedingSync;
 - (id)messagesToUploadToCloudKitWithLimit:(unsigned long long)arg1;
-- (id)personCentricGroupedChatsDictionary;
+- (id)personCentricGroupedChatsArrayWithMaximumNumberOfChats:(long long)arg1 skipsLastMessageLoading:(BOOL)arg2;
 - (void)processMessageUsingCKRecord:(id)arg1;
 - (void)processMessageUsingCKRecord:(id)arg1 updatedLastMessageCount:(int)arg2;
 - (void)removeChat:(id)arg1;
+- (void)removeIMDHandleFromRegistry:(id)arg1;
 - (void)removeItem:(id)arg1 fromChat:(id)arg2;
 - (void)removeMessage:(id)arg1 fromChat:(id)arg2;
 - (BOOL)repairDuplicateChatsIfNeeded;
 - (void)resetChatSyncStateForRecord:(id)arg1;
 - (BOOL)saveChats;
+- (void)setUpInitialConversationManager;
+- (void)simulateMessageReceive:(id)arg1 serviceName:(id)arg2 handles:(id)arg3 sender:(id)arg4;
+- (id)sortPersonCentricChatGroups:(id)arg1;
 - (void)startHandleIDPopulation;
 - (void)systemDidLeaveFirstDataProtectionLock;
 - (void)systemDidUnlock;
+- (id)truncateSortedChatsGroupedByPersonCentricID:(id)arg1 toMaximumNumberOfChats:(long long)arg2;
 - (void)updateChatUsingCKRecord:(id)arg1;
 - (void)updateChatWithGUID:(id)arg1 serverChangeToken:(id)arg2 recordID:(id)arg3;
 - (void)updateGroupIDForChat:(id)arg1 newGroupID:(id)arg2;
@@ -114,8 +148,11 @@
 - (void)updateLastMessageForChat:(id)arg1 hintMessage:(id)arg2 historyQuery:(BOOL)arg3;
 - (BOOL)updateProperties:(id)arg1 chat:(id)arg2 style:(unsigned char)arg3;
 - (void)updateStateForChat:(id)arg1 forcePost:(BOOL)arg2;
+- (void)updateStateForChat:(id)arg1 forcePost:(BOOL)arg2 shouldRebuildFailedMessageDate:(BOOL)arg3;
 - (void)updateStateForChat:(id)arg1 fromMessage:(id)arg2 toMessage:(id)arg3 forcePost:(BOOL)arg4 hintMessage:(id)arg5;
+- (void)updateStateForChat:(id)arg1 fromMessage:(id)arg2 toMessage:(id)arg3 forcePost:(BOOL)arg4 hintMessage:(id)arg5 shouldRebuildFailedMessageDate:(BOOL)arg6;
 - (void)updateStateForChat:(id)arg1 hintMessage:(id)arg2;
+- (void)updateStateForChat:(id)arg1 hintMessage:(id)arg2 shouldRebuildFailedMessageDate:(BOOL)arg3;
 - (BOOL)updateUnreadCountForChat:(id)arg1;
 
 @end

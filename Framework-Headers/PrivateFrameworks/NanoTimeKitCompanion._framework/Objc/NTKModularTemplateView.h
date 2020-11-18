@@ -18,6 +18,7 @@
     unsigned long long _highlightMode;
 }
 
+@property (nonatomic) BOOL canUseCurvedText;
 @property (strong, nonatomic) CLKComplicationTemplate *complicationTemplate; // @synthesize complicationTemplate=_complicationTemplate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -38,6 +39,7 @@
 - (BOOL)_useInvertedHighlightForColorScheme:(id)arg1;
 - (void)applyFaceColor:(unsigned long long)arg1 units:(unsigned long long)arg2;
 - (void)applyTransitionFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3 units:(unsigned long long)arg4 brightenedUnits:(unsigned long long)arg5;
+- (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2;
 - (void)setContainsOverrideFaceColor:(id)arg1;
 - (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
 

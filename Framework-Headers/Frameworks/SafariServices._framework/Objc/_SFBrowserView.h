@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @class WKWebView, _SFBrowserToolbar, _SFCrashBanner, _SFLinkPreviewHeader, _SFNavigationBar;
+@protocol SFBrowserViewDelegate;
 
 @interface _SFBrowserView : UIView
 {
@@ -25,6 +26,8 @@
     UIView *_scrollToTopView;
     _SFCrashBanner *_crashBanner;
     double _crashBannerOffset;
+    double _minimalUITopOffset;
+    id<SFBrowserViewDelegate> _delegate;
 }
 
 @property (nonatomic) double bottomBarOffset; // @synthesize bottomBarOffset=_bottomBarOffset;
@@ -32,7 +35,9 @@
 @property (strong, nonatomic) _SFCrashBanner *crashBanner; // @synthesize crashBanner=_crashBanner;
 @property (nonatomic) double crashBannerOffset; // @synthesize crashBannerOffset=_crashBannerOffset;
 @property (readonly, weak, nonatomic) WKWebView *currentWebView; // @synthesize currentWebView=_currentWebView;
+@property (weak, nonatomic) id<SFBrowserViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL hasReceivedTouchEvents; // @synthesize hasReceivedTouchEvents=_hasReceivedTouchEvents;
+@property (nonatomic) double minimalUITopOffset; // @synthesize minimalUITopOffset=_minimalUITopOffset;
 @property (strong, nonatomic) _SFNavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (nonatomic) unsigned long long navigationBarBehavior; // @synthesize navigationBarBehavior=_navigationBarBehavior;
 @property (readonly, nonatomic) double navigationBarOffset;

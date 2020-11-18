@@ -34,13 +34,13 @@
 - (void)fetchPredictedApplicationsAtLocation:(CLLocation *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchPredictedApplicationsWithPredicate:(NSPredicate *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchPredictedConditionsForAction:(RTAction *)arg1 dateInterval:(NSDateInterval *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
-- (void)fetchPredictedContentForBundleWithIdentifier:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchPredictedExitDatesFromLocation:(CLLocation *)arg1 onDate:(NSDate *)arg2 withReply:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchPredictedLocationsOfInterestAssociatedToTitle:(NSString *)arg1 location:(NSString *)arg2 calendarIdentifier:(NSString *)arg3 withReply:(void (^)(NSArray *, NSError *))arg4;
 - (void)fetchPredictedLocationsOfInterestBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 withReply:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchPredictedLocationsOfInterestOnDate:(NSDate *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
 - (void)fetchRoutineEnabledWithReply:(void (^)(BOOL))arg1;
 - (void)fetchRoutineModeFromLocation:(CLLocation *)arg1 withReply:(void (^)(long long, NSError *))arg2;
+- (void)fetchTransitionsBetweenStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)performBluePOIQueryLookingBack:(double)arg1 lookingAhead:(double)arg2 reply:(void (^)(NSArray *, NSArray *, NSArray *, NSError *))arg3;
 - (void)provideFeedbackForAction:(RTAction *)arg1 engagementResult:(long long)arg2 reply:(void (^)(NSError *))arg3;
 - (void)removeLocationOfInterestWithIdentifier:(NSUUID *)arg1 reply:(void (^)(NSError *))arg2;

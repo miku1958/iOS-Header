@@ -51,6 +51,7 @@
 @property (readonly) double unsatisfaction;
 
 + (void)_addOrRemoveConstraints:(id)arg1 activate:(BOOL)arg2;
++ (double)_constraintConstantLimit;
 + (id)_findCommonAncestorOfItem:(id)arg1 andItem:(id)arg2;
 + (void)_setLegacyDecodingOnly:(BOOL)arg1;
 + (void)activateConstraints:(id)arg1;
@@ -65,12 +66,12 @@
 + (id)constraintWithItem:(id)arg1 attribute:(long long)arg2 relatedBy:(long long)arg3 toItem:(id)arg4 attribute:(long long)arg5 multiplier:(double)arg6 symbolicConstant:(id)arg7 theme:(id)arg8;
 + (id)constraintsWithVisualFormat:(id)arg1 options:(unsigned long long)arg2 metrics:(id)arg3 views:(id)arg4;
 + (void)deactivateConstraints:(id)arg1;
-- (BOOL)_addLoweredExpression:(id)arg1 toEngine:(id)arg2 integralizationAdjustment:(double)arg3 lastLoweredConstantWasRounded:(BOOL)arg4 mutuallyExclusiveConstraints:(id *)arg5;
+- (BOOL)_addLoweredExpression:(id)arg1 toEngine:(id)arg2 lastLoweredConstantWasRounded:(BOOL)arg3 mutuallyExclusiveConstraints:(id *)arg4;
 - (void)_addToEngine:(id)arg1;
 - (BOOL)_addToEngine:(id)arg1 integralizationAdjustment:(double)arg2 mutuallyExclusiveConstraints:(id *)arg3;
+- (BOOL)_addToEngine:(id)arg1 mutuallyExclusiveConstraints:(id *)arg2;
 - (id)_allocationDescription;
 - (double)_allowedMagnitudeForIntegralizationAdjustment;
-- (double)_allowedMagnitudeForIntegralizationAdjustmentOfConstraintWithMarkerScaling:(double *)arg1;
 - (id)_ancestorRuleNodes;
 - (void)_clearWeakContainerReference;
 - (id)_constantDescriptionForDTrace;
@@ -86,7 +87,6 @@
 - (id)_descriptionforSymbolicConstant;
 - (BOOL)_effectiveConstant:(double *)arg1 error:(id *)arg2;
 - (struct CGSize)_engineToContainerScalingCoefficients;
-- (void)_ensureValueMaintainsArbitraryLimit:(double *)arg1;
 - (BOOL)_existsInEngine:(id)arg1;
 - (id)_explainUnsatisfaction;
 - (void)_forceSatisfactionMeasuringUnsatisfactionChanges:(id *)arg1 andMutuallyExclusiveConstraints:(id *)arg2;
@@ -131,9 +131,8 @@
 - (id)equationDescription;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (double)nsis_allowedMagnitudeForIntegralizationAdjustmentOfConstraintWithMarker:(id)arg1;
 - (id)nsis_descriptionOfVariable:(id)arg1;
-- (BOOL)nsis_shouldIntegralizeVariable:(id)arg1;
+- (int)nsis_orientationHintForVariable:(id)arg1;
 - (void)nsis_valueOfVariable:(id)arg1 didChangeInEngine:(id)arg2;
 - (BOOL)nsis_valueOfVariableIsUserObservable:(id)arg1;
 - (double)priorityForVariable:(id)arg1;

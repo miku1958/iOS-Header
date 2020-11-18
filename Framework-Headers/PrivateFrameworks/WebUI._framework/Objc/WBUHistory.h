@@ -8,7 +8,10 @@
 
 @interface WBUHistory : WBSHistory
 {
+    BOOL _shouldScheduleMaintenance;
 }
+
+@property (nonatomic) BOOL shouldScheduleMaintenance; // @synthesize shouldScheduleMaintenance=_shouldScheduleMaintenance;
 
 - (void)_addVisitedLinksForItemsIfNeeded:(id)arg1;
 - (id)_createHistoryStore;
@@ -16,6 +19,7 @@
 - (void)_removeAllVisitedLinks;
 - (void)historyStoreDidFailDatabaseIntegrityCheck:(id)arg1;
 - (BOOL)historyStoreShouldCheckDatabaseIntegrity:(id)arg1;
+- (BOOL)historyStoreShouldScheduleMaintenance:(id)arg1;
 - (id)init;
 
 @end

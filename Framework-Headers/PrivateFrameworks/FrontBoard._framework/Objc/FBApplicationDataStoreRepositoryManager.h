@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBApplicationDataStoreRepositoryDelegate-Protocol.h>
 
@@ -27,8 +27,8 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_handleApplicationInstalled:(id)arg1;
-- (void)_handleApplicationsUninstalled:(id)arg1;
 - (id)_initWithDataStore:(id)arg1 lsWorkspace:(id)arg2;
 - (void)_performAfterDeferredWork:(CDUnknownBlockType)arg1;
 - (id)_safeObjectForKey:(id)arg1 forApplication:(id)arg2 ofType:(Class)arg3;

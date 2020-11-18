@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/LSPlugInKitProxy.h>
+#import <CoreServices/LSPlugInKitProxy.h>
 
 @interface LSPlugInKitProxy (UserNotifications)
 - (id)un_applicationBundleIdentifier;

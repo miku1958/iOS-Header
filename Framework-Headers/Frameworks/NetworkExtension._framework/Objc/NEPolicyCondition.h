@@ -27,20 +27,24 @@
     NWAddressEndpoint *_startAddress;
     NWAddressEndpoint *_endAddress;
     NSString *_customEntitlement;
+    NSString *_agentDomain;
+    NSString *_agentType;
 }
 
 @property (copy) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
+@property (copy) NSString *agentDomain; // @synthesize agentDomain=_agentDomain;
+@property (copy) NSString *agentType; // @synthesize agentType=_agentType;
 @property (copy) NSUUID *applicationUUID; // @synthesize applicationUUID=_applicationUUID;
 @property long long conditionType; // @synthesize conditionType=_conditionType;
-@property (strong) NSString *customEntitlement; // @synthesize customEntitlement=_customEntitlement;
+@property (copy) NSString *customEntitlement; // @synthesize customEntitlement=_customEntitlement;
 @property (copy) NSString *domain; // @synthesize domain=_domain;
-@property (strong) NWAddressEndpoint *endAddress; // @synthesize endAddress=_endAddress;
+@property (copy) NWAddressEndpoint *endAddress; // @synthesize endAddress=_endAddress;
 @property (copy) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;
 @property unsigned short ipProtocol; // @synthesize ipProtocol=_ipProtocol;
 @property (getter=isNegative) BOOL negative; // @synthesize negative=_negative;
 @property int pid; // @synthesize pid=_pid;
 @property unsigned char prefix; // @synthesize prefix=_prefix;
-@property (strong) NWAddressEndpoint *startAddress; // @synthesize startAddress=_startAddress;
+@property (copy) NWAddressEndpoint *startAddress; // @synthesize startAddress=_startAddress;
 @property unsigned int trafficClassEnd; // @synthesize trafficClassEnd=_trafficClassEnd;
 @property unsigned int trafficClassStart; // @synthesize trafficClassStart=_trafficClassStart;
 @property unsigned int uid; // @synthesize uid=_uid;
@@ -58,6 +62,7 @@
 + (id)realApplication:(id)arg1;
 + (id)remoteAddress:(id)arg1 prefix:(unsigned char)arg2;
 + (id)remoteAddressStart:(id)arg1 end:(id)arg2;
++ (id)requiredAgentDomain:(id)arg1 agentType:(id)arg2;
 + (id)scopedInterface:(id)arg1;
 + (id)trafficClassStart:(unsigned int)arg1 end:(unsigned int)arg2;
 + (id)uid:(unsigned int)arg1;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)_flush;
 - (void)_queueDraw:(const struct VKTileKey *)arg1;
 - (void)addOverlay:(id)arg1;
+- (BOOL)allowPreliminaryTiles;
 - (BOOL)canFetchTileForKey:(const struct VKTileKey *)arg1;
 - (BOOL)cancelFetchForKey:(const struct VKTileKey *)arg1;
 - (void)dealloc;

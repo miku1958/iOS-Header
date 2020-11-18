@@ -6,36 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <MobileTimer/MTNotificationResponseDelegate-Protocol.h>
 #import <MobileTimer/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class MTAlarmManager, MTTimerManager, NSString, UNUserNotificationCenter;
+@class MTAlarmStorage, MTMetrics, MTTimerStorage, NSString;
 
-@interface MTUserNotificationActionDispatcher : NSObject <UNUserNotificationCenterDelegate>
+@interface MTUserNotificationActionDispatcher : NSObject <UNUserNotificationCenterDelegate, MTNotificationResponseDelegate>
 {
-    MTAlarmManager *_alarmManager;
-    MTTimerManager *_timerManager;
-    UNUserNotificationCenter *_notificationCenter;
+    MTAlarmStorage *_alarmStorage;
+    MTTimerStorage *_timerStorage;
+    MTMetrics *_metrics;
 }
 
-@property (weak, nonatomic) MTAlarmManager *alarmManager; // @synthesize alarmManager=_alarmManager;
+@property (strong, nonatomic) MTAlarmStorage *alarmStorage; // @synthesize alarmStorage=_alarmStorage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UNUserNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property (strong, nonatomic) MTMetrics *metrics; // @synthesize metrics=_metrics;
 @property (readonly) Class superclass;
-@property (weak, nonatomic) MTTimerManager *timerManager; // @synthesize timerManager=_timerManager;
+@property (strong, nonatomic) MTTimerStorage *timerStorage; // @synthesize timerStorage=_timerStorage;
 
-+ (unsigned long long)_alarmNotificationActionForUserNotificationAction:(id)arg1;
++ (unsigned long long)_alarmNotificationActionForUserNotificationAction:(id)arg1 nonSnoozableNotification:(BOOL)arg2;
 + (unsigned long long)_timerNotificationActionForUserNotificationAction:(id)arg1;
-+ (void)warmUp;
 - (void).cxx_destruct;
 - (void)_handleAlarmNotificationResponse:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleTimerNotificationResponse:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithAlarmManager:(id)arg1;
-- (id)initWithAlarmManager:(id)arg1 timerManager:(id)arg2;
-- (id)initWithTimerManager:(id)arg1;
+- (id)initWithAlarmStorage:(id)arg1 timerStorage:(id)arg2;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)userNotificationCenter:(id)arg1 willPresentNotification:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

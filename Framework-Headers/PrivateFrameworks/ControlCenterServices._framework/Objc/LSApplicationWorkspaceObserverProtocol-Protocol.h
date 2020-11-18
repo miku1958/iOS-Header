@@ -27,6 +27,7 @@
 - (void)applicationsDidUninstall:(NSArray *)arg1;
 - (void)applicationsWillInstall:(NSArray *)arg1;
 - (void)applicationsWillUninstall:(NSArray *)arg1;
+- (void)deviceManagementPolicyDidChange:(NSArray *)arg1;
 - (void)networkUsageChanged:(BOOL)arg1;
 - (BOOL)observeLaunchProhibitedApps;
 - (void)pluginsDidInstall:(NSArray *)arg1;

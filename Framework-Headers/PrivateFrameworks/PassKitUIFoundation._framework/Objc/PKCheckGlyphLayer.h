@@ -7,6 +7,7 @@
 #import <PassKitCore/PKMicaLayer.h>
 
 @class CAGradientLayer, CAShapeLayer, UIColor;
+@protocol PKCheckGlyphLayerDelegate;
 
 @interface PKCheckGlyphLayer : PKMicaLayer
 {
@@ -16,10 +17,12 @@
     struct CATransform3D _uncoveredTransform;
     struct CATransform3D _coveredTransform;
     BOOL _revealed;
-    struct UIColor *_primaryColor;
+    id<PKCheckGlyphLayerDelegate> _checkGlyphDelegate;
+    UIColor *_primaryColor;
 }
 
-@property (copy, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
+@property (weak, nonatomic) id<PKCheckGlyphLayerDelegate> checkGlyphDelegate; // @synthesize checkGlyphDelegate=_checkGlyphDelegate;
+@property (readonly, copy, nonatomic) UIColor *primaryColor; // @synthesize primaryColor=_primaryColor;
 @property (nonatomic) BOOL revealed; // @synthesize revealed=_revealed;
 
 - (void).cxx_destruct;
@@ -29,6 +32,7 @@
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1 package:(id)arg2;
 - (double)setCovered:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setPrimaryColor:(struct UIColor *)arg1;
 - (void)setPrimaryColor:(struct UIColor *)arg1 animated:(BOOL)arg2;
 - (double)setRevealed:(BOOL)arg1 animated:(BOOL)arg2;
 

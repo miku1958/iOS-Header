@@ -15,11 +15,15 @@ __attribute__((visibility("hidden")))
     struct unique_ptr<md::RoadLayer, std::__1::default_delete<md::RoadLayer>> _roadLayer;
     struct unique_ptr<md::RoadLayer, std::__1::default_delete<md::RoadLayer>> _roadTrafficLayer;
     struct unique_ptr<md::PatternedLayer, std::__1::default_delete<md::PatternedLayer>> _patternedRibbonLayer;
+    int _roadStyleSubscription;
+    int _skeletonRoadStyleSubscription;
 }
 
 @property (readonly, nonatomic) struct PatternedLayer *patternedRibbonLayer;
 @property (readonly, nonatomic) struct RoadLayer *roadLayer;
+@property (nonatomic) int roadStyleSubscription; // @synthesize roadStyleSubscription=_roadStyleSubscription;
 @property (readonly, nonatomic) struct RoadLayer *roadTrafficLayer;
+@property (nonatomic) int skeletonRoadStyleSubscription; // @synthesize skeletonRoadStyleSubscription=_skeletonRoadStyleSubscription;
 @property (strong, nonatomic) VKTrafficTile *trafficTile; // @synthesize trafficTile=_trafficTile;
 
 - (id).cxx_construct;
@@ -29,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)buildGglMeshesWithDevice:(Device_9226c869 *)arg1 trafficStream:(const struct TrafficStream *)arg2;
 - (void)dealloc;
 - (id)description;
-- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 styleManager:(shared_ptr_a3c46825)arg3 sharedResources:(id)arg4 contentScale:(double)arg5 device:(Device_9226c869 *)arg6;
+- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 userInfo:(id)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_9226c869 *)arg7;
 - (void)updateViewDependentStateIfNecessaryWithContext:(struct LayoutContext *)arg1;
 
 @end

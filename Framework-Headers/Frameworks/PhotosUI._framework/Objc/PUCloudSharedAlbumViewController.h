@@ -12,6 +12,7 @@
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, PLCloudSharedAlbum, PUPhotoStreamComposeServiceViewController, PUPhotosPickerViewController, PUVideoTrimQueueController, UIBarButtonItem, UISegmentedControl, UIViewController;
+@protocol PUCloudSharedAlbumViewControllerDelegate;
 
 @interface PUCloudSharedAlbumViewController : PUPhotosAlbumViewController <PLAlbumStreamingOptionsViewControllerDelegate, UIPopoverPresentationControllerDelegate, PUVideoTrimQueueControllerDelegate, PUPhotoStreamComposeServiceDelegate>
 {
@@ -20,6 +21,7 @@
     PUPhotoStreamComposeServiceViewController *_composeServiceController;
     BOOL _displayingOptions;
     BOOL __canContributeToCloudSharedAlbum;
+    id<PUCloudSharedAlbumViewControllerDelegate> _delegate;
     UIViewController *__optionsViewController;
     UIViewController *__optionsPopoverRootViewController;
     NSArray *__transitioningOptionsViewControllers;
@@ -41,6 +43,7 @@
 @property (strong, nonatomic, setter=_setTransitioningOptionsViewControllers:) NSArray *_transitioningOptionsViewControllers; // @synthesize _transitioningOptionsViewControllers=__transitioningOptionsViewControllers;
 @property (strong, nonatomic) PLCloudSharedAlbum *album; // @dynamic album;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PUCloudSharedAlbumViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDisplayingOptions, setter=setDisplayingOptions:) BOOL displayingOptions; // @synthesize displayingOptions=_displayingOptions;
 @property (readonly) unsigned long long hash;

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
 
-@interface SKTextureAtlas : NSObject <NSCoding>
+@interface SKTextureAtlas : NSObject <NSSecureCoding>
 {
     NSDictionary *_textureDict;
     NSString *_atlasName;
@@ -32,6 +32,7 @@
 + (id)lookupCachedTextureNamed:(id)arg1;
 + (void)preloadTextureAtlases:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)preloadTextureAtlasesNamed:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_copyImageData;
@@ -43,6 +44,7 @@
 - (id)findTextureNamedFromAtlas:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqualToTextureAtlas:(id)arg1;
 - (void)loadTextures;
 - (void)loadTexturesFromCUIImageAtlas:(id)arg1;
 - (void)parseAtlasPropertyList:(id)arg1 withPath:(id)arg2;

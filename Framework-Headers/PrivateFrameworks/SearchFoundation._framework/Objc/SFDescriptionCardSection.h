@@ -48,6 +48,7 @@
     NSString *_attributionText;
     NSURL *_attributionURL;
     SFImage *_attributionGlyph;
+    NSArray *_richDescriptions;
 }
 
 @property (strong, nonatomic) SFImage *attributionGlyph; // @synthesize attributionGlyph=_attributionGlyph;
@@ -79,6 +80,7 @@
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
 @property (copy, nonatomic) NSString *resultIdentifier;
+@property (copy, nonatomic) NSArray *richDescriptions; // @synthesize richDescriptions=_richDescriptions;
 @property (nonatomic) int separatorStyle;
 @property (copy, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;

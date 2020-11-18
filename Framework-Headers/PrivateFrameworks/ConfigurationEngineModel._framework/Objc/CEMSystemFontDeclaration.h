@@ -12,29 +12,32 @@
 
 @interface CEMSystemFontDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadName;
+    NSString *_payloadFont;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadFont;
-@property (readonly, nonatomic) NSString *payloadName;
+@property (copy, nonatomic) NSString *payloadFont; // @synthesize payloadFont=_payloadFont;
+@property (copy, nonatomic) NSString *payloadName; // @synthesize payloadName=_payloadName;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withFont:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withName:(id)arg2 withFont:(id)arg3;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

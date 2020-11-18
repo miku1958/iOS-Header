@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreBluetooth/CBPairingAgentParentDelegate-Protocol.h>
 #import <CoreBluetooth/CBXpcConnectionDelegate-Protocol.h>
@@ -38,10 +38,13 @@
 - (BOOL)isMsgAllowedWhenOff:(unsigned short)arg1;
 - (id)peerWithInfo:(id)arg1;
 - (BOOL)sendDebugMsg:(unsigned short)arg1 args:(id)arg2;
+- (id)sendDebugSyncMsg:(unsigned short)arg1 args:(id)arg2;
 - (BOOL)sendMsg:(unsigned short)arg1 args:(id)arg2;
+- (BOOL)sendRawCommand:(unsigned short)arg1 data:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)sendSyncMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)setConnectionTargetQueue:(id)arg1;
 - (void)startWithQueue:(id)arg1 options:(id)arg2 sessionType:(int)arg3;
+- (void)triggerBTErrorReport:(long long)arg1;
 - (void)xpcConnectionDidReceiveMsg:(unsigned short)arg1 args:(id)arg2;
 - (void)xpcConnectionDidReset;
 - (void)xpcConnectionIsInvalid;

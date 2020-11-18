@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 - (id)data;
 - (id)initWithData:(id)arg1;
 - (id)newImageBufferWithOptions:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
 
 @end
 

@@ -48,6 +48,7 @@
     int _downloadState;
     int _editingStyleFlags;
     int _episodeNumber;
+    int _episodeType;
     NSString *_genre;
     NSString *_localizedContentRating;
     NSString *_lyricsURL;
@@ -111,6 +112,7 @@
         unsigned int downloadState:1;
         unsigned int editingStyleFlags:1;
         unsigned int episodeNumber:1;
+        unsigned int episodeType:1;
         unsigned int mediaSubType:1;
         unsigned int mediaType:1;
         unsigned int numberOfSections:1;
@@ -169,6 +171,7 @@
 @property (nonatomic) double elapsedTime; // @synthesize elapsedTime=_elapsedTime;
 @property (nonatomic) double elapsedTimeTimestamp; // @synthesize elapsedTimeTimestamp=_elapsedTimeTimestamp;
 @property (nonatomic) int episodeNumber; // @synthesize episodeNumber=_episodeNumber;
+@property (nonatomic) int episodeType; // @synthesize episodeType=_episodeType;
 @property (strong, nonatomic) NSString *genre; // @synthesize genre=_genre;
 @property (readonly, nonatomic) BOOL hasAlbumArtistName;
 @property (readonly, nonatomic) BOOL hasAlbumName;
@@ -198,6 +201,7 @@
 @property (nonatomic) BOOL hasElapsedTime;
 @property (nonatomic) BOOL hasElapsedTimeTimestamp;
 @property (nonatomic) BOOL hasEpisodeNumber;
+@property (nonatomic) BOOL hasEpisodeType;
 @property (readonly, nonatomic) BOOL hasGenre;
 @property (nonatomic) BOOL hasITunesStoreAlbumIdentifier;
 @property (nonatomic) BOOL hasITunesStoreArtistIdentifier;

@@ -42,6 +42,7 @@
 - (void)activeComplicationsWithErrorCompletion:(CDUnknownBlockType)arg1;
 - (void)addObserver:(id)arg1;
 - (void)cancelPendingInstallations;
+- (void)cancelUpdatePendingForCompanionApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchApplicationWithContainingApplicationBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchInfoForApplicationWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchInfoForApplicationWithBundleID:(id)arg1 forPairedDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -75,6 +76,7 @@
 - (void)setAllExistingAppsShouldBeInstalled:(BOOL)arg1 forNewDevice:(id)arg2;
 - (void)setAlwaysInstall:(id)arg1;
 - (void)setAlwaysInstall:(id)arg1 forDevice:(id)arg2;
+- (void)setUpdatePendingForCompanionApp:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateInstallProgressForApplication:(id)arg1 progress:(double)arg2 phase:(unsigned long long)arg3;
 - (void)updatePreferencesForApplicationWithIdentifier:(id)arg1 preferences:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updatePreferencesForApplicationWithIdentifier:(id)arg1 preferences:(id)arg2 forPairedDevice:(id)arg3 completion:(CDUnknownBlockType)arg4;

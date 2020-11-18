@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSPObjectContextDelegate-Protocol.h>
 
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSSet *persistenceWarnings; // @synthesize persistenceWarnings=_persistenceWarnings;
 @property (readonly) Class superclass;
 
++ (id)temporaryObjectContextDelegateWithPackageDataForWrite:(id)arg1 additionalDocumentPropertiesForWrite:(id)arg2;
 - (void).cxx_destruct;
 - (void)addPersistenceWarnings:(id)arg1;
 - (void)context:(id)arg1 canPerformUserActionUsingBlock:(CDUnknownBlockType)arg2;

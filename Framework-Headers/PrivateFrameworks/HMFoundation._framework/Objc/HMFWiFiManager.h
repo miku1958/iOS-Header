@@ -6,11 +6,38 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@interface HMFWiFiManager : HMFObject
+#import <HMFoundation/HMFWiFiManagerDataSourceDelegate-Protocol.h>
+
+@class HMFMACAddress, HMFUnfairLock, NSObject, NSString;
+@protocol HMFWiFiManagerDataSource, OS_dispatch_queue;
+
+@interface HMFWiFiManager : HMFObject <HMFWiFiManagerDataSourceDelegate>
 {
+    HMFUnfairLock *_lock;
+    BOOL _shouldAssertWoW;
+    NSString *_currentNetworkSSID;
+    HMFMACAddress *_MACAddress;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    id<HMFWiFiManagerDataSource> _dataSource;
 }
 
+@property (readonly, copy) HMFMACAddress *MACAddress; // @synthesize MACAddress=_MACAddress;
+@property (copy, nonatomic) NSString *currentNetworkSSID; // @synthesize currentNetworkSSID=_currentNetworkSSID;
+@property (readonly, nonatomic) id<HMFWiFiManagerDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL shouldAssertWoW; // @synthesize shouldAssertWoW=_shouldAssertWoW;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+
 + (id)sharedManager;
+- (void).cxx_destruct;
+- (void)currentNetworkDidChangeForDataSource:(id)arg1;
+- (void)dataSource:(id)arg1 didChangeLinkAvailability:(BOOL)arg2;
+- (void)dataSource:(id)arg1 didChangeWoWState:(BOOL)arg2;
+- (id)init;
+- (id)initWithWorkQueue:(id)arg1 dataSource:(id)arg2;
 - (void)releaseWoWAssertion;
 - (void)takeWoWAssertion;
 

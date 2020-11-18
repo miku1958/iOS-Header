@@ -12,32 +12,38 @@
 
 @interface CEMManagementOrganizationInformationDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadOrganizationName;
+    NSString *_payloadOrganizationAddress;
+    NSString *_payloadOrganizationPhone;
+    NSString *_payloadOrganizationEmail;
+    NSString *_payloadOrganizationMagic;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadOrganizationAddress;
-@property (readonly, nonatomic) NSString *payloadOrganizationEmail;
-@property (readonly, nonatomic) NSString *payloadOrganizationMagic;
-@property (readonly, nonatomic) NSString *payloadOrganizationName;
-@property (readonly, nonatomic) NSString *payloadOrganizationPhone;
+@property (copy, nonatomic) NSString *payloadOrganizationAddress; // @synthesize payloadOrganizationAddress=_payloadOrganizationAddress;
+@property (copy, nonatomic) NSString *payloadOrganizationEmail; // @synthesize payloadOrganizationEmail=_payloadOrganizationEmail;
+@property (copy, nonatomic) NSString *payloadOrganizationMagic; // @synthesize payloadOrganizationMagic=_payloadOrganizationMagic;
+@property (copy, nonatomic) NSString *payloadOrganizationName; // @synthesize payloadOrganizationName=_payloadOrganizationName;
+@property (copy, nonatomic) NSString *payloadOrganizationPhone; // @synthesize payloadOrganizationPhone=_payloadOrganizationPhone;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withOrganizationName:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withOrganizationName:(id)arg2 withOrganizationAddress:(id)arg3 withOrganizationPhone:(id)arg4 withOrganizationEmail:(id)arg5 withOrganizationMagic:(id)arg6;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

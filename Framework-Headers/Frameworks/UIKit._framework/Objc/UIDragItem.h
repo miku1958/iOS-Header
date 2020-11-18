@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSItemProvider, UITargetedDragPreview, UITextRange, _UIDragPreviewProvider, _UIDragSessionImpl, _UIDraggingItem, _UIInternalDraggingItem;
 
@@ -31,7 +31,7 @@
 @property (readonly, nonatomic) struct CGSize _visibleDropItemSize;
 @property (readonly, nonatomic, getter=_duiPreviewProvider) CDUnknownBlockType duiPreviewProvider;
 @property (readonly, nonatomic) CDUnknownBlockType imageComponentsProvider; // @synthesize imageComponentsProvider=_imageComponentsProvider;
-@property (strong, nonatomic, getter=_internalDraggingItem, setter=_setInternalDraggingItem:) _UIInternalDraggingItem *internalDraggingItem; // @synthesize internalDraggingItem=_internalDraggingItem;
+@property (weak, nonatomic, getter=_internalDraggingItem, setter=_setInternalDraggingItem:) _UIInternalDraggingItem *internalDraggingItem; // @synthesize internalDraggingItem=_internalDraggingItem;
 @property (strong, nonatomic) NSItemProvider *itemProvider; // @synthesize itemProvider=_itemProvider;
 @property (strong, nonatomic) id localObject; // @synthesize localObject=_localObject;
 @property (readonly, nonatomic) CDUnknownBlockType preferredImageComponentsProvider; // @synthesize preferredImageComponentsProvider=_preferredImageComponentsProvider;

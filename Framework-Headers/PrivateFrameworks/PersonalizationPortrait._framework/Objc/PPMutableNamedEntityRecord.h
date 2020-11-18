@@ -13,6 +13,7 @@
 }
 
 @property (nonatomic) unsigned long long algorithm; // @dynamic algorithm;
+@property (nonatomic) unsigned char changeType; // @dynamic changeType;
 @property (nonatomic) double decayRate; // @dynamic decayRate;
 @property (strong, nonatomic) PPNamedEntity *entity; // @dynamic entity;
 @property (nonatomic) unsigned long long extractionAssetVersion; // @dynamic extractionAssetVersion;
@@ -20,9 +21,7 @@
 @property (nonatomic) double initialScore; // @dynamic initialScore;
 @property (strong, nonatomic) PPSource *source; // @dynamic source;
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

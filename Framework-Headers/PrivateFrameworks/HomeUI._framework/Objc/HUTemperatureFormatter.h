@@ -4,27 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WeatherFoundation/WFTemperatureFormatter.h>
+#import <Foundation/NSMeasurementFormatter.h>
 
 #import <HomeUI/HFTemperatureFormatter-Protocol.h>
-#import <HomeUI/WFTemperatureUnitObserver-Protocol.h>
+#import <HomeUI/HFTemperatureUnitObserver-Protocol.h>
 
-@class NSString;
+@class NSNumber, NSString;
 
-@interface HUTemperatureFormatter : WFTemperatureFormatter <WFTemperatureUnitObserver, HFTemperatureFormatter>
+@interface HUTemperatureFormatter : NSMeasurementFormatter <HFTemperatureUnitObserver, HFTemperatureFormatter>
 {
+    BOOL _inputIsCelsius;
+    BOOL _outputIsCelsius;
+    NSString *_fallbackTemperatureString;
+    NSNumber *_stepValue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSString *fallbackTemperatureString;
+@property (copy, nonatomic) NSString *fallbackTemperatureString; // @synthesize fallbackTemperatureString=_fallbackTemperatureString;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL inputIsCelsius;
+@property (nonatomic) BOOL inputIsCelsius; // @synthesize inputIsCelsius=_inputIsCelsius;
+@property (nonatomic) unsigned long long maximumFractionDigits;
+@property (nonatomic) unsigned long long minimumFractionDigits;
+@property (nonatomic) BOOL outputIsCelsius; // @synthesize outputIsCelsius=_outputIsCelsius;
+@property (strong, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (void)temperatureUnitObserver:(id)arg1 didChangeTemperatureUnitTo:(int)arg2;
+- (id)stringForObjectValue:(id)arg1;
+- (void)temperatureUnitObserver:(id)arg1 didChangeTemperatureUnit:(BOOL)arg2;
 
 @end
 

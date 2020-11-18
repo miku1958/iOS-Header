@@ -31,7 +31,7 @@
 - (BOOL)handleAuthKitActionAttribute:(id)arg1;
 - (id)initWithRequestConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)processResponse:(id)arg1;
-- (void)signRequest:(id)arg1;
+- (void)signRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)tearDownContext;
 
 @end

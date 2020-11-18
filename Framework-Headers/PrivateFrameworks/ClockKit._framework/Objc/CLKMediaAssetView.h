@@ -8,7 +8,7 @@
 
 #import <ClockKit/CLKVideoPlayerViewDelegate-Protocol.h>
 
-@class AVSynchronizedLayer, CALayer, CLKMediaAsset, CLKVideoPlayerView, NSString, UIImageView;
+@class AVSynchronizedLayer, CALayer, CLKDevice, CLKMediaAsset, CLKVideoPlayerView, NSString, UIImageView;
 @protocol CLKMediaAssetViewDelegate;
 
 @interface CLKMediaAssetView : UIView <CLKVideoPlayerViewDelegate>
@@ -24,12 +24,14 @@
     CALayer *_posterLayer;
     long long _preparedForOperation;
     long long _transitionOperation;
+    CLKDevice *_device;
     id<CLKMediaAssetViewDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CLKMediaAssetViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CLKMediaAsset *mediaAsset; // @synthesize mediaAsset=_mediaAsset;
 @property (readonly) Class superclass;
@@ -48,7 +50,7 @@
 - (void)fadeFromCurtainViewWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fadeToCurtainViewWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)hideCurtainView;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (void)interruptPlayback;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isPlaying;
@@ -61,7 +63,7 @@
 - (void)showCurtainView;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)videoPlayerViewDidBeginPlaying:(id)arg1;
-- (void)videoPlayerViewDidFinishPlayingVideoToEnd:(id)arg1;
+- (void)videoPlayerViewDidBeginPlayingQueuedVideo:(id)arg1;
 - (void)videoPlayerViewDidPauseAfterPlayingVideoToEnd:(id)arg1;
 
 @end

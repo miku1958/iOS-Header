@@ -13,7 +13,6 @@
 
 @interface _SFPBMessageCardSection : PBCodable <_SFPBMessageCardSection, NSSecureCoding>
 {
-    CDStruct_bb96dcf2 _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -32,19 +31,8 @@
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasMessageServiceType;
-@property (readonly, nonatomic) BOOL hasMessageStatus;
-@property (readonly, nonatomic) BOOL hasMessageText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int messageServiceType; // @synthesize messageServiceType=_messageServiceType;

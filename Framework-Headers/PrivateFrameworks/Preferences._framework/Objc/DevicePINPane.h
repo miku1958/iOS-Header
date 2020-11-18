@@ -10,7 +10,7 @@
 #import <Preferences/UIKeyInput-Protocol.h>
 #import <Preferences/UITextInputTraits-Protocol.h>
 
-@class DevicePINKeypadContainerView, NSString, UIKeyboard, UITransitionView, UIView;
+@class DevicePINKeypadContainerView, NSString, UIKeyboard, UITextInputPasswordRules, UITransitionView, UIView;
 @protocol PINEntryView;
 
 @interface DevicePINPane : PSEditingPane <UIKeyInput, UITextInputTraits, PSPINEntryViewDelegate>
@@ -44,6 +44,7 @@
 @property (nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance=_keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
 @property (copy, nonatomic) CDUnknownBlockType passcodeOptionsHandler; // @synthesize passcodeOptionsHandler=_passcodeOptionsHandler;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (strong, nonatomic) UIView<PINEntryView> *pinView; // @synthesize pinView=_pinView;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;

@@ -11,20 +11,23 @@
 @interface VNDetectedObjectObservation : VNObservation
 {
     struct CGRect _boundingBox;
+    NSUUID *_identifier;
 }
 
 @property (nonatomic) struct CGRect boundingBox; // @synthesize boundingBox=_boundingBox;
-@property (copy) NSUUID *identifier;
+@property (copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 
 + (id)observationWithBoundingBox:(struct CGRect)arg1;
++ (id)observationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)excludesBoundingBoxFromCoding;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)setBoundingBoxFromQuadrilateralPointsAtTopLeft:(struct CGPoint)arg1 topRight:(struct CGPoint)arg2 bottomRight:(struct CGPoint)arg3 bottomLeft:(struct CGPoint)arg4;
 

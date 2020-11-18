@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVKeyPathDependencyHost-Protocol.h>
 #import <AVFoundation/AVWeakObservable-Protocol.h>
 
 @class AVKeyPathDependencyManager, AVTwoPartKeyPath, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVKeyPathFlattener : NSObject <AVKeyPathDependencyHost, AVWeakObservable>
 {
     AVKeyPathDependencyManager *_dependencyManager;

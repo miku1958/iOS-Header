@@ -37,6 +37,7 @@
 
 - (void).cxx_destruct;
 - (void)_addDifferentCard;
+- (id)_bodyText;
 - (void)_continuePressed;
 - (void)_displayTermsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_handleNextStep;

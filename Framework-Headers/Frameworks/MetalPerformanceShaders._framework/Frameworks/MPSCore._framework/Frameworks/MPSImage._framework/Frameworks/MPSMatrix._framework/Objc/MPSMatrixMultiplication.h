@@ -16,6 +16,8 @@
     unsigned long long _MPlugin;
     unsigned long long _NPlugin;
     unsigned long long _KPlugin;
+    double _alphaPlugin;
+    double _betaPlugin;
     BOOL _transA;
     BOOL _transB;
     unsigned long long _batchStart;

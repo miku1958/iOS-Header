@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 
@@ -31,8 +31,8 @@
 @property (readonly, nonatomic) TIRollingLog *traceLog; // @synthesize traceLog=_traceLog;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)enumerateHumanReadableTraceEntriesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRecordsWithBlock:(CDUnknownBlockType)arg1;
 - (id)filename;

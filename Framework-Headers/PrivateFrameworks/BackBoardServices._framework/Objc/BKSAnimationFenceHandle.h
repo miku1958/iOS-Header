@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/BSInvalidatable-Protocol.h>
 #import <BackBoardServices/BSXPCCoding-Protocol.h>
@@ -29,12 +29,15 @@
 @property (readonly, nonatomic) unsigned long long fenceName;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) BSMachPortSendRight *trigger; // @synthesize trigger=_preFenceTrigger;
+@property (readonly, nonatomic) BSMachPortSendRight *trigger; // @synthesize trigger=_preFenceTrigger;
 @property (readonly, nonatomic, getter=isUsable) BOOL usable;
 
++ (id)newFenceHandleForContext:(id)arg1;
 + (id)newSystemFenceHandle;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (unsigned int)CAPort;
+- (id)_initWithFence:(id)arg1;
 - (id)_initWithFenceName:(unsigned long long)arg1 fence:(id)arg2 preFence:(id)arg3 preFenceTrigger:(id)arg4 shouldTrace:(BOOL)arg5;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

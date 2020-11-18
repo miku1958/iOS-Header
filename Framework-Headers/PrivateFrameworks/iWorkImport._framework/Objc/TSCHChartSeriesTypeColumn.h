@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)legalChartLabelPositions;
 - (id)supportedValueLabelsAxisCombinations;
 - (BOOL)supportsBarGap;
+- (BOOL)supportsRoundedCorners;
 - (BOOL)supportsSetGap;
 - (BOOL)useInBarGapCalculations;
 - (id)userInterfaceNameForLabelPosition:(id)arg1;

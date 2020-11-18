@@ -8,7 +8,7 @@
 
 #import <UIFoundation/NSLayoutManagerDelegate-Protocol.h>
 
-@class CUICatalog, CUIStyleEffectConfiguration, NSConcreteNotifyingMutableAttributedString, NSLayoutManager, NSString, NSTextContainer;
+@class CUICatalog, CUIStyleEffectConfiguration, NSConcreteNotifyingMutableAttributedString, NSGraphicsContext, NSLayoutManager, NSString, NSTextContainer;
 
 @interface NSStringDrawingTextStorage : NSTextStorage <NSLayoutManagerDelegate>
 {
@@ -22,11 +22,13 @@
         unsigned int _baselineMode:1;
         unsigned int _forceWordWrapping:1;
         unsigned int _usesSimpleTextEffects:1;
-        unsigned int _reserved:24;
+        unsigned int _applicationFrameworkContext:3;
+        unsigned int _reserved:21;
     } _sdflags;
     CUICatalog *_catalog;
     CUIStyleEffectConfiguration *_styleEffects;
     double _defaultTighteningFactor;
+    NSGraphicsContext *_graphicsContext;
 }
 
 @property (strong, nonatomic) CUICatalog *cuiCatalog; // @synthesize cuiCatalog=_catalog;
@@ -34,6 +36,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property double defaultTighteningFactor; // @synthesize defaultTighteningFactor=_defaultTighteningFactor;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSGraphicsContext *graphicsContext; // @synthesize graphicsContext=_graphicsContext;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=_usesSimpleTextEffects, setter=_setUsesSimpleTextEffects:) BOOL usesSimpleTextEffects;
@@ -43,11 +46,13 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)initialize;
 + (id)stringDrawingTextStorage;
+- (long long)_applicationFrameworkContext;
 - (double)_baselineDelta;
 - (BOOL)_baselineMode;
 - (BOOL)_forceWordWrapping;
 - (BOOL)_isDeallocating;
 - (BOOL)_isStringDrawingTextStorage;
+- (void)_setApplicationFrameworkContext:(long long)arg1;
 - (void)_setBaselineDelta:(double)arg1;
 - (void)_setBaselineMode:(BOOL)arg1;
 - (void)_setForceWordWrapping:(BOOL)arg1;

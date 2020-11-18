@@ -8,14 +8,14 @@
 
 #import <HomeKit/_HMCameraStreamControlDelegate-Protocol.h>
 
-@class HMCameraStream, NSObject, NSString, _HMCameraStreamControl;
-@protocol HMCameraStreamControlDelegate, OS_dispatch_queue;
+@class HMCameraStream, HMFUnfairLock, NSString, _HMCameraStreamControl;
+@protocol HMCameraStreamControlDelegate;
 
 @interface HMCameraStreamControl : HMCameraControl <_HMCameraStreamControlDelegate>
 {
+    HMFUnfairLock *_lock;
     id<HMCameraStreamControlDelegate> _delegate;
     _HMCameraStreamControl *_streamControl;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (readonly, nonatomic) HMCameraStream *cameraStream;
@@ -23,7 +23,6 @@
 @property (weak, nonatomic) id<HMCameraStreamControlDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) _HMCameraStreamControl *streamControl; // @synthesize streamControl=_streamControl;
 @property (readonly, nonatomic) unsigned long long streamState;
 @property (readonly) Class superclass;

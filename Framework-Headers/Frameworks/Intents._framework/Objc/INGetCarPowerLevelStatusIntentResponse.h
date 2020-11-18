@@ -16,22 +16,25 @@
 }
 
 @property (copy, nonatomic) NSNumber *chargePercentRemaining;
+@property (copy, nonatomic) NSNumber *charging;
 @property (readonly, nonatomic) long long code;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSMeasurement *distanceRemaining;
 @property (copy, nonatomic) NSNumber *fuelPercentRemaining;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSNumber *minutesToFull;
 @property (readonly) Class superclass;
 
 + (BOOL)_appLaunchRequestedFromCode:(long long)arg1;
 + (long long)_codeFromType:(int)arg1 errorCode:(int)arg2 appLaunchRequested:(BOOL)arg3;
 + (int)_errorCodeFromCode:(long long)arg1;
-+ (long long)_intentHandlingStatusFromCode:(long long)arg1;
 + (int)_typeFromCode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
+- (long long)_intentResponseCode;
 - (id)_responseMessagePBRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

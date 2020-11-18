@@ -29,6 +29,7 @@
     NSString *_providerIdentifier;
     BOOL _isRecursiveFolderEnumeration;
     BOOL _started;
+    BOOL _restartAfterForeground;
     BOOL _shouldResort;
     BOOL _regathering;
     BOOL _enumeratingExtensionResults;
@@ -73,6 +74,8 @@
 + (BOOL)_item:(id)arg1 isCollectionRootForObservedItemID:(id)arg2;
 + (id)activeCollections;
 + (void)addActiveCollection:(id)arg1;
++ (void)applicationDidEnterBackground:(id)arg1;
++ (void)applicationWillEnterForeground:(id)arg1;
 + (id)collectionWithIdentifier:(id)arg1 domainIdentifier:(id)arg2 providerIdentifier:(id)arg3 sortDescriptors:(id)arg4;
 + (void)consumeUpdates:(id)arg1 deletes:(id)arg2;
 + (void)initialize;
@@ -92,6 +95,7 @@
 - (void)_gatherMoreItemsAfterPage:(id)arg1 section:(unsigned long long)arg2;
 - (unsigned long long)_indexOfItem:(id)arg1;
 - (unsigned long long)_indexOfItemID:(id)arg1;
+- (id)_initialPageFromSortDescriptors:(id)arg1;
 - (BOOL)_isObservingID:(unsigned long long)arg1;
 - (id)_itemsMutableCopy;
 - (long long)_numberOfItems;

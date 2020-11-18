@@ -7,41 +7,42 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBCreateTaskListIntent-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBDataString, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBDataString, _INPBIntentMetadata;
 
-@interface _INPBCreateTaskListIntent : PBCodable <NSCopying>
+@interface _INPBCreateTaskListIntent : PBCodable <_INPBCreateTaskListIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBDataString *_groupName;
     _INPBIntentMetadata *_intentMetadata;
-    NSMutableArray *_taskTitles;
+    NSArray *_taskTitles;
     _INPBDataString *_title;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDataString *groupName; // @synthesize groupName=_groupName;
 @property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasTitle;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (strong, nonatomic) NSMutableArray *taskTitles; // @synthesize taskTitles=_taskTitles;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *taskTitles; // @synthesize taskTitles=_taskTitles;
+@property (readonly, nonatomic) unsigned long long taskTitlesCount;
 @property (strong, nonatomic) _INPBDataString *title; // @synthesize title=_title;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 + (Class)taskTitlesType;
 - (void).cxx_destruct;
 - (void)addTaskTitles:(id)arg1;
 - (void)clearTaskTitles;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)taskTitlesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)taskTitlesCount;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -26,10 +26,8 @@
 + (id)pairingIdentity;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)attributeDescriptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugDescription;
-- (id)description;
-- (id)descriptionWithPointer:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;

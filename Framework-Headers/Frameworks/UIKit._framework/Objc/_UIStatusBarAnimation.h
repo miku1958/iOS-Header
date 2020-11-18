@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSSet, NSString;
+@class NSMutableArray, NSSet, NSString, _UIStatusBarIdentifier;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarAnimation : NSObject <NSCopying>
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _delaysAnimatingItems;
     BOOL _delaysDependentItems;
     BOOL _enabled;
-    NSString *_displayItemIdentifier;
+    _UIStatusBarIdentifier *_displayItemIdentifier;
     NSString *_identifier;
     NSString *_exclusivityGroupIdentifier;
     long long _type;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSSet *delayedItemIdentifiers; // @synthesize delayedItemIdentifiers=_delayedItemIdentifiers;
 @property (nonatomic) BOOL delaysAnimatingItems; // @synthesize delaysAnimatingItems=_delaysAnimatingItems;
 @property (nonatomic) BOOL delaysDependentItems; // @synthesize delaysDependentItems=_delaysDependentItems;
-@property (copy, nonatomic) NSString *displayItemIdentifier; // @synthesize displayItemIdentifier=_displayItemIdentifier;
+@property (copy, nonatomic) _UIStatusBarIdentifier *displayItemIdentifier; // @synthesize displayItemIdentifier=_displayItemIdentifier;
 @property (readonly, nonatomic) NSSet *effectiveDelayedItemIdentifiers;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (copy, nonatomic) NSString *exclusivityGroupIdentifier; // @synthesize exclusivityGroupIdentifier=_exclusivityGroupIdentifier;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVWeakReference, AVWeakReferencingDelegateStorage;
 @protocol OS_dispatch_queue;
@@ -16,7 +16,7 @@
     AVWeakReferencingDelegateStorage *delegateOverrideStorage;
     NSObject<OS_dispatch_queue> *bufferQueue;
     struct OpaqueFigSimpleMutex *remoteQueueMutex;
-    void *remoteReceiverQueue;
+    void *remoteQueueReceiver;
 }
 
 - (void)dealloc;

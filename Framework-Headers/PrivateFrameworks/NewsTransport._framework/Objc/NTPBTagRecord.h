@@ -28,6 +28,7 @@
     NSString *_coverArticleListID;
     NSString *_coverImageURL;
     NTPBFeedConfiguration *_feedConfiguration;
+    NSString *_feedNavImageURL;
     int _groupingAvailability;
     NSMutableArray *_iAdCategories;
     NSMutableArray *_iAdKeywords;
@@ -101,6 +102,7 @@
 @property (strong, nonatomic) NSString *coverArticleListID; // @synthesize coverArticleListID=_coverArticleListID;
 @property (strong, nonatomic) NSString *coverImageURL; // @synthesize coverImageURL=_coverImageURL;
 @property (strong, nonatomic) NTPBFeedConfiguration *feedConfiguration; // @synthesize feedConfiguration=_feedConfiguration;
+@property (strong, nonatomic) NSString *feedNavImageURL; // @synthesize feedNavImageURL=_feedNavImageURL;
 @property (nonatomic) int groupingAvailability; // @synthesize groupingAvailability=_groupingAvailability;
 @property (readonly, nonatomic) BOOL hasArticleRecirculationConfiguration;
 @property (readonly, nonatomic) BOOL hasBase;
@@ -110,6 +112,7 @@
 @property (readonly, nonatomic) BOOL hasCoverArticleListID;
 @property (readonly, nonatomic) BOOL hasCoverImageURL;
 @property (readonly, nonatomic) BOOL hasFeedConfiguration;
+@property (readonly, nonatomic) BOOL hasFeedNavImageURL;
 @property (nonatomic) BOOL hasGroupingAvailability;
 @property (nonatomic) BOOL hasHideAccessoryText;
 @property (nonatomic) BOOL hasIsDeprecated;

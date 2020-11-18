@@ -59,7 +59,6 @@
 - (struct CGRect)layerFrameInScaledCanvas;
 - (struct CGRect)layerFrameInScaledCanvasRelativeToParent;
 - (void)layoutInRootChangedFrom:(id)arg1 to:(id)arg2 translatedOnly:(BOOL)arg3;
-- (id)magicMoveAttributesWithShapeAttributes:(BOOL)arg1;
 - (struct CGAffineTransform)naturalToEditablePathSpaceTransform;
 - (id)overlayLayers;
 - (BOOL)p_beginApplyOpacity:(struct CGContext *)arg1 forDrawingInOneStep:(BOOL)arg2;

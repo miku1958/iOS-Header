@@ -8,7 +8,7 @@
 
 #import <SafariShared/WBSSiteMetadataProvider-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSString;
+@class NSArray, NSMutableDictionary, NSString, UIColor;
 @protocol OS_dispatch_queue, WBSSiteMetadataProviderDelegate;
 
 @interface WBSBookmarkFolderTouchIconProvider : NSObject <WBSSiteMetadataProvider>
@@ -20,12 +20,15 @@
 }
 
 @property (readonly, nonatomic) NSArray *allFolderUUIDs;
+@property (readonly) UIColor *backgroundColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property (readonly, nonatomic) BOOL providesFavicons;
 @property (readonly) Class superclass;
 
++ (BOOL)_appUsesLeftToRightLayout;
 - (void).cxx_destruct;
 - (void)_coalesceResponseDispatchForRequest:(id)arg1;
 - (void)_dispatchResponseForRequest:(id)arg1;

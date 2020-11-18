@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <GameplayKit/NSCoding-Protocol.h>
 #import <GameplayKit/NSCopying-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableDictionary;
 
-@interface GKEntity : NSObject <NSCopying, NSCoding>
+@interface GKEntity : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableDictionary *_components;
 }
@@ -19,6 +19,7 @@
 @property (readonly, strong, nonatomic) NSArray *components;
 
 + (id)entity;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addComponent:(id)arg1;
 - (id)componentForClass:(Class)arg1;

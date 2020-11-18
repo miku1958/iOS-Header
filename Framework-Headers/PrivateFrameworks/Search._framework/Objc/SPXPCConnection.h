@@ -34,8 +34,9 @@
 - (void)barrier:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)eventQueue;
+- (id)eventQueueWithQOS:(unsigned int)arg1;
 - (id)initWithServiceName:(id)arg1 onQueue:(id)arg2;
-- (id)initWithXPCConnection:(id)arg1;
+- (id)initWithXPCConnection:(id)arg1 qos:(unsigned int)arg2;
 - (void)sendMessage:(id)arg1;
 - (void)sendMessage:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)shutdown;

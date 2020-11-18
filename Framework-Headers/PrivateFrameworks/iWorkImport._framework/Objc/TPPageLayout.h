@@ -11,7 +11,7 @@
 #import <iWorkImport/TSWPColumnMetrics-Protocol.h>
 #import <iWorkImport/TSWPLayoutParent-Protocol.h>
 
-@class NSArray, NSMutableSet, NSSet, TPBodyLayout, TPFootnoteContainerLayout, TPiOSMarginAdjustLayout, TSURetainedPointerKeyDictionary, TSWPPadding;
+@class NSArray, NSMutableSet, NSSet, TPBodyLayout, TPFootnoteContainerLayout, TPiOSMarginAdjustLayout, TSDFill, TSURetainedPointerKeyDictionary, TSWPPadding;
 @protocol NSFastEnumeration, TPMasterDrawableProvider, TSWPHeaderFooterProvider;
 
 __attribute__((visibility("hidden")))
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     TPFootnoteContainerLayout *_footnoteContainerLayout;
     unsigned long long _pageNumber;
     unsigned long long _pageCount;
+    BOOL _shouldHeaderFooterBeVisible;
     BOOL _childLayoutsValid;
     TSURetainedPointerKeyDictionary *_oldChildLayouts;
     id<TPMasterDrawableProvider> _masterDrawableProvider;
@@ -30,12 +31,14 @@ __attribute__((visibility("hidden")))
     BOOL _validating;
     NSMutableSet *_anchoredDrawableLayouts;
     TPiOSMarginAdjustLayout *_marginAdjustLayout;
+    TSDFill *_backgroundFill;
 }
 
 @property (readonly, nonatomic) BOOL allowsBody;
 @property (readonly, nonatomic) BOOL allowsFootnotes;
 @property (readonly, nonatomic) BOOL alwaysStartsNewTarget;
 @property (readonly, nonatomic) NSSet *anchoredDrawableLayouts;
+@property (readonly, nonatomic) TSDFill *backgroundFill; // @synthesize backgroundFill=_backgroundFill;
 @property (readonly, weak, nonatomic) TPBodyLayout *bodyLayout;
 @property (readonly, nonatomic) struct CGRect bodyRect;
 @property (readonly, nonatomic) id<NSFastEnumeration> childTextLayoutsForExteriorWrap;
@@ -62,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowsHeaderFooter;
 - (unsigned int)autosizeFlagsForTextLayout:(id)arg1;
 - (struct CGRect)autosizedFrameForTextLayout:(id)arg1 textSize:(struct CGSize)arg2;
+- (Class)backgroundFillOwningInfoClass;
 - (void)beginResizeWrapInvalidationCluster;
 - (id)computeLayoutGeometry;
 - (void)dealloc;
@@ -103,12 +107,12 @@ __attribute__((visibility("hidden")))
 - (void)p_addLayoutsForInfos:(id)arg1 toArray:(id)arg2;
 - (id)p_childLayoutInParentLayout:(id)arg1 forChildInfo:(id)arg2;
 - (id)p_existingChildLayoutForInfo:(id)arg1;
-- (void)p_insertBodyLayout;
+- (id)p_insertBodyLayout;
 - (id)p_insertChildLayoutForInfo:(id)arg1;
-- (void)p_insertFootnoteContainerLayout;
+- (id)p_insertFootnoteContainerLayout;
 - (id)p_insertValidatedChildLayoutForInfo:(id)arg1;
-- (void)p_insertValidatedFloatingLayouts;
-- (void)p_insertValidatedMasterLayouts;
+- (id)p_insertValidatedFloatingLayouts;
+- (id)p_insertValidatedMasterLayouts;
 - (BOOL)p_isHeaderFooterLayout:(id)arg1;
 - (id)p_orderedChildInfos;
 - (void)p_populateOldChildLayoutsWithLayouts:(id)arg1;
@@ -132,7 +136,6 @@ __attribute__((visibility("hidden")))
 - (void)setChildren:(id)arg1;
 - (void)setNeedsInflation;
 - (BOOL)shouldHeaderFooterBeVisible:(long long)arg1;
-- (BOOL)shouldHeaderFooterBeVisibleForPageIndex:(unsigned long long)arg1;
 - (BOOL)shouldProvideGuidesDuringExclusiveAlignmentOperation;
 - (BOOL)textIsVertical;
 - (void)validate;

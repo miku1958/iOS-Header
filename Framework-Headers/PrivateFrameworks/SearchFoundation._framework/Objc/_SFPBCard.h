@@ -13,7 +13,6 @@
 
 @interface _SFPBCard : PBCodable <_SFPBCard, NSSecureCoding>
 {
-    CDStruct_db075487 _has;
     BOOL _flexibleSectionOrder;
     int _type;
     int _source;
@@ -44,21 +43,6 @@
 @property (copy, nonatomic) NSArray *entityProtobufMessages; // @synthesize entityProtobufMessages=_entityProtobufMessages;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
 @property (nonatomic) BOOL flexibleSectionOrder; // @synthesize flexibleSectionOrder=_flexibleSectionOrder;
-@property (readonly, nonatomic) BOOL hasCardId;
-@property (readonly, nonatomic) BOOL hasContextReferenceIdentifier;
-@property (readonly, nonatomic) BOOL hasEntityIdentifier;
-@property (readonly, nonatomic) BOOL hasFbr;
-@property (readonly, nonatomic) BOOL hasFlexibleSectionOrder;
-@property (readonly, nonatomic) BOOL hasIntentMessageData;
-@property (readonly, nonatomic) BOOL hasIntentMessageName;
-@property (readonly, nonatomic) BOOL hasIntentResponseMessageData;
-@property (readonly, nonatomic) BOOL hasIntentResponseMessageName;
-@property (readonly, nonatomic) BOOL hasQueryId;
-@property (readonly, nonatomic) BOOL hasResultIdentifier;
-@property (readonly, nonatomic) BOOL hasSource;
-@property (readonly, nonatomic) BOOL hasTitle;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasUrlValue;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSData *intentMessageData; // @synthesize intentMessageData=_intentMessageData;
 @property (copy, nonatomic) NSString *intentMessageName; // @synthesize intentMessageName=_intentMessageName;

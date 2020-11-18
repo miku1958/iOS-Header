@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableString;
 
@@ -16,8 +16,8 @@
 @property (strong, nonatomic) NSMutableString *loggedMessage; // @synthesize loggedMessage=_loggedMessage;
 
 + (BOOL)isLoggingEnabled;
+- (void).cxx_destruct;
 - (void)beginLogging;
-- (void)dealloc;
 - (void)endLoggingForInput:(id)arg1 atFinalTimeMark:(unsigned long long)arg2;
 - (id)logFilePath;
 - (void)markTime:(unsigned long long)arg1;

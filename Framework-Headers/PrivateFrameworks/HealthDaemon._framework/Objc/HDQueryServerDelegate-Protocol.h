@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthDaemon/NSObject-Protocol.h>
+#import <HealthDaemon/HDTaskServerDelegate-Protocol.h>
 
-@class HDQueryServer, HDReadAuthorizationStatus, HKObjectType, NSArray, NSSet;
+@class HDQueryServer, HDReadAuthorizationStatus, HKObjectType, NSArray;
 
-@protocol HDQueryServerDelegate <NSObject>
+@protocol HDQueryServerDelegate <HDTaskServerDelegate>
 - (unsigned int)clientSDKVersionForQueryServer:(HDQueryServer *)arg1;
-- (NSArray *)queryServer:(HDQueryServer *)arg1 filterSamplesForReadAuthorization:(NSArray *)arg2;
-- (BOOL)queryServer:(HDQueryServer *)arg1 isAuthorizationStatusDeterminedForTypes:(NSSet *)arg2 error:(id *)arg3;
 - (void)queryServer:(HDQueryServer *)arg1 requestsAuthorizationForSamples:(NSArray *)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (void)queryServer:(HDQueryServer *)arg1 shouldStartWithCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)queryServerDidFinish:(HDQueryServer *)arg1;
 - (HDReadAuthorizationStatus *)readAuthorizationStatusForQueryServer:(HDQueryServer *)arg1 type:(HKObjectType *)arg2 error:(id *)arg3;
 @end

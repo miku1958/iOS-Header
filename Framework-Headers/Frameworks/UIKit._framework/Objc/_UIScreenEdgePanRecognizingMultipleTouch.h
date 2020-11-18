@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIScreenEdgePanRecognizerDelegate-Protocol.h>
-#import <UIKit/_UIScreenEdgePanRecognizing-Protocol.h>
+#import <UIKitCore/_UIScreenEdgePanRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIScreenEdgePanRecognizing-Protocol.h>
 
 @class NSMutableDictionary, NSMutableIndexSet, NSString, _UIScreenEdgePanRecognizerSettings;
 @protocol _UIScreenEdgePanRecognizingDelegate;

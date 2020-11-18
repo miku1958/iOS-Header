@@ -15,17 +15,25 @@ __attribute__((visibility("hidden")))
     NSArray *_builtInArguments;
     NSDictionary *_performanceStatistics;
     CDStruct_596dc0d1 _flags;
+    unsigned int _traceBufferIndex;
+    NSArray *_constantSamplerUniqueIdentifiers;
+    NSArray *_constantSamplerDescriptors;
 }
 
 - (id)arguments;
 - (id)builtInArguments;
+- (id)constantSamplerDescriptors;
+- (id)constantSamplerUniqueIdentifiers;
 - (void)dealloc;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithSerializedData:(id)arg1 device:(id)arg2 options:(unsigned long long)arg3 flags:(CDStruct_596dc0d1)arg4;
 - (id)initWithSerializedData:(id)arg1 serializedStageInputDescriptor:(id)arg2 device:(id)arg3 options:(unsigned long long)arg4 flags:(CDStruct_596dc0d1)arg5;
 - (id)performanceStatistics;
+- (void)setConstantSamplerDescriptorsFromBitmasks:(unsigned long long *)arg1 count:(unsigned long long)arg2;
+- (void)setConstantSamplerUniqueIdentifiers:(id)arg1;
 - (void)setPerformanceStatistics:(id)arg1;
+- (unsigned int)traceBufferIndex;
 - (CDStruct_596dc0d1)usageFlags;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBSDisplayConfiguration;
 
@@ -16,7 +16,7 @@
     unsigned int _observation;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

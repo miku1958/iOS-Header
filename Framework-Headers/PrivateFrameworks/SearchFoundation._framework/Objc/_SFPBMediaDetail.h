@@ -20,8 +20,6 @@
 @property (strong, nonatomic) _SFPBText *content; // @synthesize content=_content;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasContent;
-@property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly) Class superclass;

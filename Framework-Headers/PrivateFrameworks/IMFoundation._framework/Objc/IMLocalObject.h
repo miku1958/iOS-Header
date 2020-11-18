@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSProtocolChecker, NSString;
 @protocol OS_xpc_object;
@@ -30,6 +30,7 @@
 + (void)initialize;
 - (void)_cancelHandlerCompleted;
 - (void)_clearPort:(BOOL)arg1;
+- (void)_clearPort:(BOOL)arg1 signalRunLoopIfNeeded:(BOOL)arg2;
 - (id)_currentMessageContext;
 - (void)_enqueueInvocation:(id)arg1;
 - (void)_enqueueInvocation:(id)arg1 xpcMessage:(id)arg2;

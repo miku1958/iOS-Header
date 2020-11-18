@@ -70,6 +70,7 @@
 - (void)processFseventBatch;
 - (void)queueEvents:(id)arg1 markSelfEncountered:(BOOL)arg2;
 - (void)resetWithReason:(id)arg1;
+- (void)resetWithReason:(id)arg1 dropFSEventID:(BOOL)arg2;
 - (void)resume;
 - (BOOL)setUpRoot:(id)arg1 isImmutableRoot:(BOOL)arg2 volume:(id)arg3 error:(id *)arg4;
 - (BOOL)setUpStreamSynchronously:(BOOL)arg1 reason:(id)arg2 error:(id *)arg3;

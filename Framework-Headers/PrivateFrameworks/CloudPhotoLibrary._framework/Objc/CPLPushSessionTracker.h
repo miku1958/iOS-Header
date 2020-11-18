@@ -6,20 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class CPLChangeBatch, CPLEngineStore, CPLPushChangeTasks, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet;
+@class CPLChangeBatch, CPLEngineScopeStorage, CPLEngineStore, CPLPushChangeTasks, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet;
 
 @interface CPLPushSessionTracker : NSObject
 {
-    NSMutableSet *_unquarantinedRecordIdentifiers;
-    NSMutableSet *_incomingBatchRecordIdentifiers;
+    CPLEngineScopeStorage *_scopes;
+    NSMutableSet *_unquarantinedRecordScopedIdentifiers;
+    NSMutableDictionary *_incomingBatchRecordPerScopedIdentifiers;
     NSMutableDictionary *_storedClientRecords;
     NSMutableDictionary *_storedCloudRecords;
     NSMutableArray *_addedRecords;
     NSMutableArray *_updatedRecords;
-    NSMutableArray *_deletedRecordIdentifiers;
+    NSMutableArray *_deletedRecordScopedIdentifiers;
     NSMutableArray *_changesWithResourceChanges;
     NSMutableDictionary *_fullRecords;
     NSMutableDictionary *_resourcesToUpload;
+    BOOL _checkScopeIdentifier;
+    NSMutableSet *_validScopeIdentifiers;
+    NSMutableSet *_invalidScopeIdentifiers;
     BOOL _diffedBatchCanLowerQuota;
     BOOL _expandHasBeenSuccessful;
     BOOL _diffHasBeenSuccessful;
@@ -35,7 +39,7 @@
 
 @property (readonly, nonatomic) NSArray *addedRecords;
 @property (readonly, nonatomic) BOOL applyHasBeenSuccessful; // @synthesize applyHasBeenSuccessful=_applyHasBeenSuccessful;
-@property (readonly, nonatomic) NSArray *deletedRecordIdentifiers;
+@property (readonly, nonatomic) NSArray *deletedRecordScopedIdentifiers;
 @property (readonly, nonatomic) BOOL diffHasBeenSuccessful; // @synthesize diffHasBeenSuccessful=_diffHasBeenSuccessful;
 @property (readonly, nonatomic) CPLChangeBatch *diffedBatch; // @synthesize diffedBatch=_diffedBatch;
 @property (readonly, nonatomic) BOOL diffedBatchCanLowerQuota; // @synthesize diffedBatchCanLowerQuota=_diffedBatchCanLowerQuota;
@@ -48,22 +52,25 @@
 @property (readonly, nonatomic) CPLPushChangeTasks *pushChangeTasks; // @synthesize pushChangeTasks=_pushChangeTasks;
 @property (readonly, nonatomic) NSDictionary *resourcesToUpload;
 @property (readonly, nonatomic) CPLEngineStore *store; // @synthesize store=_store;
-@property (readonly, nonatomic) NSSet *unquarantinedRecordIdentifiers; // @synthesize unquarantinedRecordIdentifiers=_unquarantinedRecordIdentifiers;
+@property (readonly, nonatomic) NSSet *unquarantinedRecordScopedIdentifiers; // @synthesize unquarantinedRecordScopedIdentifiers=_unquarantinedRecordScopedIdentifiers;
 @property (readonly, nonatomic) NSArray *updatedRecords;
 
 - (void).cxx_destruct;
+- (id)_resourceIdentitiesFromChange:(id)arg1;
 - (BOOL)applyChangesToClientCacheWithError:(id *)arg1;
+- (BOOL)checkScopeIdentifier:(id)arg1;
 - (BOOL)computeDiff;
-- (BOOL)computeExpandedBatch;
+- (BOOL)computeExpandedBatchWithError:(id *)arg1;
+- (id)deletedRecordIdentifiers;
 - (void)enumerateDiffWithBlock:(CDUnknownBlockType)arg1;
-- (BOOL)hasClientRecordWithLocalIdentifier:(id)arg1;
-- (BOOL)hasCloudRecordWithLocalIdentifier:(id)arg1;
-- (BOOL)hasIncomingRecordWithIdentifier:(id)arg1;
+- (BOOL)hasClientRecordWithLocalScopedIdentifier:(id)arg1;
+- (BOOL)hasCloudRecordWithLocalScopedIdentifier:(id)arg1;
 - (id)initWithIncomingBatch:(id)arg1 store:(id)arg2 error:(id *)arg3;
-- (BOOL)knowsClientRecordWithIdentifier:(id)arg1;
+- (BOOL)knowsClientRecordWithScopedIdentifier:(id)arg1;
+- (id)resourceIdentitiesForRecordWithLocalScopedIdentifier:(id)arg1;
 - (BOOL)shouldCancelSyncSessionTryingToUploadChange:(id)arg1;
-- (id)storedClientRecordWithLocalIdentifier:(id)arg1;
-- (id)storedCloudRecordWithLocalIdentifier:(id)arg1;
+- (id)storedClientRecordWithLocalScopedIdentifier:(id)arg1;
+- (id)storedCloudRecordWithLocalScopedIdentifier:(id)arg1;
 
 @end
 

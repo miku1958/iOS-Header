@@ -35,6 +35,7 @@
 
 + (BOOL)_canSendText;
 + (id)_chatKitBundle;
++ (void)_preloadDependencies;
 + (void)_serviceAvailabilityChanged:(id)arg1;
 + (void)_setupAccountMonitor;
 + (void)_startListeningForAvailabilityNotifications;
@@ -74,6 +75,7 @@
 - (void)smsComposeControllerSendStarted:(id)arg1;
 - (void)smsComposeControllerShouldSendMessageWithText:(id)arg1 toRecipients:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

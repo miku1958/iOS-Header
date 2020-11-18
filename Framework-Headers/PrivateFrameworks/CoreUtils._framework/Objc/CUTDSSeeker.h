@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString;
+@class NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUTDSSeeker : NSObject
 {
-    struct NSMutableSet *_endpoints;
     BOOL _invalidateCalled;
     struct LogCategory *_ucat;
+    BOOL _directedOnly;
     BOOL _passive;
     int _dataLinkType;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -23,13 +23,16 @@
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
     NSString *_serviceType;
+    struct NSMutableSet *_endpoints;
     unsigned long long _tdsHashSeek;
 }
 
 @property (nonatomic) int dataLinkType; // @synthesize dataLinkType=_dataLinkType;
+@property (nonatomic) BOOL directedOnly; // @synthesize directedOnly=_directedOnly;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType endpointFoundHandler; // @synthesize endpointFoundHandler=_endpointFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType endpointLostHandler; // @synthesize endpointLostHandler=_endpointLostHandler;
+@property (strong, nonatomic) NSMutableSet *endpoints; // @synthesize endpoints=_endpoints;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;

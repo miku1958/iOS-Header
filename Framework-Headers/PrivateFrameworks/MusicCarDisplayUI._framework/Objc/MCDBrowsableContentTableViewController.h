@@ -12,14 +12,13 @@
 #import <MusicCarDisplayUI/UITableViewDataSource-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDelegate-Protocol.h>
 
-@class AVExternalDevice, MCDNowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UITableView, UIView, _MCDBrowsableContentTableViewPreloader, _UIFilteredDataSource;
+@class AVExternalDevice, MCDNowPlayingButton, MCDPCContainer, MPWeakTimer, NSIndexPath, NSObject, NSString, UIAlertController, UITableView, UIView, _UIFilteredDataSource;
 @protocol OS_dispatch_queue;
 
 @interface MCDBrowsableContentTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate, MCDPCContainerDelegate, MCDErrorViewDelegate>
 {
     UITableView *_tableView;
     MCDNowPlayingButton *_nowPlayingButton;
-    MCDPCContainer *_container;
     long long _count;
     NSIndexPath *_selectedNextIndexPath;
     _UIFilteredDataSource *_dataSource;
@@ -28,7 +27,6 @@
     MPWeakTimer *_delayTimer;
     UIView *_MCD_tableView;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    _MCDBrowsableContentTableViewPreloader *_selectionPreloader;
     AVExternalDevice *_externalDevice;
     BOOL _limited;
     BOOL _hasCarScreen;
@@ -37,35 +35,47 @@
     BOOL _hasTabbedBrowsing;
     BOOL _visible;
     BOOL _currentlyPlayingApp;
+    BOOL _pushToNowPlaying;
+    BOOL _didFinishInitialLoad;
+    BOOL _didFinishInitialViewAppear;
+    MCDPCContainer *_container;
     NSIndexPath *_selectedIndexPath;
     UIView *_placeholderView;
+    UIAlertController *_alertController;
 }
 
-@property (readonly, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
+@property (strong, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
+@property (strong, nonatomic) MCDPCContainer *container; // @synthesize container=_container;
 @property (nonatomic) BOOL currentlyPlayingApp; // @synthesize currentlyPlayingApp=_currentlyPlayingApp;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didFinishInitialLoad; // @synthesize didFinishInitialLoad=_didFinishInitialLoad;
+@property (nonatomic) BOOL didFinishInitialViewAppear; // @synthesize didFinishInitialViewAppear=_didFinishInitialViewAppear;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) MPWeakTimer *loadingTimer; // @synthesize loadingTimer=_loadingTimer;
 @property (strong, nonatomic) UIView *placeholderView; // @synthesize placeholderView=_placeholderView;
+@property (nonatomic) BOOL pushToNowPlaying; // @synthesize pushToNowPlaying=_pushToNowPlaying;
 @property (strong, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 
 - (void).cxx_destruct;
+- (void)_appRegisteredForContent:(id)arg1;
 - (void)_clearLoadingActivity;
 - (void)_clearTableViewSelectionAnimated:(BOOL)arg1;
 - (void)_configureCell:(id)arg1 forIndexPath:(id)arg2;
+- (void)_displayErrorAlertController:(id)arg1;
 - (void)_displayLoadingActivity;
 - (void)_limitedUIChanged:(id)arg1;
 - (void)_nowPlayingButtonTapped:(id)arg1;
 - (void)_nowPlayingDidChange:(id)arg1;
+- (void)_pushToNowPlaying:(BOOL)arg1;
 - (void)_replacePlaceholderViewWithView:(id)arg1;
 - (void)_showLoadingScreen;
 - (void)_showTimeoutScreen;
 - (void)_updateNowPlayingButtonVisibility;
 - (void)container:(id)arg1 didInvalidateIndicies:(id)arg2;
 - (void)containerDidChangeCount:(id)arg1;
-- (void)containerDidInvalidateRootItem:(id)arg1;
 - (id)contentScrollView;
 - (void)dealloc;
 - (void)errorViewDidTapButton:(id)arg1;

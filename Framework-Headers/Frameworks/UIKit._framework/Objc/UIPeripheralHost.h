@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIKeyboardKeyplaneTransitionDelegate-Protocol.h>
-#import <UIKit/UIScrollViewIntersectionDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardKeyplaneTransitionDelegate-Protocol.h>
+#import <UIKitCore/UIScrollViewIntersectionDelegate-Protocol.h>
 
 @class CADisplayLink, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIInputViewPostPinningReloadState, UIInputViewSet, UIInputViewTransition, UIKeyboard, UIKeyboardAutomatic, UIKeyboardRotationState, UIPanGestureRecognizer, UIPeripheralHostState, UIPeripheralHostView, UIResponder, UIScrollView, UITextEffectsWindow, UITextInputMode, UIView;
 
@@ -294,6 +294,7 @@
 - (void)orderOutWithAnimationStyle:(id)arg1;
 - (void)performMultipleOperations:(CDUnknownBlockType)arg1 withAnimationStyle:(id)arg2;
 - (void)performWithAllowingNilResponderReload:(CDUnknownBlockType)arg1;
+- (void)performWithoutDeactivation:(CDUnknownBlockType)arg1;
 - (void)peripheralHostDidEnterBackground:(id)arg1;
 - (void)peripheralHostWillResume:(id)arg1;
 - (void)peripheralViewMinMaximized:(id)arg1 finished:(id)arg2 context:(id)arg3;

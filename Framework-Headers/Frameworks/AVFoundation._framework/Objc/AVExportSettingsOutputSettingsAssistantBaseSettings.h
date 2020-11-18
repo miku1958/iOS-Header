@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVOutputSettingsAssistantBaseSettingsProvider-Protocol.h>
 
 @class NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVExportSettingsOutputSettingsAssistantBaseSettings : NSObject <AVOutputSettingsAssistantBaseSettingsProvider>
 {
     NSDictionary *_exportSettings;

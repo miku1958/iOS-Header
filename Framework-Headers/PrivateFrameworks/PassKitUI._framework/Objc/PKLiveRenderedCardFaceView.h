@@ -19,10 +19,12 @@
 }
 
 - (void).cxx_destruct;
+- (double)cornerRadiusForStyle:(long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 pass:(id)arg2;
 - (void)layoutSubviews;
 - (void)sceneDidRenderAtTime:(double)arg1;
 - (void)setMotionEnabled:(BOOL)arg1;
+- (BOOL)shouldUseContinuousCornersForStyle:(long long)arg1;
 
 @end
 

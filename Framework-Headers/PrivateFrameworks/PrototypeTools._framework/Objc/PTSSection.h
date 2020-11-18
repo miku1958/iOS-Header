@@ -4,60 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PrototypeTools/PTSection.h>
 
-#import <PrototypeTools/_UISettingsGroupObserver-Protocol.h>
-#import <PrototypeTools/_UISettingsKeyPathObserver-Protocol.h>
-
-@class NSArray, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, _UISettings;
-
-@interface PTSSection : NSObject <_UISettingsKeyPathObserver, _UISettingsGroupObserver>
+@interface PTSSection : PTSection
 {
-    NSArray *_rows;
-    NSHashTable *_observers;
-    NSMutableArray *_allConcreteRows;
-    NSMutableArray *_enabledConcreteRows;
-    NSMutableDictionary *_concreteRowsByTemplateIndex;
-    NSMutableDictionary *_groupsByTemplateIndex;
-    NSString *_title;
-    _UISettings *_settings;
-    NSString *_submoduleKeyPath;
-    NSArray *_appearanceConditions;
 }
-
-@property (strong, nonatomic) NSArray *appearanceConditions; // @synthesize appearanceConditions=_appearanceConditions;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) _UISettings *settings; // @synthesize settings=_settings;
-@property (strong, nonatomic) NSString *submoduleKeyPath; // @synthesize submoduleKeyPath=_submoduleKeyPath;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
-
-- (void).cxx_destruct;
-- (void)_assertNoGroupTemplateProperties:(id)arg1;
-- (void)_fixRows:(id)arg1 fromIndex:(unsigned long long)arg2 withTemplate:(id)arg3;
-- (void)_reloadEnabledRows;
-- (void)_sendInserts:(id)arg1 deletes:(id)arg2;
-- (void)_sendReload;
-- (BOOL)_shouldEnableRow:(id)arg1;
-- (void)_updateEnabledRows;
-- (void)addObserver:(id)arg1;
-- (void)dealloc;
-- (unsigned long long)destinationForRowAtIndex:(unsigned long long)arg1 withProposedDestination:(unsigned long long)arg2;
-- (void)enumerateAllRowsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateEnabledRowsUsingBlock:(CDUnknownBlockType)arg1;
-- (BOOL)hasEnabledEditableRows;
-- (unsigned long long)indexOfRow:(id)arg1;
-- (id)initWithRows:(id)arg1;
-- (void)moveRowAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;
-- (unsigned long long)numberOfRows;
-- (void)removeObserver:(id)arg1;
-- (id)rowAtIndex:(unsigned long long)arg1;
-- (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;
-- (void)settingsGroup:(id)arg1 didInsertSettings:(id)arg2 atIndex:(unsigned long long)arg3;
-- (void)settingsGroup:(id)arg1 didMoveSettings:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
-- (void)settingsGroup:(id)arg1 didRemoveSettings:(id)arg2 atIndex:(unsigned long long)arg3;
 
 @end
 

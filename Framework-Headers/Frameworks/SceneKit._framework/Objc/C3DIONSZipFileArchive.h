@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSData, NSDictionary, NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface C3DIONSZipFileArchive : NSObject
 {
     NSDictionary *_contents;

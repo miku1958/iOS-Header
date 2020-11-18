@@ -31,6 +31,7 @@
     struct CGRect _unpinnedEventBackgroundFrame;
     struct CGRect _unpinnedTravelBackgroundFrame;
     UIView *_pinFadeView;
+    BOOL _isVibrant;
     BOOL _visibleHeightLocked;
     BOOL _selected;
     BOOL _dimmed;
@@ -47,6 +48,7 @@
     BOOL _showsTravelTime;
     BOOL _reduceLayoutProcessingForAnimation;
     BOOL _touchesAreBeingTracked;
+    BOOL _originalEventLocationIsPrediction;
     int _occurrenceBackgroundStyle;
     NSObject<EKDayOccurrenceViewDelegate> *_delegate;
     EKDayOccurrenceView *_selectedCopy;
@@ -57,6 +59,7 @@
     double _travelTime;
     double _bottomPinningProximity;
     double _topYBoundaryForText;
+    NSString *_originalEventLocation;
     struct UIEdgeInsets _margin;
 }
 
@@ -79,11 +82,14 @@
 @property (readonly, nonatomic) BOOL isPinned;
 @property (nonatomic) BOOL isProposedTime; // @synthesize isProposedTime=_isProposedTime;
 @property (nonatomic) BOOL isSelectedCopyView; // @synthesize isSelectedCopyView=_isSelectedCopyView;
+@property (nonatomic) BOOL isVibrant; // @synthesize isVibrant=_isVibrant;
 @property (copy, nonatomic) NSString *location;
 @property (nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;
 @property (nonatomic) BOOL needsReply; // @synthesize needsReply=_needsReply;
 @property (strong, nonatomic) EKEvent *occurrence; // @synthesize occurrence=_occurrence;
 @property (nonatomic) int occurrenceBackgroundStyle; // @synthesize occurrenceBackgroundStyle=_occurrenceBackgroundStyle;
+@property (copy, nonatomic) NSString *originalEventLocation; // @synthesize originalEventLocation=_originalEventLocation;
+@property (nonatomic) BOOL originalEventLocationIsPrediction; // @synthesize originalEventLocationIsPrediction=_originalEventLocationIsPrediction;
 @property (nonatomic) struct UIEdgeInsets padding;
 @property (nonatomic) BOOL reduceLayoutProcessingForAnimation; // @synthesize reduceLayoutProcessingForAnimation=_reduceLayoutProcessingForAnimation;
 @property (nonatomic) long long routingMode;
@@ -107,6 +113,7 @@
 + (void)_cacheLocation:(id)arg1 forEventID:(id)arg2;
 + (id)_cachedImageForCalendarColor:(id)arg1 selected:(BOOL)arg2 declined:(BOOL)arg3 cancelled:(BOOL)arg4 tentative:(BOOL)arg5 needsReply:(BOOL)arg6 colorBarStyle:(long long)arg7 dayViewBackgroundStyle:(int)arg8 usesLargeTextLayout:(BOOL)arg9;
 + (id)_cachedLocationForEventID:(id)arg1;
++ (void)_clearCacheForEventID:(id)arg1;
 + (void)_clearViewCache;
 + (id)_color:(id)arg1 lightenedToPercentage:(double)arg2 withFinalAlpha:(double)arg3;
 + (id)_imageForBarColor:(id)arg1 backgroundColor:(id)arg2 colorBarStyle:(long long)arg3;

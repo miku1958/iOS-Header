@@ -14,13 +14,6 @@
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (strong, nonatomic) _CPPunchoutForFeedback *destination;
 @property (nonatomic) int feedbackType;
-@property (readonly, nonatomic) BOOL hasActionCardType;
-@property (readonly, nonatomic) BOOL hasCardSectionId;
-@property (readonly, nonatomic) BOOL hasDestination;
-@property (readonly, nonatomic) BOOL hasFeedbackType;
-@property (readonly, nonatomic) BOOL hasResultId;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *resultId;
 @property (nonatomic) unsigned long long timestamp;

@@ -7,71 +7,52 @@
 #import <HMFoundation/HMFObject.h>
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
-#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
-#import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
+#import <HomeKitDaemon/NSFastEnumeration-Protocol.h>
 
-@class HMDAccount, HMDDevice, HMDLocalAccountContext, HMFExponentialBackoffTimer, HMFTimer, IDSService, NSArray, NSMutableSet, NSObject, NSString;
-@protocol HMDAccountRegistryDelegate, OS_dispatch_queue;
+@class HMDAppleAccountManager, HMDRemoteAccountManager, NSArray, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HMDAccountRegistry : HMFObject <HMFTimerDelegate, IDSServiceDelegate, HMFLogging>
+@interface HMDAccountRegistry : HMFObject <HMFLogging, NSFastEnumeration>
 {
-    NSMutableSet *_accounts;
-    BOOL _monitoring;
-    BOOL _resolved;
-    HMDAccount *_currentAccount;
-    HMDLocalAccountContext *_localAccountContext;
-    HMDDevice *_currentDevice;
-    id<HMDAccountRegistryDelegate> _delegate;
-    IDSService *_service;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMFExponentialBackoffTimer *_accountChangeBackoffTimer;
-    HMFTimer *_devicesChangeBackoffTimer;
+    HMDAppleAccountManager *_appleAccountManager;
+    HMDRemoteAccountManager *_remoteAccountManager;
 }
 
-@property (readonly, nonatomic) HMFExponentialBackoffTimer *accountChangeBackoffTimer; // @synthesize accountChangeBackoffTimer=_accountChangeBackoffTimer;
-@property (strong, nonatomic) NSArray *accounts;
+@property (readonly, nonatomic) NSArray *accounts;
+@property (readonly) HMDAppleAccountManager *appleAccountManager; // @synthesize appleAccountManager=_appleAccountManager;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (weak, nonatomic) HMDAccount *currentAccount; // @synthesize currentAccount=_currentAccount;
-@property (weak, nonatomic) HMDDevice *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id<HMDAccountRegistryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) HMFTimer *devicesChangeBackoffTimer; // @synthesize devicesChangeBackoffTimer=_devicesChangeBackoffTimer;
 @property (readonly) unsigned long long hash;
-@property (strong) HMDLocalAccountContext *localAccountContext; // @synthesize localAccountContext=_localAccountContext;
-@property (nonatomic, getter=isMonitoring) BOOL monitoring; // @synthesize monitoring=_monitoring;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (nonatomic, getter=isResolved) BOOL resolved; // @synthesize resolved=_resolved;
-@property (readonly, nonatomic) IDSService *service; // @synthesize service=_service;
+@property (readonly) HMDRemoteAccountManager *remoteAccountManager; // @synthesize remoteAccountManager=_remoteAccountManager;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
 + (id)sharedRegistry;
-+ (id)shortDescription;
 - (void).cxx_destruct;
-- (void)_cleanupDevices:(id)arg1;
-- (void)_updateLocalAccount;
-- (void)_updateLocalDevices;
-- (id)accountForDestination:(id)arg1 shouldCreate:(BOOL)arg2;
-- (void)addAccount:(id)arg1;
-- (id)descriptionWithPointer:(BOOL)arg1;
-- (id)deviceForDestination:(id)arg1 shouldCreate:(BOOL)arg2;
+- (void)__handleAddedRemoteAccount:(id)arg1;
+- (void)__handleAppleAccountDeviceAdded:(id)arg1;
+- (void)__handleAppleAccountHandlesUpdated:(id)arg1;
+- (void)__handleAppleAccountUpdate:(id)arg1;
+- (void)__handleRemovedRemoteAccount:(id)arg1;
+- (void)_resolveAccountForHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)accountExistsForHandle:(id)arg1;
+- (id)accountForHandle:(id)arg1;
+- (id)accountForHandle:(id)arg1 exists:(BOOL *)arg2;
+- (id)attributeDescriptions;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (BOOL)deviceExistsForDevice:(id)arg1;
+- (BOOL)deviceExistsForHandle:(id)arg1;
+- (id)deviceForDevice:(id)arg1;
+- (id)deviceForDevice:(id)arg1 exists:(BOOL *)arg2;
+- (id)deviceForHandle:(id)arg1;
+- (id)deviceForHandle:(id)arg1 exists:(BOOL *)arg2;
+- (id)deviceForIdentifier:(id)arg1;
 - (id)init;
-- (id)initWithIDSService:(id)arg1;
-- (void)notifyDelegateAccountAdded:(id)arg1;
-- (void)notifyDelegateAccountRemove:(id)arg1;
-- (void)notifyDelegateCurrentDeviceChanged:(id)arg1;
-- (void)removeAccount:(id)arg1;
-- (void)service:(id)arg1 activeAccountsChanged:(id)arg2;
-- (void)service:(id)arg1 devicesChanged:(id)arg2;
-- (id)shortDescription;
-- (void)startMonitoring;
-- (void)stopMonitoring;
-- (void)timerDidFire:(id)arg1;
-- (void)updateCurrentAccount;
-- (void)updateCurrentDevice;
-- (void)updateLocalAccountContext;
+- (id)initWithAppleAccountManager:(id)arg1 remoteAccountManager:(id)arg2;
+- (void)start;
+- (void)stop;
 
 @end
 

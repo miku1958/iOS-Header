@@ -8,22 +8,26 @@
 
 #import <ARKit/NSCopying-Protocol.h>
 
-@class AVCaptureDevice, AVCaptureDeviceFormat;
+@class AVCaptureDevice, AVCaptureDeviceFormat, NSArray;
 
 @interface ARVideoFormat : NSObject <NSCopying>
 {
     AVCaptureDevice *_device;
     AVCaptureDeviceFormat *_deviceFormat;
     struct CGSize _imageResolution;
-    long long _framesPerSecond;
+    NSArray *_frameRatesByPowerUsage;
+    AVCaptureDeviceFormat *_depthDataFormat;
 }
 
+@property (strong, nonatomic) AVCaptureDeviceFormat *depthDataFormat; // @synthesize depthDataFormat=_depthDataFormat;
 @property (readonly, nonatomic) AVCaptureDevice *device;
 @property (readonly, nonatomic) AVCaptureDeviceFormat *deviceFormat;
-@property (nonatomic) long long framesPerSecond; // @synthesize framesPerSecond=_framesPerSecond;
+@property (strong, nonatomic) NSArray *frameRatesByPowerUsage; // @synthesize frameRatesByPowerUsage=_frameRatesByPowerUsage;
+@property (readonly, nonatomic) long long framesPerSecond;
 @property (readonly, nonatomic) struct CGSize imageResolution;
 
-+ (id)bestVideoFormatForDevice:(id)arg1 resolution:(CDStruct_1ef3fb1f)arg2 frameRate:(double)arg3 videoBinned:(BOOL)arg4;
++ (id)bestDepthFormatForDeviceFormat:(id)arg1;
++ (id)bestVideoFormatForDevicePosition:(long long)arg1 deviceType:(id)arg2 resolution:(CDStruct_1ef3fb1f)arg3 frameRate:(double)arg4 videoBinned:(BOOL)arg5;
 + (id)supportedVideoFormatsForDevicePosition:(long long)arg1 deviceType:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

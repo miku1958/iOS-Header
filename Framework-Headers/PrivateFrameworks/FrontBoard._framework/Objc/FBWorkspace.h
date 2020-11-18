@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBSceneClientProvider-Protocol.h>
 #import <FrontBoard/FBWorkspaceServerDelegate-Protocol.h>
@@ -26,14 +26,15 @@
     BOOL _invalidated;
 }
 
-@property (readonly, strong, nonatomic) BSAuditToken *auditToken;
+@property (readonly, nonatomic) BSAuditToken *auditToken;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBWorkspaceDelegate> delegate;
+@property (weak, nonatomic) id<FBWorkspaceDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) FBProcess *process;
+@property (readonly, weak, nonatomic) FBProcess *process;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_createSceneClientWithIdentifier:(id)arg1 specification:(id)arg2;
 - (void)_invalidateSceneClientWithIdentifier:(id)arg1;
 - (id)_queue;
@@ -55,6 +56,7 @@
 - (void)server:(id)arg1 handleConnectEvent:(id)arg2;
 - (void)server:(id)arg1 handleCreateSceneRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)server:(id)arg1 handleDestroySceneRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)serverDidInvalidateConnection:(id)arg1;
 - (void)unregisterHost:(id)arg1;
 
 @end

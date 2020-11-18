@@ -13,6 +13,7 @@
     NSMutableDictionary *_keyMap;
 }
 
+- (void).cxx_destruct;
 - (id)_init;
 - (id)_keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)_keyForSetting:(unsigned long long)arg1;
@@ -22,7 +23,6 @@
 - (id)_valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3 multilinePrefix:(id)arg4;
 - (BOOL)boolForKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)enumerateKeyedFlagsWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateKeyedObjectsWithBlock:(CDUnknownBlockType)arg1;
 - (long long)flagForKey:(id)arg1;

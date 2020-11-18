@@ -15,6 +15,7 @@
     NSMutableArray *_attachments;
     NSData *_dateSynced;
     unsigned int _fullSyncVersion;
+    NSData *_htmlContentData;
     NSString *_messageId;
     NNMKProtoMessage *_notificationMessage;
     NSData *_preview;
@@ -33,12 +34,14 @@
 @property (nonatomic) unsigned int fullSyncVersion; // @synthesize fullSyncVersion=_fullSyncVersion;
 @property (readonly, nonatomic) BOOL hasDateSynced;
 @property (nonatomic) BOOL hasFullSyncVersion;
+@property (readonly, nonatomic) BOOL hasHtmlContentData;
 @property (nonatomic) BOOL hasMainAlternativeValid;
 @property (readonly, nonatomic) BOOL hasMessageId;
 @property (readonly, nonatomic) BOOL hasNotificationMessage;
 @property (nonatomic) BOOL hasPartiallyLoaded;
 @property (readonly, nonatomic) BOOL hasPreview;
 @property (readonly, nonatomic) BOOL hasText;
+@property (strong, nonatomic) NSData *htmlContentData; // @synthesize htmlContentData=_htmlContentData;
 @property (nonatomic) BOOL mainAlternativeValid; // @synthesize mainAlternativeValid=_mainAlternativeValid;
 @property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property (strong, nonatomic) NNMKProtoMessage *notificationMessage; // @synthesize notificationMessage=_notificationMessage;

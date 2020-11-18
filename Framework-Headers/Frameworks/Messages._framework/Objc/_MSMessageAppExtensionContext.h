@@ -15,6 +15,7 @@
 {
     id<_MSMessageComposeHostImplProtocol> _hostContext;
     unsigned long long _presentationStyle;
+    unsigned long long _presentationContext;
     id<_MSMessageComposeExtensionImplProtocol> _containingContext;
     MSConversation *_activeConversation;
     struct __CFRunLoopObserver *_principalObjectCreationObserver;
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<_MSMessageComposeHostImplProtocol> hostContext; // @synthesize hostContext=_hostContext;
 @property (readonly, nonatomic) struct CGRect initialFrameOfHostView; // @synthesize initialFrameOfHostView=_initialFrameOfHostView;
+@property (nonatomic) unsigned long long presentationContext; // @synthesize presentationContext=_presentationContext;
 @property (nonatomic) unsigned long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
 @property (readonly, nonatomic) struct __CFRunLoopObserver *principalObjectCreationObserver; // @synthesize principalObjectCreationObserver=_principalObjectCreationObserver;
 @property (readonly, weak, nonatomic) UIViewController *stickerViewController;
@@ -43,11 +45,13 @@
 - (void)_conversationDidChangeWithConversationState:(id)arg1;
 - (void)_didCancelSendingMessage:(id)arg1 conversationState:(id)arg2;
 - (void)_didReceiveMessage:(id)arg1 conversationState:(id)arg2;
+- (void)_didRemoveAssetArchiveWithIdentifier:(id)arg1;
 - (void)_didStartSendingMessage:(id)arg1 conversationState:(id)arg2;
 - (void)_handlePrincipalObjectCreated;
 - (void)_handleTextInputPayload:(id)arg1 withPayloadID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_hostDidBeginDeferredTeardown;
 - (void)_installPrincipalObjectObserver;
+- (void)_prepareForPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_presentationDidChangeToPresentationState:(id)arg1;
 - (void)_presentationWillChangeToPresentationState:(id)arg1;
 - (void)_remoteViewDidBecomeReadyForDisplay;
@@ -55,18 +59,23 @@
 - (void)_requestSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_resignActive;
 - (void)_uninstallPrincipalObjectObserverIfNeeded;
+- (void)_volumeButtonPressed:(BOOL)arg1;
 - (void)beginDisablingUserInteraction;
+- (void)contentDidLoad;
 - (void)dealloc;
 - (void)dismiss;
+- (void)dismissAndPresentPhotosApp;
 - (void)dismissToKeyboard:(BOOL)arg1;
 - (void)endDisablingUserInteraction;
 - (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)remoteProxy;
+- (void)removeAssetArchiveWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestPresentationStyle:(unsigned long long)arg1;
 - (void)requestPresentationStyleExpanded:(BOOL)arg1;
 - (void)requestResize;
 - (void)stageAppItem:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)stageAssetArchive:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)stageMediaItem:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)stageRichLink:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startDragMediaItem:(id)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TIKeyboardAssertionManaging-Protocol.h>
 
@@ -35,8 +35,8 @@
 + (void)setSharedAssertionManager:(id)arg1;
 + (id)sharedAssertionManager;
 + (id)singletonInstance;
+- (void).cxx_destruct;
 - (void)addAssertionForObject:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)performBackgroundActivityUpdate;
 - (void)performUpdate;

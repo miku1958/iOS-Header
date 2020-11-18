@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
@@ -34,8 +34,8 @@
 @property (strong, nonatomic) FBProcessWatchdogEventContext *watchdogContext; // @synthesize watchdogContext=_watchdogContext;
 
 + (id)descriptionForExitReason:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (BOOL)consideredJetsam;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (BOOL)fairPlayFailure;

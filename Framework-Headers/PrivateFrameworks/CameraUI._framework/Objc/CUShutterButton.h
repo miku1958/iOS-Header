@@ -7,18 +7,21 @@
 #import <UIKit/UIButton.h>
 
 @class CAMShutterButtonRingView, CAMTimelapseShutterRingView, UIColor, UIImageView, UIView;
+@protocol CAMShutterButtonDelegate;
 
 @interface CUShutterButton : UIButton
 {
     BOOL _spinning;
     BOOL _showDisabled;
     long long _mode;
+    id<CAMShutterButtonDelegate> _delegate;
     UIColor *_contentColor;
     UIColor *_stopModeBackgroundColor;
     CAMShutterButtonRingView *__outerView;
     UIImageView *__outerImageView;
     CAMTimelapseShutterRingView *__timelapseOuterView;
     UIView *__innerView;
+    UIView *__innerViewContrastView;
     UIView *__stopModeBackground;
     UIImageView *__spinnerView;
     long long _layoutStyle;
@@ -27,12 +30,14 @@
 }
 
 @property (readonly, nonatomic) UIView *_innerView; // @synthesize _innerView=__innerView;
+@property (readonly, nonatomic) UIView *_innerViewContrastView; // @synthesize _innerViewContrastView=__innerViewContrastView;
 @property (readonly, nonatomic) UIImageView *_outerImageView; // @synthesize _outerImageView=__outerImageView;
 @property (readonly, nonatomic) CAMShutterButtonRingView *_outerView; // @synthesize _outerView=__outerView;
 @property (strong, nonatomic) UIImageView *_spinnerView; // @synthesize _spinnerView=__spinnerView;
 @property (strong, nonatomic) UIView *_stopModeBackground; // @synthesize _stopModeBackground=__stopModeBackground;
 @property (readonly, nonatomic) CAMTimelapseShutterRingView *_timelapseOuterView; // @synthesize _timelapseOuterView=__timelapseOuterView;
 @property (strong, nonatomic) UIColor *contentColor; // @synthesize contentColor=_contentColor;
+@property (weak, nonatomic) id<CAMShutterButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 @property (nonatomic) BOOL showDisabled; // @synthesize showDisabled=_showDisabled;
@@ -65,6 +70,7 @@
 - (void)_updateOuterAndInnerLayers;
 - (void)_updateSpinningAnimations;
 - (struct UIEdgeInsets)alignmentRectInsets;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 layoutStyle:(long long)arg2 spec:(struct CAMShutterButtonSpec)arg3;

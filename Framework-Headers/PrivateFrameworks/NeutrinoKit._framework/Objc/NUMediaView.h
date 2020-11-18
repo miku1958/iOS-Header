@@ -33,10 +33,12 @@
         BOOL hasDidFinishPreparingVideo;
     } _delegateFlags;
     BOOL _loopsVideo;
-    BOOL _inTransition;
+    long long _transitionCount;
     BOOL _centerContent;
     BOOL _muted;
     BOOL _videoPlayerVisible;
+    BOOL _debugEnabled;
+    BOOL _scrollUpdatesSuppressed;
     id<NUMediaViewDelegate> _delegate;
     double _angle;
     struct CGSize __masterSizeWithoutGeometry;
@@ -49,6 +51,7 @@
 @property (copy, nonatomic) NUComposition *composition;
 @property (nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic, getter=isDebugEnabled) BOOL debugEnabled; // @synthesize debugEnabled=_debugEnabled;
 @property (weak, nonatomic) id<NUMediaViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
@@ -59,6 +62,7 @@
 @property (nonatomic) double minimumZoomScale;
 @property (nonatomic, getter=isMuted) BOOL muted; // @synthesize muted=_muted;
 @property (nonatomic) NSArray *pipelineFilters;
+@property (nonatomic) BOOL scrollUpdatesSuppressed; // @synthesize scrollUpdatesSuppressed=_scrollUpdatesSuppressed;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled;
 @property (nonatomic, getter=isVideoPlayerVisible) BOOL videoPlayerVisible; // @synthesize videoPlayerVisible=_videoPlayerVisible;
@@ -66,10 +70,13 @@
 
 + (struct UIEdgeInsets)_proposedInsetsForInsets:(struct UIEdgeInsets)arg1 contentSize:(struct CGSize)arg2 inFrame:(struct CGRect)arg3 centerContent:(BOOL)arg4;
 - (void).cxx_destruct;
+- (void)_beginTransition;
 - (struct UIEdgeInsets)_edgeInsetsForContentSize:(struct CGSize)arg1 inFrame:(struct CGRect)arg2;
+- (void)_endTransition;
 - (id)_geometry;
 - (id)_imageLayer;
 - (struct CGSize)_imageSize;
+- (id)_layerRecursiveDescription;
 - (id)_livePhotoView;
 - (id)_renderView;
 - (id)_renderer;
@@ -90,6 +97,7 @@
 - (void)_updateVideoPlayerAlpha;
 - (id)_videoPlayerView;
 - (id)_videoPlayerViewWithoutControls;
+- (id)_viewRecursiveDescription;
 - (void)_withComposition:(id)arg1 visitRenderClient:(CDUnknownBlockType)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromSpace:(id)arg2 toView:(id)arg3;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromView:(id)arg2 toSpace:(id)arg3;

@@ -29,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (void)_completeWithError:(id)arg1;
+- (id)description;
 
 @end
 

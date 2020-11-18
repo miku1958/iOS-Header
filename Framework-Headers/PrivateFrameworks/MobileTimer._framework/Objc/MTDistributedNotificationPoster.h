@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileTimer/MTNotificationPoster-Protocol.h>
+#import <MobileTimer/MTNotificationCenter-Protocol.h>
 
 @class NSString;
 
-@interface MTDistributedNotificationPoster : NSObject <MTNotificationPoster>
+@interface MTDistributedNotificationPoster : NSObject <MTNotificationCenter>
 {
 }
 

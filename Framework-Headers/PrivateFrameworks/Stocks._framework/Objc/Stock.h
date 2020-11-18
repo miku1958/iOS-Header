@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class Exchange, NSString, NSURL, StockChartData, StockDataSource;
 
@@ -44,6 +44,9 @@
 @property (strong, nonatomic) StockDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) NSString *dividendYield; // @synthesize dividendYield=_dividendYield;
 @property (strong, nonatomic) Exchange *exchange; // @synthesize exchange=_exchange;
+@property (readonly, nonatomic) NSString *formattedChange;
+@property (readonly, nonatomic) NSString *formattedChangePercent;
+@property (readonly, nonatomic) NSString *formattedPrice;
 @property (strong, nonatomic) NSString *high; // @synthesize high=_high;
 @property (strong, nonatomic) NSURL *infoURL; // @synthesize infoURL=_infoURL;
 @property (strong, nonatomic) NSString *low; // @synthesize low=_low;
@@ -64,21 +67,11 @@
 @property (strong, nonatomic) NSString *yearLow; // @synthesize yearLow=_yearLow;
 
 + (id)BlankValueString;
-+ (id)PercentFormatter;
-+ (id)_formattedStringForNumber:(id)arg1 fractionDigits:(unsigned int)arg2 percentStyle:(BOOL)arg3 groupingSeparators:(BOOL)arg4;
 + (id)_potentiallyAbsentKeys;
-+ (id)formattedStringForNumber:(id)arg1 fractionDigits:(unsigned int)arg2 percentStyle:(BOOL)arg3;
-+ (id)formattedStringForNumber:(id)arg1 fractionDigits:(unsigned int)arg2 percentStyle:(BOOL)arg3 groupingSeparators:(BOOL)arg4;
-+ (id)formattedStringForNumber:(id)arg1 fractionDigits:(unsigned int)arg2 percentStyle:(BOOL)arg3 groupingSeparators:(BOOL)arg4 droppingFractionDigitsIfLengthExceeds:(unsigned int)arg5;
-+ (id)formattedStringForString:(id)arg1 fractionDigits:(unsigned int)arg2 percentStyle:(BOOL)arg3;
-+ (id)formattedStringForString:(id)arg1 fractionDigits:(unsigned int)arg2 percentStyle:(BOOL)arg3 droppingFractionDigitsIfLengthExceeds:(unsigned int)arg4;
 + (id)listNameOverridesBySymbol;
-+ (BOOL)localeUsesASCIIDigits;
 + (id)localizedMagnitudeAbbreviatedStringWithString:(id)arg1;
 + (id)localizedMagnitudeAbbreviatedStringWithString:(id)arg1 fractionDigits:(unsigned int)arg2;
-+ (id)percentSymbol;
 + (id)postfixCharacterForMagnitude:(unsigned int)arg1 unitMagnitude:(unsigned int *)arg2;
-+ (void)resetLocale;
 + (id)symbolForURL:(id)arg1;
 + (id)urlForStock:(id)arg1;
 + (id)urlForStockSymbol:(id)arg1;
@@ -94,8 +87,7 @@
 - (BOOL)doesMetadataNeedUpdate;
 - (BOOL)doesQuoteNeedUpdate;
 - (id)formattedChangePercent:(BOOL)arg1;
-- (id)formattedChangePercent:(BOOL)arg1 includePercentSign:(BOOL)arg2;
-- (id)formattedPrice;
+- (id)formattedPriceDroppingFractionDigitsIfLengthExceeds:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
@@ -107,7 +99,6 @@
 - (id)listNameWithMaxIndexNameLength:(unsigned long long)arg1;
 - (BOOL)marketIsOpen;
 - (void)populateFromDictionary:(id)arg1;
-- (void)resetLocale;
 - (void)setChartData:(id)arg1 forInterval:(long long)arg2;
 - (BOOL)shouldUseCompanyNameAsListName:(unsigned long long)arg1;
 - (void)updateMetadataWithDictionary:(id)arg1 forTime:(double)arg2;

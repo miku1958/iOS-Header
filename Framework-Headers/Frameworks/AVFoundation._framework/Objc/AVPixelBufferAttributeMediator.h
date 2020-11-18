@@ -4,8 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface AVPixelBufferAttributeMediator : NSObject
 {
     struct OpaqueVTPixelBufferAttributesMediator *_mediator;

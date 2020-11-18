@@ -18,7 +18,7 @@
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
     NSString *_lastSuccessfulRunDateUserDefaultsKey;
-    BOOL _isWaitingToRun;
+    CDUnknownBlockType _waitingActivityCompletion;
     NSString *_errorCountUserDefaultsKey;
     NSString *_minimumIntervalDefaultsKey;
     NSString *_name;
@@ -43,13 +43,13 @@
 - (id)_dateForDefaultsKey:(id)arg1;
 - (void)_handleXPCActivityCallback:(id)arg1;
 - (void)_performActivity:(id)arg1;
-- (void)_queue_activityFinishedWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 error:(id)arg3;
+- (void)_queue_activityFinishedWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 activityStartDate:(id)arg3 error:(id)arg4;
 - (id)_queue_criteriaForInterval:(double)arg1;
 - (double)_queue_currentInterval;
 - (long long)_queue_errorCount;
 - (void)_queue_incrementErrorCount;
 - (void)_queue_performActivityIfPossibleWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_performActivityIfWaitingWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_queue_performActivityIfWaiting;
 - (void)_queue_performActivityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_setLastSuccessfulRunDate:(id)arg1;
 - (void)_queue_unitTest_activityFiredButRunDeclined;
@@ -60,7 +60,7 @@
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)diagnosticDescription;
-- (void)didPerformActivityWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 error:(id)arg3;
+- (void)didPerformActivityWithResult:(long long)arg1 minimumRetryInterval:(double)arg2 activityStartDate:(id)arg3 error:(id)arg4;
 - (id)initWithProfile:(id)arg1 name:(id)arg2 interval:(double)arg3 delegate:(id)arg4 loggingCategory:(id)arg5;
 - (BOOL)isWaitingToRun;
 - (id)lastSuccessfulRunDate;

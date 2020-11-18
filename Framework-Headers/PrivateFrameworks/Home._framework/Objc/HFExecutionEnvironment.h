@@ -10,10 +10,12 @@
 
 @interface HFExecutionEnvironment : NSObject
 {
+    BOOL _active;
     unsigned long long _runningState;
     NSHashTable *_observers;
 }
 
+@property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly, nonatomic) unsigned long long runningState; // @synthesize runningState=_runningState;
 

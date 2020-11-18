@@ -12,13 +12,16 @@
 
 @property (nonatomic) BOOL perservesAlpha;
 
++ (id)SDOFV2MetalKernelNamed:(id)arg1;
++ (id)SDOFV3MetalKernelNamed:(id)arg1;
 + (id)kernelWithString:(id)arg1;
-- (id)_initWithDict:(id)arg1;
+- (id)_initWithReflection:(struct CIKernelReflection)arg1;
 - (id)applyWithExtent:(struct CGRect)arg1 arguments:(id)arg2;
 - (id)applyWithExtent:(struct CGRect)arg1 arguments:(id)arg2 options:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3 options:(id)arg4;
 - (BOOL)canReduceOutputChannels;
+- (id)initWithString:(id)arg1;
 - (BOOL)preservesRange;
 - (void)setCanReduceOutputChannels:(BOOL)arg1;
 - (void)setPreservesRange:(BOOL)arg1;

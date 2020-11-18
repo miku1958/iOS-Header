@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXPlacesMapControllerSelectionDelegate-Protocol.h>
 #import <PhotosUICore/PXPlacesMapFetchResultControllerAccess-Protocol.h>
 
-@class NSString, PXPlacesMapFetchResultController, UIBarButtonItem;
+@class NSString, PHAsset, PXPlacesMapFetchResultController, UIBarButtonItem;
 @protocol PXPlacesAssetsSelectionDelegate, PXPlacesGeotaggable, PXPlacesMapBarButtonsDelegate, PXPlacesMapGeotaggableInfoDelegate;
 
 @interface PXPlacesMapFetchResultViewController : UIViewController <PXPlacesMapControllerChangeDelegate, PXPlacesMapControllerSelectionDelegate, PXOneUpPresentationDelegate, PXPlacesMapFetchResultControllerAccess>
@@ -23,7 +23,7 @@
     UIViewController *_pxOneUpPresentationViewController;
     unsigned long long _style;
     PXPlacesMapFetchResultController *_mapFetchResultsController;
-    id<PXPlacesGeotaggable> _selectedGeotaggable;
+    PHAsset<PXPlacesGeotaggable> *_selectedGeotaggable;
     id<PXPlacesMapGeotaggableInfoDelegate> _geotaggableInfoDelegate;
     UIBarButtonItem *_filterAssetsBtn;
 }
@@ -38,7 +38,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PXPlacesMapFetchResultController *mapFetchResultsController; // @synthesize mapFetchResultsController=_mapFetchResultsController;
 @property (weak, nonatomic) UIViewController *pxOneUpPresentationViewController; // @synthesize pxOneUpPresentationViewController=_pxOneUpPresentationViewController;
-@property (strong) id<PXPlacesGeotaggable> selectedGeotaggable; // @synthesize selectedGeotaggable=_selectedGeotaggable;
+@property (strong) PHAsset<PXPlacesGeotaggable> *selectedGeotaggable; // @synthesize selectedGeotaggable=_selectedGeotaggable;
 @property (nonatomic) BOOL showNavigationBar; // @synthesize showNavigationBar=_showNavigationBar;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;

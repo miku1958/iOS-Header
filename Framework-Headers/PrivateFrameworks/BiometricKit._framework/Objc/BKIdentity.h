@@ -25,7 +25,7 @@
 
 + (id)identity;
 - (void).cxx_destruct;
-- (id)initWithDeviceIdentity:(id)arg1;
+- (id)initWithServerIdentity:(id)arg1;
 - (id)serverIdentity;
 
 @end

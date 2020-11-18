@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UISwitchControl-Protocol.h>
-#import <UIKit/UISwitchVisualElementProvider-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UISwitchControl-Protocol.h>
+#import <UIKitCore/UISwitchVisualElementProvider-Protocol.h>
 
 @class NSString, UIColor, UIImage, UIImpactFeedbackGenerator, UISwitchVisualElement;
 

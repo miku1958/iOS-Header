@@ -21,7 +21,6 @@
 @optional
 - (void)documentRoot:(TSKDocumentRoot *)arg1 didUpdateDocumentRevision:(TSPDocumentRevision *)arg2;
 - (void)documentRootDidRollbackOfflineCommands:(TSKDocumentRoot *)arg1;
-- (void)refreshSharingStateWithReason:(NSString *)arg1 isUserInitiated:(BOOL)arg2 refreshShare:(BOOL)arg3 refreshPrivacy:(BOOL)arg4 migrateIfNecessary:(BOOL)arg5 queue:(NSObject<OS_dispatch_queue> *)arg6 completionBlock:(void (^)(TSKSharingState *, NSError *))arg7;
 - (void)refreshSharingStateWithReason:(NSString *)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2 completionBlock:(void (^)(TSKSharingState *, NSError *))arg3;
 - (TSKSharingState *)sharingStateForContext:(TSPObjectContext *)arg1;
 - (void)sharingStateRefreshed:(TSKSharingState *)arg1 isUserInitiated:(BOOL)arg2 isContinuingActivity:(BOOL)arg3 serializationToken:(id<TSUTraceableResourceToken>)arg4 completionBlock:(void (^)(void))arg5;

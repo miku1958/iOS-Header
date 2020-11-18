@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUI/CUIStructuredThemeStorage-Protocol.h>
 #import <CoreUI/CUIStructuredThemeStorage2-Protocol.h>
@@ -33,10 +33,11 @@
 - (void)_commonInit;
 - (BOOL)_formatStorageKeyArrayBytes:(void *)arg1 length:(unsigned long long)arg2 fromKey:(struct _renditionkeytoken *)arg3;
 - (void)_getKeyForAssetClosestToKey:(struct _renditionkeytoken *)arg1 foundAsset:(BOOL *)arg2;
-- (void)_getKeyForAssetInOtherLookGroupClosestToKey:(struct _renditionkeytoken *)arg1 foundAsset:(BOOL *)arg2;
 - (id)_newRenditionKeyDataFromKey:(struct _renditionkeytoken *)arg1;
 - (void)_updateKeyWithCompatibilityMapping:(struct _renditionkeytoken *)arg1;
 - (id)allImageNames;
+- (unsigned short)appearanceIdentifierForName:(id)arg1;
+- (id)appearances;
 - (BOOL)assetExistsForKey:(struct _renditionkeytoken *)arg1;
 - (unsigned int)authoredWithSchemaVersion;
 - (id)baseGradationKeySignatureForKey:(const struct _renditionkeytoken *)arg1;
@@ -65,6 +66,7 @@
 - (id)keySignatureForKey:(const struct _renditionkeytoken *)arg1;
 - (id)lookupAssetForKey:(struct _renditionkeytoken *)arg1;
 - (long long)maximumRenditionKeyTokenCount;
+- (id)nameForAppearanceIdentifier:(unsigned short)arg1;
 - (id)prefilteredAssetDataForKey:(struct _renditionkeytoken *)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(id)arg1;
 - (const struct _renditionkeytoken *)renditionKeyForName:(id)arg1 cursorHotSpot:(struct CGPoint *)arg2;
@@ -72,6 +74,7 @@
 - (id)renditionNameForKeyList:(struct _renditionkeytoken *)arg1;
 - (id)renditionWithKey:(const struct _renditionkeytoken *)arg1;
 - (id)renditionWithKey:(const struct _renditionkeytoken *)arg1 usingKeySignature:(id)arg2;
+- (id)store;
 - (id)themeStore;
 - (BOOL)usesCUISystemThemeRenditionKey;
 - (id)zeroCodeGlyphList;

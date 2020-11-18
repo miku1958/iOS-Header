@@ -12,24 +12,26 @@
 
 @interface CEMPasscodeClearPasscodeCommand : CEMCommandBase <CEMRegisteredTypeProtocol>
 {
+    NSData *_payloadUnlockToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSData *payloadUnlockToken;
+@property (copy, nonatomic) NSData *payloadUnlockToken; // @synthesize payloadUnlockToken=_payloadUnlockToken;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withUnlockToken:(id)arg2;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)executionLevel;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

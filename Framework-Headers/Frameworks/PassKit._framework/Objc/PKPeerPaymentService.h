@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class PKPeerPaymentAccount, PKPeerPaymentWebServiceContext, PKXPCService;
 @protocol OS_dispatch_queue;
@@ -40,8 +40,9 @@
 - (void)noteAccountDeleted;
 - (void)presentIdentityVerificationFlowWithResponse:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentPeerPaymentTermsAndConditionsWithAccount:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)presentRegistrationFlowWithAccount:(id)arg1 amount:(id)arg2 state:(unsigned long long)arg3 orientation:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)presentRegistrationFlowWithAccount:(id)arg1 amount:(id)arg2 state:(unsigned long long)arg3 senderAddress:(id)arg4 orientation:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)presentRegistrationFlowWithAccount:(id)arg1 orientation:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)receivedPeerPaymentMessageData:(id)arg1;
 - (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registrationStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetApplePayManateeViewWithCompletion:(CDUnknownBlockType)arg1;
@@ -51,7 +52,6 @@
 - (void)suspendAccountChangedNotifications;
 - (void)unregisterDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateAccountWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateMemo:(id)arg1 forTransactionWithIdentifier:(id)arg2;
 - (void)updateMessageReceivedDate:(id)arg1 forTransactionWithIdentifier:(id)arg2;
 - (void)updateMockAccountBalanceByAddingAmount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

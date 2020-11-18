@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardMotionSupport.h>
+#import <UIKitCore/UIKeyboardMotionSupport.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIKeyboardKeyplaneTransitionDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardKeyplaneTransitionDelegate-Protocol.h>
 
 @class CADisplayLink, NSString, UIPanGestureRecognizer;
 

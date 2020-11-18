@@ -6,6 +6,7 @@
 
 #import <UIKit/UIApplicationExtensionActivity.h>
 
+__attribute__((visibility("hidden")))
 @interface _PUEditPluginApplicationExtensionActivity : UIApplicationExtensionActivity
 {
 }

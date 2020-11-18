@@ -47,8 +47,6 @@
 - (void)presentLockscreenInterfaceWithBackgroundColor:(id)arg1 waveformForegroundColor:(id)arg2 waveformBackgroundColor:(id)arg3;
 - (void)setScreenUpdatesDisabled:(BOOL)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
-- (BOOL)shouldAutomaticallyForwardRotationMethods;
-- (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 
 @end
 

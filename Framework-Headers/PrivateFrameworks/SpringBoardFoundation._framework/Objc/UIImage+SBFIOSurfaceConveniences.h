@@ -8,5 +8,6 @@
 
 @interface UIImage (SBFIOSurfaceConveniences)
 - (id)sbf_CGImageBackedImage;
+- (id)sbf_CGImageBackedImageWithMaximumBitsPerComponent:(unsigned long long)arg1;
 @end
 

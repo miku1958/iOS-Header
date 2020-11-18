@@ -7,11 +7,12 @@
 #import <PhotosUICore/PXPhotoKitAssetActionPerformer.h>
 
 #import <PhotosUI/PUPhotosSharingViewControllerDelegate-Protocol.h>
+#import <PhotosUI/PXCMMActionPerformerDelegate-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface PUPXPhotoKitShareAssetActionPerformer : PXPhotoKitAssetActionPerformer <PUPhotosSharingViewControllerDelegate>
+@interface PUPXPhotoKitShareAssetActionPerformer : PXPhotoKitAssetActionPerformer <PUPhotosSharingViewControllerDelegate, PXCMMActionPerformerDelegate>
 {
 }
 
@@ -25,6 +26,9 @@ __attribute__((visibility("hidden")))
 + (id)createPreviewActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 selectionSnapshot:(id)arg2 person:(id)arg3;
 - (id)_assetsFetchResultByAssetCollectionFromCollectionListFetchResult:(id)arg1 inDataSource:(id)arg2;
+- (void)_presentShareSheet;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
 - (void)performUserInteractionTask;
 - (void)photosSharingViewController:(id)arg1 didCompleteWithActivityType:(id)arg2 success:(BOOL)arg3 withAsset:(id)arg4;
 - (void)photosSharingViewControllerDidCancel:(id)arg1 needsDismiss:(BOOL)arg2;

@@ -8,39 +8,36 @@
 
 #import <ConfigurationEngineModel/CEMRegisteredTypeProtocol-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class CEMNetworkCellularDeclaration_AttachAPN, NSArray, NSString;
 
 @interface CEMNetworkCellularDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    CEMNetworkCellularDeclaration_AttachAPN *_payloadAttachAPN;
+    NSArray *_payloadAPNs;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *payloadAPNs;
-@property (readonly, nonatomic) NSDictionary *payloadAttachAPN;
+@property (copy, nonatomic) NSArray *payloadAPNs; // @synthesize payloadAPNs=_payloadAPNs;
+@property (copy, nonatomic) CEMNetworkCellularDeclaration_AttachAPN *payloadAttachAPN; // @synthesize payloadAttachAPN=_payloadAttachAPN;
 @property (readonly) Class superclass;
 
-+ (id)APNsItem_allowedPayloadKeys;
-+ (id)AttachAPN_allowedPayloadKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withAttachAPN:(id)arg2 withAPNs:(id)arg3;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadAPNsItem:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadAttachAPN:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadAPNsItem_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validPayloadAttachAPN_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

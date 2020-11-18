@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVAssetClientURLRequestHelper, AVAssetCustomURLBridgeForNSURLSession, AVWeakReference, NSMutableDictionary, NSOperation, NSOperationQueue, NSURLSession;
-@protocol NSURLSessionDataDelegate, OS_dispatch_queue;
+@class AVAssetClientURLRequestHelper, AVAssetCustomURLBridgeForNSURLSession, AVWeakReference, NSMutableDictionary, NSOperationQueue, NSURLSession;
+@protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetResourceLoaderInternal : NSObject
 {
     AVAssetClientURLRequestHelper *URLRequestHelper;
@@ -28,10 +29,7 @@
     long long makeResourceLoaderURLSessionSupportStuffOnlyOnce;
     NSURLSession *URLSession;
     AVAssetCustomURLBridgeForNSURLSession *bridgeBetweenHandlerAndSession;
-    NSOperation *waitForAssetURLSessionStuffOperation;
     NSOperationQueue *URLSessionOperationQueue;
-    id<NSURLSessionDataDelegate> URLSessionDataDelegate;
-    id<NSURLSessionDataDelegate> shimURLSessionDataDelegate;
 }
 
 @end

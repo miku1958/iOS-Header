@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVAsynchronousKeyValueLoading-Protocol.h>
 #import <AVFoundation/NSCopying-Protocol.h>
 
 @class AVWeakReference, NSArray, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetInspectorLoader : NSObject <NSCopying, AVAsynchronousKeyValueLoading>
 {
     AVWeakReference *_weakReference;
@@ -40,8 +41,6 @@
 @property (readonly, nonatomic, getter=_weakReference) AVWeakReference *weakReference;
 
 + (void)initialize;
-- (id)_URLSessionDataDelegate;
-- (id)_URLSessionOperationQueue;
 - (id)_createAVErrorForError:(id)arg1 andFigErrorCode:(int)arg2;
 - (void)_ensureAllDependenciesOfKeyAreLoaded:(id)arg1;
 - (void)_setIsAssociatedWithFragmentMinder:(BOOL)arg1;
@@ -52,7 +51,6 @@
 - (id)init;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)loadValuesAsynchronouslyForKeys:(id)arg1 keysForCollectionKeys:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)postURLSessionSetUpDidCompleteNotificationIfAppropriate;
 - (long long)statusOfValueForKey:(id)arg1 error:(id *)arg2;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIDocumentPickerViewControllerHost-Protocol.h>
+#import <UIKitCore/_UIDocumentPickerViewControllerHost-Protocol.h>
 
 @protocol _UIDocumentPickerViewControllerExtensionHost <_UIDocumentPickerViewControllerHost>
 - (void)_displayLocationMenu:(struct CGRect)arg1;

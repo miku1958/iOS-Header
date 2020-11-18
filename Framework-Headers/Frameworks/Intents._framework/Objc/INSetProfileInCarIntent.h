@@ -8,12 +8,13 @@
 
 #import <Intents/INSetProfileInCarIntentExport-Protocol.h>
 
-@class NSNumber, NSString;
+@class INSpeakableString, NSNumber, NSString;
 
 @interface INSetProfileInCarIntent : INIntent <INSetProfileInCarIntentExport>
 {
 }
 
+@property (readonly, copy, nonatomic) INSpeakableString *carName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) NSNumber *defaultProfile;
 @property (readonly, copy) NSString *description;
@@ -23,14 +24,19 @@
 @property (readonly, copy, nonatomic) NSNumber *profileNumber;
 @property (readonly) Class superclass;
 
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
+- (long long)_intentCategory;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithProfileNumber:(id)arg1 profileLabel:(id)arg2 defaultProfile:(id)arg3;
 - (id)initWithProfileNumber:(id)arg1 profileName:(id)arg2 defaultProfile:(id)arg3;
+- (id)initWithProfileNumber:(id)arg1 profileName:(id)arg2 defaultProfile:(id)arg3 carName:(id)arg4;
 - (id)parametersByName;
+- (void)setCarName:(id)arg1;
 - (void)setDefaultProfile:(id)arg1;
 - (void)setDomain:(id)arg1;
 - (void)setParametersByName:(id)arg1;

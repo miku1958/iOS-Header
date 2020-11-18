@@ -6,9 +6,13 @@
 
 #import <Foundation/NSString.h>
 
+@class NSArray;
+
 @interface NSString (PhotosUICore)
 
+@property (readonly, nonatomic) BOOL px_endsWithFullStopOrEquivalentPunctuationMark;
 @property (readonly, nonatomic) struct _NSRange px_firstLetterRange;
+@property (readonly, nonatomic) NSArray *px_integerValues;
 @property (readonly, nonatomic) long long px_platformAgnosticHash;
 @property (readonly, nonatomic) NSString *px_stringByIndentingNewLines;
 

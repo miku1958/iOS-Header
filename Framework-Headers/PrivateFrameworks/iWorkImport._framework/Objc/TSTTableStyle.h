@@ -19,6 +19,26 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSDStroke *bodyColumnStroke;
 @property (readonly, nonatomic) TSDStroke *bodyRowStroke;
 @property (readonly, nonatomic) TSDStroke *bodyRowStrokeEvenIfNotVisible;
+@property (readonly, nonatomic) TSDStroke *categoryLevel1BottomStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel1InteriorStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel1LabelSeparatorStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel1TopStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel2BottomStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel2InteriorStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel2LabelSeparatorStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel2TopStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel3BottomStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel3InteriorStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel3LabelSeparatorStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel3TopStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel4BottomStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel4InteriorStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel4LabelSeparatorStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel4TopStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel5BottomStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel5InteriorStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel5LabelSeparatorStroke;
+@property (readonly, nonatomic) TSDStroke *categoryLevel5TopStroke;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) TSDStroke *defaultHorizontalBorderStroke;
 @property (readonly, nonatomic) TSDStroke *defaultHorizontalBorderStrokeEvenIfNotVisible;
@@ -39,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSDStroke *headerRowSeparatorStroke;
 @property (readonly) Class superclass;
 
++ (int)defaultIntValueForProperty:(int)arg1;
 + (void)initDefaultPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3 alternate:(int)arg4;
 + (void)initDefaultStrokePresetListInPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3;
 + (id)nonEmphasisTableProperties;

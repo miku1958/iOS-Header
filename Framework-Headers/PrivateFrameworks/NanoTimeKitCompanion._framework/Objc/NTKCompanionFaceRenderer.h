@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NTKFace, _NTKCompanionFaceSnapshottingWindow;
+@class NSMutableArray, NTKFace, NTKFaceSnapshottingWindow;
 @protocol OS_dispatch_queue;
 
 @interface NTKCompanionFaceRenderer : NSObject
 {
     NSObject<OS_dispatch_queue> *_workQueue;
-    _NTKCompanionFaceSnapshottingWindow *_window;
+    NTKFaceSnapshottingWindow *_window;
     BOOL _queueActive;
     NSMutableArray *_pendingTaskList;
     NTKFace *_currentFace;

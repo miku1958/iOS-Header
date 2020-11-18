@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface GEOTransitSection : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     CDStruct_9f2792e4 _stepIndexs;
     NSString *_actionSheetName;
     int _nextOptionsIndex;
+    NSMutableArray *_ticketingSegments;
     BOOL _disableAlightNotifications;
     struct {
         unsigned int nextOptionsIndex:1;
@@ -36,15 +37,19 @@
 @property (readonly, nonatomic) unsigned long long routeDetailsArtworkIndexsCount;
 @property (readonly, nonatomic) unsigned int *stepIndexs;
 @property (readonly, nonatomic) unsigned long long stepIndexsCount;
+@property (strong, nonatomic) NSMutableArray *ticketingSegments; // @synthesize ticketingSegments=_ticketingSegments;
 
++ (Class)ticketingSegmentType;
 - (void).cxx_destruct;
 - (unsigned int)actionSheetArtworkIndexAtIndex:(unsigned long long)arg1;
 - (void)addActionSheetArtworkIndex:(unsigned int)arg1;
 - (void)addRouteDetailsArtworkIndex:(unsigned int)arg1;
 - (void)addStepIndex:(unsigned int)arg1;
+- (void)addTicketingSegment:(id)arg1;
 - (void)clearActionSheetArtworkIndexs;
 - (void)clearRouteDetailsArtworkIndexs;
 - (void)clearStepIndexs;
+- (void)clearTicketingSegments;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -59,6 +64,8 @@
 - (void)setRouteDetailsArtworkIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (void)setStepIndexs:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (unsigned int)stepIndexAtIndex:(unsigned long long)arg1;
+- (id)ticketingSegmentAtIndex:(unsigned long long)arg1;
+- (unsigned long long)ticketingSegmentsCount;
 - (void)writeTo:(id)arg1;
 
 @end

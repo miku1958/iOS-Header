@@ -10,22 +10,18 @@
 
 struct CacheFrame {
     struct CacheFrame *_field1;
-    struct HeapNode *_field2;
-    struct ResourceNode *_field3;
+    struct ResourceNode *_field2;
+    struct HeapNodeBlock *_field3;
 };
 
-struct HeapNode {
-    struct HeapNode *_field1;
-    id _field2;
-    unsigned long long _field3;
-};
+struct HeapNodeBlock;
 
 struct MPSAutoBuffer {
     struct atomic<void *> _field1;
     unsigned long long _field2;
     id _field3;
     id _field4;
-    unsigned long long _field5;
+    CDStruct_328d5c87 _field5;
 };
 
 struct MPSAutoCache {
@@ -36,7 +32,8 @@ struct MPSAutoCache {
 
 struct MPSAutoTexture {
     struct atomic<void *> _texture;
-    unsigned long long _resourceSize;
+    CDStruct_328d5c87 _resourceSize;
+    unsigned long long _rowBytes;
     union {
         struct {
             struct MPSAutoTexture *parent;
@@ -72,7 +69,7 @@ struct MPSDevice {
     unsigned int _field10;
     int _field11;
     struct MPSGPUInfo _field12;
-    struct atomic<MPSLibrary *> _field13[69];
+    struct atomic<MPSLibrary *> _field13[79];
 };
 
 struct MPSDeviceBehaviors;
@@ -138,6 +135,7 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field18;
     struct MPSDeviceSpecificInfo _field19;
     struct MPSDeviceSpecificInfo _field20;
+    struct MPSDeviceSpecificInfo _field21;
 };
 
 struct MPSPixelCapabilities {
@@ -236,9 +234,9 @@ typedef struct {
 } CDStruct_14f26992;
 
 typedef struct {
-    unsigned long long _field1;
-    unsigned long long _field2;
-} CDStruct_4bcfbbae;
+    unsigned long long size;
+    unsigned long long align;
+} CDStruct_328d5c87;
 
 typedef struct {
     CDStruct_14f26992 _field1;

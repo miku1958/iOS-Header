@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 {
     NSString *mPrefixString;
     NSString *mSuffixString;
-    CDStruct_28403e59 mFormatStruct;
+    CDStruct_b1066b25 mFormatStruct;
 }
 
 @property (readonly, nonatomic) unsigned int base;
@@ -58,7 +58,7 @@ __attribute__((visibility("hidden")))
 + (int)defaultNegativeNumberStyle;
 + (id)instanceWithArchive:(const struct FormatStructArchive *)arg1 unarchiver:(id)arg2;
 + (int)labelFormatTypeFromTSUFormatType:(int)arg1;
-+ (id)numberFormatWithFormatStruct:(CDStruct_28403e59)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
++ (id)numberFormatWithFormatStruct:(CDStruct_b1066b25)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
 + (id)numberFormatWithFormatType:(int)arg1 decimalPlaces:(unsigned int)arg2 showThousandsSeparator:(BOOL)arg3;
 + (BOOL)supportsFormatType:(int)arg1;
 - (id)chartFormattedInspectorStringForValue:(id)arg1 locale:(id)arg2;
@@ -70,10 +70,10 @@ __attribute__((visibility("hidden")))
 - (id)customFormatListKey;
 - (id)dataFormatterForDocumentRoot:(id)arg1 pasteboardCustomFormatList:(id)arg2;
 - (void)dealloc;
-- (CDStruct_28403e59)formatStruct;
+- (CDStruct_b1066b25)formatStruct;
 - (id)init;
 - (id)initWithArchive:(const struct FormatStructArchive *)arg1 unarchiver:(id)arg2;
-- (id)initWithFormatStruct:(CDStruct_28403e59)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
+- (id)initWithFormatStruct:(CDStruct_b1066b25)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
 - (BOOL)isCompatibleWithDataFormatter:(id)arg1;
 - (BOOL)isCustom;
 - (BOOL)isEqual:(id)arg1;
@@ -97,7 +97,7 @@ __attribute__((visibility("hidden")))
 - (int)p_fractionAccuracy;
 - (int)p_fractionAccuracyIfAvailable;
 - (BOOL)p_hasValidDecimalPlaces;
-- (id)p_initWithFormatStruct:(CDStruct_28403e59)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
+- (id)p_initWithFormatStruct:(CDStruct_b1066b25)arg1 prefixString:(id)arg2 suffixString:(id)arg3;
 - (int)p_negativeStyle;
 - (int)p_negativeStyleIfAvailable;
 - (BOOL)p_showThousandsSeparator;

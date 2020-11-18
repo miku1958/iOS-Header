@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 #import <PassKitUI/PKEnterCurrencyAmountViewDelegate-Protocol.h>
+#import <PassKitUI/PKEnterValueNewBalanceViewDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentAddBankAcountInformationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPeerPaymentPerformActionView-Protocol.h>
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
@@ -15,7 +16,7 @@
 @class NSDecimalNumber, NSNumberFormatter, NSString, PKContinuousButton, PKEnterCurrencyAmountView, PKEnterValueNewBalanceView, PKPeerPaymentAccount, PKPeerPaymentBankAccountInformation, PKPeerPaymentService, UIImageView, UILabel, UITableView, UITextField;
 @protocol PKPerformActionViewDelegate;
 
-@interface PKPerformPeerPaymentTransferToBankActionView : UIView <PKEnterCurrencyAmountViewDelegate, PKPeerPaymentAddBankAcountInformationViewControllerDelegate, UITableViewDelegate, UITableViewDataSource, PKPeerPaymentPerformActionView>
+@interface PKPerformPeerPaymentTransferToBankActionView : UIView <PKEnterCurrencyAmountViewDelegate, PKPeerPaymentAddBankAcountInformationViewControllerDelegate, PKEnterValueNewBalanceViewDelegate, UITableViewDelegate, UITableViewDataSource, PKPeerPaymentPerformActionView>
 {
     PKPeerPaymentBankAccountInformation *_bankInformation;
     PKPeerPaymentService *_peerPaymentService;
@@ -62,9 +63,9 @@
 - (void)_currentAmountDidChangeTo:(id)arg1 shouldGenerateNewSuggestions:(BOOL)arg2;
 - (void)_handleEditAccountInformationButtonPressed;
 - (BOOL)_isCurrentAmountValid;
-- (void)_presentAddBankAccountViewController;
 - (void)_presentViewController:(id)arg1;
 - (void)_setRightBarButtonEnabledState;
+- (BOOL)_shouldEnableMaxBalanceTransferButton;
 - (BOOL)_shouldShakeWithNewAmount:(id)arg1;
 - (id)_tableView;
 - (unsigned long long)_topPadding;
@@ -73,6 +74,7 @@
 - (void)_updateCurrentAmount:(id)arg1 shouldGenerateNewSuggestions:(BOOL)arg2;
 - (void)amountTextFieldShouldAcceptTouches:(BOOL)arg1;
 - (void)bankAccountInformationViewControllerChangedBankAccountInformation:(id)arg1;
+- (void)didTapNewBalanceView;
 - (BOOL)enterCurrencyAmountView:(id)arg1 shouldChangeAmountFrom:(id)arg2 to:(id)arg3;
 - (void)enterCurrencyAmountViewDidChangeAmount:(id)arg1;
 - (id)initWithAccount:(id)arg1 bankInformation:(id)arg2;
@@ -80,6 +82,7 @@
 - (void)layoutSubviews;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)pass;
+- (void)presentAddBankAccountViewController;
 - (void)saveLastInputValues;
 - (id)serviceProviderData;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

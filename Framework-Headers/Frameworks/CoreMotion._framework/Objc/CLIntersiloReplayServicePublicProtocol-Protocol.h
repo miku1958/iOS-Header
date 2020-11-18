@@ -6,12 +6,12 @@
 
 #import <CoreMotion/CLIntersiloServiceProtocol-Protocol.h>
 
-@class NSString;
+@class NSSet, NSString;
 @protocol CLIntersiloReplayServiceClientProtocol;
 
 @protocol CLIntersiloReplayServicePublicProtocol <CLIntersiloServiceProtocol>
 - (void)receiveConnectionTo:(byref id)arg1;
-- (void)useRecordingFileForPlayback:(NSString *)arg1;
-- (void)useRecordingFileForPlayback:(NSString *)arg1 coordinator:(byref id<CLIntersiloReplayServiceClientProtocol>)arg2 synchronousFilter:(CDUnknownFunctionPointerType)arg3;
+- (void)useRecordingFileForPlayback:(NSString *)arg1 expectedClasses:(NSSet *)arg2;
+- (void)useRecordingFileForPlayback:(NSString *)arg1 expectedClasses:(NSSet *)arg2 coordinator:(byref id<CLIntersiloReplayServiceClientProtocol>)arg3 synchronousFilter:(CDUnknownFunctionPointerType)arg4;
 @end
 

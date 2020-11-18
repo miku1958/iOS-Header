@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
+__attribute__((visibility("hidden")))
 @interface SKProductsResponseInternal : NSObject
 {
     NSArray *_invalidIdentifiers;
     NSArray *_products;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

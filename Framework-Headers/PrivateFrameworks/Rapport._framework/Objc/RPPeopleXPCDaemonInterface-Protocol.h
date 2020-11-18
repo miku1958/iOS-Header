@@ -8,5 +8,6 @@
 
 @protocol RPPeopleXPCDaemonInterface
 - (void)xpcPeopleDiscoveryActivate:(RPPeopleDiscovery *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)xpcPeopleDiscoveryUpdate:(RPPeopleDiscovery *)arg1;
 @end
 

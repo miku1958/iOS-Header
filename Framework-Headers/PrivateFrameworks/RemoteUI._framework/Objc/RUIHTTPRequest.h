@@ -42,6 +42,7 @@
 - (BOOL)receivedValidResponse:(id)arg1;
 - (id)request;
 - (id)sessionConfiguration;
+- (void)shouldLoadRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)urlSessionDelegate;
 - (void)willParseData;
 

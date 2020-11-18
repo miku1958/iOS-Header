@@ -9,12 +9,14 @@
 #import <SafariServices/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSString, _UIFallbackPresentationViewController;
+@protocol SFAuthenticationViewControllerPresentationDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SFAuthenticationViewController : SFSafariViewController <UIViewControllerTransitioningDelegate>
 {
     _UIFallbackPresentationViewController *_fallbackPresentationViewController;
     NSString *_callbackURLScheme;
+    id<SFAuthenticationViewControllerPresentationDelegate> _presentationDelegate;
     CDUnknownBlockType _dismissCompletionHandler;
 }
 
@@ -22,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType dismissCompletionHandler; // @synthesize dismissCompletionHandler=_dismissCompletionHandler;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<SFAuthenticationViewControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

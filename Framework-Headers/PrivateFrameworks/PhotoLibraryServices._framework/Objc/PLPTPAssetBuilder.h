@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, NSString, PLMutablePTPAsset, PLPTPAsset;
 @protocol PLFileManager, PLPTPConversionSupport, PLPTPTransferableAsset;
@@ -24,6 +24,7 @@
     PLPTPAsset *_fullSizeRenderImagePtpAsset;
     PLPTPAsset *_fullSizeRenderVideoPtpAsset;
     NSMutableArray *_convertedAssets;
+    BOOL _irisSidecarRequiresFormatConversion;
 }
 
 + (BOOL)_shouldIncludeDiagnosticFile;
@@ -59,10 +60,11 @@
 - (BOOL)_suppressPtpInfo;
 - (void)_updateAsset:(id)arg1 withConversionResult:(id)arg2;
 - (void)_updateAssetForTranscodeChoice:(id)arg1 withConversionResult:(id)arg2;
+- (void)_updateOriginalAssetFormatConversionFromVideoComplement;
 - (id)initWithAsset:(id)arg1 conversionSupport:(id)arg2;
 - (id)initWithAsset:(id)arg1 conversionSupport:(id)arg2 fileManager:(id)arg3;
 - (id)pictureTransferProtocolAssets;
-- (void)updateAssetForFormatConversion:(id)arg1 isVideo:(BOOL)arg2 isRender:(BOOL)arg3;
+- (void)updateAssetForFormatConversion:(id)arg1 isVideo:(BOOL)arg2 isRender:(BOOL)arg3 forceLegacyConversion:(BOOL)arg4;
 
 @end
 

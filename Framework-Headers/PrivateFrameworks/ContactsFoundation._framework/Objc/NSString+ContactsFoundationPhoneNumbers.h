@@ -10,6 +10,8 @@
 
 @property (readonly) BOOL _cn_requiresPhoneNumberSanitizing;
 
++ (id)_cn_LTRControlCharacters;
++ (id)_cn_phoneNumberSanitizeCharacters;
 - (id)_cn_stringBySanitizingPhoneNumber;
 @end
 

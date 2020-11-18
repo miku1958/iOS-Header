@@ -22,11 +22,15 @@
     long long _schemaVersion;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=didFetchFailed) BOOL fetchFailed; // @synthesize fetchFailed=_fetchFailed;
 @property (nonatomic, getter=isFirstFetch) BOOL firstFetch; // @synthesize firstFetch=_firstFetch;
 @property (nonatomic, getter=doesHandlesCloudRecord) BOOL handlesCloudRecord; // @synthesize handlesCloudRecord=_handlesCloudRecord;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *ownerName; // @synthesize ownerName=_ownerName;
 @property (nonatomic) long long schemaVersion; // @synthesize schemaVersion=_schemaVersion;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (nonatomic, getter=isZoneCreated) BOOL zoneCreated; // @synthesize zoneCreated=_zoneCreated;
 
@@ -36,12 +40,9 @@
 + (id)shortDescription;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)debugDescription;
-- (id)description;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)emptyModelObjectWithChangeType:(unsigned long long)arg1 parent:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithOwnerName:(id)arg1 uuid:(id)arg2;

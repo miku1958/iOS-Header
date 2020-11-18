@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, TSDBasicShapeLibraryCollection, TSDShapeLibrary, TSDUserDefinedShapeLibraryCollection;
 
@@ -25,11 +25,12 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)p_firstIndexOfShapeLibraryCategories;
 - (void).cxx_destruct;
 - (BOOL)hasUserDefinedShapesInCategoryAtIndex:(unsigned long long)arg1;
+- (id)initWithBasicShapeLibrary:(id)arg1 userDefinedShapeLibrary:(id)arg2;
 - (id)initWithShapeLibrary:(id)arg1 basicShapeLibrary:(id)arg2 userDefinedShapeLibrary:(id)arg3;
 - (unsigned long long)numberOfShapesInCategoryAtIndex:(unsigned long long)arg1;
 - (BOOL)p_hasUserDefinedShapes;
-- (unsigned long long)p_indexOfUserDefinedCategory;
 - (unsigned long long)p_numberOfCategories;
+- (unsigned long long)p_numberOfNonUserDefinedCategories;
 - (id)p_shapeAtIndex:(unsigned long long)arg1 categoryIndex:(unsigned long long)arg2;
 - (id)p_shapeCollectionAtIndex:(unsigned long long)arg1;
 - (id)shapeAtIndex:(unsigned long long)arg1 categoryIndex:(unsigned long long)arg2;

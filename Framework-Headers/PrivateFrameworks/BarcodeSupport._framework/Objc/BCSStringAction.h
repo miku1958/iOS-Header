@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (id)actionPickerItems;
 - (id)defaultActionTargetApplicationBundleIdentifier;
-- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 codePayload:(id)arg2;
 - (id)localizedDefaultActionDescription;
 - (void)performAction;
 - (void)performDefaultAction;

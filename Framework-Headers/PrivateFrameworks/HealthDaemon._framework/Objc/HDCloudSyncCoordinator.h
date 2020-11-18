@@ -48,6 +48,7 @@
 - (void)_mergeCloudSyncJournalsForProfile:(id)arg1 progress:(id)arg2 taskTree:(id)arg3;
 - (void)_mergeCloudSyncJournalsWithTaskTree:(id)arg1 progress:(id)arg2;
 - (void)_persistPeriodicSyncError:(id)arg1;
+- (void)_prepareAllProfilesForSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_addCloudSyncProgressCompletion:(CDUnknownBlockType)arg1;
 - (void)_queue_checkLastSyncDate;
 - (long long)_queue_cloudSyncWaitStatusWithError:(id *)arg1;
@@ -83,9 +84,9 @@
 - (id)initWithDaemon:(id)arg1;
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
-- (BOOL)periodicActivityRequiresProtectedData:(id)arg1;
 - (id)resetAllProfilesWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)syncAllProfilesWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)unitTest_performPeriodicSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (id)waitOnHealthCloudSyncWithUUID:(id)arg1 startHandler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

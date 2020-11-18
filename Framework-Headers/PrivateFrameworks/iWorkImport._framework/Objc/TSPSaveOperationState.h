@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable, NSMapTable;
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) BOOL hasRemoteData;
+@property (readonly, nonatomic) BOOL inheritPermissions;
 @property (readonly, nonatomic) BOOL preserveDocumentUUID;
 @property (nonatomic) int sampleID; // @synthesize sampleID=_sampleID;
 @property (readonly, nonatomic) BOOL shouldUpdate;

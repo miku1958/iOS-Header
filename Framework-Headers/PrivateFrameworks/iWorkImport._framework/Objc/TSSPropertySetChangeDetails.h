@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSSMutablePropertySet;
 
@@ -14,10 +14,10 @@ __attribute__((visibility("hidden")))
     TSSMutablePropertySet *mChangedProperties;
 }
 
+- (void).cxx_destruct;
 - (void)addChangedProperties:(id)arg1;
 - (void)addChangedProperty:(int)arg1;
 - (id)changedProperties;
-- (void)dealloc;
 - (id)init;
 - (id)initWithChangedProperties:(id)arg1;
 

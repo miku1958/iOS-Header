@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (unsigned long long)index;
-- (id)init;
 - (id)initWithContext:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchive:(struct TableStrokePresetArchive *)arg1 archiver:(id)arg2;

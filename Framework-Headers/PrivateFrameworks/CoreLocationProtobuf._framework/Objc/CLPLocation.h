@@ -36,6 +36,7 @@
     float _speed;
     float _speedAccuracy;
     float _verticalAccuracy;
+    BOOL _isFromLocationController;
     BOOL _motionVehicleConnected;
     BOOL _motionVehicleConnectedStateChanged;
     struct {
@@ -54,6 +55,7 @@
         unsigned int speed:1;
         unsigned int speedAccuracy:1;
         unsigned int verticalAccuracy:1;
+        unsigned int isFromLocationController:1;
         unsigned int motionVehicleConnected:1;
         unsigned int motionVehicleConnectedStateChanged:1;
     } _has;
@@ -75,6 +77,7 @@
 @property (nonatomic) BOOL hasHorzUncSemiMaj;
 @property (nonatomic) BOOL hasHorzUncSemiMajAz;
 @property (nonatomic) BOOL hasHorzUncSemiMin;
+@property (nonatomic) BOOL hasIsFromLocationController;
 @property (nonatomic) BOOL hasModeIndicator;
 @property (readonly, nonatomic) BOOL hasMotionActivity;
 @property (nonatomic) BOOL hasMotionActivityConfidence;
@@ -91,6 +94,7 @@
 @property (nonatomic) float horzUncSemiMaj; // @synthesize horzUncSemiMaj=_horzUncSemiMaj;
 @property (nonatomic) float horzUncSemiMajAz; // @synthesize horzUncSemiMajAz=_horzUncSemiMajAz;
 @property (nonatomic) float horzUncSemiMin; // @synthesize horzUncSemiMin=_horzUncSemiMin;
+@property (nonatomic) BOOL isFromLocationController; // @synthesize isFromLocationController=_isFromLocationController;
 @property (nonatomic) double latitude; // @synthesize latitude=_latitude;
 @property (nonatomic) double longitude; // @synthesize longitude=_longitude;
 @property (nonatomic) int modeIndicator; // @synthesize modeIndicator=_modeIndicator;

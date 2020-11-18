@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityElements;
 - (BOOL)isAccessibilityElement;
-- (void)setState:(int)arg1 animate:(BOOL)arg2;
+- (void)setState:(unsigned long long)arg1 animate:(BOOL)arg2;
 - (void)setTimerToneName:(id)arg1;
 
 @end

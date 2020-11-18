@@ -24,16 +24,19 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject; // @synthesize platformObject=_platformObject;
+@property (readonly, nonatomic) unsigned long long scopeType;
 @property (readonly) Class superclass;
 
 + (id)platformImplementationProtocol;
 - (void).cxx_destruct;
 - (BOOL)_checkSuperWasCalled;
 - (BOOL)closeWithError:(id *)arg1;
+- (BOOL)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
 - (BOOL)openWithError:(id *)arg1;
 - (id)status;
 - (id)statusDictionary;
+- (id)statusPerScopeIndex;
 - (void)writeTransactionDidFail;
 - (void)writeTransactionDidSucceed;
 

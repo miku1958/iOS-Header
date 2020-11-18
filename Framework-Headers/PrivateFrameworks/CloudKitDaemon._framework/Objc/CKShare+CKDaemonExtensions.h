@@ -10,7 +10,8 @@
 - (void)_decryptPersonalInfoWithPCSBlob:(struct _OpaquePCSShareProtection *)arg1 pcsManager:(id)arg2;
 - (void)_encryptPersonalInfoWithPCSBlob:(struct _OpaquePCSShareProtection *)arg1 pcsManager:(id)arg2;
 - (BOOL)_prepPCSDataWithContext:(id)arg1 databaseScope:(long long)arg2 error:(id *)arg3;
-- (BOOL)_prepPCSDataWithContext:(id)arg1 databaseScope:(long long)arg2 removeServerSpecifiedKeys:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)_prepPCSDataWithContext:(id)arg1 databaseScope:(long long)arg2 publicSharingKey:(id)arg3 error:(id *)arg4;
+- (BOOL)_prepPCSDataWithContext:(id)arg1 databaseScope:(long long)arg2 publicSharingKey:(id)arg3 removeServerSpecifiedKeys:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)hasEncryptedPersonalInfo;
 @end
 

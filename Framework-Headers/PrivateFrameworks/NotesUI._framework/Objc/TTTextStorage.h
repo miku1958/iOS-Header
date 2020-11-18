@@ -71,6 +71,7 @@
 @property (nonatomic) BOOL filterPastedAttributes; // @synthesize filterPastedAttributes=_filterPastedAttributes;
 @property (nonatomic) BOOL filterSubstringAttributes; // @synthesize filterSubstringAttributes=_filterSubstringAttributes;
 @property (nonatomic) BOOL filterSubstringAttributesForPlainText; // @synthesize filterSubstringAttributesForPlainText=_filterSubstringAttributesForPlainText;
+@property (readonly, nonatomic) BOOL hasAnyTextViewWithDarkAppearance;
 @property (nonatomic) BOOL hasEditedCharactersAfterTextSelection; // @synthesize hasEditedCharactersAfterTextSelection=_hasEditedCharactersAfterTextSelection;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isApplyingUndoCommand; // @synthesize isApplyingUndoCommand=_isApplyingUndoCommand;
@@ -104,8 +105,8 @@
 @property (nonatomic) BOOL wantsUndoCommands; // @synthesize wantsUndoCommands=_wantsUndoCommands;
 
 + (id)bulletTextAttributesWithTextFont:(struct UIFont *)arg1 paragraphStyle:(id)arg2 letterpress:(BOOL)arg3 withStyler:(id)arg4;
-+ (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(BOOL)arg3 fixAttachments:(BOOL)arg4;
-+ (void)fixAttachmentsForRenderingInAttributedString:(id)arg1 forPlainText:(BOOL)arg2;
++ (id)filteredAttributedSubstring:(id)arg1 fromRange:(struct _NSRange)arg2 forPlainText:(BOOL)arg3 forStandardizedText:(BOOL)arg4 fixAttachments:(BOOL)arg5;
++ (void)fixAttachmentsForRenderingInAttributedString:(id)arg1 forPlainText:(BOOL)arg2 forStandardizedText:(BOOL)arg3;
 + (double)listItemGlyphPointSizeForUnorderedListStyle:(unsigned int)arg1 withStyler:(id)arg2;
 + (id)removeDataDetectorLinksForAttributedString:(id)arg1;
 + (id)removeTextAttachmentsForAttributedString:(id)arg1 translateTTFont:(BOOL)arg2;

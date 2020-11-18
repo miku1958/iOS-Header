@@ -6,9 +6,18 @@
 
 #import <HealthDaemon/HDKeyValueSyncEntity.h>
 
-@interface HDUnitPreferencesSyncEntity : HDKeyValueSyncEntity
+#import <HealthDaemon/HDNanoSyncEntity-Protocol.h>
+
+@class NSString;
+
+@interface HDUnitPreferencesSyncEntity : HDKeyValueSyncEntity <HDNanoSyncEntity>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (long long)category;
 + (void)didReceiveValuesForKeys:(id)arg1 profile:(id)arg2;

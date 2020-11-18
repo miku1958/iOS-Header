@@ -10,13 +10,15 @@
 
 @interface NSURL (Telephony)
 
-@property (readonly) int addressBookUID;
+@property (readonly, nonatomic) int addressBookUID;
+@property (readonly, nonatomic, getter=isBasebandLogURL) BOOL basebandLogURL;
 @property (readonly) int callService;
 @property (readonly) BOOL forceAssist;
-@property (readonly) BOOL isBasebandLogURL;
+@property (readonly, copy, nonatomic) NSString *formattedPhoneNumber;
 @property (readonly) BOOL isEmergencyCallURL;
 @property (readonly) BOOL isEmergencyURL;
 @property (readonly) BOOL isVoicemailURL;
+@property (readonly, copy, nonatomic) NSString *numberQualifiedForAddressBook;
 @property (readonly) NSString *originatingUIIdentifier;
 @property (readonly) NSString *phoneNumber;
 @property (readonly) BOOL suppressAssist;
@@ -37,12 +39,10 @@
 - (BOOL)_hasScheme:(id)arg1;
 - (id)_mobilePhonePathParameters;
 - (id)_mobilePhoneQueryParameters;
-- (id)formattedPhoneNumber;
 - (BOOL)hasTelephonyScheme;
 - (BOOL)isTelephonyPromptURL;
 - (BOOL)isTelephonyURL;
 - (BOOL)isWebSafeTelephoneURL;
-- (id)numberQualifiedForAddressBook;
 - (id)telephonyParameterDictionary;
 - (id)webSafeTelephoneURL;
 @end

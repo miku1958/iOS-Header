@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CalendarDaemon/CADPermissionValidator-Protocol.h>
 
@@ -19,10 +19,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL canMakeSpotlightChanges;
 @property (readonly) BOOL canModifyCalendarDatabase;
 @property (readonly) BOOL canModifySuggestedEventCalendar;
-@property (strong) ClientConnection *connection; // @synthesize connection=_connection;
+@property (readonly, weak, nonatomic) ClientConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) BOOL hasCalendarToolEntitlement;
+@property (readonly) BOOL hasChangeIdTrackingOverrideEntitlement;
 @property (readonly) BOOL hasContactsUIEntitlement;
 @property (readonly) BOOL hasMigrationEntitlement;
 @property (readonly) BOOL hasSyncClientEntitlement;

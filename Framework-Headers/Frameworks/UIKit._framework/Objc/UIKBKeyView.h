@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIKBCacheableView-Protocol.h>
+#import <UIKitCore/UIKBCacheableView-Protocol.h>
 
 @class NSMutableDictionary, NSString, UIKBRenderConfig, UIKBRenderFactory, UIKBTree, UIKeyboardMenuView;
 
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     struct CGColor *_activeBackgroundColor;
     id _activeCompositingFilter;
     BOOL _singleRerender;
+    double _cachedOpacity;
     BOOL _cachedControlKeyRenderingPreference;
     BOOL _renderAsMask;
     int _cachedAnchorCorner;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
     double _endingTransitionDuration;
 }
 
+@property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;
 @property (nonatomic) int cachedAnchorCorner; // @synthesize cachedAnchorCorner=_cachedAnchorCorner;

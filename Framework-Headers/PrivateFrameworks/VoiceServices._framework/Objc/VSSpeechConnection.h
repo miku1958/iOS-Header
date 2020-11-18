@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSXPCConnection, VSPresynthesizedAudioRequest, VSSpeechConnectionDelegateWrapper, VSSpeechRequest;
 @protocol OS_dispatch_queue, VSSpeechConnectionDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSSpeechConnection : NSObject
 {
     NSXPCConnection *_xpcConnection;
@@ -33,6 +34,7 @@
 - (id)availableFootprintsForVoice:(id)arg1 languageCode:(id)arg2;
 - (id)availableVoicesForLanguageCode:(id)arg1;
 - (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
+- (void)cachePresynthesizedAudioRequest:(id)arg1;
 - (oneway void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
 - (id)concurrentSynthesisRequests;
 - (void)continueCurrentSpeechRequest;

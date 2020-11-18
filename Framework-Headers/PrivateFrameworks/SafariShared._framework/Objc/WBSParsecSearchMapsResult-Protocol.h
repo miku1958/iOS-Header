@@ -8,6 +8,6 @@
 #import <SafariShared/WBSParsecSearchMapsResultFeedbackSenderClient-Protocol.h>
 #import <SafariShared/WBSParsecSearchResultPresentedInCard-Protocol.h>
 
-@protocol WBSParsecSearchMapsResult <WBSParsecSearchMapsResultFeedbackSenderClient, WBSParsecSearchResultPresentedInCard, WBSCompletionListItem>
+@protocol WBSParsecSearchMapsResult <WBSParsecSearchResultPresentedInCard, WBSCompletionListItem, WBSParsecSearchMapsResultFeedbackSenderClient>
 @end
 

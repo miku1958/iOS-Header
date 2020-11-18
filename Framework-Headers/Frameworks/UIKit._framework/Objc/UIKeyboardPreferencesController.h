@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol TIPreferencesControllerActions;
 
@@ -24,6 +24,7 @@
 - (void)forwardInvocation:(id)arg1;
 - (id)init;
 - (BOOL)isFirstReachableKeyboardInteraction;
+- (BOOL)isPasswordAutoFillAllowed;
 - (BOOL)isPreferenceKeyLockedDown:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)performedFirstReachableKeyboardInteraction;

@@ -8,7 +8,7 @@
 
 #import <Photos/NSSecureCoding-Protocol.h>
 
-@class NSData, NSURL, PHAdjustmentData;
+@class NSData, NSNumber, NSURL, PHAdjustmentData;
 
 @interface PHContentEditingOutput : NSObject <NSSecureCoding>
 {
@@ -17,6 +17,7 @@
     BOOL _isSubstandardRender;
     BOOL _loopingLivePhoto;
     NSURL *_renderedContentURL;
+    NSNumber *_originalResourceChoice;
     long long _fullSizeRenderWidth;
     long long _fullSizeRenderHeight;
     NSData *_penultimateRenderedJPEGData;
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL isSubstandardRender; // @synthesize isSubstandardRender=_isSubstandardRender;
 @property (readonly, getter=isLoopingLivePhoto) BOOL loopingLivePhoto; // @synthesize loopingLivePhoto=_loopingLivePhoto;
 @property (readonly) long long mediaType; // @synthesize mediaType=_mediaType;
+@property (strong, nonatomic) NSNumber *originalResourceChoice; // @synthesize originalResourceChoice=_originalResourceChoice;
 @property (strong) NSData *penultimateRenderedJPEGData; // @synthesize penultimateRenderedJPEGData=_penultimateRenderedJPEGData;
 @property (copy) NSURL *penultimateRenderedVideoComplementContentURL; // @synthesize penultimateRenderedVideoComplementContentURL=_penultimateRenderedVideoComplementContentURL;
 @property (copy) NSURL *renderedContentURL; // @synthesize renderedContentURL=_renderedContentURL;

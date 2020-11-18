@@ -6,63 +6,87 @@
 
 #import <objc/NSObject.h>
 
-#import <PhotosUI/PUSearchResult-Protocol.h>
+#import <PhotosUI/PUSearchResultItem-Protocol.h>
+#import <PhotosUI/PUSearchResultsValueSorting-Protocol.h>
+#import <PhotosUI/PUTripSearchResult-Protocol.h>
 
-@class NSArray, NSAttributedString, NSMutableDictionary, NSString, PSIGroupResult;
+@class NSArray, NSAttributedString, NSDate, NSDictionary, NSMutableDictionary, NSString, PHPerson, PLSearchResult, PSIDate;
 @protocol OS_dispatch_queue, PUSearchResultsValueDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PUSearchResultsValue : NSObject <PUSearchResult>
+@interface PUSearchResultsValue : NSObject <PUSearchResultsValueSorting, PUSearchResultItem, PUTripSearchResult>
 {
     NSObject<OS_dispatch_queue> *_queue;
     double _score;
+    unsigned long long _searchCategories;
     NSAttributedString *_attributedDisplayTitle;
     NSString *_displaySubtitle;
-    NSArray *_uuids;
-    NSArray *_additionalUUIDs;
-    id _albumUUID;
-    id _memoryUUID;
+    PSIDate *_startDate;
+    PSIDate *_endDate;
+    NSString *_collectionSubtitle;
+    NSString *_transientToken;
+    NSArray *_assetUUIDs;
+    unsigned long long _collectionType;
+    NSString *_collectionUUID;
+    NSString *_collectionTitle;
     unsigned long long _approximateCount;
-    id<PUSearchResultsValueDelegate> _delegate;
+    PHPerson *_person;
     NSString *_selectedDisplayTitle;
-    PSIGroupResult *_groupResult;
     NSMutableDictionary *_uuidToAssetMap;
+    id<PUSearchResultsValueDelegate> _delegate;
+    PLSearchResult *_searchResult;
+    NSDate *_date;
+    NSArray *_tripMomentUUIDs;
+    NSString *_dateFilterString;
 }
 
-@property (strong, setter=_setAdditionalUUIDs:) NSArray *additionalUUIDs; // @synthesize additionalUUIDs=_additionalUUIDs;
-@property (strong, setter=_setAlbumUUID:) id albumUUID; // @synthesize albumUUID=_albumUUID;
 @property (setter=_setApproximateCount:) unsigned long long approximateCount; // @synthesize approximateCount=_approximateCount;
+@property (strong, setter=_setAssetUUIDs:) NSArray *assetUUIDs; // @synthesize assetUUIDs=_assetUUIDs;
 @property (readonly, copy) NSArray *assets;
+@property (readonly) NSString *collectionSubtitle; // @synthesize collectionSubtitle=_collectionSubtitle;
+@property (readonly) NSString *collectionTitle; // @synthesize collectionTitle=_collectionTitle;
+@property (readonly) unsigned long long collectionType; // @synthesize collectionType=_collectionType;
+@property (readonly) NSString *collectionUUID; // @synthesize collectionUUID=_collectionUUID;
+@property (strong, nonatomic, setter=_setDate:) NSDate *date; // @synthesize date=_date;
+@property (strong, setter=_setDateFilterString:) NSString *dateFilterString; // @synthesize dateFilterString=_dateFilterString;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly) NSDictionary *debugDictionary;
 @property (weak, nonatomic) id<PUSearchResultsValueDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *displaySubtitle;
 @property (readonly, copy) NSString *displayTitle;
-@property (strong, setter=_setGroupResult:) PSIGroupResult *groupResult; // @synthesize groupResult=_groupResult;
 @property (readonly) unsigned long long hash;
-@property (strong, setter=_setMemoryUUID:) id memoryUUID; // @synthesize memoryUUID=_memoryUUID;
+@property (readonly, nonatomic) unsigned long long itemType;
+@property (readonly, copy) NSArray *lookupIdentifiers;
+@property (readonly, nonatomic) unsigned long long numberOfAssets;
+@property (strong, nonatomic, setter=_setPerson:) PHPerson *person; // @synthesize person=_person;
 @property (readonly) double score;
 @property (readonly) unsigned long long searchCategories;
+@property (strong, setter=_setSearchResult:) PLSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 @property (readonly, copy) NSString *searchString;
 @property (readonly, nonatomic) NSArray *searchTokens;
 @property (strong, setter=_setSelectedDisplayTitle:) NSString *selectedDisplayTitle; // @synthesize selectedDisplayTitle=_selectedDisplayTitle;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *transientToken; // @synthesize transientToken=_transientToken;
+@property (strong, setter=_setTripMomentUUIDs:) NSArray *tripMomentUUIDs; // @synthesize tripMomentUUIDs=_tripMomentUUIDs;
 @property (readonly) NSMutableDictionary *uuidToAssetMap; // @synthesize uuidToAssetMap=_uuidToAssetMap;
-@property (strong, setter=_setUUIDs:) NSArray *uuids; // @synthesize uuids=_uuids;
 
 - (void).cxx_destruct;
 - (void)_computeScoreWithMaxGroupedResultsCount:(unsigned long long)arg1;
 - (void)_setAsset:(id)arg1 forUUID:(id)arg2;
+- (void)_setCollectionType:(unsigned long long)arg1 uuid:(id)arg2 title:(id)arg3 subtitle:(id)arg4;
 - (id)assetLocalIdentifiersForPreview;
+- (unsigned long long)categoryAtIndex:(unsigned long long)arg1;
 - (long long)compare:(id)arg1;
 - (id)displayTitleWithDefaultAttributes:(id)arg1 dimmedAttributes:(id)arg2 selectedDisplayTitle:(id *)arg3;
-- (void)fetchAdditionalUUIDs:(CDUnknownBlockType)arg1;
+- (void)enumerateSearchIndexCategoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)fetchAllUUIDs:(CDUnknownBlockType)arg1;
 - (void)fetchRemainingUUIDs:(CDUnknownBlockType)arg1;
-- (BOOL)hasAdditionalUUIDs;
+- (id)groupsMatchRanges;
 - (id)init;
+- (BOOL)isAssetResult;
 - (BOOL)isFinished;
-- (void)performAggdSelectionLog;
+- (void)setStartDate:(id)arg1 endDate:(id)arg2;
 
 @end
 

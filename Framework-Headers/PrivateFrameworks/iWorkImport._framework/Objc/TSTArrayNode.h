@@ -11,19 +11,19 @@
 __attribute__((visibility("hidden")))
 @interface TSTArrayNode : TSTExpressionNode
 {
-    struct TSCEVectorIndexPair mDimensions;
-    NSString *mWhitespaceBeforeFirstChild;
-    NSArray *mWhitespaceAfterDelimiters;
+    struct TSCEVectorIndexPair _dimensions;
+    NSString *_whitespaceBeforeFirstChild;
+    NSArray *_whitespaceAfterDelimiters;
 }
 
-@property (strong) NSArray *whitespaceAfterDelimiters; // @synthesize whitespaceAfterDelimiters=mWhitespaceAfterDelimiters;
-@property (strong) NSString *whitespaceBeforeFirstChild; // @synthesize whitespaceBeforeFirstChild=mWhitespaceBeforeFirstChild;
+@property (readonly) struct TSCEVectorIndexPair dimensions; // @synthesize dimensions=_dimensions;
+@property (strong) NSArray *whitespaceAfterDelimiters; // @synthesize whitespaceAfterDelimiters=_whitespaceAfterDelimiters;
+@property (strong) NSString *whitespaceBeforeFirstChild; // @synthesize whitespaceBeforeFirstChild=_whitespaceBeforeFirstChild;
 
 - (id).cxx_construct;
-- (id)argumentSpec;
+- (void).cxx_destruct;
+- (struct TSCEFunctionArgSpec *)argumentSpec;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
-- (void)dealloc;
-- (struct TSCEVectorIndexPair)dimensions;
 - (id)initAsCopyOf:(id)arg1 intoContext:(id)arg2 children:(id)arg3;
 - (id)initWithContext:(id)arg1 children:(id)arg2 columns:(unsigned char)arg3 rows:(unsigned short)arg4 firstIndex:(unsigned long long)arg5 lastIndex:(unsigned long long)arg6;
 - (id)initWithContext:(id)arg1 children:(id)arg2 firstIndex:(unsigned long long)arg3 lastIndex:(unsigned long long)arg4;

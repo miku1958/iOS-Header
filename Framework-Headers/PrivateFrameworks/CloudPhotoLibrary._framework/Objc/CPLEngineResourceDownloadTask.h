@@ -6,7 +6,7 @@
 
 #import <CloudPhotoLibrary/CPLResourceTransferTask.h>
 
-@class CPLResource, NSMutableArray, NSString;
+@class CPLResource, NSData, NSMutableArray, NSString;
 @protocol CPLEngineTransportResourcesDownloadTask;
 
 @interface CPLEngineResourceDownloadTask : CPLResourceTransferTask
@@ -16,6 +16,7 @@
     unsigned long long _preemptingCount;
     BOOL _cancelledByEngine;
     CPLResource *_cloudResource;
+    NSData *_transportScope;
     unsigned long long _taskIdentifierForQueue;
     NSString *_clientBundleID;
     id<CPLEngineTransportResourcesDownloadTask> _transportTask;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (nonatomic) unsigned long long taskIdentifierForQueue; // @synthesize taskIdentifierForQueue=_taskIdentifierForQueue;
 @property (copy, nonatomic) NSString *transportIdentifier; // @synthesize transportIdentifier=_transportIdentifier;
+@property (strong, nonatomic) NSData *transportScope; // @synthesize transportScope=_transportScope;
 @property (weak, nonatomic) id<CPLEngineTransportResourcesDownloadTask> transportTask; // @synthesize transportTask=_transportTask;
 @property (readonly, nonatomic) BOOL willGenerateReport;
 

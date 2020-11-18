@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@interface RCDebugRecordingController
+#import <objc/NSObject.h>
+
+@interface RCDebugRecordingController : NSObject
 {
 }
 
 + (id)sharedInstance;
+- (void)promptUserAndCreateDebugRecordingWithSource:(id)arg1;
 - (void)startCreatingDebugContentIfRequested;
 
 @end

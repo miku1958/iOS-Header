@@ -44,10 +44,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @dynamic parentInfo;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
 
++ (BOOL)canEditGroupsInCollaborativeDocuments;
 + (Class)classForUnarchiver:(id)arg1;
 + (id)drawablesToInsertForGroup:(id)arg1 filteredWithBlock:(CDUnknownBlockType)arg2;
 + (id)groupGeometryFromChildrenInfos:(id)arg1;
++ (id)groupGeometryFromChildrenInfos:(id)arg1 currentlyLaidOutWithLayoutController:(id)arg2;
 + (id)p_drawablesToInsertForGroup:(id)arg1 outDidUngroup:(BOOL *)arg2 filteredWithBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;

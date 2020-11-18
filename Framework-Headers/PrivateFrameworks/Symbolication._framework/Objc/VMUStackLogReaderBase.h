@@ -8,7 +8,7 @@
 
 #import <Symbolication/VMUStackLogReader-Protocol.h>
 
-@class NSMapTable, NSSet, NSString, VMUVMRegionTracker;
+@class NSMapTable, NSMutableDictionary, NSSet, NSString, VMUVMRegionTracker;
 
 @interface VMUStackLogReaderBase : NSObject <VMUStackLogReader>
 {
@@ -16,6 +16,8 @@
     VMUVMRegionTracker *_regionTracker;
     NSMapTable *_addressToSymbolicationMap;
     NSSet *_excludedFrames;
+    NSMutableDictionary *_binaryImagePathToIdentifierMap;
+    BOOL _usesLiteMode;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +29,7 @@
 @property (readonly) VMUVMRegionTracker *regionTracker; // @synthesize regionTracker=_regionTracker;
 @property (readonly) Class superclass;
 @property (readonly) unsigned int task; // @synthesize task=_task;
-@property (readonly) BOOL usesLiteMode;
+@property (readonly) BOOL usesLiteMode; // @synthesize usesLiteMode=_usesLiteMode;
 
 - (void).cxx_destruct;
 - (id)binaryImagePathForPCaddress:(unsigned long long)arg1;
@@ -38,6 +40,7 @@
 - (long long)getFramesForAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 inLiteZone:(BOOL)arg3 stackFramesBuffer:(unsigned long long *)arg4;
 - (long long)getFramesForNode:(unsigned int)arg1 inLiteZone:(BOOL)arg2 stackFramesBuffer:(unsigned long long *)arg3;
 - (long long)getFramesForStackID:(unsigned long long)arg1 stackFramesBuffer:(unsigned long long *)arg2;
+- (id)identifierForBinaryImagePath:(id)arg1;
 - (id)sourceFileNameAndLineNumberForPCaddress:(unsigned long long)arg1 fullPath:(BOOL)arg2;
 - (id)sourceFileNameForPCaddress:(unsigned long long)arg1;
 - (unsigned int)sourceLineNumberForPCaddress:(unsigned long long)arg1;

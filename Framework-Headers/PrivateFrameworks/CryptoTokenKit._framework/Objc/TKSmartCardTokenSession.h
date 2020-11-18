@@ -21,6 +21,7 @@
 - (BOOL)beginRequest:(long long)arg1 error:(id *)arg2;
 - (void)endRequest;
 - (id)initWithToken:(id)arg1;
+- (id)name;
 
 @end
 

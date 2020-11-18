@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UILayoutArrangement.h>
+#import <UIKitCore/_UILayoutArrangement.h>
 
-#import <UIKit/_UIALAPropertySource-Protocol.h>
+#import <UIKitCore/_UIALAPropertySource-Protocol.h>
 
 @class NSMutableDictionary, NSSet, NSString;
 

@@ -6,10 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class CLKFont, NSMutableArray, NSMutableDictionary, NSString, UIColor, UILabel;
+@class CLKDevice, CLKFont, NSMutableArray, NSMutableDictionary, NSString, UIColor, UILabel;
 
 @interface NTKTimeIntervalLabel : UIView
 {
+    CLKDevice *_device;
     double _time;
     double _currentTextTime;
     BOOL _showSubSeconds;
@@ -56,9 +57,9 @@
 - (void)forceTime:(double)arg1;
 - (id)formatTimeInterval;
 - (id)getTimeText;
-- (id)initWithMonospacedFontOfSize:(double)arg1;
-- (id)initWithMonospacedFontOfSize:(double)arg1 color:(id)arg2 style:(long long)arg3;
-- (id)initWithMonospacedFontOfSize:(double)arg1 color:(id)arg2 style:(long long)arg3 signed:(BOOL)arg4;
+- (id)initWithMonospacedFontOfSize:(double)arg1 color:(id)arg2 style:(long long)arg3 forDevice:(id)arg4;
+- (id)initWithMonospacedFontOfSize:(double)arg1 color:(id)arg2 style:(long long)arg3 signed:(BOOL)arg4 forDevice:(id)arg5;
+- (id)initWithMonospacedFontOfSize:(double)arg1 forDevice:(id)arg2;
 - (void)layoutSubviews;
 - (void)recalculateSize;
 - (void)setLabelText:(id)arg1;

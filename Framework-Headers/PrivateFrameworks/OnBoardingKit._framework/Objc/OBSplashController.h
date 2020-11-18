@@ -8,11 +8,11 @@
 
 #import <OnBoardingKit/UIScrollViewDelegate-Protocol.h>
 
-@class BFFPaneHeaderView, NSArray, NSMutableArray, NSString, OBPrivacyLinkController, UIColor, UIImage, UIScrollView, UIView, _UIBackdropView;
+@class NSArray, NSMutableArray, NSString, OBBuddyPaneHeaderView, OBPrivacyLinkController, UIColor, UIImage, UIScrollView, UIView, _UIBackdropView;
 
 @interface OBSplashController : UIViewController <UIScrollViewDelegate>
 {
-    BFFPaneHeaderView *_headerView;
+    OBBuddyPaneHeaderView *_headerView;
     UIView *_trayBackdropContainer;
     _UIBackdropView *_lightTrayBackdrop;
     _UIBackdropView *_ultraLightTrayBackdrop;
@@ -24,6 +24,7 @@
     BOOL _scrollingDisabled;
     BOOL _darkMode;
     BOOL _fullWidthContent;
+    BOOL _displayPrivacyLinkCaptionText;
     BOOL _usesTwoButtonLayout;
     NSString *_detailText;
     UIView *_contentView;
@@ -46,9 +47,10 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property (nonatomic) BOOL disableIconTint; // @synthesize disableIconTint=_disableIconTint;
+@property (nonatomic) BOOL displayPrivacyLinkCaptionText; // @synthesize displayPrivacyLinkCaptionText=_displayPrivacyLinkCaptionText;
 @property (nonatomic) BOOL fullWidthContent; // @synthesize fullWidthContent=_fullWidthContent;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BFFPaneHeaderView *headerView;
+@property (readonly, nonatomic) OBBuddyPaneHeaderView *headerView;
 @property (strong, nonatomic) UIImage *icon;
 @property (strong, nonatomic) NSString *iconAccessibilityLabel;
 @property (nonatomic) struct CGSize iconSize;

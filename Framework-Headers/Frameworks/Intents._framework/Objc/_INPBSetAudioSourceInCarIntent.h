@@ -7,40 +7,40 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSetAudioSourceInCarIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBIntentMetadata;
+@class NSString, _INPBIntentMetadata;
 
-@interface _INPBSetAudioSourceInCarIntent : PBCodable <NSCopying>
+@interface _INPBSetAudioSourceInCarIntent : PBCodable <_INPBSetAudioSourceInCarIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    int _audioSource;
-    _INPBIntentMetadata *_intentMetadata;
-    int _relativeAudioSourceReference;
     struct {
         unsigned int audioSource:1;
         unsigned int relativeAudioSourceReference:1;
     } _has;
+    int _audioSource;
+    int _relativeAudioSourceReference;
+    _INPBIntentMetadata *_intentMetadata;
 }
 
 @property (nonatomic) int audioSource; // @synthesize audioSource=_audioSource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasAudioSource;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasRelativeAudioSourceReference;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (nonatomic) int relativeAudioSourceReference; // @synthesize relativeAudioSourceReference=_relativeAudioSourceReference;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsAudioSource:(id)arg1;
 - (int)StringAsRelativeAudioSourceReference:(id)arg1;
 - (id)audioSourceAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)relativeAudioSourceReferenceAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

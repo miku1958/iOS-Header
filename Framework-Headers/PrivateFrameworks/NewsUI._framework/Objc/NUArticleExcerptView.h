@@ -8,7 +8,7 @@
 
 #import <NewsUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, NUArticleExcerptReadMoreButton, NUArticleExcerptTraits, NUMultiDelegate, UIImageView, UILabel, UIScrollView, WKWebView;
+@class NFMultiDelegate, NSString, NUArticleExcerptReadMoreButton, NUArticleExcerptTraits, UIImageView, UILabel, UIScrollView, WKWebView;
 @protocol UIScrollViewDelegate;
 
 @interface NUArticleExcerptView : UIView <UIScrollViewDelegate>
@@ -24,7 +24,7 @@
     UIScrollView *_contentScrollView;
     UIView *_hairlineSeparatorView;
     UIView *_contentView;
-    NUMultiDelegate *_multiDelegate;
+    NFMultiDelegate *_multiDelegate;
 }
 
 @property (readonly, nonatomic) UIScrollView *contentScrollView; // @synthesize contentScrollView=_contentScrollView;
@@ -39,7 +39,7 @@
 @property (readonly, nonatomic) UIImageView *headlineImageView; // @synthesize headlineImageView=_headlineImageView;
 @property (readonly, nonatomic) UILabel *headlineTitleLabel; // @synthesize headlineTitleLabel=_headlineTitleLabel;
 @property (readonly, nonatomic) UIScrollView *imageScrollView; // @synthesize imageScrollView=_imageScrollView;
-@property (readonly, nonatomic) NUMultiDelegate *multiDelegate; // @synthesize multiDelegate=_multiDelegate;
+@property (readonly, nonatomic) NFMultiDelegate *multiDelegate; // @synthesize multiDelegate=_multiDelegate;
 @property (readonly, nonatomic) NUArticleExcerptReadMoreButton *readMoreButton; // @synthesize readMoreButton=_readMoreButton;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NUArticleExcerptTraits *traits; // @synthesize traits=_traits;

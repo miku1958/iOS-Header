@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -44,14 +44,13 @@ __attribute__((visibility("hidden")))
 + (id)trendLineR2Type;
 + (id)trendLineType;
 + (id)valueAxisType;
+- (void).cxx_destruct;
 - (BOOL)canApplyChartStyleWithDescription:(id)arg1;
 - (BOOL)canApplyParagraphStyle;
 - (BOOL)canApplyShapeStyle;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithArchive:(const struct ChartSelectionPathTypeArchive *)arg1;
 - (id)initWithType:(id)arg1 name:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

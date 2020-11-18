@@ -6,11 +6,11 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXFullscreenCanvasController, SXFullscreenCaption, SXImageView, UIGestureRecognizer, UIView;
+@class SXFullscreenCanvasController, SXFullscreenCanvasViewController, SXFullscreenCaption, SXImageView, UIGestureRecognizer, UIView;
 @protocol SXFullscreenCanvasShowable;
 
 @protocol SXFullscreenCanvasShowable <NSObject>
-- (UIView *)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 canvasViewForShowable:(id<SXFullscreenCanvasShowable>)arg2;
+- (SXFullscreenCanvasViewController *)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 canvasViewControllerForShowable:(id<SXFullscreenCanvasShowable>)arg2 completionBlock:(void (^)(void))arg3;
 - (struct CGRect)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 fullScreenFrameForShowable:(id<SXFullscreenCanvasShowable>)arg2 viewIndex:(unsigned long long)arg3 withinRect:(struct CGRect)arg4;
 - (unsigned long long)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 numberOfViewsForShowable:(id<SXFullscreenCanvasShowable>)arg2;
 - (struct CGRect)fullScreenCanvasController:(SXFullscreenCanvasController *)arg1 originalFrameForShowable:(id<SXFullscreenCanvasShowable>)arg2 onCanvasView:(UIView *)arg3 viewIndex:(unsigned long long)arg4;

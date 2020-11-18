@@ -27,7 +27,7 @@
 - (void)enumerateSlotsWithBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithJSONObjectRepresentation:(id)arg1 editOptionClass:(Class)arg2;
+- (id)initWithJSONObjectRepresentation:(id)arg1 editOptionClass:(Class)arg2 forDevice:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)setEditOption:(id)arg1 forSlot:(id)arg2;
 

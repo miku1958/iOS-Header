@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)addPasteboardItem:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)addPasteboardItemForObject:(id)arg1 type:(id)arg2;
 - (void)addPasteboardItemIndex:(unsigned long long)arg1 forType:(id)arg2;
+- (BOOL)canLoadItemsOfClass:(Class)arg1;
 - (long long)clearContents;
 - (id)dataForPasteboardType:(id)arg1;
 - (id)dataForPasteboardType:(id)arg1 inItemSet:(id)arg2;

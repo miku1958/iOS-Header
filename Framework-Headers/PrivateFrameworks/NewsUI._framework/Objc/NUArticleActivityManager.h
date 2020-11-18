@@ -9,7 +9,7 @@
 #import <NewsUI/NUActivityProvider-Protocol.h>
 
 @class FCReadingHistory, FCReadingList, FCSubscriptionList, NSString;
-@protocol FCHeadlineProviding, NUReportConcernViewPresenter, NUURLHandling, NUURLModifying;
+@protocol FCHeadlineProviding, NUArticleActivityOptionsProvider, NUReportConcernViewPresenter, NUURLHandling, NUURLModifying;
 
 @interface NUArticleActivityManager : NSObject <NUActivityProvider>
 {
@@ -20,6 +20,7 @@
     id<NUURLHandling> _URLHandler;
     id<NUReportConcernViewPresenter> _reportConcernViewPresenter;
     id<NUURLModifying> _URLModifier;
+    id<NUArticleActivityOptionsProvider> _optionsProvider;
 }
 
 @property (readonly, nonatomic) id<NUURLHandling> URLHandler; // @synthesize URLHandler=_URLHandler;
@@ -28,6 +29,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<FCHeadlineProviding> headline; // @synthesize headline=_headline;
+@property (readonly, nonatomic) id<NUArticleActivityOptionsProvider> optionsProvider; // @synthesize optionsProvider=_optionsProvider;
 @property (readonly, nonatomic) FCReadingHistory *readingHistory; // @synthesize readingHistory=_readingHistory;
 @property (readonly, nonatomic) FCReadingList *readingList; // @synthesize readingList=_readingList;
 @property (readonly, nonatomic) id<NUReportConcernViewPresenter> reportConcernViewPresenter; // @synthesize reportConcernViewPresenter=_reportConcernViewPresenter;
@@ -36,6 +38,7 @@
 
 - (void).cxx_destruct;
 - (id)activities;
+- (id)activityForType:(unsigned long long)arg1;
 - (id)activityImageForHeadline:(id)arg1 withType:(unsigned long long)arg2;
 - (id)activityItemSources;
 - (id)activityTitleForHeadline:(id)arg1 withType:(unsigned long long)arg2;
@@ -44,7 +47,7 @@
 - (BOOL)articleLikedForHeadline:(id)arg1;
 - (BOOL)articleSavedForHeadline:(id)arg1;
 - (BOOL)channelMutedForHeadline:(id)arg1;
-- (id)initWithHeadline:(id)arg1 readingHistory:(id)arg2 readingList:(id)arg3 subscriptionList:(id)arg4 URLHandler:(id)arg5 reportConcernViewPresenter:(id)arg6 URLModifier:(id)arg7;
+- (id)initWithHeadline:(id)arg1 readingHistory:(id)arg2 readingList:(id)arg3 subscriptionList:(id)arg4 URLHandler:(id)arg5 reportConcernViewPresenter:(id)arg6 URLModifier:(id)arg7 optionsProvider:(id)arg8;
 - (CDUnknownBlockType)performBlockForHeadline:(id)arg1 withType:(unsigned long long)arg2;
 - (id)supportedActivities;
 - (void)toggleArticleDislikeStatusForHeadline:(id)arg1;

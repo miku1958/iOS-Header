@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -20,6 +20,7 @@
 }
 
 + (id)textRunRequestWithStrings:(id)arg1 color:(struct CGColor *)arg2 maxFontSize:(double)arg3 minFontSize:(double)arg4 allowTruncation:(BOOL)arg5 truncationSentinel:(id)arg6 widthGroup:(unsigned long long)arg7;
+- (void).cxx_destruct;
 - (BOOL)allowTruncation;
 - (struct CGColor *)color;
 - (void)dealloc;

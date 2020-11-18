@@ -13,6 +13,7 @@
 @property (copy, nonatomic) NSString *actionTarget;
 @property (copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) BOOL isRunnableInBackground;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *label;
 @property (copy, nonatomic) NSString *name;

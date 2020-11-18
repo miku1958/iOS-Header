@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMediaStreamDelegate-Protocol.h>
 
@@ -30,6 +30,7 @@
 - (id)autorelease;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (void)deregisterBlocksForService;
 - (id)init;
 - (void)pauseStreams:(BOOL)arg1;
 - (void)registerBlocksForService;

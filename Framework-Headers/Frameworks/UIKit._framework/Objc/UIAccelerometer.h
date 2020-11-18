@@ -4,9 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CMMotionManager;
 @protocol UIAccelerometerDelegate;
 
 @interface UIAccelerometer : NSObject
@@ -17,7 +16,6 @@
         unsigned int delegateDidAccelerate:1;
         unsigned int reserved:31;
     } _accelerometerFlags;
-    CMMotionManager *_motionManager;
 }
 
 @property (weak, nonatomic) id<UIAccelerometerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -27,7 +25,6 @@
 - (void).cxx_destruct;
 - (void)_acceleratedInX:(double)arg1 y:(double)arg2 z:(double)arg3 timestamp:(double)arg4;
 - (void)_didSuspend:(id)arg1;
-- (id)_motionManager;
 - (void)_startAccelerometerIfNecessary;
 - (void)_stopAccelerometer;
 - (void)_willResume:(id)arg1;

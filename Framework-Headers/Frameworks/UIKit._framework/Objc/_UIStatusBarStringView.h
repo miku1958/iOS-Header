@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UILabel.h>
+#import <UIKitCore/UILabel.h>
 
-#import <UIKit/_UIStatusBarDisplayable-Protocol.h>
+#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
 
 @class NSString, NSTimer, UIAccessibilityHUDItem;
 
 @interface _UIStatusBarStringView : UILabel <_UIStatusBarDisplayable>
 {
-    BOOL _emphasized;
     BOOL _showsAlternateText;
-    double _baselineOffset;
+    long long _fontStyle;
     NSString *_alternateText;
     NSString *_originalText;
     NSTimer *_alternateTextTimer;
@@ -25,12 +24,12 @@
 @property (nonatomic) struct UIEdgeInsets alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
 @property (copy, nonatomic) NSString *alternateText; // @synthesize alternateText=_alternateText;
 @property (readonly, nonatomic) NSTimer *alternateTextTimer; // @synthesize alternateTextTimer=_alternateTextTimer;
-@property (nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL emphasized; // @synthesize emphasized=_emphasized;
+@property (nonatomic) long long fontStyle; // @synthesize fontStyle=_fontStyle;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *originalText; // @synthesize originalText=_originalText;
+@property (readonly, nonatomic) long long overriddenVerticalAlignment;
 @property (nonatomic) BOOL showsAlternateText; // @synthesize showsAlternateText=_showsAlternateText;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL wantsCrossfade;

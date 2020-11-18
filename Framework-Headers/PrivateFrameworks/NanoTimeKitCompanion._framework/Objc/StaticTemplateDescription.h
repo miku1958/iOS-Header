@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLKImageProvider, CLKTextProvider;
+@class CLKComplicationTemplateGraphicCircular, CLKImageProvider, CLKTextProvider;
 
 @interface StaticTemplateDescription : NSObject
 {
@@ -22,6 +22,9 @@
     CLKImageProvider *_circularMediumImage;
     CLKImageProvider *_extraLargeTop;
     CLKTextProvider *_extraLargeBottom;
+    CLKTextProvider *_signatureBezel;
+    CLKComplicationTemplateGraphicCircular *_signatureCircular;
+    CLKTextProvider *_signatureCornerTextProvider;
 }
 
 @property (strong, nonatomic) CLKImageProvider *circularMediumImage; // @synthesize circularMediumImage=_circularMediumImage;
@@ -33,6 +36,9 @@
 @property (strong, nonatomic) CLKTextProvider *modularLargeSecond; // @synthesize modularLargeSecond=_modularLargeSecond;
 @property (strong, nonatomic) CLKTextProvider *modularSmallBottom; // @synthesize modularSmallBottom=_modularSmallBottom;
 @property (strong, nonatomic) CLKImageProvider *modularSmallTop; // @synthesize modularSmallTop=_modularSmallTop;
+@property (strong, nonatomic) CLKTextProvider *signatureBezel; // @synthesize signatureBezel=_signatureBezel;
+@property (strong, nonatomic) CLKComplicationTemplateGraphicCircular *signatureCircular; // @synthesize signatureCircular=_signatureCircular;
+@property (strong, nonatomic) CLKTextProvider *signatureCornerTextProvider; // @synthesize signatureCornerTextProvider=_signatureCornerTextProvider;
 @property (strong, nonatomic) CLKImageProvider *utilityImageProvider; // @synthesize utilityImageProvider=_utilityImageProvider;
 @property (strong, nonatomic) CLKTextProvider *utilityLarge; // @synthesize utilityLarge=_utilityLarge;
 @property (strong, nonatomic) CLKTextProvider *utilitySmall; // @synthesize utilitySmall=_utilitySmall;

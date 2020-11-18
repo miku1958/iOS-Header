@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
     PDFDocument *document;
     struct CGPDFPage *page;
     PDFView *view;
-    UIImage *image;
     NSString *label;
+    UIImage *image;
+    struct CGImage *cgImage;
+    unsigned int cgImageOrientation;
     struct CGPDFLayout *layout;
     BOOL enqueuedForLayout;
     struct _opaque_pthread_t *threadFetchingLayout;
@@ -50,6 +52,7 @@ __attribute__((visibility("hidden")))
     BOOL isFullyConstructed;
     BOOL colorWidgetBackgrounds;
     PDFAKPageAdaptor *akPageAdaptor;
+    BOOL akDidSetupRealPageModelController;
     NSMutableArray *annotationChanges;
     NSMutableSet *changedAnnotations;
     NSMutableDictionary *widgetAnnotationLookup;

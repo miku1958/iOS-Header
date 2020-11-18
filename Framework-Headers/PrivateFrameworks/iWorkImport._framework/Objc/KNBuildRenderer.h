@@ -8,7 +8,7 @@
 
 #import <iWorkImport/CAAnimationDelegate-Protocol.h>
 
-@class CALayer, KNAnimatedBuild, KNAnimationInfo, KNBuildChunk, NSArray, NSMapTable, NSMutableArray, NSString, TSDDrawableInfo, TSDFPSCounter, TSDRep, TSDTextureDescription, TSDTextureSet;
+@class CALayer, KNAnimatedBuild, KNAnimationInfo, KNBuildChunk, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSString, TSDDrawableInfo, TSDFPSCounter, TSDRep, TSDTextureDescription, TSDTextureSet;
 
 __attribute__((visibility("hidden")))
 @interface KNBuildRenderer : KNAnimationRenderer <CAAnimationDelegate>
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
     BOOL _isPreview;
     BOOL _interrupted;
     BOOL _isAnimationForPlayback;
-    BOOL _areAnimationsPrepared;
+    BOOL _areAnimationsReadyToStart;
     BOOL _usingFinalTexture;
     BOOL _isTextureCachedAtEndOfBuild;
     BOOL _shouldUseMagicMoveTextures;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     BOOL _animationWillBeginPerformed;
     TSDFPSCounter *_FPSCounter;
     TSDTextureDescription *_textureDescription;
+    NSMutableSet *_texturesToTeardown;
 }
 
 @property (readonly, nonatomic) KNAnimatedBuild *animatedBuild; // @synthesize animatedBuild=_animatedBuild;
@@ -56,13 +57,15 @@ __attribute__((visibility("hidden")))
 
 - (BOOL)addAnimationsAtLayerTime:(double)arg1;
 - (void)addBuildToStartAtEnd:(id)arg1;
-- (void)animateAfterDelay:(double)arg1;
+- (void)animate;
+- (void)animationDidEnd;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (id)animationWillBegin;
 - (void)dealloc;
 - (void)fadeOutPreviousStageOn:(id)arg1 atLayerTime:(double)arg2;
 - (void)forceRemoveAnimations;
 - (void)generateTextures;
-- (id)initWithAnimatedBuild:(id)arg1 info:(id)arg2 buildStage:(id)arg3 session:(id)arg4 animatedSlideView:(id)arg5;
+- (id)initWithAnimatedBuild:(id)arg1 info:(id)arg2 buildStage:(id)arg3 animatedSlideView:(id)arg4;
 - (id)initializeTextureSetForEndOfBuild:(BOOL)arg1 endOfSlide:(BOOL)arg2 description:(id)arg3 isRenderingToContext:(BOOL)arg4;
 - (id)loadPluginIfNeeded;
 - (id)p_filterForTextDelivery:(long long)arg1;
@@ -76,7 +79,6 @@ __attribute__((visibility("hidden")))
 - (id)p_textureSetForStage:(long long)arg1 description:(id)arg2 isAtEndOfBuild:(BOOL)arg3 shouldForceRebuild:(BOOL)arg4 shouldRender:(BOOL)arg5;
 - (void)p_updateTextureDescription:(id)arg1 forStage:(long long)arg2 isAtEndOfBuild:(BOOL)arg3;
 - (void)pauseAnimationsAtTime:(double)arg1;
-- (id)prepareAnimations;
 - (void)registerForBuildEndCallback:(SEL)arg1 target:(id)arg2;
 - (void)removeAnimationsAndFinish:(BOOL)arg1;
 - (void)removeBuildToStartAtEnd:(id)arg1;

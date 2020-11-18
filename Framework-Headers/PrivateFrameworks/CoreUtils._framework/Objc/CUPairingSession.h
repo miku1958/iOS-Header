@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUAppleIDClient, CUPairedPeer, NSData, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
@@ -20,6 +20,7 @@
     NSDictionary *_acl;
     NSDictionary *_additionalPeerInfo;
     NSDictionary *_additionalSelfInfo;
+    unsigned long long _selfAppFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_fixedPIN;
     NSString *_label;
@@ -37,6 +38,8 @@
     CDUnknownBlockType _showPINHandler;
     CDUnknownBlockType _hidePINHandler;
     CDUnknownBlockType _sendDataHandler;
+    CDUnknownBlockType _signDataHandler;
+    CDUnknownBlockType _verifySignatureHandler;
 }
 
 @property (copy, nonatomic) NSDictionary *acl; // @synthesize acl=_acl;
@@ -55,14 +58,18 @@
 @property (copy, nonatomic) NSString *myAppleID; // @synthesize myAppleID=_myAppleID;
 @property (strong, nonatomic) CUAppleIDClient *myAppleIDInfoClient; // @synthesize myAppleIDInfoClient=_myAppleIDInfoClient;
 @property (readonly, nonatomic) CUPairedPeer *pairedPeer;
+@property (readonly, nonatomic) unsigned long long peerAppFlags;
 @property (copy, nonatomic) NSString *peerAppleID; // @synthesize peerAppleID=_peerAppleID;
 @property (readonly, copy, nonatomic) NSDictionary *peerInfo; // @synthesize peerInfo=_peerInfo;
 @property (nonatomic) unsigned int pinType; // @synthesize pinType=_pinType;
 @property (copy, nonatomic) CDUnknownBlockType promptForPINHandler; // @synthesize promptForPINHandler=_promptForPINHandler;
+@property (nonatomic) unsigned long long selfAppFlags; // @synthesize selfAppFlags=_selfAppFlags;
 @property (copy, nonatomic) CDUnknownBlockType sendDataHandler; // @synthesize sendDataHandler=_sendDataHandler;
 @property (nonatomic) unsigned int sessionType; // @synthesize sessionType=_sessionType;
 @property (copy, nonatomic) CDUnknownBlockType showPINHandler; // @synthesize showPINHandler=_showPINHandler;
 @property (copy, nonatomic) CDUnknownBlockType showPINHandlerEx; // @synthesize showPINHandlerEx=_showPINHandlerEx;
+@property (copy, nonatomic) CDUnknownBlockType signDataHandler; // @synthesize signDataHandler=_signDataHandler;
+@property (copy, nonatomic) CDUnknownBlockType verifySignatureHandler; // @synthesize verifySignatureHandler=_verifySignatureHandler;
 
 - (void).cxx_destruct;
 - (void)_activate;

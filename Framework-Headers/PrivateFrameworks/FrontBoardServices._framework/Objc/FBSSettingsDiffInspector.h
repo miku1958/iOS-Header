@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSMutableSettings;
 
@@ -15,6 +15,7 @@
     BOOL _iteratingObservers;
 }
 
+- (void).cxx_destruct;
 - (void)_addObserver:(id)arg1 forSetting:(unsigned long long)arg2 inInfo:(id)arg3;
 - (void)_observeSetting:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)dealloc;

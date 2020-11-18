@@ -6,7 +6,7 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class SXComponentAnimationController, SXComponentBehaviorController, SXComponentController, SXComponentView, SXFullscreenCanvasController, SXFullscreenCanvasViewController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXTangierController, SXViewport, UIView, UIViewController;
+@class SXComponentAnimationController, SXComponentBehaviorController, SXComponentController, SXComponentView, SXFullscreenCanvasController, SXFullscreenVideoPlaybackManager, SXMediaPlaybackController, SXPresentationAttributes, SXTangierController, SXViewport, UIView, UIViewController;
 @protocol SXAdDocumentStateManager, SXTextSelectionManager;
 
 @protocol SXPresentationDelegate <NSObject>
@@ -30,9 +30,8 @@
 - (UIViewController *)presentingContentViewController;
 - (void)releasePositionOfView:(UIView *)arg1;
 - (void)removeInteractivityFocusForComponent:(SXComponentView *)arg1;
-- (UIView *)requestFullScreenCanvasForComponent:(SXComponentView *)arg1 canvasController:(SXFullscreenCanvasController *)arg2;
-- (SXFullscreenCanvasViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1;
-- (SXFullscreenCanvasViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 withCompletionBlock:(void (^)(void))arg2;
+- (UIViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 canvasController:(SXFullscreenCanvasController *)arg2 withCompletionBlock:(void (^)(void))arg3;
+- (UIViewController *)requestFullScreenCanvasViewControllerForComponent:(SXComponentView *)arg1 withCompletionBlock:(void (^)(void))arg2;
 - (void)scrollToRect:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)updateBehaviorForComponentView:(SXComponentView *)arg1;
 @end

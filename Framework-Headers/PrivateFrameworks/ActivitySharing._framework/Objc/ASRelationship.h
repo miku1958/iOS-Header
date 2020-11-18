@@ -8,19 +8,26 @@
 
 #import <ActivitySharing/ASCloudKitCodable-Protocol.h>
 #import <ActivitySharing/NSCopying-Protocol.h>
-#import <ActivitySharing/NSSecureCoding-Protocol.h>
 
-@class ASCodableRelationship, CKRecord, CKRecordID, NSArray, NSDate, NSSet, NSString, NSUUID;
+@class ASCodableCloudKitRelationship, CKRecord, CKRecordID, NSArray, NSDate, NSSet, NSString, NSUUID;
 
-@interface ASRelationship : NSObject <ASCloudKitCodable, NSCopying, NSSecureCoding>
+@interface ASRelationship : NSObject <ASCloudKitCodable, NSCopying>
 {
     BOOL _isFriendshipActive;
     BOOL _isMuteEnabled;
     BOOL _hasIncomingInviteRequest;
     BOOL _hasOutgoingInviteRequest;
     BOOL _isAwaitingInviteResponse;
+    BOOL _hasIncomingCompetitionRequest;
+    BOOL _hasOutgoingCompetitionRequest;
+    BOOL _hasIgnoredCompetitionRequest;
+    BOOL _isAwaitingCompetitionResponse;
+    BOOL _isCompetitionActive;
+    BOOL _hasCompletedCompetition;
     BOOL _isHidingActivityData;
     BOOL _sentInviteResponse;
+    unsigned int _supportedPhoneFeatures;
+    unsigned int _supportedWatchFeatures;
     long long _version;
     NSUUID *_UUID;
     NSString *_incomingHandshakeToken;
@@ -34,6 +41,9 @@
     CKRecordID *_remoteRelationshipShareID;
     CKRecordID *_remoteActivityDataShareID;
     NSArray *_relationshipEvents;
+    NSDate *_dateForLatestOutgoingCompetitionRequest;
+    NSDate *_dateForLatestIncomingCompetitionRequest;
+    NSDate *_dateForLatestIgnoredCompetitionRequest;
     NSDate *_dateForLatestDataHidden;
     NSDate *_dateForLatestOutgoingInviteRequest;
     NSDate *_dateForLatestRelationshipStart;
@@ -41,60 +51,70 @@
 }
 
 @property (copy, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
-@property (copy, nonatomic) NSSet *addresses; // @synthesize addresses=_addresses;
-@property (copy, nonatomic) NSString *cloudKitAddress; // @synthesize cloudKitAddress=_cloudKitAddress;
-@property (readonly, nonatomic) ASCodableRelationship *codableRelationship;
+@property (strong, nonatomic) NSSet *addresses; // @synthesize addresses=_addresses;
+@property (strong, nonatomic) NSString *cloudKitAddress; // @synthesize cloudKitAddress=_cloudKitAddress;
+@property (readonly, nonatomic) ASCodableCloudKitRelationship *codableRelationship;
 @property (readonly, nonatomic) unsigned long long currentRelationshipEventAnchor;
 @property (strong, nonatomic) NSDate *dateActivityDataInitiallyBecameVisible; // @synthesize dateActivityDataInitiallyBecameVisible=_dateActivityDataInitiallyBecameVisible;
 @property (strong, nonatomic) NSDate *dateForLatestDataHidden; // @synthesize dateForLatestDataHidden=_dateForLatestDataHidden;
+@property (strong, nonatomic) NSDate *dateForLatestIgnoredCompetitionRequest; // @synthesize dateForLatestIgnoredCompetitionRequest=_dateForLatestIgnoredCompetitionRequest;
+@property (strong, nonatomic) NSDate *dateForLatestIncomingCompetitionRequest; // @synthesize dateForLatestIncomingCompetitionRequest=_dateForLatestIncomingCompetitionRequest;
+@property (strong, nonatomic) NSDate *dateForLatestOutgoingCompetitionRequest; // @synthesize dateForLatestOutgoingCompetitionRequest=_dateForLatestOutgoingCompetitionRequest;
 @property (strong, nonatomic) NSDate *dateForLatestOutgoingInviteRequest; // @synthesize dateForLatestOutgoingInviteRequest=_dateForLatestOutgoingInviteRequest;
 @property (strong, nonatomic) NSDate *dateForLatestRelationshipStart; // @synthesize dateForLatestRelationshipStart=_dateForLatestRelationshipStart;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasCompletedCompetition; // @synthesize hasCompletedCompetition=_hasCompletedCompetition;
+@property (nonatomic) BOOL hasIgnoredCompetitionRequest; // @synthesize hasIgnoredCompetitionRequest=_hasIgnoredCompetitionRequest;
+@property (nonatomic) BOOL hasIncomingCompetitionRequest; // @synthesize hasIncomingCompetitionRequest=_hasIncomingCompetitionRequest;
 @property (nonatomic) BOOL hasIncomingInviteRequest; // @synthesize hasIncomingInviteRequest=_hasIncomingInviteRequest;
+@property (nonatomic) BOOL hasOutgoingCompetitionRequest; // @synthesize hasOutgoingCompetitionRequest=_hasOutgoingCompetitionRequest;
 @property (nonatomic) BOOL hasOutgoingInviteRequest; // @synthesize hasOutgoingInviteRequest=_hasOutgoingInviteRequest;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *incomingHandshakeToken; // @synthesize incomingHandshakeToken=_incomingHandshakeToken;
+@property (strong, nonatomic) NSString *incomingHandshakeToken; // @synthesize incomingHandshakeToken=_incomingHandshakeToken;
 @property (readonly, nonatomic) BOOL isActivityDataVisible;
+@property (nonatomic) BOOL isAwaitingCompetitionResponse; // @synthesize isAwaitingCompetitionResponse=_isAwaitingCompetitionResponse;
 @property (nonatomic) BOOL isAwaitingInviteResponse; // @synthesize isAwaitingInviteResponse=_isAwaitingInviteResponse;
+@property (nonatomic) BOOL isCompetitionActive; // @synthesize isCompetitionActive=_isCompetitionActive;
 @property (nonatomic) BOOL isFriendshipActive; // @synthesize isFriendshipActive=_isFriendshipActive;
 @property (readonly, nonatomic) BOOL isHidingActivityData; // @synthesize isHidingActivityData=_isHidingActivityData;
 @property (nonatomic) BOOL isMuteEnabled; // @synthesize isMuteEnabled=_isMuteEnabled;
-@property (copy, nonatomic) NSString *outgoingHandshakeToken; // @synthesize outgoingHandshakeToken=_outgoingHandshakeToken;
-@property (copy, nonatomic) NSString *preferredReachableAddress; // @synthesize preferredReachableAddress=_preferredReachableAddress;
-@property (copy, nonatomic) NSString *preferredReachableService; // @synthesize preferredReachableService=_preferredReachableService;
+@property (strong, nonatomic) NSString *outgoingHandshakeToken; // @synthesize outgoingHandshakeToken=_outgoingHandshakeToken;
+@property (strong, nonatomic) NSString *preferredReachableAddress; // @synthesize preferredReachableAddress=_preferredReachableAddress;
+@property (strong, nonatomic) NSString *preferredReachableService; // @synthesize preferredReachableService=_preferredReachableService;
 @property (copy, nonatomic) NSArray *relationshipEvents; // @synthesize relationshipEvents=_relationshipEvents;
-@property (copy, nonatomic) CKRecordID *relationshipShareID; // @synthesize relationshipShareID=_relationshipShareID;
-@property (copy, nonatomic) CKRecordID *remoteActivityDataShareID; // @synthesize remoteActivityDataShareID=_remoteActivityDataShareID;
-@property (copy, nonatomic) CKRecordID *remoteRelationshipShareID; // @synthesize remoteRelationshipShareID=_remoteRelationshipShareID;
+@property (strong, nonatomic) CKRecordID *relationshipShareID; // @synthesize relationshipShareID=_relationshipShareID;
+@property (strong, nonatomic) CKRecordID *remoteActivityDataShareID; // @synthesize remoteActivityDataShareID=_remoteActivityDataShareID;
+@property (strong, nonatomic) CKRecordID *remoteRelationshipShareID; // @synthesize remoteRelationshipShareID=_remoteRelationshipShareID;
 @property (nonatomic) BOOL sentInviteResponse; // @synthesize sentInviteResponse=_sentInviteResponse;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) CKRecord *systemFieldsOnlyRecord; // @synthesize systemFieldsOnlyRecord=_systemFieldsOnlyRecord;
+@property (nonatomic) unsigned int supportedPhoneFeatures; // @synthesize supportedPhoneFeatures=_supportedPhoneFeatures;
+@property (nonatomic) unsigned int supportedWatchFeatures; // @synthesize supportedWatchFeatures=_supportedWatchFeatures;
+@property (strong, nonatomic) CKRecord *systemFieldsOnlyRecord; // @synthesize systemFieldsOnlyRecord=_systemFieldsOnlyRecord;
 @property (readonly, nonatomic) NSDate *timestampForMostRecentRelationshipEvent;
 @property (nonatomic) long long version; // @synthesize version=_version;
 
 + (void)_relationshipWithRecord:(id)arg1 relationshipEventRecords:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (id)relationshipWithCodableRelationship:(id)arg1;
++ (id)relationshipWithCodableRelationship:(id)arg1 version:(long long)arg2;
++ (id)relationshipWithCodableRelationshipContainer:(id)arg1;
 + (id)relationshipsWithRelationshipAndEventRecords:(id)arg1;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_clearRelationshipState;
-- (id)_mostRecentEventsWithCount:(long long)arg1;
 - (unsigned long long)_nextAnchor;
+- (void)_setRelationshipEvents:(id)arg1;
 - (void)_updateCurrentRelationshipState;
 - (void)_updateDateActivityDataBecameVisibleWithDate:(id)arg1;
 - (void)_updateDateFriendshipBeganWithDate:(id)arg1;
+- (id)codableRelationshipContainerIncludingCloudKitFields:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
-- (void)insertEventWithType:(long long)arg1;
+- (void)insertEventWithType:(unsigned short)arg1;
 - (void)insertEvents:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRelationship:(id)arg1;
 - (id)recordWithZoneID:(id)arg1;
 - (id)relationshipSnapshotForDate:(id)arg1;
-- (id)relationshipWithConsolidatedEvents;
+- (BOOL)supportsCompetitions;
 - (void)traverseRelationshipHistoryStartingAtEventWithAnchor:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 
 @end

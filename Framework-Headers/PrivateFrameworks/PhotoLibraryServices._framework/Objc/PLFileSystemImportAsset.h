@@ -4,28 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDate, NSMutableSet;
+@class NSMutableSet;
 @protocol PLAlbumProtocol;
 
 @interface PLFileSystemImportAsset : NSObject
 {
     int assetKind;
     NSMutableSet *_urls;
-    NSDate *_dateCreated;
     struct NSObject *_destinationAlbum;
 }
 
 @property (nonatomic) int assetKind; // @synthesize assetKind;
-@property (strong, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
 @property (strong, nonatomic) NSObject<PLAlbumProtocol> *destinationAlbum; // @synthesize destinationAlbum=_destinationAlbum;
 @property (strong, nonatomic) NSMutableSet *urls; // @synthesize urls=_urls;
 
 - (long long)compare:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (id)initWithURLs:(id)arg1 creationDate:(id)arg2 destinationAlbum:(struct NSObject *)arg3 assetKind:(int)arg4;
+- (id)initWithURLs:(id)arg1 destinationAlbum:(struct NSObject *)arg2 assetKind:(int)arg3;
 - (BOOL)isCameraKit;
 
 @end

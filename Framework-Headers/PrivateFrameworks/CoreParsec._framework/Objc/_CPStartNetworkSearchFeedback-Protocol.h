@@ -11,15 +11,6 @@
 @protocol _CPStartNetworkSearchFeedback <NSObject>
 
 @property (nonatomic) int endpoint;
-@property (readonly, nonatomic) BOOL hasEndpoint;
-@property (readonly, nonatomic) BOOL hasInput;
-@property (readonly, nonatomic) BOOL hasLookupSelectionType;
-@property (readonly, nonatomic) BOOL hasQueryId;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
-@property (readonly, nonatomic) BOOL hasTuscanyStatus;
-@property (readonly, nonatomic) BOOL hasUrl;
-@property (readonly, nonatomic) BOOL hasUuid;
 @property (copy, nonatomic) NSDictionary *headers;
 @property (copy, nonatomic) NSString *input;
 @property (readonly, nonatomic) NSData *jsonData;

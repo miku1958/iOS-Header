@@ -10,12 +10,12 @@
 #import <NewsUI/NUVideoPlayerEventTracker-Protocol.h>
 
 @class NSString;
-@protocol SXVideoPlaybackController;
+@protocol SVVideoPlaybackController;
 
 @interface NUVideoLoadingCoordinator : NSObject <NUVideoPlayerEventTracker, NUAsyncContentViewControllerLoader>
 {
     BOOL _loadStarted;
-    id<SXVideoPlaybackController> _playbackController;
+    id<SVVideoPlaybackController> _playbackController;
     CDUnknownBlockType _completionBlock;
 }
 
@@ -24,7 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=hasLoadStarted) BOOL loadStarted; // @synthesize loadStarted=_loadStarted;
-@property (readonly, nonatomic) id<SXVideoPlaybackController> playbackController; // @synthesize playbackController=_playbackController;
+@property (readonly, nonatomic) id<SVVideoPlaybackController> playbackController; // @synthesize playbackController=_playbackController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBApplicationDataStoreRepository-Protocol.h>
 
@@ -23,7 +23,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBApplicationDataStoreRepositoryReadingDelegate> delegate;
+@property (weak, nonatomic) id<FBApplicationDataStoreRepositoryReadingDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -31,6 +31,7 @@
 + (id)_generateParameterizedQuery:(id)arg1 forKeyList:(id)arg2 outBindings:(id *)arg3;
 + (id)_objectForResultRow:(id)arg1 index:(unsigned long long)arg2;
 + (BOOL)_objectRequiresSerialization:(id)arg1;
+- (void).cxx_destruct;
 - (id)_dbQueue_applicationIdentifiersWithState;
 - (BOOL)_dbQueue_containsKey:(id)arg1 forApplication:(id)arg2;
 - (void)_dbQueue_createTables;
@@ -53,6 +54,7 @@
 - (BOOL)_inAlternateSystemApp;
 - (BOOL)_isEligibleForSaving:(id)arg1;
 - (BOOL)_preserveFileAtURL:(id)arg1;
+- (id)allObjectsForKeys:(id)arg1;
 - (id)applicationIdentifiersWithState;
 - (void)beginBatchedUpdate;
 - (void)close;
@@ -63,8 +65,6 @@
 - (id)initWithStorePath:(id)arg1;
 - (id)keysForApplication:(id)arg1;
 - (id)objectForKey:(id)arg1 forApplication:(id)arg2;
-- (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3;
-- (void)objectForKeys:(id)arg1 forAllApplicationsWithResult:(CDUnknownBlockType)arg2;
 - (void)removeAllObjectsForApplication:(id)arg1;
 - (void)removeObjectForKey:(id)arg1 forApplication:(id)arg2;
 - (void)removeObjectsForKeys:(id)arg1 forApplication:(id)arg2;

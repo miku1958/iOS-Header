@@ -15,10 +15,10 @@
     struct NSMutableDictionary *_readyDestinations;
 }
 
-@property (copy, nonatomic) NSMutableDictionary *activeDestinations; // @synthesize activeDestinations=_activeDestinations;
+@property (strong, nonatomic) NSMutableDictionary *activeDestinations; // @synthesize activeDestinations=_activeDestinations;
 @property (readonly, nonatomic) unsigned long long count;
-@property (copy, nonatomic) NSMutableDictionary *destinations; // @synthesize destinations=_destinations;
-@property (copy, nonatomic) NSMutableDictionary *readyDestinations; // @synthesize readyDestinations=_readyDestinations;
+@property (strong, nonatomic) NSMutableDictionary *destinations; // @synthesize destinations=_destinations;
+@property (strong, nonatomic) NSMutableDictionary *readyDestinations; // @synthesize readyDestinations=_readyDestinations;
 @property (readonly, nonatomic) NSArray *registeredDestinations;
 
 - (void).cxx_destruct;

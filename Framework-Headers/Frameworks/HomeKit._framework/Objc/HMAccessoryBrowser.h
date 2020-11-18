@@ -8,40 +8,33 @@
 
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 
-@class HMDelegateCaller, HMFMessageDispatcher, HMThreadSafeMutableArrayCollection, HMXpcClient, NSArray, NSString, NSUUID;
+@class HMFUnfairLock, HMMutableArray, NSArray, NSString, NSUUID, _HMContext;
 @protocol HMAccessoryBrowserDelegate, OS_dispatch_queue;
 
 @interface HMAccessoryBrowser : NSObject <HMFMessageReceiver>
 {
+    HMFUnfairLock *_lock;
     BOOL _browsing;
     id<HMAccessoryBrowserDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
+    _HMContext *_context;
     NSUUID *_uuid;
-    HMThreadSafeMutableArrayCollection *_accessories;
-    HMXpcClient *_xpcClient;
-    HMFMessageDispatcher *_msgDispatcher;
+    HMMutableArray *_accessories;
     unsigned long long _generationCounter;
 }
 
-@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *accessories; // @synthesize accessories=_accessories;
+@property (strong, nonatomic) HMMutableArray *accessories; // @synthesize accessories=_accessories;
 @property (nonatomic, getter=isBrowsing) BOOL browsing; // @synthesize browsing=_browsing;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HMAccessoryBrowserDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSArray *discoveredAccessories;
 @property (nonatomic) unsigned long long generationCounter; // @synthesize generationCounter=_generationCounter;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-@property (strong, nonatomic) HMXpcClient *xpcClient; // @synthesize xpcClient=_xpcClient;
 
 - (void).cxx_destruct;
 - (void)_fetchNewAccessories;
@@ -56,7 +49,6 @@
 - (void)dealloc;
 - (void)handleStartWithError:(id)arg1 response:(id)arg2;
 - (id)init;
-- (id)initWithDelegate:(id)arg1 queue:(id)arg2;
 - (void)startSearchingForNewAccessories;
 - (void)stopSearchingForNewAccessories;
 

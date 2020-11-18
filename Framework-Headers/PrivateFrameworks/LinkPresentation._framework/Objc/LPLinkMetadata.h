@@ -26,6 +26,7 @@
     NSString *_creatorFacebookProfile;
     NSString *_creatorTwitterUsername;
     NSString *_appleContentID;
+    NSString *_appleSummary;
     LPImage *_icon;
     LPIconMetadata *_iconMetadata;
     LPImage *_image;
@@ -43,6 +44,7 @@
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, nonatomic) unsigned long long _encodedSize;
 @property (copy, nonatomic) NSString *appleContentID; // @synthesize appleContentID=_appleContentID;
+@property (copy, nonatomic) NSString *appleSummary; // @synthesize appleSummary=_appleSummary;
 @property (copy, nonatomic) NSArray *audios; // @synthesize audios=_audios;
 @property (copy, nonatomic) NSString *creator; // @synthesize creator=_creator;
 @property (copy, nonatomic) NSString *creatorFacebookProfile; // @synthesize creatorFacebookProfile=_creatorFacebookProfile;

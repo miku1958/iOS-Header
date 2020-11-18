@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAlertControllerVisualStyleAlert.h>
+#import <UIKitCore/UIAlertControllerVisualStyleAlert.h>
 
 __attribute__((visibility("hidden")))
 @interface UIAlertControllerVisualStyleAlertCar : UIAlertControllerVisualStyleAlert
 {
 }
 
-- (struct UIEdgeInsets)contentInsets;
+- (struct UIEdgeInsets)contentInsetsForContainerView:(id)arg1;
 - (double)marginAboveTitleLabelFirstBaseline;
 - (double)marginBelowLastLabelLastBaseline;
 - (double)marginBelowMessageLabelLastBaseline;

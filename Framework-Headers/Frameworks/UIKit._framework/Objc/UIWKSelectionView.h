@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIWebSelectionView.h>
+#import <UIKitCore/UIWebSelectionView.h>
 
 @class UIView, UIWebSelectionHandle;
 @protocol UIWKInteractionViewProtocol;
@@ -14,17 +14,14 @@ __attribute__((visibility("hidden")))
 {
     UIView<UIWKInteractionViewProtocol> *_interactionView;
     UIWebSelectionHandle *_handle;
-    BOOL _selectionIsBlock;
     BOOL _thresholdIsValid;
     BOOL _usingGesture;
     struct CGPoint _lastTouchPoint;
 }
 
-- (void)blockSelectionChangedWithTouch:(long long)arg1 withFlags:(long long)arg2 growThreshold:(double)arg3 shrinkThreshold:(double)arg4;
 - (void)clearSelection;
 - (void)endSelectionCreationWithPoint:(struct CGPoint)arg1;
 - (struct CGRect)fetchSelectionBoundingRect;
-- (double)handleOffsetForPoint:(struct CGPoint)arg1 handlePosition:(int)arg2;
 - (id)initWithView:(id)arg1;
 - (BOOL)isHorizontalWritingMode;
 - (void)onAfterScrollOrZoomShowingSelection:(BOOL)arg1;
@@ -38,23 +35,15 @@ __attribute__((visibility("hidden")))
 - (void)selectionCreationStartedWithPoint:(struct CGPoint)arg1;
 - (void)selectionCreationUpdatedWithPoint:(struct CGPoint)arg1;
 - (id)selectionRects;
-- (void)setHandleCenters;
-- (void)setSelectionMode:(BOOL)arg1;
-- (BOOL)shouldContractForActiveHandle;
-- (BOOL)shouldExpandForActiveHandle;
-- (BOOL)shouldSwitchToBlockModeForHandle:(id)arg1;
 - (void)showControls;
 - (void)showCopyCalloutWithAnimation:(BOOL)arg1;
 - (void)showRangeSelection;
 - (void)startSelectionCreationWithPoint:(struct CGPoint)arg1;
-- (void)switchToBlockModeForHandle:(id)arg1;
-- (void)switchToTextModeForHandle:(id)arg1;
 - (id)tintView;
-- (void)touchChanged:(id)arg1 forHandle:(id)arg2;
 - (void)touchChanged:(id)arg1 forHandleInText:(id)arg2;
 - (struct CGRect)unobscuredRect;
 - (void)updateFrameAndHandlesWithAnimation:(BOOL)arg1;
-- (void)updateRangedSelectionData:(id)arg1;
+- (void)updateRangedSelectionData;
 - (BOOL)updateRectForCalloutBar:(id)arg1 inWindow:(id)arg2;
 - (void)updateSelectionCreationWithPoint:(struct CGPoint)arg1;
 - (void)updateSelectionRects;

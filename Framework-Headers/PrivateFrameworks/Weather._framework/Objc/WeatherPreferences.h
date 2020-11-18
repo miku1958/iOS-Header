@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Weather/NSURLConnectionDelegate-Protocol.h>
 #import <Weather/WFTemperatureUnitObserver-Protocol.h>
 
-@class City, NSArray, NSString, WeatherCloudPreferences;
+@class City, NSArray, NSDate, NSString, WeatherCloudPreferences;
 @protocol SynchronizedDefaultsDelegate, WeatherPreferencesPersistence;
 
 @interface WeatherPreferences : NSObject <WFTemperatureUnitObserver, NSURLConnectionDelegate>
@@ -31,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isLocalWeatherEnabled, setter=setLocalWeatherEnabled:) BOOL isLocalWeatherEnabled;
+@property (readonly, weak, nonatomic) NSDate *lastUpdated;
 @property (readonly, nonatomic) City *localWeatherCity;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<SynchronizedDefaultsDelegate> syncDelegate; // @synthesize syncDelegate=_syncDelegate;

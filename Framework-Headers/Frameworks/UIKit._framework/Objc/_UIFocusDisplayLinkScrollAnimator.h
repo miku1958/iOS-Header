@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CADisplayLink, NSMapTable, NSTimer, UIScreen, _UIFocusEngineScrollViewOffsets;
+@class CADisplayLink, NSMapTable, NSTimer, UIScreen, _UIFocusEngineScrollableContainerOffsets;
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusDisplayLinkScrollAnimator : NSObject
 {
     UIScreen *_screen;
-    _UIFocusEngineScrollViewOffsets *_singleScrollViewEntry;
-    NSMapTable *_scrollViews;
+    _UIFocusEngineScrollableContainerOffsets *_singleScrollableContainerEntry;
+    NSMapTable *_scrollableContainers;
     CADisplayLink *_displayLink;
     NSTimer *_timer;
     double _lastTimerFireDate;
@@ -27,20 +27,20 @@ __attribute__((visibility("hidden")))
 - (BOOL)_canCreateDisplayLink;
 - (void)_commonHeartbeat:(double)arg1;
 - (void)_displayLinkHeartbeat:(id)arg1;
-- (id)_entryForScrollView:(id)arg1 createIfNeeded:(BOOL)arg2;
+- (id)_entryForScrollableContainer:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (void)_processEntry:(id)arg1 timeDelta:(long long)arg2 completed:(id)arg3;
 - (BOOL)_shouldPushAndPopRunLoopModes;
 - (void)_switchToTimerScrolling;
 - (void)_timerHeartbeat:(id)arg1;
 - (void)_updateHeartbeatConfiguration;
-- (void)cancelScrollingForScrollView:(id)arg1;
-- (struct CGPoint)currentVelocityForScrollView:(id)arg1;
+- (void)cancelScrollingForScrollableContainer:(id)arg1;
+- (struct CGPoint)currentVelocityForScrollableContainer:(id)arg1;
 - (void)dealloc;
 - (id)initWithScreen:(id)arg1;
-- (BOOL)isAnimatingScrollView:(id)arg1;
+- (BOOL)isAnimatingScrollableContainer:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)setTargetContentOffset:(struct CGPoint)arg1 forScrollView:(id)arg2 convergenceRate:(double)arg3 completion:(CDUnknownBlockType)arg4;
-- (struct CGPoint)targetContentOffsetForScrollView:(id)arg1;
+- (void)setTargetContentOffset:(struct CGPoint)arg1 forScrollableContainer:(id)arg2 convergenceRate:(double)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGPoint)targetContentOffsetForScrollableContainer:(id)arg1;
 - (struct CGPoint)velocityToScrollFromOffset:(struct CGPoint)arg1 toOffset:(struct CGPoint)arg2;
 
 @end

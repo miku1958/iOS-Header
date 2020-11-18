@@ -24,8 +24,10 @@
 @property (weak, nonatomic) ICTrackedParagraph *trackedParagraph; // @synthesize trackedParagraph=_trackedParagraph;
 
 - (void).cxx_destruct;
+- (void)darkerSystemColorsStatusDidChange;
+- (void)dealloc;
 - (struct UIImage *)imageForChecked:(BOOL)arg1 withHighlight:(BOOL)arg2;
-- (struct UIImage *)imageNamed:(id)arg1 withTint:(struct UIColor *)arg2;
+- (struct UIImage *)imageNamed:(id)arg1 withTint:(struct UIColor *)arg2 version:(unsigned long long)arg3;
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setDone:(BOOL)arg1 animated:(BOOL)arg2;

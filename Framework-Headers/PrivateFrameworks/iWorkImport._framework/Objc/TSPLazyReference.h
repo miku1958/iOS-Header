@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
+#import <iWorkImport/TSPReferenceItem-Protocol.h>
 
-@class NSUUID, TSPComponent, TSPObject;
+@class NSString, NSUUID, TSPComponent, TSPObject;
 @protocol TSPLazyReferenceDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSPLazyReference : NSObject <NSCopying>
+@interface TSPLazyReference : NSObject <TSPReferenceItem, NSCopying>
 {
     TSPObject *_strongObject;
     TSPObject *_weakObject;
@@ -20,23 +21,30 @@ __attribute__((visibility("hidden")))
         unsigned int ownershipMode:2;
         unsigned int isExternal:1;
         unsigned int allowUnknownObject:1;
+        unsigned int keepObjectInMemory:1;
     } _flags;
-    id<TSPLazyReferenceDelegate> _delegate;
     long long _identifier;
+    id<TSPLazyReferenceDelegate> _delegate;
     TSPComponent *_component;
     Class _objectClass;
 }
 
+@property (readonly, nonatomic) BOOL allowUnknownObject;
 @property (weak, nonatomic) TSPComponent *component; // @synthesize component=_component;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<TSPLazyReferenceDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) long long identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isExternal;
-@property (readonly, nonatomic) id object;
+@property (nonatomic) BOOL keepObjectInMemory;
 @property (nonatomic) Class objectClass; // @synthesize objectClass=_objectClass;
 @property (readonly, nonatomic) id objectIfLoaded;
 @property (readonly, nonatomic) NSUUID *objectUUID;
 @property (readonly, nonatomic) long long ownershipMode;
-@property (strong, nonatomic) TSPObject *strongObject;
+@property (readonly, nonatomic) TSPObject *strongObject;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) long long tsp_identifier; // @synthesize tsp_identifier=_identifier;
+@property (readonly, nonatomic) BOOL tsp_isLazyReference;
 @property (readonly, nonatomic) TSPObject *weakObject;
 
 + (id)referenceForObject:(id)arg1;
@@ -46,10 +54,6 @@ __attribute__((visibility("hidden")))
 - (void)addLoadObserver:(id)arg1 action:(SEL)arg2;
 - (id)additionalDescription;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (BOOL)discardStrongObjectIfPossible;
-- (unsigned long long)hash;
-- (id)init;
 - (id)initWeakReferenceWithObject:(id)arg1;
 - (id)initWeakReferenceWithObject:(id)arg1 retainedUntilArchived:(BOOL)arg2;
 - (id)initWithDelegate:(id)arg1 identifier:(long long)arg2 ownershipMode:(long long)arg3 allowUnknownObject:(BOOL)arg4;
@@ -57,9 +61,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithObject:(id)arg1 ownershipMode:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToLazyReference:(id)arg1;
+- (id)objectAndReturnError:(id *)arg1;
 - (BOOL)referencesObject:(id)arg1;
+- (long long)releaseObjectIfPossible;
 - (void)resetIdentifierFromCopy:(BOOL)arg1;
 - (void)resetToIdentifier:(long long)arg1;
+- (void)retainObject:(id)arg1;
 
 @end
 

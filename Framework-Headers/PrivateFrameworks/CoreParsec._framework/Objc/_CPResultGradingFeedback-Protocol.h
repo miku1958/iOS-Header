@@ -11,10 +11,6 @@
 @protocol _CPResultGradingFeedback <NSObject>
 
 @property (nonatomic) int grade;
-@property (readonly, nonatomic) BOOL hasGrade;
-@property (readonly, nonatomic) BOOL hasResult;
-@property (readonly, nonatomic) BOOL hasTextFeedback;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _CPSearchResultForFeedback *result;
 @property (copy, nonatomic) NSString *textFeedback;

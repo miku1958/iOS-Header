@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ManagedConfiguration/MCProfileConnectionXPCProtocol-Protocol.h>
 
@@ -54,6 +54,7 @@
 - (id)_localizedCertificateSourceDescriptionFromMDMName:(id)arg1 exchangeName:(id)arg2 exchangeCount:(long long)arg3 profileName:(id)arg4 profileCount:(long long)arg5;
 - (id)_localizedRestrictionSourceDescriptionFromMDMName:(id)arg1 exchangeName:(id)arg2 exchangeCount:(long long)arg3 profileName:(id)arg4 profileCount:(long long)arg5;
 - (id)_localizedSourceDescriptionForType:(long long)arg1 MDMName:(id)arg2 exchangeName:(id)arg3 exchangeCount:(long long)arg4 profileName:(id)arg5 profileCount:(long long)arg6;
+- (BOOL)_managedMayWriteUnmanagedContacts;
 - (BOOL)_openSensitiveURLString:(id)arg1 unlock:(BOOL)arg2;
 - (void)_passcodeDidChange;
 - (void)_passcodePolicyDidChange;
@@ -64,6 +65,9 @@
 - (void)_restrictionDidChange;
 - (id)_settingsLockedDownByRestrictions:(id)arg1;
 - (id)_sharedDeviceConfiguration;
+- (BOOL)_shouldApplyContactsFilterForBundleID:(id)arg1 sourceAccountManagement:(int)arg2 outAllowManagedAccounts:(BOOL *)arg3 outAllowUnmanagedAccounts:(BOOL *)arg4;
+- (BOOL)_shouldApplyContactsFilterForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2 outAllowManagedAccounts:(BOOL *)arg3 outAllowUnmanagedAccounts:(BOOL *)arg4;
+- (BOOL)_unmanagedMayReadManagedContacts;
 - (id)acceptedFileExtensions;
 - (id)acceptedMIMETypes;
 - (id)activationLockBypassHash;
@@ -129,6 +133,7 @@
 - (id)deviceOrganizationCountry;
 - (id)deviceOrganizationName;
 - (id)deviceOrganizationRegion;
+- (id)deviceOrganizationVendorID;
 - (id)deviceOrganizationZipCode;
 - (id)deviceProvisionalEnrollmentFootnote;
 - (id)diagnosticsUploadURL;
@@ -173,7 +178,9 @@
 - (id)fetchActivationLockBypassKeyWithError:(id *)arg1;
 - (id)filteredMailSheetAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
 - (id)filteredOpenInAccounts:(id)arg1 originatingAppBundleID:(id)arg2 sourceAccountManagement:(int)arg3;
+- (id)filteredOpenInContactsAccounts:(id)arg1 originatingAppBundleID:(id)arg2 sourceAccountManagement:(int)arg3;
 - (id)filteredOpenInOriginatingAccounts:(id)arg1 targetAppBundleID:(id)arg2 targetAccountManagement:(int)arg3;
+- (id)filteredOpenInOriginatingContactsAccounts:(id)arg1 targetAppBundleID:(id)arg2 targetAccountManagement:(int)arg3;
 - (void)flush;
 - (void)getPasscodeComplianceWarningLastLockDate:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (int)getPasscodeComplianceWarningLastLockDate:(id)arg1 outLocalizedTitle:(id *)arg2 outLocalizedMessage:(id *)arg3;
@@ -234,6 +241,7 @@
 - (BOOL)isAutomaticAppDownloadsAllowed;
 - (BOOL)isAutomaticAppUpdatesAllowed;
 - (BOOL)isAutomaticAppUpdatesModificationAllowed;
+- (BOOL)isAutomaticDateAndTimeEnforced;
 - (BOOL)isAwaitingDeviceConfigured;
 - (BOOL)isBluetoothModificationAllowed;
 - (BOOL)isBoolSettingLockedDownByRestrictions:(id)arg1;
@@ -259,6 +267,7 @@
 - (BOOL)isDiagnosticSubmissionModificationAllowed;
 - (BOOL)isDictationAllowed;
 - (BOOL)isDriverDoNotDisturbModificationsAllowed;
+- (BOOL)isESIMModificationAllowed;
 - (BOOL)isEnterpriseBookBackupAllowed;
 - (BOOL)isEnterpriseBookMetadataSyncAllowed;
 - (BOOL)isEphemeralMultiUser;
@@ -275,6 +284,7 @@
 - (BOOL)isHealthDataSubmission2Allowed;
 - (BOOL)isHealthDataSubmissionAllowed;
 - (BOOL)isHomeAllowed;
+- (BOOL)isHomeScreenLayoutApplied;
 - (BOOL)isInAppPaymentAllowed;
 - (BOOL)isInSingleAppMode;
 - (BOOL)isInstalledAppNearMeSuggestionsAllowed;
@@ -302,6 +312,9 @@
 - (BOOL)isPasscodeRequiredByProfiles;
 - (BOOL)isPasscodeRequiredToAccessWhitelistedApps;
 - (BOOL)isPasscodeSet;
+- (BOOL)isPasswordAutoFillAllowed;
+- (BOOL)isPasswordProximityAutoFillRequestingAllowed;
+- (BOOL)isPasswordSharingAllowed;
 - (BOOL)isPodcastsAllowed;
 - (BOOL)isPredictiveKeyboardAllowed;
 - (void)isProfileInstalledWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -369,6 +382,8 @@
 - (BOOL)mayShareToMessagesOriginatingAccountIsManaged:(BOOL)arg1;
 - (BOOL)mayShowLocalAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
 - (BOOL)mayShowLocalAccountsForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2;
+- (BOOL)mayShowLocalContactsAccountsForBundleID:(id)arg1 sourceAccountManagement:(int)arg2;
+- (BOOL)mayShowLocalContactsAccountsForTargetBundleID:(id)arg1 targetAccountManagement:(int)arg2;
 - (void)migratePostDataMigrator;
 - (void)migratePostMDMDataMigratorWithContext:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)migrateWithContext:(int)arg1 passcodeWasSetInBackup:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
@@ -398,6 +413,7 @@
 - (id)passcodeExpiryDate;
 - (id)passcodeExpiryDateOutError:(id *)arg1;
 - (void)performBootTimeChecks;
+- (id)permittedAutoLockSeconds;
 - (id)popProfileDataFromHeadOfInstallationQueue;
 - (id)popProvisioningProfileDataFromHeadOfInstallationQueue;
 - (void)preflightUserInputResponses:(id)arg1 forPayloadIndex:(unsigned long long)arg2;

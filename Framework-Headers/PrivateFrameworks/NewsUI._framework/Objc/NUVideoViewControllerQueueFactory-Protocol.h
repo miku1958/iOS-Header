@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSOrderedSet, SXVideoQueue;
+@class NSOrderedSet, SVVideoQueue;
 
 @protocol NUVideoViewControllerQueueFactory
-- (SXVideoQueue *)createQueueWithVideoItems:(NSOrderedSet *)arg1;
+- (SVVideoQueue *)createQueueWithVideoItems:(NSOrderedSet *)arg1;
 @end
 

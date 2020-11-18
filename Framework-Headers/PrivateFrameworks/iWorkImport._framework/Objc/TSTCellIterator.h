@@ -4,46 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSTCellIterating-Protocol.h>
 
 @class NSMutableIndexSet, NSString, TSTCell, TSTCellRegion, TSTInfo, TSTMutableCellIteratorData, TSTTableModel;
-@protocol TSTCellRegionIterating, TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating, TSTDataStoreIterating><TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating;
+@protocol TSTCellRegionIterating, TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating;
 
 __attribute__((visibility("hidden")))
 @interface TSTCellIterator : NSObject <TSTCellIterating>
 {
+    BOOL _returnCellContents;
     BOOL _returnEmptyCells;
     BOOL _returnOneEmptyCell;
     BOOL _terminateRegionIterator;
-    unsigned short _rowForColumnIndiciesWithMerges;
-    TSTTableModel *_tableModel;
+    unsigned int _rowForColumnIndexesWithMerges;
     TSTInfo *_tableInfo;
+    TSTTableModel *_tableModel;
     TSTCellRegion *_region;
     TSTCell *_cell;
     TSTMutableCellIteratorData *_cellData;
     id<TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> _contentIterator;
     id<TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> _strokeIterator;
     id<TSTCellRegionIterating> _regionIterator;
-    id<TSTDataStoreIterating><TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> _dataStoreIterator;
-    NSMutableIndexSet *_columnIndiciesWithMerges;
+    id<TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> _dataStoreIterator;
+    NSMutableIndexSet *_columnIndexesWithMerges;
 }
 
 @property (strong, nonatomic) TSTCell *cell; // @synthesize cell=_cell;
-@property (readonly, nonatomic) unsigned short cellCountInRow;
 @property (strong, nonatomic) TSTMutableCellIteratorData *cellData; // @synthesize cellData=_cellData;
-@property (strong, nonatomic) NSMutableIndexSet *columnIndiciesWithMerges; // @synthesize columnIndiciesWithMerges=_columnIndiciesWithMerges;
+@property (strong, nonatomic) NSMutableIndexSet *columnIndexesWithMerges; // @synthesize columnIndexesWithMerges=_columnIndexesWithMerges;
 @property (strong, nonatomic) id<TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> contentIterator; // @synthesize contentIterator=_contentIterator;
-@property (strong, nonatomic) id<TSTDataStoreIterating><TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> dataStoreIterator; // @synthesize dataStoreIterator=_dataStoreIterator;
+@property (strong, nonatomic) id<TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> dataStoreIterator; // @synthesize dataStoreIterator=_dataStoreIterator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) TSTCellRegion *region; // @synthesize region=_region;
 @property (strong, nonatomic) id<TSTCellRegionIterating> regionIterator; // @synthesize regionIterator=_regionIterator;
+@property (readonly, nonatomic) BOOL returnCellContents; // @synthesize returnCellContents=_returnCellContents;
 @property (nonatomic) BOOL returnEmptyCells; // @synthesize returnEmptyCells=_returnEmptyCells;
 @property (nonatomic) BOOL returnOneEmptyCell; // @synthesize returnOneEmptyCell=_returnOneEmptyCell;
-@property (nonatomic) unsigned short rowForColumnIndiciesWithMerges; // @synthesize rowForColumnIndiciesWithMerges=_rowForColumnIndiciesWithMerges;
+@property (nonatomic) unsigned int rowForColumnIndexesWithMerges; // @synthesize rowForColumnIndexesWithMerges=_rowForColumnIndexesWithMerges;
 @property (strong, nonatomic) id<TSTCellRegionIterating><TSTMutableCellIteratorDataUpdating> strokeIterator; // @synthesize strokeIterator=_strokeIterator;
 @property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;

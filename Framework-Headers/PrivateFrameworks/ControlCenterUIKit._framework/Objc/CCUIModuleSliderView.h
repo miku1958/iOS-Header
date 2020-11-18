@@ -12,7 +12,7 @@
 #import <ControlCenterUIKit/CCUIGroupRendering-Protocol.h>
 #import <ControlCenterUIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, CCUICAPackageDescription, CCUICAPackageView, NSArray, NSString, NSTimer, UIImage, UIImageView, UIPanGestureRecognizer, UISelectionFeedbackGenerator, UIView, _UIEdgeFeedbackGenerator;
+@class CALayer, CCUICAPackageDescription, CCUICAPackageView, NSArray, NSString, NSTimer, UIImage, UIImageView, UIPanGestureRecognizer, UISelectionFeedbackGenerator, UITapGestureRecognizer, UIView, _UIEdgeFeedbackGenerator;
 
 @interface CCUIModuleSliderView : UIControl <UIGestureRecognizerDelegate, CCUIContentModuleTopLevelGestureProvider, CCUIContentModuleExpandedStateListener, CCUIContentClipping, CCUIGroupRendering>
 {
@@ -25,9 +25,11 @@
     NSArray *_separatorViews;
     double _startingHeight;
     float _startingValue;
+    BOOL _gestureStartedInside;
     NSTimer *_updatesCommitTimer;
     float _previousValue;
     UIPanGestureRecognizer *_valueChangeGestureRecognizer;
+    UITapGestureRecognizer *_tapGestureRecognizer;
     UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
     _UIEdgeFeedbackGenerator *_edgeFeedbackGenerator;
     BOOL _glyphVisible;
@@ -81,6 +83,7 @@
 - (void)_endTrackingWithGestureRecognizer:(id)arg1;
 - (double)_fullStepHeight;
 - (void)_handleValueChangeGestureRecognizer:(id)arg1;
+- (void)_handleValueTapGestureRecognizer:(id)arg1;
 - (double)_heightForStep:(unsigned long long)arg1;
 - (void)_layoutContinuousValueView;
 - (void)_layoutContinuousValueViewForValue:(float)arg1;
@@ -91,9 +94,13 @@
 - (double)_sliderHeight;
 - (double)_sliderHeightForValue:(float)arg1;
 - (unsigned long long)_stepFromValue:(float)arg1;
+- (unsigned long long)_stepFromValue:(float)arg1 avoidCurrentStep:(BOOL)arg2;
 - (void)_updateStepFromValue:(float)arg1 playHaptic:(BOOL)arg2;
-- (void)_updateValueForPanGestureRecognizer:(id)arg1 withAbsoluteReference:(BOOL)arg2 forContinuedGesture:(BOOL)arg3;
+- (void)_updateStepFromValue:(float)arg1 playHaptic:(BOOL)arg2 toggleCurrentStep:(BOOL)arg3;
+- (void)_updateValueForPanGestureRecognizer:(id)arg1 withAbsolutePosition:(BOOL)arg2 forContinuedGesture:(BOOL)arg3;
 - (float)_valueForPanGestureRecognizer:(id)arg1 withAbsoluteReference:(BOOL)arg2;
+- (float)_valueForTouchLocation:(struct CGPoint)arg1;
+- (float)_valueForTouchTranslation:(struct CGPoint)arg1;
 - (float)_valueFromStep:(unsigned long long)arg1;
 - (void)contentModuleWillTransitionToExpandedContentMode:(BOOL)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

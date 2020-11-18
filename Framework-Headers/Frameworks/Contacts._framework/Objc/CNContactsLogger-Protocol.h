@@ -14,6 +14,7 @@
 - (void)XPCConnectionWasInterrupted;
 - (void)XPCConnectionWasInvalidated;
 - (void)addingContacts:(NSArray *)arg1 toContainerWithIdentifier:(NSString *)arg2;
+- (void)changedMeContact:(CNContact *)arg1;
 - (void)changingMeContact:(void (^)(void (^)(void)))arg1;
 - (void)clearingChangeHistory:(void (^)(void (^)(void)))arg1;
 - (void)contactsAccessWasGranted:(BOOL)arg1;

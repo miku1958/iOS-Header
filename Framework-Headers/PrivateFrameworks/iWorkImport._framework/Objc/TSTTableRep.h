@@ -10,12 +10,13 @@
 #import <iWorkImport/TSTTableRepInternal-Protocol.h>
 #import <iWorkImport/UITextFieldDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSMutableArray, NSMutableDictionary, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellSelection, TSTInfo, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableModel, TSTTableReferences;
+@class CALayer, CAShapeLayer, NSMutableArray, NSMutableDictionary, NSSet, NSString, TSDTilingLayer, TSTAnimation, TSTCellSelection, TSTInfo, TSTLayout, TSTMasterLayout, TSTSelectionDragController, TSTTableReferences;
 @protocol TSTCanvasReferenceController, TSTTableAnimationController, TSTTableChromeProvider, TSTTableRepDelegate;
 
 __attribute__((visibility("hidden")))
 @interface TSTTableRep : TSWPTextHostRep <TSTTableRepInternal, UITextFieldDelegate, CALayerDelegate>
 {
+    BOOL _tableRepIsBeingRemovedFromBackgroundLayout;
     BOOL _selectionDragAbortedOnNewSelection;
     BOOL _selectionUsesBezierPath;
     BOOL _selectsCellOnInitialTap;
@@ -28,8 +29,8 @@ __attribute__((visibility("hidden")))
     BOOL _zoomOperationIsInProgress;
     BOOL _recursivelyDrawingInContext;
     BOOL _dragByHandleOnly;
-    struct TSUCellCoord _ratingsDragCellID;
     NSMutableDictionary *_childTextReps;
+    struct TSUCellCoord _ratingsDragCellID;
     TSTTableReferences *_references;
     TSTSelectionDragController *_cellDragController;
     NSSet *_visibleFillKnobs;
@@ -46,11 +47,11 @@ __attribute__((visibility("hidden")))
     CALayer *_overlayFrozenHeaderTableBodyMask;
     CALayer *_overlayFrozenHeaderTableNameMask;
     double _currentScreenScale;
-    struct TSUCellRect _dirtyCellRange;
     NSMutableArray *_animationStack;
-    struct TSUCellRect _zoomToEditVisibleCellRange;
     CAShapeLayer *_cellEditingMaskLayer;
     CAShapeLayer *_findSelectionHighlightLayer;
+    struct TSUCellRect _dirtyCellRange;
+    struct TSUCellRect _zoomToEditVisibleCellRange;
     struct CGRect _searchSelectionBounds;
 }
 
@@ -96,8 +97,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) id<TSTTableChromeProvider> tableChrome; // @synthesize tableChrome=_tableChrome;
 @property (readonly, nonatomic) TSTInfo *tableInfo;
 @property (readonly, nonatomic) TSTLayout *tableLayout;
-@property (readonly, nonatomic) TSTTableModel *tableModel;
+@property (readonly, nonatomic) TSTInfo *tableModel;
 @property (nonatomic, getter=isTableNameValid) BOOL tableNameValid; // @synthesize tableNameValid=_tableNameValid;
+@property BOOL tableRepIsBeingRemovedFromBackgroundLayout; // @synthesize tableRepIsBeingRemovedFromBackgroundLayout=_tableRepIsBeingRemovedFromBackgroundLayout;
 @property (readonly, nonatomic) struct CGAffineTransform transformFromCanvas;
 @property (readonly, nonatomic) struct CGAffineTransform transformToCanvas;
 @property (readonly, nonatomic) BOOL usesWholeChromeResizer; // @synthesize usesWholeChromeResizer=_usesWholeChromeResizer;
@@ -126,7 +128,7 @@ __attribute__((visibility("hidden")))
 - (void)drawInContext:(struct CGContext *)arg1;
 - (void)drawLayer:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)editorSelection;
-- (id)hitRep:(struct CGPoint)arg1;
+- (id)hitRep:(struct CGPoint)arg1 withPrecision:(BOOL)arg2;
 - (id)hitRepChrome:(struct CGPoint)arg1;
 - (id)hyperlinkContainerRep;
 - (id)hyperlinkRegions;
@@ -152,7 +154,7 @@ __attribute__((visibility("hidden")))
 - (void)p_updateDynamicModePropertiesForContainedTextEditingWithSpillingTextRange:(struct TSUCellRect)arg1;
 - (void)popAnimation;
 - (void)pushAnimation:(id)arg1;
-- (void)recursivelyDrawInContext:(struct CGContext *)arg1;
+- (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (void)recursivelyPerformSelector:(SEL)arg1;
 - (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1;

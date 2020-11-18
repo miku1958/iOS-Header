@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (long long)activityCategory;
-- (id)activityImage;
+- (id)_activityBundleImageConfiguration;
 - (id)activityTitle;
 - (id)activityType;
 - (id)assets;

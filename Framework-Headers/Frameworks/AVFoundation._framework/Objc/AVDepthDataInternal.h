@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCameraCalibrationData, NSData;
 
+__attribute__((visibility("hidden")))
 @interface AVDepthDataInternal : NSObject
 {
     struct __CVBuffer *pixelBuffer;

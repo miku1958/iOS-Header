@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSPArchiverManagerDelegate-Protocol.h>
 #import <iWorkImport/TSPComponentWriterDelegate-Protocol.h>
@@ -13,7 +13,7 @@
 #import <iWorkImport/TSPProxyObjectMapping-Protocol.h>
 #import <iWorkImport/TSPProxyObjectWriting-Protocol.h>
 
-@class NSHashTable, NSMutableArray, NSString, NSURL, TSPArchiverManager, TSPObjectContext, TSURetainedPointerKeyDictionary;
+@class NSMutableArray, NSString, NSURL, TSPArchiverManager, TSPObjectContext, TSPReferenceOrderedSet, TSURetainedPointerKeyDictionary;
 @protocol OS_dispatch_queue, TSPEncoder, TSPEncoderWriteCoordinatorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -25,7 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _didStopCapturingSnapshots;
     NSMutableArray *_dataFinalizeHandlers;
     NSObject<OS_dispatch_queue> *_accessQueue;
-    NSHashTable *_delayedObjects;
+    TSPReferenceOrderedSet *_delayedObjects;
     BOOL _hasProxyObjects;
     TSURetainedPointerKeyDictionary *_proxyObjectMap;
     TSPObjectContext *_context;

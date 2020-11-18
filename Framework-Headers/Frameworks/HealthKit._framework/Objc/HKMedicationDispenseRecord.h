@@ -13,35 +13,35 @@
 
 @interface HKMedicationDispenseRecord : HKMedicalRecord <NSSecureCoding, NSCopying>
 {
-    HKCodedQuantity *_daysSupplyQuantity;
+    NSArray *_medicationCodings;
+    HKCodedQuantity *_quantityDispensed;
+    HKMedicalDate *_preparationDate;
+    HKMedicalDate *_handOverDate;
     NSArray *_dosages;
     HKMedicalDate *_earliestDosageDate;
-    HKMedicalDate *_handOverDate;
-    NSArray *_medicationCodings;
-    HKMedicalDate *_preparationDate;
-    HKCodedQuantity *_quantityDispensed;
     HKMedicalCoding *_statusCoding;
+    HKCodedQuantity *_daysSupplyQuantity;
 }
 
-@property (readonly, copy, nonatomic) HKCodedQuantity *daysSupplyQuantity; // @synthesize daysSupplyQuantity=_daysSupplyQuantity;
-@property (readonly, copy, nonatomic) NSArray *dosages; // @synthesize dosages=_dosages;
-@property (readonly, copy, nonatomic) HKMedicalDate *earliestDosageDate; // @synthesize earliestDosageDate=_earliestDosageDate;
-@property (readonly, copy, nonatomic) HKMedicalDate *handOverDate; // @synthesize handOverDate=_handOverDate;
-@property (readonly, copy, nonatomic) NSArray *medicationCodings; // @synthesize medicationCodings=_medicationCodings;
-@property (readonly, nonatomic) HKMedicationDispenseRecordType *medicationDispenseRecordType;
-@property (readonly, copy, nonatomic) HKMedicalDate *preparationDate; // @synthesize preparationDate=_preparationDate;
-@property (readonly, copy, nonatomic) HKCodedQuantity *quantityDispensed; // @synthesize quantityDispensed=_quantityDispensed;
-@property (readonly, copy, nonatomic) HKMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
+@property (readonly, copy) HKCodedQuantity *daysSupplyQuantity;
+@property (readonly, copy) NSArray *dosages;
+@property (readonly, copy) HKMedicalDate *earliestDosageDate;
+@property (readonly, copy) HKMedicalDate *handOverDate;
+@property (readonly, copy) NSArray *medicationCodings;
+@property (readonly, copy) HKMedicationDispenseRecordType *medicationDispenseRecordType;
+@property (readonly, copy) HKMedicalDate *preparationDate;
+@property (readonly, copy) HKCodedQuantity *quantityDispensed;
+@property (readonly, copy) HKMedicalCoding *statusCoding;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)defaultDisplayString;
 + (id)medicationCodingsPreferredSystems;
-+ (id)medicationDispenseRecordWithNote:(id)arg1 enteredInError:(BOOL)arg2 modifiedDate:(id)arg3 FHIRIdentifier:(id)arg4 extractionVersion:(long long)arg5 device:(id)arg6 metadata:(id)arg7 medicationCodings:(id)arg8 quantityDispensed:(id)arg9 preparationDate:(id)arg10 handOverDate:(id)arg11 dosages:(id)arg12 earliestDosageDate:(id)arg13 statusCoding:(id)arg14 daysSupplyQuantity:(id)arg15;
++ (id)medicationDispenseRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 medicationCodings:(id)arg9 quantityDispensed:(id)arg10 preparationDate:(id)arg11 handOverDate:(id)arg12 dosages:(id)arg13 earliestDosageDate:(id)arg14 statusCoding:(id)arg15 daysSupplyQuantity:(id)arg16;
++ (id)medicationDispenseRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 medicationCodings:(id)arg10 quantityDispensed:(id)arg11 preparationDate:(id)arg12 handOverDate:(id)arg13 dosages:(id)arg14 earliestDosageDate:(id)arg15 statusCoding:(id)arg16 daysSupplyQuantity:(id)arg17;
 + (id)statusCodingPreferredSystems;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_setDaysSupplyQuantity:(id)arg1;
 - (void)_setDosages:(id)arg1;
 - (void)_setEarliestDosageDate:(id)arg1;

@@ -32,7 +32,7 @@
     NSURL *_baseURL;
 }
 
-@property (strong, nonatomic) NSDictionary *additionalHeaderFields; // @synthesize additionalHeaderFields=_additionalHeaderFields;
+@property (copy, nonatomic) NSDictionary *additionalHeaderFields; // @synthesize additionalHeaderFields=_additionalHeaderFields;
 @property (nonatomic) BOOL allowAuthentication; // @synthesize allowAuthentication=_allowAuthentication;
 @property (copy, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (strong, nonatomic) NSString *callerOverride; // @synthesize callerOverride=_callerOverride;
@@ -54,6 +54,7 @@
 
 + (id)_defaultBaseURL;
 + (void)_networkRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)_runSSVNetworkOperationWithProperties:(id)arg1 requiresMescal:(BOOL)arg2 outError:(id *)arg3;
 + (void)logNetworkHeaders:(id)arg1 identifier:(id)arg2;
 + (unsigned long long)preferredCachePolicy;
 - (void).cxx_destruct;

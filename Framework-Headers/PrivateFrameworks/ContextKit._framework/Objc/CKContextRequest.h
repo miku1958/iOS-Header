@@ -12,55 +12,74 @@
 
 @interface CKContextRequest : NSObject <NSSecureCoding>
 {
+    BOOL _textIsRaw;
+    BOOL _includeHigherLevelTopics;
     BOOL _prepareOnly;
     BOOL _debug;
     BOOL _dontSkip;
     BOOL _timing;
     unsigned int _topk;
     NSString *_text;
+    NSString *_title;
+    NSString *_contentDescription;
+    NSString *_contentKeywords;
+    NSString *_contentAuthor;
+    NSString *_url;
+    NSString *_languageTag;
     NSNumber *_overrideBlendAlpha;
     NSNumber *_overrideBlendBeta;
     NSNumber *_overrideBlendGamma;
-    NSString *_languageTag;
-    long long _type;
+    unsigned long long _type;
 }
 
+@property (strong, nonatomic, setter=setContentAuthor:) NSString *contentAuthor; // @synthesize contentAuthor=_contentAuthor;
+@property (strong, nonatomic, setter=setContentDescription:) NSString *contentDescription; // @synthesize contentDescription=_contentDescription;
+@property (strong, nonatomic, setter=setContentKeywords:) NSString *contentKeywords; // @synthesize contentKeywords=_contentKeywords;
 @property (nonatomic) BOOL debug; // @synthesize debug=_debug;
 @property (nonatomic) BOOL dontSkip; // @synthesize dontSkip=_dontSkip;
+@property (nonatomic) BOOL includeHigherLevelTopics; // @synthesize includeHigherLevelTopics=_includeHigherLevelTopics;
 @property (strong, nonatomic) NSString *languageTag; // @synthesize languageTag=_languageTag;
 @property (strong, nonatomic) NSNumber *overrideBlendAlpha; // @synthesize overrideBlendAlpha=_overrideBlendAlpha;
 @property (strong, nonatomic) NSNumber *overrideBlendBeta; // @synthesize overrideBlendBeta=_overrideBlendBeta;
 @property (strong, nonatomic) NSNumber *overrideBlendGamma; // @synthesize overrideBlendGamma=_overrideBlendGamma;
 @property (nonatomic) BOOL prepareOnly; // @synthesize prepareOnly=_prepareOnly;
-@property (strong, nonatomic) NSString *text; // @synthesize text=_text;
+@property (strong, nonatomic, setter=setText:) NSString *text; // @synthesize text=_text;
+@property (nonatomic) BOOL textIsRaw; // @synthesize textIsRaw=_textIsRaw;
 @property (nonatomic) BOOL timing; // @synthesize timing=_timing;
+@property (strong, nonatomic, setter=setTitle:) NSString *title; // @synthesize title=_title;
 @property (nonatomic) unsigned int topk; // @synthesize topk=_topk;
-@property (nonatomic) long long type; // @synthesize type=_type;
+@property (nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (strong, nonatomic) NSString *url; // @synthesize url=_url;
 
 + (id)_newXpcConnection;
 + (id)_xpcConnection;
 + (void)findResponseByID:(id)arg1 withReply:(CDUnknownBlockType)arg2;
-+ (void)findResultsForText:(id)arg1 languageTag:(id)arg2 requestType:(long long)arg3 withReply:(CDUnknownBlockType)arg4;
++ (void)findResultsForText:(id)arg1 languageTag:(id)arg2 requestType:(unsigned long long)arg3 withReply:(CDUnknownBlockType)arg4;
 + (void)findResultsForText:(id)arg1 languageTag:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 + (void)findResultsForText:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 + (void)initialize;
-+ (void)logEngagementForResponseId:(id)arg1 result:(id)arg2 rank:(unsigned long long)arg3 inputLength:(unsigned long long)arg4 completionLength:(unsigned long long)arg5 requestType:(long long)arg6 logType:(unsigned long long)arg7;
-+ (void)logResultsShownForResponseId:(id)arg1 shown:(unsigned long long)arg2 couldHaveShown:(unsigned long long)arg3 serverOverride:(BOOL)arg4 inputLength:(unsigned long long)arg5 requestType:(long long)arg6 logType:(unsigned long long)arg7;
-+ (void)logTransactionSuccessfulForResponseId:(id)arg1 inputLength:(unsigned long long)arg2 completionLength:(unsigned long long)arg3 requestType:(long long)arg4 logType:(unsigned long long)arg5;
++ (void)logEngagementForResponseId:(id)arg1 result:(id)arg2 rank:(unsigned long long)arg3 inputLength:(unsigned long long)arg4 completionLength:(unsigned long long)arg5 requestType:(unsigned long long)arg6 logType:(unsigned long long)arg7;
++ (void)logResultsShownForResponseId:(id)arg1 shown:(unsigned long long)arg2 couldHaveShown:(unsigned long long)arg3 serverOverride:(BOOL)arg4 inputLength:(unsigned long long)arg5 requestType:(unsigned long long)arg6 logType:(unsigned long long)arg7;
++ (void)logTransactionSuccessfulForResponseId:(id)arg1 inputLength:(unsigned long long)arg2 completionLength:(unsigned long long)arg3 requestType:(unsigned long long)arg4 logType:(unsigned long long)arg5;
 + (BOOL)pingService;
 + (void)portraitBlacklistWithReply:(CDUnknownBlockType)arg1;
 + (void)prepareRequestForText:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 + (id)requestWithText:(id)arg1;
 + (void)runOffMainThread:(CDUnknownBlockType)arg1;
-+ (void)setDefaultRequestType:(long long)arg1;
++ (void)setDefaultRequestType:(unsigned long long)arg1;
 + (BOOL)shutdownService;
 + (void)statusWithReply:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)trimTextToSize:(id)arg1;
-+ (void)warmUpForRequestType:(long long)arg1 withReply:(CDUnknownBlockType)arg2;
++ (void)warmUpForRequestType:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (void)_executeWithReply:(CDUnknownBlockType)arg1;
+- (void)_postProcessResponse:(id)arg1;
+- (void)capabilitiesWithReply:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)execute;
 - (void)executeWithReply:(CDUnknownBlockType)arg1;
+- (id)initForClient:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithText:(id)arg1;
 

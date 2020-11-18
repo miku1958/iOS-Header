@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSceneHost-Protocol.h>
@@ -37,27 +37,28 @@
 
 @property (readonly, nonatomic, getter=_isInTransaction) BOOL _inTransaction; // @synthesize _inTransaction;
 @property (readonly, nonatomic) unsigned long long _transactionID; // @synthesize _transactionID;
-@property (readonly, strong, nonatomic) id<FBSceneClient> client; // @synthesize client=_client;
-@property (readonly, strong, nonatomic) FBProcess *clientProcess; // @synthesize clientProcess=_clientProcess;
-@property (readonly, strong, nonatomic) id<FBSceneClientProvider> clientProvider; // @synthesize clientProvider=_clientProvider;
-@property (readonly, strong, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;
+@property (readonly, nonatomic) id<FBSceneClient> client; // @synthesize client=_client;
+@property (readonly, nonatomic) FBProcess *clientProcess; // @synthesize clientProcess=_clientProcess;
+@property (readonly, nonatomic) id<FBSceneClientProvider> clientProvider; // @synthesize clientProvider=_clientProvider;
+@property (readonly, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) FBSSceneDefinition *definition; // @synthesize definition=_definition;
-@property (nonatomic) id<FBSceneDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<FBSceneDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) FBSDisplayConfiguration *display;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) FBSceneHostManager *hostManager; // @synthesize hostManager=_hostManager;
+@property (readonly, nonatomic) FBSceneHostManager *hostManager; // @synthesize hostManager=_hostManager;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, strong, nonatomic) FBSceneLayerManager *layerManager; // @synthesize layerManager=_layerManager;
+@property (readonly, nonatomic) FBSceneLayerManager *layerManager; // @synthesize layerManager=_layerManager;
 @property (strong, nonatomic) FBSMutableSceneSettings *mutableSettings; // @synthesize mutableSettings=_mutableSettings;
 @property (readonly, copy, nonatomic) FBSSceneParameters *parameters;
-@property (readonly, strong, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
+@property (readonly, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
 @property (readonly, copy, nonatomic) FBSSceneSpecification *specification;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @synthesize valid=_valid;
 @property (readonly, copy, nonatomic) NSString *workspaceIdentifier; // @synthesize workspaceIdentifier=_workspaceIdentifier;
 
+- (void).cxx_destruct;
 - (void)_addSceneGeometryObserver:(id)arg1;
 - (void)_applyUpdateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)_beginTransaction;

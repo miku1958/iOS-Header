@@ -6,9 +6,10 @@
 
 #import <NanoPassKit/NSObject-Protocol.h>
 
-@class NSError, NSString, NSURL, NSUUID, PKPaymentApplication, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext;
+@class NSData, NSError, NSString, NSURL, NSUUID, PKPaymentApplication, PKPaymentPass, PKPaymentWebServiceContext, PKPeerPaymentAccount, PKPeerPaymentWebServiceContext;
 
 @protocol NPKCompanionServerProtocol <NSObject>
+- (void)balancesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)beginProvisioningFromWatchOfferForPaymentPass:(PKPaymentPass *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)connect;
 - (void)defaultCard:(void (^)(NSString *))arg1;
@@ -16,7 +17,6 @@
 - (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1 passUniqueIdentifier:(NSString *)arg2 fromDeviceWithPairingID:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)handlePendingUnpairingWithCompletion:(void (^)(void))arg1;
 - (void)handlePendingiCloudSignoutWithCompletion:(void (^)(void))arg1;
-- (void)handlePotentialExpressPass:(PKPaymentPass *)arg1 withCompletionHandler:(void (^)(BOOL, NSSet *))arg2;
 - (void)initiateConsistencyCheckWithCompletion:(void (^)(void))arg1;
 - (void)initiateLostModeExitAuthWithCompletion:(void (^)(NSError *))arg1;
 - (void)markAllAppletsForDeletionWithCompletion:(void (^)(BOOL, NSError *))arg1;
@@ -39,5 +39,7 @@
 - (void)sharedPeerPaymentWebServiceContextForPairingID:(NSUUID *)arg1 withCompletion:(void (^)(PKPeerPaymentWebServiceContext *))arg2;
 - (void)transactionsForPaymentPassWithUniqueIdentifier:(NSString *)arg1 withTransactionSource:(unsigned long long)arg2 withBackingData:(unsigned long long)arg3 limit:(long long)arg4 completion:(void (^)(NSSet *))arg5;
 - (void)transitStateWithPassUniqueIdentifier:(NSString *)arg1 paymentApplication:(PKPaymentApplication *)arg2 completion:(void (^)(PKTransitAppletState *))arg3;
+- (void)trustedDeviceEnrollmentSignatureWithAccountDSID:(NSString *)arg1 sessionData:(NSData *)arg2 handler:(void (^)(NSString *, unsigned long long, NSData *, NSError *))arg3;
+- (void)updateSettings:(unsigned long long)arg1 forPassWithUniqueID:(NSString *)arg2;
 @end
 

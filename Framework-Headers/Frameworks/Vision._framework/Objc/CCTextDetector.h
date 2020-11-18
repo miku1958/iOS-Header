@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CCCharBoxContext, NSString;
 
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface CCTextDetector : NSObject
 {
     int _getFilter_callCount;
+    unsigned long long _requestRevision;
     BOOL _computeZCVectorHighProbability;
     unsigned char _ii;
     unsigned char _profileNormal;

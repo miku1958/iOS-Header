@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MFStream, NSArray, NSCondition, NSData, NSInvocation, NSString;
 
@@ -26,6 +26,7 @@
     BOOL _disableEphemeralDiffieHellmanCiphers;
     NSString *_sourceApplicationBundleIdentifier;
     NSString *_accountIdentifier;
+    NSString *_networkAccountIdentifier;
     MFStream *_stream;
 }
 
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) BOOL isReadable;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) BOOL isWritable;
+@property (copy, nonatomic) NSString *networkAccountIdentifier; // @synthesize networkAccountIdentifier=_networkAccountIdentifier;
 @property (readonly, nonatomic) NSString *remoteHostname;
 @property (readonly, nonatomic) unsigned int remotePortNumber;
 @property (readonly, nonatomic) NSArray *serverCertificates;

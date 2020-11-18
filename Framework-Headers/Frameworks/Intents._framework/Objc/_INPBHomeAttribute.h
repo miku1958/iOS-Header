@@ -7,35 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBHomeAttribute-Protocol.h>
 
-@class PBUnknownFields, _INPBHomeAttributeValue;
+@class NSString, _INPBHomeAttributeValue;
 
-@interface _INPBHomeAttribute : PBCodable <NSCopying>
+@interface _INPBHomeAttribute : PBCodable <_INPBHomeAttribute, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    int _attributeType;
-    _INPBHomeAttributeValue *_attributeValue;
     struct {
         unsigned int attributeType:1;
     } _has;
+    int _attributeType;
+    _INPBHomeAttributeValue *_attributeValue;
 }
 
 @property (nonatomic) int attributeType; // @synthesize attributeType=_attributeType;
 @property (strong, nonatomic) _INPBHomeAttributeValue *attributeValue; // @synthesize attributeValue=_attributeValue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasAttributeType;
 @property (readonly, nonatomic) BOOL hasAttributeValue;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsAttributeType:(id)arg1;
 - (id)attributeTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

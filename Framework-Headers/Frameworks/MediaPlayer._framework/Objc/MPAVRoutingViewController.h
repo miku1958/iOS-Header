@@ -11,8 +11,8 @@
 #import <MediaPlayer/UITableViewDataSource-Protocol.h>
 #import <MediaPlayer/UITableViewDelegate-Protocol.h>
 
-@class MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPAVRoutingEmptyStateView, MPAVRoutingTableHeaderView, MPAVRoutingViewControllerUpdate, MPVolumeGroupSliderCoordinator, MPWeakTimer, NSArray, NSMapTable, NSMutableSet, NSNumber, NSString, UIColor, UITableView, UIView;
-@protocol MPAVOutputDevicePlaybackDataSource, MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate;
+@class MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPAVRoutingEmptyStateView, MPAVRoutingTableHeaderView, MPAVRoutingViewControllerUpdate, MPVolumeGroupSliderCoordinator, MPWeakTimer, NSArray, NSMapTable, NSNumber, NSString, UIColor, UITableView, UIView;
+@protocol MPAVRoutingViewControllerDelegate, MPAVRoutingViewControllerThemeDelegate;
 
 @interface MPAVRoutingViewController : UIViewController <MPAVRoutingControllerDelegate, MPAVRoutingTableViewCellDelegate, UITableViewDataSource, UITableViewDelegate>
 {
@@ -27,6 +27,7 @@
     NSArray *_cachedPickedRoutes;
     NSArray *_cachedPendingPickedRoutes;
     NSArray *_cachedDisplayAsPickedRoutes;
+    NSArray *_cachedVolumeCapableRoutes;
     MPWeakTimer *_updateTimer;
     MPAVRoutingController *_routingController;
     long long _routeDiscoveryMode;
@@ -40,6 +41,7 @@
     BOOL _shouldAutomaticallyUpdateRoutesList;
     BOOL _shouldPickRouteOnSelection;
     BOOL _onScreen;
+    BOOL _hasUserSelections;
     unsigned long long _updatesSincePresentation;
     long long _discoveryModeBeforeEnteringBackground;
     unsigned long long _style;
@@ -50,9 +52,7 @@
     NSNumber *_discoveryModeOverride;
     id<MPAVRoutingViewControllerThemeDelegate> _themeDelegate;
     MPAVEndpointRoute *_endpointRoute;
-    id<MPAVOutputDevicePlaybackDataSource> _playbackDataSource;
     NSMapTable *_outputDeviceVolumeSliders;
-    NSMutableSet *_outputDeviceVolumeControllers;
     MPVolumeGroupSliderCoordinator *_groupSliderCoordinator;
 }
 
@@ -75,9 +75,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long iconStyle; // @synthesize iconStyle=_iconStyle;
 @property (nonatomic) unsigned long long mirroringStyle; // @synthesize mirroringStyle=_mirroringStyle;
-@property (strong, nonatomic) NSMutableSet *outputDeviceVolumeControllers; // @synthesize outputDeviceVolumeControllers=_outputDeviceVolumeControllers;
 @property (strong, nonatomic) NSMapTable *outputDeviceVolumeSliders; // @synthesize outputDeviceVolumeSliders=_outputDeviceVolumeSliders;
-@property (weak, nonatomic) id<MPAVOutputDevicePlaybackDataSource> playbackDataSource; // @synthesize playbackDataSource=_playbackDataSource;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<MPAVRoutingViewControllerThemeDelegate> themeDelegate; // @synthesize themeDelegate=_themeDelegate;
@@ -99,8 +97,6 @@
 - (void)_enqueueUpdate:(id)arg1;
 - (id)_generatePropertyListFromUpdateDisplayedRoutesState:(id)arg1 exception:(id)arg2;
 - (void)_initWithStyle:(unsigned long long)arg1 routingController:(id)arg2;
-- (BOOL)_pickOrGroupRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_promptForHijackIfNeeded:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_registerNotifications;
 - (void)_reloadEmptyStateVisibility;
 - (void)_setNeedsDisplayedRoutesUpdate;
@@ -115,7 +111,7 @@
 - (unsigned long long)_tableViewNumberOfRows;
 - (void)_unregisterNotifications;
 - (void)_updateDisplayedRoutes;
-- (BOOL)_volumeSliderVisibility:(id)arg1;
+- (id)_volumeCapableRoutesInRoutes:(id)arg1;
 - (void)_volumeSliderVolumeControlAvailabilityDidChangeNotification:(id)arg1;
 - (id)_writeToDiskWithUpdateDisplayedRoutesStatePropertyList:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
@@ -124,12 +120,16 @@
 - (id)initWithStyle:(unsigned long long)arg1 routingController:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (struct CGSize)preferredContentSize;
+- (void)resetDisplayedRoutes;
+- (void)resetScrollPosition;
 - (void)routingCell:(id)arg1 mirroringSwitchValueDidChange:(BOOL)arg2;
 - (void)routingController:(id)arg1 didFailToPickRouteWithError:(id)arg2;
 - (void)routingController:(id)arg1 pickedRoutesDidChange:(id)arg2;
+- (void)routingController:(id)arg1 shouldHijackRoute:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;

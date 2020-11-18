@@ -15,6 +15,7 @@
     double _date;
     double _publicationDate;
     double _requiredExpirationDate;
+    double _soundAudioVolume;
     double _soundMaximumDuration;
     NSMutableArray *_additionalAttachments;
     NSData *_alertSuppressionContexts;
@@ -52,6 +53,7 @@
     NSString *_title;
     NSString *_universalSectionID;
     BOOL _containsUpdatedAttachment;
+    BOOL _hasCriticalIcon;
     BOOL _ignoresQuietMode;
     BOOL _includesSound;
     BOOL _loading;
@@ -62,11 +64,13 @@
         unsigned int date:1;
         unsigned int publicationDate:1;
         unsigned int requiredExpirationDate:1;
+        unsigned int soundAudioVolume:1;
         unsigned int soundMaximumDuration:1;
         unsigned int attachmentType:1;
         unsigned int sectionSubtype:1;
         unsigned int soundAlertType:1;
         unsigned int containsUpdatedAttachment:1;
+        unsigned int hasCriticalIcon:1;
         unsigned int ignoresQuietMode:1;
         unsigned int loading:1;
         unsigned int soundShouldIgnoreRingerSwitch:1;
@@ -104,9 +108,11 @@
 @property (nonatomic) BOOL hasContainsUpdatedAttachment;
 @property (readonly, nonatomic) BOOL hasContext;
 @property (readonly, nonatomic) BOOL hasContextNulls;
+@property (nonatomic) BOOL hasCriticalIcon; // @synthesize hasCriticalIcon=_hasCriticalIcon;
 @property (nonatomic) BOOL hasDate;
 @property (readonly, nonatomic) BOOL hasDismissAction;
 @property (readonly, nonatomic) BOOL hasDismissalID;
+@property (nonatomic) BOOL hasHasCriticalIcon;
 @property (nonatomic) BOOL hasIgnoresQuietMode;
 @property (nonatomic) BOOL hasLoading;
 @property (readonly, nonatomic) BOOL hasMessageTitle;
@@ -122,6 +128,7 @@
 @property (readonly, nonatomic) BOOL hasSockPuppetAppBundleID;
 @property (readonly, nonatomic) BOOL hasSoundAccountIdentifier;
 @property (nonatomic) BOOL hasSoundAlertType;
+@property (nonatomic) BOOL hasSoundAudioVolume;
 @property (nonatomic) BOOL hasSoundMaximumDuration;
 @property (nonatomic) BOOL hasSoundShouldIgnoreRingerSwitch;
 @property (nonatomic) BOOL hasSoundShouldRepeat;
@@ -149,6 +156,7 @@
 @property (strong, nonatomic) NSString *sockPuppetAppBundleID; // @synthesize sockPuppetAppBundleID=_sockPuppetAppBundleID;
 @property (strong, nonatomic) NSString *soundAccountIdentifier; // @synthesize soundAccountIdentifier=_soundAccountIdentifier;
 @property (nonatomic) int soundAlertType; // @synthesize soundAlertType=_soundAlertType;
+@property (nonatomic) double soundAudioVolume; // @synthesize soundAudioVolume=_soundAudioVolume;
 @property (nonatomic) double soundMaximumDuration; // @synthesize soundMaximumDuration=_soundMaximumDuration;
 @property (nonatomic) BOOL soundShouldIgnoreRingerSwitch; // @synthesize soundShouldIgnoreRingerSwitch=_soundShouldIgnoreRingerSwitch;
 @property (nonatomic) BOOL soundShouldRepeat; // @synthesize soundShouldRepeat=_soundShouldRepeat;
@@ -165,7 +173,7 @@
 + (void)_addAttachmentsFromBBBulletin:(id)arg1 toBLTPBBulletin:(id)arg2 observer:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)_attachmentFromBBAttachmentMetadata:(id)arg1 bulletin:(id)arg2 observer:(id)arg3 fileOption:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 + (Class)additionalAttachmentsType;
-+ (void)bulletinWithBBBulletin:(id)arg1 sockPuppetAppBundleID:(id)arg2 isSockPuppetAppInstalled:(BOOL)arg3 observer:(id)arg4 feed:(unsigned long long)arg5 teamID:(id)arg6 universalSectionID:(id)arg7 isCriticalBulletin:(BOOL)arg8 replyToken:(id)arg9 completion:(CDUnknownBlockType)arg10;
++ (void)bulletinWithBBBulletin:(id)arg1 sockPuppetAppBundleID:(id)arg2 observer:(id)arg3 feed:(unsigned long long)arg4 teamID:(id)arg5 universalSectionID:(id)arg6 isCriticalBulletin:(BOOL)arg7 replyToken:(id)arg8 gizmoLegacyCategoryID:(id)arg9 useUserInfoForContext:(BOOL)arg10 removeSubtitleForOlderWatches:(BOOL)arg11 completion:(CDUnknownBlockType)arg12;
 + (Class)peopleIDsType;
 + (Class)subsectionIDsType;
 + (Class)supplementaryActionsType;

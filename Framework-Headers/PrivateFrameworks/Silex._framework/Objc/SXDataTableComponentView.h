@@ -12,7 +12,7 @@
 #import <Silex/SXViewportChangeListener-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, NSString, STScrollView, SXDataTableBlueprint, SXDataTableComponentController, SXDataTableDictionary, SXDataTableView, SXTangierController;
+@class CALayer, NSString, STScrollView, SXComponentController, SXDataTableBlueprint, SXDataTableComponentController, SXDataTableDictionary, SXDataTableView, SXTangierController;
 @protocol SXComponentActionHandler, SXImageViewFactory, SXTextComponentLayoutHosting;
 
 @interface SXDataTableComponentView : SXComponentView <SXDataTableComponentControllerDataSource, SXDataTableViewDataSource, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate>
@@ -20,6 +20,7 @@
     id<SXImageViewFactory> _imageViewFactory;
     id<SXComponentActionHandler> _componentActionHandler;
     id<SXTextComponentLayoutHosting> _textComponentLayoutHosting;
+    SXComponentController *_componentController;
     SXDataTableView *_tableView;
     SXDataTableComponentController *_dataTableComponentController;
     SXDataTableBlueprint *_blueprint;
@@ -33,6 +34,7 @@
 
 @property (strong, nonatomic) SXDataTableBlueprint *blueprint; // @synthesize blueprint=_blueprint;
 @property (readonly, nonatomic) id<SXComponentActionHandler> componentActionHandler; // @synthesize componentActionHandler=_componentActionHandler;
+@property (readonly, weak, nonatomic) SXComponentController *componentController; // @synthesize componentController=_componentController;
 @property (strong, nonatomic) SXDataTableComponentController *dataTableComponentController; // @synthesize dataTableComponentController=_dataTableComponentController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -60,7 +62,7 @@
 - (id)documentControllerForDataTableComponentController:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 imageViewFactory:(id)arg6 componentActionHandler:(id)arg7 textComponentLayoutHosting:(id)arg8;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 imageViewFactory:(id)arg6 componentActionHandler:(id)arg7 textComponentLayoutHosting:(id)arg8 componentController:(id)arg9;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
 - (void)setupShadowsIfNeeded;
@@ -68,6 +70,7 @@
 - (id)textComponentLayoutHostingForDataTableComponentController:(id)arg1;
 - (void)updateShadowOpacity;
 - (void)updateTangierController;
+- (BOOL)userInteractable;
 - (double)widthForDataTableComponentController:(id)arg1;
 
 @end

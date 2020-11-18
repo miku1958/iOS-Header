@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SoftwareUpdateServices/SUInstallationConstraintObserverDelegate-Protocol.h>
 #import <SoftwareUpdateServices/SUManagerClientInterface-Protocol.h>
+#import <SoftwareUpdateServices/SUPreferencesObserver-Protocol.h>
 
 @class NSMutableDictionary, NSMutableSet, NSString, NSXPCConnection, SUDescriptor;
 @protocol SUManagerClientDelegate;
 
-@interface SUManagerClient : NSObject <SUManagerClientInterface, SUInstallationConstraintObserverDelegate>
+@interface SUManagerClient : NSObject <SUManagerClientInterface, SUInstallationConstraintObserverDelegate, SUPreferencesObserver>
 {
     NSXPCConnection *_serverConnection;
     id<SUManagerClientDelegate> _delegate;
@@ -51,15 +52,18 @@
 - (void)_setClientType;
 - (void)_unregisterAutoInstallOperationClientHandler:(id)arg1;
 - (void)autoInstallOperationDidConsent:(id)arg1;
-- (void)autoInstallOperationDidExpire:(id)arg1;
+- (void)autoInstallOperationDidExpire:(id)arg1 withError:(id)arg2;
 - (void)autoInstallOperationIsReadyToInstall:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)autoInstallOperationPasscodePolicyChanged:(id)arg1 passcodePolicyType:(unsigned long long)arg2;
 - (void)autoInstallOperationWasCancelled:(id)arg1;
+- (void)autoScanAndDownloadIfAvailable:(CDUnknownBlockType)arg1;
 - (void)automaticDownloadDidFailToStartForNewUpdateAvailable:(id)arg1 withError:(id)arg2;
 - (void)cancelDownload:(CDUnknownBlockType)arg1;
 - (void)connectToServerIfNecessary;
 - (BOOL)createInstallationKeybag:(id)arg1;
 - (BOOL)createInstallationKeybag:(id)arg1 forUnattendedInstall:(BOOL)arg2;
 - (void)currentAutoInstallOperation:(BOOL)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)currentPasscodePolicy:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)delayEndDate:(CDUnknownBlockType)arg1;
 - (void)deviceHasSufficientSpaceForDownload:(CDUnknownBlockType)arg1;
@@ -71,6 +75,7 @@
 - (void)downloadDidStart:(id)arg1;
 - (void)downloadProgressDidChange:(id)arg1;
 - (void)downloadWasInvalidatedForNewUpdateAvailable:(id)arg1;
+- (void)enableAutomaticUpdateV2:(BOOL)arg1;
 - (void)extraSpaceNeededForDownloadWithoutAppPurging:(CDUnknownBlockType)arg1;
 - (void)getMandatorySoftwareUpdateDictionary:(CDUnknownBlockType)arg1;
 - (id)init;
@@ -85,6 +90,8 @@
 - (void)installationConstraintMonitor:(id)arg1 constraintsDidChange:(unsigned long long)arg2;
 - (void)installationConstraintObserverDidRemoveAllObserverBlocks:(id)arg1;
 - (void)invalidate;
+- (void)isAutoUpdateEnabled:(CDUnknownBlockType)arg1;
+- (BOOL)isAutomaticUpdateV2Enabled;
 - (void)isDelayingUpdates:(CDUnknownBlockType)arg1;
 - (void)isDownloading:(CDUnknownBlockType)arg1;
 - (BOOL)isInstallationKeybagRequired;
@@ -94,6 +101,8 @@
 - (void)noteServerExiting;
 - (id)observeInstallationConstraintChangesForDownload:(id)arg1 observer:(CDUnknownBlockType)arg2;
 - (void)pauseDownload:(CDUnknownBlockType)arg1;
+- (void)preference:(id)arg1 didChange:(id)arg2;
+- (void)presentAutoUpdateBanner:(CDUnknownBlockType)arg1;
 - (void)purgeDownload:(CDUnknownBlockType)arg1;
 - (void)resumeDownload:(CDUnknownBlockType)arg1;
 - (void)scanDidCompleteWithNewUpdateAvailable:(id)arg1 error:(id)arg2;

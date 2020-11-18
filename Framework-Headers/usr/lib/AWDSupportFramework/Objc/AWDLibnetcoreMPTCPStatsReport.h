@@ -38,6 +38,7 @@
     unsigned long long _mptcpInteractiveAttempt;
     unsigned long long _mptcpInteractiveCellBytes;
     unsigned long long _mptcpInteractiveCellUsage;
+    unsigned long long _mptcpTriggeredCell;
     unsigned long long _mptcpWiFiProxy;
     struct {
         unsigned int mptcpAggregateAllBytes:1;
@@ -68,6 +69,7 @@
         unsigned int mptcpInteractiveAttempt:1;
         unsigned int mptcpInteractiveCellBytes:1;
         unsigned int mptcpInteractiveCellUsage:1;
+        unsigned int mptcpTriggeredCell:1;
         unsigned int mptcpWiFiProxy:1;
     } _has;
 }
@@ -100,6 +102,7 @@
 @property (nonatomic) BOOL hasMptcpInteractiveAttempt;
 @property (nonatomic) BOOL hasMptcpInteractiveCellBytes;
 @property (nonatomic) BOOL hasMptcpInteractiveCellUsage;
+@property (nonatomic) BOOL hasMptcpTriggeredCell;
 @property (nonatomic) BOOL hasMptcpWiFiProxy;
 @property (nonatomic) unsigned long long mptcpAggregateAllBytes; // @synthesize mptcpAggregateAllBytes=_mptcpAggregateAllBytes;
 @property (nonatomic) unsigned long long mptcpAggregateAttempt; // @synthesize mptcpAggregateAttempt=_mptcpAggregateAttempt;
@@ -129,6 +132,7 @@
 @property (nonatomic) unsigned long long mptcpInteractiveAttempt; // @synthesize mptcpInteractiveAttempt=_mptcpInteractiveAttempt;
 @property (nonatomic) unsigned long long mptcpInteractiveCellBytes; // @synthesize mptcpInteractiveCellBytes=_mptcpInteractiveCellBytes;
 @property (nonatomic) unsigned long long mptcpInteractiveCellUsage; // @synthesize mptcpInteractiveCellUsage=_mptcpInteractiveCellUsage;
+@property (nonatomic) unsigned long long mptcpTriggeredCell; // @synthesize mptcpTriggeredCell=_mptcpTriggeredCell;
 @property (nonatomic) unsigned long long mptcpWiFiProxy; // @synthesize mptcpWiFiProxy=_mptcpWiFiProxy;
 
 - (void)copyTo:(id)arg1;

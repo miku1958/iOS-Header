@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)setCoverSheetPresented:(BOOL)arg1 animated:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)setCoverSheetPresented:(BOOL)arg1 animated:(BOOL)arg2 options:(unsigned long long)arg3 withCompletion:(CDUnknownBlockType)arg4;
 
 @end
 

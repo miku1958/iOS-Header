@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSArray *inputFaceObservations;
 @property (readonly) Class superclass;
 
++ (const CDStruct_d47b9615 *)dependentRequestCompatability;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedProcessing:(id)arg3 outputFacesThatNeed2DLandmarks:(id)arg4;
 - (long long)dependencyProcessingOrdinality;
 - (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;

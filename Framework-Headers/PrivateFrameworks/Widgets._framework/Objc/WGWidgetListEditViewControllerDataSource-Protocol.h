@@ -6,7 +6,7 @@
 
 #import <Widgets/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, UIImage, WGWidgetListEditViewController;
+@class NSArray, NSDictionary, NSString, WGWidgetListEditViewController;
 
 @protocol WGWidgetListEditViewControllerDataSource <NSObject>
 - (NSArray *)disabledInterfaceItemIdentifiersForWidgetListEditViewController:(WGWidgetListEditViewController *)arg1;
@@ -15,10 +15,10 @@
 - (NSString *)widgetListEditViewController:(WGWidgetListEditViewController *)arg1 defaultGroupForItemWithIdentifier:(NSString *)arg2;
 - (void)widgetListEditViewController:(WGWidgetListEditViewController *)arg1 didReorderItemsWithIdentifiersInGroups:(NSDictionary *)arg2;
 - (NSString *)widgetListEditViewController:(WGWidgetListEditViewController *)arg1 displayNameForItemWithIdentifier:(NSString *)arg2;
-- (UIImage *)widgetListEditViewController:(WGWidgetListEditViewController *)arg1 iconForItemWithIdentifier:(NSString *)arg2;
 - (BOOL)widgetListEditViewController:(WGWidgetListEditViewController *)arg1 isItemWithIdentifierEnabled:(NSString *)arg2;
 - (BOOL)widgetListEditViewController:(WGWidgetListEditViewController *)arg1 isItemWithIdentifierNew:(NSString *)arg2;
 - (NSArray *)widgetListEditViewController:(WGWidgetListEditViewController *)arg1 itemIdentifiersForGroup:(NSString *)arg2;
+- (void)widgetListEditViewController:(WGWidgetListEditViewController *)arg1 requestsIconForItemWithIdentifier:(NSString *)arg2 withHandler:(void (^)(UIImage *))arg3;
 - (void)widgetListEditViewController:(WGWidgetListEditViewController *)arg1 setEnabled:(BOOL)arg2 forItemsWithIdentifiers:(NSArray *)arg3;
 - (BOOL)widgetListEditViewControllerShouldIncludeInternalWidgets:(WGWidgetListEditViewController *)arg1;
 

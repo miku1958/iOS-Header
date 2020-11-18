@@ -23,17 +23,21 @@
 - (double)fiui_averageTimePerLap;
 - (double)fiui_completionFactor;
 - (id)fiui_connectedGymBrandName;
+- (double)fiui_duration;
 - (id)fiui_elevation;
 - (id)fiui_eventsOfType:(long long)arg1;
+- (id)fiui_finalWorkoutUUID;
 - (BOOL)fiui_hasAveragePace;
 - (BOOL)fiui_hasElevation;
 - (BOOL)fiui_hasWeatherData;
 - (BOOL)fiui_isConnectedGymWorkout;
+- (id)fiui_keyValueSummary;
 - (id)fiui_lapLength;
 - (long long)fiui_numberOfEventsOfType:(long long)arg1;
-- (id)fiui_splitsFromDistanceSamples:(id)arg1 distanceInMetersPerSplit:(double)arg2;
+- (id)fiui_splitsFromDistanceSamples:(id)arg1 distanceInMetersPerSplit:(double)arg2 workoutStartDate:(id)arg3;
 - (long long)fiui_strokeStyle;
 - (long long)fiui_swimmingLocationType;
+- (id)fiui_totalDistance;
 - (double)fiui_totalStepCount;
 @end
 

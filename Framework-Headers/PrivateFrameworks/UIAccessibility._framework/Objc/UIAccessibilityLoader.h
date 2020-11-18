@@ -10,27 +10,26 @@
 {
 }
 
-+ (void)__loadActualAccessibilityBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 loadSubbundles:(BOOL)arg3;
 + (id)_accessibilityBundlesForBundle:(id)arg1;
 + (void)_accessibilityInitializeRuntimeOverrides;
 + (void)_accessibilityInitializeSubclassRuntimeOverrides;
-+ (void)_accessibilityLoadExtendedBundles;
-+ (void)_accessibilityLoadSubbundles:(id)arg1;
-+ (long long)_accessibilityLoadingPriorityForBundle:(id)arg1;
 + (void)_accessibilityReenabled;
 + (BOOL)_accessibilityServerStarted;
-+ (BOOL)_accessibilityShouldSortBundlesBeforeLoading;
 + (void)_accessibilityStartMiniServer;
 + (void)_accessibilityStartServer;
 + (void)_accessibilityStopServer;
++ (BOOL)_accessibilityStringLocalizationCategoriesLoaded;
 + (BOOL)_accessibilityUIKitBundleLoaded;
-+ (id)_axBundleForBundle:(id)arg1;
-+ (void)_loadAXBundleForBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2;
-+ (void)_loadAXBundleForBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 forceLoad:(BOOL)arg3 loadSubbundles:(BOOL)arg4 loadAllAccessibilityInfo:(BOOL)arg5;
++ (void)_didLoadPreboardAccessibilityBundle;
++ (void)_didLoadSystemAppAccessibilityBundle;
++ (void)_performInitialAccessibilityBundleLoad:(BOOL)arg1 monitorForFutureLoadEvents:(BOOL)arg2 trackingMode:(long long)arg3;
 + (void)_stringLocalizationStarted:(id)arg1;
-+ (void)initialize;
 + (void)loadAccessibilityBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2;
 + (void)loadAccessibilityBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 force:(BOOL)arg3 loadAllAccessibilityInfo:(BOOL)arg4;
++ (void)loadAccessibilityBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 loadSubbundles:(BOOL)arg3;
++ (void)loadAccessibilityBundleForBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2;
++ (void)loadAccessibilityBundleForBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 force:(BOOL)arg3 loadAllAccessibilityInfo:(BOOL)arg4;
++ (void)loadAccessibilityBundleForBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 forceLoad:(BOOL)arg3 loadSubbundles:(BOOL)arg4 loadAllAccessibilityInfo:(BOOL)arg5;
 + (void)loadActualAccessibilityBundle:(id)arg1 didLoadCallback:(CDUnknownBlockType)arg2 loadSubbundles:(BOOL)arg3;
 
 @end

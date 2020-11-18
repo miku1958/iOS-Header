@@ -10,7 +10,7 @@
 
 @protocol PCInterfaceMonitorProtocol <NSObject>
 
-@property (readonly, nonatomic) struct __CFString *currentRAT;
+@property (readonly, nonatomic) int currentRAT;
 @property (readonly, nonatomic) long long interfaceIdentifier;
 @property (readonly, nonatomic) BOOL isBadLinkQuality;
 @property (readonly, nonatomic) BOOL isInterfaceHistoricallyUsable;
@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) BOOL isRadioHot;
 @property (readonly, nonatomic) int linkQuality;
 @property (readonly, strong, nonatomic) NSString *linkQualityString;
+@property (readonly, nonatomic) NSString *networkCode;
 @property (readonly, nonatomic) struct __CFString *wwanInterfaceName;
 
 

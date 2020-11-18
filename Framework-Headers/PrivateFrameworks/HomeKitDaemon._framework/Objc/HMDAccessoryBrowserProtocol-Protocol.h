@@ -35,7 +35,7 @@
 - (BOOL)hasClientRequestedMediaAccessoryControl:(HMFMessageTransport *)arg1;
 - (BOOL)isBrowsingAllowed;
 - (void)pairAccessory:(HMDUnpairedHAPAccessory *)arg1 homeName:(NSString *)arg2 setupCode:(NSString *)arg3 setupCodeProvider:(void (^)(HMDUnpairedHAPAccessory *, NSString *, void (^)(NSString *, NSError *)))arg4 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, unsigned long long, NSError *))arg5;
-- (void)pairAccessoryWithDescription:(HMSetupAccessoryDescription *)arg1 homeName:(NSString *)arg2 neeedsUserConfirmation:(BOOL)arg3 progressHandler:(void (^)(NSUUID *, NSString *, NSString *, HMAccessoryCategory *, long long, unsigned long long))arg4 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, unsigned long long, NSError *))arg5;
+- (void)pairAccessoryWithDescription:(HMSetupAccessoryDescription *)arg1 homeName:(NSString *)arg2 needsUserConfirmation:(BOOL)arg3 progressHandler:(void (^)(NSUUID *, NSString *, NSString *, HMAccessoryCategory *, long long, unsigned long long))arg4 completionHandler:(void (^)(HAPAccessoryServer *, NSUUID *, long long, unsigned long long, NSError *))arg5;
 - (void)probeReachabilityForBTLEAccessoryServersWithIdentifiers:(NSArray *)arg1 onQueue:(NSObject<OS_dispatch_queue> *)arg2 withCompletion:(void (^)(NSString *, BOOL))arg3;
 - (void)registerPairedAccessory:(NSString *)arg1 btleTransport:(BOOL)arg2 airPlay:(BOOL)arg3;
 - (void)registerProgressHandler:(void (^)(NSUUID *, NSString *, NSString *, HMAccessoryCategory *, long long, unsigned long long))arg1 unpairedAccessoryUUID:(NSUUID *)arg2;

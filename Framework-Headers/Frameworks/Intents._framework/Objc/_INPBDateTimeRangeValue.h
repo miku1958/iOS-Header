@@ -7,24 +7,27 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBDateTimeRangeValue-Protocol.h>
 
-@class PBUnknownFields, _INPBDateTime, _INPBRecurrenceValue, _INPBValueMetadata;
+@class NSString, _INPBDateTime, _INPBRecurrenceValue, _INPBValueMetadata;
 
-@interface _INPBDateTimeRangeValue : PBCodable <NSCopying>
+@interface _INPBDateTimeRangeValue : PBCodable <_INPBDateTimeRangeValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    long long _endCalendar;
-    long long _startCalendar;
-    _INPBDateTime *_endDateTime;
-    _INPBRecurrenceValue *_recurrence;
-    _INPBDateTime *_startDateTime;
-    _INPBValueMetadata *_valueMetadata;
     struct {
         unsigned int endCalendar:1;
         unsigned int startCalendar:1;
     } _has;
+    long long _endCalendar;
+    _INPBDateTime *_endDateTime;
+    _INPBRecurrenceValue *_recurrence;
+    long long _startCalendar;
+    _INPBDateTime *_startDateTime;
+    _INPBValueMetadata *_valueMetadata;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long endCalendar; // @synthesize endCalendar=_endCalendar;
 @property (strong, nonatomic) _INPBDateTime *endDateTime; // @synthesize endDateTime=_endDateTime;
 @property (nonatomic) BOOL hasEndCalendar;
@@ -33,20 +36,17 @@
 @property (nonatomic) BOOL hasStartCalendar;
 @property (readonly, nonatomic) BOOL hasStartDateTime;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBRecurrenceValue *recurrence; // @synthesize recurrence=_recurrence;
 @property (nonatomic) long long startCalendar; // @synthesize startCalendar=_startCalendar;
 @property (strong, nonatomic) _INPBDateTime *startDateTime; // @synthesize startDateTime=_startDateTime;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

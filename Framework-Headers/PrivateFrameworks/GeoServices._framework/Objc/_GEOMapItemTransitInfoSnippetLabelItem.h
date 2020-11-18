@@ -14,7 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface _GEOMapItemTransitInfoSnippetLabelItem : NSObject <GEOTransitLabelItem>
 {
-    long long _type;
+    unsigned long long _type;
     NSString *_labelString;
     id<GEOTransitArtworkDataSource> _labelArtwork;
 }
@@ -25,10 +25,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> labelArtwork; // @synthesize labelArtwork=_labelArtwork;
 @property (readonly, nonatomic) NSString *labelString; // @synthesize labelString=_labelString;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
-- (id)initWithType:(long long)arg1 labelString:(id)arg2 labelArtwork:(id)arg3;
+- (id)initWithType:(unsigned long long)arg1 labelString:(id)arg2 labelArtwork:(id)arg3;
 
 @end
 

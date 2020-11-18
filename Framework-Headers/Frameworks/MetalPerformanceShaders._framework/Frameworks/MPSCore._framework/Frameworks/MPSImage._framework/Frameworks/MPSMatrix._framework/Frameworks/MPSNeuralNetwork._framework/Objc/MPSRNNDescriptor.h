@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol MPSCNNConvolutionDataSource;
 
@@ -18,10 +18,12 @@
     id<MPSCNNConvolutionDataSource> _outputTransform;
     id<MPSCNNConvolutionDataSource> _recurrentOutputTransform;
     unsigned long long _layerSequenceDirection;
+    unsigned long long _internalKernelSelector;
 }
 
 @property (nonatomic) unsigned long long inputFeatureChannels; // @synthesize inputFeatureChannels=_inputFeatureChannels;
 @property (strong, nonatomic) id<MPSCNNConvolutionDataSource> inputTransform; // @synthesize inputTransform=_inputTransform;
+@property (nonatomic) unsigned long long internalKernelSelector; // @synthesize internalKernelSelector=_internalKernelSelector;
 @property (nonatomic) unsigned long long layerSequenceDirection; // @synthesize layerSequenceDirection=_layerSequenceDirection;
 @property (nonatomic) unsigned long long outputFeatureChannels; // @synthesize outputFeatureChannels=_outputFeatureChannels;
 @property (strong, nonatomic) id<MPSCNNConvolutionDataSource> outputTransform; // @synthesize outputTransform=_outputTransform;

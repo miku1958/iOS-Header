@@ -8,12 +8,14 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface SCNActionJavaScript : SCNAction
 {
     NSString *_script;
 }
 
 + (id)javaScriptActionWithDuration:(double)arg1 script:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

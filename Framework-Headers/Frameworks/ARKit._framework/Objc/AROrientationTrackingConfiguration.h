@@ -14,6 +14,7 @@
 
 + (id)new;
 + (id)supportedVideoFormats;
+- (id)description;
 - (id)init;
 
 @end

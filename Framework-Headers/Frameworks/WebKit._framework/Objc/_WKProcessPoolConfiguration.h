@@ -20,6 +20,7 @@
 @property (readonly) struct Object *_apiObject;
 @property (copy, nonatomic) NSArray *additionalReadAccessAllowedURLs;
 @property (nonatomic) BOOL allowsCellularAccess;
+@property (nonatomic) BOOL alwaysKeepAndReuseSwappedProcesses;
 @property (copy, nonatomic) NSArray *alwaysRevalidatedURLSchemes;
 @property (nonatomic) BOOL alwaysRunsAtBackgroundPriority;
 @property (copy, nonatomic) NSArray *cachePartitionedURLSchemes;
@@ -31,12 +32,16 @@
 @property (nonatomic) BOOL ignoreSynchronousMessagingTimeoutsForTesting;
 @property (copy, nonatomic) NSURL *injectedBundleURL;
 @property (nonatomic) unsigned long long maximumProcessCount;
+@property (nonatomic) BOOL pageCacheEnabled;
 @property (nonatomic) int presentingApplicationPID;
+@property (nonatomic) BOOL processSwapsOnNavigation;
+@property (nonatomic) BOOL processSwapsOnWindowOpenWithOpener;
 @property (nonatomic) BOOL shouldCaptureAudioInUIProcess;
 @property (nonatomic) BOOL shouldTakeUIBackgroundAssertion;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (copy, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL suppressesConnectionTerminationOnSystemChange;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

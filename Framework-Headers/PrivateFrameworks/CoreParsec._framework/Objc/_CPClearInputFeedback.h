@@ -14,7 +14,6 @@
 
 @interface _CPClearInputFeedback : PBCodable <_CPProcessableFeedback, _CPClearInputFeedback, NSSecureCoding>
 {
-    CDStruct_c6e3878d _has;
     int _triggerEvent;
     unsigned long long _timestamp;
 }
@@ -25,16 +24,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly, nonatomic) BOOL requiresQueryId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 
 - (id)init;

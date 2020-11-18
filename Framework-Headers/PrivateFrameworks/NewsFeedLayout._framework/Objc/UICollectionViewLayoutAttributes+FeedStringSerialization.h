@@ -7,10 +7,10 @@
 #import <UIKit/UICollectionViewLayoutAttributes.h>
 
 @interface UICollectionViewLayoutAttributes (FeedStringSerialization)
-+ (id)attributesFromProtobuf:(id)arg1;
-+ (id)attributesFromProtobufData:(id)arg1;
-- (void)populateWithProtobuf:(id)arg1;
-- (id)protobufRepresentation;
-- (id)serializeToProtobuf;
++ (id)attributesFromProtobuf:(id)arg1 normalizedWithFeedGutter:(double)arg2;
++ (id)attributesFromProtobufData:(id)arg1 normalizedWithFeedGutter:(double)arg2;
+- (void)populateWithProtobuf:(id)arg1 normalizedWithFeedGutter:(double)arg2;
+- (id)protobufRepresentationnormalizedWithFeedGutter:(double)arg1;
+- (id)serializeToProtobufNormalizedWithFeedGutter:(double)arg1;
 @end
 

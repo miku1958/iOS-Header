@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSMutableDictionary;
 
-@interface SKActionTable : NSObject <NSCoding>
+@interface SKActionTable : NSObject <NSSecureCoding>
 {
     NSDictionary *_actionTableDictionary;
     NSMutableDictionary *__info;
@@ -20,11 +20,13 @@
 @property (readonly, strong, nonatomic) NSDictionary *actionTableDictionary; // @synthesize actionTableDictionary=_actionTableDictionary;
 
 + (id)actionTableWithContentsOfDictionary:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)actionForName:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfDictionary:(id)arg1;
+- (BOOL)isEqualToActionTable:(id)arg1;
 
 @end
 

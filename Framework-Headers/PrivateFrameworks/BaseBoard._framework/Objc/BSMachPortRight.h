@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSInvalidatable-Protocol.h>
 #import <BaseBoard/BSXPCCoding-Protocol.h>
@@ -32,6 +32,7 @@
 + (id)_rightDescription;
 + (void)_serialize:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_initWithPort:(unsigned int)arg1 owner:(int)arg2 trace:(id)arg3;
 - (void)_queue_invalidate;
 - (void)_queue_invalidateForOwner:(int)arg1;

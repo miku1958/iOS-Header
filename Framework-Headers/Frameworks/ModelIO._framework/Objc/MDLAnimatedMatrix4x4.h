@@ -20,6 +20,7 @@
 - (void)resetWithDouble4x4Array:(const CDStruct_14d5dc5e *)arg1 atTimes:(const double *)arg2 count:(unsigned long long)arg3;
 - (void)resetWithFloat4x4Array:(const CDStruct_14d5dc5e *)arg1 atTimes:(const double *)arg2 count:(unsigned long long)arg3;
 - (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2;
+- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2 time:(double)arg3;
 - (void)setDouble4x4:(CDStruct_14d5dc5e)arg1 atTime:(double)arg2;
 - (void)setFloat4x4:(CDStruct_14d5dc5e)arg1 atTime:(double)arg2;
 

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKPersistableWorkoutEvent-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDateInterval, NSDictionary;
+@class NSDate, NSDateInterval, NSDictionary, NSError, NSUUID;
 
-@interface HKWorkoutEvent : NSObject <NSSecureCoding, NSCopying>
+@interface HKWorkoutEvent : NSObject <HKPersistableWorkoutEvent, NSSecureCoding, NSCopying>
 {
     long long _type;
     NSDateInterval *_dateInterval;
@@ -20,8 +21,11 @@
 
 @property (readonly, copy) NSDate *date;
 @property (readonly, copy) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property (readonly, copy, nonatomic) NSError *error;
 @property (readonly, copy) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (readonly, copy, nonatomic) NSUUID *sessionUUID;
 @property (readonly) long long type;
+@property (readonly, nonatomic) long long workoutEventType;
 
 + (id)_newWorkoutEventWithType:(long long)arg1 dateInterval:(id)arg2 metadata:(id)arg3;
 + (id)_workoutEventWithInternalEvent:(id)arg1;
@@ -36,12 +40,14 @@
 - (id)_init;
 - (id)_validateConfiguration;
 - (id)awakeAfterUsingCoder:(id)arg1;
+- (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithWorkoutEventType:(long long)arg1 sessionUUID:(id)arg2 dateInterval:(id)arg3 metadata:(id)arg4 error:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -29,6 +29,7 @@
 
 + (id)clientInfoForConnection:(id)arg1 clientLink:(id)arg2;
 - (void).cxx_destruct;
+- (BOOL)donatesIntent;
 - (id)initWithConnection:(id)arg1 clientLink:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)sourceIdentifier;

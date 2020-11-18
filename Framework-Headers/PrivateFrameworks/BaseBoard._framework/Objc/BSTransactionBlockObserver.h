@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSTransactionObserver-Protocol.h>
 
@@ -23,11 +23,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)addTransactionDidBeginBlock:(CDUnknownBlockType)arg1;
 - (void)addTransactionDidCompleteBlock:(CDUnknownBlockType)arg1;
 - (void)addTransactionDidFinishWorkBlock:(CDUnknownBlockType)arg1;
 - (void)addTransactionWillBeginBlock:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)transactionDidBegin:(id)arg1;
 - (void)transactionDidComplete:(id)arg1;
 - (void)transactionDidFinishWork:(id)arg1;

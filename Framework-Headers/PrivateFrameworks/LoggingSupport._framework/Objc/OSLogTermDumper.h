@@ -11,20 +11,24 @@
     struct os_trace_blob_s _ob;
     unsigned short _last_attrs;
     unsigned char _ob_slop[1];
-    int _fd;
     BOOL _fancy;
+    int _fd;
+    BOOL _vis;
+    unsigned char _colorMode;
     unsigned short _cur_attrs;
 }
 
 @property (nonatomic) unsigned char bgColor;
 @property (nonatomic, getter=isBold) BOOL bold;
-@property (readonly, nonatomic, getter=isFancy) BOOL fancy; // @synthesize fancy=_fancy;
+@property (readonly, nonatomic) unsigned char colorMode; // @synthesize colorMode=_colorMode;
 @property (nonatomic) unsigned char fgColor;
+@property (readonly, nonatomic) BOOL isFancy; // @synthesize isFancy=_fancy;
 @property (nonatomic, getter=isOblique) BOOL oblique;
 @property (nonatomic) unsigned short style; // @synthesize style=_cur_attrs;
 @property (nonatomic, getter=isUnderlined) BOOL underline;
 
 - (void)_flushAttrs;
+- (void)_resetAttrsForNewline;
 - (void)beginEditing;
 - (void)close;
 - (void)dealloc;
@@ -33,7 +37,7 @@
 - (unsigned int)format:(const char *)arg1;
 - (void)hexdump:(const void *)arg1 length:(unsigned long long)arg2;
 - (id)init;
-- (id)initWithFd:(int)arg1 forceFancy:(BOOL)arg2;
+- (id)initWithFd:(int)arg1 colorMode:(unsigned char)arg2;
 - (void)pad:(int)arg1 count:(unsigned long long)arg2;
 - (void)putUUID:(unsigned char [16])arg1;
 - (void)putc:(int)arg1;

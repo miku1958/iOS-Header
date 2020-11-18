@@ -11,7 +11,6 @@
 @class GEOClientMetrics, GEOProtobufSession, NSError, NSString, PBCodable;
 @protocol GEODataSessionTask, GEOProtobufSessionTaskDelegate, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface GEOProtobufSessionTask : NSObject <GEODataSessionTaskDelegate>
 {
     Class _responseClass;

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CPLAccountFlags, NSData, NSDate, NSDictionary, NSMutableDictionary, NSURL;
+@class CPLAccountFlags, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSURL;
 @protocol CPLStatusDelegate, OS_dispatch_queue;
 
 @interface CPLStatus : NSObject
 {
+    BOOL _forCPL;
     NSURL *_statusFileURL;
     NSMutableDictionary *_status;
     NSObject<OS_dispatch_queue> *_lock;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) NSDate *cloudAssetCountPerTypeLastCheckDate;
 @property (nonatomic, getter=isConnectedToNetwork) BOOL connectedToNetwork;
 @property (weak, nonatomic) id<CPLStatusDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy, nonatomic) NSArray *disabledFeatures;
 @property (copy, nonatomic) NSDate *exitDeleteTime;
 @property (readonly, nonatomic) BOOL hasBatteryBudget;
 @property (readonly, nonatomic) BOOL hasCellularBudget;
@@ -39,10 +41,14 @@
 
 + (id)statusForSharedLibrary;
 - (void).cxx_destruct;
+- (BOOL)_deleteInitialSyncMarkerWithError:(id *)arg1;
 - (void)_loadIfNecessary;
 - (void)_save;
 - (void)_statusDidChange;
+- (BOOL)_writeInitialSyncMarkerForDate:(id)arg1 error:(id *)arg2;
+- (void)checkInitialSyncMarker;
 - (id)initWithClientLibraryBaseURL:(id)arg1;
+- (id)initWithClientLibraryBaseURLForCPLEngine:(id)arg1;
 - (void)refetchFromDisk;
 - (void)setCloudAssetCountPerType:(id)arg1 updateCheckDate:(BOOL)arg2;
 - (void)setHasCellularBudget:(BOOL)arg1 hasBatteryBudget:(BOOL)arg2 isBudgetValid:(BOOL)arg3;

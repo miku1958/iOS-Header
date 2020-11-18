@@ -12,14 +12,8 @@
 
 @interface _MPCPlayerSeekCommand : _MPCPlayerItemCommand <MPCPlayerSeekCommand>
 {
-    BOOL _supportsBeginFastForward;
-    BOOL _supportsEndFastForward;
-    BOOL _supportsBeginRewind;
-    BOOL _supportsEndRewind;
-    BOOL _supportsSkipForward;
-    BOOL _supportsSkipBackward;
     BOOL _prefersNegativeBackwardSkipIntervals;
-    BOOL _supportsSeekToPlaybackPosition;
+    unsigned long long _seekSupport;
     NSArray *_preferredBackwardJumpIntervals;
     NSArray *_preferredForwardJumpIntervals;
 }
@@ -30,20 +24,15 @@
 @property (copy, nonatomic) NSArray *preferredBackwardJumpIntervals; // @synthesize preferredBackwardJumpIntervals=_preferredBackwardJumpIntervals;
 @property (copy, nonatomic) NSArray *preferredForwardJumpIntervals; // @synthesize preferredForwardJumpIntervals=_preferredForwardJumpIntervals;
 @property (nonatomic) BOOL prefersNegativeBackwardSkipIntervals; // @synthesize prefersNegativeBackwardSkipIntervals=_prefersNegativeBackwardSkipIntervals;
+@property (readonly, nonatomic) unsigned long long seekSupport; // @synthesize seekSupport=_seekSupport;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL supportsBeginFastForward; // @synthesize supportsBeginFastForward=_supportsBeginFastForward;
-@property (nonatomic) BOOL supportsBeginRewind; // @synthesize supportsBeginRewind=_supportsBeginRewind;
-@property (nonatomic) BOOL supportsEndFastForward; // @synthesize supportsEndFastForward=_supportsEndFastForward;
-@property (nonatomic) BOOL supportsEndRewind; // @synthesize supportsEndRewind=_supportsEndRewind;
-@property (nonatomic) BOOL supportsSeekToPlaybackPosition; // @synthesize supportsSeekToPlaybackPosition=_supportsSeekToPlaybackPosition;
-@property (nonatomic) BOOL supportsSkipBackward; // @synthesize supportsSkipBackward=_supportsSkipBackward;
-@property (nonatomic) BOOL supportsSkipForward; // @synthesize supportsSkipForward=_supportsSkipForward;
 
 - (void).cxx_destruct;
 - (id)_seekCommandWithMediaRemoteCommand:(unsigned int)arg1 options:(id)arg2;
 - (id)beginSeekWithDirection:(long long)arg1;
 - (id)changePositionToElapsedInterval:(double)arg1;
 - (id)endSeek;
+- (id)initWithResponse:(id)arg1 seekSupport:(unsigned long long)arg2;
 - (id)jumpByInterval:(double)arg1;
 
 @end

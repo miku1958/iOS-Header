@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSArray *punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSString *scopedSearchSectionBundleIdentifier;
 @property (nonatomic) int separatorStyle;
 @property (strong, nonatomic) SFRichText *suggestionText;
 @property (copy, nonatomic) NSString *type;

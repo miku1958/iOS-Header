@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TILanguageModelOfflineLearningTask;
 @protocol OS_dispatch_queue;
@@ -21,8 +21,8 @@
 + (id)contactRecordsForRecipients:(id)arg1;
 + (void)didFinishLearningWithAgent:(id)arg1 task:(id)arg2;
 + (id)sharedLearningAgent;
+- (void).cxx_destruct;
 - (BOOL)continueLearningTaskWithStrategy:(id)arg1;
-- (void)dealloc;
 - (void)handleRemovalOfLearnedModels;
 - (id)init;
 - (void)performLearningIfNecessaryWithStrategy:(id)arg1 lastAdaptationTime:(double)arg2;

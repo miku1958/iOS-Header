@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVSampleBufferRenderSynchronizerInternal, NSArray;
 
@@ -17,6 +17,8 @@
 @property (readonly) NSArray *renderers;
 @property (readonly, strong) struct OpaqueCMTimebase *timebase;
 
++ (id)currentFigRenderSynchronizerFactory;
++ (void)setFigRenderSynchronizerFactory:(id)arg1 forQueue:(id)arg2;
 - (BOOL)_addRenderer:(id)arg1 error:(id *)arg2;
 - (long long)_addedAudioRendererCount;
 - (long long)_addedAudioRendererCountInternal;
@@ -31,11 +33,12 @@
 - (BOOL)_rendererConfigurationIsValid:(id *)arg1;
 - (BOOL)_scheduleTimedRendererRemovalAtTime:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 withClientCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_storeObserver:(id)arg1 clientCompletionHandler:(CDUnknownBlockType)arg2 forRenderer:(id)arg3;
+- (void)_updateRateFromTimebase;
 - (id)addBoundaryTimeObserverForTimes:(id)arg1 queue:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)addPeriodicTimeObserverForInterval:(CDStruct_1b6d18a9)arg1 queue:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)addRenderer:(id)arg1;
+- (CDStruct_1b6d18a9)currentTime;
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 - (void)removeRenderer:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)removeRenderer:(id)arg1 atTime:(CDStruct_1b6d18a9)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

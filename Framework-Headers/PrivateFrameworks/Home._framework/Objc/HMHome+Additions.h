@@ -23,6 +23,7 @@
 - (id)hf_allProgrammableSwitchAccessories;
 - (id)hf_allRooms;
 - (id)hf_allServices;
+- (id)hf_allTargetControlAccessories;
 - (id)hf_allUsersIncludingCurrentUser;
 - (id)hf_allVisibleServices;
 - (id)hf_cameraProfileWithIdentifier:(id)arg1;
@@ -52,10 +53,12 @@
 - (id)hf_reorderableRoomsList;
 - (id)hf_reorderableServicesList;
 - (id)hf_roomWithIdentifier:(id)arg1;
+- (id)hf_selectedRoom;
 - (id)hf_serviceGroupsForService:(id)arg1;
 - (id)hf_serviceWithIdentifier:(id)arg1;
 - (id)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:(BOOL)arg1;
 - (id)hf_setNotesApplicationData:(id)arg1;
+- (void)hf_setSelectedRoom:(id)arg1;
 - (void)hf_startReprovisioningAccessory:(id)arg1;
 - (BOOL)hf_supportsPerUserRemoteAccess;
 - (BOOL)hf_supportsRemoteAccessRestrictions;

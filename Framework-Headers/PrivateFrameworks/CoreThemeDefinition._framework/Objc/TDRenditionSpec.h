@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSSet *packedRenditions; // @dynamic packedRenditions;
 @property (strong, nonatomic) TDRenditionSpec *parentRendition; // @dynamic parentRendition;
 @property (strong, nonatomic) TDElementProduction *production; // @dynamic production;
+@property (strong, nonatomic) NSSet *properties; // @dynamic properties;
 @property (strong, nonatomic) TDRenditionType *renditionType; // @dynamic renditionType;
 @property (nonatomic) int width; // @dynamic width;
 
@@ -31,6 +32,7 @@
 - (BOOL)canBePackedWithDocument:(id)arg1;
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
 - (void)drawPackableRenditionInContext:(struct CGContext *)arg1 withDocument:(id)arg2;
+- (id)propertiesAsDictionary;
 - (void)resetToBaseKeySpec;
 - (BOOL)updatePackingPropertiesWithDocument:(id)arg1;
 

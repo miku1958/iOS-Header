@@ -37,6 +37,7 @@
     NSMutableArray *_subscribedFeedIds;
     int _topicSubscriptionCount;
     NSString *_userActivityType;
+    int _viewabilityState;
     NSMutableArray *_visibleViews;
     int _widgetArticleRank;
     NTPBWidgetEngagement *_widgetEngagement;
@@ -54,6 +55,7 @@
         unsigned int safariAutoSubscribeFeedCount:1;
         unsigned int sessionStartMethod:1;
         unsigned int topicSubscriptionCount:1;
+        unsigned int viewabilityState:1;
         unsigned int widgetArticleRank:1;
         unsigned int widgetSection:1;
         unsigned int widgetSectionArticleRank:1;
@@ -89,6 +91,7 @@
 @property (nonatomic) BOOL hasStartedFromNotification;
 @property (nonatomic) BOOL hasTopicSubscriptionCount;
 @property (readonly, nonatomic) BOOL hasUserActivityType;
+@property (nonatomic) BOOL hasViewabilityState;
 @property (nonatomic) BOOL hasWidgetArticleRank;
 @property (readonly, nonatomic) BOOL hasWidgetEngagement;
 @property (nonatomic) BOOL hasWidgetSection;
@@ -112,6 +115,7 @@
 @property (strong, nonatomic) NSMutableArray *subscribedFeedIds; // @synthesize subscribedFeedIds=_subscribedFeedIds;
 @property (nonatomic) int topicSubscriptionCount; // @synthesize topicSubscriptionCount=_topicSubscriptionCount;
 @property (strong, nonatomic) NSString *userActivityType; // @synthesize userActivityType=_userActivityType;
+@property (nonatomic) int viewabilityState; // @synthesize viewabilityState=_viewabilityState;
 @property (strong, nonatomic) NSMutableArray *visibleViews; // @synthesize visibleViews=_visibleViews;
 @property (nonatomic) int widgetArticleRank; // @synthesize widgetArticleRank=_widgetArticleRank;
 @property (strong, nonatomic) NTPBWidgetEngagement *widgetEngagement; // @synthesize widgetEngagement=_widgetEngagement;

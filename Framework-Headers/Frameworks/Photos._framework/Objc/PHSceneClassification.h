@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) unsigned int sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
 
 + (id)fetchSceneClassificationsGroupedByAssetLocalIdentifierForAssets:(id)arg1;
+- (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithDictionaryRepresentation:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSString;
 
@@ -27,6 +27,7 @@
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithID:(id)arg1 unformattedID:(id)arg2 countryCode:(id)arg3;
+- (id)initWithID:(id)arg1 unformattedID:(id)arg2 countryCode:(id)arg3 personCentricID:(id)arg4;
 - (BOOL)isBetterDefinedThan:(id)arg1;
 - (BOOL)isBusiness;
 - (BOOL)isEqual:(id)arg1;

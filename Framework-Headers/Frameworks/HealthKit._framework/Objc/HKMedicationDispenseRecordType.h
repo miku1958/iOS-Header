@@ -10,8 +10,8 @@
 {
 }
 
++ (id)allTypes;
 + (id)medicationDispenseRecordType;
-- (Class)dataObjectClass;
 
 @end
 

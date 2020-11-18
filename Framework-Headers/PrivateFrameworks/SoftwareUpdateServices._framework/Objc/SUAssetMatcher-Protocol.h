@@ -6,11 +6,12 @@
 
 #import <SoftwareUpdateServices/NSObject-Protocol.h>
 
-@class MAAsset, MAMsuDownloadOptions, NSArray, NSString;
+@class MAAsset, MAMsuDownloadOptions, NSArray, NSDictionary, NSString;
 
 @protocol SUAssetMatcher <NSObject>
 
 @property (readonly, nonatomic) NSString *assetType;
+@property (readonly, nonatomic) NSDictionary *matcherInfo;
 
 - (MAAsset *)findMatchFromCandidates:(NSArray *)arg1 error:(id *)arg2;
 - (void)modifyMADownloadOptions:(MAMsuDownloadOptions *)arg1;

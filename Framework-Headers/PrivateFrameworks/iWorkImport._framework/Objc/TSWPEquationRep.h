@@ -4,31 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/TSDRep.h>
+#import <iWorkImport/TSDMediaRep.h>
 
-#import <iWorkImport/CALayerDelegate-Protocol.h>
+#import <iWorkImport/TSDMagicMoveMatching-Protocol.h>
 
-@class CALayer, NSString, TSWPEquationInfo, TSWPEquationLayout;
+@class TSWPEquationInfo, TSWPEquationLayout;
 
 __attribute__((visibility("hidden")))
-@interface TSWPEquationRep : TSDRep <CALayerDelegate>
+@interface TSWPEquationRep : TSDMediaRep <TSDMagicMoveMatching>
 {
-    CALayer *_equationLayer;
+    BOOL _layerContentsAreFlipped;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) TSWPEquationInfo *equationInfo;
-@property (strong, nonatomic) CALayer *equationLayer; // @synthesize equationLayer=_equationLayer;
 @property (readonly, nonatomic) TSWPEquationLayout *equationLayout;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
-- (void).cxx_destruct;
-- (id)actionForLayer:(id)arg1 forKey:(id)arg2;
++ (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
+- (BOOL)canDrawInParallel;
+- (BOOL)canDrawShadowInOneStepWithChildren:(BOOL)arg1;
+- (BOOL)canPasteDataFromPhysicalKeyboard:(id)arg1;
 - (struct CGRect)clipRect;
-- (void)drawInContext:(struct CGContext *)arg1;
+- (void)drawInContextWithoutEffects:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6 keepingChildrenPassingTest:(CDUnknownBlockType)arg7;
 - (void)drawInLayerContext:(struct CGContext *)arg1;
+- (id)imageOfStroke:(struct CGRect *)arg1;
+- (id)initWithLayout:(id)arg1 canvas:(id)arg2;
+- (BOOL)isPlaceholder;
+- (void)p_drawInContext:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(double)arg4 withMask:(BOOL)arg5 forLayer:(BOOL)arg6 forShadow:(BOOL)arg7 forHitTest:(BOOL)arg8;
+- (BOOL)p_drawsInOneStep;
+- (BOOL)p_shouldFlipShadowsInContext:(struct CGContext *)arg1 forLayer:(BOOL)arg2;
+- (id)resizedGeometryForTransform:(struct CGAffineTransform)arg1;
+- (BOOL)shouldAllowReplacementFromPaste;
 - (void)willBeRemoved;
 
 @end

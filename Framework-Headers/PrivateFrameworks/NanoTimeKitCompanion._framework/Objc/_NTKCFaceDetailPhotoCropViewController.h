@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/UIScrollViewDelegate-Protocol.h>
 
-@class CAShapeLayer, NSString, NTKCCenteringScrollView, NTKCompanionCustomPhotosEditor, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, UIBarButtonItem, UIView;
+@class CAShapeLayer, NSString, NTKCCenteringScrollView, NTKCompanionCustomPhotosEditor, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, NTKFace, UIBarButtonItem, UIView;
 
 @interface _NTKCFaceDetailPhotoCropViewController : UIViewController <UIScrollViewDelegate>
 {
@@ -24,12 +24,14 @@
     BOOL _deleteConfirmed;
     unsigned long long _index;
     NTKCompanionCustomPhotosEditor *_editor;
+    NTKFace *_face;
     NTKDigitalTimeLabelStyle *_timeStyle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NTKCompanionCustomPhotosEditor *editor; // @synthesize editor=_editor;
+@property (strong, nonatomic) NTKFace *face; // @synthesize face=_face;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long index; // @synthesize index=_index;
 @property (readonly) Class superclass;
@@ -40,7 +42,7 @@
 - (void)_deletePressed;
 - (void)_donePressed;
 - (void)dismissWithSaving:(BOOL)arg1;
-- (id)initWithIndex:(unsigned long long)arg1 inPhotosEditor:(id)arg2 timeStyle:(id)arg3;
+- (id)initWithIndex:(unsigned long long)arg1 inPhotosEditor:(id)arg2 forFace:(id)arg3 timeStyle:(id)arg4;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

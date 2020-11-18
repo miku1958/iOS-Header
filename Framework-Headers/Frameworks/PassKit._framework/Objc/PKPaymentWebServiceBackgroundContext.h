@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -15,21 +15,26 @@
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_backgroundTaskRecordsByTaskIdentifier;
+    NSMutableDictionary *_backgroundTaskRecordsByRecordName;
 }
 
+@property (strong) NSMutableDictionary *backgroundTaskRecordsByRecordName; // @synthesize backgroundTaskRecordsByRecordName=_backgroundTaskRecordsByRecordName;
 @property (strong) NSMutableDictionary *backgroundTaskRecordsByTaskIdentifier; // @synthesize backgroundTaskRecordsByTaskIdentifier=_backgroundTaskRecordsByTaskIdentifier;
 
 + (id)contextWithArchive:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)addBackgroundDownloadRecord:(id)arg1 forRecordName:(id)arg2;
 - (void)addBackgroundDownloadRecord:(id)arg1 forTaskIdentifier:(unsigned long long)arg2;
 - (void)archiveAtPath:(id)arg1;
+- (id)backgroundDownloadRecordForRecordName:(id)arg1;
 - (id)backgroundDownloadRecordForTaskIdentifier:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)remainingTasks;
+- (void)removeBackgroundDownloadRecordForRecordName:(id)arg1;
 - (void)removeBackgroundDownloadRecordForTaskIdentifier:(unsigned long long)arg1;
-- (id)taskIdentifiers;
 
 @end
 

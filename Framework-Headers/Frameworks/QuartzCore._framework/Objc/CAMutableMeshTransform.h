@@ -13,6 +13,7 @@
 }
 
 @property (copy) NSString *depthNormalization;
+@property BOOL replicatesEdges;
 @property int subdivisionSteps;
 
 + (id)meshTransform;

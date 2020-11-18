@@ -6,8 +6,8 @@
 
 #import <HealthDaemon/NSObject-Protocol.h>
 
-@class HDExtendedDatabaseTransaction, HDJournalEntry, NSArray, NSUUID;
-@protocol HDDatabaseProtectedDataObserver;
+@class HDAssertion, HDDatabaseTransactionContext, HDJournalEntry, NSArray, NSObject, NSString;
+@protocol HDDatabaseProtectedDataObserver, OS_dispatch_queue;
 
 @protocol HDHealthDatabase <NSObject>
 
@@ -17,14 +17,15 @@
 - (BOOL)addJournalEntries:(NSArray *)arg1 error:(id *)arg2;
 - (BOOL)addJournalEntry:(HDJournalEntry *)arg1 error:(id *)arg2;
 - (void)addProtectedDataObserver:(id<HDDatabaseProtectedDataObserver>)arg1;
-- (HDExtendedDatabaseTransaction *)beginExtendedTransactionWithOptions:(unsigned long long)arg1 transactionTimeout:(double)arg2 continuationTimeout:(double)arg3 error:(id *)arg4;
-- (HDExtendedDatabaseTransaction *)extendedDatabaseTransactionForIdentifier:(NSUUID *)arg1;
-- (void)finalizeExtendedTransactionForIdentifier:(NSUUID *)arg1;
+- (void)addProtectedDataObserver:(id<HDDatabaseProtectedDataObserver>)arg1 queue:(NSObject<OS_dispatch_queue> *)arg2;
+- (HDAssertion *)cloneAccessibilityAssertion:(HDAssertion *)arg1 ownerIdentifier:(NSString *)arg2 error:(id *)arg3;
 - (void)performAsynchronously:(void (^)(void))arg1;
-- (BOOL)performJournalMergeWithOptions:(unsigned long long)arg1 error:(id *)arg2 block:(BOOL (^)(HDSQLiteDatabase *, id *))arg3;
+- (BOOL)performTransactionWithContext:(HDDatabaseTransactionContext *)arg1 options:(unsigned long long)arg2 error:(id *)arg3 block:(BOOL (^)(HDDatabaseTransaction *, id *))arg4 inaccessibilityHandler:(BOOL (^)(NSError *, id *))arg5;
+- (BOOL)performTransactionWithOptions:(unsigned long long)arg1 error:(id *)arg2 block:(BOOL (^)(HDDatabaseTransaction *, id *))arg3 inaccessibilityHandler:(BOOL (^)(NSError *, id *))arg4;
 - (BOOL)performTransactionWithOptions:(unsigned long long)arg1 error:(id *)arg2 usingBlock:(BOOL (^)(HDSQLiteDatabase *, id *))arg3 inaccessibilityHandler:(BOOL (^)(NSError *, id *))arg4;
 - (void)performWhenDataProtectedByFirstUnlockIsAvailable:(void (^)(void))arg1;
-- (BOOL)performWithSecondaryJournal:(long long)arg1 error:(id *)arg2 block:(BOOL (^)(id *))arg3;
+- (BOOL)performWithTransactionContext:(HDDatabaseTransactionContext *)arg1 error:(id *)arg2 block:(BOOL (^)(id *))arg3;
 - (void)removeProtectedDataObserver:(id<HDDatabaseProtectedDataObserver>)arg1;
+- (HDAssertion *)takeAccessibilityAssertionWithOwnerIdentifier:(NSString *)arg1 timeout:(double)arg2 error:(id *)arg3;
 @end
 

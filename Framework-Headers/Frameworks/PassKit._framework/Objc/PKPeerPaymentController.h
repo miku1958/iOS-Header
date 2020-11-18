@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentAuthorizationCoordinatorDelegate-Protocol.h>
 #import <PassKitCore/PKPaymentAuthorizationCoordinatorPrivateDelegate-Protocol.h>
@@ -43,13 +43,16 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPeerPaymentWebService *webService; // @synthesize webService=_webService;
 
++ (id)_displayNameForRecipientAddress:(id)arg1 contactResolver:(id)arg2 foundInContacts:(BOOL *)arg3;
 + (id)_displayableErrorOverrideForUnderlyingError:(id)arg1;
 + (id)_peerPaymentPassURL;
++ (id)displayNameForAddress:(id)arg1 contactResolver:(id)arg2;
 + (id)displayableErrorForError:(id)arg1;
 + (BOOL)errorIsIdentityVerificationRequiredError:(id)arg1;
 + (BOOL)errorIsTermsAcceptanceRequiredError:(id)arg1;
 + (unsigned long long)proposedResolutionForError:(id)arg1;
 - (void).cxx_destruct;
+- (id)_contactResolver;
 - (id)_defaultAlternateFundingSourceForMode:(unsigned long long)arg1;
 - (BOOL)_ensureState:(unsigned long long)arg1;
 - (void)_handleAccountChanged:(id)arg1;
@@ -60,6 +63,7 @@
 - (void)_setState:(unsigned long long)arg1 notify:(BOOL)arg2;
 - (void)_updateLastUsedAlternateFundingSource;
 - (void)aggDAuthorizedQuoteWithSuccess:(BOOL)arg1 authorizedQuote:(id)arg2;
+- (id)contactForHandle:(id)arg1;
 - (void)dealloc;
 - (id)displayNameForRecipientAddress:(id)arg1;
 - (id)displayNameForRecipientAddress:(id)arg1 foundInContacts:(BOOL *)arg2;

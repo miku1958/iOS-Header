@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 
 @property long long currentEditNumber; // @synthesize currentEditNumber=_currentEditNumber;
 
+- (BOOL)canBecomeFirstResponder;
 - (void)controllerWillDismissSignatureCaptureView:(id)arg1;
 - (void)controllerWillDismissSignatureManagerView:(id)arg1;
 - (void)controllerWillShowSignatureCaptureView:(id)arg1;

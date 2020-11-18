@@ -12,6 +12,7 @@
 @interface CSSpeakerDetectorNDAPI : NSObject
 {
     float _threshold;
+    unsigned long long _maxSpeakerVectorsToPersist;
     CSSpeakerModel *_spkModel;
     id<CSSpeakerDetectorNDAPIDelegate> _delegate;
 }
@@ -23,8 +24,11 @@
 - (BOOL)_initializeNDAPI:(id)arg1 resourcePath:(id)arg2;
 - (BOOL)_initializeSAT:(id)arg1;
 - (BOOL)addLastTriggerToProfile;
+- (BOOL)addLastTriggerToProfileWithSuperVector:(id)arg1;
 - (id)analyzeWavForEnrollment:(id)arg1 numSamples:(unsigned long long)arg2;
 - (void)dealloc;
+- (unsigned long long)getMaxSpeakerVectorsToPersist;
+- (unsigned long long)getSATVectorCount;
 - (id)initWithAsset:(id)arg1 speakerModel:(id)arg2;
 - (void)processSuperVector:(id)arg1 withResult:(id)arg2;
 - (void)reset;

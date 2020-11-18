@@ -22,18 +22,18 @@
 @property (nonatomic) BOOL useCompactDateFormat; // @synthesize useCompactDateFormat=_useCompactDateFormat;
 
 + (id)dateTimeLunarDateFont;
++ (CDStruct_d2b197d1)dateTimeLunarDateFontMetrics;
 + (double)scaledFontSize:(double)arg1 withMaximumFontSizeCategory:(id)arg2;
 + (double)subtitleLabelToLunarDateLabelBaselineDifferenceY;
 - (void).cxx_destruct;
-- (id)_createReplicateView;
 - (double)_lunarDateLabelYOffsetFromDateLabel;
+- (void)_overlayCalendarDidChange;
 - (void)_setupAlternateDateLabel;
 - (void)_updateDateLabelForCompact;
 - (struct CGRect)alternateDateLabelFrame;
 - (void)dealloc;
 - (id)initWithDate:(id)arg1;
 - (void)layoutSubviews;
-- (id)replicate;
 - (void)setLegibilitySettings:(id)arg1;
 - (void)setStrength:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

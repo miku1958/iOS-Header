@@ -36,6 +36,7 @@
 @property (readonly, copy, nonatomic) NSArray *valueStrings;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (unsigned int)_clumpID;
 - (float)_internalValue;
 - (void)_observersChanged:(BOOL)arg1 deltaCount:(int)arg2;

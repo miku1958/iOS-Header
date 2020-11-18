@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CUPowerSource, CUPowerSourceMonitor, NSDictionary, NSMutableDictionary, NSURL;
+@class NSDictionary, NSMutableDictionary, NSURL, SFPowerSource, SFPowerSourceMonitor;
 @protocol OS_dispatch_queue;
 
 @interface SFWirelessChargingMonitor : NSObject
@@ -15,11 +15,14 @@
     BOOL _anyCharger;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
+    SFPowerSource *_mePowerSource;
     CDUnknownBlockType _wirelessPowerSourceFoundHandler;
     CDUnknownBlockType _wirelessPowerSourceLostHandler;
     CDUnknownBlockType _wirelessPowerSourceChangedHandler;
-    CUPowerSource *_mePowerSource;
-    CUPowerSourceMonitor *_monitor;
+    CDUnknownBlockType _powerSourceFoundHandler;
+    CDUnknownBlockType _powerSourceLostHandler;
+    CDUnknownBlockType _powerSourceChangedHandler;
+    SFPowerSourceMonitor *_monitor;
     NSMutableDictionary *_allWirelessChargingPowerSources;
     NSMutableDictionary *_onMatWithMePowerSources;
     long long _engagementBudgetTime;
@@ -34,9 +37,12 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (nonatomic) long long engagementBudgetTime; // @synthesize engagementBudgetTime=_engagementBudgetTime;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property (strong, nonatomic) CUPowerSource *mePowerSource; // @synthesize mePowerSource=_mePowerSource;
-@property (strong, nonatomic) CUPowerSourceMonitor *monitor; // @synthesize monitor=_monitor;
+@property (strong, nonatomic) SFPowerSource *mePowerSource; // @synthesize mePowerSource=_mePowerSource;
+@property (strong, nonatomic) SFPowerSourceMonitor *monitor; // @synthesize monitor=_monitor;
 @property (strong, nonatomic) NSMutableDictionary *onMatWithMePowerSources; // @synthesize onMatWithMePowerSources=_onMatWithMePowerSources;
+@property (copy, nonatomic) CDUnknownBlockType powerSourceChangedHandler; // @synthesize powerSourceChangedHandler=_powerSourceChangedHandler;
+@property (copy, nonatomic) CDUnknownBlockType powerSourceFoundHandler; // @synthesize powerSourceFoundHandler=_powerSourceFoundHandler;
+@property (copy, nonatomic) CDUnknownBlockType powerSourceLostHandler; // @synthesize powerSourceLostHandler=_powerSourceLostHandler;
 @property (nonatomic) BOOL updateDisengagementHistory; // @synthesize updateDisengagementHistory=_updateDisengagementHistory;
 @property (copy, nonatomic) CDUnknownBlockType wirelessPowerSourceChangedHandler; // @synthesize wirelessPowerSourceChangedHandler=_wirelessPowerSourceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType wirelessPowerSourceFoundHandler; // @synthesize wirelessPowerSourceFoundHandler=_wirelessPowerSourceFoundHandler;

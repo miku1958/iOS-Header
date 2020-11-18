@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UITextPasteCoordinatorDelegate-Protocol.h>
+#import <UIKitCore/UITextPasteCoordinatorDelegate-Protocol.h>
 
 @class NSMapTable, NSString;
 @protocol UITextPasteConfigurationSupporting_Internal;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<UITextPasteConfigurationSupporting_Internal> supportingView; // @synthesize supportingView=_supportingView;
 
-+ (id)combineAttributedStrings:(id)arg1;
++ (id)combineAttributedStrings:(id)arg1 addingSeparation:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)_clampRange:(id)arg1;
 - (id)_combineItemAttributedStrings:(id)arg1 forRange:(id)arg2;

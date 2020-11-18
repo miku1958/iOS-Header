@@ -8,14 +8,14 @@
 
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@class CPLChangeBatch, NSMutableDictionary, NSMutableSet, NSSet, NSString;
+@class CPLChangeBatch, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 
 @interface CPLExtractedBatch : NSObject <NSSecureCoding>
 {
-    NSMutableDictionary *_uploadIdentifiers;
+    NSDictionary *_uploadIdentifiers;
     NSMutableDictionary *_mutableUploadIdentifiers;
-    NSSet *_untrustableIdentifiers;
-    NSMutableSet *_mutableUntrustableIndentifiers;
+    NSSet *_untrustableScopedIdentifiers;
+    NSMutableSet *_mutableUntrustableScopedIndentifiers;
     BOOL _resourceSizeIsCalculated;
     BOOL _full;
     BOOL _batchCanLowerQuota;
@@ -34,6 +34,7 @@
 - (void).cxx_destruct;
 - (void)addChange:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)forceScopeIndexOnAllRecordsTo:(long long)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)uploadIdentifierForChange:(id)arg1;

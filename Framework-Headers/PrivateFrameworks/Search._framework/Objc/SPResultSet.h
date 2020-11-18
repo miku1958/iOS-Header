@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSections:(id)arg1;
 - (id)initWithSections:(id)arg1 stableSections:(id)arg2;
 
 @end

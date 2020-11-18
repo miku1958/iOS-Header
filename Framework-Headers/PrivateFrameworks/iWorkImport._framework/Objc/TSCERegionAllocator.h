@@ -4,23 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSCERegionAllocator : NSObject
 {
-    struct TSCERegionNode *mHead;
-    struct TSCERegionNode *mCurBlock;
-    unsigned int mBlockOffset;
-    struct _NSZone *mZone;
+    struct TSCERegionNode *_head;
+    struct TSCERegionNode *_curBlock;
+    unsigned int _blockOffset;
+    struct vector<TSCEASTNodeArrayChunk *, std::__1::allocator<TSCEASTNodeArrayChunk *>> _nodeArrayChunks;
 }
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void *)calloc:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithInitialCapacity:(unsigned long long)arg1;
 - (void *)malloc:(unsigned long long)arg1;
+- (struct TSCEASTNodeArray *)managedNodeArrayWithCapacity:(unsigned long long)arg1;
 - (void)reset;
-- (struct _NSZone *)zone;
 
 @end
 

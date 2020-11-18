@@ -8,7 +8,7 @@
 
 #import <PBBridgeSupport/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSMutableDictionary, NSString, NSTimer;
+@class BKSProcessAssertion, IDSService, NSMutableDictionary, NSString, NSTimer;
 
 @interface PBBridgeIDSServiceDelegate : NSObject <IDSServiceDelegate>
 {
@@ -17,6 +17,7 @@
     NSTimer *_transportReachabilityTimer;
     NSMutableDictionary *_inflightMessages;
     NSMutableDictionary *_pendingMessages;
+    BKSProcessAssertion *_suspendAssertion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,6 +28,7 @@
 @property (strong, nonatomic) IDSService *service; // @synthesize service=_service;
 @property (nonatomic) BOOL shouldSuppressTransportReachabilityTimeout; // @synthesize shouldSuppressTransportReachabilityTimeout=_shouldSuppressTransportReachabilityTimeout;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) BKSProcessAssertion *suspendAssertion; // @synthesize suspendAssertion=_suspendAssertion;
 @property (strong, nonatomic) NSTimer *transportReachabilityTimer; // @synthesize transportReachabilityTimer=_transportReachabilityTimer;
 
 - (void).cxx_destruct;

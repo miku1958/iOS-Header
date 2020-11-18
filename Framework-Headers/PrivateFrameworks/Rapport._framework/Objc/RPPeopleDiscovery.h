@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 #import <Rapport/RPPeopleXPCClientInterface-Protocol.h>
 
 @class NSArray, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface RPPeopleDiscovery : NSObject <NSSecureCoding, RPPeopleXPCClientInterface>
 {
@@ -18,8 +18,11 @@
     struct NSMutableDictionary *_discoveredPeople;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
+    NSObject<OS_dispatch_source> *_retryTimer;
     NSXPCConnection *_xpcCnx;
+    BOOL _targetUserSession;
     unsigned int _changeFlags;
+    unsigned int _discoveryFlags;
     int _discoveryMode;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _interruptionHandler;
@@ -31,6 +34,7 @@
 
 @property (nonatomic) unsigned int changeFlags; // @synthesize changeFlags=_changeFlags;
 @property (readonly, copy, nonatomic) NSArray *discoveredPeople;
+@property (nonatomic) unsigned int discoveryFlags; // @synthesize discoveryFlags=_discoveryFlags;
 @property (nonatomic) int discoveryMode; // @synthesize discoveryMode=_discoveryMode;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
@@ -38,14 +42,17 @@
 @property (copy, nonatomic) CDUnknownBlockType personChangedHandler; // @synthesize personChangedHandler=_personChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType personFoundHandler; // @synthesize personFoundHandler=_personFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType personLostHandler; // @synthesize personLostHandler=_personLostHandler;
+@property (nonatomic) BOOL targetUserSession; // @synthesize targetUserSession=_targetUserSession;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1 reactivate:(BOOL)arg2;
-- (void)_ensureXPCStarted;
+- (BOOL)_ensureXPCStarted;
 - (void)_interrupted;
 - (void)_invalidated;
+- (void)_invokeBlockActivateSafe:(CDUnknownBlockType)arg1;
 - (void)_lostAllPeople;
+- (void)_scheduleRetry;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)description;
 - (id)descriptionWithLevel:(int)arg1;

@@ -18,7 +18,6 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasReferentialCommand;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBReferentialCommand *referentialCommand; // @synthesize referentialCommand=_referentialCommand;

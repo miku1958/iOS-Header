@@ -6,10 +6,11 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class NSString, TSPObject;
+@class NSString, TSDFill, TSPObject;
 @protocol TPMasterDrawableProvider, TSWPHeaderFooterProvider;
 
 @protocol TPPageLayoutInfoProvider <NSObject>
+- (TSDFill *)backgroundFillForPageIndex:(unsigned long long)arg1;
 - (BOOL)canProvideInfoForPageIndex:(unsigned long long)arg1;
 - (BOOL)canProvideNumberingInfoForPageIndex:(unsigned long long)arg1;
 - (unsigned long long)contentFlagsForPageIndex:(unsigned long long)arg1;

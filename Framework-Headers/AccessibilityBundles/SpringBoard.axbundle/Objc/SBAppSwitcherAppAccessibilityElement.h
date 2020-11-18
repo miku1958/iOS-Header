@@ -29,15 +29,15 @@
 - (id)_accessibilityScrollAncestor;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityScrollToVisible;
-- (id)_accessibilityUserTestingChildren;
+- (BOOL)_accessibilityUpdatesSwitchMenu;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
-- (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityScroll:(long long)arg1;
+- (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 - (BOOL)shouldGroupAccessibilityChildren;

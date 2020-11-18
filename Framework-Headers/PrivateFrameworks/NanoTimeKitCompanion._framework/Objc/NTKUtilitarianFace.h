@@ -18,6 +18,7 @@
 - (id)_optionAtIndex:(unsigned long long)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
 - (BOOL)_wantsUnadornedSnapshot;
+- (BOOL)complicationExistenceInvalidatesSnapshot;
 
 @end
 

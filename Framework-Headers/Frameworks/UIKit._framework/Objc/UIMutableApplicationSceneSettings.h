@@ -6,7 +6,7 @@
 
 #import <FrontBoardServices/FBSMutableSceneSettings.h>
 
-#import <UIKit/UIApplicationSceneSettings-Protocol.h>
+#import <UIKitCore/UIApplicationSceneSettings-Protocol.h>
 
 @class NSNumber, NSString;
 
@@ -14,6 +14,7 @@
 {
 }
 
+@property (nonatomic) unsigned long long artworkSubtype;
 @property (nonatomic) BOOL canShowAlerts;
 @property (nonatomic) unsigned long long deactivationReasons;
 @property (readonly, copy) NSString *debugDescription;
@@ -21,13 +22,21 @@
 @property (nonatomic) long long deviceOrientation;
 @property (nonatomic) BOOL deviceOrientationEventsEnabled;
 @property (nonatomic) BOOL forcedStatusBarForegroundTransparent;
-@property (strong, nonatomic) NSNumber *forcedStatusBarHidden;
 @property (strong, nonatomic) NSNumber *forcedStatusBarStyle;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double homeAffordanceOverlayAllowance;
 @property (nonatomic) BOOL idleModeEnabled;
+@property (nonatomic) struct UIEdgeInsets peripheryInsets;
+@property (nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeLeft;
+@property (nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeRight;
+@property (nonatomic) struct UIEdgeInsets safeAreaInsetsPortrait;
+@property (nonatomic) struct UIEdgeInsets safeAreaInsetsPortraitUpsideDown;
+@property (nonatomic) struct CGRect statusBarAvoidanceFrame;
 @property (nonatomic) BOOL statusBarDisabled;
+@property (nonatomic) long long statusBarParts;
 @property (nonatomic) int statusBarStyleOverridesToSuppress;
 @property (readonly) Class superclass;
+@property (nonatomic) double systemMinimumMargin;
 @property (nonatomic) BOOL underLock;
 @property (nonatomic) long long userInterfaceStyle;
 

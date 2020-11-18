@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class DKDGLDataBuffer, DKDGLFrameBuffer, NSMapTable, PKDrawing, PKGLContext, PKLinedPaper, PKResourceHandler;
+@class DKDGLDataBuffer, DKDGLFrameBuffer, PKDrawing, PKGLContext, PKLinedPaper, PKResourceHandler;
 
 @interface PKRenderer : NSObject
 {
-    struct vector<AnimatingStroke, std::__1::allocator<AnimatingStroke>> _animatingStrokes;
+    struct vector<(anonymous namespace)::AnimatingStroke, std::__1::allocator<(anonymous namespace)::AnimatingStroke>> _animatingStrokes;
     DKDGLFrameBuffer *_paintFramebuffer;
     DKDGLFrameBuffer *_paintFramebufferAccumulator;
     DKDGLFrameBuffer *_originalBackFramebuffer;
@@ -24,7 +24,6 @@
     CDStruct_f2e236b6 _backgroundGLColor;
     struct CGSize _drawingPixelSize;
     double _fromStrokeSpaceScale;
-    struct CGRect _contentsBounds;
     struct CGAffineTransform _strokeTransform;
     DKDGLDataBuffer *_strokeBuffer;
     DKDGLDataBuffer *_linesBuffer;
@@ -32,7 +31,7 @@
     struct _PKStrokePoint _lastPointForEraser;
     BOOL _lastPointForEraserIsValid;
     BOOL _rendersToSharedContext;
-    NSMapTable *_tileFramebuffers;
+    BOOL _useMetalRandomNumberGenerator;
     BOOL _solidColorBackboard;
     BOOL _isFinishedRendering;
     PKGLContext *_glContext;
@@ -63,17 +62,17 @@
 @property (nonatomic) struct CGAffineTransform strokeTransform; // @synthesize strokeTransform=_strokeTransform;
 @property (nonatomic) struct CGRect viewScissor; // @synthesize viewScissor=_viewScissor;
 
++ (id)tileQueue;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (unsigned long long)_renderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 renderedBlock:(CDUnknownBlockType)arg4;
+- (unsigned long long)_renderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 stopBlock:(CDUnknownBlockType)arg4;
 - (void)applyStrokeSpaceClipRect:(struct CGRect)arg1 strokeTransform:(struct CGAffineTransform)arg2;
 - (void)clear;
-- (unsigned long long)clearAndRenderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 renderedBlock:(CDUnknownBlockType)arg3;
-- (unsigned long long)clearAndRenderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 renderedBlock:(CDUnknownBlockType)arg4;
+- (unsigned long long)clearAndRenderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 stopBlock:(CDUnknownBlockType)arg3;
+- (unsigned long long)clearAndRenderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 stopBlock:(CDUnknownBlockType)arg4;
 - (void)clearPaintFramebuffers;
-- (struct CGRect)clipRectForVertices:(struct StrokeVertex *)arg1 numVertices:(unsigned long long)arg2;
-- (struct CGRect)contentsBoundsInStrokeSpace;
-- (void)copyIntoTile:(id)arg1 strokeTransform:(struct CGAffineTransform)arg2;
+- (struct CGRect)clipRectForVertices:(StrokeVertex_e2fc4686 *)arg1 numVertices:(unsigned long long)arg2;
+- (void)copyIntoTile:(id)arg1 tileTransform:(struct CGAffineTransform)arg2;
 - (void)dealloc;
 - (void)didTeardownTile;
 - (void)drawNewPointsAt:(double)arg1;
@@ -85,6 +84,7 @@
 - (void)finishRenderingNoTeardownForStroke:(struct AnimatingStroke *)arg1 clippedToPixelSpaceRect:(struct CGRect)arg2;
 - (void)finishStroke;
 - (void)flushMemoryIfPossible;
+- (id)framebufferForTile:(id)arg1 createIfNeeded:(BOOL)arg2;
 - (void)getAndRenderNewPoints:(id)arg1;
 - (id)initWithDrawingPixelSize:(struct CGSize)arg1 actualSize:(struct CGSize)arg2;
 - (id)initWithDrawingPixelSize:(struct CGSize)arg1 actualSize:(struct CGSize)arg2 glContext:(id)arg3;
@@ -92,11 +92,12 @@
 - (struct CGImage *)newCGImageFromFramebuffer:(id)arg1 withClipRect:(struct CGRect)arg2;
 - (struct CGImage *)newCGImageFromGL;
 - (struct CGImage *)newCGImageWithClipRect:(struct CGRect)arg1;
+- (const float *)randomNumberArray;
 - (void)renderAheadWithTransform:(struct CGAffineTransform)arg1 onPaper:(BOOL)arg2 renderBufferSize:(struct CGSize)arg3;
 - (void)renderAnimatingStrokesWithTransform:(struct CGAffineTransform)arg1 renderBufferSize:(struct CGSize)arg2;
 - (void)renderBrushIndicatorForStroke:(id)arg1 withTransform:(struct CGAffineTransform)arg2 mode:(long long)arg3 flipped:(BOOL)arg4;
 - (void)renderEraserIndicator:(struct _PKStrokePoint)arg1 withTransform:(struct CGAffineTransform)arg2;
-- (void)renderEraserIndicatorVertices:(struct StrokeVertex *)arg1 numVertices:(unsigned long long)arg2 buffer:(id)arg3 shader:(id)arg4 withTransform:(struct CGAffineTransform)arg5;
+- (void)renderEraserIndicatorVertices:(StrokeVertex_e2fc4686 *)arg1 numVertices:(unsigned long long)arg2 buffer:(id)arg3 shader:(id)arg4 withTransform:(struct CGAffineTransform)arg5;
 - (void)renderFullscreenQuadWithShader:(id)arg1 transform:(struct CGAffineTransform)arg2 flipped:(BOOL)arg3;
 - (void)renderImage:(struct CGImage *)arg1 andMask:(struct CGImage *)arg2;
 - (void)renderImage:(struct CGImage *)arg1 andMask:(struct CGImage *)arg2 clippedToStrokeSpaceRect:(struct CGRect)arg3;
@@ -105,17 +106,17 @@
 - (void)renderLiveStrokeWithTransform:(struct CGAffineTransform)arg1 renderBufferSize:(struct CGSize)arg2;
 - (void)renderPaperTransform:(struct CGAffineTransform)arg1 paperTransform:(struct CGAffineTransform)arg2 flipped:(BOOL)arg3 multiply:(double)arg4;
 - (void)renderParticleStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 starts:(BOOL)arg3 ends:(BOOL)arg4 combinedRendering:(BOOL)arg5;
-- (void)renderParticleStrokeVertices:(struct StrokeVertex *)arg1 numVertices:(unsigned long long)arg2 buffer:(id)arg3 shader:(id)arg4;
+- (void)renderParticleStrokeVertices:(StrokeVertex_e2fc4686 *)arg1 numVertices:(unsigned long long)arg2 buffer:(id)arg3 shader:(id)arg4;
 - (void)renderPenStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 alpha:(double)arg3 combinedRendering:(BOOL)arg4;
 - (void)renderStroke:(struct _PKStrokePointSlice)arg1 animatingStroke:(struct AnimatingStroke *)arg2 accumulating:(BOOL)arg3 combinedRendering:(BOOL)arg4;
 - (void)renderStroke:(id)arg1 withTransform:(struct CGAffineTransform)arg2 mode:(long long)arg3 flipped:(BOOL)arg4 renderBufferSize:(struct CGSize)arg5;
-- (void)renderStrokeVertices:(struct StrokeVertex *)arg1 numVertices:(unsigned long long)arg2 buffer:(id)arg3 shader:(id)arg4;
-- (unsigned long long)renderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 renderedBlock:(CDUnknownBlockType)arg4;
-- (unsigned long long)renderStrokes:(id)arg1 renderedBlock:(CDUnknownBlockType)arg2;
+- (void)renderStrokeVertices:(StrokeVertex_e2fc4686 *)arg1 numVertices:(unsigned long long)arg2 buffer:(id)arg3 shader:(id)arg4;
+- (unsigned long long)renderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 stopBlock:(CDUnknownBlockType)arg4;
+- (unsigned long long)renderStrokes:(id)arg1 stopBlock:(CDUnknownBlockType)arg2;
 - (void)renderTexture:(unsigned int)arg1 flipped:(BOOL)arg2;
 - (void)renderTexture:(unsigned int)arg1 intoFramebuffer:(id)arg2;
-- (void)renderTile:(id)arg1;
 - (void)renderTile:(id)arg1 intoTile:(id)arg2;
+- (void)renderTile:(id)arg1 tileTransform:(struct CGAffineTransform)arg2;
 - (void)renderWithTransform:(struct CGAffineTransform)arg1 animatingStroke:(struct AnimatingStroke *)arg2 mode:(long long)arg3 clipped:(BOOL)arg4 renderBufferSize:(struct CGSize)arg5;
 - (void)resetPaintFramebufferAccumulateIfNeeded;
 - (void)restoreGLContextIfNecessary;
@@ -125,12 +126,9 @@
 - (struct CATransform3D)setShaderTransform:(id)arg1 forFramebufferSize:(struct CGSize)arg2 flipped:(BOOL)arg3;
 - (void)setupDrawingFramebuffersIfNecessary;
 - (void)setupMaskFramebufferIfNecessary;
-- (id)setupNewTile:(id)arg1;
 - (void)setupOpenGL;
 - (void)setupStrokeBufferIfNecessary;
 - (void)switchGLContextIfNecessary;
-- (struct CGRect)transformRectFromStrokeToPixelSpace:(struct CGRect)arg1;
-- (struct CGRect)transformRectFromStrokeToPixelSpace:(struct CGRect)arg1 transform:(struct CGAffineTransform)arg2;
 
 @end
 

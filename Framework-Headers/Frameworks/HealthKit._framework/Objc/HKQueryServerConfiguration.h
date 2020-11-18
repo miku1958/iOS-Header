@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
-
-#import <HealthKit/NSSecureCoding-Protocol.h>
+#import <HealthKit/HKTaskConfiguration.h>
 
 @class HKObjectType, _HKFilter;
 
 __attribute__((visibility("hidden")))
-@interface HKQueryServerConfiguration : NSObject <NSSecureCoding>
+@interface HKQueryServerConfiguration : HKTaskConfiguration
 {
     BOOL _shouldDeactivateAfterInitialResults;
     BOOL _shouldSuppressDataCollection;
@@ -26,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

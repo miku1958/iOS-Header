@@ -6,7 +6,7 @@
 
 #import <MPSNeuralNetwork/MPSCNNKernel.h>
 
-@class MPSCNNLogSoftMax, MPSCNNNeuronLinear, MPSNNReduceUnary;
+@class MPSCNNLogSoftMax, MPSCNNNeuron, MPSNNReduceUnary;
 
 @interface MPSCNNLoss : MPSCNNKernel
 {
@@ -21,7 +21,7 @@
     MPSNNReduceUnary *_reduceRows;
     MPSNNReduceUnary *_reduceColumns;
     MPSNNReduceUnary *_reduceFeatureChannels;
-    MPSCNNNeuronLinear *_arithmetic;
+    MPSCNNNeuron *_arithmetic;
 }
 
 @property (readonly, nonatomic) float delta; // @synthesize delta=_delta;
@@ -45,6 +45,7 @@
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 lossDescriptor:(id)arg2;
 - (void)initializeSupportFiltersWithDevice:(id)arg1;
+- (unsigned long long)maxBatchSize;
 - (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3;
 

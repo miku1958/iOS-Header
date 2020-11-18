@@ -6,7 +6,7 @@
 
 #import <WebKitLegacy/DOMNode.h>
 
-#import <UIKit/UIWebSelectionBlock-Protocol.h>
+#import <UIKitCore/UIWebSelectionBlock-Protocol.h>
 
 @class NSString;
 

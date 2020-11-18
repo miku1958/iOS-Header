@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BKSTerminationAssertion, NSString;
 @protocol OS_dispatch_queue;
@@ -23,6 +23,7 @@
 @property (readonly, copy, nonatomic) NSString *reason;
 
 + (id)_queue;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)initWithBundleID:(id)arg1 reason:(id)arg2 acquisitionHandler:(CDUnknownBlockType)arg3;

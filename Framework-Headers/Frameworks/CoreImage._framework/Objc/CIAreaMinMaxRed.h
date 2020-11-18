@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreImage/CIAreaMaximum.h>
+#import <CoreImage/CIReductionFilter.h>
 
 __attribute__((visibility("hidden")))
-@interface CIAreaMinMaxRed : CIAreaMaximum
+@interface CIAreaMinMaxRed : CIReductionFilter
 {
 }
 

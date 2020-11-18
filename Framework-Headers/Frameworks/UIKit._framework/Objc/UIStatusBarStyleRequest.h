@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSMutableCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSMutableCopying-Protocol.h>
 
 @class NSNumber, UIColor;
 

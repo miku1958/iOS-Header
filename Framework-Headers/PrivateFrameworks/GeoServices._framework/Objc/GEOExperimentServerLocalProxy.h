@@ -28,6 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)cancelOldActivities;
 - (void).cxx_destruct;
 - (void)_debug_fetchAllAvailableExperiments:(CDUnknownBlockType)arg1;
 - (void)_debug_setActiveExperimentBranchDictionaryRepresentation:(id)arg1;

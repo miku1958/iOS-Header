@@ -16,13 +16,13 @@
 @property (nonatomic) long long state; // @synthesize state=_state;
 
 - (id)_levelTintColor;
-- (id)_newCircularTemplateMedium:(BOOL)arg1;
-- (id)_newExtraLargeTemplate;
-- (id)_newModularSmallTemplate;
+- (id)_newBatteryTemplateForFamily:(long long)arg1;
 - (id)_newUtilitarianLargeTemplate;
 - (id)_newUtilitarianSmallFlatTemplate;
-- (id)_newUtilitarianSmallTemplate;
 - (id)_ringTextProvider;
+- (id)_signatureBezelTemplate;
+- (id)_signatureCircularTemplate;
+- (id)_signatureCornerTemplate;
 - (id)templateForComplicationFamily:(long long)arg1;
 
 @end

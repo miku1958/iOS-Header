@@ -9,13 +9,13 @@
 #import <SearchUI/CNAvatarViewDelegate-Protocol.h>
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@class CNAvatarView, NSMutableDictionary, NSString, NUIContainerStackView, SFSearchResult, SearchUIAccessoryViewController, SearchUIForceTouchGestureRecognizer, SearchUIThumbnailView, TLKDetailsView;
+@class CNAvatarView, NSMutableDictionary, NSString, NUIContainerStackView, SFSearchResult, SearchUIAccessoryViewController, SearchUIForceTouchGestureRecognizer, SearchUIImageView, TLKDetailsView;
 
 @interface SearchUISingleResultTableViewCell : SearchUITableViewCell <NUIContainerStackViewDelegate, CNAvatarViewDelegate>
 {
     SFSearchResult *_result;
     NUIContainerStackView *_innerContainer;
-    SearchUIThumbnailView *_thumbnailView;
+    SearchUIImageView *_thumbnailView;
     TLKDetailsView *_detailsView;
     NSMutableDictionary *_accessoryViewControllers;
     SearchUIAccessoryViewController *_accessoryViewControllerForResult;
@@ -35,7 +35,7 @@
 @property (strong) SFSearchResult *result; // @synthesize result=_result;
 @property (strong) NUIContainerStackView *sizingContainer; // @dynamic sizingContainer;
 @property (readonly) Class superclass;
-@property (strong) SearchUIThumbnailView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
+@property (strong) SearchUIImageView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 
 + (void)addViewIfNecessary:(id)arg1 toStackView:(id)arg2 removeFromStackView:(id)arg3;
 + (id)textForTitleText:(id)arg1;

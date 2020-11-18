@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, NSMutableDictionary, NSOperationQueue, NSString;
-@protocol OS_dispatch_queue;
+@class NSCache, NSMutableArray, NSMutableDictionary, NSString;
 
 @interface SGSqliteDatabase : NSObject
 {
@@ -19,15 +18,8 @@
     NSString *_filename;
     NSCache *_queryCache;
     NSMutableDictionary *_sqlarrays;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSOperationQueue *_operationQueue;
-    struct _opaque_pthread_t {
-        long long _field1;
-        struct __darwin_pthread_handler_rec *_field2;
-        char _field3[8176];
-    } *_threadInQueue;
-    struct _opaque_pthread_mutex_t _threadInQueueLock;
+    struct _opaque_pthread_mutex_t _lock;
+    NSMutableArray *_statementsToFinalizeAsync;
     BOOL _currentExclusivity;
     BOOL _isInMemory;
 }
@@ -142,6 +134,7 @@
 - (BOOL)_handle_SQLITE_WARNING_AUTOINDEX:(id)arg1 onError:(CDUnknownBlockType)arg2;
 - (BOOL)_handle_UNKNOWN_ERROR:(id)arg1 onError:(CDUnknownBlockType)arg2;
 - (BOOL)_handle_sqlite_error_code:(int)arg1 error:(id)arg2 onError:(CDUnknownBlockType)arg3;
+- (unsigned long long)_pagesToVacuum;
 - (void)_prepAndRunQuery:(id)arg1 columns:(id)arg2 dictionary:(id)arg3 onError:(CDUnknownBlockType)arg4;
 - (BOOL)_transactionWithExclusivity:(BOOL)arg1 transaction:(CDUnknownBlockType)arg2;
 - (void)_txnBegin;
@@ -158,6 +151,7 @@
 - (BOOL)frailReadTransaction:(CDUnknownBlockType)arg1;
 - (BOOL)frailWriteTransaction:(CDUnknownBlockType)arg1;
 - (id)freeSpace;
+- (unsigned long long)freelistCount;
 - (BOOL)handleError:(long long)arg1 sqliteError:(int)arg2 forQuery:(id)arg3 onError:(CDUnknownBlockType)arg4;
 - (BOOL)hasColumnOnTable:(id)arg1 named:(id)arg2;
 - (BOOL)hasIndexNamed:(id)arg1;
@@ -168,6 +162,7 @@
 - (long long)lastInsertRowId;
 - (long long)maxIdForTable:(id)arg1;
 - (unsigned long long)numberOfRowsInTable:(id)arg1;
+- (unsigned long long)pageCount;
 - (void)performIntegrityCheck;
 - (void)placeCorruptionMarker;
 - (BOOL)prepAndRunNonDataQueries:(id)arg1 onError:(CDUnknownBlockType)arg2;
@@ -183,7 +178,8 @@
 - (id)tablesWithColumnNamed:(id)arg1;
 - (void)updateTable:(id)arg1 dictionary:(id)arg2 whereClause:(id)arg3 onError:(CDUnknownBlockType)arg4;
 - (unsigned long long)userVersion;
-- (void)withDbLockNonblocking:(CDUnknownBlockType)arg1;
+- (void)vacuum;
+- (unsigned long long)vacuumMode;
 - (void)writeTransaction:(CDUnknownBlockType)arg1;
 
 @end

@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <UserNotifications/UNUserNotificationCenterDelegateConnectionListenerDelegate-Protocol.h>
 #import <UserNotifications/UNUserNotificationServiceConnectionObserver-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSString;
 @protocol UNUserNotificationCenterDelegate;
 
-@interface UNUserNotificationCenter : NSObject <UNUserNotificationServiceConnectionObserver>
+@interface UNUserNotificationCenter : NSObject <UNUserNotificationServiceConnectionObserver, UNUserNotificationCenterDelegateConnectionListenerDelegate>
 {
     id<UNUserNotificationCenterDelegate> _delegate;
     NSString *_bundleIdentifier;
-    NSMutableArray *_observers;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
@@ -23,7 +23,6 @@
 @property (weak, nonatomic) id<UNUserNotificationCenterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableArray *observers; // @synthesize observers=_observers;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsContentExtensions;
 
@@ -32,10 +31,8 @@
 - (void).cxx_destruct;
 - (void)addNotificationRequest:(id)arg1;
 - (void)addNotificationRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)addNotificationRequests:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)addObserver:(id)arg1;
-- (void)didChangePendingNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)didDeliverNotifications:(id)arg1 forBundleIdentifier:(id)arg2;
+- (id)badgeNumber;
+- (void)didReceiveNotificationResponse:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)getBadgeNumberWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getDeliveredNotificationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getNotificationCategoriesWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -44,19 +41,21 @@
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (id)initWithBundleProxy:(id)arg1;
+- (id)notificationCategories;
+- (id)notificationSettings;
+- (id)pendingNotificationRequests;
 - (void)removeAllDeliveredNotifications;
 - (void)removeAllPendingNotificationRequests;
 - (void)removeDeliveredNotificationsWithIdentifiers:(id)arg1;
-- (void)removeObserver:(id)arg1;
 - (void)removePendingNotificationRequestsWithIdentifiers:(id)arg1;
 - (void)removeSimilarNotificationRequests:(id)arg1;
-- (void)removeSimilarNotificationRequests:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)replaceContentForRequestWithIdentifier:(id)arg1 replacementContent:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setBadgeNumber:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setBadgeString:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setNotificationCategories:(id)arg1;
 - (void)setNotificationRequests:(id)arg1;
-- (void)setNotificationRequests:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)setWantsNotificationResponsesDelivered;
 
 @end
 

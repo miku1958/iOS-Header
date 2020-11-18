@@ -8,7 +8,7 @@
 
 #import <Network/NWPrettyDescription-Protocol.h>
 
-@class NSArray, NSString, NSUUID, NWBrowseDescriptor, NWEndpoint, NWInterface, NWParameters;
+@class NSArray, NSString, NSUUID, NWAdvertiseDescriptor, NWBrowseDescriptor, NWEndpoint, NWInterface, NWParameters;
 @protocol OS_nw_path;
 
 @interface NWPath : NSObject <NWPrettyDescription>
@@ -16,10 +16,11 @@
     NSObject<OS_nw_path> *_internalPath;
 }
 
+@property (readonly, nonatomic) NWAdvertiseDescriptor *advertiseDescriptor;
 @property (readonly, nonatomic) NWBrowseDescriptor *browseDescriptor;
 @property (readonly, nonatomic) NSUUID *clientID;
 @property (readonly, nonatomic) NWInterface *connectedInterface;
-@property (readonly, nonatomic, getter=isDefunct) BOOL defunct;
+@property (readonly, nonatomic, getter=isConstrained) BOOL constrained;
 @property (readonly, nonatomic) NWParameters *derivedParameters;
 @property (readonly, nonatomic, getter=isDirect) BOOL direct;
 @property (readonly, nonatomic) NSArray *dnsSearchDomains;
@@ -40,13 +41,17 @@
 @property (readonly, nonatomic, getter=isFlowDivert) BOOL flowDivert;
 @property (readonly, nonatomic) unsigned int flowDivertControlUnit;
 @property (readonly, nonatomic) NSArray *flows;
+@property (readonly, nonatomic) NSArray *gateways;
+@property (readonly, nonatomic) BOOL hasAdvertiseDescriptor;
 @property (readonly, nonatomic) BOOL hasBrowseDescriptor;
 @property (readonly, nonatomic) NWInterface *interface;
 @property (readonly) NSObject<OS_nw_path> *internalPath; // @synthesize internalPath=_internalPath;
+@property (readonly, nonatomic, getter=isListener) BOOL listener;
 @property (readonly, nonatomic, getter=isLocal) BOOL local;
 @property (readonly, nonatomic) long long maximumDatagramSize;
 @property (readonly, nonatomic) long long mtu;
 @property (readonly, nonatomic) NWParameters *parameters;
+@property (readonly, nonatomic, getter=isPerAppVPN) BOOL perAppVPN;
 @property (readonly, nonatomic) unsigned int policyID;
 @property (readonly, copy, nonatomic) NSString *privateDescription;
 @property (readonly, nonatomic) NSArray *proxySettings;
@@ -54,6 +59,7 @@
 @property (readonly, nonatomic) NSString *reasonDescription;
 @property (readonly, nonatomic, getter=isRoaming) BOOL roaming;
 @property (readonly, nonatomic) NWInterface *scopedInterface;
+@property (readonly, nonatomic) unsigned long long secondsSinceInterfaceChange;
 @property (readonly, nonatomic) long long status;
 @property (readonly, nonatomic) NSString *statusAsString;
 @property (readonly, nonatomic) BOOL supportsDNS;
@@ -71,8 +77,6 @@
 - (id)delegateInterface;
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
-- (BOOL)ecnEnabled;
-- (BOOL)fastOpenBlocked;
 - (id)genericNetworkAgentsWithDomain:(id)arg1 type:(id)arg2;
 - (BOOL)hasUnsatisfiedFallbackAgent;
 - (id)inactiveNetworkAgentUUIDsOnlyVoluntary:(BOOL)arg1;
@@ -80,9 +84,10 @@
 - (id)initWithPath:(id)arg1;
 - (BOOL)isEqualToPath:(id)arg1;
 - (BOOL)isLinkQualityAbort;
+- (BOOL)isListenerInterfaceSpecific;
 - (id)networkAgentsOfType:(Class)arg1;
 - (BOOL)shouldProbeConnectivity;
-- (BOOL)unsatisfiedVoluntaryAgentMatchesAddress:(id)arg1 triggerImmediately:(BOOL *)arg2;
+- (BOOL)unsatisfiedVoluntaryAgentMatchesAddress:(id)arg1 triggerImmediately:(char *)arg2;
 - (BOOL)usesInterfaceType:(long long)arg1;
 - (BOOL)usesNetworkAgent:(id)arg1;
 - (BOOL)usesNetworkAgentType:(Class)arg1;

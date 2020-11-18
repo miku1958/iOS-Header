@@ -6,14 +6,14 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UIView;
+@class FIUIDividerView;
 
 @interface FIUIWorkoutSwimStrokeStyleTableViewCell : UITableViewCell
 {
-    UIView *_dividerView;
+    FIUIDividerView *_dividerView;
 }
 
-@property (strong, nonatomic) UIView *dividerView; // @synthesize dividerView=_dividerView;
+@property (strong, nonatomic) FIUIDividerView *dividerView; // @synthesize dividerView=_dividerView;
 
 + (id)_overrideLabelAttributes;
 + (id)_sizingLabel;

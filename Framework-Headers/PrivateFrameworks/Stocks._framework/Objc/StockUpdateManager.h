@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Stocks/StockUpdaterDelegate-Protocol.h>
 
-@class BackgroundStockUpdater, NSHashTable, NSMutableArray, NSString, NSURLSession;
+@class NSHashTable, NSMutableArray, NSString;
 
 @interface StockUpdateManager : NSObject <StockUpdaterDelegate>
 {
@@ -16,11 +16,8 @@
     NSMutableArray *_activeUpdaters;
     NSMutableArray *_inactiveUpdaters;
     NSHashTable *_updateObservers;
-    BackgroundStockUpdater *_backgroundUpdater;
 }
 
-@property (readonly, nonatomic) NSURLSession *backgroundSession;
-@property (readonly, nonatomic) BackgroundStockUpdater *backgroundUpdater;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -32,18 +29,15 @@
 - (void)_kickoffUpdater:(id)arg1 forStocks:(id)arg2 comprehensive:(BOOL)arg3 forceUpdate:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_stocksDidReload;
 - (void)_updateStocksBasic:(id)arg1 forced:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)_updateStocksBasic:(id)arg1 inUpdater:(id)arg2 forced:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)_updaterDidCancelOrFinish:(id)arg1;
 - (void)addUpdateObserver:(id)arg1;
 - (id)availableStockUpdater;
-- (void)backgroundUpdateAllStocksBasic:(id)arg1 earliestBeginDate:(id)arg2;
 - (void)cancel;
 - (void)dealloc;
 - (void)failWithError:(id)arg1;
 - (BOOL)hadError;
 - (id)init;
 - (BOOL)isLoading;
-- (void)reestablishBackgroundSessionForManager:(id)arg1 stocks:(id)arg2 withFinishEventsHandler:(CDUnknownBlockType)arg3;
 - (void)removeUpdateObserver:(id)arg1;
 - (void)reset;
 - (void)resetUpdaters;

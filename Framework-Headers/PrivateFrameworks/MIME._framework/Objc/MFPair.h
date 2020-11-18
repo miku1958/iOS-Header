@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <MIME/NSCopying-Protocol.h>
 
 @protocol NSObject;
 
-@interface MFPair : NSObject
+@interface MFPair : NSObject <NSCopying>
 {
     id<NSObject> _first;
     id<NSObject> _second;
@@ -18,6 +20,7 @@
 @property (readonly, nonatomic) id<NSObject> second; // @synthesize second=_second;
 
 + (id)pairWithFirst:(id)arg1 second:(id)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;

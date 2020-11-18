@@ -15,6 +15,9 @@
 
 @property (copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

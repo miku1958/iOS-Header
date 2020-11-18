@@ -8,7 +8,7 @@
 
 #import <FileProvider/NSFileProviderItem_Private-Protocol.h>
 
-@class CSSearchableItem, CSSearchableItemAttributeSet, NSData, NSDate, NSDictionary, NSError, NSNumber, NSPersonNameComponents, NSString, NSURL;
+@class CSSearchableItem, CSSearchableItemAttributeSet, NSArray, NSData, NSDate, NSDictionary, NSError, NSNumber, NSPersonNameComponents, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface _CSSearchableItemAdapter : NSObject <NSFileProviderItem_Private>
@@ -48,12 +48,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isMostRecentVersionDownloaded) BOOL mostRecentVersionDownloaded;
 @property (readonly, nonatomic) NSPersonNameComponents *ownerNameComponents;
 @property (readonly, copy, nonatomic) NSString *parentItemIdentifier;
+@property (readonly, nonatomic) NSString *preformattedMostRecentEditorName;
+@property (readonly, nonatomic) NSString *preformattedOwnerName;
 @property (readonly, copy) NSString *providerIdentifier;
 @property (readonly, nonatomic, getter=isShared) BOOL shared;
 @property (readonly, nonatomic, getter=isSharedByCurrentUser) BOOL sharedByCurrentUser;
 @property (readonly, copy) NSString *sharingPermissions;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSData *tagData;
+@property (readonly, copy) NSArray *tags;
 @property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
 @property (readonly, copy, nonatomic) NSString *typeIdentifier;
 @property (readonly, nonatomic, getter=isUploaded) BOOL uploaded;

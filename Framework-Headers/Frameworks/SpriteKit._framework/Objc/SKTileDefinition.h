@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSString, SKTileGroupRule;
 
-@interface SKTileDefinition : NSObject <NSCopying, NSCoding>
+@interface SKTileDefinition : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableArray *_textures;
     NSMutableArray *_normals;
@@ -48,6 +48,7 @@
 @property (strong, nonatomic) NSString *uid; // @synthesize uid=_uid;
 @property (strong, nonatomic) NSMutableDictionary *userData; // @synthesize userData=_userData;
 
++ (BOOL)supportsSecureCoding;
 + (id)tileDefinitionWithTexture:(id)arg1;
 + (id)tileDefinitionWithTexture:(id)arg1 normalTexture:(id)arg2 size:(struct CGSize)arg3;
 + (id)tileDefinitionWithTexture:(id)arg1 size:(struct CGSize)arg2;
@@ -64,6 +65,7 @@
 - (id)initWithTexture:(id)arg1 size:(struct CGSize)arg2;
 - (id)initWithTextures:(id)arg1 normalTextures:(id)arg2 size:(struct CGSize)arg3 timePerFrame:(double)arg4;
 - (id)initWithTextures:(id)arg1 size:(struct CGSize)arg2 timePerFrame:(double)arg3;
+- (BOOL)isEqualToNode:(id)arg1;
 - (void)setDataWithTexture:(id)arg1 normalTexture:(id)arg2 tileName:(id)arg3 size:(struct CGSize)arg4;
 - (void)setDataWithTextures:(id)arg1 normalTextures:(id)arg2 timePerFrame:(double)arg3 tileName:(id)arg4 size:(struct CGSize)arg5;
 

@@ -6,10 +6,11 @@
 
 #import <CloudPhotoLibrary/CPLItemChange.h>
 
-@class CLLocation, CPLAdjustments, CPLFaceAnalysisReference, CPLPlaceAnnotation, NSArray, NSData, NSDate, NSNumber, NSString;
+@class CLLocation, CPLAdjustments, CPLFaceAnalysisReference, CPLPlaceAnnotation, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface CPLAssetChange : CPLItemChange
 {
+    NSDictionary *_resourcePerResourceType;
     BOOL _favorite;
     BOOL _hidden;
     NSString *_masterIdentifier;
@@ -102,21 +103,22 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_canLowerQuota;
-- (id)allRelatedIdentifiers;
-- (void)awakeFromStorage;
+- (id)allRelatedScopedIdentifiers;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
 - (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingClientCache:(id)arg4;
+- (void)copyDerivativesFromRecordIfPossible:(id)arg1;
 - (long long)dequeueOrder;
 - (unsigned long long)fullChangeTypeForFullRecord;
-- (id)identifiersForMapping;
-- (id)identifiersForQuarantine;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)prepareForStorage;
+- (id)masterScopedIdentifier;
 - (id)propertiesDescription;
 - (id)propertiesForChangeType:(unsigned long long)arg1;
-- (id)proposedCloudIdentifierWithError:(id *)arg1;
 - (id)relatedIdentifier;
+- (id)resourceForType:(unsigned long long)arg1;
+- (id)scopeIdentifiersForQuarantine;
+- (id)scopedIdentifiersForMapping;
+- (void)setMasterScopedIdentifier:(id)arg1;
 - (void)setRelatedIdentifier:(id)arg1;
 - (BOOL)supportsDeletion;
 - (BOOL)supportsResources;

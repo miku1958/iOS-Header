@@ -6,11 +6,12 @@
 
 #import <CallKit/CXProviderDelegate-Protocol.h>
 
-@class CXProvider, CXPullCallAction, CXSendMMIOrUSSDCodeAction, CXSetRelayingCallAction, CXSetSendingVideoCallAction, CXSetTTYTypeCallAction, CXSetVideoPresentationSizeCallAction, CXSetVideoPresentationStateCallAction;
+@class CXJoinCallAction, CXProvider, CXPullCallAction, CXSendMMIOrUSSDCodeAction, CXSetRelayingCallAction, CXSetSendingVideoCallAction, CXSetTTYTypeCallAction, CXSetVideoPresentationSizeCallAction, CXSetVideoPresentationStateCallAction;
 
 @protocol CXProviderDelegatePrivate <CXProviderDelegate>
 
 @optional
+- (void)provider:(CXProvider *)arg1 performJoinCallAction:(CXJoinCallAction *)arg2;
 - (void)provider:(CXProvider *)arg1 performPullCallAction:(CXPullCallAction *)arg2;
 - (void)provider:(CXProvider *)arg1 performSendMMIOrUSSDCodeAction:(CXSendMMIOrUSSDCodeAction *)arg2;
 - (void)provider:(CXProvider *)arg1 performSetRelayingCallAction:(CXSetRelayingCallAction *)arg2;

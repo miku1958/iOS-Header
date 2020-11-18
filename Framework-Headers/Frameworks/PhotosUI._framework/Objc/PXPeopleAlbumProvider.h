@@ -31,19 +31,20 @@
 }
 
 @property (nonatomic) long long cachedPeopleCount; // @synthesize cachedPeopleCount=_cachedPeopleCount;
-@property (readonly, nonatomic, getter=isCountAvailable) BOOL countAvailable;
 @property _Atomic int currentRequestId; // @synthesize currentRequestId=_currentRequestId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong) NSMutableDictionary *imageCache; // @synthesize imageCache=_imageCache;
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
+@property (readonly, nonatomic) BOOL isCountAvailable;
 @property (readonly, nonatomic) long long peopleCount;
 @property (readonly, nonatomic) PXPeopleSectionedDataSource *peopleDataSource; // @synthesize peopleDataSource=_peopleDataSource;
 @property (strong, nonatomic) PXPeopleProgressManager *progressMgr; // @synthesize progressMgr=_progressMgr;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletion; // @synthesize requestCompletion=_requestCompletion;
 @property (readonly) Class superclass;
 
++ (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_appWillEnterForeground;
 - (void)_asyncAddImagesToCacheWithItems:(id)arg1 completion:(CDUnknownBlockType)arg2;

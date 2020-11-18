@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Celestial/FigXPCCoding-Protocol.h>
 #import <Celestial/NSSecureCoding-Protocol.h>
@@ -15,6 +15,7 @@
 {
     NSDictionary *_formatDictionary;
     struct opaqueCMFormatDescription *_formatDescription;
+    CDStruct_79c71658 _previewDimensions;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPVolumeControllerDataSource-Protocol.h>
 
@@ -56,7 +56,6 @@
 - (id)initWithGroupRoute:(id)arg1 outputDeviceRoute:(id)arg2;
 - (void)initializeVolume;
 - (void)reload;
-- (void)reloadWarning;
 
 @end
 

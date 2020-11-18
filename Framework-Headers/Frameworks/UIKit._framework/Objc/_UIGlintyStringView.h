@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSMutableSet, NSString, UIColor, UIFont, UIImage, UILabel, _UILegibilitySettings, _UIVibrantSettings;
 @protocol _UIGlintyStringViewDelegate;

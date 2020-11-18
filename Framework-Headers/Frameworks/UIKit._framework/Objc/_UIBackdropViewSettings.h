@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSValue, UIColor, UIImage, _UIBackdropColorSettings, _UIBackdropView;
 
@@ -23,6 +23,7 @@
     BOOL _selected;
     BOOL _enabled;
     BOOL _backdropVisible;
+    BOOL _shouldDoRasterizationAndAlphaHack;
     double _zoom;
     double _grayscaleTintLevel;
     double _grayscaleTintAlpha;

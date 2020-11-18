@@ -13,6 +13,10 @@
 
 @property (copy, nonatomic) NSString *fallbackTemperatureString;
 @property (nonatomic) BOOL inputIsCelsius;
+@property (nonatomic) unsigned long long maximumFractionDigits;
+@property (nonatomic) unsigned long long minimumFractionDigits;
 
+
+@optional
 @end
 

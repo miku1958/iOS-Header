@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/BKSDisplayRenderOverlayDismissAction-Protocol.h>
 #import <BackBoardServices/BSDescriptionProviding-Protocol.h>
@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) BKSDisplayRenderOverlayDescriptor *overlayDescriptor;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)dismiss;

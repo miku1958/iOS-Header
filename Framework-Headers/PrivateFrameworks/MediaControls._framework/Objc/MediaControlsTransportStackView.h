@@ -44,6 +44,7 @@
 - (void)touchUpInsideLeftButton:(id)arg1;
 - (void)touchUpInsideMiddleButton:(id)arg1;
 - (void)touchUpInsideRightButton:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

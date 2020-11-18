@@ -7,28 +7,43 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBStartAudioCallIntentResponse-Protocol.h>
 
-@class PBUnknownFields, _INPBCallMetrics;
+@class NSArray, NSString, _INPBCallMetrics;
 
-@interface _INPBStartAudioCallIntentResponse : PBCodable <NSCopying>
+@interface _INPBStartAudioCallIntentResponse : PBCodable <_INPBStartAudioCallIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    CDStruct_fbf2c6cd _has;
+    int _audioRoute;
     _INPBCallMetrics *_metrics;
+    NSString *_status;
+    NSArray *_targetContacts;
 }
 
+@property (nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasAudioRoute;
 @property (readonly, nonatomic) BOOL hasMetrics;
+@property (readonly, nonatomic) BOOL hasStatus;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBCallMetrics *metrics; // @synthesize metrics=_metrics;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSString *status; // @synthesize status=_status;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *targetContacts; // @synthesize targetContacts=_targetContacts;
+@property (readonly, nonatomic) unsigned long long targetContactsCount;
 
-+ (id)options;
 - (void).cxx_destruct;
+- (int)StringAsAudioRoute:(id)arg1;
+- (void)addTargetContacts:(id)arg1;
+- (id)audioRouteAsString:(int)arg1;
+- (void)clearTargetContacts;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)targetContactsAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

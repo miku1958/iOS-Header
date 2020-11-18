@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBackdropViewSettings.h>
+#import <UIKitCore/_UIBackdropViewSettings.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIBackdropViewSettingsATVMenuLight : _UIBackdropViewSettings

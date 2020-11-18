@@ -12,7 +12,7 @@
 #import <Silex/UIScrollViewDelegate-Protocol.h>
 
 @class NSString, STStandaloneTextInfo, STStandaloneTextLayout, STTextTangierDocumentRoot, STTextTangierStorage, SXAutoSizedCanvasController, SXFullscreenCaption, SXTextSource, UIScrollView, UISwipeGestureRecognizer, UITapGestureRecognizer, UIVisualEffectView;
-@protocol SXActionProvider, SXComponentActionHandler, SXFullscreenCaptionViewDelegate;
+@protocol SXComponentActionHandler, SXFullscreenCaptionViewDelegate, SXSmartFieldFactory;
 
 @interface SXFullscreenCaptionView : UIView <SXAutoSizedCanvasControllerDelegate, STStandaloneTextLayoutDelegate, UIGestureRecognizerDelegate, UIScrollViewDelegate>
 {
@@ -21,7 +21,7 @@
     SXFullscreenCaption *_caption;
     unsigned long long _viewIndex;
     UITapGestureRecognizer *_tapGestureRecognizer;
-    id<SXActionProvider> _actionProvider;
+    id<SXSmartFieldFactory> _smartFieldFactory;
     id<SXComponentActionHandler> _actionHandler;
     SXAutoSizedCanvasController *_autoSizeCanvasController;
     STTextTangierDocumentRoot *_documentRoot;
@@ -38,7 +38,6 @@
 }
 
 @property (readonly, nonatomic) id<SXComponentActionHandler> actionHandler; // @synthesize actionHandler=_actionHandler;
-@property (readonly, nonatomic) id<SXActionProvider> actionProvider; // @synthesize actionProvider=_actionProvider;
 @property (strong, nonatomic) SXAutoSizedCanvasController *autoSizeCanvasController; // @synthesize autoSizeCanvasController=_autoSizeCanvasController;
 @property (strong, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) SXFullscreenCaption *caption; // @synthesize caption=_caption;
@@ -54,6 +53,7 @@
 @property (nonatomic) struct CGSize fullSize; // @synthesize fullSize=_fullSize;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property (readonly, nonatomic) id<SXSmartFieldFactory> smartFieldFactory; // @synthesize smartFieldFactory=_smartFieldFactory;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UISwipeGestureRecognizer *swipeGestureRecognizer; // @synthesize swipeGestureRecognizer=_swipeGestureRecognizer;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
@@ -76,7 +76,7 @@
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)handleSwipeGestureRecognizer:(id)arg1;
 - (void)handleTapGestureRecognizer:(id)arg1;
-- (id)initWithActionProvider:(id)arg1 actionHandler:(id)arg2;
+- (id)initWithSmartFieldFactory:(id)arg1 actionHandler:(id)arg2;
 - (void)initializeTangier;
 - (void)layoutSubviews;
 - (double)marginForTextLayout:(id)arg1;

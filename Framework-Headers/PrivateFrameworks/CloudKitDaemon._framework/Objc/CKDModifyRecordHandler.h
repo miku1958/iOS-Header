@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKDModifyRecordsOperation, CKDPCSCache, CKDPCSManager, CKDProgressTracker, CKDRecordPCSData, CKDSharePCSData, CKRecord, CKRecordID, NSError, NSString;
+@class CKDModifyRecordsOperation, CKDPCSCache, CKDPCSManager, CKDProgressTracker, CKDRecordPCSData, CKDSharePCSData, CKRecord, CKRecordID, NSError, NSMutableDictionary, NSString;
 @protocol OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSString *_etag;
     unsigned long long _state;
     NSError *_error;
+    NSMutableDictionary *_rereferencedAssetArrayByFieldname;
     CKDProgressTracker *_progressTracker;
     long long _batchRank;
     CKRecordID *_recordID;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKRecord *record; // @synthesize record=_record;
 @property (strong, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property (strong, nonatomic) CKDRecordPCSData *recordPCSData; // @synthesize recordPCSData=_recordPCSData;
+@property (strong, nonatomic) NSMutableDictionary *rereferencedAssetArrayByFieldname; // @synthesize rereferencedAssetArrayByFieldname=_rereferencedAssetArrayByFieldname;
 @property (nonatomic) int saveAttempts; // @synthesize saveAttempts=_saveAttempts;
 @property (nonatomic) BOOL saveCompletionBlockCalled; // @synthesize saveCompletionBlockCalled=_saveCompletionBlockCalled;
 @property (strong, nonatomic) CKRecord *serverRecord; // @synthesize serverRecord=_serverRecord;
@@ -82,6 +84,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_wrapEncryptedData:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2 forField:(id)arg3 recordID:(id)arg4;
 - (BOOL)_wrapEncryptedDataForRecordValueStore:(id)arg1 withPCS:(struct _OpaquePCSShareProtection *)arg2;
 - (BOOL)_wrapEncryptedDataOnRecord:(id)arg1;
+- (id)assetsWhichNeedRecordFetch;
 - (void)clearProtectionDataForRecord;
 - (id)description;
 - (void)fetchRecordPCSData;

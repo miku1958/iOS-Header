@@ -32,6 +32,7 @@
     BOOL _amendSettings;
     BOOL _didUpdateClientSettings;
     BOOL _didReceiveActions;
+    BOOL _hostingPolicyForDisplay;
     BOOL _hostingPolicyForScene;
     BOOL _createDefaultTransitionContext;
 }
@@ -41,7 +42,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInternalObserver) BOOL internalObserver; // @synthesize internalObserver=_internalObserver;
-@property (readonly, nonatomic) id observer;
+@property (readonly, weak, nonatomic) id observer;
 @property (readonly) Class superclass;
 
 + (id)observerWithObserver:(id)arg1;
@@ -55,6 +56,7 @@
 - (id)sceneManager:(id)arg1 createDefaultTransitionContextForScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
+- (long long)sceneManager:(id)arg1 hostingPolicyForDisplay:(id)arg2;
 - (long long)sceneManager:(id)arg1 hostingPolicyForScene:(id)arg2;
 - (void)sceneManager:(id)arg1 scene:(id)arg2 didReceiveActions:(id)arg3;
 - (void)sceneManager:(id)arg1 scene:(id)arg2 didUpdateClientSettingsWithDiff:(id)arg3 oldClientSettings:(id)arg4 transitionContext:(id)arg5;

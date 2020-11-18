@@ -25,6 +25,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_didFinishWithResult:(id)arg1 error:(id)arg2;
 - (void)_didLoadWithResult:(BOOL)arg1 error:(id)arg2;

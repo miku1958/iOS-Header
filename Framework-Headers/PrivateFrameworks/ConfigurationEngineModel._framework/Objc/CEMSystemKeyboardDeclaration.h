@@ -12,31 +12,36 @@
 
 @interface CEMSystemKeyboardDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadAllowPredictiveKeyboard;
+    NSNumber *_payloadAllowAutoCorrection;
+    NSNumber *_payloadAllowSpellCheck;
+    NSNumber *_payloadAllowKeyboardShortcuts;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadAllowAutoCorrection;
-@property (readonly, nonatomic) NSNumber *payloadAllowKeyboardShortcuts;
-@property (readonly, nonatomic) NSNumber *payloadAllowPredictiveKeyboard;
-@property (readonly, nonatomic) NSNumber *payloadAllowSpellCheck;
+@property (copy, nonatomic) NSNumber *payloadAllowAutoCorrection; // @synthesize payloadAllowAutoCorrection=_payloadAllowAutoCorrection;
+@property (copy, nonatomic) NSNumber *payloadAllowKeyboardShortcuts; // @synthesize payloadAllowKeyboardShortcuts=_payloadAllowKeyboardShortcuts;
+@property (copy, nonatomic) NSNumber *payloadAllowPredictiveKeyboard; // @synthesize payloadAllowPredictiveKeyboard=_payloadAllowPredictiveKeyboard;
+@property (copy, nonatomic) NSNumber *payloadAllowSpellCheck; // @synthesize payloadAllowSpellCheck=_payloadAllowSpellCheck;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withAllowPredictiveKeyboard:(id)arg2 withAllowAutoCorrection:(id)arg3 withAllowSpellCheck:(id)arg4 withAllowKeyboardShortcuts:(id)arg5;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

@@ -12,7 +12,7 @@
 
 + (id)acceptFamilyInviteV2URL;
 + (id)addChildAccountV2URL;
-+ (id)addFamilyMemberUIV2URL;
++ (id)addFamilyMemberInlineV2URL;
 + (id)addFamilyMemberV2URL;
 + (id)familyInviteSentV2URL;
 + (id)familyMemberDetailsUIV2URL;

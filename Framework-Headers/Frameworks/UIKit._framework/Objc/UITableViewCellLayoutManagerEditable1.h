@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewCellLayoutManager.h>
+#import <UIKitCore/UITableViewCellLayoutManager.h>
 
-#import <UIKit/UITextFieldDelegate-Protocol.h>
+#import <UIKitCore/UITextFieldDelegate-Protocol.h>
 
 @class NSString;
 

@@ -29,6 +29,7 @@
 - (void)loadNewArticle;
 - (struct OpaqueJSValue *)originalArticleFinder;
 - (id)printingMailingFrame;
+- (void)reloadArticle;
 - (void)setReaderFont:(id)arg1;
 - (void)setReaderTheme:(id)arg1;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 globalObjectIsAvailableForFrame:(id)arg2 inScriptWorld:(id)arg3;

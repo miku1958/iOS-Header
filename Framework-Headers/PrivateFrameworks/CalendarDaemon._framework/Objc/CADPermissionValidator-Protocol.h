@@ -12,6 +12,7 @@
 @property (readonly) BOOL canModifyCalendarDatabase;
 @property (readonly) BOOL canModifySuggestedEventCalendar;
 @property (readonly) BOOL hasCalendarToolEntitlement;
+@property (readonly) BOOL hasChangeIdTrackingOverrideEntitlement;
 @property (readonly) BOOL hasContactsUIEntitlement;
 @property (readonly) BOOL hasMigrationEntitlement;
 @property (readonly) BOOL hasSyncClientEntitlement;

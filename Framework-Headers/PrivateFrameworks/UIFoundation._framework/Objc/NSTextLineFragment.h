@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSAttributedString;
+@class NSAttributedString, UIFont;
 
 @interface NSTextLineFragment : NSObject
 {
     struct __CTLine *_lineRef;
+    unsigned short *_glyphs;
+    struct CGSize *_advances;
+    UIFont *_font;
     NSAttributedString *_attributedString;
     struct _NSRange _characterRange;
     struct CGPoint glyphOrigin;
@@ -23,11 +26,15 @@
 @property (readonly) long long numberOfGlyphs; // @dynamic numberOfGlyphs;
 @property struct CGRect typographicBounds; // @synthesize typographicBounds;
 
++ (BOOL)supportsSecureCoding;
 - (long long)characterIndexForPoint:(struct CGPoint)arg1 fractionOfDistanceThroughGlyph:(double *)arg2;
 - (void)dealloc;
 - (void)drawAtPoint:(struct CGPoint)arg1 context:(struct CGContext *)arg2;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithAttributedString:(id)arg1 range:(struct _NSRange)arg2;
+- (id)initWithCoder:(id)arg1;
 - (struct CGPoint)locationForCharacterAtIndex:(long long)arg1;
+- (void)setGlyphs:(const unsigned short *)arg1 advances:(const struct CGSize *)arg2 font:(id)arg3;
 - (void)setLineRef:(struct __CTLine *)arg1;
 - (struct CGRect)typographicUsedBounds;
 

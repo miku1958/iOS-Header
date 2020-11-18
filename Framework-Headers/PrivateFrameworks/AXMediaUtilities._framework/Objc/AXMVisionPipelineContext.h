@@ -8,7 +8,7 @@
 
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMVisionAnalysisOptions, AXMVisionResult, CIImage, NSArray, NSDictionary, NSError, NSMutableArray, NSNumber, VNImageRequestHandler;
+@class AXMDiagnosticMetricToken, AXMDiagnostics, AXMVisionAnalysisOptions, AXMVisionResult, CIImage, NSArray, NSDictionary, NSError, NSMutableArray, NSNumber, VNImageRequestHandler;
 @protocol NSCopying;
 
 @interface AXMVisionPipelineContext : NSObject <NSSecureCoding>
@@ -20,6 +20,7 @@
     NSMutableArray *_resultHandlers;
     struct CGColorSpace *_extendedSRGBColorSpace;
     struct CGSize _cachedSize;
+    AXMDiagnosticMetricToken *_processingDiagnosticToken;
     BOOL _shouldProcessRemotely;
     BOOL _shouldCallCompletionHandlersForEngineBusyError;
     BOOL _shouldCallCompletionHandlersForEmptyResultSet;
@@ -28,10 +29,8 @@
     AXMVisionAnalysisOptions *_analysisOptions;
     NSNumber *_appliedImageOrientation;
     id<NSCopying> _cacheKey;
-    double _creationTime;
-    double _processingStartTime;
-    double _processingEndTime;
     unsigned long long _sequenceID;
+    AXMDiagnostics *_diagnostics;
     NSMutableArray *_features;
     AXMVisionResult *_result;
     VNImageRequestHandler *_visionImageRequestHandler;
@@ -40,12 +39,10 @@
 @property (strong, nonatomic) AXMVisionAnalysisOptions *analysisOptions; // @synthesize analysisOptions=_analysisOptions;
 @property (strong, nonatomic) NSNumber *appliedImageOrientation; // @synthesize appliedImageOrientation=_appliedImageOrientation;
 @property (strong, nonatomic) id<NSCopying> cacheKey; // @synthesize cacheKey=_cacheKey;
-@property (nonatomic) double creationTime; // @synthesize creationTime=_creationTime;
+@property (strong, nonatomic) AXMDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic) BOOL evaluationExclusivelyUsesVisionFramework; // @synthesize evaluationExclusivelyUsesVisionFramework=_evaluationExclusivelyUsesVisionFramework;
 @property (strong, nonatomic) NSMutableArray *features; // @synthesize features=_features;
-@property (nonatomic) double processingEndTime; // @synthesize processingEndTime=_processingEndTime;
-@property (nonatomic) double processingStartTime; // @synthesize processingStartTime=_processingStartTime;
 @property (strong, nonatomic) AXMVisionResult *result; // @synthesize result=_result;
 @property (readonly, nonatomic) NSArray *resultHandlers;
 @property (nonatomic) unsigned long long sequenceID; // @synthesize sequenceID=_sequenceID;
@@ -68,6 +65,7 @@
 - (void)appendFeature:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)didFinishProcessingContext;
 - (void)encodeWithCoder:(id)arg1;
 - (void)errorOccurred:(id)arg1;
 - (id)generateFileNameForImageWithPrefix:(id)arg1 extension:(id)arg2;
@@ -78,6 +76,7 @@
 - (struct __CVBuffer *)nativeFormatPixelBufferRenderIfNeeded:(BOOL)arg1;
 - (void)produceImage:(CDUnknownBlockType)arg1;
 - (id)visionImageRequestHandlerWithOptions:(id)arg1;
+- (void)willBeginProcessingContext;
 
 @end
 

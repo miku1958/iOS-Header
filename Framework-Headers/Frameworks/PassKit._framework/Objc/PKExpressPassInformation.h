@@ -4,33 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface PKExpressPassInformation : NSObject <NSSecureCoding>
 {
+    NSDictionary *_configuration;
+    BOOL _forceModernEncoding;
+    long long _cardType;
     NSString *_passUniqueIdentifier;
     NSString *_paymentApplicationIdentifier;
     NSString *_expressMode;
     long long _expressPassType;
 }
 
+@property (readonly, nonatomic) long long cardType; // @synthesize cardType=_cardType;
 @property (readonly, nonatomic) NSString *expressMode; // @synthesize expressMode=_expressMode;
 @property (readonly, nonatomic) long long expressPassType; // @synthesize expressPassType=_expressPassType;
+@property (nonatomic) BOOL forceModernEncoding; // @synthesize forceModernEncoding=_forceModernEncoding;
 @property (readonly, nonatomic) NSString *passUniqueIdentifier; // @synthesize passUniqueIdentifier=_passUniqueIdentifier;
 @property (readonly, nonatomic) NSString *paymentApplicationIdentifier; // @synthesize paymentApplicationIdentifier=_paymentApplicationIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_createLegacyPropertiesIfNecessary;
+- (void)_createModernPropertiesIfNecessary;
+- (id)criteriaForPaymentApplicationIdentifier:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (void)enumerateCriteriaWithHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initForExpressMode:(id)arg1 withPassUniqueIdentifier:(id)arg2 paymentApplicationIdentifier:(id)arg3;
+- (id)initForPaymentPass:(id)arg1 withTechologyTest:(CDUnknownBlockType)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)paymentApplicationIdentifiers;
 
 @end
 

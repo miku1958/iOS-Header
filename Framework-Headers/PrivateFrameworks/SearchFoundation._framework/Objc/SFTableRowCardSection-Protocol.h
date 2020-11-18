@@ -24,6 +24,7 @@
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
 @property (nonatomic) BOOL reducedRowHeight;
+@property (copy, nonatomic) NSArray *richData;
 @property (nonatomic) int separatorStyle;
 @property (copy, nonatomic) NSString *tabGroupIdentifier;
 @property (copy, nonatomic) NSString *tableIdentifier;

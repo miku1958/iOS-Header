@@ -4,22 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface NSObject (BaseBoard)
-+ (id)bs_dataFromObject:(id)arg1;
-+ (id)bs_decodedFromData:(id)arg1;
-+ (id)bs_objectFromData:(id)arg1;
 + (id)bs_secureDataFromObject:(id)arg1;
 + (id)bs_secureDecodedFromData:(id)arg1;
 + (id)bs_secureDecodedFromData:(id)arg1 withAdditionalClasses:(id)arg2;
 + (id)bs_secureObjectFromData:(id)arg1 ofClass:(Class)arg2;
 + (id)bs_secureObjectFromData:(id)arg1 ofClasses:(id)arg2;
-+ (BOOL)bs_synchronousWrapper:(CDUnknownBlockType)arg1 timeout:(double)arg2;
-- (id)bs_encoded;
 - (BOOL)bs_isPlistableType;
-- (BOOL)bs_performSynchronously:(CDUnknownBlockType)arg1;
-- (BOOL)bs_performSynchronously:(CDUnknownBlockType)arg1 timeout:(double)arg2;
 - (id)bs_secureEncoded;
 @end
 

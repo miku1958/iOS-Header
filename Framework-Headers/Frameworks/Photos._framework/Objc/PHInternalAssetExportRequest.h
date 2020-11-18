@@ -17,6 +17,7 @@
 
 + (id)_variantsForAsset:(id)arg1 error:(id *)arg2;
 + (id)exportRequestForAsset:(id)arg1 error:(id *)arg2;
++ (id)exportRequestForAsset:(id)arg1 variants:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)_initWithAsset:(id)arg1 variants:(id)arg2 downloadRequest:(id)arg3;
 - (void)exportWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

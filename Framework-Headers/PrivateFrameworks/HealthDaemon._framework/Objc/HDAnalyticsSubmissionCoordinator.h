@@ -7,12 +7,10 @@
 #import <objc/NSObject.h>
 
 @class HDDaemon;
-@protocol OS_dispatch_queue;
 
 @interface HDAnalyticsSubmissionCoordinator : NSObject
 {
     HDDaemon *_daemon;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 - (void).cxx_destruct;

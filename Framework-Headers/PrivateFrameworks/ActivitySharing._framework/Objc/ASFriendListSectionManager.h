@@ -51,12 +51,14 @@
 - (void)_queue_stopQueries;
 - (void)_queue_updateWithNewData;
 - (id)_sectionForDataVisibilityConditionalUsingBlock:(CDUnknownBlockType)arg1;
+- (id)_sectionForDataVisibilityConditionalUsingBlock:(CDUnknownBlockType)arg1 comparator:(CDUnknownBlockType)arg2;
 - (id)_sortFriends:(id)arg1 forDisplayMode:(long long)arg2 cacheIndex:(id)arg3;
 - (void)_startQueries;
 - (void)_startQueriesIfRequired;
 - (void)_stopQueries;
 - (id)allActiveFriendsAsRecipients;
 - (id)allDestinationsForActiveOrPendingFriends;
+- (id)allFriends;
 - (void)dealloc;
 - (void)enumerateValidDisplayModesForFilter:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)fetchActivitySharingDataIfTimeSinceLastFetchIsGreaterThan:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
@@ -67,14 +69,19 @@
 - (id)init;
 - (id)initWithModel:(id)arg1 andWorkoutDataProvider:(id)arg2;
 - (id)me;
+- (unsigned long long)numberOfFriendsWithCompetitionRequestsAwaitingResponseFromMe;
 - (unsigned long long)numberOfFriendsWithInvitesAwaitingResponseFromMe;
 - (long long)numberOfNewFriendsAllowed;
+- (id)sectionForFriendsCompetingWithMe;
 - (id)sectionForFriendsHidingDataFromMe;
 - (id)sectionForFriendsInvitedByMe;
 - (id)sectionForFriendsInvitingMe;
 - (id)sectionForFriendsMyDataIsHiddenFrom;
+- (id)sectionForFriendsRequestedToCompeteByMe;
+- (id)sectionForFriendsRequestingMeToCompete;
 - (id)sectionForFriendsWithNoHiding;
 - (id)sectionsForDisplayContext:(id)arg1;
+- (unsigned long long)totalNumberOfPendingRequests;
 
 @end
 

@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CNVCardDateComponentsParser, CNVCardLexer, CNVCardMutableNameComponents, CNVCardSelectorMap, NSArray, NSData, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableString, NSString;
+@class CNVCardDateComponentsParser, CNVCardLexer, CNVCardMutableNameComponents, CNVCardReadingOptions, CNVCardSelectorMap, NSArray, NSData, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableString, NSString;
 @protocol CNVCardParsedResultBuilder;
 
 @interface CNVCardParser : NSObject
 {
+    CNVCardReadingOptions *_options;
     CNVCardLexer *_lexer;
     NSData *_data;
     unsigned long long _defaultEncoding;
@@ -50,9 +51,15 @@
     BOOL _base64;
 }
 
+@property (copy, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
+@property (readonly, nonatomic) CNVCardReadingOptions *options; // @synthesize options=_options;
+@property (readonly, nonatomic) id<CNVCardParsedResultBuilder> resultBuilder; // @synthesize resultBuilder=_resultBuilder;
+
++ (unsigned long long)countOfCardsInData:(id)arg1;
 + (unsigned long long)inferredStringEncodingFromData:(id)arg1;
 + (id)newParameterSelectorMap;
 + (id)newParsingSelectorMap;
++ (id)parseData:(id)arg1 options:(id)arg2 resultFactory:(id)arg3;
 + (id)parseData:(id)arg1 resultFactory:(id)arg2;
 + (BOOL)parseFirstResultInData:(id)arg1 resultBuilder:(id)arg2;
 - (void).cxx_destruct;
@@ -70,6 +77,7 @@
 - (SEL)handlerSelectorForParameterName:(id)arg1;
 - (BOOL)hasImportErrors;
 - (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 options:(id)arg2;
 - (id)makeLineWithLabel:(id)arg1 value:(id)arg2;
 - (id)makeLineWithValue:(id)arg1 forProperty:(id)arg2;
 - (id)nextBase64Data;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFocusGuideRegion.h>
+#import <UIKitCore/_UIFocusGuideRegion.h>
 
 @protocol _UIFocusRegionContainer;
 

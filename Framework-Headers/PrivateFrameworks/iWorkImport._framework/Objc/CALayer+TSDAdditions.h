@@ -38,11 +38,13 @@
 - (void)addZoomDownAnimationFromPoint:(struct CGPoint)arg1 endingScale:(double)arg2 delay:(double)arg3;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (id)bakedLayer;
+- (id)bakedLayerForLayerRect:(struct CGRect)arg1;
 - (double)durationOfAllAnimations;
 - (struct CGRect)frameIncludingSublayers;
 - (BOOL)hasPopInAnimation;
 - (id)layerByAddingReflectionWithHeight:(double)arg1 startOpacity:(double)arg2;
 - (struct CGImage *)newRasterizedImageRef;
+- (struct CGImage *)newRasterizedImageRefForLayerRect:(struct CGRect)arg1;
 - (double)opacityByApplyingAnimation:(id)arg1 atTime:(double)arg2 animationCache:(id)arg3;
 - (double)p_perspectiveZDistanceUsingSize:(struct CGSize)arg1;
 - (void)pause;

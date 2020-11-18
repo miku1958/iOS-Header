@@ -29,6 +29,7 @@
 - (void).cxx_destruct;
 - (void)_setPrincipalClassInstance:(id)arg1;
 - (void)dealloc;
+- (void)extendClassesForParameterCoder:(id)arg1;
 
 @end
 

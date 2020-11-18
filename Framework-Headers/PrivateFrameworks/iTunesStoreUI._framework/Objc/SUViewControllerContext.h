@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesStoreUI/NSCoding-Protocol.h>
+#import <iTunesStoreUI/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
-@interface SUViewControllerContext : NSObject <NSCoding>
+@interface SUViewControllerContext : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_metadata;
     NSString *_sectionIdentifier;
@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 - (long long)_typeForTypeString:(id)arg1;
 - (id)_typeStringForType:(long long)arg1;
 - (id)copyViewController;

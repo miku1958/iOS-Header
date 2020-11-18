@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedbackEngine.h>
+#import <UIKitCore/_UIFeedbackEngine.h>
 
-#import <UIKit/_UIFeedbackPlayer-Protocol.h>
+#import <UIKitCore/_UIFeedbackPlayer-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIFeedbackDummyEngine : _UIFeedbackEngine <_UIFeedbackPlayer>

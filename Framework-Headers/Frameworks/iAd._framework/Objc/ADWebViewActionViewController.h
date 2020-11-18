@@ -6,19 +6,19 @@
 
 #import <SafariServices/SFSafariViewController.h>
 
-@class UITapGestureRecognizer;
+@class ADHomeButtonHandler;
 @protocol ADWebViewActionViewControllerDelegate;
 
 @interface ADWebViewActionViewController : SFSafariViewController
 {
-    UITapGestureRecognizer *_homeButtonGestureRecognizer;
+    ADHomeButtonHandler *_homeButtonHandler;
 }
 
 @property (nonatomic) id<ADWebViewActionViewControllerDelegate> delegate; // @dynamic delegate;
-@property (strong, nonatomic) UITapGestureRecognizer *homeButtonGestureRecognizer; // @synthesize homeButtonGestureRecognizer=_homeButtonGestureRecognizer;
+@property (strong, nonatomic) ADHomeButtonHandler *homeButtonHandler; // @synthesize homeButtonHandler=_homeButtonHandler;
 
-- (void)_homeButtonTapped:(id)arg1;
 - (void)dealloc;
+- (void)dismissView;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 

@@ -7,28 +7,34 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBStartPhotoPlaybackIntentResponse-Protocol.h>
 
-@class PBUnknownFields;
+@class NSString, _INPBLocation;
 
-@interface _INPBStartPhotoPlaybackIntentResponse : PBCodable <NSCopying>
+@interface _INPBStartPhotoPlaybackIntentResponse : PBCodable <_INPBStartPhotoPlaybackIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    int _searchResultsCount;
     CDStruct_a60b8694 _has;
+    int _searchResultsCount;
+    NSString *_albumName;
+    _INPBLocation *_locationCreated;
 }
 
+@property (copy, nonatomic) NSString *albumName; // @synthesize albumName=_albumName;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasAlbumName;
+@property (readonly, nonatomic) BOOL hasLocationCreated;
 @property (nonatomic) BOOL hasSearchResultsCount;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _INPBLocation *locationCreated; // @synthesize locationCreated=_locationCreated;
 @property (nonatomic) int searchResultsCount; // @synthesize searchResultsCount=_searchResultsCount;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

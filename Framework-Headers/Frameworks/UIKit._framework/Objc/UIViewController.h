@@ -4,24 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIResponder.h>
+#import <UIKitCore/UIResponder.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/NSExtensionRequestHandling-Protocol.h>
-#import <UIKit/UIAppearanceContainer-Protocol.h>
-#import <UIKit/UIContentContainer-Protocol.h>
-#import <UIKit/UIFocusEnvironment-Protocol.h>
-#import <UIKit/UITraitEnvironment-Protocol.h>
-#import <UIKit/UIViewControllerPresenting-Protocol.h>
-#import <UIKit/_UIContentContainerInternal-Protocol.h>
-#import <UIKit/_UIFocusEnvironmentInternal-Protocol.h>
-#import <UIKit/_UITraitEnvironmentInternal-Protocol.h>
-#import <UIKit/_UIViewServiceDeputy-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/NSExtensionRequestHandling-Protocol.h>
+#import <UIKitCore/UIAppearanceContainer-Protocol.h>
+#import <UIKitCore/UIContentContainer-Protocol.h>
+#import <UIKitCore/UIFocusEnvironment-Protocol.h>
+#import <UIKitCore/UITraitEnvironment-Protocol.h>
+#import <UIKitCore/UIViewControllerPresenting-Protocol.h>
+#import <UIKitCore/_UIContentContainerInternal-Protocol.h>
+#import <UIKitCore/_UIFocusEnvironmentInternal-Protocol.h>
+#import <UIKitCore/_UITraitEnvironmentInternal-Protocol.h>
+#import <UIKitCore/_UIViewServiceDeputy-Protocol.h>
 
 @class NSArray, NSBundle, NSDictionary, NSExtensionContext, NSLayoutConstraint, NSMapTable, NSMutableArray, NSString, NSUUID, UIAccessibilityHUDView, UIBarButtonItem, UIDropShadowView, UILayoutContainerView, UIMultiColumnViewController, UINavigationContentAdjustments, UINavigationController, UINavigationItem, UIPopoverController, UIPresentationController, UIScrollView, UISearchDisplayController, UISplitViewController, UIStoryboard, UIStoryboardSegue, UITabBarController, UITabBarItem, UITraitCollection, UITransitionView, UIView, UIWindow, _UIActionSheetPresentationController;
-@protocol UIFocusEnvironment, UIFocusItem, UILayoutSupport><_UILayoutItem, UIViewControllerTransitioningDelegate, _UIFocusRegionContainer, _UIViewControllerContentViewEmbedding;
+@protocol UIFocusEnvironment, UIFocusItem, UIFocusItemContainer, UILayoutSupport><_UILayoutItem, UIViewControllerTransitioningDelegate, _UIFocusRegionContainer, _UIViewControllerContentViewEmbedding;
 
-@interface UIViewController : UIResponder <_UIViewServiceDeputy, NSExtensionRequestHandling, UIViewControllerPresenting, _UITraitEnvironmentInternal, _UIContentContainerInternal, _UIFocusEnvironmentInternal, NSCoding, UIAppearanceContainer, UITraitEnvironment, UIContentContainer, UIFocusEnvironment>
+@interface UIViewController : UIResponder <NSExtensionRequestHandling, _UIViewServiceDeputy, UIViewControllerPresenting, _UITraitEnvironmentInternal, _UIContentContainerInternal, _UIFocusEnvironmentInternal, NSCoding, UIAppearanceContainer, UITraitEnvironment, UIContentContainer, UIFocusEnvironment>
 {
     id<UIViewControllerTransitioningDelegate> _overrideTransitioningDelegate;
     UIView *_view;
@@ -249,6 +249,7 @@
 @property (readonly, nonatomic) NSExtensionContext *extensionContext; // @dynamic extensionContext;
 @property (strong, nonatomic, setter=_setExtensionContextUUID:) NSUUID *extensionContextUUID; // @dynamic extensionContextUUID;
 @property (nonatomic, getter=isFinishingModalTransition) BOOL finishingModalTransition;
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, weak, nonatomic, getter=_focusMapContainer) id<_UIFocusRegionContainer> focusMapContainer;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -279,7 +280,7 @@
 @property (copy, nonatomic) UITraitCollection *overrideTraitCollection; // @synthesize overrideTraitCollection=_overrideTraitCollection;
 @property (strong, nonatomic, getter=_overrideTransitioningDelegate, setter=_setOverrideTransitioningDelegate:) id<UIViewControllerTransitioningDelegate> overrideTransitioningDelegate; // @dynamic overrideTransitioningDelegate;
 @property (nonatomic, getter=_overrideUseCustomPresentation, setter=_setOverrideUseCustomPresentation:) BOOL overrideUseCustomPresentation; // @synthesize overrideUseCustomPresentation;
-@property (readonly, weak, nonatomic, getter=_parentFocusEnvironment) id<UIFocusEnvironment> parentFocusEnvironment;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (weak, nonatomic) UIViewController *parentModalViewController; // @synthesize parentModalViewController=_parentModalViewController;
 @property (weak, nonatomic) UIViewController *parentViewController;
 @property (nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
@@ -432,6 +433,7 @@
 - (BOOL)_canRestoreFocusAfterTransitionToItem:(id)arg1;
 - (BOOL)_canRestoreFocusAfterTransitionToPresentingFocusedItem:(id)arg1;
 - (void)_cancelDelayedPresentation:(BOOL)arg1;
+- (double)_canvasSystemMinimumMargin;
 - (struct CGPoint)_centerForOrientation:(long long)arg1;
 - (BOOL)_checkIfViewControllerIsBeingDismissed:(id)arg1;
 - (id)_childViewControllerForUserInterfaceStyle;
@@ -599,6 +601,7 @@
 - (id)_overridingPreferredFocusEnvironment;
 - (void)_parent:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
 - (id)_parentContentContainer;
+- (id)_parentFocusEnvironment;
 - (id)_parentTraitEnvironment;
 - (void)_performCoordinatedPresentOrDismiss:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
 - (id)_popoverController;
@@ -635,6 +638,7 @@
 - (BOOL)_providesCustomBasePresentationInsets;
 - (BOOL)_reallyWantsFullScreenLayout;
 - (void)_recordContentScrollView;
+- (void)_recursiveUpdateContentOverlayInsetsFromParentIfNecessary;
 - (id)_registerForPreviewingWithDelegate:(id)arg1 sourceView:(id)arg2 implementation:(long long)arg3;
 - (void)_rememberPresentingFocusedItem:(id)arg1;
 - (id)_remoteViewControllerProxy;
@@ -659,7 +663,7 @@
 - (id)_safeViewControllerForRotationWithDismissCheck:(BOOL)arg1;
 - (id)_safeViewControllerForSupportedInterfaceOrientationsWithDismissCheck:(BOOL)arg1;
 - (id)_safeWindowForAutorotation;
-- (struct UIEdgeInsets)_sceneSafeAreaInsetsOverlap;
+- (void)_sceneSettingsSafeAreaInsetsDidChangeForWindow:(id)arg1;
 - (id)_screen;
 - (id)_segueTemplateWithIdentifier:(id)arg1;
 - (void)_sendViewDidLoadWithAppearanceProxyObjectTaggingEnabled;

@@ -62,6 +62,7 @@
 @property (copy, nonatomic) NSString *phoneticOrganizationName; // @dynamic phoneticOrganizationName;
 @property (copy, nonatomic) NSArray *postalAddresses; // @dynamic postalAddresses;
 @property (copy, nonatomic) NSString *preferredApplePersonaIdentifier;
+@property (copy, nonatomic) NSString *preferredChannel;
 @property (nonatomic, getter=isPreferredForImage) BOOL preferredForImage; // @dynamic preferredForImage;
 @property (nonatomic, getter=isPreferredForName) BOOL preferredForName; // @dynamic preferredForName;
 @property (copy, nonatomic) NSString *preferredLikenessSource;

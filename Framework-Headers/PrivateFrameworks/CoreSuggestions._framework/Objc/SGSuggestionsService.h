@@ -11,29 +11,23 @@
 #import <CoreSuggestions/SGSuggestionsServiceFidesProtocol-Protocol.h>
 #import <CoreSuggestions/SGSuggestionsServiceInternalProtocol-Protocol.h>
 #import <CoreSuggestions/SGSuggestionsServiceMailProtocol-Protocol.h>
-#import <CoreSuggestions/SGSuggestionsServiceSearchToShareProtocol-Protocol.h>
 
-@class NSString, SGDaemonConnection, SGKeyValueCacheFile;
+@class NSString, SGDaemonConnection, _PASLock;
 @protocol SGDSuggestManagerAllProtocol;
 
-@interface SGSuggestionsService : NSObject <SGSuggestionsServiceContactsProtocol, SGSuggestionsServiceEventsProtocol, SGSuggestionsServiceInternalProtocol, SGSuggestionsServiceMailProtocol, SGSuggestionsServiceSearchToShareProtocol, SGSuggestionsServiceFidesProtocol>
+@interface SGSuggestionsService : NSObject <SGSuggestionsServiceContactsProtocol, SGSuggestionsServiceEventsProtocol, SGSuggestionsServiceInternalProtocol, SGSuggestionsServiceMailProtocol, SGSuggestionsServiceFidesProtocol>
 {
     SGDaemonConnection *_daemonConnection;
     id<SGDSuggestManagerAllProtocol> _managerForTesting;
     BOOL _keepDirty;
     NSString *_machServiceName;
     BOOL _queuesRequestsIfBusy;
-    SGKeyValueCacheFile *_phoneCache;
-    SGKeyValueCacheFile *_emailCache;
-    NSString *_maybeFormat;
+    _PASLock *_cacheLock;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
++ (id)_daemonConnectionForMachServiceName:(id)arg1 protocol:(id)arg2 useCache:(BOOL)arg3;
 + (id)filteredSearchableItemsFromItems:(id)arg1;
++ (BOOL)hasEntitlement:(id)arg1;
 + (void)initialize;
 + (BOOL)isHarvestingSupported;
 + (void)prepareForQuery;
@@ -43,12 +37,10 @@
 + (id)serviceForInternal;
 + (id)serviceForMail;
 + (id)serviceForMessages;
-+ (id)serviceForSearchToShare;
 + (id)wantedSearchableItemsFromItems:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addSearchableItemMetadata:(id)arg1 htmlData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_remoteSuggestionManager;
-- (id)_remoteSuggestionManagerForSTS;
 - (BOOL)addInteractions:(id)arg1 bundleId:(id)arg2 error:(id *)arg3;
 - (void)addInteractions:(id)arg1 bundleId:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)addSearchableItems:(id)arg1 error:(id *)arg2;
@@ -94,7 +86,6 @@
 - (void)contactMatchesWithContactIdentifiers:(id)arg1 limitTo:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)daemonExit:(id *)arg1;
 - (void)daemonExitWithCompletion:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)deleteCloudKitZoneWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deleteInteractionsWithBundleId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteInteractionsWithBundleId:(id)arg1 groupIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -104,10 +95,6 @@
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)deregisterContactsChangeObserverWithToken:(id)arg1;
 - (BOOL)deregisterEventsChangeObserverWithToken:(id)arg1;
-- (void)didEndSearch:(id)arg1;
-- (void)didEngageResult:(id)arg1;
-- (void)didEngageSuggestion:(id)arg1;
-- (void)didStartSearch:(id)arg1;
 - (BOOL)drainQueueCompletely:(id *)arg1;
 - (void)drainQueueCompletelyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)emailAddressIsSignificant:(id)arg1 error:(id *)arg2;
@@ -121,8 +108,8 @@
 - (void)fullDownloadRequestBatch:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)harvestedSuggestionsFromSearchableItem:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)harvestedSuggestionsFromSearchableItem:(id)arg1 options:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (BOOL)hasEntitlement:(id)arg1;
 - (id)initWithMachServiceName:(id)arg1 protocol:(id)arg2;
+- (id)initWithMachServiceName:(id)arg1 protocol:(id)arg2 useCache:(BOOL)arg3;
 - (BOOL)isEnabledWithError:(id *)arg1;
 - (void)isEventCandidateForURL:(id)arg1 andTitle:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)keepDirty:(BOOL)arg1;
@@ -139,10 +126,8 @@
 - (void)logMetricSuggestedContactDetailUsed:(id)arg1 contactIdentifier:(id)arg2 bundleId:(id)arg3;
 - (void)messagesToRefreshWithCompletion:(CDUnknownBlockType)arg1;
 - (id)messagesToRefreshWithError:(id *)arg1;
-- (void)modelMetadataUpdateWithPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)namesForDetail:(id)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 error:(id *)arg4;
 - (void)namesForDetail:(id)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (void)namesForUnknownDetail:(id)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)originFromRecordId:(id)arg1 error:(id *)arg2;
 - (void)originFromRecordId:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)planReceivedFromServerWithPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -153,10 +138,9 @@
 - (BOOL)prepareForRealtimeExtraction:(id *)arg1;
 - (void)prepareForRealtimeExtractionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)purgeSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)queryPredictionsFeedbackReportForConversation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)queryPredictionsForConversation:(id)arg1 count:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)queuesRequestsIfBusy;
 - (void)realtimeSuggestionsFromURL:(id)arg1 title:(id)arg2 HTMLPayload:(id)arg3 extractionDate:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
+- (void)refreshCacheSnapshot;
 - (id)registerContactsChangeObserver:(CDUnknownBlockType)arg1;
 - (id)registerEventsChangeObserver:(CDUnknownBlockType)arg1;
 - (BOOL)rejectContact:(id)arg1 error:(id *)arg2;
@@ -171,8 +155,6 @@
 - (void)rejectEventByRecordId:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)rejectRecord:(id)arg1 error:(id *)arg2;
 - (void)rejectRecord:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)relevantABRecordIDsWithLimit:(long long)arg1 error:(id *)arg2;
-- (void)relevantABRecordIDsWithLimit:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)removeAllStoredPseudoContacts:(id *)arg1;
 - (void)removeAllStoredPseudoContactsWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)reportMessagesFound:(id)arg1 lost:(id)arg2 error:(id *)arg3;
@@ -181,9 +163,6 @@
 - (void)resetConfirmationAndRejectionHistoryWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)resolveFullDownloadRequests:(id)arg1 error:(id *)arg2;
 - (void)resolveFullDownloadRequests:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)searchViewDidAppear:(id)arg1;
-- (void)searchViewDidDisappear:(id)arg1;
-- (void)sendCustomFeedback:(id)arg1;
 - (BOOL)sendRTCLogs:(id *)arg1;
 - (void)setManagerForTesting:(id)arg1;
 - (void)setQueuesRequestsIfBusy:(BOOL)arg1;

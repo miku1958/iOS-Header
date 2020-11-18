@@ -9,7 +9,7 @@
 #import <NewsUI/NUArticleAdManagerFactory-Protocol.h>
 
 @class NSString;
-@protocol NUAdMetadataFactory, NUAdProvider, NUAdSettings, NUDevice;
+@protocol NUAdLayoutOptionsFactory, NUAdMetadataFactory, NUAdProvider, NUAdSettings, NUDevice;
 
 @interface NUANFArticleAdManagerFactory : NSObject <NUArticleAdManagerFactory>
 {
@@ -17,6 +17,7 @@
     id<NUAdMetadataFactory> _adMetadataFactory;
     id<NUAdSettings> _settings;
     id<NUDevice> _device;
+    id<NUAdLayoutOptionsFactory> _layoutOptionsFactory;
 }
 
 @property (readonly, nonatomic) id<NUAdMetadataFactory> adMetadataFactory; // @synthesize adMetadataFactory=_adMetadataFactory;
@@ -25,12 +26,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<NUDevice> device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<NUAdLayoutOptionsFactory> layoutOptionsFactory; // @synthesize layoutOptionsFactory=_layoutOptionsFactory;
 @property (readonly, nonatomic) id<NUAdSettings> settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)createArticleAdManagerForArticle:(id)arg1;
-- (id)initWithAdProvider:(id)arg1 adMetadataFactory:(id)arg2 settings:(id)arg3 device:(id)arg4;
+- (id)initWithAdProvider:(id)arg1 adMetadataFactory:(id)arg2 settings:(id)arg3 device:(id)arg4 layoutOptionsFactory:(id)arg5;
 
 @end
 

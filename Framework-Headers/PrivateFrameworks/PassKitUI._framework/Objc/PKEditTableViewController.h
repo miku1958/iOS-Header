@@ -10,7 +10,7 @@
 #import <PassKitUI/PKEditTableNoPassesViewDelegate-Protocol.h>
 #import <PassKitUI/UITableViewDataSourcePrefetching-Protocol.h>
 
-@class NSCache, NSMutableArray, NSObject, NSString, PKEditTableNoPassesView, UITableView;
+@class NSCache, NSMutableArray, NSMutableDictionary, NSObject, NSString, PKEditPendingCacheRequest, PKEditTableNoPassesView, PKGroupsController, UITableView;
 @protocol OS_dispatch_queue, PKEditTableViewControllerCachingDelegate;
 
 @interface PKEditTableViewController : UITableViewController <UITableViewDataSourcePrefetching, PKEditTableNoPassesViewDelegate, PKEditPassesPerformanceTestResponder>
@@ -25,10 +25,22 @@
     NSCache *_imageCache;
     unsigned long long _imagesToKeep;
     NSObject<OS_dispatch_queue> *_queueCaching;
-    NSObject<OS_dispatch_queue> *_queuePending;
-    NSMutableArray *_pendingCachingRequests;
+    PKEditPendingCacheRequest *_currentCacheRequest;
+    BOOL _shouldProcessHighPriorityRequests;
+    NSMutableArray *_highPriorityRequests;
+    BOOL _shouldProcessLowPriorityRequests;
+    NSMutableArray *_lowPriorityRequests;
+    unsigned long long _visibleRows;
+    NSMutableDictionary *_placeholdersPerPassStyle;
     long long _testIteration;
+    double _snapshotDurationAverage;
+    NSMutableArray *_lastSnapshotDurations;
+    double _lastYOffset;
+    double _lastYOffsetTime;
+    BOOL _scrollingFast;
+    BOOL _dragging;
     id<PKEditTableViewControllerCachingDelegate> _cachingDelegate;
+    PKGroupsController *_existingGroupsController;
     long long _performanceTest;
     NSString *_performanceTestName;
 }
@@ -36,6 +48,7 @@
 @property (weak, nonatomic) id<PKEditTableViewControllerCachingDelegate> cachingDelegate; // @synthesize cachingDelegate=_cachingDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) PKGroupsController *existingGroupsController; // @synthesize existingGroupsController=_existingGroupsController;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long performanceTest; // @synthesize performanceTest=_performanceTest;
 @property (strong, nonatomic) NSString *performanceTestName; // @synthesize performanceTestName=_performanceTestName;
@@ -44,28 +57,41 @@
 
 - (void).cxx_destruct;
 - (id)_createImageForPass:(id)arg1 imageSize:(struct CGSize)arg2 cacheKey:(id)arg3 fullPass:(BOOL)arg4 stacked:(BOOL)arg5;
-- (id)_createPassStackWithPassImage:(id)arg1 size:(struct CGSize)arg2;
-- (id)_cropImage:(id)arg1 toRect:(struct CGRect)arg2;
-- (void)_imageOfSize:(struct CGSize)arg1 forPass:(id)arg2 fullPass:(BOOL)arg3 stacked:(BOOL)arg4 synchronously:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)_createPassStackWithPassImage:(id)arg1 withHeight:(double)arg2;
+- (id)_cropImage:(id)arg1 toHeight:(double)arg2;
+- (void)_imageOfSize:(struct CGSize)arg1 forPass:(id)arg2 fullPass:(BOOL)arg3 stacked:(BOOL)arg4 synchronously:(BOOL)arg5 preemptive:(BOOL)arg6 placeholder:(CDUnknownBlockType)arg7 completion:(CDUnknownBlockType)arg8;
 - (unsigned long long)_imagesToKeepOutsideVisibleCells;
+- (id)_resizedImageWithImage:(id)arg1 alignmentSize:(struct CGSize)arg2;
+- (void)_setShouldProcessLowPriorityRequests:(BOOL)arg1;
+- (void)_updateShouldProcessHighPriorityRequestsWithFastScrolling:(BOOL)arg1;
 - (void)beginPassDeletionTestWithTestName:(id)arg1;
 - (void)beginPassSelectionTestWithTestName:(id)arg1;
 - (void)beginScrollingTestWithTestName:(id)arg1;
 - (void)clearImageCacheForPass:(id)arg1;
+- (void)currentCacheRequestCompletedWithImage:(id)arg1 duration:(double)arg2;
 - (void)failedTestWithReason:(id)arg1;
 - (void)findApps;
-- (void)imageForPass:(id)arg1 stacked:(BOOL)arg2 synchronously:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)generatePlaceholderImages;
+- (void)imageForPass:(id)arg1 stacked:(BOOL)arg2 synchronously:(BOOL)arg3 placeholder:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)initWithStyle:(long long)arg1;
+- (void)loadContentAndImageSetFromExistingPassForPass:(id)arg1;
 - (id)mostRecentPassInGroup:(id)arg1;
+- (void)moveHighPriorityToLowPriorityWithCacheKey:(id)arg1;
 - (void)noPassesViewFindAppsForWalletTapped:(id)arg1;
 - (void)noPassesViewScanCodeButtonTapped:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)passedTest;
-- (void)processCacheRequest;
+- (void)preemptivelyCacheImagesForPass:(id)arg1 stacked:(BOOL)arg2;
+- (void)processCacheRequest:(id)arg1;
+- (void)removeRequestsWithCacheKey:(id)arg1;
+- (void)resumeRequestIfNoScrollingAfterTimeInterval:(double)arg1;
 - (void)scanCode;
 - (void)scrollToFirstRowOrFailTest;
 - (void)scrollToLastRowOrFailTest;
+- (void)scrollViewDidEndDecelerating:(id)arg1;
+- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)selectFirstRowOrFailTest;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
@@ -78,7 +104,10 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)tableView:(id)arg1 prefetchRowsAtIndexPaths:(id)arg2;
 - (void)tableView:(id)arg1 willBeginEditingRowAtIndexPath:(id)arg2;
+- (void)triageCacheRequest:(id)arg1;
+- (void)updateAverageSnapshotDuration:(double)arg1;
 - (void)viewDidLoad;
+- (unsigned long long)visibleRowsCount;
 
 @end
 

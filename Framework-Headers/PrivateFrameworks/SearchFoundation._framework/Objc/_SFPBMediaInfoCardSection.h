@@ -13,7 +13,6 @@
 
 @interface _SFPBMediaInfoCardSection : PBCodable <_SFPBMediaInfoCardSection, NSSecureCoding>
 {
-    CDStruct_23c427ad _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -40,24 +39,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *details; // @synthesize details=_details;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasIsMediaContainer;
-@property (readonly, nonatomic) BOOL hasMediaItem;
-@property (readonly, nonatomic) BOOL hasPlayAction;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasSpecialOfferButtonLabel;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasWatchListButtonLabel;
-@property (readonly, nonatomic) BOOL hasWatchListConfirmationText;
-@property (readonly, nonatomic) BOOL hasWatchListContinuationText;
-@property (readonly, nonatomic) BOOL hasWatchListIdentifier;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isMediaContainer; // @synthesize isMediaContainer=_isMediaContainer;
 @property (readonly, nonatomic) NSData *jsonData;

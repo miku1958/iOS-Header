@@ -18,6 +18,7 @@
     UIViewController *_viewController;
     MSConversation *_activeConversation;
     unsigned long long _presentationStyle;
+    unsigned long long _presentationContext;
     id<_MSMessageComposeHostImplProtocol> _hostContext;
 }
 
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<_MSMessageComposeHostImplProtocol> hostContext; // @synthesize hostContext=_hostContext;
+@property (nonatomic) unsigned long long presentationContext; // @synthesize presentationContext=_presentationContext;
 @property (nonatomic) unsigned long long presentationStyle; // @synthesize presentationStyle=_presentationStyle;
 @property (readonly, weak, nonatomic) UIViewController *stickerViewController;
 @property (readonly) Class superclass;
@@ -38,9 +40,11 @@
 - (void)_conversationDidChangeWithConversationState:(id)arg1;
 - (void)_didCancelSendingMessage:(id)arg1 conversationState:(id)arg2;
 - (void)_didReceiveMessage:(id)arg1 conversationState:(id)arg2;
+- (void)_didRemoveAssetArchiveWithIdentifier:(id)arg1;
 - (void)_didStartSendingMessage:(id)arg1 conversationState:(id)arg2;
 - (void)_handleTextInputPayload:(id)arg1 withPayloadID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_hostDidBeginDeferredTeardown;
+- (void)_prepareForPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_presentationDidChangeToPresentationState:(id)arg1;
 - (void)_presentationWillChangeToPresentationState:(id)arg1;
 - (void)_remoteViewDidBecomeReadyForDisplay;
@@ -48,15 +52,20 @@
 - (void)_requestSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_resignActive;
 - (void)_sendWillBecomeActiveMessage;
+- (void)_volumeButtonPressed:(BOOL)arg1;
 - (void)beginDisablingUserInteraction;
+- (void)contentDidLoad;
 - (void)dismiss;
+- (void)dismissAndPresentPhotosApp;
 - (void)endDisablingUserInteraction;
 - (id)initWithViewController:(id)arg1 wantsLiveView:(BOOL)arg2;
 - (struct CGRect)initialFrameOfHostView;
+- (void)removeAssetArchiveWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestPresentationStyle:(unsigned long long)arg1;
 - (void)requestPresentationStyleExpanded:(BOOL)arg1;
 - (void)requestResize;
 - (void)stageAppItem:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)stageAssetArchive:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)stageMediaItem:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)stageRichLink:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)startDragMediaItem:(id)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

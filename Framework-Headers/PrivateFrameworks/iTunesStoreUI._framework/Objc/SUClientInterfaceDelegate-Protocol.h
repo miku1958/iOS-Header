@@ -12,12 +12,14 @@
 
 @optional
 - (void)clientInterface:(SUClientInterface *)arg1 exitStoreWithReason:(long long)arg2;
+- (void)clientInterface:(SUClientInterface *)arg1 financeInterruptionResolved:(BOOL)arg2;
 - (void)clientInterface:(SUClientInterface *)arg1 hidePreviewOverlayAnimated:(BOOL)arg2;
 - (void)clientInterface:(SUClientInterface *)arg1 overrideCreditCardPresentationFromViewController:(UIViewController *)arg2 completion:(void (^)(SUCreditCardReaderOutput *))arg3;
 - (void)clientInterface:(SUClientInterface *)arg1 presentDialog:(ISDialog *)arg2;
 - (void)clientInterface:(SUClientInterface *)arg1 setStatusBarHidden:(BOOL)arg2 withAnimation:(long long)arg3;
 - (void)clientInterface:(SUClientInterface *)arg1 setStatusBarStyle:(long long)arg2 animated:(BOOL)arg3;
 - (void)clientInterface:(SUClientInterface *)arg1 showPreviewOverlayAnimated:(BOOL)arg2;
+- (void)clientInterfaceDidFinishLoading:(SUClientInterface *)arg1;
 - (SUPreviewOverlayViewController *)previewOverlayForClientInterface:(SUClientInterface *)arg1;
 - (void)returnToLibraryForClientInterface:(SUClientInterface *)arg1;
 - (SUScriptInterface *)scriptInterfaceForClientInterface:(SUClientInterface *)arg1;

@@ -6,15 +6,16 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-#import <UserNotificationsUIKit/MTContentSizeCategoryAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/NCLegibilitySettingsAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationViewControllerObserving-Protocol.h>
+#import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 #import <UserNotificationsUIKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/UIScrollViewDelegate-Protocol.h>
 
 @class NCNotificationListCellActionButtonsView, NCNotificationViewController, NSString, UIPanGestureRecognizer, UIView, UIViewFloatAnimatableProperty;
 @protocol NCNotificationListCellDelegate;
 
-@interface NCNotificationListCell : UICollectionViewCell <UIScrollViewDelegate, UIGestureRecognizerDelegate, NCNotificationViewControllerObserving, MTContentSizeCategoryAdjusting>
+@interface NCNotificationListCell : UICollectionViewCell <UIScrollViewDelegate, UIGestureRecognizerDelegate, NCNotificationViewControllerObserving, PLContentSizeCategoryAdjusting, NCLegibilitySettingsAdjusting>
 {
     BOOL _adjustsFontForContentSizeCategory;
     BOOL _configured;
@@ -87,7 +88,6 @@
 - (void)_performSideSwipeHinting;
 - (void)_performSideSwipeHintingHideAnimation;
 - (void)_performSideSwipeHintingRevealAnimation;
-- (void)_removePanGestureRecognizer;
 - (void)_resetActionButtonViews;
 - (void)_resetClipping;
 - (void)_resetNotificationCellPositionAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -105,9 +105,11 @@
 - (void)_updateRevealForRightActionButtonsClippingRevealViewForRevealPercentage:(double)arg1;
 - (void)_updateTargetPosition:(double)arg1;
 - (BOOL)adjustForContentSizeCategoryChange;
+- (void)adjustForLegibilitySettingsChange:(id)arg1;
 - (void)applyLayoutAttributes:(id)arg1;
 - (void)cellClearButtonPressed:(id)arg1;
 - (void)cellOpenButtonPressed:(id)arg1;
+- (void)cellSettingsButtonPressed:(id)arg1;
 - (void)cellViewButtonPressed:(id)arg1;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -117,6 +119,7 @@
 - (void)notificationViewControllerDidEndUserInteraction:(id)arg1;
 - (void)notificationViewControllerWillBeginUserInteraction:(id)arg1;
 - (void)prepareForReuse;
+- (void)resetCellActionButtons;
 - (void)resetCellScrollPositionAnimated:(BOOL)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateCellForContentViewController:(id)arg1;

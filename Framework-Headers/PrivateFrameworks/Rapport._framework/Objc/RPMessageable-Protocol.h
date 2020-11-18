@@ -4,9 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSDictionary, NSString;
+@class NSDictionary, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @protocol RPMessageable
+
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
+
 - (void)deregisterEventID:(NSString *)arg1;
 - (void)deregisterRequestID:(NSString *)arg1;
 - (void)registerEventID:(NSString *)arg1 options:(NSDictionary *)arg2 handler:(void (^)(NSDictionary *, NSDictionary *))arg3;

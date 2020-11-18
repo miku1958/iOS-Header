@@ -19,11 +19,14 @@
 - (void)clearContext;
 - (id)context;
 - (id)continuousIntegrationMarkerPref;
+- (BOOL)implementMigrationPluginResults;
 - (id)lastBuildVersionPref;
 - (id)lastMigrationResultsPref;
+- (id)migrationPluginResultsPref;
 - (void)setContext:(id)arg1;
 - (void)setLastBuildVersionPref:(id)arg1;
 - (void)setLastMigrationResultsPref:(id)arg1;
+- (void)setMigrationPluginResultsPref:(id)arg1;
 - (void)setUserDataDispositionPref:(id)arg1;
 - (BOOL)suppressMigrationPluginWrapperExitMarkerPref;
 - (id)userDataDispositionPref;

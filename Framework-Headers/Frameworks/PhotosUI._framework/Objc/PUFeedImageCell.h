@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUFeedCell.h>
 
-@class PUImageViewExtraction, PXUIAssetBadgeView, UIButton, UIImage, UIImageView, UIView;
+@class AVPlayerItem, ISWrappedAVAudioSession, ISWrappedAVPlayer, PUImageViewExtraction, PXRoundedCornerOverlayView, PXUIAssetBadgeView, PXVideoPlayerView, UIButton, UIImage, UIImageView, UIView;
 @protocol PXVideoOverlayButton;
 
 __attribute__((visibility("hidden")))
@@ -17,11 +17,18 @@ __attribute__((visibility("hidden")))
     BOOL __shouldHideOverlayPlayButton;
     BOOL __shouldHideCenterOverlayImageView;
     BOOL __shouldHideCommentButton;
+    BOOL _shouldHideLikeBadge;
+    int _playerItemRequestID;
     UIImage *_image;
+    AVPlayerItem *_playerItem;
     long long _imageContentMode;
     long long _imageAlignment;
     long long _overlayOptions;
     long long _commentCount;
+    double _cornerRadius;
+    PXVideoPlayerView *_videoPlayerView;
+    ISWrappedAVPlayer *_videoPlayer;
+    ISWrappedAVAudioSession *_audioSession;
     UIImageView *__imageView;
     long long __imageTag;
     UIView<PXVideoOverlayButton> *__overlayPlayButton;
@@ -30,6 +37,8 @@ __attribute__((visibility("hidden")))
     UIImageView *__centerOverlayImageView;
     UIButton *__commentButton;
     PXUIAssetBadgeView *__photoIrisBadgeView;
+    PXRoundedCornerOverlayView *_roundedCornerOverlayView;
+    UIImageView *_likeBadgeView;
     struct CGSize _maximumImageSize;
     struct CGRect __imageFrame;
 }
@@ -47,13 +56,22 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setShouldHideCommentButton:) BOOL _shouldHideCommentButton; // @synthesize _shouldHideCommentButton=__shouldHideCommentButton;
 @property (nonatomic, setter=_setShouldHideOverlayPlayButton:) BOOL _shouldHideOverlayPlayButton; // @synthesize _shouldHideOverlayPlayButton=__shouldHideOverlayPlayButton;
 @property (nonatomic, setter=_setShouldUpdateOverlayPlayButtonBackground:) BOOL _shouldUpdateOverlayPlayButtonBackground; // @synthesize _shouldUpdateOverlayPlayButtonBackground=__shouldUpdateOverlayPlayButtonBackground;
+@property (readonly, nonatomic) ISWrappedAVAudioSession *audioSession; // @synthesize audioSession=_audioSession;
 @property (nonatomic) long long commentCount; // @synthesize commentCount=_commentCount;
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (nonatomic) long long imageAlignment; // @synthesize imageAlignment=_imageAlignment;
 @property (nonatomic) long long imageContentMode; // @synthesize imageContentMode=_imageContentMode;
 @property (nonatomic, getter=isImageHidden) BOOL imageHidden; // @synthesize imageHidden=_imageHidden;
+@property (strong, nonatomic) UIImageView *likeBadgeView; // @synthesize likeBadgeView=_likeBadgeView;
 @property (nonatomic) struct CGSize maximumImageSize; // @synthesize maximumImageSize=_maximumImageSize;
 @property (nonatomic) long long overlayOptions; // @synthesize overlayOptions=_overlayOptions;
+@property (strong, nonatomic) AVPlayerItem *playerItem; // @synthesize playerItem=_playerItem;
+@property (nonatomic) int playerItemRequestID; // @synthesize playerItemRequestID=_playerItemRequestID;
+@property (strong, nonatomic) PXRoundedCornerOverlayView *roundedCornerOverlayView; // @synthesize roundedCornerOverlayView=_roundedCornerOverlayView;
+@property (nonatomic, setter=setShouldHideLikeBadge:) BOOL shouldHideLikeBadge; // @synthesize shouldHideLikeBadge=_shouldHideLikeBadge;
+@property (readonly, nonatomic) ISWrappedAVPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
+@property (readonly, nonatomic) PXVideoPlayerView *videoPlayerView; // @synthesize videoPlayerView=_videoPlayerView;
 
 + (BOOL)_allowHighQualityVideoOverlayButton;
 + (Class)_contentViewClass;
@@ -67,9 +85,13 @@ __attribute__((visibility("hidden")))
 - (void)_layoutImageView;
 - (void)_updateCommentButton;
 - (void)_updateOverlays;
+- (void)_updateRoundedCornersOverlayView;
+- (void)_updateVideoPlayerContents;
+- (void)_updateVideoViewContentMode;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)setAudioSession:(id)arg1;
 - (void)setImage:(id)arg1 withTag:(long long)arg2;
 - (void)setParallaxOffset:(struct CGPoint)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

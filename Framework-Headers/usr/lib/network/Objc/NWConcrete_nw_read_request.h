@@ -9,32 +9,26 @@
 #import <network/OS_nw_read_request-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_data, OS_dispatch_source, OS_nw_array;
+@protocol OS_dispatch_data, OS_nw_array, OS_nw_content_context, OS_nw_error;
 
+__attribute__((visibility("hidden")))
 @interface NWConcrete_nw_read_request : NSObject <OS_nw_read_request>
 {
     NWConcrete_nw_read_request *next;
     CDUnknownBlockType data_completion;
     CDUnknownBlockType data_multiple_completion;
-    CDUnknownBlockType data_timeout_completion;
     CDUnknownBlockType buffer_completion;
-    CDUnknownBlockType message_completion;
     int variant;
-    BOOL complete;
     unsigned long long min;
     unsigned long long max;
     unsigned long long progress;
-    long long timeout_nanos;
-    CDUnknownBlockType timeout_block;
-    NSObject<OS_dispatch_source> *timeout_source;
-    BOOL timeout_timer_fired;
     char *buffer;
-    BOOL buffer_used_for_reading;
     NSObject<OS_dispatch_data> *data;
-    NSObject<OS_dispatch_data> *pattern;
-    const void *pattern_bytes;
-    unsigned long long pattern_length;
+    NSObject<OS_nw_content_context> *context;
+    NSObject<OS_nw_error> *error;
     NSObject<OS_nw_array> *read_array;
+    unsigned int reported:1;
+    unsigned int is_complete:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -45,6 +45,7 @@
 - (void)enablePhoneUser;
 - (void)enableiCloudUser;
 - (id)firstRoutableInternetDestinationForSelf;
+- (BOOL)getProgressUpdateForIdentifier:(id)arg1 error:(id *)arg2;
 - (id)iCloudAccount;
 - (id)initWithService:(id)arg1;
 - (id)initWithService:(id)arg1 commands:(id)arg2;

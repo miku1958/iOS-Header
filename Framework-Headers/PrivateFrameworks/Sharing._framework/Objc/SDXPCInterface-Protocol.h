@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSDictionary, NSString, NSURL, NSUUID, NSXPCListenerEndpoint, SFBLEDevice, SFCoordinatedAlertRequest, SFDevice, SFDeviceDiscovery, SFEventMessage, SFRemoteInteractionSession, SFRequestMessage, SFResponseMessage, SFService, SFSession, SFUserAlert;
+@class NSData, NSDictionary, NSError, NSString, NSURL, NSUUID, NSXPCListenerEndpoint, SFBLEDevice, SFCoordinatedAlertRequest, SFDevice, SFDeviceDiscovery, SFEventMessage, SFRemoteAutoFillSessionHelper, SFRemoteInteractionSession, SFRequestMessage, SFResponseMessage, SFService, SFSession, SFUserAlert;
 
 @protocol SDXPCInterface
 - (void)accountForAppleID:(NSString *)arg1 withCompletion:(void (^)(SFAppleIDAccount *, NSError *))arg2;
 - (void)activateAssertionWithIdentifier:(NSString *)arg1;
 - (void)activityStateWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
-- (void)addAppleID:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)appleIDInfoWithCompletion:(void (^)(NSString *, NSData *, NSError *))arg1;
-- (void)appleIDListWithCompletion:(void (^)(NSArray *, NSError *))arg1;
+- (void)autoFillHelperActivate:(SFRemoteAutoFillSessionHelper *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)autoFillHelperDidPickUsername:(NSString *)arg1 password:(NSString *)arg2 error:(NSError *)arg3;
+- (void)autoFillHelperTryPIN:(NSString *)arg1;
+- (void)autoFillHelperUserNotificationDidActivate:(NSUUID *)arg1;
+- (void)autoFillHelperUserNotificationDidDismiss:(NSUUID *)arg1;
 - (void)bluetoothUserInteraction;
 - (void)contactIDForEmailHash:(NSString *)arg1 phoneHash:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)coordinatedAlertsRequestFinish;
@@ -44,8 +47,9 @@
 - (void)remoteInteractionSessionCommitText;
 - (void)remoteInteractionSessionDeleteTextBackward;
 - (void)remoteInteractionSessionInsertText:(NSString *)arg1;
+- (void)remoteInteractionSessionSendPayload:(NSDictionary *)arg1;
 - (void)remoteInteractionSessionSetText:(NSString *)arg1;
-- (void)repairDevice:(SFDevice *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)repairDevice:(SFDevice *)arg1 flags:(unsigned int)arg2 completion:(void (^)(NSError *))arg3;
 - (void)requestWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)retriggerProximityPairing:(void (^)(NSError *))arg1;
 - (void)retriggerProximitySetup:(void (^)(NSError *))arg1;
@@ -70,6 +74,7 @@
 - (void)showDevicePickerWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)statusInfoWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)triggerHomeKitDeviceDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)triggerProximityAutoFillDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)userNotificationPresent:(SFUserAlert *)arg1;
 - (void)wifiPasswordSharingAvailabilityWithCompletion:(void (^)(unsigned int, NSError *))arg1;
 @end

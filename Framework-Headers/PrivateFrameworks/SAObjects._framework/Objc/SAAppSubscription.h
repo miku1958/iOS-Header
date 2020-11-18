@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SAObjects/AceObject.h>
+#import <SAObjects/SADomainObject.h>
 
 #import <SAObjects/SABackgroundContextObject-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface SAAppSubscription : AceObject <SABackgroundContextObject>
+@interface SAAppSubscription : SADomainObject <SABackgroundContextObject>
 {
 }
 

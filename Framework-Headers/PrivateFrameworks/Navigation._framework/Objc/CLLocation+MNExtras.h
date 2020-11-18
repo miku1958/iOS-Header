@@ -20,6 +20,7 @@
 @property (readonly, nonatomic, getter=_navigation_rawShiftedCoordinate) struct CLLocationCoordinate2D rawShiftedCoordinate;
 @property (readonly, nonatomic, getter=_navigation_routeMatch) GEORouteMatch *routeMatch;
 
++ (BOOL)_navigation_isLocation:(id)arg1 equalTo:(id)arg2;
 + (id)_navigation_stringWithType:(int)arg1;
 - (BOOL)_navigation_isEqualToLocationCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (double)_navigation_speedAccuracy;

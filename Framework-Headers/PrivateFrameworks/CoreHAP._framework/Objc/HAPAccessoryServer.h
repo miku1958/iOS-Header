@@ -17,6 +17,7 @@
     BOOL _reachable;
     BOOL _securitySessionOpen;
     BOOL _supportsTimedWrite;
+    BOOL _bleLinkConnected;
     BOOL _incompatibleUpdate;
     NSNumber *_category;
     unsigned long long _configNumber;
@@ -38,6 +39,7 @@
 
 @property (copy, nonatomic) NSArray *accessories; // @synthesize accessories=_accessories;
 @property (nonatomic) unsigned long long authMethod; // @synthesize authMethod=_authMethod;
+@property (readonly, nonatomic, getter=isBLELinkConnected) BOOL bleLinkConnected; // @synthesize bleLinkConnected=_bleLinkConnected;
 @property (copy, nonatomic) NSNumber *category; // @synthesize category=_category;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (nonatomic) unsigned long long configNumber; // @synthesize configNumber=_configNumber;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSCEUnitRegistry : NSObject
@@ -13,12 +13,12 @@ __attribute__((visibility("hidden")))
 
 + (int)binaryUnitPrefixForChars:(unsigned short)arg1:(unsigned short)arg2;
 + (int)canonicalUnitForDimension:(int)arg1;
-+ (double)convert:(double)arg1 fromUnit:(CDStruct_945081a1)arg2 toUnit:(CDStruct_945081a1)arg3;
++ (double)convert:(double)arg1 fromUnit:(CDStruct_1ef3fb1f)arg2 toUnit:(CDStruct_1ef3fb1f)arg3;
 + (id)currencyCodeForUnit:(int)arg1;
 + (int)dimensionForUnit:(int)arg1;
 + (void)initialize;
 + (double)multiplierForUnitPrefix:(int)arg1;
-+ (CDStruct_945081a1)prefixedUnitForString:(id)arg1;
++ (CDStruct_1ef3fb1f)prefixedUnitForString:(id)arg1;
 + (int)unitForCurrencyCode:(id)arg1;
 + (int)unitForString:(id)arg1;
 + (BOOL)unitIsMetric:(int)arg1;

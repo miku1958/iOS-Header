@@ -17,10 +17,10 @@ __attribute__((visibility("hidden")))
     struct __CFSet *_sourceCache;
     struct os_unfair_lock_s _sourceCacheLock;
     BOOL _testMode;
-    CDUnion_f9025cb3 *_shmem;
+    _Atomic unsigned int *_shmem;
 }
 
-- (void)_initializeShmemPage:(union **)arg1;
+- (void)_initializeShmemPage:(_Atomic unsigned int **)arg1;
 - (void)checkIn;
 - (void)flushDomainInAgents:(const char *)arg1;
 - (void)flushDomainInDaemon:(const char *)arg1;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)listener;
 - (void)logDomainInconsistencyForProcess:(int)arg1 message:(id)arg2 source:(id)arg3;
 - (int)role;
-- (CDUnion_f9025cb3 *)shmem;
+- (_Atomic unsigned int *)shmem;
 - (void)synchronousWithSourceCache:(CDUnknownBlockType)arg1;
 - (unsigned int)userID;
 - (void)withSourceForDomain:(struct __CFString *)arg1 inContainer:(struct __CFString *)arg2 user:(struct __CFString *)arg3 byHost:(BOOL)arg4 managed:(BOOL)arg5 managedUsesContainer:(BOOL)arg6 cloudStoreEntitlement:(id)arg7 cloudConfigurationPath:(struct __CFString *)arg8 performWithSourceLock:(CDUnknownBlockType)arg9 afterReleasingSourceLock:(CDUnknownBlockType)arg10;

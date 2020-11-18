@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HMDAccessoryBrowser, HMDCentralMessageDispatcher, HMDCloudManager, HMDHomeManager, HMDMessageFilterChain, HMDRemoteIdentityRegistry, HMDXpcServer;
+@class HMDAccessoryBrowser, HMDCloudManager, HMDHomeManager, HMDXpcServer;
 @protocol OS_dispatch_queue;
 
 @interface HMDMainDriver : NSObject
@@ -15,18 +15,12 @@
     HMDHomeManager *_homeManager;
     HMDAccessoryBrowser *_accessoryBrowser;
     HMDXpcServer *_xpcServer;
-    HMDCentralMessageDispatcher *_messageDispatcher;
     HMDCloudManager *_cloudDataSyncManager;
-    HMDMessageFilterChain *_msgFilterChain;
-    HMDRemoteIdentityRegistry *_identityRegistry;
 }
 
 @property (strong, nonatomic) HMDAccessoryBrowser *accessoryBrowser; // @synthesize accessoryBrowser=_accessoryBrowser;
 @property (strong, nonatomic) HMDCloudManager *cloudDataSyncManager; // @synthesize cloudDataSyncManager=_cloudDataSyncManager;
 @property (strong, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property (strong, nonatomic) HMDRemoteIdentityRegistry *identityRegistry; // @synthesize identityRegistry=_identityRegistry;
-@property (strong, nonatomic) HMDCentralMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
-@property (strong, nonatomic) HMDMessageFilterChain *msgFilterChain; // @synthesize msgFilterChain=_msgFilterChain;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 @property (strong, nonatomic) HMDXpcServer *xpcServer; // @synthesize xpcServer=_xpcServer;
 

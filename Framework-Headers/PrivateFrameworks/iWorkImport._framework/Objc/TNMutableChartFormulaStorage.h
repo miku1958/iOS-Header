@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (void)addFormula:(id)arg1 withFormulaID:(CDStruct_ed6d627d)arg2;
+- (void)addFormula:(id)arg1 withFormulaID:(struct TSUCellCoord)arg2;
 - (void)clearFormulaListForKey:(unsigned long long)arg1;
 - (id)initWithChartFormulaStorage:(id)arg1;
 - (id)mutableFormulaListForType:(unsigned long long)arg1;

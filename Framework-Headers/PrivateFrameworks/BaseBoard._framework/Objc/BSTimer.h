@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSDispatchSource;
 @protocol OS_dispatch_queue;
@@ -31,6 +31,7 @@
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 
 + (id)scheduledTimerWithFireInterval:(double)arg1 queue:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 - (void)_callOutQueue_noteTimerFired;
 - (void)_queue_cancel;
 - (void)cancel;

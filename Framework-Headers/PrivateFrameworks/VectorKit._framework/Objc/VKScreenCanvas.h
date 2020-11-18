@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKCameraControllerDelegate-Protocol.h>
 
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
     struct VKEdgeInsets _labelEdgeInsets;
     BOOL _deallocing;
     struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue>> _renderQueue;
-    Renderer_94857723 *_mapRenderer;
+    Renderer_3c643a9a *_mapRenderer;
     struct LayoutContext *_layoutContext;
     Matrix_5173352a _bgColor;
     id<MDMapControllerDelegate> _mapDelegate;
@@ -84,13 +84,14 @@ __attribute__((visibility("hidden")))
 - (void)gglWillDrawWithTimestamp;
 - (id)initWithMapEngine:(struct MapEngine *)arg1 inBackground:(BOOL)arg2;
 - (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
+- (void)puckAnimator:(id)arg1 updatedTargetPosition:(const Coordinate3D_bc242218 *)arg2;
 - (BOOL)restoreViewportFromInfo:(id)arg1;
-- (vector_8bf6b0e5)roadMarkersForSelectionAtScreenPoint:(struct CGPoint)arg1;
 - (void)runAnimation:(id)arg1;
 - (void)setCameraController:(id)arg1;
 - (void)setContentsScale:(double)arg1;
 - (void)setNeedsLayout;
 - (void)setWantsLayout;
+- (void)softDealloc;
 - (shared_ptr_144c31f6)styleForFeature:(const shared_ptr_430519ce *)arg1;
 - (shared_ptr_a3c46825)styleManager;
 - (shared_ptr_664b6d77)stylesheet;

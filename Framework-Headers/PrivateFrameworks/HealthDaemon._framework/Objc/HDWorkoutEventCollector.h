@@ -22,8 +22,8 @@
 
 + (BOOL)isAvailableInCurrentHardware;
 - (void).cxx_destruct;
-- (void)immediateUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithProfile:(id)arg1 delegate:(id)arg2;
+- (void)requestPendingEventsThroughDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)startWithSessionId:(id)arg1;
 - (void)stop;
 - (BOOL)supportsWorkoutActivityType:(unsigned long long)arg1;

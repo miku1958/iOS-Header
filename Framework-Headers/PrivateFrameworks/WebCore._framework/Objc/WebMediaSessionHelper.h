@@ -10,13 +10,13 @@ __attribute__((visibility("hidden")))
 @interface WebMediaSessionHelper : NSObject
 {
     struct MediaSessionManageriOS *_callback;
-    RetainPtr_20c38587 _volumeView;
-    struct RetainPtr<MPAVRoutingController> _airPlayPresenceRoutingController;
+    struct RetainPtr<AVRouteDetector> _routeDetector;
+    BOOL _monitoringAirPlayRoutes;
+    BOOL _startMonitoringAirPlayRoutesPending;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)allocateVolumeView;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (void)applicationDidEnterBackground:(id)arg1;
 - (void)applicationWillEnterForeground:(id)arg1;
@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasWirelessTargetsAvailable;
 - (id)initWithCallback:(struct MediaSessionManageriOS *)arg1;
 - (void)interruption:(id)arg1;
-- (void)setVolumeView:(RetainPtr_20c38587)arg1;
 - (void)startMonitoringAirPlayRoutes;
 - (void)stopMonitoringAirPlayRoutes;
 - (void)wirelessRoutesAvailableDidChange:(id)arg1;

@@ -10,11 +10,11 @@
 
 @interface PKPaymentTransactionTableCell : PKTableViewCell
 {
-    BOOL _sizeLabels;
     UILabel *_primaryLabel;
     UILabel *_secondaryLabel;
     UILabel *_tertiaryLabel;
     UILabel *_transactionValueLabel;
+    BOOL _isTemplateLayout;
     BOOL _showsAvatarView;
     UIColor *_primaryColor;
     UIColor *_secondaryColor;
@@ -46,6 +46,7 @@
 + (double)rowHeightWithTransactionValueFont:(id)arg1 secondaryLabelFont:(id)arg2;
 + (id)tertiaryLabelFont;
 - (void).cxx_destruct;
+- (struct CGSize)_layoutWithBounds:(struct CGRect)arg1;
 - (void)_updateAvatarView;
 - (id)defaultPrimaryColor;
 - (id)defaultSecondaryColor;
@@ -54,6 +55,7 @@
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (BOOL)shouldShowTransactionPreviewForTouchAtPoint:(struct CGPoint)arg1 inView:(id)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

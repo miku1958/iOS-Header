@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIInteractionProgressObserver-Protocol.h>
-#import <UIKit/UIPreviewInteractionControllerDelegate-Protocol.h>
+#import <UIKitCore/UIInteractionProgressObserver-Protocol.h>
+#import <UIKitCore/UIPreviewInteractionControllerDelegate-Protocol.h>
 
 @class CADisplayLink, MLULookupItem, NSArray, NSDictionary, NSString, UIGestureRecognizer, UIImageView, UIPreviewInteractionController, UIView, UIViewController;
 @protocol UIPreviewItemDelegate;

@@ -6,6 +6,7 @@
 
 #import <PhotosEditUI/PUEditPluginSession.h>
 
+__attribute__((visibility("hidden")))
 @interface PUVideoEditPluginSession : PUEditPluginSession
 {
     BOOL _allowLoopingVideoExtensions;

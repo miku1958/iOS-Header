@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
@@ -22,12 +22,12 @@
     NSObject<OS_dispatch_source> *_probeSourceV4;
     int _probeSocketV6;
     NSObject<OS_dispatch_source> *_probeSourceV6;
-    int _reachableSecs;
+    unsigned int _reReachableCount;
     unsigned int _rxCount;
     unsigned int _txCount;
     unsigned int _txErrors;
     struct LogCategory *_ucat;
-    unsigned int _unreachableSecs;
+    unsigned int _unreachableCount;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;

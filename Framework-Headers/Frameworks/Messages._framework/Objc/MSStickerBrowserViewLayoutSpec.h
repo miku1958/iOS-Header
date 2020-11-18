@@ -10,16 +10,14 @@
 {
     long long _stickerSize;
     long long _interfaceOrientation;
-    double _minimumInteritemSpacing;
     struct CGSize _itemSize;
-    struct UIEdgeInsets _sectionInset;
 }
 
 @property (readonly, nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (readonly, nonatomic) struct CGSize itemSize; // @synthesize itemSize=_itemSize;
-@property (readonly, nonatomic) double minimumInteritemSpacing; // @synthesize minimumInteritemSpacing=_minimumInteritemSpacing;
+@property (readonly, nonatomic) double minimumInteritemSpacing;
 @property (readonly, nonatomic) double minimumLineSpacing;
-@property (readonly, nonatomic) struct UIEdgeInsets sectionInset; // @synthesize sectionInset=_sectionInset;
+@property (readonly, nonatomic) struct UIEdgeInsets sectionInset;
 @property (readonly, nonatomic) long long stickerSize; // @synthesize stickerSize=_stickerSize;
 
 + (id)specWithSizeClass:(long long)arg1 interfaceOrientation:(long long)arg2;

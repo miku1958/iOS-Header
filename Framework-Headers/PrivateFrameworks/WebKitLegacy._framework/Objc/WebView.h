@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSString *_draggedLinkTitle;
 @property (readonly, nonatomic) NSURL *_draggedLinkURL;
 @property (nonatomic, setter=_setUnobscuredSafeAreaInsets:) struct WebEdgeInsets _unobscuredSafeAreaInsets;
+@property (nonatomic, setter=_setUseSystemAppearance:) BOOL _useSystemAppearance;
 @property (copy, nonatomic) NSString *applicationNameForUserAgent;
 @property (readonly, nonatomic) WebBackForwardList *backForwardList;
 @property (readonly, nonatomic) BOOL canGoBack;
@@ -72,7 +73,6 @@
 + (void)_addUserScriptToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectionTime:(int)arg7 injectedFrames:(int)arg8;
 + (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6;
 + (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectedFrames:(int)arg7;
-+ (BOOL)_allowCookies;
 + (unsigned long long)_cacheModel;
 + (void)_cacheModelChangedNotification:(id)arg1;
 + (BOOL)_canHandleRequest:(id)arg1;
@@ -112,7 +112,6 @@
 + (void)_reportException:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;
 + (BOOL)_representationExistsForURLScheme:(id)arg1;
 + (void)_resetOriginAccessWhitelists;
-+ (void)_setAllowCookies:(BOOL)arg1;
 + (void)_setAlwaysUsesComplexTextCodePath:(BOOL)arg1;
 + (void)_setCacheModel:(unsigned long long)arg1;
 + (void)_setDomainRelaxationForbidden:(BOOL)arg1 forURLScheme:(id)arg2;
@@ -189,6 +188,7 @@
 - (void)_documentScaleChanged;
 - (id)_downloadURL:(id)arg1;
 - (id)_editingDelegateForwarder;
+- (BOOL)_effectiveAppearanceIsDark;
 - (id)_elementAtWindowPoint:(struct CGPoint)arg1;
 - (void)_endedDataInteraction:(struct CGPoint)arg1 global:(struct CGPoint)arg2;
 - (void)_enterVideoFullscreenForVideoElement:(struct HTMLVideoElement *)arg1 mode:(unsigned int)arg2;
@@ -312,7 +312,6 @@
 - (void)_setUIWebViewUserAgentWithBuildVersion:(id)arg1;
 - (void)_setUseFastImageScalingMode:(BOOL)arg1;
 - (void)_setUseFixedLayout:(BOOL)arg1;
-- (void)_setUserMediaClient:(id)arg1;
 - (void)_setVisibilityState:(int)arg1 isInitialState:(BOOL)arg2;
 - (void)_setWantsTelephoneNumberParsing:(BOOL)arg1;
 - (void)_setWebGLEnabled:(BOOL)arg1;
@@ -332,7 +331,6 @@
 - (unsigned long long)_updatedDataInteraction:(id)arg1 client:(struct CGPoint)arg2 global:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
 - (BOOL)_useFixedLayout;
 - (struct String)_userAgentString;
-- (id)_userMediaClient;
 - (BOOL)_viewClass:(Class *)arg1 andRepresentationClass:(Class *)arg2 forMIMEType:(id)arg3;
 - (void)_viewGeometryDidChange;
 - (float)_viewScaleFactor;
@@ -610,6 +608,7 @@
 - (id)userAgentForURL:(id)arg1;
 - (BOOL)usesPageCache;
 - (int)validationMessageTimerMagnification;
+- (void)viewDidChangeEffectiveAppearance;
 - (void)viewDidMoveToWindow;
 - (void)yank:(id)arg1;
 - (void)yankAndSelect:(id)arg1;

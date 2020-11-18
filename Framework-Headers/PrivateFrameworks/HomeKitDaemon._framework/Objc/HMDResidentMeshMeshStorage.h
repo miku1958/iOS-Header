@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDDevice, HMDResidentMesh, NSMutableSet;
+@class HMDDevice, HMDResidentMesh, NSMutableDictionary, NSMutableSet;
 
 @interface HMDResidentMeshMeshStorage : HMFObject
 {
@@ -15,8 +15,10 @@
     HMDDevice *_device;
     NSMutableSet *_accessoryUUIDs;
     unsigned long long _generationCount;
+    NSMutableDictionary *_accessoryListWithLinkQuality;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *accessoryListWithLinkQuality; // @synthesize accessoryListWithLinkQuality=_accessoryListWithLinkQuality;
 @property (strong, nonatomic) NSMutableSet *accessoryUUIDs; // @synthesize accessoryUUIDs=_accessoryUUIDs;
 @property (strong, nonatomic) HMDDevice *device; // @synthesize device=_device;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;

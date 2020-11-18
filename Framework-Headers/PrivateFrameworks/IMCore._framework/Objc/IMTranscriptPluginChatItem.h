@@ -14,6 +14,7 @@
 {
     BOOL _isLastChatItemOfPluginType;
     BOOL _hasSetIsLastChatItemOfPluginType;
+    BOOL _parentChatHasKnownParticipants;
     IMPluginPayload *_initialPayload;
     NSString *_bundleIdentifier;
     IMBalloonPluginDataSource *_dataSource;
@@ -31,13 +32,14 @@
 @property (nonatomic, setter=setLastChatItemOfPluginType:) BOOL isLastChatItemOfPluginType; // @synthesize isLastChatItemOfPluginType=_isLastChatItemOfPluginType;
 @property (readonly, nonatomic) BOOL isPlayed;
 @property (readonly, nonatomic) BOOL isSaved;
+@property (readonly, nonatomic) BOOL parentChatHasKnownParticipants; // @synthesize parentChatHasKnownParticipants=_parentChatHasKnownParticipants;
 @property (readonly, nonatomic) unsigned long long playbackType;
 @property (readonly, nonatomic) NSString *pluginSessionGUID;
 @property (readonly) Class superclass;
 @property (readonly, strong, nonatomic) NSString *type;
 
 - (void).cxx_destruct;
-- (id)_initWithItem:(id)arg1 initialPayload:(id)arg2 messagePartRange:(struct _NSRange)arg3;
+- (id)_initWithItem:(id)arg1 initialPayload:(id)arg2 messagePartRange:(struct _NSRange)arg3 parentChatHasKnownParticipants:(BOOL)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)wantsAutoPlayback;
 

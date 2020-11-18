@@ -11,25 +11,43 @@
 @interface UNSNotificationCategoryRecord : NSObject
 {
     BOOL _hasCustomDismissAction;
+    BOOL _hasCustomSilenceAction;
     BOOL _shouldAllowInCarPlay;
     BOOL _privacyOptionShowTitle;
     BOOL _privacyOptionShowSubtitle;
+    BOOL _preventAutomaticRemovalFromRecent;
+    BOOL _revealAdditionalContentWhenPresented;
+    BOOL _preventAutomaticLock;
+    BOOL _preventDismissWhenClosed;
+    BOOL _presentFullScreenAlertOverList;
     NSArray *_actions;
     NSString *_identifier;
     NSArray *_intentIdentifiers;
     NSArray *_minimalActions;
     NSString *_privateBody;
+    NSString *_summaryFormat;
+    NSString *_backgroundStyle;
+    NSString *_listPriority;
 }
 
 @property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (copy, nonatomic) NSString *backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (nonatomic) BOOL hasCustomDismissAction; // @synthesize hasCustomDismissAction=_hasCustomDismissAction;
+@property (nonatomic) BOOL hasCustomSilenceAction; // @synthesize hasCustomSilenceAction=_hasCustomSilenceAction;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSArray *intentIdentifiers; // @synthesize intentIdentifiers=_intentIdentifiers;
+@property (copy, nonatomic) NSString *listPriority; // @synthesize listPriority=_listPriority;
 @property (copy, nonatomic) NSArray *minimalActions; // @synthesize minimalActions=_minimalActions;
+@property (nonatomic) BOOL presentFullScreenAlertOverList; // @synthesize presentFullScreenAlertOverList=_presentFullScreenAlertOverList;
+@property (nonatomic) BOOL preventAutomaticLock; // @synthesize preventAutomaticLock=_preventAutomaticLock;
+@property (nonatomic) BOOL preventAutomaticRemovalFromRecent; // @synthesize preventAutomaticRemovalFromRecent=_preventAutomaticRemovalFromRecent;
+@property (nonatomic) BOOL preventDismissWhenClosed; // @synthesize preventDismissWhenClosed=_preventDismissWhenClosed;
 @property (nonatomic) BOOL privacyOptionShowSubtitle; // @synthesize privacyOptionShowSubtitle=_privacyOptionShowSubtitle;
 @property (nonatomic) BOOL privacyOptionShowTitle; // @synthesize privacyOptionShowTitle=_privacyOptionShowTitle;
 @property (copy, nonatomic) NSString *privateBody; // @synthesize privateBody=_privateBody;
+@property (nonatomic) BOOL revealAdditionalContentWhenPresented; // @synthesize revealAdditionalContentWhenPresented=_revealAdditionalContentWhenPresented;
 @property (nonatomic) BOOL shouldAllowInCarPlay; // @synthesize shouldAllowInCarPlay=_shouldAllowInCarPlay;
+@property (copy, nonatomic) NSString *summaryFormat; // @synthesize summaryFormat=_summaryFormat;
 
 - (void).cxx_destruct;
 - (id)description;

@@ -7,9 +7,11 @@
 #import <objc/NSObject.h>
 
 @class AWDServerConnection, NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface WBSAnalyticsLogger : NSObject
 {
+    NSObject<OS_dispatch_queue> *_analyticsSynchronizationQueue;
     NSMutableDictionary *_pageLoadStartTimes;
     AWDServerConnection *_awdServer;
 }
@@ -31,11 +33,11 @@
 - (void)didSuccessfullyMigrateToCKBookmarksAsPrimaryMigrator:(BOOL)arg1;
 - (void)didToggleDomainSpecificAutomaticReader:(BOOL)arg1;
 - (void)didToggleGloballyUseAutomaticReader:(BOOL)arg1;
-- (id)init;
+- (id)initWithQueue:(id)arg1;
 - (void)pageLoadCompleted:(unsigned long long)arg1;
 - (void)pageLoadCompleted:(unsigned long long)arg1 withErrorCode:(long long)arg2;
 - (void)pageLoadStarted:(unsigned long long)arg1;
-- (BOOL)registerQueriableMetric:(unsigned int)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)registerQueriableMetric:(unsigned int)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)safeBrowsingUserActionAfterSeeingWarning:(int)arg1;
 - (void)safeBrowsingWarningPageShown:(int)arg1;
 - (void)showedAutoFillQuickTypeSuggestionWithCategory:(int)arg1 formProperty:(id)arg2;
@@ -43,6 +45,9 @@
 - (void)submitVersioningMetricWithVersion:(id)arg1 variant:(int)arg2;
 - (void)unableToSilentlyMigrateToCKBookmarksWithReason:(int)arg1;
 - (void)userDidParticipateInPasswordAutoFillWithInteraction:(int)arg1;
+- (void)userDidReceiveSharedPasswordWithOutcome:(int)arg1;
+- (void)userDidSharePasswordWithOutcome:(int)arg1;
+- (void)userInteractedWithGeneratedPasswordWithInteractionType:(int)arg1;
 - (void)userTappedAutoFillQuickTypeSuggestionWithCategory:(int)arg1 formProperty:(id)arg2;
 
 @end

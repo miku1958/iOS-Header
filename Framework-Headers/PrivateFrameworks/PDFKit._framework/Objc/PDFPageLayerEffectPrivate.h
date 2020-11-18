@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CALayer, NSMutableDictionary, NSUUID, PDFAnnotation, PDFSelection, PDFTimer;
+@class CALayer, LoupeRenderRequest, NSMutableDictionary, NSUUID, PDFAnnotation, PDFSelection, PDFTimer;
 @protocol PDFPageLayerInterface;
 
 __attribute__((visibility("hidden")))
@@ -37,6 +37,8 @@ __attribute__((visibility("hidden")))
     CALayer *lollipopMagnifierLayer;
     struct CGImage *lollipopImageMask;
     struct CGSize lollipopSize;
+    LoupeRenderRequest *loupeRenderRequest;
+    struct os_unfair_lock_s loupeRenderRequestLock;
 }
 
 - (void).cxx_destruct;

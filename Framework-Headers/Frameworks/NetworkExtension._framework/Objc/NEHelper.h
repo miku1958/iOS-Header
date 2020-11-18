@@ -24,6 +24,7 @@
 - (id)connection;
 - (void)dealloc;
 - (id)initWithDelegateClassID:(int)arg1 queue:(id)arg2;
+- (id)initWithDelegateClassID:(int)arg1 queue:(id)arg2 initialMessage:(id)arg3;
 - (void)sendRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 
 @end

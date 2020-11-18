@@ -12,9 +12,6 @@
 
 @property (nonatomic) int columnAlignment;
 @property (nonatomic) int dataAlignment;
-@property (readonly, nonatomic) BOOL hasColumnAlignment;
-@property (readonly, nonatomic) BOOL hasDataAlignment;
-@property (readonly, nonatomic) BOOL hasIsEqualWidth;
 @property (nonatomic) BOOL isEqualWidth;
 @property (readonly, nonatomic) NSData *jsonData;
 

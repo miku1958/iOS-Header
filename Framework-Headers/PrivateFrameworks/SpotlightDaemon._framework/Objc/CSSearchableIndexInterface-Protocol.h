@@ -31,6 +31,7 @@
 - (void)deleteAllSearchableItemsWithBundleID:(NSString *)arg1 protectionClass:(NSString *)arg2 shouldGC:(BOOL)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)deleteInteractionsWithGroupIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2 protectionClass:(NSString *)arg3 options:(long long)arg4 completionHandler:(void (^)(NSError *))arg5;
 - (void)deleteInteractionsWithIdentifiers:(NSArray *)arg1 bundleID:(NSString *)arg2 protectionClass:(NSString *)arg3 options:(long long)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)fetchAttributes:(NSArray *)arg1 protectionClass:(NSString *)arg2 bundleID:(NSString *)arg3 identifiers:(NSArray *)arg4 completionHandler:(void (^)(id, NSError *))arg5;
 - (void)flushUserActivities;
 - (void)performDataMigrationWithTimeout:(NSNumber *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)userPerformedAction:(CSUserAction *)arg1 withItem:(CSSearchableItem *)arg2 protectionClass:(NSString *)arg3;

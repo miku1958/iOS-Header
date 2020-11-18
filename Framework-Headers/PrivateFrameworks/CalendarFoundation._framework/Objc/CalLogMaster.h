@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CalLogNode, NSArray;
 @protocol OS_dispatch_group, OS_dispatch_queue;
@@ -52,6 +52,7 @@
 - (void)processEnvelope:(id)arg1;
 - (void)registerForConfigUpdateNotifications;
 - (void)reloadTopLevelNodes;
+- (BOOL)shouldProcessNamespace:(id)arg1;
 
 @end
 

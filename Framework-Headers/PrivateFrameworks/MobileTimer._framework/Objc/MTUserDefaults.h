@@ -6,23 +6,52 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileTimer/MTPersistence-Protocol.h>
+@class NSMutableDictionary, NSUserDefaults;
+@protocol NAScheduler;
 
-@class NSString;
-
-@interface MTUserDefaults : NSObject <MTPersistence>
+@interface MTUserDefaults : NSObject
 {
+    id<NAScheduler> _serializer;
+    NSUserDefaults *_userDefaults;
+    NSMutableDictionary *_observers;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) NSMutableDictionary *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
+@property (strong, nonatomic) NSUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
++ (id)_distributedNotificationForLocalNotification:(id)arg1;
++ (id)_localNotificationForDistributedNotification:(id)arg1;
++ (id)sharedUserDefaults;
+- (void).cxx_destruct;
+- (void)_postNotification:(id)arg1;
+- (BOOL)boolForKey:(id)arg1;
+- (BOOL)boolForKey:(id)arg1 exists:(BOOL *)arg2;
+- (void)distributedNotificationPosted:(id)arg1;
 - (float)floatForKey:(id)arg1;
+- (float)floatForKey:(id)arg1 exists:(BOOL *)arg2;
+- (id)initWithUserDefaults:(id)arg1;
+- (long long)integerForKey:(id)arg1 defaultValue:(long long)arg2;
+- (long long)integerForKey:(id)arg1 exists:(BOOL *)arg2;
+- (long long)integerForKey:(id)arg1 isValid:(CDUnknownBlockType)arg2 defaultValue:(long long)arg3;
 - (id)objectForKey:(id)arg1;
+- (id)objectForKey:(id)arg1 defaultValue:(id)arg2;
+- (void)registerNotification:(id)arg1 observer:(id)arg2;
+- (void)removeObjectForKey:(id)arg1;
+- (void)setBool:(BOOL)arg1 forKey:(id)arg2;
+- (void)setBool:(BOOL)arg1 forKey:(id)arg2 notification:(id)arg3;
 - (void)setFloat:(float)arg1 forKey:(id)arg2;
+- (void)setFloat:(float)arg1 forKey:(id)arg2 notification:(id)arg3;
+- (void)setInteger:(long long)arg1 forKey:(id)arg2;
+- (void)setInteger:(long long)arg1 forKey:(id)arg2 notification:(id)arg3;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)setObject:(id)arg1 forKey:(id)arg2 notification:(id)arg3;
+- (void)setTimeInterval:(double)arg1 forKey:(id)arg2;
+- (void)setTimeInterval:(double)arg1 forKey:(id)arg2 notification:(id)arg3;
+- (double)timeIntervalForKey:(id)arg1 defaultValue:(double)arg2;
+- (double)timeIntervalForKey:(id)arg1 exists:(BOOL *)arg2;
+- (double)timeIntervalForKey:(id)arg1 isValid:(CDUnknownBlockType)arg2 defaultValue:(double)arg3;
+- (void)unregisterNotification:(id)arg1 observer:(id)arg2;
 
 @end
 

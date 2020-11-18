@@ -8,17 +8,19 @@
 
 #import <WatchListKitUI/WLKUISharingInterface-Protocol.h>
 
-@class UIActivityViewController;
+@class WLKUISharingInterfaceActivityViewController;
 
 @interface WLKUISharingInterface : IKJSObject <WLKUISharingInterface>
 {
-    UIActivityViewController *_activityViewController;
+    WLKUISharingInterfaceActivityViewController *_activityViewController;
     BOOL _isPresented;
 }
 
 - (void).cxx_destruct;
+- (id)_sourceViewForDomElement:(long long)arg1;
 - (void)dismiss;
-- (void)showSharingForItem:(id)arg1:(id)arg2;
+- (void)displaySharingForItem:(id)arg1:(id)arg2:(id)arg3:(id)arg4:(id)arg5:(id)arg6;
+- (void)showSharingForItem:(id)arg1:(id)arg2:(id)arg3;
 
 @end
 

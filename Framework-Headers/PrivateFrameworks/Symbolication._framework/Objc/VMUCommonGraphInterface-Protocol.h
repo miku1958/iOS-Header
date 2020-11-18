@@ -34,6 +34,7 @@
 - (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
 - (CDStruct_599faf0f)nodeDetails:(unsigned int)arg1;
 - (void)refineTypesWithOverlay:(VMUScanOverlay *)arg1;
+- (NSString *)shortLabelForNode:(unsigned int)arg1;
 - (VMUVMRegion *)vmuVMRegionForAddress:(unsigned long long)arg1;
 - (VMUVMRegion *)vmuVMRegionForNode:(unsigned int)arg1;
 - (NSString *)zoneNameForIndex:(unsigned int)arg1;

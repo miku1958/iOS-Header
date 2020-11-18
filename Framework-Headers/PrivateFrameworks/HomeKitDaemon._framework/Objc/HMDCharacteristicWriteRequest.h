@@ -13,17 +13,19 @@
     id _value;
     NSData *_authorizationData;
     NSUUID *_identifier;
+    unsigned long long _requestType;
 }
 
 @property (readonly, nonatomic) NSData *authorizationData; // @synthesize authorizationData=_authorizationData;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (readonly, nonatomic) id value; // @synthesize value=_value;
 
-+ (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3;
-+ (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4;
++ (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4 type:(unsigned long long)arg5;
++ (id)writeRequestWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 type:(unsigned long long)arg4;
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4;
+- (id)initWithCharacteristic:(id)arg1 value:(id)arg2 authorizationData:(id)arg3 identifier:(id)arg4 type:(unsigned long long)arg5;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, TSCHMultiDataLayerAnimationInfo;
 
@@ -16,9 +16,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)entry;
+- (void).cxx_destruct;
 - (void)addAnimation:(id)arg1 animationInfo:(id)arg2;
 - (id)animation;
-- (void)dealloc;
 - (id)init;
 
 @end

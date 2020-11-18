@@ -6,10 +6,10 @@
 
 #import <CallKit/NSObject-Protocol.h>
 
-@class CXTransaction, NSString;
+@class CXTransaction;
 
 @protocol CXCallControllerHostProtocol <NSObject>
 - (oneway void)requestCalls:(void (^)(NSArray *))arg1;
-- (oneway void)requestTransaction:(CXTransaction *)arg1 forExtensionIdentifier:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
+- (oneway void)requestTransaction:(CXTransaction *)arg1 reply:(void (^)(NSError *))arg2;
 @end
 

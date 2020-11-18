@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue;
 
@@ -18,12 +18,12 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s mUnfairLock;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithLimit:(unsigned long long)arg1;
+- (id)initWithLimit:(unsigned long long)arg1 name:(id)arg2;
 - (void)performAsync:(CDUnknownBlockType)arg1;
 - (void)performSync:(CDUnknownBlockType)arg1;
-- (id)targetDispatchQueue;
 
 @end
 

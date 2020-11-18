@@ -9,31 +9,37 @@
 #import <CloudPhotoLibrary/NSCopying-Protocol.h>
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@class CPLResourceIdentity, NSString;
+@class CPLResourceIdentity, CPLScopedIdentifier, NSString;
 
 @interface CPLResource : NSObject <NSSecureCoding, NSCopying>
 {
     unsigned long long _backgroundDownloadTaskIdentifier;
-    BOOL _generateDerivative;
     BOOL _canGenerateDerivative;
     CPLResourceIdentity *_identity;
-    NSString *_itemIdentifier;
+    CPLScopedIdentifier *_itemScopedIdentifier;
     unsigned long long _resourceType;
+    unsigned long long _sourceResourceType;
 }
 
 @property (nonatomic) BOOL canGenerateDerivative; // @synthesize canGenerateDerivative=_canGenerateDerivative;
-@property (nonatomic) BOOL generateDerivative; // @synthesize generateDerivative=_generateDerivative;
 @property (strong, nonatomic) CPLResourceIdentity *identity; // @synthesize identity=_identity;
-@property (copy, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property (copy, nonatomic) NSString *itemIdentifier;
+@property (copy, nonatomic) CPLScopedIdentifier *itemScopedIdentifier; // @synthesize itemScopedIdentifier=_itemScopedIdentifier;
 @property (nonatomic) unsigned long long resourceType; // @synthesize resourceType=_resourceType;
+@property (nonatomic) unsigned long long sourceResourceType; // @synthesize sourceResourceType=_sourceResourceType;
 
++ (unsigned long long)countOfResourceTypes;
++ (BOOL)cplShouldGenerateDerivatives;
++ (BOOL)cplShouldIgnorePropertyForCoding:(id)arg1;
 + (BOOL)cplShouldIgnorePropertyForEquality:(id)arg1;
 + (float)derivativeGenerationThreshold;
 + (id)descriptionForResourceType:(unsigned long long)arg1;
++ (void)enumerateResourceTypesWithBlock:(CDUnknownBlockType)arg1;
 + (BOOL)hasPriorityBoostForResourceType:(unsigned long long)arg1;
 + (unsigned long long)maxPixelSizeForResourceType:(unsigned long long)arg1;
-+ (id)normalizedResourcesFromResources:(id)arg1;
++ (id)normalizedResourcesFromResources:(id)arg1 resourcePerResourceType:(id *)arg2;
 + (id)shortDescriptionForResourceType:(unsigned long long)arg1;
++ (BOOL)shouldIgnoreResourceTypeOnUpload:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned long long)_backgroundDownloadTaskIdentifier;
@@ -44,9 +50,11 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)estimatedResourceSize;
 - (unsigned long long)hash;
+- (id)initWithCPLArchiver:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithResourceIdentity:(id)arg1 itemIdentifier:(id)arg2;
 - (id)initWithResourceIdentity:(id)arg1 itemIdentifier:(id)arg2 resourceType:(unsigned long long)arg3;
+- (id)initWithResourceIdentity:(id)arg1 itemScopedIdentifier:(id)arg2 resourceType:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isTrackedForUpload;
 - (BOOL)shouldApplyDataProtection;

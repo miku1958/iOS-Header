@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSHashTable, NSMutableSet, NSSet;
+@class NSArray, NSHashTable, NSMutableSet, NSSet, TSPReferenceOrderedSet;
 
 __attribute__((visibility("hidden")))
 @interface TSPObjectInfo : NSObject
 {
     NSHashTable *_referencedDataHashTable;
-    NSHashTable *_referencedObjectsHashTable;
+    TSPReferenceOrderedSet *_referencedObjectsSet;
     NSMutableSet *_referencedObjectUUIDs;
     NSArray *_referencedData;
     NSArray *_referencedObjects;

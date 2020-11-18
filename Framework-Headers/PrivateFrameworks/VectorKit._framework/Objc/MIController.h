@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKMapViewDelegate-Protocol.h>
 
@@ -16,7 +16,6 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_xpc_object> *_connection;
     VKMapView *_mapView;
-    struct shared_ptr<MITManager> _mitManager;
     struct DebugTree _debugTree;
     BOOL _isActive;
 }
@@ -33,13 +32,10 @@
 - (void)activateController:(id)arg1;
 - (void)deactivateController;
 - (void)decodeDebugTreeData:(id)arg1;
-- (void)decodeMITreeData:(id)arg1;
 - (void)handleXPCEvent:(id)arg1;
 - (id)init;
-- (void)mapLayer:(id)arg1 didChangeRegionAnimated:(BOOL)arg2;
 - (void)recievedData:(id)arg1;
 - (void)sendData:(id)arg1;
-- (BOOL)takeMITSnapshot:(out id *)arg1;
 
 @end
 

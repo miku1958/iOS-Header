@@ -31,6 +31,7 @@
 - (BOOL)_checkIfRestoreDone;
 - (void)_handleF5Reset;
 - (void)_handleRestoreDone;
+- (id)gatherDiagnostics;
 - (void)handleNotification:(id)arg1;
 - (id)handledLiveDarwinNotifications;
 - (BOOL)handlesNotification:(id)arg1;

@@ -6,27 +6,49 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactStore, NSArray;
+#import <IMAssistantCore/IMAssistantINMessageConverterPersonProvider-Protocol.h>
+#import <IMAssistantCore/IMAssistantIdentifiableIntentHandler-Protocol.h>
 
-@interface IMAssistantMessageHandler : NSObject
+@class CNContactStore, IMChatRegistry, NSArray, NSString;
+
+@interface IMAssistantMessageHandler : NSObject <IMAssistantINMessageConverterPersonProvider, IMAssistantIdentifiableIntentHandler>
 {
     CNContactStore *_contactStore;
     NSArray *_keysToFetch;
+    NSString *_intentIdentifier;
+    IMChatRegistry *_chatRegistry;
 }
 
+@property (strong, nonatomic) IMChatRegistry *chatRegistry; // @synthesize chatRegistry=_chatRegistry;
 @property (readonly, nonatomic) CNContactStore *contactStore;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *intentIdentifier;
 @property (readonly, nonatomic) NSArray *keysToFetch;
+@property (readonly) Class superclass;
 
++ (id)connectToIMDaemonController;
++ (void)contactStoreDidChange:(id)arg1;
++ (id)handleToContactIdentifierCache;
++ (void)registerForContactStoreChangeNotifications;
++ (id)spiHandleToPersonCache;
 - (void).cxx_destruct;
-- (id)IMPersonForCNContact:(id)arg1;
-- (id)_initWithContactStore:(id)arg1 keysToFetch:(id)arg2;
-- (id)contactMatchingIdentifier:(id)arg1 forPerson:(id)arg2;
+- (id)_initWithContactStore:(id)arg1 keysToFetch:(id)arg2 intentIdentifier:(id)arg3;
+- (id)contactIdentifiersForParticipantsInChat:(id)arg1;
+- (id)contactIdentifiersMatchingHandle:(id)arg1;
+- (id)contactIdentifiersMatchingHandleID:(id)arg1;
+- (id)contactIdentifiersMatchingINPersonHandle:(id)arg1;
+- (id)contactIdentifiersMatchingSPIHandle:(id)arg1;
+- (id)contactWithIdentifier:(id)arg1;
 - (id)contactsMatchingINPerson:(id)arg1;
 - (id)contactsMatchingPredicate:(id)arg1 forPerson:(id)arg2;
-- (id)fetchMatchingContactsForINPerson:(id)arg1;
-- (id)init;
-- (id)initWithContactStore:(id)arg1;
-- (id)initWithContactStore:(id)arg1 keysToFetch:(id)arg2;
+- (void)forceTriggerResumeNotification;
+- (id)initWithContactStore:(id)arg1 intentIdentifier:(id)arg2;
+- (id)initWithContactStore:(id)arg1 keysToFetch:(id)arg2 intentIdentifier:(id)arg3;
+- (id)initWithIntentIdentifier:(id)arg1;
+- (id)meContactIdentifier;
+- (id)personFromSPIHandle:(id)arg1;
 
 @end
 

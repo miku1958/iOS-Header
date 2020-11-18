@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSString;
 
@@ -24,14 +24,14 @@
 @property (readonly, copy, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property (readonly, nonatomic, getter=isAppleInternalProfile) BOOL appleInternalProfile; // @synthesize appleInternalProfile=_appleInternalProfile;
 @property (readonly, nonatomic, getter=isBeta) BOOL beta; // @synthesize beta=_beta;
-@property (readonly, strong, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (readonly, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic, getter=isFreeDeveloperProfile) BOOL freeDeveloperProfile; // @synthesize freeDeveloperProfile=_freeDeveloperProfile;
 @property (readonly, nonatomic) BOOL provisionsAllDevices; // @synthesize provisionsAllDevices=_provisionsAllDevices;
 @property (readonly, nonatomic) BOOL provisionsThisDevice; // @synthesize provisionsThisDevice=_provisionsThisDevice;
 @property (readonly, copy, nonatomic) NSString *signerIdentity; // @synthesize signerIdentity=_signerIdentity;
 
+- (void).cxx_destruct;
 - (BOOL)allowsApplicationIdentifierEntitlement:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

@@ -6,13 +6,14 @@
 
 #import <UIKit/UIResponder.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 #import <SpriteKit/UIFocusItem-Protocol.h>
 
 @class GKEntity, MISSING_TYPE, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, SKPhysicsBody, SKReachConstraints, SKScene, UIView;
+@protocol UIFocusEnvironment, UIFocusItemContainer;
 
-@interface SKNode : UIResponder <NSCopying, NSCoding, UIFocusItem>
+@interface SKNode : UIResponder <NSCopying, NSSecureCoding, UIFocusItem>
 {
     struct SKCNode *_skcNode;
     SKNode *_parent;
@@ -52,6 +53,7 @@
 @property (weak, nonatomic) GKEntity *entity;
 @property (weak, nonatomic) GKEntity *entity; // @synthesize entity=_entity;
 @property (nonatomic) long long focusBehavior; // @synthesize focusBehavior=_focusBehavior;
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly, nonatomic) CDStruct_14d5dc5e globalAccumulatedBoundingVerts;
 @property (readonly, nonatomic) CDStruct_14d5dc5e globalBoundingVerts;
@@ -60,6 +62,7 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) const struct CGPath *outline;
 @property (readonly, nonatomic) SKNode *parent;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (nonatomic, getter=isPaused) BOOL paused;
 @property BOOL performFullCapture; // @synthesize performFullCapture=_performFullCapture;
 @property (strong, nonatomic) SKPhysicsBody *physicsBody;
@@ -79,9 +82,15 @@
 @property (nonatomic) double zPosition;
 @property (nonatomic) double zRotation;
 
++ (id)debugHierarchyChildGroupingID;
++ (id)debugHierarchyObjectsInGroupWithID:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3;
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
 + (id)node;
 + (id)nodeFromCaptureData:(id)arg1;
 + (id)nodeWithFileNamed:(id)arg1;
++ (id)nodeWithFileNamed:(id)arg1 securelyWithClasses:(id)arg2 andError:(id *)arg3;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct CGRect)_convertFrameToView:(id)arg1;
 - (id)_copyImageData;
@@ -101,7 +110,6 @@
 - (BOOL)_isEligibleForFocus;
 - (BOOL)_isEligibleForFocusInteraction;
 - (struct SKCNode *)_makeBackingNode;
-- (id)_parentFocusEnvironment;
 - (BOOL)_pathFromPhysicsBodyToPoints:(MISSING_TYPE ***)arg1 outSize:(unsigned long long *)arg2;
 - (void)_performCleanup;
 - (void)_processSearchTokens:(vector_408ca79d)arg1 visited:(set_3449d313 *)arg2 usingBlock:(CDUnknownBlockType)arg3 stopPointer:(BOOL *)arg4;
@@ -131,9 +139,6 @@
 - (id)createDebugHierarchyVisualRepresentation;
 - (id)createFullCaptureData;
 - (void)dealloc;
-- (id)debugHierarchyChildGroupingID;
-- (id)debugHierarchyObjectsInGroupWithID:(id)arg1 outOptions:(id *)arg2;
-- (id)debugHierarchyPropertyDescriptions;
 - (void)debugPrint;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

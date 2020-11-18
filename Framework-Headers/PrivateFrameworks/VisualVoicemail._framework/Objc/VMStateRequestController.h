@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMapTable, NSMutableArray;
+@class CTXPCServiceSubscriptionContext, NSMapTable, NSMutableArray;
 @protocol OS_dispatch_queue, VMCTMessageCenter;
 
 @interface VMStateRequestController : NSObject
@@ -15,8 +15,10 @@
     NSMapTable *_delegateToQueue;
     NSMutableArray *_stateRequests;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
+    CTXPCServiceSubscriptionContext *_context;
 }
 
+@property (readonly, nonatomic) CTXPCServiceSubscriptionContext *context; // @synthesize context=_context;
 @property (readonly, nonatomic) NSMapTable *delegateToQueue; // @synthesize delegateToQueue=_delegateToQueue;
 @property (readonly, nonatomic) id<VMCTMessageCenter> messageCenter; // @synthesize messageCenter=_messageCenter;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
@@ -28,8 +30,8 @@
 - (void)addStateRequest:(id)arg1;
 - (void)dealloc;
 - (void)handleCTMessageCenterNotification:(id)arg1;
-- (id)init;
-- (id)initWithMessageCenter:(id)arg1;
+- (id)initWithContext:(id)arg1;
+- (id)initWithMessageCenter:(id)arg1 context:(id)arg2;
 - (void)performSynchronousBlock:(CDUnknownBlockType)arg1;
 - (void)removeDelegate:(id)arg1;
 - (void)removeStateRequest:(id)arg1;

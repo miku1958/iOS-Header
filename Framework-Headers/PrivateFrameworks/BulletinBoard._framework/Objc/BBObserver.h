@@ -73,7 +73,6 @@
 - (void)clearBulletinsFromDate:(id)arg1 toDate:(id)arg2 inSections:(id)arg3;
 - (void)clearSection:(id)arg1;
 - (void)dealloc;
-- (void)getAlertBehaviorOverridesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAttachmentImageForBulletin:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getBulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)getBulletinsWithCompletion:(CDUnknownBlockType)arg1;
@@ -82,13 +81,10 @@
 - (void)getDataForAttachment:(id)arg1 bulletin:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)getParametersForSectionID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getPrimaryAttachmentDataForBulletin:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)getPrivilegedSenderTypesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoForActiveSectionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getSectionInfoForSectionIDs:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getSectionOrderRuleWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getSortDescriptorsForSectionID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getUniversalSectionIDForSectionID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
@@ -98,8 +94,6 @@
 - (id)initWithQueue:(id)arg1 forGateway:(id)arg2;
 - (void)invalidate;
 - (BOOL)isValid;
-- (void)noteAlertBehaviorOverrideStateChanged:(id)arg1;
-- (void)noteAlertBehaviorOverridesChanged:(id)arg1;
 - (void)noteServerReceivedResponseForBulletin:(id)arg1;
 - (id)parametersForSectionID:(id)arg1;
 - (void)removeBulletins:(id)arg1 inSection:(id)arg2;
@@ -113,8 +107,6 @@
 - (void)serverProxy:(id)arg1 connectionStateDidChange:(BOOL)arg2;
 - (void)updateBulletin:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)updateSectionInfo:(id)arg1;
-- (void)updateSectionOrder:(id)arg1;
-- (void)updateSectionOrderRule:(id)arg1;
 - (void)updateSectionParameters:(id)arg1 forSectionID:(id)arg2;
 
 @end

@@ -14,14 +14,16 @@
 @property (weak, nonatomic) MapsSuggestionsManager *manager;
 
 - (void)addDeduper:(id<MapsSuggestionsDeduper>)arg1;
-- (void)addFilter:(id<MapsSuggestionsFilter>)arg1;
 - (void)addImprover:(id<MapsSuggestionsImprover>)arg1;
+- (void)addPostFilter:(id<MapsSuggestionsFilter>)arg1;
+- (void)addPreFilter:(id<MapsSuggestionsFilter>)arg1;
 - (void)clearData;
+- (BOOL)postFiltersKept:(MapsSuggestionsEntry *)arg1;
+- (BOOL)preFiltersKept:(MapsSuggestionsEntry *)arg1;
 - (void)removeAllDedupers;
 - (void)removeAllFilters;
 - (void)removeAllImprovers;
 - (void)removeFilter:(id<MapsSuggestionsFilter>)arg1;
-- (BOOL)shouldKeepEntry:(MapsSuggestionsEntry *)arg1;
 - (struct NSArray *)topSuggestionsWithSourceEntries:(struct NSDictionary *)arg1 error:(id *)arg2;
 @end
 

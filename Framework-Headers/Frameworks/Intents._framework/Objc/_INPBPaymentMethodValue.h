@@ -7,41 +7,41 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBPaymentMethodValue-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBImageValue, _INPBValueMetadata;
+@class NSString, _INPBImageValue, _INPBValueMetadata;
 
-@interface _INPBPaymentMethodValue : PBCodable <NSCopying>
+@interface _INPBPaymentMethodValue : PBCodable <_INPBPaymentMethodValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    CDStruct_f953fb60 _has;
+    int _type;
     _INPBImageValue *_icon;
     NSString *_identificationHint;
     NSString *_name;
-    int _type;
     _INPBValueMetadata *_valueMetadata;
-    CDStruct_f953fb60 _has;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIcon;
 @property (readonly, nonatomic) BOOL hasIdentificationHint;
 @property (readonly, nonatomic) BOOL hasName;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBImageValue *icon; // @synthesize icon=_icon;
-@property (strong, nonatomic) NSString *identificationHint; // @synthesize identificationHint=_identificationHint;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSString *identificationHint; // @synthesize identificationHint=_identificationHint;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) Class superclass;
 @property (nonatomic) int type; // @synthesize type=_type;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

@@ -11,26 +11,26 @@
 @interface _NTKCGalleryCollectionCell : UICollectionViewCell
 {
     NTKCFaceContainerView *_faceContainerView;
-    UIView *_highlightedView;
     UILabel *_nameLabel;
     UIImageView *_nameImageView;
     NSLayoutConstraint *_nameBaselineConstraint;
     NSLayoutConstraint *_leadingImageConstraint;
     NSLayoutConstraint *_trailingImageConstraint;
     NSLayoutConstraint *_centerConstraint;
-    BOOL _active;
     NSString *_calloutName;
     UIImage *_calloutImage;
     UIFontMetrics *_fontMetrics;
 }
 
-@property (nonatomic) BOOL active; // @synthesize active=_active;
+@property (nonatomic) BOOL active;
 @property (strong, nonatomic) UIImage *calloutImage; // @synthesize calloutImage=_calloutImage;
 @property (copy, nonatomic) NSString *calloutName; // @synthesize calloutName=_calloutName;
 @property (strong, nonatomic) UIView *faceView;
 @property (strong, nonatomic) UIFontMetrics *fontMetrics; // @synthesize fontMetrics=_fontMetrics;
 
 + (struct CGSize)itemSizeWithCalloutName:(BOOL)arg1 andCalloutImage:(BOOL)arg2;
++ (id)luxoReuseIdentifier;
++ (id)nonLuxoReuseIdentifier;
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 - (void)_fontSizeDidChange;

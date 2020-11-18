@@ -21,9 +21,11 @@
 - (void)resumeTaskWithIdentifier:(unsigned long long)arg1 withProperties:(NSDictionary *)arg2;
 - (void)setBytesPerSecondLimit:(long long)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
 - (void)setDescription:(NSString *)arg1 forTask:(unsigned long long)arg2;
+- (void)setDiscretionaryOverride:(long long)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
 - (void)setLoadingPoolPriority:(double)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
 - (void)setPriority:(long long)arg1 forTaskWithIdentifier:(unsigned long long)arg2;
 - (void)setPropertyOnStreamWithIdentifier:(unsigned long long)arg1 propDict:(NSDictionary *)arg2 propKey:(NSString *)arg3 withReply:(void (^)(BOOL))arg4;
+- (void)setTLSCachePrefix:(NSString *)arg1;
 - (void)suspendTaskWithIdentifier:(unsigned long long)arg1;
 - (void)uploadTaskWithRequest:(NSURLRequest *)arg1 originalRequest:(NSURLRequest *)arg2 fromFile:(NSURL *)arg3 sandboxExtensionData:(NSData *)arg4 identifier:(unsigned long long)arg5 uniqueIdentifier:(NSString *)arg6 potentialCredentials:(NSDictionary *)arg7 reply:(void (^)(BOOL))arg8;
 @end

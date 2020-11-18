@@ -10,11 +10,12 @@
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMMutableApplicationData-Protocol.h>
 
-@class HMAccessory, HMApplicationData, HMDelegateCaller, HMFMessageDispatcher, HMHome, HMPendingRequests, HMThreadSafeMutableArrayCollection, HMXpcClient, NSArray, NSOperationQueue, NSString, NSUUID, _HMLocationHandler;
+@class HMAccessory, HMApplicationData, HMFUnfairLock, HMHome, HMHomeManagerConfiguration, HMMutableArray, NSArray, NSNumber, NSOperationQueue, NSString, NSUUID, _HMContext, _HMLocationHandler;
 @protocol HMHomeManagerDelegate, OS_dispatch_queue;
 
 @interface HMHomeManager : NSObject <HMFMessageReceiver, HMMutableApplicationData, HMApplicationData>
 {
+    HMFUnfairLock *_lock;
     HMAccessory *_currentAccessory;
     BOOL _thisDeviceResidentCapable;
     BOOL _residentEnabledForThisDevice;
@@ -24,6 +25,7 @@
     BOOL _frameworkMergeComplete;
     BOOL _fetchInProgress;
     BOOL _viewServiceActive;
+    int _serverGenerationCounterToken;
     id<HMHomeManagerDelegate> _delegate;
     HMHome *_primaryHome;
     HMHome *_currentHome;
@@ -31,44 +33,45 @@
     unsigned long long _dataSyncState;
     unsigned long long _status;
     unsigned long long _residentProvisioningStatus;
+    HMHomeManagerConfiguration *_configuration;
     unsigned long long _options;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMThreadSafeMutableArrayCollection *_currentHomes;
-    HMThreadSafeMutableArrayCollection *_homeInvitations;
-    HMXpcClient *_xpcClient;
-    HMFMessageDispatcher *_msgDispatcher;
+    HMMutableArray *_currentHomes;
+    HMMutableArray *_homeInvitations;
     NSOperationQueue *_mergeOperationQueue;
-    NSUUID *_uuid;
     unsigned long long _generationCounter;
-    HMPendingRequests *_pendingRequests;
+    NSNumber *_fileGenerationCounter;
+    NSNumber *_fileMetadataVersion;
     unsigned long long _metadataVersion;
-    HMDelegateCaller *_delegateCaller;
     _HMLocationHandler *_locationHandler;
     NSString *_homeCacheDir;
-    NSString *_homeCache;
+    NSString *_homeDataCache;
+    NSString *_metadataCache;
+    NSUUID *_uuid;
+    _HMContext *_context;
 }
 
 @property (readonly, getter=isAccessAllowedWhenLocked) BOOL accessAllowedWhenLocked; // @synthesize accessAllowedWhenLocked=_accessAllowedWhenLocked;
 @property (readonly, nonatomic) HMApplicationData *applicationData;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (readonly) HMHomeManagerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, weak) HMAccessory *currentAccessory;
 @property (readonly, nonatomic) HMHome *currentHome; // @synthesize currentHome=_currentHome;
-@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *currentHomes; // @synthesize currentHomes=_currentHomes;
+@property (strong, nonatomic) HMMutableArray *currentHomes; // @synthesize currentHomes=_currentHomes;
 @property (readonly, nonatomic, getter=isDataSyncInProgress) BOOL dataSyncInProgress;
 @property (readonly, nonatomic) unsigned long long dataSyncState; // @synthesize dataSyncState=_dataSyncState;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HMHomeManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didUpdateHomes; // @synthesize didUpdateHomes=_didUpdateHomes;
 @property (nonatomic) BOOL fetchInProgress; // @synthesize fetchInProgress=_fetchInProgress;
+@property (strong, nonatomic) NSNumber *fileGenerationCounter; // @synthesize fileGenerationCounter=_fileGenerationCounter;
+@property (strong, nonatomic) NSNumber *fileMetadataVersion; // @synthesize fileMetadataVersion=_fileMetadataVersion;
 @property (nonatomic) BOOL frameworkMergeComplete; // @synthesize frameworkMergeComplete=_frameworkMergeComplete;
 @property (nonatomic) unsigned long long generationCounter; // @synthesize generationCounter=_generationCounter;
 @property (readonly) unsigned long long hash;
-@property (strong) NSString *homeCache; // @synthesize homeCache=_homeCache;
 @property (strong) NSString *homeCacheDir; // @synthesize homeCacheDir=_homeCacheDir;
-@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *homeInvitations; // @synthesize homeInvitations=_homeInvitations;
+@property (strong) NSString *homeDataCache; // @synthesize homeDataCache=_homeDataCache;
+@property (strong, nonatomic) HMMutableArray *homeInvitations; // @synthesize homeInvitations=_homeInvitations;
 @property (readonly, copy, nonatomic) NSArray *homes;
 @property (readonly, copy, nonatomic) NSArray *incomingHomeInvitations;
 @property (readonly, nonatomic) _HMLocationHandler *locationHandler; // @synthesize locationHandler=_locationHandler;
@@ -76,36 +79,38 @@
 @property (strong, nonatomic) NSOperationQueue *mergeOperationQueue; // @synthesize mergeOperationQueue=_mergeOperationQueue;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (strong) NSString *metadataCache; // @synthesize metadataCache=_metadataCache;
 @property (nonatomic) unsigned long long metadataVersion; // @synthesize metadataVersion=_metadataVersion;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly) unsigned long long options; // @synthesize options=_options;
-@property (strong, nonatomic) HMPendingRequests *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property (strong, nonatomic) HMHome *primaryHome; // @synthesize primaryHome=_primaryHome;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, getter=isResidentEnabledForThisDevice) BOOL residentEnabledForThisDevice; // @synthesize residentEnabledForThisDevice=_residentEnabledForThisDevice;
 @property (readonly) unsigned long long residentProvisioningStatus; // @synthesize residentProvisioningStatus=_residentProvisioningStatus;
+@property (readonly, nonatomic) unsigned long long serverGenerationCounter;
+@property (nonatomic) int serverGenerationCounterToken; // @synthesize serverGenerationCounterToken=_serverGenerationCounterToken;
 @property (readonly) unsigned long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
 @property (readonly, getter=isThisDeviceResidentCapable) BOOL thisDeviceResidentCapable; // @synthesize thisDeviceResidentCapable=_thisDeviceResidentCapable;
-@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (nonatomic, getter=isViewServiceActive) BOOL viewServiceActive; // @synthesize viewServiceActive=_viewServiceActive;
-@property (strong, nonatomic) HMXpcClient *xpcClient; // @synthesize xpcClient=_xpcClient;
 
 + (BOOL)dataSyncInProgressFromDataSyncState:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)__isNameValid:(id)arg1 home:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)__handleHomeManagerState:(id)arg1;
+- (void)__removeAccountWithHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)__removeAccountWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)__resolveAccountHandle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_acceptInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_acceptInvitation:(id)arg1 presenceAuthStatus:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_addHomeWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_checkEventValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_checkName:(id)arg1 inHome:(id)arg2 withValidationOptions:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_declineInvitation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_deleteDuetEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_determineCacheDirectory;
-- (void)_determineCacheFile;
-- (void)_dumpCache:(id)arg1;
+- (void)_determineCacheFiles;
+- (void)_dumpCaches:(id)arg1 metadata:(id)arg2;
 - (void)_dumpState:(id)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_eraseHomeDataAndDeleteMetadata:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_fetchHomeConfigurationVerifyCacheRefreshRequested:(BOOL)arg1;
 - (void)_fetchHomeConfigurationWithCache:(BOOL)arg1 refreshRequested:(BOOL)arg2;
 - (void)_fetchHomeConfigurationWithPrivacyCheckWithCache:(BOOL)arg1 refreshRequested:(BOOL)arg2;
 - (void)_handleAccessAllowedWhenLockedUpdatedNotification:(id)arg1;
@@ -125,7 +130,6 @@
 - (void)_handleStatusUpdated:(id)arg1;
 - (void)_handleUserInvitationsUpdatedNotification:(id)arg1;
 - (id)_homeWithUUID:(id)arg1;
-- (void)_isNameValid:(id)arg1 home:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_isValidCachedHomeConfiguration:(id)arg1;
 - (void)_logAppViewEvent:(id)arg1 name:(id)arg2 uuid:(id)arg3 information:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_logControl:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -136,6 +140,7 @@
 - (void)_notifyDelegateOfAppDataUpdate;
 - (void)_notifyResidentProvisioningStatus:(unsigned long long)arg1;
 - (void)_pairingIdentityForAccessoryWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_pingDeviceWithDestination:(id)arg1 secure:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_pingDeviceWithUUID:(id)arg1 secure:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_primaryAccountDidChange:(id)arg1 modified:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_primaryAccountWasDeletedWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -147,8 +152,10 @@
 - (void)_queryiCloudSwitchStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_registerForMediaAccessoryControl:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_registerNotificationHandlers;
-- (void)_removeCacheFile;
+- (void)_removeCacheFiles:(BOOL)arg1;
 - (void)_removeHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_requestFetchHomeConfigurationWithGenerationCounter:(id)arg1 cachedHomeConfiguration:(id)arg2 metadataVersion:(id)arg3 cachedMetadataConfiguration:(id)arg4 refreshRequested:(BOOL)arg5;
+- (void)_requestRefresh;
 - (void)_requestRuntimeUpdate:(id)arg1;
 - (void)_setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setResidentProvisioningStatus:(unsigned long long)arg1;
@@ -165,14 +172,18 @@
 - (void)_updateResidentEnabledForThisDevice:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateStatusWithPayload:(id)arg1;
 - (void)_updateiCloudSwitchState:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_writeCaches:(id)arg1 homeData:(BOOL)arg2 metadata:(BOOL)arg3;
 - (void)addHomeWithName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)checkEventValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)checkName:(id)arg1 inHome:(id)arg2 withValidationOptions:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (void)deleteDuetEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dumpState:(id)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)eraseHomeDataAndDeleteMetadata:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)eraseHomeDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)idmsAccountUsernameModifiedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithHomeMangerConfiguration:(id)arg1;
 - (id)initWithOptions:(unsigned long long)arg1;
 - (void)logAppViewEvent:(id)arg1 name:(id)arg2 uuid:(id)arg3 information:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)logControl:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

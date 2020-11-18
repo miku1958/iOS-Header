@@ -25,6 +25,9 @@
 @property (copy, nonatomic) NSString *originator; // @synthesize originator=_originator;
 @property (copy, nonatomic) NSString *redemptionCode; // @synthesize redemptionCode=_redemptionCode;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;

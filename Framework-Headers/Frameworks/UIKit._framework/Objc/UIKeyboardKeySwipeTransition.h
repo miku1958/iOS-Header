@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardKeyplaneTransition.h>
+#import <UIKitCore/UIKeyboardKeyplaneTransition.h>
 
-#import <UIKit/CAAnimationDelegate-Protocol.h>
+#import <UIKitCore/CAAnimationDelegate-Protocol.h>
 
 @class NSArray, NSString;
 

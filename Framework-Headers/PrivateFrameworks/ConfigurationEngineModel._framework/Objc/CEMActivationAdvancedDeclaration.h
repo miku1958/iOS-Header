@@ -8,33 +8,32 @@
 
 #import <ConfigurationEngineModel/CEMRegisteredTypeProtocol-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class CEMAnyPayload, NSArray, NSString;
 
 @interface CEMActivationAdvancedDeclaration : CEMDeclarationBase <CEMRegisteredTypeProtocol>
 {
+    NSArray *_payloadRequiredConfigurations;
+    NSArray *_payloadStandardConfigurations;
+    CEMAnyPayload *_payloadActivationPredicate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSDictionary *payloadActivationPredicate;
-@property (readonly, nonatomic) NSArray *payloadRequiredConfigurations;
-@property (readonly, nonatomic) NSArray *payloadStandardConfigurations;
+@property (copy, nonatomic) CEMAnyPayload *payloadActivationPredicate; // @synthesize payloadActivationPredicate=_payloadActivationPredicate;
+@property (copy, nonatomic) NSArray *payloadRequiredConfigurations; // @synthesize payloadRequiredConfigurations=_payloadRequiredConfigurations;
+@property (copy, nonatomic) NSArray *payloadStandardConfigurations; // @synthesize payloadStandardConfigurations=_payloadStandardConfigurations;
 @property (readonly) Class superclass;
 
-+ (id)InstalledConfigurationsItem_allowedStatusKeys;
-+ (id)RequiredConfigurationsDictionary_allowedPayloadKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadRequiredConfigurationsDictionary:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validPayloadRequiredConfigurationsDictionary_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusInstalledConfigurationsItem_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withRequiredConfigurations:(id)arg2 withStandardConfigurations:(id)arg3;
++ (id)buildWithIdentifier:(id)arg1 withRequiredConfigurations:(id)arg2 withStandardConfigurations:(id)arg3 withActivationPredicate:(id)arg4;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

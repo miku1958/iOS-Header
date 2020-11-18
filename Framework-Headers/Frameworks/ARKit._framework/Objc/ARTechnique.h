@@ -6,42 +6,47 @@
 
 #import <objc/NSObject.h>
 
-#import <ARKit/ARTechniqueDelegate-Protocol.h>
-
-@class NSArray, NSString;
+@class NSNumber;
 @protocol ARTechniqueDelegate;
 
-@interface ARTechnique : NSObject <ARTechniqueDelegate>
+@interface ARTechnique : NSObject
 {
     id<ARTechniqueDelegate> _delegate;
-    NSArray *_techniques;
     unsigned long long _powerUsage;
+    double _bonusLatency;
+    NSNumber *_traceKey;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<ARTechniqueDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long powerUsage; // @synthesize powerUsage=_powerUsage;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) NSArray *techniques; // @synthesize techniques=_techniques;
+@property double bonusLatency; // @synthesize bonusLatency=_bonusLatency;
+@property (weak) id<ARTechniqueDelegate> delegate; // @synthesize delegate=_delegate;
+@property unsigned long long powerUsage; // @synthesize powerUsage=_powerUsage;
+@property (readonly) NSNumber *traceKey; // @synthesize traceKey=_traceKey;
 
++ (id)techniqueOfClass:(Class)arg1 inArray:(id)arg2;
 - (void).cxx_destruct;
-- (void)dealloc;
+- (long long)captureBehavior;
+- (id)description;
+- (BOOL)deterministicMode;
+- (unsigned long long)hash;
 - (id)init;
+- (id)initWithParallelTechniques:(id)arg1;
 - (id)initWithTechniques:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)mergeResultData:(id)arg1 intoData:(id)arg2 context:(id)arg3;
 - (id)predictedResultDataAtTimestamp:(double)arg1 context:(id)arg2;
+- (void)prepare;
 - (id)processData:(id)arg1;
 - (id)processResultData:(id)arg1 timestamp:(double)arg2 context:(id)arg3;
+- (BOOL)reconfigurableFrom:(id)arg1;
 - (void)reconfigureFrom:(id)arg1;
 - (void)replaceTechniques:(id)arg1;
 - (void)requestResultDataAtTimestamp:(double)arg1 context:(id)arg2;
 - (unsigned long long)requiredSensorDataTypes;
+- (double)requiredTimeInterval;
 - (id)resultDataClasses;
-- (void)technique:(id)arg1 didFailWithError:(id)arg2;
-- (void)technique:(id)arg1 didOutputResultData:(id)arg2 timestamp:(double)arg3 context:(id)arg4;
+- (void)siblingTechniquesDidChange:(id)arg1;
 - (id)techniqueOfClass:(Class)arg1;
+- (id)techniques;
 
 @end
 

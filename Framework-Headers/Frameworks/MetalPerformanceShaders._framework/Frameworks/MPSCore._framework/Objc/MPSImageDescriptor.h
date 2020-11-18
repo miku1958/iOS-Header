@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@interface MPSImageDescriptor : NSObject
+#import <MPSCore/NSCopying-Protocol.h>
+
+@interface MPSImageDescriptor : NSObject <NSCopying>
 {
     unsigned long long _width;
     unsigned long long _height;
@@ -33,6 +35,7 @@
 
 + (id)imageDescriptorWithChannelFormat:(unsigned long long)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 featureChannels:(unsigned long long)arg4;
 + (id)imageDescriptorWithChannelFormat:(unsigned long long)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 featureChannels:(unsigned long long)arg4 numberOfImages:(unsigned long long)arg5 usage:(unsigned long long)arg6;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)debugQuickLookObject;
 - (id)init;

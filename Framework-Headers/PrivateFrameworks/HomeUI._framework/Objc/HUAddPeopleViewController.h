@@ -17,7 +17,7 @@
 @class HFContactController, HMHome, IDSBatchIDQueryController, MFComposeRecipientTextView, MFContactsSearchManager, NSArray, NSLayoutConstraint, NSMutableArray, NSNumber, NSString, NSTimer, UIActivityIndicatorView, UIColor, UITableView, UIView;
 @protocol HUAddPeopleViewControllerDelegate;
 
-@interface HUAddPeopleViewController : UIViewController <MFComposeRecipientTextViewDelegate, MFContactsSearchConsumer, UITableViewDelegate, UITableViewDataSource, CNContactPickerDelegate, IDSBatchIDQueryControllerDelegate, HFContactControllerDelegate>
+@interface HUAddPeopleViewController : UIViewController <MFComposeRecipientTextViewDelegate, MFContactsSearchConsumer, UITableViewDelegate, UITableViewDataSource, IDSBatchIDQueryControllerDelegate, HFContactControllerDelegate, CNContactPickerDelegate>
 {
     BOOL _addressBookAccessDenied;
     BOOL _showingAutoCompleteResults;

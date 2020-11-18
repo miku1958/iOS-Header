@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextToSpeech/NSCopying-Protocol.h>
 #import <TextToSpeech/NSSecureCoding-Protocol.h>
@@ -24,8 +24,8 @@
     NSString *_phonemes;
     NSSet *_languages;
     NSSet *_voiceIds;
-    NSSet *_bundleIdentifiers;
     NSUUID *_uuid;
+    NSSet *_bundleIdentifiers;
     struct _NSRange _replacementRange;
 }
 

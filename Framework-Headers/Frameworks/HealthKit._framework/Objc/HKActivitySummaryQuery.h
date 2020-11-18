@@ -14,25 +14,31 @@
 {
     BOOL _initialHandlerCalled;
     CDUnknownBlockType _completionHandler;
+    BOOL _shouldIncludeActivitySummaryPrivateProperties;
+    BOOL _shouldIncludeActivitySummaryStatistics;
     CDUnknownBlockType _updateHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL shouldIncludeActivitySummaryPrivateProperties; // @synthesize shouldIncludeActivitySummaryPrivateProperties=_shouldIncludeActivitySummaryPrivateProperties;
+@property (nonatomic) BOOL shouldIncludeActivitySummaryStatistics; // @synthesize shouldIncludeActivitySummaryStatistics=_shouldIncludeActivitySummaryStatistics;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
 + (id)clientInterfaceProtocol;
++ (Class)configurationClass;
 + (void)configureClientInterface:(id)arg1;
 - (void).cxx_destruct;
 - (void)client_deliverActivitySummaries:(id)arg1 queryUUID:(id)arg2;
 - (id)initWithPredicate:(id)arg1 resultsHandler:(CDUnknownBlockType)arg2;
-- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queue_deliverError:(id)arg1;
+- (void)queue_populateConfiguration:(id)arg1;
 - (void)queue_queryDidDeactivate:(id)arg1;
 - (BOOL)queue_shouldDeactivateAfterInitialResults;
 - (void)queue_validate;
+- (void)setShouldIncludePrivateActivitySummaryProperties:(BOOL)arg1;
 
 @end
 

@@ -8,17 +8,21 @@
 
 #import <CoreDuet/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDateInterval, NSDictionary, NSMutableDictionary, NSUUID, _DKEventStream;
+@class NSArray, NSDateInterval, NSDictionary, NSMutableDictionary, NSString, NSUUID, _DKEventStream;
 
 @interface _DKHistogram : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_histogram;
+    unsigned long long _countOverAllValues;
     NSDateInterval *_interval;
     NSUUID *_identifier;
+    NSString *_customIdentifier;
     _DKEventStream *_stream;
     NSArray *_deviceIdentifiers;
 }
 
+@property (nonatomic) unsigned long long countOverAllValues; // @synthesize countOverAllValues=_countOverAllValues;
+@property (strong, nonatomic) NSString *customIdentifier; // @synthesize customIdentifier=_customIdentifier;
 @property (strong, nonatomic) NSArray *deviceIdentifiers; // @synthesize deviceIdentifiers=_deviceIdentifiers;
 @property (strong, nonatomic) NSDictionary *histogram; // @synthesize histogram=_histogram;
 @property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
@@ -28,7 +32,9 @@
 + (id)entityName;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_addPropertiesFrom:(id)arg1;
 - (void)addHistogram:(id)arg1;
+- (void)addHistogram:(id)arg1 decayingExistingCounts:(double)arg2;
 - (void)addValue:(id)arg1;
 - (id)countDictionary;
 - (unsigned long long)countForValue:(id)arg1;
@@ -41,6 +47,7 @@
 - (id)initWithValues:(id)arg1;
 - (id)insertInManagedObjectContext:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (double)relativeFrequencyForValue:(id)arg1;
 - (void)subtractHistogram:(id)arg1;
 - (void)subtractValue:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSSet;
 
@@ -24,6 +24,8 @@
 - (unsigned long long)hash;
 - (id)initWithDict:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)requestedSourceNameForAnyComponent;
+- (BOOL)requestedSourceSupportsRouteGuidanceForAnyComponent;
 
 @end
 

@@ -14,7 +14,6 @@
 @property (readonly, copy, nonatomic) CDUnknownBlockType fillHandler; // @synthesize fillHandler=_fillHandler;
 
 - (void).cxx_destruct;
-- (BOOL)_shouldPersist;
 - (id)initWithFillHandler:(CDUnknownBlockType)arg1;
 
 @end

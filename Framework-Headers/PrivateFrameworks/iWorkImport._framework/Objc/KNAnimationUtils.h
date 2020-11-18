@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface KNAnimationUtils : NSObject
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)CAAccelerationFromSFXActionAcceleration:(unsigned long long)arg1;
++ (BOOL)areGLActionBuildsEnabled;
 + (id)customAttributesArrayWithDeliveryOptions:(id)arg1;
 + (id)customAttributesArrayWithJiggleIntensityOptions:(id)arg1;
 + (id)customAttributesArrayWithTextDeliveryOptions:(id)arg1;
@@ -25,19 +26,20 @@ __attribute__((visibility("hidden")))
 + (BOOL)isFPSGraphEnabled;
 + (BOOL)isFPSLoggingEnabled;
 + (BOOL)isFPSLoggingTimerDisabled;
-+ (BOOL)isGLEverywhereEnabled;
 + (BOOL)isGLStateValidationEnabled;
 + (BOOL)isMaxConcurrentTexturePrecachingEnabled;
 + (BOOL)isMetalDisabled;
 + (BOOL)isMotionBlurBlacklistedWithCapabilities:(id)arg1;
 + (BOOL)isMotionBlurCapableWithAnimationContext:(id)arg1;
 + (BOOL)isRandomNumberSeedInspectionEnabled;
++ (BOOL)isRenderingLocal;
 + (BOOL)isResponsivenessLoggingEnabled;
 + (BOOL)isSOATSImageExportTestEnabled;
 + (BOOL)isTexturePrecachingDisabled;
 + (unsigned long long)randomBasicDirection;
 + (unsigned long long)randomDirection;
 + (struct CGRect)recommendedLayerBoundsForNaturalPlaybackSize:(struct CGSize)arg1 inContainerWithBounds:(struct CGRect)arg2 contentsScale:(double)arg3 isExternalDisplay:(BOOL)arg4;
++ (BOOL)shouldBadgeMetalRendering;
 + (BOOL)shouldForceDisplayPreferredMode;
 + (id)timingsArrayWithDirection:(unsigned long long)arg1 duration:(double)arg2 count:(unsigned long long)arg3 chunkDuration:(double)arg4 randomness:(double)arg5 randomGenerator:(id)arg6;
 + (void)updateDefaultsValues;

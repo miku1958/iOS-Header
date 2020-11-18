@@ -10,6 +10,11 @@
 
 @interface DOCManagedPermission : NSObject
 {
+    BOOL _isEphemeralMultiUser;
+    BOOL _mayOpenFromManagedToUnmanaged;
+    BOOL _mayOpenFromUnmanagedToManaged;
+    BOOL _isManagedAppsCloudSyncDisallowed;
+    BOOL _hasOpenInRestrictions;
     BOOL _isHostManaged;
     NSString *_hostIdentifier;
     NSCache *_cache;
@@ -25,22 +30,29 @@
 
 + (id)defaultPermission;
 - (void).cxx_destruct;
+- (void)_loadSharedConnectionValues;
 - (BOOL)canCopyItems:(id)arg1;
 - (BOOL)canCopySourceIsManaged:(BOOL)arg1;
 - (BOOL)canCopyfromContainingBundleIdentifer:(id)arg1;
 - (BOOL)canHostAppPerformAction:(unsigned long long)arg1 targetBundleIdentifier:(id)arg2;
 - (BOOL)canHostAppPerformAction:(unsigned long long)arg1 targetItem:(id)arg2;
-- (BOOL)canHostAppPerformAction:(unsigned long long)arg1 targetSearchableItem:(id)arg2;
 - (BOOL)canTransferSourceIsManaged:(BOOL)arg1 destinationIsManaged:(BOOL)arg2;
 - (BOOL)canTransferSourceIsManaged:(BOOL)arg1 toDestinationItem:(id)arg2;
 - (unsigned long long)dataOwnerStateForBundleIdentifier:(id)arg1;
 - (unsigned long long)dataOwnerStateForItem:(id)arg1;
+- (void)dealloc;
 - (id)defaultFileProviderForAppBundle:(id)arg1;
 - (id)filterBundleIdentifiers:(id)arg1 byCanPerformAction:(unsigned long long)arg2 targetBundleIdentifier:(id)arg3 targetBundleIsManaged:(BOOL)arg4;
 - (id)filterItems:(id)arg1 byCanPerformAction:(unsigned long long)arg2 targetItem:(id)arg3;
 - (id)filterProviders:(id)arg1 byCanPerformAction:(unsigned long long)arg2 targetBundleIdentifier:(id)arg3 targetBundleIsManaged:(BOOL)arg4;
 - (id)init;
+- (BOOL)isEphemeralMultiUser;
+- (BOOL)isManagedAppsCloudSyncAllowed;
+- (BOOL)isManagedAppsCloudSyncDisallowed;
+- (BOOL)mayOpenFromManagedToUnmanaged;
+- (BOOL)mayOpenFromUnmanagedToManaged;
 - (id)queueFileDataForAcceptance:(id)arg1 originalFileName:(id)arg2 forBundleID:(id)arg3 outError:(id *)arg4;
+- (void)resetAllCachedPermissions;
 
 @end
 

@@ -45,11 +45,14 @@
 - (void).cxx_destruct;
 - (id)cellForIndexPath:(id)arg1 reuseIfPossible:(BOOL)arg2;
 - (void)clearResultsFromSection:(id)arg1;
-- (BOOL)defaultApplicationExistsAndSupportsOpenInPlaceForResult:(id)arg1 open:(BOOL)arg2;
+- (BOOL)defaultApplicationExistsAndSupportsOpenInPlaceForFileURL:(id)arg1 performOpenIfSo:(BOOL)arg2;
+- (BOOL)defaultApplicationExistsAndSupportsOpenInPlaceForResult:(id)arg1;
 - (void)didEngageActionItem:(id)arg1 actionPerformed:(BOOL)arg2;
 - (void)didEngageResult:(id)arg1;
 - (BOOL)downloadDemotedAppIfNecessaryForBundleIdentifier:(id)arg1;
+- (void)expandCellsIfNeeded;
 - (id)fallbackPeekViewControllerForIndexPath:(id)arg1;
+- (void)fetchURLForFileResult:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (unsigned long long)handleSelectionAtIndexPath:(id)arg1 wasPop:(BOOL)arg2;
 - (unsigned long long)handleSelectionOfResult:(id)arg1;
 - (unsigned long long)indexOfSection:(id)arg1;
@@ -57,14 +60,12 @@
 - (id)init;
 - (void)modalViewControllerClosed;
 - (double)offScreenContentScrollDistance;
-- (void)openUserActivityForResult:(id)arg1;
 - (void)performExpansion:(BOOL)arg1 withSectionIndex:(unsigned long long)arg2;
 - (void)placeViewController:(id)arg1 shouldLogFeedbackOfType:(int)arg2;
 - (void)productViewController:(id)arg1 didFinishWithResult:(long long)arg2;
-- (void)reloadResult:(id)arg1 inResultSection:(id)arg2;
-- (void)replaceResult:(id)arg1 withResult:(id)arg2 inResultSection:(id)arg3;
+- (void)replaceResult:(id)arg1 withResult:(id)arg2;
+- (void)scrollTableToTop;
 - (void)scrollViewDidScroll:(id)arg1;
-- (void)scrollViewWillBeginDragging:(id)arg1;
 - (BOOL)sectionIsClearable:(id)arg1;
 - (BOOL)sectionShouldBeExpanded:(id)arg1;
 - (void)sendVisibleFeedbackIfNecessary;
@@ -78,9 +79,11 @@
 - (void)tableViewDidFinishReload:(id)arg1;
 - (void)toggleExpansionForSection:(id)arg1;
 - (void)updateDataModel;
-- (void)updateWithResultSections:(id)arg1;
+- (BOOL)updateMustAccountForLayout;
+- (void)updateWithResultSections:(id)arg1 scrollToTop:(BOOL)arg2;
 - (BOOL)view:(id)arg1 isVisibleInBounds:(struct CGRect)arg2;
 - (id)viewControllerForIndexPath:(id)arg1 isPeek:(BOOL)arg2;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

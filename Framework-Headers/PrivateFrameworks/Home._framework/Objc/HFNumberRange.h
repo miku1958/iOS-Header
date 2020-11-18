@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
+#import <Home/NAIdentifiable-Protocol.h>
 
-@interface HFNumberRange : NSObject
+@class NSNumber, NSString;
+
+@interface HFNumberRange : NSObject <NAIdentifiable>
 {
     unsigned long long _type;
     NSNumber *_maxValue;
@@ -16,16 +18,29 @@
     NSNumber *_minValue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CDStruct_c3b9c2ee floatRangeValue;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSNumber *maxValue; // @synthesize maxValue=_maxValue;
 @property (copy, nonatomic) NSNumber *midValue; // @synthesize midValue=_midValue;
 @property (copy, nonatomic) NSNumber *minValue; // @synthesize minValue=_minValue;
+@property (readonly, copy, nonatomic) NSNumber *spanValue;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
++ (id)na_identity;
++ (id)rangeWithFloatRange:(CDStruct_c3b9c2ee)arg1;
 + (id)rangeWithMaxValue:(id)arg1 minValue:(id)arg2;
 + (id)valueWithValue:(id)arg1;
 - (void).cxx_destruct;
-- (id)description;
+- (id)init;
 - (id)initWithType:(unsigned long long)arg1;
+- (id)intersectRange:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (id)mapValue:(id)arg1 fromRange:(id)arg2;
+- (id)percentageValueForValue:(id)arg1;
+- (id)unionRange:(id)arg1;
 
 @end
 

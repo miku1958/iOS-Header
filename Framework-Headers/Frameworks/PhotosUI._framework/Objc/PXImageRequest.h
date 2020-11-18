@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, PHImageRequestOptions, PXUIMediaProvider, UIImage;
-@protocol PXDisplayAsset;
+@class NSError, PHImageRequestOptions, UIImage;
+@protocol PXDisplayAsset, PXUIImageProvider;
 
 @interface PXImageRequest : NSObject
 {
     BOOL _gotFullQualityImage;
     BOOL _resultIsInCloud;
     BOOL _canceled;
-    PXUIMediaProvider *_mediaProvider;
+    id<PXUIImageProvider> _mediaProvider;
     id<PXDisplayAsset> _asset;
     PHImageRequestOptions *_options;
     long long _requestID;
@@ -28,7 +28,7 @@
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic) BOOL gotFullQualityImage; // @synthesize gotFullQualityImage=_gotFullQualityImage;
 @property (nonatomic) UIImage *image; // @synthesize image=_image;
-@property (readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property (readonly, nonatomic) id<PXUIImageProvider> mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (readonly, nonatomic) PHImageRequestOptions *options; // @synthesize options=_options;
 @property (nonatomic) long long requestID; // @synthesize requestID=_requestID;
 @property (nonatomic) BOOL resultIsInCloud; // @synthesize resultIsInCloud=_resultIsInCloud;

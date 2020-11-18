@@ -49,6 +49,7 @@
 @property (strong, nonatomic) id<PKPlugIn> plugin; // @synthesize plugin=_plugin;
 @property (readonly, strong, nonatomic) NSBundle *pluginBundle;
 @property (nonatomic) BOOL pluginLoaded; // @synthesize pluginLoaded=_pluginLoaded;
+@property (readonly, nonatomic) unsigned long long presentationContexts;
 @property (readonly, nonatomic) BOOL shouldHideAppSwitcher;
 @property (readonly, nonatomic) BOOL showInBrowser;
 @property (readonly, nonatomic) NSString *version;

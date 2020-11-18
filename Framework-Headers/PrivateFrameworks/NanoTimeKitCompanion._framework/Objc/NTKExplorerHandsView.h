@@ -6,29 +6,18 @@
 
 #import <NanoTimeKitCompanion/NTKAnalogHandsView.h>
 
-@class CALayer, UIColor;
+@class UIColor;
 
 @interface NTKExplorerHandsView : NTKAnalogHandsView
 {
-    CALayer *_secondHandDot;
-    CALayer *_minuteHandDot;
-    CALayer *_minuteHandTransitionBodyLayer;
-    CALayer *_minuteHandTransitionStemLayer;
-    CALayer *_minuteHandTransitionPegLayer;
-    CALayer *_hourHandTransitionBodyLayer;
-    CALayer *_hourHandTransitionStemLayer;
-    UIColor *_hourAndMinuteHandDotColor;
     UIColor *_secondHandDotColor;
 }
 
-@property (strong, nonatomic) UIColor *hourAndMinuteHandDotColor; // @synthesize hourAndMinuteHandDotColor=_hourAndMinuteHandDotColor;
 @property (strong, nonatomic) UIColor *secondHandDotColor; // @synthesize secondHandDotColor=_secondHandDotColor;
 
 - (void).cxx_destruct;
-- (void)_addTransitionLayers;
-- (void)_removeTransitionLayers;
 - (void)applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;
 - (void)setInlayColor:(id)arg1;
 

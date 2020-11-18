@@ -6,13 +6,9 @@
 
 #import <CoreFoundation/CFPrefsSource.h>
 
-@class NSObject;
-@protocol OS_dispatch_group;
-
 __attribute__((visibility("hidden")))
 @interface CFPrefsPlistSource : CFPrefsSource
 {
-    NSObject<OS_dispatch_group> *_synchGroup;
     struct __CFString *userIdentifier;
     struct __CFString *domainIdentifier;
     struct __CFString *container;
@@ -29,7 +25,6 @@ __attribute__((visibility("hidden")))
     _Atomic BOOL _disableBackup;
 }
 
-- (void)_goReadOnlyOrVolatileAfterTryingToWriteKey:(struct __CFString *)arg1 value:(void *)arg2;
 - (BOOL)_isSharedInTheiOSSimulator;
 - (void)_sharedCleanup;
 - (void)addPIDImpersonationIfNecessary:(id)arg1;
@@ -39,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void *)alreadylocked_copyValueForKey:(struct __CFString *)arg1;
 - (long long)alreadylocked_generationCount;
 - (BOOL)alreadylocked_requestNewData;
-- (void)alreadylocked_setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
+- (void)alreadylocked_setPrecopiedValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
 - (void)alreadylocked_updateObservingRemoteChanges;
 - (BOOL)attachAccessTokenToMessage:(id)arg1 accessType:(int)arg2;
 - (struct __CFString *)container;
@@ -70,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)synchronize;
 - (struct __CFString *)userIdentifier;
 - (BOOL)volatilizeIfInvalidHomeDir;
+- (void)writeFailedForKey:(struct __CFString *)arg1 value:(void *)arg2;
 
 @end
 

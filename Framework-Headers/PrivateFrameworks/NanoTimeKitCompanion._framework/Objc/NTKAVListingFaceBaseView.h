@@ -45,7 +45,7 @@
 - (void)_cancelPauseLockout;
 - (BOOL)_changeCurrentListing;
 - (void)_cleanupAfterOrb:(BOOL)arg1;
-- (void)_complicationFlickerWorkaroundAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
+- (void)_complicationFlickerWorkgroundAnimationWithDuration:(double)arg1 applier:(CDUnknownBlockType)arg2;
 - (id)_curtainView;
 - (BOOL)_curtainViewVisible;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -73,7 +73,6 @@
 - (void)_reset;
 - (void)_resetVideoForListing;
 - (void)_selectDefaultListing;
-- (BOOL)_shouldPlayVideoOnScreenWake;
 - (void)_showCurtainView;
 - (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_timeLabelUsesLegibility;
@@ -84,7 +83,7 @@
 - (void)_updatePaused;
 - (void)dealloc;
 - (void)faultInFaceContentSkippedDuringSwiping;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 
 @end
 

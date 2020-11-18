@@ -9,6 +9,7 @@
 @class TXRImageInfo;
 @protocol OS_dispatch_semaphore;
 
+__attribute__((visibility("hidden")))
 @interface TXRDeferredImageInfo : NSObject
 {
     NSObject<OS_dispatch_semaphore> *_infoLoaded;

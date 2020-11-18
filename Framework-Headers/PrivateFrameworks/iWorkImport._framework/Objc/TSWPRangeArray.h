@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsCharacterAtIndex:(unsigned long long)arg1 inclusive:(BOOL)arg2;
 - (BOOL)containsRange:(struct _NSRange)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)enumerateRanges:(CDUnknownBlockType)arg1;
 - (void)enumerateRangesInRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (unsigned long long)indexForRange:(struct _NSRange)arg1;
@@ -41,10 +40,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)p_start;
 - (struct _NSRange)rangeAtIndex:(unsigned long long)arg1;
 - (struct _NSRange)rangeContainingPosition:(unsigned long long)arg1;
-- (struct _NSRange)rangeContainingPosition:(unsigned long long)arg1 excludeInitialPosition:(BOOL)arg2;
 - (id)rangesIntersecting:(struct _NSRange)arg1;
 - (void)reverseEnumerateRanges:(CDUnknownBlockType)arg1;
-- (id)shortDescription;
 
 @end
 

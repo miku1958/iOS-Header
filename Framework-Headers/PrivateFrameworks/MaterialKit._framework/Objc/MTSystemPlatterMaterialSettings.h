@@ -7,25 +7,40 @@
 #import <MaterialKit/MTSystemMaterialSettings.h>
 
 #import <MaterialKit/MTMaterialOverlaySettings-Protocol.h>
+#import <MaterialKit/MTMaterialSettings_v2-Protocol.h>
+#import <MaterialKit/_MTMaterialPerformanceConfiguring-Protocol.h>
 
-@class NSString, UIColor;
+@class MTVibrantStylingProvider, NSString, UIColor;
 
-@interface MTSystemPlatterMaterialSettings : MTSystemMaterialSettings <MTMaterialOverlaySettings>
+@interface MTSystemPlatterMaterialSettings : MTSystemMaterialSettings <MTMaterialOverlaySettings, MTMaterialSettings_v2, _MTMaterialPerformanceConfiguring>
 {
+    double _baseOverlayTintAlpha;
     double _primaryOverlayTintAlpha;
     double _secondaryOverlayTintAlpha;
 }
 
+@property (readonly, copy, nonatomic) UIColor *baseOverlayColor;
+@property (nonatomic) double baseOverlayTintAlpha; // @synthesize baseOverlayTintAlpha=_baseOverlayTintAlpha;
+@property (nonatomic) double blurRadius;
+@property (nonatomic) double brightness;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double luminanceAlpha;
 @property (nonatomic) double primaryOverlayTintAlpha; // @synthesize primaryOverlayTintAlpha=_primaryOverlayTintAlpha;
 @property (readonly, copy, nonatomic) UIColor *primaryOverlayTintColor;
+@property (nonatomic) double saturation;
 @property (nonatomic) double secondaryOverlayTintAlpha; // @synthesize secondaryOverlayTintAlpha=_secondaryOverlayTintAlpha;
 @property (readonly, copy, nonatomic) UIColor *secondaryOverlayTintColor;
 @property (readonly) Class superclass;
+@property (nonatomic) double tintAlpha;
+@property (readonly, copy, nonatomic) UIColor *tintColor;
+@property (nonatomic) BOOL usesLuminanceMap;
+@property (readonly, weak, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider;
 
 + (id)sharedMaterialSettings;
+- (double)_backdropScaleForOptions:(unsigned long long)arg1;
+- (id)_blurInputQualityForOptions:(unsigned long long)arg1;
 - (Class)vibrantStylingProviderClass;
 
 @end

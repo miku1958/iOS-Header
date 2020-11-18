@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSString *lineCap;
 @property (strong, nonatomic) UIBezierPath *path; // @synthesize path=_path;
 @property (strong, nonatomic) UIColor *pathColor; // @synthesize pathColor=_pathColor;
 @property (readonly, nonatomic) NTKBezierPathPointModel *pointModel; // @synthesize pointModel=_pointModel;

@@ -6,19 +6,25 @@
 
 #import <objc/NSObject.h>
 
+@class NSXPCConnection;
+@protocol CLSimulationXPCServerInterface;
+
 @interface CLSimulationManager : NSObject
 {
     double _locationDistance;
     double _locationInterval;
     double _locationSpeed;
-    int _locationRepeatBehavior;
-    int _locationDeliveryBehavior;
+    unsigned char _locationRepeatBehavior;
+    unsigned char _locationDeliveryBehavior;
+    NSXPCConnection *_connection;
 }
 
-@property (nonatomic) int locationDeliveryBehavior; // @synthesize locationDeliveryBehavior=_locationDeliveryBehavior;
+@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (readonly) id<CLSimulationXPCServerInterface> daemonProxy;
+@property (nonatomic) unsigned char locationDeliveryBehavior; // @synthesize locationDeliveryBehavior=_locationDeliveryBehavior;
 @property (nonatomic) double locationDistance; // @synthesize locationDistance=_locationDistance;
 @property (nonatomic) double locationInterval; // @synthesize locationInterval=_locationInterval;
-@property (nonatomic) int locationRepeatBehavior; // @synthesize locationRepeatBehavior=_locationRepeatBehavior;
+@property (nonatomic) unsigned char locationRepeatBehavior; // @synthesize locationRepeatBehavior=_locationRepeatBehavior;
 @property (nonatomic) double locationSpeed; // @synthesize locationSpeed=_locationSpeed;
 
 - (void)appendSimulatedLocation:(id)arg1;
@@ -26,6 +32,7 @@
 - (void)clearSimulatedCells;
 - (void)clearSimulatedLocations;
 - (void)flush;
+- (void)getFencesForBundleID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)loadScenarioFromURL:(id)arg1;
 - (id)localizedNameForScenario:(id)arg1;
@@ -35,6 +42,9 @@
 - (void)setSimulatedCellRegistrationStatus:(BOOL)arg1;
 - (void)setSimulatedWifiPower:(BOOL)arg1;
 - (void)setWifiScanResults:(id)arg1;
+- (void)simulateFenceWithBundleID:(id)arg1 andFenceID:(id)arg2 eventType:(unsigned char)arg3 atLocation:(id)arg4;
+- (void)simulateSignificantLocationChange:(id)arg1;
+- (void)simulateVisit:(id)arg1;
 - (void)startCellSimulation;
 - (void)startLocationSimulation;
 - (void)startWifiSimulation;

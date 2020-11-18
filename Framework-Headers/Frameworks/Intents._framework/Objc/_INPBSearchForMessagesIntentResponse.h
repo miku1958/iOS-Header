@@ -7,32 +7,40 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSearchForMessagesIntentResponse-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBSearchForMessagesIntentResponse : PBCodable <NSCopying>
+@interface _INPBSearchForMessagesIntentResponse : PBCodable <_INPBSearchForMessagesIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_messages;
+    struct _has;
+    NSArray *_messages;
+    NSArray *_searchResults;
 }
 
-@property (strong, nonatomic) NSMutableArray *messages; // @synthesize messages=_messages;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *messages; // @synthesize messages=_messages;
+@property (readonly, nonatomic) unsigned long long messagesCount;
+@property (copy, nonatomic) NSArray *searchResults; // @synthesize searchResults=_searchResults;
+@property (readonly, nonatomic) unsigned long long searchResultsCount;
+@property (readonly) Class superclass;
 
 + (Class)messagesType;
-+ (id)options;
++ (Class)searchResultsType;
 - (void).cxx_destruct;
 - (void)addMessages:(id)arg1;
+- (void)addSearchResults:(id)arg1;
 - (void)clearMessages;
+- (void)clearSearchResults;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (id)messagesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)messagesCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)searchResultsAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

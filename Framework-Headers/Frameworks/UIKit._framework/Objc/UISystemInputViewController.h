@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIRecentsInputViewControllerDelegate-Protocol.h>
+#import <UIKitCore/UIRecentsInputViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, UIButton, UICompatibilityInputViewController, UIKBSystemLayoutViewController, UIKeyboard, UILabel, UILexicon, UIRecentsInputViewController, UIResponder, UITextInputTraits, UIView;
 @protocol UISystemInputViewControllerDelegate, UITextInput, UITraitEnvironment;
@@ -17,6 +17,7 @@
     NSMutableDictionary *_accessoryConstraints;
     BOOL _needsSetupAgain;
     BOOL _isVisible;
+    UIResponder<UITraitEnvironment> *_containingResponder;
     BOOL _supportsTouchInput;
     BOOL _supportsRecentInputsIntegration;
     BOOL _isAutomaticResponderTransition;
@@ -25,7 +26,6 @@
     BOOL _didDisplayRecents;
     id<UISystemInputViewControllerDelegate> _systemInputViewControllerDelegate;
     UIResponder<UITextInput> *_persistentDelegate;
-    UIResponder<UITraitEnvironment> *_containingResponder;
     UIKeyboard *_keyboard;
     NSArray *_keyboardConstraints;
     UICompatibilityInputViewController *_keyboardVC;
@@ -40,6 +40,7 @@
     UITextInputTraits *_textInputTraits;
     UILexicon *_cachedRecents;
     UILabel *_promptLabel;
+    unsigned long long _requestedInteractionModel;
     UIView *_containingView;
     UIView *_contentLayoutView;
     long long _blurEffectStyle;
@@ -48,7 +49,6 @@
 @property (strong, nonatomic) UILabel *_promptLabel; // @synthesize _promptLabel;
 @property (nonatomic) long long blurEffectStyle; // @synthesize blurEffectStyle=_blurEffectStyle;
 @property (strong, nonatomic) UILexicon *cachedRecents; // @synthesize cachedRecents=_cachedRecents;
-@property (strong, nonatomic) UIResponder<UITraitEnvironment> *containingResponder; // @synthesize containingResponder=_containingResponder;
 @property (strong, nonatomic) UIView *containingView; // @synthesize containingView=_containingView;
 @property (strong, nonatomic) UIView *contentLayoutView; // @synthesize contentLayoutView=_contentLayoutView;
 @property (readonly, copy) NSString *debugDescription;
@@ -67,6 +67,7 @@
 @property (strong, nonatomic) UIResponder<UITextInput> *nextInputDelegate; // @synthesize nextInputDelegate=_nextInputDelegate;
 @property (strong, nonatomic) UIResponder<UITextInput> *persistentDelegate; // @synthesize persistentDelegate=_persistentDelegate;
 @property (strong, nonatomic) UIRecentsInputViewController *recentsVC; // @synthesize recentsVC=_recentsVC;
+@property (nonatomic) unsigned long long requestedInteractionModel; // @synthesize requestedInteractionModel=_requestedInteractionModel;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsRecentInputsIntegration; // @synthesize supportsRecentInputsIntegration=_supportsRecentInputsIntegration;
 @property (nonatomic) BOOL supportsTouchInput; // @synthesize supportsTouchInput=_supportsTouchInput;
@@ -78,9 +79,11 @@
 @property (nonatomic) BOOL willUpdateBackgroundEffectOnInputModeChange; // @synthesize willUpdateBackgroundEffectOnInputModeChange=_willUpdateBackgroundEffectOnInputModeChange;
 
 + (id)_canonicalTraitsForResponder:(id)arg1;
++ (id)_carPlay_systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3 traitCollection:(id)arg4;
 + (id)_iOS_systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3 traitCollection:(id)arg4;
 + (id)_tvOS_systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3 traitCollection:(id)arg4;
 + (BOOL)canUseSystemInputViewControllerForResponder:(id)arg1;
++ (void)setKeyboardInteractionModel:(unsigned long long)arg1;
 + (id)systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2;
 + (id)systemInputViewControllerForResponder:(id)arg1 editorView:(id)arg2 containingResponder:(id)arg3;
 - (id)_accessoryViewControllerForEdge:(long long)arg1;
@@ -102,6 +105,8 @@
 - (void)_updateRemoteTextEditingSession;
 - (unsigned long long)_verticalLayoutTypeForEdge:(long long)arg1;
 - (void)_willResume:(id)arg1;
+- (void)_windowDidBecomeKey:(id)arg1;
+- (void)_windowWillBecomeKey:(id)arg1;
 - (id)accessoryViewControllerForEdge:(long long)arg1;
 - (id)alignmentConstraintForAxis:(long long)arg1;
 - (void)configureRecentsVCIfNecessary;
@@ -117,10 +122,12 @@
 - (void)notifyDelegateWithAccessoryVisibility:(BOOL)arg1;
 - (void)populateCoreHierarchy;
 - (id)preferredFocusEnvironments;
+- (void)prepareForRelease;
 - (void)pressesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)pressesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
 - (void)reloadInputViewsForPersistentDelegate;
+- (void)resetContainingResponder;
 - (void)setAccessoryViewController:(id)arg1 forEdge:(long long)arg2;
 - (void)setAlignmentConstraint:(id)arg1 forAxis:(long long)arg2;
 - (void)setConstraints:(id)arg1 forEdge:(long long)arg2;

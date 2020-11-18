@@ -7,7 +7,6 @@
 @class NSData;
 
 @protocol SGDSuggestManagerFidesProtocol
-- (void)modelMetadataUpdateWithPayload:(NSData *)arg1 completion:(void (^)(SGXPCResponse *))arg2;
 - (void)planReceivedFromServerWithPayload:(NSData *)arg1 completion:(void (^)(SGXPCResponse1 *))arg2;
 @end
 

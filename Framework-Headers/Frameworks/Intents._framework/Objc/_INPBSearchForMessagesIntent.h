@@ -7,14 +7,19 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSearchForMessagesIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBContactList, _INPBDataStringList, _INPBDateTimeRange, _INPBIntentMetadata, _INPBStringList;
+@class NSString, _INPBContactList, _INPBDataStringList, _INPBDateTimeRange, _INPBIntentMetadata, _INPBStringList;
 
-@interface _INPBSearchForMessagesIntent : PBCodable <NSCopying>
+@interface _INPBSearchForMessagesIntent : PBCodable <_INPBSearchForMessagesIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _attributes;
+    struct _has;
+    _INPBStringList *_content;
+    _INPBStringList *_conversationIdentifier;
     _INPBDateTimeRange *_dateTimeRange;
+    _INPBStringList *_groupName;
     _INPBStringList *_identifier;
     _INPBIntentMetadata *_intentMetadata;
     _INPBStringList *_notificationIdentifier;
@@ -26,8 +31,16 @@
 
 @property (readonly, nonatomic) int *attributes;
 @property (readonly, nonatomic) unsigned long long attributesCount;
+@property (strong, nonatomic) _INPBStringList *content; // @synthesize content=_content;
+@property (strong, nonatomic) _INPBStringList *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property (strong, nonatomic) _INPBDateTimeRange *dateTimeRange; // @synthesize dateTimeRange=_dateTimeRange;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _INPBStringList *groupName; // @synthesize groupName=_groupName;
+@property (readonly, nonatomic) BOOL hasContent;
+@property (readonly, nonatomic) BOOL hasConversationIdentifier;
 @property (readonly, nonatomic) BOOL hasDateTimeRange;
+@property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasNotificationIdentifier;
@@ -35,6 +48,7 @@
 @property (readonly, nonatomic) BOOL hasSearchTerm;
 @property (readonly, nonatomic) BOOL hasSender;
 @property (readonly, nonatomic) BOOL hasSpeakableGroupName;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBStringList *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBStringList *notificationIdentifier; // @synthesize notificationIdentifier=_notificationIdentifier;
@@ -42,9 +56,8 @@
 @property (strong, nonatomic) _INPBStringList *searchTerm; // @synthesize searchTerm=_searchTerm;
 @property (strong, nonatomic) _INPBContactList *sender; // @synthesize sender=_sender;
 @property (strong, nonatomic) _INPBDataStringList *speakableGroupName; // @synthesize speakableGroupName=_speakableGroupName;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsAttributes:(id)arg1;
 - (void)addAttribute:(int)arg1;
@@ -52,12 +65,8 @@
 - (id)attributesAsString:(int)arg1;
 - (void)clearAttributes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAttributes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

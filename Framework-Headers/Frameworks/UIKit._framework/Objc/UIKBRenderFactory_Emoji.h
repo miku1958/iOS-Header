@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory.h>
+#import <UIKitCore/UIKBRenderFactory.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactory_Emoji : UIKBRenderFactory

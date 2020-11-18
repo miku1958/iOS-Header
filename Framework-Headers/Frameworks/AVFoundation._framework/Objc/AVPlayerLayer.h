@@ -54,7 +54,6 @@
 - (struct CGSize)_playerCurrentItemPresentationSize;
 - (BOOL)_preventsChangesToSublayerHierarchy;
 - (void)_restoreClientLayers:(id)arg1 intoMaskLayer:(id)arg2;
-- (void)_setCanEnterPIPMode:(BOOL)arg1;
 - (void)_setPreventsChangesToSublayerHierarchy:(BOOL)arg1;
 - (void)_setSublayersForPIP:(id)arg1;
 - (void)_setSublayersPreventChangesToSublayerHierarchy:(BOOL)arg1;
@@ -72,7 +71,6 @@
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
 - (void)addCallbackToCancelDuringDeallocation:(id)arg1;
 - (void)addSublayer:(id)arg1;
-- (BOOL)canEnterPIPMode;
 - (void)dealloc;
 - (void)declareKeyPathDependenciesWithRegistry:(id)arg1;
 - (void)enterPIPModeRedirectingVideoToLayer:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IKJSRWIDependencyDomainType, NSString;
+@class IKJSRWIDependencyDomain, IKJSRWIDependencyDomainType, NSString;
 
 @interface IKJSRWIDependencyDomainProperty : NSObject
 {
@@ -16,8 +16,10 @@
     NSString *_purpose;
     NSString *_propertyType;
     IKJSRWIDependencyDomainType *_domainType;
+    IKJSRWIDependencyDomain *_domain;
 }
 
+@property (readonly, weak, nonatomic) IKJSRWIDependencyDomain *domain; // @synthesize domain=_domain;
 @property (readonly, weak, nonatomic) IKJSRWIDependencyDomainType *domainType; // @synthesize domainType=_domainType;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *propertyType; // @synthesize propertyType=_propertyType;
@@ -27,6 +29,8 @@
 + (id)propertyNameMapping;
 + (id)typeMapping;
 - (void).cxx_destruct;
+- (id)initWithPropertyDictionary:(id)arg1;
+- (id)initWithPropertyDictionary:(id)arg1 forDomain:(id)arg2;
 - (id)initWithPropertyDictionary:(id)arg1 forType:(id)arg2;
 - (id)methodParameterString;
 - (id)propertyDefinitionString;

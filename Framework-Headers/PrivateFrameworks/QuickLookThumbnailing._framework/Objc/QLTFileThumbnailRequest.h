@@ -6,15 +6,16 @@
 
 #import <QuickLookThumbnailing/QLTThumbnailRequest.h>
 
-@class FPSandboxingURLWrapper, NSURL;
+@class FPSandboxingURLWrapper;
 
 @interface QLTFileThumbnailRequest : QLTThumbnailRequest
 {
-    FPSandboxingURLWrapper *_sandboxWrapper;
+    FPSandboxingURLWrapper *_quicklookSandboxWrapper;
+    FPSandboxingURLWrapper *_genericSandboxWrapper;
 }
 
-@property (readonly, nonatomic) FPSandboxingURLWrapper *sandboxWrapper; // @synthesize sandboxWrapper=_sandboxWrapper;
-@property (readonly) NSURL *url;
+@property (readonly, nonatomic) FPSandboxingURLWrapper *genericSandboxWrapper; // @synthesize genericSandboxWrapper=_genericSandboxWrapper;
+@property (readonly, nonatomic) FPSandboxingURLWrapper *quicklookSandboxWrapper; // @synthesize quicklookSandboxWrapper=_quicklookSandboxWrapper;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -23,7 +24,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFileAtURL:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 iconMode:(BOOL)arg5;
+- (id)initWithFileAtURL:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 iconMode:(BOOL)arg5 error:(id *)arg6;
 - (id)initWithFileAtURL:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 iconMode:(BOOL)arg4;
+- (id)initWithFileAtURL:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 iconMode:(BOOL)arg4 error:(id *)arg5;
 
 @end
 

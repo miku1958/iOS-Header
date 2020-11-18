@@ -10,7 +10,6 @@
 
 @class NSMapTable, NSNumber;
 
-__attribute__((visibility("hidden")))
 @interface QLItemFetcher : NSObject <NSSecureCoding>
 {
     NSMapTable *_observersToBlocks;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isLongFetchOperation;
 - (id)newItemProvider;
+- (void)prepareShareableItem:(CDUnknownBlockType)arg1;
 - (void)registerObserver:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)shareableItem;
 - (void)unregisterObserver:(id)arg1;

@@ -9,7 +9,7 @@
 #import <BulletinDistributorCompanion/BLTSectionInfoListProvider-Protocol.h>
 #import <BulletinDistributorCompanion/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class NSDate, NSString;
+@class BLTSectionConfiguration, NSDate, NSString;
 @protocol BLTSectionInfoListProviderDelegate;
 
 @interface BLTSectionInfoListBridgeProvider : NSObject <LSApplicationWorkspaceObserverProtocol, BLTSectionInfoListProvider>
@@ -17,12 +17,14 @@
     struct _opaque_pthread_mutex_t _lock;
     NSDate *_lastKnownBridgeSettingsChangeDate;
     id<BLTSectionInfoListProviderDelegate> _delegate;
+    BLTSectionConfiguration *_sectionConfiguration;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<BLTSectionInfoListProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) BLTSectionConfiguration *sectionConfiguration; // @synthesize sectionConfiguration=_sectionConfiguration;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -30,9 +32,9 @@
 - (void)_reloadUpdatedOverrides;
 - (void)_reloadUpdatedOverridesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (void)enableNotifications:(BOOL)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3;
-- (id)init;
+- (id)initWithSectionConfiguration:(id)arg1;
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setNotificationsLevel:(int)arg1 sectionID:(id)arg2 forceCustom:(BOOL)arg3;
 
 @end
 

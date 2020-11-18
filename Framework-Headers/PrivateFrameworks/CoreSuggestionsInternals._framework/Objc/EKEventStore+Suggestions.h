@@ -11,6 +11,7 @@
 + (id)newDefaultStore;
 - (void)bumpTimeToLiveForZeroKeywordNLEventOnInteraction:(id)arg1;
 - (id)confirmedEKEventForSGEvent:(id)arg1;
+- (id)eventWithExternalID:(id)arg1;
 - (double)eventsPerWeekAroundDate:(id)arg1;
 - (id)eventsWithSameAlternativeOpaqueKeyAsDuplicateKey:(id)arg1 harvestStore:(id)arg2;
 - (id)eventsWithSameAlternativeOpaqueKeyAsPseudoEvent:(id)arg1 harvestStore:(id)arg2;

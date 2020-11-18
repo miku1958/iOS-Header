@@ -6,21 +6,35 @@
 
 #import <UIKit/UIButton.h>
 
-@class SearchUIAppIconImage;
+@class SFSearchResult, SearchUIDragSource, SearchUIForceTouchGestureRecognizer, SearchUIImageView;
+@protocol SearchUIFeedbackDelegate;
 
 @interface SearchUIAppIconButton : UIButton
 {
-    SearchUIAppIconImage *_image;
+    id<SearchUIFeedbackDelegate> _delegate;
+    SearchUIImageView *_appIconImageView;
+    SearchUIForceTouchGestureRecognizer *_forceTouchRecognizer;
+    SFSearchResult *_result;
+    SearchUIDragSource *_dragSource;
 }
 
-@property (strong) SearchUIAppIconImage *image; // @synthesize image=_image;
+@property (strong) SearchUIImageView *appIconImageView; // @synthesize appIconImageView=_appIconImageView;
+@property (weak) id<SearchUIFeedbackDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong) SearchUIDragSource *dragSource; // @synthesize dragSource=_dragSource;
+@property (strong) SearchUIForceTouchGestureRecognizer *forceTouchRecognizer; // @synthesize forceTouchRecognizer=_forceTouchRecognizer;
+@property (strong) SFSearchResult *result; // @synthesize result=_result;
 
 - (void).cxx_destruct;
-- (void)appIconImageDidChange:(id)arg1;
-- (void)dealloc;
+- (void)addForceTouchGestureRecognizerIfNecessaryForTraitCollection:(id)arg1;
+- (id)dragObject;
+- (void)iconButtonPressed;
 - (id)init;
-- (void)updateWithBundleID:(id)arg1;
-- (void)updateWithBundleID:(id)arg1 webClipID:(id)arg2;
+- (void)layoutSubviews;
+- (id)searchUIForceTouchGestureRecognizer;
+- (void)setHighlighted:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateWithResult:(id)arg1;
 
 @end
 

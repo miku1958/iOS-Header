@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TIKeyboardActivityObserving-Protocol.h>
 
@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedLanguageModelMaintainer;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)dynamicLearningCacheTimerFired:(id)arg1;
 - (id)init;

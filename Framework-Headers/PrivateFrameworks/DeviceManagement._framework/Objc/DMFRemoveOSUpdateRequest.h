@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
-@interface DMFRemoveOSUpdateRequest : CATTaskRequest
+@interface DMFRemoveOSUpdateRequest : DMFTaskRequest
 {
 }
+
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 
 @end
 

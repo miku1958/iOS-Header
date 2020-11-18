@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCaptureSessionInternal, NSArray, NSString;
 
@@ -36,7 +36,6 @@
 - (BOOL)_addOutputWithNoConnections:(id)arg1 exceptionReason:(id *)arg2;
 - (BOOL)_addVideoPreviewLayer:(id)arg1 exceptionReason:(id *)arg2;
 - (BOOL)_addVideoPreviewLayerWithNoConnection:(id)arg1 exceptionReason:(id *)arg2;
-- (BOOL)_allowsRecordingOfPhotoFormats;
 - (void)_beginConfiguration;
 - (BOOL)_buildAndRunGraph;
 - (BOOL)_canAddConnection:(id)arg1 failureReason:(id *)arg2;
@@ -75,8 +74,9 @@
 - (id)_stopError;
 - (BOOL)_stopFigCaptureSession;
 - (void)_teardownFigCaptureSession;
+- (void)_updateDepthDataDeliveryEnabledForAllConnectedSourceDevices;
+- (void)_updateDepthDataDeliveryEnabledForSourceDevice:(id)arg1;
 - (void)_updateDeviceActiveFormatsAndActiveConnections;
-- (void)_updateSourceDeviceDepthDataDeliveryEnabled;
 - (void)addConnection:(id)arg1;
 - (void)addInput:(id)arg1;
 - (void)addInputWithNoConnections:(id)arg1;

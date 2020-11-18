@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSTCoordinateArray, TSTLayout, TSTLayoutSpaceBezierPathCache, TSTLayoutSpaceBundle, TSTMasterLayout;
 
@@ -14,8 +14,8 @@ __attribute__((visibility("hidden")))
     TSTLayoutSpaceBundle *mBundle;
     int mLayoutSpaceType;
     BOOL mInvalidTableOffset;
-    unsigned char mInvalidColumnIndex;
-    unsigned short mInvalidRowIndex;
+    unsigned short mInvalidColumnIndex;
+    unsigned int mInvalidRowIndex;
     CDStruct_58eae27c mGridRange;
     BOOL mHeaderColumnsRepeat;
     BOOL mHeaderRowsRepeat;
@@ -68,8 +68,8 @@ __attribute__((visibility("hidden")))
 - (void)drawStrokesInGridRange:(CDStruct_58eae27c)arg1 clearStrokes:(BOOL)arg2 context:(struct CGContext *)arg3;
 - (id)initWithLayoutSpaceBundle:(id)arg1 type:(int)arg2;
 - (void)invalidateCoordinates;
-- (void)invalidateCoordinatesAfterColumn:(unsigned char)arg1;
-- (void)invalidateCoordinatesAfterRow:(unsigned short)arg1;
+- (void)invalidateCoordinatesAfterColumn:(unsigned short)arg1;
+- (void)invalidateCoordinatesAfterRow:(unsigned int)arg1;
 - (void)invalidateTableOffset;
 - (void)lockForRead;
 - (void)lockForWrite;

@@ -8,7 +8,7 @@
 
 #import <NanoRegistry/NSFastEnumeration-Protocol.h>
 
-@class NSDictionary;
+@class NRPBDeviceCollectionDiff, NSDictionary;
 
 @interface NRDeviceCollectionDiff : NRDiffBase <NSFastEnumeration>
 {
@@ -16,9 +16,11 @@
 }
 
 @property (readonly, nonatomic) NSDictionary *diffDeviceDiffs; // @synthesize diffDeviceDiffs=_diffDeviceDiffs;
+@property (readonly, nonatomic) NRPBDeviceCollectionDiff *protobuf;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_createIndex;
 - (id)allPairingIDs;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
@@ -28,6 +30,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeviceCollectionDiffDeviceDiffs:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 

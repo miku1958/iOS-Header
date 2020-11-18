@@ -12,7 +12,7 @@
 {
 }
 
-@property (readonly, nonatomic) id<FBSUIApplicationWorkspaceClientDelegate> delegate; // @dynamic delegate;
+@property (readonly, weak, nonatomic) id<FBSUIApplicationWorkspaceClientDelegate> delegate; // @dynamic delegate;
 
 - (void)_queue_handleAssertionExpirationImminent:(id)arg1;
 - (void)_queue_handleExit:(id)arg1;

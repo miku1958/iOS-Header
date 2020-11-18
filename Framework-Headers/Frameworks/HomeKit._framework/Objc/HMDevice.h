@@ -9,17 +9,16 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMFUnfairLock, NSString, NSUUID;
 
 @interface HMDevice : NSObject <HMObjectMerge, NSSecureCoding>
 {
+    HMFUnfairLock *_lock;
     BOOL _currentDevice;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     NSUUID *_idsIdentifier;
     NSUUID *_uuid;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (readonly, getter=isCurrentDevice) BOOL currentDevice; // @synthesize currentDevice=_currentDevice;
@@ -28,7 +27,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
 @property (copy) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;

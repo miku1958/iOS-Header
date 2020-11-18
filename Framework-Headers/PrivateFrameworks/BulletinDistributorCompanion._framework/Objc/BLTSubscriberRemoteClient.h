@@ -32,7 +32,6 @@
 - (void)pingWithRecordID:(id)arg1 forSectionID:(id)arg2 ack:(CDUnknownBlockType)arg3;
 - (id)sectionIDs;
 - (id)sectionIDsForBulletins;
-- (id)sectionIDsForPings;
 - (id)subscriptionInfos;
 
 @end

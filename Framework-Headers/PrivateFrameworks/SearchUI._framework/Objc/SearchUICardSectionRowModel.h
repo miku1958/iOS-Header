@@ -6,26 +6,41 @@
 
 #import <objc/NSObject.h>
 
+#import <SearchUI/SearchUIAuxilliaryFieldProtocol-Protocol.h>
 #import <SearchUI/SearchUIRowModel-Protocol.h>
 
-@class NSString, SFCardSection, SFSearchResult;
+@class NSString, SFActionItem, SFCard, SFCardSection, SFImage, SFRichText, SFSearchResult;
 
-@interface SearchUICardSectionRowModel : NSObject <SearchUIRowModel>
+@interface SearchUICardSectionRowModel : NSObject <SearchUIAuxilliaryFieldProtocol, SearchUIRowModel>
 {
     SFCardSection *_cardSection;
     SFSearchResult *_identifyingResult;
 }
 
+@property (readonly) SFActionItem *action;
+@property (readonly) NSString *auxiliaryBottomText;
+@property (readonly) int auxiliaryBottomTextColor;
+@property (readonly) NSString *auxiliaryMiddleText;
+@property (readonly) NSString *auxiliaryTopText;
+@property (readonly) SFCard *card;
 @property (strong) SFCardSection *cardSection; // @synthesize cardSection=_cardSection;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) SFSearchResult *identifyingResult;
 @property (strong) SFSearchResult *identifyingResult; // @synthesize identifyingResult=_identifyingResult;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) SFImage *thumbnail;
+@property (readonly) SFRichText *title;
 
 - (void).cxx_destruct;
 - (BOOL)anyInlineCardSectionsHaveNextCards;
 - (BOOL)anyInlineCardSectionsHavePunchouts;
+- (id)detailedRowCardSection;
 - (id)dragAppBundleID;
 - (id)dragSubtitle;
 - (id)dragText;

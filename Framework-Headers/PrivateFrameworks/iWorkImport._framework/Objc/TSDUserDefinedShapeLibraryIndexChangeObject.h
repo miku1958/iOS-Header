@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSIndexSet, TSKDocumentRoot;
 
@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
     NSIndexSet *_indexesChanged;
     unsigned long long _changeType;
     TSKDocumentRoot *_documentRoot;
+    unsigned long long _categoryChangeType;
 }
 
+@property unsigned long long categoryChangeType; // @synthesize categoryChangeType=_categoryChangeType;
 @property unsigned long long changeType; // @synthesize changeType=_changeType;
 @property (strong) TSKDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
 @property (strong) NSIndexSet *indexesChanged; // @synthesize indexesChanged=_indexesChanged;

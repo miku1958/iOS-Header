@@ -6,35 +6,40 @@
 
 #import <UIKit/UIView.h>
 
-#import <HomeUI/UIWebViewDelegate-Protocol.h>
+#import <HomeUI/WKNavigationDelegate-Protocol.h>
+#import <HomeUI/WKUIDelegate-Protocol.h>
 
-@class NSString, UIWebView;
+@class NSString, WKUserContentController, WKWebView;
 @protocol HUInlineWebContainerViewDelegate;
 
-@interface HUInlineWebContainerView : UIView <UIWebViewDelegate>
+@interface HUInlineWebContainerView : UIView <WKUIDelegate, WKNavigationDelegate>
 {
-    UIWebView *_webView;
+    WKWebView *_webView;
     NSString *_HTMLContent;
     id<HUInlineWebContainerViewDelegate> _delegate;
+    double _estimatedHeight;
+    WKUserContentController *_contentController;
 }
 
 @property (copy, nonatomic) NSString *HTMLContent; // @synthesize HTMLContent=_HTMLContent;
+@property (readonly, nonatomic) WKUserContentController *contentController; // @synthesize contentController=_contentController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUInlineWebContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) double estimatedHeight; // @synthesize estimatedHeight=_estimatedHeight;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) UIWebView *webView; // @synthesize webView=_webView;
+@property (readonly, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
 - (id)_defaultFont;
 - (double)heightForWidth:(double)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setUserStyleSheet:(id)arg1;
-- (BOOL)uiWebView:(id)arg1 previewIsAllowedForPosition:(struct CGPoint)arg2;
-- (BOOL)webView:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(long long)arg3;
-- (void)webViewDidFinishLoad:(id)arg1;
+- (void)setUserStyleSheet;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
+- (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
+- (BOOL)webView:(id)arg1 shouldPreviewElement:(id)arg2;
 
 @end
 

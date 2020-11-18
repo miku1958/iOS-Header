@@ -29,11 +29,11 @@
 - (BOOL)_accessibilityIsInCmdTabSwitcher;
 - (BOOL)_accessibilityIsInFolder;
 - (BOOL)_accessibilityIsInShortcutMenu;
-- (BOOL)_accessibilityLaunchAppWithRole:(long long)arg1 onLeft:(BOOL)arg2;
-- (BOOL)_accessibilityLaunchFloatingLeft:(id)arg1;
-- (BOOL)_accessibilityLaunchFloatingRight:(id)arg1;
-- (BOOL)_accessibilityLaunchLeft:(id)arg1;
-- (BOOL)_accessibilityLaunchRight:(id)arg1;
+- (BOOL)_accessibilityIsTimedOut;
+- (BOOL)_accessibilityLaunchAppWithRole:(long long)arg1 onLeadingSide:(BOOL)arg2;
+- (BOOL)_accessibilityLaunchFloatingTrailing:(id)arg1;
+- (BOOL)_accessibilityLaunchLeading:(id)arg1;
+- (BOOL)_accessibilityLaunchTrailing:(id)arg1;
 - (BOOL)_accessibilityOverridesInvisibility;
 - (id)_accessibilityPreferredScrollActions;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
@@ -42,9 +42,11 @@
 - (id)_accessibilitySupportGesturesAttributes;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)_accessibilityToggleJigglyMode;
+- (BOOL)_accessibilityUpdatesSwitchMenu;
 - (id)_accessibilityUserTestingChildren;
 - (void)_updateCloseBoxAnimated:(BOOL)arg1;
 - (BOOL)accessibilityActivate;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityCustomActions;
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityDropPointDescriptors;

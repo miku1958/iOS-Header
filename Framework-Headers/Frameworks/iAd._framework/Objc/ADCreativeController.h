@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADWebProcessDelegate-Protocol.h>
 #import <iAd/WKNavigationDelegate-Protocol.h>
@@ -96,7 +96,9 @@
 - (void)webProcessVideoAdJSOGetVideoInfo:(CDUnknownBlockType)arg1;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
+- (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
+- (void)webViewWebContentProcessDidTerminate:(id)arg1;
 
 @end
 

@@ -22,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (void)_sashViewRecognizedTapGestureWithGestureRecognizer:(id)arg1;
+- (id)accessibilityIdentifier;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)reloadData;

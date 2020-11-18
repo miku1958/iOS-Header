@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, NSOperationQueue, NSString;
-@protocol OS_dispatch_queue, _PASSqliteErrorHandlerProtocol;
+@class NSCache, NSMutableArray, NSString;
+@protocol _PASSqliteErrorHandlerProtocol;
 
 @interface _PASSqliteDatabase : NSObject
 {
@@ -18,15 +18,8 @@
     NSObject<_PASSqliteErrorHandlerProtocol> *_errorHandler;
     NSString *_filename;
     NSCache *_queryCache;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSOperationQueue *_operationQueue;
-    struct _opaque_pthread_t {
-        long long _field1;
-        struct __darwin_pthread_handler_rec *_field2;
-        char _field3[8176];
-    } *_threadInQueue;
-    struct _opaque_pthread_mutex_t _threadInQueueLock;
+    struct _opaque_pthread_mutex_t _lock;
+    NSMutableArray *_statementsToFinalizeAsync;
     BOOL _currentExclusivity;
     BOOL _isInMemory;
 }
@@ -69,6 +62,7 @@
 - (id)dbErrorWithCode:(unsigned long long)arg1 sqliteReturnValue:(int)arg2 lastErrno:(int)arg3 query:(id)arg4;
 - (void)dealloc;
 - (id)description;
+- (void)finalizeLater:(struct sqlite3_stmt *)arg1;
 - (BOOL)frailReadTransaction:(CDUnknownBlockType)arg1;
 - (BOOL)frailWriteTransaction:(CDUnknownBlockType)arg1;
 - (id)freeSpace;
@@ -97,7 +91,6 @@
 - (id)tablesWithColumnNamed:(id)arg1;
 - (void)updateTable:(id)arg1 dictionary:(id)arg2 whereClause:(id)arg3 onError:(CDUnknownBlockType)arg4;
 - (unsigned long long)userVersion;
-- (void)withDbLockExecuteAsyncBlock:(CDUnknownBlockType)arg1;
 - (void)withDbLockExecuteBlock:(CDUnknownBlockType)arg1;
 - (void)writeTransaction:(CDUnknownBlockType)arg1;
 

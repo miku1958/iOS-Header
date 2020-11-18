@@ -4,38 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSWPTextWrap-Protocol.h>
 
-@class NSTimer, TPDocumentRoot;
+@class TPDocumentRoot;
 
 __attribute__((visibility("hidden")))
 @interface TPTextWrapController : NSObject <TSWPTextWrap>
 {
-    TPDocumentRoot *_documentRoot;
     struct CGAffineTransform _canvasSpaceToWrapSpace;
     struct CGAffineTransform _wrapSpaceToCanvasSpace;
-    BOOL _wrapAnimationEnabled;
-    NSTimer *_wrapAnimationTimer;
+    TPDocumentRoot *_documentRoot;
 }
 
-+ (struct CGPoint)p_baseWrappablePoint;
+@property (readonly, weak, nonatomic) TPDocumentRoot *documentRoot; // @synthesize documentRoot=_documentRoot;
+
 - (void).cxx_destruct;
 - (id)beginWrappingToColumn:(id)arg1 target:(id)arg2 hasWrapables:(BOOL *)arg3;
 - (BOOL)checkForUnobstructedSpan:(struct CGRect)arg1 wrappableAttachments:(id)arg2 userInfo:(id)arg3;
-- (void)dealloc;
 - (id)initWithDocumentRoot:(id)arg1;
 - (double)nextUnobstructedSpanStartingAt:(struct CGRect)arg1 wrappableAttachments:(id)arg2 userInfo:(id)arg3;
-- (void)p_animateWrap;
 - (id)p_groupInfoContainingWrappable:(id)arg1;
-- (void)p_setWrapAnimationPhase:(double)arg1;
 - (BOOL)p_shouldTextFlowAroundWrappable:(id)arg1 inTarget:(id)arg2 inColumn:(id)arg3;
 - (unsigned int)p_splitLine:(struct CGRect)arg1 lineSegmentRects:(struct CGRect [128])arg2 wrappable:(id)arg3 cookie:(id)arg4 skipHint:(double *)arg5;
 - (id)p_wrapDrawables:(id)arg1 userInfo:(id)arg2;
 - (unsigned int)splitLine:(struct CGRect)arg1 lineSegmentRects:(out struct CGRect [128])arg2 wrappableAttachments:(id)arg3 ignoreFloatingGraphics:(BOOL)arg4 canvasCausedWrap:(out BOOL *)arg5 skipHint:(out double *)arg6 userInfo:(id)arg7;
-- (void)stopAnimation;
-- (void)toggleWrapAnimation;
 
 @end
 

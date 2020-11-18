@@ -6,18 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFAccessibilityListening-Protocol.h>
 #import <AssistantServices/AFAudioPowerUpdaterDelegate-Protocol.h>
+#import <AssistantServices/AFDeviceRingerSwitchListening-Protocol.h>
 #import <AssistantServices/NSXPCListenerDelegate-Protocol.h>
 
-@class AFAudioPowerUpdater, AFClientConfiguration, AFOneArgumentSafetyBlock, NSArray, NSError, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
+@class AFAudioPowerUpdater, AFClientConfiguration, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFConnectionLocationManager, AFOneArgumentSafetyBlock, NSArray, NSError, NSMutableDictionary, NSString, NSUUID, NSXPCConnection;
 @protocol AFAssistantUIService, AFSpeechDelegate, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
-@interface AFConnection : NSObject <NSXPCListenerDelegate, AFAudioPowerUpdaterDelegate>
+@interface AFConnection : NSObject <NSXPCListenerDelegate, AFAudioPowerUpdaterDelegate, AFAccessibilityListening, AFDeviceRingerSwitchListening>
 {
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_queue> *_targetQueue;
     NSString *_outstandingRequestClass;
     NSArray *_cachedBulletins;
+    AFClockAlarmSnapshot *_cachedClockAlarmSnapshot;
+    AFClockTimerSnapshot *_cachedClockTimerSnapshot;
     NSUUID *_activeRequestUUID;
     long long _activeRequestType;
     long long _activeRequestUsefulUserResultType;
@@ -31,11 +35,12 @@
     unsigned int _audioSessionID;
     AFAudioPowerUpdater *_inputAudioPowerUpdater;
     AFClientConfiguration *_clientConfiguration;
-    unsigned int _clientStateIsInSync:1;
+    unsigned int _clientConfigurationIsInSync:1;
     unsigned int _voiceOverIsActive:1;
     NSError *_lastRetryError;
     unsigned long long _pendingSpeechRequestCounter;
     NSObject<OS_dispatch_group> *_speechCallbackGroup;
+    AFConnectionLocationManager *_locationManager;
     id<AFAssistantUIService> _delegate;
     id<AFSpeechDelegate> _speechDelegate;
 }
@@ -65,10 +70,13 @@
 - (void)_aceConnectionWillRetryOnError:(id)arg1;
 - (void)_barrier;
 - (id)_cachedBulletins;
+- (id)_cachedClockAlarmSnapshot;
+- (id)_cachedClockTimerSnapshot;
 - (void)_cancelRequestTimeout;
 - (void)_checkAndSetIsCapturingSpeech:(BOOL)arg1;
 - (void)_clearAssistantInfoForAccountWithIdentifier:(id)arg1;
 - (void)_clearConnection;
+- (id)_clientConfiguration;
 - (id)_clientService;
 - (id)_clientServiceWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)_completeRequestWithUUID:(id)arg1 error:(id)arg2;
@@ -105,7 +113,6 @@
 - (void)_tellDelegateDidFinishAcousticIDRequestWithSuccess:(BOOL)arg1;
 - (void)_tellDelegateExtensionRequestFinishedForApplication:(id)arg1 error:(id)arg2;
 - (void)_tellDelegateExtensionRequestWillStartForApplication:(id)arg1;
-- (void)_tellDelegateHandleIntent:(id)arg1 inBackgroundAppWithBundleId:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)_tellDelegateInvalidateCurrentUserActivity;
 - (void)_tellDelegateRequestWillStart;
 - (void)_tellDelegateSetUserActivityInfo:(id)arg1 webpageURL:(id)arg2;
@@ -129,14 +136,17 @@
 - (void)_tellSpeechDelegateSpeechRecognized:(id)arg1;
 - (void)_tellSpeechDelegateSpeechRecognizedPartialResult:(id)arg1;
 - (void)_tellSpeechDelegateToPerformTwoShotPromptWithType:(long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)_updateClientState;
+- (void)_updateClientConfiguration;
 - (void)_updateState;
+- (void)_updateStateIfNotInSync;
 - (void)_willCancelRequest;
 - (void)_willCompleteRequest;
 - (void)_willEndSession;
 - (void)_willFailRequestWithError:(id)arg1;
 - (void)_willPresentUsefulUserResultWithType:(long long)arg1;
 - (void)_willStartRequestWithSpeech:(BOOL)arg1 analyticsEventProvider:(CDUnknownBlockType)arg2;
+- (void)accessibilityObserver:(id)arg1 didChangeVibrationDisabledPreference:(BOOL)arg2;
+- (void)accessibilityObserver:(id)arg1 didChangeVoiceOverTouchEnabledPreference:(BOOL)arg2;
 - (id)acquireUserInteractionAssertion;
 - (void)adviseSessionArbiterToContinueWithPreviousWinner:(BOOL)arg1;
 - (void)audioPowerUpdaterDidUpdate:(id)arg1 averagePower:(float)arg2 peakPower:(float)arg3;
@@ -149,6 +159,7 @@
 - (void)checkLanguageReady:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearContext;
 - (void)dealloc;
+- (void)deviceRingerObserver:(id)arg1 didChangeState:(long long)arg2;
 - (void)didDismissUI;
 - (void)endSession;
 - (void)endUpdateOutputAudioPower;
@@ -159,6 +170,7 @@
 - (void)forceAudioSessionInactiveWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getCachedObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getDeferredObjectsWithIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRemoteClockTimerSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithTargetQueue:(id)arg1;
 - (void)invalidate;
@@ -168,7 +180,9 @@
 - (void)prepareForPhoneCall;
 - (void)recordRequestMetric:(id)arg1 withTimestamp:(double)arg2;
 - (void)recordUIMetrics:(id)arg1;
+- (void)reportIssueForError:(id)arg1 type:(long long)arg2 context:(id)arg3;
 - (void)requestBarrier:(CDUnknownBlockType)arg1;
+- (void)resumeInterruptedAudioPlaybackIfNeeded;
 - (void)rollbackClearContext;
 - (void)rollbackRequest;
 - (void)sendFeedbackToAppPreferencesPredictorForMetricsContext:(id)arg1 selectedBundleId:(id)arg2;
@@ -176,12 +190,17 @@
 - (void)sendGenericAceCommand:(id)arg1 conflictHandler:(CDUnknownBlockType)arg2;
 - (void)sendReplyCommand:(id)arg1;
 - (void)setAlertContextWithBulletins:(id)arg1;
+- (void)setAlertContextWithClockAlarmSnapshot:(id)arg1;
+- (void)setAlertContextWithClockTimerSnapshot:(id)arg1;
 - (void)setApplicationContext:(id)arg1;
 - (void)setApplicationContextForApplicationInfos:(id)arg1;
 - (void)setApplicationContextForApplicationInfos:(id)arg1 withRefId:(id)arg2;
 - (void)setCarDNDActive:(BOOL)arg1;
 - (void)setConfiguration:(id)arg1;
-- (void)setIsStark:(BOOL)arg1;
+- (void)setDeviceRingerSwitchState:(long long)arg1;
+- (void)setIsAccessibilityVibrationDisabled:(BOOL)arg1;
+- (void)setIsAccessibilityVoiceOverTouchEnabled:(BOOL)arg1;
+- (void)setIsDeviceInStarkMode:(BOOL)arg1;
 - (void)setLockState:(BOOL)arg1 screenLocked:(BOOL)arg2;
 - (void)setMyriadDecisionResult:(BOOL)arg1;
 - (void)setOverriddenApplicationContext:(id)arg1 withContext:(id)arg2;

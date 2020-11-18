@@ -33,7 +33,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) AXElement *elementCommunity; // @synthesize elementCommunity=_elementCommunity;
 @property (readonly, nonatomic) struct CGRect frame;
-@property (nonatomic) id<AXElementGroupGenerator> generator; // @synthesize generator=_generator;
+@property (weak, nonatomic) id<AXElementGroupGenerator> generator; // @synthesize generator=_generator;
 @property (strong, nonatomic) NSHashTable *groupObservers; // @synthesize groupObservers=_groupObservers;
 @property (nonatomic) unsigned long long groupTraits; // @synthesize groupTraits=_groupTraits;
 @property (readonly) unsigned long long hash;

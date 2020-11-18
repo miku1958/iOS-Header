@@ -16,6 +16,7 @@
 @property (strong, nonatomic) SKNode *maskNode;
 @property (nonatomic) BOOL prefersAlphaMask;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;

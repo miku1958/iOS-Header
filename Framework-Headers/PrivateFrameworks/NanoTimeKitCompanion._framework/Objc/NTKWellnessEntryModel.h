@@ -9,37 +9,35 @@
 #import <NanoTimeKitCompanion/CLKTimelineEntry-Protocol.h>
 #import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 
-@class HKQuantity, NSString;
+@class HKQuantity, NSArray, NSString;
 
 @interface NTKWellnessEntryModel : NTKTimelineEntryModel <NSCopying, CLKTimelineEntry>
 {
     BOOL _databaseLoading;
     BOOL _deviceLocked;
-    HKQuantity *_activeEnergy;
     HKQuantity *_activeEnergyTotal;
     HKQuantity *_activeEnergyGoal;
-    double _briskMinutes;
     double _briskMinutesTotal;
     double _briskMinutesGoal;
-    unsigned long long _standHourState;
     long long _standHoursTotal;
     long long _standHoursGoal;
-    NTKWellnessEntryModel *_previousEntryModel;
+    NSArray *_moveChartData;
+    NSArray *_exerciseChartData;
+    NSArray *_standChartData;
 }
 
-@property (strong, nonatomic) HKQuantity *activeEnergy; // @synthesize activeEnergy=_activeEnergy;
 @property (strong, nonatomic) HKQuantity *activeEnergyGoal; // @synthesize activeEnergyGoal=_activeEnergyGoal;
 @property (strong, nonatomic) HKQuantity *activeEnergyTotal; // @synthesize activeEnergyTotal=_activeEnergyTotal;
-@property (nonatomic) double briskMinutes; // @synthesize briskMinutes=_briskMinutes;
 @property (nonatomic) double briskMinutesGoal; // @synthesize briskMinutesGoal=_briskMinutesGoal;
 @property (nonatomic) double briskMinutesTotal; // @synthesize briskMinutesTotal=_briskMinutesTotal;
 @property (nonatomic) BOOL databaseLoading; // @synthesize databaseLoading=_databaseLoading;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL deviceLocked; // @synthesize deviceLocked=_deviceLocked;
+@property (strong, nonatomic) NSArray *exerciseChartData; // @synthesize exerciseChartData=_exerciseChartData;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) NTKWellnessEntryModel *previousEntryModel; // @synthesize previousEntryModel=_previousEntryModel;
-@property (nonatomic) unsigned long long standHourState; // @synthesize standHourState=_standHourState;
+@property (strong, nonatomic) NSArray *moveChartData; // @synthesize moveChartData=_moveChartData;
+@property (strong, nonatomic) NSArray *standChartData; // @synthesize standChartData=_standChartData;
 @property (nonatomic) long long standHoursGoal; // @synthesize standHoursGoal=_standHoursGoal;
 @property (nonatomic) long long standHoursTotal; // @synthesize standHoursTotal=_standHoursTotal;
 @property (readonly) Class superclass;
@@ -47,6 +45,9 @@
 
 + (id)_LocalizedStringWithActiveEnergy:(id)arg1;
 + (id)_activityTemplateWithFamily:(long long)arg1 entryModel:(id)arg2;
++ (id)_signatureBezelFromModel:(id)arg1;
++ (id)_signatureCornerFromModel:(id)arg1;
++ (id)_signatureRectangleFromModel:(id)arg1;
 + (id)formattingManager;
 + (id)idealizedEntryModel;
 + (id)largeModular:(id)arg1;

@@ -21,6 +21,7 @@
     UIBarButtonItem *_flexibleSpace;
     PKPass *_viewingPass;
     UITableView *_tableView;
+    struct CGSize _imageSizeNeeded;
     id<UIViewControllerPreviewing> _previewingContext;
     id<PKEditGroupViewControllerDelegate> _delegate;
 }
@@ -40,9 +41,12 @@
 - (void)group:(id)arg1 didMovePassFromIndex:(unsigned long long)arg2 toIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didRemovePass:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)group:(id)arg1 didUpdatePass:(id)arg2 atIndex:(unsigned long long)arg3;
-- (id)initWithGroup:(id)arg1 delegate:(id)arg2;
+- (id)initWithGroup:(id)arg1 existingGroupsController:(id)arg2 delegate:(id)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)pass;
+- (id)passAtIndexPath:(id)arg1;
+- (BOOL)passExistsWithUniqueIdentifier:(id)arg1;
+- (void)prefetchItemsAtIndexPaths:(id)arg1;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (BOOL)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;

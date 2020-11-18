@@ -34,6 +34,7 @@
 - (id)_getNameForBundleIdentifier:(id)arg1 isCurrentDevice:(BOOL)arg2;
 - (id)_predicateForSourceBundleIdentifier:(id)arg1 localOnly:(BOOL)arg2;
 - (id)_sourceForBundleIdentifier:(id)arg1 createSourceBlock:(CDUnknownBlockType)arg2 modifySourceBlock:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (id)_sourceFromEphemeralSource:(id)arg1 provenance:(long long)arg2 createOrUpdateIfNecessary:(BOOL)arg3 error:(id *)arg4;
 - (unsigned long long)_sourceOptionsForApplicationEntitlements:(id)arg1;
 - (id)_sourcePersistentIDsFromSourceEntities:(id)arg1;
 - (id)_sourceUUIDsForBundleIdentifier:(id)arg1 error:(id *)arg2;
@@ -56,12 +57,13 @@
 - (id)localSourceForBundleIdentifier:(id)arg1 copyIfNecessary:(BOOL)arg2 error:(id *)arg3;
 - (id)localSourceForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (id)localSourceForSourceID:(id)arg1 copyIfNecessary:(BOOL)arg2 error:(id *)arg3;
+- (id)privateSourceForClinicalAccountIdentifier:(id)arg1 provenance:(long long)arg2 createOrUpdateIfNecessary:(BOOL)arg3 nameOnCreateOrUpdate:(id)arg4 error:(id *)arg5;
+- (id)publicSourceForGatewayExternalIdentifier:(id)arg1 provenance:(long long)arg2 createOrUpdateIfNecessary:(BOOL)arg3 nameOnCreateOrUpdate:(id)arg4 error:(id *)arg5;
 - (BOOL)setLocalDeviceSourceUUID:(id)arg1 bundleIdentifier:(id)arg2 error:(id *)arg3;
 - (id)sourceEntityForClientSource:(id)arg1 createOrUpdateIfNecessary:(BOOL)arg2 error:(id *)arg3;
 - (id)sourceForAppleDeviceWithUUID:(id)arg1 identifier:(id)arg2 name:(id)arg3 productType:(id)arg4 createIfNecessary:(BOOL)arg5 error:(id *)arg6;
 - (id)sourceForApplicationIdentifier:(id)arg1 createOrUpdateIfNecessary:(BOOL)arg2 entitlements:(id)arg3 name:(id)arg4 error:(id *)arg5;
 - (id)sourceForClient:(id)arg1 error:(id *)arg2;
-- (id)sourceForClinicalAccountIdentifier:(id)arg1 provenance:(long long)arg2 createIfNecessary:(BOOL)arg3 error:(id *)arg4;
 - (id)sourceForCodableSource:(id)arg1 provenance:(long long)arg2 createIfNecessary:(BOOL)arg3 isDeleted:(BOOL *)arg4 error:(id *)arg5;
 - (id)sourceUUIDForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)updateCurrentDeviceNameWithError:(id *)arg1;

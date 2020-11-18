@@ -10,7 +10,7 @@
 #import <CallKit/NSCopying-Protocol.h>
 #import <CallKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSSet, NSString, NSURL;
+@class NSArray, NSData, NSOrderedSet, NSSet, NSString, NSURL;
 
 @interface CXProviderConfiguration : NSObject <NSSecureCoding, CXCopying, NSCopying>
 {
@@ -29,6 +29,7 @@
     NSArray *_emergencyHandles;
     NSArray *_emergencyLabeledHandles;
     NSArray *_handoffIdentifiers;
+    NSOrderedSet *_prioritizedSenderIdentities;
     NSURL *_ringtoneSoundURL;
 }
 
@@ -44,8 +45,10 @@
 @property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (nonatomic) unsigned long long maximumCallGroups; // @synthesize maximumCallGroups=_maximumCallGroups;
 @property (nonatomic) unsigned long long maximumCallsPerCallGroup; // @synthesize maximumCallsPerCallGroup=_maximumCallsPerCallGroup;
+@property (copy, nonatomic) NSOrderedSet *prioritizedSenderIdentities; // @synthesize prioritizedSenderIdentities=_prioritizedSenderIdentities;
 @property (strong, nonatomic) NSString *ringtoneSound;
 @property (copy, nonatomic) NSURL *ringtoneSoundURL; // @synthesize ringtoneSoundURL=_ringtoneSoundURL;
+@property (copy, nonatomic) NSSet *senderIdentities;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSSet *supportedHandleTypes; // @synthesize supportedHandleTypes=_supportedHandleTypes;
 @property (nonatomic) BOOL supportsAudioOnly; // @synthesize supportsAudioOnly=_supportsAudioOnly;
@@ -61,6 +64,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocalizedName:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToConfiguration:(id)arg1;
 - (id)sanitizedCopy;
 - (id)sanitizedCopyWithZone:(struct _NSZone *)arg1;
 - (void)updateCopy:(id)arg1 withZone:(struct _NSZone *)arg2;

@@ -11,6 +11,7 @@
 @interface PSIGroup : PSIReusableObject
 {
     NSMutableString *_contentString;
+    NSMutableString *_lookupIdentifier;
     unsigned long long _compressedRanges[2];
     struct _NSRange _tokenRanges[8];
     unsigned long long _tokenRangesCount;
@@ -18,13 +19,18 @@
     unsigned long long _groupId;
     unsigned long long _owningGroupId;
     struct __CFArray *_assetIds;
+    struct __CFArray *_collectionIds;
+    struct __CFArray *_tripIds;
 }
 
 @property (strong, nonatomic) struct __CFArray *assetIds; // @synthesize assetIds=_assetIds;
 @property (nonatomic) short category; // @synthesize category=_category;
+@property (strong, nonatomic) struct __CFArray *collectionIds; // @synthesize collectionIds=_collectionIds;
 @property (readonly, strong, nonatomic) NSString *contentString; // @synthesize contentString=_contentString;
 @property (nonatomic) unsigned long long groupId; // @synthesize groupId=_groupId;
+@property (readonly, strong, nonatomic) NSString *lookupIdentifier; // @synthesize lookupIdentifier=_lookupIdentifier;
 @property (nonatomic) unsigned long long owningGroupId; // @synthesize owningGroupId=_owningGroupId;
+@property (strong, nonatomic) struct __CFArray *tripIds; // @synthesize tripIds=_tripIds;
 
 + (void)_getTokenRanges:(struct _NSRange [8])arg1 fromCompressedRanges:(unsigned long long [2])arg2;
 + (void)getCompressedRanges:(unsigned long long [2])arg1 fromTokenRanges:(CDStruct_627e0f85 *)arg2 count:(long long)arg3;
@@ -32,14 +38,16 @@
 - (long long)compareToGroup:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (unsigned long long)groupIdForAssetLookup;
+- (unsigned long long)groupIdForObjectLookup;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithContentString:(id)arg1 lookIdentifier:(id)arg2 category:(short)arg3 owningGroupId:(long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (void)prepareForReuse;
 - (void)prepareFromStatement:(struct sqlite3_stmt *)arg1;
 - (struct _NSRange)tokenRangeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)tokenRangesCount;
+- (void)unionIdsWithGroup:(id)arg1;
 
 @end
 

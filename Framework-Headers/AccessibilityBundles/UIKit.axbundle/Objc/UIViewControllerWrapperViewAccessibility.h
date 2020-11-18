@@ -12,6 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (long long)accessibilityContainerType;
 - (BOOL)shouldGroupAccessibilityChildren;
 
 @end

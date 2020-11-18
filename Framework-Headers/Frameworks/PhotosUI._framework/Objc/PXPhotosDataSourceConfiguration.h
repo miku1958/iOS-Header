@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSPredicate, NSSet, PHAsset, PHFetchResult;
+@class NSArray, NSDictionary, NSPredicate, NSSet, PHAsset, PHFetchResult, PHPhotoLibrary;
 
 @interface PXPhotosDataSourceConfiguration : NSObject
 {
@@ -19,16 +19,22 @@
     NSPredicate *_filterPredicate;
     NSSet *_allowedUUIDs;
     NSArray *_filterPersons;
+    PHPhotoLibrary *_photoLibrary;
+    NSArray *_fetchPropertySets;
+    long long _curationType;
 }
 
 @property (strong, nonatomic) NSSet *allowedUUIDs; // @synthesize allowedUUIDs=_allowedUUIDs;
 @property (readonly, nonatomic) PHFetchResult *collectionListFetchResult; // @synthesize collectionListFetchResult=_collectionListFetchResult;
+@property (nonatomic) long long curationType; // @synthesize curationType=_curationType;
 @property (strong, nonatomic) NSDictionary *existingAssetCollectionFetchResults; // @synthesize existingAssetCollectionFetchResults=_existingAssetCollectionFetchResults;
 @property (strong, nonatomic) NSDictionary *existingKeyAssetsFetchResults; // @synthesize existingKeyAssetsFetchResults=_existingKeyAssetsFetchResults;
+@property (strong, nonatomic) NSArray *fetchPropertySets; // @synthesize fetchPropertySets=_fetchPropertySets;
 @property (strong, nonatomic) NSArray *filterPersons; // @synthesize filterPersons=_filterPersons;
 @property (strong, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
 @property (nonatomic) BOOL hideHiddenAssets; // @synthesize hideHiddenAssets=_hideHiddenAssets;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
+@property (strong, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (strong, nonatomic) PHAsset *referenceAsset; // @synthesize referenceAsset=_referenceAsset;
 
 - (void).cxx_destruct;

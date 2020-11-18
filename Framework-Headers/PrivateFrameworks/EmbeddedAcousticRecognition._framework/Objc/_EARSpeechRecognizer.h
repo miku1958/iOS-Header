@@ -22,6 +22,7 @@
     BOOL _recognizeEagerCandidates;
     BOOL _farField;
     NSData *_userProfileData;
+    NSData *_jitProfileData;
     double _endpointStart;
     double _maximumRecognitionDuration;
     NSDictionary *_recognitionReplacements;
@@ -35,6 +36,7 @@
 @property (nonatomic) double endpointStart; // @synthesize endpointStart=_endpointStart;
 @property (nonatomic) BOOL farField; // @synthesize farField=_farField;
 @property (copy, nonatomic) NSString *inputOrigin; // @synthesize inputOrigin=_inputOrigin;
+@property (copy, nonatomic) NSData *jitProfileData; // @synthesize jitProfileData=_jitProfileData;
 @property (copy, nonatomic) NSArray *leftContext; // @synthesize leftContext=_leftContext;
 @property (nonatomic) double maximumRecognitionDuration; // @synthesize maximumRecognitionDuration=_maximumRecognitionDuration;
 @property (readonly, nonatomic) _EARSpeechModelInfo *modelInfo;

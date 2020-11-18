@@ -7,45 +7,57 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBRequestRideIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBDataString, _INPBDateTimeRange, _INPBInteger, _INPBIntentMetadata, _INPBLocation, _INPBPaymentMethod;
+@class NSString, _INPBDataString, _INPBDateTimeRange, _INPBInteger, _INPBIntentMetadata, _INPBLocation, _INPBPaymentMethod;
 
-@interface _INPBRequestRideIntent : PBCodable <NSCopying>
+@interface _INPBRequestRideIntent : PBCodable <_INPBRequestRideIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct {
+        unsigned int usesApplePayForPayment:1;
+    } _has;
+    BOOL _usesApplePayForPayment;
     _INPBLocation *_dropOffLocation;
     _INPBIntentMetadata *_intentMetadata;
     _INPBInteger *_partySize;
     _INPBPaymentMethod *_paymentMethod;
+    _INPBDataString *_paymentMethodName;
     _INPBLocation *_pickupLocation;
+    _INPBDateTimeRange *_pickupTime;
     _INPBDataString *_rideOptionName;
     _INPBDateTimeRange *_scheduledPickupTime;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBLocation *dropOffLocation; // @synthesize dropOffLocation=_dropOffLocation;
 @property (readonly, nonatomic) BOOL hasDropOffLocation;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasPartySize;
 @property (readonly, nonatomic) BOOL hasPaymentMethod;
+@property (readonly, nonatomic) BOOL hasPaymentMethodName;
 @property (readonly, nonatomic) BOOL hasPickupLocation;
+@property (readonly, nonatomic) BOOL hasPickupTime;
 @property (readonly, nonatomic) BOOL hasRideOptionName;
 @property (readonly, nonatomic) BOOL hasScheduledPickupTime;
+@property (nonatomic) BOOL hasUsesApplePayForPayment;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBInteger *partySize; // @synthesize partySize=_partySize;
 @property (strong, nonatomic) _INPBPaymentMethod *paymentMethod; // @synthesize paymentMethod=_paymentMethod;
+@property (strong, nonatomic) _INPBDataString *paymentMethodName; // @synthesize paymentMethodName=_paymentMethodName;
 @property (strong, nonatomic) _INPBLocation *pickupLocation; // @synthesize pickupLocation=_pickupLocation;
+@property (strong, nonatomic) _INPBDateTimeRange *pickupTime; // @synthesize pickupTime=_pickupTime;
 @property (strong, nonatomic) _INPBDataString *rideOptionName; // @synthesize rideOptionName=_rideOptionName;
 @property (strong, nonatomic) _INPBDateTimeRange *scheduledPickupTime; // @synthesize scheduledPickupTime=_scheduledPickupTime;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
+@property (nonatomic) BOOL usesApplePayForPayment; // @synthesize usesApplePayForPayment=_usesApplePayForPayment;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

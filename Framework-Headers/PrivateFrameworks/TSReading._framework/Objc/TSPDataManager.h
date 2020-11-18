@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSURL, TSPObjectContext, TSUPathSet;
 @protocol OS_dispatch_group, OS_dispatch_queue;
@@ -44,8 +44,6 @@
 - (id)dataForExistingData:(id)arg1 digest:(const array_019f9a10 *)arg2 filename:(id)arg3 temporaryPath:(id)arg4;
 - (id)dataForIdentifier:(long long)arg1;
 - (id)dataForIdentifierImpl:(long long)arg1;
-- (id)dataFromAssetsLibraryURL:(id)arg1;
-- (void)dataFromAssetsLibraryURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)dataFromExternalReferenceURL:(id)arg1 useFileCoordination:(BOOL)arg2;
 - (id)dataFromFileURL:(id)arg1 useFileCoordination:(BOOL)arg2;
 - (id)dataFromNSData:(id)arg1 filename:(id)arg2;

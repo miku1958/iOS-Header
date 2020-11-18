@@ -12,6 +12,7 @@
 @interface SearchUIWatchListCardRowModel : SearchUICardSectionRowModel
 {
     BOOL _hasLoaded;
+    BOOL _hasError;
     id<SearchUIWatchListCardRowModelDelegate> _delegate;
     NSString *_text;
     SFImage *_image;
@@ -23,6 +24,7 @@
 @property long long buttonState; // @synthesize buttonState=_buttonState;
 @property (strong) SFWatchListCardSection *cardSection; // @dynamic cardSection;
 @property (weak) id<SearchUIWatchListCardRowModelDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL hasError; // @synthesize hasError=_hasError;
 @property BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property (strong) SFImage *image; // @synthesize image=_image;
 @property (strong) SearchUIWatchListCardsManager *manager; // @synthesize manager=_manager;
@@ -31,6 +33,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithResult:(id)arg1 cardSection:(id)arg2 asyncRowManager:(id)arg3;
+- (int)separatorStyle;
 - (void)toggleAddToUpNextWithFeedbackDelegate:(id)arg1;
 - (void)updateWithText:(id)arg1 buttonState:(long long)arg2;
 - (void)updateWithText:(id)arg1 buttonState:(long long)arg2 image:(id)arg3 punchout:(id)arg4;

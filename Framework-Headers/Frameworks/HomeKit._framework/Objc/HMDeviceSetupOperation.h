@@ -9,18 +9,18 @@
 #import <HomeKit/HMDeviceSetupSessionDelegate-Protocol.h>
 #import <HomeKit/HMFLogging-Protocol.h>
 
-@class HMAccessory, HMDeviceSetupSession, NSError, NSObject, NSString, TRSession;
+@class HMAccessory, HMDeviceSetupSession, HMFUnfairLock, NSError, NSObject, NSString, TRSession;
 @protocol OS_dispatch_queue;
 
 @interface HMDeviceSetupOperation : NSOperation <HMDeviceSetupSessionDelegate, HMFLogging>
 {
+    HMFUnfairLock *_lock;
     BOOL _executing;
     BOOL _finished;
     NSError *_error;
     HMAccessory *_accessory;
     TRSession *_session;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDeviceSetupSession *_setupSession;
 }
 
@@ -32,7 +32,6 @@
 @property (getter=isExecuting) BOOL executing; // @synthesize executing=_executing;
 @property (getter=isFinished) BOOL finished; // @synthesize finished=_finished;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, weak) TRSession *session; // @synthesize session=_session;
 @property (readonly, nonatomic) HMDeviceSetupSession *setupSession; // @synthesize setupSession=_setupSession;
 @property (readonly) Class superclass;

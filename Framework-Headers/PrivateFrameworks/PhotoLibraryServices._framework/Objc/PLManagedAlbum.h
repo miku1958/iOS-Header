@@ -6,12 +6,13 @@
 
 #import <PhotoLibraryServices/_PLManagedAlbum.h>
 
+#import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
 #import <PhotoLibraryServices/PLSearchableAssetCollection-Protocol.h>
 #import <PhotoLibraryServices/PLUserEditableAlbumProtocol-Protocol.h>
 
 @class NSArray, NSDate, NSDictionary, NSMutableOrderedSet, NSNumber, NSOrderedSet, NSSet, NSString, NSURL, PLManagedAsset, UIImage;
 
-@interface PLManagedAlbum : _PLManagedAlbum <PLSearchableAssetCollection, PLUserEditableAlbumProtocol>
+@interface PLManagedAlbum : _PLManagedAlbum <PLSearchableAssetCollection, PLUserEditableAlbumProtocol, PLCloudDeletable>
 {
     BOOL _albumShouldBeAutomaticallyDeleted;
     BOOL _needsPersistenceUpdate;
@@ -26,6 +27,9 @@
 @property (readonly, nonatomic) BOOL canContributeToCloudSharedAlbum;
 @property (readonly, nonatomic) BOOL canShowAvalancheStacks;
 @property (readonly, nonatomic) BOOL canShowComments;
+@property (nonatomic) short cloudDeleteState;
+@property (readonly) long long cloudDeletionType;
+@property (readonly, copy) NSString *cloudUUIDForDeletion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -51,8 +55,9 @@
 @property (readonly, nonatomic) BOOL isRecentlyAddedAlbum;
 @property (readonly, nonatomic) BOOL isStandInAlbum;
 @property (readonly, nonatomic) BOOL isUserLibraryAlbum;
-@property (readonly, nonatomic) BOOL isWallpaperAlbum;
 @property (strong, nonatomic) PLManagedAsset *keyAsset;
+@property (readonly, nonatomic) NSDate *keyAssetCreationDate;
+@property (readonly, nonatomic) NSString *keyAssetUUID;
 @property (readonly, strong, nonatomic) NSNumber *kind;
 @property (readonly, nonatomic) int kindValue;
 @property (readonly, copy, nonatomic) NSArray *localizedLocationNames;
@@ -60,18 +65,23 @@
 @property (readonly, strong, nonatomic) NSMutableOrderedSet *mutableAssets;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (nonatomic) BOOL needsPersistenceUpdate; // @synthesize needsPersistenceUpdate=_needsPersistenceUpdate;
+@property (readonly, nonatomic) unsigned long long numberOfAssets;
 @property (nonatomic) int pendingItemsCount;
 @property (nonatomic) int pendingItemsType;
 @property (readonly, nonatomic) unsigned long long photosCount;
 @property (readonly, strong, nonatomic) UIImage *posterImage;
+@property (readonly, nonatomic) NSDate *searchableEndDate;
+@property (readonly, nonatomic) NSDate *searchableStartDate;
 @property (strong, nonatomic) PLManagedAsset *secondaryKeyAsset;
 @property (readonly, nonatomic) BOOL shouldDeleteWhenEmpty;
 @property (strong, nonatomic) NSDictionary *slideshowSettings;
 @property (readonly, copy, nonatomic) CDUnknownBlockType sortingComparator;
 @property (readonly, strong, nonatomic) NSDate *startDate;
+@property (readonly, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PLManagedAsset *tertiaryKeyAsset;
+@property (readonly, nonatomic) NSString *title;
 @property (readonly, strong, nonatomic) NSString *title;
 @property (readonly, strong, nonatomic) NSMutableOrderedSet *userEditableAssets;
 @property (readonly, strong, nonatomic) NSString *uuid;
@@ -82,6 +92,8 @@
 + (id)baseSearchIndexPredicate;
 + (id)childKeyForOrdering;
 + (void)clearAssetOrderByAbumUUIDs;
++ (long long)cloudDeletionTypeForTombstone:(id)arg1;
++ (id)cloudUUIDKeyForDeletion;
 + (id)keyPathsForValuesAffectingApproximateCount;
 + (id)keyPathsForValuesAffectingPhotosCount;
 + (id)keyPathsForValuesAffectingVideosCount;

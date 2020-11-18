@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, UIFont;
 
@@ -31,6 +31,7 @@
 + (id)italicSystemFontOfSize:(double)arg1;
 + (id)systemFontOfSize:(double)arg1;
 + (id)systemFontOfSize:(double)arg1 weight:(double)arg2;
+- (id)convertFontToBold:(BOOL)arg1 italic:(BOOL)arg2;
 - (void)dealloc;
 - (id)fontWithScale:(double)arg1;
 - (id)fontWithSize:(double)arg1;

@@ -24,6 +24,8 @@
 - (BOOL)canAccessAppleMusic;
 - (BOOL)canAccessRemoteAssets;
 - (BOOL)canAccessiCloudMusicLibrary;
+- (BOOL)canFetchMediaDataFromSender;
+- (BOOL)canPlayEncryptedProgressiveDownloadAssets;
 - (BOOL)canRelayCommunicationChannel;
 - (id)descriptor;
 - (unsigned int)deviceSubtype;
@@ -48,6 +50,9 @@
 - (id)modelID;
 - (id)modelSpecificInfo;
 - (id)name;
+- (BOOL)parentGroupContainsDiscoverableLeader;
+- (id)parentGroupIdentifier;
+- (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (BOOL)requiresAuthorization;
 - (id)sourceInfo;
 - (BOOL)supportsBufferedAirPlay;

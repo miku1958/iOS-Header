@@ -16,7 +16,6 @@
 - (id)_accessibilityLabelWithMarketCap:(BOOL)arg1;
 - (id)_accessibilitySpeakThisString;
 - (id)accessibilityLabel;
-- (id)formattedPrice;
 
 @end
 

@@ -12,19 +12,8 @@
 
 @property (strong, nonatomic) _SFPBColor *backgroundColor;
 @property (nonatomic) BOOL canBeHidden;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasMessageServiceType;
-@property (readonly, nonatomic) BOOL hasMessageStatus;
-@property (readonly, nonatomic) BOOL hasMessageText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
 @property (nonatomic) BOOL hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int messageServiceType;
 @property (nonatomic) int messageStatus;

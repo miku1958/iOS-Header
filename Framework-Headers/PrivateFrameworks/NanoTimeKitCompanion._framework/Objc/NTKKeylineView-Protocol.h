@@ -6,6 +6,11 @@
 
 #import <NanoTimeKitCompanion/NTKColoringView-Protocol.h>
 
+@class NTKKeylineTouchable;
+
 @protocol NTKKeylineView <NTKColoringView>
+
+@property (strong, nonatomic) NTKKeylineTouchable *touchable;
+
 @end
 

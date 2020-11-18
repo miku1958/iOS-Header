@@ -23,8 +23,10 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *relayConnectionID; // @synthesize relayConnectionID=_relayConnectionID;
 
 - (int)addConnection:(id)arg1;
+- (id)copyConnectionWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isPrimary:(BOOL *)arg2;
 - (void)dealloc;
-- (id)getConnectionWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isPrimary:(BOOL *)arg2;
+- (unsigned int)getByteCountWithIndex:(unsigned char)arg1 isOutgoing:(BOOL)arg2;
+- (unsigned int)getPacketCountWithIndex:(unsigned char)arg1 isOutgoing:(BOOL)arg2;
 - (id)getPrimaryConnectionToBeCompared;
 - (id)getSecondaryConnectionToBeCompared;
 - (id)init;
@@ -39,8 +41,11 @@ __attribute__((visibility("hidden")))
 - (int)shouldNominateCandidatePairInternal:(struct tagCANDIDATEPAIR *)arg1 interfaceMask:(int)arg2 nominated:(int *)arg3 demote:(int *)arg4 connectionPriority:(int *)arg5 replaceOnly:(int *)arg6;
 - (BOOL)shouldNominateConnection:(id)arg1;
 - (void)sourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isSourceOnCellular:(BOOL *)arg2 isSourceIPv6:(BOOL *)arg3;
+- (void)synchronizeParticipantGenerationCounter:(unsigned char)arg1;
 - (void)updateCellularMTU:(int)arg1;
 - (void)updateCellularTech:(int)arg1 forLocalInterface:(BOOL)arg2;
+- (void)updatePacketCountAndByteCountWithIndex:(unsigned char)arg1 packetSize:(int)arg2 numOfStreamId:(int)arg3 isPriorityIncluded:(BOOL)arg4 isOutgoing:(BOOL)arg5;
+- (void)updateSessionStats:(unsigned short)arg1;
 - (int)updateStateWithCurrentConnection:(id)arg1 asPrimary:(BOOL)arg2 interfaceMask:(int)arg3 demote:(int *)arg4 replaceOnly:(int *)arg5;
 
 @end

@@ -12,13 +12,20 @@ __attribute__((visibility("hidden")))
 @interface _OSLogChunkFileReference : NSObject
 {
     _OSLogCollectionReference *_oslcr;
-    const char *_path;
+    char *_path;
+    unsigned long long _xot;
+    unsigned long long _xet;
 }
+
+@property (readonly, nonatomic) char *path; // @synthesize path=_path;
+@property (readonly, nonatomic) unsigned long long xattrEndTime; // @synthesize xattrEndTime=_xet;
+@property (readonly, nonatomic) unsigned long long xattrOldestTime; // @synthesize xattrOldestTime=_xot;
 
 - (void).cxx_destruct;
 - (id)copyMappedChunkFile:(id *)arg1;
 - (void)dealloc;
 - (id)initWithCollection:(id)arg1 subpath:(const char *)arg2;
+- (BOOL)readXattrForTimespan:(id *)arg1;
 
 @end
 

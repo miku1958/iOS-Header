@@ -64,6 +64,7 @@
 + (BOOL)supportsLibraryRemoval;
 - (id)artworkCatalog;
 - (id)editorialArtworkCatalog;
+- (id)humanDescription;
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;
 - (long long)libraryRemovalSupportedOptions;
 - (id)mediaItemPropertyValues;

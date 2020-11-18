@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/NSProgressReporting-Protocol.h>
 
-@class CKServerChangeToken, HDCloudSyncOperationConfiguration, HDCloudSyncStore, HDCloudSyncStoreRecord, NSDate, NSFileHandle, NSMutableArray, NSProgress, NSString, NSUUID, _HDCloudSyncStorePersistableState;
+@class CKContainer, CKServerChangeToken, HDCloudSyncOperationConfiguration, HDCloudSyncStore, HDCloudSyncStoreRecord, HDCloudSyncZone, NSDate, NSFileHandle, NSMutableArray, NSProgress, NSString, NSUUID, _HDCloudSyncStorePersistableState;
 @protocol OS_dispatch_queue;
 
 @interface HDCloudSyncPullOperation : NSObject <NSProgressReporting>
@@ -16,6 +16,8 @@
     HDCloudSyncOperationConfiguration *_configuration;
     NSObject<OS_dispatch_queue> *_queue;
     HDCloudSyncStoreRecord *_storeRecord;
+    HDCloudSyncZone *_pullZone;
+    CKContainer *_container;
     HDCloudSyncStore *_syncStore;
     NSMutableArray *_fetchedChangeRecords;
     CKServerChangeToken *_initialServerChangeToken;
@@ -25,6 +27,7 @@
     NSProgress *_perAssetRecordProgress;
     NSUUID *_operationIdentifier;
     NSDate *_startTime;
+    NSString *_cloudKitIdentifier;
     BOOL _hasAppliedChange;
     BOOL _queue_hasStarted;
     CDUnknownBlockType _completion;
@@ -62,7 +65,7 @@
 - (void)_recordZoneFetchCompletionForOperation:(id)arg1 recordZoneID:(id)arg2 serverChangeToken:(id)arg3 recordZoneError:(id)arg4;
 - (BOOL)_shouldApplyAnchorRangeMap:(id)arg1 receivedAnchorMap:(id)arg2;
 - (id)_zipArchiveExtractorForChangeRecord:(id)arg1 assetContentInMemory:(BOOL)arg2 error:(id *)arg3;
-- (id)initWithConfiguration:(id)arg1 storeRecord:(id)arg2;
+- (id)initWithConfiguration:(id)arg1 pullZone:(id)arg2;
 - (void)startWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

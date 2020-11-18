@@ -11,7 +11,6 @@
 @class NSString, PSRootController, PSSpecifier;
 @protocol PSController;
 
-__attribute__((visibility("hidden")))
 @interface PUStorageManagementBaseController : UIViewController <PSController>
 {
     PSSpecifier *_specifier;

@@ -30,6 +30,7 @@
     NSString *_presentationReasonSearchString;
     NSString *_previousArticleId;
     NSString *_previousArticleVersion;
+    int _rankInToc;
     NSString *_referringSourceApplication;
     NSString *_referringUrl;
     NSString *_sourceChannelId;
@@ -51,6 +52,7 @@
         unsigned int feedType:1;
         unsigned int groupType:1;
         unsigned int presentationReason:1;
+        unsigned int rankInToc:1;
         unsigned int adSupportedChannel:1;
         unsigned int cameFromGroup:1;
         unsigned int isNewUserToFeed:1;
@@ -99,6 +101,7 @@
 @property (readonly, nonatomic) BOOL hasPreviousArticleId;
 @property (nonatomic) BOOL hasPreviousArticlePublisherArticleVersion;
 @property (readonly, nonatomic) BOOL hasPreviousArticleVersion;
+@property (nonatomic) BOOL hasRankInToc;
 @property (readonly, nonatomic) BOOL hasReferringSourceApplication;
 @property (readonly, nonatomic) BOOL hasReferringUrl;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
@@ -113,6 +116,7 @@
 @property (strong, nonatomic) NSString *previousArticleId; // @synthesize previousArticleId=_previousArticleId;
 @property (nonatomic) long long previousArticlePublisherArticleVersion; // @synthesize previousArticlePublisherArticleVersion=_previousArticlePublisherArticleVersion;
 @property (strong, nonatomic) NSString *previousArticleVersion; // @synthesize previousArticleVersion=_previousArticleVersion;
+@property (nonatomic) int rankInToc; // @synthesize rankInToc=_rankInToc;
 @property (strong, nonatomic) NSString *referringSourceApplication; // @synthesize referringSourceApplication=_referringSourceApplication;
 @property (strong, nonatomic) NSString *referringUrl; // @synthesize referringUrl=_referringUrl;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;

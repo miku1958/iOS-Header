@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/GGLRenderQueueSource-Protocol.h>
 
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (id)initWithEngine:(struct MapEngine *)arg1;
-- (RenderQueue_5bbf3210 *)renderQueueForTimestamp:(double)arg1;
+- (RenderQueue_efd5f737 *)renderQueueForTimestamp:(double)arg1;
 
 @end
 

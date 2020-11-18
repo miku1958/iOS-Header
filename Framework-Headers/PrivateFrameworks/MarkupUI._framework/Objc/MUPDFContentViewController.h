@@ -9,10 +9,11 @@
 #import <MarkupUI/MUContentViewControllerProtocol-Protocol.h>
 #import <MarkupUI/PDFAKControllerDelegateProtocol-Protocol.h>
 #import <MarkupUI/PDFViewDelegatePrivate-Protocol.h>
+#import <MarkupUI/_UIViewBoundingPathChangeObserver-Protocol.h>
 
 @class MUPDFPageLabelView, NSArray, NSLayoutConstraint, NSString, PDFDocument, PDFPage, PDFThumbnailView, PDFView, UIScrollView, UIView;
 
-@interface MUPDFContentViewController : MUContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, MUContentViewControllerProtocol>
+@interface MUPDFContentViewController : MUContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, _UIViewBoundingPathChangeObserver, MUContentViewControllerProtocol>
 {
     PDFDocument *_pdfDocument;
     BOOL _showsThumbnailView;
@@ -34,8 +35,10 @@
     double _viewTransitionPreviousScale;
     struct CGPoint _viewTransitionPointOnPageToCenter;
     struct UIEdgeInsets _edgeInsets;
+    struct UIEdgeInsets _cachedThumnailViewInsets;
 }
 
+@property (nonatomic) struct UIEdgeInsets cachedThumnailViewInsets; // @synthesize cachedThumnailViewInsets=_cachedThumnailViewInsets;
 @property (nonatomic) BOOL centersIgnoringContentInsets;
 @property BOOL constraintsAreHorizontal; // @synthesize constraintsAreHorizontal=_constraintsAreHorizontal;
 @property (readonly, nonatomic) UIScrollView *contentViewScrollView;
@@ -68,12 +71,14 @@
 
 - (void).cxx_destruct;
 - (BOOL)PDFView:(id)arg1 shouldHandleLink:(id)arg2;
+- (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(BOOL)arg2;
 - (struct CGAffineTransform)_compensatingAffineTransformForPage:(id)arg1;
 - (void)_createPDFView;
 - (struct CGSize)_medianSizeForCurrentDocumentInPDFViewWithGetter:(CDUnknownBlockType)arg1;
 - (void)_prepareToRotate;
 - (void)_recoverFromRotation;
 - (void)_teardownPDFViewIfNecessary;
+- (BOOL)_updateCachedThumbnailViewInsetsDidChangeRight;
 - (void)_updateMinMaxZoomFactor;
 - (void)_updatePDFViewDisplayMode;
 - (void)_updatePageNumberOverlayToPage:(unsigned long long)arg1 animate:(BOOL)arg2;

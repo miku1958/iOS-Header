@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, TSCHChartSeries;
 
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 + (void)clearCache;
 + (id)p_getCacheCreate:(BOOL)arg1;
 + (void)setCachedPointsForSeries:(id)arg1 inAreaFrame:(struct CGRect)arg2 valueStart:(unsigned long long)arg3 valueEnd:(unsigned long long)arg4 cullBadPoints:(BOOL)arg5 points:(CDStruct_460b8ffe *)arg6 count:(unsigned long long)arg7;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (BOOL)matchesSeries:(id)arg1 areaFrame:(struct CGRect)arg2 start:(unsigned long long)arg3 end:(unsigned long long)arg4 cull:(BOOL)arg5;
 
 @end

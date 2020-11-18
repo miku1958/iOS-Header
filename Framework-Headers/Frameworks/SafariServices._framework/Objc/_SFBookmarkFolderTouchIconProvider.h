@@ -6,15 +6,11 @@
 
 #import <WebUI/WBSBookmarkFolderTouchIconProvider.h>
 
-@class WebBookmarkCollection;
-
 __attribute__((visibility("hidden")))
 @interface _SFBookmarkFolderTouchIconProvider : WBSBookmarkFolderTouchIconProvider
 {
-    WebBookmarkCollection *_collection;
 }
 
-- (void).cxx_destruct;
 - (void)_folderContentsDidChange:(id)arg1;
 - (id)bookmarkUUIDForRequest:(id)arg1;
 - (BOOL)canHandleRequest:(id)arg1;

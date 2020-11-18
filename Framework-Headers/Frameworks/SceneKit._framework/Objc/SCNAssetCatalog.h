@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableDictionary, NSURL;
 
@@ -26,7 +26,7 @@
 - (id)URLOfResourceNamed:(id)arg1;
 - (id)actionNamed:(id)arg1;
 - (id)animationNamed:(id)arg1;
-- (void)cacheObject:(id)arg1 forKey:(id)arg2;
+- (void)cacheObject:(id)arg1 withTimestamp:(double)arg2 forKey:(id)arg3;
 - (void)dealloc;
 - (id)particleSystemNamed:(id)arg1;
 - (id)pathByMakingURLRelativeToCatalog:(id)arg1;

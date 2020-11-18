@@ -14,7 +14,7 @@
 + (id)deserializeAttributes:(id)arg1 andBody:(id)arg2;
 + (id)deserializeAttributesAndBody:(id)arg1;
 + (id)messageIdHeaderValues:(id)arg1;
-+ (BOOL)searchableItemIsEligibleForHarvesting:(id)arg1 isReimported:(BOOL)arg2;
++ (BOOL)searchableItemIsEligibleForHarvesting:(id)arg1 eligibleExceptForAge:(BOOL *)arg2;
 + (BOOL)searchableItemIsEmpty:(id)arg1;
 + (BOOL)searchableItemIsFromSupportedAccount:(id)arg1;
 + (BOOL)searchableItemIsInDrafts:(id)arg1;

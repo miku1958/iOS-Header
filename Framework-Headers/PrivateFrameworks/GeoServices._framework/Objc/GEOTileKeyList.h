@@ -42,6 +42,7 @@
 - (id)initWithCapacity:(unsigned long long)arg1;
 - (id)initWithMaxCapacity:(unsigned long long)arg1;
 - (BOOL)intersectsList:(id)arg1;
+- (struct _GEOTileKey *)keyAtIndex:(unsigned long long)arg1;
 - (id)listWithout:(id)arg1;
 - (id)newXPCData;
 - (BOOL)removeKey:(const struct _GEOTileKey *)arg1;

@@ -13,6 +13,7 @@
 @interface WLKPlaybackSummary : NSObject <NSSecureCoding>
 {
     BOOL _isAlwaysLive;
+    BOOL _isTimerDerived;
     NSString *_bundleID;
     NSDate *_timestamp;
     NSDate *_currentPlaybackDate;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) NSNumber *elapsedTime; // @synthesize elapsedTime=_elapsedTime;
 @property (readonly, nonatomic) NSString *externalProfileID; // @synthesize externalProfileID=_externalProfileID;
 @property (readonly, nonatomic) BOOL isAlwaysLive; // @synthesize isAlwaysLive=_isAlwaysLive;
+@property (readonly, nonatomic) BOOL isTimerDerived; // @synthesize isTimerDerived=_isTimerDerived;
 @property (readonly, nonatomic) NSNumber *playbackRate; // @synthesize playbackRate=_playbackRate;
 @property (readonly, nonatomic) long long playbackState; // @synthesize playbackState=_playbackState;
 @property (readonly, nonatomic) long long playbackType; // @synthesize playbackType=_playbackType;
@@ -54,9 +56,10 @@
 - (BOOL)_validate:(id)arg1 identifier:(id)arg2 expectedClass:(Class)arg3;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)elapsedTimeSummaryWithPlaybackState:(long long)arg1 timerDerived:(BOOL)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBundleId:(id)arg1 timestamp:(id)arg2 duration:(id)arg3 elapsedTime:(id)arg4 externalProfileID:(id)arg5 contentID:(id)arg6 accountID:(id)arg7 playbackState:(long long)arg8 playbackRate:(id)arg9 completionState:(long long)arg10 isAlwaysLive:(BOOL)arg11 serviceID:(id)arg12 currentPlaybackDate:(id)arg13 playbackType:(long long)arg14;
+- (id)initWithBundleId:(id)arg1 timestamp:(id)arg2 duration:(id)arg3 elapsedTime:(id)arg4 externalProfileID:(id)arg5 contentID:(id)arg6 accountID:(id)arg7 playbackState:(long long)arg8 playbackRate:(id)arg9 completionState:(long long)arg10 isAlwaysLive:(BOOL)arg11 serviceID:(id)arg12 currentPlaybackDate:(id)arg13 playbackType:(long long)arg14 isTimerDerived:(BOOL)arg15;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMediaRemoteDictionary:(id)arg1 bundleID:(id)arg2 accountID:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

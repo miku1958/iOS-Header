@@ -10,6 +10,7 @@
 
 @interface SGDPowerBudget : NSObject
 {
+    _Atomic BOOL _discretionaryWorkInProgress;
     NSObject<OS_os_log> *_log;
 }
 
@@ -17,16 +18,16 @@
 - (void).cxx_destruct;
 - (void)_endDuetBudgetedWork;
 - (void)_endThrottleBudgetedWork;
+- (void)_endWork;
 - (BOOL)_hasDuetBudgetRemaining;
 - (BOOL)_hasThrottleBudgetRemaining;
 - (void)_startDuetBudgetedWork;
 - (void)_startThrottleBudgetedWork;
+- (void)_startWork;
 - (BOOL)canDoDiscretionaryWork;
 - (void)dealloc;
 - (void)doDiscretionaryWork:(CDUnknownBlockType)arg1 orElse:(CDUnknownBlockType)arg2;
-- (void)endWork;
 - (id)init;
-- (void)startWork;
 
 @end
 

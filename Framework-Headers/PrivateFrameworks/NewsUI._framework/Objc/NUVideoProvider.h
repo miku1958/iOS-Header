@@ -6,36 +6,35 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/SXVideo-Protocol.h>
-#import <NewsUI/SXVideoProviding-Protocol.h>
+#import <NewsUI/SVVideo-Protocol.h>
+#import <NewsUI/SVVideoProviding-Protocol.h>
 
-@class NSString, SXTimeline;
-@protocol NUVideoEventTracker, NUVideoItem, SXVideoMetadataProviding;
+@class NSString;
+@protocol NUVideoEventTracker, NUVideoItem, SVVideoMetadata;
 
-@interface NUVideoProvider : NSObject <SXVideo, SXVideoProviding>
+@interface NUVideoProvider : NSObject <SVVideo, SVVideoProviding>
 {
-    BOOL _playbackHasStarted;
+    NSString *_identifier;
     id<NUVideoItem> _videoItem;
-    id<SXVideoMetadataProviding> _metadata;
+    id<SVVideoMetadata> _metadata;
     id<NUVideoEventTracker> _eventTracker;
-    SXTimeline *_timeline;
 }
 
 @property (readonly, nonatomic) BOOL allowsCallToActionBar;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, weak, nonatomic) id<NUVideoEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
+@property (strong, nonatomic) id<NUVideoEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<SXVideoMetadataProviding> metadata; // @synthesize metadata=_metadata;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) id<SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic, getter=areNeighboringAdsAllowed) BOOL neighboringAdsAreAllowed;
-@property (nonatomic) BOOL playbackHasStarted; // @synthesize playbackHasStarted=_playbackHasStarted;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) SXTimeline *timeline; // @synthesize timeline=_timeline;
 @property (readonly, copy, nonatomic) id<NUVideoItem> videoItem; // @synthesize videoItem=_videoItem;
 @property (readonly, nonatomic) unsigned long long videoType;
 
 - (void).cxx_destruct;
-- (void)configureTimelineForQuartileReporting;
+- (void)didAppear;
+- (void)didDisappear;
 - (id)initWithVideoItem:(id)arg1 eventTracker:(id)arg2;
 - (CDUnknownBlockType)loadWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)muteStateChanged:(BOOL)arg1;
@@ -50,7 +49,6 @@
 - (void)tappedDiscoverMore;
 - (void)tappedNowPlaying;
 - (void)tappedReplay;
-- (void)timeElapsed:(double)arg1 duration:(double)arg2;
 - (id)videoMetadataForCurrentState;
 
 @end

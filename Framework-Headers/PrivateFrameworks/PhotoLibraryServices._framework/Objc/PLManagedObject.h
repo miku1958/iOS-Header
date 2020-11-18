@@ -17,9 +17,7 @@
 @property (readonly, copy, nonatomic) NSString *shortObjectIDURI;
 
 - (BOOL)isSyncableChange;
-- (id)pointerDescription;
 - (BOOL)supportsCloudUpload;
-- (id)truncatedDescriptionWithPropertyKeys:(id)arg1;
 - (void)willSave;
 
 @end

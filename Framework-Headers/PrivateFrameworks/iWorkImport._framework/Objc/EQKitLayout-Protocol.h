@@ -16,6 +16,7 @@
 - (double)naturalAlignmentOffset;
 - (struct CGSize)naturalSize;
 - (void)renderIntoContext:(struct CGContext *)arg1 offset:(struct CGPoint)arg2;
+- (void)setFontSmoothingBackgroundColor:(struct CGColor *)arg1;
 - (double)vsize;
 - (double)width;
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
@@ -20,8 +20,9 @@
     NSMutableDictionary *_bindings;
     NSArray *_targets;
     NSMutableArray *_weights;
-    NSArray *_channelTargetCounts;
-    NSArray *_channelTargetWeights;
+    NSArray *_topLevelAndInBetweenTargets;
+    NSArray *_inBetweenCounts;
+    NSArray *_inBetweenInfluenceWeights;
     NSDictionary *_targetNameToIndexes;
     NSString *_name;
     BOOL _unifyNormal;
@@ -56,6 +57,7 @@
 - (void)_syncEntityObjCModel;
 - (void)_syncObjCAnimations;
 - (void)_syncObjCModel;
+- (void)_updateTargetsAndInBetween:(id)arg1;
 - (long long)_weightIndexForTargetNamed:(id)arg1;
 - (void)addAnimation:(id)arg1;
 - (void)addAnimation:(id)arg1 forKey:(id)arg2;
@@ -66,6 +68,7 @@
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
 - (id)channelTargetCounts;
 - (id)channelTargetWeights;
+- (void)clearInBetweens;
 - (void)convertToAdditiveWithBaseGeometry:(id)arg1;
 - (void)convertToSparseWithBaseGeometry:(id)arg1;
 - (id)copy;
@@ -74,6 +77,8 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)identifier;
+- (id)inBetweenTargetsForTargetAtIndex:(unsigned long long)arg1;
+- (id)inBetweenWeightsForTargetAtIndex:(unsigned long long)arg1;
 - (id)init;
 - (id)initPresentationMorpherWithMorphRef:(struct __C3DMorph *)arg1;
 - (id)initWithCoder:(id)arg1;
@@ -86,6 +91,7 @@
 - (id)presentationInstance;
 - (id)presentationMorpher;
 - (void)removeAllAnimations;
+- (void)removeAllBindings;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
@@ -98,10 +104,12 @@
 - (void)setName:(id)arg1;
 - (void)setShouldMorphNormals:(BOOL)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
+- (void)setTargets:(id)arg1 withInBetweenTargetCounts:(id)arg2 inBetweenWeights:(id)arg3;
 - (void)setWantsCPUMorphing:(BOOL)arg1;
 - (void)setWeight:(double)arg1 forTargetAtIndex:(unsigned long long)arg2;
 - (void)setWeight:(double)arg1 forTargetNamed:(id)arg2;
 - (BOOL)shouldMorphNormals;
+- (id)targetsAndInBetween;
 - (void)unbindAnimatablePath:(id)arg1;
 - (BOOL)wantsCPUMorphing;
 - (double)weightForTargetAtIndex:(unsigned long long)arg1;

@@ -15,11 +15,12 @@
 + (id)deserializeMetadataAndInterfaceFromArchive:(struct _MLModelInputArchiver *)arg1 error:(id *)arg2;
 + (id)deserializeVersionInfoFromArchive:(struct _MLModelInputArchiver *)arg1 error:(id *)arg2;
 + (id)inputDescriptionFromInterface:(struct _MLModelDescriptionSpecification *)arg1;
-+ (id)loadFromModelSpecificationInArchive:(struct _MLModelInputArchiver *)arg1 withClass:(Class)arg2 versionInfo:(id)arg3 error:(id *)arg4;
++ (id)loadFromModelSpecificationInArchive:(struct _MLModelInputArchiver *)arg1 withClass:(Class)arg2 versionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
 + (id)orderedFeatureNamesFromInterface:(struct _MLModelDescriptionSpecification *)arg1 forInput:(BOOL)arg2;
 + (id)orderedNamesFromProto:(const RepeatedPtrField_6c6d963a *)arg1;
 + (id)outputDescriptionFromInterface:(struct _MLModelDescriptionSpecification *)arg1;
 + (id)populateConstraintsForFeatureDescription:(const struct FeatureDescription *)arg1;
++ (struct _NSRange)rangeFromAllowedSizeRangeProtoMessage:(const struct SizeRange *)arg1;
 + (BOOL)serializeInterfaceFormat:(struct _MLModelDescriptionSpecification *)arg1 archive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
 + (BOOL)serializeMetadataAndInterfaceFromSpecification:(struct _MLModelSpecification *)arg1 archive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
 + (id)serializeSpecification:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;

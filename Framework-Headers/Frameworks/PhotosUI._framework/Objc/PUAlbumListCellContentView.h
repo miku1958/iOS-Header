@@ -6,21 +6,26 @@
 
 #import <UIKit/UIView.h>
 
+#import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosUI/UITextFieldDelegate-Protocol.h>
 
-@class NSString, PUStackView, PXUIButton, UIFont, UILabel, UITextField;
+@class NSString, PUSharedAlbumAvatarView, PUStackView, PXUIButton, UIFont, UILabel, UITextField;
 @protocol PUAlbumListCellDelegate;
 
-@interface PUAlbumListCellContentView : UIView <UITextFieldDelegate>
+@interface PUAlbumListCellContentView : UIView <UITextFieldDelegate, UIGestureRecognizerDelegate>
 {
     BOOL _combinesPhotoDecorations;
+    BOOL _topInsetEnabled;
+    BOOL _showsAvatarView;
     BOOL _editing;
     BOOL _enabled;
     BOOL _showsDeleteButtonWhenEditing;
     BOOL _highlighted;
     BOOL __showsTitleAndSubtitle;
+    BOOL _usesLabelForTitle;
     id<PUAlbumListCellDelegate> _delegate;
     PUStackView *_stackView;
+    PUSharedAlbumAvatarView *_avatarView;
     UIView *_customImageView;
     NSString *_title;
     NSString *_subtitle;
@@ -30,6 +35,7 @@
     UIFont *_titleFont;
     UIFont *_subtitleFont;
     UITextField *__titleTextField;
+    UILabel *__titleLabel;
     UILabel *__subtitleLabel;
     PXUIButton *__deleteButton;
 }
@@ -37,7 +43,9 @@
 @property (strong, nonatomic, setter=_setDeleteButton:) PXUIButton *_deleteButton; // @synthesize _deleteButton=__deleteButton;
 @property (nonatomic, setter=_setShowsTitleAndSubtitle:) BOOL _showsTitleAndSubtitle; // @synthesize _showsTitleAndSubtitle=__showsTitleAndSubtitle;
 @property (strong, nonatomic, setter=_setSubtitleLabel:) UILabel *_subtitleLabel; // @synthesize _subtitleLabel=__subtitleLabel;
+@property (strong, nonatomic, setter=_setTitleLabel:) UILabel *_titleLabel; // @synthesize _titleLabel=__titleLabel;
 @property (strong, nonatomic, setter=_setTitleTextField:) UITextField *_titleTextField; // @synthesize _titleTextField=__titleTextField;
+@property (strong, nonatomic) PUSharedAlbumAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 @property (nonatomic) BOOL combinesPhotoDecorations; // @synthesize combinesPhotoDecorations=_combinesPhotoDecorations;
 @property (strong, nonatomic) UIView *customImageView; // @synthesize customImageView=_customImageView;
 @property (readonly, copy) NSString *debugDescription;
@@ -49,13 +57,17 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (nonatomic) long long layout; // @synthesize layout=_layout;
+@property (nonatomic) BOOL showsAvatarView; // @synthesize showsAvatarView=_showsAvatarView;
 @property (nonatomic) BOOL showsDeleteButtonWhenEditing; // @synthesize showsDeleteButtonWhenEditing=_showsDeleteButtonWhenEditing;
+@property (readonly, nonatomic) UIView *springLoadingTargetView;
 @property (strong, nonatomic, setter=_setStackView:) PUStackView *stackView; // @synthesize stackView=_stackView;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) UIFont *subtitleFont; // @synthesize subtitleFont=_subtitleFont;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
+@property (nonatomic) BOOL topInsetEnabled; // @synthesize topInsetEnabled=_topInsetEnabled;
+@property (nonatomic) BOOL usesLabelForTitle; // @synthesize usesLabelForTitle=_usesLabelForTitle;
 @property (nonatomic) double xInset; // @synthesize xInset=_xInset;
 
 - (void).cxx_destruct;
@@ -63,14 +75,17 @@
 - (struct CGPoint)_deleteButtonCenter;
 - (double)_titleFieldAlpha;
 - (long long)_titleTextFieldClearButtonModeForLayout:(long long)arg1;
+- (void)_updateAvatarView;
 - (void)_updateDeleteButtonAnimated:(BOOL)arg1;
 - (void)_updateStackViewAnimated:(BOOL)arg1;
 - (void)_updateSubtitleLabelAnimated:(BOOL)arg1;
 - (void)_updateSubtitleLabelStyle;
 - (void)_updateSubviewOrdering;
 - (void)_updateTitleFieldAnimated:(BOOL)arg1;
-- (void)_updateTitleTextFieldsStyle;
+- (void)_updateTitleStyle;
 - (void)cancelPerformRetitleAction;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (void)handleLabelTap:(id)arg1;
 - (void)handleTransitionFade:(BOOL)arg1 animate:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;

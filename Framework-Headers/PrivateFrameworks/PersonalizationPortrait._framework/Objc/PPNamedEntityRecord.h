@@ -4,36 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <ProactiveSupport/_PASZonedObject.h>
 
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSMutableCopying-Protocol.h>
+#import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
 @class NSString, PPNamedEntity, PPSource;
 
-@interface PPNamedEntityRecord : NSObject <NSCopying, NSMutableCopying>
+@interface PPNamedEntityRecord : _PASZonedObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     PPNamedEntity *_entity;
     PPSource *_source;
-    unsigned long long _algorithm;
-    double _initialScore;
-    double _decayRate;
     NSString *_extractionOsBuild;
-    unsigned long long _extractionAssetVersion;
+    float _initialScore;
+    float _decayRate;
+    unsigned short _extractionAssetVersion;
+    unsigned char _algorithm;
+    unsigned char _changeType;
 }
 
-@property (readonly, nonatomic) unsigned long long algorithm; // @synthesize algorithm=_algorithm;
-@property (readonly, nonatomic) double decayRate; // @synthesize decayRate=_decayRate;
+@property (readonly, nonatomic) unsigned long long algorithm;
+@property (readonly, nonatomic) unsigned char changeType; // @synthesize changeType=_changeType;
+@property (readonly, nonatomic) double decayRate;
 @property (readonly, nonatomic) PPNamedEntity *entity; // @synthesize entity=_entity;
-@property (readonly, nonatomic) unsigned long long extractionAssetVersion; // @synthesize extractionAssetVersion=_extractionAssetVersion;
+@property (readonly, nonatomic) unsigned long long extractionAssetVersion;
 @property (readonly, nonatomic) NSString *extractionOsBuild; // @synthesize extractionOsBuild=_extractionOsBuild;
-@property (readonly, nonatomic) double initialScore; // @synthesize initialScore=_initialScore;
+@property (readonly, nonatomic) double initialScore;
 @property (readonly, nonatomic) PPSource *source; // @synthesize source=_source;
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)describeAlgorithm:(unsigned long long)arg1;
++ (id)describeChangeType:(unsigned char)arg1;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToNamedEntityRecord:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

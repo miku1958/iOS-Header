@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet, NSXPCConnection;
 @protocol OS_dispatch_queue;
@@ -26,6 +26,8 @@
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (nonatomic) unsigned int type; // @synthesize type=_type;
 
++ (void)primaryAccountSignedIn;
++ (void)primaryAccountSignedOut;
 - (void).cxx_destruct;
 - (void)_ensureXPCStarted;
 - (void)_interrupted;
@@ -34,8 +36,11 @@
 - (void)diagnosticCommand:(id)arg1 params:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)diagnosticLogControl:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)diagnosticShow:(id)arg1 level:(int)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getIdentitiesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)invalidate;
+- (void)primaryAccountSignedInWithCompletion:(CDUnknownBlockType)arg1;
+- (void)primaryAccountSignedOutWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

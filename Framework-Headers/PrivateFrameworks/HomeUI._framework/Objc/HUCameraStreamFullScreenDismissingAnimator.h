@@ -25,7 +25,7 @@
 
 - (void).cxx_destruct;
 - (void)animateTransition:(id)arg1;
-- (id)initWithSourceFrameInPresentingView:(struct CGRect)arg1 cameraViewSnapshot:(id)arg2 cameraOverlaySnapshot:(id)arg3;
+- (id)initWithSourceCameraCell:(id)arg1 cameraViewSnapshot:(id)arg2 cameraOverlaySnapshot:(id)arg3;
 - (double)transitionDuration:(id)arg1;
 
 @end

@@ -7,34 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBAddTasksIntentResponse-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBTaskList;
+@class NSArray, NSString, _INPBTaskList;
 
-@interface _INPBAddTasksIntentResponse : PBCodable <NSCopying>
+@interface _INPBAddTasksIntentResponse : PBCodable <_INPBAddTasksIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_addedTasks;
+    struct _has;
+    NSArray *_addedTasks;
     _INPBTaskList *_modifiedTaskList;
 }
 
-@property (strong, nonatomic) NSMutableArray *addedTasks; // @synthesize addedTasks=_addedTasks;
+@property (copy, nonatomic) NSArray *addedTasks; // @synthesize addedTasks=_addedTasks;
+@property (readonly, nonatomic) unsigned long long addedTasksCount;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasModifiedTaskList;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBTaskList *modifiedTaskList; // @synthesize modifiedTaskList=_modifiedTaskList;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
 + (Class)addedTasksType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addAddedTasks:(id)arg1;
 - (id)addedTasksAtIndex:(unsigned long long)arg1;
-- (unsigned long long)addedTasksCount;
 - (void)clearAddedTasks;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

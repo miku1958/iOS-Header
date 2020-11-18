@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class NSArray, NSString, UIBarButtonItem, UISlidingBarConfiguration, UISlidingBarState, UISlidingBarStateRequest;
 @protocol UISplitViewControllerDelegate, UISplitViewControllerImpl;
@@ -31,13 +31,18 @@
 @property (readonly, nonatomic) NSArray *possibleStates;
 @property (nonatomic) long long preferredDisplayMode;
 @property (nonatomic) double preferredPrimaryColumnWidthFraction;
+@property (nonatomic, getter=_prefersOverlayInRegularWidthPhone, setter=_setPrefersOverlayInRegularWidthPhone:) BOOL prefersOverlayInRegularWidthPhone;
 @property (nonatomic) BOOL presentsWithGesture;
 @property (readonly, nonatomic) double primaryColumnWidth;
 @property (nonatomic) long long primaryEdge;
 @property (copy, nonatomic) UISlidingBarStateRequest *stateRequest;
 @property (strong, nonatomic) UIViewController *trailingViewController;
+@property (nonatomic, getter=_usesDeviceOverlayPreferences, setter=_setUsesDeviceOverlayPreferences:) BOOL usesDeviceOverlayPreferences;
+@property (nonatomic, getter=_usesExtraWidePrimaryColumn, setter=_setUsesExtraWidePrimaryColumn:) BOOL usesExtraWidePrimaryColumn;
 @property (copy, nonatomic) NSArray *viewControllers;
 
++ (BOOL)_automaticDisplayModeOnPhoneUsesOverlayInLandscapeDefaultValue;
++ (BOOL)_devicePrefersOverlayInRegularWidth;
 + (BOOL)doesOverridePreferredInterfaceOrientationForPresentation;
 + (BOOL)doesOverrideSupportedInterfaceOrientations;
 - (void).cxx_destruct;
@@ -58,8 +63,10 @@
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (BOOL)_handlesCounterRotationForPresentation;
 - (BOOL)_hasPreferredInterfaceOrientationForPresentation;
+- (BOOL)_iPhoneShouldUseOverlayInCurrentEnvironment;
 - (BOOL)_isCollapsed;
 - (BOOL)_isRotating;
+- (BOOL)_layoutPrimaryOnRight;
 - (void)_marginInfoForChild:(id)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (id)_panelImpl;
@@ -112,7 +119,6 @@
 - (void)toggleMasterVisible:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)unloadViewForced:(BOOL)arg1;
-- (void)updateViewConstraints;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

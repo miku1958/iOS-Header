@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -19,19 +19,22 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) const array_019f9a10 *digestData;
 @property (readonly, nonatomic) NSString *digestString;
 
++ (id)digestFromDispatchData:(id)arg1;
 + (id)digestFromNSData:(id)arg1;
 + (id)digestWithDigestString:(id)arg1;
++ (id)emptyDataDigest;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initFromBytes:(const void *)arg1 length:(unsigned int)arg2;
+- (id)initFromDispatchData:(id)arg1;
 - (id)initFromNSData:(id)arg1;
-- (id)initFromProtobufString:(const basic_string_a1f69cfb *)arg1;
+- (id)initFromProtobufString:(const basic_string_23d93216 *)arg1;
 - (id)initFromSHA1Context:(struct CC_SHA1state_st *)arg1;
 - (id)initWithDigestString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)saveToProtobufString:(basic_string_a1f69cfb *)arg1;
+- (void)saveToProtobufString:(basic_string_23d93216 *)arg1;
 
 @end
 

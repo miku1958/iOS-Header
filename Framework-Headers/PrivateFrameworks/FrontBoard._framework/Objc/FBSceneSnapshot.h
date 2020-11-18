@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBScene, FBSceneSnapshotContext, UIImage, XBDisplaySnapshot;
 
@@ -17,15 +17,15 @@
 
 @property (readonly, nonatomic) struct CGImage *CGImage;
 @property (readonly, nonatomic) void *IOSurface;
-@property (readonly, strong, nonatomic) UIImage *UIImage;
-@property (readonly, strong, nonatomic) FBSceneSnapshotContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) UIImage *UIImage;
+@property (readonly, nonatomic) FBSceneSnapshotContext *context; // @synthesize context=_context;
 @property (readonly, nonatomic, getter=isDataLoaded) BOOL dataLoaded;
 @property (readonly, nonatomic) void *fallbackIOSurface;
 
+- (void).cxx_destruct;
 - (struct CGAffineTransform)_baseTransformForSnapshotContext:(id)arg1 rootContext:(id)arg2;
 - (id)_collectLayersToSnapshotFromScene:(id)arg1 withSnapshotContext:(id)arg2 rootContext:(id)arg3;
 - (BOOL)capture;
-- (void)dealloc;
 - (id)initWithScene:(id)arg1 snapshotContext:(id)arg2;
 
 @end

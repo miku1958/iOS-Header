@@ -7,11 +7,15 @@
 #import <UIKit/UIView.h>
 
 @class PKContinuousButton;
+@protocol PKPGSVFooterViewDelegate;
 
 @interface PKPGSVFooterView : UIView
 {
     PKContinuousButton *_editButton;
+    id<PKPGSVFooterViewDelegate> _delegate;
 }
+
+@property (weak, nonatomic) id<PKPGSVFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
 - (void)_editTapped:(id)arg1;

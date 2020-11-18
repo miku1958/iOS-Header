@@ -7,23 +7,26 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBOpenFileIntent-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBIntentMetadata, _INPBString;
+@class NSArray, NSString, _INPBIntentMetadata, _INPBString;
 
-@interface _INPBOpenFileIntent : PBCodable <NSCopying>
+@interface _INPBOpenFileIntent : PBCodable <_INPBOpenFileIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    CDStruct_5a81f70e _has;
+    int _entityType;
+    int _scope;
     _INPBString *_appId;
     _INPBString *_entityName;
-    int _entityType;
     _INPBIntentMetadata *_intentMetadata;
-    NSMutableArray *_properties;
-    int _scope;
+    NSArray *_properties;
     _INPBString *_scopeEntityName;
-    CDStruct_5a81f70e _has;
 }
 
 @property (strong, nonatomic) _INPBString *appId; // @synthesize appId=_appId;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;
 @property (nonatomic) int entityType; // @synthesize entityType=_entityType;
 @property (readonly, nonatomic) BOOL hasAppId;
@@ -32,13 +35,14 @@
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasScope;
 @property (readonly, nonatomic) BOOL hasScopeEntityName;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (strong, nonatomic) NSMutableArray *properties; // @synthesize properties=_properties;
+@property (copy, nonatomic) NSArray *properties; // @synthesize properties=_properties;
+@property (readonly, nonatomic) unsigned long long propertiesCount;
 @property (nonatomic) int scope; // @synthesize scope=_scope;
 @property (strong, nonatomic) _INPBString *scopeEntityName; // @synthesize scopeEntityName=_scopeEntityName;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 + (Class)propertiesType;
 - (void).cxx_destruct;
 - (int)StringAsEntityType:(id)arg1;
@@ -46,14 +50,10 @@
 - (void)addProperties:(id)arg1;
 - (void)clearProperties;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)entityTypeAsString:(int)arg1;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (id)propertiesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)propertiesCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)scopeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

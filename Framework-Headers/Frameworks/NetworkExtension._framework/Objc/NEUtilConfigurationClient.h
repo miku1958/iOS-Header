@@ -27,6 +27,7 @@
 @property (strong) NSMutableArray *currentConfigurations; // @synthesize currentConfigurations=_currentConfigurations;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disconnectOnDemandEnabled;
 @property BOOL enabled;
 @property (readonly) unsigned long long hash;
 @property (strong) NSMutableArray *identities; // @synthesize identities=_identities;

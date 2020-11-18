@@ -16,8 +16,9 @@ __attribute__((visibility("hidden")))
 
 + (long long)activityCategory;
 - (void).cxx_destruct;
+- (id)_activityBundleImageConfiguration;
+- (id)_activityImageName;
 - (id)_assetHidingHelper;
-- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

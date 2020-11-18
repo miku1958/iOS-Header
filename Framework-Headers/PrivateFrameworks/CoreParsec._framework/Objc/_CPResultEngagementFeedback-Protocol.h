@@ -13,14 +13,6 @@
 @property (nonatomic) BOOL actionEngaged;
 @property (nonatomic) int actionTarget;
 @property (nonatomic) int destination;
-@property (readonly, nonatomic) BOOL hasActionEngaged;
-@property (readonly, nonatomic) BOOL hasActionTarget;
-@property (readonly, nonatomic) BOOL hasDestination;
-@property (readonly, nonatomic) BOOL hasMatchesUnengagedSuggestion;
-@property (readonly, nonatomic) BOOL hasResult;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTitleText;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL matchesUnengagedSuggestion;
 @property (strong, nonatomic) _CPSearchResultForFeedback *result;

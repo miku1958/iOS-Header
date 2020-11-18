@@ -19,13 +19,12 @@
 - (NSSet *)additionalVisibleInfosForCanvas:(TSDCanvas *)arg1;
 - (void)canvas:(TSDCanvas *)arg1 createdRep:(TSDRep *)arg2;
 - (void)canvasDidLayout:(TSDCanvas *)arg1;
-- (void)canvasDidUpdateVisibleBounds:(TSDCanvas *)arg1;
 - (void)canvasDidValidateLayouts:(TSDCanvas *)arg1;
 - (void)canvasDidValidateLayoutsWithDependencies:(TSDCanvas *)arg1;
 - (void)canvasLayoutInvalidated:(TSDCanvas *)arg1;
 - (Class)canvasRootLayoutClass;
-- (void)canvasWillLayout:(TSDCanvas *)arg1;
 - (void)canvasWillUpdateRepsFromLayouts:(TSDCanvas *)arg1;
+- (void)canvasWillValidateLayouts:(TSDCanvas *)arg1;
 - (BOOL)imageIsRenderingForMovie;
 - (NSSet *)infosToHideForCanvas:(TSDCanvas *)arg1;
 - (BOOL)isCanvasDrawingIntoPDF:(TSDCanvas *)arg1;

@@ -17,7 +17,7 @@
     NSString *_containerIdentifier;
     CKShare *_share;
     CKRecordID *_rootRecordID;
-    long long _participantType;
+    long long _participantRole;
     long long _participantStatus;
     long long _participantPermission;
     CKUserIdentity *_ownerIdentity;
@@ -28,6 +28,7 @@
     NSData *_privateToken;
     CKShareParticipant *_callingParticipant;
     NSArray *_outOfNetworkMatches;
+    NSArray *_sharedItemHierarchy;
     NSString *_rootRecordType;
     NSData *_encryptedData;
 }
@@ -41,8 +42,9 @@
 @property (strong, nonatomic) NSArray *outOfNetworkMatches; // @synthesize outOfNetworkMatches=_outOfNetworkMatches;
 @property (strong, nonatomic) CKUserIdentity *ownerIdentity; // @synthesize ownerIdentity=_ownerIdentity;
 @property (nonatomic) long long participantPermission; // @synthesize participantPermission=_participantPermission;
+@property (nonatomic) long long participantRole; // @synthesize participantRole=_participantRole;
 @property (nonatomic) long long participantStatus; // @synthesize participantStatus=_participantStatus;
-@property (nonatomic) long long participantType; // @synthesize participantType=_participantType;
+@property (readonly, nonatomic) long long participantType;
 @property (copy, nonatomic) NSData *privateToken; // @synthesize privateToken=_privateToken;
 @property (copy, nonatomic) NSData *protectedFullToken; // @synthesize protectedFullToken=_protectedFullToken;
 @property (copy, nonatomic) NSData *publicToken; // @synthesize publicToken=_publicToken;
@@ -50,6 +52,7 @@
 @property (copy, nonatomic) CKRecordID *rootRecordID; // @synthesize rootRecordID=_rootRecordID;
 @property (strong, nonatomic) NSString *rootRecordType; // @synthesize rootRecordType=_rootRecordType;
 @property (strong, nonatomic) CKShare *share; // @synthesize share=_share;
+@property (copy, nonatomic) NSArray *sharedItemHierarchy; // @synthesize sharedItemHierarchy=_sharedItemHierarchy;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

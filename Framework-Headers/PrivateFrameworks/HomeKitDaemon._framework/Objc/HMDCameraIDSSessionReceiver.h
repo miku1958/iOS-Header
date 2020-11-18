@@ -9,13 +9,14 @@
 #import <HomeKitDaemon/HMDCameraRemoteStreamReceiverDestinationProtocol-Protocol.h>
 #import <HomeKitDaemon/IDSSessionDelegate-Protocol.h>
 
-@class IDSSession, NSObject, NSString;
+@class HMDCameraIDSSessionInviterDeviceVerifier, IDSSession, NSObject, NSString;
 @protocol HMDCameraIDSSessionReceiverDelegate, OS_dispatch_queue;
 
 @interface HMDCameraIDSSessionReceiver : HMDCameraIDSSessionHandler <IDSSessionDelegate, HMDCameraRemoteStreamReceiverDestinationProtocol>
 {
     id<HMDCameraIDSSessionReceiverDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
+    HMDCameraIDSSessionInviterDeviceVerifier *_sessionInviterDeviceVerifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *remoteDestination;
 @property (readonly, nonatomic) IDSSession *session;
+@property (readonly, nonatomic) HMDCameraIDSSessionInviterDeviceVerifier *sessionInviterDeviceVerifier; // @synthesize sessionInviterDeviceVerifier=_sessionInviterDeviceVerifier;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
@@ -33,7 +35,7 @@
 - (void)_callSessionSetup:(id)arg1;
 - (void)_receivedIDSSession:(id)arg1;
 - (void)dealloc;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 sessionInviterDeviceVerifier:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
 - (id)logIdentifier;
 - (void)service:(id)arg1 account:(id)arg2 inviteReceivedForSession:(id)arg3 fromID:(id)arg4 withContext:(id)arg5;
 - (void)sessionEnded:(id)arg1 withReason:(unsigned int)arg2 error:(id)arg3;

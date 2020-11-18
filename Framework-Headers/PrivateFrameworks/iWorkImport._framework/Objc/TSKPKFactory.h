@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSKPKFactory : NSObject
 {
 }
 
-+ (id)canvasViewController;
 + (id)canvasViewWithFrame:(struct CGRect)arg1;
 + (id)drawing;
 + (id)drawingWithData:(id)arg1;
@@ -23,8 +22,11 @@ __attribute__((visibility("hidden")))
 + (id)inkWithIdentifier:(id)arg1 color:(id)arg2;
 + (id)inkWithIdentifier:(id)arg1 color:(id)arg2 widthMultiplier:(double)arg3;
 + (id)inlineInkPickerWithFrame:(struct CGRect)arg1;
++ (BOOL)pencilKitAvailable;
++ (id)recognizerWithType:(int)arg1 mode:(int)arg2;
 + (id)stroke;
 + (id)strokePoint;
++ (id)strokeWithStroke:(id)arg1 points:(void *)arg2 count:(unsigned long long)arg3 copy:(BOOL)arg4;
 
 @end
 

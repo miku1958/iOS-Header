@@ -23,7 +23,7 @@
 
 - (void).cxx_destruct;
 - (void)_handleReply:(id)arg1;
-- (void)_sendXPCMessage;
+- (void)_start;
 - (id)initWithVisibility:(long long)arg1 productId:(id)arg2 bundleId:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)initWithVisibility:(long long)arg1 productId:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

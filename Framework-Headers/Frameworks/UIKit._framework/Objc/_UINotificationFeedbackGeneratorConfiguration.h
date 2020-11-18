@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedbackGeneratorConfiguration.h>
+#import <UIKitCore/_UIFeedbackGeneratorConfiguration.h>
 
 @class NSDictionary;
 
@@ -20,9 +20,10 @@
 + (id)defaultConfiguration;
 + (id)privateConfiguration;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)defaultEnabled;
 - (id)feedbackKeyPaths;
-- (long long)requiredSupportLevel;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

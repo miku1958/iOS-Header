@@ -16,6 +16,9 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_notificationQueue;
     NSMutableDictionary *_observersByDataType;
+    struct os_unfair_lock_s _synchronousObserverLock;
+    NSMutableDictionary *_synchronousObserversBySampleType;
+    BOOL _needsSynchronousNotification;
     unsigned long long _openTransactions;
     NSMutableDictionary *_pendingObjectsBySampleType;
     NSNumber *_lastAnchor;
@@ -37,14 +40,19 @@
 - (void)_notificationQueue_notifyObserversSamplesWithTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)_notifyObserversSamplesWithTypesWereRemoved:(id)arg1 anchor:(id)arg2;
 - (void)_notifyObserversWithAddedObjectsBySampleType:(id)arg1 lastAnchor:(id)arg2;
+- (void)_notifySynchronousObserversForDeletedObjectTypes:(id)arg1 anchor:(id)arg2;
+- (void)_notifySynchronousObserversIfPossible;
 - (id)_observersForAllTypes;
 - (id)_observersForDataType:(id)arg1;
 - (id)_queue_observersAllTypesCreateIfNil:(BOOL)arg1;
 - (id)_queue_observersForDataType:(id)arg1 createIfNil:(BOOL)arg2;
 - (id)_queue_observersForKey:(id)arg1 createIfNil:(BOOL)arg2;
 - (void)_shouldNotifyForDeletedSamplesOfTypes:(id)arg1 anchor:(id)arg2;
+- (BOOL)_synchronousObserverLock_hasSynchronousObserverForSampleType:(id)arg1;
+- (id)_synchronousObserverLock_synchronousObserverSetForSampleType:(id)arg1;
 - (void)addObserver:(id)arg1 forDataType:(id)arg2;
 - (void)addObserverForAllTypes:(id)arg1;
+- (void)addSynchronousObserver:(id)arg1 forSampleType:(id)arg2;
 - (void)closeObserverTransaction;
 - (BOOL)containsDataObject:(id)arg1;
 - (BOOL)deleteDataObjects:(id)arg1 restrictedSourceEntities:(id)arg2 failIfNotFound:(BOOL)arg3 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg4 error:(id *)arg5;
@@ -65,6 +73,7 @@
 - (void)openObserverTransaction;
 - (void)removeObserver:(id)arg1 forDataType:(id)arg2;
 - (void)removeObserverForAllTypes:(id)arg1;
+- (void)removeSynchronousObserver:(id)arg1 forSampleType:(id)arg2;
 - (void)setBackgroundObserverFrequency:(id)arg1 forDataType:(id)arg2 frequency:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)shouldNotifyForDataObjects:(id)arg1 provenance:(id)arg2 database:(id)arg3 anchor:(id)arg4;
 - (void)shouldNotifyForDeletedSamplesOfTypes:(id)arg1 database:(id)arg2 anchor:(id)arg3;

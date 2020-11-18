@@ -14,9 +14,9 @@ __attribute__((visibility("hidden")))
 @interface TSWPEquationInfo : TSDImageInfo <TSWPDrawableAttachmentDescriptionProvider>
 {
     EQKitEquation *_equation;
-    TSSPropertyMap *_textProperties;
     NSString *_source;
     double _depth;
+    TSSPropertyMap *_textProperties;
     TSPData *_pdfImage;
 }
 
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSSPropertyMap *textProperties; // @synthesize textProperties=_textProperties;
 
 + (BOOL)archiveHasEquationSource:(id)arg1;
++ (id)defaultTextProperties;
 + (Class)drawableInfoSubclassForClass:(Class)arg1 unarchiver:(id)arg2;
 + (id)eqKitEquationWithWithContext:(id)arg1 source:(id)arg2 error:(id *)arg3;
 + (id)equationAttachmentWithEquationAttachment:(id)arg1;
@@ -34,14 +35,24 @@ __attribute__((visibility("hidden")))
 + (id)equationInfoWithContext:(id)arg1 string:(id)arg2 textStorage:(id)arg3 charIndex:(unsigned long long)arg4;
 + (id)filteredTextPropertiesFromTextProperties:(id)arg1;
 + (id)fontNameFromTextProperties:(id)arg1;
++ (id)propertiesForChangePropagation;
 + (id)propertiesForStorage:(id)arg1 characterIndex:(unsigned long long)arg2;
 - (void).cxx_destruct;
+- (void)acceptVisitor:(id)arg1;
+- (BOOL)canAdjustImage;
 - (BOOL)canAnchor;
+- (BOOL)canAspectRatioLockBeChangedByUser;
+- (BOOL)canBeMasked;
+- (BOOL)canBeMediaPlaceholder;
 - (BOOL)canChangeWrapType;
+- (BOOL)canResetMediaSize;
 - (id)copyWithContext:(id)arg1;
+- (struct CGSize)defaultOriginalSize;
 - (id)description;
 - (id)descriptionForDrawableAttachment:(id)arg1;
+- (void)didFinalizeUnarchivingFromWPStorage:(id)arg1;
 - (int)elementKind;
+- (id)imageDataWithObjectContext:(id)arg1;
 - (id)initWithContext:(id)arg1 string:(id)arg2 filteredTextProperties:(id)arg3 equation:(id)arg4 pdfImageData:(id)arg5 depth:(double)arg6 geometry:(id)arg7 style:(id)arg8;
 - (id)initWithContext:(id)arg1 string:(id)arg2 textProperties:(id)arg3;
 - (BOOL)isSelectable;
@@ -49,12 +60,21 @@ __attribute__((visibility("hidden")))
 - (void)loadCharacterStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct CharacterStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
 - (void)loadFromArchive:(const struct ImageArchive *)arg1 unarchiver:(id)arg2;
 - (BOOL)needsUpdateForStyleChangeToStorage:(id)arg1 charIndex:(unsigned long long)arg2;
+- (BOOL)needsUpdateForStyleChangeToStorage:(id)arg1 charIndex:(unsigned long long)arg2 isAnchoredOrFloating:(BOOL)arg3;
+- (void)p_rebuildEquationPDF;
+- (id)promisedDataForType:(id)arg1;
 - (id)propertiesForParentAttachment;
+- (struct CGSize)rawDataSize;
 - (Class)repClass;
+- (void)replaceSourceWithNewSource:(id)arg1;
 - (void)saveCharacterStylePropertiesFromPropertyMap:(id)arg1 toArchive:(struct CharacterStylePropertiesArchive *)arg2 archiver:(id)arg3;
 - (void)saveToArchive:(struct ImageArchive *)arg1 archiver:(id)arg2;
 - (BOOL)supportsStyleInspecting;
+- (id)typesToPromiseWhenCopyingSingleDrawable;
 - (void)updateForStyleChangeToStorage:(id)arg1 charIndex:(unsigned long long)arg2;
+- (void)updateForStyleChangeToStorage:(id)arg1 charIndex:(unsigned long long)arg2 isAnchoredOrFloating:(BOOL)arg3;
+- (void)updateTextProperties:(id)arg1;
+- (void)willChangeProperty:(int)arg1;
 
 @end
 

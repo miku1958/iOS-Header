@@ -13,8 +13,6 @@ __attribute__((visibility("hidden")))
 
 - (void)loadFromArchive:(const struct WPTableInfoArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)saveToArchive:(struct WPTableInfoArchive *)arg1 archiver:(id)arg2;
-- (void)saveToArchiver:(id)arg1;
 
 @end
 

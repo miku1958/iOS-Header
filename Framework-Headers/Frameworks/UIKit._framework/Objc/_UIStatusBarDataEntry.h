@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @interface _UIStatusBarDataEntry : NSObject <NSCopying, NSSecureCoding>
 {
@@ -25,7 +25,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initFromData:(const CDStruct_8a690d05 *)arg1 type:(int)arg2;
+- (id)initFromData:(const CDStruct_1916f467 *)arg1 type:(int)arg2;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

@@ -9,11 +9,11 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSNumber, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMFUnfairLock, NSArray, NSNumber, NSString, NSUUID;
 
 @interface HMCharacteristicMetadata : NSObject <NSSecureCoding, HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     NSNumber *_minimumValue;
     NSNumber *_maximumValue;
     NSNumber *_stepValue;
@@ -22,7 +22,6 @@
     NSString *_units;
     NSString *_manufacturerDescription;
     NSArray *_validValues;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,7 +32,6 @@
 @property (strong, nonatomic) NSNumber *maxLength; // @synthesize maxLength=_maxLength;
 @property (strong, nonatomic) NSNumber *maximumValue; // @synthesize maximumValue=_maximumValue;
 @property (strong, nonatomic) NSNumber *minimumValue; // @synthesize minimumValue=_minimumValue;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier;

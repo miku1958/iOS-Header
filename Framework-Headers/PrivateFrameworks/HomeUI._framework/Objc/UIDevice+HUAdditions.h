@@ -8,6 +8,5 @@
 
 @interface UIDevice (HUAdditions)
 + (id)hu_modelSpecificLocalizedStringKeyWithGreenTeaForKey:(id)arg1;
-- (BOOL)hu_isHomeAffordancePresent;
 @end
 

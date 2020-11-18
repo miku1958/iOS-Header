@@ -6,6 +6,7 @@
 
 #import <System/OS_object.h>
 
+__attribute__((visibility("hidden")))
 @interface OS_nw_protocol_coretls : OS_object
 {
 }

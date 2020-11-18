@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryHWR_Portrait.h>
+#import <UIKitCore/UIKBRenderFactoryHWR_Portrait.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryHWR_Landscape : UIKBRenderFactoryHWR_Portrait

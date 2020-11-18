@@ -11,6 +11,7 @@
 @class NSString;
 @protocol RCCurrentRecordingViewControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface RCCurrentRecordingRemoteViewController : _UIRemoteViewController <RCUIClientCurrentRecordingViewController>
 {
     id<RCCurrentRecordingViewControllerDelegate> _delegate;

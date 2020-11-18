@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIKeyboardTextSelectionGestureController.h>
+#import <UIKitCore/_UIKeyboardTextSelectionGestureController.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardBasedTextSelectionGestureController : _UIKeyboardTextSelectionGestureController
@@ -19,10 +19,10 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void)_cleanupDeadGesturesIfNecessary;
 - (BOOL)allowOneFingerDeepPress;
-- (Class)gestureCluster;
 - (double)oneFingerForcePressMinimumDuration;
 - (BOOL)oneFingerForcePressShouldCancelTouchesInView;
 - (BOOL)oneFingerForcePressShouldFailWithoutForce;
+- (Class)textInteractionClass;
 
 @end
 

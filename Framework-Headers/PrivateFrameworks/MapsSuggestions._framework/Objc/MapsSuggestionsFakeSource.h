@@ -46,11 +46,12 @@
 - (unsigned long long)_addEntries:(struct NSArray *)arg1 deleteMissing:(BOOL)arg2;
 - (void)_allowTheDustToSettle;
 - (struct NSArray *)_copyEntriesIfNecessary:(struct NSArray *)arg1;
-- (BOOL)canProduceEntriesOfType:(unsigned long long)arg1;
+- (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (id)initWithDelegate:(id)arg1 name:(id)arg2;
 - (void)pushAdditionOfEntries:(struct NSArray *)arg1 deleteMissing:(BOOL)arg2;
 - (void)pushDeletionOfEntries:(struct NSArray *)arg1;
 - (void)pushEntries:(struct NSArray *)arg1;
+- (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)setPullResponseEntries:(struct NSArray *)arg1;
 - (void)start;
 - (void)startDebugTest;

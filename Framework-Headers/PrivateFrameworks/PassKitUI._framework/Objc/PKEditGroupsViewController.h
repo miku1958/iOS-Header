@@ -25,6 +25,7 @@
     UITableView *_tableView;
     id<UIViewControllerPreviewing> _previewingContext;
     NSMutableArray *_actions;
+    struct CGSize _imageSizeNeeded;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -46,9 +47,10 @@
 - (void)groupsController:(id)arg1 didRemoveGroup:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)groupsController:(id)arg1 didUpdateGroup:(id)arg2;
 - (id)indexPathForGroup:(id)arg1;
-- (id)initInEditingMode:(BOOL)arg1;
+- (id)initInEditingMode:(BOOL)arg1 existingGroupsController:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)passAtIndexPath:(id)arg1;
+- (BOOL)passExistsWithUniqueIdentifier:(id)arg1;
 - (void)prefetchItemsAtIndexPaths:(id)arg1;
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;

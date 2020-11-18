@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (Class)documentRootClass;
 - (id)documentTypeDisplayName;
 - (id)documentTypeDisplayNameForSharingInvitation;
+- (id)equationEditorAPDID;
 - (id)importableDocumentTypes;
 - (id)init;
 - (id)invalidURLSchemes;
@@ -68,6 +69,9 @@ __attribute__((visibility("hidden")))
 - (id)stringForDocumentViewOnly;
 - (id)stringForDocumentViewOnlyMessage;
 - (id)stringForDocumentViewOnlyTitle;
+- (id)stringForEquationChoiceBody;
+- (id)stringForEquationChoiceTitle;
+- (id)stringForEquationChoiceUseEQKitButtonTitle;
 - (id)stringForGenericServerUnreachable;
 - (id)stringForICloudUnreachable;
 - (id)stringForLearnMoreSharingURL;
@@ -83,6 +87,8 @@ __attribute__((visibility("hidden")))
 - (id)stringForStopSharingAlertConfirmationMessage;
 - (id)stringForStopSharingAlertConfirmationTitle;
 - (id)stringForUpdatingDocumentWithoutServiceType;
+- (id)stringForUserActivityTitleForFilename:(id)arg1;
+- (BOOL)supportsFreehandAnimationUI;
 - (BOOL)supportsPastingIntoGroups;
 - (BOOL)supportsRTL;
 - (BOOL)supportsShrinkTextToFit;

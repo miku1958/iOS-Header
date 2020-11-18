@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UITimingCurveProvider-Protocol.h>
+#import <UIKitCore/UITimingCurveProvider-Protocol.h>
 
 @class UICubicTimingParameters;
 
@@ -41,6 +41,7 @@
 - (id)initWithDampingRatio:(double)arg1;
 - (id)initWithDampingRatio:(double)arg1 initialVelocity:(struct CGVector)arg2;
 - (id)initWithMass:(double)arg1 stiffness:(double)arg2 damping:(double)arg3 initialVelocity:(struct CGVector)arg4;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

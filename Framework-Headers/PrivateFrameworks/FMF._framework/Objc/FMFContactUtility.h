@@ -6,13 +6,20 @@
 
 #import <objc/NSObject.h>
 
+@class CNContactFormatter, CNContactStore;
+
 @interface FMFContactUtility : NSObject
 {
+    CNContactStore *_contactStore;
+    CNContactFormatter *_contactFormatter;
 }
 
+@property (strong, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
+@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)contactKeys;
-- (id)contactStore;
 - (id)displayNameForContact:(id)arg1 andHandle:(id)arg2;
 - (id)findOptimalContactInContacts:(id)arg1;
 - (id)getContactForHandle:(id)arg1;

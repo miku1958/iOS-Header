@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class SKNode;
 
-@interface SKConstraint : NSObject <NSCoding, NSCopying>
+@interface SKConstraint : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _enabled;
     SKNode *_referenceNode;
@@ -34,6 +34,7 @@
 + (id)scaleX:(id)arg1;
 + (id)scaleX:(id)arg1 scaleY:(id)arg2;
 + (id)scaleY:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)width:(id)arg1;
 + (id)width:(id)arg1 height:(id)arg2;
 + (id)zRotation:(id)arg1;
@@ -43,6 +44,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqualToConstraint:(id)arg1;
 
 @end
 

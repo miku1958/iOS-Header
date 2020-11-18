@@ -6,12 +6,13 @@
 
 #import <InstallCoordination/IXAppInstallCoordinator.h>
 
+#import <InstallCoordination/IXCoordinatorWithImportance-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithUserDataPromise-Protocol.h>
 #import <InstallCoordination/IXUserInitiatedCoordinator-Protocol.h>
 
 @class NSString;
 
-@interface IXRestoringDemotedAppInstallCoordinator : IXAppInstallCoordinator <IXCoordinatorWithUserDataPromise, IXUserInitiatedCoordinator>
+@interface IXRestoringDemotedAppInstallCoordinator : IXAppInstallCoordinator <IXCoordinatorWithUserDataPromise, IXUserInitiatedCoordinator, IXCoordinatorWithImportance>
 {
 }
 

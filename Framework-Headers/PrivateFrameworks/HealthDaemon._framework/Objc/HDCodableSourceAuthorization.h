@@ -8,19 +8,22 @@
 
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray;
+@class HDCodableSource, NSData, NSMutableArray;
 
 @interface HDCodableSourceAuthorization : PBCodable <NSCopying>
 {
     NSMutableArray *_authorizations;
     NSData *_backupUUID;
+    HDCodableSource *_source;
     NSData *_sourceUUID;
 }
 
 @property (strong, nonatomic) NSMutableArray *authorizations; // @synthesize authorizations=_authorizations;
 @property (strong, nonatomic) NSData *backupUUID; // @synthesize backupUUID=_backupUUID;
 @property (readonly, nonatomic) BOOL hasBackupUUID;
+@property (readonly, nonatomic) BOOL hasSource;
 @property (readonly, nonatomic) BOOL hasSourceUUID;
+@property (strong, nonatomic) HDCodableSource *source; // @synthesize source=_source;
 @property (strong, nonatomic) NSData *sourceUUID; // @synthesize sourceUUID=_sourceUUID;
 
 + (Class)authorizationsType;

@@ -8,6 +8,7 @@
 
 #import <Silex/STTextCanvasRenderSource-Protocol.h>
 #import <Silex/SXAXAssistiveTechStatusChangeListener-Protocol.h>
+#import <Silex/SXComponentInteractable-Protocol.h>
 #import <Silex/SXTransitionDataSource-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 #import <Silex/UIViewControllerPreviewingDelegate-Protocol.h>
@@ -15,7 +16,7 @@
 @class NSString, SXColumnLayout, SXComponentExposureEvent, SXComponentExposureMonitor, SXComponentStyle, SXDocumentController, SXFillView, SXViewport;
 @protocol SXAnalyticsReporting, SXComponent, SXComponentHosting, SXComponentLayout, SXComponentStyleRenderer, SXComponentStyleRendererFactory, SXPresentationDelegate;
 
-@interface SXComponentView : UIView <UIGestureRecognizerDelegate, STTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXTransitionDataSource, UIViewControllerPreviewingDelegate>
+@interface SXComponentView : UIView <UIGestureRecognizerDelegate, STTextCanvasRenderSource, SXAXAssistiveTechStatusChangeListener, SXTransitionDataSource, UIViewControllerPreviewingDelegate, SXComponentInteractable>
 {
     BOOL _hasRenderedContents;
     BOOL _requiresThoroughFrameCalculations;
@@ -127,6 +128,7 @@
 - (void)reportComponentExposureEvent;
 - (void)restoreBehavior;
 - (void)updateAllowHierarchyRemovalWithComponent:(id)arg1 componentStyle:(id)arg2;
+- (BOOL)userInteractable;
 - (void)visibilityStateDidChangeFromState:(long long)arg1;
 - (void)willPresentComponent;
 

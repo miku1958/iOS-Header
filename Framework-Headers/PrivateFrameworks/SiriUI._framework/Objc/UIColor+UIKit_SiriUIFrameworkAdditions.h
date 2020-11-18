@@ -41,5 +41,7 @@
 + (id)siriui_tapToEditMaskingColor;
 + (id)siriui_textColor;
 + (id)siriui_textHighlightColor;
++ (id)siriui_transparantButtonColor;
++ (id)siriui_transparantHighlightedButtonColor;
 @end
 

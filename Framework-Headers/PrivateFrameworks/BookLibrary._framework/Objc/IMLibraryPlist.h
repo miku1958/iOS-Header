@@ -55,7 +55,6 @@
 + (id)keyNameForBackupPath;
 + (id)keyNameForBookDescription;
 + (id)keyNameForBooksArray;
-+ (id)keyNameForCollectionID;
 + (id)keyNameForComments;
 + (id)keyNameForCoverWritingMode;
 + (id)keyNameForDeletesArray;

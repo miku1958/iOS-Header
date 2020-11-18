@@ -4,26 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeUI/HMHomeManagerDelegate-Protocol.h>
+#import <HomeUI/HMHomeManagerDelegatePrivate-Protocol.h>
 
-@class HFHomeKitDispatcher, HMHome, HMHomeManager, NSArray;
+@class HFHomeKitDispatcher, HMHome, HMHomeManager;
 
-@protocol HFHomeManagerObserver <HMHomeManagerDelegate>
+@protocol HFHomeManagerObserver <HMHomeManagerDelegatePrivate>
 
 @optional
 - (void)homeKitDispatcher:(HFHomeKitDispatcher *)arg1 manager:(HMHomeManager *)arg2 didChangeHome:(HMHome *)arg3;
-- (void)homeManager:(HMHomeManager *)arg1 didUpdateAccessAllowedWhenLocked:(BOOL)arg2;
 - (void)homeManager:(HMHomeManager *)arg1 didUpdateLocationSensingAvailability:(BOOL)arg2;
-- (void)homeManager:(HMHomeManager *)arg1 didUpdateResidentEnabledForThisDevice:(BOOL)arg2;
-- (void)homeManager:(HMHomeManager *)arg1 didUpdateStateForIncomingInvitations:(NSArray *)arg2;
-- (void)homeManager:(HMHomeManager *)arg1 didUpdateStatus:(unsigned long long)arg2;
-- (void)homeManager:(HMHomeManager *)arg1 residentProvisioningStatusChanged:(unsigned long long)arg2;
-- (void)homeManagerDidEndBatchNotifications:(HMHomeManager *)arg1;
 - (void)homeManagerDidFinishInitialDatabaseLoad:(HMHomeManager *)arg1;
 - (void)homeManagerDidFinishUnknownChange:(HMHomeManager *)arg1;
-- (void)homeManagerDidUpdateApplicationData:(HMHomeManager *)arg1;
-- (void)homeManagerDidUpdateCurrentHome:(HMHomeManager *)arg1;
-- (void)homeManagerDidUpdateDataSyncState:(HMHomeManager *)arg1;
-- (void)homeManagerWillStartBatchNotifications:(HMHomeManager *)arg1;
 @end
 

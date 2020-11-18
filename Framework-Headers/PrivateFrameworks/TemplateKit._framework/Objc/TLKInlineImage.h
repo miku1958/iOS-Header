@@ -13,10 +13,9 @@
     TLKImage *_tlkImage;
 }
 
-@property (strong) TLKImage *tlkImage; // @synthesize tlkImage=_tlkImage;
+@property (strong, nonatomic) TLKImage *tlkImage; // @synthesize tlkImage=_tlkImage;
 
 - (void).cxx_destruct;
-- (id)observableProperties;
 
 @end
 

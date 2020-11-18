@@ -12,14 +12,14 @@
 #import <HomeUI/HUPresentationDelegateHost-Protocol.h>
 #import <HomeUI/PGPictureInPictureProxyDelegate-Protocol.h>
 
-@class HFCameraAudioManager, HFCameraItem, HFItem, HFItemManager, HUCameraMicrophoneButton, HUCameraStreamContentViewController, MPVolumeSlider, NSLayoutConstraint, NSString, PGPictureInPictureProxy, UIBarButtonItem;
+@class AVPlayerLooper, HFCameraAudioManager, HFCameraItem, HFItem, HFItemManager, HUCameraDemoPlayerView, HUCameraFloatingMicrophoneButton, HUCameraMicrophoneButton, HUCameraStreamContentViewController, MPVolumeSlider, NSLayoutConstraint, NSString, PGPictureInPictureProxy, UIBarButtonItem, UIView;
 @protocol HUCameraStreamViewControllerDelegate, HUPresentationDelegate;
 
 @interface HUCameraStreamViewController : UIViewController <HFItemManagerDelegate, HUPresentationDelegate, PGPictureInPictureProxyDelegate, HUItemPresentationContainer, HUPresentationDelegateHost>
 {
     BOOL _navigationControllerSetup;
     BOOL _barsHidden;
-    BOOL _didSetupMicrophoneButtonConstraints;
+    BOOL _didSetupToolbarMicrophoneButtonConstraints;
     BOOL _didSetupVolumeSliderConstraints;
     id<HUPresentationDelegate> _presentationDelegate;
     id<HUCameraStreamViewControllerDelegate> _delegate;
@@ -33,8 +33,11 @@
     NSLayoutConstraint *_volumeSliderLeadingConstraint;
     MPVolumeSlider *_volumeSlider;
     UIBarButtonItem *_volumeBarButtonItem;
-    HUCameraMicrophoneButton *_microphoneButton;
+    HUCameraFloatingMicrophoneButton *_floatingMicrophoneButton;
+    HUCameraMicrophoneButton *_toolbarMicrophoneButton;
     UIBarButtonItem *_microphoneBarButtonItem;
+    HUCameraDemoPlayerView *_demoPlayerView;
+    AVPlayerLooper *_looper;
     struct UIOffset _defaultCameraBadgeOffset;
 }
 
@@ -42,22 +45,26 @@
 @property (strong, nonatomic) HFCameraAudioManager *cameraAudioManager; // @synthesize cameraAudioManager=_cameraAudioManager;
 @property (readonly, nonatomic) HFCameraItem *cameraItem;
 @property (readonly, nonatomic) HUCameraStreamContentViewController *cameraStreamContentViewController; // @synthesize cameraStreamContentViewController=_cameraStreamContentViewController;
+@property (readonly, nonatomic) UIView *cameraViewSnapshot;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) struct UIOffset defaultCameraBadgeOffset; // @synthesize defaultCameraBadgeOffset=_defaultCameraBadgeOffset;
 @property (weak, nonatomic) id<HUCameraStreamViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) HUCameraDemoPlayerView *demoPlayerView; // @synthesize demoPlayerView=_demoPlayerView;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL didSetupMicrophoneButtonConstraints; // @synthesize didSetupMicrophoneButtonConstraints=_didSetupMicrophoneButtonConstraints;
+@property (nonatomic) BOOL didSetupToolbarMicrophoneButtonConstraints; // @synthesize didSetupToolbarMicrophoneButtonConstraints=_didSetupToolbarMicrophoneButtonConstraints;
 @property (nonatomic) BOOL didSetupVolumeSliderConstraints; // @synthesize didSetupVolumeSliderConstraints=_didSetupVolumeSliderConstraints;
+@property (strong, nonatomic) HUCameraFloatingMicrophoneButton *floatingMicrophoneButton; // @synthesize floatingMicrophoneButton=_floatingMicrophoneButton;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HFItem *hu_presentedItem;
 @property (readonly, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
 @property (weak, nonatomic) UIViewController *lastPresentingViewController; // @synthesize lastPresentingViewController=_lastPresentingViewController;
+@property (strong, nonatomic) AVPlayerLooper *looper; // @synthesize looper=_looper;
 @property (strong, nonatomic) UIBarButtonItem *microphoneBarButtonItem; // @synthesize microphoneBarButtonItem=_microphoneBarButtonItem;
-@property (strong, nonatomic) HUCameraMicrophoneButton *microphoneButton; // @synthesize microphoneButton=_microphoneButton;
 @property (nonatomic, getter=isNavigationControllerSetup) BOOL navigationControllerSetup; // @synthesize navigationControllerSetup=_navigationControllerSetup;
 @property (strong, nonatomic) PGPictureInPictureProxy *pipProxy; // @synthesize pipProxy=_pipProxy;
 @property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) HUCameraMicrophoneButton *toolbarMicrophoneButton; // @synthesize toolbarMicrophoneButton=_toolbarMicrophoneButton;
 @property (nonatomic) unsigned long long viewAppearanceState;
 @property (strong, nonatomic) UIBarButtonItem *volumeBarButtonItem; // @synthesize volumeBarButtonItem=_volumeBarButtonItem;
 @property (strong, nonatomic) MPVolumeSlider *volumeSlider; // @synthesize volumeSlider=_volumeSlider;
@@ -70,20 +77,23 @@
 - (void)_attachCameraStreamViewController;
 - (id)_barBackgroundView;
 - (id)_cameraProfile;
+- (void)_configureConstraintsForContentView:(id)arg1;
 - (void)_detailsButtonPressed;
 - (void)_doneButtonPressed;
 - (void)_handleApplicationDidBecomeActiveNotification;
 - (void)_handleBarHideTapGesture:(id)arg1;
 - (void)_microphoneButtonPressed;
 - (void)_presentCameraDetailsWithViewController:(id)arg1;
-- (void)_setupMicrophoneConstraintsIfNeeded;
+- (void)_setupFloatingMicrphoneButtonIfNeeded;
 - (void)_setupNavigationController;
+- (void)_setupToolbarMicrophoneConstraintsIfNeeded;
 - (void)_setupVolumeSliderConstraintsIfNeeded;
 - (unsigned long long)_streamState;
 - (void)_updateCameraAudioManager;
 - (void)_updateCameraBadgeOffset;
 - (void)_updateMicrophoneButton;
-- (void)_updateNavigationItemTitle;
+- (void)_updatePIPViewFrame;
+- (void)_updateTitleAndLoadingState;
 - (void)_updateVolumeSliderConstraintsIfNeeded;
 - (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
 - (id)initWithCameraItem:(id)arg1;
@@ -100,6 +110,7 @@
 - (BOOL)prefersStatusBarHidden;
 - (id)previewActionItems;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;

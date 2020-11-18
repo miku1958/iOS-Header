@@ -16,8 +16,6 @@
     NFLCellGenerator *_imageOnTopCellGenerator;
     NFLCellGenerator *_premiumCellGenerator;
     NFLCellGenerator *_trendingCellGenerator;
-    NFLCellGenerator *_siriSuggestionsCellGenerator;
-    NFLCellGenerator *_pickYourFavoritesCellGenerator;
     NFLCellGenerator *_gapCellGenerator;
     NFLFeedSettings *_feedSettings;
 }
@@ -28,9 +26,7 @@
 @property (strong, nonatomic) NFLCellGenerator *imageOnSideCellGenerator; // @synthesize imageOnSideCellGenerator=_imageOnSideCellGenerator;
 @property (strong, nonatomic) NFLCellGenerator *imageOnTopCellGenerator; // @synthesize imageOnTopCellGenerator=_imageOnTopCellGenerator;
 @property (strong, nonatomic) NFLCellGenerator *noImageCellGenerator; // @synthesize noImageCellGenerator=_noImageCellGenerator;
-@property (strong, nonatomic) NFLCellGenerator *pickYourFavoritesCellGenerator; // @synthesize pickYourFavoritesCellGenerator=_pickYourFavoritesCellGenerator;
 @property (strong, nonatomic) NFLCellGenerator *premiumCellGenerator; // @synthesize premiumCellGenerator=_premiumCellGenerator;
-@property (strong, nonatomic) NFLCellGenerator *siriSuggestionsCellGenerator; // @synthesize siriSuggestionsCellGenerator=_siriSuggestionsCellGenerator;
 @property (strong, nonatomic) NFLCellGenerator *trendingCellGenerator; // @synthesize trendingCellGenerator=_trendingCellGenerator;
 
 + (id)cellGeneratorWithFeedSettings:(id)arg1;

@@ -13,15 +13,6 @@
 @property (copy, nonatomic) NSArray *buyOptions;
 @property (copy, nonatomic) NSString *contentAdvisory;
 @property (strong, nonatomic) _SFPBImage *contentAdvisoryImage;
-@property (readonly, nonatomic) BOOL hasContentAdvisory;
-@property (readonly, nonatomic) BOOL hasContentAdvisoryImage;
-@property (readonly, nonatomic) BOOL hasOverlayImage;
-@property (readonly, nonatomic) BOOL hasPunchout;
-@property (readonly, nonatomic) BOOL hasReviewGlyph;
-@property (readonly, nonatomic) BOOL hasReviewText;
-@property (readonly, nonatomic) BOOL hasSubtitleText;
-@property (readonly, nonatomic) BOOL hasThumbnail;
-@property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBImage *overlayImage;
 @property (strong, nonatomic) _SFPBPunchout *punchout;

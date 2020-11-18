@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CALayer, TSCHMultiDataAnimatingFrameLayer;
 @protocol TSCHMultiDataElementShapeLayer;
@@ -22,12 +22,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSCHMultiDataAnimatingFrameLayer *labelLayer; // @synthesize labelLayer=mLabelLayer;
 
 + (id)elementWithElementLayer:(id)arg1;
+- (void).cxx_destruct;
 - (void)addAnimationForKey:(id)arg1 values:(id)arg2 keyTimes:(id)arg3 toAnimationInfo:(id)arg4;
-- (void)dealloc;
 - (id)delegate;
-- (id)init;
 - (id)initWithElementLayer:(id)arg1;
-- (id)initWithLayer:(id)arg1;
 - (void)setContentsScale:(double)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setOpacity:(double)arg1;

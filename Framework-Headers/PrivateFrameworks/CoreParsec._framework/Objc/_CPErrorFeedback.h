@@ -14,7 +14,6 @@
 
 @interface _CPErrorFeedback : PBCodable <_CPProcessableFeedback, _CPErrorFeedback, NSSecureCoding>
 {
-    CDStruct_b5306035 _has;
     unsigned long long _timestamp;
     _CPError *_error;
     _CPError *_underlyingError;
@@ -27,17 +26,14 @@
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (strong, nonatomic) _CPError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasError;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasUnderlyingError;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly, nonatomic) BOOL requiresQueryId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 @property (strong, nonatomic) _CPError *underlyingError; // @synthesize underlyingError=_underlyingError;
 
 - (void).cxx_destruct;

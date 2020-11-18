@@ -25,7 +25,10 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_axIsScrollingByDragGesture;
 - (void)_axSetIsScrollingByDragGesture:(BOOL)arg1;
+- (BOOL)accessibilityPerformEscape;
 - (id)accessibilityScrollStatusForScrollView:(id)arg1;
+- (void)browserTransitionCoordinatorWillCollapseOrDismiss:(id)arg1 withReason:(long long)arg2;
+- (void)browserTransitionCoordinatorWillTransitionOrPresentToFullscreen:(id)arg1 withReason:(long long)arg2;
 - (void)loadView;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)setCurrentViewController:(id)arg1;

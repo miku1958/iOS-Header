@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAssetWriterConfigurationState, AVMediaFileType, AVWeakReference, NSArray, NSError, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterHelper : NSObject
 {
     AVAssetWriterConfigurationState *_configurationState;

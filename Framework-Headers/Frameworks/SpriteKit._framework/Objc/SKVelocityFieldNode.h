@@ -16,6 +16,7 @@
 @property (nonatomic) MISSING_TYPE *velocity;
 @property (strong, nonatomic) SKTexture *velocityTexture; // @synthesize velocityTexture=_velocityTexture;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionClassName;
 - (void)_initialize;

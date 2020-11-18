@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (id)_extensionLoader;
+- (void)dealloc;
 - (void)extensionDidFinish;
 - (void)extensionDidFinishWithError:(id)arg1;
 - (void)handleExtensionBasedAction:(id)arg1 completion:(CDUnknownBlockType)arg2;

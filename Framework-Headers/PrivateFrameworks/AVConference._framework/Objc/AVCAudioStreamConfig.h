@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface AVCAudioStreamConfig : NSObject
 {
@@ -15,18 +15,23 @@
     unsigned long long _dtmfTimestampRate;
     unsigned long long _ptime;
     unsigned long long _maxPtime;
+    unsigned long long _channelAwareOffset;
     long long _audioStreamMode;
     unsigned int _codecRateModeMask;
     long long _preferredCodecRateMode;
     BOOL _octetAligned;
+    BOOL _headerFullOnly;
     BOOL _dtxEnabled;
     BOOL _latencySensitiveMode;
+    BOOL _enableMaxBitrateOnNoChangeCMR;
     unsigned long long _numRedundantPayloads;
     unsigned long long _txRedPayloadType;
     unsigned long long _rxRedPayloadType;
+    float _volume;
 }
 
 @property (nonatomic) long long audioStreamMode; // @synthesize audioStreamMode=_audioStreamMode;
+@property (nonatomic) unsigned long long channelAwareOffset; // @synthesize channelAwareOffset=_channelAwareOffset;
 @property (nonatomic, getter=isCNEnabled) BOOL cnEnabled; // @synthesize cnEnabled=_cnEnabled;
 @property (nonatomic) unsigned long long cnPayloadType; // @synthesize cnPayloadType=_cnPayloadType;
 @property (nonatomic) unsigned int codecRateModeMask; // @synthesize codecRateModeMask=_codecRateModeMask;
@@ -34,6 +39,8 @@
 @property (nonatomic) unsigned long long dtmfPayloadType; // @synthesize dtmfPayloadType=_dtmfPayloadType;
 @property (nonatomic) unsigned long long dtmfTimestampRate; // @synthesize dtmfTimestampRate=_dtmfTimestampRate;
 @property (nonatomic, getter=isDTXEnabled) BOOL dtxEnabled; // @synthesize dtxEnabled=_dtxEnabled;
+@property (nonatomic) BOOL enableMaxBitrateOnNoChangeCMR; // @synthesize enableMaxBitrateOnNoChangeCMR=_enableMaxBitrateOnNoChangeCMR;
+@property (nonatomic, getter=isHeaderFullOnly) BOOL headerFullOnly; // @synthesize headerFullOnly=_headerFullOnly;
 @property (nonatomic, getter=isLatencySensitiveMode) BOOL latencySensitiveMode; // @synthesize latencySensitiveMode=_latencySensitiveMode;
 @property (nonatomic) unsigned long long maxPtime; // @synthesize maxPtime=_maxPtime;
 @property (nonatomic) unsigned long long numRedundantPayloads; // @synthesize numRedundantPayloads=_numRedundantPayloads;
@@ -42,6 +49,7 @@
 @property (nonatomic) unsigned long long ptime; // @synthesize ptime=_ptime;
 @property (nonatomic) unsigned long long rxRedPayloadType; // @synthesize rxRedPayloadType=_rxRedPayloadType;
 @property (nonatomic) unsigned long long txRedPayloadType; // @synthesize txRedPayloadType=_txRedPayloadType;
+@property (nonatomic) float volume; // @synthesize volume=_volume;
 
 + (unsigned int)clientCodecRateMaskForCodecRateMode:(unsigned int)arg1;
 + (long long)clientCodecRateModeForCodecRateMode:(int)arg1;

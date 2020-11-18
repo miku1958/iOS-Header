@@ -15,6 +15,10 @@
     BOOL _SMIMEEnabled;
     BOOL _isRecentsSyncingDisabled;
     BOOL _isMailDropEnabled;
+    BOOL _SMIMESigningUserOverrideable;
+    BOOL _SMIMESigningIdentityUserOverrideable;
+    BOOL _SMIMEEncryptByDefaultUserOverrideable;
+    BOOL _SMIMEEncryptionIdentityUserOverrideable;
     BOOL _SMIMEPerMessageSwitchEnabled;
     NSNumber *_SMIMESigningEnabled;
     NSString *_SMIMESigningIdentityUUID;
@@ -32,14 +36,18 @@
 
 @property (nonatomic) BOOL SMIMEEnabled; // @synthesize SMIMEEnabled=_SMIMEEnabled;
 @property (strong, nonatomic) NSNumber *SMIMEEnabledNum; // @synthesize SMIMEEnabledNum=_SMIMEEnabledNum;
+@property (nonatomic) BOOL SMIMEEncryptByDefaultUserOverrideable; // @synthesize SMIMEEncryptByDefaultUserOverrideable=_SMIMEEncryptByDefaultUserOverrideable;
 @property (strong, nonatomic) NSNumber *SMIMEEncryptionEnabled; // @synthesize SMIMEEncryptionEnabled=_SMIMEEncryptionEnabled;
 @property (strong, nonatomic) NSData *SMIMEEncryptionIdentityPersistentID; // @synthesize SMIMEEncryptionIdentityPersistentID=_SMIMEEncryptionIdentityPersistentID;
 @property (strong, nonatomic) NSString *SMIMEEncryptionIdentityUUID; // @synthesize SMIMEEncryptionIdentityUUID=_SMIMEEncryptionIdentityUUID;
+@property (nonatomic) BOOL SMIMEEncryptionIdentityUserOverrideable; // @synthesize SMIMEEncryptionIdentityUserOverrideable=_SMIMEEncryptionIdentityUserOverrideable;
 @property (nonatomic) BOOL SMIMEPerMessageSwitchEnabled; // @synthesize SMIMEPerMessageSwitchEnabled=_SMIMEPerMessageSwitchEnabled;
 @property (strong, nonatomic) NSNumber *SMIMEPerMessageSwitchEnabledNum; // @synthesize SMIMEPerMessageSwitchEnabledNum=_SMIMEPerMessageSwitchEnabledNum;
 @property (strong, nonatomic) NSNumber *SMIMESigningEnabled; // @synthesize SMIMESigningEnabled=_SMIMESigningEnabled;
 @property (strong, nonatomic) NSData *SMIMESigningIdentityPersistentID; // @synthesize SMIMESigningIdentityPersistentID=_SMIMESigningIdentityPersistentID;
 @property (strong, nonatomic) NSString *SMIMESigningIdentityUUID; // @synthesize SMIMESigningIdentityUUID=_SMIMESigningIdentityUUID;
+@property (nonatomic) BOOL SMIMESigningIdentityUserOverrideable; // @synthesize SMIMESigningIdentityUserOverrideable=_SMIMESigningIdentityUserOverrideable;
+@property (nonatomic) BOOL SMIMESigningUserOverrideable; // @synthesize SMIMESigningUserOverrideable=_SMIMESigningUserOverrideable;
 @property (nonatomic) BOOL isMailDropEnabled; // @synthesize isMailDropEnabled=_isMailDropEnabled;
 @property (strong, nonatomic) NSNumber *isMailDropEnabledNum; // @synthesize isMailDropEnabledNum=_isMailDropEnabledNum;
 @property (nonatomic) BOOL isRecentsSyncingDisabled; // @synthesize isRecentsSyncingDisabled=_isRecentsSyncingDisabled;
@@ -50,6 +58,7 @@
 @property (strong, nonatomic) NSNumber *preventMoveNum; // @synthesize preventMoveNum=_preventMoveNum;
 
 - (void).cxx_destruct;
+- (void)addSMIMEEncryptionPayloadKeysTo:(id)arg1;
 - (BOOL)containsSensitiveUserInformation;
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;

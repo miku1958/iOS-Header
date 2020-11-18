@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)outputData;
 - (id)outputImage;
+- (id)outputImageNonMPS;
 
 @end
 

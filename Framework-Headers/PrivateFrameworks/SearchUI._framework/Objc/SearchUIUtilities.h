@@ -12,8 +12,10 @@
 
 + (struct CGRect)absoluteFrameForView:(id)arg1;
 + (id)addAspectRatioConstraintForImageView:(id)arg1;
++ (BOOL)appIsValidForBundleIdentifier:(id)arg1;
 + (BOOL)backgroundColorPrefersWhiteForegroundText:(id)arg1;
 + (id)boldBodyFont;
++ (BOOL)bundleIdentifierIsBlockedForScreenTimeExpiration:(id)arg1;
 + (id)buttonColorForStyle:(unsigned long long)arg1;
 + (id)captionFont;
 + (BOOL)deviceIsAuthenticated;
@@ -21,6 +23,7 @@
 + (void)dispatchAsyncIfNecessary:(CDUnknownBlockType)arg1;
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
 + (id)footnoteFont;
++ (id)horizontalAppNameFont;
 + (id)hyphenatableStringForString:(id)arg1;
 + (id)imageWithColor:(id)arg1 size:(struct CGSize)arg2;
 + (id)imageWithColor:(id)arg1 size:(struct CGSize)arg2 cornersToRound:(unsigned long long)arg3 cornerRadius:(double)arg4;
@@ -31,6 +34,7 @@
 + (id)localizedStringForKey:(id)arg1;
 + (struct CGSize)maxThumbnailSize;
 + (double)onePixelForCurrentScreenResolution;
++ (void)openApplicationWithBundleIdentifier:(id)arg1;
 + (id)openOptions;
 + (void)openPunchout:(id)arg1;
 + (void)openPunchout:(id)arg1 fromCardSection:(id)arg2 toListener:(id)arg3 triggerEvent:(unsigned long long)arg4;
@@ -39,9 +43,11 @@
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2;
 + (void)performAnimatableChanges:(CDUnknownBlockType)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)performOpenTask:(CDUnknownBlockType)arg1;
++ (void)playNegativeHaptic;
 + (void)requestDeviceUnlockWithSuccessHandler:(CDUnknownBlockType)arg1;
++ (BOOL)resultIsSiriAction:(id)arg1;
++ (id)richTextForBlockedAppName:(id)arg1 style:(unsigned long long)arg2;
 + (id)sendFeedbackForPunchout:(id)arg1 toListener:(id)arg2 fromCardSection:(id)arg3 triggerEvent:(unsigned long long)arg4;
-+ (double)separatorHeight;
 + (id)shortBodyFont;
 + (id)shortFontForFontStyle:(id)arg1;
 + (id)shortFootnoteFont;

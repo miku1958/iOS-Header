@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UISpringLoadedInteractionContext_Internal-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionContext_Internal-Protocol.h>
 
 @class NSString, UISpringLoadedGestureRecognizer, UIView;
 @protocol UIDropSession;

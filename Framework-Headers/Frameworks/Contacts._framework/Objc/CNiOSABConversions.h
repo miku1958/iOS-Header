@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)contactPropertiesByABPropertyID;
 + (id)containerFromABSource:(void *)arg1 remote:(BOOL)arg2 includeDisabledSources:(BOOL)arg3;
 + (id)containersFromABSources:(struct __CFArray *)arg1 remote:(BOOL)arg2 includeDisabledSources:(BOOL)arg3;
++ (id)dataFromABBytes:(char *)arg1 length:(unsigned long long)arg2;
 + (id)dateFromABBytes:(char *)arg1 length:(unsigned long long)arg2;
 + (id)groupFromABGroup:(void *)arg1;
 + (id)groupsFromABGroups:(struct __CFArray *)arg1;

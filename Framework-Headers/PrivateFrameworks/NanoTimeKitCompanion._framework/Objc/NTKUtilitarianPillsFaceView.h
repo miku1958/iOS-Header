@@ -11,14 +11,20 @@
 }
 
 + (id)_swatchImageFaceName;
+- (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_configureComplicationFactory:(id)arg1;
+- (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (struct CGPoint)_dateComplicationCenterOffset;
 - (struct CGPoint)_dateComplicationRightAlignment;
 - (struct CGRect)_keylineFrameForDensityEditing;
 - (unsigned long long)_keylineLabelAlignmentForDensityEditing;
 - (id)_keylineViewForDensityEditing;
+- (void)_loadScene;
+- (void)_removeComplicationOverlapHiding;
+- (void)_updateComplicationOverlapHiding;
 - (Class)_utilitarianSceneClass;
 - (id)_utilityComplicationSlots;
+- (id)_visibleComplicationSlots;
 
 @end
 

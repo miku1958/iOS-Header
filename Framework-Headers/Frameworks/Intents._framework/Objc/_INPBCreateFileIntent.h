@@ -7,23 +7,26 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBCreateFileIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBIntentMetadata, _INPBString;
+@class NSString, _INPBIntentMetadata, _INPBString;
 
-@interface _INPBCreateFileIntent : PBCodable <NSCopying>
+@interface _INPBCreateFileIntent : PBCodable <_INPBCreateFileIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    _INPBString *_destinationName;
-    int _destinationType;
-    _INPBString *_entityName;
-    int _entityType;
-    _INPBIntentMetadata *_intentMetadata;
     struct {
         unsigned int destinationType:1;
         unsigned int entityType:1;
     } _has;
+    int _destinationType;
+    int _entityType;
+    _INPBString *_destinationName;
+    _INPBString *_entityName;
+    _INPBIntentMetadata *_intentMetadata;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;
 @property (nonatomic) int destinationType; // @synthesize destinationType=_destinationType;
 @property (strong, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;
@@ -33,21 +36,18 @@
 @property (readonly, nonatomic) BOOL hasEntityName;
 @property (nonatomic) BOOL hasEntityType;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsDestinationType:(id)arg1;
 - (int)StringAsEntityType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)destinationTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (id)entityTypeAsString:(int)arg1;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

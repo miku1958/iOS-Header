@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/BKSSystemApplicationClientDelegate-Protocol.h>
 
@@ -21,13 +21,14 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<BKSSystemApplicationDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<BKSSystemApplicationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (nonatomic) double systemIdleSleepInterval; // @synthesize systemIdleSleepInterval=_systemIdleSleepInterval;
 @property (nonatomic) BOOL waitForDataMigration; // @synthesize waitForDataMigration=_waitForDataMigration;
 
+- (void).cxx_destruct;
 - (void)bootstrap;
 - (BOOL)clientIsAliveForWatchdog:(id)arg1;
 - (void)dealloc;

@@ -79,6 +79,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDraggable;
 - (BOOL)isInvisible;
 - (id)layoutInfoGeometry;
+- (struct CGSize)minimumSize;
+- (BOOL)p_connectedInfoInDocument:(id)arg1;
 - (id)p_infoForConnectingToInfo:(id)arg1;
 - (BOOL)p_isConnectedToLockedObjects;
 - (BOOL)p_isInfoAKeynoteMasterObject:(id)arg1;

@@ -7,12 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSString, PXPeopleNameSelection, PXPeopleSuggestionManager;
-@protocol PXPeopleSuggestionManagerDataSource, PXPerson;
+@protocol PXCMMPersonSuggestion, PXPeopleSuggestionManagerDataSource, PXPerson;
 
 @interface PXPeopleBootstrapContext : NSObject
 {
     BOOL _skipInitialAction;
     BOOL _wantsNaming;
+    BOOL _wantsMergeCandidateSuggestions;
+    BOOL _wantsPostNaming;
     id<PXPerson> _sourcePerson;
     id<PXPerson> _targetPerson;
     unsigned long long _bootstrapType;
@@ -21,21 +23,26 @@
     CDUnknownBlockType _preCommitBlock;
     CDUnknownBlockType _cancelBlock;
     id<PXPeopleSuggestionManagerDataSource> _prefetchedDataSource;
+    id<PXCMMPersonSuggestion> _personSuggestion;
 }
 
 @property unsigned long long bootstrapType; // @synthesize bootstrapType=_bootstrapType;
 @property (copy, nonatomic) CDUnknownBlockType cancelBlock; // @synthesize cancelBlock=_cancelBlock;
 @property (readonly, nonatomic) NSString *displayName;
 @property (strong) PXPeopleNameSelection *nameSelection; // @synthesize nameSelection=_nameSelection;
+@property (strong, nonatomic) id<PXCMMPersonSuggestion> personSuggestion; // @synthesize personSuggestion=_personSuggestion;
 @property (copy, nonatomic) CDUnknownBlockType preCommitBlock; // @synthesize preCommitBlock=_preCommitBlock;
 @property (strong, nonatomic) id<PXPeopleSuggestionManagerDataSource> prefetchedDataSource; // @synthesize prefetchedDataSource=_prefetchedDataSource;
 @property (nonatomic) BOOL skipInitialAction; // @synthesize skipInitialAction=_skipInitialAction;
 @property (strong) id<PXPerson> sourcePerson; // @synthesize sourcePerson=_sourcePerson;
 @property (strong) PXPeopleSuggestionManager *suggestionManager; // @synthesize suggestionManager=_suggestionManager;
 @property (strong) id<PXPerson> targetPerson; // @synthesize targetPerson=_targetPerson;
+@property (nonatomic) BOOL wantsMergeCandidateSuggestions; // @synthesize wantsMergeCandidateSuggestions=_wantsMergeCandidateSuggestions;
 @property (nonatomic) BOOL wantsNaming; // @synthesize wantsNaming=_wantsNaming;
+@property (nonatomic) BOOL wantsPostNaming; // @synthesize wantsPostNaming=_wantsPostNaming;
 
 + (id)contextWithPerson:(id)arg1 type:(unsigned long long)arg2;
++ (id)contextWithPersonSuggestion:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
 

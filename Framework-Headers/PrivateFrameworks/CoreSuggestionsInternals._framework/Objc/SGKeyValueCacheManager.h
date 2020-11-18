@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)cacheOfType:(unsigned long long)arg1;
+- (id)cacheOfType:(unsigned long long)arg1 forceReadFromDisk:(BOOL)arg2;
 - (id)init;
 - (id)initInMemory;
 - (id)initWithBasePath:(id)arg1;

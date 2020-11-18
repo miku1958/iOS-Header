@@ -21,6 +21,7 @@
     NSString *_appleID;
     NSNumber *_personID;
     NSString *_personIDHash;
+    NSString *_altDSID;
     NSString *_title;
     NSDate *_joinDate;
     NSString *_iTunesNotLinkedMessage;
@@ -28,6 +29,7 @@
     NSNumber *_linkediTunesDSID;
 }
 
+@property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 @property (nonatomic) BOOL areParentalControlsEnabled; // @synthesize areParentalControlsEnabled=_areParentalControlsEnabled;
 @property (copy, nonatomic) NSString *firstName; // @synthesize firstName=_firstName;

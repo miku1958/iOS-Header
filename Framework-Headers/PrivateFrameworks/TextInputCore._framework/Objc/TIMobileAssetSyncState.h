@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSString;
 
@@ -23,7 +23,7 @@
 @property (nonatomic) long long status; // @synthesize status=_status;
 
 + (id)buildVersionString;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)didSyncToRemoteMetadataWithError:(id)arg1;
 - (id)initWithDate:(id)arg1 buildVersion:(id)arg2 status:(long long)arg3 attemptCount:(long long)arg4;
 - (void)loadStateIfNecessary;

@@ -19,7 +19,6 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasMetadata;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBStringDictionary *metadata; // @synthesize metadata=_metadata;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBSSceneTransitionContext;
 
@@ -15,8 +15,9 @@
     BOOL _sent;
 }
 
-@property (readonly, strong, nonatomic) FBSSceneTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
+@property (readonly, nonatomic) FBSSceneTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithTransitionContext:(id)arg1 sender:(CDUnknownBlockType)arg2;
 - (void)send;

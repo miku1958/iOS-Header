@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class BRCSyncContext, BRCThrottle, CKOperationGroup, NSDate, NSError, NSObject, NSUUID;
+@class BRCSyncContext, BRCThrottle, CKOperationGroup, NSDate, NSError, NSMutableArray, NSObject, NSUUID;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source, OS_os_activity, OS_os_transaction;
 
 __attribute__((visibility("hidden")))
@@ -25,7 +25,9 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_retryTimer;
     NSObject<OS_dispatch_group> *_group;
     NSObject<OS_os_activity> *_Activity;
+    NSMutableArray *_associatedEventMetrics;
     BOOL _finished;
+    BOOL _nonDiscretionary;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     BRCThrottle *_operationThrottle;
     BRCThrottle *_operationFailureThrottle;
@@ -43,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CKOperationGroup *group; // @synthesize group=_operationGroup;
 @property (readonly, nonatomic) unsigned long long logSections; // @synthesize logSections=_logSections;
 @property (copy, nonatomic) CDUnknownBlockType mainBlock; // @synthesize mainBlock=_mainBlock;
+@property (nonatomic) BOOL nonDiscretionary; // @synthesize nonDiscretionary=_nonDiscretionary;
 @property (nonatomic) BRCThrottle *operationFailureThrottle; // @synthesize operationFailureThrottle=_operationFailureThrottle;
 @property (readonly, nonatomic) NSUUID *operationID;
 @property (nonatomic) BRCThrottle *operationThrottle; // @synthesize operationThrottle=_operationThrottle;
@@ -58,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (void)_scheduleExecutionWithPreviousError:(id)arg1;
 - (void)addSubOperation:(id)arg1;
 - (void)addSubOperation:(id)arg1 overrideContext:(id)arg2 allowsCellularAccess:(id)arg3;
+- (void)associateCKOperationsToEventMetric:(id)arg1;
 - (void)cancel;
 - (void)completedWithResult:(id)arg1 error:(id)arg2;
 - (id)createActivity;

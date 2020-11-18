@@ -33,21 +33,25 @@
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)__shouldRemoteViewControllerFenceOperations;
 - (void)_extensionAudioAccessoryViewContextId:(unsigned int)arg1;
 - (void)_extensionDidCompleteNotificationResponse:(id)arg1 withOption:(unsigned long long)arg2;
 - (void)_extensionDidUpdateControls;
 - (void)_extensionMediaPlayingPaused;
 - (void)_extensionMediaPlayingStarted;
+- (void)_extensionRequestsDefaultAction;
 - (void)_extensionRequestsDismiss;
 - (void)_extensionRequestsToSetDismissEnabled:(BOOL)arg1;
 - (void)_extensionSetPlayPauseMediaButtonColor:(id)arg1;
 - (void)_extensionSetPlayPauseMediaButtonFrame:(struct CGRect)arg1;
 - (void)_extensionSetPlayPauseMediaButtonType:(unsigned long long)arg1;
 - (void)_extensionSetTitle:(id)arg1;
+- (void)_extensionSetUserNotificationActions:(id)arg1;
 - (void)_extensionWantsToBecomeFirstResponder:(BOOL)arg1;
 - (void)_extensionWantsToReceiveActionResponses:(BOOL)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

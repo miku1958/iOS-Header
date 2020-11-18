@@ -4,27 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <UserNotificationsServer/UNSAuthorizationAlertController.h>
 
-@class NSMutableDictionary, NSMutableSet;
-@protocol OS_dispatch_queue;
-
-@interface UNSNotificationAuthorizationAlertController : NSObject
+@interface UNSNotificationAuthorizationAlertController : UNSAuthorizationAlertController
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    NSMutableSet *_bundleIdentifersForActiveAlerts;
-    NSMutableDictionary *_bundleIdentifiersToResultBlocks;
 }
 
-- (void).cxx_destruct;
-- (void)_main_requestUserAuthorizationForBundleIdentifier:(id)arg1 displayName:(id)arg2 withResult:(CDUnknownBlockType)arg3;
-- (void)_queue_addAlertActiveForBundleIdentifier:(id)arg1;
-- (void)_queue_addResultBlock:(CDUnknownBlockType)arg1 forBundleIdentifier:(id)arg2;
-- (BOOL)_queue_isAlertActiveForBundleIdentifier:(id)arg1;
-- (void)_queue_removeAlertActiveForBundleIdentifier:(id)arg1;
-- (void)_queue_sendResponse:(long long)arg1 forBundleIdentifier:(id)arg2;
-- (id)initWithQueue:(id)arg1;
-- (void)requestAuthorizationForApplication:(id)arg1 withResult:(CDUnknownBlockType)arg2;
+- (void)presentAuthorizationAlertForBundleIdentifier:(id)arg1 displayName:(id)arg2 withResult:(CDUnknownBlockType)arg3;
 
 @end
 

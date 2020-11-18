@@ -36,6 +36,7 @@
 - (void)addTimer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)checkIn;
 - (void)dismissTimerWithIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)gatherDiagnostics;
 - (void)getTimersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleSystemReady;
 - (id)initWithStorage:(id)arg1;

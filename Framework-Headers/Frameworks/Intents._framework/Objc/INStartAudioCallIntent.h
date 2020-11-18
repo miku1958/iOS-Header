@@ -25,10 +25,19 @@
 @property (nonatomic, setter=setTTYType:) long long ttyType;
 @property (readonly, nonatomic) BOOL useSpeaker;
 
++ (id)_ignoredParameters;
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
+- (long long)_intentCategory;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (void)_setMetadata:(id)arg1;
+- (id)_spotlightContentType;
+- (id)_subtitleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
+- (BOOL)_supportsBackgroundExecution;
 - (id)_typedBackingStore;
+- (id)_validParameterCombinationsWithSchema:(id)arg1;
+- (BOOL)configureAttributeSet:(id)arg1 includingData:(BOOL)arg2;
 - (id)domain;
 - (id)initWithContacts:(id)arg1;
 - (id)initWithDestinationType:(long long)arg1 contacts:(id)arg2;

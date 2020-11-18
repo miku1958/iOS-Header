@@ -39,20 +39,21 @@
 @property (strong, nonatomic) SKTexture *texture;
 @property (strong, nonatomic) SKWarpGeometry *warpGeometry;
 
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
 + (id)spriteNodeWithColor:(id)arg1 size:(struct CGSize)arg2;
 + (id)spriteNodeWithImageNamed:(id)arg1;
 + (id)spriteNodeWithImageNamed:(id)arg1 normalMapped:(BOOL)arg2;
 + (id)spriteNodeWithTexture:(id)arg1;
 + (id)spriteNodeWithTexture:(id)arg1 normalMap:(id)arg2;
 + (id)spriteNodeWithTexture:(id)arg1 size:(struct CGSize)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
 - (BOOL)_pathFromTextureToPoints:(MISSING_TYPE ***)arg1 outSize:(unsigned long long *)arg2 accuracy:(float)arg3;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

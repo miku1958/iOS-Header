@@ -15,22 +15,22 @@
 {
     INSpeakableString *_title;
     long long _status;
-    long long _taskType;
     INSpatialEventTrigger *_spatialEventTrigger;
     INTemporalEventTrigger *_temporalEventTrigger;
     NSDateComponents *_createdDateComponents;
     NSDateComponents *_modifiedDateComponents;
     NSString *_identifier;
+    long long _taskType;
 }
 
-@property (readonly, copy) NSDateComponents *createdDateComponents; // @synthesize createdDateComponents=_createdDateComponents;
-@property (readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy) NSDateComponents *modifiedDateComponents; // @synthesize modifiedDateComponents=_modifiedDateComponents;
-@property (readonly, copy) INSpatialEventTrigger *spatialEventTrigger; // @synthesize spatialEventTrigger=_spatialEventTrigger;
-@property (readonly) long long status; // @synthesize status=_status;
-@property (readonly) long long taskType; // @synthesize taskType=_taskType;
-@property (readonly, copy) INTemporalEventTrigger *temporalEventTrigger; // @synthesize temporalEventTrigger=_temporalEventTrigger;
-@property (readonly, copy) INSpeakableString *title; // @synthesize title=_title;
+@property (readonly, copy, nonatomic) NSDateComponents *createdDateComponents; // @synthesize createdDateComponents=_createdDateComponents;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSDateComponents *modifiedDateComponents; // @synthesize modifiedDateComponents=_modifiedDateComponents;
+@property (readonly, copy, nonatomic) INSpatialEventTrigger *spatialEventTrigger; // @synthesize spatialEventTrigger=_spatialEventTrigger;
+@property (readonly, nonatomic) long long status; // @synthesize status=_status;
+@property (readonly, nonatomic) long long taskType; // @synthesize taskType=_taskType;
+@property (readonly, copy, nonatomic) INTemporalEventTrigger *temporalEventTrigger; // @synthesize temporalEventTrigger=_temporalEventTrigger;
+@property (readonly, copy, nonatomic) INSpeakableString *title; // @synthesize title=_title;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

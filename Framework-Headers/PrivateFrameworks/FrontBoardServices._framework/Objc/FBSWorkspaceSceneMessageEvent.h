@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) FBSSceneMessage *message; // @synthesize message=_message;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 

@@ -39,7 +39,7 @@
 - (void)boostFilePresenterAtURL:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)capabilityWhenTryingToReparentItemAtURL:(NSURL *)arg1 toNewParent:(NSURL *)arg2 reply:(void (^)(unsigned short, NSError *))arg3;
 - (oneway void)checkinAskClientIfUsingUbiquity:(BOOL)arg1;
-- (void)computePurgableSpaceWithUrgency:(int)arg1 reply:(void (^)(long long))arg2;
+- (void)computePurgeableSpaceForAllUrgenciesWithReply:(void (^)(NSDictionary *, NSNumber *, NSError *))arg1;
 - (void)copyBulkShareIDsAtURLs:(NSArray *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)copyCurrentUserIdentifierWithReply:(void (^)(NSString *, NSError *))arg1;
 - (void)copyCurrentUserNameAndDisplayHandleWithReply:(void (^)(NSPersonNameComponents *, NSString *, NSError *))arg1;

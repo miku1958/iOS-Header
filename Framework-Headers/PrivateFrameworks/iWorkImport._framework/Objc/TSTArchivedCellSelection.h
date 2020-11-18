@@ -8,23 +8,30 @@
 
 #import <iWorkImport/TSKArchivedSelection-Protocol.h>
 
-@class NSString, TSKSelection, TSTCellSelection;
+@class NSString, TSKSelection, TSTCellRegion, TSTCellSelection;
 
 __attribute__((visibility("hidden")))
 @interface TSTArchivedCellSelection : TSPObject <TSKArchivedSelection>
 {
-    TSTCellSelection *mCellSelection;
+    TSTCellSelection *_cellSelection;
+    BOOL _isLegacyBasedIDSelection;
+    struct TSUCellCoord _legacyAnchorCellID;
+    struct TSUCellCoord _legacyCursorCellID;
+    TSTCellRegion *_legacyCellRegion;
+    TSTCellRegion *_legacyBaseCellRegion;
+    long long _selectionType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) TSKSelection *selection; // @synthesize selection=mCellSelection;
+@property (strong, nonatomic) TSKSelection *selection;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
+- (id)selectionWithParent:(id)arg1;
 
 @end
 

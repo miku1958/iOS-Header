@@ -16,10 +16,19 @@
 {
     BOOL _didEnterTwoshot;
     BOOL _recordingDidStop;
+    BOOL _vad2SaveSamplesSeenInReset;
     id<CSEndpointAnalyzerDelegate> _endpointerDelegate;
     id<CSEndpointAnalyzerImpl> _hybridEndpointer;
     id<CSEndpointAnalyzerImpl> _vad2Endpointer;
     id<CSEndpointAnalyzerImpl> _activeEndpointer;
+    long long _vad2EndpointStyle;
+    long long _vad2EndpointtMode;
+    double _vad2StartWaitTime;
+    double _vad2EndWaitTime;
+    double _vad2InterspeechWaitTime;
+    double _vad2Delay;
+    double _vad2AutomaticEndpointingSuspensionEndTime;
+    double _vad2MinimumDurationForEndpointer;
 }
 
 @property (weak, nonatomic) id<CSEndpointAnalyzerImpl> activeEndpointer; // @synthesize activeEndpointer=_activeEndpointer;
@@ -43,9 +52,19 @@
 @property (nonatomic) BOOL saveSamplesSeenInReset;
 @property (nonatomic) double startWaitTime;
 @property (readonly) Class superclass;
+@property (nonatomic) double vad2AutomaticEndpointingSuspensionEndTime; // @synthesize vad2AutomaticEndpointingSuspensionEndTime=_vad2AutomaticEndpointingSuspensionEndTime;
+@property (nonatomic) double vad2Delay; // @synthesize vad2Delay=_vad2Delay;
+@property (nonatomic) double vad2EndWaitTime; // @synthesize vad2EndWaitTime=_vad2EndWaitTime;
+@property (nonatomic) long long vad2EndpointStyle; // @synthesize vad2EndpointStyle=_vad2EndpointStyle;
 @property (strong, nonatomic) id<CSEndpointAnalyzerImpl> vad2Endpointer; // @synthesize vad2Endpointer=_vad2Endpointer;
+@property (nonatomic) long long vad2EndpointtMode; // @synthesize vad2EndpointtMode=_vad2EndpointtMode;
+@property (nonatomic) double vad2InterspeechWaitTime; // @synthesize vad2InterspeechWaitTime=_vad2InterspeechWaitTime;
+@property (nonatomic) double vad2MinimumDurationForEndpointer; // @synthesize vad2MinimumDurationForEndpointer=_vad2MinimumDurationForEndpointer;
+@property (nonatomic) BOOL vad2SaveSamplesSeenInReset; // @synthesize vad2SaveSamplesSeenInReset=_vad2SaveSamplesSeenInReset;
+@property (nonatomic) double vad2StartWaitTime; // @synthesize vad2StartWaitTime=_vad2StartWaitTime;
 
 - (void).cxx_destruct;
+- (void)_setupVAD2Endpointer;
 - (BOOL)_shouldEnterTwoShotAtEndPointTime:(double)arg1;
 - (BOOL)_shouldUseVAD2ForTwoShot;
 - (double)elapsedTimeWithNoSpeech;

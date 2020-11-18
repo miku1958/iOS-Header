@@ -13,13 +13,11 @@
 
 @interface _SFPBLocalImage : PBCodable <_SFPBLocalImage, NSSecureCoding>
 {
-    CDStruct_1ae5a928 _has;
     int _localImageType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasLocalImageType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int localImageType; // @synthesize localImageType=_localImageType;

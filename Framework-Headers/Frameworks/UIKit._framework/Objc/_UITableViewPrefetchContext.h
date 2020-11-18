@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableIndexSet;
 
 __attribute__((visibility("hidden")))
 @interface _UITableViewPrefetchContext : NSObject
 {
+    BOOL _prefetchScheduled;
     CDUnknownBlockType _requestHandler;
     CDUnknownBlockType _cancelHandler;
     NSMutableIndexSet *_outstandingRequests;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long maxIndex; // @synthesize maxIndex=_maxIndex;
 @property (strong, nonatomic) NSMutableIndexSet *outstandingRequests; // @synthesize outstandingRequests=_outstandingRequests;
 @property (nonatomic) long long prefetchItemCount; // @synthesize prefetchItemCount=_prefetchItemCount;
+@property (nonatomic) BOOL prefetchScheduled; // @synthesize prefetchScheduled=_prefetchScheduled;
 @property (nonatomic) long long refreshPrefetchThresholdCount; // @synthesize refreshPrefetchThresholdCount=_refreshPrefetchThresholdCount;
 @property (copy, nonatomic) CDUnknownBlockType requestHandler; // @synthesize requestHandler=_requestHandler;
 
@@ -41,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)computedPrefetchIndexSet;
 - (id)description;
 - (id)initWithMaxIndex:(long long)arg1 prefetchItemCount:(long long)arg2 refreshPrefetchThresholdCount:(long long)arg3 cancelThresholdCount:(long long)arg4;
+- (void)schedulePrefetchRequestAfterNextCACommit:(id)arg1;
 - (void)updateVisibleIndexRange:(struct _NSRange)arg1 withContentOffset:(double)arg2;
 
 @end

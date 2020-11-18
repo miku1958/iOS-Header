@@ -18,32 +18,40 @@ __attribute__((visibility("hidden")))
     unsigned int _homeButtonHapticKind;
     NSData *_nanoRegistryData;
     unsigned int _version;
+    BOOL _autoUpdateEnabled;
     BOOL _findMyiPhoneOptIn;
     BOOL _locationServicesOptIn;
+    BOOL _screenTimeEnabled;
     BOOL _siriOptIn;
     struct {
         unsigned int appAnalyticsOptIn:1;
         unsigned int deviceAnalyticsOptIn:1;
         unsigned int homeButtonHapticKind:1;
+        unsigned int autoUpdateEnabled:1;
         unsigned int findMyiPhoneOptIn:1;
         unsigned int locationServicesOptIn:1;
+        unsigned int screenTimeEnabled:1;
         unsigned int siriOptIn:1;
     } _has;
 }
 
 @property (nonatomic) unsigned int appAnalyticsOptIn; // @synthesize appAnalyticsOptIn=_appAnalyticsOptIn;
+@property (nonatomic) BOOL autoUpdateEnabled; // @synthesize autoUpdateEnabled=_autoUpdateEnabled;
 @property (nonatomic) unsigned int deviceAnalyticsOptIn; // @synthesize deviceAnalyticsOptIn=_deviceAnalyticsOptIn;
 @property (nonatomic) BOOL findMyiPhoneOptIn; // @synthesize findMyiPhoneOptIn=_findMyiPhoneOptIn;
 @property (nonatomic) BOOL hasAppAnalyticsOptIn;
+@property (nonatomic) BOOL hasAutoUpdateEnabled;
 @property (nonatomic) BOOL hasDeviceAnalyticsOptIn;
 @property (nonatomic) BOOL hasFindMyiPhoneOptIn;
 @property (nonatomic) BOOL hasHomeButtonHapticKind;
 @property (nonatomic) BOOL hasLocationServicesOptIn;
 @property (readonly, nonatomic) BOOL hasNanoRegistryData;
+@property (nonatomic) BOOL hasScreenTimeEnabled;
 @property (nonatomic) BOOL hasSiriOptIn;
 @property (nonatomic) unsigned int homeButtonHapticKind; // @synthesize homeButtonHapticKind=_homeButtonHapticKind;
 @property (nonatomic) BOOL locationServicesOptIn; // @synthesize locationServicesOptIn=_locationServicesOptIn;
 @property (strong, nonatomic) NSData *nanoRegistryData; // @synthesize nanoRegistryData=_nanoRegistryData;
+@property (nonatomic) BOOL screenTimeEnabled; // @synthesize screenTimeEnabled=_screenTimeEnabled;
 @property (nonatomic) BOOL siriOptIn; // @synthesize siriOptIn=_siriOptIn;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 

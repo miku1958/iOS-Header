@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIGestureRecognizerDelegatePrivate-Protocol.h>
-#import <UIKit/UILayoutContainerViewDelegate-Protocol.h>
-#import <UIKit/_UINavigationBarDelegatePrivate-Protocol.h>
-#import <UIKit/_UIScrollViewScrollObserver-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
+#import <UIKitCore/UILayoutContainerViewDelegate-Protocol.h>
+#import <UIKitCore/_UINavigationBarDelegatePrivate-Protocol.h>
+#import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
 
 @class NSArray, NSMapTable, NSString, NSUUID, UIFocusContainerGuide, UIGestureRecognizer, UILayoutContainerView, UINavigationBar, UINavigationDeferredTransitionContext, UINavigationTransitionView, UIPanGestureRecognizer, UITapGestureRecognizer, UIToolbar, UIView, _UIAnimationCoordinator, _UIBarPanGestureRecognizer, _UIBarTapGestureRecognizer, _UINavigationControllerPalette, _UINavigationInteractiveTransition, _UINavigationParallaxTransition;
 @protocol UINavigationControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
@@ -35,7 +35,6 @@
     _UINavigationControllerPalette *_transitioningTopPalette;
     BOOL _interactiveScrollActive;
     CDStruct_ef18196a _interactiveScrollNavBarIntrinsicHeightRange;
-    double _interactiveScrollNavBarVerticalSizingPriorityHeight;
     long long _updateTopViewFramesToMatchScrollOffsetDisabledCount;
     unsigned int _pushSoundID;
     unsigned int _popSoundID;
@@ -105,6 +104,7 @@
     BOOL _hidesBarsOnSwipe;
     BOOL _hidesBarsWhenVerticallyCompact;
     BOOL _hidesBarsOnTap;
+    BOOL __positionBarsExclusivelyWithSafeArea;
     BOOL __shouldUseBuiltinAnimator;
     BOOL __usingBuiltinAnimator;
     BOOL __toolbarAnimationWasCancelled;
@@ -142,6 +142,7 @@
 @property (strong, nonatomic, setter=_setKeyboardAppearedNotificationToken:) id _keyboardAppearedNotificationToken; // @synthesize _keyboardAppearedNotificationToken=__keyboardAppearedNotificationToken;
 @property (strong, nonatomic, setter=_setNavbarAnimationId:) NSUUID *_navbarAnimationId; // @synthesize _navbarAnimationId=__navbarAnimationId;
 @property (nonatomic, setter=_setNavigationBarAnimationWasCancelled:) BOOL _navigationBarAnimationWasCancelled; // @synthesize _navigationBarAnimationWasCancelled=__navigationBarAnimationWasCancelled;
+@property (nonatomic, setter=_setPositionBarsExclusivelyWithSafeArea:) BOOL _positionBarsExclusivelyWithSafeArea; // @synthesize _positionBarsExclusivelyWithSafeArea=__positionBarsExclusivelyWithSafeArea;
 @property (nonatomic, setter=_setPreferredNavigationBarPosition:) long long _preferredNavigationBarPosition; // @synthesize _preferredNavigationBarPosition=__preferredNavigationBarPosition;
 @property (nonatomic, setter=_setSearchHidNavigationBar:) BOOL _searchHidNavigationBar;
 @property (nonatomic, setter=_setShouldUseBuiltinAnimator:) BOOL _shouldUseBuiltinAnimator; // @synthesize _shouldUseBuiltinAnimator=__shouldUseBuiltinAnimator;
@@ -320,7 +321,7 @@
 - (id)_navigationBarForNestedNavigationController;
 - (id)_navigationBarHiddenByDefault:(BOOL)arg1;
 - (BOOL)_navigationBarShouldUpdateProgress;
-- (struct CGSize)_navigationBarSizeForViewController:(id)arg1 proposedHeight:(double)arg2 verticalFittingPriority:(float)arg3 allowRubberBandStretch:(BOOL)arg4;
+- (struct CGSize)_navigationBarSizeForViewController:(id)arg1 proposedHeight:(double)arg2 allowRubberBandStretch:(BOOL)arg3;
 - (void)_navigationBarWillBeginCoordinatedTransitionAnimations:(id)arg1;
 - (void)_navigationItemDidUpdateSearchController:(id)arg1 oldSearchController:(id)arg2;
 - (id)_navigationItems;
@@ -443,6 +444,8 @@
 - (void)_startPaletteTransitionIfNecessary:(id)arg1 animated:(BOOL)arg2;
 - (void)_startToolbarTransitionIfNecessary:(id)arg1 animated:(BOOL)arg2;
 - (void)_startTransition:(int)arg1 fromViewController:(id)arg2 toViewController:(id)arg3;
+- (double)_statusBarHeightAdjustmentForCurrentOrientation;
+- (double)_statusBarHeightForCurrentInterfaceOrientation;
 - (void)_stopObservingContentScrollView:(id)arg1;
 - (void)_stopObservingContentScrollViewForViewController:(id)arg1;
 - (void)_stopTransitionsImmediately;
@@ -459,6 +462,7 @@
 - (int)_transitionForOldViewControllers:(id)arg1 newViewControllers:(id)arg2;
 - (void)_unhideNavigationBarForEdge:(unsigned long long)arg1;
 - (void)_updateBarsForCurrentInterfaceOrientation;
+- (void)_updateBarsForCurrentInterfaceOrientationAndForceBarLayout:(BOOL)arg1;
 - (void)_updateBottomBarHiddenState;
 - (void)_updateChildContentMargins;
 - (void)_updateControlledViewsToFrame:(struct CGRect)arg1;

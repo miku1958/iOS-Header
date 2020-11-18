@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithJunctionInfo:(id)arg1;
 - (id)initWithManeuverType:(int)arg1 drivingSide:(int)arg2;
 - (id)initWithStep:(id)arg1;
 

@@ -10,16 +10,16 @@
 {
 }
 
-- (id)_nameOfAddSharedAlbumPlaceholderImage;
-- (id)_nameOfEmptyAlbumPlaceholderImage;
-- (id)_nameOfEmptySharedAlbumPlaceholderImage;
-- (id)_nameOfHiddenAlbumPlaceholderImage;
-- (id)_nameOfRecentlyDeletedAlbumPlaceholderImage;
 - (long long)cellContentViewLayout;
 - (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
 - (void)configureStackViewWithGridStyle:(id)arg1;
 - (unsigned long long)folderStackViewStyle;
 - (struct CGSize)imageSize;
+- (id)nameOfAddSharedAlbumPlaceholderImage;
+- (id)nameOfEmptyAlbumPlaceholderImage;
+- (id)nameOfEmptySharedAlbumPlaceholderImage;
+- (id)nameOfHiddenAlbumPlaceholderImage;
+- (id)nameOfRecentlyDeletedAlbumPlaceholderImage;
 - (double)sectionFooterHeight;
 - (double)sectionHeaderHeight;
 - (struct UIEdgeInsets)sectionInsetsForLayoutReferenceSize:(struct CGSize)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;

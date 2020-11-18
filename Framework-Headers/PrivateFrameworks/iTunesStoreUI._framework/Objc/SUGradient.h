@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesStoreUI/NSCoding-Protocol.h>
 #import <iTunesStoreUI/NSCopying-Protocol.h>
+#import <iTunesStoreUI/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSLock, NSMutableArray;
 
-@interface SUGradient : NSObject <NSCoding, NSCopying>
+@interface SUGradient : NSObject <NSSecureCoding, NSCopying>
 {
     NSMutableArray *_colorStops;
     NSLock *_lock;
@@ -29,6 +29,7 @@
 @property (readonly) struct SUGradientPoint p1;
 
 + (id)gradientWithColor:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)addColorStopWithOffset:(double)arg1 color:(struct CGColor *)arg2;
 - (struct CGGradient *)copyCGGradient;
 - (struct CGShading *)copyShading;

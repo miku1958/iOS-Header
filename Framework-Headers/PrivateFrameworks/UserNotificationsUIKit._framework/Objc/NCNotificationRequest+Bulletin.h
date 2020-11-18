@@ -6,11 +6,12 @@
 
 #import <UserNotificationsKit/NCNotificationRequest.h>
 
-@class BBBulletin, BBObserver;
+@class BBBulletin, BBObserver, NSString;
 
 @interface NCNotificationRequest (Bulletin)
 
 @property (readonly, nonatomic) BBBulletin *bulletin;
+@property (readonly, nonatomic) NSString *contactIdentifier;
 @property (readonly, nonatomic) BBObserver *observer;
 
 + (id)_notificationRequestForBulletin:(id)arg1 observer:(id)arg2 sectionInfo:(id)arg3 feed:(unsigned long long)arg4 playLightsAndSirens:(BOOL)arg5 hasPlayLightsAndSirens:(BOOL)arg6;

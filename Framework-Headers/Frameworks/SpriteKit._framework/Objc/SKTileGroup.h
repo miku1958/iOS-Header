@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, SKTileSet;
 
-@interface SKTileGroup : NSObject <NSCopying, NSCoding>
+@interface SKTileGroup : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableArray *_rules;
     unsigned long long _type;
@@ -25,6 +25,7 @@
 @property (nonatomic) unsigned long long type;
 
 + (id)emptyTileGroup;
++ (BOOL)supportsSecureCoding;
 + (id)tileGroupWithRules:(id)arg1;
 + (id)tileGroupWithTileDefinition:(id)arg1;
 - (void).cxx_destruct;
@@ -36,6 +37,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRules:(id)arg1;
 - (id)initWithTileDefinition:(id)arg1;
+- (BOOL)isEqualToNode:(id)arg1;
 - (void)setRuleParentPointers;
 
 @end

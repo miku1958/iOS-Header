@@ -48,6 +48,9 @@
 + (id)userContext;
 - (void).cxx_destruct;
 - (void)addKeyPathsWithRegistrationsForAnyChangeFromRegistration:(id)arg1;
+- (BOOL)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3;
+- (BOOL)addObjects:(id)arg1 toArrayAtKeyPath:(id)arg2;
+- (id)cachedValueIfClientHasRegistrationsForKeyPath:(id)arg1;
 - (void)cleanupInternalReferencesToRegistration:(id)arg1;
 - (void)clearCacheForKeyPathsWithFireOnChangeRegistrations:(id)arg1;
 - (id)currentConnection;
@@ -64,7 +67,9 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)registerCallback:(id)arg1;
 - (void)removeKeyPathsWithRegistrationsForAnyChangeFromRegistration:(id)arg1;
+- (BOOL)removeObjects:(id)arg1 fromArrayAtKeyPath:(id)arg2;
 - (void)retryTimes:(int)arg1 block:(CDUnknownBlockType)arg2;
+- (void)setCachedValueIfClientHasRegistrations:(id)arg1 forKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (void)unprotectedSetUpXPCConnectionWithEndpoint:(id)arg1;

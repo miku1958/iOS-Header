@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class AVMetadataMachineReadableCodeObject;
+@class AVMetadataMachineReadableCodeObject, NSString;
 
 @interface CAMMachineReadableCodeResult : NSObject
 {
     AVMetadataMachineReadableCodeObject *_underlyingMachineReadableCodeObject;
 }
 
+@property (readonly, nonatomic) NSString *symbolString;
 @property (readonly, nonatomic) AVMetadataMachineReadableCodeObject *underlyingMachineReadableCodeObject; // @synthesize underlyingMachineReadableCodeObject=_underlyingMachineReadableCodeObject;
 
 - (void).cxx_destruct;

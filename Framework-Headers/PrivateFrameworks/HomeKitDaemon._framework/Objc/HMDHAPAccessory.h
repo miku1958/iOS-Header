@@ -8,16 +8,20 @@
 
 #import <HomeKitDaemon/HAPRelayAccessoryDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDAccessoryIdentify-Protocol.h>
+#import <HomeKitDaemon/HMDAccessoryMinimumUserPrivilegeCapable-Protocol.h>
+#import <HomeKitDaemon/HMDAccessoryUserManagement-Protocol.h>
+#import <HomeKitDaemon/HMDServiceOwner-Protocol.h>
 #import <HomeKitDaemon/HMDTimeInformationMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HAPPairingIdentity, HMDCharacteristic, HMFTimer, NSArray, NSData, NSDate, NSMapTable, NSMutableArray, NSMutableSet, NSNumber, NSSet, NSString;
+@class HMDAccessorySymptomHandler, HMDCharacteristic, HMDDataStreamController, HMDTargetControllerManager, HMFPairingIdentity, HMFTimer, NSArray, NSData, NSDate, NSMapTable, NSMutableArray, NSMutableSet, NSNumber, NSSet, NSString;
 
-@interface HMDHAPAccessory : HMDAccessory <HAPRelayAccessoryDelegate, HMDTimeInformationMonitorDelegate, HMFTimerDelegate, HMDAccessoryIdentify>
+@interface HMDHAPAccessory : HMDAccessory <HMDAccessoryMinimumUserPrivilegeCapable, HMDServiceOwner, HAPRelayAccessoryDelegate, HMDTimeInformationMonitorDelegate, HMFTimerDelegate, HMDAccessoryIdentify, HMDAccessoryUserManagement>
 {
     NSMutableArray *_transportInformationInstances;
     BOOL _relayEnabled;
     BOOL _timeInformationServiceExists;
+    BOOL _supportsTargetController;
     BOOL _keyGenerationInProgress;
     BOOL _supportsRelay;
     unsigned char _keyGenerationType;
@@ -32,6 +36,9 @@
     NSData *_broadcastKey;
     NSNumber *_keyUpdatedStateNumber;
     NSDate *_keyUpdatedTime;
+    NSArray *_targetUUIDs;
+    HMDTargetControllerManager *_targetControllerManager;
+    HMDAccessorySymptomHandler *_symptomsHandler;
     NSString *_uniqueIdentifier;
     long long _certificationStatus;
     unsigned long long _activationAttempts;
@@ -47,6 +54,7 @@
     HMFTimer *_timeInformationTimer;
     HMFTimer *_systemTimeInformationTimer;
     NSSet *_cameraProfiles;
+    HMDDataStreamController *_dataStreamController;
     NSMapTable *_serverIDToHAPAccessoryTable;
 }
 
@@ -62,10 +70,12 @@
 @property (readonly, getter=isClientRegisteredForNotifications) BOOL clientRegisteredForNotifications;
 @property (readonly, nonatomic) unsigned long long currentRelayAccessoryState; // @synthesize currentRelayAccessoryState=_currentRelayAccessoryState;
 @property (readonly, weak, nonatomic) HMDCharacteristic *currentTimeCharacteristic; // @synthesize currentTimeCharacteristic=_currentTimeCharacteristic;
+@property (strong, nonatomic) HMDDataStreamController *dataStreamController; // @synthesize dataStreamController=_dataStreamController;
 @property (readonly, weak, nonatomic) HMDCharacteristic *dayOfTheWeekCharacteristic; // @synthesize dayOfTheWeekCharacteristic=_dayOfTheWeekCharacteristic;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableArray *discoveredServices; // @synthesize discoveredServices=_discoveredServices;
+@property (readonly, copy, nonatomic) NSNumber *hapInstanceId;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *identifiersForBridgedAccessories; // @synthesize identifiersForBridgedAccessories=_identifiersForBridgedAccessories;
 @property BOOL keyGenerationInProgress; // @synthesize keyGenerationInProgress=_keyGenerationInProgress;
@@ -74,7 +84,7 @@
 @property (copy, nonatomic) NSDate *keyUpdatedTime; // @synthesize keyUpdatedTime=_keyUpdatedTime;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired;
 @property (nonatomic) unsigned long long pairingAttempts; // @synthesize pairingAttempts=_pairingAttempts;
-@property (readonly, copy, nonatomic) HAPPairingIdentity *pairingIdentity;
+@property (readonly, copy) HMFPairingIdentity *pairingIdentity;
 @property (strong, nonatomic) NSString *pairingUsername; // @synthesize pairingUsername=_pairingUsername;
 @property (strong, nonatomic) NSData *publicKey; // @synthesize publicKey=_publicKey;
 @property (nonatomic, getter=isRelayEnabled) BOOL relayEnabled; // @synthesize relayEnabled=_relayEnabled;
@@ -86,8 +96,13 @@
 @property (readonly) Class superclass;
 @property (readonly) BOOL supportsIdentify;
 @property (nonatomic) BOOL supportsRelay; // @synthesize supportsRelay=_supportsRelay;
+@property (readonly, nonatomic) BOOL supportsSiri;
+@property (readonly) BOOL supportsUserManagement;
+@property (strong, nonatomic) HMDAccessorySymptomHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
 @property (strong, nonatomic) HMFTimer *systemTimeInformationTimer; // @synthesize systemTimeInformationTimer=_systemTimeInformationTimer;
 @property (nonatomic) BOOL systemTimeNeedsUpdate; // @synthesize systemTimeNeedsUpdate=_systemTimeNeedsUpdate;
+@property (strong, nonatomic) HMDTargetControllerManager *targetControllerManager; // @synthesize targetControllerManager=_targetControllerManager;
+@property (strong, nonatomic) NSArray *targetUUIDs; // @synthesize targetUUIDs=_targetUUIDs;
 @property (readonly, nonatomic) BOOL timeInformationServiceExists; // @synthesize timeInformationServiceExists=_timeInformationServiceExists;
 @property (strong, nonatomic) HMFTimer *timeInformationTimer; // @synthesize timeInformationTimer=_timeInformationTimer;
 @property (readonly, weak, nonatomic) HMDCharacteristic *timeUpdateCharacteristic; // @synthesize timeUpdateCharacteristic=_timeUpdateCharacteristic;
@@ -98,23 +113,31 @@
 + (BOOL)supportsSecureCoding;
 + (Class)transactionClass;
 - (void).cxx_destruct;
+- (void)__updateNotifyingCharacteristicStateNumber:(id)arg1;
 - (void)_addHAPAccessory:(id)arg1;
+- (void)_autoConfigureTargetController;
+- (void)_configureTargetControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_containsSecureCharacteristic;
+- (void)_createDataStreamController:(id)arg1;
 - (unsigned long long)_currentRelayAccessoryState;
 - (id)_currentTimeCharacteristic;
 - (id)_dayOfTheWeekCharacteristic;
 - (void)_deRegisterForTimeMonitor;
 - (void)_disableNotificationsForBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_doesAccessoryProvideServiceOfType:(id)arg1;
 - (void)_enableBroadcastNotifications:(BOOL)arg1 hapAccessory:(id)arg2 forCharacteristics:(id)arg3;
 - (void)_enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 hapAccessory:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 message:(id)arg3 clientIdentifier:(id)arg4;
 - (void)_enableNotification:(BOOL)arg1 matchingHAPAccessory:(id)arg2 ignoreDeviceUnlockRequirement:(BOOL)arg3 clientIdentifier:(id)arg4 forCharacteristics:(id)arg5;
 - (BOOL)_enableNotificationOnResident:(BOOL)arg1 characteristic:(id)arg2 clientIdentifier:(id)arg3 ignoreDeviceUnlockRequirement:(BOOL)arg4;
+- (void)_evaluateLocalOperation:(long long)arg1 state:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_getSymptomHandler;
 - (void)_handleAddServiceTransaction:(id)arg1 message:(id)arg2;
 - (void)_handleCharacteristicError:(id)arg1 characteristic:(id)arg2 message:(id)arg3 read:(BOOL)arg4;
 - (void)_handleCharacteristicRead:(id)arg1;
 - (void)_handleCharacteristicWrite:(id)arg1;
 - (void)_handleCharacteristicsChangedNotification:(id)arg1;
+- (void)_handleConfigureTargets:(id)arg1;
 - (void)_handleDiscoveryBackoffTimerFired;
 - (void)_handleKeyRefreshTimerFired;
 - (void)_handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -125,6 +148,7 @@
 - (void)_logDuetEventIfNeeded:(id)arg1 clientName:(id)arg2;
 - (void)_notifyCharacteristicNotificationChangedForCharacteristic:(id)arg1 enableNotification:(BOOL)arg2 message:(id)arg3;
 - (void)_notifyCharacteristicNotificationChanges:(id)arg1 enableNotification:(BOOL)arg2 message:(id)arg3 clientIdentifier:(id)arg4;
+- (void)_notifyClientsOfTargetControlSupportUpdate;
 - (void)_notifyNotificationChangesForCharacteristics:(id)arg1 errors:(id)arg2 enableNotification:(BOOL)arg3 message:(id)arg4;
 - (void)_parseResponseFromRemotePeer:(id)arg1 message:(id)arg2 forCharacteristic:(id)arg3;
 - (void)_performOperation:(long long)arg1 linkType:(long long)arg2 operationBlock:(CDUnknownBlockType)arg3 errorBlock:(CDUnknownBlockType)arg4;
@@ -140,8 +164,12 @@
 - (void)_relayReadFromCharacteristic:(id)arg1 toResidentForMessage:(id)arg2 viaDevice:(id)arg3;
 - (void)_relayWriteToCharacteristic:(id)arg1 toResidentForMessage:(id)arg2 viaDevice:(id)arg3;
 - (void)_removeBackedoffAccessoryForStateNumber:(id)arg1;
+- (void)_removeDataStreamController:(id)arg1;
 - (void)_removeHAPAccessoryWithServerIdentifier:(id)arg1 linkType:(long long)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
+- (BOOL)_resolveAudioAbility:(id)arg1;
+- (BOOL)_resolveSupportedSiriInputType:(id)arg1;
 - (void)_retrieveStateForTrackedAccessory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_saveTargetUUIDs:(id)arg1;
 - (void)_setCurrentRelayAccessoryState:(unsigned long long)arg1;
 - (void)_setCurrentTimeCharacteristic:(id)arg1;
 - (void)_setDayOfTheWeekCharacteristic:(id)arg1;
@@ -156,6 +184,7 @@
 - (void)_startWriteTimeInformationTimer;
 - (void)_stopSystemTimeWriteTimeInformationTimer;
 - (void)_stopWriteTimeInformationTimer;
+- (BOOL)_supportsMediaAccessControl;
 - (BOOL)_timeInformationServiceExists;
 - (id)_timeUpdateCharacteristic;
 - (void)_updateAccessoryTracking;
@@ -163,6 +192,7 @@
 - (void)_updateBroadcastKey:(id)arg1 keyUpdatedStateNumber:(id)arg2 keyUpdatedTime:(double)arg3;
 - (void)_updateReachability;
 - (void)_updateRelayEnabled:(BOOL)arg1 notifyRelayManager:(BOOL)arg2;
+- (void)_updateSiriAudioFormat:(id)arg1;
 - (void)_updateStateForTrackedAccessory:(id)arg1 stateNumber:(id)arg2;
 - (void)_writeCharacteristicValues:(id)arg1 hapAccessory:(id)arg2 source:(unsigned long long)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_writeCharacteristicValues:(id)arg1 localOperationRequired:(BOOL)arg2 source:(unsigned long long)arg3 queue:(id)arg4 completionHandler:(CDUnknownBlockType)arg5 errorBlock:(CDUnknownBlockType)arg6;
@@ -176,19 +206,28 @@
 - (void)accessory:(id)arg1 didUpdateRelayState:(unsigned long long)arg2;
 - (void)accessoryDidBecomeReachable:(id)arg1;
 - (void)accessoryDidBecomeUnreachable:(id)arg1;
+- (void)acknowledgeTargetControlService:(id)arg1 active:(BOOL)arg2;
 - (void)addBridgedAccessory:(id)arg1;
+- (void)addDataStreamBulkSendListener:(id)arg1 fileType:(id)arg2;
 - (void)addRelayUser:(id)arg1 accessToken:(id)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)addTarget:(id)arg1 buttonConfiguration:(id)arg2;
 - (void)addTransportInformationInstance:(id)arg1;
 - (void)addTransportInformationInstances:(id)arg1;
+- (void)addUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)anyIPServer;
+- (void)autoConfigureTargetController;
 - (void)autoUpdateCachedCountDownCharacteristics:(id)arg1;
 - (void)backOffAccessoryForStateNumber:(id)arg1;
 - (id)backingStoreObjects:(long long)arg1;
+- (id)backingStoreTransactionWithName:(id)arg1;
+- (BOOL)canAcceptBulkSendListeners;
 - (id)characteristicsPassingTest:(CDUnknownBlockType)arg1;
 - (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
 - (void)configureBulletinNotification:(CDUnknownBlockType)arg1;
 - (id)configureService:(id)arg1;
 - (void)configureWithAccessory:(id)arg1 homeNotificationsEnabled:(BOOL)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)containsCameraService;
+- (id)createUpdateServiceTransationWithServiceUUID:(id)arg1;
 - (void)deRegisterForTimeMonitor;
 - (void)dealloc;
 - (void)disableNotificationsForBundleID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -198,17 +237,23 @@
 - (void)enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 message:(id)arg3 clientIdentifier:(id)arg4;
 - (void)enableNotification:(BOOL)arg1 ignoreDeviceUnlockRequirement:(BOOL)arg2 clientIdentifier:(id)arg3 forCharacteristics:(id)arg4;
 - (void)encodeWithCoder:(id)arg1;
+- (void)evaluateSymptomHandler;
 - (id)findCharacteristic:(id)arg1;
 - (id)findCharacteristic:(id)arg1 forService:(id)arg2;
 - (id)findCharacteristicType:(id)arg1 forServiceType:(id)arg2;
 - (id)findService:(id)arg1;
+- (id)findServiceWithServiceType:(id)arg1;
 - (id)getOrCreateServiceUpdateTransactionForKey:(id)arg1 fromDictionary:(id)arg2;
 - (id)getPrimaryHAPAccessories;
+- (void)getSupportedSiriAudioConfiguration:(CDUnknownBlockType)arg1;
 - (id)getTransportInformationArray;
 - (void)handleMultipleCharacteristicsUpdated:(id)arg1 message:(id)arg2 completionQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)handlePairedStateChange:(BOOL)arg1;
 - (void)handleRemoteGatewayNotificationRegistration:(id)arg1 enable:(BOOL)arg2 enableTime:(id)arg3;
+- (void)handleUpdatedMinimumUserPrivilege:(long long)arg1;
+- (void)handleUpdatedPassword:(id)arg1;
 - (id)hapCharacteristicWriteRequests:(id)arg1 hapAccessory:(id)arg2 hmdResponses:(id *)arg3 mapping:(id *)arg4;
+- (BOOL)hasBLELinkConnected;
 - (BOOL)hasBTLELink;
 - (BOOL)hasIPLink;
 - (id)hmdCharacteristicForInstanceId:(id)arg1;
@@ -226,6 +271,7 @@
 - (BOOL)isSecuritySessionOpen;
 - (long long)linkSpeed;
 - (void)logDuetEventIfNeeded:(id)arg1 clientName:(id)arg2;
+- (void)makeServiceNameConsistent:(id)arg1 withName:(id)arg2;
 - (BOOL)matchesHAPAccessory:(id)arg1;
 - (BOOL)matchesHAPAccessoryWithServerIdentifier:(id)arg1 linkType:(long long *)arg2;
 - (BOOL)matchesHMDAccessoryTransportInformationWithServerIdentifier:(id)arg1 instanceID:(id)arg2;
@@ -241,38 +287,52 @@
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (id)namesOfServicesShowingTilesInHomeApp;
 - (void)notifyValue:(id)arg1 previousValue:(id)arg2 error:(id)arg3 forCharacteristic:(id)arg4 requestMessage:(id)arg5;
+- (void)notifyingCharacteristicStateNumberUpdated:(id)arg1;
 - (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)performOperation:(long long)arg1 linkType:(long long)arg2 operationBlock:(CDUnknownBlockType)arg3 errorBlock:(CDUnknownBlockType)arg4;
 - (void)populateHMDCharacteristicResponses:(id)arg1 hapResponses:(id)arg2 mapping:(id)arg3 overallError:(id)arg4 requests:(id)arg5;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
 - (id)preferredHAPAccessoryForOperation:(long long)arg1 linkType:(long long *)arg2;
+- (id)primaryIPServer;
+- (BOOL)providesHashRouteID;
 - (void)reachabilityDidChange:(id)arg1;
 - (long long)reachableTransports;
 - (void)readCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)readInitialRequiredCharacteristicsForBTLEAccessory:(CDUnknownBlockType)arg1;
+- (void)registerForActiveIdentifierNotifications;
 - (void)registerForTimeMonitor;
 - (id)relayAccessory;
 - (void)removeBridgedAccessory:(id)arg1;
+- (void)removeDataStreamBulkSendListener:(id)arg1;
 - (void)removeHAPAccessoryWithServerIdentifier:(id)arg1 linkType:(long long)arg2 completion:(CDUnknownBlockType)arg3 completionQueue:(id)arg4;
 - (void)removeRelayUser:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)removeTarget:(id)arg1;
 - (void)removeTransportInformationInstance:(id)arg1;
+- (void)removeUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestResource:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resetNotificationEnabledTime;
 - (id)retrieveUpdatedTransportInfoArray:(id)arg1;
 - (void)savePublicKeyToKeychain;
+- (void)saveTargetUUIDs:(id)arg1;
+- (void)sendTargetControlWhoAmIWithIdentifier:(unsigned int)arg1;
 - (id)serviceWithUUID:(id)arg1;
 - (void)setBroadcastKey:(id)arg1 keyUpdatedStateNumber:(id)arg2 keyUpdatedTime:(id)arg3;
 - (void)setCurrentTimeCharacteristic:(id)arg1;
 - (void)setDayOfTheWeekCharacteristic:(id)arg1;
 - (void)setPairingUsername:(id)arg1 publicKey:(id)arg2;
 - (void)setReachability:(BOOL)arg1 serverIdentifier:(id)arg2 linkType:(long long)arg3;
+- (void)setSelectedSiriAudioConfiguration:(id)arg1;
 - (void)setTimeInformationServiceExists:(BOOL)arg1;
 - (void)setTimeUpdateCharacteristic:(id)arg1;
+- (BOOL)shouldConfigureTargetController;
 - (BOOL)shouldEnableDaemonRelaunch;
 - (void)startRelayActivationWithActivationClient:(id)arg1;
 - (void)startRelayPairingWithPairingClient:(id)arg1;
-- (BOOL)supportsUserManagement;
+- (BOOL)supportsMinimumUserPrivilege;
+- (BOOL)supportsTargetController;
 - (void)takeOwnershipOfAppData:(id)arg1;
+- (id)targetControllerButtonConfiguration;
+- (unsigned long long)targetControllerTicksPerSecond;
 - (void)timeInformationMonitorDidChangeTime;
 - (void)timerDidFire:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
@@ -285,8 +345,12 @@
 - (void)updateAccessoryFlags:(id)arg1;
 - (id)updateAccessoryFlagsAndNotifyClients:(id)arg1;
 - (BOOL)updateAccessoryInformation:(id)arg1;
+- (void)updateButtonConfigurationForTarget:(id)arg1;
 - (void)updateNotificationEnabled:(BOOL)arg1 forCharacteristics:(id)arg2 onBehalfOf:(id)arg3;
+- (void)updateTarget:(id)arg1 name:(id)arg2 buttonConfiguration:(id)arg3;
+- (void)updateTargetUUIDs:(id)arg1;
 - (BOOL)updateTimeInformationCharacteristicsForAccessory:(id)arg1;
+- (void)updateTrackedAccessoryStateNumber:(id)arg1;
 - (BOOL)updateTransportInformation:(id)arg1;
 - (void)verifyPairingWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)writeCharacteristicValues:(id)arg1 source:(unsigned long long)arg2 queue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

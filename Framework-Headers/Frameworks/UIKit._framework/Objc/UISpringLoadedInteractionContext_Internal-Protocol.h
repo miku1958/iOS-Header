@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UISpringLoadedInteractionContext_Private-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionContext_Private-Protocol.h>
 
 @class UIView;
 

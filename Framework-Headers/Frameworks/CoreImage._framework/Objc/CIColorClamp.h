@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 + (id)customAttributes;
 - (id)_kernel;
+- (id)_kernelAlphaPreserving;
 - (id)outputImage;
 
 @end

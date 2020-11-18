@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSHashTable, NSLock, NSNumber, NSString, NSUUID;
 @protocol OS_dispatch_queue, OS_dispatch_source;
@@ -21,6 +21,7 @@
     CDUnknownBlockType _secureElementSessionPostlude;
     NSHashTable *_observers;
     NSLock *_observersLock;
+    BOOL _registeredForHardwareUpdates;
 }
 
 @property (readonly, nonatomic) unsigned long long hardwareVersion;
@@ -37,16 +38,23 @@
 @property (copy, nonatomic) CDUnknownBlockType secureElementSessionPrelude;
 @property (readonly, nonatomic) unsigned long long supportedTechnologies;
 
++ (BOOL)hardwareSupportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 + (BOOL)hardwareSupportsExpressMode:(id)arg1;
++ (BOOL)isInFailForward;
 + (id)primarySecureElementIdentifier;
 + (id)secureElementIdentifiers;
++ (id)sharedSecureElement;
++ (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
++ (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1 byHardware:(BOOL *)arg2;
 + (BOOL)supportsExpressMode:(id)arg1;
 + (BOOL)supportsExpressMode:(id)arg1 byHardware:(BOOL *)arg2;
 - (void).cxx_destruct;
 - (void)SEPPairingInfoWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_updateHardwareManagerListener;
 - (void)allAppletsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)appletWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)connectToServerWithPushTopic:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)contactlessPaymentPassesAvailableDidChange;
 - (void)dealloc;
 - (BOOL)hasRegistrationInformation;
 - (id)init;

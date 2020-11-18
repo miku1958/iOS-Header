@@ -6,35 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, NSString;
 
 @interface CSAttributeEvaluator : NSObject
 {
     BOOL _matchOncePerTerm;
     BOOL _fuzzyMatching;
+    NSString *_queryString;
     unsigned long long _attributeTokenCount;
     unsigned long long _matcherCount;
     const void **_matchers;
     unsigned long long _queryTermCount;
     void *_tokenizer;
     NSMutableArray *_tokenizedQueryTerms;
+    NSString *_language;
     CDUnknownBlockType _handler;
 }
 
 @property (nonatomic) unsigned long long attributeTokenCount; // @synthesize attributeTokenCount=_attributeTokenCount;
 @property (nonatomic) BOOL fuzzyMatching; // @synthesize fuzzyMatching=_fuzzyMatching;
 @property (copy, nonatomic) CDUnknownBlockType handler; // @synthesize handler=_handler;
+@property (strong, nonatomic) NSString *language; // @synthesize language=_language;
 @property (nonatomic) BOOL matchOncePerTerm; // @synthesize matchOncePerTerm=_matchOncePerTerm;
 @property (nonatomic) unsigned long long matcherCount; // @synthesize matcherCount=_matcherCount;
 @property (nonatomic) const void **matchers; // @synthesize matchers=_matchers;
+@property (readonly, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (nonatomic) unsigned long long queryTermCount; // @synthesize queryTermCount=_queryTermCount;
 @property (readonly, nonatomic) NSArray *queryTerms;
 @property (strong, nonatomic) NSMutableArray *tokenizedQueryTerms; // @synthesize tokenizedQueryTerms=_tokenizedQueryTerms;
 @property (nonatomic) void *tokenizer; // @synthesize tokenizer=_tokenizer;
 
++ (void)enumerateTokensForString:(id)arg1 locale:(id)arg2 options:(unsigned long long)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 withFuzzyHandler:(CDUnknownBlockType)arg3;
+- (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 skipTranscriptions:(BOOL)arg3 withFuzzyHandler:(CDUnknownBlockType)arg4;
+- (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 skipTranscriptions:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (unsigned long long)evaluateAttribute:(id)arg1 ignoreSubtokens:(BOOL)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (id)initWithQuery:(id)arg1 language:(id)arg2 fuzzyThreshold:(unsigned char)arg3 options:(unsigned long long)arg4;
 

@@ -8,15 +8,18 @@
 
 #import <Messages/MSConversationDelegate-Protocol.h>
 #import <Messages/MSMessagesAppTranscriptPresentation-Protocol.h>
+#import <Messages/MSRootViewControllerProtocol-Protocol.h>
 
 @class MSConversation, NSString;
 @protocol _MSMessageComposeExtensionImplProtocol;
 
-@interface MSMessagesAppViewController : UIViewController <MSConversationDelegate, MSMessagesAppTranscriptPresentation>
+@interface MSMessagesAppViewController : UIViewController <MSRootViewControllerProtocol, MSConversationDelegate, MSMessagesAppTranscriptPresentation>
 {
     BOOL _isReadyForDisplay;
+    BOOL _viewHasAppeared;
     MSConversation *_activeConversation;
     id<_MSMessageComposeExtensionImplProtocol> _appContext;
+    struct CGRect _initialFrameBeforeAppearance;
 }
 
 @property (readonly, nonatomic) struct UIEdgeInsets _balloonMaskEdgeInsets;
@@ -25,17 +28,25 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGRect initialFrameBeforeAppearance; // @synthesize initialFrameBeforeAppearance=_initialFrameBeforeAppearance;
 @property (nonatomic) BOOL isReadyForDisplay; // @synthesize isReadyForDisplay=_isReadyForDisplay;
+@property (readonly, nonatomic) unsigned long long presentationContext;
 @property (readonly, nonatomic) unsigned long long presentationStyle;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL viewHasAppeared; // @synthesize viewHasAppeared=_viewHasAppeared;
 
 - (void).cxx_destruct;
 - (void)_conversation:(id)arg1 didSelectMessage:(id)arg2;
 - (void)_conversation:(id)arg1 willSelectMessage:(id)arg2;
+- (void)_didRemoveAssetArchiveWithIdentifier:(id)arg1;
+- (void)_dismissAndPresentPhotosApp;
 - (BOOL)_handleTextInputPayload:(id)arg1 withPayloadID:(id)arg2;
+- (void)_prepareForPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
 - (void)_validateMessageForSending:(id)arg1 conversation:(id)arg2 associatedText:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_validateMessageForSending:(id)arg1 conversation:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_volumeButtonPressed:(BOOL)arg1;
+- (void)contentDidLoad;
 - (struct CGSize)contentSizeThatFits:(struct CGSize)arg1;
 - (void)dealloc;
 - (void)didBecomeActiveWithConversation:(id)arg1;
@@ -52,6 +63,9 @@
 - (void)setReadyForDisplay;
 - (void)updateSnapshotWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLoad;
+- (void)viewSafeAreaInsetsDidChange;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)willBecomeActiveWithConversation:(id)arg1;
 - (void)willResignActiveWithConversation:(id)arg1;
 - (void)willSelectMessage:(id)arg1 conversation:(id)arg2;

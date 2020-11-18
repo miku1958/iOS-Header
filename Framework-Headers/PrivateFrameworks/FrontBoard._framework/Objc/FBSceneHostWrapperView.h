@@ -25,6 +25,8 @@
     NSMapTable *_layerAlphaMapTable;
     NSMutableSet *_hiddenLayers;
     unsigned long long _appearanceStyle;
+    BOOL _usingDefaultClippingDisabled;
+    BOOL _usingDefaultHostViewTransform;
     UIColor *_backgroundColorWhileNotHosting;
     UIColor *_backgroundColorWhileHosting;
     unsigned long long _hostedLayerTypes;
@@ -35,6 +37,7 @@
     BOOL _usingDefaultMinificationFilterName;
     BOOL _clippingDisabled;
     id<FBSceneHostViewDelegate> _delegate;
+    struct CGAffineTransform _hostViewTransform;
 }
 
 @property (nonatomic) unsigned long long appearanceStyle; // @synthesize appearanceStyle=_appearanceStyle;
@@ -45,17 +48,18 @@
 @property (nonatomic) id<FBSceneHostViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) NSSet *hiddenLayers; // @synthesize hiddenLayers=_hiddenLayers;
+@property (readonly, nonatomic) NSSet *hiddenLayers; // @synthesize hiddenLayers=_hiddenLayers;
 @property (strong, nonatomic) FBSceneLayerHostContainerView *hostContainerView; // @synthesize hostContainerView=_hostContainerView;
+@property (nonatomic) struct CGAffineTransform hostViewTransform; // @synthesize hostViewTransform=_hostViewTransform;
 @property (nonatomic) unsigned long long hostedLayerTypes; // @synthesize hostedLayerTypes=_hostedLayerTypes;
 @property (readonly, nonatomic, getter=isHosting) BOOL hosting;
-@property (readonly, strong, nonatomic) NSSet *hostingDisabledLayers;
+@property (readonly, nonatomic) NSSet *hostingDisabledLayers;
 @property (readonly, nonatomic) double level;
 @property (copy, nonatomic) NSString *minificationFilterName; // @synthesize minificationFilterName=_minificationFilterName;
 @property (readonly, nonatomic) struct CGRect referenceFrame;
 @property (nonatomic) unsigned long long renderingMode; // @synthesize renderingMode=_renderingMode;
 @property (readonly, copy, nonatomic) NSString *requester; // @synthesize requester=_requester;
-@property (readonly, strong, nonatomic) FBScene *scene; // @synthesize scene=_scene;
+@property (readonly, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -68,6 +72,7 @@
 - (void)_setAppearanceStyle:(unsigned long long)arg1 force:(BOOL)arg2;
 - (id)_stringForAppearanceStyle;
 - (void)_toggleBackgroundColorIfNecessary;
+- (void)_updateFrameAndTransform;
 - (unsigned long long)contextHostRenderingModeForHostContainerView:(id)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -78,6 +83,8 @@
 - (id)layerMinificationFilterNameForHostContainerView:(id)arg1;
 - (id)layersForHostContainerView:(id)arg1;
 - (void)sceneLayerManager:(id)arg1 didRepositionLayer:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
+- (void)setDefaultClippingDisabled:(BOOL)arg1;
+- (void)setDefaultHostViewTransform:(struct CGAffineTransform)arg1;
 - (void)setDefaultHostedLayerTypes:(unsigned long long)arg1;
 - (void)setDefaultMinificationFilterName:(id)arg1;
 - (void)setDefaultRenderingMode:(unsigned long long)arg1;

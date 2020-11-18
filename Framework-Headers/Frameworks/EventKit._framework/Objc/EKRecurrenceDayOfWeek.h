@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKit/NSCopying-Protocol.h>
+#import <EventKit/NSSecureCoding-Protocol.h>
 
-@interface EKRecurrenceDayOfWeek : NSObject <NSCopying>
+@interface EKRecurrenceDayOfWeek : NSObject <NSCopying, NSSecureCoding>
 {
     long long _dayOfTheWeek;
     long long _weekNumber;
@@ -19,6 +20,7 @@
 
 + (id)dayOfWeek:(long long)arg1;
 + (id)dayOfWeek:(long long)arg1 weekNumber:(long long)arg2;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

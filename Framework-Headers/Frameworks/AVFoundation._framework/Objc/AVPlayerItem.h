@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/NSCopying-Protocol.h>
 
@@ -29,9 +29,7 @@
 @property (readonly, nonatomic, getter=isContentAuthorizedForPlayback) BOOL contentAuthorizedForPlayback;
 @property (readonly, nonatomic) NSError *error;
 @property (readonly, nonatomic) NSArray *mediaDataCollectors;
-@property (copy, nonatomic) NSString *mediaKind;
 @property (readonly, nonatomic) NSArray *outputs;
-@property (nonatomic) unsigned long long restrictions;
 @property (copy, nonatomic) NSString *serviceIdentifier;
 @property (readonly, nonatomic) long long status;
 
@@ -72,27 +70,23 @@
 - (void)_addFAListeners;
 - (void)_addFPListeners;
 - (void)_addLegibleOutput:(id)arg1;
+- (void)_addLoopingTBListeners;
 - (void)_addMetadataCollector:(id)arg1;
 - (void)_addMetadataOutput:(id)arg1;
 - (void)_addSyncLayer:(id)arg1;
 - (BOOL)_addToPlayQueueOfFigPlayerOfPlayer:(id)arg1 afterFigPlaybackItemOfItem:(id)arg2;
 - (void)_addVideoOutput:(id)arg1;
 - (void)_allowSelectMediaOptionsAutomaticallyUsingFigSelectedMediaArrayObtainedFromGroup:(id)arg1;
-- (BOOL)_alwaysMonitorsPlayability;
 - (void)_applyCurrentAudioMix;
 - (void)_applyMediaSelectionOptions;
-- (void)_applySeekingWaitsForVideoCompositionRendering;
-- (void)_applyTextStyleRules;
 - (void)_attachToFigPlayer;
 - (void)_attachToPlayer:(id)arg1;
-- (id)_audioTimePitchAlgorithm;
 - (long long)_availableFileSize;
 - (void)_cacheMediaSelectionOption:(id)arg1 forMediaSelectionGroup:(id)arg2;
 - (id)_cachedTracks;
 - (BOOL)_canPlayFastForward;
 - (BOOL)_canPlayFastReverse;
 - (BOOL)_canPlayReverse;
-- (BOOL)_canPlaySlowForward;
 - (BOOL)_canStepBackward;
 - (BOOL)_canStepForward;
 - (int)_cancelPendingSeekAndRegisterSeekCompletionHandler:(CDUnknownBlockType)arg1;
@@ -100,9 +94,8 @@
 - (void)_clearCachedMediaSelectionGroup:(id)arg1;
 - (void)_configurePlaybackItem;
 - (void)_configureVideoCompositionColorProperties;
-- (BOOL)_continuesPlayingDuringPrerollForRateChange;
-- (BOOL)_continuesPlayingDuringPrerollForSeek;
 - (struct OpaqueFigPlaybackItem *)_copyFigPlaybackItem;
+- (struct OpaqueCMTimebase *)_copyLoopingTimebase;
 - (struct OpaqueCMTimebase *)_copyProxyTimebase;
 - (id)_copyStateDispatchQueue;
 - (struct OpaqueCMTimebase *)_copyTimebase;
@@ -119,7 +112,6 @@
 - (void)_figPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1 didOutputAttributedStrings:(id)arg2 nativeSampleBuffers:(id)arg3 atItemTime:(CDStruct_1b6d18a9)arg4 withLegibleOutputsDictionaryKey:(id)arg5;
 - (void)_figPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1 didOutputSampleBuffers:(id)arg2 fromTrackWithID:(int)arg3 forMetadataOutputWithDictionaryKey:(id)arg4;
 - (long long)_fileSize;
-- (CDStruct_1b6d18a9)_forwardPlaybackEndTime;
 - (id)_fpNotificationNames;
 - (BOOL)_getCachedNonForcedSubtitleEnabled:(BOOL *)arg1;
 - (BOOL)_getCachedPresentationSize:(struct CGSize *)arg1;
@@ -140,11 +132,9 @@
 - (BOOL)_isReadyForInspectionOfMediaSelectionOptions;
 - (BOOL)_isReadyForInspectionOfPresentationSize;
 - (BOOL)_isReadyForInspectionOfTracks;
-- (id)_keysAndValuesForCanPlayAndCanStepPropertiesWhenReadyToPlayWithNotificationPayload:(id)arg1;
 - (void)_kickAssetObserversIfAppropriate;
 - (id)_legibleOutputForKey:(id)arg1;
 - (id)_legibleOutputsForKeys;
-- (BOOL)_limitReadAhead;
 - (id)_loadedTimeRanges;
 - (id)_loadedTimeRangesFromFPPlaybableTimeIntervals:(id)arg1;
 - (void)_makeReadyForEnqueueingWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -155,16 +145,14 @@
 - (void)_markAsReadyForInspectionOfPresentationSize;
 - (void)_markAsReadyForInspectionOfTracks;
 - (void)_markAssetWithFigPlaybackItemAsNeedingNewTracks;
-- (CDStruct_1b6d18a9)_maximumForwardBufferDuration;
-- (id)_mediaKind;
 - (id)_mediaOptionsSelectedByClient;
 - (id)_mediaOptionsSelectedByClientForKey:(id)arg1;
 - (id)_metadataCollectors;
 - (id)_metadataOutputForKey:(id)arg1;
 - (id)_metadataOutputsForKeys;
+- (id)_nameForLogging;
 - (id)_nextItem;
 - (id)_playbackItemNotificationPayloadToError:(struct __CFDictionary *)arg1;
-- (long long)_playbackLikelyToKeepUpTrigger;
 - (id)_playbackProperties;
 - (id)_player;
 - (void)_playerChangeStatusToFailedWithError:(id)arg1;
@@ -176,42 +164,16 @@
 - (id)_previousItem;
 - (id)_propertyListForSelectedMediaOptionUsingFigSelectedMediaArrayObtainedFromGroup:(id)arg1;
 - (id)_propertyStorage;
-- (void)_quietlySetAggressivelyCachesVideoFrames:(BOOL)arg1;
-- (void)_quietlySetAlwaysMonitorsPlayability:(BOOL)arg1;
-- (void)_quietlySetBlendsVideoFrames:(BOOL)arg1;
-- (void)_quietlySetCanUseNetworkResourcesForLiveStreamingWhilePaused:(BOOL)arg1;
-- (void)_quietlySetContinuesPlayingDuringPrerollForRateChange:(BOOL)arg1;
-- (void)_quietlySetContinuesPlayingDuringPrerollForSeek:(BOOL)arg1;
 - (void)_quietlySetDecodesAllFramesDuringOrdinaryPlayback:(BOOL)arg1;
 - (void)_quietlySetEQPreset:(int)arg1;
-- (void)_quietlySetFigTimePitchAlgorithm:(struct __CFString *)arg1;
-- (void)_quietlySetForwardPlaybackEndTime:(CDStruct_1b6d18a9)arg1;
-- (void)_quietlySetImageQueueInterpolationCurve:(id)arg1;
-- (void)_quietlySetLimitReadAhead:(BOOL)arg1;
-- (void)_quietlySetMaximumForwardBufferDuration:(CDStruct_1b6d18a9)arg1;
-- (void)_quietlySetMaximumTrailingBufferDuration:(CDStruct_1b6d18a9)arg1;
-- (void)_quietlySetMediaKind:(id)arg1;
-- (void)_quietlySetMinimumIntervalForIFrameOnlyPlayback:(CDStruct_1b6d18a9)arg1;
-- (void)_quietlySetNonForcedSubtitleDisplayEnabled:(BOOL)arg1;
-- (void)_quietlySetPlaybackLikelyToKeepUpTrigger:(long long)arg1;
-- (void)_quietlySetPlaybackProperties:(id)arg1;
-- (void)_quietlySetRTCReportingFlags:(unsigned int)arg1;
-- (void)_quietlySetRestrictions:(unsigned long long)arg1;
-- (void)_quietlySetReversePlaybackEndTime:(CDStruct_1b6d18a9)arg1;
-- (void)_quietlySetReversesMoreVideoFramesInMemory:(BOOL)arg1;
 - (void)_quietlySetServiceIdentifier:(id)arg1;
-- (void)_quietlySetSoundCheckVolumeNormalization:(float)arg1;
-- (void)_quietlySetSpeedThresholdForIFrameOnlyPlayback:(float)arg1;
-- (void)_quietlySetUsesIFrameOnlyPlaybackForHighRateScaledEdits:(BOOL)arg1;
-- (void)_quietlySetUsesMinimalLatencyForVideoCompositionRendering:(BOOL)arg1;
 - (void)_quietlySetVariantIndex:(long long)arg1;
-- (void)_quietlySetVolumeAdjustment:(float)arg1;
-- (void)_quietlySetWillNeverSeekBackwardsHint:(BOOL)arg1;
 - (void)_removeFAListeners;
 - (void)_removeFPListeners;
 - (void)_removeFromItems;
 - (void)_removeFromPlayQueueOfFigPlayerOfAttachedPlayer;
 - (void)_removeLegibleOutput:(id)arg1;
+- (void)_removeLoopingTBListeners;
 - (void)_removeMediaOptionsSelectedByClient;
 - (void)_removeMetadataCollector:(id)arg1;
 - (void)_removeMetadataOutput:(id)arg1;
@@ -220,7 +182,6 @@
 - (void)_renderingSuppressionDidChangeForOutput:(id)arg1;
 - (void)_respondToBecomingReadyForBasicInspection;
 - (void)_respondToBecomingReadyForBasicInspectionWithDuration:(CDStruct_1b6d18a9)arg1;
-- (CDStruct_1b6d18a9)_reversePlaybackEndTime;
 - (id)_seekableTimeRanges;
 - (id)_seekableTimeRangesFromFPSeekableTimeIntervals:(id)arg1;
 - (void)_selectMediaOption:(id)arg1 inMediaSelectionGroup:(id)arg2 cacheIfAppropriate:(BOOL)arg3;
@@ -257,21 +218,55 @@
 - (id)_tracksFromAssetTrackIDs;
 - (id)_tracksWithFPTrackIDArray:(id)arg1 fromFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg2;
 - (void)_unregisterInvokeAndReleasePendingSeekCompletionHandlerForSeekID:(int)arg1 finished:(BOOL)arg2;
+- (void)_updateAggressivelyCachesVideoFramesOnFigPlaybackItem;
+- (void)_updateAlwaysMonitorsPlayabilityOnFigPlaybackItem;
+- (void)_updateBlendsVideoFramesOnFigPlaybackItem;
+- (void)_updateCanPlayAndCanStepPropertiesWhenReadyToPlayWithNotificationPayload:(id)arg1;
+- (void)_updateCanUseNetworkResourcesForLiveStreamingWhilePausedOnFigPlaybackItem;
+- (void)_updateContinuesPlayingDuringPrerollForRateChangeOnFigPlaybackItem;
+- (void)_updateContinuesPlayingDuringPrerollForSeekOnFigPlaybackItem;
+- (void)_updateFigTimePitchAlgorithmOnFigPlaybackItem;
+- (void)_updateForwardPlaybackEndTimeOnFigPlaybackItem;
+- (void)_updateIFramePrefetchTargetDimensionsOnFigPlaybackItem;
+- (void)_updateImageQueueInterpolationCurveOnFigPlaybackItem;
 - (void)_updateLegibleSuppressionOnFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1 basedOnOutputs:(id)arg2;
-- (void)_updatePropertyCacheAndTriggerKVOForPlayer:(id)arg1 usingKeys:(id)arg2;
+- (void)_updateLimitReadAheadOnFigPlaybackItem;
+- (void)_updateLoopTimeRangeOnFigPlaybackItem;
+- (void)_updateMaximumForwardBufferDurationOnFigPlaybackItem;
+- (void)_updateMaximumTrailingBufferDurationOnFigPlaybackItem;
+- (void)_updateMediaKindOnFigPlaybackItem;
+- (void)_updateMinimumIntervalForIFrameOnlyPlaybackOnFigPlaybackItem;
+- (void)_updateNonForcedSubtitleDisplayEnabledOnFigPlaybackItem;
+- (void)_updatePlaybackLikelyToKeepUpTriggerOnFigPlaybackItem;
+- (void)_updatePlaybackPropertiesOnFigPlaybackItem;
+- (void)_updatePreferredMaximumResolutionOnFigPlaybackItem;
+- (void)_updatePreferredPeakBitRateOnFigPlaybackItem;
+- (void)_updateRTCReportingFlagsOnFigPlaybackItem;
+- (void)_updateRestrictionsOnFigPlaybackItem;
+- (void)_updateReversePlaybackEndTimeOnFigPlaybackItem;
+- (void)_updateReversesMoreVideoFramesInMemoryOnFigPlaybackItem;
+- (void)_updateSeekingWaitsForVideoCompositionRenderingOnFigPlaybackItem;
+- (void)_updateSoundCheckVolumeNormalizationOnFigPlaybackItem;
+- (void)_updateSpeedThresholdForIFrameOnlyPlaybackOnFigPlaybackItem;
 - (void)_updateTaggedMetadataArray:(id)arg1;
+- (void)_updateTextStyleRulesOnFigPlaybackItem;
 - (void)_updateTimebase;
+- (void)_updateUsesIFrameOnlyPlaybackForHighRateScaledEditsOnFigPlaybackItem;
+- (void)_updateUsesMinimalLatencyForVideoCompositionRenderingOnFigPlaybackItem;
+- (void)_updateVideoApertureModeOnFigPlaybackItem;
+- (void)_updateVideoEnhancementModeOnFigPlaybackItem;
 - (void)_updateVideoSuppressionOnFigPlaybackItem:(struct OpaqueFigPlaybackItem *)arg1 basedOnOutputs:(id)arg2;
-- (BOOL)_usesMinimalLatencyForVideoCompositionRendering;
+- (void)_updateVolumeAdjustmentOnFigPlaybackItem;
+- (void)_updateWillNeverSeekBackwardsHintOnFigPlaybackItem;
 - (id)_videoOutputs;
 - (id)_weakReference;
 - (void)_willAccessKVOForKey:(id)arg1;
-- (BOOL)_willNeverSeekBackwardsHint;
 - (id)accessLog;
 - (void)addMediaDataCollector:(id)arg1;
 - (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
 - (void)addOutput:(id)arg1;
 - (BOOL)aggressivelyCachesVideoFrames;
+- (BOOL)aggressivelyCachesVideoFramesWasSet;
 - (BOOL)allowProgressiveResume;
 - (BOOL)allowProgressiveStartup;
 - (BOOL)allowProgressiveSwitchUp;
@@ -282,6 +277,7 @@
 - (id)audioTimePitchAlgorithm;
 - (id)automaticallyLoadedAssetKeys;
 - (BOOL)blendsVideoFrames;
+- (BOOL)blendsVideoFramesWasSet;
 - (BOOL)canPlayFastForward;
 - (BOOL)canPlayFastReverse;
 - (BOOL)canPlayReverse;
@@ -303,7 +299,6 @@
 - (BOOL)decodesAllFramesDuringOrdinaryPlayback;
 - (id)delegate;
 - (id)description;
-- (void)didChangeValueForKey:(id)arg1;
 - (CDStruct_1b6d18a9)duration;
 - (id)errorLog;
 - (void)finalize;
@@ -313,6 +308,7 @@
 - (BOOL)hasEnabledVideo;
 - (BOOL)hasVideo;
 - (id)imageQueueInterpolationCurve;
+- (BOOL)imageQueueInterpolationCurveWasSet;
 - (id)init;
 - (id)initWithAsset:(id)arg1;
 - (id)initWithAsset:(id)arg1 automaticallyLoadedAssetKeys:(id)arg2;
@@ -326,10 +322,13 @@
 - (BOOL)limitReadAhead;
 - (double)liveUpdateInterval;
 - (id)loadedTimeRanges;
+- (CDStruct_e83c9415)loopTimeRange;
 - (float)maximumBitRate;
 - (CDStruct_1b6d18a9)maximumForwardBufferDuration;
 - (CDStruct_1b6d18a9)maximumTrailingBufferDuration;
+- (id)mediaKind;
 - (CDStruct_1b6d18a9)minimumIntervalForIFrameOnlyPlayback;
+- (BOOL)minimumIntervalForIFrameOnlyPlaybackWasSet;
 - (BOOL)networkUsuallyExceedsMaxBitRate;
 - (id)playabilityMetrics;
 - (long long)playbackLikelyToKeepUpTrigger;
@@ -343,8 +342,10 @@
 - (void)removeMediaDataCollector:(id)arg1;
 - (void)removeOutput:(id)arg1;
 - (BOOL)requiresAccessLog;
+- (unsigned long long)restrictions;
 - (CDStruct_1b6d18a9)reversePlaybackEndTime;
 - (BOOL)reversesMoreVideoFramesInMemory;
+- (BOOL)reversesMoreVideoFramesInMemoryWasSet;
 - (BOOL)savesDownloadedDataToDiskWhenDone;
 - (BOOL)seekToDate:(id)arg1;
 - (BOOL)seekToDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -379,9 +380,11 @@
 - (void)setInitialDate:(id)arg1;
 - (void)setInitialEstimatedDate:(id)arg1;
 - (void)setLimitReadAhead:(BOOL)arg1;
+- (void)setLoopTimeRange:(CDStruct_e83c9415)arg1;
 - (void)setMaximumBitRate:(float)arg1;
 - (void)setMaximumForwardBufferDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setMaximumTrailingBufferDuration:(CDStruct_1b6d18a9)arg1;
+- (void)setMediaKind:(id)arg1;
 - (void)setMinimumIntervalForIFrameOnlyPlayback:(CDStruct_1b6d18a9)arg1;
 - (void)setNetworkUsuallyExceedsMaxBitRate:(BOOL)arg1;
 - (void)setNonForcedSubtitleDisplayEnabled:(BOOL)arg1;
@@ -392,6 +395,7 @@
 - (void)setPreferredPeakPresentationSize:(struct CGSize)arg1;
 - (void)setRTCReportingFlags:(unsigned int)arg1;
 - (void)setRequiresAccessLog:(BOOL)arg1;
+- (void)setRestrictions:(unsigned long long)arg1;
 - (void)setReversePlaybackEndTime:(CDStruct_1b6d18a9)arg1;
 - (void)setReversesMoreVideoFramesInMemory:(BOOL)arg1;
 - (void)setSavesDownloadedDataToDiskWhenDone:(BOOL)arg1;
@@ -405,10 +409,12 @@
 - (void)setVariantIndex:(long long)arg1;
 - (void)setVideoApertureMode:(id)arg1;
 - (void)setVideoComposition:(id)arg1;
+- (void)setVideoEnhancementMode:(id)arg1;
 - (void)setVolumeAdjustment:(float)arg1;
 - (void)setWillNeverSeekBackwardsHint:(BOOL)arg1;
 - (float)soundCheckVolumeNormalization;
 - (float)speedThresholdForIFrameOnlyPlayback;
+- (BOOL)speedThresholdForIFrameOnlyPlaybackWasSet;
 - (void)stepByCount:(long long)arg1;
 - (BOOL)suppressesAudioOnlyVariants;
 - (id)textStyleRules;
@@ -416,14 +422,15 @@
 - (id)timedMetadata;
 - (id)tracks;
 - (BOOL)usesIFrameOnlyPlaybackForHighRateScaledEdits;
+- (BOOL)usesIFrameOnlyPlaybackForHighRateScaledEditsWasSet;
 - (BOOL)usesMinimalLatencyForVideoCompositionRendering;
 - (id)valueForKeyForKVO:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 - (long long)variantIndex;
 - (id)videoApertureMode;
 - (id)videoComposition;
+- (id)videoEnhancementMode;
 - (float)volumeAdjustment;
-- (void)willChangeValueForKey:(id)arg1;
 - (BOOL)willNeverSeekBackwardsHint;
 
 @end

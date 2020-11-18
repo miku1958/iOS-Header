@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
     NSKeyValueGetter *_valueGetter;
 }
 
-+ (CDStruct_7c9a8e9f *)_proxyNonGCPoolPointer;
 - (id)_nonNilArrayValueWithSelector:(SEL)arg1;
 - (id)_proxyInitWithContainer:(id)arg1 getter:(id)arg2;
 - (void)_proxyNonGCFinalize;

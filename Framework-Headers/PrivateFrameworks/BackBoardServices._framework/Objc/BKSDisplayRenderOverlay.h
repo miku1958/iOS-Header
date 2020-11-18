@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/BKSDisplayRenderOverlayDescribing-Protocol.h>
 #import <BackBoardServices/BKSDisplayRenderOverlayDismissAction-Protocol.h>
@@ -19,7 +19,7 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic, getter=_descriptor) BKSDisplayRenderOverlayDescriptor *descriptor; // @synthesize descriptor=_descriptor;
+@property (readonly, nonatomic, getter=_descriptor) BKSDisplayRenderOverlayDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 @property (readonly, strong, nonatomic) CADisplay *display;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) long long interfaceOrientation;
@@ -32,7 +32,7 @@
 
 + (id)dismissActions;
 + (id)existingOverlayForDisplay:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)dismiss;

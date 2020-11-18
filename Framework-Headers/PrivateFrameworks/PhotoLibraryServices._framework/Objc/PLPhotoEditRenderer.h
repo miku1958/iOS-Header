@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NUBufferRenderClient, NUComposition, NUImageExportClient, NUImagePropertiesClient, NUPriority, NURenderContext, NUVideoExportClient, NUVideoPropertiesClient, PLEditSource, PLPhotoEditModel;
 
@@ -60,9 +60,12 @@
 + (BOOL)isSupportedAutoLoopRecipe:(id)arg1;
 + (id)newImageDataFromCGImage:(struct CGImage *)arg1 withCompressionQuality:(double)arg2 metadataSourceImageURL:(id)arg3 preserveRegionsInMetadata:(BOOL)arg4;
 + (void)updatePhotoEditModel:(id)arg1 fromPortraitMetadata:(id)arg2;
++ (id)whiteBalanceEnumMap;
++ (id)whiteBalanceIntToString:(unsigned long long)arg1;
++ (unsigned long long)whiteBalanceStringToInt:(id)arg1;
 - (void).cxx_destruct;
 - (void)_exportLivePhotoVideoToURL:(id)arg1 preset:(id)arg2 composition:(id)arg3 metadata:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)_generateJPEGImageDataForComposition:(id)arg1 withCompressionQuality:(double)arg2 livePhotoPairingIdentifier:(id)arg3 properties:(id)arg4 depthData:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_generateJPEGImageDataForComposition:(id)arg1 withCompressionQuality:(double)arg2 livePhotoPairingIdentifier:(id)arg3 properties:(id)arg4 depthData:(id)arg5 matte:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (id)_smartBWAdjustments;
 - (double)_smartBWBaseValueForKey:(id)arg1 defaultValue:(double)arg2;
 - (id)_smartColorAdjustments;

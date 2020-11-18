@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 
@@ -19,14 +19,14 @@
     NSString *_truncationSentinel;
 }
 
-@property (readonly, strong, nonatomic) NSString *input; // @synthesize input=_input;
-@property (readonly, strong, nonatomic) NSString *secureContent; // @synthesize secureContent=_secureContent;
-@property (readonly, strong, nonatomic) NSString *secureFormattedContent; // @synthesize secureFormattedContent=_secureFormattedContent;
-@property (readonly, strong, nonatomic) NSString *secureHeader; // @synthesize secureHeader=_secureHeader;
-@property (readonly, strong, nonatomic) NSString *truncationSentinel; // @synthesize truncationSentinel=_truncationSentinel;
+@property (readonly, nonatomic) NSString *input; // @synthesize input=_input;
+@property (readonly, nonatomic) NSString *secureContent; // @synthesize secureContent=_secureContent;
+@property (readonly, nonatomic) NSString *secureFormattedContent; // @synthesize secureFormattedContent=_secureFormattedContent;
+@property (readonly, nonatomic) NSString *secureHeader; // @synthesize secureHeader=_secureHeader;
+@property (readonly, nonatomic) NSString *truncationSentinel; // @synthesize truncationSentinel=_truncationSentinel;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithSecureHeader:(id)arg1 secureContent:(id)arg2 secureFormattedContent:(id)arg3 input:(id)arg4 truncationSentinel:(id)arg5;
 - (BOOL)isEqual:(id)arg1;

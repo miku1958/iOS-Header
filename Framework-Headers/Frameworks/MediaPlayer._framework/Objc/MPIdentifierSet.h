@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface MPIdentifierSet : NSObject <NSCopying, NSSecureCoding>
 {
@@ -18,6 +18,7 @@
     long long _syncID;
     NSString *_globalPlaylistID;
     long long _storeAdamID;
+    NSArray *_formerStoreAdamIDs;
     NSString *_socialProfileID;
     unsigned long long _storeCloudID;
     NSString *_cloudUniversalLibraryID;
@@ -38,8 +39,10 @@
 @property (copy, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
 @property (copy, nonatomic) NSString *contentItemID; // @synthesize contentItemID=_contentItemID;
 @property (nonatomic) long long deviceLibraryPersistentID; // @synthesize deviceLibraryPersistentID=_deviceLibraryPersistentID;
+@property (copy, nonatomic) NSArray *formerStoreAdamIDs; // @synthesize formerStoreAdamIDs=_formerStoreAdamIDs;
 @property (copy, nonatomic) NSString *globalPlaylistID; // @synthesize globalPlaylistID=_globalPlaylistID;
 @property (nonatomic) long long homeSharingLibraryID; // @synthesize homeSharingLibraryID=_homeSharingLibraryID;
+@property (readonly, nonatomic) NSString *humanDescription;
 @property (copy, nonatomic) NSString *informalMediaClipID; // @synthesize informalMediaClipID=_informalMediaClipID;
 @property (copy, nonatomic) NSString *informalStaticAssetID; // @synthesize informalStaticAssetID=_informalStaticAssetID;
 @property (copy, nonatomic) NSString *lyricsID; // @synthesize lyricsID=_lyricsID;
@@ -59,13 +62,13 @@
 + (id)emptyIdentifierSet;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)appendIdentifiersToDescription:(id)arg1 withIdentifiersPrefix:(id)arg2;
 - (id)copyWithBlock:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasCommonIdentifierWithIdentifierSet:(id)arg1;
 - (unsigned long long)hash;
+- (id)identifierDescriptions;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

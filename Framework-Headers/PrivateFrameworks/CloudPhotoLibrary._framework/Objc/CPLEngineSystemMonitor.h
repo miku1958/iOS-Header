@@ -8,35 +8,58 @@
 
 #import <CloudPhotoLibrary/CPLEngineComponent-Protocol.h>
 #import <CloudPhotoLibrary/CPLNetworkWatcherDelegate-Protocol.h>
+#import <CloudPhotoLibrary/_CPLScheduledOverrideDelegate-Protocol.h>
 
-@class CPLEngineLibrary, CPLNetworkWatcher, NSString, NSURL;
+@class CPLEngineLibrary, CPLNetworkWatcher, NSMutableDictionary, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
-@interface CPLEngineSystemMonitor : NSObject <CPLNetworkWatcherDelegate, CPLEngineComponent>
+@interface CPLEngineSystemMonitor : NSObject <CPLNetworkWatcherDelegate, _CPLScheduledOverrideDelegate, CPLEngineComponent>
 {
+    BOOL _closed;
     NSURL *_volumeURL;
     NSObject<OS_dispatch_queue> *_queue;
     CPLNetworkWatcher *_watcher;
+    BOOL _modifyingBudgetOverride;
+    unsigned long long _newBudgetsToOverride;
+    unsigned long long _newBudgetsToStopOverriding;
+    NSMutableDictionary *_reasonsToOverrideSystemBudget;
+    NSMutableDictionary *_scheduledOverrides;
+    BOOL _allowOperationsBoost;
+    BOOL _allowBackgroundOperationsBoost;
     CPLEngineLibrary *_engineLibrary;
 }
 
+@property (readonly) BOOL canBoostBackgroundOperations;
+@property (readonly) BOOL canBoostOperations;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) unsigned long long diskPressureState;
+@property (readonly) unsigned long long diskPressureState;
 @property (readonly, weak, nonatomic) CPLEngineLibrary *engineLibrary; // @synthesize engineLibrary=_engineLibrary;
-@property (readonly, nonatomic) unsigned long long freeDiskSpaceSize;
+@property (readonly) unsigned long long freeDiskSpaceSize;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isNetworkConnected;
-@property (readonly, nonatomic) BOOL isOnCellularOrUnknown;
+@property (readonly) BOOL isDataBudgetOverriden;
+@property (readonly) BOOL isNetworkConnected;
+@property (readonly) BOOL isOnCellularOrUnknown;
 @property (readonly) Class superclass;
 
++ (id)descriptionForBudget:(unsigned long long)arg1;
++ (id)descriptionForBudgets:(unsigned long long)arg1;
++ (void)enumerateSystemBudgets:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (void)_startOverridingBudget:(unsigned long long)arg1 reason:(id)arg2;
+- (void)_stopOverridingBudget:(unsigned long long)arg1 reason:(id)arg2;
+- (void)_withSystemBudgetOverride:(CDUnknownBlockType)arg1;
 - (void)closeAndDeactivate:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)componentName;
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithEngineLibrary:(id)arg1;
-- (void)networkStateDidChangeForNetworkWatched:(id)arg1;
+- (void)networkStateDidChangeForNetworkWatcher:(id)arg1;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)scheduledOverrideDidEnd:(id)arg1;
+- (void)startOverridingSystemBudgets:(unsigned long long)arg1 reason:(id)arg2;
+- (void)startOverridingSystemBudgetsForClient:(unsigned long long)arg1;
+- (void)stopOverridingSystemBudgets:(unsigned long long)arg1 reason:(id)arg2;
+- (void)stopOverridingSystemBudgetsForClient:(unsigned long long)arg1;
 
 @end
 

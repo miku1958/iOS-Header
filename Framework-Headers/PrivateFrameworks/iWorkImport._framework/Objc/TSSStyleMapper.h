@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSKStyleMapper-Protocol.h>
 
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) TSSStylesheet *targetStylesheet;
 
+- (void).cxx_destruct;
 - (id)_mappedStyleForStyle:(id)arg1 depth:(unsigned long long)arg2;
 - (id)createRootStyleForStyle:(id)arg1 withPropertyMap:(id)arg2;
 - (void)dealloc;

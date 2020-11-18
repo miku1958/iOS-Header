@@ -9,11 +9,13 @@
 @interface PHContentEditingInputRequestOptions : NSObject
 {
     BOOL _networkAccessAllowed;
+    BOOL _dontAllowRAW;
     CDUnknownBlockType _canHandleAdjustmentData;
     CDUnknownBlockType _progressHandler;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType canHandleAdjustmentData; // @synthesize canHandleAdjustmentData=_canHandleAdjustmentData;
+@property (nonatomic) BOOL dontAllowRAW; // @synthesize dontAllowRAW=_dontAllowRAW;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 

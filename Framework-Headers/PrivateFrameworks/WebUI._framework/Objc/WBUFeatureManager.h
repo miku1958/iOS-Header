@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, ACAccountStore;
+@class ACAccount, ACAccountStore, RMManagementState;
 @protocol OS_dispatch_queue;
 
 @interface WBUFeatureManager : NSObject
@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_internalQueue;
     ACAccountStore *_accountStore;
     ACAccount *_account;
+    RMManagementState *_managementState;
     BOOL _autoFillAvailable;
     BOOL _bookmarksAvailable;
     BOOL _readingListAvailable;
@@ -22,6 +23,7 @@
     BOOL _inMemoryBookmarkChangeTrackingAvailable;
 }
 
+@property (readonly, nonatomic, getter=isAirDropPasswordsAvailable) BOOL airDropPasswordsAvailable;
 @property (readonly, nonatomic, getter=isAutoFillAvailable) BOOL autoFillAvailable; // @synthesize autoFillAvailable=_autoFillAvailable;
 @property (readonly, nonatomic, getter=isBookmarksAvailable) BOOL bookmarksAvailable; // @synthesize bookmarksAvailable=_bookmarksAvailable;
 @property (readonly, nonatomic, getter=isCloudHistorySyncAvailable) BOOL cloudHistorySyncAvailable;
@@ -31,9 +33,9 @@
 @property (readonly, nonatomic, getter=isCreditCardStorageAvailable) BOOL creditCardStorageAvailable;
 @property (readonly, nonatomic, getter=isInMemoryBookmarkChangeTrackingAvailable) BOOL inMemoryBookmarkChangeTrackingAvailable; // @synthesize inMemoryBookmarkChangeTrackingAvailable=_inMemoryBookmarkChangeTrackingAvailable;
 @property (readonly, nonatomic, getter=isOfflineReadingListAvailable) BOOL offlineReadingListAvailable; // @synthesize offlineReadingListAvailable=_offlineReadingListAvailable;
-@property (readonly, nonatomic, getter=isParsecITunesResultsAvailable) BOOL parsecITunesResultsAvailable;
 @property (readonly, nonatomic, getter=isPrivateBrowsingAvailable) BOOL privateBrowsingAvailable;
 @property (readonly, nonatomic, getter=isReadingListAvailable) BOOL readingListAvailable; // @synthesize readingListAvailable=_readingListAvailable;
+@property (readonly, nonatomic, getter=isUserRemotelyManagedAndLocallyRestricted) BOOL userRemotelyManagedAndLocallyRestricted;
 
 + (long long)accessLevel;
 + (id)webui_sharedFeatureManager;
@@ -44,6 +46,7 @@
 - (void)_updateAppleAccount;
 - (void)_updateFeatureAvailabilityByAccessLevel;
 - (void)dealloc;
+- (void)determineIfPrivateBrowsingIsAvailableWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 
 @end

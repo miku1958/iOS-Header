@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryiPhone.h>
+#import <UIKitCore/UIKBRenderFactoryiPhone.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryiPad : UIKBRenderFactoryiPhone
@@ -17,10 +17,12 @@ __attribute__((visibility("hidden")))
 - (void)_customizePopupTraits:(id)arg1 forKey:(id)arg2 onKeyplane:(id)arg3;
 - (void)_customizeSymbolStyle:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderingContext:(id)arg3 keycapsFontName:(id)arg4;
+- (BOOL)_onLeftSide:(id)arg1 onKeyplane:(id)arg2;
 - (double)_row4ControlSegmentWidthLeft;
 - (double)_row4ControlSegmentWidthRight;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (double)bottomRowDefaultFontSize;
+- (id)capslockKeyImageName;
 - (double)cornerRadiusForKey:(id)arg1;
 - (double)defaultPathWeight;
 - (struct CGSize)defaultVariantGeometrySize;
@@ -59,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)multitapCompleteKeyImageName;
 - (id)muttitapReverseKeyImageName;
 - (double)predictiveKeyCornerRadius;
+- (id)returnKeyImageName;
 - (struct CGPoint)returnKeyOffset;
 - (double)returnKeySymbolFrameInset;
 - (long long)rowLimitForKey:(id)arg1;
@@ -79,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)stringKeyOffset;
 - (BOOL)supportsInputTraits:(id)arg1 forKeyplane:(id)arg2;
 - (double)symbolFrameInset;
+- (id)tabKeyImageName;
 - (id)thinKeycapsFontName;
 - (double)tinyPunctuationGlyphFontSize;
 - (struct CGPoint)tinyPunctuationGlyphOffset;

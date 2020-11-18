@@ -12,7 +12,8 @@
 
 @interface CRKComposedView : UIView <CRKComposableView>
 {
-    NSMutableArray *_cardSectionSubviews;
+    NSMutableArray *_mutableCardSectionSubviews;
+    NSArray *_cardSectionSubviews;
 }
 
 @property (readonly, nonatomic) struct UIEdgeInsets cardSectionContentMargins;
@@ -26,6 +27,7 @@
 - (void)addCardSectionSubview:(id)arg1 withKeyline:(long long)arg2;
 - (void)cardSectionSubviewWantsToBeRemovedFromHierarchy:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

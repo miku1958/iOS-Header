@@ -17,6 +17,7 @@
 - (oneway void)getInstalledOfflineLanguagesWithCompletion:(void (^)(NSArray *))arg1;
 - (oneway void)preheat;
 - (oneway void)preheatWithRecordDeviceIdentifier:(NSString *)arg1;
+- (oneway void)recordAWDSuccessMetrics;
 - (oneway void)recordFailureMetricsForError:(NSError *)arg1;
 - (oneway void)requestOfflineDictationSupportForLanguage:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)sendSpeechCorrectionInfo:(AFSpeechCorrectionInfo *)arg1 forCorrectionContext:(NSDictionary *)arg2;

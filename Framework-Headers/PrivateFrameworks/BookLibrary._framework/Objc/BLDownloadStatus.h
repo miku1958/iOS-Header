@@ -12,6 +12,7 @@
 
 @interface BLDownloadStatus : NSObject <NSCopying>
 {
+    BOOL _isAudiobook;
     BOOL _isRestore;
     BOOL _isSample;
     BOOL _isPurchase;
@@ -42,6 +43,7 @@
 @property (nonatomic) long long downloadPhase; // @synthesize downloadPhase=_downloadPhase;
 @property (strong, nonatomic) NSNumber *estimatedTimeRemaining; // @synthesize estimatedTimeRemaining=_estimatedTimeRemaining;
 @property (copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
+@property (nonatomic) BOOL isAudiobook; // @synthesize isAudiobook=_isAudiobook;
 @property (nonatomic) BOOL isPurchase; // @synthesize isPurchase=_isPurchase;
 @property (nonatomic) BOOL isRestore; // @synthesize isRestore=_isRestore;
 @property (nonatomic) BOOL isSample; // @synthesize isSample=_isSample;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -101,6 +101,7 @@
 + (BOOL)supportsSecureCoding;
 - (const void *)__CFObject;
 - (BOOL)__removeAnimation:(id)arg1 forKey:(id)arg2;
+- (id)__shadableHelper;
 - (void)_copyAnimationsFrom:(id)arg1;
 - (void)_copyAttributes:(id)arg1;
 - (void)_customDecodingOfSCNMaterial:(id)arg1;
@@ -134,6 +135,7 @@
 - (id)copy;
 - (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
 - (id)copyAnimationChannelForKeyPath:(id)arg1 property:(id)arg2;
+- (void)copyShaderModifiersFrom:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)customMaterialAttributeNames;
 - (id)customMaterialAttributes;
@@ -162,6 +164,7 @@
 - (id)presentationMaterial;
 - (id)properties;
 - (void)removeAllAnimations;
+- (void)removeAllBindings;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;

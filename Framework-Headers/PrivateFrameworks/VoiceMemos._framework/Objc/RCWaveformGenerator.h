@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSHashTable, NSMutableArray, NSOperationQueue, RCExtAudioFilePipe;
+@class NSError, NSHashTable, NSMutableArray, RCExtAudioFilePipe;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface RCWaveformGenerator : NSObject
@@ -14,14 +14,12 @@
     long long _state;
     NSObject<OS_dispatch_semaphore> *_digestPausedSemaphore;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_notificationQueue;
     double _totalDigestedTime;
     double _totalFlushedTime;
     NSHashTable *_weakObservers;
     NSMutableArray *_internalFinishedLoadingBlockUUIDs;
     NSMutableArray *_internalFinishedLoadingBlocks;
     RCExtAudioFilePipe *_activeExtAudioFile;
-    NSOperationQueue *_loadingQueue;
     struct PowerMeter _samplePowerMeter;
     BOOL _isSampleRateKnown;
     vector_7584168e _powerLevelBuffer;
@@ -50,30 +48,31 @@
 - (void).cxx_destruct;
 - (void)_appendAveragePowerLevel:(float)arg1;
 - (void)_appendAveragePowerLevelsByDigestingTimeRange:(CDStruct_73a5d3ca)arg1 inExtAudioFile:(id)arg2 sourceFormat:(struct AudioStreamBasicDescription *)arg3 outputFormat:(struct AudioStreamBasicDescription *)arg4;
-- (void)_appendAveragePowerLevelsByDigestingWaveformSegments:(id)arg1;
-- (void)_appendPowerMeterValuesFromDataInAudioFile:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
+- (BOOL)_appendAveragePowerLevelsByDigestingWaveformSegments:(id)arg1;
+- (void)_appendPowerMeterValuesFromAudioPCMBuffer:(id)arg1;
+- (BOOL)_appendPowerMeterValuesFromDataInAudioFile:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (void)_appendPowerMeterValuesFromSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
-- (void)_finishLoadingByTerminating:(BOOL)arg1 loadingFinishedBlockTimeoutDate:(id)arg2 loadingFinishedBlock:(CDUnknownBlockType)arg3;
-- (BOOL)_isCanceled;
-- (void)_onLoadingQueue_appendPowerMeterValuesFromRawAudioData:(void *)arg1 frameCount:(long long)arg2 format:(const struct AudioStreamBasicDescription *)arg3 isPredigest:(BOOL)arg4;
-- (void)_onLoadingQueue_appendSegment:(id)arg1;
-- (void)_onLoadingQueue_digestAveragePowerLevel:(float)arg1;
-- (void)_onLoadingQueue_flushRemainingData;
-- (void)_onLoadingQueue_flushWaveformSegment:(id)arg1;
-- (void)_onLoadingQueue_flushWithNextSegmentWithEndTime:(double)arg1 isPredigest:(BOOL)arg2;
-- (void)_onLoadingQueue_pushAveragePowerLevel:(float)arg1;
 - (void)_onQueue_appendAveragePowerLevelsByDigestingTimeRange:(CDStruct_73a5d3ca)arg1 inExtAudioFile:(id)arg2 sourceFormat:(struct AudioStreamBasicDescription *)arg3 outputFormat:(struct AudioStreamBasicDescription *)arg4;
-- (void)_performInternalFinishedLoadingBlocksAndFinishObservers;
-- (void)_performLoadingFinishedBlock:(CDUnknownBlockType)arg1 internalBlockUUID:(id)arg2 isTimeout:(BOOL)arg3;
-- (void)_performObserversBlock:(CDUnknownBlockType)arg1;
+- (void)_onQueue_appendPowerMeterValuesFromRawAudioData:(void *)arg1 frameCount:(long long)arg2 format:(const struct AudioStreamBasicDescription *)arg3 isPredigest:(BOOL)arg4;
+- (void)_onQueue_appendSegment:(id)arg1;
+- (void)_onQueue_digestAveragePowerLevel:(float)arg1;
+- (void)_onQueue_flushRemainingData;
+- (void)_onQueue_flushWaveformSegment:(id)arg1;
+- (void)_onQueue_flushWithNextSegmentWithEndTime:(double)arg1 isPredigest:(BOOL)arg2;
+- (void)_onQueue_performInternalFinishedLoadingBlocksAndFinishObservers;
+- (void)_onQueue_performLoadingFinishedBlock:(CDUnknownBlockType)arg1 internalBlockUUID:(id)arg2 isTimeout:(BOOL)arg3;
+- (void)_onQueue_performObserversBlock:(CDUnknownBlockType)arg1;
+- (void)_onQueue_pushAveragePowerLevel:(float)arg1;
 - (void)addSegmentOutputObserver:(id)arg1;
 - (BOOL)appendAveragePowerLevel:(float)arg1;
+- (BOOL)appendAveragePowerLevelsByDigestingAudioPCMBuffer:(id)arg1;
 - (BOOL)appendAveragePowerLevelsByDigestingContentsOfAudioFileURL:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (BOOL)appendAveragePowerLevelsByDigestingSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (BOOL)appendAveragePowerLevelsByDigestingWaveform:(id)arg1;
 - (BOOL)appendAveragePowerLevelsByDigestingWaveformSegments:(id)arg1;
+- (void)async_finishLoadingByTerminating:(BOOL)arg1 loadingFinishedBlockTimeout:(unsigned long long)arg2 loadingFinishedBlock:(CDUnknownBlockType)arg3;
 - (void)beginLoading;
-- (void)finishLoadingWithCompletionTimeoutDate:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)flushPendingCapturedSampleBuffers;
 - (id)init;
 - (id)initWithSamplingParametersFromGenerator:(id)arg1;
@@ -81,8 +80,6 @@
 - (void)removeSegmentOutputObserver:(id)arg1;
 - (id)synchronouslyApproximateWaveformForAVContentURL:(id)arg1 byReadingCurrentFileAheadTimeRange:(CDStruct_73a5d3ca)arg2;
 - (void)terminateLoadingImmediately;
-- (double)totalDigestedTime;
-- (double)totalFlushedTime;
 
 @end
 

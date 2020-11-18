@@ -7,13 +7,15 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBNote-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields, _INPBDataString, _INPBDateTime;
+@class NSArray, NSString, _INPBDataString, _INPBDateTime;
 
-@interface _INPBNote : PBCodable <NSCopying>
+@interface _INPBNote : PBCodable <_INPBNote, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_contents;
+    struct _has;
+    NSArray *_contents;
     _INPBDateTime *_createdDateTime;
     _INPBDataString *_groupName;
     NSString *_identifier;
@@ -21,32 +23,31 @@
     _INPBDataString *_title;
 }
 
-@property (strong, nonatomic) NSMutableArray *contents; // @synthesize contents=_contents;
+@property (copy, nonatomic) NSArray *contents; // @synthesize contents=_contents;
+@property (readonly, nonatomic) unsigned long long contentsCount;
 @property (strong, nonatomic) _INPBDateTime *createdDateTime; // @synthesize createdDateTime=_createdDateTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDataString *groupName; // @synthesize groupName=_groupName;
 @property (readonly, nonatomic) BOOL hasCreatedDateTime;
 @property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasModifiedDateTime;
 @property (readonly, nonatomic) BOOL hasTitle;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) _INPBDateTime *modifiedDateTime; // @synthesize modifiedDateTime=_modifiedDateTime;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBDataString *title; // @synthesize title=_title;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (Class)contentType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addContent:(id)arg1;
 - (void)clearContents;
 - (id)contentAtIndex:(unsigned long long)arg1;
-- (unsigned long long)contentsCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

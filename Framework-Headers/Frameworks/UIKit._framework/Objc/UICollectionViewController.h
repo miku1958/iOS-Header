@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UICollectionViewDataSource-Protocol.h>
-#import <UIKit/UICollectionViewDelegate-Protocol.h>
-#import <UIKit/UICollectionViewFocusDelegate_Legacy-Protocol.h>
-#import <UIKit/UIViewControllerPreviewingDelegate-Protocol.h>
-#import <UIKit/UIViewControllerPreviewingDelegate_Deprecated-Protocol.h>
-#import <UIKit/_UIKeyboardAutoRespondingScrollViewController-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewFocusDelegate_Legacy-Protocol.h>
+#import <UIKitCore/UIViewControllerPreviewingDelegate-Protocol.h>
+#import <UIKitCore/UIViewControllerPreviewingDelegate_Deprecated-Protocol.h>
+#import <UIKitCore/_UIKeyboardAutoRespondingScrollViewController-Protocol.h>
 
 @class NSString, UIAutoRespondingScrollViewControllerKeyboardSupport, UICollectionView, UICollectionViewLayout, UILongPressGestureRecognizer, UIScrollView;
 @protocol _UIKeyboardAutoRespondingScrollView;

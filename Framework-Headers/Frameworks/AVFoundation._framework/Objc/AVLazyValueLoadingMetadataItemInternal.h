@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVMetadataItemValueRequest, NSError, NSMutableArray, NSString;
 @protocol NSObject><NSCopying, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVLazyValueLoadingMetadataItemInternal : NSObject
 {
     id<NSObject><NSCopying> value;

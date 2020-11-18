@@ -81,9 +81,11 @@
 - (id)initWithPid:(int)arg1 nodes:(struct _VMUBlockNode *)arg2 nodeCount:(unsigned int)arg3 zoneNames:(id)arg4 classInfoMap:(id)arg5 regions:(id)arg6 pthreadOffsets:(id)arg7 userMarked:(void *)arg8;
 - (id)labelForNode:(unsigned int)arg1;
 - (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;
+- (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2 showLeakedVMregions:(BOOL)arg3;
 - (id)nodeDescription:(unsigned int)arg1;
 - (id)nodeDescription:(unsigned int)arg1 withDestinationNode:(unsigned int)arg2 referenceInfo:(CDStruct_8b65991f)arg3;
 - (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2;
+- (id)nodeDescription:(unsigned int)arg1 withOffset:(unsigned long long)arg2 showLabel:(BOOL)arg3;
 - (id)nodeOffsetDescription:(CDStruct_8b65991f)arg1 withSourceNode:(unsigned int)arg2 destinationNode:(unsigned int)arg3;
 - (unsigned int)nodeReferencedFromDataRegion:(id)arg1 byGlobalSymbol:(id)arg2;
 - (struct _VMURange)rangeForSymbolName:(id)arg1 inRegion:(id)arg2;
@@ -100,7 +102,7 @@
 - (void)setRegionSymbolName:(id)arg1 forRange:(struct _VMURange)arg2;
 - (void)setThreadName:(id)arg1 forRange:(struct _VMURange)arg2;
 - (void)setUserMarked:(void *)arg1;
-- (id)shortLabelForMallocNode:(unsigned int)arg1;
+- (id)shortLabelForNode:(unsigned int)arg1;
 - (id)shortNodeDescription:(unsigned int)arg1;
 - (id)threadNameForAddress:(unsigned long long)arg1;
 - (id)vmuVMRegionForAddress:(unsigned long long)arg1;

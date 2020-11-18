@@ -4,41 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class TSCECalculationEngine, TSCERewriteTableIDInfo;
+@class TSCECalculationEngine, TSCERewriteTableUIDInfo;
 
 __attribute__((visibility("hidden")))
 @interface TSCEFormulaRewriteContext : NSObject
 {
-    unsigned char _rewriteFlags;
-    BOOL _preserveHostCell;
-    BOOL _containsBadRef;
-    BOOL _sawBadRefWithUidTracts;
-    BOOL _tableSizeGrowing;
-    struct TSUCellCoord _containingCellCoord;
+    struct vector<TSCEFormulaRewriteContextRecord, std::__1::allocator<TSCEFormulaRewriteContextRecord>> _contextStack;
     TSCECalculationEngine *_calcEngine;
-    TSCERewriteTableIDInfo *_tableIdHistory;
-    CDStruct_945081a1 _fromOffset;
-    UUIDData_5fbc143e _containingTableUID;
-    UUIDData_5fbc143e _resolverTableUID;
+    TSCERewriteTableUIDInfo *_tableUIDHistory;
 }
 
 @property (strong, nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
-@property (nonatomic) struct TSUCellCoord containingCellCoord; // @synthesize containingCellCoord=_containingCellCoord;
-@property (nonatomic) UUIDData_5fbc143e containingTableUID; // @synthesize containingTableUID=_containingTableUID;
-@property (nonatomic) BOOL containsBadRef; // @synthesize containsBadRef=_containsBadRef;
-@property (nonatomic) CDStruct_945081a1 fromOffset; // @synthesize fromOffset=_fromOffset;
-@property (nonatomic) BOOL preserveHostCell; // @synthesize preserveHostCell=_preserveHostCell;
-@property (nonatomic) UUIDData_5fbc143e resolverTableUID; // @synthesize resolverTableUID=_resolverTableUID;
-@property (nonatomic) unsigned char rewriteFlags; // @synthesize rewriteFlags=_rewriteFlags;
-@property (nonatomic) BOOL sawBadRefWithUidTracts; // @synthesize sawBadRefWithUidTracts=_sawBadRefWithUidTracts;
-@property (strong, nonatomic) TSCERewriteTableIDInfo *tableIdHistory; // @synthesize tableIdHistory=_tableIdHistory;
-@property (nonatomic) BOOL tableSizeGrowing; // @synthesize tableSizeGrowing=_tableSizeGrowing;
+@property (nonatomic) struct TSCEFormulaContainingCell containingCell;
+@property (nonatomic) struct TSUCellCoord containingCellCoord;
+@property (readonly, nonatomic) UUIDData_5fbc143e containingTableUID;
+@property (nonatomic) BOOL containsBadRef;
+@property (nonatomic) CDStruct_1ef3fb1f fromOffset;
+@property (nonatomic) BOOL hostCellOverridesTableID;
+@property (nonatomic) BOOL isRangeRef;
+@property (nonatomic) BOOL preserveHostCell;
+@property (nonatomic) UUIDData_5fbc143e resolverTableUID;
+@property (nonatomic) BOOL restoreBadRefs;
+@property (nonatomic) BOOL tableSizeGrowing;
+@property (strong, nonatomic) TSCERewriteTableUIDInfo *tableUIDHistory; // @synthesize tableUIDHistory=_tableUIDHistory;
+@property (nonatomic) BOOL useOnlyActiveTract;
 
 - (id).cxx_construct;
-- (void)dealloc;
-- (id)initWithCalcEngine:(id)arg1 containingTable:(const UUIDData_5fbc143e *)arg2 containingCell:(struct TSUCellCoord)arg3 rewriteFlags:(unsigned char)arg4;
+- (void).cxx_destruct;
+- (id)initWithCalcEngine:(id)arg1 containingCell:(const struct TSCEFormulaContainingCell *)arg2;
+- (id)initWithCalcEngine:(id)arg1 containingCellRef:(const struct TSCECellRef *)arg2;
 - (void)resetOutputs;
 
 @end

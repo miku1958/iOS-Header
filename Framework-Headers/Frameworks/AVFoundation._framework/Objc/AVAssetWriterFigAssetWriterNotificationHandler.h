@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVWeakReference;
 @protocol AVAssetWriterFigAssetWriterNotificationHandlerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterFigAssetWriterNotificationHandler : NSObject
 {
     struct OpaqueFigAssetWriter *_figAssetWriter;

@@ -10,8 +10,8 @@
 {
 }
 
++ (id)allTypes;
 + (id)allergyRecordType;
-- (Class)dataObjectClass;
 
 @end
 

@@ -24,6 +24,7 @@
 - (void)setCompositingBordersVisibleWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 visible:(BOOL)arg3;
 - (void)setEmulatedMediaWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 media:(NSString *)arg3;
 - (void)setShowPaintRectsWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 result:(BOOL)arg3;
+- (void)setShowRulersWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(void))arg2 result:(BOOL)arg3;
 - (void)snapshotNodeWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 nodeId:(int)arg3;
 - (void)snapshotRectWithErrorCallback:(void (^)(NSString *))arg1 successCallback:(void (^)(NSString *))arg2 x:(int)arg3 y:(int)arg4 width:(int)arg5 height:(int)arg6 coordinateSystem:(long long)arg7;
 @end

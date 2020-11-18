@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMSharedUtilities/IMRemoteObjectCoding-Protocol.h>
 #import <IMSharedUtilities/NSCopying-Protocol.h>
@@ -31,6 +31,7 @@
     unsigned long long _sortID;
     NSString *_destinationCallerID;
     NSDate *_clientSendTime;
+    NSString *_personCentric;
     long long _cloudKitSyncState;
     NSString *_cloudKitRecordID;
     NSData *_cloudKitServerChangeTokenBlob;
@@ -59,6 +60,8 @@
 @property (readonly, nonatomic) BOOL isLastMessageCandidate;
 @property (nonatomic, setter=_setMessageID:) long long messageID; // @synthesize messageID=_messageID;
 @property (copy, nonatomic) NSString *parentChatID; // @synthesize parentChatID=_parentChatID;
+@property (strong, nonatomic) NSString *personCentric; // @synthesize personCentric=_personCentric;
+@property (strong, nonatomic) NSString *personCentricID;
 @property (strong, nonatomic) NSString *roomName; // @synthesize roomName=_roomName;
 @property (strong, nonatomic) NSString *sender;
 @property (strong, nonatomic) NSDictionary *senderInfo; // @synthesize senderInfo=_senderInfo;

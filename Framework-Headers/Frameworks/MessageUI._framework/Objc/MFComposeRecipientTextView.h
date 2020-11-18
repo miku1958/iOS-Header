@@ -40,10 +40,12 @@
     BOOL _separatorHidden;
     BOOL _expanded;
     BOOL _didIgnoreFirstResponderResign;
+    BOOL _showsAddButtonWhenExpanded;
     int _hideLastAtomComma;
     UIFont *_baseFont;
     long long _maxRecipients;
     UIButton *_addButton;
+    UIColor *_typingTextColor;
     _MFAtomTextAttachment *_placeholderAttachment;
     UIView *_atomContainerView;
 }
@@ -68,9 +70,11 @@
 @property (strong, nonatomic) _MFAtomTextAttachment *placeholderAttachment; // @synthesize placeholderAttachment=_placeholderAttachment;
 @property (copy, nonatomic) NSArray *recipients;
 @property (nonatomic, getter=isSeparatorHidden) BOOL separatorHidden; // @synthesize separatorHidden=_separatorHidden;
+@property (nonatomic) BOOL showsAddButtonWhenExpanded; // @synthesize showsAddButtonWhenExpanded=_showsAddButtonWhenExpanded;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *text;
 @property (readonly, nonatomic) UITextView *textView;
+@property (strong, nonatomic) UIColor *typingTextColor; // @synthesize typingTextColor=_typingTextColor;
 @property (readonly, copy, nonatomic) NSArray *uncommentedAddresses;
 
 + (id)defaultFont;
@@ -81,6 +85,7 @@
 - (id)_atomAttachmentForRecipient:(id)arg1;
 - (unsigned long long)_atomPresentationOptionsForRecipient:(id)arg1;
 - (id)_atomViewAtCharacterIndex:(unsigned long long)arg1;
+- (id)_baseAttributes;
 - (void)_beginAtomViewAnimations;
 - (BOOL)_canAddAdditionalAtoms;
 - (BOOL)_delegateRespondsToSizeChange;
@@ -112,6 +117,7 @@
 - (void)_tapGestureRecognized:(id)arg1;
 - (id)_textContainerExclusionPathsWithAddButton:(BOOL)arg1;
 - (BOOL)_textViewContainsAtomizedRecipients;
+- (void)_updateAddButtonVisibility;
 - (void)_updateInactiveTextView;
 - (BOOL)_useRightToLeftLayout;
 - (id)_userEnteredTextWithRange:(struct _NSRange *)arg1;

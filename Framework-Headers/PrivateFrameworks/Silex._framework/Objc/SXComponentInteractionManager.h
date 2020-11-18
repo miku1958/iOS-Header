@@ -47,6 +47,7 @@
 - (void)handleInteraction:(id)arg1 withType:(unsigned long long)arg2;
 - (void)handleLongPressGesture:(id)arg1;
 - (void)handleTapGesture:(id)arg1;
+- (BOOL)hasInteractionForLocation:(struct CGPoint)arg1;
 - (id)initWithInteractionHandlerManager:(id)arg1 viewport:(id)arg2;
 - (id)previewViewControllerForLocation:(struct CGPoint)arg1;
 - (void)toggleHighlightForComponentView:(id)arg1;

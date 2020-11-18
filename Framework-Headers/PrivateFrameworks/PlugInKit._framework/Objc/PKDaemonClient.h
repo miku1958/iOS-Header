@@ -21,7 +21,7 @@
 
 + (id)convertToXPC:(id)arg1 version:(unsigned long long)arg2;
 - (void).cxx_destruct;
-- (void)accessPlugIns:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)accessPlugIns:(id)arg1 synchronously:(BOOL)arg2 flags:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)addPlugIns:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)bulkPlugins:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)bulkSetPluginAnnotations:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -33,12 +33,13 @@
 - (void)holdPlugins:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithServiceName:(const char *)arg1;
 - (void)matchPlugIns:(id)arg1 flags:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)readyPlugIns:(id)arg1 flags:(unsigned long long)arg2 environment:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)readyPlugIns:(id)arg1 synchronously:(BOOL)arg2 flags:(unsigned long long)arg3 environment:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)releaseHold:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)removePlugIns:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)request:(const char *)arg1;
 - (id)request:(const char *)arg1 paths:(id)arg2;
 - (void)send:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)sendSynchronously:(BOOL)arg1 request:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)set:(id)arg1 plugins:(id)arg2;
 - (void)set:(id)arg1 uuids:(id)arg2;
 - (void)setPluginAnnotations:(id)arg1 annotations:(id)arg2 reply:(CDUnknownBlockType)arg3;

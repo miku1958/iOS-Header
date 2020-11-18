@@ -6,27 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class CLKUIMmapFile, EAGLContext, NSBundle, NSMutableArray, NSMutableDictionary;
+@class CLKDevice, CLKUIMmapFile, EAGLContext, NSBundle, NSMutableArray, NSMutableDictionary;
 
 @interface NTKCharacterResourceLoader : NSObject
 {
+    CLKDevice *_device;
     EAGLContext *_context;
     NSBundle *_bundle;
     unsigned long long _clients;
     CLKUIMmapFile *_commonBankLatn;
     CLKUIMmapFile *_commonBankArab;
+    CLKUIMmapFile *_commonBankDeva;
     CLKUIMmapFile *_minnieBank;
     CLKUIMmapFile *_mickeyBank;
     struct NTKCharacterPrograms _programs;
     NSMutableDictionary *_mapping;
     NSMutableArray *_array;
-    NSMutableArray *_arrayByLocale[2];
+    NSMutableArray *_arrayByLocale[3];
 }
 
 @property (readonly, nonatomic) EAGLContext *context; // @synthesize context=_context;
 
-+ (void)_deallocInstance;
-+ (id)sharedInstance;
++ (void)_deallocInstanceForDevice:(id)arg1;
++ (id)sharedInstanceForDevice:(id)arg1;
 - (void).cxx_destruct;
 - (void)_asyncDeallocInstance;
 - (id)_loadBank:(id)arg1 toArrays:(unsigned long long)arg2 allowNewKeys:(BOOL)arg3;
@@ -36,7 +38,7 @@
 - (void)bindProgram:(unsigned long long)arg1;
 - (void)bindTexture:(id)arg1;
 - (void)dealloc;
-- (id)init;
+- (id)initForDevice:(id)arg1;
 - (void)localeChanged;
 - (void)prime;
 - (unsigned int)programUniformLocation:(unsigned long long)arg1 uniform:(int)arg2;

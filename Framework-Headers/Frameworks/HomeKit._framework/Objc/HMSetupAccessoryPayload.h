@@ -8,7 +8,7 @@
 
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString, NSURL;
+@class HMAccessoryCategory, NSNumber, NSString, NSURL;
 
 @interface HMSetupAccessoryPayload : NSObject <NSSecureCoding>
 {
@@ -25,6 +25,7 @@
 }
 
 @property (strong, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
+@property (readonly, nonatomic) HMAccessoryCategory *category;
 @property (strong, nonatomic) NSNumber *categoryNumber; // @synthesize categoryNumber=_categoryNumber;
 @property (strong, nonatomic) NSNumber *flags; // @synthesize flags=_flags;
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;

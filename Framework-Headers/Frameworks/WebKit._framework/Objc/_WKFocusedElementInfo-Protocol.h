@@ -11,6 +11,8 @@
 
 @protocol _WKFocusedElementInfo <NSObject>
 
+@property (readonly, copy, nonatomic) NSString *label;
+@property (readonly, copy, nonatomic) NSString *placeholder;
 @property (readonly, nonatomic) long long type;
 @property (readonly, nonatomic, getter=isUserInitiated) BOOL userInitiated;
 @property (readonly, nonatomic) NSObject<NSSecureCoding> *userObject;

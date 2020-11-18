@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVContentKeyRequestInternal, NSData, NSError;
 
@@ -20,14 +20,17 @@
 @property (readonly) long long status;
 
 + (id)_mergePreloadingRequestOptions:(id)arg1 withCreateKeyRequestOptions:(id)arg2;
++ (int)_prepareCryptor:(struct OpaqueFigCPECryptor *)arg1 forRenewal:(BOOL)arg2 andReturnKeyRequestID:(unsigned long long *)arg3;
 + (void)_validateHLSEncryptionMethod:(id)arg1;
 + (void)_validateProtocolVersionList:(id)arg1;
 - (BOOL)_canRespondByRequestingPersistableContentKeyRequest;
 - (void)_clearContext;
-- (void)_copyAndStoreCryptorProperties;
+- (void)_copyAndStoreCryptorUUID;
 - (void)_ensureResponseInfoSentToCustomURLHandler;
+- (int)_extractAndStoreDefualtKeyIDFromInitializationData:(id)arg1;
 - (id)_getRetryReasonForError:(int)arg1;
 - (void)_handleKeyResponseError:(id)arg1;
+- (void)_handleKeyResponseSuccess;
 - (id)_keySystem;
 - (int)_prepareForKeyRenewal;
 - (void)_sendDataToCustomURLHandler:(id)arg1;

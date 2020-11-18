@@ -24,12 +24,18 @@
 
 + (id)albumsGridEdgeInsetsInterpolator;
 + (id)albumsGridItemWidthInterpolator;
++ (id)allLayoutMetricConfigurationSizes;
++ (struct CGSize)bestItemSizeForAvailableWidth:(double)arg1 screenScale:(double)arg2 columns:(unsigned long long)arg3 bestSpacing:(double *)arg4 bestInset:(double *)arg5;
 + (id)layoutMarginWidthInterpolator;
++ (id)legacyLayoutMarginWidthInterpolator;
 + (id)memoriesDetailsEdgeInsetsInterpolator;
 + (id)memoriesFeedInteritemSpacingInterpolator;
 + (id)memoriesFeedLandscapeEdgeInsetsInterpolator;
 + (id)memoriesFeedPortraitEdgeInsetsInterpolator;
 + (id)memoriesItemWidthInterpolator;
++ (unsigned long long)photosGridLayoutColumnsForWidth:(double)arg1;
++ (long long)photosGridSizeSubclassForScreenSize:(struct CGSize)arg1;
++ (struct CGSize)zoomableGridLayoutSmallItemSizeForWidth:(double)arg1;
 - (void).cxx_destruct;
 - (void)_getReferenceValueForMetric:(double)arg1 exactMatch:(id *)arg2 closestBeforeMatch:(id *)arg3 closestAfterMatch:(id *)arg4;
 - (void)_invalidateReferenceValuesByMetricsOrder;

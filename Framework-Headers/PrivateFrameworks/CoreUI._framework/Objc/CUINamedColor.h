@@ -6,14 +6,19 @@
 
 #import <CoreUI/CUINamedLookup.h>
 
+@class NSString;
+
 @interface CUINamedColor : CUINamedLookup
 {
     struct CGColor *_cgColor;
     long long _displayGamut;
+    NSString *_colorName;
 }
 
 @property (readonly, nonatomic) struct CGColor *cgColor; // @synthesize cgColor=_cgColor;
 @property (readonly, nonatomic) long long displayGamut; // @synthesize displayGamut=_displayGamut;
+@property (readonly, nonatomic) BOOL substituteWithSystemColor;
+@property (readonly, nonatomic) NSString *systemColorName;
 
 - (struct CGColorSpace *)_colorSpaceWithID:(long long)arg1;
 - (struct CGColor *)cgColorCreateCopyWithColorSpaceID:(long long)arg1;

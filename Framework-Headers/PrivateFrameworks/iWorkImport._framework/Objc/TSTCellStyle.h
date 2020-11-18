@@ -14,18 +14,19 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (id)categoriesCellProperties;
 + (id)cellDiffProperties;
-+ (void)initDefaultPropertyMap:(id)arg1 forTableArea:(unsigned long long)arg2 presetID:(unsigned long long)arg3 colors:(id)arg4 alternate:(int)arg5;
++ (void)initDefaultPropertyMap:(id)arg1 forTableStyleArea:(unsigned long long)arg2 presetID:(unsigned long long)arg3 colors:(id)arg4 alternate:(int)arg5;
 + (id)nonEmphasisCellProperties;
 + (void)p_initBodyRegionPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3 alternate:(int)arg4;
 + (void)p_initFooterRowRegionPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3 alternate:(int)arg4;
 + (void)p_initHeaderColumnRegionPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3 alternate:(int)arg4;
 + (void)p_initHeaderRowRegionPropertyMap:(id)arg1 presetID:(unsigned long long)arg2 colors:(id)arg3 alternate:(int)arg4;
++ (id)p_regionStringForTableStyleArea:(unsigned long long)arg1;
 + (id)properties;
 + (id)propertiesAllowingNSNull;
-+ (id)regionStringForTableArea:(unsigned long long)arg1;
-+ (id)styleIDForPreset:(unsigned long long)arg1 andTableArea:(unsigned long long)arg2;
-+ (id)textStyleIDForPreset:(unsigned long long)arg1 andTableArea:(unsigned long long)arg2;
++ (id)styleIDForPreset:(unsigned long long)arg1 andTableStyleArea:(unsigned long long)arg2;
++ (id)textStyleIDForPreset:(unsigned long long)arg1 andTableStyleArea:(unsigned long long)arg2;
 - (void)loadCellStyleFromArchive:(const struct CellStyleArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadCellStylePropertiesIntoPropertyMap:(id)arg1 fromArchive:(const struct CellStylePropertiesArchive *)arg2 unarchiver:(id)arg3;
 - (void)loadFromUnarchiver:(id)arg1;

@@ -20,6 +20,7 @@
     BOOL _createResponseReceived;
 }
 
+- (void).cxx_destruct;
 - (void)_dispatchBlockAfterProcessLaunch:(CDUnknownBlockType)arg1;
 - (void)_handleDidUpdateSettings:(id)arg1 withDiff:(id)arg2 transitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_handleInvalidationWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

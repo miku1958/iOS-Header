@@ -15,6 +15,7 @@
 
 @optional
 - (void)previewController:(RCPreviewController *)arg1 playbackTimeDidUpdateToCurrentTime:(double)arg2;
+- (void)previewController:(RCPreviewController *)arg1 playbackTimeDidUpdateToCurrentTime:(double)arg2 didJumpTime:(BOOL)arg3;
 - (void)previewControllerDidChangePreparingState:(RCPreviewController *)arg1;
 @end
 

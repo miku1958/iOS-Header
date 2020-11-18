@@ -4,23 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <Widgets/WGExplanatoryView.h>
 
-@class UILabel, UITapGestureRecognizer;
-
-@interface _WGBrokenWidgetView : UIView
+@interface _WGBrokenWidgetView : WGExplanatoryView
 {
-    UILabel *_label;
-    UITapGestureRecognizer *_tapGesture;
 }
 
-+ (void)_configureLabelForCurrentGraphicsQuality:(id)arg1;
-- (void).cxx_destruct;
-- (void)_backgroundContrastDidChange:(id)arg1;
-- (void)addTarget:(id)arg1 action:(SEL)arg2;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
 
 @end
 

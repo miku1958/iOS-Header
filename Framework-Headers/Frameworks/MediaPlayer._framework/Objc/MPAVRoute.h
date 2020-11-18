@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
@@ -19,6 +19,9 @@
     long long _displayRouteType;
     MPAVBatteryLevel *_batteryLevel;
     BOOL _canAccessRemoteAssets;
+    BOOL _canPlayEncryptedProgressiveDownloadAssets;
+    BOOL _canFetchMediaDataFromSender;
+    BOOL _presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
     BOOL _pickedOnPairedDevice;
     BOOL _playingOnPairedDevice;
     BOOL _requiresPassword;
@@ -47,6 +50,8 @@
 @property (readonly, nonatomic, getter=isBeatsStudioRoute) BOOL beatsStudioRoute;
 @property (readonly, nonatomic, getter=isBeatsXRoute) BOOL beatsXRoute;
 @property (readonly, nonatomic) BOOL canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
+@property (readonly, nonatomic) BOOL canFetchMediaDataFromSender; // @synthesize canFetchMediaDataFromSender=_canFetchMediaDataFromSender;
+@property (readonly, nonatomic) BOOL canPlayEncryptedProgressiveDownloadAssets; // @synthesize canPlayEncryptedProgressiveDownloadAssets=_canPlayEncryptedProgressiveDownloadAssets;
 @property (readonly, nonatomic, getter=isCarplayRoute) BOOL carplayRoute; // @synthesize carplayRoute=_carplayRoute;
 @property (readonly, nonatomic) MPAVRouteConnection *connection; // @synthesize connection=_connection;
 @property (readonly, nonatomic) NSString *designatedGroupLeaderName;
@@ -64,6 +69,7 @@
 @property (readonly, nonatomic, getter=isPlayingOnPairedDevice) BOOL playingOnPairedDevice; // @synthesize playingOnPairedDevice=_playingOnPairedDevice;
 @property (readonly, nonatomic) NSString *playingPairedDeviceName; // @synthesize playingPairedDeviceName=_playingPairedDeviceName;
 @property (readonly, nonatomic, getter=isPowerbeatsRoute) BOOL powerbeatsRoute;
+@property (readonly, nonatomic) BOOL presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets; // @synthesize presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets=_presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 @property (readonly, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (readonly, nonatomic, getter=isProxyGroupPlayer) BOOL proxyGroupPlayer;
 @property (readonly, nonatomic) BOOL requiresPassword; // @synthesize requiresPassword=_requiresPassword;

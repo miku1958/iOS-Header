@@ -11,7 +11,9 @@
 }
 
 - (void)_observeOtherSetting:(unsigned long long)arg1 withBlock:(CDUnknownBlockType)arg2;
+- (void)observeAudioCategoriesDisablingVolumeHUDWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeBackgroundStyleWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeBrightnessLevelWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeCompatibilityModeWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeControlCenterAmbiguousActivationMargin:(CDUnknownBlockType)arg1;
 - (void)observeControlCenterRevealModeWithBlock:(CDUnknownBlockType)arg1;
@@ -34,6 +36,7 @@
 - (void)observeStatusBarStyleWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeSupportedInterfaceOrientationsWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeUserInterfaceStyleWithBlock:(CDUnknownBlockType)arg1;
+- (void)observeVisibleMiniAlertCountWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeWantsExclusiveForegroundWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeWhitePointAdaptivityStyleWithBlock:(CDUnknownBlockType)arg1;
 - (void)observeWindowOverlayInsetsWithBlock:(CDUnknownBlockType)arg1;

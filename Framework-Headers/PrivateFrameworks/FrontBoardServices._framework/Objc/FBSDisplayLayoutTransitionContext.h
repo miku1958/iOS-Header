@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
@@ -22,7 +22,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *transitionReason; // @synthesize transitionReason=_transitionReason;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

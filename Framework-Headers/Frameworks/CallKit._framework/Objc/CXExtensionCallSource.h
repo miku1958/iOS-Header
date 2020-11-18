@@ -23,7 +23,6 @@
 - (void).cxx_destruct;
 - (void)beginWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)bundle;
-- (id)displayName;
 - (id)identifier;
 - (id)init;
 - (id)initWithExtension:(id)arg1;

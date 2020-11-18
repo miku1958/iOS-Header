@@ -14,11 +14,15 @@
 {
     double _weight;
     struct CGSize _size;
+    struct CGRect _preferredCropRect;
+    struct CGRect _acceptableCropRect;
 }
 
+@property (readonly, nonatomic) struct CGRect acceptableCropRect; // @synthesize acceptableCropRect=_acceptableCropRect;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) struct CGRect preferredCropRect; // @synthesize preferredCropRect=_preferredCropRect;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double weight; // @synthesize weight=_weight;

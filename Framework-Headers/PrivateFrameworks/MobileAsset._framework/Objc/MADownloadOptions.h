@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MobileAsset/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSString;
 
 @interface MADownloadOptions : NSObject <NSSecureCoding>
 {
@@ -17,16 +17,19 @@
     BOOL _discretionary;
     long long _timeoutIntervalForResource;
     NSMutableDictionary *_additionalServerParams;
+    NSString *_sessionId;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *additionalServerParams; // @synthesize additionalServerParams=_additionalServerParams;
 @property (nonatomic) BOOL allowsCellularAccess; // @synthesize allowsCellularAccess=_allowsCellularAccess;
 @property (nonatomic) BOOL canUseLocalCacheServer; // @synthesize canUseLocalCacheServer=_canUseLocalCacheServer;
 @property (nonatomic) BOOL discretionary; // @synthesize discretionary=_discretionary;
+@property (strong, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;
 @property (nonatomic) long long timeoutIntervalForResource; // @synthesize timeoutIntervalForResource=_timeoutIntervalForResource;
 
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

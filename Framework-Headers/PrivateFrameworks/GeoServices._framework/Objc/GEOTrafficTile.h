@@ -32,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (void)clearTrafficSegments;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (CDStruct_912cb5d2 *)createUnpackedVerticesWithGutterSize:(long long)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

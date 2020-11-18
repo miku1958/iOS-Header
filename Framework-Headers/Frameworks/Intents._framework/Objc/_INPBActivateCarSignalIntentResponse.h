@@ -7,31 +7,30 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBActivateCarSignalIntentResponse-Protocol.h>
 
-@class PBUnknownFields;
+@class NSString;
 
-@interface _INPBActivateCarSignalIntentResponse : PBCodable <NSCopying>
+@interface _INPBActivateCarSignalIntentResponse : PBCodable <_INPBActivateCarSignalIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _signals;
+    struct _has;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int *signals;
 @property (readonly, nonatomic) unsigned long long signalsCount;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
-- (void).cxx_destruct;
 - (int)StringAsSignals:(id)arg1;
 - (void)addSignals:(int)arg1;
 - (void)clearSignals;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setSignals:(int *)arg1 count:(unsigned long long)arg2;
 - (id)signalsAsString:(int)arg1;

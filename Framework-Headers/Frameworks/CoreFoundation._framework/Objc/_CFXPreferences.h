@@ -8,6 +8,7 @@
 
 @protocol OS_xpc_object;
 
+__attribute__((visibility("hidden")))
 @interface _CFXPreferences : NSObject
 {
     struct __CFDictionary *_sources;
@@ -34,7 +35,6 @@
 - (void)assertEquivalence:(BOOL)arg1 ofIdentifiers:(struct __CFArray *)arg2 containers:(struct __CFArray *)arg3 cloudConfigurationURLs:(struct __CFArray *)arg4;
 - (void)assertEquivalence:(BOOL)arg1 ofIdentifiers:(struct __CFArray *)arg2 users:(struct __CFArray *)arg3 hosts:(struct __CFArray *)arg4 containers:(struct __CFArray *)arg5 managedFlags:(struct __CFArray *)arg6 cloudFlags:(struct __CFArray *)arg7;
 - (BOOL)canLookUpAgents;
-- (void)cancelObservationConnection;
 - (void *)copyAppValueForKey:(struct __CFString *)arg1 identifier:(struct __CFString *)arg2 container:(struct __CFString *)arg3 configurationURL:(struct __CFURL *)arg4;
 - (struct __CFString *)copyDescriptionOfSearchLists;
 - (struct __CFDictionary *)copyDictionaryForApp:(struct __CFString *)arg1 withContainer:(struct __CFString *)arg2;
@@ -42,7 +42,6 @@
 - (struct __CFDictionary *)copyDictionaryForVolatileSourceWithName:(struct __CFString *)arg1;
 - (struct __CFArray *)copyKeyListForIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 host:(struct __CFString *)arg3 container:(struct __CFString *)arg4;
 - (struct __CFDictionary *)copyManagedValuesForKeys:(struct __CFArray *)arg1 identifier:(struct __CFString *)arg2 useSystemContainer:(BOOL)arg3;
-- (id)copyObservationConnection;
 - (void *)copyValueForKey:(struct __CFString *)arg1 identifier:(struct __CFString *)arg2 user:(struct __CFString *)arg3 host:(struct __CFString *)arg4 container:(struct __CFString *)arg5;
 - (struct __CFDictionary *)copyValuesForKeys:(struct __CFArray *)arg1 identifier:(struct __CFString *)arg2 user:(struct __CFString *)arg3 host:(struct __CFString *)arg4 container:(struct __CFString *)arg5;
 - (void)dealloc;
@@ -56,6 +55,7 @@
 - (void)ingestVolatileStateFromPreferences:(id)arg1;
 - (id)init;
 - (void)notifyOfImpendingDeletionOfUser:(struct __CFString *)arg1;
+- (void)preloadAppValuesForIdentifiers:(const struct __CFString **)arg1 containers:(const struct __CFString **)arg2 configurationURLs:(const struct __CFURL **)arg3 count:(long long)arg4;
 - (void)registerDefaultValues:(struct __CFDictionary *)arg1;
 - (void)registerUserDefaultsInstance:(id)arg1 configurationURL:(struct __CFURL *)arg2;
 - (void)removeSuite:(struct __CFString *)arg1 fromApp:(struct __CFString *)arg2 withContainer:(struct __CFString *)arg3;
@@ -71,7 +71,7 @@
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2 appIdentifier:(struct __CFString *)arg3 container:(struct __CFString *)arg4 configurationURL:(struct __CFURL *)arg5;
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2 identifier:(struct __CFString *)arg3 user:(struct __CFString *)arg4 host:(struct __CFString *)arg5 container:(struct __CFString *)arg6;
 - (void)setValuesForKeys:(struct __CFDictionary *)arg1 removingValuesForKeys:(struct __CFArray *)arg2 identifier:(struct __CFString *)arg3 user:(struct __CFString *)arg4 host:(struct __CFString *)arg5 container:(struct __CFString *)arg6;
-- (CDUnion_f9025cb3 *)shmemForRole:(int)arg1 name:(const char *)arg2;
+- (_Atomic unsigned int *)shmemForRole:(int)arg1 name:(const char *)arg2;
 - (void)synchronizeEverything;
 - (unsigned char)synchronizeIdentifier:(struct __CFString *)arg1 user:(struct __CFString *)arg2 host:(struct __CFString *)arg3 container:(struct __CFString *)arg4;
 - (void)unregisterUserDefaultsInstance:(id)arg1;

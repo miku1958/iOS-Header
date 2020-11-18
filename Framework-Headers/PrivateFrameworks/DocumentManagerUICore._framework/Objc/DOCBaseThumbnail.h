@@ -17,7 +17,7 @@
 {
     BOOL _representativeIcon;
     BOOL _needsUpdate;
-    unsigned int _qos_queue;
+    BOOL _isInteractive;
     DOCThumbnailCache *_cache;
     double _scale;
     id<DOCThumbnail> _fallback;
@@ -35,12 +35,12 @@
 @property (strong, nonatomic) id<DOCThumbnail> fallback; // @synthesize fallback=_fallback;
 @property (readonly) BOOL hasFinishedTryingToFetchCorrectThumbnail;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInteractive; // @synthesize isInteractive=_isInteractive;
 @property (readonly, nonatomic) BOOL isRepresentativeIcon;
 @property (readonly, nonatomic) NSHashTable *listeners; // @synthesize listeners=_listeners;
 @property (readonly, nonatomic, getter=isLoading) BOOL loading;
 @property (readonly, nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property (readonly, nonatomic) NSOperation *operation; // @synthesize operation=_operation;
-@property (readonly, nonatomic) unsigned int qos_queue; // @synthesize qos_queue=_qos_queue;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) BOOL representativeIcon; // @synthesize representativeIcon=_representativeIcon;
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
@@ -52,9 +52,9 @@
 
 - (void).cxx_destruct;
 - (void)addListener:(id)arg1;
-- (id)createOperationWithSize:(struct CGSize)arg1 scale:(double)arg2 style:(unsigned long long)arg3;
+- (id)createOperationWithSize:(struct CGSize)arg1 scale:(double)arg2 style:(unsigned long long)arg3 isInteractive:(BOOL)arg4;
 - (void)dealloc;
-- (id)initWithCache:(id)arg1 queueLabel:(const char *)arg2 size:(struct CGSize)arg3 scale:(double)arg4 fallback:(id)arg5 style:(unsigned long long)arg6 qos:(unsigned int)arg7;
+- (id)initWithCache:(id)arg1 queueLabel:(const char *)arg2 size:(struct CGSize)arg3 scale:(double)arg4 fallback:(id)arg5 style:(unsigned long long)arg6 isInteractive:(BOOL)arg7;
 - (void)kickstart;
 - (void)notifyListeners;
 - (void)removeListener:(id)arg1;

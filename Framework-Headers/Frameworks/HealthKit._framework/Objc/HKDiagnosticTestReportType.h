@@ -10,8 +10,8 @@
 {
 }
 
++ (id)allTypes;
 + (id)diagnosticTestReportType;
-- (Class)dataObjectClass;
 
 @end
 

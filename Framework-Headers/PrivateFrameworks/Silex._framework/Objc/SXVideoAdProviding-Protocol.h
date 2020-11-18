@@ -5,13 +5,13 @@
 //
 
 #import <Silex/SXVideoProviding-Protocol.h>
-#import <Silex/SXVideoSkipThreshold-Protocol.h>
 
-@protocol SXVideoAdProviding <SXVideoProviding, SXVideoSkipThreshold>
+@protocol SXVideoAdProviding <SXVideoProviding>
 
 @property (readonly, nonatomic) BOOL hasAction;
 @property (readonly, nonatomic) unsigned long long skipThreshold;
 
+- (void)nextVideoStartPlaying;
 - (void)presentAction;
 - (void)presentPrivacyStatement;
 - (void)skipped;

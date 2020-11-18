@@ -17,6 +17,7 @@
 - (void)applicationForBundleIdentifier:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)applicationsAvailableForHandlingURLScheme:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)applicationsForUserActivityType:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)openSensitiveURLInBackground:(id)arg1 withOptions:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)openUserActivityData:(id)arg1 inApplication:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 
 @end

@@ -13,14 +13,14 @@
 
 @property (nonatomic) BOOL usesDefaultPhoto; // @synthesize usesDefaultPhoto=_usesDefaultPhoto;
 
-+ (id)optionUsingDefaultPhoto:(BOOL)arg1;
++ (id)optionUsingDefaultPhoto:(BOOL)arg1 forDevice:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (id)JSONObjectRepresentation;
 - (id)dailySnapshotKey;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithJSONObjectRepresentation:(id)arg1;
+- (id)initWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValidOption;
 

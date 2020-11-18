@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDShapeSearchResultProviding-Protocol.h>
 
@@ -14,9 +14,10 @@ __attribute__((visibility("hidden")))
 @interface TSDShapeLibrary : NSObject <TSDShapeSearchResultProviding>
 {
     NSArray *_categories;
+    long long _dataLoadStatus;
     TSULocale *_locale;
     NSArray *_categorySort;
-    unsigned long long _dataLoadStatus;
+    long long _searchIndexStatus;
     NSDictionary *_library;
     NSURL *_libraryURL;
     TSDShapeSearchIndex *_searchIndex;
@@ -25,35 +26,35 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSArray *categories; // @synthesize categories=_categories;
+@property (readonly, nonatomic) long long dataLoadStatus; // @synthesize dataLoadStatus=_dataLoadStatus;
 @property (readonly, nonatomic) TSULocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSArray *p_categorySort; // @synthesize p_categorySort=_categorySort;
-@property (nonatomic) unsigned long long p_dataLoadStatus; // @synthesize p_dataLoadStatus=_dataLoadStatus;
 @property (strong, nonatomic) NSDictionary *p_library; // @synthesize p_library=_library;
 @property (strong, nonatomic) NSURL *p_libraryURL; // @synthesize p_libraryURL=_libraryURL;
 @property (strong, nonatomic) TSDShapeSearchIndex *p_searchIndex; // @synthesize p_searchIndex=_searchIndex;
+@property (nonatomic) long long p_searchIndexStatus; // @synthesize p_searchIndexStatus=_searchIndexStatus;
 @property (strong, nonatomic) NSCache *p_shapeCache; // @synthesize p_shapeCache=_shapeCache;
 @property (readonly, nonatomic) NSSet *p_shapeIDsToRemove; // @synthesize p_shapeIDsToRemove=_shapeIDsToRemove;
 
-+ (void)loadDataInBackground;
++ (void)loadDataWithCompletion:(CDUnknownBlockType)arg1;
 + (id)sharedLibrary;
 - (void).cxx_destruct;
 - (id)initWithShapeLibraryURL:(id)arg1 categorySortURL:(id)arg2 locale:(id)arg3;
 - (void)p_cacheDataAfterParsingWithSearchIndex:(id)arg1;
 - (void)p_createSearchIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)p_keywordDelimiter;
 - (id)p_keywordDelimiterFromLibrary:(id)arg1;
 - (id)p_libraryByRemovingBlacklistedShapes:(id)arg1;
 - (void)p_loadCategoriesAndSearchIndexIfNeeded;
-- (void)p_loadDataInBackground;
-- (void)p_loadDataOnMainThread;
+- (void)p_loadDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)p_parseLibraryFromJSON;
+- (long long)p_setupLibrary;
 - (void)p_setupLibraryIfNeeded;
 - (id)p_shapeDictionariesByID;
 - (id)p_shapeDictionariesByIDFromLibrary:(id)arg1;
 - (id)p_shapeIDByLocalizationKeyFromLibrary:(id)arg1;
-- (BOOL)p_shouldLoadCategoriesAndSearchIndex;
 - (id)p_sortedCategoriesFromLibrary:(id)arg1;
 - (id)resultsForSearchTerm:(id)arg1;
+- (void)setDataLoadStatus:(long long)arg1;
 - (id)shapeFromSearchResult:(id)arg1;
 - (id)shapeWithID:(id)arg1;
 - (id)shapeWithLocalizationKey:(id)arg1;

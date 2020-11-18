@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) NSString *actionTitle;
 @property (readonly, nonatomic) NSString *failureDescription;
 @property (readonly, nonatomic, getter=isPaused) BOOL paused;
-@property (readonly, nonatomic) double progress;
+@property (readonly, nonatomic) float progress;
 @property (readonly, nonatomic) NSString *referencedItemsDescription;
 @property (readonly, nonatomic) NSString *stateDescription;
 

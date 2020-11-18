@@ -13,41 +13,41 @@
 
 @interface HKMedicationOrder : HKMedicalRecord <NSSecureCoding, NSCopying>
 {
+    NSArray *_medicationCodings;
+    NSString *_prescriber;
+    long long _numberOfFills;
     NSArray *_dosages;
     HKMedicalDate *_earliestDosageDate;
+    HKMedicalDate *_writtenDate;
     HKMedicalDate *_endedDate;
-    NSArray *_medicationCodings;
-    long long _numberOfFills;
-    NSString *_prescriber;
+    HKMedicalCoding *_statusCoding;
     NSArray *_reasonCodings;
     NSArray *_reasonEndedCodings;
-    HKMedicalCoding *_statusCoding;
-    HKMedicalDate *_writtenDate;
 }
 
-@property (readonly, copy, nonatomic) NSArray *dosages; // @synthesize dosages=_dosages;
-@property (readonly, copy, nonatomic) HKMedicalDate *earliestDosageDate; // @synthesize earliestDosageDate=_earliestDosageDate;
-@property (readonly, copy, nonatomic) HKMedicalDate *endedDate; // @synthesize endedDate=_endedDate;
-@property (readonly, copy, nonatomic) NSArray *medicationCodings; // @synthesize medicationCodings=_medicationCodings;
-@property (readonly, nonatomic) HKMedicationOrderType *medicationOrderType;
-@property (readonly, nonatomic) long long numberOfFills; // @synthesize numberOfFills=_numberOfFills;
-@property (readonly, copy, nonatomic) NSString *prescriber; // @synthesize prescriber=_prescriber;
-@property (readonly, copy, nonatomic) NSArray *reasonCodings; // @synthesize reasonCodings=_reasonCodings;
-@property (readonly, copy, nonatomic) NSArray *reasonEndedCodings; // @synthesize reasonEndedCodings=_reasonEndedCodings;
-@property (readonly, copy, nonatomic) HKMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
-@property (readonly, copy, nonatomic) HKMedicalDate *writtenDate; // @synthesize writtenDate=_writtenDate;
+@property (readonly, copy) NSArray *dosages;
+@property (readonly, copy) HKMedicalDate *earliestDosageDate;
+@property (readonly, copy) HKMedicalDate *endedDate;
+@property (readonly, copy) NSArray *medicationCodings;
+@property (readonly, copy) HKMedicationOrderType *medicationOrderType;
+@property (readonly) long long numberOfFills;
+@property (readonly, copy) NSString *prescriber;
+@property (readonly, copy) NSArray *reasonCodings;
+@property (readonly, copy) NSArray *reasonEndedCodings;
+@property (readonly, copy) HKMedicalCoding *statusCoding;
+@property (readonly, copy) HKMedicalDate *writtenDate;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)defaultDisplayString;
 + (id)medicationCodingsPreferredSystems;
-+ (id)medicationOrderWithNote:(id)arg1 enteredInError:(BOOL)arg2 modifiedDate:(id)arg3 FHIRIdentifier:(id)arg4 extractionVersion:(long long)arg5 device:(id)arg6 metadata:(id)arg7 medicationCodings:(id)arg8 prescriber:(id)arg9 numberOfFills:(long long)arg10 dosages:(id)arg11 earliestDosageDate:(id)arg12 writtenDate:(id)arg13 endedDate:(id)arg14 statusCoding:(id)arg15 reasonCodings:(id)arg16 reasonEndedCodings:(id)arg17;
++ (id)medicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 medicationCodings:(id)arg9 prescriber:(id)arg10 numberOfFills:(long long)arg11 dosages:(id)arg12 earliestDosageDate:(id)arg13 writtenDate:(id)arg14 endedDate:(id)arg15 statusCoding:(id)arg16 reasonCodings:(id)arg17 reasonEndedCodings:(id)arg18;
++ (id)medicationOrderWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 medicationCodings:(id)arg10 prescriber:(id)arg11 numberOfFills:(long long)arg12 dosages:(id)arg13 earliestDosageDate:(id)arg14 writtenDate:(id)arg15 endedDate:(id)arg16 statusCoding:(id)arg17 reasonCodings:(id)arg18 reasonEndedCodings:(id)arg19;
 + (id)reasonCodingsPreferredSystems;
 + (id)reasonEndedCodingsPreferredSystems;
 + (id)statusCodingPreferredSystems;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_setDosages:(id)arg1;
 - (void)_setEarliestDosageDate:(id)arg1;
 - (void)_setEndedDate:(id)arg1;

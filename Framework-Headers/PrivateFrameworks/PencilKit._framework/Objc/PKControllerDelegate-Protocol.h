@@ -6,12 +6,11 @@
 
 #import <PencilKit/NSObject-Protocol.h>
 
-@class CAEAGLLayer, PKDrawing;
+@class PKDrawing;
 
 @protocol PKControllerDelegate <NSObject>
 - (void)drawingChanged:(PKDrawing *)arg1;
-- (CAEAGLLayer *)glLayer;
 - (void)setAllowLiveInteraction:(BOOL)arg1;
-- (BOOL)setNeedsDrawingDisplay;
+- (void)setNeedsDrawingDisplay;
 @end
 

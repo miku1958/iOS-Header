@@ -4,51 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <WebKit/WKApplicationStateTrackingView.h>
 
-#import <WebKit/UIPDFAnnotationControllerDelegate-Protocol.h>
-#import <WebKit/UIPDFPageViewDelegate-Protocol.h>
+#import <WebKit/PDFHostViewControllerDelegate-Protocol.h>
 #import <WebKit/WKActionSheetAssistantDelegate-Protocol.h>
 #import <WebKit/WKWebViewContentProvider-Protocol.h>
 #import <WebKit/_WKWebViewPrintProvider-Protocol.h>
 
-@class NSObject, NSString, UIScrollView, WKWebView;
-@protocol OS_dispatch_queue;
+@class NSData, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface WKPDFView : UIView <_WKWebViewPrintProvider, WKWebViewContentProvider, UIPDFPageViewDelegate, UIPDFAnnotationControllerDelegate, WKActionSheetAssistantDelegate>
+@interface WKPDFView : WKApplicationStateTrackingView <_WKWebViewPrintProvider, PDFHostViewControllerDelegate, WKActionSheetAssistantDelegate, WKWebViewContentProvider>
 {
-    struct RetainPtr<CGPDFDocument *> _cgPDFDocument;
-    struct RetainPtr<UIPDFDocument> _pdfDocument;
-    struct RetainPtr<NSString> _suggestedFilename;
-    struct RetainPtr<WKPDFPageNumberIndicator> _pageNumberIndicator;
-    struct Vector<PDFPageInfo, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _pages;
-    unsigned int _centerPageNumber;
-    struct CGSize _minimumSize;
-    struct CGSize _overlaidAccessoryViewsInset;
-    WKWebView *_webView;
-    UIScrollView *_scrollView;
-    UIView *_fixedOverlayView;
-    BOOL _isStartingZoom;
-    BOOL _isPerformingSameDocumentNavigation;
     struct RetainPtr<WKActionSheetAssistant> _actionSheetAssistant;
+    struct RetainPtr<NSData> _data;
+    struct RetainPtr<CGPDFDocument *> _documentForPrinting;
+    struct BlockPtr<void ()> _findCompletion;
+    struct RetainPtr<NSString> _findString;
+    unsigned long long _findStringCount;
+    unsigned long long _findStringMaxCount;
+    struct RetainPtr<UIView> _fixedOverlayView;
+    struct optional<unsigned long> _focusedSearchResultIndex;
+    long long _focusedSearchResultPendingOffset;
+    struct RetainPtr<PDFHostViewController> _hostViewController;
+    struct CGSize _overlaidAccessoryViewsInset;
+    struct RetainPtr<UIView> _pageNumberIndicator;
+    struct RetainPtr<NSString> _password;
     struct InteractionInformationAtPosition _positionInformation;
-    unsigned int _currentFindPageIndex;
-    unsigned int _currentFindMatchIndex;
-    struct RetainPtr<UIPDFSelection> _currentFindSelection;
-    struct RetainPtr<NSString> _cachedFindString;
-    struct Vector<WTF::RetainPtr<UIPDFSelection>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _cachedFindMatches;
-    unsigned int _cachedFindMaximumCount;
-    unsigned long long _cachedFindOptionsAffectingResults;
-    struct atomic<unsigned int> _nextComputeMatchesOperationID;
-    struct RetainPtr<NSString> _nextCachedFindString;
-    unsigned int _nextCachedFindMaximumCount;
-    unsigned long long _nextCachedFindOptionsAffectingResults;
-    NSObject<OS_dispatch_queue> *_findQueue;
-    struct RetainPtr<UIWKSelectionAssistant> _webSelectionAssistant;
-    struct unique_ptr<WebKit::ApplicationStateTracker, std::__1::default_delete<WebKit::ApplicationStateTracker>> _applicationStateTracker;
-    struct UIEdgeInsets _lastUnobscuredSafeAreaInset;
-    double _lastLayoutWidth;
+    struct RetainPtr<NSString> _suggestedFilename;
+    struct WeakObjCPtr<WKWebView> _webView;
 }
 
 @property (readonly, nonatomic) struct CGPDFDocument *_wk_printedDocument;
@@ -58,58 +42,61 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isBackground;
-@property (readonly, nonatomic) struct CGPDFDocument *pdfDocument;
-@property (readonly, nonatomic) NSString *suggestedFilename;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) UIView *web_contentView;
+@property (readonly, nonatomic) NSData *web_dataRepresentation;
+@property (readonly, nonatomic) BOOL web_isBackground;
+@property (readonly, nonatomic) NSString *web_suggestedFilename;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_URLForLinkAnnotation:(id)arg1;
-- (void)_applicationDidCreateWindowContext;
-- (void)_applicationDidEnterBackground;
-- (void)_applicationDidFinishSnapshottingAfterEnteringBackground;
-- (void)_applicationWillEnterForeground;
-- (void)_clearPages;
-- (void)_computeMatchesForString:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)_computePageAndDocumentFrames;
-- (void)_didFindMatch:(id)arg1;
-- (void)_didLoadPDFDocument;
-- (void)_ensureViewForPage:(CDStruct_828c7fe1 *)arg1;
-- (void)_highlightLinkAnnotation:(id)arg1 forDuration:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_URLWithPageIndex:(long long)arg1;
+- (BOOL)_computeFocusedSearchResultIndexWithOptions:(unsigned long long)arg1 didWrapAround:(BOOL *)arg2;
+- (id)_contentView;
+- (struct CGPDFDocument *)_ensureDocumentForPrinting;
+- (void)_findString:(id)arg1 withOptions:(unsigned long long)arg2 maxCount:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_focusOnSearchResultWithOptions:(unsigned long long)arg1;
+- (void)_goToURL:(id)arg1 atLocation:(struct CGPoint)arg2;
+- (void)_movePageNumberIndicatorToPoint:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (struct CGPoint)_offsetForPageNumberIndicator;
-- (void)_resetZoomAnimated:(BOOL)arg1;
-- (void)_revalidateViews;
-- (void)_scrollToFragment:(id)arg1;
-- (void)_showPasswordEntryField;
-- (void)_updateDocumentFrame;
-- (void)_updatePageNumberIndicator;
+- (void)_resetFind;
+- (void)_scrollToURLFragment:(id)arg1;
+- (void)_showActionSheetForURL:(id)arg1 atLocation:(struct CGPoint)arg2 withAnnotationRect:(struct CGRect)arg3;
+- (void)_updateLayoutAnimated:(BOOL)arg1;
 - (unsigned long long)_wk_pageCountForPrintFormatter:(id)arg1;
 - (RetainPtr_f649c0c3)actionSheetAssistant:(id)arg1 decideActionsForElement:(id)arg2 defaultActions:(RetainPtr_f649c0c3)arg3;
 - (void)actionSheetAssistant:(id)arg1 openElementAtLocation:(struct CGPoint)arg2;
 - (void)actionSheetAssistant:(id)arg1 performAction:(int)arg2;
 - (void)actionSheetAssistant:(id)arg1 shareElementWithURL:(id)arg2 rect:(struct CGRect)arg3;
 - (BOOL)actionSheetAssistant:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
-- (void)annotation:(id)arg1 isBeingPressedAtPoint:(struct CGPoint)arg2 controller:(id)arg3;
-- (void)annotation:(id)arg1 wasTouchedAtPoint:(struct CGPoint)arg2 controller:(id)arg3;
+- (id)dataDetectionContextForActionSheetAssistant:(id)arg1;
 - (void)dealloc;
-- (void)didMoveToWindow;
-- (optional_184d31a8)positionInformationForActionSheetAssistant:(id)arg1;
-- (void)resetZoom:(id)arg1;
-- (void)scrollViewDidScroll:(id)arg1;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (void)pdfHostViewController:(id)arg1 didLongPressPageIndex:(long long)arg2 atLocation:(struct CGPoint)arg3 withAnnotationRect:(struct CGRect)arg4;
+- (void)pdfHostViewController:(id)arg1 didLongPressURL:(id)arg2 atLocation:(struct CGPoint)arg3 withAnnotationRect:(struct CGRect)arg4;
+- (void)pdfHostViewController:(id)arg1 documentDidUnlockWithPassword:(id)arg2;
+- (void)pdfHostViewController:(id)arg1 findStringUpdate:(unsigned long long)arg2 done:(BOOL)arg3;
+- (void)pdfHostViewController:(id)arg1 goToPageIndex:(long long)arg2 withViewFrustum:(struct CGRect)arg3;
+- (void)pdfHostViewController:(id)arg1 goToURL:(id)arg2;
+- (void)pdfHostViewController:(id)arg1 updatePageCount:(long long)arg2;
+- (void)pdfHostViewControllerExtensionProcessDidCrash:(id)arg1;
+- (optional_2cdb8358)positionInformationForActionSheetAssistant:(id)arg1;
+- (void)web_beginAnimatedResizeWithUpdates:(CDUnknownBlockType)arg1;
 - (void)web_computedContentInsetDidChange;
 - (void)web_countStringMatches:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;
 - (void)web_didSameDocumentNavigation:(unsigned int)arg1;
 - (void)web_findString:(id)arg1 options:(unsigned long long)arg2 maxCount:(unsigned long long)arg3;
 - (void)web_hideFindUI;
-- (id)web_initWithFrame:(struct CGRect)arg1 webView:(id)arg2;
+- (id)web_initWithFrame:(struct CGRect)arg1 webView:(id)arg2 mimeType:(id)arg3;
+- (void)web_scrollViewDidEndZooming:(id)arg1 withView:(id)arg2 atScale:(double)arg3;
+- (void)web_scrollViewDidScroll:(id)arg1;
+- (void)web_scrollViewDidZoom:(id)arg1;
+- (void)web_scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)web_setContentProviderData:(id)arg1 suggestedFilename:(id)arg2;
 - (void)web_setFixedOverlayView:(id)arg1;
 - (void)web_setMinimumSize:(struct CGSize)arg1;
 - (void)web_setOverlaidAccessoryViewsInset:(struct CGSize)arg1;
-- (void)willMoveToWindow:(id)arg1;
-- (void)zoom:(id)arg1 to:(struct CGRect)arg2 atPoint:(struct CGPoint)arg3 kind:(int)arg4;
 
 @end
 

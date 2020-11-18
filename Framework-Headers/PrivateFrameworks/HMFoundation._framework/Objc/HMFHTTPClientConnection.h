@@ -6,12 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/_HMFCFHTTPServerConnectionDelegate-Protocol.h>
 
 @class HMFNetAddress, NSMutableArray, NSObject, NSString, _HMFCFHTTPServerConnection;
 @protocol HMFHTTPClientConnectionDelegate, OS_dispatch_queue;
 
-@interface HMFHTTPClientConnection : HMFObject <_HMFCFHTTPServerConnectionDelegate>
+@interface HMFHTTPClientConnection : HMFObject <_HMFCFHTTPServerConnectionDelegate, HMFLogging>
 {
     id<HMFHTTPClientConnectionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_clientQueue;
@@ -29,13 +30,14 @@
 @property (readonly, nonatomic) NSMutableArray *pendingRespones; // @synthesize pendingRespones=_pendingRespones;
 @property (readonly) Class superclass;
 
-+ (id)shortDescription;
++ (id)logCategory;
 - (void).cxx_destruct;
+- (id)attributeDescriptions;
 - (void)close;
 - (void)connection:(id)arg1 didReceiveRequest:(id)arg2;
 - (void)dealloc;
-- (id)descriptionWithPointer:(BOOL)arg1;
 - (id)initWithConnection:(id)arg1;
+- (id)logIdentifier;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)sendResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)shortDescription;

@@ -13,6 +13,7 @@
 #import <PhotosEditUI/PUEditPluginSessionDelegate-Protocol.h>
 #import <PhotosEditUI/PUImageEditPluginSessionDataSource-Protocol.h>
 #import <PhotosEditUI/PUOneUpAssetTransitionViewController-Protocol.h>
+#import <PhotosEditUI/PUPhotoEditApertureToolbarDelegate-Protocol.h>
 #import <PhotosEditUI/PUPhotoEditIrisModelChangeObserver-Protocol.h>
 #import <PhotosEditUI/PUPhotoEditLayoutSource-Protocol.h>
 #import <PhotosEditUI/PUPhotoEditResourceLoaderDelegate-Protocol.h>
@@ -20,24 +21,25 @@
 #import <PhotosEditUI/PUPhotoEditToolbarDelegate-Protocol.h>
 #import <PhotosEditUI/PUVideoEditPluginSessionDataSource-Protocol.h>
 #import <PhotosEditUI/PUViewControllerSpecChangeObserver-Protocol.h>
+#import <PhotosEditUI/PXChangeObserver-Protocol.h>
 #import <PhotosEditUI/PXPhotoLibraryUIChangeObserver-Protocol.h>
 #import <PhotosEditUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosEditUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <PhotosEditUI/UIScrollViewDelegate-Protocol.h>
 
-@class CAMBadgeTextView, CAMLightingControl, CAMLightingNameBadge, GLKView, NSArray, NSObject, NSString, NSURL, NUBufferRenderClient, NUMediaView, NURenderPipelineFilter, PLEditSource, PLPhotoEditAggregateSession, PLPhotoEditModel, PLPhotoEditMutableModel, PLPhotoEditRenderer, PUAdjustmentsToolController, PUAutoAdjustmentController, PUCropToolController, PUEditPluginSession, PUEditableMediaProvider, PUFiltersToolController, PUMediaDestination, PUPhotoEditIrisModel, PUPhotoEditLivePhotoToolbar, PUPhotoEditResourceLoader, PUPhotoEditSnapshot, PUPhotoEditToolController, PUPhotoEditToolbar, PUPhotoEditValuesCalculator, PUPhotoEditViewControllerSpec, PUProgressIndicatorView, PURedeyeToolController, PUTouchingGestureRecognizer, PUTrimToolController, PXImageLayerModulator, UIAlertController, UIButton, UIImageView, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView, _PPTState;
+@class CAMBadgeTextView, CAMLightingControl, CAMLightingNameBadge, NSArray, NSObject, NSString, NSURL, NUBufferRenderClient, NUMediaView, PFCoalescer, PLEditSource, PLPhotoEditAggregateSession, PLPhotoEditModel, PLPhotoEditMutableModel, PLPhotoEditRenderer, PUAdjustmentsToolController, PUAutoAdjustmentController, PUCropToolController, PUEditPluginSession, PUEditableMediaProvider, PUFiltersToolController, PUMediaDestination, PUPhotoEditApertureToolbar, PUPhotoEditIrisModel, PUPhotoEditLivePhotoToolbar, PUPhotoEditResourceLoader, PUPhotoEditSnapshot, PUPhotoEditToolController, PUPhotoEditToolbar, PUPhotoEditValuesCalculator, PUPhotoEditViewControllerSpec, PUProgressIndicatorView, PURedeyeToolController, PUTouchingGestureRecognizer, PUTrimToolController, PXImageLayerModulator, PXUIAssetBadgeView, UIAlertController, UIButton, UIImageView, UILongPressGestureRecognizer, UITapGestureRecognizer, UIViewController, _PPTState;
 @protocol OS_dispatch_source, PUEditableAsset, PUPhotoEditViewControllerPresentationDelegate, PUPhotoEditViewControllerSessionDelegate;
 
-@interface PUPhotoEditViewController : PUEditViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PUPhotoEditToolControllerDelegate, PUVideoEditPluginSessionDataSource, PUImageEditPluginSessionDataSource, PUEditPluginSessionDelegate, PXPhotoLibraryUIChangeObserver, PUOneUpAssetTransitionViewController, PLDismissableViewController, PUPhotoEditIrisModelChangeObserver, PHLivePhotoViewDelegate, PUPhotoEditResourceLoaderDelegate, PUViewControllerSpecChangeObserver, NUMediaViewDelegatePrivate, PUPhotoEditToolbarDelegate, CAMLightingControlDelegate, PUPhotoEditLayoutSource>
+@interface PUPhotoEditViewController : PUEditViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, PUPhotoEditToolControllerDelegate, PUVideoEditPluginSessionDataSource, PUImageEditPluginSessionDataSource, PUEditPluginSessionDelegate, PXPhotoLibraryUIChangeObserver, PUOneUpAssetTransitionViewController, PLDismissableViewController, PUPhotoEditIrisModelChangeObserver, PHLivePhotoViewDelegate, PUPhotoEditResourceLoaderDelegate, PUViewControllerSpecChangeObserver, NUMediaViewDelegatePrivate, PUPhotoEditToolbarDelegate, PXChangeObserver, CAMLightingControlDelegate, PUPhotoEditApertureToolbarDelegate, PUPhotoEditLayoutSource>
 {
     NSArray *__allTools;
     PUPhotoEditToolController *_currentEditingTool;
+    UIViewController *_currentTool;
     BOOL _switchingToolsAnimated;
     NUMediaView *_mediaView;
-    NURenderPipelineFilter *_showOrignalWithGeometry;
     BOOL _isImageFrameReady;
+    BOOL _isImageZooming;
     NUBufferRenderClient *_renderImageClient;
-    GLKView *_mainRenderView;
     BOOL _isAnimatingLayoutOrientation;
     PUTouchingGestureRecognizer *_livePhotoTouchRecognizer;
     BOOL _livePhotoIsPlaying;
@@ -48,6 +50,7 @@
     NSArray *_currentToolViewConstraints;
     NSArray *_placeholderImageViewConstraints;
     NSArray *_previewingOriginalBadgeConstraints;
+    NSArray *_rawDecodeBadgeConstraints;
     NSArray *_depthBadgeConstraints;
     NSArray *_progressIndicatorViewConstraints;
     NSArray *_lightingControlConstraints;
@@ -70,6 +73,8 @@
     UIButton *_depthToolbarButton;
     UIButton *_depthBadge;
     BOOL _canModifyDepth;
+    PUPhotoEditApertureToolbar *_apertureToolbar;
+    PFCoalescer *_apertureUpdateCoalescer;
     UIButton *_pluginButton;
     UIButton *_redEyeButton;
     PUEditPluginSession *_pluginSession;
@@ -83,11 +88,14 @@
     PUAutoAdjustmentController *_autoEnhanceController;
     BOOL _photoTakenWithoutFlash;
     UIImageView *_placeholderImageView;
+    BOOL _placeholderImageViewTransitioningOut;
     UITapGestureRecognizer *_togglePreviewTapGestureRecognizer;
     UILongPressGestureRecognizer *_togglePreviewPressGestureRecognizer;
     NSArray *_toggleOriginalInitialPoints;
     CAMBadgeTextView *_previewingOriginalBadge;
     unsigned long long _togglePreviewOriginalOffRequestID;
+    PXUIAssetBadgeView *_rawDecodeBadge;
+    BOOL _shouldShowRawDecodeBadge;
     PUProgressIndicatorView *_progressIndicatorView;
     id _progressIndicatorInteractionDisablingToken;
     int _inProgressSaveRequestID;
@@ -102,16 +110,18 @@
     BOOL _trimControllerScrubberNeedsVisualUpdate;
     _PPTState *_pptState;
     BOOL __isCachingVideo;
+    BOOL _isEmbeddedEdit;
     BOOL _canModifyPortraitEffects;
+    BOOL _isStageLightDisabled;
     CAMLightingControl *_lightingControl;
     CAMLightingNameBadge *_lightingNameBadge;
     BOOL _previewViewHidden;
+    BOOL __hasLoadedRaw;
     BOOL __penultimateAvailable;
+    BOOL __isLoadingAdjustments;
     BOOL __revertingToOriginal;
     BOOL __shouldBePreviewingOriginal;
     BOOL __canAnimateNextAutoEnhance;
-    BOOL _currentToolShouldAppearUnderneathMediaView;
-    BOOL _oldToolShouldDisappearUnderneathMediaView;
     long long _layoutOrientation;
     PUPhotoEditViewControllerSpec *_photoEditSpec;
     id<PUEditableAsset> _photo;
@@ -131,6 +141,7 @@
     PLPhotoEditModel *__uneditedPhotoEditModel;
     PUPhotoEditIrisModel *__photoEditIrisModel;
     PLEditSource *__editSource;
+    NSString *__editSourceUTI;
     PLEditSource *__originalImageEditSource;
     long long __originalImageExifOrientation;
     long long __originalExifOrientation;
@@ -141,10 +152,10 @@
     PLPhotoEditRenderer *__previewingOriginalRenderer;
     UIAlertController *__cancelConfirmationAlert;
     UIAlertController *__revertConfirmationAlert;
+    UIAlertController *__jpegPreviewForRawConfirmationAlert;
     UIAlertController *__irisRevertConfirmationAlert;
     UIAlertController *__livePhotoToolsAlert;
     long long _mediaViewEdgeInsetsUpdateDisableCount;
-    UIView *_oldToolView;
     CDUnknownBlockType _ppt_afterRenderBlock;
     CDUnknownBlockType _ppt_afterAutoenhanceBlock;
     CDUnknownBlockType _ppt_willBeginPlaybackBlock;
@@ -161,12 +172,16 @@
 @property (nonatomic, setter=_setCanAnimateNextAutoEnhance:) BOOL _canAnimateNextAutoEnhance; // @synthesize _canAnimateNextAutoEnhance=__canAnimateNextAutoEnhance;
 @property (weak, nonatomic, setter=_setCancelConfirmationAlert:) UIAlertController *_cancelConfirmationAlert; // @synthesize _cancelConfirmationAlert=__cancelConfirmationAlert;
 @property (strong, nonatomic, setter=_setEditSource:) PLEditSource *_editSource; // @synthesize _editSource=__editSource;
+@property (strong, nonatomic, setter=_setEditSourceUTI:) NSString *_editSourceUTI; // @synthesize _editSourceUTI=__editSourceUTI;
+@property (nonatomic, setter=_setHasLoadedRaw:) BOOL _hasLoadedRaw; // @synthesize _hasLoadedRaw=__hasLoadedRaw;
 @property (nonatomic, setter=_setInitialSeekTime:) CDStruct_1b6d18a9 _initialSeekTime; // @synthesize _initialSeekTime=__initialSeekTime;
 @property (weak, nonatomic, setter=_setIrisRevertConfirmationAlert:) UIAlertController *_irisRevertConfirmationAlert; // @synthesize _irisRevertConfirmationAlert=__irisRevertConfirmationAlert;
 @property (nonatomic, setter=_setIsCachingVideo:) BOOL _isCachingVideo;
 @property (readonly, nonatomic) BOOL _isEnabledLivePhoto;
+@property (nonatomic, setter=_setIsLoadingAdjustments:) BOOL _isLoadingAdjustments; // @synthesize _isLoadingAdjustments=__isLoadingAdjustments;
 @property (readonly, nonatomic) BOOL _isLoopingVideo;
 @property (readonly, nonatomic) BOOL _isVideoOn;
+@property (weak, nonatomic, setter=_setJpegPreviewForRawConfirmationAlert:) UIAlertController *_jpegPreviewForRawConfirmationAlert; // @synthesize _jpegPreviewForRawConfirmationAlert=__jpegPreviewForRawConfirmationAlert;
 @property (nonatomic, setter=_setLastKnownPreviewImageSize:) struct CGSize _lastKnownPreviewImageSize; // @synthesize _lastKnownPreviewImageSize=__lastKnownPreviewImageSize;
 @property (nonatomic, setter=_setLayoutReferenceSize:) struct CGSize _layoutReferenceSize; // @synthesize _layoutReferenceSize=__layoutReferenceSize;
 @property (weak, nonatomic, setter=_setLivePhotoToolsAlert:) UIAlertController *_livePhotoToolsAlert; // @synthesize _livePhotoToolsAlert=__livePhotoToolsAlert;
@@ -191,7 +206,6 @@
 @property (copy, nonatomic, setter=_setUneditedPhotoEditModel:) PLPhotoEditModel *_uneditedPhotoEditModel; // @synthesize _uneditedPhotoEditModel=__uneditedPhotoEditModel;
 @property (strong, nonatomic, setter=_setValuesCalculator:) PUPhotoEditValuesCalculator *_valuesCalculator; // @synthesize _valuesCalculator=__valuesCalculator;
 @property (nonatomic, setter=_setWorkImageVersion:) long long _workImageVersion; // @synthesize _workImageVersion=__workImageVersion;
-@property (nonatomic) BOOL currentToolShouldAppearUnderneathMediaView; // @synthesize currentToolShouldAppearUnderneathMediaView=_currentToolShouldAppearUnderneathMediaView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -200,8 +214,6 @@
 @property (readonly, nonatomic) PUMediaDestination *mediaDestination; // @synthesize mediaDestination=_mediaDestination;
 @property (readonly, nonatomic) PUEditableMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (nonatomic) long long mediaViewEdgeInsetsUpdateDisableCount; // @synthesize mediaViewEdgeInsetsUpdateDisableCount=_mediaViewEdgeInsetsUpdateDisableCount;
-@property (nonatomic) BOOL oldToolShouldDisappearUnderneathMediaView; // @synthesize oldToolShouldDisappearUnderneathMediaView=_oldToolShouldDisappearUnderneathMediaView;
-@property (strong, nonatomic) UIView *oldToolView; // @synthesize oldToolView=_oldToolView;
 @property (readonly, nonatomic) id<PUEditableAsset> photo; // @synthesize photo=_photo;
 @property (readonly, nonatomic) PUPhotoEditViewControllerSpec *photoEditSpec; // @synthesize photoEditSpec=_photoEditSpec;
 @property (readonly, copy, nonatomic) NSArray *placeholderImageFilters; // @synthesize placeholderImageFilters=_placeholderImageFilters;
@@ -218,15 +230,17 @@
 + (id)_defaultRenderPipelineFilters;
 + (BOOL)_isForceTouchEnabled;
 + (BOOL)_shouldForwardViewWillTransitionToSize;
-+ (void)initialize;
++ (id)photoEditLog;
 + (double)toggleOriginalLongPressDelay;
 - (void).cxx_destruct;
 - (id)_allTools;
 - (void)_captureSnapshotOfBasePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_checkPhotoTakenWithoutFlashWithURL:(id)arg1;
+- (void)_clearBadgeConstraints;
 - (id)_composition;
 - (void)_configureEnablenessOfControlButton:(id)arg1 animated:(BOOL)arg2;
 - (id)_createMediaView;
+- (struct UIEdgeInsets)_currentToolPreviewInsets;
 - (id)_defaultInitialEditingTool;
 - (id)_depthButtonIcon;
 - (id)_depthButtonTitle;
@@ -252,7 +266,7 @@
 - (void)_handleToolbarToolButton:(id)arg1;
 - (BOOL)_hasLoopingVideoAdjustment;
 - (BOOL)_hasUnsavedChanges;
-- (long long)_imageModulationOptions;
+- (CDStruct_910f5d27)_imageModulationOptions;
 - (void)_invalidateTrimControlScrubberThumbnails;
 - (BOOL)_isLoopingVideo:(BOOL)arg1;
 - (BOOL)_isPreviewingOriginal;
@@ -261,7 +275,6 @@
 - (BOOL)_isWaitingForAssetChange;
 - (BOOL)_isWaitingForSaveCompletion;
 - (id)_livePhotoGestureRecognizer;
-- (void)_loadLightingStateFromModel;
 - (void)_loadOriginalImageIfNeeded;
 - (void)_loadPhotoEditResourcesIfNeeded;
 - (void)_loadToolsIfNeeded;
@@ -286,7 +299,6 @@
 - (void)_restoreSnapshot:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (int)_revertToOriginalWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (int)_saveOnlyDepthEditsCompletionHandler:(CDUnknownBlockType)arg1;
-- (struct CGSize)_scaleSize:(struct CGSize)arg1 toFitSize:(struct CGSize)arg2;
 - (void)_setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_setOriginalImageURL:(id)arg1 withOriginalImageUTI:(id)arg2;
 - (void)_setPlaceholderImage:(id)arg1 filters:(id)arg2;
@@ -299,17 +311,20 @@
 - (BOOL)_shouldShowDepthControl;
 - (BOOL)_shouldShowLightingControl;
 - (void)_showCancelAndRevertOptionsAllowResetTool:(BOOL)arg1;
+- (void)_showJpegPreviewForRawRevertAlert;
 - (void)_startMonitoringSaveProgressIfNeeded;
 - (void)_startWaitingForAssetChange;
 - (void)_startWaitingForSaveRequestID:(int)arg1;
 - (void)_stopMonitoringSaveProgress;
 - (void)_stopWaitingForAssetChangeWithAsset:(id)arg1 success:(BOOL)arg2;
 - (void)_stopWaitingForSaveRequestWithAsset:(id)arg1;
-- (void)_switchToEditingTool:(id)arg1 animated:(BOOL)arg2;
+- (void)_transitionToEditingTool:(id)arg1 animated:(BOOL)arg2;
+- (void)_transitionToNewToolViewController:(id)arg1 oldToolViewController:(id)arg2 animationBlock:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4 animated:(BOOL)arg5;
 - (void)_updateAlternateToolbarAnimated:(BOOL)arg1;
 - (void)_updateAutoEnhanceButtonAnimated:(BOOL)arg1;
 - (void)_updateBackgroundColor;
 - (void)_updateDepthEffectAnimated:(BOOL)arg1;
+- (void)_updateEditModelWithApertureValue;
 - (void)_updateEditModelWithPortraitEffect:(long long)arg1;
 - (void)_updateLayoutOrientationWithViewSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
 - (void)_updateLightingHierarchy;
@@ -330,6 +345,7 @@
 - (void)_updatePluginButtonAnimated:(BOOL)arg1;
 - (void)_updatePluginSession;
 - (void)_updatePluginWorkImageVersion;
+- (void)_updatePortraitControls:(BOOL)arg1;
 - (void)_updatePreviewingOriginal;
 - (void)_updatePreviewingOriginalBadge;
 - (void)_updateProgressIndicatorAnimated:(BOOL)arg1;
@@ -346,6 +362,7 @@
 - (void)_updateTraitCollectionAndLayoutReferenceSize:(struct CGSize)arg1;
 - (void)_updateValuesCalculator;
 - (BOOL)_wantsTrimControl;
+- (void)apertureToolbar:(id)arg1 didChangeValue:(double)arg2;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
 - (void)dealloc;
 - (void)didFinishWithAsset:(id)arg1 savedChanges:(BOOL)arg2;
@@ -416,6 +433,7 @@
 - (double)px_HDRFocus;
 - (double)px_imageModulationIntensity;
 - (void)setPlaceholderImage:(id)arg1;
+- (void)switchToEditingTool:(id)arg1 animated:(BOOL)arg2;
 - (void)toolController:(id)arg1 didChangePreferredPreviewViewInsetsAnimated:(BOOL)arg2;
 - (struct CGPoint)toolController:(id)arg1 originalPointFromViewPoint:(struct CGPoint)arg2 view:(id)arg3;
 - (void)toolController:(id)arg1 updateModelDependentControlsAnimated:(BOOL)arg2;
@@ -426,7 +444,7 @@
 - (void)toolControllerDidFinish:(id)arg1;
 - (void)toolControllerDidFinishLoadingThumbnails:(id)arg1;
 - (id)toolControllerHitEventForwardView:(id)arg1;
-- (long long)toolControllerImageModulationOptions:(id)arg1;
+- (CDStruct_910f5d27)toolControllerImageModulationOptions:(id)arg1;
 - (id)toolControllerLivePhoto:(id)arg1;
 - (id)toolControllerMainContainerView:(id)arg1;
 - (id)toolControllerMainRenderer:(id)arg1;

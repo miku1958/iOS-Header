@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardUIServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardUIServices/FBUISceneWorkspace-Protocol.h>
@@ -25,6 +25,7 @@
 @property (readonly, copy, nonatomic) NSSet *scenes;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_initWithIdentifier:(id)arg1;
 - (void)activateScene:(id)arg1 withTransitionContext:(id)arg2;
 - (id)callOutQueue;

@@ -8,8 +8,9 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEONonComponentPlaceData, GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDCaptionedPhoto, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDIcon, GEOPDLocationEvent, GEOPDMessageLink, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardURL, GEOPDPriceDescription, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
+@class GEONonComponentPlaceData, GEOPDAddress, GEOPDAddressObject, GEOPDAmenities, GEOPDAnnotatedItemList, GEOPDAssociatedApp, GEOPDBounds, GEOPDBrowseCategories, GEOPDBusinessClaim, GEOPDCaptionedPhoto, GEOPDContainedPlace, GEOPDETA, GEOPDEntity, GEOPDExternalAction, GEOPDFactoid, GEOPDFlyover, GEOPDHours, GEOPDIcon, GEOPDLocationEvent, GEOPDMessageLink, GEOPDPhoto, GEOPDPlaceInfo, GEOPDPlacecardLayoutConfiguration, GEOPDPlacecardURL, GEOPDPoiEvent, GEOPDPriceDescription, GEOPDQuickLink, GEOPDRap, GEOPDRating, GEOPDRawAttribute, GEOPDRestaurantReservationLink, GEOPDResultSnippet, GEOPDReview, GEOPDRoadAccessInfo, GEOPDSimpleRestaurantMenuText, GEOPDSpatialLookupResult, GEOPDTextBlock, GEOPDTip, GEOPDTransitAttribution, GEOPDTransitIncident, GEOPDTransitInfo, GEOPDTransitInfoSnippet, GEOPDTransitSchedule, GEOPDVenueInfo, GEOPDWifiFingerprint, GEOStyleAttributes, PBUnknownFields;
 
+__attribute__((visibility("hidden")))
 @interface GEOPDComponentValue : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
@@ -17,6 +18,7 @@
     GEOPDAddress *_address;
     GEOPDAddressObject *_addressObject;
     GEOPDAmenities *_amenities;
+    GEOPDAnnotatedItemList *_annotatedItemList;
     GEOPDAssociatedApp *_associatedApp;
     GEOPDBounds *_bounds;
     GEOPDBrowseCategories *_browseCategories;
@@ -35,7 +37,9 @@
     GEOPDMessageLink *_messageLink;
     GEOPDPhoto *_photo;
     GEOPDPlaceInfo *_placeInfo;
+    GEOPDPlacecardLayoutConfiguration *_placecardLayoutConfiguration;
     GEOPDPlacecardURL *_placecardUrl;
+    GEOPDPoiEvent *_poiEvent;
     GEOPDPriceDescription *_priceDescription;
     GEOPDQuickLink *_quickLink;
     GEOPDRap *_rap;
@@ -62,6 +66,7 @@
 @property (strong, nonatomic) GEOPDAddress *address; // @synthesize address=_address;
 @property (strong, nonatomic) GEOPDAddressObject *addressObject; // @synthesize addressObject=_addressObject;
 @property (strong, nonatomic) GEOPDAmenities *amenities; // @synthesize amenities=_amenities;
+@property (strong, nonatomic) GEOPDAnnotatedItemList *annotatedItemList; // @synthesize annotatedItemList=_annotatedItemList;
 @property (strong, nonatomic) GEOPDAssociatedApp *associatedApp; // @synthesize associatedApp=_associatedApp;
 @property (strong, nonatomic) GEOPDBounds *bounds; // @synthesize bounds=_bounds;
 @property (strong, nonatomic) GEOPDBrowseCategories *browseCategories; // @synthesize browseCategories=_browseCategories;
@@ -78,6 +83,7 @@
 @property (readonly, nonatomic) BOOL hasAddress;
 @property (readonly, nonatomic) BOOL hasAddressObject;
 @property (readonly, nonatomic) BOOL hasAmenities;
+@property (readonly, nonatomic) BOOL hasAnnotatedItemList;
 @property (readonly, nonatomic) BOOL hasAssociatedApp;
 @property (readonly, nonatomic) BOOL hasBounds;
 @property (readonly, nonatomic) BOOL hasBrowseCategories;
@@ -96,7 +102,9 @@
 @property (readonly, nonatomic) BOOL hasMessageLink;
 @property (readonly, nonatomic) BOOL hasPhoto;
 @property (readonly, nonatomic) BOOL hasPlaceInfo;
+@property (readonly, nonatomic) BOOL hasPlacecardLayoutConfiguration;
 @property (readonly, nonatomic) BOOL hasPlacecardUrl;
+@property (readonly, nonatomic) BOOL hasPoiEvent;
 @property (readonly, nonatomic) BOOL hasPriceDescription;
 @property (readonly, nonatomic) BOOL hasQuickLink;
 @property (readonly, nonatomic) BOOL hasRap;
@@ -123,7 +131,9 @@
 @property (strong, nonatomic) GEOPDMessageLink *messageLink; // @synthesize messageLink=_messageLink;
 @property (strong, nonatomic) GEOPDPhoto *photo; // @synthesize photo=_photo;
 @property (strong, nonatomic) GEOPDPlaceInfo *placeInfo; // @synthesize placeInfo=_placeInfo;
+@property (strong, nonatomic) GEOPDPlacecardLayoutConfiguration *placecardLayoutConfiguration; // @synthesize placecardLayoutConfiguration=_placecardLayoutConfiguration;
 @property (strong, nonatomic) GEOPDPlacecardURL *placecardUrl; // @synthesize placecardUrl=_placecardUrl;
+@property (strong, nonatomic) GEOPDPoiEvent *poiEvent; // @synthesize poiEvent=_poiEvent;
 @property (strong, nonatomic) GEOPDPriceDescription *priceDescription; // @synthesize priceDescription=_priceDescription;
 @property (strong, nonatomic) GEOPDQuickLink *quickLink; // @synthesize quickLink=_quickLink;
 @property (strong, nonatomic) GEOPDRap *rap; // @synthesize rap=_rap;

@@ -9,14 +9,13 @@
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/_HMAccesorySettingGroupDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSString, _HMAccessorySettingGroup;
-@protocol OS_dispatch_queue;
+@class HMFUnfairLock, NSArray, NSMutableSet, NSString, _HMAccessorySettingGroup;
 
 @interface HMAccessorySettingGroup : NSObject <_HMAccesorySettingGroupDelegate, HMFLogging>
 {
+    HMFUnfairLock *_lock;
     NSMutableSet *_settings;
     NSMutableSet *_groups;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     _HMAccessorySettingGroup *_internal;
     HMAccessorySettingGroup *_group;
 }
@@ -29,7 +28,6 @@
 @property (readonly) _HMAccessorySettingGroup *internal; // @synthesize internal=_internal;
 @property (readonly, copy) NSString *keyPath;
 @property (readonly, copy) NSString *localizedTitle;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy) NSArray *settings;
 @property (readonly) Class superclass;
 

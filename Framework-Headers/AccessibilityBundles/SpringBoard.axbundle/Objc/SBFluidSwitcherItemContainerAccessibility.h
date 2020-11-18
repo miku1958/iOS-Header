@@ -27,18 +27,14 @@
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_accessibilityScrollToVisible;
-- (id)_accessibilityUserTestingChildren;
 - (struct CGRect)_accessibilityVisibleFrame;
 - (id)_axAppLayout;
 - (id)_axDisplayItems;
-- (void)_axLoadCloseBoxAccessibility:(id)arg1;
-- (id)_createCloseBox;
 - (void)_handlePageViewTap:(id)arg1;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (BOOL)accessibilityScroll:(long long)arg1;
-- (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 
 @end

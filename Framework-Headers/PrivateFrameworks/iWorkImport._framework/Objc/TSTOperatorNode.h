@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface TSTOperatorNode : TSTExpressionNode
 {
-    unsigned short mOperator;
+    unsigned short _operatorChar;
 }
 
-@property (nonatomic) unsigned short operatorChar;
+@property (nonatomic) unsigned short operatorChar; // @synthesize operatorChar=_operatorChar;
 
-- (id)argumentSpec;
+- (struct TSCEFunctionArgSpec *)argumentSpec;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
 - (BOOL)forceReferenceInterpretationOfChildren;
 - (id)initAsCopyOf:(id)arg1 intoContext:(id)arg2 children:(id)arg3;

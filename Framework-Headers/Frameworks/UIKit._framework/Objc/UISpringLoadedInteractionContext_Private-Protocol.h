@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UISpringLoadedInteractionContext-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionContext-Protocol.h>
 
 @protocol UIDropSession;
 

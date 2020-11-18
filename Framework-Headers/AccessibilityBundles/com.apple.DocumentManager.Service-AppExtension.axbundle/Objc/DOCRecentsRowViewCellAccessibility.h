@@ -13,6 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (Class)_axDOCItemCollectionViewClass;
+- (id)_axDOCItemCollectionViewDescendant;
+- (id)_axHeaderView;
+- (id)accessibilityElements;
 - (id)accessibilityIdentifier;
 
 @end

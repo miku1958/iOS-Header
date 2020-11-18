@@ -29,11 +29,13 @@
     unsigned int _timeToLiveSeconds;
     int _updateBehavior;
     unsigned int _version;
+    BOOL _useAuthProxy;
     struct {
         unsigned int checksumType:1;
         unsigned int requestStyle:1;
         unsigned int timeToLiveSeconds:1;
         unsigned int updateBehavior:1;
+        unsigned int useAuthProxy:1;
     } _has;
 }
 
@@ -48,6 +50,7 @@
 @property (nonatomic) BOOL hasRequestStyle;
 @property (nonatomic) BOOL hasTimeToLiveSeconds;
 @property (nonatomic) BOOL hasUpdateBehavior;
+@property (nonatomic) BOOL hasUseAuthProxy;
 @property (strong, nonatomic) NSString *localizationURL; // @synthesize localizationURL=_localizationURL;
 @property (nonatomic) int requestStyle; // @synthesize requestStyle=_requestStyle;
 @property (nonatomic) int scale; // @synthesize scale=_scale;
@@ -58,6 +61,7 @@
 @property (nonatomic) unsigned int timeToLiveSeconds; // @synthesize timeToLiveSeconds=_timeToLiveSeconds;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) int updateBehavior; // @synthesize updateBehavior=_updateBehavior;
+@property (nonatomic) BOOL useAuthProxy; // @synthesize useAuthProxy=_useAuthProxy;
 @property (nonatomic) unsigned int version; // @synthesize version=_version;
 
 + (id)buildDisputedBordersQueryItemsForCountry:(id)arg1 region:(id)arg2;

@@ -22,9 +22,12 @@
 @property (readonly, copy, nonatomic) NSArray *taskTitles;
 @property (readonly, copy, nonatomic) INSpeakableString *title;
 
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
+- (long long)_intentCategory;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithTitle:(id)arg1 taskTitles:(id)arg2 groupName:(id)arg3;

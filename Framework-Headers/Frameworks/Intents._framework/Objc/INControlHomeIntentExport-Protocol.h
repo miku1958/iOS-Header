@@ -7,12 +7,11 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class INHomeAttribute, NSArray;
+@class NSArray;
 
 @protocol INControlHomeIntentExport <NSObject, JSExport>
 
-@property (copy, nonatomic) INHomeAttribute *attribute;
-@property (copy, nonatomic) NSArray *entities;
+@property (copy, nonatomic) NSArray *contents;
 
 - (id)init;
 @end

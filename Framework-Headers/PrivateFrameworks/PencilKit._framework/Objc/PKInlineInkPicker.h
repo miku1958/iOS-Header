@@ -6,37 +6,50 @@
 
 #import <UIKit/UIControl.h>
 
+#import <PencilKit/PKInkAttributesPickerDelegate-Protocol.h>
 #import <PencilKit/PKInlineColorPickerDelegate-Protocol.h>
+#import <PencilKit/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import <PencilKit/_PKAllowDrawingWhilePresentingPopoverViewDelegate-Protocol.h>
+#import <PencilKit/_PKInlineColorPickerAllowDrawingWithPopoverDelegate-Protocol.h>
 
-@class NSArray, NSString, PKInk, PKInlineColorPicker, UIColor, UILayoutGuide, UIView;
+@class NSArray, NSMutableDictionary, NSString, PKInk, PKInkAttributesPicker, PKInlineColorPicker, UIColor, UILayoutGuide, UIView, _PKAllowDrawingWhilePresentingPopoverView;
 @protocol PKInlineInkPickerDelegate;
 
-@interface PKInlineInkPicker : UIControl <PKInlineColorPickerDelegate>
+@interface PKInlineInkPicker : UIControl <PKInlineColorPickerDelegate, PKInkAttributesPickerDelegate, UIPopoverPresentationControllerDelegate, _PKInlineColorPickerAllowDrawingWithPopoverDelegate, _PKAllowDrawingWhilePresentingPopoverViewDelegate>
 {
     BOOL _shouldEmboss;
     BOOL _forceCompactLayout;
-    BOOL _wantsThickerInks;
     BOOL _isUsedOnDarkBackground;
+    BOOL _contentsHidden;
     NSArray *_inkIdentifiers;
     unsigned long long _selectedInkIndex;
     unsigned long long _previousDrawingToolIndex;
+    unsigned long long _previousToolIndex;
     NSArray *_toolButtonItems;
     PKInlineColorPicker *_colorPicker;
     UIView *_backgroundView;
     UIView *_separatorView;
     UIView *_clippingView;
+    NSMutableDictionary *__inkForIdentifierDict;
+    _PKAllowDrawingWhilePresentingPopoverView *__allowDrawingWhilePresentingPopoverView;
+    PKInkAttributesPicker *_presentedInkAttributesPicker;
     id<PKInlineInkPickerDelegate> _delegate;
-    unsigned long long _pickerState;
     unsigned long long _sizeState;
     unsigned long long _selectionState;
     UILayoutGuide *_backgroundViewLayoutGuide;
+    unsigned long long _attributeSet;
 }
 
+@property (strong, nonatomic) _PKAllowDrawingWhilePresentingPopoverView *_allowDrawingWhilePresentingPopoverView; // @synthesize _allowDrawingWhilePresentingPopoverView=__allowDrawingWhilePresentingPopoverView;
+@property (readonly, nonatomic) struct CGRect _extentRect; // @dynamic _extentRect;
+@property (strong, nonatomic) NSMutableDictionary *_inkForIdentifierDict; // @synthesize _inkForIdentifierDict=__inkForIdentifierDict;
+@property (nonatomic) unsigned long long attributeSet; // @synthesize attributeSet=_attributeSet;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) UILayoutGuide *backgroundViewLayoutGuide; // @synthesize backgroundViewLayoutGuide=_backgroundViewLayoutGuide;
 @property (strong, nonatomic) UIView *clippingView; // @synthesize clippingView=_clippingView;
 @property (strong, nonatomic) PKInlineColorPicker *colorPicker; // @synthesize colorPicker=_colorPicker;
 @property (nonatomic) unsigned long long colorSet;
+@property (nonatomic) BOOL contentsHidden; // @synthesize contentsHidden=_contentsHidden;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKInlineInkPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -44,8 +57,9 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *inkIdentifiers; // @synthesize inkIdentifiers=_inkIdentifiers;
 @property (nonatomic) BOOL isUsedOnDarkBackground; // @synthesize isUsedOnDarkBackground=_isUsedOnDarkBackground;
-@property (nonatomic) unsigned long long pickerState; // @synthesize pickerState=_pickerState;
+@property (strong, nonatomic) PKInkAttributesPicker *presentedInkAttributesPicker; // @synthesize presentedInkAttributesPicker=_presentedInkAttributesPicker;
 @property (nonatomic) unsigned long long previousDrawingToolIndex; // @synthesize previousDrawingToolIndex=_previousDrawingToolIndex;
+@property (nonatomic) unsigned long long previousToolIndex; // @synthesize previousToolIndex=_previousToolIndex;
 @property (copy, nonatomic) UIColor *selectedColor;
 @property (copy, nonatomic) PKInk *selectedInk;
 @property (copy, nonatomic) NSString *selectedInkIdentifier;
@@ -56,27 +70,56 @@
 @property (nonatomic) unsigned long long sizeState; // @synthesize sizeState=_sizeState;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *toolButtonItems; // @synthesize toolButtonItems=_toolButtonItems;
-@property (nonatomic) BOOL wantsThickerInks; // @synthesize wantsThickerInks=_wantsThickerInks;
 
 + (BOOL)_axLargerTextSizesEnabled;
++ (id)_defaultCriticallyDampedSpringAnimator;
++ (id)_defaultInkForIdentifier:(id)arg1 attributeSet:(unsigned long long)arg2;
++ (id)defaultInkForAttributeSet:(unsigned long long)arg1;
 + (id)imageNamed:(id)arg1;
++ (BOOL)inkIdentifierHasMutableAttributes:(id)arg1;
 + (id)sharedImageNameCache;
 + (double)spacingForToolIndex:(unsigned long long)arg1 sizeState:(unsigned long long)arg2;
 - (void).cxx_destruct;
+- (void)_allowDrawingWhilePresentingPopoverViewDidBeginDrawing:(id)arg1;
+- (id)_allowDrawingWhilePresentingPopoverViewPassthroughArray;
 - (void)_axHandleLongPressForLargeTextHUD:(id)arg1;
 - (id)_axLabelForToolButton:(id)arg1;
 - (void)_commonInit;
+- (void)_dismissInkAttributesPicker:(CDUnknownBlockType)arg1;
+- (id)_effectiveViewControllerForPopoverPresentation;
+- (void)_forceSetAttributeSet:(unsigned long long)arg1;
+- (id)_inlineColorPickerAllowDrawingPassthroughView:(id)arg1;
+- (void)_inlineColorPickerSetupAllowDrawingPassthroughViewIfNeeded:(id)arg1;
+- (void)_inlineColorPickerTeardownAllowDrawingPassthroughView:(id)arg1;
+- (void)_inlineColorPickerUpdateFrameForAllowDrawingPassthroughView:(id)arg1;
+- (double)_layoutAlphaForToolIndex:(long long)arg1;
+- (BOOL)_layoutButtonSelectedForToolIndex:(long long)arg1;
+- (id)_layoutCalculateUncenteredSubviewFrames;
+- (struct CGRect)_layoutCenteredFrameForToolIndex:(long long)arg1 uncenteredFrames:(id)arg2 centeringTransform:(struct CGAffineTransform)arg3;
+- (id)_layoutSeparatorViewColorEmbossed:(BOOL)arg1 isUsedOnDarkBackground:(BOOL)arg2;
+- (void)_layoutUpdateSizeAndSelectionState;
+- (double)_layoutYOffsetForToolIndex:(long long)arg1;
+- (void)_resetInkAttributePickerState;
 - (void)_setSelectionStateNoLayout:(unsigned long long)arg1;
 - (void)_setSizeStateNoLayout:(unsigned long long)arg1;
+- (void)_setupAllowDrawingWhilePresentingPopoverViewIfNecessaryWithDelegate:(id)arg1;
+- (void)_showInkAttributesPickerFromView:(id)arg1 frame:(struct CGRect)arg2 displayMode:(unsigned long long)arg3 shouldHideArrow:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_teardownAllowDrawingWhilePresentingPopoverView;
 - (id)_toolButtonContainingPoint:(struct CGPoint)arg1;
+- (void)_updateFrameForAllowDrawingWhilePresentingPopoverView;
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (double)cachedToolButtonWidthForSizeState:(unsigned long long)arg1;
+- (id)colorForInkIdentifier:(id)arg1;
 - (void)colorPickerColorTappedInCompactChooseToolState:(id)arg1;
 - (void)colorPickerDidSelectColor:(id)arg1 colorChanged:(BOOL)arg2;
 - (id)createToolButtonItemWithInkIdentifier:(id)arg1 shouldEmboss:(BOOL)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithEmbossing:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)inkAttributesPickerDidChangeSelectedInk:(id)arg1;
+- (id)inkIdentifierForIndex:(unsigned long long)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (BOOL)isDrawingToolIdentifier:(id)arg1;
 - (BOOL)isDrawingToolIndex:(unsigned long long)arg1;
 - (unsigned long long)lastDrawingToolIndex;
 - (void)layoutSubviews;
@@ -84,18 +127,22 @@
 - (struct CGSize)minimumSizeForSizeState:(unsigned long long)arg1 selectionState:(unsigned long long)arg2;
 - (void)notifyColorSelected:(BOOL)arg1;
 - (void)notifyToolSelected:(BOOL)arg1;
+- (double)offsetForToolIndex:(unsigned long long)arg1 pressed:(BOOL)arg2;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)resetToDrawingToolWithAnimation:(BOOL)arg1;
 - (unsigned long long)selectionStateForSizeState:(unsigned long long)arg1 previousSelectionState:(unsigned long long)arg2;
+- (void)setColor:(id)arg1 forInkIdentifier:(id)arg2;
+- (void)setContentsHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelectedColor:(id)arg1 animated:(BOOL)arg2;
 - (void)setSelectedInk:(id)arg1 animated:(BOOL)arg2;
 - (void)setSelectedInkIdentifier:(id)arg1 animated:(BOOL)arg2;
 - (unsigned long long)sizeStateForWidth:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 sizeState:(unsigned long long)arg2 selectionState:(unsigned long long)arg3;
-- (void)toolPressed:(id)arg1;
 - (void)toolTapped:(id)arg1;
-- (void)toolUnpressed:(id)arg1;
+- (void)userDidTouchTool:(id)arg1;
+- (id)viewControllerForPopoverPresentationFromColorPicker:(id)arg1;
 
 @end
 

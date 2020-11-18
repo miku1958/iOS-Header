@@ -10,7 +10,7 @@
 #import <UserNotificationsKit/NSCopying-Protocol.h>
 #import <UserNotificationsKit/NSMutableCopying-Protocol.h>
 
-@class NSDate, NSString, NSTimeZone, UIImage;
+@class NSArray, NSDate, NSString, NSTimeZone, UIImage;
 
 @interface NCNotificationContent : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying>
 {
@@ -19,7 +19,11 @@
     NSString *_subtitle;
     NSString *_message;
     NSString *_hiddenPreviewsBodyPlaceholder;
-    UIImage *_icon;
+    NSString *_categorySummaryFormat;
+    NSString *_summaryArgument;
+    unsigned long long _summaryArgumentCount;
+    NSArray *_icons;
+    NSArray *_carPlayIcons;
     UIImage *_attachmentImage;
     NSDate *_date;
     BOOL _dateAllDay;
@@ -28,6 +32,9 @@
 }
 
 @property (readonly, nonatomic) UIImage *attachmentImage; // @synthesize attachmentImage=_attachmentImage;
+@property (readonly, nonatomic) UIImage *carPlayIcon;
+@property (readonly, nonatomic) NSArray *carPlayIcons; // @synthesize carPlayIcons=_carPlayIcons;
+@property (readonly, copy, nonatomic) NSString *categorySummaryFormat; // @synthesize categorySummaryFormat=_categorySummaryFormat;
 @property (readonly, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, nonatomic, getter=isDateAllDay) BOOL dateAllDay; // @synthesize dateAllDay=_dateAllDay;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,9 +42,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *header; // @synthesize header=_header;
 @property (readonly, copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @synthesize hiddenPreviewsBodyPlaceholder=_hiddenPreviewsBodyPlaceholder;
-@property (readonly, nonatomic) UIImage *icon; // @synthesize icon=_icon;
+@property (readonly, nonatomic) UIImage *icon;
+@property (readonly, nonatomic) NSArray *icons; // @synthesize icons=_icons;
 @property (readonly, copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly, copy, nonatomic) NSString *summaryArgument; // @synthesize summaryArgument=_summaryArgument;
+@property (readonly, nonatomic) unsigned long long summaryArgumentCount; // @synthesize summaryArgumentCount=_summaryArgumentCount;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;

@@ -22,7 +22,7 @@
 }
 
 @property (copy, nonatomic) NSString *advisementText; // @synthesize advisementText=_advisementText;
-@property (strong, nonatomic) NSDate *dateStatusModified; // @synthesize dateStatusModified=_dateStatusModified;
+@property (copy, nonatomic) NSDate *dateStatusModified; // @synthesize dateStatusModified=_dateStatusModified;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) INRestaurantGuest *guest; // @synthesize guest=_guest;

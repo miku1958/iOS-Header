@@ -14,15 +14,17 @@
 {
     WAKView *_documentView;
     WAKClipView *_contentView;
-    id _delegate;
     struct CGPoint _scrollOrigin;
+    id delegate;
 }
 
+@property (weak, nonatomic) id delegate; // @synthesize delegate;
+
+- (void).cxx_destruct;
 - (void)_adjustScrollers;
 - (BOOL)_selfHandleEvent:(id)arg1;
 - (id)contentView;
 - (void)dealloc;
-- (id)delegate;
 - (id)description;
 - (id)documentView;
 - (struct CGRect)documentVisibleRect;
@@ -41,7 +43,6 @@
 - (void)scrollWheel:(id)arg1;
 - (void)scrollingModes:(int *)arg1 vertical:(int *)arg2;
 - (void)setActualScrollPosition:(struct CGPoint)arg1;
-- (void)setDelegate:(id)arg1;
 - (void)setDocumentView:(id)arg1;
 - (void)setDrawsBackground:(BOOL)arg1;
 - (void)setHasHorizontalScroller:(BOOL)arg1;

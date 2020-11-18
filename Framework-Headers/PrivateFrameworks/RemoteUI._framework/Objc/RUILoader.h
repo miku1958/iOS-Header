@@ -34,13 +34,13 @@
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)_finishLoad;
+- (void)_handleShouldLoadRequestResult:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)allWebViewsFinishedLoading;
 - (BOOL)anyWebViewLoading;
 - (void)cancel;
 - (void)dealloc;
 - (void)didParseData;
 - (void)failWithError:(id)arg1;
-- (id)handleWillLoadRequest:(id)arg1;
 - (void)loadRequest:(id)arg1;
 - (void)loadXMLUIWithData:(id)arg1 baseURL:(id)arg2;
 - (void)loadXMLUIWithRequest:(id)arg1;
@@ -48,6 +48,7 @@
 - (void)parseData:(id)arg1;
 - (BOOL)receivedValidResponse:(id)arg1;
 - (id)sessionConfiguration;
+- (void)shouldLoadRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)urlSessionDelegate;
 - (void)webViewFinishedLoading;
 

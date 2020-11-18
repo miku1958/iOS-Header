@@ -8,8 +8,6 @@
 
 @interface MPSCNNSpatialNormalizationGradient : MPSCNNGradientKernel
 {
-    unsigned long long _kernelWidth;
-    unsigned long long _kernelHeight;
     float _alpha;
     float _beta;
     float _delta;
@@ -18,8 +16,6 @@
 @property (nonatomic) float alpha; // @synthesize alpha=_alpha;
 @property (nonatomic) float beta; // @synthesize beta=_beta;
 @property (nonatomic) float delta; // @synthesize delta=_delta;
-@property (readonly, nonatomic) unsigned long long kernelHeight; // @synthesize kernelHeight=_kernelHeight;
-@property (readonly, nonatomic) unsigned long long kernelWidth; // @synthesize kernelWidth=_kernelWidth;
 
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

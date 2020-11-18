@@ -4,26 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class PKXPCService;
+#import <PassKitCore/PKCloudStoreCoordinatorDelegate-Protocol.h>
 
-@interface PKCloudStoreService : NSObject
+@class NSString, PKXPCService;
+
+@interface PKCloudStoreService : NSObject <PKCloudStoreCoordinatorDelegate>
 {
     PKXPCService *_remoteService;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_remoteObjectProxy;
 - (id)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;
 - (id)_remoteObjectProxyWithSemaphore:(id)arg1;
-- (void)allTransactionsAndStoreLocally:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)generateRandomTransactionForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (void)removeTransactionsWithRecordNames:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)noteAccountDeleted;
+- (void)noteCloudSyncPassesSwitchChanged;
+- (void)removeItemsWithRecordNames:(id)arg1 itemType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetContainerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetContainerWithHandler:(CDUnknownBlockType)arg1;
+- (void)resetContainerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)simulateCloudStorePushForContainerIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)simulateCloudStorePushWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

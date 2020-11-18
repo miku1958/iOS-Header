@@ -16,6 +16,7 @@
     NSDate *_entry;
     NSDate *_exit;
     NSUUID *_identifier;
+    double _locationOfInterestConfidence;
 }
 
 @property (readonly, nonatomic) NSDate *entry; // @synthesize entry=_entry;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) NSDate *exit; // @synthesize exit=_exit;
 @property (readonly, nonatomic) NSDate *exitTime;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) double locationOfInterestConfidence; // @synthesize locationOfInterestConfidence=_locationOfInterestConfidence;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -32,7 +34,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 entry:(id)arg2 exit:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 entry:(id)arg2 exit:(id)arg3 locationOfInterestConfidence:(double)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

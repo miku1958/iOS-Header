@@ -6,45 +6,44 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMFNetAddress, NSObject;
+#import <HMFoundation/HMFLogging-Protocol.h>
+
+@class HMFNetAddress, HMFUnfairLock, NSObject, NSString;
 @protocol HMFNetMonitorDelegate, OS_dispatch_queue;
 
-@interface HMFNetMonitor : HMFObject
+@interface HMFNetMonitor : HMFObject <HMFLogging>
 {
+    HMFUnfairLock *_lock;
     BOOL _reachable;
-    BOOL _monitoring;
     unsigned int _currentNetworkFlags;
     id<HMFNetMonitorDelegate> _delegate;
     HMFNetAddress *_netAddress;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    NSObject<OS_dispatch_queue> *_queue;
     struct __SCNetworkReachability *_networkReachabilityRef;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (nonatomic) unsigned int currentNetworkFlags; // @synthesize currentNetworkFlags=_currentNetworkFlags;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMFNetMonitorDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic, getter=isMonitoring) BOOL monitoring; // @synthesize monitoring=_monitoring;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) HMFNetAddress *netAddress; // @synthesize netAddress=_netAddress;
 @property (readonly, nonatomic) struct __SCNetworkReachability *networkReachabilityRef; // @synthesize networkReachabilityRef=_networkReachabilityRef;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) unsigned long long reachabilityPath;
 @property (readonly, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
+@property (readonly) Class superclass;
 
-+ (id)shortDescription;
++ (id)logCategory;
 - (void).cxx_destruct;
-- (void)_stop;
+- (id)attributeDescriptions;
 - (void)dealloc;
-- (id)debugDescription;
-- (id)description;
-- (id)descriptionWithPointer:(BOOL)arg1;
 - (void)handleNetworkReachabilityChange:(unsigned int)arg1;
 - (id)init;
 - (id)initWithNetAddress:(id)arg1;
+- (id)logIdentifier;
 - (void)setReachable:(BOOL)arg1;
 - (id)shortDescription;
-- (void)start;
-- (void)stop;
 
 @end
 

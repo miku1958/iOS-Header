@@ -7,32 +7,31 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBCondition-Protocol.h>
 
-@class PBUnknownFields;
+@class NSString;
 
-@interface _INPBCondition : PBCodable <NSCopying>
+@interface _INPBCondition : PBCodable <_INPBCondition, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    int _conditionalOperator;
     struct {
         unsigned int conditionalOperator:1;
     } _has;
+    int _conditionalOperator;
 }
 
 @property (nonatomic) int conditionalOperator; // @synthesize conditionalOperator=_conditionalOperator;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasConditionalOperator;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-+ (id)options;
-- (void).cxx_destruct;
 - (int)StringAsConditionalOperator:(id)arg1;
 - (id)conditionalOperatorAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

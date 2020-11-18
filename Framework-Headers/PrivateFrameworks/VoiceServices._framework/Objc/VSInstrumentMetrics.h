@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 
@@ -15,47 +15,56 @@
     BOOL _isWarmStart;
     BOOL _isServerTTS;
     BOOL _isServerTimeout;
+    BOOL _isServerTTSRacing;
+    BOOL _canUseServerTTS;
     BOOL _isSpeechRequest;
     BOOL _isCacheHitFromDisk;
     BOOL _isCacheHitFromMemory;
     NSString *_utterance;
     NSString *_voiceAssetKey;
-    unsigned long long _requestCreatedTimestamp;
-    unsigned long long _eagerRequestCreatedTimeStampDiffs;
-    unsigned long long _synthesisBeginTimestamp;
-    unsigned long long _synthesisEndTimestamp;
-    unsigned long long _speechBeginTimestamp;
-    unsigned long long _speechEndTimestamp;
-    unsigned long long _audioStartTimestampDiffs;
+    NSString *_voiceResourceAssetKey;
+    long long _requestCreatedTimestamp;
+    long long _eagerRequestCreatedTimeStampDiffs;
+    long long _synthesisBeginTimestamp;
+    long long _synthesisEndTimestamp;
+    long long _speechBeginTimestamp;
+    long long _speechEndTimestamp;
+    long long _audioStartTimestampDiffs;
     double _audioDuration;
-    unsigned long long _synthesisToSpeechTimeGap;
-    unsigned long long _waitForSynthesisToFinishTimeDelay;
+    long long _promptCount;
+    long long _synthesisToSpeechTimeGap;
+    long long _waitForSynthesisToFinishTimeDelay;
 }
 
 @property double audioDuration; // @synthesize audioDuration=_audioDuration;
-@property unsigned long long audioStartTimestampDiffs; // @synthesize audioStartTimestampDiffs=_audioStartTimestampDiffs;
-@property unsigned long long eagerRequestCreatedTimeStampDiffs; // @synthesize eagerRequestCreatedTimeStampDiffs=_eagerRequestCreatedTimeStampDiffs;
+@property long long audioStartTimestampDiffs; // @synthesize audioStartTimestampDiffs=_audioStartTimestampDiffs;
+@property BOOL canUseServerTTS; // @synthesize canUseServerTTS=_canUseServerTTS;
+@property long long eagerRequestCreatedTimeStampDiffs; // @synthesize eagerRequestCreatedTimeStampDiffs=_eagerRequestCreatedTimeStampDiffs;
 @property BOOL isCacheHitFromDisk; // @synthesize isCacheHitFromDisk=_isCacheHitFromDisk;
 @property BOOL isCacheHitFromMemory; // @synthesize isCacheHitFromMemory=_isCacheHitFromMemory;
 @property BOOL isServerTTS; // @synthesize isServerTTS=_isServerTTS;
+@property BOOL isServerTTSRacing; // @synthesize isServerTTSRacing=_isServerTTSRacing;
 @property BOOL isServerTimeout; // @synthesize isServerTimeout=_isServerTimeout;
 @property BOOL isSpeechRequest; // @synthesize isSpeechRequest=_isSpeechRequest;
 @property BOOL isWarmStart; // @synthesize isWarmStart=_isWarmStart;
-@property unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
-@property unsigned long long speechBeginTimestamp; // @synthesize speechBeginTimestamp=_speechBeginTimestamp;
-@property unsigned long long speechEndTimestamp; // @synthesize speechEndTimestamp=_speechEndTimestamp;
-@property unsigned long long synthesisBeginTimestamp; // @synthesize synthesisBeginTimestamp=_synthesisBeginTimestamp;
-@property unsigned long long synthesisEndTimestamp; // @synthesize synthesisEndTimestamp=_synthesisEndTimestamp;
-@property unsigned long long synthesisToSpeechTimeGap; // @synthesize synthesisToSpeechTimeGap=_synthesisToSpeechTimeGap;
+@property long long promptCount; // @synthesize promptCount=_promptCount;
+@property long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
+@property long long speechBeginTimestamp; // @synthesize speechBeginTimestamp=_speechBeginTimestamp;
+@property long long speechEndTimestamp; // @synthesize speechEndTimestamp=_speechEndTimestamp;
+@property long long synthesisBeginTimestamp; // @synthesize synthesisBeginTimestamp=_synthesisBeginTimestamp;
+@property long long synthesisEndTimestamp; // @synthesize synthesisEndTimestamp=_synthesisEndTimestamp;
+@property long long synthesisToSpeechTimeGap; // @synthesize synthesisToSpeechTimeGap=_synthesisToSpeechTimeGap;
 @property (copy) NSString *utterance; // @synthesize utterance=_utterance;
 @property (copy) NSString *voiceAssetKey; // @synthesize voiceAssetKey=_voiceAssetKey;
-@property unsigned long long waitForSynthesisToFinishTimeDelay; // @synthesize waitForSynthesisToFinishTimeDelay=_waitForSynthesisToFinishTimeDelay;
+@property (copy) NSString *voiceResourceAssetKey; // @synthesize voiceResourceAssetKey=_voiceResourceAssetKey;
+@property long long waitForSynthesisToFinishTimeDelay; // @synthesize waitForSynthesisToFinishTimeDelay=_waitForSynthesisToFinishTimeDelay;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (double)_clockFactor;
 - (double)audioQueueLatency;
 - (id)description;
+- (id)dictionaryMetrics;
 - (double)eagerRequestTimeGap;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

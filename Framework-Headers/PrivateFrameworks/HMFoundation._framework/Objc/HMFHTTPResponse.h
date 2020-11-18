@@ -23,16 +23,12 @@
 @property (readonly, nonatomic) HMFHTTPRequest *request; // @synthesize request=_request;
 @property (readonly, nonatomic) long long statusCode;
 
-+ (id)shortDescription;
 - (void).cxx_destruct;
+- (id)attributeDescriptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugDescription;
-- (id)description;
-- (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
 - (id)initWithRequest:(id)arg1 internalResponse:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (id)shortDescription;
 
 @end
 

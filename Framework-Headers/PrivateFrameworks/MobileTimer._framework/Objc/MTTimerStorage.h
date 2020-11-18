@@ -40,8 +40,11 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *timers;
 
++ (id)_diagnosticDictionaryForTimer:(id)arg1;
 - (void).cxx_destruct;
 - (id)_applyNecessaryChangesFromOldTimer:(id)arg1 currentTimer:(id)arg2;
+- (void)_createDefaultTimerIfNeededWithCompletion:(CDUnknownBlockType)arg1;
+- (id)_diagnosticTimerDictionary;
 - (void)_loadTimersWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_queuePersistTimer:(id)arg1 replacingTimer:(id)arg2;
 - (void)_queue_addTimer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
@@ -62,9 +65,10 @@
 - (void)_queue_setAllTimers:(id)arg1 source:(id)arg2 persist:(BOOL)arg3 notify:(BOOL)arg4;
 - (void)_queue_sortTimers;
 - (id)_queue_timerMatchingTimerIdentifier:(id)arg1;
-- (void)_queue_updateTimer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
+- (id)_queue_updateTimer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
 - (void)addTimer:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
 - (void)dismissTimerWithIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 source:(id)arg3;
+- (id)gatherDiagnostics;
 - (void)getTimersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleF5Reset;
 - (id)init;

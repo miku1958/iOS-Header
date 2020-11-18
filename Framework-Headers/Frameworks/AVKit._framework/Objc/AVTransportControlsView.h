@@ -6,13 +6,12 @@
 
 #import <AVKit/AVView.h>
 
-#import <AVKit/AVPlaybackControlsViewItemAvailabilityObserver-Protocol.h>
 #import <AVKit/AVScrubberDelegate-Protocol.h>
 
-@class AVBackdropView, AVButton, AVLabel, AVPlaybackControlsRoutePickerView, AVScrubber, NSArray, NSLayoutConstraint, NSString, NSTimer, UILabel, UIView;
+@class AVBackdropView, AVButton, AVLabel, AVPlaybackControlsRoutePickerView, AVScrubber, AVStyleSheet, AVTouchIgnoringView, NSArray, NSLayoutConstraint, NSString, NSTimer, UILabel, UIView, _UIVisualEffectBackdropView;
 @protocol AVTransportControlsViewDelegate;
 
-@interface AVTransportControlsView : AVView <AVPlaybackControlsViewItemAvailabilityObserver, AVScrubberDelegate>
+@interface AVTransportControlsView : AVView <AVScrubberDelegate>
 {
     BOOL _doubleRowLayoutEnabled;
     BOOL _showsLoadingIndicator;
@@ -25,6 +24,7 @@
     BOOL _backdropViewNeedsLayout;
     float _scrubberValueWhenScrubInstructionsTimerBegan;
     id<AVTransportControlsViewDelegate> _delegate;
+    AVStyleSheet *_styleSheet;
     double _minimumRequiredWidth;
     AVScrubber *_scrubber;
     AVLabel *_elapsedTimeLabel;
@@ -32,32 +32,41 @@
     AVButton *_standardPlayPauseButton;
     AVButton *_skipForwardButton;
     AVButton *_skipBackButton;
+    AVButton *_startLeftwardContentTransitionButton;
+    AVButton *_startRightwardContentTransitionButton;
     AVPlaybackControlsRoutePickerView *_routePickerView;
     AVButton *_mediaSelectionButton;
+    NSArray *_customButtons;
+    UIView *_customContentTransitioningInfoPanel;
     AVBackdropView *_backdropView;
-    AVBackdropView *_scrubInstructionsBackdrop;
+    AVBackdropView *_detachedExtraContentBackdropView;
     NSArray *_doubleRowLayoutConstraints;
     NSLayoutConstraint *_scrubberInstructionsDoubleRowActiveConstraint;
     AVLabel *_liveBroadcastLabel;
     AVLabel *_liveBroadcastScrubberLabel;
-    UIView *_scrubInstructionsContainer;
+    AVTouchIgnoringView *_embeddedExtraContentContainer;
     UILabel *_scrubInstructionsLabel;
     UILabel *_scrubInstructionsBackdropLabel;
     NSTimer *_scrubInstructionsTimer;
-    NSArray *_singleRowViews;
+    _UIVisualEffectBackdropView *_captureView;
     struct CGSize _extrinsicContentSize;
 }
 
 @property (readonly, nonatomic) AVBackdropView *backdropView; // @synthesize backdropView=_backdropView;
 @property (nonatomic) BOOL backdropViewNeedsLayout; // @synthesize backdropViewNeedsLayout=_backdropViewNeedsLayout;
+@property (readonly, nonatomic) _UIVisualEffectBackdropView *captureView; // @synthesize captureView=_captureView;
 @property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
+@property (copy, nonatomic) NSArray *customButtons; // @synthesize customButtons=_customButtons;
+@property (strong, nonatomic) UIView *customContentTransitioningInfoPanel; // @synthesize customContentTransitioningInfoPanel=_customContentTransitioningInfoPanel;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AVTransportControlsViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) AVBackdropView *detachedExtraContentBackdropView; // @synthesize detachedExtraContentBackdropView=_detachedExtraContentBackdropView;
 @property (readonly, nonatomic) NSArray *doubleRowLayoutConstraints; // @synthesize doubleRowLayoutConstraints=_doubleRowLayoutConstraints;
 @property (nonatomic, getter=isDoubleRowLayoutEnabled) BOOL doubleRowLayoutEnabled; // @synthesize doubleRowLayoutEnabled=_doubleRowLayoutEnabled;
 @property (readonly, nonatomic) AVLabel *elapsedTimeLabel; // @synthesize elapsedTimeLabel=_elapsedTimeLabel;
+@property (readonly, nonatomic) AVTouchIgnoringView *embeddedExtraContentContainer; // @synthesize embeddedExtraContentContainer=_embeddedExtraContentContainer;
 @property (nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
 @property (nonatomic) BOOL hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
@@ -69,9 +78,7 @@
 @property (readonly, nonatomic) AVButton *mediaSelectionButton; // @synthesize mediaSelectionButton=_mediaSelectionButton;
 @property (readonly, nonatomic) double minimumRequiredWidth; // @synthesize minimumRequiredWidth=_minimumRequiredWidth;
 @property (readonly, nonatomic) AVPlaybackControlsRoutePickerView *routePickerView; // @synthesize routePickerView=_routePickerView;
-@property (strong, nonatomic) AVBackdropView *scrubInstructionsBackdrop; // @synthesize scrubInstructionsBackdrop=_scrubInstructionsBackdrop;
 @property (readonly, nonatomic) UILabel *scrubInstructionsBackdropLabel; // @synthesize scrubInstructionsBackdropLabel=_scrubInstructionsBackdropLabel;
-@property (readonly, nonatomic) UIView *scrubInstructionsContainer; // @synthesize scrubInstructionsContainer=_scrubInstructionsContainer;
 @property (readonly, nonatomic) UILabel *scrubInstructionsLabel; // @synthesize scrubInstructionsLabel=_scrubInstructionsLabel;
 @property (weak, nonatomic) NSTimer *scrubInstructionsTimer; // @synthesize scrubInstructionsTimer=_scrubInstructionsTimer;
 @property (readonly, nonatomic) AVScrubber *scrubber; // @synthesize scrubber=_scrubber;
@@ -79,29 +86,33 @@
 @property (nonatomic) float scrubberValueWhenScrubInstructionsTimerBegan; // @synthesize scrubberValueWhenScrubInstructionsTimerBegan=_scrubberValueWhenScrubInstructionsTimerBegan;
 @property (nonatomic) BOOL showsLiveStreamingControls; // @synthesize showsLiveStreamingControls=_showsLiveStreamingControls;
 @property (nonatomic) BOOL showsLoadingIndicator; // @synthesize showsLoadingIndicator=_showsLoadingIndicator;
-@property (readonly, nonatomic) NSArray *singleRowViews; // @synthesize singleRowViews=_singleRowViews;
+@property (readonly, nonatomic) NSArray *singleRowViews;
 @property (readonly, nonatomic) AVButton *skipBackButton; // @synthesize skipBackButton=_skipBackButton;
 @property (readonly, nonatomic) AVButton *skipForwardButton; // @synthesize skipForwardButton=_skipForwardButton;
 @property (readonly, nonatomic) AVButton *standardPlayPauseButton; // @synthesize standardPlayPauseButton=_standardPlayPauseButton;
+@property (readonly, nonatomic) AVButton *startLeftwardContentTransitionButton; // @synthesize startLeftwardContentTransitionButton=_startLeftwardContentTransitionButton;
+@property (readonly, nonatomic) AVButton *startRightwardContentTransitionButton; // @synthesize startRightwardContentTransitionButton=_startRightwardContentTransitionButton;
+@property (strong, nonatomic) AVStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) AVLabel *timeRemainingLabel; // @synthesize timeRemainingLabel=_timeRemainingLabel;
 
++ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_ensureLayoutConstraints;
 - (id)_scrubInstructionsAttributedText;
 - (void)_showScrubInstructions;
+- (void)_updateCustomContentTransitioningInfoPanelLayout;
 - (void)_updateFontSizes;
 - (void)_updateScrubInstructionsLabelsText;
 - (void)beginScrubbing:(id)arg1;
-- (void)dealloc;
 - (void)endScrubbing:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 styleSheet:(id)arg2 captureView:(id)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
-- (void)playbackControlsViewItemChangedAvailability:(id)arg1;
 - (void)scrubberSlowKnobMovementDetected:(id)arg1;
 - (void)scrubberValueChanged:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateConstraints;
 
 @end
 

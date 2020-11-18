@@ -8,13 +8,12 @@
 
 #import <PhotoLibrary/UIApplicationDelegate-Protocol.h>
 
-@class BLActivityAlert, NSDictionary, NSString, UIWindow;
+@class BLActivityAlert, NSDictionary, NSSet, NSString, UIWindow;
 
 @interface PLPhotosApplication : UIApplication <UIApplicationDelegate>
 {
     BOOL _receivingRemoteControlEvents;
     UIWindow *_window;
-    BOOL _urlNeedsHandling;
     int _observeForRechabilityChanges;
     BOOL _isReachable;
     BOOL _isOnWifi;
@@ -25,6 +24,7 @@
     int _sharedPhotoStreamInvitationFailureToken;
     NSString *_currentTestName;
     NSDictionary *_currentTestOptions;
+    NSSet *_notificationSuppressionContexts;
     BLActivityAlert *_iPhotoMigrationActivityAlert;
 }
 
@@ -36,6 +36,7 @@
 @property (strong, nonatomic) BLActivityAlert *iPhotoMigrationActivityAlert; // @synthesize iPhotoMigrationActivityAlert=_iPhotoMigrationActivityAlert;
 @property (readonly, nonatomic) BOOL isOnWifi; // @synthesize isOnWifi=_isOnWifi;
 @property (readonly, nonatomic) BOOL isReachable; // @synthesize isReachable=_isReachable;
+@property (copy, nonatomic) NSSet *notificationSuppressionContexts; // @synthesize notificationSuppressionContexts=_notificationSuppressionContexts;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIWindow *window;
 
@@ -43,7 +44,6 @@
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationDidResignActive:(id)arg1;
 - (void)_cleanUpOutboundSharingAssets;
-- (void)_finishExtendedTest;
 - (void)_networkReachabilityDidChange:(id)arg1;
 - (void)_registerForPhotoStreamActivityNotifications;
 - (void)_setImageOptions;

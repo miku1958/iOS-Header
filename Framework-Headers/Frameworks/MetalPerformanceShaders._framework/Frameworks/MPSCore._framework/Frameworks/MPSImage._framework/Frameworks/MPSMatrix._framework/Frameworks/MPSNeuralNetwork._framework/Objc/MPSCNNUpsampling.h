@@ -11,8 +11,10 @@
     unsigned long long _filterType;
     double _scaleFactorX;
     double _scaleFactorY;
+    BOOL _alignCorners;
 }
 
+@property (readonly, nonatomic) BOOL alignCorners; // @synthesize alignCorners=_alignCorners;
 @property (readonly, nonatomic) double scaleFactorX; // @synthesize scaleFactorX=_scaleFactorX;
 @property (readonly, nonatomic) double scaleFactorY; // @synthesize scaleFactorY=_scaleFactorY;
 
@@ -23,7 +25,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
-- (id)initWithDevice:(id)arg1 filterType:(unsigned long long)arg2 integerScaleFactorX:(unsigned long long)arg3 integerScaleFactorY:(unsigned long long)arg4;
+- (id)initWithDevice:(id)arg1 filterType:(unsigned long long)arg2 integerScaleFactorX:(unsigned long long)arg3 integerScaleFactorY:(unsigned long long)arg4 alignCorners:(BOOL)arg5;
 
 @end
 

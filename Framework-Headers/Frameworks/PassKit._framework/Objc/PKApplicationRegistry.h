@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
@@ -31,7 +31,7 @@
 - (void)applicationsDidUninstall:(id)arg1;
 - (void)dealloc;
 - (id)initWithArchiveFileURL:(id)arg1;
-- (BOOL)registerApplicationWithBundeIdentifier:(id)arg1;
+- (BOOL)registerApplicationWithBundleIdentifier:(id)arg1;
 
 @end
 

@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable;
 @protocol OS_os_log;
 
+__attribute__((visibility("hidden")))
 @interface PCSLockManager : NSObject
 {
     NSHashTable *_observers;

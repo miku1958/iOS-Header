@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDCameraTLVBase.h>
+#import <HomeKitDaemon/HMDTLVBase.h>
 
-#import <HomeKitDaemon/HMDCameraTLVCreateParse-Protocol.h>
+#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDAudioCodecGroup, HMDAudioCodecParameters;
 
-@interface HMDAudioCodecConfiguration : HMDCameraTLVBase <HMDCameraTLVCreateParse, NSSecureCoding>
+@interface HMDAudioCodecConfiguration : HMDTLVBase <HMDTLVCreateParse, NSSecureCoding>
 {
     HMDAudioCodecGroup *_codecGroup;
     HMDAudioCodecParameters *_audioCodecParameters;

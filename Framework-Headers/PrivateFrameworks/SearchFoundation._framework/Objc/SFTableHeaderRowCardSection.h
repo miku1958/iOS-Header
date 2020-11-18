@@ -57,6 +57,7 @@
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
 @property (nonatomic) BOOL reducedRowHeight;
 @property (copy, nonatomic) NSString *resultIdentifier;
+@property (copy, nonatomic) NSArray *richData;
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *tabGroupIdentifier;

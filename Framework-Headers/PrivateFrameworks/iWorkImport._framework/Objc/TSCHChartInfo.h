@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
@@ -171,6 +171,7 @@ __attribute__((visibility("hidden")))
 - (void)clearViewStyleProxyForLayouts:(id)arg1;
 - (id)commandToApplyFillSet:(id)arg1;
 - (BOOL)containsCalloutLines;
+- (BOOL)containsCalloutLinesWithoutModelSync;
 - (id)context;
 - (id)copyWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -190,15 +191,17 @@ __attribute__((visibility("hidden")))
 - (id)g_genericToDefaultPropertyMap;
 - (id)g_operationPropertyNameForGenericProperty:(int)arg1;
 - (BOOL)gridEqualToDefaultGrid;
+- (BOOL)hasCategoryReferences;
 - (BOOL)hasFloatValueForProperty:(int)arg1 value:(float *)arg2;
 - (BOOL)hasIntValueForProperty:(int)arg1 value:(int *)arg2;
 - (BOOL)hasObjectValueForProperty:(int)arg1 value:(id *)arg2;
+- (BOOL)hasRoundedCorners;
+- (BOOL)hasTractReference;
 - (id)infoGeometryForDesiredCircumscribingGeometry:(id)arg1;
 - (id)infoGeometryForDesiredCircumscribingGeometry:(id)arg1 omitLabelPlacement:(BOOL)arg2;
 - (id)infoGeometryForDesiredPureLayoutGeometry:(id)arg1;
 - (id)infoGeometryForVisiblePositioningInfoGeometry:(id)arg1;
 - (id)infoGeometryForVisuallyCenteringOnUnscaledCanvasPoint:(struct CGPoint)arg1;
-- (id)init;
 - (id)initWithChartType:(id)arg1 legendShowing:(id)arg2 chartBodyFrame:(id)arg3 chartAreaFrame:(id)arg4 circumscribingFrame:(id)arg5 legendFrame:(id)arg6 stylePreset:(id)arg7 privateSeriesStyles:(id)arg8 chartNonStyle:(id)arg9 legendNonStyle:(id)arg10 valueAxisNonStyles:(id)arg11 categoryAxisNonStyles:(id)arg12 seriesNonStyles:(id)arg13 refLineNonStylesMap:(id)arg14 refLineStylesMap:(id)arg15 forDocumentLocale:(id)arg16;
 - (int)intValueForProperty:(int)arg1 defaultValue:(int)arg2;
 - (BOOL)isEquivalentForCrossDocumentPasteMasterComparison:(id)arg1;
@@ -226,6 +229,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)numberOfThemeSeriesStyles;
 - (id)objectValueForProperty:(int)arg1;
 - (id)operationPropertyNameFromGenericProperty:(int)arg1;
+- (BOOL)p_containsCalloutLinesWithModelSync:(BOOL)arg1;
 - (id)p_copyNonStyleArray:(id)arg1 inContext:(id)arg2;
 - (id)p_copyStyleAndNonStyleArray:(id)arg1 withZone:(struct _NSZone *)arg2 context:(id)arg3;
 - (id)p_copyStyleAndNonStyleMap:(id)arg1 withZone:(struct _NSZone *)arg2 context:(id)arg3;
@@ -243,6 +247,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)p_refLineNonStyleMapIsValid;
 - (void)p_saveToUnityArchive:(struct ChartArchive *)arg1 persistentChartInfo:(id)arg2 archiver:(id)arg3;
 - (void)p_setDrawableInfo:(id)arg1;
+- (BOOL)p_supportsRoundedCornersWithModelSync:(BOOL)arg1;
 - (id)p_swapTuplesForApplyingPreset:(id)arg1 preservingAppearance:(BOOL)arg2;
 - (id)p_swapTuplesForApplyingPresetRemovingOverrides:(id)arg1;
 - (id)p_swapTuplesForMutations:(id)arg1;
@@ -305,6 +310,9 @@ __attribute__((visibility("hidden")))
 - (id)styleOwnerRefForStyleOwner:(id)arg1;
 - (id)styleOwnerRefForStyleOwnerPath:(id)arg1;
 - (id)styleSwapCommandToApplyFillSetSeriesPropertyMaps:(id)arg1;
+- (BOOL)supportsAndHasRoundedCorners;
+- (BOOL)supportsRoundedCorners;
+- (BOOL)supportsRoundedCornersWithoutModelSync;
 - (id)swapTuplesForApplyingPreset:(id)arg1 withBehavior:(unsigned long long)arg2;
 - (id)swapTuplesForMutations:(id)arg1 forImport:(BOOL)arg2;
 - (id)swapTuplesForParagraphStyleMutations:(id)arg1 forReferencingProperty:(int)arg2;
@@ -313,6 +321,7 @@ __attribute__((visibility("hidden")))
 - (void)updateAfterPaste;
 - (void)updateTitlesForExportingModel:(id)arg1;
 - (void)upgradeAxisLabelFormatWithValuePrefix:(id)arg1 valueSuffix:(id)arg2 valueUseSeparator:(BOOL)arg3 horizontalPrefix:(id)arg4 horizontalSuffix:(id)arg5 horizontalUseSeparator:(BOOL)arg6;
+- (void)upgradeChartRoundedCornerRadiusWithValue:(double)arg1;
 - (void)upgradeWithHorizontalMin:(id)arg1 horizontalMax:(id)arg2 valueMin:(id)arg3 valueMax:(id)arg4;
 - (id)valueAxisNonstyleAtIndex:(unsigned long long)arg1;
 - (id)valueAxisStyleAtIndex:(unsigned long long)arg1;

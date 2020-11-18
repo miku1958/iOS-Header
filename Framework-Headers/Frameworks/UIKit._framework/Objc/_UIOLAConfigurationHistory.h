@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UILAConfigurationHistory.h>
+#import <UIKitCore/_UILAConfigurationHistory.h>
 
-#import <UIKit/_UIOLAPropertySource-Protocol.h>
+#import <UIKitCore/_UIOLAPropertySource-Protocol.h>
 
 @class NSMapTable, NSSet, NSString;
 

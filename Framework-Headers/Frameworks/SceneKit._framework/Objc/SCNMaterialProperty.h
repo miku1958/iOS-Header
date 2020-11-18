@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
@@ -16,6 +16,7 @@
     unsigned int _isPresentationInstance:1;
     unsigned int _isCommonProfileProperty:1;
     unsigned int _sRGB:1;
+    unsigned int _preventWarmup:1;
     BOOL _propertyType;
     id _parent;
     NSString *_customSlotName;
@@ -24,7 +25,7 @@
     UIColor *_borderColor;
     id _contents;
     unsigned char _contentType;
-    unsigned char _mappingChannel;
+    long long _mappingChannel;
     unsigned char _minificationFilter;
     unsigned char _magnificationFilter;
     unsigned char _mipFilter;
@@ -36,6 +37,7 @@
     struct __C3DEffectSlot *_customSlot;
     struct __C3DImage *_c3dImage;
     struct SCNMatrix4 *_contentTransform;
+    id _runtimeResolvedPath;
 }
 
 @property (readonly) NSArray *animationKeys;
@@ -61,6 +63,7 @@
 + (id)captureDeviceOutputConsumer;
 + (struct __C3DImage *)copyC3DImageFromImage:(id)arg1;
 + (struct __C3DImage *)copyC3DImageFromImage:(id)arg1 textureOptions:(int)arg2;
++ (struct __C3DImage *)copyC3DImageFromImage:(id)arg1 textureOptions:(int)arg2 wasCached:(BOOL *)arg3;
 + (id)copyImageFromC3DImage:(struct __C3DImage *)arg1;
 + (id)dvt_supportedTypesForPropertyContents;
 + (id)materialPropertyWithContents:(id)arg1;
@@ -112,9 +115,9 @@
 - (id)animationPlayerForKey:(id)arg1;
 - (id)attachment;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
-- (struct C3DColor4)borderColor4;
+- (C3DColor4_0cad58d8)borderColor4;
 - (id)color;
-- (struct C3DColor4)color4;
+- (C3DColor4_0cad58d8)color4;
 - (struct __C3DEffectCommonProfile *)commonProfile;
 - (id)content;
 - (id)copy;
@@ -148,6 +151,7 @@
 - (BOOL)propertyType;
 - (id)pvrtcData;
 - (void)removeAllAnimations;
+- (void)removeAllBindings;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;

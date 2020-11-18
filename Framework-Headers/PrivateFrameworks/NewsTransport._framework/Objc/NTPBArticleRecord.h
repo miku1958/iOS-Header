@@ -36,6 +36,7 @@
     NSString *_contentURL;
     NSString *_coverArt;
     NSString *_excerptURL;
+    NSMutableArray *_experimentalTitles;
     NSString *_flintDocumentURL;
     NSMutableArray *_flintFontResourceIDs;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *_globalCohort;
@@ -51,6 +52,9 @@
     NSString *_shortExcerpt;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *_sourceChannelCohort;
     NSString *_sourceChannelTagID;
+    NSString *_stocksClusterID;
+    NSString *_stocksMetadata;
+    NSString *_stocksScores;
     int _storyType;
     NSString *_subtitle;
     NSString *_thumbnailHQURL;
@@ -110,6 +114,7 @@
 @property (strong, nonatomic) NSString *contentURL; // @synthesize contentURL=_contentURL;
 @property (strong, nonatomic) NSString *coverArt; // @synthesize coverArt=_coverArt;
 @property (strong, nonatomic) NSString *excerptURL; // @synthesize excerptURL=_excerptURL;
+@property (strong, nonatomic) NSMutableArray *experimentalTitles; // @synthesize experimentalTitles=_experimentalTitles;
 @property (strong, nonatomic) NSString *flintDocumentURL; // @synthesize flintDocumentURL=_flintDocumentURL;
 @property (strong, nonatomic) NSMutableArray *flintFontResourceIDs; // @synthesize flintFontResourceIDs=_flintFontResourceIDs;
 @property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *globalCohort; // @synthesize globalCohort=_globalCohort;
@@ -137,6 +142,9 @@
 @property (readonly, nonatomic) BOOL hasShortExcerpt;
 @property (readonly, nonatomic) BOOL hasSourceChannelCohort;
 @property (readonly, nonatomic) BOOL hasSourceChannelTagID;
+@property (readonly, nonatomic) BOOL hasStocksClusterID;
+@property (readonly, nonatomic) BOOL hasStocksMetadata;
+@property (readonly, nonatomic) BOOL hasStocksScores;
 @property (nonatomic) BOOL hasStoryType;
 @property (readonly, nonatomic) BOOL hasSubtitle;
 @property (nonatomic) BOOL hasThumbnailFocalFrame;
@@ -183,6 +191,9 @@
 @property (strong, nonatomic) NSString *shortExcerpt; // @synthesize shortExcerpt=_shortExcerpt;
 @property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohort *sourceChannelCohort; // @synthesize sourceChannelCohort=_sourceChannelCohort;
 @property (strong, nonatomic) NSString *sourceChannelTagID; // @synthesize sourceChannelTagID=_sourceChannelTagID;
+@property (strong, nonatomic) NSString *stocksClusterID; // @synthesize stocksClusterID=_stocksClusterID;
+@property (strong, nonatomic) NSString *stocksMetadata; // @synthesize stocksMetadata=_stocksMetadata;
+@property (strong, nonatomic) NSString *stocksScores; // @synthesize stocksScores=_stocksScores;
 @property (nonatomic) int storyType; // @synthesize storyType=_storyType;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (nonatomic) long long thumbnailFocalFrame; // @synthesize thumbnailFocalFrame=_thumbnailFocalFrame;
@@ -215,6 +226,7 @@
 
 + (Class)allowedStorefrontIDsType;
 + (Class)blockedStorefrontIDsType;
++ (Class)experimentalTitlesType;
 + (Class)flintFontResourceIDsType;
 + (Class)iAdCategoriesType;
 + (Class)iAdKeywordsType;
@@ -225,6 +237,7 @@
 + (Class)topicsType;
 - (void)addAllowedStorefrontIDs:(id)arg1;
 - (void)addBlockedStorefrontIDs:(id)arg1;
+- (void)addExperimentalTitles:(id)arg1;
 - (void)addFlintFontResourceIDs:(id)arg1;
 - (void)addIAdCategories:(id)arg1;
 - (void)addIAdKeywords:(id)arg1;
@@ -239,6 +252,7 @@
 - (unsigned long long)blockedStorefrontIDsCount;
 - (void)clearAllowedStorefrontIDs;
 - (void)clearBlockedStorefrontIDs;
+- (void)clearExperimentalTitles;
 - (void)clearFlintFontResourceIDs;
 - (void)clearIAdCategories;
 - (void)clearIAdKeywords;
@@ -251,6 +265,8 @@
 - (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)experimentalTitlesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)experimentalTitlesCount;
 - (id)flintFontResourceIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)flintFontResourceIDsCount;
 - (unsigned long long)hash;

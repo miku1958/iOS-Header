@@ -6,10 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, CAReplicatorLayer, NSArray;
+@class CALayer, CAReplicatorLayer, CLKDevice, NSArray;
 
 @interface NTKExplorerDialView : UIView
 {
+    CLKDevice *_device;
     BOOL _editing;
     CALayer *_ringLayer;
     CAReplicatorLayer *_hourReplicatorLayer;
@@ -44,7 +45,7 @@
 - (void)applyZoomFraction:(double)arg1;
 - (void)cleanupAfterEditing;
 - (void)cleanupAfterZoom;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (void)prepareForEditing;
 - (void)prepareForZoom;
 

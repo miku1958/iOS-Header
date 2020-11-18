@@ -23,6 +23,7 @@
     NSObject<OS_dispatch_queue> *__syncQueue;
     NSObject<OS_dispatch_queue> *__startQueue;
     id<PKCorePlugInProtocol> _service;
+    id<PKCorePlugInProtocol> _syncService;
     NSUUID *_supersedingUUID;
     id<PKPlugIn> _supersededBy;
     NSUUID *_multipleInstanceUUID;
@@ -81,6 +82,7 @@
 @property (readonly) Class superclass;
 @property (strong) id<PKPlugIn> supersededBy; // @synthesize supersededBy=_supersededBy;
 @property (strong) NSUUID *supersedingUUID; // @synthesize supersedingUUID=_supersedingUUID;
+@property (strong) id<PKCorePlugInProtocol> syncService; // @synthesize syncService=_syncService;
 @property BOOL terminating; // @synthesize terminating=_terminating;
 @property (readonly) NSDate *timestamp;
 @property (readonly) NSURL *url;
@@ -91,6 +93,7 @@
 
 - (void).cxx_destruct;
 - (void)beginUsing:(CDUnknownBlockType)arg1;
+- (BOOL)beginUsingWithError:(id *)arg1;
 - (void)changeState:(unsigned long long)arg1;
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (id)createInstanceWithUUID:(id)arg1;
@@ -98,12 +101,12 @@
 - (id)initWithForm:(id)arg1;
 - (BOOL)loadExtensions:(id)arg1 error:(id *)arg2;
 - (void)messageTraceUsage;
-- (void)preparePlugin:(CDUnknownBlockType)arg1;
+- (void)preparePlugInUsingService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resume;
 - (void)setBootstrap;
 - (void)setHostPrincipal:(id)arg1 withProtocol:(id)arg2;
 - (void)setReplyQueue:(id)arg1;
-- (void)startPlugIn:(CDUnknownBlockType)arg1;
+- (void)startPlugInSynchronously:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)suspend;
 - (void)unwind:(unsigned long long)arg1 force:(BOOL)arg2;
 - (BOOL)useBundle:(id)arg1 error:(id *)arg2;

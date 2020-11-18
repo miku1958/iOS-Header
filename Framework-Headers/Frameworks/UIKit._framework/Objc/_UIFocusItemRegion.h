@@ -4,11 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFocusableItemRegion.h>
+#import <UIKitCore/_UIFocusRegion.h>
 
-@interface _UIFocusItemRegion : _UIFocusableItemRegion
+@protocol UIFocusItem;
+
+@interface _UIFocusItemRegion : _UIFocusRegion
 {
+    BOOL _itemIsEligibleForFocusInteraction;
+    BOOL _itemIsFocusable;
+    id<UIFocusItem> _item;
 }
+
+@property (readonly, weak, nonatomic) id<UIFocusItem> item; // @synthesize item=_item;
+
+- (void).cxx_destruct;
+- (BOOL)_canBeOccludedByRegionsAbove;
+- (BOOL)_canOccludeRegionsBelow;
+- (id)_debugAssociatedObject;
+- (id)_defaultFocusItem;
+- (void)_drawDebugQuickLookImageWithInfo:(id)arg1 inContext:(struct CGContext *)arg2;
+- (unsigned long long)_focusableBoundaries;
+- (id)_nextFocusedItemForFocusMovementRequest:(id)arg1 inMap:(id)arg2;
+- (long long)_preferredDistanceComparisonType;
+- (BOOL)_shouldCropRegionToSearchArea;
+- (BOOL)_shouldDrawDebugQuickLookImageWithInfo:(id)arg1;
+- (id)_visualRepresentationColor;
+- (long long)_visualRepresentationPatternType;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 item:(id)arg2;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TITextInputTraits;
 
@@ -17,7 +17,7 @@
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) TITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithTextInputTraits:(id)arg1;
 - (void)smartDeleteForDocumentState:(id)arg1 outBeforeLength:(unsigned long long *)arg2 outAfterLength:(unsigned long long *)arg3;
 - (void)smartInsertForDocumentState:(id)arg1 stringToInsert:(id)arg2 outBeforeString:(id *)arg3 outAfterString:(id *)arg4;

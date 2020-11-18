@@ -22,6 +22,7 @@
     BOOL _didHideOrShowBarsExplicitly;
     double _lastOffset;
     BOOL _inSteadyState;
+    BOOL _performingBatchUpdates;
     long long _state;
     double _topBarHeight;
     double _bottomBarOffset;
@@ -55,6 +56,7 @@
 - (void)endDraggingWithTargetOffset:(double)arg1 velocity:(double)arg2;
 - (void)endScrolling;
 - (id)init;
+- (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (void)setBottomBarOffset:(double)arg1 forState:(long long)arg2;
 - (void)setTopBarHeight:(double)arg1 forState:(long long)arg2;
 - (void)updateDraggingWithOffset:(double)arg1;

@@ -44,6 +44,7 @@
     NSError *_locationError;
 }
 
+@property (nonatomic) long long activityType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double desiredAccuracy;
@@ -78,7 +79,6 @@
 - (void)_setTrackingHeading:(BOOL)arg1;
 - (void)_setTrackingLocation:(BOOL)arg1;
 - (void)_startLocationUpdateWithObserver:(id)arg1 desiredAccuracy:(double)arg2;
-- (long long)activityType;
 - (void)addLocationListener:(id)arg1;
 - (void)dealloc;
 - (id)init;
@@ -101,7 +101,6 @@
 - (void)pushLocation:(id)arg1;
 - (void)removeLocationListener:(id)arg1;
 - (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
-- (void)setActivityType:(long long)arg1;
 - (void)setLastLocation:(id)arg1;
 - (void)setLocationProviderType:(unsigned long long)arg1;
 - (void)startHeadingUpdateWithObserver:(id)arg1;

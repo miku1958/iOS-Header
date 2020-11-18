@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIGestureRecognizerDelegatePrivate-Protocol.h>
-#import <UIKit/UIInterfaceActionGroupDisplayPropertyObserver-Protocol.h>
-#import <UIKit/UIInterfaceActionGroupDisplaying-Protocol.h>
-#import <UIKit/UIScrollViewDelegate-Protocol.h>
-#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
-#import <UIKit/_UIInterfaceActionPresenting-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
+#import <UIKitCore/UIInterfaceActionGroupDisplayPropertyObserver-Protocol.h>
+#import <UIKitCore/UIInterfaceActionGroupDisplaying-Protocol.h>
+#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
+#import <UIKitCore/_UIInterfaceActionPresenting-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSMutableArray, NSPointerArray, NSString, UIFont, UIInterfaceActionGroup, UIInterfaceActionHighlightAttributes, UIInterfaceActionRepresentationView, UIInterfaceActionSelectionTrackingController, UIInterfaceActionSeparatorAttributes, UIInterfaceActionVisualStyle, UILongPressGestureRecognizer, _UIContentConstraintsLayoutGuide, _UIInterfaceActionRepresentationsSequenceView;
 @protocol UIInterfaceActionHandlerInvocationDelegate, UIInterfaceActionVisualStyleProviding, UISeparatorDisplaying;

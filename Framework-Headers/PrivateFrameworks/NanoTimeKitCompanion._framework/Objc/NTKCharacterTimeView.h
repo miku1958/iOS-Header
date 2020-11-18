@@ -8,10 +8,11 @@
 
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class EAGLContext, NSString, NTKCharacterDisplayLink, NTKCharacterFrameBuffer, NTKCharacterRenderer, NTKCharacterResourceLoader;
+@class CLKDevice, EAGLContext, NSString, NTKCharacterDisplayLink, NTKCharacterFrameBuffer, NTKCharacterRenderer, NTKCharacterResourceLoader;
 
 @interface NTKCharacterTimeView : UIView <NTKTimeView>
 {
+    CLKDevice *_device;
     NTKCharacterResourceLoader *_loader;
     EAGLContext *_context;
     NTKCharacterDisplayLink *_displayLink;
@@ -50,7 +51,7 @@
 - (void)dealloc;
 - (void)endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)enumarateRenderers:(CDUnknownBlockType)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareToZoom;
 - (void)renderOneFrame;

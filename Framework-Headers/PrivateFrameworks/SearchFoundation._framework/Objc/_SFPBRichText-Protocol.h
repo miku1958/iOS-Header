@@ -12,9 +12,6 @@
 
 @property (copy, nonatomic) NSString *contentAdvisory;
 @property (copy, nonatomic) NSArray *formattedTextPieces;
-@property (readonly, nonatomic) BOOL hasContentAdvisory;
-@property (readonly, nonatomic) BOOL hasStarRating;
-@property (readonly, nonatomic) BOOL hasText;
 @property (copy, nonatomic) NSArray *icons;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBGraphicalFloat *starRating;

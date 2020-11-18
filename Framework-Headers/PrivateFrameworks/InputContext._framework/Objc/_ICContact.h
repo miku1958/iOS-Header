@@ -40,8 +40,12 @@
 @property (readonly, nonatomic) NSArray *streets; // @synthesize streets=_streets;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)flatten;
+- (unsigned long long)hash;
 - (id)initWithFirstName:(id)arg1 phoneticFirstName:(id)arg2 middleName:(id)arg3 phoneticMiddleName:(id)arg4 lastName:(id)arg5 phoneticLastName:(id)arg6 organizationName:(id)arg7 jobTitle:(id)arg8 nickname:(id)arg9 relations:(id)arg10 streets:(id)arg11 cities:(id)arg12 score:(double)arg13;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToContact:(id)arg1;
 
 @end
 

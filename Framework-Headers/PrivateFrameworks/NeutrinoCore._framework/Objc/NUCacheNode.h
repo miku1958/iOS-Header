@@ -20,6 +20,7 @@
     NSString *_cachedCacheIdentifier;
 }
 
+@property (readonly, nonatomic) NSString *cacheIdentifier;
 @property (strong) NSString *cachedCacheIdentifier; // @synthesize cachedCacheIdentifier=_cachedCacheIdentifier;
 @property (readonly, nonatomic) NURenderNode *inputNode;
 @property (readonly, nonatomic) long long subsampleFactor; // @synthesize subsampleFactor=_subsampleFactor;
@@ -38,7 +39,6 @@
 - (id)_evaluateVideoComposition:(out id *)arg1;
 - (unsigned long long)_hash;
 - (void)_resolveWithSourceNode:(id)arg1 error:(id)arg2;
-- (id)cacheIdentifier;
 - (id)descriptionSubClassHook;
 - (id)evaluateRenderDependenciesWithRequest:(id)arg1 error:(out id *)arg2;
 - (id)initWithInput:(id)arg1 settings:(id)arg2;
@@ -54,7 +54,7 @@
 - (id)persistentURLPrefix;
 - (BOOL)requiresAudioMix;
 - (BOOL)requiresVideoComposition;
-- (void)resolveSourceWithResponse:(struct NUResponse *)arg1 temporaryURL:(id)arg2;
+- (void)resolveSourceWithResponse:(struct NUResponse *)arg1;
 - (void)resolveWithSourceNode:(id)arg1 error:(id)arg2;
 - (id)resolvedSourceNode:(out id *)arg1;
 - (long long)sampleMode;

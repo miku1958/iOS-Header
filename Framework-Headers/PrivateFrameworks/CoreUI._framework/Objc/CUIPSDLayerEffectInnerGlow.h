@@ -22,6 +22,7 @@
 @property double opacity; // @synthesize opacity=_opacity;
 
 - (void)dealloc;
+- (id)description;
 - (unsigned int)effectType;
 - (id)init;
 - (id)initWithEffectFromPreset:(id)arg1 atIndex:(unsigned int)arg2;

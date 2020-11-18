@@ -14,6 +14,7 @@
 
 @interface CXCallControllerHost : NSObject <NSXPCListenerDelegate, CXCallControllerHostConnectionDelegate>
 {
+    int _clientsShouldConnectToken;
     NSObject<OS_dispatch_queue> *_queue;
     id<CXCallControllerHostDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -23,6 +24,7 @@
 }
 
 @property (strong, nonatomic) NSMutableDictionary *callUUIDToCallMap; // @synthesize callUUIDToCallMap=_callUUIDToCallMap;
+@property (readonly, nonatomic) int clientsShouldConnectToken; // @synthesize clientsShouldConnectToken=_clientsShouldConnectToken;
 @property (strong, nonatomic) NSMutableSet *connections; // @synthesize connections=_connections;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CXCallControllerHostDelegate> delegate; // @synthesize delegate=_delegate;
@@ -38,8 +40,9 @@
 - (void)_performDelegateCallback:(CDUnknownBlockType)arg1;
 - (void)addOrUpdateCall:(id)arg1;
 - (void)callControllerHostConnection:(id)arg1 requestCalls:(CDUnknownBlockType)arg2;
-- (void)callControllerHostConnection:(id)arg1 requestTransaction:(id)arg2 forExtensionIdentifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)callControllerHostConnection:(id)arg1 requestTransaction:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)callControllerHostConnectionInvalidated:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (id)initWithCalls:(id)arg1 delegate:(id)arg2 queue:(id)arg3;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

@@ -45,7 +45,7 @@
 - (void)dismissWithActionIndex:(long long)arg1 invokeActionHandler:(BOOL)arg2;
 - (id)initWithTitle:(id)arg1 cancelTitle:(id)arg2 actionTitles:(id)arg3 accessoryViewController:(id)arg4;
 - (void)showInView:(id)arg1 actionHandlerBlock:(CDUnknownBlockType)arg2;
-- (void)showInViewController:(id)arg1 actionHandlerBlock:(CDUnknownBlockType)arg2;
+- (void)showInViewController:(id)arg1 source:(id)arg2 actionHandlerBlock:(CDUnknownBlockType)arg3;
 
 @end
 

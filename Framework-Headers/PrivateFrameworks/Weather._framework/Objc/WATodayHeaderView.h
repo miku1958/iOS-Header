@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSString, UIImage, UIImageView, UILabel, UIVisualEffectView;
+@class NSString, UIImage, UIImageView, UILabel, UIVisualEffectView;
 
 @interface WATodayHeaderView : UIView
 {
@@ -17,11 +17,7 @@
     NSString *_temperatureHigh;
     NSString *_temperatureLow;
     NSString *_locationName;
-    UIVisualEffectView *_locationLabelVisualEffectView;
-    UIVisualEffectView *_conditionsLabel1VisualEffectView;
-    UIVisualEffectView *_conditionsLabel2VisualEffectView;
-    UIVisualEffectView *_temperatureLabelVisualEffectView;
-    UIVisualEffectView *_temperatureHighLowLabelVisualEffectView;
+    UIVisualEffectView *_weatherInformationVisualEffectView;
     UILabel *_locationLabel;
     UILabel *_conditionsLabel1;
     UILabel *_conditionsLabel2;
@@ -31,33 +27,25 @@
     double _pageFontSize;
     double _pageDegreeFontSize;
     double _pageBaselineOffset;
-    NSArray *_contentViewConstraints;
-    NSArray *_masterConstraints;
 }
 
 @property (copy, nonatomic) UIImage *conditionsImage; // @synthesize conditionsImage=_conditionsImage;
 @property (strong, nonatomic) UIImageView *conditionsImageView; // @synthesize conditionsImageView=_conditionsImageView;
 @property (strong, nonatomic) UILabel *conditionsLabel1; // @synthesize conditionsLabel1=_conditionsLabel1;
-@property (strong, nonatomic) UIVisualEffectView *conditionsLabel1VisualEffectView; // @synthesize conditionsLabel1VisualEffectView=_conditionsLabel1VisualEffectView;
 @property (strong, nonatomic) UILabel *conditionsLabel2; // @synthesize conditionsLabel2=_conditionsLabel2;
-@property (strong, nonatomic) UIVisualEffectView *conditionsLabel2VisualEffectView; // @synthesize conditionsLabel2VisualEffectView=_conditionsLabel2VisualEffectView;
 @property (copy, nonatomic) NSString *conditionsLine1; // @synthesize conditionsLine1=_conditionsLine1;
 @property (copy, nonatomic) NSString *conditionsLine2; // @synthesize conditionsLine2=_conditionsLine2;
-@property (strong, nonatomic) NSArray *contentViewConstraints; // @synthesize contentViewConstraints=_contentViewConstraints;
 @property (strong, nonatomic) UILabel *locationLabel; // @synthesize locationLabel=_locationLabel;
-@property (strong, nonatomic) UIVisualEffectView *locationLabelVisualEffectView; // @synthesize locationLabelVisualEffectView=_locationLabelVisualEffectView;
 @property (copy, nonatomic) NSString *locationName; // @synthesize locationName=_locationName;
-@property (strong, nonatomic) NSArray *masterConstraints; // @synthesize masterConstraints=_masterConstraints;
 @property (nonatomic) double pageBaselineOffset; // @synthesize pageBaselineOffset=_pageBaselineOffset;
 @property (nonatomic) double pageDegreeFontSize; // @synthesize pageDegreeFontSize=_pageDegreeFontSize;
 @property (nonatomic) double pageFontSize; // @synthesize pageFontSize=_pageFontSize;
 @property (copy, nonatomic) NSString *temperature; // @synthesize temperature=_temperature;
 @property (copy, nonatomic) NSString *temperatureHigh; // @synthesize temperatureHigh=_temperatureHigh;
 @property (strong, nonatomic) UILabel *temperatureHighLowLabel; // @synthesize temperatureHighLowLabel=_temperatureHighLowLabel;
-@property (strong, nonatomic) UIVisualEffectView *temperatureHighLowLabelVisualEffectView; // @synthesize temperatureHighLowLabelVisualEffectView=_temperatureHighLowLabelVisualEffectView;
 @property (strong, nonatomic) UILabel *temperatureLabel; // @synthesize temperatureLabel=_temperatureLabel;
-@property (strong, nonatomic) UIVisualEffectView *temperatureLabelVisualEffectView; // @synthesize temperatureLabelVisualEffectView=_temperatureLabelVisualEffectView;
 @property (copy, nonatomic) NSString *temperatureLow; // @synthesize temperatureLow=_temperatureLow;
+@property (strong, nonatomic) UIVisualEffectView *weatherInformationVisualEffectView; // @synthesize weatherInformationVisualEffectView=_weatherInformationVisualEffectView;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
@@ -65,7 +53,6 @@
 - (void)_setupSubviews;
 - (void)_updateContent;
 - (id)init;
-- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

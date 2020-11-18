@@ -8,21 +8,27 @@
 
 #import <SpringBoardUIServices/SBUIPasscodeNumberPadButton-Protocol.h>
 
-@class NSString;
+@class NSString, UIColor;
 
 @interface SBLightPasscodeNumberPadButton : TPNumberPadLightStyleButton <SBUIPasscodeNumberPadButton>
 {
+    UIColor *_reduceTransparencyButtonColor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIColor *reduceTransparencyButtonColor; // @synthesize reduceTransparencyButtonColor=_reduceTransparencyButtonColor;
 @property (readonly) Class superclass;
 
 + (double)_numberPadButtonOuterCircleDiameter;
++ (BOOL)_shouldUseAlternativeCirlceViewAlphas;
 + (struct CGSize)defaultSize;
++ (double)highlightedCircleViewAlpha;
 + (struct UIEdgeInsets)paddingOutsideRing;
++ (double)unhighlightedCircleViewAlpha;
 + (BOOL)usesTelephonyGlyphsWhereAvailable;
+- (void).cxx_destruct;
 - (int)characterType;
 - (id)initForCharacter:(unsigned int)arg1;
 - (id)stringCharacter;

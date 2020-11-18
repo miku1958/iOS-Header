@@ -6,7 +6,7 @@
 
 #import <Catalyst/CATTaskResultObject.h>
 
-@class NSDictionary;
+@class DMFDevice, NSDictionary;
 
 @interface DMFFetchDevicePropertiesResultObject : CATTaskResultObject
 {
@@ -14,6 +14,7 @@
     NSDictionary *_errorsByPropertyKey;
 }
 
+@property (readonly, nonatomic) DMFDevice *device;
 @property (readonly, copy, nonatomic) NSDictionary *errorsByPropertyKey; // @synthesize errorsByPropertyKey=_errorsByPropertyKey;
 @property (readonly, copy, nonatomic) NSDictionary *valuesByPropertyKey; // @synthesize valuesByPropertyKey=_valuesByPropertyKey;
 

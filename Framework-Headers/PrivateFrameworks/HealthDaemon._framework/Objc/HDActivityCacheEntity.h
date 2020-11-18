@@ -10,11 +10,10 @@
 {
 }
 
-+ (id)activityCacheForIndex:(long long)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)activityCachesInRangeStart:(id)arg1 end:(id)arg2 profile:(id)arg3 error:(id *)arg4;
++ (id)activityCacheForIndex:(long long)arg1 profile:(id)arg2 encodingOptions:(id)arg3 error:(id *)arg4;
 + (BOOL)addCodableObject:(id)arg1 toCollection:(id)arg2;
 + (id)codableObjectsFromObjectCollection:(id)arg1;
-+ (id)columnsDefinition;
++ (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 + (id)entityEncoderForProfile:(id)arg1 database:(id)arg2 purpose:(long long)arg3 encodingOptions:(id)arg4 authorizationFilter:(CDUnknownBlockType)arg5;
 + (id)indices;

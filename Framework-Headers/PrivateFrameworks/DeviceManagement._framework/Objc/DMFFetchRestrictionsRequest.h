@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
-@interface DMFFetchRestrictionsRequest : CATTaskRequest
+@interface DMFFetchRestrictionsRequest : DMFTaskRequest
 {
     BOOL _includeProfileRestrictions;
     unsigned long long _profileFilterFlags;
@@ -15,6 +15,9 @@
 @property (nonatomic) BOOL includeProfileRestrictions; // @synthesize includeProfileRestrictions=_includeProfileRestrictions;
 @property (nonatomic) unsigned long long profileFilterFlags; // @synthesize profileFilterFlags=_profileFilterFlags;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void)encodeWithCoder:(id)arg1;

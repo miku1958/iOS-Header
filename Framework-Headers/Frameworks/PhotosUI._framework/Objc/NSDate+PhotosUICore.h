@@ -8,6 +8,8 @@
 
 @interface NSDate (PhotosUICore)
 + (void)px_unionStartDate:(id *)arg1 endDate:(id *)arg2 withDate:(id)arg3;
++ (void)px_unionStartDate:(id *)arg1 endDate:(id *)arg2 withDateInterval:(id)arg3;
 - (BOOL)px_isSameDayAsDate:(id)arg1;
+- (long long)px_yearsSinceDate:(id)arg1;
 @end
 

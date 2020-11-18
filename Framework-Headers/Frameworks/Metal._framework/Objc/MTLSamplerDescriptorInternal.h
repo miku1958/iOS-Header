@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)description;
 - (const struct MTLSamplerDescriptorPrivate *)descriptorPrivate;
+- (BOOL)forceResourceIndex;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)hash;
 - (id)init;
@@ -32,8 +33,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)mipFilter;
 - (BOOL)normalizedCoordinates;
 - (unsigned long long)rAddressMode;
+- (unsigned long long)resourceIndex;
 - (unsigned long long)sAddressMode;
 - (void)setCompareFunction:(unsigned long long)arg1;
+- (void)setForceResourceIndex:(BOOL)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setLodAverage:(BOOL)arg1;
 - (void)setLodBias:(float)arg1;
@@ -45,6 +48,7 @@ __attribute__((visibility("hidden")))
 - (void)setMipFilter:(unsigned long long)arg1;
 - (void)setNormalizedCoordinates:(BOOL)arg1;
 - (void)setRAddressMode:(unsigned long long)arg1;
+- (void)setResourceIndex:(unsigned long long)arg1;
 - (void)setSAddressMode:(unsigned long long)arg1;
 - (void)setSupportArgumentBuffers:(BOOL)arg1;
 - (void)setTAddressMode:(unsigned long long)arg1;

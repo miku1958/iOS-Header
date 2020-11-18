@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesStoreUI/NSCoding-Protocol.h>
 #import <iTunesStoreUI/NSCopying-Protocol.h>
+#import <iTunesStoreUI/NSSecureCoding-Protocol.h>
 
 @class SUDOMElement;
 
-@interface SUOverlayTransition : NSObject <NSCoding, NSCopying>
+@interface SUOverlayTransition : NSObject <NSSecureCoding, NSCopying>
 {
     double _duration;
     SUDOMElement *_sourceElement;
@@ -22,6 +22,7 @@
 @property (strong, nonatomic) SUDOMElement *sourceElement; // @synthesize sourceElement=_sourceElement;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (BOOL)supportsSecureCoding;
 + (long long)transitionTypeFromString:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

@@ -6,27 +6,26 @@
 
 #import <objc/NSObject.h>
 
+#import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
 #import <PhotoAnalysis/PHAWorkerConfiguration-Protocol.h>
 
-@class NSString, NSURL, PHALibraryChangeListener, PHAManager, PHAServiceCancelableOperation, PHPhotoLibrary;
-@protocol OS_dispatch_queue, PHAAssetResourceDataLoading;
+@class NSString, NSURL, PFSerialQueue, PHAManager, PHAServiceCancelableOperation, PHPhotoLibrary;
+@protocol PHAAssetResourceDataLoading;
 
-@interface PHAWorker : NSObject <PHAWorkerConfiguration>
+@interface PHAWorker : NSObject <PHAWorkerConfiguration, PHAServiceOperationHandling>
 {
     PHAManager *_photoAnalysisManager;
+    PFSerialQueue *_userInitiatedRequestQueue;
     BOOL _shutdownHasBeenCalled;
     BOOL _warmedUp;
     id<PHAAssetResourceDataLoading> _dataLoader;
     PHAServiceCancelableOperation *_currentOperation;
-    NSObject<OS_dispatch_queue> *_userInitiatedRequestQueue;
 }
 
-@property (readonly) PHALibraryChangeListener *changeListener;
 @property (strong) PHAServiceCancelableOperation *currentOperation; // @synthesize currentOperation=_currentOperation;
 @property (strong, nonatomic) id<PHAAssetResourceDataLoading> dataLoader; // @synthesize dataLoader=_dataLoader;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly) NSObject<OS_dispatch_queue> *executiveStateQueue;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isEnabled;
 @property (readonly) NSURL *persistentStorageDirectoryURL;
@@ -34,31 +33,30 @@
 @property (readonly) PHPhotoLibrary *photoLibrary;
 @property (readonly, getter=isQuiescent) BOOL quiescent;
 @property (readonly) Class superclass;
-@property (strong) NSObject<OS_dispatch_queue> *userInitiatedRequestQueue; // @synthesize userInitiatedRequestQueue=_userInitiatedRequestQueue;
 @property (nonatomic, getter=isWarmedUp) BOOL warmedUp; // @synthesize warmedUp=_warmedUp;
 
 + (long long)applicationDataFolderIdentifier;
 + (void)configureXPCConnection:(id)arg1;
 + (BOOL)persistsState;
 + (BOOL)runsExclusively;
-+ (BOOL)wantsToReceiveXPCRequestsOnUserInitiatedRequestQueue;
 + (short)workerType;
 - (void).cxx_destruct;
-- (BOOL)allowCooldownForWorkerChange:(id)arg1;
 - (void)assertUserInitiatedRequestQueue;
+- (BOOL)canRunWhenGraphIsLoaded;
 - (void)cooldown;
-- (void)dispatchAsyncToExecutiveStateQueue:(CDUnknownBlockType)arg1;
 - (BOOL)dispatchAsyncToUserInitiatedRequestQueue:(CDUnknownBlockType)arg1;
 - (BOOL)dispatchSyncToUserInitiatedRequestQueue:(CDUnknownBlockType)arg1;
+- (void)handleOperation:(id)arg1;
 - (BOOL)hasAdditionalJobsForScenario:(unsigned long long)arg1 requestReason:(unsigned long long)arg2;
 - (id)init;
 - (id)initWithPhotoAnalysisManager:(id)arg1 dataLoader:(id)arg2;
 - (id)libraryScopedWorkerPreferences;
 - (id)libraryScopedWorkerPreferencesURL;
 - (id)nextAdditionalJobWithScenario:(unsigned long long)arg1 requestReason:(unsigned long long)arg2;
+- (void)operationDidFinish:(id)arg1;
+- (void)operationWillStart:(id)arg1;
+- (void)pingWorkerWithOptions:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setLibraryScopedWorkerPreferencesValue:(id)arg1 forKey:(id)arg2;
-- (BOOL)shouldCooldownForConstraintChange:(id)arg1;
-- (BOOL)shouldWarmupForConstraintChange:(id)arg1;
 - (void)shutdown;
 - (BOOL)startAcknowledgeDeletionsJob:(id)arg1 error:(id *)arg2;
 - (BOOL)startAnalysisJob:(id)arg1 error:(id *)arg2;
@@ -68,8 +66,6 @@
 - (BOOL)stopAnalysisJob:(id)arg1 error:(id *)arg2;
 - (void)updateLibraryScopedWorkerPreferencesWithEntriesFromDictionary:(id)arg1 keysToRemove:(id)arg2;
 - (void)warmup;
-- (BOOL)warmupBasedOnConstraintChanges;
-- (BOOL)workerJobCausesCooldown:(id)arg1;
 
 @end
 

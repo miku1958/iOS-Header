@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVKeyPathDependencyHost-Protocol.h>
 #import <AVFoundation/AVWeakObservable-Protocol.h>
@@ -71,6 +71,7 @@
 - (void)markAsFinished;
 - (void)markCurrentPassAsFinished;
 - (BOOL)marksOutputTrackAsEnabled;
+- (BOOL)maximizePowerEfficiency;
 - (id)mediaDataLocation;
 - (int)mediaTimeScale;
 - (struct CGSize)naturalSize;
@@ -88,6 +89,7 @@
 - (void)setLanguageCode:(id)arg1;
 - (void)setLayer:(long long)arg1;
 - (void)setMarksOutputTrackAsEnabled:(BOOL)arg1;
+- (void)setMaximizePowerEfficiency:(BOOL)arg1;
 - (void)setMediaDataLocation:(id)arg1;
 - (void)setMediaTimeScale:(int)arg1;
 - (void)setNaturalSize:(struct CGSize)arg1;

@@ -18,6 +18,7 @@
     BOOL _eligibleForSearch;
     BOOL _eligibleForPublicIndexing;
     BOOL _eligibleForReminders;
+    BOOL _eligibleForPrediction;
     BOOL _eligibleToAdvertise;
     BOOL _eligibleToAlwaysAdvertise;
     BOOL _dirty;
@@ -40,6 +41,7 @@
     NSString *_contentUserAction;
     NSSet *_keywords;
     NSDate *_expirationDate;
+    NSString *_persistentIdentifier;
     NSError *_error;
     SFPeerDevice *_peerDevice;
     NSString *_bundleIdentifier;
@@ -52,6 +54,7 @@
 @property (readonly, getter=isDirty) BOOL dirty; // @synthesize dirty=_dirty;
 @property (copy) NSString *dynamicActivityType; // @synthesize dynamicActivityType=_dynamicActivityType;
 @property BOOL eligibleForHandoff; // @synthesize eligibleForHandoff=_eligibleForHandoff;
+@property BOOL eligibleForPrediction; // @synthesize eligibleForPrediction=_eligibleForPrediction;
 @property BOOL eligibleForPublicIndexing; // @synthesize eligibleForPublicIndexing=_eligibleForPublicIndexing;
 @property BOOL eligibleForReminders; // @synthesize eligibleForReminders=_eligibleForReminders;
 @property BOOL eligibleForSearch; // @synthesize eligibleForSearch=_eligibleForSearch;
@@ -68,6 +71,7 @@
 @property (getter=isPayloadRequested) BOOL payloadRequested; // @synthesize payloadRequested=_payloadRequested;
 @property (copy) NSDictionary *payloads;
 @property (strong) SFPeerDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
+@property (copy) NSString *persistentIdentifier; // @synthesize persistentIdentifier=_persistentIdentifier;
 @property (copy) NSURL *referrerURL; // @synthesize referrerURL=_referrerURL;
 @property (copy) NSSet *requiredUserInfoKeys; // @synthesize requiredUserInfoKeys=_requiredUserInfoKeys;
 @property (copy) NSString *teamIdentifier; // @synthesize teamIdentifier=_teamIdentifier;

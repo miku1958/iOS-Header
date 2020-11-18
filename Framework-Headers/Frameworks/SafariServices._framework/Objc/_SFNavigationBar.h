@@ -13,7 +13,7 @@
 #import <SafariServices/_SFNavigationBarURLButtonDelegate-Protocol.h>
 #import <SafariServices/_UIBasicAnimationFactory-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, NSTimer, SFCrossfadingImageView, SFNavigationBarReaderButton, SFWebsiteNotSecureMessageView, UIButton, UIColor, UIImageView, UILabel, UILongPressGestureRecognizer, UITextField, _SFDimmingButton, _SFDismissButton, _SFFluidProgressView, _SFNavigationBarBackdrop, _SFNavigationBarItem, _SFNavigationBarLabelsContainer, _SFNavigationBarURLButton, _SFToolbar, _UIBackdropViewSettings;
+@class NSArray, NSAttributedString, NSString, NSTimer, SFCrossfadingImageView, SFDismissButton, SFNavigationBarReaderButton, SFWebsiteNotSecureMessageView, UIButton, UIColor, UIImageView, UILabel, UILongPressGestureRecognizer, UITextField, _SFDimmingButton, _SFFluidProgressView, _SFNavigationBarBackdrop, _SFNavigationBarItem, _SFNavigationBarLabelsContainer, _SFNavigationBarURLButton, _SFToolbar, _UIBackdropViewSettings;
 @protocol _SFNavigationBarDelegate, _SFPopoverSourceInfo;
 
 @interface _SFNavigationBar : UIView <UIGestureRecognizerDelegate, _SFFluidProgressViewDelegate, _SFNavigationBarURLButtonDelegate, _UIBasicAnimationFactory, UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private>
@@ -60,7 +60,7 @@
     double _cancelButtonIntrinsicWidth;
     BOOL _readerButtonWillShow;
     NSTimer *_readerAvailabilityLabelHideTimer;
-    _SFDismissButton *_dismissButton;
+    SFDismissButton *_dismissButton;
     UIView *_dismissButtonContainer;
     unsigned long long _inputMode;
     BOOL _preferredBarTintColorIsDark;
@@ -71,7 +71,6 @@
     BOOL _usingLightControls;
     BOOL _controlsHidden;
     BOOL _expanded;
-    BOOL _usesUnscaledBackdrop;
     BOOL _backdropGroupDisabled;
     BOOL _suppressesBlur;
     _SFNavigationBarItem *_item;
@@ -122,7 +121,6 @@
 @property (nonatomic) BOOL unifiedFieldShowsProgressView; // @synthesize unifiedFieldShowsProgressView=_unifiedFieldShowsProgressView;
 @property (nonatomic) BOOL updatesBackdrop;
 @property (nonatomic) BOOL usesNarrowLayout; // @synthesize usesNarrowLayout=_usesNarrowLayout;
-@property (nonatomic) BOOL usesUnscaledBackdrop; // @synthesize usesUnscaledBackdrop=_usesUnscaledBackdrop;
 @property (nonatomic, getter=isUsingLightControls) BOOL usingLightControls; // @synthesize usingLightControls=_usingLightControls;
 @property (readonly, nonatomic) double visualHeight;
 

@@ -6,25 +6,33 @@
 
 #import <CoreThemeDefinition/TDRenditionSpec.h>
 
-@class NSOrderedSet, NSString, TDPNGAsset, TDThemeCompressionType;
+@class NSOrderedSet, NSString, TDImageColorHistogram, TDPNGAsset, TDThemeCompressionType;
 
 @interface TDSimpleArtworkRenditionSpec : TDRenditionSpec
 {
     struct CGRect _alignmentRect;
+    BOOL _isBackstop;
+    TDImageColorHistogram *_histogram;
 }
 
 @property (nonatomic) struct CGRect alignmentRect; // @dynamic alignmentRect;
 @property (strong, nonatomic) NSString *alignmentRectString; // @dynamic alignmentRectString;
 @property (nonatomic) BOOL allowsCompactCompression; // @dynamic allowsCompactCompression;
+@property (nonatomic) BOOL allowsDeepmapCompression; // @dynamic allowsDeepmapCompression;
+@property (nonatomic) BOOL allowsHevcCompression; // @dynamic allowsHevcCompression;
 @property (nonatomic) BOOL allowsMultiPassEncoding; // @dynamic allowsMultiPassEncoding;
 @property (nonatomic) BOOL allowsOptimalRowbytesPacking; // @dynamic allowsOptimalRowbytesPacking;
+@property (nonatomic) BOOL allowsPaletteImageCompression; // @dynamic allowsPaletteImageCompression;
 @property (strong, nonatomic) TDPNGAsset *asset; // @dynamic asset;
 @property (strong, nonatomic) TDThemeCompressionType *compressionType; // @dynamic compressionType;
+@property (strong, nonatomic) TDImageColorHistogram *histogram; // @synthesize histogram=_histogram;
+@property (nonatomic) BOOL isBackstop; // @synthesize isBackstop=_isBackstop;
 @property (nonatomic) BOOL isTintable; // @dynamic isTintable;
 @property (strong, nonatomic) NSString *nonAlphaImageAreaString; // @dynamic nonAlphaImageAreaString;
 @property (strong, nonatomic) NSString *originalImageSizeString; // @dynamic originalImageSizeString;
 @property (nonatomic) struct CGSize physicalSizeInMeters;
 @property (strong, nonatomic) NSString *physicalSizeInMetersString; // @dynamic physicalSizeInMetersString;
+@property (nonatomic) double postScaleFactor; // @dynamic postScaleFactor;
 @property (nonatomic) struct CGRect primitiveAlignmentRect;
 @property (strong, nonatomic) NSOrderedSet *slices; // @dynamic slices;
 
@@ -43,6 +51,7 @@
 - (BOOL)canBePackedWithDocument:(id)arg1;
 - (void)copyAttributesInto:(id)arg1;
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
+- (void)dealloc;
 - (void)drawPackableRenditionInContext:(struct CGContext *)arg1 withDocument:(id)arg2;
 - (BOOL)updatePackingPropertiesWithDocument:(id)arg1;
 

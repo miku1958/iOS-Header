@@ -8,17 +8,24 @@
 
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKWorkoutConfiguration, NSString;
+@class HKWorkoutConfiguration, NSArray, NSDate, NSString;
 
 @interface _HKCurrentWorkoutSnapshot : NSObject <NSSecureCoding>
 {
     HKWorkoutConfiguration *_configuration;
     long long _state;
     NSString *_applicationIdentifier;
+    NSDate *_startDate;
+    NSArray *_events;
+    long long _activeWorkoutState;
 }
 
+@property (readonly, nonatomic) long long activeWorkoutState; // @synthesize activeWorkoutState=_activeWorkoutState;
 @property (readonly, copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
 @property (readonly, nonatomic) HKWorkoutConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, nonatomic) NSArray *events; // @synthesize events=_events;
+@property (readonly, nonatomic) BOOL isFirstPartyWorkout;
+@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 
 + (BOOL)supportsSecureCoding;
@@ -26,7 +33,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithWorkoutConfiguration:(id)arg1 state:(long long)arg2 applicationIdentifier:(id)arg3;
+- (id)initWithWorkoutConfiguration:(id)arg1 state:(long long)arg2 applicationIdentifier:(id)arg3 startDate:(id)arg4 events:(id)arg5 activeWorkoutState:(long long)arg6;
 
 @end
 

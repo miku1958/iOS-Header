@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PDCloudStoreNotificationCoordinatorObserver-Protocol.h>
 #import <PassKitCore/PDPushNotificationConsumer-Protocol.h>
 #import <PassKitCore/PDScheduledActivityClient-Protocol.h>
 
-@class NSMutableArray, NSString, PDAssertionManager, PDCloudStoreNotificationCoordinator, PDPeerPaymentWebServiceArchiver, PDPushNotificationManager, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentWebService;
+@class NSMutableArray, NSString, PDAssertionManager, PDCloudStoreNotificationCoordinator, PDPeerPaymentWebServiceArchiver, PDPushNotificationManager, PDUserNotificationManager, PKPaymentWebService, PKPeerPaymentAccount, PKPeerPaymentWebService;
 @protocol OS_dispatch_queue, PDPeerPaymentWebServiceCoordinatorDataSource, PDWebServiceCoordinatorPassStore;
 
 @interface PDPeerPaymentWebServiceCoordinator : NSObject <PDPushNotificationConsumer, PDScheduledActivityClient, PDCloudStoreNotificationCoordinatorObserver>
@@ -23,6 +23,7 @@
     PKPeerPaymentAccount *_account;
     PKPeerPaymentAccount *_mockAccount;
     PDAssertionManager *_assertionManager;
+    PDUserNotificationManager *_userNotificationManager;
     id<PDPeerPaymentWebServiceCoordinatorDataSource> _dataSource;
     id<PDWebServiceCoordinatorPassStore> _passStore;
     NSMutableArray *_pendingAccountFetches;
@@ -44,6 +45,7 @@
 - (void)_archiveSharedPeerPaymentWebServiceContext;
 - (void)_completeUpdatingAccount;
 - (void)_downloadAssociatedPeerPaymentPassWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_handleUpdatedAccount:(id)arg1 withOldAccount:(id)arg2;
 - (BOOL)_hasAssociatedPeerPaymentPass;
 - (void)_initalizeCloudStore;
 - (void)_initalizeCloudStoreIfNecessary;
@@ -70,14 +72,17 @@
 - (void)deleteSharedWebServiceWithDiagnosticReason:(id)arg1;
 - (void)downloadPassIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleCompanionSerialNumberChanged;
+- (void)handleMigratedAccount:(id)arg1;
 - (void)handlePassLibraryChangedWithPassUniqueIdentifier:(id)arg1;
 - (void)handlePushNotificationForTopic:(id)arg1 userInfo:(id)arg2;
 - (id)initWithPushNotificationManager:(id)arg1 paymentWebService:(id)arg2 assertionManager:(id)arg3 dataSource:(id)arg4;
 - (id)initWithPushNotificationManager:(id)arg1 paymentWebService:(id)arg2 assertionManager:(id)arg3 dataSource:(id)arg4 passStore:(id)arg5;
+- (id)initWithPushNotificationManager:(id)arg1 paymentWebService:(id)arg2 assertionManager:(id)arg3 userNotificationManager:(id)arg4 dataSource:(id)arg5 passStore:(id)arg6;
 - (void)initalizeCloudStoreIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initalizeCloudStoreIfNecessaryWithHandler:(CDUnknownBlockType)arg1;
 - (void)performScheduledActivityWithIdentifier:(id)arg1 activityCriteria:(id)arg2;
 - (id)pushNotificationTopics;
+- (void)receivedPeerPaymentMessage:(id)arg1;
 - (void)registerDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registerDeviceWithRegistrationURL:(id)arg1 pushToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registrationStatusWithCompletion:(CDUnknownBlockType)arg1;

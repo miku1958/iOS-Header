@@ -7,32 +7,33 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBDouble-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBDouble : PBCodable <NSCopying>
+@interface _INPBDouble : PBCodable <_INPBDouble, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_values;
+    struct _has;
+    NSArray *_values;
 }
 
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSMutableArray *values; // @synthesize values=_values;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *values; // @synthesize values=_values;
+@property (readonly, nonatomic) unsigned long long valuesCount;
 
-+ (id)options;
 + (Class)valueType;
 - (void).cxx_destruct;
 - (void)addValue:(id)arg1;
 - (void)clearValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)valueAtIndex:(unsigned long long)arg1;
-- (unsigned long long)valuesCount;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSString;
 
-@interface DMFEchoRequest : CATTaskRequest
+@interface DMFEchoRequest : DMFTaskRequest
 {
     NSString *_echo;
     NSString *_resultStatus;
@@ -17,6 +17,9 @@
 @property (copy, nonatomic) NSString *echo; // @synthesize echo=_echo;
 @property (copy, nonatomic) NSString *resultStatus; // @synthesize resultStatus=_resultStatus;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;

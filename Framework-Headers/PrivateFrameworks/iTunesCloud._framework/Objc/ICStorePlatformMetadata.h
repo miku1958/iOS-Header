@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) double duration;
 @property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic) long long explicitRating;
+@property (readonly, copy, nonatomic) NSArray *formerStoreAdamIDs;
 @property (readonly, copy, nonatomic) NSArray *genreNames;
 @property (readonly, nonatomic) BOOL hasLyrics;
 @property (readonly, copy, nonatomic) NSString *kind;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) BOOL shouldShowComposer;
 @property (readonly, nonatomic) long long storeAdamID;
 @property (readonly, copy, nonatomic) NSString *title;
+@property (readonly, nonatomic) long long trackCount;
 @property (readonly, nonatomic) long long trackNumber;
 @property (readonly, copy, nonatomic) NSString *workName;
 

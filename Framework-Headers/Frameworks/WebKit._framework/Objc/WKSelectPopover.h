@@ -8,11 +8,15 @@
 
 #import <WebKit/WKFormControl-Protocol.h>
 
+@class UITableViewController;
+
 __attribute__((visibility("hidden")))
 @interface WKSelectPopover : WKFormRotatingAccessoryPopover <WKFormControl>
 {
     struct RetainPtr<WKSelectTableViewController> _tableViewController;
 }
+
+@property (readonly, nonatomic) UITableViewController *tableViewController;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;

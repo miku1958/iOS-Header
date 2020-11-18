@@ -6,8 +6,12 @@
 
 #import <Foundation/NSError.h>
 
+@class NSSet, NSString;
+
 @interface NSError (TSPersistence)
 
+@property (readonly, nonatomic) NSSet *tsp_hints;
+@property (readonly, nonatomic) NSString *tsp_hintsDescription;
 @property (readonly, nonatomic) BOOL tsp_isCorruptZipOfPackageError;
 @property (readonly, nonatomic) BOOL tsp_isCorruptedError;
 @property (readonly, nonatomic) BOOL tsp_isDocumentTooNewError;
@@ -23,6 +27,7 @@
 + (id)tsp_errorWithCode:(long long)arg1;
 + (id)tsp_errorWithCode:(long long)arg1 userInfo:(id)arg2;
 + (id)tsp_errorWithCode:(long long)arg1 userInfo:(id)arg2 isRecoverable:(BOOL)arg3;
++ (id)tsp_errorWithError:(id)arg1 hints:(id)arg2;
 + (id)tsp_readCorruptZipOfPackageErrorWithUserInfo:(id)arg1;
 + (id)tsp_readCorruptedDocumentErrorWithUserInfo:(id)arg1;
 + (id)tsp_readPOSIXErrorWithNumber:(int)arg1 userInfo:(id)arg2;

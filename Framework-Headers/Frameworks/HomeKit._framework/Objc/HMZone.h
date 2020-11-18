@@ -10,34 +10,29 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMFMessageDispatcher, HMHome, HMThreadSafeMutableArrayCollection, NSArray, NSString, NSUUID;
+@class HMFUnfairLock, HMHome, HMMutableArray, NSArray, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
 @interface HMZone : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     HMHome *_home;
     NSUUID *_uuid;
-    HMFMessageDispatcher *_msgDispatcher;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
-    HMThreadSafeMutableArrayCollection *_currentRooms;
+    _HMContext *_context;
+    HMMutableArray *_currentRooms;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *currentRooms; // @synthesize currentRooms=_currentRooms;
+@property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property (strong, nonatomic) HMMutableArray *currentRooms; // @synthesize currentRooms=_currentRooms;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy, nonatomic) NSArray *rooms;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -45,8 +40,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)_addRoom:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_configure:(id)arg1 messageDispatcher:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4;
 - (void)_handleRoomAddedNotification:(id)arg1;
 - (void)_handleRoomRemovedNotification:(id)arg1;
 - (void)_handleZoneRenamedNotification:(id)arg1;

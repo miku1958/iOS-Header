@@ -7,31 +7,36 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBShareFileIntent-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBIntentMetadata;
 
-@interface _INPBShareFileIntent : PBCodable <NSCopying>
+@interface _INPBShareFileIntent : PBCodable <_INPBShareFileIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_entityNames;
-    _INPBIntentMetadata *_intentMetadata;
-    NSMutableArray *_recipients;
-    int _shareMode;
     struct {
         unsigned int shareMode:1;
     } _has;
+    int _shareMode;
+    NSArray *_entityNames;
+    _INPBIntentMetadata *_intentMetadata;
+    NSArray *_recipients;
 }
 
-@property (strong, nonatomic) NSMutableArray *entityNames; // @synthesize entityNames=_entityNames;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *entityNames; // @synthesize entityNames=_entityNames;
+@property (readonly, nonatomic) unsigned long long entityNamesCount;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasShareMode;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (strong, nonatomic) NSMutableArray *recipients; // @synthesize recipients=_recipients;
+@property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
+@property (readonly, nonatomic) unsigned long long recipientsCount;
 @property (nonatomic) int shareMode; // @synthesize shareMode=_shareMode;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
 + (Class)entityNameType;
-+ (id)options;
 + (Class)recipientsType;
 - (void).cxx_destruct;
 - (int)StringAsShareMode:(id)arg1;
@@ -40,16 +45,11 @@
 - (void)clearEntityNames;
 - (void)clearRecipients;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)entityNameAtIndex:(unsigned long long)arg1;
-- (unsigned long long)entityNamesCount;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)recipientsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)recipientsCount;
 - (id)shareModeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

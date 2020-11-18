@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AudioToolbox/NSSecureCoding-Protocol.h>
 
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *valueStrings; // @synthesize valueStrings=_valueStrings;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

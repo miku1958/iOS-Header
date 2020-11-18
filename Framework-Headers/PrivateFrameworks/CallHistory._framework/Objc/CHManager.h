@@ -88,6 +88,7 @@
 - (void)setInitialLimitingCallKinds:(id)arg1;
 - (void)setLimitingCallKindsSync:(id)arg1;
 - (void)setLimitingCallTypesSync:(unsigned int)arg1;
+- (void)setOutgoingLocalParticipantUUID:(id)arg1 forRecentCallsMatchingPredicate:(id)arg2;
 - (id)unCoalesceCall:(id)arg1;
 - (void)updateBytesOfDataUsedFor:(id)arg1 with:(id)arg2;
 

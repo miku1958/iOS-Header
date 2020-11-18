@@ -6,13 +6,12 @@
 
 #import <MediaPlayer/MPMediaPlaylist.h>
 
-#import <MediaPlayer/NSCoding-Protocol.h>
 #import <MediaPlayer/NSCopying-Protocol.h>
 
 @class MPMediaQuery, NSMutableDictionary, NSObject;
 @protocol OS_dispatch_queue;
 
-@interface MPConcreteMediaPlaylist : MPMediaPlaylist <NSCoding, NSCopying>
+@interface MPConcreteMediaPlaylist : MPMediaPlaylist <NSCopying>
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSMutableDictionary *_properties;

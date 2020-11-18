@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSArray, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, PKProximityAdvertiser;
+@class IDSService, NSArray, NSHashTable, NSLock, NSMutableArray, NSMutableDictionary, NSString, PKProximityAdvertiser;
 @protocol OS_dispatch_queue, PKIDSManagerDataSource;
 
 @interface PKIDSManager : NSObject <IDSServiceDelegate>
@@ -19,6 +19,7 @@
     NSMutableDictionary *_thumbnailCompletionHandlers;
     PKProximityAdvertiser *_proximityAdvertiser;
     NSHashTable *_delegates;
+    NSLock *_delegatesLock;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     int _requestCLTMThrottleUncapToken;
     id<PKIDSManagerDataSource> _dataSource;

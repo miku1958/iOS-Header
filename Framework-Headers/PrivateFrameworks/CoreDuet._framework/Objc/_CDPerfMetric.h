@@ -6,33 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSDate, NSDictionary, NSString, _CDPerfMetricFamily;
 
 @interface _CDPerfMetric : NSObject
 {
-    struct XSPerfCollection *_stats;
+    NSDictionary *_dictionary;
     NSString *_name;
-    NSDictionary *_userInfo;
+    NSString *_string;
+    _CDPerfMetricFamily *_family;
 }
 
 @property (readonly) double averageElapsedTime;
 @property (readonly) unsigned long long count;
 @property (readonly) unsigned long long errorCount;
+@property (readonly, weak) _CDPerfMetricFamily *family; // @synthesize family=_family;
 @property (readonly) double lastElapsedTime;
 @property (readonly) unsigned long long lastResultCount;
 @property (readonly) NSDate *lastUpdate;
 @property (readonly) double maximumElapsedTime;
 @property (readonly) double minimumElapsedTime;
 @property (readonly) NSString *name; // @synthesize name=_name;
-@property (readonly) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property (readonly) NSString *string; // @synthesize string=_string;
 
-+ (id)perfMetricForFetchRequest:(id)arg1;
-+ (id)perfMetricWithName:(id)arg1 userInfo:(id)arg2;
++ (id)perfMetricForFetchRequest:(id)arg1 type:(id)arg2;
 - (void).cxx_destruct;
-- (void)dealloc;
-- (id)description;
+- (id)_histogramWithIndex:(unsigned long long)arg1;
+- (id)_stringWithIndex:(unsigned long long)arg1;
+- (unsigned long long)_unsignedIntegerCounterWithIndex:(unsigned long long)arg1;
 - (id)elapsedTimeHistogram;
-- (id)initWithName:(id)arg1 userInfo:(id)arg2 sharedMemoryRegion:(struct cdpm_shared_memory_region_s *)arg3;
+- (id)initWithName:(id)arg1 string:(id)arg2 family:(id)arg3 dictionary:(id)arg4;
 
 @end
 

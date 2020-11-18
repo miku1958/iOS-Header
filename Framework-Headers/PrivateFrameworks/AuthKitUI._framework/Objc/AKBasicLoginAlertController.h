@@ -9,12 +9,12 @@
 #import <AuthKitUI/UITextFieldDelegate-Protocol.h>
 
 @class NSString;
-@protocol AKBasicLoginAlertControllerDelegate;
+@protocol AKBasicLoginAlertControllerDelegate, NSObject;
 
 @interface AKBasicLoginAlertController : UIAlertController <UITextFieldDelegate>
 {
     long long _alertStyle;
-    id _codeEntryObserver;
+    id<NSObject> _didEnterCodeObserver;
     CDUnknownBlockType _ak_cancelAction;
     CDUnknownBlockType _ak_authenticateAction;
     CDUnknownBlockType _ak_createIDAction;
@@ -54,8 +54,15 @@
 @property (copy, nonatomic) NSString *username; // @synthesize username=_ak_username;
 
 - (void).cxx_destruct;
+- (void)_beginObservingDidEnterCodeNotifications;
+- (void)_clearPasswordField;
+- (void)_didEnterCode:(id)arg1;
+- (void)_dismissAndShowiForgot:(id)arg1;
+- (void)_endObservingDidEnterCodeNotifications;
 - (id)_interpolatedReasonString;
 - (void)_jiggleTheAlert;
+- (id)_passwordField;
+- (void)_passwordFieldDidChange:(id)arg1;
 - (void)_setupAuthenticateAndCancelButtons;
 - (void)_setupViewControllerForAlertStyle;
 - (void)_setupViewControllerForDefaultStyle;
@@ -68,7 +75,6 @@
 - (void)clearSecondFactorEntry;
 - (void)dealloc;
 - (BOOL)disablesAutomaticKeyboardDismissal;
-- (void)dismissAndShowiForgot;
 - (id)initWithAlertStyle:(long long)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)setPasscodeFieldDisabled:(BOOL)arg1;

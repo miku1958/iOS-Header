@@ -40,9 +40,10 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)canDrawInParallel;
 - (BOOL)canDrawShadowInOneStepWithChildren:(BOOL)arg1;
+- (struct CGRect)clipRect;
 - (void)dealloc;
 - (id)downloadProgressPlaceholderImage;
-- (void)drawInContextWithoutEffects:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6;
+- (void)drawInContextWithoutEffects:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(BOOL)arg4 forAlphaOnly:(BOOL)arg5 drawChildren:(BOOL)arg6 keepingChildrenPassingTest:(CDUnknownBlockType)arg7;
 - (void)drawInLayerContext:(struct CGContext *)arg1;
 - (struct CGRect)frameInUnscaledCanvas;
 - (id)imageDrawingHelperAdjustedImageData:(id)arg1;

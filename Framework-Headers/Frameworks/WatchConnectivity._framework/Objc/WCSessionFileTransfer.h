@@ -8,17 +8,25 @@
 
 #import <WatchConnectivity/NSSecureCoding-Protocol.h>
 
-@class NSError, NSString, WCSessionFile;
+@class NSDate, NSError, NSProgress, NSString, WCSessionFile;
 
 @interface WCSessionFileTransfer : NSObject <NSSecureCoding>
 {
     BOOL _transferring;
     WCSessionFile *_file;
+    NSProgress *_progress;
+    NSDate *_transferDate;
     NSString *_transferIdentifier;
     NSError *_transferError;
+    NSProgress *_internalProgress;
+    id _progressToken;
 }
 
 @property (readonly, nonatomic) WCSessionFile *file; // @synthesize file=_file;
+@property (strong) NSProgress *internalProgress; // @synthesize internalProgress=_internalProgress;
+@property (readonly, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
+@property (strong) id progressToken; // @synthesize progressToken=_progressToken;
+@property (strong, nonatomic) NSDate *transferDate; // @synthesize transferDate=_transferDate;
 @property (strong) NSError *transferError; // @synthesize transferError=_transferError;
 @property (copy) NSString *transferIdentifier; // @synthesize transferIdentifier=_transferIdentifier;
 @property (nonatomic, getter=isTransferring) BOOL transferring; // @synthesize transferring=_transferring;
@@ -33,6 +41,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFile:(id)arg1;
+- (void)initializeProgress;
 - (BOOL)isEqual:(id)arg1;
 
 @end

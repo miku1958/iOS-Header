@@ -6,15 +6,15 @@
 
 #import <MessageUI/MFAtomTextView.h>
 
-@class NSString, SearchUIKeyboardableTableViewController;
+@class NSString, SearchUIResultViewController;
 
 @interface SearchUISearchField : MFAtomTextView
 {
-    SearchUIKeyboardableTableViewController *_tableViewController;
+    SearchUIResultViewController *_resultViewController;
 }
 
+@property (weak) SearchUIResultViewController *resultViewController; // @synthesize resultViewController=_resultViewController;
 @property (readonly) NSString *searchText;
-@property (weak) SearchUIKeyboardableTableViewController *tableViewController; // @synthesize tableViewController=_tableViewController;
 
 - (void).cxx_destruct;
 - (struct _NSRange)_markedTextNSRange;

@@ -9,30 +9,49 @@
 #import <CoreMotion/NSCopying-Protocol.h>
 #import <CoreMotion/NSSecureCoding-Protocol.h>
 
-@class NSUUID;
+@class NSDate, NSUUID;
 
 @interface CMWorkout : NSObject <NSSecureCoding, NSCopying>
 {
     NSUUID *fSessionId;
     long long fType;
+    long long fLocationType;
+    NSDate *fStartDate;
+    NSDate *fEndDate;
+    BOOL fIsUserInitiated;
+    BOOL _isUserInitiated;
 }
 
+@property (readonly, nonatomic) NSDate *endDate;
+@property (readonly, nonatomic) BOOL isUserInitiated; // @synthesize isUserInitiated=_isUserInitiated;
+@property (readonly, nonatomic) long long locationType;
 @property (readonly, nonatomic) NSUUID *sessionId;
+@property (readonly, nonatomic) NSDate *startDate;
 @property (readonly, nonatomic) long long type;
 
 + (int)CLMotionActivityTypeFromCMWorkoutType:(long long)arg1;
++ (long long)CMSwimWorkoutLocationFromCMWorkoutLocationType:(long long)arg1;
++ (long long)CMWorkoutLocationTypeFromCMSwimWorkoutLocation:(long long)arg1;
 + (long long)CMWorkoutTypeFromCLMotionActivityType:(int)arg1;
 + (BOOL)isAvailable;
-+ (long long)natalieDataSessionFromWorkoutType:(long long)arg1;
 + (BOOL)supportsSecureCoding;
++ (BOOL)workoutIsTypePedestrian:(long long)arg1;
++ (BOOL)workoutIsTypeRunning:(long long)arg1;
++ (BOOL)workoutIsTypeWalking:(long long)arg1;
++ (id)workoutLocationName:(long long)arg1;
++ (long long)workoutLocationTypeFromCMWorkoutType:(long long)arg1;
 + (id)workoutName:(long long)arg1;
-+ (long long)workoutTypeFromNatalieDataSession:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSessionId:(id)arg1 type:(long long)arg2;
+- (id)initWithSessionId:(id)arg1 type:(long long)arg2 locationType:(long long)arg3;
+- (id)initWithSessionId:(id)arg1 type:(long long)arg2 locationType:(long long)arg3 startDate:(id)arg4 endDate:(id)arg5;
+- (void)setIsUserInitiated:(BOOL)arg1;
+- (void)setLocationType:(long long)arg1;
+- (void)setWorkoutType:(long long)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIArchiveItem.h>
+#import <UIKitCore/_UIArchiveItem.h>
 
 __attribute__((visibility("hidden")))
 @interface _UILibArchiveItem : _UIArchiveItem

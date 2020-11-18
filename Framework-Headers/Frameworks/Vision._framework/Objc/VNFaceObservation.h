@@ -6,13 +6,17 @@
 
 #import <Vision/VNDetectedObjectObservation.h>
 
-@class NSData, NSDictionary, VNFaceLandmarks2D, VNFaceLandmarks3D, VNFaceRegionMap, VNFaceprint;
+@class NSData, NSDictionary, NSNumber, VNFaceAttributes, VNFaceLandmarkSegments, VNFaceLandmarks2D, VNFaceLandmarks3D, VNFaceRegionMap, VNFaceTorsoprint, VNFaceprint, VNTorsoprint;
 
 @interface VNFaceObservation : VNDetectedObjectObservation
 {
     VNFaceLandmarks2D *_cachedLandmarks;
     VNFaceLandmarks3D *_cachedLandmarks3d;
     VNFaceRegionMap *_faceRegionMap;
+    VNFaceAttributes *_faceAttributes;
+    VNTorsoprint *_torsoprint;
+    VNFaceTorsoprint *_faceTorsoprint;
+    VNFaceLandmarkSegments *_faceLandmarkSegments;
     float _landmarkScore;
     BOOL _isBlinking;
     float _blinkScore;
@@ -22,6 +26,8 @@
     BOOL _hasBBoxBeenAligned;
     float _alignedRotationAngle;
     float _faceIdConfidence;
+    NSNumber *_roll;
+    NSNumber *_yaw;
     VNFaceLandmarks2D *_landmarks;
     NSData *_landmarkPoints;
     NSData *_landmarkPoints3d;
@@ -37,11 +43,14 @@
 @property (nonatomic) float alignedRotationAngle; // @synthesize alignedRotationAngle=_alignedRotationAngle;
 @property (readonly) float blinkScore;
 @property (readonly, copy, nonatomic) NSDictionary *expressionsAndConfidence;
+@property (readonly, nonatomic) VNFaceAttributes *faceAttributes; // @synthesize faceAttributes=_faceAttributes;
 @property (nonatomic) unsigned long long faceId; // @synthesize faceId=_faceId;
 @property (nonatomic) float faceIdConfidence; // @synthesize faceIdConfidence=_faceIdConfidence;
 @property (readonly, nonatomic, getter=faceJunkinessIndex) float faceJunkinessIndex;
+@property (readonly, nonatomic) VNFaceLandmarkSegments *faceLandmarkSegments; // @synthesize faceLandmarkSegments=_faceLandmarkSegments;
 @property (readonly, nonatomic, getter=faceOrientationIndex) float faceOrientationIndex;
 @property (readonly, nonatomic) VNFaceRegionMap *faceRegionMap; // @synthesize faceRegionMap=_faceRegionMap;
+@property (readonly, nonatomic) VNFaceTorsoprint *faceTorsoprint;
 @property (strong, nonatomic) VNFaceprint *faceprint; // @synthesize faceprint=_faceprint;
 @property (nonatomic) BOOL hasBBoxBeenAligned; // @synthesize hasBBoxBeenAligned=_hasBBoxBeenAligned;
 @property (strong, nonatomic) NSData *landmarkPoints; // @synthesize landmarkPoints=_landmarkPoints;
@@ -51,9 +60,18 @@
 @property (readonly, nonatomic) float nameConfidence;
 @property (readonly, nonatomic) CDStruct_f1db2b5e pose;
 @property (strong, nonatomic) NSData *poseData; // @synthesize poseData=_poseData;
+@property (strong, nonatomic) NSNumber *roll; // @synthesize roll=_roll;
+@property (strong, nonatomic) VNTorsoprint *torsoprint;
+@property (strong, nonatomic) NSNumber *yaw; // @synthesize yaw=_yaw;
 
++ (BOOL)_exifOrientationFromFaceRollAngle:(float)arg1 exifOrientation:(int *)arg2 error:(id *)arg3;
 + (BOOL)computeYawPitchRollFromPoseMatrix:(CDStruct_f1db2b5e)arg1 outputYaw:(float *)arg2 outputPitch:(float *)arg3 outputRoll:(float *)arg4;
 + (id)faceObservationWithBoundingBox:(struct CGRect)arg1 andAlignedBoundingBox:(struct CGRect)arg2;
++ (id)faceObservationWithBoundingBox:(struct CGRect)arg1 faceprint:(id)arg2;
++ (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 alignedBoundingBox:(struct CGRect)arg3 roll:(id)arg4 yaw:(id)arg5;
++ (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 andAlignedBoundingBox:(struct CGRect)arg3;
++ (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 faceprint:(id)arg3;
++ (id)faceObservationWithRequestRevision:(unsigned long long)arg1 boundingBox:(struct CGRect)arg2 roll:(id)arg3 yaw:(id)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct CGRect)alignedBoundingBoxAsCGRect;
@@ -63,6 +81,7 @@
 - (id)expressionsAndDetections;
 - (id)expressionsAndScores;
 - (BOOL)getComputedRectifyingTransform:(struct CGAffineTransform *)arg1;
+- (BOOL)getFaceEXIFOrientation:(int *)arg1 error:(id *)arg2;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -71,9 +90,12 @@
 - (float)landmarkScore;
 - (void)setBlinkScore:(float)arg1;
 - (void)setExpressionsAndScores:(id)arg1;
+- (void)setFaceAttributes:(id)arg1;
 - (void)setFaceJunkinessIndex:(float)arg1;
+- (void)setFaceLandmarkSegments:(id)arg1;
 - (void)setFaceOrientationIndex:(float)arg1;
 - (void)setFaceRegionMap:(id)arg1;
+- (void)setFaceTorsoprint:(id)arg1;
 - (void)setIsBlinking:(BOOL)arg1;
 - (void)setLandmarkScore:(float)arg1;
 

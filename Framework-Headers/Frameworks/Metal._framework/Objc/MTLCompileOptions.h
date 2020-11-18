@@ -4,21 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface MTLCompileOptions : NSObject <NSCopying>
 {
 }
 
+@property (nonatomic) NSString *additionalCompilerArguments; // @dynamic additionalCompilerArguments;
+@property (nonatomic) BOOL compileTimeStatisticsEnabled; // @dynamic compileTimeStatisticsEnabled;
 @property (nonatomic) BOOL debuggingEnabled; // @dynamic debuggingEnabled;
 @property (nonatomic) BOOL fastMathEnabled; // @dynamic fastMathEnabled;
 @property (nonatomic) BOOL glBufferBindPoints; // @dynamic glBufferBindPoints;
 @property (nonatomic) unsigned long long languageVersion; // @dynamic languageVersion;
 @property (copy, nonatomic) NSDictionary *preprocessorMacros; // @dynamic preprocessorMacros;
+@property (nonatomic) BOOL tracingEnabled; // @dynamic tracingEnabled;
 
 + (id)alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;

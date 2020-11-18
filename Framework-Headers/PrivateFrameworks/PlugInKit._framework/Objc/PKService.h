@@ -9,7 +9,7 @@
 #import <PlugInKit/NSXPCListenerDelegate-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString, NSXPCListener, PKServicePersonality;
-@protocol OS_dispatch_queue, PKServiceDelegate;
+@protocol OS_dispatch_queue, OS_dispatch_source, PKServiceDelegate;
 
 @interface PKService : NSObject <NSXPCListenerDelegate>
 {
@@ -20,6 +20,7 @@
     PKServicePersonality *_solePersonality;
     NSObject<OS_dispatch_queue> *__sync;
     NSArray *_subsystems;
+    NSObject<OS_dispatch_source> *_terminationTimer;
 }
 
 @property (strong) NSObject<OS_dispatch_queue> *_sync; // @synthesize _sync=__sync;
@@ -33,12 +34,15 @@
 @property (strong) PKServicePersonality *solePersonality; // @synthesize solePersonality=_solePersonality;
 @property (strong) NSArray *subsystems; // @synthesize subsystems=_subsystems;
 @property (readonly) Class superclass;
+@property (strong) NSObject<OS_dispatch_source> *terminationTimer; // @synthesize terminationTimer=_terminationTimer;
 
 + (int)_defaultRun:(int)arg1 arguments:(const char **)arg2;
 + (id)defaultService;
 + (void)main;
 - (void).cxx_destruct;
+- (void)_prepareToRun;
 - (BOOL)_processDefaultSubsystemName:(id)arg1;
+- (void)cancelTermination;
 - (void)checkEnvironment:(id)arg1;
 - (id)configuredSubsystemList;
 - (id)connectionForPlugInNamed:(id)arg1;
@@ -58,6 +62,7 @@
 - (id)plugInPrincipalForPlugInNamed:(id)arg1;
 - (void)registerPersonality:(id)arg1;
 - (void)run;
+- (void)scheduleTermination:(double)arg1;
 - (BOOL)unregisterPersonality:(id)arg1;
 
 @end

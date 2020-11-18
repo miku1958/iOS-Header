@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface UIPressInfo : NSObject
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (id)_keyboardPressInfoForType:(long long)arg1 isKeyDown:(BOOL)arg2 timestamp:(double)arg3;
 - (id)_sourceDescription;
 - (id)description;
 - (id)init;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBSSystemAppProxy;
 
@@ -15,6 +15,7 @@
 
 + (id)clientCallbackQueue;
 + (id)sharedService;
+- (void).cxx_destruct;
 - (void)_openApplication:(id)arg1 withOptions:(id)arg2 clientHandle:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)badgeValueForBundleID:(id)arg1;
 - (BOOL)canOpenApplication:(id)arg1 reason:(long long *)arg2;

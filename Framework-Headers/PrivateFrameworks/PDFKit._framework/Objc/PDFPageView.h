@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)_setuppageAnnotationEffects;
 - (BOOL)_shouldReplaceStringOnAnnotation:(id)arg1 withTextView:(id)arg2;
 - (void)_textWidgetDone;
+- (void)_updateAnnotationVisibility:(id)arg1;
 - (void)_updateWidgetControl:(id)arg1 forBounds:(struct CGRect)arg2;
 - (void)addAnnotation:(id)arg1;
 - (void)addBookmark;

@@ -7,33 +7,37 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBRideDriver-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBContactValue;
+@class NSString, _INPBContactValue, _INPBImageValue;
 
-@interface _INPBRideDriver : PBCodable <NSCopying>
+@interface _INPBRideDriver : PBCodable <_INPBRideDriver, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
+    _INPBImageValue *_image;
     _INPBContactValue *_person;
     NSString *_phoneNumber;
     NSString *_rating;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasImage;
 @property (readonly, nonatomic) BOOL hasPerson;
 @property (readonly, nonatomic) BOOL hasPhoneNumber;
 @property (readonly, nonatomic) BOOL hasRating;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _INPBImageValue *image; // @synthesize image=_image;
 @property (strong, nonatomic) _INPBContactValue *person; // @synthesize person=_person;
-@property (strong, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
-@property (strong, nonatomic) NSString *rating; // @synthesize rating=_rating;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property (copy, nonatomic) NSString *rating; // @synthesize rating=_rating;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

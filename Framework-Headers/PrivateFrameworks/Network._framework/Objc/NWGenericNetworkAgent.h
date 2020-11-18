@@ -33,6 +33,9 @@
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 - (id)initWithKernelAgent:(const struct netagent *)arg1;
 - (BOOL)isNexusProvider;
+- (BOOL)requiresAssert;
+- (BOOL)supportsBrowse;
+- (BOOL)supportsResolve;
 
 @end
 

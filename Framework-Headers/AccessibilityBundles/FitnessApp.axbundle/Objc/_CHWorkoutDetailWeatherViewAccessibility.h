@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityElements;
+- (void)setTemperature:(id)arg1 humidity:(id)arg2 weatherCondition:(long long)arg3 formattingManager:(id)arg4;
 
 @end
 

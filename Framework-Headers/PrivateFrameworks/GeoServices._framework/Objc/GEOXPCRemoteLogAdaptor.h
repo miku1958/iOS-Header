@@ -8,12 +8,13 @@
 
 #import <GeoServices/GEOProtobufSessionTaskDelegate-Protocol.h>
 
-@class GEOLogMessageCacheManager, GEOLogMessageCollectionRequest, GEOProtobufSessionTask, NSLock, NSObject, NSString, NSURL;
+@class GEOLogMessageCacheManager, GEOLogMessageCollectionRequest, GEOProtobufSessionTask, NSLock, NSNumber, NSObject, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface GEOXPCRemoteLogAdaptor : GEOBaseLogAdaptor <GEOProtobufSessionTaskDelegate>
 {
     NSURL *_remoteURL;
+    NSNumber *_needsProxy;
     NSString *_debugRequestName;
     unsigned long long _retryInterval;
     unsigned long long _backOffRetryInterval;
@@ -52,6 +53,7 @@
 @property (strong, nonatomic) NSString *debugRequestName; // @synthesize debugRequestName=_debugRequestName;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSNumber *needsProxy; // @synthesize needsProxy=_needsProxy;
 @property (strong, nonatomic) NSURL *remoteURL; // @synthesize remoteURL=_remoteURL;
 @property (readonly) Class superclass;
 @property (readonly) int supportedLogMessageType;
@@ -66,7 +68,6 @@
 - (void)_deviceLocking;
 - (void)_deviceUnlocked;
 - (void)_initializeAdaptor;
-- (BOOL)_isLogMessageCollectionRequesterPending;
 - (void)_networkReachabilityChanged;
 - (void)_purgeAndSendLogMessages;
 - (void)_purgeExpiredLogMessagesFromCache;
@@ -87,11 +88,12 @@
 - (void)forceFlushLogs;
 - (void)incrementXpcActivityTriggerCount;
 - (id)initWithAdaptorPolicy:(id)arg1;
-- (id)initWithRemoteURL:(id)arg1 debugRequestName:(id)arg2 supportedTypes:(id)arg3;
+- (id)initWithRemoteURL:(id)arg1 needsProxy:(id)arg2 debugRequestName:(id)arg3 supportedTypes:(id)arg4;
 - (BOOL)isLogFrameworkAdaptor;
 - (int)logMsgEventNetworkServiceForSupportedLogMsgType;
 - (void)protobufSession:(id)arg1 didCompleteTask:(id)arg2;
 - (void)queueLogMessage:(id)arg1;
+- (void)tearDown;
 - (void)updateAdaptorPolicyConfiguration:(id)arg1;
 
 @end

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UICalloutBarDelegate-Protocol.h>
+#import <UIKitCore/UICalloutBarDelegate-Protocol.h>
 
 @class NSArray, NSString, UIView;
 

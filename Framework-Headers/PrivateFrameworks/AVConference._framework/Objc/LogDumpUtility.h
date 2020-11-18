@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface LogDumpUtility : NSObject
@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 + (id)filesSortedByTimestamp:(id)arg1;
 + (id)getCachesDirectoryPath;
 + (id)getDefaultLogDumpPath;
-+ (id)logFilename:(int)arg1 dumpID:(unsigned int)arg2 logNameType:(int)arg3 prefix:(id)arg4 suffix:(id)arg5;
++ (id)logFilename:(int)arg1 dumpID:(id)arg2 logNameType:(int)arg3 prefix:(id)arg4 suffix:(id)arg5;
 + (void)removeFilesInDirectory:(id)arg1 olderThan:(id)arg2;
 + (void)removeOldFilesInDefaultLogDumpPath;
 

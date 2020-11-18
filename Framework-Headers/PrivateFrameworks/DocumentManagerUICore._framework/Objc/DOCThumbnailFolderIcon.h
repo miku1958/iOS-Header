@@ -10,10 +10,12 @@
 
 @interface DOCThumbnailFolderIcon : NSObject
 {
-    UIImage *_image;
-    NSString *_imageName;
+    NSString *_documentsBadgeName;
+    NSString *_desktopBadgeName;
     UIImage *_documentsBadge;
     UIImage *_desktopBadge;
+    UIImage *_image;
+    NSString *_imageName;
     double _dimension;
     double _bottomInset;
     struct CGSize _badgeSize;

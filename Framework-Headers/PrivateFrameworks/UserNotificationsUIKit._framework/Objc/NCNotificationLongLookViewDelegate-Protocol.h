@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UserNotificationsUIKit/NSObject-Protocol.h>
+#import <UserNotificationsUIKit/PLExpandedPlatterViewDelegate-Protocol.h>
 
 @class NCNotificationLongLookView, NSURL;
 
-@protocol NCNotificationLongLookViewDelegate <NSObject>
+@protocol NCNotificationLongLookViewDelegate <PLExpandedPlatterViewDelegate>
 - (void)notificationLongLookView:(NCNotificationLongLookView *)arg1 willInteractWithURL:(NSURL *)arg2;
 @end
 

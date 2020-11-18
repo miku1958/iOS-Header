@@ -8,7 +8,7 @@
 
 #import <CoreRoutine/RTFrameworkProtocol-Protocol.h>
 
-@class NSString, NSXPCConnection, RTEventAgentHelper, RTRoutineManagerRegistrantAction, RTRoutineManagerRegistrantApplicationPrediction, RTRoutineManagerRegistrantScenarioTrigger;
+@class NSString, NSXPCConnection, RTEventAgentHelper, RTRoutineManagerRegistrantAction, RTRoutineManagerRegistrantApplicationPrediction, RTRoutineManagerRegistrantScenarioTrigger, RTTokenBucket;
 @protocol OS_dispatch_queue;
 
 @interface RTRoutineManager : NSObject <RTFrameworkProtocol>
@@ -22,6 +22,7 @@
     CDUnknownBlockType _vehicleEventsHandler;
     NSString *_restorationIdentifier;
     RTEventAgentHelper *_eventAgentHelper;
+    RTTokenBucket *_clientThrottle;
     RTRoutineManagerRegistrantAction *_actionRegistrant;
     RTRoutineManagerRegistrantScenarioTrigger *_scenarioTriggerRegistrant;
     NSObject<OS_dispatch_queue> *_queue;
@@ -29,6 +30,7 @@
 
 @property (strong, nonatomic) RTRoutineManagerRegistrantAction *actionRegistrant; // @synthesize actionRegistrant=_actionRegistrant;
 @property (strong, nonatomic) RTRoutineManagerRegistrantApplicationPrediction *applicationPredictionRegistrant; // @synthesize applicationPredictionRegistrant=_applicationPredictionRegistrant;
+@property (strong, nonatomic) RTTokenBucket *clientThrottle; // @synthesize clientThrottle=_clientThrottle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) RTEventAgentHelper *eventAgentHelper; // @synthesize eventAgentHelper=_eventAgentHelper;
@@ -86,7 +88,6 @@
 - (void)fetchPredictedConditionsForAction:(id)arg1 dateInterval:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchPredictedConditionsForAction:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchPredictedConditionsForAction:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)fetchPredictedContentForBundleWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchPredictedExitDatesFromLocation:(id)arg1 onDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)fetchPredictedExitDatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchPredictedLocationsOfInterestAssociatedToTitle:(id)arg1 location:(id)arg2 calendarIdentifier:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
@@ -95,6 +96,8 @@
 - (void)fetchPredictedRoutesToLocationOfInterestWithIdentifier:(id)arg1 fromLocation:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchRoutineEnabledWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchRoutineModeFromLocation:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)fetchRoutineStateWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchTransitionsBetweenStartDate:(id)arg1 endDate:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)handleDaemonStart;
 - (id)init;
 - (id)initWithRestorationIdentifier:(id)arg1;

@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <PhysicsKit/NSCoding-Protocol.h>
 #import <PhysicsKit/NSCopying-Protocol.h>
+#import <PhysicsKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, PKPhysicsWorld;
 @protocol NSObject;
 
-@interface PKPhysicsBody : NSObject <NSCopying, NSCoding>
+@interface PKPhysicsBody : NSObject <NSCopying, NSSecureCoding>
 {
     id<NSObject> _representedObject;
     struct b2BodyDef _bodyDef;
@@ -84,6 +84,7 @@
 + (id)bodyWithRectangleOfSize:(struct CGSize)arg1 edgeRadius:(double)arg2;
 + (id)initWithMarchingCubes:(struct PKCGrid *)arg1 pixelFrame:(struct CGRect)arg2;
 + (id)initWithQuadTree:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_allowSleep;
@@ -106,6 +107,7 @@
 - (void)applyUnscaledImpulse:(struct CGVector)arg1;
 - (void)applyUnscaledImpulse:(struct CGVector)arg1 atPoint:(struct CGPoint)arg2;
 - (void)clearBox2DData;
+- (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
@@ -122,6 +124,7 @@
 - (id)initWithRectangleOfSize:(struct CGSize)arg1;
 - (id)initWithRectangleOfSize:(struct CGSize)arg1 center:(struct CGPoint)arg2;
 - (id)initWithRectangleOfSize:(struct CGSize)arg1 center:(struct CGPoint)arg2 edgeRadius:(float)arg3;
+- (BOOL)isEqualToBody:(id)arg1;
 - (void)reapplyScale:(double)arg1 yScale:(double)arg2;
 - (void)setActive:(BOOL)arg1;
 - (void)set_allowSleep:(BOOL)arg1;

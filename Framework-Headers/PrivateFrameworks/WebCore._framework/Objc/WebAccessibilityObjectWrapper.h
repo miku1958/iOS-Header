@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (struct WebAccessibilityObjectWrapper *)_accessibilityFrameAncestor;
 - (BOOL)_accessibilityHasTouchEventListener;
 - (BOOL)_accessibilityIsLandmarkRole:(int)arg1;
+- (BOOL)_accessibilityIsStrongPasswordField;
 - (struct WebAccessibilityObjectWrapper *)_accessibilityLandmarkAncestor;
 - (struct WebAccessibilityObjectWrapper *)_accessibilityListAncestor;
 - (double)_accessibilityMaxValue;
@@ -122,6 +123,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)accessibilityIsWebInteractiveVideo;
 - (id)accessibilityLabel;
 - (id)accessibilityLanguage;
+- (id)accessibilityLinkRelationshipType;
 - (id)accessibilityLinkedElement;
 - (id)accessibilityMathBaseObject;
 - (id)accessibilityMathDenominatorObject;
@@ -141,6 +143,7 @@ __attribute__((visibility("hidden")))
 - (void)accessibilityModifySelection:(int)arg1 increase:(BOOL)arg2;
 - (void)accessibilityMoveSelectionToMarker:(id)arg1;
 - (struct WebAccessibilityObjectWrapper *)accessibilityObjectForTextMarker:(id)arg1;
+- (BOOL)accessibilityPerformEscape;
 - (id)accessibilityPlaceholderValue;
 - (id)accessibilityPlatformMathSubscriptKey;
 - (id)accessibilityPlatformMathSuperscriptKey;
@@ -160,6 +163,7 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityURL;
 - (id)accessibilityValue;
 - (void)accessibilityVideoEnterFullscreen;
+- (struct CGRect)accessibilityVisibleContentRect;
 - (id)arrayOfTextForTextMarkers:(id)arg1 attributed:(BOOL)arg2;
 - (id)attachmentView;
 - (id)attributedStringForRange:(struct _NSRange)arg1;
@@ -205,7 +209,7 @@ __attribute__((visibility("hidden")))
 - (id)previousMarkerForMarker:(id)arg1;
 - (RefPtr_033e7b31)rangeForTextMarkers:(id)arg1;
 - (RefPtr_033e7b31)rangeFromMarkers:(id)arg1 withText:(id)arg2;
-- (id)rectsForSelectionRects:(const Vector_871663bb *)arg1;
+- (id)rectsForSelectionRects:(const Vector_2a2f4e8a *)arg1;
 - (id)selectedTextMarker;
 - (id)selectionRangeString;
 - (id)startOrEndTextMarkerForTextMarkers:(id)arg1 isStart:(BOOL)arg2;

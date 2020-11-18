@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/NSCopying-Protocol.h>
 
@@ -19,8 +19,8 @@
 @property (readonly, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
 @property (readonly, nonatomic) unsigned char triggerSourceType; // @synthesize triggerSourceType=_triggerSourceType;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (unsigned long long)hash;
 - (id)initWithSourceType:(unsigned char)arg1 attributes:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

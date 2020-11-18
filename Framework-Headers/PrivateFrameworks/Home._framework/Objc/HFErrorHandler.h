@@ -10,6 +10,8 @@
 {
 }
 
++ (id)_descriptionForHFErrorCode:(long long)arg1;
++ (id)_descriptionForHMErrorCode:(long long)arg1;
 + (id)descriptionLocalizationKeyForError:(id)arg1;
 + (id)sharedHandler;
 - (BOOL)_isErrorIndicativeOfApplicationBug:(id)arg1 operationType:(id)arg2 options:(id)arg3;

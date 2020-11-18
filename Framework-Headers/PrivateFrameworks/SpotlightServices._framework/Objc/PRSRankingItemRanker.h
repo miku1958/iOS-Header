@@ -6,40 +6,44 @@
 
 #import <objc/NSObject.h>
 
-@class CSAttributeEvaluator, NSMapTable, NSString;
+@class NSMapTable, NSString;
 
 @interface PRSRankingItemRanker : NSObject
 {
     BOOL _isInternalDevice;
     BOOL _policyDisabled;
+    BOOL _isCancelled;
+    BOOL _isCJK;
     float _lastIsSpaceFeature;
+    NSString *_keyboardLanguage;
     NSString *_searchString;
-    CSAttributeEvaluator *_fuzzyEvaluator;
-    CSAttributeEvaluator *_evaluator;
+    unsigned long long _queryTermCount;
     NSMapTable *_bundleFeatures;
-    float *_bundleFeaturesScratchBuf;
     double _experimentalWeight1;
     double _experimentalWeight2;
     NSString *_meContactIdentifier;
 }
 
 @property (strong, nonatomic) NSMapTable *bundleFeatures; // @synthesize bundleFeatures=_bundleFeatures;
-@property (nonatomic) float *bundleFeaturesScratchBuf; // @synthesize bundleFeaturesScratchBuf=_bundleFeaturesScratchBuf;
-@property (strong, nonatomic) CSAttributeEvaluator *evaluator; // @synthesize evaluator=_evaluator;
 @property (nonatomic) double experimentalWeight1; // @synthesize experimentalWeight1=_experimentalWeight1;
 @property (nonatomic) double experimentalWeight2; // @synthesize experimentalWeight2=_experimentalWeight2;
-@property (strong, nonatomic) CSAttributeEvaluator *fuzzyEvaluator; // @synthesize fuzzyEvaluator=_fuzzyEvaluator;
+@property BOOL isCJK; // @synthesize isCJK=_isCJK;
+@property BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property BOOL isInternalDevice; // @synthesize isInternalDevice=_isInternalDevice;
+@property (strong, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property (nonatomic) float lastIsSpaceFeature; // @synthesize lastIsSpaceFeature=_lastIsSpaceFeature;
 @property (strong, nonatomic) NSString *meContactIdentifier; // @synthesize meContactIdentifier=_meContactIdentifier;
 @property (nonatomic) BOOL policyDisabled; // @synthesize policyDisabled=_policyDisabled;
+@property unsigned long long queryTermCount; // @synthesize queryTermCount=_queryTermCount;
 @property (strong, nonatomic) NSString *searchString; // @synthesize searchString=_searchString;
 
 + (id)appsBundle;
 + (id)calendarBundle;
++ (void)clearState;
 + (id)contactsBundle;
 + (id)importantAttributesForBundle:(id)arg1;
 + (void)initialize;
++ (BOOL)isCJK;
 + (id)mailBundle;
 + (id)messagesBundle;
 + (id)musicBundle;
@@ -51,17 +55,17 @@
 + (id)sortedUniqueBundleFeatureValuesFromBundleFeatures:(id)arg1;
 - (void).cxx_destruct;
 - (void)activate;
+- (void)cancel;
 - (CDUnknownBlockType)comparatorByJoiningComparator:(CDUnknownBlockType)arg1 withPredicate:(id)arg2;
 - (void)computeRelativeFeatureForContext:(id)arg1 items:(id)arg2;
 - (void)computeResultSetDependantFeatures:(id)arg1 allItems:(id)arg2;
 - (float *)computeScoresForVectors:(id)arg1 withBundleFeatures:(id)arg2;
 - (void)deactivate;
 - (void)dealloc;
-- (id)getDateInGMT:(id)arg1;
 - (void)hackMusicResultsWithItem:(id)arg1 featureVector:(id)arg2;
 - (id)init;
 - (id)initWithSearchString:(id)arg1 language:(id)arg2;
-- (id)initWithSearchString:(id)arg1 language:(id)arg2 experimentalWeight1:(double)arg3 experimentalWeight2:(double)arg4;
+- (id)initWithSearchString:(id)arg1 language:(id)arg2 isCJK:(BOOL)arg3 experimentalWeight1:(double)arg4 experimentalWeight2:(double)arg5;
 - (void)pickMostRecentDateForItem:(id)arg1 pastItems:(id *)arg2 futureItems:(id *)arg3;
 - (void)populateLocalResultSetDateFeaturesForItems:(id)arg1;
 - (void)populateMailContactFeaturesWithMailItems:(id)arg1 contactItems:(id)arg2;
@@ -69,13 +73,14 @@
 - (void)prepareItems:(id)arg1 inBundle:(id)arg2;
 - (id)rankingConfiguration;
 - (id)rankingConfigurationWithMeContact:(id)arg1 emailAddresses:(id)arg2 phoneFavorites:(id)arg3 vipList:(id)arg4 clientBundle:(id)arg5;
-- (void)relevantResultSetPRSL2FeaturesFromBundleFeature:(unsigned long long)arg1 absRankFeatureOut:(unsigned long long *)arg2 relRankFeatureOut:(unsigned long long *)arg3;
-- (void)rerankItemsWithPolicyForBundleItems:(id)arg1;
-- (void)resetbundleFeaturesScratchBuf;
-- (BOOL)updateFeedbackScoresForPreparedItems:(id)arg1 currentL2ModelVersion:(id *)arg2 currentL2ShadowModelVersion:(id *)arg3 currentL3ModelVersion:(id *)arg4;
+- (void)relevantResultSetPRSL2FeaturesFromBundleFeature:(unsigned long long)arg1 absRankFeatureOut:(unsigned short *)arg2 relRankFeatureOut:(unsigned short *)arg3;
+- (void)rerankItemsWithPolicyForBundleItems:(id)arg1 isCJK:(BOOL)arg2;
+- (void)resetbundleFeaturesScratchBuf:(float *)arg1;
+- (void)setRenderEngagementFeaturesForItem:(id)arg1 counts:(id)arg2 isRender:(BOOL)arg3 bundleDict:(id)arg4;
+- (void)setRenderEngagementFeaturesForItemAsShorts:(id)arg1 counts:(short [6])arg2 isRender:(BOOL)arg3 bundleDict:(id)arg4;
 - (void)updateResultSetContext:(struct _resultset_computation_ctx *)arg1 andUniqueScores:(id)arg2 withResultSetItems:(id)arg3;
 - (void)updateResultSetFeaturesOnItems:(id)arg1 withContext:(struct _resultset_computation_ctx *)arg2 uniqueScores:(id)arg3;
-- (void)updateScoresForPreparedItems:(id)arg1;
+- (void)updateScoresForPreparedItems:(id)arg1 isCJK:(BOOL)arg2;
 - (BOOL)wasItemCreatedWithinAWeek:(id)arg1;
 
 @end

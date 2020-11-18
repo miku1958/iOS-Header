@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/TIPreferencesControllerActions-Protocol.h>
 
@@ -14,6 +14,7 @@
 {
     NSMutableDictionary *_configuredDomains;
     NSMutableDictionary *_configuredPreferences;
+    NSMutableDictionary *_cachedMCRestrictedValue;
     NSTimer *_synchronizePreferencesTimer;
     double _lastSynchronizePreferencesTime[5];
     BOOL isInternalInstall;
@@ -36,6 +37,7 @@
 
 + (void)registerPreferredLanguagesForInputModes:(id)arg1 replacingInputModes:(id)arg2;
 + (id)sharedPreferencesController;
+- (void).cxx_destruct;
 - (int)MCValueForManagedPreferenceKey:(id)arg1;
 - (void)_configureDomain:(id)arg1 notification:(id)arg2;
 - (void)_configureDomains;
@@ -66,7 +68,6 @@
 - (void)touchSynchronizePreferencesTimer;
 - (void)updateDidPerformFirstReachableKeyboardInteraction;
 - (void)updateEnabledDictationLanguages:(id)arg1;
-- (void)updateEnabledDictationLanguagesForInputModes:(id)arg1;
 - (void)updateInputModes:(id)arg1;
 - (void)updateKeyboardHandBias:(id)arg1;
 - (void)updateKeyboardIsFloating:(BOOL)arg1;

@@ -9,7 +9,7 @@
 #import <RapportUI/UIKeyInput-Protocol.h>
 #import <RapportUI/UITextInputTraits-Protocol.h>
 
-@class NSArray, NSMutableString, NSString, UIColor, UILabel;
+@class NSArray, NSMutableString, NSString, UIColor, UILabel, UITextInputPasswordRules;
 
 @interface RPPINEntryView : UIView <UIKeyInput, UITextInputTraits>
 {
@@ -58,6 +58,7 @@
 @property (strong, nonatomic) UILabel *label7; // @synthesize label7=_label7;
 @property (strong, nonatomic) UILabel *label8; // @synthesize label8=_label8;
 @property (strong, nonatomic) NSArray *labels; // @synthesize labels=_labels;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long smartDashesType;

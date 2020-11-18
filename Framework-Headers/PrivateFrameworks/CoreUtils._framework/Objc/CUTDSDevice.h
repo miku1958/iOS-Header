@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSUUID;
 
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;
 
 - (void).cxx_destruct;
+- (id)description;
 
 @end
 

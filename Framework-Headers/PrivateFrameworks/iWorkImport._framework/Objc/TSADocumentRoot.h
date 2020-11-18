@@ -8,12 +8,13 @@
 
 #import <iWorkImport/TSDImportExportDelegate-Protocol.h>
 #import <iWorkImport/TSDScrollingAwareChangeSource-Protocol.h>
+#import <iWorkImport/TSKPencilAnnotationSupportedDocument-Protocol.h>
 
 @class NSArray, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSObject, NSSet, NSString, SFUCryptoKey, TSADocumentInfo, TSAFunctionBrowserState, TSAShortcutController, TSCECalculationEngine, TSDFreehandDrawingToolkitUIState, TSKCustomFormatList, TSKViewState, TSPDocumentRevision, TSPLazyReference, TSTCustomFormatList;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface TSADocumentRoot : TSWPDocumentRoot <TSDImportExportDelegate, TSDScrollingAwareChangeSource>
+@interface TSADocumentRoot : TSWPDocumentRoot <TSKPencilAnnotationSupportedDocument, TSDImportExportDelegate, TSDScrollingAwareChangeSource>
 {
     _Atomic int _needsToCaptureViewState;
     NSMutableDictionary *_upgradeState;
@@ -84,6 +85,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)previewTypeForCurrentDevice;
 + (void)removeExistingPreviewsForDocumentAtPath:(id)arg1;
 + (id)scaledPreviewImageForType:(unsigned long long)arg1 scalableImage:(id)arg2;
++ (BOOL)shouldShowImportedDataNotificationsOnOpen;
 + (id)supportedPreviewImageExtensions;
 + (id)supportedScalablePreviewNames;
 + (void)writePreviewImage:(id)arg1 group:(id)arg2 queue:(id)arg3 dataConsumerProvider:(CDUnknownBlockType)arg4 completion:(CDUnknownBlockType)arg5;
@@ -98,10 +100,13 @@ __attribute__((visibility("hidden")))
 - (id)additionalResourceRequestsForObjectContext:(id)arg1;
 - (id)allPencilAnnotations;
 - (void)blockForRecalcWithTimeout:(double)arg1;
+- (BOOL)canBeAnnotatedWithPencil;
 - (id)captureViewState;
 - (id)captureViewStateForImport;
 - (void)captureViewStateIfNeeded;
+- (BOOL)childrenCanBeAnnotatedWithPencil;
 - (void)cleanupForImportFailure;
+- (void)collectDocumentCloseAnalyticsWithLogger:(id)arg1;
 - (void)collectDocumentOpenAnalyticsWithLogger:(id)arg1;
 - (id)commandForPropagatingPresetChangeCommand:(id)arg1 alwaysPreserveAppearance:(BOOL)arg2;
 - (void)commonInit;
@@ -118,8 +123,8 @@ __attribute__((visibility("hidden")))
 - (id)documentCachePath;
 - (void)documentCacheWasInvalidated;
 - (void)documentDidLoad;
-- (BOOL)documentHasPencilAnnotations;
 - (id)documentLanguage;
+- (void)enumeratePencilAnnotationsFromRootObject:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumeratePencilAnnotationsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateStylesheetsUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)exportToPath:(id)arg1 exporter:(id)arg2 delegate:(id)arg3 error:(id *)arg4;
@@ -128,8 +133,8 @@ __attribute__((visibility("hidden")))
 - (void)fulfillPasteboardPromises;
 - (id)functionBrowserState;
 - (BOOL)hasICloudConflict;
+- (BOOL)hasPencilAnnotations;
 - (void)importerDidFinish:(id)arg1;
-- (id)init;
 - (id)initWithContext:(id)arg1;
 - (void)initializeForImport;
 - (void)insertTextPresetDisplayItemsPreservingGrouping:(id)arg1 insertAtBeginningOfGroup:(BOOL)arg2;
@@ -160,6 +165,7 @@ __attribute__((visibility("hidden")))
 - (id)packageDataForWrite;
 - (void)pauseRecalculation;
 - (void)pauseRecalculationSometimeSoon;
+- (id)pencilAnnotationEnumeratorFromRootObect:(id)arg1;
 - (void)performHyperlinkUpgradesIfNecessaryForVersion:(unsigned long long)arg1;
 - (void)performStylesheetUpdatesIfNecessaryForVersion:(unsigned long long)arg1;
 - (void)prepareForSavingAsTemplate;
@@ -170,6 +176,7 @@ __attribute__((visibility("hidden")))
 - (id)protected_defaultTextPresetOrdering;
 - (id)readBuildVersionHistoryFromDiskHasPreUFFVersion:(BOOL)arg1;
 - (id)referencedStylesOfClass:(Class)arg1;
+- (void)removePencilAnnotations;
 - (void)removePencilAnnotationsFromDrawables:(id)arg1;
 - (void)removeRedundantStyleOverridesAndEnsureReferencedStylesAreInStylesheet;
 - (void)removeWarning:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UILabelVisualStyle.h>
+#import <UIKitCore/_UILabelVisualStyle.h>
 
 __attribute__((visibility("hidden")))
 @interface _UILabelVisualStyle_iOS : _UILabelVisualStyle

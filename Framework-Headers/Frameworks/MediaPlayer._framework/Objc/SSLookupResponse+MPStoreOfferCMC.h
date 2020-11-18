@@ -11,10 +11,8 @@
 @property (readonly, nonatomic) BOOL mpIsPersonalizedOffer;
 
 + (BOOL)mpFakeCompletionDataForBuys;
-+ (id)mpLoadDebugCompletionsResponseWithStoreLookupID:(id)arg1;
 + (BOOL)mpShowBuysWithNoCompletionOffer;
 + (BOOL)mpVerboseCMCLogging;
 - (id)mpCompletionOfferResponseDictionaryWithLocalAlbumsCollection:(id)arg1;
-- (void)mpSaveCompletionsResponseForDebuggingIfNecessaryWithExpectedStoreLookupID:(id)arg1;
 @end
 

@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCaptureConnectionInternal, AVCaptureOutput, AVCaptureVideoPreviewLayer, NSArray;
 
 @interface AVCaptureConnection : NSObject
 {
     AVCaptureConnectionInternal *_internal;
+    BOOL _supportsVideoFieldMode;
+    long long _videoFieldMode;
 }
 
 @property (readonly, nonatomic, getter=isActive) BOOL active;
@@ -24,11 +26,13 @@
 @property (readonly, nonatomic) NSArray *inputPorts;
 @property (readonly, nonatomic) AVCaptureOutput *output;
 @property (nonatomic) long long preferredVideoStabilizationMode;
+@property (readonly, nonatomic, getter=isVideoFieldModeSupported) BOOL supportsVideoFieldMode; // @synthesize supportsVideoFieldMode=_supportsVideoFieldMode;
 @property (readonly, nonatomic, getter=isVideoMaxFrameDurationSupported) BOOL supportsVideoMaxFrameDuration;
 @property (readonly, nonatomic, getter=isVideoMinFrameDurationSupported) BOOL supportsVideoMinFrameDuration;
 @property (readonly, nonatomic, getter=isVideoMirroringSupported) BOOL supportsVideoMirroring;
 @property (readonly, nonatomic, getter=isVideoOrientationSupported) BOOL supportsVideoOrientation;
 @property (readonly, nonatomic, getter=isVideoStabilizationSupported) BOOL supportsVideoStabilization;
+@property (nonatomic) long long videoFieldMode; // @synthesize videoFieldMode=_videoFieldMode;
 @property (nonatomic) CDStruct_1b6d18a9 videoMaxFrameDuration;
 @property (readonly, nonatomic) double videoMaxScaleAndCropFactor;
 @property (nonatomic) CDStruct_1b6d18a9 videoMinFrameDuration;
@@ -61,6 +65,7 @@
 - (id)initWithInputPort:(id)arg1 videoPreviewLayer:(id)arg2;
 - (id)initWithInputPorts:(id)arg1 output:(id)arg2;
 - (void)inputPortFormatDescriptionChanged:(id)arg1;
+- (BOOL)isDebugMetadataSidecarFileEnabled;
 - (BOOL)isLive;
 - (BOOL)isVideoMaxFrameDurationSet;
 - (BOOL)isVideoMinFrameDurationSet;
@@ -68,6 +73,7 @@
 - (id)mediaType;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)session;
+- (void)setDebugMetadataSidecarFileEnabled:(BOOL)arg1;
 - (void)setVideoRetainedBufferCountHint:(int)arg1;
 - (void)setupInternalStorage;
 - (void)setupObservers;

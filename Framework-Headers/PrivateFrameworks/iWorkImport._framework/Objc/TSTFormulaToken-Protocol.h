@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, TSCEFunctionArgumentSpec;
+@class NSString;
 
 @protocol TSTFormulaToken
 
-@property (readonly, strong, nonatomic) TSCEFunctionArgumentSpec *argumentSpec;
+@property (readonly, nonatomic) struct TSCEFunctionArgSpec *argumentSpec;
 @property (readonly, nonatomic) NSString *string;
 @property (readonly, nonatomic) int tokenType;
 

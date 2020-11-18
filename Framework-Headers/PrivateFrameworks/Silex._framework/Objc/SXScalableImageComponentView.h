@@ -12,7 +12,7 @@
 #import <Silex/SXTextSourceDataSource-Protocol.h>
 
 @class NSString, SXDragManager, SXFullscreenCanvasController, SXImageResource, SXImageView, SXMediaViewEvent, UIView;
-@protocol SXFullscreenCanvasControllerFactory, SXImageViewFactory;
+@protocol SXFullscreenCanvasControllerFactory, SXImageViewFactory, SXMediaSharingPolicyProvider;
 
 @interface SXScalableImageComponentView : SXMediaComponentView <SXFullscreenCanvasShowable, SXImageViewDelegate, SXTextSourceDataSource, SXDragManagerDataSource>
 {
@@ -22,6 +22,7 @@
     SXImageView *_imageView;
     id<SXImageViewFactory> _imageViewFactory;
     id<SXFullscreenCanvasControllerFactory> _canvasControllerFactory;
+    id<SXMediaSharingPolicyProvider> _mediaSharingPolicyProvider;
     SXDragManager *_dragManager;
     SXImageResource *_imageResource;
     SXFullscreenCanvasController *_fullScreenCanvasController;
@@ -43,6 +44,7 @@
 @property (readonly, nonatomic) id<SXImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
 @property (nonatomic) double lastKnownPinchVelocity; // @synthesize lastKnownPinchVelocity=_lastKnownPinchVelocity;
 @property (nonatomic) double lastKnownRotationVelocity; // @synthesize lastKnownRotationVelocity=_lastKnownRotationVelocity;
+@property (readonly, nonatomic) id<SXMediaSharingPolicyProvider> mediaSharingPolicyProvider; // @synthesize mediaSharingPolicyProvider=_mediaSharingPolicyProvider;
 @property (nonatomic, getter=isPresentingOnFullScreenCanvas) BOOL presentingOnFullScreenCanvas; // @synthesize presentingOnFullScreenCanvas=_presentingOnFullScreenCanvas;
 @property (nonatomic) struct CGRect previousContentFrame; // @synthesize previousContentFrame=_previousContentFrame;
 @property (readonly) Class superclass;
@@ -58,7 +60,7 @@
 - (id)dragManager:(id)arg1 dragableAtLocation:(struct CGPoint)arg2;
 - (void)finishMediaViewEvent;
 - (void)forceFullScreen;
-- (id)fullScreenCanvasController:(id)arg1 canvasViewForShowable:(id)arg2;
+- (id)fullScreenCanvasController:(id)arg1 canvasViewControllerForShowable:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)fullScreenCanvasController:(id)arg1 captionForShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
 - (void)fullScreenCanvasController:(id)arg1 didHideShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
 - (void)fullScreenCanvasController:(id)arg1 didShowShowable:(id)arg2 viewIndex:(unsigned long long)arg3;
@@ -74,7 +76,7 @@
 - (BOOL)gestureShouldBegin:(id)arg1;
 - (void)imageView:(id)arg1 didLoadAnimatedImage:(id)arg2;
 - (void)imageView:(id)arg1 didLoadImage:(id)arg2 ofQuality:(int)arg3;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 canvasControllerFactory:(id)arg8;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 canvasControllerFactory:(id)arg8 mediaSharingPolicyProvider:(id)arg9;
 - (id)inlineTextStylesForTextSource:(id)arg1;
 - (void)layoutImageView;
 - (void)loadComponent:(id)arg1;

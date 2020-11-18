@@ -20,6 +20,7 @@
 {
     BOOL _failedLoading;
     BOOL _isCurrentlyLoadingEmbedData;
+    BOOL _hasRegisteredScriptMessageHandlers;
     id<SXReachabilityProvider> _reachabilityProvider;
     id<SXEmbedService> _embedService;
     id<SXComponentActionHandler> _actionHandler;
@@ -54,6 +55,7 @@
 @property (strong, nonatomic) UILabel *errorLabel; // @synthesize errorLabel=_errorLabel;
 @property (strong, nonatomic) NSMutableSet *expectedMessages; // @synthesize expectedMessages=_expectedMessages;
 @property (nonatomic) BOOL failedLoading; // @synthesize failedLoading=_failedLoading;
+@property (nonatomic) BOOL hasRegisteredScriptMessageHandlers; // @synthesize hasRegisteredScriptMessageHandlers=_hasRegisteredScriptMessageHandlers;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WKNavigation *initialNavigation; // @synthesize initialNavigation=_initialNavigation;
 @property (nonatomic) BOOL isCurrentlyLoadingEmbedData; // @synthesize isCurrentlyLoadingEmbedData=_isCurrentlyLoadingEmbedData;
@@ -70,6 +72,7 @@
 - (void)_webViewDidEnterFullscreen:(id)arg1;
 - (void)_webViewDidExitFullscreen:(id)arg1;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
+- (void)addScriptMessageHandlers;
 - (BOOL)allowHierarchyRemoval;
 - (void)discardContents;
 - (void)displayEmbedIfNeeded;
@@ -87,6 +90,7 @@
 - (void)loadWebViewIfNeeded;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)reloadEmbed;
+- (void)removeScriptMessageHandlers;
 - (void)renderContents;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (BOOL)shouldAllowRequestToURL:(id)arg1;

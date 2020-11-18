@@ -24,6 +24,7 @@
     BOOL _requiresTransferSerialNumberBasedProvisioning;
     NSString *_primaryAccountIdentifier;
     NSString *_primaryAccountNumberSuffix;
+    long long _cardType;
     NSSet *_associatedApplicationIdentifiers;
     NSSet *_associatedWebDomains;
     NSString *_sanitizedPrimaryAccountNumber;
@@ -49,6 +50,7 @@
 @property (copy, nonatomic) NSSet *associatedApplicationIdentifiers; // @synthesize associatedApplicationIdentifiers=_associatedApplicationIdentifiers;
 @property (copy, nonatomic) NSSet *associatedWebDomains; // @synthesize associatedWebDomains=_associatedWebDomains;
 @property (copy, nonatomic) NSArray *availableActions; // @synthesize availableActions=_availableActions;
+@property (nonatomic) long long cardType; // @synthesize cardType=_cardType;
 @property (copy, nonatomic) NSString *cobrandName; // @synthesize cobrandName=_cobrandName;
 @property (nonatomic, getter=isCobranded) BOOL cobranded; // @synthesize cobranded=_cobranded;
 @property (readonly, weak) NSString *deviceAccountIdentifier;
@@ -96,6 +98,7 @@
 - (BOOL)canPerformAction:(id)arg1 unableReason:(unsigned long long *)arg2 displayableError:(id *)arg3;
 - (unsigned long long)contactlessActivationState;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)deviceContactlessPaymentApplications;
 - (long long)effectiveContactlessPaymentApplicationState;
 - (void)encodeWithCoder:(id)arg1;
 - (id)felicaProperties;
@@ -112,6 +115,7 @@
 - (id)primaryPaymentApplicationForSecureElementIdentifiers:(id)arg1;
 - (void)sanitizePaymentApplications;
 - (id)sanitizedDeviceAccountNumber;
+- (BOOL)shouldSuppressNoChargeAmount;
 - (id)sortedPaymentApplications:(id)arg1 ascending:(BOOL)arg2;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2 clientOSVersion:(id)arg3;

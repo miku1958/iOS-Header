@@ -6,19 +6,17 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoardFoundation/SBFScreenFadeReplicatable-Protocol.h>
 #import <SpringBoardFoundation/SFChargingVisualInformationProvider-Protocol.h>
 
-@class NSDate, NSHashTable, NSString, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
+@class NSDate, NSString, SBFLockScreenDateSubtitleDateView, SBFLockScreenDateSubtitleView, SBUILegibilityLabel, UIColor, _UILegibilitySettings;
 
-@interface SBFLockScreenDateView : UIView <SBFScreenFadeReplicatable, SFChargingVisualInformationProvider>
+@interface SBFLockScreenDateView : UIView <SFChargingVisualInformationProvider>
 {
     SBUILegibilityLabel *_timeLabel;
     double _timeAlpha;
     double _subtitleAlpha;
     SBFLockScreenDateSubtitleDateView *_dateSubtitleView;
     SBFLockScreenDateSubtitleView *_customSubtitleView;
-    NSHashTable *_replicatedViews;
     BOOL _useCompactDateFormat;
     NSDate *_date;
     UIColor *_overrideTextColor;
@@ -27,6 +25,7 @@
     double _dateToTimeStretch;
     double _timeLegibilityStrength;
     double _subtitleLegibilityStrength;
+    struct CGRect _restingFrame;
 }
 
 @property (nonatomic) double alignmentPercent; // @synthesize alignmentPercent=_alignmentPercent;
@@ -40,6 +39,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (nonatomic) struct CGRect restingFrame; // @synthesize restingFrame=_restingFrame;
 @property (readonly, nonatomic) double subtitleBaselineOffsetFromOrigin;
 @property (nonatomic, getter=isSubtitleHidden) BOOL subtitleHidden;
 @property (nonatomic) double subtitleLegibilityStrength; // @synthesize subtitleLegibilityStrength=_subtitleLegibilityStrength;
@@ -51,9 +51,9 @@
 
 + (double)defaultHeight;
 + (id)timeFont;
++ (CDStruct_d2b197d1)timeFontMetrics;
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)_cachedGlyphInsetsTimeFontForString:(id)arg1;
-- (void)_enumerateReplicateViews:(CDUnknownBlockType)arg1;
 - (void)_setSubtitleAlpha:(double)arg1;
 - (struct CGRect)_subtitleViewFrameForView:(id)arg1 alignmentPercent:(double)arg2;
 - (id)_timeLabel;
@@ -65,7 +65,6 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGRect)presentationExtentForAlignmentPercent:(double)arg1;
-- (id)replicate;
 - (void)setContentAlpha:(double)arg1 withSubtitleVisible:(BOOL)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateFormat;

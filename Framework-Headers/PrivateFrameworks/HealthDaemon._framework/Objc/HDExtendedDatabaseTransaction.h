@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSUUID;
-@protocol HDHealthDatabase, OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
+@class HDDatabase, NSError, NSUUID;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
 
 @interface HDExtendedDatabaseTransaction : NSObject
 {
     BOOL _pendingWorkDidSucceed;
     NSUUID *_transactionIdentifier;
-    id<HDHealthDatabase> _healthDatabase;
+    HDDatabase *_database;
     NSObject<OS_dispatch_queue> *_transactionQueue;
     NSObject<OS_dispatch_queue> *_dataQueue;
     NSObject<OS_dispatch_semaphore> *_completionSemaphore;
@@ -30,7 +30,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *completionSemaphore; // @synthesize completionSemaphore=_completionSemaphore;
 @property (readonly, nonatomic) double continuationTimeout; // @synthesize continuationTimeout=_continuationTimeout;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dataQueue; // @synthesize dataQueue=_dataQueue;
-@property (readonly, weak, nonatomic) id<HDHealthDatabase> healthDatabase; // @synthesize healthDatabase=_healthDatabase;
+@property (readonly, weak, nonatomic) HDDatabase *database; // @synthesize database=_database;
 @property (strong, nonatomic) NSError *lastError; // @synthesize lastError=_lastError;
 @property (copy, nonatomic) CDUnknownBlockType pendingWork; // @synthesize pendingWork=_pendingWork;
 @property (nonatomic) BOOL pendingWorkDidSucceed; // @synthesize pendingWorkDidSucceed=_pendingWorkDidSucceed;
@@ -45,7 +45,7 @@
 - (void)_transaction_runTransactionWithOptions:(unsigned long long)arg1;
 - (BOOL)commitWithErrorOut:(id *)arg1;
 - (void)dealloc;
-- (id)initInDatabase:(id)arg1 options:(unsigned long long)arg2 transactionTimeout:(double)arg3 continuationTimeout:(double)arg4 error:(id *)arg5;
+- (id)initWithDatabase:(id)arg1 options:(unsigned long long)arg2 transactionTimeout:(double)arg3 continuationTimeout:(double)arg4 error:(id *)arg5;
 - (BOOL)performInTransactionWithErrorOut:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)rollbackDueToError:(id)arg1 errorOut:(id *)arg2;
 

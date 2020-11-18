@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, TIInputMode;
 
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSArray *activeInputModes; // @synthesize activeInputModes=_activeInputModes;
 @property (readonly, nonatomic) TIInputMode *primaryInputMode;
 
+- (void).cxx_destruct;
 - (id)createAndAddEmojiTokensFrom:(struct __CFArray *)arg1 inArray:(id)arg2 forInputString:(id)arg3;
 - (void)dealloc;
 - (id)emojiAdornmentCandidates:(id)arg1;

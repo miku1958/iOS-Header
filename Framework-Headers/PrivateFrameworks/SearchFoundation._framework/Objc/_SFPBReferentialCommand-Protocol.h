@@ -10,7 +10,6 @@
 
 @protocol _SFPBReferentialCommand <NSObject>
 
-@property (readonly, nonatomic) BOOL hasReferenceIdentifier;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *referenceIdentifier;
 

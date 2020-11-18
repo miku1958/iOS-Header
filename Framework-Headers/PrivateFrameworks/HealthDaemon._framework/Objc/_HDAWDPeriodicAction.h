@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/_HDAWDAction-Protocol.h>
 
-@class NSDate, NSString;
+@class HDAssertion, HDProfile, NSDate, NSString;
 @protocol OS_dispatch_queue;
 
 @interface _HDAWDPeriodicAction : NSObject <_HDAWDAction>
@@ -20,11 +20,13 @@
     NSString *_lastProcessedDateKey;
     long long _repeatInterval;
     long long _graceInterval;
-    BOOL _requiresClassA;
+    BOOL _requiresClassB;
     long long _intervalMultiple;
     long long _maximumAttemptCount;
     double _minimumDelayBetweenAttempts;
+    HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
+    HDAssertion *_preparedDatabaseAccessibilityAssertion;
     CDUnknownBlockType _block;
     long long _waitingToRun;
     NSDate *_lastSubmissionAttemptDate;
@@ -45,15 +47,19 @@
 - (void)_beginWaitingToRun;
 - (void)_loadState;
 - (void)_performActivity:(id)arg1;
+- (void)_queue_prepareAccessibilityAssertionIfNeeded;
 - (void)_queue_registerActivity;
 - (void)_queue_setIntervalCounter:(long long)arg1;
 - (void)_queue_setLastProcessedDate:(id)arg1;
 - (void)_queue_setLastSubmissionAttemptDate:(id)arg1;
 - (void)_queue_setWaitingToRun:(long long)arg1;
 - (BOOL)_queue_shouldAttemptToSubmit;
+- (BOOL)_runBlockWithAccessibilityAssertion:(id)arg1 error:(id *)arg2;
+- (void)dealloc;
 - (BOOL)doForced;
 - (void)doIfWaiting;
-- (id)initWithTaskName:(char *)arg1 keyPrefix:(id)arg2 xpcInterval:(long long)arg3 xpcGraceInterval:(long long)arg4 requiresClassA:(BOOL)arg5 intervalMultiple:(long long)arg6 maximumAttemptCount:(long long)arg7 minimumDelayBetweenAttempts:(double)arg8 block:(CDUnknownBlockType)arg9;
+- (void)doIfWaitingOnMaintenanceQueueWithCompletion:(CDUnknownBlockType)arg1;
+- (id)initWithTaskName:(char *)arg1 keyPrefix:(id)arg2 xpcInterval:(long long)arg3 xpcGraceInterval:(long long)arg4 requiresClassB:(BOOL)arg5 intervalMultiple:(long long)arg6 maximumAttemptCount:(long long)arg7 minimumDelayBetweenAttempts:(double)arg8 profile:(id)arg9 block:(CDUnknownBlockType)arg10;
 - (void)reset;
 - (void)setLastProcessedDate:(id)arg1;
 - (void)start;

@@ -12,10 +12,13 @@
 {
     EAGLContext *_context;
     CLKUIGLQuadRenderer *_renderer;
+    struct CGSize _layoutSize;
     unsigned int _defaultFramebuffer;
     unsigned int _colorRenderbuffer;
+    unsigned int _depthRenderbuffer;
     int _backingWidth;
     int _backingHeight;
+    unsigned int _isDepthBufferRequired:1;
 }
 
 + (Class)layerClass;
@@ -29,10 +32,11 @@
 - (void)addQuad:(id)arg1;
 - (void)addQuadsFromArray:(id)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (void)removeAllQuads;
 - (void)removeQuad:(id)arg1;
+- (void)setOpaque:(BOOL)arg1;
 
 @end
 

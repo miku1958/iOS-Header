@@ -31,6 +31,11 @@
 + (id)loopingBadgeTemplateImage;
 + (id)panoramaBadgeImage;
 + (id)stackBadgeImage;
++ (id)suggestionFacesImage;
++ (id)suggestionGreatPhotoImage;
++ (id)suggestionOnThisDayImage;
++ (id)suggestionRecentFavoriteImage;
++ (id)suggestionRecentlyEditedImage;
 + (id)themeForType:(long long)arg1;
 
 @end

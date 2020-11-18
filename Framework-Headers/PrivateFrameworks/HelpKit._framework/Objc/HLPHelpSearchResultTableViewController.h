@@ -23,7 +23,6 @@
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)updateWithSearchText:(id)arg1 searchResults:(id)arg2;
 - (void)viewDidLoad;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

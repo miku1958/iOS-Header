@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVVideoCompositionRenderContext, AVWeakReference, NSArray, NSDictionary;
 @protocol AVVideoCompositionInstruction;
 
+__attribute__((visibility("hidden")))
 @interface AVAsynchronousVideoCompositionRequestInternal : NSObject
 {
     AVWeakReference *_session;

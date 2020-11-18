@@ -13,6 +13,7 @@
 
 @property (copy, nonatomic) NSArray *personUUIDsToDedupe;
 @property (readonly, nonatomic) BOOL serverSupportsGraphHome;
+@property (readonly, nonatomic) BOOL serverSupportsSuggestion;
 @property (readonly, nonatomic) BOOL serverSupportsVision;
 
 - (NSDictionary *)assetAdjustmentStateForCloudIdentifier:(NSString *)arg1;

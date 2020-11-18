@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL canInspectGeometry;
 @property (readonly, nonatomic) struct CGPoint centerForConnecting;
 @property (readonly, nonatomic) struct CGPoint centerForRotation;
+@property (readonly, nonatomic) struct CGPoint commentPoleUnscaledOffset;
 @property (readonly, nonatomic) NSSet *connectedLayouts; // @synthesize connectedLayouts=mConnectedLayouts;
 @property (readonly, nonatomic) NSArray *dependentLayouts;
 @property (readonly, nonatomic) double descentForInlineLayout;
@@ -92,10 +93,12 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)calculatePointFromSearchReference:(id)arg1;
 - (BOOL)canvasShouldScrollForSelectionPath:(id)arg1;
 - (struct CGPoint)capturedInfoPositionForAttachment;
-- (struct CGPoint)commentPoleTopPosition;
 - (id)computeInfoGeometryDuringResize;
 - (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
+- (struct CGPoint)convertNaturalPointFromUnscaledCanvas:(struct CGPoint)arg1;
+- (struct CGRect)convertNaturalRectFromUnscaledCanvas:(struct CGRect)arg1;
+- (struct CGRect)convertNaturalRectToUnscaledCanvas:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)dragBy:(struct CGPoint)arg1;
 - (void)dragByUnscaled:(struct CGPoint)arg1;
@@ -109,7 +112,6 @@ __attribute__((visibility("hidden")))
 - (void)i_accumulateLayoutsIntoSet:(id)arg1;
 - (struct CGRect)i_takeDirtyRect;
 - (id)i_wrapPath;
-- (struct CGPoint)infoGeometryPositionForCurrentAttachedLayoutGeometry;
 - (id)initWithInfo:(id)arg1;
 - (void)invalidate;
 - (void)invalidateChildren;
@@ -134,9 +136,9 @@ __attribute__((visibility("hidden")))
 - (void)parentDidChange;
 - (void)parentWillChangeTo:(id)arg1;
 - (void)pauseDynamicTransformation;
+- (double)percentOfUnscaledRectContainedInParentRep:(struct CGRect)arg1;
 - (void)processChangedProperty:(int)arg1;
 - (void)processChanges:(id)arg1;
-- (struct CGRect)rectInRootForAnchoringPencilAnnotationsForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForCalculatingActivityLineEndpoint;
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForSelectionPath:(id)arg1;
@@ -156,7 +158,9 @@ __attribute__((visibility("hidden")))
 - (void)takeSizeFromTracker:(id)arg1;
 - (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
 - (void)unregisterFromLayoutController;
+- (id)unscaledAnchorRectsForPencilAnnotationSelectionPath:(id)arg1 attachedType:(long long)arg2;
 - (void)updateChildrenFromInfo;
+- (void)updateLayoutGeometryInPreparationForPartitioning;
 - (void)updateMaximumInlineFrameSize;
 - (void)validate;
 - (void)validateFromLastInterimPosition;

@@ -4,3 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#pragma mark Blocks
+
+typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
+
+#pragma mark Named Structures
+
+struct CGPoint {
+    double x;
+    double y;
+};
+
+struct CGRect {
+    struct CGPoint origin;
+    struct CGSize size;
+};
+
+struct CGSize {
+    double width;
+    double height;
+};
+
+struct TVCornerRadii {
+    double topLeft;
+    double topRight;
+    double bottomLeft;
+    double bottomRight;
+};
+
+struct UIEdgeInsets {
+    double top;
+    double left;
+    double bottom;
+    double right;
+};
+
+struct _NSRange {
+    unsigned long long location;
+    unsigned long long length;
+};
+

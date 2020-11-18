@@ -7,38 +7,43 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSetClimateSettingsInCarIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBDouble, _INPBInteger, _INPBIntentMetadata, _INPBTemperature;
+@class NSString, _INPBDataString, _INPBDouble, _INPBInteger, _INPBIntentMetadata, _INPBTemperature;
 
-@interface _INPBSetClimateSettingsInCarIntent : PBCodable <NSCopying>
+@interface _INPBSetClimateSettingsInCarIntent : PBCodable <_INPBSetClimateSettingsInCarIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    int _airCirculationMode;
-    int _climateZone;
-    _INPBInteger *_fanSpeedIndex;
-    _INPBDouble *_fanSpeedPercentage;
-    _INPBIntentMetadata *_intentMetadata;
-    int _relativeFanSpeedSetting;
-    int _relativeTemperatureSetting;
-    _INPBTemperature *_temperature;
-    BOOL _enableAirConditioner;
-    BOOL _enableAutoMode;
-    BOOL _enableClimateControl;
-    BOOL _enableFan;
     struct {
         unsigned int airCirculationMode:1;
         unsigned int climateZone:1;
-        unsigned int relativeFanSpeedSetting:1;
-        unsigned int relativeTemperatureSetting:1;
         unsigned int enableAirConditioner:1;
         unsigned int enableAutoMode:1;
         unsigned int enableClimateControl:1;
         unsigned int enableFan:1;
+        unsigned int relativeFanSpeedSetting:1;
+        unsigned int relativeTemperatureSetting:1;
     } _has;
+    BOOL _enableAirConditioner;
+    BOOL _enableAutoMode;
+    BOOL _enableClimateControl;
+    BOOL _enableFan;
+    int _airCirculationMode;
+    int _climateZone;
+    int _relativeFanSpeedSetting;
+    int _relativeTemperatureSetting;
+    _INPBDataString *_carName;
+    _INPBInteger *_fanSpeedIndex;
+    _INPBDouble *_fanSpeedPercentage;
+    _INPBIntentMetadata *_intentMetadata;
+    _INPBTemperature *_temperature;
 }
 
 @property (nonatomic) int airCirculationMode; // @synthesize airCirculationMode=_airCirculationMode;
+@property (strong, nonatomic) _INPBDataString *carName; // @synthesize carName=_carName;
 @property (nonatomic) int climateZone; // @synthesize climateZone=_climateZone;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enableAirConditioner; // @synthesize enableAirConditioner=_enableAirConditioner;
 @property (nonatomic) BOOL enableAutoMode; // @synthesize enableAutoMode=_enableAutoMode;
 @property (nonatomic) BOOL enableClimateControl; // @synthesize enableClimateControl=_enableClimateControl;
@@ -46,6 +51,7 @@
 @property (strong, nonatomic) _INPBInteger *fanSpeedIndex; // @synthesize fanSpeedIndex=_fanSpeedIndex;
 @property (strong, nonatomic) _INPBDouble *fanSpeedPercentage; // @synthesize fanSpeedPercentage=_fanSpeedPercentage;
 @property (nonatomic) BOOL hasAirCirculationMode;
+@property (readonly, nonatomic) BOOL hasCarName;
 @property (nonatomic) BOOL hasClimateZone;
 @property (nonatomic) BOOL hasEnableAirConditioner;
 @property (nonatomic) BOOL hasEnableAutoMode;
@@ -57,13 +63,13 @@
 @property (nonatomic) BOOL hasRelativeFanSpeedSetting;
 @property (nonatomic) BOOL hasRelativeTemperatureSetting;
 @property (readonly, nonatomic) BOOL hasTemperature;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (nonatomic) int relativeFanSpeedSetting; // @synthesize relativeFanSpeedSetting=_relativeFanSpeedSetting;
 @property (nonatomic) int relativeTemperatureSetting; // @synthesize relativeTemperatureSetting=_relativeTemperatureSetting;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBTemperature *temperature; // @synthesize temperature=_temperature;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsAirCirculationMode:(id)arg1;
 - (int)StringAsClimateZone:(id)arg1;
@@ -72,11 +78,8 @@
 - (id)airCirculationModeAsString:(int)arg1;
 - (id)climateZoneAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)relativeFanSpeedSettingAsString:(int)arg1;
 - (id)relativeTemperatureSettingAsString:(int)arg1;

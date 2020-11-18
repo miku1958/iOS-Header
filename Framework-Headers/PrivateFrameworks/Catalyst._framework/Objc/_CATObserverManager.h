@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Catalyst/CATOperationObserver-Protocol.h>
 
@@ -18,6 +18,7 @@
     NSObject<OS_dispatch_queue> *mQueue;
     NSObject<OS_dispatch_source> *mProgressSource;
     CATOperation *mOperation;
+    CATOperation *mStrongOperation;
     BOOL mIsObserving;
 }
 

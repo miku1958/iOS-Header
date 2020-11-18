@@ -18,32 +18,30 @@
 @property (copy, setter=_setLastModifiedProperties:) NSArray *_lastModifiedProperties; // @synthesize _lastModifiedProperties=__lastModifiedProperties;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) unsigned long long estimatedLocalLibraryAssetCount;
-@property (readonly, nonatomic) unsigned long long estimatedLocalLibrarySize;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_relatedIdentifierForRecordWithIdentifier:(id)arg1;
+- (id)_relatedScopedIdentifierForRecordWithScopedIdentifier:(id)arg1;
 - (BOOL)addRecord:(id)arg1 error:(id *)arg2;
 - (BOOL)applyBatch:(id)arg1 direction:(unsigned long long)arg2 withError:(id *)arg3;
 - (id)compactedBatchFromExpandedBatch:(id)arg1;
-- (unsigned long long)countOfRecordsWithRelatedIdentifier:(id)arg1 class:(Class)arg2;
-- (BOOL)deleteRecordWithIdentifier:(id)arg1 error:(id *)arg2;
+- (unsigned long long)countOfRecordsWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;
+- (BOOL)deleteRecordWithScopedIdentifier:(id)arg1 error:(id *)arg2;
+- (BOOL)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
 - (void)fillRelatedIdentifiersInChange:(id)arg1;
-- (BOOL)hasRecordWithIdentifier:(id)arg1;
-- (BOOL)hasRecordWithRelatedIdentifier:(id)arg1 class:(Class)arg2;
+- (BOOL)hasRecordWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;
+- (BOOL)hasRecordWithScopedIdentifier:(id)arg1;
 - (id)localChangeBatchFromCloudBatch:(id)arg1 usingMapping:(id)arg2 withError:(id *)arg3;
-- (id)recordWithIdentifier:(id)arg1;
-- (id)recordsWithRelatedIdentifier:(id)arg1;
-- (id)recordsWithRelatedIdentifier:(id)arg1 class:(Class)arg2;
-- (id)relatedIdentifierForRecordWithIdentifier:(id)arg1;
-- (BOOL)resetWithError:(id *)arg1;
-- (id)resourceOfType:(unsigned long long)arg1 forRecordWithIdentifier:(id)arg2 error:(id *)arg3;
+- (id)recordWithScopedIdentifier:(id)arg1;
+- (id)recordsWithRelatedScopedIdentifier:(id)arg1;
+- (id)recordsWithRelatedScopedIdentifier:(id)arg1 class:(Class)arg2;
+- (id)relatedScopedIdentifierForRecordWithScopedIdentifier:(id)arg1;
+- (id)resourceOfType:(unsigned long long)arg1 forRecordWithScopedIdentifier:(id)arg2 error:(id *)arg3;
+- (unsigned long long)scopeType;
 - (id)status;
 - (id)statusDictionary;
-- (BOOL)storeEstimatedLocalLibrarySize:(unsigned long long)arg1 estimatedAssetCount:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)updateRecord:(id)arg1 error:(id *)arg2;
 
 @end

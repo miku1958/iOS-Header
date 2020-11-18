@@ -14,6 +14,7 @@
 - (void)dd_replaceResultAttributesWithSimpleLinksForTypes:(unsigned long long)arg1 context:(id)arg2;
 - (void)dd_resetResults;
 - (void)dd_resetResults:(BOOL)arg1;
+- (BOOL)dd_urlifyClientRange:(struct _NSRange)arg1 index:(unsigned long long)arg2 context:(id)arg3;
 - (BOOL)dd_urlifyResult:(id)arg1 withBlock:(CDUnknownBlockType)arg2 referenceDate:(id)arg3 context:(id)arg4;
 @end
 

@@ -14,7 +14,7 @@
 #import <Silex/SXVideoPlayerViewControllerDelegate-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class ADBannerView, NSString, SXAdController, SXPosterFrameView, SXVideoAnalyticsRouter, SXVideoComponentAnalyticsReporting, SXVideoPlayerViewController, SXVideoPlayerViewControllerManager, SXVolumeProvider;
+@class ADBannerView, NSString, SVVolumeProvider, SXAdController, SXPosterFrameView, SXVideoAnalyticsRouter, SXVideoComponentAnalyticsReporting, SXVideoPlayerViewController, SXVideoPlayerViewControllerManager;
 @protocol SXAppStateMonitor, SXBookmarkManager, SXReachabilityProvider, SXResourceDataSource, SXScrollObserverManager;
 
 @interface SXVideoComponentView : SXMediaComponentView <SXViewportChangeListener, SXMediaPlaybackDelegate, SXVideoPlayerViewControllerDelegate, SXVideoPlayerViewControllerDataSource, SXVideoAdProviderDataSource, SXReachabilityObserver, SXFullscreenVideoPlaybackCandidate>
@@ -30,7 +30,7 @@
     SXVideoAnalyticsRouter *_analyticsRouter;
     SXVideoComponentAnalyticsReporting *_videoComponentAnalyticsReporter;
     id<SXScrollObserverManager> _scrollObserverManager;
-    SXVolumeProvider *_volumeProvider;
+    SVVolumeProvider *_volumeProvider;
     SXVideoPlayerViewControllerManager *_videoPlayerViewControllerManager;
     id<SXBookmarkManager> _bookmarkManager;
     ADBannerView *_bannerView;
@@ -56,7 +56,7 @@
 @property (strong, nonatomic) SXVideoComponentAnalyticsReporting *videoComponentAnalyticsReporter; // @synthesize videoComponentAnalyticsReporter=_videoComponentAnalyticsReporter;
 @property (strong, nonatomic) SXVideoPlayerViewController *videoPlayerViewController; // @synthesize videoPlayerViewController=_videoPlayerViewController;
 @property (readonly, nonatomic) SXVideoPlayerViewControllerManager *videoPlayerViewControllerManager; // @synthesize videoPlayerViewControllerManager=_videoPlayerViewControllerManager;
-@property (readonly, nonatomic) SXVolumeProvider *volumeProvider; // @synthesize volumeProvider=_volumeProvider;
+@property (readonly, nonatomic) SVVolumeProvider *volumeProvider; // @synthesize volumeProvider=_volumeProvider;
 
 - (void).cxx_destruct;
 - (BOOL)allowHierarchyRemoval;

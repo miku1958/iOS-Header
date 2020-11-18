@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -15,10 +15,13 @@
     CDStruct_79c71658 rawPhotoDimensions;
     CDStruct_79c71658 previewDimensions;
     CDStruct_79c71658 embeddedThumbnailDimensions;
+    CDStruct_79c71658 rawEmbeddedThumbnailDimensions;
     BOOL livePhotoMovieEnabled;
     CDStruct_79c71658 livePhotoMovieDimensions;
+    CDStruct_79c71658 portraitEffectsMatteDimensions;
     BOOL turboModeEnabled;
     BOOL flashEnabled;
+    BOOL redEyeReductionEnabled;
     BOOL HDREnabled;
     BOOL adjustedPhotoFiltersEnabled;
     BOOL EV0PhotoDeliveryEnabled;

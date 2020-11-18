@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSTCell, TSTLayoutContentCachedKey, TSWPColumn;
 
@@ -15,17 +15,17 @@ __attribute__((visibility("hidden")))
     BOOL _cellWraps;
     BOOL _forDrawing;
     BOOL _inDynamicLayout;
-    struct TSUCellCoord _modelCellID;
     int _verticalAlignment;
     int _layoutCacheFlags;
+    struct TSUCellCoord _modelCellID;
     TSTCell *_cell;
-    struct TSUCellRect _layoutMergeRange;
     id _cellContents;
     double _maxWidthForChildren;
     TSTLayoutContentCachedKey *_keyVal;
     TSWPColumn *_wpColumn;
     unsigned long long _pageNumber;
     unsigned long long _pageCount;
+    struct TSUCellRect _layoutMergeRange;
     struct CGSize _minSize;
     struct CGSize _maxSize;
     struct UIEdgeInsets _paddingInsets;

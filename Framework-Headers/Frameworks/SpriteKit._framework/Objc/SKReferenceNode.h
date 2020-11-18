@@ -22,6 +22,7 @@
 + (id)nodeWithFileNamed:(id)arg1;
 + (id)referenceNodeWithFileNamed:(id)arg1;
 + (id)referenceNodeWithURL:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_resolveReferenceNode;
 - (id)copyWithZone:(struct _NSZone *)arg1;

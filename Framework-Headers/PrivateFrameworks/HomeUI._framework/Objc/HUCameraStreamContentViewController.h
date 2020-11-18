@@ -14,12 +14,13 @@
 @interface HUCameraStreamContentViewController : UIViewController <HFItemManagerDelegate, PGPictureInPictureViewController>
 {
     BOOL _displayInterrupted;
+    BOOL _showActivityIndicatorWhenLoading;
     BOOL _streaming;
     unsigned long long _viewAppearanceState;
     unsigned long long _displayMode;
     HFCameraAudioManager *_cameraAudioManager;
-    HFItemManager *_itemManager;
     HUCameraView *_cameraView;
+    HFItemManager *_itemManager;
     unsigned long long _visibilityState;
     struct UIOffset _defaultCameraBadgeOffset;
 }
@@ -27,11 +28,12 @@
 @property (strong, nonatomic) HFCameraAudioManager *cameraAudioManager; // @synthesize cameraAudioManager=_cameraAudioManager;
 @property (nonatomic) struct UIOffset cameraBadgeOffset;
 @property (readonly, nonatomic) UIView *cameraOverlaySnapshot;
-@property (strong, nonatomic) HUCameraView *cameraView; // @synthesize cameraView=_cameraView;
+@property (readonly, nonatomic) HUCameraView *cameraView; // @synthesize cameraView=_cameraView;
 @property (readonly, nonatomic) struct CGRect cameraViewFrame;
 @property (readonly, nonatomic) UIView *cameraViewSnapshot;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) struct UIOffset defaultCameraBadgeOffset; // @synthesize defaultCameraBadgeOffset=_defaultCameraBadgeOffset;
+@property (readonly, nonatomic) struct CGRect derivedCameraViewFrame;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDisplayInterrupted) BOOL displayInterrupted; // @synthesize displayInterrupted=_displayInterrupted;
 @property (nonatomic) unsigned long long displayMode; // @synthesize displayMode=_displayMode;
@@ -39,6 +41,7 @@
 @property (strong, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
 @property (readonly, nonatomic) BOOL shouldShowAlternateActionButtonImage;
 @property (readonly, nonatomic) BOOL shouldShowLoadingIndicator;
+@property (nonatomic) BOOL showActivityIndicatorWhenLoading; // @synthesize showActivityIndicatorWhenLoading=_showActivityIndicatorWhenLoading;
 @property (nonatomic, getter=isStreaming) BOOL streaming; // @synthesize streaming=_streaming;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long viewAppearanceState; // @synthesize viewAppearanceState=_viewAppearanceState;
@@ -49,7 +52,8 @@
 - (id)_cameraManager;
 - (BOOL)_isStreaming;
 - (id)_preferredCameraSource;
-- (void)_updateCameraViewsIncludingError:(BOOL)arg1;
+- (unsigned long long)_streamState;
+- (void)_updateCameraViewsIncludingOverlayContent:(BOOL)arg1;
 - (void)_updateDigitalZoomState;
 - (void)_updateIdleTimer;
 - (void)_updatePreferredContentSize;
@@ -65,6 +69,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willAnimatePictureInPictureStart;
 - (void)willAnimatePictureInPictureStop;
 

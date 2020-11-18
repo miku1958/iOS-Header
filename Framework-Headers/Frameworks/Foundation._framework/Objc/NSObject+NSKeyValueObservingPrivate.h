@@ -10,12 +10,14 @@
 + (BOOL)_shouldAddObservationForwardersForKey:(id)arg1;
 - (void)_changeValueForKey:(id)arg1 key:(id)arg2 key:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)_changeValueForKey:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)_changeValueForKeys:(id *)arg1 count:(unsigned long long)arg2 maybeOldValuesDict:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (void)_changeValueForKeys:(id *)arg1 count:(unsigned long long)arg2 maybeOldValuesDict:(id)arg3 maybeNewValuesDict:(id)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (void)_didChangeValuesForKeys:(id)arg1;
+- (void)_didEndKeyValueObserving;
 - (id)_implicitObservationInfo;
 - (void)_notifyObserversForKeyPath:(id)arg1 change:(id)arg2;
 - (void)_notifyObserversOfChangeFromValuesForKeys:(id)arg1 toValuesForKeys:(id)arg2;
 - (id)_pendingChangeNotificationsArrayForKey:(id)arg1 create:(BOOL)arg2;
+- (void)_willBeginKeyValueObserving;
 - (void)_willChangeValuesForKeys:(id)arg1;
 @end
 

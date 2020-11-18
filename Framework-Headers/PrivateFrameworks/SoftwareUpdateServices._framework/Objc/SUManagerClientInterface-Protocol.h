@@ -8,8 +8,9 @@
 
 @protocol SUManagerClientInterface
 - (void)autoInstallOperationDidConsent:(NSUUID *)arg1;
-- (void)autoInstallOperationDidExpire:(NSUUID *)arg1;
+- (void)autoInstallOperationDidExpire:(NSUUID *)arg1 withError:(NSError *)arg2;
 - (void)autoInstallOperationIsReadyToInstall:(NSUUID *)arg1 withResult:(void (^)(BOOL, NSError *))arg2;
+- (void)autoInstallOperationPasscodePolicyChanged:(NSUUID *)arg1 passcodePolicyType:(unsigned long long)arg2;
 - (void)autoInstallOperationWasCancelled:(NSUUID *)arg1;
 - (void)automaticDownloadDidFailToStartForNewUpdateAvailable:(SUDescriptor *)arg1 withError:(NSError *)arg2;
 - (void)downloadDidFail:(SUDownload *)arg1 withError:(NSError *)arg2;

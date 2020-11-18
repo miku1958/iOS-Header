@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSSecureCoding-Protocol.h>
 
@@ -12,6 +12,7 @@
 
 @interface TIAutocorrectionList : NSObject <NSSecureCoding>
 {
+    BOOL _containsProactiveTriggers;
     TIKeyboardCandidate *_autocorrection;
     NSArray *_predictions;
     NSArray *_emojiList;
@@ -20,18 +21,21 @@
 
 @property (readonly, nonatomic) TIKeyboardCandidate *autocorrection; // @synthesize autocorrection=_autocorrection;
 @property (readonly, nonatomic) NSArray *candidates;
+@property (nonatomic) BOOL containsProactiveTriggers; // @synthesize containsProactiveTriggers=_containsProactiveTriggers;
 @property (readonly, nonatomic) NSArray *emojiList; // @synthesize emojiList=_emojiList;
 @property (readonly, nonatomic) NSArray *predictions; // @synthesize predictions=_predictions;
 @property (readonly, nonatomic) NSArray *proactiveTriggers; // @synthesize proactiveTriggers=_proactiveTriggers;
 @property (readonly, nonatomic) BOOL shouldAcceptTopCandidate;
 
 + (id)autocorrectionListWithCandidates:(id)arg1 shouldAcceptTopCandidate:(BOOL)arg2;
++ (id)listWithAutocorrection:(id)arg1;
 + (id)listWithAutocorrection:(id)arg1 predictions:(id)arg2;
 + (id)listWithAutocorrection:(id)arg1 predictions:(id)arg2 emojiList:(id)arg3;
++ (id)listWithAutocorrection:(id)arg1 predictions:(id)arg2 emojiList:(id)arg3 proactiveTriggers:(id)arg4;
 + (id)listWithPredictions:(id)arg1 emojiList:(id)arg2 proactiveTriggers:(id)arg3;
 + (id)listWithPredictions:(id)arg1 proactiveTriggers:(id)arg2;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAutocorrection:(id)arg1 predictions:(id)arg2 emojiList:(id)arg3 proactiveTriggers:(id)arg4;

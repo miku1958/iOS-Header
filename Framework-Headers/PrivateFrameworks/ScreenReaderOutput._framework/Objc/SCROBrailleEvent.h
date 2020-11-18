@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SCROBrailleEvent : NSObject
 {
@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic) BOOL shouldDisplay; // @synthesize shouldDisplay=_shouldDisplay;
+@property (readonly, nonatomic) int type;
 
 + (id)eventWithType:(int)arg1 data:(id)arg2;
 + (id)eventWithType:(int)arg1 data:(id)arg2 data2:(id)arg3 data3:(id)arg4;
@@ -25,7 +26,6 @@
 - (id)data3;
 - (id)description;
 - (id)initWithType:(int)arg1 data:(id)arg2 data2:(id)arg3 data3:(id)arg4;
-- (int)type;
 
 @end
 

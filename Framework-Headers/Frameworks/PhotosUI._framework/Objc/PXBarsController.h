@@ -6,29 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@class PXBarSpec, UIViewController;
-@protocol PXBarsControllerDelegate;
+@class NSArray, NSMutableDictionary, PXBarSpec, UIViewController;
+@protocol PXActionPerformerDelegate;
 
 @interface PXBarsController : NSObject
 {
-    struct _delegateFlags;
     struct {
         BOOL needsUpdateBars;
     } _needsUpdateFlags;
     BOOL _wantsAnimatedBarsUpdate;
-    PXBarSpec *_barSpec;
     UIViewController *_viewController;
-    id<PXBarsControllerDelegate> _delegate;
+    id<PXActionPerformerDelegate> _actionPerformerDelegate;
+    PXBarSpec *_barSpec;
+    NSMutableDictionary *_barButtonItemCache;
 }
 
+@property (weak, nonatomic) id<PXActionPerformerDelegate> actionPerformerDelegate; // @synthesize actionPerformerDelegate=_actionPerformerDelegate;
+@property (readonly, nonatomic) NSMutableDictionary *barButtonItemCache; // @synthesize barButtonItemCache=_barButtonItemCache;
 @property (strong, nonatomic) PXBarSpec *barSpec; // @synthesize barSpec=_barSpec;
-@property (weak, nonatomic) id<PXBarsControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) NSArray *leftBarButtonItemIdentifiers;
+@property (readonly, nonatomic) NSArray *rightBarButtonItemIdentifiers;
+@property (readonly, nonatomic) NSArray *toolbarItemIdentifiers;
 @property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 @property (nonatomic) BOOL wantsAnimatedBarsUpdate; // @synthesize wantsAnimatedBarsUpdate=_wantsAnimatedBarsUpdate;
 
 - (void).cxx_destruct;
+- (id)_getCachedOrCreateNewBarButtonItemForIdentifier:(id)arg1;
 - (BOOL)_needsUpdate;
 - (void)_updateBarsIfNeeded;
+- (id)barButtonItemForIdentifier:(id)arg1;
 - (id)init;
 - (void)invalidateBars;
 - (void)updateBars;

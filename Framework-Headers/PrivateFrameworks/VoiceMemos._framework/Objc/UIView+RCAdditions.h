@@ -7,9 +7,6 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (RCAdditions)
-
-@property (nonatomic, setter=rc_setCharge:) float rc_charge;
-
 + (void)rc_beginDebuggingAutolayout;
 + (void)rc_beginDisablingAnimations;
 + (void)rc_endDisablingAnimations;

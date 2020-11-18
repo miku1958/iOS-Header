@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet, NSTimer;
 
@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSTimer *timer; // @synthesize timer=_timer;
 
 + (id)sharedTypingAssertion;
+- (void).cxx_destruct;
 - (id)__restingPathIndices;
 - (void)_sbsSetTypingActive:(BOOL)arg1;
 - (void)dealloc;

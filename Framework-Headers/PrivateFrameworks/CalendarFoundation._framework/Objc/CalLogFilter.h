@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSSet;
 
@@ -29,7 +29,7 @@
 - (id)description;
 - (id)generateRegexesForPatterns:(id)arg1;
 - (id)init;
-- (BOOL)proceedProcessingEnvelope:(id)arg1;
+- (BOOL)proceedProcessingLogName:(id)arg1;
 
 @end
 

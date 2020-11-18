@@ -9,7 +9,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKQuantity;
+@class HKQuantity, NSUUID;
 
 @interface HKWorkoutConfiguration : NSObject <NSCopying, NSSecureCoding>
 {
@@ -17,11 +17,15 @@
     long long _locationType;
     long long _swimmingLocationType;
     HKQuantity *_lapLength;
+    NSUUID *_fitnessMachineSessionUUID;
+    NSUUID *_predictionSessionUUID;
 }
 
 @property unsigned long long activityType; // @synthesize activityType=_activityType;
+@property (strong, nonatomic) NSUUID *fitnessMachineSessionUUID; // @synthesize fitnessMachineSessionUUID=_fitnessMachineSessionUUID;
 @property (copy) HKQuantity *lapLength; // @synthesize lapLength=_lapLength;
 @property long long locationType; // @synthesize locationType=_locationType;
+@property (strong, nonatomic) NSUUID *predictionSessionUUID; // @synthesize predictionSessionUUID=_predictionSessionUUID;
 @property long long swimmingLocationType; // @synthesize swimmingLocationType=_swimmingLocationType;
 
 + (id)_workoutConfigurationFromDictionary:(id)arg1;
@@ -35,6 +39,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)validateAndReturnError:(id *)arg1;
 
 @end
 

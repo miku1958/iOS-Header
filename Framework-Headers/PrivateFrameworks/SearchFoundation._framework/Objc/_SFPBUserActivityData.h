@@ -20,7 +20,6 @@
 @property (copy, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasActivityType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly) Class superclass;

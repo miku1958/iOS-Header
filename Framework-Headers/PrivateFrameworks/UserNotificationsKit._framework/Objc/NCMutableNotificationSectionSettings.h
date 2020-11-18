@@ -6,16 +6,22 @@
 
 #import <UserNotificationsKit/NCNotificationSectionSettings.h>
 
-@class NSDictionary, NSSet, NSString;
+@class NSDictionary, NSSet, NSString, UIImage;
 
 @interface NCMutableNotificationSectionSettings : NCNotificationSectionSettings
 {
 }
 
+@property (copy, nonatomic) NSString *displayName; // @dynamic displayName;
+@property (nonatomic) BOOL hasProvisionalAuthorization; // @dynamic hasProvisionalAuthorization;
+@property (nonatomic) BOOL isDeliveredQuietly; // @dynamic isDeliveredQuietly;
 @property (copy, nonatomic) NSString *sectionIdentifier; // @dynamic sectionIdentifier;
 @property (copy, nonatomic) NSDictionary *settings; // @dynamic settings;
+@property (strong, nonatomic) UIImage *settingsIcon; // @dynamic settingsIcon;
+@property (nonatomic) BOOL showsCustomSettingsLink; // @dynamic showsCustomSettingsLink;
 @property (copy, nonatomic) NSString *subSectionIdentifier; // @dynamic subSectionIdentifier;
 @property (copy, nonatomic) NSSet *subSectionSettings; // @dynamic subSectionSettings;
+@property (nonatomic, getter=isUserConfigurable) BOOL userConfigurable; // @dynamic userConfigurable;
 
 
 @end

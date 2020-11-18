@@ -13,56 +13,56 @@
 __attribute__((visibility("hidden")))
 @interface TSTTableFilterSet : TSPObject <TSPCopying>
 {
-    int mType;
-    BOOL mIsEnabled;
-    NSArray *mRules;
-    BOOL mNeedsFormulaRewriteForImport;
-    vector_06e666a8 mFilterOffsets;
+    int _type;
+    BOOL _isEnabled;
+    NSArray *_rules;
+    BOOL _needsFormulaRewriteForImport;
+    vector_06e666a8 _filterOffsets;
 }
 
 @property (readonly, nonatomic) BOOL canAddRules;
 @property (readonly, nonatomic) unsigned long long filterCount;
 @property (nonatomic) int filterSetType;
-@property (nonatomic) BOOL isEnabled;
+@property (nonatomic) BOOL isEnabled; // @synthesize isEnabled=_isEnabled;
+@property (nonatomic) BOOL needsFormulaRewriteForImport; // @synthesize needsFormulaRewriteForImport=_needsFormulaRewriteForImport;
 @property (readonly, nonatomic) unsigned long long newFilterIndex;
 @property (readonly, nonatomic) unsigned long long ruleCount;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)absoluteRuleIndicesForColumn:(unsigned char)arg1 inTable:(id)arg2;
+- (id)absoluteRuleIndicesForColumn:(struct TSUModelColumnIndex)arg1 inTable:(id)arg2;
 - (void)addRules:(id)arg1 inFilter:(unsigned long long)arg2;
-- (id)columnIndicesForRulesInTable:(id)arg1;
+- (id)baseColumnIndicesForRulesInTable:(id)arg1;
 - (BOOL)containsFilterRulesInUIDForm;
 - (id)copyByRewritingFilterRulesToGeometricFormWithContext:(id)arg1 withTableInfo:(id)arg2;
 - (id)copyByRewritingFilterRulesToUidFormWithContext:(id)arg1 withTableInfo:(id)arg2;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (void)enumerateFilterIndicesInTable:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateFiltersForColumn:(unsigned char)arg1 withTable:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateFiltersForColumn:(struct TSUModelColumnIndex)arg1 withTable:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateFiltersInTable:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateRulesInFilterIndex:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)filterAtIndex:(unsigned long long)arg1 inTable:(id)arg2;
-- (id)filterIndicesForColumn:(unsigned char)arg1 inTable:(id)arg2;
-- (unsigned long long)firstFilterIndexForColumn:(unsigned char)arg1 inTable:(id)arg2;
+- (id)filterIndicesForBaseColumn:(struct TSUModelColumnIndex)arg1 inTable:(id)arg2;
+- (unsigned long long)firstFilterIndexForBaseColumn:(struct TSUModelColumnIndex)arg1 inTable:(id)arg2;
+- (unsigned long long)hash;
 - (id)initWithFilterRules:(id)arg1 type:(int)arg2 context:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadFromArchive:(const struct FilterSetArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (BOOL)needsFormulaRewriteForImport;
 - (unsigned long long)numberOfRulesInFilter:(unsigned long long)arg1;
 - (void)p_addRules:(id)arg1 atRuleIndices:(id)arg2 inFilter:(unsigned long long)arg3 isNew:(BOOL)arg4;
 - (BOOL)p_thresholdComparisonMatchesFilter:(long long)arg1 withPredicateType:(int)arg2;
-- (void)removeRulesForColumnIndices:(id)arg1 withTableInfo:(id)arg2;
+- (void)removeRulesForBaseColumnIndices:(id)arg1 withTableInfo:(id)arg2;
 - (id)removeRulesWithAbsoluteIndices:(id)arg1;
 - (void)removeRulesWithIndices:(id)arg1 inFilter:(unsigned long long)arg2;
 - (void)replaceRule:(id)arg1 atRuleIndex:(unsigned long long)arg2 inFilter:(unsigned long long)arg3;
-- (BOOL)rowIsShown:(unsigned short)arg1 withHiddenStateFormulaOwner:(id)arg2 withCalculationEngine:(id)arg3;
+- (BOOL)rowIsShown:(unsigned int)arg1 withHiddenStateExtent:(id)arg2 withCalcEngine:(id)arg3;
 - (id)ruleAtAbsoluteIndex:(unsigned long long)arg1;
 - (id)ruleInFilter:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
 - (unsigned long long)ruleIndexInFilter:(unsigned long long)arg1 matchingCell:(id)arg2;
 - (void)saveToArchive:(struct FilterSetArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)setNeedsFormulaRewriteForImport:(BOOL)arg1;
+- (id)viewColumnIndicesForRulesInTable:(id)arg1;
 
 @end
 

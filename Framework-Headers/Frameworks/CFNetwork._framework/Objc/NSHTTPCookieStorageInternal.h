@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSRecursiveLock;
 
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 
 - (id)_initWithIdentifier:(id)arg1 private:(BOOL)arg2;
 - (void)_syncCookies;
+- (void)_syncCookiesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initInternalWithCFStorage:(struct OpaqueCFHTTPCookieStorage *)arg1;
 - (void)registerForPostingNotificationsWithContext:(id)arg1;

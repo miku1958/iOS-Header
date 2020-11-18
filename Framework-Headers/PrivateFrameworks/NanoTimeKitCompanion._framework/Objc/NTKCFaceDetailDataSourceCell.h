@@ -6,20 +6,20 @@
 
 #import <NanoTimeKitCompanion/NTKCFaceDetailToggleCell.h>
 
-@class NSString, UIImageView;
+@class NSArray, UIImageView;
 
 @interface NTKCFaceDetailDataSourceCell : NTKCFaceDetailToggleCell
 {
-    NSString *_bundleIdentifier;
+    NSArray *_bundleIdentifiers;
     UIImageView *_iconImageView;
 }
 
-@property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, nonatomic) NSArray *bundleIdentifiers; // @synthesize bundleIdentifiers=_bundleIdentifiers;
 @property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
-- (id)initWithIdentifier:(id)arg1 andLabel:(id)arg2;
+- (id)initWithIdentifiers:(id)arg1 andLabel:(id)arg2 showIcon:(BOOL)arg3 isDonation:(BOOL)arg4;
 - (void)layoutSubviews;
 
 @end

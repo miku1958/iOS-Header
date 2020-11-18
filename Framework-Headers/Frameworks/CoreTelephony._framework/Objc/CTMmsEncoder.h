@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface CTMmsEncoder : NSObject
@@ -12,7 +12,9 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)decodeMessageFromData:(id)arg1;
++ (id)decodeMessageFromData:(id)arg1 data:(id)arg2;
 + (id)decodeSmsFromData:(id)arg1;
++ (id)decodeSmsFromData:(id)arg1 data:(id)arg2;
 + (id)encodeMessage:(id)arg1;
 + (id)encodeSms:(id)arg1;
 

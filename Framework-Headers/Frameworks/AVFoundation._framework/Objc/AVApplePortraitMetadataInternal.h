@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSIndexSet;
 
@@ -12,6 +12,8 @@
 {
     int version;
     float apertureFocalRatio;
+    float minimumApertureFocalRatio;
+    float maximumApertureFocalRatio;
     float luminanceNoiseAmplitude;
     int faceOrientation;
     NSData *faceObservationsData;
@@ -25,6 +27,8 @@
 @property (nonatomic) struct CGRect focusRectangle; // @synthesize focusRectangle;
 @property (strong, nonatomic) NSIndexSet *indexesOfShallowDepthOfFieldObservations; // @synthesize indexesOfShallowDepthOfFieldObservations;
 @property (nonatomic) float luminanceNoiseAmplitude; // @synthesize luminanceNoiseAmplitude;
+@property (nonatomic) float maximumApertureFocalRatio; // @synthesize maximumApertureFocalRatio;
+@property (nonatomic) float minimumApertureFocalRatio; // @synthesize minimumApertureFocalRatio;
 @property (nonatomic) int version; // @synthesize version;
 
 - (void)dealloc;

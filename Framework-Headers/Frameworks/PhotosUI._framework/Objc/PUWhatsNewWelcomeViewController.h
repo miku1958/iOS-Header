@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUWelcomeViewController.h>
 
-@class NSLayoutConstraint, UIScrollView, UIView;
+@class NSLayoutConstraint, UIFont, UIScrollView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface PUWhatsNewWelcomeViewController : PUWelcomeViewController
@@ -16,15 +16,25 @@ __attribute__((visibility("hidden")))
     UIScrollView *__scrollView;
     UIView *__topContentView;
     UIView *__bottomContentView;
+    UIFont *_buttonFont;
     NSLayoutConstraint *__topConstraint;
+    NSLayoutConstraint *__bottomConstraint;
+    NSLayoutConstraint *__buttonContainerVisualEffectHeightConstraint;
+    NSLayoutConstraint *__containerWidthConstraint;
+    NSLayoutConstraint *__buttonWidthConstraint;
 }
 
+@property (readonly, copy, nonatomic) NSLayoutConstraint *_bottomConstraint; // @synthesize _bottomConstraint=__bottomConstraint;
 @property (readonly, copy, nonatomic) UIView *_bottomContentView; // @synthesize _bottomContentView=__bottomContentView;
+@property (readonly, copy, nonatomic) NSLayoutConstraint *_buttonContainerVisualEffectHeightConstraint; // @synthesize _buttonContainerVisualEffectHeightConstraint=__buttonContainerVisualEffectHeightConstraint;
+@property (readonly, copy, nonatomic) NSLayoutConstraint *_buttonWidthConstraint; // @synthesize _buttonWidthConstraint=__buttonWidthConstraint;
 @property (readonly, copy, nonatomic) CDUnknownBlockType _completionHandler; // @synthesize _completionHandler=__completionHandler;
+@property (readonly, copy, nonatomic) NSLayoutConstraint *_containerWidthConstraint; // @synthesize _containerWidthConstraint=__containerWidthConstraint;
 @property (nonatomic, setter=_setDidAdjustScrollPosition:) BOOL _didAdjustScrollPosition; // @synthesize _didAdjustScrollPosition=__didAdjustScrollPosition;
 @property (readonly, copy, nonatomic) UIScrollView *_scrollView; // @synthesize _scrollView=__scrollView;
 @property (readonly, copy, nonatomic) NSLayoutConstraint *_topConstraint; // @synthesize _topConstraint=__topConstraint;
 @property (readonly, copy, nonatomic) UIView *_topContentView; // @synthesize _topContentView=__topContentView;
+@property (readonly, copy, nonatomic) UIFont *buttonFont; // @synthesize buttonFont=_buttonFont;
 
 + (void)presentIfNecessaryFromViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)resetLastPresentationInfo;
@@ -32,7 +42,11 @@ __attribute__((visibility("hidden")))
 - (void)_addSection:(id)arg1 containerView:(id)arg2 iconName:(id)arg3 lastLabel:(id *)arg4 lastSectionView:(id *)arg5 subheadlineFontScale:(double)arg6 text:(id)arg7 title:(id)arg8 titleLabel:(id)arg9;
 - (void)_handleContinueButton:(id)arg1;
 - (id)_initWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_initializeConstants;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (long long)preferredInterfaceOrientationForPresentation;
+- (BOOL)shouldAutorotate;
+- (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

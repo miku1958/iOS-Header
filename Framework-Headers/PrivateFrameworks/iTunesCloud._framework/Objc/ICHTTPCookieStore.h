@@ -24,9 +24,11 @@
 - (id)getCookiesForURL:(id)arg1 userIdentifier:(id)arg2;
 - (id)getCookiesForUserIdentifier:(id)arg1;
 - (id)getCookiesHeadersForURL:(id)arg1 userIdentifier:(id)arg2;
+- (id)getGlobalAccountCookieHeadersForURL:(id)arg1;
 - (id)getGlobalAccountCookiesForURL:(id)arg1;
 - (id)init;
 - (void)removeAllCookies;
+- (void)removeCookiesWithProperties:(id)arg1;
 - (void)saveCookies:(id)arg1 forURL:(id)arg2;
 - (void)saveCookies:(id)arg1 forURL:(id)arg2 userIdentifier:(id)arg3;
 - (void)saveGlobalAccountCookies:(id)arg1 forURL:(id)arg2;

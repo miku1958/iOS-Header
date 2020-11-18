@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDCameraTLVBase.h>
+#import <HomeKitDaemon/HMDTLVBase.h>
 
-#import <HomeKitDaemon/HMDCameraTLVCreateParse-Protocol.h>
+#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class NSNumber;
 
-@interface HMDSelectedRTPParameters : HMDCameraTLVBase <HMDCameraTLVCreateParse, NSSecureCoding>
+@interface HMDSelectedRTPParameters : HMDTLVBase <HMDTLVCreateParse, NSSecureCoding>
 {
     NSNumber *_payloadType;
     NSNumber *_synchronizationSource;

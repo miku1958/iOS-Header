@@ -72,6 +72,8 @@ struct _ProtobufCMessageDescriptor;
 
 struct _ProtobufCMessageUnknownField;
 
+struct __CFData;
+
 struct __CFHTTPMessage;
 
 struct __CFString;
@@ -131,12 +133,13 @@ struct mmcs_http_context {
     struct mmcs_read_stream_pool *_field44;
     struct __CFRunLoop *_field45;
     struct __CFArray *_field46;
+    struct __CFData *_field47;
     union {
         struct mmcs_cfnetwork_http_context *_field1;
         struct mmcs_nsurlsession_http_context *_field2;
         struct mmcs_curl_http_context *_field3;
         void *_field4;
-    } _field47;
+    } _field48;
 };
 
 struct mmcs_http_context_options {

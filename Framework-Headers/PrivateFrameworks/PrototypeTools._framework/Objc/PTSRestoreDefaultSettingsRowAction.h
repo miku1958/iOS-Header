@@ -4,22 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PrototypeTools/PTSRowAction.h>
+#import <PrototypeTools/PTRestoreDefaultSettingsRowAction.h>
 
-@class NSString;
-
-@interface PTSRestoreDefaultSettingsRowAction : PTSRowAction
+@interface PTSRestoreDefaultSettingsRowAction : PTRestoreDefaultSettingsRowAction
 {
-    NSString *_settingsKeyPath;
 }
-
-@property (copy, nonatomic) NSString *settingsKeyPath; // @synthesize settingsKeyPath=_settingsKeyPath;
-
-+ (id)actionWithSettingsKeyPath:(id)arg1;
-- (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)init;
-- (void)resolveTemplatesWithIndex:(unsigned long long)arg1;
 
 @end
 

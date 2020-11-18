@@ -45,6 +45,7 @@
 + (Class)homeKitRepresentationClass;
 - (void).cxx_destruct;
 - (id)_commitChangesToMediaSystemBuilder;
+- (id)_defaultName;
 - (id)_firstUnpopulatedRole;
 - (id)_rooms;
 - (id)_updateAssistantAccessControl;

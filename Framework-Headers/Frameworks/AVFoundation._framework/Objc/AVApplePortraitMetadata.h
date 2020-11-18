@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/NSSecureCoding-Protocol.h>
 
@@ -21,6 +21,8 @@
 @property (readonly) struct CGRect focusRectangle;
 @property (readonly) NSIndexSet *indexesOfShallowDepthOfFieldObservations;
 @property (readonly) float luminanceNoiseAmplitude;
+@property (readonly) float maximumApertureFocalRatio;
+@property (readonly) float minimumApertureFocalRatio;
 
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;

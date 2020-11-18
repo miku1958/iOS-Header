@@ -17,13 +17,12 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityRemoteElementCommunicationQueue;
-- (id)_accessibilityRemoteElementSerializationQueue;
 - (id)_accessibilityResponderElement;
 - (BOOL)_accessibilityServesAsFirstResponder;
 - (void)_accessibilitySetRemoteElementArray:(id)arg1;
-- (void)_accessibilitySetRemoteElementIfNecessaryWithContextId:(unsigned int)arg1;
+- (void)_accessibilitySetRemoteElementIfNecessary;
 - (void)_accessibilitySetRetainedValue:(id)arg1 forKey:(id)arg2;
-- (unsigned int)_axContextIdForLayer;
+- (void)_accessibilityTransmitRemoteUUIDToPid:(int)arg1 machPort:(unsigned int)arg2 value:(id)arg3;
 - (id)accessibilityElements;
 - (id)accessibilityIdentifier;
 - (void)dealloc;

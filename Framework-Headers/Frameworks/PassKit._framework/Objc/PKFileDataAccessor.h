@@ -24,10 +24,15 @@
 - (void).cxx_destruct;
 - (id)archiveData;
 - (id)bundle;
+- (id)content;
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;
+- (id)dataForBundleResource:(id)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
+- (id)dataForBundleResources:(id)arg1;
+- (id)dictionary;
 - (void)dictionaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)displayProfileOfType:(long long)arg1;
+- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5;
 - (void)imageSetForType:(long long)arg1 screenScale:(double)arg2 suffix:(id)arg3 displayProfile:(id)arg4 preheat:(BOOL)arg5 withCompletion:(CDUnknownBlockType)arg6;

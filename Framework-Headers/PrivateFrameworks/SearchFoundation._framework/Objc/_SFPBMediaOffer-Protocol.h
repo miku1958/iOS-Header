@@ -11,11 +11,6 @@
 @protocol _SFPBMediaOffer <NSObject>
 
 @property (strong, nonatomic) _SFPBActionItem *actionItem;
-@property (readonly, nonatomic) BOOL hasActionItem;
-@property (readonly, nonatomic) BOOL hasImage;
-@property (readonly, nonatomic) BOOL hasIsEnabled;
-@property (readonly, nonatomic) BOOL hasOfferIdentifier;
-@property (readonly, nonatomic) BOOL hasSublabel;
 @property (strong, nonatomic) _SFPBImage *image;
 @property (nonatomic) BOOL isEnabled;
 @property (readonly, nonatomic) NSData *jsonData;

@@ -18,6 +18,8 @@
 - (void).cxx_destruct;
 - (void)_handleActionForItem:(id)arg1 fromSpecifier:(id)arg2 eventSource:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)actionTapped:(id)arg1 eventSource:(unsigned long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)dealloc;
+- (id)description;
 - (void)startSpinnerForSpecifier:(id)arg1;
 - (void)stopSpinnerForSpecifier:(id)arg1;
 

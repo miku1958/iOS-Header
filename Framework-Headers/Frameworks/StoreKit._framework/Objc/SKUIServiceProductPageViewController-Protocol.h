@@ -29,5 +29,6 @@
 - (void)setScriptContextDictionary:(NSDictionary *)arg1;
 - (void)setShowsRightBarButton:(NSNumber *)arg1;
 - (void)setShowsStoreButton:(NSNumber *)arg1;
+- (void)setVisibleInClientWindow:(NSNumber *)arg1;
 @end
 

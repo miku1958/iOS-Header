@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BKSTerminationAssertionObserver-Protocol.h>
 
@@ -17,12 +17,13 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBApplicationTerminationAssertionServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<FBApplicationTerminationAssertionServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (unsigned long long)_efficacyForReason:(id)arg1;
 - (void)_notifyDelegateOfAcquisitionForBundleID:(id)arg1 efficacy:(unsigned long long)arg2;
 - (void)_notifyDelegateOfRelinquishForBundleID:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSDStroke, TSTStrokeLayerMergedStack;
 
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)initWithMergedStack:(id)arg1;
-- (id)strokeAtIndex:(unsigned short)arg1;
+- (id)strokeAtIndex:(unsigned int)arg1;
 
 @end
 

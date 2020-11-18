@@ -74,7 +74,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isNearlyWhite;
 - (BOOL)isOpaque;
-- (SEL)mapThemeAssetSelector;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
@@ -83,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (id)presetKind;
 - (id)referenceColor;
+- (BOOL)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 - (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
 
 @end

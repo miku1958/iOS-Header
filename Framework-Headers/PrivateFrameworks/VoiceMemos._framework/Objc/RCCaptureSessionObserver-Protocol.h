@@ -9,7 +9,7 @@
 @class RCCaptureSession;
 
 @protocol RCCaptureSessionObserver <NSObject>
-- (void)captureSession:(RCCaptureSession *)arg1 destinationFragmentDurationDidChangeToDuration:(double)arg2;
+- (void)captureSession:(RCCaptureSession *)arg1 destinationFragmentDurationDidChangeToDuration:(double)arg2 captureTime:(double)arg3 usingDisplayLinkSmoothing:(BOOL)arg4;
 - (void)captureSession:(RCCaptureSession *)arg1 didFinishWithSuccess:(BOOL)arg2;
 - (void)captureSession:(RCCaptureSession *)arg1 rateDidChangeToRate:(float)arg2;
 @end

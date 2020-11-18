@@ -22,14 +22,15 @@
 }
 
 @property (nonatomic, getter=isClippingDisabled) BOOL clippingDisabled; // @synthesize clippingDisabled=_clippingDisabled;
-@property (nonatomic) id<FBSceneLayerHostContainerViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (weak, nonatomic) id<FBSceneLayerHostContainerViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) NSArray *hostedLayers; // @synthesize hostedLayers=_hostedLayers;
-@property (readonly, strong, nonatomic) FBScene *scene; // @synthesize scene=_scene;
+@property (readonly, nonatomic) NSArray *hostedLayers; // @synthesize hostedLayers=_hostedLayers;
+@property (readonly, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_adjustHostViewFrame:(id)arg1;
 - (id)_createHostViewForLayer:(id)arg1;
 - (id)_hitTest:(struct CGPoint)arg1 withEvent:(id)arg2 windowServerHitTestWindow:(id)arg3;

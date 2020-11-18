@@ -11,31 +11,38 @@
 @interface CKDAssetRequestPlanner : NSObject
 {
     unsigned int _assetTokenRequestSizeLimit;
+    NSArray *_assetRegisterAndPutBatches;
+    NSArray *_assetGetChunkKeysBatches;
     NSArray *_assetTokenRequests;
-    NSArray *_assetBatches;
+    NSMutableDictionary *_rerefAssetBatchesByZoneID;
     NSMutableDictionary *_assetBatchesByZoneID;
     NSMutableOrderedSet *_items;
-    NSMutableDictionary *_assetZonesByZoneID;
+    NSMutableDictionary *_assetZoneByKey;
 }
 
-@property (strong, nonatomic) NSArray *assetBatches; // @synthesize assetBatches=_assetBatches;
 @property (strong, nonatomic) NSMutableDictionary *assetBatchesByZoneID; // @synthesize assetBatchesByZoneID=_assetBatchesByZoneID;
+@property (strong, nonatomic) NSArray *assetGetChunkKeysBatches; // @synthesize assetGetChunkKeysBatches=_assetGetChunkKeysBatches;
+@property (strong, nonatomic) NSArray *assetRegisterAndPutBatches; // @synthesize assetRegisterAndPutBatches=_assetRegisterAndPutBatches;
 @property (readonly, nonatomic) unsigned int assetTokenRequestSizeLimit; // @synthesize assetTokenRequestSizeLimit=_assetTokenRequestSizeLimit;
 @property (strong, nonatomic) NSArray *assetTokenRequests; // @synthesize assetTokenRequests=_assetTokenRequests;
-@property (strong, nonatomic) NSMutableDictionary *assetZonesByZoneID; // @synthesize assetZonesByZoneID=_assetZonesByZoneID;
+@property (strong, nonatomic) NSMutableDictionary *assetZoneByKey; // @synthesize assetZoneByKey=_assetZoneByKey;
 @property (strong, nonatomic) NSMutableOrderedSet *items; // @synthesize items=_items;
+@property (strong, nonatomic) NSMutableDictionary *rerefAssetBatchesByZoneID; // @synthesize rerefAssetBatchesByZoneID=_rerefAssetBatchesByZoneID;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (void)addMMCSItem:(id)arg1;
 - (void)addMMCSSectionItem:(id)arg1;
+- (void)addRereferencedMMCSItem:(id)arg1;
 - (id)description;
 - (void)failBatch:(id)arg1;
 - (BOOL)hasSuccessfulAssetTokenRequests;
 - (BOOL)hasSuccessfulBatches;
 - (id)init;
 - (void)planAssetRequests;
+- (void)planGetChunkKeysBatches;
 - (void)planRegisterBatches;
+- (void)resetAssetTokenRequests;
 
 @end
 

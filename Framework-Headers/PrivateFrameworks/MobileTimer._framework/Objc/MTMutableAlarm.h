@@ -15,6 +15,7 @@
 @property (nonatomic) unsigned long long active; // @dynamic active;
 @property (nonatomic, getter=isActiveForThisDevice) BOOL activeForThisDevice; // @dynamic activeForThisDevice;
 @property (nonatomic) BOOL allowsSnooze; // @dynamic allowsSnooze;
+@property (nonatomic) BOOL bedtimeDoNotDisturb; // @dynamic bedtimeDoNotDisturb;
 @property (nonatomic) unsigned long long bedtimeHour; // @dynamic bedtimeHour;
 @property (nonatomic) unsigned long long bedtimeMinute; // @dynamic bedtimeMinute;
 @property (nonatomic) unsigned long long bedtimeReminderMinutes; // @dynamic bedtimeReminderMinutes;

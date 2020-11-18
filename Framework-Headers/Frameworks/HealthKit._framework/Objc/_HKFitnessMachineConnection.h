@@ -8,13 +8,15 @@
 
 #import <HealthKit/HKFitnessMachineConnectionClientInterface-Protocol.h>
 
-@class HKHealthStore, NSString, NSUUID, _HKFitnessMachine;
+@class HKDevice, HKHealthStore, NSLock, NSString, NSUUID, _HKFitnessMachine;
 @protocol _HKFitnessMachineConnectionDelegate;
 
 @interface _HKFitnessMachineConnection : NSObject <HKFitnessMachineConnectionClientInterface>
 {
     HKHealthStore *_healthStore;
     NSUUID *_currentSessionUUID;
+    HKDevice *_deviceForFinalWorkout;
+    NSLock *_lock;
     NSUUID *_uuid;
     _HKFitnessMachine *_fitnessMachine;
     unsigned long long _machineState;
@@ -26,6 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_HKFitnessMachineConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) HKDevice *deviceForFinalWorkout;
 @property (readonly, nonatomic) _HKFitnessMachine *fitnessMachine; // @synthesize fitnessMachine=_fitnessMachine;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long machineState; // @synthesize machineState=_machineState;
@@ -38,9 +41,6 @@
 - (void)_connectionInterruptedWithError:(id)arg1;
 - (id)_initWithHealthStore:(id)arg1;
 - (void)_registerClient;
-- (void)_setConnectionState:(unsigned long long)arg1;
-- (void)_setFitnessMachine:(id)arg1;
-- (void)_setMachineState:(unsigned long long)arg1;
 - (void)_simulateAccept;
 - (void)_simulateDisconnect;
 - (void)_simulateTapWithFitnessMachineType:(unsigned long long)arg1;

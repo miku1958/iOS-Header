@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIKBRTConfidenceLevels.h>
+#import <UIKitCore/_UIKBRTConfidenceLevels.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIKBRTPendingConfidenceLevels : _UIKBRTConfidenceLevels

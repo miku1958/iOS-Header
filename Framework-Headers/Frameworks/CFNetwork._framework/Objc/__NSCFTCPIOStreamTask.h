@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)_onqueue_dealWithSessionTrustAuth:(long long)arg1 credential:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_onqueue_errorOrCancelError;
 - (void)_onqueue_ioTick;
+- (BOOL)_onqueue_isSecure;
 - (void)_onqueue_needClientCert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_onqueue_needServerTrust:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_onqueue_postConnectConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -91,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithHost:(id)arg1 port:(long long)arg2 session:(id)arg3 disavow:(CDUnknownBlockType)arg4;
 - (id)initWithTask:(id)arg1 Connection:(shared_ptr_f0c1381f)arg2 disavow:(CDUnknownBlockType)arg3;
 - (shared_ptr_54ecd472)ios;
+- (BOOL)isKindOfClass:(Class)arg1;
 - (void)readDataOfMinLength:(unsigned long long)arg1 maxLength:(unsigned long long)arg2 timeout:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)shouldDoWorkConsideringTlsState;
 - (void)startSecureConnection;

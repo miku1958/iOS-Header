@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
 #import <Foundation/NSCopying-Protocol.h>
 #import <Foundation/NSFastEnumeration-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSPointerFunctions, NSSet;
 
-@interface NSHashTable : NSObject <NSCopying, NSCoding, NSFastEnumeration>
+@interface NSHashTable : NSObject <NSCopying, NSSecureCoding, NSFastEnumeration>
 {
 }
 
@@ -26,6 +26,7 @@
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)hashTableWithOptions:(unsigned long long)arg1;
 + (id)hashTableWithWeakObjects;
++ (BOOL)supportsSecureCoding;
 + (id)weakObjectsHashTable;
 - (void)addObject:(id)arg1;
 - (BOOL)containsObject:(id)arg1;

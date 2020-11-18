@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSCH3DCamera, TSCH3DDataBufferResource, TSCH3DLabelResource, TSCH3DLabelResources, TSCH3DLabelsMeshRenderer, TSCH3DLabelsRendererTransforms, TSCH3DResource, TSCH3DSceneRenderPipeline;
 

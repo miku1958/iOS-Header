@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDEnhancedFTMSData, HDFitnessMachineDataCharacteristicBase, HDFitnessMachineStatus, HDHealthServiceOOBInfo, HKHealthService, NSArray, NSData, NSDate, NSString, NSUUID, _HKFitnessMachine;
+@class HDEnhancedFTMSData, HDFitnessMachineDataCharacteristicBase, HDFitnessMachineSessionRecoveryConfiguration, HDFitnessMachineStatus, HDHealthServiceOOBInfo, HKHealthService, NSArray, NSData, NSDate, NSString, NSUUID, _HKFitnessMachine;
 
 @interface HDFitnessMachineSession : NSObject
 {
@@ -51,6 +51,7 @@
 @property (readonly, nonatomic) NSData *nfcSessionIDData; // @synthesize nfcSessionIDData=_nfcSessionIDData;
 @property (strong, nonatomic) NSArray *oobDataArray; // @synthesize oobDataArray=_oobDataArray;
 @property (strong, nonatomic) HDHealthServiceOOBInfo *oobInfo; // @synthesize oobInfo=_oobInfo;
+@property (readonly, nonatomic) HDFitnessMachineSessionRecoveryConfiguration *recoveryConfiguration;
 @property (nonatomic) long long serviceStatus; // @synthesize serviceStatus=_serviceStatus;
 @property (readonly, nonatomic) BOOL waitingOnActivityType; // @synthesize waitingOnActivityType=_waitingOnActivityType;
 @property (readonly, nonatomic) BOOL waitingOnBluetoothConnection; // @synthesize waitingOnBluetoothConnection=_waitingOnBluetoothConnection;
@@ -58,12 +59,13 @@
 @property (nonatomic) BOOL waitingOnInitialMachineStatus; // @synthesize waitingOnInitialMachineStatus=_waitingOnInitialMachineStatus;
 @property (readonly, nonatomic) BOOL waitingOnMFA; // @synthesize waitingOnMFA=_waitingOnMFA;
 
++ (id)serviceFromRecoveryConfiguration:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithFitnessMachineSessionUUID:(id)arg1;
 - (id)_oobDataArrayWithRandomValue:(id)arg1 confirmationValue:(id)arg2 sessionID:(id)arg3 btAddress:(id)arg4;
 - (id)init;
 - (id)initWithNFCSessionIDData:(id)arg1;
-- (id)initWithSessionConfiguration:(id)arg1;
+- (id)initWithRecoveryConfiguration:(id)arg1;
 - (void)markActivityTypeProvided;
 - (void)markBluetoothConnectionComplete;
 - (void)markDataTransferPermitted;

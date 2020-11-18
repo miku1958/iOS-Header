@@ -7,6 +7,9 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (IC)
+
+@property (readonly, nonatomic) id ic_randomObject;
+
 - (id)arrayByGroupingIntoArraysWithMaxCount:(unsigned long long)arg1;
 - (BOOL)containsObjectPassingTest:(CDUnknownBlockType)arg1;
 - (BOOL)ic_indexIsValid:(long long)arg1;

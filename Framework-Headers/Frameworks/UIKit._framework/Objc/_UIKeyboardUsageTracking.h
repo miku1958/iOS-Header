@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardUsageTracking : NSObject
@@ -32,7 +32,11 @@ __attribute__((visibility("hidden")))
 + (void)keyboardPerformanceFromTouchStart:(double)arg1 until:(double)arg2;
 + (void)keyboardReachabilityDistribution:(double)arg1;
 + (void)keyboardSetToInputMode:(id)arg1 fromPrevious:(id)arg2;
++ (void)keyboardSupportsTouch:(BOOL)arg1;
 + (void)keyboardTotalOnScreenTime:(double)arg1 orientation:(long long)arg2;
++ (void)letterCaseToggleIncrement;
++ (void)loginPasswordFromAutofillIncrement;
++ (void)loginPasswordFromKeyboardIncrement;
 + (void)normalPunctuationKeyCount;
 + (void)panAlternateKeyFlickDownCount;
 + (void)predictionViewState:(BOOL)arg1 forInputMode:(id)arg2;
@@ -41,8 +45,12 @@ __attribute__((visibility("hidden")))
 + (void)selectedPredictiveInputCandidate:(id)arg1 isAutocorrection:(BOOL)arg2 index:(unsigned long long)arg3;
 + (void)showCharacterPreviewPreference:(BOOL)arg1;
 + (void)showLowercaseKeyplanePreference:(BOOL)arg1;
++ (void)showVariantsIncrement;
++ (void)signupPasswordFromAutofillIncrement;
++ (void)signupPasswordFromKeyboardIncrement;
 + (void)singleStringKeyFlickUpCount;
 + (void)undoKeyCount;
++ (void)variantDeleteIncrement;
 
 @end
 

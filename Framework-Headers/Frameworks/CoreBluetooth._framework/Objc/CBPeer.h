@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreBluetooth/NSCopying-Protocol.h>
 
@@ -13,6 +13,7 @@
 @interface CBPeer : NSObject <NSCopying>
 {
     BOOL _isLinkEncrypted;
+    unsigned char _connectedTransport;
     NSUUID *_identifier;
     unsigned long long _mtuLength;
     long long _pairingState;
@@ -21,6 +22,7 @@
     CBManager *_manager;
 }
 
+@property (nonatomic) unsigned char connectedTransport; // @synthesize connectedTransport=_connectedTransport;
 @property (nonatomic) long long hostState; // @synthesize hostState=_hostState;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isLinkEncrypted; // @synthesize isLinkEncrypted=_isLinkEncrypted;

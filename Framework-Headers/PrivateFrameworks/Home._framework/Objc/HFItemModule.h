@@ -23,6 +23,8 @@
 - (BOOL)containsItem:(id)arg1;
 - (id)init;
 - (id)initWithItemUpdater:(id)arg1;
+- (void)registerForExternalUpdates;
+- (void)unregisterForExternalUpdates;
 
 @end
 

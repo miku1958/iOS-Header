@@ -38,28 +38,22 @@
 - (void)dealloc;
 - (id)description;
 - (void)finishedWithBulletinID:(id)arg1 transactionID:(unsigned long long)arg2;
-- (void)getActiveAlertBehaviorOverridesWithHandler:(CDUnknownBlockType)arg1;
 - (void)getAspectRatioForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getBulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getBulletinsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getObserverDebugInfo:(CDUnknownBlockType)arg1;
 - (void)getPNGDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
-- (void)getPrivilegedSenderTypesWithHandler:(CDUnknownBlockType)arg1;
 - (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoForActiveSectionsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getSectionInfoForSectionIDs:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionInfoWithHandler:(CDUnknownBlockType)arg1;
-- (void)getSectionOrderRuleWithHandler:(CDUnknownBlockType)arg1;
 - (void)getSectionParametersForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)getSortDescriptorsForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getUniversalSectionIDForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)handleResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (unsigned long long)incrementedTransactionIDForBulletinID:(id)arg1;
 - (id)initWithServer:(id)arg1 connection:(id)arg2 calloutQueue:(id)arg3;
 - (id)initWithServer:(id)arg1 connection:(id)arg2 queue:(id)arg3 calloutQueue:(id)arg4;
-- (void)noteAlertBehaviorOverrideStateChanged:(id)arg1;
-- (void)noteAlertBehaviorOverridesChanged:(id)arg1;
 - (void)noteServerReceivedResponseForBulletin:(id)arg1;
 - (void)removeBulletins:(id)arg1 inSection:(id)arg2 fromFeeds:(unsigned long long)arg3;
 - (void)removeSection:(id)arg1;
@@ -71,8 +65,6 @@
 - (id)transactionBulletinIDs;
 - (void)updateBulletin:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)updateSectionInfo:(id)arg1;
-- (void)updateSectionOrder:(id)arg1;
-- (void)updateSectionOrderRule:(id)arg1;
 - (void)updateSectionParameters:(id)arg1 forSectionID:(id)arg2;
 
 @end

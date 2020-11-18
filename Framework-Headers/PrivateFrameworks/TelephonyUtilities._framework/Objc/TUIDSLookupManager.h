@@ -17,18 +17,22 @@
     id<TUIDSIDQueryController> _queryController;
     NSMutableDictionary *_idsFaceTimeVideoStatuses;
     NSMutableDictionary *_idsFaceTimeAudioStatuses;
+    NSMutableDictionary *_idsFaceTimeMultiwayStatuses;
     id<TUIDSBatchIDQueryController> _batchQuerySearchVideoController;
     id<TUIDSBatchIDQueryController> _batchQuerySearchAudioController;
+    id<TUIDSBatchIDQueryController> _batchQuerySearchMultiwayController;
     CDUnknownBlockType _batchQueryControllerCreationBlock;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType batchQueryControllerCreationBlock; // @synthesize batchQueryControllerCreationBlock=_batchQueryControllerCreationBlock;
 @property (strong, nonatomic) id<TUIDSBatchIDQueryController> batchQuerySearchAudioController; // @synthesize batchQuerySearchAudioController=_batchQuerySearchAudioController;
+@property (strong, nonatomic) id<TUIDSBatchIDQueryController> batchQuerySearchMultiwayController; // @synthesize batchQuerySearchMultiwayController=_batchQuerySearchMultiwayController;
 @property (strong, nonatomic) id<TUIDSBatchIDQueryController> batchQuerySearchVideoController; // @synthesize batchQuerySearchVideoController=_batchQuerySearchVideoController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSMutableDictionary *idsFaceTimeAudioStatuses; // @synthesize idsFaceTimeAudioStatuses=_idsFaceTimeAudioStatuses;
+@property (readonly, nonatomic) NSMutableDictionary *idsFaceTimeMultiwayStatuses; // @synthesize idsFaceTimeMultiwayStatuses=_idsFaceTimeMultiwayStatuses;
 @property (readonly, nonatomic) NSMutableDictionary *idsFaceTimeVideoStatuses; // @synthesize idsFaceTimeVideoStatuses=_idsFaceTimeVideoStatuses;
 @property (readonly, nonatomic) id<TUIDSIDQueryController> queryController; // @synthesize queryController=_queryController;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -45,6 +49,8 @@
 - (id)initWithQueryController:(id)arg1;
 - (BOOL)isFaceTimeAudioAvailableForAnyDestinationInDestinations:(id)arg1;
 - (BOOL)isFaceTimeAudioAvailableForItem:(id)arg1;
+- (BOOL)isFaceTimeMultiwayAvailableForAnyDestinationInDestinations:(id)arg1;
+- (BOOL)isFaceTimeMultiwayAvailableForItem:(id)arg1;
 - (BOOL)isFaceTimeVideoAvailableForAnyDestinationInDestinations:(id)arg1;
 - (BOOL)isFaceTimeVideoAvailableForItem:(id)arg1;
 

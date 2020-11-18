@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSError, NSMutableArray, NSMutableSet, TSUZipWriterEntry;
 @protocol OS_dispatch_data, OS_dispatch_queue, TSURandomWriteChannel;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MIME/NSCopying-Protocol.h>
 
@@ -82,6 +82,7 @@
 - (void)deleteBodyData;
 - (id)externalID;
 - (BOOL)fetchDataForMimePart:(id)arg1 inRange:(struct _NSRange)arg2 withConsumer:(id)arg3 isComplete:(BOOL *)arg4 downloadIfNecessary:(BOOL)arg5;
+- (unsigned long long)fileSize;
 - (id)firstSender;
 - (long long)generationCompare:(id)arg1;
 - (unsigned long long)generationNumber;

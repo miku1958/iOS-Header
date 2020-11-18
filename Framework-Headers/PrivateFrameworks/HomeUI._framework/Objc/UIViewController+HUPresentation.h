@@ -8,5 +8,7 @@
 
 @interface UIViewController (HUPresentation)
 - (id)hu_dismissViewControllerAnimated:(BOOL)arg1;
+- (id)hu_performDismissalRequest:(id)arg1;
+- (id)hu_performPresentationRequest:(id)arg1;
 @end
 

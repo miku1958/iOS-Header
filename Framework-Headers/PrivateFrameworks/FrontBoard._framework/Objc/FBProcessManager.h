@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBApplicationProcessDelegate-Protocol.h>
 #import <FrontBoard/FBUIProcessManagerInternal-Protocol.h>
 
-@class BKSProcessAssertion, FBApplicationLibrary, FBApplicationProcess, FBApplicationProcessWatchdogPolicy, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
-@protocol OS_dispatch_queue;
+@class BKSProcessAssertion, FBApplicationProcess, FBApplicationProcessWatchdogPolicy, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
+@protocol FBApplicationInfoProvider, OS_dispatch_queue;
 
 @interface FBProcessManager : NSObject <FBApplicationProcessDelegate, FBUIProcessManagerInternal>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    FBApplicationLibrary *_appLibrary;
+    id<FBApplicationInfoProvider> _appInfoProvider;
     NSObject<OS_dispatch_queue> *_callOutQueue;
     NSHashTable *_observers;
     NSMapTable *_processesByPID;
@@ -26,22 +26,25 @@
     NSMutableSet *_preventIdleSleepReasons;
     FBApplicationProcess *_foregroundAppProcess;
     FBApplicationProcess *_preferredForegroundAppProcess;
-    FBApplicationProcessWatchdogPolicy *_defaultWatchdogPolicy;
+    FBApplicationProcessWatchdogPolicy *_noDirectAccess_defaultWatchdogPolicy;
     NSMutableDictionary *_workspacesByClientIdentity;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (strong) FBApplicationProcessWatchdogPolicy *defaultWatchdogPolicy; // @synthesize defaultWatchdogPolicy=_noDirectAccess_defaultWatchdogPolicy;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) FBApplicationProcess *systemApplicationProcess; // @synthesize systemApplicationProcess=_systemAppProcess;
+@property (readonly, nonatomic) FBApplicationProcess *systemApplicationProcess; // @synthesize systemApplicationProcess=_systemAppProcess;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_processesQueue_processForPID:(int)arg1;
 - (id)_processesQueue_processesForBundleIdentifier:(id)arg1;
 - (void)_queue_addProcess:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_evaluateForegroundEventRouting;
 - (void)_queue_notifyObserversUsingBlock:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_queue_reallyRegisterProcessForProcessHandle:(id)arg1;
 - (void)_queue_removeProcess:(id)arg1 withBundleID:(id)arg2 pid:(int)arg3;
 - (id)_serviceClientAddedWithProcessHandle:(id)arg1;
 - (void)_setPreferredForegroundApplicationProcess:(id)arg1;
@@ -62,6 +65,8 @@
 - (BOOL)ping;
 - (id)processForPID:(int)arg1;
 - (id)processesForBundleIdentifier:(id)arg1;
+- (id)registerProcessForAuditToken:(CDStruct_6ad76789)arg1;
+- (id)registerProcessForHandle:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (id)watchdogPolicyForProcess:(id)arg1 eventContext:(id)arg2;
 - (id)workspaceForSceneClientWithIdentity:(id)arg1;

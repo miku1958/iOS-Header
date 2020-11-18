@@ -8,9 +8,13 @@
 
 @interface NSURL (HUAdditions)
 + (id)hu_allowAccessWhileLockedSettingsURL;
++ (id)hu_applePrivacyURL;
++ (id)hu_learnToAddAccessoriesURL;
 + (id)hu_locationDeviceSettingsURL;
 + (id)hu_locationServicesSettingsURL;
 + (id)hu_notificationSettingsURL;
++ (id)hu_openiCloudKeychainPreferences;
++ (id)hu_openiCloudPreferencesURL;
 + (id)hu_wifiSettingsURL;
 @end
 

@@ -8,7 +8,7 @@
 
 #import <NewsUI/NSCopying-Protocol.h>
 
-@class NSString, NTPBWidgetEngagement;
+@class NSData, NSString, NTPBWidgetEngagement;
 
 @interface NUNewsAnalyticsVideoPlayerEventTrackerConfiguration : NSObject <NSCopying>
 {
@@ -22,11 +22,13 @@
     int _linkTapLocationType;
     int _articleViewPresentationReason;
     int _autoPlayArticleViewPresentationReason;
+    int _parentFeedType;
     unsigned long long _supplementalEventOptions;
     NSString *_groupViewExposureID;
     NTPBWidgetEngagement *_widgetEngagement;
     NSString *_referringURLString;
     NSString *_referringSourceApplication;
+    NSData *_leadingVideoItemSessionID;
 }
 
 @property (readonly, nonatomic) int adLocation; // @synthesize adLocation=_adLocation;
@@ -36,10 +38,12 @@
 @property (readonly, nonatomic) int autoPlayArticleViewPresentationReason; // @synthesize autoPlayArticleViewPresentationReason=_autoPlayArticleViewPresentationReason;
 @property (readonly, nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (readonly, copy, nonatomic) NSString *groupViewExposureID; // @synthesize groupViewExposureID=_groupViewExposureID;
+@property (readonly, copy, nonatomic) NSData *leadingVideoItemSessionID; // @synthesize leadingVideoItemSessionID=_leadingVideoItemSessionID;
 @property (readonly, nonatomic) int linkTapLocationType; // @synthesize linkTapLocationType=_linkTapLocationType;
 @property (readonly, nonatomic) int mediaEngageCompletePlayLocation; // @synthesize mediaEngageCompletePlayLocation=_mediaEngageCompletePlayLocation;
 @property (readonly, nonatomic) int mediaEngagePlayLocation; // @synthesize mediaEngagePlayLocation=_mediaEngagePlayLocation;
 @property (readonly, nonatomic) int newsProductType; // @synthesize newsProductType=_newsProductType;
+@property (readonly, nonatomic) int parentFeedType; // @synthesize parentFeedType=_parentFeedType;
 @property (readonly, copy, nonatomic) NSString *referringSourceApplication; // @synthesize referringSourceApplication=_referringSourceApplication;
 @property (readonly, copy, nonatomic) NSString *referringURLString; // @synthesize referringURLString=_referringURLString;
 @property (readonly, nonatomic) unsigned long long supplementalEventOptions; // @synthesize supplementalEventOptions=_supplementalEventOptions;
@@ -48,7 +52,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
-- (id)initWithAdType:(int)arg1 adLocation:(int)arg2 newsProductType:(int)arg3 mediaEngagePlayLocation:(int)arg4 mediaEngageCompletePlayLocation:(int)arg5 articleHostViewType:(int)arg6 supplementalEventOptions:(unsigned long long)arg7 groupType:(int)arg8 groupViewExposureID:(id)arg9 linkTapLocationType:(int)arg10 articleViewPresentationReason:(int)arg11 autoPlayArticleViewPresentationReason:(int)arg12 widgetEngagement:(id)arg13 referringURLString:(id)arg14 referringSourceApplication:(id)arg15;
+- (id)initWithAdType:(int)arg1 adLocation:(int)arg2 newsProductType:(int)arg3 mediaEngagePlayLocation:(int)arg4 mediaEngageCompletePlayLocation:(int)arg5 articleHostViewType:(int)arg6 supplementalEventOptions:(unsigned long long)arg7 groupType:(int)arg8 groupViewExposureID:(id)arg9 linkTapLocationType:(int)arg10 articleViewPresentationReason:(int)arg11 autoPlayArticleViewPresentationReason:(int)arg12 widgetEngagement:(id)arg13 referringURLString:(id)arg14 referringSourceApplication:(id)arg15 leadingVideoItemSessionID:(id)arg16 parentFeedType:(int)arg17;
 
 @end
 

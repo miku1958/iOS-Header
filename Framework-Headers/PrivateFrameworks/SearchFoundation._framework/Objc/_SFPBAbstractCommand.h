@@ -13,15 +13,12 @@
 
 @interface _SFPBAbstractCommand : PBCodable <_SFPBAbstractCommand, NSSecureCoding>
 {
-    CDStruct_f953fb60 _has;
     int _type;
     _SFPBCommandValue *_value;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasValue;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly) Class superclass;

@@ -8,8 +8,8 @@
 
 #import <AudioToolbox/NSSecureCoding-Protocol.h>
 
-@class AUAudioUnit_XH, NSObject;
-@protocol OS_dispatch_queue, _AURemoteParameterSynchronization;
+@class AUAudioUnit_XH, NSObject, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface AUParameterTree : AUParameterGroup <NSSecureCoding>
 {
@@ -22,11 +22,11 @@
     AUAudioUnit_XH *__auXH;
     struct AURemoteParameterObserver *_remoteObserverToken;
     struct AURemoteParameterObserver *_remoteRecorderToken;
-    id<_AURemoteParameterSynchronization> _remoteParameterSynchronizer;
+    NSXPCConnection *_remoteParameterSynchronizerXPCConnection;
     vector_66b3461a _addrToParamIndex;
 }
 
-@property (nonatomic) AUAudioUnit_XH *_auXH; // @synthesize _auXH=__auXH;
+@property (weak, nonatomic) AUAudioUnit_XH *_auXH; // @synthesize _auXH=__auXH;
 @property (nonatomic) BOOL _autoCreatedForV2AU; // @synthesize _autoCreatedForV2AU=__autoCreatedForV2AU;
 @property (nonatomic) BOOL _suppressObserverCallbacks; // @synthesize _suppressObserverCallbacks=__suppressObserverCallbacks;
 @property (nonatomic) vector_66b3461a addrToParamIndex; // @synthesize addrToParamIndex=_addrToParamIndex;
@@ -34,7 +34,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *observationQueue; // @synthesize observationQueue=_observationQueue;
 @property (nonatomic) struct AUObserverController *observerController; // @synthesize observerController=_observerController;
 @property (nonatomic) struct AURemoteParameterObserver *remoteObserverToken; // @synthesize remoteObserverToken=_remoteObserverToken;
-@property (nonatomic) id<_AURemoteParameterSynchronization> remoteParameterSynchronizer; // @synthesize remoteParameterSynchronizer=_remoteParameterSynchronizer;
+@property (weak, nonatomic) NSXPCConnection *remoteParameterSynchronizerXPCConnection; // @synthesize remoteParameterSynchronizerXPCConnection=_remoteParameterSynchronizerXPCConnection;
 @property (nonatomic) struct AURemoteParameterObserver *remoteRecorderToken; // @synthesize remoteRecorderToken=_remoteRecorderToken;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *valueAccessQueue; // @synthesize valueAccessQueue=_valueAccessQueue;
 

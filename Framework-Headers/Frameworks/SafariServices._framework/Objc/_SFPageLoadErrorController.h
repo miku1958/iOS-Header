@@ -18,6 +18,7 @@
     NSTimer *_crashCountResetTimer;
     id<WBSCertificateWarningPagePresenter> _certificateWarningPagePresenterProxy;
     _WKRemoteObjectInterface *_certificateWarningPageHandlerInterface;
+    BOOL _certificateWarningPageHandlerInterfaceInvalidated;
     struct __SecTrust *_certificateTrust;
     CDUnknownBlockType _certificateRecoveryAttempter;
     NSURL *_certificateFailingURL;
@@ -74,6 +75,7 @@
 - (void)handleFrameLoadError:(id)arg1;
 - (void)handleSubframeCertificateError:(id)arg1;
 - (id)initWithWebView:(id)arg1;
+- (void)invalidate;
 - (void)openClockSettings;
 - (void)performAction:(int)arg1 forAlert:(id)arg2;
 - (void)reloadAfterError;

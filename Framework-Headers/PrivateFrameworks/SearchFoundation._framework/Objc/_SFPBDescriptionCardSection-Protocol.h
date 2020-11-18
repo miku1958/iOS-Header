@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBImage, _SFPBPunchout, _SFPBText, _SFPBURL;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBImage, _SFPBPunchout, _SFPBRichText, _SFPBText, _SFPBURL;
 
 @protocol _SFPBDescriptionCardSection <NSObject>
 
@@ -20,37 +20,15 @@
 @property (strong, nonatomic) _SFPBText *descriptionText;
 @property (nonatomic) int descriptionWeight;
 @property (copy, nonatomic) NSString *expandText;
-@property (readonly, nonatomic) BOOL hasAttributionGlyph;
-@property (readonly, nonatomic) BOOL hasAttributionText;
-@property (readonly, nonatomic) BOOL hasAttributionURL;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasDescriptionExpand;
-@property (readonly, nonatomic) BOOL hasDescriptionSize;
-@property (readonly, nonatomic) BOOL hasDescriptionText;
-@property (readonly, nonatomic) BOOL hasDescriptionWeight;
-@property (readonly, nonatomic) BOOL hasExpandText;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasImage;
-@property (readonly, nonatomic) BOOL hasImageAlign;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasSubtitle;
-@property (readonly, nonatomic) BOOL hasTextAlign;
-@property (readonly, nonatomic) BOOL hasTitle;
-@property (readonly, nonatomic) BOOL hasTitleNoWrap;
-@property (readonly, nonatomic) BOOL hasTitleWeight;
 @property (nonatomic) BOOL hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
 @property (strong, nonatomic) _SFPBImage *image;
 @property (nonatomic) int imageAlign;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSArray *richDescriptions;
 @property (nonatomic) int separatorStyle;
 @property (copy, nonatomic) NSString *subtitle;
 @property (nonatomic) int textAlign;
@@ -60,10 +38,14 @@
 @property (copy, nonatomic) NSString *type;
 
 - (void)addPunchoutOptions:(_SFPBPunchout *)arg1;
+- (void)addRichDescriptions:(_SFPBRichText *)arg1;
 - (void)clearPunchoutOptions;
+- (void)clearRichDescriptions;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
 - (_SFPBPunchout *)punchoutOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)punchoutOptionsCount;
+- (_SFPBRichText *)richDescriptionsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)richDescriptionsCount;
 @end
 

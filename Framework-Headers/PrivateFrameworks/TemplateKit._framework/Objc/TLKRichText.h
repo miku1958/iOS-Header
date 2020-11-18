@@ -13,12 +13,15 @@
     NSArray *_formattedTextItems;
 }
 
-@property (strong) NSArray *formattedTextItems; // @synthesize formattedTextItems=_formattedTextItems;
+@property (strong, nonatomic) NSArray *formattedTextItems; // @synthesize formattedTextItems=_formattedTextItems;
 @property (readonly) BOOL hasContent;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)observableProperties;
+- (id)filterItemsByType:(unsigned long long)arg1;
+- (id)icons;
+- (id)inlineRoundedText;
+- (id)stars;
 - (id)text;
 
 @end

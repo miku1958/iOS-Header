@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBApplicationProcessLaunchTransactionObserver-Protocol.h>
 #import <FrontBoard/FBSceneClientProvider-Protocol.h>
@@ -27,13 +27,14 @@
 }
 
 @property (readonly, copy, nonatomic) FBUISceneClientIdentity *clientIdentity; // @synthesize clientIdentity=_clientIdentity;
-@property (readonly, strong, nonatomic) FBProcess<FBUIProcess> *clientProcess;
+@property (readonly, nonatomic) FBProcess<FBUIProcess> *clientProcess;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) FBWorkspace *processWorkspace; // @synthesize processWorkspace=_processWorkspace;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_createSceneClientForIdentifier:(id)arg1 withSpecification:(id)arg2;
 - (void)_processLaunched:(id)arg1;
 - (id)_processWorkspace;

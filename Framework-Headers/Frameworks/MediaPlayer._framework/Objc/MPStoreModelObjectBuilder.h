@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPPropertySet;
 
 @interface MPStoreModelObjectBuilder : NSObject
 {
+    BOOL _preventStoreItemMetadataCaching;
     MPPropertySet *_requestedPropertySet;
 }
 
+@property (nonatomic) BOOL preventStoreItemMetadataCaching; // @synthesize preventStoreItemMetadataCaching=_preventStoreItemMetadataCaching;
 @property (readonly, nonatomic) MPPropertySet *requestedPropertySet; // @synthesize requestedPropertySet=_requestedPropertySet;
 
 + (id)allSupportedProperties;

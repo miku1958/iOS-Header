@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarAction.h>
+#import <UIKitCore/_UIStatusBarAction.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarSystemNavigationAction : _UIStatusBarAction

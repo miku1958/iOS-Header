@@ -26,6 +26,7 @@
 - (unsigned long long)getFloat4x4Array:(CDStruct_14d5dc5e *)arg1 maxCount:(unsigned long long)arg2;
 - (id)initWithElementCount:(unsigned long long)arg1;
 - (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1;
+- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 time:(double)arg2;
 - (void)setDouble4x4Array:(const CDStruct_14d5dc5e *)arg1 count:(unsigned long long)arg2;
 - (void)setFloat4x4Array:(const CDStruct_14d5dc5e *)arg1 count:(unsigned long long)arg2;
 

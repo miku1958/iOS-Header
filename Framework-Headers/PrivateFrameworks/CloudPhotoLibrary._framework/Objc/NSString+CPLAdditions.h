@@ -8,5 +8,6 @@
 
 @interface NSString (CPLAdditions)
 - (id)cplStringByAppendingPathExtension:(id)arg1 fallbackExtension:(id)arg2;
+- (id)cpl_redactedShareURL;
 @end
 

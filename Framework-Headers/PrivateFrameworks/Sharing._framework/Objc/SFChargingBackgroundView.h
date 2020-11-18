@@ -6,21 +6,21 @@
 
 #import <UIKit/UIView.h>
 
-@class CAEmitterLayer, MTPlatterView, UIVisualEffectView;
+@class CAEmitterLayer, PLPlatterView, UIVisualEffectView;
 
 @interface SFChargingBackgroundView : UIView
 {
-    UIView *_backgroundDarkenLightenView;
-    UIVisualEffectView *_backgroundVisualEffectView;
+    UIVisualEffectView *_backdropVisualEffectView;
     BOOL _constraintsInitialized;
     BOOL _emitterAdded;
     CAEmitterLayer *_emitterLayer;
-    UIView *_padShadowsView;
-    MTPlatterView *_platterView;
+    PLPlatterView *_platterView;
     BOOL _useEmitter;
+    BOOL _darkStyle;
 }
 
 @property (readonly, nonatomic) UIView *contentView;
+@property (nonatomic) BOOL darkStyle; // @synthesize darkStyle=_darkStyle;
 @property (nonatomic) BOOL useEmitter; // @synthesize useEmitter=_useEmitter;
 
 - (void).cxx_destruct;

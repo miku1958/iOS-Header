@@ -8,25 +8,29 @@
 
 #import <MobileTimer/MTAgentNotificationListener-Protocol.h>
 
-@class MTAlarmScheduler, MTTimerScheduler, NSString;
+@class NSHashTable, NSString;
+@protocol NAScheduler, OS_dispatch_queue;
 
 @interface MTTimeListener : NSObject <MTAgentNotificationListener>
 {
-    MTAlarmScheduler *_alarmScheduler;
-    MTTimerScheduler *_timerScheduler;
+    id<NAScheduler> _serializer;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSHashTable *_observers;
 }
 
-@property (strong, nonatomic) MTAlarmScheduler *alarmScheduler; // @synthesize alarmScheduler=_alarmScheduler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) MTTimerScheduler *timerScheduler; // @synthesize timerScheduler=_timerScheduler;
 
 - (void).cxx_destruct;
 - (void)handleNotification:(id)arg1;
 - (BOOL)handlesNotification:(id)arg1;
-- (id)initWithAlarmScheduler:(id)arg1 timerScheduler:(id)arg2;
+- (id)init;
+- (void)registerObserver:(id)arg1;
 
 @end
 

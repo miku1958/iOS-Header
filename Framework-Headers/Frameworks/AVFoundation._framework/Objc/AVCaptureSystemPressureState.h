@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCaptureSystemPressureStateInternal, NSString;
 
@@ -19,10 +19,12 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)description;
+- (int)figLevel;
 - (id)init;
-- (id)initWithLevel:(id)arg1 factors:(unsigned long long)arg2 recommendedFrameRateRangeForPortrait:(id)arg3;
+- (id)initWithFigLevel:(int)arg1 factors:(unsigned long long)arg2 recommendedFrameRateRangeForPortrait:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)recommendedFrameRateRangeForPortrait;
+- (id)spiDebugDescription;
 
 @end
 

@@ -4,27 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class TSTCellRegion;
 
 __attribute__((visibility("hidden")))
 @interface TNChartRangeList : NSObject
 {
     UUIDData_5fbc143e _tableUID;
-    struct TNChartRangeNode *_nodeList;
+    vector_f772ab4d _ranges;
     struct TSCERangeCoordinate _unionRange;
     BOOL _unionRangeValid;
 }
 
+@property (readonly, nonatomic) TSTCellRegion *cellRegion;
 @property (readonly, nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUID;
 
 + (id)rangeListWithRangeRef:(struct TSCERangeRef)arg1;
 + (id)rangeListWithTableUID:(const UUIDData_5fbc143e *)arg1;
 + (id)rangeListWithTableUID:(const UUIDData_5fbc143e *)arg1 range:(struct TSCERangeCoordinate)arg2;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)addRange:(struct TSCERangeCoordinate)arg1 coalesceFlags:(int)arg2;
 - (BOOL)containsCell:(struct TSUCellCoord)arg1;
 - (BOOL)containsRange:(struct TSCERangeCoordinate)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)enumerateRangesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1;

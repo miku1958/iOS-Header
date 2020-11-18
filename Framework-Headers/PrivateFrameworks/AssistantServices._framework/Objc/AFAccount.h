@@ -18,9 +18,11 @@
     NSString *_identifier;
     NSString *_label;
     NSString *_assistantIdentifier;
+    NSString *_loggingAssistantIdentifier;
     NSString *_speechIdentifier;
     NSString *_hostname;
     NSString *_peerAssistantIdentifier;
+    NSString *_peerLoggingAssistantIdentifier;
     NSString *_peerSpeechIdentifier;
     NSString *_peerUserAgentString;
     NSString *_peerLanguageCode;
@@ -49,9 +51,11 @@
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSDictionary *lastSyncDates; // @synthesize lastSyncDates=_lastSyncDates;
 @property (copy, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
+@property (copy, nonatomic) NSString *loggingAssistantIdentifier; // @synthesize loggingAssistantIdentifier=_loggingAssistantIdentifier;
 @property (copy, nonatomic) NSString *peerAssistantIdentifier; // @synthesize peerAssistantIdentifier=_peerAssistantIdentifier;
 @property (copy, nonatomic) NSString *peerHostname; // @synthesize peerHostname=_peerHostname;
 @property (copy, nonatomic) NSString *peerLanguageCode; // @synthesize peerLanguageCode=_peerLanguageCode;
+@property (copy, nonatomic) NSString *peerLoggingAssistantIdentifier; // @synthesize peerLoggingAssistantIdentifier=_peerLoggingAssistantIdentifier;
 @property (nonatomic) BOOL peerSiriEnabled; // @synthesize peerSiriEnabled=_peerSiriEnabled;
 @property (copy, nonatomic) NSString *peerSpeechIdentifier; // @synthesize peerSpeechIdentifier=_peerSpeechIdentifier;
 @property (copy, nonatomic) NSString *peerUserAgentString; // @synthesize peerUserAgentString=_peerUserAgentString;

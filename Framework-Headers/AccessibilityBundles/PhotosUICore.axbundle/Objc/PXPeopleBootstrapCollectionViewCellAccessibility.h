@@ -15,8 +15,9 @@
 + (id)safeCategoryTargetClassName;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
-- (id)accessibilityValue;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
+- (void)setConfirmed:(BOOL)arg1;
 
 @end
 

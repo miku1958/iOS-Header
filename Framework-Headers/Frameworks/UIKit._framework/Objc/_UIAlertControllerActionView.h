@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIAlertActionViewRepresentation_Internal-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIAlertActionViewRepresentation_Internal-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSString, UIAlertAction, UIAlertController, UIAlertControllerVisualStyle, UIImageView, UILabel, _UIAlertControllerActionViewMetrics;
 

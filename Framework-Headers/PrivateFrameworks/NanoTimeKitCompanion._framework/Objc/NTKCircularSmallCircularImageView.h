@@ -21,8 +21,7 @@
 - (void).cxx_destruct;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_updateForTemplateChange;
-- (void)_updateImageViewMulticolorAlphaIfNeeded;
-- (BOOL)_wantsPlatter;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setUsesMediumLayout:(BOOL)arg1;
 

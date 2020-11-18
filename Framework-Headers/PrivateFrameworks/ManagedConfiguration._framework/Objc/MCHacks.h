@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface MCHacks : NSObject
 {
@@ -17,7 +17,6 @@
 - (void)_applyMandatorySettingsToEffectiveUserSettings:(id)arg1;
 - (void)_applyServerSideChangesWithOldRestrictions:(id)arg1 newRestrictions:(id)arg2 oldEffectiveUserSettings:(id)arg3 newEffectiveUserSettings:(id)arg4;
 - (id)_deviceSpecificDefaultSettings;
-- (id)_permittedAutoLockNumbers;
 - (id)_permittedGracePeriodNumbers;
 - (id)_selectLargestNumberFromSortedArray:(id)arg1 equalToOrLessThanNumber:(id)arg2;
 - (void)_sendChangeNotificationsBasedOnDefaultsAdditionByDomain:(id)arg1;
@@ -25,9 +24,11 @@
 - (void)_setRequriesEncryptedBackupInLockdownWithEffectiveUserSettings:(id)arg1;
 - (BOOL)isGreenTea;
 - (BOOL)isSetupBuddyDone;
+- (id)permittedAutoLockNumbers;
 - (id)profileTrustEvaluators;
 - (id)quantizedAutoLockInSeconds:(id)arg1;
 - (id)quantizedGracePeriodInSeconds:(id)arg1;
+- (BOOL)sanitizedProfileSignerCertificateChainIsAllowedToInstallSupervisedRestrictionsOnUnsupervisedDevices:(id)arg1;
 - (BOOL)sanitizedProfileSignerCertificateChainIsAllowedToInstallUnsupportedPayload:(id)arg1;
 - (BOOL)sanitizedProfileSignerCertificateChainIsAllowedToWriteDefaults:(id)arg1;
 

@@ -6,9 +6,10 @@
 
 #import <AudioToolbox/_AURemoteParameterSynchronization-Protocol.h>
 
-@class NSArray;
+@class MIDICIProfile, NSArray;
 
 @protocol AUAudioUnitHostProtocol <_AURemoteParameterSynchronization>
+- (void)MIDICIProfileChanged:(unsigned char)arg1 channel:(unsigned char)arg2 profile:(MIDICIProfile *)arg3 enabled:(BOOL)arg4;
 - (void)propertiesChanged:(NSArray *)arg1;
 @end
 

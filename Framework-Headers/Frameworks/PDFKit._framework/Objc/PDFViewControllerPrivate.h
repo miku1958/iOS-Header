@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     int textSelectionState;
     int textSelectionHandle;
     PDFSelection *textSelection;
+    double longPressGestureStartTime;
+    BOOL didPostPDFExtensionViewAnnotationLongPress;
 }
 
 - (void).cxx_destruct;

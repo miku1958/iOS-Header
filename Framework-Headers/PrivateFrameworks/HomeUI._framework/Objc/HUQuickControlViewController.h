@@ -16,7 +16,9 @@
 
 @interface HUQuickControlViewController : UIViewController <HUQuickControlInteractiveContentContaining, HUQuickControlContentCharacteristicWriting, HUQuickControlItemHosting, HUPreloadableViewController>
 {
+    BOOL _controlsVisible;
     BOOL _userInteractionEnabled;
+    BOOL _areControlItemsRequestingToBeHidden;
     id<HUQuickControlContentCharacteristicWritingDelegate> _characteristicWritingDelegate;
     id<HUQuickControlContentHosting> _quickControlHost;
     id<HULayoutAnchorProviding> _preferredFrameLayoutGuide;
@@ -29,9 +31,11 @@
 }
 
 @property (readonly, copy, nonatomic) NSSet *affectedCharacteristics;
+@property (nonatomic) BOOL areControlItemsRequestingToBeHidden; // @synthesize areControlItemsRequestingToBeHidden=_areControlItemsRequestingToBeHidden;
 @property (weak, nonatomic) id<HUQuickControlContentCharacteristicWritingDelegate> characteristicWritingDelegate; // @synthesize characteristicWritingDelegate=_characteristicWritingDelegate;
 @property (readonly, copy, nonatomic) NSSet *controlItems; // @synthesize controlItems=_controlItems;
 @property (nonatomic) unsigned long long controlSize; // @synthesize controlSize=_controlSize;
+@property (nonatomic, getter=areControlsVisible) BOOL controlsVisible; // @synthesize controlsVisible=_controlsVisible;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUQuickControlViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -45,12 +49,12 @@
 @property (strong, nonatomic) id<HULayoutAnchorProviding> preferredFrameLayoutGuide; // @synthesize preferredFrameLayoutGuide=_preferredFrameLayoutGuide;
 @property (readonly, nonatomic) unsigned long long preferredPresentationStyle;
 @property (weak, nonatomic) id<HUQuickControlContentHosting> quickControlHost; // @synthesize quickControlHost=_quickControlHost;
-@property (readonly, nonatomic) BOOL shouldShowControlWhenUnreachable;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
 
 + (id)controlItemPredicate;
 - (void).cxx_destruct;
+- (void)_updateControlItemHiddenStateNotifyingHost:(BOOL)arg1;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (id)childQuickControlContentViewControllers;
 - (id)hu_preloadContent;
@@ -60,8 +64,7 @@
 - (id)intrinsicSizeDescriptorForControlSize:(unsigned long long)arg1;
 - (id)overrideValueForCharacteristic:(id)arg1;
 - (void)quickControlItemUpdater:(id)arg1 didUpdateResultsForControlItems:(id)arg2;
-- (void)viewDidDisappear:(BOOL)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
+- (BOOL)shouldShowContentForReachabilityState:(BOOL)arg1;
 
 @end
 

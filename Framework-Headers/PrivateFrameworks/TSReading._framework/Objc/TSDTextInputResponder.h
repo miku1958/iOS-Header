@@ -9,7 +9,7 @@
 #import <TSReading/UIResponderStandardEditActions-Protocol.h>
 #import <TSReading/UITextInput-Protocol.h>
 
-@class NSDictionary, NSObject, NSString, TSDTextInputTokenizer, TSDTextPosition, UITextPosition, UITextRange, UIView;
+@class NSDictionary, NSObject, NSString, TSDTextInputTokenizer, TSDTextPosition, UITextInputPasswordRules, UITextPosition, UITextRange, UIView;
 @protocol TSDTextInput, UITextInputDelegate, UITextInputTokenizer;
 
 @interface TSDTextInputResponder : UIResponder <UITextInput, UIResponderStandardEditActions>
@@ -51,6 +51,7 @@
 @property (nonatomic) long long keyboardType;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) float preferredEndPosition; // @synthesize preferredEndPosition=_preferredEndPosition;
 @property (nonatomic) float preferredStartPosition; // @synthesize preferredStartPosition=_preferredStartPosition;
 @property (readonly, nonatomic, getter=isResigning) BOOL resigning;

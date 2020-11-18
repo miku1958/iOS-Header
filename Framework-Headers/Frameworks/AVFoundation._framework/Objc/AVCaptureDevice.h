@@ -4,22 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVCaptureDeviceFormat, AVCaptureDeviceInternal, NSArray, NSString;
+@class AVCaptureDeviceFormat, AVCaptureDeviceInputSource, AVCaptureDeviceInternal, NSArray, NSString;
 
 @interface AVCaptureDevice : NSObject
 {
     AVCaptureDeviceInternal *_internal;
+    BOOL _suspended;
+    int _transportType;
+    NSString *_manufacturer;
+    NSArray *_linkedDevices;
+    NSArray *_inputSources;
+    AVCaptureDeviceInputSource *_activeInputSource;
 }
 
 @property (strong, nonatomic) AVCaptureDeviceFormat *activeFormat;
+@property (strong, nonatomic) AVCaptureDeviceInputSource *activeInputSource; // @synthesize activeInputSource=_activeInputSource;
 @property (nonatomic) CDStruct_1b6d18a9 activeVideoMaxFrameDuration;
 @property (nonatomic) CDStruct_1b6d18a9 activeVideoMinFrameDuration;
 @property (readonly, nonatomic, getter=isConnected) BOOL connected;
 @property (readonly, nonatomic) NSArray *formats;
+@property (readonly, nonatomic, getter=isInUseByAnotherApplication) BOOL inUseByAnotherApplication;
+@property (readonly, nonatomic) NSArray *inputSources; // @synthesize inputSources=_inputSources;
+@property (readonly, nonatomic) NSArray *linkedDevices; // @synthesize linkedDevices=_linkedDevices;
 @property (readonly, nonatomic) NSString *localizedName;
+@property (readonly, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (readonly, nonatomic) NSString *modelID;
+@property (readonly, nonatomic, getter=isSuspended) BOOL suspended; // @synthesize suspended=_suspended;
+@property (readonly, nonatomic) int transportType; // @synthesize transportType=_transportType;
 @property (readonly, nonatomic) NSString *uniqueID;
 
 + (id)_devices;
@@ -53,6 +66,10 @@
 - (void)_stopUsingDevice;
 - (long long)activeColorSpace;
 - (id)activeDepthDataFormat;
+- (CDStruct_1b6d18a9)activeDepthDataMinFrameDuration;
+- (CDStruct_1b6d18a9)activeMaxExposureDuration;
+- (CDStruct_1b6d18a9)activeMaxExposureDurationClientOverride;
+- (BOOL)appliesSessionPresetMaxIntegrationTimeOverrideToActiveFormat;
 - (long long)autoFocusRangeRestriction;
 - (BOOL)automaticallyAdjustsImageControlMode;
 - (BOOL)automaticallyAdjustsVideoHDREnabled;
@@ -82,12 +99,14 @@
 - (struct CGRect)faceRectangle;
 - (int)faceRectangleAngle;
 - (long long)flashMode;
+- (float)focalLength;
 - (long long)focusMode;
 - (struct CGPoint)focusPointOfInterest;
 - (CDStruct_d6531dd4)grayWorldDeviceWhiteBalanceGains;
 - (BOOL)hasFlash;
 - (BOOL)hasMediaType:(id)arg1;
 - (BOOL)hasTorch;
+- (int)hevcTurboModeVersion;
 - (long long)imageControlMode;
 - (id)initSubclass;
 - (BOOL)isActiveVideoMaxFrameDurationSet;
@@ -96,6 +115,8 @@
 - (BOOL)isAdjustingFocus;
 - (BOOL)isAdjustingWhiteBalance;
 - (BOOL)isAutoFocusRangeRestrictionSupported;
+- (BOOL)isAutoRedEyeReductionSupported;
+- (BOOL)isBuiltInStereoAudioCaptureSupported;
 - (BOOL)isCameraIntrinsicMatrixDeliverySupported;
 - (BOOL)isExposureModeSupported:(long long)arg1;
 - (BOOL)isExposurePointOfInterestSupported;
@@ -113,18 +134,19 @@
 - (BOOL)isHDRSupported;
 - (BOOL)isHEIFSupported;
 - (BOOL)isHEVCPreferred;
+- (BOOL)isHEVCRelaxedAverageBitRateTargetSupported;
 - (BOOL)isHEVCSupported;
 - (BOOL)isHighDynamicRangeScene;
 - (BOOL)isHighDynamicRangeSceneDetectionEnabled;
 - (BOOL)isHighDynamicRangeSceneDetectionSupported;
 - (BOOL)isImageControlModeSupported:(long long)arg1;
-- (BOOL)isInUseByAnotherApplication;
 - (BOOL)isLensStabilizationSupported;
 - (BOOL)isLockedForConfiguration;
 - (BOOL)isLockingFocusWithCustomLensPositionSupported;
 - (BOOL)isLockingWhiteBalanceWithCustomDeviceGainsSupported;
 - (BOOL)isLowLightBoostEnabled;
 - (BOOL)isLowLightBoostSupported;
+- (BOOL)isLowLightVideoCaptureEnabled;
 - (BOOL)isMachineReadableCodeDetectionSupported;
 - (BOOL)isOpen;
 - (BOOL)isRampingVideoZoom;
@@ -137,6 +159,7 @@
 - (BOOL)isTorchAvailable;
 - (BOOL)isTorchModeSupported:(long long)arg1;
 - (BOOL)isVideoHDREnabled;
+- (BOOL)isVideoHDRSuspended;
 - (BOOL)isVideoStabilizationSupported;
 - (BOOL)isWhiteBalanceModeSupported:(long long)arg1;
 - (BOOL)isWideColorSupported;
@@ -159,6 +182,8 @@
 - (void)rampToVideoZoomFactor:(double)arg1 withRate:(float)arg2;
 - (void)setActiveColorSpace:(long long)arg1;
 - (void)setActiveDepthDataFormat:(id)arg1;
+- (void)setActiveDepthDataMinFrameDuration:(CDStruct_1b6d18a9)arg1;
+- (void)setActiveMaxExposureDuration:(CDStruct_1b6d18a9)arg1;
 - (void)setAutoFocusRangeRestriction:(long long)arg1;
 - (void)setAutomaticallyAdjustsImageControlMode:(BOOL)arg1;
 - (void)setAutomaticallyAdjustsVideoHDREnabled:(BOOL)arg1;
@@ -178,6 +203,7 @@
 - (void)setFocusPointOfInterest:(struct CGPoint)arg1;
 - (void)setHighDynamicRangeSceneDetectionEnabled:(BOOL)arg1;
 - (void)setImageControlMode:(long long)arg1;
+- (void)setLowLightVideoCaptureEnabled:(BOOL)arg1;
 - (void)setProvidesStortorgetMetadata:(BOOL)arg1;
 - (void)setSmileDetectionEnabled:(BOOL)arg1;
 - (void)setSmoothAutoFocusEnabled:(BOOL)arg1;
@@ -185,6 +211,7 @@
 - (void)setTorchMode:(long long)arg1;
 - (BOOL)setTorchModeOnWithLevel:(float)arg1 error:(id *)arg2;
 - (void)setVideoHDREnabled:(BOOL)arg1;
+- (void)setVideoHDRSuspended:(BOOL)arg1;
 - (void)setVideoZoomFactor:(double)arg1;
 - (void)setWhiteBalanceMode:(long long)arg1;
 - (void)setWhiteBalanceModeLockedWithDeviceWhiteBalanceGains:(CDStruct_d6531dd4)arg1 completionHandler:(CDUnknownBlockType)arg2;

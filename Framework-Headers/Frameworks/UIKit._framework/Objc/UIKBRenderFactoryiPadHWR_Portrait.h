@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory10Key.h>
+#import <UIKitCore/UIKBRenderFactory10Key_Round.h>
 
 __attribute__((visibility("hidden")))
-@interface UIKBRenderFactoryiPadHWR_Portrait : UIKBRenderFactory10Key
+@interface UIKBRenderFactoryiPadHWR_Portrait : UIKBRenderFactory10Key_Round
 {
 }
 
+- (BOOL)_anchorControlKeys;
+- (struct CGPoint)_controlKeyOffset;
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderingContext:(id)arg3 keycapsFontName:(id)arg4;
+- (BOOL)_displaysAsControlKeyStyle:(id)arg1;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (double)controlColumnWidthFactor;
 - (double)deleteKeyFontSize;
@@ -24,8 +27,10 @@ __attribute__((visibility("hidden")))
 - (id)messagesWriteboardKeyImageName;
 - (double)moreKeyFontSize;
 - (void)setupLayoutSegments;
+- (BOOL)shouldUseRoundCornerForKey:(id)arg1;
 - (double)spaceKeyFontSize;
 - (struct CGPoint)spaceReturnKeyTextOffset;
+- (struct UIEdgeInsets)symbolFrameInsets;
 - (id)thinKeycapsFontName;
 
 @end

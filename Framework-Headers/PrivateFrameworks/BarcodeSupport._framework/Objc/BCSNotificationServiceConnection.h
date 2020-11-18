@@ -17,9 +17,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSXPCConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
 
 - (void).cxx_destruct;
-- (void)cancelNotifications;
+- (void)cancelNotificationsForCodeType:(long long)arg1;
 - (void)dealloc;
-- (void)notifyParsedBarcodeWithData:(id)arg1 codePayload:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)notifyParsedCodeWithData:(id)arg1 codePayload:(id)arg2 shouldReplacePreviousNotifications:(BOOL)arg3 withReply:(CDUnknownBlockType)arg4;
 
 @end
 

@@ -11,7 +11,8 @@
 
 @interface PXPlacesSnapshotOptions : NSObject
 {
-    BOOL _shouldSkipSyncCachedImage;
+    BOOL _shouldSkipPlaceholder;
+    BOOL _showsPointLabels;
     PKExtendedTraitCollection *_extendedTraitCollection;
     id<PXPlacesMapGeotaggableInfoDelegate> _geotaggableInformationDelegate;
     NSObject<OS_dispatch_queue> *_queue;
@@ -25,7 +26,8 @@
 @property (strong, nonatomic) PKExtendedTraitCollection *extendedTraitCollection; // @synthesize extendedTraitCollection=_extendedTraitCollection;
 @property (strong, nonatomic) id<PXPlacesMapGeotaggableInfoDelegate> geotaggableInformationDelegate; // @synthesize geotaggableInformationDelegate=_geotaggableInformationDelegate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic) BOOL shouldSkipSyncCachedImage; // @synthesize shouldSkipSyncCachedImage=_shouldSkipSyncCachedImage;
+@property (nonatomic) BOOL shouldSkipPlaceholder; // @synthesize shouldSkipPlaceholder=_shouldSkipPlaceholder;
+@property (nonatomic) BOOL showsPointLabels; // @synthesize showsPointLabels=_showsPointLabels;
 @property (nonatomic) unsigned long long snapshotMapType; // @synthesize snapshotMapType=_snapshotMapType;
 @property (nonatomic) struct CGSize viewSize; // @synthesize viewSize=_viewSize;
 @property (nonatomic) double visibleDistance; // @synthesize visibleDistance=_visibleDistance;

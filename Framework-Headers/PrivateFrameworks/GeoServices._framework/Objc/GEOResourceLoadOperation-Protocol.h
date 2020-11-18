@@ -7,7 +7,7 @@
 #import <GeoServices/NSObject-Protocol.h>
 #import <GeoServices/NSProgressReporting-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOResourceInfo, NSData, NSObject, NSString;
+@class GEOApplicationAuditToken, GEOResourceInfo, NSData, NSObject, NSURL;
 @protocol OS_dispatch_queue;
 
 @protocol GEOResourceLoadOperation <NSObject, NSProgressReporting>
@@ -16,7 +16,7 @@
 @property (nonatomic) BOOL requiresWiFi;
 
 - (void)cancel;
-- (id)initWithResource:(GEOResourceInfo *)arg1 existingPartialData:(NSData *)arg2 auditToken:(GEOApplicationAuditToken *)arg3 baseURLString:(NSString *)arg4;
+- (id)initWithResource:(GEOResourceInfo *)arg1 existingPartialData:(NSData *)arg2 auditToken:(GEOApplicationAuditToken *)arg3 baseURL:(NSURL *)arg4 proxyURL:(NSURL *)arg5;
 - (void)startWithCompletionHandler:(void (^)(NSData *, NSError *))arg1 callbackQueue:(NSObject<OS_dispatch_queue> *)arg2;
 @end
 

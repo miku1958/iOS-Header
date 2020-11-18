@@ -24,6 +24,7 @@
 - (id)debugDescription;
 - (id)description;
 - (void)setAutoDualCameraFusionEnabled:(BOOL)arg1;
+- (void)setAutoRedEyeReductionEnabled:(BOOL)arg1;
 - (void)setAutoStillImageStabilizationEnabled:(BOOL)arg1;
 - (void)setEV0PhotoDeliveryEnabled:(BOOL)arg1;
 - (void)setFlashMode:(long long)arg1;

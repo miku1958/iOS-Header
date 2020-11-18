@@ -9,6 +9,7 @@
 @class NSString, UNSNotificationRecord;
 
 @protocol UNSNotificationRepositoryDelegate <NSObject>
+- (BOOL)isApplicationForeground:(NSString *)arg1;
 - (void)willPresentNotification:(UNSNotificationRecord *)arg1 forBundleIdentifier:(NSString *)arg2 withCompletionHandler:(void (^)(unsigned long long, NSError *))arg3;
 @end
 

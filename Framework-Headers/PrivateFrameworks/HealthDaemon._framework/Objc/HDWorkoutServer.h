@@ -24,32 +24,28 @@
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_completionHandlerForReplaceWithOriginalWorkout:(id)arg1 newWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)diagnosticDescription;
 - (id)initWithParentServer:(id)arg1;
 - (void)invalidate;
 - (void)remote_activeWorkoutApplicationIdentifier:(CDUnknownBlockType)arg1;
 - (void)remote_addSamples:(id)arg1 toWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_associateSamplesWithUUIDs:(id)arg1 withWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_attachWorkoutServerWithClient:(id)arg1 serverConfiguration:(id)arg2 fitnessMachineConnectionClient:(id)arg3 fitnessMachineSessionConfiguration:(id)arg4 willReactivate:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
 - (void)remote_endFitnessMachineConnectionForFitnessMachineSessionUUID:(id)arg1 withConnectionUUID:(id)arg2;
 - (void)remote_endFitnessMachineConnectionWithUUID:(id)arg1;
+- (void)remote_finishAllWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_forbidConnectionForFitnessMachineSessionUUID:(id)arg1 withConnectionUUID:(id)arg2;
 - (void)remote_generatePauseOrResumeRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_getCurrentWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_getFirstPartyWorkoutSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_markClientReadyWithConnectionUUID:(id)arg1;
-- (void)remote_pauseAllActiveWorkoutsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_pauseWorkoutSessionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_permitConnectionForFitnessMachineSessionUUID:(id)arg1 activityType:(unsigned long long)arg2 withConnectionUUID:(id)arg3;
+- (void)remote_recoverActiveWorkoutSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)remote_registerClient:(id)arg1 withConnectionUUID:(id)arg2;
 - (void)remote_registerConnectionInitiatorClient:(id)arg1 withConnectionUUID:(id)arg2;
 - (void)remote_replaceWorkout:(id)arg1 withWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_resumeWorkoutSessionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_simulateAccept;
 - (void)remote_simulateDisconnect;
 - (void)remote_simulateTapWithFitnessMachineType:(unsigned long long)arg1;
 - (void)remote_startWatchAppWithWorkoutConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_startWorkoutSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_stopWorkoutSessionWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

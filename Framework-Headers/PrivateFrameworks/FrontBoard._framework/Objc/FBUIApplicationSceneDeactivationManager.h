@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSceneManagerInternalObserver-Protocol.h>
@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (BOOL)_areEligibleSceneSettings:(id)arg1 forScene:(id)arg2;
 - (id)_bandForSceneLevel:(double)arg1 createIfNeeded:(BOOL)arg2;
 - (id)_deactivationBandsForLevel:(double)arg1;

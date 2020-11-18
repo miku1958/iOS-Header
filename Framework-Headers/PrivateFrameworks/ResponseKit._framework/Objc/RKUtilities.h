@@ -10,6 +10,9 @@
 {
 }
 
++ (id)getDeviceModel;
++ (BOOL)isDeviceSupportedForLSTMBasedLanguageIdentification:(id)arg1;
++ (BOOL)isDeviceSupportedForPhotoSharingIntentDetection:(id)arg1;
 + (BOOL)isLanguageSupportedByNSLinguisticTaggerForLanguageIdentification:(id)arg1;
 + (BOOL)isLanguageSupportedBySmartPunctuation:(id)arg1;
 + (BOOL)isLanguageSupportedForLemmatization:(id)arg1;

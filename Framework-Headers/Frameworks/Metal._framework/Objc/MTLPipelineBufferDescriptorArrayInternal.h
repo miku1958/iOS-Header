@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 - (id)_descriptorAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
+- (BOOL)isEqual:(id)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (void)setObject:(id)arg1 atIndexedSubscript:(unsigned long long)arg2;
 

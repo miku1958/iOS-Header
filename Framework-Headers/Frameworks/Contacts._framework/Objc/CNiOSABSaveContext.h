@@ -28,6 +28,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *abPersonsByIdentifier; // @synthesize abPersonsByIdentifier=_abPersonsByIdentifier;
 @property (strong, nonatomic) NSMutableDictionary *abSourcesByIdentifier; // @synthesize abSourcesByIdentifier=_abSourcesByIdentifier;
 @property (readonly, nonatomic) void *addressBook;
+@property (readonly, nonatomic) NSMapTable *contactIndicesByInstance; // @synthesize contactIndicesByInstance=_contactIndicesByInstance;
+@property (readonly, nonatomic) NSMapTable *containerIndicesByInstance; // @synthesize containerIndicesByInstance=_containerIndicesByInstance;
+@property (readonly, nonatomic) NSMapTable *groupIndicesByInstance; // @synthesize groupIndicesByInstance=_groupIndicesByInstance;
 @property (readonly, nonatomic) CNSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
 @property (readonly, nonatomic) CNMutableSaveResponse *saveResponse; // @synthesize saveResponse=_saveResponse;
 

@@ -33,14 +33,15 @@
 @property (readonly, nonatomic) NSString *timelapseSessionPreset;
 
 - (void).cxx_destruct;
-- (id)highestQualityDeviceFormatForVideoConfiguration:(long long)arg1;
-- (id)highestQualitySessionPresetForVideoConfiguration:(long long)arg1;
+- (id)_keyForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)highestQualityDeviceFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)highestQualitySessionPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
 - (id)init;
 - (id)initWithEngine:(id)arg1 captureDevice:(id)arg2;
 - (id)panoramaDeviceFormatForConfiguration:(id)arg1;
 - (id)panoramaSessionPresetForConfiguration:(id)arg1;
-- (id)videoDeviceFormatForGraphConfiguration:(id)arg1;
-- (id)videoDevicePresetForGraphConfiguration:(id)arg1;
+- (id)videoDeviceFormatForGraphConfiguration:(id)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)videoDevicePresetForGraphConfiguration:(id)arg1 videoEncodingBehavior:(long long)arg2;
 
 @end
 

@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
-
-#import <Preferences/PSUIWirelessDataOptionsDelegate-Protocol.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
-@interface PSSystemPolicyForApp : NSObject <PSUIWirelessDataOptionsDelegate>
+@interface PSSystemPolicyForApp : NSObject
 {
     unsigned long long _policyOptions;
     BOOL _forcePolicyOptions;
@@ -18,10 +16,6 @@
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 + (BOOL)isServiceRestricted:(id)arg1;
 - (void).cxx_destruct;
@@ -29,9 +23,7 @@
 - (BOOL)_isLocationServicesRestricted;
 - (BOOL)_isWirelessDataRestricted;
 - (id)_privacyAccessForService:(struct __CFString *)arg1;
-- (id)_sectionInfo;
 - (BOOL)_supportsBackgroundAppRefresh;
-- (id)appCellularDataEnabledForSpecifier:(id)arg1;
 - (id)assistantAndSearchSpecifiers;
 - (id)authLevelStringForStatus:(int)arg1;
 - (id)backgroundAppRefreshSpecifier;
@@ -53,7 +45,6 @@
 - (id)privacyAccessForSpecifier:(id)arg1;
 - (id)privacySpecifierForService:(struct __CFString *)arg1;
 - (id)privacySpecifiers;
-- (void)setAppCellularDataEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setBackgroundRefreshEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setPrivacyAccess:(id)arg1 forSpecifier:(id)arg2;
 - (id)specifiers;

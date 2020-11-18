@@ -12,6 +12,8 @@
 
 @interface CRBasicCard : NSObject <CRCard>
 {
+    NSString *_cardIdentifier;
+    unsigned long long cardFormat;
     NSArray *_cardSections;
     NSSet *_interactions;
     NSArray *_dismissalCommands;
@@ -19,6 +21,8 @@
 
 @property (readonly, nonatomic) BOOL asynchronous;
 @property (readonly, nonatomic) SFCard *backingCard;
+@property (readonly, nonatomic) unsigned long long cardFormat; // @synthesize cardFormat;
+@property (readonly, copy, nonatomic) NSString *cardIdentifier; // @synthesize cardIdentifier=_cardIdentifier;
 @property (strong, nonatomic) NSArray *cardSections; // @synthesize cardSections=_cardSections;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -32,6 +36,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)loadCardWithCompletion:(CDUnknownBlockType)arg1;
 

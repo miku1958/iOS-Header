@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIZoomEdgeFeedbackGenerator.h>
+#import <UIKitCore/_UIZoomEdgeFeedbackGenerator.h>
 
 @interface _UIFeedbackZoomEdgeBehavior : _UIZoomEdgeFeedbackGenerator
 {

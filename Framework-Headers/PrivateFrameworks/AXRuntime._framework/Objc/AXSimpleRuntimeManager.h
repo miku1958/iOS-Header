@@ -9,6 +9,7 @@
 @interface AXSimpleRuntimeManager : NSObject
 {
     BOOL _systemWideServer;
+    BOOL _started;
     CDUnknownBlockType _parameterizedAttributeCallback;
     CDUnknownBlockType _attributeCallback;
     CDUnknownBlockType _setAttributeCallback;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) CDUnknownBlockType parameterizedAttributeCallback; // @synthesize parameterizedAttributeCallback=_parameterizedAttributeCallback;
 @property (copy, nonatomic) CDUnknownBlockType performActionCallback; // @synthesize performActionCallback=_performActionCallback;
 @property (copy, nonatomic) CDUnknownBlockType setAttributeCallback; // @synthesize setAttributeCallback=_setAttributeCallback;
+@property (nonatomic) BOOL started; // @synthesize started=_started;
 @property (nonatomic) BOOL systemWideServer; // @synthesize systemWideServer=_systemWideServer;
 
 + (id)sharedManager;

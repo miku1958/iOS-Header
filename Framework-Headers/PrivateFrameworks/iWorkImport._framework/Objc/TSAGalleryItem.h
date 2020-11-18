@@ -11,7 +11,7 @@
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 #import <iWorkImport/TSWPStorageParent-Protocol.h>
 
-@class NSArray, NSObject, NSString, TSAGalleryInfo, TSDImageAdjustments, TSDImageDataHelper, TSDInfoGeometry, TSPData, TSSPropertySetChangeDetails, TSWPStorage;
+@class NSArray, NSObject, NSString, TSDImageAdjustments, TSDImageDataHelper, TSDInfoGeometry, TSPData, TSSPropertySetChangeDetails, TSWPStorage;
 @protocol OS_dispatch_queue, TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_naturalSizeQueue;
     TSSPropertySetChangeDetails *_changes;
     NSObject<TSDContainerInfo> *_parentInfo;
-    TSAGalleryInfo *_parentGalleryInfo;
 }
 
 @property (copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
@@ -59,19 +58,20 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSDImageAdjustments *imageAdjustments; // @synthesize imageAdjustments=_imageAdjustments;
 @property (strong, nonatomic) TSPData *imageData; // @synthesize imageData=_imageData;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
-@property (readonly, nonatomic) BOOL isUserModifiable;
+@property (readonly, nonatomic) unsigned long long itemIndex;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (readonly, nonatomic) struct CGSize naturalSize;
 @property (readonly, nonatomic) BOOL needsDownload;
 @property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (weak, nonatomic) TSAGalleryInfo *parentGalleryInfo; // @synthesize parentGalleryInfo=_parentGalleryInfo;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
+@property (readonly, nonatomic) BOOL preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments;
 @property (nonatomic) double scale;
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (readonly, nonatomic) BOOL textIsLinked;
 @property (readonly, nonatomic) BOOL textIsVertical;
 @property (strong, nonatomic) TSPData *thumbnailAdjustedImageData; // @synthesize thumbnailAdjustedImageData=_thumbnailAdjustedImageData;
@@ -80,6 +80,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)needsObjectUUID;
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
+- (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (void)beginCollectingChanges;
 - (id)childEnumerator;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;

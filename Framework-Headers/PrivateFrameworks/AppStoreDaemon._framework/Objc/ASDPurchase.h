@@ -20,6 +20,7 @@
     BOOL _isBackgroundUpdate;
     BOOL _isRedownload;
     BOOL _shouldCancelForInstalledBundleItems;
+    BOOL _isCompatibilityUpdate;
     BOOL _isRefresh;
     BOOL _sendGUID;
     NSString *_bundleID;
@@ -36,6 +37,7 @@
     NSString *_referrerURL;
     long long _purchaseID;
     NSArray *_requiredCapabilities;
+    NSString *_preflightURLString;
     NSString *_clientID;
     NSNumber *_ownerDSID;
     NSNumber *_purchaserDSID;
@@ -54,11 +56,13 @@
 @property (copy, nonatomic) NSArray *gratisIdentifiers; // @synthesize gratisIdentifiers=_gratisIdentifiers;
 @property (nonatomic) BOOL installUniversalVariant; // @synthesize installUniversalVariant=_installUniversalVariant;
 @property (nonatomic) BOOL isBackgroundUpdate; // @synthesize isBackgroundUpdate=_isBackgroundUpdate;
+@property (nonatomic) BOOL isCompatibilityUpdate; // @synthesize isCompatibilityUpdate=_isCompatibilityUpdate;
 @property (nonatomic) BOOL isRedownload; // @synthesize isRedownload=_isRedownload;
 @property (nonatomic) BOOL isRefresh; // @synthesize isRefresh=_isRefresh;
 @property (copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
 @property (copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
 @property (copy, nonatomic) NSNumber *ownerDSID; // @synthesize ownerDSID=_ownerDSID;
+@property (copy) NSString *preflightURLString; // @synthesize preflightURLString=_preflightURLString;
 @property long long purchaseID; // @synthesize purchaseID=_purchaseID;
 @property (copy, nonatomic) NSNumber *purchaserDSID; // @synthesize purchaserDSID=_purchaserDSID;
 @property (copy, nonatomic) NSString *referrerName; // @synthesize referrerName=_referrerName;

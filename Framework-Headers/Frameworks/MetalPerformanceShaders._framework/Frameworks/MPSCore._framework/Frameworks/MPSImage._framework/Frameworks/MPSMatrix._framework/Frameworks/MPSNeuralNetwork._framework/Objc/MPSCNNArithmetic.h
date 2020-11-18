@@ -36,6 +36,7 @@
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 arithmeticType:(int)arg2;
+- (unsigned long long)maxBatchSize;
 - (id)privateResultStateForPrimaryImage:(id)arg1 secondaryImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4 commandBuffer:(id)arg5 isTemporary:(BOOL)arg6;
 - (id)resultStateForPrimaryImage:(id)arg1 secondaryImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 - (void)setPrimaryStrideInPixelsX:(unsigned long long)arg1;

@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface AVVCMetricsManager : NSObject
 {
     unsigned long long _voiceTriggerStartHostTime;
     unsigned long long _callToStartRecordHostTime;
     NSMutableDictionary *_publicMetrics;
+    NSMutableDictionary *_avvcProfilingInfoDictionary;
 }
 
+@property (strong) NSMutableDictionary *avvcProfilingInfoDictionary; // @synthesize avvcProfilingInfoDictionary=_avvcProfilingInfoDictionary;
 @property (nonatomic) unsigned long long callToStartRecordHostTime; // @synthesize callToStartRecordHostTime=_callToStartRecordHostTime;
 @property (strong) NSMutableDictionary *publicMetrics; // @synthesize publicMetrics=_publicMetrics;
 @property (nonatomic) unsigned long long voiceTriggerStartHostTime; // @synthesize voiceTriggerStartHostTime=_voiceTriggerStartHostTime;
@@ -26,12 +29,16 @@
 - (void).cxx_destruct;
 - (int)audioIssueDetectorAnalyzeBuffer:(struct AudioBufferList)arg1 numFrames:(unsigned int)arg2 timeStamp:(const struct AudioTimeStamp *)arg3;
 - (void)dealloc;
+- (id)getStringDate:(id)arg1;
 - (id)init;
+- (void)logProfileMetrics:(id)arg1;
 - (void)logRecordAudioFormat:(struct CAStreamBasicDescription)arg1;
 - (void)logRecordRoute:(id)arg1 andPlaybackRoute:(id)arg2;
 - (BOOL)measureElapseTimeForMetric:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (int)resetAudioIssueDetector;
+- (void)resetProfileMetrics;
 - (id)retrieveMetrics;
+- (id)retrieveProfileMetrics;
 - (int)setAudioIssueDetectorFormat:(struct CAStreamBasicDescription)arg1 numFrames:(unsigned int)arg2;
 
 @end

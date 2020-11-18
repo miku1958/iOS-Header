@@ -14,7 +14,6 @@
 
 @interface _CPDidGoToSiteFeedback : PBCodable <_CPProcessableFeedback, _CPDidGoToSiteFeedback, NSSecureCoding>
 {
-    CDStruct_b5306035 _has;
     unsigned long long _timestamp;
     NSString *_input;
 }
@@ -25,8 +24,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasInput;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *input; // @synthesize input=_input;
@@ -34,8 +31,8 @@
 @property (readonly, nonatomic) BOOL requiresQueryId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 
 - (void).cxx_destruct;
 - (id)init;

@@ -6,7 +6,7 @@
 
 #import <SearchUI/NSObject-Protocol.h>
 
-@class NSString, SFActionItem, SFCard, SFImage, SFRichText;
+@class NSString, SFActionItem, SFCard, SFImage, SFRichText, SFSearchResult;
 
 @protocol SearchUIAuxilliaryFieldProtocol <NSObject>
 
@@ -16,6 +16,7 @@
 @property (readonly) NSString *auxiliaryMiddleText;
 @property (readonly) NSString *auxiliaryTopText;
 @property (readonly) SFCard *card;
+@property (readonly) SFSearchResult *identifyingResult;
 @property (readonly) SFImage *thumbnail;
 @property (readonly) SFRichText *title;
 

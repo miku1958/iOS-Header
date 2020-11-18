@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -28,13 +28,15 @@
 - (id)_queue_region:(id)arg1;
 - (id)_queue_regions;
 - (BOOL)_queue_supportedForOSVersion:(id)arg1 inRegion:(id)arg2 deviceClass:(id)arg3 platform:(id)arg4;
-- (id)betaTransitPaymentNetworksForRegion:(id)arg1;
+- (id)betaPaymentNetworkVersionsForRegion:(id)arg1;
+- (id)betaPaymentNetworksForRegion:(id)arg1;
 - (id)brokerURLForRegion:(id)arg1;
+- (BOOL)browseProvisioningBankAppsEnabledForRegion:(id)arg1;
+- (BOOL)browseProvisioningBankAppsManualEntryDisabledForRegion:(id)arg1;
 - (BOOL)buddyManualProvisioningEnabledForRegion:(id)arg1;
 - (BOOL)buddyProvisioningEnabledForRegion:(id)arg1;
 - (BOOL)cameraFirstProvisioningEnabledForRegion:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (BOOL)findWithoutNumberEnabledForRegion:(id)arg1;
 - (id)heroImageManifestURLForRegion:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

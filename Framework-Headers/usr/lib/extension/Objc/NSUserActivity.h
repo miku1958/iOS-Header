@@ -39,11 +39,13 @@
 @property (readonly, copy) NSString *activityType; // @dynamic activityType;
 @property (weak) id<NSUserActivityDelegate> delegate; // @dynamic delegate;
 @property (getter=isEligibleForHandoff) BOOL eligibleForHandoff;
+@property (getter=isEligibleForPrediction) BOOL eligibleForPrediction;
 @property (getter=isEligibleForPublicIndexing) BOOL eligibleForPublicIndexing;
 @property (getter=isEligibleForSearch) BOOL eligibleForSearch;
 @property (copy) NSDate *expirationDate;
 @property (copy) NSSet *keywords;
 @property BOOL needsSave;
+@property (copy) NSString *persistentIdentifier; // @dynamic persistentIdentifier;
 @property (copy) NSURL *referrerURL; // @dynamic referrerURL;
 @property (copy) NSSet *requiredUserInfoKeys;
 @property BOOL supportsContinuationStreams; // @dynamic supportsContinuationStreams;
@@ -59,6 +61,8 @@
 + (BOOL)_supportsUserActivityAppLinks;
 + (void)_unregisterUserActivityType:(id)arg1 dynamicActivityType:(id)arg2;
 + (id)_userFacingErrorForLaunchServicesError:(id)arg1 userInfo:(id)arg2;
++ (void)deleteAllSavedUserActivitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)deleteSavedUserActivitiesWithPersistentIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (void)_addKeywordsFromArray:(id)arg1;
 - (BOOL)_createUserActivityDataWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

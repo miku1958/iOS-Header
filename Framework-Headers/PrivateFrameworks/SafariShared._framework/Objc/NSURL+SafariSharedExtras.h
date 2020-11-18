@@ -8,8 +8,10 @@
 
 @interface NSURL (SafariSharedExtras)
 
+@property (readonly, nonatomic) BOOL safari_isBlobURL;
 @property (readonly, nonatomic) BOOL safari_isEligibleToShowNotSecureWarning;
 @property (readonly, nonatomic) BOOL safari_isLocalOrPrivateNetworkURL;
+@property (readonly, nonatomic) BOOL safari_isSafariResourceURL;
 @property (readonly, nonatomic) BOOL safari_isTopLevelURL;
 @property (readonly, nonatomic) BOOL safari_isURLTooLongToDisplay;
 
@@ -17,17 +19,11 @@
 + (id)safari_URLWithDataAsString:(id)arg1 relativeToURL:(id)arg2;
 + (id)safari_URLWithUserTypedString:(id)arg1;
 + (void)safari_enumeratePossibleURLsForUserTypedString:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (id)_safari_URLByReplacingComponent:(long long)arg1 includingSeparators:(BOOL)arg2 withString:(id)arg3;
-- (id)_safari_URLByReplacingComponent:(long long)arg1 withString:(id)arg2;
-- (id)safari_URLByDeletingPort;
-- (id)safari_URLByDeletingScheme;
 - (id)safari_URLByDeletingUserAndPassword;
 - (id)safari_URLByRemovingUserAndPath;
 - (id)safari_URLByReplacingHostWithString:(id)arg1;
-- (id)safari_URLByReplacingQueryWithString:(id)arg1;
 - (id)safari_URLByReplacingSchemeWithString:(id)arg1;
 - (id)safari_URLWithUniqueFilename;
-- (BOOL)safari_canBeSafelyRedirectedToURL:(id)arg1;
 - (id)safari_canonicalURL;
 - (id)safari_displayNameWithTitle:(id)arg1;
 - (BOOL)safari_hasCharactersBeyondPath;
@@ -37,11 +33,14 @@
 - (BOOL)safari_isDataURL;
 - (BOOL)safari_isHTTPFamilyURL;
 - (BOOL)safari_isHTTPURL;
+- (BOOL)safari_isWellKnownChangePasswordURL;
 - (id)safari_originalDataAsString;
 - (id)safari_path;
+- (BOOL)safari_shouldBeAssociatedWithFaviconFromRedirectedURL:(id)arg1;
 - (id)safari_userVisibleHost;
 - (id)safari_userVisibleHostWithoutWWWSubdomain;
 - (id)safari_userVisibleString;
 - (id)safari_userVisibleStringConsideringLongURLs;
+- (id)safari_wellKnownChangePasswordURL;
 @end
 

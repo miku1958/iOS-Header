@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVOutputDeviceInternal, NSData, NSString;
 
@@ -37,6 +37,8 @@
 - (BOOL)canBeGroupLeader;
 - (BOOL)canBeGrouped;
 - (BOOL)canCommunicateWithAllLogicalDeviceMembers;
+- (BOOL)canFetchMediaDataFromSender;
+- (BOOL)canPlayEncryptedProgressiveDownloadAssets;
 - (BOOL)canRelayCommunicationChannel;
 - (BOOL)canSetVolume;
 - (void)configureUsingBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -64,6 +66,7 @@
 - (void)outputDeviceImplDidChangeCanChangeVolume:(id)arg1;
 - (void)outputDeviceImplDidChangeVolume:(id)arg1;
 - (BOOL)participatesInGroupPlayback;
+- (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (BOOL)requiresAuthorization;
 - (void)setSecondDisplayEnabled:(BOOL)arg1;
 - (void)setVolume:(float)arg1;

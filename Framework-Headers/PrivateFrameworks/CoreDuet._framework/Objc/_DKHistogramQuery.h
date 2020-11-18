@@ -8,42 +8,49 @@
 
 #import <CoreDuet/_DKExecutableQuery-Protocol.h>
 
-@class NSDateInterval, NSPredicate, _DKEventStream;
+@class NSArray, NSDateInterval, NSPredicate, NSString, _DKEventStream;
 
 @interface _DKHistogramQuery : _DKQuery <_DKExecutableQuery>
 {
-    BOOL _isCategory;
     BOOL _includeLocalResults;
     BOOL _includeRemoteResults;
     _DKEventStream *_stream;
     NSDateInterval *_interval;
     CDUnknownBlockType _histogramHandler;
+    NSString *_customIdentifier;
     unsigned long long _minimumOccurrencesForInclusion;
     NSPredicate *_predicate;
+    NSArray *_valueKeyPaths;
 }
 
+@property (strong, nonatomic) NSString *customIdentifier; // @synthesize customIdentifier=_customIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType histogramHandler; // @synthesize histogramHandler=_histogramHandler;
 @property (nonatomic) BOOL includeLocalResults; // @synthesize includeLocalResults=_includeLocalResults;
 @property (nonatomic) BOOL includeRemoteResults; // @synthesize includeRemoteResults=_includeRemoteResults;
 @property (strong, nonatomic) NSDateInterval *interval; // @synthesize interval=_interval;
-@property (nonatomic) BOOL isCategory; // @synthesize isCategory=_isCategory;
 @property (nonatomic) unsigned long long minimumOccurrencesForInclusion; // @synthesize minimumOccurrencesForInclusion=_minimumOccurrencesForInclusion;
 @property (strong, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (strong, nonatomic) _DKEventStream *stream; // @synthesize stream=_stream;
+@property (strong, nonatomic) NSArray *valueKeyPaths; // @synthesize valueKeyPaths=_valueKeyPaths;
 
++ (id)histogramQueryForPersistedHistogramsForStream:(id)arg1 withCustomIdentifier:(id)arg2;
 + (id)histogramQueryForStream:(id)arg1 interval:(id)arg2;
++ (id)histogramQueryForStream:(id)arg1 interval:(id)arg2 predicate:(id)arg3 valueKeyPaths:(id)arg4;
 + (id)histogramQueryForStream:(id)arg1 interval:(id)arg2 withPredicate:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_constructFetchRequestPredicate;
+- (id)_defaultValueKeyPaths;
 - (id)_fetchRemoteResultsWithStorage:(id)arg1 error:(id *)arg2;
 - (id)_histogramFromEvents:(id)arg1;
 - (id)_histogramFromManagedObjects:(id)arg1;
+- (id)_histogramFromValueCounts:(id)arg1;
 - (id)_valueForEvent:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)executeUsingCoreDataStorage:(id)arg1 error:(id *)arg2;
 - (id)handleResults:(id)arg1 error:(id)arg2;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

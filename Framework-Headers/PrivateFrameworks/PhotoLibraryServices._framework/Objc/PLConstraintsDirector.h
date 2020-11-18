@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <PhotoLibraryServices/PLForegroundObserver-Protocol.h>
+#import <PhotoLibraryServices/PLForegroundMonitorDelegate-Protocol.h>
 
-@class NSString;
-@protocol OS_dispatch_source;
+@class NSString, NSURL, PLForegroundMonitor;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface PLConstraintsDirector : NSObject <PLForegroundObserver>
+@interface PLConstraintsDirector : NSObject <PLForegroundMonitorDelegate>
 {
     BOOL _didTransitionToOpportunisticDisallowed;
     BOOL _photosAppInForeground;
+    BOOL _cameraAppInForeground;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
     NSObject<OS_dispatch_source> *_bonusTimer;
+    NSURL *_photoLibraryURL;
+    PLForegroundMonitor *_foregroundMonitor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,14 +28,17 @@
 @property (readonly) Class superclass;
 
 + (BOOL)_photoanalysisdIsRunning;
++ (BOOL)constraintsAllowSchedulingUserInitiatedAnalysisForAssets;
 + (id)sharedConstraintsDirector;
 - (void)_addBonusTime;
 - (void)_disableAutoFGAndUserFGConstraints;
 - (void)dealloc;
-- (void)foregroundMonitor:(id)arg1 changedStateToForeground:(BOOL)arg2 forBundleIdentifier:(id)arg3 context:(id)arg4;
+- (void)foregroundMonitor:(id)arg1 changedStateToForeground:(BOOL)arg2 forBundleIdentifier:(id)arg3;
 - (void)informCameraAppCameraViewControllerVisibilityChanged:(BOOL)arg1;
+- (void)informCameraAppForegroundState:(BOOL)arg1;
 - (void)informOpportunisticTasksAllowed:(BOOL)arg1;
-- (id)init;
+- (id)initWithPhotoLibraryURL:(id)arg1;
+- (BOOL)shouldScheduleUserInitiatedAnalysisForAssets;
 
 @end
 

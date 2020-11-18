@@ -6,20 +6,18 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <HomeUI/HUAlarmTonePickerDelegate-Protocol.h>
 #import <HomeUI/UITableViewDataSource-Protocol.h>
 #import <HomeUI/UITableViewDelegate-Protocol.h>
 
-@class HUAlarmEditableTextCell, HUAlarmTonePickerViewController, MTMutableAlarm, NSString, UITableView;
+@class HUAlarmEditableTextCell, MTMutableAlarm, NSString, UITableView;
 @protocol HUAlarmEditSettingViewControllerDelegate;
 
-@interface HUAlarmEditSettingViewController : UIViewController <HUAlarmTonePickerDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface HUAlarmEditSettingViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 {
     id<HUAlarmEditSettingViewControllerDelegate> _delegate;
     NSString *_loggedInAppleMusicAccountDSID;
     UITableView *_tableView;
     HUAlarmEditableTextCell *_editingCell;
-    HUAlarmTonePickerViewController *_tonePickerViewController;
     long long _setting;
     unsigned long long _firstWeekday;
     unsigned long long _repeatSchedule;
@@ -38,15 +36,12 @@
 @property (nonatomic) long long setting; // @synthesize setting=_setting;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
-@property (strong, nonatomic) HUAlarmTonePickerViewController *tonePickerViewController; // @synthesize tonePickerViewController=_tonePickerViewController;
 
 - (void).cxx_destruct;
 - (void)_commonInitialization;
 - (void)_dismiss;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
-- (void)addDefaultSongsIfNeeded;
-- (void)dealloc;
 - (id)initWithAlarm:(id)arg1 setting:(long long)arg2 loggedInAppleMusicAccountDSID:(id)arg3;
 - (void)loadView;
 - (unsigned int)maskForRow:(long long)arg1;
@@ -54,8 +49,6 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (void)textValueChanged:(id)arg1;
-- (void)tonePickerViewController:(id)arg1 selectedMediaItemWithIdentifier:(id)arg2;
-- (void)tonePickerViewController:(id)arg1 selectedToneWithIdentifier:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidUnload;
 - (void)viewWillAppear:(BOOL)arg1;

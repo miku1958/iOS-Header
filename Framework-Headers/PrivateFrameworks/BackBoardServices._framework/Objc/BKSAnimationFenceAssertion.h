@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/BSInvalidatable-Protocol.h>
 #import <BackBoardServices/BSXPCCoding-Protocol.h>
@@ -27,6 +27,7 @@
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (id)newSystemFenceAssertionForTriggerPort:(unsigned int)arg1;
+- (void).cxx_destruct;
 - (id)_initWithFenceName:(unsigned long long)arg1 assertionName:(unsigned long long)arg2 preFence:(id)arg3 shouldTrace:(BOOL)arg4;
 - (void)dealloc;
 - (void)encodeWithXPCDictionary:(id)arg1;

@@ -4,10 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, SFImage, SearchUIWatchListCardRowModel;
+@class SearchUIWatchListCardRowModel;
 
 @protocol SearchUIWatchListCardRowModelDelegate
-- (void)didUpdateRowModel:(SearchUIWatchListCardRowModel *)arg1 withText:(NSString *)arg2 buttonState:(long long)arg3;
-- (void)didUpdateRowModel:(SearchUIWatchListCardRowModel *)arg1 withText:(NSString *)arg2 buttonState:(long long)arg3 image:(SFImage *)arg4;
+- (void)didUpdateRowModel:(SearchUIWatchListCardRowModel *)arg1 animate:(BOOL)arg2;
 @end
 

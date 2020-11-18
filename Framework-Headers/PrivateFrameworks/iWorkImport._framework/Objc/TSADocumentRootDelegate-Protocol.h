@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) NSString *defaultDraftName;
 @property (readonly, nonatomic) NSString *documentCachePath;
 @property (readonly, nonatomic) TSADocumentInfo *documentInfo;
+@property (readonly, nonatomic) BOOL isClosedOrClosing;
 @property (readonly, nonatomic) NSString *name;
 
 

@@ -9,11 +9,10 @@
 #import <ModelIO/MDLJointAnimation-Protocol.h>
 #import <ModelIO/NSCopying-Protocol.h>
 
-@class MDLAnimatedQuaternionArray, MDLAnimatedVector3Array, NSArray, NSString;
+@class MDLAnimatedQuaternionArray, MDLAnimatedVector3Array, NSArray;
 
 @interface MDLPackedJointAnimation : MDLObject <NSCopying, MDLJointAnimation>
 {
-    NSString *_name;
     NSArray *_jointPaths;
     MDLAnimatedVector3Array *_translations;
     MDLAnimatedQuaternionArray *_rotations;
@@ -28,8 +27,6 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithName:(id)arg1 jointPaths:(id)arg2;
-- (id)name;
-- (void)setName:(id)arg1;
 
 @end
 

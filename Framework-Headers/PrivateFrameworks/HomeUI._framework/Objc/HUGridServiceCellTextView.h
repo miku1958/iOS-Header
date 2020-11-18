@@ -11,6 +11,7 @@
 @interface HUGridServiceCellTextView : UIView
 {
     BOOL _textColorFollowsTintColor;
+    BOOL _shouldShowRoomName;
     double _lineHeight;
     HFServiceNameComponents *_serviceNameComponents;
     NSString *_descriptionText;
@@ -27,12 +28,14 @@
 @property (nonatomic) double lineHeight; // @synthesize lineHeight=_lineHeight;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) HFServiceNameComponents *serviceNameComponents; // @synthesize serviceNameComponents=_serviceNameComponents;
+@property (nonatomic) BOOL shouldShowRoomName; // @synthesize shouldShowRoomName=_shouldShowRoomName;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (nonatomic) BOOL textColorFollowsTintColor; // @synthesize textColorFollowsTintColor=_textColorFollowsTintColor;
 @property (readonly, nonatomic) double topToFirstBaselineDistance;
 
 + (double)minimumDescriptionScaleFactor;
 - (void).cxx_destruct;
+- (id)_combinedAttributedString;
 - (id)_commonTextAttributesWithLineBreakMode:(long long)arg1;
 - (void)_drawCombinedLabel;
 - (void)_drawDescriptionLabel;
@@ -42,6 +45,7 @@
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 

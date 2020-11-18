@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOActiveTileGroupMigrationTask-Protocol.h>
 
-@class GEOActiveTileGroup, GEOReportedProgress, GEOSearchAttributionManifest, GEOSearchAttributionManifestVersionMigrator, NSProgress, NSString, NSURLSession, NSURLSessionDataTask;
+@class GEOActiveTileGroup, GEOReportedProgress, GEOSearchAttributionManifest, GEOSearchAttributionManifestVersionMigrator, NSProgress, NSString, NSURL, NSURLSession, NSURLSessionDataTask;
 @protocol NSObject, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     GEOSearchAttributionManifestVersionMigrator *_migrator;
     NSObject<OS_dispatch_queue> *_workQueue;
     BOOL _running;
-    NSString *_newSearchAttributionManifestURL;
+    NSURL *_newSearchAttributionManifestURL;
     GEOActiveTileGroup *_oldTileGroup;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_callbackQueue;

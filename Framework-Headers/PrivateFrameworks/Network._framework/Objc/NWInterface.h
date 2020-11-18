@@ -18,6 +18,7 @@
     NSObject<OS_nw_interface> *_internalInterface;
 }
 
+@property (readonly, nonatomic, getter=isConstrained) BOOL constrained;
 @property (readonly, nonatomic) NWInterface *delegateInterface;
 @property (readonly, nonatomic, getter=isExpensive) BOOL expensive;
 @property (readonly, nonatomic) unsigned long long generation;
@@ -43,7 +44,10 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInterface:(id)arg1;
 - (id)initWithInterfaceIndex:(unsigned long long)arg1;
+- (id)initWithInterfaceIndex:(unsigned long long)arg1 interfaceName:(id)arg2;
 - (id)initWithInterfaceName:(id)arg1;
+- (id)ipv4Broadcast;
+- (id)ipv4Netmask;
 - (BOOL)isDeepEqual:(id)arg1;
 - (BOOL)isShallowEqual:(id)arg1;
 

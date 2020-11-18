@@ -12,7 +12,7 @@
 #import <HomeKitDaemon/NSURLSessionDownloadDelegate-Protocol.h>
 #import <HomeKitDaemon/SZExtractorDelegate-Protocol.h>
 
-@class HMSoftwareUpdateDocumentation, HMSoftwareUpdateDocumentationMetadata, NSInputStream, NSObject, NSString, NSURL, NSURLSession, NSUUID, SZExtractor;
+@class HMSoftwareUpdateDocumentation, HMSoftwareUpdateDocumentationMetadata, NSArray, NSInputStream, NSObject, NSString, NSURL, NSURLSession, NSUUID, SZExtractor;
 @protocol OS_dispatch_queue;
 
 @interface HMDSoftwareUpdateDocumentationAsset : HMFObject <HMFLogging, HMFObject, NSURLSessionDownloadDelegate, SZExtractorDelegate, NSSecureCoding>
@@ -31,6 +31,7 @@
 @property (readonly, copy) NSURL *URL;
 @property (strong, nonatomic) NSURLSession *URLSession; // @synthesize URLSession=_URLSession;
 @property (strong, nonatomic) NSInputStream *archivedFileStream; // @synthesize archivedFileStream=_archivedFileStream;
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -39,8 +40,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly) HMSoftwareUpdateDocumentationMetadata *metadata; // @synthesize metadata=_metadata;
+@property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
 @property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly, copy) NSString *shortDescription;
 @property BOOL shouldAutomaticallyCache; // @synthesize shouldAutomaticallyCache=_shouldAutomaticallyCache;
 @property (readonly) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
@@ -70,7 +73,6 @@
 - (BOOL)saveWithError:(id *)arg1;
 - (void)setExtractionProgress:(double)arg1;
 - (void)setState:(long long)arg1;
-- (id)shortDescription;
 - (void)startCaching;
 - (void)startDownload;
 - (void)startUnarchive;

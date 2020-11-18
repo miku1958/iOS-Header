@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewCell.h>
+#import <UIKitCore/UITableViewCell.h>
 
-#import <UIKit/UIPrinterAccessoryViewDelegate-Protocol.h>
+#import <UIKitCore/UIPrinterAccessoryViewDelegate-Protocol.h>
 
 @class NSString, PKPrinter, UIGestureRecognizer, UIPrinterAccessoryView;
 

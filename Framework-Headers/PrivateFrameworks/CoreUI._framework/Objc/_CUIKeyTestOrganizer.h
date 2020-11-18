@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
 __attribute__((visibility("hidden")))
 @interface _CUIKeyTestOrganizer : NSObject
 {
-    struct _renditionkeytoken originalKey[17];
+    struct _renditionkeytoken originalKey[18];
     NSArray *orderedNonZeroFlexibleAttributes;
     unsigned long long flexAttributesCount;
-    struct _renditionkeytoken testKey[17];
+    struct _renditionkeytoken testKey[18];
     unsigned long long chooseCount;
     unsigned long long subchooseCount;
 }

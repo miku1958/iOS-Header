@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_accessibilityObscuredScreenAllowedViews;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setModalGroupIndex:(unsigned long long)arg1;
 - (void)setPresentationState:(int)arg1 animated:(BOOL)arg2;

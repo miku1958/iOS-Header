@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPresentationController.h>
+#import <UIKitCore/UIPresentationController.h>
 
-#import <UIKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
-#import <UIKit/UIForcePresentationController-Protocol.h>
+#import <UIKitCore/UIAdaptivePresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/UIForcePresentationController-Protocol.h>
 
 @class NSLayoutConstraint, NSString, UIAlertVisualStyleUpdatableConstraints, UIGestureRecognizer, UIView, _UIKeyboardLayoutAlignmentView, _UIStatesFeedbackGenerator;
 @protocol _UIForcePresentationControllerDelegate;

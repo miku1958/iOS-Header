@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <UIFoundation/NSCoding-Protocol.h>
 #import <UIFoundation/NSCopying-Protocol.h>
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 
-@interface NSTextBlock : NSObject <NSCoding, NSCopying>
+@interface NSTextBlock : NSObject <NSSecureCoding, NSCoding, NSCopying>
 {
     void *_propVals;
     unsigned long long _propMask;
@@ -21,6 +22,7 @@
 }
 
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (id)_attributeDescription;
 - (void)_createFloatStorage;
 - (void)_destroyFloatStorage;

@@ -20,11 +20,9 @@ __attribute__((visibility("hidden")))
     TSWPChangeSession *_session;
     NSDate *_date;
     NSString *_textAttributeUUIDString;
-    BOOL _changeWasAddedToDocumentRoot;
 }
 
 @property (readonly, nonatomic) TSUColor *changeAdornmentsColor;
-@property (nonatomic) BOOL changeWasAddedToDocumentRoot; // @synthesize changeWasAddedToDocumentRoot=_changeWasAddedToDocumentRoot;
 @property (copy, nonatomic) NSDate *date;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

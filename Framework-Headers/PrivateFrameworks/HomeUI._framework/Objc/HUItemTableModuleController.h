@@ -9,15 +9,18 @@
 #import <HomeUI/HUItemTableTextEditingController-Protocol.h>
 
 @class HFItemModule, NSString;
+@protocol HUItemTableModuleControllerHosting;
 
 @interface HUItemTableModuleController : NSObject <HUItemTableTextEditingController>
 {
+    id<HUItemTableModuleControllerHosting> _host;
     HFItemModule *_module;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<HUItemTableModuleControllerHosting> host; // @synthesize host=_host;
 @property (readonly, nonatomic) HFItemModule *module; // @synthesize module=_module;
 @property (readonly) Class superclass;
 

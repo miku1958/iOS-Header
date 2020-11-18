@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIDraggingImageSlotOwner.h>
+#import <UIKitCore/_UIDraggingImageSlotOwner.h>
 
-#import <UIKit/NSProgressReporting-Protocol.h>
-#import <UIKit/_UIDataTransferMonitorDelegate-Protocol.h>
+#import <UIKitCore/NSProgressReporting-Protocol.h>
+#import <UIKitCore/_UIDataTransferMonitorDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSProgress, NSString, PBItemCollection, UIDragEvent, UIView, UIWindow, _DUIPotentialDrop, _UIApplicationModalProgressController, _UIDataTransferMonitor, _UIDragSetDownAnimation, _UIDropSessionImpl, _UIDruidDestinationConnection, _UIInternalDraggingSessionSource;
-@protocol _UIDraggingInfo;
+@class NSArray, NSMutableSet, NSProgress, NSString, PBItemCollection, UIDragEvent, UIView, UIWindow, _DUIPotentialDrop, _UIApplicationModalProgressController, _UIDataTransferMonitor, _UIDragSetDownAnimation, _UIDropSessionImpl, _UIInternalDraggingSessionSource;
+@protocol _UIDraggingInfo, _UIDruidDestinationConnection;
 
 __attribute__((visibility("hidden")))
 @interface _UIInternalDraggingSessionDestination : _UIDraggingImageSlotOwner <_UIDataTransferMonitorDelegate, NSProgressReporting>
@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
     NSArray *_internalItems;
     unsigned long long _outsideAppSourceOperationMask;
     unsigned long long _progressIndicatorStyle;
-    _UIDruidDestinationConnection *_druidConnection;
+    id<_UIDruidDestinationConnection> _druidConnection;
     NSProgress *_progress;
     struct CGPoint _centroid;
 }
@@ -54,8 +54,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIDragEvent *dragEvent; // @synthesize dragEvent=_dragEvent;
 @property (readonly, nonatomic) NSArray *dropItemProviders; // @synthesize dropItemProviders=_dropItemProviders;
 @property (readonly, nonatomic) _UIDropSessionImpl *dropSession; // @synthesize dropSession=_dropSession;
-@property (strong, nonatomic) _UIDruidDestinationConnection *druidConnection; // @synthesize druidConnection=_druidConnection;
-@property (readonly, nonatomic) BOOL hasConnectedToDruid;
+@property (strong, nonatomic) id<_UIDruidDestinationConnection> druidConnection; // @synthesize druidConnection=_druidConnection;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) _UIInternalDraggingSessionSource *inAppSessionSource;
 @property (copy, nonatomic) NSArray *internalItems; // @synthesize internalItems=_internalItems;
@@ -66,6 +65,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long progressIndicatorStyle; // @synthesize progressIndicatorStyle=_progressIndicatorStyle;
 @property (readonly, nonatomic) id<_UIDraggingInfo> publicSession; // @synthesize publicSession=_publicSession;
 @property (readonly, nonatomic) unsigned int sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (readonly, nonatomic) BOOL shouldDragEventBeSentToGestureRecognizers;
 @property (readonly, nonatomic) long long sourceDataOwner; // @synthesize sourceDataOwner=_sourceDataOwner;
 @property (readonly, nonatomic) unsigned long long sourceOperationMask;
 @property (readonly) Class superclass;

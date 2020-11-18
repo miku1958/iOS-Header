@@ -6,7 +6,7 @@
 
 #import <EventKitUI/EKEventDetailItem.h>
 
-@class UITableViewCell, UITextView;
+@class UITableViewCell;
 @protocol EKEventDetailNotesCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     UITableViewCell *_cell;
     UITableViewCell *_moreButtonCell;
-    UITextView *_notesView;
     BOOL _cellNeedsUpdate;
     id<EKEventDetailNotesCellDelegate> _noteDelegate;
 }

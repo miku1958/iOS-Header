@@ -10,25 +10,28 @@
 #import <VoiceMemos/NSMutableCopying-Protocol.h>
 #import <VoiceMemos/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray;
 
 @interface RCWaveform : NSObject <NSMutableCopying, NSCopying, NSSecureCoding>
 {
-    NSMutableArray *_segments;
     unsigned long long _decodedVersion;
+    NSArray *_segments;
 }
 
 @property (readonly, nonatomic) unsigned long long averagePowerLevelsRate;
-@property (readonly, nonatomic) NSArray *segments; // @synthesize segments=_segments;
+@property (readonly) unsigned long long segmentCount;
+@property (strong) NSArray *segments; // @synthesize segments=_segments;
+@property (readonly) NSArray *segmentsCopy;
 
++ (void)_mergeBoundarySegmentsInArray:(id)arg1;
++ (id)_mutableSegmentsByClippingToTimeRange:(CDStruct_73a5d3ca)arg1 withSegments:(id)arg2;
++ (id)_mutableSegmentsIntersectingTimeRange:(CDStruct_73a5d3ca)arg1 intersectionRange:(struct _NSRange *)arg2 withSegments:(id)arg3;
 + (void)initialize;
++ (struct _NSRange)rangeOfSegmentsIntersectingTimeRange:(CDStruct_73a5d3ca)arg1 withSegments:(id)arg2;
 + (BOOL)supportsSecureCoding;
 + (id)waveformURLForAVURL:(id)arg1;
 + (id)waveformWithContentsOfURL:(id)arg1 minimumRequiredVersion:(unsigned long long)arg2;
 - (void).cxx_destruct;
-- (void)_mergeBoundarySegmentsInArray:(id)arg1;
-- (id)_mutableSegmentsByClippingToTimeRange:(CDStruct_73a5d3ca)arg1;
-- (id)_mutableSegmentsIntersectingTimeRange:(CDStruct_73a5d3ca)arg1 intersectionRange:(struct _NSRange *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasUniformPowerLevel:(float)arg1;
@@ -37,7 +40,6 @@
 - (id)initWithSegments:(id)arg1;
 - (BOOL)isWaveformDataEqualToDataInWaveform:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (struct _NSRange)rangeOfSegmentsIntersectingTimeRange:(CDStruct_73a5d3ca)arg1;
 - (BOOL)saveContentsToURL:(id)arg1;
 - (id)segmentsByClippingToTimeRange:(CDStruct_73a5d3ca)arg1;
 

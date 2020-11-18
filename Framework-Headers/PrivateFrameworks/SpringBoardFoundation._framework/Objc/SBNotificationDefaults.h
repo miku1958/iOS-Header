@@ -12,11 +12,13 @@
 {
 }
 
+@property (readonly, nonatomic) BOOL alwaysPerformDefaultAction; // @dynamic alwaysPerformDefaultAction;
 @property (strong, nonatomic) NSArray *displayIDsWithBadgingEnabled; // @dynamic displayIDsWithBadgingEnabled;
 @property (readonly, nonatomic) BOOL dontSuppressForPrivacyWhenUnlocked; // @dynamic dontSuppressForPrivacyWhenUnlocked;
 @property (readonly, nonatomic) NSArray *legacyAlarmList; // @dynamic legacyAlarmList;
 @property (readonly, nonatomic) BOOL shouldTestBannerPlayTextTone; // @dynamic shouldTestBannerPlayTextTone;
 
++ (id)standardDefaults;
 - (void)_bindAndRegisterDefaults;
 
 @end

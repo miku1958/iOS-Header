@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface GKSConnectivitySettings : NSObject
 {
@@ -20,6 +20,7 @@
 + (id)getAllSettings;
 + (struct tagIPPORT *)getCachedIPPort;
 + (id)getClientOption:(id)arg1;
++ (int)getDecryptionTimeoutInterval;
 + (struct tagIPPORT *)getIPPortForService:(id)arg1;
 + (int)getKeepAliveTimeoutFromCarrierBundle;
 + (int)getLongTermHistoryLength;
@@ -27,12 +28,13 @@
 + (double)getLongTermValueWeightB;
 + (double)getLongTermValueWeightC;
 + (int)getNATTypeFromCarrierBundle;
++ (int)getNewSessionJoiningInterval;
++ (int)getRateControllerType;
 + (int)getShortTermHistoryLength;
 + (double)getShortTermValueWeightA;
 + (double)getShortTermValueWeightB;
 + (double)getShortTermValueWeightC;
 + (void)initialize;
-+ (BOOL)isRedStateA;
 + (void)setAddress:(id)arg1 forService:(id)arg2;
 + (void)setClientOptions:(id)arg1;
 + (void)setServerAddresses:(id)arg1;

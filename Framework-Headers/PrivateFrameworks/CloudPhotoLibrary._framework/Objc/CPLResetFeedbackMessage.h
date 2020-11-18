@@ -13,14 +13,16 @@ __attribute__((visibility("hidden")))
 {
     NSString *_resetType;
     NSString *_reason;
+    NSString *_uuid;
 }
 
 @property (readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) NSString *resetType; // @synthesize resetType=_resetType;
+@property (readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 + (id)feedbackType;
 - (void).cxx_destruct;
-- (id)initWithResetType:(id)arg1 reason:(id)arg2;
+- (id)initWithResetType:(id)arg1 reason:(id)arg2 uuid:(id)arg3;
 - (id)serverMessage;
 
 @end

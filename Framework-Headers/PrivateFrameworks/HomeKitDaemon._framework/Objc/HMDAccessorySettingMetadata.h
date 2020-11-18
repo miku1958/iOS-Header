@@ -20,14 +20,17 @@
     id _value;
 }
 
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, copy) NSArray *constraints; // @synthesize constraints=_constraints;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) HMDAccessorySettingMergeStrategy *mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
+@property (readonly, copy) NSString *privateDescription;
 @property (readonly) unsigned long long properties; // @synthesize properties=_properties;
 @property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 @property (readonly) long long type; // @synthesize type=_type;
 @property (readonly) id value; // @synthesize value=_value;

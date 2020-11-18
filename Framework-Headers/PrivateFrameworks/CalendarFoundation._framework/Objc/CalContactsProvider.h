@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <CalendarFoundation/CalContactsProviderProtocol-Protocol.h>
 
 @class CNContactStore, CNReputationStore;
 
-@interface CalContactsProvider : NSObject
+@interface CalContactsProvider : NSObject <CalContactsProviderProtocol>
 {
     CNContactStore *_store;
     CNReputationStore *_reputationStore;

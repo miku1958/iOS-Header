@@ -22,15 +22,11 @@
 @property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;
 @property (readonly, copy, nonatomic) NSURLRequest *urlRequest;
 
-+ (id)shortDescription;
 - (void).cxx_destruct;
-- (id)debugDescription;
-- (id)description;
-- (id)descriptionWithPointer:(BOOL)arg1;
+- (id)attributeDescriptions;
 - (id)init;
 - (id)initWithInternalRequest:(id)arg1;
 - (id)responseWithStatusCode:(long long)arg1;
-- (id)shortDescription;
 
 @end
 

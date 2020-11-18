@@ -16,6 +16,7 @@
     _Atomic BOOL _disabled;
     BOOL _wantsHTML;
     BOOL _wantsText;
+    BOOL _setupStarted;
     BOOL _setupComplete;
     BOOL _skipFileProviderItems;
     int _supportedJobs;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *senderQueue; // @synthesize senderQueue=_senderQueue;
 @property (nonatomic) BOOL setupComplete; // @synthesize setupComplete=_setupComplete;
 @property (strong) NSObject<OS_dispatch_semaphore> *setupSemaphore; // @synthesize setupSemaphore=_setupSemaphore;
+@property (nonatomic) BOOL setupStarted; // @synthesize setupStarted=_setupStarted;
 @property (nonatomic) BOOL skipFileProviderItems; // @synthesize skipFileProviderItems=_skipFileProviderItems;
 @property (readonly, nonatomic) int supportedJobs; // @synthesize supportedJobs=_supportedJobs;
 @property (readonly, nonatomic) BOOL unresponsive;
@@ -50,6 +52,7 @@
 - (void)addUserActions:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (BOOL)canRun;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2;
+- (void)deleteAllUserActivities:(id)arg1;
 - (void)deleteFromBundle:(id)arg1;
 - (void)deleteFromBundle:(id)arg1 contentType:(id)arg2 identifiers:(id)arg3;
 - (void)deleteFromBundle:(id)arg1 domainIdentifiers:(id)arg2;
@@ -57,7 +60,10 @@
 - (void)deleteFromBundle:(id)arg1 sinceDate:(id)arg2;
 - (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
+- (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (void)disableReceiver;
+- (BOOL)disabled;
+- (void)donateRelevantActions:(id)arg1 bundleID:(id)arg2;
 - (void)enableReceiver;
 - (void)handleError:(id)arg1;
 - (void)indexFromBundle:(id)arg1 protectionClass:(id)arg2 items:(id)arg3 itemsContent:(id)arg4;

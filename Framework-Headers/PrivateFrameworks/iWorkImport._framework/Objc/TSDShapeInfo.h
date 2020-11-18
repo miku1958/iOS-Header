@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 {
     TSDPathSource *mPathSource;
     TSDShapeStyle *mStyle;
+    double mStrokePatternOffsetDistance;
 }
 
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
@@ -32,12 +33,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) TSDLineEnd *headLineEnd;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic) BOOL isFreehandDrawingSpacerShape;
+@property (readonly, nonatomic) BOOL isTreatedAsFillForFreehandDrawing;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
 @property (strong, nonatomic) TSDPathSource *pathSource; // @synthesize pathSource=mPathSource;
 @property (readonly, nonatomic) TSDShapeStyle *shapeStyle;
+@property (nonatomic) double strokePatternOffsetDistance; // @synthesize strokePatternOffsetDistance=mStrokePatternOffsetDistance;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsShrinkTextToFit;
 @property (readonly, nonatomic) BOOL supportsTextInset;
@@ -47,9 +51,9 @@ __attribute__((visibility("hidden")))
 - (void)acceptVisitor:(id)arg1;
 - (BOOL)allowsParentGroupToBeResizedWithoutAspectRatioLock;
 - (id)animationFilters;
+- (BOOL)canAspectRatioLockBeChangedByUser;
 - (id)copyWithContext:(id)arg1;
 - (int)elementKind;
-- (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2 style:(id)arg3 pathSource:(id)arg4;
 - (BOOL)isAllowedInFreehandDrawings;
@@ -74,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchiver:(id)arg1;
 - (void)setStyle:(id)arg1;
 - (void)setValuesForProperties:(id)arg1;
+- (BOOL)shouldBeIgnoredWhenCopying;
 - (BOOL)shouldFlipLineEndsForStyle:(id)arg1 isStyleTailEndOnLeft:(int)arg2;
 - (id)style;
 - (Class)styleClass;

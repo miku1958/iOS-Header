@@ -20,12 +20,14 @@
 - (unsigned long long)customContentLocation;
 - (BOOL)defaultContentHidden;
 - (BOOL)didReceiveNotificationRequest:(NCNotificationRequest *)arg1;
+- (BOOL)overridesDefaultTitle;
 - (BOOL)performAction:(NCNotificationAction *)arg1 forNotification:(NCNotificationRequest *)arg2;
 - (BOOL)performAction:(NCNotificationAction *)arg1 forNotification:(NCNotificationRequest *)arg2 withUserInfo:(NSDictionary *)arg3;
+- (BOOL)userInteractionEnabled;
 
 @optional
+- (id)cancelTouches;
 - (void)loadAudioAccessoryView;
-- (void)loadExtension;
 - (void)playAudioMessage;
 - (void)preserveInputViews;
 - (BOOL)restoreInputViews;

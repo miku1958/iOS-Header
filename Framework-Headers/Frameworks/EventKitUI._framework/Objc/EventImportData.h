@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSDate, NSString, NSURL;
+@class EKStructuredLocation, NSData, NSDate, NSString, NSURL;
 
 @interface EventImportData : NSObject
 {
@@ -19,6 +19,7 @@
     NSString *_notes;
     NSData *_icsData;
     NSString *_uniqueId;
+    EKStructuredLocation *_structuredLocation;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
@@ -28,10 +29,12 @@
 @property (nonatomic) BOOL prefersManagedCalendar; // @synthesize prefersManagedCalendar=_prefersManagedCalendar;
 @property (nonatomic) int requestedAction; // @synthesize requestedAction=_requestedAction;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (strong, nonatomic) EKStructuredLocation *structuredLocation; // @synthesize structuredLocation=_structuredLocation;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *uniqueId; // @synthesize uniqueId=_uniqueId;
 
 + (id)_extractEventDataFromEventICSData:(id)arg1;
++ (id)_extractEventDataFromMapKitItemData:(id)arg1;
 + (id)_extractEventDataFromReminderICSData:(id)arg1;
 + (id)_extractEventDataFromSpotlightIdentifier:(id)arg1;
 + (id)_extractEventDataFromURL:(id)arg1;

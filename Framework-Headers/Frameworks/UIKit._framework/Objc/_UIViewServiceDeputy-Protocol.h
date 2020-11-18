@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
-#import <UIKit/_UIViewServiceDeputy_UIViewServiceInterface-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
+#import <UIKitCore/_UIViewServiceDeputy_UIViewServiceInterface-Protocol.h>
 
 @class _UIAsyncInvocationObserver;
 @protocol _UIViewServiceDeputyXPCInterface;

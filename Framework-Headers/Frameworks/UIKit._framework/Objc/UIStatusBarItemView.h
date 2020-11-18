@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSString, UIStatusBarForegroundStyleAttributes, UIStatusBarItem, UIStatusBarLayoutManager, _UILegibilityImageSet, _UILegibilityView;
 
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (BOOL)_shouldReverseLayoutDirection;
+- (void)_tintContentLayerIfNeeded;
 - (id)accessibilityHUDRepresentation;
 - (double)addContentOverlap:(double)arg1;
 - (double)adjustFrameToNewSize:(double)arg1;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)beginImageContextWithMinimumWidth:(double)arg1;
 - (id)cachedImageWithText:(id)arg1 truncatedWithEllipsesAtMaxWidth:(double)arg2 letterSpacing:(double)arg3;
 - (void)clearCachedTextImage;
+- (id)contentsIOSurface;
 - (id)contentsImage;
 - (double)currentLeftOverlap;
 - (double)currentOverlap;

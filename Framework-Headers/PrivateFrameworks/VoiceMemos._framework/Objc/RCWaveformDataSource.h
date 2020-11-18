@@ -14,10 +14,11 @@
 @interface RCWaveformDataSource : NSObject <RCWaveformGeneratorSegmentOutputObserver>
 {
     RCMutableWaveform *_accumulatorWaveform;
-    BOOL _hasStartedLoading;
+    RCMutableWaveform *_liveRecordingMergingWaveform;
     BOOL _hasSavedGeneratedWaveform;
+    BOOL _hasStartedLoading;
+    double _durationPerWaveformSlice;
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_observerQueue;
     RCWaveformGenerator *_waveformGenerator;
     NSURL *_generatedWaveformOutputURL;
     NSHashTable *_weakObservers;
@@ -29,13 +30,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration;
+@property (nonatomic) double durationPerWaveformSlice; // @synthesize durationPerWaveformSlice=_durationPerWaveformSlice;
 @property (readonly, nonatomic) BOOL finished;
 @property (readonly, nonatomic) NSURL *generatedWaveformOutputURL; // @synthesize generatedWaveformOutputURL=_generatedWaveformOutputURL;
-@property (readonly, nonatomic) BOOL hasSavedGeneratedWaveform; // @synthesize hasSavedGeneratedWaveform=_hasSavedGeneratedWaveform;
+@property BOOL hasSavedGeneratedWaveform; // @synthesize hasSavedGeneratedWaveform=_hasSavedGeneratedWaveform;
 @property (readonly, nonatomic) BOOL hasStartedLoading; // @synthesize hasStartedLoading=_hasStartedLoading;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) RCWaveform *liveRecordingMergingWaveform; // @synthesize liveRecordingMergingWaveform=_liveRecordingMergingWaveform;
 @property (readonly, nonatomic) float loadingProgress;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *observerQueue; // @synthesize observerQueue=_observerQueue;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CDStruct_73a5d3ca timeRangeToHighlight;
@@ -48,13 +50,15 @@
 - (void)addObserver:(id)arg1;
 - (void)beginLoading;
 - (void)dealloc;
-- (void)finishLoadingWithCompletionTimeoutDate:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)initWithWaveformGenerator:(id)arg1 generatedWaveformOutputURL:(id)arg2;
+- (void)mergeGeneratedWaveformIfNecessary;
 - (void)removeObserver:(id)arg1;
 - (void)saveGeneratedWaveformIfNecessary;
 - (id)saveableWaveform;
 - (id)segmentsInCompositionByConvertingFromActiveLoadingFragment:(id)arg1;
 - (BOOL)setPaused:(BOOL)arg1;
+- (BOOL)shouldMergeLiveWaveform;
 - (id)synchronouslyApproximateWaveformSegmentsByReadingCurrentFileAheadTimeRange:(CDStruct_73a5d3ca)arg1;
 - (void)updateAccumulatorWaveformSegmentsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)waitUntilFinished;

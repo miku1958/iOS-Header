@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPPropertySet, MPStoreModelPlaybackPositionBuilder, MPStoreModelStoreAssetBuilder;
 
@@ -18,6 +18,7 @@
         unsigned int title:1;
         unsigned int duration:1;
         unsigned int trackNumber:1;
+        unsigned int trackCount:1;
         unsigned int discNumber:1;
         unsigned int grouping:1;
         unsigned int explicit:1;

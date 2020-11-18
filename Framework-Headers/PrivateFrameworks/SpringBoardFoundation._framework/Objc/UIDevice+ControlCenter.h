@@ -10,11 +10,9 @@
 - (id)_currentProduct;
 - (id)_deviceInfoForKey:(struct __CFString *)arg1;
 - (long long)_graphicsQualityIncludingMediumN41:(BOOL)arg1;
-- (id)_highQualityDevicesForHomeFolders;
 - (id)_lowQualityDevicesForCoverSheetBlur;
 - (id)_lowQualityDevicesForDashBoardPresentation;
 - (id)_lowQualityDevicesForHomeScreenBlur;
-- (id)_lowQualityDevicesForHomescreenFolders;
 - (id)_lowQualityDevicesForSearchTransitions;
 - (id)_mediumQualityDevicesForCoverSheetBlur;
 - (id)_mediumQualityDevicesForHomeScreenBlur;
@@ -24,7 +22,6 @@
 - (long long)sbf_coverSheetBlurGraphicsQuality;
 - (long long)sbf_dashBoardPresentationGraphicsQuality;
 - (long long)sbf_homeScreenBlurGraphicsQuality;
-- (long long)sbf_homeScreenFolderGraphicsQuality;
 - (long long)sbf_searchTransitionGraphicsQuality;
 @end
 

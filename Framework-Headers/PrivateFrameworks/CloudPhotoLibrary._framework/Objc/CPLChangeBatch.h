@@ -26,7 +26,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addAdditionalRecord:(id)arg1;
-- (void)_addChange:(id)arg1 resultBatch:(id)arg2 changesPerIdentifier:(id)arg3 changesPerClass:(id)arg4;
+- (void)_addChange:(id)arg1 resultBatch:(id)arg2 changesPerScopedIdentifier:(id)arg3 changesPerClass:(id)arg4;
 - (id)_additionalRecords;
 - (id)_initWithRecords:(id)arg1;
 - (void)_setAdditionalRecords:(id)arg1;
@@ -34,7 +34,8 @@
 - (void)addRecord:(id)arg1;
 - (void)addRecordsFromBatch:(id)arg1;
 - (id)additionalRecordWithIdentifier:(id)arg1;
-- (void)appendLocalResources:(id)arg1 forItemWithCloudIdentifier:(id)arg2;
+- (id)additionalRecordWithScopedIdentifier:(id)arg1;
+- (void)appendLocalResources:(id)arg1 forItemWithCloudScopedIdentifier:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
@@ -44,13 +45,16 @@
 - (unsigned long long)estimatedBatchSize;
 - (void)extractInitialDownloadBatch:(id *)arg1 shouldConsiderRecordFilter:(CDUnknownBlockType)arg2;
 - (BOOL)hasChangeWithIdentifier:(id)arg1;
+- (BOOL)hasChangeWithScopedIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRecords:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)localResourceOfType:(unsigned long long)arg1 forItemWithCloudIdentifier:(id)arg2;
+- (id)localResourceOfType:(unsigned long long)arg1 forItemWithCloudScopedIdentifier:(id)arg2;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
+- (id)recordWithScopedIdentifier:(id)arg1;
 - (void)removeRecordWithIdentifier:(id)arg1;
+- (void)removeRecordWithScopedIdentifier:(id)arg1;
 - (BOOL)sortBatchWithError:(id *)arg1;
 - (id)summaryDescription;
 

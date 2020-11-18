@@ -21,16 +21,11 @@ __attribute__((visibility("hidden")))
     NSURL *_uploadFile;
     NSObject<OS_dispatch_data> *_dataTaskData;
     CDUnknownBlockType _dataTaskCompletion;
-    BOOL _pendingResponseDisposition;
-    BOOL _pendingResponseDisposition_didFinish;
     NSObject<OS_dispatch_data> *_pendingResponseBytes;
     __NSURLSessionLocal *_localSession;
     unsigned long long _suspendCount;
     CDUnknownBlockType _async_initialization;
     NSObject<OS_dispatch_source> *_resourceTimeout;
-    BOOL _didIssueWaitingForConnectivity;
-    BOOL _didIssueDidFinish;
-    BOOL _suspendedForDisposition;
     NSNumber *_connectedSocket;
     struct HTTPConnectionCacheKey *_connKey;
     double _startTimeoutTime;
@@ -42,6 +37,11 @@ __attribute__((visibility("hidden")))
     shared_ptr_f0c1381f _connectionForUpgrade;
     NSOperationQueue *_connectionWorkQueue;
     int _connectionWorkQueueSuspensionCount;
+    BOOL _pendingResponseDisposition;
+    BOOL _pendingResponseDisposition_didFinish;
+    BOOL _didIssueWaitingForConnectivity;
+    BOOL _didIssueDidFinish;
+    BOOL _suspendedForDisposition;
     BOOL _didCheckMixedReplace;
     BOOL _isMixedReplace;
 }

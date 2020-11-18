@@ -13,14 +13,14 @@
 
 @interface INBillDetails : NSObject <NSCopying, NSSecureCoding>
 {
-    long long _billType;
-    long long _paymentStatus;
     INBillPayee *_billPayee;
     INCurrencyAmount *_amountDue;
     INCurrencyAmount *_minimumDue;
     INCurrencyAmount *_lateFee;
     NSDateComponents *_dueDate;
     NSDateComponents *_paymentDate;
+    long long _billType;
+    long long _paymentStatus;
 }
 
 @property (copy, nonatomic) INCurrencyAmount *amountDue; // @synthesize amountDue=_amountDue;

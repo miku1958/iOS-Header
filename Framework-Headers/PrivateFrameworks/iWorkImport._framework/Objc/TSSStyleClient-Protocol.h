@@ -6,10 +6,13 @@
 
 #import <iWorkImport/TSKModel-Protocol.h>
 
-@class NSSet;
+@class NSSet, TSSStylesheet;
 
 @protocol TSSStyleClient <TSKModel>
 - (NSSet *)referencedStyles;
 - (void)replaceReferencedStylesUsingBlock:(TSSStyle * (^)(TSSStyle *))arg1;
+
+@optional
+- (void)afterReplacingReferencedStylesSetStylesheet:(TSSStylesheet *)arg1;
 @end
 

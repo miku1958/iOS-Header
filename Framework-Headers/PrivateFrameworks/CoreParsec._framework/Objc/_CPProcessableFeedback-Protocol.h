@@ -9,7 +9,7 @@
 @protocol _CPProcessableFeedback <_CPFeedbackJSONObject>
 
 @property (readonly, nonatomic) BOOL requiresQueryId;
-@property (readonly, nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 
 @end
 

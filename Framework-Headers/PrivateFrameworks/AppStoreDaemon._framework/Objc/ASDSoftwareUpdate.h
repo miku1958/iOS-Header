@@ -13,6 +13,7 @@
 
 @interface ASDSoftwareUpdate : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _downloaded;
     BOOL _perDevice;
     BOOL _profileValidated;
     NSArray *_blockedBy;
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSArray *blockedBy; // @synthesize blockedBy=_blockedBy;
 @property (readonly, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) NSString *buyParams;
+@property (nonatomic, getter=isDownloaded) BOOL downloaded; // @synthesize downloaded=_downloaded;
 @property (readonly, nonatomic) NSNumber *externalVersionIdentifier;
 @property (copy, nonatomic) NSDate *installDate; // @synthesize installDate=_installDate;
 @property (copy, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;

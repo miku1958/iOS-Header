@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityBannerIsSticky;
+- (BOOL)accessibilityPerformEscape;
 
 @end
 

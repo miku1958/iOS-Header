@@ -26,6 +26,7 @@
 
 + (BOOL)canPerformOnAsset:(id)arg1 inAssetCollection:(id)arg2 person:(id)arg3;
 + (BOOL)canPerformWithActionManager:(id)arg1;
++ (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (id)createBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
 + (id)createPreviewActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 selectionSnapshot:(id)arg2 person:(id)arg3;

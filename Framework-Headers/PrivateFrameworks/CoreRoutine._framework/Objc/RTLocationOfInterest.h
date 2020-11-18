@@ -9,8 +9,7 @@
 #import <CoreRoutine/NSCopying-Protocol.h>
 #import <CoreRoutine/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, NSUUID;
-@protocol GEOMapItem;
+@class NSArray, NSString, NSUUID, RTMapItem;
 
 @interface RTLocationOfInterest : NSObject <NSCopying, NSSecureCoding>
 {
@@ -21,19 +20,18 @@
     NSUUID *_identifier;
     long long _type;
     long long _typeSource;
-    id<GEOMapItem> _geoMapItem;
-    long long _geoMapItemSource;
+    RTMapItem *_mapItem;
     NSArray *_visits;
     NSString *_customLabel;
 }
 
 @property (readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property (readonly, nonatomic) NSString *customLabel; // @synthesize customLabel=_customLabel;
-@property (readonly, nonatomic) id<GEOMapItem> geoMapItem; // @synthesize geoMapItem=_geoMapItem;
-@property (readonly, nonatomic) long long geoMapItemSource; // @synthesize geoMapItemSource=_geoMapItemSource;
+@property (readonly, nonatomic) long long geoMapItemSource;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) double latitude; // @synthesize latitude=_latitude;
 @property (readonly, nonatomic) double longitude; // @synthesize longitude=_longitude;
+@property (readonly, nonatomic) RTMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (readonly, nonatomic) NSString *preferredName;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) long long typeSource; // @synthesize typeSource=_typeSource;
@@ -49,10 +47,10 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 confidence:(double)arg4 identifier:(id)arg5 type:(long long)arg6 typeSource:(long long)arg7 geoMapItem:(id)arg8 geoMapItemSource:(long long)arg9 visits:(id)arg10 customLabel:(id)arg11;
+- (id)initWithLatitude:(double)arg1 longitude:(double)arg2 uncertainty:(double)arg3 confidence:(double)arg4 identifier:(id)arg5 type:(long long)arg6 typeSource:(long long)arg7 visits:(id)arg8 customLabel:(id)arg9 mapItem:(id)arg10;
 - (BOOL)isEqual:(id)arg1;
-- (id)nameFromMapItem:(id)arg1;
 - (id)nameFromType:(long long)arg1;
 - (long long)recentCompare:(id)arg1;
 

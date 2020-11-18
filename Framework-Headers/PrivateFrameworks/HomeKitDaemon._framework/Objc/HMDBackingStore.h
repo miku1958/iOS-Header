@@ -37,24 +37,26 @@
 + (id)allowedTypes;
 + (id)currentDevice;
 + (id)flushBackingStore;
++ (id)internalAllowedTypes;
 + (id)logCategory;
 + (id)resetBackingStore;
 + (void)start;
 - (void).cxx_destruct;
 - (id)__fetchWithGroup:(id)arg1 uuids:(id)arg2 error:(id *)arg3;
 - (void)commit:(id)arg1 run:(BOOL)arg2 save:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)deleteModelObjects:(id)arg1 destination:(unsigned long long)arg2;
 - (id)dumpState;
 - (id)initWithUUID:(id)arg1;
 - (id)initWithUUID:(id)arg1 home:(id)arg2;
 - (id)initWithUUID:(id)arg1 homeManager:(id)arg2;
 - (id)initWithUUID:(id)arg1 homeManager:(id)arg2 home:(id)arg3;
 - (id)logIdentifier;
-- (void)registerObject:(id)arg1 forUUID:(id)arg2;
 - (void)saveToPersistentStoreWithReason:(id)arg1 incrementGeneration:(BOOL)arg2;
 - (void)submit:(id)arg1;
 - (void)submitBlock:(CDUnknownBlockType)arg1;
 - (id)transaction:(id)arg1 options:(id)arg2;
 - (id)transactionWithOptions:(id)arg1;
+- (void)updateModelObjects:(id)arg1 destination:(unsigned long long)arg2;
 
 @end
 

@@ -24,6 +24,7 @@
 - (void)resetWithDoubleArray:(const double *)arg1 count:(unsigned long long)arg2 atTimes:(const double *)arg3 count:(unsigned long long)arg4;
 - (void)resetWithFloatArray:(const float *)arg1 count:(unsigned long long)arg2 atTimes:(const double *)arg3 count:(unsigned long long)arg4;
 - (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2;
+- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2 time:(double)arg3;
 - (void)setDoubleArray:(const double *)arg1 count:(unsigned long long)arg2 atTime:(double)arg3;
 - (void)setFloatArray:(const float *)arg1 count:(unsigned long long)arg2 atTime:(double)arg3;
 

@@ -6,33 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayerController, NSUUID;
+@class AVObservationController, AVPlayerController;
+@protocol OS_dispatch_queue;
 
 @interface AVNowPlayingInfoController : NSObject
 {
-    AVPlayerController *_playerController;
     id _playerControllerCurrentTimeJumpedObserver;
     BOOL _nowPlayingInfoNeedsUpdate;
     BOOL _enabled;
-    NSUUID *_identifier;
-    BOOL _shouldOwnNowPlayingInfo;
+    void *_commandHandlerIdentifier;
+    AVObservationController *_keyValueObservationController;
+    NSObject<OS_dispatch_queue> *_backgroundQueue;
     BOOL _requiresLinearPlayback;
+    AVPlayerController *_playerController;
+    AVPlayerController *_playerControllerToActivateAfterDelay;
 }
 
 @property (nonatomic, getter=isEnabled) BOOL enabled;
-@property (strong, nonatomic) AVPlayerController *playerController;
+@property (strong, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
+@property (weak, nonatomic) AVPlayerController *playerControllerToActivateAfterDelay; // @synthesize playerControllerToActivateAfterDelay=_playerControllerToActivateAfterDelay;
 @property (nonatomic) BOOL requiresLinearPlayback; // @synthesize requiresLinearPlayback=_requiresLinearPlayback;
 
++ (void)sharedNowPlayingInfoControllerWithCompletion:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (long long)_handleRemoteCommandEvent:(id)arg1;
-- (BOOL)_ownsNowPlayingInfo;
+- (unsigned int)_handleRemoteCommand:(unsigned int)arg1 options:(id)arg2;
+- (id)_makeCommandsAndStatesDictionaryForPlayerController:(id)arg1;
+- (id)_makeNowPlayingInfo;
 - (void)_setNowPlayingInfoNeedsUpdate;
-- (void)_updateNowPlayingInfo;
+- (void)_updateNowPlayingInfo:(id)arg1 commandsAndStates:(id)arg2 playbackState:(unsigned int)arg3;
 - (void)_updateNowPlayingInfoIfNeeded;
-- (void)_updateRegisteredRemoteCommandEnabledStatesWithPlayerController:(id)arg1;
+- (void)_updateRegisteredRemoteCommandEnabledStatesWithCommandsAndStates:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)startNowPlayingUpdatesForPlayerController:(id)arg1 afterDelay:(double)arg2;
+- (void)stopNowPlayingUpdatesForPlayerController:(id)arg1;
 
 @end
 

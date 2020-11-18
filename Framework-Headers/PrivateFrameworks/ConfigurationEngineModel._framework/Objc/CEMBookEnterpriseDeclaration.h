@@ -8,31 +8,38 @@
 
 #import <ConfigurationEngineModel/CEMRegisteredTypeProtocol-Protocol.h>
 
-@class NSDictionary, NSString;
+@class CEMAssetBaseDescriptor, CEMAssetBaseReference, NSString;
 
 @interface CEMBookEnterpriseDeclaration : CEMAssetBase <CEMRegisteredTypeProtocol>
 {
+    CEMAssetBaseDescriptor *_payloadDescriptor;
+    CEMAssetBaseReference *_payloadReference;
+    NSString *_payloadKind;
+    NSString *_payloadVersion;
+    NSString *_payloadAuthor;
+    NSString *_payloadTitle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadAuthor;
-@property (readonly, nonatomic) NSDictionary *payloadDescriptor;
-@property (readonly, nonatomic) NSString *payloadKind;
-@property (readonly, nonatomic) NSDictionary *payloadReference;
-@property (readonly, nonatomic) NSString *payloadTitle;
-@property (readonly, nonatomic) NSString *payloadVersion;
+@property (copy, nonatomic) NSString *payloadAuthor; // @synthesize payloadAuthor=_payloadAuthor;
+@property (copy, nonatomic) CEMAssetBaseDescriptor *payloadDescriptor; // @synthesize payloadDescriptor=_payloadDescriptor;
+@property (copy, nonatomic) NSString *payloadKind; // @synthesize payloadKind=_payloadKind;
+@property (copy, nonatomic) CEMAssetBaseReference *payloadReference; // @synthesize payloadReference=_payloadReference;
+@property (copy, nonatomic) NSString *payloadTitle; // @synthesize payloadTitle=_payloadTitle;
+@property (copy, nonatomic) NSString *payloadVersion; // @synthesize payloadVersion=_payloadVersion;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withDescriptor:(id)arg2 withReference:(id)arg3;
++ (id)buildWithIdentifier:(id)arg1 withDescriptor:(id)arg2 withReference:(id)arg3 withKind:(id)arg4 withVersion:(id)arg5 withAuthor:(id)arg6 withTitle:(id)arg7;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

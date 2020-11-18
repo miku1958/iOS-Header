@@ -4,28 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
 __attribute__((visibility("hidden")))
 @interface TSPUnknownContent : NSObject
 {
-    NSArray *_messages;
-    NSArray *_ignoreAndPreserveFields;
-    NSArray *_ignoreAndDropFields;
-    NSArray *_savedIgnoreAndPreserveFields;
-    NSArray *_savedIgnoreAndDropFields;
+    NSArray *_preserveMessages;
+    NSArray *_preserveUntilModifiedMessages;
+    NSArray *_preserveFields;
+    NSArray *_preserveUntilModifiedFields;
 }
-
-@property (readonly, nonatomic) NSArray *messages; // @synthesize messages=_messages;
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithMessages:(id)arg1 ignoreAndPreserveFields:(id)arg2 ignoreAndDropFields:(id)arg3;
+- (id)initWithMessages:(id)arg1 messagesAreDiffs:(BOOL)arg2 preserveFields:(id)arg3 preserveUntilModifiedFields:(id)arg4;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)saveToArchiver:(id)arg1;
-- (void)updateMessageInfo:(struct MessageInfo *)arg1;
+- (id)newUnknownContentSnapshot;
 - (void)willModifyObject;
 
 @end

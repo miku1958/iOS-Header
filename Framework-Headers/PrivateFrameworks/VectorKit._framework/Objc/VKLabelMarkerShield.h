@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, VKImageSourceKey;
 
@@ -13,7 +13,7 @@
     VKImageSourceKey *_imageKey;
 }
 
-@property (readonly, nonatomic) CDStruct_87ab733e color;
+@property (readonly, nonatomic) CDStruct_b3fd5d76 color;
 @property (readonly, nonatomic) NSString *locale;
 @property (readonly, nonatomic) NSString *text;
 @property (readonly, nonatomic) long long type;

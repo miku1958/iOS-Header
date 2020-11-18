@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPanGestureRecognizer.h>
+#import <UIKitCore/UIPanGestureRecognizer.h>
 
-#import <UIKit/_UIScreenEdgePanRecognizingDelegate-Protocol.h>
+#import <UIKitCore/_UIScreenEdgePanRecognizingDelegate-Protocol.h>
 
 @class NSString;
 @protocol _UIScreenEdgePanRecognizing;
@@ -34,6 +34,7 @@
 - (BOOL)_shouldTryToBeginWithEvent:(id)arg1;
 - (BOOL)_shouldUseGrapeFlags;
 - (long long)_touchInterfaceOrientation;
+- (double)bottomEdgeAngleWindow;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)ignoreSubsequentTouches;
@@ -48,6 +49,7 @@
 - (id)recognizerTouchesToIgnoreForEvent:(id)arg1;
 - (void)reset;
 - (void)screenEdgePanRecognizingStateDidChange:(id)arg1;
+- (void)setBottomEdgeAngleWindow:(double)arg1;
 - (void)setRecognizeAlongEdge:(BOOL)arg1;
 - (void)setRecognizeImmediatelyFromEdgeLocked:(BOOL)arg1;
 - (unsigned long long)touchedEdges;

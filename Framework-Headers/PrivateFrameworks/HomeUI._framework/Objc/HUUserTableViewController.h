@@ -26,7 +26,7 @@
 - (id)itemTableHeaderView;
 - (void)performRemovalAction:(id)arg1;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
-- (id)userID;
+- (id)userHandle;
 
 @end
 

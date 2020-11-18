@@ -10,10 +10,9 @@
 #import <GeoServices/GEODataSessionUpdatableTask-Protocol.h>
 #import <GeoServices/GEOStateCapturing-Protocol.h>
 
-@class GEOClientMetrics, GEODataRequest, GEODataURLSessionTaskQueue, NSData, NSError, NSHTTPURLResponse, NSMutableData, NSString, NSURL, NSURLRequest, NSURLSessionDataTask, NSURLSessionTaskMetrics;
+@class GEOClientMetrics, GEODataRequest, NSData, NSError, NSHTTPURLResponse, NSMutableData, NSString, NSURL, NSURLRequest, NSURLSessionDataTask, NSURLSessionTaskMetrics;
 @protocol GEODataSessionTaskDelegate, GEORequestCounterTicket, NSObject, OS_dispatch_queue, OS_os_activity, OS_voucher;
 
-__attribute__((visibility("hidden")))
 @interface GEODataURLSessionTask : NSObject <GEOStateCapturing, GEODataSessionTask, GEODataSessionUpdatableTask>
 {
     id<GEODataSessionTaskDelegate> _delegate;
@@ -25,7 +24,6 @@ __attribute__((visibility("hidden")))
     NSData *_cachedData;
     NSMutableData *_receivedData;
     NSURLSessionTaskMetrics *_urlTaskMetrics;
-    GEODataURLSessionTaskQueue *_taskQueue;
     double _startTime;
     double _endTime;
     int _requestKind;
@@ -42,7 +40,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) long long HTTPStatusCode;
-@property (readonly, nonatomic) float _priority;
 @property (readonly) NSObject<OS_os_activity> *activity; // @synthesize activity=_activity;
 @property (readonly, nonatomic) NSURLSessionDataTask *backingTask; // @synthesize backingTask=_backingTask;
 @property (copy, nonatomic) NSData *cachedData; // @synthesize cachedData=_cachedData;
@@ -81,8 +78,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
-@property (strong, nonatomic) GEODataURLSessionTaskQueue *taskQueue; // @synthesize taskQueue=_taskQueue;
-@property (readonly, nonatomic, getter=isTileRequest) BOOL tileRequest;
 @property (readonly, nonatomic) NSURLSessionTaskMetrics *urlTaskMetrics; // @synthesize urlTaskMetrics=_urlTaskMetrics;
 
 - (void).cxx_destruct;
@@ -100,11 +95,10 @@ __attribute__((visibility("hidden")))
 - (void)didReceiveResponse:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)didValidateEntityTagForData:(id *)arg1 entityTag:(id *)arg2;
 - (id)init;
-- (id)initWithSession:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 requestKind:(int)arg4;
+- (id)initWithSession:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 requestKind:(int)arg4 priority:(float)arg5;
 - (void)notifyDelegateWithSession:(id)arg1;
 - (void)setParsedResponse:(id)arg1;
 - (void)start;
-- (void)startDequeuedFromQueue:(id)arg1;
 - (void)updateRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)validateContentLengthWithError:(id *)arg1;
 - (BOOL)validateNonEmptyResponseWithError:(id *)arg1;

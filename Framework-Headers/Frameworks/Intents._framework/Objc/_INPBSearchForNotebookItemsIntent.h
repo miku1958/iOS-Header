@@ -7,33 +7,36 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSearchForNotebookItemsIntent-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBDataString, _INPBDateTimeRange, _INPBIntentMetadata, _INPBLocation;
+@class NSString, _INPBDataString, _INPBDateTimeRange, _INPBIntentMetadata, _INPBLocation;
 
-@interface _INPBSearchForNotebookItemsIntent : PBCodable <NSCopying>
+@interface _INPBSearchForNotebookItemsIntent : PBCodable <_INPBSearchForNotebookItemsIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSString *_content;
-    int _dateSearchType;
-    _INPBDateTimeRange *_dateTime;
-    _INPBIntentMetadata *_intentMetadata;
-    int _itemType;
-    _INPBLocation *_location;
-    int _locationSearchType;
-    NSString *_notebookItemIdentifier;
-    int _status;
-    _INPBDataString *_title;
     struct {
         unsigned int dateSearchType:1;
         unsigned int itemType:1;
         unsigned int locationSearchType:1;
         unsigned int status:1;
     } _has;
+    int _dateSearchType;
+    int _itemType;
+    int _locationSearchType;
+    int _status;
+    NSString *_content;
+    _INPBDateTimeRange *_dateTime;
+    _INPBIntentMetadata *_intentMetadata;
+    _INPBLocation *_location;
+    NSString *_notebookItemIdentifier;
+    _INPBDataString *_title;
 }
 
-@property (strong, nonatomic) NSString *content; // @synthesize content=_content;
+@property (copy, nonatomic) NSString *content; // @synthesize content=_content;
 @property (nonatomic) int dateSearchType; // @synthesize dateSearchType=_dateSearchType;
 @property (strong, nonatomic) _INPBDateTimeRange *dateTime; // @synthesize dateTime=_dateTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasContent;
 @property (nonatomic) BOOL hasDateSearchType;
 @property (readonly, nonatomic) BOOL hasDateTime;
@@ -44,16 +47,16 @@
 @property (readonly, nonatomic) BOOL hasNotebookItemIdentifier;
 @property (nonatomic) BOOL hasStatus;
 @property (readonly, nonatomic) BOOL hasTitle;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (nonatomic) int itemType; // @synthesize itemType=_itemType;
 @property (strong, nonatomic) _INPBLocation *location; // @synthesize location=_location;
 @property (nonatomic) int locationSearchType; // @synthesize locationSearchType=_locationSearchType;
-@property (strong, nonatomic) NSString *notebookItemIdentifier; // @synthesize notebookItemIdentifier=_notebookItemIdentifier;
+@property (copy, nonatomic) NSString *notebookItemIdentifier; // @synthesize notebookItemIdentifier=_notebookItemIdentifier;
 @property (nonatomic) int status; // @synthesize status=_status;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBDataString *title; // @synthesize title=_title;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsDateSearchType:(id)arg1;
 - (int)StringAsItemType:(id)arg1;
@@ -61,13 +64,10 @@
 - (int)StringAsStatus:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dateSearchTypeAsString:(int)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)itemTypeAsString:(int)arg1;
 - (id)locationSearchTypeAsString:(int)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

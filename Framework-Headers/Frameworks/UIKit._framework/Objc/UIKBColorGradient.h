@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBGradient.h>
+#import <UIKitCore/UIKBGradient.h>
 
 @class UIColor;
 

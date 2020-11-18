@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class SKPaymentQueueClient;
 @protocol SKRequestDelegate;
@@ -14,16 +14,16 @@
     id _requestInternal;
 }
 
-@property (nonatomic) id<SKRequestDelegate> delegate;
+@property (weak, nonatomic) id<SKRequestDelegate> delegate;
 @property (copy, nonatomic) SKPaymentQueueClient *paymentQueueClient;
 
+- (void).cxx_destruct;
 - (void)_beginBackgroundTask;
 - (void)_endBackgroundTask;
-- (void)_sendXPCMessage;
 - (void)_shutdownRequest;
+- (void)_start;
 - (void)_startWithMessage:(id)arg1 replyBlock:(CDUnknownBlockType)arg2;
 - (void)cancel;
-- (void)dealloc;
 - (id)init;
 - (void)start;
 

@@ -10,7 +10,7 @@
 #import <UserNotifications/NSMutableCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, UNNotificationSound;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, UNNotificationIcon, UNNotificationSound;
 
 @interface UNNotificationContent : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
@@ -18,50 +18,71 @@
     NSNumber *_badge;
     NSString *_body;
     NSString *_categoryIdentifier;
-    NSString *_darwinNotificationName;
-    NSString *_darwinSnoozedNotificationName;
+    NSDate *_date;
     NSString *_defaultActionTitle;
-    BOOL _fromSnooze;
-    BOOL _hasDefautAction;
+    NSURL *_defaultActionURL;
+    NSDate *_expirationDate;
+    NSString *_header;
     NSString *_launchImageName;
     NSArray *_peopleIdentifiers;
-    BOOL _shouldAddToNotificationsList;
-    BOOL _shouldAlwaysAlertWhileAppIsForeground;
-    BOOL _shouldLockDevice;
-    BOOL _shouldPauseMedia;
-    BOOL _snoozeable;
+    BOOL _shouldHideDate;
+    BOOL _shouldHideTime;
+    BOOL _shouldIgnoreDoNotDisturb;
+    BOOL _shouldIgnoreDowntime;
+    BOOL _shouldSuppressScreenLightUp;
+    BOOL _shouldPreventNotificationDismissalAfterDefaultAction;
+    BOOL _shouldAuthenticateDefaultAction;
+    BOOL _shouldBackgroundDefaultAction;
+    BOOL _shouldSuppressDefaultAction;
+    BOOL _shouldSuppressSyncDismissalWhenRemoved;
+    BOOL _shouldUseRequestIdentifierForDismissalSync;
     UNNotificationSound *_sound;
     NSString *_subtitle;
     NSString *_threadIdentifier;
     NSString *_title;
+    NSSet *_topicIdentifiers;
+    NSString *_summaryArgument;
+    unsigned long long _summaryArgumentCount;
     NSDictionary *_userInfo;
+    UNNotificationIcon *_icon;
 }
 
 @property (readonly, copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (readonly, copy, nonatomic) NSNumber *badge; // @synthesize badge=_badge;
 @property (readonly, copy, nonatomic) NSString *body; // @synthesize body=_body;
 @property (readonly, copy, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
-@property (readonly, copy, nonatomic) NSString *darwinNotificationName; // @synthesize darwinNotificationName=_darwinNotificationName;
-@property (readonly, copy, nonatomic) NSString *darwinSnoozedNotificationName; // @synthesize darwinSnoozedNotificationName=_darwinSnoozedNotificationName;
+@property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, copy, nonatomic) NSString *defaultActionTitle; // @synthesize defaultActionTitle=_defaultActionTitle;
-@property (readonly, nonatomic, getter=isFromSnooze) BOOL fromSnooze; // @synthesize fromSnooze=_fromSnooze;
-@property (readonly, nonatomic) BOOL hasDefaultAction; // @synthesize hasDefaultAction=_hasDefautAction;
+@property (readonly, copy, nonatomic) NSURL *defaultActionURL; // @synthesize defaultActionURL=_defaultActionURL;
+@property (readonly, copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (readonly, nonatomic) BOOL hasDefaultAction;
+@property (readonly, copy, nonatomic) NSString *header; // @synthesize header=_header;
+@property (readonly, copy, nonatomic) UNNotificationIcon *icon; // @synthesize icon=_icon;
 @property (readonly, copy, nonatomic) NSString *launchImageName; // @synthesize launchImageName=_launchImageName;
 @property (readonly, copy, nonatomic) NSArray *peopleIdentifiers; // @synthesize peopleIdentifiers=_peopleIdentifiers;
-@property (readonly, nonatomic) BOOL shouldAddToNotificationsList; // @synthesize shouldAddToNotificationsList=_shouldAddToNotificationsList;
-@property (readonly, nonatomic) BOOL shouldAlwaysAlertWhileAppIsForeground; // @synthesize shouldAlwaysAlertWhileAppIsForeground=_shouldAlwaysAlertWhileAppIsForeground;
-@property (readonly, nonatomic) BOOL shouldLockDevice; // @synthesize shouldLockDevice=_shouldLockDevice;
-@property (readonly, nonatomic) BOOL shouldPauseMedia; // @synthesize shouldPauseMedia=_shouldPauseMedia;
-@property (readonly, nonatomic, getter=isSnoozeable) BOOL snoozeable; // @synthesize snoozeable=_snoozeable;
+@property (readonly, nonatomic) BOOL shouldAuthenticateDefaultAction; // @synthesize shouldAuthenticateDefaultAction=_shouldAuthenticateDefaultAction;
+@property (readonly, nonatomic) BOOL shouldBackgroundDefaultAction; // @synthesize shouldBackgroundDefaultAction=_shouldBackgroundDefaultAction;
+@property (readonly, nonatomic) BOOL shouldHideDate; // @synthesize shouldHideDate=_shouldHideDate;
+@property (readonly, nonatomic) BOOL shouldHideTime; // @synthesize shouldHideTime=_shouldHideTime;
+@property (readonly, nonatomic) BOOL shouldIgnoreDoNotDisturb; // @synthesize shouldIgnoreDoNotDisturb=_shouldIgnoreDoNotDisturb;
+@property (readonly, nonatomic) BOOL shouldIgnoreDowntime; // @synthesize shouldIgnoreDowntime=_shouldIgnoreDowntime;
+@property (readonly, nonatomic) BOOL shouldPreventNotificationDismissalAfterDefaultAction; // @synthesize shouldPreventNotificationDismissalAfterDefaultAction=_shouldPreventNotificationDismissalAfterDefaultAction;
+@property (readonly, nonatomic) BOOL shouldSuppressDefaultAction; // @synthesize shouldSuppressDefaultAction=_shouldSuppressDefaultAction;
+@property (readonly, nonatomic) BOOL shouldSuppressScreenLightUp; // @synthesize shouldSuppressScreenLightUp=_shouldSuppressScreenLightUp;
+@property (readonly, nonatomic) BOOL shouldSuppressSyncDismissalWhenRemoved; // @synthesize shouldSuppressSyncDismissalWhenRemoved=_shouldSuppressSyncDismissalWhenRemoved;
+@property (readonly, nonatomic) BOOL shouldUseRequestIdentifierForDismissalSync; // @synthesize shouldUseRequestIdentifierForDismissalSync=_shouldUseRequestIdentifierForDismissalSync;
 @property (readonly, copy, nonatomic) UNNotificationSound *sound; // @synthesize sound=_sound;
 @property (readonly, copy, nonatomic) NSString *subtitle;
+@property (readonly, copy, nonatomic) NSString *summaryArgument; // @synthesize summaryArgument=_summaryArgument;
+@property (readonly, nonatomic) unsigned long long summaryArgumentCount; // @synthesize summaryArgumentCount=_summaryArgumentCount;
 @property (readonly, copy, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, copy, nonatomic) NSSet *topicIdentifiers; // @synthesize topicIdentifiers=_topicIdentifiers;
 @property (readonly, copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithAttachments:(id)arg1 badge:(id)arg2 body:(id)arg3 categoryIdentifier:(id)arg4 darwinNotificationName:(id)arg5 darwinSnoozedNotificationName:(id)arg6 fromSnooze:(BOOL)arg7 hasDefaultAction:(BOOL)arg8 defaultActionTitle:(id)arg9 launchImageName:(id)arg10 peopleIdentifiers:(id)arg11 shouldAddToNotificationsList:(BOOL)arg12 shouldAlwaysAlertWhileAppIsForeground:(BOOL)arg13 shouldLockDevice:(BOOL)arg14 shouldPauseMedia:(BOOL)arg15 snoozeable:(BOOL)arg16 sound:(id)arg17 subtitle:(id)arg18 threadIdentifier:(id)arg19 title:(id)arg20 userInfo:(id)arg21;
+- (id)_initWithAttachments:(id)arg1 badge:(id)arg2 body:(id)arg3 categoryIdentifier:(id)arg4 date:(id)arg5 icon:(id)arg6 defaultActionTitle:(id)arg7 defaultActionURL:(id)arg8 expirationDate:(id)arg9 header:(id)arg10 launchImageName:(id)arg11 peopleIdentifiers:(id)arg12 shouldHideDate:(BOOL)arg13 shouldHideTime:(BOOL)arg14 shouldIgnoreDoNotDisturb:(BOOL)arg15 shouldIgnoreDowntime:(BOOL)arg16 shouldSuppressScreenLightUp:(BOOL)arg17 shouldAuthenticateDefaultAction:(BOOL)arg18 shouldBackgroundDefaultAction:(BOOL)arg19 shouldPreventNotificationDismissalAfterDefaultAction:(BOOL)arg20 shouldSuppressDefaultAction:(BOOL)arg21 shouldSuppressSyncDismissalWhenRemoved:(BOOL)arg22 shouldUseRequestIdentifierForDismissalSync:(BOOL)arg23 sound:(id)arg24 subtitle:(id)arg25 threadIdentifier:(id)arg26 title:(id)arg27 topicIdentifiers:(id)arg28 summaryArgument:(id)arg29 summaryArgumentCount:(unsigned long long)arg30 userInfo:(id)arg31;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

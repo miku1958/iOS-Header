@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <Rapport/RPEndpoint.h>
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 
-@class CUBonjourDevice, NSString, NSUUID;
+@class NSDictionary, NSString, NSUUID;
 
-@interface RPCompanionLinkDevice : NSObject <NSSecureCoding>
+@interface RPCompanionLinkDevice : RPEndpoint <NSSecureCoding>
 {
     BOOL _personal;
+    BOOL _btPipeConnected;
     BOOL _changed;
     BOOL _daemon;
     unsigned int _flags;
@@ -24,25 +25,20 @@
     NSString *_deviceColor;
     NSString *_groupID;
     NSUUID *_homeKitIdentifier;
-    NSString *_identifier;
-    NSString *_idsDeviceIdentifier;
     NSString *_idsPersonalDeviceIdentifier;
     NSUUID *_mediaSystemIdentifier;
     NSString *_mediaSystemName;
-    NSString *_model;
-    NSString *_name;
     NSString *_publicIdentifier;
     NSString *_roomName;
+    NSDictionary *_siriInfo;
     NSString *_sourceVersion;
     NSString *_role;
-    NSString *_tightSyncGroupID;
-    CUBonjourDevice *_bonjourDevice;
     NSUUID *_mediaSystemIdentifierEffective;
     NSUUID *_pairingIdentifier;
     NSString *_password;
 }
 
-@property (strong, nonatomic) CUBonjourDevice *bonjourDevice; // @synthesize bonjourDevice=_bonjourDevice;
+@property (nonatomic) BOOL btPipeConnected; // @synthesize btPipeConnected=_btPipeConnected;
 @property (nonatomic) BOOL changed; // @synthesize changed=_changed;
 @property (nonatomic) BOOL daemon; // @synthesize daemon=_daemon;
 @property (copy, nonatomic) NSString *deviceColor; // @synthesize deviceColor=_deviceColor;
@@ -50,8 +46,6 @@
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (readonly, copy, nonatomic) NSString *groupID; // @synthesize groupID=_groupID;
 @property (copy, nonatomic) NSUUID *homeKitIdentifier; // @synthesize homeKitIdentifier=_homeKitIdentifier;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (copy, nonatomic) NSString *idsDeviceIdentifier; // @synthesize idsDeviceIdentifier=_idsDeviceIdentifier;
 @property (copy, nonatomic) NSString *idsPersonalDeviceIdentifier; // @synthesize idsPersonalDeviceIdentifier=_idsPersonalDeviceIdentifier;
 @property (copy, nonatomic) NSUUID *mediaSystemIdentifier; // @synthesize mediaSystemIdentifier=_mediaSystemIdentifier;
 @property (copy, nonatomic) NSUUID *mediaSystemIdentifierEffective; // @synthesize mediaSystemIdentifierEffective=_mediaSystemIdentifierEffective;
@@ -59,8 +53,6 @@
 @property (nonatomic) int mediaSystemRole; // @synthesize mediaSystemRole=_mediaSystemRole;
 @property (nonatomic) int mediaSystemRoleEffective; // @synthesize mediaSystemRoleEffective=_mediaSystemRoleEffective;
 @property (nonatomic) int mediaSystemState; // @synthesize mediaSystemState=_mediaSystemState;
-@property (copy, nonatomic) NSString *model; // @synthesize model=_model;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSUUID *pairingIdentifier; // @synthesize pairingIdentifier=_pairingIdentifier;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (nonatomic, getter=isPersonal) BOOL personal; // @synthesize personal=_personal;
@@ -69,8 +61,8 @@
 @property (copy, nonatomic) NSString *publicIdentifier; // @synthesize publicIdentifier=_publicIdentifier;
 @property (copy, nonatomic) NSString *role; // @synthesize role=_role;
 @property (copy, nonatomic) NSString *roomName; // @synthesize roomName=_roomName;
+@property (copy, nonatomic) NSDictionary *siriInfo; // @synthesize siriInfo=_siriInfo;
 @property (copy, nonatomic) NSString *sourceVersion; // @synthesize sourceVersion=_sourceVersion;
-@property (copy, nonatomic) NSString *tightSyncGroupID; // @synthesize tightSyncGroupID=_tightSyncGroupID;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

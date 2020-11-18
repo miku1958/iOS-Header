@@ -12,6 +12,7 @@
 
 @interface CLSAssetUploadObserver : NSObject <NSFilePresenter>
 {
+    NSOperationQueue *_presentedItemOperationQueue;
     BOOL _uploaded;
     CLSAsset *_asset;
     double _uploadProgress;
@@ -21,7 +22,6 @@
     NSMetadataQuery *_query;
     CDUnknownBlockType _preCompleteHook;
     NSURL *_presentedItemURL;
-    NSOperationQueue *_presentedItemOperationQueue;
     NSSet *_observedPresentedItemUbiquityAttributes;
 }
 
@@ -33,7 +33,7 @@
 @property (copy, nonatomic) CDUnknownBlockType onUploadComplete; // @synthesize onUploadComplete=_onUploadComplete;
 @property (copy, nonatomic) CDUnknownBlockType onUploadProgress; // @synthesize onUploadProgress=_onUploadProgress;
 @property (copy, nonatomic) CDUnknownBlockType preCompleteHook; // @synthesize preCompleteHook=_preCompleteHook;
-@property (strong, nonatomic) NSOperationQueue *presentedItemOperationQueue; // @synthesize presentedItemOperationQueue=_presentedItemOperationQueue;
+@property (readonly, strong) NSOperationQueue *presentedItemOperationQueue;
 @property (copy, nonatomic) NSURL *presentedItemURL; // @synthesize presentedItemURL=_presentedItemURL;
 @property (readonly, copy) NSURL *primaryPresentedItemURL;
 @property (strong, nonatomic) NSMetadataQuery *query; // @synthesize query=_query;

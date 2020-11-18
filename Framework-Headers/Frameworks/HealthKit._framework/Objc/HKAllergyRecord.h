@@ -14,32 +14,32 @@
 @interface HKAllergyRecord : HKMedicalRecord <NSSecureCoding, NSCopying>
 {
     NSArray *_allergyCodings;
+    HKMedicalDate *_onsetDate;
     NSString *_asserter;
+    NSArray *_reactions;
     HKMedicalCoding *_criticalityCoding;
     HKMedicalDate *_lastOccurenceDate;
-    HKMedicalDate *_onsetDate;
-    NSArray *_reactions;
     HKMedicalDate *_recordedDate;
 }
 
-@property (readonly, copy, nonatomic) NSArray *allergyCodings; // @synthesize allergyCodings=_allergyCodings;
-@property (readonly, nonatomic) HKAllergyRecordType *allergyRecordType;
-@property (readonly, copy, nonatomic) NSString *asserter; // @synthesize asserter=_asserter;
-@property (readonly, copy, nonatomic) HKMedicalCoding *criticalityCoding; // @synthesize criticalityCoding=_criticalityCoding;
-@property (readonly, copy, nonatomic) HKMedicalDate *lastOccurenceDate; // @synthesize lastOccurenceDate=_lastOccurenceDate;
-@property (readonly, copy, nonatomic) HKMedicalDate *onsetDate; // @synthesize onsetDate=_onsetDate;
-@property (readonly, copy, nonatomic) NSArray *reactions; // @synthesize reactions=_reactions;
-@property (readonly, copy, nonatomic) HKMedicalDate *recordedDate; // @synthesize recordedDate=_recordedDate;
+@property (readonly, copy) NSArray *allergyCodings;
+@property (readonly, copy) HKAllergyRecordType *allergyRecordType;
+@property (readonly, copy) NSString *asserter;
+@property (readonly, copy) HKMedicalCoding *criticalityCoding;
+@property (readonly, copy) HKMedicalDate *lastOccurenceDate;
+@property (readonly, copy) HKMedicalDate *onsetDate;
+@property (readonly, copy) NSArray *reactions;
+@property (readonly, copy) HKMedicalDate *recordedDate;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)allergyCodingsPreferredSystems;
-+ (id)allergyRecordWithNote:(id)arg1 enteredInError:(BOOL)arg2 modifiedDate:(id)arg3 FHIRIdentifier:(id)arg4 extractionVersion:(long long)arg5 device:(id)arg6 metadata:(id)arg7 allergyCodings:(id)arg8 onsetDate:(id)arg9 asserter:(id)arg10 reactions:(id)arg11 criticalityCoding:(id)arg12 lastOccurenceDate:(id)arg13 recordedDate:(id)arg14;
++ (id)allergyRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 allergyCodings:(id)arg9 onsetDate:(id)arg10 asserter:(id)arg11 reactions:(id)arg12 criticalityCoding:(id)arg13 lastOccurenceDate:(id)arg14 recordedDate:(id)arg15;
++ (id)allergyRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 allergyCodings:(id)arg10 onsetDate:(id)arg11 asserter:(id)arg12 reactions:(id)arg13 criticalityCoding:(id)arg14 lastOccurenceDate:(id)arg15 recordedDate:(id)arg16;
 + (id)criticalityCodingPreferredSystems;
 + (id)defaultDisplayString;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_setAllergyCodings:(id)arg1;
 - (void)_setAsserter:(id)arg1;
 - (void)_setCriticalityCoding:(id)arg1;

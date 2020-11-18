@@ -8,6 +8,6 @@
 
 @interface CADisplayLink (RCAdditions)
 + (id)rc_displayLinkWithWeakTarget:(id)arg1 selector:(SEL)arg2;
-+ (id)rc_displayWithFrameInterval:(long long)arg1 handlerBlock:(CDUnknownBlockType)arg2;
++ (id)rc_displayWithFramesPerSecond:(long long)arg1 handlerBlock:(CDUnknownBlockType)arg2;
 @end
 

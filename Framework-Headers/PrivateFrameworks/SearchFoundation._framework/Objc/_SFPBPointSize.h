@@ -19,8 +19,6 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasHeight;
-@property (readonly, nonatomic) BOOL hasWidth;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _SFPBGraphicalFloat *height; // @synthesize height=_height;
 @property (readonly, nonatomic) NSData *jsonData;

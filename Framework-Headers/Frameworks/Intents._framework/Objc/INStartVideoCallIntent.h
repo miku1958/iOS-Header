@@ -21,10 +21,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
+- (long long)_intentCategory;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (void)_setMetadata:(id)arg1;
+- (id)_spotlightContentType;
+- (id)_titleForLanguage:(id)arg1 fromBundleURL:(id)arg2;
 - (id)_typedBackingStore;
+- (BOOL)configureAttributeSet:(id)arg1 includingData:(BOOL)arg2;
 - (id)domain;
 - (id)initWithContacts:(id)arg1;
 - (id)parametersByName;

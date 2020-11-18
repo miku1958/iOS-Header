@@ -18,6 +18,7 @@
 - (NSValue *)pairedDeviceScreenSize;
 - (BOOL)pairedDeviceSupportsMailContentProtectedChannel;
 - (BOOL)pairedDeviceSupportsMultipleMailboxes;
+- (BOOL)pairedDeviceSupportsStandaloneMode;
 - (NSString *)pairingStorePath;
 - (void)reportInitialSyncDidComplete;
 - (void)reportInitialSyncDidCompleteSending;

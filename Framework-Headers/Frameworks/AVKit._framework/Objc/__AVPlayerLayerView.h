@@ -33,7 +33,6 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (void)startRoutingVideoToPictureInPicturePlayerLayerView;
 - (void)stopRoutingVideoToPictureInPicturePlayerLayerView;
 

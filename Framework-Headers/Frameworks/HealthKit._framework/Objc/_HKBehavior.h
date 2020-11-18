@@ -11,6 +11,7 @@
 @interface _HKBehavior : NSObject
 {
     NSNumber *_overridenSupportsSwimmingWorkoutSessions;
+    NSNumber *_overridenEnableManateeForHSA2Accounts;
     BOOL _isDeviceSupported;
     BOOL _isAppleInternalInstall;
     BOOL _isAppleWatch;
@@ -19,22 +20,27 @@
     BOOL _isRunningStoreDemoMode;
     BOOL _runningInStoreDemoModeF201;
     BOOL _deviceSupportsHeartRateMotionContexts;
+    BOOL _collectsCalorimetry;
+    BOOL _collectsData;
+    BOOL _performsWorkoutCondensation;
+    BOOL _supportsAWDMetricSubmission;
     BOOL _supportsActivitySharing;
     BOOL _supportsAppSubscriptions;
-    BOOL _supportsAWDMetricSubmission;
     BOOL _supportsCloudSync;
+    BOOL _supportsFeatureAvailabilityAssets;
     BOOL _supportsHeartRateDataCollection;
     BOOL _supportsNanoSync;
     BOOL _supportsRemoteAuthorization;
     BOOL _supportsSampleExpiration;
-    BOOL _collectsData;
-    BOOL _supportsAchievementAssets;
+    BOOL _supportsWorkouts;
     BOOL _futureMigrationsEnabled;
     BOOL _isTestingDevice;
     NSString *_hostWriteAuthorizationUsageDescription;
     NSString *_hostReadAuthorizationUsageDescription;
+    NSString *_hostClinicalReadAuthorizationUsageDescription;
 }
 
+@property (nonatomic) BOOL collectsCalorimetry; // @synthesize collectsCalorimetry=_collectsCalorimetry;
 @property (nonatomic) BOOL collectsData; // @synthesize collectsData=_collectsData;
 @property (readonly, copy, nonatomic) NSString *currentDeviceClass;
 @property (readonly, copy, nonatomic) NSString *currentDeviceDisplayName;
@@ -51,6 +57,7 @@
 @property (nonatomic) BOOL deviceSupportsHeartRateMotionContexts; // @synthesize deviceSupportsHeartRateMotionContexts=_deviceSupportsHeartRateMotionContexts;
 @property (nonatomic) BOOL futureMigrationsEnabled; // @synthesize futureMigrationsEnabled=_futureMigrationsEnabled;
 @property (nonatomic) BOOL hasTelephonyCapability; // @synthesize hasTelephonyCapability=_hasTelephonyCapability;
+@property (copy, nonatomic) NSString *hostClinicalReadAuthorizationUsageDescription; // @synthesize hostClinicalReadAuthorizationUsageDescription=_hostClinicalReadAuthorizationUsageDescription;
 @property (copy, nonatomic) NSString *hostReadAuthorizationUsageDescription; // @synthesize hostReadAuthorizationUsageDescription=_hostReadAuthorizationUsageDescription;
 @property (copy, nonatomic) NSString *hostWriteAuthorizationUsageDescription; // @synthesize hostWriteAuthorizationUsageDescription=_hostWriteAuthorizationUsageDescription;
 @property (nonatomic) BOOL isAppleInternalInstall; // @synthesize isAppleInternalInstall=_isAppleInternalInstall;
@@ -61,17 +68,20 @@
 @property (readonly, nonatomic) BOOL isRunningStoreDemoMode; // @synthesize isRunningStoreDemoMode=_isRunningStoreDemoMode;
 @property (nonatomic) BOOL isTestingDevice; // @synthesize isTestingDevice=_isTestingDevice;
 @property (readonly, copy, nonatomic) NSTimeZone *localTimeZone;
+@property (readonly, nonatomic, getter=isManateeEnabledForHSA2Accounts) BOOL manateeEnabledForHSA2Accounts;
+@property (nonatomic) BOOL performsWorkoutCondensation; // @synthesize performsWorkoutCondensation=_performsWorkoutCondensation;
 @property (readonly, nonatomic) BOOL runningInStoreDemoModeF201; // @synthesize runningInStoreDemoModeF201=_runningInStoreDemoModeF201;
 @property (nonatomic) BOOL supportsAWDMetricSubmission; // @synthesize supportsAWDMetricSubmission=_supportsAWDMetricSubmission;
-@property (nonatomic) BOOL supportsAchievementAssets; // @synthesize supportsAchievementAssets=_supportsAchievementAssets;
 @property (nonatomic) BOOL supportsActivitySharing; // @synthesize supportsActivitySharing=_supportsActivitySharing;
 @property (nonatomic) BOOL supportsAppSubscriptions; // @synthesize supportsAppSubscriptions=_supportsAppSubscriptions;
 @property (nonatomic) BOOL supportsCloudSync; // @synthesize supportsCloudSync=_supportsCloudSync;
+@property (readonly, nonatomic) BOOL supportsFeatureAvailabilityAssets; // @synthesize supportsFeatureAvailabilityAssets=_supportsFeatureAvailabilityAssets;
 @property (nonatomic) BOOL supportsHeartRateDataCollection; // @synthesize supportsHeartRateDataCollection=_supportsHeartRateDataCollection;
 @property (nonatomic) BOOL supportsNanoSync; // @synthesize supportsNanoSync=_supportsNanoSync;
 @property (nonatomic) BOOL supportsRemoteAuthorization; // @synthesize supportsRemoteAuthorization=_supportsRemoteAuthorization;
 @property (nonatomic) BOOL supportsSampleExpiration; // @synthesize supportsSampleExpiration=_supportsSampleExpiration;
 @property (nonatomic) BOOL supportsSwimmingWorkoutSessions;
+@property (nonatomic) BOOL supportsWorkouts; // @synthesize supportsWorkouts=_supportsWorkouts;
 @property (readonly, nonatomic) unsigned long long totalDiskCapacity;
 
 + (BOOL)_deviceSupportsHeartRateMotionContexts;
@@ -82,15 +92,20 @@
 + (BOOL)_isDeviceSupported;
 + (BOOL)_isForceBuddyEnabled;
 + (BOOL)_isRunningStoreDemoMode;
++ (BOOL)_performsWorkoutCondensation;
++ (BOOL)_readEnableManateeForHSA2AccountsFromHealthdDefaults;
 + (BOOL)_runningInStoreDemoModeF201;
 + (long long)_runningInStoreDemoModeFProgramNumber;
 + (BOOL)_shouldShowBuddy;
 + (id)_simulatorDefaultName;
 + (id)_simulatorSettings;
 + (BOOL)activePairedWatchHasSmartFitnessCoaching;
++ (BOOL)activePairedWatchSupportsBradycardiaDetection;
 + (BOOL)activePairedWatchSupportsHeartRateMotionContexts;
 + (id)activePairedWatchWithoutSOSMedicalIDContactsSupport;
 + (BOOL)allPairedWatchesMeetMinimumVersion:(int)arg1;
++ (BOOL)allPairedWatchesSupportBradycardiaDetection;
++ (BOOL)allPairedWatchesSupportHeartRateMotionContexts;
 + (BOOL)anyPairedWatchHasFlightsClimbedCapability;
 + (BOOL)anyPairedWatchHasSOSModeCapability;
 + (id)behaviorQueue;
@@ -109,6 +124,7 @@
 + (BOOL)hasTelephonyCapability;
 + (BOOL)isAppleInternalInstall;
 + (BOOL)isDeviceSupported;
++ (BOOL)isManateeEnabledByDefault;
 + (BOOL)isRunningStoreDemoMode;
 + (BOOL)isTestingDevice;
 + (void)resetSharedBehavior;
@@ -121,6 +137,7 @@
 + (int)syncProtocolVersionForSystemBuildVersion:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
+- (void)setManateeEnabledForHSA2AccountsOverride:(BOOL)arg1;
 
 @end
 

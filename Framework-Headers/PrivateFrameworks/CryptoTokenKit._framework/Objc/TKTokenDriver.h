@@ -32,7 +32,6 @@
 - (id)init;
 - (void)invalidateToken:(id)arg1;
 - (void)releaseTokenWithTokenID:(id)arg1;
-- (void)removeTokenEndpoint:(id)arg1;
 - (id)tokenIDForInstanceID:(id)arg1;
 
 @end

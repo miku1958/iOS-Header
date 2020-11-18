@@ -42,6 +42,7 @@
 - (void)_standardizeHTML:(id)arg1;
 - (void)_standardizeMarkAs:(id)arg1;
 - (void)_standardizePeople:(id)arg1;
+- (void)_standardizeSiriShortcuts:(id)arg1;
 - (void)_updateWithSearchableItem:(id)arg1;
 - (id)attributes;
 - (void)breakOutPersonInformationInSet:(id)arg1 withName:(id)arg2 emails:(id)arg3 contactIdentifiers:(id)arg4 nameKey:(id)arg5 emailKey:(id)arg6 contactIdentifierKey:(id)arg7 emailAddressKey:(id)arg8 attributeSet:(id)arg9;

@@ -10,7 +10,7 @@
 - (long long)_pu_baseOrientationForAsset:(id)arg1;
 - (long long)pu_adjustmentWorkVersion;
 - (BOOL)pu_isPenultimateAvailable;
-- (BOOL)pu_loadPhotoEditModel:(id)arg1 forAsset:(id)arg2;
+- (BOOL)pu_loadPhotoEditModel:(id)arg1 forAsset:(id)arg2 rawEditingAllowed:(BOOL)arg3;
 - (long long)pu_penultimateState;
 @end
 

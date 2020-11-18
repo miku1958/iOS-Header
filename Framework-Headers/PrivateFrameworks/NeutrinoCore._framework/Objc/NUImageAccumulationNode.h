@@ -28,8 +28,8 @@
 - (void).cxx_destruct;
 - (id)_image;
 - (id)_newImage;
+- (id)initWithImageSize:(CDStruct_912cb5d2)arg1 tileSize:(CDStruct_912cb5d2)arg2 pixelFormat:(id)arg3 colorSpace:(id)arg4 input:(id)arg5;
 - (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
-- (id)initWithSize:(CDStruct_912cb5d2)arg1 pixelFormat:(id)arg2 colorSpace:(id)arg3 input:(id)arg4;
 
 @end
 

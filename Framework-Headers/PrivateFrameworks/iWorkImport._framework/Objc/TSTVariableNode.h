@@ -11,15 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface TSTVariableNode : TSTExpressionNode
 {
-    unsigned int mSymbol;
-    NSString *mIdentifier;
+    unsigned int _symbol;
+    NSString *_identifier;
 }
 
-@property (nonatomic) NSString *identifier;
-@property (nonatomic) unsigned int symbol; // @synthesize symbol=mSymbol;
+@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) unsigned int symbol; // @synthesize symbol=_symbol;
 
+- (void).cxx_destruct;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
-- (id)copyByResolvingIdentifiers:(id)arg1 hostTable:(id)arg2 forceReferenceInterpretation:(BOOL)arg3 symbolTable:(struct TSCESymbolTable *)arg4 oldToNewNodeMap:(id)arg5;
+- (id)copyByResolvingIdentifiers:(id)arg1 hostTable:(id)arg2 baseHostCell:(struct TSUCellCoord)arg3 forceReferenceInterpretation:(BOOL)arg4 symbolTable:(struct TSCESymbolTable *)arg5 oldToNewNodeMap:(id)arg6;
 - (id)detokenizedText;
 - (id)exportString;
 - (id)formulaPlainText;

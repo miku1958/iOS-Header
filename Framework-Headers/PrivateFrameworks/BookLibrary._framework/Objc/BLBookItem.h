@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <BookLibrary/NSCoding-Protocol.h>
 #import <BookLibrary/NSCopying-Protocol.h>
 #import <BookLibrary/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSDictionary, NSString, NSURL;
 
-@interface BLBookItem : NSObject <NSCopying, NSCoding, NSSecureCoding>
+@interface BLBookItem : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _sample;
     BOOL _iTunesU;

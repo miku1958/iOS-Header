@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableArray, NSMutableSet, NSNotificationCenter, NSNumber, PLManagedObjectContext;
+@protocol OS_dispatch_queue;
 
 @interface PLChangeNotificationCenter : NSObject
 {
     BOOL _isProcessingRemoteDidSave;
     int _cameraPreviewChangeListenerCount;
     NSNumber *_cameraPreviewChangedToken;
+    NSObject<OS_dispatch_queue> *_notificationHandlingQueue;
     NSMutableArray *_snapshots;
     struct changeList_s _changedAlbumLists;
     struct contentChanges_s _albumListsContent;
@@ -38,7 +40,7 @@
 + (id)allManagedObjectKeysStrategy;
 + (id)defaultCenter;
 + (void)forceFetchingAlbumReload;
-+ (void)getInsertedAssetCount:(unsigned long long *)arg1 deletedAssetCount:(unsigned long long *)arg2 updatedAssets:(id)arg3 fromContextDidChangeNotification:(id)arg4;
++ (void)getInsertedAssetCount:(unsigned long long *)arg1 deletedAssetCount:(unsigned long long *)arg2 fromContextDidChangeNotification:(id)arg3;
 - (id)_attributesOfInterestForObject:(id)arg1;
 - (void)_cleanupState;
 - (void)_enqueueAlbumChangeNotification:(id)arg1;
@@ -90,6 +92,7 @@
 - (void)managedObjectContext:(id)arg1 willProcessRemoteContextSave:(id)arg2 usingObjectIDs:(BOOL)arg3 isCoalescedEvent:(BOOL)arg4;
 - (void)managedObjectContextWasOverloaded:(id)arg1 withNotificationData:(id)arg2 usingObjectIDs:(BOOL)arg3;
 - (void)managedObjectContextWillBeOverloaded:(id)arg1 withNotificationData:(id)arg2 usingObjectIDs:(BOOL)arg3;
+- (id)observeCameraPreviewWellImageChangeOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)postShouldReloadNotification;
 - (void)processContextDidChangeNotification:(id)arg1;

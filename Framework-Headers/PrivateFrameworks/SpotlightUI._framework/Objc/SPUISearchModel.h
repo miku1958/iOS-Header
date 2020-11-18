@@ -18,6 +18,7 @@
     BOOL _springBoardIsActive;
     BOOL _infinitePatience;
     BOOL _queryComplete;
+    BOOL _queryDelayedFinished;
     BOOL _queryDidFinish;
     BOOL _forceStableResults;
     SFResultSection *_searchThroughSection;
@@ -31,6 +32,7 @@
 @property BOOL infinitePatience; // @synthesize infinitePatience=_infinitePatience;
 @property (strong) SPQueryResponse *lastResponse; // @synthesize lastResponse=_lastResponse;
 @property BOOL queryComplete; // @synthesize queryComplete=_queryComplete;
+@property BOOL queryDelayedFinished; // @synthesize queryDelayedFinished=_queryDelayedFinished;
 @property BOOL queryDidFinish; // @synthesize queryDidFinish=_queryDidFinish;
 @property (strong) SPQueryTask *queryTask; // @synthesize queryTask=_queryTask;
 @property (readonly) SFResultSection *searchThroughSection; // @synthesize searchThroughSection=_searchThroughSection;
@@ -55,8 +57,9 @@
 - (void)invalidateCurrentQuery;
 - (void)invalidateQuery:(id)arg1;
 - (void)resultsDidBecomeInvalid:(id)arg1;
+- (void)updateWithQueryContext:(id)arg1;
 - (void)updateWithResponse:(id)arg1;
-- (void)updatesDispabled;
+- (void)updatesDisabled;
 - (void)updatesEnabled;
 
 @end

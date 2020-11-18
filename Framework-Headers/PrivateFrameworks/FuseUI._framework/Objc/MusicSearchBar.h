@@ -13,7 +13,6 @@
 }
 
 @property (nonatomic) id<MusicSearchBarDelegate> delegate; // @dynamic delegate;
-@property (readonly, nonatomic) struct UIEdgeInsets searchBarContentEdgeInsets;
 
 - (BOOL)_isInBar;
 - (void)layoutSubviews;

@@ -23,7 +23,7 @@
 + (id)synchronousIconForContentType:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5;
 - (void).cxx_destruct;
 - (BOOL)generateThumbnail:(id *)arg1 representativeIcon:(BOOL *)arg2;
-- (id)initWithContentType:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 delegate:(id)arg4 style:(unsigned long long)arg5 folded:(BOOL)arg6 qos:(unsigned int)arg7;
+- (id)initWithContentType:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 delegate:(id)arg4 style:(unsigned long long)arg5 folded:(BOOL)arg6;
 
 @end
 

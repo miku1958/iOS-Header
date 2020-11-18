@@ -12,7 +12,9 @@
 
 + (id)address;
 + (id)deviceType;
++ (id)isAppleAudioDevice;
 + (id)name;
++ (id)productID;
 
 @end
 

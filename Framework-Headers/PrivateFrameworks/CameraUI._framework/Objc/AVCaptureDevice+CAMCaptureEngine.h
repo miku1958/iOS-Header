@@ -7,9 +7,10 @@
 #import <AVFoundation/AVCaptureDevice.h>
 
 @interface AVCaptureDevice (CAMCaptureEngine)
+- (id)cam_highestQualityFormatForConfiguration:(long long)arg1 colorSpace:(long long)arg2;
 - (id)cameraPanoramaFormatForConfiguration:(id)arg1;
 - (id)cameraStillImageFormat;
-- (id)cameraVideoFormatForVideoConfiguration:(long long)arg1;
-- (id)cameraVideoPresetForVideoConfiguration:(long long)arg1;
+- (id)cameraVideoFormatForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
+- (id)cameraVideoPresetForVideoConfiguration:(long long)arg1 videoEncodingBehavior:(long long)arg2;
 @end
 

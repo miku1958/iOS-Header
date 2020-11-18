@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIPreviewInteractionDelegate-Protocol.h>
-#import <UIKit/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <UIKit/_UIPreviewActionsControllerDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIPreviewInteractionDelegate-Protocol.h>
+#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
+#import <UIKitCore/_UIPreviewActionsControllerDelegate-Protocol.h>
 
 @class NSString, UIGestureRecognizer, UIPreviewInteraction, UIView, UIViewController, _UIInteractionEffect_deprecated, _UIPreviewActionsController, _UIPreviewInteractionCommitTransition, _UIPreviewInteractionDismissTransition, _UIPreviewInteractionGestureRecognizer, _UIPreviewInteractionPresentationTransition, _UIPreviewPresentationController2, _UISteadyTouchForceGestureRecognizer, _UITouchesObservingGestureRecognizer;
 @protocol UIViewControllerPreviewing_Internal, _UIPreviewInteractionControllerDelegate, _UIPreviewInteractionHighlighting, _UIPreviewInteractionTouchForceProviding;
@@ -18,9 +18,10 @@ __attribute__((visibility("hidden")))
 @interface _UIPreviewInteractionController : NSObject <UIGestureRecognizerDelegate, UIPreviewInteractionDelegate, UIViewControllerTransitioningDelegate, _UIPreviewActionsControllerDelegate>
 {
     BOOL _performingPreviewTransition;
+    BOOL _hasTransitionedToPreview;
+    BOOL _dismissingPreview;
     BOOL _commitTransitionScheduled;
     BOOL _performingCommitTransition;
-    BOOL _hasTransitionedToPreview;
     id<_UIPreviewInteractionControllerDelegate> _delegate;
     UIView *_sourceView;
     UIViewController *_presentingViewController;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_UIPreviewInteractionControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL dismissingPreview; // @synthesize dismissingPreview=_dismissingPreview;
 @property (strong, nonatomic) _UITouchesObservingGestureRecognizer *gestureRecognizerForPreviewActions; // @synthesize gestureRecognizerForPreviewActions=_gestureRecognizerForPreviewActions;
 @property (nonatomic) BOOL hasTransitionedToPreview; // @synthesize hasTransitionedToPreview=_hasTransitionedToPreview;
 @property (readonly) unsigned long long hash;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -19,7 +19,7 @@
 @property (nonatomic) long long options; // @synthesize options=_options;
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithMode:(long long)arg1 options:(long long)arg2 reason:(id)arg3;
 
 @end

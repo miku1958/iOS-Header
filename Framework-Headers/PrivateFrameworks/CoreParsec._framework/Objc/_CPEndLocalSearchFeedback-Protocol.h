@@ -10,8 +10,6 @@
 
 @protocol _CPEndLocalSearchFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasUuid;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long timestamp;
 @property (copy, nonatomic) NSString *uuid;

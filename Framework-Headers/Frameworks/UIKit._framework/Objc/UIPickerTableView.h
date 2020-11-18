@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableView.h>
+#import <UIKitCore/UITableView.h>
 
-#import <UIKit/UITableViewDelegate-Protocol.h>
+#import <UIKitCore/UITableViewDelegate-Protocol.h>
 
 @class NSMutableArray, NSMutableIndexSet, NSString, UIColor;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -25,7 +25,7 @@
 @property (nonatomic) struct _NSRange originalSelectedTokenRange; // @synthesize originalSelectedTokenRange=_originalSelectedTokenRange;
 @property (nonatomic) unsigned long long revisedDocumentLocation; // @synthesize revisedDocumentLocation=_revisedDocumentLocation;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithTokenIterator:(struct _TIRevisionHistoryTokenIterator)arg1;
 

@@ -13,10 +13,6 @@
 
 @interface _SFPBSearchSuggestion : PBCodable <_SFPBSearchSuggestion, NSSecureCoding>
 {
-    struct {
-        unsigned int type:1;
-        unsigned int previouslyEngaged:1;
-    } _has;
     BOOL _previouslyEngaged;
     int _type;
     NSString *_identifier;
@@ -27,6 +23,7 @@
     NSString *_topicIdentifier;
     NSString *_bundleIdentifier;
     NSString *_fbr;
+    NSString *_scopedSearchApplicationBundleIdentifier;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
@@ -34,20 +31,12 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *duplicateSuggestions; // @synthesize duplicateSuggestions=_duplicateSuggestions;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
-@property (readonly, nonatomic) BOOL hasBundleIdentifier;
-@property (readonly, nonatomic) BOOL hasFbr;
-@property (readonly, nonatomic) BOOL hasIdentifier;
-@property (readonly, nonatomic) BOOL hasPreviouslyEngaged;
-@property (readonly, nonatomic) BOOL hasQuery;
-@property (readonly, nonatomic) BOOL hasScore;
-@property (readonly, nonatomic) BOOL hasSuggestion;
-@property (readonly, nonatomic) BOOL hasTopicIdentifier;
-@property (readonly, nonatomic) BOOL hasType;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL previouslyEngaged; // @synthesize previouslyEngaged=_previouslyEngaged;
 @property (copy, nonatomic) NSString *query; // @synthesize query=_query;
+@property (copy, nonatomic) NSString *scopedSearchApplicationBundleIdentifier; // @synthesize scopedSearchApplicationBundleIdentifier=_scopedSearchApplicationBundleIdentifier;
 @property (strong, nonatomic) _SFPBGraphicalFloat *score; // @synthesize score=_score;
 @property (copy, nonatomic) NSString *suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;

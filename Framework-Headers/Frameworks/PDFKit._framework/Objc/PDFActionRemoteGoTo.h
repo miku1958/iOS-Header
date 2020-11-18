@@ -25,10 +25,8 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (const struct __CFDictionary *)createDictionaryRef;
 - (id)description;
-- (id)finishInitWithActionDictionary:(struct CGPDFDictionary *)arg1 forDocument:(id)arg2;
 - (id)initWithActionDictionary:(struct CGPDFDictionary *)arg1 forDocument:(id)arg2 forPage:(id)arg3;
 - (id)initWithPageIndex:(unsigned long long)arg1 atPoint:(struct CGPoint)arg2 fileURL:(id)arg3;
-- (void)lazyInit;
 - (id)toolTip;
 - (id)toolTipNoLabel;
 

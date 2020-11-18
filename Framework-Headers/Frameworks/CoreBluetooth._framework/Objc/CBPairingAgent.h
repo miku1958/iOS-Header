@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol CBPairingAgentDelegate, CBPairingAgentParentDelegate;
 
@@ -27,6 +27,7 @@
 - (void)handleUnpaired:(id)arg1;
 - (id)initWithParentManager:(id)arg1;
 - (BOOL)isPeerCloudPaired:(id)arg1;
+- (BOOL)isPeerMagicPaired:(id)arg1;
 - (BOOL)isPeerPaired:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pairPeer:(id)arg1;

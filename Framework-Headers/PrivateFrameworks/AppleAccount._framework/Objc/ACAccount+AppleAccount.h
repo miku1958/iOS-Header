@@ -6,21 +6,16 @@
 
 #import <Accounts/ACAccount.h>
 
-@class AARegionInfo, NSArray, NSDictionary, NSNumber, NSString;
+@class AARegionInfo, AASuspensionInfo, NSArray, NSNumber, NSString;
 
 @interface ACAccount (AppleAccount)
 
-@property (readonly, nonatomic) NSDictionary *aa_accountFirstDisplayAlert;
-@property (readonly, nonatomic) NSDictionary *aa_accountFooterButton;
-@property (readonly, nonatomic) NSString *aa_accountFooterText;
-@property (readonly, nonatomic) NSString *aa_accountTypeString;
 @property (readonly, nonatomic) NSString *aa_altDSID;
 @property (readonly, nonatomic) NSArray *aa_appleIDAliases;
 @property (readonly, nonatomic) NSString *aa_appleId;
 @property (copy, nonatomic, setter=aa_setAuthToken:) NSString *aa_authToken;
 @property (readonly, nonatomic) ACAccount *aa_childMailAccount;
 @property (readonly, nonatomic) ACAccount *aa_cloudKitAccount;
-@property (readonly, nonatomic) NSString *aa_displayName;
 @property (copy, nonatomic, setter=aa_setFirstName:) NSString *aa_firstName;
 @property (readonly, nonatomic) ACAccount *aa_fmfAccount;
 @property (readonly, nonatomic) ACAccount *aa_fmipAccount;
@@ -34,8 +29,7 @@
 @property (nonatomic, setter=aa_setPrimaryAccount:) BOOL aa_isPrimaryAccount;
 @property (nonatomic, setter=aa_setPrimaryEmailVerified:) BOOL aa_isPrimaryEmailVerified;
 @property (readonly, nonatomic) BOOL aa_isSandboxAccount;
-@property (nonatomic, setter=aa_setSyncedAccount:) BOOL aa_isSyncedAccount;
-@property (nonatomic, setter=aa_setUndergoingRepair:) BOOL aa_isUndergoingRepair;
+@property (readonly, nonatomic) BOOL aa_isSuspended;
 @property (nonatomic, setter=aa_setUsesCloudDocs:) BOOL aa_isUsingCloudDocs;
 @property (readonly, nonatomic) BOOL aa_isUsingiCloud;
 @property (copy, nonatomic, setter=aa_setLastKnownQuota:) NSNumber *aa_lastKnownQuota;
@@ -43,21 +37,14 @@
 @property (readonly, nonatomic) NSString *aa_mapsToken;
 @property (readonly, nonatomic) NSString *aa_mdmServerToken;
 @property (copy, nonatomic, setter=aa_setMiddleName:) NSString *aa_middleName;
-@property (readonly, nonatomic) BOOL aa_needsEmailConfiguration;
-@property (readonly, nonatomic) BOOL aa_needsRegistration;
 @property (nonatomic, setter=aa_setNeedsToVerifyTerms:) BOOL aa_needsToVerifyTerms;
 @property (copy, nonatomic, setter=aa_setPassword:) NSString *aa_password;
 @property (readonly, nonatomic) NSString *aa_personID;
 @property (readonly, nonatomic) NSString *aa_primaryEmail;
-@property (readonly, nonatomic) NSString *aa_protocolVersion;
 @property (readonly, copy, nonatomic) AARegionInfo *aa_regionInfo;
-@property (readonly, nonatomic) int aa_repairerPID;
-@property (readonly, nonatomic) BOOL aa_serviceUnavailable;
-@property (readonly, nonatomic) NSDictionary *aa_serviceUnavailableInfo;
-@property (readonly, nonatomic) NSString *aa_syncStoreIdentifier;
+@property (nonatomic, setter=aa_setRepairState:) NSNumber *aa_repairState;
+@property (readonly, copy, nonatomic) AASuspensionInfo *aa_suspensionInfo;
 
-+ (id)aa_dataclassesBoundToPrimaryAppleAccount;
-+ (id)aa_dataclassesBoundToSingleAppleAccount;
 - (id)aa_authTokenWithError:(id *)arg1;
 - (id)aa_hsaTokenWithError:(id *)arg1;
 - (void)aa_setHSAToken:(id)arg1;
@@ -66,6 +53,5 @@
 - (void)aa_setUseCellular:(BOOL)arg1 forDataclass:(id)arg2;
 - (void)aa_updateWithProvisioningResponse:(id)arg1;
 - (BOOL)aa_useCellularForDataclass:(id)arg1;
-- (int)mobileMeAccountStatus;
 @end
 

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDragAnimating-Protocol.h>
-#import <UIKit/UIDragInteractionContext-Protocol.h>
+#import <UIKitCore/UIDragAnimating-Protocol.h>
+#import <UIKitCore/UIDragInteractionContext-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, UIDelayedAction;
 

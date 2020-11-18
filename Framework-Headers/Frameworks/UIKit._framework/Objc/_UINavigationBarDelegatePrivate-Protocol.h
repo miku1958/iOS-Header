@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UINavigationBarDelegate-Protocol.h>
+#import <UIKitCore/UINavigationBarDelegate-Protocol.h>
 
 @class UINavigationBar, UINavigationItem, UISearchController;
 @protocol UIViewControllerTransitionCoordinator;

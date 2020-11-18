@@ -6,30 +6,38 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/HDAssertionObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDBTLEHeartRateDataCollector, HDDemoManager, HDProfile, NSDate, NSMutableArray, NSMutableDictionary, NSString;
+@class HDBTLEHeartRateDataCollector, HDDatabaseCoalescedWritePool, HDDemoManager, HDProfile, NSDate, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDDataCollectionManager : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver>
+@interface HDDataCollectionManager : NSObject <HDDiagnosticObject, HDHealthDaemonReadyObserver, HDAssertionObserver>
 {
     NSDate *_lastLaunchUpdate;
     NSMutableDictionary *_dataAggregatorsByType;
     NSMutableArray *_builtinCollectors;
+    HDDatabaseCoalescedWritePool *_pendingSavePool;
+    double unitTest_pendingSaveCoalescingInterval;
+    BOOL unitTest_hasSetPendingSaveCoalescingInterval;
+    CDUnknownBlockType _unitTest_aggregatorConfigurationChangedHandler;
     HDProfile *_profile;
     NSMutableDictionary *_dataCollectorsByType;
     NSMutableDictionary *_observersByType;
     HDBTLEHeartRateDataCollector *_blteHeartRateDataCollector;
     NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_assertionQueue;
     HDDemoManager *_demoManager;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *assertionQueue; // @synthesize assertionQueue=_assertionQueue;
 @property (strong, nonatomic) HDBTLEHeartRateDataCollector *blteHeartRateDataCollector; // @synthesize blteHeartRateDataCollector=_blteHeartRateDataCollector;
 @property (strong, nonatomic) NSMutableDictionary *dataCollectorsByType; // @synthesize dataCollectorsByType=_dataCollectorsByType;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) HDDemoManager *demoManager; // @synthesize demoManager=_demoManager;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasAccessToFitnessData;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableDictionary *observersByType; // @synthesize observersByType=_observersByType;
 @property (readonly, weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
@@ -37,10 +45,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (Class)_aggregatorClassForObjectType:(id)arg1;
+- (id)_dataAggregatorConfigurationForCollectorState:(CDStruct_0714bc26)arg1;
+- (id)_dataAggregatorsDiagnosticDescription;
 - (id)_dataCollectorsDiagnosticDescription;
 - (BOOL)_dataReceived:(id)arg1 provenance:(id)arg2 isDemoData:(BOOL)arg3 error:(id *)arg4;
 - (void)_demoObjectsReceived:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_newAggregatorForObjectType:(id)arg1;
 - (id)_observersDescription;
 - (void)_queue_addDataCollector:(id)arg1;
 - (void)_queue_adjustDataCollectionForType:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -52,10 +62,13 @@
 - (id)_queue_demoManagerCreatingIfNecessary;
 - (id)_queue_observerMapForType:(id)arg1;
 - (void)_queue_setupUnprotectedDataDependantState;
+- (void)_requestAggregationThroughDate:(id)arg1 type:(id)arg2 mode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_updateDataCollectorsWithPrivacySettings;
 - (void)addDataCollectionObserver:(id)arg1 type:(id)arg2 collectionInterval:(double)arg3 state:(id)arg4;
 - (void)addDataCollector:(id)arg1;
 - (id)aggregatorForType:(id)arg1;
+- (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
 - (id)btleHeartRateDataCollector;
 - (void)daemonReady:(id)arg1;
 - (void)dataCollectionObserver:(id)arg1 didChangeState:(id)arg2;
@@ -63,12 +76,15 @@
 - (double)defaultCollectionIntervalForType:(id)arg1;
 - (id)diagnosticDescription;
 - (void)generateFakeDataForActivityType:(long long)arg1 minutes:(double)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)immediateUpdateForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)init;
 - (id)initWithProfile:(id)arg1;
+- (void)performSaveWithMaximumLatency:(double)arg1 block:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)periodicUpdate;
 - (id)pluginDataCollectors;
 - (void)removeDataCollectionObserver:(id)arg1;
 - (void)removeDataCollectionObserver:(id)arg1 type:(id)arg2;
+- (void)requestAggregationForAllTypesThroughDate:(id)arg1 mode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)requestAggregationThroughDate:(id)arg1 types:(id)arg2 mode:(long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)sensorDataArrayReceived:(id)arg1 deviceEntity:(id)arg2 error:(id *)arg3;
 - (void)sensorDataReceived:(id)arg1 deviceEntity:(id)arg2;
 - (void)startDataCollectionForType:(id)arg1 observer:(id)arg2 collectionInterval:(double)arg3;
@@ -76,7 +92,12 @@
 - (void)startFakingWithHKWorkoutActivityType:(unsigned long long)arg1;
 - (void)stopDataCollectionForType:(id)arg1 observer:(id)arg2;
 - (void)stopFakingData;
-- (void)updateCollectionInterval:(double)arg1 type:(id)arg2 observer:(id)arg3;
+- (id)takeCollectionAssertionWithOwnerIdentifier:(id)arg1 sampleTypes:(id)arg2 observer:(id)arg3 observerState:(id)arg4 collectionInterval:(double)arg5;
+- (id)takeCollectionAssertionWithOwnerIdentifier:(id)arg1 sampleTypes:(id)arg2 observerState:(id)arg3 collectionInterval:(double)arg4;
+- (id)unitTest_dataAggregatorConfigurationForType:(id)arg1;
+- (void)unitTest_setAggregator:(id)arg1 forType:(id)arg2;
+- (void)unitTest_setAggregatorConfigurationChangeHandler:(CDUnknownBlockType)arg1;
+- (void)unitTest_setPendingSaveCoalescingInterval:(double)arg1;
 
 @end
 

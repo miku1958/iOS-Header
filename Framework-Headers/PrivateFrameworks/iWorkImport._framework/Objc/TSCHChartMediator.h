@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
@@ -44,6 +44,8 @@ __attribute__((visibility("hidden")))
 - (id)dataFormatterForSeries:(id)arg1 index:(unsigned long long)arg2 axisType:(int)arg3 documentRoot:(id)arg4;
 - (void)dealloc;
 - (id)errorBarCustomFormulaForSeriesIndex:(unsigned long long)arg1 dataType:(int)arg2;
+- (BOOL)hasCategoryReferences;
+- (BOOL)hasTractReference;
 - (id)init;
 - (id)initWithChartInfo:(id)arg1;
 - (void)invalidateAndSynchronizeMediator;

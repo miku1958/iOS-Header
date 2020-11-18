@@ -35,7 +35,7 @@
 - (void).cxx_destruct;
 - (id)_createButtonWithGridView:(id)arg1 item:(id)arg2;
 - (id)_createLabelForStyle:(long long)arg1;
-- (void)_didTapButton:(id)arg1;
+- (void)_didTapButton;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (id)currentFont;

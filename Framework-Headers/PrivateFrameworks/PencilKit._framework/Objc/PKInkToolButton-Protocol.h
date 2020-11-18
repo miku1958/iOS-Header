@@ -9,6 +9,7 @@
 
 @protocol PKInkToolButton
 
+@property (nonatomic) unsigned long long attributeSet;
 @property (strong, nonatomic) UIColor *color;
 @property (strong, nonatomic) NSString *identifier;
 @property (nonatomic) BOOL isUsedOnDarkBackground;

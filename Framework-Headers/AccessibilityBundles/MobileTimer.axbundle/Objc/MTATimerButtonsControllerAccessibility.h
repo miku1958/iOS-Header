@@ -16,7 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateCancelButtonState;
 - (id)initWithTarget:(id)arg1;
-- (void)setState:(int)arg1;
+- (void)setState:(unsigned long long)arg1;
 
 @end
 

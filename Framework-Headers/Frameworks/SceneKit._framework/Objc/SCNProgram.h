@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -19,6 +19,7 @@
     NSString *_vertexFunctionName;
     NSString *_fragmentFunctionName;
     NSString *_name;
+    NSString *_sourceFile;
     NSMutableDictionary *_semanticInfos;
     BOOL _opaque;
     id _library;
@@ -55,7 +56,9 @@
 - (void)setSemantic:(id)arg1 forSymbol:(id)arg2;
 - (void)setSemantic:(id)arg1 forSymbol:(id)arg2 options:(id)arg3;
 - (void)setSemanticInfos:(id)arg1;
+- (void)setSourceFile:(id)arg1;
 - (int)shadingLanguage;
+- (id)sourceFile;
 
 @end
 

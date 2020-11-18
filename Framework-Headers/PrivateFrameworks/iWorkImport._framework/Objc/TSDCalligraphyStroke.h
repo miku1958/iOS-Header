@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)drawsInOneStep;
 - (BOOL)drawsOutsideStrokeBounds;
 - (double)horizontalMarginForSwatch;
-- (double)i_verticalOffsetForSwatch;
 - (id)initWithColor:(id)arg1 width:(double)arg2 cap:(int)arg3 join:(int)arg4 pattern:(id)arg5 miterLimit:(double)arg6;
 - (id)initWithName:(id)arg1 color:(id)arg2 width:(double)arg3 cap:(int)arg4 join:(int)arg5 pattern:(id)arg6 miterLimit:(double)arg7;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

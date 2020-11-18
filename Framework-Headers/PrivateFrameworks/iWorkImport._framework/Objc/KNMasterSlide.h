@@ -76,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (void)removeBuildChunk:(id)arg1 rollbackGeneratedIdentifier:(BOOL)arg2;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)saveToArchiver:(id)arg1;
+- (BOOL)supportsBuilds;
 - (id)tagsforNewPlaceholderInfos:(id)arg1;
 - (id)thumbnailTextForPlaceholder:(id)arg1;
 - (void)updatePlaceholderText;

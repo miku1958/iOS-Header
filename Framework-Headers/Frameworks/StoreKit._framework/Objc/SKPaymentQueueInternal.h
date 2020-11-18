@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, SKPaymentQueueClient, SKXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface SKPaymentQueueInternal : NSObject
 {
@@ -14,7 +15,8 @@
     SKPaymentQueueClient *_client;
     BOOL _isRefreshing;
     NSMutableArray *_localTransactions;
-    struct __CFArray *_observers;
+    NSMutableArray *_observerReferences;
+    NSObject<OS_dispatch_queue> *_observerReferencesAccessQueue;
     SKXPCConnection *_requestConnection;
     SKXPCConnection *_responseConnection;
     BOOL _restoreFinishedDuringRefresh;
@@ -22,6 +24,7 @@
     NSMutableArray *_transactions;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CalPreferences, NSArray, NSDate, NSNumber, NSString;
 
@@ -44,6 +44,12 @@
 @property (nonatomic) BOOL showWindowDebugButton;
 @property (strong, nonatomic) NSDate *simulatedCurrentDate;
 @property (nonatomic) BOOL swipeToDeleteEnabled;
+@property (strong, nonatomic) NSString *upNextColor;
+@property (nonatomic) double upNextDuration;
+@property (strong, nonatomic) NSString *upNextLocation;
+@property (nonatomic) BOOL upNextSimpleModeEnabled;
+@property (strong, nonatomic) NSDate *upNextStartTime;
+@property (strong, nonatomic) NSString *upNextTitle;
 @property (nonatomic) BOOL viewedTimeZoneAutomatic;
 @property (strong, nonatomic) NSNumber *weekStart;
 @property (strong, nonatomic) NSNumber *weekViewHourScale;

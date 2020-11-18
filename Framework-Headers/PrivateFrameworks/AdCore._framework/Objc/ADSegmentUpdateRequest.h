@@ -12,6 +12,7 @@
 
 @interface ADSegmentUpdateRequest : PBRequest <NSCopying>
 {
+    CDStruct_95bda58d _accountStates;
     CDStruct_95bda58d _accountTypes;
     CDStruct_95bda58d _deviceModes;
     double _iTunesRefreshTime;
@@ -34,6 +35,8 @@
     } _has;
 }
 
+@property (readonly, nonatomic) int *accountStates;
+@property (readonly, nonatomic) unsigned long long accountStatesCount;
 @property (readonly, nonatomic) int *accountTypes;
 @property (readonly, nonatomic) unsigned long long accountTypesCount;
 @property (strong, nonatomic) NSString *advertisingIdentifier; // @synthesize advertisingIdentifier=_advertisingIdentifier;
@@ -63,12 +66,17 @@
 
 + (id)options;
 - (void).cxx_destruct;
+- (int)StringAsAccountStates:(id)arg1;
 - (int)StringAsAccountTypes:(id)arg1;
 - (int)StringAsDeviceModes:(id)arg1;
+- (int)accountStateAtIndex:(unsigned long long)arg1;
+- (id)accountStatesAsString:(int)arg1;
 - (int)accountTypeAtIndex:(unsigned long long)arg1;
 - (id)accountTypesAsString:(int)arg1;
+- (void)addAccountState:(int)arg1;
 - (void)addAccountType:(int)arg1;
 - (void)addDeviceMode:(int)arg1;
+- (void)clearAccountStates;
 - (void)clearAccountTypes;
 - (void)clearDeviceModes;
 - (void)copyTo:(id)arg1;
@@ -82,6 +90,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setAccountStates:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setAccountTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setDeviceModes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

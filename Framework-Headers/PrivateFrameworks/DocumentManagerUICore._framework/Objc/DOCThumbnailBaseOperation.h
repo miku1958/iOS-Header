@@ -6,12 +6,13 @@
 
 #import <Foundation/NSOperation.h>
 
+#import <DocumentManagerUICore/DOCThumbnailSubOperationProviding-Protocol.h>
+
 @protocol DOCThumbnailOperationDelegate;
 
-@interface DOCThumbnailBaseOperation : NSOperation
+@interface DOCThumbnailBaseOperation : NSOperation <DOCThumbnailSubOperationProviding>
 {
     BOOL _representativeIcon;
-    unsigned int _qos;
     long long _executionState;
     double _scale;
     unsigned long long _style;
@@ -21,16 +22,16 @@
 
 @property (weak, nonatomic) id<DOCThumbnailOperationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) long long executionState; // @synthesize executionState=_executionState;
-@property (nonatomic) unsigned int qos; // @synthesize qos=_qos;
 @property (nonatomic) BOOL representativeIcon; // @synthesize representativeIcon=_representativeIcon;
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
+@property (readonly, nonatomic) NSOperation *subOperation;
 
 + (id)processImage:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 backgroundDecorator:(CDUnknownBlockType)arg5 foregroundDecorator:(CDUnknownBlockType)arg6;
 - (void).cxx_destruct;
 - (BOOL)generateThumbnail:(id *)arg1 representativeIcon:(BOOL *)arg2;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 delegate:(id)arg3 style:(unsigned long long)arg4 qos:(unsigned int)arg5;
+- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 delegate:(id)arg3 style:(unsigned long long)arg4;
 - (BOOL)isConcurrent;
 - (BOOL)isExecuting;
 - (BOOL)isFinished;

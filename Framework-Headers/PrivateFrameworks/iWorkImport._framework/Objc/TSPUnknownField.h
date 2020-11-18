@@ -4,14 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <iWorkImport/TSPForwardsCompatibleField-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface TSPUnknownField : NSObject
+@interface TSPUnknownField : NSObject <TSPForwardsCompatibleField>
 {
     shared_ptr_b9bbcad9 _fieldSet;
     struct FieldInfo _fieldInfo;
 }
+
+@property (readonly, nonatomic) BOOL hasKnownValues;
+@property (readonly, nonatomic) BOOL hasUnknownValues;
 
 + (id)unknownFieldWithFieldSet:(shared_ptr_b9bbcad9 *)arg1 fieldInfo:(const struct FieldInfo *)arg2;
 - (id).cxx_construct;
@@ -20,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (const struct FieldInfo *)fieldInfo;
 - (id)initWithFieldSet:(shared_ptr_b9bbcad9 *)arg1 fieldInfo:(const struct FieldInfo *)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (void)mergeToMessage:(struct Message *)arg1 reflection:(const struct Reflection *)arg2;
 - (void)mergeToUnknownFieldSet:(struct UnknownFieldSet *)arg1;
 - (void)saveToArchiver:(id)arg1;
 - (void)updateMessageInfo:(struct MessageInfo *)arg1;

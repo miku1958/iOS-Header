@@ -45,6 +45,8 @@ __attribute__((visibility("hidden")))
     long long __responseBodyBytesDecoded;
     BOOL __apsRelayAttempted;
     BOOL __apsRelaySucceeded;
+    long long __totalBytesSent;
+    long long __totalBytesReceived;
 }
 
 + (BOOL)supportsSecureCoding;
@@ -64,6 +66,8 @@ __attribute__((visibility("hidden")))
 - (long long)_responseHeaderBytesReceived;
 - (BOOL)_secureConnection;
 - (BOOL)_serverPush;
+- (long long)_totalBytesReceived;
+- (long long)_totalBytesSent;
 - (id)connectEndDate;
 - (id)connectStartDate;
 - (void)dealloc;
@@ -118,6 +122,8 @@ __attribute__((visibility("hidden")))
 - (void)set_responseHeaderBytesReceived:(long long)arg1;
 - (void)set_secureConnection:(BOOL)arg1;
 - (void)set_serverPush:(BOOL)arg1;
+- (void)set_totalBytesReceived:(long long)arg1;
+- (void)set_totalBytesSent:(long long)arg1;
 
 @end
 

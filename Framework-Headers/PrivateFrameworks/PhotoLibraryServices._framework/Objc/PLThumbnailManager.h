@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@class NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, PLPhotoLibraryPathManager;
 @protocol PLThumbPersistenceManager;
 
 @interface PLThumbnailManager : NSObject
@@ -20,9 +20,11 @@
     NSMutableArray *_alreadyFailedAssetObjectIDsForRebuild;
     NSLock *_fixLock;
     id _observerToken;
+    PLPhotoLibraryPathManager *_pathManager;
 }
 
 @property (strong, nonatomic) id observerToken; // @synthesize observerToken=_observerToken;
+@property (readonly, nonatomic) PLPhotoLibraryPathManager *pathManager; // @synthesize pathManager=_pathManager;
 @property (readonly, strong, nonatomic) NSMutableDictionary *thumbManagersByFormat; // @synthesize thumbManagersByFormat=_thumbManagersByFormat;
 
 + (id)_allPossibleThumbnailFormatIDs;
@@ -53,14 +55,13 @@
 + (id)cameraPreviewWellImageQueue;
 + (BOOL)cameraPreviewWellSupportedOnCurrentDevice;
 + (id)defaultThumbnailManager;
-+ (id)defaultThumbnailsDirectory;
-+ (id)defaultThumbnailsDirectoryV2;
 + (void)handleRebuildThumbnailRequestPersistentFailure;
 + (BOOL)hasDeprecationsOnly;
 + (BOOL)hasExceededRebuildThumbnailRequestLimit;
 + (BOOL)hasMissingThumbnailsInLibrary:(id)arg1;
 + (BOOL)hasRebuildThumbnailsRequest;
 + (BOOL)hasThumbnailVersionMismatch;
++ (id)imageTableForFormat:(int)arg1;
 + (BOOL)isMissingThumbnailTables;
 + (BOOL)isRebuildingThumbnails;
 + (void)rebuildAllMissingThumbnails;
@@ -87,7 +88,7 @@
 - (void)deleteThumbnailsWithIdentifier:(id)arg1 orIndex:(unsigned long long)arg2 uuid:(id)arg3;
 - (void)discardCachedThumbnailDownscalerContexts;
 - (void)endThumbnailSafePropertyUpdatesOnAsset:(id)arg1 withToken:(id)arg2;
-- (id)init;
+- (id)initWithPhotoLibraryPathManager:(id)arg1;
 - (struct CGImage *)newImageForAsset:(id)arg1 format:(id)arg2;
 - (id)placeholderDataForFormat:(int)arg1 photoImageSize:(struct CGSize)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 imageDataOffset:(int *)arg8;
 - (id)preheatItemSourceForFormatID:(int)arg1;

@@ -13,6 +13,7 @@
 
 @interface HMMediaSystem (HFMediaAccessoryProfileAdditions) <HFMediaProfileContainer>
 
+@property (readonly, nonatomic) NSSet *accessories;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMMediaObjectDelegate> delegate;
 @property (readonly, copy) NSString *description;
@@ -52,14 +53,12 @@
 @property (readonly, nonatomic) HMSymptomsHandler *symptomsHandler;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
-- (id)accessories;
 - (id)hf_appleMusicCurrentLoggedInAccount;
 - (id)hf_appleMusicCurrentLoggedInAccountDSID;
 - (id)hf_fetchLog:(id)arg1 timeout:(double)arg2;
 - (id)hf_fetchLogListWithTimeout:(double)arg1;
 - (id)hf_idsDeviceIdentifierWithError:(id *)arg1;
-- (id)hf_prettyDescriptionOfType:(unsigned long long)arg1;
-- (id)hf_serializedStateDumpRepresentation;
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateIsFavorite:(BOOL)arg1;
 @end

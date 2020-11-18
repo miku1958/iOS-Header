@@ -10,11 +10,13 @@
 #import <NanoRegistry/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface NRSecureDevicePropertyStore : NSObject <NSSecureCoding, NSCopying>
 {
     NSMutableDictionary *_IDToProperty;
     NSMutableDictionary *_propertyToID;
+    NSObject<OS_dispatch_queue> *_dirtyQueue;
     BOOL _dirty;
 }
 
@@ -30,6 +32,8 @@
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (void)forceImportSecureProperties:(id)arg1;
+- (void)forceWriteSecurePropertyID:(id)arg1 withValue:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;

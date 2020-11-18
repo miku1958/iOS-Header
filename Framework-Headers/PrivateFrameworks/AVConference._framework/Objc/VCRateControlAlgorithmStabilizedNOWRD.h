@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCRateControlAlgorithm-Protocol.h>
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     int _state;
     int _rampUpStatus;
     int _rampDownStatus;
+    BOOL _paused;
     unsigned short _echoedTimestamp;
     unsigned short _previousTimestamp;
     unsigned short _queuingDelayTimestamp;
@@ -31,13 +32,7 @@ __attribute__((visibility("hidden")))
     unsigned int _remoteBandwidthEstimation;
     unsigned int _localBandwidthEstimation;
     double _owrd;
-    struct {
-        double time[100];
-        double owrd[100];
-        int frontIndex;
-        int rearIndex;
-        unsigned int size;
-    } _owrdList;
+    CDStruct_714379fe _owrdList;
     BOOL _isOWRDListReady;
     BOOL _isOWRDConstant;
     double _nowrd;
@@ -85,11 +80,13 @@ __attribute__((visibility("hidden")))
     int _currentTierIndex;
     int _previousTierIndex;
     unsigned int _targetBitrate;
+    unsigned int _actualBitrate;
     void *_logDump;
     void *_logBasebandDump;
     BOOL _isPeriodicLoggingEnabled;
 }
 
+@property (readonly, nonatomic) unsigned int actualBitrate; // @synthesize actualBitrate=_actualBitrate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -98,11 +95,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int localBandwidthEstimation; // @synthesize localBandwidthEstimation=_localBandwidthEstimation;
 @property (strong, nonatomic) VCRateControlMediaController *mediaController; // @synthesize mediaController=_mediaController;
 @property (readonly, nonatomic) unsigned int mostBurstLoss; // @synthesize mostBurstLoss=_mostBurstLoss;
+@property (readonly, nonatomic) double owrd; // @synthesize owrd=_owrd;
 @property (readonly, nonatomic) double packetLossRate; // @synthesize packetLossRate=_packetLossRate;
+@property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
 @property (readonly, nonatomic) unsigned int rateChangeCounter; // @synthesize rateChangeCounter=_rateChangeCounter;
 @property (readonly, nonatomic) double roundTripTime; // @synthesize roundTripTime=_roundTripTime;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
+@property (readonly, nonatomic) unsigned int totalPacketReceived; // @synthesize totalPacketReceived=_totalPacketReceived;
 
 - (int)basebandAdditionalTiersForRampUp;
 - (void)calculateCongestionMetricsFromOWRD:(double)arg1 time:(double)arg2;
@@ -116,8 +116,8 @@ __attribute__((visibility("hidden")))
 - (id)className;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(BOOL)arg2;
 - (void)dealloc;
-- (void)doRateControlWithBasebandStatistics:(CDStruct_5cb394a5)arg1;
-- (void)doRateControlWithStatistics:(CDStruct_5cb394a5)arg1;
+- (void)doRateControlWithBasebandStatistics:(CDStruct_48a7b5a5)arg1;
+- (BOOL)doRateControlWithStatistics:(CDStruct_48a7b5a5)arg1;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(BOOL)arg2;
 - (double)getDoubleTimeFromTimestamp:(unsigned int)arg1 timestampTick:(unsigned int)arg2 wrapAroundCounter:(unsigned int)arg3;

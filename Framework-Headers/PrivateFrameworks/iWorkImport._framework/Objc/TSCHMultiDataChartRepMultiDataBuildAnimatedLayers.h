@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CALayer, NSArray;
 
@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *referenceLineLayers; // @synthesize referenceLineLayers;
 
 + (id)animatedLayers;
+- (void).cxx_destruct;
 - (id)allBackgroundFadingLayers;
-- (void)dealloc;
 - (id)elementFadingLayers;
 - (id)layersAlreadyHaveProperTransforms;
 - (id)layersRequiringGeometryTransformsBackgroundOnly:(BOOL)arg1;

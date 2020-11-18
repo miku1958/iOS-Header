@@ -38,10 +38,13 @@
 + (id)metadataWithItemIdentifier:(id)arg1 keyValueStorePayload:(id)arg2 failuresOkay:(BOOL)arg3;
 + (id)metadataWithValuesFromDataSourceItem:(id)arg1;
 + (id)pairWithKVSKey:(id)arg1 kvsPayload:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initAsTestableItem;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)keyValueStorePayload;
 - (id)kvsKey;

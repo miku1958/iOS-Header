@@ -8,11 +8,11 @@
 
 #import <NewsUI/NSSNewsAnalyticsSessionManagerObserving-Protocol.h>
 #import <NewsUI/NUAggregateVideoPlayerEventTracker-Protocol.h>
-#import <NewsUI/NUViewAppearanceEventTracker-Protocol.h>
+#import <NewsUI/SVVideoViewControllerAppearanceObserver-Protocol.h>
 
 @class NSMutableArray, NSString;
 
-@interface NUVideoPlayerEventTracker : NSObject <NSSNewsAnalyticsSessionManagerObserving, NUAggregateVideoPlayerEventTracker, NUViewAppearanceEventTracker>
+@interface NUVideoPlayerEventTracker : NSObject <NSSNewsAnalyticsSessionManagerObserving, NUAggregateVideoPlayerEventTracker, SVVideoViewControllerAppearanceObserver>
 {
     BOOL _hostProcessIsForeground;
     BOOL _videoPlayerViewHasAppeared;
@@ -54,13 +54,15 @@
 - (void)userEngagedWithCallToActionOfVideoAdWithMetadata:(id)arg1;
 - (void)userEngagedWithDiscoverMoreButtonWithVideoItem:(id)arg1;
 - (void)userSkippedPlaybackOfVideoAdWithMetadata:(id)arg1;
+- (void)videoDidAppearWithVideoItem:(id)arg1;
+- (void)videoDidDisappearWithVideoItem:(id)arg1;
 - (void)videoPlaybackPassedFirstQuartileWithVideoItem:(id)arg1;
 - (void)videoPlaybackPassedSecondQuartileWithVideoItem:(id)arg1;
 - (void)videoPlaybackPassedThirdQuartileWithVideoItem:(id)arg1;
 - (void)videoPlayerDidBecomeInvisible;
 - (void)videoPlayerDidBecomeVisible;
-- (void)viewDidAppear;
-- (void)viewDidDisappear;
+- (void)videoViewControllerDidAppear:(id)arg1;
+- (void)videoViewControllerDidDisappear:(id)arg1;
 
 @end
 

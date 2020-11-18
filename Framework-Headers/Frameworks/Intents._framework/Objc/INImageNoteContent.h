@@ -7,12 +7,13 @@
 #import <Intents/INNoteContent.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
+#import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class INImage, NSString;
 
-@interface INImageNoteContent : INNoteContent <INCacheableContainer, NSSecureCoding, NSCopying>
+@interface INImageNoteContent : INNoteContent <INCacheableContainer, INImageProxyInjecting, NSSecureCoding, NSCopying>
 {
     INImage *_image;
 }
@@ -20,14 +21,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) INImage *image; // @synthesize image=_image;
+@property (copy, nonatomic, setter=_setImage:) INImage *image; // @synthesize image=_image;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
 - (id)_initWithImage:(id)arg1;
+- (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_cacheableObjects;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

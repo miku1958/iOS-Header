@@ -11,7 +11,7 @@
 #import <TelephonyUtilities/TUCallRequest-Protocol.h>
 #import <TelephonyUtilities/TUVideoRequest-Protocol.h>
 
-@class CNContactStore, IDSDestination, NSArray, NSString, NSURL, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle;
+@class CNContactStore, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentityClient;
 
 @interface TUDialRequest : NSObject <TUCallRequest, TUVideoRequest, NSSecureCoding, NSCopying>
 {
@@ -24,7 +24,9 @@
     BOOL _endpointOnCurrentDevice;
     BOOL _sos;
     BOOL _redial;
+    BOOL _shouldSuppressInCallUI;
     NSString *_uniqueProxyIdentifier;
+    TUSenderIdentityClient *_senderIdentityClient;
     TUCallProvider *_provider;
     long long _dialType;
     TUHandle *_handle;
@@ -35,7 +37,9 @@
     TUCallProviderManager *_providerManager;
     CDUnknownBlockType _isEmergencyNumberBlock;
     CDUnknownBlockType _isEmergencyNumberOrIsWhitelistedBlock;
+    NSDate *_dateDialed;
     NSString *_endpointIDSDestinationURI;
+    NSUUID *_localSenderIdentityUUID;
     long long _originatingUIType;
     struct CGSize _localPortraitAspectRatio;
     struct CGSize _localLandscapeAspectRatio;
@@ -43,9 +47,9 @@
 
 @property (readonly, nonatomic) NSURL *URL;
 @property (copy, nonatomic) NSString *audioSourceIdentifier; // @synthesize audioSourceIdentifier=_audioSourceIdentifier;
-@property (nonatomic) int callIdentifier;
 @property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (readonly, nonatomic) CNContactStore *contactStore;
+@property (strong, nonatomic) NSDate *dateDialed; // @synthesize dateDialed=_dateDialed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *destinationID;
@@ -61,6 +65,7 @@
 @property (copy, nonatomic) CDUnknownBlockType isEmergencyNumberOrIsWhitelistedBlock; // @synthesize isEmergencyNumberOrIsWhitelistedBlock=_isEmergencyNumberOrIsWhitelistedBlock;
 @property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
+@property (copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property (nonatomic) long long originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property (nonatomic) BOOL performDialAssist; // @synthesize performDialAssist=_performDialAssist;
 @property (nonatomic) BOOL performLocalDialAssist; // @synthesize performLocalDialAssist=_performLocalDialAssist;
@@ -68,7 +73,9 @@
 @property (copy, nonatomic) NSString *providerCustomIdentifier; // @synthesize providerCustomIdentifier=_providerCustomIdentifier;
 @property (readonly, nonatomic) TUCallProviderManager *providerManager; // @synthesize providerManager=_providerManager;
 @property (nonatomic, getter=isRedial) BOOL redial; // @synthesize redial=_redial;
+@property (readonly, nonatomic) TUSenderIdentityClient *senderIdentityClient; // @synthesize senderIdentityClient=_senderIdentityClient;
 @property (readonly, nonatomic) int service;
+@property (nonatomic) BOOL shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property (nonatomic) BOOL showUIPrompt; // @synthesize showUIPrompt=_showUIPrompt;
 @property (nonatomic, getter=isSOS, setter=setSOS:) BOOL sos; // @synthesize sos=_sos;
 @property (readonly) Class superclass;
@@ -80,17 +87,15 @@
 @property (readonly, copy, nonatomic) NSArray *validityErrors;
 @property (nonatomic, getter=isVideo) BOOL video; // @synthesize video=_video;
 
-+ (CDUnknownBlockType)callIdentifierToContactIdentifierTransformBlock;
 + (CDUnknownBlockType)callProviderManagerGeneratorBlock;
-+ (CDUnknownBlockType)contactIdentifierToCallIdentifierTransformBlock;
 + (long long)dialRequestTypeForIntentDestinationType:(long long)arg1;
 + (long long)handleTypeForQueryItem:(id)arg1;
 + (long long)intentTTYTypeForTTYType:(long long)arg1;
++ (CDUnknownBlockType)legacyAddressBookIdentifierToContactIdentifierTransformBlock;
 + (long long)originatingUITypeForString:(id)arg1;
 + (id)providerForIntentPreferredCallProvider:(long long)arg1 providerManager:(id)arg2;
-+ (void)setCallIdentifierToContactIdentifierTransformBlock:(CDUnknownBlockType)arg1;
 + (void)setCallProviderManagerGeneratorBlock:(CDUnknownBlockType)arg1;
-+ (void)setContactIdentifierToCallIdentifierTransformBlock:(CDUnknownBlockType)arg1;
++ (void)setLegacyAddressBookIdentifierToContactIdentifierTransformBlock:(CDUnknownBlockType)arg1;
 + (id)stringForDialType:(long long)arg1;
 + (id)stringForOriginatingUIType:(long long)arg1;
 + (id)stringForTTYType:(long long)arg1;
@@ -104,8 +109,6 @@
 - (id)_contactFromINPerson:(id)arg1 bestGuessHandle:(id *)arg2;
 - (id)audioSourceIdentifierURLQueryItem;
 - (BOOL)boolValueForQueryItemWithName:(id)arg1 inURLComponents:(id)arg2;
-- (int)callIdentifierFromURLComponents:(id)arg1;
-- (id)callIdentifierQueryItemName;
 - (id)callProviderFromURLComponents:(id)arg1 video:(BOOL *)arg2;
 - (id)contactIdentifierFromURLComponents:(id)arg1;
 - (id)contactIdentifierURLQueryItem;
@@ -129,9 +132,14 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToDialRequest:(id)arg1;
 - (id)isVoicemailURLQueryItem;
+- (int)legacyAddressBookIdentifierFromURLComponents:(id)arg1;
+- (id)legacyAddressBookIdentifierQueryItemName;
+- (id)localSenderIdentityUUIDURLQueryItem;
 - (id)noPromptURLQueryItem;
 - (id)originatingUIURLQueryItem;
 - (id)providerCustomIdentifierURLQueryItem;
+- (id)redialURLQueryItem;
+- (id)shouldSuppressInCallUIQueryItem;
 - (id)sosURLQueryItem;
 - (id)suppressAssistURLQueryItem;
 - (id)ttyTypeURLQueryItem;

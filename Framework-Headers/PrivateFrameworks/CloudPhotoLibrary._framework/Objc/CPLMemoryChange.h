@@ -54,8 +54,8 @@
 + (id)_createTestMemoryWithAssets:(id)arg1;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
-- (id)identifiersForMapping;
 - (id)propertiesDescription;
+- (id)scopedIdentifiersForMapping;
 - (BOOL)supportsDeletion;
 - (BOOL)supportsDirectDeletion;
 - (id)translateToClientChangeUsingIDMapping:(id)arg1 error:(id *)arg2;

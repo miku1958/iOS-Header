@@ -12,5 +12,6 @@
 - (void)setObject:(id)arg1 atIndexedSubscript:(unsigned long long)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)tsu_allKeys;
+- (id)tsu_allObjects;
 @end
 

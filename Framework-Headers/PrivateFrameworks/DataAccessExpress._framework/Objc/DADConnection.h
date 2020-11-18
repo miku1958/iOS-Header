@@ -29,6 +29,7 @@
 
 @property (nonatomic) BOOL registered; // @synthesize registered=_registered;
 
++ (unsigned long long)_nextStopMonitoringStatusToken;
 + (void)setShouldIgnoreAccountChanges;
 + (id)sharedConnection;
 - (void).cxx_destruct;
@@ -51,8 +52,7 @@
 - (BOOL)_performOofSettingsRequest:(id)arg1 forAccountWithID:(id)arg2 forUpdate:(BOOL)arg3;
 - (void)_policyKeyChanged:(id)arg1;
 - (void)_registerForAppResumedNotification;
-- (void)_requestDaemonChangeAgentMonitoringStatus:(BOOL)arg1 waitForReply:(BOOL)arg2;
-- (void)_requestDaemonStopMonitoringAgents_Sync;
+- (void)_requestDaemonChangeAgentMonitoringStatus:(BOOL)arg1 withToken:(unsigned long long)arg2 waitForReply:(BOOL)arg3;
 - (void)_resetCertWarningsForAccountId:(id)arg1 andDataclasses:(long long)arg2 isUserRequested:(BOOL)arg3;
 - (void)_resetThrottleTimersForAccountId:(id)arg1;
 - (void)_sendSynchronousXPCMessageWithParameters:(id)arg1 handlerBlock:(CDUnknownBlockType)arg2;
@@ -60,6 +60,7 @@
 - (void)_serverDiedWithReason:(id)arg1;
 - (void)_shareResponseFinished:(id)arg1;
 - (void)_tearDownInFlightObjects;
+- (BOOL)_validateXPCReply:(id)arg1;
 - (id)activeSyncDeviceIdentifier;
 - (void)asyncProcessMeetingRequests:(id)arg1 deliveryIdsToClear:(id)arg2 deliveryIdsToSoftClear:(id)arg3 inFolderWithId:(id)arg4 forAccountWithId:(id)arg5;
 - (id)beginDownloadingAttachmentWithUUID:(id)arg1 accountID:(id)arg2 queue:(id)arg3 progressBlock:(CDUnknownBlockType)arg4 completionBlock:(CDUnknownBlockType)arg5;
@@ -86,9 +87,10 @@
 - (void)reportSharedCalendarInviteAsJunkForCalendarWithID:(id)arg1 accountID:(id)arg2 queue:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)requestCalendarAvailabilityWithAccountID:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 ignoredEventID:(id)arg4 addresses:(id)arg5 resultsBlock:(CDUnknownBlockType)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)requestDaemonShutdown;
-- (void)requestDaemonStartMonitoringAgents;
-- (void)requestDaemonStartMonitoringAgents_Sync;
-- (void)requestDaemonStopMonitoringAgents;
+- (void)requestDaemonStartMonitoringAgentsSyncWithToken:(unsigned long long)arg1;
+- (void)requestDaemonStartMonitoringAgentsWithToken:(unsigned long long)arg1;
+- (unsigned long long)requestDaemonStopMonitoringAgents;
+- (unsigned long long)requestDaemonStopMonitoringAgentsSync;
 - (BOOL)requestPolicyUpdateForAccountID:(id)arg1;
 - (void)resetTimersAndWarnings;
 - (void)respondToSharedCalendarInvite:(long long)arg1 forCalendarWithID:(id)arg2 accountID:(id)arg3 queue:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;

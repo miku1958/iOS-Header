@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIViewDraggingSourceDelegate-Protocol.h>
+#import <UIKitCore/_UIViewDraggingSourceDelegate-Protocol.h>
 
 @class NSArray, UIView;
 

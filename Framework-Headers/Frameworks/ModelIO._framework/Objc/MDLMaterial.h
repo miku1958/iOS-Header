@@ -22,19 +22,21 @@
 }
 
 @property (strong, nonatomic) MDLMaterial *baseMaterial; // @synthesize baseMaterial=_baseMaterial;
-@property (readonly, nonatomic) struct BidirectionalScatteringDistributionFunction *bsdf;
 @property (readonly, nonatomic) unsigned long long count;
 @property (nonatomic) unsigned long long materialFace; // @synthesize materialFace=_materialFace;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, strong, nonatomic) MDLScatteringFunction *scatteringFunction;
 
 - (void).cxx_destruct;
+- (struct BidirectionalScatteringDistributionFunction *)bsdf;
 - (void)conformToMatProperties;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)init;
 - (id)initWithName:(id)arg1 physicallyPlausibleBSDF:(struct PhysicallyPlausibleDistribution *)arg2;
 - (id)initWithName:(id)arg1 scatteringFunction:(id)arg2;
+- (void)loadTexturesUsingArchiveAssetResolver:(id)arg1 cache:(id)arg2;
 - (void)loadTexturesUsingResolver:(id)arg1;
+- (void)loadTexturesUsingResolver:(id)arg1 cache:(id)arg2;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)propertiesWithSemantic:(unsigned long long)arg1;

@@ -4,11 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotoLibraryServices/_PLManagedKeyword.h>
+#import <PhotoLibraryServices/PLManagedObject.h>
 
-@interface PLManagedKeyword : _PLManagedKeyword
+@class NSSet, NSString;
+
+@interface PLManagedKeyword : PLManagedObject
 {
 }
+
+@property (strong, nonatomic) NSSet *assetAttributes; // @dynamic assetAttributes;
+@property (strong, nonatomic) NSString *title; // @dynamic title;
+
++ (id)entityInManagedObjectContext:(id)arg1;
++ (id)entityName;
++ (id)insertInManagedObjectContext:(id)arg1;
 
 @end
 

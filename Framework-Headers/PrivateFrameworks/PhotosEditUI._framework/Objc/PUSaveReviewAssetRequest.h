@@ -11,6 +11,7 @@
 @class NSString, NSURL, PHContentEditingOutput, PLPhotoEditModel, PUEditableMediaProvider, PUPhotoEditIrisModel, PUReviewCreateAssetNode, PUVideoExportNode;
 @protocol PUEditableAsset;
 
+__attribute__((visibility("hidden")))
 @interface PUSaveReviewAssetRequest : NSObject <PXRunNodeDelegate>
 {
     CDUnknownBlockType _completionHandler;

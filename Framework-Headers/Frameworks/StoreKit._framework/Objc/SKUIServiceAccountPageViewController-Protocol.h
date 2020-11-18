@@ -6,12 +6,16 @@
 
 #import <StoreKit/NSObject-Protocol.h>
 
-@class NSString, NSURL;
+@class ACAccount, NSString, NSURL;
 
 @protocol SKUIServiceAccountPageViewController <NSObject>
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;
+- (void)bridgedRightButtonPressed;
 - (void)loadWithURL:(NSURL *)arg1;
 - (void)performRedeemOperationWithCode:(NSString *)arg1 cameraRecognized:(BOOL)arg2 completion:(void (^)(SKUIRedeem *, NSError *))arg3;
+- (void)setAccount:(ACAccount *)arg1;
+- (void)setBridgedNavigation:(BOOL)arg1;
+- (void)setLoadFromBridgedNavigation:(BOOL)arg1;
 @end
 

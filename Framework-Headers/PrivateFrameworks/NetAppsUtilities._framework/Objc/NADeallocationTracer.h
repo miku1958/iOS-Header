@@ -8,6 +8,7 @@
 
 @protocol NADeallocationTracerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface NADeallocationTracer : NSObject
 {
     id<NADeallocationTracerDelegate> _delegate;

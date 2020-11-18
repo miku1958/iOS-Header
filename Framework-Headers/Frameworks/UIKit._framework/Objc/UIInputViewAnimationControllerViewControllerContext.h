@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIViewControllerKeyboardContextTransitioning-Protocol.h>
+#import <UIKitCore/UIViewControllerKeyboardContextTransitioning-Protocol.h>
 
-@class NSMapTable, NSString, UIView, _UIViewControllerTransitionContext;
+@class NSString, UIKBViewTreeSnapshotter, UIView, _UIViewControllerTransitionContext;
 @protocol UIInputViewAnimationHost, UIViewControllerContextTransitioning;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     UIView *_to;
     struct CGRect _fromRect;
     struct CGRect _toRect;
-    NSMapTable *_transitioningBackdropViews;
+    UIKBViewTreeSnapshotter *_kbSnapshotter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -35,10 +35,7 @@ __attribute__((visibility("hidden")))
 
 + (id)contextWithHost:(id)arg1 startPlacement:(id)arg2 endPlacement:(id)arg3 transitionContext:(id)arg4;
 - (void)dealloc;
-- (void)gatherTransitioningBackdropViews;
 - (id)initWithHost:(id)arg1 startPlacement:(id)arg2 endPlacement:(id)arg3 transitionContext:(id)arg4;
-- (void)transitionBackdropViewsBack;
-- (void)transitionBackdropViewsToLowQuality;
 
 @end
 

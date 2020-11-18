@@ -13,10 +13,12 @@
     BOOL _localPDelayLogMeanInterval;
     BOOL _remotePDelayLogMeanInterval;
     BOOL _multipleRemotes;
+    BOOL _measuringPDelay;
     TSgPTPPortStatistics *_statistics;
 }
 
 @property (nonatomic) BOOL localPDelayLogMeanInterval; // @synthesize localPDelayLogMeanInterval=_localPDelayLogMeanInterval;
+@property (nonatomic) BOOL measuringPDelay; // @synthesize measuringPDelay=_measuringPDelay;
 @property (nonatomic) BOOL multipleRemotes; // @synthesize multipleRemotes=_multipleRemotes;
 @property (nonatomic) BOOL remotePDelayLogMeanInterval; // @synthesize remotePDelayLogMeanInterval=_remotePDelayLogMeanInterval;
 @property (strong, nonatomic) TSgPTPPortStatistics *statistics; // @synthesize statistics=_statistics;
@@ -24,6 +26,7 @@
 + (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
 - (BOOL)_commonInitWithService:(unsigned int)arg1;
 - (BOOL)_localPDelayLogMeanInterval;
+- (BOOL)_measuringPDelay;
 - (BOOL)_multipleRemotes;
 - (BOOL)_remotePDelayLogMeanInterval;
 - (id)_statistics;

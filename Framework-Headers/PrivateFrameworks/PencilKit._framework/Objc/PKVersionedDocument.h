@@ -21,9 +21,11 @@
 - (id)init;
 - (id)initWithArchive:(const struct Document *)arg1;
 - (id)initWithData:(id)arg1;
+- (id)initWithUnzippedData:(id)arg1;
 - (void)loadArchive:(const struct Document *)arg1;
 - (void)loadData:(id)arg1;
 - (void)loadDocumentArchive:(struct Document *)arg1;
+- (void)loadUnzippedData:(id)arg1;
 - (unsigned int)maxDocumentVersion;
 - (void)mergeVersion:(unsigned int)arg1 fromData:(id)arg2;
 - (unsigned long long)mergeWithVersionedDocument:(id)arg1;

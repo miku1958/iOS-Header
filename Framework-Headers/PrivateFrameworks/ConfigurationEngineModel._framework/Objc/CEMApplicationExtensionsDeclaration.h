@@ -12,30 +12,34 @@
 
 @interface CEMApplicationExtensionsDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSArray *_payloadAllowedExtensions;
+    NSArray *_payloadDeniedExtensions;
+    NSArray *_payloadDeniedExtensionPoints;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *payloadAllowedExtensions;
-@property (readonly, nonatomic) NSArray *payloadDeniedExtensionPoints;
-@property (readonly, nonatomic) NSArray *payloadDeniedExtensions;
+@property (copy, nonatomic) NSArray *payloadAllowedExtensions; // @synthesize payloadAllowedExtensions=_payloadAllowedExtensions;
+@property (copy, nonatomic) NSArray *payloadDeniedExtensionPoints; // @synthesize payloadDeniedExtensionPoints=_payloadDeniedExtensionPoints;
+@property (copy, nonatomic) NSArray *payloadDeniedExtensions; // @synthesize payloadDeniedExtensions=_payloadDeniedExtensions;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withAllowedExtensions:(id)arg2 withDeniedExtensions:(id)arg3 withDeniedExtensionPoints:(id)arg4;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

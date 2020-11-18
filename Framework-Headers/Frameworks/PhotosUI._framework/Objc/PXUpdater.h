@@ -30,9 +30,11 @@
 - (void).cxx_destruct;
 - (void)_scheduleUpdatePassIfNeeded;
 - (void)addUpdateSelector:(SEL)arg1;
+- (void)addUpdateSelector:(SEL)arg1 needsUpdate:(BOOL)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)initWithTarget:(id)arg1;
+- (id)initWithTarget:(id)arg1 needsUpdateSelector:(SEL)arg2;
 - (void)setNeedsUpdateOf:(SEL)arg1;
 - (void)updateIfNeeded;
 

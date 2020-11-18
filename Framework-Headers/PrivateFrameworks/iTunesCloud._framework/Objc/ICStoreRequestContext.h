@@ -14,6 +14,7 @@
     ICUserIdentity *_identity;
     ICUserIdentityStore *_identityStore;
     ICStoreDialogResponseHandler *_storeDialogResponseHandler;
+    long long _personalizationStyle;
     BOOL _allowsExpiredBags;
 }
 
@@ -21,6 +22,7 @@
 @property (readonly, copy, nonatomic) ICUserIdentity *delegatedIdentity; // @synthesize delegatedIdentity=_delegatedIdentity;
 @property (readonly, copy, nonatomic) ICUserIdentity *identity; // @synthesize identity=_identity;
 @property (readonly, nonatomic) ICUserIdentityStore *identityStore; // @synthesize identityStore=_identityStore;
+@property (readonly, nonatomic) long long personalizationStyle; // @synthesize personalizationStyle=_personalizationStyle;
 @property (readonly, copy, nonatomic) ICStoreDialogResponseHandler *storeDialogResponseHandler; // @synthesize storeDialogResponseHandler=_storeDialogResponseHandler;
 
 + (id)activeStoreAccountRequestContext;
@@ -35,6 +37,7 @@
 - (void)setDelegatedIdentity:(id)arg1;
 - (void)setIdentity:(id)arg1;
 - (void)setIdentityStore:(id)arg1;
+- (void)setPersonalizationStyle:(long long)arg1;
 - (void)setStoreDialogResponseHandler:(id)arg1;
 
 @end

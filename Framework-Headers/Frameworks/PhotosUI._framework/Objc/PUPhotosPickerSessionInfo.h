@@ -11,9 +11,9 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)_initWithTargetAlbum:(struct NSObject *)arg1 orTargetAlbumName:(id)arg2 isLocal:(BOOL)arg3;
+- (id)_initWithTargetAlbum:(struct NSObject *)arg1 orTargetAlbumName:(id)arg2;
 - (id)initWithTargetAlbum:(struct NSObject *)arg1;
-- (id)initWithTargetAlbumName:(id)arg1 isLocal:(BOOL)arg2;
+- (id)initWithTargetAlbumName:(id)arg1;
 - (BOOL)isSelectingAssets;
 - (id)localizedPrompt;
 

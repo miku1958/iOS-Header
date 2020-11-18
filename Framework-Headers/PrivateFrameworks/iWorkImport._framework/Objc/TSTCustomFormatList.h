@@ -12,9 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)enumerateCustomFormatsUsingBlock:(CDUnknownBlockType)arg1;
-- (id)init;
 - (id)initWithContext:(id)arg1;
-- (id)initWithType:(int)arg1 context:(id)arg2;
 
 @end
 

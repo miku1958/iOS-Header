@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSURLSessionConfiguration;
 @protocol NSURLSessionDelegate, OS_dispatch_queue;
@@ -15,6 +15,7 @@
 
 @property (strong) NSMutableDictionary *_altSvc; // @dynamic _altSvc;
 @property (copy) NSDictionary *_atsState; // @dynamic _atsState;
+@property (strong) NSMutableDictionary *_coalescing; // @dynamic _coalescing;
 @property (copy) CDUnknownBlockType _connBlock; // @dynamic _connBlock;
 @property (strong) NSMutableSet *_h2BlacklistedHosts; // @dynamic _h2BlacklistedHosts;
 @property BOOL _isSharedSession; // @dynamic _isSharedSession;
@@ -27,6 +28,7 @@
 @property (copy) NSString *sessionDescription; // @dynamic sessionDescription;
 @property (readonly, strong) NSObject<OS_dispatch_queue> *workQueue; // @dynamic workQueue;
 
++ (id)_errorFromError:(id)arg1 forTask:(id)arg2;
 + (void)_getActiveSessionIdentifiersWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)_obliterateAllBackgroundSessionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)_releaseProcessAssertionForSessionIdentifier:(id)arg1;
@@ -39,6 +41,7 @@
 - (struct __CFDictionary *)_copyATSState;
 - (id)_copyConfiguration;
 - (id)_downloadTaskWithRequest:(id)arg1 downloadFilePath:(id)arg2;
+- (void)_useTLSSessionCacheFromSession:(id)arg1;
 - (void)addDelegateBlock:(CDUnknownBlockType)arg1;
 - (id)aggregateAssetDownloadTaskWithURLAsset:(id)arg1 mediaSelections:(id)arg2 assetTitle:(id)arg3 assetArtworkData:(id)arg4 options:(id)arg5;
 - (id)assetDownloadTaskWithURLAsset:(id)arg1 assetTitle:(id)arg2 assetArtworkData:(id)arg3 options:(id)arg4;

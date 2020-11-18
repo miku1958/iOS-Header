@@ -21,6 +21,8 @@
     NSMapTable *_observersQueue_changeObserversWithContexts;
 }
 
+@property (readonly, nonatomic) unsigned long long currentChanges;
+
 - (void).cxx_destruct;
 - (void)_applyPendingChanges;
 - (void)_didChange;

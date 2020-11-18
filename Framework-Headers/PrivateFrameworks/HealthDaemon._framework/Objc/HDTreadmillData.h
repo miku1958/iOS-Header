@@ -73,10 +73,10 @@
 + (unsigned char)flagFieldLength;
 + (id)uuid;
 - (void).cxx_destruct;
+- (id)_init;
 - (id)allFields;
 - (id)description;
 - (id)generateDatums:(id)arg1;
-- (id)init;
 
 @end
 

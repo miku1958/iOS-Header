@@ -13,6 +13,7 @@
 @interface PKProtobufPaymentApplication : PBCodable <NSCopying>
 {
     long long _inAppPINRequiredAmount;
+    long long _inAppPriority;
     NSString *_applicationIdentifier;
     NSString *_displayName;
     NSString *_dpanIdentifier;
@@ -30,6 +31,7 @@
     BOOL _supportsInAppPayment;
     struct {
         unsigned int inAppPINRequiredAmount:1;
+        unsigned int inAppPriority:1;
         unsigned int paymentNetworkIdentifier:1;
         unsigned int paymentType:1;
         unsigned int state:1;
@@ -53,6 +55,7 @@
 @property (nonatomic) BOOL hasInAppPINRequired;
 @property (nonatomic) BOOL hasInAppPINRequiredAmount;
 @property (readonly, nonatomic) BOOL hasInAppPINRequiredCurrency;
+@property (nonatomic) BOOL hasInAppPriority;
 @property (nonatomic) BOOL hasPaymentNetworkIdentifier;
 @property (nonatomic) BOOL hasPaymentType;
 @property (readonly, nonatomic) BOOL hasSanitizedDpan;
@@ -64,6 +67,7 @@
 @property (nonatomic) BOOL inAppPINRequired; // @synthesize inAppPINRequired=_inAppPINRequired;
 @property (nonatomic) long long inAppPINRequiredAmount; // @synthesize inAppPINRequiredAmount=_inAppPINRequiredAmount;
 @property (strong, nonatomic) NSString *inAppPINRequiredCurrency; // @synthesize inAppPINRequiredCurrency=_inAppPINRequiredCurrency;
+@property (nonatomic) long long inAppPriority; // @synthesize inAppPriority=_inAppPriority;
 @property (nonatomic) unsigned int paymentNetworkIdentifier; // @synthesize paymentNetworkIdentifier=_paymentNetworkIdentifier;
 @property (nonatomic) unsigned int paymentType; // @synthesize paymentType=_paymentType;
 @property (strong, nonatomic) NSString *sanitizedDpan; // @synthesize sanitizedDpan=_sanitizedDpan;

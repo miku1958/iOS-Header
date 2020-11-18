@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol IMDMessagePTaskStore;
@@ -19,6 +19,10 @@
 @property (strong) NSString *modificationStamp; // @synthesize modificationStamp=_lastModificationStamp;
 
 + (id)sharedInstance;
+- (id)_allHandlesOnAllChats;
+- (void)_broadcastToForceReloadChats;
+- (void)_broadcastUpdateForMergedChatWithPersonCentricIDIfNeeded:(id)arg1 updatedHandleID:(id)arg2;
+- (id)_chatRegistry;
 - (void)_updateModificationDate;
 - (void)addMessageWithGUID:(id)arg1 toChat:(id)arg2;
 - (void)addMessageWithGUID:(id)arg1 toChat:(id)arg2 deferSpotlightIndexing:(BOOL)arg3;
@@ -36,6 +40,8 @@
 - (id)storeChat:(id)arg1;
 - (void)unarchiveChat:(id)arg1;
 - (unsigned long long)unreadCountForChat:(id)arg1;
+- (BOOL)updateHandle:(id)arg1 forMessage:(id)arg2 WithPC:(id)arg3 onService:(id)arg4;
+- (BOOL)updatePersonCentricIDForHandlesInChatWithMessage:(id)arg1 fromIdentifier:(id)arg2 personCentricID:(id)arg3 chat:(id)arg4;
 
 @end
 

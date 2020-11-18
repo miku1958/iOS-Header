@@ -23,10 +23,13 @@
 
 - (void).cxx_destruct;
 - (void)_layoutContentView;
+- (void)_updateEditingRotationAngle;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutContainerView:(id)arg1;
 - (long long)layoutOverride;
 - (void)layoutSubviews;
+- (void)setEditing:(BOOL)arg1;
+- (void)setEditingRotationAngle:(double)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

@@ -8,6 +8,5 @@
 
 @interface UILabel (NUIContainerView)
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
-- (BOOL)supportsAsynchronousMeasurement;
 @end
 

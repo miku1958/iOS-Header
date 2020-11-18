@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardEmojiKeyView.h>
+#import <UIKitCore/UIKeyboardEmojiKeyView.h>
 
-#import <UIKit/UICollectionViewDataSource-Protocol.h>
-#import <UIKit/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
 
 @class NSIndexPath, NSString, UICollectionViewFlowLayout, UIKeyboardEmojiCategory, UIKeyboardEmojiCollectionView, UIKeyboardEmojiGraphicsTraits, UIResponder;
 @protocol UIKBEmojiHitTestResponder;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDictionary, NSError, NSMutableDictionary, NSString, _MTLCommandQueue;
+@class NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSString, _MTLCommandQueue;
 @protocol MTLCommandEncoder, MTLCommandQueue;
 
 @interface _MTLCommandBuffer : NSObject
@@ -17,6 +17,8 @@
     struct MTLDispatch *_scheduledDispatchListTail;
     struct MTLDispatch *_completedDispatchList;
     struct MTLDispatch *_completedDispatchListTail;
+    struct MTLSyncDispatch *_syncDispatchList;
+    struct MTLSyncDispatch *_syncDispatchListTail;
     struct _opaque_pthread_mutex_t _mutex;
     struct _opaque_pthread_cond_t {
         long long __sig;
@@ -50,6 +52,8 @@
     unsigned long long _numThisCommandBuffer;
     unsigned long long _listIndex;
     BOOL _ownedByParallelEncoder;
+    BOOL _wakeOnCommit;
+    NSMutableArray *_retainedObjects;
     unsigned long long _globalTraceObjectID;
     unsigned long long _labelTraceID;
     BOOL _StatEnabled;
@@ -78,17 +82,23 @@
 @property (readonly, nonatomic) NSMutableDictionary *userDictionary;
 
 + (void)initialize;
+- (void)_addRetainedObject:(id)arg1;
 - (void)addCompletedHandler:(CDUnknownBlockType)arg1;
 - (void)addScheduledHandler:(CDUnknownBlockType)arg1;
+- (void)addSynchronizationNotification:(CDUnknownBlockType)arg1;
 - (void)commit;
 - (void)commitAndHold;
 - (void)commitAndReset;
+- (BOOL)commitAndWaitUntilSubmitted;
+- (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)didCompleteWithStartTime:(unsigned long long)arg1 endTime:(unsigned long long)arg2 error:(id)arg3;
 - (void)didSchedule:(unsigned long long)arg1 error:(id)arg2;
 - (void)didScheduleWithStartTime:(unsigned long long)arg1 endTime:(unsigned long long)arg2 error:(id)arg3;
 - (void)enqueue;
+- (void)executeSynchronizationNotifications:(int)arg1;
+- (void)executeSynchronizationNotifications:(int)arg1 scope:(unsigned long long)arg2 resources:(const id *)arg3 count:(unsigned long long)arg4;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (unsigned long long)getAndIncrementNumEncoders;
 - (id)initWithQueue:(id)arg1 retainedReferences:(BOOL)arg2;

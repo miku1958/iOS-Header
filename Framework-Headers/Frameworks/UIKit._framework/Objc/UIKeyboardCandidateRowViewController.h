@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UICollectionViewDataSource-Protocol.h>
-#import <UIKit/UICollectionViewDelegate-Protocol.h>
-#import <UIKit/UIKeyboardCandidateBarLayoutDelegate-Protocol.h>
-#import <UIKit/UIKeyboardCandidateList-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateBarLayoutDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateList-Protocol.h>
 
 @class NSArray, NSString, TIKeyboardCandidateResultSet, UIKBCandidateCollectionView;
 @protocol UIKeyboardCandidateListDelegate, UIKeyboardCandidateRowViewControllerDelegate;
@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *candidates;
 @property (strong, nonatomic) Class cellClass; // @synthesize cellClass=_cellClass;
 @property (readonly, nonatomic) UIKBCandidateCollectionView *collectionView;
+@property (nonatomic) struct UIEdgeInsets contentInsets;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIKeyboardCandidateRowViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

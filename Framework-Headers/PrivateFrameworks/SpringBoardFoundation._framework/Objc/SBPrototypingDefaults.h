@@ -10,7 +10,6 @@
 {
 }
 
-@property (nonatomic) BOOL actLikeCustomerInstall; // @dynamic actLikeCustomerInstall;
 @property (nonatomic) BOOL allowPrototypeSettings; // @dynamic allowPrototypeSettings;
 @property (nonatomic) BOOL prototypeSettingsNeedsMigration; // @dynamic prototypeSettingsNeedsMigration;
 

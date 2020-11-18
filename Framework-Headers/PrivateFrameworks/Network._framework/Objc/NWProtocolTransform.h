@@ -20,14 +20,12 @@
 @property (nonatomic) BOOL disablePathFallback;
 @property (nonatomic) unsigned long long fallbackMode;
 @property (strong) NSObject<OS_nw_protocol_transform> *internalTransform; // @synthesize internalTransform=_internalTransform;
-@property (nonatomic) unsigned char ipProtocol;
 @property (nonatomic) int multipathService;
 @property (nonatomic) BOOL noProxy;
 @property (nonatomic) BOOL prohibitDirect;
 @property (copy, nonatomic) NWEndpoint *replacementEndpoint;
 @property (nonatomic) BOOL tfo;
 @property (nonatomic) BOOL tfoNoCookie;
-@property (nonatomic) BOOL useTFOHeuristics;
 
 - (void).cxx_destruct;
 - (void)appendProtocol:(id)arg1 atLevel:(int)arg2;
@@ -35,11 +33,13 @@
 - (id)description;
 - (id)descriptionWithIndent:(int)arg1 showFullContent:(BOOL)arg2;
 - (void)disableProtocol:(struct nw_protocol_identifier *)arg1;
+- (BOOL)fastOpenForceEnable;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCTransform:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)privateDescription;
+- (void)setFastOpenForceEnable:(BOOL)arg1;
 
 @end
 

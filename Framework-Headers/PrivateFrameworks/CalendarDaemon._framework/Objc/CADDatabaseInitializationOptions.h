@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CalendarDaemon/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class CADChangeTrackingClientId, NSString;
 
 @interface CADDatabaseInitializationOptions : NSObject <NSSecureCoding>
 {
@@ -16,11 +16,11 @@
     BOOL _unitTesting;
     int _databaseInitOptions;
     int _management;
-    NSString *_clientIDSuffix;
+    CADChangeTrackingClientId *_changeTrackingClientId;
     NSString *_databasePath;
 }
 
-@property (strong, nonatomic) NSString *clientIDSuffix; // @synthesize clientIDSuffix=_clientIDSuffix;
+@property (strong, nonatomic) CADChangeTrackingClientId *changeTrackingClientId; // @synthesize changeTrackingClientId=_changeTrackingClientId;
 @property (nonatomic) int databaseInitOptions; // @synthesize databaseInitOptions=_databaseInitOptions;
 @property (strong, nonatomic) NSString *databasePath; // @synthesize databasePath=_databasePath;
 @property (nonatomic) BOOL enablePropertyModificationLogging; // @synthesize enablePropertyModificationLogging=_enablePropertyModificationLogging;

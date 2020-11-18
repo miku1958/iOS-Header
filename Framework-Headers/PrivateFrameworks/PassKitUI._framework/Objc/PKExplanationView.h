@@ -7,11 +7,12 @@
 #import <UIKit/UIView.h>
 
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
+#import <PassKitUI/UITextViewDelegate-Protocol.h>
 
-@class NSString, OBPrivacyLinkController, PKPaymentSetupDockView, UIActivityIndicatorView, UIFont, UIImage, UIImageView, UILabel, UIScrollView, _UIBackdropView;
+@class NSAttributedString, NSString, OBPrivacyLinkController, PKCheckGlyphLayer, PKPaymentSetupDockView, UIActivityIndicatorView, UIFont, UIImage, UIImageView, UILabel, UIScrollView, UITextView, _UIBackdropView;
 @protocol PKExplanationViewDelegate;
 
-@interface PKExplanationView : UIView <UIScrollViewDelegate>
+@interface PKExplanationView : UIView <UIScrollViewDelegate, UITextViewDelegate>
 {
     long long _context;
     BOOL _privacyFooterShouldPin;
@@ -20,15 +21,18 @@
     PKPaymentSetupDockView *_dockView;
     NSString *_titleText;
     UILabel *_titleLabel;
-    UILabel *_bodyTextLabel;
+    UITextView *_bodyTextView;
     UIActivityIndicatorView *_activityIndicator;
-    UIImageView *_checkmarkView;
+    PKCheckGlyphLayer *_checkmarkLayer;
     _UIBackdropView *_backdropView;
     long long _backdropStyle;
     double _backdropWeight;
     BOOL _updatingBackdropSettings;
     BOOL _showPrivacyView;
     double _topMargin;
+    struct CGRect _titleLabelFrame;
+    struct CGRect _titleLabelLastLineBounds;
+    double _titleLabelLastLineDescent;
     BOOL _forceShowSetupLaterButton;
     BOOL _hideTitleText;
     BOOL _bodyTextIsLeftAlgined;
@@ -37,14 +41,18 @@
     UIView *_heroView;
     UIFont *_titleFont;
     NSString *_bodyText;
+    NSAttributedString *_attributedBodyText;
+    UIView *_bodyView;
     OBPrivacyLinkController *_privacyLink;
     UIImageView *_logoImageView;
 }
 
 @property (readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
+@property (copy, nonatomic) NSAttributedString *attributedBodyText; // @synthesize attributedBodyText=_attributedBodyText;
 @property (copy, nonatomic) NSString *bodyText; // @synthesize bodyText=_bodyText;
 @property (nonatomic) BOOL bodyTextIsLeftAlgined; // @synthesize bodyTextIsLeftAlgined=_bodyTextIsLeftAlgined;
-@property (readonly, nonatomic) UIImageView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
+@property (strong, nonatomic) UIView *bodyView; // @synthesize bodyView=_bodyView;
+@property (readonly, nonatomic) PKCheckGlyphLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKExplanationViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -71,6 +79,7 @@
 - (BOOL)_isBuddyiPad;
 - (void)_setupLater;
 - (BOOL)_showApplePayLogo;
+- (void)_updateCachedTitleLabelLastLine;
 - (void)_updateTitleLabel;
 - (void)dealloc;
 - (id)init;
@@ -80,6 +89,7 @@
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 
 @end
 

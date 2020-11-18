@@ -4,17 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
-@class NSString;
+@class NSArray, NSString;
 
-@interface DMFFetchDeclarationsRequest : CATTaskRequest
+@interface DMFFetchDeclarationsRequest : DMFTaskRequest
 {
+    BOOL _includeInternalState;
+    BOOL _includePayloadContents;
     NSString *_organizationIdentifier;
+    NSArray *_payloadIdentifiers;
 }
 
+@property (nonatomic) BOOL includeInternalState; // @synthesize includeInternalState=_includeInternalState;
+@property (nonatomic) BOOL includePayloadContents; // @synthesize includePayloadContents=_includePayloadContents;
 @property (copy, nonatomic) NSString *organizationIdentifier; // @synthesize organizationIdentifier=_organizationIdentifier;
+@property (copy, nonatomic) NSArray *payloadIdentifiers; // @synthesize payloadIdentifiers=_payloadIdentifiers;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;

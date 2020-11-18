@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKit/EKFrozenMeltedPair-Protocol.h>
 #import <EventKit/EKProtocolObject-Protocol.h>
 
-@class EKEventStore, EKObjectID, NSDictionary, NSMapTable, NSMutableDictionary, NSMutableSet, NSString;
+@class EKEventStore, EKObjectID, NSDictionary, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface EKPersistentObject : NSObject <EKProtocolObject, EKFrozenMeltedPair>
 {
@@ -18,7 +18,7 @@
     EKObjectID *_objectID;
     NSMutableSet *_dirtyProperties;
     unsigned int _flags;
-    NSMapTable *_loadedProperties;
+    NSMutableDictionary *_loadedProperties;
     NSMutableDictionary *_committedProperties;
 }
 
@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) BOOL isFrozen;
 @property (readonly, nonatomic) BOOL isPartialObject;
 @property (readonly, nonatomic) NSDictionary *preFrozenRelationshipObjects;
+@property (readonly, nonatomic) NSString *semanticIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueIdentifier;
 
@@ -47,7 +48,6 @@
 - (void)_addObjectCore:(id)arg1 toValues:(id)arg2 relation:(id)arg3;
 - (BOOL)_areDefaultPropertiesLoaded;
 - (void)_createLoadedPropertiesIfNeeded;
-- (void)_fastpathSetProperty:(id)arg1 forKey:(id)arg2 isRelation:(BOOL)arg3;
 - (BOOL)_isNew;
 - (BOOL)_isPendingDelete;
 - (BOOL)_isPendingInsert;
@@ -69,6 +69,8 @@
 - (void)_setPendingInsert:(BOOL)arg1;
 - (void)_setPendingUpdate:(BOOL)arg1;
 - (void)_setProperty:(id)arg1 forKey:(id)arg2;
+- (void)_setProperty:(id)arg1 forKey:(id)arg2 forRelation:(id)arg3;
+- (void)_setProperty:(id)arg1 forKey:(id)arg2 isRelation:(BOOL)arg3;
 - (void)_takeValues:(id)arg1 forKeys:(id)arg2;
 - (void)_takeValuesForDefaultPropertyKeys:(id)arg1 values:(id)arg2;
 - (id)changeSet;
@@ -114,10 +116,10 @@
 - (id)primitiveURLValueForKey:(id)arg1;
 - (BOOL)pushDirtyProperties:(id *)arg1;
 - (BOOL)refresh;
-- (BOOL)refreshExcludingProperties:(id)arg1;
 - (void)reset;
 - (void)rollback;
 - (void)saved;
+- (BOOL)setAttributes:(id)arg1 relations:(id)arg2 objectID:(id)arg3 eventStore:(id)arg4 error:(id *)arg5;
 - (void)takeValues:(id)arg1 forKeys:(id)arg2;
 - (void)takeValuesForDefaultPropertyKeys:(id)arg1 values:(id)arg2;
 - (void)unloadPropertyForKey:(id)arg1;

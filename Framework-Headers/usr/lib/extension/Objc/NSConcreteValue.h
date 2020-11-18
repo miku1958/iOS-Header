@@ -14,7 +14,7 @@
 
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
-- (BOOL)_matchType:(const char *)arg1 size:(unsigned long long)arg2;
+- (BOOL)_matchType:(const char *)arg1 size:(unsigned long long)arg2 strict:(BOOL)arg3;
 - (const void *)_value;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

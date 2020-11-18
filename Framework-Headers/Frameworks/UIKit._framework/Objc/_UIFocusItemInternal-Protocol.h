@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIFocusItem-Protocol.h>
-#import <UIKit/_UIFocusEnvironmentInternal-Protocol.h>
+#import <UIKitCore/UIFocusItem-Protocol.h>
+#import <UIKitCore/_UIFocusEnvironmentInternal-Protocol.h>
 
 @protocol _UIFocusItemInternal <UIFocusItem, _UIFocusEnvironmentInternal>
 

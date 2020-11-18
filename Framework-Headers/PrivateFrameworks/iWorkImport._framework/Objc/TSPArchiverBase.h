@@ -4,30 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSPArchivableContent-Protocol.h>
 
-@class NSDictionary, NSHashTable, NSMutableDictionary, NSString, TSPObject;
+@class NSDictionary, NSHashTable, NSMutableDictionary, NSString, TSPObject, TSPReferenceOrderedSet;
 
 __attribute__((visibility("hidden")))
 @interface TSPArchiverBase : NSObject <TSPArchivableContent>
 {
     auto_ptr_4370f086 _message;
-    struct unordered_map<const TSP::FieldPath, TSP::FieldInfo_Rule, TSP::FieldPathHash, TSP::FieldPathEqualTo, std::__1::allocator<std::__1::pair<const TSP::FieldPath, TSP::FieldInfo_Rule>>> *_fieldRules;
+    struct unordered_map<const TSP::FieldPath, TSP::FieldInfoRuleAttributes, TSP::FieldPathHash, TSP::FieldPathEqualTo, std::__1::allocator<std::__1::pair<const TSP::FieldPath, TSP::FieldInfoRuleAttributes>>> *_fieldRules;
     struct FieldPath *_currentFieldPath;
     NSMutableDictionary *_alternates;
     TSPObject *_object;
     unsigned long long _messageVersion;
-    NSHashTable *_strongReferences;
-    NSHashTable *_weakReferences;
-    NSHashTable *_commandToModelReferences;
+    TSPReferenceOrderedSet *_strongReferences;
+    TSPReferenceOrderedSet *_weakReferences;
+    TSPReferenceOrderedSet *_commandToModelReferences;
     NSHashTable *_lazyReferences;
     NSHashTable *_dataReferences;
 }
 
 @property (readonly, nonatomic) NSDictionary *alternates;
-@property (readonly, nonatomic) NSHashTable *commandToModelReferences; // @synthesize commandToModelReferences=_commandToModelReferences;
+@property (readonly, nonatomic) TSPReferenceOrderedSet *commandToModelReferences; // @synthesize commandToModelReferences=_commandToModelReferences;
 @property (readonly, nonatomic) const struct FieldPath *currentFieldPath;
 @property (readonly, nonatomic) NSHashTable *dataReferences; // @synthesize dataReferences=_dataReferences;
 @property (readonly, copy) NSString *debugDescription;
@@ -43,22 +43,23 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long messageVersion; // @synthesize messageVersion=_messageVersion;
 @property (readonly, nonatomic) unsigned long long minimumSupportedVersion;
 @property (readonly, nonatomic) TSPObject *object; // @synthesize object=_object;
-@property (readonly, nonatomic) NSHashTable *strongReferences; // @synthesize strongReferences=_strongReferences;
+@property (readonly, nonatomic) TSPReferenceOrderedSet *strongReferences; // @synthesize strongReferences=_strongReferences;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long targetType;
-@property (readonly, nonatomic) NSHashTable *weakReferences; // @synthesize weakReferences=_weakReferences;
+@property (readonly, nonatomic) TSPReferenceOrderedSet *weakReferences; // @synthesize weakReferences=_weakReferences;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)addAlternateArchiverForVersion:(unsigned long long)arg1 fieldPath:(const struct FieldPath *)arg2 isDiffArchiver:(BOOL)arg3;
+- (id)addAlternateArchiverForVersion:(unsigned long long)arg1 fieldPath:(const struct FieldPath *)arg2 isDiffArchiver:(BOOL)arg3 diffReadVersion:(unsigned long long)arg4;
 - (void)addWeakReferenceToObjectUUID:(id)arg1;
-- (id)alternateDiffForVersion:(unsigned long long)arg1;
-- (id)alternateDiffForVersion:(unsigned long long)arg1 field:(int)arg2;
-- (id)alternateDiffForVersion:(unsigned long long)arg1 fieldPath:(int *)arg2;
-- (id)alternateDiffForVersion:(unsigned long long)arg1 fieldPath:(int *)arg2 baseFieldPath:(const struct FieldPath *)arg3;
+- (id)alternateDiffToMergeBeforeVersion:(unsigned long long)arg1 fileFormatVersion:(unsigned long long)arg2;
+- (id)alternateDiffToMergeBeforeVersion:(unsigned long long)arg1 fileFormatVersion:(unsigned long long)arg2 field:(int)arg3;
+- (id)alternateDiffToMergeBeforeVersion:(unsigned long long)arg1 fileFormatVersion:(unsigned long long)arg2 fieldPath:(int *)arg3;
+- (id)alternateDiffToMergeBeforeVersion:(unsigned long long)arg1 fileFormatVersion:(unsigned long long)arg2 fieldPath:(int *)arg3 baseFieldPath:(const struct FieldPath *)arg4;
+- (const struct FieldPath *)baseFieldPathAndReturnShouldDeleteReturnedValue:(BOOL *)arg1;
 - (void)cleanup;
 - (void)dealloc;
-- (void)enumerateRulesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateFieldRulesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithObject:(id)arg1;
 - (struct Message *)message;
@@ -67,13 +68,13 @@ __attribute__((visibility("hidden")))
 - (void)releaseMessage;
 - (void)setDataReference:(id)arg1 message:(struct DataReference *)arg2;
 - (void)setDataReferenceArray:(id)arg1 message:(RepeatedPtrField_5fb0b506 *)arg2;
-- (void)setIgnoreAndDropRuleForField:(int)arg1;
-- (void)setIgnoreAndDropRuleForFieldPath:(int *)arg1;
 - (void)setIgnoreAndPreserveRuleForField:(int)arg1;
 - (void)setIgnoreAndPreserveRuleForFieldPath:(int *)arg1;
+- (void)setIgnoreAndPreserveUntilModifiedRuleForField:(int)arg1;
+- (void)setIgnoreAndPreserveUntilModifiedRuleForFieldPath:(int *)arg1;
 - (void)setMustUnderstandRuleForField:(int)arg1;
 - (void)setMustUnderstandRuleForFieldPath:(int *)arg1;
-- (void)setRule:(int)arg1 forFieldPath:(int *)arg2;
+- (void)setRule:(int)arg1 forFieldPath:(int *)arg2 fileFormatVersion:(unsigned long long)arg3 featureIdentifier:(id)arg4;
 - (void)setSparseReferenceArray:(id)arg1 isWeak:(BOOL)arg2 message:(struct SparseReferenceArray *)arg3;
 - (void)setSparseReferenceArray:(id)arg1 message:(struct SparseReferenceArray *)arg2;
 - (void)setSparseWeakObjectUUIDPathReferenceArray:(id)arg1 message:(struct SparseUUIDPathArray *)arg2;

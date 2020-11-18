@@ -6,63 +6,74 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-#import <UserNotificationsUIKit/NCNotificationListClearButtonDelegate-Protocol.h>
+#import <UserNotificationsUIKit/NCLegibilitySettingsAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/NCToggleControlDelegate-Protocol.h>
+#import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@class NCNotificationListClearButton, NSString, SBUILegibilityLabel;
+@class NCNotificationListHeaderTitleView, NCToggleControl, NSString, UIControl, _UILegibilitySettings;
 @protocol NCNotificationListSectionHeaderViewDelegate;
 
-@interface NCNotificationListSectionHeaderView : UICollectionReusableView <NCNotificationListClearButtonDelegate>
+@interface NCNotificationListSectionHeaderView : UICollectionReusableView <NCToggleControlDelegate, NCLegibilitySettingsAdjusting, PLContentSizeCategoryAdjusting>
 {
+    NCToggleControl *_clearButton;
+    BOOL _adjustsFontForContentSizeCategory;
     BOOL _shouldOverrideForReveal;
+    NSString *_preferredContentSizeCategory;
     id<NCNotificationListSectionHeaderViewDelegate> _delegate;
+    NSString *_sectionIdentifier;
+    NSString *_title;
     NSString *_backgroundGroupName;
     double _overrideAlpha;
-    SBUILegibilityLabel *_titleLabel;
-    NCNotificationListClearButton *_clearButton;
-    NSString *_sectionIdentifier;
+    NCNotificationListHeaderTitleView *_headerTitleView;
+    _UILegibilitySettings *_legibilitySettings;
     struct CGPoint _overrideCenter;
 }
 
+@property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
 @property (copy, nonatomic) NSString *backgroundGroupName; // @synthesize backgroundGroupName=_backgroundGroupName;
-@property (strong, nonatomic) NCNotificationListClearButton *clearButton; // @synthesize clearButton=_clearButton;
+@property (readonly, nonatomic) UIControl *clearButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NCNotificationListSectionHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NCNotificationListHeaderTitleView *headerTitleView; // @synthesize headerTitleView=_headerTitleView;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) double overrideAlpha; // @synthesize overrideAlpha=_overrideAlpha;
 @property (nonatomic) struct CGPoint overrideCenter; // @synthesize overrideCenter=_overrideCenter;
+@property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property (copy, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
 @property (nonatomic) BOOL shouldOverrideForReveal; // @synthesize shouldOverrideForReveal=_shouldOverrideForReveal;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) SBUILegibilityLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
-+ (id)_labelFont;
-+ (struct CGSize)_labelSizeWithWidth:(double)arg1 title:(id)arg2;
-+ (void)allSectionHeadersHidden;
++ (struct CGSize)_clearButtonPreferredSize;
++ (void)_contentSizeCategoryDidChange:(id)arg1;
 + (double)headerHeightWithWidth:(double)arg1 title:(id)arg2;
++ (void)initialize;
 - (void).cxx_destruct;
-- (void)_clearButtonAction:(id)arg1;
-- (long long)_graphicsQuality;
-- (void)_layoutClearButtonWithScale:(double)arg1;
-- (void)_layoutTitleLabelWithScale:(double)arg1;
-- (void)_observeContentSizeChange;
+- (void)_configureClearButtonIfNecessary;
+- (void)_configureHeaderTitleViewIfNecessary;
+- (void)_handleClearAll:(id)arg1;
+- (void)_handleClearButtonPrimaryActionTriggered:(id)arg1;
+- (void)_handleClearButtonTouchUpInside:(id)arg1;
+- (void)_layoutClearButton;
+- (void)_layoutHeaderTitleView;
+- (id)_legibilitySettings;
 - (void)_resetClearButtonStateAnimated:(BOOL)arg1;
 - (void)_resetRevealOverrides;
-- (double)_titleLabelBaselineOffset;
+- (void)_updateHeaderTitleViewWithLegibilitySettings:(id)arg1;
+- (BOOL)adjustForContentSizeCategoryChange;
+- (void)adjustForLegibilitySettingsChange:(id)arg1;
 - (void)applyLayoutAttributes:(id)arg1;
-- (void)clearButtonViewDidDismissForceTouchView:(id)arg1;
-- (void)clearButtonViewDidPresentForceTouchView:(id)arg1;
-- (void)configureClearButton;
-- (void)contentSizeDidChange;
-- (void)dealloc;
+- (id)containerViewForToggleControlPreviewInteractionPresentedContent:(id)arg1;
 - (BOOL)dismissModalFullScreenIfNeeded;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
-- (void)resetAnimated:(BOOL)arg1;
-- (void)setClearButtonVisible:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setTitle:(id)arg1 forSectionIdentifier:(id)arg2;
-- (void)updateForLegibilitySettings:(id)arg1;
+- (void)resetClearButtonStateAnimated:(BOOL)arg1;
+- (void)toggleControlDidBeginPreviewInteraction:(id)arg1;
+- (void)toggleControlDidDismssPreviewInteractionPresentedContent:(id)arg1;
+- (void)toggleControlDidPresentPreviewInteractionPresentedContent:(id)arg1;
 
 @end
 

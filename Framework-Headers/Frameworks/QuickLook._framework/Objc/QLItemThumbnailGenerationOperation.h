@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <QuickLook/QLAsynchronousOperation.h>
+#import <QuickLookSupport/QLAsynchronousOperation.h>
 
 @class QLItem, UIImage;
 @protocol QLItemThumbnailGeneratorProtocol;
 
-__attribute__((visibility("hidden")))
 @interface QLItemThumbnailGenerationOperation : QLAsynchronousOperation
 {
     UIImage *_thumbnail;

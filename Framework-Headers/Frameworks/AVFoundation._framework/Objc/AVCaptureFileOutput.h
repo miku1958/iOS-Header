@@ -7,12 +7,15 @@
 #import <AVFoundation/AVCaptureOutput.h>
 
 @class AVCaptureFileOutputInternal, NSURL;
+@protocol AVCaptureFileOutputDelegate;
 
 @interface AVCaptureFileOutput : AVCaptureOutput
 {
     AVCaptureFileOutputInternal *_fileOutputInternal;
+    id<AVCaptureFileOutputDelegate> _delegate;
 }
 
+@property (nonatomic) id<AVCaptureFileOutputDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) CDStruct_1b6d18a9 maxRecordedDuration;
 @property (nonatomic) long long maxRecordedFileSize;
 @property (nonatomic) long long minFreeDiskSpaceLimit;
@@ -20,11 +23,11 @@
 @property (readonly, nonatomic) CDStruct_1b6d18a9 recordedDuration;
 @property (readonly, nonatomic) long long recordedFileSize;
 @property (readonly, nonatomic, getter=isRecording) BOOL recording;
+@property (readonly, nonatomic, getter=isRecordingPaused) BOOL recordingPaused;
 
 + (void)initialize;
 - (void)dealloc;
 - (id)initSubclass;
-- (BOOL)isRecordingPaused;
 - (void)pauseRecording;
 - (BOOL)pausesRecordingOnInterruption;
 - (void)resumeRecording;

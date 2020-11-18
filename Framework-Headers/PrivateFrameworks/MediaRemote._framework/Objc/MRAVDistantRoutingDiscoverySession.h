@@ -38,7 +38,7 @@
 + (id)serviceInterface;
 - (void).cxx_destruct;
 - (id)_hostedRoutingConnection;
-- (void)_initializeHostedRoutingConnection;
+- (void)_initializeHostedRoutingConnectionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reloadAvailableDistantEndpoints;
 - (void)_reloadAvailableDistantEndpointsWithEndpoints:(id)arg1;
 - (void)_reloadAvailableDistantOutputDevices;

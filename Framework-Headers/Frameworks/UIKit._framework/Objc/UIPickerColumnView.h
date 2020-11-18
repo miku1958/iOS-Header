@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIPickerTableViewContainerDelegate-Protocol.h>
-#import <UIKit/UITableViewDataSource-Protocol.h>
+#import <UIKitCore/UIPickerTableViewContainerDelegate-Protocol.h>
+#import <UIKitCore/UITableViewDataSource-Protocol.h>
 
 @class NSString, UIColor, UIPickerTableView, UIPickerView;
 

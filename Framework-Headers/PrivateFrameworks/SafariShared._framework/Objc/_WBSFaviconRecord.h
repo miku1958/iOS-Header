@@ -15,6 +15,7 @@
     NSURL *_originalPageURL;
     NSURL *_iconURL;
     NSData *_iconData;
+    struct CGSize _size;
 }
 
 @property (readonly, copy, nonatomic) NSData *iconData; // @synthesize iconData=_iconData;
@@ -22,11 +23,12 @@
 @property (readonly, nonatomic) BOOL isPrivate; // @synthesize isPrivate=_isPrivate;
 @property (readonly, nonatomic) NSURL *originalPageURL; // @synthesize originalPageURL=_originalPageURL;
 @property (readonly, nonatomic) NSURL *pageURL; // @synthesize pageURL=_pageURL;
+@property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 
 + (id)new;
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithPageURL:(id)arg1 originalPageURL:(id)arg2 iconURL:(id)arg3 iconData:(id)arg4 isPrivate:(BOOL)arg5;
+- (id)initWithPageURL:(id)arg1 originalPageURL:(id)arg2 iconURL:(id)arg3 iconData:(id)arg4 size:(struct CGSize)arg5 isPrivate:(BOOL)arg6;
 
 @end
 

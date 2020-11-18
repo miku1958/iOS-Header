@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, PHFetchResult;
+@class NSDictionary, NSString, PHFetchResult, PXPhotosDetailsViewModel;
 
 @protocol PXMutablePhotosDetailsContext <NSObject>
 
@@ -18,6 +18,7 @@
 @property (strong, nonatomic) PHFetchResult *people;
 @property (nonatomic) BOOL shouldShowMovieHeader;
 @property (copy, nonatomic) NSString *titleFontName;
+@property (strong, nonatomic) PXPhotosDetailsViewModel *viewModel;
 @property (nonatomic) unsigned long long viewSourceOrigin;
 
 @end

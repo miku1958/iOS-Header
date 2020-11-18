@@ -6,17 +6,21 @@
 
 #import <ARKit/ARTechnique.h>
 
-@class ARDeviceOrientationData, ARWorldAlignmentData, NSObject;
+@class ARTimeKeyedList, ARWorldAlignmentData, MISSING_TYPE, NSObject;
 @protocol OS_dispatch_semaphore;
 
 @interface ARWorldAlignmentTechnique : ARTechnique
 {
-    ARDeviceOrientationData *_deviceOrientationData;
-    CDStruct_14d5dc5e _deviceOrientationAlignment;
+    ARTimeKeyedList *_deviceOrientationDataByTime;
+    float _deviceOrientationAlignmentAngle;
+    float _trackingAlignmentAngle;
+    MISSING_TYPE *_trackingAlignmentTranslation;
     BOOL _deviceOrientationReferenced;
     BOOL _trackingReferenced;
     BOOL _imageMirrored;
     long long _lastTrackingStateReason;
+    double _lastMajorRelocalizationTimestamp;
+    double _lastHeadingUpdateTimestamp;
     BOOL _relocalizing;
     ARWorldAlignmentData *_relocalizedAlignmentData;
     NSObject<OS_dispatch_semaphore> *_dataSemaphore;
@@ -28,10 +32,12 @@
 @property (readonly, nonatomic) long long cameraPosition; // @synthesize cameraPosition=_cameraPosition;
 
 - (void).cxx_destruct;
-- (id)_deviceOrientationPoseData;
+- (id)_deviceOrientationPoseDataFromDeviceOrientation:(id)arg1;
 - (void)_handleTrackingStateChanges:(id)arg1 initialized:(BOOL *)arg2 relocalized:(BOOL *)arg3;
-- (void)_referenceDeviceOrientation;
-- (id)_worldAlignmentDataWithTrackingData:(id)arg1;
+- (void)_referenceDeviceOrientation:(id)arg1;
+- (id)_referenceTrackingAlignmentWithPoseData:(id)arg1 deviceOrientation:(id)arg2;
+- (float)_trackingAlignmentAngleForPoseData:(id)arg1 deviceOrientation:(id)arg2;
+- (id)_updateHeadingAlignmentWithPoseData:(id)arg1 deviceOrientation:(id)arg2 timestamp:(double)arg3;
 - (id)initWithAlignment:(long long)arg1;
 - (id)initWithAlignment:(long long)arg1 cameraPosition:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;

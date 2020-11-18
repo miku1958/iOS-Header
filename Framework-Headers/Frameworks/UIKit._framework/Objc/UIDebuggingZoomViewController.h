@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIDebuggingInformationViewController-Protocol.h>
-#import <UIKit/UIDebuggingZoomDelegate-Protocol.h>
+#import <UIKitCore/UIDebuggingInformationViewController-Protocol.h>
+#import <UIKitCore/UIDebuggingZoomDelegate-Protocol.h>
 
 @class NSObject, UIDebuggingZoomLineView, UIDebuggingZoomLoupeView, UILabel, UIPanGestureRecognizer, UISegmentedControl, UIView;
 @protocol OS_dispatch_group, OS_dispatch_queue;
@@ -47,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (id)drawLinesAtPoint:(struct CGPoint)arg1;
 - (id)drawViewLinesAtPoint:(struct CGPoint)arg1 forView:(id)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
-- (struct CGImage *)newCaptureSnapshotAtRect:(struct CGRect)arg1 withTransform:(struct CGAffineTransform *)arg2 window:(id)arg3;
+- (struct CGImage *)newCaptureSnapshotAtRect:(struct CGRect)arg1 window:(id)arg2;
 - (void)toggleDirection:(id)arg1;
 - (void)toggleMeasuring:(id)arg1;
 - (void)toggleMode:(id)arg1;

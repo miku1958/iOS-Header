@@ -10,6 +10,8 @@
 {
 }
 
++ (void)deleteMigratedHTMLAccountIfNecessaryForModernAccount:(id)arg1;
++ (void)deleteMigratedHTMLAccounts;
 + (void)fetchAndSetMigrationStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)fetchMigrationStateAndUserRecordWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (void)fetchMigrationStateWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -10,18 +10,18 @@
 
 @interface AVPlayerView : UIView
 {
-    BOOL _managesContentViewLayout;
+    BOOL _needsInitialLayout;
     AVPlayerViewControllerContentView *_contentView;
     UIScreen *_primaryScreen;
 }
 
 @property (readonly, nonatomic) AVPlayerViewControllerContentView *contentView; // @synthesize contentView=_contentView;
-@property (nonatomic) BOOL managesContentViewLayout; // @synthesize managesContentViewLayout=_managesContentViewLayout;
+@property (nonatomic) BOOL needsInitialLayout; // @synthesize needsInitialLayout=_needsInitialLayout;
 @property (weak, nonatomic) UIScreen *primaryScreen; // @synthesize primaryScreen=_primaryScreen;
 
 - (void).cxx_destruct;
-- (void)dealloc;
-- (id)initWithContentView:(id)arg1;
+- (void)beginManagingContentView;
+- (id)initWithFrame:(struct CGRect)arg1 contentView:(id)arg2;
 - (void)layoutSubviews;
 - (void)setClipsToBounds:(BOOL)arg1;
 - (void)willMoveToWindow:(id)arg1;

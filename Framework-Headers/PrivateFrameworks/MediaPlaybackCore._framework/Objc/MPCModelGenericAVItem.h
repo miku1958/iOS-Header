@@ -12,7 +12,7 @@
 #import <MediaPlaybackCore/MPMusicSubscriptionLeasePlaybackParticipating-Protocol.h>
 #import <MediaPlaybackCore/MPRTCReportingItemSessionCreating-Protocol.h>
 
-@class ICMusicSubscriptionLeaseSession, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
+@class ICMusicSubscriptionLeaseSession, ICMusicSubscriptionLeaseStatus, ICStoreRequestContext, MPCModelGenericAVItemTimedMetadataRequest, MPCModelGenericAVItemTimedMetadataResponse, MPCPlaybackRequestEnvironment, MPCSuzeLeaseSession, MPMediaLibrary, MPModelGenericObject, MPPropertySet, MPSubscriptionStatusPlaybackInformation, NSArray, NSData, NSNumber, NSObject, NSOperationQueue, NSString, NSURL;
 @protocol MPCModelPlaybackAssetCacheProviding, MPCReportingIdentityPropertiesLoading, OS_dispatch_queue;
 
 @interface MPCModelGenericAVItem : MPAVItem <AVAssetResourceLoaderDelegate, AVPlayerItemMetadataOutputPushDelegate, ICEnvironmentMonitorObserver, MPMusicSubscriptionLeasePlaybackParticipating, MPRTCReportingItemSessionCreating>
@@ -20,7 +20,6 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _allowsAirPlayFromCloud;
     NSNumber *_bookmarkTime;
-    NSOperationQueue *_utilitySerialQueue;
     BOOL _hasLoadedSubscriptionLeaseSession;
     NSObject<OS_dispatch_queue> *_subscriptionLeaseSessionLoadQueue;
     ICMusicSubscriptionLeaseSession *_subscriptionLeaseSession;
@@ -58,6 +57,7 @@
     BOOL _radioPlayback;
     BOOL _radioStreamPlayback;
     long long _leasePlaybackPreventionState;
+    ICMusicSubscriptionLeaseStatus *_leaseStatus;
     id<MPCModelPlaybackAssetCacheProviding> _assetCacheProvider;
     NSString *_assetSourceStoreFrontID;
     long long _equivalencySourceAdamID;
@@ -78,6 +78,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSData *jingleTimedMetadata; // @synthesize jingleTimedMetadata=_jingleTimedMetadata;
 @property (readonly, nonatomic) long long leasePlaybackPreventionState; // @synthesize leasePlaybackPreventionState=_leasePlaybackPreventionState;
+@property (readonly, copy, nonatomic) ICMusicSubscriptionLeaseStatus *leaseStatus; // @synthesize leaseStatus=_leaseStatus;
 @property (strong, nonatomic) MPMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (readonly, copy, nonatomic) MPCPlaybackRequestEnvironment *playbackRequestEnvironment; // @synthesize playbackRequestEnvironment=_playbackRequestEnvironment;
 @property (nonatomic, getter=isRadioPlayback) BOOL radioPlayback; // @synthesize radioPlayback=_radioPlayback;
@@ -93,6 +94,7 @@
 
 + (BOOL)_prefersHighQualityAudioContentForNetworkType:(long long)arg1;
 + (BOOL)_prefersHighQualityVideoContentForNetworkType:(long long)arg1;
++ (id)_utilitySerialQueue;
 - (void).cxx_destruct;
 - (BOOL)_allowsAssetCaching;
 - (void)_allowsHighQualityMusicStreamingOnCellularDidChangeNotification:(id)arg1;
@@ -127,7 +129,6 @@
 - (void)_updateHasBeenPlayedWithElapsedTime:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateJingleTimedMetadata;
 - (void)_updatePreventionStatusWithLeaseSession:(id)arg1;
-- (id)_utilitySerialQueue;
 - (void)_willBecomeActivePlayerItem;
 - (void)_willResignActivePlayerItem;
 - (id)album;
@@ -135,6 +136,8 @@
 - (unsigned long long)albumArtistPersistentID;
 - (unsigned long long)albumPersistentID;
 - (long long)albumStoreID;
+- (unsigned long long)albumTrackCount;
+- (unsigned long long)albumTrackNumber;
 - (BOOL)allowsAirPlayFromCloud;
 - (BOOL)allowsEQ;
 - (BOOL)allowsExternalPlayback;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKit/HMRemoteLoginMessage.h>
+#import <HomeKitDaemon/HMRemoteLoginMessage.h>
 
 #import <HomeKitDaemon/HMRemoteLoginMessageProtocol-Protocol.h>
 

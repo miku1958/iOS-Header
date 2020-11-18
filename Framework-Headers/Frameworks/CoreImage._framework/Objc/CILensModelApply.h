@@ -6,27 +6,19 @@
 
 #import <CoreImage/CIFilter.h>
 
-@class CIImage, CIVector, NSDictionary, NSNumber;
+@class CIImage;
 
 __attribute__((visibility("hidden")))
 @interface CILensModelApply : CIFilter
 {
     CIImage *inputImage;
-    CIImage *inputCalculatorValuesImage;
-    NSNumber *inputAperture;
-    CIVector *inputOriginalSize;
-    NSNumber *inputIntrinsicMatrixFocalLength;
-    NSDictionary *inputTuningParameters;
+    CIImage *inputLensModelParams;
 }
 
-@property (copy, nonatomic) NSNumber *inputAperture; // @synthesize inputAperture;
-@property (strong, nonatomic) CIImage *inputCalculatorValuesImage; // @synthesize inputCalculatorValuesImage;
 @property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
-@property (copy, nonatomic) NSNumber *inputIntrinsicMatrixFocalLength; // @synthesize inputIntrinsicMatrixFocalLength;
-@property (copy, nonatomic) CIVector *inputOriginalSize; // @synthesize inputOriginalSize;
-@property (strong, nonatomic) NSDictionary *inputTuningParameters; // @synthesize inputTuningParameters;
+@property (strong, nonatomic) CIImage *inputLensModelParams; // @synthesize inputLensModelParams;
 
-- (id)_lensModelKernel;
+- (id)kernel;
 - (id)outputImage;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSTimer;
 
@@ -15,6 +15,7 @@
 }
 
 + (id)nextFireDateForDate:(id)arg1;
+- (void).cxx_destruct;
 - (void)assetTimerFired;
 - (void)dealloc;
 - (id)initWithExpirationHandler:(CDUnknownBlockType)arg1;

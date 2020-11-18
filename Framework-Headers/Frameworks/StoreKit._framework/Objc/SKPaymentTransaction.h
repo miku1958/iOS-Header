@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSData, NSDate, NSError, NSString, SKPayment;
 
@@ -24,6 +24,8 @@
 @property (readonly, nonatomic) NSData *transactionReceipt;
 @property (readonly, nonatomic) long long transactionState;
 
+- (void).cxx_destruct;
+- (id)UUID;
 - (void)_setDownloads:(id)arg1;
 - (void)_setError:(id)arg1;
 - (void)_setOriginalTransaction:(id)arg1;
@@ -34,10 +36,11 @@
 - (void)_setTransactionState:(long long)arg1;
 - (BOOL)canMergeWithTransaction:(id)arg1;
 - (id)copyXPCEncoding;
-- (void)dealloc;
 - (id)init;
 - (id)initWithPayment:(id)arg1;
+- (id)initWithServerTransaction:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
+- (BOOL)mergeWithServerTransaction:(id)arg1;
 - (BOOL)mergeWithTransaction:(id)arg1;
 
 @end

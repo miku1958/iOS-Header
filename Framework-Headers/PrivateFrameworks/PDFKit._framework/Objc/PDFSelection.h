@@ -39,6 +39,7 @@
 - (id)colorWithCGColor:(struct CGColor *)arg1 space:(struct CGColorSpace *)arg2;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (double)cornerRadius;
 - (id)createAttributedStringForCGSelection:(struct CGPDFSelection *)arg1 scaled:(double)arg2;
 - (void)dealloc;
 - (id)description;
@@ -74,6 +75,7 @@
 - (id)rtfdData;
 - (id)selectionsByLine;
 - (void)setActiveColor:(id)arg1;
+- (void)setCornerRadius:(double)arg1;
 - (void)setForceBreaks:(BOOL)arg1;
 - (void)setInactiveColor:(id)arg1;
 - (struct CGRect)spanBoundsForPage:(id)arg1 atPoint:(struct CGPoint)arg2;

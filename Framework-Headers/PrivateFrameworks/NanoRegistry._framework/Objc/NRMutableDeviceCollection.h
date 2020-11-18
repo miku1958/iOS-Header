@@ -9,10 +9,11 @@
 #import <NanoRegistry/NRMutableStateParentDelegate-Protocol.h>
 #import <NanoRegistry/NSFastEnumeration-Protocol.h>
 
-@class NRMutableDevice, NSMutableDictionary, NSUUID;
+@class NRMutableDevice, NRPBMutableDeviceCollection, NSMutableDictionary, NSUUID;
 
 @interface NRMutableDeviceCollection : NRMutableStateBase <NRMutableStateParentDelegate, NSFastEnumeration>
 {
+    NRPBMutableDeviceCollection *_protobuf;
     NSMutableDictionary *_deviceCollection;
     NSMutableDictionary *_childMap;
 }
@@ -22,11 +23,13 @@
 @property (strong, nonatomic) NSMutableDictionary *childMap; // @synthesize childMap=_childMap;
 @property (strong, nonatomic) NSMutableDictionary *deviceCollection; // @synthesize deviceCollection=_deviceCollection;
 @property (readonly, nonatomic, getter=paired) BOOL isPaired;
+@property (strong, nonatomic) NRPBMutableDeviceCollection *protobuf; // @synthesize protobuf=_protobuf;
 
 + (id)diffFrom:(id)arg1 to:(id)arg2;
 + (void)parseDiff:(id)arg1 forPropertyChange:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_createIndex;
 - (id)_diffsToChangeActiveDeviceToDeviceID:(id)arg1;
 - (id)allPairingIDs;
 - (id)applyDiff:(id)arg1 upOnly:(BOOL)arg2 notifyParent:(BOOL)arg3 unconditional:(BOOL)arg4;
@@ -35,12 +38,13 @@
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)description;
-- (id)deviceForBluetoothID:(id)arg1;
 - (id)deviceForPairingID:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
+- (void)invalidate;
 - (BOOL)isEqual:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)removeDeviceForPairingID:(id)arg1;

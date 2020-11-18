@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITransitionState.h>
+#import <UIKitCore/_UITransitionState.h>
 
 @class UIView, UIViewController;
 

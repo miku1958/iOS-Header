@@ -6,12 +6,13 @@
 
 #import <PhotoLibraryServices/PLMomentRefreshable-Protocol.h>
 
-@class CLLocation, NSData, NSDate, NSObject, NSString;
+@class CLLocation, NSArray, NSData, NSDate, NSObject, NSString;
 @protocol NSCopying, PLMomentAssetData, PLMomentData;
 
 @protocol PLMomentAssetData <PLMomentRefreshable>
 
 @property (readonly, strong, nonatomic) NSString *cloudAssetGUID;
+@property (nonatomic) double curationScore;
 @property (strong, nonatomic) NSString *customCollectionName;
 @property (strong, nonatomic) NSString *customCollectionUUID;
 @property (strong, nonatomic) NSString *customMomentName;
@@ -34,6 +35,7 @@
 @property (readonly, strong, nonatomic) NSString *uuid;
 @property (nonatomic) long long width;
 
+- (NSArray *)assetComparisonSortDescriptors;
 - (long long)compareToAsset:(id<PLMomentAssetData>)arg1;
 - (NSString *)globalUUID;
 - (BOOL)isDeleted;

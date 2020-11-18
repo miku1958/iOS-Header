@@ -13,18 +13,12 @@
 
 @interface _CPRange : PBCodable <_CPRange, NSSecureCoding>
 {
-    struct {
-        unsigned int location:1;
-        unsigned int length:1;
-    } _has;
     unsigned long long _location;
     unsigned long long _length;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasLength;
-@property (readonly, nonatomic) BOOL hasLocation;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long length; // @synthesize length=_length;

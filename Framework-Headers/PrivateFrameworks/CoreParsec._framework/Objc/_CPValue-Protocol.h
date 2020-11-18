@@ -12,13 +12,6 @@
 
 @property (nonatomic) BOOL bool_value;
 @property (copy, nonatomic) NSData *bytes_value;
-@property (readonly, nonatomic) BOOL hasBool_value;
-@property (readonly, nonatomic) BOOL hasBytes_value;
-@property (readonly, nonatomic) BOOL hasList_value;
-@property (readonly, nonatomic) BOOL hasNull_value;
-@property (readonly, nonatomic) BOOL hasNumber_value;
-@property (readonly, nonatomic) BOOL hasString_value;
-@property (readonly, nonatomic) BOOL hasStruct_value;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _CPListValue *list_value;
 @property (nonatomic) int null_value;

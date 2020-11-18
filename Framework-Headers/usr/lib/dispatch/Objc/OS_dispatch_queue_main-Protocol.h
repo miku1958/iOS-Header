@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <dispatch/OS_dispatch_queue-Protocol.h>
+#import <dispatch/OS_dispatch_queue_serial-Protocol.h>
 
-@protocol OS_dispatch_queue_main <OS_dispatch_queue>
+@protocol OS_dispatch_queue_main <OS_dispatch_queue_serial>
 @end
 

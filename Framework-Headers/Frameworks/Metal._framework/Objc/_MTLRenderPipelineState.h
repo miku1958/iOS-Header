@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/MTLRenderPipelineState-Protocol.h>
 
@@ -18,6 +18,8 @@
     BOOL _threadgroupSizeMatchesTileSize;
     MTLIndirectArgumentBufferEmulationData *_vertexIABEmulationData;
     MTLIndirectArgumentBufferEmulationData *_fragmentIABEmulationData;
+    BOOL _supportIndirectCommandBuffers;
+    unsigned long long _uniqueIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,7 +31,9 @@
 @property (readonly) NSString *label; // @synthesize label=_label;
 @property (readonly) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;
 @property (readonly) Class superclass;
+@property (readonly) BOOL supportIndirectCommandBuffers;
 @property (readonly) BOOL threadgroupSizeMatchesTileSize; // @synthesize threadgroupSizeMatchesTileSize=_threadgroupSizeMatchesTileSize;
+@property (readonly) unsigned long long uniqueIdentifier;
 @property (strong, nonatomic) MTLIndirectArgumentBufferEmulationData *vertexIABEmulationData; // @synthesize vertexIABEmulationData=_vertexIABEmulationData;
 
 - (void)dealloc;

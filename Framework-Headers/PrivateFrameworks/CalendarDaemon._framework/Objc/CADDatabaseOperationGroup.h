@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseGetNextAssignableColorWithReply:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetSequenceNumber:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseGetUUID:(CDUnknownBlockType)arg1;
-- (void)CADDatabaseImportICSData:(id)arg1 intoCalendarWithID:(int)arg2 optionsMask:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)CADDatabaseImportICSData:(id)arg1 intoCalendarsWithIDs:(id)arg2 optionsMask:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)CADDatabaseLastConfirmedSplashScreenVersion:(CDUnknownBlockType)arg1;
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseRebuildOccurrenceCacheWithReply:(CDUnknownBlockType)arg1;
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)CADDatabaseSetInitializationOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)CADDatabaseSetShowsDeclinedEvents:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)_CADDatabaseCanModifyCalendarDatabase;
+- (id)_importData:(id)arg1 intoCalendarWithID:(int)arg2 optionsMask:(unsigned long long)arg3 outError:(int *)arg4;
 
 @end
 

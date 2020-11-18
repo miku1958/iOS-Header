@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UIKBRTRecognizerDelegate-Protocol.h>
-#import <UIKit/_UIKBRTTouchDriftingDelegate-Protocol.h>
-#import <UIKit/_UIScreenEdgePanRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIKBRTRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIKBRTTouchDriftingDelegate-Protocol.h>
+#import <UIKitCore/_UIScreenEdgePanRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIViewRepresentingKeyboardLayout-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID, UIKBCadenceMonitor, UIKBScreenTraits, UIKBTextEditingTraits, UIKeyboardTaskQueue, UITextInputTraits, _UIKBRTFingerDetection, _UIKBRTRecognizer, _UIKBRTTouchDrifting, _UIKBRTTouchVelocities, _UIScreenEdgePanRecognizer;
 @protocol OS_dispatch_queue;
 
-@interface UIKeyboardLayout : UIView <_UIScreenEdgePanRecognizerDelegate, _UIKBRTRecognizerDelegate, _UIKBRTTouchDriftingDelegate>
+@interface UIKeyboardLayout : UIView <_UIScreenEdgePanRecognizerDelegate, _UIKBRTRecognizerDelegate, _UIKBRTTouchDriftingDelegate, _UIViewRepresentingKeyboardLayout>
 {
     UITextInputTraits *_inputTraits;
     UIKBScreenTraits *_screenTraits;
@@ -89,6 +90,8 @@
 - (BOOL)_handRestRecognizerCancelShouldBeEnd;
 - (BOOL)_hasRelatedTouchesForTouchState:(id)arg1;
 - (void)_ignoreTouchState:(id)arg1;
+- (id)_keyboardLayoutView;
+- (id)_keyboardLongPressInteractionRegions;
 - (void)_notifyLayoutOfGesturePosition:(struct CGPoint)arg1 relativeToEdge:(unsigned long long)arg2;
 - (void)_removeTouchesFromProcessing:(id)arg1;
 - (void)_resetFingerDetectionFromLayout;

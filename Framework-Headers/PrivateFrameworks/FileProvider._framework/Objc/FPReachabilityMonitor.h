@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable;
-@protocol OS_dispatch_queue;
+@class NSHashTable, NSNumber;
+@protocol NSObject, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface FPReachabilityMonitor : NSObject
@@ -16,18 +16,23 @@ __attribute__((visibility("hidden")))
     struct __SCNetworkReachability *_reachabilityRef;
     unsigned int _reachabilityFlags;
     NSObject<OS_dispatch_queue> *_queue;
+    id<NSObject> _accountDidChangeNotificationObserver;
+    NSNumber *_isCellularEnabledForDocumentsAndData;
 }
 
-@property (readonly, nonatomic) BOOL isNetworkReachable;
 @property (nonatomic) unsigned int reachabilityFlags; // @synthesize reachabilityFlags=_reachabilityFlags;
 
++ (id)_notifAccountStore;
 + (BOOL)isNetworkReachableForFlags:(unsigned int)arg1;
 + (id)sharedReachabilityMonitor;
 - (void).cxx_destruct;
+- (void)_accountDidChange;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
+- (BOOL)isCellularAllowedForBR;
+- (BOOL)isNetworkReachableForBundle:(id)arg1;
 - (void)removeObserver:(id)arg1;
 
 @end

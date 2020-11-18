@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSOperationQueue, NSString, NSXPCConnection, WLKServerConfigurationResponse;
+@class NSArray, NSDate, NSDictionary, NSMutableDictionary, NSOperationQueue, NSString, NSXPCConnection, WLKServerConfigurationResponse, WLKUserEnvironment;
 @protocol OS_dispatch_queue;
 
 @interface WLKServerConfiguration : NSObject
@@ -21,6 +21,7 @@
     int _didChangeNotificationToken;
     NSMutableDictionary *_completions;
     NSString *_nextEK;
+    WLKUserEnvironment *_inFlightEnvironment;
     NSXPCConnection *_connection;
     BOOL _loaded;
     BOOL _isFetching;
@@ -51,19 +52,17 @@
 - (id)_connection;
 - (void)_fetchConfigurationCache:(CDUnknownBlockType)arg1;
 - (void)_fetchConfigurationInProcess:(CDUnknownBlockType)arg1;
-- (void)_fetchConfigurationSynchronously;
 - (void)_handleLibraryDidChangeNotification:(id)arg1;
 - (id)_init;
 - (void)_invalidateCache;
 - (BOOL)_needCacheRefresh;
+- (id)_nextEK;
 - (id)_operationQueue;
-- (id)_prevCachePath;
 - (id)_readFromDisk;
-- (id)_readFromDiskPath:(id)arg1;
 - (void)_reloadFromCache:(id)arg1;
 - (void)_setNextEK:(id)arg1;
-- (void)_synchronizeWithCache:(id)arg1 notifySelf:(BOOL)arg2 others:(BOOL)arg3;
-- (void)_synchronizeWithCacheAndNotifySelf:(BOOL)arg1 others:(BOOL)arg2;
+- (void)_synchronizeWithCache:(id)arg1 notifySelf:(BOOL)arg2 others:(BOOL)arg3 validate:(BOOL)arg4;
+- (void)_synchronizeWithCacheAndNotifySelf:(BOOL)arg1 others:(BOOL)arg2 validate:(BOOL)arg3;
 - (BOOL)_writeToDisk:(id)arg1;
 - (void)dealloc;
 - (id)endpointForKey:(id)arg1;

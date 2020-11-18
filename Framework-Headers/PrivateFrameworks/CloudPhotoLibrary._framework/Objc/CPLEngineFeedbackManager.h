@@ -17,7 +17,9 @@
     NSArray *_messagesSending;
     NSDate *_lastAttemptDate;
     NSURL *_feedbackMessagesURL;
+    BOOL _opened;
     BOOL _closed;
+    BOOL _deactivated;
     CPLEngineLibrary *_engineLibrary;
 }
 
@@ -35,11 +37,12 @@
 - (void)getStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithEngineLibrary:(id)arg1;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)reportEndOfReset;
+- (void)reportEndOfResetWithUUID:(id)arg1 reason:(id)arg2;
 - (void)reportFetchChangesRewindToFeatureVersion:(unsigned long long)arg1;
 - (void)reportMessage:(id)arg1;
 - (void)reportMessages:(id)arg1;
-- (void)reportResetType:(id)arg1 reason:(id)arg2;
+- (void)reportMiscInformation:(id)arg1;
+- (void)reportResetType:(id)arg1 reason:(id)arg2 uuid:(id)arg3;
 - (void)reportSetting:(id)arg1 hasBeenSetToValue:(id)arg2;
 - (void)sendFeedbackToServerIfNecessary;
 

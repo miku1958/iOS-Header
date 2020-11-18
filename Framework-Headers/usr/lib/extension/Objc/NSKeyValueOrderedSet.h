@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     NSKeyValueNonmutatingOrderedSetMethodSet *_methods;
 }
 
-+ (CDStruct_7c9a8e9f *)_proxyNonGCPoolPointer;
 + (id)_proxyShare;
 - (id)_proxyInitWithContainer:(id)arg1 getter:(id)arg2;
 - (CDStruct_a70f6672)_proxyLocator;

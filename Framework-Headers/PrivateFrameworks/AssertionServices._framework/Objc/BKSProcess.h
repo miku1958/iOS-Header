@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AssertionServices/BKSProcessClientDelegate-Protocol.h>
 #import <AssertionServices/BSDescriptionProviding-Protocol.h>
@@ -14,13 +14,6 @@
 
 @interface BKSProcess : NSObject <BKSProcessClientDelegate, BSDescriptionProviding>
 {
-    NSString *_bundleID;
-    NSString *_jobLabel;
-    BKSProcessClient *_client;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_queue> *_callOutQueue;
-    BKSLaunchdJobSpecification *_jobSpec;
-    BKSProcessExitContext *_lastExitContext;
     BOOL _bootstrapped;
     BOOL _workspaceLocked;
     BOOL _connectedToExternalAccessories;
@@ -30,18 +23,32 @@
     long long _visibility;
     long long _taskState;
     BSProcessHandle *_handle;
+    BKSProcessExitContext *_lastExitContext;
+    NSString *_bundleID;
+    NSString *_jobLabel;
+    BKSProcessClient *_client;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_callOutQueue;
+    BKSLaunchdJobSpecification *_jobSpec;
     long long _terminationReason;
 }
 
 @property (readonly, nonatomic) double backgroundTimeRemaining;
+@property (nonatomic) BOOL bootstrapped; // @synthesize bootstrapped=_bootstrapped;
+@property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *callOutQueue; // @synthesize callOutQueue=_callOutQueue;
+@property (strong, nonatomic) BKSProcessClient *client; // @synthesize client=_client;
 @property (nonatomic) BOOL connectedToExternalAccessories; // @synthesize connectedToExternalAccessories=_connectedToExternalAccessories;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<BKSProcessDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) BSProcessHandle *handle; // @synthesize handle=_handle;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) BKSProcessExitContext *lastExitContext;
+@property (strong, nonatomic) NSString *jobLabel; // @synthesize jobLabel=_jobLabel;
+@property (strong, nonatomic) BKSLaunchdJobSpecification *jobSpec; // @synthesize jobSpec=_jobSpec;
+@property (strong, nonatomic) BKSProcessExitContext *lastExitContext; // @synthesize lastExitContext=_lastExitContext;
 @property (nonatomic) BOOL nowPlayingWithAudio; // @synthesize nowPlayingWithAudio=_nowPlayingWithAudio;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) BOOL recordingAudio; // @synthesize recordingAudio=_recordingAudio;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long taskState; // @synthesize taskState=_taskState;

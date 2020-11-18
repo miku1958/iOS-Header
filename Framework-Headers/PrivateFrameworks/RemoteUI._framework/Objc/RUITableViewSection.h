@@ -9,15 +9,15 @@
 #import <RemoteUI/RUIHeaderDelegate-Protocol.h>
 #import <RemoteUI/RUITableFooterDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSNumber, RUIDetailHeaderElement, RUIReadableContentContainer, RUISubHeaderElement, RUITableView, RUITableViewRow, UIView;
+@class NSArray, NSMutableArray, NSNumber, RUIDetailHeaderElement, RUISubHeaderElement, RUITableView, RUITableViewHeaderFooterView, RUITableViewRow, UIView;
 @protocol RUIHeader, RemoteUITableFooter;
 
 @interface RUITableViewSection : RUIElement <RUIHeaderDelegate, RUITableFooterDelegate>
 {
     NSMutableArray *_rows;
     long long _disclosureLimit;
-    RUIReadableContentContainer *_containerizedHeaderView;
-    RUIReadableContentContainer *_containerizedFooterView;
+    RUITableViewHeaderFooterView *_containerizedHeaderView;
+    RUITableViewHeaderFooterView *_containerizedFooterView;
     NSNumber *_drawsTopSeparator;
     BOOL _configured;
     UIView<RUIHeader> *_headerView;
@@ -33,8 +33,8 @@
 }
 
 @property (nonatomic) BOOL configured; // @synthesize configured=_configured;
-@property (strong, nonatomic) UIView *containerizedFooterView; // @synthesize containerizedFooterView=_containerizedFooterView;
-@property (strong, nonatomic) UIView *containerizedHeaderView; // @synthesize containerizedHeaderView=_containerizedHeaderView;
+@property (strong, nonatomic) RUITableViewHeaderFooterView *containerizedFooterView; // @synthesize containerizedFooterView=_containerizedFooterView;
+@property (strong, nonatomic) RUITableViewHeaderFooterView *containerizedHeaderView; // @synthesize containerizedHeaderView=_containerizedHeaderView;
 @property (strong, nonatomic) RUIDetailHeaderElement *detailHeader; // @synthesize detailHeader=_detailHeader;
 @property (nonatomic) BOOL drawTopSeparator;
 @property (strong, nonatomic) RUIElement *footer; // @synthesize footer=_footer;

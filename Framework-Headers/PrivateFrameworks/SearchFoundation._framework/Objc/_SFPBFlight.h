@@ -30,13 +30,6 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *flightID; // @synthesize flightID=_flightID;
 @property (copy, nonatomic) NSString *flightNumber; // @synthesize flightNumber=_flightNumber;
-@property (readonly, nonatomic) BOOL hasCarrierCode;
-@property (readonly, nonatomic) BOOL hasCarrierName;
-@property (readonly, nonatomic) BOOL hasCarrierPhoneNumber;
-@property (readonly, nonatomic) BOOL hasFlightID;
-@property (readonly, nonatomic) BOOL hasFlightNumber;
-@property (readonly, nonatomic) BOOL hasOperatorCarrierCode;
-@property (readonly, nonatomic) BOOL hasOperatorFlightNumber;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *legs; // @synthesize legs=_legs;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSString, _MTLDevice;
 @protocol OS_dispatch_group, OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source;
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     BOOL _skipRender;
     BOOL _openGLQueue;
     NSObject<OS_dispatch_semaphore> *_presentScheduledSemaphore;
+    BOOL _forceImmediateSubmissionOnCommitThread;
 }
 
 @property (nonatomic, getter=isStatEnabled) BOOL StatEnabled; // @synthesize StatEnabled=_StatEnabled;
@@ -49,7 +50,7 @@ __attribute__((visibility("hidden")))
 @property BOOL executionEnabled; // @synthesize executionEnabled=_executionEnabled;
 @property (readonly) unsigned long long globalTraceObjectID; // @synthesize globalTraceObjectID=_globalTraceObjectID;
 @property (readonly) BOOL isOpenGLQueue; // @synthesize isOpenGLQueue=_openGLQueue;
-@property (copy) NSString *label; // @synthesize label=_label;
+@property (copy) NSString *label;
 @property (nonatomic, getter=getListIndex) unsigned long long listIndex; // @synthesize listIndex=_listIndex;
 @property (readonly) unsigned long long maxCommandBufferCount; // @synthesize maxCommandBufferCount=_maxCommandBufferCount;
 @property (nonatomic) unsigned long long numCommandBuffers; // @synthesize numCommandBuffers=_numCommandBuffers;
@@ -58,7 +59,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) long long qosRelativePriority; // @synthesize qosRelativePriority=_qosRelativePriority;
 @property BOOL skipRender; // @synthesize skipRender=_skipRender;
 
-- (void)_submitAvailableCommandBuffers;
+- (BOOL)_submitAvailableCommandBuffers;
 - (void)addPerfSampleHandler:(CDUnknownBlockType)arg1;
 - (void)availableCounters;
 - (void)commandBufferDidComplete:(id)arg1 startTime:(unsigned long long)arg2 completionTime:(unsigned long long)arg3 error:(id)arg4;
@@ -77,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (int)requestCounters:(id)arg1;
 - (int)requestCounters:(id)arg1 withIndex:(unsigned long long)arg2;
 - (void)setSubmissionQueue:(id)arg1;
+- (BOOL)submitCommandBuffer:(id)arg1;
 - (void)submitCommandBuffers:(const id *)arg1 count:(unsigned long long)arg2;
 
 @end

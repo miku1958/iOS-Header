@@ -8,23 +8,24 @@
 
 #import <NanoTimeKitCompanion/NTKFaceCollectionObserver-Protocol.h>
 
-@class NSString, NTKFaceCollection;
+@class NSArray, NSMutableArray, NSString;
 
 @interface NTKKaleidoscopeSwatchMappedImageCache : BSUIMappedImageCache <NTKFaceCollectionObserver>
 {
     id _activeDeviceNotificationBlock;
-    NTKFaceCollection *_libraryCollection;
+    NSArray *_libraryCollections;
+    NSMutableArray *_loadedCollections;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NTKFaceCollection *libraryCollection; // @synthesize libraryCollection=_libraryCollection;
 @property (readonly) Class superclass;
 
 + (id)keyForAsset:(id)arg1 style:(id)arg2 resourceDirectory:(id)arg3;
 + (id)sharedCache;
 - (void).cxx_destruct;
+- (void)_cleanCache;
 - (id)_init;
 - (void)_pruneUnusedKeys;
 - (void)_removeImagesForKeysMatching:(CDUnknownBlockType)arg1;

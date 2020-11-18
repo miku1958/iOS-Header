@@ -8,10 +8,11 @@
 
 #import <CoreLocationProtobuf/NSCopying-Protocol.h>
 
-@class CLPIndoorCMAttitude, CLPIndoorCMPedometer, CLPIndoorMotionActivity, CLPIndoorPressure, CLPIndoorWifiScan, CLPLocation;
+@class CLPBundleId, CLPIndoorCMAttitude, CLPIndoorCMPedometer, CLPIndoorMotionActivity, CLPIndoorPressure, CLPIndoorWifiScan, CLPLocation;
 
 @interface CLPIndoorEvent : PBCodable <NSCopying>
 {
+    CLPBundleId *_bundleId;
     CLPIndoorCMAttitude *_cmAttitude;
     CLPIndoorCMPedometer *_cmPedometer;
     CLPLocation *_location;
@@ -24,8 +25,10 @@
     } _has;
 }
 
+@property (strong, nonatomic) CLPBundleId *bundleId; // @synthesize bundleId=_bundleId;
 @property (strong, nonatomic) CLPIndoorCMAttitude *cmAttitude; // @synthesize cmAttitude=_cmAttitude;
 @property (strong, nonatomic) CLPIndoorCMPedometer *cmPedometer; // @synthesize cmPedometer=_cmPedometer;
+@property (readonly, nonatomic) BOOL hasBundleId;
 @property (readonly, nonatomic) BOOL hasCmAttitude;
 @property (readonly, nonatomic) BOOL hasCmPedometer;
 @property (readonly, nonatomic) BOOL hasLocation;

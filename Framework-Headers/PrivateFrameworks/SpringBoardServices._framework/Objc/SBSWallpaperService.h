@@ -21,6 +21,7 @@
 - (void)fetchThumbnailForVariant:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)invalidate;
+- (BOOL)setWallpaperWithVideo:(id)arg1 cropRect:(struct CGRect)arg2;
 
 @end
 

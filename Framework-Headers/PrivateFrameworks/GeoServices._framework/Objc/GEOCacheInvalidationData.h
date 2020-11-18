@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/NSSecureCoding-Protocol.h>
+
 @class NSArray;
 
-@interface GEOCacheInvalidationData : NSObject
+@interface GEOCacheInvalidationData : NSObject <NSSecureCoding>
 {
     double _timestamp;
     double _ttl;
@@ -21,8 +23,13 @@
 @property (readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 @property (readonly, nonatomic) NSArray *versionDomains; // @synthesize versionDomains=_versionDomains;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_isKey:(id)arg1 subsetOf:(id)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithTimestamp:(double)arg1 ttl:(double)arg2 version:(unsigned int)arg3 domains:(id)arg4;
+- (BOOL)isInvalidatedByServiceVersion:(unsigned int)arg1 domains:(id)arg2;
 
 @end
 

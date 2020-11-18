@@ -9,6 +9,7 @@
 @interface UIView (HUAdditions)
 + (void)hu_enableAnimations:(BOOL)arg1 forBlock:(CDUnknownBlockType)arg2;
 - (void)hu_autoSizeByConstrainingWidth:(double)arg1;
+- (BOOL)hu_isHomeAffordancePresent;
 - (void)hu_setFramePreservingTransform:(struct CGRect)arg1;
 - (void)hu_traverseViewHierarchy:(CDUnknownBlockType)arg1;
 @end

@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (id)canonicalKeyString;
 - (long long)compareToCellValue:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)displayString;

@@ -12,7 +12,7 @@
 #import <NewsUI/SXAdProvider-Protocol.h>
 
 @class FCArticle, NSString;
-@protocol NUAdMetadataFactory, NUAdProvider, NUAdSettings, NUDevice;
+@protocol NUAdLayoutOptionsFactory, NUAdMetadataFactory, NUAdProvider, NUAdSettings, NUDevice;
 
 @interface NUArticleAdManager : NSObject <NUAdContextProvider, SXAdControllerDelegate, SXAdProvider, SXAdControllerFactory>
 {
@@ -21,6 +21,7 @@
     id<NUAdMetadataFactory> _adMetadataFactory;
     id<NUAdSettings> _settings;
     id<NUDevice> _device;
+    id<NUAdLayoutOptionsFactory> _layoutOptionsFactory;
 }
 
 @property (readonly, nonatomic) id<NUAdMetadataFactory> adMetadataFactory; // @synthesize adMetadataFactory=_adMetadataFactory;
@@ -30,6 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<NUDevice> device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<NUAdLayoutOptionsFactory> layoutOptionsFactory; // @synthesize layoutOptionsFactory=_layoutOptionsFactory;
 @property (readonly, nonatomic) id<NUAdSettings> settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
 
@@ -41,7 +43,7 @@
 - (id)adControllerForDocument:(id)arg1 viewport:(id)arg2;
 - (CDUnknownBlockType)adForRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)contextProvidersForKeyPath:(id)arg1;
-- (id)initWithArticle:(id)arg1 adProvider:(id)arg2 adMetadataFactory:(id)arg3 settings:(id)arg4 device:(id)arg5;
+- (id)initWithArticle:(id)arg1 adProvider:(id)arg2 adMetadataFactory:(id)arg3 settings:(id)arg4 device:(id)arg5 layoutOptionsFactory:(id)arg6;
 
 @end
 

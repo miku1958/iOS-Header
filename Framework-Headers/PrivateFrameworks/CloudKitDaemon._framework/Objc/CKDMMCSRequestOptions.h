@@ -11,9 +11,9 @@
 __attribute__((visibility("hidden")))
 @interface CKDMMCSRequestOptions : NSObject
 {
-    BOOL _usesBackgroundSession;
     BOOL _allowsCellularAccess;
     BOOL _allowsPowerNapScheduling;
+    BOOL _automaticallyRetryNetworkFailures;
     long long _databaseScope;
     long long _containerEnvironment;
     NSString *_topmostParentOperationID;
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSData *_authPutResponse;
     NSDictionary *_authPutResponseHeaders;
     long long _qualityOfService;
+    unsigned long long _discretionaryNetworkBehavior;
     unsigned long long _networkServiceType;
     CKOperationMMCSRequestOptions *_MMCSRequestOptions;
 }
@@ -37,15 +38,16 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *applicationSecondaryID; // @synthesize applicationSecondaryID=_applicationSecondaryID;
 @property (strong, nonatomic) NSData *authPutResponse; // @synthesize authPutResponse=_authPutResponse;
 @property (strong, nonatomic) NSDictionary *authPutResponseHeaders; // @synthesize authPutResponseHeaders=_authPutResponseHeaders;
+@property (nonatomic) BOOL automaticallyRetryNetworkFailures; // @synthesize automaticallyRetryNetworkFailures=_automaticallyRetryNetworkFailures;
 @property (nonatomic) long long containerEnvironment; // @synthesize containerEnvironment=_containerEnvironment;
 @property (strong, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
 @property (nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 @property (strong, nonatomic) NSString *deviceHardwareID; // @synthesize deviceHardwareID=_deviceHardwareID;
+@property (nonatomic) unsigned long long discretionaryNetworkBehavior; // @synthesize discretionaryNetworkBehavior=_discretionaryNetworkBehavior;
 @property (nonatomic) unsigned long long networkServiceType; // @synthesize networkServiceType=_networkServiceType;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (strong, nonatomic) NSString *topmostParentOperationGroupID; // @synthesize topmostParentOperationGroupID=_topmostParentOperationGroupID;
 @property (strong, nonatomic) NSString *topmostParentOperationID; // @synthesize topmostParentOperationID=_topmostParentOperationID;
-@property (nonatomic) BOOL usesBackgroundSession; // @synthesize usesBackgroundSession=_usesBackgroundSession;
 @property (strong, nonatomic) NSArray *zoneNames; // @synthesize zoneNames=_zoneNames;
 
 - (void).cxx_destruct;
@@ -53,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (id)MMCSOptions;
 - (id)description;
 - (id)initWithOperation:(id)arg1;
+- (BOOL)usesBackgroundSession;
 
 @end
 

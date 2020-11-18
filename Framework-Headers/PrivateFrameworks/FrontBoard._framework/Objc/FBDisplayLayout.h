@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBSDisplayObserving-Protocol.h>
 
@@ -26,10 +26,10 @@
     int _displayBacklightToken;
 }
 
-@property (readonly, strong, nonatomic) FBSDisplayLayout *currentLayout; // @synthesize currentLayout=_currentLayout;
-@property (readonly, strong, nonatomic) FBSDisplayLayoutTransitionContext *currentTransitionContext; // @synthesize currentTransitionContext=_currentTransitionContext;
+@property (readonly, nonatomic) FBSDisplayLayout *currentLayout; // @synthesize currentLayout=_currentLayout;
+@property (readonly, nonatomic) FBSDisplayLayoutTransitionContext *currentTransitionContext; // @synthesize currentTransitionContext=_currentTransitionContext;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<FBDisplayLayoutDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, weak, nonatomic) id<FBDisplayLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property (readonly) unsigned long long hash;
@@ -37,6 +37,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTransitioning) BOOL transitioning;
 
+- (void).cxx_destruct;
 - (void)_bgQueue_updateBacklightLevelAndNotify:(BOOL)arg1;
 - (void)_buildAndSendLayout:(BOOL)arg1;
 - (BOOL)_isReallyTransitioning;

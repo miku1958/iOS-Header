@@ -8,16 +8,12 @@
 
 #import <GeoServices/GEOActiveTileGroupMigrator-Protocol.h>
 
-@class GEOMapLayerDataManager, GEOResourceManifestConfiguration, NSMutableArray, NSString;
-@protocol OS_dispatch_queue;
+@class GEOResourceManifestConfiguration, NSString;
 
 __attribute__((visibility("hidden")))
 @interface GEORegionalResourcesVersionMigrator : NSObject <GEOActiveTileGroupMigrator>
 {
     GEOResourceManifestConfiguration *_manifestConfiguration;
-    GEOMapLayerDataManager *_mapLayerDataManager;
-    NSObject<OS_dispatch_queue> *_isolationQueue;
-    NSMutableArray *_runningTasks;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,10 +22,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addRunningTask:(id)arg1;
-- (void)_removeRunningTask:(id)arg1;
 - (id)initWithManifestConfiguration:(id)arg1 mapLayerDataManager:(id)arg2;
-- (id)taskForNewTileGroup:(id)arg1 inResourceManifest:(id)arg2 oldTileGroup:(id)arg3 activeScales:(id)arg4 activeScenarios:(id)arg5 updateType:(long long)arg6;
+- (id)taskForNewTileGroup:(id)arg1 inResourceManifest:(id)arg2 oldTileGroup:(id)arg3 activeScales:(id)arg4 activeScenarios:(id)arg5 dataSet:(id)arg6 updateType:(long long)arg7;
 
 @end
 

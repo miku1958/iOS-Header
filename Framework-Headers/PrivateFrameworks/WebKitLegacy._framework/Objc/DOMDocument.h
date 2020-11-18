@@ -112,6 +112,13 @@
 - (id)scrollingElement;
 - (void)setDir:(id)arg1;
 - (id)visibilityState;
+- (void)webkitCancelFullScreen;
+- (id)webkitCurrentFullScreenElement;
+- (void)webkitExitFullscreen;
+- (BOOL)webkitFullScreenKeyboardInputAllowed;
+- (id)webkitFullscreenElement;
+- (BOOL)webkitFullscreenEnabled;
+- (BOOL)webkitIsFullScreen;
 
 @end
 

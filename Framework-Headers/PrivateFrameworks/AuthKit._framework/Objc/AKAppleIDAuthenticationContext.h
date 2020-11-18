@@ -9,12 +9,11 @@
 #import <AuthKit/AKAppleIDAuthenticationLimitedUIProvider-Protocol.h>
 #import <AuthKit/NSSecureCoding-Protocol.h>
 
-@class AKAnisetteData, AKDevice, AKNativeAccountRecoveryController, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
-@protocol AKAnisetteServiceProtocol, CDPStateUIProvider, OS_dispatch_queue;
+@class AKAnisetteData, AKDevice, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSUUID;
+@protocol AKAnisetteServiceProtocol, OS_dispatch_queue;
 
 @interface AKAppleIDAuthenticationContext : NSObject <AKAppleIDAuthenticationLimitedUIProvider, NSSecureCoding>
 {
-    id<CDPStateUIProvider> _cdpUiProvider;
     NSString *_generatedCode;
     NSNumber *_latitude;
     NSNumber *_longitude;
@@ -27,7 +26,6 @@
     AKDevice *_proxiedDevice;
     AKDevice *_companionDevice;
     NSString *_interpolatedReason;
-    AKNativeAccountRecoveryController *_nativeRecoveryController;
     unsigned long long _attemptIndex;
     BOOL _isProxyingForApp;
     BOOL _shouldSendIdentityTokenForRemoteUI;
@@ -44,6 +42,7 @@
     BOOL _isTriggeredByNotification;
     BOOL _isEphemeral;
     BOOL _shouldOfferSecurityUpgrade;
+    BOOL _needsRepair;
     BOOL _shouldPromptForPasswordOnly;
     BOOL _shouldUpdatePersistentServiceTokens;
     BOOL _shouldRequestRecoveryPET;
@@ -107,10 +106,9 @@
 @property (nonatomic) BOOL _shouldSendIdentityTokenForRemoteUI; // @synthesize _shouldSendIdentityTokenForRemoteUI;
 @property (readonly, nonatomic) BOOL _shouldSkipInitialReachabilityCheck; // @synthesize _shouldSkipInitialReachabilityCheck;
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
-@property (copy, nonatomic) id<AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
+@property (strong, nonatomic) id<AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;
 @property (nonatomic) BOOL anticipateEscrowAttempt; // @synthesize anticipateEscrowAttempt=_anticipateEscrowAttempt;
 @property (nonatomic) unsigned long long authenticationType; // @synthesize authenticationType=_authenticationType;
-@property (strong, nonatomic) id<CDPStateUIProvider> cdpUiProvider; // @synthesize cdpUiProvider=_cdpUiProvider;
 @property (strong, nonatomic) id clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (copy, nonatomic) AKDevice *companionDevice;
 @property (strong, nonatomic) AKAnisetteData *companionDeviceAnisetteData; // @synthesize companionDeviceAnisetteData=_companionDeviceAnisetteData;
@@ -126,8 +124,8 @@
 @property (copy, nonatomic) NSString *generatedCode;
 @property (copy, nonatomic, setter=setHasEmptyPassword:) NSNumber *hasEmptyPassword; // @synthesize hasEmptyPassword=_hasEmptyPassword;
 @property (readonly) unsigned long long hash;
-@property (copy) NSString *helpAnchor; // @synthesize helpAnchor=_helpAnchor;
-@property (copy) NSString *helpBook; // @synthesize helpBook=_helpBook;
+@property (copy, nonatomic) NSString *helpAnchor; // @synthesize helpAnchor=_helpAnchor;
+@property (copy, nonatomic) NSString *helpBook; // @synthesize helpBook=_helpBook;
 @property (copy, nonatomic) NSDictionary *httpHeadersForRemoteUI; // @synthesize httpHeadersForRemoteUI=_httpHeadersForRemoteUI;
 @property (copy, nonatomic, setter=setAppleIDLoginEnabled:) NSNumber *isAppleIDLoginEnabled; // @synthesize isAppleIDLoginEnabled=_isAppleIDLoginEnabled;
 @property (nonatomic) BOOL isEphemeral; // @synthesize isEphemeral=_isEphemeral;
@@ -140,6 +138,7 @@
 @property (nonatomic) BOOL needsCredentialRecovery; // @synthesize needsCredentialRecovery=_needsCredentialRecovery;
 @property (nonatomic) BOOL needsNewAppleID; // @synthesize needsNewAppleID=_needsNewAppleID;
 @property (nonatomic) BOOL needsPasswordChange; // @synthesize needsPasswordChange=_needsPasswordChange;
+@property (nonatomic) BOOL needsRepair; // @synthesize needsRepair=_needsRepair;
 @property (copy, nonatomic) AKDevice *proxiedDevice;
 @property (strong, nonatomic) AKAnisetteData *proxiedDeviceAnisetteData; // @synthesize proxiedDeviceAnisetteData=_proxiedDeviceAnisetteData;
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
@@ -159,7 +158,7 @@
 @property (nonatomic) BOOL shouldUpdatePersistentServiceTokens; // @synthesize shouldUpdatePersistentServiceTokens=_shouldUpdatePersistentServiceTokens;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsPiggybacking; // @synthesize supportsPiggybacking=_supportsPiggybacking;
-@property (strong) NSString *title; // @synthesize title=_title;
+@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
 + (BOOL)supportsSecureCoding;
@@ -175,14 +174,12 @@
 - (id)authKitAccount:(id *)arg1;
 - (id)authKitAccountForSilentServiceToken:(id *)arg1;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
-- (void)dismissNativeRecoveryUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dismissSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)presentBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)presentNativeRecoveryUIWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentSecondFactorAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;
 

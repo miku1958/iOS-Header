@@ -9,7 +9,7 @@
 #import <Contacts/CNContactsLoggerProvider-Protocol.h>
 
 @class NSString;
-@protocol CNContactsLogger, CNRegulatoryLogger, CNSpotlightIndexingLogger;
+@protocol CNContactsLogger, CNFavoritesLogger, CNGeminiLogger, CNRegulatoryLogger, CNSpotlightIndexingLogger;
 
 __attribute__((visibility("hidden")))
 @interface CNMockLoggerProvider : NSObject <CNContactsLoggerProvider>
@@ -17,11 +17,15 @@ __attribute__((visibility("hidden")))
     id<CNContactsLogger> _contactsLogger;
     id<CNSpotlightIndexingLogger> _spotlightIndexingLogger;
     id<CNRegulatoryLogger> _regulatoryLogger;
+    id<CNFavoritesLogger> _favoritesLogger;
+    id<CNGeminiLogger> _geminiLogger;
 }
 
 @property (strong, nonatomic) id<CNContactsLogger> contactsLogger; // @synthesize contactsLogger=_contactsLogger;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) id<CNFavoritesLogger> favoritesLogger; // @synthesize favoritesLogger=_favoritesLogger;
+@property (strong, nonatomic) id<CNGeminiLogger> geminiLogger; // @synthesize geminiLogger=_geminiLogger;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) id<CNRegulatoryLogger> regulatoryLogger; // @synthesize regulatoryLogger=_regulatoryLogger;
 @property (strong, nonatomic) id<CNSpotlightIndexingLogger> spotlightIndexingLogger; // @synthesize spotlightIndexingLogger=_spotlightIndexingLogger;

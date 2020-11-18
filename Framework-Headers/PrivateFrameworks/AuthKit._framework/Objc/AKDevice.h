@@ -76,6 +76,8 @@
 + (id)deviceSpecificLocalizedStringWithKey:(id)arg1;
 + (id)deviceWithSerializedData:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)systemContainerCacheURL;
++ (id)systemContainerURL;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

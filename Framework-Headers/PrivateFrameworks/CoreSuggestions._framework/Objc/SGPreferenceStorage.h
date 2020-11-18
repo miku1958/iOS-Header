@@ -19,12 +19,13 @@
 + (BOOL)detectContacts;
 + (BOOL)detectNLEvents;
 + (BOOL)detectStructuredEvents;
-+ (BOOL)harvestNLEvents;
 + (long long)hashedSessionsLogging;
++ (BOOL)hidePastEventsForTests;
 + (long long)messagesToProcessImmediately;
 + (BOOL)onlyShowSignificantNLEvents;
 + (BOOL)onlyShowSignificantPseudoContacts;
-+ (void)registerBlockOnSuggestionsSettingsChange:(CDUnknownBlockType)arg1;
++ (id)parsecFlightCachingAPIBaseURL;
++ (int)registerBlockOnSuggestionsSettingsChange:(CDUnknownBlockType)arg1;
 + (void)removeDeprecatedDefaults;
 + (void)resetAllPreferences;
 + (void)setAllowAgeBasedPruning:(BOOL)arg1;
@@ -38,7 +39,6 @@
 + (void)setDetectStructuredEvents:(BOOL)arg1;
 + (void)setFirstPartyCalendarAppIsInstalled:(BOOL)arg1;
 + (void)setFirstPartyMailAppIsInstalled:(BOOL)arg1;
-+ (void)setHarvestNLEvents:(BOOL)arg1;
 + (void)setHashedSessionsLogging:(int)arg1;
 + (void)setHidePastEventsForTests:(BOOL)arg1;
 + (void)setMessagesToProcessImmediately:(long long)arg1;
@@ -46,6 +46,7 @@
 + (void)setNLEventsDetectionEnabledForTests:(BOOL)arg1;
 + (void)setOnlyShowSignificantNLEvents:(BOOL)arg1;
 + (void)setOnlyShowSignificantPseudoContacts:(BOOL)arg1;
++ (void)setParsecFlightCachingAPIBaseURL:(id)arg1;
 + (void)setProactiveEnabledForTests:(BOOL)arg1;
 + (void)setShowCancelledEventsForTests:(BOOL)arg1;
 + (void)setShowContactsFoundInMail:(BOOL)arg1;

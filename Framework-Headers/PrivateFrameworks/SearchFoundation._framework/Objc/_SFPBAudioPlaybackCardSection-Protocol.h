@@ -6,40 +6,15 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBAbstractCommand, _SFPBColor, _SFPBImage, _SFPBPunchout, _SFPBRichText, _SFPBText;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBAbstractCommand, _SFPBColor, _SFPBImage, _SFPBPunchout, _SFPBRichText;
 
 @protocol _SFPBAudioPlaybackCardSection <NSObject>
 
 @property (strong, nonatomic) _SFPBColor *backgroundColor;
-@property (strong, nonatomic) _SFPBImage *bottomImage;
-@property (copy, nonatomic) NSString *bottomImageEmoji;
-@property (strong, nonatomic) _SFPBText *bottomSubtitle;
-@property (strong, nonatomic) _SFPBText *bottomText;
 @property (nonatomic) BOOL canBeHidden;
 @property (strong, nonatomic) _SFPBRichText *detailText;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
-@property (readonly, nonatomic) BOOL hasBottomImage;
-@property (readonly, nonatomic) BOOL hasBottomImageEmoji;
 @property (nonatomic) BOOL hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasBottomSubtitle;
-@property (readonly, nonatomic) BOOL hasBottomText;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasDetailText;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasState;
-@property (readonly, nonatomic) BOOL hasSubtitle;
-@property (readonly, nonatomic) BOOL hasThumbnail;
-@property (readonly, nonatomic) BOOL hasTitle;
-@property (readonly, nonatomic) BOOL hasTopImage;
-@property (readonly, nonatomic) BOOL hasTopImageEmoji;
 @property (nonatomic) BOOL hasTopPadding;
-@property (readonly, nonatomic) BOOL hasTopSecondaryText;
-@property (readonly, nonatomic) BOOL hasTopText;
-@property (readonly, nonatomic) BOOL hasType;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *playCommands;
 @property (copy, nonatomic) NSArray *punchoutOptions;
@@ -51,10 +26,6 @@
 @property (strong, nonatomic) _SFPBRichText *subtitle;
 @property (strong, nonatomic) _SFPBImage *thumbnail;
 @property (strong, nonatomic) _SFPBRichText *title;
-@property (strong, nonatomic) _SFPBImage *topImage;
-@property (copy, nonatomic) NSString *topImageEmoji;
-@property (copy, nonatomic) NSString *topSecondaryText;
-@property (strong, nonatomic) _SFPBText *topText;
 @property (copy, nonatomic) NSString *type;
 
 - (void)addPlayCommands:(_SFPBAbstractCommand *)arg1;

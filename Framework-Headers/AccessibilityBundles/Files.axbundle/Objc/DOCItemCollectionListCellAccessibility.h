@@ -13,8 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsFolder;
 - (id)_axAttrTitle;
-- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

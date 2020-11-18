@@ -13,16 +13,21 @@
 @interface NNMKMessageContent : NSObject <NSSecureCoding>
 {
     BOOL _mainAlternativeValid;
+    BOOL _hasTextData;
     BOOL _partiallyLoaded;
     NSString *_messageId;
     NSString *_externalReferenceId;
     NSData *_textData;
+    NSData *_htmlContentData;
     unsigned long long _originalContentSize;
     NSArray *_attachments;
 }
 
 @property (strong, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (strong, nonatomic) NSString *externalReferenceId; // @synthesize externalReferenceId=_externalReferenceId;
+@property (nonatomic) BOOL hasTextData; // @synthesize hasTextData=_hasTextData;
+@property (strong, nonatomic) NSData *htmlContentData; // @synthesize htmlContentData=_htmlContentData;
+@property (readonly, nonatomic) BOOL isHTML;
 @property (nonatomic) BOOL mainAlternativeValid; // @synthesize mainAlternativeValid=_mainAlternativeValid;
 @property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property (nonatomic) unsigned long long originalContentSize; // @synthesize originalContentSize=_originalContentSize;

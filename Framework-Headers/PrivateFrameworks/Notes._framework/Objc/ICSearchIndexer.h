@@ -13,6 +13,7 @@
 
 @interface ICSearchIndexer : NSObject <CSSearchableIndexDelegate>
 {
+    BOOL _disabled;
     BOOL _retryOnErrors;
     BOOL _observingChanges;
     unsigned long long _maxBytesPerIndexingBatch;
@@ -29,6 +30,7 @@
 @property (copy, nonatomic) NSDictionary *dataSourcesByIdentifier; // @synthesize dataSourcesByIdentifier=_dataSourcesByIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *indexingQueue; // @synthesize indexingQueue=_indexingQueue;
 @property (nonatomic) unsigned long long maxBytesPerIndexingBatch; // @synthesize maxBytesPerIndexingBatch=_maxBytesPerIndexingBatch;

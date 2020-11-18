@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) SFSearchResult *identifyingResult;
 @property (readonly) Class superclass;
 @property (readonly) SFImage *thumbnail;
 @property (readonly) SFRichText *title;

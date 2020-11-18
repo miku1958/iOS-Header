@@ -6,12 +6,14 @@
 
 #import <PhotosUI/PUViewControllerSpec.h>
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditViewControllerSpec : PUViewControllerSpec
 {
 }
 
 @property (readonly, nonatomic) struct UIEdgeInsets previewViewInsetsLandscape;
 @property (readonly, nonatomic) struct UIEdgeInsets previewViewInsetsPortrait;
+@property (readonly, nonatomic) BOOL shouldDisplayCompactToolbar;
 @property (readonly, nonatomic) BOOL shouldDisplayExtensionButtonInMainToolbar;
 @property (readonly, nonatomic) BOOL shouldDisplaySecondaryToolButtonsInMainToolbar;
 @property (readonly, nonatomic) double toolbarLongSideMargin;

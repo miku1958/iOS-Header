@@ -10,7 +10,7 @@
 #import <GenerationalStorage/GSAdditionStoringPrivate-Protocol.h>
 
 @class NSURL;
-@protocol NSCopying><NSSecureCoding;
+@protocol NSCopying><NSSecureCoding, OS_dispatch_queue;
 
 @interface GSTemporaryStorage : NSObject <GSAdditionStoringPrivate, GSAdditionStoring>
 {
@@ -18,6 +18,7 @@
     NSURL *_documentURL;
     NSURL *_stagingURL;
     int _lockFd;
+    NSObject<OS_dispatch_queue> *_workQueue;
 }
 
 @property (strong) NSURL *documentURL; // @synthesize documentURL=_documentURL;

@@ -22,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (void)executeCommand:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)executeCommand:(id)arg1 peerInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithClientLiteWithConnectionName:(id)arg1;
 - (id)initWithServiceHelper:(id)arg1 withConnectionName:(id)arg2;
 - (void)warmUpWithSignal:(id)arg1 completion:(CDUnknownBlockType)arg2;

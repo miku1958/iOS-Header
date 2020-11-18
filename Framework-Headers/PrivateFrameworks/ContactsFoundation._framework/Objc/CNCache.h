@@ -4,32 +4,53 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSArray, NSMutableArray, NSMutableDictionary;
 @protocol CNScheduler;
 
 @interface CNCache : NSObject
 {
-    NSMutableDictionary *_storage;
+    NSArray *_boundingStrategies;
     id<CNScheduler> _resourceScheduler;
+    NSMutableDictionary *_storage;
+    NSMutableArray *_didEvictHandlers;
+    NSArray *_evictedKeysAndValues;
 }
 
+@property (readonly, copy) NSArray *allKeys;
+@property (readonly, copy) NSArray *allObjects;
+@property (readonly, copy, nonatomic) NSArray *boundingStrategies; // @synthesize boundingStrategies=_boundingStrategies;
+@property (readonly, nonatomic) NSMutableArray *didEvictHandlers; // @synthesize didEvictHandlers=_didEvictHandlers;
+@property (copy, nonatomic) NSArray *evictedKeysAndValues; // @synthesize evictedKeysAndValues=_evictedKeysAndValues;
 @property (readonly, nonatomic) id<CNScheduler> resourceScheduler; // @synthesize resourceScheduler=_resourceScheduler;
 @property (readonly, nonatomic) NSMutableDictionary *storage; // @synthesize storage=_storage;
 
 + (id)atomicCache;
++ (id)atomicCacheScheduler;
++ (id)boundingStrategyWithCapacity:(unsigned long long)arg1;
++ (id)boundingStrategyWithTTL:(double)arg1;
++ (id)boundingStrategyWithTTL:(double)arg1 timeProvider:(id)arg2;
 + (id)cache;
++ (id)nonatomicCacheScheduler;
 - (void).cxx_destruct;
-- (id)allKeys;
-- (id)allObjects;
+- (void)addDidEvictHandler:(CDUnknownBlockType)arg1;
+- (void)callDidEvictHandlersIfNecessary;
 - (id)init;
+- (id)initWithBoundingStrategies:(id)arg1 resourceScheduler:(id)arg2;
 - (id)initWithResourceScheduler:(id)arg1;
 - (id)objectForKey:(id)arg1;
 - (id)objectForKey:(id)arg1 onCacheMiss:(CDUnknownBlockType)arg2;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)performWithResourceLock:(CDUnknownBlockType)arg1;
 - (void)removeAllObjects;
+- (void)resourceLock_evictObjectForKey:(id)arg1;
+- (void)resourceLock_evictObjectsForKeys:(id)arg1;
+- (void)resourceLock_setObject:(id)arg1 forKey:(id)arg2;
+- (void)resourceLock_validateAllKeys;
+- (void)resourceLock_validateKey:(id)arg1;
+- (void)resourceLock_willAccessKey:(id)arg1;
+- (void)resourceLock_willSetObject:(id)arg1 forKey:(id)arg2;
 - (id)resultWithResourceLock:(CDUnknownBlockType)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;

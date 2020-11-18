@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString;
 
@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     BOOL _commaSeparated;
 }
 
+@property (readonly, copy, nonatomic) NSString *descriptionString;
+
 + (id)descriptionWithCFType:(void *)arg1 format:(id)arg2;
 + (id)descriptionWithObject:(id)arg1;
 + (id)descriptionWithObject:(id)arg1 class:(Class)arg2;
@@ -32,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)addFieldValue:(id)arg1;
 - (void)addFieldWithFormat:(id)arg1;
 - (void)addSuperDescription;
-- (id)descriptionString;
 - (id)initWithCFType:(void *)arg1 header:(id)arg2;
 - (id)initWithObject:(id)arg1;
 - (id)initWithObject:(id)arg1 class:(Class)arg2 format:(id)arg3;

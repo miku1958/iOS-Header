@@ -23,6 +23,7 @@
 @property (readonly, copy, nonatomic) _SFKeySpecifier *keySpecifier;
 @property (copy, nonatomic) NSString *localizedDescription;
 @property (copy, nonatomic) NSString *localizedLabel;
+@property (readonly, copy, nonatomic) NSString *persistentIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -13,18 +13,18 @@
 __attribute__((visibility("hidden")))
 @interface SKRemoteProductActivityViewController : _UIRemoteViewController <SKUIClientProductActivityViewController>
 {
-    SKStoreProductActivityViewController *_productActivityViewontroller;
     SKStoreProductActivityViewController *_productActivityViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) SKStoreProductActivityViewController *productActivityViewController; // @synthesize productActivityViewController=_productActivityViewController;
+@property (weak, nonatomic) SKStoreProductActivityViewController *productActivityViewController; // @synthesize productActivityViewController=_productActivityViewController;
 @property (readonly) Class superclass;
 
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
+- (void).cxx_destruct;
 - (void)didFinishWithResult:(id)arg1 error:(id)arg2;
 
 @end

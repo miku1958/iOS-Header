@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAssetReaderOutputInternal, AVWeakReference, NSDictionary, NSString;
 
@@ -43,7 +43,9 @@
 - (void)finalize;
 - (id)init;
 - (void)markConfigurationAsFinal;
+- (BOOL)maximizePowerEfficiency;
 - (void)resetForReadingTimeRanges:(id)arg1;
+- (void)setMaximizePowerEfficiency:(BOOL)arg1;
 - (void)setSupportsRandomAccess:(BOOL)arg1;
 - (BOOL)supportsRandomAccess;
 

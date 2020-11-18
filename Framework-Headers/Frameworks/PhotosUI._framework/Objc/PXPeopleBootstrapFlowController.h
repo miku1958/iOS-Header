@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) UIViewController<PXPeopleFlowViewController> *nextViewController;
 @property (readonly, nonatomic) UIViewController<PXPeopleFlowViewController> *previousViewController;
 @property (readonly, nonatomic) BOOL shouldPresentNaming;
+@property (readonly, nonatomic) BOOL shouldPresentPostNaming;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long viewControllerIndex; // @synthesize viewControllerIndex=_viewControllerIndex;
 @property (copy, nonatomic) NSArray *viewControllers; // @synthesize viewControllers=_viewControllers;

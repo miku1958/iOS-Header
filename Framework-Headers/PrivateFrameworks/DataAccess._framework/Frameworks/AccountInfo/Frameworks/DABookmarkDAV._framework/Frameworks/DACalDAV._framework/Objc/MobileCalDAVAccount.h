@@ -6,9 +6,11 @@
 
 #import <DataAccess/DAAccount.h>
 
+#import <DACalDAV/CDBAccountInfo-Protocol.h>
+
 @class CalDAVPrincipalSearchPropertySet, CalDAVRefreshContext, CalDAVServerVersion, CoreDAVDiscoveryTaskGroup, DACoreDAVLogger, DACoreDAVTaskManager, MobileCalDAVAccountRefreshActor, MobileCalDAVPrincipal, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTimeZone, NSURL;
 
-@interface MobileCalDAVAccount : DAAccount
+@interface MobileCalDAVAccount : DAAccount <CDBAccountInfo>
 {
     int _wasMigrated;
     NSMutableDictionary *_principals;
@@ -39,6 +41,9 @@
 @property (strong, nonatomic) CoreDAVDiscoveryTaskGroup *checkValidityTaskGroup; // @synthesize checkValidityTaskGroup=_checkValidityTaskGroup;
 @property (strong, nonatomic) NSURL *collectionSetURL;
 @property (strong, nonatomic) DACoreDAVLogger *coreDAVLogger; // @synthesize coreDAVLogger=_coreDAVLogger;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isRefreshing; // @synthesize isRefreshing=_isRefreshing;
 @property (nonatomic) BOOL isSpinning; // @synthesize isSpinning=_isSpinning;
 @property (nonatomic) BOOL isWritable;
@@ -70,6 +75,7 @@
 @property (readonly, nonatomic) BOOL shouldUseCalendarHomeSyncReport;
 @property (strong, nonatomic) NSDictionary *subscribedCalendars;
 @property (nonatomic) BOOL subscribedCalendarsChanged; // @synthesize subscribedCalendarsChanged=_subscribedCalendarsChanged;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsEvents;
 @property (readonly, nonatomic) BOOL supportsReminders;
 @property (readonly, nonatomic) DACoreDAVTaskManager *taskManager;
@@ -103,6 +109,7 @@
 - (void)addCalendar:(id)arg1;
 - (void)addPrincipal:(id)arg1;
 - (void)addToCoreDAVLoggingDelegates;
+- (BOOL)addressIsAccountOwner:(id)arg1;
 - (void)cancelRefreshWithCompletion:(CDUnknownBlockType)arg1;
 - (void *)copyCalStore;
 - (void)coreDAVLogDiagnosticMessage:(id)arg1 atLevel:(long long)arg2;

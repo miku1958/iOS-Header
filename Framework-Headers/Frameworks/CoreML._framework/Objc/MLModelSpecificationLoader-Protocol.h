@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <CoreML/NSObject-Protocol.h>
+
+@class MLModelConfiguration;
 @protocol MLModeling;
 
-@protocol MLModelSpecificationLoader
-+ (id<MLModeling>)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
+@protocol MLModelSpecificationLoader <NSObject>
++ (id<MLModeling>)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(MLModelConfiguration *)arg2 error:(id *)arg3;
 @end
 

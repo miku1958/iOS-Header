@@ -29,6 +29,7 @@
     NSString *_iadCampaign;
     NSString *_iadLine;
     int _newsProductType;
+    NSString *_previousArticleId;
     NSString *_sourceChannelId;
     int _videoAdPlacementPosition;
     int _videoAdType;
@@ -74,6 +75,7 @@
 @property (readonly, nonatomic) BOOL hasIadCampaign;
 @property (readonly, nonatomic) BOOL hasIadLine;
 @property (nonatomic) BOOL hasNewsProductType;
+@property (readonly, nonatomic) BOOL hasPreviousArticleId;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
 @property (nonatomic) BOOL hasVideoAdDuration;
 @property (nonatomic) BOOL hasVideoAdPlacementPosition;
@@ -82,6 +84,7 @@
 @property (strong, nonatomic) NSString *iadCampaign; // @synthesize iadCampaign=_iadCampaign;
 @property (strong, nonatomic) NSString *iadLine; // @synthesize iadLine=_iadLine;
 @property (nonatomic) int newsProductType; // @synthesize newsProductType=_newsProductType;
+@property (strong, nonatomic) NSString *previousArticleId; // @synthesize previousArticleId=_previousArticleId;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
 @property (nonatomic) long long videoAdDuration; // @synthesize videoAdDuration=_videoAdDuration;
 @property (nonatomic) int videoAdPlacementPosition; // @synthesize videoAdPlacementPosition=_videoAdPlacementPosition;

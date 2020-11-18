@@ -16,8 +16,8 @@
 @property (copy, nonatomic) FBSSceneClientSettings *clientSettings; // @dynamic clientSettings;
 @property (copy, nonatomic) FBSSceneSettings *settings; // @dynamic settings;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)setDisplay:(id)arg1;
 - (void)updateClientSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (void)updateSettingsWithBlock:(CDUnknownBlockType)arg1;

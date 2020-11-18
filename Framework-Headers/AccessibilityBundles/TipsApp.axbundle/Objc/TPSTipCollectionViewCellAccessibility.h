@@ -16,7 +16,6 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityProvidesScannerGroupElements;
 - (id)_accessibilityScannerGroupElements;
-- (id)avplayer;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setTip:(id)arg1 withCellAppearance:(id)arg2;
 

@@ -6,50 +6,48 @@
 
 #import <PassKitUI/PKPassFaceView.h>
 
-@class PKBarcodeStickerView, PKContinuousButton, PKLinkedAppIconView, UILabel, WLEasyToHitCustomButton;
+@class PKBarcodeStickerView, PKLinkedAppIconView, UIImageView, UILabel, UIView, WLEasyToHitCustomButton;
 
 @interface PKPassFrontFaceView : PKPassFaceView
 {
     PKBarcodeStickerView *_barcodeView;
     WLEasyToHitCustomButton *_infoButton;
-    PKContinuousButton *_barcodeButton;
+    UIImageView *_contactlessLogoView;
+    UIView *_bottomRightItemView;
     UILabel *_logoLabel;
     BOOL _showsLinkedApp;
-    BOOL _showsInfo;
-    BOOL _showsBarcodeButton;
     BOOL _showsBarcodeView;
     BOOL _showsLiveBalance;
+    long long _bottomRightItem;
     PKLinkedAppIconView *_linkedApp;
 }
 
 @property (readonly, nonatomic) PKBarcodeStickerView *barcodeView;
+@property (nonatomic) long long bottomRightItem; // @synthesize bottomRightItem=_bottomRightItem;
 @property (readonly, nonatomic) PKLinkedAppIconView *linkedApp; // @synthesize linkedApp=_linkedApp;
-@property (nonatomic) BOOL showsBarcodeButton; // @synthesize showsBarcodeButton=_showsBarcodeButton;
 @property (nonatomic) BOOL showsBarcodeView; // @synthesize showsBarcodeView=_showsBarcodeView;
-@property (nonatomic) BOOL showsInfo; // @synthesize showsInfo=_showsInfo;
 @property (nonatomic) BOOL showsLinkedApp; // @synthesize showsLinkedApp=_showsLinkedApp;
 @property (nonatomic) BOOL showsLiveBalance; // @synthesize showsLiveBalance=_showsLiveBalance;
 
 - (void).cxx_destruct;
-- (void)_barcodeButtonPressed;
 - (void)_infoButtonPressed;
 - (void)_positionBarcodeView;
+- (id)_rebucketAuxiliaryFields:(id)arg1;
 - (id)_relevantBuckets;
 - (struct CGRect)barcodeFrame;
 - (struct CGSize)contentSize;
 - (void)createBodyContentViews;
+- (id)createContactlessLogoView;
 - (void)createHeaderContentViews;
+- (id)createInfoButton;
 - (void)dealloc;
 - (id)init;
 - (void)insertContentView:(id)arg1 ofType:(long long)arg2;
 - (void)layoutSubviews;
 - (id)passFaceTemplate;
 - (void)setClipsContent:(BOOL)arg1;
-- (void)setShowsBarcodeButton:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setShowsBarcodeView:(BOOL)arg1 animated:(BOOL)arg2;
-- (id)shortFaceTemplate;
-- (id)shortScrunchedFaceTemplate;
-- (id)tallFaceTemplate;
+- (id)templateForLayoutMode:(long long)arg1;
 - (void)updateValidity;
 
 @end

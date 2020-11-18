@@ -18,7 +18,6 @@
 
 @property (copy, nonatomic) NSString *colorSpace;
 @property (nonatomic) unsigned long long lightType; // @synthesize lightType=_lightType;
-@property (readonly, nonatomic) struct RTLight *rtLight;
 
 - (void).cxx_destruct;
 - (void)dealloc;
@@ -26,6 +25,7 @@
 - (struct CGColor *)irradianceAtPoint: /* Error: Ran out of types for this method. */;
 - (struct CGColor *)irradianceAtPoint:(struct CGColorSpace *)arg1 colorSpace: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)position;
+- (struct RTLight *)rtLight;
 - (void)setTransform:(id)arg1;
 
 @end

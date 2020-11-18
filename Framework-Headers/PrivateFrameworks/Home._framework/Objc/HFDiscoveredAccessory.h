@@ -34,6 +34,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *manufacturerName; // @synthesize manufacturerName=_manufacturerName;
 @property (readonly, nonatomic) BOOL requiresSetupCode;
+@property (readonly, nonatomic) BOOL requiresSoftwareUpdate;
 @property (readonly, nonatomic) SFDevice *sharingDevice; // @synthesize sharingDevice=_sharingDevice;
 @property (readonly, nonatomic) unsigned long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;

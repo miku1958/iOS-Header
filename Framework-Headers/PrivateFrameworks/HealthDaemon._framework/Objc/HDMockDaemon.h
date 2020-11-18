@@ -8,12 +8,11 @@
 
 #import <HealthDaemon/HDHealthDaemon-Protocol.h>
 
-@class HDAchievementDefinitionAlertManager, HDBackgroundTaskScheduler, HDMockPrimaryProfile, HDPluginManager, HDPrimaryProfile, NSString, _HKBehavior;
+@class HDBackgroundTaskScheduler, HDMockPrimaryProfile, HDPluginManager, HDPrimaryProfile, NSString, _HKBehavior;
 @protocol HDNanoAlertSuppressionService;
 
 @interface HDMockDaemon : NSObject <HDHealthDaemon>
 {
-    HDAchievementDefinitionAlertManager *achievementDefinitionAlertManager;
     HDBackgroundTaskScheduler *backgroundTaskScheduler;
     HDMockPrimaryProfile *mockPrimaryProfile;
     HDPrimaryProfile *primaryProfile;
@@ -21,7 +20,6 @@
     id<HDNanoAlertSuppressionService> alertSuppressionService;
 }
 
-@property (strong, nonatomic) HDAchievementDefinitionAlertManager *achievementDefinitionAlertManager; // @synthesize achievementDefinitionAlertManager;
 @property (strong, nonatomic) id<HDNanoAlertSuppressionService> alertSuppressionService; // @synthesize alertSuppressionService;
 @property (readonly) HDBackgroundTaskScheduler *backgroundTaskScheduler; // @synthesize backgroundTaskScheduler;
 @property (readonly, nonatomic) _HKBehavior *behavior;

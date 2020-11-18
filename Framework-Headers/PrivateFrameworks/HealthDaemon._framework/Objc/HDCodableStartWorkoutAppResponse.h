@@ -15,9 +15,7 @@
     HDCodableError *_launchError;
     NSString *_requestIdentifier;
     BOOL _success;
-    struct {
-        unsigned int success:1;
-    } _has;
+    CDStruct_f2ecb737 _has;
 }
 
 @property (readonly, nonatomic) BOOL hasLaunchError;

@@ -6,10 +6,17 @@
 
 #import <NanoTimeKitCompanion/NTKLabelCollectionNode.h>
 
+@class NSArray;
+
 @interface NTKMinutesMinus15_30_45_60LabelCollectionNode : NTKLabelCollectionNode
 {
+    NSArray *_visibleComplicationSlots;
 }
 
+@property (strong, nonatomic) NSArray *visibleComplicationSlots; // @synthesize visibleComplicationSlots=_visibleComplicationSlots;
+
+- (void).cxx_destruct;
+- (void)_updateNodeVisibility;
 - (void)createSubNodes;
 
 @end

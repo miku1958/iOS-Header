@@ -10,11 +10,6 @@
 
 @protocol _CPSearchViewAppearFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasIsOnLockScreen;
-@property (readonly, nonatomic) BOOL hasIsOverApp;
-@property (readonly, nonatomic) BOOL hasReaderTextAvailable;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasViewAppearEvent;
 @property (nonatomic) BOOL isOnLockScreen;
 @property (nonatomic) BOOL isOverApp;
 @property (readonly, nonatomic) NSData *jsonData;

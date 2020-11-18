@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCache, NSString;
 @protocol MPArtworkDataSource, MPArtworkDataSourceVisualIdenticality;
@@ -42,7 +42,7 @@
 
 + (id)_artworkCacheForIdentifier:(id)arg1 requestingContext:(id)arg2;
 + (id)_artworkLoadQueue;
-+ (void)setCacheLimit:(unsigned long long)arg1 forCacheIdentifier:(id)arg2 requestingContext:(id)arg3;
++ (void)setCacheLimit:(long long)arg1 forCacheIdentifier:(id)arg2 requestingContext:(id)arg3;
 + (void)setCachePurgesWhenEnteringBackground:(BOOL)arg1 forCacheIdentifier:(id)arg2 requestingContext:(id)arg3;
 + (id)staticArtworkCatalogWithImage:(id)arg1;
 - (void).cxx_destruct;

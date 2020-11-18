@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface EQKitBox : NSObject <NSCopying>
 {
+    struct CGColor *mFontSmoothingBackgroundColor;
 }
 
 @property (readonly, nonatomic) struct CGColor *color;
 @property (readonly, nonatomic) double depth;
+@property (nonatomic) struct CGColor *fontSmoothingBackgroundColor; // @synthesize fontSmoothingBackgroundColor=mFontSmoothingBackgroundColor;
 @property (readonly, nonatomic) double height;
 @property (readonly, nonatomic) double layoutDepth;
 @property (readonly, nonatomic) double layoutHeight;

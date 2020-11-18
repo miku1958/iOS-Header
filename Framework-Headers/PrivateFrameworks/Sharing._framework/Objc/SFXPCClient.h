@@ -11,7 +11,6 @@
 @class NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface SFXPCClient : NSObject <NSXPCConnectionDelegate>
 {
     BOOL _activateCalled;

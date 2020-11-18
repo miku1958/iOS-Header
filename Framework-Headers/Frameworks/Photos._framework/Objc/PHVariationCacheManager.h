@@ -34,9 +34,11 @@
 - (unsigned long long)evictIfNeeded;
 - (id)gatingResultForVariationType:(long long)arg1 assetIdentifier:(id)arg2;
 - (id)initWithCacheURL:(id)arg1;
+- (id)portraitEffectSettingsForAssetIdentifier:(id)arg1;
 - (unsigned long long)purgeAll;
 - (void)saveAnalysisResult:(id)arg1 assetIdentifier:(id)arg2;
 - (void)saveGatingResult:(id)arg1 forVariationType:(long long)arg2 assetIdentifier:(id)arg3;
+- (void)savePortraitEffectSettings:(id)arg1 assetIdentifier:(id)arg2;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class UIViewInProcessAnimationState, UIViewRunningAnimationEntry;
 @protocol OS_dispatch_queue, UIVectorOperatable, UIViewAnimationComposing;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int ownershipCount; // @synthesize ownershipCount=_ownershipCount;
 
 - (void).cxx_destruct;
-- (BOOL)animatePropertyWithCurrentValue:(id)arg1 targetValueGetter:(CDUnknownBlockType)arg2 preTickShouldRemoveCallback:(CDUnknownBlockType)arg3 newValueCallback:(CDUnknownBlockType)arg4 removedCallback:(CDUnknownBlockType)arg5;
+- (BOOL)animatePropertyWithCurrentValue:(id)arg1 targetValue:(id)arg2 preTickShouldRemoveCallback:(CDUnknownBlockType)arg3 newValueCallback:(CDUnknownBlockType)arg4 removedCallback:(CDUnknownBlockType)arg5;
 - (id)initWithInvalidationCallback:(CDUnknownBlockType)arg1;
 - (void)invalidateIfPossible;
 - (void)setVelocity:(id)arg1 target:(BOOL)arg2;

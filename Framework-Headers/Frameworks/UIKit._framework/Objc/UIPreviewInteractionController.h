@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIInteractionProgressObserver-Protocol.h>
-#import <UIKit/UIPreviewInteractionDelegate-Protocol.h>
-#import <UIKit/_UIForcePresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIInteractionProgressObserver-Protocol.h>
+#import <UIKitCore/UIPreviewInteractionDelegate-Protocol.h>
+#import <UIKitCore/_UIForcePresentationControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, UIGestureRecognizer, UIInteractionProgress, UIPanGestureRecognizer, UIPresentationController, UIPreviewInteraction, UIView, UIViewController, UIWindow, _UIDeepPressAnalyzer, _UIPreviewGestureRecognizer, _UIRevealGestureRecognizer, _UIStatesFeedbackGenerator, _UITouchesObservingGestureRecognizer;
 @protocol UIForcePresentationController, UIForceTransitioningDelegate, UIPreviewInteractionControllerDelegate, UIViewControllerPreviewing_Internal;

@@ -14,6 +14,7 @@
 {
     BBSectionSubtypeParameters *_fallbackParameters;
     NSString *_hiddenPreviewsBodyPlaceholder;
+    NSString *_subtypeSummaryFormat;
     NSString *_topic;
     NSString *_missedBannerDescriptionFormat;
     NSString *_fullUnlockActionLabel;
@@ -47,6 +48,7 @@
     NSNumber *_boxedPreemptsPresentedAlert;
     NSNumber *_boxedRevealsAdditionalContentOnPresentation;
     NSNumber *_boxedPrivacySettings;
+    NSNumber *_boxedShouldDismissBulletinWhenClosed;
 }
 
 @property (strong, nonatomic) NSSet *alertSuppressionAppIDs;
@@ -70,6 +72,7 @@
 @property (strong, nonatomic) NSNumber *boxedPrivacySettings; // @synthesize boxedPrivacySettings=_boxedPrivacySettings;
 @property (strong, nonatomic) NSNumber *boxedRealertCount; // @synthesize boxedRealertCount=_boxedRealertCount;
 @property (strong, nonatomic) NSNumber *boxedRevealsAdditionalContentOnPresentation; // @synthesize boxedRevealsAdditionalContentOnPresentation=_boxedRevealsAdditionalContentOnPresentation;
+@property (strong, nonatomic) NSNumber *boxedShouldDismissBulletinWhenClosed; // @synthesize boxedShouldDismissBulletinWhenClosed=_boxedShouldDismissBulletinWhenClosed;
 @property (strong, nonatomic) NSNumber *boxedShowsContactPhoto; // @synthesize boxedShowsContactPhoto=_boxedShowsContactPhoto;
 @property (strong, nonatomic) NSNumber *boxedShowsUnreadIndicatorForNoticesFeed; // @synthesize boxedShowsUnreadIndicatorForNoticesFeed=_boxedShowsUnreadIndicatorForNoticesFeed;
 @property (strong, nonatomic) NSNumber *boxedSubtypePriority; // @synthesize boxedSubtypePriority=_boxedSubtypePriority;
@@ -97,9 +100,11 @@
 @property (copy, nonatomic) NSString *secondaryContentRemoteServiceBundleIdentifier; // @synthesize secondaryContentRemoteServiceBundleIdentifier=_secondaryContentRemoteServiceBundleIdentifier;
 @property (copy, nonatomic) NSString *secondaryContentRemoteViewControllerClassName; // @synthesize secondaryContentRemoteViewControllerClassName=_secondaryContentRemoteViewControllerClassName;
 @property (copy, nonatomic) BBSectionIcon *sectionIconOverride; // @synthesize sectionIconOverride=_sectionIconOverride;
+@property (nonatomic) BOOL shouldDismissBulletinWhenClosed;
 @property (nonatomic) BOOL showsContactPhoto;
 @property (nonatomic) BOOL showsUnreadIndicatorForNoticesFeed;
 @property (nonatomic) unsigned long long subtypePriority;
+@property (copy, nonatomic) NSString *subtypeSummaryFormat; // @synthesize subtypeSummaryFormat=_subtypeSummaryFormat;
 @property (nonatomic) BOOL suppressesAlertsWhenAppIsActive;
 @property (nonatomic) BOOL suppressesTitle;
 @property (strong, nonatomic) BBColor *tintColor; // @synthesize tintColor=_tintColor;

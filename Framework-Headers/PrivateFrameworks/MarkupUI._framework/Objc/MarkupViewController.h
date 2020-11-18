@@ -134,6 +134,7 @@
 + (id)cleanImageMetadataFromData:(id)arg1;
 + (BOOL)hasPrivateImageMetadata:(id)arg1;
 + (id)markupBarButtonItemWithTarget:(id)arg1 action:(SEL)arg2;
++ (id)supportedOutputTypes;
 - (void).cxx_destruct;
 - (void)_bailFailedAnimateEnterMarkup;
 - (void)_cancel;
@@ -151,6 +152,7 @@
 - (void)_saveEditing:(id)arg1;
 - (void)_setData:(id)arg1 withArchivedModelData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_setFileURL:(id)arg1 withArchivedModelData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_setLegacyToolbarHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setupAnnotationController;
 - (void)_setupInitialBaseModelScaleFactorWithScreenSize:(struct CGSize)arg1 windowDecorationSize:(struct CGSize)arg2;
 - (void)_showTextStyleOptions:(id)arg1;
@@ -185,6 +187,7 @@
 - (void)editDetectedForAnnotationController:(id)arg1;
 - (void)editTextAnnotation:(id)arg1;
 - (id)filteredToolbarItemsForItems:(id)arg1 fromController:(id)arg2;
+- (void)finalizeCrop;
 - (void)fullTeardown;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

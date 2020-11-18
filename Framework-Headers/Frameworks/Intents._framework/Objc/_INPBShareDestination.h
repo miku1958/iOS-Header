@@ -7,35 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBShareDestination-Protocol.h>
 
-@class PBUnknownFields, _INPBContact;
+@class NSString, _INPBContact;
 
-@interface _INPBShareDestination : PBCodable <NSCopying>
+@interface _INPBShareDestination : PBCodable <_INPBShareDestination, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    _INPBContact *_contact;
-    int _deviceType;
     struct {
         unsigned int deviceType:1;
     } _has;
+    int _deviceType;
+    _INPBContact *_contact;
 }
 
 @property (strong, nonatomic) _INPBContact *contact; // @synthesize contact=_contact;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
 @property (readonly, nonatomic) BOOL hasContact;
 @property (nonatomic) BOOL hasDeviceType;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsDeviceType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)deviceTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

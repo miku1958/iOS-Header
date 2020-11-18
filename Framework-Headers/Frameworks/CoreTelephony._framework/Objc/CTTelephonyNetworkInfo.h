@@ -4,55 +4,78 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CTCarrier, NSDictionary, NSLock, NSString;
+#import <CoreTelephony/CoreTelephonyClientDataDelegate-Protocol.h>
+#import <CoreTelephony/CoreTelephonyClientRegistrationDelegate-Protocol.h>
 
-@interface CTTelephonyNetworkInfo : NSObject
+@class CTCarrier, CTServiceDescriptorContainer, CoreTelephonyClient, NSDictionary, NSMutableDictionary, NSString;
+
+@interface CTTelephonyNetworkInfo : NSObject <CoreTelephonyClientDataDelegate, CoreTelephonyClientRegistrationDelegate>
 {
     struct queue _queue;
-    struct __CTServerConnection *server_connection;
-    NSLock *server_lock;
+    CoreTelephonyClient *_client;
+    CDUnknownBlockType _serviceSubscriberCellularProviderDidUpdateNotifier;
     CDUnknownBlockType _subscriberCellularProviderDidUpdateNotifier;
-    BOOL _monitoringCellId;
+    CTServiceDescriptorContainer *_descriptors;
+    NSDictionary *_serviceSubscriberCellularProviders;
     CTCarrier *_subscriberCellularProvider;
-    NSString *_cachedCurrentRadioAccessTechnology;
-    NSDictionary *_cachedSignalStrength;
-    NSString *_cachedCellId;
+    CDUnknownBlockType _serviceSubscriberCellularProvidersDidUpdateNotifier;
+    NSDictionary *_serviceCurrentRadioAccessTechnology;
+    NSMutableDictionary *_serviceSubscriberCellularProvider;
+    NSMutableDictionary *_cachedCurrentRadioAccessTechnology;
+    NSMutableDictionary *_cachedSignalStrength;
+    NSMutableDictionary *_cachedCellIds;
 }
 
-@property (strong) NSString *cachedCellId; // @synthesize cachedCellId=_cachedCellId;
-@property (strong) NSString *cachedCurrentRadioAccessTechnology; // @synthesize cachedCurrentRadioAccessTechnology=_cachedCurrentRadioAccessTechnology;
-@property (strong) NSDictionary *cachedSignalStrength; // @synthesize cachedSignalStrength=_cachedSignalStrength;
-@property (strong, nonatomic) NSString *cellId;
+@property (strong) NSMutableDictionary *cachedCellIds; // @synthesize cachedCellIds=_cachedCellIds;
+@property (strong) NSMutableDictionary *cachedCurrentRadioAccessTechnology; // @synthesize cachedCurrentRadioAccessTechnology=_cachedCurrentRadioAccessTechnology;
+@property (strong) NSMutableDictionary *cachedSignalStrength; // @synthesize cachedSignalStrength=_cachedSignalStrength;
 @property (readonly, strong, nonatomic) NSString *currentRadioAccessTechnology;
-@property BOOL monitoringCellId; // @synthesize monitoringCellId=_monitoringCellId;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) CTServiceDescriptorContainer *descriptors; // @synthesize descriptors=_descriptors;
+@property (readonly) unsigned long long hash;
+@property (readonly, strong, nonatomic) NSDictionary *serviceCurrentRadioAccessTechnology; // @synthesize serviceCurrentRadioAccessTechnology=_serviceCurrentRadioAccessTechnology;
+@property (strong) NSMutableDictionary *serviceSubscriberCellularProvider; // @synthesize serviceSubscriberCellularProvider=_serviceSubscriberCellularProvider;
+@property (readonly, strong) NSDictionary *serviceSubscriberCellularProviders; // @synthesize serviceSubscriberCellularProviders=_serviceSubscriberCellularProviders;
+@property (copy, nonatomic) CDUnknownBlockType serviceSubscriberCellularProvidersDidUpdateNotifier; // @synthesize serviceSubscriberCellularProvidersDidUpdateNotifier=_serviceSubscriberCellularProvidersDidUpdateNotifier;
 @property (strong) CTCarrier *subscriberCellularProvider; // @synthesize subscriberCellularProvider=_subscriberCellularProvider;
 @property (copy, nonatomic) CDUnknownBlockType subscriberCellularProviderDidUpdateNotifier;
+@property (readonly) Class superclass;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)cleanUpServerConnection;
-- (id)createSignalStrengthDictWithBars:(id)arg1;
+- (void)carrierBundleChange:(id)arg1;
+- (void)cellChanged:(id)arg1 cell:(id)arg2;
+- (id)cellId;
+- (void)connectionStateChanged:(id)arg1 connection:(int)arg2 dataConnectionStatusInfo:(id)arg3;
+- (id)currentServiceRadioAccessTechnology;
 - (void)dealloc;
-- (BOOL)getAllowsVOIP:(BOOL *)arg1 withCTError:(CDStruct_1ef3fb1f *)arg2;
-- (BOOL)getCarrierName:(id)arg1 withCTError:(CDStruct_1ef3fb1f *)arg2;
-- (BOOL)getMobileCountryCode:(id)arg1 andIsoCountryCode:(id)arg2 withCTError:(CDStruct_1ef3fb1f *)arg3;
-- (BOOL)getMobileNetworkCode:(id)arg1 withCTError:(CDStruct_1ef3fb1f *)arg2;
-- (void)handleCTRegistrationCellChangedNotification:(id)arg1;
-- (void)handleCTSignalStrengthNotification:(id)arg1;
-- (void)handleNotificationFromConnection:(void *)arg1 ofType:(id)arg2 withInfo:(id)arg3;
+- (BOOL)getAllowsVOIP:(BOOL *)arg1 forContext:(id)arg2 withError:(id *)arg3;
+- (BOOL)getCarrierName:(id)arg1 forContext:(id)arg2 withError:(id *)arg3;
+- (id)getFirstCellId;
+- (BOOL)getMobileCountryCode:(id)arg1 andIsoCountryCode:(id)arg2 forContext:(id)arg3 withError:(id *)arg4;
+- (BOOL)getMobileNetworkCode:(id)arg1 forContext:(id)arg2 withError:(id *)arg3;
 - (id)init;
 - (void)postCellularProviderUpdatesIfNecessary;
-- (void)queryCTSignalStrengthNotification;
-- (void)queryCellId;
-- (void)queryDataMode;
+- (void)queryCTSignalStrength;
+- (void)queryCellIds;
+- (void)queryRat;
+- (void)queryRatForDescriptor:(id)arg1;
+- (void)querySignalStrengthForDescriptor:(id)arg1;
 - (id)radioAccessTechnology;
-- (BOOL)setUpServerConnection;
+- (id)serviceCellId;
+- (id)serviceSignalStrength;
+- (CDUnknownBlockType)serviceSubscriberCellularProviderDidUpdateNotifier;
+- (void)setServiceSubscriberCellularProviderDidUpdateNotifier:(CDUnknownBlockType)arg1;
 - (id)signalStrength;
-- (BOOL)updateNetworkInfoAndShouldNotifyClient:(BOOL *)arg1;
-- (void)updateRadioAccessTechnology:(id)arg1;
-- (void)updateSignalStrength:(id)arg1;
+- (void)signalStrengthChanged:(id)arg1 info:(id)arg2;
+- (void)updateCellId:(id)arg1 forDescriptor:(id)arg2;
+- (void)updateLegacyRat:(id)arg1;
+- (BOOL)updateNetworkInfoAndShouldNotifyClient:(BOOL *)arg1 forContext:(id)arg2;
+- (void)updateRat:(id)arg1 descriptor:(id)arg2;
+- (void)updateSignalStrength:(id)arg1 descriptor:(id)arg2;
 
 @end
 

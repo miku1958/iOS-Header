@@ -7,24 +7,27 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSetRadioStationIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBDouble, _INPBInteger, _INPBIntentMetadata, _INPBString;
+@class NSString, _INPBDouble, _INPBInteger, _INPBIntentMetadata, _INPBString;
 
-@interface _INPBSetRadioStationIntent : PBCodable <NSCopying>
+@interface _INPBSetRadioStationIntent : PBCodable <_INPBSetRadioStationIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct {
+        unsigned int radioType:1;
+    } _has;
+    int _radioType;
     _INPBString *_channel;
     _INPBDouble *_frequency;
     _INPBIntentMetadata *_intentMetadata;
     _INPBInteger *_presetNumber;
-    int _radioType;
     _INPBString *_stationName;
-    struct {
-        unsigned int radioType:1;
-    } _has;
 }
 
 @property (strong, nonatomic) _INPBString *channel; // @synthesize channel=_channel;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDouble *frequency; // @synthesize frequency=_frequency;
 @property (readonly, nonatomic) BOOL hasChannel;
 @property (readonly, nonatomic) BOOL hasFrequency;
@@ -32,21 +35,18 @@
 @property (readonly, nonatomic) BOOL hasPresetNumber;
 @property (nonatomic) BOOL hasRadioType;
 @property (readonly, nonatomic) BOOL hasStationName;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBInteger *presetNumber; // @synthesize presetNumber=_presetNumber;
 @property (nonatomic) int radioType; // @synthesize radioType=_radioType;
 @property (strong, nonatomic) _INPBString *stationName; // @synthesize stationName=_stationName;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsRadioType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (id)radioTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

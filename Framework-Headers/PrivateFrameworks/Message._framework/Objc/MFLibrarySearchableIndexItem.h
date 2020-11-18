@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CSSearchableItem, MFMailMessage, NSData, NSString;
 
@@ -18,6 +18,7 @@
 }
 
 @property (strong, nonatomic) NSData *bodyData; // @synthesize bodyData=_bodyData;
+@property (readonly, nonatomic) unsigned long long bodySizeInBytes;
 @property (readonly, copy, nonatomic) NSString *domainIdentifier;
 @property (nonatomic) BOOL hasCompleteBodyData; // @synthesize hasCompleteBodyData=_hasCompleteBodyData;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

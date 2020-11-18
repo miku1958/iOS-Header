@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE;
 
-@interface SKAttributeValue : NSObject <NSCoding>
+@interface SKAttributeValue : NSObject <NSSecureCoding>
 {
     long long _type;
     float floatValues[4];
@@ -23,6 +23,7 @@
 @property (nonatomic) MISSING_TYPE *vectorFloat3Value;
 @property (nonatomic) MISSING_TYPE *vectorFloat4Value;
 
++ (BOOL)supportsSecureCoding;
 + (id)valueWithFloat:(float)arg1;
 + (id)valueWithVectorFloat2: /* Error: Ran out of types for this method. */;
 + (id)valueWithVectorFloat3: /* Error: Ran out of types for this method. */;
@@ -31,6 +32,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqualToAttributeValue:(id)arg1;
 
 @end
 

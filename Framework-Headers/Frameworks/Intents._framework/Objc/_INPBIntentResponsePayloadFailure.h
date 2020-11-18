@@ -7,37 +7,37 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBIntentResponsePayloadFailure-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString;
 
-@interface _INPBIntentResponsePayloadFailure : PBCodable <NSCopying>
+@interface _INPBIntentResponsePayloadFailure : PBCodable <_INPBIntentResponsePayloadFailure, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSString *_enumTypeName;
-    int _errorCode;
-    BOOL _appLaunchRequested;
     struct {
-        unsigned int errorCode:1;
         unsigned int appLaunchRequested:1;
+        unsigned int errorCode:1;
     } _has;
+    BOOL _appLaunchRequested;
+    int _errorCode;
+    NSString *_enumTypeName;
 }
 
 @property (nonatomic) BOOL appLaunchRequested; // @synthesize appLaunchRequested=_appLaunchRequested;
-@property (strong, nonatomic) NSString *enumTypeName; // @synthesize enumTypeName=_enumTypeName;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *enumTypeName; // @synthesize enumTypeName=_enumTypeName;
 @property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
 @property (nonatomic) BOOL hasAppLaunchRequested;
 @property (readonly, nonatomic) BOOL hasEnumTypeName;
 @property (nonatomic) BOOL hasErrorCode;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/NSCopying-Protocol.h>
 
@@ -27,18 +27,19 @@
 @property (strong, nonatomic) NSString *autoconvertedCandidateString; // @synthesize autoconvertedCandidateString=_autoconvertedCandidateString;
 @property (copy, nonatomic) NSArray *autoconvertedCandidates; // @synthesize autoconvertedCandidates=_autoconvertedCandidates;
 @property (strong, nonatomic) NSString *autoconvertedInputString; // @synthesize autoconvertedInputString=_autoconvertedInputString;
-@property (readonly, strong, nonatomic) NSDictionary *candidateRefsDictionary;
-@property (readonly, strong, nonatomic) NSArray *candidates;
+@property (readonly, nonatomic) NSDictionary *candidateRefsDictionary;
+@property (readonly, nonatomic) NSArray *candidates;
 @property (nonatomic, getter=isEmpty) BOOL empty; // @synthesize empty=_empty;
 @property (copy, nonatomic) NSArray *initiallyHiddenCandidates; // @synthesize initiallyHiddenCandidates=_initiallyHiddenCandidates;
 @property (strong, nonatomic) NSMutableDictionary *mutableCandidateRefsDictionary; // @synthesize mutableCandidateRefsDictionary=_mutableCandidateRefsDictionary;
 @property (strong, nonatomic) NSMutableArray *mutableCandidates; // @synthesize mutableCandidates=_mutableCandidates;
-@property (readonly, strong, nonatomic) NSMutableArray *mutableProactiveTriggers; // @synthesize mutableProactiveTriggers=_mutableProactiveTriggers;
+@property (readonly, nonatomic) NSMutableArray *mutableProactiveTriggers; // @synthesize mutableProactiveTriggers=_mutableProactiveTriggers;
 @property (strong, nonatomic) NSArray *proactiveCandidates; // @synthesize proactiveCandidates=_proactiveCandidates;
-@property (readonly, strong, nonatomic) NSArray *proactiveTriggers;
+@property (readonly, nonatomic) NSArray *proactiveTriggers;
 @property (nonatomic) unsigned long long selectedHiddenCandidateIndex; // @synthesize selectedHiddenCandidateIndex=_selectedHiddenCandidateIndex;
 
 + (id)emptySet;
+- (void).cxx_destruct;
 - (void)addCandidates:(id)arg1 candidateRefsDictionary:(id)arg2;
 - (void)addMecabraCandidate:(id)arg1 mecabraCandidateRef:(void *)arg2;
 - (void)addMecabraFacemarkCandidate:(void *)arg1 forInput:(id)arg2;
@@ -51,7 +52,6 @@
 - (void)addSyntheticMecabraProactiveCandidate:(id)arg1 triggerSourceType:(unsigned char)arg2;
 - (void)clearProactiveTriggers;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)initWithCandidates:(id)arg1 candidateRefsDictionary:(id)arg2;
 - (id)initWithCandidates:(id)arg1 candidateRefsDictionary:(id)arg2 initiallyHiddenCandidates:(id)arg3 selectedHiddenCandidateIndex:(unsigned long long)arg4;

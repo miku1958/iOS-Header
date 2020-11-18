@@ -53,11 +53,13 @@
 - (void)_setUpReaderActivityListenerProxy;
 - (void)_setUpReaderControllerInterface;
 - (void)_setUpUIProcessListenerIfNeeded;
+- (void)articleContentDidChange;
 - (void)collectReaderContentForMail;
 - (void)collectReadingListItemInfoWithBookmarkID:(id)arg1;
 - (void)decreaseReaderTextSize;
 - (void)didCreateReaderPageContextHandle:(id)arg1;
 - (void)didDetermineReaderAvailability:(BOOL)arg1 dueToSameDocumentNavigation:(BOOL)arg2;
+- (void)didFinishPresentationUpdateAfterTransitioningToReader;
 - (void)didSetReaderConfiguration:(id)arg1;
 - (void)increaseReaderTextSize;
 - (id)initWithPlugIn:(id)arg1 contextController:(id)arg2;
@@ -67,7 +69,7 @@
 - (void)prepareReaderContentForPrinting;
 - (void)prepareToTransitionToReader;
 - (void)readerContentDidBecomeReadyWithDetectedLanguage:(id)arg1;
-- (void)readerTextWasExtracted:(id)arg1;
+- (void)readerTextWasExtracted:(id)arg1 withMetadata:(id)arg2 wasDeterminingAvailability:(BOOL)arg3;
 - (void)setReaderFont:(id)arg1;
 - (void)setReaderInitialTopScrollOffset:(long long)arg1 configuration:(id)arg2 isViewingArchive:(BOOL)arg3;
 - (void)setReaderTheme:(id)arg1;
@@ -81,6 +83,7 @@
 - (void)webProcessPlugInBrowserContextController:(id)arg1 globalObjectIsAvailableForFrame:(id)arg2 inScriptWorld:(id)arg3;
 - (void)webProcessPlugInBrowserContextController:(id)arg1 renderingProgressDidChange:(unsigned long long)arg2;
 - (void)willDestroyBrowserContextController:(id)arg1;
+- (void)willHideReader;
 
 @end
 

@@ -21,11 +21,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSNumber *inputScale; // @synthesize inputScale;
 
 + (id)customAttributes;
-- (id)_CILanczosDownBy2;
-- (id)_CILanczosHorizontalUpsample;
-- (id)_CILanczosVerticalUpsample;
 - (BOOL)_isIdentity;
 - (id)outputImage;
+- (id)outputImageNewScaleX:(double)arg1 scaleY:(double)arg2;
+- (id)outputImageOldScaleX:(double)arg1 scaleY:(double)arg2;
 
 @end
 

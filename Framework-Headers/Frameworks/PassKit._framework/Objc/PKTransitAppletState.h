@@ -4,46 +4,49 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDecimalNumber, NSNumber, NSString, PKFelicaTransitAppletState;
+@class NSArray, NSDate, NSDecimalNumber, NSNumber, NSString, PKFelicaTransitAppletState;
 
 @interface PKTransitAppletState : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _blacklisted;
-    BOOL _inStation;
     BOOL _needsStationProcessing;
     NSNumber *_historySequenceNumber;
     NSDecimalNumber *_balance;
     NSNumber *_loyaltyBalance;
     NSString *_currency;
     NSDate *_expirationDate;
+    NSArray *_enrouteTransitTypes;
 }
 
 @property (copy, nonatomic) NSDecimalNumber *balance; // @synthesize balance=_balance;
 @property (nonatomic, getter=isBlacklisted) BOOL blacklisted; // @synthesize blacklisted=_blacklisted;
 @property (copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
+@property (copy, nonatomic) NSArray *enrouteTransitTypes; // @synthesize enrouteTransitTypes=_enrouteTransitTypes;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic) PKFelicaTransitAppletState *felicaState;
 @property (copy, nonatomic) NSNumber *historySequenceNumber; // @synthesize historySequenceNumber=_historySequenceNumber;
-@property (nonatomic, getter=isInStation) BOOL inStation; // @synthesize inStation=_inStation;
+@property (readonly, nonatomic, getter=isInStation) BOOL inStation; // @dynamic inStation;
 @property (copy, nonatomic) NSNumber *loyaltyBalance; // @synthesize loyaltyBalance=_loyaltyBalance;
 @property (nonatomic) BOOL needsStationProcessing; // @synthesize needsStationProcessing=_needsStationProcessing;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_resolveTransactionsFromState:(id)arg1 toState:(id)arg2 withHistoryRecords:(id)arg3 enRouteDetails:(id)arg4 concreteTransactions:(id *)arg5 ephemeralTransaction:(id *)arg6;
+- (void)_resolveTransactionsFromState:(id)arg1 toState:(id)arg2 withHistoryRecords:(id)arg3 concreteTransactions:(id *)arg4 ephemeralTransaction:(id *)arg5;
+- (void)addEnrouteTransitType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3;
 - (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransactions:(id *)arg3;
 - (id)transitPassPropertiesWithPaymentApplication:(id)arg1;
+- (id)updatedEnrouteTransitTypesFromExistingTypes:(id)arg1 newTypes:(id)arg2;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -14,7 +14,9 @@ __attribute__((visibility("hidden")))
 @interface TSKStructuredTextImportSettings : NSObject <NSCopying>
 {
     BOOL _transposeRowsAndColumns;
+    BOOL _automaticDelimiters;
     BOOL _collapseConsecutiveDelimiters;
+    BOOL _automaticOffsets;
     long long _type;
     unsigned long long _startingRow;
     NSSet *_decimalSeparators;
@@ -22,18 +24,24 @@ __attribute__((visibility("hidden")))
     NSSet *_delimiters;
     NSSet *_textQualifiers;
     NSIndexSet *_columnOffsets;
+    unsigned long long _sourceEncoding;
 }
 
+@property (nonatomic) BOOL automaticDelimiters; // @synthesize automaticDelimiters=_automaticDelimiters;
+@property (nonatomic) BOOL automaticOffsets; // @synthesize automaticOffsets=_automaticOffsets;
 @property (nonatomic) BOOL collapseConsecutiveDelimiters; // @synthesize collapseConsecutiveDelimiters=_collapseConsecutiveDelimiters;
 @property (copy, nonatomic) NSIndexSet *columnOffsets; // @synthesize columnOffsets=_columnOffsets;
 @property (copy, nonatomic) NSSet *decimalSeparators; // @synthesize decimalSeparators=_decimalSeparators;
 @property (copy, nonatomic) NSSet *delimiters; // @synthesize delimiters=_delimiters;
+@property (readonly, nonatomic) BOOL hasAnyAutomaticSettings;
+@property (nonatomic) unsigned long long sourceEncoding; // @synthesize sourceEncoding=_sourceEncoding;
 @property (nonatomic) unsigned long long startingRow; // @synthesize startingRow=_startingRow;
 @property (copy, nonatomic) NSSet *textQualifiers; // @synthesize textQualifiers=_textQualifiers;
 @property (copy, nonatomic) NSSet *thousandsSeparators; // @synthesize thousandsSeparators=_thousandsSeparators;
 @property (nonatomic) BOOL transposeRowsAndColumns; // @synthesize transposeRowsAndColumns=_transposeRowsAndColumns;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
++ (id)keyPathsForValuesAffectingIsValid;
 + (id)settings;
 + (id)settingsFromArchive:(const struct StructuredTextImportSettings *)arg1;
 + (id)settingsWithType:(long long)arg1;

@@ -13,29 +13,31 @@
 
 @interface _CPPunchoutForFeedback : PBCodable <_CPPunchoutForFeedback, NSSecureCoding>
 {
+    int _knownBundleIdentifier;
     NSString *_name;
-    NSString *_bundleIdentifier;
     NSString *_label;
     NSArray *_urls;
+    NSString *_bundleIdentifier;
+    unsigned long long _whichBundleid;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasBundleIdentifier;
-@property (readonly, nonatomic) BOOL hasLabel;
-@property (readonly, nonatomic) BOOL hasName;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) int knownBundleIdentifier; // @synthesize knownBundleIdentifier=_knownBundleIdentifier;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *urls; // @synthesize urls=_urls;
+@property (readonly, nonatomic) unsigned long long whichBundleid; // @synthesize whichBundleid=_whichBundleid;
 
 - (void).cxx_destruct;
 - (void)addUrls:(id)arg1;
 - (void)clearUrls;
 - (id)dictionaryRepresentation;
+- (id)feedbackJSON;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithFacade:(id)arg1;
 - (id)initWithJSON:(id)arg1;

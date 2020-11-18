@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory10Key_Landscape.h>
+#import <UIKitCore/UIKBRenderFactory10Key_Landscape.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactory10Key_LandscapeChoco : UIKBRenderFactory10Key_Landscape

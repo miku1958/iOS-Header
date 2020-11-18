@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/NSProgressReporting-Protocol.h>
 
-@class ICRequestContext, NSDictionary, NSError, NSMutableArray, NSMutableData, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask;
+@class ICRequestContext, NSData, NSDictionary, NSError, NSMutableArray, NSMutableData, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ICURLRequest : NSObject <NSProgressReporting>
@@ -26,6 +26,7 @@
     unsigned long long _redirectCount;
     double _retryDelay;
     long long _requestState;
+    NSData *_resumeData;
     NSURLRequest *_urlRequest;
     NSURLSessionTask *_task;
     long long _type;
@@ -56,12 +57,13 @@
 @property (nonatomic) double lastUpdateTime; // @synthesize lastUpdateTime=_lastUpdateTime;
 @property (nonatomic) unsigned long long maxRetryCount; // @synthesize maxRetryCount=_maxRetryCount;
 @property (nonatomic) BOOL prioritize; // @synthesize prioritize=_prioritize;
-@property (strong) NSProgress *progress; // @synthesize progress=_progress;
+@property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (nonatomic) unsigned long long redirectCount; // @synthesize redirectCount=_redirectCount;
 @property (readonly, copy, nonatomic) ICRequestContext *requestContext; // @synthesize requestContext=_requestContext;
 @property (nonatomic) long long requestState; // @synthesize requestState=_requestState;
 @property (strong, nonatomic) NSMutableData *responseData; // @synthesize responseData=_responseData;
 @property (strong, nonatomic) NSURL *responseDataURL; // @synthesize responseDataURL=_responseDataURL;
+@property (readonly, copy, nonatomic) NSData *resumeData; // @synthesize resumeData=_resumeData;
 @property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property (nonatomic) double retryDelay; // @synthesize retryDelay=_retryDelay;
 @property (readonly) Class superclass;
@@ -76,7 +78,9 @@
 - (void)buildURLRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithURL:(id)arg1 requestContext:(id)arg2;
+- (id)initWithURL:(id)arg1 requestContext:(id)arg2 resumeData:(id)arg3;
 - (id)initWithURLRequest:(id)arg1 requestContext:(id)arg2;
+- (id)initWithURLRequest:(id)arg1 requestContext:(id)arg2 resumeData:(id)arg3;
 - (void)removeObserver:(id)arg1;
 - (void)updateState:(long long)arg1;
 

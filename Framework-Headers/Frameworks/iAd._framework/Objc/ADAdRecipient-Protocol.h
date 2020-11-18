@@ -7,7 +7,7 @@
 #import <iAd/AdAnalyzable-Protocol.h>
 #import <iAd/NSObject-Protocol.h>
 
-@class ADMRAIDAction, NSError, NSString, UIView, UIViewController;
+@class ADLayoutOptions, ADMRAIDAction, NSError, NSString, UIView, UIViewController;
 
 @protocol ADAdRecipient <NSObject, AdAnalyzable>
 
@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL displayed;
 @property (readonly, nonatomic) int internalAdType;
 @property (nonatomic) long long lastErrorCode;
+@property (strong, nonatomic) ADLayoutOptions *layoutOptions;
 @property (readonly, nonatomic) long long options;
 @property (readonly, nonatomic) UIViewController *presentingViewController;
 @property (nonatomic) BOOL reUsed;

@@ -27,6 +27,7 @@
     int _feedViewPresentationReason;
     NSString *_groupFeedId;
     int _groupType;
+    NSData *_groupViewExposureId;
     NSString *_previousArticleId;
     NSString *_previousArticleVersion;
     int _recommendationBrickType;
@@ -70,6 +71,7 @@
 @property (nonatomic) int feedViewPresentationReason; // @synthesize feedViewPresentationReason=_feedViewPresentationReason;
 @property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (nonatomic) BOOL hasCameFromGroup;
 @property (readonly, nonatomic) BOOL hasCampaignId;
@@ -85,6 +87,7 @@
 @property (nonatomic) BOOL hasFeedViewPresentationReason;
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupType;
+@property (readonly, nonatomic) BOOL hasGroupViewExposureId;
 @property (nonatomic) BOOL hasIsPaidSubscriberToFeed;
 @property (readonly, nonatomic) BOOL hasPreviousArticleId;
 @property (nonatomic) BOOL hasPreviousArticlePublisherArticleVersion;

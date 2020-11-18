@@ -16,6 +16,7 @@
 @property (nonatomic) MISSING_TYPE *position;
 
 + (id)nodeWithPoint: /* Error: Ran out of types for this method. */;
++ (BOOL)supportsSecureCoding;
 - (struct GKCGraphNode3D *)cGraphNode3D;
 - (float)costToNode:(id)arg1;
 - (void)deleteCGraphNode;

@@ -27,12 +27,14 @@
     int _updateBehavior;
     NSMutableArray *_validVersions;
     BOOL _multiTileURLUsesStatusCodes;
+    BOOL _useAuthProxy;
     struct {
         unsigned int checksumType:1;
         unsigned int dataSet:1;
         unsigned int requestStyle:1;
         unsigned int updateBehavior:1;
         unsigned int multiTileURLUsesStatusCodes:1;
+        unsigned int useAuthProxy:1;
     } _has;
 }
 
@@ -48,6 +50,7 @@
 @property (nonatomic) BOOL hasMultiTileURLUsesStatusCodes;
 @property (nonatomic) BOOL hasRequestStyle;
 @property (nonatomic) BOOL hasUpdateBehavior;
+@property (nonatomic) BOOL hasUseAuthProxy;
 @property (strong, nonatomic) NSString *localizationURL; // @synthesize localizationURL=_localizationURL;
 @property (strong, nonatomic) NSString *multiTileURL; // @synthesize multiTileURL=_multiTileURL;
 @property (nonatomic) BOOL multiTileURLUsesStatusCodes; // @synthesize multiTileURLUsesStatusCodes=_multiTileURLUsesStatusCodes;
@@ -58,6 +61,7 @@
 @property (strong, nonatomic) NSMutableArray *supportedLanguages; // @synthesize supportedLanguages=_supportedLanguages;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (nonatomic) int updateBehavior; // @synthesize updateBehavior=_updateBehavior;
+@property (nonatomic) BOOL useAuthProxy; // @synthesize useAuthProxy=_useAuthProxy;
 @property (strong, nonatomic) NSMutableArray *validVersions; // @synthesize validVersions=_validVersions;
 
 + (Class)countryRegionWhitelistType;

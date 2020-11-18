@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosUI/PULegacyViewControllerSpec.h>
 
-@class PUFeedViewControllerSpec, PUFontManager, PUPhotoDecoration, PUPhotosAlbumViewControllerSpec, PUPhotosGridViewControllerSpec, PUPhotosPanoramaViewControllerSpec, PUPhotosPickerViewControllerSpec, PXLayoutMetricInterpolator, UIImage;
+@class NSString, PUFeedViewControllerSpec, PUFontManager, PUPhotoDecoration, PUPhotosAlbumViewControllerSpec, PUPhotosGridViewControllerSpec, PUPhotosPanoramaViewControllerSpec, PUPhotosPickerViewControllerSpec, PXLayoutMetricInterpolator, UIImage;
 
-@interface PUAlbumListViewControllerSpec : NSObject
+@interface PUAlbumListViewControllerSpec : PULegacyViewControllerSpec
 {
     UIImage *_emptyAlbumPlaceholderImage;
     UIImage *_emptySharedAlbumPlaceholderImage;
@@ -22,6 +22,7 @@
     BOOL _usesStackTransitionToGrid;
     BOOL _shouldUseCollageForCloudFeedPlaceholder;
     BOOL _shouldUseShortTitleForStandInAlbumList;
+    BOOL _canShowVirtualCollections;
     PUFontManager *__fontManager;
     unsigned long long _stackViewStyle;
     unsigned long long _folderStackViewStyle;
@@ -32,7 +33,6 @@
     long long _cellContentViewLayout;
     double _sectionHeaderHeight;
     double _sectionFooterHeight;
-    double _maxSearchBarWidth;
     long long _albumDeletionConfirmationStyle;
     PUPhotosGridViewControllerSpec *_gridViewControllerSpec;
     PUPhotosAlbumViewControllerSpec *_albumViewControllerSpec;
@@ -53,14 +53,12 @@
 @property (readonly, nonatomic) UIImage *addSharedAlbumPlaceholderImage;
 @property (readonly, nonatomic) long long albumDeletionConfirmationStyle; // @synthesize albumDeletionConfirmationStyle=_albumDeletionConfirmationStyle;
 @property (readonly, nonatomic) PUPhotosAlbumViewControllerSpec *albumViewControllerSpec; // @synthesize albumViewControllerSpec=_albumViewControllerSpec;
-@property (readonly, nonatomic) BOOL canDisplaySearchActionInNavigationBar;
-@property (readonly, nonatomic) BOOL canShowVirtualCollections;
+@property (readonly, nonatomic) BOOL canShowVirtualCollections; // @synthesize canShowVirtualCollections=_canShowVirtualCollections;
 @property (readonly, nonatomic) long long cellContentViewLayout; // @synthesize cellContentViewLayout=_cellContentViewLayout;
 @property (readonly) long long collageImageContentMode; // @synthesize collageImageContentMode=_collageImageContentMode;
 @property (readonly) struct CGSize collageImageSize; // @synthesize collageImageSize=_collageImageSize;
 @property (readonly, nonatomic) double collageSpacing; // @synthesize collageSpacing=_collageSpacing;
 @property (readonly, nonatomic) struct CGSize contentSizeForViewInPopover;
-@property (readonly, nonatomic) BOOL displaysSearchInPopover;
 @property (readonly, nonatomic) UIImage *emptyAlbumPlaceholderImage;
 @property (readonly, nonatomic) UIImage *emptySharedAlbumPlaceholderImage;
 @property (readonly, nonatomic) PUPhotoDecoration *emptyStackPhotoDecoration; // @synthesize emptyStackPhotoDecoration=_emptyStackPhotoDecoration;
@@ -70,7 +68,11 @@
 @property (readonly, nonatomic) UIImage *hiddenAlbumPlaceholderImage;
 @property (readonly) long long imageContentMode;
 @property (readonly) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
-@property (readonly, nonatomic) double maxSearchBarWidth; // @synthesize maxSearchBarWidth=_maxSearchBarWidth;
+@property (readonly, nonatomic) NSString *nameOfAddSharedAlbumPlaceholderImage;
+@property (readonly, nonatomic) NSString *nameOfEmptyAlbumPlaceholderImage;
+@property (readonly, nonatomic) NSString *nameOfEmptySharedAlbumPlaceholderImage;
+@property (readonly, nonatomic) NSString *nameOfHiddenAlbumPlaceholderImage;
+@property (readonly, nonatomic) NSString *nameOfRecentlyDeletedAlbumPlaceholderImage;
 @property (readonly, nonatomic) PUPhotosPanoramaViewControllerSpec *panoramaViewControllerSpec; // @synthesize panoramaViewControllerSpec=_panoramaViewControllerSpec;
 @property (readonly, nonatomic) PUPhotosPickerViewControllerSpec *photosPickerViewControllerSpec; // @synthesize photosPickerViewControllerSpec=_photosPickerViewControllerSpec;
 @property (readonly, nonatomic) double posterSquareCornerRadius; // @synthesize posterSquareCornerRadius=_posterSquareCornerRadius;
@@ -92,17 +94,15 @@
 @property (readonly, nonatomic) PUAlbumListViewControllerSpec *standInAlbumListViewControllerSpec;
 @property (readonly, nonatomic) BOOL usesStackTransitionToGrid; // @synthesize usesStackTransitionToGrid=_usesStackTransitionToGrid;
 
++ (id)padSpec;
++ (id)phoneSpec;
 - (void).cxx_destruct;
 - (id)_centeredGlyphImage:(id)arg1 withBackgroundColor:(id)arg2 size:(struct CGSize)arg3 imageAlpha:(double)arg4;
 - (id)_centeredTintedGlyphImage:(id)arg1 withBackgroundColor:(id)arg2 size:(struct CGSize)arg3;
 - (void)_getStackSize:(struct CGSize *)arg1 outEdgeInsets:(struct UIEdgeInsets *)arg2 forLayoutReferenceSize:(struct CGSize)arg3 safeAreaInsets:(struct UIEdgeInsets)arg4;
-- (id)_nameOfAddSharedAlbumPlaceholderImage;
-- (id)_nameOfEmptyAlbumPlaceholderImage;
-- (id)_nameOfEmptySharedAlbumPlaceholderImage;
-- (id)_nameOfHiddenAlbumPlaceholderImage;
-- (id)_nameOfRecentlyDeletedAlbumPlaceholderImage;
 - (struct CGPoint)_pixelRoundedOriginForCenteredImage:(id)arg1 inRect:(struct CGRect)arg2;
 - (struct CGSize)cellSizeForBounds:(struct CGRect)arg1;
+- (struct CGSize)cellSizeForStackSize:(struct CGSize)arg1;
 - (void)configureCollectionViewAlbumListLayout:(id)arg1 forBounds:(struct CGRect)arg2;
 - (void)configureGridLayout:(id)arg1 forLayoutReferenceSize:(struct CGSize)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 - (void)configureStackViewWithGridStyle:(id)arg1;

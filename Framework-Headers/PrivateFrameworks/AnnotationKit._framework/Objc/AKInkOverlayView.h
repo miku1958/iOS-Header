@@ -44,6 +44,7 @@
 - (void)canvasView:(id)arg1 drawingDidChange:(id)arg2;
 - (BOOL)canvasView:(id)arg1 shouldBeginDrawingWithTouch:(id)arg2;
 - (void)canvasViewDidBeginNewStroke:(id)arg1;
+- (void)canvasViewDidCancelStroke:(id)arg1;
 - (void)canvasViewDidEndStroke:(id)arg1;
 - (void)commonInit;
 - (void)commonPostInit;

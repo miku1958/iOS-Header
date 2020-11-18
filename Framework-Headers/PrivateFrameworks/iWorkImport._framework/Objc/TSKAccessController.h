@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCondition, NSMutableArray, NSMutableDictionary, TSUWeakReference;
 @protocol OS_dispatch_semaphore;

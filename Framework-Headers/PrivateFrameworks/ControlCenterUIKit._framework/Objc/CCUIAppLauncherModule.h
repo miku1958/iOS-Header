@@ -9,7 +9,7 @@
 #import <ControlCenterUIKit/CCUIContentModule-Protocol.h>
 
 @class CCUIContentModuleContext, NSBundle, NSString, NSURL, UIImage, UIViewController;
-@protocol CCUIContentModuleContentViewController;
+@protocol CCUIContentModuleBackgroundViewController, CCUIContentModuleContentViewController;
 
 @interface CCUIAppLauncherModule : NSObject <CCUIContentModule>
 {
@@ -22,7 +22,7 @@
 }
 
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
-@property (readonly, nonatomic) UIViewController *backgroundViewController;
+@property (readonly, nonatomic) UIViewController<CCUIContentModuleBackgroundViewController> *backgroundViewController;
 @property (strong, nonatomic) CCUIContentModuleContext *contentModuleContext; // @synthesize contentModuleContext=_contentModuleContext;
 @property (readonly, nonatomic) UIViewController<CCUIContentModuleContentViewController> *contentViewController;
 @property (readonly, copy) NSString *debugDescription;

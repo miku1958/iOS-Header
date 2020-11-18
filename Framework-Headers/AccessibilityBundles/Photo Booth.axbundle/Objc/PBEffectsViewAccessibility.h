@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)_accessibilityShouldHitTestLayers;
 - (void)_setUpEffectLayers;
 - (id)accessibilityElements;

@@ -42,18 +42,28 @@
 - (id)_shortLookDismissTracker;
 - (id)_textInputProperty;
 - (id)_triggerPropertyForEvent:(id)arg1;
+- (void)defaultActionForNotification:(id)arg1;
+- (void)dismissActionForNotification:(id)arg1;
 - (void)longLookCustomAction:(id)arg1 forNotificationRequest:(id)arg2 withState:(id)arg3;
 - (void)longLookDefaultActionInvokedWithTrigger:(long long)arg1 forNotificationRequest:(id)arg2 withState:(id)arg3;
-- (void)longLookDidPresentWithTrigger:(long long)arg1 forNotificationRequest:(id)arg2 withState:(id)arg3;
+- (void)longLookDidPresentForNotificationRequest:(id)arg1;
 - (void)longLookDismissInvokedWithTrigger:(long long)arg1 forNotificationRequest:(id)arg2 withState:(id)arg3;
 - (void)longLookReparkInvokedWithTrigger:(long long)arg1 forNotificationRequest:(id)arg2 withState:(id)arg3;
 - (void)notificationCenterClearAll;
 - (void)notificationCenterDayCleared;
 - (id)notificationDestinationForState:(id)arg1;
 - (unsigned long long)primaryAttachmentTypeForRequest:(id)arg1;
+- (void)pulldownActionForNotification:(id)arg1;
+- (void)realTimeTuningOutcome:(long long)arg1 withBundleId:(id)arg2;
+- (void)realTimeTuningTrigger:(long long)arg1;
+- (void)receivedNotification:(id)arg1 forFeed:(unsigned long long)arg2;
+- (void)removedNotificationFromAllFeeds:(id)arg1;
+- (void)removedNotificationFromLockScreen:(id)arg1;
 - (void)shortLookClearedForNotificationRequest:(id)arg1 withState:(id)arg2;
 - (void)shortLookDefaultActionInvokedWithTrigger:(long long)arg1 forNotificationRequest:(id)arg2 withState:(id)arg3;
 - (void)shortLookDismissInvokedForNotificationRequest:(id)arg1 withState:(id)arg2;
+- (void)silenceActionForNotification:(id)arg1;
+- (void)tappedCoalescedNotification:(id)arg1 inBundle:(id)arg2;
 
 @end
 

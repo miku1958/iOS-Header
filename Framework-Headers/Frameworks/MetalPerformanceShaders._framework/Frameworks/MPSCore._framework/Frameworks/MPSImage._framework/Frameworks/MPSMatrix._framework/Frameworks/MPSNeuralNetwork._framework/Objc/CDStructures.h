@@ -27,13 +27,13 @@ struct FilterGraphNode {
         id _field2;
         id _field3;
         id _field4;
-        id _field5;
     } _field8;
     id _field9;
     unsigned long long _field10;
     BOOL _field11;
-    unsigned int _field12;
-    unsigned long long _field13;
+    BOOL _field12;
+    unsigned int _field13;
+    unsigned long long _field14;
 };
 
 struct Graph {
@@ -55,7 +55,10 @@ struct MPSAutoBuffer {
     unsigned long long _field2;
     id _field3;
     id _field4;
-    unsigned long long _field5;
+    struct {
+        unsigned long long _field1;
+        unsigned long long _field2;
+    } _field5;
 };
 
 struct MPSDeviceSpecificInfo {
@@ -97,6 +100,7 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field18;
     struct MPSDeviceSpecificInfo _field19;
     struct MPSDeviceSpecificInfo _field20;
+    struct MPSDeviceSpecificInfo _field21;
 };
 
 struct MPSOrigin {
@@ -165,36 +169,12 @@ struct ResourceGraphNode {
     BOOL _field11;
     BOOL _field12;
     unsigned long long _field13;
+    unsigned long long _field14;
 };
 
-struct SrcProperties {
-    CDStruct_d6af7fc0 _field1;
-    CDStruct_d6af7fc0 _field2;
-    struct {
-        unsigned long long _field1;
-        unsigned long long _field2;
-        unsigned long long _field3;
-    } _field3;
-    struct {
-        unsigned long long _field1;
-        unsigned long long _field2;
-        unsigned long long _field3;
-    } _field4;
-    struct {
-        unsigned long long _field1;
-        unsigned long long _field2;
-        unsigned long long _field3;
-    } _field5;
-    unsigned long long _field6;
-};
-
-struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
-};
-
-struct atomic<NSObject<OS_dispatch_group>*> {
-    _Atomic id __a_;
+struct _opaque_pthread_mutex_t {
+    long long __sig;
+    char __opaque[56];
 };
 
 struct atomic<long> {
@@ -211,10 +191,7 @@ struct mersenne_twister_engine<unsigned int, 32, 624, 397, 31, 2567483615, 11, 4
 };
 
 struct mutex {
-    struct _opaque_pthread_mutex_t {
-        long long __sig;
-        char __opaque[56];
-    } __m_;
+    struct _opaque_pthread_mutex_t __m_;
 };
 
 #pragma mark Typedef'd Structures
@@ -231,12 +208,6 @@ typedef struct {
     CDStruct_d6af7fc0 _field3;
     unsigned long long _field4;
 } CDStruct_15cf940b;
-
-typedef struct {
-    CDStruct_da2e99ad threadgroups;
-    CDStruct_da2e99ad threadsPerThreadgroup;
-    CDStruct_da2e99ad globalSize;
-} CDStruct_ba4ad464;
 
 typedef struct {
     struct {

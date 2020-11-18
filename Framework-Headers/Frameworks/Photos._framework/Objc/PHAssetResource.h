@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL;
+@class NSString, NSURL, PHPhotoLibrary;
 
 @interface PHAssetResource : NSObject
 {
@@ -19,8 +19,9 @@
     NSURL *_fileURL;
     NSURL *_privateFileURL;
     CDUnknownBlockType _privateFileLoader;
-    unsigned long long _pixelWidth;
-    unsigned long long _pixelHeight;
+    PHPhotoLibrary *_photoLibrary;
+    long long _pixelWidth;
+    long long _pixelHeight;
     unsigned long long _fileSize;
 }
 
@@ -31,8 +32,9 @@
 @property (readonly, nonatomic, getter=isLibraryAssetResource) BOOL libraryAssetResource;
 @property (nonatomic, getter=isLocallyAvailable, setter=_setIsLocallyAvailable:) BOOL locallyAvailable; // @synthesize locallyAvailable=_locallyAvailable;
 @property (copy, nonatomic, setter=_setOriginalFilename:) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
-@property (nonatomic, setter=_setPixelHeight:) unsigned long long pixelHeight; // @synthesize pixelHeight=_pixelHeight;
-@property (nonatomic, setter=_setPixelWidth:) unsigned long long pixelWidth; // @synthesize pixelWidth=_pixelWidth;
+@property (strong, nonatomic, setter=_setPhotoLibrary:) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property (nonatomic, setter=_setPixelHeight:) long long pixelHeight; // @synthesize pixelHeight=_pixelHeight;
+@property (nonatomic, setter=_setPixelWidth:) long long pixelWidth; // @synthesize pixelWidth=_pixelWidth;
 @property (copy, nonatomic, setter=_setPrivateFileLoader:) CDUnknownBlockType privateFileLoader; // @synthesize privateFileLoader=_privateFileLoader;
 @property (strong, nonatomic, setter=_setPrivateFileURL:) NSURL *privateFileURL; // @synthesize privateFileURL=_privateFileURL;
 @property (readonly, nonatomic) long long type; // @synthesize type=_resourceType;

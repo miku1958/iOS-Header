@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSWidgetEngagement, NSData, NSMutableArray, NSString;
+@class COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSAlternateHeadline, COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSWidgetEngagement, NSData, NSMutableArray, NSString;
 
 @interface COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSArticleHostViewExposure : PBCodable <NSCopying>
 {
@@ -25,13 +25,16 @@
     long long _personalizationTreatmentId;
     long long _previousArticlePublisherArticleVersion;
     long long _publisherArticleVersionInt64;
+    double _subscribedChannelCtr;
     double _userFeedbackScore;
     int _activeTimeSpent;
+    COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSAlternateHeadline *_alternateHeadline;
     NSString *_anfComponentId;
     int _articleDisplayRankInGroup;
     int _articleHostViewType;
     NSString *_articleId;
     NSData *_articleSessionId;
+    int _articleSuggestionOrigin;
     int _articleType;
     int _articleViewPresentationReason;
     NSData *_articleViewingSessionId;
@@ -46,6 +49,8 @@
     NSString *_creativeId;
     int _curatedContentType;
     int _displayRank;
+    NSString *_exposedGroupSourceChannelId;
+    NSString *_exposedInLocationId;
     int _feedAutoSubscribeType;
     int _feedCellHostType;
     int _feedPresentationReason;
@@ -57,8 +62,10 @@
     int _groupDisplayRankInForYou;
     NSString *_groupFeedId;
     int _groupFormationReason;
+    int _groupLocation;
     int _groupPresentationReason;
     int _groupType;
+    NSData *_groupViewExposureId;
     NSString *_iadNativeAd;
     NSString *_iadNativeCampaign;
     NSString *_iadNativeCampaignAd;
@@ -86,6 +93,7 @@
     NSString *_previousWebEmbedId;
     int _previousWebEmbedLocation;
     int _publisherArticleVersion;
+    int _rankInVideoPlaylist;
     NSString *_referencedArticleId;
     NSString *_referringSourceApplication;
     NSString *_referringUrl;
@@ -110,6 +118,7 @@
     BOOL _articleLoaded;
     BOOL _badgeExposure;
     BOOL _didBounce;
+    BOOL _didExpandDuringView;
     BOOL _didOpenInSafari;
     BOOL _isBreakingNewsArticle;
     BOOL _isCoverArticle;
@@ -129,19 +138,21 @@
     BOOL _isVideoInFeed;
     BOOL _subscriptionOnlyArticle;
     BOOL _viewFromNotificationDirectOpen;
-    CDStruct_23675145 _has;
+    CDStruct_120998a0 _has;
 }
 
 @property (nonatomic) int activeTimeSpent; // @synthesize activeTimeSpent=_activeTimeSpent;
 @property (nonatomic) BOOL adSupportedChannel; // @synthesize adSupportedChannel=_adSupportedChannel;
 @property (nonatomic) double agedPersonalizationScore; // @synthesize agedPersonalizationScore=_agedPersonalizationScore;
 @property (nonatomic) double agedUserFeedbackScore; // @synthesize agedUserFeedbackScore=_agedUserFeedbackScore;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLANALYTICSEVENTSAlternateHeadline *alternateHeadline; // @synthesize alternateHeadline=_alternateHeadline;
 @property (strong, nonatomic) NSString *anfComponentId; // @synthesize anfComponentId=_anfComponentId;
 @property (nonatomic) int articleDisplayRankInGroup; // @synthesize articleDisplayRankInGroup=_articleDisplayRankInGroup;
 @property (nonatomic) int articleHostViewType; // @synthesize articleHostViewType=_articleHostViewType;
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (nonatomic) BOOL articleLoaded; // @synthesize articleLoaded=_articleLoaded;
 @property (strong, nonatomic) NSData *articleSessionId; // @synthesize articleSessionId=_articleSessionId;
+@property (nonatomic) int articleSuggestionOrigin; // @synthesize articleSuggestionOrigin=_articleSuggestionOrigin;
 @property (nonatomic) int articleType; // @synthesize articleType=_articleType;
 @property (nonatomic) int articleViewPresentationReason; // @synthesize articleViewPresentationReason=_articleViewPresentationReason;
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
@@ -160,9 +171,12 @@
 @property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
 @property (nonatomic) int curatedContentType; // @synthesize curatedContentType=_curatedContentType;
 @property (nonatomic) BOOL didBounce; // @synthesize didBounce=_didBounce;
+@property (nonatomic) BOOL didExpandDuringView; // @synthesize didExpandDuringView=_didExpandDuringView;
 @property (nonatomic) BOOL didOpenInSafari; // @synthesize didOpenInSafari=_didOpenInSafari;
 @property (nonatomic) int displayRank; // @synthesize displayRank=_displayRank;
 @property (nonatomic) double diversifiedPersonalizationScore; // @synthesize diversifiedPersonalizationScore=_diversifiedPersonalizationScore;
+@property (strong, nonatomic) NSString *exposedGroupSourceChannelId; // @synthesize exposedGroupSourceChannelId=_exposedGroupSourceChannelId;
+@property (strong, nonatomic) NSString *exposedInLocationId; // @synthesize exposedInLocationId=_exposedInLocationId;
 @property (nonatomic) double featureCtr; // @synthesize featureCtr=_featureCtr;
 @property (nonatomic) int feedAutoSubscribeType; // @synthesize feedAutoSubscribeType=_feedAutoSubscribeType;
 @property (nonatomic) int feedCellHostType; // @synthesize feedCellHostType=_feedCellHostType;
@@ -176,18 +190,22 @@
 @property (nonatomic) int groupDisplayRankInForYou; // @synthesize groupDisplayRankInForYou=_groupDisplayRankInForYou;
 @property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
 @property (nonatomic) int groupFormationReason; // @synthesize groupFormationReason=_groupFormationReason;
+@property (nonatomic) int groupLocation; // @synthesize groupLocation=_groupLocation;
 @property (nonatomic) int groupPresentationReason; // @synthesize groupPresentationReason=_groupPresentationReason;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
 @property (nonatomic) BOOL hasActiveTimeSpent;
 @property (nonatomic) BOOL hasAdSupportedChannel;
 @property (nonatomic) BOOL hasAgedPersonalizationScore;
 @property (nonatomic) BOOL hasAgedUserFeedbackScore;
+@property (readonly, nonatomic) BOOL hasAlternateHeadline;
 @property (readonly, nonatomic) BOOL hasAnfComponentId;
 @property (nonatomic) BOOL hasArticleDisplayRankInGroup;
 @property (nonatomic) BOOL hasArticleHostViewType;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (nonatomic) BOOL hasArticleLoaded;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
+@property (nonatomic) BOOL hasArticleSuggestionOrigin;
 @property (nonatomic) BOOL hasArticleType;
 @property (nonatomic) BOOL hasArticleViewPresentationReason;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
@@ -206,9 +224,12 @@
 @property (readonly, nonatomic) BOOL hasCreativeId;
 @property (nonatomic) BOOL hasCuratedContentType;
 @property (nonatomic) BOOL hasDidBounce;
+@property (nonatomic) BOOL hasDidExpandDuringView;
 @property (nonatomic) BOOL hasDidOpenInSafari;
 @property (nonatomic) BOOL hasDisplayRank;
 @property (nonatomic) BOOL hasDiversifiedPersonalizationScore;
+@property (readonly, nonatomic) BOOL hasExposedGroupSourceChannelId;
+@property (readonly, nonatomic) BOOL hasExposedInLocationId;
 @property (nonatomic) BOOL hasFeatureCtr;
 @property (nonatomic) BOOL hasFeedAutoSubscribeType;
 @property (nonatomic) BOOL hasFeedCellHostType;
@@ -221,8 +242,10 @@
 @property (nonatomic) BOOL hasGroupDisplayRankInForYou;
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupFormationReason;
+@property (nonatomic) BOOL hasGroupLocation;
 @property (nonatomic) BOOL hasGroupPresentationReason;
 @property (nonatomic) BOOL hasGroupType;
+@property (readonly, nonatomic) BOOL hasGroupViewExposureId;
 @property (readonly, nonatomic) BOOL hasIadNativeAd;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaign;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaignAd;
@@ -270,6 +293,7 @@
 @property (nonatomic) BOOL hasPreviousWebEmbedLocation;
 @property (nonatomic) BOOL hasPublisherArticleVersion;
 @property (nonatomic) BOOL hasPublisherArticleVersionInt64;
+@property (nonatomic) BOOL hasRankInVideoPlaylist;
 @property (readonly, nonatomic) BOOL hasReferencedArticleId;
 @property (readonly, nonatomic) BOOL hasReferringSourceApplication;
 @property (readonly, nonatomic) BOOL hasReferringUrl;
@@ -277,6 +301,7 @@
 @property (readonly, nonatomic) BOOL hasSourceBinId;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
 @property (readonly, nonatomic) BOOL hasStoryType;
+@property (nonatomic) BOOL hasSubscribedChannelCtr;
 @property (nonatomic) BOOL hasSubscriptionOnlyArticle;
 @property (readonly, nonatomic) BOOL hasSurfacedByChannelId;
 @property (readonly, nonatomic) BOOL hasSurfacedBySectionId;
@@ -340,6 +365,7 @@
 @property (nonatomic) int previousWebEmbedLocation; // @synthesize previousWebEmbedLocation=_previousWebEmbedLocation;
 @property (nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property (nonatomic) long long publisherArticleVersionInt64; // @synthesize publisherArticleVersionInt64=_publisherArticleVersionInt64;
+@property (nonatomic) int rankInVideoPlaylist; // @synthesize rankInVideoPlaylist=_rankInVideoPlaylist;
 @property (strong, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property (strong, nonatomic) NSString *referringSourceApplication; // @synthesize referringSourceApplication=_referringSourceApplication;
 @property (strong, nonatomic) NSString *referringUrl; // @synthesize referringUrl=_referringUrl;
@@ -347,6 +373,7 @@
 @property (strong, nonatomic) NSString *sourceBinId; // @synthesize sourceBinId=_sourceBinId;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
 @property (strong, nonatomic) NSString *storyType; // @synthesize storyType=_storyType;
+@property (nonatomic) double subscribedChannelCtr; // @synthesize subscribedChannelCtr=_subscribedChannelCtr;
 @property (nonatomic) BOOL subscriptionOnlyArticle; // @synthesize subscriptionOnlyArticle=_subscriptionOnlyArticle;
 @property (strong, nonatomic) NSString *surfacedByChannelId; // @synthesize surfacedByChannelId=_surfacedByChannelId;
 @property (strong, nonatomic) NSString *surfacedBySectionId; // @synthesize surfacedBySectionId=_surfacedBySectionId;
@@ -369,6 +396,7 @@
 + (Class)surfacedByTagIdsType;
 - (void).cxx_destruct;
 - (int)StringAsArticleHostViewType:(id)arg1;
+- (int)StringAsArticleSuggestionOrigin:(id)arg1;
 - (int)StringAsArticleType:(id)arg1;
 - (int)StringAsArticleViewPresentationReason:(id)arg1;
 - (int)StringAsCoverArticleFeatureType:(id)arg1;
@@ -378,6 +406,7 @@
 - (int)StringAsFeedPresentationReason:(id)arg1;
 - (int)StringAsFeedSubscriptionOrigin:(id)arg1;
 - (int)StringAsGroupFormationReason:(id)arg1;
+- (int)StringAsGroupLocation:(id)arg1;
 - (int)StringAsGroupPresentationReason:(id)arg1;
 - (int)StringAsGroupType:(id)arg1;
 - (int)StringAsLoadFailureReason:(id)arg1;
@@ -394,6 +423,7 @@
 - (void)addNamedEntities:(id)arg1;
 - (void)addSurfacedByTagIds:(id)arg1;
 - (id)articleHostViewTypeAsString:(int)arg1;
+- (id)articleSuggestionOriginAsString:(int)arg1;
 - (id)articleTypeAsString:(int)arg1;
 - (id)articleViewPresentationReasonAsString:(int)arg1;
 - (void)clearFractionalCohortMemberships;
@@ -412,6 +442,7 @@
 - (id)fractionalCohortMembershipAtIndex:(unsigned long long)arg1;
 - (unsigned long long)fractionalCohortMembershipsCount;
 - (id)groupFormationReasonAsString:(int)arg1;
+- (id)groupLocationAsString:(int)arg1;
 - (id)groupPresentationReasonAsString:(int)arg1;
 - (id)groupTypeAsString:(int)arg1;
 - (unsigned long long)hash;

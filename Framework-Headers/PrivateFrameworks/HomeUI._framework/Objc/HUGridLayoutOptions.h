@@ -18,6 +18,7 @@
     BOOL _editing;
     unsigned long long _contentColorStyle;
     long long _scrollDirection;
+    unsigned long long _columnStyle;
     UIFont *_headlineFont;
     UIFont *_statusItemFont;
     UIFont *_statusDetailsFont;
@@ -55,6 +56,7 @@
 @property (readonly, nonatomic) double cameraCellWidth;
 @property (readonly, nonatomic) long long cellSizeSubclass;
 @property (nonatomic) double columnSpacing; // @synthesize columnSpacing=_columnSpacing;
+@property (nonatomic) unsigned long long columnStyle; // @synthesize columnStyle=_columnStyle;
 @property (nonatomic) unsigned long long contentColorStyle; // @synthesize contentColorStyle=_contentColorStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -66,6 +68,7 @@
 @property (copy, nonatomic) HUGridHeadlineCellLayoutOptions *headlineCellOptions; // @synthesize headlineCellOptions=_headlineCellOptions;
 @property (strong, nonatomic) UIFont *headlineFont; // @synthesize headlineFont=_headlineFont;
 @property (nonatomic) BOOL headlineHidden; // @synthesize headlineHidden=_headlineHidden;
+@property (readonly, nonatomic) double largeTitleCellTopMargin;
 @property (nonatomic) double lastStatusItemBaselineToStatusDetailsBaselineDistance; // @synthesize lastStatusItemBaselineToStatusDetailsBaselineDistance=_lastStatusItemBaselineToStatusDetailsBaselineDistance;
 @property (nonatomic) unsigned long long maxStatusItemCount; // @synthesize maxStatusItemCount=_maxStatusItemCount;
 @property (nonatomic) unsigned long long maxStatusItemNumberOfLines; // @synthesize maxStatusItemNumberOfLines=_maxStatusItemNumberOfLines;
@@ -101,22 +104,19 @@
 @property (readonly, nonatomic) struct CGSize viewSize; // @synthesize viewSize=_viewSize;
 @property (readonly, nonatomic) long long viewSizeSubclass;
 
-+ (CDStruct_4bcfbbae)_controlCenterModuleGridLayoutForItemType:(unsigned long long)arg1 sizeSubclass:(unsigned long long)arg2;
-+ (unsigned long long)_controlCenterModuleHCFNumberOfColumnsForSizeSubclass:(unsigned long long)arg1;
-+ (id)_controlCenterModuleLayoutOptionsForViewSize:(struct CGSize)arg1 itemType:(unsigned long long)arg2;
-+ (id)_defaultOptionsForViewSize:(struct CGSize)arg1 overrideSizeSubclass:(id)arg2;
-+ (id)_legacyControlCenterLayoutOptionsForViewSize:(struct CGSize)arg1 layoutStyle:(long long)arg2 itemType:(unsigned long long)arg3;
-+ (CDStruct_4bcfbbae)controlCenterGridLayoutForDesignType:(unsigned long long)arg1 itemType:(unsigned long long)arg2 sizeSubclass:(unsigned long long)arg3;
-+ (id)controlCenterLayoutOptionsForDesignType:(unsigned long long)arg1 viewSize:(struct CGSize)arg2 layoutStyle:(long long)arg3 itemType:(unsigned long long)arg4;
++ (unsigned long long)_numberOfColumnsForFlexibleWidthStyleWithSizeSubclass:(long long)arg1;
 + (id)defaultOptionsForViewSize:(struct CGSize)arg1;
++ (id)defaultOptionsForViewSize:(struct CGSize)arg1 columnStyle:(unsigned long long)arg2;
++ (id)defaultOptionsForViewSize:(struct CGSize)arg1 columnStyle:(unsigned long long)arg2 overrideSizeSubclass:(id)arg3;
 + (id)defaultOptionsForViewSize:(struct CGSize)arg1 overrideSizeSubclass:(long long)arg2;
-+ (double)preferredControlCenterModuleHeightForViewWidth:(double)arg1;
 - (void).cxx_destruct;
 - (id)_childDisplayOptions;
+- (double)_pointWidthForFixedColumnStyleWithFractionalNumberOfColumns:(double)arg1;
+- (double)_pointWidthForFlexibleColumnStyleWithFractionalNumberOfColumns:(double)arg1 totalNumberOfColumns:(long long)arg2 totalWidth:(double)arg3;
+- (double)_pointWidthForFractionalNumberOfColumns:(double)arg1;
 - (double)_preferredSectionHeightForNumberOfRows:(unsigned long long)arg1 withCellHeight:(double)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithViewSize:(struct CGSize)arg1 overrideSizeSubclass:(id)arg2;
-- (long long)numberOfCameraCellsPerRow;
+- (id)initWithViewSize:(struct CGSize)arg1 columnStyle:(unsigned long long)arg2 overrideSizeSubclass:(id)arg3;
 - (double)pointWidthForNumberOfColumns:(long long)arg1;
 - (double)preferredSectionHeightForNumberOfSceneRows:(unsigned long long)arg1;
 - (double)preferredSectionHeightForNumberOfServiceRows:(unsigned long long)arg1 spanningColumns:(unsigned long long)arg2;

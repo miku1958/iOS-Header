@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCaptureSynchronizedDataInternal;
 
@@ -19,6 +19,7 @@
 - (CDStruct_1b6d18a9)adjustedTimestamp;
 - (void)dealloc;
 - (BOOL)hasCorrespondingDepthData;
+- (BOOL)hasCorrespondingVisionData;
 - (void)setAdjustedTimestamp:(CDStruct_1b6d18a9)arg1;
 
 @end

@@ -17,8 +17,10 @@
 
 @property (copy, nonatomic) NSDate *adjustmentVersion;
 @property (strong, nonatomic) NSDate *adjustmentVersion; // @dynamic adjustmentVersion;
+@property (nonatomic) unsigned short ageType; // @dynamic ageType;
 @property (strong, nonatomic) PLManagedAsset *asset; // @dynamic asset;
 @property (readonly, nonatomic) BOOL assetVisible; // @dynamic assetVisible;
+@property (nonatomic) unsigned short baldType; // @dynamic baldType;
 @property (nonatomic) double blurScore; // @dynamic blurScore;
 @property (nonatomic) double centerX;
 @property (nonatomic) double centerX; // @dynamic centerX;
@@ -34,19 +36,19 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) int effectiveNameSource;
-@property (nonatomic) double expressionConfidence; // @dynamic expressionConfidence;
-@property (nonatomic) double expressionScore1; // @dynamic expressionScore1;
-@property (nonatomic) double expressionScore2; // @dynamic expressionScore2;
-@property (nonatomic) double expressionScore3; // @dynamic expressionScore3;
-@property (nonatomic) int expressionType1; // @dynamic expressionType1;
-@property (nonatomic) int expressionType2; // @dynamic expressionType2;
-@property (nonatomic) int expressionType3; // @dynamic expressionType3;
+@property (nonatomic) unsigned short eyeMakeupType; // @dynamic eyeMakeupType;
+@property (nonatomic) unsigned short eyesState; // @dynamic eyesState;
 @property (nonatomic) int faceAlgorithmVersion;
 @property (nonatomic) int faceAlgorithmVersion; // @dynamic faceAlgorithmVersion;
 @property (strong, nonatomic) PLFaceCrop *faceCrop; // @dynamic faceCrop;
 @property (strong, nonatomic) PLDetectedFaceGroup *faceGroup; // @dynamic faceGroup;
 @property (strong, nonatomic) PLDetectedFaceGroup *faceGroupBeingKeyFace; // @dynamic faceGroupBeingKeyFace;
 @property (strong, nonatomic) PLDetectedFaceprint *faceprint; // @dynamic faceprint;
+@property (nonatomic) unsigned short facialHairType; // @dynamic facialHairType;
+@property (nonatomic) unsigned short genderType; // @dynamic genderType;
+@property (nonatomic) unsigned short glassesType; // @dynamic glassesType;
+@property (strong, nonatomic) NSString *groupingIdentifier; // @dynamic groupingIdentifier;
+@property (nonatomic) unsigned short hairColorType; // @dynamic hairColorType;
 @property (nonatomic) BOOL hasSmile; // @dynamic hasSmile;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidden;
@@ -57,6 +59,7 @@
 @property (readonly, nonatomic) BOOL isTrainingFace;
 @property (nonatomic) double leftEyeX; // @dynamic leftEyeX;
 @property (nonatomic) double leftEyeY; // @dynamic leftEyeY;
+@property (nonatomic) unsigned short lipMakeupType; // @dynamic lipMakeupType;
 @property (readonly, strong, nonatomic) id localID;
 @property (nonatomic) BOOL manual;
 @property (nonatomic) BOOL manual; // @dynamic manual;
@@ -69,8 +72,6 @@
 @property (strong, nonatomic) PLPerson *person; // @dynamic person;
 @property (strong, nonatomic) id<PLSyncablePerson> personBeingKeyFace;
 @property (strong, nonatomic) PLPerson *personBeingKeyFace; // @dynamic personBeingKeyFace;
-@property (nonatomic) double posePitch; // @dynamic posePitch;
-@property (nonatomic) double poseRoll; // @dynamic poseRoll;
 @property (nonatomic) double poseYaw; // @dynamic poseYaw;
 @property (nonatomic) int qualityMeasure; // @dynamic qualityMeasure;
 @property (strong, nonatomic) NSSet *rejectedPersons;
@@ -80,6 +81,7 @@
 @property (nonatomic) double rightEyeY; // @dynamic rightEyeY;
 @property (nonatomic) double size;
 @property (nonatomic) double size; // @dynamic size;
+@property (nonatomic) unsigned short smileType; // @dynamic smileType;
 @property (nonatomic) long long sourceHeight;
 @property (nonatomic) long long sourceHeight; // @dynamic sourceHeight;
 @property (nonatomic) long long sourceWidth;
@@ -119,6 +121,7 @@
 - (id)debugLogDescription;
 - (void)delete;
 - (BOOL)isSyncableChange;
+- (id)momentShare;
 - (id)namingDescription;
 - (double)photosFaceRepresentationBlurScore;
 - (double)photosFaceRepresentationCenterX;

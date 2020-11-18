@@ -48,6 +48,7 @@
 @property (nonatomic) double maxScaleFactor;
 @property (nonatomic) double minScaleFactor;
 @property (nonatomic) struct UIEdgeInsets pageBreakMargins;
+@property (nonatomic, setter=enablePageShadows:) BOOL pageShadowsEnabled;
 @property (nonatomic) double scaleFactor;
 @property (readonly, nonatomic) double scaleFactorForSizeToFit;
 @property (readonly) Class superclass;
@@ -69,6 +70,7 @@
 - (BOOL)_hasDraggableSelectionAtLocation:(struct CGPoint)arg1;
 - (BOOL)_isOverWidgetAnnotation:(struct CGPoint)arg1;
 - (void)_releaseDocument;
+- (void)_releaseDocumentViewController;
 - (void)_setupPageViewController;
 - (BOOL)_shouldHandleAnnotationAtLocation:(struct CGPoint)arg1;
 - (void)_syncPageIndexToScrollView;
@@ -93,6 +95,7 @@
 - (double)autoScaleFactor;
 - (double)autoScaleFactorForPage:(id)arg1;
 - (double)autoScaleFactorForPageWithSize:(struct CGSize)arg1;
+- (struct CGSize)autoScalePageSize;
 - (BOOL)automaticallyHandleGutter;
 - (void)beginPDFViewRotation;
 - (void)callPageVisibilityDelegateMethod:(int)arg1 forPageView:(id)arg2 atPageIndex:(unsigned long long)arg3;
@@ -121,8 +124,11 @@
 - (BOOL)doPeriodicFlush;
 - (void)documentDidBeginWrite:(id)arg1;
 - (void)documentDidEndWrite:(id)arg1;
+- (struct UIEdgeInsets)documentMargins;
 - (id)documentScrollView;
+- (struct CGPoint)documentViewCenterBeforeRotation;
 - (id)documentViewController;
+- (struct CGRect)documentViewFrustumForSelection:(id)arg1;
 - (void)documentWasUnlocked;
 - (id)dragInteraction:(id)arg1 itemsForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
@@ -138,6 +144,9 @@
 - (void)endEditingAnnotation;
 - (void)endPDFViewRotation;
 - (struct CGRect)extendedRootViewBounds;
+- (struct CGRect)extensionViewBoundsInDocument;
+- (struct CGRect)extensionViewFrame;
+- (double)extensionViewZoomScale;
 - (void)findVisiblePages;
 - (BOOL)flipsTileContents;
 - (void)forceWebKitMainThread:(BOOL)arg1;
@@ -162,9 +171,11 @@
 - (double)greekingThreshold;
 - (double)gutterWidth;
 - (BOOL)handleBackTabInTextWidget:(id)arg1;
+- (void)handleGesture:(unsigned long long)arg1 state:(long long)arg2 location:(struct CGPoint)arg3 locationOfFirstTouch:(struct CGPoint)arg4;
 - (BOOL)handleTabInTextWidget:(id)arg1;
 - (void)hintScrollDirectionHorizontal:(unsigned long long)arg1 andVertical:(unsigned long long)arg2;
 - (id)history;
+- (double)horizontalScaleFactorBeforeRotation;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)interactWithAnnotation:(id)arg1;
@@ -178,6 +189,8 @@
 - (void)layoutSubviews;
 - (double)lineWidthThreshold;
 - (id)longPressGestureRecognizer;
+- (struct CGRect)mainScreenBounds;
+- (double)mainScreenScale;
 - (id)nextPage;
 - (struct CGRect)normalizedPageBounds:(id)arg1;
 - (id)pageColor;
@@ -186,6 +199,7 @@
 - (double)pageViewHeight:(id)arg1;
 - (struct CGSize)pageViewSizeForPage:(id)arg1;
 - (id)panGestureRecognizer;
+- (struct CGSize)pdfDocumentViewSize;
 - (void)pdfViewDidChangePage:(id)arg1;
 - (void)pdfViewDidChangeScale:(id)arg1;
 - (void)performAction:(id)arg1;
@@ -222,13 +236,17 @@
 - (void)setDoPeriodicFlush:(BOOL)arg1;
 - (void)setDocument:(id)arg1 waitDuration:(double)arg2;
 - (void)setDocument:(id)arg1 withInitialPageIndex:(unsigned long long)arg2;
+- (void)setDocumentMargins:(struct UIEdgeInsets)arg1;
 - (void)setEnablePageShadows:(BOOL)arg1;
 - (void)setEnableSelectionDrawing:(BOOL)arg1;
 - (void)setEnableTileUpdates:(BOOL)arg1;
+- (void)setExtensionViewFrame:(struct CGRect)arg1;
+- (void)setExtensionViewInsets:(struct UIEdgeInsets)arg1;
 - (void)setForcesTopAlignment:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setGreekingThreshold:(double)arg1;
 - (void)setGutterWidth:(double)arg1;
+- (void)setIsUsingPDFExtensionView:(BOOL)arg1;
 - (void)setLineWidthThreshold:(double)arg1;
 - (void)setLollipopMagnifierPage:(id)arg1 forPagePoint:(struct CGPoint)arg2;
 - (void)setNeedsDisplay;
@@ -237,6 +255,7 @@
 - (void)setPageColor:(id)arg1;
 - (void)setPopupManager:(id)arg1;
 - (void)setScaleFactor:(double)arg1 anchorPoint:(struct CGPoint)arg2;
+- (void)setScrollViewScrollEnabled:(BOOL)arg1;
 - (void)setScrollingChangesPages:(BOOL)arg1;
 - (void)setShouldAntiAlias:(BOOL)arg1;
 - (void)setShowsScrollIndicators:(BOOL)arg1;
@@ -252,7 +271,9 @@
 - (void)takeBackgroundColorFrom:(id)arg1;
 - (void)takePasswordFrom:(id)arg1;
 - (id)tapGestureRecognizer;
+- (int)textSelectionState;
 - (void)updateCurrentPageUsingViewCenter;
+- (void)updatePDFViewLayout:(struct CGRect)arg1 boundsInView:(struct CGRect)arg2 scrollViewFrame:(struct CGRect)arg3 zoomScale:(double)arg4;
 - (void)usePageViewController:(BOOL)arg1 withViewOptions:(id)arg2;
 - (BOOL)usesPageLabels;
 - (id)viewForPage:(id)arg1;

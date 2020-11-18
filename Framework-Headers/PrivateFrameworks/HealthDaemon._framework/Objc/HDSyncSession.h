@@ -6,22 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSCalendar, NSDate, NSString, NSUUID;
+@class HDAssertion, NSCalendar, NSDate, NSString, NSUUID;
 @protocol HDSyncSessionDelegate, HDSyncStore;
 
 @interface HDSyncSession : NSObject
 {
-    BOOL _attemptWhileLocking;
     id<HDSyncSessionDelegate> _delegate;
     id<HDSyncStore> _syncStore;
     NSUUID *_sessionUUID;
     NSDate *_startDate;
     NSCalendar *_calendar;
     NSString *_reason;
+    HDAssertion *_databaseAccessibilityAssertion;
+    double _databaseAccessibilityTimeout;
 }
 
-@property (readonly, nonatomic) BOOL attemptWhileLocking; // @synthesize attemptWhileLocking=_attemptWhileLocking;
 @property (readonly, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
+@property (strong, nonatomic) HDAssertion *databaseAccessibilityAssertion; // @synthesize databaseAccessibilityAssertion=_databaseAccessibilityAssertion;
+@property (nonatomic) double databaseAccessibilityTimeout; // @synthesize databaseAccessibilityTimeout=_databaseAccessibilityTimeout;
 @property (readonly, weak, nonatomic) id<HDSyncSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) NSUUID *sessionUUID; // @synthesize sessionUUID=_sessionUUID;
@@ -32,7 +34,7 @@
 - (id)description;
 - (id)excludedSyncStores;
 - (id)init;
-- (id)initWithSyncStore:(id)arg1 attemptWhileLocking:(BOOL)arg2 reason:(id)arg3 delegate:(id)arg4;
+- (id)initWithSyncStore:(id)arg1 reason:(id)arg2 delegate:(id)arg3;
 - (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
 - (id)predicateForSyncEntityClass:(Class)arg1;

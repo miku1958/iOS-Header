@@ -8,22 +8,22 @@
 
 #import <UserNotificationsServer/UNSLocationMonitorObserver-Protocol.h>
 
-@class NSMutableArray, NSString, PCPersistentTimer, UNSLocationMonitor, UNSNotificationRepository, UNSPendingNotificationRepository;
+@class NSMutableArray, NSString, PCPersistentTimer, UNSLocationMonitor, UNSNotificationRepository, UNSNotificationScheduleRepository, UNSPendingNotificationRepository;
 @protocol OS_dispatch_queue;
 
 @interface UNSLocalNotificationClient : NSObject <UNSLocationMonitorObserver>
 {
     NSString *_bundleIdentifier;
     UNSNotificationRepository *_notificationRepository;
+    UNSNotificationScheduleRepository *_notificationScheduleRepository;
     UNSPendingNotificationRepository *_pendingNotificationRepository;
-    NSMutableArray *_pendingNotificationsAwaitingDelivery;
+    NSMutableArray *_lazy_pendingNotificationsAwaitingDelivery;
     UNSLocationMonitor *_locationMonitor;
     PCPersistentTimer *_localNotificationTimer;
     NSObject<OS_dispatch_queue> *_queue;
     BOOL _monitoringLocaleAndTimeChanges;
     BOOL _userNotificationsEnabled;
-    BOOL _requiresLocalNotifications;
-    BOOL _isSystemApplication;
+    BOOL _allowsUnlimitedLocalNotifications;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -38,8 +38,8 @@
 - (void)_invalidateNotificationRecordTimersAndRegionMonitors;
 - (void)_invalidatePendingNotificationRecordRegionMonitors;
 - (void)_invalidatePendingNotificationRecordTimers;
+- (id)_lastLocalNotificationFireDate;
 - (id)_pendingNotificationRecords;
-- (void)_postDarwinSnoozeNotifications:(id)arg1;
 - (void)_queue_triggerDidFireForDate:(id)arg1;
 - (void)_queue_triggerDidFireForRegion:(id)arg1;
 - (void)_queue_triggerDidFireForTimer:(id)arg1;
@@ -56,7 +56,7 @@
 - (void)handleApplicationStateRestore;
 - (void)handleLocaleChange;
 - (void)handleSignificantTimeChange;
-- (id)initWithNotificationRepository:(id)arg1 pendingNotificationRepository:(id)arg2 locationMonitor:(id)arg3 bundleIdentifier:(id)arg4 isSystemApplication:(BOOL)arg5 requiresLocalNotifications:(BOOL)arg6 userNotificationsEnabled:(BOOL)arg7 queue:(id)arg8;
+- (id)initWithNotificationRepository:(id)arg1 pendingNotificationRepository:(id)arg2 notificationScheduleRepository:(id)arg3 locationMonitor:(id)arg4 bundleIdentifier:(id)arg5 allowsUnlimitedLocalNotifications:(BOOL)arg6 userNotificationsEnabled:(BOOL)arg7 queue:(id)arg8;
 - (void)invalidate;
 - (void)locationMonitor:(id)arg1 triggerDidFireForRegion:(id)arg2 forBundleIdentifier:(id)arg3;
 - (id)pendingNotificationRecords;

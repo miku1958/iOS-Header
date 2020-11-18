@@ -7,13 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <ARKit/NSCopying-Protocol.h>
+#import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARCamera, ARFaceData, ARFrameTimingData, ARLightEstimate, ARPlaneData, ARPointCloud, ARWorldTrackingErrorData, AVDepthData, NSArray, NSDate;
+@class ARCamera, ARFaceData, ARFrameTimingData, ARLightEstimate, ARPointCloud, ARRawSceneUnderstandingData, ARWorldTrackingErrorData, ARWorldTrackingState, AVDepthData, NSArray, NSDate, NSDictionary;
 
-@interface ARFrame : NSObject <NSCopying>
+@interface ARFrame : NSObject <NSSecureCoding, NSCopying>
 {
-    ARPlaneData *_cachedHorizontalPlaneData;
-    ARPlaneData *_cachedVerticalPlaneData;
     unsigned long long _transformFlags;
     BOOL _shouldRestrictFrameRate;
     double _timestamp;
@@ -23,14 +22,19 @@
     ARCamera *_camera;
     NSArray *_anchors;
     ARLightEstimate *_lightEstimate;
+    long long _worldMappingStatus;
+    double _currentCaptureTimestamp;
     ARPointCloud *_featurePoints;
     ARPointCloud *_referenceFeaturePoints;
     NSArray *_cachedPointClouds;
     long long _worldAlignment;
     ARFrameTimingData *_timingData;
-    ARWorldTrackingErrorData *_trackingErrorData;
+    ARWorldTrackingErrorData *_worldTrackingErrorData;
+    NSDictionary *_worldTrackingStateDetails;
+    ARWorldTrackingState *_worldTrackingState;
     long long _renderFramesPerSecond;
     NSDate *_captureDate;
+    ARRawSceneUnderstandingData *_rawSceneUnderstandingData;
     ARFaceData *_faceData;
     CDStruct_14d5dc5e _referenceOriginTransform;
     CDStruct_14d5dc5e _referenceOriginDelta;
@@ -45,10 +49,12 @@
 @property (strong, nonatomic) AVDepthData *capturedDepthData; // @synthesize capturedDepthData=_capturedDepthData;
 @property (nonatomic) double capturedDepthDataTimestamp; // @synthesize capturedDepthDataTimestamp=_capturedDepthDataTimestamp;
 @property (nonatomic) struct __CVBuffer *capturedImage; // @synthesize capturedImage=_capturedImage;
+@property (readonly, nonatomic) double currentCaptureTimestamp; // @synthesize currentCaptureTimestamp=_currentCaptureTimestamp;
 @property (strong, nonatomic) ARFaceData *faceData; // @synthesize faceData=_faceData;
 @property (strong, nonatomic) ARPointCloud *featurePoints; // @synthesize featurePoints=_featurePoints;
 @property (strong, nonatomic) ARLightEstimate *lightEstimate; // @synthesize lightEstimate=_lightEstimate;
 @property (readonly, nonatomic) ARPointCloud *rawFeaturePoints;
+@property (strong, nonatomic) ARRawSceneUnderstandingData *rawSceneUnderstandingData; // @synthesize rawSceneUnderstandingData=_rawSceneUnderstandingData;
 @property (strong, nonatomic) ARPointCloud *referenceFeaturePoints; // @synthesize referenceFeaturePoints=_referenceFeaturePoints;
 @property (nonatomic) CDStruct_14d5dc5e referenceOriginDelta; // @synthesize referenceOriginDelta=_referenceOriginDelta;
 @property (nonatomic) CDStruct_14d5dc5e referenceOriginTransform; // @synthesize referenceOriginTransform=_referenceOriginTransform;
@@ -57,10 +63,14 @@
 @property (nonatomic) BOOL shouldRestrictFrameRate; // @synthesize shouldRestrictFrameRate=_shouldRestrictFrameRate;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 @property (strong, nonatomic) ARFrameTimingData *timingData; // @synthesize timingData=_timingData;
-@property (strong, nonatomic) ARWorldTrackingErrorData *trackingErrorData; // @synthesize trackingErrorData=_trackingErrorData;
 @property (nonatomic) long long worldAlignment; // @synthesize worldAlignment=_worldAlignment;
 @property (nonatomic) CDStruct_14d5dc5e worldAlignmentTransform; // @synthesize worldAlignmentTransform=_worldAlignmentTransform;
+@property (nonatomic) long long worldMappingStatus; // @synthesize worldMappingStatus=_worldMappingStatus;
+@property (strong, nonatomic) ARWorldTrackingErrorData *worldTrackingErrorData; // @synthesize worldTrackingErrorData=_worldTrackingErrorData;
+@property (strong, nonatomic) ARWorldTrackingState *worldTrackingState; // @synthesize worldTrackingState=_worldTrackingState;
+@property (copy, nonatomic) NSDictionary *worldTrackingStateDetails; // @synthesize worldTrackingStateDetails=_worldTrackingStateDetails;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_hitTestEstimatedPlanesFromOrigin:(long long)arg1 withDirection:planeAlignment: /* Error: Ran out of types for this method. */;
 - (id)_hitTestFromOrigin:(unsigned long long)arg1 withDirection:types: /* Error: Ran out of types for this method. */;
@@ -69,10 +79,12 @@
 - (void)dealloc;
 - (id)description;
 - (struct CGAffineTransform)displayTransformForOrientation:(long long)arg1 viewportSize:(struct CGSize)arg2;
-- (CDStruct_14d5dc5e)gravityAlignmentTransform;
+- (void)encodeWithCoder:(id)arg1;
+- (CDStruct_14d5dc5e)gravityAlignedReferenceOriginTransform;
 - (unsigned long long)hash;
 - (id)hitTest:(struct CGPoint)arg1 types:(unsigned long long)arg2;
 - (id)initWithCamera:(id)arg1 timestamp:(double)arg2;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithTimestamp:(double)arg1 context:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)referenceOriginChanged;

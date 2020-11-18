@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
@@ -21,6 +21,8 @@
 - (id)init;
 - (BOOL)isValidTimingForKey:(int)arg1;
 - (void)removeTimingForKey:(int)arg1;
+- (void)setStartTime:(float)arg1 forKey:(int)arg2;
+- (void)setStopTime:(float)arg1 forKey:(int)arg2;
 - (void)setTiming:(float)arg1 forKey:(int)arg2;
 - (void)startTimingForKey:(int)arg1;
 - (void)stopTimingForKey:(int)arg1;

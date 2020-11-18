@@ -24,6 +24,7 @@
     MDLMaterialPropertyNode *_node;
     MDLMaterialProperty *_overrider;
     MDLMaterialProperty *_overridee;
+    BOOL _isDefaultValue;
     unsigned long long _type;
     CDStruct_14d5dc5e _matrix4x4;
 }
@@ -34,6 +35,7 @@
 @property (nonatomic) MISSING_TYPE *float3Value;
 @property (nonatomic) MISSING_TYPE *float4Value;
 @property (nonatomic) float floatValue;
+@property (nonatomic) BOOL isDefaultValue; // @synthesize isDefaultValue=_isDefaultValue;
 @property (nonatomic) float luminance;
 @property (nonatomic) CDStruct_14d5dc5e matrix4x4; // @synthesize matrix4x4=_matrix4x4;
 @property (copy, nonatomic) NSString *name;

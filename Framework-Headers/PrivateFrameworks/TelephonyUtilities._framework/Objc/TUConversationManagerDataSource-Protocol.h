@@ -6,15 +6,19 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSDictionary;
-@protocol TUConversationManagerDataSourceDelegate;
+@class NSArray, NSDictionary, NSSet, NSUUID, TUConversation, TUConversationMember;
+@protocol TUConversationManagerDataSourceDelegate, TUConversationMediaControllerDataSourceDelegate;
 
 @protocol TUConversationManagerDataSource <NSObject>
 
 @property (readonly, copy, nonatomic) NSDictionary *conversationsByGroupUUID;
 @property (weak, nonatomic) id<TUConversationManagerDataSourceDelegate> delegate;
+@property (weak, nonatomic) id<TUConversationMediaControllerDataSourceDelegate> mediaDelegate;
 
+- (void)addRemoteMembers:(NSSet *)arg1 toConversation:(TUConversation *)arg2;
+- (void)buzzMember:(TUConversationMember *)arg1 conversation:(TUConversation *)arg2;
 - (void)invalidate;
 - (void)registerWithCompletionHandler:(void (^)(void))arg1;
+- (void)updateConversationWithUUID:(NSUUID *)arg1 participantPresentationContexts:(NSArray *)arg2;
 @end
 

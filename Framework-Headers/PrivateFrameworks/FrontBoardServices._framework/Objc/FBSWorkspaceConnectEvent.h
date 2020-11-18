@@ -13,9 +13,9 @@
     FBSProcessHandle *_processHandle;
 }
 
-@property (readonly, strong, nonatomic) FBSProcessHandle *processHandle; // @synthesize processHandle=_processHandle;
+@property (readonly, nonatomic) FBSProcessHandle *processHandle; // @synthesize processHandle=_processHandle;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;
 - (id)initWithXPCDictionary:(id)arg1;

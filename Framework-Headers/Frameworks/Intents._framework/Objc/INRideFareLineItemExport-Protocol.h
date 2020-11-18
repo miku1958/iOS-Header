@@ -11,9 +11,9 @@
 
 @protocol INRideFareLineItemExport <NSObject, JSExport>
 
-@property (strong, nonatomic) NSString *currencyCode;
-@property (strong, nonatomic) NSDecimalNumber *price;
-@property (strong, nonatomic) NSString *title;
+@property (copy, nonatomic) NSString *currencyCode;
+@property (copy, nonatomic) NSDecimalNumber *price;
+@property (copy, nonatomic) NSString *title;
 
 - (id)init;
 @end

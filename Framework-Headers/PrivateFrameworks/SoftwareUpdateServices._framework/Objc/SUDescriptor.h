@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SoftwareUpdateServices/NSCopying-Protocol.h>
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
@@ -35,18 +35,22 @@
     BOOL _disableIntallTonight;
     BOOL _rampEnabled;
     BOOL _criticalOutOfBoxOnly;
+    BOOL _autoUpdateEnabled;
     NSString *_setupCritical;
     NSDictionary *_systemPartitionPadding;
     NSData *_sepDigest;
     NSData *_rsepDigest;
     NSDate *_releaseDate;
     unsigned long long _mdmDelayInterval;
+    NSString *_assetID;
     BOOL _downloadableOverCellular;
     BOOL _streamingZipCapable;
     NSString *_criticalDownloadPolicy;
 }
 
+@property (strong, nonatomic) NSString *assetID; // @synthesize assetID=_assetID;
 @property (nonatomic) BOOL autoDownloadAllowableForCellular; // @synthesize autoDownloadAllowableForCellular=_autoDownloadAllowableForCellular;
+@property (nonatomic) BOOL autoUpdateEnabled; // @synthesize autoUpdateEnabled=_autoUpdateEnabled;
 @property (strong, nonatomic) NSString *criticalDownloadPolicy; // @synthesize criticalDownloadPolicy=_criticalDownloadPolicy;
 @property (nonatomic) BOOL criticalOutOfBoxOnly; // @synthesize criticalOutOfBoxOnly=_criticalOutOfBoxOnly;
 @property (nonatomic, getter=appDemotionDisabled, setter=_setDisableAppDemotion:) BOOL disableAppDemotion; // @synthesize disableAppDemotion=_disableAppDemotion;
@@ -92,6 +96,7 @@
 - (BOOL)isValidDescriptor;
 - (unsigned long long)preparationSize;
 - (unsigned long long)totalRequiredFreeSpace;
+- (id)updateTypeName;
 
 @end
 

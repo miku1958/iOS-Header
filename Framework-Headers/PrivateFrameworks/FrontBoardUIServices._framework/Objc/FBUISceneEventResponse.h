@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSError;
 
@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

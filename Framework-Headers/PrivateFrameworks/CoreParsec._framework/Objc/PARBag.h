@@ -8,14 +8,13 @@
 
 #import <CoreParsec/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, NSURL;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, NSURL;
 
 @interface PARBag : NSObject <NSSecureCoding>
 {
+    NSData *_bagData;
     NSString *_userAgent;
     NSString *_clientName;
-    NSDictionary *_rawBag;
-    NSDictionary *_maximumCustomFeedbackSizes;
 }
 
 @property (readonly, nonatomic) NSArray *anonymousMetadataPreference;
@@ -26,9 +25,12 @@
 @property (readonly, copy, nonatomic) NSString *customFlight;
 @property (readonly, nonatomic) BOOL disableAsTypedSuggestion;
 @property (readonly, nonatomic) NSArray *downloadResourcesList;
+@property (readonly, nonatomic) NSNumber *duetExpertCustomFeedbackSamplingPercentage;
+@property (readonly, nonatomic) NSNumber *eagerFeedbackSamplingPercentage;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, copy, nonatomic) NSArray *enabledDomains;
 @property (readonly, nonatomic) BOOL feedbackEnabled;
+@property (readonly, nonatomic) NSNumber *feedbackMaxAgeInDays;
 @property (readonly, nonatomic) NSURL *feedbackURL;
 @property (readonly, copy, nonatomic) NSString *firstUseContinueText;
 @property (readonly, copy, nonatomic) NSString *firstUseDescriptionText;
@@ -37,13 +39,15 @@
 @property (readonly, nonatomic) NSURL *flightURL;
 @property (readonly, nonatomic) unsigned long long maximumCachedQueriesToSend;
 @property (readonly, nonatomic) unsigned long long maximumCachedResultsToSend;
-@property (readonly, nonatomic) NSDictionary *maximumCustomFeedbackSizes; // @synthesize maximumCustomFeedbackSizes=_maximumCustomFeedbackSizes;
+@property (readonly, nonatomic) NSDictionary *maximumCustomFeedbackSizes;
+@property (readonly, nonatomic) long long maximumNumberOfFeedbackFiles;
 @property (readonly, nonatomic) NSNumber *minSearchRenderTimeout;
+@property (readonly, nonatomic) NSNumber *minSuggestionRenderTimeout;
 @property (readonly, nonatomic) double minThresholdToSend;
 @property (readonly, nonatomic) double minimumIntervalBetweenQueriesFromBag;
 @property (readonly, nonatomic) unsigned long long minimumQueryLength;
 @property (readonly, nonatomic) NSNumber *otherRenderTimeout;
-@property (readonly, copy, nonatomic) NSDictionary *rawBag; // @synthesize rawBag=_rawBag;
+@property (readonly, copy, nonatomic) NSDictionary *rawBag;
 @property (readonly, copy, nonatomic) NSArray *recentlyUsedAppIdentifierWhitelist;
 @property (readonly, copy, nonatomic) NSDictionary *resources;
 @property (readonly, nonatomic) double safariAll;
@@ -53,10 +57,12 @@
 @property (readonly, nonatomic) double safariLast1month;
 @property (readonly, nonatomic) double safariLast1week;
 @property (readonly, nonatomic) double safariMostRecent;
+@property (readonly, nonatomic) BOOL sampleClientTiming;
 @property (readonly, nonatomic) BOOL sampleFeatures;
 @property (readonly, nonatomic) NSNumber *searchRenderTimeout;
 @property (readonly, nonatomic) NSURL *searchURL;
 @property (readonly, nonatomic) BOOL sendGeoEnvironmentHeader;
+@property (readonly, nonatomic) BOOL sendProtobuf;
 @property (readonly, nonatomic) unsigned long long smartHistoryCompletionReturnCount;
 @property (readonly, nonatomic) BOOL smartHistoryEnabled;
 @property (readonly, nonatomic) BOOL smartHistoryFeatureFeedbackEnabled;
@@ -80,6 +86,7 @@
 - (void).cxx_destruct;
 - (id)_bag_objectOfClass:(Class)arg1 forKey:(id)arg2;
 - (id)_bag_objectOfClass:(Class)arg1 forKey:(id)arg2 override:(BOOL)arg3;
+- (id)bagURL;
 - (id)bag_URLForKey:(id)arg1;
 - (id)bag_arrayForKey:(id)arg1;
 - (BOOL)bag_boolForKey:(id)arg1;
@@ -88,11 +95,18 @@
 - (id)bag_stringForKey:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (double)expirationDate;
+- (id)initWithBag:(id)arg1 userAgent:(id)arg2;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDictionary:(id)arg1 userAgent:(id)arg2;
+- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 userAgent:(id)arg2;
+- (id)initWithURL:(id)arg1 userAgent:(id)arg2;
+- (BOOL)isRefreshDisabled;
 - (unsigned long long)maximumSizeForFeedbackType:(id)arg1;
 - (id)personalizationParameters;
 - (id)urlForIdentifier:(id)arg1;
+- (id)valueForKey:(id)arg1;
+- (id)valueForKey:(id)arg1 override:(BOOL)arg2;
 
 @end
 

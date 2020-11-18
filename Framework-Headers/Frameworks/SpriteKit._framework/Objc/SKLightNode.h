@@ -20,11 +20,13 @@
 @property (strong, nonatomic) UIColor *lightColor;
 @property (strong, nonatomic) UIColor *shadowColor;
 
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (BOOL)supportsSecureCoding;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
 - (void)commonInit;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugHierarchyPropertyDescriptions;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

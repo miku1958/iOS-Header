@@ -7,36 +7,37 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBBillPayeeValue-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBDataString, _INPBValueMetadata;
+@class NSString, _INPBDataString, _INPBValueMetadata;
 
-@interface _INPBBillPayeeValue : PBCodable <NSCopying>
+@interface _INPBBillPayeeValue : PBCodable <_INPBBillPayeeValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     NSString *_accountNumber;
     _INPBDataString *_nickname;
     _INPBDataString *_organizationName;
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (strong, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
+@property (copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAccountNumber;
 @property (readonly, nonatomic) BOOL hasNickname;
 @property (readonly, nonatomic) BOOL hasOrganizationName;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBDataString *nickname; // @synthesize nickname=_nickname;
 @property (strong, nonatomic) _INPBDataString *organizationName; // @synthesize organizationName=_organizationName;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

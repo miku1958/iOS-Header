@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_dispatch_io, OS_dispatch_queue, __NSCFLocalDownloadFileOpener;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithExistingUnopenableFile:(id)arg1 fileProvider:(id)arg2;
 - (id)initWithFullPath:(id)arg1;
 - (id)ioChannel;
+- (void)setFinished;
 - (void)truncate;
 - (void)writeBytes:(id)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

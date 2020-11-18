@@ -69,6 +69,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) BOOL stateBeingRestored; // @synthesize stateBeingRestored=_stateBeingRestored;
 
++ (struct CGSize)_cachedPreferredItemSizeForString:(id)arg1 viewWidth:(double)arg2 sizeCategory:(id)arg3;
++ (struct CGSize)_cachedPreferredItemSizeForViewWidth:(double)arg1 sizeCategory:(id)arg2;
 - (void).cxx_destruct;
 - (void)_updateForCurrentSizeCategory;
 - (void)addObserverOfValuesForKeyPaths:(id)arg1 ofObject:(id)arg2;

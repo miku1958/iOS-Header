@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MKMapItem, NSArray, NSString, NSURL, UIImage, WBSCompletionQuery, WBSParsecActionButton, WBSParsecImageRepresentation;
+@class MKMapItem, NSString, NSURL, UIImage, WBSCompletionQuery, WBSParsecActionButton, WBSParsecImageRepresentation;
 @protocol WBSParsecSearchSession;
 
 @protocol WBSParsecSearchResult
 
 @property (readonly, nonatomic) WBSParsecActionButton *actionButton;
-@property (readonly, nonatomic) NSArray *additionalMapItems;
 @property (readonly, nonatomic) NSURL *appPunchoutURL;
 @property (readonly, nonatomic) NSString *completion;
 @property (readonly, nonatomic) WBSParsecImageRepresentation *completionIcon;

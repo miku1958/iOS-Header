@@ -16,6 +16,7 @@
     struct RetainPtr<NSOperationQueue> _queue;
     NSString *_sessionDescription;
     struct HashSet<WTF::RetainPtr<WebCoreNSURLSessionDataTask>, WTF::PtrHash<WTF::RetainPtr<WebCoreNSURLSessionDataTask>>, WTF::HashTraits<WTF::RetainPtr<WebCoreNSURLSessionDataTask>>> _dataTasks;
+    struct HashSet<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>, WTF::PtrHash<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>>, WTF::HashTraits<WTF::RefPtr<WebCore::SecurityOrigin, WTF::DumbPtrTraits<WebCore::SecurityOrigin>>>> _origins;
     struct Lock _dataTasksLock;
     BOOL _invalidated;
     unsigned long long _nextTaskIdentifier;
@@ -51,10 +52,12 @@
 - (id)streamTaskWithHostName:(id)arg1 port:(long long)arg2;
 - (id)streamTaskWithNetService:(id)arg1;
 - (void)task:(id)arg1 didReceiveCORSAccessCheckResult:(BOOL)arg2;
+- (void)task:(id)arg1 didReceiveResponseFromOrigin:(Ref_4cc64869 *)arg2;
 - (void)taskCompleted:(id)arg1;
 - (id)uploadTaskWithRequest:(id)arg1 fromData:(id)arg2;
 - (id)uploadTaskWithRequest:(id)arg1 fromFile:(id)arg2;
 - (id)uploadTaskWithStreamedRequest:(id)arg1;
+- (BOOL)wouldTaintOrigin:(const struct SecurityOrigin *)arg1;
 
 @end
 

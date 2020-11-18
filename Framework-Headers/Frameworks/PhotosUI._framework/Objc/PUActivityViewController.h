@@ -22,6 +22,8 @@
     double _currentAssetPreparationProgress;
     PUProgressIndicatorView *_preparationProgressView;
     BOOL _isDismissed;
+    BOOL _shouldUpdateVisibleItemsWhenReady;
+    BOOL _readyForInteraction;
     NSArray *_photosActivities;
     id<PUActivityViewControllerDelegate> _delegate;
 }
@@ -31,9 +33,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *photosActivities; // @synthesize photosActivities=_photosActivities;
+@property (nonatomic, getter=isReadyForInteraction) BOOL readyForInteraction; // @synthesize readyForInteraction=_readyForInteraction;
 @property (readonly) Class superclass;
 
 + (BOOL)_isOutboundShareActivity:(id)arg1;
++ (BOOL)_wantsMomentShareLinkForActivity:(id)arg1 assetCount:(long long)arg2;
 + (id)defaultActivityTypeOrder;
 + (BOOL)needsConfidentialityCheckForActivityType:(id)arg1;
 + (id)photosApplicationActivities;
@@ -41,10 +45,13 @@
 - (void)_activity:(id)arg1 didComplete:(BOOL)arg2;
 - (void)_cancel;
 - (void)_cleanUpActivityState;
+- (void)_handlePostReadyToInteractUpdatesIfNeeded;
 - (void)_handleUserCancelWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performActivity:(id)arg1;
+- (void)_performIndividualItemSourcePreparationForActivity:(id)arg1;
+- (void)_performMomentShareLinkPreparationForActivity:(id)arg1;
 - (void)_prepareActivity:(id)arg1;
-- (void)_prepareAssetProgressForActivity:(id)arg1;
+- (void)_prepareAssetsForActivity:(id)arg1;
 - (void)_presentConfidentialityWarningWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_removePreparationProgressView;
 - (void)_removeRemakerProgressView;
@@ -65,7 +72,8 @@
 - (void)setAggregateKey:(struct __CFString *)arg1;
 - (void)setAssetItems:(id)arg1;
 - (void)setCompletionWithItemsHandler:(CDUnknownBlockType)arg1;
-- (void)updateVisibleShareActions;
+- (void)updateVisibileShareActionsIfNeeded;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 
 @end

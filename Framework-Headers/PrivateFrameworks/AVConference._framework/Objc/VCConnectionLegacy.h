@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCConnectionProtocol-Protocol.h>
 
@@ -19,12 +19,13 @@ __attribute__((visibility("hidden")))
     struct tagCONNRESULT *_connectionResult;
 }
 
-@property int cellularMTU;
 @property (readonly) int connectionId;
+@property int connectionMTU;
 @property (readonly) struct tagCONNRESULT *connectionResult; // @synthesize connectionResult=_connectionResult;
 @property (readonly) NSUUID *connectionUUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property unsigned int downlinkBitrateCap;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isIPv6;
 @property (readonly) BOOL isLocalOnCellular;
@@ -43,10 +44,13 @@ __attribute__((visibility("hidden")))
 @property int remoteCellTech;
 @property (readonly) int remoteConnectionType;
 @property (readonly) NSString *remoteInterfaceTypeString;
+@property (readonly) BOOL serverIsDegraded;
 @property (readonly) Class superclass;
 @property (readonly) unsigned int type; // @synthesize type=_type;
+@property unsigned int uplinkBitrateCap;
 @property BOOL waitToBeNominated; // @synthesize waitToBeNominated=_waitToBeNominated;
 
+- (int)cellularMTU;
 - (id)copy;
 - (void)dealloc;
 - (void)getSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;

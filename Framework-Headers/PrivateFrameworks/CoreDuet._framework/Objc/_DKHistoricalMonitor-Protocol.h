@@ -12,6 +12,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType historicalHandler;
 @property (readonly, nonatomic) NSDate *lastUpdate;
+@property (copy, nonatomic) CDUnknownBlockType shutdownHandler;
 
 - (void)update;
 @end

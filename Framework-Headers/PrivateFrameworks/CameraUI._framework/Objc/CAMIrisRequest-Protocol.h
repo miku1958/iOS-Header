@@ -9,6 +9,9 @@
 @class NSString, NSURL;
 
 @protocol CAMIrisRequest <NSObject>
+
+@property (readonly, nonatomic) long long irisMode;
+
 - (NSString *)irisIdentifierForEV0:(BOOL)arg1;
 - (NSURL *)irisLocalVideoDestinationURLForEV0:(BOOL)arg1;
 - (NSString *)irisStillImagePersistenceUUIDForEV0:(BOOL)arg1;

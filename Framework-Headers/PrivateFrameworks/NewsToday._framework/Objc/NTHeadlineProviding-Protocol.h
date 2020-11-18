@@ -24,6 +24,7 @@
 @property (readonly, copy, nonatomic) NSURL *compactSourceNameImageRemoteURL;
 @property (readonly, nonatomic) BOOL displaysWithLeadingCellAppearance;
 @property (readonly, copy, nonatomic) NSURL *flintDocumentURL;
+@property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites;
 @property (readonly, nonatomic, getter=isHiddenFromFeeds) BOOL hiddenFromFeeds;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, copy, nonatomic) NSObject<NTHeadlinePersonalizationMetadata> *personalizationMetadata;

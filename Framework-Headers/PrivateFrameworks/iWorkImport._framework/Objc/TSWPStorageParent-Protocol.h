@@ -9,8 +9,10 @@
 @property (readonly, nonatomic) BOOL autoListRecognition;
 @property (readonly, nonatomic) BOOL autoListTermination;
 @property (readonly, nonatomic) long long contentWritingDirection;
+@property (readonly, nonatomic) BOOL preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments;
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
+@property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (readonly, nonatomic) BOOL textIsLinked;
 @property (readonly, nonatomic) BOOL textIsVertical;
 

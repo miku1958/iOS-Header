@@ -16,36 +16,32 @@
     double _completedDate;
     double _doubleValue;
     long long _intValue;
-    long long _workActivityType;
-    NSString *_definitionIdentifier;
     NSData *_friendUUID;
     HDCodableSample *_sample;
+    NSString *_templateUniqueName;
     struct {
         unsigned int completedDate:1;
         unsigned int doubleValue:1;
         unsigned int intValue:1;
-        unsigned int workActivityType:1;
     } _has;
 }
 
 @property (nonatomic) double completedDate; // @synthesize completedDate=_completedDate;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSString *definitionIdentifier; // @synthesize definitionIdentifier=_definitionIdentifier;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
 @property (strong, nonatomic) NSData *friendUUID; // @synthesize friendUUID=_friendUUID;
 @property (nonatomic) BOOL hasCompletedDate;
-@property (readonly, nonatomic) BOOL hasDefinitionIdentifier;
 @property (nonatomic) BOOL hasDoubleValue;
 @property (readonly, nonatomic) BOOL hasFriendUUID;
 @property (nonatomic) BOOL hasIntValue;
 @property (readonly, nonatomic) BOOL hasSample;
-@property (nonatomic) BOOL hasWorkActivityType;
+@property (readonly, nonatomic) BOOL hasTemplateUniqueName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long intValue; // @synthesize intValue=_intValue;
 @property (strong, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;
 @property (readonly) Class superclass;
-@property (nonatomic) long long workActivityType; // @synthesize workActivityType=_workActivityType;
+@property (strong, nonatomic) NSString *templateUniqueName; // @synthesize templateUniqueName=_templateUniqueName;
 
 - (void).cxx_destruct;
 - (BOOL)applyToObject:(id)arg1;

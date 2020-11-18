@@ -8,8 +8,9 @@
 
 @protocol _SFFindOnPageToolbarDelegate
 - (void)done;
-- (void)getShortMatchLabelText:(id *)arg1 longMatchLabelText:(id *)arg2;
 - (BOOL)hasMatches;
+- (NSString *)longMatchLabelText;
+- (NSString *)matchLabelText;
 - (void)next;
 - (void)previous;
 - (NSString *)textForToolbarLabel;

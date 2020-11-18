@@ -7,33 +7,34 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBRidePartySizeOption-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBPriceRangeValue, _INPBRangeValue;
+@class NSString, _INPBPriceRangeValue, _INPBRangeValue;
 
-@interface _INPBRidePartySizeOption : PBCodable <NSCopying>
+@interface _INPBRidePartySizeOption : PBCodable <_INPBRidePartySizeOption, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBRangeValue *_partySizeRange;
     _INPBPriceRangeValue *_priceRange;
     NSString *_sizeDescription;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasPartySizeRange;
 @property (readonly, nonatomic) BOOL hasPriceRange;
 @property (readonly, nonatomic) BOOL hasSizeDescription;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBRangeValue *partySizeRange; // @synthesize partySizeRange=_partySizeRange;
 @property (strong, nonatomic) _INPBPriceRangeValue *priceRange; // @synthesize priceRange=_priceRange;
-@property (strong, nonatomic) NSString *sizeDescription; // @synthesize sizeDescription=_sizeDescription;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSString *sizeDescription; // @synthesize sizeDescription=_sizeDescription;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

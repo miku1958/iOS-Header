@@ -9,6 +9,7 @@
 @class NSDictionary;
 @protocol PUTiltWheelDataSource;
 
+__attribute__((visibility("hidden")))
 @interface PUTiltWheel : UIView
 {
     int __tiltWheelOrientation;

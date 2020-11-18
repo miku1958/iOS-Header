@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSUUID *_studyUUID;
     NSUUID *_uuid;
     HKHealthWrapCodableMessageHeader *_header;
+    BOOL _compressionEnabled;
     unsigned long long _encryptedBytesCount;
 }
 
@@ -41,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)appendData:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (BOOL)finalizeWithError:(id *)arg1;
-- (id)initWithOutputStream:(id)arg1 certificate:(struct __SecCertificate *)arg2 algorithm:(unsigned int)arg3 options:(unsigned int)arg4 keySize:(unsigned int)arg5 uuid:(id)arg6 studyUUID:(id)arg7;
+- (id)initWithOutputStream:(id)arg1 certificate:(struct __SecCertificate *)arg2 algorithm:(unsigned int)arg3 options:(unsigned int)arg4 keySize:(unsigned int)arg5 uuid:(id)arg6 studyUUID:(id)arg7 compressionEnabled:(BOOL)arg8;
 - (BOOL)startWithError:(id *)arg1;
 
 @end

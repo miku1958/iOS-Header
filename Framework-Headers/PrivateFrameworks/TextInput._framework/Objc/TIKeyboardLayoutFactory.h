@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -19,7 +19,7 @@
 
 + (id)layoutsFileName;
 + (id)sharedKeyboardFactory;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)keyboardPrefixForWidth:(double)arg1 andEdge:(BOOL)arg2;
 - (id)keyboardWithName:(id)arg1 inCache:(id)arg2;

@@ -13,15 +13,21 @@ __attribute__((visibility("hidden")))
 {
     CIImage *inputImage;
     CIImage *inputBlurmapImage;
+    CIImage *inputMatteImage;
     NSNumber *inputLumaNoiseScale;
     NSNumber *inputScale;
+    NSNumber *inputAperture;
     NSDictionary *inputTuningParameters;
     NSString *inputShape;
+    NSNumber *inputDraftMode;
 }
 
+@property (copy, nonatomic) NSNumber *inputAperture; // @synthesize inputAperture;
 @property (strong) CIImage *inputBlurmapImage; // @synthesize inputBlurmapImage;
+@property (strong, nonatomic) NSNumber *inputDraftMode; // @synthesize inputDraftMode;
 @property (strong) CIImage *inputImage; // @synthesize inputImage;
 @property (copy, nonatomic) NSNumber *inputLumaNoiseScale; // @synthesize inputLumaNoiseScale;
+@property (strong) CIImage *inputMatteImage; // @synthesize inputMatteImage;
 @property (copy, nonatomic) NSNumber *inputScale; // @synthesize inputScale;
 @property (strong, nonatomic) NSString *inputShape; // @synthesize inputShape;
 @property (strong, nonatomic) NSDictionary *inputTuningParameters; // @synthesize inputTuningParameters;
@@ -35,6 +41,8 @@ __attribute__((visibility("hidden")))
 - (id)_ourBlendKernelMetal;
 - (id)outputImage;
 - (id)outputImage:(BOOL)arg1;
+- (id)outputImageV2;
+- (id)outputImageV3;
 
 @end
 

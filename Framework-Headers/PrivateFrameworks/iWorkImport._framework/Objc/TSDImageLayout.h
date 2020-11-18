@@ -6,7 +6,7 @@
 
 #import <iWorkImport/TSDMediaLayout.h>
 
-@class TSDImageAdjustments, TSDInfoGeometry, TSDLayoutGeometry, TSDMaskLayout, TSUBezierPath;
+@class TSDImageAdjustments, TSDImageInfo, TSDInfoGeometry, TSDLayoutGeometry, TSDMaskLayout;
 
 __attribute__((visibility("hidden")))
 @interface TSDImageLayout : TSDMediaLayout
@@ -17,8 +17,7 @@ __attribute__((visibility("hidden")))
     struct CGAffineTransform mLayoutToImageTransform;
     struct CGAffineTransform mLayoutToMaskTransform;
     BOOL mMaskIntersectsImage;
-    TSUBezierPath *mTracedPath;
-    int mHasAlpha;
+    unsigned long long mHasAlpha;
     TSDLayoutGeometry *mBaseImageLayoutGeometry;
     TSDInfoGeometry *mDynamicInfoGeometry;
     TSDInfoGeometry *mBaseInfoGeometry;
@@ -29,39 +28,40 @@ __attribute__((visibility("hidden")))
     TSDImageAdjustments *mDynamicImageAdjustments;
 }
 
+@property (readonly, nonatomic) TSDInfoGeometry *currentInfoGeometry;
+@property (readonly, nonatomic) BOOL hasMaskingPath;
+@property (readonly, nonatomic) struct CGAffineTransform imageDataToVisualSizeTransform;
+@property (readonly, nonatomic) TSDLayoutGeometry *imageGeometry;
+@property (readonly, nonatomic) TSDLayoutGeometry *imageGeometryInRoot;
+@property (readonly, nonatomic) TSDImageInfo *imageInfo;
+@property (readonly, nonatomic) struct CGAffineTransform layoutToImageTransform;
+@property (readonly, nonatomic) struct CGAffineTransform layoutToMaskTransform;
+@property (readonly, nonatomic) TSDMaskLayout *maskLayout;
+@property (readonly, nonatomic) TSDLayoutGeometry *originalImageGeometry;
+@property (readonly, nonatomic) const struct CGPath *pathToStroke;
+
 - (void).cxx_destruct;
 - (struct CGRect)boundsInfluencingExteriorWrap;
 - (struct CGRect)computeAlignmentFrameInRoot:(BOOL)arg1;
 - (id)computeLayoutGeometry;
-- (id)currentInfoGeometry;
 - (void)dealloc;
 - (double)descentForInlineLayout;
 - (void)dynamicImageAdjustmentsChangeDidBegin;
 - (void)dynamicImageAdjustmentsChangeDidEnd;
 - (void)dynamicImageAdjustmentsUpdateToValue:(id)arg1;
 - (BOOL)hasAlpha;
-- (BOOL)hasMaskingPath;
 - (id)i_computeWrapPath;
 - (id)imageAdjustments;
-- (struct CGAffineTransform)imageDataToVisualSizeTransform;
-- (id)imageGeometry;
-- (id)imageGeometryInRoot;
-- (id)imageInfo;
 - (id)initWithInfo:(id)arg1;
 - (BOOL)isDynamicallyChangingImageAdjustments;
 - (BOOL)isInvisible;
 - (id)layoutGeometryFromInfo;
-- (struct CGAffineTransform)layoutToImageTransform;
-- (struct CGAffineTransform)layoutToMaskTransform;
-- (id)maskLayout;
 - (void)offsetGeometryBy:(struct CGPoint)arg1;
-- (id)originalImageGeometry;
 - (void)p_calculateClampModelValuesAndPerformBlock:(CDUnknownBlockType)arg1;
 - (void)p_createDynamicCopies;
 - (void)p_destroyDynamicCopies;
 - (void)p_setDynamicInfoGeometry:(id)arg1;
 - (struct CGRect)pathBoundsWithoutStroke;
-- (struct CGPath *)pathToStroke;
 - (struct CGSize)sizeOfFrameRectIncludingCoverage;
 - (id)smartPathSource;
 - (BOOL)supportsRotation;

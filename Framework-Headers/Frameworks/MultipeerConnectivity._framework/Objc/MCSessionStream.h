@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MCPeerID, MCResourceDownloader, MCResourceProgressObserver, NSMutableData, NSProgress, NSString, NSURL;
 @protocol OS_dispatch_source;

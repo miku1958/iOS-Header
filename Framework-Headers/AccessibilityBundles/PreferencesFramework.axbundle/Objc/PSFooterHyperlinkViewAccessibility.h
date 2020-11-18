@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)initWithSpecifier:(id)arg1;
+- (id)isAccessibilityUserDefinedElement;
 
 @end
 

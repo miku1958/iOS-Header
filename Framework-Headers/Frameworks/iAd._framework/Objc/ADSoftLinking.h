@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
@@ -53,15 +53,6 @@
 @property (readonly, nonatomic) Class PKAddPassesViewController;
 @property (readonly, nonatomic) Class PKPass;
 @property (readonly, nonatomic) Class PKPassLibrary;
-@property (readonly, nonatomic) Class PKPayment;
-@property (readonly, nonatomic) Class PKPaymentAuthorizationViewController;
-@property (readonly, nonatomic) NSString *PKPaymentNetworkAmex;
-@property (readonly, nonatomic) NSString *PKPaymentNetworkChinaUnionPay;
-@property (readonly, nonatomic) NSString *PKPaymentNetworkMasterCard;
-@property (readonly, nonatomic) NSString *PKPaymentNetworkVisa;
-@property (readonly, nonatomic) Class PKPaymentRequest;
-@property (readonly, nonatomic) Class PKPaymentSummaryItem;
-@property (readonly, nonatomic) Class PKShippingMethod;
 @property (readonly, nonatomic) Class PLStaticWallpaperImageViewController;
 @property (readonly, nonatomic) NSString *SKStoreProductParameterITunesItemIdentifier;
 @property (readonly, nonatomic) Class SKStoreProductViewController;

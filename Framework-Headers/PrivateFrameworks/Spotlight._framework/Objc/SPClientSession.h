@@ -15,18 +15,21 @@
     int _prefsToken;
     PARSession *_session;
     SPAppService *_appService;
+    long long _contentFilter;
     BOOL _infinitePatience;
 }
 
 @property (readonly) NSArray *disabledBundleIds;
 @property (nonatomic) BOOL infinitePatience; // @synthesize infinitePatience=_infinitePatience;
 
++ (void)initialize;
 + (void)retrieveFirstTimeExperienceTextWithReply:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (BOOL)_setSearchDomains:(id)arg1;
 - (void)activate;
 - (long long)contentFilters;
 - (void)deactivate;
+- (void)dealloc;
 - (void)finishRanking:(id)arg1 blendingDuration:(double)arg2;
 - (id)init;
 - (void)preheat;

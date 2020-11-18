@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSCEFormulaRewrite_Uids;
 
@@ -23,11 +23,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUID;
 
 - (id).cxx_construct;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (struct TSUCellCoord)bottomRightCellCoord;
 - (id)description;
 - (id)initFromMessage:(const struct RegionInfoArchive *)arg1;
 - (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 columnUids:(const vector_4dc5f307 *)arg2 rowUids:(const vector_4dc5f307 *)arg3;
-- (void)loadIndexesForTable:(id)arg1;
+- (void)loadIndexesForTable:(id)arg1 uidResolver:(id)arg2;
+- (struct TSCERangeCoordinate)mergingRange;
 - (void)saveToMessage:(struct RegionInfoArchive *)arg1;
 - (struct TSUCellCoord)topLeftCellCoord;
 - (void)unloadIndexes;

@@ -6,14 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-#import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
-#import <CameraUI/CAMBarsAccessibilityHUDManagerGestureProvider-Protocol.h>
+#import <CameraUI/CAMApertureButtonDelegate-Protocol.h>
 #import <CameraUI/CAMExpandableMenuButtonDelegate-Protocol.h>
 
-@class CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMIrisButton, CAMTimerButton, NSMutableArray, NSString;
+@class CAMApertureButton, CAMElapsedTimeView, CAMExpandableMenuButton, CAMFilterButton, CAMFlashButton, CAMFlipButton, CAMFramerateIndicatorView, CAMHDRButton, CAMLivePhotoButton, CAMMessagesPhotosButton, CAMTimerButton, NSArray, NSSet, PUReviewScreenDoneButton;
 @protocol CAMControlVisibilityUpdateDelegate;
 
-@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
+@interface CAMTopBar : UIView <CAMExpandableMenuButtonDelegate, CAMApertureButtonDelegate>
 {
     id<CAMControlVisibilityUpdateDelegate> _visibilityUpdateDelegate;
     long long _style;
@@ -23,39 +22,47 @@
     CAMHDRButton *_HDRButton;
     CAMFlipButton *_flipButton;
     CAMFilterButton *_filterButton;
+    CAMApertureButton *_apertureButton;
     CAMTimerButton *_timerButton;
-    CAMIrisButton *_irisButton;
+    CAMLivePhotoButton *_livePhotoButton;
+    CAMMessagesPhotosButton *_photosButton;
+    PUReviewScreenDoneButton *_doneButton;
     CAMFramerateIndicatorView *_framerateIndicatorView;
     long long _orientation;
     UIView *__backgroundView;
-    NSMutableArray *__allowedControls;
+    NSArray *__allowedControls;
+    NSSet *__controlsNeedingNonAnimatedLayout;
     CAMExpandableMenuButton *__expandedMenuButton;
+    long long __mode;
     struct UIEdgeInsets __expandedMenuButtonTappableInsets;
 }
 
 @property (strong, nonatomic) CAMHDRButton *HDRButton; // @synthesize HDRButton=_HDRButton;
-@property (readonly, nonatomic) NSMutableArray *_allowedControls; // @synthesize _allowedControls=__allowedControls;
+@property (readonly, nonatomic) NSArray *_allowedControls; // @synthesize _allowedControls=__allowedControls;
 @property (readonly, nonatomic) UIView *_backgroundView; // @synthesize _backgroundView=__backgroundView;
+@property (strong, nonatomic, setter=_setControlsNeedingNonAnimatedLayout:) NSSet *_controlsNeedingNonAnimatedLayout; // @synthesize _controlsNeedingNonAnimatedLayout=__controlsNeedingNonAnimatedLayout;
 @property (strong, nonatomic, setter=_setExpandedMenuButton:) CAMExpandableMenuButton *_expandedMenuButton; // @synthesize _expandedMenuButton=__expandedMenuButton;
 @property (nonatomic, setter=_setExpandedMenuButtonTappableInsets:) struct UIEdgeInsets _expandedMenuButtonTappableInsets; // @synthesize _expandedMenuButtonTappableInsets=__expandedMenuButtonTappableInsets;
+@property (readonly, nonatomic) long long _mode; // @synthesize _mode=__mode;
+@property (strong, nonatomic) CAMApertureButton *apertureButton; // @synthesize apertureButton=_apertureButton;
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) PUReviewScreenDoneButton *doneButton; // @synthesize doneButton=_doneButton;
 @property (strong, nonatomic) CAMElapsedTimeView *elapsedTimeView; // @synthesize elapsedTimeView=_elapsedTimeView;
 @property (strong, nonatomic) CAMFilterButton *filterButton; // @synthesize filterButton=_filterButton;
 @property (strong, nonatomic) CAMFlashButton *flashButton; // @synthesize flashButton=_flashButton;
 @property (strong, nonatomic) CAMFlipButton *flipButton; // @synthesize flipButton=_flipButton;
 @property (readonly, nonatomic, getter=isFloating) BOOL floating;
 @property (strong, nonatomic) CAMFramerateIndicatorView *framerateIndicatorView; // @synthesize framerateIndicatorView=_framerateIndicatorView;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CAMIrisButton *irisButton; // @synthesize irisButton=_irisButton;
+@property (strong, nonatomic) CAMLivePhotoButton *livePhotoButton; // @synthesize livePhotoButton=_livePhotoButton;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
+@property (strong, nonatomic) CAMMessagesPhotosButton *photosButton; // @synthesize photosButton=_photosButton;
 @property (nonatomic) long long style; // @synthesize style=_style;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) CAMTimerButton *timerButton; // @synthesize timerButton=_timerButton;
 @property (weak, nonatomic) id<CAMControlVisibilityUpdateDelegate> visibilityUpdateDelegate; // @synthesize visibilityUpdateDelegate=_visibilityUpdateDelegate;
 
++ (BOOL)isFloatingStyle:(long long)arg1;
 - (void).cxx_destruct;
+- (id)_allowedControlsForMode:(long long)arg1 style:(long long)arg2;
 - (id)_allowedControlsForPanoramaMode;
 - (id)_allowedControlsForPortraitMode;
 - (id)_allowedControlsForSquareMode;
@@ -73,8 +80,11 @@
 - (void)_layoutFloatingRecordingStyle;
 - (void)_layoutFloatingStyle;
 - (double)_opacityForBackgroundStyle:(long long)arg1;
+- (void)_setMode:(long long)arg1 style:(long long)arg2 animationDuration:(double)arg3 animationOptions:(unsigned long long)arg4;
 - (BOOL)_shouldExpandButtonsHorizontally;
+- (BOOL)_shouldHideSubview:(id)arg1;
 - (void)_updateControlVisibilityAnimated:(BOOL)arg1;
+- (void)apertureButtonNeedsLayout:(id)arg1;
 - (void)collapseMenuButton:(id)arg1 animated:(BOOL)arg2;
 - (struct CGRect)collapsedFrameForMenuButton:(id)arg1;
 - (void)configureForMode:(long long)arg1;
@@ -90,13 +100,16 @@
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setBackgroundStyle:(long long)arg1 animated:(BOOL)arg2;
 - (void)setStyle:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldHideApertureButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideDoneButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideElapsedTimeViewForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideFilterButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideFlashButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideFlipButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideFramerateIndicatorForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideHDRButtonForGraphConfiguration:(id)arg1;
-- (BOOL)shouldHideIrisButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHideLivePhotoButtonForGraphConfiguration:(id)arg1;
+- (BOOL)shouldHidePhotosButtonForGraphConfiguration:(id)arg1;
 - (BOOL)shouldHideTimerButtonForGraphConfiguration:(id)arg1;
 - (id)touchingRecognizersToCancel;
 

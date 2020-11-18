@@ -12,8 +12,9 @@ __attribute__((visibility("hidden")))
     struct TemplateObjectDetectorApply *mHumanDetectorAlgorithmImpl_;
 }
 
+- (BOOL)completeInitializationAndReturnError:(id *)arg1;
 - (void)dealloc;
-- (id)initWithOptions:(id)arg1 error:(id *)arg2;
+- (BOOL)needsMetalContext;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 
 @end

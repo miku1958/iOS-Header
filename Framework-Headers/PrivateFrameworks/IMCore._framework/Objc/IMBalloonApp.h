@@ -31,6 +31,7 @@
     NSString *_identifier;
     NSString *_version;
     id<PKPlugIn> _plugin;
+    unsigned long long _presentationContexts;
 }
 
 @property (strong, nonatomic) NSBundle *appBundle; // @synthesize appBundle=_appBundle;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) id<PKPlugIn> plugin; // @synthesize plugin=_plugin;
 @property (strong, nonatomic) NSBundle *pluginBundle; // @synthesize pluginBundle=_pluginBundle;
 @property (nonatomic) BOOL pluginLoaded; // @synthesize pluginLoaded=_pluginLoaded;
+@property (nonatomic) unsigned long long presentationContexts; // @synthesize presentationContexts=_presentationContexts;
 @property (nonatomic) BOOL shouldBalloonHideAppIcon; // @synthesize shouldBalloonHideAppIcon=_shouldBalloonHideAppIcon;
 @property (nonatomic) BOOL shouldHideAppSwitcher; // @synthesize shouldHideAppSwitcher=_shouldHideAppSwitcher;
 @property (nonatomic) BOOL showInBrowser; // @synthesize showInBrowser=_showInBrowser;
@@ -61,6 +63,7 @@
 + (id)appWithPluginBundle:(id)arg1 appBundle:(id)arg2;
 + (id)appWithPluginBundle:(id)arg1 extension:(id)arg2;
 + (id)appWithPluginBundle:(id)arg1 pluginKitProxy:(id)arg2 extension:(id)arg3;
++ (unsigned long long)presentationContextsForInfoPlistArray:(id)arg1 isStickerPackOnly:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)_loadBundle;
 - (id)extensionConnection;

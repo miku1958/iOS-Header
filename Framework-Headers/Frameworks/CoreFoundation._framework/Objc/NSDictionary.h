@@ -17,6 +17,7 @@
 
 @property (readonly) unsigned long long count;
 
++ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)dictionary;
 + (id)dictionaryWithDictionary:(id)arg1;

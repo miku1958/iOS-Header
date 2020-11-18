@@ -7,39 +7,43 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBMoveFileIntentResponse-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBString;
+@class NSArray, NSString, _INPBString;
 
-@interface _INPBMoveFileIntentResponse : PBCodable <NSCopying>
+@interface _INPBMoveFileIntentResponse : PBCodable <_INPBMoveFileIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _entityTypes;
-    _INPBString *_destinationName;
-    NSMutableArray *_entityNames;
-    _INPBString *_sourceName;
-    BOOL _overwrite;
-    BOOL _success;
     struct {
         unsigned int overwrite:1;
         unsigned int success:1;
     } _has;
+    BOOL _overwrite;
+    BOOL _success;
+    _INPBString *_destinationName;
+    NSArray *_entityNames;
+    _INPBString *_sourceName;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;
-@property (strong, nonatomic) NSMutableArray *entityNames; // @synthesize entityNames=_entityNames;
+@property (copy, nonatomic) NSArray *entityNames; // @synthesize entityNames=_entityNames;
+@property (readonly, nonatomic) unsigned long long entityNamesCount;
 @property (readonly, nonatomic) int *entityTypes;
 @property (readonly, nonatomic) unsigned long long entityTypesCount;
 @property (readonly, nonatomic) BOOL hasDestinationName;
 @property (nonatomic) BOOL hasOverwrite;
 @property (readonly, nonatomic) BOOL hasSourceName;
 @property (nonatomic) BOOL hasSuccess;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL overwrite; // @synthesize overwrite=_overwrite;
 @property (strong, nonatomic) _INPBString *sourceName; // @synthesize sourceName=_sourceName;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
 + (Class)entityNameType;
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsEntityTypes:(id)arg1;
 - (void)addEntityName:(id)arg1;
@@ -47,16 +51,11 @@
 - (void)clearEntityNames;
 - (void)clearEntityTypes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)entityNameAtIndex:(unsigned long long)arg1;
-- (unsigned long long)entityNamesCount;
 - (int)entityTypeAtIndex:(unsigned long long)arg1;
 - (id)entityTypesAsString:(int)arg1;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setEntityTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

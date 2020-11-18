@@ -16,6 +16,7 @@
 @property (nonatomic) float softness; // @dynamic softness;
 
 - (void)appendPoint:(CDStruct_869f9c67)arg1;
+- (void)appendPoints:(CDStruct_869f9c67 *)arg1 pointCount:(long long)arg2;
 - (void)applyTransform:(struct CGAffineTransform)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRadius:(float)arg1 softness:(float)arg2 opacity:(float)arg3 pressureMode:(long long)arg4;

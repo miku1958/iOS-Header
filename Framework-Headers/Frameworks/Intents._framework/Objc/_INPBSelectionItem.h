@@ -7,33 +7,34 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSelectionItem-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBIntentSlotValue;
+@class NSString, _INPBIntentSlotValue;
 
-@interface _INPBSelectionItem : PBCodable <NSCopying>
+@interface _INPBSelectionItem : PBCodable <_INPBSelectionItem, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     NSString *_uuid;
     _INPBIntentSlotValue *_value;
     NSString *_vocabularyValue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasUuid;
 @property (readonly, nonatomic) BOOL hasValue;
 @property (readonly, nonatomic) BOOL hasVocabularyValue;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (strong, nonatomic) _INPBIntentSlotValue *value; // @synthesize value=_value;
-@property (strong, nonatomic) NSString *vocabularyValue; // @synthesize vocabularyValue=_vocabularyValue;
+@property (copy, nonatomic) NSString *vocabularyValue; // @synthesize vocabularyValue=_vocabularyValue;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

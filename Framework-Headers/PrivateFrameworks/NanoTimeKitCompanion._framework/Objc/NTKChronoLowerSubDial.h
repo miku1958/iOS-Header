@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (void)colorize:(id)arg1;
-- (id)initWithRadius:(double)arg1;
+- (id)initWithRadius:(double)arg1 forDevice:(id)arg2;
 
 @end
 

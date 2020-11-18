@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class ASFriend, HKSample;
+@class ASFriend;
 
 @interface ASActivityDataNotification : NSObject
 {
     ASFriend *_friend;
-    HKSample *_sample;
+    id _sample;
 }
 
 @property (strong, nonatomic) ASFriend *friend; // @synthesize friend=_friend;
-@property (strong, nonatomic) HKSample *sample; // @synthesize sample=_sample;
+@property (strong, nonatomic) id sample; // @synthesize sample=_sample;
 
 - (void).cxx_destruct;
 

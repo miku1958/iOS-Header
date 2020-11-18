@@ -27,6 +27,7 @@
     NSString *_feedViewExposureIdDeprecated;
     int _feedViewPresentationReason;
     int _groupType;
+    NSData *_groupViewExposureId;
     int _muteUnmuteLocation;
     NSString *_previousArticleId;
     NSString *_previousArticleVersion;
@@ -61,6 +62,7 @@
 @property (strong, nonatomic) NSString *feedViewExposureIdDeprecated; // @synthesize feedViewExposureIdDeprecated=_feedViewExposureIdDeprecated;
 @property (nonatomic) int feedViewPresentationReason; // @synthesize feedViewPresentationReason=_feedViewPresentationReason;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
 @property (readonly, nonatomic) BOOL hasArticleSessionIdDeprecated;
@@ -75,6 +77,7 @@
 @property (readonly, nonatomic) BOOL hasFeedViewExposureIdDeprecated;
 @property (nonatomic) BOOL hasFeedViewPresentationReason;
 @property (nonatomic) BOOL hasGroupType;
+@property (readonly, nonatomic) BOOL hasGroupViewExposureId;
 @property (nonatomic) BOOL hasIsSearchResultArticle;
 @property (nonatomic) BOOL hasIsUserSubscribedToFeed;
 @property (nonatomic) BOOL hasMuteUnmuteLocation;

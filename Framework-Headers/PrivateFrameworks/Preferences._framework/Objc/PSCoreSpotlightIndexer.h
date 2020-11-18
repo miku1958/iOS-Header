@@ -4,23 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CSSearchableIndex, NSDate;
+@class CSSearchableIndex, CSTopHitSearchQuery, NSDate, NSMutableArray;
 @protocol OS_dispatch_queue;
 
 @interface PSCoreSpotlightIndexer : NSObject
 {
     CSSearchableIndex *_prefsSearchableIndex;
     NSObject<OS_dispatch_queue> *_spotlightIndexQueue;
+    CSTopHitSearchQuery *_searchQuery;
+    NSMutableArray *_indexFromControllerLog;
 }
 
+@property (strong, nonatomic) NSMutableArray *indexFromControllerLog; // @synthesize indexFromControllerLog=_indexFromControllerLog;
 @property (readonly, nonatomic) NSDate *lastIndexDate;
 @property (readonly, nonatomic) BOOL needsIndex;
 @property (strong, nonatomic) CSSearchableIndex *prefsSearchableIndex; // @synthesize prefsSearchableIndex=_prefsSearchableIndex;
+@property (strong, nonatomic) CSTopHitSearchQuery *searchQuery; // @synthesize searchQuery=_searchQuery;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *spotlightIndexQueue; // @synthesize spotlightIndexQueue=_spotlightIndexQueue;
 
++ (id)searchIndexIdentifier;
 + (id)sharedInstance;
++ (char *)spotlightIndexQueueIdentifier;
 - (void).cxx_destruct;
 - (id)_bundleForSpecifier:(id)arg1 parentBundle:(id)arg2;
 - (id)_childSpecifiersForSpecifier:(id)arg1 bundle:(id)arg2 childBundleToUpdate:(id *)arg3;
@@ -28,9 +34,11 @@
 - (id)_descriptionForSpecifierName:(id)arg1 withParentSpecifierNames:(id)arg2;
 - (id)_indexItemForSpecifier:(id)arg1 category:(id)arg2 keywords:(id)arg3 url:(id)arg4 description:(id)arg5;
 - (id)_indexItemsFromManifestForSpecifier:(id)arg1 bundle:(id)arg2;
+- (void)_indexSearchableItems:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_indexSpecifierForURL:(id)arg1 specifiers:(id)arg2 bundle:(id)arg3 withURLPrefix:(id)arg4 waitForCompletion:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)_indexSpecifiers:(id)arg1 bundle:(id)arg2 category:(id)arg3 pathURL:(id)arg4 withURLPrefix:(id)arg5 parentSpecifierNames:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (id)_indexSpecifiers:(id)arg1 bundle:(id)arg2 category:(id)arg3 pathURL:(id)arg4 withURLPrefix:(id)arg5 parentSpecifierNames:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)_keyValueDictionaryForURL:(id)arg1;
+- (id)_rankingHintScoreForURL:(id)arg1;
 - (void)_reIndexNonRootSpecifier:(id)arg1 parentSpecifiers:(id)arg2 bundle:(id)arg3 category:(id)arg4 baseURL:(id)arg5 withURLPrefix:(id)arg6 waitForCompletion:(BOOL)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)_reIndexRootSpecifier:(id)arg1 childSpecifiers:(id)arg2 parentSpecifierNames:(id)arg3 bundle:(id)arg4 childBundle:(id)arg5 category:(id)arg6 baseURL:(id)arg7 withURLPrefix:(id)arg8 waitForCompletion:(BOOL)arg9 completion:(CDUnknownBlockType)arg10;
 - (id)_specifiersForSpecifier:(id)arg1 bundle:(id)arg2 parentBundle:(id)arg3;
@@ -41,12 +49,21 @@
 - (BOOL)controllerIsBlacklisted:(id)arg1;
 - (void)deleteIndexWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)deleteSpecifiers:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3 waitForCompletion:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)descriptionForCSSearchableItem:(id)arg1;
+- (id)descriptionForCSSearchableItems:(id)arg1;
 - (void)indexSpecifiers:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3 waitForCompletion:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)indexSpecifiersWithURLs:(id)arg1 topLevelSpecifiers:(id)arg2 bundle:(id)arg3 withURLPrefix:(id)arg4 waitForCompletion:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)reindexSpecifiersIfNeeded:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3 waitForCompletion:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)lastIndexBuild;
+- (id)lastIndexLanguage;
+- (void)reindexSpecifiersIfNeeded:(id)arg1 bundle:(id)arg2 withURLPrefix:(id)arg3 waitForCompletion:(BOOL)arg4 setHasIndexed:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)searchableItemAttributeSetClassIdenfitier;
+- (id)searchableItemClassIdentifier;
+- (void)setLastIndexBuild:(id)arg1;
 - (void)setLastIndexDate:(id)arg1;
+- (void)setLastIndexLanguage:(id)arg1;
 - (void)setNeedsIndex;
 - (void)setNeedsIndex:(BOOL)arg1;
+- (void)topHitSearchForString:(id)arg1 keyboardLanguage:(id)arg2 foundItemsHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end
 

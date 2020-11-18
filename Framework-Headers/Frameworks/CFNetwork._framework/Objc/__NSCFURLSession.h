@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
     NSDictionary *_atsState;
     NSMutableDictionary *_altSvc;
     NSMutableSet *_h2BlacklistedHosts;
+    NSMutableDictionary *_coalescing;
 }
 
 @property (readonly, copy) NSDictionary *delegateOptions;
 
 - (id)_altSvc;
 - (id)_atsState;
+- (id)_coalescing;
 - (CDUnknownBlockType)_connBlock;
 - (id)_h2BlacklistedHosts;
 - (BOOL)_isSharedSession;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)setSessionDescription:(id)arg1;
 - (void)set_altSvc:(id)arg1;
 - (void)set_atsState:(id)arg1;
+- (void)set_coalescing:(id)arg1;
 - (void)set_connBlock:(CDUnknownBlockType)arg1;
 - (void)set_h2BlacklistedHosts:(id)arg1;
 - (void)set_isSharedSession:(BOOL)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSSet, UIScreen;
 
@@ -37,6 +37,7 @@
 - (long long)_modifierFlags;
 - (long long)_moveDirection;
 - (id)_screen;
+- (BOOL)_sendEventToGestureRecognizer:(id)arg1;
 - (void)_sendEventToResponder:(id)arg1;
 - (void)_setGSEvent:(struct __GSEvent *)arg1;
 - (void)_setHIDEvent:(struct __IOHIDEvent *)arg1;
@@ -44,6 +45,7 @@
 - (id)_touchesForGestureRecognizer:(id)arg1;
 - (id)_triggeringPhysicalButton;
 - (id)_unmodifiedInput;
+- (void)_wasDeliveredToGestureRecognizers;
 - (double)_wheelVelocity;
 - (id)_windows;
 - (id)coalescedTouchesForTouch:(id)arg1;

@@ -23,6 +23,7 @@
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (nonatomic) unsigned long long version; // @synthesize version=_version;
 
++ (BOOL)_boolFromDictionary:(id)arg1 key:(id)arg2 error:(BOOL *)arg3;
 + (double)_doubleFromDictionary:(id)arg1 key:(id)arg2 error:(BOOL *)arg3;
 + (long long)_integerFromDictionary:(id)arg1 key:(id)arg2 error:(BOOL *)arg3;
 + (id)_stringFromDictionary:(id)arg1 key:(id)arg2 error:(BOOL *)arg3;

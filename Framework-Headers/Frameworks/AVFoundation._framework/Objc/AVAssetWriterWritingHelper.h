@@ -11,6 +11,7 @@
 @class AVAssetWriterFigAssetWriterNotificationHandler, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterWritingHelper : AVAssetWriterHelper <AVAssetWriterFigAssetWriterNotificationHandlerDelegate>
 {
     struct OpaqueFigAssetWriter *_figAssetWriter;

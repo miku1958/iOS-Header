@@ -141,6 +141,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)repeatCurrentGuidance;
 - (BOOL)repeatCurrentTrafficAlert;
 - (void)resumeOriginalDestination;
+- (void)setIsNavigatingInLowGuidance:(BOOL)arg1;
 - (void)startNavigationSessionWithDetails:(id)arg1;
 - (void)stopCurrentGuidancePrompt;
 - (void)stopNavigationSession;

@@ -12,7 +12,6 @@
 @class NSMutableArray, NSString, RadiosPreferences;
 @protocol OS_dispatch_queue, QLNetworkStateListener;
 
-__attribute__((visibility("hidden")))
 @interface QLNetworkStateObserver : NSObject <RadiosPreferencesDelegate, QLNetworkStateListener>
 {
     unsigned long long _stack;
@@ -37,6 +36,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 + (BOOL)usingRemoteNetworkObserver;
 - (void).cxx_destruct;
+- (void)_commonInit;
 - (void)_setNetworkState:(unsigned long long)arg1;
 - (void)_unregisterReachability;
 - (void)_update;

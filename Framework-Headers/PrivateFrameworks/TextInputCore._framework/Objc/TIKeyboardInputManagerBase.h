@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, TIInputMode, TIKeyboardSecureCandidateRenderer;
 
@@ -20,16 +20,15 @@
 @property (readonly, nonatomic) TIInputMode *inputMode; // @synthesize inputMode=_inputMode;
 @property (strong, nonatomic) TIKeyboardSecureCandidateRenderer *secureCandidateRenderer; // @synthesize secureCandidateRenderer=_secureCandidateRenderer;
 
+- (void).cxx_destruct;
 - (void)addSynthesizedTouchToInput:(id)arg1;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (void)candidateRejected:(id)arg1;
 - (void)clearHumanReadableTrace;
 - (id)configurationPropertyList;
-- (void)dealloc;
 - (long long)deletionCountForString:(id)arg1;
-- (id)generateAutocorrectionsWithKeyboardState:(id)arg1;
-- (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 candidateHandler:(id)arg3;
 - (void)generateCandidatesWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)generateRefinementsForCandidate:(id)arg1;
 - (id)generateReplacementsForString:(id)arg1 keyLayout:(id)arg2;
@@ -37,7 +36,7 @@
 - (id)handleKeyboardInput:(id)arg1;
 - (id)humanReadableTrace;
 - (id)init;
-- (id)initWithInputMode:(id)arg1;
+- (id)initWithInputMode:(id)arg1 keyboardState:(id)arg2;
 - (BOOL)isHardwareKeyboardAutocorrectionEnabled;
 - (id)keyboardConfiguration;
 - (void)lastAcceptedCandidateCorrected;

@@ -10,8 +10,6 @@
 
 @protocol _SFPBAbstractCommand <NSObject>
 
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasValue;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int type;
 @property (strong, nonatomic) _SFPBCommandValue *value;

@@ -28,7 +28,6 @@
 @property (strong, nonatomic) UILabel *timeLabel; // @synthesize timeLabel=_timeLabel;
 @property (strong, nonatomic) UIVisualEffectView *timeLabelVisualEffectView; // @synthesize timeLabelVisualEffectView=_timeLabelVisualEffectView;
 
-+ (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_setupConstraints;
 - (void)applyVibrancyToTimeWithEffect:(id)arg1;

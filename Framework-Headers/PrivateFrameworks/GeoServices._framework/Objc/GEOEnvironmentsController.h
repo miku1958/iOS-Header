@@ -21,6 +21,7 @@
 @property (weak, nonatomic) id<GEOEnvironmentsControllerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
+- (id)activeEnvironment;
 - (void)addCustomEnvironment:(id)arg1;
 - (void)dealloc;
 - (id)environmentInfosForSection:(long long)arg1;

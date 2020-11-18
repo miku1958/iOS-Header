@@ -37,6 +37,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isUnavailable;
 - (id)largestDateRangeWithValuesBetween:(double)arg1 and:(double)arg2 ofMinimumDuration:(double)arg3;
+- (id)nextDateRangeWithValuesBetween:(double)arg1 and:(double)arg2 ofMinimumDuration:(double)arg3;
 - (id)valueAtDate:(id)arg1;
 
 @end

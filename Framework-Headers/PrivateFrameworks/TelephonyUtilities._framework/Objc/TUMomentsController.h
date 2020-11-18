@@ -30,10 +30,12 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
++ (CDUnknownBlockType)faceTimePhotosEnabledGenerator;
 + (BOOL)isFaceTimePhotosEnabled;
 + (BOOL)isFaceTimePhotosEnabledByDefault;
 + (BOOL)isFaceTimePhotosRestricted;
 + (void)setFaceTimePhotosEnabled:(BOOL)arg1;
++ (void)setFaceTimePhotosEnabledGenerator:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)capabilitiesForCall:(id)arg1;
 - (void)dataSource:(id)arg1 didReceiveLocallyRequestedMomentDescriptor:(id)arg2;

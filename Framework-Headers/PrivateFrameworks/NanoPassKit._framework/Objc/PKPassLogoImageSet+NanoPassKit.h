@@ -8,6 +8,7 @@
 
 @interface PKPassLogoImageSet (NanoPassKit)
 - (void)loadPDFArtFromBundle:(id)arg1;
+- (void)loadPDFArtFromBundle:(id)arg1 targetSize:(struct CGSize)arg2 scale:(double)arg3;
 - (void)resizeWithScreenSize:(struct CGSize)arg1;
 @end
 

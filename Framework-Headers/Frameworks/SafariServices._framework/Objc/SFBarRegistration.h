@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (long long)_barItemForUIBarButtonItem:(id)arg1;
 - (void)_itemReceivedLongPress:(id)arg1;
 - (void)_itemReceivedTap:(id)arg1;
+- (void)_itemReceivedTouchDown:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (id)initWithBar:(id)arg1 barManager:(id)arg2 layout:(long long)arg3 persona:(unsigned long long)arg4;
 - (id)popoverSourceInfoForItem:(long long)arg1;

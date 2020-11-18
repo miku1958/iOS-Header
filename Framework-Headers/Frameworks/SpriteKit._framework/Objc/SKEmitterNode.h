@@ -73,6 +73,9 @@
 @property (nonatomic) double xAcceleration;
 @property (nonatomic) double yAcceleration;
 
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
@@ -83,8 +86,6 @@
 - (void)copyParticlePropertiesToNode:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (BOOL)densityBased;
 - (id)description;
 - (double)emissionDistance;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/_UIButtonBarLayoutMetricsData-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/_UIButtonBarLayoutMetricsData-Protocol.h>
 
 @class NSLayoutDimension, NSLayoutYAxisAnchor, NSString;
 

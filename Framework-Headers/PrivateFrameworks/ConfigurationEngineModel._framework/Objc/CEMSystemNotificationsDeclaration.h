@@ -12,32 +12,32 @@
 
 @interface CEMSystemNotificationsDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSArray *_payloadNotificationSettings;
+    NSNumber *_payloadAllowNotificationsModification;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadAllowNotificationsModification;
-@property (readonly, nonatomic) NSArray *payloadNotificationSettings;
+@property (copy, nonatomic) NSNumber *payloadAllowNotificationsModification; // @synthesize payloadAllowNotificationsModification=_payloadAllowNotificationsModification;
+@property (copy, nonatomic) NSArray *payloadNotificationSettings; // @synthesize payloadNotificationSettings=_payloadNotificationSettings;
 @property (readonly) Class superclass;
 
-+ (id)NotificationSettingsItem_allowedPayloadKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withNotificationSettings:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withNotificationSettings:(id)arg2 withAllowNotificationsModification:(id)arg3;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadNotificationSettingsItem:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validPayloadNotificationSettingsItem_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

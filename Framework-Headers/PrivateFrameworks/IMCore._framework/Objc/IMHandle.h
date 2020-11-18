@@ -8,7 +8,7 @@
 
 #import <IMCore/NSSecureCoding-Protocol.h>
 
-@class IMAccount, IMPerson, IMServiceImpl, MKMapItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSSet, NSString;
+@class CNContact, IMAccount, IMPerson, IMServiceImpl, MKMapItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSSet, NSString;
 
 @interface IMHandle : NSObject <NSSecureCoding>
 {
@@ -68,10 +68,13 @@
     NSNumber *_isBusiness;
     NSNumber *_isMako;
     NSNumber *_isApple;
+    BOOL _hasCheckedForSuggestions;
+    NSString *_personCentricID;
     NSString *_guid;
     MKMapItem *_mapItem;
     NSData *_mapItemImageData;
     NSData *_mapItemBannerImageData;
+    CNContact *_cnContact;
     NSString *_suggestedName;
 }
 
@@ -89,6 +92,7 @@
 @property (readonly, nonatomic) BOOL canBeAdded;
 @property (readonly, nonatomic) BOOL canBeDeleted;
 @property (readonly, nonatomic) unsigned long long capabilities;
+@property (strong, nonatomic) CNContact *cnContact; // @synthesize cnContact=_cnContact;
 @property (readonly, strong, nonatomic) NSString *countryCode;
 @property (readonly, strong, nonatomic) NSString *displayID;
 @property (readonly, strong, nonatomic) NSString *email;
@@ -102,6 +106,7 @@
 @property (readonly, strong, nonatomic) NSArray *groupsArray;
 @property (readonly, strong, nonatomic) NSString *guid; // @synthesize guid=_guid;
 @property (readonly, nonatomic) BOOL hasAudio;
+@property (nonatomic) BOOL hasCheckedForSuggestions; // @synthesize hasCheckedForSuggestions=_hasCheckedForSuggestions;
 @property (readonly, nonatomic) BOOL hasConferencing;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (readonly, nonatomic) BOOL hasMultiwayAudio;
@@ -136,6 +141,7 @@
 @property (readonly, strong, nonatomic) NSString *originalID; // @synthesize originalID=_uncanonicalID;
 @property (strong, nonatomic) NSDictionary *otherServiceIDs; // @synthesize otherServiceIDs=_otherServiceIDs;
 @property (strong, nonatomic, setter=setIMPerson:) IMPerson *person;
+@property (strong, nonatomic) NSString *personCentricID; // @synthesize personCentricID=_personCentricID;
 @property (readonly, strong, nonatomic) NSData *pictureData; // @synthesize pictureData=_pictureData;
 @property (readonly, nonatomic) unsigned long long previousStatus; // @synthesize previousStatus=_prevStatus;
 @property (readonly, strong, nonatomic) NSString *previousStatusMessage; // @synthesize previousStatusMessage=_prevStatusMsg;
@@ -178,6 +184,7 @@
 - (void)_clearABPersonLookup;
 - (void)_clearABProperties;
 - (void)_clearStatusMessageURLCache;
+- (void)_contactStoreDidChange:(id)arg1;
 - (void)_createPhoneNumberRefIfNeeded;
 - (void)_fetchBusinessInfo;
 - (void)_fetchMapItemBannerImageDataForMapItem:(id)arg1;
@@ -196,6 +203,7 @@
 - (id)_nameForComparisonPreferFirst:(BOOL)arg1;
 - (void)_postNotification:(id)arg1;
 - (void)_postNotificationName:(id)arg1 userInfo:(id)arg2;
+- (void)_postOnScreenChangedNotificationForProperty:(id)arg1;
 - (void)_registerForNotifications;
 - (void)_sendAutomationData:(id)arg1 properties:(id)arg2;
 - (void)_sendCommand:(id)arg1 properties:(id)arg2;
@@ -266,6 +274,7 @@
 - (BOOL)resetABPerson;
 - (void)resetABProperties;
 - (void)resetUniqueName;
+- (void)scheduleSuggestedNameFetchIfNecessary;
 - (void)sendNotificationABPersonChanged;
 - (void)setAnonymous:(BOOL)arg1;
 - (void)setAuthRequestStatus:(unsigned int)arg1;

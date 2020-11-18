@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 - (void)createSyncUpJobForItem:(id)arg1 inZone:(id)arg2;
 - (void)deleteSyncUpJobsForItem:(id)arg1;
 - (id)descriptionForItem:(id)arg1 context:(id)arg2;
-- (unsigned long long)finishSyncUpForItem:(id)arg1 inZone:(id)arg2;
+- (unsigned long long)finishSyncUpForItem:(id)arg1 inZone:(id)arg2 success:(BOOL)arg3;
 - (unsigned long long)inFlightDiffsForItem:(id)arg1;
 - (unsigned long long)inFlightDiffsForItem:(id)arg1 zone:(id)arg2;
 - (id)initWithAccountSession:(id)arg1;

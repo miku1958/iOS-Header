@@ -8,18 +8,19 @@
 
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 
-@class IDSService, NSMutableDictionary, NSObject, NSString;
+@class HMFOperationBudget, IDSService, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDIDSMessageTransport : HMDRemoteMessageTransport <IDSServiceDelegate>
 {
     IDSService *_service;
     NSObject<OS_dispatch_queue> *_workQueue;
+    NSMutableArray *_messageContexts;
+    HMFOperationBudget *_sendMessageBudget;
     NSMutableDictionary *_pendingResponses;
     NSMutableDictionary *_receivedResponses;
     NSMutableDictionary *_requestedCapabilities;
     NSMutableDictionary *_destinationAddress;
-    NSMutableDictionary *_pendingSentMessages;
     NSMutableDictionary *_pendingResponseTimers;
 }
 
@@ -28,16 +29,20 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSMutableDictionary *destinationAddress; // @synthesize destinationAddress=_destinationAddress;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSMutableArray *messageContexts; // @synthesize messageContexts=_messageContexts;
 @property (readonly, nonatomic) NSMutableDictionary *pendingResponseTimers; // @synthesize pendingResponseTimers=_pendingResponseTimers;
 @property (readonly, nonatomic) NSMutableDictionary *pendingResponses; // @synthesize pendingResponses=_pendingResponses;
-@property (readonly, nonatomic) NSMutableDictionary *pendingSentMessages; // @synthesize pendingSentMessages=_pendingSentMessages;
 @property (readonly, nonatomic) NSMutableDictionary *receivedResponses; // @synthesize receivedResponses=_receivedResponses;
 @property (readonly, nonatomic) NSMutableDictionary *requestedCapabilities; // @synthesize requestedCapabilities=_requestedCapabilities;
+@property (readonly) HMFOperationBudget *sendMessageBudget; // @synthesize sendMessageBudget=_sendMessageBudget;
 @property (readonly, nonatomic) IDSService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (long long)priorityForMessage:(id)arg1;
 + (unsigned long long)restriction;
++ (unsigned long long)sendMessageLimit;
++ (struct _HMFRate)sendMessageRate;
 - (void).cxx_destruct;
 - (void)_pendingResponseTimeoutFor:(id)arg1;
 - (void)_removePendingResponseTimerForTransaction:(id)arg1;
@@ -45,11 +50,11 @@
 - (void)_restartPendingResponseTimerFor:(id)arg1 withReducedFactor:(unsigned long long)arg2;
 - (void)_startPendingResponseTimer:(id)arg1 responseTimeout:(double)arg2 identifier:(id)arg3;
 - (BOOL)canSendMessage:(id)arg1;
-- (id)deviceForDestination:(id)arg1;
+- (id)deviceForSenderContext:(id)arg1;
 - (id)initWithAccountRegistry:(id)arg1;
 - (long long)qualityOfService;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)sendMessage:(id)arg1 destination:(id)arg2 timeout:(double)arg3 options:(unsigned long long)arg4 error:(id *)arg5;
+- (id)sendMessage:(id)arg1 fromHandle:(id)arg2 destination:(id)arg3 priority:(long long)arg4 timeout:(double)arg5 options:(unsigned long long)arg6 error:(id *)arg7;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5 context:(id)arg6;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)start;

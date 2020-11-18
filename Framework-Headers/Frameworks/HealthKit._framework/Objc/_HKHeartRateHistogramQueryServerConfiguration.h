@@ -6,12 +6,10 @@
 
 #import <HealthKit/HKQueryServerConfiguration.h>
 
-#import <HealthKit/NSSecureCoding-Protocol.h>
-
 @class HKQuantity, NSDate, NSDateComponents;
 
 __attribute__((visibility("hidden")))
-@interface _HKHeartRateHistogramQueryServerConfiguration : HKQueryServerConfiguration <NSSecureCoding>
+@interface _HKHeartRateHistogramQueryServerConfiguration : HKQueryServerConfiguration
 {
     NSDate *_startDate;
     NSDate *_endDate;
@@ -22,16 +20,17 @@ __attribute__((visibility("hidden")))
     HKQuantity *_histogramBucketSize;
 }
 
-@property (strong, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
+@property (copy, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
 @property (nonatomic) long long contextStyle; // @synthesize contextStyle=_contextStyle;
-@property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (strong, nonatomic) HKQuantity *histogramAnchor; // @synthesize histogramAnchor=_histogramAnchor;
-@property (strong, nonatomic) HKQuantity *histogramBucketSize; // @synthesize histogramBucketSize=_histogramBucketSize;
-@property (strong, nonatomic) NSDateComponents *intervalComponents; // @synthesize intervalComponents=_intervalComponents;
-@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (copy, nonatomic) HKQuantity *histogramAnchor; // @synthesize histogramAnchor=_histogramAnchor;
+@property (copy, nonatomic) HKQuantity *histogramBucketSize; // @synthesize histogramBucketSize=_histogramBucketSize;
+@property (copy, nonatomic) NSDateComponents *intervalComponents; // @synthesize intervalComponents=_intervalComponents;
+@property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

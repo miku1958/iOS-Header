@@ -6,11 +6,13 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHAPAccessory, HMDUser, NSData, NSUUID;
+@class HMDHAPAccessory, HMDRelayAccessTokenModel, HMDUser, NSData, NSString, NSUUID;
 
-@interface HMDRelayAccessToken : HMFObject <NSSecureCoding>
+@interface HMDRelayAccessToken : HMFObject <HMFDumpState, HMDBackingStoreObjectProtocol, NSSecureCoding>
 {
     NSUUID *_accessoryIdentifier;
     NSUUID *_userIdentifier;
@@ -23,22 +25,31 @@
 @property (readonly, copy, nonatomic) NSData *accessToken; // @synthesize accessToken=_accessToken;
 @property (weak, nonatomic) HMDHAPAccessory *accessory; // @synthesize accessory=_accessory;
 @property (readonly, nonatomic) NSUUID *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy) HMDRelayAccessTokenModel *model;
+@property (readonly) Class superclass;
 @property (weak, nonatomic) HMDUser *user; // @synthesize user=_user;
 @property (strong, nonatomic) NSUUID *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)configureWithHome:(id)arg1;
-- (id)dictionaryEncoding;
+- (id)deleteTokenInAccessoryModel;
+- (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fixupUserIdentifier;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithAccessToken:(id)arg1 consentToken:(id)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUser:(id)arg1 model:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (void)updateWithDictionary:(id)arg1 home:(id)arg2;
+- (void)migrateCloudZone:(id)arg1 migrationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)transactionWithObjectChangeType:(unsigned long long)arg1;
 
 @end
 

@@ -9,7 +9,7 @@
 @interface NSString (MSStringUtilities)
 + (id)MSMakeUUID;
 + (id)MSStringWithBool:(BOOL)arg1;
-+ (id)MSTempFilePath;
++ (int)MSTempFileOutFileName:(id *)arg1;
 - (id)MSHexData;
 - (unsigned long long)MSUniqueID;
 @end

@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <ARKit/NSCopying-Protocol.h>
+#import <ARKit/ARAnchorCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class NSUUID;
+@class NSString, NSUUID;
 
-@interface ARAnchor : NSObject <NSCopying, NSSecureCoding>
+@interface ARAnchor : NSObject <ARAnchorCopying, NSSecureCoding>
 {
     NSUUID *_identifier;
+    NSString *_name;
     double _lastUpdateTimestamp;
     CDStruct_14d5dc5e _transform;
     CDStruct_14d5dc5e _referenceTransform;
@@ -21,6 +22,7 @@
 
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) double lastUpdateTimestamp; // @synthesize lastUpdateTimestamp=_lastUpdateTimestamp;
+@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) CDStruct_14d5dc5e referenceTransform; // @synthesize referenceTransform=_referenceTransform;
 @property (nonatomic) CDStruct_14d5dc5e transform; // @synthesize transform=_transform;
 
@@ -32,8 +34,10 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 transform:(CDStruct_14d5dc5e)arg2;
+- (id)initWithName:(id)arg1 transform:(CDStruct_14d5dc5e)arg2;
 - (id)initWithTransform:(CDStruct_14d5dc5e)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToAnchor:(id)arg1;

@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UIPanGestureRecognizer, UISwipeActionController, UISwipeDismissalGestureRecognizer, _UIStatesFeedbackGenerator;
+@class NSString, UISwipeActionController, UISwipeDismissalGestureRecognizer, _UIStatesFeedbackGenerator, _UISwipeActionPanGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface UISwipeHandler : NSObject <UIGestureRecognizerDelegate>
 {
     UISwipeDismissalGestureRecognizer *_dismissalGestureRecognizer;
-    UIPanGestureRecognizer *_swipeActionPanRecognizer;
+    _UISwipeActionPanGestureRecognizer *_swipeActionPanRecognizer;
     CDStruct_324b76a9 _currentSwipeConfig;
     unsigned long long _currentSwipeState;
     BOOL _resetSwipeWhileInitiating;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatesFeedbackGenerator *swipeFeedbackGenerator; // @synthesize swipeFeedbackGenerator=_swipeFeedbackGenerator;
 
 - (void).cxx_destruct;
-- (CDStruct_b06b0113)_currentSwipeInfoWithTargetOffset:(double)arg1 animated:(BOOL)arg2 usingSpringWithStiffness:(double)arg3;
+- (CDStruct_9b6dff2a)_currentSwipeInfoWithTargetOffset:(double)arg1 animated:(BOOL)arg2 usingSpringWithStiffness:(double)arg3;
 - (unsigned long long)_directionForGestureRecognizer:(id)arg1;
 - (void)_dismissalRecognizerDidRecognize:(id)arg1;
 - (void)_moveSwipedItemToOffset:(double)arg1 animated:(BOOL)arg2 usingSpringWithStiffness:(double)arg3;

@@ -6,7 +6,6 @@
 
 #import <GeoServices/GEODBWriter.h>
 
-__attribute__((visibility("hidden")))
 @interface GEOPlaceDataDBWriter : GEODBWriter
 {
     struct sqlite3_stmt *_sqlInsertPhoneNumber;
@@ -29,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)deletePlaceDataForMUID:(unsigned long long)arg1;
 - (void)flushPendingWritesSynchronously;
 - (id)initWithPath:(id)arg1;
+- (void)performStatementFinalizationTasks;
 - (void)performStatementPreparationTasks;
 - (void)performTableCreationTasks;
 - (void)setComponent:(id)arg1 forKey:(union _GEOPlaceDataComponentKey)arg2;

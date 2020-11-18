@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UISplitViewControllerDelegate-Protocol.h>
+#import <UIKitCore/UISplitViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, UIDebuggingInformationRootTableViewController, UIDebuggingInformationStickyBehavior, UIDebuggingZoomViewController, UIDynamicAnimator, UIDynamicBehavior, UISplitViewController, UIView;
 

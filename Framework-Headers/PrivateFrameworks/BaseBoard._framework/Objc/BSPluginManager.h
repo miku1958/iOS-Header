@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSBundle, NSString;
 
@@ -15,13 +15,13 @@
     NSArray *_pluginBundles;
 }
 
-@property (readonly, strong, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
+@property (readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property (readonly, copy, nonatomic) NSArray *pluginBundles; // @synthesize pluginBundles=_pluginBundles;
 @property (readonly, copy, nonatomic) NSString *pluginDirectory; // @synthesize pluginDirectory=_pluginDirectory;
 
 + (id)mainManager;
 + (id)managerForBundle:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

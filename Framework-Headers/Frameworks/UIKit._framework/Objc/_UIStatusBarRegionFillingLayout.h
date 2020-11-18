@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarRegionLinearLayout.h>
+#import <UIKitCore/_UIStatusBarRegionLinearLayout.h>
 
 @interface _UIStatusBarRegionFillingLayout : _UIStatusBarRegionLinearLayout
 {
 }
 
-- (id)_horizontalConstraintsForViews:(id)arg1 layoutGuides:(id)arg2;
+- (id)_horizontalConstraintsForLayoutItems:(id)arg1 layoutGuides:(id)arg2;
 
 @end
 

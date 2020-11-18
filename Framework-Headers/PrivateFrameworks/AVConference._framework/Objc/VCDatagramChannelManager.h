@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -23,9 +23,9 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (id)addDatagramChannelWithDescriptor:(int)arg1 eventHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (id)addDatagramChannelWithDestination:(id)arg1 eventHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;
-- (id)datagramChannelWithIDSDestination:(id)arg1;
-- (id)datagramChannelWithToken:(unsigned int)arg1;
 - (void)dealloc;
+- (void)executeBlockForIDSDestination:(id)arg1 blockToExecute:(CDUnknownBlockType)arg2;
+- (void)executeBlockForToken:(unsigned int)arg1 blockToExecute:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)removeDatagramChannel:(id)arg1;
 - (BOOL)setupDatagramChannel:(id)arg1 eventHandler:(CDUnknownBlockType)arg2 error:(id *)arg3;

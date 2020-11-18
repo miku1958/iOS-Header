@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIIndexBarView.h>
+#import <UIKitCore/UIIndexBarView.h>
 
-#import <UIKit/UIScrollAccessory-Protocol.h>
+#import <UIKitCore/UIScrollAccessory-Protocol.h>
 
 @class UIScrollView;
 @protocol UIIndexBarAccessoryViewDelegate;

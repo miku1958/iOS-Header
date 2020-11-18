@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDropInteractionDelegate_Private-Protocol.h>
-#import <UIKit/_UITableViewDropCoordinatorDelegate-Protocol.h>
+#import <UIKitCore/UIDropInteractionDelegate_Private-Protocol.h>
+#import <UIKitCore/_UITableViewDropCoordinatorDelegate-Protocol.h>
 
 @class NSIndexPath, NSMapTable, NSString, UIDropInteraction, UITableView, UITableViewDropProposal;
 @protocol UIDropSession, _UITableViewDropControllerDelegate;

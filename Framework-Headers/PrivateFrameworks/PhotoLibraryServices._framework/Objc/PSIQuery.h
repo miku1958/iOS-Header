@@ -4,34 +4,77 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString, PSIDatabase;
-@protocol OS_dispatch_queue;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, PSIParse;
+@protocol PSIQueryDelegate;
 
 @interface PSIQuery : NSObject
 {
-    PSIDatabase *_idx;
-    NSObject<OS_dispatch_queue> *_syncQueue;
-    CDUnknownBlockType _earlyNotificationHandler;
-    BOOL _didStart;
-    BOOL _isCanceled;
-    BOOL _isWildcardQuery;
-    int _queryId;
+    id<PSIQueryDelegate> _delegate;
+    PSIParse *_baseParse;
+    BOOL _baseParseCouldHaveResults;
+    NSArray *_datedParses;
+    NSArray *_wordEmbeddingParses;
+    NSArray *_identifierTokens;
+    NSMutableDictionary *_groupIdsByTokenKey;
+    NSDictionary *_substitutionsByStringToken;
+    _Atomic BOOL _didStart;
+    _Atomic BOOL _isCanceled;
+    NSMutableSet *_socialGroupExtendedAssetIds;
+    NSMutableSet *_socialGroupExtendedCollectionIds;
+    NSMutableSet *_socialGroupExtendedTripIds;
+    BOOL _usesPrefixBasedWordEmbedding;
+    BOOL _calculateTokenCounts;
+    BOOL _useWildcardText;
+    NSArray *_queryTokens;
     NSString *_searchText;
+    unsigned long long _wordEmbeddingMode;
+    NSDictionary *_substitutions;
+    unsigned long long _numberOfNextKeywordSuggestionToProcess;
+    NSArray *_nextKeywordSuggestions;
+    NSArray *_dedupedGroupResults;
 }
 
+@property (nonatomic) BOOL calculateTokenCounts; // @synthesize calculateTokenCounts=_calculateTokenCounts;
 @property (readonly, getter=isCanceled) BOOL canceled;
-@property (readonly, nonatomic) BOOL isWildcardQuery; // @synthesize isWildcardQuery=_isWildcardQuery;
-@property (readonly, nonatomic) int queryId; // @synthesize queryId=_queryId;
+@property (copy, nonatomic) NSArray *dedupedGroupResults; // @synthesize dedupedGroupResults=_dedupedGroupResults;
+@property (strong, nonatomic) NSArray *nextKeywordSuggestions; // @synthesize nextKeywordSuggestions=_nextKeywordSuggestions;
+@property (nonatomic) unsigned long long numberOfNextKeywordSuggestionToProcess; // @synthesize numberOfNextKeywordSuggestionToProcess=_numberOfNextKeywordSuggestionToProcess;
+@property (readonly, copy, nonatomic) NSArray *queryTokens; // @synthesize queryTokens=_queryTokens;
 @property (readonly, copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
+@property (copy, nonatomic) NSSet *socialGroupExtendedAssetIds; // @synthesize socialGroupExtendedAssetIds=_socialGroupExtendedAssetIds;
+@property (copy, nonatomic) NSSet *socialGroupExtendedCollectionIds; // @synthesize socialGroupExtendedCollectionIds=_socialGroupExtendedCollectionIds;
+@property (copy, nonatomic) NSSet *socialGroupExtendedTripIds; // @synthesize socialGroupExtendedTripIds=_socialGroupExtendedTripIds;
+@property (strong, nonatomic) NSDictionary *substitutions; // @synthesize substitutions=_substitutions;
+@property (readonly, nonatomic) BOOL useWildcardText; // @synthesize useWildcardText=_useWildcardText;
+@property (nonatomic) BOOL usesPrefixBasedWordEmbedding; // @synthesize usesPrefixBasedWordEmbedding=_usesPrefixBasedWordEmbedding;
+@property (nonatomic) unsigned long long wordEmbeddingMode; // @synthesize wordEmbeddingMode=_wordEmbeddingMode;
 
++ (void)bootstrap;
++ (id)dateAttributesFromToken:(id)arg1;
++ (id)dateFilterByCombiningDateFilter:(id)arg1 withDateFilter:(id)arg2;
++ (id)dateFilterWithAttributes:(id)arg1;
++ (id)dateFilterWithAttributes:(id)arg1 andAttributes:(id)arg2;
++ (id)datedParsesWithBaseParse:(id)arg1;
++ (BOOL)enumerateDatedParsesWithParse:(id)arg1 currentTokenIndex:(unsigned long long)arg2 potentialComboAttributes:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
++ (BOOL)tokenIsEligibleForDateParsing:(id)arg1;
 - (void).cxx_destruct;
+- (struct __CFSet *)_idsOfGroupsMatchingString:(id)arg1 categories:(id)arg2 textIsSearchable:(BOOL)arg3;
+- (struct __CFSet *)_idsOfGroupsMatchingToken:(id)arg1;
+- (void)_postProcessPersonGroupsInGroupArrays:(id)arg1;
+- (void)bootstrap;
 - (void)cancel;
-- (void)dealloc;
-- (id)initWithQueryId:(int)arg1 index:(id)arg2 searchText:(id)arg3 isWildcardQuery:(BOOL)arg4;
+- (void)computeSuggestions;
+- (id)description;
+- (void)enumerateParsesWithMode:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (id)initWithQueryTokens:(id)arg1 searchText:(id)arg2 useWildcardText:(BOOL)arg3 delegate:(id)arg4;
+- (void)processDates;
+- (id)processParse:(id)arg1;
+- (void)processWordEmbeddings;
+- (BOOL)recursiveAddToGroupResults:(id)arg1 aggregate:(id)arg2 atIndex:(unsigned long long)arg3 outOf:(unsigned long long)arg4 inGroupArrays:(id)arg5 dateFilter:(id)arg6;
 - (void)runWithResultsHandler:(CDUnknownBlockType)arg1;
-- (void)setEarlyResultsNotificationHandler:(CDUnknownBlockType)arg1;
+- (id)suggestionWhitelistedScenes;
 
 @end
 

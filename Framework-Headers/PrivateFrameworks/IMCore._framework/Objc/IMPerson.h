@@ -54,6 +54,7 @@
 + (id)existingABPersonWithFirstName:(id)arg1 andLastName:(id)arg2 orEmail:(id)arg3 orNumber:(id)arg4;
 + (id)existingABPersonWithFirstName:(id)arg1 lastName:(id)arg2;
 + (id)existingABPersonWithInstantMessageAddress:(id)arg1 onServices:(id)arg2 allowSubstringMatch:(BOOL)arg3;
++ (BOOL)shouldPurgeCacheForIMPerson:(id)arg1;
 - (void).cxx_destruct;
 - (void)_abPersonChanged:(id)arg1;
 - (id)allHandlesForProperty:(id)arg1;

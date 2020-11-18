@@ -20,6 +20,7 @@
     NSString *_preferredContentSizeCategory;
     double _feedWidth;
     double _feedGutter;
+    double _feedTopMargin;
     double _adjustedFeedWidth;
     long long _columnCount;
     unsigned long long _layoutOptions;
@@ -53,6 +54,7 @@
 @property (readonly, copy, nonatomic) UIColor *feedBackgroundColor;
 @property (readonly, nonatomic) double feedGutter; // @synthesize feedGutter=_feedGutter;
 @property (strong, nonatomic) id<FCFeedTheming> feedTheme; // @synthesize feedTheme=_feedTheme;
+@property (readonly, nonatomic) double feedTopMargin; // @synthesize feedTopMargin=_feedTopMargin;
 @property (readonly, nonatomic) double feedWidth; // @synthesize feedWidth=_feedWidth;
 @property (readonly, nonatomic) NFLFontCache *fontCache; // @synthesize fontCache=_fontCache;
 @property (readonly, nonatomic) double horizontalMarginWidth; // @synthesize horizontalMarginWidth=_horizontalMarginWidth;
@@ -71,7 +73,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)init;
-- (id)initWithViewportSize:(struct CGSize)arg1 defaultFeedLayoutSearchConfiguration:(id)arg2 columnCount:(long long)arg3 feedGutter:(double)arg4 verticalMarginInRows:(double)arg5 preferredContentSizeCategory:(id)arg6 maximumContentInset:(double)arg7 selectionCornerRadius:(double)arg8 selectionInset:(double)arg9 showAccessoryText:(BOOL)arg10 layoutOptions:(unsigned long long)arg11;
+- (id)initWithViewportSize:(struct CGSize)arg1 defaultFeedLayoutSearchConfiguration:(id)arg2 columnCount:(long long)arg3 feedGutter:(double)arg4 feedTopMargin:(double)arg5 verticalMarginInRows:(double)arg6 preferredContentSizeCategory:(id)arg7 maximumContentInset:(double)arg8 selectionCornerRadius:(double)arg9 selectionInset:(double)arg10 showAccessoryText:(BOOL)arg11 layoutOptions:(unsigned long long)arg12;
 - (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4;
 - (id)initWithViewportSize:(struct CGSize)arg1 viewportInsets:(struct UIEdgeInsets)arg2 preferredContentSizeCategory:(id)arg3 showAccessoryText:(BOOL)arg4 layoutType:(long long)arg5 layoutOptions:(unsigned long long)arg6;
 - (BOOL)preservesLayoutMargins:(struct UIEdgeInsets)arg1;

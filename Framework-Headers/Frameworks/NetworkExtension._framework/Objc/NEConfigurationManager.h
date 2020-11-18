@@ -32,7 +32,6 @@
     NSUUID *_userUUID;
     id<NEConfigurationManagerDelegate> _delegate;
     long long _configurationChangeSource;
-    CDUnknownBlockType _getIndexDelegateCallback;
 }
 
 @property (strong) NSData *SCPreferencesSignature; // @synthesize SCPreferencesSignature=_SCPreferencesSignature;
@@ -44,7 +43,6 @@
 @property (strong) NSKeyedUnarchiver *decoder; // @synthesize decoder=_decoder;
 @property (strong) id<NEConfigurationManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property long long generation; // @synthesize generation=_generation;
-@property (copy) CDUnknownBlockType getIndexDelegateCallback; // @synthesize getIndexDelegateCallback=_getIndexDelegateCallback;
 @property BOOL hasReadPermission; // @synthesize hasReadPermission=_hasReadPermission;
 @property BOOL hasVPNAPIEntitlement; // @synthesize hasVPNAPIEntitlement=_hasVPNAPIEntitlement;
 @property (readonly) NEHelper *helper;
@@ -71,7 +69,6 @@
 - (void)copyIdentities:(id)arg1 fromDomain:(long long)arg2 withCompletionQueue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)decodeConfigurationWithIdentifier:(id)arg1;
-- (void)deregisterForChangeNotifications;
 - (id)description;
 - (void)didLoadConfiguration:(id)arg1;
 - (void)didLoadConfiguration:(id)arg1 withSignature:(id)arg2;
@@ -85,6 +82,7 @@
 - (void)handleFileRemovedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handlePluginTypesRemoved:(id)arg1 configuration:(id)arg2 vpn:(id)arg3 updateSCPreferences:(struct __SCPreferences *)arg4;
 - (id)init;
+- (id)initForAllUsers;
 - (id)initWithPluginType:(id)arg1;
 - (id)initWithUserUUID:(id)arg1;
 - (void)loadConfigurationWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
@@ -109,9 +107,11 @@
 - (id)saveConfigurationToDisk:(id)arg1 updateSCPreferences:(struct __SCPreferences *)arg2 currentSignature:(id)arg3 userUUID:(id)arg4 notifyNow:(BOOL)arg5 isUpgrade:(BOOL)arg6;
 - (void)sendRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)setChangedQueue:(id)arg1 andHandler:(CDUnknownBlockType)arg2;
+- (void)showObsoleteAppAlert;
 - (void)syncWithSystemConfigurationWithAppNameCallback:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)triggerLocalAuthenticationForConfigurationWithID:(id)arg1 withCompletionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)updateSCPreferencesSignatureOnDisk;
+- (void)upgradeLegacyPluginConfigurationsWithUpgradeInfo:(id)arg1 completionQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSData, NSDictionary;
+
 #pragma mark Function Pointers and Blocks
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
@@ -11,6 +13,14 @@ typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameter
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
+
+struct AutotuningState {
+    BOOL enabled;
+    NSDictionary *copyConfigs;
+    NSDictionary *upsampleConfigs;
+    unsigned long long copyConfigID;
+    unsigned long long upsampleConfigID;
+};
 
 struct ConversionInfoPtrs_s {
     struct StageData_s *stages;
@@ -33,6 +43,15 @@ struct ConversionInfo_s {
     int nCHIn;
     int nCHOut;
     int containsATableTRC;
+};
+
+struct HighlevelState {
+    unsigned long long filterHeight;
+    unsigned long long filterWidth;
+    NSData *weights;
+    BOOL isPyramidAdd;
+    float laplacianBias;
+    float laplacianScale;
 };
 
 struct MPSDeviceSpecificInfo {
@@ -64,6 +83,7 @@ struct MPSLibraryInfo {
     struct MPSDeviceSpecificInfo _field18;
     struct MPSDeviceSpecificInfo _field19;
     struct MPSDeviceSpecificInfo _field20;
+    struct MPSDeviceSpecificInfo _field21;
 };
 
 struct MPSOrigin {
@@ -88,6 +108,10 @@ struct MPSSize {
     double _field1;
     double _field2;
     double _field3;
+};
+
+struct NSArray {
+    Class _field1;
 };
 
 struct RLERow {

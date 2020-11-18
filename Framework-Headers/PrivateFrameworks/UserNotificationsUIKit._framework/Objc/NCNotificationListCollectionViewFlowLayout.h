@@ -6,18 +6,22 @@
 
 #import <UIKit/UICollectionViewFlowLayout.h>
 
-@class NSMutableArray;
+@class NSIndexPath, NSMutableArray;
 
 @interface NCNotificationListCollectionViewFlowLayout : UICollectionViewFlowLayout
 {
     BOOL _isChangingBounds;
     BOOL _showingNotificationsHistory;
     double _forcedContentSizeHeight;
+    unsigned long long _animationState;
     NSMutableArray *_insertedIndexPaths;
     NSMutableArray *_removedIndexPaths;
     NSMutableArray *_replacedIndexPaths;
+    NSIndexPath *_animationLeadingNotificationRequestIndexPath;
 }
 
+@property (strong, nonatomic) NSIndexPath *animationLeadingNotificationRequestIndexPath; // @synthesize animationLeadingNotificationRequestIndexPath=_animationLeadingNotificationRequestIndexPath;
+@property (nonatomic) unsigned long long animationState; // @synthesize animationState=_animationState;
 @property (readonly, nonatomic) struct CGSize effectiveContentSize;
 @property (nonatomic) double forcedContentSizeHeight; // @synthesize forcedContentSizeHeight=_forcedContentSizeHeight;
 @property (strong, nonatomic) NSMutableArray *insertedIndexPaths; // @synthesize insertedIndexPaths=_insertedIndexPaths;
@@ -25,16 +29,26 @@
 @property (strong, nonatomic) NSMutableArray *replacedIndexPaths; // @synthesize replacedIndexPaths=_replacedIndexPaths;
 @property (nonatomic, getter=isShowingNotificationsHistory) BOOL showingNotificationsHistory; // @synthesize showingNotificationsHistory=_showingNotificationsHistory;
 
++ (Class)layoutAttributesClass;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_animationForReusableView:(id)arg1 toLayoutAttributes:(id)arg2 type:(unsigned long long)arg3;
+- (double)_animationScaleForItemWithIndexDifference:(long long)arg1 frame:(struct CGRect)arg2 leadingNotificationFrame:(struct CGRect)arg3;
+- (void)_configureLayoutAttributesForCoalescing:(id)arg1;
+- (void)_configureLayoutAttributesForCoalescingAnimation:(id)arg1;
+- (BOOL)_isCellFrameVisibleForCoalescingAnimation:(struct CGRect)arg1;
+- (long long)_zIndexForCellAtIndexPath:(id)arg1;
 - (struct CGSize)collectionViewContentSize;
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
 - (void)finalizeAnimatedBoundsChange;
 - (void)finalizeCollectionViewUpdates;
+- (id)init;
 - (id)initialLayoutAttributesForAppearingItemAtIndexPath:(id)arg1;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
+- (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
+- (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (void)prepareForAnimatedBoundsChange:(struct CGRect)arg1;
 - (void)prepareForCollectionViewUpdates:(id)arg1;
+- (void)setAnimationState:(unsigned long long)arg1 forLeadingNotificationRequestAtIndexPath:(id)arg2;
 
 @end
 

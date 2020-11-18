@@ -41,8 +41,10 @@
 @property (copy, nonatomic) NSNumber *songID; // @synthesize songID=_songID;
 @property (copy, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
 
++ (id)_avDownloadOptionsWithRequestContent:(id)arg1 properties:(id)arg2 mediaResponseItem:(id)arg3;
 + (id)_mediaKindFromResponseItemMetadata:(id)arg1;
 + (void)getMediaAVAssetDownloadOptionsWithRequestContext:(id)arg1 redownloadResponse:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (void)getMediaAVAssetDownloadOptionsWithRequestContext:(id)arg1 storeMediaResponseItem:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)init;
 - (void)setValue:(id)arg1 forHTTPHeaderField:(id)arg2;

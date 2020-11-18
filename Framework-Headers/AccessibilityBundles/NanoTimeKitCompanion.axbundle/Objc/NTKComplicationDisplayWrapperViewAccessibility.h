@@ -25,7 +25,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
-- (void)setComplicationTemplate:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
+- (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
 
 @end
 

@@ -15,12 +15,15 @@
 - (void)_captureNetworUsageLogMessageForProtobufSessionTask:(id)arg1 service:(int)arg2 requestType:(int)arg3 requestErrorDomain:(id)arg4 requestErrorCode:(long long)arg5 requestAppId:(id)arg6 fromLogFrameworkAdaptor:(BOOL)arg7;
 - (void)_captureNetworUsageLogMessageForService:(int)arg1 requestType:(int)arg2 httpResponseStatusCode:(int)arg3 requestErrorDomain:(id)arg4 requestErrorCode:(long long)arg5 requestDataSize:(int)arg6 responseDataSize:(int)arg7 responseTime:(int)arg8 requestAppId:(id)arg9 remoteAddressAndPort:(id)arg10 fromLogFrameworkAdaptor:(BOOL)arg11;
 - (BOOL)_isDiagnosticSubmissionEnabled;
+- (int)_originTypeForTileLoadReason:(unsigned char)arg1;
 - (void)captureBatchTrafficProbes:(id)arg1;
 - (void)captureCacheHitEventForLocationShiftWithHitCount:(unsigned int)arg1 cacheMissCount:(unsigned int)arg2;
 - (void)captureCacheHitEventForTileCacheType:(int)arg1 cacheHitCount:(unsigned int)arg2 cacheMissCount:(unsigned int)arg3;
 - (void)captureCacheHitLogMessageForLocationShiftWithHitCount:(unsigned int)arg1 cacheMissCount:(unsigned int)arg2;
 - (void)captureCacheHitLogMessageForTilesWithTileStyle:(int)arg1 cacheHitCount:(unsigned int)arg2 cacheMissCount:(unsigned int)arg3;
-- (void)captureClientACSuggestionsEventWith:(id)arg1 queryTokens:(id)arg2 acSuggestionEntries:(id)arg3 selectedIndex:(int)arg4;
+- (void)captureClientACKeypressEventWithQuery:(id)arg1 queryTokens:(id)arg2 acSuggestionEntries:(id)arg3 keyPressStatus:(int)arg4 userSessionSnapshot:(id)arg5;
+- (void)captureClientACResponseEventWithQuery:(id)arg1 queryTokens:(id)arg2 acSuggestionEntries:(id)arg3;
+- (void)captureClientACSuggestionEventWithQuery:(id)arg1 queryTokens:(id)arg2 acSuggestionEntries:(id)arg3 selectedIndex:(int)arg4;
 - (void)captureCommuteDoomWindow:(id)arg1 exitTime:(id)arg2 destinations:(id)arg3 reason:(long long)arg4 networkRequests:(unsigned long long)arg5 alerts:(unsigned long long)arg6;
 - (void)captureDirectionsEventForDirectionsFeedbacks:(id)arg1 finalLocation:(id)arg2 arrivedAtDestination:(BOOL)arg3 navigationAudioFeedback:(struct GEONavigationAudioFeedback)arg4 durationOfTrip:(double)arg5 durationsInNavigationMode:(id)arg6;
 - (void)captureDirectionsFeedbackLogMessage:(id)arg1 durationsInNavigationModes:(id)arg2;
@@ -44,6 +47,7 @@
 - (void)captureNetworkUsageForRequestToService:(int)arg1 httpResponseStatusCode:(unsigned long long)arg2 requestError:(id)arg3 responseSize:(unsigned long long)arg4 responseTime:(unsigned long long)arg5 remoteAddressAndPort:(id)arg6;
 - (void)captureNetworkUsageForRequestToService:(int)arg1 httpResponseStatusCode:(unsigned long long)arg2 requestErrorDomain:(id)arg3 requestErrorCode:(long long)arg4 responseSize:(unsigned long long)arg5 responseTime:(unsigned long long)arg6 remoteAddressAndPort:(id)arg7;
 - (void)captureNetworkUsageForTile:(id)arg1 traits:(id)arg2;
+- (void)captureParkedCarEventAtLocation:(id)arg1 atTime:(double)arg2 withUncertainty:(double)arg3;
 - (void)capturePlaceCardUserActionAsString:(id)arg1 onTarget:(int)arg2 eventValue:(id)arg3 mapItem:(id)arg4 timestamp:(double)arg5 placeCardType:(int)arg6 categoriesDisplayed:(id)arg7 categorySelected:(id)arg8;
 - (void)capturePlaceCardUserActionAsString:(id)arg1 onTarget:(int)arg2 eventValue:(id)arg3 mapItem:(id)arg4 timestamp:(double)arg5 resultIndex:(int)arg6 targetID:(unsigned long long)arg7 providerID:(id)arg8 animationID:(unsigned long long)arg9 actionURL:(id)arg10 photoID:(id)arg11 placeCardType:(int)arg12 localizedMapItemCategory:(id)arg13 availableActions:(id)arg14 unactionableUIElements:(id)arg15;
 - (void)capturePlaceCardUserActionAsString:(id)arg1 onTarget:(int)arg2 eventValue:(id)arg3 mapItem:(id)arg4 timestamp:(double)arg5 resultIndex:(int)arg6 targetID:(unsigned long long)arg7 providerID:(id)arg8 animationID:(unsigned long long)arg9 actionURL:(id)arg10 photoID:(id)arg11 placeCardType:(int)arg12 localizedMapItemCategory:(id)arg13 availableActions:(id)arg14 unactionableUIElements:(id)arg15 categoriesDisplayed:(id)arg16 categorySelected:(id)arg17;
@@ -59,6 +63,10 @@
 - (void)captureTelemetricEnties:(id)arg1;
 - (void)captureTelemetricEntityCountForEventKey:(int)arg1 eventDetail:(id)arg2;
 - (void)captureTelemetricEntityForEventKey:(int)arg1 eventValue:(unsigned long long)arg2 eventDetail:(id)arg3;
+- (void)captureTileCacheHitAnalyticForRequestReason:(int)arg1 tileSource:(int)arg2 tileStyle:(int)arg3 tileZoom:(unsigned int)arg4 hitCount:(unsigned int)arg5 hitByteCount:(unsigned int)arg6;
+- (void)captureTileCacheHitForRequestReason:(unsigned char)arg1 tileSource:(unsigned char)arg2 tileStyle:(int)arg3 tileZoom:(unsigned int)arg4 hitCount:(unsigned int)arg5 hitByteCount:(unsigned int)arg6;
+- (void)captureTileCacheMissAnalyticForRequestReason:(int)arg1 missType:(int)arg2 tileStyle:(int)arg3 tileZoom:(unsigned int)arg4 missCount:(unsigned int)arg5 missByteCount:(unsigned int)arg6 httpStatus:(unsigned int)arg7 errors:(id)arg8;
+- (void)captureTileCacheMissForRequestReason:(unsigned char)arg1 missType:(int)arg2 tileStyle:(int)arg3 tileZoom:(unsigned int)arg4 missCount:(unsigned int)arg5 missByteCount:(unsigned int)arg6 httpStatus:(unsigned int)arg7 errors:(id)arg8;
 - (void)captureTileSetStateEventForType:(int)arg1 newCoverage:(double)arg2 oldCoverage:(double)arg3 seconds:(double)arg4;
 - (void)captureTileStateForGridCoverage:(double)arg1 oldCoverage:(double)arg2 durationInLastState:(double)arg3;
 - (void)captureTileStateForLoadCoverage:(double)arg1 oldCoverage:(double)arg2 durationInLastState:(double)arg3;

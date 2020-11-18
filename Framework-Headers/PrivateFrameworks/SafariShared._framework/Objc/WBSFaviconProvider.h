@@ -8,7 +8,7 @@
 
 #import <SafariShared/WBSSiteMetadataProvider-Protocol.h>
 
-@class NSCache, NSCalendar, NSMutableDictionary, NSString, NSURL, WBSFaviconProviderPersistenceController;
+@class NSArray, NSCache, NSCalendar, NSMutableDictionary, NSString, NSURL, WBSFaviconProviderPersistenceController;
 @protocol OS_dispatch_queue, WBSSiteMetadataProviderDelegate;
 
 @interface WBSFaviconProvider : NSObject <WBSSiteMetadataProvider>
@@ -22,30 +22,39 @@
     NSCalendar *_calendar;
     double _expirationInterval;
     long long _providerState;
-    NSMutableDictionary *_sizeToDefaultFaviconDictionary;
     unsigned long long _privateDataRetentionCount;
+    struct CGSize _scaledPreferredIconSize;
+    CDUnknownBlockType _shouldCheckIntegrityWhenOpeningDatabaseBlock;
+    BOOL _isReadOnly;
     id<WBSSiteMetadataProviderDelegate> _providerDelegate;
     NSURL *_baseURL;
-    NSString *_persistenceName;
+    double _preferredIconScale;
+    NSArray *_allIconScales;
+    struct CGSize _preferredIconSize;
 }
 
+@property (readonly, copy, nonatomic) NSArray *allIconScales; // @synthesize allIconScales=_allIconScales;
 @property (readonly, nonatomic) NSURL *baseURL; // @synthesize baseURL=_baseURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *persistenceName; // @synthesize persistenceName=_persistenceName;
+@property (readonly, nonatomic) BOOL isReadOnly; // @synthesize isReadOnly=_isReadOnly;
+@property (readonly, nonatomic) double preferredIconScale; // @synthesize preferredIconScale=_preferredIconScale;
+@property (readonly, nonatomic) struct CGSize preferredIconSize; // @synthesize preferredIconSize=_preferredIconSize;
 @property (weak, nonatomic) id<WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property (readonly, nonatomic) BOOL providesFavicons;
 @property (readonly) Class superclass;
 
++ (struct CGSize)defaultFaviconSize;
 - (void).cxx_destruct;
 - (void)_addCachedResponse:(id)arg1 forRequest:(id)arg2;
 - (void)_atomicallyLinkPageURLs:(id)arg1 toIconWithInfo:(id)arg2 isPrivate:(BOOL)arg3;
-- (void)_atomicallySaveImageData:(id)arg1 iconURL:(id)arg2 pageURL:(id)arg3 originalPageURL:(id)arg4 isPrivate:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_atomicallySaveImageData:(id)arg1 iconURL:(id)arg2 pageURL:(id)arg3 originalPageURL:(id)arg4 size:(struct CGSize)arg5 isPrivate:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (id)_cachedResponseForRequest:(id)arg1;
-- (void)_confirmImageDataShouldBeSaved:(id)arg1 pageURL:(id)arg2 includingPrivateData:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (id)_defaultFaviconForSize:(struct CGSize)arg1;
+- (void)_confirmImageDataShouldBeSaved:(id)arg1 size:(struct CGSize)arg2 pageURL:(id)arg3 iconURL:(id)arg4 includingPrivateData:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)_getIconForRequest:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)_hostFromRequest:(id)arg1;
+- (id)_hostFromURL:(id)arg1;
 - (BOOL)_isIconDateExpired:(id)arg1;
 - (void)_linkPageURL:(id)arg1 toIconWithInfo:(id)arg2 isPrivate:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_prepareAndSendResponseForRequests:(id)arg1 forceDidReceiveNewData:(BOOL)arg2;
@@ -55,17 +64,21 @@
 - (id)_requestsForHost:(id)arg1;
 - (id)_responseCacheKeyForRequest:(id)arg1;
 - (id)_responseDictionaryKeyForRequest:(id)arg1;
-- (void)_saveImageData:(id)arg1 iconURL:(id)arg2 pageURL:(id)arg3 originalPageURL:(id)arg4 isPrivate:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)_setProviderState:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_saveImageData:(id)arg1 iconURL:(id)arg2 pageURL:(id)arg3 originalPageURL:(id)arg4 size:(struct CGSize)arg5 isPrivate:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)_updateOutstandingRequestsAfterSuccessfulSetup;
 - (void)_updateOutstandingRequestsForPageURL:(id)arg1 forceDidReceiveNewData:(BOOL)arg2;
+- (id)builtInIconForRequest:(id)arg1;
 - (BOOL)canHandleRequest:(id)arg1;
 - (void)cleanUpAfterPersistenceSetUpDidSucceed:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)emptyCaches;
+- (id)fallbackIconForRequest:(id)arg1;
 - (void)flushPrivateDataFromMemoryWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)imageForRequestDuringPersistenceSetUp:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithPersistenceBaseURL:(id)arg1 persistenceName:(id)arg2;
+- (id)initWithPersistenceBaseURL:(id)arg1 persistenceName:(id)arg2 preferredIconSize:(struct CGSize)arg3 atScale:(double)arg4 allScales:(id)arg5 isReadOnly:(BOOL)arg6 shouldCheckIntegrityWhenOpeningDatabaseBlock:(CDUnknownBlockType)arg7;
+- (id)initWithPersistenceBaseURL:(id)arg1 persistenceName:(id)arg2 preferredIconSize:(struct CGSize)arg3 atScale:(double)arg4 allScales:(id)arg5 shouldCheckIntegrityWhenOpeningDatabaseBlock:(CDUnknownBlockType)arg6;
+- (void)linkIconFromPageURL:(id)arg1 toCurrentPageURL:(id)arg2 isPrivate:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)persistenceController;
 - (void)prepareResponseForRequest:(id)arg1 allowDelayedResponse:(BOOL)arg2;
 - (long long)providerState;
@@ -74,9 +87,8 @@
 - (void)removeIconForURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)responseForRequest:(id)arg1 willProvideUpdates:(BOOL *)arg2;
 - (void)retainPrivateData;
-- (void)saveFaviconImageData:(id)arg1 iconURL:(id)arg2 pageURL:(id)arg3 originalPageURL:(id)arg4 isPrivate:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)saveFaviconImageData:(id)arg1 iconURL:(id)arg2 pageURL:(id)arg3 originalPageURL:(id)arg4 size:(struct CGSize)arg5 isPrivate:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)savePendingChangesBeforeTermination;
-- (void)setDefaultFavicon:(id)arg1 forSize:(struct CGSize)arg2;
 - (void)setUpPersistenceAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setUpWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)shouldIconDataBeSavedForIconWithPageURL:(id)arg1 originalPageURL:(id)arg2 iconURL:(id)arg3 size:(struct CGSize)arg4 isPrivate:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;

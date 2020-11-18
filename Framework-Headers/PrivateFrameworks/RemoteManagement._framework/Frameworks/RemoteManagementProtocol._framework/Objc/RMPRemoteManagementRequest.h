@@ -14,11 +14,15 @@
     NSString *_requestType;
 }
 
-@property (strong, nonatomic) NSString *requestType; // @synthesize requestType=_requestType;
-@property (strong, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
+@property (copy, nonatomic) NSString *requestType; // @synthesize requestType=_requestType;
+@property (copy, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
 
 + (id)requestForPayload:(id)arg1 error:(id *)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)loadRequestFromDictionary:(id)arg1 error:(id *)arg2;
 - (id)serialize;
 

@@ -8,13 +8,13 @@
 
 #import <PassKitUI/PKLinkedApplicationObserver-Protocol.h>
 
-@class NSArray, NSString, NSURL, PKLinkedAppUserRatingView, PKLinkedApplication, UIActivityIndicatorView, UIButton, UIColor, UIImageView, UILabel;
+@class NSArray, NSString, NSURL, PKContinuousButton, PKLinkedAppUserRatingView, PKLinkedApplication, UIActivityIndicatorView, UIColor, UIImageView, UILabel;
 
 @interface PKLinkedAppView : PKTableViewCell <PKLinkedApplicationObserver>
 {
     UIImageView *_iconView;
     UILabel *_appName;
-    UIButton *_viewButton;
+    PKContinuousButton *_viewButton;
     UILabel *_appPublisher;
     PKLinkedAppUserRatingView *_userRatingView;
     UILabel *_price;
@@ -23,16 +23,20 @@
     PKLinkedApplication *_linkedApplication;
     UIColor *_mainLabelColor;
     UIColor *_subTextLabelColor;
+    UIColor *_buttonBackgroundColor;
+    UIColor *_buttonTintColor;
 }
 
 @property (copy, nonatomic) NSURL *appLaunchURL;
+@property (strong, nonatomic) UIColor *buttonBackgroundColor; // @synthesize buttonBackgroundColor=_buttonBackgroundColor;
+@property (strong, nonatomic) UIColor *buttonTintColor; // @synthesize buttonTintColor=_buttonTintColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKLinkedApplication *linkedApplication; // @synthesize linkedApplication=_linkedApplication;
-@property (nonatomic) UIColor *mainLabelColor; // @synthesize mainLabelColor=_mainLabelColor;
+@property (strong, nonatomic) UIColor *mainLabelColor; // @synthesize mainLabelColor=_mainLabelColor;
 @property (copy, nonatomic) NSArray *storeIDs;
-@property (nonatomic) UIColor *subTextLabelColor; // @synthesize subTextLabelColor=_subTextLabelColor;
+@property (strong, nonatomic) UIColor *subTextLabelColor; // @synthesize subTextLabelColor=_subTextLabelColor;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

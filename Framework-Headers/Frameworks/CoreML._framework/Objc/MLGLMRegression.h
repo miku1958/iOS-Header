@@ -8,6 +8,8 @@
 
 #import <CoreML/MLModelSpecificationLoader-Protocol.h>
 
+@class NSString;
+
 @interface MLGLMRegression : MLRegressor <MLModelSpecificationLoader>
 {
     struct vector<double, std::__1::allocator<double>> intercept;
@@ -16,11 +18,16 @@
     struct shared_ptr<CoreML::Specification::Model> m_spec;
 }
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithLRSpec:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
-- (id)initWithSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
+- (id)initWithLRSpec:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
+- (id)initWithSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id)regress:(id)arg1 options:(id)arg2 error:(id *)arg3;
 
 @end

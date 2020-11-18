@@ -8,17 +8,20 @@
 
 #import <CoreCDPInternal/CDPDSecureBackupProxy-Protocol.h>
 
-@class NSString;
+@class CDPContext, NSString;
 
 @interface CDPDSecureBackupProxyImpl : NSObject <CDPDSecureBackupProxy>
 {
+    CDPContext *_cdpContext;
 }
 
+@property (strong, nonatomic) CDPContext *cdpContext; // @synthesize cdpContext=_cdpContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_secureBackup;
 - (id)accountInfoWithInfo:(id)arg1 error:(id *)arg2;
 - (void)cacheRecoveryKey:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
@@ -27,6 +30,7 @@
 - (void)enableWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (BOOL)enableWithInfo:(id)arg1 error:(id *)arg2;
 - (void)getAccountInfoWithInfo:(id)arg1 completionBlockWithResults:(CDUnknownBlockType)arg2;
+- (id)initWithContext:(id)arg1;
 - (void)recoverWithInfo:(id)arg1 completionBlockWithResults:(CDUnknownBlockType)arg2;
 - (id)recoverWithInfo:(id)arg1 error:(id *)arg2;
 - (void)uncacheAllSecrets;

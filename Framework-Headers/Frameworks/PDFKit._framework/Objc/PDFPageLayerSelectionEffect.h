@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)_createTextMagnifierContentsImageAtPagePoint:(struct CGPoint)arg1 forLoupeType:(int)arg2 forSize:(struct CGSize)arg3;
 - (void)_generateRects;
 - (void)_generateSelectionIsFirstPage:(BOOL)arg1 isLastPage:(BOOL)arg2;
+- (void)_processloupeRenderRequest;
 - (void)_updateGraphics;
 - (void)_updateHandleGraphics;
 - (void)_updateMagnificationLoupeLayer:(int)arg1 withPagePoint:(struct CGPoint)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_DUIClientSessionCommon-Protocol.h>
+#import <UIKitCore/_DUIClientSessionCommon-Protocol.h>
 
 @class BKSAnimationFenceHandle, NSArray, NSXPCListenerEndpoint, PBItemCollection;
 

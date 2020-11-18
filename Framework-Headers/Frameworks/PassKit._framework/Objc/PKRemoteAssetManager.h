@@ -4,34 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSURL, NSURLSession;
+@class NSMutableArray, NSMutableDictionary, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface PKRemoteAssetManager : NSObject
 {
     NSURL *_directoryURL;
-    NSURLSession *_urlSession;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_manifestItemsByRelativeURL;
+    NSMutableDictionary *_sha1HexFromRelativeManifest;
     NSMutableArray *_completionHandlers;
 }
 
 - (void).cxx_destruct;
 - (void)_callCompletionHandlersWithFinishState:(BOOL)arg1 progress:(float)arg2 error:(id)arg3;
-- (void)_downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_flushBundleCaches;
 - (BOOL)addRemoteAssetData:(id)arg1 forManifestItem:(id)arg2 error:(id *)arg3;
+- (BOOL)addRemoteAssetData:(id)arg1 shouldWriteData:(BOOL)arg2 forManifestItem:(id)arg3 error:(id *)arg4;
 - (BOOL)assetExistsLocally:(id)arg1;
-- (void)cancelDownloads;
 - (id)deviceSpecificItems;
 - (id)deviceSpecificItemsForScreenScale:(double)arg1 suffix:(id)arg2;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithFileURL:(id)arg1 queue:(id)arg2;
 - (id)itemWithRelativePath:(id)arg1;
 - (id)remoteAssetManifests;
+- (id)sha1HexFromRelativeManifestWithRelativePath:(id)arg1;
 
 @end
 

@@ -6,9 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class MTMetrics, MTTimerCache, MTTimerManagerExportedObject, MTXPCConnectionProvider, NSNotificationCenter;
+#import <MobileTimer/MTTimerManagerIntentSupport-Protocol.h>
+#import <MobileTimer/MTTimerManagerProviding-Protocol.h>
+#import <MobileTimer/MTUserDefaultNotificationObserver-Protocol.h>
 
-@interface MTTimerManager : NSObject
+@class MTMetrics, MTTimerCache, MTTimerManagerExportedObject, MTXPCConnectionProvider, NSNotificationCenter, NSString;
+@protocol MTTimerManagerIntentSupport;
+
+@interface MTTimerManager : NSObject <MTTimerManagerIntentSupport, MTTimerManagerProviding, MTUserDefaultNotificationObserver>
 {
     MTTimerManagerExportedObject *_exportedObject;
     struct MTXPCConnectionProvider *_connectionProvider;
@@ -19,10 +24,27 @@
 
 @property (strong, nonatomic) MTTimerCache *cache; // @synthesize cache=_cache;
 @property (readonly, nonatomic) MTXPCConnectionProvider *connectionProvider; // @synthesize connectionProvider=_connectionProvider;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MTTimerManagerExportedObject *exportedObject; // @synthesize exportedObject=_exportedObject;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MTMetrics *metrics; // @synthesize metrics=_metrics;
 @property (strong, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
+@property (readonly, nonatomic) id notificationObject;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) id<MTTimerManagerIntentSupport> timerManager;
 
++ (double)defaultDuration;
++ (void)setDefaultDuration:(double)arg1;
++ (void)updateTimerShortcutItem;
 + (void)warmUp;
 - (void).cxx_destruct;
 - (void)_getCachedTimersWithFuture:(id)arg1 finishBlock:(CDUnknownBlockType)arg2;

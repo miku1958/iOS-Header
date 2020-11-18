@@ -9,21 +9,21 @@
 #import <MaterialKit/MTMaterialOverlaySettings-Protocol.h>
 #import <MaterialKit/MTMaterialSettings-Protocol.h>
 #import <MaterialKit/MTZooming-Protocol.h>
-#import <MaterialKit/_MTMaterialVersioning-Protocol.h>
 
 @class MTVibrantStylingProvider, NSString, UIColor;
 
-@interface MTPreviewBackgroundMaterialSettings : NSObject <MTMaterialSettings, MTMaterialOverlaySettings, _MTMaterialVersioning, MTZooming>
+@interface MTPreviewBackgroundMaterialSettings : NSObject <MTMaterialSettings, MTMaterialOverlaySettings, MTZooming>
 {
 }
 
+@property (readonly, copy, nonatomic) UIColor *baseOverlayColor;
+@property (nonatomic) double baseOverlayTintAlpha;
 @property (nonatomic) double blurRadius;
 @property (nonatomic) double brightness;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double luminanceAlpha;
-@property (readonly, nonatomic) long long materialVersion;
 @property (nonatomic) double primaryOverlayTintAlpha;
 @property (readonly, copy, nonatomic) UIColor *primaryOverlayTintColor;
 @property (nonatomic) double saturation;

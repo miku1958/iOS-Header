@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
     TSCHChartDrawableLayoutLegendResizer *mLegendResizer;
 }
 
-@property (readonly, nonatomic) TSCHChartInfo *chartInfo;
+@property (readonly, weak, nonatomic) TSCHChartInfo *chartInfo;
 @property (readonly, strong, nonatomic) TSCHChartLayout *chartLayout;
 @property (nonatomic) unsigned long long dataSetIndex;
 @property (nonatomic) BOOL forceLayoutSettingsOmitLabelPlacement; // @synthesize forceLayoutSettingsOmitLabelPlacement=mForceLayoutSettingsOmitLabelPlacement;

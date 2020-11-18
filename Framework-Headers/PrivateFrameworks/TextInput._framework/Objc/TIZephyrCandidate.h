@@ -16,6 +16,7 @@
     unsigned int _usageTrackingMask;
     unsigned long long _wordOriginFeedbackID;
     TIProactiveTrigger *_proactiveTrigger;
+    NSString *_responseKitCategory;
     NSString *_fromBundleId;
     unsigned long long _ageForConnectionsMetrics;
     _ICPredictedItem *_proactivePredictedItem;
@@ -31,18 +32,21 @@
 
 + (BOOL)supportsSecureCoding;
 + (int)type;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4;
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 secureContentCandidate:(BOOL)arg5 proactiveTrigger:(id)arg6 proactivePredictedItem:(id)arg7;
+- (id)initWithCandidate:(id)arg1 forInput:(id)arg2 wordOriginFeedbackID:(unsigned long long)arg3 usageTrackingMask:(unsigned int)arg4 secureContentCandidate:(BOOL)arg5 proactiveTrigger:(id)arg6 proactivePredictedItem:(id)arg7 responseKitCategory:(id)arg8;
+- (id)initWithCandidate:(id)arg1 responseKitCategory:(id)arg2;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isAutocorrection;
 - (BOOL)isSecureContentCandidate;
 - (id)proactiveTrigger;
+- (id)responseKitCategory;
 - (unsigned int)usageTrackingMask;
 - (unsigned long long)wordOriginFeedbackID;
 

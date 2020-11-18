@@ -11,6 +11,7 @@
 @class NSDictionary, NSString, TXRDeferredTextureInfo, TXRTextureInfo;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface TXRParserKTX : NSObject <TXRParser>
 {
     TXRTextureInfo *_textureInfo;

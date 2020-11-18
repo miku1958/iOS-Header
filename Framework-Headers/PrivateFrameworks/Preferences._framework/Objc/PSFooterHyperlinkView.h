@@ -4,44 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UITableViewHeaderFooterView.h>
 
 #import <Preferences/PSHeaderFooterView-Protocol.h>
 #import <Preferences/UITextViewDelegate-Protocol.h>
 
-@class NSString, NSURL, UIImageView, UITextView;
+@class NSLayoutConstraint, NSString, NSURL, UITextView;
 
-@interface PSFooterHyperlinkView : UIView <PSHeaderFooterView, UITextViewDelegate>
+@interface PSFooterHyperlinkView : UITableViewHeaderFooterView <PSHeaderFooterView, UITextViewDelegate>
 {
-    UITextView *_textView;
     NSString *_text;
     NSURL *_URL;
-    struct _NSRange _linkRange;
     id _target;
     SEL _action;
-    UIImageView *_iconView;
+    UITextView *_textView;
+    NSLayoutConstraint *_textViewLeadingConstraint;
+    NSLayoutConstraint *_textViewTrailingConstraint;
+    struct _NSRange _linkRange;
 }
 
-@property (strong) NSURL *URL;
-@property SEL action; // @synthesize action=_action;
+@property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (nonatomic) SEL action; // @synthesize action=_action;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) UIImageView *iconView; // @synthesize iconView=_iconView;
-@property struct _NSRange linkRange;
+@property (nonatomic) struct _NSRange linkRange; // @synthesize linkRange=_linkRange;
 @property (readonly) Class superclass;
-@property (weak) id target; // @synthesize target=_target;
-@property (strong) NSString *text;
+@property (weak, nonatomic) id target; // @synthesize target=_target;
+@property (strong, nonatomic) NSString *text; // @synthesize text=_text;
+@property (strong, nonatomic) UITextView *textView; // @synthesize textView=_textView;
+@property (strong, nonatomic) NSLayoutConstraint *textViewLeadingConstraint; // @synthesize textViewLeadingConstraint=_textViewLeadingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *textViewTrailingConstraint; // @synthesize textViewTrailingConstraint=_textViewTrailingConstraint;
 
 - (void).cxx_destruct;
+- (void)_accessibilitySetInterfaceStyleIntent:(unsigned long long)arg1;
 - (void)_linkify;
 - (id)initWithSpecifier:(id)arg1;
 - (BOOL)isValidLinkRange;
-- (void)layoutSubviews;
-- (double)preferredHeightForWidth:(double)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (struct UIEdgeInsets)textInsets;
+- (double)preferredHeightForWidth:(double)arg1 inTableView:(id)arg2;
+- (void)setTableView:(id)arg1;
+- (void)setupSubviewsAndContstraints;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
+- (void)updateConstraints;
 
 @end
 

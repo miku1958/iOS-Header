@@ -18,12 +18,12 @@
     NSString *_identifier;
     NSString *_title;
     unsigned long long _activationMode;
-    BOOL _requiresAuthentication;
     NSURL *_launchURL;
     NSString *_launchBundleID;
     unsigned long long _behavior;
     NSDictionary *_behaviorParameters;
     id<NCNotificationActionRunner> _actionRunner;
+    BOOL _requiresAuthentication;
     BOOL _destructiveAction;
     BOOL _shouldDismissNotification;
 }

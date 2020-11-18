@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_keyboardDidShow:(id)arg1;
+- (void)dealloc;
 - (void)didBeginEditingPassword:(id)arg1 inView:(id)arg2;
 - (void)didEndEditingPassword:(id)arg1 inView:(id)arg2;
 - (void)hide;

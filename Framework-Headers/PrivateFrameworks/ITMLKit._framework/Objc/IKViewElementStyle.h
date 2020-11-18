@@ -70,8 +70,6 @@
 @property (readonly, nonatomic) NSNumber *transitionInterval;
 @property (readonly, nonatomic) NSString *visibility;
 
-+ (id)_clonedCSSDeclarationEdgeInsetsFromDeclaration:(id)arg1;
-+ (id)_updatedEdgeInsetsDeclaration:(id)arg1 withValue:(double)arg2 forIndex:(unsigned long long)arg3;
 + (void)addBlockedStyle:(id)arg1;
 + (unsigned long long)alignmentFromString:(id)arg1;
 + (void)clearBlockedStyles;

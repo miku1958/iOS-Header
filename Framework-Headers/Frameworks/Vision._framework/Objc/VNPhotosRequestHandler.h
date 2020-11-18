@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Vision/VNRequestCancelling-Protocol.h>
 #import <Vision/VNRequestWarming-Protocol.h>
@@ -23,7 +23,6 @@
 
 - (void).cxx_destruct;
 - (void)cancelAllRequests;
-- (id)clusterContextWithOptions:(id)arg1 allowingCreation:(BOOL)arg2 error:(id *)arg3;
 - (id)init;
 - (BOOL)performRequests:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForPerformingRequests:(id)arg1 error:(id *)arg2;

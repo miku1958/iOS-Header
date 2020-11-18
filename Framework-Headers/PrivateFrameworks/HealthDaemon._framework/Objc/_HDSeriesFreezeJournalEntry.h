@@ -10,14 +10,14 @@
 
 @interface _HDSeriesFreezeJournalEntry : HDJournalEntry
 {
-    NSUUID *_seriesIdentifier;
+    NSUUID *_seriesUUID;
     NSDictionary *_metadata;
     Class _seriesClass;
 }
 
-@property (readonly, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (readonly, copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) Class seriesClass; // @synthesize seriesClass=_seriesClass;
-@property (readonly, copy, nonatomic) NSUUID *seriesIdentifier; // @synthesize seriesIdentifier=_seriesIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *seriesUUID; // @synthesize seriesUUID=_seriesUUID;
 
 + (void)applyEntries:(id)arg1 withProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;
@@ -25,7 +25,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSeriesPersistentID:(id)arg1 metadata:(id)arg2 class:(Class)arg3;
+- (id)initWithSeriesUUID:(id)arg1 metadata:(id)arg2 class:(Class)arg3;
 
 @end
 

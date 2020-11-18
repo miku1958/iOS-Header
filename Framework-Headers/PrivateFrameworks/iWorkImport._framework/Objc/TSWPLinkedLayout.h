@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isOverflowing;
 - (id)nextTargetFirstColumn;
 - (id)nextTargetTopicNumbers;
-- (BOOL)optimizeSegmentationOfEmptyLines;
 - (id)previousTargetLastColumn;
 - (id)previousTargetTopicNumbers;
 - (BOOL)repShouldPreventCaret;

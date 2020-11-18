@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, SFAnalyticsSQLiteStore;
 @protocol OS_dispatch_queue;
@@ -19,9 +19,11 @@
 }
 
 @property (strong, nonatomic) SFAnalyticsSQLiteStore *database; // @synthesize database=_database;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (void)addOSVersionToEvent:(id)arg1;
 + (id)databasePath;
++ (id)defaultAnalyticsDatabasePath:(id)arg1;
 + (long long)fuzzyDaysSinceDate:(id)arg1;
 + (id)logger;
 - (void).cxx_destruct;

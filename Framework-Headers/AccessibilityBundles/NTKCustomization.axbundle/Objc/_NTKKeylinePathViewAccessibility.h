@@ -13,14 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (long long)_accessibilityCurrentEditMode;
 - (id)_accessibilityCustomActions;
 - (id)_accessibilityEditPageView;
-- (void)_accessibilityEditPickerValue:(BOOL)arg1;
-- (id)_accessibilityEditView;
-- (id)_accessibilityFaceViewController;
 - (BOOL)_accessibilityOverridesInvalidFrames;
-- (id)_accessibilityPickerView;
 - (void)accessibilityDecrement;
 - (void)accessibilityElementDidBecomeFocused;
 - (id)accessibilityHint;

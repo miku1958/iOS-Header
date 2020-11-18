@@ -11,10 +11,14 @@
 __attribute__((visibility("hidden")))
 @interface CNiOSPersonFetcher : NSObject
 {
-    void *_addressBook;
     CNiOSPersonFetchRequest *_fetchRequest;
+    void *_addressBook;
     CNContactsEnvironment *_environment;
 }
+
+@property (readonly, nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
+@property (readonly, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;
+@property (readonly, nonatomic) CNiOSPersonFetchRequest *fetchRequest; // @synthesize fetchRequest=_fetchRequest;
 
 + (id)peopleForFetchRequest:(id)arg1 matchInfos:(id *)arg2 inAddressBook:(void *)arg3 environment:(id)arg4 error:(id *)arg5;
 - (void).cxx_destruct;

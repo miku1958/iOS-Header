@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 #import <SoftwareUpdateServices/SUAutoInstallOperationClientHandler-Protocol.h>
@@ -42,8 +42,9 @@
 - (BOOL)_isValidForScheduling;
 - (BOOL)_isValidTillDate:(id)arg1;
 - (void)_noteAutoInstallOperationDidConsent;
-- (void)_noteAutoInstallOperationDidExpire;
+- (void)_noteAutoInstallOperationDidExpireWithError:(id)arg1;
 - (void)_noteAutoInstallOperationIsReadyToInstall:(CDUnknownBlockType)arg1;
+- (void)_noteAutoInstallOperationPasscodePolicyChanged:(unsigned long long)arg1;
 - (void)_noteAutoInstallOperationWasCancelled;
 - (void)cancel;
 - (void)dealloc;

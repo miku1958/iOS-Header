@@ -12,11 +12,12 @@
 - (void)hostApplicationDidBecomeActive;
 - (void)hostApplicationDidEnterBackground:(BOOL)arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(BOOL)arg2;
-- (void)invalidatePreviewCollection;
+- (void)invalidateService;
 - (void)keyCommandWasPerformed:(UIKeyCommand *)arg1;
 - (void)keyCommandsWithCompletionHandler:(void (^)(NSArray *))arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(void (^)(void))arg1;
+- (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(void (^)(void))arg1;
 - (void)setAppearance:(QLAppearance *)arg1 animated:(BOOL)arg2;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)setLoadingString:(NSString *)arg1;

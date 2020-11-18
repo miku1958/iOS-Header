@@ -10,7 +10,6 @@
 
 @protocol _SFPBMoreResults <NSObject>
 
-@property (readonly, nonatomic) BOOL hasLabel;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *label;
 

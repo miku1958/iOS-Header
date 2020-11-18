@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUICatalog, CUIStyleEffectConfiguration, NSDictionary;
 
@@ -35,6 +35,7 @@
         unsigned int _cachesLayout:1;
         unsigned int _usesSimpleTextEffects:1;
         unsigned int _activeRenderers:4;
+        unsigned int _applicationPlatformContext:3;
     } _sdcFlags;
 }
 
@@ -63,9 +64,12 @@
 @property (nonatomic) BOOL wantsScaledLineHeight;
 @property (nonatomic) BOOL wrapsForTruncationMode;
 
+- (long long)applicationFrameworkContext;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)init;
+- (void)setApplicationFrameworkContext:(long long)arg1;
 
 @end
 

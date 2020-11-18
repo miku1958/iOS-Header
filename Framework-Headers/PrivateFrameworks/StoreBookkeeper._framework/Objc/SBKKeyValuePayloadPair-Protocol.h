@@ -5,10 +5,11 @@
 //
 
 #import <StoreBookkeeper/NSObject-Protocol.h>
+#import <StoreBookkeeper/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString;
 
-@protocol SBKKeyValuePayloadPair <NSObject>
+@protocol SBKKeyValuePayloadPair <NSObject, NSSecureCoding>
 + (id)pairWithKVSKey:(NSString *)arg1 kvsPayload:(NSData *)arg2;
 - (NSString *)kvsKey;
 - (NSData *)kvsPayload;

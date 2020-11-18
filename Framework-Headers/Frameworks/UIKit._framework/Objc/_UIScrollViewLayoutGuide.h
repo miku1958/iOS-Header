@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UILayoutGuide.h>
+#import <UIKitCore/UILayoutGuide.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIScrollViewLayoutGuide : UILayoutGuide
@@ -13,14 +13,9 @@ __attribute__((visibility("hidden")))
 
 - (id)_boundsHeightVariable;
 - (id)_boundsWidthVariable;
-- (id)_minXVariable;
-- (id)_minYVariable;
 - (void)_setOwningView:(id)arg1;
-- (BOOL)_uili_requiresObservationForVariable:(id)arg1;
 - (id)nsli_boundsHeightVariable;
 - (id)nsli_boundsWidthVariable;
-- (id)nsli_minXVariable;
-- (id)nsli_minYVariable;
 
 @end
 

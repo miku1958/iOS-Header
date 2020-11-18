@@ -30,15 +30,15 @@
 - (void).cxx_destruct;
 - (id)_bucketDateForIndex:(unsigned long long)arg1 startOfDay:(id)arg2;
 - (long long)_bucketIndexForDate:(id)arg1 startOfDay:(id)arg2 bucketDates:(id)arg3;
-- (double)_percentageOfTypicalDayComparedToNowForGoal:(unsigned long long)arg1;
+- (double)_percentageOfTypicalDayComparedToNowForGoal:(long long)arg1;
 - (double)_queue_briskWalkTimeToCompleteMoveGoalWithDateOfBirth:(id)arg1 biologicalSex:(long long)arg2 height:(id)arg3 weight:(id)arg4 wheelchairUse:(long long)arg5;
 - (id)_queue_calculateProjectedOffWristDateFromActivitySummaries:(id)arg1;
-- (id)_queue_createHistogramForGoalType:(unsigned long long)arg1 activitySummaries:(id)arg2;
+- (id)_queue_createHistogramForGoalType:(long long)arg1 activitySummaries:(id)arg2;
 - (double)_queue_currentValueForHistogram:(id)arg1;
 - (id)_queue_fetchActivitySummariesOrderedByCacheIndexWithCalendar:(id)arg1;
 - (void)_queue_populateHistogramsAndOffWristDateForToday;
 - (void)_waitUntilActivitySummaryLoaded;
-- (BOOL)_willCompleteGoalWithType:(unsigned long long)arg1 bufferPercentage:(double)arg2;
+- (BOOL)_willCompleteGoalWithType:(long long)arg1 bufferPercentage:(double)arg2;
 - (double)briskWalkTimeToCompleteMoveGoalWithAcitivitySettingsController:(id)arg1;
 - (double)currentExerciseGoalPercentage;
 - (double)currentMoveGoalPercentage;

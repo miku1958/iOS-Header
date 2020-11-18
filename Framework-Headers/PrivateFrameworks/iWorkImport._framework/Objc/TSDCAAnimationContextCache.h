@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDCAAnimationContextCacheProtocol-Protocol.h>
 
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double timeOffset; // @synthesize timeOffset=_timeOffset;
 @property (readonly, nonatomic) CAMediaTimingFunction *timingFunction; // @synthesize timingFunction=_timingFunction;
 
+- (void).cxx_destruct;
 - (double)animationPercentFromAnimationTime:(double)arg1;
 - (id)initWithAnimation:(id)arg1;
 - (double)percentAtTime:(double)arg1;

@@ -6,11 +6,11 @@
 
 #import <ITMLKit/IKCSSMediaQueryList.h>
 
-@class NSMutableArray, NSString;
+@class IKMutableArray, NSString;
 
 @interface IKCSSMediaQueryAndList : IKCSSMediaQueryList
 {
-    NSMutableArray *_queryList;
+    IKMutableArray *_queryList;
     BOOL _negated;
     NSString *_type;
 }

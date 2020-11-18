@@ -25,7 +25,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSmartCamprints:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1 smartCamprints:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

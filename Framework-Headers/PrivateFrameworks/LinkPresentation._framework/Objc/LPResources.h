@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 + (id)chevron;
 + (id)iCloudDriveIcon;
 + (id)indeterminateProgressSpinner;
++ (id)indeterminateProgressSpinnerDarkInterface;
 + (id)keynoteIcon;
 + (id)metadataExtractorJS;
 + (id)musicPauseButton;

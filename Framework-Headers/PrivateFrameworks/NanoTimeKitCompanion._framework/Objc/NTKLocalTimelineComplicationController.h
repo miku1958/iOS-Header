@@ -37,7 +37,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)_acceptsComplicationType:(unsigned long long)arg1 family:(long long)arg2;
++ (BOOL)_acceptsComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void).cxx_destruct;
 - (void)_activate;
 - (void)_applyAnimationMode;
@@ -59,7 +59,7 @@
 - (void)_startSetupOperationIfPossible;
 - (void)_suspendLeftBoundaryDate:(id)arg1;
 - (void)_suspendRightBoundaryDate:(id)arg1;
-- (void)_updateCurrentTemplate;
+- (void)_updateCurrentTemplateWithReason:(long long)arg1;
 - (void)_updateDimStateForCurrentTimeline;
 - (void)_updateIsComplicationActive:(BOOL)arg1;
 - (void)_updateTimeTravelBoundaries;
@@ -69,13 +69,14 @@
 - (void)didTouchDown;
 - (void)didTouchUpInside;
 - (BOOL)hasTapAction;
-- (id)initWithComplication:(id)arg1 family:(long long)arg2;
+- (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void)invalidateEntries;
 - (void)invalidateSwitcherTemplate;
 - (double)minimumIntervalBetweenTimelineEntries;
 - (void)nowEntryDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)performTapAction;
-- (void)setCurrentTemplate:(id)arg1 withAnimation:(unsigned long long)arg2;
+- (Class)richComplicationDisplayViewClass;
+- (void)setCurrentTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
 - (void)setDataMode:(long long)arg1 forDisplayWrapper:(id)arg2;
 - (void)setShowsLockedUI:(BOOL)arg1;
 - (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;

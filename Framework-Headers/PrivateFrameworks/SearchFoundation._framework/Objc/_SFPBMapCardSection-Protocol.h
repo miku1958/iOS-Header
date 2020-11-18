@@ -6,7 +6,7 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBLatLng, _SFPBMapRegion, _SFPBPunchout;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBLatLng, _SFPBMapRegion, _SFPBPin, _SFPBPunchout;
 
 @protocol _SFPBMapCardSection <NSObject>
 
@@ -15,29 +15,14 @@
 @property (nonatomic) BOOL canBeHidden;
 @property (copy, nonatomic) NSString *footnote;
 @property (copy, nonatomic) NSString *footnoteLabel;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasBoundingMapRegion;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasFootnote;
-@property (readonly, nonatomic) BOOL hasFootnoteLabel;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasInteractive;
-@property (readonly, nonatomic) BOOL hasLocation;
-@property (readonly, nonatomic) BOOL hasPinBehavior;
-@property (readonly, nonatomic) BOOL hasPinColor;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasSizeFormat;
 @property (nonatomic) BOOL hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
 @property (nonatomic) BOOL interactive;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBLatLng *location;
 @property (nonatomic) int pinBehavior;
 @property (strong, nonatomic) _SFPBColor *pinColor;
+@property (copy, nonatomic) NSArray *pins;
 @property (copy, nonatomic) NSArray *punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
@@ -45,10 +30,14 @@
 @property (nonatomic) int sizeFormat;
 @property (copy, nonatomic) NSString *type;
 
+- (void)addPins:(_SFPBPin *)arg1;
 - (void)addPunchoutOptions:(_SFPBPunchout *)arg1;
+- (void)clearPins;
 - (void)clearPunchoutOptions;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (_SFPBPin *)pinsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)pinsCount;
 - (_SFPBPunchout *)punchoutOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)punchoutOptionsCount;
 @end

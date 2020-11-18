@@ -43,7 +43,7 @@
 - (id)currentPosterImage;
 - (long long)currentReviewIndex;
 - (id)currentStyleComplicationColor;
-- (id)init;
+- (id)initForDevice:(id)arg1;
 - (void)invalidateCurrentListing;
 - (void)invalidatePreparedListing;
 - (id)nextListing;

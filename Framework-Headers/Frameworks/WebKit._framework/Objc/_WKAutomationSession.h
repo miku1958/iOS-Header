@@ -34,6 +34,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithConfiguration:(id)arg1;
+- (void)terminate;
 
 @end
 

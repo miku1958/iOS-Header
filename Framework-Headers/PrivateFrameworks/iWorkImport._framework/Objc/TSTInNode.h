@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)inString;
-- (id)argumentSpec;
+- (struct TSCEFunctionArgSpec *)argumentSpec;
 - (id)formulaPlainText;
 - (void)loadFromArchive:(const struct InNodeArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;

@@ -11,17 +11,17 @@
 #import <SafariShared/WBSParsecSearchMapsResult-Protocol.h>
 #import <SafariShared/WBSParsecSearchResult-Protocol.h>
 #import <SafariShared/WBSParsecSearchSimpleResult-Protocol.h>
+#import <SafariShared/WBSParsecSearchSportsResult-Protocol.h>
 
-@class MKMapItem, NSArray, NSNumber, NSString, NSURL, SFSearchResult, WBSParsecActionButton, WBSParsecAuxiliaryInfo, WBSParsecImageRepresentation, WBSParsecLegacySearchResult, WBSParsecSearchMapsResultFeedbackSender, WBSQuerySuggestion;
+@class MKMapItem, NSArray, NSNumber, NSString, NSURL, SFSearchResult, WBSParsecActionButton, WBSParsecAuxiliaryInfo, WBSParsecImageRepresentation, WBSParsecLegacySearchResult, WBSParsecSearchMapsResultFeedbackSender, WBSParsecSearchSportsAttributionExtraCompletionItem, WBSQuerySuggestion;
 @protocol WBSParsecSearchSession;
 
-@interface WBSParsecSearchResult : NSObject <WBSParsecSearchResult, WBSCompletionListItem, WBSParsecSearchGenericResult, WBSParsecSearchMapsResult, WBSParsecSearchSimpleResult>
+@interface WBSParsecSearchResult : NSObject <WBSParsecSearchResult, WBSCompletionListItem, WBSParsecSearchGenericResult, WBSParsecSearchMapsResult, WBSParsecSearchSimpleResult, WBSParsecSearchSportsResult>
 {
     WBSParsecLegacySearchResult *_legacySearchResult;
 }
 
 @property (readonly, nonatomic) WBSParsecActionButton *actionButton;
-@property (readonly, nonatomic) NSArray *additionalMapItems;
 @property (readonly, nonatomic) NSURL *appPunchoutURL;
 @property (readonly, nonatomic) WBSParsecAuxiliaryInfo *auxiliaryInfo;
 @property (readonly, nonatomic) NSString *completion;
@@ -34,12 +34,15 @@
 @property (readonly, nonatomic) NSString *descriptionText;
 @property (readonly, nonatomic) BOOL descriptionTextCanWrap;
 @property (readonly, nonatomic) unsigned long long engagementDestination;
+@property (readonly, nonatomic) WBSParsecSearchSportsAttributionExtraCompletionItem *extraCompletionItem;
 @property (readonly, nonatomic) NSString *feedbackIdentifier;
 @property (readonly, copy, nonatomic) NSString *footnote;
 @property (readonly, nonatomic) BOOL hasSingleLineDescriptionAndTitle;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) WBSParsecImageRepresentation *icon;
 @property (readonly, nonatomic) NSString *identifier;
+@property (readonly, copy, nonatomic) NSArray *images;
+@property (readonly, copy, nonatomic) NSArray *individualScores;
 @property (readonly, nonatomic) NSString *lastSearchQuery;
 @property (readonly, nonatomic) WBSParsecLegacySearchResult *legacySearchResult; // @synthesize legacySearchResult=_legacySearchResult;
 @property (readonly, nonatomic) MKMapItem *mapItem;
@@ -56,6 +59,7 @@
 @property (readonly, nonatomic) NSString *sectionHeader;
 @property (readonly, nonatomic) SFSearchResult *sfSearchResultValue;
 @property (strong, nonatomic) WBSQuerySuggestion *siriSuggestion;
+@property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly, nonatomic) long long subtype;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) WBSParsecImageRepresentation *thumbnail;
@@ -71,6 +75,7 @@
 - (id)_result;
 - (id)_resultPresentedInCard;
 - (id)_simpleResult;
+- (id)_sportsResult;
 - (BOOL)canBecomeTopHitForQuery:(id)arg1;
 - (id)completionIconWithSession:(id)arg1;
 - (id)iconWithSession:(id)arg1;

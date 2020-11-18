@@ -8,16 +8,18 @@
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
+#import <iWorkImport/TSTStrokeLayerEnumerating-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface TSTStrokeLayer : TSPObject <NSCopying, NSMutableCopying>
+@interface TSTStrokeLayer : TSPObject <NSCopying, NSMutableCopying, TSTStrokeLayerEnumerating>
 {
     vector_613d3e5a mStrokeRuns;
-    unsigned short _columnOrRowIndex;
+    unsigned int _columnOrRowIndex;
 }
 
-@property (nonatomic) unsigned short columnOrRowIndex; // @synthesize columnOrRowIndex=_columnOrRowIndex;
+@property (nonatomic) unsigned int columnOrRowIndex; // @synthesize columnOrRowIndex=_columnOrRowIndex;
 @property (readonly, nonatomic) BOOL isEmpty;
+@property (readonly) unsigned long long strokeLayerCount;
 
 + (id)strokeLayer;
 - (id).cxx_construct;
@@ -26,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateStrokesInRange:(struct TSTSimpleRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStrokesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)findStrokeAndRangeAtIndex:(long long)arg1;
-- (id)initWithContext:(id)arg1 columnOrRowIndex:(unsigned short)arg2;
+- (id)initWithContext:(id)arg1 columnOrRowIndex:(unsigned int)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)nextStrokeAndRange:(id)arg1;
@@ -39,11 +41,12 @@ __attribute__((visibility("hidden")))
 - (void)p_removeRange:(struct TSTSimpleRange)arg1;
 - (void)p_setStroke:(id)arg1 inRange:(struct TSTSimpleRange)arg2 order:(int)arg3;
 - (void)p_setStrokeRuns:(vector_613d3e5a)arg1;
+- (void)replaceStrokeLayerAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 - (long long)startingIndex;
+- (id)strokeLayerAtIndex:(unsigned long long)arg1;
 - (id)strokeLayerModifiedByInsertingSpaceAt:(struct TSTSimpleRange)arg1;
 - (id)strokeLayerModifiedByRemovingRangeAt:(struct TSTSimpleRange)arg1;
-- (id)strokeLayerModifiedUsingMoveDelegate:(id)arg1;
 
 @end
 

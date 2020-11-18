@@ -6,6 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
+__attribute__((visibility("hidden")))
 @interface RCEntityRevision : NSManagedObject
 {
 }

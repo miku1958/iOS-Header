@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TIAssetManaging-Protocol.h>
 
@@ -45,6 +45,7 @@
 + (id)sharedAssetManager;
 + (id)sharedAssetManagerWithEnabledInputModesProvider:(CDUnknownBlockType)arg1;
 + (id)singletonInstanceWithEnabledInputModesProvider:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (id)activeInputModeLevels;
 - (void)addAssets:(id)arg1;
 - (void)appleKeyboardsInternalSettingsChanged:(id)arg1;

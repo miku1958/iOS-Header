@@ -8,46 +8,23 @@
 
 #import <Search/NSCopying-Protocol.h>
 
-@class NSArray, NSString;
+@class NSString;
 
 @interface SFSearchResult_Compatibility : SFSearchResult_SpotlightExtras <NSCopying>
 {
-    BOOL _hasSearchResultDomain;
-    BOOL _thumbnail_align_right;
-    int _searchResultDomain;
-    unsigned long long _resultScore;
-    NSString *_sourceDomain;
-    NSString *_subtitle;
-    NSString *_templateName;
-    NSArray *_contactIdentifiers;
-    NSString *_section_header;
-    NSString *_secondary_title;
 }
 
-@property (strong, nonatomic) NSString *adam_id;
-@property (strong, nonatomic) NSString *bundleID;
 @property (strong, nonatomic) NSString *compatibilityTitle;
-@property (strong, nonatomic) NSArray *contactIdentifiers; // @synthesize contactIdentifiers=_contactIdentifiers;
 @property (strong, nonatomic) NSString *externalIdentifier;
-@property (readonly) BOOL hasSearchResultDomain; // @synthesize hasSearchResultDomain=_hasSearchResultDomain;
 @property (strong, nonatomic) NSString *resultIdentifier;
-@property (nonatomic) unsigned long long resultScore; // @synthesize resultScore=_resultScore;
-@property int searchResultDomain; // @synthesize searchResultDomain=_searchResultDomain;
-@property (readonly, nonatomic) NSString *secondary_title; // @synthesize secondary_title=_secondary_title;
-@property (strong, nonatomic) NSString *section_header; // @synthesize section_header=_section_header;
-@property (strong, nonatomic) NSString *sourceDomain; // @synthesize sourceDomain=_sourceDomain;
-@property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property (strong, nonatomic) NSString *templateName; // @synthesize templateName=_templateName;
-@property (nonatomic) BOOL thumbnail_align_right; // @synthesize thumbnail_align_right=_thumbnail_align_right;
-@property int title_maxlines;
 
-- (void).cxx_destruct;
 - (Class)classForCoder;
 - (Class)classForKeyedArchiver;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (BOOL)isQuickGlance;
+- (id)section_header;
 - (void)setSimpleTitle:(id)arg1;
 - (void)setUniqueIdentifier:(id)arg1;
 - (id)simpleTitle;

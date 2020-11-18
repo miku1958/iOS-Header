@@ -9,6 +9,8 @@
 @interface UIViewController (SafariServicesExtras)
 
 @property (readonly, nonatomic) struct CGRect _sf_bottomUnsafeAreaFrame;
+@property (readonly, nonatomic) BOOL _sf_isMFMailComposeViewController;
+@property (readonly, nonatomic) BOOL _sf_isPKAddPassesViewController;
 @property (readonly, nonatomic) UIViewController *_sf_viewControllerToPresentFrom;
 
 - (void)_sf_animateAlongsideTransitionOrPerform:(CDUnknownBlockType)arg1;

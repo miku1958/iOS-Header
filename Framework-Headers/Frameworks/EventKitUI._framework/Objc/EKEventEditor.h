@@ -8,7 +8,7 @@
 
 #import <EventKitUI/EKEventAutocompleteResultsEditItemDelegate-Protocol.h>
 
-@class EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKUIAutocompletePETTracker, EKUIAutocompleteSearchResult, NSString, NSTimer, UIColor;
+@class EKCalendarItemAlarmEditItem, EKCalendarItemCalendarEditItem, EKCalendarItemLocationInlineEditItem, EKCalendarItemTitleInlineEditItem, EKEvent, EKEventAttendeesEditItem, EKEventAutocompleteResultsEditItem, EKEventDateEditItem, EKEventURLAndNotesInlineEditItem, EKUIAutocompletePETTracker, EKUIAutocompleteSearchResult, NSString, NSTimer, UIColor;
 @protocol EKUIAutocompletePendingSearchProtocol;
 
 @interface EKEventEditor : EKCalendarItemEditor <EKEventAutocompleteResultsEditItemDelegate>
@@ -20,13 +20,15 @@
     EKCalendarItemLocationInlineEditItem *_locationInlineEditItem;
     EKCalendarItemCalendarEditItem *_calendarEditItem;
     EKCalendarItemAlarmEditItem *_alarmEditItem;
+    EKEventURLAndNotesInlineEditItem *_notesEditItem;
     BOOL _shouldAutocomplete;
     id<EKUIAutocompletePendingSearchProtocol> _pendingSearch;
     NSTimer *_autocompleteTimer;
     NSString *_autocompleteSearchString;
     BOOL _isTransitioning;
     BOOL _autocompleteResultsVisible;
-    BOOL _focusTitleOnAppearance;
+    unsigned long long _focusOnAppearanceTarget;
+    BOOL _selectOnFocus;
     EKUIAutocompleteSearchResult *_selectedAutocompleteResult;
     unsigned long long _selectedAutocompleteResultIndex;
     EKUIAutocompleteSearchResult *_zeroKeywordResult;
@@ -36,6 +38,7 @@
     EKUIAutocompletePETTracker *_autocompletePETTracker;
     BOOL _showAttachments;
     UIColor *_backgroundColor;
+    NSString *_suggestionKey;
 }
 
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -44,6 +47,7 @@
 @property (strong, nonatomic) EKEvent *event;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL showAttachments; // @synthesize showAttachments=_showAttachments;
+@property (strong, nonatomic) NSString *suggestionKey; // @synthesize suggestionKey=_suggestionKey;
 @property (readonly) Class superclass;
 
 + (Class)_SGSuggestionsServiceClass;
@@ -59,6 +63,7 @@
 - (void)_cancelPendingAutocompleteAndCleanup;
 - (void)_copyEventForPossibleRevert;
 - (id)_editItems;
+- (void)_focusAppearanceTarget;
 - (void)_hideAndCancelAutocompleteResults;
 - (id)_nameForDeleteButton;
 - (id)_orderedEditItems;
@@ -77,7 +82,7 @@
 - (void)editItemDidStartEditing:(id)arg1;
 - (void)editItemTextChanged:(id)arg1;
 - (unsigned long long)entityType;
-- (void)focusAndSelectTitle;
+- (void)focus:(unsigned long long)arg1 select:(BOOL)arg2;
 - (void)loadView;
 - (id)notificationNamesForLocaleChange;
 - (struct CGSize)preferredContentSize;

@@ -26,6 +26,9 @@
     NSMutableArray *_pendingSaveTouchIconToDiskBlocks;
     NSMutableSet *_pendingTouchIconRequestHosts;
     WBSTouchIconCacheSettingsSQLiteStore *_cacheSettingsStore;
+    long long _protectionType;
+    BOOL _allowFetchingOverCellularNetwork;
+    long long _fileMappingStyle;
     BOOL _readOnly;
     BOOL _internalQueueBusy;
     id<WBSSiteMetadataProviderDelegate> _providerDelegate;
@@ -39,6 +42,7 @@
 @property (readonly, nonatomic) NSURL *imageDirectoryURL;
 @property (getter=isInternalQueueBusy) BOOL internalQueueBusy; // @synthesize internalQueueBusy=_internalQueueBusy;
 @property (weak, nonatomic) id<WBSSiteMetadataProviderDelegate> providerDelegate; // @synthesize providerDelegate=_providerDelegate;
+@property (readonly, nonatomic) BOOL providesFavicons;
 @property (readonly, nonatomic, getter=isReadOnly) BOOL readOnly; // @synthesize readOnly=_readOnly;
 @property (readonly) Class superclass;
 
@@ -74,7 +78,7 @@
 - (BOOL)_shouldRequestTouchIconForURL:(id)arg1 inUserLoadedWebpage:(BOOL)arg2 initiatedFromBookmarkInteraction:(BOOL)arg3;
 - (BOOL)_shouldRequestTouchIconWithTimeoutForURL:(id)arg1 inUserLoadedWebpage:(BOOL)arg2 initiatedFromBookmarkInteraction:(BOOL)arg3;
 - (id)_touchIconForURL:(id)arg1;
-- (void)_updateTouchIconsDataForHost:(id)arg1 image:(id)arg2 requestDidSucceed:(BOOL)arg3 isUserLoadedWebpageRequest:(BOOL)arg4 higherPriorityIconDownloadFailedDueToNetworkError:(BOOL)arg5;
+- (void)_updateTouchIconsDataForHost:(id)arg1 image:(id)arg2 requestDidSucceed:(BOOL)arg3 isUserLoadedWebpageRequest:(BOOL)arg4 higherPriorityIconDownloadFailedDueToNetworkError:(BOOL)arg5 UUIDString:(id)arg6;
 - (void)_willSaveTouchIcon:(id)arg1 withCacheSettingsEntry:(id)arg2;
 - (void)cacheFirstAvailableTouchIcon:(id)arg1 forURL:(id)arg2;
 - (BOOL)canHandleRequest:(id)arg1;
@@ -84,12 +88,14 @@
 - (id)init;
 - (id)initWithCacheDirectoryURL:(id)arg1;
 - (id)initWithCacheDirectoryURL:(id)arg1 isReadOnly:(BOOL)arg2;
+- (id)initWithCacheDirectoryURL:(id)arg1 isReadOnly:(BOOL)arg2 protectionType:(long long)arg3 allowFetchingOverCellularNetwork:(BOOL)arg4 fileMappingStyle:(long long)arg5;
 - (id)operationForRequest:(id)arg1;
 - (void)prepareResponseForRequest:(id)arg1 allowDelayedResponse:(BOOL)arg2;
 - (void)purgeUnneededCacheEntries;
 - (void)releaseTouchIconForHost:(id)arg1;
 - (void)releaseTouchIconForURLString:(id)arg1;
 - (void)releaseTouchIconsForHosts:(id)arg1;
+- (void)removeTouchIconMetadataForHosts:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)responseForRequest:(id)arg1 willProvideUpdates:(BOOL *)arg2;
 - (void)retainTouchIconForHost:(id)arg1;
 - (void)retainTouchIconForURLString:(id)arg1;
@@ -97,11 +103,13 @@
 - (void)savePendingChangesBeforeTermination;
 - (BOOL)shouldRequestTouchIconForURL:(id)arg1 inUserLoadedWebpage:(BOOL)arg2;
 - (BOOL)shouldRequestTouchIconForWebPageNavigationFromBookmarkInteractionForURL:(id)arg1;
+- (id)siteMetadataImageCache:(id)arg1 customFileNameForKeyString:(id)arg2;
 - (void)siteMetadataImageCache:(id)arg1 didFinishLoadingImage:(id)arg2 forKeyString:(id)arg3;
 - (void)siteMetadataImageCache:(id)arg1 didRemoveImageFromCacheForKeyString:(id)arg2;
 - (void)siteMetadataImageCacheDidEmptyCache:(id)arg1;
 - (void)siteMetadataImageCacheDidFinishLoadingSettings:(id)arg1;
 - (void)stopWatchingUpdatesForRequest:(id)arg1;
+- (id)uuidStringToHost;
 - (void)webViewMetadataFetchOperation:(id)arg1 didFinishUsingWebView:(id)arg2;
 - (id)webViewMetadataFetchOperation:(id)arg1 webViewOfSize:(struct CGSize)arg2 withConfiguration:(id)arg3;
 

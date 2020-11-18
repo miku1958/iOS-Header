@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIPopoverControllerDelegate-Protocol.h>
+#import <UIKitCore/UIPopoverControllerDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, UIAlertController, _UIAlertControllerShimPresenter;
 @protocol UIActionSheetDelegate;

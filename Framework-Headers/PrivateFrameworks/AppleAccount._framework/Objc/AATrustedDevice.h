@@ -19,6 +19,7 @@
     NSString *_deviceID;
     NSString *_name;
     NSString *_model;
+    NSString *_osVersion;
     NSString *_modelDisplayName;
     NSString *_modelSmallPhotoURL3x;
     NSString *_modelSmallPhotoURL2x;
@@ -26,7 +27,6 @@
     NSString *_modelLargePhotoURL3x;
     NSString *_modelLargePhotoURL2x;
     NSString *_modelLargePhotoURL1x;
-    NSString *_osVersion;
     NSString *_deviceDetailUri;
     NSString *_deviceDetailHttpMethod;
     NSString *_FMIPDeviceID;

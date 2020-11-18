@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityUpdateConversationInfo;
+- (BOOL)isAccessibilityElement;
 - (void)updateContentsForConversation:(id)arg1;
 
 @end

@@ -24,8 +24,8 @@
 @property unsigned long long indexOfFirstCenteredColumnForForcedCentering; // @synthesize indexOfFirstCenteredColumnForForcedCentering=_indexOfFirstCenteredColumnForForcedCentering;
 @property unsigned long long indexOfFirstTrailingColumn; // @synthesize indexOfFirstTrailingColumn=_indexOfFirstTrailingColumn;
 @property (strong) NSMutableArray *labels; // @synthesize labels=_labels;
-@property (strong) TLKGridLayoutManager *manager; // @synthesize manager=_manager;
-@property (strong) TLKTableRow *tableRow; // @synthesize tableRow=_tableRow;
+@property (strong, nonatomic) TLKGridLayoutManager *manager; // @synthesize manager=_manager;
+@property (strong, nonatomic) TLKTableRow *tableRow; // @synthesize tableRow=_tableRow;
 
 + (void)updateLabel:(id)arg1 withFormattedText:(id)arg2 alignment:(long long)arg3;
 - (void).cxx_destruct;
@@ -35,7 +35,6 @@
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (void)layoutSubviews;
-- (id)observableProperties;
 - (void)observedPropertiesChanged;
 - (void)resetStateOfAllViews;
 - (void)setStylesForEverything;

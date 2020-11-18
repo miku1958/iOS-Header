@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INParameter-Protocol.h>
+#import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
-@interface INParameter : NSObject <INParameter, NSObject, NSSecureCoding>
+@interface INParameter : NSObject <INParameter, NSObject, NSSecureCoding, NSCopying>
 {
     NSMutableDictionary *_indexesForSubKeyPaths;
     Class _parameterClass;
@@ -38,6 +39,7 @@
 - (id)_sanitizedKeyPathForKeyPath:(id)arg1 removingSubscripts:(BOOL)arg2;
 - (void)_setIndexesForKeyPathWithSubscripts:(id)arg1;
 - (id)_valueOfObject:(id)arg1 forRemainingKeyPath:(id)arg2 inFullyQualifiedKeyPath:(id)arg3;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)indexForSubKeyPath:(id)arg1;

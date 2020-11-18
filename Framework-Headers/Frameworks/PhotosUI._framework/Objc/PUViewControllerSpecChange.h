@@ -13,11 +13,13 @@
     BOOL _layoutStyleChanged;
     BOOL _presentedForSecondScreenChanged;
     BOOL _secondScreenSizeChanged;
+    BOOL _prefersCompactLayoutForSplitScreenChanged;
 }
 
 @property (readonly, nonatomic) BOOL changed;
 @property (nonatomic) BOOL layoutReferenceSizeChanged; // @synthesize layoutReferenceSizeChanged=_layoutReferenceSizeChanged;
 @property (nonatomic) BOOL layoutStyleChanged; // @synthesize layoutStyleChanged=_layoutStyleChanged;
+@property (nonatomic) BOOL prefersCompactLayoutForSplitScreenChanged; // @synthesize prefersCompactLayoutForSplitScreenChanged=_prefersCompactLayoutForSplitScreenChanged;
 @property (nonatomic) BOOL presentedForSecondScreenChanged; // @synthesize presentedForSecondScreenChanged=_presentedForSecondScreenChanged;
 @property (nonatomic) BOOL secondScreenSizeChanged; // @synthesize secondScreenSizeChanged=_secondScreenSizeChanged;
 @property (nonatomic) BOOL traitCollectionChanged; // @synthesize traitCollectionChanged=_traitCollectionChanged;

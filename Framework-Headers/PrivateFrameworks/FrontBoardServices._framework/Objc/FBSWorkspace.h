@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/FBSWorkspaceClientDelegate-Protocol.h>
 
-@class FBSSerialQueue, FBSWorkspaceClient, NSArray, NSMapTable, NSMutableDictionary, NSString;
+@class BSMutableIntegerMap, FBSSerialQueue, FBSWorkspaceClient, NSArray, NSMutableDictionary, NSString;
 @protocol FBSWorkspaceDelegate, OS_dispatch_queue;
 
 @interface FBSWorkspace : NSObject <FBSWorkspaceClientDelegate>
@@ -19,19 +19,20 @@
     FBSSerialQueue *_callOutQueue;
     NSObject<OS_dispatch_queue> *_scenesQueue;
     NSMutableDictionary *_scenesByIdentifier;
-    NSMapTable *_triggerToFenceNameMap;
+    BSMutableIntegerMap *_triggerToFenceNameMap;
     BOOL _synchronizingFence;
     unsigned long long _signpostName;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBSWorkspaceDelegate> delegate;
+@property (weak, nonatomic) id<FBSWorkspaceDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) FBSSerialQueue *queue; // @synthesize queue=_callOutQueue;
+@property (readonly, nonatomic) FBSSerialQueue *queue; // @synthesize queue=_callOutQueue;
 @property (readonly, copy, nonatomic) NSArray *scenes;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_client;
 - (Class)_clientClass;
 - (id)_internalQueue;

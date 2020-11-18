@@ -8,7 +8,7 @@
 
 #import <CallKit/CXVideoAspectRatioDescriptor-Protocol.h>
 
-@class CXHandle, NSDate, NSString;
+@class CXHandle, NSDate, NSString, NSUUID;
 
 @interface CXStartCallAction : CXCallAction <CXVideoAspectRatioDescriptor>
 {
@@ -18,10 +18,12 @@
     BOOL _retry;
     BOOL _emergency;
     BOOL _voicemail;
+    BOOL _shouldSuppressInCallUI;
     CXHandle *_handle;
     NSString *_contactIdentifier;
     NSDate *_dateStarted;
     long long _ttyType;
+    NSUUID *_localSenderIdentityUUID;
     struct CGSize _localPortraitAspectRatio;
     struct CGSize _localLandscapeAspectRatio;
 }
@@ -35,8 +37,10 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct CGSize localLandscapeAspectRatio; // @synthesize localLandscapeAspectRatio=_localLandscapeAspectRatio;
 @property (nonatomic) struct CGSize localPortraitAspectRatio; // @synthesize localPortraitAspectRatio=_localPortraitAspectRatio;
+@property (strong, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property (nonatomic, getter=isRelay) BOOL relay; // @synthesize relay=_relay;
 @property (nonatomic, getter=isRetry) BOOL retry; // @synthesize retry=_retry;
+@property (nonatomic) BOOL shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property (readonly) Class superclass;
 @property (nonatomic, setter=setTTYType:) long long ttyType; // @synthesize ttyType=_ttyType;
 @property (nonatomic, getter=isUpgrade) BOOL upgrade; // @synthesize upgrade=_upgrade;

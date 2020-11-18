@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <iWorkImport/TSDCanvasDelegate-Protocol.h>
+#import <iWorkImport/KNCanvasDelegate-Protocol.h>
 #import <iWorkImport/TSDConnectedInfoReplacing-Protocol.h>
 
 @class KNAnimatedSlideModel, KNPlaybackSession, KNSlide, KNSlideNode, NSArray, NSIndexSet, NSLock, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, TSDCanvas;
 @protocol TSDCanvasProxyDelegate;
 
 __attribute__((visibility("hidden")))
-@interface KNAnimatedSlideView : NSObject <TSDCanvasDelegate, TSDConnectedInfoReplacing>
+@interface KNAnimatedSlideView : NSObject <KNCanvasDelegate, TSDConnectedInfoReplacing>
 {
     unsigned long long _animationsActive;
     unsigned long long _animationsStarted;
@@ -83,8 +83,11 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL playsAutomaticTransitions; // @synthesize playsAutomaticTransitions=_playsAutomaticTransitions;
 @property (readonly, weak, nonatomic) KNPlaybackSession *session; // @synthesize session=_session;
 @property (strong) NSLock *setTextureLock; // @synthesize setTextureLock=_setTextureLock;
+@property (readonly, nonatomic) BOOL shouldPreCache;
+@property (readonly, nonatomic) BOOL shouldPrepareAnimationsAsynchronously;
 @property (readonly, weak, nonatomic) KNSlide *slide; // @synthesize slide=_slide;
 @property (readonly, weak, nonatomic) KNSlideNode *slideNode; // @synthesize slideNode=_slideNode;
+@property (readonly) unsigned long long slideNumber;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL triggerQueued; // @synthesize triggerQueued=_triggerQueued;
 
@@ -112,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (id)newSlideTextureForEvent:(unsigned long long)arg1;
 - (id)nonCachedTextureSetForRep:(id)arg1 description:(id)arg2 shouldRender:(BOOL)arg3;
 - (void)p_addAmbientBuildRenderer:(id)arg1;
+- (void)p_addInfoToLayerTree:(id)arg1 rep:(id)arg2 renderer:(id)arg3 builtInfos:(id)arg4;
 - (id)p_addParentLayerForInfo:(id)arg1;
 - (void)p_ambientBuildEnded:(id)arg1;
 - (void)p_ambientBuildStarted:(id)arg1;
@@ -124,13 +128,22 @@ __attribute__((visibility("hidden")))
 - (void)p_evictCacheAmbientBuildTexturesForTransition:(id)arg1;
 - (id)p_initializeTextureSetForRep:(id)arg1 info:(id)arg2 eventIndex:(unsigned long long)arg3 ignoreBuildVisibility:(BOOL)arg4 isRenderingToContext:(BOOL)arg5;
 - (void)p_loadPerformanceAnalysisFrameWork;
+- (void)p_makeMetalLayerVisible;
 - (double)p_minimumDelay;
+- (void)p_notifyAmbientBuildEndWithObject:(id)arg1;
+- (void)p_notifyAmbientBuildStartWithObject:(id)arg1;
+- (void)p_notifyEventAnimationActiveWithObject:(id)arg1;
+- (void)p_notifyEventEndWithObject:(id)arg1;
+- (void)p_notifyEventImmediateEndWithObject:(id)arg1;
+- (void)p_notifyEventStart;
 - (void)p_performAnimationWithTarget:(id)arg1 selector:(SEL)arg2 object:(id)arg3 delay:(double)arg4 performAsynchronously:(BOOL)arg5;
 - (void)p_recursivelyRemoveCallbackObserversFromAnimatedBuilds:(id)arg1;
 - (void)p_removeAmbientBuildRenderer:(id)arg1;
 - (void)p_removeDelayedAnimation:(id)arg1;
 - (void)p_renderCurrentEvent;
-- (void)p_resetAmbientBuildTextures;
+- (void)p_renderSlideContentWithCALayers;
+- (void)p_renderSlideContentWithMetal;
+- (void)p_setupSlideMetalRendererShouldReset:(BOOL)arg1;
 - (void)p_setupTransitionStartTime;
 - (BOOL)p_shouldAddInfoToTree:(id)arg1;
 - (BOOL)p_shouldSkipActionBuild:(id)arg1 onDrawable:(id)arg2;
@@ -138,6 +151,7 @@ __attribute__((visibility("hidden")))
 - (id)p_textureSetForRep:(id)arg1 shouldRender:(BOOL)arg2;
 - (void)pauseAnimations;
 - (BOOL)playAutomaticEvents;
+- (void)prepareAnimations;
 - (void)registerForAmbientBuildEndCallback:(SEL)arg1 target:(id)arg2;
 - (void)registerForAmbientBuildStartCallback:(SEL)arg1 target:(id)arg2;
 - (void)registerForEventAnimationActiveCallback:(SEL)arg1 target:(id)arg2;
@@ -150,14 +164,12 @@ __attribute__((visibility("hidden")))
 - (void)renderTextures;
 - (id)repsCurrentlyVisible;
 - (void)reset;
+- (void)resetAmbientBuildTextures;
 - (void)resumeAnimationsIfPaused;
 - (void)serializeTextures;
 - (void)setTexture:(id)arg1 forRep:(id)arg2 forDescription:(id)arg3;
-- (BOOL)shouldPreCache;
 - (BOOL)shouldShowInstructionalText;
 - (BOOL)shouldSuppressBackgrounds;
-- (BOOL)slideContainsRepsThatMustDrawOnMainThread;
-- (unsigned long long)slideNumber;
 - (void)stopAnimations;
 - (void)tearDown;
 - (void)tearDownTransition;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSUserDefaults;
 
@@ -26,7 +26,6 @@
 - (BOOL)boolForKey:(id)arg1;
 - (id)init;
 - (long long)integerForKey:(id)arg1;
-- (id)localSharedDefaults;
 - (id)objectForKey:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)removeObjectForKey:(id)arg1;

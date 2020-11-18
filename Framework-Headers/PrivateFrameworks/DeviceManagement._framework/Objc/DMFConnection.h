@@ -9,13 +9,13 @@
 #import <DeviceManagement/CATTaskClientDelegate-Protocol.h>
 #import <DeviceManagement/DMFTransportProvider-Protocol.h>
 
-@class CATOperationQueue, CATTaskClient, NSSet, NSString;
+@class CATOperationQueue, CATTaskClient, NSString;
 @protocol DMFTransportProvider;
 
 @interface DMFConnection : NSObject <CATTaskClientDelegate, DMFTransportProvider>
 {
     BOOL _isConnected;
-    BOOL _isDeviceConnection;
+    BOOL _isSystemConnection;
     id<DMFTransportProvider> _transportProvider;
     CATTaskClient *_taskClient;
     CATOperationQueue *_operationQueue;
@@ -25,28 +25,20 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isConnected; // @synthesize isConnected=_isConnected;
-@property (nonatomic) BOOL isDeviceConnection; // @synthesize isDeviceConnection=_isDeviceConnection;
+@property (nonatomic) BOOL isSystemConnection; // @synthesize isSystemConnection=_isSystemConnection;
 @property (readonly, nonatomic) CATOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property (readonly, copy, nonatomic) NSSet *requestClasses;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CATTaskClient *taskClient; // @synthesize taskClient=_taskClient;
 @property (readonly, weak, nonatomic) id<DMFTransportProvider> transportProvider; // @synthesize transportProvider=_transportProvider;
 
-+ (id)_deviceOrUserRequestClasses;
-+ (id)_deviceRequestClasses;
-+ (id)_userRequestClasses;
 + (id)connectionForAppleID:(id)arg1;
 + (id)connectionForUID:(unsigned int)arg1;
-+ (id)currentPlatformRequestClasses;
 + (id)currentUserConnection;
-+ (id)iOSRequestClasses;
-+ (id)macOSRequestClasses;
 + (id)sharedConnection;
 + (id)systemConnection;
-+ (id)tvOSRequestClasses;
-+ (id)watchOSRequestClasses;
 - (void).cxx_destruct;
 - (void)_operationDidFinish:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)batchOperationToPerformOperations:(id)arg1;
 - (void)client:(id)arg1 didInterruptWithError:(id)arg2;
 - (void)clientDidConnect:(id)arg1;
 - (void)clientDidDisconnect:(id)arg1;
@@ -58,7 +50,6 @@
 - (id)makeNewTransport;
 - (void)performRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)prepareOperationForRequest:(id)arg1;
-- (id)progressForAllInflightRequests;
 
 @end
 

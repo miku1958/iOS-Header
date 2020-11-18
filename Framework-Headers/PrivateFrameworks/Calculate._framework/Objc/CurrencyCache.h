@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Calculate/NSXMLParserDelegate-Protocol.h>
 
@@ -27,23 +27,24 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSDate *lastRefreshDate; // @synthesize lastRefreshDate=_lastRefreshDate;
+@property (readonly, nonatomic) NSDate *lastRefreshDate;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serializer; // @synthesize serializer=_serializer;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long uuid; // @synthesize uuid=_uuid;
 
 + (id)shared;
+- (id)_consumerKey;
+- (id)_consumerSecret;
 - (void)_loadPersistedCurrencyCache;
 - (void)_queue_loadPersistedCurrencyCache;
 - (void)_queue_persistCurrencyCache;
 - (BOOL)_queue_refresh;
+- (id)createCredential;
 - (void)dealloc;
 - (id)init;
-- (void)parser:(id)arg1 didEndElement:(id)arg2 namespaceURI:(id)arg3 qualifiedName:(id)arg4;
-- (void)parser:(id)arg1 didStartElement:(id)arg2 namespaceURI:(id)arg3 qualifiedName:(id)arg4 attributes:(id)arg5;
-- (void)parser:(id)arg1 foundCharacters:(id)arg2;
 - (BOOL)refresh;
 - (BOOL)refreshWithTimeOut:(float)arg1;
+- (BOOL)updateCurrencyCacheWithData:(id)arg1;
 
 @end
 

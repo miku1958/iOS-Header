@@ -20,9 +20,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=_isWallpaperModificationAllowed, setter=_setWallpaperModificationAllowed:) BOOL _wallpaperModificationAllowed; // @synthesize _wallpaperModificationAllowed=__wallpaperModificationAllowed;
 
 - (void).cxx_destruct;
+- (id)_activityBundleImageConfiguration;
+- (id)_activityImageName;
 - (void)_restrictionsChanged:(id)arg1;
 - (void)_updateWallpaperModificationAllowedIfNeeded;
-- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (id)activityViewController;
@@ -30,8 +31,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (void)prepareWithActivityItems:(id)arg1;
+- (void)wallpaperImageViewController:(id)arg1 didSetWallpaperWithOptions:(id)arg2;
 - (void)wallpaperImageViewControllerDidCancel:(id)arg1;
-- (void)wallpaperImageViewControllerDidCropWallpaper:(id)arg1;
 - (void)wallpaperImageViewControllerDidFinishSaving:(id)arg1;
 
 @end

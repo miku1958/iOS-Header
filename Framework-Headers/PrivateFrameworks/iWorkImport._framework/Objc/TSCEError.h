@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface TSCEError : NSObject <NSCopying>
 {
-    NSDictionary *mErrorDictionary;
+    NSDictionary *_errorDictionary;
 }
 
 + (id)abortError;
@@ -28,14 +28,16 @@ __attribute__((visibility("hidden")))
 + (BOOL)exceptionIsFromCalcEngine:(id)arg1;
 + (BOOL)exceptionIsInvalidMergeReference:(id)arg1;
 + (BOOL)exceptionIsRangeUsageError:(id)arg1;
-+ (id)indirectErrorForRangeReference:(struct TSCERangeRef)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2 calculationEngine:(id)arg3;
++ (id)indirectErrorForRangeReference:(struct TSCERangeRef)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2;
 + (id)invalidCurrencyPairError;
++ (id)invalidDateManipulationError;
 + (id)invalidHistoricalCurrencyAttributeError;
 + (id)invalidHistoricalDateError;
 + (id)invalidHistoricalStockAttributeError;
 + (id)invalidLiveCurrencyAttributeError;
 + (id)invalidLiveStockAttributeError;
 + (id)invalidMergeReference:(struct TSCERangeRef)arg1 contextEntityUID:(const UUIDData_5fbc143e *)arg2;
++ (id)invalidReferenceError;
 + (id)invalidStockCodeError:(id)arg1;
 + (id)noTradingInformationErrorWithNextAvailableDate:(id)arg1;
 + (id)notReadyError;
@@ -47,7 +49,6 @@ __attribute__((visibility("hidden")))
 + (void)raiseArrayElementNoDataError;
 + (void)raiseAttachmentErrorInTextCell:(BOOL)arg1;
 + (void)raiseAutoNumberAttachmentErrorInTextCell:(BOOL)arg1;
-+ (void)raiseCategoryCellReferenceError;
 + (void)raiseCharInputOutOfBoundsError;
 + (void)raiseCircularReferenceErrorWithReference:(id)arg1;
 + (void)raiseComparisonTypeExceptionForLeftType:(int)arg1 rightType:(int)arg2;
@@ -71,7 +72,7 @@ __attribute__((visibility("hidden")))
 + (void)raiseErrorForInvalidReference;
 + (void)raiseErrorForInvalidReference:(struct TSCERangeRef)arg1 orString:(id)arg2 contextEntityUID:(const UUIDData_5fbc143e *)arg3;
 + (void)raiseErrorForInvalidReference:(struct TSCERangeRef)arg1 orString:(id)arg2 contextEntityUID:(const UUIDData_5fbc143e *)arg3 invalidMergeReference:(BOOL)arg4 disqualifiedFromEndCell:(BOOL)arg5;
-+ (void)raiseIndirectErrorForRangeReference:(struct TSCERangeRef)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2 calculationEngine:(id)arg3;
++ (void)raiseIndirectErrorForRangeReference:(struct TSCERangeRef)arg1 hostTableUID:(const UUIDData_5fbc143e *)arg2;
 + (void)raiseInvalidAltitudeError;
 + (void)raiseInvalidArgumentEqualityRelationshipErrorForFunctionName:(id)arg1 argIndex1:(int)arg2 argIndex2:(int)arg3;
 + (void)raiseInvalidArgumentPairingsErrorForFunctionName:(id)arg1 hasInitialUnrelatedArgument:(BOOL)arg2;
@@ -166,7 +167,9 @@ __attribute__((visibility("hidden")))
 + (id)referenceToNonexistentTableError:(const UUIDData_5fbc143e *)arg1;
 + (id)remoteDataServerError;
 + (id)remoteDataUnavailableErrorWithAttribute:(id)arg1;
++ (id)sumMixedDurationsAndUnitlessWithoutADateErrorForFunctionName:(id)arg1;
 + (id)syntaxError;
+- (void).cxx_destruct;
 - (id)bakedString;
 - (BOOL)boolean;
 - (BOOL)booleanForFunction:(id)arg1 argumentIndex:(int)arg2 warningReportingContext:(struct TSCEWarningReportingContext *)arg3;
@@ -174,7 +177,6 @@ __attribute__((visibility("hidden")))
 - (id)date;
 - (id)dateForFunction:(id)arg1 argumentIndex:(int)arg2 warningReportingContext:(struct TSCEWarningReportingContext *)arg3;
 - (id)dateValue;
-- (void)dealloc;
 - (int)deepType;
 - (id)displayStringWithCalculationEngine:(id)arg1 forTable:(const UUIDData_5fbc143e *)arg2 andCellID:(struct TSUCellCoord)arg3;
 - (double)doubleValue;
@@ -198,7 +200,6 @@ __attribute__((visibility("hidden")))
 - (int)nativeType;
 - (struct TSCENumberValue *)number;
 - (struct TSCENumberValue *)numberForFunction:(id)arg1 argumentIndex:(int)arg2 warningReportingContext:(struct TSCEWarningReportingContext *)arg3;
-- (void)performSelector:(SEL)arg1 withObject:(id)arg2 andDescend:(BOOL)arg3;
 - (void)raiseException;
 - (struct TSCERangeRef)rangeRef;
 - (struct TSCEReferenceValue *)referenceValue;

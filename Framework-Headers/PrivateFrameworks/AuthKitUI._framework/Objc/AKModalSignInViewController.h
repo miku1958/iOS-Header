@@ -10,15 +10,13 @@
 #import <AuthKitUI/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <AuthKitUI/UITextFieldDelegate-Protocol.h>
 
-@class AKRoundedButton, NSString, UIButton, UIControl, UILabel, UITextField, UIView;
+@class AKRoundedButton, NSString, UILabel, UITextField, UIView;
 
 @interface AKModalSignInViewController : AKBaseSignInViewController <AKAppleIDAuthenticationInAppContextAlertDelegate, AKAppleIDAuthenticationInAppContextPasswordDelegate, UITextFieldDelegate>
 {
-    UIControl *_firstResponder;
     UILabel *_titleLabel;
     UILabel *_bodyLabel;
     UITextField *_passwordField;
-    UIButton *_passwordRecoveryButton;
     AKRoundedButton *_signInButton;
     UIView *_containerView;
 }
@@ -29,7 +27,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UITextField *passwordField; // @synthesize passwordField=_passwordField;
-@property (strong, nonatomic) UIButton *passwordRecoveryButton; // @synthesize passwordRecoveryButton=_passwordRecoveryButton;
 @property (strong, nonatomic) AKRoundedButton *signInButton; // @synthesize signInButton=_signInButton;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -37,9 +34,12 @@
 - (void).cxx_destruct;
 - (void)_createViews;
 - (void)_hidebusyWorkUI;
+- (BOOL)_isSignInAllowed;
+- (void)_passwordFieldDidChange:(id)arg1;
 - (void)_passwordRecoveryButtonWasTapped:(id)arg1;
 - (void)_setupConstraints;
 - (void)_setupViews;
+- (BOOL)_shouldShowForgotGlyph;
 - (void)_signInButtonTapped:(id)arg1;
 - (void)_startBusyWorkUI;
 - (void)_updateViewConstraints;

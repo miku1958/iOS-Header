@@ -13,6 +13,7 @@
 {
     BOOL _shouldDeleteDestinationURLOnDeallocation;
     BOOL _needsCurrentEncodingBitRateUpdate;
+    BOOL _maximizePowerEfficiency;
     NSString *_identifier;
     unsigned long long _targetOutputFileSize;
     NSProgress *_progress;
@@ -57,6 +58,7 @@
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong) AVAsset *inputAsset; // @synthesize inputAsset=_inputAsset;
 @property (strong) NSObject<OS_dispatch_group> *inputReadingCompletionGroup; // @synthesize inputReadingCompletionGroup=_inputReadingCompletionGroup;
+@property BOOL maximizePowerEfficiency; // @synthesize maximizePowerEfficiency=_maximizePowerEfficiency;
 @property unsigned long long minimumChunkLength; // @synthesize minimumChunkLength=_minimumChunkLength;
 @property BOOL needsCurrentEncodingBitRateUpdate; // @synthesize needsCurrentEncodingBitRateUpdate=_needsCurrentEncodingBitRateUpdate;
 @property unsigned long long outputFileLastEndOffset; // @synthesize outputFileLastEndOffset=_outputFileLastEndOffset;
@@ -78,6 +80,7 @@
 - (void)dealloc;
 - (long long)estimatedOutputBitRate;
 - (id)init;
+- (double)inputAssetDuration;
 - (void)notifyDataAvailableToHandler:(CDUnknownBlockType)arg1 ignoreMinimumChunkLength:(BOOL)arg2;
 - (id)outputDataInRange:(struct _NSRange)arg1 waitUntilAvailableWithTimeout:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)preflight;

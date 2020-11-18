@@ -15,9 +15,8 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *sceneprintVersion; // @synthesize sceneprintVersion=_sceneprintVersion;
-@property (copy, nonatomic) NSArray *sceneprints; // @synthesize sceneprints=_sceneprints;
+@property (readonly, nonatomic) NSArray *sceneprints; // @synthesize sceneprints=_sceneprints;
 
-+ (id)observationWithSceneprints:(id)arg1;
 + (id)sceneprintCurrentVersion;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -25,7 +24,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithSceneprints:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1 sceneprints:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

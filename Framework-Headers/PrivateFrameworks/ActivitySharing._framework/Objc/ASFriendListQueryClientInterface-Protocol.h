@@ -4,8 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ActivitySharing/HKFitnessFriendsQueryClientInterface-Protocol.h>
+#import <ActivitySharing/HKQueryClientInterface-Protocol.h>
 
-@protocol ASFriendListQueryClientInterface <HKFitnessFriendsQueryClientInterface>
+@class NSData, NSUUID;
+
+@protocol ASFriendListQueryClientInterface <HKQueryClientInterface>
+- (void)client_deliverFriendList:(NSData *)arg1 queryUUID:(NSUUID *)arg2;
 @end
 

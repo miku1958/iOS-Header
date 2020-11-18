@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSSet, NSUUID;
 
@@ -23,6 +23,7 @@
 @property (copy, nonatomic) NSUUID *userDictionaryUUID; // @synthesize userDictionaryUUID=_userDictionaryUUID;
 
 + (id)sharedTextCheckerExemptionsImpl;
+- (void).cxx_destruct;
 - (void)addObserverAssertion;
 - (void)dealloc;
 - (void)removeObserverAssertion;

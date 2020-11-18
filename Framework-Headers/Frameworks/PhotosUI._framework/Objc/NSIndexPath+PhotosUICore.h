@@ -8,12 +8,12 @@
 
 @interface NSIndexPath (PhotosUICore)
 
-@property (readonly, nonatomic) long long item;
-@property (readonly, nonatomic) long long kind;
-@property (readonly, nonatomic) long long section;
+@property (readonly, nonatomic) long long px_item;
+@property (readonly, nonatomic) long long px_kind;
+@property (readonly, nonatomic) long long px_section;
 
-+ (id)indexPathForItem:(long long)arg1 inSection:(long long)arg2;
-+ (id)indexPathForItem:(long long)arg1 inSection:(long long)arg2 withKind:(long long)arg3;
++ (id)px_indexPathForItem:(long long)arg1 inSection:(long long)arg2;
++ (id)px_indexPathForItem:(long long)arg1 inSection:(long long)arg2 withKind:(long long)arg3;
 + (id)px_indexPathsForItems:(id)arg1 inSection:(long long)arg2;
 - (id)px_alteredIndexPathAfterDeletingItemAtIndexPath:(id)arg1;
 - (id)px_alteredIndexPathAfterDeletingItemsAtIndexPaths:(id)arg1;

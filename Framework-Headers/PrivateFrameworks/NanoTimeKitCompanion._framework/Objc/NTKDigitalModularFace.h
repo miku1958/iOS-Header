@@ -10,7 +10,8 @@
 {
 }
 
-+ (id)_defaultSelectedComplicationSlot;
++ (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
++ (id)_richComplicationSlotsForDevice:(id)arg1;
 - (id)_complicationSlotDescriptors;
 - (id)_customEditModes;
 - (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;

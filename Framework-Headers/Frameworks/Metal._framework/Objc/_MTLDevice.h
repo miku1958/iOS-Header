@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MTLCompiler, MTLIOMemoryInfo, NSString;
 @protocol MTLDeviceSPI, OS_dispatch_queue;
 
 @interface _MTLDevice : NSObject
 {
-    CDStruct_230ee03b _limits;
+    CDStruct_37c53b2f _limits;
     MTLCompiler *_compiler;
     NSObject<OS_dispatch_queue> *_serialQueue;
     MTLIOMemoryInfo *_memoryInfo;
@@ -20,6 +20,8 @@
     struct MTLLibraryBuilder *_libraryBuilder;
     struct MTLPipelineLibraryBuilder *_pipelineLibraryBuilder;
     struct MTLPipelineCollection *_pipelineDescriptors;
+    NSString *_pipelineDescriptorsOutputFile;
+    NSString *_librariesOutputDirectory;
     id<MTLDeviceSPI> _deviceWrapper;
 }
 
@@ -32,9 +34,12 @@
 @property (readonly) unsigned long long indirectArgumentBuffersSupport;
 @property (readonly) unsigned long long iosurfaceReadOnlyTextureAlignmentBytes;
 @property (readonly) unsigned long long iosurfaceTextureAlignmentBytes;
-@property (readonly) const CDStruct_230ee03b *limits;
+@property (readonly) const CDStruct_37c53b2f *limits;
 @property (readonly) unsigned long long linearTextureAlignmentBytes;
-@property (readonly) unsigned long long maxBufferLength;
+@property (readonly) unsigned long long linearTextureArrayAlignmentBytes;
+@property (readonly) unsigned long long linearTextureArrayAlignmentSlice;
+@property (readonly) unsigned long long maxArgumentBufferSamplerCount;
+@property (readonly) unsigned long long maxBufferLength; // @dynamic maxBufferLength;
 @property (readonly) unsigned long long maxColorAttachments;
 @property (readonly) unsigned long long maxComputeBuffers;
 @property (readonly) unsigned long long maxComputeInlineDataSize;
@@ -50,11 +55,16 @@
 @property (readonly) unsigned long long maxFragmentTextures;
 @property (readonly) unsigned long long maxFramebufferStorageBits;
 @property (readonly) unsigned long long maxFunctionConstantIndices;
+@property (readonly) unsigned long long maxIndirectBuffers;
+@property (readonly) unsigned long long maxIndirectSamplers;
+@property (readonly) unsigned long long maxIndirectSamplersPerDevice;
+@property (readonly) unsigned long long maxIndirectTextures;
 @property (readonly) unsigned long long maxInterpolants;
 @property (readonly) unsigned long long maxInterpolatedComponents;
 @property (readonly) float maxLineWidth;
 @property (readonly) float maxPointSize;
 @property (readonly) unsigned long long maxTessellationFactor;
+@property (readonly) unsigned long long maxTextureBufferWidth;
 @property (readonly) unsigned long long maxTextureDepth3D;
 @property (readonly) unsigned long long maxTextureDimensionCube;
 @property (readonly) unsigned long long maxTextureHeight2D;
@@ -73,6 +83,7 @@
 @property (readonly) unsigned long long maxVertexInlineDataSize;
 @property (readonly) unsigned long long maxVertexSamplers;
 @property (readonly) unsigned long long maxVertexTextures;
+@property (readonly) unsigned long long maxViewportCount;
 @property (readonly) unsigned long long maxVisibilityQueryOffset;
 @property (readonly) unsigned long long minBufferNoCopyAlignmentBytes;
 @property (readonly) unsigned long long minConstantBufferAlignmentBytes;
@@ -83,8 +94,9 @@
 @property (readonly) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 
 + (BOOL)featureProfile:(unsigned long long)arg1 supportsFeatureSet:(unsigned long long)arg2;
-+ (BOOL)metalBufferSanitizerEnabled;
++ (BOOL)useNewPrimitiveRestartBehavior;
 - (void)_decrementCommandQueueCount;
+- (id)_deviceWrapper;
 - (void)_incrementCommandQueueCount;
 - (void)_purgeDevice;
 - (void)_setDeviceWrapper:(id)arg1;
@@ -92,19 +104,24 @@
 - (void *)computeFunctionKeyWithComputePipelineDescriptor:(id)arg1 keySize:(unsigned long long *)arg2;
 - (void *)computeFunctionKeyWithComputePipelineDescriptor:(id)arg1 options:(unsigned long long)arg2 keySize:(unsigned long long *)arg3;
 - (struct NSObject *)computeVariantWithCompilerOutput:(id)arg1;
+- (struct NSObject *)computeVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
 - (void)dealloc;
 - (id)description;
 - (BOOL)deviceOrFeatureProfileSupportsFeatureSet:(unsigned long long)arg1;
 - (BOOL)deviceSupportsFeatureSet:(unsigned long long)arg1;
+- (void)dumpPipelineDescriptorsIfRequested;
 - (id)endCollectingPipelineDescriptors;
 - (id)familyName;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (void *)fragmentFunctionKeyWithRenderPipelineDescriptor:(id)arg1 fragmentKeySize:(unsigned long long *)arg2 previousStateVariant:(id)arg3;
 - (void *)fragmentFunctionKeyWithRenderPipelineDescriptor:(id)arg1 options:(unsigned long long)arg2 previousStateVariant:(id)arg3 fragmentKeySize:(unsigned long long *)arg4;
 - (id)fragmentVariantWithCompilerOutput:(id)arg1;
+- (id)fragmentVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
 - (void)freeComputeFunctionKey:(void *)arg1 keySize:(unsigned long long)arg2;
 - (void)freeFragmentFunctionKey:(void *)arg1 fragmentKeySize:(unsigned long long)arg2;
 - (void)freeVertexFunctionKey:(void *)arg1 vertexKeySize:(unsigned long long)arg2;
+- (void)getConstantSamplersBitmasks:(unsigned long long **)arg1 uniqueIdentifiers:(unsigned long long **)arg2 constantSamplerCount:(unsigned long long *)arg3 forComputeVariant:(struct NSObject *)arg4;
+- (void)getConstantSamplersBitmasks:(unsigned long long **)arg1 uniqueIdentifiers:(unsigned long long **)arg2 constantSamplerCount:(unsigned long long *)arg3 forVertexVariant:(id)arg4 fragmentVariant:(id)arg5;
 - (void)getDefaultSamplePositions:(CDStruct_6e3f967a *)arg1 count:(unsigned long long)arg2;
 - (void *)getShaderCacheKeys;
 - (id)init;
@@ -127,6 +144,7 @@
 - (id)newComputePipelineWithDescriptor:(id)arg1 variant:(struct NSObject *)arg2;
 - (id)newDefaultLibrary;
 - (id)newDefaultLibraryWithBundle:(id)arg1 error:(id *)arg2;
+- (id)newEvent;
 - (id)newFunctionWithGLIR:(void *)arg1 functionType:(unsigned long long)arg2;
 - (id)newFunctionWithGLIR:(void *)arg1 inputsDescription:(id)arg2 functionType:(unsigned long long)arg3;
 - (id)newIndirectArgumentEncoderWithArguments:(id)arg1;
@@ -138,11 +156,16 @@
 - (id)newLibraryWithURL:(id)arg1 error:(id *)arg2;
 - (id)newPipelineLibraryWithFilePath:(id)arg1 error:(id *)arg2;
 - (id)newRenderPipelineWithDescriptor:(id)arg1 vertexVariant:(id)arg2 fragmentVariant:(id)arg3;
+- (id)newSharedEvent;
+- (id)newSharedEventWithHandle:(id)arg1;
+- (id)newSharedEventWithMachPort:(unsigned int)arg1;
 - (CDStruct_c0454aff)pipelineCacheStats;
 - (CDStruct_596dc0d1)pipelineFlagsWithComputeVariant:(struct NSObject *)arg1;
 - (CDStruct_7ce1aa5b)pipelineFlagsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2;
 - (id)pipelinePerformanceStatisticsWithComputeVariant:(struct NSObject *)arg1;
+- (id)pipelinePerformanceStatisticsWithComputeVariant:(struct NSObject *)arg1 compileTimeOutput:(id)arg2;
 - (id)pipelinePerformanceStatisticsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2;
+- (id)pipelinePerformanceStatisticsWithVertexVariant:(id)arg1 fragmentVariant:(id)arg2 vertexCompileTimeOutput:(id)arg3 fragmentCompileTimeOutput:(id)arg4;
 - (id)productName;
 - (void)registerCompiler:(id)arg1;
 - (void)registerComputePipelineDescriptor:(id)arg1;
@@ -157,6 +180,7 @@
 - (void *)vertexFunctionKeyWithRenderPipelineDescriptor:(id)arg1 options:(unsigned long long)arg2 nextStageVariant:(id)arg3 vertexKeySize:(unsigned long long *)arg4;
 - (void *)vertexFunctionKeyWithRenderPipelineDescriptor:(id)arg1 vertexKeySize:(unsigned long long *)arg2 nextStageVariant:(id)arg3;
 - (id)vertexVariantWithCompilerOutput:(id)arg1;
+- (id)vertexVariantWithCompilerOutput:(id)arg1 pipelineStatisticsOutput:(id)arg2;
 
 @end
 

@@ -7,27 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBAppBundleInfo-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBAppId, _INPBBuildId;
+@class NSArray, NSString, _INPBAppId, _INPBBuildId;
 
-@interface _INPBAppBundleInfo : PBCodable <NSCopying>
+@interface _INPBAppBundleInfo : PBCodable <_INPBAppBundleInfo, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBAppId *_appId;
     _INPBBuildId *_buildId;
-    NSMutableArray *_intentSupports;
-    NSMutableArray *_localizedProjects;
-    NSMutableArray *_supportedPlatforms;
+    NSArray *_intentSupports;
+    NSArray *_localizedProjects;
+    NSArray *_supportedPlatforms;
 }
 
 @property (strong, nonatomic) _INPBAppId *appId; // @synthesize appId=_appId;
 @property (strong, nonatomic) _INPBBuildId *buildId; // @synthesize buildId=_buildId;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAppId;
 @property (readonly, nonatomic) BOOL hasBuildId;
-@property (strong, nonatomic) NSMutableArray *intentSupports; // @synthesize intentSupports=_intentSupports;
-@property (strong, nonatomic) NSMutableArray *localizedProjects; // @synthesize localizedProjects=_localizedProjects;
-@property (strong, nonatomic) NSMutableArray *supportedPlatforms; // @synthesize supportedPlatforms=_supportedPlatforms;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *intentSupports; // @synthesize intentSupports=_intentSupports;
+@property (readonly, nonatomic) unsigned long long intentSupportsCount;
+@property (copy, nonatomic) NSArray *localizedProjects; // @synthesize localizedProjects=_localizedProjects;
+@property (readonly, nonatomic) unsigned long long localizedProjectsCount;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *supportedPlatforms; // @synthesize supportedPlatforms=_supportedPlatforms;
+@property (readonly, nonatomic) unsigned long long supportedPlatformsCount;
 
 + (Class)intentSupportType;
 + (Class)localizedProjectsType;
@@ -40,18 +48,12 @@
 - (void)clearLocalizedProjects;
 - (void)clearSupportedPlatforms;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (id)intentSupportAtIndex:(unsigned long long)arg1;
-- (unsigned long long)intentSupportsCount;
 - (BOOL)isEqual:(id)arg1;
 - (id)localizedProjectsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)localizedProjectsCount;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)supportedPlatformsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)supportedPlatformsCount;
 - (void)writeTo:(id)arg1;
 
 @end

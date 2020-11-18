@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSArray, NSString, NSURL;
 
-@interface DMFOpenURLRequest : CATTaskRequest
+@interface DMFOpenURLRequest : DMFTaskRequest
 {
     BOOL _lockInApp;
     NSURL *_url;
@@ -21,6 +21,9 @@
 @property (nonatomic) BOOL lockInApp; // @synthesize lockInApp=_lockInApp;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

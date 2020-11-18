@@ -11,7 +11,7 @@
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSURLSessionDataDelegate-Protocol.h>
 
-@class DEDBugSession, NSArray, NSMutableArray, NSString;
+@class DEDBugSession, NSArray, NSMutableSet, NSString;
 @protocol OS_os_log;
 
 @interface DEDRadarFinisher : NSObject <NSURLSessionDataDelegate, DEDFinisher, NSSecureCoding, DEDSecureArchiving>
@@ -20,27 +20,31 @@
     DEDBugSession *_session;
     NSObject<OS_os_log> *_log;
     NSArray *_attachments;
-    NSMutableArray *_finishedAttachments;
+    NSMutableSet *_uploadItems;
 }
 
 @property (strong) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) NSMutableArray *finishedAttachments; // @synthesize finishedAttachments=_finishedAttachments;
 @property (readonly) unsigned long long hash;
 @property (strong) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property float percentComplete; // @synthesize percentComplete=_percentComplete;
 @property (weak) DEDBugSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
+@property (strong) NSMutableSet *uploadItems; // @synthesize uploadItems=_uploadItems;
 
 + (id)archivedClasses;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didSendBodyData:(long long)arg3 totalBytesSent:(long long)arg4 totalBytesExpectedToSend:(long long)arg5;
+- (BOOL)allUploadsComplete;
 - (void)encodeWithCoder:(id)arg1;
 - (void)finishSession:(id)arg1 withConfiguration:(id)arg2;
+- (id)getUploadItemForTask:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 session:(id)arg2;
+- (BOOL)isWatch;
 
 @end
 

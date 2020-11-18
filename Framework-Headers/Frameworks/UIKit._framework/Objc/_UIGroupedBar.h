@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UIButtonBarDelegate-Protocol.h>
+#import <UIKitCore/_UIButtonBarDelegate-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSString, UIBlurEffect, UIVisualEffectView, _UIButtonBar, _UIButtonBarButtonVisualProvider;
 

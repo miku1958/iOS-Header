@@ -8,17 +8,16 @@
 
 #import <MIME/MFConnectableObservable-Protocol.h>
 
-@class MFCancelationToken, NSLock, NSMapTable, NSString;
-@protocol MFObservable;
+@class MFCancelationToken, NSLock, NSString;
+@protocol MFObservable, MFObserver;
 
 __attribute__((visibility("hidden")))
 @interface _MFConnectableObservable : MFObservable <MFConnectableObservable>
 {
     id<MFObservable> _observable;
-    MFCancelationToken *_cancelable;
+    MFObservable<MFObserver> *_subject;
     NSLock *_lock;
-    NSMapTable *_observersToCancelable;
-    BOOL _connected;
+    MFCancelationToken *_cancelable;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,9 +25,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_disconnect;
 - (id)connect;
 - (void)dealloc;
-- (id)initWithObservable:(id)arg1;
+- (id)initWithObservable:(id)arg1 subject:(id)arg2;
 - (id)subscribe:(id)arg1;
 
 @end

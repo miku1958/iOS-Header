@@ -6,8 +6,8 @@
 
 #import <CloudPhotoLibrary/CPLEngineSyncTask.h>
 
-@class NSObject, NSString;
-@protocol CPLMinglePulledChangesTaskDelegate, OS_dispatch_queue;
+@class CPLScopeFilter, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CPLMinglePulledChangesTask : CPLEngineSyncTask
 {
@@ -15,20 +15,20 @@
     NSString *_clientCacheIdentifier;
     BOOL _hasPreparedForMingling;
     unsigned long long _countOfNotifiedBatchesInPullQueue;
+    CPLScopeFilter *_scopeFilter;
 }
 
-@property (strong) id<CPLMinglePulledChangesTaskDelegate> delegate; // @dynamic delegate;
+@property (strong, nonatomic) CPLScopeFilter *scopeFilter; // @synthesize scopeFilter=_scopeFilter;
 
 + (BOOL)mingleBatch:(id)arg1 forStore:(id)arg2 putBatchesInPullQueue:(BOOL *)arg3 error:(id *)arg4;
 - (void).cxx_destruct;
+- (BOOL)_checkContinueMinglingInTransaction:(id)arg1;
 - (void)_launch;
 - (void)_processNextBatch;
 - (void)_taskDidFinishWithError:(id)arg1;
 - (void)cancel;
 - (id)initWithEngineLibrary:(id)arg1;
 - (void)launch;
-- (void)pause;
-- (void)resume;
 - (void)taskDidFinishWithError:(id)arg1;
 - (id)taskIdentifier;
 

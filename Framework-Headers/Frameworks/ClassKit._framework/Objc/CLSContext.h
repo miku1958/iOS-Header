@@ -13,38 +13,31 @@
 @interface CLSContext : CLSObject <CLSRelationable>
 {
     BOOL _active;
+    NSURL *_universalLinkURL;
+    NSString *_title;
+    NSString *_topic;
     NSArray *_path;
+    NSString *_currentActivityID;
+    NSString *_contentStoreIdentifier;
+    long long _displayOrder;
     NSString *_identifier;
     long long _type;
-    long long __authorizationStatus;
     NSString *_storeIdentifier;
     NSString *_storeTeamID;
-    NSString *__currentActivityID;
-    NSString *__topic;
-    NSString *__title;
-    NSURL *__universalLinkURL;
-    long long __displayOrder;
-    NSString *__contentStoreIdentifier;
+    long long _authorizationStatus;
 }
 
-@property (nonatomic) long long _authorizationStatus; // @synthesize _authorizationStatus=__authorizationStatus;
-@property (copy, nonatomic) NSString *_contentStoreIdentifier; // @synthesize _contentStoreIdentifier=__contentStoreIdentifier;
-@property (copy, nonatomic) NSString *_currentActivityID; // @synthesize _currentActivityID=__currentActivityID;
-@property (nonatomic) long long _displayOrder; // @synthesize _displayOrder=__displayOrder;
-@property (strong, nonatomic) NSArray *_path; // @synthesize _path;
-@property (copy, nonatomic) NSString *_title; // @synthesize _title=__title;
-@property (copy, nonatomic) NSString *_topic; // @synthesize _topic=__topic;
-@property (strong, nonatomic) NSURL *_universalLinkURL; // @synthesize _universalLinkURL=__universalLinkURL;
 @property (readonly, nonatomic, getter=isActive) BOOL active;
-@property (nonatomic) long long authorizationStatus;
+@property (nonatomic) long long authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property (copy, nonatomic) NSString *contentStoreIdentifier;
 @property (readonly, nonatomic) CLSActivity *currentActivity;
+@property (copy, nonatomic) NSString *currentActivityID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long displayOrder;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSArray *path; // @dynamic path;
+@property (copy, nonatomic) NSArray *path; // @synthesize path=_path;
 @property (copy, nonatomic) NSString *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 @property (copy, nonatomic) NSString *storeTeamID; // @synthesize storeTeamID=_storeTeamID;
 @property (readonly) Class superclass;

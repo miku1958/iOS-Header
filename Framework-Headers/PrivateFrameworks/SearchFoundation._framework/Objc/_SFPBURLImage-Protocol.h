@@ -10,7 +10,6 @@
 
 @protocol _SFPBURLImage <NSObject>
 
-@property (readonly, nonatomic) BOOL hasUrlValue;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBURL *urlValue;
 

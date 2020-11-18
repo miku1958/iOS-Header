@@ -8,27 +8,26 @@
 
 #import <HomeKit/HMFLogging-Protocol.h>
 
-@class HMHome, HMMediaSystem, HMThreadSafeMutableArrayCollection, NSArray, NSString, NSUUID, _HMContext;
-@protocol OS_dispatch_queue;
+@class HMFUnfairLock, HMHome, HMMediaSystem, HMMutableArray, NSArray, NSString, NSUUID, _HMContext;
 
 @interface HMMediaSystemBuilder : NSObject <HMFLogging>
 {
+    HMFUnfairLock *_lock;
     NSArray *_components;
     NSString *_name;
     NSString *_configuredName;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     _HMContext *_context;
     NSUUID *_uuid;
     NSUUID *_mediaSystemUUID;
     NSString *_builderSessionID;
     HMHome *_home;
     HMMediaSystem *_mediaSystem;
-    HMThreadSafeMutableArrayCollection *_componentsArray;
+    HMMutableArray *_componentsArray;
 }
 
 @property (strong, nonatomic) NSString *builderSessionID; // @synthesize builderSessionID=_builderSessionID;
 @property (strong, nonatomic) NSArray *components; // @synthesize components=_components;
-@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *componentsArray; // @synthesize componentsArray=_componentsArray;
+@property (strong, nonatomic) HMMutableArray *componentsArray; // @synthesize componentsArray=_componentsArray;
 @property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
@@ -38,7 +37,6 @@
 @property (readonly, nonatomic) HMMediaSystem *mediaSystem; // @synthesize mediaSystem=_mediaSystem;
 @property (readonly, nonatomic) NSUUID *mediaSystemUUID; // @synthesize mediaSystemUUID=_mediaSystemUUID;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 

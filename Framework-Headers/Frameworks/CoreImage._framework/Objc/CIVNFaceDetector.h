@@ -4,16 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreImage/CIVNDetector.h>
+#import <CoreImage/CIDetector.h>
+
+@class CIContext;
 
 __attribute__((visibility("hidden")))
-@interface CIVNFaceDetector : CIVNDetector
+@interface CIVNFaceDetector : CIDetector
 {
+    CIContext *context;
 }
 
-- (id)featuresInImage:(id)arg1;
+@property (readonly, strong) CIContext *context; // @synthesize context;
+
+- (void)dealloc;
 - (id)featuresInImage:(id)arg1 options:(id)arg2;
-- (id)featuresInImage:(id)arg1 withContext:(id)arg2;
+- (id)initWithContext:(id)arg1 options:(id)arg2;
 
 @end
 

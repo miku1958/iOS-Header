@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface _SchemaRenditionTuple : NSObject
 {
-    struct _renditionkeytoken key[17];
+    struct _renditionkeytoken key[18];
     NSMutableDictionary *info;
 }
 

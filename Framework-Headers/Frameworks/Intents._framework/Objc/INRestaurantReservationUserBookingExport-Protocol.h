@@ -12,7 +12,7 @@
 @protocol INRestaurantReservationUserBookingExport <NSObject, JSExport>
 
 @property (copy, nonatomic) NSString *advisementText;
-@property (strong, nonatomic) NSDate *dateStatusModified;
+@property (copy, nonatomic) NSDate *dateStatusModified;
 @property (copy, nonatomic) INRestaurantGuest *guest;
 @property (copy, nonatomic) NSString *guestProvidedSpecialRequestText;
 @property (copy, nonatomic) INRestaurantOffer *selectedOffer;

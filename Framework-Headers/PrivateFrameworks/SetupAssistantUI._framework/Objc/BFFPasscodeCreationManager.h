@@ -32,6 +32,7 @@
 + (id)sharedPasscodeManager;
 - (void).cxx_destruct;
 - (void)_applyPasscode;
+- (id)_mainQueue;
 - (void)acceptWeakPasscode:(BOOL)arg1;
 - (id)init;
 - (BOOL)isSimplePasscodeEntry;

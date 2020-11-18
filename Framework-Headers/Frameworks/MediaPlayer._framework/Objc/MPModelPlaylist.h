@@ -83,6 +83,7 @@
 - (id)artworkCatalog;
 - (id)contentItemCollectionInfo;
 - (id)editorialArtworkCatalog;
+- (id)humanDescription;
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;
 - (long long)libraryRemovalSupportedOptions;
 - (id)newKeepLocalStatusObserverConfiguration;

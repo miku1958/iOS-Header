@@ -49,10 +49,12 @@
 - (void)__handleUpdateLoggedInAccount:(id)arg1;
 - (void)_handleRemoteLoginAccount:(id)arg1 message:(id)arg2;
 - (void)_initialize;
+- (void)_registerForUsernameUpdates;
 - (void)_sendAccountUpdateNotification:(id)arg1;
 - (void)_updateLoggedInAccount:(id)arg1;
 - (void)configureWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (void)handleAccountUsernameUpdatedOnCurrentDevice:(id)arg1;
 - (id)initWithAccessory:(id)arg1 loggedInAccountData:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)logIdentifier;

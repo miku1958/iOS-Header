@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTitleViewOverlayRects : NSObject
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGRect trailingItemsRect; // @synthesize trailingItemsRect=_trailingItemsRect;
 
 - (id)asArray;
+- (id)description;
 - (id)init;
 - (void)reset;
 

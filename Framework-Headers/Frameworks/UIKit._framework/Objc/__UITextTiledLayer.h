@@ -6,16 +6,16 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <UIKit/CALayerDelegate-Protocol.h>
+#import <UIKitCore/CALayerDelegate-Protocol.h>
 
-@class NSMutableArray, NSString, UIBezierPath;
+@class NSMutableArray, NSString, NSTimer, UIBezierPath;
 
 __attribute__((visibility("hidden")))
 @interface __UITextTiledLayer : CALayer <CALayerDelegate>
 {
     NSMutableArray *_visibleTiles;
     NSMutableArray *_unusedTiles;
-    struct CGRect _gridBounds;
+    NSTimer *_unusedTilesCleanupTimer;
     struct CGSize _tileSize;
     UIBezierPath *_mask;
     struct {
@@ -38,10 +38,10 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_drawInContext:(struct CGContext *)arg1;
-- (void)_prepareGridForBounds:(struct CGRect)arg1;
-- (void)_prepareNonTiledGhostLayersForVisibleBounds:(struct CGRect)arg1 inBounds:(struct CGRect)arg2;
-- (void)_prepareTilesForVisibleBounds:(struct CGRect)arg1 inBounds:(struct CGRect)arg2;
+- (id)_prepareNonTiledGhostLayersForVisibleBounds:(struct CGRect)arg1 inBounds:(struct CGRect)arg2;
+- (id)_prepareTilesForVisibleBounds:(struct CGRect)arg1 inBounds:(struct CGRect)arg2;
 - (id)_preparedTileForFrame:(struct CGRect)arg1 mask:(id)arg2 opacity:(double)arg3 deferred:(BOOL)arg4;
+- (void)dealloc;
 - (void)drawDirtyLayer:(id)arg1 intoContext:(struct CGContext *)arg2;
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)init;
@@ -51,9 +51,11 @@ __attribute__((visibility("hidden")))
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setContentsFormat:(id)arg1;
 - (void)setContentsMultiplyColor:(struct CGColor *)arg1;
+- (void)setContentsScale:(double)arg1;
 - (void)setDelegate:(id)arg1;
 - (void)setDrawsAsynchronously:(BOOL)arg1;
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
+- (void)setRasterizationScale:(double)arg1;
 - (void)suspendTiling;
 
 @end

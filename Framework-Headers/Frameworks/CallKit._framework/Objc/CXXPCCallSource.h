@@ -6,26 +6,27 @@
 
 #import <CallKit/CXCallSource.h>
 
-@class NSBundle, NSSet, NSString, NSXPCConnection;
+@class NSSet, NSString, NSURL, NSXPCConnection;
 
 @interface CXXPCCallSource : CXCallSource
 {
     BOOL _hasVoIPBackgroundMode;
-    NSBundle *_bundle;
+    NSString *_bundleIdentifier;
+    NSURL *_bundleURL;
     NSXPCConnection *_connection;
     NSString *_applicationIdentifier;
     NSSet *_capabilities;
 }
 
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
-@property (strong, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
+@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (strong, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
 @property (copy, nonatomic) NSSet *capabilities; // @synthesize capabilities=_capabilities;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (nonatomic) BOOL hasVoIPBackgroundMode; // @synthesize hasVoIPBackgroundMode=_hasVoIPBackgroundMode;
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)displayName;
 - (id)identifier;
 - (id)init;
 - (id)initWithConnection:(id)arg1;

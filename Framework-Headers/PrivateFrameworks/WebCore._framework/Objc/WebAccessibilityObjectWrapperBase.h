@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (id)attachmentView;
 - (id)baseAccessibilityDescription;
 - (id)baseAccessibilityHelpText;
+- (id)baseAccessibilitySpeechHint;
 - (id)baseAccessibilityTitle;
 - (struct CGPath *)convertPathToScreenSpace:(struct Path *)arg1;
 - (struct CGPoint)convertPointToScreenSpace:(struct FloatPoint *)arg1;

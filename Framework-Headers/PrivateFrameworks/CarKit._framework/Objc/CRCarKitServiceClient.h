@@ -24,6 +24,7 @@
 - (void)_blockOnServiceSemaphore:(id)arg1;
 - (void)_releaseAllServiceSemaphores;
 - (id)_serviceSemaphore;
+- (void)dealloc;
 - (id)init;
 - (void)performServiceCallBlock:(CDUnknownBlockType)arg1;
 

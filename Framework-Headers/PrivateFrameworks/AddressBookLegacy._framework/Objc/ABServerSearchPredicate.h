@@ -46,6 +46,7 @@
 - (void)runPredicateWithDelegate:(id)arg1;
 - (void)searchQuery:(id)arg1 finishedWithError:(id)arg2;
 - (void)searchQuery:(id)arg1 returnedResults:(id)arg2;
+- (BOOL)shouldSerialize;
 
 @end
 

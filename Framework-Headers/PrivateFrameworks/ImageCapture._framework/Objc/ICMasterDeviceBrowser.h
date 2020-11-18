@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class ExFATCameraDeviceManager, MSCameraDeviceManager, NSMutableArray, PTPCameraDeviceManager;
 
+__attribute__((visibility("hidden")))
 @interface ICMasterDeviceBrowser : NSObject
 {
     NSMutableArray *_devices;
     NSMutableArray *_browsers;
     long long _numberOfBrowsingBrowsers;
-    id _msDevManager;
-    id _ptpDevManager;
-    id _exFATManager;
+    MSCameraDeviceManager *_msDevManager;
+    PTPCameraDeviceManager *_ptpDevManager;
+    ExFATCameraDeviceManager *_exFATManager;
 }
 
 @property (readonly) NSMutableArray *browsers; // @synthesize browsers=_browsers;
@@ -25,10 +26,10 @@
 + (BOOL)exists;
 - (void)addBrowser:(id)arg1;
 - (int)addMSCamera:(id)arg1;
+- (int)addMagicDisk:(id)arg1;
 - (int)addPTPCamera:(id)arg1;
 - (void)dealloc;
 - (id)deviceWithDelegate:(id)arg1;
-- (void)finalize;
 - (void)handleCommandCompletionNotification:(id)arg1;
 - (void)handleImageCaptureEventNotification:(id)arg1;
 - (void)informBrowserDelegateUsingSelector:(SEL)arg1 withObject:(id)arg2;
@@ -38,7 +39,6 @@
 - (void)removePTPCamera:(id)arg1;
 - (int)start:(id)arg1;
 - (void)stop:(id)arg1;
-- (int)updateExFATCamera:(id)arg1;
 
 @end
 

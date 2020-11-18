@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)navigationSessionStarted:(id)arg1;
 - (void)navigationSessionStopped:(id)arg1;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
+- (void)setIsConnectedToCarplay:(BOOL)arg1;
 - (void)setIsNavigatingInLowGuidance:(BOOL)arg1;
 - (void)setVoiceVolume:(unsigned long long)arg1;
 - (void)updateClusteredSectionSelectedRideForNavigationSession:(id)arg1;

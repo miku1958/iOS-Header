@@ -7,37 +7,38 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBDataString-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBDataString : PBCodable <NSCopying>
+@interface _INPBDataString : PBCodable <_INPBDataString, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_alternatives;
+    struct _has;
+    NSArray *_alternatives;
     NSString *_localizedValue;
     NSString *_vocabularyIdentifier;
 }
 
-@property (strong, nonatomic) NSMutableArray *alternatives; // @synthesize alternatives=_alternatives;
+@property (copy, nonatomic) NSArray *alternatives; // @synthesize alternatives=_alternatives;
+@property (readonly, nonatomic) unsigned long long alternativesCount;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasLocalizedValue;
 @property (readonly, nonatomic) BOOL hasVocabularyIdentifier;
-@property (strong, nonatomic) NSString *localizedValue; // @synthesize localizedValue=_localizedValue;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *vocabularyIdentifier; // @synthesize vocabularyIdentifier=_vocabularyIdentifier;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *localizedValue; // @synthesize localizedValue=_localizedValue;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *vocabularyIdentifier; // @synthesize vocabularyIdentifier=_vocabularyIdentifier;
 
 + (Class)alternativesType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addAlternatives:(id)arg1;
 - (id)alternativesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)alternativesCount;
 - (void)clearAlternatives;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

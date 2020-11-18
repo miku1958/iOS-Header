@@ -7,18 +7,22 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
+#import <Home/HFMediaValueSource-Protocol.h>
 
-@class NSString;
-@protocol HFCharacteristicOperationContextProviding;
+@class NSError, NSString;
+@protocol HFCharacteristicOperationContextProviding, HFMediaProfileContainer;
 
-@interface HFNullValueSource : NSObject <HFCharacteristicValueSource>
+@interface HFNullValueSource : NSObject <HFCharacteristicValueSource, HFMediaValueSource>
 {
 }
 
+@property (readonly, nonatomic) NSError *cachedPlaybackStateWriteError;
 @property (readonly, nonatomic) id<HFCharacteristicOperationContextProviding> contextProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasPendingWrites;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<HFMediaProfileContainer> mediaProfileContainer;
 @property (readonly) Class superclass;
 
 + (id)na_identity;
@@ -26,8 +30,10 @@
 - (id)cachedValueForCharacteristic:(id)arg1;
 - (void)commitTransactionWithReason:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (long long)lastPlaybackStateForProfile;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;
+- (id)writePlaybackState:(long long)arg1;
 - (id)writeValuesForCharacteristics:(id)arg1;
 
 @end

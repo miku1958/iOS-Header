@@ -11,6 +11,7 @@
 @protocol VMServerXPCProtocol <NSObject>
 - (void)allVoicemails:(void (^)(NSOrderedSet *))arg1;
 - (void)changePassword:(NSString *)arg1 completionBlock:(void (^)(NSError *))arg2;
+- (void)obliterate;
 - (void)removeAllVoicemails;
 - (void)removeVoicemailFromTrashWithIdentifier:(long long)arg1;
 - (void)reportTranscriptionProblemForIdentifier:(long long)arg1;

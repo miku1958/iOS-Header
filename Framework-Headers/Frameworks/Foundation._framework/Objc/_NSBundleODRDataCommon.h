@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)URLForAssetPack:(id)arg1;
-- (void)assetPacksBecameAvailable:(id)arg1;
-- (void)assetPacksBecameUnavailable:(id)arg1;
+- (BOOL)assetPacksBecameAvailable:(id)arg1 error:(id *)arg2;
+- (BOOL)assetPacksBecameUnavailable:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)initWithBundle:(id)arg1;
 

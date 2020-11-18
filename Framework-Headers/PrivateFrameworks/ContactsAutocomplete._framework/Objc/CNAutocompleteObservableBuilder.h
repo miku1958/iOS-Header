@@ -37,6 +37,8 @@
 + (id)builderWithSearchType:(unsigned long long)arg1 scheduler:(id)arg2 probeProvider:(id)arg3;
 + (BOOL)supplementalResultsUseNetwork:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)addCachedCalendarServerObservable:(id)arg1;
+- (void)addCachedDirectoryServerObservable:(id)arg1;
 - (void)addCalendarServerObservable:(id)arg1;
 - (void)addContactsObservable:(id)arg1;
 - (void)addCoreRecentsObservable:(id)arg1;

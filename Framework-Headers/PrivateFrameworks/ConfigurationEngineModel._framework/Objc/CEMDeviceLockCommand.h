@@ -12,25 +12,28 @@
 
 @interface CEMDeviceLockCommand : CEMCommandBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadMessage;
+    NSString *_payloadPhoneNumber;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadMessage;
-@property (readonly, nonatomic) NSString *payloadPhoneNumber;
+@property (copy, nonatomic) NSString *payloadMessage; // @synthesize payloadMessage=_payloadMessage;
+@property (copy, nonatomic) NSString *payloadPhoneNumber; // @synthesize payloadPhoneNumber=_payloadPhoneNumber;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withMessage:(id)arg2 withPhoneNumber:(id)arg3;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)executionLevel;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

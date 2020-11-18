@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSXPCListenerDelegate-Protocol.h>
 
@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedPreferencesController;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

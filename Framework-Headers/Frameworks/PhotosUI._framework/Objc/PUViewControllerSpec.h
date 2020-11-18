@@ -11,6 +11,7 @@
 @interface PUViewControllerSpec : NSObject
 {
     BOOL _presentedForSecondScreen;
+    BOOL _prefersCompactLayoutForSplitScreen;
     BOOL __needsUpdateLayoutStyle;
     UITraitCollection *_traitCollection;
     NSHashTable *__changeObservers;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) PUViewControllerSpecChange *currentChange; // @synthesize currentChange=_currentChange;
 @property (readonly, nonatomic) long long currentLayoutStyle; // @synthesize currentLayoutStyle=_currentLayoutStyle;
 @property (nonatomic) struct CGSize layoutReferenceSize; // @synthesize layoutReferenceSize=_layoutReferenceSize;
+@property (nonatomic) BOOL prefersCompactLayoutForSplitScreen; // @synthesize prefersCompactLayoutForSplitScreen=_prefersCompactLayoutForSplitScreen;
 @property (nonatomic, getter=isPresentedForSecondScreen) BOOL presentedForSecondScreen; // @synthesize presentedForSecondScreen=_presentedForSecondScreen;
 @property (nonatomic) struct CGSize secondScreenSize; // @synthesize secondScreenSize=_secondScreenSize;
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
@@ -35,6 +37,7 @@
 - (void).cxx_destruct;
 - (void)_didChange;
 - (void)_invalidateLayoutStyle;
+- (struct CGSize)_portraitOrientedSizeForSize:(struct CGSize)arg1;
 - (void)_publishChange:(id)arg1;
 - (void)_setCurrentChange:(id)arg1;
 - (void)_setCurrentLayoutStyle:(long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -35,7 +35,7 @@
 @property (nonatomic) BOOL type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *typeString; // @synthesize typeString=_typeString;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

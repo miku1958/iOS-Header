@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_semaphore;
 
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addCellCoordinate:(struct TSUCellCoord)arg1;
 - (vector_38b190b0 *)cellCoordinates;
-- (unordered_set_c5f37819)cellCoordinatesSet;
+- (unordered_set_cb28a53b)cellCoordinatesSet;
 - (id)init;
 - (id)initWithArchive:(const struct CellCoordinateVectorArchive *)arg1;
 - (void)removeAllCellCoordinates;

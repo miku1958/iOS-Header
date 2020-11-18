@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITargetedProxy.h>
+#import <UIKitCore/_UITargetedProxy.h>
 
-#import <UIKit/_UIViewServiceDeputy-Protocol.h>
-#import <UIKit/_UIViewServiceUIBehaviorInterface-Protocol.h>
+#import <UIKitCore/_UIViewServiceDeputy-Protocol.h>
+#import <UIKitCore/_UIViewServiceUIBehaviorInterface-Protocol.h>
 
 @class NSString;
 

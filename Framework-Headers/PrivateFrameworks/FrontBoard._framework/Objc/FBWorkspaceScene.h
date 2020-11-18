@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSSceneAgentProxy-Protocol.h>
@@ -64,7 +64,6 @@
 - (id)clientProcess;
 - (void)closeSession:(id)arg1;
 - (id)counterpartAgent;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)host:(id)arg1 configureWithDefinition:(id)arg2 parameters:(id)arg3;

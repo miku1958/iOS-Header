@@ -14,12 +14,14 @@
 @interface _NUFaceDetectionResult : _NURenderResult <NUFaceDetectionResult>
 {
     NSArray *_faces;
+    CDStruct_d58201db _imageSize;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) NSArray *faces; // @synthesize faces=_faces;
 @property (readonly) unsigned long long hash;
+@property CDStruct_912cb5d2 imageSize; // @synthesize imageSize=_imageSize;
 @property (readonly) id<NURenderStatistics> statistics;
 @property (readonly) Class superclass;
 

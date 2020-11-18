@@ -13,8 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axSetEditButtonHint;
 - (void)_updateToolbarItems;
 - (void)loadView;
+- (void)updateCurrentEditButton;
 
 @end
 

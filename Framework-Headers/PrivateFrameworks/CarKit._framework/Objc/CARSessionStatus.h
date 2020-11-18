@@ -41,6 +41,7 @@
 - (void)_updateSession;
 - (void)dealloc;
 - (id)init;
+- (id)initAndWaitUntilSessionUpdated;
 - (void)waitForSessionInitialization;
 
 @end

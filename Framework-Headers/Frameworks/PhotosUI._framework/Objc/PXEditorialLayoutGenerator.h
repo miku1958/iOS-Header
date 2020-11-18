@@ -6,29 +6,35 @@
 
 #import <PhotosUICore/PXLayoutGenerator.h>
 
-@class PXEditorialLayoutMetrics, PXMagazineLayoutTileMaker;
+@class NSIndexSet, PXEditorialLayoutMetrics, PXMagazineLayoutTileMaker;
 
 @interface PXEditorialLayoutGenerator : PXLayoutGenerator
 {
     BOOL _isPrepared;
     PXMagazineLayoutTileMaker *_tileMaker;
     struct CGSize _actualSize;
-    struct CGRect *_rectBuffer;
-    unsigned long long _rectBufferCount;
+    struct _PXLayoutGeometry *_geometries;
+    struct CGRect *_rects;
+    unsigned long long _geometriesCount;
+    NSIndexSet *_geometrySet;
 }
 
 @property (readonly, copy, nonatomic) PXEditorialLayoutMetrics *metrics; // @dynamic metrics;
 
 - (void).cxx_destruct;
 - (struct _PXLayoutGeometry)_geometryFromFrame:(struct CGRect)arg1 index:(unsigned long long)arg2;
+- (void)_getContentGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2;
+- (void)_getHeaderGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2;
+- (void)_prepareBuffersForCount:(unsigned long long)arg1;
 - (void)_prepareIfNeeded;
-- (void)_prepareRectBufferForCount:(unsigned long long)arg1;
 - (void)dealloc;
 - (struct CGSize)estimatedSize;
+- (id)geometryKinds;
 - (void)getGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2 withKind:(long long)arg3;
 - (id)init;
 - (id)initWithMetrics:(id)arg1;
 - (void)invalidate;
+- (unsigned long long)numberOfGeometriesWithKind:(long long)arg1;
 - (struct CGSize)size;
 
 @end

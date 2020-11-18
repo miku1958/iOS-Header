@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Vision/VNRequestCancelling-Protocol.h>
 #import <Vision/VNRequestWarming-Protocol.h>
@@ -23,20 +23,30 @@
 + (void)requestForcedCleanupWithOptions:(id)arg1;
 + (void)requestForcedCleanupWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
-- (BOOL)_performRequests:(id)arg1 onUnvettedImageBuffer:(id)arg2 error:(id *)arg3;
+- (BOOL)_performRequests:(id)arg1 onUnvettedImageBuffer:(id)arg2 gatheredForensics:(id *)arg3 error:(id *)arg4;
 - (void)cancelAllRequests;
 - (id)init;
 - (BOOL)performRequests:(id)arg1 onCGImage:(struct CGImage *)arg2 error:(id *)arg3;
+- (BOOL)performRequests:(id)arg1 onCGImage:(struct CGImage *)arg2 gatheredForensics:(id *)arg3 error:(id *)arg4;
 - (BOOL)performRequests:(id)arg1 onCGImage:(struct CGImage *)arg2 orientation:(unsigned int)arg3 error:(id *)arg4;
+- (BOOL)performRequests:(id)arg1 onCGImage:(struct CGImage *)arg2 orientation:(unsigned int)arg3 gatheredForensics:(id *)arg4 error:(id *)arg5;
 - (BOOL)performRequests:(id)arg1 onCIImage:(id)arg2 error:(id *)arg3;
+- (BOOL)performRequests:(id)arg1 onCIImage:(id)arg2 gatheredForensics:(id *)arg3 error:(id *)arg4;
 - (BOOL)performRequests:(id)arg1 onCIImage:(id)arg2 orientation:(unsigned int)arg3 error:(id *)arg4;
+- (BOOL)performRequests:(id)arg1 onCIImage:(id)arg2 orientation:(unsigned int)arg3 gatheredForensics:(id *)arg4 error:(id *)arg5;
 - (BOOL)performRequests:(id)arg1 onCVPixelBuffer:(struct __CVBuffer *)arg2 error:(id *)arg3;
+- (BOOL)performRequests:(id)arg1 onCVPixelBuffer:(struct __CVBuffer *)arg2 gatheredForensics:(id *)arg3 error:(id *)arg4;
 - (BOOL)performRequests:(id)arg1 onCVPixelBuffer:(struct __CVBuffer *)arg2 orientation:(unsigned int)arg3 error:(id *)arg4;
+- (BOOL)performRequests:(id)arg1 onCVPixelBuffer:(struct __CVBuffer *)arg2 orientation:(unsigned int)arg3 gatheredForensics:(id *)arg4 error:(id *)arg5;
 - (BOOL)performRequests:(id)arg1 onImageData:(id)arg2 error:(id *)arg3;
 - (BOOL)performRequests:(id)arg1 onImageData:(id)arg2 orientation:(unsigned int)arg3 error:(id *)arg4;
+- (BOOL)performRequests:(id)arg1 onImageData:(id)arg2 orientation:(unsigned int)arg3 gatheredForensics:(id *)arg4 error:(id *)arg5;
 - (BOOL)performRequests:(id)arg1 onImageSpecifier:(id)arg2 error:(id *)arg3;
+- (BOOL)performRequests:(id)arg1 onImageSpecifier:(id)arg2 gatheredForensics:(id *)arg3 error:(id *)arg4;
 - (BOOL)performRequests:(id)arg1 onImageURL:(id)arg2 error:(id *)arg3;
+- (BOOL)performRequests:(id)arg1 onImageURL:(id)arg2 gatheredForensics:(id *)arg3 error:(id *)arg4;
 - (BOOL)performRequests:(id)arg1 onImageURL:(id)arg2 orientation:(unsigned int)arg3 error:(id *)arg4;
+- (BOOL)performRequests:(id)arg1 onImageURL:(id)arg2 orientation:(unsigned int)arg3 gatheredForensics:(id *)arg4 error:(id *)arg5;
 - (BOOL)prepareForPerformingRequests:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForPerformingRequestsOfClass:(id)arg1 error:(id *)arg2;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData;
 
@@ -19,6 +19,9 @@
     BOOL _allowsMultiPassEncoding;
     BOOL _allowsOptimalRowbytesPacking;
     BOOL _allowsCompactCompression;
+    BOOL _allowsPaletteImageCompression;
+    BOOL _allowsHevcCompression;
+    BOOL _allowsDeepmapImageCompression;
     BOOL _flipped;
     struct CGImage *_sourceImage;
     long long _texturePixelFormat;
@@ -31,8 +34,11 @@
 }
 
 @property BOOL allowsCompactCompression;
+@property BOOL allowsDeepmapImageCompression; // @synthesize allowsDeepmapImageCompression=_allowsDeepmapImageCompression;
+@property BOOL allowsHevcCompression; // @synthesize allowsHevcCompression=_allowsHevcCompression;
 @property BOOL allowsMultiPassEncoding; // @synthesize allowsMultiPassEncoding=_allowsMultiPassEncoding;
 @property BOOL allowsOptimalRowbytesPacking; // @synthesize allowsOptimalRowbytesPacking=_allowsOptimalRowbytesPacking;
+@property BOOL allowsPaletteImageCompression; // @synthesize allowsPaletteImageCompression=_allowsPaletteImageCompression;
 @property (nonatomic) unsigned long long colorSpaceID; // @synthesize colorSpaceID=_colorSpaceID;
 @property (nonatomic) double compressionQuality; // @synthesize compressionQuality=_compressionQuality;
 @property long long compressionType; // @synthesize compressionType=_compressionType;

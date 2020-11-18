@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarDataEntry.h>
+#import <UIKitCore/_UIStatusBarDataEntry.h>
 
 @class NSString;
 
@@ -22,7 +22,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initFromData:(const CDStruct_8a690d05 *)arg1 type:(int)arg2 string:(const char *)arg3 maxLength:(int)arg4;
+- (id)initFromData:(const CDStruct_1916f467 *)arg1 type:(int)arg2 string:(const char *)arg3 maxLength:(int)arg4;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

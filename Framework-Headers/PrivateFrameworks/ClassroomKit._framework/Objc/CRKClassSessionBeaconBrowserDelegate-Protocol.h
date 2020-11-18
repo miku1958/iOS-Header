@@ -6,11 +6,11 @@
 
 #import <ClassroomKit/NSObject-Protocol.h>
 
-@class CRKClassSessionBeaconBrowser, DMFControlSessionIdentifier, NSError, NSString;
+@class CRKClassSessionBeaconBrowser, CRKRemoteEndpoint, DMFControlSessionIdentifier, NSError;
 
 @protocol CRKClassSessionBeaconBrowserDelegate <NSObject>
 - (void)beaconBrowser:(CRKClassSessionBeaconBrowser *)arg1 didFailWithError:(NSError *)arg2;
 - (void)beaconBrowser:(CRKClassSessionBeaconBrowser *)arg1 didFindBeaconForClassSession:(DMFControlSessionIdentifier *)arg2 flags:(unsigned short)arg3;
-- (void)beaconBrowser:(CRKClassSessionBeaconBrowser *)arg1 didFindBeaconForInvitationSessionWithIPAddress:(NSString *)arg2;
+- (void)beaconBrowser:(CRKClassSessionBeaconBrowser *)arg1 didFindBeaconForInvitationSessionWithEndpoint:(CRKRemoteEndpoint *)arg2;
 @end
 

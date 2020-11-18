@@ -10,19 +10,20 @@
 @protocol TSDImportExportDelegate;
 
 @protocol TSKRenderingExporter <TSKExporter>
-- (struct CGRect)boundsRect;
+
+@property (readonly, nonatomic) struct CGRect boundsRect;
+@property (readonly, nonatomic) unsigned long long pageCount;
+@property (nonatomic) BOOL paginate;
+@property (readonly, nonatomic) double progressForCurrentPage;
+@property (readonly, nonatomic) struct CGRect unscaledClipRect;
+
 - (BOOL)drawCurrentPageInContext:(struct CGContext *)arg1 viewScale:(double)arg2 unscaledClipRect:(struct CGRect)arg3 createPage:(BOOL)arg4;
 - (BOOL)exportToURL:(NSURL *)arg1 pageNumber:(unsigned long long)arg2 delegate:(id<TSDImportExportDelegate>)arg3 error:(id *)arg4;
 - (BOOL)incrementPage;
-- (unsigned long long)pageCount;
-- (BOOL)paginate;
 - (void)performBlockWithImager:(void (^)(TSDImager *))arg1;
 - (BOOL)preparePage:(unsigned long long)arg1;
-- (double)progressForCurrentPage;
 - (BOOL)setInfosToCurrentPage;
-- (void)setPaginate:(BOOL)arg1;
 - (void)setup;
 - (void)teardown;
-- (struct CGRect)unscaledClipRect;
 @end
 

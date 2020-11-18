@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIRefreshControlHosting-Protocol.h>
+#import <UIKitCore/_UIRefreshControlHosting-Protocol.h>
 
 @class NSArray, NSString, UINavigationController, UIRefreshControl, UIScrollView, UIView;
 @protocol _UINavigationControllerRefreshControlHostDelegate;

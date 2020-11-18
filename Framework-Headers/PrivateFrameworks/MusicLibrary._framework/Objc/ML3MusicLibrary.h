@@ -117,7 +117,6 @@
 - (long long)_clearDatabaseFileFreeSpace;
 - (long long)_clearOrphanedAssetsOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2;
 - (long long)_clearPurgeableArtworkOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2;
-- (long long)_clearPurgeableDatabaseFilesOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2;
 - (long long)_clearPurgeableTracksOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2 includeAutoFilledTracks:(BOOL)arg3;
 - (long long)_clearPurgeableTracksOfAmount:(long long)arg1 withUrgency:(unsigned long long)arg2 includeCloudAssets:(BOOL)arg3 includeAutoFilledTracks:(BOOL)arg4;
 - (long long)_cloudAssetsTotalSize;
@@ -129,6 +128,7 @@
 - (BOOL)_determineAndUpdateBestArtworkTokensForEntityPersistentID:(long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3 retrievalTime:(double)arg4 preserveExistingAvailableToken:(BOOL)arg5 usingConnection:(id)arg6;
 - (void)_effectiveSettingsDidChangeNotification:(id)arg1;
 - (void)_enumeratePurgeableAlbumTracksForUrgency:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)_enumeratePurgeablePodcastEpisodesForUrgency:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_enumeratePurgeableStreamedTracksForUrgency:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)_enumeratePurgeableTracksForUrgency:(unsigned long long)arg1 includeAutoFilledTracks:(BOOL)arg2 includeCloudAssets:(BOOL)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (BOOL)_insertArtworkRowWithArtworkToken:(id)arg1 artworkType:(long long)arg2 sourceType:(long long)arg3 relativePath:(id)arg4;
@@ -142,7 +142,6 @@
 - (void)_postClientNotificationWithDistributedName:(id)arg1 localName:(id)arg2;
 - (id)_purgeableAlbumsQuerySQLWithUrgency:(unsigned long long)arg1;
 - (long long)_purgeableArtworkTotalSizeWithUrgency:(unsigned long long)arg1;
-- (long long)_purgeableDatabaseFileSizeWithUrgency:(unsigned long long)arg1;
 - (id)_purgeableItemsPredicateSQLWithUrgency:(unsigned long long)arg1;
 - (id)_purgeableTrackPredicateWithUrgency:(unsigned long long)arg1 includeAutoFilledTracks:(BOOL)arg2 includeCloudAssets:(BOOL)arg3;
 - (long long)_purgeableTracksTotalSizeWithUrgency:(unsigned long long)arg1 includeAutoFilledTracks:(BOOL)arg2;

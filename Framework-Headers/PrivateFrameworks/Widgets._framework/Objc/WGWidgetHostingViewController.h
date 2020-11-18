@@ -6,12 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
-@class BSAuditToken, NSDate, NSMapTable, NSMutableDictionary, NSObject, NSString, NSTimer, UIImage, UIView, WGWidgetInfo, WGWidgetLifeCycleSequence, _WGBrokenWidgetView, _WGCAPackageView, _WGWidgetRemoteViewController;
+@class BSAuditToken, NSDate, NSMapTable, NSMutableDictionary, NSObject, NSString, NSTimer, UIView, WGWidgetInfo, WGWidgetLifeCycleSequence, _WGBrokenWidgetView, _WGCAPackageView, _WGLockedOutWidgetView, _WGWidgetRemoteViewController;
 @protocol NSCopying, OS_dispatch_queue, OS_dispatch_semaphore, WGWidgetHostingViewControllerDelegate, WGWidgetHostingViewControllerHost;
 
 @interface WGWidgetHostingViewController : UIViewController
 {
     BOOL _implementsPerformUpdate;
+    BOOL _lockedOut;
     BOOL _disconnectsImmediately;
     BOOL _encodingLayerTree;
     BOOL _didRequestViewInset;
@@ -42,6 +43,7 @@
     NSDate *_lastUnanticipatedDisconnectionDate;
     NSMapTable *_openAppearanceTransactions;
     _WGBrokenWidgetView *_brokenView;
+    _WGLockedOutWidgetView *_lockedOutView;
     NSMutableDictionary *_sequenceIDsToOutstandingWidgetUpdateCompletionHandlers;
     struct CGRect _snapshotViewBounds;
 }
@@ -67,11 +69,12 @@
 @property (nonatomic, getter=_isEncodingLayerTree, setter=_setEncodingLayerTree:) BOOL encodingLayerTree; // @synthesize encodingLayerTree=_encodingLayerTree;
 @property (copy, nonatomic, getter=_extensionRequest, setter=_setExtensionRequest:) id<NSCopying> extensionRequest; // @synthesize extensionRequest=_extensionRequest;
 @property (weak, nonatomic) id<WGWidgetHostingViewControllerHost> host; // @synthesize host=_host;
-@property (readonly, nonatomic) UIImage *icon;
 @property (nonatomic, getter=_isIgnoringParentAppearState, setter=_setIgnoringParentAppearState:) BOOL ignoringParentAppearState; // @synthesize ignoringParentAppearState=_ignoringParentAppearState;
 @property (nonatomic, setter=_setImplementsPerformUpdate:) BOOL implementsPerformUpdate; // @synthesize implementsPerformUpdate=_implementsPerformUpdate;
 @property (readonly, nonatomic) long long largestAvailableDisplayMode;
 @property (strong, nonatomic, getter=_lastUnanticipatedDisconnectionDate, setter=_setLastUnanticipatedDisconnectionDate:) NSDate *lastUnanticipatedDisconnectionDate; // @synthesize lastUnanticipatedDisconnectionDate=_lastUnanticipatedDisconnectionDate;
+@property (readonly, nonatomic, getter=isLockedOut) BOOL lockedOut; // @synthesize lockedOut=_lockedOut;
+@property (strong, nonatomic, getter=_lockedOutView, setter=_setLockedOutView:) _WGLockedOutWidgetView *lockedOutView; // @synthesize lockedOutView=_lockedOutView;
 @property (nonatomic) unsigned long long maskedCorners; // @synthesize maskedCorners=_maskedCorners;
 @property (readonly, nonatomic, getter=_openAppearanceTransactions) NSMapTable *openAppearanceTransactions; // @synthesize openAppearanceTransactions=_openAppearanceTransactions;
 @property (readonly, nonatomic, getter=_proxyConnectionQueue) NSObject<OS_dispatch_queue> *proxyConnectionQueue; // @synthesize proxyConnectionQueue=_proxyConnectionQueue;
@@ -81,7 +84,6 @@
 @property (copy, nonatomic, getter=_remoteViewControllerDisconnectionHandler, setter=_setRemoteViewControllerDisconnectionHandler:) CDUnknownBlockType remoteViewControllerDisconnectionHandler; // @synthesize remoteViewControllerDisconnectionHandler=_remoteViewControllerDisconnectionHandler;
 @property (readonly, nonatomic, getter=isRemoteViewVisible) BOOL remoteViewVisible;
 @property (strong, nonatomic, getter=_sequenceIDsToOutstandingWidgetUpdateCompletionHandlers, setter=_setSequenceIDsToOutstandingWidgetUpdateCompletionHandlers:) NSMutableDictionary *sequenceIDsToOutstandingWidgetUpdateCompletionHandlers; // @synthesize sequenceIDsToOutstandingWidgetUpdateCompletionHandlers=_sequenceIDsToOutstandingWidgetUpdateCompletionHandlers;
-@property (readonly, nonatomic) UIImage *settingsIcon;
 @property (readonly, nonatomic, getter=isSnapshotLoaded) BOOL snapshotLoaded;
 @property (strong, nonatomic, getter=_snapshotView, setter=_setSnapshotView:) _WGCAPackageView *snapshotView; // @synthesize snapshotView=_snapshotView;
 @property (nonatomic, getter=_snapshotViewBounds, setter=_setSnapshotBounds:) struct CGRect snapshotViewBounds; // @synthesize snapshotViewBounds=_snapshotViewBounds;
@@ -124,6 +126,7 @@
 - (void)_insertAppropriateContentView;
 - (void)_insertBrokenView;
 - (void)_insertContentProvidingSubview:(id)arg1 sequence:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_insertLockedOutViewWithExplanation:(id)arg1;
 - (void)_insertSnapshotViewIfAppropriate;
 - (void)_insertSnapshotWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_invalidateDisconnectionTimer;
@@ -173,7 +176,10 @@
 - (void)managingContainerDidDisappear:(id)arg1;
 - (void)managingContainerWillAppear:(id)arg1;
 - (void)maximumSizeDidChangeForDisplayMode:(long long)arg1;
+- (void)requestIconWithHandler:(CDUnknownBlockType)arg1;
+- (void)requestSettingsIconWithHandler:(CDUnknownBlockType)arg1;
 - (void)setActiveDisplayMode:(long long)arg1;
+- (void)setLockedOut:(BOOL)arg1 withExplanation:(id)arg2;
 - (void)setPreferredContentSize:(struct CGSize)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)traitCollectionDidChange:(id)arg1;

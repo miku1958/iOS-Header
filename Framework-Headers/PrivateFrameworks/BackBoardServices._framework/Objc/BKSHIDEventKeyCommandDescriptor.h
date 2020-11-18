@@ -19,7 +19,7 @@
 }
 
 @property (strong, nonatomic) NSString *commandModifiedInput; // @synthesize commandModifiedInput=_commandModifiedInput;
-@property (readonly, strong, nonatomic) NSString *input; // @synthesize input=_input;
+@property (readonly, nonatomic) NSString *input; // @synthesize input=_input;
 @property (readonly, nonatomic) BOOL isTextualDescriptor;
 @property (readonly, nonatomic) long long keyCode; // @synthesize keyCode=_keyCode;
 @property (readonly, nonatomic) long long modifierFlags; // @synthesize modifierFlags=_modifierFlags;
@@ -32,7 +32,7 @@
 + (id)descriptorWithKeyCode:(long long)arg1 modifierFlags:(long long)arg2;
 + (id)keyCommandDescriptorForEvent:(struct __IOHIDEvent *)arg1 gsKeyboard:(struct __GSKeyboard *)arg2;
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (long long)describes:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -6,10 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <NanoRegistry/NSCopying-Protocol.h>
-#import <NanoRegistry/NSSecureCoding-Protocol.h>
-
-@interface NRPairingCompatibilityVersionInfo : NSObject <NSCopying, NSSecureCoding>
+@interface NRPairingCompatibilityVersionInfo : NSObject
 {
     BOOL _isOverrideActive;
     long long _pairingCompatibilityVersion;
@@ -24,14 +21,14 @@
 @property (nonatomic) long long minQuickSwitchCompatibilityVersion; // @synthesize minQuickSwitchCompatibilityVersion=_minQuickSwitchCompatibilityVersion;
 @property (nonatomic) long long pairingCompatibilityVersion; // @synthesize pairingCompatibilityVersion=_pairingCompatibilityVersion;
 
-+ (void)setValue:(unsigned long long)arg1 forToken:(int)arg2;
-+ (BOOL)supportsSecureCoding;
++ (id)numberFromCFPrefs:(id)arg1;
++ (id)stringFromCFPrefs:(id)arg1;
 + (id)systemVersions;
 + (unsigned long long)valueForToken:(int)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
-- (id)initWithCoder:(id)arg1;
+- (id)initInternal;
+- (long long)minPairingCompatibilityVersionForChipID:(id)arg1;
+- (long long)minPairingCompatibilityVersionForChipID:(id)arg1 name:(id)arg2 defaultVersion:(long long)arg3;
+- (long long)minQuickSwitchPairingCompatibilityVersionForChipID:(id)arg1;
 
 @end
 

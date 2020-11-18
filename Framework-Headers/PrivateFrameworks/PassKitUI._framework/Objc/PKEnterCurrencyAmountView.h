@@ -16,6 +16,7 @@
     UIView *_internalInputAccessoryView;
     BOOL _showsDecimalPointButton;
     BOOL _enabled;
+    BOOL _showDecimalPointButton;
     UITextField *_amountTextField;
     NSString *_currency;
     UIColor *_textColor;
@@ -47,6 +48,7 @@
 @property (copy, nonatomic) NSNumber *kerning; // @synthesize kerning=_kerning;
 @property (strong, nonatomic) PKNumberPadInputView *numberPad; // @synthesize numberPad=_numberPad;
 @property (strong, nonatomic) NSDecimalNumberHandler *roundingBehavior; // @synthesize roundingBehavior=_roundingBehavior;
+@property (nonatomic) BOOL showDecimalPointButton; // @synthesize showDecimalPointButton=_showDecimalPointButton;
 @property (nonatomic) BOOL showsDecimalPointButton; // @synthesize showsDecimalPointButton=_showsDecimalPointButton;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
@@ -55,6 +57,7 @@
 - (void)_createAmountFormatter;
 - (void)_createSubviews;
 - (id)_decimalNumberFromString:(id)arg1;
+- (id)_formatAmount:(id)arg1 minimumFractionDigits:(unsigned long long)arg2;
 - (id)_formatAmountForDisplay:(id)arg1 alwaysShowDecimalSeparator:(BOOL)arg2 minimumFractionDigits:(unsigned long long)arg3 useGroupingSeparator:(BOOL)arg4;
 - (unsigned long long)_numberOfDecimalPlacesInString:(id)arg1 decimalSeperator:(id)arg2;
 - (void)_updateContent;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSSecureCoding-Protocol.h>
 
@@ -38,7 +38,7 @@
 @property (nonatomic) BOOL unmarkIfNecessary; // @synthesize unmarkIfNecessary=_unmarkIfNecessary;
 
 + (BOOL)supportsSecureCoding;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)deleteBackward;
 - (void)deleteBackward:(unsigned long long)arg1;
 - (void)deleteForward;

@@ -15,6 +15,7 @@
 
 @property (strong, nonatomic) NSData *modifiedPlacemarkData; // @synthesize modifiedPlacemarkData=_modifiedPlacemarkData;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

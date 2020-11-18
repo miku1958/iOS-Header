@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSUUID, UISUIActivityExtensionItemDataRequest;
 
@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_thumbnailSize;
 - (BOOL)_wantsAttachmentURLItemData;
 - (BOOL)_wantsThumbnailItemData;
+- (void)_willBePerformedOrPresented;
 - (void)activityDidFinish:(BOOL)arg1;
 - (void)activityDidFinish:(BOOL)arg1 items:(id)arg2 error:(id)arg3;
 - (id)activityImage;

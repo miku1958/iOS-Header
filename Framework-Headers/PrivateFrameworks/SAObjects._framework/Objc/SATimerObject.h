@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *state;
 @property (copy, nonatomic) NSNumber *timerValue;
+@property (copy, nonatomic) NSString *title;
 
 + (id)object;
 + (id)objectWithDictionary:(id)arg1 context:(id)arg2;

@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) struct CGImage *image;
 @property (readonly, nonatomic) struct CGSize physicalSizeInMeters;
 
+- (id)initWithName:(id)arg1 usingRenditionKey:(id)arg2 fromTheme:(unsigned long long)arg3;
 
 @end
 

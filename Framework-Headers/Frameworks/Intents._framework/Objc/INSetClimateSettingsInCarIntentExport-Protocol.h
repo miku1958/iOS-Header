@@ -7,11 +7,12 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class NSMeasurement, NSNumber;
+@class INSpeakableString, NSMeasurement, NSNumber;
 
 @protocol INSetClimateSettingsInCarIntentExport <NSObject, JSExport>
 
 @property (nonatomic) long long airCirculationMode;
+@property (copy, nonatomic) INSpeakableString *carName;
 @property (nonatomic) long long climateZone;
 @property (copy, nonatomic) NSNumber *enableAirConditioner;
 @property (copy, nonatomic) NSNumber *enableAutoMode;

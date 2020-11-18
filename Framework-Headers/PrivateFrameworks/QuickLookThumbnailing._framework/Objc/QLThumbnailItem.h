@@ -8,20 +8,27 @@
 
 #import <QuickLookThumbnailing/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString, NSURL;
+@class FPSandboxingURLWrapper, NSData, NSString, NSURL;
 
 @interface QLThumbnailItem : NSObject <NSSecureCoding>
 {
     NSString *_fileExtensionToken;
     long long _fileExtensionHandle;
     NSURL *_url;
+    FPSandboxingURLWrapper *_urlWrapperForExtension;
     NSData *_data;
     NSString *_contentType;
+    unsigned long long _downloadStatus;
+    NSString *_dataContentType;
+    NSString *_computedContentType;
 }
 
-@property (readonly, nonatomic) NSString *contentType; // @synthesize contentType=_contentType;
+@property (copy) NSString *computedContentType; // @synthesize computedContentType=_computedContentType;
 @property (readonly) NSData *data; // @synthesize data=_data;
+@property (readonly, nonatomic) NSString *dataContentType; // @synthesize dataContentType=_dataContentType;
+@property unsigned long long downloadStatus; // @synthesize downloadStatus=_downloadStatus;
 @property (readonly) NSURL *url; // @synthesize url=_url;
+@property (readonly) FPSandboxingURLWrapper *urlWrapperForExtension; // @synthesize urlWrapperForExtension=_urlWrapperForExtension;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -32,7 +39,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 contentType:(id)arg2;
 - (id)initWithURL:(id)arg1;
+- (id)initWithURL:(id)arg1 URLWrapperForExtension:(id)arg2;
 - (void)issueFileExtension;
+- (BOOL)needsDownload;
 
 @end
 

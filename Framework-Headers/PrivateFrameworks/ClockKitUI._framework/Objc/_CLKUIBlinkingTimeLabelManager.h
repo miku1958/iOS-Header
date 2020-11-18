@@ -42,7 +42,7 @@
 - (id)effectiveAttributedText;
 - (id)effectiveFont;
 - (void)enumerateUnderlyingLabelsWithBlock:(CDUnknownBlockType)arg1;
-- (id)initWithTimeFormatter:(id)arg1 options:(unsigned long long)arg2 labelFactory:(CDUnknownBlockType)arg3;
+- (id)initWithForDevice:(id)arg1 timeFormatter:(id)arg2 options:(unsigned long long)arg3 labelFactory:(CDUnknownBlockType)arg4;
 - (void)layoutSubviews;
 - (void)setMaxWidth:(double)arg1;
 - (void)setShowsDesignator:(BOOL)arg1;
@@ -51,6 +51,7 @@
 - (void)sizeViewToFit;
 - (void)timeFormatterReportingLiveTimeDidChange:(id)arg1;
 - (void)updateTimeText;
+- (id)viewForLastBaselineLayout;
 
 @end
 

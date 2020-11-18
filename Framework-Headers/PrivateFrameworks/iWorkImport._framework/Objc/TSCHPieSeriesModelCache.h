@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, TSCHChartAxis, TSCHChartInfo, TSCHChartModel, TSCHChartSeries, TSDFill, TSDShadow, TSDStroke, TSWPParagraphStyle;
 
@@ -69,7 +69,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) float wedgeExplosion; // @synthesize wedgeExplosion=mWedgeExplosion;
 
 - (void).cxx_destruct;
-- (id)init;
 - (id)initWithPrior:(id)arg1 orChartModel:(id)arg2 forSeries:(unsigned long long)arg3;
 - (id)labelStringForType:(long long)arg1;
 - (id)labelStringWithValueLabelString:(id)arg1 seriesNameLabelString:(id)arg2;

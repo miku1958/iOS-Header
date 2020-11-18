@@ -6,28 +6,23 @@
 
 #import <ARKit/ARImageSensor.h>
 
-#import <ARKit/AVCaptureDataOutputSynchronizerDelegate-Protocol.h>
 #import <ARKit/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
-#import <ARKit/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
 
-@class AVCaptureDataOutputSynchronizer, AVCaptureDepthDataOutput, AVCaptureMetadataOutput, NSArray, NSMutableArray, NSMutableDictionary, NSObject, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@class ARFaceData, AVCaptureDepthDataOutput, AVCaptureMetadataOutput, NSArray, NSObject, NSString;
+@protocol OS_dispatch_semaphore;
 
-@interface ARFaceTrackingImageSensor : ARImageSensor <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate, AVCaptureDataOutputSynchronizerDelegate>
+@interface ARFaceTrackingImageSensor : ARImageSensor <AVCaptureMetadataOutputObjectsDelegate>
 {
     AVCaptureMetadataOutput *_metaDataOutput;
     NSArray *_availableMetadataObjectTypes;
     AVCaptureDepthDataOutput *_depthDataOutput;
-    AVCaptureDataOutputSynchronizer *_outputSynchronizer;
-    NSObject<OS_dispatch_queue> *_outputSynchronizerQueue;
-    NSMutableArray *_outputSynchronizerOutputs;
-    NSMutableArray *_faceDetections;
-    NSMutableDictionary *_avFaceMeshPayload;
-    NSObject<OS_dispatch_semaphore> *_faceSemaphore;
+    ARFaceData *_latestFaceData;
+    NSObject<OS_dispatch_semaphore> *_faceDataSemaphore;
     BOOL _signpostFirstFrameDone;
     BOOL _signpostFirstFaceDone;
     double _startTime;
     unsigned long long _droppedFramesPerSec;
+    BOOL _previousImageDataValid;
     BOOL _recordingMode;
     NSString *_requiredFaceMetaDataObjectType;
 }
@@ -36,7 +31,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL recordingMode; // @synthesize recordingMode=_recordingMode;
-@property (strong, nonatomic) NSString *requiredFaceMetaDataObjectType; // @synthesize requiredFaceMetaDataObjectType=_requiredFaceMetaDataObjectType;
+@property (copy, nonatomic) NSString *requiredFaceMetaDataObjectType; // @synthesize requiredFaceMetaDataObjectType=_requiredFaceMetaDataObjectType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -44,14 +39,13 @@
 - (void)captureOutput:(id)arg1 didOutputMetadataObjects:(id)arg2 fromConnection:(id)arg3;
 - (void)captureOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromConnection:(id)arg3;
 - (void)capturedSynchedOutput:(id)arg1 didOutputSampleBuffer:(struct opaqueCMSampleBuffer *)arg2 fromVideoConnection:(id)arg3 metaDataOutput:(id)arg4 didOutputMetadataObjects:(id)arg5 didOutputDepthData:(id)arg6 atTime:(CDStruct_1b6d18a9)arg7;
-- (id)configureCaptureDevice;
+- (void)configureCaptureDevice;
 - (id)configureCaptureSession;
 - (void)dataOutputSynchronizer:(id)arg1 didOutputSynchronizedDataCollection:(id)arg2;
 - (void)dealloc;
-- (void)faceDataFromMetadataObjects:(id)arg1 mirroredVideoInput:(BOOL)arg2 pFaceBoundingBoxes:(id *)arg3 pFacePayload:(id *)arg4;
 - (id)init;
 - (id)initWithSettings:(id)arg1;
-- (void)prepareSynchronizedOutputs:(id)arg1;
+- (id)outputsForSynchronizer;
 - (unsigned long long)providedDataTypes;
 - (void)start;
 - (void)stop;

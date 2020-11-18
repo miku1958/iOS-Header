@@ -6,21 +6,41 @@
 
 #import <Vision/VNImageBasedRequest.h>
 
-@interface VNCreateSceneprintRequest : VNImageBasedRequest
+#import <Vision/VNImageIdealImageSizeProviding-Protocol.h>
+
+@class NSArray, NSString, VNCanceller;
+
+@interface VNCreateSceneprintRequest : VNImageBasedRequest <VNImageIdealImageSizeProviding>
 {
-    BOOL _returnAllResults;
+    VNCanceller *_canceller;
 }
 
-@property (nonatomic) BOOL returnAllResults; // @synthesize returnAllResults=_returnAllResults;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long imageCropAndScaleOption;
+@property (nonatomic) BOOL returnAllResults;
+@property (readonly) Class superclass;
+@property (readonly) NSArray *supportedImageSizeSet;
+@property (nonatomic) BOOL useCenterTileOnly;
 
++ (Class)configurationClass;
++ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
++ (const CDStruct_7d93034e *)revisionAvailability;
+- (void).cxx_destruct;
+- (id)_applicableDetectorAndReturnError:(id *)arg1;
+- (id)_applicableDetectorForRequestRevision:(unsigned long long)arg1 applicableDetectorOptions:(id *)arg2 error:(id *)arg3;
+- (id)_detectorTypeForRequestRevision:(unsigned long long)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
+- (BOOL)hasCancellationHook;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
-- (id)sequencedRequestPreviousObservationsKey;
+- (BOOL)internalCancelInContext:(id)arg1 error:(id *)arg2;
+- (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

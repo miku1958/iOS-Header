@@ -44,6 +44,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithBundleIDs:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)preferredFocusEnvironments;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 

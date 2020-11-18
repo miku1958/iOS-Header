@@ -7,35 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBPaymentAmountValue-Protocol.h>
 
-@class PBUnknownFields, _INPBCurrencyAmountValue;
+@class NSString, _INPBCurrencyAmountValue;
 
-@interface _INPBPaymentAmountValue : PBCodable <NSCopying>
+@interface _INPBPaymentAmountValue : PBCodable <_INPBPaymentAmountValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    int _amountType;
-    _INPBCurrencyAmountValue *_value;
     struct {
         unsigned int amountType:1;
     } _has;
+    int _amountType;
+    _INPBCurrencyAmountValue *_value;
 }
 
 @property (nonatomic) int amountType; // @synthesize amountType=_amountType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasAmountType;
 @property (readonly, nonatomic) BOOL hasValue;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBCurrencyAmountValue *value; // @synthesize value=_value;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsAmountType:(id)arg1;
 - (id)amountTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

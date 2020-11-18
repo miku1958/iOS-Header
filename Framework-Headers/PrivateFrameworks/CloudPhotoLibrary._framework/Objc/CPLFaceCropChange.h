@@ -22,8 +22,10 @@
 @property (copy, nonatomic) NSData *resourceData; // @synthesize resourceData=_resourceData;
 
 - (void).cxx_destruct;
+- (id)personScopedIdentifier;
 - (id)propertiesDescription;
 - (id)relatedIdentifier;
+- (void)setPersonScopedIdentifier:(id)arg1;
 - (void)setRelatedIdentifier:(id)arg1;
 - (BOOL)supportsDeletion;
 - (BOOL)supportsDirectDeletion;

@@ -33,7 +33,7 @@
 - (void)doLayoutNow;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setDigit:(id)arg1 primaryLetters:(id)arg2 secondaryLetters:(id)arg3;
-- (void)setFontStylesForHighlightState:(BOOL)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(BOOL)arg3 shouldCenterDigit:(BOOL)arg4 fontColor:(BOOL)arg5 circleDiameter:(double)arg6;
+- (void)setFontStylesForHighlightState:(BOOL)arg1 language:(unsigned long long)arg2 showLocalizedLetters:(BOOL)arg3 shouldCenterDigit:(BOOL)arg4 fontColor:(BOOL)arg5 circleDiameter:(double)arg6 largeFont:(BOOL)arg7;
 
 @end
 

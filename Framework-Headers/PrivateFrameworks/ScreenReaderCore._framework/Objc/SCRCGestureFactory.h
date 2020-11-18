@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class SCRCTargetSelectorTimer;
 @protocol SCRCGestureFactoryCallback;
@@ -116,7 +116,7 @@
 - (unsigned long long)fingerCount;
 - (double)firstFingerAltitude;
 - (double)firstFingerAzimuth;
-- (double)firstFingerOrbValue;
+- (double)firstFingerPressure;
 - (double)flickSpeed;
 - (int)gestureState;
 - (id)gestureStateString;

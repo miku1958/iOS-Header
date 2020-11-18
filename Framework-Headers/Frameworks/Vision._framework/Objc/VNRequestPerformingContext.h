@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Vision/VNImageBufferProviding-Protocol.h>
 
-@class NSCache, VNImageBuffer, VNObservationsCache, VNRequestPerformer;
+@class NSMapTable, VNImageBuffer, VNObservationsCache, VNRequestForensics, VNRequestPerformer;
 
 __attribute__((visibility("hidden")))
 @interface VNRequestPerformingContext : NSObject <VNImageBufferProviding>
@@ -16,21 +16,24 @@ __attribute__((visibility("hidden")))
     unsigned int _qosClass;
     VNRequestPerformer *_requestPerformer_DO_NOT_DIRECTLY_ACCESS;
     VNImageBuffer *_imageBuffer_DO_NOT_DIRECTLY_ACCESS;
-    NSCache *_requestToObservationCacheKeyMap;
+    NSMapTable *_requestToObservationsCacheKeyMap;
     VNObservationsCache *_observationsCache;
+    VNRequestForensics *_requestForensics;
 }
 
 - (void).cxx_destruct;
-- (id)_observationCacheKeyForRequest:(id)arg1;
+- (id)_observationsCacheKeyForRequest:(id)arg1;
 - (void)cacheObservationsForRequest:(id)arg1;
 - (id)cachedObservationsForRequest:(id)arg1;
 - (id)imageBufferAndReturnError:(id *)arg1;
-- (id)initWithRequestPerformer:(id)arg1 imageBuffer:(id)arg2 observationsCache:(id)arg3;
-- (id)initWithRequestPerformer:(id)arg1 imageBuffer:(id)arg2 observationsCache:(id)arg3 qosClass:(unsigned int)arg4;
+- (id)initWithRequestPerformer:(id)arg1 imageBuffer:(id)arg2 forensics:(id)arg3 observationsCache:(id)arg4;
+- (id)initWithRequestPerformer:(id)arg1 imageBuffer:(id)arg2 forensics:(id)arg3 observationsCache:(id)arg4 qosClass:(unsigned int)arg5;
 - (id)modelRequestHandlerAndReturnError:(id *)arg1;
+- (BOOL)performDependentRequests:(id)arg1 onBehalfOfRequest:(id)arg2 error:(id *)arg3;
 - (id)previousSequencedObservationsForRequest:(id)arg1;
 - (unsigned int)qosClass;
 - (void)recordSequencedObservationsForRequest:(id)arg1;
+- (id)requestForensics;
 - (id)requestPerformerAndReturnError:(id *)arg1;
 - (void)setModelRequestHandler:(id)arg1;
 

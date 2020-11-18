@@ -11,42 +11,37 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMApplicationData, HMDelegateCaller, HMFMessageDispatcher, HMHome, NSArray, NSString, NSUUID;
+@class HMApplicationData, HMFUnfairLock, HMHome, NSArray, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
 @interface HMRoom : NSObject <NSSecureCoding, HMFMessageReceiver, HMObjectMerge, HMMutableApplicationData>
 {
+    HMFUnfairLock *_lock;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     NSUUID *_uuid;
     HMHome *_home;
     HMApplicationData *_applicationData;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
-    HMFMessageDispatcher *_msgDispatcher;
+    _HMContext *_context;
 }
 
 @property (readonly, copy, nonatomic) NSArray *accessories;
 @property (readonly, nonatomic) HMApplicationData *applicationData;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_configure:(id)arg1 uuid:(id)arg2 messageDispatcher:(id)arg3 clientQueue:(id)arg4 delegateCaller:(id)arg5;
+- (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)_handleRoomRenamedNotification:(id)arg1;
 - (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;

@@ -26,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)anisetteFreeURLSessionWithCacheProvider:(id)arg1;
 + (id)sharedAnisetteFreeURLSession;
 + (id)sharedURLSession;
 - (void).cxx_destruct;
@@ -40,6 +41,7 @@
 - (id)beginAuthenticationDataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)beginDataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelDataTask:(id)arg1;
+- (id)defaultSessionObjectWithConfiguration:(id)arg1;
 - (id)init;
 
 @end

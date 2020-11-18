@@ -16,6 +16,7 @@
     NTKColoringLabel *_label;
 }
 
+@property (nonatomic) BOOL canUseCurvedText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver;
@@ -25,7 +26,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_wantsPlatter;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setForegroundColor:(id)arg1;

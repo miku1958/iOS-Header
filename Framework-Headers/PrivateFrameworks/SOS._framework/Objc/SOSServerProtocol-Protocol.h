@@ -9,6 +9,7 @@
 @protocol SOSServerProtocol <NSObject>
 - (void)isSendingLocationUpdate:(void (^)(BOOL))arg1;
 - (void)mostRecentLocationSentWithCompletion:(void (^)(CLLocation *))arg1;
+- (void)startSendingLocationUpdateForReason:(long long)arg1 WithCompletion:(void (^)(BOOL, id *))arg2;
 - (void)startSendingLocationUpdateWithCompletion:(void (^)(BOOL, id *))arg1;
 - (void)stopSendingLocationUpdate;
 - (void)willStartSendingLocationUpdate;

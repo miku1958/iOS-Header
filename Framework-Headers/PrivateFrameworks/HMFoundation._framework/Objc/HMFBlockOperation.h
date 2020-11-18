@@ -4,38 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSBlockOperation.h>
+#import <HMFoundation/HMFOperation.h>
 
-@class NSError, NSObject;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@class NSArray;
 
-@interface HMFBlockOperation : NSBlockOperation
+@interface HMFBlockOperation : HMFOperation
 {
-    NSObject<OS_dispatch_semaphore> *_finishedSemaphore;
-    NSError *_error;
-    NSObject<OS_dispatch_queue> *_workQueue;
+    NSArray *_executionBlocks;
 }
 
-@property (readonly, nonatomic) unsigned long long dispatchTimeout;
-@property (strong, nonatomic) NSError *error; // @synthesize error=_error;
-@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *finishedSemaphore; // @synthesize finishedSemaphore=_finishedSemaphore;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly, copy) NSArray *executionBlocks; // @synthesize executionBlocks=_executionBlocks;
 
++ (id)blockOperationWithBlock:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (void)_cancelWithError:(id)arg1;
-- (id)_error;
-- (void)_finish;
-- (id)_finishedSemaphore;
-- (void)_setError:(id)arg1;
-- (void)_setFinishedSemaphore:(id)arg1;
-- (void)cancel;
-- (void)cancelWithError:(id)arg1;
-- (void)dealloc;
-- (id)debugDescription;
-- (id)description;
-- (void)finish;
-- (id)init;
-- (void)start;
+- (void)addExecutionBlock:(CDUnknownBlockType)arg1;
+- (id)initWithTimeout:(double)arg1;
+- (void)main;
 
 @end
 

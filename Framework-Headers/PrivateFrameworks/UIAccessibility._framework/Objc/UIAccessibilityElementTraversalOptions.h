@@ -13,8 +13,10 @@
     BOOL _shouldIncludeKeyboardObscuredElements;
     BOOL _shouldUseAllSubviews;
     BOOL _includeHiddenViews;
+    BOOL _includeWindowlessViews;
     BOOL _sorted;
     BOOL _ignoreObscuresScreen;
+    BOOL _includeDirectDescendantsOnly;
     BOOL _includeAncestorsOfSelfInSiblingMatch;
     BOOL _forSpeakScreen;
     BOOL _shouldIncludeStatusBarWindow;
@@ -26,7 +28,9 @@
 @property (nonatomic) BOOL forSpeakScreen; // @synthesize forSpeakScreen=_forSpeakScreen;
 @property (nonatomic) BOOL ignoreObscuresScreen; // @synthesize ignoreObscuresScreen=_ignoreObscuresScreen;
 @property (nonatomic) BOOL includeAncestorsOfSelfInSiblingMatch; // @synthesize includeAncestorsOfSelfInSiblingMatch=_includeAncestorsOfSelfInSiblingMatch;
+@property (nonatomic) BOOL includeDirectDescendantsOnly; // @synthesize includeDirectDescendantsOnly=_includeDirectDescendantsOnly;
 @property (nonatomic) BOOL includeHiddenViews; // @synthesize includeHiddenViews=_includeHiddenViews;
+@property (nonatomic) BOOL includeWindowlessViews; // @synthesize includeWindowlessViews=_includeWindowlessViews;
 @property (copy, nonatomic) CDUnknownBlockType leafNodePredicate; // @synthesize leafNodePredicate=_leafNodePredicate;
 @property (nonatomic) BOOL shouldIncludeKeyboardObscuredElements; // @synthesize shouldIncludeKeyboardObscuredElements=_shouldIncludeKeyboardObscuredElements;
 @property (nonatomic) BOOL shouldIncludeStatusBarWindow; // @synthesize shouldIncludeStatusBarWindow=_shouldIncludeStatusBarWindow;

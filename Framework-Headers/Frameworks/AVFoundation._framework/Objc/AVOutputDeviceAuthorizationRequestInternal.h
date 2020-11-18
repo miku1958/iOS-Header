@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSError;
 @protocol AVOutputDeviceAuthorizationRequestImpl, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVOutputDeviceAuthorizationRequestInternal : NSObject
 {
     id<AVOutputDeviceAuthorizationRequestImpl> impl;

@@ -8,26 +8,37 @@
 
 #import <SilexText/UIAccessibilityReadingContent-Protocol.h>
 
+@class NSArray;
+
 @interface TSWPRep (STAccessibility) <UIAccessibilityReadingContent>
+
+@property (readonly, nonatomic) NSArray *sxaxSupportedEditRotorActions;
+
 - (id)_STAXColumnForLineIndex:(long long)arg1;
 - (id)_STAXColumnForStorageRelativeCharIndex:(unsigned long long)arg1;
 - (struct CGRect)_accessibilityFrameForRange:(struct _NSRange)arg1;
+- (BOOL)_accessibilityHasTextOperations;
 - (long long)_accessibilityLineEndPosition;
+- (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
 - (long long)_accessibilityLineStartPosition;
 - (struct _NSRange)_accessibilityRangeForLineNumber:(long long)arg1;
 - (struct _NSRange)_accessibilityRawRangeForUITextRange:(id)arg1;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
 - (BOOL)_accessibilitySpeakThisShouldScrollTextRects;
+- (id)_accessibilityTextOperations;
 - (id)_accessibilityTextRangeFromNSRange:(struct _NSRange)arg1;
 - (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1;
 - (struct _NSRange)_sxaxStorageRelativeRangeOfLineFragmentAtStorageRelativeCharIndex:(unsigned long long)arg1;
+- (id)_sxaxTextInputEditor;
 - (id)accessibilityContentForLineNumber:(long long)arg1;
+- (BOOL)accessibilityEditOperationAction:(id)arg1;
 - (struct CGRect)accessibilityFrameForLineNumber:(long long)arg1;
 - (long long)accessibilityLineNumberForPoint:(struct CGPoint)arg1;
 - (id)accessibilityPageContent;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
+- (id)sxaxNameForEditRotorAction:(id)arg1;
 - (struct _NSRange)sxaxRepRelativeRangeFromStorageRelativeRange:(struct _NSRange)arg1;
 - (struct _NSRange)sxaxStorageRelativeRangeFromRepRelativeRange:(struct _NSRange)arg1;
 @end

@@ -12,6 +12,7 @@
 @interface CAMPreviewView : UIView
 {
     int __exposureBiasSide;
+    long long _orientation;
     CAMVideoPreviewView *_videoPreviewView;
     UIView *_indicatorContainerView;
     CAMFocusIndicatorView *_continuousIndicator;
@@ -25,10 +26,12 @@
     UILabel *__simulatorLabel;
     NSMutableDictionary *__internalTrackedSubjectIndicatorsByIdentifier;
     NSMutableDictionary *__faceIndicators;
+    NSMutableDictionary *__internalMRCIndicatorViews;
 }
 
 @property (nonatomic) int _exposureBiasSide; // @synthesize _exposureBiasSide=__exposureBiasSide;
 @property (readonly, nonatomic) NSMutableDictionary *_faceIndicators; // @synthesize _faceIndicators=__faceIndicators;
+@property (readonly, nonatomic) NSMutableDictionary *_internalMRCIndicatorViews; // @synthesize _internalMRCIndicatorViews=__internalMRCIndicatorViews;
 @property (readonly, nonatomic) NSMutableDictionary *_internalTrackedSubjectIndicatorsByIdentifier; // @synthesize _internalTrackedSubjectIndicatorsByIdentifier=__internalTrackedSubjectIndicatorsByIdentifier;
 @property (readonly, nonatomic) UILabel *_simulatorLabel; // @synthesize _simulatorLabel=__simulatorLabel;
 @property (nonatomic) double bottomContentInset; // @synthesize bottomContentInset=_bottomContentInset;
@@ -38,6 +41,8 @@
 @property (nonatomic) CAMGridView *gridView; // @synthesize gridView=_gridView;
 @property (readonly, nonatomic) UIView *indicatorContainerView; // @synthesize indicatorContainerView=_indicatorContainerView;
 @property (nonatomic) CAMLevelIndicatorView *levelView; // @synthesize levelView=_levelView;
+@property (readonly, nonatomic) NSDictionary *mrcIndicatorViews;
+@property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (strong, nonatomic) CAMFocusIndicatorView *pointIndicator; // @synthesize pointIndicator=_pointIndicator;
 @property (strong, nonatomic) CAMStageLightOverlayView *stageLightOverlayView; // @synthesize stageLightOverlayView=_stageLightOverlayView;
 @property (nonatomic) id<CAMPreviewViewSubjectIndicatorDelegate> subjectIndicatorDelegate; // @synthesize subjectIndicatorDelegate=_subjectIndicatorDelegate;
@@ -50,17 +55,21 @@
 - (struct CGRect)_aspectFaceRectFromSquareFaceRect:(struct CGRect)arg1 angle:(double)arg2;
 - (int)_faceOrientationForRollAngle:(double)arg1;
 - (void)addFaceIndicator:(id)arg1 forIdentifier:(long long)arg2;
+- (void)addMRCIndicator:(id)arg1 forIdentifier:(id)arg2;
 - (void)addTrackedSubjectIndicator:(id)arg1 forIdentifier:(long long)arg2;
 - (struct CGPoint)captureDevicePointOfInterestForPoint:(struct CGPoint)arg1;
 - (void)dealloc;
 - (struct CGRect)faceIndicatorFrameForFaceResult:(id)arg1;
-- (struct CGRect)frameForSubjectIndicator:(id)arg1 andFaceResult:(id)arg2 useNominalSize:(BOOL)arg3;
+- (struct CGRect)frameForSubjectIndicator:(id)arg1 andFaceResult:(id)arg2 useFixedSize:(BOOL)arg3;
 - (void)indicatePointOfInterest:(struct CGPoint)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (struct CGRect)mrcIndicatorFrameForMRCResult:(id)arg1;
 - (struct CGPoint)pointForCaptureDevicePointOfInterest:(struct CGPoint)arg1;
 - (void)removeFaceIndicatorForIdentifier:(long long)arg1;
+- (void)removeMRCIndicatorForIdentifier:(id)arg1;
 - (void)removeTrackedSubjectIndicatorForIdentifier:(long long)arg1;
+- (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 
 @end
 

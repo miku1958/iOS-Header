@@ -10,7 +10,6 @@
 
 @protocol _SFPBCommandValue <NSObject>
 
-@property (readonly, nonatomic) BOOL hasReferentialCommand;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBReferentialCommand *referentialCommand;
 

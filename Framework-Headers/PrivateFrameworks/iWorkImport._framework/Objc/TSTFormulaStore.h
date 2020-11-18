@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class TSCECalculationEngine, TSCEOwnerFormulaMap, TSUSparseArray;
+@class TSCECalculationEngine, TSUSparseArray;
 
 __attribute__((visibility("hidden")))
 @interface TSTFormulaStore : NSObject
@@ -15,19 +15,19 @@ __attribute__((visibility("hidden")))
     TSCECalculationEngine *_calcEngine;
     TSUSparseArray *_formulas;
     unsigned long long _nextIndex;
-    TSCEOwnerFormulaMap *_formulasForUndo;
 }
 
 @property (weak, nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 @property (nonatomic) UUIDData_5fbc143e formulaOwnerUID; // @synthesize formulaOwnerUID=_formulaOwnerUID;
-@property (strong, nonatomic) TSCEOwnerFormulaMap *formulasForUndo; // @synthesize formulasForUndo=_formulasForUndo;
 
 + (struct TSUCellCoord)coordFromIndex:(unsigned long long)arg1;
 + (unsigned long long)indexFromCoord:(const struct TSUCellCoord *)arg1;
++ (struct TSUModelCellRect)rangeFromFormula:(const struct TSCEFormula *)arg1 atCoord:(const struct TSUModelCellCoord *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (unsigned long long)appendIndexedFormula:(struct TSCEFormula)arg1;
 - (void)clearFormulaAtIndex:(unsigned long long)arg1;
+- (struct TSCEFormula)createFormulaForRange:(struct TSUModelCellRect)arg1 atIndex:(unsigned long long)arg2 tableUID:(const UUIDData_5fbc143e *)arg3;
 - (id)description;
 - (void)foreach:(CDUnknownBlockType)arg1;
 - (const struct TSCEFormula *)formulaAtIndex:(unsigned long long)arg1;
@@ -36,7 +36,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithOwnerUID:(const UUIDData_5fbc143e *)arg1 archive:(const struct FormulaStoreArchive *)arg2 unarchiver:(id)arg3;
 - (unsigned long long)markForRollback;
 - (unsigned long long)maxIndex;
+- (struct TSUModelCellRect)rangeFromFormulaAtIndex:(unsigned long long)arg1;
 - (void)registerAllFormulaToCalculationEngine;
+- (void)remapRangeFormulasToOwnerUID:(const UUIDData_5fbc143e *)arg1;
 - (struct TSUCellCoord)reserveNextCoordinate;
 - (unsigned long long)reserveNextIndex;
 - (void)rollbackToMark:(unsigned long long)arg1;

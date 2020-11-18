@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CALayer, NSDictionary, NSString;
 
@@ -38,6 +38,7 @@
 - (unsigned int)createImageSlot:(struct CGSize)arg1 hasAlpha:(BOOL)arg2 extendedColors:(BOOL)arg3;
 - (unsigned int)createSlot;
 - (void)deleteSlot:(unsigned int)arg1;
+- (unsigned int)hitTestContext:(struct CGPoint)arg1;
 - (void)invalidate;
 - (void)invalidateFences;
 - (void)orderAbove:(unsigned int)arg1;

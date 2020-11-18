@@ -6,7 +6,12 @@
 
 #import <MobileTimer/NSObject-Protocol.h>
 
+@class NSDictionary;
+
 @protocol MTAgentDiagnosticDelegate <NSObject>
 - (void)printDiagnostics;
+
+@optional
+- (NSDictionary *)gatherDiagnostics;
 @end
 

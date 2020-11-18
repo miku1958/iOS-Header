@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPStoreRedownloadProductItemAsset, NSArray, NSDictionary, NSString, NSURL;
 
@@ -20,6 +20,9 @@
 @property (readonly, nonatomic) NSURL *HLSKeyServerURL;
 @property (readonly, nonatomic) NSURL *HLSPlaylistURL;
 @property (readonly, copy, nonatomic) NSArray *allFlavors;
+@property (readonly, nonatomic) NSURL *alternateHLSKeyCertificateURL;
+@property (readonly, nonatomic) NSURL *alternateHLSKeyServerURL;
+@property (readonly, nonatomic) NSURL *alternateHLSPlaylistURL;
 @property (readonly, nonatomic) MPStoreRedownloadProductItemAsset *asset;
 @property (copy, nonatomic) NSURL *fallbackStreamingKeyCertificateURL; // @synthesize fallbackStreamingKeyCertificateURL=_fallbackStreamingKeyCertificateURL;
 @property (copy, nonatomic) NSURL *fallbackStreamingKeyServerURL; // @synthesize fallbackStreamingKeyServerURL=_fallbackStreamingKeyServerURL;

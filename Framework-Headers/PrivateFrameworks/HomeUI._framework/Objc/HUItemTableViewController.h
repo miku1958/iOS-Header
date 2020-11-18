@@ -12,7 +12,7 @@
 #import <HomeUI/HUItemPresentationContainer-Protocol.h>
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 
-@class HFItem, HFItemManager, HUGridLayoutOptions, NSMapTable, NSMutableArray, NSMutableSet, NSString;
+@class HFItem, HFItemManager, HUGridLayoutOptions, HUItemTableViewScrollDestination, NSMapTable, NSMutableArray, NSMutableSet, NSString;
 @protocol NACancelable;
 
 @interface HUItemTableViewController : HUTableViewController <HFExecutionEnvironmentObserver, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
@@ -21,8 +21,12 @@
     BOOL _viewHasAppeared;
     BOOL _hasForcedLoadingVisibleCells;
     BOOL _hasFinishedInitialLoad;
+    BOOL _automaticallyUpdatesViewControllerTitle;
     BOOL _visibilityUpdatesEnabled;
+    unsigned long long _appearState;
+    HUItemTableViewScrollDestination *_pendingScrollDestination;
     HFItemManager *_itemManager;
+    NSMutableSet *_internalItemModuleControllers;
     NSMutableArray *_foregroundUpdateFutures;
     NSMutableSet *_registeredCellClasses;
     id<NACancelable> _deferredVisibilityUpdate;
@@ -30,6 +34,8 @@
     HUGridLayoutOptions *_gridLayoutOptions;
 }
 
+@property (nonatomic) unsigned long long appearState; // @synthesize appearState=_appearState;
+@property (nonatomic) BOOL automaticallyUpdatesViewControllerTitle; // @synthesize automaticallyUpdatesViewControllerTitle=_automaticallyUpdatesViewControllerTitle;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<NACancelable> deferredVisibilityUpdate; // @synthesize deferredVisibilityUpdate=_deferredVisibilityUpdate;
 @property (readonly, copy) NSString *description;
@@ -39,7 +45,9 @@
 @property (nonatomic) BOOL hasForcedLoadingVisibleCells; // @synthesize hasForcedLoadingVisibleCells=_hasForcedLoadingVisibleCells;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HFItem *hu_presentedItem;
+@property (readonly, nonatomic) NSMutableSet *internalItemModuleControllers; // @synthesize internalItemModuleControllers=_internalItemModuleControllers;
 @property (strong, nonatomic) HFItemManager *itemManager; // @synthesize itemManager=_itemManager;
+@property (strong, nonatomic) HUItemTableViewScrollDestination *pendingScrollDestination; // @synthesize pendingScrollDestination=_pendingScrollDestination;
 @property (readonly, nonatomic) NSMutableSet *registeredCellClasses; // @synthesize registeredCellClasses=_registeredCellClasses;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSMapTable *textFieldToCellMap; // @synthesize textFieldToCellMap=_textFieldToCellMap;
@@ -54,6 +62,7 @@
 - (id)_itemForTextField:(id)arg1;
 - (void)_performCommonUpdateForCell:(id)arg1 item:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (long long)_rowAnimationForOperationType:(unsigned long long)arg1 item:(id)arg2;
+- (void)_scrollToDestination:(id)arg1;
 - (BOOL)_shouldHideFooterForSection:(long long)arg1;
 - (BOOL)_shouldHideHeaderForSection:(long long)arg1;
 - (void)_updateLayoutMarginsForCells:(id)arg1;
@@ -62,7 +71,7 @@
 - (id)_visibleCellForItem:(id)arg1;
 - (BOOL)alwaysUseDeltaTableViewUpdatesAfterViewHasAppeared;
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
-- (BOOL)automaticallyUpdatesViewControllerTitle;
+- (id)buildItemModuleControllerForModule:(id)arg1;
 - (BOOL)bypassInitialItemUpdateReload;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
@@ -82,6 +91,7 @@
 - (void)itemManager:(id)arg1 didMoveSection:(long long)arg2 toSection:(long long)arg3;
 - (void)itemManager:(id)arg1 didRemoveItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didRemoveSections:(id)arg2;
+- (void)itemManager:(id)arg1 didUpdateItemModules:(id)arg2;
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (id)itemManager:(id)arg1 futureToUpdateItems:(id)arg2 itemUpdateOptions:(id)arg3;
@@ -91,10 +101,13 @@
 - (id)itemTableFooterView;
 - (id)itemTableHeaderMessage;
 - (id)itemTableHeaderView;
+- (id)moduleController:(id)arg1 dismissViewControllerForRequest:(id)arg2;
+- (id)moduleController:(id)arg1 presentViewControllerForRequest:(id)arg2;
 - (id)moduleControllerForItem:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
 - (void)recursivelyDisableItemUpdates:(BOOL)arg1 withReason:(id)arg2;
+- (void)scrollToItem:(id)arg1 animated:(BOOL)arg2;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (BOOL)shouldHideFooterBelowSection:(long long)arg1;
 - (BOOL)shouldHideHeaderAboveSection:(long long)arg1;
@@ -124,6 +137,7 @@
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

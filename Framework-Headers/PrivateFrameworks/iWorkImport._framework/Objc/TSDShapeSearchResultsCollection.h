@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDShapeCollection-Protocol.h>
 
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)displayNameForShape:(id)arg1;
 - (id)indexPathOfShape:(id)arg1;
+- (id)initWithBasicShapeLibrary:(id)arg1 userDefinedShapeLibrary:(id)arg2 searchTerm:(id)arg3;
 - (id)initWithShapeLibrary:(id)arg1 basicShapeLibrary:(id)arg2 userDefinedShapeLibrary:(id)arg3 searchTerm:(id)arg4;
 - (unsigned long long)numberOfShapesInSection:(unsigned long long)arg1;
 - (CDUnknownBlockType)p_comparatorForSortingMatches;
@@ -55,8 +56,6 @@ __attribute__((visibility("hidden")))
 - (id)p_separateExactAndPartialMatchesFromResults:(id)arg1 searchTerm:(id)arg2 withProvider:(id)arg3 shapeToDisplayNameDict:(id)arg4;
 - (long long)p_sequentialShapePosition:(id)arg1;
 - (id)p_shapesByMappingSearchResults:(id)arg1 withProvider:(id)arg2 shapeToDisplayNameDict:(id)arg3;
-- (BOOL)p_updateSearchResultsBasedOnAnchoredSearchForSearchTerm:(id)arg1;
-- (BOOL)p_updateSearchResultsBasedOnStringScoreSearchForSearchTerm:(id)arg1;
 - (BOOL)p_updateSearchResultsForSearchTerm:(id)arg1;
 - (void)resetSearchResults;
 - (void)setSearchTerm:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -13,7 +13,6 @@
 
 @interface _SFPBTableHeaderRowCardSection : PBCodable <_SFPBTableHeaderRowCardSection, NSSecureCoding>
 {
-    CDStruct_dff33cb6 _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -40,23 +39,8 @@
 @property (copy, nonatomic) NSArray *datas; // @synthesize datas=_datas;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasAlignRowsToHeader;
-@property (readonly, nonatomic) BOOL hasAlignmentSchema;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasIsSubHeader;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasReducedRowHeight;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasTabGroupIdentifier;
-@property (readonly, nonatomic) BOOL hasTableIdentifier;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasVerticalAlign;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isSubHeader; // @synthesize isSubHeader=_isSubHeader;
 @property (readonly, nonatomic) NSData *jsonData;

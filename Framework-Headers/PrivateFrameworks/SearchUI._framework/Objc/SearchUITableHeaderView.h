@@ -13,6 +13,7 @@
 
 @interface SearchUITableHeaderView : UITableViewHeaderFooterView <NUIContainerStackViewDelegate>
 {
+    BOOL _usesInsetRoundedSections;
     id<SearchUITableHeaderViewDelegate> _delegate;
     id<SFFeedbackListener> _feedbackListener;
     unsigned long long _headerType;
@@ -34,6 +35,7 @@
 @property (readonly) Class superclass;
 @property (readonly) NSString *title;
 @property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property BOOL usesInsetRoundedSections; // @synthesize usesInsetRoundedSections=_usesInsetRoundedSections;
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
@@ -51,7 +53,7 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAlignmentRectInsets;
 - (void)updateHeaderButtonVisibility;
-- (void)updateWithSection:(id)arg1 isExpanded:(BOOL)arg2;
+- (void)updateWithSection:(id)arg1 isExpanded:(BOOL)arg2 usesInsetRoundedSection:(BOOL)arg3;
 
 @end
 

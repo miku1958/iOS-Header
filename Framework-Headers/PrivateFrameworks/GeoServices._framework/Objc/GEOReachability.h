@@ -14,6 +14,7 @@
 {
     BOOL _networkReachable;
     unsigned long long _errorCount;
+    int _symptomsAlternateAdviceToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;

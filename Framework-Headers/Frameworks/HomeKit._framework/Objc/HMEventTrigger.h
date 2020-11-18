@@ -8,7 +8,7 @@
 
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMThreadSafeMutableArrayCollection, NSArray, NSPredicate;
+@class HMMutableArray, NSArray, NSPredicate;
 
 @interface HMEventTrigger : HMTrigger <NSSecureCoding>
 {
@@ -16,12 +16,12 @@
     BOOL _executeOnce;
     NSPredicate *_internalPredicate;
     unsigned long long _activationState;
-    HMThreadSafeMutableArrayCollection *_currentEvents;
+    HMMutableArray *_currentEvents;
 }
 
 @property (nonatomic) unsigned long long activationState; // @synthesize activationState=_activationState;
 @property (readonly, copy, nonatomic) NSArray *allEvents;
-@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *currentEvents; // @synthesize currentEvents=_currentEvents;
+@property (strong, nonatomic) HMMutableArray *currentEvents; // @synthesize currentEvents=_currentEvents;
 @property (readonly, copy, nonatomic) NSArray *endEvents;
 @property (readonly, copy, nonatomic) NSArray *events;
 @property (readonly, nonatomic) BOOL executeOnce; // @synthesize executeOnce=_executeOnce;
@@ -51,8 +51,8 @@
 + (id)predicateForEvaluatingTriggerWithPresence:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)_addEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_configure:(id)arg1 uuid:(id)arg2 messageDispatcher:(id)arg3 clientQueue:(id)arg4 delegateCaller:(id)arg5;
 - (void)_handleEventTriggerConditionNotification:(id)arg1;
 - (void)_handleEventTriggerExecuteOnceNotification:(id)arg1;
 - (void)_handleEventTriggerRecurrencesNotification:(id)arg1;
@@ -70,7 +70,6 @@
 - (id)addedEvent:(id)arg1;
 - (BOOL)compatibleWithApp;
 - (BOOL)containsSharedTriggerActivationBits;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleActivationStateNotification:(id)arg1;
 - (void)handleEventAddedNotification:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CUNetLinkEndpoint : NSObject
 {
@@ -12,7 +12,8 @@
     int _state;
     CDUnknownBlockType _stateChangedHandler;
     unsigned long long _expireTime;
-    unsigned long long _reachableTicks;
+    unsigned long long _expiredTicks;
+    BOOL _present;
     unsigned int _seqNum;
     unsigned int _stateChanges;
     BOOL _client;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MPSNeuralNetwork/NSCopying-Protocol.h>
 
@@ -35,6 +35,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)debugDescription;
+- (struct NeuronInfo)neuronInfo;
 
 @end
 

@@ -16,5 +16,6 @@
 
 + (struct CGSize)sizeThatFitsCardSection:(id<CRCardSection>)arg1 boundingSize:(struct CGSize)arg2;
 - (void)removeFromComposedSuperview;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 @end
 

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (id)additionalInfosForChildLayouts;
 - (id)initWithInfo:(id)arg1;
+- (void)processChangedProperty:(int)arg1;
 - (void)updateChildrenFromInfo;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class JSValue, JSVirtualMachine, JSWrapperMap, NSString;
+@class JSValue, JSVirtualMachine, NSString;
 
 @interface JSContext : NSObject
 {
@@ -21,7 +21,6 @@
 @property (readonly) JSValue *globalObject;
 @property (copy) NSString *name;
 @property (readonly) JSVirtualMachine *virtualMachine;
-@property (readonly, strong) JSWrapperMap *wrapperMap;
 
 + (id)contextWithJSGlobalContextRef:(struct OpaqueJSContext *)arg1;
 + (id)currentArguments;
@@ -53,6 +52,7 @@
 - (id)valueFromNotifyException:(struct OpaqueJSValue *)arg1;
 - (id)wrapperForJSObject:(struct OpaqueJSValue *)arg1;
 - (id)wrapperForObjCObject:(id)arg1;
+- (id)wrapperMap;
 
 @end
 

@@ -26,6 +26,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addData:(id)arg1 forType:(id)arg2;
+- (void)addPromisedType:(id)arg1 fileCallback:(CDUnknownBlockType)arg2;
 - (void)addRepresentingObject:(id)arg1;
 - (void)dealloc;
 - (id)description;

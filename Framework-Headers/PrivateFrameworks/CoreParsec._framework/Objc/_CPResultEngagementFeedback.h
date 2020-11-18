@@ -14,14 +14,6 @@
 
 @interface _CPResultEngagementFeedback : PBCodable <_CPProcessableFeedback, _CPResultEngagementFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int timestamp:1;
-        unsigned int actionEngaged:1;
-        unsigned int triggerEvent:1;
-        unsigned int destination:1;
-        unsigned int actionTarget:1;
-        unsigned int matchesUnengagedSuggestion:1;
-    } _has;
     BOOL _actionEngaged;
     BOOL _matchesUnengagedSuggestion;
     int _triggerEvent;
@@ -41,14 +33,6 @@
 @property (nonatomic) int destination; // @synthesize destination=_destination;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasActionEngaged;
-@property (readonly, nonatomic) BOOL hasActionTarget;
-@property (readonly, nonatomic) BOOL hasDestination;
-@property (readonly, nonatomic) BOOL hasMatchesUnengagedSuggestion;
-@property (readonly, nonatomic) BOOL hasResult;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTitleText;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -57,8 +41,8 @@
 @property (strong, nonatomic) _CPSearchResultForFeedback *result; // @synthesize result=_result;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 

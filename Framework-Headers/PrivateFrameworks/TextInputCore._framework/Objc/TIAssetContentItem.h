@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSURL, TIAsset, TIAssetAttributes;
 
@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) TIAssetAttributes *attributes; // @synthesize attributes=_attributes;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)description;
 - (id)initWithAsset:(id)arg1 attributes:(id)arg2 url:(id)arg3;

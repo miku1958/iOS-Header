@@ -6,14 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+#import <Silex/NFFrameworkAssembly-Protocol.h>
 
-@interface SXFrameworkAssembly : NSObject
+@class NSArray, NSString;
+
+@interface SXFrameworkAssembly : NSObject <NFFrameworkAssembly>
 {
     NSArray *_assemblies;
 }
 
-@property (readonly, nonatomic) NSArray *assemblies; // @synthesize assemblies=_assemblies;
+@property (readonly, copy, nonatomic) NSArray *assemblies; // @synthesize assemblies=_assemblies;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)init;

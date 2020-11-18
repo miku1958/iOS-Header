@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "__SBDashboardHomeAffordanceViewAccessibility_super.h"
+#import "__SBDashBoardHomeAffordanceViewAccessibility_super.h"
 
-@interface SBDashboardHomeAffordanceViewAccessibility : __SBDashboardHomeAffordanceViewAccessibility_super
+@interface SBDashBoardHomeAffordanceViewAccessibility : __SBDashBoardHomeAffordanceViewAccessibility_super
 {
 }
 

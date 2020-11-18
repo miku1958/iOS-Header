@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TSUBezierPath;
 
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)p_shouldClipFragment:(const struct TSWPLineFragment *)arg1 drawingState:(const struct TSWPDrawingState *)arg2 lineDrawFlags:(unsigned int)arg3 updateRect:(struct CGRect)arg4 outClipRect:(struct CGRect *)arg5;
 - (void)p_strokeLineFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 width:(double)arg3;
 - (void)p_strokeWavyLineFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 width:(double)arg3;
+- (void)setupFontSmoothingWithDrawingState:(const struct TSWPDrawingState *)arg1 attributes:(id)arg2;
 - (void)willRenderFragmentsWithDrawingState:(const struct TSWPDrawingState *)arg1;
 
 @end

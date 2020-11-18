@@ -6,5 +6,6 @@
 
 @protocol ADAttribution_XPC
 - (void)requestAttributionDetailsWithBlock:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)setStocksAdEnabled:(BOOL)arg1;
 @end
 

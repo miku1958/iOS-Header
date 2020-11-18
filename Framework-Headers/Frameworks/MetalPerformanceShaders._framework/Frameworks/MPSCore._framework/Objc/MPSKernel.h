@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MPSCore/NSCopying-Protocol.h>
 #import <MPSCore/NSSecureCoding-Protocol.h>
@@ -18,6 +18,7 @@
     struct MPSDevice *_device;
     struct MPSLibrary *_library;
     NSString *_label;
+    BOOL _enableConcurrency;
     unsigned long long _allowedOptions;
     unsigned int _tuningParams;
     unsigned int _maxTuningParams;
@@ -26,6 +27,7 @@
 }
 
 @property (readonly, strong, nonatomic) id<MTLDevice> device;
+@property (nonatomic) BOOL enableConcurrency; // @synthesize enableConcurrency=_enableConcurrency;
 @property (nonatomic) CDUnion_cbb8185c fileVersion; // @synthesize fileVersion=_fileVersion;
 @property (copy) NSString *label; // @synthesize label=_label;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
@@ -37,6 +39,7 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (id)debugQuickLookObject;
+- (BOOL)disableConcurrentEncoder;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

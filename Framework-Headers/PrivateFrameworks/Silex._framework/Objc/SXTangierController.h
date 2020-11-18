@@ -12,8 +12,8 @@
 #import <Silex/SXTextSelecting-Protocol.h>
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
-@class NSMutableSet, NSString, STScrollView, STTangierRepDirectLayerHostProvider, STTangierTextRenderCollector, STTextTangierCanvasViewController, STTextTangierDocumentRoot, STTextTangierInteractiveCanvasController, SXViewport, TSKDocumentRoot, TSWPSelection, UIView;
-@protocol OS_dispatch_semaphore, SXComponentActionHandler, SXTangierControllerDelegate, SXTangierDragItemProvider;
+@class NSMutableSet, NSString, STScrollView, STTangierRepDirectLayerHostProvider, STTangierTextRenderCollector, STTextTangierCanvasViewController, STTextTangierDocumentRoot, STTextTangierInteractiveCanvasController, SXComponentController, SXViewport, TSKDocumentRoot, TSWPSelection, UIView;
+@protocol OS_dispatch_semaphore, SXComponentActionHandler, SXComponentInteractionManager, SXTangierControllerDelegate, SXTangierDragItemProvider;
 
 @interface SXTangierController : NSObject <STTextTangierInteractiveCanvasControllerDelegate, STTextTangierInteractiveCanvasControllerDataSource, SXViewportChangeListener, SXTextComponentLayoutHosting, SXTextSelecting>
 {
@@ -31,6 +31,8 @@
     STScrollView *_scrollView;
     id<SXComponentActionHandler> _componentActionHandler;
     id<SXTangierDragItemProvider> _dragItemProvider;
+    SXComponentController *_componentController;
+    id<SXComponentInteractionManager> _componentInteractionManager;
     STTangierTextRenderCollector *_textRenderCollector;
     STTangierRepDirectLayerHostProvider *_directLayerHostProvider;
     UIView *_underRepsHost;
@@ -45,6 +47,8 @@
 @property (readonly, nonatomic) BOOL allowEditMenuToAppear;
 @property (readonly, nonatomic) BOOL allowTextEditingToBegin;
 @property (readonly, nonatomic) id<SXComponentActionHandler> componentActionHandler; // @synthesize componentActionHandler=_componentActionHandler;
+@property (readonly, nonatomic) SXComponentController *componentController; // @synthesize componentController=_componentController;
+@property (readonly, nonatomic) id<SXComponentInteractionManager> componentInteractionManager; // @synthesize componentInteractionManager=_componentInteractionManager;
 @property (readonly, nonatomic) STTextTangierCanvasViewController *cvc; // @synthesize cvc=_cvc;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SXTangierControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -89,7 +93,7 @@
 - (void)didStopPresentingTextView:(id)arg1;
 - (void)didTransitionToPresented;
 - (void)endSelection;
-- (id)initWithViewport:(id)arg1 scrollView:(id)arg2 componentActionHandler:(id)arg3 dragItemProvider:(id)arg4;
+- (id)initWithViewport:(id)arg1 scrollView:(id)arg2 componentActionHandler:(id)arg3 dragItemProvider:(id)arg4 componentController:(id)arg5 componentInteractionManager:(id)arg6;
 - (BOOL)interactiveCanvasController:(id)arg1 configureHardPressGesture:(id)arg2;
 - (id)interactiveCanvasController:(id)arg1 delegateConformingToProtocol:(id)arg2 forRep:(id)arg3;
 - (id)interactiveCanvasController:(id)arg1 dragItemForSmartField:(id)arg2 interaction:(id)arg3 session:(id)arg4;
@@ -100,6 +104,7 @@
 - (void)interactiveCanvasController:(id)arg1 scrollViewDidEndDragging:(id)arg2 willDecelerate:(BOOL)arg3;
 - (void)interactiveCanvasController:(id)arg1 scrollViewWillBeginDragging:(id)arg2;
 - (void)interactiveCanvasController:(id)arg1 scrollViewWillEndDragging:(id)arg2 withVelocity:(struct CGPoint)arg3 targetContentOffset:(inout struct CGPoint *)arg4;
+- (BOOL)interactiveCanvasController:(id)arg1 shouldBeginInteraction:(id)arg2 atPoint:(struct CGPoint)arg3;
 - (void)interactiveCanvasControllerDidLayoutAndRenderOnBackgroundThread:(id)arg1;
 - (void)interactiveCanvasControllerDidScroll:(id)arg1;
 - (void)interactiveCanvasControllerDidStopScrolling:(id)arg1;

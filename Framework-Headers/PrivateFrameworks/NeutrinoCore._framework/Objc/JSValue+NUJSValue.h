@@ -15,5 +15,6 @@
 - (id)nujs_properties;
 - (id)nujs_toArray;
 - (id)nujs_toDictionary;
+- (id)nujs_toObject;
 @end
 

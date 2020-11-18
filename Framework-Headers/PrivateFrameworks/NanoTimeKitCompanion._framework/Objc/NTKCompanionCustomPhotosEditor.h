@@ -33,7 +33,7 @@
 - (void)generateGalleryPreviewResourceDirectoryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)imageAndCropForPhotoAtIndex:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)imageInPhotoLibraryForPhotoAtIndex:(long long)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithResourceDirectory:(id)arg1;
+- (id)initWithResourceDirectory:(id)arg1 forDevice:(id)arg2;
 - (BOOL)isPhotoInPhotoLibraryAtIndex:(long long)arg1;
 - (struct CGSize)minimumNormalizedCropSizeForPhotoAtIndex:(long long)arg1;
 - (void)movePhotoAtIndex:(long long)arg1 toIndex:(long long)arg2;

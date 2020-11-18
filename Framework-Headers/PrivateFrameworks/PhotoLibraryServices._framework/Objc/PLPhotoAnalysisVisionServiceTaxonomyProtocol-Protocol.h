@@ -8,6 +8,7 @@
 
 @protocol PLPhotoAnalysisVisionServiceTaxonomyProtocol
 - (void)localizedLabelForSceneIdentifier:(unsigned int)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
+- (void)pingSceneWorkerWithOptions:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)sceneNodesForSceneIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)searchResultNodesForSceneClassifications:(NSDictionary *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)searchResultNodesForSceneIdentifiers:(NSArray *)arg1 context:(NSDictionary *)arg2 reply:(void (^)(NSDictionary *, NSError *))arg3;

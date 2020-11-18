@@ -19,8 +19,8 @@
     BOOL _didEnd;
 }
 
-@property (readonly, strong, nonatomic) PKPhysicsBody *bodyA;
-@property (readonly, strong, nonatomic) PKPhysicsBody *bodyB;
+@property (readonly, nonatomic) PKPhysicsBody *bodyA;
+@property (readonly, nonatomic) PKPhysicsBody *bodyB;
 @property (readonly, nonatomic) double collisionImpulse;
 @property (readonly, nonatomic) struct CGVector contactNormal;
 @property (readonly, nonatomic) struct CGPoint contactPoint;

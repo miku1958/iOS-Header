@@ -9,7 +9,6 @@
 @class GEOPDContainedPlace, NSArray;
 @protocol GEOMapItem;
 
-__attribute__((visibility("hidden")))
 @interface GEOMapItemContainedPlace : NSObject
 {
     GEOPDContainedPlace *_containedPlace;

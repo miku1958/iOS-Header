@@ -4,17 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCaptureAudioChannelInternal;
 
 @interface AVCaptureAudioChannel : NSObject
 {
     AVCaptureAudioChannelInternal *_internal;
+    BOOL _enabled;
+    float _volume;
 }
 
 @property (readonly, nonatomic) float averagePowerLevel;
+@property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) float peakHoldLevel;
+@property (nonatomic) float volume; // @synthesize volume=_volume;
 
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1;

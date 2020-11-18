@@ -27,6 +27,10 @@
 + (long long)countOfAccountsWithAccountTypeIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)_connectionFailureError;
+- (id)_createSMTPAccountForServerAccount:(id)arg1;
+- (void)_removeObsoleteAccountsInternal:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_removeObsoleteOSXServerAccountForMacOS:(id)arg1;
+- (void)_removeObsoleteOSXServerAccountForiOS:(id)arg1;
 - (id)_sanitizeOptionsDictionary:(id)arg1;
 - (void)_saveAccount:(id)arg1 verify:(BOOL)arg2 dataclassActions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_unsanitizeError:(id)arg1;
@@ -78,6 +82,7 @@
 - (void)discoverPropertiesForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)displayTypeForAccountWithIdentifier:(id)arg1;
 - (id)enabledDataclassesForAccount:(id)arg1;
+- (id)enabledDataclassesForAccount:(id)arg1 error:(id *)arg2;
 - (id)grantedPermissionsForAccountType:(id)arg1;
 - (void)handleURL:(id)arg1;
 - (BOOL)hasAccountWithDescription:(id)arg1;
@@ -103,12 +108,14 @@
 - (BOOL)permissionForAccountType:(id)arg1;
 - (void)preloadDataclassOwnersWithCompletion:(CDUnknownBlockType)arg1;
 - (id)provisionedDataclassesForAccount:(id)arg1;
+- (id)provisionedDataclassesForAccount:(id)arg1 error:(id *)arg2;
 - (void)removeAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAccount:(id)arg1 withDataclassActions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAccount:(id)arg1 withDeleteSync:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeAccountType:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAccountsFromPairedDeviceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeCredentialItem:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)removeObsoleteAccounts:(CDUnknownBlockType)arg1;
 - (void)renewCredentialsForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)renewCredentialsForAccount:(id)arg1 force:(BOOL)arg2 reason:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)renewCredentialsForAccount:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -122,6 +129,7 @@
 - (void)saveAccount:(id)arg1 withDataclassActions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)saveAccount:(id)arg1 withDataclassActions:(id)arg2 doVerify:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)saveCredentialItem:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)saveVerifiedAccount:(id)arg1 error:(id *)arg2;
 - (void)saveVerifiedAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setCredential:(id)arg1 forAccount:(id)arg2 serviceID:(id)arg3 error:(id *)arg4;
 - (void)setNotificationsEnabled:(BOOL)arg1;

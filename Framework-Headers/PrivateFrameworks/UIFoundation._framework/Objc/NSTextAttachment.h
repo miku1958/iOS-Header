@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <UIFoundation/NSCoding-Protocol.h>
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 #import <UIFoundation/NSTextAttachmentContainer-Protocol.h>
 
-@class NSData, NSFileWrapper, NSString, UIImage, UITextAttachmentView, UIView;
+@class NSData, NSFileWrapper, NSString, NSTextAttachmentView, UIImage, UIView;
 
-@interface NSTextAttachment : NSObject <NSTextAttachmentContainer, NSCoding>
+@interface NSTextAttachment : NSObject <NSSecureCoding, NSTextAttachmentContainer, NSCoding>
 {
     NSData *_data;
     NSString *_uti;
@@ -25,7 +26,7 @@
     } _taFlags;
     NSFileWrapper *_fileWrapper;
     UIImage *_image;
-    UITextAttachmentView *_wrapperView;
+    NSTextAttachmentView *_wrapperView;
 }
 
 @property (nonatomic) struct CGRect bounds; // @dynamic bounds;
@@ -43,6 +44,7 @@
 + (void)initialize;
 + (void)registerTextAttachmentClass:(Class)arg1 forFileType:(id)arg2;
 + (void)registerTextAttachmentViewProviderClass:(Class)arg1 forFileType:(id)arg2;
++ (BOOL)supportsSecureCoding;
 + (Class)textAttachmentClassForFileType:(id)arg1;
 + (Class)textAttachmentViewProviderClassForFileType:(id)arg1;
 - (id)_cacheKey;

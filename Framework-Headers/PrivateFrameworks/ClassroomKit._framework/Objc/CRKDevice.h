@@ -21,6 +21,9 @@
     BOOL _requestingUnenroll;
     float _batteryLevel;
     float _volume;
+    float _displayBackingScaleFactor;
+    float _displayWidth;
+    float _displayHeight;
     NSString *_identifier;
     NSString *_serialNumber;
     unsigned long long _platform;
@@ -68,6 +71,9 @@
 @property (copy, nonatomic) NSString *buildVersion; // @synthesize buildVersion=_buildVersion;
 @property (nonatomic) unsigned long long chargingState; // @synthesize chargingState=_chargingState;
 @property (nonatomic) unsigned long long deviceOrientation; // @synthesize deviceOrientation=_deviceOrientation;
+@property (nonatomic) float displayBackingScaleFactor; // @synthesize displayBackingScaleFactor=_displayBackingScaleFactor;
+@property (nonatomic) float displayHeight; // @synthesize displayHeight=_displayHeight;
+@property (nonatomic) float displayWidth; // @synthesize displayWidth=_displayWidth;
 @property (nonatomic, getter=isEphemeralMultiUser) BOOL ephemeralMultiUser; // @synthesize ephemeralMultiUser=_ephemeralMultiUser;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSArray *installedApplications; // @synthesize installedApplications=_installedApplications;

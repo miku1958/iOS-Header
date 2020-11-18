@@ -15,8 +15,13 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityElementCommunityIdentifier;
 - (BOOL)_accessibilityIsIsolatedWindow;
+- (BOOL)_accessibilityWindowVisible;
+- (BOOL)_axIsFloatingDockWindow;
+- (Class)_axSBFloatingDockControllerClass;
+- (BOOL)accessibilityElementsHidden;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
+- (BOOL)accessibilityPerformEscape;
 
 @end
 

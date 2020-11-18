@@ -9,8 +9,8 @@
 #import <CoreDuet/CSSearchableIndexObserver-Protocol.h>
 #import <CoreDuet/SpotlightReceiver-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, _CDInteractionRecording><_CDInteractionDeleting, _DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeQuerying><_DKKnowledgeEventStreamDeleting;
+@class NSMutableArray, NSMutableDictionary, NSString, _DKPrivacyPolicyEnforcer, _DKRateLimitPolicyEnforcer;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, _CDInteractionRecording><_CDInteractionDeleting, _DKKnowledgeSaving><_DKKnowledgeEventStreamDeleting;
 
 @interface _CDSpotlightItemRecorder : NSObject <SpotlightReceiver, CSSearchableIndexObserver>
 {
@@ -21,11 +21,13 @@
     NSObject<OS_os_transaction> *_pendingOperationsTransaction;
     NSObject<OS_dispatch_queue> *_activityRateLimiterQueue;
     NSMutableDictionary *_activityPerBundleRateLimit;
-    id<_DKKnowledgeSaving><_DKKnowledgeDeleting><_DKKnowledgeQuerying><_DKKnowledgeEventStreamDeleting> _knowledgeStore;
-    NSObject<OS_dispatch_queue> *_knowledgeStoreDeletionQueue;
+    id<_DKKnowledgeSaving><_DKKnowledgeEventStreamDeleting> _knowledgeStore;
+    _DKRateLimitPolicyEnforcer *_rateLimitEnforcer;
+    _DKPrivacyPolicyEnforcer *_privacyEnforcer;
     id<_CDInteractionRecording><_CDInteractionDeleting> _recorder;
 }
 
+@property (readonly, nonatomic) BOOL canRecordInteractions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -35,26 +37,44 @@
 + (void)recordAggdReceiverAction:(long long)arg1 bundleID:(id)arg2 count:(unsigned long long)arg3;
 + (id)spotlightItemRecorder;
 + (id)spotlightItemRecorderWithInteractionRecorder:(id)arg1;
++ (id)spotlightItemRecorderWithInteractionRecorder:(id)arg1 knowledgeSaving:(id)arg2;
++ (id)spotlightItemRecorderWithKnowledgeSaving:(id)arg1;
 - (void).cxx_destruct;
+- (void)_addOrUpdateCoreDuetInteractions:(id)arg1 bundleID:(id)arg2;
+- (void)_deleteKnowledgeEventsMatchingPredicate:(id)arg1;
+- (void)_deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2;
+- (void)_enqueueOperation:(id)arg1;
 - (void)addInteractions:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
-- (void)addOrUpdateCoreDuetInteractions:(id)arg1 bundleID:(id)arg2;
+- (void)addInteractions:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)addOrUpdateSearchableItems:(id)arg1;
 - (void)addOrUpdateSearchableItems:(id)arg1 bundleID:(id)arg2;
+- (void)addOrUpdateSearchableItems:(id)arg1 bundleID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)addUserAction:(id)arg1 withItem:(id)arg2;
+- (void)addUserAction:(id)arg1 withItem:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2;
+- (void)deleteAllInteractionsWithBundleID:(id)arg1 protectionClass:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)deleteAllSearchableItemsWithBundleID:(id)arg1;
+- (void)deleteAllSearchableItemsWithBundleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)deleteAllUserActivities:(id)arg1;
 - (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
+- (void)deleteInteractionsWithGroupIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
-- (void)deleteKnowledgeEventsMatchingPredicate:(id)arg1;
-- (void)deleteKnowledgeEventsWithBundleID:(id)arg1;
+- (void)deleteInteractionsWithIdentifiers:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)deleteKnowledgeEventsMatchingPredicate:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)deleteSearchableItemsSinceDate:(id)arg1 bundleID:(id)arg2;
+- (void)deleteSearchableItemsSinceDate:(id)arg1 bundleID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2;
+- (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 bundleID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)deleteSearchableItemsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
-- (void)enqueueOperation:(id)arg1;
+- (void)deleteSearchableItemsWithIdentifiers:(id)arg1 bundleID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)deleteUserActivitiesWithPersistentIdentifiers:(id)arg1 bundleID:(id)arg2;
+- (void)donateRelevantShortcuts:(id)arg1 bundleID:(id)arg2;
 - (id)initWithInteractionRecorder:(id)arg1;
 - (id)initWithInteractionRecorder:(id)arg1 knowledgeSaving:(id)arg2;
+- (id)initWithInteractionRecorder:(id)arg1 knowledgeSaving:(id)arg2 rateLimitEnforcer:(id)arg3;
 - (void)registerSpotlightRecorderWithServiceName:(id)arg1;
 - (void)runOperation:(id)arg1;
+- (void)saveRateLimitedEvents:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)supportedContentTypes;
 - (id)supportedINIntentClassNames;
 - (id)supportedUTIs;

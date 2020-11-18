@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (double)contentHeight;
 - (id)currentAnchoredDrawableLayouts;
 - (id)currentInlineDrawableLayouts;
+- (BOOL)excludeFromNearestVisibleRectSearchForSelectionPath:(id)arg1;
 - (id)existingAttachmentLayoutForInfo:(id)arg1;
 - (void)insertChild:(id)arg1 atIndex:(unsigned long long)arg2;
 - (BOOL)invalidateForPageCountChange;
@@ -90,7 +91,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)processWidowAndInflation;
 - (struct CGRect)rectForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (struct CGRect)rectForSelection:(id)arg1;
-- (struct CGRect)rectInRootForAnchoringPencilAnnotationsForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootOfAutoZoomContextOfSelectionPath:(id)arg1;
@@ -101,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsInflation;
 - (BOOL)shouldProvideSizingGuides;
 - (struct CGRect)targetRectForCanvasRect:(struct CGRect)arg1;
+- (id)unscaledAnchorRectsForPencilAnnotationSelectionPath:(id)arg1 attachedType:(long long)arg2;
 - (void)updateStartCharIndexWithDirtyRanges:(id)arg1;
 - (void)validate;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;

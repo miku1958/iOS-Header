@@ -24,7 +24,6 @@
     long long _lastProcessedAnchor;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    BOOL _shouldIncludePrivateProperties;
     CDUnknownBlockType _initialResultsHandler;
     CDUnknownBlockType _updateHandler;
 }
@@ -34,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CDUnknownBlockType initialResultsHandler; // @synthesize initialResultsHandler=_initialResultsHandler;
 @property BOOL shouldIncludePrivateProperties;
+@property BOOL shouldIncludeStatistics;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 

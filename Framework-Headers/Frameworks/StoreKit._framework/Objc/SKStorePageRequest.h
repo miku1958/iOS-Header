@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSURL;
 
@@ -19,8 +19,8 @@
 @property (copy, nonatomic) NSDictionary *productParameters; // @synthesize productParameters=_productParameters;
 @property (copy, nonatomic) NSURL *productURL; // @synthesize productURL=_productURL;
 
+- (void).cxx_destruct;
 - (id)copyXPCEncoding;
-- (void)dealloc;
 - (id)initWithXPCEncoding:(id)arg1;
 
 @end

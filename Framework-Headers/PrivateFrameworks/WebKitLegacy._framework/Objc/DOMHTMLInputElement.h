@@ -8,7 +8,7 @@
 
 #import <WebKitLegacy/UITextInputTraits-Protocol.h>
 
-@class DOMFileList, DOMHTMLFormElement, NSString, NSURL;
+@class DOMFileList, DOMHTMLFormElement, NSString, NSURL, UITextInputPasswordRules;
 
 @interface DOMHTMLInputElement : DOMHTMLElement <UITextInputTraits>
 {
@@ -39,6 +39,7 @@
 @property int maxLength;
 @property BOOL multiple;
 @property (copy) NSString *name;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property BOOL readOnly;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;

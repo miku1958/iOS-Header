@@ -11,12 +11,21 @@
 
 @protocol INSearchForPhotosIntentExport <NSObject, JSExport>
 
+@property (copy, nonatomic) NSArray *activities;
+@property (readonly, nonatomic) long long activitiesOperator;
 @property (copy, nonatomic) NSString *albumName;
 @property (copy, nonatomic) INDateComponentsRange *dateCreated;
+@property (copy, nonatomic) NSArray *events;
+@property (readonly, nonatomic) long long eventsOperator;
 @property (nonatomic) unsigned long long excludedAttributes;
+@property (copy, nonatomic) NSArray *geographicalFeatures;
+@property (readonly, nonatomic) long long geographicalFeaturesOperator;
 @property (nonatomic) unsigned long long includedAttributes;
 @property (copy, nonatomic) CLPlacemark *locationCreated;
+@property (copy, nonatomic) NSString *memoryName;
 @property (copy, nonatomic) NSArray *peopleInPhoto;
+@property (copy, nonatomic) NSArray *places;
+@property (readonly, nonatomic) long long placesOperator;
 @property (copy, nonatomic) NSArray *searchTerms;
 
 - (id)init;

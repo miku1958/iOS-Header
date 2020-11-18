@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMapTable;
 
@@ -16,7 +16,7 @@
 @property (strong, nonatomic) NSMapTable *inputModeToWordSearchMapping; // @synthesize inputModeToWordSearchMapping=_inputModeToWordSearchMapping;
 
 + (id)sharedWordSearchController;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (void)setWordSearch:(id)arg1 forInputMode:(id)arg2;
 - (id)wordSearchForInputMode:(id)arg1;

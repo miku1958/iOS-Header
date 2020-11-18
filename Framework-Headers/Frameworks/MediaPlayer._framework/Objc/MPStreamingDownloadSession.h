@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 
@@ -25,8 +25,14 @@
     NSURL *_streamingKeyServerURL;
     NSURL *_streamingKeyCertificateURL;
     NSURL *_alternateSourceURL;
+    NSURL *_alternateHLSPlaylistURL;
+    NSURL *_alternateHLSKeyServerURL;
+    NSURL *_alternateHLSKeyCertificateURL;
 }
 
+@property (copy, nonatomic) NSURL *alternateHLSKeyCertificateURL; // @synthesize alternateHLSKeyCertificateURL=_alternateHLSKeyCertificateURL;
+@property (copy, nonatomic) NSURL *alternateHLSKeyServerURL; // @synthesize alternateHLSKeyServerURL=_alternateHLSKeyServerURL;
+@property (copy, nonatomic) NSURL *alternateHLSPlaylistURL; // @synthesize alternateHLSPlaylistURL=_alternateHLSPlaylistURL;
 @property (copy, nonatomic) NSURL *alternateSourceURL; // @synthesize alternateSourceURL=_alternateSourceURL;
 @property (copy, nonatomic) NSString *assetFlavor; // @synthesize assetFlavor=_assetFlavor;
 @property (nonatomic) unsigned long long assetQuality; // @synthesize assetQuality=_assetQuality;

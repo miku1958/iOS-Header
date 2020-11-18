@@ -7,6 +7,7 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (SiriUI)
+- (BOOL)siriui_isVisible;
 - (BOOL)siriui_shouldHideStatusBar;
 - (BOOL)siriui_shouldRotateToLandscape;
 @end

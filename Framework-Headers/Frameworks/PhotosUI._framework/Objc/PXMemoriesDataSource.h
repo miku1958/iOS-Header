@@ -6,25 +6,9 @@
 
 #import <PhotosUICore/PXSectionedDataSource.h>
 
-@class NSObject, PXMemoriesDataSourceState;
-@protocol OS_dispatch_queue;
-
 @interface PXMemoriesDataSource : PXSectionedDataSource
 {
-    NSObject<OS_dispatch_queue> *_queue;
-    PXMemoriesDataSourceState *__state;
 }
-
-@property (readonly, nonatomic) PXMemoriesDataSourceState *_state; // @synthesize _state=__state;
-
-- (void).cxx_destruct;
-- (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
-- (id)initWithState:(id)arg1;
-- (id)memoryEntryInfoAtSectionIndexPath:(struct PXSimpleIndexPath)arg1;
-- (id)memoryInfoAtItemIndexPath:(struct PXSimpleIndexPath)arg1;
-- (long long)numberOfItemsInSection:(long long)arg1;
-- (long long)numberOfSections;
-- (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
 
 @end
 

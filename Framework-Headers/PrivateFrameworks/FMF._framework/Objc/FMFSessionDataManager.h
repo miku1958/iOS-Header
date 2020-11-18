@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     NSSet *_followers;
     NSSet *_following;
     NSSet *_locations;
+    NSSet *_fences;
     NSMutableDictionary *_locationsCache;
 }
 
+@property (strong, nonatomic) NSSet *fences; // @synthesize fences=_fences;
 @property (strong, nonatomic) NSSet *followers; // @synthesize followers=_followers;
 @property (strong, nonatomic) NSSet *following; // @synthesize following=_following;
 @property (strong, nonatomic) NSSet *locations; // @synthesize locations=_locations;

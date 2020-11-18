@@ -14,8 +14,8 @@
 {
     unsigned long long _queryId;
     BOOL _verboseReply;
+    BOOL _pretend;
     double _scale;
-    NSString *_keyboardLocale;
     NSString *_keyboardInputMode;
     unsigned long long _triggerEvent;
     NSArray *_queryItems;
@@ -25,7 +25,7 @@
 @property (readonly, nonatomic) unsigned long long clientQueryId;
 @property (copy, nonatomic) NSDictionary *headerItems; // @synthesize headerItems=_headerItems;
 @property (copy, nonatomic) NSString *keyboardInputMode; // @synthesize keyboardInputMode=_keyboardInputMode;
-@property (copy, nonatomic) NSString *keyboardLocale; // @synthesize keyboardLocale=_keyboardLocale;
+@property (nonatomic) BOOL pretend; // @synthesize pretend=_pretend;
 @property (readonly, nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
 @property (copy, nonatomic) NSArray *queryItems; // @synthesize queryItems=_queryItems;
 @property (nonatomic) double scale; // @synthesize scale=_scale;

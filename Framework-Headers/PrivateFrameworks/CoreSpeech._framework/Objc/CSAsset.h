@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) float SSVNoiseTTSMappingOutputRangeLow;
 @property (readonly, nonatomic) float SSVNoiseTimeConstant;
 @property (readonly, nonatomic) unsigned int SSVNoiseUpperPercentile;
+@property (readonly, nonatomic) float SSVNoiseWeight;
 @property (readonly, nonatomic) NSDictionary *SSVParameterDirectionary;
 @property (readonly, nonatomic) float SSVTTSVolumeLowerLimitDB;
 @property (readonly, nonatomic) float SSVTTSVolumeUpperLimitDB;
@@ -49,11 +50,14 @@
 @property (readonly, nonatomic) NSString *resourcePath; // @synthesize resourcePath=_resourcePath;
 
 + (id)assetForAssetType:(unsigned long long)arg1 resourcePath:(id)arg2 configVersion:(id)arg3;
-+ (id)defaultFallBackAssetForSmartSiriVolume:(id)arg1;
++ (id)defaultFallBackAssetForSmartSiriVolume;
 + (id)fallBackAssetResourcePath;
 + (id)hybridEndpointerAssetFilename;
 - (void).cxx_destruct;
+- (id)RTModel;
 - (id)_decodeJson:(id)arg1;
+- (id)_sha1:(id)arg1;
+- (id)_sha256:(id)arg1;
 - (id)description;
 - (BOOL)getBoolForKey:(id)arg1 category:(id)arg2 default:(BOOL)arg3;
 - (id)getNumberForKey:(id)arg1 category:(id)arg2 default:(id)arg3;

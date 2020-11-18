@@ -79,7 +79,7 @@
 - (void)setShowsEmergencyCallButton:(BOOL)arg1;
 - (void)setShowsStatusField:(BOOL)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateForTransitionToPasscodeView:(BOOL)arg1;
+- (void)updateForTransitionToPasscodeView:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateStatusText:(id)arg1 subtitle:(id)arg2 animated:(BOOL)arg3;
 - (void)willTransitionToPasscodeView;
 

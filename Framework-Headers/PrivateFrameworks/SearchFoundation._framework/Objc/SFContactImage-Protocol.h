@@ -6,13 +6,15 @@
 
 #import <SearchFoundation/SFImage-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSString;
 
 @protocol SFContactImage <SFImage>
 
 @property (copy, nonatomic) NSString *contactIdentifier;
+@property (copy, nonatomic) NSArray *contactIdentifiers;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) BOOL threeDTouchEnabled;
 
 @end
 

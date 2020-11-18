@@ -21,7 +21,6 @@
 - (void)remote_runAWDTask:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_saveDataObjects:(NSArray *)arg1 sourceBundleIdentifier:(NSString *)arg2 sourceVersion:(NSString *)arg3 handler:(void (^)(BOOL, NSError *))arg4;
 - (void)remote_select:(NSArray *)arg1 from:(NSString *)arg2 where:(NSPredicate *)arg3 groupBy:(NSArray *)arg4 orderBy:(NSArray *)arg5 limit:(long long)arg6 completion:(void (^)(NSArray *, NSArray *, BOOL, NSError *))arg7;
-- (void)remote_setShouldIgnoreUnlockedState:(BOOL)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_startFakingDataWithActivityType:(long long)arg1 speed:(HKQuantity *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)remote_stopFakingDataWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_stopObservingDataCollectionForType:(HKObjectType *)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
@@ -22,12 +22,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long displayType; // @synthesize displayType=_displayType;
-@property (readonly, strong, nonatomic) FBSDisplayLayoutElement *element; // @synthesize element=_element;
+@property (readonly, nonatomic) FBSDisplayLayoutElement *element; // @synthesize element=_element;
 @property (readonly, nonatomic) Class elementClass; // @synthesize elementClass=_elementClass;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)activate;
 - (void)activateWithBuilder:(CDUnknownBlockType)arg1;
 - (void)deactivate;

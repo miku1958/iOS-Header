@@ -14,6 +14,6 @@
 - (void)updatePathWithHandler:(NWConcrete_nw_endpoint_handler *)arg1;
 
 @optional
-- (void)applyWithHandler:(NWConcrete_nw_endpoint_handler *)arg1 toChildren:(BOOL (^)(NWConcrete_nw_endpoint_handler *))arg2;
+- (BOOL)applyWithHandler:(NWConcrete_nw_endpoint_handler *)arg1 toChildren:(BOOL (^)(NWConcrete_nw_endpoint_handler *))arg2;
 @end
 

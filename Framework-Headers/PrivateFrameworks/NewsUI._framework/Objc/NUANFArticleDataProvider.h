@@ -13,9 +13,9 @@
 
 @interface NUANFArticleDataProvider : NSObject <NUArticleDataProvider>
 {
+    FCArticle *_article;
     NSString *_articleID;
     id<FCContentContext> _contentContext;
-    FCArticle *_article;
     id<NUFontRegistration> _fontRegistration;
     id<SXHost> _host;
     NUANFFontLoader *_fontLoader;
@@ -24,7 +24,7 @@
     id<NUEmbedDataManager> _embedDataManger;
 }
 
-@property (readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
+@property (strong, nonatomic) FCArticle *article; // @synthesize article=_article;
 @property (copy, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
 @property (strong, nonatomic) NUANFAssetLoader *assetLoader; // @synthesize assetLoader=_assetLoader;
 @property (readonly, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
@@ -43,6 +43,7 @@
 - (id)initWithArticle:(id)arg1 contentContext:(id)arg2 fontRegistration:(id)arg3 host:(id)arg4 embedDataManager:(id)arg5;
 - (void)loadArticleWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)loadContextWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)reloadArticleIfNeeded;
 
 @end
 

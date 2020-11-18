@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUtils/HMAccessoryDelegatePrivate-Protocol.h>
 #import <CoreUtils/HMHomeDelegate-Protocol.h>
@@ -19,6 +19,7 @@
 
 @interface CUHomeKitManager : NSObject <HMAccessoryDelegatePrivate, HMHomeDelegate, HMHomeDelegatePrivate, HMHomeManagerDelegate, HMHomeManagerDelegatePrivate, HMMediaSystemDelegate, HMUserDelegatePrivate>
 {
+    int _homeKitPrefsNotifyToken;
     HMHomeManager *_homeManager;
     BOOL _homeManagerDidUpdateHomes;
     struct NSMutableDictionary *_homes;
@@ -82,17 +83,19 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_activate;
-- (id)_bestPairingIdentityAndLabel:(id *)arg1;
+- (void)_activateIfNeeded;
+- (id)_bestUserAndLabel:(id *)arg1;
 - (id)_cuPairingIdentityWithHMFPairingIdentity:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (void)_findPairedPeer:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_findPairedPeerWithContext:(id)arg1;
+- (void)_findPairedPeerWithContext:(id)arg1 label:(id)arg2 pairingIdentity:(id)arg3 error:(id)arg4;
+- (void)_getPairingIdentityCompleted:(id)arg1 options:(unsigned long long)arg2 error:(id)arg3 label:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_getPairingIdentityForAccessoryWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_getPairingIdentityForUserWithOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_interrupted;
 - (void)_invalidated;
 - (BOOL)_isOwnerOfHome:(id)arg1;
 - (id)_selfAccessoryMediaSystemUncached:(id *)arg1;
-- (id)_selfAccessoryUncached;
 - (void)_updateHomes;
 - (void)_updateSelfAccessoryIfNeeded;
 - (void)_updateSelfAccessoryMediaAccess;
@@ -100,7 +103,6 @@
 - (void)_updateSelfAccessorySiriAccess;
 - (void)_updateState;
 - (void)_updateUsers;
-- (void)accessory:(id)arg1 didUpdatePairingIdentity:(id)arg2;
 - (void)accessoryDidUpdateApplicationData:(id)arg1;
 - (void)activate;
 - (void)dealloc;
@@ -125,7 +127,6 @@
 - (void)mediaSystem:(id)arg1 didUpdateComponents:(id)arg2;
 - (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
 - (void)user:(id)arg1 didUpdateAssistantAccessControl:(id)arg2 forHome:(id)arg3;
-- (void)user:(id)arg1 didUpdatePairingIdentity:(id)arg2;
 
 @end
 

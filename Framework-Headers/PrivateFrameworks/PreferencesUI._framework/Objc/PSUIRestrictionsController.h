@@ -6,9 +6,11 @@
 
 #import <Preferences/PSListController.h>
 
-@class NSMutableArray, PSSpecifier, UISwitch;
+#import <PreferencesUI/DevicePINControllerDelegate-Protocol.h>
 
-@interface PSUIRestrictionsController : PSListController
+@class NSMutableArray, NSString, PSSpecifier, UISwitch;
+
+@interface PSUIRestrictionsController : PSListController <DevicePINControllerDelegate>
 {
     UISwitch *_delayedSwitch;
     BOOL _delayedValue;
@@ -18,7 +20,11 @@
     NSMutableArray *_mcRestrictionFeatures;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *mcRestrictionFeatures; // @synthesize mcRestrictionFeatures=_mcRestrictionFeatures;
+@property (readonly) Class superclass;
 
 + (void)formatSearchEntries:(id)arg1 parent:(id)arg2;
 + (BOOL)requiresPIN;
@@ -45,6 +51,8 @@
 - (id)currentCountryCode;
 - (id)currentCountryString:(id)arg1;
 - (void)dealloc;
+- (void)didAcceptRemovePIN;
+- (void)didAcceptSetPIN;
 - (id)explicitEnabled;
 - (id)explicitEnabledString;
 - (BOOL)featureRestricted:(id)arg1;
@@ -70,7 +78,6 @@
 - (void)updateToggleStateAndReload;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (id)webContentRestrictionState:(id)arg1;
 - (void)willBecomeActive;
 - (void)willResignActive;
 

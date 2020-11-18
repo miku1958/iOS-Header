@@ -10,7 +10,6 @@
 {
 }
 
-+ (void)_setSharedManager:(id)arg1;
 + (id)sharedManager;
 - (id)_allPrivacyBundles;
 - (id)_bundleSearchPath;

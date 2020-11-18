@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITextViewVisualStyle.h>
+#import <UIKitCore/_UITextViewVisualStyle.h>
 
 __attribute__((visibility("hidden")))
 @interface _UITextViewVisualStyle_iOS : _UITextViewVisualStyle

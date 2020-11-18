@@ -20,11 +20,13 @@
 @property (readonly, nonatomic) unsigned long long access; // @synthesize access=_access;
 @property (readonly, copy, nonatomic) NSString *accessPassword; // @synthesize accessPassword=_accessPassword;
 @property (readonly, nonatomic) BOOL accessRequiresPassword; // @synthesize accessRequiresPassword=_accessRequiresPassword;
+@property (readonly, nonatomic) BOOL accessSupportsPassword;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)accessClassificationSupportsPassword:(unsigned long long)arg1;
 + (id)defaultAccessControl;
 + (id)descriptorWithAccess:(unsigned long long)arg1 requiresPassword:(BOOL)arg2 password:(id)arg3;
 + (id)na_identity;

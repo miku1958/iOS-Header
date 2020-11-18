@@ -6,30 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/SXShareInteractionHandlerFactory-Protocol.h>
+#import <NewsUI/SVShareInteractionHandlerFactory-Protocol.h>
 
-@class NSString, NUVideoViewController;
-@protocol NUURLHandling, NUVideoActivityViewControllerFactory;
+@class NSString;
+@protocol NSSNewsAnalyticsArticleViewingSessionTracker, NUURLHandling, NUVideoActivityViewControllerFactory, SVVideoPlaybackController, SVVideoViewControllerProviding;
 
-@interface NUVideoShareInteractionHandlerFactory : NSObject <SXShareInteractionHandlerFactory>
+@interface NUVideoShareInteractionHandlerFactory : NSObject <SVShareInteractionHandlerFactory>
 {
-    NUVideoViewController *_videoViewController;
     id<NUVideoActivityViewControllerFactory> _activityViewControllerFactory;
+    id<NSSNewsAnalyticsArticleViewingSessionTracker> _articleViewingSessionTracker;
+    id<SVVideoViewControllerProviding> _videoViewControllerProvider;
+    id<SVVideoPlaybackController> _playbackController;
     id<NUURLHandling> _URLHandler;
 }
 
 @property (readonly, nonatomic) id<NUURLHandling> URLHandler; // @synthesize URLHandler=_URLHandler;
 @property (readonly, nonatomic) id<NUVideoActivityViewControllerFactory> activityViewControllerFactory; // @synthesize activityViewControllerFactory=_activityViewControllerFactory;
+@property (readonly, nonatomic) id<NSSNewsAnalyticsArticleViewingSessionTracker> articleViewingSessionTracker; // @synthesize articleViewingSessionTracker=_articleViewingSessionTracker;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<SVVideoPlaybackController> playbackController; // @synthesize playbackController=_playbackController;
 @property (readonly) Class superclass;
-@property (readonly, weak, nonatomic) NUVideoViewController *videoViewController; // @synthesize videoViewController=_videoViewController;
+@property (readonly, nonatomic) id<SVVideoViewControllerProviding> videoViewControllerProvider; // @synthesize videoViewControllerProvider=_videoViewControllerProvider;
 
 - (void).cxx_destruct;
 - (id)createInteractionHandlerForVideo:(id)arg1;
 - (id)init;
-- (id)initWithVideoViewController:(id)arg1 activityViewControllerFactory:(id)arg2 URLHandler:(id)arg3;
+- (id)initWithVideoViewControllerProvider:(id)arg1 playbackController:(id)arg2 activityViewControllerFactory:(id)arg3 articleViewingSessionTracker:(id)arg4 URLHandler:(id)arg5;
 
 @end
 

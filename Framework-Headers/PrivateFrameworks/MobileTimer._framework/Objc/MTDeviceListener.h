@@ -30,6 +30,7 @@
 + (id)sharedDeviceListener;
 - (void).cxx_destruct;
 - (BOOL)_hasBeenUnlockedSinceBoot;
+- (id)gatherDiagnostics;
 - (void)handleNotification:(id)arg1;
 - (BOOL)handlesNotification:(id)arg1;
 - (id)init;

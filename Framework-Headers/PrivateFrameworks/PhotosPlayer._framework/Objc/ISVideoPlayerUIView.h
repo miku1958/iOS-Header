@@ -12,8 +12,10 @@
 {
     ISAVPlayerUIView *_playerView;
     ISWrappedAVPlayer *_videoPlayer;
+    struct CGRect _contentsRect;
 }
 
+@property (nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
 @property (strong, nonatomic) ISWrappedAVPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
 
 - (void).cxx_destruct;

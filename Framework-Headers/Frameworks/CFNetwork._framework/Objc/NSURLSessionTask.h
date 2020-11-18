@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CFNetwork/NSCopying-Protocol.h>
 #import <CFNetwork/NSProgressReporting-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSError, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionTaskDependency, NSURLSessionTaskDependencyTree, NSURLSessionTaskHTTPAuthenticator, NSURLSessionTaskMetrics;
-@protocol NSURLSessionAppleIDContext, OS_dispatch_queue, SZExtractor;
+@class NSArray, NSData, NSDate, NSDictionary, NSError, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSession, NSURLSessionTaskDependency, NSURLSessionTaskDependencyTree, NSURLSessionTaskHTTPAuthenticator, NSURLSessionTaskMetrics, __NSCFTaskPerformanceTiming;
+@protocol NSURLSessionAppleIDContext, OS_dispatch_queue, OS_nw_activity, SZExtractor;
 
 @interface NSURLSessionTask : NSObject <NSCopying, NSProgressReporting>
 {
@@ -49,6 +49,7 @@
 @property unsigned int _darkWakePowerAssertion; // @dynamic _darkWakePowerAssertion;
 @property (strong, nonatomic) NSDictionary *_dependencyInfo; // @dynamic _dependencyInfo;
 @property BOOL _disallowCellular; // @dynamic _disallowCellular;
+@property (nonatomic) long long _discretionaryOverride; // @dynamic _discretionaryOverride;
 @property (nonatomic) BOOL _doesSZExtractorConsumeExtractedData; // @dynamic _doesSZExtractorConsumeExtractedData;
 @property long long _expectedWorkload; // @dynamic _expectedWorkload;
 @property (strong, nonatomic, setter=set_extractor:) id<SZExtractor> _extractor; // @dynamic _extractor;
@@ -57,12 +58,15 @@
 @property (nonatomic) BOOL _hasSZExtractor; // @dynamic _hasSZExtractor;
 @property (strong, nonatomic) NSURLSessionTaskMetrics *_incompleteTaskMetrics; // @dynamic _incompleteTaskMetrics;
 @property (readonly, nonatomic) BOOL _isAVAssetTask; // @dynamic _isAVAssetTask;
+@property BOOL _isTopLevelNavigation; // @dynamic _isTopLevelNavigation;
 @property (copy) NSURL *_ledBellyFallbackURL; // @dynamic _ledBellyFallbackURL;
 @property (copy) NSString *_ledBellyServiceIdentifier; // @dynamic _ledBellyServiceIdentifier;
 @property (copy) NSDictionary *_legacySocketStreamProperties; // @dynamic _legacySocketStreamProperties;
 @property double _loadingPriority; // @synthesize _loadingPriority=__loadingPriority;
 @property double _loadingPriorityValue; // @dynamic _loadingPriorityValue;
+@property (readonly, nonatomic) NSString *_loggableDescription; // @dynamic _loggableDescription;
 @property int _networkServiceType; // @dynamic _networkServiceType;
+@property (strong) NSObject<OS_nw_activity> *_nw_activity; // @dynamic _nw_activity;
 @property (copy) NSString *_pathToDownloadTaskFile; // @dynamic _pathToDownloadTaskFile;
 @property (strong, nonatomic) struct __PerformanceTiming *_performanceTiming; // @dynamic _performanceTiming;
 @property unsigned int _powerAssertion; // @dynamic _powerAssertion;
@@ -75,17 +79,21 @@
 @property (nonatomic) id _protocolForTask; // @dynamic _protocolForTask;
 @property (copy) NSDictionary *_proxySettings; // @dynamic _proxySettings;
 @property (strong, nonatomic) NSURL *_publishingURL; // @dynamic _publishingURL;
+@property (nonatomic) unsigned int _qos; // @dynamic _qos;
 @property long long _requestPriority; // @dynamic _requestPriority;
+@property BOOL _requiresSecureHTTPSProxyConnection; // @dynamic _requiresSecureHTTPSProxyConnection;
 @property BOOL _shouldHandleCookies; // @dynamic _shouldHandleCookies;
 @property BOOL _shouldPipelineHTTP; // @dynamic _shouldPipelineHTTP;
 @property (nonatomic) BOOL _shouldReportTimingDataToAWD; // @dynamic _shouldReportTimingDataToAWD;
 @property BOOL _shouldSkipPipelineProbe; // @dynamic _shouldSkipPipelineProbe;
 @property BOOL _shouldSkipPreferredClientCertificateLookup; // @dynamic _shouldSkipPreferredClientCertificateLookup;
 @property BOOL _shouldUsePipelineHeuristics; // @dynamic _shouldUsePipelineHeuristics;
+@property (strong) NSURL *_siteForCookies; // @dynamic _siteForCookies;
 @property (copy) NSDictionary *_sslSettings; // @dynamic _sslSettings;
 @property (copy) NSString *_storagePartitionIdentifier; // @dynamic _storagePartitionIdentifier;
 @property BOOL _strictContentLength; // @dynamic _strictContentLength;
 @property long long _suspensionThreshhold; // @dynamic _suspensionThreshhold;
+@property (copy) __NSCFTaskPerformanceTiming *_taskPerformanceTiming; // @dynamic _taskPerformanceTiming;
 @property double _timeWindowDelay; // @dynamic _timeWindowDelay;
 @property double _timeWindowDuration; // @dynamic _timeWindowDuration;
 @property double _timeoutInterval; // @dynamic _timeoutInterval;
@@ -131,10 +139,8 @@
 - (struct __CFDictionary *)_copySocketStreamProperties;
 - (const struct XCookieStorage *)_createXCookieStorage;
 - (const struct XCredentialStorage *)_createXCredentialStorage;
-- (const struct XURLCache *)_createXURLCache;
 - (void)_finishProgressReporting;
 - (void)_initializeTimingDataWithSessionConfiguration:(id)arg1;
-- (id)_loggableDescription;
 - (void)_onSessionQueue_cleanupAndBreakCycles;
 - (void)_onqueue_adjustBytesPerSecondLimit:(long long)arg1;
 - (void)_onqueue_adjustPriorityHint:(float)arg1;
@@ -145,6 +151,7 @@
 - (void)_setExplicitStorageSession:(struct __CFURLStorageSession *)arg1;
 - (void)_setSocketProperties:(struct __CFDictionary *)arg1 connectionProperties:(struct __CFDictionary *)arg2;
 - (id)_transactionMetrics;
+- (void)_withXURLCache:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (long long)computeAdjustedPoolPriority;
 - (id)copyWithZone:(struct _NSZone *)arg1;

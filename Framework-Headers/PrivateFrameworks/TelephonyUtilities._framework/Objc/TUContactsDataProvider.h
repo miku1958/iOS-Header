@@ -29,6 +29,7 @@
 - (id)compositeNameForHandles:(id)arg1 countryCode:(id)arg2;
 - (id)contactLabelForContacts:(id)arg1 matchingHandle:(id)arg2 countryCode:(id)arg3;
 - (id)contactWithIdentifier:(id)arg1 keysToFetch:(id)arg2;
+- (id)contactsForHandle:(id)arg1 countryCode:(id)arg2 keysToFetch:(id)arg3 prefixHint:(id)arg4;
 - (id)executeFetchRequest:(id)arg1;
 - (id)formattedNameForHandle:(id)arg1 countryCode:(id)arg2;
 - (id)init;

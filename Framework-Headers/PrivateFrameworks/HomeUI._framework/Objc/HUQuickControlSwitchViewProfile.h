@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUQuickControlIncrementalConvertibleProfile-Protocol.h>
 
-@class NSString;
+@class HFNumberValueConstraints, NSString;
 
 @interface HUQuickControlSwitchViewProfile : HUQuickControlViewProfile <HUQuickControlIncrementalConvertibleProfile>
 {
@@ -16,14 +16,13 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL hasSecondaryValue;
+@property (readonly, nonatomic) BOOL hasSecondaryValue;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HFNumberValueConstraints *primaryValueConstraints;
+@property (readonly, nonatomic) HFNumberValueConstraints *secondaryValueConstraints;
 @property (readonly) Class superclass;
 
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (double)gestureDragCoefficient;
-- (double)percentageValueForViewValue:(id)arg1;
-- (id)viewValueForPercentageValue:(double)arg1 round:(BOOL)arg2;
 
 @end
 

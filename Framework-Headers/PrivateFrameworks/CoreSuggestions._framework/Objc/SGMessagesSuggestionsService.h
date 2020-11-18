@@ -28,6 +28,7 @@
 - (void)harvestedSuggestionsFromMessage:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)harvestedSuggestionsFromMessages:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
+- (BOOL)isMessageEligibleForSuggestions:(id)arg1;
 - (void)sendContextForMessage:(id)arg1;
 - (void)setManagerForTesting:(id)arg1;
 - (void)setupContextIfNeededForConversation:(id)arg1;

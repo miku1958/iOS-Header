@@ -30,6 +30,8 @@
 @property (strong, nonatomic) NSDate *sunriseDate; // @synthesize sunriseDate=_sunriseDate;
 @property (strong, nonatomic) NSDate *sunsetDate; // @synthesize sunsetDate=_sunsetDate;
 
++ (id)_eventTimeAndCountdown:(id)arg1 suppressCountdown:(BOOL)arg2 suppressCommaSeparator:(BOOL)arg3 abbreviated:(BOOL)arg4;
++ (id)_signatureCorner:(id)arg1;
 + (id)_swapPlaceholderString:(id)arg1 withTimeStringForDate:(id)arg2 inString:(id)arg3 usingBaseFont:(id)arg4 smallCapsBaseFont:(id)arg5;
 + (id)circular:(id)arg1 isMedium:(BOOL)arg2;
 + (id)extraLarge:(id)arg1;

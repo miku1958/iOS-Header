@@ -17,6 +17,7 @@
 
 @property (readonly) unsigned long long count;
 
++ (id)_alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)newSetWithObjects:(const id *)arg1 count:(unsigned long long)arg2;
 + (id)set;

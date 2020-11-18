@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/MDRenderTarget-Protocol.h>
 
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
         unsigned long long;
         BOOL;
         float;
-        struct vector<std::__1::shared_ptr<ggl::DebugRenderer>, std::__1::allocator<std::__1::shared_ptr<ggl::DebugRenderer>>>;
+        struct vector<std::__1::shared_ptr<ggl::DebugRenderer>, geo::StdAllocator<std::__1::shared_ptr<ggl::DebugRenderer>, ggl::Allocator>>;
         struct unique_ptr<ggl::RenderQueue, std::__1::default_delete<ggl::RenderQueue>>;
         struct shared_ptr<ggl::CommonLibrary>;
         struct unique_ptr<ggl::RenderResourceFences, std::__1::default_delete<ggl::RenderResourceFences>>;
@@ -75,7 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)didDrawView;
 - (struct Texture *)finalSurface;
 - (BOOL)hasRenderTarget;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(BOOL)arg3 device:(struct Device *)arg4;
+- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 useMultisampling:(BOOL)arg3 taskContext:(const shared_ptr_e963992e *)arg4 device:(struct Device *)arg5;
 - (void)renderWithTimestamp:(double)arg1 completion:(function_30b369b8)arg2;
 - (void)willDrawView;
 

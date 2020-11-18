@@ -9,7 +9,6 @@
 @class NSMutableSet;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface GEOMapRequestManager : NSObject
 {
     NSMutableSet *_requests;

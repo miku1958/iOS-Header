@@ -4,86 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PrototypeTools/PTRow.h>
 
-#import <PrototypeTools/_UISettingsKeyPathObserver-Protocol.h>
-
-@class NSHashTable, NSPredicate, NSString, PTSRowAction, PTSSection, UIImage, _UISettings;
-
-@interface PTSRow : NSObject <_UISettingsKeyPathObserver>
+@interface PTSRow : PTRow
 {
-    NSHashTable *_observers;
-    NSString *_valueKeyPath;
-    NSString *_staticTitle;
-    NSString *_titleKeyPath;
-    UIImage *_staticImage;
-    NSString *_imageKeyPath;
-    NSPredicate *_condition;
-    PTSRowAction *_action;
-    CDUnknownBlockType _valueValidatator;
-    CDUnknownBlockType _valueFormatter;
-    PTSSection *_section;
-    _UISettings *_groupChild;
-    _UISettings *_settings;
-    NSString *_groupKeyPath;
-    long long _allowedEditingTypes;
 }
-
-@property (copy, nonatomic) PTSRowAction *action; // @synthesize action=_action;
-@property (nonatomic) long long allowedEditingTypes; // @synthesize allowedEditingTypes=_allowedEditingTypes;
-@property (copy, nonatomic) NSPredicate *condition; // @synthesize condition=_condition;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) _UISettings *groupChild; // @synthesize groupChild=_groupChild;
-@property (strong, nonatomic) NSString *groupKeyPath; // @synthesize groupKeyPath=_groupKeyPath;
-@property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *imageKeyPath; // @synthesize imageKeyPath=_imageKeyPath;
-@property (weak, nonatomic) PTSSection *section; // @synthesize section=_section;
-@property (strong, nonatomic) _UISettings *settings; // @synthesize settings=_settings;
-@property (strong, nonatomic) UIImage *staticImage; // @synthesize staticImage=_staticImage;
-@property (copy, nonatomic) NSString *staticTitle; // @synthesize staticTitle=_staticTitle;
-@property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *titleKeyPath; // @synthesize titleKeyPath=_titleKeyPath;
-@property (strong, nonatomic) id value;
-@property (copy, nonatomic) CDUnknownBlockType valueFormatter; // @synthesize valueFormatter=_valueFormatter;
-@property (copy, nonatomic) NSString *valueKeyPath; // @synthesize valueKeyPath=_valueKeyPath;
-@property (copy, nonatomic) CDUnknownBlockType valueValidatator; // @synthesize valueValidatator=_valueValidatator;
-
-+ (id)row;
-+ (id)rowWithTitle:(id)arg1 valueKeyPath:(id)arg2;
-- (void).cxx_destruct;
-- (void)_sendImageChanged;
-- (void)_sendTitleChanged;
-- (void)_sendValueChanged;
-- (id)action:(id)arg1;
-- (void)addObserver:(id)arg1;
-- (id)allowedEditingTypes:(long long)arg1;
-- (BOOL)allowsDelete;
-- (BOOL)allowsDuplicate;
-- (BOOL)allowsReorder;
-- (BOOL)allowsShare;
-- (id)childSettingsForKeyPath:(id)arg1;
-- (id)concreteCopyWithIndex:(unsigned long long)arg1;
-- (id)condition:(id)arg1;
-- (id)conditionFormat:(id)arg1;
-- (void)dealloc;
-- (id)group;
-- (id)groupKeyPath:(id)arg1;
-- (id)image;
-- (id)imageKeyPath:(id)arg1;
-- (id)init;
-- (void)removeObserver:(id)arg1;
-- (void)resolveTemplatesWithIndex:(unsigned long long)arg1;
-- (Class)rowTableViewCellClass;
-- (void)settings:(id)arg1 changedValueForKeyPath:(id)arg2;
-- (id)staticImage:(id)arg1;
-- (id)staticTitle:(id)arg1;
-- (id)title;
-- (id)titleKeyPath:(id)arg1;
-- (void)updateWithRow:(id)arg1;
-- (id)valueFormatter:(CDUnknownBlockType)arg1;
-- (id)valueKeyPath:(id)arg1;
-- (id)valueValidator:(CDUnknownBlockType)arg1;
 
 @end
 

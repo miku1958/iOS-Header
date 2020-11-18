@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_interfaceMonitors;
 }
 
-@property (readonly, nonatomic) struct __CFString *currentRAT;
+@property (readonly, nonatomic) int currentRAT;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PCInterfaceUsabilityMonitorDelegate> delegate;
 @property (readonly, copy) NSString *description;
@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isRadioHot;
 @property (readonly, nonatomic) int linkQuality;
 @property (readonly, strong, nonatomic) NSString *linkQualityString;
+@property (readonly, nonatomic) NSString *networkCode;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct __CFString *wwanInterfaceName;
 

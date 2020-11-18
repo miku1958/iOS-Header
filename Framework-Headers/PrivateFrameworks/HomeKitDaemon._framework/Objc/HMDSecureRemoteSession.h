@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDAccountRegistry, HMDDevice, HMDRemoteDeviceMonitor, HMDRemoteIdentityRegistry, NSMutableArray, NSObject, NSString;
+@class HMDAccountRegistry, HMDDevice, HMDRemoteDeviceMonitor, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDSecureRemoteSession : HMFMessageTransport <HMDSecureRemoteStreamDelegate, HMFLogging, HMFTimerDelegate, HMFDumpState>
@@ -21,7 +21,6 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     HMDRemoteDeviceMonitor *_deviceMonitor;
     HMDAccountRegistry *_accountRegistry;
-    HMDRemoteIdentityRegistry *_identityRegistry;
     unsigned long long _maximumRemoteStreams;
     NSMutableArray *_pendingMessages;
     NSMutableArray *_clientStreams;
@@ -37,7 +36,6 @@
 @property (readonly) HMDDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) HMDRemoteDeviceMonitor *deviceMonitor; // @synthesize deviceMonitor=_deviceMonitor;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMDRemoteIdentityRegistry *identityRegistry; // @synthesize identityRegistry=_identityRegistry;
 @property (nonatomic) unsigned long long maximumRemoteStreams; // @synthesize maximumRemoteStreams=_maximumRemoteStreams;
 @property (readonly, nonatomic) NSMutableArray *pendingMessages; // @synthesize pendingMessages=_pendingMessages;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
@@ -68,7 +66,7 @@
 - (void)handleDeviceIsNotReachable:(id)arg1;
 - (void)handleDeviceIsReachable:(id)arg1;
 - (id)init;
-- (id)initWithDevice:(id)arg1 deviceMonitor:(id)arg2 accountRegistry:(id)arg3 identityRegistry:(id)arg4;
+- (id)initWithDevice:(id)arg1 deviceMonitor:(id)arg2 accountRegistry:(id)arg3;
 - (id)logIdentifier;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)openWithCompletionHandler:(CDUnknownBlockType)arg1;

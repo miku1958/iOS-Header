@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface VCHardwareSettings : NSObject
@@ -12,6 +12,8 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)init;
+- (unsigned int)maxNetworkBitrateMultiwayAudioOnWifi:(BOOL)arg1;
+- (unsigned int)maxNetworkBitrateMultiwayVideoOnWifi:(BOOL)arg1;
 
 @end
 

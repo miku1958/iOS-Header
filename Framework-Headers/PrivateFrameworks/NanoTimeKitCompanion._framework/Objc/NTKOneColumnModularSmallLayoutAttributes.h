@@ -29,7 +29,7 @@
 @property (nonatomic) double titleBaselineOffset; // @synthesize titleBaselineOffset=_titleBaselineOffset;
 @property (strong, nonatomic) CLKFont *titleFont; // @synthesize titleFont=_titleFont;
 
-+ (id)attributesForTemplate:(id)arg1;
++ (id)attributesForTemplate:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 
 @end

@@ -13,23 +13,20 @@
 @interface AVPlaybackControlsRoutePickerView : AVRoutePickerView <AVPlaybackControlsViewItem>
 {
     AVButton *_customButton;
-    BOOL _collapsed;
-    BOOL _included;
     BOOL _hasAlternateAppearance;
     BOOL _hasFullScreenAppearance;
-    struct CGSize _extrinsicContentSize;
 }
 
-@property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
+@property (nonatomic, getter=isCollapsed) BOOL collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
 @property (readonly, nonatomic) AVButton *customButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
+@property (nonatomic) struct CGSize extrinsicContentSize;
 @property (nonatomic) BOOL hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
 @property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
 @property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
+@property (nonatomic, getter=isIncluded) BOOL included;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

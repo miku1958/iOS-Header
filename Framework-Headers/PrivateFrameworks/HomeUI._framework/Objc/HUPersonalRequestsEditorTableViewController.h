@@ -24,9 +24,11 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)automaticallyUpdatesViewControllerTitle;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)devicesModuleController:(id)arg1 presentViewController:(id)arg2;
 - (id)initWithUserItem:(id)arg1;
+- (id)initWithUserItem:(id)arg1 sourceMediaProfileContainer:(id)arg2;
 - (id)itemModuleControllers;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

@@ -10,7 +10,7 @@
 #import <DCIMServices/CAMBadgeViewDelegate-Protocol.h>
 #import <DCIMServices/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CAMAnimationGenerator, CAMLightingDialBackground, CAMLightingFrameCache, CAMLightingNameBadge, NSArray, NSDate, NSDictionary, NSString, NSTimer, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UISelectionFeedbackGenerator, UITapGestureRecognizer;
+@class CAMAnimationGenerator, CAMLightingDialBackground, CAMLightingFrameCache, CAMLightingNameBadge, CAMSelectionFeedbackGenerator, NSArray, NSDate, NSDictionary, NSString, NSTimer, UIImageView, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol CAMLightingControlDelegate;
 
 @interface CAMLightingControl : UIView <UIGestureRecognizerDelegate, CAMBadgeViewDelegate, CAAnimationDelegate>
@@ -19,6 +19,7 @@
         BOOL respondsToWillChangeExpanded;
         BOOL respondsToDidChangeExpanded;
     } _delegateFlags;
+    BOOL _stageLightEnabled;
     BOOL _tracking;
     BOOL _expanded;
     BOOL _highlighted;
@@ -32,6 +33,7 @@
     double __selectionAngularOffset;
     unsigned long long __selectionIndex;
     CAMLightingFrameCache *__frameCache;
+    unsigned long long __stageLightTypesCount;
     NSDictionary *__itemViewsForType;
     NSDictionary *__itemShadowViewsForType;
     NSDictionary *__itemOutlineViewsForType;
@@ -46,14 +48,14 @@
     CAMAnimationGenerator *__animationGenerator;
     NSTimer *__collapseTimer;
     unsigned long long __expandedAnimationCounter;
-    UISelectionFeedbackGenerator *__selectionFeedbackGenerator;
+    CAMSelectionFeedbackGenerator *__selectionFeedbackGenerator;
 }
 
 @property (readonly, nonatomic) CAMAnimationGenerator *_animationGenerator; // @synthesize _animationGenerator=__animationGenerator;
 @property (strong, nonatomic, setter=_setBackgroundView:) CAMLightingDialBackground *_backgroundView; // @synthesize _backgroundView=__backgroundView;
 @property (strong, nonatomic, setter=_setCollapseTimer:) NSTimer *_collapseTimer; // @synthesize _collapseTimer=__collapseTimer;
 @property (strong, nonatomic, setter=_setEffectItemsForType:) NSDictionary *_effectItemsForType; // @synthesize _effectItemsForType=__effectItemsForType;
-@property (strong, nonatomic, setter=_setEffectTypes:) NSArray *_effectTypes; // @synthesize _effectTypes=__effectTypes;
+@property (readonly, nonatomic) NSArray *_effectTypes; // @synthesize _effectTypes=__effectTypes;
 @property (nonatomic, setter=_setExpandedAnimationCounter:) unsigned long long _expandedAnimationCounter; // @synthesize _expandedAnimationCounter=__expandedAnimationCounter;
 @property (readonly, nonatomic) CAMLightingFrameCache *_frameCache; // @synthesize _frameCache=__frameCache;
 @property (strong, nonatomic, setter=_setItemOutlineViewsForType:) NSDictionary *_itemOutlineViewsForType; // @synthesize _itemOutlineViewsForType=__itemOutlineViewsForType;
@@ -63,10 +65,11 @@
 @property (readonly, nonatomic) UIPanGestureRecognizer *_panGesture; // @synthesize _panGesture=__panGesture;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *_pressGesture; // @synthesize _pressGesture=__pressGesture;
 @property (nonatomic, setter=_setSelectionAngularOffset:) double _selectionAngularOffset; // @synthesize _selectionAngularOffset=__selectionAngularOffset;
-@property (readonly, nonatomic) UISelectionFeedbackGenerator *_selectionFeedbackGenerator; // @synthesize _selectionFeedbackGenerator=__selectionFeedbackGenerator;
+@property (readonly, nonatomic) CAMSelectionFeedbackGenerator *_selectionFeedbackGenerator; // @synthesize _selectionFeedbackGenerator=__selectionFeedbackGenerator;
 @property (readonly, nonatomic) unsigned long long _selectionIndex; // @synthesize _selectionIndex=__selectionIndex;
 @property (strong, nonatomic, setter=_setSelectionOverlay:) UIImageView *_selectionOverlay; // @synthesize _selectionOverlay=__selectionOverlay;
 @property (strong, nonatomic, setter=_setSelectionUnderlay:) UIImageView *_selectionUnderlay; // @synthesize _selectionUnderlay=__selectionUnderlay;
+@property (readonly, nonatomic) unsigned long long _stageLightTypesCount; // @synthesize _stageLightTypesCount=__stageLightTypesCount;
 @property (readonly, nonatomic) UITapGestureRecognizer *_tapGesture; // @synthesize _tapGesture=__tapGesture;
 @property (strong, nonatomic, setter=_setTimeTrackingBegan:) NSDate *_timeTrackingBegan; // @synthesize _timeTrackingBegan=__timeTrackingBegan;
 @property (readonly, copy) NSString *debugDescription;
@@ -80,6 +83,7 @@
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) long long selectedLightingType; // @synthesize selectedLightingType=_selectedLightingType;
 @property (nonatomic) BOOL showAllItemsWhenCollapsed; // @synthesize showAllItemsWhenCollapsed=_showAllItemsWhenCollapsed;
+@property (nonatomic, getter=isStageLightEnabled) BOOL stageLightEnabled; // @synthesize stageLightEnabled=_stageLightEnabled;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isTracking, setter=_setTracking:) BOOL tracking; // @synthesize tracking=_tracking;
 
@@ -100,6 +104,7 @@
 - (double)_dialRadius;
 - (double)_dialRadiusForWidth:(double)arg1;
 - (double)_dialVisibleHeightExpanded:(BOOL)arg1;
+- (unsigned long long)_enabledItemCount;
 - (void)_handleCollapseTimer:(id)arg1;
 - (void)_handlePanGesture:(id)arg1;
 - (void)_handlePressGesture:(id)arg1;
@@ -107,7 +112,9 @@
 - (void)_handleSnapFromOffset:(double)arg1 withProgress:(double)arg2 timingCurve:(id)arg3;
 - (void)_handleTapGesture:(id)arg1;
 - (void)_handleTapRotationFromOffset:(double)arg1 withProgress:(double)arg2 timingCurve:(id)arg3;
+- (BOOL)_isLightingTypeEnabled:(long long)arg1;
 - (BOOL)_isOverDialedWithSelectionAngularOffset:(double)arg1 selectionIndex:(unsigned long long)arg2;
+- (BOOL)_isStageLightingType:(long long)arg1;
 - (unsigned long long)_itemCount;
 - (void)_layoutBackgroundExpanded:(BOOL)arg1;
 - (void)_layoutItemViewsLinear;
@@ -126,7 +133,7 @@
 - (double)_safeWidthForWidth:(double)arg1;
 - (struct CGPoint)_selectionPointForExpanded:(BOOL)arg1;
 - (void)_setExpanded:(BOOL)arg1 animated:(BOOL)arg2 shouldNotify:(BOOL)arg3;
-- (void)_setSelectedLightingType:(long long)arg1 atIndex:(unsigned long long)arg2 shouldNotify:(BOOL)arg3 shouldSuppressHaptic:(BOOL)arg4;
+- (void)_setSelectedLightingType:(long long)arg1 atIndex:(unsigned long long)arg2 shouldNotify:(BOOL)arg3 shouldSuppressHaptic:(BOOL)arg4 animated:(BOOL)arg5;
 - (void)_settleSelectionViewsFromSelectionOffsetAngle:(double)arg1;
 - (void)_snapFromSelectionOffsetAngle:(double)arg1 toAngle:(double)arg2 animated:(BOOL)arg3;
 - (double)_spacingForLinearLayout;
@@ -146,7 +153,10 @@
 - (void)setExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setNameBadgeHidden:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setSelectedLightingType:(long long)arg1 animated:(BOOL)arg2;
 - (void)setShowAllItemsWhenCollapsed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setStageLightEnabled:(BOOL)arg1 animated:(BOOL)arg2;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateToContentSize:(id)arg1;
 
 @end

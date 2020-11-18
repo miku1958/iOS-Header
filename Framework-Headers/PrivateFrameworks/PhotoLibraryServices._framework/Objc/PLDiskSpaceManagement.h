@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLDiskSpaceManagement : NSObject
 {
@@ -13,12 +13,12 @@
 + (unsigned long long)_performCloudSharingSpaceManagementWithBytesToPurge:(unsigned long long)arg1 shouldFreeSpace:(BOOL)arg2 fromPhotoLibrary:(id)arg3 keepRecentlyViewedAssets:(BOOL)arg4;
 + (long long)_processCloudSharedAsset:(id)arg1 shouldFreeSpace:(BOOL)arg2;
 + (unsigned long long)_scanAndDeleteCacheFilesInDirectory:(id)arg1 shouldFreeSpace:(BOOL)arg2 bytesToPurge:(unsigned long long)arg3;
-+ (unsigned long long)_scanFilesInCloudSharingCacheDataDirectoryShouldFreeSpace:(BOOL)arg1 bytesToPurge:(unsigned long long)arg2;
-+ (unsigned long long)_scanFilesInPhotoMetadataDirectoryShouldFreeSpace:(BOOL)arg1 bytesToPurge:(unsigned long long)arg2 skipAssets:(id)arg3;
-+ (unsigned long long)_scanFilesInReimportPhotoCloudSharingDataDirectoryShouldFreeSpace:(BOOL)arg1 bytesToPurge:(unsigned long long)arg2;
++ (unsigned long long)_scanFilesInPhotoLibrary:(id)arg1 fromCloudSharingCacheDataDirectoryShouldFreeSpace:(BOOL)arg2 bytesToPurge:(unsigned long long)arg3;
++ (unsigned long long)_scanFilesInPhotoLibrary:(id)arg1 fromPhotoMetadataDirectoryShouldFreeSpace:(BOOL)arg2 bytesToPurge:(unsigned long long)arg3 skipAssets:(id)arg4;
++ (unsigned long long)_scanFilesInPhotoLibrary:(id)arg1 fromReimportPhotoCloudSharingDataDirectoryShouldFreeSpace:(BOOL)arg2 bytesToPurge:(unsigned long long)arg3;
 + (unsigned long long)performCloudSharingSpaceManagementWithBytesToPurge:(unsigned long long)arg1 shouldFreeSpace:(BOOL)arg2 fromPhotoLibrary:(id)arg3;
 + (unsigned long long)purgeCloudSharingAssetsIfNotRecentlyViewedFromPhotoLibrary:(id)arg1;
-+ (unsigned long long)purgeExpiredOutboundSharingAssets;
++ (unsigned long long)purgeExpiredOutboundSharingAssetsFromPhotoLibrary:(id)arg1;
 
 @end
 

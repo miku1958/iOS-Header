@@ -6,11 +6,11 @@
 
 #import <GameplayKit/GKObstacle.h>
 
-#import <GameplayKit/NSCoding-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE;
 
-@interface GKPolygonObstacle : GKObstacle <NSCoding>
+@interface GKPolygonObstacle : GKObstacle <NSSecureCoding>
 {
     struct GKCPolygonObstacle *_cPolygonObstacle;
 }
@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) unsigned long long vertexCount;
 
 + (id)obstacleWithPoints:(MISSING_TYPE **)arg1 count:(unsigned long long)arg2;
++ (BOOL)supportsSecureCoding;
 - (struct GKCPolygonObstacle *)cPolygonObstacle;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

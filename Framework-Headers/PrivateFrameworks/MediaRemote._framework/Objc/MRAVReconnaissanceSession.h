@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class MRAVEndpoint, MRAVRoutingDiscoverySession, NSArray, NSMutableSet, NSSet, NSString;
+@class MRAVEndpoint, MRAVRoutingDiscoverySession, NSArray, NSMutableArray, NSMutableSet, NSSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface MRAVReconnaissanceSession : NSObject
@@ -15,9 +15,9 @@
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSMutableSet *_localMatchingDevicesFound;
     BOOL _useWeakMatching;
+    BOOL _returnPartialResults;
     BOOL _searchInProgress;
     BOOL _shouldWaitForUnanimousEndpoints;
-    BOOL _returnPartialResults;
     unsigned int _endpointFeatures;
     MRAVRoutingDiscoverySession *_discoverySession;
     NSArray *_matchingLogicalDeviceIDs;
@@ -28,6 +28,7 @@
     NSObject<OS_dispatch_source> *_timeoutTimer;
     NSObject<OS_dispatch_queue> *_callbackSyncQueue;
     NSMutableSet *_matchingDevicesFound;
+    NSMutableArray *_matchingEndpointsFound;
     MRAVEndpoint *_unanimousEndpoint;
     NSArray *_availableOutputDevices;
     NSArray *_availableEndpoints;
@@ -46,6 +47,7 @@
 @property (strong, nonatomic) NSArray *lastProcessedEndpoints; // @synthesize lastProcessedEndpoints=_lastProcessedEndpoints;
 @property (strong, nonatomic) NSArray *lastProcessedOutputDevices; // @synthesize lastProcessedOutputDevices=_lastProcessedOutputDevices;
 @property (strong, nonatomic) NSMutableSet *matchingDevicesFound; // @synthesize matchingDevicesFound=_matchingDevicesFound;
+@property (strong, nonatomic) NSMutableArray *matchingEndpointsFound; // @synthesize matchingEndpointsFound=_matchingEndpointsFound;
 @property (copy, nonatomic) NSArray *matchingLogicalDeviceIDs; // @synthesize matchingLogicalDeviceIDs=_matchingLogicalDeviceIDs;
 @property (strong, nonatomic) NSString *matchingOutputDeviceGroupID; // @synthesize matchingOutputDeviceGroupID=_matchingOutputDeviceGroupID;
 @property (readonly, nonatomic) NSArray *matchingOutputDeviceUIDs;
@@ -68,6 +70,7 @@
 - (void)_onQueue_updateCachedOutputDevices:(id)arg1 endpoints:(id)arg2;
 - (void)_processSearchLoop;
 - (void)beginSearchWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)beginSearchWithTimeout:(double)arg1 endpointsCompletion:(CDUnknownBlockType)arg2;
 - (void)cancelSearch;
 - (void)dealloc;
 - (id)initWithOutputDeviceUIDs:(id)arg1 outputDeviceGroupID:(id)arg2 features:(unsigned int)arg3;

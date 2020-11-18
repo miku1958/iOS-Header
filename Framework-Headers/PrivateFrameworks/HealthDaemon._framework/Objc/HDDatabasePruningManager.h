@@ -37,6 +37,7 @@
 - (id)_operationsForPruningActivitySharingDataWithCalendar:(id)arg1 nowDate:(id)arg2;
 - (id)_operationsForPruningWithCalendar:(id)arg1 nowDate:(id)arg2;
 - (void)_performPruneDatabaseActivity:(id)arg1;
+- (void)_queue_pruneDatabaseWithOptions:(unsigned long long)arg1 nowDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_pruneExpiredDeletedObjectsWithNowDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_pruneExpiredSamplesWithOptions:(unsigned long long)arg1 fromNowDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_registerActivity;
@@ -45,8 +46,8 @@
 - (void)dealloc;
 - (id)diagnosticDescription;
 - (id)initWithProfile:(id)arg1;
-- (void)pruneDatabaseWithCompletion:(CDUnknownBlockType)arg1;
-- (void)pruneDatabaseWithOptions:(unsigned long long)arg1 nowDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)pruneDatabaseWithAccessibilityAssertion:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)pruneDatabaseWithOptions:(unsigned long long)arg1 nowDate:(id)arg2 accessibilityAssertion:(id)arg3 completion:(CDUnknownBlockType)arg4;
 
 @end
 

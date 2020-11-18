@@ -8,6 +8,7 @@
 
 @interface ICTable (NSTextTableAdditions)
 - (id)attributedStringWithNSTextTablesForColumns:(id)arg1 rows:(id)arg2;
-- (id)p_attributedStringForCell:(id)arg1 inTable:(id)arg2 atColumn:(unsigned long long)arg3 row:(unsigned long long)arg4;
+- (id)attributedStringWithNSTextTablesForColumns:(id)arg1 rows:(id)arg2 forPrinting:(BOOL)arg3;
+- (id)p_attributedStringForCell:(id)arg1 inTable:(id)arg2 atColumn:(unsigned long long)arg3 row:(unsigned long long)arg4 shouldFilter:(BOOL)arg5;
 @end
 

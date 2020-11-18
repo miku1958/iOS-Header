@@ -8,11 +8,13 @@
 
 @interface DMFControlSessionIdentifier : DMFControlGroupIdentifier
 {
+    unsigned short _port;
     unsigned int _leaderIP;
 }
 
 @property (readonly, nonatomic) DMFControlGroupIdentifier *groupIdentifier;
 @property (readonly, nonatomic) unsigned int leaderIP; // @synthesize leaderIP=_leaderIP;
+@property (readonly, nonatomic) unsigned short port; // @synthesize port=_port;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -21,6 +23,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithOrganizationUUID:(id)arg1 groupID:(unsigned short)arg2;
 - (id)initWithOrganizationUUID:(id)arg1 groupID:(unsigned short)arg2 leaderIP:(unsigned int)arg3;
+- (id)initWithOrganizationUUID:(id)arg1 groupID:(unsigned short)arg2 leaderIP:(unsigned int)arg3 port:(unsigned short)arg4;
 - (id)initWithString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToControlSessionIdentifier:(id)arg1;

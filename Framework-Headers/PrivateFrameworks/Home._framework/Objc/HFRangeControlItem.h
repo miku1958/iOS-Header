@@ -6,7 +6,7 @@
 
 #import <Home/HFControlItem.h>
 
-@class NSNumber, NSSet, NSString;
+@class HFNumberValueConstraints, NSNumber, NSSet, NSString;
 
 @interface HFRangeControlItem : HFControlItem
 {
@@ -16,16 +16,16 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *maximumCharacteristicType; // @synthesize maximumCharacteristicType=_maximumCharacteristicType;
-@property (readonly, copy, nonatomic) NSNumber *maximumCharacteristicTypeStepValue;
 @property (readonly, copy, nonatomic) NSNumber *maximumValue;
+@property (readonly, nonatomic) HFNumberValueConstraints *maximumValueConstraints;
 @property (readonly, copy, nonatomic) NSString *minimumCharacteristicType; // @synthesize minimumCharacteristicType=_minimumCharacteristicType;
-@property (readonly, copy, nonatomic) NSNumber *minimumCharacteristicTypeStepValue;
 @property (readonly, copy, nonatomic) NSNumber *minimumValue;
+@property (readonly, nonatomic) HFNumberValueConstraints *minimumValueConstraints;
 @property (readonly, copy, nonatomic) NSNumber *stepValue;
 @property (readonly, copy, nonatomic) NSSet *targetCharacteristicTypes; // @synthesize targetCharacteristicTypes=_targetCharacteristicTypes;
+@property (readonly, nonatomic) HFNumberValueConstraints *targetValueConstraints;
 
 + (BOOL)_hasWritableCharacteristicsOfType:(id)arg1 valueSource:(id)arg2;
-+ (id)numberValueFormatter;
 + (id)readOnlyCharacteristicTypes;
 + (Class)valueClass;
 - (void).cxx_destruct;
@@ -36,6 +36,9 @@
 - (id)copyWithCharacteristicOptions:(id)arg1 valueSource:(id)arg2;
 - (id)initWithValueSource:(id)arg1 characteristicOptions:(id)arg2 displayResults:(id)arg3;
 - (id)initWithValueSource:(id)arg1 targetCharacteristicTypes:(id)arg2 minimumCharacteristicType:(id)arg3 maximumCharacteristicType:(id)arg4 displayResults:(id)arg5;
+- (id)maximumCharacteristicTypeStepValue;
+- (id)minimumCharacteristicTypeStepValue;
+- (id)numberValueFormatter;
 - (unsigned long long)rangeModeWithCharacteristicValuesKeyedByType:(id)arg1;
 - (id)resultsForBatchReadResponse:(id)arg1;
 - (id)targetCharacteristicTypeWithCharacteristicValuesKeyedByType:(id)arg1;

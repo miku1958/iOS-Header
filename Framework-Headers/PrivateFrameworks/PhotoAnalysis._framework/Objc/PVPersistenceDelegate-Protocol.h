@@ -6,12 +6,13 @@
 
 #import <PhotoAnalysis/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSMutableSet, NSNumber, NSSet, NSString, PVCanceler, PVContext, PVFace, PVFaceCrop, PVFaceprint, PVPerson;
+@class NSArray, NSDictionary, NSMutableArray, NSMutableSet, NSNumber, NSSet, NSString, PHAsset, PVCanceler, PVContext, PVFace, PVFaceCrop, PVFaceprint, PVPerson;
 @protocol PVFaceClusteringProtocol;
 
 @protocol PVPersistenceDelegate <NSObject>
 
-@property (readonly, nonatomic) unsigned int activeFaceAlgorithmVersion;
+@property (nonatomic) unsigned int faceAlgorithmUmbrellaVersion;
+@property (nonatomic) unsigned int sceneAlgorithmUmbrellaVersion;
 
 - (NSMutableArray *)allAlgorithmicFaceGroups:(id *)arg1;
 - (NSArray *)allPersons:(id *)arg1;
@@ -37,7 +38,7 @@
 - (NSArray *)facesForClusteringWithLocalIdentifiers:(NSArray *)arg1 faceprintVersion:(unsigned int)arg2 excludeClustered:(BOOL)arg3;
 - (NSSet *)facesForFaceLocalIdentifiers:(NSArray *)arg1 error:(id *)arg2;
 - (NSArray *)facesForPersonWithLocalIdentifier:(NSString *)arg1 error:(id *)arg2;
-- (NSArray *)facesFromAsset:(id)arg1 error:(id *)arg2;
+- (NSArray *)facesFromAsset:(PHAsset *)arg1;
 - (NSMutableArray *)groupedClusterSequenceNumbersOfFacesInFaceGroupsOfMinimumSize:(unsigned long long)arg1 error:(id *)arg2;
 - (BOOL)hasDirtyFaceCrops;
 - (NSSet *)invalidFaceClusterSequenceNumbersInClusterSequenceNumbers:(NSSet *)arg1 canceler:(PVCanceler *)arg2 error:(id *)arg3;
@@ -50,7 +51,7 @@
 - (void)logPVWarningMessage:(NSString *)arg1;
 - (BOOL)needsPersonBuilding;
 - (BOOL)persistChangesToAlgorithmicFaceGroups:(NSDictionary *)arg1 faceCSNByLocalIdentifierForNewlyClusteredFaces:(NSDictionary *)arg2 faceCSNsOfUnclusteredFaces:(NSMutableSet *)arg3 localIdentifiersOfUnclusteredFaces:(NSMutableSet *)arg4 persistenceCompletionBlock:(void (^)(void))arg5 canceler:(PVCanceler *)arg6 error:(id *)arg7;
-- (BOOL)persistFaces:(NSArray *)arg1 deleteFaces:(NSArray *)arg2 forAsset:(id)arg3 persistedFaces:(id *)arg4 error:(id *)arg5;
+- (BOOL)persistFaces:(NSArray *)arg1 deleteFaces:(NSArray *)arg2 forAsset:(PHAsset *)arg3 persistedFaces:(id *)arg4 error:(id *)arg5;
 - (BOOL)persistGeneratedFaceCrops:(NSArray *)arg1 error:(id *)arg2;
 - (PVPerson *)personWithFaceLocalIdentifier:(NSString *)arg1 error:(id *)arg2;
 - (NSSet *)personsForLocalIdentifiers:(NSSet *)arg1 error:(id *)arg2;

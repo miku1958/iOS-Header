@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 
@@ -23,18 +23,17 @@
 
 @property (readonly, nonatomic, getter=isActivated) BOOL activated;
 @property (readonly, nonatomic) unsigned long long activationCount; // @synthesize activationCount=_activationCount;
-@property (readonly, strong, nonatomic) BKSProcessAssertion *assertion; // @synthesize assertion=_assertion;
+@property (readonly, nonatomic) BKSProcessAssertion *assertion; // @synthesize assertion=_assertion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInvalidated) BOOL invalidated; // @synthesize invalidated=_invalidated;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, strong, nonatomic) FBSProcessExecutionPolicy *policy; // @synthesize policy=_policy;
+@property (readonly, nonatomic) FBSProcessExecutionPolicy *policy; // @synthesize policy=_policy;
 @property (readonly, weak, nonatomic) id<FBSProcess> process; // @synthesize process=_process;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_invalidateAssertion:(id)arg1;
 - (void)activate;
 - (void)deactivate;
 - (void)dealloc;

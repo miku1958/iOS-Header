@@ -11,8 +11,6 @@
 @protocol _CPRankingFeedback <NSObject>
 
 @property (nonatomic) double blendingDuration;
-@property (readonly, nonatomic) BOOL hasBlendingDuration;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *sections;
 @property (nonatomic) unsigned long long timestamp;

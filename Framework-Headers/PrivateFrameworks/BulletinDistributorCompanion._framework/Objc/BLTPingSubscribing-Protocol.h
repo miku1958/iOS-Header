@@ -11,9 +11,9 @@
 @protocol BLTPingSubscribing <NSObject>
 - (void)pingSubscriberDidLoad;
 - (void)pingWithBulletin:(BBBulletin *)arg1;
-- (void)pingWithBulletin:(BBBulletin *)arg1 ack:(void (^)(void))arg2;
+- (void)pingWithBulletin:(BBBulletin *)arg1 ack:(void (^)(unsigned long long))arg2;
 - (void)pingWithRecordID:(NSString *)arg1 forSectionID:(NSString *)arg2;
-- (void)pingWithRecordID:(NSString *)arg1 forSectionID:(NSString *)arg2 ack:(void (^)(void))arg3;
+- (void)pingWithRecordID:(NSString *)arg1 forSectionID:(NSString *)arg2 ack:(void (^)(unsigned long long))arg3;
 - (NSSet *)sectionIDs;
 - (NSSet *)sectionIDsForBulletins;
 - (NSArray *)subscriptionInfos;

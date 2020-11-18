@@ -13,15 +13,15 @@ __attribute__((visibility("hidden")))
 {
     BOOL _cachedCellWraps;
     BOOL _cacheIsValid;
-    struct TSUCellCoord _cachedCellID;
     int _cachedVerticalAlignment;
     int _cachedParagraphAlignment;
     unsigned int _cachedAutoSizeFlags;
+    struct TSUCellCoord _cachedCellID;
     TSTCellStyle *_cachedCellStyle;
     TSWPParagraphStyle *_cachedTextStyle;
+    TSWPPadding *_cachedPadding;
     struct TSUCellRect _cachedMergeRange;
     struct TSUCellRect _cachedMaskSpillRange;
-    TSWPPadding *_cachedPadding;
     struct CGRect _cachedMaskRect;
     struct CGRect _cachedAutosizedFrame;
 }

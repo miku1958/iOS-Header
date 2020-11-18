@@ -11,6 +11,7 @@
 @class AVAsset, NSArray, NSString, PHAsset;
 @protocol PXRunNodeDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoKitVideoAssetNode : PXRunNode <PUVideoAssetNode>
 {
     int _requestID;

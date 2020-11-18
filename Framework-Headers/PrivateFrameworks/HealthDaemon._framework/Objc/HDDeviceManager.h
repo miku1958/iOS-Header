@@ -7,19 +7,18 @@
 #import <objc/NSObject.h>
 
 @class HDDatabaseValueCache, HDProfile, NSNumber;
-@protocol OS_dispatch_queue;
 
 @interface HDDeviceManager : NSObject
 {
     HDProfile *_profile;
-    NSNumber *_deviceForNoneID;
-    NSObject<OS_dispatch_queue> *_queue;
     HDDatabaseValueCache *_devicesByPersistentID;
     HDDatabaseValueCache *_deviceEntitiesByDevice;
+    NSNumber *_noneDeviceID;
 }
 
 @property (strong, nonatomic) HDDatabaseValueCache *deviceEntitiesByDevice; // @synthesize deviceEntitiesByDevice=_deviceEntitiesByDevice;
 @property (strong, nonatomic) HDDatabaseValueCache *devicesByPersistentID; // @synthesize devicesByPersistentID=_devicesByPersistentID;
+@property (copy) NSNumber *noneDeviceID; // @synthesize noneDeviceID=_noneDeviceID;
 
 - (void).cxx_destruct;
 - (id)_noneDevice;

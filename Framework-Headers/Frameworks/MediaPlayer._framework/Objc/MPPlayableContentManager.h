@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVExternalDevice, MPPlayableContentManagerContext, NSArray, NSMutableSet, NSOperationQueue;
 @protocol MPPlayableContentDataSource, MPPlayableContentDelegate, OS_dispatch_queue;

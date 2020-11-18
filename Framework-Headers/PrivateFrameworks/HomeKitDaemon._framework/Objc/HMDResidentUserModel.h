@@ -6,17 +6,20 @@
 
 #import <HomeKitDaemon/HMDUserModel.h>
 
-@class NSNumber, NSString;
+@class HMDDevice, NSNumber, NSString;
 
 @interface HMDResidentUserModel : HMDUserModel
 {
+    NSString *_displayName;
 }
 
 @property (strong, nonatomic) NSNumber *configState; // @dynamic configState;
+@property (strong, nonatomic) HMDDevice *device; // @dynamic device;
 @property (strong, nonatomic) NSString *deviceIdentifier; // @dynamic deviceIdentifier;
-@property (strong, nonatomic) NSString *displayName; // @dynamic displayName;
+@property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 
 + (id)properties;
+- (void).cxx_destruct;
 
 @end
 

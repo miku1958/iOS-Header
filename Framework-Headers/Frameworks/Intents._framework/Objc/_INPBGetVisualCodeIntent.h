@@ -7,34 +7,34 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBGetVisualCodeIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBIntentMetadata;
+@class NSString, _INPBIntentMetadata;
 
-@interface _INPBGetVisualCodeIntent : PBCodable <NSCopying>
+@interface _INPBGetVisualCodeIntent : PBCodable <_INPBGetVisualCodeIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    _INPBIntentMetadata *_intentMetadata;
-    int _visualCodeType;
     struct {
         unsigned int visualCodeType:1;
     } _has;
+    int _visualCodeType;
+    _INPBIntentMetadata *_intentMetadata;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (nonatomic) BOOL hasVisualCodeType;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 @property (nonatomic) int visualCodeType; // @synthesize visualCodeType=_visualCodeType;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsVisualCodeType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)visualCodeTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

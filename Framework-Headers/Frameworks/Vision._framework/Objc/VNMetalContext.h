@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary;
 @protocol MTLDevice;
@@ -21,11 +21,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL useGPU; // @synthesize useGPU=_useGPU;
 @property (readonly) NSDictionary *wisdomParams; // @synthesize wisdomParams=_wisdomParams;
 
-+ (id)mapMetalDeviceNameToWisdomParams;
 - (void).cxx_destruct;
-- (void)initWisdomParams;
 - (id)initWithMetalDevice:(id)arg1;
-- (void)setMetalDevice:(id)arg1;
 
 @end
 

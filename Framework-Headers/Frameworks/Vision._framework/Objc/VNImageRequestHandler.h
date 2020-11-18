@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, VNImageSpecifier, VNObservationsCache, VNRequestPerformer;
 
@@ -25,8 +25,6 @@
 - (void).cxx_destruct;
 - (void)cancelAllRequests;
 - (id)imageBufferAndReturnError:(id *)arg1;
-- (id)initWithBuffer:(struct __CVBuffer *)arg1 options:(id)arg2;
-- (id)initWithBuffer:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
 - (id)initWithCGImage:(struct CGImage *)arg1 options:(id)arg2;
 - (id)initWithCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
 - (id)initWithCIImage:(id)arg1 options:(id)arg2;
@@ -39,6 +37,7 @@
 - (id)initWithURL:(id)arg1 options:(id)arg2;
 - (id)initWithURL:(id)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
 - (BOOL)performRequests:(id)arg1 error:(id *)arg2;
+- (BOOL)performRequests:(id)arg1 gatheredForensics:(id *)arg2 error:(id *)arg3;
 - (BOOL)prepareForPerformingRequests:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForPerformingRequestsOfClass:(id)arg1 error:(id *)arg2;
 

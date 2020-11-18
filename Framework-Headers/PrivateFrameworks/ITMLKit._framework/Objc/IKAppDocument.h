@@ -86,6 +86,7 @@
 - (void)setViewElementStylesDirty;
 - (id)snapshotImpressions;
 - (void)updateForDocument:(id)arg1;
+- (id)viewElementForNodeID:(unsigned long long)arg1;
 
 @end
 

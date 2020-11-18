@@ -8,6 +8,7 @@
 
 @class NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface QLServiceViewController : UIViewController
 {
     BOOL _isAccessoryView;
@@ -24,7 +25,8 @@
 - (void)_registerServiceViewController;
 - (void)configureAsAccessoryViewContainerForPreviewCollection:(id)arg1;
 - (id)init;
-- (void)invalidatePreviewCollection;
+- (void)invalidateService;
+- (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

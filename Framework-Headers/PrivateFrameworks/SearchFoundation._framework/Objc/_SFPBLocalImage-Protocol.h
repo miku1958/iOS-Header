@@ -10,7 +10,6 @@
 
 @protocol _SFPBLocalImage <NSObject>
 
-@property (readonly, nonatomic) BOOL hasLocalImageType;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int localImageType;
 

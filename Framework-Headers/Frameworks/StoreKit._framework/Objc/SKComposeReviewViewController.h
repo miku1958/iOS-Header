@@ -13,14 +13,15 @@
 {
     _UIAsyncInvocation *_cancelRequest;
     NSURL *_compositionURL;
-    id<SKComposeReviewDelegate> _delegate;
     CDUnknownBlockType _prepareBlock;
     SKRemoteComposeReviewViewController *_remoteViewController;
     SKInvocationQueueProxy<SKUIServiceComposeReviewViewController> *_serviceProxy;
+    id<SKComposeReviewDelegate> _delegate;
 }
 
-@property (nonatomic) id<SKComposeReviewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SKComposeReviewDelegate> delegate; // @synthesize delegate=_delegate;
 
+- (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_didFinishWithResult:(BOOL)arg1 error:(id)arg2;
 - (void)_didPrepareWithResult:(BOOL)arg1 error:(id)arg2;

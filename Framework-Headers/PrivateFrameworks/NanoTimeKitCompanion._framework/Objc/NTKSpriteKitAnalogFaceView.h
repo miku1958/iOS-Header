@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) UIView *sceneView;
 @property (nonatomic) BOOL shouldRasterizeBackground;
 
-+ (void)_prewarm;
++ (void)_prewarmForDevice:(id)arg1;
 - (void).cxx_destruct;
 - (void)_applyDataMode;
 - (void)_applyFrozen;
@@ -45,6 +45,7 @@
 - (void)_prepareForSnapshotting;
 - (void)_prepareToZoomWithIconView:(id)arg1 minDiameter:(double)arg2 maxDiameter:(double)arg3;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
+- (struct CGSize)_sceneSize;
 - (void)_setContentViewsOpaque:(BOOL)arg1;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
 - (BOOL)_shouldFreezeSceneForEditMode:(long long)arg1;

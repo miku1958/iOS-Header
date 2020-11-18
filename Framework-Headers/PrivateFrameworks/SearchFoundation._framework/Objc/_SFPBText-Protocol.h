@@ -10,8 +10,6 @@
 
 @protocol _SFPBText <NSObject>
 
-@property (readonly, nonatomic) BOOL hasMaxLines;
-@property (readonly, nonatomic) BOOL hasText;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned int maxLines;
 @property (copy) NSString *text;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UISimpleInteractionProgress.h>
+#import <UIKitCore/UISimpleInteractionProgress.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIPICSimpleInteractionProgress : UISimpleInteractionProgress

@@ -6,16 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-@class AVMicaPackage, MPMediaControlsViewController, UIButton, UIColor, UIViewPropertyAnimator;
-@protocol AVRoutePickerViewDelegate;
+@class AVMicaPackage, AVObservationController, MPMediaControlsViewController, NSObject, UIButton, UIColor, UIViewPropertyAnimator;
+@protocol AVRoutePickerViewDelegate, OS_dispatch_queue;
 
 @interface AVRoutePickerView : UIView
 {
+    NSObject<OS_dispatch_queue> *_getAirPlayStatusQueue;
     UIColor *_activeTintColor;
     UIButton *_routePickerButton;
     UIButton *_customButton;
     struct CGSize _oldSize;
     UIViewPropertyAnimator *_buttonHighlightAnimator;
+    AVObservationController *_observationController;
     BOOL _airPlayActive;
     AVMicaPackage *_routePickerButtonMicaPackage;
     MPMediaControlsViewController *_routePickerViewController;
@@ -30,14 +32,13 @@
 - (void).cxx_destruct;
 - (void)_createOrUpdateRoutePickerButton;
 - (id)_defaultActiveTintColor;
-- (void)_outputContextDevicesDidChange:(id)arg1;
+- (BOOL)_isAirPlayActive;
 - (void)_registerNotifications;
 - (void)_routePickerButtonTapped:(id)arg1;
 - (void)_routePickerButtonTouchDown:(id)arg1;
 - (void)_routePickerButtonTouchDragEnter:(id)arg1;
 - (void)_routePickerButtonTouchUp:(id)arg1;
 - (void)_setRoutePickerButtonAlpha:(double)arg1 animated:(BOOL)arg2;
-- (void)_unregisterNotifications;
 - (void)_updateAirPlayActive;
 - (id)customButton;
 - (void)dealloc;

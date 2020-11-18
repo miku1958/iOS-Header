@@ -17,7 +17,7 @@
 @property (strong, nonatomic) FBSSceneLayer *layer; // @synthesize layer=_layer;
 @property (nonatomic) BOOL orderOut; // @synthesize orderOut=_orderOut;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;

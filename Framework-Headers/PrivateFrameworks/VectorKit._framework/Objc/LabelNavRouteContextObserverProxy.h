@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKRouteContextObserver-Protocol.h>
 
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 @interface LabelNavRouteContextObserverProxy : NSObject <VKRouteContextObserver>
 {
     struct RouteContextChangeObserver *_observer;
-    struct vector<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::allocator<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>> _observedContexts;
+    struct vector<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, geo::StdAllocator<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, lhp::Allocator>> _observedContexts;
 }
 
 @property (readonly, copy) NSString *debugDescription;

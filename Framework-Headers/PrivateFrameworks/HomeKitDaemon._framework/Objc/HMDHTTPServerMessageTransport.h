@@ -9,16 +9,16 @@
 #import <HomeKitDaemon/HMFHTTPServerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMFHTTPServer, NSArray, NSDictionary, NSMutableArray, NSObject, NSString, NSUUID;
-@protocol HMDHTTPServerMessageTransportDelegate, OS_dispatch_queue;
+@class HMFHTTPServer, HMFUnfairLock, NSArray, NSDictionary, NSMutableArray, NSString, NSUUID;
+@protocol HMDHTTPServerMessageTransportDelegate;
 
 @interface HMDHTTPServerMessageTransport : HMFObject <HMFHTTPServerDelegate, HMFTimerDelegate>
 {
+    HMFUnfairLock *_lock;
     NSMutableArray *_clientConnections;
     HMFHTTPServer *_server;
     id<HMDHTTPServerMessageTransportDelegate> _delegate;
     NSUUID *_identifier;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *TXTRecord;
@@ -29,7 +29,6 @@
 @property (readonly, copy, nonatomic) NSArray *devices;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) HMFHTTPServer *server; // @synthesize server=_server;
 @property (readonly) Class superclass;
 

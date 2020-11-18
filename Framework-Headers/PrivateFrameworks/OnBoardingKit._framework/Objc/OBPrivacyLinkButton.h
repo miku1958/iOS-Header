@@ -29,6 +29,8 @@ __attribute__((visibility("hidden")))
 - (id)_textViewFont;
 - (void)_updateButtonColorWithColor:(id)arg1;
 - (id)initWithCaption:(id)arg1 buttonText:(id)arg2 image:(id)arg3 imageSize:(struct CGSize)arg4 useLargeIcon:(BOOL)arg5;
+- (id)labelText;
+- (void)layoutSubviews;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)tintColorDidChange;

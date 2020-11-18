@@ -11,12 +11,14 @@
 @interface _DKCloudUtilities : NSObject
 {
     NSObject<OS_dispatch_queue> *_fetchQueue;
-    BOOL _isCloudSyncAvailable;
+    BOOL _supportsDeviceToDeviceEncryption;
     BOOL _isSingleDevice;
 }
 
 @property (readonly, nonatomic) BOOL isCloudSyncAvailable;
 @property (readonly, nonatomic) BOOL isSingleDevice;
+@property (readonly, nonatomic) BOOL isSiriCloudSyncEnabled;
+@property (readonly, nonatomic) BOOL supportsDeviceToDeviceEncryption;
 
 + (id)containerIdentifier;
 + (BOOL)isCloudKitEnabled;
@@ -32,12 +34,13 @@
 - (void)_fetchCloudKitConfigurationAndStatus;
 - (void)_performUpdateNumberOfSyncedDevicesWithAttempt:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_performUpdateNumberOfSyncedDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_resetServerChangeToken;
 - (void)_updateAccountInfo:(id)arg1 error:(id)arg2;
 - (void)_updateNumberOfSyncedDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)containerKeyValueStore;
 - (void)dealloc;
 - (void)deleteRemoteStateWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)keyValueStore;
 - (void)setCloudSyncAvailable:(BOOL)arg1;
 
 @end

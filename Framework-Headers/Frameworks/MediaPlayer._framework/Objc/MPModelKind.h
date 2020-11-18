@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCoding-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
+
+@class NSString;
 
 @interface MPModelKind : NSObject <NSCoding, NSSecureCoding>
 {
     Class _modelClass;
 }
 
+@property (readonly, nonatomic) NSString *humanDescription;
 @property (readonly, nonatomic) Class modelClass; // @synthesize modelClass=_modelClass;
 
 + (id)kindWithModelClass:(Class)arg1;
@@ -21,6 +24,7 @@
 - (void).cxx_destruct;
 - (id)_init;
 - (void)applyToView:(shared_ptr_5c01893c)arg1 withContext:(id)arg2;
+- (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (shared_ptr_cf7b8a22)predicateWithBaseProperty:(struct ModelPropertyBase *)arg1;

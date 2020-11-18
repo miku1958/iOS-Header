@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL __needsUpdateFullsizeImageMetadata;
     BOOL __needsUpdateFullsizeTiledLayer;
     BOOL __isDisplayingFullQualityImage;
+    BOOL _canUseFullsizeTiledLayer;
     PUAssetViewModel *_assetViewModel;
     id<PUDisplayAsset> _asset;
     PUMediaProvider *_mediaProvider;
@@ -66,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL animatesImageAppearance; // @synthesize animatesImageAppearance=_animatesImageAppearance;
 @property (strong, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property (strong, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
+@property (nonatomic) BOOL canUseFullsizeTiledLayer; // @synthesize canUseFullsizeTiledLayer=_canUseFullsizeTiledLayer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

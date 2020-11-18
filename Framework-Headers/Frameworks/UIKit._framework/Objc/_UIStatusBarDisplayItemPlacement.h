@@ -4,35 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIStatusBarPrioritized-Protocol.h>
+#import <UIKitCore/_UIStatusBarPrioritized-Protocol.h>
 
-@class NSSet, NSString;
+@class NSDictionary, NSHashTable, NSSet, _UIStatusBarIdentifier;
 
 @interface _UIStatusBarDisplayItemPlacement : NSObject <_UIStatusBarPrioritized>
 {
     BOOL _enabled;
     long long _priority;
-    NSString *_identifier;
-    NSSet *_excludedPlacements;
+    _UIStatusBarIdentifier *_identifier;
+    NSHashTable *_excludedPlacements;
     NSSet *_excludedRegionIdentifiers;
+    NSHashTable *_allRequiredPlacements;
+    NSHashTable *_anyRequiredPlacements;
+    NSDictionary *_itemInfo;
 }
 
+@property (readonly, copy, nonatomic) NSHashTable *allRequiredPlacements; // @synthesize allRequiredPlacements=_allRequiredPlacements;
+@property (readonly, copy, nonatomic) NSHashTable *anyRequiredPlacements; // @synthesize anyRequiredPlacements=_anyRequiredPlacements;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
-@property (readonly, nonatomic) NSSet *excludedPlacements; // @synthesize excludedPlacements=_excludedPlacements;
-@property (readonly, nonatomic) NSSet *excludedRegionIdentifiers; // @synthesize excludedRegionIdentifiers=_excludedRegionIdentifiers;
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) long long priority; // @synthesize priority=_priority;
+@property (readonly, copy, nonatomic) NSHashTable *excludedPlacements; // @synthesize excludedPlacements=_excludedPlacements;
+@property (readonly, copy, nonatomic) NSSet *excludedRegionIdentifiers; // @synthesize excludedRegionIdentifiers=_excludedRegionIdentifiers;
+@property (readonly, copy, nonatomic) _UIStatusBarIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSDictionary *itemInfo; // @synthesize itemInfo=_itemInfo;
+@property (nonatomic) long long priority; // @synthesize priority=_priority;
 
-+ (id)_placementWithIdentifier:(id)arg1 priority:(long long)arg2 excludingPlacements:(id)arg3 excludingAllPlacementsInRegions:(id)arg4;
 + (id)placementWithIdentifier:(id)arg1 priority:(long long)arg2;
-+ (id)placementWithIdentifier:(id)arg1 priority:(long long)arg2 excludingAllPlacementsInRegions:(id)arg3;
-+ (id)placementWithIdentifier:(id)arg1 priority:(long long)arg2 excludingPlacements:(id)arg3;
++ (id)spacerPlacementWithSize:(struct CGSize)arg1 priority:(long long)arg2;
 - (void).cxx_destruct;
 - (id)description;
 - (id)disabledPlacement;
+- (id)excludingAllPlacementsInRegions:(id)arg1;
+- (id)excludingPlacements:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)requiringAllPlacements:(id)arg1;
+- (id)requiringAnyPlacements:(id)arg1;
+- (id)withItemInfo:(id)arg1;
 
 @end
 

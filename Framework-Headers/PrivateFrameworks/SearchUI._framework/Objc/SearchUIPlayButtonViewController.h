@@ -9,12 +9,12 @@
 #import <SearchUI/MPUNowPlayingDelegate-Protocol.h>
 #import <SearchUI/NUIContainerStackViewDelegate-Protocol.h>
 
-@class MPMediaItem, NSArray, NSString, SFPunchout, SKUIPlayButton, UILabel;
+@class MPMediaItem, NSArray, NSString, SFPunchout, SearchUIButton, UILabel;
 
 @interface SearchUIPlayButtonViewController : SearchUIAccessoryViewController <NUIContainerStackViewDelegate, MPUNowPlayingDelegate>
 {
     UILabel *_captionLabel;
-    SKUIPlayButton *_playButton;
+    SearchUIButton *_playButton;
     SFPunchout *_punchout;
     NSArray *_adamIDs;
     MPMediaItem *_localMediaItem;
@@ -31,12 +31,13 @@
 @property (readonly) unsigned long long hash;
 @property (strong) MPMediaItem *localMediaItem; // @synthesize localMediaItem=_localMediaItem;
 @property (strong) NSString *localMediaItemIdentifier; // @synthesize localMediaItemIdentifier=_localMediaItemIdentifier;
-@property (strong) SKUIPlayButton *playButton; // @synthesize playButton=_playButton;
+@property (strong) SearchUIButton *playButton; // @synthesize playButton=_playButton;
 @property struct CGSize playButtonSize; // @synthesize playButtonSize=_playButtonSize;
 @property (strong) SFPunchout *punchout; // @synthesize punchout=_punchout;
 @property (readonly) Class superclass;
 
 + (id)font;
++ (void)initialize;
 + (id)localMediaItemForStoreIdentifiers:(id)arg1;
 + (BOOL)supportsResult:(id)arg1;
 - (void).cxx_destruct;

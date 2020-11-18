@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class VCAudioPayloadConfig;
 
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)resetEncoder;
 - (void)resetEncoderWithSampleBuffer:(char *)arg1 numBytes:(int)arg2;
 - (BOOL)setBitrate:(unsigned int)arg1;
+- (void)setCurrentDTXEnable:(BOOL)arg1;
 
 @end
 

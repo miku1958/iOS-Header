@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSString, TIMecabraEnvironmentContextWrapper;
 
@@ -45,6 +45,7 @@
 + (void)loadMobileAssetContentsForInputModes:(id)arg1 inMecabra:(struct __Mecabra *)arg2 onQueue:(id)arg3;
 + (id)loadMobileAssetContentsWhenMobileAssetChangesForMecabra:(struct __Mecabra *)arg1 inputModes:(id)arg2 onQueue:(id)arg3 oldMobileAssetChangeListener:(id)arg4;
 + (void)removeMobileAssetListener:(id)arg1;
+- (void).cxx_destruct;
 - (void)acceptInlineCandidates;
 - (void)addCandidateWithString:(id)arg1 toArray:(id)arg2;
 - (BOOL)addNewCandidatesIfNecessary:(long long)arg1;
@@ -60,7 +61,6 @@
 - (void)compareDocumentAndEnvironmentCandidates;
 - (void)completelyCommitInlineCandidate:(void *)arg1;
 - (void)createNewCandidatesFromDocumentContext;
-- (void)dealloc;
 - (void)declareEndOfSentence;
 - (BOOL)documentContextIsEmpty;
 - (id)initWithMecabraEngine:(struct __Mecabra *)arg1 language:(int)arg2;

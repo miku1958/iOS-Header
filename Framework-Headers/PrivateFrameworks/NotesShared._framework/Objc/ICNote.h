@@ -22,6 +22,7 @@
     BOOL needsToSaveLastViewedTimestamp;
     BOOL preventReleasingTextStorage;
     BOOL shouldAddMediaAsynchronously;
+    BOOL isRecoveringCryptoWrappedKey;
     TTVectorMultiTimestamp *archivedTimestamp;
     NSData *decryptedData;
     TTMergeableStringVersionedDocument *_document;
@@ -56,6 +57,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isModernNote;
 @property (nonatomic) BOOL isPinned; // @dynamic isPinned;
+@property BOOL isRecoveringCryptoWrappedKey; // @synthesize isRecoveringCryptoWrappedKey;
 @property (strong, nonatomic) NSDate *lastNotifiedDate; // @dynamic lastNotifiedDate;
 @property (copy, nonatomic) TTVectorMultiTimestamp *lastNotifiedTimestamp; // @synthesize lastNotifiedTimestamp=_lastNotifiedTimestamp;
 @property (strong, nonatomic) NSData *lastNotifiedTimestampData; // @dynamic lastNotifiedTimestampData;
@@ -236,6 +238,7 @@
 - (struct _NSRange)rangeForTitle:(BOOL *)arg1;
 - (id)recordType;
 - (id)recordZoneName;
+- (void)recoverMissingCryptoWrappedKeyIfNecessaryWithMasterKey:(id)arg1;
 - (void)refreshNoteTextFromDataStore;
 - (void)regenerateTitle:(BOOL)arg1 snippet:(BOOL)arg2;
 - (void)regenerateTitleAndSnippetIfNecessaryForEdit:(unsigned long long)arg1 range:(struct _NSRange)arg2 changeInLength:(long long)arg3;

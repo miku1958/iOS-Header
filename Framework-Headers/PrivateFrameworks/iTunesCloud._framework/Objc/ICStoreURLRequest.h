@@ -37,6 +37,7 @@
 - (id)description;
 - (id)initWithURL:(id)arg1 requestContext:(id)arg2;
 - (id)initWithURLRequest:(id)arg1 requestContext:(id)arg2;
+- (id)initWithURLRequest:(id)arg1 requestContext:(id)arg2 resumeData:(id)arg3;
 
 @end
 

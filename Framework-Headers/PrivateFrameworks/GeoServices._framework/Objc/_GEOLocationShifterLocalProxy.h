@@ -30,6 +30,9 @@ __attribute__((visibility("hidden")))
 - (void)_prunePersistentCache;
 - (void)dealloc;
 - (id)init;
+- (BOOL)isLocationShiftEnabled;
+- (BOOL)isLocationShiftRequiredForCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (unsigned int)locationShiftFunctionVersion;
 - (void)shiftLatLng:(id)arg1 auditToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

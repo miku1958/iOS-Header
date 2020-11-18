@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <AVConference/VCObject.h>
 
 @class IDSDataChannelLinkContext, IDSDatagramChannel, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VCDatagramChannelIDS : NSObject
+@interface VCDatagramChannelIDS : VCObject
 {
     unsigned int _token;
     IDSDatagramChannel *_idsChannel;
     NSString *_destination;
     int _driverSocket;
+    CDUnknownBlockType _eventHandler;
 }
 
 @property (readonly) NSArray *connectedLinks;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSString *destination; // @synthesize destination=_destination;
 @property (readonly) unsigned int token; // @synthesize token=_token;
 
+- (id)datagramChannelWithDestination:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)initWithDestination:(id)arg1 token:(unsigned int)arg2 error:(id *)arg3;
 - (id)initWithSocketDescriptor:(int)arg1 token:(unsigned int)arg2 error:(id *)arg3;
@@ -29,13 +31,15 @@ __attribute__((visibility("hidden")))
 - (void)optInStreamIDs:(id)arg1;
 - (void)optOutStreamIDs:(id)arg1;
 - (void)readyToRead;
+- (void)requestSessionInfoWithOptions:(id)arg1;
 - (void)setChannelPreferences:(id)arg1;
 - (void)setEventHandler:(CDUnknownBlockType)arg1;
 - (void)setReadHandler:(CDUnknownBlockType)arg1;
 - (int)setupDriverSocket;
 - (id)sharedIDSService;
 - (int)start;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 flags:(CDStruct_54fea20c)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_2f700ce5 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_54fea20c *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
 
 @end
 

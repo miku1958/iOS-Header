@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "NSLayoutManager.h"
+#import <UIFoundation/NSLayoutManager.h>
 
 @class UIFont;
 
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)_completeBulletRenderingForTextContainer:(id)arg1;
 - (long long)_generateBulletGlyphs:(const unsigned short *)arg1 properties:(const long long *)arg2 characterIndexes:(const unsigned long long *)arg3 font:(id)arg4 forGlyphRange:(struct _NSRange)arg5 unobscuredRange:(struct _NSRange)arg6 obscuredLength:(long long)arg7 obscureExistingText:(BOOL)arg8;
 - (void)resetFontForExtraBulletRendering;
-- (void)showCGGlyphs:(const unsigned short *)arg1 positions:(const struct CGPoint *)arg2 count:(unsigned long long)arg3 font:(id)arg4 matrix:(struct CGAffineTransform)arg5 attributes:(id)arg6 inContext:(struct CGContext *)arg7;
+- (void)showCGGlyphs:(const unsigned short *)arg1 positions:(const struct CGPoint *)arg2 count:(unsigned long long)arg3 font:(id)arg4 textMatrix:(struct CGAffineTransform)arg5 attributes:(id)arg6 inContext:(struct CGContext *)arg7;
 - (void)useFontForExtraBulletRendering:(id)arg1;
 
 @end

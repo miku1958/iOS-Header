@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSNumber, NSString, NSURL;
 
-@interface DMFInstallManagedBookRequest : CATTaskRequest
+@interface DMFInstallManagedBookRequest : DMFTaskRequest
 {
     NSString *_originator;
     NSNumber *_iTunesStoreID;
@@ -29,6 +29,9 @@
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *version; // @synthesize version=_version;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;

@@ -8,7 +8,7 @@
 
 #import <HMFoundation/NSCopying-Protocol.h>
 
-@class HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
+@class HMFActivity, HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
 @interface HMFMessageInternal : HMFObject <NSCopying>
 {
@@ -17,12 +17,14 @@
     long long _qualityOfService;
     HMFMessageDestination *_destination;
     HMFMessageTransport *_transport;
+    HMFActivity *_activity;
     NSDictionary *_userInfo;
     NSDictionary *_headers;
     NSDictionary *_messagePayload;
     CDUnknownBlockType _responseHandler;
 }
 
+@property (strong, nonatomic) HMFActivity *activity; // @synthesize activity=_activity;
 @property (strong, nonatomic) HMFMessageDestination *destination; // @synthesize destination=_destination;
 @property (copy, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;

@@ -9,7 +9,7 @@
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSSet, NSString, NSURL, TUSandboxExtendedURL;
+@class NSArray, NSData, NSOrderedSet, NSSet, NSString, NSURL, TUSandboxExtendedURL;
 
 @interface TUCallProvider : NSObject <NSSecureCoding, NSCopying>
 {
@@ -27,6 +27,7 @@
     NSString *_bundleIdentifier;
     NSArray *_emergencyLabeledHandles;
     NSArray *_handoffIdentifiers;
+    NSOrderedSet *_prioritizedSenderIdentities;
     TUSandboxExtendedURL *_sandboxExtendedRingtoneSoundURL;
     NSURL *_originalRingtoneSoundURL;
     NSData *_iconTemplateImageData;
@@ -46,6 +47,7 @@
 @property (nonatomic) unsigned long long maximumCallGroups; // @synthesize maximumCallGroups=_maximumCallGroups;
 @property (nonatomic) unsigned long long maximumCallsPerCallGroup; // @synthesize maximumCallsPerCallGroup=_maximumCallsPerCallGroup;
 @property (strong, nonatomic) NSURL *originalRingtoneSoundURL; // @synthesize originalRingtoneSoundURL=_originalRingtoneSoundURL;
+@property (copy, nonatomic) NSOrderedSet *prioritizedSenderIdentities; // @synthesize prioritizedSenderIdentities=_prioritizedSenderIdentities;
 @property (strong, nonatomic) NSURL *ringtoneSoundURL;
 @property (strong, nonatomic) TUSandboxExtendedURL *sandboxExtendedRingtoneSoundURL; // @synthesize sandboxExtendedRingtoneSoundURL=_sandboxExtendedRingtoneSoundURL;
 @property (copy, nonatomic) NSSet *supportedHandleTypes; // @synthesize supportedHandleTypes=_supportedHandleTypes;
@@ -59,7 +61,6 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)bundle;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)displayAppBundleIdentifier;
@@ -73,7 +74,12 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCallProvider:(id)arg1;
 - (BOOL)isSystemProvider;
+- (BOOL)isTinCanProvider;
 - (BOOL)prefersShowingInCallUI;
+- (id)senderIdentities;
+- (id)senderIdentityForAccountUUID:(id)arg1;
+- (id)senderIdentityForHandle:(id)arg1;
+- (void)setSenderIdentities:(id)arg1;
 - (BOOL)supportsHandleType:(long long)arg1;
 - (BOOL)supportsShowingInCallUI;
 

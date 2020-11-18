@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardEmojiCategoryBar.h>
+#import <UIKitCore/UIKeyboardEmojiCategoryBar.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCategoryBar_iPad : UIKeyboardEmojiCategoryBar

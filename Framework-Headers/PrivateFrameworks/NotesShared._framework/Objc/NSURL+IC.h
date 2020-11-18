@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) BOOL isiTunesURL;
 @property (readonly, nonatomic) NSURL *uniquedURL;
 
++ (id)ic_urlFromWeblocFileAtURL:(id)arg1;
 - (id)dedupedURLWithProhibitedNames:(id)arg1;
 @end
 

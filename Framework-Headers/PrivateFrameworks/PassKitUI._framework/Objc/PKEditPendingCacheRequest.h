@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PKPass;
+@class NSArray, NSString, PKPass;
 
 @interface PKEditPendingCacheRequest : NSObject
 {
@@ -14,18 +14,22 @@
     BOOL _stacked;
     NSString *_cacheKey;
     PKPass *_pass;
-    CDUnknownBlockType _completionBlock;
+    long long _priority;
+    NSArray *_completionHandlers;
     struct CGSize _imageSize;
 }
 
 @property (strong, nonatomic) NSString *cacheKey; // @synthesize cacheKey=_cacheKey;
-@property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+@property (strong, nonatomic) NSArray *completionHandlers; // @synthesize completionHandlers=_completionHandlers;
 @property (nonatomic) BOOL fullPass; // @synthesize fullPass=_fullPass;
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property (strong, nonatomic) PKPass *pass; // @synthesize pass=_pass;
+@property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (nonatomic) BOOL stacked; // @synthesize stacked=_stacked;
 
 - (void).cxx_destruct;
+- (unsigned long long)hash;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

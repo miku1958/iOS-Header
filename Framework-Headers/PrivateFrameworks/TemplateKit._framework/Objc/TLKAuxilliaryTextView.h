@@ -8,7 +8,7 @@
 
 #import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
 
-@class NSString, TLKFormattedText, TLKStackView, TLKVibrantLabel;
+@class NSString, TLKFormattedText, TLKStackView, TLKTextAreaView, TLKVibrantLabel;
 
 @interface TLKAuxilliaryTextView : TLKView <NUIContainerStackViewDelegate>
 {
@@ -19,19 +19,21 @@
     TLKVibrantLabel *_middleLabel;
     TLKVibrantLabel *_bottomLabel;
     TLKStackView *_stackView;
+    TLKTextAreaView *_textAreaViewForAlignment;
 }
 
 @property (strong) TLKVibrantLabel *bottomLabel; // @synthesize bottomLabel=_bottomLabel;
-@property (strong) TLKFormattedText *bottomText; // @synthesize bottomText=_bottomText;
+@property (strong, nonatomic) TLKFormattedText *bottomText; // @synthesize bottomText=_bottomText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong) TLKVibrantLabel *middleLabel; // @synthesize middleLabel=_middleLabel;
-@property (strong) TLKFormattedText *middleText; // @synthesize middleText=_middleText;
+@property (strong, nonatomic) TLKFormattedText *middleText; // @synthesize middleText=_middleText;
 @property (strong) TLKStackView *stackView; // @synthesize stackView=_stackView;
 @property (readonly) Class superclass;
+@property (strong) TLKTextAreaView *textAreaViewForAlignment; // @synthesize textAreaViewForAlignment=_textAreaViewForAlignment;
 @property (strong) TLKVibrantLabel *topLabel; // @synthesize topLabel=_topLabel;
-@property (strong) TLKFormattedText *topText; // @synthesize topText=_topText;
+@property (strong, nonatomic) TLKFormattedText *topText; // @synthesize topText=_topText;
 
 + (BOOL)formattedTextHasTextContent:(id)arg1;
 + (id)largeMiddleTextFont;
@@ -39,11 +41,12 @@
 - (id)bottomLabelFont;
 - (id)bottomLabelString;
 - (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
-- (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
+- (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
+- (void)generateAndSizeTextAreaViewIfNeeded;
 - (id)init;
+- (void)matchBaselineOfLabel:(id)arg1 toView:(id)arg2;
 - (id)middleLabelFont;
 - (id)middleLabelString;
-- (id)observableProperties;
 - (void)observedPropertiesChanged;
 - (void)styleDidChange:(unsigned long long)arg1;
 - (id)topLabelString;

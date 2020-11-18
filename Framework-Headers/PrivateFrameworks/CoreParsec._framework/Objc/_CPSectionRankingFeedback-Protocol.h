@@ -10,10 +10,6 @@
 
 @protocol _CPSectionRankingFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasLocalSectionPosition;
-@property (readonly, nonatomic) BOOL hasPersonalizationScore;
-@property (readonly, nonatomic) BOOL hasSection;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned int localSectionPosition;
 @property (nonatomic) double personalizationScore;

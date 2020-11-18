@@ -12,7 +12,7 @@
 @protocol INIntentExport <NSObject, JSExport>
 
 @property (copy, nonatomic) PBCodable *backingStore;
-@property (strong, nonatomic) NSString *identifier;
+@property (copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSString *intentId;
 @property (readonly, nonatomic) NSString *launchId;
 @property (readonly, nonatomic) NSString *typeName;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSAction;
 @protocol OS_dispatch_queue;
@@ -24,8 +24,8 @@
 + (id)sentinelWithQueue:(id)arg1 signalCount:(unsigned long long)arg2 signalHandler:(CDUnknownBlockType)arg3;
 + (id)sentinelWithQueue:(id)arg1 signalHandler:(CDUnknownBlockType)arg2;
 + (id)sentinelWithSignalCount:(unsigned long long)arg1 exceptionReason:(id)arg2;
+- (void).cxx_destruct;
 - (void)_performSynchronously:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)initWithCount:(unsigned long long)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)signal;
 - (BOOL)signalWithContext:(id)arg1;

@@ -18,6 +18,8 @@
     unsigned long long _state;
     id<PXActionPerformerDelegate> _delegate;
     UIViewController *_presentedViewController;
+    CDUnknownBlockType _viewControllerPresenter;
+    CDUnknownBlockType _viewControllerDismisser;
 }
 
 @property (readonly, nonatomic) NSString *actionType; // @synthesize actionType=_actionType;
@@ -26,6 +28,8 @@
 @property (readonly, nonatomic) UIViewController *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) BOOL success; // @synthesize success=_success;
+@property (copy, nonatomic) CDUnknownBlockType viewControllerDismisser; // @synthesize viewControllerDismisser=_viewControllerDismisser;
+@property (copy, nonatomic) CDUnknownBlockType viewControllerPresenter; // @synthesize viewControllerPresenter=_viewControllerPresenter;
 
 + (BOOL)canPerformBlacklistingOnAssetCollection:(id)arg1;
 - (void).cxx_destruct;

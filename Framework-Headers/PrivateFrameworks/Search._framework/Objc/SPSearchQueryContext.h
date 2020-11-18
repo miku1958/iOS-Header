@@ -29,9 +29,11 @@
     unsigned long long _whyClear;
     unsigned long long _queryIdent;
     NSArray *_searchEntities;
+    double _currentTime;
 }
 
 @property (nonatomic) BOOL allowInternet; // @synthesize allowInternet=_allowInternet;
+@property (nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property (strong, nonatomic) NSArray *disabledApps; // @synthesize disabledApps=_disabledApps;
 @property (strong, nonatomic) NSArray *disabledBundles; // @synthesize disabledBundles=_disabledBundles;
 @property (strong, nonatomic) NSArray *disabledDomains; // @synthesize disabledDomains=_disabledDomains;
@@ -55,6 +57,7 @@
 
 + (id)queryContextWithSearchString:(id)arg1;
 - (void).cxx_destruct;
+- (id)init;
 - (id)initWithSearchString:(id)arg1;
 
 @end

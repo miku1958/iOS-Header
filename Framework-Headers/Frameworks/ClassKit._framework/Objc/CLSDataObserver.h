@@ -34,7 +34,7 @@
 @property (readonly, nonatomic) Class objectType; // @synthesize objectType=_objectType;
 @property (readonly, nonatomic) NSString *observerID; // @synthesize observerID=_observerID;
 @property (readonly, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
-@property (strong, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
+@property (copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property (readonly) Class superclass;
 
 + (id)predicateForObjectWithObjectID:(id)arg1;

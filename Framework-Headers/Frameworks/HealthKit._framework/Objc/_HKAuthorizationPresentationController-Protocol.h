@@ -6,11 +6,10 @@
 
 #import <HealthKit/NSObject-Protocol.h>
 
-@class HKAuthorizationRequestRecord, HKObjectAuthorizationPromptSession;
+@class HKAuthorizationRequestRecord;
 
 @protocol _HKAuthorizationPresentationController <NSObject>
 - (void)cancelPresentation;
 - (void)presentWithRequestRecord:(HKAuthorizationRequestRecord *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)presentWithSession:(HKObjectAuthorizationPromptSession *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 @end
 

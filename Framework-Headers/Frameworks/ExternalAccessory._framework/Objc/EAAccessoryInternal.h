@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSData, NSDictionary, NSLock, NSMutableArray, NSString;
 @protocol EAAccessoryDelegate;
@@ -44,6 +44,7 @@
     BOOL _createdByCoreAccessories;
     unsigned int _eqIndex;
     NSMutableArray *_enqueuedNMEASentences;
+    unsigned long long _destinationSharingOptions;
     NSString *_coreAccessoryPrimaryUUID;
     NSString *_bonjourName;
     CDUnknownBlockType _pairingCompletionBlock;
@@ -63,6 +64,7 @@
 @property (copy, nonatomic) NSString *coreAccessoryPrimaryUUID; // @synthesize coreAccessoryPrimaryUUID=_coreAccessoryPrimaryUUID;
 @property BOOL createdByCoreAccessories; // @synthesize createdByCoreAccessories=_createdByCoreAccessories;
 @property (nonatomic) id<EAAccessoryDelegate> delegate; // @synthesize delegate=_delegate;
+@property unsigned long long destinationSharingOptions; // @synthesize destinationSharingOptions=_destinationSharingOptions;
 @property (copy, nonatomic) NSString *dockType; // @synthesize dockType=_dockType;
 @property (strong, nonatomic) NSMutableArray *enqueuedNMEASentences; // @synthesize enqueuedNMEASentences=_enqueuedNMEASentences;
 @property (nonatomic) unsigned int eqIndex; // @synthesize eqIndex=_eqIndex;

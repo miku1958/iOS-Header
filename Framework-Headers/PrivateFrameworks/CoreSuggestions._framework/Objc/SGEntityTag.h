@@ -33,6 +33,7 @@
 + (id)defaultDuration;
 + (id)domain:(id)arg1;
 + (id)eventHash:(id)arg1;
++ (id)eventMetadata:(id)arg1;
 + (id)extraKey:(id)arg1;
 + (id)extractedBus;
 + (id)extractedCarRental;
@@ -85,6 +86,8 @@
 + (id)tagForPrefix:(id)arg1 value:(id)arg2;
 + (id)templateException;
 + (id)testTag:(int)arg1;
++ (id)textCalendarAttachment:(id)arg1;
++ (id)timezoneIdentifier:(id)arg1;
 + (id)titleGeneratedFromSubject;
 + (id)titleGeneratedFromTemplate;
 + (void)tombstonePrefix:(id)arg1;
@@ -93,6 +96,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)eventMetadata;
 - (unsigned long long)hash;
 - (id)initWithName:(id)arg1 stored:(BOOL)arg2 indexed:(BOOL)arg3 tracked:(BOOL)arg4;
 - (BOOL)isCalendarAppUsageLevel;
@@ -102,6 +106,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEntityTag:(id)arg1;
 - (BOOL)isEventHash;
+- (BOOL)isEventMetadata;
 - (BOOL)isExtraKey;
 - (BOOL)isExtractedEventCategory;
 - (BOOL)isInteractionContactIdentifier;

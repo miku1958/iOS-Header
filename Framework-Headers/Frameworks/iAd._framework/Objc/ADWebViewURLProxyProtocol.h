@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CFNetwork/NSURLProtocol.h>
+#import <Foundation/NSURLProtocol.h>
 
 #import <iAd/NSURLSessionDataDelegate-Protocol.h>
 #import <iAd/NSURLSessionTaskDelegate-Protocol.h>

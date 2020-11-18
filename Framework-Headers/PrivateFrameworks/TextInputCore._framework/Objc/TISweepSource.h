@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -18,10 +18,10 @@
 @property (nonatomic) int stepCount;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)addValue:(id)arg1 withMin:(float)arg2 withMax:(float)arg3;
 - (void)addValue:(id)arg1 withValue:(float)arg2;
 - (void)advanceSweep;
-- (void)dealloc;
 - (BOOL)finished;
 - (id)sweepStateHeader;
 - (id)sweepStateValues;

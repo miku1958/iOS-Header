@@ -10,7 +10,7 @@
 @protocol UIElementProtocol;
 
 @protocol UIElementProtocol <NSObject>
-+ (void)applyElementAttributeCacheScheme:(int)arg1;
++ (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1 forApplication:(struct __AXUIElement *)arg2 contextId:(unsigned int)arg3;
 - (NSArray *)arrayWithAXAttribute:(long long)arg1;

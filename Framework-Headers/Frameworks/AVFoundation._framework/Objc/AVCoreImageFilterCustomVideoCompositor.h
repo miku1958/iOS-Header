@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVVideoCompositing-Protocol.h>
 
 @class CIContext, NSDictionary, NSString;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVCoreImageFilterCustomVideoCompositor : NSObject <AVVideoCompositing>
 {
     NSObject<OS_dispatch_group> *_filteringRequestsInFlight;

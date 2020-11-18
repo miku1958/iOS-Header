@@ -17,8 +17,8 @@ __attribute__((visibility("hidden")))
 - (id)colorAttachments;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (unsigned long long)defaultColorSampleCount;
 - (unsigned long long)defaultRasterSampleCount;
-- (unsigned long long)defaultSampleCount;
 - (id)depthAttachment;
 - (id)description;
 - (BOOL)fineGrainedBackgroundVisibilityEnabled;
@@ -30,15 +30,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDitherEnabled;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)openGLModeEnabled;
+- (unsigned long long)renderTargetArrayLength;
 - (unsigned long long)renderTargetHeight;
 - (unsigned long long)renderTargetWidth;
+- (void)setDefaultColorSampleCount:(unsigned long long)arg1;
 - (void)setDefaultRasterSampleCount:(unsigned long long)arg1;
-- (void)setDefaultSampleCount:(unsigned long long)arg1;
 - (void)setDepthAttachment:(id)arg1;
 - (void)setDitherEnabled:(BOOL)arg1;
 - (void)setFineGrainedBackgroundVisibilityEnabled:(BOOL)arg1;
 - (void)setImageblockSampleLength:(unsigned long long)arg1;
 - (void)setOpenGLModeEnabled:(BOOL)arg1;
+- (void)setRenderTargetArrayLength:(unsigned long long)arg1;
 - (void)setRenderTargetHeight:(unsigned long long)arg1;
 - (void)setRenderTargetWidth:(unsigned long long)arg1;
 - (void)setSamplePositions:(const CDStruct_6e3f967a *)arg1 count:(unsigned long long)arg2;

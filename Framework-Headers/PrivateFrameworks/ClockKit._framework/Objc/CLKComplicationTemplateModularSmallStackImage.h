@@ -20,6 +20,7 @@
 @property (copy, nonatomic) CLKImageProvider *line1ImageProvider; // @synthesize line1ImageProvider=_line1ImageProvider;
 @property (copy, nonatomic) CLKTextProvider *line2TextProvider; // @synthesize line2TextProvider=_line2TextProvider;
 
++ (struct CGSize)imageSize;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentationWritingResourcesToBundlePath:(id)arg1;
 - (void)_enumerateImageProviderKeysWithBlock:(CDUnknownBlockType)arg1;

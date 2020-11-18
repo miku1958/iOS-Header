@@ -15,6 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityPlayPauseButtonString;
+- (id)_accessibilitySeekButtonStringInDirection:(BOOL)arg1;
 - (id)_axTrackList;
 - (BOOL)accessibilityPerformEscape;
 - (void)viewDidLoad;

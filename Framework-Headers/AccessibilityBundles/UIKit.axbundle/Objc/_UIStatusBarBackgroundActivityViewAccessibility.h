@@ -12,6 +12,7 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsScannerElement;
 - (id)accessibilityHint;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;

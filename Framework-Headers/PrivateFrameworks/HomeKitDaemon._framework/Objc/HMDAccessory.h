@@ -85,6 +85,8 @@
 @property (strong, nonatomic) HMDRoom *room; // @synthesize room=_room;
 @property (readonly, copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsTargetControl;
+@property (readonly, nonatomic) BOOL supportsTargetController;
 @property (readonly) BOOL supportsUserManagement;
 @property (strong, nonatomic) HMDAccessoryTransaction *transaction; // @synthesize transaction=_transaction;
 @property (nonatomic) BOOL unblockPending; // @synthesize unblockPending=_unblockPending;
@@ -100,6 +102,7 @@
 - (void)_handleGetAccessoryAdvertisingParams:(id)arg1;
 - (void)_handleIdentify:(id)arg1;
 - (void)_handleListPairings:(id)arg1;
+- (void)_handlePairingIdentityRequest:(id)arg1;
 - (void)_handleRename:(id)arg1;
 - (void)_handleSetAppData:(id)arg1;
 - (void)_handleUpdateRoom:(id)arg1;
@@ -116,6 +119,7 @@
 - (void)appDataUpdated:(id)arg1 message:(id)arg2;
 - (id)assistantObject;
 - (id)assistantUniqueIdentifier;
+- (void)autoConfigureTargetControllers;
 - (id)backingStoreObjects:(long long)arg1;
 - (void)blockWithError:(id)arg1;
 - (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
@@ -137,13 +141,13 @@
 - (id)logIdentifier;
 - (id)messageDestination;
 - (void)notifyAccessoryNameChanged:(BOOL)arg1;
-- (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
 - (BOOL)providesHashRouteID;
 - (void)registerForMessagesWithNewUUID:(id)arg1;
 - (void)remoteAccessEnabled:(BOOL)arg1;
 - (void)removeAccessoryProfile:(id)arg1;
 - (void)removeAdvertisement:(id)arg1;
+- (id)runtimeState;
 - (void)setAccessoryProfiles:(id)arg1;
 - (void)setFirmwareVersion:(id)arg1;
 - (void)setManufacturer:(id)arg1;

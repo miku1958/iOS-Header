@@ -83,13 +83,13 @@
 - (id)_allCalls;
 - (unsigned long long)_callGroupCountForCall:(id)arg1 withCall:(id)arg2;
 - (BOOL)_canDialWithRequest:(id)arg1 shouldUseRelay:(BOOL *)arg2;
-- (id)_dial:(id)arg1 callID:(int)arg2 provider:(id)arg3 video:(BOOL)arg4 sourceIdentifier:(id)arg5 dialType:(long long)arg6;
-- (id)_dial:(id)arg1 callID:(int)arg2 service:(int)arg3 sourceIdentifier:(id)arg4 dialType:(long long)arg5;
 - (id)_dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_existingCallsAllowDialRequest:(id)arg1 allowVoiceWithData:(BOOL)arg2;
 - (BOOL)_isCallingAvailableOnSecondaryDeviceWithRelayCallingAvailability:(int)arg1 isProviderAvailable:(BOOL)arg2 isRelayAllowed:(BOOL)arg3 isEmergency:(BOOL)arg4 supportsBasebandCalling:(BOOL)arg5 shouldUseRelay:(BOOL *)arg6;
+- (BOOL)_isEmergencyDialRequest:(id)arg1;
 - (void)_preflightDisconnectForCalls:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldPreferRelayOverDirectSecondaryCallingForRelayingCallingAvailability:(int)arg1 isRelayCallingSupported:(BOOL)arg2 isEmergencyCallbackPossible:(BOOL)arg3;
+- (id)activeConversationForCall:(id)arg1;
 - (BOOL)allCallsAreOfService:(int)arg1;
 - (BOOL)allCallsPassTest:(CDUnknownBlockType)arg1;
 - (void)answerCall:(id)arg1;
@@ -114,10 +114,6 @@
 - (id)conferenceCall;
 - (unsigned long long)countOfCallsPassingTest:(CDUnknownBlockType)arg1;
 - (void)dealloc;
-- (id)dial:(id)arg1 callID:(int)arg2 service:(int)arg3;
-- (id)dial:(id)arg1 service:(int)arg2;
-- (id)dialEmergency:(id)arg1;
-- (id)dialEmergency:(id)arg1 sourceIdentifier:(id)arg2;
 - (id)dialWithRequest:(id)arg1;
 - (void)dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)disconnectAllCalls;
@@ -149,8 +145,10 @@
 - (BOOL)isSendToVoicemailAllowed;
 - (BOOL)isSwappable;
 - (BOOL)isTakingCallsPrivateAllowed;
+- (id)joinConversationWithConversationRequest:(id)arg1;
 - (void)joinConversationWithRequest:(id)arg1;
 - (void)launchAppForDialRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)launchAppForJoinRequest:(id)arg1;
 - (void)pullCallFromClientUsingHandoffActivityUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pullHostedCallsFromPairedHostDevice;
 - (void)pullRelayingCallsFromClient;

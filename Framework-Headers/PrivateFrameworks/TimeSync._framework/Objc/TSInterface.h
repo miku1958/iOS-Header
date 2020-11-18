@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TimeSync/TSClockClient-Protocol.h>
 
@@ -20,6 +20,10 @@
     void *_masterChangeRefcon;
     CDUnknownFunctionPointerType _gptpGrandmasterCallback;
     void *_gptpGrandmasterRefcon;
+    CDUnknownFunctionPointerType _gptpGrandmasterPortCallback;
+    void *_gptpGrandmasterPortRefcon;
+    CDUnknownFunctionPointerType _gptpLocalPortCallback;
+    void *_gptpLocalPortRefcon;
     TSClock *_clock;
 }
 
@@ -31,12 +35,16 @@
 
 - (void)dealloc;
 - (void)didChangeClockMasterForClock:(id)arg1;
+- (void)didChangeLocalPortWithGrandmasterID:(unsigned long long)arg1 localPort:(unsigned short)arg2 forClock:(id)arg3;
 - (void)didChangeLockStateTo:(int)arg1 forClock:(id)arg2;
 - (void)didEndClockGrandmasterChangeForClock:(id)arg1;
+- (void)didEndClockGrandmasterChangeWithGrandmasterID:(unsigned long long)arg1 localPort:(unsigned short)arg2 forClock:(id)arg3;
 - (id)initWithClockIdentifier:(unsigned long long)arg1;
 - (void)setLockStateNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (void)setMasterChangeNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
+- (void)setgPTPGrandmasterIDAndPortNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 - (void)setgPTPGrandmasterNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
+- (void)setgPTPLocalPortNotificationCallback:(CDUnknownFunctionPointerType)arg1 refcon:(void *)arg2;
 
 @end
 

@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSString, PBUnknownFields;
 
+__attribute__((visibility("hidden")))
 @interface GEOPDAttribution : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSString *vendorId; // @synthesize vendorId=_vendorId;
 
++ (id)attributionForAnnotatedItemList:(id)arg1 placeData:(id)arg2;
 + (id)attributionForPlaceDataEncyclopedia:(id)arg1;
 + (id)attributionForPlaceDataEntity:(id)arg1;
 + (id)attributionForPlaceDataPhotos:(id)arg1;

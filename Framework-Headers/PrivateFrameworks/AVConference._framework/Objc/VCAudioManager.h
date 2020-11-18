@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCAudioIOControllerControl-Protocol.h>
 #import <AVConference/VCAudioIOSink-Protocol.h>
 #import <AVConference/VCAudioIOSource-Protocol.h>
+#import <AVConference/VCAudioSessionDelegate-Protocol.h>
 
 @class AVAudioDevice, NSDictionary, NSMutableArray, NSMutableSet, NSString, VCAudioSessionMediaProperties, VCAudioUnitProperties;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioManager : NSObject <VCAudioIOControllerControl, VCAudioIOSink, VCAudioIOSource>
+@interface VCAudioManager : NSObject <VCAudioIOControllerControl, VCAudioIOSink, VCAudioIOSource, VCAudioSessionDelegate>
 {
     struct tagHANDLE *_hAUIO;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
@@ -40,6 +41,8 @@ __attribute__((visibility("hidden")))
     BOOL _isOutputMeteringEnabled;
     BOOL _isSpeakerPhoneEnabled;
     BOOL _isSuspended;
+    struct _VCAudioIOControllerIOState _sinkData;
+    struct _VCAudioIOControllerIOState _sourceData;
 }
 
 @property (strong, nonatomic) VCAudioSessionMediaProperties *currentAudioSessionMediaProperties; // @synthesize currentAudioSessionMediaProperties=_currentAudioSessionMediaProperties;
@@ -54,7 +57,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isMicrophoneMuted) BOOL microphoneMuted; // @synthesize microphoneMuted=_isMicrophoneMuted;
 @property (nonatomic, getter=isSpeakerPhoneEnabled) BOOL speakerPhoneEnabled; // @synthesize speakerPhoneEnabled=_isSpeakerPhoneEnabled;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSDictionary *vpOperatingModeToAudioSessionMediaFormatMapping;
 
 + (id)sharedInstance;
 - (void)_cleanupDeadClients;
@@ -63,7 +65,12 @@ __attribute__((visibility("hidden")))
 - (BOOL)addClient:(id)arg1;
 - (void)addSinkClient:(id)arg1;
 - (void)addSourceClient:(id)arg1;
+- (void)computeHardwarePreferences;
 - (void)dealloc;
+- (void)didSessionEnd;
+- (void)didSessionPause;
+- (void)didSessionResume;
+- (void)didSessionStop;
 - (void)flushEventQueue:(struct AudioEventQueue_t *)arg1;
 - (void)getPreferredFormat:(struct AudioStreamBasicDescription *)arg1 blockSize:(double *)arg2 vpOperatingMode:(unsigned int *)arg3 forOperatingMode:(int)arg4 deviceRole:(int)arg5 suggestedFormat:(struct AudioStreamBasicDescription *)arg6;
 - (id)init;
@@ -79,6 +86,7 @@ __attribute__((visibility("hidden")))
 - (void)removeSourceClient:(id)arg1;
 - (void)resetAUIOWithProperties:(id)arg1;
 - (void)resetAudioSessionWithProperties:(id)arg1;
+- (void)resetAudioTimestamps;
 - (void)setInputMetering;
 - (void)setOutputMetering;
 - (void)setupIODevicesForAUIO:(struct tagHANDLE *)arg1;

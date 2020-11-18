@@ -8,7 +8,7 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, PKImage, PKPassPersonalization;
+@class NSArray, NSDictionary, NSString, PKImage, PKPassPersonalization;
 
 @interface PKPassContent : PKContent <NSSecureCoding>
 {
@@ -18,13 +18,18 @@
     NSArray *_frontFieldBuckets;
     NSArray *_backFieldBuckets;
     PKPassPersonalization *_personalization;
+    NSDictionary *_semantics;
+    NSDictionary *_allSemantics;
 }
 
+@property (copy, nonatomic) NSDictionary *allSemantics; // @synthesize allSemantics=_allSemantics;
 @property (copy, nonatomic) NSArray *backFieldBuckets; // @synthesize backFieldBuckets=_backFieldBuckets;
 @property (strong, nonatomic) PKImage *footerImage; // @synthesize footerImage=_footerImage;
 @property (copy, nonatomic) NSArray *frontFieldBuckets; // @synthesize frontFieldBuckets=_frontFieldBuckets;
 @property (copy, nonatomic) NSString *logoText; // @synthesize logoText=_logoText;
 @property (copy, nonatomic) PKPassPersonalization *personalization; // @synthesize personalization=_personalization;
+@property (readonly, nonatomic) NSArray *primaryFields;
+@property (copy, nonatomic) NSDictionary *semantics; // @synthesize semantics=_semantics;
 @property (nonatomic) long long transitType; // @synthesize transitType=_transitType;
 
 + (BOOL)supportsSecureCoding;
@@ -32,7 +37,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)flushFormattedFieldValues;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
+- (id)initWithDictionary:(id)arg1 bundle:(id)arg2 privateBundle:(id)arg3;
 
 @end
 

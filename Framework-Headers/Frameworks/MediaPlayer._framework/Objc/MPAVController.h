@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/AVAudioSessionDelegateMediaPlayerOnly-Protocol.h>
 #import <MediaPlayer/ICEnvironmentMonitorObserver-Protocol.h>
@@ -123,6 +123,7 @@
     BOOL _managesAirPlayBehaviors;
     BOOL _wantsPictureInPicture;
     BOOL _automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds;
+    BOOL _allowsExternalPlaybackError;
     MPAVPolicyEnforcer *_policyEnforcer;
     MPQueuePlayer *_queuePlayer;
     MPAVQueueCoordinator *_queueCoordinator;
@@ -134,6 +135,7 @@
 @property (readonly, nonatomic) AVAudioSessionMediaPlayerOnly *_playerAVAudioSession;
 @property (readonly, nonatomic) long long activeRepeatType;
 @property (readonly, nonatomic) long long activeShuffleType;
+@property (nonatomic) BOOL allowsExternalPlaybackError; // @synthesize allowsExternalPlaybackError=_allowsExternalPlaybackError;
 @property (nonatomic) BOOL alwaysPlayWheneverPossible;
 @property (nonatomic) BOOL autoPlayWhenLikelyToKeepUp;
 @property (nonatomic) BOOL automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds; // @synthesize automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds=_automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds;
@@ -199,6 +201,7 @@
 + (Class)playlistManagerClass;
 + (BOOL)prefersApplicationAudioSession;
 - (void).cxx_destruct;
+- (void)_airPlayFailedUnsupportedVideoFormatForDeviceWithError:(id)arg1;
 - (void)_applicationDidEnterBackgroundNotification:(id)arg1;
 - (void)_applicationDidRemoveDeactivationReason:(id)arg1;
 - (void)_applicationWillAddDeactivationReason:(id)arg1;
@@ -314,6 +317,7 @@
 - (void)_updateCurrentItemBookkeepingMarkedAsCheckpoint:(BOOL)arg1;
 - (void)_updateCurrentItemDurationSnapshotWithPlayerTime:(CDStruct_1b6d18a9)arg1;
 - (void)_updateCurrentItemHasFinishedDownloading;
+- (void)_updateHasProtectedContentForItem:(id)arg1;
 - (void)_updateLastSetTimeForCurrentItemIfNeeded;
 - (void)_updatePlaybackModeForItem:(id)arg1;
 - (void)_updateProgress:(struct __CFRunLoopTimer *)arg1;

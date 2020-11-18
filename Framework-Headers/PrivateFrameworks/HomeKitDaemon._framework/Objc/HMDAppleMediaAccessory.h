@@ -6,13 +6,15 @@
 
 #import <HomeKitDaemon/HMDMediaAccessory.h>
 
+#import <HomeKitDaemon/HMDAccessoryUserManagement-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessorySettingGroup, HMDAccessorySymptomHandler, HMDDevice, HMDRemoteLoginHandler, HMDSoftwareUpdate, HMFPairingIdentity, HMFSoftwareVersion, NSString;
+@class HMDAccessorySettingGroup, HMDAccessorySymptomHandler, HMDDevice, HMDRemoteLoginHandler, HMDSoftwareUpdate, HMDTargetControlManager, HMFPairingIdentity, HMFSoftwareVersion, HMFWiFiNetworkInfo, NSString;
 
-@interface HMDAppleMediaAccessory : HMDMediaAccessory <HMFLogging>
+@interface HMDAppleMediaAccessory : HMDMediaAccessory <HMDAccessoryUserManagement, HMFLogging>
 {
     BOOL _deviceReachable;
+    BOOL _fixedPairingIdentityInCloud;
     HMDDevice *_device;
     HMFPairingIdentity *_pairingIdentity;
     HMDAccessorySettingGroup *_rootSettings;
@@ -20,20 +22,28 @@
     HMDAccessorySymptomHandler *_symptomsHandler;
     HMFSoftwareVersion *_softwareVersion;
     HMDSoftwareUpdate *_softwareUpdate;
+    HMFWiFiNetworkInfo *_wifiNetworkInfo;
+    HMDTargetControlManager *_targetControlManager;
+    HMFPairingIdentity *_lastCreatedPairingIdentity;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) HMDDevice *device; // @synthesize device=_device;
 @property (nonatomic, getter=isDeviceReachable) BOOL deviceReachable; // @synthesize deviceReachable=_deviceReachable;
+@property (nonatomic) BOOL fixedPairingIdentityInCloud; // @synthesize fixedPairingIdentityInCloud=_fixedPairingIdentityInCloud;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HMFPairingIdentity *lastCreatedPairingIdentity; // @synthesize lastCreatedPairingIdentity=_lastCreatedPairingIdentity;
 @property (readonly, copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
 @property (readonly) HMDRemoteLoginHandler *remoteLoginHandler; // @synthesize remoteLoginHandler=_remoteLoginHandler;
 @property (readonly) HMDAccessorySettingGroup *rootSettings; // @synthesize rootSettings=_rootSettings;
 @property (readonly) HMDSoftwareUpdate *softwareUpdate; // @synthesize softwareUpdate=_softwareUpdate;
 @property (readonly) HMFSoftwareVersion *softwareVersion; // @synthesize softwareVersion=_softwareVersion;
 @property (readonly) Class superclass;
+@property (readonly) BOOL supportsUserManagement;
 @property (readonly) HMDAccessorySymptomHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
+@property (strong, nonatomic) HMDTargetControlManager *targetControlManager; // @synthesize targetControlManager=_targetControlManager;
+@property (readonly) HMFWiFiNetworkInfo *wifiNetworkInfo; // @synthesize wifiNetworkInfo=_wifiNetworkInfo;
 
 + (id)__deviceMediaRouteIdentifier;
 + (BOOL)hasMessageReceiverChildren;
@@ -42,12 +52,15 @@
 - (void).cxx_destruct;
 - (void)__updateDeviceWithDeviceIdentifier:(id)arg1;
 - (void)_fetchAvailableUpdate:(id)arg1;
+- (void)_fixCloudKeyIfNeeded;
 - (void)_registerForMessages;
 - (void)_relayRequestMessage:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;
 - (void)_startUpdate:(id)arg1;
 - (void)_updateSoftwareVersion:(id)arg1;
 - (void)addRootSettings;
+- (void)addUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)assistantObject;
+- (void)autoConfigureTargetControllers;
 - (id)backingStoreObjects:(long long)arg1;
 - (void)configure:(id)arg1 msgDispatcher:(id)arg2 accessoryConfigureGroup:(id)arg3;
 - (void)createPairingIdentity;
@@ -60,10 +73,11 @@
 - (void)handleAddedSoftwareUpdateModel:(id)arg1 message:(id)arg2;
 - (void)handleCurrentDeviceChanged:(id)arg1;
 - (void)handleCurrentDeviceUpdated:(id)arg1;
+- (void)handleCurrentNetworkChangedNotification:(id)arg1;
 - (void)handleDeviceIsNotReachable:(id)arg1;
 - (void)handleDeviceIsReachable:(id)arg1;
 - (void)handleDeviceReachabilityChange:(BOOL)arg1;
-- (void)handleDeviceUpdated:(id)arg1;
+- (void)handleDeviceUpdated;
 - (void)handleRemovedSoftwareUpdateModel:(id)arg1 message:(id)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -73,27 +87,32 @@
 - (id)messageReceiverChildren;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)notifyClientsOfUpdatedRootSettings:(id)arg1;
+- (void)pairingsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)populateModelObject:(id)arg1 version:(long long)arg2;
 - (long long)reachableTransports;
 - (void)reconfigureOnMediaSystemDisolve;
 - (id)remoteMessageDestination;
+- (void)removeUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)requiresHomeAppForManagement;
+- (id)runtimeState;
 - (void)setDevice:(id)arg1;
 - (void)setPairingIdentity:(id)arg1;
 - (void)setRemotelyReachable:(BOOL)arg1;
 - (void)setRootSettings:(id)arg1;
 - (void)setSoftwareUpdate:(id)arg1;
 - (void)setSoftwareVersion:(id)arg1;
+- (void)setWifiNetworkInfo:(id)arg1;
 - (BOOL)shouldUpdateWithDevice:(id)arg1;
 - (void)startMonitoringReachability;
 - (BOOL)supportsSettings;
 - (BOOL)supportsSoftwareUpdate;
-- (BOOL)supportsUserManagement;
+- (BOOL)supportsTargetControl;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)transactionWithObjectChangeType:(unsigned long long)arg1;
 - (void)updateRootGroup:(id)arg1;
 - (void)updateSoftwareUpdate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateWiFiNetworkInfo;
 - (void)updateWithDevice:(id)arg1;
 
 @end

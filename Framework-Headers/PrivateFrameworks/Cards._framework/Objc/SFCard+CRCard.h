@@ -14,6 +14,8 @@
 
 @property (readonly, nonatomic) BOOL asynchronous;
 @property (readonly, nonatomic) SFCard *backingCard;
+@property (readonly, nonatomic) unsigned long long cardFormat;
+@property (readonly, copy, nonatomic) NSString *cardIdentifier;
 @property (readonly, nonatomic) NSArray *cardSections;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -27,5 +29,6 @@
 - (id)_interactionDataKey;
 - (id)interaction;
 - (void)loadCardWithCompletion:(CDUnknownBlockType)arg1;
+- (id)underlyingInteraction;
 @end
 

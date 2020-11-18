@@ -43,6 +43,7 @@
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *serializedIdentifier;
+@property (readonly, nonatomic) NSUUID *spiClientIdentifier;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *type; // @synthesize type=_type;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
@@ -74,6 +75,7 @@
 - (void)_processActionSetModelUpdated:(id)arg1 message:(id)arg2;
 - (void)_registerForMessages;
 - (void)_removeAction:(id)arg1 message:(id)arg2;
+- (void)_removeDonatedIntent;
 - (id)actionWithUUID:(id)arg1;
 - (id)allCharacteristicsInActionsForServices:(id)arg1;
 - (id)assistantObject;
@@ -89,6 +91,8 @@
 - (void)handleExecutionCompleted:(id)arg1 startDate:(id)arg2 error:(id)arg3 readResponse:(id)arg4 response:(id)arg5;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 uuid:(id)arg2 type:(id)arg3 home:(id)arg4 queue:(id)arg5;
+- (void)invalidate;
+- (id)isAccessValidForExecutionWithMessage:(id)arg1;
 - (id)messageDestination;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (void)removeAccessory:(id)arg1;

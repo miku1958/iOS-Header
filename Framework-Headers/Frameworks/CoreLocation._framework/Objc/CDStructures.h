@@ -132,9 +132,10 @@ typedef struct {
             double radius;
             double desiredAccuracy;
             int referenceFrame;
+            BOOL allowMonitoringWhileNearby;
         } circularAttributes;
     } ;
-} CDStruct_3afce72c;
+} CDStruct_5652eb1b;
 
 // Ambiguous groups
 typedef struct {

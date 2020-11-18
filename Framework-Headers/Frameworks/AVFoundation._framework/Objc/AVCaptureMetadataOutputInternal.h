@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVWeakReference, AVWeakReferencingDelegateStorage, NSArray;
 @protocol OS_dispatch_queue;
@@ -16,9 +16,11 @@
     NSArray *metadataObjectTypes;
     struct CGRect rectOfInterest;
     BOOL faceTrackingMetadataObjectTypesAvailable;
+    BOOL offlineVideoStabilizationMotionMetadataObjectTypesAvailable;
     AVWeakReference *weakReference;
-    struct OpaqueFigSimpleMutex *remoteQueueMutex;
-    void *remoteReceiverQueue;
+    struct OpaqueFigSimpleMutex *queueMutex;
+    void *remoteQueueReceiver;
+    void *localQueue;
     NSObject<OS_dispatch_queue> *objectQueue;
 }
 

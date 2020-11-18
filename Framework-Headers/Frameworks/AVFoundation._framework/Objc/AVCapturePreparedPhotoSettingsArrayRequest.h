@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -23,6 +23,7 @@
 
 + (id)preparedPhotoSettingsArrayRequestWithArray:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_initWithArray:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_setRequestID:(unsigned long long)arg1;
 - (void)dealloc;
 
 @end

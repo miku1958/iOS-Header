@@ -9,17 +9,17 @@
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 
-@class HMAccessory, HMSoftwareUpdate, NSString, NSUUID, _HMContext;
+@class HMAccessory, HMFUnfairLock, HMSoftwareUpdate, NSString, NSUUID, _HMContext;
 @protocol HMSoftwareUpdateControllerDelegate, OS_dispatch_queue;
 
 @interface HMSoftwareUpdateController : NSObject <HMFMessageReceiver, HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     HMSoftwareUpdate *_availableUpdate;
     HMAccessory *_accessory;
     id<HMSoftwareUpdateControllerDelegate> _delegate;
     NSUUID *_uniqueIdentifier;
     _HMContext *_context;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (weak) HMAccessory *accessory; // @synthesize accessory=_accessory;
@@ -32,7 +32,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 

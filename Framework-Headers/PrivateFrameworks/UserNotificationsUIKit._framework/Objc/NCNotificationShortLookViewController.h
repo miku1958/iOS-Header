@@ -7,13 +7,17 @@
 #import <UserNotificationsUIKit/NCNotificationViewController.h>
 
 #import <UserNotificationsUIKit/NCBannerPresentationTransitioningDelegateObserver-Protocol.h>
-#import <UserNotificationsUIKit/NCLongLookPresentationControllerDelegate-Protocol.h>
-#import <UserNotificationsUIKit/NCNotificationPreviewInteractionManagerDelegate-Protocol.h>
+#import <UserNotificationsUIKit/NCLongLookDefaultPresentationControllerDelegate-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationViewControllerObserving-Protocol.h>
+#import <UserNotificationsUIKit/PLExpandedPlatterPresentationControllerDelegate-Protocol.h>
+#import <UserNotificationsUIKit/PLPreviewInteractionManagerDelegate-Protocol.h>
+#import <UserNotificationsUIKit/PLPreviewInteractionPresenting-Protocol.h>
+#import <UserNotificationsUIKit/PLViewControllerAnimatorDelegate-Protocol.h>
 
-@class NCBannerPresentationTransitionDelegate, NCNotificationPreviewInteractionManager, NSDate, NSHashTable, NSString, UITapGestureRecognizer, UIView, UIViewController;
+@class NCBannerPresentationTransitionDelegate, NSDate, NSHashTable, NSString, PLPreviewInteractionManager, UIScrollView, UITapGestureRecognizer, UIView, UIViewController;
+@protocol UIViewControllerContextTransitioning;
 
-@interface NCNotificationShortLookViewController : NCNotificationViewController <NCNotificationViewControllerObserving, NCNotificationPreviewInteractionManagerDelegate, NCBannerPresentationTransitioningDelegateObserver, NCLongLookPresentationControllerDelegate>
+@interface NCNotificationShortLookViewController : NCNotificationViewController <NCNotificationViewControllerObserving, PLViewControllerAnimatorDelegate, PLPreviewInteractionManagerDelegate, NCBannerPresentationTransitioningDelegateObserver, PLExpandedPlatterPresentationControllerDelegate, NCLongLookDefaultPresentationControllerDelegate, PLPreviewInteractionPresenting>
 {
     NCBannerPresentationTransitionDelegate *_bannerPresentationTransitionDelegate;
     NCNotificationViewController *_longLookNotificationViewController;
@@ -23,24 +27,37 @@
     NSDate *_tapBeginTime;
     UIView *_audioAccessoryView;
     NSHashTable *_audioAccessoryViewObservers;
+    id<UIViewControllerContextTransitioning> _scrollPresentationTransitionContext;
+    struct CGRect _finalPresentedFrameOfViewForPreview;
     BOOL _didScrollPresentLongLookViewController;
-    NCNotificationPreviewInteractionManager *_previewInteractionManager;
+    PLPreviewInteractionManager *_previewInteractionManager;
+    UIScrollView *_scrollView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=_didScrollPresentLongLookViewController, setter=_setDidScrollPresentLongLookViewController:) BOOL didScrollPresentLongLookViewController; // @synthesize didScrollPresentLongLookViewController=_didScrollPresentLongLookViewController;
+@property (readonly, nonatomic) struct CGRect finalDismissedFrameOfViewForPreview;
+@property (readonly, nonatomic) struct CGRect finalPresentedFrameOfViewForPreview;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) struct CGRect initialPresentedFrameOfViewForPreview;
 @property (readonly, nonatomic, getter=_presentedLongLookViewController) NCNotificationViewController *presentedLongLookViewController;
-@property (strong, nonatomic, getter=_previewInteractionManager) NCNotificationPreviewInteractionManager *previewInteractionManager; // @synthesize previewInteractionManager=_previewInteractionManager;
+@property (readonly, nonatomic) PLPreviewInteractionManager *previewInteractionManager; // @synthesize previewInteractionManager=_previewInteractionManager;
+@property (strong, nonatomic, getter=_scrollView) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) UIView *viewForPreview;
 
++ (long long)materialRecipeForLegibilitySettings:(id)arg1;
 - (void).cxx_destruct;
+- (void)_completeScrollPresentation;
 - (void)_configureScrollViewIfNecessary;
+- (void)_expandCoalescedNotificationBundle;
 - (struct CGRect)_frameForTransitionViewInScrollView;
+- (void)_handlePresentedContentDismissalWithTrigger:(long long)arg1;
 - (void)_handleTapOnView:(id)arg1;
 - (id)_initWithNotificationRequest:(id)arg1 revealingAdditionalContentOnPresentation:(BOOL)arg2;
 - (BOOL)_isPresentingCustomContentProvidingViewController;
+- (id)_legibilitySettings;
 - (void)_loadExtensionIfNecessary;
 - (void)_loadLookView;
 - (void)_loadPresentationContainerViewIfNecessary;
@@ -51,35 +68,43 @@
 - (void)_presentLongLookAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentLongLookForScrollAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentLongLookViaPreviewInteraction:(CDUnknownBlockType)arg1;
-- (Class)_scrollViewClass;
 - (void)_setAudioAccessoryView:(id)arg1;
 - (BOOL)_setDelegate:(id)arg1;
 - (BOOL)_setNotificationRequest:(id)arg1;
 - (BOOL)_shouldPadScrollViewContentSizeHeight;
 - (BOOL)_tryDismissingShortLookInScrollView:(id)arg1;
 - (void)_updateScrollViewContentSize;
+- (void)_updateWithProvidedAuxiliaryOptionsContent;
 - (void)_updateWithProvidedStaticContent;
 - (void)addAudioAccessoryViewObserver:(id)arg1;
+- (void)adjustForLegibilitySettingsChange:(id)arg1;
+- (unsigned long long)backgroundMaterialOptions;
 - (id)containerViewForPreviewInteractionManager:(id)arg1;
 - (void)customContent:(id)arg1 didLoadAudioAccessoryView:(id)arg2;
 - (void)customContentDidLoadExtension:(id)arg1;
 - (BOOL)didReceiveNotificationRequest:(id)arg1;
 - (BOOL)dismissPresentedViewControllerAndClearNotification:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)effectiveGroupName;
 - (void)expandAndPlayAudioMessage;
+- (struct CGRect)expandedPlatterPresentationController:(id)arg1 frameForTransitionViewInPresentationSuperview:(id)arg2;
 - (BOOL)hasCommittedToPresentingCustomContentProvidingViewController;
-- (id)hideHomeAffordanceAnimationSettingsForLongLookPresentationController:(id)arg1;
+- (BOOL)isCoalescedNotificationBundle;
 - (BOOL)isContentExtensionVisible:(id)arg1;
 - (BOOL)isShortLook;
-- (struct CGRect)longLookPresentationController:(id)arg1 frameForTransitionViewInPresentationSuperview:(id)arg2;
-- (id)longLookViewControllerForPreviewInteractionManager:(id)arg1;
+- (long long)materialRecipe;
 - (void)notificationViewControllerDidDismiss:(id)arg1;
 - (void)notificationViewControllerDidPresent:(id)arg1;
 - (void)notificationViewControllerWillDismiss:(id)arg1;
 - (void)notificationViewControllerWillPresent:(id)arg1;
+- (unsigned long long)overlayMaterialOptions;
 - (void)presentLongLookAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)presentedViewControllerForPreviewInteractionManager:(id)arg1;
+- (void)previewInteractionManager:(id)arg1 declinedDismissingPresentedContentWithTrigger:(long long)arg2;
+- (BOOL)previewInteractionManager:(id)arg1 shouldBeginInteractionWithTouchAtLocation:(struct CGPoint)arg2;
 - (void)previewInteractionManager:(id)arg1 shouldFinishInteractionWithCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)previewInteractionManager:(id)arg1 willDismissPresentedContentWithTrigger:(long long)arg2;
 - (void)previewInteractionManagerDidEndUserInteraction:(id)arg1;
-- (BOOL)previewInteractionManagerShouldBeginInteraction:(id)arg1;
+- (BOOL)previewInteractionManagerShouldAutomaticallyTransitionToPreviewAfterDelay:(id)arg1;
 - (void)previewInteractionManagerWillBeginUserInteraction:(id)arg1;
 - (void)removeAudioAccesoryViewObserver:(id)arg1;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
@@ -90,7 +115,8 @@
 - (void)setCustomContentHomeAffordanceVisible:(BOOL)arg1;
 - (void)setInteractionEnabled:(BOOL)arg1;
 - (BOOL)shouldRestorePresentingShortLookOnDismiss;
-- (id)unhideHomeAffordanceAnimationSettingsForLongLookPresentationController:(id)arg1;
+- (id)transitioningDelegateForPreviewInteractionManager:(id)arg1;
+- (void)viewControllerAnimator:(id)arg1 didEndPresentationAnimation:(BOOL)arg2 withTransitionContext:(id)arg3;
 - (void)viewWillLayoutSubviews;
 - (BOOL)wantsUseableContainerBoundsForTransitionWithDelegate:(id)arg1;
 

@@ -8,20 +8,17 @@
 
 @interface VNImageBlurScoreRequest : VNImageBasedRequest
 {
-    unsigned long long _maximumIntermediateSideLength;
-    unsigned long long _blurDeterminationMethod;
 }
 
 @property (nonatomic) unsigned long long blurDeterminationMethod;
-@property (nonatomic) unsigned long long maximumIntermediateSideLength; // @synthesize maximumIntermediateSideLength=_maximumIntermediateSideLength;
+@property (nonatomic) unsigned long long maximumIntermediateSideLength;
 
++ (Class)configurationClass;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
 - (void)applyConfigurationOfRequest:(id)arg1;
-- (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
-- (id)sequencedRequestPreviousObservationsKey;
+- (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

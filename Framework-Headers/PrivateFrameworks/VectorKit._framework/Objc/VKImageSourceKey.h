@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -37,7 +37,7 @@
 @property (readonly, nonatomic) NSString *imageName; // @synthesize imageName=_imageName;
 @property (readonly, nonatomic) unsigned int keyType; // @synthesize keyType=_keyType;
 @property (strong, nonatomic) NSString *relatedText; // @synthesize relatedText=_relatedText;
-@property (readonly, nonatomic) CDStruct_87ab733e shieldColor;
+@property (readonly, nonatomic) CDStruct_b3fd5d76 shieldColor;
 @property (readonly, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
 @property (readonly, nonatomic) NSString *shieldTextLocale; // @synthesize shieldTextLocale=_shieldTextLocale;
 @property (readonly, nonatomic) unsigned int shieldType; // @synthesize shieldType=_shieldType;

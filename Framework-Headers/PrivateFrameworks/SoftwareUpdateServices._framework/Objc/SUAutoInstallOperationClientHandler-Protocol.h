@@ -6,12 +6,13 @@
 
 #import <SoftwareUpdateServices/NSObject-Protocol.h>
 
-@class NSString;
+@class NSError, NSString;
 
 @protocol SUAutoInstallOperationClientHandler <NSObject>
 - (void)_noteAutoInstallOperationDidConsent;
-- (void)_noteAutoInstallOperationDidExpire;
+- (void)_noteAutoInstallOperationDidExpireWithError:(NSError *)arg1;
 - (void)_noteAutoInstallOperationIsReadyToInstall:(void (^)(BOOL, NSError *))arg1;
+- (void)_noteAutoInstallOperationPasscodePolicyChanged:(unsigned long long)arg1;
 - (void)_noteAutoInstallOperationWasCancelled;
 - (NSString *)uniqueIdentifier;
 @end

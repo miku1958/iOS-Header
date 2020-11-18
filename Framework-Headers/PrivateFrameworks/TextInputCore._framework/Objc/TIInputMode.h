@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/NSCopying-Protocol.h>
 
@@ -38,8 +38,8 @@
 @property (readonly, nonatomic) NSString *variant;
 
 + (id)inputModeWithIdentifier:(id)arg1;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithNormalizedIdentifier:(id)arg1;

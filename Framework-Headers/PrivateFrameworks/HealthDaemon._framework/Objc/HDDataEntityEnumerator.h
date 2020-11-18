@@ -6,13 +6,14 @@
 
 #import <HealthDaemon/HDSQLiteQueryDescriptor.h>
 
-@class HDProfile, HKObjectType, NSArray, NSMutableDictionary, NSNumber, NSSet, _HKFilter;
+@class HDProfile, HKObjectType, NSArray, NSMutableDictionary, NSNumber, NSSet, NSString, _HKFilter;
 
 @interface HDDataEntityEnumerator : HDSQLiteQueryDescriptor
 {
     HDProfile *_profile;
     NSMutableDictionary *_encodingOptions;
     BOOL _useLeftJoin;
+    BOOL _ignoreEntityClassAdditionalPredicateForEnumeration;
     BOOL _improveJoinOrderingForStartDateIndexSelection;
     HKObjectType *_objectType;
     _HKFilter *_filter;
@@ -21,13 +22,16 @@
     NSNumber *_anchor;
     NSNumber *_deletedObjectsAnchor;
     NSArray *_sortDescriptors;
+    NSString *_lastSQL;
 }
 
 @property (strong, nonatomic) NSNumber *anchor; // @synthesize anchor=_anchor;
 @property (copy, nonatomic) CDUnknownBlockType authorizationFilter; // @synthesize authorizationFilter=_authorizationFilter;
 @property (strong, nonatomic) NSNumber *deletedObjectsAnchor; // @synthesize deletedObjectsAnchor=_deletedObjectsAnchor;
 @property (strong, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
+@property (nonatomic) BOOL ignoreEntityClassAdditionalPredicateForEnumeration; // @synthesize ignoreEntityClassAdditionalPredicateForEnumeration=_ignoreEntityClassAdditionalPredicateForEnumeration;
 @property (nonatomic) BOOL improveJoinOrderingForStartDateIndexSelection; // @synthesize improveJoinOrderingForStartDateIndexSelection=_improveJoinOrderingForStartDateIndexSelection;
+@property (readonly, copy, nonatomic) NSString *lastSQL; // @synthesize lastSQL=_lastSQL;
 @property (readonly, nonatomic) HKObjectType *objectType; // @synthesize objectType=_objectType;
 @property (strong, nonatomic) NSSet *restrictedSourceEntities; // @synthesize restrictedSourceEntities=_restrictedSourceEntities;
 @property (copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;

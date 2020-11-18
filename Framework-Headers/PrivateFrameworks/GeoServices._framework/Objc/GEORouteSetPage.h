@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSDictionary *alternateStartRoutesLookup;
-@property (readonly, nonatomic) BOOL isNavigable; // @synthesize isNavigable=_isNavigable;
+@property (readonly, nonatomic) BOOL isNavigable;
 @property (readonly, weak, nonatomic) GEOComposedRoute *preferredRoute; // @synthesize preferredRoute=_preferredRoute;
 @property (readonly, nonatomic) GEODirectionsRequest *request; // @synthesize request=_request;
 @property (readonly, nonatomic) GEODirectionsResponse *response; // @synthesize response=_response;

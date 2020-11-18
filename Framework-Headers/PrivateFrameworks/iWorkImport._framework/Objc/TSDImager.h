@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDCanvasDelegate-Protocol.h>
+#import <iWorkImport/TSDDynamicOverridingCanvasDelegate-Protocol.h>
 
-@class NSArray, NSSet, NSString, TSDCanvas, TSKDocumentRoot, TSUColor;
-@protocol TSDCanvasProxyDelegate;
+@class NSArray, NSMapTable, NSSet, NSString, TSDCanvas, TSKDocumentRoot, TSUColor;
+@protocol TSDCanvasProxyDelegate, TSDInfo;
 
 __attribute__((visibility("hidden")))
-@interface TSDImager : NSObject <TSDCanvasDelegate>
+@interface TSDImager : NSObject <TSDDynamicOverridingCanvasDelegate, TSDCanvasDelegate>
 {
     NSArray *mInfos;
     TSUColor *mBackgroundColor;
@@ -26,6 +27,8 @@ __attribute__((visibility("hidden")))
     BOOL mShouldReuseBitmapContext;
     TSKDocumentRoot *mDocumentRoot;
     TSDCanvas *mCanvas;
+    BOOL mMayBeReused;
+    BOOL mHasBeenUsed;
     struct CGRect mActualScaledClipRect;
     BOOL mDrawingIntoPDF;
     BOOL mIsPrinting;
@@ -37,6 +40,9 @@ __attribute__((visibility("hidden")))
     struct CGSize mReusableScaledImageSize;
     NSSet *mPreviousRenderDatasNeedingDownload;
     CDUnknownBlockType mPostRenderAction;
+    NSMapTable *mDynamicOverrides;
+    NSObject<TSDInfo> *mInfoToDrawBeneath;
+    CDUnknownBlockType mInfoToDrawBeneathFilter;
 }
 
 @property (readonly, nonatomic) struct CGRect actualScaledClipRect; // @synthesize actualScaledClipRect=mActualScaledClipRect;
@@ -52,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *infos; // @synthesize infos=mInfos;
 @property (nonatomic) BOOL isPrinting; // @synthesize isPrinting=mIsPrinting;
 @property (nonatomic) struct CGSize maximumScaledImageSize;
+@property (nonatomic) BOOL mayBeReused; // @synthesize mayBeReused=mMayBeReused;
 @property (copy, nonatomic) NSSet *previousRenderDatasNeedingDownload; // @synthesize previousRenderDatasNeedingDownload=mPreviousRenderDatasNeedingDownload;
 @property (nonatomic) struct CGSize scaledImageSize;
 @property (nonatomic) BOOL shouldReuseBitmapContext; // @synthesize shouldReuseBitmapContext=mShouldReuseBitmapContext;
@@ -63,6 +70,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)documentRoot;
 - (BOOL)drawPageInContext:(struct CGContext *)arg1 createPage:(BOOL)arg2;
+- (id)dynamicOverrideForRep:(id)arg1;
+- (void)i_setDrawsOnlyBelowInfo:(id)arg1;
 - (id)init;
 - (id)initWithDocumentRoot:(id)arg1;
 - (id)initWithDocumentRoot:(id)arg1 renderForWideGamut:(BOOL)arg2;
@@ -76,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)p_newImageInReusableContext;
 - (id)pdfData;
 - (id)pngData;
+- (void)setDynamicOverride:(id)arg1 forInfo:(id)arg2;
 - (void)setInfos:(id)arg1 allowLayoutIfNeeded:(BOOL)arg2;
 - (void)setPostRenderAction:(CDUnknownBlockType)arg1;
 - (struct CGRect)visibleScaledBoundsForClippingRepsOnCanvas:(id)arg1;

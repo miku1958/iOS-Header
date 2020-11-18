@@ -7,7 +7,7 @@
 #import <Metal/NSObject-Protocol.h>
 
 @class MTLRenderPassDescriptor, NSError, NSString;
-@protocol MTLBlitCommandEncoder, MTLCommandQueue, MTLComputeCommandEncoder, MTLDevice, MTLDrawable, MTLParallelRenderCommandEncoder, MTLRenderCommandEncoder;
+@protocol MTLBlitCommandEncoder, MTLCommandQueue, MTLComputeCommandEncoder, MTLDevice, MTLDrawable, MTLEvent, MTLParallelRenderCommandEncoder, MTLRenderCommandEncoder;
 
 @protocol MTLCommandBuffer <NSObject>
 
@@ -27,6 +27,9 @@
 - (id<MTLBlitCommandEncoder>)blitCommandEncoder;
 - (void)commit;
 - (id<MTLComputeCommandEncoder>)computeCommandEncoder;
+- (id<MTLComputeCommandEncoder>)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
+- (void)encodeSignalEvent:(id<MTLEvent>)arg1 value:(unsigned long long)arg2;
+- (void)encodeWaitForEvent:(id<MTLEvent>)arg1 value:(unsigned long long)arg2;
 - (void)enqueue;
 - (id<MTLParallelRenderCommandEncoder>)parallelRenderCommandEncoderWithDescriptor:(MTLRenderPassDescriptor *)arg1;
 - (void)popDebugGroup;

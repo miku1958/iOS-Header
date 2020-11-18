@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSSecureCoding-Protocol.h>
 #import <TextInput/TIUserDictionaryEntry-Protocol.h>
@@ -28,7 +28,7 @@
 
 + (BOOL)supportsSecureCoding;
 + (id)valueWithEntry:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)matchesEntry:(id)arg1;

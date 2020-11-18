@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBCandidateCollectionView.h>
+#import <UIKitCore/UIKBCandidateCollectionView.h>
 
 @class NSArray, UIKeyboardCandidateGridCollectionViewController, UITableViewIndex;
 

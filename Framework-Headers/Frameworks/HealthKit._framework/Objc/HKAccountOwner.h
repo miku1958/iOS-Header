@@ -13,20 +13,20 @@
 
 @interface HKAccountOwner : HKMedicalRecord <NSSecureCoding, NSCopying>
 {
-    HKMedicalDate *_birthDate;
     NSString *_name;
+    HKMedicalDate *_birthDate;
 }
 
-@property (readonly, nonatomic) HKAccountOwnerType *accountOwnerType;
-@property (readonly, copy, nonatomic) HKMedicalDate *birthDate; // @synthesize birthDate=_birthDate;
-@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, copy) HKAccountOwnerType *accountOwnerType;
+@property (readonly, copy) HKMedicalDate *birthDate;
+@property (readonly, copy) NSString *name;
 
 + (BOOL)_isConcreteObjectClass;
-+ (id)accountOwnerWithNote:(id)arg1 enteredInError:(BOOL)arg2 modifiedDate:(id)arg3 FHIRIdentifier:(id)arg4 extractionVersion:(long long)arg5 device:(id)arg6 metadata:(id)arg7 name:(id)arg8 birthDate:(id)arg9;
++ (id)accountOwnerWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 name:(id)arg9 birthDate:(id)arg10;
++ (id)accountOwnerWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 name:(id)arg10 birthDate:(id)arg11;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_setBirthDate:(id)arg1;
 - (void)_setName:(id)arg1;
 - (id)_validateConfiguration;

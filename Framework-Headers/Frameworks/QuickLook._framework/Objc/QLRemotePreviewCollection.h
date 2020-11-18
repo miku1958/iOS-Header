@@ -37,12 +37,13 @@ __attribute__((visibility("hidden")))
 - (void)hostApplicationDidBecomeActive;
 - (void)hostApplicationDidEnterBackground:(BOOL)arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(BOOL)arg2;
-- (void)invalidatePreviewCollection;
+- (void)invalidateService;
 - (BOOL)isRemote;
 - (void)keyCommandWasPerformed:(id)arg1;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(BOOL)arg2;
 - (void)setLoadingString:(id)arg1;

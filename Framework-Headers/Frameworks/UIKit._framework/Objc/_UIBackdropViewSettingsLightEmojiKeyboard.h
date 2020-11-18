@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBackdropViewSettingsLightKeyboard.h>
+#import <UIKitCore/_UIBackdropViewSettingsLightKeyboard.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIBackdropViewSettingsLightEmojiKeyboard : _UIBackdropViewSettingsLightKeyboard

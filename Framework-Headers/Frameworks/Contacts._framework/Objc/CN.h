@@ -96,6 +96,7 @@
 + (CDUnknownBlockType)postalAddressToDictionaryTransform;
 + (id)postalAddressesDescription;
 + (id)preferredApplePersonaIdentifierDescription;
++ (id)preferredChannelDescription;
 + (id)preferredForImageDescription;
 + (id)preferredForNameDescription;
 + (id)preferredLikenessSourceDescription;

@@ -8,36 +8,43 @@
 
 #import <CoreML/MLModeling-Protocol.h>
 
-@class MLModelDescription, MLModelInterface, MLModelMetadata;
+@class MLModelConfiguration, MLModelDescription, MLModelInterface, MLModelMetadata;
 
 @interface MLModel : NSObject <MLModeling>
 {
     MLModelInterface *_interface;
     MLModelMetadata *_metadata;
     MLModelDescription *_modelDescription;
+    MLModelConfiguration *_configuration;
 }
 
+@property (strong, nonatomic) MLModelConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly) MLModelInterface *interface; // @synthesize interface=_interface;
 @property (readonly) MLModelMetadata *metadata; // @synthesize metadata=_metadata;
 @property (strong, nonatomic) MLModelDescription *modelDescription; // @synthesize modelDescription=_modelDescription;
 
-+ (id)batchPredict:(id)arg1 model:(id)arg2 error:(id *)arg3;
 + (id)compileModelAtURL:(id)arg1 error:(id *)arg2;
++ (id)modelWithContentsOfURL:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 + (id)modelWithContentsOfURL:(id)arg1 error:(id *)arg2;
-+ (id)predictionFromFeatures:(id)arg1 model:(id)arg2 error:(id *)arg3;
++ (id)predictionsFromLoopingOverBatch:(id)arg1 model:(id)arg2 options:(id)arg3 error:(id *)arg4;
++ (id)predictionsFromSubbatchingBatch:(id)arg1 maxSubbatchLength:(long long)arg2 predictionBlock:(CDUnknownBlockType)arg3 options:(id)arg4 error:(id *)arg5;
 + (BOOL)serializeInterfaceAndMetadata:(struct _MLModelSpecification *)arg1 toArchive:(struct _MLModelOutputArchiver *)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
-- (id)batchPredict:(id)arg1 error:(id *)arg2;
 - (id)debugQuickLookObject;
 - (id)description;
-- (id)initDescriptionOnlyWithSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
+- (id)initDescriptionOnlyWithSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id)initInterfaceAndMetadataWithCompiledArchive:(struct _MLModelInputArchiver *)arg1 error:(id *)arg2;
+- (id)initWithConfiguration:(id)arg1;
 - (id)initWithDescription:(id)arg1;
-- (id)initWithInterface:(id)arg1 metadata:(id)arg2;
-- (id)initWithName:(id)arg1 inputDescription:(id)arg2 outputDescription:(id)arg3 orderedInputFeatureNames:(id)arg4 orderedOutputFeatureNames:(id)arg5;
+- (id)initWithDescription:(id)arg1 configuration:(id)arg2;
+- (id)initWithInterface:(id)arg1 metadata:(id)arg2 configuration:(id)arg3;
+- (id)initWithName:(id)arg1 inputDescription:(id)arg2 outputDescription:(id)arg3 orderedInputFeatureNames:(id)arg4 orderedOutputFeatureNames:(id)arg5 configuration:(id)arg6;
+- (id)objectBoundingBoxOutputDescription;
 - (id)predictionFromFeatures:(id)arg1 error:(id *)arg2;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)predictionsFromBatch:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)vectorizeInput:(id)arg1 error:(id *)arg2;
+- (id)visionFeaturePrintInfo;
 
 @end
 

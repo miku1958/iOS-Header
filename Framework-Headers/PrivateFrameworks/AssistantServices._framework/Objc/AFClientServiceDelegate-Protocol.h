@@ -6,7 +6,7 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFAudioPlaybackRequest, AFSpeechInterpretation, AFXPCWrapper, AceObject, INImage, INIntent, NSArray, NSDictionary, NSError, NSString, NSURL, SASSpeechPartialResult, SASSpeechRecognized;
+@class AFAudioPlaybackRequest, AFSpeechInterpretation, AFXPCWrapper, AceObject, INImage, NSArray, NSDictionary, NSError, NSString, NSURL, SASSpeechPartialResult, SASSpeechRecognized;
 @protocol SAAceCommand;
 
 @protocol AFClientServiceDelegate <NSObject>
@@ -26,11 +26,12 @@
 - (oneway void)extensionRequestFinishedForApplication:(NSString *)arg1 error:(NSError *)arg2;
 - (oneway void)extensionRequestWillStartForApplication:(NSString *)arg1;
 - (oneway void)getBulletinContext:(void (^)(NSArray *))arg1;
-- (oneway void)handleIntent:(INIntent *)arg1 inBackgroundAppWithBundleId:(NSString *)arg2 reply:(void (^)(INIntentResponse *, NSError *))arg3;
+- (oneway void)getClockContext:(void (^)(AFClockAlarmSnapshot *, AFClockTimerSnapshot *))arg1;
 - (oneway void)invalidateCurrentUserActivity;
 - (oneway void)musicWasDetected;
 - (oneway void)quickStopWasHandledWithActions:(unsigned long long)arg1;
 - (oneway void)requestDidReceiveCommand:(AceObject<SAAceCommand> *)arg1 reply:(void (^)(AceObject<SAAceCommand> *))arg2;
+- (oneway void)requestHandleCommand:(AceObject<SAAceCommand> *)arg1 reply:(void (^)(AceObject<SAAceCommand> *, NSError *))arg2;
 - (oneway void)requestRequestedDismissAssistant;
 - (oneway void)requestRequestedOpenApplicationWithBundleID:(NSString *)arg1 URL:(NSURL *)arg2 reply:(void (^)(BOOL))arg3;
 - (oneway void)requestRequestedOpenURL:(NSURL *)arg1 reply:(void (^)(BOOL))arg2;

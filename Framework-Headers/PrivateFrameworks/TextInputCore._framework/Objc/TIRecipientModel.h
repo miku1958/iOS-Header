@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, RKMessageResponseManager;
 @protocol TILinguisticDataSourceMessage;
@@ -20,7 +20,7 @@
 @property (strong, nonatomic) id<TILinguisticDataSourceMessage> lastMessage; // @synthesize lastMessage=_lastMessage;
 @property (strong, nonatomic) RKMessageResponseManager *trainer; // @synthesize trainer=_trainer;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)handleMessages:(id)arg1;
 - (id)initWithCompositeName:(id)arg1 andTrainer:(id)arg2;
 - (id)languageGuessForString:(id)arg1;

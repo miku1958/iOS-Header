@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Vision/NSCopying-Protocol.h>
-#import <Vision/VNObservationsCacheKeyProviding-Protocol.h>
 #import <Vision/VNSequencedRequestSupporting-Protocol.h>
 
 @class NSDictionary, VNImageBuffer;
 
-@interface VNImageSpecifier : NSObject <VNObservationsCacheKeyProviding, VNSequencedRequestSupporting, NSCopying>
+@interface VNImageSpecifier : NSObject <VNSequencedRequestSupporting, NSCopying>
 {
     VNImageBuffer *_imageBuffer;
     NSDictionary *_options;
@@ -41,7 +40,6 @@
 - (id)imageBufferAndReturnError:(id *)arg1;
 - (id)initInternal;
 - (id)newImageBufferWithOptions:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
 - (id)sequencedRequestPreviousObservationsKey;
 - (BOOL)wantsSequencedRequestObservationsRecording;
 

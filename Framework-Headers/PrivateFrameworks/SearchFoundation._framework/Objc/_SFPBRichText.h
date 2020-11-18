@@ -24,9 +24,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *formattedTextPieces; // @synthesize formattedTextPieces=_formattedTextPieces;
-@property (readonly, nonatomic) BOOL hasContentAdvisory;
-@property (readonly, nonatomic) BOOL hasStarRating;
-@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *icons; // @synthesize icons=_icons;
 @property (readonly, nonatomic) NSData *jsonData;

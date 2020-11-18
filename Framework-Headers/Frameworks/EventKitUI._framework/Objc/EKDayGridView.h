@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     UIView *_fadingHighlightedDayBackground;
     UIView *_gridContainerView;
     NSMutableDictionary *_gridParentViews;
+    double _cachedWidthForOffMainThreadWork;
     BOOL _rightBorderInsetsOccurrences;
     BOOL _showsTimeLine;
     BOOL _showsTimeMarker;
@@ -94,6 +95,8 @@ __attribute__((visibility("hidden")))
 - (double)positionOfSecond:(long long)arg1;
 - (struct CGRect)rectForStartSeconds:(long long)arg1 endSeconds:(long long)arg2;
 - (int)secondAtPosition:(double)arg1;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)setOrientation:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)timeDotImage;

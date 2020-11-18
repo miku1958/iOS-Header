@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -16,6 +16,7 @@
     BOOL _isLocked;
     BOOL _userDisabled;
     BOOL _deviceDisabled;
+    BOOL _supportsFaceID;
     NSString *_deviceName;
     long long _type;
     NSString *_modelIdentifier;
@@ -37,6 +38,7 @@
 @property (strong, nonatomic) NSString *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
 @property (nonatomic) long long proximityState; // @synthesize proximityState=_proximityState;
 @property (strong, nonatomic) NSArray *remotePaymentInstruments; // @synthesize remotePaymentInstruments=_remotePaymentInstruments;
+@property (nonatomic) BOOL supportsFaceID; // @synthesize supportsFaceID=_supportsFaceID;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (nonatomic) BOOL userDisabled; // @synthesize userDisabled=_userDisabled;

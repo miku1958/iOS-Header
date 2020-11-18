@@ -18,6 +18,7 @@
 
 @property (readonly) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property (readonly) NSDate *startDate;
+@property (readonly) double startTime;
 
 + (BOOL)supportsSecureCoding;
 - (CDStruct_31142d93)acceleration;

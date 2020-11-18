@@ -12,27 +12,32 @@
 
 @interface CEMClassroomRequestMirroringCommand : CEMCommandBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadDestinationName;
+    NSString *_payloadDestinationDeviceID;
+    NSNumber *_payloadScanTime;
+    NSString *_payloadPassword;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadDestinationDeviceID;
-@property (readonly, nonatomic) NSString *payloadDestinationName;
-@property (readonly, nonatomic) NSString *payloadPassword;
-@property (readonly, nonatomic) NSNumber *payloadScanTime;
+@property (copy, nonatomic) NSString *payloadDestinationDeviceID; // @synthesize payloadDestinationDeviceID=_payloadDestinationDeviceID;
+@property (copy, nonatomic) NSString *payloadDestinationName; // @synthesize payloadDestinationName=_payloadDestinationName;
+@property (copy, nonatomic) NSString *payloadPassword; // @synthesize payloadPassword=_payloadPassword;
+@property (copy, nonatomic) NSNumber *payloadScanTime; // @synthesize payloadScanTime=_payloadScanTime;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withDestinationName:(id)arg2 withDestinationDeviceID:(id)arg3 withScanTime:(id)arg4 withPassword:(id)arg5;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)executionLevel;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

@@ -4,13 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData;
 
 @interface CTSubscriber : NSObject
 {
-    struct __CTServerConnection *_server;
+    struct __CTServerConnection {
+        struct __CFRuntimeBase {
+            unsigned long long _field1;
+            _Atomic unsigned long long _field2;
+        } _field1;
+        struct dispatch_queue_s *_field2;
+        struct CTServerState *_field3;
+        unsigned char _field4;
+        unsigned char _field5;
+        unsigned int _field6;
+        struct _xpc_connection_s *_field7;
+    } *_server;
     struct vector<dispatch::block<void (^)(NSDictionary *)>, std::__1::allocator<dispatch::block<void (^)(NSDictionary *)>>> _authCallbacks;
 }
 

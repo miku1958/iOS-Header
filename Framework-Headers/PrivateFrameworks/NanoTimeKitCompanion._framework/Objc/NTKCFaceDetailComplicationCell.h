@@ -12,6 +12,7 @@
 {
     BOOL _dateSlot;
     BOOL _active;
+    BOOL _enabled;
     NSString *_slot;
     NTKComplication *_complication;
 }
@@ -19,13 +20,16 @@
 @property (nonatomic) BOOL active; // @synthesize active=_active;
 @property (strong, nonatomic) NTKComplication *complication; // @synthesize complication=_complication;
 @property (readonly, nonatomic) BOOL dateSlot; // @synthesize dateSlot=_dateSlot;
+@property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) NSString *slot; // @synthesize slot=_slot;
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
 - (id)_activeColor;
+- (id)_disabledColor;
 - (id)_inactiveColor;
 - (void)_updateDetailText;
+- (void)_updateState;
 - (id)initWithSlot:(id)arg1 dateSlot:(BOOL)arg2 inFace:(id)arg3;
 - (double)rowHeight;
 

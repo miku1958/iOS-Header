@@ -8,5 +8,6 @@
 
 @interface UIImage (WAImageExtensions)
 - (id)WAImageLoaderPreCacheImage;
+- (void)drawPDFInRect:(struct CGRect)arg1;
 @end
 

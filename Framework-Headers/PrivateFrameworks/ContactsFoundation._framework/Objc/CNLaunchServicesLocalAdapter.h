@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNLaunchServicesAdapter-Protocol.h>
 
@@ -23,6 +23,7 @@
 - (void)applicationsAvailableForHandlingURLScheme:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)applicationsForUserActivityType:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (id)initWithApplicationWorkspace:(id)arg1;
+- (void)openSensitiveURLInBackground:(id)arg1 withOptions:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (void)openUserActivityData:(id)arg1 inApplication:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 
 @end

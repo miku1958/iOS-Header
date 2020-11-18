@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <Vision/VNRequestRevisionProviding-Protocol.h>
 
 @class NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
-@interface VNTracker : NSObject
+@interface VNTracker : NSObject <VNRequestRevisionProviding>
 {
     struct shared_ptr<vision::mod::ObjectTrackerAbstract> mTrackerImpl;
+    unsigned long long _requestRevision;
     long long _trackedFrameNumber;
     NSUUID *_key;
     NSString *_level;
@@ -22,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSUUID *key; // @synthesize key=_key;
 @property struct CGRect lastTrackedBBox; // @synthesize lastTrackedBBox=_lastTrackedBBox;
 @property (readonly) NSString *level; // @synthesize level=_level;
+@property (readonly, nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
 @property long long trackedFrameNumber; // @synthesize trackedFrameNumber=_trackedFrameNumber;
 
 + (long long)VNTrackerOptionToTrackerType:(id)arg1;

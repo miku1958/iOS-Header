@@ -4,85 +4,192 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+#import <AVConference/AVCRateControllerDelegate-Protocol.h>
 #import <AVConference/RTCPReportProvider-Protocol.h>
+#import <AVConference/VCConnectionChangedHandler-Protocol.h>
 #import <AVConference/VCMediaStreamNotification-Protocol.h>
+#import <AVConference/VCNetworkFeedbackControllerDelegate-Protocol.h>
+#import <AVConference/VCRateControlMediaControllerDelegate-Protocol.h>
 #import <AVConference/VCSecurityEventHandler-Protocol.h>
+#import <AVConference/VCSessionParticipantDelegate-Protocol.h>
 #import <AVConference/VCSessionParticipantStreamDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, VCDatagramChannelIDS, VCSecurityKeyManager, VCSessionConfiguration, VCSessionParticipant;
-@protocol OS_dispatch_queue, VCSessionDelegate;
+@class AVCRateController, NSArray, NSError, NSMutableArray, NSMutableDictionary, NSString, VCControlChannelMultiWay, VCNetworkFeedbackController, VCRateControlMediaController, VCSecurityKeyManager, VCSessionConfiguration, VCSessionDownlinkBandwidthAllocator, VCSessionMessaging, VCSessionParticipant, VCSessionParticipantLocal, VCSessionStatsController, VCTransportSession;
+@protocol OS_dispatch_queue, VCConnectionProtocol, VCSessionDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VCSession : NSObject <VCSessionParticipantStreamDelegate, VCMediaStreamNotification, RTCPReportProvider, VCSecurityEventHandler>
+@interface VCSession : NSObject <VCSessionParticipantStreamDelegate, AVCRateControllerDelegate, VCRateControlMediaControllerDelegate, VCMediaStreamNotification, RTCPReportProvider, VCSecurityEventHandler, VCSessionParticipantDelegate, VCNetworkFeedbackControllerDelegate, VCConnectionChangedHandler>
 {
     unsigned int _state;
     NSObject<OS_dispatch_queue> *_sessionQueue;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
     id<VCSessionDelegate> _delegate;
+    NSString *_uuid;
     NSString *_idsDestination;
+    VCControlChannelMultiWay *_controlChannel;
+    VCSessionMessaging *_sessionMessaging;
     VCSessionConfiguration *_configuration;
-    VCSessionParticipant *_localParticipant;
-    NSMutableDictionary *_remoteParticipants;
+    VCSessionParticipantLocal *_localParticipant;
+    NSMutableDictionary *_remoteParticipantsMapByUUID;
+    NSMutableDictionary *_remoteParticipantsMapByServerID;
     struct opaqueRTCReporting *_reportingAgent;
+    int _reportUpdateInterval;
+    int _reportReportFrequency;
+    VCSessionStatsController *_sessionStatsController;
+    VCNetworkFeedbackController *_feedbackController;
     NSMutableArray *_startingParticipants;
     NSMutableArray *_stoppingParticipants;
     NSMutableArray *_initializingParticipants;
-    VCDatagramChannelIDS *_datagramChannel;
     VCSecurityKeyManager *_securityKeyManager;
+    VCTransportSession *_transportSession;
+    int _currentconnectionType;
+    id<VCConnectionProtocol> _currentActiveConnection;
+    unsigned int _transportSessionID;
     BOOL _localSourceNeedsReset;
-    BOOL _encryptionInfoReceived;
     BOOL _useReducedSizeRTCP;
+    AVCRateController *_uplinkRateController;
+    AVCRateController *_downlinkRateController;
+    unsigned int _uplinkTargetBitrate;
+    unsigned int _downlinkTargetBitrate;
+    VCRateControlMediaController *_uplinkMediaController;
+    unsigned int _basebandFlushTransactionID;
+    VCSessionDownlinkBandwidthAllocator *_downlinkBandwidthAllocator;
+    NSMutableDictionary *_optInDictionary;
+    double _sessionStartTime;
+    struct tagVCMediaQueue *_mediaQueue;
+    BOOL _forceDisableMediaPriority;
+    NSError *_stopError;
 }
 
+@property (strong, nonatomic) id<VCConnectionProtocol> currentActiveConnection; // @synthesize currentActiveConnection=_currentActiveConnection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id<VCSessionDelegate> delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) AVCRateController *downlinkRateController; // @synthesize downlinkRateController=_downlinkRateController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *idsDestination; // @synthesize idsDestination=_idsDestination;
 @property (readonly, nonatomic) VCSessionParticipant *localParticipant; // @synthesize localParticipant=_localParticipant;
+@property (nonatomic) struct tagVCMediaQueue *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
+@property (strong) NSMutableDictionary *optInDictionary; // @synthesize optInDictionary=_optInDictionary;
+@property (readonly, nonatomic) NSArray *remoteParticipants;
+@property (strong, nonatomic) NSMutableDictionary *remoteParticipantsMapByServerID; // @synthesize remoteParticipantsMapByServerID=_remoteParticipantsMapByServerID;
+@property (readonly, nonatomic) struct opaqueRTCReporting *reportingAgent; // @synthesize reportingAgent=_reportingAgent;
+@property (strong, nonatomic) VCSessionMessaging *sessionMessaging; // @synthesize sessionMessaging=_sessionMessaging;
+@property (readonly, nonatomic) VCSessionStatsController *sessionStatsController; // @synthesize sessionStatsController=_sessionStatsController;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) VCTransportSession *transportSession; // @synthesize transportSession=_transportSession;
+@property (readonly, nonatomic) unsigned int transportSessionID; // @synthesize transportSessionID=_transportSessionID;
+@property (readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
-- (void)addParticipant:(id)arg1;
-- (BOOL)createDatagramChannel;
+- (void)addParticipantConfigurations:(id)arg1 processID:(int)arg2;
+- (void)broadcastMessage:(id)arg1 withTopic:(id)arg2;
+- (unsigned int)calculateExpectedTotalNetworkBitrateDownlink;
+- (unsigned int)calculateExpectedTotalNetworkBitrateUplink;
+- (void)collectSessionEventKeyFields:(struct __CFDictionary *)arg1 eventType:(unsigned short)arg2 withParticipant:(id)arg3 keyChangeReason:(id)arg4 newMKI:(id)arg5 withStreamID:(unsigned short)arg6;
+- (void)createMediaQueue;
+- (void)createSessionMessaging;
 - (void)dealloc;
+- (void)destroySessionMessaging;
 - (BOOL)detectSSRCCollision:(id)arg1 resetNeeded:(BOOL *)arg2;
 - (void)didReceiveCustomReportPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
 - (void)didReceiveRTCPPackets:(struct _RTCPPacketList *)arg1;
 - (void)didReceiveReportPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
-- (void)dispatchedAddParticipant:(id)arg1;
+- (void)dispatchedAddParticipantConfigurations:(id)arg1 processID:(int)arg2;
+- (void)dispatchedAddParticipantWithConfig:(id)arg1 processID:(int)arg2;
 - (void)dispatchedParticipant:(id)arg1 didStart:(BOOL)arg2 error:(id)arg3;
 - (void)dispatchedParticipant:(id)arg1 didStopWithError:(id)arg2;
 - (void)dispatchedRemoveParticipant:(id)arg1;
 - (void)dispatchedStart;
-- (void)dispatchedStop;
+- (void)dispatchedStopWithError:(id)arg1;
 - (void)dispatchedUpdateConfiguration:(id)arg1;
+- (void)distributeBitrateAndOptInToStreamIDsWithSeamlessTransition:(BOOL)arg1;
+- (int)flushBasebandWithPayloads:(id)arg1;
+- (void)generateKeyFrameWithReceivedMessage:(id)arg1;
 - (BOOL)generateReceptionReportList:(struct _RTCP_RECEPTION_REPORT *)arg1 reportCount:(char *)arg2;
-- (void)handleEncryptionInfoChange:(id)arg1;
-- (void)handleIDSEncryptionInfoEvent:(id)arg1;
-- (void)handleIDSMembershipChangeInfoEvent:(id)arg1;
-- (id)initWithIDSDestination:(id)arg1 configurationDict:(id)arg2 delegate:(id)arg3 localParticipant:(id)arg4;
-- (void)mediaStream:(id)arg1 didReceiveNewMasterKeyIndex:(unsigned int)arg2;
+- (struct __CFDictionary *)getClientSpecificUserInfo;
+- (void)handleActiveConnectionChange:(id)arg1;
+- (void)handleCellTechChange:(int)arg1 connection:(id)arg2;
+- (void)handleCellularMTUChanged:(unsigned short)arg1 connection:(id)arg2;
+- (BOOL)handleEncryptionInfoChange:(id)arg1;
+- (void)handleEncryptionInfoEvent:(id)arg1;
+- (void)handleMembershipChangeInfoEvent:(id)arg1;
+- (id)initWithIDSDestination:(id)arg1 configurationDict:(id)arg2 delegate:(id)arg3 processId:(int)arg4;
+- (void)mediaController:(void *)arg1 mediaSuggestionDidChange:(struct VCRateControlMediaSuggestion)arg2;
+- (void)mediaStateChangedForParticipant:(id)arg1;
+- (void)mediaStream:(id)arg1 didReceiveNewMasterKeyIndex:(id)arg2;
 - (void)optInStreamWithIDSStreamIDs:(id)arg1;
 - (void)optOutStreamWithIDSStreamIDs:(id)arg1;
+- (id)participantForID:(id)arg1;
 - (id)participantsToString;
-- (void)registerRTCPCallbackForParticipant:(id)arg1;
-- (void)registerRemoteParticipant:(id)arg1;
+- (void)rateController:(void *)arg1 targetBitrateDidChange:(unsigned int)arg2 rateChangeCounter:(unsigned int)arg3;
+- (void)recommendedSettingsChanged:(id)arg1;
+- (void)registerMediaStreamNotificationDelegateForParticipant:(id)arg1;
+- (void)registerRemoteParticipantToSession:(id)arg1;
+- (void)registerReportingTask;
+- (void)removeDelegatesForRemoteParticipant:(id)arg1;
 - (void)removeParticipant:(id)arg1;
+- (void)reportingSessionDownlinkOptInEvent:(id)arg1 selectedMediaEntriesForParticipants:(id)arg2;
 - (void)reportingSessionParticipantEvent:(unsigned short)arg1 keyChangeReason:(id)arg2 newMKI:(id)arg3;
 - (void)reportingSessionParticipantEvent:(unsigned short)arg1 withParticipant:(id)arg2;
-- (void)reportingSessionParticipantEvent:(unsigned short)arg1 withParticipant:(id)arg2 streamID:(unsigned int)arg3 keyChangeReason:(id)arg4 newMKI:(id)arg5;
+- (void)reportingSessionParticipantEvent:(unsigned short)arg1 withParticipant:(id)arg2 keyChangeReason:(id)arg3 newMKI:(id)arg4;
+- (void)reportingSessionParticipantEvent:(unsigned short)arg1 withParticipant:(id)arg2 keyChangeReason:(id)arg3 newMKI:(id)arg4 withStreamID:(unsigned short)arg5;
+- (void)reportingSessionParticipantEvent:(unsigned short)arg1 withStreamID:(unsigned short)arg2;
+- (void)reportingSessionRemoteParticipantEvent:(unsigned short)arg1 withParticipant:(id)arg2 value:(id)arg3;
+- (void)reportingSessionStopEventWithError:(id)arg1;
+- (void)resetDecryptionTimeout;
+- (void)sendSymptomsToRemoteParticipants:(id)arg1 symptom:(id)arg2 groupID:(id)arg3;
 - (char *)sessionStateToString:(unsigned int)arg1;
+- (void)setDelegatesForRemoteParticipant:(id)arg1;
+- (void)setMediaQueuePeakBitrateWithTargetBitrate:(unsigned int)arg1;
+- (void)setSessionInfoSynchronizerCallbacks;
+- (void)setSessionInfoSynchronizerErrorResponseCallback;
+- (void)setSessionInfoSynchronizerPeerSubscribedStreamsCallback;
 - (void)setState:(unsigned int)arg1;
+- (void)setupAudioEnabledMessages;
+- (void)setupAudioPausedMessages;
+- (void)setupKeyFrameGenerationMessages;
+- (void)setupRateControllers;
+- (void)setupSymptomEnabledMessages;
+- (void)setupTransportSessionWithDestination:(id)arg1;
+- (void)setupUplinkBitrateCaps;
+- (void)setupVideoEnabledMessages;
+- (void)setupVideoPausedMessages;
+- (void)setupVideoRedundancyMessages;
 - (void)start;
+- (void)startRateControllers;
+- (void)startSessionMessaging;
 - (void)stop;
 - (void)stopAllParticipants;
-- (void)unregisterRTCPCallbackForParticipant:(id)arg1;
-- (void)unregisterRemoteParticipant:(id)arg1;
+- (void)stopSessionMessaging;
+- (void)tearDown;
+- (void)unregisterMediaStreamNotificationDelegateForParticipant:(id)arg1;
+- (void)unregisterRemoteParticipantFromSession:(id)arg1;
+- (void)unregisterReportingTask;
 - (void)updateConfiguration:(id)arg1;
 - (void)updateLocalStreamConfiguration;
+- (void)updateParticipantConfigurations:(id)arg1;
+- (void)vcSessionParticipant:(id)arg1 audioEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
+- (void)vcSessionParticipant:(id)arg1 audioPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
+- (void)vcSessionParticipant:(id)arg1 didChangeProminence:(unsigned char)arg2 description:(id)arg3;
+- (void)vcSessionParticipant:(id)arg1 didDetectError:(id)arg2;
+- (void)vcSessionParticipant:(id)arg1 didRequestVideoRedundancy:(BOOL)arg2;
 - (void)vcSessionParticipant:(id)arg1 didStart:(BOOL)arg2 error:(id)arg3;
 - (void)vcSessionParticipant:(id)arg1 didStopWithError:(id)arg2;
+- (void)vcSessionParticipant:(id)arg1 didSwitchFromStreamID:(unsigned short)arg2 toStreamID:(unsigned short)arg3;
+- (void)vcSessionParticipant:(id)arg1 remoteAudioEnabledDidChange:(BOOL)arg2;
+- (void)vcSessionParticipant:(id)arg1 remoteAudioPausedDidChange:(BOOL)arg2;
+- (void)vcSessionParticipant:(id)arg1 remoteVideoEnabledDidChange:(BOOL)arg2;
+- (void)vcSessionParticipant:(id)arg1 remoteVideoPausedDidChange:(BOOL)arg2;
+- (void)vcSessionParticipant:(id)arg1 requestKeyFrameGenerationWithStreamID:(unsigned short)arg2;
+- (void)vcSessionParticipant:(id)arg1 videoEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
+- (void)vcSessionParticipant:(id)arg1 videoPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
+- (void)vcSessionParticipantDidChangeActualNetworkBitrateAudio:(id)arg1;
+- (void)vcSessionParticipantDidChangeActualNetworkBitrateVideo:(id)arg1;
+- (void)vcSessionParticipantDidChangeReceivingStreams:(id)arg1;
+- (void)vcSessionParticipantDidChangeSendingStreams:(id)arg1;
+- (void)vcSessionParticipantDidMediaDecryptionTimeOut:(id)arg1;
 
 @end
 

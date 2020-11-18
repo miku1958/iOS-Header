@@ -11,10 +11,10 @@
 @protocol NUIArrangementContainer <NSObject>
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id<NUIArrangementItem>)arg2;
 - (struct CGRect)layoutFrameForArrangedSubview:(id<NUIArrangementItem>)arg1 withProposedContentFrame:(struct CGRect)arg2;
-- (BOOL)supportsAsynchronousMeasurement;
 
 @optional
 - (double)displayScale;
 - (long long)effectiveUserInterfaceLayoutDirection;
+- (BOOL)supportsAsynchronousMeasurement;
 @end
 

@@ -6,31 +6,51 @@
 
 #import <objc/NSObject.h>
 
-@class HKDevice, HKHealthStore;
+#import <HealthKit/HKSeriesBuilderClientInterface-Protocol.h>
+#import <HealthKit/_HKXPCExportable-Protocol.h>
+
+@class HKHealthStore, HKSeriesBuilderConfiguration, HKTaskServerProxyProvider, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HKSeriesBuilder : NSObject
+@interface HKSeriesBuilder : NSObject <_HKXPCExportable, HKSeriesBuilderClientInterface>
 {
-    BOOL _hasData;
     long long _state;
-    HKDevice *_device;
+    HKTaskServerProxyProvider *_proxyProvider;
+    NSUUID *_identifier;
+    HKSeriesBuilderConfiguration *_configuration;
     HKHealthStore *_store;
     NSObject<OS_dispatch_queue> *_completionQueue;
     NSObject<OS_dispatch_queue> *_resourceQueue;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
-@property (readonly, copy, nonatomic) HKDevice *device; // @synthesize device=_device;
-@property (nonatomic) BOOL hasData;
+@property (readonly, copy, nonatomic) HKSeriesBuilderConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) HKTaskServerProxyProvider *proxyProvider; // @synthesize proxyProvider=_proxyProvider;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *resourceQueue; // @synthesize resourceQueue=_resourceQueue;
 @property (nonatomic) long long state;
 @property (readonly, nonatomic) HKHealthStore *store; // @synthesize store=_store;
+@property (readonly) Class superclass;
 
++ (id)clientInterface;
++ (void)configureClientInterface:(id)arg1;
++ (void)configureServerInterface:(id)arg1;
++ (id)serverInterface;
 - (void).cxx_destruct;
-- (id)_initWithHealthStore:(id)arg1 device:(id)arg2;
+- (id)_initWithHealthStore:(id)arg1 identifier:(id)arg2 configuration:(id)arg3;
+- (void)_resourceQueue_addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resourceQueue_discardWithHandler:(CDUnknownBlockType)arg1;
+- (void)clientRemote_didChangeToState:(long long)arg1;
+- (void)connectionInvalidated;
 - (void)discard;
+- (id)exportedInterface;
+- (void)freezeBuilderWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
+- (void)recoverWithCompletion:(CDUnknownBlockType)arg1;
+- (id)remoteInterface;
 
 @end
 

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSKLayerMediaPlayerController-Protocol.h>
 
-@class CADisplayLink, NSArray, NSMutableSet, NSString;
+@class NSArray, NSMutableSet, NSString;
 @protocol TSKMediaPlayerControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     NSMutableSet *mLayers;
     BOOL mPlaying;
     double mLastDisplayUpdateTime;
-    unsigned long long mDisplayLinkCounter;
     double mAbsoluteCurrentTime;
     float mRate;
     float mRateBeforeScrubbing;
@@ -30,7 +29,6 @@ __attribute__((visibility("hidden")))
     float mVolume;
     long long mRepeatMode;
     NSMutableSet *mObservationTokens;
-    CADisplayLink *mDisplayLink;
     BOOL fastReversing;
     BOOL fastForwarding;
 }
@@ -42,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double lastDisplayUpdateTime; // @synthesize lastDisplayUpdateTime=mLastDisplayUpdateTime;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (double)absoluteCurrentTime;
 - (double)absoluteDuration;
 - (void)addLayer:(id)arg1;
@@ -67,13 +66,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPlaying;
 - (BOOL)isScrubbing;
 - (id)newLayer;
-- (void)p_disableDisplayLink;
-- (void)p_displayLinkDidTrigger:(id)arg1;
-- (void)p_enableDisplayLink;
-- (void)p_getAbsoluteMovieTime:(double *)arg1 shouldStopPlayback:(BOOL *)arg2 shouldReversePlayback:(BOOL *)arg3;
 - (void)p_prepareFrameTimes;
 - (void)p_setAbsoluteCurrentTime:(double)arg1;
-- (void)p_updateDisplayLink;
 - (void)p_updateLayers;
 - (float)rate;
 - (double)remainingTime;

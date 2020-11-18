@@ -11,25 +11,19 @@
 #import <CoreParsec/_CPFeedbackUUID-Protocol.h>
 #import <CoreParsec/_CPProcessableFeedback-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _CPStruct;
+@class NSData, NSDictionary, NSString, _CPNetworkTimingData;
 
 @interface _CPEndNetworkSearchFeedback : PBCodable <_CPProcessableFeedback, _CPFeedbackUUID, _CPEndNetworkSearchFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int timestamp:1;
-        unsigned int responseSize:1;
-        unsigned int statusCode:1;
-        unsigned int duration:1;
-    } _has;
     int _statusCode;
     unsigned long long _timestamp;
     long long _responseSize;
-    _CPStruct *_networkTimingData;
     NSString *_uuid;
     NSString *_parsecStatus;
     NSString *_fbq;
     double _duration;
     NSString *_partialClientIp;
+    _CPNetworkTimingData *_timingData;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -40,19 +34,9 @@
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (copy, nonatomic) NSString *fbq; // @synthesize fbq=_fbq;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasDuration;
-@property (readonly, nonatomic) BOOL hasFbq;
-@property (readonly, nonatomic) BOOL hasNetworkTimingData;
-@property (readonly, nonatomic) BOOL hasParsecStatus;
-@property (readonly, nonatomic) BOOL hasPartialClientIp;
-@property (readonly, nonatomic) BOOL hasResponseSize;
-@property (readonly, nonatomic) BOOL hasStatusCode;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasUuid;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (strong, nonatomic) _CPStruct *networkTimingData; // @synthesize networkTimingData=_networkTimingData;
 @property (copy, nonatomic) NSString *parsecStatus; // @synthesize parsecStatus=_parsecStatus;
 @property (copy, nonatomic) NSString *partialClientIp; // @synthesize partialClientIp=_partialClientIp;
 @property (readonly, nonatomic) BOOL requiresQueryId;
@@ -60,12 +44,12 @@
 @property (nonatomic) int statusCode; // @synthesize statusCode=_statusCode;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (strong, nonatomic) _CPNetworkTimingData *timingData; // @synthesize timingData=_timingData;
 @property (readonly, copy, nonatomic) NSString *uuid;
 @property (copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
-+ (id)_networkTimingStructFromDictionary:(id)arg1;
 - (void).cxx_destruct;
 - (id)_formatNetworkTimingData;
 - (id)init;

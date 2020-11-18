@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/FBSDisplayLayoutMonitorClientDelegate-Protocol.h>
 
@@ -25,7 +25,7 @@
     unsigned long long _qualityOfService;
 }
 
-@property (readonly, strong, nonatomic) FBSDisplayLayout *currentLayout;
+@property (readonly, nonatomic) FBSDisplayLayout *currentLayout;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long displayType; // @synthesize displayType=_displayType;
@@ -35,6 +35,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedMonitorForDisplayType:(long long)arg1;
+- (void).cxx_destruct;
 - (void)_calloutQueue_postLayout:(id)arg1 withContext:(id)arg2 toObserver:(id)arg3;
 - (id)_observers;
 - (void)_queue_updateClient;

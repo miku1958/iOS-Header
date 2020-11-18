@@ -11,11 +11,9 @@
 
 @protocol FCPrivateDataContext <NSObject>
 
-@property (readonly, nonatomic, getter=isABTestingEnabled) BOOL abTestingEnabled;
 @property (readonly, nonatomic) id<FCPrivateDataContextInternal> internalPrivateDataContext;
 @property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
 @property (readonly, nonatomic) FCPersonalizationData *personalizationData;
-@property (readonly, nonatomic, getter=isPersonalizationEnabled) BOOL personalizationEnabled;
 @property (readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController;
 @property (readonly, copy, nonatomic) NSString *privateDataDirectory;
 @property (readonly, nonatomic, getter=isPrivateDataSyncingEnabled) BOOL privateDataSyncingEnabled;

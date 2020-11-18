@@ -61,7 +61,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isAdvancedGradientIgnoringFlag;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualIgnoringTransform:(id)arg1;
-- (SEL)mapThemeAssetSelector;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

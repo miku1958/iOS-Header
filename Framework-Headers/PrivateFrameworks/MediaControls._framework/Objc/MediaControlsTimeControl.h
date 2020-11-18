@@ -82,6 +82,7 @@
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setEnabled:(BOOL)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateLabelAvoidance;
 - (void)viewDidMoveToSuperview;
 

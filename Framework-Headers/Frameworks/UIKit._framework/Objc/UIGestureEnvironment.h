@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMapTable, NSMutableArray, NSMutableSet, UIGestureGraph;
 
@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeNodeFromGestureGraph:(id)arg1;
 - (void)_runPreUpdateActions;
 - (BOOL)_touchesBeganWasDelayedForTouch:(id)arg1;
-- (void)_updateGesturesForEvent:(id)arg1 window:(id)arg2;
+- (void)_updateForEvent:(id)arg1 window:(id)arg2;
 - (void)addGestureRecognizer:(id)arg1;
 - (void)addRequirementForGestureRecognizer:(id)arg1 requiringGestureRecognizerToFail:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 requiresGestureRecognizerToFail:(id)arg2;

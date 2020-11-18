@@ -11,10 +11,6 @@
 @protocol _SFPBDynamicURLImageResource <NSObject>
 
 @property (copy, nonatomic) NSString *formatURL;
-@property (readonly, nonatomic) BOOL hasFormatURL;
-@property (readonly, nonatomic) BOOL hasPixelHeight;
-@property (readonly, nonatomic) BOOL hasPixelWidth;
-@property (readonly, nonatomic) BOOL hasSupportsResizing;
 @property (copy, nonatomic) NSArray *imageOptions;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBGraphicalFloat *pixelHeight;

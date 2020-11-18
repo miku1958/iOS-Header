@@ -4,37 +4,43 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoard/FBSystemServiceFacility.h>
+#import <FrontBoardServices/FBSServiceFacility.h>
 
-#import <FrontBoard/FBApplicationDataStoreRepositoryServerClientDelegate-Protocol.h>
+#import <FrontBoard/FBApplicationDataStoreRepositoryServerClientContextDelegate-Protocol.h>
 
+@class FBServiceClientAuthenticator, NSString;
 @protocol FBApplicationDataStoreRepository;
 
-@interface FBApplicationDataStoreRepositoryServer : FBSystemServiceFacility <FBApplicationDataStoreRepositoryServerClientDelegate>
+@interface FBApplicationDataStoreRepositoryServer : FBSServiceFacility <FBApplicationDataStoreRepositoryServerClientContextDelegate>
 {
     id<FBApplicationDataStoreRepository> _dataStore;
+    FBServiceClientAuthenticator *_connectionAuthenticator;
 }
 
 @property (strong, nonatomic) id<FBApplicationDataStoreRepository> dataStore; // @synthesize dataStore=_dataStore;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_handleGetAvailableDataStores:(id)arg1;
 - (void)_handleGetObjectForKey:(id)arg1;
 - (void)_handleRemoveAllObjects:(id)arg1;
-- (void)_handleRemoveObjectForKey:(id)arg1 client:(id)arg2;
-- (void)_handleSetChangesInterest:(id)arg1 client:(id)arg2;
-- (void)_handleSetObjectForKey:(id)arg1 client:(id)arg2;
-- (void)_handleSetPrefetchedKeys:(id)arg1 client:(id)arg2;
+- (void)_handleRemoveObjectForKey:(id)arg1 context:(id)arg2;
+- (void)_handleSetChangesInterest:(id)arg1 context:(id)arg2;
+- (void)_handleSetObjectForKey:(id)arg1 context:(id)arg2;
+- (void)_handleSetPrefetchedKeys:(id)arg1 context:(id)arg2;
 - (void)_handleSynchronize:(id)arg1;
 - (id)_init;
-- (void)applicationDataStoreRepositoryClient:(id)arg1 valueChangedForObject:(id)arg2 key:(id)arg3 bundleID:(id)arg4;
-- (void)applicationDataStoreRespositoryClient:(id)arg1 repositoryInvalidatedForBundleID:(id)arg2;
-- (Class)classForClient:(id)arg1;
-- (void)dealloc;
+- (id)_prerequisiteMilestones;
+- (void)applicationDataStoreRepositoryClientContext:(id)arg1 repositoryInvalidatedForBundleID:(id)arg2;
+- (void)applicationDataStoreRepositoryClientContext:(id)arg1 valueChangedForObject:(id)arg2 key:(id)arg3 bundleID:(id)arg4;
 - (void)noteClientDidConnect:(id)arg1 withMessage:(id)arg2;
 - (void)noteClientDidDisconnect:(id)arg1;
 - (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
-- (id)prerequisiteMilestones;
+- (BOOL)shouldAllowClientConnection:(id)arg1 withMessage:(id)arg2;
 
 @end
 

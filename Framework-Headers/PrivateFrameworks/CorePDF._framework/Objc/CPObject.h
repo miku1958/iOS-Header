@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CorePDF/CPCopying-Protocol.h>
 #import <CorePDF/NSCopying-Protocol.h>
 
 @class CPDocument, CPPage, NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface CPObject : NSObject <NSCopying, CPCopying>
 {
     CPObject *parent;

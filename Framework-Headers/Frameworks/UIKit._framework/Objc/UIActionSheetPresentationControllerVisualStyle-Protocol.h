@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
-@class UIColor, UITraitCollection, UIView;
+@class UIColor, UIView;
 @protocol UIActionSheetPresentationControllerDismissActionView;
 
 @protocol UIActionSheetPresentationControllerVisualStyle <NSObject>
 
-@property (readonly) struct UIEdgeInsets contentInsets;
 @property (readonly) double cornerRadius;
 @property (readonly) UIColor *dimmingViewColor;
 @property (readonly) UIView<UIActionSheetPresentationControllerDismissActionView> *dismissActionView;
 @property (readonly) double dismissToContentSpacing;
-@property (strong) UITraitCollection *traitCollection;
 
+- (struct UIEdgeInsets)contentInsetsForContainerView:(UIView *)arg1;
 @end
 

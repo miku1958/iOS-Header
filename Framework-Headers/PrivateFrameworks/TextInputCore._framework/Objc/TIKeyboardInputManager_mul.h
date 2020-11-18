@@ -11,7 +11,6 @@
     BOOL _isSuspended;
 }
 
-- (void)dealloc;
 - (void)didUpdateInputModeProbabilities:(id)arg1;
 - (void)didUpdateInputModes:(id)arg1;
 - (void)enumerateInputModesWithBlock:(CDUnknownBlockType)arg1;

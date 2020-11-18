@@ -11,15 +11,18 @@
 
 @interface HFDebugStateDumpManager : NSObject
 {
+    int _logStateDumpNotifyToken;
     NSObject<OS_dispatch_queue> *_stateHandlerQueue;
     NSMutableDictionary *_stateDumpHandlersByName;
 }
 
+@property (readonly, nonatomic) int logStateDumpNotifyToken; // @synthesize logStateDumpNotifyToken=_logStateDumpNotifyToken;
 @property (strong, nonatomic) NSMutableDictionary *stateDumpHandlersByName; // @synthesize stateDumpHandlersByName=_stateDumpHandlersByName;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *stateHandlerQueue; // @synthesize stateHandlerQueue=_stateHandlerQueue;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 - (id)performStateDump:(BOOL)arg1;
 - (id)registerStateDumpHandler:(CDUnknownBlockType)arg1 withName:(id)arg2;

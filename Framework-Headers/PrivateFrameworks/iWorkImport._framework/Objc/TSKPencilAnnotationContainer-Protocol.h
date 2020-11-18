@@ -8,6 +8,8 @@
 
 @protocol TSKPencilAnnotationContainer <NSObject>
 - (BOOL)canBeAnnotatedWithPencil;
-- (void)enumerateAllPencilAnnotationsInModelWithHitBlock:(void (^)(id<TSKPencilAnnotation>, BOOL *))arg1;
+- (BOOL)childrenCanBeAnnotatedWithPencil;
+- (void)enumeratePencilAnnotationsUsingBlock:(void (^)(id<TSKPencilAnnotation>, BOOL *))arg1;
+- (void)removePencilAnnotations;
 @end
 

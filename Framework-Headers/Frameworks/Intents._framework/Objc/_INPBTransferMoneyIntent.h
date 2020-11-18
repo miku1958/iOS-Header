@@ -7,12 +7,14 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBTransferMoneyIntent-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBDateTimeRange, _INPBFinancialAccountValue, _INPBIntentMetadata, _INPBPaymentAmountValue;
+@class NSString, _INPBDateTimeRange, _INPBFinancialAccountValue, _INPBIntentMetadata, _INPBPaymentAmountValue;
 
-@interface _INPBTransferMoneyIntent : PBCodable <NSCopying>
+@interface _INPBTransferMoneyIntent : PBCodable <_INPBTransferMoneyIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBFinancialAccountValue *_fromAccount;
     _INPBIntentMetadata *_intentMetadata;
     _INPBFinancialAccountValue *_toAccount;
@@ -21,6 +23,8 @@
     _INPBDateTimeRange *_transactionScheduledDate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBFinancialAccountValue *fromAccount; // @synthesize fromAccount=_fromAccount;
 @property (readonly, nonatomic) BOOL hasFromAccount;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
@@ -28,21 +32,18 @@
 @property (readonly, nonatomic) BOOL hasTransactionAmount;
 @property (readonly, nonatomic) BOOL hasTransactionNote;
 @property (readonly, nonatomic) BOOL hasTransactionScheduledDate;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBFinancialAccountValue *toAccount; // @synthesize toAccount=_toAccount;
 @property (strong, nonatomic) _INPBPaymentAmountValue *transactionAmount; // @synthesize transactionAmount=_transactionAmount;
-@property (strong, nonatomic) NSString *transactionNote; // @synthesize transactionNote=_transactionNote;
+@property (copy, nonatomic) NSString *transactionNote; // @synthesize transactionNote=_transactionNote;
 @property (strong, nonatomic) _INPBDateTimeRange *transactionScheduledDate; // @synthesize transactionScheduledDate=_transactionScheduledDate;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

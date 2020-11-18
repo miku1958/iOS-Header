@@ -6,7 +6,18 @@
 
 #import <Photos/PHAssetCollection.h>
 
+@class NSString;
+
 @interface PHAssetCollection (PhotosUICore)
+
+@property (readonly, copy, nonatomic) NSString *px_estimatedAssetsCountLocalizedString;
+
++ (id)px_importHistoryAssetCollection;
++ (id)px_mediaTypeSmartAlbumSubtypes;
++ (id)px_otherAlbumsSubtypes;
++ (id)px_smartAlbumWithSubtype:(long long)arg1;
+- (BOOL)px_allowsAssetsDrop;
+- (BOOL)px_isUserCreated;
 - (BOOL)px_shouldUseFacesRectForSmartCropping;
 @end
 

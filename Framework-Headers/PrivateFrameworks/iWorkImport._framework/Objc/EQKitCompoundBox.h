@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (void)p_cacheDimensionsForHeight:(double *)arg1 depth:(double *)arg2 width:(double *)arg3;
 - (struct CGRect)p_cacheErasableBounds;
+- (void)setFontSmoothingBackgroundColor:(struct CGColor *)arg1;
 
 @end
 

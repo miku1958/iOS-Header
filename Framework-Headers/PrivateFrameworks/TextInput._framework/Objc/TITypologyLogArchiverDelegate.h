@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSKeyedArchiverDelegate-Protocol.h>
 
@@ -21,8 +21,8 @@
 @property (readonly, nonatomic) NSMutableSet *objects; // @synthesize objects=_objects;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)archiver:(id)arg1 willEncodeObject:(id)arg2;
-- (void)dealloc;
 - (id)init;
 
 @end

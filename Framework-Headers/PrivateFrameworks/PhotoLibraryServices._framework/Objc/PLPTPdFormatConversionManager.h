@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLPTPConversionSupport-Protocol.h>
 
@@ -33,7 +33,7 @@
 
 - (void).cxx_destruct;
 - (id)assetReaderForFormatConvertedPTPAsset:(id)arg1 ofManagedAsset:(id)arg2 path:(id)arg3;
-- (id)conversionResultForAsset:(id)arg1 isVideo:(BOOL)arg2 isRender:(BOOL)arg3;
+- (id)conversionResultForAsset:(id)arg1 isVideo:(BOOL)arg2 isRender:(BOOL)arg3 forceLegacyConversion:(BOOL)arg4;
 - (id)convertedAssetLivePhotoPairingIdentifierForOriginalIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)effectivePeerMediaCapabilites;

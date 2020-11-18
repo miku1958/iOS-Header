@@ -21,9 +21,10 @@
     id<BKSSystemApplicationClientDelegate> _delegate;
 }
 
-@property (nonatomic) id<BKSSystemApplicationClientDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<BKSSystemApplicationClientDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) double systemIdleSleepInterval; // @synthesize systemIdleSleepInterval=_systemIdleSleepInterval;
 
+- (void).cxx_destruct;
 - (void)_connect;
 - (void)_queue_handleWatchdogPing:(id)arg1;
 - (void)_sendMessageOfType:(long long)arg1 packer:(CDUnknownBlockType)arg2;
@@ -31,7 +32,6 @@
 - (void)_sendMessageOfType:(long long)arg1 packer:(CDUnknownBlockType)arg2 replyHandler:(CDUnknownBlockType)arg3 waitForReply:(BOOL)arg4 waitDuration:(unsigned long long)arg5;
 - (void)checkInAndWaitForDataMigration:(BOOL)arg1;
 - (void)connect;
-- (void)dealloc;
 - (void)finishBooting;
 - (id)initWithCalloutQueue:(id)arg1;
 - (BOOL)ping;

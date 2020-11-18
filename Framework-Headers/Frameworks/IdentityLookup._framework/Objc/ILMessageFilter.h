@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
+- (void)performClassificationReportRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performQueryRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performReportRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;

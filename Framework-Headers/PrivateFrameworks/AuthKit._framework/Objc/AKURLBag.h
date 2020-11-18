@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) NSURL *notificationAckURL;
 @property (readonly, nonatomic, getter=isPhoneNumberSupportedConfig) BOOL phoneNumberSupportedConfig;
 @property (readonly, nonatomic) NSURL *renewRecoveryTokenURL;
+@property (readonly, nonatomic) NSURL *repairURL;
 @property (readonly, nonatomic) NSURL *startProvisioningURL;
 @property (readonly, nonatomic) NSURL *storeModernRecoveryURL;
 @property (readonly, nonatomic) NSURL *syncAnisetteURL;

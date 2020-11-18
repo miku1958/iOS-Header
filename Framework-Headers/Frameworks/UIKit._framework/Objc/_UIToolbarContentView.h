@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBarContentView.h>
+#import <UIKitCore/_UIBarContentView.h>
 
 @class NSLayoutConstraint, NSMapTable, _UIButtonBar;
 
@@ -12,16 +12,15 @@ __attribute__((visibility("hidden")))
 @interface _UIToolbarContentView : _UIBarContentView
 {
     _UIButtonBar *_buttonBar;
-    NSLayoutConstraint *_buttonBarTopConstraint;
     NSLayoutConstraint *_buttonBarLeadingConstraint;
     NSLayoutConstraint *_buttonBarTrailingConstraint;
     NSMapTable *_absorptionTable;
     double _standardEdgeSpacing;
     BOOL _hitTestingExtensionsAreValid;
-    double _topPadding;
+    struct NSDirectionalEdgeInsets _padding;
 }
 
-@property (nonatomic) double topPadding; // @synthesize topPadding=_topPadding;
+@property (nonatomic) struct NSDirectionalEdgeInsets padding; // @synthesize padding=_padding;
 
 - (void).cxx_destruct;
 - (void)_UIAppearance_setBackButtonBackgroundImage:(id)arg1 forState:(unsigned long long)arg2 barMetrics:(long long)arg3;

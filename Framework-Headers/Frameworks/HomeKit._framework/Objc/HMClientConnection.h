@@ -8,13 +8,13 @@
 
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 
-@class HMFMessageDispatcher, HMXpcClient, NSString, NSUUID;
+@class HMFMessageDispatcher, HMXPCClient, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMClientConnection : NSObject <HMFMessageReceiver>
 {
     NSObject<OS_dispatch_queue> *_clientQueue;
-    HMXpcClient *_xpcClient;
+    HMXPCClient *_xpcClient;
     HMFMessageDispatcher *_msgDispatcher;
     NSUUID *_uuid;
 }
@@ -28,20 +28,23 @@
 @property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
-@property (strong, nonatomic) HMXpcClient *xpcClient; // @synthesize xpcClient=_xpcClient;
+@property (strong, nonatomic) HMXPCClient *xpcClient; // @synthesize xpcClient=_xpcClient;
 
 + (BOOL)areAnyAccessoriesConfigured;
 + (BOOL)areAnySpeakersConfigured;
 + (BOOL)areHomesConfigured;
++ (id)sharedInstance;
 + (id)siriHomeIdentifier;
 - (void).cxx_destruct;
 - (void)_registerToDaemon;
+- (void)_reportIntentResultTohandler:(CDUnknownBlockType)arg1;
 - (void)_reportResultsTohandler:(CDUnknownBlockType)arg1;
 - (void)_start;
 - (void)dealloc;
 - (id)init;
 - (id)initWithNoValidation;
 - (void)requestSiriSyncDataWithValidity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sendIntentRequestCommand:(id)arg1 withPayload:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)sendSiriCommand:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

@@ -16,7 +16,7 @@
     Class _principalClass;
     id _initialPath;
     id _resolvedPath;
-    id _reserved3;
+    Class _firstClass;
     id _lock;
 }
 
@@ -75,6 +75,7 @@
 - (id)_pathForResource:(id)arg1 ofType:(id)arg2 inDirectory:(id)arg3 forRegion:(id)arg4;
 - (id)_pathsForResourcesOfType:(id)arg1 inDirectory:(id)arg2 forRegion:(id)arg3;
 - (id)_regionsArray;
+- (BOOL)_searchForLocalizedString:(id)arg1 foundKey:(id *)arg2 foundTable:(id *)arg3;
 - (id)bundleLanguages;
 - (Class)classNamed:(id)arg1;
 - (void)dealloc;

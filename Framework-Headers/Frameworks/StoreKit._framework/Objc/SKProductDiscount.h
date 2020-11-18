@@ -4,25 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDecimalNumber, NSLocale, SKProductSubscriptionPeriod;
 
 @interface SKProductDiscount : NSObject
 {
-    unsigned long long _numberOfPeriods;
-    unsigned long long _paymentMode;
-    NSDecimalNumber *_price;
-    NSLocale *_locale;
-    SKProductSubscriptionPeriod *_subscriptionPeriod;
-    NSLocale *_priceLocale;
+    id _internal;
 }
 
-@property (readonly, nonatomic) unsigned long long numberOfPeriods; // @synthesize numberOfPeriods=_numberOfPeriods;
-@property (readonly, nonatomic) unsigned long long paymentMode; // @synthesize paymentMode=_paymentMode;
-@property (readonly, nonatomic) NSDecimalNumber *price; // @synthesize price=_price;
-@property (readonly, nonatomic) NSLocale *priceLocale; // @synthesize priceLocale=_priceLocale;
-@property (readonly, nonatomic) SKProductSubscriptionPeriod *subscriptionPeriod; // @synthesize subscriptionPeriod=_subscriptionPeriod;
+@property (readonly, nonatomic) unsigned long long numberOfPeriods;
+@property (readonly, nonatomic) unsigned long long paymentMode;
+@property (readonly, nonatomic) NSDecimalNumber *price;
+@property (readonly, nonatomic) NSLocale *priceLocale;
+@property (readonly, nonatomic) SKProductSubscriptionPeriod *subscriptionPeriod;
 
 - (void).cxx_destruct;
 - (void)_setNumberOfPeriods:(unsigned long long)arg1;
@@ -31,6 +26,8 @@
 - (void)_setPriceLocale:(id)arg1;
 - (void)_setSubscriptionPeriod:(id)arg1;
 - (id)copyXPCEncoding;
+- (id)init;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
 
 @end

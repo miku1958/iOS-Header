@@ -4,16 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class ICCameraDevice, ICCameraFolder, NSDate, NSDictionary, NSMutableDictionary, NSString;
+@class ICCameraDevice, ICCameraFolder, NSData, NSDate, NSDictionary, NSMutableDictionary, NSString;
 
 @interface ICCameraItem : NSObject
 {
     void *_itemProperties;
+    NSData *_thumbnailData;
+    id _userObject;
+    NSString *_relativeFileSystemPath;
 }
 
 @property (readonly) NSString *UTI;
+@property (copy) CDUnknownBlockType completionBlock;
 @property (readonly) NSDate *creationDate;
 @property (readonly) ICCameraDevice *device;
 @property (readonly) NSString *fileSystemPath;
@@ -23,22 +27,37 @@
 @property (readonly) NSDictionary *metadata;
 @property (readonly) NSDate *modificationDate;
 @property (readonly) NSString *name;
+@property (readonly) unsigned long long objectID;
+@property (readonly) unsigned long long ownerID;
 @property (readonly) ICCameraFolder *parentFolder;
+@property (readonly) unsigned long long parentID;
+@property (readonly) NSString *relativeFileSystemPath; // @synthesize relativeFileSystemPath=_relativeFileSystemPath;
 @property (readonly) struct CGImage *thumbnail;
+@property (readonly) NSData *thumbnailData; // @synthesize thumbnailData=_thumbnailData;
+@property (readonly) unsigned long long twinID;
 @property (readonly) NSMutableDictionary *userData;
+@property (strong) id userObject; // @synthesize userObject=_userObject;
 
 - (void)appendToPath:(id)arg1;
+- (long long)compareObjectID:(id)arg1;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (void)flushMetadataCache;
 - (void)flushThumbnailCache;
 - (id)initWithName:(id)arg1 parentFolder:(id)arg2 device:(id)arg3;
+- (unsigned int)ptpObjectHandle;
 - (void)requestMetadata;
 - (void)requestThumbnail;
 - (void)setCreationDate:(id)arg1;
 - (void)setModificationDate:(id)arg1;
+- (void)setObjectID:(unsigned long long)arg1;
+- (void)setOwnerID:(unsigned long long)arg1;
+- (void)setParentFolder:(id)arg1;
+- (void)setParentID:(unsigned long long)arg1;
+- (void)setPtpObjectHandle:(unsigned int)arg1;
+- (void)setTwinID:(unsigned long long)arg1;
 - (void)setUTI:(id)arg1;
+- (unsigned long long)unsignedIntegerValue;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

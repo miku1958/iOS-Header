@@ -10,6 +10,7 @@
 {
 }
 
++ (unsigned int)EncryptionAudioSampleByteDepth;
 + (unsigned int)audioConverterBitrate;
 + (unsigned long long)channelForOutputReference;
 + (unsigned long long)channelForProcessedInput;
@@ -27,7 +28,6 @@
 + (float)inputRecordingSampleRate;
 + (id)inputRecordingSampleRateConverterAlgorithm;
 + (float)inputRecordingSampleRateNarrowBand;
-+ (unsigned long long)maxNumLoggingFiles;
 + (unsigned short)zeroFilterApproxAbsSpeechThreshold;
 + (unsigned long long)zeroFilterWindowSizeInMs;
 

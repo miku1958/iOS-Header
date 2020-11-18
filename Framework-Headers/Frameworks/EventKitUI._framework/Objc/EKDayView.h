@@ -11,8 +11,8 @@
 #import <EventKitUI/EKDayViewContentDelegate-Protocol.h>
 #import <EventKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class EKDayAllDayView, EKDayTimeView, EKDayViewContent, EKEvent, NSArray, NSCalendar, NSDate, NSDateComponents, NSString, NSTimer, UIColor, UIImageView, UIPinchGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIVisualEffect;
-@protocol EKDayViewDataSource, EKDayViewDelegate;
+@class EKDayAllDayView, EKDayTimeView, EKDayViewContent, EKEvent, NSArray, NSCalendar, NSDate, NSDateComponents, NSObject, NSString, NSTimer, UIColor, UIImageView, UIPinchGestureRecognizer, UIScrollView, UITapGestureRecognizer, UIVisualEffect;
+@protocol EKDayViewDataSource, EKDayViewDelegate, OS_dispatch_queue;
 
 @interface EKDayView : UIView <UIScrollViewDelegate, EKDayAllDayViewDelegate, EKDayViewContentDelegate, EKDayTimeViewDelegate>
 {
@@ -41,6 +41,7 @@
     BOOL _pinching;
     UIPinchGestureRecognizer *_pinchGestureRecognizer;
     UITapGestureRecognizer *_doubleTapGestureRecognizer;
+    NSObject<OS_dispatch_queue> *_reloadQueue;
     BOOL _allowsOccurrenceSelection;
     BOOL _alignsMidnightToTop;
     BOOL _showOnlyAllDayArea;
@@ -99,6 +100,7 @@
 @property (strong, nonatomic) UIColor *occurrenceTimeColor;
 @property (strong, nonatomic) UIColor *occurrenceTitleColor;
 @property (readonly, nonatomic) NSArray *occurrenceViews;
+@property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) int outlineStyle; // @synthesize outlineStyle=_outlineStyle;
 @property (nonatomic) double scrollAnimationDurationOverride; // @synthesize scrollAnimationDurationOverride=_scrollAnimationDurationOverride;
 @property (readonly, nonatomic) double scrollBarOffset;
@@ -182,6 +184,8 @@
 - (struct CGRect)rectForEvent:(id)arg1;
 - (void)relayoutExistingTimedOccurrences;
 - (void)reloadData;
+- (void)reloadDataSynchronously;
+- (void)reloadDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)removeFromSuperview;
 - (void)resetLastSelectedOccurrencePoint;
 - (double)scaledHourHeight;
@@ -201,11 +205,11 @@
 - (void)setAllDayLabelHighlighted:(BOOL)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setOpaque:(BOOL)arg1;
-- (void)setOrientation:(long long)arg1;
 - (void)setScrollerYInset:(double)arg1 keepingYPointVisible:(double)arg2;
 - (void)setTimeZone:(id)arg1;
 - (void)stopScrolling;
 - (void)updateMarkerPosition;
+- (id)verticalScrollView;
 - (void)willMoveToSuperview:(id)arg1;
 - (double)yPositionPerhapsMatchingAllDayOccurrence:(id)arg1;
 

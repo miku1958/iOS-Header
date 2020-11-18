@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_transitionViewsAnimated:(BOOL)arg1;
+- (void)_transitionViewsFromPayState:(long long)arg1 animated:(BOOL)arg2;
 
 @end
 

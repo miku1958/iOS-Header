@@ -6,10 +6,11 @@
 
 #import <UIKit/UICollectionViewFlowLayout.h>
 
-@class NSDictionary, NSIndexPath, NSSet, NTKUpNextCollectionViewFlowLayoutAttributes;
+@class CLKDevice, NSDictionary, NSIndexPath, NSSet, NTKUpNextCollectionViewFlowLayoutAttributes;
 
 @interface NTKUpNextCollectionViewFlowLayout : UICollectionViewFlowLayout
 {
+    CLKDevice *_device;
     NSDictionary *_layoutInfo;
     NSDictionary *_headerLayoutInfo;
     NTKUpNextCollectionViewFlowLayoutAttributes *_decorationLayoutInfo;
@@ -19,6 +20,7 @@
     BOOL _needsInsetsUpdate;
     BOOL _useFixedLowTransitionLayout;
     BOOL _snappingEnabled;
+    BOOL _showingAllAttributes;
     double _topItemsAlpha;
     double _headerAlpha;
     double _topItemsShift;
@@ -28,20 +30,27 @@
     double _topOffsetForSnapping;
     double _topOffsetForScrolling;
     double _lowTransitionScale;
+    double _lowTransitionShift;
     double _highTransitionScale;
     double _highTransitionShift;
+    double _maximumDarkeningAmount;
     double _highTransitionBottomOffset;
     NSIndexPath *_indexPathToSnapTo;
     double _snappingOffset;
+    NSSet *_dwellIndexPathes;
 }
 
 @property (strong, nonatomic) NSIndexPath *bottomElementIndexPath; // @synthesize bottomElementIndexPath=_bottomElementIndexPath;
+@property (readonly, nonatomic) NSSet *dwellIndexPathes; // @synthesize dwellIndexPathes=_dwellIndexPathes;
 @property (nonatomic) double headerAlpha; // @synthesize headerAlpha=_headerAlpha;
 @property (nonatomic) double highTransitionBottomOffset; // @synthesize highTransitionBottomOffset=_highTransitionBottomOffset;
 @property (nonatomic) double highTransitionScale; // @synthesize highTransitionScale=_highTransitionScale;
 @property (nonatomic) double highTransitionShift; // @synthesize highTransitionShift=_highTransitionShift;
 @property (strong, nonatomic) NSIndexPath *indexPathToSnapTo; // @synthesize indexPathToSnapTo=_indexPathToSnapTo;
 @property (nonatomic) double lowTransitionScale; // @synthesize lowTransitionScale=_lowTransitionScale;
+@property (nonatomic) double lowTransitionShift; // @synthesize lowTransitionShift=_lowTransitionShift;
+@property (nonatomic) double maximumDarkeningAmount; // @synthesize maximumDarkeningAmount=_maximumDarkeningAmount;
+@property (nonatomic, getter=isShowingAllAttributes) BOOL showingAllAttributes; // @synthesize showingAllAttributes=_showingAllAttributes;
 @property (nonatomic, getter=isSnappingEnabled) BOOL snappingEnabled; // @synthesize snappingEnabled=_snappingEnabled;
 @property (nonatomic) double snappingOffset; // @synthesize snappingOffset=_snappingOffset;
 @property (nonatomic) double statusBarDecorationHeight; // @synthesize statusBarDecorationHeight=_statusBarDecorationHeight;
@@ -57,12 +66,14 @@
 - (BOOL)_hasHeaderForSection:(long long)arg1;
 - (void)_updateContentInsetsIfNeeded;
 - (void)_updateSectionHeaderListIfNeeded;
+- (void)_updateVisibilityForLayoutAttributes:(id)arg1 inBounds:(struct CGRect)arg2;
 - (void)finalizeCollectionViewUpdates;
 - (id)flowLayoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)indexPathsToDeleteForSupplementaryViewOfKind:(id)arg1;
 - (id)init;
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (id)invalidationContextForBoundsChange:(struct CGRect)arg1;
+- (BOOL)isLastIndexPathWithContent:(id)arg1;
 - (id)layoutAttributesForDecorationViewOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;

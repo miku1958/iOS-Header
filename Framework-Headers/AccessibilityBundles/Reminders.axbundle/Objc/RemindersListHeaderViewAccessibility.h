@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_axAnnotateTitleLabel;
 - (void)_axUpdateNumberOfItemsLabel;
 - (void)setNumberOfItems:(long long)arg1;
 - (void)setStyle:(int)arg1;

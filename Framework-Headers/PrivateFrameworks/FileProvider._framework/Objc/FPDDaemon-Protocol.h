@@ -35,6 +35,6 @@
 - (void)trashItemAtURL:(NSURL *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)updateLastUsedDate:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)valuesForAttributes:(NSArray *)arg1 forItemAtURL:(NSURL *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
-- (void)wakeUpCompletionHandler:(void (^)(NSError *))arg1;
+- (void)wakeUpForURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *, id<FPDWakeupTransaction>))arg2;
 @end
 

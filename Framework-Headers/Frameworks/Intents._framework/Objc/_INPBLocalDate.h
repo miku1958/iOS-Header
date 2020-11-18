@@ -7,44 +7,43 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBLocalDate-Protocol.h>
 
-@class PBUnknownFields;
+@class NSString;
 
-@interface _INPBLocalDate : PBCodable <NSCopying>
+@interface _INPBLocalDate : PBCodable <_INPBLocalDate, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct {
+        unsigned int dayOfMonth:1;
+        unsigned int dayOfWeek:1;
+        unsigned int month:1;
+        unsigned int year:1;
+    } _has;
+    int _dayOfWeek;
     long long _dayOfMonth;
     long long _month;
     long long _year;
-    int _dayOfWeek;
-    struct {
-        unsigned int dayOfMonth:1;
-        unsigned int month:1;
-        unsigned int year:1;
-        unsigned int dayOfWeek:1;
-    } _has;
 }
 
 @property (nonatomic) long long dayOfMonth; // @synthesize dayOfMonth=_dayOfMonth;
 @property (nonatomic) int dayOfWeek; // @synthesize dayOfWeek=_dayOfWeek;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasDayOfMonth;
 @property (nonatomic) BOOL hasDayOfWeek;
 @property (nonatomic) BOOL hasMonth;
 @property (nonatomic) BOOL hasYear;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long month; // @synthesize month=_month;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 @property (nonatomic) long long year; // @synthesize year=_year;
 
-+ (id)options;
-- (void).cxx_destruct;
 - (int)StringAsDayOfWeek:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dayOfWeekAsString:(int)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

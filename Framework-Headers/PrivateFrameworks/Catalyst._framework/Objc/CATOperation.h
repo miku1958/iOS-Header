@@ -51,13 +51,11 @@
 + (BOOL)isCancelable;
 + (id)keyPathsForValuesAffectingIsCanceled;
 - (void).cxx_destruct;
-- (void)addDependency:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)addTarget:(id)arg1 selector:(SEL)arg2 forOperationEvents:(unsigned long long)arg3;
 - (void)addTarget:(id)arg1 selector:(SEL)arg2 forOperationEvents:(unsigned long long)arg3 delegateQueue:(id)arg4;
 - (void)addTarget:(id)arg1 selector:(SEL)arg2 forOperationEvents:(unsigned long long)arg3 userInfo:(id)arg4;
 - (void)addTarget:(id)arg1 selector:(SEL)arg2 forOperationEvents:(unsigned long long)arg3 userInfo:(id)arg4 delegateQueue:(id)arg5;
-- (void)cancel;
 - (id)description;
 - (void)endOperationSuccessfullyIfNeeded;
 - (void)endOperationWithError:(id)arg1;
@@ -72,7 +70,6 @@
 - (void)operationWillEnqueueOntoOperationQueue:(id)arg1;
 - (void)operationWillFinish;
 - (void)operationWillStart;
-- (void)removeDependency:(id)arg1;
 - (void)start;
 - (id)stateDescription;
 - (void)waitUntilFinished;

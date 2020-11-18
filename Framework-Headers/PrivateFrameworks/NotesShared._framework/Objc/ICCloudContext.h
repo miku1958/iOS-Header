@@ -19,9 +19,11 @@
     BOOL _didAddObservers;
     BOOL _fetchingEnabled;
     BOOL _syncDisabledByServer;
+    BOOL _didCheckForLongLivedOperations;
     id<ICCloudContextDelegate> _cloudContextDelegate;
     NSDate *_lastSyncDate;
     long long _qualityOfService;
+    unsigned long long _discretionaryNetworkBehavior;
     CKContainer *_container;
     NSOperationQueue *_operationQueue;
     NSObject<OS_dispatch_queue> *_processingQueue;
@@ -42,8 +44,10 @@
 @property (readonly, nonatomic) NSDictionary *cloudObjectClassesByRecordType;
 @property (strong, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (nonatomic) BOOL didAddObservers; // @synthesize didAddObservers=_didAddObservers;
+@property (nonatomic) BOOL didCheckForLongLivedOperations; // @synthesize didCheckForLongLivedOperations=_didCheckForLongLivedOperations;
 @property (getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (getter=isDisabledInternal) BOOL disabledInternal; // @synthesize disabledInternal=_disabledInternal;
+@property (nonatomic) unsigned long long discretionaryNetworkBehavior; // @synthesize discretionaryNetworkBehavior=_discretionaryNetworkBehavior;
 @property (readonly, nonatomic) BOOL fetchOperationsPending; // @synthesize fetchOperationsPending=_fetchOperationsPending;
 @property (nonatomic, getter=isFetchingEnabled) BOOL fetchingEnabled; // @synthesize fetchingEnabled=_fetchingEnabled;
 @property (strong) NSDate *lastSyncDate; // @synthesize lastSyncDate=_lastSyncDate;

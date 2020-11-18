@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
+#import <Vision/VNRequestRevisionProviding-Protocol.h>
 
 @class NSUUID;
 
-@interface VNObservation : NSObject <NSCopying, NSSecureCoding>
+@interface VNObservation : NSObject <NSCopying, NSSecureCoding, VNRequestRevisionProviding>
 {
+    unsigned long long _requestRevision;
     float _confidence;
     NSUUID *_uuid;
 }
 
 @property (nonatomic) float confidence; // @synthesize confidence=_confidence;
+@property (readonly, nonatomic) unsigned long long requestRevision;
 @property (strong, nonatomic, setter=setUUID:) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
@@ -26,8 +29,8 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

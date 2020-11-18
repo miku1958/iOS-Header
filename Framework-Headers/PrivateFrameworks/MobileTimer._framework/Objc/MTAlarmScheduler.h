@@ -12,7 +12,7 @@
 #import <MobileTimer/MTScheduledListDelegate-Protocol.h>
 
 @class MTScheduledList, NSString;
-@protocol MTAlarmScheduleDelegate, MTAlarmStorage, MTNotificationPoster, MTSchedulingDelegate, MTTaskScheduler, NAScheduler;
+@protocol MTAlarmScheduleDelegate, MTAlarmStorage, MTNotificationCenter, MTSchedulingDelegate, MTTaskScheduler, NAScheduler;
 
 @interface MTAlarmScheduler : NSObject <MTAlarmObserver, MTScheduledListDelegate, MTAgentDiagnosticDelegate, MTAgentNotificationListener>
 {
@@ -20,7 +20,7 @@
     id<MTAlarmStorage> _storage;
     MTScheduledList *_scheduledAlarms;
     id<NAScheduler> _serializer;
-    id<MTNotificationPoster> _notificationPoster;
+    id<MTNotificationCenter> _notificationCenter;
     CDUnknownBlockType _currentDateProvider;
     id<MTSchedulingDelegate> _schedulingDelegate;
     id<MTTaskScheduler> _taskScheduler;
@@ -31,7 +31,7 @@
 @property (weak, nonatomic) id<MTAlarmScheduleDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<MTNotificationPoster> notificationPoster; // @synthesize notificationPoster=_notificationPoster;
+@property (readonly, nonatomic) id<MTNotificationCenter> notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly, nonatomic) MTScheduledList *scheduledAlarms; // @synthesize scheduledAlarms=_scheduledAlarms;
 @property (readonly, nonatomic) id<MTSchedulingDelegate> schedulingDelegate; // @synthesize schedulingDelegate=_schedulingDelegate;
 @property (readonly, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
@@ -44,7 +44,7 @@
 - (void)_fireScheduledAlarm:(id)arg1 firedDate:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)_lastAlarmTriggerDate;
 - (id)_nextScheduledAlertIncludingBedtimeNotification:(BOOL)arg1;
-- (id)_nextTriggerDateIncludingBedtimeNotification:(BOOL)arg1;
+- (id)_nextTriggerDateForScheduling;
 - (void)_queue_fireTriggeredAlarmsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_queue_triggerDidFireForAlarmWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_queue_unregisterTimer;
@@ -53,18 +53,18 @@
 - (void)_scheduleAlarms:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_setLastAlarmTriggerDate:(id)arg1;
 - (void)_unscheduleAlarms:(id)arg1;
-- (void)handleEarlyWakeUpForAlarm:(id)arg1 withTriggerDate:(id)arg2;
+- (void)cleanDeliveredNotifications;
+- (id)gatherDiagnostics;
 - (void)handleNotification:(id)arg1;
 - (BOOL)handlesNotification:(id)arg1;
-- (id)initWithStorage:(id)arg1 notificationPoster:(id)arg2;
-- (id)initWithStorage:(id)arg1 notificationPoster:(id)arg2 scheduler:(id)arg3;
-- (id)initWithStorage:(id)arg1 notificationPoster:(id)arg2 scheduler:(id)arg3 schedulingDelegate:(id)arg4 taskScheduler:(id)arg5 currentDateProvider:(CDUnknownBlockType)arg6;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3;
+- (id)initWithStorage:(id)arg1 notificationCenter:(id)arg2 scheduler:(id)arg3 schedulingDelegate:(id)arg4 taskScheduler:(id)arg5 currentDateProvider:(CDUnknownBlockType)arg6;
 - (id)nextAlarm;
 - (id)nextAlarmIncludingBedtimeNotification:(BOOL)arg1;
 - (id)nextScheduledAlarmIncludingBedtimeNotification:(BOOL)arg1;
 - (id)nextTriggerDate;
 - (id)nextTriggerDateIncludingBedtimeNotification:(BOOL)arg1;
-- (id)nextWakeUpDate;
 - (void)printDiagnostics;
 - (void)rescheduleAlarmsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)scheduleAlarms:(id)arg1;
@@ -72,11 +72,12 @@
 - (void)source:(id)arg1 didAddAlarms:(id)arg2;
 - (void)source:(id)arg1 didChangeNextAlarm:(id)arg2;
 - (void)source:(id)arg1 didDismissAlarm:(id)arg2 dismissAction:(unsigned long long)arg3;
-- (void)source:(id)arg1 didFireAlarm:(id)arg2;
+- (void)source:(id)arg1 didFireAlarm:(id)arg2 triggerType:(unsigned long long)arg3;
 - (void)source:(id)arg1 didRemoveAlarms:(id)arg2;
 - (void)source:(id)arg1 didSnoozeAlarm:(id)arg2 snoozeAction:(unsigned long long)arg3;
 - (void)source:(id)arg1 didUpdateAlarms:(id)arg2;
 - (id)sourceIdentifier;
+- (void)timeListener:(id)arg1 didDetectSignificantTimeChangeWithCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)unscheduleAlarms:(id)arg1;
 
 @end

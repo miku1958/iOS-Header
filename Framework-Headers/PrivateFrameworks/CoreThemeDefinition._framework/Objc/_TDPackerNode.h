@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface _TDPackerNode : NSObject
@@ -18,13 +18,13 @@ __attribute__((visibility("hidden")))
     struct CGPoint _origin;
 }
 
-@property (strong) _TDPackerNode *down; // @synthesize down=_down;
-@property BOOL fit; // @synthesize fit=_fit;
-@property void *node; // @synthesize node=_node;
-@property struct CGPoint origin; // @synthesize origin=_origin;
-@property (strong) _TDPackerNode *right; // @synthesize right=_right;
-@property struct CGSize size; // @synthesize size=_size;
-@property BOOL used; // @synthesize used=_used;
+@property (strong, nonatomic) _TDPackerNode *down; // @synthesize down=_down;
+@property (nonatomic) BOOL fit; // @synthesize fit=_fit;
+@property (nonatomic) void *node; // @synthesize node=_node;
+@property (nonatomic) struct CGPoint origin; // @synthesize origin=_origin;
+@property (strong, nonatomic) _TDPackerNode *right; // @synthesize right=_right;
+@property (nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (nonatomic) BOOL used; // @synthesize used=_used;
 
 - (void)dealloc;
 

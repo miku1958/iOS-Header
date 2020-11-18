@@ -21,12 +21,13 @@
 - (double)_ringGapWidth;
 - (double)_ringStrokeWidth;
 - (void)_setLayoutEmptyRingsNoDot;
+- (void)_updateColors;
 - (void)_updateForTemplateChange;
-- (BOOL)_wantsPlatter;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setForegroundColor:(id)arg1;
 - (void)setSecondaryForegroundColor:(id)arg1;
+- (void)setUsesMultiColor:(BOOL)arg1;
 
 @end
 

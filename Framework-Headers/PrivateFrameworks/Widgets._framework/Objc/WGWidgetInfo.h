@@ -19,22 +19,21 @@
     NSExtension *_extension;
     long long _initialDisplayMode;
     long long _largestAllowedDisplayMode;
-    NSString *_displayName;
     UIImage *_icon;
     UIImage *_outlineIcon;
+    NSString *_displayName;
     struct CGSize _preferredContentSize;
 }
 
 @property (copy, nonatomic, setter=_setDisplayName:) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
-@property (strong, nonatomic, setter=_setIcon:) UIImage *icon; // @synthesize icon=_icon;
+@property (strong, nonatomic, getter=_icon, setter=_setIcon:) UIImage *icon; // @synthesize icon=_icon;
 @property (readonly, nonatomic) long long initialDisplayMode; // @synthesize initialDisplayMode=_initialDisplayMode;
 @property (readonly, nonatomic) double initialHeight;
 @property (nonatomic, setter=_setLargestAllowedDisplayMode:) long long largestAllowedDisplayMode; // @synthesize largestAllowedDisplayMode=_largestAllowedDisplayMode;
-@property (strong, nonatomic, setter=_setOutlineIcon:) UIImage *outlineIcon; // @synthesize outlineIcon=_outlineIcon;
+@property (strong, nonatomic, getter=_outlineIcon, setter=_setOutlineIcon:) UIImage *outlineIcon; // @synthesize outlineIcon=_outlineIcon;
 @property (nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property (readonly, copy, nonatomic, getter=_sdkVersion) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
-@property (readonly, nonatomic) UIImage *settingsIcon;
 @property (nonatomic, setter=_setWantsVisibleFrame:) BOOL wantsVisibleFrame; // @synthesize wantsVisibleFrame=_wantsVisibleFrame;
 @property (readonly, copy, nonatomic) NSString *widgetIdentifier;
 
@@ -43,14 +42,18 @@
 + (double)maximumContentHeightForCompactDisplayMode;
 + (id)widgetInfoWithExtension:(id)arg1;
 - (void).cxx_destruct;
-- (id)_iconFromWidgetBundle;
-- (id)_iconWithFormat:(int)arg1;
-- (id)_iconWithOutline;
 - (int)_outlineVariantForScale:(double)arg1;
+- (id)_queue_iconFromWidgetBundleForWidgetWithIdentifier:(id)arg1 extension:(id)arg2;
+- (id)_queue_iconWithFormat:(int)arg1 forWidgetWithIdentifier:(id)arg2 extension:(id)arg3;
+- (id)_queue_iconWithOutlineForWidgetWithIdentifier:(id)arg1 extension:(id)arg2;
+- (void)_requestIcon:(BOOL)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_resetIcons;
+- (void)_resetIconsImpl;
 - (id)initWithExtension:(id)arg1;
 - (BOOL)isLinkedOnOrAfterSystemVersion:(id)arg1;
 - (void)registerWidgetHost:(id)arg1;
+- (void)requestIconWithHandler:(CDUnknownBlockType)arg1;
+- (void)requestSettingsIconWithHandler:(CDUnknownBlockType)arg1;
 - (void)updatePreferredContentSize:(struct CGSize)arg1 forWidgetHost:(id)arg2;
 - (id)widgetInfoWithExtension:(id)arg1;
 

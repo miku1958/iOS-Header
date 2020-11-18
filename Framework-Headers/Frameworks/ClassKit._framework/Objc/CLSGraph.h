@@ -36,10 +36,14 @@
 - (void)enumerateOutNeighboursOfVertex:(id)arg1 enumerationBlock:(CDUnknownBlockType)arg2;
 - (BOOL)hasEdgeFromVertex:(id)arg1 toVertex:(id)arg2;
 - (unsigned long long)inDegree:(id)arg1;
+- (id)inNeighboursOfVertex:(id)arg1;
 - (id)init;
 - (id)initWithMemoryOptions:(unsigned long long)arg1;
+- (id)neighboursOfVertex:(id)arg1;
 - (unsigned long long)outDegree:(id)arg1;
+- (id)outNeighboursOfVertex:(id)arg1;
 - (void)removeEdgeFromVertex:(id)arg1 toVertex:(id)arg2;
+- (void)removeSubtreeStartingAtVertex:(id)arg1;
 - (void)removeVertex:(id)arg1;
 - (void)reset;
 - (void)traverse:(CDUnknownBlockType)arg1;

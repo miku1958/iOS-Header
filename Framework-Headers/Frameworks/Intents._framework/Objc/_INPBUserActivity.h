@@ -7,33 +7,34 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBUserActivity-Protocol.h>
 
-@class NSData, NSString, PBUnknownFields;
+@class NSData, NSString;
 
-@interface _INPBUserActivity : PBCodable <NSCopying>
+@interface _INPBUserActivity : PBCodable <_INPBUserActivity, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     NSData *_data;
     NSString *_title;
     NSString *_uri;
 }
 
-@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (copy, nonatomic) NSData *data; // @synthesize data=_data;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasData;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) BOOL hasUri;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *uri; // @synthesize uri=_uri;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) NSString *uri; // @synthesize uri=_uri;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

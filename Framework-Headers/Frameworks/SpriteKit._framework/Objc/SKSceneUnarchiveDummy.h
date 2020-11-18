@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface SKSceneUnarchiveDummy : NSObject <NSCoding>
+@interface SKSceneUnarchiveDummy : NSObject <NSSecureCoding>
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

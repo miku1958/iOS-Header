@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSMutableDictionary, NSString;
 
@@ -33,6 +33,7 @@
     SEL _buttonAction;
     SEL _controllerLoadAction;
     BOOL _showContentString;
+    id _weakUserInfo;
 }
 
 @property (nonatomic) SEL buttonAction; // @synthesize buttonAction=_buttonAction;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) NSDictionary *titleDictionary; // @synthesize titleDictionary=_titleDict;
 @property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 @property (strong, nonatomic) NSArray *values; // @synthesize values=_values;
+@property (weak, nonatomic) id weakUserInfo; // @synthesize weakUserInfo=_weakUserInfo;
 
 + (long long)autoCapsTypeForString:(id)arg1;
 + (long long)autoCorrectionTypeForNumber:(id)arg1;
@@ -66,6 +68,7 @@
 - (BOOL)hasValidGetter;
 - (BOOL)hasValidSetter;
 - (id)init;
+- (id)initWithName:(id)arg1 target:(id)arg2 set:(SEL)arg3 get:(SEL)arg4 detail:(Class)arg5 cell:(long long)arg6 edit:(Class)arg7;
 - (BOOL)isEqualToSpecifier:(id)arg1;
 - (SEL)legacyAction;
 - (SEL)legacyCancel;

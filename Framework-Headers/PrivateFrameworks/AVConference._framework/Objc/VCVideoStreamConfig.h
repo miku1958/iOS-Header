@@ -20,18 +20,26 @@ __attribute__((visibility("hidden")))
     BOOL _enableCVO;
     unsigned long long _cvoExtensionID;
     BOOL _isVideoProtected;
+    long long _type;
+    unsigned long long _sourceFramerate;
+    int _encodingMode;
+    _Atomic unsigned char *_videoPriorityPointer;
 }
 
 @property (nonatomic) unsigned long long cvoExtensionID; // @synthesize cvoExtensionID=_cvoExtensionID;
 @property (nonatomic) BOOL enableCVO; // @synthesize enableCVO=_enableCVO;
+@property (nonatomic) int encodingMode; // @synthesize encodingMode=_encodingMode;
 @property (nonatomic) unsigned long long framerate; // @synthesize framerate=_framerate;
 @property (nonatomic) BOOL isVideoProtected; // @synthesize isVideoProtected=_isVideoProtected;
 @property (nonatomic) unsigned long long keyFrameInterval; // @synthesize keyFrameInterval=_keyFrameInterval;
 @property (nonatomic) int remoteVideoInitialOrientation; // @synthesize remoteVideoInitialOrientation=_remoteVideoInitialOrientation;
 @property (nonatomic) unsigned long long rxMaxBitrate; // @synthesize rxMaxBitrate=_rxMaxBitrate;
 @property (nonatomic) unsigned long long rxMinBitrate; // @synthesize rxMinBitrate=_rxMinBitrate;
+@property (nonatomic) unsigned long long sourceFramerate; // @synthesize sourceFramerate=_sourceFramerate;
 @property (nonatomic) unsigned long long txMaxBitrate; // @synthesize txMaxBitrate=_txMaxBitrate;
 @property (nonatomic) unsigned long long txMinBitrate; // @synthesize txMinBitrate=_txMinBitrate;
+@property (nonatomic) long long type; // @synthesize type=_type;
+@property (nonatomic) _Atomic unsigned char *videoPriorityPointer; // @synthesize videoPriorityPointer=_videoPriorityPointer;
 @property (nonatomic) long long videoResolution; // @synthesize videoResolution=_videoResolution;
 
 + (BOOL)validateClientDictionary:(id)arg1;

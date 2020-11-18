@@ -6,18 +6,20 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HMFoundation/HMFLocalizable-Protocol.h>
 #import <HMFoundation/NSCopying-Protocol.h>
 #import <HMFoundation/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface HMFVersion : HMFObject <NSCopying, NSSecureCoding>
+@interface HMFVersion : HMFObject <HMFLocalizable, NSCopying, NSSecureCoding>
 {
     unsigned long long _majorVersion;
     unsigned long long _minorVersion;
     unsigned long long _updateVersion;
 }
 
+@property (readonly, copy) NSString *localizedDescription;
 @property (readonly) unsigned long long majorVersion; // @synthesize majorVersion=_majorVersion;
 @property (readonly) unsigned long long minorVersion; // @synthesize minorVersion=_minorVersion;
 @property (readonly) unsigned long long updateVersion; // @synthesize updateVersion=_updateVersion;

@@ -7,34 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBDistanceList-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBCondition;
+@class NSArray, NSString, _INPBCondition;
 
-@interface _INPBDistanceList : PBCodable <NSCopying>
+@interface _INPBDistanceList : PBCodable <_INPBDistanceList, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBCondition *_condition;
-    NSMutableArray *_distances;
+    NSArray *_distances;
 }
 
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;
-@property (strong, nonatomic) NSMutableArray *distances; // @synthesize distances=_distances;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *distances; // @synthesize distances=_distances;
+@property (readonly, nonatomic) unsigned long long distancesCount;
 @property (readonly, nonatomic) BOOL hasCondition;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (Class)distanceType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addDistance:(id)arg1;
 - (void)clearDistances;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)distanceAtIndex:(unsigned long long)arg1;
-- (unsigned long long)distancesCount;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

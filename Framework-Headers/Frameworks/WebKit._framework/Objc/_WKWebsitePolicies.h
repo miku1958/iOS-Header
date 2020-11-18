@@ -23,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long popUpPolicy;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) WKWebsiteDataStore *websiteDataStore;
 

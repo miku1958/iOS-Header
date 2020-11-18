@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/SUICFlamesViewDelegate-Protocol.h>
+#import <UIKitCore/SUICFlamesViewDelegate-Protocol.h>
 
 @class NSString, SUICFlamesView, UIButton, UIKeyboardDicationBackground;
 @protocol UIDictationViewDisplayDelegate;

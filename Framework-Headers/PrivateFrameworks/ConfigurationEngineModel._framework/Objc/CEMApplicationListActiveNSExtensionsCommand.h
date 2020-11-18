@@ -12,26 +12,26 @@
 
 @interface CEMApplicationListActiveNSExtensionsCommand : CEMCommandBase <CEMRegisteredTypeProtocol>
 {
+    NSArray *_payloadFilterExtensionPoints;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *payloadFilterExtensionPoints;
+@property (copy, nonatomic) NSArray *payloadFilterExtensionPoints; // @synthesize payloadFilterExtensionPoints=_payloadFilterExtensionPoints;
 @property (readonly) Class superclass;
 
-+ (id)ExtensionsItem_allowedStatusKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withFilterExtensionPoints:(id)arg2;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)executionLevel;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusExtensionsItem_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

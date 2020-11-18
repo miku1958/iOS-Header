@@ -30,9 +30,11 @@
 @property (readonly, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
 
-+ (id)entityKeyForPropertyKey:(id)arg1;
++ (id)entityKeyMap;
 + (id)fetchCollectionsInCollectionList:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsForAssetsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)fetchMomentsForFacesWithLocalIdentifiers:(id)arg1 options:(id)arg2;
++ (id)fetchMomentsForPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
 + (id)fetchTopLevelUserCollectionsWithOptions:(id)arg1;
 + (id)fetchType;
 + (id)managedEntityName;

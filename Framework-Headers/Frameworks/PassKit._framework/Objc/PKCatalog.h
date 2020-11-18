@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
+#import <PassKitCore/PKCloudStoreCoding-Protocol.h>
 
 @class NSDate, NSMutableArray;
 
-@interface PKCatalog : NSObject <NSCopying, NSSecureCoding>
+@interface PKCatalog : NSObject <NSCopying, NSSecureCoding, PKCloudStoreCoding>
 {
     NSMutableArray *_groups;
     NSDate *_timestamp;
@@ -21,16 +22,22 @@
 @property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
 + (id)catalogWithContentsOfURL:(id)arg1 nonUbiquitousCatalogURL:(id)arg2;
++ (id)catalogWithLocalCatalog:(id)arg1 ubiquitousCatalog:(id)arg2;
++ (id)cloudStoreCatalogRecordTypeRecordNamePrefix;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)allGroupIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCloudStoreCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEquivalentToCatalog:(id)arg1;
 - (BOOL)isNewerThanCatalog:(id)arg1;
+- (unsigned long long)itemType;
+- (id)recordTypesAndNames;
 - (void)shuffle:(int)arg1;
 - (void)writeToURL:(id)arg1 nonUbiquitousCatalogURL:(id)arg2 atomically:(BOOL)arg3;
 

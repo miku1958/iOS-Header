@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UITextTiledLayerDelegate-Protocol.h>
+#import <UIKitCore/_UITextTiledLayerDelegate-Protocol.h>
 
 @class NSArray, NSMutableSet, NSString;
 @protocol _UITextFieldContentViewContextProvider;

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <StoreKit/NSCopying-Protocol.h>
 
 @class NSData, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface SKPaymentInternal : NSObject <NSCopying>
 {
     NSString *_applicationUsername;
@@ -23,8 +24,8 @@
     BOOL _isStoreOriginated;
 }
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

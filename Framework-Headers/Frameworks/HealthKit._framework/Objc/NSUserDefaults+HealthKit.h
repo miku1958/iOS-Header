@@ -7,6 +7,7 @@
 #import <Foundation/NSUserDefaults.h>
 
 @interface NSUserDefaults (HealthKit)
+- (BOOL)hk_keyExists:(id)arg1;
 - (void)hk_removeObjectsForKeysWithPrefix:(id)arg1;
 @end
 

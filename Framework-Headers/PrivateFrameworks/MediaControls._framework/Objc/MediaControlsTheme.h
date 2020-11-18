@@ -10,9 +10,5 @@
 {
 }
 
-+ (id)primaryStyleForBackground:(long long)arg1;
-+ (id)secondaryStyleForBackground:(long long)arg1;
-+ (id)tertiaryStyleForBackground:(long long)arg1;
-
 @end
 

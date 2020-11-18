@@ -38,11 +38,13 @@
 - (BOOL)defaultContentHidden;
 - (BOOL)didReceiveNotificationRequest:(id)arg1;
 - (id)initWithAttachment:(id)arg1 forNotificationRequest:(id)arg2;
+- (BOOL)overridesDefaultTitle;
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2;
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)updatePreferredContentSize;
+- (BOOL)userInteractionEnabled;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

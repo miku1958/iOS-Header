@@ -20,8 +20,11 @@
     unsigned int _numAppleMediaAccessories;
     unsigned int _numAppleTVAccessories;
     unsigned int _numBridgedAccessories;
+    unsigned int _numBridgedTargetControllers;
     unsigned int _numCameraAccessories;
     unsigned int _numCertifiedAccessories;
+    unsigned int _numCertifiedBridgedTargetControllers;
+    unsigned int _numCertifiedTargetControllers;
     unsigned int _numEventTriggers;
     unsigned int _numHAPAccessories;
     unsigned int _numMediaSystems;
@@ -29,6 +32,7 @@
     unsigned int _numRooms;
     unsigned int _numScenes;
     unsigned int _numServices;
+    unsigned int _numTargetControllers;
     unsigned int _numTimerTriggers;
     unsigned int _numTriggers;
     unsigned int _numUsers;
@@ -44,8 +48,11 @@
         unsigned int numAppleMediaAccessories:1;
         unsigned int numAppleTVAccessories:1;
         unsigned int numBridgedAccessories:1;
+        unsigned int numBridgedTargetControllers:1;
         unsigned int numCameraAccessories:1;
         unsigned int numCertifiedAccessories:1;
+        unsigned int numCertifiedBridgedTargetControllers:1;
+        unsigned int numCertifiedTargetControllers:1;
         unsigned int numEventTriggers:1;
         unsigned int numHAPAccessories:1;
         unsigned int numMediaSystems:1;
@@ -53,6 +60,7 @@
         unsigned int numRooms:1;
         unsigned int numScenes:1;
         unsigned int numServices:1;
+        unsigned int numTargetControllers:1;
         unsigned int numTimerTriggers:1;
         unsigned int numTriggers:1;
         unsigned int numUsers:1;
@@ -73,8 +81,11 @@
 @property (nonatomic) BOOL hasNumAppleMediaAccessories;
 @property (nonatomic) BOOL hasNumAppleTVAccessories;
 @property (nonatomic) BOOL hasNumBridgedAccessories;
+@property (nonatomic) BOOL hasNumBridgedTargetControllers;
 @property (nonatomic) BOOL hasNumCameraAccessories;
 @property (nonatomic) BOOL hasNumCertifiedAccessories;
+@property (nonatomic) BOOL hasNumCertifiedBridgedTargetControllers;
+@property (nonatomic) BOOL hasNumCertifiedTargetControllers;
 @property (nonatomic) BOOL hasNumEventTriggers;
 @property (nonatomic) BOOL hasNumHAPAccessories;
 @property (nonatomic) BOOL hasNumMediaSystems;
@@ -82,6 +93,7 @@
 @property (nonatomic) BOOL hasNumRooms;
 @property (nonatomic) BOOL hasNumScenes;
 @property (nonatomic) BOOL hasNumServices;
+@property (nonatomic) BOOL hasNumTargetControllers;
 @property (nonatomic) BOOL hasNumTimerTriggers;
 @property (nonatomic) BOOL hasNumTriggers;
 @property (nonatomic) BOOL hasNumUsers;
@@ -96,8 +108,11 @@
 @property (nonatomic) unsigned int numAppleMediaAccessories; // @synthesize numAppleMediaAccessories=_numAppleMediaAccessories;
 @property (nonatomic) unsigned int numAppleTVAccessories; // @synthesize numAppleTVAccessories=_numAppleTVAccessories;
 @property (nonatomic) unsigned int numBridgedAccessories; // @synthesize numBridgedAccessories=_numBridgedAccessories;
+@property (nonatomic) unsigned int numBridgedTargetControllers; // @synthesize numBridgedTargetControllers=_numBridgedTargetControllers;
 @property (nonatomic) unsigned int numCameraAccessories; // @synthesize numCameraAccessories=_numCameraAccessories;
 @property (nonatomic) unsigned int numCertifiedAccessories; // @synthesize numCertifiedAccessories=_numCertifiedAccessories;
+@property (nonatomic) unsigned int numCertifiedBridgedTargetControllers; // @synthesize numCertifiedBridgedTargetControllers=_numCertifiedBridgedTargetControllers;
+@property (nonatomic) unsigned int numCertifiedTargetControllers; // @synthesize numCertifiedTargetControllers=_numCertifiedTargetControllers;
 @property (nonatomic) unsigned int numEventTriggers; // @synthesize numEventTriggers=_numEventTriggers;
 @property (nonatomic) unsigned int numHAPAccessories; // @synthesize numHAPAccessories=_numHAPAccessories;
 @property (nonatomic) unsigned int numMediaSystems; // @synthesize numMediaSystems=_numMediaSystems;
@@ -105,6 +120,7 @@
 @property (nonatomic) unsigned int numRooms; // @synthesize numRooms=_numRooms;
 @property (nonatomic) unsigned int numScenes; // @synthesize numScenes=_numScenes;
 @property (nonatomic) unsigned int numServices; // @synthesize numServices=_numServices;
+@property (nonatomic) unsigned int numTargetControllers; // @synthesize numTargetControllers=_numTargetControllers;
 @property (nonatomic) unsigned int numTimerTriggers; // @synthesize numTimerTriggers=_numTimerTriggers;
 @property (nonatomic) unsigned int numTriggers; // @synthesize numTriggers=_numTriggers;
 @property (nonatomic) unsigned int numUsers; // @synthesize numUsers=_numUsers;

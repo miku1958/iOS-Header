@@ -6,12 +6,10 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <PassKitUI/PKPaymentSetupPrivacyFooterViewDelegate-Protocol.h>
-
-@class CLInUseAssertion, NSArray, NSObject, NSString, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPaymentProvisioningController, PKPaymentSetupPrivacyFooterView, PKPaymentWebService, PKTableHeaderView, RemoteUIController;
+@class CLInUseAssertion, NSArray, NSObject, NSString, OBPrivacyLinkController, PKAddPaymentPassRequest, PKAddPaymentPassRequestConfiguration, PKPaymentProvisioningController, PKPaymentWebService, PKTableHeaderView, RemoteUIController;
 @protocol NSObject, OS_dispatch_source, PKAddPaymentPassRequestViewControllerDelegate;
 
-@interface PKAddPaymentPassRequestViewController : UITableViewController <PKPaymentSetupPrivacyFooterViewDelegate>
+@interface PKAddPaymentPassRequestViewController : UITableViewController
 {
     NSString *_title;
     NSString *_subtitle;
@@ -23,12 +21,13 @@
     CLInUseAssertion *_passbookForegroundAssertion;
     NSObject<OS_dispatch_source> *_datasourceTimeout;
     PKAddPaymentPassRequest *_addRequest;
+    struct CGSize _lastBoundsSize;
     BOOL _offsetForTextfieldWasCalculated;
     double _offsetForTextfield;
     BOOL _viewAppearing;
     BOOL _preconditionsValidated;
     PKTableHeaderView *_headerView;
-    PKPaymentSetupPrivacyFooterView *_privacyView;
+    OBPrivacyLinkController *_privacyController;
     RemoteUIController *_termsController;
     BOOL _hidePrivacy;
     BOOL _singleTarget;
@@ -61,15 +60,18 @@
 - (void)_setNavigationBarEnabled:(BOOL)arg1;
 - (void)_setupTermsControllerHandlerWithNavigationController:(id)arg1 forCompletion:(CDUnknownBlockType)arg2;
 - (void)_showEligibilityIssueForStatus:(long long)arg1 learnMoreURL:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_titleForCurrentHeaderState;
+- (void)_updateHeaderSize;
+- (void)_updateHeaderWithSubtitle:(id)arg1;
 - (void)dealloc;
 - (id)initWithPaymentWebService:(id)arg1 configuration:(id)arg2;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
-- (void)privacyFooterLinkTapped:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;

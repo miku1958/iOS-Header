@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIPlatterMenuPanningTransformerDelegate-Protocol.h>
+#import <UIKitCore/_UIPlatterMenuPanningTransformerDelegate-Protocol.h>
 
 @class NSString, UIAttachmentBehavior, UICollisionBehavior, UIDynamicAnimator, UIDynamicItemBehavior, UIView, _UIDynamicItemObservingBehavior, _UIPlatterMenuPanningTransformer, _UIPlatterMenuSnapBehavior, _UIStatesFeedbackGenerator;
 @protocol UIDynamicItem, _UIPlatterMenuDynamicsControllerDelegate;

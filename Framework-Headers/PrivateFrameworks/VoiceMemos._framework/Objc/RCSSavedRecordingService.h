@@ -20,11 +20,13 @@
     int _compositionAVURLsBeingModifiedDistributedNotificationToken;
     NSXPCConnection *_xpcConnection;
     id<RCSSavedRecordingServiceProtocol> _serviceProxy;
+    id<RCSSavedRecordingServiceProtocol> _synchronousServiceProxy;
     NSMutableDictionary *_pendingServiceCompletionHandlers;
     NSSet *_compositionAVURLsBeingExported;
     NSSet *_compositionAVURLsBeingModified;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
 @property (strong, nonatomic) NSSet *compositionAVURLsBeingExported; // @synthesize compositionAVURLsBeingExported=_compositionAVURLsBeingExported;
 @property (strong, nonatomic) NSSet *compositionAVURLsBeingModified; // @synthesize compositionAVURLsBeingModified=_compositionAVURLsBeingModified;
 @property (readonly, copy) NSString *debugDescription;
@@ -32,9 +34,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)changeToken;
 + (BOOL)isRunningInSavedRecordingDaemon;
++ (void)setChangeToken:(id)arg1;
 + (id)sharedService;
 - (void).cxx_destruct;
+- (oneway void)__fetchAllAccessTokens:(CDUnknownBlockType)arg1;
+- (oneway void)_fetchAllAccessTokens:(CDUnknownBlockType)arg1;
 - (void)_handleCompositionAVURLsBeingExportedDidChange;
 - (void)_handleCompositionAVURLsBeingModifiedDidChange;
 - (struct NSNumber *)_onQueueAddPendingServiceMessageReplyBlockInvalidationHandler:(CDUnknownBlockType)arg1;
@@ -44,21 +50,37 @@
 - (void)_onQueueRemovePendingServiceMessageReplyBlockInvalidationHandlerForToken:(struct NSNumber *)arg1;
 - (void)_sendServiceMessage:(SEL)arg1 accessRequestReplyBlock:(CDUnknownBlockType)arg2 messagingBlock:(CDUnknownBlockType)arg3;
 - (void)_sendServiceMessage:(SEL)arg1 connectionFailureReplyInfo:(id)arg2 infoAndErrorReplyHandler:(CDUnknownBlockType)arg3 messagingBlock:(CDUnknownBlockType)arg4;
+- (void)_sendServiceMessage:(SEL)arg1 connectionFailureReplyInfo:(id)arg2 infoAndErrorReplyHandler:(CDUnknownBlockType)arg3 withServiceProxy:(id)arg4 messagingBlock:(CDUnknownBlockType)arg5;
 - (void)_sendServiceMessage:(SEL)arg1 importRequestReplyBlock:(CDUnknownBlockType)arg2 messagingBlock:(CDUnknownBlockType)arg3;
 - (void)_sendServiceMessage:(SEL)arg1 withBasicReplyBlock:(CDUnknownBlockType)arg2 messagingBlock:(CDUnknownBlockType)arg3;
+- (void)_sendServiceMessage:(SEL)arg1 withBasicReplyBlock:(CDUnknownBlockType)arg2 withServiceProxy:(id)arg3 messagingBlock:(CDUnknownBlockType)arg4;
+- (void)_sendSynchronousServiceMessage:(SEL)arg1 accessRequestReplyBlock:(CDUnknownBlockType)arg2 messagingBlock:(CDUnknownBlockType)arg3;
+- (void)_sendSynchronousServiceMessage:(SEL)arg1 connectionFailureReplyInfo:(id)arg2 infoAndErrorReplyHandler:(CDUnknownBlockType)arg3 messagingBlock:(CDUnknownBlockType)arg4;
+- (void)_sendSynchronousServiceMessage:(SEL)arg1 withBasicReplyBlock:(CDUnknownBlockType)arg2 messagingBlock:(CDUnknownBlockType)arg3;
+- (void)checkRecordingAvailability:(CDUnknownBlockType)arg1;
 - (oneway void)clearAndReloadSearchMetadataWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)closeAudioFile:(id)arg1;
+- (oneway void)closeAudioFile:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)closeServiceConnection;
 - (void)dealloc;
+- (oneway void)disableCloudRecordingsSaveLocalCopies:(BOOL)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (oneway void)disableOrphanHandlingWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (oneway void)disableOrphanedFragmentCleanupForCompositionAVURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (oneway void)enableCloudRecordingsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (oneway void)enableOrphanHandlingWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (oneway void)enableOrphanedFragmentCleanupForCompositionAVURL:(id)arg1;
-- (oneway void)endAccessSessionWithToken:(id)arg1;
+- (oneway void)endAccessSessionWithToken:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (oneway void)exportRecordingsToCloud:(CDUnknownBlockType)arg1;
+- (oneway void)expungeRecordingsFromCloud:(CDUnknownBlockType)arg1;
 - (oneway void)fetchCompositionAVURLsBeingExported:(CDUnknownBlockType)arg1;
 - (oneway void)fetchCompositionAVURLsBeingModified:(CDUnknownBlockType)arg1;
 - (oneway void)importRecordingWithSourceAudioURL:(id)arg1 name:(id)arg2 date:(id)arg3 importCompletionBlock:(CDUnknownBlockType)arg4;
+- (oneway void)importRecordingsFromCloud:(CDUnknownBlockType)arg1;
 - (id)init;
+- (oneway void)openAudioFile:(id)arg1 settings:(id)arg2 accessRequestHandler:(CDUnknownBlockType)arg3;
+- (id)openAudioFile:(id)arg1 settings:(id)arg2 error:(id *)arg3;
 - (void)openServiceConnection;
+- (oneway void)performDatabaseMigrationWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (oneway void)prepareToCaptureToCompositionAVURL:(id)arg1 accessRequestHandler:(CDUnknownBlockType)arg2;
 - (oneway void)prepareToExportCompositionAVURL:(id)arg1 cacheWaveform:(BOOL)arg2 accessRequestHandler:(CDUnknownBlockType)arg3;
 - (oneway void)prepareToPreviewCompositionAVURL:(id)arg1 accessRequestHandler:(CDUnknownBlockType)arg2;
@@ -66,7 +88,9 @@
 - (oneway void)reloadExistingSearchMetadataWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (oneway void)removeAllUserDataWithCompletion:(CDUnknownBlockType)arg1;
 - (id)serviceProxy;
+- (id)synchronousServiceProxy;
 - (oneway void)updateSearchMetadataWithRecordingURIsToInsert:(id)arg1 recordingURIsToUpdate:(id)arg2 recordingURIsToDelete:(id)arg3 completionBlock:(CDUnknownBlockType)arg4;
+- (oneway void)writeAudioFile:(id)arg1 buffer:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 
 @end
 

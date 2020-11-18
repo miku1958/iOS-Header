@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CNContactStore, NSArray, NSDictionary;
 
@@ -16,10 +16,8 @@
     NSArray *_skipValues;
     NSDictionary *_skipToContactIndexes;
     CNContactStore *_store;
-    void *_addressBook;
 }
 
-@property (readonly, nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
 @property (strong, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
 @property (strong, nonatomic) NSArray *sectionHeaders; // @synthesize sectionHeaders=_sectionHeaders;
 @property (strong, nonatomic) NSDictionary *sectionToContactIndexes; // @synthesize sectionToContactIndexes=_sectionToContactIndexes;
@@ -30,9 +28,6 @@
 - (void)dealloc;
 - (id)init;
 - (void)loadContactsWithHandler:(CDUnknownBlockType)arg1;
-- (id)localizedSectionHeaders;
-- (id)localizedSectionIndices;
-- (id)sectionHeadersDictionary;
 
 @end
 

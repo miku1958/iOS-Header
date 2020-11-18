@@ -18,8 +18,8 @@
     long long mNumberOfSections;
     long long mMeCardSwitchCellSection;
     long long mUserCellSection;
-    BOOL _showsPhoneticName;
-    BOOL _showsFamilyNameName;
+    BOOL _showPhoneticName;
+    BOOL _showFamilyNameFirst;
     id<CRKUserEditorTableViewControllerDelegate> _delegate;
     CRKUser *_user;
 }
@@ -28,8 +28,8 @@
 @property (weak, nonatomic) id<CRKUserEditorTableViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL showsFamilyNameName; // @synthesize showsFamilyNameName=_showsFamilyNameName;
-@property (nonatomic) BOOL showsPhoneticName; // @synthesize showsPhoneticName=_showsPhoneticName;
+@property (nonatomic, getter=shouldShowFamilyNameFirst) BOOL showFamilyNameFirst; // @synthesize showFamilyNameFirst=_showFamilyNameFirst;
+@property (nonatomic, getter=shouldShowPhoneticName) BOOL showPhoneticName; // @synthesize showPhoneticName=_showPhoneticName;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CRKUser *user; // @synthesize user=_user;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, UIKBRenderConfig, UIKBRenderingContext;
 
@@ -18,6 +18,7 @@
     double _scale;
     struct CGSize _stretchFactor;
     BOOL _boldTextEnabled;
+    BOOL _increasedContrastEnabled;
     BOOL _allowsPaddles;
     BOOL _preferStringKeycapOverImage;
     BOOL _drawsOneHandedAffordance;
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL allowsPaddles; // @synthesize allowsPaddles=_allowsPaddles;
 @property (readonly, nonatomic) BOOL boldTextEnabled; // @synthesize boldTextEnabled=_boldTextEnabled;
 @property (nonatomic) BOOL drawsOneHandedAffordance; // @synthesize drawsOneHandedAffordance=_drawsOneHandedAffordance;
+@property (nonatomic) BOOL increasedContrastEnabled; // @synthesize increasedContrastEnabled=_increasedContrastEnabled;
 @property (nonatomic) BOOL lightweightFactory; // @synthesize lightweightFactory=_lightweightFactory;
 @property (nonatomic) BOOL preferStringKeycapOverImage; // @synthesize preferStringKeycapOverImage=_preferStringKeycapOverImage;
 @property (readonly, getter=renderConfig) UIKBRenderConfig *renderConfig;
@@ -46,6 +48,7 @@
 + (id)lightweightFactoryForVisualStyle:(CDStruct_227bb23d)arg1 renderingContext:(id)arg2;
 + (id)segmentedControlColor:(BOOL)arg1;
 - (double)RivenFactor:(double)arg1;
+- (struct CGPoint)RivenPointFactor:(struct CGPoint)arg1;
 - (id)ZWNJKeyImageName;
 - (id)_controlKeyBackgroundColorName;
 - (void)_customizeTraits:(id)arg1 forPopupForKey:(id)arg2 withRenderingContext:(id)arg3 keycapsFontName:(id)arg4;

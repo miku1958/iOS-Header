@@ -4,14 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, PKDSPContext;
+@class PKDSPContext;
 
 @interface PKDeviceScorer : NSObject
 {
-    NSData *_lastDeviceScoreIdentifier;
-    NSData *_lastDeviceScore;
     double _deviceScoreTimeout;
     PKDSPContext *_context;
 }

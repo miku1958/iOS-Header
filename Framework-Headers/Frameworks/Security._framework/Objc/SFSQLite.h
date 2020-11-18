@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDateFormatter, NSMutableDictionary, NSString;
 @protocol SFSQLiteDelegate;
@@ -23,7 +23,6 @@
     unsigned long long _openCount;
     NSDateFormatter *_dateFormatter;
     BOOL _hasMigrated;
-    BOOL _shouldVacuum;
     BOOL _corrupt;
     BOOL _traced;
 }
@@ -39,7 +38,6 @@
 @property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
 @property (readonly, nonatomic) NSString *schema; // @synthesize schema=_schema;
 @property (readonly, nonatomic) NSString *schemaVersion; // @synthesize schemaVersion=_schemaVersion;
-@property (nonatomic) BOOL shouldVacuum; // @synthesize shouldVacuum=_shouldVacuum;
 @property (readonly, nonatomic) NSMutableDictionary *statementsBySQL; // @synthesize statementsBySQL=_statementsBySQL;
 @property (nonatomic) long long synchronousMode; // @synthesize synchronousMode=_synchronousMode;
 @property (nonatomic) BOOL traced; // @synthesize traced=_traced;
@@ -47,12 +45,12 @@
 
 - (void).cxx_destruct;
 - (id)_createSchemaHash;
-- (void)_periodicVacuum;
 - (id)_synchronousModeString;
 - (id)_tableNameForClass:(Class)arg1;
 - (id)allTableNames;
 - (void)analyze;
 - (void)attemptProperDatabasePermissions;
+- (int)autoVacuumSetting;
 - (void)begin;
 - (int)changes;
 - (void)close;

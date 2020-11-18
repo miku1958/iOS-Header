@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSKChangeSourceObserver-Protocol.h>
 #import <iWorkImport/TSWPStorageObserver-Protocol.h>
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void *)layoutStateForLayoutWithHint:(id)arg1 topicNumbers:(id)arg2 textIsVertical:(BOOL)arg3;
 - (BOOL)needsLayoutInColumn:(id)arg1;
 - (int)p_layoutConfigFlagsForTarget:(id)arg1;
+- (void)removeDirtyRange:(struct _NSRange)arg1;
 - (void)resetDirtyRange;
 - (void)storage:(id)arg1 didChangeRange:(struct _NSRange)arg2 delta:(long long)arg3 broadcastKind:(int)arg4;
 - (id)styleProvider;

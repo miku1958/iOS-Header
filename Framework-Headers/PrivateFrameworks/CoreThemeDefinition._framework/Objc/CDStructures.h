@@ -4,11 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
+
+struct CGColorSpace;
 
 struct CGPoint {
     double x;
@@ -46,7 +50,28 @@ struct _renditionkeytoken {
     unsigned short value;
 };
 
+struct vImage_Buffer {
+    void *data;
+    unsigned long long height;
+    unsigned long long width;
+    unsigned long long rowBytes;
+};
+
+struct vImage_CGImageFormat {
+    unsigned int bitsPerComponent;
+    unsigned int bitsPerPixel;
+    struct CGColorSpace *colorSpace;
+    unsigned int bitmapInfo;
+    unsigned int version;
+    double *decode;
+    int renderingIntent;
+};
+
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    MISSING_TYPE *columns[4];
+} CDStruct_14d5dc5e;
 
 typedef struct {
     double top;

@@ -20,12 +20,12 @@
 @property (strong, nonatomic) NSSet *triggeringDelegateNames; // @synthesize triggeringDelegateNames=_triggeringDelegateNames;
 
 + (Class)initiatorRepresentingClass;
-+ (id)proxyForRecipientObject:(id)arg1 inSilo:(id)arg2 recipientName:(id)arg3 withInboundInterface:(id)arg4 inboundTriggerNames:(id)arg5 andOutboundInterface:(id)arg6 outboundTriggerNames:(id)arg7 recordingWriter:(shared_ptr_06cc74dc)arg8;
++ (id)proxyForRecipientObject:(id)arg1 inSilo:(id)arg2 recipientName:(id)arg3 inboundTriggerNames:(id)arg4 outboundTriggerNames:(id)arg5 recordingWriter:(shared_ptr_06cc74dc)arg6;
 + (Class)recipientRepresentingClass;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)dealloc;
-- (void)dispatchEncodedInvocation:(id)arg1;
+- (void)dispatchEncodedInvocation:(id)arg1 expectedClasses:(id)arg2;
 - (BOOL)offsiloHandleInvocation:(id)arg1 selectorInfo:(id)arg2 peer:(id)arg3;
 - (void)setDelegateEntityName:(const char *)arg1;
 - (void)setProxyPairRecordingInboundTriggerNames:(id)arg1 outboundTriggerNames:(id)arg2;

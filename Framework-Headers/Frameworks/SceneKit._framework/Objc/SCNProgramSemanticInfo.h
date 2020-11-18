@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface SCNProgramSemanticInfo : NSObject <NSSecureCoding>
 {
     NSString *_semantic;

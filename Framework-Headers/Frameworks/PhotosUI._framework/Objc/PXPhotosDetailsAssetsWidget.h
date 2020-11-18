@@ -33,7 +33,8 @@
     BOOL _userInteractionEnabled;
     BOOL __autoPlayVideoInOneUp;
     BOOL __curate;
-    BOOL __showDisclosureButton;
+    BOOL __showCurationButton;
+    BOOL __showSelectionButton;
     BOOL __transitionWithoutAnimation;
     BOOL _hasLoadedContentData;
     BOOL __needsAggdLoggingForCuratedAssetsCount;
@@ -86,7 +87,8 @@
 @property (strong, nonatomic, setter=_setPhotosDataSource:) PXPhotosDataSource *_photosDataSource; // @synthesize _photosDataSource=__photosDataSource;
 @property (readonly, nonatomic) UIPinchGestureRecognizer *_pinchGesture; // @synthesize _pinchGesture=__pinchGesture;
 @property (readonly, nonatomic) PXSectionedSelectionManager *_selectionManager; // @synthesize _selectionManager;
-@property (nonatomic, setter=_setShowDisclosureButton:) BOOL _showDisclosureButton; // @synthesize _showDisclosureButton=__showDisclosureButton;
+@property (nonatomic, setter=_setShowCurationButton:) BOOL _showCurationButton; // @synthesize _showCurationButton=__showCurationButton;
+@property (nonatomic, setter=_setShowSelectionButton:) BOOL _showSelectionButton; // @synthesize _showSelectionButton=__showSelectionButton;
 @property (readonly, nonatomic) PXPhotosDetailsAssetsSpecManager *_specManager; // @synthesize _specManager=__specManager;
 @property (readonly, nonatomic) PXSwipeSelectionManager *_swipeSelectionManager; // @synthesize _swipeSelectionManager=__swipeSelectionManager;
 @property (readonly, nonatomic) PXUITapGestureRecognizer *_tapGesture; // @synthesize _tapGesture=__tapGesture;
@@ -125,14 +127,13 @@
 
 - (void).cxx_destruct;
 - (BOOL)_addAssetReferencesToDrag:(id)arg1;
-- (id)_api_dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
-- (void)_api_dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (struct PXSimpleIndexPath)_assetIndexPathAtLocation:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2;
 - (id)_assetReferenceAtPoint:(struct CGPoint)arg1 padding:(struct UIEdgeInsets)arg2;
 - (BOOL)_canDragAssetReferences:(id)arg1;
 - (BOOL)_canDragOut;
 - (void)_configureLayout:(id)arg1;
 - (id)_createNewLayout;
+- (id)_curationButtonTitle;
 - (id)_dragItemForSimpleIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)_extendedTraitCollection;
 - (void)_fallBackByTogglingCurationIfNeeded;
@@ -144,7 +145,7 @@
 - (void)_logAggdCounterForAssetCountsIfNecessary;
 - (void)_performTilingChangeWithoutAnimationTransition:(CDUnknownBlockType)arg1;
 - (void)_presentConfidentialityWarning;
-- (id)_regionOfInterestForAssetReference:(id)arg1 inCoordinateSpace:(id)arg2;
+- (id)_regionOfInterestForAssetReference:(id)arg1;
 - (void)_setNavigatedAssetReference:(id)arg1 autoPlayVideo:(BOOL)arg2;
 - (id)_subtitle;
 - (id)_title;
@@ -152,8 +153,10 @@
 - (void)_updateDraggingAssetReferencesWithDataSource:(id)arg1;
 - (void)_updateHasLoadedContentData;
 - (void)_updateLayoutEngineIfNeeded;
-- (void)_updateShowDisclosureButton;
+- (void)_updateShowCurationButton;
+- (void)_updateShowSelectionButton;
 - (void)_updateTilingLayoutIfNeeded;
+- (void)_userDidSelectCurationButton;
 - (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
 - (void)assetsScene:(id)arg1 didTransitionToDataSource:(id)arg2;
@@ -167,12 +170,15 @@
 - (id)dataSourceManager;
 - (void)dealloc;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
+- (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForAddingToSession:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)dragInteraction:(id)arg1 previewForCancellingItem:(id)arg2 withDefault:(id)arg3;
+- (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
+- (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (id)dragInteraction:(id)arg1 sessionForAddingItems:(id)arg2 withTouchAtPoint:(struct CGPoint)arg3;
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
-- (unsigned long long)dragInteraction:(id)arg1 sourceOperationMaskForDraggingContext:(long long)arg2 session:(id)arg3;
+- (void)dragInteraction:(id)arg1 willAnimateLiftWithAnimator:(id)arg2 session:(id)arg3;
 - (double)engineDrivenLayout:(id)arg1 aspectRatioForItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
 - (struct CGRect)engineDrivenLayout:(id)arg1 contentsRectForItemAtIndexPath:(struct PXSimpleIndexPath)arg2 forAspectRatio:(double)arg3;
 - (double)engineDrivenLayout:(id)arg1 zPositionForItemAtIndexPath:(struct PXSimpleIndexPath)arg2;
@@ -186,10 +192,10 @@
 - (void)loadContentData;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)oneUpPresentation:(id)arg1 currentImageForAssetReference:(id)arg2;
-- (id)oneUpPresentation:(id)arg1 regionOfInterestForAssetReference:(id)arg2 inCoordinateSpace:(id)arg3;
+- (id)oneUpPresentation:(id)arg1 regionOfInterestForAssetReference:(id)arg2;
 - (void)oneUpPresentation:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
 - (void)oneUpPresentation:(id)arg1 setHiddenAssetReferences:(id)arg2;
-- (id)oneUpPresentationActionManager:(id)arg1;
+- (id)oneUpPresentationActionManagerForPreviewing:(id)arg1;
 - (id)oneUpPresentationDataSourceManager:(id)arg1;
 - (id)oneUpPresentationInitialAssetReference:(id)arg1;
 - (id)oneUpPresentationMediaProvider:(id)arg1;
@@ -207,6 +213,7 @@
 - (id)tilingController:(id)arg1 tileIdentifierConverterForChange:(id)arg2;
 - (id)tilingController:(id)arg1 transitionAnimationCoordinatorForChange:(id)arg2;
 - (void)userDidSelectDisclosureControl;
+- (void)userDidSelectSubtitle;
 
 @end
 

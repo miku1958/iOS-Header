@@ -6,25 +6,29 @@
 
 #import <CoreImage/CIFilter.h>
 
-@class AVCameraCalibrationData, CIImage, NSNumber, NSString;
+@class CIImage, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CIDepthEffectApplyBlurMap : CIFilter
 {
     CIImage *inputImage;
     CIImage *inputBlurMap;
+    CIImage *inputMatteImage;
+    NSNumber *inputAperture;
     NSNumber *inputLumaNoiseScale;
     NSNumber *inputScale;
-    AVCameraCalibrationData *inputCalibrationData;
     id inputAuxDataMetadata;
     NSString *inputShape;
+    NSNumber *inputDraftMode;
 }
 
+@property (copy, nonatomic) NSNumber *inputAperture; // @synthesize inputAperture;
 @property (strong, nonatomic) id inputAuxDataMetadata; // @synthesize inputAuxDataMetadata;
 @property (strong) CIImage *inputBlurMap; // @synthesize inputBlurMap;
-@property (strong, nonatomic) AVCameraCalibrationData *inputCalibrationData; // @synthesize inputCalibrationData;
+@property (strong, nonatomic) NSNumber *inputDraftMode; // @synthesize inputDraftMode;
 @property (strong) CIImage *inputImage; // @synthesize inputImage;
 @property (copy, nonatomic) NSNumber *inputLumaNoiseScale; // @synthesize inputLumaNoiseScale;
+@property (strong) CIImage *inputMatteImage; // @synthesize inputMatteImage;
 @property (strong, nonatomic) NSNumber *inputScale; // @synthesize inputScale;
 @property (strong, nonatomic) NSString *inputShape; // @synthesize inputShape;
 

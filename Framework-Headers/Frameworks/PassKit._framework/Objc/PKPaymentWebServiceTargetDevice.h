@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentWebServiceTargetDeviceProtocol-Protocol.h>
 
-@class NSString, PKAssertion, PKPassLibrary, PKPaymentService;
+@class NSString, PKAssertion, PKPassLibrary, PKPaymentService, PKSecureElement;
 
 @interface PKPaymentWebServiceTargetDevice : NSObject <PKPaymentWebServiceTargetDeviceProtocol>
 {
     PKPassLibrary *_passLibrary;
     PKPaymentService *_paymentService;
+    PKSecureElement *_secureElement;
     PKAssertion *_provisioningAssertion;
     BOOL _provisioningAssertionActive;
     PKAssertion *_verificationAssertion;
@@ -30,6 +31,7 @@
 - (void)_validateCommonPreconditionsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)bridgedClientInfo;
 - (BOOL)claimSecureElementForCurrentUser;
+- (void)claimSecureElementForCurrentUserWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)deviceDescriptionForPaymentWebService:(id)arg1;
 - (id)deviceName;
@@ -72,8 +74,7 @@
 - (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
 - (BOOL)supportsAutomaticPassPresentation;
 - (BOOL)supportsCredentialType:(long long)arg1;
-- (BOOL)supportsExpressMode:(id)arg1;
-- (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
+- (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (id)trustedDeviceEnrollmentInfoForWebService:(id)arg1;
 
 @end

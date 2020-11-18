@@ -4,108 +4,108 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCEFormulaOwning-Protocol.h>
 
-@class NSString, TSCECalculationEngine, TSTFormulaStore, TSTMergeRangeCache, TSTTableModel;
+@class NSString, TSCECalculationEngine, TSTFormulaStore, TSTMergeChangeDistributor, TSTMergeRangeCache, TSTTableModel;
 
 __attribute__((visibility("hidden")))
 @interface TSTMergeOwner : NSObject <TSCEFormulaOwning>
 {
+    unordered_map_c82faa35 _mergeOriginsMap;
+    unordered_map_c82faa35 _reverseOriginsMap;
+    BOOL _needsMergeCacheLoad;
+    TSTFormulaStore *_formulaStore;
+    TSTMergeRangeCache *_mergeRangeCache;
     TSTTableModel *_tableModel;
     TSCECalculationEngine *_calculationEngine;
+    TSTMergeChangeDistributor *_mergeChangeDistributor;
     UUIDData_5fbc143e _ownerUID;
-    TSTFormulaStore *_mergeRangeStorage;
-    _Atomic id _mergeRangeCache;
-    unordered_map_ddbde191 _mergeOriginsMap;
-    unordered_map_ddbde191 _reverseOriginsMap;
 }
 
+@property (weak, nonatomic) TSCECalculationEngine *calculationEngine; // @synthesize calculationEngine=_calculationEngine;
+@property (readonly) unsigned long long count;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) TSTFormulaStore *formulaStore; // @synthesize formulaStore=_mergeRangeStorage;
+@property (strong, nonatomic) TSTFormulaStore *formulaStore; // @synthesize formulaStore=_formulaStore;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) TSTMergeRangeCache *mergeRangeCache;
-@property (nonatomic) UUIDData_5fbc143e ownerUID;
+@property (strong, nonatomic) TSTMergeChangeDistributor *mergeChangeDistributor; // @synthesize mergeChangeDistributor=_mergeChangeDistributor;
+@property (readonly, nonatomic) const unordered_map_c82faa35 *mergeOriginsMap; // @synthesize mergeOriginsMap=_mergeOriginsMap;
+@property (strong, nonatomic) TSTMergeRangeCache *mergeRangeCache; // @synthesize mergeRangeCache=_mergeRangeCache;
+@property (nonatomic) BOOL needsMergeCacheLoad; // @synthesize needsMergeCacheLoad=_needsMergeCacheLoad;
+@property (nonatomic) UUIDData_5fbc143e ownerUID; // @synthesize ownerUID=_ownerUID;
+@property (readonly, nonatomic) const unordered_map_c82faa35 *reverseOriginsMap; // @synthesize reverseOriginsMap=_reverseOriginsMap;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
+@property (readonly, weak, nonatomic) TSTTableModel *tableModel; // @synthesize tableModel=_tableModel;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)allMergesAsString;
 - (void)assertCollaborationConvergence;
-- (void)beginRewriteForCalculationEngine:(id)arg1 spec:(id)arg2;
 - (void)commitRewritingTransaction;
-- (unsigned long long)count;
-- (void)createMergeRangeStorage;
-- (void)dealloc;
 - (void)enumerateMergeFormulasUsingBlock:(CDUnknownBlockType)arg1;
-- (void)enumerateMergesIntersectingCellRegion:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateMergesIntersectingRange:(struct TSUCellRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateMergesUsingBlock:(CDUnknownBlockType)arg1;
-- (struct TSUCellRect)expandCellRangeToCoverMergedCells:(struct TSUCellRect)arg1;
-- (id)expandCellRegionToCoverMergedCells:(id)arg1;
-- (BOOL)find:(struct TSUCellRect)arg1;
-- (BOOL)hasMergeRangesIntersectingCellRegion:(id)arg1;
-- (BOOL)hasRangeSpanningRowsForCellRange:(struct TSUCellRect)arg1;
+- (void)enumerateMergesIntersectingBaseCellRegion:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (struct TSUModelCellRect)expandBaseCellRectToCoverMergedCells:(struct TSUModelCellRect)arg1;
+- (id)expandBaseCellRegionToCoverMergedCells:(id)arg1;
+- (BOOL)find:(struct TSUModelCellRect)arg1;
+- (BOOL)hasMergeRangeSpanningRowsForBaseCellRect:(struct TSUModelCellRect)arg1;
+- (BOOL)hasMergeRanges;
+- (BOOL)hasMergeRangesIntersectingBaseCellRect:(const struct TSUModelCellRect *)arg1;
+- (BOOL)hasMergeRangesIntersectingBaseCellRegion:(id)arg1;
+- (BOOL)hasRangeSpanningRowsForCellRange:(struct TSUModelCellRect)arg1;
+- (BOOL)hasRangeSpanningRowsForCellRegion:(id)arg1;
+- (id)init;
 - (id)initWithArchive:(const struct MergeOwnerArchive *)arg1 unarchiver:(id)arg2 forTableModel:(id)arg3;
 - (id)initWithTableModel:(id)arg1;
 - (id)initWithTableModel:(id)arg1 ownerUID:(const UUIDData_5fbc143e *)arg2;
-- (void)insertAll:(id)arg1;
-- (BOOL)insertMergeRange:(struct TSUCellRect)arg1;
-- (BOOL)insertMergeRangeRemovingOverlaps:(struct TSUCellRect)arg1;
-- (void)invalidateForCalculationEngine:(id)arg1;
-- (BOOL)isValidMergeRange:(struct TSUCellRect)arg1;
+- (BOOL)insertBaseMergeRange:(struct TSUModelCellRect)arg1;
+- (BOOL)insertBaseMergeRangeRemovingOverlaps:(struct TSUModelCellRect)arg1;
+- (void)invalidateForCalcEngine:(id)arg1;
+- (BOOL)isValidMergeRange:(struct TSUModelCellRect)arg1;
+- (id)linkedResolver;
 - (void)loadMergeCache;
 - (unsigned long long)markForRollback;
-- (id)mergeActionForRegion:(id)arg1;
-- (id)mergeActionForRegion:(id)arg1 nonOriginPartialsOnly:(BOOL)arg2;
-- (id)mergeIndexesForCellRegion:(id)arg1;
-- (id)mergeIndexesForRange:(struct TSUCellRect)arg1;
-- (struct TSUCellCoord)mergeOriginForCellID:(struct TSUCellCoord)arg1;
-- (vector_e87daf7b)mergeRanges;
-- (vector_e87daf7b)mergeRangesAndCrumbsIntersectingRange:(struct TSUCellRect)arg1;
-- (vector_e87daf7b)mergeRangesIntersectingCellRegion:(id)arg1;
-- (vector_e87daf7b)mergeRangesIntersectingRange:(struct TSUCellRect)arg1;
+- (id)mergeActionForBaseCellRegion:(id)arg1;
+- (id)mergeActionForBaseCellRegion:(id)arg1 nonOriginPartialsOnly:(BOOL)arg2;
+- (id)mergeIndexesForBaseCellRegion:(id)arg1;
+- (id)mergeIndexesForRange:(struct TSUModelCellRect)arg1;
+- (struct TSUModelCellCoord)mergeOriginForBaseCellCoord:(struct TSUModelCellCoord)arg1;
+- (vector_54ceaeac)mergeRanges;
+- (vector_54ceaeac)mergeRangesAndCrumbsIntersectingBaseCellRect:(struct TSUModelCellRect)arg1;
+- (vector_54ceaeac)mergeRangesIntersectingBaseCellRect:(struct TSUModelCellRect)arg1;
+- (vector_54ceaeac)mergeRangesIntersectingBaseCellRegion:(id)arg1;
+- (BOOL)mergeRangesPartiallyIntersectBaseCellRect:(struct TSUModelCellRect)arg1;
+- (BOOL)mergeRangesPartiallyIntersectBaseCellRegion:(id)arg1;
 - (id)mergedGridIndicesForDimension:(long long)arg1;
-- (struct TSUCellRect)mergedRangeForCellID:(struct TSUCellCoord)arg1;
-- (id)mergesIntersectingCellRegion:(id)arg1;
-- (id)mergesIntersectingRange:(struct TSUCellRect)arg1;
+- (struct TSUModelCellRect)mergedRangeForBaseCellCoord:(struct TSUModelCellCoord)arg1;
 - (void)openRewritingTransaction;
-- (struct TSCEFormula)p_createFormulaForRange:(struct TSUCellRect)arg1 atIndex:(unsigned long long)arg2 tableUID:(const UUIDData_5fbc143e *)arg3;
-- (void)p_dirtyCellsForMerge:(const struct TSUCellRect *)arg1;
-- (struct TSUCellRect)p_growRangeFrom:(struct TSUCellRect)arg1 toDesired:(struct TSUCellRect)arg2;
+- (int)ownerKind;
+- (void)p_dirtyCellsForMerge:(const struct TSUModelCellRect *)arg1;
+- (void)p_enumerateMergesUsingBlock:(CDUnknownBlockType)arg1;
+- (struct TSUModelCellRect)p_growRangeFrom:(struct TSUModelCellRect)arg1 toDesired:(struct TSUModelCellRect)arg2;
 - (id)p_growReturningInverseForAction:(id)arg1;
-- (BOOL)p_hasAnyMergesIntersectingRange:(struct TSUCellRect)arg1;
-- (void)p_moveCellFromCellID:(struct TSUCellCoord)arg1 toCellID:(struct TSUCellCoord)arg2;
-- (id)p_shrinkMergesAtIndexes:(id)arg1 intersectedByRegion:(id)arg2;
+- (void)p_moveCellFromCellCoord:(struct TSUModelCellCoord)arg1 toCellCoord:(struct TSUModelCellCoord)arg2;
+- (id)p_shrinkMergesAtIndexes:(id)arg1 intersectedByBaseRegion:(id)arg2;
 - (id)p_shrinkReturningInverseForAction:(id)arg1;
-- (void)p_updateOriginMapWithSourceCellID:(struct TSUCellCoord)arg1 destCellID:(struct TSUCellCoord)arg2;
-- (BOOL)partiallyIntersectsCellRange:(struct TSUCellRect)arg1;
-- (BOOL)partiallyIntersectsCellRegion:(id)arg1;
+- (void)p_updateOriginMapWithSourceCellCoord:(struct TSUModelCellCoord)arg1 destCellCoord:(struct TSUModelCellCoord)arg2;
 - (id)performActionReturningInverse:(id)arg1;
-- (struct TSUCellRect)rangeFromMergeFormula:(const struct TSCEFormula *)arg1 atCoord:(const struct TSUCellCoord *)arg2;
-- (CDStruct_2a4d9400)recalculateForCalculationEngine:(id)arg1 formulaID:(CDStruct_ed6d627d)arg2 isInCycle:(BOOL)arg3 hasCalculatedPrecedents:(BOOL)arg4;
-- (id)regionForMergeRangesIntersectingRegion:(id)arg1;
-- (id)regionFromUIDMergeFormula:(const struct TSCEFormula *)arg1;
-- (int)registerWithCalculationEngine:(id)arg1;
+- (CDStruct_2a4d9400)recalculateForCalcEngine:(id)arg1 atFormulaCoord:(struct TSUCellCoord)arg2 recalcOptions:(CDStruct_3d581f42)arg3;
+- (int)registerWithCalcEngine:(id)arg1;
 - (void)reloadMergeCacheForIndexes:(id)arg1;
 - (void)remapTableUIDsInFormulasWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2;
-- (void)removeMergeRange:(struct TSUCellRect)arg1;
-- (id)removeReturningInverseForRegion:(id)arg1;
+- (void)removeBaseMergeRange:(struct TSUModelCellRect)arg1;
+- (id)removeReturningInverseForBaseCellRegion:(id)arg1;
 - (void)resetMergeCache;
 - (void)resetMergeOriginMap;
-- (void)rewriteForCalculationEngine:(id)arg1 formulaID:(CDStruct_ed6d627d)arg2 rewriteSpec:(id)arg3;
 - (void)rewriteMergesForInsertedRange:(struct _NSRange)arg1 uids:(const vector_4dc5f307 *)arg2 isRows:(BOOL)arg3;
 - (void)rewriteMergesForRemovedRange:(struct _NSRange)arg1 uids:(const vector_4dc5f307 *)arg2 isRows:(BOOL)arg3;
-- (struct TSUCellRect)rewroteFormula:(struct TSCEFormula)arg1 atCoordinate:(struct TSUCellCoord *)arg2 withRewriteSpec:(id)arg3 isUndo:(BOOL)arg4;
+- (struct TSUModelCellRect)rewroteFormula:(struct TSCEFormula)arg1 atCoordinate:(struct TSUModelCellCoord)arg2 withRewriteSpec:(id)arg3 isUndo:(BOOL)arg4;
 - (void)rollbackToMark:(unsigned long long)arg1;
 - (void)saveToArchive:(struct MergeOwnerArchive *)arg1 archiver:(id)arg2;
-- (id)shrinkReturningInverseForRegion:(id)arg1;
-- (void)unregisterFromCalculationEngine;
-- (void)upgradeFromMergeRegionMap;
-- (void)writeResultsForCalculationEngine:(id)arg1;
+- (id)shrinkReturningInverseForBaseCellRegion:(id)arg1;
+- (void)unregisterFromCalcEngine;
+- (void)writeResultsForCalcEngine:(id)arg1;
 
 @end
 

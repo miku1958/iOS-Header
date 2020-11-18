@@ -9,6 +9,7 @@
 #import <CloudKit/CKXPCClient-Protocol.h>
 
 @class ACAccountStore, CKAccountOverrideInfo, CKContainerID, CKContainerOptions, CKContainerSetupInfo, CKDatabase, CKOperationCallbackManager, CKOperationFlowControlManager, CKRecordID, NSMapTable, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSString, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface CKContainer : NSObject <CKXPCClient>
 {
@@ -42,6 +43,7 @@
     NSMapTable *_assetsByUUID;
     NSMutableDictionary *_fakeEntitlements;
     unsigned long long _stateHandle;
+    NSObject<OS_dispatch_queue> *_underlyingDispatchQueue;
 }
 
 @property (nonatomic) int accountChangeToken; // @synthesize accountChangeToken=_accountChangeToken;
@@ -76,6 +78,7 @@
 @property (nonatomic) int statusReportToken; // @synthesize statusReportToken=_statusReportToken;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSOperationQueue *throttlingOperationQueue; // @synthesize throttlingOperationQueue=_throttlingOperationQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *underlyingDispatchQueue; // @synthesize underlyingDispatchQueue=_underlyingDispatchQueue;
 @property (nonatomic) BOOL wantsSiloedContext;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
@@ -120,6 +123,7 @@
 - (void)accountsWillDeleteAccount:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addOperation:(id)arg1;
 - (void)clearContextFromMetadataCache;
+- (void)clearPCSCachesForKnownContextsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)clearPILSCacheForLookupInfos:(id)arg1;
 - (id)connectionWithError:(id *)arg1;
 - (void)consumeSandboxExtensions:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -185,6 +189,7 @@
 - (id)sourceApplicationSecondaryIdentifier;
 - (void)statusForApplicationPermission:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)statusGroupsForApplicationPermission:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)submitEventMetric:(id)arg1;
 - (void)tossConfigWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)trackAssets:(id)arg1;
 - (void)triggerAutoBugCaptureSnapshot;

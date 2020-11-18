@@ -32,6 +32,7 @@
 + (id)storeItemMetadataRequestItemIdentifierForIdentifiers:(id)arg1;
 - (id)artworkCatalog;
 - (id)contentItemCollectionInfo;
+- (id)humanDescription;
 
 @end
 

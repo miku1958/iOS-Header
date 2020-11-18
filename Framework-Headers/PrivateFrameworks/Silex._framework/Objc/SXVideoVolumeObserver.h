@@ -9,7 +9,7 @@
 #import <Silex/SXVideoPlaybackObserver-Protocol.h>
 #import <Silex/SXVideoVolumeObserving-Protocol.h>
 
-@class AVAudioSession, NSString, SXKeyValueObserver, SXPlaybackCoordinator;
+@class AVAudioSession, NSString, SVKeyValueObserver, SXPlaybackCoordinator;
 
 @interface SXVideoVolumeObserver : NSObject <SXVideoPlaybackObserver, SXVideoVolumeObserving>
 {
@@ -19,7 +19,7 @@
     CDUnknownBlockType _muteStateChangeBlock;
     SXPlaybackCoordinator *_playbackCoordinator;
     AVAudioSession *_audioSession;
-    SXKeyValueObserver *_outputVolumeObserver;
+    SVKeyValueObserver *_outputVolumeObserver;
 }
 
 @property (readonly, weak, nonatomic) AVAudioSession *audioSession; // @synthesize audioSession=_audioSession;
@@ -28,7 +28,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic, setter=onMuteStateChange:) CDUnknownBlockType muteStateChangeBlock; // @synthesize muteStateChangeBlock=_muteStateChangeBlock;
 @property (readonly, nonatomic) BOOL muted; // @synthesize muted=_muted;
-@property (readonly, nonatomic) SXKeyValueObserver *outputVolumeObserver; // @synthesize outputVolumeObserver=_outputVolumeObserver;
+@property (readonly, nonatomic) SVKeyValueObserver *outputVolumeObserver; // @synthesize outputVolumeObserver=_outputVolumeObserver;
 @property (readonly, weak, nonatomic) SXPlaybackCoordinator *playbackCoordinator; // @synthesize playbackCoordinator=_playbackCoordinator;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) float volume; // @synthesize volume=_volume;

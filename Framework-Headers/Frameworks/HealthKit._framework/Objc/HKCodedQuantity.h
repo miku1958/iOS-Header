@@ -9,19 +9,24 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKMedicalCoding, NSString;
+@class HKMedicalCoding, NSNumber, NSString;
 
 @interface HKCodedQuantity : NSObject <NSSecureCoding, NSCopying>
 {
-    NSString *_value;
+    NSString *_rawValue;
     HKMedicalCoding *_comparatorCoding;
     HKMedicalCoding *_unitCoding;
 }
 
 @property (readonly, copy, nonatomic) HKMedicalCoding *comparatorCoding; // @synthesize comparatorCoding=_comparatorCoding;
+@property (readonly, nonatomic) double doubleValue;
+@property (readonly, copy, nonatomic) NSString *localizedValue;
+@property (readonly, copy, nonatomic) NSNumber *numberValue;
+@property (readonly, copy, nonatomic) NSString *rawValue; // @synthesize rawValue=_rawValue;
 @property (readonly, copy, nonatomic) HKMedicalCoding *unitCoding; // @synthesize unitCoding=_unitCoding;
-@property (readonly, copy, nonatomic) NSString *value; // @synthesize value=_value;
+@property (readonly, copy, nonatomic) NSString *value;
 
++ (id)_numberFormatter;
 + (id)codedQuantityWithValue:(id)arg1 comparatorCoding:(id)arg2 unitCoding:(id)arg3;
 + (id)codedQuantityWithValue:(id)arg1 unitCoding:(id)arg2;
 + (BOOL)supportsSecureCoding;
@@ -32,7 +37,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithValue:(id)arg1 comparatorCoding:(id)arg2 unitCoding:(id)arg3;
+- (id)initWithRawValue:(id)arg1 comparatorCoding:(id)arg2 unitCoding:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

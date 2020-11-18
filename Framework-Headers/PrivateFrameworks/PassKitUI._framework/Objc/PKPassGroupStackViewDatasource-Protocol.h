@@ -16,6 +16,7 @@
 - (unsigned long long)numberOfGroups;
 
 @optional
+- (PKGroup *)featuredGroup;
 - (UIView *)footerForGroupStackView:(PKPassGroupStackView *)arg1;
 - (UIView *)groupStackView:(PKPassGroupStackView *)arg1 headerForPassType:(unsigned long long)arg2;
 - (BOOL)groupStackView:(PKPassGroupStackView *)arg1 requiresHeaderForPassType:(unsigned long long)arg2;

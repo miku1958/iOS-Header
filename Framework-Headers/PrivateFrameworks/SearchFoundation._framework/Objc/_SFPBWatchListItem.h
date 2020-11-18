@@ -30,16 +30,6 @@
 @property (copy, nonatomic) NSString *continueInTextFormat; // @synthesize continueInTextFormat=_continueInTextFormat;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasAddToUpNextText;
-@property (readonly, nonatomic) BOOL hasAddedToUpNextText;
-@property (readonly, nonatomic) BOOL hasContinueInTextFormat;
-@property (readonly, nonatomic) BOOL hasInUpNextText;
-@property (readonly, nonatomic) BOOL hasInstallButtonTitle;
-@property (readonly, nonatomic) BOOL hasOpenButtonTitle;
-@property (readonly, nonatomic) BOOL hasPurchaseOfferTextFormat;
-@property (readonly, nonatomic) BOOL hasSeasonEpisodeTextFormat;
-@property (readonly, nonatomic) BOOL hasWatchListIdentifier;
-@property (readonly, nonatomic) BOOL hasWatchLiveTextFormat;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *inUpNextText; // @synthesize inUpNextText=_inUpNextText;
 @property (copy, nonatomic) NSString *installButtonTitle; // @synthesize installButtonTitle=_installButtonTitle;

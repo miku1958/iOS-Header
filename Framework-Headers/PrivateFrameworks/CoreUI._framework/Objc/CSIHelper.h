@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSString, _CSIRenditionBlockData, _CUIThemePixelRendition;
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     _CUIThemePixelRendition *rendition;
     _CSIRenditionBlockData *sharedBlockDataBGRX;
     _CSIRenditionBlockData *sharedBlockDataRGBX;
+    _CSIRenditionBlockData *sharedBlockDataGray;
     _CSIRenditionBlockData *retainedBlockData;
     NSString *blockDataCacheKeyBGRX;
     NSString *blockDataCacheKeyRGBX;

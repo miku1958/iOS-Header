@@ -18,6 +18,7 @@
 - (id)initWithCoder:(id)arg1;
 - (void)nodeInitialize;
 - (BOOL)requiresVisionFramework;
+- (BOOL)validateVisionKitSoftLinkSymbols;
 
 @end
 

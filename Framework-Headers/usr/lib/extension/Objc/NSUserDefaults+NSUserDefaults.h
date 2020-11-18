@@ -12,7 +12,9 @@
 + (void)setStandardUserDefaults:(id)arg1;
 + (id)standardUserDefaults;
 - (id)URLForKey:(id)arg1;
+- (void)_didEndKeyValueObserving;
 - (id)_initWithSuiteName:(id)arg1 container:(id)arg2;
+- (void)_willBeginKeyValueObserving;
 - (void)addSuiteNamed:(id)arg1;
 - (id)arrayForKey:(id)arg1;
 - (BOOL)boolForKey:(id)arg1;
@@ -49,7 +51,6 @@
 - (void)setLong:(long long)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
 - (void)setObject:(id)arg1 forKey:(id)arg2 inDomain:(id)arg3;
-- (void)setObservationInfo:(void *)arg1;
 - (void)setPersistentDomain:(id)arg1 forName:(id)arg2;
 - (void)setSearchList:(id)arg1;
 - (void)setURL:(id)arg1 forKey:(id)arg2;

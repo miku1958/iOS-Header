@@ -6,13 +6,14 @@
 
 #import <TextInput/NSObject-Protocol.h>
 
-@class NSString, TIKeyboardCandidate, TIKeyboardInput, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent;
+@class NSString, TICandidateRequestToken, TIKeyboardCandidate, TIKeyboardInput, TIKeyboardLayout, TIKeyboardState, TIKeyboardTouchEvent;
 
 @protocol TIKeyboardInputManager <NSObject>
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 granularity:(int)arg2 keyboardState:(TIKeyboardState *)arg3 completionHandler:(void (^)(TIKeyboardConfiguration *))arg4;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 keyboardState:(TIKeyboardState *)arg2 completionHandler:(void (^)(TIKeyboardConfiguration *))arg3;
 - (void)candidateRejected:(TIKeyboardCandidate *)arg1;
 - (void)generateAutocorrectionsWithKeyboardState:(TIKeyboardState *)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(void (^)(TIAutocorrectionList *))arg3;
+- (void)generateAutocorrectionsWithKeyboardState:(TIKeyboardState *)arg1 candidateRange:(struct _NSRange)arg2 requestToken:(TICandidateRequestToken *)arg3 completionHandler:(void (^)(TIAutocorrectionList *))arg4;
 - (void)generateAutocorrectionsWithKeyboardState:(TIKeyboardState *)arg1 completionHandler:(void (^)(TIAutocorrectionList *))arg2;
 - (void)generateCandidatesWithKeyboardState:(TIKeyboardState *)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(void (^)(TIKeyboardCandidateResultSet *))arg3;
 - (void)generateRefinementsForCandidate:(TIKeyboardCandidate *)arg1 keyboardState:(TIKeyboardState *)arg2 completionHandler:(void (^)(TIAutocorrectionList *))arg3;

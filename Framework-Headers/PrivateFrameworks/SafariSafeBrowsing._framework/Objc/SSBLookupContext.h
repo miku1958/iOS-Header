@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SSBLookupContext : NSObject
 {
@@ -16,6 +16,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_deleteAllDatabasesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_fetchCellularDataPlanWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_forceDatabaseUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_forceLoadRemoteConfigurationFromDiskWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_forceUpdateRemoteConfigurationFromServerWithCompletionHandler:(CDUnknownBlockType)arg1;

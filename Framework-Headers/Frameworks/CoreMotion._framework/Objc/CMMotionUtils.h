@@ -15,12 +15,13 @@
 + (BOOL)featureAvailability:(const char *)arg1;
 + (id)fileHandleForWritingToURL:(id)arg1;
 + (id)getExecutablePathFromPid:(int)arg1;
++ (BOOL)hasEntitlement:(id)arg1;
 + (long long)isAuthorizedForEntitlement:(id)arg1;
 + (BOOL)isMotionActivityEntitled;
 + (id)logDirectory;
-+ (void)sendMessage:(shared_ptr_bdcc6d0f)arg1 withReply:(CDUnknownBlockType)arg2;
++ (void)sendMessage:(shared_ptr_bdcc6d0f)arg1 withReplyClasses:(id)arg2 callback:(CDUnknownBlockType)arg3;
++ (id)sendMessage:(shared_ptr_bdcc6d0f)arg1 withReplyClassesSync:(id)arg2;
 + (BOOL)sendMessageSync:(shared_ptr_bdcc6d0f)arg1 onConnection:(struct CLConnectionClient *)arg2 timeoutAfter:(double)arg3 withReplyHandler:(CDUnknownBlockType)arg4;
-+ (id)sendMessageWithReplySync:(shared_ptr_bdcc6d0f)arg1;
 + (void)tccServiceMotionAccessWithBlock:(CDUnknownBlockType)arg1;
 + (void)tccServiceMotionAccessWithLabel:(id)arg1;
 

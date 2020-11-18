@@ -7,20 +7,23 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBCopyFileIntentResponse-Protocol.h>
 
-@class PBUnknownFields, _INPBString;
+@class NSString, _INPBString;
 
-@interface _INPBCopyFileIntentResponse : PBCodable <NSCopying>
+@interface _INPBCopyFileIntentResponse : PBCodable <_INPBCopyFileIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    _INPBString *_destinationName;
-    _INPBString *_entityName;
-    int _entityType;
+    CDStruct_be739ab4 _has;
     BOOL _overwrite;
     BOOL _success;
-    CDStruct_be739ab4 _has;
+    int _entityType;
+    _INPBString *_destinationName;
+    _INPBString *_entityName;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *destinationName; // @synthesize destinationName=_destinationName;
 @property (strong, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;
 @property (nonatomic) int entityType; // @synthesize entityType=_entityType;
@@ -29,20 +32,17 @@
 @property (nonatomic) BOOL hasEntityType;
 @property (nonatomic) BOOL hasOverwrite;
 @property (nonatomic) BOOL hasSuccess;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL overwrite; // @synthesize overwrite=_overwrite;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsEntityType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)entityTypeAsString:(int)arg1;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

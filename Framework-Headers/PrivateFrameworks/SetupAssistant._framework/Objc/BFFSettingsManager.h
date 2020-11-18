@@ -19,12 +19,16 @@
     NSNumber *_stashedLocationServicesEnabled;
     NSData *_stashedWatchData;
     NSArray *_stashedFlowSkipIdentifiers;
+    NSNumber *_stashedScreenTimeEnabled;
+    NSNumber *_stashedAutoUpdateEnabled;
 }
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_applyAssistantPreferences;
+- (void)_applyAutoUpdatePreferences;
 - (void)_applyLocationServices;
+- (void)_applyScreenTimePreferences;
 - (void)_applyStashedButtonHaptics;
 - (void)_applyStashedFlowSkipIdentifiers;
 - (void)_applyStashedManagedConfiguration;
@@ -53,11 +57,13 @@
 - (void)reset;
 - (void)setAssistantEnabled:(BOOL)arg1;
 - (void)setAssistantVoiceTriggerEnabled:(BOOL)arg1;
+- (void)setAutoUpdateEnabled:(BOOL)arg1;
 - (void)setBool:(BOOL)arg1 forBuddyKey:(id)arg2;
 - (void)setBool:(BOOL)arg1 forDomain:(id)arg2 key:(id)arg3;
 - (void)setBool:(BOOL)arg1 forManagedConfigurationSetting:(id)arg2;
 - (void)setObject:(id)arg1 forBuddyKey:(id)arg2;
 - (void)setObject:(id)arg1 forDomain:(id)arg2 key:(id)arg3;
+- (void)setScreenTimeEnabled:(BOOL)arg1;
 - (id)stashBuildVersion;
 - (long long)stashConfigurationType;
 - (void)stashFlowSkipIdentifiers:(id)arg1;

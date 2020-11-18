@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, VideoAttributes;
 
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _isVideoPaused;
     BOOL _isMediaStalled;
     BOOL _isVideoDegraded;
+    BOOL _isVideoSuspended;
     VideoAttributes *_remoteScreenAttributes;
     VideoAttributes *_remoteVideoAttributes;
     NSString *_localInterfaceType;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property BOOL isMediaStalled; // @synthesize isMediaStalled=_isMediaStalled;
 @property BOOL isVideoDegraded; // @synthesize isVideoDegraded=_isVideoDegraded;
 @property BOOL isVideoPaused; // @synthesize isVideoPaused=_isVideoPaused;
+@property BOOL isVideoSuspended; // @synthesize isVideoSuspended=_isVideoSuspended;
 @property (copy, nonatomic) NSString *localInterfaceType; // @synthesize localInterfaceType=_localInterfaceType;
 @property (copy, nonatomic) NSString *remoteInterfaceType; // @synthesize remoteInterfaceType=_remoteInterfaceType;
 @property (strong) VideoAttributes *remoteScreenAttributes; // @synthesize remoteScreenAttributes=_remoteScreenAttributes;

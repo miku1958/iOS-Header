@@ -8,17 +8,15 @@
 
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 
-@class HMCameraView, HMDelegateCaller, HMFMessageDispatcher, NSNumber, NSString, NSUUID;
+@class HMCameraView, HMFUnfairLock, NSNumber, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
 @interface _HMCameraSource : NSObject <HMFMessageReceiver>
 {
+    HMFUnfairLock *_lock;
     HMCameraView *_cameraView;
+    _HMContext *_context;
     NSNumber *_aspectRatio;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMFMessageDispatcher *_msgDispatcher;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    HMDelegateCaller *_delegateCaller;
     NSUUID *_profileUniqueIdentifier;
     NSNumber *_slotIdentifier;
     NSString *_sessionID;
@@ -26,22 +24,19 @@
 
 @property (readonly, copy, nonatomic) NSNumber *aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property (weak, nonatomic) HMCameraView *cameraView; // @synthesize cameraView=_cameraView;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (readonly, copy, nonatomic) NSUUID *profileUniqueIdentifier; // @synthesize profileUniqueIdentifier=_profileUniqueIdentifier;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly, copy, nonatomic) NSNumber *slotIdentifier; // @synthesize slotIdentifier=_slotIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithSessionID:(id)arg1 slotIdentifier:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4 msgDispatcher:(id)arg5 profileUniqueIdentifier:(id)arg6 aspectRatio:(id)arg7;
+- (id)initWithSessionID:(id)arg1 slotIdentifier:(id)arg2 context:(id)arg3 profileUniqueIdentifier:(id)arg4 aspectRatio:(id)arg5;
 
 @end
 

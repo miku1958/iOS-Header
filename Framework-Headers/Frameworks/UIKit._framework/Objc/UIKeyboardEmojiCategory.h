@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -22,11 +22,6 @@
 @property (nonatomic) long long lastVisibleFirstEmojiIndex; // @synthesize lastVisibleFirstEmojiIndex=_lastVisibleFirstEmojiIndex;
 @property (readonly, nonatomic, getter=name) NSString *name;
 
-+ (id)DingbatVariantsEmoji;
-+ (id)GenderEmoji;
-+ (id)NoneVariantEmoji;
-+ (id)ProfessionEmoji;
-+ (id)SkinToneEmoji;
 + (id)categories;
 + (id)categoryForType:(long long)arg1;
 + (unsigned long long)categoryIndexForCategoryType:(long long)arg1;
@@ -35,7 +30,6 @@
 + (id)emojiCategoryStringForCategoryType:(long long)arg1;
 + (long long)emojiCategoryTypeForCategoryString:(id)arg1;
 + (id)emojiRecentsFromPreferences;
-+ (BOOL)emojiString:(id)arg1 inGroup:(id)arg2;
 + (id)enabledCategoryIndexes;
 + (id)fallbackDisplayName:(long long)arg1;
 + (unsigned long long)hasVariantsForEmoji:(id)arg1;

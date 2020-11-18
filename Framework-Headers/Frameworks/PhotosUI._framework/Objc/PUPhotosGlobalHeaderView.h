@@ -6,12 +6,13 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSString, UILabel;
+@class NSString, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface PUPhotosGlobalHeaderView : UICollectionReusableView
 {
     UILabel *_titleLabel;
+    UIView *_separatorView;
     NSString *_title;
 }
 
@@ -21,8 +22,10 @@ __attribute__((visibility("hidden")))
 + (id)_newTitleLabel;
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 forTitle:(id)arg2;
 - (void).cxx_destruct;
+- (void)_updateColors;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)tintColorDidChange;
 
 @end
 

@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
+#import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class INSpeakableString, NSArray, NSDateComponents, NSString;
 
-@interface INNote : NSObject <INCacheableContainer, NSCopying, NSSecureCoding>
+@interface INNote : NSObject <INImageProxyInjecting, INCacheableContainer, NSCopying, NSSecureCoding>
 {
     INSpeakableString *_title;
     NSArray *_contents;
@@ -22,21 +23,23 @@
     NSString *_identifier;
 }
 
-@property (readonly, copy) NSArray *contents; // @synthesize contents=_contents;
-@property (readonly, copy) NSDateComponents *createdDateComponents; // @synthesize createdDateComponents=_createdDateComponents;
+@property (copy, nonatomic, setter=_setContents:) NSArray *contents; // @synthesize contents=_contents;
+@property (readonly, copy, nonatomic) NSDateComponents *createdDateComponents; // @synthesize createdDateComponents=_createdDateComponents;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) INSpeakableString *groupName; // @synthesize groupName=_groupName;
+@property (readonly, copy, nonatomic) INSpeakableString *groupName; // @synthesize groupName=_groupName;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy) NSDateComponents *modifiedDateComponents; // @synthesize modifiedDateComponents=_modifiedDateComponents;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSDateComponents *modifiedDateComponents; // @synthesize modifiedDateComponents=_modifiedDateComponents;
 @property (readonly) Class superclass;
-@property (readonly, copy) INSpeakableString *title; // @synthesize title=_title;
+@property (readonly, copy, nonatomic) INSpeakableString *title; // @synthesize title=_title;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_cacheableObjects;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;

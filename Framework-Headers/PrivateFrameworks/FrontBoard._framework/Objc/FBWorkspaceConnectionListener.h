@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSXPCConnectionListenerHandler-Protocol.h>
 
@@ -22,7 +22,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)handleIncomingConnection:(id)arg1 forService:(id)arg2;
 - (id)init;
 

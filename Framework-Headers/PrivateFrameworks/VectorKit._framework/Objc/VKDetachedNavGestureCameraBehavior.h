@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (id).cxx_construct;
-- (void)_startZoomAnimationFrom:(double)arg1 to:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)beginPitch:(struct CGPoint)arg1;
 - (void)dealloc;
 - (id)initWithNavCameraController:(id)arg1;

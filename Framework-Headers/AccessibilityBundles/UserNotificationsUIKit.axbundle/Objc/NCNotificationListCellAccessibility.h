@@ -14,10 +14,16 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsAwayAlertElement;
+- (id)_accessibilitySupplementaryFooterViews;
 - (BOOL)_accessibilitySupportsActivateAction;
+- (id)_accessibilityUserTestingChildren;
 - (BOOL)_axClear:(id)arg1;
+- (BOOL)_axIsCollapsed;
 - (id)_axLookView;
-- (BOOL)_axMore:(id)arg1;
+- (BOOL)_axManage:(id)arg1;
+- (id)_axNCNotificationViewController;
+- (BOOL)_axView:(id)arg1;
+- (id)accessibilitHint;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
 - (id)accessibilityDragSourceDescriptors;

@@ -20,6 +20,7 @@
 - (id)_privacySafeDescription;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
+- (id)displayName;
 - (id)initWithName:(id)arg1 attributes:(unsigned int)arg2 account:(id)arg3 folderID:(id)arg4;
 - (BOOL)mergeWithUserInfo:(id)arg1;
 

@@ -19,6 +19,7 @@
 - (id)actionForHyperlink:(id)arg1 inRep:(id)arg2 gesture:(id)arg3;
 - (id)backgroundColorForMagnifier;
 - (void)dealloc;
+- (BOOL)interactionShouldBegin:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)setUpGestureDependenciesWithScrollView:(id)arg1;
 - (void)setUpGestureRecognizers;
 - (id)targetForAction:(SEL)arg1 withSender:(id)arg2;

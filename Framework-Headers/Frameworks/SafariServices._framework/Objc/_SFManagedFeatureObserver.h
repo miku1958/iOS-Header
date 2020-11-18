@@ -8,11 +8,12 @@
 
 #import <SafariServices/MCProfileConnectionObserver-Protocol.h>
 
-@class NSString;
+@class LAContext, NSString;
 
 @interface _SFManagedFeatureObserver : NSObject <MCProfileConnectionObserver>
 {
     BOOL _cachedAuthenticationRequiredToAutoFill;
+    LAContext *_context;
 }
 
 @property (readonly, nonatomic) BOOL authenticationRequiredToAutoFill;
@@ -22,6 +23,8 @@
 @property (readonly) Class superclass;
 
 + (id)sharedObserver;
+- (void).cxx_destruct;
+- (BOOL)_isUserEnrolledInBiometricAuthentication;
 - (void)dealloc;
 - (id)init;
 - (void)profileConnectionDidReceiveEffectiveSettingsChangedNotification:(id)arg1 userInfo:(id)arg2;

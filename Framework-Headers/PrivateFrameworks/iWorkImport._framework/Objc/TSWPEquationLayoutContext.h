@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/EQKitLayoutContext-Protocol.h>
 
@@ -16,10 +16,12 @@ __attribute__((visibility("hidden")))
     NSString *_fontName;
     TSUColor *_fontColor;
     double _fontSize;
-    struct CGSize _columnSize;
+    double _textMacroFontSize;
+    struct CGSize _targetSize;
+    struct CGSize _containerSize;
 }
 
-@property (nonatomic) struct CGSize columnSize; // @synthesize columnSize=_columnSize;
+@property (nonatomic) struct CGSize containerSize; // @synthesize containerSize=_containerSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) TSUColor *fontColor; // @synthesize fontColor=_fontColor;
@@ -27,17 +29,20 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) struct CGSize targetSize; // @synthesize targetSize=_targetSize;
+@property (nonatomic) double textMacroFontSize; // @synthesize textMacroFontSize=_textMacroFontSize;
 
 - (void).cxx_destruct;
 - (struct CGColor *)baseFontColor;
 - (struct __CFString *)baseFontName;
 - (double)baseFontSize;
-- (struct CGSize)containerSize;
 - (id)init;
-- (id)initWithFontName:(id)arg1 fontSize:(double)arg2 fontColor:(id)arg3 columnSize:(struct CGSize)arg4;
-- (id)initWithTextProperties:(id)arg1 columnSize:(struct CGSize)arg2;
-- (id)initWithTextProperties:(id)arg1 fontSize:(double)arg2 columnSize:(struct CGSize)arg3;
-- (id)initWithTextProperties:(id)arg1 overrideColor:(struct CGColor *)arg2;
+- (id)initWithFontName:(id)arg1 fontSize:(double)arg2 fontColor:(id)arg3;
+- (id)initWithFontName:(id)arg1 fontSize:(double)arg2 fontColor:(id)arg3 targetSize:(struct CGSize)arg4 containerSize:(struct CGSize)arg5 textMacroFontSize:(double)arg6;
+- (id)initWithTextProperties:(id)arg1 containerSize:(struct CGSize)arg2;
+- (id)initWithTextProperties:(id)arg1 fontSize:(double)arg2 containerSize:(struct CGSize)arg3;
+- (id)initWithTextProperties:(id)arg1 fontSize:(double)arg2 containerSize:(struct CGSize)arg3 textMacroFontSize:(double)arg4;
+- (id)initWithTextProperties:(id)arg1 targetSize:(struct CGSize)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

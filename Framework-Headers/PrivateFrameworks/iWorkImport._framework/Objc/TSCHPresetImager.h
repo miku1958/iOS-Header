@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSCHPresetImager : NSObject
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 + (void)drawGenericImageIntoContext:(struct CGContext *)arg1 size:(struct CGSize)arg2 preset:(id)arg3 usingRepresentativeSpecificSeriesFillProperties:(id)arg4 outShouldCache:(BOOL *)arg5;
 + (id)presetImagerForChartType:(id)arg1;
 - (id)imageWithPreset:(id)arg1 target:(int)arg2 imageSize:(struct CGSize)arg3 imageScale:(double)arg4 swatchFrame:(struct CGRect)arg5 documentRoot:(id)arg6 shouldCache:(BOOL *)arg7;
-- (id)init;
 - (id)initWithChartType:(id)arg1;
 - (id)p_chartType;
 - (struct CGSize)p_drawAndOffsetMultiDataSliderIntoContext:(struct CGContext *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3;

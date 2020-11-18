@@ -105,7 +105,7 @@ __attribute__((visibility("hidden")))
 - (void)handleMediaReceivedOverRelayLinkWithConnectionId:(int)arg1;
 - (void)handleNewCandidates:(id)arg1 version:(unsigned short)arg2;
 - (double)iceTimeoutInSeconds:(BOOL)arg1;
-- (id)initWithCallID:(unsigned int)arg1;
+- (id)initWithCallID:(unsigned int)arg1 reportingAgent:(id)arg2;
 - (void)initiateRelayRequest;
 - (BOOL)isConnectedAndAllowAdditionalConnection;
 - (BOOL)isHandoverSupported;
@@ -124,7 +124,6 @@ __attribute__((visibility("hidden")))
 - (void)resetLoopback;
 - (void)setForceRelay;
 - (void)setIdentity:(struct __SecIdentity *)arg1;
-- (void)setReportingAgent:(struct opaqueRTCReporting *)arg1;
 - (void)setupInitialSecondaryRelayWithCallbackRelayFlag:(BOOL)arg1 callID:(unsigned int)arg2 connectionId:(int)arg3;
 - (void)setupLoopbackWithConnectionType:(unsigned int)arg1;
 - (void)setupPendingSecondaryRelayWithNewPrimary:(id)arg1;
@@ -136,6 +135,7 @@ __attribute__((visibility("hidden")))
 - (void)stopLoopback;
 - (void)stopLoopbackProc:(id)arg1;
 - (void)triggerInterfaceChange;
+- (void)updateParticipantGenerationCounter:(unsigned char)arg1;
 
 @end
 

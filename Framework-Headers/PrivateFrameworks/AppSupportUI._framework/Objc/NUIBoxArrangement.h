@@ -42,7 +42,6 @@
 - (void)populateBoxArrangementCells:(vector_eb457d57 *)arg1;
 - (void)positionItemsInBounds:(struct CGRect)arg1 block:(CDUnknownBlockType)arg2;
 - (void)reloadData;
-- (BOOL)supportsAsynchronousMeasurement;
 
 @end
 

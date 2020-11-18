@@ -10,24 +10,36 @@
 #import <UserNotificationsKit/NSCopying-Protocol.h>
 #import <UserNotificationsKit/NSMutableCopying-Protocol.h>
 
-@class NSDictionary, NSSet, NSString;
+@class NSDictionary, NSSet, NSString, UIImage;
 
 @interface NCNotificationSectionSettings : NSObject <BSDescriptionProviding, NSCopying, NSMutableCopying>
 {
     NSString *_sectionIdentifier;
     NSString *_subSectionIdentifier;
+    NSString *_displayName;
     NSDictionary *_settings;
     NSSet *_subSectionSettings;
+    BOOL _userConfigurable;
+    UIImage *_settingsIcon;
+    BOOL _showsCustomSettingsLink;
+    BOOL _isDeliveredQuietly;
+    BOOL _hasProvisialAuthorization;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (readonly, nonatomic) BOOL hasProvisionalAuthorization; // @synthesize hasProvisionalAuthorization=_hasProvisialAuthorization;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isDeliveredQuietly; // @synthesize isDeliveredQuietly=_isDeliveredQuietly;
 @property (readonly, copy, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *settings; // @synthesize settings=_settings;
+@property (readonly, nonatomic) UIImage *settingsIcon; // @synthesize settingsIcon=_settingsIcon;
+@property (readonly, nonatomic) BOOL showsCustomSettingsLink; // @synthesize showsCustomSettingsLink=_showsCustomSettingsLink;
 @property (readonly, copy, nonatomic) NSString *subSectionIdentifier; // @synthesize subSectionIdentifier=_subSectionIdentifier;
 @property (readonly, copy, nonatomic) NSSet *subSectionSettings; // @synthesize subSectionSettings=_subSectionSettings;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic, getter=isUserConfigurable) BOOL userConfigurable; // @synthesize userConfigurable=_userConfigurable;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

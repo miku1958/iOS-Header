@@ -9,6 +9,7 @@
 #import <AVFoundation/AVDecodedAudioSettingsForFig-Protocol.h>
 #import <AVFoundation/AVReencodedAudioSettingsForFig-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface AVAVAudioSettingsAudioOutputSettings : AVAudioOutputSettings <AVReencodedAudioSettingsForFig, AVDecodedAudioSettingsForFig>
 {
 }

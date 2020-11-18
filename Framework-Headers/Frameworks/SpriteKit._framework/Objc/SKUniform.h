@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE, NSMutableArray, NSString, SKTexture;
 
-@interface SKUniform : NSObject <NSCopying, NSCoding>
+@interface SKUniform : NSObject <NSCopying, NSSecureCoding>
 {
     long long _type;
     NSString *_name;
@@ -44,6 +44,7 @@
 @property (nonatomic) MISSING_TYPE *vectorFloat3Value;
 @property (nonatomic) MISSING_TYPE *vectorFloat4Value;
 
++ (BOOL)supportsSecureCoding;
 + (id)uniformWithName:(id)arg1;
 + (id)uniformWithName:(id)arg1 float:(float)arg2;
 + (id)uniformWithName:(id)arg1 floatMatrix2:(union _GLKMatrix2)arg2;
@@ -82,6 +83,7 @@
 - (id)initWithName:(id)arg1 vectorFloat2: /* Error: Ran out of types for this method. */;
 - (id)initWithName:(id)arg1 vectorFloat3: /* Error: Ran out of types for this method. */;
 - (id)initWithName:(id)arg1 vectorFloat4: /* Error: Ran out of types for this method. */;
+- (BOOL)isEqualToUniform:(id)arg1;
 
 @end
 

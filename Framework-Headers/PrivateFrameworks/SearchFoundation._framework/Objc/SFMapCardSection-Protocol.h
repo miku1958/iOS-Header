@@ -23,6 +23,7 @@
 @property (strong, nonatomic) SFLatLng *location;
 @property (nonatomic) int pinBehavior;
 @property (strong, nonatomic) SFColor *pinColor;
+@property (copy, nonatomic) NSArray *pins;
 @property (copy, nonatomic) NSArray *punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;

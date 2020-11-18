@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSData, NSString;
 
-@interface DMFInstallProvisioningProfileRequest : CATTaskRequest
+@interface DMFInstallProvisioningProfileRequest : DMFTaskRequest
 {
     NSString *_managingProfileIdentifier;
     NSData *_profileData;
@@ -17,6 +17,9 @@
 @property (copy, nonatomic) NSString *managingProfileIdentifier; // @synthesize managingProfileIdentifier=_managingProfileIdentifier;
 @property (copy, nonatomic) NSData *profileData; // @synthesize profileData=_profileData;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

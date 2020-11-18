@@ -12,34 +12,36 @@
 
 @interface CEMAccountmacOSServerDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadHostName;
+    NSString *_payloadAccountDescription;
+    NSArray *_payloadConfiguredAccounts;
+    NSString *_payloadCredentials;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadAccountDescription;
-@property (readonly, nonatomic) NSArray *payloadConfiguredAccounts;
-@property (readonly, nonatomic) NSString *payloadCredentials;
-@property (readonly, nonatomic) NSString *payloadHostName;
+@property (copy, nonatomic) NSString *payloadAccountDescription; // @synthesize payloadAccountDescription=_payloadAccountDescription;
+@property (copy, nonatomic) NSArray *payloadConfiguredAccounts; // @synthesize payloadConfiguredAccounts=_payloadConfiguredAccounts;
+@property (copy, nonatomic) NSString *payloadCredentials; // @synthesize payloadCredentials=_payloadCredentials;
+@property (copy, nonatomic) NSString *payloadHostName; // @synthesize payloadHostName=_payloadHostName;
 @property (readonly) Class superclass;
 
-+ (id)ConfiguredAccountsItem_allowedPayloadKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withHostName:(id)arg2 withConfiguredAccounts:(id)arg3;
++ (id)buildWithIdentifier:(id)arg1 withHostName:(id)arg2 withAccountDescription:(id)arg3 withConfiguredAccounts:(id)arg4 withCredentials:(id)arg5;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadConfiguredAccountsItem:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadConfiguredAccountsItem_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

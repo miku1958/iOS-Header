@@ -46,6 +46,7 @@
 - (void)disableBrightnessFilters;
 - (unsigned long long)guidedAccessAvailability;
 - (id)guidedAccessEffectiveAppBundleIdentifier;
+- (void)guidedAccessEffectiveAppBundleIdentifier:(CDUnknownBlockType)arg1;
 - (id)guidedAccessIgnoredRegions;
 - (void)homeClickSwallowedForGuidedAccess;
 - (id)init;

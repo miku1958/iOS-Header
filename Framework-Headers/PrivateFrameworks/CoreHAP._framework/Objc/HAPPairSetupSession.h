@@ -24,9 +24,11 @@
     NSData *_sessionWriteKey;
     NSMutableData *_sessionReadNonce;
     NSMutableData *_sessionWriteNonce;
+    NSData *_certificate;
 }
 
 @property (strong, nonatomic) HMFTimer *backoffTimer; // @synthesize backoffTimer=_backoffTimer;
+@property (strong, nonatomic) NSData *certificate; // @synthesize certificate=_certificate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak) id<HAPPairSetupSessionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -59,6 +61,7 @@
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)encryptData:(id)arg1 additionalAuthenticatedData:(id)arg2 error:(id *)arg3;
 - (void)generateSessionKeys;
+- (id)getCertificate;
 - (void)handleBackoffRequestWithTimeout:(double)arg1;
 - (void)handleInvalidSetupCode;
 - (BOOL)handleSavePeerRequestWithPeerIdentity:(id)arg1 error:(id *)arg2;

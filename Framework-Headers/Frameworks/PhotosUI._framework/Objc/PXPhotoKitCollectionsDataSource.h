@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXCollectionsDataSource.h>
 
-@class NSArray, NSDictionary;
+@class NSArray, NSDictionary, PXPhotoKitCollectionsDataSourceManagerConfiguration;
 
 @interface PXPhotoKitCollectionsDataSource : PXCollectionsDataSource
 {
@@ -14,7 +14,9 @@
     NSArray *__collectionsFetchResultBySection;
     NSDictionary *__keyAssetsFetchResultsByCollection;
     NSDictionary *__collectionsIndexPathsByCollection;
+    NSDictionary *_itemFetchResultByCollection;
     NSArray *__virtualCollections;
+    PXPhotoKitCollectionsDataSourceManagerConfiguration *_configuration;
 }
 
 @property (readonly, nonatomic) NSArray *_collectionListBySection; // @synthesize _collectionListBySection=__collectionListBySection;
@@ -22,36 +24,22 @@
 @property (readonly, nonatomic) NSDictionary *_collectionsIndexPathsByCollection; // @synthesize _collectionsIndexPathsByCollection=__collectionsIndexPathsByCollection;
 @property (readonly, nonatomic) NSDictionary *_keyAssetsFetchResultsByCollection; // @synthesize _keyAssetsFetchResultsByCollection=__keyAssetsFetchResultsByCollection;
 @property (readonly, nonatomic) NSArray *_virtualCollections; // @synthesize _virtualCollections=__virtualCollections;
+@property (readonly, nonatomic) PXPhotoKitCollectionsDataSourceManagerConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, nonatomic) NSDictionary *itemFetchResultByCollection; // @synthesize itemFetchResultByCollection=_itemFetchResultByCollection;
 
++ (long long)estimatedCountForAssetCollection:(id)arg1 withConfiguration:(id)arg2;
 - (void).cxx_destruct;
 - (id)_assetAtSimpleIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)_collectionAtSimpleIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)_collectionListAtSimpleIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)collectionAtIndexPath:(id)arg1;
-- (BOOL)collectionIsCameraRoll:(id)arg1;
-- (BOOL)collectionIsCloudShared:(id)arg1;
-- (BOOL)collectionIsCloudSharedAndOwned:(id)arg1;
-- (BOOL)collectionIsEvents:(id)arg1;
-- (BOOL)collectionIsFaces:(id)arg1;
-- (BOOL)collectionIsFavoriteMemories:(id)arg1;
-- (BOOL)collectionIsFolder:(id)arg1;
-- (BOOL)collectionIsHiddenAlbum:(id)arg1;
-- (BOOL)collectionIsImports:(id)arg1;
-- (BOOL)collectionIsMemories:(id)arg1;
-- (BOOL)collectionIsPeople:(id)arg1;
-- (BOOL)collectionIsPlaceholderCollection:(id)arg1;
-- (BOOL)collectionIsPlaces:(id)arg1;
-- (BOOL)collectionIsRecentlyDeletedAlbum:(id)arg1;
-- (BOOL)collectionIsScenes:(id)arg1;
-- (BOOL)collectionIsSmartFolder:(id)arg1;
-- (BOOL)collectionIsStandIn:(id)arg1;
-- (BOOL)collectionIsSynced:(id)arg1;
 - (id)collectionListForSection:(long long)arg1;
+- (long long)countForCollection:(id)arg1;
 - (void)enumerateCollectionsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)indexPathForCollection:(id)arg1;
 - (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
 - (id)init;
-- (id)initWithCollectionListBySection:(id)arg1 collectionsFetchResultBySection:(id)arg2 keyAssetsFetchResultsByCollection:(id)arg3 collectionsIndexPathsByCollection:(id)arg4 virtualCollections:(id)arg5;
+- (id)initWithCollectionListBySection:(id)arg1 collectionsFetchResultBySection:(id)arg2 keyAssetsFetchResultsByCollection:(id)arg3 collectionsIndexPathsByCollection:(id)arg4 itemFetchResultByCollection:(id)arg5 virtualCollections:(id)arg6 dataSourceConfiguration:(id)arg7;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;

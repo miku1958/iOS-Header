@@ -40,12 +40,13 @@
 - (oneway void)extensionRequestFinishedForApplication:(id)arg1 error:(id)arg2;
 - (oneway void)extensionRequestWillStartForApplication:(id)arg1;
 - (oneway void)getBulletinContext:(CDUnknownBlockType)arg1;
-- (oneway void)handleIntent:(id)arg1 inBackgroundAppWithBundleId:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (oneway void)getClockContext:(CDUnknownBlockType)arg1;
 - (id)initWithConnection:(id)arg1 targetQueue:(id)arg2;
 - (oneway void)invalidateCurrentUserActivity;
 - (oneway void)musicWasDetected;
 - (oneway void)quickStopWasHandledWithActions:(unsigned long long)arg1;
 - (oneway void)requestDidReceiveCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (oneway void)requestHandleCommand:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)requestRequestedDismissAssistant;
 - (oneway void)requestRequestedOpenApplicationWithBundleID:(id)arg1 URL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (oneway void)requestRequestedOpenURL:(id)arg1 reply:(CDUnknownBlockType)arg2;

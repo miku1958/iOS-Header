@@ -6,36 +6,58 @@
 
 #import <WebUI/WBUFormAutoCompleteState.h>
 
-@class NSDictionary, NSString, SFFormAutoFillFrameHandle, UIView, WBSFormAutoFillMetadataCorrector, WBSFormMetadata, _SFFormAutoFillController, _SFFormAutoFillInputSession;
+#import <SafariServices/WBSOneTimeCodeMonitorObserver-Protocol.h>
+
+@class NSArray, NSString, SFFormAutoFillFrameHandle, UIView, WBSFormAutoFillMetadataCorrector, WBSFormControlMetadata, WBSFormMetadata, _SFFormAutoFillController, _SFFormAutoFillInputSession;
 
 __attribute__((visibility("hidden")))
-@interface SFFormAutocompleteState : WBUFormAutoCompleteState
+@interface SFFormAutocompleteState : WBUFormAutoCompleteState <WBSOneTimeCodeMonitorObserver>
 {
     SFFormAutoFillFrameHandle *_frame;
     WBSFormMetadata *_formMetadata;
-    NSDictionary *_textFieldMetadata;
+    WBSFormControlMetadata *_textFieldMetadata;
     NSString *_textFieldValue;
     _SFFormAutoFillController *_autoFillController;
     _SFFormAutoFillInputSession *_inputSession;
+    BOOL _fetchingLoginCredentialSuggestions;
     UIView *_emptyInputView;
     WBSFormAutoFillMetadataCorrector *_metadataCorrector;
+    NSArray *_cachedExternalCredentialIdentities;
     NSString *_prefixForSuggestions;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) _SFFormAutoFillInputSession *inputSession; // @synthesize inputSession=_inputSession;
+@property (readonly) Class superclass;
+
 - (void).cxx_destruct;
+- (void)_autoFillOneTimeCodeFieldsWithValue:(id)arg1;
 - (id)_bestTextFieldMetadataForMetadata:(id)arg1;
 - (id)_correctedFormMetadata:(id)arg1;
 - (void)_gatherAndShowAddressBookAutoFillSuggestions;
+- (id)_matchingKeychainCredentialsIncludingCredentialsWithEmptyUsernames:(BOOL)arg1;
+- (Class)_passwordPickerViewControllerClass;
+- (void)_suggestLoginCredentialsShowingQuickTypeKey:(BOOL)arg1;
+- (BOOL)_suggestUsernamesForRegistrationIfPossible:(unsigned long long)arg1;
 - (id)_suggestionsForAutoFillDisplayData:(id)arg1;
+- (id)_textSuggestionForCredentialDisplayData:(id)arg1 submitForm:(BOOL)arg2;
+- (id)_textSuggestionForExternalCredentialIdentity:(id)arg1;
+- (void)_updateSuggestions:(unsigned long long)arg1;
 - (void)_updateTextFieldValue;
 - (void)annotateForm:(long long)arg1 withValues:(id)arg2;
 - (void)autoFillFormWithCreditCardDataAfterAuthenticationIfNeeded:(id)arg1;
 - (void)autoFillGeneratedPassword:(id)arg1 inForm:(long long)arg2;
 - (void)autoFillValues:(id)arg1 setAutoFilled:(BOOL)arg2 andFocusFieldAfterFilling:(BOOL)arg3 fieldToFocus:(id)arg4;
+- (void)autoFillValues:(id)arg1 setAutoFilled:(BOOL)arg2 andFocusFieldAfterFilling:(BOOL)arg3 fieldToFocus:(id)arg4 submitForm:(BOOL)arg5;
 - (void)autoFillValuesAfterAuthenticationIfNeeded:(id)arg1;
+- (void)codesUpdatedForOneTimeCodeMonitor:(id)arg1;
 - (void)dealloc;
+- (id)externalCredentialIdentities;
 - (void)fetchFormMetadataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fillCredentialAfterAuthenticationIfNeeded:(id)arg1 setAsDefaultCredential:(BOOL)arg2;
+- (void)fillCredentialAfterAuthenticationIfNeeded:(id)arg1 setAsDefaultCredential:(BOOL)arg2 submitForm:(BOOL)arg3;
 - (void)fillGeneratedPassword:(id)arg1 inField:(id)arg2;
 - (id)frame;
 - (void)getTextFieldMetadata:(id *)arg1 formMetadata:(id *)arg2;
@@ -46,8 +68,10 @@ __attribute__((visibility("hidden")))
 - (void)setPrefixForSuggestions:(id)arg1;
 - (void)setShowingKeyboardInputView:(BOOL)arg1;
 - (BOOL)shouldOfferActionAutoFillCredentials;
+- (BOOL)shouldShowIconsInPasswordPicker;
 - (void)textDidChangeInFrame:(id)arg1 form:(id)arg2 textField:(id)arg3;
 - (id)textFieldValue;
+- (id)textSuggestionForStreamlinedAutoFillWithCredentialIdentity:(id)arg1;
 - (void)updateSuggestions;
 - (id)webView;
 

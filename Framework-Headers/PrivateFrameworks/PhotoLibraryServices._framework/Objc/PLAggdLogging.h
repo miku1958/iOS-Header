@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLAggdLogging : NSObject
 {
@@ -12,10 +12,11 @@
 
 + (void)performAnalysisStateLogging:(id)arg1;
 + (void)performCollectionsStaticsLogging:(id)arg1;
-+ (void)performHyperionLocalResourcesLogging:(id)arg1;
-+ (void)performLibraryStatisticsLogging;
++ (void)performHyperionLocalResourcesLogging:(CDUnknownBlockType)arg1;
++ (void)performLibraryStatisticsLogging:(CDUnknownBlockType)arg1;
 + (void)performLibrarySummaryLogging:(id)arg1;
 + (void)performMomentsStatisticsLogging:(id)arg1;
++ (void)performPersistentHistorySummaryLogging:(id)arg1;
 + (void)performYearsStaticsLogging:(id)arg1;
 
 @end

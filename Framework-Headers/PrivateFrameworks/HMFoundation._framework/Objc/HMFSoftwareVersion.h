@@ -24,6 +24,7 @@
 - (id)initWithMajorVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 updateVersion:(unsigned long long)arg3;
 - (id)initWithMajorVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 updateVersion:(unsigned long long)arg3 buildVersion:(id)arg4;
 - (id)initWithVersionString:(id)arg1;
+- (id)localizedDescription;
 - (CDStruct_2ec95fd7)operatingSystemVersion;
 - (id)versionString;
 

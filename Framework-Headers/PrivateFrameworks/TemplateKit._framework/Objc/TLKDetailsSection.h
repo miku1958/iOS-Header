@@ -14,11 +14,10 @@
     NSArray *_details;
 }
 
-@property (strong) NSArray *details; // @synthesize details=_details;
-@property (strong) TLKMultilineText *title; // @synthesize title=_title;
+@property (strong, nonatomic) NSArray *details; // @synthesize details=_details;
+@property (strong, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
-- (id)observableProperties;
 
 @end
 

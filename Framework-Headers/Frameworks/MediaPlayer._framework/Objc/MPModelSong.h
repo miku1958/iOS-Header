@@ -101,6 +101,7 @@
 + (BOOL)supportsLibraryAddStatusObservation;
 + (BOOL)supportsLibraryRemoval;
 - (id)artworkCatalog;
+- (id)humanDescription;
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;
 - (long long)libraryRemovalSupportedOptions;
 - (id)mediaItemPropertyValues;

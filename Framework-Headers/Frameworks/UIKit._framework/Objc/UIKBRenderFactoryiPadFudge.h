@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryiPad.h>
+#import <UIKitCore/UIKBRenderFactoryiPad.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryiPadFudge : UIKBRenderFactoryiPad
@@ -13,7 +13,6 @@ __attribute__((visibility("hidden")))
 
 - (void)_customizeGeometry:(id)arg1 forKey:(id)arg2 contents:(id)arg3;
 - (unsigned long long)_isFullHeightKeyFor:(id)arg1 onKeyplane:(id)arg2;
-- (BOOL)_onLeftSide:(id)arg1 onKeyplane:(id)arg2;
 - (double)_row4ControlSegmentWidthLeft;
 - (double)_row4ControlSegmentWidthRight;
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;

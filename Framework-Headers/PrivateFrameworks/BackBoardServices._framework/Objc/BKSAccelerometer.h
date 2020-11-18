@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSThread;
 @protocol BKSAccelerometerDelegate;
@@ -28,7 +28,7 @@
 }
 
 @property (nonatomic) BOOL accelerometerEventsEnabled;
-@property (nonatomic) id<BKSAccelerometerDelegate> delegate;
+@property (weak, nonatomic) id<BKSAccelerometerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL orientationEventsEnabled; // @synthesize orientationEventsEnabled=_orientationEventsEnabled;
 @property (nonatomic) BOOL passiveOrientationEvents; // @synthesize passiveOrientationEvents=_passiveOrientationEvents;
 @property (nonatomic) double updateInterval; // @synthesize updateInterval=_updateInterval;
@@ -36,6 +36,7 @@
 @property (nonatomic) float yThreshold; // @synthesize yThreshold=_yThreshold;
 @property (nonatomic) float zThreshold; // @synthesize zThreshold=_zThreshold;
 
+- (void).cxx_destruct;
 - (void)_checkIn;
 - (void)_checkOut;
 - (void)_orientationDidChange;

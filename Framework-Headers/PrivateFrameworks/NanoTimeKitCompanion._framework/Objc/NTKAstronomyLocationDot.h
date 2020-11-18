@@ -6,11 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class UIColor;
+@class CLKDevice, UIColor;
 
 @interface NTKAstronomyLocationDot : UIView
 {
     BOOL _animating;
+    CLKDevice *_device;
     UIColor *_outerDotColor;
     double _outerDotDiameter;
     UIColor *_innerDotColor;
@@ -22,6 +23,7 @@
 }
 
 @property (nonatomic) BOOL animating; // @synthesize animating=_animating;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (strong, nonatomic) UIColor *innerDotColor; // @synthesize innerDotColor=_innerDotColor;
 @property (nonatomic) double innerDotDiameter; // @synthesize innerDotDiameter=_innerDotDiameter;
 @property (strong, nonatomic) UIView *innerDotImageView; // @synthesize innerDotImageView=_innerDotImageView;
@@ -38,8 +40,8 @@
 - (double)defaultOuterDotDiameter;
 - (double)defaultPulseAlphaDelay;
 - (double)defaultPulseDuration;
-- (id)initWithDefaultSize;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initForDevice:(id)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (void)layoutSubviews;
 - (id)makeDot;
 - (void)startAnimation;

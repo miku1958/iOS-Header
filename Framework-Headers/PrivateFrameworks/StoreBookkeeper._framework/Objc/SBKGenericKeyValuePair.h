@@ -25,7 +25,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)pairWithKVSKey:(id)arg1 kvsPayload:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithKVSKey:(id)arg1 kvsPayload:(id)arg2;
 - (id)kvsValueDescription;
 - (double)timestamp;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSBundle, NSData, PKRemoteAssetManager;
 @protocol OS_dispatch_queue;
@@ -24,11 +24,15 @@
 - (void).cxx_destruct;
 - (id)content;
 - (void)contentWithCompletion:(CDUnknownBlockType)arg1;
+- (id)dataForBundleResource:(id)arg1;
 - (id)dataForBundleResourceNamed:(id)arg1 withExtension:(id)arg2;
+- (id)dataForBundleResources:(id)arg1;
 - (id)dictionary;
 - (void)dictionaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)displayProfileOfType:(long long)arg1;
+- (void)downloadRemoteAssetsWithCloudStoreCoordinatorDelegate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)imageSetForType:(long long)arg1 displayProfile:(id)arg2 preheat:(BOOL)arg3;
 - (void)imageSetForType:(long long)arg1 displayProfile:(id)arg2 preheat:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;

@@ -8,7 +8,7 @@
 
 #import <iWorkImport/KNSlideCollection-Protocol.h>
 
-@class KNSlideNode, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString, TSUPointerKeyDictionary;
+@class KNSlideNode, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSNumberFormatter, NSString, TSUPointerKeyDictionary;
 
 __attribute__((visibility("hidden")))
 @interface KNSlideTree : TSPContainedObject <KNSlideCollection>
@@ -18,12 +18,14 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_slideNodesForUniqueIdentifiersCache;
     NSMutableDictionary *_slideNodesForFormulaReferenceNamesCache;
     TSUPointerKeyDictionary *_formulaReferenceNamesForSlideNodesCache;
+    NSNumberFormatter *_formatter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) KNSlideNode *defaultSlideNodeForNewSelection;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *displayedSlideNodes; // @synthesize displayedSlideNodes=_displayedSlideNodeCache;
+@property (strong) NSNumberFormatter *formatter; // @synthesize formatter=_formatter;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *slideNodes;
 @property (readonly) Class superclass;

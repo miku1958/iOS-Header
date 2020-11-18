@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)openAtURL:(id)arg1 withFlags:(int)arg2 error:(id *)arg3;
 - (void)setProfilingHook:(CDUnknownBlockType)arg1;
 - (long long)sizeInBytes;
-- (void)usePacedBatchingWithInterval:(double)arg1 changeCount:(int)arg2;
+- (void)usePacedBatchingOnTargetQueue:(id)arg1 withInterval:(double)arg2 changeCount:(int)arg3;
 
 @end
 

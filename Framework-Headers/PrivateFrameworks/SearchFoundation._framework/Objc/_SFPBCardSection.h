@@ -13,7 +13,6 @@
 
 @interface _SFPBCardSection : PBCodable <_SFPBCardSection, NSSecureCoding>
 {
-    CDStruct_f953fb60 _has;
     int _type;
     _SFPBCardSectionValue *_value;
     _SFPBCard *_nextCard;
@@ -27,11 +26,6 @@
 @property (copy, nonatomic) NSArray *commands; // @synthesize commands=_commands;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasCardSectionId;
-@property (readonly, nonatomic) BOOL hasNextCard;
-@property (readonly, nonatomic) BOOL hasResultIdentifier;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasValue;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBCard *nextCard; // @synthesize nextCard=_nextCard;

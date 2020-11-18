@@ -17,6 +17,7 @@
     NSArray *_lanes;
     NSDictionary *_variableOverrides;
     long long _distanceDetailLevel;
+    NSArray *_titles;
     NSArray *_instructions;
 }
 
@@ -24,6 +25,7 @@
 @property (readonly, nonatomic) NSArray *instructions; // @synthesize instructions=_instructions;
 @property (readonly, nonatomic) BOOL isForManeuver; // @synthesize isForManeuver=_isForManeuver;
 @property (readonly, nonatomic) NSArray *lanes; // @synthesize lanes=_lanes;
+@property (readonly, nonatomic) NSArray *titles; // @synthesize titles=_titles;
 @property (readonly, nonatomic) NSUUID *uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (readonly, nonatomic) NSDictionary *variableOverrides; // @synthesize variableOverrides=_variableOverrides;
 
@@ -32,7 +34,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithID:(id)arg1 isForManeuver:(BOOL)arg2 lanes:(id)arg3 instructions:(id)arg4 variableOverrides:(id)arg5 distanceDetailLevel:(long long)arg6;
+- (id)initWithID:(id)arg1 isForManeuver:(BOOL)arg2 lanes:(id)arg3 titles:(id)arg4 instructions:(id)arg5 variableOverrides:(id)arg6 distanceDetailLevel:(long long)arg7;
 
 @end
 

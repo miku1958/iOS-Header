@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MPSNeuralNetwork/NSCopying-Protocol.h>
 #import <MPSNeuralNetwork/NSSecureCoding-Protocol.h>
@@ -52,6 +52,7 @@
 - (void)dealloc;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasBatchNormData;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKernelWidth:(unsigned long long)arg1 kernelHeight:(unsigned long long)arg2 inputFeatureChannels:(unsigned long long)arg3 outputFeatureChannels:(unsigned long long)arg4;

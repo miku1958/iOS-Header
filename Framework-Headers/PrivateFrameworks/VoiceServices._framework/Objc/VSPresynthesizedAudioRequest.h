@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VoiceServices/NSCopying-Protocol.h>
 #import <VoiceServices/NSSecureCoding-Protocol.h>
@@ -16,6 +16,7 @@
     BOOL _enqueue;
     unsigned int _audioSessionID;
     NSData *_audioData;
+    NSString *_text;
     unsigned long long _requestCreatedTimestamp;
     NSString *_clientBundleIdentifier;
     unsigned long long _pcmDataSize;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) struct AudioStreamBasicDescription playerStreamDescription; // @synthesize playerStreamDescription=_playerStreamDescription;
 @property (nonatomic) unsigned long long requestCreatedTimestamp; // @synthesize requestCreatedTimestamp=_requestCreatedTimestamp;
 @property (copy, nonatomic) CDUnknownBlockType stopHandler; // @synthesize stopHandler=_stopHandler;
+@property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

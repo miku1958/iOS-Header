@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBProcessWatchdogProviding-Protocol.h>
 
@@ -32,6 +32,7 @@
 + (double)_defaultResumeScale;
 + (double)_scaleForGestaltKey:(struct __CFString *)arg1;
 + (id)defaultPolicy;
+- (void).cxx_destruct;
 - (void)_queue_reloadDefaultSettings;
 - (double)_queue_watchdogScalingFactorForAppInfo:(id)arg1 isResume:(BOOL)arg2;
 - (void)dealloc;

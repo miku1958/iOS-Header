@@ -19,5 +19,6 @@
 @property (readonly) Class superclass;
 
 - (void)addCloudAccessCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)setNetworkBehaviorIsDiscretionary:(BOOL)arg1;
 @end
 

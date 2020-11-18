@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMDaemonCore/IMFileCopierDelegate-Protocol.h>
 
@@ -69,6 +69,7 @@
 - (void)endTransfer:(id)arg1 overrideFinalFileName:(id)arg2;
 - (void)failTransfer:(id)arg1 error:(id)arg2;
 - (void)failTransfer:(id)arg1 reason:(long long)arg2;
+- (void)failTransferPreviewGeneration:(id)arg1;
 - (void)fileCopierDidFinish:(id)arg1;
 - (void)fileCopierDidStart:(id)arg1;
 - (id)guidForNewIncomingTransferWithFilename:(id)arg1 isDirectory:(BOOL)arg2 totalBytes:(unsigned long long)arg3 hfsType:(unsigned int)arg4 hfsCreator:(unsigned int)arg5 hfsFlags:(unsigned short)arg6;

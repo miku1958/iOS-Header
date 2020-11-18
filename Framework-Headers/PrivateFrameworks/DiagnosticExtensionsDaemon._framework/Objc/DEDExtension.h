@@ -7,16 +7,19 @@
 #import <objc/NSObject.h>
 
 #import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
+#import <DiagnosticExtensionsDaemon/NSCopying-Protocol.h>
 
-@class NSString;
+@class DEDExtensionIdentifier, NSString;
 
-@interface DEDExtension : NSObject <DEDSecureArchiving>
+@interface DEDExtension : NSObject <DEDSecureArchiving, NSCopying>
 {
     NSString *_identifier;
+    DEDExtensionIdentifier *_dedExtensionIdentifier;
     NSString *_name;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (strong) DEDExtensionIdentifier *dedExtensionIdentifier; // @synthesize dedExtensionIdentifier=_dedExtensionIdentifier;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
@@ -27,6 +30,7 @@
 + (id)extensionWithDEExtension:(id)arg1;
 + (id)extensionWithDicionary:(id)arg1;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)serialize;
 
 @end

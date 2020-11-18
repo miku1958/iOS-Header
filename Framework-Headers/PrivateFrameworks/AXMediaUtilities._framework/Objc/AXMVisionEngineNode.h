@@ -45,6 +45,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (void)nodeInitialize;
+- (BOOL)validateVisionKitSoftLinkSymbols;
 
 @end
 

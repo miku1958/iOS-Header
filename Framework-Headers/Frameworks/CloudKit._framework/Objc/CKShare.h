@@ -14,6 +14,7 @@
 @interface CKShare : CKRecord <NSSecureCoding, NSCopying>
 {
     BOOL _allowsReadOnlyParticipantsToSeeEachOther;
+    BOOL _allowsAnonymousPublicAccess;
     BOOL _serializePersonalInfo;
     long long _publicPermission;
     NSMutableSet *_addedParticipantIDs;
@@ -35,6 +36,7 @@
 @property (readonly, copy, nonatomic) NSURL *URL; // @dynamic URL;
 @property (strong, nonatomic) NSMutableSet *addedParticipantIDs; // @synthesize addedParticipantIDs=_addedParticipantIDs;
 @property (strong, nonatomic) NSMutableArray *allParticipants; // @synthesize allParticipants=_allParticipants;
+@property (nonatomic) BOOL allowsAnonymousPublicAccess; // @synthesize allowsAnonymousPublicAccess=_allowsAnonymousPublicAccess;
 @property (nonatomic) BOOL allowsReadOnlyParticipantsToSeeEachOther; // @synthesize allowsReadOnlyParticipantsToSeeEachOther=_allowsReadOnlyParticipantsToSeeEachOther;
 @property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (readonly, nonatomic) CKShareParticipant *currentUserParticipant;

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, _UIActivityApplicationExtensionDiscovery;
 @protocol _UIActivityHelperDelegate;
 
 @interface _UIActivityHelper : NSObject
 {
+    BOOL _primed;
     id<_UIActivityHelperDelegate> _delegate;
     _UIActivityApplicationExtensionDiscovery *_applicationExtensionDiscovery;
     NSArray *_cachedBuiltinActivities;
@@ -19,6 +20,7 @@
 @property (strong, nonatomic) _UIActivityApplicationExtensionDiscovery *applicationExtensionDiscovery; // @synthesize applicationExtensionDiscovery=_applicationExtensionDiscovery;
 @property (readonly, nonatomic) NSArray *cachedBuiltinActivities; // @synthesize cachedBuiltinActivities=_cachedBuiltinActivities;
 @property (readonly, weak, nonatomic) id<_UIActivityHelperDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) BOOL primed; // @synthesize primed=_primed;
 
 - (void).cxx_destruct;
 - (id)_activitiesByApplyingBeforeTypePinningToActivities:(id)arg1 activitiesToBeforeTypePin:(id)arg2;
@@ -30,10 +32,12 @@
 - (id)_defaultSortOrderForExtensionBasedActivity:(id)arg1;
 - (id)_defaultSortOrderForOpenInAppActivity:(id)arg1;
 - (id)_defaultSortOrderForOtherActivity:(id)arg1;
+- (void)_enumerateAvailableActivitiesForMatchingContext:(id)arg1 intoMatchingResults:(id)arg2 matchingResultsUpdateBlock:(CDUnknownBlockType)arg3 enumerateActivityBlock:(CDUnknownBlockType)arg4;
 - (id)activitiesByOrderingActivities:(id)arg1 applyDefaultOrdering:(BOOL)arg2 applyBeforeTypePinning:(BOOL)arg3 activityTypeOrdering:(id)arg4;
-- (void)cancelActivityMatchingUpdates;
 - (id)initWithDelegate:(id)arg1;
 - (id)orderedAvailableActivitiesForMatchingContext:(id)arg1;
+- (void)preheatAvailableActivitiesForMatchingContext:(id)arg1;
+- (void)primeWithDiscoveryContext:(id)arg1;
 
 @end
 

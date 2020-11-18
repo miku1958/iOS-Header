@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSDescriptionProviding-Protocol.h>
 
@@ -28,17 +28,17 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSDictionary *infoDictionary; // @synthesize infoDictionary=_infoDictionary;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) NSObject<OS_xpc_object> *xpcBundle; // @synthesize xpcBundle=_xpcBundle;
+@property (readonly, nonatomic) NSObject<OS_xpc_object> *xpcBundle; // @synthesize xpcBundle=_xpcBundle;
 
 + (id)bundleForPID:(int)arg1;
 + (id)bundleWithExecutablePath:(id)arg1;
 + (id)bundleWithPath:(id)arg1;
 + (id)bundleWithXPCBundle:(id)arg1;
 + (id)mainBundle;
-- (id)bundleWithXPCBundle:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)initWithXPCBundle:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

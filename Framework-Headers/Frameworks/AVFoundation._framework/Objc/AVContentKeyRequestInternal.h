@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVContentKeySession, NSData, NSDictionary, NSError, NSNumber, NSString;
+@class AVContentKeySession, NSData, NSDictionary, NSError, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVContentKeyRequestInternal : NSObject
 {
     AVContentKeySession *session;
     id identifier;
+    NSData *sinfDefaultKeyIdentifier;
     NSData *initializationData;
     long long status;
     id customURLProviderContext;
@@ -24,7 +26,7 @@
     unsigned long long customURLRequestID;
     struct OpaqueFigCustomURLHandler *customURLHandler;
     NSString *cryptorUUID;
-    NSNumber *cryptorRequestID;
+    unsigned long long cryptorKeyRequestID;
 }
 
 @end

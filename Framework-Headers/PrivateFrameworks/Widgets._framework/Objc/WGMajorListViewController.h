@@ -26,6 +26,7 @@
 - (void)_configureStackView;
 - (id)_group;
 - (id)_repopulateStackViewWithWidgetIdentifiers:(id)arg1;
+- (void)_updateFooterViewShouldBlurContent;
 - (void)orderOfVisibleWidgetsDidChange:(id)arg1;
 - (void)presentEditView:(id)arg1;
 - (void)setShouldBlurContent:(BOOL)arg1;

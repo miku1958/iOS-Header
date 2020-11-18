@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVCallbackCancellation-Protocol.h>
 #import <AVFoundation/AVKVOIntrospection-Protocol.h>
@@ -12,6 +12,7 @@
 @class NSString;
 @protocol AVKVOIntrospection><AVCallbackCancellation;
 
+__attribute__((visibility("hidden")))
 @interface AVKeyPathFlattenerKVOIntrospectionShim : NSObject <AVKVOIntrospection, AVCallbackCancellation>
 {
     NSObject *_observedObject;

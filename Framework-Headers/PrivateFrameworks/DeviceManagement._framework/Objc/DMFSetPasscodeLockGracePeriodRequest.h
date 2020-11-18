@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
-@interface DMFSetPasscodeLockGracePeriodRequest : CATTaskRequest
+@interface DMFSetPasscodeLockGracePeriodRequest : DMFTaskRequest
 {
     double _seconds;
 }
 
 @property (nonatomic) double seconds; // @synthesize seconds=_seconds;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

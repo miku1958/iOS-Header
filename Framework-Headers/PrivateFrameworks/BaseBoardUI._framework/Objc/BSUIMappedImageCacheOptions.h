@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoardUI/NSCopying-Protocol.h>
 
@@ -18,8 +18,8 @@
 @property (strong, nonatomic) id<BSPathProviding> containerPathProvider; // @synthesize containerPathProvider=_containerPathProvider;
 
 + (id)optionsWithContainerPathProvider:(id)arg1;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 
 @end
 

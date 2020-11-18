@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSUUID, TSCHReferenceLineNonStyle;
 
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSCHReferenceLineNonStyle *nonStyle; // @synthesize nonStyle=mNonStyle;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=mUUID;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initFromUnarchiver:(id)arg1 message:(const struct ChartReferenceLineNonStyleItem *)arg2;

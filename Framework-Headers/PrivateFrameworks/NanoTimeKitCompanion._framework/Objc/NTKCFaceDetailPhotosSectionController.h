@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKCFaceDetailCustomPhotosViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, NTKBasePhotosFaceView, NTKCompanionCustomPhotosEditor, NTKCompanionSyncedAlbumEditor, NTKCompanionTransientCustomPhotosEditor, UIViewController;
+@class NSArray, NSString, NTKBasePhotosFaceView, NTKCompanionCustomPhotosEditor, NTKCompanionMemoriesEditor, NTKCompanionSyncedAlbumEditor, NTKCompanionTransientCustomPhotosEditor, UIViewController;
 @protocol NTKCFaceDetailPhotosSectionDelegate;
 
 @interface NTKCFaceDetailPhotosSectionController : NTKCFaceDetailEditOptionVerticalSectionController <NTKCFaceDetailCustomPhotosViewControllerDelegate>
@@ -18,6 +18,7 @@
     UIViewController *_parentViewController;
     NTKCompanionCustomPhotosEditor *_customPhotosEditor;
     NTKCompanionSyncedAlbumEditor *_syncedAlbumEditor;
+    NTKCompanionMemoriesEditor *_memoriesEditor;
     NTKCompanionTransientCustomPhotosEditor *_transientEditor;
     NSArray *_externalAssets;
 }
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) NTKBasePhotosFaceView *faceView; // @dynamic faceView;
 @property (readonly, nonatomic) BOOL hasChanges;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NTKCompanionMemoriesEditor *memoriesEditor; // @synthesize memoriesEditor=_memoriesEditor;
 @property (weak, nonatomic) UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NTKCompanionSyncedAlbumEditor *syncedAlbumEditor; // @synthesize syncedAlbumEditor=_syncedAlbumEditor;

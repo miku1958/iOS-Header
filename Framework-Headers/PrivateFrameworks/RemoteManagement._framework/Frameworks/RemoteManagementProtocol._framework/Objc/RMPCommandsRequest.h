@@ -6,31 +6,31 @@
 
 #import <RemoteManagementProtocol/RMPRemoteManagementRequest.h>
 
-#import <RemoteManagementProtocol/CEMRegisteredTypeProtocol-Protocol.h>
+#import <RemoteManagementProtocol/RMPRegisteredTypeProtocol-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface RMPCommandsRequest : RMPRemoteManagementRequest <CEMRegisteredTypeProtocol>
+@interface RMPCommandsRequest : RMPRemoteManagementRequest <RMPRegisteredTypeProtocol>
 {
     NSArray *_addCommands;
     NSArray *_removeCommands;
 }
 
-@property (strong, nonatomic) NSArray *addCommands; // @synthesize addCommands=_addCommands;
+@property (copy, nonatomic) NSArray *addCommands; // @synthesize addCommands=_addCommands;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSArray *removeCommands; // @synthesize removeCommands=_removeCommands;
+@property (copy, nonatomic) NSArray *removeCommands; // @synthesize removeCommands=_removeCommands;
 @property (readonly) Class superclass;
 
-+ (id)RemoveCommandsItem_allowedKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
++ (id)requestWithUUID:(id)arg1 withAddCommands:(id)arg2 withRemoveCommands:(id)arg3;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)loadRequestFromDictionary:(id)arg1 error:(id *)arg2;
+- (id)removeDMFCommands;
 - (id)serialize;
-- (id)serializeRemoveCommandsItem:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validRemoveCommandsItem_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
 
 @end
 

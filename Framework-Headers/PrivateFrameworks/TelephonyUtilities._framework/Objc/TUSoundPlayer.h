@@ -9,6 +9,7 @@
 @class TURepeatingActor;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface TUSoundPlayer : NSObject
 {
     unsigned int _soundID;
@@ -17,8 +18,8 @@
 }
 
 @property (readonly, nonatomic, getter=isPlaying) BOOL playing;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) TURepeatingActor *repeatingActor; // @synthesize repeatingActor=_repeatingActor;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) TURepeatingActor *repeatingActor; // @synthesize repeatingActor=_repeatingActor;
 @property (nonatomic) unsigned int soundID; // @synthesize soundID=_soundID;
 
 - (void).cxx_destruct;

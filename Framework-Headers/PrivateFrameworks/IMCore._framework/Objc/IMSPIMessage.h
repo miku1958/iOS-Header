@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IMSPIHandle, NSArray, NSAttributedString, NSDate, NSString, NSURL;
+@class IMSPIHandle, LPLinkMetadata, NSArray, NSAttributedString, NSDate, NSString, NSURL, PKCurrencyAmount;
 
 @interface IMSPIMessage : NSObject
 {
@@ -27,6 +27,7 @@
     BOOL _isRead;
     BOOL _isAudioMessage;
     BOOL _isGroupChat;
+    long long _itemType;
     NSString *_groupID;
     NSString *_chatIdentifier;
     NSString *_displayName;
@@ -35,6 +36,8 @@
     NSString *_bundleId;
     long long _messageType;
     NSString *_displayAppName;
+    LPLinkMetadata *_richLinkMetadata;
+    PKCurrencyAmount *_peerPaymentAmount;
 }
 
 @property (strong) NSArray *attachments; // @synthesize attachments=_attachments;
@@ -53,11 +56,14 @@
 @property BOOL isGroupChat; // @synthesize isGroupChat=_isGroupChat;
 @property BOOL isOutgoing; // @synthesize isOutgoing=_isOutgoing;
 @property BOOL isRead; // @synthesize isRead=_isRead;
+@property long long itemType; // @synthesize itemType=_itemType;
 @property (strong) NSDate *lastReadDate; // @synthesize lastReadDate=_lastReadDate;
 @property long long messageID; // @synthesize messageID=_messageID;
 @property long long messageType; // @synthesize messageType=_messageType;
+@property (strong) PKCurrencyAmount *peerPaymentAmount; // @synthesize peerPaymentAmount=_peerPaymentAmount;
 @property (strong) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (strong) IMSPIMessage *referencedMessage; // @synthesize referencedMessage=_referencedMessage;
+@property (strong) LPLinkMetadata *richLinkMetadata; // @synthesize richLinkMetadata=_richLinkMetadata;
 @property (strong) IMSPIHandle *sender; // @synthesize sender=_sender;
 @property (strong) NSString *service; // @synthesize service=_service;
 @property (strong) NSString *subject; // @synthesize subject=_subject;

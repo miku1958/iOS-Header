@@ -19,14 +19,15 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SKRemoteReviewViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SKRemoteReviewViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) SKStoreReviewViewController *reviewViewController; // @synthesize reviewViewController=_reviewViewController;
+@property (weak, nonatomic) SKStoreReviewViewController *reviewViewController; // @synthesize reviewViewController=_reviewViewController;
 @property (readonly) Class superclass;
 
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
+- (void).cxx_destruct;
 - (void)didFinishWithResult:(id)arg1 error:(id)arg2;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 

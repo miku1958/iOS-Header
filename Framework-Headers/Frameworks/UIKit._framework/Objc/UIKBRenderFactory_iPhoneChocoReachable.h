@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory_Composite.h>
+#import <UIKitCore/UIKBRenderFactory_Composite.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactory_iPhoneChocoReachable : UIKBRenderFactory_Composite

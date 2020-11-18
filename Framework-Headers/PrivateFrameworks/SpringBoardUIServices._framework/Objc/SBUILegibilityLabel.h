@@ -8,7 +8,7 @@
 
 #import <SpringBoardUIServices/SBUILegibility-Protocol.h>
 
-@class NSArray, NSAttributedString, NSString, UIColor, UIFont, UILabel, UILayoutGuide, _UILegibilitySettings, _UILegibilityView;
+@class NSAttributedString, NSString, UIColor, UIFont, UILabel, _UILegibilitySettings, _UILegibilityView;
 
 @interface SBUILegibilityLabel : UIView <SBUILegibility>
 {
@@ -18,9 +18,6 @@
     double _strength;
     long long _options;
     double _scale;
-    NSArray *_legibilityConstraints;
-    UILayoutGuide *_firstBaselineLayoutGuide;
-    UILayoutGuide *_lastBaselineLayoutGuide;
     NSString *_string;
     UIFont *_font;
     NSAttributedString *_attributedText;
@@ -38,6 +35,7 @@
 @property (readonly, nonatomic) double firstBaselineOffsetFromBottom;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) float hyphenationFactor; // @dynamic hyphenationFactor;
 @property (readonly, nonatomic) double lastBaselineOffsetFromBottom;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property (nonatomic) long long lineBreakMode; // @dynamic lineBreakMode;
@@ -48,10 +46,9 @@
 @property (readonly) Class superclass;
 @property (nonatomic) long long textAlignment; // @dynamic textAlignment;
 @property (copy, nonatomic) UIColor *textColor;
-@property (nonatomic) BOOL useColorFilters; // @dynamic useColorFilters;
 
 - (void).cxx_destruct;
-- (double)_layoutGuideOffsetFromBottom:(id)arg1;
+- (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (void)_markOurselfDirty;
 - (BOOL)_needsColorImage;
 - (void)_updateLabelForLegibilitySettings;

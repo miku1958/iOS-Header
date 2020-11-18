@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <UIKit/_UIBasicAnimationFactory-Protocol.h>
-#import <UIKit/_UIHostedFocusSystemDelegate-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
+#import <UIKitCore/_UIHostedFocusSystemDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, UIColor, UILongPressGestureRecognizer, UISegment, UIView, _UIHostedFocusSystem;
 

@@ -11,6 +11,7 @@
 @protocol PKPaymentWebServiceTargetDeviceProtocol <NSObject>
 - (NSString *)bridgedClientInfo;
 - (BOOL)claimSecureElementForCurrentUser;
+- (void)claimSecureElementForCurrentUserWithCompletion:(void (^)(BOOL))arg1;
 - (NSString *)deviceDescriptionForPaymentWebService:(PKPaymentWebService *)arg1;
 - (NSString *)deviceName;
 - (NSString *)deviceRegion;
@@ -53,6 +54,7 @@
 - (void)setMaximumPaymentCards:(unsigned long long)arg1;
 - (void)startBackgroundVerificationObserverForPass:(PKPaymentPass *)arg1 verificationMethod:(PKVerificationChannel *)arg2;
 - (BOOL)supportsCredentialType:(long long)arg1;
+- (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (BOOL)supportsExpressMode:(NSString *)arg1;
 - (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
 - (PKTrustedDeviceEnrollmentInfo *)trustedDeviceEnrollmentInfoForWebService:(PKPaymentWebService *)arg1;

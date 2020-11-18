@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class PLPhotoLibrary;
 @protocol OS_dispatch_group;
@@ -23,7 +23,6 @@
 - (BOOL)copyFilesMatching:(id)arg1 andExcluding:(id)arg2 fromPath:(id)arg3 toPath:(id)arg4 usingCompression:(BOOL)arg5;
 - (void)createSnapshot;
 - (void)dealloc;
-- (id)init;
 - (id)initWithPhotoLibrary:(id)arg1;
 - (void)logAlbum:(id)arg1 index:(unsigned long long)arg2 indent:(unsigned long long)arg3 completeMetadata:(BOOL)arg4 printAssets:(BOOL)arg5;
 - (void)logAlbumLists;

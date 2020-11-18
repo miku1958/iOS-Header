@@ -6,6 +6,7 @@
 
 #import <NanoRegistry/NRDiffBase.h>
 
+@class NRPBDevicePropertyDiff;
 @protocol NSObject><NSCopying;
 
 @interface NRDevicePropertyDiff : NRDiffBase
@@ -13,17 +14,20 @@
     id<NSObject><NSCopying> _value;
 }
 
+@property (readonly, nonatomic) NRPBDevicePropertyDiff *protobuf;
 @property (readonly, nonatomic) id<NSObject><NSCopying> value; // @synthesize value=_value;
 
 + (id)enclosedClassTypes;
++ (id)packPropertyValue:(id)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)unpackPropertyValue:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
 - (id)initWithValue:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

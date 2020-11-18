@@ -7,42 +7,41 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSetMessageAttributeIntent-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBIntentMetadata;
 
-@interface _INPBSetMessageAttributeIntent : PBCodable <NSCopying>
+@interface _INPBSetMessageAttributeIntent : PBCodable <_INPBSetMessageAttributeIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    int _attribute;
-    NSMutableArray *_identifiers;
-    _INPBIntentMetadata *_intentMetadata;
     struct {
         unsigned int attribute:1;
     } _has;
+    int _attribute;
+    NSArray *_identifiers;
+    _INPBIntentMetadata *_intentMetadata;
 }
 
 @property (nonatomic) int attribute; // @synthesize attribute=_attribute;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasAttribute;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
-@property (strong, nonatomic) NSMutableArray *identifiers; // @synthesize identifiers=_identifiers;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *identifiers; // @synthesize identifiers=_identifiers;
+@property (readonly, nonatomic) unsigned long long identifiersCount;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (Class)identifierType;
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsAttribute:(id)arg1;
 - (void)addIdentifier:(id)arg1;
 - (id)attributeAsString:(int)arg1;
 - (void)clearIdentifiers;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (id)identifierAtIndex:(unsigned long long)arg1;
-- (unsigned long long)identifiersCount;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

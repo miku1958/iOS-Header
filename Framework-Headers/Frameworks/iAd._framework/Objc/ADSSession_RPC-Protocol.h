@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class ADAdSpaceConfiguration, ADAdSpaceEventInfo, ADMRAIDAction, AdAnalyticsEventInfo, NSArray, NSData, NSDictionary, NSString, NSURL, NSValue;
+@class ADAdSpaceConfiguration, ADAdSpaceEventInfo, ADDeviceInfo, ADMRAIDAction, ADSInternalPoint, ADSInternalRect, AdAnalyticsEventInfo, NSArray, NSData, NSDictionary, NSString, NSURL;
 
 @protocol ADSSession_RPC
 - (void)_priv_adSpaceDidAppearForAdSpaceIdentifier:(NSString *)arg1;
@@ -12,14 +12,14 @@
 - (void)_priv_setServerURL:(NSURL *)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_actionCompletedWithSystemEvent:(int)arg1 forAdSpaceWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)_remote_addClientToSegments:(NSArray *)arg1 replaceExisting:(BOOL)arg2 privateSegment:(BOOL)arg3;
-- (void)_remote_bannerBeginActionForAdSpaceWithIdentifier:(NSString *)arg1 FromFrame:(NSValue *)arg2 tapLocation:(NSValue *)arg3 completionHandler:(void (^)(BOOL))arg4;
+- (void)_remote_bannerBeginActionForAdSpaceWithIdentifier:(NSString *)arg1 fromFrame:(ADSInternalRect *)arg2 tapLocation:(ADSInternalPoint *)arg3 reportAnyway:(BOOL)arg4;
 - (void)_remote_bannerCancelActionForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_bannerRefuseActionForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_captureAnalytics:(AdAnalyticsEventInfo *)arg1 completion:(void (^)(AdAnalyticsEventInfo *, NSError *))arg2;
 - (void)_remote_closeAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_creativeControllerNavigationAttemptBlockedDueToAccidentalTapForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_creativeControllerTapGestureTimerDidExpireBeforePrimaryActionWasInvokedForAdSpaceWithIdentifier:(NSString *)arg1;
-- (void)_remote_determineActionForAdSpaceWithIdentifier:(NSString *)arg1 ForTapAtLocation:(NSValue *)arg2 inFrame:(NSValue *)arg3 withMRAIDAction:(ADMRAIDAction *)arg4 completeHandler:(void (^)(ADAdActionPublicAttributes *))arg5;
+- (void)_remote_determineActionForAdSpaceWithIdentifier:(NSString *)arg1 ForTapAtLocation:(ADSInternalPoint *)arg2 inFrame:(ADSInternalRect *)arg3 withMRAIDAction:(ADMRAIDAction *)arg4 completeHandler:(void (^)(ADAdActionPublicAttributes *))arg5;
 - (void)_remote_disablePolicyEngine;
 - (void)_remote_enablePolicyEngine;
 - (void)_remote_playbackFailedForURL:(NSString *)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
@@ -39,14 +39,14 @@
 - (void)_remote_reportPrivacyAdTransparencyDidRenderTransparencyForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_reportSystemEvent:(int)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_reportTotalCreativeRequestCount:(long long)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
-- (void)_remote_requestAdSpaceWithConfiguration:(ADAdSpaceConfiguration *)arg1;
+- (void)_remote_requestAdSpaceWithConfiguration:(ADAdSpaceConfiguration *)arg1 deviceInfo:(ADDeviceInfo *)arg2;
 - (void)_remote_segmentDataForSignedInUser:(void (^)(NSString *, NSString *, double, NSError *))arg1;
 - (void)_remote_sendAdspaceStatusEventForAdSpaceWithIdentifier:(NSString *)arg1 withAdSpaceInfo:(ADAdSpaceEventInfo *)arg2;
 - (void)_remote_setAdSpaceType:(int)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_setAuthenticationUserName:(NSString *)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 - (void)_remote_setClientLinkedOnVersion:(NSString *)arg1;
 - (void)_remote_setSection:(NSString *)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
-- (void)_remote_setSelectedAdFrame:(NSValue *)arg1 withContentFrame:(NSValue *)arg2 atScale:(float)arg3 forAdSpaceWithIdentifier:(NSString *)arg4;
+- (void)_remote_setSelectedAdFrame:(ADSInternalRect *)arg1 withContentFrame:(ADSInternalRect *)arg2 atScale:(float)arg3 forAdSpaceWithIdentifier:(NSString *)arg4;
 - (void)_remote_setVisibility:(long long)arg1 forAdSpaceWithIdentifier:(NSString *)arg2 withAdSpaceInfo:(ADAdSpaceEventInfo *)arg3;
 - (void)_remote_signatureForRequestData:(NSData *)arg1 completionHandler:(void (^)(NSString *))arg2;
 - (void)_remote_userDidSkipPrerollForAdSpaceWithIdentifier:(NSString *)arg1;

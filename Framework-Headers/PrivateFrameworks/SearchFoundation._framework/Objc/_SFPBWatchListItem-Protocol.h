@@ -13,16 +13,6 @@
 @property (copy, nonatomic) NSString *addToUpNextText;
 @property (copy, nonatomic) NSString *addedToUpNextText;
 @property (copy, nonatomic) NSString *continueInTextFormat;
-@property (readonly, nonatomic) BOOL hasAddToUpNextText;
-@property (readonly, nonatomic) BOOL hasAddedToUpNextText;
-@property (readonly, nonatomic) BOOL hasContinueInTextFormat;
-@property (readonly, nonatomic) BOOL hasInUpNextText;
-@property (readonly, nonatomic) BOOL hasInstallButtonTitle;
-@property (readonly, nonatomic) BOOL hasOpenButtonTitle;
-@property (readonly, nonatomic) BOOL hasPurchaseOfferTextFormat;
-@property (readonly, nonatomic) BOOL hasSeasonEpisodeTextFormat;
-@property (readonly, nonatomic) BOOL hasWatchListIdentifier;
-@property (readonly, nonatomic) BOOL hasWatchLiveTextFormat;
 @property (copy, nonatomic) NSString *inUpNextText;
 @property (copy, nonatomic) NSString *installButtonTitle;
 @property (readonly, nonatomic) NSData *jsonData;

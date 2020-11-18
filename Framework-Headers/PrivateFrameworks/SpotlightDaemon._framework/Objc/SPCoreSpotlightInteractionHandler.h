@@ -19,7 +19,6 @@
 - (id)attributeForIntent:(id)arg1 direction:(long long)arg2;
 - (void)handleInteraction:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 - (id)interestingContactIdentifiersFromIntent:(id)arg1;
-- (BOOL)shouldHandleInteraction:(id)arg1 bundleID:(id)arg2 protectionClass:(id)arg3;
 
 @end
 

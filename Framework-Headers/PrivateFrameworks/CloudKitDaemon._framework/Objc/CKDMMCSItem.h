@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKAsset, CKDMMCSItemCommandWriter, CKPackage, CKRecordID, NSData, NSDictionary, NSError, NSFileHandle, NSMutableArray, NSNumber, NSString, NSURL;
+@class CKAsset, CKAssetDownloadPreauthorization, CKDAssetZoneKey, CKDMMCSItemCommandWriter, CKPackage, CKRecordID, NSData, NSDictionary, NSError, NSFileHandle, NSMutableArray, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface CKDMMCSItem : NSObject
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldReadRawEncryptedData;
     BOOL _isAlreadyRegistered;
     BOOL _isReaderReadFrom;
+    BOOL _isRereferencedAssetUpload;
     unsigned int _chunkCount;
     NSURL *_fileURL;
     NSNumber *_deviceID;
@@ -44,7 +45,7 @@ __attribute__((visibility("hidden")))
     NSString *_owner;
     NSString *_requestor;
     NSString *_authToken;
-    NSData *_authRequest;
+    CKAssetDownloadPreauthorization *_downloadPreauthorization;
     NSString *_uploadReceipt;
     double _uploadReceiptExpiration;
     NSMutableArray *_sectionItems;
@@ -58,13 +59,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _uploadTokenExpiration;
     unsigned long long _downloadTokenExpiration;
     NSDictionary *_assetChunkerOptions;
+    CKDAssetZoneKey *_assetZoneKey;
     NSString *_trackingUUID;
 }
 
 @property (strong, nonatomic) CKAsset *asset; // @synthesize asset=_asset;
 @property (strong, nonatomic) NSDictionary *assetChunkerOptions; // @synthesize assetChunkerOptions=_assetChunkerOptions;
 @property (strong, nonatomic) NSData *assetKey; // @synthesize assetKey=_assetKey;
-@property (strong, nonatomic) NSData *authRequest; // @synthesize authRequest=_authRequest;
+@property (strong, nonatomic) CKDAssetZoneKey *assetZoneKey; // @synthesize assetZoneKey=_assetZoneKey;
 @property (strong, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
 @property (strong, nonatomic) NSData *boundaryKey; // @synthesize boundaryKey=_boundaryKey;
 @property (nonatomic) unsigned int chunkCount; // @synthesize chunkCount=_chunkCount;
@@ -72,6 +74,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSFileHandle *clientOpenedFileHandle; // @synthesize clientOpenedFileHandle=_clientOpenedFileHandle;
 @property (strong, nonatomic) NSURL *contentBaseURL; // @synthesize contentBaseURL=_contentBaseURL;
 @property (strong, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
+@property (strong, nonatomic) CKAssetDownloadPreauthorization *downloadPreauthorization; // @synthesize downloadPreauthorization=_downloadPreauthorization;
 @property (nonatomic) unsigned long long downloadTokenExpiration; // @synthesize downloadTokenExpiration=_downloadTokenExpiration;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSNumber *fileID; // @synthesize fileID=_fileID;
@@ -84,6 +87,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL inMemoryDownloadLooksOkay; // @synthesize inMemoryDownloadLooksOkay=_inMemoryDownloadLooksOkay;
 @property (nonatomic) BOOL isAlreadyRegistered; // @synthesize isAlreadyRegistered=_isAlreadyRegistered;
 @property (nonatomic) BOOL isReaderReadFrom; // @synthesize isReaderReadFrom=_isReaderReadFrom;
+@property (nonatomic) BOOL isRereferencedAssetUpload; // @synthesize isRereferencedAssetUpload=_isRereferencedAssetUpload;
 @property (nonatomic) unsigned long long itemID; // @synthesize itemID=_itemID;
 @property (strong, nonatomic) NSString *itemTypeHint; // @synthesize itemTypeHint=_itemTypeHint;
 @property (strong, nonatomic) NSNumber *modTimeInSeconds; // @synthesize modTimeInSeconds=_modTimeInSeconds;
@@ -125,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithPackage:(id)arg1;
 - (id)openWithError:(id *)arg1;
 - (id)openWithProxy:(id)arg1 error:(id *)arg2;
+- (void)setupForGetChunkKeysWithAsset:(id)arg1;
 
 @end
 

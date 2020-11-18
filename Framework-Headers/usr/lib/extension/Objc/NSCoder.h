@@ -18,6 +18,7 @@
 - (id)__tryDecodeObjectForKey:(id)arg1 error:(id *)arg2 decodeBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_allowsValueCoding;
 - (BOOL)_validateAllowedClass:(Class)arg1 forKey:(id)arg2 allowingInvocations:(BOOL)arg3;
+- (BOOL)_validateAllowedClassesContainsClass:(Class)arg1 forKey:(id)arg2;
 - (id)allowedClasses;
 - (BOOL)allowsKeyedCoding;
 - (BOOL)containsValueForKey:(id)arg1;

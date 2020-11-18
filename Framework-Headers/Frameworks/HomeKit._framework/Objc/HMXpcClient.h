@@ -11,7 +11,7 @@
 @class NSObject, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface HMXpcClient : HMFMessageTransport <HMXPCMessageTransport>
+@interface HMXPCClient : HMFMessageTransport <HMXPCMessageTransport>
 {
     BOOL _connectionValid;
     BOOL _requiresCheckin;

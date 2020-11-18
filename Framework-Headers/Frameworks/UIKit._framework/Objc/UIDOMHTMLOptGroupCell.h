@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIDOMHTMLOptionPickerCell.h>
+#import <UIKitCore/UIDOMHTMLOptionPickerCell.h>
 
 __attribute__((visibility("hidden")))
 @interface UIDOMHTMLOptGroupCell : UIDOMHTMLOptionPickerCell

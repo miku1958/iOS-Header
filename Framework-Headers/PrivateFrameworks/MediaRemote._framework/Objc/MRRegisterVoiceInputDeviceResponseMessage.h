@@ -11,9 +11,9 @@
 }
 
 @property (readonly, nonatomic) unsigned int deviceID;
-@property (readonly, nonatomic) unsigned int errorCode;
+@property (readonly, nonatomic) long long errorCode;
 
-- (id)initWithDeviceID:(unsigned int)arg1 errorCode:(unsigned int)arg2;
+- (id)initWithDeviceID:(unsigned int)arg1 errorCode:(long long)arg2;
 - (unsigned long long)type;
 
 @end

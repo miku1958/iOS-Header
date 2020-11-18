@@ -18,6 +18,7 @@
     BOOL _optimizesImagesForOfflineVideoStabilization;
     BOOL _quadraHighResCaptureEnabled;
     BOOL _depthDataDeliveryEnabled;
+    BOOL _portraitEffectsMatteDeliveryEnabled;
     BOOL _filterRenderingEnabled;
     BOOL _bravoDualPhotoDeliveryEnabled;
 }
@@ -31,6 +32,7 @@
 @property (nonatomic) CDStruct_1b6d18a9 irisMovieVideoFrameDuration; // @synthesize irisMovieVideoFrameDuration=_movieVideoFrameDuration;
 @property (strong, nonatomic) FigCaptureIrisPreparedSettings *irisPreparedSettings; // @synthesize irisPreparedSettings=_preparedSettings;
 @property (nonatomic) BOOL optimizesImagesForOfflineVideoStabilization; // @synthesize optimizesImagesForOfflineVideoStabilization=_optimizesImagesForOfflineVideoStabilization;
+@property (nonatomic) BOOL portraitEffectsMatteDeliveryEnabled; // @synthesize portraitEffectsMatteDeliveryEnabled=_portraitEffectsMatteDeliveryEnabled;
 @property (nonatomic) BOOL quadraHighResCaptureEnabled; // @synthesize quadraHighResCaptureEnabled=_quadraHighResCaptureEnabled;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

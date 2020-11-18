@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
-#import <BarcodeSupport/BBRemoteDataProvider-Protocol.h>
+#import <BarcodeSupport/BCSDataProviderDelegate-Protocol.h>
 
-@class BBDataProviderConnection, BBDataProviderProxy, NSMutableSet, NSString;
+@class BBDataProviderConnection, BBDataProviderProxy, BCSNFCDataProvider, BCSQRCodeDataProvider, NSMutableSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface BCSNotificationManager : NSObject <BBRemoteDataProvider>
+@interface BCSNotificationManager : NSObject <BCSDataProviderDelegate>
 {
     BBDataProviderConnection *_bbConnection;
-    BBDataProviderProxy *_bbProxy;
+    BBDataProviderProxy *_qrCodeBBProxy;
+    BCSQRCodeDataProvider *_qrCodeDataProvider;
+    BBDataProviderProxy *_nfcBBProxy;
+    BCSNFCDataProvider *_nfcDataProvider;
     NSMutableSet *_notifications;
 }
 
@@ -25,17 +28,15 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (id)_bbProxyForCodeType:(long long)arg1;
 - (id)_notificationWithIdentifier:(id)arg1;
-- (id)defaultSectionInfo;
+- (id)clearedInfoForBulletins:(id)arg1 lastClearedInfo:(id)arg2;
 - (void)getPNGDataForAttachmentUUID:(id)arg1 recordID:(id)arg2 sizeConstraints:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)handleBulletinActionResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)invalidate;
-- (void)scheduleNotification:(id)arg1;
-- (id)sectionIdentifier;
-- (id)sectionParameters;
-- (id)sortDescriptors;
-- (void)withdrawNotificationsWithProcessID:(int)arg1;
+- (void)scheduleNotification:(id)arg1 codeType:(long long)arg2;
+- (void)withdrawNotificationsWithProcessID:(int)arg1 codeType:(long long)arg2;
 
 @end
 

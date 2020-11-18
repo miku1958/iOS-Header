@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/TSCHNotifyOnModify-Protocol.h>
@@ -70,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)dataSetNameForMultiDataModel;
 - (void)dealloc;
 - (unsigned long long)defaultOrdinalForAxisType:(int)arg1 seriesIndex:(unsigned long long)arg2;
+- (void)disableCachingMediatorDataDuringBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMultiDataModelsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)forceLoadDefaultData;
 - (unsigned long long)gridIndexForSeriesDimension:(id)arg1;

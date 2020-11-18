@@ -6,12 +6,12 @@
 
 #import <HomeKit/HMCharacteristicMetadata.h>
 
-@class NSNumber;
+@class HFNumberValueConstraints;
 
 @interface HMCharacteristicMetadata (HFAdditions)
 
-@property (readonly, nonatomic) NSNumber *hf_effectiveStepValue;
 @property (readonly, nonatomic) BOOL hf_isNumeric;
+@property (readonly, nonatomic) HFNumberValueConstraints *hf_numericValueConstraints;
 
 - (id)hf_characteristicValueForPercentage:(double)arg1;
 - (BOOL)hf_isEqualToMetadata:(id)arg1;

@@ -43,7 +43,8 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)p_copyAndAddCellDiff:(id)arg1 andCellUID:(struct TSTCellUID)arg2;
 - (void)p_resolveCellIDsToUUIDsByTableInfo:(id)arg1;
-- (id)prunedCellDiffMapAgainstTable:(id)arg1 allowMergeFragment:(BOOL)arg2 addingPrunedIndicesToIndexSet:(id)arg3;
+- (id)pruneCellDiffMapAgainstTable:(id)arg1 behavior:(unsigned long long)arg2;
+- (id)pruneCellDiffMapAgainstTable:(id)arg1 behavior:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)saveToArchiver:(id)arg1;
 - (id)uuidBasedCellDiffMapByTableInfo:(id)arg1;
 

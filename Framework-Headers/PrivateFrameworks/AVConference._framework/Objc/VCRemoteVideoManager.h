@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCRemoteVideoManagerDelegate-Protocol.h>
 
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)remoteVideoAttributesDidChange:(id)arg1 streamToken:(long long)arg2;
 - (void)remoteVideoDidDegrade:(BOOL)arg1 streamToken:(long long)arg2;
 - (void)remoteVideoDidPause:(BOOL)arg1 streamToken:(long long)arg2;
+- (void)remoteVideoDidSuspend:(BOOL)arg1 streamToken:(long long)arg2;
 - (unsigned int)slotForStreamToken:(long long)arg1 videoMode:(int)arg2;
 - (void)unlock;
 

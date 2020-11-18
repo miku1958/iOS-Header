@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/CBCentralManagerDelegate-Protocol.h>
 #import <PassKitCore/PKContinuityPaymentCoordinatorDelegate-Protocol.h>
@@ -131,6 +131,7 @@
 - (void)continuityPaymentCoordinatorDidReceiveCancellation:(id)arg1;
 - (void)continuityPaymentCoordinatorDidTimeoutUpdatePaymentDevices:(id)arg1;
 - (void)dealloc;
+- (void)didAuthenticateWithAuthenticatorEvaluationResponse:(id)arg1;
 - (void)didAuthenticateWithCredential:(id)arg1;
 - (void)didBecomeActive:(BOOL)arg1;
 - (void)didCancel;

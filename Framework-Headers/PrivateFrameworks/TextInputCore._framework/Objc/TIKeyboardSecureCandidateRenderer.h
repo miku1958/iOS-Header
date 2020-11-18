@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CAContext, NSMutableDictionary, NSString;
 
@@ -16,11 +16,12 @@
     NSMutableDictionary *_accessibilityLabelCache;
 }
 
-@property (readonly, strong, nonatomic) CAContext *context; // @synthesize context=_context;
-@property (readonly, strong, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
+@property (readonly, nonatomic) CAContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
 @property (strong, nonatomic) NSMutableDictionary *secureCandidateCache; // @synthesize secureCandidateCache=_secureCandidateCache;
 
 + (id)allRenderers;
+- (void).cxx_destruct;
 - (id)_truncationSentinel;
 - (id)accessibilityLabelForSlotID:(unsigned int)arg1;
 - (id)accessibilityLabelsForSecureHeaders:(id)arg1 secureContents:(id)arg2 truncationSentinel:(id)arg3;

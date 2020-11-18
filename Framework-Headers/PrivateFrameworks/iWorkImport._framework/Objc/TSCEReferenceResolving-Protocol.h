@@ -6,65 +6,30 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class NSIndexSet, NSMutableIndexSet, NSString, TSCECalculationEngine, TSCEUidTract, TSKDocumentRoot, TSUMutableUUIDSet, TSUUUIDSet, TSWPParagraphStyle;
-@protocol TSCEReferenceResolving, TSCEResolverContainer;
+@class NSIndexSet, NSMutableIndexSet, NSString, TSCECalculationEngine, TSUMutableUUIDSet;
 
 @protocol TSCEReferenceResolving <NSObject>
-+ (struct TSCETableReference)canonicalCellReferenceForReference:(const struct TSCETableReference *)arg1;
-+ (struct TSCEFormat)format:(const struct TSCETableReference *)arg1 fromCell:(struct TSUCellCoord)arg2;
-+ (struct TSCEFormat)formatFromVector:(const struct TSCETableReferenceVector *)arg1 atIndex:(unsigned long long)arg2;
-+ (int)getHidingAction:(const struct TSCETableReference *)arg1;
-+ (struct TSCERangeCoordinate)getRange:(const struct TSCETableReference *)arg1;
-+ (struct TSCERangeRef)getRangeReference:(const struct TSCETableReference *)arg1;
-+ (struct TSCETableReference)makeCellReferenceInSameTable:(const struct TSCETableReference *)arg1 cellID:(struct TSUCellCoord)arg2;
-+ (struct TSCETableReferenceVector)makeReferenceVectorWithReference:(const struct TSCETableReference *)arg1 rangeContext:(unsigned char)arg2 apparentRangePtr:(struct TSCERangeCoordinate *)arg3;
-+ (int)mergeReferences:(struct TSCETableReference *)arg1 left:(const struct TSCETableReference *)arg2 right:(const struct TSCETableReference *)arg3;
-+ (void)prefetchData:(struct TSCEReferenceValue *)arg1 fromVectorObject:(struct TSCETableReferenceVector *)arg2 cellID:(struct TSUCellCoord)arg3;
-+ (id<TSCEResolverContainer>)resolverContainerMatchingName:(NSString *)arg1 inDocumentRoot:(TSKDocumentRoot *)arg2;
-+ (id<TSCEReferenceResolving>)resolverMatchingName:(NSString *)arg1 inDocumentRoot:(TSKDocumentRoot *)arg2 contextResolver:(id<TSCEReferenceResolving>)arg3;
-+ (id<TSCEReferenceResolving>)resolverMatchingNameWithContextContainer:(NSString *)arg1 inDocumentRoot:(TSKDocumentRoot *)arg2 contextContainerName:(NSString *)arg3;
-+ (struct TSCEValue)scalarValue:(const struct TSCETableReference *)arg1 fromCell:(struct TSUCellCoord)arg2 permitAccessInsideMergeRegions:(BOOL)arg3 fetchRichTextAttributesIfPlainText:(BOOL)arg4;
-- (UUIDData_5fbc143e)UIDForIndex:(unsigned short)arg1 isRows:(BOOL)arg2;
+- (UUIDData_5fbc143e)UIDForIndex:(unsigned int)arg1 isRows:(BOOL)arg2;
 - (TSUMutableUUIDSet *)UIDSetForIndexes:(NSIndexSet *)arg1 isRows:(BOOL)arg2;
-- (TSUMutableUUIDSet *)UIDSetForRange:(struct _NSRange)arg1 isRows:(BOOL)arg2;
 - (vector_4dc5f307)UIDsForIndexes:(NSIndexSet *)arg1 isRows:(BOOL)arg2;
 - (vector_4dc5f307)UIDsForRange:(struct _NSRange)arg1 isRows:(BOOL)arg2;
-- (vector_4dc5f307)allColumnUIDs;
-- (vector_4dc5f307)allRowUIDs;
-- (struct TSCERangeCoordinate)apparentRangeForRange:(struct TSCERangeCoordinate)arg1 rangeContext:(unsigned char)arg2;
-- (struct TSCERangeCoordinate)bodyRangeCoordinate;
 - (TSCECalculationEngine *)calcEngine;
-- (NSString *)cellRangeName:(struct TSCERangeCoordinate)arg1 stickyBits:(unsigned char)arg2 suppressIdenticalEndReference:(BOOL)arg3 quoteComponents:(BOOL)arg4 forceEscaping:(BOOL)arg5 rangeNameContainsColumnOrRowName:(out BOOL *)arg6;
-- (TSWPParagraphStyle *)cellTextStyle:(struct TSUCellCoord)arg1;
-- (BOOL)cellWasModifiedInThisRecalcCycle:(struct TSUCellCoord)arg1;
-- (unsigned char)columnIndexForColumnUID:(const UUIDData_5fbc143e *)arg1;
-- (UUIDData_5fbc143e)columnUIDForColumnIndex:(unsigned char)arg1;
+- (unsigned short)columnIndexForColumnUID:(const UUIDData_5fbc143e *)arg1;
+- (UUIDData_5fbc143e)columnUIDForColumnIndex:(unsigned short)arg1;
 - (vector_4dc5f307)columnUIDsForColumnIndexes:(NSIndexSet *)arg1;
 - (vector_4dc5f307)columnUIDsForColumnRange:(struct _NSRange)arg1;
 - (UUIDData_5fbc143e)conditionalStyleFormulaOwnerUID;
-- (struct TSCERangeCoordinate)footerRangeCoordinate;
-- (BOOL)hasCellID:(struct TSUCellCoord)arg1;
-- (BOOL)hasNamesInHeaders;
-- (unsigned short)indexForUID:(const UUIDData_5fbc143e *)arg1 isRows:(BOOL)arg2;
-- (NSMutableIndexSet *)indexesForUIDs:(const vector_4dc5f307 *)arg1 isRows:(BOOL)arg2;
-- (struct TSCETableReference)makeReference:(struct TSUCellCoord)arg1 bottomRight:(struct TSUCellCoord)arg2;
-- (UUIDData_5fbc143e)mergeOwnerUID;
+- (id)drawableInfo;
 - (NSMutableIndexSet *)mutableColumnIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (NSMutableIndexSet *)mutableIndexesForUIDSet:(TSUUUIDSet *)arg1 isRows:(BOOL)arg2 notFoundUIDs:(TSUMutableUUIDSet *)arg3;
+- (NSMutableIndexSet *)mutableIndexesForUIDs:(const vector_4dc5f307 *)arg1 isRows:(BOOL)arg2;
 - (NSMutableIndexSet *)mutableRowIndexesForUIDs:(const vector_4dc5f307 *)arg1;
-- (struct TSCERangeCoordinate)preMergeRangeFromUidTract:(TSCEUidTract *)arg1;
-- (void)resetAllFormulaDependenciesForCell:(struct TSUCellCoord)arg1;
-- (void)resetDependenciesForCell:(struct TSUCellCoord)arg1;
-- (struct TSCERangeCoordinate)resolverExpandCellRangeToCoverMergedCells:(struct TSCERangeCoordinate)arg1;
-- (BOOL)resolverIsATable;
 - (UUIDData_5fbc143e)resolverUID;
-- (unsigned short)rowIndexForRowUID:(const UUIDData_5fbc143e *)arg1;
-- (UUIDData_5fbc143e)rowUIDForRowIndex:(unsigned short)arg1;
+- (unsigned int)rowIndexForRowUID:(const UUIDData_5fbc143e *)arg1;
+- (UUIDData_5fbc143e)rowUIDForRowIndex:(unsigned int)arg1;
 - (vector_4dc5f307)rowUIDsForRowIndexes:(NSIndexSet *)arg1;
 - (vector_4dc5f307)rowUIDsForRowRange:(struct _NSRange)arg1;
 - (NSString *)sheetName;
 - (id)tableInfo;
-- (id)tableModel;
 - (NSString *)tableName;
 - (struct TSCERangeCoordinate)tableRangeCoordinate;
 @end

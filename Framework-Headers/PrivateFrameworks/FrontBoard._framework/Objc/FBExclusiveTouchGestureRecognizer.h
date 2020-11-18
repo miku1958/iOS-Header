@@ -17,7 +17,7 @@
 
 @property (readonly, nonatomic) struct CGPoint accumulatedMovement; // @synthesize accumulatedMovement=_accumulatedMovement;
 @property (readonly, nonatomic) BOOL achievedMaximumAbsoluteAccumulatedMovement; // @synthesize achievedMaximumAbsoluteAccumulatedMovement=_achievedMaximumAbsoluteAccumulatedMovement;
-@property (nonatomic) id<FBExclusiveTouchGestureRecognizerDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<FBExclusiveTouchGestureRecognizerDelegate> delegate; // @dynamic delegate;
 @property (nonatomic) struct CGPoint maximumAbsoluteAccumulatedMovement; // @synthesize maximumAbsoluteAccumulatedMovement=_maximumAbsoluteAccumulatedMovement;
 
 - (id)description;

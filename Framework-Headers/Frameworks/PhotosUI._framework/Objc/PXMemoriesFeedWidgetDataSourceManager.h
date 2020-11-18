@@ -15,7 +15,7 @@
 
 - (unsigned long long)_extendedMaxCount;
 - (id)_generateEntryFromMemories:(id)arg1;
-- (void)_regenerateMemories;
+- (void)_regenerateMemoriesWithChange:(id)arg1;
 - (id)fetchOptions;
 - (void)generateAdditionalEntriesIfPossible;
 - (void)handleChangedKeyAssetsForMemories:(id)arg1;

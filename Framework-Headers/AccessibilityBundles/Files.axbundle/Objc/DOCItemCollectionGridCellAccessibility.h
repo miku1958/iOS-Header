@@ -13,11 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityIsFolder;
 - (id)_axAttrTitle;
 - (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityDropPointDescriptors;
-- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 
 @end

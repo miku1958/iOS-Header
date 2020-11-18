@@ -14,13 +14,15 @@ __attribute__((visibility("hidden")))
     int mShapeType;
     TSDPathSource *mShapePathSource;
     double mAngle;
+    unsigned long long mBackgroundAppearance;
 }
 
 @property (readonly, nonatomic) double angle; // @synthesize angle=mAngle;
+@property (nonatomic) unsigned long long backgroundAppearance; // @synthesize backgroundAppearance=mBackgroundAppearance;
 
 - (void).cxx_destruct;
 - (void)doWorkWithReadLock;
-- (id)initWithPreset:(id)arg1 imageSize:(struct CGSize)arg2 imageScale:(double)arg3 swatchFrame:(struct CGRect)arg4 shapeType:(int)arg5 shapePathSource:(id)arg6 angle:(double)arg7 documentRoot:(id)arg8;
+- (id)initWithPreset:(id)arg1 imageSize:(struct CGSize)arg2 imageScale:(double)arg3 swatchFrame:(struct CGRect)arg4 shapeType:(int)arg5 shapePathSource:(id)arg6 angle:(double)arg7 backgroundAppearance:(unsigned long long)arg8 documentRoot:(id)arg9;
 - (id)initWithPreset:(id)arg1 imageSize:(struct CGSize)arg2 imageScale:(double)arg3 swatchFrame:(struct CGRect)arg4 shapeType:(int)arg5 shapePathSource:(id)arg6 documentRoot:(id)arg7;
 - (BOOL)needsPressedStateBackground;
 - (struct UIEdgeInsets)swatchEdgeInsets;

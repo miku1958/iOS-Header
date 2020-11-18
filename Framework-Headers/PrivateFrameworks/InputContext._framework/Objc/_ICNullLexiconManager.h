@@ -17,10 +17,13 @@
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)addContactObserver:(CDUnknownBlockType)arg1;
+- (void)hibernate;
 - (id)init;
 - (id)loadLexicons:(CDUnknownBlockType)arg1;
+- (id)loadLexiconsUsingFilter:(CDUnknownBlockType)arg1;
 - (void)removeContactObserver:(CDUnknownBlockType)arg1;
 - (void)unloadLexicons;
+- (void)warmUp;
 
 @end
 

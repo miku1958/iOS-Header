@@ -7,31 +7,30 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBTimestamp-Protocol.h>
 
-@class PBUnknownFields;
+@class NSString;
 
-@interface _INPBTimestamp : PBCodable <NSCopying>
+@interface _INPBTimestamp : PBCodable <_INPBTimestamp, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    long long _seconds;
+    CDStruct_85a1ec51 _has;
     int _nanos;
-    CDStruct_fd810184 _has;
+    long long _seconds;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasNanos;
 @property (nonatomic) BOOL hasSeconds;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) int nanos; // @synthesize nanos=_nanos;
 @property (nonatomic) long long seconds; // @synthesize seconds=_seconds;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
-- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

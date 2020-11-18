@@ -8,22 +8,12 @@
 
 @interface PHASleepWakeMonitor : NSObject
 {
-    unsigned int _ackPort;
-    unsigned int _notifier;
     unsigned int _powerAssertionID;
-    struct IONotificationPort *_notifyPortRef;
 }
 
-@property unsigned int ackPort; // @synthesize ackPort=_ackPort;
-@property unsigned int notifier; // @synthesize notifier=_notifier;
-@property struct IONotificationPort *notifyPortRef; // @synthesize notifyPortRef=_notifyPortRef;
 @property unsigned int powerAssertionID; // @synthesize powerAssertionID=_powerAssertionID;
 
 + (BOOL)isSystemInDarkWake;
-- (void)deRegisterForSleepWake;
-- (id)init;
-- (void)powerNotificationMessage:(unsigned int)arg1 argument:(void *)arg2;
-- (void)registerForSleepWake;
 - (void)releaseUserIdlePowerAssertion;
 - (void)takeUserIdlePowerAssertion;
 

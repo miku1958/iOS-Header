@@ -6,13 +6,14 @@
 
 #import <SilexText/TSWPInteractiveCanvasControllerDelegate-Protocol.h>
 
-@class STTextTangierFlowInfo, STTextTangierInteractiveCanvasController, TSDInteractiveCanvasController, TSWPHyperlinkField, UIScrollView;
+@class STTextTangierFlowInfo, STTextTangierInteractiveCanvasController, TSDInteractiveCanvasController, TSWPHyperlinkField, UIScrollView, UITextInteraction;
 
 @protocol STTextTangierInteractiveCanvasControllerDelegate <TSWPInteractiveCanvasControllerDelegate>
 
 @optional
 - (void)interactiveCanvasController:(STTextTangierInteractiveCanvasController *)arg1 interactedWithHyperlink:(TSWPHyperlinkField *)arg2 info:(STTextTangierFlowInfo *)arg3 range:(struct _NSRange)arg4 touchPoint:(struct CGPoint)arg5 touchAndHold:(BOOL)arg6;
 - (void)interactiveCanvasController:(TSDInteractiveCanvasController *)arg1 scrollViewDidEndDragging:(UIScrollView *)arg2 willDecelerate:(BOOL)arg3;
+- (BOOL)interactiveCanvasController:(STTextTangierInteractiveCanvasController *)arg1 shouldBeginInteraction:(UITextInteraction *)arg2 atPoint:(struct CGPoint)arg3;
 - (void)interactiveCanvasControllerWillStartInteraction:(STTextTangierInteractiveCanvasController *)arg1;
 @end
 

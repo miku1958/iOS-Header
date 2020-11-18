@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDContainerInfo-Protocol.h>
+#import <iWorkImport/TSKModelRootIndexProvider-Protocol.h>
 
 @class NSArray, NSString, TPPageHint, TPPageInfo, TSDInfoGeometry, TSPObject, TSWPStorage;
 @protocol TSDContainerInfo, TSDHint, TSDOwningAttachment, TSWPOffscreenColumn, TSWPTopicNumberHints;
 
 __attribute__((visibility("hidden")))
-@interface TPBodyInfo : NSObject <TSDContainerInfo>
+@interface TPBodyInfo : NSObject <TSDContainerInfo, TSKModelRootIndexProvider>
 {
     TPPageInfo *_pageInfo;
 }
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSelectable;
 - (BOOL)isThemeContent;
 - (Class)layoutClass;
+- (long long)modelRootIndex;
 - (Class)repClass;
 - (void)setPrimitiveGeometry:(id)arg1;
 

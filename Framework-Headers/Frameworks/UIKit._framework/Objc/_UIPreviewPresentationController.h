@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPreviewPresentationController.h>
+#import <UIKitCore/UIPreviewPresentationController.h>
 
-#import <UIKit/UIForcePresentationController-Protocol.h>
-#import <UIKit/UIInteractionProgressObserver-Protocol.h>
-#import <UIKit/_UIPlatterMenuDynamicsControllerDelegate-Protocol.h>
-#import <UIKit/_UIPreviewActionSheetViewDelegate-Protocol.h>
+#import <UIKitCore/UIForcePresentationController-Protocol.h>
+#import <UIKitCore/UIInteractionProgressObserver-Protocol.h>
+#import <UIKitCore/_UIPlatterMenuDynamicsControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIPreviewActionSheetViewDelegate-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSString, UIGestureRecognizer, UIImageView, UIInteractionProgress, UIPreviewAction, UIPreviewForceInteractionProgress, UIPreviewInteractionController, UIScrollView, UITapGestureRecognizer, UIView, UIWindow, _UIPlatterMenuDynamicsController, _UIPreviewActionSheetView, _UIPreviewPresentationAnimator, _UIPreviewPresentationContainerView, _UIPreviewPresentationEffectView, _UIPreviewQuickActionView, _UIStatesFeedbackGenerator, _UIVelocityIntegrator;
 @protocol UIViewControllerPreviewing, _UIForcePresentationControllerDelegate;

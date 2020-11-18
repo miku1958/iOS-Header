@@ -8,10 +8,11 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSData, NSString;
 
 @interface NTPBOptInButtonExposure : PBCodable <NSCopying>
 {
+    NSData *_groupViewExposureId;
     int _optInButtonLocation;
     NSString *_optInButtonLocationId;
     int _optInButtonType;
@@ -21,6 +22,8 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
+@property (readonly, nonatomic) BOOL hasGroupViewExposureId;
 @property (nonatomic) BOOL hasOptInButtonLocation;
 @property (readonly, nonatomic) BOOL hasOptInButtonLocationId;
 @property (nonatomic) BOOL hasOptInButtonType;

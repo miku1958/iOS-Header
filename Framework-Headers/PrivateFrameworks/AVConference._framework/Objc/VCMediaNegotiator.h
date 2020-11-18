@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class VCMediaNegotiatorAudioResults, VCMediaNegotiatorCaptionsResults, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorMomentsResults, VCMediaNegotiatorResults, VCMediaNegotiatorVideoResults;
+@class NSArray, NSMutableArray, VCMediaNegotiatorAudioResults, VCMediaNegotiatorCaptionsResults, VCMediaNegotiatorLocalConfiguration, VCMediaNegotiatorMomentsResults, VCMediaNegotiatorResults, VCMediaNegotiatorVideoResults;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiator : NSObject
@@ -21,6 +21,8 @@ __attribute__((visibility("hidden")))
     VCMediaNegotiatorVideoResults *_negotiatedScreenSettings;
     VCMediaNegotiatorCaptionsResults *_negotiatedCaptionsSettings;
     VCMediaNegotiatorMomentsResults *_negotiatedMomentsSettings;
+    NSMutableArray *_negotiatedMultiwayAudioStreams;
+    NSMutableArray *_negotiatedMultiwayVideoStreams;
 }
 
 @property (readonly, nonatomic) BOOL isCaller;
@@ -28,36 +30,43 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) VCMediaNegotiatorAudioResults *negotiatedAudioSettings; // @synthesize negotiatedAudioSettings=_negotiatedAudioSettings;
 @property (readonly, nonatomic) VCMediaNegotiatorCaptionsResults *negotiatedCaptionsSettings; // @synthesize negotiatedCaptionsSettings=_negotiatedCaptionsSettings;
 @property (readonly, nonatomic) VCMediaNegotiatorMomentsResults *negotiatedMomentsSettings; // @synthesize negotiatedMomentsSettings=_negotiatedMomentsSettings;
+@property (readonly, nonatomic) NSArray *negotiatedMultiwayAudioStreams; // @synthesize negotiatedMultiwayAudioStreams=_negotiatedMultiwayAudioStreams;
+@property (readonly, nonatomic) NSArray *negotiatedMultiwayVideoStreams; // @synthesize negotiatedMultiwayVideoStreams=_negotiatedMultiwayVideoStreams;
 @property (readonly, nonatomic) VCMediaNegotiatorVideoResults *negotiatedScreenSettings; // @synthesize negotiatedScreenSettings=_negotiatedScreenSettings;
 @property (readonly, nonatomic) VCMediaNegotiatorResults *negotiatedSettings; // @synthesize negotiatedSettings=_negotiatedSettings;
 @property (readonly, nonatomic) VCMediaNegotiatorVideoResults *negotiatedVideoSettings; // @synthesize negotiatedVideoSettings=_negotiatedVideoSettings;
 @property (readonly, nonatomic) BOOL usePreNegotiation; // @synthesize usePreNegotiation=_usePreNegotiation;
 
++ (id)negotiationBlobFromData:(id)arg1;
++ (id)newCompressedBlob:(id)arg1;
++ (id)newDecompressedBlob:(id)arg1;
 - (BOOL)addBandwidthSettingsForMediaBlob:(id)arg1 operatingMode:(int)arg2 connectionType:(int)arg3;
 - (int)bandwidthConfigurationWithOperatingMode:(int)arg1 connectionType:(int)arg2;
 - (BOOL)canDecodeVideo:(id)arg1;
 - (BOOL)canEncodeVideo:(id)arg1;
 - (void)dealloc;
+- (void)dumpBlob:(id)arg1 prefix:(id)arg2;
 - (id)getPreferredScreenPayloadList;
 - (id)getPreferredVideoPayloadList:(id)arg1;
 - (id)initWithLocalSettings:(id)arg1;
 - (BOOL)isCellular16x9EncodeCapable;
-- (void)negotateAudioUseSBR:(id)arg1 audioRuleCollection:(id)arg2;
+- (BOOL)isVideoStreamSupported:(int)arg1;
 - (void)negotiateAudioAllowRecording:(id)arg1;
 - (BOOL)negotiateAudioDTXPayload:(id)arg1;
 - (BOOL)negotiateAudioPrimaryPayload:(id)arg1;
 - (BOOL)negotiateAudioREDPayload:(id)arg1;
 - (void)negotiateAudioSecondaryPayloads:(id)arg1;
 - (BOOL)negotiateAudioSettings:(id)arg1;
+- (void)negotiateAudioUseSBR:(id)arg1 audioRuleCollection:(id)arg2;
 - (BOOL)negotiateCaptionsWithCaptionsSettings:(id)arg1;
 - (BOOL)negotiateMomentsWithMomentsSettings:(id)arg1;
+- (BOOL)negotiateMultiwayAudioStreams:(id)arg1;
+- (BOOL)negotiateMultiwayVideoStreams:(id)arg1;
 - (void)negotiateRTCPFB:(id)arg1;
 - (BOOL)negotiateScreenSettings:(id)arg1;
 - (id)negotiateVideoMaxResolutionWithEncodeRules:(id)arg1 decodeRules:(id)arg2 isEncoder:(BOOL)arg3;
 - (BOOL)negotiateVideoSettings:(id)arg1;
 - (id)negotiatedFeaturesStringWithLocalFeaturesString:(id)arg1 remoteFeaturesString:(id)arg2;
-- (id)newCompressedBlob:(id)arg1;
-- (id)newDecompressedBlob:(id)arg1;
 - (id)newInviteBlob;
 - (id)newResponseBlob;
 - (BOOL)processInviteBlob:(id)arg1;
@@ -71,6 +80,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)setupBandwidthSettingsForMediaBlob:(id)arg1;
 - (void)setupCaptionsForMediaBlob:(id)arg1;
 - (void)setupMomentsForMediaBlob:(id)arg1;
+- (void)setupMultiwayAudioStreamsForMediaBlob:(id)arg1;
+- (void)setupMultiwayVideoStreamsForMediaBlob:(id)arg1;
 - (BOOL)setupScreenWithNegotiatedSettings:(id)arg1;
 - (BOOL)setupVideoWithNegotiatedSettings:(id)arg1;
 

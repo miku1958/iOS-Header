@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CIRenderInfo : NSObject
 {
@@ -21,7 +21,9 @@
 - (id)description;
 - (id)init;
 - (id)initWithCompletedTask:(id)arg1;
+- (long long)kernelExecutionCycles;
 - (long long)pixelsOverdrawn;
+- (double)timeForNodeID:(unsigned long long)arg1;
 
 @end
 

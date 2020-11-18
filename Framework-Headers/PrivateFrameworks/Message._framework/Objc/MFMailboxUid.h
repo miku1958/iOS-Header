@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Message/ECMailbox-Protocol.h>
 #import <Message/MFMailboxPredictionMailbox-Protocol.h>
@@ -108,8 +108,6 @@
 - (BOOL)isStore;
 - (BOOL)isValid;
 - (BOOL)isVisible;
-- (id)lastViewedMessageDate;
-- (id)lastViewedMessageID;
 - (unsigned int)mailboxID;
 - (BOOL)mergeWithUserInfo:(id)arg1;
 - (id)mutableCopyOfChildren;
@@ -130,7 +128,6 @@
 - (void)setAttributes:(unsigned int)arg1;
 - (BOOL)setChildren:(id)arg1;
 - (void)setCriterion:(id)arg1;
-- (void)setLastViewedMessageID:(id)arg1;
 - (void)setName:(id)arg1;
 - (void)setParent:(id)arg1;
 - (void)setRepresentedAccount:(id)arg1;

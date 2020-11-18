@@ -12,7 +12,6 @@
 
 @interface PKFelicaTransitAppletState : PKTransitAppletState <NSCopying>
 {
-    BOOL _inShinkansenStation;
     BOOL _shinkansenTicketActive;
     BOOL _greenCarTicketUsed;
     BOOL _balanceAllowedForCommute;
@@ -57,7 +56,7 @@
 @property (copy, nonatomic) NSNumber *greenCarValidityStartDate; // @synthesize greenCarValidityStartDate=_greenCarValidityStartDate;
 @property (nonatomic) BOOL hasGreenCarTicket; // @synthesize hasGreenCarTicket=_hasGreenCarTicket;
 @property (nonatomic) BOOL hasShinkansenTicket; // @synthesize hasShinkansenTicket=_hasShinkansenTicket;
-@property (nonatomic, getter=isInShinkansenStation) BOOL inShinkansenStation; // @synthesize inShinkansenStation=_inShinkansenStation;
+@property (readonly, nonatomic, getter=isInShinkansenStation) BOOL inShinkansenStation; // @dynamic inShinkansenStation;
 @property (nonatomic, getter=isLowBalanceNotificationEnabled) BOOL lowBalanceNotificationEnabled; // @synthesize lowBalanceNotificationEnabled=_lowBalanceNotificationEnabled;
 @property (copy, nonatomic) NSNumber *shinkansenArrivalTime; // @synthesize shinkansenArrivalTime=_shinkansenArrivalTime;
 @property (copy, nonatomic) NSNumber *shinkansenCarNumber; // @synthesize shinkansenCarNumber=_shinkansenCarNumber;
@@ -94,7 +93,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransactions:(id *)arg3;
+- (BOOL)isInStation;
+- (id)processUpdateWithAppletHistory:(id)arg1 concreteTransactions:(id *)arg2 ephemeralTransaction:(id *)arg3;
 - (id)transitPassPropertiesWithPaymentApplication:(id)arg1;
 
 @end

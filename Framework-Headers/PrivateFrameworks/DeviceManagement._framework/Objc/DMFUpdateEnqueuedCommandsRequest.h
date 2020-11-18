@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSArray, NSString;
 
-@interface DMFUpdateEnqueuedCommandsRequest : CATTaskRequest
+@interface DMFUpdateEnqueuedCommandsRequest : DMFTaskRequest
 {
     NSString *_organizationIdentifier;
     NSArray *_addCommands;
@@ -19,6 +19,9 @@
 @property (copy, nonatomic) NSString *organizationIdentifier; // @synthesize organizationIdentifier=_organizationIdentifier;
 @property (copy, nonatomic) NSArray *removeCommands; // @synthesize removeCommands=_removeCommands;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

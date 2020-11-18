@@ -8,20 +8,26 @@
 
 #import <NanoTimeKitCompanion/NTKKeylineView-Protocol.h>
 
-@class NSString, UIColor;
+@class NSString, NTKKeylineTouchable, UIColor;
 
 @interface _NTKKeylineImageView : NTKColoringImageView <NTKKeylineView>
 {
+    NTKKeylineTouchable *touchable;
+    CDUnknownBlockType _colorizationBlock;
 }
 
 @property (strong, nonatomic) UIColor *color;
+@property (copy, nonatomic) CDUnknownBlockType colorizationBlock; // @synthesize colorizationBlock=_colorizationBlock;
 @property (readonly, nonatomic) UIColor *contentColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIColor *overrideColor;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NTKKeylineTouchable *touchable; // @synthesize touchable;
 @property (nonatomic) BOOL usesLegibility;
+
+- (void).cxx_destruct;
 
 @end
 

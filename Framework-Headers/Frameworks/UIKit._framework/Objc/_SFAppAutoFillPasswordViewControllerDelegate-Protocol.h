@@ -4,8 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_SFPasswordViewControllerDelegate-Protocol.h>
+#import <UIKitCore/_SFPasswordViewControllerDelegate-Protocol.h>
+
+@class SFSafariCredential, _SFAppAutoFillPasswordViewController;
 
 @protocol _SFAppAutoFillPasswordViewControllerDelegate <_SFPasswordViewControllerDelegate>
+
+@optional
+- (void)passwordViewController:(_SFAppAutoFillPasswordViewController *)arg1 selectedCredential:(SFSafariCredential *)arg2;
 @end
 

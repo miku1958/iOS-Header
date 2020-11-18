@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4 taskContext:(shared_ptr_e963992e)arg5 venueLogic:(struct VenueLogic *)arg6;
 - (unsigned char)mapLayerForZoomLevelRange;
 - (long long)minimumZoomLevel;
-- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
+- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3 userInfo:(id)arg4;
 
 @end
 

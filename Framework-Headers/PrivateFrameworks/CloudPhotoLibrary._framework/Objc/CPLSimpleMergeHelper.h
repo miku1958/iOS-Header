@@ -15,7 +15,7 @@
 
 @property (readonly, nonatomic) CPLEngineStore *store; // @synthesize store=_store;
 
-+ (id)_mergerWithConflictsForStore:(id)arg1;
++ (id)_mergerWithConflictsForStore:(id)arg1 conflictingScopeIdentifiers:(id)arg2;
 + (id)_mergerWithNoConflictsForStore:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_changeCanConflict:(id)arg1;

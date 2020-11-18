@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -23,9 +23,11 @@ __attribute__((visibility("hidden")))
 + (id)cellValueWithArchive:(const struct CellValueArchive *)arg1 locale:(id)arg2;
 + (id)newCellValueFromTSCEValue:(const struct TSCEValue *)arg1 withLocale:(id)arg2;
 - (void).cxx_destruct;
+- (id)canonicalKeyString;
 - (long long)compare:(id)arg1;
 - (long long)compareToCellValue:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)displayString;
 - (void)encodeCellValueToArchive:(struct CellValueArchive *)arg1;
 - (id)format;
@@ -33,7 +35,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithLocale:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCellValue:(id)arg1;
+- (void)setPopulatedCustomFormat:(id)arg1;
 - (struct TSCEValue)tsceValue;
+- (void)updateWithCustomFormatList:(id)arg1;
 
 @end
 

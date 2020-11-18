@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -30,11 +30,10 @@
 
 + (id)_inputModesForLocale:(id)arg1 language:(id)arg2 modeFetcher:(CDUnknownBlockType)arg3;
 + (id)sharedInputModeController;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)defaultDictationLanguagesForKeyboardLanguage:(id)arg1;
 - (id)defaultEnabledInputModesForCurrentLocale;
 - (BOOL)identifierIsValidSystemInputMode:(id)arg1;
-- (id)keyboardLanguageForDictationLanguage:(id)arg1;
 - (void)setInputModeIdentifiersForTesting:(id)arg1;
 - (id)suggestedDictationLanguageForDeviceLanguage;
 - (id)suggestedDictationLanguagesForDeviceLanguage;

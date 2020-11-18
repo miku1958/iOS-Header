@@ -13,43 +13,43 @@
 
 @interface HKConditionRecord : HKMedicalRecord <NSSecureCoding, NSCopying>
 {
-    HKInspectableValue *_abatement;
-    NSString *_asserter;
-    NSArray *_bodySitesCodings;
-    NSArray *_categoryCodings;
-    HKMedicalCoding *_clinicalStatusCoding;
     NSArray *_conditionCodings;
+    NSArray *_categoryCodings;
+    NSString *_asserter;
+    HKInspectableValue *_abatement;
     HKInspectableValue *_onset;
     HKMedicalDate *_recordedDate;
-    NSArray *_severityCodings;
+    HKMedicalCoding *_clinicalStatusCoding;
     HKMedicalCoding *_verificationStatusCoding;
+    NSArray *_severityCodings;
+    NSArray *_bodySitesCodings;
 }
 
-@property (readonly, copy, nonatomic) HKInspectableValue *abatement; // @synthesize abatement=_abatement;
-@property (readonly, copy, nonatomic) NSString *asserter; // @synthesize asserter=_asserter;
-@property (readonly, copy, nonatomic) NSArray *bodySitesCodings; // @synthesize bodySitesCodings=_bodySitesCodings;
-@property (readonly, copy, nonatomic) NSArray *categoryCodings; // @synthesize categoryCodings=_categoryCodings;
-@property (readonly, copy, nonatomic) HKMedicalCoding *clinicalStatusCoding; // @synthesize clinicalStatusCoding=_clinicalStatusCoding;
-@property (readonly, copy, nonatomic) NSArray *conditionCodings; // @synthesize conditionCodings=_conditionCodings;
-@property (readonly, nonatomic) HKConditionRecordType *conditionRecordType;
-@property (readonly, copy, nonatomic) HKInspectableValue *onset; // @synthesize onset=_onset;
-@property (readonly, copy, nonatomic) HKMedicalDate *recordedDate; // @synthesize recordedDate=_recordedDate;
-@property (readonly, copy, nonatomic) NSArray *severityCodings; // @synthesize severityCodings=_severityCodings;
-@property (readonly, copy, nonatomic) HKMedicalCoding *verificationStatusCoding; // @synthesize verificationStatusCoding=_verificationStatusCoding;
+@property (readonly, copy) HKInspectableValue *abatement;
+@property (readonly, copy) NSString *asserter;
+@property (readonly, copy) NSArray *bodySitesCodings;
+@property (readonly, copy) NSArray *categoryCodings;
+@property (readonly, copy) HKMedicalCoding *clinicalStatusCoding;
+@property (readonly, copy) NSArray *conditionCodings;
+@property (readonly, copy) HKConditionRecordType *conditionRecordType;
+@property (readonly, copy) HKInspectableValue *onset;
+@property (readonly, copy) HKMedicalDate *recordedDate;
+@property (readonly, copy) NSArray *severityCodings;
+@property (readonly, copy) HKMedicalCoding *verificationStatusCoding;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)bodySitesCodingsPreferredSystems;
 + (id)categoryCodingsPreferredSystems;
 + (id)clinicalStatusCodingPreferredSystems;
 + (id)conditionCodingsPreferredSystems;
-+ (id)conditionRecordWithNote:(id)arg1 enteredInError:(BOOL)arg2 modifiedDate:(id)arg3 FHIRIdentifier:(id)arg4 extractionVersion:(long long)arg5 device:(id)arg6 metadata:(id)arg7 conditionCodings:(id)arg8 categoryCodings:(id)arg9 asserter:(id)arg10 abatement:(id)arg11 onset:(id)arg12 recordedDate:(id)arg13 clinicalStatusCoding:(id)arg14 verificationStatusCoding:(id)arg15 severityCodings:(id)arg16 bodySitesCodings:(id)arg17;
++ (id)conditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 conditionCodings:(id)arg9 categoryCodings:(id)arg10 asserter:(id)arg11 abatement:(id)arg12 onset:(id)arg13 recordedDate:(id)arg14 clinicalStatusCoding:(id)arg15 verificationStatusCoding:(id)arg16 severityCodings:(id)arg17 bodySitesCodings:(id)arg18;
++ (id)conditionRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 conditionCodings:(id)arg10 categoryCodings:(id)arg11 asserter:(id)arg12 abatement:(id)arg13 onset:(id)arg14 recordedDate:(id)arg15 clinicalStatusCoding:(id)arg16 verificationStatusCoding:(id)arg17 severityCodings:(id)arg18 bodySitesCodings:(id)arg19;
 + (id)defaultDisplayString;
 + (id)severityCodingsPreferredSystems;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 + (id)verificationStatusCodingPreferredSystems;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_setAbatement:(id)arg1;
 - (void)_setAsserter:(id)arg1;
 - (void)_setBodySitesCodings:(id)arg1;

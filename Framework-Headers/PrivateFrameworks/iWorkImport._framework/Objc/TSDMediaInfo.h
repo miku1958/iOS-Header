@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) TSDAttribution *attribution;
+@property (readonly, nonatomic) BOOL canBeMediaPlaceholder;
+@property (readonly, nonatomic) BOOL canBeReplaced;
 @property (readonly, nonatomic) BOOL canResetMediaSize;
 @property (readonly, nonatomic) struct CGPoint centerForReplacingWithNewMedia;
 @property (readonly, copy) NSString *debugDescription;

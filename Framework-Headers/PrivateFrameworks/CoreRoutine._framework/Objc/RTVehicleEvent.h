@@ -9,8 +9,7 @@
 #import <CoreRoutine/NSCopying-Protocol.h>
 #import <CoreRoutine/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSString, NSUUID, RTLocation, RTLocationOfInterest;
-@protocol GEOMapItem;
+@class NSData, NSDate, NSString, NSUUID, RTLocation, RTLocationOfInterest, RTMapItem;
 
 @interface RTVehicleEvent : NSObject <NSCopying, NSSecureCoding>
 {
@@ -24,18 +23,18 @@
     NSString *_notes;
     NSUUID *_identifier;
     NSData *_photo;
-    id<GEOMapItem> _geoMapItem;
+    RTMapItem *_mapItem;
     unsigned long long _locationQuality;
     RTLocationOfInterest *_nearbyLocationOfInterest;
 }
 
 @property (nonatomic) BOOL confirmed; // @synthesize confirmed=_confirmed;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
-@property (strong, nonatomic) id<GEOMapItem> geoMapItem; // @synthesize geoMapItem=_geoMapItem;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) RTLocation *location; // @synthesize location=_location;
 @property (nonatomic) BOOL locationFinalized; // @synthesize locationFinalized=_locationFinalized;
 @property (nonatomic) unsigned long long locationQuality; // @synthesize locationQuality=_locationQuality;
+@property (strong, nonatomic) RTMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (copy, nonatomic) RTLocationOfInterest *nearbyLocationOfInterest; // @synthesize nearbyLocationOfInterest=_nearbyLocationOfInterest;
 @property (copy, nonatomic) NSString *notes; // @synthesize notes=_notes;
 @property (strong, nonatomic) NSData *photo; // @synthesize photo=_photo;
@@ -52,7 +51,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDate:(id)arg1;
-- (id)initWithDate:(id)arg1 location:(id)arg2 vehicleIdentifier:(id)arg3 userSetLocation:(BOOL)arg4 notes:(id)arg5 identifier:(id)arg6 photo:(id)arg7 geoMapItem:(id)arg8 confirmed:(BOOL)arg9;
+- (id)initWithDate:(id)arg1 location:(id)arg2 vehicleIdentifier:(id)arg3 userSetLocation:(BOOL)arg4 notes:(id)arg5 identifier:(id)arg6 photo:(id)arg7 mapItem:(id)arg8 confirmed:(BOOL)arg9;
 - (BOOL)isEqual:(id)arg1;
 
 @end

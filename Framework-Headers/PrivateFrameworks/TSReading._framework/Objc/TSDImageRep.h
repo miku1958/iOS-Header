@@ -89,7 +89,6 @@
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)isDraggable;
 - (void)layoutInRootChangedFrom:(id)arg1 to:(id)arg2 translatedOnly:(BOOL)arg3;
-- (id)magicMoveAttributesWithShapeAttributes:(BOOL)arg1;
 - (id)maskInfo;
 - (id)maskLayout;
 - (id)newCachedSizedImage;
@@ -139,7 +138,6 @@
 - (void)processChangedProperty:(int)arg1;
 - (void)processChanges:(id)arg1;
 - (void)pushDisableImageSizing;
-- (void)setMagicMoveTextureAttributes:(id)arg1;
 - (BOOL)shouldAllowReplacementFromPaste;
 - (BOOL)shouldCreateSelectionKnobs;
 - (BOOL)shouldIgnoreEditMenuTapAtPoint:(struct CGPoint)arg1 withRecognizer:(id)arg2;

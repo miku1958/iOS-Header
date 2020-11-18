@@ -6,19 +6,19 @@
 
 #import <HomeKitDaemon/HMDHomeInvitation.h>
 
-@class NSData, NSDictionary, NSString, NSUUID;
+@class HMDAccount, HMFPairingIdentity, NSDictionary, NSString, NSUUID;
 
 @interface HMDIncomingHomeInvitation : HMDHomeInvitation
 {
-    NSData *_inviterPublicKey;
-    NSString *_inviterControllerName;
+    HMDAccount *_inviterAccount;
+    HMFPairingIdentity *_inviterIdentity;
 }
 
 @property (readonly, nonatomic) NSDictionary *bulletinContext;
 @property (readonly, copy, nonatomic) NSString *homeName;
 @property (readonly, copy, nonatomic) NSUUID *homeUUID;
-@property (readonly, copy, nonatomic) NSString *inviterControllerName; // @synthesize inviterControllerName=_inviterControllerName;
-@property (readonly, copy, nonatomic) NSData *inviterPublicKey; // @synthesize inviterPublicKey=_inviterPublicKey;
+@property (readonly) HMDAccount *inviterAccount; // @synthesize inviterAccount=_inviterAccount;
+@property (readonly, copy) HMFPairingIdentity *inviterIdentity; // @synthesize inviterIdentity=_inviterIdentity;
 @property (readonly, copy, nonatomic) NSString *inviterUserID;
 
 + (BOOL)supportsSecureCoding;
@@ -26,7 +26,7 @@
 - (id)describeWithFormat;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithInviterUserID:(id)arg1 invitationIdentifier:(id)arg2 invitationState:(long long)arg3 homeName:(id)arg4 homeUUID:(id)arg5 inviterPublicKey:(id)arg6 inviterControllerName:(id)arg7 expiryDate:(id)arg8;
+- (id)initWithInviterAccount:(id)arg1 invitationIdentifier:(id)arg2 invitationState:(long long)arg3 homeName:(id)arg4 homeUUID:(id)arg5 inviterIdentity:(id)arg6 expiryDate:(id)arg7;
 - (BOOL)refreshDisplayName;
 
 @end

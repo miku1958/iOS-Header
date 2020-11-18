@@ -31,6 +31,7 @@
     NSMutableDictionary *_attributes;
     BOOL _canSendWriteWithoutResponse;
     BOOL _isConnectedToSystem;
+    BOOL _connectedToSystem;
     unsigned int _writesPending;
     id<CBPeripheralDelegate> _delegate;
     NSString *_name;
@@ -38,10 +39,17 @@
     long long _state;
     NSArray *_services;
     NSHashTable *_l2capChannels;
+    NSString *_BDAddress;
+    long long _PID;
+    long long _VID;
 }
 
+@property (strong) NSString *BDAddress; // @synthesize BDAddress=_BDAddress;
+@property long long PID; // @synthesize PID=_PID;
 @property (strong) NSNumber *RSSI; // @synthesize RSSI=_RSSI;
+@property long long VID; // @synthesize VID=_VID;
 @property BOOL canSendWriteWithoutResponse; // @synthesize canSendWriteWithoutResponse=_canSendWriteWithoutResponse;
+@property (readonly, nonatomic, getter=isConnectedToSystem) BOOL connectedToSystem; // @synthesize connectedToSystem=_connectedToSystem;
 @property (weak, nonatomic) id<CBPeripheralDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL isConnectedToSystem; // @synthesize isConnectedToSystem=_isConnectedToSystem;
 @property (readonly, strong, nonatomic) NSHashTable *l2capChannels; // @synthesize l2capChannels=_l2capChannels;
@@ -103,8 +111,10 @@
 - (id)sendSyncMsg:(int)arg1 args:(id)arg2;
 - (void)setAttribute:(id)arg1 forHandle:(id)arg2;
 - (void)setBroadcastValue:(BOOL)arg1 forCharacteristic:(id)arg2;
+- (void)setHighPriorityStream:(BOOL)arg1 duration:(id)arg2;
 - (void)setNotifyValue:(BOOL)arg1 forCharacteristic:(id)arg2;
 - (void)setOrphan;
+- (void)setPeripheralName:(id)arg1;
 - (void)tag:(id)arg1;
 - (void)untag:(id)arg1;
 - (void)writeValue:(id)arg1 forCharacteristic:(id)arg2 type:(long long)arg3;

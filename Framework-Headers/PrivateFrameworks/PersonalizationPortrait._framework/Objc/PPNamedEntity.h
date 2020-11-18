@@ -4,30 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <ProactiveSupport/_PASZonedObject.h>
 
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
+#import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
 @class NSString, PPNamedEntityRecord;
 
-@interface PPNamedEntity : NSObject <NSCopying>
+@interface PPNamedEntity : _PASZonedObject <NSCopying, NSSecureCoding>
 {
     NSString *_name;
     unsigned long long _category;
     NSString *_bestLanguage;
-    PPNamedEntityRecord *_mostRelevantRecord;
 }
 
 @property (readonly, nonatomic) NSString *bestLanguage; // @synthesize bestLanguage=_bestLanguage;
 @property (readonly, nonatomic) unsigned long long category; // @synthesize category=_category;
-@property (readonly, nonatomic) PPNamedEntityRecord *mostRelevantRecord; // @synthesize mostRelevantRecord=_mostRelevantRecord;
+@property (readonly, nonatomic) PPNamedEntityRecord *mostRelevantRecord;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)describeCategory:(unsigned long long)arg1;
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
+- (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 category:(unsigned long long)arg2 language:(id)arg3;
 - (id)initWithName:(id)arg1 category:(unsigned long long)arg2 language:(id)arg3 mostRelevantRecord:(id)arg4;
 - (BOOL)isEqual:(id)arg1;

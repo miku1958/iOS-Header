@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSString;
 
-@interface DMFFetchAvailableOSUpdatesRequest : CATTaskRequest
+@interface DMFFetchAvailableOSUpdatesRequest : DMFTaskRequest
 {
     BOOL _useDelay;
     NSString *_productVersion;
@@ -17,6 +17,9 @@
 @property (copy, nonatomic) NSString *productVersion; // @synthesize productVersion=_productVersion;
 @property (nonatomic) BOOL useDelay; // @synthesize useDelay=_useDelay;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;

@@ -20,6 +20,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id<AVCaptureDepthDataOutputDelegate> delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateCallbackQueue;
+@property (readonly, nonatomic) id delegateOverride;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFilteringEnabled) BOOL filteringEnabled;
 @property (readonly) unsigned long long hash;

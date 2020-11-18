@@ -9,7 +9,7 @@
 #import <iAd/ADAdRecipient-Protocol.h>
 #import <iAd/ADDimmerViewDelegate-Protocol.h>
 
-@class ADAdSpace, ADDimmerView, ADPrivacyButton, NSDate, NSString, NSTimer, NSURL, UILabel, UIViewController;
+@class ADAdSpace, ADDimmerView, ADLayoutOptions, ADPrivacyButton, NSDate, NSString, NSTimer, NSURL, UILabel, UIViewController;
 @protocol ADBannerViewDelegate, ADBannerViewInternalDelegate;
 
 @interface ADBannerView : UIView <ADAdRecipient, ADDimmerViewDelegate>
@@ -35,6 +35,7 @@
     NSString *_adResponseId;
     long long _lastErrorCode;
     long long _options;
+    ADLayoutOptions *_layoutOptions;
     long long _adType;
     NSString *_advertisingSection;
     UIView *_highlightClippedView;
@@ -90,6 +91,7 @@
 @property (nonatomic) BOOL internalAdTypeCanChange; // @synthesize internalAdTypeCanChange=_internalAdTypeCanChange;
 @property (nonatomic) struct CGSize landscapeSize; // @synthesize landscapeSize=_landscapeSize;
 @property (nonatomic) long long lastErrorCode; // @synthesize lastErrorCode=_lastErrorCode;
+@property (strong, nonatomic) ADLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (copy, nonatomic) NSDate *loadEndTime; // @synthesize loadEndTime=_loadEndTime;
 @property (copy, nonatomic) NSDate *loadStartTime; // @synthesize loadStartTime=_loadStartTime;
 @property (readonly, nonatomic) long long options; // @synthesize options=_options;
@@ -117,6 +119,7 @@
 - (id)_accessibilityUserTestingElementAttributes;
 - (void)_commonInit;
 - (void)_forwardErrorToDelegate:(id)arg1;
+- (id)_initWithInternalAdType:(int)arg1 layoutOptions:(id)arg2 options:(long long)arg3;
 - (id)_initWithInternalAdType:(int)arg1 options:(long long)arg2;
 - (BOOL)_needsDoubleUpdateConstraintsPass;
 - (void)_prepareForFirstIntrinsicContentSizeCalculation;
@@ -127,6 +130,7 @@
 - (void)_setInSecondConstraintsPass:(BOOL)arg1;
 - (void)_updateHighlight:(id)arg1;
 - (int)action;
+- (id)adPrivacyDetailsAttributes;
 - (void)adlibManagedVideoAdDidCompletePlay:(int)arg1;
 - (void)adlibManagedVideoAdDidImpress;
 - (void)adlibManagedVideoAdDidPausePlay;
@@ -193,6 +197,10 @@
 - (id)publicImpressionAttributes;
 - (void)registerVideoPlayerForAdAnalytics:(id)arg1;
 - (void)removeCreativeView;
+- (void)reportAdPrivacySheetDidAppear;
+- (void)reportAdPrivacySheetDidDisappear;
+- (void)reportAdPrivacySheetDidLinkOut;
+- (void)reportAdPrivacySheetDidRender;
 - (void)reportNativeClickEvent;
 - (id)requiredContentSizeIdentifiers;
 - (BOOL)requiresMRAID;

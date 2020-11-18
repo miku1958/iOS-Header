@@ -6,7 +6,7 @@
 
 #import <UserNotifications/UNNotificationContent.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, UNNotificationSound;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, UNNotificationIcon, UNNotificationSound;
 
 @interface UNMutableNotificationContent : UNNotificationContent
 {
@@ -16,22 +16,33 @@
 @property (copy, nonatomic) NSNumber *badge; // @dynamic badge;
 @property (copy, nonatomic) NSString *body; // @dynamic body;
 @property (copy, nonatomic) NSString *categoryIdentifier; // @dynamic categoryIdentifier;
-@property (copy, nonatomic) NSString *darwinNotificationName; // @dynamic darwinNotificationName;
-@property (copy, nonatomic) NSString *darwinSnoozedNotificationName; // @dynamic darwinSnoozedNotificationName;
+@property (copy, nonatomic) NSDate *date; // @dynamic date;
 @property (copy, nonatomic) NSString *defaultActionTitle; // @dynamic defaultActionTitle;
-@property (nonatomic, getter=isFromSnooze) BOOL fromSnooze; // @dynamic fromSnooze;
+@property (copy, nonatomic) NSURL *defaultActionURL; // @dynamic defaultActionURL;
+@property (copy, nonatomic) NSDate *expirationDate; // @dynamic expirationDate;
 @property (nonatomic) BOOL hasDefaultAction; // @dynamic hasDefaultAction;
+@property (copy, nonatomic) NSString *header; // @dynamic header;
+@property (copy, nonatomic) UNNotificationIcon *icon; // @dynamic icon;
 @property (copy, nonatomic) NSString *launchImageName; // @dynamic launchImageName;
 @property (copy, nonatomic) NSArray *peopleIdentifiers; // @dynamic peopleIdentifiers;
-@property (nonatomic) BOOL shouldAddToNotificationsList; // @dynamic shouldAddToNotificationsList;
-@property (nonatomic) BOOL shouldAlwaysAlertWhileAppIsForeground; // @dynamic shouldAlwaysAlertWhileAppIsForeground;
-@property (nonatomic) BOOL shouldLockDevice; // @dynamic shouldLockDevice;
-@property (nonatomic) BOOL shouldPauseMedia; // @dynamic shouldPauseMedia;
-@property (nonatomic, getter=isSnoozeable) BOOL snoozeable; // @dynamic snoozeable;
+@property (nonatomic) BOOL shouldAuthenticateDefaultAction; // @dynamic shouldAuthenticateDefaultAction;
+@property (nonatomic) BOOL shouldBackgroundDefaultAction; // @dynamic shouldBackgroundDefaultAction;
+@property (nonatomic) BOOL shouldHideDate; // @dynamic shouldHideDate;
+@property (nonatomic) BOOL shouldHideTime; // @dynamic shouldHideTime;
+@property (nonatomic) BOOL shouldIgnoreDoNotDisturb; // @dynamic shouldIgnoreDoNotDisturb;
+@property (nonatomic) BOOL shouldIgnoreDowntime; // @dynamic shouldIgnoreDowntime;
+@property (nonatomic) BOOL shouldPreventNotificationDismissalAfterDefaultAction; // @dynamic shouldPreventNotificationDismissalAfterDefaultAction;
+@property (nonatomic) BOOL shouldSuppressDefaultAction; // @dynamic shouldSuppressDefaultAction;
+@property (nonatomic) BOOL shouldSuppressScreenLightUp; // @dynamic shouldSuppressScreenLightUp;
+@property (nonatomic) BOOL shouldSuppressSyncDismissalWhenRemoved; // @dynamic shouldSuppressSyncDismissalWhenRemoved;
+@property (nonatomic) BOOL shouldUseRequestIdentifierForDismissalSync; // @dynamic shouldUseRequestIdentifierForDismissalSync;
 @property (copy, nonatomic) UNNotificationSound *sound; // @dynamic sound;
 @property (copy, nonatomic) NSString *subtitle; // @dynamic subtitle;
+@property (copy, nonatomic) NSString *summaryArgument; // @dynamic summaryArgument;
+@property (nonatomic) unsigned long long summaryArgumentCount; // @dynamic summaryArgumentCount;
 @property (copy, nonatomic) NSString *threadIdentifier; // @dynamic threadIdentifier;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
+@property (copy, nonatomic) NSSet *topicIdentifiers; // @dynamic topicIdentifiers;
 @property (copy, nonatomic) NSDictionary *userInfo; // @dynamic userInfo;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

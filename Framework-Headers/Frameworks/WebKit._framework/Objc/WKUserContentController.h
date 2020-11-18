@@ -27,6 +27,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)_addScriptMessageHandler:(id)arg1 name:(id)arg2 userContentWorld:(id)arg3;
 - (void)_addUserContentFilter:(id)arg1;
+- (void)_addUserScriptImmediately:(id)arg1;
 - (void)_addUserStyleSheet:(id)arg1;
 - (void)_removeAllScriptMessageHandlersAssociatedWithUserContentWorld:(id)arg1;
 - (void)_removeAllUserContentFilters;

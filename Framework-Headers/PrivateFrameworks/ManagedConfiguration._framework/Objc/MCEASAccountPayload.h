@@ -24,6 +24,7 @@
     NSData *_certificatePersistentID;
     BOOL _syncDefaultFoldersOnly;
     NSNumber *_useSSL;
+    NSNumber *_useOAuth;
     NSDictionary *_communicationServiceRules;
     NSNumber *_syncDefaultFoldersOnlyNum;
 }
@@ -43,6 +44,7 @@
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (nonatomic) BOOL syncDefaultFoldersOnly; // @synthesize syncDefaultFoldersOnly=_syncDefaultFoldersOnly;
 @property (readonly, nonatomic) NSNumber *syncDefaultFoldersOnlyNum; // @synthesize syncDefaultFoldersOnlyNum=_syncDefaultFoldersOnlyNum;
+@property (strong, nonatomic) NSNumber *useOAuth; // @synthesize useOAuth=_useOAuth;
 @property (strong, nonatomic) NSNumber *useSSL; // @synthesize useSSL=_useSSL;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 

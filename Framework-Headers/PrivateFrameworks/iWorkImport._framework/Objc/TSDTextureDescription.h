@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     unsigned int _shouldSeparateStroke:1;
     unsigned int _shouldAddParameterizedStroke:1;
     unsigned int _shouldReverseStrokeDrawing:1;
+    unsigned int _shouldSeparateGroupedTextures:1;
     unsigned int _shouldSeparateText:1;
     unsigned int _shouldIgnoreScaleInSourceImage:1;
     unsigned int _shouldDistortToFit:1;
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL shouldNotAddShapeAttributes; // @synthesize shouldNotAddShapeAttributes=_shouldAddNoShapeAttributes;
 @property (nonatomic) BOOL shouldNotAddText; // @synthesize shouldNotAddText=_shouldNotAddText;
 @property (nonatomic) BOOL shouldReverseStrokeDrawing; // @synthesize shouldReverseStrokeDrawing=_shouldReverseStrokeDrawing;
+@property (nonatomic) BOOL shouldSeparateGroupedTextures; // @synthesize shouldSeparateGroupedTextures=_shouldSeparateGroupedTextures;
 @property (nonatomic) BOOL shouldSeparateReflection; // @synthesize shouldSeparateReflection=_shouldSeparateReflection;
 @property (nonatomic) BOOL shouldSeparateShadow; // @synthesize shouldSeparateShadow=_shouldSeparateShadow;
 @property (nonatomic) BOOL shouldSeparateStroke; // @synthesize shouldSeparateStroke=_shouldSeparateStroke;

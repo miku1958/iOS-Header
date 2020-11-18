@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TelephonyUtilities/NSObject-Protocol.h>
+#import <TelephonyUtilities/TUConversationMediaControllerXPCServer-Protocol.h>
 
+@class NSSet, NSUUID, TUConversationMember;
 @protocol TUConversationManagerXPCClient;
 
-@protocol TUConversationManagerXPCServer <NSObject>
+@protocol TUConversationManagerXPCServer <TUConversationMediaControllerXPCServer>
+- (oneway void)addRemoteMembers:(NSSet *)arg1 toConversationWithUUID:(NSUUID *)arg2;
+- (oneway void)buzzMember:(TUConversationMember *)arg1 conversationUUID:(NSUUID *)arg2;
 - (oneway void)conversationsByGroupUUID:(void (^)(NSDictionary *))arg1;
 - (void)registerClient:(id<TUConversationManagerXPCClient>)arg1;
 - (void)unregisterClient:(id<TUConversationManagerXPCClient>)arg1;

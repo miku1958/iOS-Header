@@ -17,7 +17,7 @@
 - (void)checkSecurityUpgradeEligibilityForContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)configurationInfoWithIdentifiers:(NSArray *)arg1 forAltDSID:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)fetchAuthModeWithContext:(AKAppleIDAuthenticationContext *)arg1 completion:(void (^)(unsigned long long, NSError *))arg2;
-- (void)fetchDeviceListWithContext:(AKDeviceListRequestContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)fetchDeviceMapWithContext:(AKDeviceListRequestContext *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)fetchURLBagWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)fetchUserInformationForAltDSID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)generateLoginCodeWithCompletion:(void (^)(NSNumber *, NSError *))arg1;

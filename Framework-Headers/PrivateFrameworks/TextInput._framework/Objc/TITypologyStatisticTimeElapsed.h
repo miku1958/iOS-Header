@@ -19,8 +19,8 @@
 @property (readonly, nonatomic) double elapsedTime;
 @property (strong, nonatomic) TITypologyTimer *timer; // @synthesize timer=_timer;
 
+- (void).cxx_destruct;
 - (id)aggregateReport;
-- (void)dealloc;
 - (id)init;
 - (id)structuredReport;
 - (void)visitRecordKeyboardInput:(id)arg1;

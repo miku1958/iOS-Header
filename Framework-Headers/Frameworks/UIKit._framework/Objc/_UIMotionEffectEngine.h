@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIMotionEffectEventConsumer-Protocol.h>
+#import <UIKitCore/_UIMotionEffectEventConsumer-Protocol.h>
 
-@class CADisplayLink, NSArray, NSMapTable, NSMutableSet, NSString, _UIAssociationTable, _UILazyMapTable, _UIMotionEffectEngineLogger, _UIMotionEffectEvent, _UIMotionEffectEventProvider;
+@class CADisplayLink, NSArray, NSMapTable, NSMutableSet, NSString, _UIAssociationTable, _UILazyMapTable, _UIMotionEffectEvent, _UIMotionEffectEventProvider;
 
 __attribute__((visibility("hidden")))
 @interface _UIMotionEffectEngine : NSObject <_UIMotionEffectEventConsumer>
@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
     BOOL _allAnalyzersAreCentered;
     BOOL _hasAppliedAtLeastOneUpdateSinceStarting;
     BOOL _isPendingReset;
-    _UIMotionEffectEngineLogger *_motionLogger;
     int _thermalNotificationToken;
     int _screenDimmingNotificationToken;
     long long _targetInterfaceOrientation;

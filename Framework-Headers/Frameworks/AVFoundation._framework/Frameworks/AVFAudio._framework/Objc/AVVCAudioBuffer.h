@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface AVVCAudioBuffer : NSObject
 {
@@ -18,6 +18,8 @@
 @property (readonly) int packetDescriptionCapacity;
 @property (readonly) int packetDescriptionCount;
 @property (readonly) struct AudioStreamPacketDescription *packetDescriptions;
+@property (readonly) unsigned char remoteVoiceActivityRMS;
+@property (readonly) unsigned char remoteVoiceActivityVAD;
 @property (readonly) struct AudioStreamBasicDescription *streamDescription;
 @property (readonly) unsigned long long timeStamp;
 

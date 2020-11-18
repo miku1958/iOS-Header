@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet;
+@class CLKDevice, NSMutableSet;
 
 @interface NTKTimelapseListingFactory : NSObject
 {
+    CLKDevice *_device;
     NSMutableSet *_assetListings;
 }
 
-+ (id)sharedInstance;
++ (id)sharedInstanceForDevice:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initLibrary;
+- (id)_initLibraryForDevice:(id)arg1;
 - (void)discardAssets;
 - (id)heroImageWithTheme:(unsigned long long)arg1 date:(id)arg2 location:(struct CLLocationCoordinate2D)arg3;
 - (id)listingWithTheme:(unsigned long long)arg1 date:(id)arg2 location:(struct CLLocationCoordinate2D)arg3;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPAVMetadataItem-Protocol.h>
 
@@ -42,6 +42,7 @@
     unsigned int _lyricsAvailable:1;
     unsigned int _timeMarkersNeedLoading:1;
     NSObject<OS_dispatch_queue> *_accessQueue;
+    BOOL _hasLoadedHasProtectedContent;
     BOOL _hasLoadedPlaybackMode;
     BOOL _hasPostedNaturalSizeChange;
     BOOL _hasRegisteredForCaptionsAppearanceChanged;
@@ -57,6 +58,7 @@
     BOOL _likedStateEnabled;
     BOOL _supportsLikedState;
     BOOL _prefersSeekOverSkip;
+    BOOL _hasProtectedContent;
     BOOL _startItem;
     BOOL _shouldPreventPlayback;
     BOOL _allowsAirPlayFromCloud;
@@ -152,6 +154,7 @@
 @property (readonly, nonatomic) BOOL hasFinishedDownloading; // @synthesize hasFinishedDownloading=_hasFinishedDownloading;
 @property (nonatomic) BOOL hasPerformedErrorResolution; // @synthesize hasPerformedErrorResolution=_hasPerformedErrorResolution;
 @property (nonatomic) BOOL hasPlayedThisSession;
+@property (readonly, nonatomic) BOOL hasProtectedContent; // @synthesize hasProtectedContent=_hasProtectedContent;
 @property (readonly, nonatomic) BOOL hasStoreLyrics;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInWishList) BOOL inWishList;
@@ -305,6 +308,7 @@
 - (id)path;
 - (float)playbackRateForLevel:(unsigned long long)arg1 direction:(long long)arg2 paused:(BOOL)arg3;
 - (void)prepareForRate:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)reevaluateHasProtectedContent;
 - (void)reevaluatePlaybackMode;
 - (void)reevaluateType;
 - (void)replacePlayerItemWithPlayerItem:(id)arg1;

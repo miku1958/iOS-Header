@@ -29,8 +29,10 @@
 - (void)dealloc;
 - (void)endPreloadSession;
 - (void)flushPendingWrites;
+- (void)generateRequestedFromTileLoaderBeginSignpost:(unsigned long long)arg1;
+- (void)generateRequestedFromTileLoaderEndSignpost:(unsigned long long)arg1;
 - (id)initWithCacheLocation:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 delegateQueue:(id)arg4 delegate:(id)arg5;
-- (void)loadTiles:(id)arg1 priorities:(const unsigned int *)arg2 hasAdditionalInfos:(const BOOL *)arg3 additionalInfos:(const CDStruct_58878026 *)arg4 options:(unsigned long long)arg5 client:(id)arg6;
+- (void)loadTiles:(id)arg1 priorities:(const unsigned int *)arg2 hasAdditionalInfos:(const BOOL *)arg3 additionalInfos:(const CDStruct_58878026 *)arg4 signpostIDs:(const unsigned long long *)arg5 reason:(unsigned char)arg6 options:(unsigned long long)arg7 client:(id)arg8;
 - (void)open;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2;

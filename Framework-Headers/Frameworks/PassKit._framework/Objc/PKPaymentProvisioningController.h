@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentWebServiceDelegate-Protocol.h>
 
@@ -38,6 +38,7 @@
     NSArray *_allowedPaymentNetworks;
 }
 
+@property (readonly, copy, nonatomic) NSArray *allCredentials;
 @property (strong, nonatomic) NSArray *allowedPaymentNetworks; // @synthesize allowedPaymentNetworks=_allowedPaymentNetworks;
 @property (readonly, copy, nonatomic) NSArray *associatedCredentials; // @synthesize associatedCredentials=_associatedCredentials;
 @property (readonly, nonatomic) NSSet *automaticExpressModes; // @synthesize automaticExpressModes=_automaticExpressModes;
@@ -74,6 +75,7 @@
 - (void)_handleProvisioningError:(id)arg1 forRequest:(id)arg2;
 - (BOOL)_hasSetupConfiguration;
 - (void)_informDelegatesOfPaymentPassUpdateOnCredential:(id)arg1;
+- (id)_mockBrowseBanksResponse;
 - (void)_passAlreadyProvisioned;
 - (id)_paymentPassWithPaymentMethodType:(unsigned long long)arg1;
 - (void)_provisioningNonceWithCompletion:(CDUnknownBlockType)arg1;
@@ -91,6 +93,7 @@
 - (void)addDelegate:(id)arg1;
 - (void)associateCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)associatedCredentialsForDefaultBehaviour;
+- (void)browsableBankAppsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)displayableErrorForError:(id)arg1;
 - (id)displayableErrorForProvisioningError:(id)arg1;
@@ -116,9 +119,12 @@
 - (void)reset;
 - (void)resetForNewProvisioning;
 - (void)resolveAmbiguousRequirementsWithProductIdentifier:(id)arg1;
+- (void)resolveProvisioningForCredential:(id)arg1;
+- (void)resolveRequirementsUsingAlreadyProvisionedRemoteCredential:(id)arg1;
 - (void)resolveRequirementsUsingProduct:(id)arg1;
 - (void)resolveRequirementsUsingProvisioningMethodMetadata:(id)arg1;
 - (void)retrieveRemoteCredentials:(CDUnknownBlockType)arg1;
+- (void)setupProductForProvisioning:(id)arg1 includePurchases:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)updatePaymentSetupProductModelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)updateRemoteCredentials:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)validatePreconditions:(CDUnknownBlockType)arg1;

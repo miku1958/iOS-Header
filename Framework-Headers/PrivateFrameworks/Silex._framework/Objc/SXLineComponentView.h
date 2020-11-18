@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (BOOL)userInteractable;
 
 @end
 

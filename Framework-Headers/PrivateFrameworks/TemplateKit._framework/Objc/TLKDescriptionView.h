@@ -33,16 +33,16 @@
 @property (readonly, copy) NSString *description;
 @property (strong) UITextView *detailsTextView; // @synthesize detailsTextView=_detailsTextView;
 @property (readonly) unsigned long long hash;
-@property (strong) TLKImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) TLKImage *image; // @synthesize image=_image;
 @property (strong) NUIContainerBoxView *imageAndDescriptionBoxView; // @synthesize imageAndDescriptionBoxView=_imageAndDescriptionBoxView;
 @property (strong) TLKImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong) UIBezierPath *imageViewExclusionPath; // @synthesize imageViewExclusionPath=_imageViewExclusionPath;
 @property (strong) UIButton *moreButton; // @synthesize moreButton=_moreButton;
 @property (strong) UIBezierPath *moreButtonExclusionPath; // @synthesize moreButtonExclusionPath=_moreButtonExclusionPath;
-@property (strong) NSString *moreButtonText; // @synthesize moreButtonText=_moreButtonText;
+@property (strong, nonatomic) NSString *moreButtonText; // @synthesize moreButtonText=_moreButtonText;
 @property (readonly) Class superclass;
-@property (strong) TLKMultilineText *text; // @synthesize text=_text;
-@property (strong) TLKMultilineText *title; // @synthesize title=_title;
+@property (strong, nonatomic) TLKMultilineText *text; // @synthesize text=_text;
+@property (strong, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
 @property (strong) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
@@ -59,7 +59,6 @@
 - (BOOL)moreButtonIsHidden;
 - (void)moreButtonPressed;
 - (long long)numberOfLines;
-- (id)observableProperties;
 - (void)observedPropertiesChanged;
 - (BOOL)shouldHideMoreButtonForTextView:(id)arg1;
 - (void)simulateMoreButtonPress;

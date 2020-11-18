@@ -11,7 +11,6 @@
 }
 
 - (BOOL)canCommitPreview;
-- (BOOL)canDisplaySearchActionInNavigationBar;
 - (BOOL)displaysAvalancheStacks;
 - (int)thumbnailImageFormat;
 

@@ -13,7 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_dismissTimerTriggered;
+- (void)containerViewControllerDidEndDismissAnimation:(id)arg1;
+- (void)dittoDismissTimerFired:(id)arg1;
 
 @end
 

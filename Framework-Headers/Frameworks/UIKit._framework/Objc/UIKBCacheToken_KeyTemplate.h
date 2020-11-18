@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBCacheToken_Key.h>
+#import <UIKitCore/UIKBCacheToken_Key.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBCacheToken_KeyTemplate : UIKBCacheToken_Key

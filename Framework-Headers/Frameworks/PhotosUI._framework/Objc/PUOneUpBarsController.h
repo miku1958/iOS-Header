@@ -21,7 +21,7 @@
 @class NSMutableIndexSet, NSString, PUAssetActionPerformer, PUBarButtonItemCollection, PUBrowsingSession, PUPhotoBrowserTitleViewController, PUPlayPauseBarItemsController, PUScrubberView, PXImageModulationManager, PXInfoUpdater, UITapGestureRecognizer, UIView;
 @protocol PUOneUpBarsControllerDelegate;
 
-@interface PUOneUpBarsController : PUBarsController <PUBrowsingViewModelChangeObserver, PUAssetActionPerformerDelegate, UIPopoverPresentationControllerDelegate, PUPlayPauseBarItemsControllerChangeObserver, PUOverOneUpPresentationSessionBarsDelegate, PUBarButtonItemCollectionDataSource, PUScrubberViewDelegate, PUPhotoBrowserTitleViewControllerDelegate, PXInfoUpdaterObserver, PXInfoProvider, PXChangeObserver>
+@interface PUOneUpBarsController : PUBarsController <PUBrowsingViewModelChangeObserver, PUAssetActionPerformerDelegate, UIPopoverPresentationControllerDelegate, PUPlayPauseBarItemsControllerChangeObserver, PUBarButtonItemCollectionDataSource, PUScrubberViewDelegate, PUPhotoBrowserTitleViewControllerDelegate, PXInfoUpdaterObserver, PXInfoProvider, PXChangeObserver, PUOverOneUpPresentationSessionBarsDelegate>
 {
     struct {
         BOOL respondsToDidChangeShowingPlayPauseButton;
@@ -33,6 +33,11 @@
         BOOL respondsToShouldTapBeginAtLocationFromProvider;
         BOOL respondsToShouldHideToolbarWhenShowingAccessoryViewForAssetReference;
         BOOL respondsToWillExecuteActionPerformer;
+        BOOL respondsToCanShowOriginal;
+        BOOL respondsToDidBeginShowingOriginal;
+        BOOL respondsToDidEndShowingOriginal;
+        BOOL respondsToShouldEnableShowingOriginal;
+        BOOL respondsToCanViewInLibrary;
     } _delegateFlags;
     BOOL _shouldPlaceButtonsInNavigationBar;
     BOOL _shouldUseCompactTitleView;
@@ -43,6 +48,8 @@
     BOOL _shouldShowTitleView;
     BOOL _allowTapOnTitle;
     BOOL _allowShowingPlayPauseButton;
+    BOOL _disableShowingNavigationBars;
+    BOOL _shouldPlaceScrubberInScrubberBar;
     BOOL _isShowingPlayPauseButton;
     BOOL __needsUpdateTitle;
     BOOL __needsUpdateCommentsTitle;
@@ -67,6 +74,7 @@
     NSMutableIndexSet *__rightNavBarButtonIdentifiers;
     PUBarButtonItemCollection *__leftNavBarButtonItemCollection;
     NSMutableIndexSet *__leftNavBarButtonIdentifiers;
+    PUAssetActionPerformer *_sharingPreheatedPerformer;
     PXImageModulationManager *_debuggingObservedImageModulationManager;
 }
 
@@ -97,12 +105,15 @@
 @property (strong, nonatomic) PXImageModulationManager *debuggingObservedImageModulationManager; // @synthesize debuggingObservedImageModulationManager=_debuggingObservedImageModulationManager;
 @property (weak, nonatomic) id<PUOneUpBarsControllerDelegate> delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableShowingNavigationBars; // @synthesize disableShowingNavigationBars=_disableShowingNavigationBars;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, setter=_setShowingPlayPauseButton:) BOOL isShowingPlayPauseButton; // @synthesize isShowingPlayPauseButton=_isShowingPlayPauseButton;
 @property (nonatomic) double maximumAccessoryToolbarHeight; // @synthesize maximumAccessoryToolbarHeight=_maximumAccessoryToolbarHeight;
 @property (nonatomic) double maximumToolbarHeight; // @synthesize maximumToolbarHeight=_maximumToolbarHeight;
 @property (readonly, nonatomic) UIView *ppt_scrubberView;
+@property (strong, nonatomic) PUAssetActionPerformer *sharingPreheatedPerformer; // @synthesize sharingPreheatedPerformer=_sharingPreheatedPerformer;
 @property (nonatomic) BOOL shouldPlaceButtonsInNavigationBar; // @synthesize shouldPlaceButtonsInNavigationBar=_shouldPlaceButtonsInNavigationBar;
+@property (nonatomic) BOOL shouldPlaceScrubberInScrubberBar; // @synthesize shouldPlaceScrubberInScrubberBar=_shouldPlaceScrubberInScrubberBar;
 @property (nonatomic) BOOL shouldShowAirPlayButton; // @synthesize shouldShowAirPlayButton=_shouldShowAirPlayButton;
 @property (nonatomic) BOOL shouldShowDoneButton; // @synthesize shouldShowDoneButton=_shouldShowDoneButton;
 @property (nonatomic) BOOL shouldShowScrubber; // @synthesize shouldShowScrubber=_shouldShowScrubber;
@@ -124,6 +135,7 @@
 - (void)_executeActionPerformer:(id)arg1;
 - (void)_executeActionPerformer:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleAssetViewModelBeginEditingTimer:(id)arg1;
+- (void)_handleSharingPreheat;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (long long)_identifierForButton:(id)arg1;
 - (void)_initializeBarButtonItemCollections;
@@ -137,6 +149,9 @@
 - (id)_newBarButtonItemWithImageName:(id)arg1 offset:(struct UIOffset)arg2 landscapeImagePhoneName:(id)arg3 offset:(struct UIOffset)arg4 location:(long long)arg5;
 - (id)_newBarButtonWithSystemItem:(long long)arg1 offset:(struct UIOffset)arg2 landscapeImagePhoneOffset:(struct UIOffset)arg3;
 - (id)_newCustomButtonItem;
+- (void)_peformSuggestionRevertAction;
+- (void)_peformSuggestionSaveAction;
+- (void)_performAddToLibraryAction;
 - (void)_performAirPlayAction;
 - (void)_performAllPhotosAction;
 - (void)_performAssetExplorerReviewScreenActionType:(unsigned long long)arg1;
@@ -150,6 +165,7 @@
 - (void)_performReviewAction;
 - (void)_performShareAction;
 - (void)_performSlideShowAction;
+- (void)_performSuggestionViewInLibraryAction;
 - (void)_performToggleCommentsAction;
 - (void)_performToggleFavoriteAction;
 - (void)_performTrashAction;
@@ -175,6 +191,7 @@
 - (void)invalidateViewControllerView;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (id)overOneUpPresentationSession:(id)arg1 barButtonItemForActivityType:(id)arg2;
+- (void)overOneUpPresentationSession:(id)arg1 didAppendReviewScreenAction:(unsigned long long)arg2;
 - (void)overOneUpPresentationSession:(id)arg1 didCompleteWithActivityType:(id)arg2 assetsByAssetCollection:(id)arg3 success:(BOOL)arg4;
 - (void)photoBrowserTitleViewControllerTapped:(id)arg1;
 - (void)playPauseBarItemsController:(id)arg1 didChange:(id)arg2;
@@ -186,6 +203,7 @@
 - (BOOL)scrubberView:(id)arg1 shouldIgnoreHitTest:(struct CGPoint)arg2 withEvent:(id)arg3;
 - (void)setViewController:(id)arg1;
 - (BOOL)shouldTapBeginAtLocationFromProvider:(id)arg1;
+- (void)toggleOriginalButtonTouched:(id)arg1;
 - (void)updateBars;
 - (void)updateContentGuideInsets;
 - (void)updateGestureRecognizersWithHostingView:(id)arg1;

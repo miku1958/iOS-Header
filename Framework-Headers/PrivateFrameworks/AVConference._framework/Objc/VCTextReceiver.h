@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCTextFrameReceiver-Protocol.h>
 
@@ -17,12 +17,16 @@ __attribute__((visibility("hidden")))
     struct tagHANDLE *_rtpHandle;
     unsigned int _sampleRate;
     id<VCTextReceiverDelegate> _delegate;
-    struct tagVCRealTimeThread _receiverThread;
+    struct tagVCRealTimeThread *_receiverThread;
     NSArray *_supportedPayloads;
     VCTextJitterBuffer *_jitterBuffer;
+    double _lastReceivedRTPPacketTime;
+    double _lastReceivedRTCPPacketTime;
 }
 
 @property (nonatomic) id<VCTextReceiverDelegate> delegate;
+@property (nonatomic) double lastReceivedRTCPPacketTime; // @synthesize lastReceivedRTCPPacketTime=_lastReceivedRTCPPacketTime;
+@property (nonatomic) double lastReceivedRTPPacketTime; // @synthesize lastReceivedRTPPacketTime=_lastReceivedRTPPacketTime;
 @property (strong, nonatomic) NSArray *supportedPayloads; // @synthesize supportedPayloads=_supportedPayloads;
 
 - (struct tagAudioFrame *)allocFrameWithPacket:(struct tagAudioPacket *)arg1 data:(char *)arg2 dataLength:(int)arg3 timestamp:(unsigned int)arg4;

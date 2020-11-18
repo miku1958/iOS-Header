@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSSet *alertSuppressionAppIDs_deprecated; // @dynamic alertSuppressionAppIDs_deprecated;
 @property (copy, nonatomic) NSSet *alertSuppressionContexts; // @dynamic alertSuppressionContexts;
 @property (copy, nonatomic) BBAction *alternateAction; // @dynamic alternateAction;
+@property (nonatomic) long long backgroundStyle; // @dynamic backgroundStyle;
 @property (copy, nonatomic) NSString *bulletinID; // @dynamic bulletinID;
 @property (copy, nonatomic) NSArray *buttons; // @dynamic buttons;
 @property (copy, nonatomic) NSString *categoryID; // @dynamic categoryID;
@@ -38,16 +39,21 @@
 @property (nonatomic) unsigned long long expirationEvents; // @synthesize expirationEvents=_expirationEvents;
 @property (copy, nonatomic) BBAction *expireAction; // @dynamic expireAction;
 @property (nonatomic) BOOL expiresOnPublisherDeath; // @dynamic expiresOnPublisherDeath;
+@property (nonatomic) BOOL hasCriticalIcon; // @dynamic hasCriticalIcon;
 @property (nonatomic) BOOL hasEventDate; // @dynamic hasEventDate;
+@property (copy, nonatomic) NSString *header; // @dynamic header;
 @property (strong, nonatomic) BBSectionIcon *icon; // @dynamic icon;
+@property (nonatomic) BOOL ignoresDowntime; // @dynamic ignoresDowntime;
 @property (nonatomic) BOOL ignoresQuietMode; // @dynamic ignoresQuietMode;
 @property (copy, nonatomic) NSArray *intentIDs; // @dynamic intentIDs;
 @property (strong, nonatomic) NSDate *lastInterruptDate; // @dynamic lastInterruptDate;
 @property (nonatomic, getter=isLoading) BOOL loading; // @dynamic loading;
+@property (nonatomic) long long lockScreenPriority; // @dynamic lockScreenPriority;
 @property (copy, nonatomic) NSString *message; // @dynamic message;
 @property (strong, nonatomic) BBContent *modalAlertContent; // @dynamic modalAlertContent;
 @property (copy, nonatomic) NSString *parentSectionID; // @dynamic parentSectionID;
 @property (copy, nonatomic) NSArray *peopleIDs; // @dynamic peopleIDs;
+@property (nonatomic) BOOL preventAutomaticRemovalFromLockScreen; // @dynamic preventAutomaticRemovalFromLockScreen;
 @property (copy, nonatomic) BBAttachmentMetadata *primaryAttachment; // @dynamic primaryAttachment;
 @property (nonatomic) long long primaryAttachmentType; // @dynamic primaryAttachmentType;
 @property (strong, nonatomic) NSDate *publicationDate; // @dynamic publicationDate;
@@ -67,6 +73,8 @@
 @property (strong, nonatomic) BBContent *starkBannerContent; // @dynamic starkBannerContent;
 @property (copy, nonatomic) NSSet *subsectionIDs; // @dynamic subsectionIDs;
 @property (copy, nonatomic) NSString *subtitle; // @dynamic subtitle;
+@property (copy, nonatomic) NSString *summaryArgument; // @dynamic summaryArgument;
+@property (nonatomic) unsigned long long summaryArgumentCount; // @dynamic summaryArgumentCount;
 @property (copy, nonatomic) NSArray *supplementaryActions; // @dynamic supplementaryActions;
 @property (nonatomic) BOOL tentative;
 @property (copy, nonatomic) NSString *threadID; // @dynamic threadID;

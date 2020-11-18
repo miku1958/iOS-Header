@@ -4,54 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <CameraUI/CAMDescriptionOverlayView.h>
 
-@class CAMPortraitModeDescriptionOverlayPrimaryVibrancyEffectView, UIButton, UILabel, UIVisualEffectView;
-@protocol CAMPortraitModeDescriptionOverlayViewDelegate;
-
-@interface CAMPortraitModeDescriptionOverlayView : UIView
+@interface CAMPortraitModeDescriptionOverlayView : CAMDescriptionOverlayView
 {
-    id<CAMPortraitModeDescriptionOverlayViewDelegate> _delegate;
-    long long _orientation;
-    double _contentTopInset;
-    UIVisualEffectView *__blurEffectView;
-    CAMPortraitModeDescriptionOverlayPrimaryVibrancyEffectView *__primaryVibrancyEffectView;
-    UILabel *__titleLabel;
-    UILabel *__descriptionLabel;
-    UILabel *__infoLabel;
-    UIButton *__acknowledgmentButton;
-    double __descriptionFontSizeMultiplier;
-    double __infoFontSizeMultiplier;
-    UIView *__topBlackoutView;
 }
 
-@property (readonly, nonatomic) UIButton *_acknowledgmentButton; // @synthesize _acknowledgmentButton=__acknowledgmentButton;
-@property (readonly, nonatomic) UIVisualEffectView *_blurEffectView; // @synthesize _blurEffectView=__blurEffectView;
-@property (nonatomic, setter=_setDescriptionFontSizeMultiplier:) double _descriptionFontSizeMultiplier; // @synthesize _descriptionFontSizeMultiplier=__descriptionFontSizeMultiplier;
-@property (readonly, nonatomic) UILabel *_descriptionLabel; // @synthesize _descriptionLabel=__descriptionLabel;
-@property (nonatomic, setter=_setInfoFontSizeMultiplier:) double _infoFontSizeMultiplier; // @synthesize _infoFontSizeMultiplier=__infoFontSizeMultiplier;
-@property (readonly, nonatomic) UILabel *_infoLabel; // @synthesize _infoLabel=__infoLabel;
-@property (readonly, nonatomic) CAMPortraitModeDescriptionOverlayPrimaryVibrancyEffectView *_primaryVibrancyEffectView; // @synthesize _primaryVibrancyEffectView=__primaryVibrancyEffectView;
-@property (readonly, nonatomic) UILabel *_titleLabel; // @synthesize _titleLabel=__titleLabel;
-@property (strong, nonatomic) UIView *_topBlackoutView; // @synthesize _topBlackoutView=__topBlackoutView;
-@property (nonatomic, getter=isAcknowledgmentButtonHighlighted) BOOL acknowledgmentButtonHighlighted;
-@property (nonatomic) double contentTopInset; // @synthesize contentTopInset=_contentTopInset;
-@property (weak, nonatomic) id<CAMPortraitModeDescriptionOverlayViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
-
-- (void).cxx_destruct;
 - (double)_additionalSpacingForContentSize:(id)arg1;
 - (id)_currentContentSize;
-- (void)_handleAcknowledgmentButtonTapped:(id)arg1;
-- (BOOL)_isVisible;
-- (void)_updateFontsUsingNarrowWidth:(BOOL)arg1;
-- (void)_updateTextUsingNarrowWidth:(BOOL)arg1;
-- (void)_updateTopBlackoutViewForVisible:(BOOL)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)layoutSubviews;
-- (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
-- (void)setVisible:(BOOL)arg1 animationDuration:(double)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)updateToContentSize:(id)arg1;
+- (id)acknowledgmentTextUsingNarrowWidth:(BOOL)arg1;
+- (double)additionalSpacing;
+- (id)descriptionTextUsingNarrowWidth:(BOOL)arg1;
+- (id)infoTextUsingNarrowWidth:(BOOL)arg1;
+- (double)maxDescriptionTextWidthForNarrowWidth:(BOOL)arg1 isLandscape:(BOOL)arg2 usingFontSizeMultiplier:(double)arg3;
+- (double)maxInfoTextWidthForNarrowWidth:(BOOL)arg1 isLandscape:(BOOL)arg2 usingFontSizeMultiplier:(double)arg3;
+- (id)titleTextUsingNarrowWidth:(BOOL)arg1;
 
 @end
 

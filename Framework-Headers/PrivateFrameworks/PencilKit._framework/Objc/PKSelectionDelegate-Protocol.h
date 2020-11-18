@@ -4,19 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSUUID, NSUndoManager, PKDrawing, PKInternalDrawingView, PKModifyStrokesCommand, UIView;
+@class NSArray, NSOrderedSet, NSUUID, NSUndoManager, PKDrawing, PKModifyStrokesCommand, UIView;
 
 @protocol PKSelectionDelegate
 - (void)applyCommand:(PKModifyStrokesCommand *)arg1 toDrawing:(PKDrawing *)arg2;
+- (BOOL)canModifyWhitespace;
 - (struct CGPoint)closestPointForPastedSelectionRect:(struct CGRect)arg1 withDrawing:(id *)arg2;
-- (BOOL)containsDrawingUUID:(NSUUID *)arg1;
 - (void)didBeginDraggingSelection;
 - (PKDrawing *)drawingForLiveAttachment;
 - (PKDrawing *)drawingForSelectionRect:(struct CGRect)arg1;
 - (PKDrawing *)drawingForUUID:(NSUUID *)arg1;
 - (SEL)drawingUndoSelector;
 - (id)drawingUndoTarget;
-- (PKInternalDrawingView *)drawingView;
 - (struct CGAffineTransform)imageTransform;
 - (BOOL)isValidDropPointForStrokes:(struct CGPoint)arg1;
 - (BOOL)liveDrawingIsAtEndOfDocument;
@@ -27,7 +26,9 @@
 - (struct CGPoint)selectionOffsetForDrawing:(PKDrawing *)arg1;
 - (void)selectionRefreshWithChangeToDrawings:(NSArray *)arg1;
 - (UIView *)selectionTopView;
-- (void)toggleSelectedStrokes:(NSArray *)arg1 hide:(BOOL)arg2 inDrawing:(PKDrawing *)arg3;
+- (void)toggleSelectedStrokes:(NSArray *)arg1 hide:(BOOL)arg2 inDrawing:(PKDrawing *)arg3 isErasing:(BOOL)arg4;
 - (NSUndoManager *)undoManager;
+- (struct CGRect)visibleOnscreenBoundsForDrawing:(PKDrawing *)arg1;
+- (NSOrderedSet *)visibleStrokesOnscreen:(NSOrderedSet *)arg1 forDrawing:(PKDrawing *)arg2;
 @end
 

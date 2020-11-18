@@ -6,15 +6,20 @@
 
 #import <CoreCDPInternal/NSObject-Protocol.h>
 
-@class NSDictionary, NSString;
+@class CDPContext, NSDictionary, NSString;
 
 @protocol CDPDSecureBackupProxy <NSObject>
+
+@property (strong, nonatomic) CDPContext *cdpContext;
+
 - (NSDictionary *)accountInfoWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (void)cacheRecoveryKey:(NSString *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)disableWithInfo:(NSDictionary *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (BOOL)disableWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (void)enableWithInfo:(NSDictionary *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (BOOL)enableWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
+- (id)init;
+- (id)initWithContext:(CDPContext *)arg1;
 - (NSDictionary *)recoverWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (void)uncacheAllSecrets;
 @end

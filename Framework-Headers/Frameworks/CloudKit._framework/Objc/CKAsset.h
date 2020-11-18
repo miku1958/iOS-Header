@@ -9,7 +9,7 @@
 #import <CloudKit/CKRecordValue-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class CKAssetCopyInfo, CKAssetTransferOptions, CKRecord, CKRecordID, NSData, NSDate, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL;
+@class CKAssetCopyInfo, CKAssetDownloadPreauthorization, CKAssetReference, CKAssetRereferenceInfo, CKAssetTransferOptions, CKRecord, CKRecordID, NSData, NSDate, NSDictionary, NSFileHandle, NSNumber, NSString, NSURL;
 
 @interface CKAsset : NSObject <CKRecordValue, NSSecureCoding>
 {
@@ -18,14 +18,13 @@
     BOOL _uploaded;
     BOOL _downloaded;
     BOOL _shouldReadRawEncryptedData;
-    NSURL *_fileURL;
     CKRecord *_record;
     NSString *_recordKey;
     NSURL *_contentBaseURL;
     NSString *_owner;
     NSString *_requestor;
     NSString *_authToken;
-    NSData *_authRequest;
+    CKAssetDownloadPreauthorization *_downloadPreauthorization;
     NSString *_downloadBaseURL;
     unsigned long long _downloadTokenExpiration;
     NSData *_boundaryKey;
@@ -36,6 +35,7 @@
     NSNumber *_deviceID;
     NSNumber *_fileID;
     NSNumber *_generationCountToSave;
+    NSURL *_nullableFileURL;
     NSData *_assetContent;
     NSString *_itemTypeHint;
     CKAssetCopyInfo *_assetCopyInfo;
@@ -52,6 +52,8 @@
     CKAssetTransferOptions *_assetTransferOptions;
     long long _arrayIndex;
     CKRecordID *_recordID;
+    CKAssetRereferenceInfo *_assetRereferenceInfo;
+    CKAssetReference *_assetReference;
     NSDictionary *_assetChunkerOptions;
     long long _uploadRank;
 }
@@ -63,8 +65,9 @@
 @property (strong, nonatomic) CKAssetCopyInfo *assetCopyInfo; // @synthesize assetCopyInfo=_assetCopyInfo;
 @property (readonly, nonatomic) NSString *assetHandleUUID;
 @property (strong, nonatomic) NSData *assetKey; // @synthesize assetKey=_assetKey;
+@property (strong, nonatomic) CKAssetReference *assetReference; // @synthesize assetReference=_assetReference;
+@property (strong, nonatomic) CKAssetRereferenceInfo *assetRereferenceInfo; // @synthesize assetRereferenceInfo=_assetRereferenceInfo;
 @property (strong, nonatomic) CKAssetTransferOptions *assetTransferOptions; // @synthesize assetTransferOptions=_assetTransferOptions;
-@property (copy, nonatomic) NSData *authRequest; // @synthesize authRequest=_authRequest;
 @property (copy, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
 @property (copy, nonatomic) NSData *boundaryKey; // @synthesize boundaryKey=_boundaryKey;
 @property (strong, nonatomic) NSData *clearAssetKey; // @synthesize clearAssetKey=_clearAssetKey;
@@ -74,16 +77,19 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSNumber *deviceID; // @synthesize deviceID=_deviceID;
 @property (strong, nonatomic) NSString *downloadBaseURL; // @synthesize downloadBaseURL=_downloadBaseURL;
+@property (strong, nonatomic) CKAssetDownloadPreauthorization *downloadPreauthorization; // @synthesize downloadPreauthorization=_downloadPreauthorization;
 @property (nonatomic) unsigned long long downloadTokenExpiration; // @synthesize downloadTokenExpiration=_downloadTokenExpiration;
 @property (strong, nonatomic) NSURL *downloadURL; // @synthesize downloadURL=_downloadURL;
 @property (strong, nonatomic) NSDate *downloadURLExpiration; // @synthesize downloadURLExpiration=_downloadURLExpiration;
 @property (nonatomic) BOOL downloaded; // @synthesize downloaded=_downloaded;
 @property (readonly, nonatomic) NSNumber *fileID; // @synthesize fileID=_fileID;
-@property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (copy, nonatomic) NSURL *fileURL;
 @property (strong, nonatomic) NSNumber *generationCountToSave; // @synthesize generationCountToSave=_generationCountToSave;
 @property (nonatomic) BOOL hasSize; // @synthesize hasSize=_hasSize;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isRereferencedAssetUpload;
 @property (strong, nonatomic) NSString *itemTypeHint; // @synthesize itemTypeHint=_itemTypeHint;
+@property (copy, nonatomic) NSURL *nullableFileURL; // @synthesize nullableFileURL=_nullableFileURL;
 @property (strong, nonatomic) NSString *owner; // @synthesize owner=_owner;
 @property (nonatomic) unsigned long long paddedFileSize; // @synthesize paddedFileSize=_paddedFileSize;
 @property (weak, nonatomic) CKRecord *record; // @synthesize record=_record;
@@ -116,6 +122,7 @@
 - (id)_initBare;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithAssetReference:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCopyInfo:(id)arg1 fileURL:(id)arg2;
 - (id)initWithDeviceID:(id)arg1 fileID:(id)arg2 generationID:(id)arg3;

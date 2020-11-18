@@ -21,6 +21,7 @@
 
 - (void)awakeFromNib;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)invalidatePhoto;
 - (void)layoutSubviews;
 - (void)setupPhoto;
 

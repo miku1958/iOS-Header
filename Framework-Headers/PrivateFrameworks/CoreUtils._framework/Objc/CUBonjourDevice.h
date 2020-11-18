@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSDictionary, NSString, NSUUID;
 
@@ -37,6 +37,7 @@
 - (id)copyConnectionStringWithFlags:(unsigned long long)arg1 error:(id *)arg2;
 - (id)description;
 - (id)descriptionWithLevel:(int)arg1;
+- (void)reconfirm;
 - (id)shortDescription;
 - (unsigned int)updateWithBonjourDeviceInfo:(id)arg1;
 

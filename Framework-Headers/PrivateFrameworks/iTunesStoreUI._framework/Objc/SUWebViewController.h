@@ -9,7 +9,7 @@
 #import <iTunesStoreUI/SUWebViewDelegate-Protocol.h>
 #import <iTunesStoreUI/SUWebViewManagerDelegate-Protocol.h>
 
-@class ISURLRequestPerformance, NSString, NSURL, SSAuthenticationContext, SSMutableAuthenticationContext, SUDelayedNavigationItem, SUMescalSession, SUObjectPool, SUStorePageProtocol, SUWebView, SUWebViewManager;
+@class ACAccount, ISURLRequestPerformance, NSDictionary, NSString, NSURL, SSAuthenticationContext, SSMutableAuthenticationContext, SUDelayedNavigationItem, SUMescalSession, SUObjectPool, SUStorePageProtocol, SUWebView, SUWebViewManager;
 
 @interface SUWebViewController : SUViewController <SUWebViewManagerDelegate, SUWebViewDelegate>
 {
@@ -30,10 +30,13 @@
     NSURL *_url;
     BOOL _viewIsReady;
     SUWebViewManager *_webViewManager;
+    ACAccount *_account;
+    NSDictionary *_tidHeaders;
 }
 
 @property (strong, nonatomic, getter=_mescalSession, setter=_setMescalSession:) SUMescalSession *_mescalSession; // @synthesize _mescalSession;
 @property (strong, nonatomic, getter=_performanceMetrics, setter=_setPerformanceMetrics:) ISURLRequestPerformance *_performanceMetrics; // @synthesize _performanceMetrics;
+@property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (copy, nonatomic) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -41,6 +44,7 @@
 @property (nonatomic) BOOL shouldSignRequests; // @synthesize shouldSignRequests=_shouldSignRequests;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSDictionary *tidHeaders; // @synthesize tidHeaders=_tidHeaders;
 @property (nonatomic) BOOL viewIsReady; // @synthesize viewIsReady=_viewIsReady;
 @property (readonly, nonatomic) SUWebView *webView;
 

@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id observer; // @synthesize observer=_observer;
 
 - (void).cxx_destruct;
-- (id)initWithObserver:(id)arg1;
+- (id)initWithObserver:(id)arg1 clientQueue:(id)arg2;
 
 @end
 

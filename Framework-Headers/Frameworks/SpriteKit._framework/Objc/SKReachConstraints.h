@@ -6,9 +6,9 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
-@interface SKReachConstraints : NSObject <NSCoding>
+@interface SKReachConstraints : NSObject <NSSecureCoding>
 {
     double _lowerAngleLimit;
     double _upperAngleLimit;
@@ -17,6 +17,7 @@
 @property (nonatomic) double lowerAngleLimit; // @synthesize lowerAngleLimit=_lowerAngleLimit;
 @property (nonatomic) double upperAngleLimit; // @synthesize upperAngleLimit=_upperAngleLimit;
 
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

@@ -19,6 +19,7 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)jointWithBodyA:(id)arg1 bodyB:(id)arg2 anchor:(struct CGPoint)arg3 axis:(struct CGVector)arg4;
++ (BOOL)supportsSecureCoding;
 
 @end
 

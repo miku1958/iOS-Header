@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBDisplayLayoutDelegate-Protocol.h>
 #import <FrontBoard/FBDisplayLayoutServiceServerDelegate-Protocol.h>
@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_displayLayoutForDisplayType:(long long)arg1;
 - (void)addLayoutElementAssertion:(id)arg1;
 - (void)beginLayoutTransition:(id)arg1;

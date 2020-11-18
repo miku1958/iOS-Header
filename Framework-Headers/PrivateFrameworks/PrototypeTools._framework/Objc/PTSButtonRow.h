@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PrototypeTools/PTSRow.h>
+#import <PrototypeTools/PTButtonRow.h>
 
-@interface PTSButtonRow : PTSRow
+@interface PTSButtonRow : PTButtonRow
 {
 }
-
-+ (id)rowWithTitle:(id)arg1 action:(id)arg2;
-- (Class)rowTableViewCellClass;
 
 @end
 

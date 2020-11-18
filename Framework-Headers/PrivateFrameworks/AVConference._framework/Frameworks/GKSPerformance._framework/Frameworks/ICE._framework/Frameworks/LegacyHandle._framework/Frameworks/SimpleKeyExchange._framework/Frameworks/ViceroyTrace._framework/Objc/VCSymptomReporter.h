@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_dispatch_queue, OS_os_log;
@@ -16,33 +16,49 @@ __attribute__((visibility("hidden")))
     NSString *_loggingDirectory;
     NSObject<OS_os_log> *_osLogNetworkingHandle;
     NSObject<OS_dispatch_queue> *_reportingQueue;
+    CDUnknownFunctionPointerType _symptomReporterCallback;
+    void *_symptomReporterContext;
 }
 
 @property (copy, nonatomic) NSString *loggingDirectory; // @synthesize loggingDirectory=_loggingDirectory;
 
+- (void)VCSymptomReporterSetCallback:(CDUnknownFunctionPointerType)arg1 context:(void *)arg2;
 - (void)dealloc;
 - (id)initWithCallID:(unsigned int)arg1;
 - (int)reportAUIOTimestampJumped;
 - (int)reportAudioErasures;
 - (int)reportAudioStall;
 - (int)reportBandwidthEstimationMismatch;
+- (int)reportCCReliableDataNotReceived;
 - (int)reportConnectionTimeout;
 - (int)reportFailedToStartAudio;
 - (int)reportFailedToStartVideo;
 - (int)reportIDSDataChannelEventUsageError;
+- (int)reportKeyFrameNotSpreading;
+- (int)reportKeyIndexNotReceived;
+- (int)reportMediaQueueFlushingTooFrequent;
+- (int)reportMediaQueueOvershoot;
+- (int)reportMediaQueuePoolEmpty;
 - (int)reportNegativeJitterBufferSize;
-- (int)reportNoFirstFrame;
+- (int)reportNoFirstFrameWithOptionalDictionary:(id)arg1;
 - (int)reportNoMediaBlob;
-- (int)reportNoPackets;
+- (int)reportNoPacketsWithOptionalDictionary:(id)arg1;
 - (int)reportNoRelayResponseWithOptionalDictionary:(id)arg1;
 - (int)reportNoSNATMAPResponseWithOptionalDictionary:(id)arg1;
 - (int)reportQRATKNTokenError;
 - (int)reportRateTargetMismatch;
+- (int)reportReceiveMKIDuplicateKeys;
+- (int)reportReceiveSessionStatsFailed;
+- (int)reportSessionInfoErrorResponse;
 - (int)reportSignalingFailed;
 - (void)reportSymptom:(unsigned int)arg1 optionalDictionary:(id)arg2;
 - (void)reportSymptomInternal:(unsigned int)arg1 optionalDictionary:(id)arg2;
 - (int)reportSymptomWithDictionary:(id)arg1;
-- (int)reportSymptomWithType:(id)arg1 subType:(id)arg2 context:(id)arg3;
+- (int)reportSymptomWithIDSDestination:(id)arg1 sessionID:(id)arg2 type:(id)arg3 subType:(id)arg4 context:(id)arg5;
+- (int)reportSymptomWithOptions:(id)arg1 type:(id)arg2 subType:(id)arg3 context:(id)arg4;
+- (int)reportSymptomWithType:(id)arg1 subType:(id)arg2 context:(id)arg3 actions:(id)arg4;
+- (int)reportTargetBitrateOvershoot;
+- (int)reportUnexpectedLowTargetBitrate;
 - (int)reportVideoStall;
 - (id)symptomNameWithDomain:(id)arg1 subtypeContext:(id)arg2;
 

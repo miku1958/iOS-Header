@@ -9,6 +9,8 @@
 @class CNObservable, NSArray;
 
 @protocol CNAutocompleteObservableBuilderBatchingHelper <NSObject>
+- (void)addCachedCalendarServerObservable:(CNObservable *)arg1;
+- (void)addCachedDirectoryServerObservable:(CNObservable *)arg1;
 - (void)addCalendarServerObservable:(CNObservable *)arg1;
 - (void)addContactsObservable:(CNObservable *)arg1;
 - (void)addCoreRecentsObservable:(CNObservable *)arg1;

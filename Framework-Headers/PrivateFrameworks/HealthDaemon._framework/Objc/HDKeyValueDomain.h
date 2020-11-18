@@ -27,6 +27,7 @@
 - (id)modificationDatesForKeys:(id)arg1 error:(id *)arg2;
 - (id)numberForKey:(id)arg1 error:(id *)arg2;
 - (id)quantityForKey:(id)arg1 unit:(id)arg2 error:(id *)arg3;
+- (BOOL)removeValuesForKeys:(id)arg1 error:(id *)arg2;
 - (BOOL)setData:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (BOOL)setDate:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (BOOL)setNumber:(id)arg1 forKey:(id)arg2 error:(id *)arg3;

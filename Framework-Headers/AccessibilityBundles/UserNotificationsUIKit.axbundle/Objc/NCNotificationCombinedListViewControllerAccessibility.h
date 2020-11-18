@@ -13,10 +13,14 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (unsigned long long)_accessibilityNotificationCount;
+- (id)_accessibilityNotificationSummary:(unsigned long long)arg1;
+- (id)_axNonPersistentRequests;
 - (void)_axSetShowingRecentNotifications:(BOOL)arg1;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityPerformMagicTap;
 - (BOOL)insertNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
+- (void)notificationListCoalescingControlsHandler:(id)arg1 requestsRestackingNotificationsWithCoalescingIdentifier:(id)arg2 inSection:(unsigned long long)arg3;
 - (void)sectionHeaderView:(id)arg1 didReceiveClearActionForSectionIdentifier:(id)arg2;
 - (void)setShowingNotificationsHistory:(BOOL)arg1;
 

@@ -43,6 +43,8 @@ __attribute__((visibility("hidden")))
 - (id)infoToConnectToForConnectionLineConnectedToInfo:(id)arg1;
 - (id)initWithDocumentRoot:(id)arg1;
 - (BOOL)isInfoAKeynoteMasterObject:(id)arg1;
+- (void)p_prepareShapeInfoStroke:(id)arg1 atScaleFactor:(double)arg2 finalRect:(struct CGRect *)arg3;
+- (void)p_prepareStyledInfoStyle:(id)arg1;
 - (BOOL)p_requiresModifiedStrokeForDrawable:(id)arg1 atScaleFactor:(double)arg2;
 - (double)p_sizeMultiplierForDrawable:(id)arg1;
 - (id)p_strokeForShapeInfo:(id)arg1;

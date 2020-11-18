@@ -27,9 +27,11 @@
     map_135a4f40 _redBias;
     map_135a4f40 _grayBias;
     map_135a4f40 _scale;
+    set_0cfa92bf _configurationNames;
 }
 
 @property (nonatomic) map_135a4f40 blueBias; // @synthesize blueBias=_blueBias;
+@property set_0cfa92bf configurationNames; // @synthesize configurationNames=_configurationNames;
 @property (nonatomic) int engine; // @synthesize engine=_engine;
 @property (nonatomic) map_135a4f40 grayBias; // @synthesize grayBias=_grayBias;
 @property (nonatomic) map_135a4f40 greenBias; // @synthesize greenBias=_greenBias;
@@ -52,6 +54,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)initWithFeatureDescriptions:(id)arg1 inputDesc:(id)arg2 outputDesc:(id)arg3 outputLayerNames:(id)arg4 parameters:(id)arg5;
+- (id)initWithFeatureDescriptions:(id)arg1 inputDesc:(id)arg2 outputDesc:(id)arg3 outputLayerNames:(id)arg4 parameters:(id)arg5 configurations:(vector_ebb6ef3e)arg6;
 - (id)initWithFilePath:(id)arg1 inputLayerNames:(id)arg2 outputLayerNames:(id)arg3 parameters:(id)arg4;
 
 @end

@@ -25,9 +25,10 @@
     BOOL _hasPearlHardware;
     BOOL _isMatchingAllowed;
     BOOL _isMatchingEnabled;
-    BOOL _isFingerDetectionAllowed;
+    BOOL _isPresenceDetectionAllowed;
     BOOL _isFingerDetectionEnabled;
     BOOL _isFingerDetectionEnabledThroughHIDChannel;
+    BOOL _isFaceDetectionEnabled;
     BOOL _screenIsOn;
     BOOL _isAuthenticated;
     BOOL _shouldSendFingerOffNotification;
@@ -36,6 +37,8 @@
     NSHashTable *_observers;
     NSMutableOrderedSet *_matchAssertions;
     NSMutableOrderedSet *_fingerDetectAssertions;
+    NSMutableOrderedSet *_faceDetectAssertions;
+    NSMutableOrderedSet *_simulatedLockoutAssertions;
     Class _bkMatchPearlOperationClass;
     id<SBUIBiometricAuthenticationPolicy> _authenticationPolicy;
 }
@@ -61,25 +64,34 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_activateFaceDetectAssertion:(id)arg1;
 - (void)_activateFingerDetectAssertion:(id)arg1;
 - (void)_activateMatchAssertion:(id)arg1;
+- (void)_addFaceDetectionWantedAssertion:(id)arg1;
 - (void)_addFingerDetectionWantedAssertion:(id)arg1;
 - (void)_addMatchingAssertion:(id)arg1;
+- (void)_addSimulatedLockoutAssertion:(id)arg1;
+- (void)_deactivateAllPearlAssertions;
 - (void)_deactivateAssertion:(id)arg1;
-- (void)_fingerDetectAllowedStateMayHaveChangedForReason:(id)arg1;
 - (void)_matchingAllowedStateMayHaveChangedForReason:(id)arg1;
 - (void)_notifyObserversOfEvent:(unsigned long long)arg1;
+- (void)_presenceDetectAllowedStateMayHaveChangedForReason:(id)arg1;
 - (void)_profileSettingsChanged:(id)arg1;
 - (void)_reallyResumeMatchingForAssertion:(id)arg1 advisory:(BOOL)arg2;
 - (void)_reallySetAuthenticated:(BOOL)arg1 keybagState:(id)arg2;
+- (void)_reevaluateFaceDetection;
 - (void)_reevaluateFingerDetection;
 - (void)_reevaluateMatching;
+- (void)_removeFaceDetectionWantedAssertion:(id)arg1;
 - (void)_removeFingerDetectionWantedAssertion:(id)arg1;
 - (void)_removeMatchingAssertion:(id)arg1;
+- (void)_removeSimulatedLockoutAssertion:(id)arg1;
 - (void)_setAuthenticated:(BOOL)arg1;
 - (void)_updateHandlersForEvent:(unsigned long long)arg1;
+- (id)acquireFaceDetectionWantedAssertionForReason:(id)arg1;
 - (id)acquireFingerDetectionWantedAssertionForReason:(id)arg1;
 - (id)acquireMatchingAssertionWithMode:(unsigned long long)arg1 reason:(id)arg2;
+- (id)acquireSimulatedLockoutAssertionWithLockoutState:(unsigned long long)arg1 forReason:(id)arg2;
 - (void)addObserver:(id)arg1;
 - (void)biometricKitInterface:(id)arg1 enrolledIdentitiesDidChange:(BOOL)arg2;
 - (void)biometricKitInterface:(id)arg1 handleEvent:(unsigned long long)arg2;

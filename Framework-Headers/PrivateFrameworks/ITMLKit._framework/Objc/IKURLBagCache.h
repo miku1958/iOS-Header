@@ -6,36 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class ISLoadURLBagOperation, ISURLBag, NSString;
-@protocol OS_dispatch_queue;
+@class NSDictionary, NSString, SSURLBag;
 
 @interface IKURLBagCache : NSObject
 {
-    id _isURLBagDidLoadToken;
-    struct os_unfair_lock_s _bagOperationLock;
-    ISURLBag *_bag;
+    SSURLBag *_urlBag;
+    NSDictionary *_existingDictionary;
     NSString *_cachePath;
-    ISLoadURLBagOperation *_pendingBagOperation;
-    NSObject<OS_dispatch_queue> *_updateBagQueue;
 }
 
-@property (readonly) ISURLBag *bag; // @synthesize bag=_bag;
 @property (readonly, nonatomic) NSString *cachePath; // @synthesize cachePath=_cachePath;
-@property (weak, nonatomic) ISLoadURLBagOperation *pendingBagOperation; // @synthesize pendingBagOperation=_pendingBagOperation;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *updateBagQueue; // @synthesize updateBagQueue=_updateBagQueue;
+@property (readonly, nonatomic) NSDictionary *existingDictionary; // @synthesize existingDictionary=_existingDictionary;
+@property (readonly, nonatomic) SSURLBag *urlBag; // @synthesize urlBag=_urlBag;
 
 + (id)URLBagContext;
-+ (id)_cachedBagFromCachePath:(id *)arg1;
-+ (id)sharedInMemoryBagCache;
++ (id)sharedCache;
 - (void).cxx_destruct;
-- (id)_initWithCachePath:(id)arg1 cachedBag:(id)arg2;
-- (void)_persistURLBag;
-- (void)_updateWithBag:(id)arg1 invalidate:(BOOL)arg2;
-- (void)dealloc;
-- (id)debugDescription;
+- (void)_loadWithNotification:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)checkTrustStatusForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithCachePath:(id)arg1;
+- (BOOL)isTrustedURL:(id)arg1;
+- (void)loadValueForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateWithInvalidation:(BOOL)arg1;
+- (id)valueForKey:(id)arg1;
 
 @end
 

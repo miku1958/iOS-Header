@@ -4,33 +4,59 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <Vision/VNObservationsCacheKeyProviding-Protocol.h>
+#import <Vision/VNDetectorKeyProviding-Protocol.h>
+#import <Vision/VNRequestRevisionProviding-Protocol.h>
 
-@class VNMetalContext;
+@class NSDictionary, NSString, VNMetalContext;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface VNDetector : NSObject <VNObservationsCacheKeyProviding>
+@interface VNDetector : NSObject <VNDetectorKeyProviding, VNRequestRevisionProviding>
 {
+    NSDictionary *_configurationOptions;
+    NSObject<OS_dispatch_queue> *_processingQueue;
+    unsigned long long _requestRevision;
     VNMetalContext *_metalContext;
     unsigned long long _backingStore;
-    NSObject<OS_dispatch_queue> *_processingQueue;
+    NSObject<OS_dispatch_queue> *_synchronizationQueue;
 }
 
-@property (readonly) unsigned long long backingStore; // @synthesize backingStore=_backingStore;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
+@property (readonly, nonatomic) unsigned long long backingStore; // @synthesize backingStore=_backingStore;
+@property (readonly, copy, nonatomic) NSDictionary *configurationOptions; // @synthesize configurationOptions=_configurationOptions;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) VNMetalContext *metalContext; // @synthesize metalContext=_metalContext;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
+@property (readonly, nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *synchronizationQueue; // @synthesize synchronizationQueue=_synchronizationQueue;
 
-+ (BOOL)bestImageWidth:(unsigned long long *)arg1 height:(unsigned long long *)arg2 format:(unsigned int *)arg3;
++ (id)configurationOptionKeysForDetectorKey;
++ (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
++ (id)detectorKeyComponentForDetectorConfigurationOptionKey:(id)arg1 value:(id)arg2;
 + (id)detectorName;
++ (id)detectorWithConfigurationOptions:(id)arg1 error:(id *)arg2;
++ (void)fullyPopulateConfigurationOptions:(id)arg1;
++ (id)keyForDetectorWithConfigurationOptions:(id)arg1;
++ (void)recordDefaultConfigurationOptionsInDictionary:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithOptions:(id)arg1 error:(id *)arg2;
-- (BOOL)initializeMetalContext:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
+- (BOOL)completeInitializationAndReturnError:(id *)arg1;
+- (BOOL)currentQueueIsSynchronizationQueue;
+- (BOOL)getOptionalCanceller:(id *)arg1 inOptions:(id)arg2 error:(id *)arg3;
+- (id)initWithConfigurationOptions:(id)arg1;
+- (BOOL)needsMetalContext;
+- (id)newMetalContextForConfigurationOptions:(id)arg1 error:(id *)arg2;
+- (id)processInSynchronizationQueueUsingQualityOfServiceClass:(unsigned int)arg1 options:(id)arg2 regionOfInterest:(struct CGRect)arg3 warningRecorder:(id)arg4 error:(id *)arg5;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
+- (id)requiredCancellerInOptions:(id)arg1 error:(id *)arg2;
+- (BOOL)supportsProcessingDevice:(id)arg1;
+- (BOOL)useGPU;
 - (BOOL)validateImageBuffer:(id)arg1 error:(id *)arg2;
 - (id)validatedImageBufferFromOptions:(id)arg1 error:(id *)arg2;
+- (id)validatedProcessingDeviceInOptions:(id)arg1 error:(id *)arg2;
 
 @end
 

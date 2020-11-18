@@ -10,8 +10,6 @@
 
 @protocol _CPSessionEndFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasReason;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int reason;
 @property (nonatomic) unsigned long long timestamp;

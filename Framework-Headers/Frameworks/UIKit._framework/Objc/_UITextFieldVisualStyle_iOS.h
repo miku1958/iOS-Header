@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITextFieldVisualStyle.h>
+#import <UIKitCore/_UITextFieldVisualStyle.h>
 
 __attribute__((visibility("hidden")))
 @interface _UITextFieldVisualStyle_iOS : _UITextFieldVisualStyle

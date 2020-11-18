@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/NSCopying-Protocol.h>
 
@@ -25,8 +25,8 @@
 @property (readonly, nonatomic) NSDictionary *recipientContext; // @synthesize recipientContext=_recipientContext;
 @property (readonly, nonatomic) NSString *recipientNameDigest; // @synthesize recipientNameDigest=_recipientNameDigest;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithClientIdentifier:(id)arg1 andRecipientContactInfo:(id)arg2;
 - (id)initWithClientIdentifier:(id)arg1 andRecipientRecord:(id)arg2;

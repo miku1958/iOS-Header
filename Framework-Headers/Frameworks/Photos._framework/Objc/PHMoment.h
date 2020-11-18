@@ -10,7 +10,6 @@
 
 @interface PHMoment : PHAssetCollection
 {
-    NSData *_approximateLocationData;
     NSData *_reverseLocationData;
     BOOL _reverseLocationDataIsValid;
     BOOL _reverseLocationDataContainsLocation;
@@ -23,7 +22,7 @@
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, nonatomic) NSDate *representativeDate; // @synthesize representativeDate=_representativeDate;
 
-+ (id)entityKeyForPropertyKey:(id)arg1;
++ (id)entityKeyMap;
 + (id)fetchType;
 + (id)identifierCode;
 + (id)managedEntityName;
@@ -31,8 +30,8 @@
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 + (id)transformValueExpression:(id)arg1 forKeyPath:(id)arg2;
 - (void).cxx_destruct;
+- (void)_cacheLocationWithCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (void)_decodeTitlesIfNeeded;
-- (id)approximateLocation;
 - (BOOL)canPerformEditOperation:(long long)arg1;
 - (BOOL)canShowAvalancheStacks;
 - (Class)changeRequestClass;

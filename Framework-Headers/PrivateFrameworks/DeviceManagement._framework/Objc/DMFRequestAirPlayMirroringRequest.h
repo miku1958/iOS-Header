@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSString;
 
-@interface DMFRequestAirPlayMirroringRequest : CATTaskRequest
+@interface DMFRequestAirPlayMirroringRequest : DMFTaskRequest
 {
     BOOL _force;
     NSString *_destinationName;
@@ -23,6 +23,9 @@
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (nonatomic) double scanWaitInterval; // @synthesize scanWaitInterval=_scanWaitInterval;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;

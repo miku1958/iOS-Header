@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSDCapabilities : NSObject
@@ -25,11 +25,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize maximumHardcodedTextureSize;
 @property (readonly, nonatomic) long long platform; // @synthesize platform=_platform;
 @property (readonly, nonatomic) long long renderer; // @synthesize renderer=_renderer;
-@property (readonly, nonatomic) BOOL supportsPencil;
 
 + (id)currentCapabilities;
 - (id)init;
+- (struct CGSize)maximumMetalTextureSizeForDevice:(id)arg1;
 - (struct CGSize)maximumTextureSizeWithGLContext:(id)arg1;
+- (BOOL)p_isMetalCapable;
 - (void)p_setupDevice;
 - (void)p_setupPlatform;
 

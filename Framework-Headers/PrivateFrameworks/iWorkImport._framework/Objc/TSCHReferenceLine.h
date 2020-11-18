@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHPropertyMapsGeneratedProtocol-Protocol.h>
 #import <iWorkImport/TSCHStyleOwnerCollaborationSupport-Protocol.h>
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     unsigned long long mStyleSwapIndex;
 }
 
-@property (readonly, nonatomic) TSCHChartAxis *axis;
+@property (readonly, weak, nonatomic) TSCHChartAxis *axis;
 @property (readonly, copy, nonatomic) TSCHChartAxisID *axisID; // @synthesize axisID=mAxisID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;

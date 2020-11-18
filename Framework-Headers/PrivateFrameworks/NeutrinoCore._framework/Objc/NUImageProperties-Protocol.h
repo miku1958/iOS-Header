@@ -7,7 +7,7 @@
 #import <NeutrinoCore/NSObject-Protocol.h>
 
 @class NSDictionary, NSString;
-@protocol NUDepthProperties, NURAWImageProperties;
+@protocol NUDepthProperties, NUPortraitEffectsMatteProperties, NURAWImageProperties;
 
 @protocol NUImageProperties <NSObject>
 
@@ -18,6 +18,7 @@
 @property (readonly) NSString *fileUTI;
 @property (readonly) NSDictionary *metadata;
 @property (readonly) long long orientation;
+@property (readonly) id<NUPortraitEffectsMatteProperties> portraitEffectsMatteProperties;
 @property (readonly) id<NURAWImageProperties> rawProperties;
 @property (readonly) CDStruct_912cb5d2 size;
 

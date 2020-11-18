@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCharacterSet, NSMutableDictionary, NSSet, NSString, TILanguageModelOfflineLearningHandle;
 @protocol TILinguisticDataSource;
@@ -29,7 +29,7 @@
 
 + (id)dataSourceForTask;
 + (id)taskWithClientIdentifier:(id)arg1 oneTimeTask:(BOOL)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)didFinishLearning;
 - (void)enumerateHandlesForLanguage:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)handleForLanguage:(id)arg1;

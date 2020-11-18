@@ -6,7 +6,7 @@
 
 #import <StoreKit/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, SSLookupItem;
+@class NSDictionary, NSNumber, NSString, SSLookupItem;
 
 @protocol SKProductPageExtensionServiceInterface <NSObject>
 - (void)lookupItemDidLoad:(SSLookupItem *)arg1 parameters:(NSDictionary *)arg2;
@@ -16,6 +16,7 @@
 - (void)setRightBarButtonTitle:(NSString *)arg1;
 - (void)setShowsRightBarButton:(BOOL)arg1;
 - (void)setShowsStoreButton:(BOOL)arg1;
+- (void)setVisibleInClientWindow:(NSNumber *)arg1;
 - (void)setupWithClientBundleID:(NSString *)arg1 bagType:(long long)arg2;
 @end
 

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCConnectionHealthMonitorDelegate-Protocol.h>
 
-@class NSString, VCConnectionHealthMonitor;
+@class NSString, VCConnectionHealthMonitor, VCStatsRecorder;
 @protocol OS_dispatch_queue, VCConnectionManagerDelegate, VCConnectionProtocol;
 
 __attribute__((visibility("hidden")))
@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
     CDUnknownFunctionPointerType _wrmStatusUpdateCallback;
     CDUnknownFunctionPointerType _wrmRequestNotificationCallback;
     void *_wrmCallbacksContext;
+    VCStatsRecorder *_statsRecorder;
 }
 
 @property unsigned int callID; // @synthesize callID=_callID;
@@ -81,6 +82,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id<VCConnectionProtocol> secondaryConnection; // @synthesize secondaryConnection=_secondaryConnection;
 @property (readonly) int signalingExcessiveCellularRxBytes; // @synthesize signalingExcessiveCellularRxBytes=_signalingExcessiveCellularRxBytes;
 @property (readonly) int signalingExcessiveCellularTxBytes; // @synthesize signalingExcessiveCellularTxBytes=_signalingExcessiveCellularTxBytes;
+@property (readonly, nonatomic) VCStatsRecorder *statsRecorder; // @synthesize statsRecorder=_statsRecorder;
 @property (readonly) Class superclass;
 @property BOOL supportDuplication; // @synthesize supportDuplication=_supportDuplication;
 
@@ -90,13 +92,15 @@ __attribute__((visibility("hidden")))
 - (id)connectionForQuality:(int)arg1;
 - (id)connectionForQualityInternal:(int)arg1;
 - (void)connectionHealthDidUpdate:(int)arg1 isLocalConnection:(BOOL)arg2;
+- (id)copyConnectionWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isPrimary:(BOOL *)arg2;
 - (struct tagVCSourceDestinationInfo *)createSourceDestinationInfoList;
 - (void)dealloc;
+- (unsigned int)getByteCountWithIndex:(unsigned char)arg1 isOutgoing:(BOOL)arg2;
 - (int)getCellularMTUForActiveConnectionWithQuality:(int)arg1;
 - (int)getCellularTechForActiveConnectionWithQuality:(int)arg1 forLocalInterface:(BOOL)arg2;
 - (int)getConnectionTypeForActiveConnectionWithQuality:(int)arg1 forLocalInterface:(BOOL)arg2;
-- (id)getConnectionWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isPrimary:(BOOL *)arg2;
 - (int)getNumberOfConnectionsInternal;
+- (unsigned int)getPacketCountWithIndex:(unsigned char)arg1 isOutgoing:(BOOL)arg2;
 - (id)init;
 - (BOOL)isBetterConnection:(id)arg1 asPrimary:(BOOL)arg2;
 - (BOOL)isConnectedOnIPv6ForActiveConnectionWithQuality:(int)arg1;
@@ -116,22 +120,27 @@ __attribute__((visibility("hidden")))
 - (void)setConnectionPause:(BOOL)arg1 isLocalConnection:(BOOL)arg2;
 - (void)setDuplicationCallback:(CDUnknownFunctionPointerType)arg1 withContext:(void *)arg2;
 - (void)setDuplicationEnabledInternal:(BOOL)arg1;
+- (void)setDuplicationFlag:(BOOL)arg1 withPreferredLocalLinkTypeForDuplication:(int)arg2;
 - (void)setReportingAgent:(struct opaqueRTCReporting *)arg1;
 - (int)setWRMUpdateCallback:(CDUnknownFunctionPointerType)arg1 requestNotificationCallback:(CDUnknownFunctionPointerType)arg2 withContext:(void *)arg3;
+- (void)setupConnectionHealthMonitor;
 - (BOOL)shouldAcceptDataFromSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
 - (BOOL)shouldHandoverWhenUpdateWRMDuplication:(int)arg1;
 - (void)sourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isSourceOnCellular:(BOOL *)arg2 isSourceIPv6:(BOOL *)arg3;
-- (void)updateBytesForSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 bytes:(int)arg2 isMediaData:(BOOL)arg3 isOutgoing:(BOOL)arg4;
+- (void)synchronizeParticipantGenerationCounter:(unsigned char)arg1;
+- (void)updateCellularExcessiveBytesWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 bytes:(int)arg2 isMediaData:(BOOL)arg3 isOutgoing:(BOOL)arg4;
 - (void)updateCellularMTU:(int)arg1;
 - (void)updateCellularTech:(int)arg1 forLocalInterface:(BOOL)arg2;
 - (void)updateConnectionHealthWithIndicator:(BOOL)arg1;
 - (void)updateConnectionStatsWithIndicatorNoPackets:(CDStruct_b3143830 *)arg1;
 - (void)updateConnectionStatsWithIndicatorNone:(CDStruct_b3143830 *)arg1;
 - (void)updateConnectionStatsWithIndicatorPrimaryImproved:(CDStruct_b3143830 *)arg1;
-- (void)updateReceivedBytesForSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 bytesReceived:(int)arg2 isMediaData:(BOOL)arg3;
+- (void)updatePacketCountAndByteCountWithIndex:(unsigned char)arg1 packetSize:(int)arg2 numOfStreamId:(int)arg3 isPriorityIncluded:(BOOL)arg4 isOutgoing:(BOOL)arg5;
 - (void)updateReceivedExcessiveBytes:(int)arg1 isMediaData:(BOOL)arg2 isIPv6:(BOOL)arg3;
-- (void)updateTransmittedBytesForSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 bytesSent:(int)arg2 isMediaData:(BOOL)arg3;
+- (void)updateReceivedPacketsAndBytesWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 bytesReceived:(int)arg2 isMediaData:(BOOL)arg3 shouldCountPacket:(BOOL)arg4 numOfStreamId:(int)arg5 isPriorityIncluded:(BOOL)arg6;
+- (void)updateSessionStats:(unsigned short)arg1;
 - (void)updateTransmittedExcessiveBytes:(int)arg1 isMediaData:(BOOL)arg2 isIPv6:(BOOL)arg3;
+- (void)updateTransmittedPacketsAndBytesWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 bytesSent:(int)arg2 isMediaData:(BOOL)arg3 shouldCountPacket:(BOOL)arg4 numOfStreamId:(int)arg5 isPriorityIncluded:(BOOL)arg6;
 - (void)updateWRMDuplicationForHandover;
 - (BOOL)updateWRMDuplicationForLocaliRATSuggestion;
 - (void)updateWRMDuplicationForRemoteiRATSuggestion;

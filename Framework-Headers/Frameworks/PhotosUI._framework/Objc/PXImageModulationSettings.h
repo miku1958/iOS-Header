@@ -20,6 +20,7 @@
     double _EDRHeadroomRequestSustainDuration;
     double _lowEDRRequestedHeadroomStops;
     double _highEDRRequestedHeadroomStops;
+    double _deviceMaximumEDRHeadroomStops;
 }
 
 @property (nonatomic) double EDRHeadroomRequestHDRThreshold; // @synthesize EDRHeadroomRequestHDRThreshold=_EDRHeadroomRequestHDRThreshold;
@@ -28,6 +29,7 @@
 @property (nonatomic) long long HDRConsideration; // @synthesize HDRConsideration=_HDRConsideration;
 @property (nonatomic) double HDRModulationIntensity; // @synthesize HDRModulationIntensity=_HDRModulationIntensity;
 @property (nonatomic) double SDRModulationIntensity; // @synthesize SDRModulationIntensity=_SDRModulationIntensity;
+@property (nonatomic) double deviceMaximumEDRHeadroomStops; // @synthesize deviceMaximumEDRHeadroomStops=_deviceMaximumEDRHeadroomStops;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) long long filterType; // @synthesize filterType=_filterType;
 @property (nonatomic) double highEDRRequestedHeadroomStops; // @synthesize highEDRRequestedHeadroomStops=_highEDRRequestedHeadroomStops;

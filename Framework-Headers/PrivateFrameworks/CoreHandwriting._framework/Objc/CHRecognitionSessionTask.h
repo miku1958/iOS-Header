@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CHRecognitionSessionResult, NSArray;
 @protocol CHRecognitionSessionTaskDelegate, CHStrokeProvider, OS_dispatch_queue;
@@ -41,7 +41,7 @@
 - (void)cancel;
 - (void)dealloc;
 - (id)init;
-- (id)initWithLocales:(id)arg1 preferredLocales:(id)arg2 strokeProvider:(id)arg3 inputResult:(id)arg4;
+- (id)initWithLocales:(id)arg1 preferredLocales:(id)arg2 strokeProvider:(id)arg3 inputResult:(id)arg4 recognitionQOSClass:(unsigned int)arg5;
 - (void)main;
 
 @end

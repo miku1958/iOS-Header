@@ -12,6 +12,8 @@
 
 @interface NTPBTodayResultOperationFetchInfo : PBCodable <NSCopying>
 {
+    CDStruct_95bda58d _userSegmentationSegmentSetIds;
+    CDStruct_5df41632 _userSegmentationTreatmentIds;
     long long _appConfigTreatmentIDInteger;
     long long _cellularRadioAccessTechnology;
     long long _onboardingVersion;
@@ -52,17 +54,30 @@
 @property (nonatomic) long long reachabilityStatus; // @synthesize reachabilityStatus=_reachabilityStatus;
 @property (strong, nonatomic) NSString *todaySourceIdentifier; // @synthesize todaySourceIdentifier=_todaySourceIdentifier;
 @property (strong, nonatomic) NSString *userID; // @synthesize userID=_userID;
+@property (readonly, nonatomic) int *userSegmentationSegmentSetIds;
+@property (readonly, nonatomic) unsigned long long userSegmentationSegmentSetIdsCount;
+@property (readonly, nonatomic) long long *userSegmentationTreatmentIds;
+@property (readonly, nonatomic) unsigned long long userSegmentationTreatmentIdsCount;
 @property (strong, nonatomic) NTPBTodayWidgetConfig *widgetConfig; // @synthesize widgetConfig=_widgetConfig;
 @property (nonatomic) BOOL wifiReachable; // @synthesize wifiReachable=_wifiReachable;
 
 - (void).cxx_destruct;
+- (void)addUserSegmentationSegmentSetIds:(int)arg1;
+- (void)addUserSegmentationTreatmentIds:(long long)arg1;
+- (void)clearUserSegmentationSegmentSetIds;
+- (void)clearUserSegmentationTreatmentIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setUserSegmentationSegmentSetIds:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setUserSegmentationTreatmentIds:(long long *)arg1 count:(unsigned long long)arg2;
+- (int)userSegmentationSegmentSetIdsAtIndex:(unsigned long long)arg1;
+- (long long)userSegmentationTreatmentIdsAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -23,6 +23,7 @@
 - (id)init;
 - (void)presentContinuityPaymentInterfaceWithRemotePaymentRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentInAppPaymentInterfaceWithPaymentRequest:(id)arg1 forHostApplicationName:(id)arg2 hostBundleIdentifier:(id)arg3 hostProcessIdentifier:(int)arg4 hostIdentifier:(id)arg5 orientation:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)presentSetupApplePayAlert:(id)arg1;
 - (void)showInAppInterfaceWithSkeletonPeerPaymentQuote:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

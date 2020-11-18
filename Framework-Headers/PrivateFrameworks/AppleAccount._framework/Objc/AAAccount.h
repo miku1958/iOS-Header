@@ -63,7 +63,6 @@
 - (id)initWithAccountIdentifier:(id)arg1;
 - (BOOL)isEnabledForDataclass:(id)arg1;
 - (BOOL)isProvisionedForDataclass:(id)arg1;
-- (void)lookupEmailAddresses:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (int)mobileMeAccountStatus;
 - (void)notifyUserOfQuotaDepletion;
 - (void)presentQuotaDepletionAlertForDataclass:(id)arg1;

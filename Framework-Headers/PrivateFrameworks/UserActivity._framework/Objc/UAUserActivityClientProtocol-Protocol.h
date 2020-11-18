@@ -18,6 +18,7 @@
 - (void)doInitializeWithClientVersion:(long long)arg1 clientInfo:(NSDictionary *)arg2 completionHandler:(void (^)(long long, NSDictionary *, NSError *))arg3;
 - (void)doMarkUserActivityAsDirty:(NSUUID *)arg1 forceImmediate:(BOOL)arg2 webpageURL:(NSURL *)arg3 expiration:(NSDate *)arg4 hasiCloudDocument:(BOOL)arg5 hasUnsynchronizediCloudDoc:(BOOL)arg6;
 - (void)doPinUserActivityInfo:(UAUserActivityInfo *)arg1 completionHandler:(void (^)(NSUUID *, NSError *))arg2;
+- (void)doRegisterAsProxyApplicationForPid:(int)arg1 options:(NSDictionary *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)doRemoveDynamicUserActivity:(NSString *)arg1 matching:(NSString *)arg2;
 - (void)doUpdateUserActivityInfo:(UAUserActivityInfo *)arg1 makeCurrent:(BOOL)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)doUpdateUserActivityWithUUID:(NSUUID *)arg1 setActive:(BOOL)arg2;

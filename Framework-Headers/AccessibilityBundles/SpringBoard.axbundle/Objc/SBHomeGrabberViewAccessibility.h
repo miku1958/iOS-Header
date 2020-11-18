@@ -10,12 +10,8 @@
 {
 }
 
-+ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_accessibilityLoadAccessibilityInformation;
-- (id)initWithFrame:(struct CGRect)arg1;
-- (void)setEdgeProtectEnabled:(BOOL)arg1;
 
 @end
 

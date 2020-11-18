@@ -73,7 +73,6 @@
 @property (readonly, nonatomic) BOOL isRecentlyAddedAlbum;
 @property (readonly, nonatomic) BOOL isStandInAlbum;
 @property (readonly, nonatomic) BOOL isUserLibraryAlbum;
-@property (readonly, nonatomic) BOOL isWallpaperAlbum;
 @property (strong, nonatomic) PLManagedAsset *keyAsset;
 @property (readonly, strong, nonatomic) NSNumber *kind;
 @property (readonly, nonatomic) int kindValue;
@@ -103,8 +102,10 @@
 + (id)allCloudSharedAlbumsInLibrary:(id)arg1;
 + (id)cloudOwnerDisplayNameWithFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 emailKey:(id)arg4 includingEmail:(BOOL)arg5 allowsEmail:(BOOL)arg6;
 + (id)cloudSharedAlbumWithGUID:(id)arg1 inLibrary:(id)arg2;
++ (id)cloudSharedAlbumWithObjectID:(id)arg1 managedObjectContext:(id)arg2;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
++ (id)lightweightReimportDirectoryNameWithGUID:(id)arg1 cloudPersonID:(id)arg2;
 + (id)localizedSharedByLabelWithFirstName:(id)arg1 lastName:(id)arg2 fullName:(id)arg3 emailKey:(id)arg4 isOwned:(BOOL)arg5 allowsEmail:(BOOL)arg6;
 - (id)_expectedKeyAssets:(id)arg1;
 - (id)activityViewController:(id)arg1 itemsForActivityType:(id)arg2;

@@ -12,11 +12,11 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)accessibilityElements;
 - (id)accessibilityIdentification;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (id)description;
 - (id)initWithImage:(id)arg1;
 - (BOOL)isAccessibilityElement;
 

@@ -7,52 +7,51 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBValueMetadata-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString;
 
-@interface _INPBValueMetadata : PBCodable <NSCopying>
+@interface _INPBValueMetadata : PBCodable <_INPBValueMetadata, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _requiredEntitlements;
+    struct {
+        unsigned int confirmed:1;
+    } _has;
+    BOOL _confirmed;
     NSString *_canonicalValue;
     NSString *_input;
     NSString *_source;
     NSString *_sourceAppBundleIdentifier;
     NSString *_uuid;
-    BOOL _confirmed;
-    struct {
-        unsigned int confirmed:1;
-    } _has;
 }
 
-@property (strong, nonatomic) NSString *canonicalValue; // @synthesize canonicalValue=_canonicalValue;
+@property (copy, nonatomic) NSString *canonicalValue; // @synthesize canonicalValue=_canonicalValue;
 @property (nonatomic) BOOL confirmed; // @synthesize confirmed=_confirmed;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCanonicalValue;
 @property (nonatomic) BOOL hasConfirmed;
 @property (readonly, nonatomic) BOOL hasInput;
 @property (readonly, nonatomic) BOOL hasSource;
 @property (readonly, nonatomic) BOOL hasSourceAppBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasUuid;
-@property (strong, nonatomic) NSString *input; // @synthesize input=_input;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *input; // @synthesize input=_input;
 @property (readonly, nonatomic) int *requiredEntitlements;
 @property (readonly, nonatomic) unsigned long long requiredEntitlementsCount;
-@property (strong, nonatomic) NSString *source; // @synthesize source=_source;
-@property (strong, nonatomic) NSString *sourceAppBundleIdentifier; // @synthesize sourceAppBundleIdentifier=_sourceAppBundleIdentifier;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
+@property (copy, nonatomic) NSString *source; // @synthesize source=_source;
+@property (copy, nonatomic) NSString *sourceAppBundleIdentifier; // @synthesize sourceAppBundleIdentifier=_sourceAppBundleIdentifier;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsRequiredEntitlements:(id)arg1;
 - (void)addRequiredEntitlement:(int)arg1;
 - (void)clearRequiredEntitlements;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (int)requiredEntitlementAtIndex:(unsigned long long)arg1;
 - (id)requiredEntitlementsAsString:(int)arg1;

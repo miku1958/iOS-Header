@@ -6,10 +6,12 @@
 
 #import <EventKitUI/EKEventDetailItem.h>
 
-@class EKEventDetailAttendeesCell, NSArray, NSMutableDictionary, UITableViewCell;
+#import <EventKitUI/EKEventDetailAttendeeCellDelegate-Protocol.h>
+
+@class EKEventDetailAttendeesCell, NSArray, NSMutableDictionary, NSString, UITableViewCell;
 
 __attribute__((visibility("hidden")))
-@interface EKEventAttendeesDetailItem : EKEventDetailItem
+@interface EKEventAttendeesDetailItem : EKEventDetailItem <EKEventDetailAttendeeCellDelegate>
 {
     NSMutableDictionary *_attendeesCells;
     UITableViewCell *_titleCell;
@@ -19,13 +21,18 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSArray *attendees; // @synthesize attendees=_attendees;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long status; // @synthesize status=_status;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (BOOL)configureWithCalendar:(id)arg1 preview:(BOOL)arg2;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
 - (id)detailViewControllerWithFrame:(struct CGRect)arg1 forSubitemAtIndex:(unsigned long long)arg2;
+- (void)eventDetailAttendeeCellWantsRefreshForHeightChange;
 - (void)eventViewController:(id)arg1 didSelectSubitem:(unsigned long long)arg2;
 - (BOOL)hasDetailViewControllerAtIndex:(unsigned long long)arg1;
 - (unsigned long long)numberOfSubitems;

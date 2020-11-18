@@ -13,8 +13,8 @@
 
 @property (readonly, copy, nonatomic) NSDate *defaultBookingDate;
 @property (readonly, nonatomic) unsigned long long defaultPartySize;
-@property (strong, nonatomic) NSNumber *maximumPartySize;
-@property (strong, nonatomic) NSNumber *minimumPartySize;
+@property (copy, nonatomic) NSNumber *maximumPartySize;
+@property (copy, nonatomic) NSNumber *minimumPartySize;
 @property (copy, nonatomic) INImage *providerImage;
 
 - (id)init;

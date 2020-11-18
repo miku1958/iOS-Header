@@ -27,6 +27,7 @@
     BOOL _overrideScreenOff;
     BOOL _scanCache;
     BOOL _targetUserSession;
+    BOOL _trackPeers;
     unsigned int _changeFlags;
     NSSet *_deviceFilter;
     CDUnknownBlockType _deviceFoundHandler;
@@ -68,6 +69,7 @@
 @property (nonatomic) BOOL targetUserSession; // @synthesize targetUserSession=_targetUserSession;
 @property (nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property (copy, nonatomic) CDUnknownBlockType timeoutHandler; // @synthesize timeoutHandler=_timeoutHandler;
+@property (nonatomic) BOOL trackPeers; // @synthesize trackPeers=_trackPeers;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

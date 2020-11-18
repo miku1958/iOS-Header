@@ -19,7 +19,7 @@
     id<CTCarrierSpaceClientDelegate> _delegate;
 }
 
-@property (nonatomic) id<CTCarrierSpaceClientDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CTCarrierSpaceClientDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -28,6 +28,7 @@
 - (id)_proxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)authenticationDidComplete:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)authenticationDidFail:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (void)fetchAppsInfo:(CDUnknownBlockType)arg1;
 - (void)fetchAppsInfo:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchDataPlanMetrics:(CDUnknownBlockType)arg1;

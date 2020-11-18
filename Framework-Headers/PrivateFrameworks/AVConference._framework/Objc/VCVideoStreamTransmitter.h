@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <AVConference/VCVideoTransmitterBase.h>
 
-#import <AVConference/VCVideoCaptureClient-Protocol.h>
-
-@class VCMediaStreamStats, VCVideoRule;
+@class NSObject, VCMediaStreamStats;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
-@interface VCVideoStreamTransmitter : NSObject <VCVideoCaptureClient>
+@interface VCVideoStreamTransmitter : VCVideoTransmitterBase
 {
     struct tagHANDLE *_videoRTP;
-    struct OpaqueVTCompressionSession *_compressionSession;
     NSObject<OS_dispatch_queue> *_transmitterQueue;
-    struct tagVCRealTimeThread _encoderThread;
+    struct tagVCRealTimeThread *_encoderThread;
     BOOL _terminateEncoderThread;
     NSObject<OS_dispatch_semaphore> *_bufferQueueSemaphore;
     struct opaqueCMSampleBuffer *_savedSampleBuffer;
@@ -29,23 +26,12 @@ __attribute__((visibility("hidden")))
     int _maxPacketCount;
     int *_packetSizes;
     int *_packetFlags;
-    unsigned int _timestamp;
-    CDStruct_1b6d18a9 _latestSampleBufferTimestamp;
     unsigned long long _lastKeyFrameSampleBufferSize;
-    double _lastKeyFrameSentTime;
     int _iSMBCount;
-    VCVideoRule *_videoRule;
-    unsigned int _encodingWidth;
-    unsigned int _encodingHeight;
-    unsigned int _captureWidth;
-    unsigned int _captureHeight;
-    unsigned int _targetFramerate;
-    unsigned int _txMaxBitrate;
-    unsigned int _txMinBitrate;
-    unsigned int _temporaryMaximumBitrate;
     unsigned int _keyFrameIntervalDuration;
     unsigned short _recommendedMTU;
     long long _videoCodecType;
+    int _videoSource;
     unsigned int _dwRefreshFrameCounter;
     struct _opaque_pthread_mutex_t _xMBs;
     int _shouldGenerateKeyFrame;
@@ -55,37 +41,37 @@ __attribute__((visibility("hidden")))
     unsigned char _lastCameraStatusBits;
     BOOL _enableCVO;
     unsigned long long _cvoExtensionID;
-    void *_controlInfoGenerator;
-    struct tagVCMemoryPool *_frameReferenceMemoryPool;
     struct opaqueRTCReporting *_reportingAgent;
+    int _reportingModuleID;
+    struct {
+        struct *encoderVTable;
+        int type;
+        struct tagHANDLE *encoderHandle;
+    } _encoder;
+    struct tagVCMemoryPool *_encodingArgPool;
 }
 
-@property CDStruct_1b6d18a9 lastFrameTime; // @synthesize lastFrameTime=_latestSampleBufferTimestamp;
-@property double lastKeyFrameSentTime; // @synthesize lastKeyFrameSentTime=_lastKeyFrameSentTime;
-@property unsigned int lastRTPTimestamp; // @synthesize lastRTPTimestamp=_timestamp;
-
-- (void)avConferencePreviewError:(id)arg1;
-- (id)clientCaptureRule;
 - (void)dealloc;
 - (void)encodeVideoFrame:(struct opaqueCMSampleBuffer *)arg1;
+- (BOOL)enqueueVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
 - (struct __CFDictionary *)forceKeyFrameProperties;
 - (void)gatherRealtimeStats:(struct __CFDictionary *)arg1;
-- (struct CGSize)getBestCaptureSizeForEncodingSize:(struct CGSize)arg1;
+- (void)generateKeyFrame;
+- (void)handleActiveConnectionChange:(id)arg1;
 - (void)initVideoCompressionWithWidth:(unsigned int)arg1 height:(unsigned int)arg2 bitrate:(unsigned int)arg3 keyFrameIntervalDuration:(unsigned int)arg4;
-- (id)initWithResolution:(long long)arg1 framerate:(unsigned long long)arg2 codecType:(long long)arg3 maxBitrate:(unsigned long long)arg4 minBitrate:(unsigned long long)arg5 keyFrameInterval:(unsigned long long)arg6 enableCVO:(BOOL)arg7 cvoExtensionID:(unsigned long long)arg8 recommendedMTU:(unsigned long long)arg9 rtpHandle:(struct tagHANDLE *)arg10 reportingAgent:(struct opaqueRTCReporting *)arg11;
+- (id)initWithConfig:(id)arg1;
 - (BOOL)isKeyFrame:(struct opaqueCMSampleBuffer *)arg1;
-- (void)limitCompressionSessionDataRate:(unsigned int)arg1;
-- (BOOL)onCaptureFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 droppedFrames:(int)arg3 cameraStatusBits:(unsigned char)arg4;
 - (BOOL)prependSPSPPS:(unsigned long long *)arg1 dataPointer:(char *)arg2;
 - (void)reportingVideoStreamEvent:(unsigned short)arg1;
-- (void)requestKeyFrameGeneration;
-- (void)sendFrame:(struct opaqueCMSampleBuffer *)arg1 cameraStatusBits:(unsigned char)arg2;
+- (void)setFECRatio:(double)arg1;
+- (void)setKeyFrameOnlyStreamID:(unsigned short)arg1;
+- (void)setStreamIDs:(unsigned short *)arg1 numOfStreamIDs:(unsigned char)arg2 repairedStreamIDs:(unsigned short *)arg3 numOfRepairedStreamIDs:(unsigned char)arg4;
 - (unsigned int)setTemporaryMaximumBitrate:(unsigned int)arg1;
-- (struct CGSize)sizeForVideoResolution:(long long)arg1;
 - (void)startVideo;
 - (void)stopVideo;
-- (void)thermalLevelDidChange:(int)arg1;
+- (void)transmitEncodedVideoFrame:(struct opaqueCMSampleBuffer *)arg1 cameraStatusBits:(unsigned char)arg2;
 - (int)transmitEncodedVideoFrame:(char *)arg1 size:(unsigned long long)arg2 timestamp:(unsigned int)arg3 hostTime:(double)arg4 cameraStatusBits:(unsigned char)arg5;
+- (int)transmitFrameInGroups:(char *)arg1 numOfPackets:(int)arg2 timestamp:(unsigned int)arg3 hostTime:(double)arg4 cameraStatusBits:(unsigned char)arg5;
 - (int)transmitVideoPackets:(const char *)arg1 packetSizes:(int *)arg2 startPacket:(int)arg3 packetCount:(int)arg4 lastGroup:(int)arg5 timestamp:(unsigned int)arg6 hostTime:(double)arg7 cameraStatusBits:(unsigned char)arg8 bytesSent:(int *)arg9;
 
 @end

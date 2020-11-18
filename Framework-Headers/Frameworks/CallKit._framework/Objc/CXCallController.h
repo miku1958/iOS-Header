@@ -6,19 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CXCallObserver, NSString;
+@class CXCallObserver;
 @protocol OS_dispatch_queue;
 
 @interface CXCallController : NSObject
 {
     CXCallObserver *_callObserver;
     NSObject<OS_dispatch_queue> *_completionQueue;
-    NSString *_extensionIdentifier;
 }
 
 @property (strong, nonatomic) CXCallObserver *callObserver; // @synthesize callObserver=_callObserver;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *completionQueue; // @synthesize completionQueue=_completionQueue;
-@property (copy, nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 
 - (void).cxx_destruct;
 - (void)_requestTransaction:(id)arg1 completion:(CDUnknownBlockType)arg2;

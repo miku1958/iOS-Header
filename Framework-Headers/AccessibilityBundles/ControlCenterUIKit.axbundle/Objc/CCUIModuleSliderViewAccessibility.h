@@ -20,6 +20,7 @@
 - (id)accessibilityCustomActions;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;
+- (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;

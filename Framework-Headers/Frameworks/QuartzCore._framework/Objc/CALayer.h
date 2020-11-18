@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/CAMediaTiming-Protocol.h>
 #import <QuartzCore/CAPropertyInfo-Protocol.h>
@@ -20,7 +20,6 @@
 
 @property BOOL acceleratesDrawing;
 @property (copy) NSDictionary *actions;
-@property BOOL allowsContentsRectCornerMasking;
 @property BOOL allowsDisplayCompositing;
 @property BOOL allowsEdgeAntialiasing;
 @property BOOL allowsGroupBlending;
@@ -74,6 +73,7 @@
 @property (getter=isGeometryFlipped) BOOL geometryFlipped;
 @property (getter=isHidden) BOOL hidden;
 @property BOOL hitTestsAsOpaque;
+@property BOOL hitTestsContentsAlphaChannel;
 @property BOOL inheritsTiming;
 @property BOOL invertsShadow;
 @property BOOL literalContentsCenter;
@@ -149,6 +149,7 @@
 - (void)_didCommitLayer:(struct Transaction *)arg1;
 - (void)_display;
 - (id)_initWithReference:(id)arg1;
+- (int)_overrideImageFormat;
 - (struct CGSize)_preferredSize;
 - (void)_prepareContext:(struct CGContext *)arg1;
 - (void)_renderBackgroundInContext:(struct CGContext *)arg1;
@@ -223,6 +224,7 @@
 - (BOOL)opaque;
 - (struct CGSize)preferredFrameSize;
 - (id)presentationLayer;
+- (id)recursiveDescription;
 - (void *)regionBeingDrawn;
 - (oneway void)release;
 - (void)reloadValueForKeyPath:(id)arg1;

@@ -34,7 +34,6 @@ __attribute__((visibility("hidden")))
 - (void)configureSectionHeaderView:(id)arg1 forVisualSection:(long long)arg2;
 - (id)diagnosticsProviderForVisualSection:(long long)arg1;
 - (void)didFinishZoomLevelTransition;
-- (id)displayTitle;
 - (void)getPhotosDataSource:(id *)arg1 displayTitleInfo:(id *)arg2 forDetailsForVisualSection:(long long)arg3;
 - (void)headerView:(id)arg1 actionButtonPressed:(id)arg2;
 - (struct CGSize)imageRequestItemSize;

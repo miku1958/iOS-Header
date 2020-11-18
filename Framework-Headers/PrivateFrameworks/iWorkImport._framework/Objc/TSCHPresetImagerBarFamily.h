@@ -11,7 +11,11 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (void)addRoundedCornerClipPathToContext:(struct CGContext *)arg1 forPreset:(id)arg2 frame:(struct CGRect)arg3 isVertical:(BOOL)arg4;
+- (BOOL)hasRoundedCornersForPreset:(id)arg1;
 - (void)p_drawBarInContext:(struct CGContext *)arg1 frame:(struct CGRect)arg2 stroke:(id)arg3 fill:(id)arg4;
+- (void)renderInRoundedCornerClippedContext:(struct CGContext *)arg1 forPreset:(id)arg2 stroke:(id)arg3 barRect:(struct CGRect)arg4 clipRect:(struct CGRect)arg5 isVertical:(BOOL)arg6 renderBlock:(CDUnknownBlockType)arg7;
+- (struct CGPath *)roundedCornerClippingPathForPreset:(id)arg1 frame:(struct CGRect)arg2 isVertical:(BOOL)arg3;
 
 @end
 

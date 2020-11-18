@@ -22,6 +22,7 @@
 - (void)_interruptWithReason:(long long)arg1;
 - (void)dealloc;
 - (BOOL)disarm;
+- (id)init;
 - (id)initWithDeallocHandler:(CDUnknownBlockType)arg1;
 - (id)initWithTimeout:(double)arg1;
 - (id)initWithTimeout:(double)arg1 interruptionHandler:(CDUnknownBlockType)arg2;

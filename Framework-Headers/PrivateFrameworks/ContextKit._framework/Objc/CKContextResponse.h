@@ -17,13 +17,17 @@
     NSString *_uuid;
     NSError *_error;
     NSArray *_results;
+    NSArray *_level1Topics;
+    NSArray *_level2Topics;
     NSString *_debug;
-    long long _requestType;
+    unsigned long long _requestType;
 }
 
 @property (strong, nonatomic) NSString *debug; // @synthesize debug=_debug;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
-@property (nonatomic) long long requestType; // @synthesize requestType=_requestType;
+@property (strong, nonatomic) NSArray *level1Topics; // @synthesize level1Topics=_level1Topics;
+@property (strong, nonatomic) NSArray *level2Topics; // @synthesize level2Topics=_level2Topics;
+@property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (strong, nonatomic) NSArray *results; // @synthesize results=_results;
 @property (nonatomic) BOOL resultsNeedFiltering; // @synthesize resultsNeedFiltering=_resultsNeedFiltering;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
@@ -37,10 +41,10 @@
 - (void)discard;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initPlaceholderWithUUID:(id)arg1 requestType:(long long)arg2;
+- (id)initPlaceholderWithUUID:(id)arg1 requestType:(unsigned long long)arg2;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithError:(id)arg1 requestType:(long long)arg2;
-- (id)initWithResults:(id)arg1 requestType:(long long)arg2;
+- (id)initWithError:(id)arg1 requestType:(unsigned long long)arg2;
+- (id)initWithResults:(id)arg1 requestType:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPlaceholder;
 - (id)resultByQuery:(id)arg1;

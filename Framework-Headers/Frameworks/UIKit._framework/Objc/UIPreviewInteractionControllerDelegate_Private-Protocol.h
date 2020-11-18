@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPreviewInteractionControllerDelegate-Protocol.h>
+#import <UIKitCore/UIPreviewInteractionControllerDelegate-Protocol.h>
 
 @class UIPreviewInteractionController, UIView, UIViewController;
 @protocol UIForceTransitioningDelegate;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewDropItem-Protocol.h>
+#import <UIKitCore/UICollectionViewDropItem-Protocol.h>
 
 @protocol _UICollectionViewDropItem <UICollectionViewDropItem>
 @end

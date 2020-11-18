@@ -6,10 +6,16 @@
 
 #import <CoreFoundation/__NSCFString.h>
 
+#import <CoreFoundation/NSRedactedDescription-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface __NSCFConstantString : __NSCFString
+@interface __NSCFConstantString : __NSCFString <NSRedactedDescription>
 {
 }
+
+@property (readonly, copy) NSString *redactedDescription;
 
 - (id)autorelease;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -11,7 +11,7 @@
 #import <PhotosUICore/PXMutablePhotosDetailsContext-Protocol.h>
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 
-@class NSDictionary, NSString, PHFetchResult, PXDisplayTitleInfo, PXPhotosDataSource;
+@class NSDictionary, NSString, PHFetchResult, PXDisplayTitleInfo, PXPhotosDataSource, PXPhotosDetailsViewModel;
 
 @interface PXPhotosDetailsContext : PXObservable <PXMutablePhotosDetailsContext, PXPhotosDataSourceChangeObserver, PXChangeObserver, PXHierarchicalContext>
 {
@@ -22,6 +22,7 @@
     PXPhotosDetailsContext *_parentContext;
     PHFetchResult *_keyAssetsFetchResult;
     unsigned long long _viewSourceOrigin;
+    PXPhotosDetailsViewModel *_viewModel;
     PHFetchResult *_assetCollections;
     NSDictionary *_assetsByCollection;
     PHFetchResult *_people;
@@ -47,9 +48,11 @@
 @property (readonly, nonatomic) BOOL shouldUseKeyFace; // @synthesize shouldUseKeyFace=_shouldUseKeyFace;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;
+@property (readonly, nonatomic) PXPhotosDetailsViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property (readonly, nonatomic) unsigned long long viewSourceOrigin; // @synthesize viewSourceOrigin=_viewSourceOrigin;
 
 + (id)photosDetailsContextForMemory:(id)arg1;
++ (id)photosDetailsContextForSection:(long long)arg1 inPhotosDataSource:(id)arg2 viewSourceOrigin:(unsigned long long)arg3;
 - (void).cxx_destruct;
 - (void)_updatePropertiesDerivedFromDisplayTitleInfo;
 - (void)_updatePropertiesDerivedFromPhotosDataSource;
@@ -67,6 +70,7 @@
 - (void)setPeople:(id)arg1;
 - (void)setShouldShowMovieHeader:(BOOL)arg1;
 - (void)setTitleFontName:(id)arg1;
+- (void)setViewModel:(id)arg1;
 - (void)setViewSourceOrigin:(unsigned long long)arg1;
 
 @end

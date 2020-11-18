@@ -14,5 +14,6 @@
 - (void)dismissMediaControlsPanelViewController:(MediaControlsPanelViewController *)arg1 completion:(void (^)(void))arg2;
 - (void)mediaControlsPanelViewController:(MediaControlsPanelViewController *)arg1 didReceiveInteractionEvent:(id)arg2;
 - (void)mediaControlsPanelViewController:(MediaControlsPanelViewController *)arg1 didToggleRoutingPicker:(BOOL)arg2;
+- (void)mediaControlsPanelViewController:(MediaControlsPanelViewController *)arg1 willToggleRoutingPicker:(BOOL)arg2;
 @end
 

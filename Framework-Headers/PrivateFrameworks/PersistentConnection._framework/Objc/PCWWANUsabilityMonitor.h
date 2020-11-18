@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <PersistentConnection/CoreTelephonyClientDataDelegate-Protocol.h>
 #import <PersistentConnection/PCInterfaceUsabilityMonitorDelegate-Protocol.h>
 #import <PersistentConnection/PCInterfaceUsabilityMonitorProtocol-Protocol.h>
 
-@class CUTWeakReference, NSString, PCInterfaceUsabilityMonitor;
+@class CUTWeakReference, CoreTelephonyClient, NSString, PCInterfaceUsabilityMonitor;
 @protocol OS_dispatch_queue, PCInterfaceUsabilityMonitorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface PCWWANUsabilityMonitor : NSObject <PCInterfaceUsabilityMonitorProtocol, PCInterfaceUsabilityMonitorDelegate>
+@interface PCWWANUsabilityMonitor : NSObject <CoreTelephonyClientDataDelegate, PCInterfaceUsabilityMonitorProtocol, PCInterfaceUsabilityMonitorDelegate>
 {
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_dispatch_queue> *_ivarQueue;
@@ -26,13 +27,14 @@ __attribute__((visibility("hidden")))
     double _trackedTimeInterval;
     NSString *_interfaceName;
     PCInterfaceUsabilityMonitor *_interfaceMonitor;
-    struct __CFString *_currentRAT;
+    int _currentRAT;
     int _powerlogCDRXToken;
+    CoreTelephonyClient *_ctClient;
     int _wwanContextID;
     NSObject<OS_dispatch_queue> *_ctServerQueue;
 }
 
-@property (readonly, nonatomic) struct __CFString *currentRAT; // @synthesize currentRAT=_currentRAT;
+@property (readonly, nonatomic) int currentRAT; // @synthesize currentRAT=_currentRAT;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<PCInterfaceUsabilityMonitorDelegate> delegate;
 @property (readonly, copy) NSString *description;
@@ -48,12 +50,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isRadioHot;
 @property (readonly, nonatomic) int linkQuality;
 @property (readonly, strong, nonatomic) NSString *linkQualityString;
+@property (readonly, nonatomic) NSString *networkCode;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct __CFString *wwanInterfaceName;
 
 - (void).cxx_destruct;
-- (void)_adjustInterfaceNameForWWANContextID:(int)arg1;
+- (void)_adjustInterfaceNameForWWANContextID:(int)arg1 interfaceName:(id)arg2;
 - (void)_callDelegateOnIvarQueueWithBlock:(CDUnknownBlockType)arg1;
+- (id)_dataPreferredSubcriptionContext;
 - (void)_forwardConfigurationOnIvarQueue;
 - (void)_setupWWANMonitor;
 - (void)dealloc;

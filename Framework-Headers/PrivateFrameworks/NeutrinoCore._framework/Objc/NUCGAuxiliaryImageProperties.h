@@ -7,15 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <NeutrinoCore/NUDepthProperties-Protocol.h>
+#import <NeutrinoCore/NUPortraitEffectsMatteProperties-Protocol.h>
 
-@class AVDepthData, NSDictionary, NSString;
+@class AVDepthData, AVPortraitEffectsMatte, NSDictionary, NSString;
 
-@interface NUCGAuxiliaryImageProperties : NSObject <NUDepthProperties>
+@interface NUCGAuxiliaryImageProperties : NSObject <NUDepthProperties, NUPortraitEffectsMatteProperties>
 {
     id _imageSource;
     NSString *_auxiliaryType;
     AVDepthData *_depthData;
     NSDictionary *_auxiliaryData;
+    AVPortraitEffectsMatte *_portraitEffectsMatte;
     CDStruct_d58201db _size;
 }
 
@@ -26,6 +28,7 @@
 @property (readonly) NSString *depthType;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong) AVPortraitEffectsMatte *portraitEffectsMatte; // @synthesize portraitEffectsMatte=_portraitEffectsMatte;
 @property CDStruct_912cb5d2 size; // @synthesize size=_size;
 @property (readonly) Class superclass;
 
@@ -33,6 +36,7 @@
 - (id)auxiliaryData:(out id *)arg1;
 - (id)depthData:(out id *)arg1;
 - (id)initWitProperties:(id)arg1 imageSource:(struct CGImageSource *)arg2;
+- (id)portraitEffectsMatte:(out id *)arg1;
 
 @end
 

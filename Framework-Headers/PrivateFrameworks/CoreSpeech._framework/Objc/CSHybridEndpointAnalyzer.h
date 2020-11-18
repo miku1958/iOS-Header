@@ -115,6 +115,7 @@
 - (void)CSAssetManagerDidDownloadNewAsset:(id)arg1;
 - (void)CSLanguageCodeUpdateMonitor:(id)arg1 didReceiveLanguageCodeChanged:(id)arg2;
 - (id)_getCSHybridEndpointerConfigForAsset:(id)arg1;
+- (void)_readClientLagParametersFromHEPAsset:(id)arg1;
 - (void)_updateAssetWithCurrentLanguage;
 - (void)_updateAssetWithLanguage:(id)arg1;
 - (void)clientSilenceFeaturesAvailable:(id)arg1;

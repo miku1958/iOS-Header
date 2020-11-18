@@ -10,6 +10,7 @@
 
 @protocol NTKComplicationDisplay <NSObject>
 
+@property (nonatomic) BOOL canUseCurvedText;
 @property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (nonatomic) BOOL shouldUseTemplateColors;

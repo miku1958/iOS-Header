@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<NSArray<UITextSuggestion *>> _suggestions;
     BOOL _accessoryViewShouldNotShow;
     BOOL _forceSecureTextEntry;
+    BOOL _requiresStrongPasswordAssistance;
 }
 
 @property (copy, nonatomic) NSString *accessoryViewCustomButtonTitle;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) id<_WKFocusedElementInfo> focusedElementInfo;
 @property (nonatomic) BOOL forceSecureTextEntry;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL requiresStrongPasswordAssistance;
 @property (copy, nonatomic) NSArray *suggestions;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSObject<NSSecureCoding> *userObject;
@@ -37,8 +39,9 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)initWithContentView:(id)arg1 focusedElementInfo:(id)arg2;
+- (id)initWithContentView:(id)arg1 focusedElementInfo:(id)arg2 requiresStrongPasswordAssistance:(BOOL)arg3;
 - (void)invalidate;
+- (void)reloadFocusedElementContextView;
 
 @end
 

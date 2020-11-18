@@ -8,12 +8,11 @@
 
 #import <Photos/NSCopying-Protocol.h>
 #import <Photos/NSFastEnumeration-Protocol.h>
-#import <Photos/PHObjectIDBackedFetchResult-Protocol.h>
 
 @class NSArray, NSFetchRequest, NSNumber, NSSet, NSString, PHBatchFetchingArray, PHQuery, _PHFetchRequestWrapper;
 @protocol OS_dispatch_queue;
 
-@interface PHFetchResult : NSObject <PHObjectIDBackedFetchResult, NSCopying, NSFastEnumeration>
+@interface PHFetchResult : NSObject <NSCopying, NSFastEnumeration>
 {
     PHBatchFetchingArray *_fetchedObjects;
     NSArray *_seedOIDs;
@@ -49,12 +48,14 @@
 + (id)fetchObjectCount:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)fetchObjectIDs:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)fetchObjectIDsForCombinableFetchResults:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)filteredOIDsFrom:(id)arg1 usingEntityName:(id)arg2 withPhotoLibrary:(id)arg3;
 + (id)pl_fetchResultContainingAssetContainer:(id)arg1;
 + (id)pl_fetchResultContainingAssetContainer:(id)arg1 includeTrash:(BOOL)arg2;
 + (id)pl_fetchResultForAssetContainerList:(id)arg1;
 + (id)pl_fetchResultForStandInAssetCollection:(id)arg1;
 + (id)pl_filterPredicateForAssetContainer:(id)arg1;
 - (void).cxx_destruct;
+- (unsigned long long)cachedCountOfAssetsWithMediaType:(long long)arg1;
 - (id)changeHandlingKey;
 - (id)changeHandlingValueUsingSeedOids:(id)arg1 withChange:(id)arg2 usingManagedObjectContext:(id)arg3;
 - (long long)collectionFetchType;
@@ -77,11 +78,13 @@
 - (id)init;
 - (id)initWithQuery:(id)arg1;
 - (id)initWithQuery:(id)arg1 oids:(id)arg2 registerIfNeeded:(BOOL)arg3 usingManagedObjectContext:(id)arg4;
+- (BOOL)isFullyBackedByObjectIDs;
 - (BOOL)isRegisteredForChangeNotificationDeltas;
 - (id)localIdentifiers;
 - (id)objectAtIndex:(unsigned long long)arg1;
 - (id)objectAtIndexedSubscript:(unsigned long long)arg1;
 - (id)objectIDAtIndex:(unsigned long long)arg1;
+- (id)objectIDs;
 - (id)objectsAtIndexes:(id)arg1;
 - (id)photoLibrary;
 - (id)pl_photoLibraryObject;

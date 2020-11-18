@@ -6,7 +6,8 @@
 
 #import <SpotlightUI/NSObject-Protocol.h>
 
-@class NSString, SFResultSection;
+@class NSString, SFResultSection, SFSearchResult, UIViewController;
+@protocol SearchUIResultShortLook;
 
 @protocol SearchUIResultViewDelegate <NSObject>
 
@@ -17,9 +18,13 @@
 - (void)clearResultsFromSection:(SFResultSection *)arg1;
 - (void)didBeginScrollingResults;
 - (void)didChangeExpansionStateForSection:(SFResultSection *)arg1 expanded:(BOOL)arg2;
+- (void)didScrollPastBottomOfContent;
 - (void)didTapInEmptyRegion;
 - (void)didUpdateContentScrolledOffScreenStatus:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)getUserActivityForResult:(SFSearchResult *)arg1 completionHandler:(void (^)(NSUserActivity *))arg2;
+- (BOOL)hasShortLookViewControllerForResult:(SFSearchResult *)arg1;
 - (BOOL)sectionIsClearable:(SFResultSection *)arg1;
 - (BOOL)sectionShouldBeExpanded:(SFResultSection *)arg1;
+- (UIViewController<SearchUIResultShortLook> *)shortLookViewControllerForResult:(SFSearchResult *)arg1;
 @end
 

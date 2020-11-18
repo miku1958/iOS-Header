@@ -12,10 +12,6 @@
 
 @property (strong, nonatomic) _CPCardSectionForFeedback *cardSection;
 @property (copy, nonatomic) NSString *cardSectionId;
-@property (readonly, nonatomic) BOOL hasCardSection;
-@property (readonly, nonatomic) BOOL hasCardSectionId;
-@property (readonly, nonatomic) BOOL hasResultId;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *resultId;
 @property (nonatomic) unsigned long long timestamp;

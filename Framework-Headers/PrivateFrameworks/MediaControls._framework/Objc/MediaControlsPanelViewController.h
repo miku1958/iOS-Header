@@ -10,12 +10,13 @@
 #import <MediaControls/MPMediaControlsViewControllerDelegate-Protocol.h>
 #import <MediaControls/MediaControlsCollectionItemViewController-Protocol.h>
 #import <MediaControls/MediaControlsEndpointControllerDelegate-Protocol.h>
+#import <MediaControls/MediaControlsMasterVolumeSliderDelegate-Protocol.h>
 #import <MediaControls/MediaControlsRatingActionSheet-Protocol.h>
 
-@class MPAVRoutingViewController, MPArtworkCatalog, MPMediaControlsViewController, MPVolumeGroupSliderCoordinator, MediaControlsEndpointController, MediaControlsHeaderView, MediaControlsParentContainerView, MediaControlsRoutingCornerView, MediaControlsVolumeContainerView, NSMutableArray, NSString, UIView;
+@class MPAVRoutingViewController, MPArtworkCatalog, MPMediaControlsViewController, MPVolumeGroupSliderCoordinator, MTVibrantStylingProvider, MediaControlsEndpointController, MediaControlsHeaderView, MediaControlsParentContainerView, MediaControlsRoutingCornerView, MediaControlsVolumeContainerView, NSMutableArray, NSString, UIView;
 @protocol MediaControlsPanelViewControllerDelegate;
 
-@interface MediaControlsPanelViewController : UIViewController <MediaControlsEndpointControllerDelegate, MediaControlsRatingActionSheet, MPAVRoutingViewControllerThemeDelegate, MPMediaControlsViewControllerDelegate, MediaControlsCollectionItemViewController>
+@interface MediaControlsPanelViewController : UIViewController <MediaControlsEndpointControllerDelegate, MediaControlsRatingActionSheet, MPAVRoutingViewControllerThemeDelegate, MPMediaControlsViewControllerDelegate, MediaControlsMasterVolumeSliderDelegate, MediaControlsCollectionItemViewController>
 {
     struct CGSize _lastKnownSize;
     BOOL _selected;
@@ -27,6 +28,7 @@
     UIView *_backgroundView;
     MPAVRoutingViewController *_routingViewController;
     id<MediaControlsPanelViewControllerDelegate> _delegate;
+    MTVibrantStylingProvider *_vibrantStylingProvider;
     long long _style;
     MediaControlsHeaderView *_headerView;
     MediaControlsRoutingCornerView *_routingCornerView;
@@ -73,6 +75,7 @@
 @property (nonatomic) unsigned long long supportedModes; // @synthesize supportedModes=_supportedModes;
 @property (strong, nonatomic) UIView *topDividerView; // @synthesize topDividerView=_topDividerView;
 @property (nonatomic, getter=isTransitioning) BOOL transitioning; // @synthesize transitioning=_transitioning;
+@property (strong, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider; // @synthesize vibrantStylingProvider=_vibrantStylingProvider;
 @property (strong, nonatomic) MediaControlsVolumeContainerView *volumeContainerView; // @synthesize volumeContainerView=_volumeContainerView;
 
 + (id)panelViewControllerForCoverSheet;
@@ -106,6 +109,9 @@
 - (void)routingViewController:(id)arg1 willDisplayCell:(id)arg2;
 - (void)setSelectedMode:(long long)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
+- (BOOL)shouldEnableSyncingForSlider:(id)arg1;
+- (BOOL)slider:(id)arg1 shouldCancelSnapWithTouch:(id)arg2;
+- (BOOL)slider:(id)arg1 syncStateWillChangeFromState:(long long)arg2 toState:(long long)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

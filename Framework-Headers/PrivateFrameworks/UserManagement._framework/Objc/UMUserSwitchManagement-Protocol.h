@@ -6,10 +6,13 @@
 
 #import <UserManagement/NSObject-Protocol.h>
 
-@class NSData, NSError, NSString, UMUser, UMUserSwitchContext;
+@class NSData, NSDictionary, NSError, NSString, UMUser, UMUserSwitchContext;
 @protocol UMUserSwitchStakeholder, UMUserSyncStakeholder;
 
 @protocol UMUserSwitchManagement <NSObject>
+- (void)directSwitchToUser:(UMUser *)arg1 passcodeData:(NSData *)arg2 context:(UMUserSwitchContext *)arg3 preferences:(NSDictionary *)arg4 completionHandler:(void (^)(NSError *))arg5;
+- (void)loginUICheckInWithCompletionHandler:(void (^)(NSError *))arg1;
+- (void)logoutToLoginSessionWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)registerUserSwitchStakeHolder:(id<UMUserSwitchStakeholder>)arg1;
 - (void)registerUserSwitchStakeHolder:(id<UMUserSwitchStakeholder>)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)registerUserSyncStakeholder:(id<UMUserSyncStakeholder>)arg1 withMachServiceName:(NSString *)arg2;

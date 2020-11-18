@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIContentSizeCategoryPreference.h>
+#import <UIKitCore/UIContentSizeCategoryPreference.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIContentSizeCategoryPreferenceSystem : UIContentSizeCategoryPreference

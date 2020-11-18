@@ -12,6 +12,7 @@
 {
     NSString *_title;
     NSString *_externalID;
+    BOOL _predictable;
 }
 
 - (void).cxx_destruct;
@@ -21,6 +22,7 @@
 - (id)initWithRemindersList:(id)arg1;
 - (id)initWithRemindersList:(id)arg1 forceLocal:(BOOL)arg2;
 - (id)remindersListFromStore:(id)arg1;
+- (void)updateActivity:(id)arg1;
 
 @end
 

@@ -46,6 +46,8 @@
 - (id)description;
 - (void)getPlaybackContextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getRepresentativeMetadataWithCompletion:(CDUnknownBlockType)arg1;
+- (id)init;
 
 @end
 

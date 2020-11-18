@@ -7,34 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBGenericIntentResponse-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBIntentMetadata;
 
-@interface _INPBGenericIntentResponse : PBCodable <NSCopying>
+@interface _INPBGenericIntentResponse : PBCodable <_INPBGenericIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBIntentMetadata *_metadata;
-    NSMutableArray *_properties;
+    NSArray *_properties;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *metadata; // @synthesize metadata=_metadata;
-@property (strong, nonatomic) NSMutableArray *properties; // @synthesize properties=_properties;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSArray *properties; // @synthesize properties=_properties;
+@property (readonly, nonatomic) unsigned long long propertiesCount;
+@property (readonly) Class superclass;
 
-+ (id)options;
 + (Class)propertiesType;
 - (void).cxx_destruct;
 - (void)addProperties:(id)arg1;
 - (void)clearProperties;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (id)propertiesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)propertiesCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

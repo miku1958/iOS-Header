@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSString;
 
-@interface DMFScheduleOSUpdateRequest : CATTaskRequest
+@interface DMFScheduleOSUpdateRequest : DMFTaskRequest
 {
     BOOL _useDelay;
     unsigned long long _action;
@@ -23,9 +23,13 @@
 
 + (BOOL)_action:(unsigned long long *)arg1 fromString:(id)arg2;
 + (id)_descriptionForAction:(unsigned long long)arg1;
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

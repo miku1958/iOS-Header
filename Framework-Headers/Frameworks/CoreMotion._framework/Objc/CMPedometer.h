@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) CMPedometerProxy *pedometerProxy; // @synthesize pedometerProxy=_pedometerProxy;
 
 + (long long)authorizationStatus;
++ (BOOL)isAllDayElevationAvailable;
 + (BOOL)isCadenceAvailable;
 + (BOOL)isDistanceAvailable;
 + (BOOL)isFloorCountingAvailable;
@@ -24,6 +25,7 @@
 + (BOOL)isStepCountingAvailable;
 - (id)_pedometerDataWithRecordID:(long long)arg1;
 - (void)_queryPedometerDataSinceDataRecord:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)_startPedometerUpdatesSinceDataRecord:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)queryPedometerDataFromDate:(id)arg1 toDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;

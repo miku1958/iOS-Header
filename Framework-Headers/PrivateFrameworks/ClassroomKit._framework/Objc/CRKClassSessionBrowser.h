@@ -10,18 +10,19 @@
 #import <ClassroomKit/CRKClassSessionBeaconBrowserDelegate-Protocol.h>
 #import <ClassroomKit/CRKSessionDelegate-Protocol.h>
 
-@class CATNetworkReachability, CRKClassSessionBeaconBrowser, NSMutableArray, NSMutableDictionary, NSSet, NSString;
+@class CATNetworkReachability, CRKClassSessionBeaconBrowser, NSMapTable, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 @protocol CRKClassSessionBrowserDelegate, CRKInvitationSessionBrowserDelegate;
 
 @interface CRKClassSessionBrowser : NSObject <CRKSessionDelegate, CRKClassSessionBeaconBrowserDelegate, CATNetworkReachabilityDelegate>
 {
     NSMutableDictionary *mClassSessionsByIdentifier;
     NSMutableArray *mInRangeClassSessions;
-    NSMutableDictionary *mInvitationSessionsByIPAddress;
+    NSMutableDictionary *mInvitationSessionsByEndpoint;
     CRKClassSessionBeaconBrowser *mBeaconBrowser;
     CATNetworkReachability *mNetworkReachability;
     NSMutableDictionary *mConnectWithoutBeaconAssertionCountBySessionIdentifier;
-    NSMutableDictionary *mConnectWithoutBeaconAssertionCountByInviteSessionIP;
+    NSMutableDictionary *mConnectWithoutBeaconAssertionCountByInviteSessionEndpoint;
+    NSMapTable *mWhitelistedEndpointsBySessionClass;
     BOOL _allowInvitationSessions;
     BOOL _allowUnenrolledSessions;
     id<CRKClassSessionBrowserDelegate> _delegate;
@@ -43,12 +44,13 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)acquireConnectWithoutBeaconAssertionForInvitationSessionWithIPAddress:(id)arg1;
+- (void)acquireConnectWithoutBeaconAssertionForInvitationSessionWithEndpoint:(id)arg1;
 - (void)acquireConnectWithoutBeaconAssertionForSessionIdentifier:(id)arg1;
 - (void)addInRangeClassSession:(id)arg1;
+- (void)assertPort:(unsigned short)arg1 canBeWhitelistedForHost:(id)arg2 sessionClass:(Class)arg3;
 - (void)beaconBrowser:(id)arg1 didFailWithError:(id)arg2;
 - (void)beaconBrowser:(id)arg1 didFindBeaconForClassSession:(id)arg2 flags:(unsigned short)arg3;
-- (void)beaconBrowser:(id)arg1 didFindBeaconForInvitationSessionWithIPAddress:(id)arg2;
+- (void)beaconBrowser:(id)arg1 didFindBeaconForInvitationSessionWithEndpoint:(id)arg2;
 - (id)browserStateDictionary;
 - (void)classSessionInvalidated:(id)arg1;
 - (void)classSessionRejected:(id)arg1;
@@ -68,13 +70,15 @@
 - (id)delegateNeedsClientIdentityForGroup:(id)arg1;
 - (id)delegateNeedsClientIdentityInvitationSession;
 - (id)delegateNeedsTrustedAnchorCertificatesForGroup:(id)arg1;
+- (void)dewhitelistEndpoint:(id)arg1 forSessionClass:(Class)arg2;
 - (BOOL)hasConnectionToClassWithIdentifier:(id)arg1;
 - (id)init;
-- (void)invitationSessionWithIPAddressInvalidated:(id)arg1;
+- (void)invitationSessionWithEndpointInvalidated:(id)arg1;
+- (BOOL)isEndpointWhitelisted:(id)arg1 forSessionClass:(Class)arg2;
 - (void)lostConnectionToClassSession:(id)arg1;
-- (void)lostConnectionToInvitationSessionWithIPAddress:(id)arg1;
+- (void)lostConnectionToInvitationSessionWithEndpoint:(id)arg1;
 - (void)reachabilityDidChange:(id)arg1;
-- (void)releaseConnectWithoutBeaconAssertionForInvitationSessionWithIPAddress:(id)arg1;
+- (void)releaseConnectWithoutBeaconAssertionForInvitationSessionWithEndpoint:(id)arg1;
 - (void)releaseConnectWithoutBeaconAssertionForSessionIdentifier:(id)arg1;
 - (void)removeInRangeClassSession:(id)arg1;
 - (void)session:(id)arg1 didConnectWithTransport:(id)arg2;
@@ -84,12 +88,14 @@
 - (void)sessionDidDisconnect:(id)arg1;
 - (void)sessionDidInvalidate:(id)arg1;
 - (void)sessionDidLoseBeacon:(id)arg1;
+- (id)sessionsForClass:(Class)arg1;
 - (void)startBrowsing;
 - (id)stateDictionariesByClassSessionIdentifierString;
 - (void)stopBrowsing;
 - (id)trustedAnchorCertificatesForSession:(id)arg1;
 - (void)updateConnectedSessions;
 - (void)updateRequiresBeaconFlagForSession:(id)arg1;
+- (void)whitelistEndpointAndInvalidateNonWhitelistedSessionsOnSameHost:(id)arg1 forSessionClass:(Class)arg2;
 
 @end
 

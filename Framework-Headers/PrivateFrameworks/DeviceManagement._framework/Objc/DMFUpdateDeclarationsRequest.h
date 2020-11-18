@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSArray, NSString;
 
-@interface DMFUpdateDeclarationsRequest : CATTaskRequest
+@interface DMFUpdateDeclarationsRequest : DMFTaskRequest
 {
     NSString *_organizationIdentifier;
     NSString *_syncToken;
@@ -21,6 +21,9 @@
 @property (copy, nonatomic) NSString *syncToken; // @synthesize syncToken=_syncToken;
 @property (copy, nonatomic) NSArray *upsertDeclarations; // @synthesize upsertDeclarations=_upsertDeclarations;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

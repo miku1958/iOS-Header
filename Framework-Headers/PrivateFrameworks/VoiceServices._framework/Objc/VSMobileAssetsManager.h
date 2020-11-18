@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
@@ -44,6 +44,7 @@
 - (id)_localVoiceForLanguage:(id)arg1 gender:(long long)arg2;
 - (id)_nonCacheVoiceResourcesAssetsForLanguage:(id)arg1;
 - (id)_nonCacheVoiceSelectionForLanguage:(id)arg1 type:(long long)arg2 gender:(long long)arg3 footprint:(long long)arg4;
+- (BOOL)_purgeAsset:(id)arg1;
 - (id)activeVoiceAssets;
 - (void)amendVoiceWithDefaultSettings:(id)arg1;
 - (void)cancelDownload:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -57,6 +58,7 @@
 - (id)installedAssetsForType:(long long)arg1 voicename:(id)arg2 language:(id)arg3 gender:(long long)arg4 footprint:(long long)arg5;
 - (id)installedVoiceResources;
 - (id)legacyLocalVocalizerVoiceAssetForLanguage:(id)arg1;
+- (void)populateVoiceData:(id)arg1 fromAsset:(id)arg2;
 - (id)preinstallAssetsMetadata;
 - (id)preinstalledVoicesForLanguage:(id)arg1 gender:(long long)arg2;
 - (BOOL)purgeAsset:(id)arg1;

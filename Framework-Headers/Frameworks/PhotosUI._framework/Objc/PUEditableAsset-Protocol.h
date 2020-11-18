@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) unsigned long long livePhotoVisibilityState;
 @property (readonly, nonatomic) unsigned long long mediaSubtypes;
 @property (readonly, nonatomic) int originalEXIFOrientation;
+@property (readonly, nonatomic) unsigned long long originalResourceChoice;
 @property (readonly, copy, nonatomic) NSString *pathForOriginalImageFile;
 @property (readonly, copy, nonatomic) NSString *pathForOriginalVideoFile;
 @property (readonly, copy, nonatomic) NSString *pathForTrimmedVideoFile;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) PFVideoAVObjectBuilder *videoObjectBuilder;
 
 - (void)cancelContentEditingInputRequest:(unsigned long long)arg1;
+- (BOOL)isOriginalRaw;
 - (unsigned long long)requestContentEditingInputWithOptions:(PHContentEditingInputRequestOptions *)arg1 completionHandler:(void (^)(PHContentEditingInput *, NSDictionary *))arg2;
 @end
 

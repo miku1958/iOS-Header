@@ -49,6 +49,7 @@
 - (void)_playerWillReloadWithPlaybackContextNotification:(id)arg1;
 - (void)_playerWillSetCurrentTimeNotification:(id)arg1;
 - (void)_reportPlaybackEndedForTimeoutWithItem:(id)arg1;
+- (void)_sendPlaybackEndNotification:(double)arg1 endTime:(double)arg2;
 - (void)_setLastPlayEventEndTimeForCurrentItem:(double)arg1;
 - (void)dealloc;
 - (void)didHitPlaybackTimeoutEndingPlayback:(BOOL)arg1 withCurrentItem:(id)arg2;

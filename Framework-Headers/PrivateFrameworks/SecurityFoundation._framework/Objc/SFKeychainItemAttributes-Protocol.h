@@ -6,13 +6,15 @@
 
 #import <SecurityFoundation/NSCopying-Protocol.h>
 #import <SecurityFoundation/NSObject-Protocol.h>
+#import <SecurityFoundation/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@protocol SFKeychainItemAttributes <NSObject, NSCopying>
+@protocol SFKeychainItemAttributes <NSObject, NSCopying, NSSecureCoding>
 
 @property (copy, nonatomic) NSString *localizedDescription;
 @property (copy, nonatomic) NSString *localizedLabel;
+@property (readonly, copy, nonatomic) NSString *persistentIdentifier;
 
 @end
 

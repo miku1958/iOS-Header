@@ -4,19 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKCompanionResourceDirectoryEditor.h>
+#import <NanoTimeKitCompanion/NTKCompanionSinglePHAssetEditor.h>
 
-@interface NTKCompanionSyncedAlbumEditor : NTKCompanionResourceDirectoryEditor
+@interface NTKCompanionSyncedAlbumEditor : NTKCompanionSinglePHAssetEditor
 {
 }
 
-@property (nonatomic) BOOL shouldFinalize;
-
-+ (id)_createResourceDirectoryForSyncedAlbumWithPreviewOnly:(BOOL)arg1;
++ (id)_assetForResourceDirectoryForDevice:(id)arg1;
 + (id)_firstAssetInCollection:(id)arg1;
-- (void)finalizeWithCompletion:(CDUnknownBlockType)arg1;
-- (void)generateGalleryPreviewResourceDirectoryWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithResourceDirectory:(id)arg1 shouldFinalize:(BOOL)arg2;
 
 @end
 

@@ -7,19 +7,26 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBIntentVocabulary-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBIntentVocabulary : PBCodable <NSCopying>
+@interface _INPBIntentVocabulary : PBCodable <_INPBIntentVocabulary, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_intentSlotVocabularyPolicies;
-    NSMutableArray *_intentTypePhrases;
+    struct _has;
+    NSArray *_intentSlotVocabularyPolicies;
+    NSArray *_intentTypePhrases;
 }
 
-@property (strong, nonatomic) NSMutableArray *intentSlotVocabularyPolicies; // @synthesize intentSlotVocabularyPolicies=_intentSlotVocabularyPolicies;
-@property (strong, nonatomic) NSMutableArray *intentTypePhrases; // @synthesize intentTypePhrases=_intentTypePhrases;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *intentSlotVocabularyPolicies; // @synthesize intentSlotVocabularyPolicies=_intentSlotVocabularyPolicies;
+@property (readonly, nonatomic) unsigned long long intentSlotVocabularyPoliciesCount;
+@property (copy, nonatomic) NSArray *intentTypePhrases; // @synthesize intentTypePhrases=_intentTypePhrases;
+@property (readonly, nonatomic) unsigned long long intentTypePhrasesCount;
+@property (readonly) Class superclass;
 
 + (Class)intentSlotVocabularyPoliciesType;
 + (Class)intentTypePhrasesType;
@@ -29,15 +36,10 @@
 - (void)clearIntentSlotVocabularyPolicies;
 - (void)clearIntentTypePhrases;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (id)intentSlotVocabularyPoliciesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)intentSlotVocabularyPoliciesCount;
 - (id)intentTypePhrasesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)intentTypePhrasesCount;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

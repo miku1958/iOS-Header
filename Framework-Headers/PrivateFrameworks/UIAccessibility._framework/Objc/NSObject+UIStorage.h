@@ -72,10 +72,12 @@
 - (BOOL)_isAccessibilityExplorerElement;
 - (void)_setAccessibilityActivateBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityActivationPointBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityAdditionalTraitsBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityDecrementBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityElementsBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityElementsHiddenBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityFrameBlock:(CDUnknownBlockType)arg1;
+- (void)_setAccessibilityFrameForSortingBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityGuideElementHeaderTextBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityHeaderElementsBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityHintBlock:(CDUnknownBlockType)arg1;

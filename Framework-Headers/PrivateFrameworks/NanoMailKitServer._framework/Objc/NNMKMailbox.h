@@ -9,7 +9,7 @@
 #import <NanoMailKitServer/NSCopying-Protocol.h>
 #import <NanoMailKitServer/NSSecureCoding-Protocol.h>
 
-@class NSString, NSURL;
+@class NSDate, NSString, NSURL;
 
 @interface NNMKMailbox : NSObject <NSSecureCoding, NSCopying>
 {
@@ -17,18 +17,24 @@
     BOOL _syncRequested;
     BOOL _syncActive;
     BOOL _hasSelection;
+    BOOL _databaseContentVerified;
     unsigned long long _type;
     unsigned long long _filterType;
     NSString *_mailboxId;
     NSString *_accountId;
+    NSString *_accountLocalId;
     NSURL *_url;
     NSString *_customName;
+    NSDate *_lastUpdate;
 }
 
 @property (strong, nonatomic) NSString *accountId; // @synthesize accountId=_accountId;
+@property (strong, nonatomic) NSString *accountLocalId; // @synthesize accountLocalId=_accountLocalId;
 @property (strong, nonatomic) NSString *customName; // @synthesize customName=_customName;
+@property (nonatomic) BOOL databaseContentVerified; // @synthesize databaseContentVerified=_databaseContentVerified;
 @property (nonatomic) unsigned long long filterType; // @synthesize filterType=_filterType;
 @property (nonatomic) BOOL hasSelection; // @synthesize hasSelection=_hasSelection;
+@property (strong, nonatomic) NSDate *lastUpdate; // @synthesize lastUpdate=_lastUpdate;
 @property (strong, nonatomic) NSString *mailboxId; // @synthesize mailboxId=_mailboxId;
 @property (nonatomic, getter=isSelected) BOOL selected;
 @property (nonatomic) BOOL syncActive; // @synthesize syncActive=_syncActive;
@@ -37,6 +43,8 @@
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 
++ (unsigned long long)defaultFilterTypes;
++ (id)generateMailboxIdWithAccountId:(id)arg1 mailboxName:(id)arg2;
 + (id)idsFromMailboxes:(id)arg1;
 + (unsigned long long)messageStateForMailboxFilterType:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;

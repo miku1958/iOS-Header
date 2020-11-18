@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL useEncryption; // @synthesize useEncryption=_useEncryption;
 
 - (void).cxx_destruct;
+- (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
 - (id)initWithAssetTokenRequest:(id)arg1 headers:(id)arg2;
 - (int)operationType;

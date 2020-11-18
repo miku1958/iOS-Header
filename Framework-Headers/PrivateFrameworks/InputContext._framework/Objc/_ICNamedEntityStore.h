@@ -21,6 +21,7 @@
 @property (copy, nonatomic) CDUnknownBlockType filteringBlock; // @synthesize filteringBlock=_filteringBlock;
 @property (strong, nonatomic) NSArray *lexicons; // @synthesize lexicons=_lexicons;
 
++ (id)lexiconViews;
 + (id)tokenize:(id)arg1;
 - (void).cxx_destruct;
 - (void)addEntity:(id)arg1 isDurable:(BOOL)arg2;

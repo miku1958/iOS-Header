@@ -15,7 +15,7 @@
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 #import <Silex/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, SXDragManager, SXFullscreenCaptionView, SXFullscreenNavigationBarView, SXItemizedScrollView, UIColor, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, UIView;
+@class NSString, SXDragManager, SXFullscreenCanvasViewController, SXFullscreenCaptionView, SXFullscreenNavigationBarView, SXItemizedScrollView, UIColor, UIPanGestureRecognizer, UIPinchGestureRecognizer, UIRotationGestureRecognizer, UITapGestureRecognizer, UIView;
 @protocol SXFullscreenCanvasShowable, SXFullscreenCaptionViewFactory;
 
 @interface SXFullscreenCanvasController : NSObject <UIGestureRecognizerDelegate, UIScrollViewDelegate, SXFullscreenImageViewDelegate, SXItemizedScrollViewDataSource, SXItemizedScrollViewDelegate, SXFullscreenCaptionViewDelegate, SXFullscreenNavigationBarViewDelegate, SXDragManagerDataSource>
@@ -46,7 +46,7 @@
     double _currentScale;
     unsigned long long _currentViewIndex;
     UIView *_currentView;
-    UIView *_canvasView;
+    SXFullscreenCanvasViewController *_canvasViewController;
     SXItemizedScrollView *_itemizedScrollView;
     SXFullscreenNavigationBarView *_navigationBarView;
     SXFullscreenCaptionView *_captionView;
@@ -60,7 +60,7 @@
 @property (readonly, nonatomic) unsigned long long activeViewIndex;
 @property (strong, nonatomic) UIColor *backgroundColor; // @dynamic backgroundColor;
 @property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property (strong, nonatomic) UIView *canvasView; // @synthesize canvasView=_canvasView;
+@property (strong, nonatomic) SXFullscreenCanvasViewController *canvasViewController; // @synthesize canvasViewController=_canvasViewController;
 @property (strong, nonatomic) SXFullscreenCaptionView *captionView; // @synthesize captionView=_captionView;
 @property (readonly, nonatomic) id<SXFullscreenCaptionViewFactory> captionViewFactory; // @synthesize captionViewFactory=_captionViewFactory;
 @property (nonatomic) struct CGRect currentDestinationFrame; // @synthesize currentDestinationFrame=_currentDestinationFrame;
@@ -155,7 +155,7 @@
 - (id)viewForDragManager:(id)arg1;
 - (long long)viewIndexForPoint:(struct CGPoint)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 transitionCoordinator:(id)arg2;
-- (BOOL)willStartTransformingWithGestureRecognizer:(id)arg1;
+- (void)willStartTransformingWithGestureRecognizer:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -6,10 +6,11 @@
 
 #import <SpringBoardUIServices/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, UIColor;
 
 @protocol SBUIPasscodeNumberPadButton <NSObject>
 - (int)characterType;
+- (void)setReduceTransparencyButtonColor:(UIColor *)arg1;
 - (NSString *)stringCharacter;
 @end
 

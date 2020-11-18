@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyInput-Protocol.h>
+#import <UIKitCore/UIKeyInput-Protocol.h>
 
 @class NSArray, NSDictionary, NSString, UITextPosition, UITextRange, UIView;
 @protocol UITextInputDelegate, UITextInputTokenizer;

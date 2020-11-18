@@ -7,37 +7,37 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBRangeValue-Protocol.h>
 
-@class PBUnknownFields, _INPBValueMetadata;
+@class NSString, _INPBValueMetadata;
 
-@interface _INPBRangeValue : PBCodable <NSCopying>
+@interface _INPBRangeValue : PBCodable <_INPBRangeValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    unsigned long long _length;
-    unsigned long long _location;
-    _INPBValueMetadata *_valueMetadata;
     struct {
         unsigned int length:1;
         unsigned int location:1;
     } _has;
+    unsigned long long _length;
+    unsigned long long _location;
+    _INPBValueMetadata *_valueMetadata;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasLength;
 @property (nonatomic) BOOL hasLocation;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long length; // @synthesize length=_length;
 @property (nonatomic) unsigned long long location; // @synthesize location=_location;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

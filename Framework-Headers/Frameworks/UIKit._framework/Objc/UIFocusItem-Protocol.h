@@ -4,11 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIFocusEnvironment-Protocol.h>
+#import <UIKitCore/UIFocusEnvironment-Protocol.h>
+
+@class UIFocusMovementHint;
 
 @protocol UIFocusItem <UIFocusEnvironment>
 
 @property (readonly, nonatomic) BOOL canBecomeFocused;
+@property (readonly, nonatomic) struct CGRect frame;
 
+
+@optional
+- (void)didHintFocusMovement:(UIFocusMovementHint *)arg1;
 @end
 

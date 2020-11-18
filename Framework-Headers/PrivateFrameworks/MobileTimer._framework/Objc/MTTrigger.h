@@ -21,6 +21,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isForAlert;
+@property (readonly, nonatomic) BOOL isForGoToBed;
+@property (readonly, nonatomic) BOOL isForSnooze;
+@property (readonly, nonatomic) BOOL isScheduled;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSDate *triggerDate; // @synthesize triggerDate=_triggerDate;
 @property (nonatomic) unsigned long long triggerType; // @synthesize triggerType=_triggerType;
@@ -36,6 +40,7 @@
 - (id)initWithDate:(id)arg1 type:(unsigned long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTrigger:(id)arg1;
+- (BOOL)isEvent;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VisualVoicemail/NSCopying-Protocol.h>
 #import <VisualVoicemail/NSMutableCopying-Protocol.h>
@@ -21,9 +21,11 @@
     NSString *_callbackDestinationID;
     double _duration;
     NSURL *_dataURL;
+    NSString *_receiverDestinationID;
     NSURL *_transcriptionURL;
     NSString *_callbackISOCountryCode;
     NSString *_senderISOCountryCode;
+    NSString *_receiverISOCountryCode;
     unsigned long long _flags;
 }
 
@@ -45,6 +47,8 @@
 @property (readonly, nonatomic) BOOL hasCallbackNumber;
 @property (nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property (nonatomic, getter=isRead) BOOL read;
+@property (readonly, copy, nonatomic) NSString *receiverDestinationID; // @synthesize receiverDestinationID=_receiverDestinationID;
+@property (copy, nonatomic) NSString *receiverISOCountryCode; // @synthesize receiverISOCountryCode=_receiverISOCountryCode;
 @property (nonatomic) unsigned long long remoteUID; // @synthesize remoteUID=_remoteUID;
 @property (readonly, nonatomic) NSString *sender;
 @property (copy, nonatomic) NSString *senderDestinationID; // @synthesize senderDestinationID=_senderDestinationID;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 @class UIImage, _UIFocusAnimationConfiguration;
 
@@ -117,7 +117,10 @@
 + (id)newAppIconConfiguration;
 + (id)newStandardConfiguration;
 - (void).cxx_destruct;
+- (void)_highContrastFocusIndicatorChanged:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)init;
 - (BOOL)isEqual:(id)arg1;
 
 @end

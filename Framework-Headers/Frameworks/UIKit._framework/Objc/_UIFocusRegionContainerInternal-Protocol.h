@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFocusRegionContainer-Protocol.h>
+#import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
 
 @class _UIFocusRegionContentAttributes;
 @protocol UICoordinateSpace;

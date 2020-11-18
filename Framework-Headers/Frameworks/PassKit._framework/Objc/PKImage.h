@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -52,6 +52,7 @@
 - (void)drawInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 withBlendMode:(int)arg3 alpha:(double)arg4;
 - (void)encodeWithCoder:(id)arg1;
 - (id)imageHash;
+- (id)imageWithoutCapInsets;
 - (id)init;
 - (id)initWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 - (id)initWithCoder:(id)arg1;

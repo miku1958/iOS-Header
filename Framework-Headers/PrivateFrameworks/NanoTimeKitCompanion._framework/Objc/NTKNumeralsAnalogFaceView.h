@@ -21,7 +21,7 @@
     struct NSNumber *_clockTimerToken;
 }
 
-+ (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
++ (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyDataMode;
@@ -53,6 +53,7 @@
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (struct CGRect)_keylineFrameForFullScreenEditingReducedForOutsideLabel;
 - (struct CGRect)_keylineFrameForStyleEditing;
+- (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
@@ -78,7 +79,7 @@
 - (void)_updateComplicationPositionWithAnimationProgress:(double)arg1;
 - (void)dealloc;
 - (void)endScrubbingAnimated:(BOOL)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 

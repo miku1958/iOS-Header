@@ -16,7 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityUpdateCategoryAXLabel;
 - (id)accessibilityElements;
-- (void)setMapItem:(id)arg1;
+- (void)setMapItem:(id)arg1 showsAddress:(BOOL)arg2;
 
 @end
 

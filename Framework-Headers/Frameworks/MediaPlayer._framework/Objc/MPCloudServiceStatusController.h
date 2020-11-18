@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/ICEnvironmentMonitorObserver-Protocol.h>
 #import <MediaPlayer/ISURLBagObserver-Protocol.h>
@@ -34,7 +34,6 @@
     BOOL _observingNetworkReachability;
     SSVPlaybackLease *_playbackLease;
     BOOL _hasSubscriptionLease;
-    unsigned long long _purchaseHistoryObservationCount;
     BOOL _shouldPlaybackRequireSubscriptionLease;
     unsigned long long _shouldPlaybackRequireSubscriptionLeaseObservationCount;
     BOOL _subscriptionAvailable;
@@ -60,16 +59,13 @@
 
 + (id)sharedController;
 - (void).cxx_destruct;
-- (void)_accountStoreChangedNotification:(id)arg1;
 - (id)_activeAccount;
-- (void)_beginObservingAccountStoreDidChange;
 - (void)_beginObservingURLBag;
 - (void)_beginUsingSubscriptionLeaseWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_calculateShouldPlaybackRequireSubscriptionLeaseReturningLikelyToReachRemoteServer:(BOOL *)arg1;
 - (void)_cloudClientAuthenticationDidChange;
 - (BOOL)_currentCloudLibraryEnabled;
 - (BOOL)_currentPurchaseHistoryEnabled;
-- (void)_endObservingAccountStoreDidChange;
 - (void)_endObservingURLBag;
 - (void)_endUsingSubscriptionLease;
 - (id)_fairPlaySubscriptionController;

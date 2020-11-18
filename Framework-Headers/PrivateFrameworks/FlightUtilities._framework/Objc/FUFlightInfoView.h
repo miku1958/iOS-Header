@@ -114,7 +114,6 @@ __attribute__((visibility("hidden")))
 - (void)addDateTimeAttributesToString:(id)arg1 striked:(BOOL)arg2 alignment:(long long)arg3;
 - (void)awakeFromNib;
 - (void)dealloc;
-- (BOOL)deviceSupportsRotation;
 - (void)flightButtonTapped:(id)arg1;
 - (id)formattedDurationForDuration:(double)arg1;
 - (void)setFlight:(id)arg1 legIndex:(unsigned long long)arg2 multiFlights:(BOOL)arg3 spotlightMode:(BOOL)arg4;

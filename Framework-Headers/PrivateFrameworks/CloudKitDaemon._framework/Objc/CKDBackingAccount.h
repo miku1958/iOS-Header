@@ -14,6 +14,7 @@
 }
 
 @property (readonly, nonatomic) BOOL canAuthWithCloudKit; // @synthesize canAuthWithCloudKit=_canAuthWithCloudKit;
+@property (readonly, nonatomic) NSString *displayedHostname;
 @property (readonly, nonatomic) NSString *dsid;
 @property (readonly, nonatomic) NSPersonNameComponents *fullName;
 @property (readonly, nonatomic) BOOL iCloudDriveAllowsCellularAccess;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) NSURL *privateMetricsServiceURL;
 @property (readonly, nonatomic) NSURL *privateShareServiceURL;
 @property (readonly, nonatomic) NSString *serverPreferredPushEnvironment;
+@property (readonly, nonatomic) NSString *sharingURLHostname;
 @property (readonly, nonatomic) NSString *username;
 
 + (BOOL)_lockedEnsureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
@@ -33,7 +35,7 @@
 + (id)accountQueue;
 + (id)accountWithIdentifier:(id)arg1 inStore:(id)arg2;
 + (void)ensureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
-+ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2;
++ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 propertyOverrides:(id)arg3 overridesByDataclass:(id)arg4;
 + (id)primaryAccountInStore:(id)arg1;
 - (id)_init;
 - (id)accountPropertiesForDataclass:(id)arg1;

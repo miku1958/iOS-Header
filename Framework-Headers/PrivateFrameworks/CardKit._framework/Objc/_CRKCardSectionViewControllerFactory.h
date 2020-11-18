@@ -14,10 +14,10 @@
 }
 
 + (id)_sharedInstance;
-+ (id)cardSectionViewControllerForCardSection:(id)arg1 dataSource:(id)arg2;
++ (id)cardSectionViewControllerForCardSection:(id)arg1;
 + (void)registerCardSectionViewControllerClass:(Class)arg1;
 - (void).cxx_destruct;
-- (id)_cardSectionViewControllerForCardSection:(id)arg1 dataSource:(id)arg2;
+- (id)_cardSectionViewControllerForCardSection:(id)arg1;
 - (void)_registerCardSectionViewControllerClass:(Class)arg1;
 - (id)init;
 

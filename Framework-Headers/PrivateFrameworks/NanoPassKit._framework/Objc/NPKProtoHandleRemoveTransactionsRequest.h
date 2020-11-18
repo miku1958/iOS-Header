@@ -13,14 +13,19 @@
 @interface NPKProtoHandleRemoveTransactionsRequest : PBRequest <NSCopying>
 {
     NSMutableArray *_identifiers;
+    NSMutableArray *_passIDs;
 }
 
 @property (strong, nonatomic) NSMutableArray *identifiers; // @synthesize identifiers=_identifiers;
+@property (strong, nonatomic) NSMutableArray *passIDs; // @synthesize passIDs=_passIDs;
 
 + (Class)identifiersType;
++ (Class)passIDsType;
 - (void).cxx_destruct;
 - (void)addIdentifiers:(id)arg1;
+- (void)addPassIDs:(id)arg1;
 - (void)clearIdentifiers;
+- (void)clearPassIDs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -30,6 +35,8 @@
 - (unsigned long long)identifiersCount;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)passIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)passIDsCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

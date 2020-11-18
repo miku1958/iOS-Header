@@ -9,6 +9,7 @@
 @class NSDictionary, NSString;
 @protocol SFStateMachineDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SFStateMachine : NSObject
 {
     struct _opaque_pthread_mutex_t {

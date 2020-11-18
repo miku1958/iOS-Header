@@ -16,6 +16,7 @@
 - (void)fetchAuthTokenForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 outRequestID:(id *)arg4 completionBlock:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *, NSString *, NSDictionary *, NSNumber *))arg5;
 - (void)fetchPasswordForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 outRequestID:(id *)arg4 completionBlock:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *, NSString *, NSDictionary *, NSNumber *))arg5;
 - (BOOL)isAuthTokenReceiptTime:(double)arg1 withinGracePeriod:(double)arg2;
+- (void)performCleanUpWithCompletion:(void (^)(BOOL))arg1;
 - (NSString *)profileIDForACAccount:(ACAccount *)arg1;
 - (void)removeAuthTokenAllowingGracePeriodForProfileID:(NSString *)arg1 username:(NSString *)arg2;
 - (void)requestAuthTokenForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 failIfNotSilent:(BOOL)arg6 outRequestID:(id *)arg7 completionBlock:(void (^)(NSString *, NSString *, NSString *, NSString *, NSString *, NSString *, NSDictionary *, NSNumber *, BOOL, BOOL, BOOL))arg8;
@@ -25,5 +26,6 @@
 - (void)setAuthTokenForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 authToken:(NSString *)arg4 selfHandle:(NSString *)arg5 outRequestID:(id *)arg6 completionBlock:(void (^)(NSString *, NSString *, NSString *, BOOL))arg7;
 - (void)setHandlesForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 handles:(NSArray *)arg4;
 - (void)setPasswordForProfileID:(NSString *)arg1 username:(NSString *)arg2 service:(NSString *)arg3 password:(NSString *)arg4 outRequestID:(id *)arg5 completionBlock:(void (^)(NSString *, NSString *, NSString *, BOOL))arg6;
+- (void)updatePreviousUsername:(NSString *)arg1 toNewUsername:(NSString *)arg2;
 @end
 

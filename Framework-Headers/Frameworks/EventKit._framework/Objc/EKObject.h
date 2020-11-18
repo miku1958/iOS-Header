@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKit/EKFrozenMeltedPair-Protocol.h>
 #import <EventKit/EKProtocolMutableObject-Protocol.h>
 
-@class EKChangeSet, EKEventStore, EKPersistentObject, NSDictionary, NSMutableDictionary, NSString;
+@class EKChangeSet, EKEventStore, EKObjectValidationContext, EKPersistentObject, NSDictionary, NSMutableDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface EKObject : NSObject <EKFrozenMeltedPair, EKProtocolMutableObject>
@@ -19,10 +19,12 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *__cachedMeltedObjects;
     NSDictionary *_additionalFrozenProperties;
     NSMutableDictionary *__cachedValues;
+    EKObjectValidationContext *__validationContext;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *_cachedMeltedObjects; // @synthesize _cachedMeltedObjects=__cachedMeltedObjects;
 @property (strong, nonatomic) NSMutableDictionary *_cachedValues; // @synthesize _cachedValues=__cachedValues;
+@property (strong, nonatomic) EKObjectValidationContext *_validationContext; // @synthesize _validationContext=__validationContext;
 @property (strong, nonatomic) NSDictionary *additionalFrozenProperties; // @synthesize additionalFrozenProperties=_additionalFrozenProperties;
 @property (readonly, nonatomic) BOOL canBeConvertedToFullObject;
 @property (strong, nonatomic) EKChangeSet *changeSet; // @synthesize changeSet=_changeSet;
@@ -35,9 +37,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isPartialObject;
 @property (readonly, nonatomic, getter=isNew) BOOL new;
 @property (readonly, nonatomic) NSDictionary *preFrozenRelationshipObjects;
+@property (readonly, nonatomic) NSString *semanticIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueIdentifier;
 
++ (BOOL)_isWeakRelationMeltedObject:(id)arg1 forKey:(id)arg2;
 + (unsigned long long)_numberOfSharedLocksForUnitTesting;
 + (Class)frozenClass;
 + (BOOL)isDerivedRelationship;
@@ -147,7 +151,7 @@ __attribute__((visibility("hidden")))
 - (id)multiChangedObjectValuesForKey:(id)arg1;
 - (id)objectID;
 - (id)persistentObject;
-- (id)previouslySavedObject;
+- (id)privacyDescription;
 - (void)rebase;
 - (void)rebaseSkippingRelationProperties:(id)arg1;
 - (void)refetch;

@@ -12,6 +12,7 @@
 
 @interface SFMutableResultSection : SFResultSection <NSCopying>
 {
+    BOOL _doNotFold;
     BOOL _serialized;
     BOOL _isGlanceCategory;
     int _source;
@@ -22,6 +23,7 @@
     NSString *_resultSetIdentifier;
 }
 
+@property BOOL doNotFold; // @synthesize doNotFold=_doNotFold;
 @property (nonatomic) unsigned int domain; // @synthesize domain=_domain;
 @property (strong, nonatomic) NSArray *hiddenExtResults; // @synthesize hiddenExtResults=_hiddenExtResults;
 @property (nonatomic) BOOL isGlanceCategory; // @synthesize isGlanceCategory=_isGlanceCategory;

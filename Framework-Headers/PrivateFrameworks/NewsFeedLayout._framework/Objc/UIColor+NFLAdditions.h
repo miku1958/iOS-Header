@@ -28,6 +28,8 @@
 + (id)nfl_forYouStoriesHeadercolor;
 + (id)nfl_gray;
 + (id)nfl_green;
++ (id)nfl_keyColor;
++ (id)nfl_keyHighlightedColor;
 + (id)nfl_likeDislikeGlyphCellColor;
 + (id)nfl_plusDEffectWithForegroundColor:(id)arg1 backgroundColor:(id)arg2;
 + (id)nfl_plusLEffectWithForegroundColor:(id)arg1 backgroundColor:(id)arg2;

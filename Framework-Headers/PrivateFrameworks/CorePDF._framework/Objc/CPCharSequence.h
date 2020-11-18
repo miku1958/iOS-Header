@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CorePDF/CPCopying-Protocol.h>
 #import <CorePDF/CPDisposable-Protocol.h>
@@ -12,6 +12,7 @@
 
 @class CPMemoryOwner;
 
+__attribute__((visibility("hidden")))
 @interface CPCharSequence : NSObject <NSCopying, CPCopying, CPDisposable>
 {
     unsigned int length;

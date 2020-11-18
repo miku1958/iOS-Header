@@ -14,7 +14,7 @@
 @protocol TSDGLDataBuffer <NSObject, TSDGLDataBufferAccessor, TSDGPUDataBufferSharedAccessors>
 + (id<TSDGLDataBuffer>)newDataBufferWithVertexAttributes:(NSArray *)arg1 meshSize:(struct CGSize)arg2;
 + (id<TSDGLDataBuffer>)newDataBufferWithVertexAttributes:(NSArray *)arg1 quadParticleCount:(unsigned long long)arg2;
-+ (id<TSDGLDataBuffer>)newDataBufferWithVertexAttributes:(NSArray *)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3 doubleBuffered:(BOOL)arg4;
++ (id<TSDGLDataBuffer>)newDataBufferWithVertexAttributes:(NSArray *)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3;
 + (id<TSDGLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2;
 + (id<TSDGLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3;
 + (id<TSDGLDataBuffer>)newDataBufferWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5;
@@ -23,11 +23,14 @@
 - (void)disableDataBufferWithShader:(TSDGLShader *)arg1;
 - (void)disableGLElementArrayBuffer;
 - (void)drawWithShader:(TSDGLShader *)arg1;
+- (void)drawWithShader:(TSDGLShader *)arg1 advanceDynamicBuffer:(BOOL)arg2;
 - (void)drawWithShader:(TSDGLShader *)arg1 deactivateShaderWhenDone:(BOOL)arg2;
+- (void)drawWithShader:(TSDGLShader *)arg1 deactivateShaderWhenDone:(BOOL)arg2 advanceDynamicBuffer:(BOOL)arg3;
 - (void)drawWithShader:(TSDGLShader *)arg1 range:(struct _NSRange)arg2 deactivateShaderWhenDone:(BOOL)arg3;
+- (void)drawWithShader:(TSDGLShader *)arg1 range:(struct _NSRange)arg2 deactivateShaderWhenDone:(BOOL)arg3 advanceDynamicBuffer:(BOOL)arg4;
 - (void)enableDataBufferWithShader:(TSDGLShader *)arg1;
 - (void)enableGLElementArrayBuffer;
-- (id)initWithVertexAttributes:(NSArray *)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3 doubleBuffered:(BOOL)arg4;
+- (id)initWithVertexAttributes:(NSArray *)arg1 vertexCount:(unsigned long long)arg2 indexElementCount:(unsigned long long)arg3 bufferCount:(unsigned long long)arg4;
 - (id)initWithVertexRect:(struct CGRect)arg1 textureRect:(struct CGRect)arg2 meshSize:(struct CGSize)arg3 textureFlipped:(BOOL)arg4 includeCenterAttribute:(BOOL)arg5;
 - (void)setDataForAttribute:(TSDGLDataBufferAttribute *)arg1 atIndex:(unsigned long long)arg2 fromAttribute:(TSDGLDataBufferAttribute *)arg3 dataBuffer:(id<TSDGLDataBuffer>)arg4 index:(unsigned long long)arg5;
 - (void)setGLushort:(unsigned short)arg1 forIndexElement:(unsigned long long)arg2;

@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityCombinedTitleElement;
+- (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)accessibilityElements;
 - (void)layoutSubviews;

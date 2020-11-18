@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSString *defaultPaymentPassIdentifier;
 @property (weak, nonatomic) id<PKPaymentDataProviderDelegate> delegate;
+@property (readonly, nonatomic) NSString *deviceName;
 @property (readonly, nonatomic) BOOL isDeviceInRestrictedMode;
 @property (readonly, nonatomic) BOOL isPaymentHandoffDisabled;
 @property (readonly, nonatomic) NSString *secureElementIdentifier;
@@ -24,16 +25,21 @@
 
 @optional
 - (void)addDelegate:(id<PKPaymentDataProviderDelegate>)arg1;
-- (NSString *)defaultExpressFelicaTransitPassIdentifier;
-- (NSString *)defaultExpressTransitPassIdentifier;
+- (void)balancesForPaymentPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)deletePaymentTransactionWithIdentifier:(NSString *)arg1 forPassWithUniqueIdentifier:(NSString *)arg2;
 - (PKExpressPassInformation *)expressPassInformationForMode:(NSString *)arg1;
 - (NSSet *)expressPassesInformation;
+- (NSSet *)expressPassesInformationWithCardType:(long long)arg1;
 - (void)felicaStateWithPassUniqueIdentifier:(NSString *)arg1 paymentApplication:(PKPaymentApplication *)arg2 completion:(void (^)(PKFelicaTransitAppletState *))arg3;
 - (void)removeDelegate:(id<PKPaymentDataProviderDelegate>)arg1;
+- (void)removeExpressPassWithUniqueIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, PKExpressPassInformation *))arg2;
+- (void)removeExpressPassWithUniqueIdentifier:(NSString *)arg1 visibleViewController:(id)arg2 completion:(void (^)(BOOL, PKExpressPassInformation *))arg3;
+- (void)removeExpressPassesWithCardType:(long long)arg1 completion:(void (^)(BOOL, NSSet *))arg2;
+- (void)removeExpressPassesWithCardType:(long long)arg1 visibleViewController:(id)arg2 completion:(void (^)(BOOL, NSSet *))arg3;
 - (void)setExpressWithPassInformation:(PKExpressPassInformation *)arg1 credential:(NSData *)arg2 completion:(void (^)(BOOL, PKExpressPassInformation *))arg3;
 - (void)setExpressWithPassInformation:(PKExpressPassInformation *)arg1 visibleViewController:(id)arg2 completion:(void (^)(BOOL, PKExpressPassInformation *))arg3;
 - (void)startServiceModeForPassWithUniqueIdentifier:(NSString *)arg1 visibleViewController:(id)arg2;
+- (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (BOOL)supportsExpressMode:(NSString *)arg1;
 - (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
 - (BOOL)supportsInAppPaymentsForPass:(PKPass *)arg1;

@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/BRCForegroundClient-Protocol.h>
 
 @class BRCALRowID, BRCAccountSession, BRCFSEventsMonitor, BRCPQLConnection, BRCPrivateClientZone, BRCRelativePath, BRCSyncContext, BRCZoneRowID, BRContainer, BRMangledID, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, brc_task_tracker;
-@protocol BRCAppLibraryDelegate, OS_dispatch_queue;
+@protocol BRCAppLibraryDelegate;
 
 __attribute__((visibility("hidden")))
 @interface BRCAppLibrary : NSObject <BRCForegroundClient>
@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
     BOOL _activated;
     NSMutableSet *_targetAppLibraries;
     NSMutableSet *_targetSharedServerZones;
-    NSObject<OS_dispatch_queue> *_targetAppLibraryQueue;
     NSMutableSet *_foregroundClients;
     BOOL _needsSave;
     BOOL _containerMetadataNeedsSyncUp;
@@ -114,6 +113,8 @@ __attribute__((visibility("hidden")))
 - (void)cancelWriteCoordinatorForItem:(id)arg1;
 - (void)clearStateBits:(unsigned int)arg1;
 - (void)close;
+- (void)computeDocumentEvictableSizeUsageWithDB:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)computeDocumentEvictableSizeUsageWithLowTimeDelta:(double)arg1 medTimeDelta:(double)arg2 highTimeDelta:(double)arg3 db:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (id)containerMetadataFilledWithTCCInfo;
 - (void)continueMarkingChildrenLostInZone:(id)arg1;
 - (id)coordinatorForItem:(id)arg1 forRead:(BOOL)arg2;
@@ -124,9 +125,8 @@ __attribute__((visibility("hidden")))
 - (void)didFindLostItem:(id)arg1 oldAppLibrary:(id)arg2;
 - (void)didReceiveHandoffRequest;
 - (void)didRemoveDocumentsFolder;
+- (void)didUpdateDocumentScopePublic;
 - (unsigned long long)documentCountWithDB:(id)arg1;
-- (unsigned long long)documentEvictableSizeUsageWithAccessTimeDelta:(double)arg1 db:(id)arg2;
-- (unsigned long long)documentEvictableSizeUsageWithDB:(id)arg1;
 - (unsigned long long)documentSizeUsageWithDB:(id)arg1;
 - (id)documentsFolderItemID;
 - (struct PQLResultSet *)enumerateUserVisibleChildrenDirectoriesOfItemGlobalID:(id)arg1 db:(id)arg2;

@@ -39,7 +39,7 @@
 - (void)proximityConnectionInitiated;
 - (void)proximityConnectionPreparing:(id)arg1;
 - (void)proximityConnectionTerminated;
-- (void)receivedLanguage:(id)arg1 locale:(id)arg2 model:(id)arg3 deviceClass:(id)arg4;
+- (void)receivedLanguages:(id)arg1 locale:(id)arg2 model:(id)arg3 deviceClass:(id)arg4;
 - (void)resumeProximitySetup:(CDUnknownBlockType)arg1;
 - (void)sendData:(id)arg1;
 - (void)storeHandshake:(id)arg1;

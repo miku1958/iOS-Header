@@ -39,6 +39,7 @@
 - (id)initWithName:(id)arg1 reason:(id)arg2 userInfo:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (void)raise;
+- (id)redactedDescription;
 
 @end
 

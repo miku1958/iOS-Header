@@ -8,7 +8,7 @@
 
 #import <iWorkImport/CAAnimationDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSArray, NSString, NSTimer, TSDLayout, TSWPSearchReference, TSWPSelection, TSWPStorage;
+@class CALayer, CAShapeLayer, NSArray, NSString, TSDLayout, TSWPSearchReference, TSWPSelection, TSWPStorage;
 @protocol TSWPLayoutTarget;
 
 __attribute__((visibility("hidden")))
@@ -42,8 +42,7 @@ __attribute__((visibility("hidden")))
     TSWPSelection *_dropSelection;
     BOOL _isShowingCommentKnobs;
     BOOL _tornDown;
-    NSTimer *_caretTimer;
-    BOOL _caretCancelled;
+    BOOL _searchHitsAreInvalid;
     BOOL _findIsShowing;
     TSWPSearchReference *_activeSearchReference;
     NSArray *_searchReferences;
@@ -71,21 +70,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGAffineTransform transformToConvertNaturalToScaledRoot; // @synthesize transformToConvertNaturalToScaledRoot=_transformToConvertNaturalToScaledRoot;
 @property (nonatomic) BOOL useKeyboardWhenEditing; // @synthesize useKeyboardWhenEditing=_useKeyboardWhenEditing;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (struct CGRect)caretRect;
 - (struct CGRect)caretRectForCharIndex:(unsigned long long)arg1 caretAffinity:(int)arg2;
 - (struct CGRect)caretRectForCharIndex:(unsigned long long)arg1 leadingEdge:(BOOL)arg2 caretAffinity:(int)arg3;
 - (struct CGRect)caretRectForSelection:(id)arg1;
 - (unsigned long long)charCountOfGlyphStartingAtCharIndex:(unsigned long long)arg1;
-- (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1;
-- (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 constrainToAscentAndDescent:(BOOL)arg2;
-- (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 isTail:(BOOL)arg2 selectionType:(int)arg3;
-- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 constrainToAscentAndDescent:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 leadingEdge:(BOOL *)arg6;
-- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 isAtEndOfLine:(BOOL *)arg4 leadingEdge:(BOOL *)arg5;
-- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 pastCenterGoesToNextChar:(BOOL)arg4 constrainToAscentAndDescent:(BOOL)arg5 isAtEndOfLine:(BOOL *)arg6 leadingEdge:(BOOL *)arg7;
-- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 pastCenterGoesToNextChar:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 leadingEdge:(BOOL *)arg6;
-- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 constrainToAscentAndDescent:(BOOL)arg3 isAtEndOfLine:(BOOL *)arg4;
-- (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 isAtEndOfLine:(BOOL *)arg3;
 - (id)closestColumnForPoint:(struct CGPoint)arg1;
 - (id)columnForCharIndex:(unsigned long long)arg1;
 - (struct CGRect)columnRectForRange:(struct _NSRange)arg1;
@@ -116,15 +107,14 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)p_closestCaretRectForPoint:(struct CGPoint)arg1 inSelection:(BOOL)arg2 allowPastBreak:(BOOL)arg3;
 - (struct CGRect)p_convertNaturalRectToRotated:(struct CGRect)arg1 repAngle:(double)arg2;
 - (void)p_drawTextInLayer:(id)arg1 context:(struct CGContext *)arg2 limitSelection:(id)arg3 rubyGlyphRange:(struct _NSRange)arg4 renderMode:(int)arg5 suppressInvisibles:(BOOL)arg6;
-- (BOOL)p_hasEmptyList;
-- (BOOL)p_hasEmptyParagraphFillOrBorders;
-- (BOOL)p_hasVisibleContents;
 - (id)p_hyperlinkAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)p_paragraphModeRectangleForColumn:(id)arg1 selection:(id)arg2;
 - (struct CGPoint)p_pinPoint:(struct CGPoint)arg1 toRect:(struct CGRect)arg2;
+- (void)p_registerNotifications;
 - (BOOL)p_shouldShowCommentsIncludingHighlights:(BOOL)arg1;
 - (void)p_teardown;
 - (struct CGRect)p_topicDragRectForSelection:(id)arg1;
+- (void)p_unregisterNotifications;
 - (void)p_updateLayersForInsertionPointSelection:(id)arg1;
 - (void)performBlockOnTextLayers:(CDUnknownBlockType)arg1;
 - (struct CGPoint)pinToClosestColumn:(struct CGPoint)arg1;

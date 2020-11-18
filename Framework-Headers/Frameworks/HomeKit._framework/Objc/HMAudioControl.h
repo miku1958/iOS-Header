@@ -31,12 +31,11 @@
 @property float volume;
 
 - (void).cxx_destruct;
+- (void)__configureWithContext:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)audioControl:(id)arg1 didUpdateMuted:(BOOL)arg2;
 - (void)audioControl:(id)arg1 didUpdateVolume:(float)arg2;
-- (id)clientQueue;
-- (void)configure:(id)arg1;
-- (id)initWithMediaSession:(id)arg1 propertyQueue:(id)arg2;
+- (id)initWithMediaSession:(id)arg1;
 - (void)updateMuted:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateVolume:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;
 

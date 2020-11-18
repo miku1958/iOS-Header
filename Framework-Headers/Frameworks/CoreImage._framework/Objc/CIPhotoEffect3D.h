@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)_CIPhotoEffectDepthBlend;
 - (int)_defaultVersion;
 - (int)_maxVersion;
+- (int)_maxVersionBG;
 - (id)applyCubeWithName:(id)arg1 toImage:(id)arg2;
 - (id)backgroundCubeName;
 - (id)backgroundCubePath;

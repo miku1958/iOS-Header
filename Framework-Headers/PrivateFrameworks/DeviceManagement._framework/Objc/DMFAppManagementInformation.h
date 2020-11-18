@@ -13,11 +13,11 @@
 
 @interface DMFAppManagementInformation : NSObject <NSCopying, NSSecureCoding>
 {
-    NSString *_displayName;
     unsigned long long _state;
     unsigned long long _options;
     NSString *_redemptionCode;
     NSString *_unusedRedemptionCode;
+    NSString *_displayName;
 }
 
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;

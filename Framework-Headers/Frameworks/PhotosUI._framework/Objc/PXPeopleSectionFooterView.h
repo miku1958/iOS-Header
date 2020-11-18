@@ -26,11 +26,13 @@
 + (double)_topSpacingForStyle:(unsigned long long)arg1;
 + (double)preferredHeightForStyle:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)_updateColors;
 - (void)contentSizeCategoryDidChangeNotification:(id)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
+- (void)tintColorDidChange;
 
 @end
 

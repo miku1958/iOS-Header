@@ -13,12 +13,12 @@
     HKWorkoutRoute *_sample;
     NSArray *_unsmoothedLocations;
     CDUnknownBlockType _completionHandler;
-    long long _smoothingAttempts;
+    unsigned long long _smoothingAttempts;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) HKWorkoutRoute *sample; // @synthesize sample=_sample;
-@property long long smoothingAttempts; // @synthesize smoothingAttempts=_smoothingAttempts;
+@property unsigned long long smoothingAttempts; // @synthesize smoothingAttempts=_smoothingAttempts;
 @property (strong, nonatomic) NSArray *unsmoothedLocations; // @synthesize unsmoothedLocations=_unsmoothedLocations;
 
 - (void).cxx_destruct;

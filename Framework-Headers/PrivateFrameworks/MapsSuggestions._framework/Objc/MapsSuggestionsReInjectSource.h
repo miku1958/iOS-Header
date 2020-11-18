@@ -30,8 +30,9 @@
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
 - (void)_processFileAtPath:(id)arg1;
-- (BOOL)canProduceEntriesOfType:(unsigned long long)arg1;
+- (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (id)initWithDelegate:(id)arg1;
+- (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
 - (double)updateSuggestionEntries;

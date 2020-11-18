@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -21,7 +21,7 @@
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (nonatomic) unsigned long long serialNumber; // @synthesize serialNumber=_serialNumber;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

@@ -9,7 +9,9 @@
 @interface HMService (Additions)
 + (id)_hf_allowedChildServicesTypeMap;
 + (id)hf_defaultServiceSubtypeForServiceType:(id)arg1;
++ (id)hf_descriptionForServiceSubtype:(id)arg1;
 + (id)hf_roomsForServices:(id)arg1;
++ (id)hf_standardServiceTypes;
 + (id)hf_standardServices;
 - (BOOL)_hf_isDirectlyOrIndirectlyLinkedToService:(id)arg1;
 - (BOOL)hf_canGroupWithService:(id)arg1;

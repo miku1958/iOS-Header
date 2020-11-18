@@ -13,11 +13,12 @@
 #import <iTunesStoreUI/WebResourceLoadDelegate-Protocol.h>
 #import <iTunesStoreUI/WebUIDelegate-Protocol.h>
 
-@class ISURLRequestPerformance, NSLock, NSMapTable, NSMutableSet, NSSet, NSString, SSAuthenticationContext, SUClientInterface, SUScriptWindowContext, SUWebScriptReloadContext, UIWebView;
+@class ACAccount, ISURLRequestPerformance, NSDictionary, NSLock, NSMapTable, NSMutableSet, NSSet, NSString, SSAuthenticationContext, SUClientInterface, SUScriptWindowContext, SUWebScriptReloadContext, UIWebView;
 @protocol SUWebViewManagerDelegate;
 
 @interface SUWebViewManager : NSObject <SUScriptInterfaceDelegate, WebFrameLoadDelegate, WebPolicyDelegate, WebResourceLoadDelegate, WebUIDelegate, UIWebViewDelegate>
 {
+    BOOL _initialLoadReported;
     SSAuthenticationContext *_authenticationContext;
     SUClientInterface *_clientInterface;
     id<SUWebViewManagerDelegate> _delegate;
@@ -36,8 +37,11 @@
     long long _usingNetworkCount;
     struct __CFSet *_webFramesPendingInitialRequest;
     UIWebView *_webView;
+    ACAccount *_account;
+    NSDictionary *_tidHeaders;
 }
 
+@property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (copy, nonatomic) SSAuthenticationContext *authenticationContext; // @synthesize authenticationContext=_authenticationContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<SUWebViewManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -51,6 +55,7 @@
 @property (strong, nonatomic) SUScriptWindowContext *scriptWindowContext; // @synthesize scriptWindowContext=_scriptWindowContext;
 @property (nonatomic) BOOL shouldSignRequests; // @synthesize shouldSignRequests=_shouldSignRequests;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NSDictionary *tidHeaders; // @synthesize tidHeaders=_tidHeaders;
 @property (readonly, weak, nonatomic) UIWebView *webView; // @synthesize webView=_webView;
 
 + (id)defaultLocalStoragePath;

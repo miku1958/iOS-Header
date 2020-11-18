@@ -7,32 +7,33 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBIntentSlotResolutionMulticardinalResult-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBIntentSlotResolutionMulticardinalResult : PBCodable <NSCopying>
+@interface _INPBIntentSlotResolutionMulticardinalResult : PBCodable <_INPBIntentSlotResolutionMulticardinalResult, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_resolutionResults;
+    struct _has;
+    NSArray *_resolutionResults;
 }
 
-@property (strong, nonatomic) NSMutableArray *resolutionResults; // @synthesize resolutionResults=_resolutionResults;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *resolutionResults; // @synthesize resolutionResults=_resolutionResults;
+@property (readonly, nonatomic) unsigned long long resolutionResultsCount;
+@property (readonly) Class superclass;
 
-+ (id)options;
 + (Class)resolutionResultsType;
 - (void).cxx_destruct;
 - (void)addResolutionResults:(id)arg1;
 - (void)clearResolutionResults;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)resolutionResultsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)resolutionResultsCount;
 - (void)writeTo:(id)arg1;
 
 @end

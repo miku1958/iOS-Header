@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <GameplayKit/NSCoding-Protocol.h>
 #import <GameplayKit/NSCopying-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class GKComponentSystem, GKEntity, NSString;
 
-@interface GKComponent : NSObject <NSCopying, NSCoding>
+@interface GKComponent : NSObject <NSCopying, NSSecureCoding>
 {
     GKEntity *_entity;
     int _usesPerComponentUpdateCount;
@@ -24,6 +24,7 @@
 @property (readonly, weak, nonatomic) GKEntity *entity;
 @property (nonatomic) BOOL usesPerComponentUpdate;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;

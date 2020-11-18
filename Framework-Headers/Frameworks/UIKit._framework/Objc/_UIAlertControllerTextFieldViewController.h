@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewController.h>
+#import <UIKitCore/UICollectionViewController.h>
 
 @class NSArray, NSMutableArray, UIAlertControllerVisualStyle, UICollectionViewFlowLayout;
 @protocol _UIAlertControllerTextFieldViewControllerContaining;

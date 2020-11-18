@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIDebuggingInformationValueView.h>
+#import <UIKitCore/UIDebuggingInformationValueView.h>
 
 __attribute__((visibility("hidden")))
 @interface UIDebuggingInformationValueViewNumber : UIDebuggingInformationValueView

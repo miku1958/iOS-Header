@@ -43,7 +43,7 @@
 - (void)_handleNegotiateStreamRequest:(id)arg1;
 - (void)_handleStreamControlRequest:(id)arg1;
 - (void)_setControlSupport;
-- (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1;
+- (void)cameraSettingProactiveReaderDidCompleteRead:(id)arg1 negotiateStreamMessageWasHandled:(BOOL)arg2;
 - (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;

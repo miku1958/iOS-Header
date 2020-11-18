@@ -12,15 +12,18 @@
 @interface ISURLBagLoadingController : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
+    NSObject<OS_dispatch_queue> *_notificationQueue;
     BOOL _hasSuccessfullyLoadedBag;
     NSDictionary *_bagDictionary;
     NSMutableArray *_bagAccessRequestBlocks;
     NSError *_bagLoadingError;
     NSHashTable *_bagObservers;
     SSURLBag *_URLBag;
+    BOOL _loadingBag;
 }
 
 @property (readonly, nonatomic) NSDictionary *bagDictionary;
+@property (readonly, nonatomic, getter=isLoadingBag) BOOL loadingBag; // @synthesize loadingBag=_loadingBag;
 
 + (id)sharedBagLoadingController;
 - (void).cxx_destruct;
@@ -33,6 +36,7 @@
 - (void)addBagObserver:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (void)reloadBag;
 - (void)removeBagObserver:(id)arg1;
 - (void)requestAccessToBagUsingBlock:(CDUnknownBlockType)arg1;
 

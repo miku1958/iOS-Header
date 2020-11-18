@@ -12,21 +12,17 @@
 
 @interface CLSHandout : CLSObject <CLSRelationable>
 {
-    BOOL __reviewed;
+    NSString *_title;
+    NSString *_instructions;
+    NSDate *_dueDate;
+    BOOL _reviewed;
     NSDate *_dateOfPublication;
     NSDate *_dateLastReviewed;
     long long _state;
     long long _publishingState;
     NSError *_publishError;
-    NSString *__title;
-    NSString *__instructions;
-    NSDate *__dueDate;
 }
 
-@property (strong, nonatomic) NSDate *_dueDate; // @synthesize _dueDate=__dueDate;
-@property (copy, nonatomic) NSString *_instructions; // @synthesize _instructions=__instructions;
-@property (nonatomic) BOOL _reviewed; // @synthesize _reviewed=__reviewed;
-@property (copy, nonatomic) NSString *_title; // @synthesize _title=__title;
 @property (readonly, nonatomic) NSArray *attachments;
 @property (strong, nonatomic) NSDate *dateLastReviewed; // @synthesize dateLastReviewed=_dateLastReviewed;
 @property (strong, nonatomic) NSDate *dateOfPublication; // @synthesize dateOfPublication=_dateOfPublication;

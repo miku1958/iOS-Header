@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (void)_updateIconImage;
+- (id)imageForImageIconDescriptor:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (long long)renderingModeForSubview:(id)arg1 suggestedRenderingMode:(long long)arg2;

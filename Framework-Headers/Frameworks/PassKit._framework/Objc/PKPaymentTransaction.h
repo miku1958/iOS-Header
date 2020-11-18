@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
@@ -14,6 +14,7 @@
 @interface PKPaymentTransaction : NSObject <NSSecureCoding, PKCloudStoreCoding>
 {
     BOOL _enRoute;
+    BOOL _shouldSuppressDate;
     BOOL _deviceScoreIdentifiersRequired;
     BOOL _deviceScoreIdentifiersSubmitted;
     BOOL _isCloudKitArchived;
@@ -45,8 +46,12 @@
     NSString *_stationCodeProvider;
     NSData *_startStationCode;
     NSString *_startStation;
+    double _startStationLatitude;
+    double _startStationLongitude;
     NSData *_endStationCode;
     NSString *_endStation;
+    double _endStationLatitude;
+    double _endStationLongitude;
     long long _adjustmentType;
     long long _peerPaymentType;
     NSString *_peerPaymentCounterpartHandle;
@@ -64,6 +69,7 @@
     NSString *_secondaryFundingSourceDescription;
     NSUUID *_requestDeviceScoreIdentifier;
     NSUUID *_sendDeviceScoreIdentifier;
+    NSString *_merchantProvidedDescription;
     NSDictionary *_metadata;
     long long _transactionStatus;
     long long _transactionType;
@@ -84,6 +90,9 @@
 @property (nonatomic) BOOL enRoute; // @synthesize enRoute=_enRoute;
 @property (copy, nonatomic) NSString *endStation; // @synthesize endStation=_endStation;
 @property (copy, nonatomic) NSData *endStationCode; // @synthesize endStationCode=_endStationCode;
+@property (nonatomic) double endStationLatitude; // @synthesize endStationLatitude=_endStationLatitude;
+@property (strong, nonatomic) CLLocation *endStationLocation;
+@property (nonatomic) double endStationLongitude; // @synthesize endStationLongitude=_endStationLongitude;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (strong, nonatomic) PKPaymentTransactionFees *fees; // @synthesize fees=_fees;
 @property (strong, nonatomic) PKPaymentTransactionForeignExchangeInformation *foreignExchangeInformation; // @synthesize foreignExchangeInformation=_foreignExchangeInformation;
@@ -104,6 +113,7 @@
 @property (nonatomic) double locationLongitude; // @synthesize locationLongitude=_locationLongitude;
 @property (nonatomic) double locationVerticalAccuracy; // @synthesize locationVerticalAccuracy=_locationVerticalAccuracy;
 @property (strong, nonatomic) PKMerchant *merchant; // @synthesize merchant=_merchant;
+@property (copy, nonatomic) NSString *merchantProvidedDescription; // @synthesize merchantProvidedDescription=_merchantProvidedDescription;
 @property (copy, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 @property (copy, nonatomic) NSString *paymentHash; // @synthesize paymentHash=_paymentHash;
 @property (copy, nonatomic) NSString *peerPaymentCounterpartHandle; // @synthesize peerPaymentCounterpartHandle=_peerPaymentCounterpartHandle;
@@ -127,8 +137,12 @@
 @property (nonatomic) long long secondaryFundingSourceNetwork; // @synthesize secondaryFundingSourceNetwork=_secondaryFundingSourceNetwork;
 @property (copy, nonatomic) NSUUID *sendDeviceScoreIdentifier; // @synthesize sendDeviceScoreIdentifier=_sendDeviceScoreIdentifier;
 @property (copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+@property (nonatomic) BOOL shouldSuppressDate; // @synthesize shouldSuppressDate=_shouldSuppressDate;
 @property (copy, nonatomic) NSString *startStation; // @synthesize startStation=_startStation;
 @property (copy, nonatomic) NSData *startStationCode; // @synthesize startStationCode=_startStationCode;
+@property (nonatomic) double startStationLatitude; // @synthesize startStationLatitude=_startStationLatitude;
+@property (strong, nonatomic) CLLocation *startStationLocation;
+@property (nonatomic) double startStationLongitude; // @synthesize startStationLongitude=_startStationLongitude;
 @property (copy, nonatomic) NSString *stationCodeProvider; // @synthesize stationCodeProvider=_stationCodeProvider;
 @property (copy, nonatomic) NSDecimalNumber *subtotalAmount; // @synthesize subtotalAmount=_subtotalAmount;
 @property (readonly, nonatomic) PKCurrencyAmount *subtotalCurrencyAmount;
@@ -156,8 +170,10 @@
 - (void)addUpdateReasons:(unsigned long long)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)formattedTransitTransactionMessage:(BOOL)arg1;
 - (BOOL)hasCloudArchivableDeviceData;
 - (unsigned long long)hash;
 - (id)init;
@@ -166,9 +182,9 @@
 - (BOOL)isCloudArchivableDeviceDataEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentTransaction:(id)arg1;
+- (unsigned long long)itemType;
 - (id)recordTypesAndNames;
 - (id)updateReasonsDescription;
-- (void)updateTransactionTypeFromDetailString:(id)arg1;
 
 @end
 

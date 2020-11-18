@@ -4,30 +4,36 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Vision/VNDetector.h>
+#import <Vision/VNEspressoModelFileBasedDetector.h>
 
+#import <Vision/VNDetectorKeyProviding-Protocol.h>
+
+@class NSString;
 @protocol VNModelFile;
 
 __attribute__((visibility("hidden")))
-@interface VNFaceLandmarkDetector : VNDetector
+@interface VNFaceLandmarkDetector : VNEspressoModelFileBasedDetector <VNDetectorKeyProviding>
 {
-    struct shared_ptr<vision::mod::LandmarkDetector> mFaceLandmarkAlgorithmImpl;
-    struct shared_ptr<vision::mod::LandmarkDetector> mFaceLandmarkMouthRefinerImpl;
-    struct shared_ptr<vision::mod::LandmarkDetector> mFaceLandmarkRightEyeRefinerImpl;
-    struct shared_ptr<vision::mod::LandmarkDetector> mFaceLandmarkLeftEyeRefinerImpl;
-    struct shared_ptr<vision::mod::LandmarkAttributes> mFaceAttributesPupilRefiner;
-    BOOL mModelFilesWereMemmapped;
-    id<VNModelFile> mCoreLandmarkModelFileHandle;
+    struct shared_ptr<vision::mod::LandmarkAttributes> _faceAttributesPupilRefiner;
     id<VNModelFile> mLandmarkRefinerModelFileHandle;
+    BOOL modelFilesWereMemmapped;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) void *faceAttributesPupilRefiner;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (struct _Geometry2D_point2D_)_computeCentroidUsingPoints:(const struct _Geometry2D_point2D_ *)arg1 indicies:(const int *)arg2 numberOfIndicies:(int)arg3;
++ (Class)detectorClassForConfigurationOptions:(id)arg1 error:(id *)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (unsigned long long)cascadeStepCountInOriginalModel;
-- (unsigned long long)cascadeStepCountLoaded;
+- (BOOL)completeInitializationAndReturnError:(id *)arg1;
+- (id)computeLandmarksScoreOnImage:(const struct vImage_Buffer *)arg1 withFaceBoundingBox:(const struct _Geometry2D_rect2D_ *)arg2 andLandmarks:(const void *)arg3 error:(id *)arg4;
+- (struct __CVBuffer *)createLumaPixelBufferFrom:(id)arg1 scaleToSize:(struct CGSize)arg2 forFaceBBox:(struct _Geometry2D_rect2D_)arg3 initializeVImage:(struct vImage_Buffer *)arg4 initializeRect2D:(struct _Geometry2D_rect2D_ *)arg5 initializeIgnoreCropAndScaleFlag:(BOOL *)arg6 initializeLumaScaleFromOriginal:(float *)arg7 options:(id)arg8 error:(id *)arg9;
 - (void)dealloc;
-- (id)initWithOptions:(id)arg1 error:(id *)arg2;
-- (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
+- (BOOL)detectBlinkOnFaceImage:(const struct vImage_Buffer *)arg1 faceObservation:(id)arg2 lumaRec2DInImageCoordinates:(struct _Geometry2D_rect2D_ *)arg3 landmarks:(const void *)arg4 options:(id)arg5 warningRecorder:(id)arg6 error:(id *)arg7;
 
 @end
 

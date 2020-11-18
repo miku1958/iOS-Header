@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDMagicMoveMatching-Protocol.h>
 
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) TSDCanvas *canvas; // @synthesize canvas=mCanvas;
 @property (readonly, nonatomic) struct CGPoint centerForRotation;
 @property (readonly, nonatomic) struct CGRect clipRect;
+@property (readonly, nonatomic) NSObject *dynamicOverride;
 @property (readonly, nonatomic) struct CGRect frameForMagicMove;
 @property (readonly, nonatomic) struct CGRect frameInUnscaledCanvas;
 @property (readonly, nonatomic) struct CGRect frameInUnscaledCanvasIncludingChrome;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (void)didDisplayTextureWithDescription:(id)arg1 isAtEndOfBuild:(BOOL)arg2;
 - (void)drawInContext:(struct CGContext *)arg1;
+- (void)dynamicOverrideDidChange;
 - (BOOL)forcesPlacementOnTop;
 - (void)i_configureFontSmoothingForContext:(struct CGContext *)arg1 layer:(id)arg2;
 - (struct CGRect)i_layerFrameInScaledCanvasIgnoringDragging;
@@ -65,8 +67,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (struct CGRect)layerFrameInScaledCanvasRelativeToParent;
 - (struct CGPath *)newPathInScaledCanvasFromNaturalRect:(struct CGRect)arg1;
-- (void)recursivelyDrawChildrenInContext:(struct CGContext *)arg1;
-- (void)recursivelyDrawInContext:(struct CGContext *)arg1;
+- (void)recursivelyDrawChildrenInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
+- (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (void)recursivelyPerformSelector:(SEL)arg1;
 - (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
@@ -79,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)updateChildrenFromLayout;
 - (void)updateFromLayout;
 - (void)willBeRemoved;
+- (void)willLayoutAndRenderInBackground;
 
 @end
 

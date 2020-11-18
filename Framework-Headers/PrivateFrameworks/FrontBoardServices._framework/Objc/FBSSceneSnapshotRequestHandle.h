@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBSSceneSnapshotContext, FBSSceneSnapshotRequestAction;
 
@@ -17,9 +17,9 @@
 }
 
 + (id)handleForRequestType:(unsigned long long)arg1 context:(id)arg2;
+- (void).cxx_destruct;
 - (void)_clearAction;
 - (void)cancelRequest;
-- (void)dealloc;
 - (id)initWithRequestType:(unsigned long long)arg1 context:(id)arg2;
 - (void)performRequestForScene:(id)arg1;
 

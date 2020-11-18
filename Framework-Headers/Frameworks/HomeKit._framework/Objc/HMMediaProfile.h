@@ -10,14 +10,13 @@
 #import <HomeKit/HMMediaObject-Protocol.h>
 #import <HomeKit/_HMMediaProfileDelegate-Protocol.h>
 
-@class HMAccessorySettings, HMHome, HMMediaSession, NSObject, NSString;
-@protocol HMMediaProfileDelegate, OS_dispatch_queue;
+@class HMAccessorySettings, HMHome, HMMediaSession, NSString;
+@protocol HMMediaProfileDelegate;
 
 @interface HMMediaProfile : HMAccessoryProfile <_HMMediaProfileDelegate, HMMediaObject, HMAccessorySettingsContainer>
 {
     NSString *_routeUID;
     id<HMMediaProfileDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (readonly, weak) HMHome *containerHome;
@@ -26,7 +25,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) HMMediaSession *mediaSession;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) NSString *routeUID; // @synthesize routeUID=_routeUID;
 @property (readonly) HMAccessorySettings *settings;
 @property (readonly) Class superclass;

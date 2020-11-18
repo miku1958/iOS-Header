@@ -47,6 +47,7 @@
 - (void)_sendPasswordReceived;
 - (void)activate;
 - (void)dealloc;
+- (BOOL)disabledViaConfig;
 - (id)init;
 - (void)invalidate;
 - (id)messageForDisplayName:(id)arg1 deviceName:(id)arg2 info:(id)arg3;

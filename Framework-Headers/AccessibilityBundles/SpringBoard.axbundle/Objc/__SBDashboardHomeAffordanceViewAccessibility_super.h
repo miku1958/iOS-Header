@@ -6,7 +6,7 @@
 
 #import <AXSafeCategoryBundle/UIAccessibilitySafeCategory.h>
 
-@interface __SBDashboardHomeAffordanceViewAccessibility_super : UIAccessibilitySafeCategory
+@interface __SBDashBoardHomeAffordanceViewAccessibility_super : UIAccessibilitySafeCategory
 {
 }
 

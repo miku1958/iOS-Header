@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSMutableSet, NSUserDefaults;
 @protocol OS_dispatch_queue;
@@ -25,6 +25,7 @@
 + (void)__processPropertyMetadata:(id)arg1;
 + (BOOL)__useDynamicMethodResolution;
 + (void)initialize;
+- (void).cxx_destruct;
 - (void)_addObserver:(id)arg1;
 - (void)_bindAndRegisterDefaults;
 - (void)_bindDefaultsIfNecessary;

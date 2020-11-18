@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithVersion:(id)arg1;
 - (BOOL)isMissingUploadsWithDiffs:(unsigned long long)arg1;
 - (id)isPackageObj;
+- (BOOL)shouldRecreateUploadJobGivenDiffs:(unsigned long long)arg1;
 - (id)sizeObj;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 - (void)updateFromFSAtPath:(id)arg1 filenameOverride:(id)arg2;

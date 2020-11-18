@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 
 - (void).cxx_destruct;
+- (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
 - (id)initWithRecordZoneIDs:(id)arg1;
 - (int)operationType;

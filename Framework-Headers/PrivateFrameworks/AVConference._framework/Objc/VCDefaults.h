@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSNumber;
 
@@ -20,16 +20,25 @@ __attribute__((visibility("hidden")))
     int _forceBitrate;
     int _forceVideoPayload;
     int _forceRecvVideoPayload;
+    int _forceKeyFrameInterval;
 }
 
+@property (readonly) unsigned int aacBlockSize;
+@property (readonly) unsigned char audioPriorityDecayFast;
+@property (readonly) unsigned char audioPriorityDecaySlow;
+@property (readonly) unsigned char audioPriorityRampUpSpeed;
 @property (readonly) BOOL audioRecordingEnabled;
+@property (readonly) float audioVoiceDetectionSensitivity;
 @property (readonly) int bundleAudio;
 @property (readonly) BOOL canDecodeHD;
 @property (readonly) BOOL cannedReplayEnabled;
+@property (readonly) float depthFrameRateMultiplier;
 @property (readonly) BOOL disableRed;
 @property (readonly) BOOL disableVAD;
+@property (readonly) BOOL dumpMediaBlob;
 @property (readonly) int enable2vuyCapture;
 @property (readonly) BOOL enableBitstreamCapture;
+@property (readonly) BOOL enablePacketLogging;
 @property (readonly) BOOL enableRecvBitstreamDump;
 @property (readonly) BOOL enableTxBitstreamDump;
 @property (readonly) int enableTxSourceYuvDump;
@@ -37,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSNumber *enableiRATSuggestion;
 @property (readonly) int encodingScore;
 @property (readonly) int extraPayloads;
+@property (readonly) BOOL forceARCapture;
 @property (readonly) int forceAudioBitrate;
 @property (readonly) int forceAudioChannelCount;
 @property (readonly) int forceAudioHardwareSampleRate;
@@ -44,15 +54,35 @@ __attribute__((visibility("hidden")))
 @property (readonly) int forceAudioPayload;
 @property (readonly) float forceAudioPowerThreshold;
 @property (readonly) int forceAudioPowerTimeInterval;
+@property (readonly) BOOL forceAudioPriorityEnabled;
+@property (readonly) unsigned char forceAudioPriorityValue;
 @property (readonly) int forceBitrate;
 @property (readonly) int forceCaptureHeight;
 @property (readonly) int forceCaptureWidth;
+@property (readonly) BOOL forceDisableAudioPowerSpectrumRegister;
+@property (readonly) BOOL forceDisableFaceZoom;
+@property (readonly) BOOL forceDisableMediaEncryption;
+@property (readonly) BOOL forceDisableMediaPriority;
+@property (readonly) BOOL forceDisableMediaQueue;
+@property (readonly) BOOL forceDisableMediaStalled;
+@property (readonly) BOOL forceDisableMessageEncryption;
+@property (readonly) BOOL forceDisableReporting;
+@property (readonly) BOOL forceDisableThermal;
+@property (readonly) BOOL forceDisableVideoDegraded;
+@property (readonly) BOOL forceDynamicEffectsFramerate;
+@property (readonly) BOOL forceEVSWideBand;
+@property (readonly) BOOL forceEnablePearlCamera;
 @property (readonly) int forceEncodeFramerate;
 @property (readonly) int forceEncodeHeight;
 @property (readonly) int forceEncodeWidth;
+@property (readonly) BOOL forceFECRepairStream;
 @property (readonly) int forceFramerate;
 @property (readonly) BOOL forceHWI;
 @property (readonly) BOOL forceIPv6;
+@property (readonly) int forceKeyFrameInterval;
+@property (readonly) BOOL forceMirroredCapture;
+@property (readonly) BOOL forceMultiwayHWI;
+@property (readonly) BOOL forceMuteAtStart;
 @property (readonly) int forceRecvVideoPayload;
 @property (readonly) int forceRedMaxDelay;
 @property (readonly) int forceRedNumPayloads;
@@ -66,24 +96,52 @@ __attribute__((visibility("hidden")))
 @property (readonly) int forceVideoStreamRxMinBitrate;
 @property (readonly) int forceVideoStreamTxMaxBitrate;
 @property (readonly) int forceVideoStreamTxMinBitrate;
+@property (readonly) unsigned int forceVisibilityIndex;
 @property (readonly) int localWRMLinkType;
 @property (readonly) int max2GRate;
+@property (readonly) unsigned int maxActiveVideoDecoders;
+@property (readonly) unsigned int maxActiveVideoEncoders;
+@property (readonly) BOOL mediaQueueDumpEnabled;
+@property (readonly) unsigned int minParticipantCountSendVoiceActiveOnly;
 @property (readonly) BOOL momentsUserPreferenceEnabled;
+@property (readonly) unsigned int multiwayAudioNetworkBitrateCapCellular;
+@property (readonly) unsigned int multiwayAudioNetworkBitrateCapWifi;
+@property (readonly) unsigned int multiwayVideoNetworkBitrateCapCellular;
+@property (readonly) unsigned int multiwayVideoNetworkBitrateCapWifi;
+@property (readonly) float pauseHeartbeatInterval;
+@property (readonly) unsigned int prominenceActiveAccumulationThreshold;
+@property (readonly) unsigned int prominenceActiveProbabilityThreshold;
+@property (readonly) unsigned int prominenceInactiveAccumulationThreshold;
+@property (readonly) unsigned int prominenceInactiveProbabilityThreshold;
 @property (readonly) BOOL rateControlDumpEnabled;
+@property (readonly) int rateControlForceRxCap;
+@property (readonly) int rateControlForceRxRate;
+@property (readonly) int rateControlForceTxCap;
+@property (readonly) int rateControlForceTxRate;
 @property (readonly) BOOL rateControlLogEnabled;
+@property (readonly) int redundancyControlForceVideoRedundancyPercentage;
 @property (readonly) BOOL shouldDisplayVideoInfoLayer;
+@property (readonly) unsigned int silenceLevelMovingAveragePeriod;
+@property (readonly) BOOL useSBR;
 @property (readonly) int videoStreamRateControlAlgorithm;
 @property (readonly) BOOL videoStreamRateControlDumpEnabled;
 
++ (BOOL)booleanValueForKey:(struct __CFString *)arg1;
++ (BOOL)booleanValueForKey:(struct __CFString *)arg1 defaultValue:(BOOL)arg2;
 + (double)getDoubleValueForKey:(struct __CFString *)arg1 defaultValue:(double)arg2;
++ (long long)integerValueForKey:(struct __CFString *)arg1;
++ (long long)integerValueForKey:(struct __CFString *)arg1 defaultValue:(long long)arg2;
 + (id)sharedInstance;
 - (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)autorelease;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned int)forceThermalLevelFramerate:(unsigned int)arg1;
 - (id)init;
 - (oneway void)release;
 - (id)retain;
 - (unsigned long long)retainCount;
+- (void)seperateString:(id)arg1;
+- (BOOL)shouldOverrideEffectsFramerate:(unsigned int *)arg1;
 
 @end
 

@@ -59,6 +59,7 @@
 - (id)initWithBaseURL:(id)arg1;
 - (BOOL)openWithRecoveryHandler:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (BOOL)releaseFileURL:(id)arg1 error:(id *)arg2;
+- (BOOL)resetWithError:(id *)arg1;
 - (id)retainFileURLForIdentity:(id)arg1 resourceType:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)storeData:(id)arg1 identity:(id)arg2 isOriginal:(BOOL)arg3 needsCommit:(BOOL *)arg4 error:(id *)arg5;
 - (BOOL)storeFileAtURL:(id)arg1 identity:(id)arg2 isOriginal:(BOOL)arg3 needsCommit:(BOOL *)arg4 error:(id *)arg5;

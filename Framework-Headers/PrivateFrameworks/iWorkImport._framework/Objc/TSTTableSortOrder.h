@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -13,22 +13,23 @@
 __attribute__((visibility("hidden")))
 @interface TSTTableSortOrder : NSObject <NSCopying>
 {
-    NSIndexSet *mCachedIndices;
-    int mType;
-    NSArray *mRules;
+    int _type;
+    NSArray *_rules;
+    NSIndexSet *_cachedIndexes;
 }
 
-@property (readonly, nonatomic) NSIndexSet *columnIndices;
+@property (readonly, nonatomic) NSIndexSet *baseColumnIndices;
+@property (strong, nonatomic) NSIndexSet *cachedIndexes; // @synthesize cachedIndexes=_cachedIndexes;
 @property (readonly, nonatomic) BOOL empty;
 @property (readonly, nonatomic) unsigned long long ruleCount;
-@property (readonly, nonatomic) NSArray *rules; // @synthesize rules=mRules;
-@property (readonly, nonatomic) int type; // @synthesize type=mType;
+@property (readonly, nonatomic) NSArray *rules; // @synthesize rules=_rules;
+@property (readonly, nonatomic) int type; // @synthesize type=_type;
 
-+ (id)sortOrderWithColumn:(unsigned char)arg1 direction:(int)arg2 type:(int)arg3;
++ (id)sortOrderWithBaseColumn:(struct TSUModelColumnIndex)arg1 direction:(int)arg2 type:(int)arg3;
 + (id)sortOrderWithRules:(id)arg1 type:(int)arg2;
-- (BOOL)containsAnyRulesInColumns:(id)arg1;
+- (void).cxx_destruct;
+- (BOOL)containsAnyRulesInBaseColumns:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeToArchive:(struct TableSortOrderArchive *)arg1;
 - (unsigned long long)hash;
 - (id)initFromArchive:(const struct TableSortOrderArchive *)arg1;
@@ -36,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (id)sortOrderByAddingRule:(id)arg1;
 - (id)sortOrderByChangingTypeTo:(int)arg1;
-- (id)sortOrderByRemovingColumnIndices:(id)arg1;
+- (id)sortOrderByRemovingBaseColumnIndices:(id)arg1;
 - (id)sortOrderByRemovingRuleAtIndex:(unsigned long long)arg1;
 - (id)sortOrderByReplacingRuleAtIndex:(unsigned long long)arg1 withRule:(id)arg2;
 - (id)sortOrderByReplacingRulesWithRules:(id)arg1;

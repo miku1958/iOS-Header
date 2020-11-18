@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic) BOOL canBeRefreshed;
+@property (nonatomic) BOOL canUseServerTTS;
 @property (strong, nonatomic) id<SAAceSerializable> context;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSNumber *deferredRendering;

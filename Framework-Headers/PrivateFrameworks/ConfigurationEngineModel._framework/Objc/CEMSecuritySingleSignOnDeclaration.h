@@ -8,36 +8,36 @@
 
 #import <ConfigurationEngineModel/CEMRegisteredTypeProtocol-Protocol.h>
 
-@class NSDictionary, NSString;
+@class CEMSecuritySingleSignOnDeclaration_Kerberos, NSString;
 
 @interface CEMSecuritySingleSignOnDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadName;
+    CEMSecuritySingleSignOnDeclaration_Kerberos *_payloadKerberos;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSDictionary *payloadKerberos;
-@property (readonly, nonatomic) NSString *payloadName;
+@property (copy, nonatomic) CEMSecuritySingleSignOnDeclaration_Kerberos *payloadKerberos; // @synthesize payloadKerberos=_payloadKerberos;
+@property (copy, nonatomic) NSString *payloadName; // @synthesize payloadName=_payloadName;
 @property (readonly) Class superclass;
 
-+ (id)Kerberos_allowedPayloadKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withName:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withName:(id)arg2 withKerberos:(id)arg3;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadKerberos:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validPayloadKerberos_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

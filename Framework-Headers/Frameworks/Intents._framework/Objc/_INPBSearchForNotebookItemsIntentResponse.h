@@ -7,30 +7,36 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSearchForNotebookItemsIntentResponse-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBSearchForNotebookItemsIntentResponse : PBCodable <NSCopying>
+@interface _INPBSearchForNotebookItemsIntentResponse : PBCodable <_INPBSearchForNotebookItemsIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_notes;
-    int _sortType;
-    NSMutableArray *_taskLists;
-    NSMutableArray *_tasks;
     struct {
         unsigned int sortType:1;
     } _has;
+    int _sortType;
+    NSArray *_notes;
+    NSArray *_taskLists;
+    NSArray *_tasks;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasSortType;
-@property (strong, nonatomic) NSMutableArray *notes; // @synthesize notes=_notes;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *notes; // @synthesize notes=_notes;
+@property (readonly, nonatomic) unsigned long long notesCount;
 @property (nonatomic) int sortType; // @synthesize sortType=_sortType;
-@property (strong, nonatomic) NSMutableArray *taskLists; // @synthesize taskLists=_taskLists;
-@property (strong, nonatomic) NSMutableArray *tasks; // @synthesize tasks=_tasks;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *taskLists; // @synthesize taskLists=_taskLists;
+@property (readonly, nonatomic) unsigned long long taskListsCount;
+@property (copy, nonatomic) NSArray *tasks; // @synthesize tasks=_tasks;
+@property (readonly, nonatomic) unsigned long long tasksCount;
 
 + (Class)notesType;
-+ (id)options;
 + (Class)taskListsType;
 + (Class)tasksType;
 - (void).cxx_destruct;
@@ -42,19 +48,13 @@
 - (void)clearTaskLists;
 - (void)clearTasks;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (id)notesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)notesCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)sortTypeAsString:(int)arg1;
 - (id)taskListsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)taskListsCount;
 - (id)tasksAtIndex:(unsigned long long)arg1;
-- (unsigned long long)tasksCount;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -8,31 +8,33 @@
 
 #import <iWorkImport/TSTFormulaToken-Protocol.h>
 
-@class NSArray, NSString, TSCEFunctionArgumentSpec, TSTWPTokenAttachment, UIViewController;
+@class NSArray, NSString, TSTWPTokenAttachment, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface TSTExpressionNode : TSPObject <TSTFormulaToken>
 {
-    NSArray *mChildren;
-    TSCEFunctionArgumentSpec *mArgumentSpec;
-    TSTWPTokenAttachment *mTokenAttachment;
-    unsigned long long mFirstIndex;
-    unsigned long long mLastIndex;
-    NSString *mWhitespaceBefore;
-    NSString *mWhitespaceAfter;
+    NSArray *_children;
+    struct TSCEFunctionArgSpec *_argumentSpec;
+    TSTWPTokenAttachment *_tokenAttachment;
+    unsigned long long _firstIndex;
+    unsigned long long _lastIndex;
+    NSString *_whitespaceBefore;
+    NSString *_whitespaceAfter;
 }
 
-@property (strong, nonatomic) TSCEFunctionArgumentSpec *argumentSpec;
+@property (nonatomic) struct TSCEFunctionArgSpec *argumentSpec;
 @property (strong, nonatomic) NSArray *children;
-@property (nonatomic) unsigned long long firstIndex; // @synthesize firstIndex=mFirstIndex;
-@property (nonatomic) unsigned long long lastIndex; // @synthesize lastIndex=mLastIndex;
+@property (nonatomic) unsigned long long firstIndex; // @synthesize firstIndex=_firstIndex;
+@property (readonly, nonatomic) BOOL isOptional;
+@property (nonatomic) unsigned long long lastIndex; // @synthesize lastIndex=_lastIndex;
 @property (readonly, strong, nonatomic) UIViewController *popover;
 @property (readonly, nonatomic) NSString *string; // @dynamic string;
-@property (nonatomic) TSTWPTokenAttachment *tokenAttachment; // @synthesize tokenAttachment=mTokenAttachment;
+@property (nonatomic) TSTWPTokenAttachment *tokenAttachment; // @synthesize tokenAttachment=_tokenAttachment;
 @property (readonly, nonatomic) int tokenType; // @dynamic tokenType;
-@property (strong, nonatomic) NSString *whitespaceAfter; // @synthesize whitespaceAfter=mWhitespaceAfter;
-@property (strong, nonatomic) NSString *whitespaceBefore; // @synthesize whitespaceBefore=mWhitespaceBefore;
+@property (strong, nonatomic) NSString *whitespaceAfter; // @synthesize whitespaceAfter=_whitespaceAfter;
+@property (strong, nonatomic) NSString *whitespaceBefore; // @synthesize whitespaceBefore=_whitespaceBefore;
 
+- (void).cxx_destruct;
 - (void)addAllIdentifiersToSymbolTable:(struct TSCESymbolTable *)arg1;
 - (void)addTSTCanvasReferencesToSet:(id)arg1 inRangeContext:(unsigned char)arg2 withColorHelper:(id)arg3 preferringNodesFromStorage:(id)arg4 allVisitedNodes:(id)arg5;
 - (void)addVariablesMatchingPrefix:(id)arg1 forFormulaIndex:(unsigned long long)arg2 toDictionary:(id)arg3 symbolTable:(struct TSCESymbolTable *)arg4;
@@ -40,9 +42,8 @@ __attribute__((visibility("hidden")))
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
 - (BOOL)canEliminateLargestCommonSubexpressionWithSymbolTable:(struct TSCESymbolTable *)arg1;
 - (long long)compareFirstLastIndices:(id)arg1;
-- (id)copyByResolvingIdentifiers:(id)arg1 hostTable:(id)arg2 forceReferenceInterpretation:(BOOL)arg3 symbolTable:(struct TSCESymbolTable *)arg4 oldToNewNodeMap:(id)arg5;
+- (id)copyByResolvingIdentifiers:(id)arg1 hostTable:(id)arg2 baseHostCell:(struct TSUCellCoord)arg3 forceReferenceInterpretation:(BOOL)arg4 symbolTable:(struct TSCESymbolTable *)arg5 oldToNewNodeMap:(id)arg6;
 - (id)copyIntoContext:(id)arg1 bakeModes:(BOOL)arg2 children:(id)arg3;
-- (void)dealloc;
 - (id)deepCopyIntoContext:(id)arg1 bakeModes:(BOOL)arg2 withTokenDict:(id)arg3;
 - (id)description;
 - (id)detokenizedText;
@@ -69,12 +70,15 @@ __attribute__((visibility("hidden")))
 - (void)loadFromArchive:(const struct ExpressionNodeArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)lowestCommonAncestor:(id)arg1;
+- (id)mostSpecificNodeContainingIndex:(unsigned long long)arg1 correspondingIndex:(unsigned long long)arg2;
 - (id)p_eliminateLargestCommonSubexpressionWithLCA:(id)arg1 expressions:(id)arg2 withSymbolTable:(struct TSCESymbolTable *)arg3 newIdentifierOut:(id *)arg4;
 - (struct _NSRange)range;
+- (struct _NSRange)rangeEncompassingExpressionNodesInRange:(struct _NSRange)arg1;
 - (struct TSTCSENodeData)recordHashesForSubexpressions:(id)arg1;
 - (void)replaceOccurrencesOfChildrenInSet:(id)arg1 withIdentifier:(id)arg2 symbol:(unsigned int)arg3;
 - (void)saveToArchive:(struct ExpressionNodeArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (BOOL)subtreeContainsIndex:(unsigned long long)arg1;
 - (unsigned int)symbol;
 
 @end

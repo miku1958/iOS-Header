@@ -13,7 +13,6 @@
 
 @interface _SFPBButton : PBCodable <_SFPBButton, NSSecureCoding>
 {
-    CDStruct_e4e3bb5e _has;
     BOOL _isSelected;
     _SFPBImage *_image;
     _SFPBImage *_selectedImage;
@@ -21,9 +20,6 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasImage;
-@property (readonly, nonatomic) BOOL hasIsSelected;
-@property (readonly, nonatomic) BOOL hasSelectedImage;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _SFPBImage *image; // @synthesize image=_image;
 @property (nonatomic) BOOL isSelected; // @synthesize isSelected=_isSelected;

@@ -8,13 +8,12 @@
 
 #import <SpringBoardFoundation/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, SBFLockScreenWallpaperParallaxSettings, SBFSubject, UIColor, UIImageView, UIScrollView;
+@class NSString, SBFLockScreenWallpaperParallaxSettings, SBFSubject, UIImageView, UIScrollView;
 @protocol SBFCancelable;
 
 @interface SBFScrollableStaticWallpaperView : SBFStaticWallpaperView <UIScrollViewDelegate>
 {
     UIImageView *_imageView;
-    UIImageView *_gradientView;
     UIScrollView *_scrollView;
     SBFLockScreenWallpaperParallaxSettings *_parallaxSettings;
     SBFSubject *_scrollViewObserver;
@@ -22,11 +21,10 @@
     id<SBFCancelable> _parallaxCancelToken;
     double _minimumZoomScaleForParallax;
     double _minimumZoomScale;
-    BOOL _parallaxCanBeEnabledAutomatically;
-    UIColor *_averageColor;
+    BOOL _automaticallyEnablesParallax;
 }
 
-@property (readonly, weak) UIColor *averageColor; // @synthesize averageColor=_averageColor;
+@property (nonatomic) BOOL automaticallyEnablesParallax; // @synthesize automaticallyEnablesParallax=_automaticallyEnablesParallax;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -46,7 +44,7 @@
 - (id)_scrollView;
 - (double)_scrollViewParallaxFactor;
 - (void)_setupColorBoxObserver;
-- (void)_setupContentView;
+- (void)_setupContentViewWithOptions:(unsigned long long)arg1;
 - (void)_setupParallaxObserver;
 - (void)_setupScrollView;
 - (void)_setupScrollViewObserver;
@@ -60,7 +58,6 @@
 - (void)didMoveToWindow;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 variant:(long long)arg3 wallpaperSettingsProvider:(id)arg4;
 - (void)layoutSubviews;
-- (void)legibilitySettingsDidChange;
 - (double)parallaxFactor;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;

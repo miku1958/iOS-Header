@@ -7,10 +7,11 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class NSNumber;
+@class INSpeakableString, NSNumber;
 
 @protocol INSetSeatSettingsInCarIntentExport <NSObject, JSExport>
 
+@property (copy, nonatomic) INSpeakableString *carName;
 @property (copy, nonatomic) NSNumber *enableCooling;
 @property (copy, nonatomic) NSNumber *enableHeating;
 @property (copy, nonatomic) NSNumber *enableMassage;

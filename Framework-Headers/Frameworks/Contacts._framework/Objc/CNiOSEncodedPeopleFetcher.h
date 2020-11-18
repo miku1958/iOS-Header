@@ -23,9 +23,9 @@
 }
 
 @property (readonly, nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
-@property (readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (readonly, nonatomic) CNContactFetchRequest *contactFetchRequest; // @synthesize contactFetchRequest=_contactFetchRequest;
-@property (readonly, nonatomic) id<CNEncodedFetchCursor> cursor; // @synthesize cursor=_cursor;
+@property (strong, nonatomic) id<CNEncodedFetchCursor> cursor; // @synthesize cursor=_cursor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CNContactsEnvironment *environment; // @synthesize environment=_environment;

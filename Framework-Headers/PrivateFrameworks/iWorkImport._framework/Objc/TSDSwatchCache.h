@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSOperationQueue;
 
@@ -15,13 +15,14 @@ __attribute__((visibility("hidden")))
 }
 
 + (void)applyFakeShadowForPresetsIfNecessary:(id)arg1 documentRoot:(id)arg2;
++ (BOOL)applyFakeStrokeIfNeededForShape:(id)arg1 documentRoot:(id)arg2 backgroundAppearance:(unsigned long long)arg3;
 + (struct CGImage *)newImageForDarkBackground:(struct CGImage *)arg1 atScale:(double)arg2 ofSize:(struct CGSize)arg3 inset:(struct CGSize)arg4;
 + (id)swatchCache;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)imageForImagePreset:(id)arg1 imageSize:(struct CGSize)arg2 imageScale:(double)arg3 imageInfo:(id)arg4 shouldClipVertically:(BOOL)arg5 documentRoot:(id)arg6 renderForWideGamut:(BOOL)arg7;
 - (id)imageForMoviePreset:(id)arg1 imageSize:(struct CGSize)arg2 imageScale:(double)arg3 movieInfo:(id)arg4 shouldClipVertically:(BOOL)arg5 documentRoot:(id)arg6 renderForWideGamut:(BOOL)arg7;
-- (id)imageForShapePreset:(id)arg1 imageSize:(struct CGSize)arg2 imageScale:(double)arg3 shapeType:(int)arg4 shapePathSource:(id)arg5 angle:(double)arg6 documentRoot:(id)arg7 renderForWideGamut:(BOOL)arg8;
+- (id)imageForShapePreset:(id)arg1 imageSize:(struct CGSize)arg2 imageScale:(double)arg3 shapeType:(int)arg4 shapePathSource:(id)arg5 angle:(double)arg6 backgroundAppearance:(unsigned long long)arg7 documentRoot:(id)arg8 renderForWideGamut:(BOOL)arg9;
 - (struct CGSize)imageSizeForPreset:(id)arg1 swatchSize:(struct CGSize)arg2;
 - (id)init;
 - (id)p_maskInfoForMovieInfo:(id)arg1 context:(id)arg2;

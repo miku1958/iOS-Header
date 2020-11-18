@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBSSystemService;
 
@@ -13,10 +13,10 @@
     FBSSystemService *_fbsSystemService;
 }
 
+- (void).cxx_destruct;
 - (BOOL)canOpenApplication:(id)arg1 reason:(int *)arg2;
 - (void)cleanupClientPort:(unsigned int)arg1;
 - (unsigned int)createClientPort;
-- (void)dealloc;
 - (id)init;
 - (void)openApplication:(id)arg1 options:(id)arg2 clientPort:(unsigned int)arg3 withResult:(CDUnknownBlockType)arg4;
 - (void)openApplication:(id)arg1 options:(id)arg2 withResult:(CDUnknownBlockType)arg3;

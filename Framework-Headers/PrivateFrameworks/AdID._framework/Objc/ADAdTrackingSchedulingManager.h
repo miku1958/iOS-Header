@@ -15,11 +15,11 @@
 {
     BOOL _isConfigRequestInFlight;
     id<NSObject> _storeFrontNotifyToken;
-    id<NSObject> _cloudKitNotifyToken;
+    id<NSObject> _accountChangedNotifyToken;
     APSConnection *_pushConnection;
 }
 
-@property (strong, nonatomic) id<NSObject> cloudKitNotifyToken; // @synthesize cloudKitNotifyToken=_cloudKitNotifyToken;
+@property (strong, nonatomic) id<NSObject> accountChangedNotifyToken; // @synthesize accountChangedNotifyToken=_accountChangedNotifyToken;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -35,13 +35,11 @@
 - (void)connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (id)currentBundleID;
 - (void)dealloc;
-- (BOOL)deviceUnlockedOnce;
 - (void)forceExpiration;
 - (void)handleAccountChange;
 - (void)handleConfiguration;
 - (id)init;
 - (BOOL)isAdEnabledLocality;
-- (BOOL)purpleBuddyWillRun;
 - (void)pushDisable;
 - (void)pushEnable;
 - (void)refreshConfiguration:(CDUnknownBlockType)arg1;

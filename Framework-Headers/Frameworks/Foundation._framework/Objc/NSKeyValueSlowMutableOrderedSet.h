@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     char _padding[3];
 }
 
-+ (CDStruct_7c9a8e9f *)_proxyNonGCPoolPointer;
 - (id)_createNonNilMutableOrderedSetValueWithSelector:(SEL)arg1;
 - (id)_nonNilOrderedSetValueWithSelector:(SEL)arg1;
 - (id)_proxyInitWithContainer:(id)arg1 getter:(id)arg2;

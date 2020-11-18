@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable;
 
@@ -12,12 +12,16 @@
 {
     struct CGAffineTransform _transform;
     NSHashTable *_targets;
+    BOOL _appliesToSystemGestureView;
 }
 
+@property (nonatomic) BOOL appliesToSystemGestureView; // @synthesize appliesToSystemGestureView=_appliesToSystemGestureView;
 @property (nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
 
 + (struct CGAffineTransform)concatenateTransforms:(id)arg1;
+- (void).cxx_destruct;
 - (id)_initWithTransform:(struct CGAffineTransform)arg1;
+- (void)_notifyTargetsTransformDidUpdate;
 - (void)addTransformTarget:(id)arg1;
 - (void)dealloc;
 - (id)description;

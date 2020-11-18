@@ -8,10 +8,11 @@
 
 #import <ClockKitUI/_CLKUITimeLabelManager-Protocol.h>
 
-@class CLKTimeFormatter, CLKUITimeLabelStyle, NSAttributedString, NSString, UIColor, UILabel, UIView;
+@class CLKDevice, CLKTimeFormatter, CLKUITimeLabelStyle, NSAttributedString, NSString, UIColor, UILabel, UIView;
 
 @interface _CLKUIBasicTimeLabelManager : NSObject <_CLKUITimeLabelManager>
 {
+    CLKDevice *_device;
     UILabel *_label;
     CLKTimeFormatter *_timeFormatter;
     NSString *_timeText;
@@ -43,19 +44,20 @@
 
 - (void).cxx_destruct;
 - (id)_attributedTextShowingBlinker:(BOOL)arg1 numbers:(BOOL)arg2;
-- (id)_initPrimary:(BOOL)arg1 withTimeFormatter:(id)arg2 options:(unsigned long long)arg3 labelFactory:(CDUnknownBlockType)arg4;
+- (id)_initForDevice:(id)arg1 primary:(BOOL)arg2 withTimeFormatter:(id)arg3 options:(unsigned long long)arg4 labelFactory:(CDUnknownBlockType)arg5;
 - (double)_lastLineBaseline;
 - (void)_updateAttributedText;
 - (id)effectiveAttributedText;
 - (id)effectiveFont;
 - (void)enumerateUnderlyingLabelsWithBlock:(CDUnknownBlockType)arg1;
-- (id)initWithTimeFormatter:(id)arg1 options:(unsigned long long)arg2 labelFactory:(CDUnknownBlockType)arg3;
+- (id)initWithForDevice:(id)arg1 timeFormatter:(id)arg2 options:(unsigned long long)arg3 labelFactory:(CDUnknownBlockType)arg4;
 - (void)setMaxWidth:(double)arg1;
 - (void)setShowsDesignator:(BOOL)arg1;
 - (void)setStyle:(id)arg1;
 - (struct CGSize)sizeThatFits;
 - (void)sizeViewToFit;
 - (void)updateTimeText;
+- (id)viewForLastBaselineLayout;
 
 @end
 

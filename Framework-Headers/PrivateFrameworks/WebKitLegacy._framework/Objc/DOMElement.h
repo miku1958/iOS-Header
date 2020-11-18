@@ -82,6 +82,8 @@
 - (int)structuralComplexityContribution;
 - (id)uiactions;
 - (BOOL)webkitMatchesSelector:(id)arg1;
+- (void)webkitRequestFullScreen:(unsigned short)arg1;
+- (void)webkitRequestFullscreen;
 
 @end
 

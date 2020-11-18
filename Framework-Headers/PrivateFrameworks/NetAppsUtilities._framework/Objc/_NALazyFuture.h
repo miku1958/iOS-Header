@@ -9,6 +9,7 @@
 @class NSObject;
 @protocol NAScheduler, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface _NALazyFuture : NAFuture
 {
     BOOL _started;

@@ -15,7 +15,7 @@
 
 @property (copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 

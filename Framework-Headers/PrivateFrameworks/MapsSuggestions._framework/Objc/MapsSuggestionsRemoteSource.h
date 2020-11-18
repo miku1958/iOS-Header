@@ -31,14 +31,16 @@
 - (void).cxx_destruct;
 - (void)_closeConnection;
 - (BOOL)_openConnectionIfNecessary;
-- (void)addOrUpdateSuggestionEntriesData:(id)arg1 sourceNameData:(id)arg2 deleteMissing:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
-- (BOOL)canProduceEntriesOfType:(unsigned long long)arg1;
+- (void)addOrUpdateSuggestionEntriesData:(id)arg1 sourceNameData:(id)arg2 deleteMissing:(BOOL)arg3 handler:(CDUnknownBlockType)arg4;
+- (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (void)dealloc;
-- (void)deleteEntriesData:(id)arg1 sourceNameData:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)deleteEntriesData:(id)arg1 sourceNameData:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)initWithDelegate:(id)arg1;
+- (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
 - (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesOfType:(long long)arg1;
 
 @end
 

@@ -25,7 +25,6 @@
 - (void).cxx_destruct;
 - (void)client_deliverDateRangeDictionary:(struct NSDictionary *)arg1 forQuery:(id)arg2;
 - (id)initWithHandler:(CDUnknownBlockType)arg1;
-- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_queryDidDeactivate:(id)arg1;
 - (BOOL)queue_shouldDeactivateAfterInitialResults;

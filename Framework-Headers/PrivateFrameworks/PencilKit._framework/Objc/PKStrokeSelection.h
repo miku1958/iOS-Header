@@ -34,9 +34,9 @@
 + (id)strokeSelectionFromData:(id)arg1;
 + (id)writableTypeIdentifiersForItemProvider;
 - (void).cxx_destruct;
-- (id)allStrokes;
 - (struct CGRect)bounds;
 - (struct CGRect)boundsWithoutLasso;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)imageDataForSelection;
 - (id)initWithStrokes:(id)arg1 lassoStroke:(id)arg2 drawing:(id)arg3;
 - (id)loadDataWithTypeIdentifier:(id)arg1 forItemProviderCompletionHandler:(CDUnknownBlockType)arg2;

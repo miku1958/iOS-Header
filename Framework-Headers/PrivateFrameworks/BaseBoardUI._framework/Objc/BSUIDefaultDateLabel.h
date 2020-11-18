@@ -36,7 +36,7 @@
 @property (nonatomic) BOOL isTimestamp; // @synthesize isTimestamp=_isTimestamp;
 @property (nonatomic) long long labelType; // @synthesize labelType=_labelType;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) NSDate *timeZoneRelativeStartDate; // @synthesize timeZoneRelativeStartDate=_timeZoneRelativeStartDate;
+@property (readonly, nonatomic) NSDate *timeZoneRelativeStartDate; // @synthesize timeZoneRelativeStartDate=_timeZoneRelativeStartDate;
 
 + (id)_currentCalendar;
 - (void).cxx_destruct;

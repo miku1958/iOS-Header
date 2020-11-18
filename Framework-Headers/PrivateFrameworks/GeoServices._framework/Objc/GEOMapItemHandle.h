@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOMapItemInitialRequestData, GEOPDPlaceRefinementParameters, NSData;
+@class GEOMapItemClientAttributes, GEOMapItemInitialRequestData, GEOPDPlaceRefinementParameters;
 
+__attribute__((visibility("hidden")))
 @interface GEOMapItemHandle : PBCodable <NSCopying>
 {
-    NSData *_compressedMapItemStorage;
+    GEOMapItemClientAttributes *_clientAttributes;
     int _handleType;
     GEOPDPlaceRefinementParameters *_placeRefinementParameters;
     GEOMapItemInitialRequestData *_placeRequestData;
@@ -21,9 +22,9 @@
     } _has;
 }
 
-@property (strong, nonatomic) NSData *compressedMapItemStorage; // @synthesize compressedMapItemStorage=_compressedMapItemStorage;
+@property (strong, nonatomic) GEOMapItemClientAttributes *clientAttributes; // @synthesize clientAttributes=_clientAttributes;
 @property (nonatomic) int handleType; // @synthesize handleType=_handleType;
-@property (readonly, nonatomic) BOOL hasCompressedMapItemStorage;
+@property (readonly, nonatomic) BOOL hasClientAttributes;
 @property (nonatomic) BOOL hasHandleType;
 @property (readonly, nonatomic) BOOL hasPlaceRefinementParameters;
 @property (readonly, nonatomic) BOOL hasPlaceRequestData;

@@ -15,9 +15,10 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)accessibilityActivate;
+- (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
-- (void)animateUnlockCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)animateUnlockWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (BOOL)isAccessibilityElement;
 
 @end

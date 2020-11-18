@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     NSString *mIdentifier;
     TSUImage *mSwatch;
     id<TSKAccessControllerReadTicket> mRenderingTicket;
-    BOOL mWaitingToBecomeReady;
     BOOL mRenderForWideGamut;
     BOOL mSuppressesAnimation;
     id<TSDSwatchRenderingOperationDelegate> mDelegate;
@@ -54,11 +53,9 @@ __attribute__((visibility("hidden")))
 - (void)deliverSwatch;
 - (void)doWorkWithReadLock;
 - (id)initWithPreset:(id)arg1 imageSize:(struct CGSize)arg2 imageScale:(double)arg3 swatchFrame:(struct CGRect)arg4 documentRoot:(id)arg5;
-- (BOOL)isReady;
 - (BOOL)isReadyToRender;
 - (void)main;
 - (BOOL)needsPressedStateBackground;
-- (void)p_applicationDidBecomeActive:(id)arg1;
 - (void)p_deliverResultOnMainThread:(id)arg1;
 - (void)p_didFinishRendering;
 - (id)p_extendedRenderingTicket;

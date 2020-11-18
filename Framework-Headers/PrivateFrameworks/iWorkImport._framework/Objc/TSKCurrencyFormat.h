@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _showThousandsSeparator;
     BOOL _accountingStyle;
+    BOOL _usePlusSign;
     int _negativeStyle;
     unsigned long long _decimalPlaces;
     unsigned long long _currencyCodeIndex;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long decimalPlaces; // @synthesize decimalPlaces=_decimalPlaces;
 @property (readonly, nonatomic) int negativeStyle; // @synthesize negativeStyle=_negativeStyle;
 @property (readonly, nonatomic) BOOL showThousandsSeparator; // @synthesize showThousandsSeparator=_showThousandsSeparator;
+@property (readonly, nonatomic) BOOL usePlusSign; // @synthesize usePlusSign=_usePlusSign;
 
 - (id)asCurrencyFormat;
 - (unsigned long long)hash;

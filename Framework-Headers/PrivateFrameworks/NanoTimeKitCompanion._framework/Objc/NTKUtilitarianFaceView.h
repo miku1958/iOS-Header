@@ -26,8 +26,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_swatchColorForColorOption:(id)arg1;
-+ (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
++ (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
++ (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 + (id)_swatchImageFaceName;
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -40,6 +40,8 @@
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
+- (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(BOOL *)arg5 forSlot:(id)arg6;
+- (id)_curvedPickerMaskForSlot:(id)arg1;
 - (struct CGPoint)_dateComplicationCenterOffset;
 - (id)_dateComplicationFontForStyle:(unsigned long long)arg1;
 - (struct CGPoint)_dateComplicationRightAlignment;
@@ -55,6 +57,7 @@
 - (unsigned long long)_keylineLabelAlignmentForDensityEditing;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
 - (id)_keylineViewForColorEditing;
+- (id)_keylineViewForComplicationSlot:(id)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForDensityEditing;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
@@ -63,6 +66,8 @@
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (double)_secondHandAlphaForEditMode:(long long)arg1;
 - (BOOL)_shouldFreezeSceneForEditMode:(long long)arg1;
+- (id)_slotForUtilitySlot:(long long)arg1;
+- (BOOL)_slotSupportsCurvedText:(id)arg1;
 - (BOOL)_supportsUnadornedSnapshot;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
 - (void)_updateDateComplicationPositionIfNecessary;
@@ -71,8 +76,9 @@
 - (long long)_utilitySlotForSlot:(id)arg1;
 - (double)_verticalPaddingForStatusBar;
 - (double)alphaForDimmedState;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)layoutSubviews;
+- (BOOL)slotUsesCurvedText:(long long)arg1;
 - (id)utilityDateComplicationFontForDateStyle:(unsigned long long)arg1;
 
 @end

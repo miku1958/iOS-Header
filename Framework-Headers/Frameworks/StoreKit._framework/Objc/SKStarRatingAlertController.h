@@ -19,6 +19,7 @@
 @property (nonatomic) float rating;
 
 + (id)starRatingAlertController;
+- (void).cxx_destruct;
 - (void)_ratingControlChanged:(id)arg1;
 - (void)_updateButtonState;
 - (void)dealloc;

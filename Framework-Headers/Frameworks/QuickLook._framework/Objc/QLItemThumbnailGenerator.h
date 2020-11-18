@@ -28,8 +28,8 @@
 + (BOOL)hasThirdPartyThumbnailGeneratorForItem:(id)arg1;
 - (void).cxx_destruct;
 - (id)_fetcherClassesForPreviewItem:(id)arg1;
+- (void)generateThumbnailForItem:(id)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 badgeType:(unsigned long long)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (void)generateThumbnailForItem:(id)arg1 ofSize:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 completionBlock:(CDUnknownBlockType)arg5;
-- (id)thumbnailGenerationOperationWithItem:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3;
 
 @end
 

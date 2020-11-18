@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSUUID, TSCHStyleOwnerReference, TSCHStyleSemanticTag, TSPObject, TSSPropertyMap, TSSPropertySet, TSSStyle;
 @protocol TSCHStyleSwapSupporting;
@@ -36,9 +36,9 @@ __attribute__((visibility("hidden")))
 + (id)convertedSwapTuplesForSwapTuples:(id)arg1 chartInfo:(id)arg2;
 + (BOOL)hasSwapTuplesRequiringConversion:(id)arg1;
 + (id)migratedSwapTuplesForSwapTuples:(id)arg1 documentRoot:(id)arg2;
+- (void).cxx_destruct;
 - (BOOL)canApplyTupleToStyleSwapSupporting:(id)arg1;
 - (id)convertedSwapTupleForChartInfo:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initFromSOSWithSwapType:(int)arg1 index:(unsigned long long)arg2 oldValue:(id)arg3 newValue:(id)arg4 refLineUUID:(id)arg5;

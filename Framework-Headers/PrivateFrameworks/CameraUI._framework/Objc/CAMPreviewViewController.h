@@ -13,7 +13,7 @@
 #import <CameraUI/CAMPreviewViewSubjectIndicatorDelegate-Protocol.h>
 #import <CameraUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CAMBurstIndicatorView, CAMExposureResult, CAMFocusIndicatorView, CAMFocusResult, CAMMotionController, CAMPreviewView, CAMStageLightOverlayView, CAMSubjectIndicatorView, CAMTimelapseController, CUCaptureController, NSDate, NSString, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class CAMBurstIndicatorView, CAMExposureResult, CAMFocusIndicatorView, CAMFocusResult, CAMMachineReadableCodeResult, CAMMotionController, CAMPreviewView, CAMStageLightOverlayView, CAMSubjectIndicatorView, CAMTimelapseController, CUCaptureController, NSArray, NSDate, NSString, UILongPressGestureRecognizer, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol CAMPreviewViewControllerDelegate;
 
 @interface CAMPreviewViewController : UIViewController <UIGestureRecognizerDelegate, CAMFocusDelegate, CAMExposureDelegate, CAMFocusIndicatorViewDelegate, CAMPreviewViewSubjectIndicatorDelegate, CAMFacesDelegate>
@@ -27,6 +27,9 @@
     id<CAMPreviewViewControllerDelegate> _delegate;
     long long _layoutStyle;
     long long _shallowDepthOfFieldStatus;
+    long long _stagePreviewStatus;
+    CAMMachineReadableCodeResult *_cachedSignificantMRCResult;
+    NSArray *_cachedMRCResults;
     long long _lightingType;
     CUCaptureController *__captureController;
     CAMTimelapseController *__timelapseController;
@@ -59,7 +62,7 @@
 @property (nonatomic, getter=_isChangingModeOrDevice, setter=_setChangingModeOrDevice:) BOOL _changingModeOrDevice; // @synthesize _changingModeOrDevice=__changingModeOrDevice;
 @property (readonly, nonatomic) CAMFocusIndicatorView *_continuousIndicator; // @synthesize _continuousIndicator=__continuousIndicator;
 @property (readonly, nonatomic) unsigned long long _currentFacesCount; // @synthesize _currentFacesCount=__currentFacesCount;
-@property (readonly, nonatomic) long long _device; // @synthesize _device=__device;
+@property (nonatomic, setter=_setDevice:) long long _device; // @synthesize _device=__device;
 @property (readonly, nonatomic) UIPanGestureRecognizer *_exposureBiasPanGestureRecognizer; // @synthesize _exposureBiasPanGestureRecognizer=__exposureBiasPanGestureRecognizer;
 @property (readonly, nonatomic) float _exposureBiasPanStartValue; // @synthesize _exposureBiasPanStartValue=__exposureBiasPanStartValue;
 @property (nonatomic, setter=_setExposureBiasVirtualSliderExponent:) double _exposureBiasVirtualSliderExponent; // @synthesize _exposureBiasVirtualSliderExponent=__exposureBiasVirtualSliderExponent;
@@ -70,7 +73,7 @@
 @property (strong, nonatomic, setter=_setLastFocusResult:) CAMFocusResult *_lastFocusResult; // @synthesize _lastFocusResult=__lastFocusResult;
 @property (strong, nonatomic, setter=_setLastTapToFocusTime:) NSDate *_lastTapToFocusTime; // @synthesize _lastTapToFocusTime=__lastTapToFocusTime;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *_longPressToLockGestureRecognizer; // @synthesize _longPressToLockGestureRecognizer=__longPressToLockGestureRecognizer;
-@property (readonly, nonatomic) long long _mode; // @synthesize _mode=__mode;
+@property (nonatomic, setter=_setMode:) long long _mode; // @synthesize _mode=__mode;
 @property (readonly, nonatomic) CAMMotionController *_motionController; // @synthesize _motionController=__motionController;
 @property (readonly, nonatomic) CAMFocusIndicatorView *_pointIndicator; // @synthesize _pointIndicator=__pointIndicator;
 @property (readonly, nonatomic) CAMSubjectIndicatorView *_portraitModeCenteredIndicatorView; // @synthesize _portraitModeCenteredIndicatorView=__portraitModeCenteredIndicatorView;
@@ -80,6 +83,8 @@
 @property (readonly, nonatomic) BOOL _updateFaceIndicators; // @synthesize _updateFaceIndicators=__updateFaceIndicators;
 @property (nonatomic, setter=_setUserLockedFocusAndExposure:) BOOL _userLockedFocusAndExposure; // @synthesize _userLockedFocusAndExposure=__userLockedFocusAndExposure;
 @property (readonly, nonatomic) UIPanGestureRecognizer *activeExposureBiasPanGestureRecognizer;
+@property (strong, nonatomic) NSArray *cachedMRCResults; // @synthesize cachedMRCResults=_cachedMRCResults;
+@property (strong, nonatomic) CAMMachineReadableCodeResult *cachedSignificantMRCResult; // @synthesize cachedSignificantMRCResult=_cachedSignificantMRCResult;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CAMPreviewViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -91,6 +96,7 @@
 @property (readonly, nonatomic) CAMPreviewView *previewView;
 @property (nonatomic) long long shallowDepthOfFieldStatus; // @synthesize shallowDepthOfFieldStatus=_shallowDepthOfFieldStatus;
 @property (nonatomic, getter=isShowingStandardControls) BOOL showingStandardControls; // @synthesize showingStandardControls=_showingStandardControls;
+@property (nonatomic) long long stagePreviewStatus; // @synthesize stagePreviewStatus=_stagePreviewStatus;
 @property (readonly) Class superclass;
 
 + (double)hideIndicatorAnimationDuration;
@@ -105,6 +111,7 @@
 - (void)_cancelDelayedFaceIndicatorFadeOut;
 - (void)_cancelDelayedFocusAndExposureLock;
 - (void)_cancelDelayedHideOrDeactivateForFocusIndicator:(id)arg1;
+- (void)_cancelDelayedMRCIndicatorsFadeOut;
 - (void)_captureOrientationChanged:(id)arg1;
 - (void)_createAspectRatioToggleDoubleTapGestureRecognizerIfNecessary;
 - (void)_createCommonGestureRecognizersIfNecessary;
@@ -123,8 +130,12 @@
 - (int)_exposureBiasSide;
 - (float)_exposureTargetBiasMaximum;
 - (float)_exposureTargetBiasMinimum;
+- (void)_fadeInMRCIndicator:(id)arg1 forMRC:(id)arg2;
 - (void)_fadeOutFaceIndicators;
 - (void)_fadeOutFaceIndicatorsAfterDelay:(double)arg1;
+- (void)_fadeOutMRCIndicatorView:(id)arg1 withIdentifier:(id)arg2 animated:(BOOL)arg3;
+- (void)_fadeOutMRCIndicators;
+- (void)_fadeOutMRCIndicatorsAfterDelay:(double)arg1;
 - (void)_finishFocusingLockedPointOfInterestIndicator;
 - (id)_focusIndicatorViewsWithExposureBiasSliders;
 - (void)_focusOnPoint:(struct CGPoint)arg1;
@@ -138,6 +149,7 @@
 - (void)_hideFocusIndicator:(id)arg1;
 - (void)_hideFocusIndicator:(id)arg1 afterDelay:(double)arg2;
 - (void)_hideFocusIndicator:(id)arg1 animated:(BOOL)arg2;
+- (void)_hideMRCIndicatorsAnimated:(BOOL)arg1;
 - (void)_hidePortaitModeTrackedSubjectIndicatorsAnimated:(BOOL)arg1;
 - (void)_initializeExposureBiasParametersForFocusIndicatorView:(id)arg1;
 - (void)_initializeExposureBiasSliderParameters;
@@ -159,6 +171,7 @@
 - (void)_setUserLockedFocusAndExposure:(BOOL)arg1 shouldAnimate:(BOOL)arg2;
 - (BOOL)_shouldAllowAspectRatioToggleForMode:(long long)arg1;
 - (BOOL)_shouldAllowFaceIndicators;
+- (BOOL)_shouldAllowMRCIndicators;
 - (BOOL)_shouldDisableAspectRatioToggle;
 - (BOOL)_shouldDisableFocusUI;
 - (BOOL)_shouldResetFocusAndExposureForSubjectAreaDidChange;
@@ -167,7 +180,7 @@
 - (BOOL)_shouldShowPortraitModeIndicatorViews;
 - (BOOL)_shouldShowPortraitModeTrackedSubjectIndicatorsForLightingType:(long long)arg1;
 - (BOOL)_shouldShowStageLightOverlayActive;
-- (BOOL)_shouldShowStageLightOverlayViewForMode:(long long)arg1 lightingType:(long long)arg2;
+- (BOOL)_shouldShowStageLightOverlayViewForMode:(long long)arg1 device:(long long)arg2 lightingType:(long long)arg3 shallowDepthOfFieldStatus:(long long)arg4 stagePreviewStatus:(long long)arg5;
 - (BOOL)_shouldSuppressNewFaces;
 - (BOOL)_shouldSuppressNewPortraitModeTrackedSubjectIndicators;
 - (BOOL)_shouldUpdateIndicatorSizeFrom:(struct CGSize)arg1 to:(struct CGSize)arg2 minimumAreaChangeThreshold:(double)arg3 minimumAreaFractionChangeThreshold:(double)arg4;
@@ -182,7 +195,10 @@
 - (void)_updateExposureBiasViews:(id)arg1;
 - (void)_updateFaceIndicatorsForFaceResults:(id)arg1;
 - (void)_updateFaceIndicatorsWithResults:(id)arg1;
-- (void)_updateForOrientation;
+- (void)_updateForOrientationAnimated:(BOOL)arg1;
+- (void)_updateMRCIndicator:(id)arg1 forMRC:(id)arg2;
+- (void)_updateMRCIndicators;
+- (void)_updateMRCIndicatorsIfNecessary;
 - (void)_updatePortraitModeTrackedSubjectIndicatorsWithFaceResults:(id)arg1;
 - (void)_updatePortraitModeViewsAnimated:(BOOL)arg1;
 - (void)_updatePortraitModeViewsForFaceResults:(id)arg1;
@@ -208,7 +224,6 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (void)handleTapAtPoint:(struct CGPoint)arg1;
 - (id)initWithCaptureController:(id)arg1 motionController:(id)arg2 timelapseController:(id)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
@@ -220,6 +235,7 @@
 - (void)previewViewDidAddFirstTrackedSubjectIndicator:(id)arg1;
 - (void)previewViewDidRemoveLastTrackedSubjectIndicator:(id)arg1;
 - (void)setLightingType:(long long)arg1 animated:(BOOL)arg2;
+- (void)setShallowDepthOfFieldStatus:(long long)arg1 stagePreviewStatus:(long long)arg2;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)willChangeToMode:(long long)arg1 device:(long long)arg2;

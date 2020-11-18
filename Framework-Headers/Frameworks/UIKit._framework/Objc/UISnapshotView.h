@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIStatusBarTinting-Protocol.h>
+#import <UIKitCore/UIStatusBarTinting-Protocol.h>
 
 @class NSMutableArray, NSString, UIColor, UIImageView;
 

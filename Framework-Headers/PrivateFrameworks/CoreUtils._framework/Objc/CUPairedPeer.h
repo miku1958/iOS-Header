@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUtils/NSSecureCoding-Protocol.h>
 
@@ -20,11 +20,13 @@
     NSString *_model;
     NSString *_name;
     NSData *_publicKey;
+    NSString *_identifierStr;
 }
 
 @property (copy, nonatomic) NSDictionary *acl; // @synthesize acl=_acl;
 @property (copy, nonatomic) NSData *altIRK; // @synthesize altIRK=_altIRK;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *identifierStr; // @synthesize identifierStr=_identifierStr;
 @property (copy, nonatomic) NSDictionary *info; // @synthesize info=_info;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;

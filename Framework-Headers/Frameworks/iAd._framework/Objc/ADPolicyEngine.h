@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADBannerViewInternalDelegate-Protocol.h>
 #import <iAd/ADInterstitialAdDelegate-Protocol.h>
 
-@class ADBannerView, ADInterstitialAd, NSData, NSError, NSMutableArray, NSString, NSURL;
+@class ADBannerView, ADInterstitialAd, NSData, NSError, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface ADPolicyEngine : NSObject <ADBannerViewInternalDelegate, ADInterstitialAdDelegate>
@@ -21,7 +21,6 @@
     double _nextInterstitialPresentationTime;
     double _nextPrerollPlaybackTime;
     NSObject<OS_dispatch_queue> *_policyEngineQueue;
-    NSMutableArray *_queuedCommands;
     ADInterstitialAd *_sharedInterstitialAd;
     NSString *_sharedInterstitialSection;
     NSURL *_sharedInterstitialServerURL;
@@ -43,7 +42,6 @@
 @property (nonatomic) double nextInterstitialPresentationTime; // @synthesize nextInterstitialPresentationTime=_nextInterstitialPresentationTime;
 @property (nonatomic) double nextPrerollPlaybackTime; // @synthesize nextPrerollPlaybackTime=_nextPrerollPlaybackTime;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *policyEngineQueue; // @synthesize policyEngineQueue=_policyEngineQueue;
-@property (readonly, nonatomic) NSMutableArray *queuedCommands; // @synthesize queuedCommands=_queuedCommands;
 @property (strong, nonatomic) ADInterstitialAd *sharedInterstitialAd; // @synthesize sharedInterstitialAd=_sharedInterstitialAd;
 @property (nonatomic) BOOL sharedInterstitialAdIsInUse; // @synthesize sharedInterstitialAdIsInUse=_sharedInterstitialAdIsInUse;
 @property (copy, nonatomic) NSString *sharedInterstitialAuthenticationUserName; // @synthesize sharedInterstitialAuthenticationUserName=_sharedInterstitialAuthenticationUserName;
@@ -54,10 +52,8 @@
 @property (readonly) Class superclass;
 
 + (id)sharedEngine;
-- (void)_adSheetConnectionBootstrapped;
 - (void)_enablePolicyEngineWithReason:(id)arg1;
-- (void)_performWhenAdSheetConnectionEstablished:(CDUnknownBlockType)arg1;
-- (void)adSheetDidIdleDisablePolicyEngine;
+- (void)adServingDaemonDidIdleDisablePolicyEngine;
 - (void)bannerView:(id)arg1 didFailToReceiveAdWithError:(id)arg2;
 - (void)bannerViewActionDidFinish:(id)arg1;
 - (BOOL)bannerViewActionShouldBegin:(id)arg1 willLeaveApplication:(BOOL)arg2;

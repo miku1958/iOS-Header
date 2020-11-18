@@ -8,29 +8,33 @@
 
 #import <FMFUI/FMFSessionDelegateInternal-Protocol.h>
 
-@class FMFHandle, NSArray, NSMutableDictionary, NSString, UIAlertController;
+@class FMFHandle, NSArray, NSMutableDictionary, NSObject, NSString, UIAlertController;
+@protocol OS_dispatch_queue;
 
 @interface FMFLocationSharingViewController : PSListController <FMFSessionDelegateInternal>
 {
     BOOL _isMyLocationEnabled;
     BOOL _useFamilyCirclePhotos;
     BOOL _useFamilyCirclePhotosLoaded;
-    NSArray *_allFollowersHandles;
-    NSArray *_followersHandles;
+    BOOL _areSpecifiersLoaded;
     NSArray *_followersSpecifiers;
     NSArray *_familySpecifiers;
+    NSArray *_deviceSpecifiers;
+    NSArray *_allFollowersHandles;
+    NSArray *_followersHandles;
     NSMutableDictionary *_dsidToFamilyPhoto;
     NSArray *_hashedFamilyDsids;
-    void *_addressBook;
     FMFHandle *_lastSelectedHandle;
     NSArray *_familyMembers;
     UIAlertController *_genericErrorAlert;
+    NSObject<OS_dispatch_queue> *_specifiersQueue;
 }
 
-@property (nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
 @property (strong, nonatomic) NSArray *allFollowersHandles; // @synthesize allFollowersHandles=_allFollowersHandles;
+@property (nonatomic) BOOL areSpecifiersLoaded; // @synthesize areSpecifiersLoaded=_areSpecifiersLoaded;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSArray *deviceSpecifiers; // @synthesize deviceSpecifiers=_deviceSpecifiers;
 @property (strong, nonatomic) NSMutableDictionary *dsidToFamilyPhoto; // @synthesize dsidToFamilyPhoto=_dsidToFamilyPhoto;
 @property (strong, nonatomic) NSArray *familyMembers; // @synthesize familyMembers=_familyMembers;
 @property (strong, nonatomic) NSArray *familySpecifiers; // @synthesize familySpecifiers=_familySpecifiers;
@@ -41,16 +45,19 @@
 @property (strong, nonatomic) NSArray *hashedFamilyDsids; // @synthesize hashedFamilyDsids=_hashedFamilyDsids;
 @property (nonatomic) BOOL isMyLocationEnabled; // @synthesize isMyLocationEnabled=_isMyLocationEnabled;
 @property (strong, nonatomic) FMFHandle *lastSelectedHandle; // @synthesize lastSelectedHandle=_lastSelectedHandle;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *specifiersQueue; // @synthesize specifiersQueue=_specifiersQueue;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useFamilyCirclePhotos; // @synthesize useFamilyCirclePhotos=_useFamilyCirclePhotos;
 @property (nonatomic) BOOL useFamilyCirclePhotosLoaded; // @synthesize useFamilyCirclePhotosLoaded=_useFamilyCirclePhotosLoaded;
 
 - (void).cxx_destruct;
+- (id)_defaultSpecifiers;
 - (id)_followerHandleWithHashedDSID:(id)arg1;
 - (BOOL)_isFamilyMemberAFollower:(id)arg1;
 - (BOOL)_isHandleAFollower:(id)arg1;
 - (void)_loadFamilyMemberPhotos;
 - (void)_loadFamilyMembers:(BOOL)arg1;
+- (void)_loadSpecifiers;
 - (void)_meDeviceSpecifierWasTapped:(id)arg1;
 - (void)_pushAddressBookUIForHandle:(id)arg1;
 - (void)_setShareSwitchEnabled:(id)arg1 forSpecifier:(id)arg2;
@@ -58,10 +65,10 @@
 - (void)_showFamilyMemberDetails:(id)arg1;
 - (void)_showHandleDetails:(id)arg1;
 - (id)_specifierForHandle:(id)arg1;
-- (void)abChanged:(id)arg1;
 - (void)addRemoveActionToContactViewController:(id)arg1;
 - (void)addShareActionToContactViewController:(id)arg1;
 - (id)allHandlesMatchingABCardForSelectedHandle:(id)arg1;
+- (void)contactStoreDidChange:(id)arg1;
 - (void)dealloc;
 - (void)didChangeActiveLocationSharingDevice:(id)arg1;
 - (void)didReceiveServerError:(id)arg1;
@@ -72,12 +79,13 @@
 - (void)displayAlertController:(id)arg1;
 - (id)formatStringForHours:(long long)arg1 minutes:(long long)arg2;
 - (id)genericAlertController;
+- (id)identifierForHandle:(id)arg1;
+- (id)init;
 - (id)monogramForHandle:(id)arg1;
 - (void)networkReachabilityUpdated:(BOOL)arg1;
 - (BOOL)noMeDeviceSelected:(id)arg1;
 - (id)offerTimeRemaining:(double)arg1;
 - (BOOL)phoneNumberMatches:(id)arg1 phone2:(id)arg2;
-- (void *)recordForHandle:(id)arg1;
 - (void)reloadSpecifiersOnMainQueue;
 - (void)removeFollower:(id)arg1;
 - (id)reverseString:(id)arg1;

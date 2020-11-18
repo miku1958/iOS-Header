@@ -14,7 +14,7 @@
 @class HUNamedWallpaperCollectionViewController, NSArray, NSMutableDictionary, NSString, PHCachingImageManager;
 @protocol HUWallpaperPickerViewControllerDelegate;
 
-@interface HUWallpaperPickerViewController : HUTableViewController <PHPhotoLibraryChangeObserver, HUWallpaperEditingViewControllerDelegate, HUNamedWallpaperCollectionViewControllerDelegate, HUWallpaperPhotoCollectionViewControllerDelegate>
+@interface HUWallpaperPickerViewController : HUTableViewController <HUWallpaperEditingViewControllerDelegate, HUNamedWallpaperCollectionViewControllerDelegate, HUWallpaperPhotoCollectionViewControllerDelegate, PHPhotoLibraryChangeObserver>
 {
     id<HUWallpaperPickerViewControllerDelegate> _delegate;
     long long _collectionType;
@@ -35,6 +35,7 @@
 @property (strong, nonatomic) PHCachingImageManager *imageManager; // @synthesize imageManager=_imageManager;
 @property (copy, nonatomic) NSString *namedSectionTitle; // @synthesize namedSectionTitle=_namedSectionTitle;
 @property (strong, nonatomic) HUNamedWallpaperCollectionViewController *namedWallpaperController; // @synthesize namedWallpaperController=_namedWallpaperController;
+@property (readonly, nonatomic) BOOL shouldShowPhotoLibrary;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

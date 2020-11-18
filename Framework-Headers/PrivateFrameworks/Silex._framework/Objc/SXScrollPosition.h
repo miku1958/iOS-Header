@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/NSCoding-Protocol.h>
+#import <Silex/NSSecureCoding-Protocol.h>
 
-@interface SXScrollPosition : NSObject <NSCoding>
+@interface SXScrollPosition : NSObject <NSSecureCoding>
 {
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

@@ -18,7 +18,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PARSession *listener; // @synthesize listener=_listener;
+@property (weak, nonatomic) PARSession *listener; // @synthesize listener=_listener;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -31,6 +31,8 @@
 @property (strong, nonatomic) SKShader *strokeShader;
 @property (strong, nonatomic) SKTexture *strokeTexture;
 
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
 + (id)shapeNodeWithCircleOfRadius:(double)arg1;
 + (id)shapeNodeWithEllipseInRect:(struct CGRect)arg1;
 + (id)shapeNodeWithEllipseOfSize:(struct CGSize)arg1;
@@ -43,13 +45,12 @@
 + (id)shapeNodeWithRectOfSize:(struct CGSize)arg1 cornerRadius:(double)arg2;
 + (id)shapeNodeWithSplinePoints:(struct CGPoint *)arg1 count:(unsigned long long)arg2;
 + (id)shapeNodeWithTriangleA:(struct CGPoint)arg1 B:(struct CGPoint)arg2 C:(struct CGPoint)arg3;
++ (BOOL)supportsSecureCoding;
 - (void)_didMakeBackingNode;
 - (void)_initialize;
 - (struct SKCNode *)_makeBackingNode;
 - (BOOL)containsPoint:(struct CGPoint)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

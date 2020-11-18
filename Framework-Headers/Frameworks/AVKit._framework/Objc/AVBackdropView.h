@@ -11,11 +11,12 @@
 @interface AVBackdropView : AVView
 {
     NSArray *_temporaryArrangedSubviews;
-    UIStackView *_stackView;
-    UIVisualEffectView *_visualEffectView;
+    BOOL _disablesAutoLayout;
     long long _axis;
     unsigned long long _shapeStyle;
     UIView *_targetViewForSecondaryMaterialOverlay;
+    UIStackView *_stackView;
+    UIVisualEffectView *_visualEffectView;
     UIVisualEffectView *_secondaryMaterialOverlayView;
     NSArray *_secondaryMaterialOverlayViewConstraints;
     NSString *_groupName;
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) _UIVisualEffectBackdropView *captureView; // @synthesize captureView=_captureView;
 @property (nonatomic) struct NSDirectionalEdgeInsets contentLayoutMargins;
 @property (readonly, nonatomic) UIView *contentView;
+@property (nonatomic) BOOL disablesAutoLayout; // @synthesize disablesAutoLayout=_disablesAutoLayout;
 @property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (strong, nonatomic) UIVisualEffectView *secondaryMaterialOverlayView; // @synthesize secondaryMaterialOverlayView=_secondaryMaterialOverlayView;
 @property (strong, nonatomic) NSArray *secondaryMaterialOverlayViewConstraints; // @synthesize secondaryMaterialOverlayViewConstraints=_secondaryMaterialOverlayViewConstraints;
@@ -52,14 +54,16 @@
 - (void)_updateTransparencyOfVisualEffectView;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (id)initWithArrangedSubviews:(id)arg1;
+- (id)initWithArrangedSubviews:(id)arg1 captureView:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 captureView:(id)arg2 disablingAutoLayout:(BOOL)arg3;
+- (void)layoutSubviews;
 - (void)setArrangedSubviews:(id)arg1 axis:(long long)arg2;
-- (void)setBounds:(struct CGRect)arg1;
 - (void)setCaptureGroupName:(id)arg1 captureView:(id)arg2;
 - (void)setCustomSpacing:(double)arg1 afterView:(id)arg2;
 - (void)setCustomSpacing:(double)arg1 afterViews:(id)arg2;
 - (void)setSemanticContentAttribute:(long long)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 
 @end

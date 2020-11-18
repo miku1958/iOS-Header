@@ -9,7 +9,7 @@
 #import <HomeUI/HUCellProtocol-Protocol.h>
 #import <HomeUI/HUDisableableCellProtocol-Protocol.h>
 
-@class HFItem, HUIconView, NSArray, NSString, UIColor, UILabel, UILayoutGuide, UIView;
+@class HFItem, HUIconCellContentMetrics, HUIconView, NSArray, NSString, UIColor, UILabel, UILayoutGuide, UIView;
 @protocol HUResizableCellDelegate;
 
 @interface HUIconCell : UITableViewCell <HUCellProtocol, HUDisableableCellProtocol>
@@ -21,6 +21,7 @@
     HFItem *_item;
     UIColor *_iconForegroundColor;
     double _iconAlpha;
+    HUIconCellContentMetrics *_contentMetrics;
     unsigned long long _iconDisplayStyle;
     NSArray *_staticConstraints;
     NSArray *_dynamicConstraints;
@@ -28,10 +29,10 @@
     UIView *_containerView;
     HUIconView *_iconView;
     UILayoutGuide *_iconSpacingLayoutGuide;
-    struct CGSize _iconSize;
 }
 
 @property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property (strong, nonatomic) HUIconCellContentMetrics *contentMetrics; // @synthesize contentMetrics=_contentMetrics;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UILabel *detailTextLabel; // @dynamic detailTextLabel;
@@ -44,7 +45,6 @@
 @property (nonatomic) unsigned long long iconDisplayStyle; // @synthesize iconDisplayStyle=_iconDisplayStyle;
 @property (strong, nonatomic) UIColor *iconForegroundColor; // @synthesize iconForegroundColor=_iconForegroundColor;
 @property (nonatomic) BOOL iconForegroundColorFollowsTintColor; // @synthesize iconForegroundColorFollowsTintColor=_iconForegroundColorFollowsTintColor;
-@property (nonatomic) struct CGSize iconSize; // @synthesize iconSize=_iconSize;
 @property (strong, nonatomic) NSArray *iconSpacingConstraints; // @synthesize iconSpacingConstraints=_iconSpacingConstraints;
 @property (strong, nonatomic) UILayoutGuide *iconSpacingLayoutGuide; // @synthesize iconSpacingLayoutGuide=_iconSpacingLayoutGuide;
 @property (nonatomic) BOOL iconTintColorFollowsDisabledState; // @synthesize iconTintColorFollowsDisabledState=_iconTintColorFollowsDisabledState;

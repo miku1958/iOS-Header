@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardKeyplaneTransition.h>
+#import <UIKitCore/UIKeyboardKeyplaneTransition.h>
 
 @class CADisplayLink, NSArray;
 

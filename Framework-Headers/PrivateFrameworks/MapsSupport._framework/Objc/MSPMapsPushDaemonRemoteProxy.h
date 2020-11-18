@@ -9,12 +9,12 @@
 #import <MapsSupport/MSPMapsPushDaemonProxy-Protocol.h>
 #import <MapsSupport/MSPMapsPushDaemonProxyObserver-Protocol.h>
 
-@class MSPUserRoutingPreferences, NSMutableArray, NSString, NSXPCConnection;
+@class MSPUserRoutingPreferences, NSHashTable, NSString, NSXPCConnection;
 
 @interface MSPMapsPushDaemonRemoteProxy : NSObject <MSPMapsPushDaemonProxyObserver, MSPMapsPushDaemonProxy>
 {
     NSXPCConnection *_connection;
-    NSMutableArray *_observers;
+    NSHashTable *_observers;
     MSPUserRoutingPreferences *_cachedUserRoutingPreferences;
 }
 

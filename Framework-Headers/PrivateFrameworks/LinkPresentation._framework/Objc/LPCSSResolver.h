@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _useInlineStyles;
     BOOL _useVariablesWhenUsingInlineStyles;
     BOOL _includeClassNamesWhenUsingInlineStyles;
+    BOOL _includeDarkInterfaceInlineStyles;
     BOOL _generateEmailCompatibleMarkup;
     NSMutableDictionary *_localVariables;
     NSMutableSet *_pendingVariables;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL generateEmailCompatibleMarkup; // @synthesize generateEmailCompatibleMarkup=_generateEmailCompatibleMarkup;
 @property (nonatomic) BOOL includeClassNamesWhenUsingInlineStyles; // @synthesize includeClassNamesWhenUsingInlineStyles=_includeClassNamesWhenUsingInlineStyles;
+@property (nonatomic) BOOL includeDarkInterfaceInlineStyles; // @synthesize includeDarkInterfaceInlineStyles=_includeDarkInterfaceInlineStyles;
 @property (readonly, nonatomic) NSMutableDictionary *localVariables; // @synthesize localVariables=_localVariables;
 @property (readonly, nonatomic) NSMutableSet *pendingVariables; // @synthesize pendingVariables=_pendingVariables;
 @property (readonly, nonatomic) LPTheme *theme; // @synthesize theme=_theme;
@@ -41,7 +43,7 @@ __attribute__((visibility("hidden")))
 - (id)localVariablesAsCSSVariables;
 - (void)registerAlternateStyle:(id)arg1 inComponent:(id)arg2;
 - (id)resolveCSSValue:(id)arg1;
-- (id)ruleDictionaryForStyle:(id)arg1 forComponentClass:(Class)arg2;
+- (id)ruleDictionaryForStyle:(id)arg1 forComponentClass:(Class)arg2 withDarkInterface:(BOOL)arg3;
 - (void)setStyle:(id)arg1 toElement:(id)arg2 inComponent:(id)arg3;
 - (id)themeVariablesAsCSSVariables;
 

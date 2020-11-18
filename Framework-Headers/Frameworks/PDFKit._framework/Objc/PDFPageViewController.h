@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)enforceAutoScaleFactor;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)pageView;
+- (void)removeAKOverlay;
 - (double)scaleFactor;
 - (id)scrollView;
 - (void)scrollViewDidEndDecelerating:(id)arg1;

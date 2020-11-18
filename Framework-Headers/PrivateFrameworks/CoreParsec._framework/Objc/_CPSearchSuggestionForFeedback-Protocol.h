@@ -11,12 +11,6 @@
 @protocol _CPSearchSuggestionForFeedback <NSObject>
 
 @property (copy, nonatomic) NSString *fbr;
-@property (readonly, nonatomic) BOOL hasFbr;
-@property (readonly, nonatomic) BOOL hasIdentifier;
-@property (readonly, nonatomic) BOOL hasQuery;
-@property (readonly, nonatomic) BOOL hasScore;
-@property (readonly, nonatomic) BOOL hasSuggestion;
-@property (readonly, nonatomic) BOOL hasType;
 @property (copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *query;

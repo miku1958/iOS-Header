@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     struct OpaqueJSClass *m_classRef;
     struct Weak<JSC::JSObject> m_prototype;
     struct Weak<JSC::JSObject> m_constructor;
+    struct Weak<JSC::Structure> m_structure;
 }
 
 - (id).cxx_construct;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initForClass:(Class)arg1;
 - (struct JSObject *)prototypeInContext:(id)arg1;
+- (struct Structure *)structureInContext:(id)arg1;
 - (struct JSObject *)wrapperForObject:(id)arg1 inContext:(id)arg2;
 
 @end

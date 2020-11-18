@@ -10,10 +10,10 @@
 
 @protocol VMTranscriptionService <NSObject>
 
-@property (readonly, nonatomic, getter=isTranscriptionAvailable) BOOL transcriptionAvailable;
 @property (strong, nonatomic) VMVoicemailTranscriptionController *transcriptionController;
 @property (strong, nonatomic) VMVoicemailTranscriptionTask *transcriptionTask;
 
++ (BOOL)isTranscriptionAvailable;
 + (NSArray *)transcriptionLanguageCodes;
 - (void)loadTranscriptionService;
 - (void)processTranscriptForRecord:(const void *)arg1 priority:(long long)arg2 completion:(void (^)(BOOL))arg3;

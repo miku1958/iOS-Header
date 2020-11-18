@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)debugDescriptionExtraInfoDictionary;
 - (id)defaultActionTargetApplicationBundleIdentifier;
 - (void)determineActionabilityWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 codePayload:(id)arg2;
 - (id)localizedActionDescription;
 - (id)localizedDefaultActionDescription;
 - (void)performAction;

@@ -8,6 +8,7 @@
 
 @class NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditTaskManager : NSObject
 {
     NSMutableDictionary *_pendingRequestsByAsset;
@@ -21,8 +22,8 @@
 - (void)createEditableCopyForReadOnlyPhoto:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)pendingSaveRequestForPhoto:(id)arg1;
-- (id)saveEditsForPhoto:(id)arg1 contentEditingOutput:(id)arg2 workImageVersion:(long long)arg3 irisEditModel:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)saveEditsForPhoto:(id)arg1 editModel:(id)arg2 workImageVersion:(long long)arg3 irisEditModel:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (id)saveEditsForPhoto:(id)arg1 contentEditingOutput:(id)arg2 workImageVersion:(long long)arg3 irisEditModel:(id)arg4 useRawIfAvailable:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (id)saveEditsForPhoto:(id)arg1 editModel:(id)arg2 workImageVersion:(long long)arg3 irisEditModel:(id)arg4 useRawIfAvailable:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 
 @end
 

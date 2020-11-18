@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "UIFont.h"
+#import <UIFoundation/UIFont.h>
 
 @interface UIFont (SecuredTextField)
 + (id)_ui_bulletFontForFont:(id)arg1;

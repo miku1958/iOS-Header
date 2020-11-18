@@ -9,6 +9,7 @@
 @interface NSURL (BRAdditions)
 + (void)br_containerIDsWithExternalReferencesTo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)br_documentURLFromBookmarkableString:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)br_documentURLFromBookmarkableString:(id)arg1 error:(id *)arg2;
 + (id)br_documentURLFromFileObjectID:(id)arg1 error:(id *)arg2;
 - (BOOL)_br_isInSyncedLocationStrictly:(BOOL)arg1;
 - (id)br_URLByResolvingExternalDocumentReferenceWithError:(id *)arg1;

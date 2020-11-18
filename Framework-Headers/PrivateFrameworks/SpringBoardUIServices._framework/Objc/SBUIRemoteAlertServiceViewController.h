@@ -7,8 +7,9 @@
 #import <UIKit/UIViewController.h>
 
 #import <SpringBoardUIServices/SBUIRemoteAlertServiceInterface-Protocol.h>
+#import <SpringBoardUIServices/SBUIRemoteAlertServiceInterface_Internal-Protocol.h>
 
-@interface SBUIRemoteAlertServiceViewController : UIViewController <SBUIRemoteAlertServiceInterface>
+@interface SBUIRemoteAlertServiceViewController : UIViewController <SBUIRemoteAlertServiceInterface_Internal, SBUIRemoteAlertServiceInterface>
 {
 }
 
@@ -22,6 +23,8 @@
 - (void)noteActivatedForActivityContinuationWithIdentifier:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (void)prepareForActivationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)sb_becomeFirstResponder;
+- (void)sb_resignFirstResponder;
 - (void)setUserInfo:(id)arg1;
 
 @end

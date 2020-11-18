@@ -15,6 +15,8 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityViewIsModal;
+- (void)didAppear;
+- (void)willDisappear;
 
 @end
 

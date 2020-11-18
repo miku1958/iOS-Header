@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class CIFilter, NSArray, NSString, SKTextureAtlas, SKTextureCache;
 @protocol OS_dispatch_queue;
 
-@interface SKTexture : NSObject <NSCopying, NSCoding>
+@interface SKTexture : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _shouldGenerateMipmaps;
     BOOL _didGenerateMipmaps;
@@ -76,6 +76,7 @@
 + (id)preloadQueue;
 + (void)preloadTextures:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (void)registerTextureCache:(id)arg1 forName:(id)arg2;
++ (BOOL)supportsSecureCoding;
 + (id)textureNoiseWithSmoothness:(double)arg1 size:(struct CGSize)arg2 grayscale:(BOOL)arg3;
 + (id)textureVectorNoiseWithSmoothness:(double)arg1 size:(struct CGSize)arg2;
 + (id)textureWithCGImage:(struct CGImage *)arg1;
@@ -115,6 +116,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithImageNamed:(id)arg1;
 - (id)initWithImagePath:(id)arg1;
+- (BOOL)isEqualToTexture:(id)arg1;
 - (void)loadImageData;
 - (void)loadImageDataFromCGImage:(struct CGImage *)arg1 pointsSize:(struct CGSize)arg2;
 - (BOOL)loadImageDataFromPVRData:(id)arg1;

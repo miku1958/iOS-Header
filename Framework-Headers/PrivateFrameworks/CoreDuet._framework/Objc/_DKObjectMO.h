@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (strong, nonatomic) _DKEventMO *event; // @dynamic event;
+@property (copy, nonatomic) NSDate *localCreationDate; // @dynamic localCreationDate;
 @property (strong, nonatomic) NSSet *relationObject; // @dynamic relationObject;
 @property (strong, nonatomic) NSSet *relationSubject; // @dynamic relationSubject;
 @property (strong, nonatomic) _DKSourceMO *source; // @dynamic source;

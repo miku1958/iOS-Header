@@ -10,7 +10,7 @@
 #import <CloudDocs/NSFileProviderItem_Private-Protocol.h>
 #import <CloudDocs/NSSecureCoding-Protocol.h>
 
-@class BRFileObjectID, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSString, NSURL;
+@class BRFileObjectID, NSArray, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSPersonNameComponents, NSString, NSURL;
 
 @interface BRQueryItem : NSObject <NSFileProviderItem_Private, NSSecureCoding, NSCopying>
 {
@@ -120,6 +120,8 @@
 @property (readonly, nonatomic) NSString *parentPath;
 @property (readonly, nonatomic) NSString *path;
 @property (readonly, nonatomic) NSString *physicalName;
+@property (readonly, nonatomic) NSString *preformattedMostRecentEditorName;
+@property (readonly, nonatomic) NSString *preformattedOwnerName;
 @property (readonly, copy) NSString *providerIdentifier;
 @property (nonatomic) id replacement;
 @property (readonly, nonatomic, getter=isShared) BOOL shared;
@@ -128,6 +130,7 @@
 @property (readonly, nonatomic) NSNumber *size;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSData *tagData;
+@property (readonly, copy) NSArray *tags;
 @property (readonly, nonatomic, getter=isTrashed) BOOL trashed;
 @property (readonly, copy, nonatomic) NSString *typeIdentifier;
 @property (readonly, nonatomic, getter=isUploaded) BOOL uploaded;

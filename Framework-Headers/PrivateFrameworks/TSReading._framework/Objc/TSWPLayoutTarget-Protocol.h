@@ -42,6 +42,7 @@
 @property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
 @property (readonly, nonatomic) const struct TSWPTopicNumberHints *previousTargetTopicNumbers;
 @property (readonly, nonatomic) BOOL pushAscendersIntoColumn;
+@property (readonly, nonatomic) double reservedWidthWhenTruncating;
 @property (readonly, nonatomic) BOOL shouldHyphenate;
 @property (readonly, nonatomic) BOOL textIsVertical;
 @property (readonly, nonatomic) unsigned int verticalAlignment;

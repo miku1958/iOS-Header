@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class NSArray, NSMutableArray, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface DADAgentManager : NSObject
 {
-    NSMutableArray *_activeAgents;
-    NSMutableArray *_agentsAwaitingShutdown;
-    int _disableMonitoringRequests;
+    NSArray *_activeAgents;
+    NSObject<OS_dispatch_queue> *_activeAgentsQueue;
     NSMutableDictionary *_watchedIDs;
     unsigned int _pmNotifier;
     struct IONotificationPort *_pmPort;
@@ -23,9 +22,13 @@
     struct __CTServerConnection *_ctServerConnection;
     int _pendingAccountSetupCount;
     NSMutableArray *_subCalHandlers;
+    unsigned long long _nextDisableMonitoringAgentsToken;
+    NSMutableDictionary *_disableMonitoringAgentsTokens;
 }
 
-@property (strong, nonatomic) NSMutableArray *activeAgents; // @synthesize activeAgents=_activeAgents;
+@property (readonly, nonatomic) NSArray *activeAgents;
+@property (readonly, nonatomic) NSMutableDictionary *disableMonitoringAgentsTokens; // @synthesize disableMonitoringAgentsTokens=_disableMonitoringAgentsTokens;
+@property (nonatomic) unsigned long long nextDisableMonitoringAgentsToken; // @synthesize nextDisableMonitoringAgentsToken=_nextDisableMonitoringAgentsToken;
 @property (strong, nonatomic) NSMutableArray *subCalHandlers; // @synthesize subCalHandlers=_subCalHandlers;
 
 + (id)sharedManager;
@@ -54,7 +57,6 @@
 - (id)activeAccountBundleIDs;
 - (void)addPendingAccountSetup;
 - (BOOL)addPersistMonitoringAccountID:(id)arg1 folderIDs:(id)arg2 clientID:(id)arg3;
-- (void)agentHasStoppedMonitoring:(id)arg1;
 - (id)agentWithAccountID:(id)arg1;
 - (void)cleanupLaunchdSemaphore;
 - (BOOL)clearPersistMonitoringAccountID:(id)arg1 clientID:(id)arg2;
@@ -63,10 +65,10 @@
 - (void)dealloc;
 - (void)disableActiveSync;
 - (void)disableDaemon;
-- (void)disableMonitoringAgents;
+- (unsigned long long)disableMonitoringAgents;
 - (void)enableActiveSync;
 - (void)enableDaemon;
-- (void)enableMonitoringAgents;
+- (void)enableMonitoringAgentsWithToken:(unsigned long long)arg1;
 - (void)getStatusReportDictsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)handleURLString:(id)arg1;
 - (BOOL)hasActiveAccounts;
@@ -74,7 +76,6 @@
 - (BOOL)hasPendingAccountSetup;
 - (id)init;
 - (void)loadAgents;
-- (int)numDisableMonitoringRequests;
 - (BOOL)processFolderChange:(id)arg1 forAccountWithID:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)processMeetingRequestDatas:(id)arg1 deliveryIdsToClear:(id)arg2 deliveryIdsToSoftClear:(id)arg3 inFolderWithId:(id)arg4 forAccountWithId:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (void)registerForBuddy;

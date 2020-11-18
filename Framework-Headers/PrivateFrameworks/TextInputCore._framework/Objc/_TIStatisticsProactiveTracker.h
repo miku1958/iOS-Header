@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class PETDistributionEventTracker, PETScalarEventTracker, TIAutocorrectionList;
+@class PETDistributionEventTracker, PETScalarEventTracker, TIAutocorrectionList, TIKeyboardCandidate;
 
 @interface _TIStatisticsProactiveTracker : NSObject
 {
@@ -28,6 +28,7 @@
     PETScalarEventTracker *_personalizationOfferTracker;
     PETScalarEventTracker *_personalizationEngagementTracker;
     TIAutocorrectionList *_lastAutocorrectionList;
+    TIKeyboardCandidate *_responseKitEntryOffered;
 }
 
 @property (strong, nonatomic) PETScalarEventTracker *engagementCategoryEventDescriptionTracker; // @synthesize engagementCategoryEventDescriptionTracker=_engagementCategoryEventDescriptionTracker;
@@ -40,6 +41,7 @@
 @property (strong, nonatomic) PETScalarEventTracker *personalizationEngagementTracker; // @synthesize personalizationEngagementTracker=_personalizationEngagementTracker;
 @property (strong, nonatomic) PETScalarEventTracker *personalizationOfferTracker; // @synthesize personalizationOfferTracker=_personalizationOfferTracker;
 @property (strong, nonatomic) PETScalarEventTracker *personalizationWordAcceptanceTracker; // @synthesize personalizationWordAcceptanceTracker=_personalizationWordAcceptanceTracker;
+@property (strong, nonatomic) TIKeyboardCandidate *responseKitEntryOffered; // @synthesize responseKitEntryOffered=_responseKitEntryOffered;
 @property (strong, nonatomic) PETScalarEventTracker *selectedCategoryEventTracker; // @synthesize selectedCategoryEventTracker=_selectedCategoryEventTracker;
 @property (strong, nonatomic) PETScalarEventTracker *selectedEventTracker; // @synthesize selectedEventTracker=_selectedEventTracker;
 @property (strong, nonatomic) PETScalarEventTracker *suggestedCategoryEventTracker; // @synthesize suggestedCategoryEventTracker=_suggestedCategoryEventTracker;
@@ -50,7 +52,7 @@
 @property (strong, nonatomic) PETScalarEventTracker *triggeredEventTracker; // @synthesize triggeredEventTracker=_triggeredEventTracker;
 
 + (id)sharedInstance;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (void)trackEngagementFailureWithDescription:(unsigned char)arg1 description:(id)arg2 categories:(id)arg3 locale:(id)arg4 fieldType:(id)arg5;
 - (void)trackFailureWithDescription:(unsigned char)arg1 description:(id)arg2 categories:(id)arg3 locale:(id)arg4 fieldType:(id)arg5;

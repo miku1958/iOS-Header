@@ -22,6 +22,7 @@
 - (struct UIEdgeInsets)_axEdgeInsets;
 - (BOOL)_axIsNewList;
 - (BOOL)_axIsRegularList;
+- (id)_axListTitle;
 - (struct CGPoint)accessibilityActivationPoint;
 - (BOOL)accessibilityElementsHidden;
 - (struct CGRect)accessibilityFrame;

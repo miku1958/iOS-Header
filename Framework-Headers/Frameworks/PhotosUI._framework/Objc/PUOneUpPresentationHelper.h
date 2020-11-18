@@ -24,6 +24,7 @@
         BOOL respondsToWillPresentOneUpViewController;
         BOOL respondsToDidDismissOneUpViewController;
         BOOL respondsToViewHostingGestureRecognizers;
+        BOOL respondsToViewHostingTilingView;
         BOOL respondsToScrollView;
         BOOL respondsToPreferredBarStyle;
         BOOL respondsToShouldLeaveContentOnSecondScreen;
@@ -33,6 +34,7 @@
         BOOL respondsToPreventRevealInMomentAction;
         BOOL respondsToPreferredPresentationOrientation;
         BOOL respondsToEnableFreezeLayoutOnOrientationChange;
+        BOOL respondsToAdditionalOptions;
     } _delegateFlags;
     struct {
         BOOL respondsToCurrentImageForAssetReference;

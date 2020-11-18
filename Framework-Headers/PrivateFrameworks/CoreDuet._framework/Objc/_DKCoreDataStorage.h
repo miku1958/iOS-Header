@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSCloudKitMirroringDelegate, NSFileManager, NSManagedObjectModel, NSMapTable, NSMutableDictionary, NSString, NSURL, _DKDataProtectionStateMonitor;
-@protocol OS_dispatch_queue, _DKCoreDataStorageDelegate;
+@protocol _DKCoreDataStorageDelegate;
 
 @interface _DKCoreDataStorage : NSObject
 {
@@ -15,8 +15,6 @@
     NSMutableDictionary *_paths;
     NSMapTable *_managedObjectContexts;
     NSMutableDictionary *_persistentStoreCoordinators;
-    NSObject<OS_dispatch_queue> *_queueMOC;
-    NSObject<OS_dispatch_queue> *_queuePSC;
     _DKDataProtectionStateMonitor *_dataProtectionMonitor;
     NSFileManager *_fm;
     NSCloudKitMirroringDelegate *_mirroringDelegate;
@@ -69,6 +67,7 @@
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 readOnly:(BOOL)arg4 localOnly:(BOOL)arg5 sync:(BOOL)arg6;
 - (id)initWithDirectory:(id)arg1 databaseName:(id)arg2 modelURL:(id)arg3 sync:(BOOL)arg4;
 - (void)invalidateManagedObjectContextAndPersistentStoreCoordinatorFor:(id)arg1;
+- (BOOL)isDatabaseOwner;
 - (BOOL)isManagedObjectContextFor:(id)arg1 equalToManagedObjectContext:(id)arg2;
 - (BOOL)isManagedObjectModel:(id)arg1 compatibleWithPersistentStoreAtURL:(id)arg2 error:(id *)arg3;
 - (id)managedObjectContextFor:(id)arg1;
@@ -86,6 +85,7 @@
 - (void)removePersistentStoresInCoordinator:(id)arg1;
 - (void)setManagedObjectContext:(id)arg1 forKey:(id)arg2;
 - (void)setManagedObjectModel:(id)arg1;
+- (BOOL)willAutoMigrateStoreAtURL:(id)arg1 fromManagedObjectModel:(id)arg2 havingVersion:(unsigned long long)arg3 error:(id *)arg4;
 
 @end
 

@@ -10,6 +10,7 @@
 + (id)fu_platterBlueColor;
 + (id)fu_platterDaliTealColor;
 + (id)fu_platterGreenColor;
++ (id)fu_platterMintColor;
 + (id)fu_platterOrangeColor;
 + (id)fu_platterPinkColor;
 + (id)fu_platterPurpleColor;

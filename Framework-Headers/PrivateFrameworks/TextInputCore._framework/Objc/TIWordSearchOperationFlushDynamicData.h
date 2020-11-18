@@ -15,8 +15,8 @@
 
 @property (strong, nonatomic) TIMecabraWrapper *mecabraWrapper; // @synthesize mecabraWrapper=_mecabraWrapper;
 
+- (void).cxx_destruct;
 - (void)cancel;
-- (void)dealloc;
 - (id)initWithWordSearch:(id)arg1;
 - (void)perform;
 

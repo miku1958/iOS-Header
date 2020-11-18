@@ -9,7 +9,7 @@
 #import <CoreML/MLModelSpecificationLoader-Protocol.h>
 #import <CoreML/MLModeling-Protocol.h>
 
-@class MLModelDescription, MLModelInterface, MLModelMetadata, NSOrderedSet;
+@class MLModelDescription, MLModelInterface, MLModelMetadata, NSOrderedSet, NSString;
 
 @interface MLOneHotEncoder : MLModel <MLModelSpecificationLoader, MLModeling>
 {
@@ -18,21 +18,25 @@
     NSOrderedSet *_featureEncoding;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSOrderedSet *featureEncoding; // @synthesize featureEncoding=_featureEncoding;
 @property (readonly, nonatomic) BOOL handleUnknown; // @synthesize handleUnknown=_handleUnknown;
+@property (readonly) unsigned long long hash;
 @property (readonly) MLModelInterface *interface;
 @property (readonly) MLModelMetadata *metadata;
 @property (readonly, nonatomic) MLModelDescription *modelDescription;
 @property (readonly, nonatomic) BOOL ouputSparse; // @synthesize ouputSparse=_ouputSparse;
+@property (readonly) Class superclass;
 
 + (id)featureEncoderFrom:(id)arg1 dataTransformerName:(id)arg2 ouputSparse:(BOOL)arg3 handleUnknown:(BOOL)arg4 inputDescription:(id)arg5 outputDescription:(id)arg6 orderedInputFeatureNames:(id)arg7 orderedOutputFeatureNames:(id)arg8;
 + (id)featureEncoderFrom:(id)arg1 inputDescription:(id)arg2 orderedInputFeatureNames:(id)arg3;
 + (id)featureEncoderFrom:(id)arg1 inputDescription:(id)arg2 outputDescription:(id)arg3 orderedInputFeatureNames:(id)arg4 orderedOutputFeatureNames:(id)arg5;
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
++ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)encodeFeatureValue:(id)arg1;
 - (id)encodeFeatureValueIntString:(unsigned long long)arg1;
-- (id)initWith:(id)arg1 dataTransformerName:(id)arg2 ouputSparse:(BOOL)arg3 handleUnknown:(BOOL)arg4 inputDescription:(id)arg5 outputDescription:(id)arg6 orderedInputFeatureNames:(id)arg7 orderedOutputFeatureNames:(id)arg8;
+- (id)initWith:(id)arg1 dataTransformerName:(id)arg2 ouputSparse:(BOOL)arg3 handleUnknown:(BOOL)arg4 inputDescription:(id)arg5 outputDescription:(id)arg6 orderedInputFeatureNames:(id)arg7 orderedOutputFeatureNames:(id)arg8 configuration:(id)arg9;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)unknownDenseVector;
 

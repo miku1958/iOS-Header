@@ -12,6 +12,8 @@
 
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilitySignalStrengthText;
+- (id)accessibilityIdentifier;
 - (id)accessibilityValue;
 
 @end

@@ -186,7 +186,7 @@
 - (id)uniqueId;
 - (id)uniqueIdForPersistentConnection;
 - (id)uniqueServerIdForMessage:(id)arg1;
-- (id)unsupportedContinuationTypes;
+- (id)unsupportedHandoffTypes;
 - (id)username;
 
 @end

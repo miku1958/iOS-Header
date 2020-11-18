@@ -8,6 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface GEOTimeToLeaveHypothesisFeedbackCollection : PBCodable <NSCopying>
 {
     double _earliestArrivalOffset;
@@ -51,14 +52,12 @@
 - (int)StringAsDeparture:(id)arg1;
 - (int)StringAsUiNotification:(id)arg1;
 - (id)arrivalAsString:(int)arg1;
-- (int)bucketValueForTimeDelta:(double)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)departureAsString:(int)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithEarlyDepartureDelta:(double)arg1 lateDepartureDelta:(double)arg2 earlyArrivalDelta:(double)arg3 lateArrivalDelta:(double)arg4 rerouteCount:(unsigned long long)arg5 uiNotification:(unsigned long long)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;

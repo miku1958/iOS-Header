@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class NSCalendar, NSDate, NSNumber, NSString, NSTimer, NTKColoringImageView, NTKHandView, UIColor;
+@class CALayer, CLKDevice, NSCalendar, NSDate, NSNumber, NSString, NSTimer, NTKColoringImageView, NTKHandView, UIColor;
 
 @interface NTKAnalogHandsView : UIView <NTKTimeView>
 {
@@ -20,10 +20,18 @@
     NSNumber *_displayLinkToken;
     NSTimer *_animationUpdateTimer;
     double _timeOffset;
+    CALayer *_minuteHandDot;
+    CALayer *_secondHandDot;
+    CALayer *_minuteHandTransitionBodyLayer;
+    CALayer *_minuteHandTransitionStemLayer;
+    CALayer *_minuteHandTransitionPegLayer;
+    CALayer *_hourHandTransitionBodyLayer;
+    CALayer *_hourHandTransitionStemLayer;
     BOOL _timeScrubbing;
     BOOL _frozen;
     BOOL _showDebugClientSideHands;
     BOOL _shouldRestoreSecondHandAfterScrubbing;
+    CLKDevice *_device;
     NTKHandView *_hourHandView;
     NTKHandView *_minuteHandView;
     NTKHandView *_secondHandView;
@@ -40,11 +48,13 @@
 @property (nonatomic) long long dataMode; // @synthesize dataMode=_dataMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (nonatomic, getter=isFrozen) BOOL frozen; // @synthesize frozen=_frozen;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NTKHandView *hourHandView; // @synthesize hourHandView=_hourHandView;
 @property (readonly, nonatomic) NTKHandView *hourHandView_clientSide; // @synthesize hourHandView_clientSide=_hourHandView_clientSide;
 @property (strong, nonatomic) UIColor *inlayColor; // @synthesize inlayColor=_inlayColor;
+@property (strong, nonatomic) CALayer *minuteHandDot; // @synthesize minuteHandDot=_minuteHandDot;
 @property (strong, nonatomic) NTKHandView *minuteHandView; // @synthesize minuteHandView=_minuteHandView;
 @property (readonly, nonatomic) NTKHandView *minuteHandView_clientSide; // @synthesize minuteHandView_clientSide=_minuteHandView_clientSide;
 @property (readonly, nonatomic) NSDate *overrideDate; // @synthesize overrideDate=_overrideDate;
@@ -58,6 +68,7 @@
 + (long long)preferredCountOfInstancesToCache;
 - (void).cxx_destruct;
 - (void)_accessibilityInvalidateElements;
+- (void)_addHourMinuteHandsTransitionLayers;
 - (BOOL)_canRunTimeAnimation;
 - (void)_deregisterFromDisplayLinkManager;
 - (BOOL)_dontRepointDebugHands;
@@ -65,21 +76,26 @@
 - (void)_enumerateSecondHandViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleDisplayLink;
 - (void)_removeColorTransitionViews;
+- (void)_removeHourMinuteHandsTransitionLayers;
 - (void)_repointDebugHandsToCurrentTime;
 - (void)_significantTimeChanged;
 - (void)_startNewTimeAnimation;
 - (void)_stopTimeAnimation;
-- (void)applyColor:(id)arg1;
-- (void)applyTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3;
+- (void)applyHourMinuteHandsStrokeColor:(id)arg1 fillColor:(id)arg2;
+- (void)applyHourMinuteHandsTransitionFraction:(double)arg1 fromStrokeColor:(id)arg2 fromFillColor:(id)arg3 toStrokeColor:(id)arg4 toFillColor:(id)arg5;
+- (void)applySecondHandColor:(id)arg1;
+- (void)applySecondHandDotColor:(id)arg1;
+- (void)applySecondHandTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)displayTime;
 - (void)endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;
 - (void)scrubToDate:(id)arg1 animated:(BOOL)arg2;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)setTimeOffset:(double)arg1;
+- (void)setupDefaultMinuteHandDotIfNecessary;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 

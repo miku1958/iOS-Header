@@ -12,11 +12,12 @@
 #import <HMFoundation/NSURLSessionDelegate-Protocol.h>
 #import <HMFoundation/_HMFNetServiceMonitorDelegate-Protocol.h>
 
-@class HMFExponentialBackoffTimer, HMFNetMonitor, HMFNetService, NSObject, NSOperationQueue, NSString, NSURL, NSURLSession, _HMFNetServiceMonitor;
+@class HMFExponentialBackoffTimer, HMFNetMonitor, HMFNetService, HMFUnfairLock, NSObject, NSOperationQueue, NSString, NSURL, NSURLSession, _HMFNetServiceMonitor;
 @protocol HMFHTTPClientDelegate, OS_dispatch_queue;
 
 @interface HMFHTTPClient : HMFObject <HMFLogging, HMFNetMonitorDelegate, _HMFNetServiceMonitorDelegate, HMFTimerDelegate, NSURLSessionDelegate>
 {
+    HMFUnfairLock *_lock;
     BOOL _reachable;
     BOOL _pinging;
     BOOL _allowAnonymousConnection;
@@ -26,7 +27,6 @@
     id<HMFHTTPClientDelegate> _delegate;
     unsigned long long _options;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSURLSession *_session;
     HMFNetMonitor *_reachabilityMonitor;
     NSOperationQueue *_reachabilityProbeQueue;
@@ -47,7 +47,6 @@
 @property (readonly, nonatomic) _HMFNetServiceMonitor *netServiceMonitor; // @synthesize netServiceMonitor=_netServiceMonitor;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (nonatomic, getter=isPinging) BOOL pinging; // @synthesize pinging=_pinging;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) HMFNetMonitor *reachabilityMonitor; // @synthesize reachabilityMonitor=_reachabilityMonitor;
 @property (readonly, nonatomic) NSOperationQueue *reachabilityProbeQueue; // @synthesize reachabilityProbeQueue=_reachabilityProbeQueue;
 @property (nonatomic, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
@@ -55,16 +54,14 @@
 @property (readonly) Class superclass;
 
 + (id)baseURLWithScheme:(id)arg1 hostAddress:(id)arg2 port:(unsigned long long)arg3;
-+ (BOOL)isValidBaseURL:(id)arg1;
 + (id)logCategory;
-+ (id)shortDescription;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)__initializeWithOptions:(unsigned long long)arg1;
+- (id)attributeDescriptions;
 - (void)cancelPendingRequests;
 - (void)dealloc;
-- (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
 - (id)initWithBaseURL:(id)arg1 options:(unsigned long long)arg2;
 - (id)initWithNetService:(id)arg1 options:(unsigned long long)arg2;
@@ -74,12 +71,10 @@
 - (void)monitor:(id)arg1 didUpdateReachability:(BOOL)arg2;
 - (void)networkMonitorIsReachable:(id)arg1;
 - (void)networkMonitorIsUnreachable:(id)arg1;
-- (void)notifyDelegateOfReachabilityChange:(BOOL)arg1;
 - (BOOL)requestClientReachabilityPingWithRetry:(BOOL)arg1;
 - (void)resolveWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)sendRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setNetService:(id)arg1;
-- (id)shortDescription;
 - (void)startDelegatedPingTimer;
 - (void)startReachabilityProbe;
 - (void)stopDelegatedPingTimer;

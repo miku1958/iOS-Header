@@ -10,14 +10,18 @@
 
 @interface CNTCC : NSObject
 {
-    long long _simulateType;
     BOOL _simulateAccessPrompt;
     BOOL _simulateAccessPromptGranted;
-    double _simulateAccessPromptDelay;
     id<CNContactsLogger> _logger;
+    long long _simulateType;
+    double _simulateAccessPromptDelay;
 }
 
 @property (readonly, nonatomic) id<CNContactsLogger> logger; // @synthesize logger=_logger;
+@property (nonatomic) BOOL simulateAccessPrompt; // @synthesize simulateAccessPrompt=_simulateAccessPrompt;
+@property (nonatomic) double simulateAccessPromptDelay; // @synthesize simulateAccessPromptDelay=_simulateAccessPromptDelay;
+@property (nonatomic) BOOL simulateAccessPromptGranted; // @synthesize simulateAccessPromptGranted=_simulateAccessPromptGranted;
+@property (nonatomic) long long simulateType; // @synthesize simulateType=_simulateType;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

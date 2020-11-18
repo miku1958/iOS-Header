@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVConferenceXPCClient;
-@protocol AVCVirtualTTYDeviceDelegate, OS_dispatch_queue;
+@protocol AVCVirtualTTYDeviceDelegate;
 
 @interface AVCVirtualTTYDevice : NSObject
 {
     AVConferenceXPCClient *_connection;
     id _delegate;
     BOOL _isStarted;
-    NSObject<OS_dispatch_queue> *_callbackQueue;
 }
 
 @property (nonatomic) id<AVCVirtualTTYDeviceDelegate> delegate; // @synthesize delegate=_delegate;

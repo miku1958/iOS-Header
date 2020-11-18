@@ -14,11 +14,6 @@
 
 @interface _CPSectionRankingFeedback : PBCodable <_CPProcessableFeedback, _CPSectionRankingFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int timestamp:1;
-        unsigned int localSectionPosition:1;
-        unsigned int personalizationScore:1;
-    } _has;
     unsigned int _localSectionPosition;
     unsigned long long _timestamp;
     NSArray *_results;
@@ -32,10 +27,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasLocalSectionPosition;
-@property (readonly, nonatomic) BOOL hasPersonalizationScore;
-@property (readonly, nonatomic) BOOL hasSection;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -46,8 +37,8 @@
 @property (strong, nonatomic) _CPResultSectionForFeedback *section; // @synthesize section=_section;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 
 - (void).cxx_destruct;
 - (void)addResults:(id)arg1;

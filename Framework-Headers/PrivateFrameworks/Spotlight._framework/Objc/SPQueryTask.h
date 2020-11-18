@@ -49,6 +49,7 @@
 - (void).cxx_destruct;
 - (BOOL)_shouldPromptUserToOpenTTR;
 - (void)cancel;
+- (void)clear;
 - (void)disableUpdates;
 - (void)enableUpdates;
 - (id)init;

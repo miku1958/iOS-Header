@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
-@interface DMFSetBluetoothEnabledRequest : CATTaskRequest
+@interface DMFSetBluetoothEnabledRequest : DMFTaskRequest
 {
     BOOL _enabled;
 }
 
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

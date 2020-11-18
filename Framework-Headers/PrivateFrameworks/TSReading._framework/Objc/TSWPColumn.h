@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TSReading/TSWPOffscreenColumn-Protocol.h>
 
@@ -69,6 +69,7 @@
 + (unsigned long long)charIndexForTopicDragAtPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2;
 + (id)closestColumnInColumnsArray:(id)arg1 forPoint:(struct CGPoint)arg2 ignoreEmptyColumns:(BOOL)arg3 ignoreDrawableOnlyColumns:(BOOL)arg4;
 + (id)columnForCharIndex:(unsigned long long)arg1 eol:(BOOL)arg2 withColumns:(id)arg3;
++ (struct CGColor *)computeSingleColorWithColumns:(id)arg1;
 + (id)footnoteMarkAttachmentInColumnArray:(id)arg1 atPoint:(struct CGPoint)arg2;
 + (id)footnoteReferenceAttachmentInColumnArray:(id)arg1 atPoint:(struct CGPoint)arg2;
 + (id)pathForHighlightWithRange:(struct _NSRange)arg1 columnArray:(id)arg2 pathStyle:(int)arg3;
@@ -96,9 +97,12 @@
 - (unsigned long long)glyphCountForRubyFieldAtCharIndex:(unsigned long long)arg1;
 - (struct CGRect)glyphRectForRange:(struct _NSRange)arg1 includingLabel:(BOOL)arg2;
 - (struct CGRect)glyphRectForRubyFieldAtCharIndex:(unsigned long long)arg1 glyphRange:(struct _NSRange)arg2;
+- (CDStruct_7660b417)heightInfoOfLineFragmentAtIndex:(unsigned long long)arg1;
 - (double)horizontalOffsetForCharIndex:(unsigned long long)arg1 lineFragmentIndex:(unsigned long long)arg2 bumpPastHyphen:(BOOL)arg3 allowPastLineBounds:(BOOL)arg4;
 - (void)incrementRanges:(long long)arg1;
 - (id)initWithStorage:(id)arg1 frameBounds:(struct CGRect)arg2;
+- (BOOL)isEmptyLineFragmentAtIndex:(unsigned long long)arg1;
+- (BOOL)isTruncatedLineFragmentAtIndex:(unsigned long long)arg1;
 - (struct CGRect)labelBoundsOfLineFragmentAtIndex:(unsigned long long)arg1;
 - (const shared_ptr_1a254aea *)lineFragmentArray;
 - (const struct TSWPLineFragment *)lineFragmentAtIndex:(unsigned long long)arg1;
@@ -140,6 +144,8 @@
 - (void)trimFromCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 layoutChore:(struct TSWPLayoutChore *)arg3;
 - (double)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2;
 - (void)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 removeAutoNumberFootnoteCount:(unsigned long long)arg3;
+- (struct CGRect)typographicBoundsOfLineFragmentAtIndex:(unsigned long long)arg1;
+- (double)typographicGlyphExtentOfLineFragmentAtIndex:(unsigned long long)arg1;
 
 @end
 

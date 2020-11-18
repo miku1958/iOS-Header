@@ -18,7 +18,7 @@
 + (id)defaultManager;
 - (void).cxx_destruct;
 - (id)init;
-- (void)registerBlock:(CDUnknownBlockType)arg1;
+- (int)registerBlock:(CDUnknownBlockType)arg1;
 
 @end
 

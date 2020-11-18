@@ -6,12 +6,12 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class NSHashTable, NSMapTable, TSPComponentObjectUUIDMap, TSPObject;
+@class NSHashTable, NSMapTable, TSPComponentObjectUUIDMap, TSPObject, TSPReferenceOrderedSet;
 @protocol TSPDataArchiver;
 
 @protocol TSPEncoderWriteCoordinatorDelegate <NSObject>
 - (long long)componentWriterMode;
-- (TSPObject *)createMetadataForRootObject:(TSPObject *)arg1 dataArchiver:(id<TSPDataArchiver>)arg2 archivedObjects:(NSMapTable *)arg3 componentObjectUUIDMap:(TSPComponentObjectUUIDMap *)arg4 externalReferences:(NSHashTable *)arg5 weakExternalReferences:(NSHashTable *)arg6 lazyReferences:(NSHashTable *)arg7 dataReferences:(NSHashTable *)arg8 error:(id *)arg9;
+- (TSPObject *)createMetadataForRootObject:(TSPObject *)arg1 dataArchiver:(id<TSPDataArchiver>)arg2 archivedObjects:(NSMapTable *)arg3 componentObjectUUIDMap:(TSPComponentObjectUUIDMap *)arg4 externalReferences:(TSPReferenceOrderedSet *)arg5 weakExternalReferences:(TSPReferenceOrderedSet *)arg6 lazyReferences:(NSHashTable *)arg7 dataReferences:(NSHashTable *)arg8 error:(id *)arg9;
 - (unsigned long long)objectTargetType;
 - (BOOL)skipMetadataObjectSerialization;
 @end

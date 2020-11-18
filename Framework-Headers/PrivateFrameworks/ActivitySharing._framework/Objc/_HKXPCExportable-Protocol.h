@@ -14,6 +14,7 @@
 - (NSXPCInterface *)remoteInterface;
 
 @optional
+- (void)connectionConfigured;
 - (void)connectionInterrupted;
 @end
 

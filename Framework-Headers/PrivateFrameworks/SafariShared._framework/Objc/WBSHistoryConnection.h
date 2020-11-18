@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariShared/WBSHistoryServiceProtocol-Protocol.h>
+#import <SafariShared/WBSHistoryConnectionProtocol-Protocol.h>
 
 @class WBSHistoryService;
 
-@interface WBSHistoryConnection : NSObject <WBSHistoryServiceProtocol>
+@interface WBSHistoryConnection : NSObject <WBSHistoryConnectionProtocol>
 {
     WBSHistoryService *_historyService;
 }
@@ -25,8 +25,6 @@
 - (void)groupVisitsIntoSessionsBetweenStartDate:(id)arg1 endDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithHistoryService:(id)arg1;
 - (void)queryMemoryFootprint:(CDUnknownBlockType)arg1;
-- (void)registerForRemoteHistoryNotifications;
-- (void)unregisterForRemoteHistoryNotifications;
 
 @end
 

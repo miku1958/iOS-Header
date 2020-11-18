@@ -7,21 +7,27 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBIntentSlotVocabularyPolicy-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBIntentSlotVocabularyPolicy : PBCodable <NSCopying>
+@interface _INPBIntentSlotVocabularyPolicy : PBCodable <_INPBIntentSlotVocabularyPolicy, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_intentSlotNames;
-    NSMutableArray *_intentSlotVocabularyConcepts;
+    struct _has;
+    NSArray *_intentSlotNames;
+    NSArray *_intentSlotVocabularyConcepts;
 }
 
-@property (strong, nonatomic) NSMutableArray *intentSlotNames; // @synthesize intentSlotNames=_intentSlotNames;
-@property (strong, nonatomic) NSMutableArray *intentSlotVocabularyConcepts; // @synthesize intentSlotVocabularyConcepts=_intentSlotVocabularyConcepts;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *intentSlotNames; // @synthesize intentSlotNames=_intentSlotNames;
+@property (readonly, nonatomic) unsigned long long intentSlotNamesCount;
+@property (copy, nonatomic) NSArray *intentSlotVocabularyConcepts; // @synthesize intentSlotVocabularyConcepts=_intentSlotVocabularyConcepts;
+@property (readonly, nonatomic) unsigned long long intentSlotVocabularyConceptsCount;
+@property (readonly) Class superclass;
 
-+ (Class)intentSlotNamesType;
 + (Class)intentSlotVocabularyConceptsType;
 - (void).cxx_destruct;
 - (void)addIntentSlotNames:(id)arg1;
@@ -29,15 +35,10 @@
 - (void)clearIntentSlotNames;
 - (void)clearIntentSlotVocabularyConcepts;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (id)intentSlotNamesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)intentSlotNamesCount;
 - (id)intentSlotVocabularyConceptsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)intentSlotVocabularyConceptsCount;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

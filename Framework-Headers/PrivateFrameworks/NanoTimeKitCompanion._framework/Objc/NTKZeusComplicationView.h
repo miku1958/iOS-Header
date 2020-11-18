@@ -7,30 +7,38 @@
 #import <UIKit/UIView.h>
 
 #import <NanoTimeKitCompanion/NTKComplicationDisplay-Protocol.h>
-#import <NanoTimeKitCompanion/NTKZeusLowerComplicationDisplay-Protocol.h>
+#import <NanoTimeKitCompanion/NTKZeusComplicationDisplay-Protocol.h>
 
-@class NSString;
+@class CLKDevice, NSString, NTKZeusColorPalette;
 @protocol NTKComplicationDisplayObserver;
 
-@interface NTKZeusComplicationView : UIView <NTKComplicationDisplay, NTKZeusLowerComplicationDisplay>
+@interface NTKZeusComplicationView : UIView <NTKComplicationDisplay, NTKZeusComplicationDisplay>
 {
     UIView *_highlightView;
+    BOOL canUseCurvedText;
     BOOL _highlighted;
     id<NTKComplicationDisplayObserver> displayObserver;
     unsigned long long _style;
+    NTKZeusColorPalette *_palette;
+    CLKDevice *_device;
 }
 
+@property (nonatomic) BOOL canUseCurvedText; // @synthesize canUseCurvedText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
+@property (readonly, nonatomic) NTKZeusColorPalette *palette; // @synthesize palette=_palette;
 @property (nonatomic) BOOL shouldUseTemplateColors;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 
 + (id)viewForComplicationType:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)applyPalette:(id)arg1;
+- (void)applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3;
 - (struct CGRect)contentFrame;
 - (id)init;
 - (void)layoutSubviews;

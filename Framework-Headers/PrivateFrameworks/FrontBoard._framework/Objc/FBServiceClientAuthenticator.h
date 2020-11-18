@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
@@ -24,12 +24,11 @@
 @property (readonly) Class superclass;
 
 + (id)_errorForCode:(long long)arg1 process:(id)arg2 failedEntitlement:(id)arg3;
-+ (BOOL)authenticateAuditToken:(id)arg1 forEntitlement:(id)arg2 error:(out id *)arg3;
++ (BOOL)authenticateAuditToken:(CDStruct_6ad76789)arg1 forEntitlement:(id)arg2 error:(out id *)arg3;
 + (id)sharedForegroundUIAppClientAuthenticator;
 + (id)sharedSystemClientAuthenticator;
 + (id)sharedUIAppClientAuthenticator;
-+ (BOOL)validateAuditToken:(id)arg1 error:(out id *)arg2;
-- (int)_authenticateConnection:(id)arg1 forEntitlement:(id)arg2 error:(out id *)arg3 withResult:(CDUnknownBlockType)arg4;
+- (void).cxx_destruct;
 - (int)_authenticateProcessHandle:(id)arg1 entitlement:(id)arg2 error:(out id *)arg3 withResult:(CDUnknownBlockType)arg4;
 - (BOOL)authenticateAuditToken:(id)arg1;
 - (BOOL)authenticateAuditToken:(id)arg1 error:(out id *)arg2;
@@ -38,13 +37,6 @@
 - (BOOL)authenticateClient:(id)arg1;
 - (BOOL)authenticateClient:(id)arg1 error:(out id *)arg2;
 - (int)authenticateClient:(id)arg1 withResult:(CDUnknownBlockType)arg2;
-- (BOOL)authenticateConnection:(id)arg1;
-- (BOOL)authenticateConnection:(id)arg1 error:(out id *)arg2;
-- (int)authenticateConnection:(id)arg1 forEntitlement:(id)arg2 withResult:(CDUnknownBlockType)arg3;
-- (int)authenticateConnection:(id)arg1 withResult:(CDUnknownBlockType)arg2;
-- (BOOL)authenticateProcess:(id)arg1;
-- (BOOL)authenticateProcess:(id)arg1 error:(out id *)arg2;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MPSNeuralNetwork/MPSCNNConvolutionDataSource-Protocol.h>
 
@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 - (float *)biasTerms;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned int)dataType;
 - (void)dealloc;
 - (id)descriptor;

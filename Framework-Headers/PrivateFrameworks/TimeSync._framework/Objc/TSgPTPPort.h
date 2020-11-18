@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class __TSgPTPPortNotification;
 @protocol OS_dispatch_queue;
@@ -18,13 +18,13 @@
     __TSgPTPPortNotification *_portForNotification;
     NSObject<OS_dispatch_queue> *_internalPropertyUpdateQueue;
     unsigned short _portNumber;
-    long long _portRole;
+    int _portRole;
     NSObject<OS_dispatch_queue> *_propertyUpdateQueue;
 }
 
 @property (nonatomic) unsigned short portNumber; // @synthesize portNumber=_portNumber;
-@property (nonatomic) long long portRole; // @synthesize portRole=_portRole;
-@property (readonly, nonatomic) long long portType; // @dynamic portType;
+@property (nonatomic) int portRole; // @synthesize portRole=_portRole;
+@property (readonly, nonatomic) int portType; // @dynamic portType;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyUpdateQueue; // @synthesize propertyUpdateQueue=_propertyUpdateQueue;
 @property (readonly, nonatomic) unsigned int service;
 
@@ -33,7 +33,7 @@
 + (id)gPTPPortWithService:(unsigned int)arg1;
 - (BOOL)_commonInitWithService:(unsigned int)arg1;
 - (unsigned short)_portNumber;
-- (long long)_portRole;
+- (int)_portRole;
 - (void)dealloc;
 - (id)init;
 - (id)initWithMatchingDictionary:(id)arg1;

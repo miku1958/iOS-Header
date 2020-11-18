@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CFNetwork/NSURLSessionDelegate-Protocol.h>
 #import <CFNetwork/NSURLSessionDownloadDelegate-Protocol.h>
@@ -15,8 +15,10 @@
 __attribute__((visibility("hidden")))
 @interface MultiplePauseResumeDataDownloadDelegate : NSObject <NSURLSessionDownloadDelegate, NSURLSessionDelegate>
 {
+    BOOL _expectDirectory;
     long long _sizeOfEntity;
     NSObject<OS_dispatch_semaphore> *_wait;
+    BOOL _retryingWithResumeData;
     BOOL _result;
     long long _totalBytesWritten;
 }
@@ -27,13 +29,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
+- (void)URLSession:(id)arg1 downloadTask:(id)arg2 didResumeAtOffset:(long long)arg3 expectedTotalBytes:(long long)arg4;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didWriteData:(long long)arg3 totalBytesWritten:(long long)arg4 totalBytesExpectedToWrite:(long long)arg5;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)dealloc;
 - (BOOL)didTestPass;
 - (long long)getSizeOfEntity;
 - (id)getWaiter;
-- (id)init;
+- (id)initExpectingDirectory:(BOOL)arg1;
+- (BOOL)isExpectingDirectory;
+- (BOOL)isRetryingWithResumeData;
 
 @end
 

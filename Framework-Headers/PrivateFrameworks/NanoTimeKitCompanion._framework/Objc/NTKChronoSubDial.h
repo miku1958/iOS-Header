@@ -6,8 +6,11 @@
 
 #import <SpriteKit/SKEffectNode.h>
 
+@class CLKDevice;
+
 @interface NTKChronoSubDial : SKEffectNode
 {
+    CLKDevice *_device;
     double _labelsRadius;
     double _labelsFontSize;
     long long _labelsFont;
@@ -16,6 +19,7 @@
     struct CGSize _smallInner;
 }
 
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) long long labelsFont; // @synthesize labelsFont=_labelsFont;
 @property (readonly, nonatomic) double labelsFontSize; // @synthesize labelsFontSize=_labelsFontSize;
 @property (readonly, nonatomic) double labelsRadius; // @synthesize labelsRadius=_labelsRadius;
@@ -23,13 +27,14 @@
 @property (readonly, nonatomic) struct CGSize smallInner; // @synthesize smallInner=_smallInner;
 @property (readonly, nonatomic) struct CGSize smallOuter; // @synthesize smallOuter=_smallOuter;
 
-+ (id)lower:(double)arg1;
-+ (id)upper:(double)arg1;
++ (id)lower:(double)arg1 forDevice:(id)arg2;
++ (id)upper:(double)arg1 forDevice:(id)arg2;
+- (void).cxx_destruct;
 - (id)addNodes:(id)arg1;
 - (id)addNodes:(id)arg1 to:(id)arg2;
 - (void)applyTransitionFraction:(double)arg1 fromTimeScale:(unsigned long long)arg2 toTimeScale:(unsigned long long)arg3;
 - (void)colorize:(id)arg1;
-- (id)initWithRadius:(double)arg1;
+- (id)initWithRadius:(double)arg1 forDevice:(id)arg2;
 - (void)updateTimeScale:(unsigned long long)arg1;
 
 @end

@@ -45,6 +45,7 @@
 - (void)_drawDayNumber;
 - (void)_drawDayNumberForHomeScreenStyledIcon;
 - (void)_drawDayNumberForNotificationIcon;
+- (double)_homeScreenDateNameBaselineVerticalInset;
 - (BOOL)_shouldUseJ207SmallerFont:(id)arg1;
 - (id)_systemG2FromFont:(id)arg1;
 - (id)dateNameFont:(id)arg1;

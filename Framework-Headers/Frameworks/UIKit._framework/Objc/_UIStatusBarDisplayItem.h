@@ -4,47 +4,59 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIStatusBarPrioritized-Protocol.h>
+#import <UIKitCore/_UIStatusBarActionable-Protocol.h>
+#import <UIKitCore/_UIStatusBarPrioritized-Protocol.h>
 
-@class NSString, UIView, _UIStatusBarDisplayItemPlacement, _UIStatusBarItem, _UIStatusBarRegion, _UIStatusBarStyleAttributes;
+@class NSString, UIView, _UIStatusBarAction, _UIStatusBarDisplayItemPlacement, _UIStatusBarIdentifier, _UIStatusBarItem, _UIStatusBarRegion;
 @protocol UILayoutItem, _UIStatusBarDisplayable;
 
-@interface _UIStatusBarDisplayItem : NSObject <_UIStatusBarPrioritized>
+@interface _UIStatusBarDisplayItem : NSObject <_UIStatusBarPrioritized, _UIStatusBarActionable>
 {
     BOOL _enabled;
     BOOL _floating;
     BOOL _needsAddingToLayout;
     UIView<_UIStatusBarDisplayable> *_view;
-    NSString *_identifier;
+    _UIStatusBarAction *_action;
+    _UIStatusBarIdentifier *_identifier;
     _UIStatusBarItem *_item;
-    id<UILayoutItem> _layoutItem;
+    UIView *_highlightView;
     double _alpha;
     double _viewAlpha;
     double _baselineOffset;
+    long long _overriddenVerticalAlignment;
     _UIStatusBarRegion *_region;
     UIView *_containerView;
-    _UIStatusBarStyleAttributes *_overriddenStyleAttributes;
+    id<UILayoutItem> _layoutItem;
     _UIStatusBarDisplayItemPlacement *_placement;
+    struct UIEdgeInsets _actionInsets;
     struct CGAffineTransform _transform;
     struct CGAffineTransform _viewTransform;
 }
 
 @property (nonatomic) struct CGRect absoluteFrame;
+@property (strong, nonatomic) _UIStatusBarAction *action; // @synthesize action=_action;
+@property (nonatomic) struct UIEdgeInsets actionInsets; // @synthesize actionInsets=_actionInsets;
 @property (nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property (nonatomic) double baselineOffset; // @synthesize baselineOffset=_baselineOffset;
 @property (weak, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<_UIStatusBarDisplayable> displayable;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL floating; // @synthesize floating=_floating;
-@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
+@property (readonly, copy, nonatomic) _UIStatusBarIdentifier *identifier; // @synthesize identifier=_identifier;
 @property (readonly, weak, nonatomic) _UIStatusBarItem *item; // @synthesize item=_item;
-@property (readonly, nonatomic) id<UILayoutItem> layoutItem; // @synthesize layoutItem=_layoutItem;
+@property (strong, nonatomic) id<UILayoutItem> layoutItem; // @synthesize layoutItem=_layoutItem;
 @property (nonatomic) BOOL needsAddingToLayout; // @synthesize needsAddingToLayout=_needsAddingToLayout;
-@property (copy, nonatomic) _UIStatusBarStyleAttributes *overriddenStyleAttributes; // @synthesize overriddenStyleAttributes=_overriddenStyleAttributes;
+@property (nonatomic) long long overriddenVerticalAlignment; // @synthesize overriddenVerticalAlignment=_overriddenVerticalAlignment;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *placement; // @synthesize placement=_placement;
 @property (readonly, nonatomic) long long priority;
 @property (weak, nonatomic) _UIStatusBarRegion *region; // @synthesize region=_region;
+@property (readonly) Class superclass;
 @property (nonatomic) struct CGAffineTransform transform; // @synthesize transform=_transform;
 @property (readonly, nonatomic) UIView<_UIStatusBarDisplayable> *view; // @synthesize view=_view;
 @property (nonatomic) double viewAlpha; // @synthesize viewAlpha=_viewAlpha;
@@ -55,7 +67,6 @@
 - (void)_updateComputedAlpha;
 - (void)_updateComputedTransform;
 - (void)applyStyleAttributes:(id)arg1;
-- (id)description;
 - (id)initWithIdentifier:(id)arg1 item:(id)arg2;
 
 @end

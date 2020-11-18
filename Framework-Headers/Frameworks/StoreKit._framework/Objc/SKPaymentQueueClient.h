@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <StoreKit/NSCopying-Protocol.h>
 
@@ -37,10 +37,11 @@
 @property (copy, nonatomic) NSNumber *storeItemIdentifier; // @synthesize storeItemIdentifier=_storeItemIdentifier;
 @property (copy, nonatomic) NSString *vendorIdentifier; // @synthesize vendorIdentifier=_vendorIdentifier;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyXPCEncoding;
-- (void)dealloc;
 - (id)initWithXPCEncoding:(id)arg1;
+- (id)plist;
 
 @end
 

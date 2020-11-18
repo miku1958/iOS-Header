@@ -8,30 +8,28 @@
 
 #import <ClassKit/CLSGraphVertex-Protocol.h>
 #import <ClassKit/CLSRelationable-Protocol.h>
+#import <ClassKit/NSLocking-Protocol.h>
 #import <ClassKit/NSSecureCoding-Protocol.h>
 
-@class CLSDataStore, NSDate, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class CLSDataStore, NSDate, NSString;
 
-@interface CLSObject : NSObject <CLSRelationable, CLSGraphVertex, NSSecureCoding>
+@interface CLSObject : NSObject <CLSRelationable, CLSGraphVertex, NSLocking, NSSecureCoding>
 {
     BOOL _deleted;
     BOOL _modified;
     CLSDataStore *_dataStore;
-    NSObject<OS_dispatch_queue> *_queue;
-    NSMutableDictionary *_childrenByID;
+    NSString *_parentObjectID;
+    NSString *_appIdentifier;
+    struct NSMutableDictionary *_childrenByID;
     CLSObject *_parent;
+    struct os_unfair_recursive_lock_s _lock;
     BOOL _temporary;
     unsigned int _generation;
     NSDate *_dateCreated;
     NSDate *_dateLastModified;
-    NSString *__appIdentifier;
     NSString *_objectID;
-    NSString *__parentObjectID;
 }
 
-@property (copy, nonatomic) NSString *_appIdentifier; // @synthesize _appIdentifier=__appIdentifier;
-@property (copy, nonatomic) NSString *_parentObjectID; // @synthesize _parentObjectID=__parentObjectID;
 @property (copy, nonatomic) NSString *appIdentifier;
 @property (weak, nonatomic) CLSDataStore *dataStore;
 @property (strong, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
@@ -54,6 +52,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addChild:(id)arg1;
+- (void)_addChild:(id)arg1 lock:(BOOL)arg2;
 - (id)_init;
 - (void)addChild:(id)arg1;
 - (void)addChild:(id)arg1 changedPropertyName:(id)arg2;
@@ -70,10 +69,11 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeletedObjectID:(id)arg1;
+- (void)lock;
 - (void)mergeWithObject:(id)arg1;
 - (void)removeChild:(id)arg1;
 - (void)removeChild:(id)arg1 changedPropertyName:(id)arg2;
-- (void)sync;
+- (void)unlock;
 - (BOOL)validateObject:(id *)arg1;
 - (void)willSaveObject;
 

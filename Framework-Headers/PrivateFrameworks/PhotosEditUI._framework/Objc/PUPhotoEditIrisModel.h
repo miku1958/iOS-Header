@@ -11,6 +11,7 @@
 @class PLPhotoEditModel, PUPhotoEditIrisModelChange;
 @protocol PUEditableAsset;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditIrisModel : PUViewModel <NSCopying>
 {
     BOOL _videoEnabled;

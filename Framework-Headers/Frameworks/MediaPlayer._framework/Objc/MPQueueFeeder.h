@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPQueueBehaviorManaging-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
 
-@class MPModelPlayEvent, MPMutableBidirectionalDictionary, NSData, NSDictionary, NSMutableDictionary, NSString;
+@class MPModelPlayEvent, MSVMutableBidirectionalDictionary, NSData, NSDictionary, NSMutableDictionary, NSString;
 @protocol MPQueueFeederDelegate;
 
 @interface MPQueueFeeder : NSObject <MPQueueBehaviorManaging, NSSecureCoding>
@@ -17,7 +17,7 @@
     long long _repeatType;
     long long _shuffleType;
     NSMutableDictionary *_nextStartTimes;
-    MPMutableBidirectionalDictionary *_exportableItemIDs;
+    MSVMutableBidirectionalDictionary *_exportableItemIDs;
     BOOL _requiresQueueChangeVerification;
     id<MPQueueFeederDelegate> _delegate;
     unsigned long long _state;

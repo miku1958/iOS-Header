@@ -8,10 +8,7 @@
 
 @interface MPSCNNBatchNormalizationStatistics : MPSCNNKernel
 {
-    unsigned long long _numberOfFeatureChannels;
 }
-
-@property (nonatomic) unsigned long long numberOfFeatureChannels; // @synthesize numberOfFeatureChannels=_numberOfFeatureChannels;
 
 + (const struct MPSLibraryInfo *)libraryInfo;
 - (BOOL)appendBatchBarrier;
@@ -19,6 +16,7 @@
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (BOOL)isResultStateReusedAcrossBatch;
+- (unsigned long long)maxBatchSize;
 
 @end
 

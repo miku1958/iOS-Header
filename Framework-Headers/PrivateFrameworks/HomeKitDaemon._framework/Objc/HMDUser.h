@@ -12,14 +12,16 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class AVOutputDeviceAuthorizedPeer, HAPPairingIdentity, HMDAccount, HMDAssistantAccessControl, HMDHome, HMUserPresenceAuthorization, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
+@class AVOutputDeviceAuthorizedPeer, HAPPairingIdentity, HMDAccountHandle, HMDAccountIdentifier, HMDAssistantAccessControl, HMDHome, HMUserPresenceAuthorization, NSMutableArray, NSObject, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDUser : HMFObject <HMFLogging, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, NSSecureCoding>
 {
-    NSMutableArray *_relayAccessTokens;
+    NSUUID *_uuid;
     BOOL _remoteAccessAllowed;
-    BOOL _remoteGateway;
+    NSMutableArray *_relayAccessTokens;
+    HMDAccountHandle *_accountHandle;
+    HMDAccountIdentifier *_accountIdentifier;
     unsigned long long _privilege;
     HMDHome *_home;
     NSString *_userID;
@@ -28,70 +30,77 @@
     HAPPairingIdentity *_pairingIdentity;
     NSString *_displayName;
     HMDAssistantAccessControl *_assistantAccessControl;
-    NSUUID *_uuid;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
-@property (readonly, copy) HMDAccount *account;
+@property (copy) HMDAccountIdentifier *accountIdentifier;
+@property (readonly, getter=isAdministrator) BOOL administrator;
 @property (strong) HMDAssistantAccessControl *assistantAccessControl; // @synthesize assistantAccessControl=_assistantAccessControl;
 @property (readonly, copy) AVOutputDeviceAuthorizedPeer *av_authorizedPeer;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (readonly, nonatomic, getter=isCurrentUser) BOOL currentUser;
+@property (readonly, getter=isCurrentUser) BOOL currentUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (readonly, copy) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, copy, nonatomic) NSString *encodingRemoteDisplayName;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
-@property (readonly, nonatomic) BOOL isAdministrator;
-@property (readonly, nonatomic) BOOL isOwner;
+@property (weak) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HAPPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
-@property (copy, nonatomic) HMUserPresenceAuthorization *presenceAuthStatus; // @synthesize presenceAuthStatus=_presenceAuthStatus;
-@property (nonatomic) unsigned long long privilege; // @synthesize privilege=_privilege;
+@property (readonly, getter=isOwner) BOOL owner;
+@property (copy) HAPPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
+@property (copy) HMUserPresenceAuthorization *presenceAuthStatus; // @synthesize presenceAuthStatus=_presenceAuthStatus;
+@property unsigned long long privilege; // @synthesize privilege=_privilege;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (copy, nonatomic) NSString *relayIdentifier; // @synthesize relayIdentifier=_relayIdentifier;
-@property (nonatomic, getter=isRemoteAccessAllowed) BOOL remoteAccessAllowed; // @synthesize remoteAccessAllowed=_remoteAccessAllowed;
-@property (nonatomic, getter=isRemoteGateway) BOOL remoteGateway; // @synthesize remoteGateway=_remoteGateway;
-@property (readonly) BOOL requiresMakoSupport;
+@property (copy) NSString *relayIdentifier; // @synthesize relayIdentifier=_relayIdentifier;
+@property (getter=isRemoteAccessAllowed) BOOL remoteAccessAllowed; // @synthesize remoteAccessAllowed=_remoteAccessAllowed;
+@property (readonly, getter=isRemoteGateway) BOOL remoteGateway;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *userID; // @synthesize userID=_userID;
-@property (copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (copy) NSString *userID; // @synthesize userID=_userID;
+@property (copy, setter=setUUID:) NSUUID *uuid; // @synthesize uuid=_uuid;
 @property (readonly, getter=isValid) BOOL valid;
 
 + (id)UUIDWithUserID:(id)arg1 forHomeIdentifier:(id)arg2 uuid:(id)arg3 pairingIdentity:(id)arg4;
-+ (id)currentUserWithPrivilege:(unsigned long long)arg1 forHomeIdentifier:(id)arg2 uuid:(id)arg3;
-+ (id)destinationWithUserID:(id)arg1;
++ (id)currentUserWithPrivilege:(unsigned long long)arg1 forHome:(id)arg2;
 + (BOOL)hasMessageReceiverChildren;
 + (id)logCategory;
++ (id)ownerWithUserID:(id)arg1 home:(id)arg2 pairingIdentity:(id)arg3 homeManager:(id)arg4;
 + (BOOL)supportsSecureCoding;
-+ (id)userWithDictionary:(id)arg1 forHomeIdentifier:(id)arg2;
-+ (id)userWithName:(id)arg1 userID:(id)arg2 uuid:(id)arg3 forHomeIdentifier:(id)arg4 publicKey:(id)arg5 homeManager:(id)arg6;
++ (id)userIDForAccountHandle:(id)arg1;
++ (id)userWithDictionary:(id)arg1 forHome:(id)arg2;
 - (void).cxx_destruct;
+- (void)__handleAddedAccount:(id)arg1;
+- (void)__handleRemovedAccount:(id)arg1;
+- (void)_addRelayAccessToken:(id)arg1;
 - (unsigned long long)_compatiblePrivilege;
 - (void)_fixupRelayAccessTokens;
 - (void)_handleAssistantAccessControlUpdate:(id)arg1;
+- (void)_handlePairingIdentityRequest:(id)arg1;
+- (void)_migrateRelayAccessTokensCloudZone:(id)arg1 migrationQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_relayAccessTokenForIdentifier:(id)arg1;
+- (void)_removeRelayAccessToken:(id)arg1;
 - (void)_transactionUserUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)account;
+- (id)accountHandle;
 - (void)addRelayAccessToken:(id)arg1;
-- (void)addRelayAccessToken:(id)arg1 accessory:(id)arg2;
+- (id)attributeDescriptions;
 - (id)backingStoreObjects:(long long)arg1;
 - (void)configureWithHome:(id)arg1;
 - (BOOL)containsRelayAccessToken:(id)arg1;
+- (void)dealloc;
+- (void)deregisterIdentity;
 - (id)dictionaryEncoding;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleAssistantAccessControlUpdate:(id)arg1;
+- (id)initWithAccountHandle:(id)arg1 home:(id)arg2 pairingIdentity:(id)arg3 privilege:(unsigned long long)arg4;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModelObject:(id)arg1;
-- (id)initWithUserID:(id)arg1 displayName:(id)arg2 forHomeIdentifier:(id)arg3 uuid:(id)arg4 pairingIdentity:(id)arg5 privilege:(unsigned long long)arg6;
-- (id)initWithUserID:(id)arg1 forHomeIdentifier:(id)arg2 uuid:(id)arg3 pairingIdentity:(id)arg4 privilege:(unsigned long long)arg5;
 - (BOOL)isCurrentUserAndOwner;
 - (BOOL)isEqual:(id)arg1;
 - (id)logIdentifier;
-- (BOOL)mergeFromUser:(id)arg1 dataVersion:(long long)arg2;
 - (id)messageDestination;
 - (id)messageDispatcher;
 - (void)migrateAfterCloudMerge:(CDUnknownBlockType)arg1;
@@ -102,18 +111,20 @@
 - (id)publicKey;
 - (BOOL)refreshDisplayName;
 - (void)registerForMessages;
+- (void)registerIdentity;
 - (id)relayAccessTokenForAccessory:(id)arg1;
 - (id)relayAccessTokens;
 - (void)removeAccessoriesFromAssistantAccessControlList:(id)arg1;
 - (void)removeRelayAccessToken:(id)arg1;
-- (void)removeRelayAccessTokenForAccessory:(id)arg1;
-- (id)residentCopy;
+- (BOOL)requiresMakoSupport;
+- (void)setAccountHandle:(id)arg1;
+- (void)setDisplayName:(id)arg1;
+- (id)shortDescription;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (BOOL)updateAdministrator:(BOOL)arg1;
-- (void)updateRelayAccessTokens:(id)arg1;
+- (void)updateRelayIdentifier:(id)arg1;
 - (BOOL)updateRemoteAccessAllowed:(BOOL)arg1;
-- (id)userCopy;
 
 @end
 

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CorePDF/UIPDFSelectionWidget-Protocol.h>
 
 @class CALayer, UIPDFPageView;
 
+__attribute__((visibility("hidden")))
 @interface UIPDFTextRangeWidget : NSObject <UIPDFSelectionWidget>
 {
     CALayer *_startSelectionGrabber;

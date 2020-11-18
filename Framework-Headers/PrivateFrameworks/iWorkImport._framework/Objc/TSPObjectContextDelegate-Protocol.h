@@ -50,5 +50,6 @@
 - (BOOL)shouldLoadAllComponentsForContext:(TSPObjectContext *)arg1 documentURL:(NSURL *)arg2;
 - (void)suspendAutosaveWithReason:(NSString *)arg1;
 - (void)suspendSaveAndAutosaveWithReason:(NSString *)arg1;
+- (void)willBeginReadingFromURL:(NSURL *)arg1;
 @end
 

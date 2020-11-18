@@ -6,13 +6,15 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/NSNetServiceDelegate-Protocol.h>
 
-@class HMFNetAddress, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNetService, NSObject, NSString;
+@class HMFNetAddress, HMFUnfairLock, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNetService, NSObject, NSString;
 @protocol HMFNetServiceDelegate, OS_dispatch_queue;
 
-@interface HMFNetService : HMFObject <NSNetServiceDelegate>
+@interface HMFNetService : HMFObject <HMFLogging, NSNetServiceDelegate>
 {
+    HMFUnfairLock *_lock;
     NSString *_type;
     NSString *_name;
     NSString *_domain;
@@ -24,8 +26,6 @@
     HMFNetAddress *_hostName;
     id<HMFNetServiceDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSMutableArray *_resolveBlocks;
 }
 
@@ -34,7 +34,6 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMFNetServiceDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property (readonly) unsigned long long hash;
@@ -42,13 +41,13 @@
 @property (readonly, nonatomic) NSNetService *internal; // @synthesize internal=_internal;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) unsigned long long port;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) NSMutableArray *resolveBlocks; // @synthesize resolveBlocks=_resolveBlocks;
 @property (nonatomic, getter=isResolving) BOOL resolving; // @synthesize resolving=_resolving;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 
 + (id)errorFromNetServiceErrorDict:(id)arg1;
++ (id)logCategory;
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (void)_reallyResolveWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -57,15 +56,16 @@
 - (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)init;
+- (id)initWithDomain:(id)arg1 type:(id)arg2 name:(id)arg3;
 - (id)initWithNetService:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)logIdentifier;
 - (void)netService:(id)arg1 didNotResolve:(id)arg2;
 - (void)netService:(id)arg1 didUpdateTXTRecordData:(id)arg2;
 - (void)netServiceDidResolveAddress:(id)arg1;
 - (void)netServiceDidStop:(id)arg1;
 - (void)netServiceWillResolve:(id)arg1;
 - (void)notifyUpdatedAddresses:(id)arg1;
-- (void)notifyUpdatedTXTRecord:(id)arg1;
 - (void)removeAllTXTRecordObjects;
 - (void)resolveWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAddresses:(id)arg1;

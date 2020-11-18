@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol MTLLibrary, OS_dispatch_data;
 
@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) unsigned long long functionCount;
 
++ (id)internalLibraryWithName:(id)arg1 device:(id)arg2;
 + (id)libraryWithData:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
+- (id)externFunctionNames;
 - (id)functionWithName:(id)arg1;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
 - (id)newFunctionWithName:(id)arg1 device:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -17,6 +17,7 @@
     NSArray *_pendingPickedRoutes;
     NSArray *_displayableAvailableRoutes;
     NSArray *_displayAsPickedRoutes;
+    NSArray *_volumeCapableRoutes;
 }
 
 @property (nonatomic) BOOL canGroup; // @synthesize canGroup=_canGroup;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) NSArray *pendingPickedRoutes; // @synthesize pendingPickedRoutes=_pendingPickedRoutes;
 @property (copy, nonatomic) NSArray *pickedRoutes; // @synthesize pickedRoutes=_pickedRoutes;
 @property (nonatomic) BOOL shouldReload; // @synthesize shouldReload=_shouldReload;
+@property (copy, nonatomic) NSArray *volumeCapableRoutes; // @synthesize volumeCapableRoutes=_volumeCapableRoutes;
 
 - (void).cxx_destruct;
 

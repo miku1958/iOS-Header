@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) NSArray *children; // @synthesize children=_children;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_deserialize:(struct CADeserializer *)arg1;
 - (void)_indexChildren;
 - (void)_observersChanged:(BOOL)arg1 deltaCount:(int)arg2;

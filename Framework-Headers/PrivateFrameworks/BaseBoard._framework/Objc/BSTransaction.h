@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSWatchdogProviding-Protocol.h>
 
@@ -39,27 +39,28 @@
 }
 
 @property (readonly, nonatomic, getter=isAborted) BOOL aborted; // @synthesize aborted=_aborted;
-@property (readonly, strong, nonatomic) NSArray *allErrors;
+@property (readonly, nonatomic) NSArray *allErrors;
 @property (nonatomic, getter=isAuditHistoryEnabled) BOOL auditHistoryEnabled; // @synthesize auditHistoryEnabled=_auditHistoryEnabled;
-@property (readonly, strong, nonatomic) NSArray *childTransactions;
+@property (readonly, nonatomic) NSArray *childTransactions;
 @property (readonly, nonatomic, getter=isComplete) BOOL complete;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic, getter=isFailed) BOOL failed; // @synthesize failed=_failed;
 @property (readonly, nonatomic, getter=isFinishedWorking) BOOL finishedWorking;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInterrupted) BOOL interrupted;
 @property (readonly, nonatomic, getter=isInterruptible) BOOL interruptible;
-@property (readonly, strong, nonatomic) NSSet *milestones;
-@property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *queue;
+@property (readonly, nonatomic) NSSet *milestones;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (readonly, nonatomic, getter=hasStarted) BOOL started;
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
 + (id)_defaultTransactionLog;
+- (void).cxx_destruct;
 - (void)_abortForError:(id)arg1;
 - (void)_addAuditHistoryItem:(id)arg1;
 - (void)_addChildTransactionRelationship:(id)arg1;

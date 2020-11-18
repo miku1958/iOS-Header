@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSArray *quads;
 
 + (id)quadViewWithFrame:(struct CGRect)arg1;
++ (id)quadViewWithFrame:(struct CGRect)arg1 options:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (void)_discardContents;
 - (void)_display;

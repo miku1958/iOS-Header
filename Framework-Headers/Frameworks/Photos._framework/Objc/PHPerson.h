@@ -33,13 +33,15 @@
 @property (readonly, nonatomic) long long verifiedType; // @synthesize verifiedType=_verifiedType;
 
 + (id)_convertToPersonSuggestion:(id)arg1;
++ (id)_momentLocalIdentifiersForAssetCollection:(id)arg1;
 + (id)_packageSuggestionList:(id)arg1;
 + (id)_personSuggestionMarkedAsConfirmed:(BOOL)arg1 fromPersonSuggestion:(id)arg2;
 + (long long)_personSuggestionsForPerson:(id)arg1 confirmedPersonSuggestions:(id)arg2 rejectedPersonSuggestions:(id)arg3 fromClient:(id)arg4 completion:(CDUnknownBlockType)arg5;
 + (id)_verifiedPersonWithLocalIdentifier:(id)arg1 fromPhotoLibrary:(id)arg2;
 + (id)displayNameFromContact:(id)arg1;
-+ (id)entityKeyForPropertyKey:(id)arg1;
++ (id)entityKeyMap;
 + (id)fetchAssociatedPersonsGroupedByFaceGroupLocalIdentifierForFaceGroups:(id)arg1 options:(id)arg2;
++ (id)fetchFinalMergeTargetPersonsForPersonWithUUID:(id)arg1 options:(id)arg2;
 + (id)fetchHomePersonUUIDsGroupedByAssetUUIDForAssetUUIDs:(id)arg1 options:(id)arg2;
 + (id)fetchInvalidMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchMergeCandidatePersonsForPerson:(id)arg1 options:(id)arg2;
@@ -47,6 +49,7 @@
 + (id)fetchPersonCountGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchPersonWithFace:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsForAssetCollection:(id)arg1 options:(id)arg2;
++ (id)fetchPersonsForContacts:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsGroupedByAssetLocalIdentifierForAssets:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsInAsset:(id)arg1 options:(id)arg2;
 + (id)fetchPersonsWithLocalIdentifiers:(id)arg1 options:(id)arg2;
@@ -54,9 +57,11 @@
 + (id)fetchPersonsWithType:(long long)arg1 options:(id)arg2;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
 + (id)fetchRejectedPersonsForFace:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedRecipientsForAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)fullNameFromContact:(id)arg1;
 + (id)identifierCode;
++ (id)inferredContactByPersonLocalIdentifierForPersons:(id)arg1;
 + (id)localIdentifierExpressionForFetchRequests;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsKeyFaces;
@@ -72,8 +77,11 @@
 - (void).cxx_destruct;
 - (Class)changeRequestClass;
 - (id)description;
+- (id)inferredContact;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
+- (id)linkedContactWithKeysToFetch:(id)arg1;
 - (void)markAsNeedingKeyFace;
+- (id)suggestedContacts;
 
 @end
 

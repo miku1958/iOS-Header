@@ -4,22 +4,52 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosUICore/PXBaseDisplayCollection.h>
 
 #import <PhotosUICore/PXDisplayAssetCollection-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
-@interface _PXFileBackedAssetCollection : NSObject <PXDisplayAssetCollection>
+@interface _PXFileBackedAssetCollection : PXBaseDisplayCollection <PXDisplayAssetCollection>
 {
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDate *endDate;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *localizedSubtitle;
+@property (readonly, nonatomic) NSString *localizedTitle;
+@property (readonly, nonatomic) BOOL px_isAllPhotosSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isFavoriteMemoriesSmartFolder;
+@property (readonly, nonatomic) BOOL px_isFavoritesSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isFolder;
+@property (readonly, nonatomic) BOOL px_isHiddenSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isImportedAlbum;
+@property (readonly, nonatomic) BOOL px_isMacSyncedAlbum;
+@property (readonly, nonatomic) BOOL px_isMacSyncedEventsFolder;
+@property (readonly, nonatomic) BOOL px_isMacSyncedFacesFolder;
+@property (readonly, nonatomic) BOOL px_isMediaTypeSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isMemoriesVirtualCollection;
+@property (readonly, nonatomic) BOOL px_isMyPhotoStreamAlbum;
+@property (readonly, nonatomic) BOOL px_isOwnedSharedAlbum;
+@property (readonly, nonatomic) BOOL px_isPeopleVirtualCollection;
+@property (readonly, nonatomic) BOOL px_isPlacesVirtualCollection;
+@property (readonly, nonatomic) BOOL px_isRecentlyAddedSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isRecentlyDeletedSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isSharedAlbum;
+@property (readonly, nonatomic) BOOL px_isSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isSmartFolder;
+@property (readonly, nonatomic) BOOL px_isStandInAlbum;
+@property (readonly, nonatomic) BOOL px_isVirtualCollection;
+@property (readonly, nonatomic) NSDate *startDate;
 @property (readonly) Class superclass;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)isAggregation;
+- (BOOL)isEnriched;
+- (BOOL)isRecent;
+- (double)promotionScore;
 
 @end
 

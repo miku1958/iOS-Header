@@ -8,15 +8,15 @@
 
 #import <Silex/SXVideoProviding-Protocol.h>
 
-@class NSString, NSURL, SXTimeline;
-@protocol SXAnalyticsReporting, SXVideoMetadataProviding;
+@class NSString, NSURL, SVTimeline;
+@protocol SVVideoMetadata, SXAnalyticsReporting;
 
 @interface SXVideoProvider : NSObject <SXVideoProviding>
 {
     NSURL *_URL;
     id<SXAnalyticsReporting> _analyticsReporter;
-    id<SXVideoMetadataProviding> _metadata;
-    SXTimeline *_timeline;
+    id<SVVideoMetadata> _metadata;
+    SVTimeline *_timeline;
     double _pausedAtTime;
     NSString *_mediaIdentifier;
 }
@@ -27,10 +27,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
-@property (weak, nonatomic) id<SXVideoMetadataProviding> metadata; // @synthesize metadata=_metadata;
+@property (weak, nonatomic) id<SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) double pausedAtTime; // @synthesize pausedAtTime=_pausedAtTime;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) SXTimeline *timeline; // @synthesize timeline=_timeline;
+@property (readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
 
 - (void).cxx_destruct;
 - (void)configureTimelineForQuartileReporting;

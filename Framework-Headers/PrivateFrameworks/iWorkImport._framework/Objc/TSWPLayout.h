@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     TSWPStorage *_storage;
     unsigned long long _lastLayoutMgrChangeCount;
     TSDLayout<TSWPLayoutParent> *_wpLayoutParent;
-    BOOL _optimizeSegmentationOfEmptyLines;
     BOOL _useBlackTextColor;
 }
 
@@ -55,7 +54,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSPObject<TSDHint> *nextTargetFirstChildHint;
 @property (readonly, nonatomic) id<TSWPOffscreenColumn> nextTargetFirstColumn;
 @property (readonly, nonatomic) NSObject<TSWPTopicNumberHints> *nextTargetTopicNumbers;
-@property (nonatomic) BOOL optimizeSegmentationOfEmptyLines; // @synthesize optimizeSegmentationOfEmptyLines=_optimizeSegmentationOfEmptyLines;
 @property (readonly, nonatomic) unsigned long long pageCount;
 @property (readonly, nonatomic) unsigned long long pageNumber;
 @property (readonly, nonatomic) TSDLayout *parentLayoutForInlineAttachments;
@@ -108,9 +106,6 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)maximumFrameSizeForChild:(id)arg1;
 - (void)p_clearOutLayoutManager;
 - (id)p_firstAncestorRespondingToSelector:(SEL)arg1;
-- (BOOL)p_hasEmptyList;
-- (BOOL)p_hasEmptyParagraphFillOrBorders;
-- (BOOL)p_hasVisibleContents;
 - (void)p_invalidateTextLayout;
 - (BOOL)p_parentAutosizes;
 - (struct CGRect)p_protectedRectWithinLayoutForSelectionRect:(struct CGRect)arg1;
@@ -119,7 +114,6 @@ __attribute__((visibility("hidden")))
 - (id)p_wpLayoutParent;
 - (void)parentDidChange;
 - (void)parentWillChangeTo:(id)arg1;
-- (struct CGRect)rectInRootForAnchoringPencilAnnotationsForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForPresentingAnnotationPopoverForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForSelectionPath:(id)arg1;
 - (struct CGRect)rectInRootForZoomingToSelectionPath:(id)arg1;
@@ -134,6 +128,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)targetRectForCanvasRect:(struct CGRect)arg1;
 - (id)textColorOverride;
 - (id)textWrapper;
+- (id)unscaledAnchorRectsForPencilAnnotationSelectionPath:(id)arg1 attachedType:(long long)arg2;
 - (void)validate;
 - (void)validateTextLayoutForcibly;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;

@@ -83,7 +83,6 @@
 @property (strong, nonatomic) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
-- (void)_activeDeviceChanged;
 - (void)_addFace;
 - (void)_addFaceEndedForFace:(id)arg1;
 - (void)_addTapped;

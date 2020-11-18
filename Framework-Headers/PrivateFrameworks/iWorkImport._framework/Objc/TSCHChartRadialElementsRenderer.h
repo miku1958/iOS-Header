@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 - (void)p_drawOnlyShadow:(id)arg1 forImage:(struct CGLayer *)arg2 intoRect:(struct CGRect)arg3 intoContext:(struct CGContext *)arg4 atViewScale:(double)arg5 usingBlendMode:(int)arg6 opacity:(double)arg7;
 - (void)p_drawOnlyShapeImage:(struct CGLayer *)arg1 intoRect:(struct CGRect)arg2 intoContext:(struct CGContext *)arg3 usingBlendMode:(int)arg4 opacity:(double)arg5;
 - (void)p_drawWedgePathIntoContext:(struct CGContext *)arg1 path:(struct CGPath *)arg2 fill:(id)arg3 stroke:(id)arg4 opacity:(double)arg5 withinBounds:(struct CGRect)arg6;
-- (struct CGLayer *)p_newCGLayerForUserSpaceRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 outUserSpaceLayerBounds:(struct CGRect *)arg3;
 - (struct CGLayer *)p_newPreRenderedImageWithContext:(struct CGContext *)arg1 wedgePath:(struct CGPath *)arg2 fullWedgePath:(struct CGPath *)arg3 fill:(id)arg4 stroke:(id)arg5 shadow:(id)arg6 outUserSpaceLayerBounds:(struct CGRect *)arg7;
 - (void)p_renderIntoContext:(struct CGContext *)arg1 visible:(struct CGRect)arg2;
 - (BOOL)p_shouldRenderSeriesIndex:(unsigned long long)arg1;

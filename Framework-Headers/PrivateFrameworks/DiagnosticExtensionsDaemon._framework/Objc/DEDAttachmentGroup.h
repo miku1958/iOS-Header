@@ -8,7 +8,7 @@
 
 #import <DiagnosticExtensionsDaemon/DEDSecureArchiving-Protocol.h>
 
-@class DEDBugSession, NSArray, NSString, NSURL;
+@class DEDBugSession, DEDExtensionIdentifier, NSArray, NSString, NSURL;
 
 @interface DEDAttachmentGroup : NSObject <DEDSecureArchiving>
 {
@@ -18,10 +18,12 @@
     NSString *_displayName;
     NSString *_extensionID;
     NSArray *_attachmentItems;
+    DEDExtensionIdentifier *_dedExtensionIdentifier;
 }
 
 @property (strong) NSArray *attachmentItems; // @synthesize attachmentItems=_attachmentItems;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) DEDExtensionIdentifier *dedExtensionIdentifier; // @synthesize dedExtensionIdentifier=_dedExtensionIdentifier;
 @property (readonly, copy) NSString *description;
 @property (strong) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (strong) NSString *displayName; // @synthesize displayName=_displayName;

@@ -8,6 +8,7 @@
 
 @class NSArray, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface AMPOnboardingMultiFeatureHeaderView : UIScrollView
 {
     BOOL _isPresentedInFormSheet;

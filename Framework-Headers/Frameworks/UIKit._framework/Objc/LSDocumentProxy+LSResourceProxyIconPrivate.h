@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/LSDocumentProxy.h>
+#import <CoreServices/LSDocumentProxy.h>
 
 @interface LSDocumentProxy (LSResourceProxyIconPrivate)
 - (struct CGSize)_defaultStyleSize:(id)arg1;

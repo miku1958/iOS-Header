@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSHashTable, NSMutableArray, NSSet, TSDInteractiveCanvasController, TSDLayoutController, TSKAccessController, TSKChangeNotifier, TSKDocumentRoot, TSPObjectContext, TSUColor, TSUPointerKeyDictionary;
 @protocol OS_dispatch_queue, TSDCanvasDelegate;
@@ -44,7 +44,7 @@ __attribute__((visibility("hidden")))
     BOOL mAllowsFontSubpixelQuantization;
     BOOL mSuppressesShadowsAndReflections;
     BOOL mSuppressesShapeText;
-    BOOL mShouldRenderAudioObjectsInNonInteractiveCanvas;
+    BOOL mShouldRenderInvisibleContentForNonInteractiveCanvas;
     double i_viewScaleForAudioObjectsInNonInteractiveCanvas;
 }
 
@@ -60,7 +60,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double contentsScale;
 @property (weak, nonatomic) id<TSDCanvasDelegate> delegate; // @synthesize delegate=mDelegate;
 @property (readonly, nonatomic) TSKDocumentRoot *documentRoot;
-@property (nonatomic) BOOL i_shouldRenderAudioObjectsInNonInteractiveCanvas; // @synthesize i_shouldRenderAudioObjectsInNonInteractiveCanvas=mShouldRenderAudioObjectsInNonInteractiveCanvas;
 @property (nonatomic) double i_viewScaleForAudioObjectsInNonInteractiveCanvas; // @synthesize i_viewScaleForAudioObjectsInNonInteractiveCanvas;
 @property (copy, nonatomic) NSArray *infosToDisplay; // @synthesize infosToDisplay=mInfos;
 @property (nonatomic) BOOL isAnchoredAtRight; // @synthesize isAnchoredAtRight=mIsAnchoredAtRight;
@@ -68,6 +67,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isTemporaryForLayout; // @synthesize isTemporaryForLayout=mIsTemporaryForLayout;
 @property (readonly, nonatomic) TSDLayoutController *layoutController; // @synthesize layoutController=mLayoutController;
 @property (readonly, nonatomic) TSPObjectContext *objectContext;
+@property (nonatomic) BOOL shouldRenderInvisibleContentForNonInteractiveCanvas; // @synthesize shouldRenderInvisibleContentForNonInteractiveCanvas=mShouldRenderInvisibleContentForNonInteractiveCanvas;
 @property (readonly, nonatomic) BOOL supportsAdaptiveLayout;
 @property (nonatomic) BOOL suppressesShadowsAndReflections; // @synthesize suppressesShadowsAndReflections=mSuppressesShadowsAndReflections;
 @property (nonatomic) BOOL suppressesShapeText; // @synthesize suppressesShapeText=mSuppressesShapeText;
@@ -91,14 +91,14 @@ __attribute__((visibility("hidden")))
 - (struct CGContext *)i_createContextToDrawImageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(BOOL)arg3 returningBounds:(struct CGRect *)arg4 integralBounds:(struct CGRect *)arg5;
 - (void)i_drawBackgroundInContext:(struct CGContext *)arg1;
 - (void)i_drawBackgroundInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2;
-- (void)i_drawRepsInContext:(struct CGContext *)arg1;
-- (void)i_drawRepsInContext:(struct CGContext *)arg1 distort:(struct CGAffineTransform)arg2;
+- (void)i_drawRepsInContext:(struct CGContext *)arg1 passingTest:(CDUnknownBlockType)arg2;
+- (void)i_drawRepsInContext:(struct CGContext *)arg1 passingTest:(CDUnknownBlockType)arg2 distort:(struct CGAffineTransform)arg3;
 - (struct CGImage *)i_image;
-- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1;
-- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(BOOL)arg3;
+- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
+- (struct CGImage *)i_imageInScaledRect:(struct CGRect)arg1 withTargetIntegralSize:(struct CGSize)arg2 distortedToMatch:(BOOL)arg3 keepingChildrenPassingTest:(CDUnknownBlockType)arg4;
 - (void)i_layoutIfNeededUpdatingLayerTree;
 - (BOOL)i_needsLayout;
-- (struct CGImage *)i_newImageInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2 integralBounds:(struct CGRect)arg3 distortedToMatch:(BOOL)arg4;
+- (struct CGImage *)i_newImageInContext:(struct CGContext *)arg1 bounds:(struct CGRect)arg2 integralBounds:(struct CGRect)arg3 distortedToMatch:(BOOL)arg4 keepingChildrenPassingTest:(CDUnknownBlockType)arg5;
 - (void)i_performBlockWhileIgnoringClickThrough:(CDUnknownBlockType)arg1;
 - (void)i_registerCanvasLayoutObserver:(id)arg1;
 - (void)i_registerRep:(id)arg1;

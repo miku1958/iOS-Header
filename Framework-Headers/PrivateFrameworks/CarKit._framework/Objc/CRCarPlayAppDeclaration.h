@@ -16,6 +16,7 @@
     BOOL _supportsPlayableContent;
     BOOL _supportsMessaging;
     BOOL _supportsCalling;
+    BOOL _supportsMaps;
     NSString *_bundleIdentifier;
     NSSet *_autoMakerProtocols;
 }
@@ -25,6 +26,7 @@
 @property (nonatomic) BOOL launchUsingSiri; // @synthesize launchUsingSiri=_launchUsingSiri;
 @property (nonatomic) BOOL requiresGeoSupport; // @synthesize requiresGeoSupport=_requiresGeoSupport;
 @property (nonatomic) BOOL supportsCalling; // @synthesize supportsCalling=_supportsCalling;
+@property (nonatomic) BOOL supportsMaps; // @synthesize supportsMaps=_supportsMaps;
 @property (nonatomic) BOOL supportsMessaging; // @synthesize supportsMessaging=_supportsMessaging;
 @property (nonatomic) BOOL supportsPlayableContent; // @synthesize supportsPlayableContent=_supportsPlayableContent;
 @property (nonatomic, getter=isSystemApp) BOOL systemApp; // @synthesize systemApp=_systemApp;

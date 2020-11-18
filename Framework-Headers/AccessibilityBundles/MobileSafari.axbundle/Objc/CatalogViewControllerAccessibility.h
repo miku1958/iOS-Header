@@ -16,12 +16,14 @@
 - (void)_accessibilityAnnounceNewKeyboardCompletionWithPreviousIndexPath:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_axAnnounceTimer;
+- (void)_axHideWebView:(BOOL)arg1;
 - (void)_axSetAnnounceTimer:(id)arg1;
 - (void)_axUpdateAccessibilityElements;
 - (void)_setShowingCompletions:(BOOL)arg1 popoverDismissalReason:(long long)arg2;
 - (void)_unifiedFieldDownKey:(id)arg1;
 - (void)_unifiedFieldUpKey:(id)arg1;
 - (void)completionList:(id)arg1 topHitDidBecomeReadyForString:(id)arg2;
+- (void)setNavigationBar:(id)arg1;
 - (void)showUniversalSearchFirstTimeExperienceIfNotShowing;
 - (void)viewDidAppear:(BOOL)arg1;
 

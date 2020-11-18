@@ -9,11 +9,10 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBAudioPlaybackCardSection-Protocol.h>
 
-@class NSArray, NSData, NSString, _SFPBColor, _SFPBImage, _SFPBRichText, _SFPBText;
+@class NSArray, NSData, NSString, _SFPBColor, _SFPBImage, _SFPBRichText;
 
 @interface _SFPBAudioPlaybackCardSection : PBCodable <_SFPBAudioPlaybackCardSection, NSSecureCoding>
 {
-    CDStruct_29067556 _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -24,14 +23,6 @@
     NSString *_punchoutPickerDismissText;
     NSString *_type;
     _SFPBColor *_backgroundColor;
-    _SFPBImage *_topImage;
-    _SFPBText *_topText;
-    NSString *_topSecondaryText;
-    _SFPBImage *_bottomImage;
-    _SFPBText *_bottomText;
-    _SFPBText *_bottomSubtitle;
-    NSString *_topImageEmoji;
-    NSString *_bottomImageEmoji;
     NSArray *_playCommands;
     NSArray *_stopCommands;
     _SFPBRichText *_detailText;
@@ -41,37 +32,12 @@
 }
 
 @property (strong, nonatomic) _SFPBColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
-@property (strong, nonatomic) _SFPBImage *bottomImage; // @synthesize bottomImage=_bottomImage;
-@property (copy, nonatomic) NSString *bottomImageEmoji; // @synthesize bottomImageEmoji=_bottomImageEmoji;
-@property (strong, nonatomic) _SFPBText *bottomSubtitle; // @synthesize bottomSubtitle=_bottomSubtitle;
-@property (strong, nonatomic) _SFPBText *bottomText; // @synthesize bottomText=_bottomText;
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _SFPBRichText *detailText; // @synthesize detailText=_detailText;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
-@property (readonly, nonatomic) BOOL hasBottomImage;
-@property (readonly, nonatomic) BOOL hasBottomImageEmoji;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasBottomSubtitle;
-@property (readonly, nonatomic) BOOL hasBottomText;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasDetailText;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasState;
-@property (readonly, nonatomic) BOOL hasSubtitle;
-@property (readonly, nonatomic) BOOL hasThumbnail;
-@property (readonly, nonatomic) BOOL hasTitle;
-@property (readonly, nonatomic) BOOL hasTopImage;
-@property (readonly, nonatomic) BOOL hasTopImageEmoji;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
-@property (readonly, nonatomic) BOOL hasTopSecondaryText;
-@property (readonly, nonatomic) BOOL hasTopText;
-@property (readonly, nonatomic) BOOL hasType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *playCommands; // @synthesize playCommands=_playCommands;
@@ -85,10 +51,6 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _SFPBImage *thumbnail; // @synthesize thumbnail=_thumbnail;
 @property (strong, nonatomic) _SFPBRichText *title; // @synthesize title=_title;
-@property (strong, nonatomic) _SFPBImage *topImage; // @synthesize topImage=_topImage;
-@property (copy, nonatomic) NSString *topImageEmoji; // @synthesize topImageEmoji=_topImageEmoji;
-@property (copy, nonatomic) NSString *topSecondaryText; // @synthesize topSecondaryText=_topSecondaryText;
-@property (strong, nonatomic) _SFPBText *topText; // @synthesize topText=_topText;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 
 - (void).cxx_destruct;

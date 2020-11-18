@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_setPCSData:(id)arg1 forFetchedShareID:(id)arg2 withScope:(long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)_setPCSData:(id)arg1 forFetchedZoneID:(id)arg2 withScope:(long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)_updateMemoryCacheWithPCSData:(id)arg1 forItemWithID:(id)arg2 inMemoryCache:(id)arg3 databaseScope:(long long)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
+- (void)clearInvalidatedPCSSQLCacheEntriesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)clearPCSCaches;
 - (void)clearPCSMemoryCaches;
 - (void)dealloc;

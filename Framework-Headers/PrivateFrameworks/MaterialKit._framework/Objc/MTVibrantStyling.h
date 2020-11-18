@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) long long style;
 @property (readonly, copy, nonatomic) UIVibrancyEffect *visualEffect;
 
++ (long long)highContrastStyleForPrivateStyle:(long long)arg1;
 + (id)vibrantStylingWithPrivateStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_layerConfig;

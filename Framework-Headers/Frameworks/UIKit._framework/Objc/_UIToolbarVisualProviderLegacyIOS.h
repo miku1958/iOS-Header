@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIToolbarVisualProvider.h>
+#import <UIKitCore/_UIToolbarVisualProvider.h>
 
 @class NSString, UIView, _UIBarBackground;
 

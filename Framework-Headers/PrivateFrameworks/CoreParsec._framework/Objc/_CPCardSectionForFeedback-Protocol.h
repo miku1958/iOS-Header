@@ -13,10 +13,6 @@
 @property (copy, nonatomic) NSString *actionDestination;
 @property (copy, nonatomic) NSString *actionTarget;
 @property (copy, nonatomic) NSString *cardSectionId;
-@property (readonly, nonatomic) BOOL hasActionDestination;
-@property (readonly, nonatomic) BOOL hasActionTarget;
-@property (readonly, nonatomic) BOOL hasCardSectionId;
-@property (readonly, nonatomic) BOOL hasResultId;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *resultId;
 

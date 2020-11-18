@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -46,6 +46,7 @@
 - (struct __C3DAnimationManager *)animationManager;
 - (id)animationPlayerForKey:(id)arg1;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
+- (void)commonInit;
 - (struct __C3DConstraint *)constraintRef;
 - (id)copy;
 - (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
@@ -61,6 +62,7 @@
 - (id)name;
 - (void)pauseAnimationForKey:(id)arg1;
 - (void)removeAllAnimations;
+- (void)removeAllBindings;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;

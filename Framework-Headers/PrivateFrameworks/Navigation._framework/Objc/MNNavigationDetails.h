@@ -88,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_updateRouteIDLookup;
 - (void)copySerializableValuesFrom:(id)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

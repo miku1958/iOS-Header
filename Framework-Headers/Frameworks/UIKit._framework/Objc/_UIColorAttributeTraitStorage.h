@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITraitStorage.h>
+#import <UIKitCore/_UITraitStorage.h>
 
-#import <UIKit/NSCoding-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
 
 @class _UICoreUICatalogColorWrapper;
 

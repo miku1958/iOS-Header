@@ -33,8 +33,9 @@
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 
++ (double)_circleDiameterForBounds:(struct CGRect)arg1 orientation:(long long)arg2;
++ (struct CGRect)circleFrameForBounds:(struct CGRect)arg1 orientation:(long long)arg2 bottomContentInset:(double)arg3;
 - (void).cxx_destruct;
-- (double)_circleDiameterForOrientation:(long long)arg1;
 - (struct CGRect)_circleFrameForOrientation:(long long)arg1;
 - (void)_updateAnimatorState;
 - (void)_updateShadowViewsAnimated:(BOOL)arg1;

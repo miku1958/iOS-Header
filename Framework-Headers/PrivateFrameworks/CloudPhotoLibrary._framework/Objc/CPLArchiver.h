@@ -17,11 +17,14 @@
 @property (strong, nonatomic) id archiveCursor; // @synthesize archiveCursor=_archiveCursor;
 @property (readonly, nonatomic) BOOL forDisplay; // @synthesize forDisplay=_forDisplay;
 
++ (id)_displayableArrayForArray:(id)arg1;
++ (id)_displayableObjectForObject:(id)arg1;
 + (void)_initializeSmallKeyMapping;
 + (id)archivedDataWithRootObject:(id)arg1;
 + (id)archivedDataWithRootObject:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 + (id)archivedPropertyListWithRootObject:(id)arg1;
 + (id)archivedPropertyListWithRootObject:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
++ (id)displayableDictionaryForDictionary:(id)arg1;
 + (id)displayablePropertyListWithRootObject:(id)arg1;
 + (id)fullDescriptionForObject:(id)arg1;
 + (id)unarchiveObjectWithData:(id)arg1 ofClass:(Class)arg2;
@@ -77,9 +80,7 @@
 - (id)initWithArchive:(id)arg1 rootClass:(Class)arg2;
 - (id)initWithRootObject:(id)arg1 forDisplay:(BOOL)arg2;
 - (id)initWithRootObject:(id)arg1 forDisplay:(BOOL)arg2 block:(CDUnknownBlockType)arg3;
-- (struct _NSZone *)objectZone;
 - (id)rootObject;
-- (void)setObjectZone:(struct _NSZone *)arg1;
 
 @end
 

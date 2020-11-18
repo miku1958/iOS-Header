@@ -6,29 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <ARKit/ARDictionaryCoding-Protocol.h>
 #import <ARKit/ARSensorData-Protocol.h>
 #import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
 @class ARFaceData, AVDepthData, MISSING_TYPE, NSDate, NSString;
 
-@interface ARImageData : NSObject <ARSensorData, NSCopying, NSSecureCoding>
+@interface ARImageData : NSObject <ARDictionaryCoding, ARSensorData, NSCopying, NSSecureCoding>
 {
     BOOL _mirrored;
-    BOOL _shouldRestrictFrameRate;
     float _exposureTargetOffset;
     float _temperature;
     double _timestamp;
     NSDate *_captureDate;
+    double _currentCaptureTimestamp;
     struct __CVBuffer *_pixelBuffer;
     unsigned long long _lensType;
     double _exposureDuration;
     ARFaceData *_faceData;
     AVDepthData *_depthData;
     double _depthDataTimestamp;
+    struct __CVBuffer *_visionData;
     long long _cameraPosition;
     long long _captureFramesPerSecond;
-    long long _renderFramesPerSecond;
+    struct CGSize _imageResolution;
     MISSING_TYPE *_tangentialDistortion;
     MISSING_TYPE *_radialDistortion;
     CDStruct_8e0628e6 _cameraIntrinsics;
@@ -36,8 +38,9 @@
 
 @property (nonatomic) CDStruct_8e0628e6 cameraIntrinsics; // @synthesize cameraIntrinsics=_cameraIntrinsics;
 @property (nonatomic) long long cameraPosition; // @synthesize cameraPosition=_cameraPosition;
-@property (strong, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
+@property (copy, nonatomic) NSDate *captureDate; // @synthesize captureDate=_captureDate;
 @property (nonatomic) long long captureFramesPerSecond; // @synthesize captureFramesPerSecond=_captureFramesPerSecond;
+@property (nonatomic) double currentCaptureTimestamp; // @synthesize currentCaptureTimestamp=_currentCaptureTimestamp;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) AVDepthData *depthData; // @synthesize depthData=_depthData;
 @property (nonatomic) double depthDataTimestamp; // @synthesize depthDataTimestamp=_depthDataTimestamp;
@@ -46,29 +49,30 @@
 @property (nonatomic) float exposureTargetOffset; // @synthesize exposureTargetOffset=_exposureTargetOffset;
 @property (strong, nonatomic) ARFaceData *faceData; // @synthesize faceData=_faceData;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) struct CGSize imageResolution;
+@property (nonatomic) struct CGSize imageResolution; // @synthesize imageResolution=_imageResolution;
 @property (nonatomic) unsigned long long lensType; // @synthesize lensType=_lensType;
 @property (nonatomic, getter=isMirrored) BOOL mirrored; // @synthesize mirrored=_mirrored;
 @property (readonly, nonatomic) ARImageData *originalImage;
 @property (nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
 @property (nonatomic) MISSING_TYPE *radialDistortion; // @synthesize radialDistortion=_radialDistortion;
-@property (nonatomic) long long renderFramesPerSecond; // @synthesize renderFramesPerSecond=_renderFramesPerSecond;
-@property (nonatomic) BOOL shouldRestrictFrameRate; // @synthesize shouldRestrictFrameRate=_shouldRestrictFrameRate;
 @property (readonly) Class superclass;
 @property (nonatomic) MISSING_TYPE *tangentialDistortion; // @synthesize tangentialDistortion=_tangentialDistortion;
 @property (nonatomic) float temperature; // @synthesize temperature=_temperature;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) struct __CVBuffer *visionData; // @synthesize visionData=_visionData;
 
 + (id)captureDateFromPresentationTimestamp:(CDStruct_1b6d18a9)arg1 session:(id)arg2;
-+ (CDStruct_8e0628e6)intrinsicsFromDeviceFormat:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)encodeToDictionary;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (id)initWithImageData:(id)arg1;
-- (id)initWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 captureFramePerSecond:(long long)arg2 renderFramePerSecond:(long long)arg3 captureDevice:(id)arg4 captureSession:(id)arg5;
+- (id)initWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 captureFramePerSecond:(long long)arg2 captureDevice:(id)arg3 captureSession:(id)arg4;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

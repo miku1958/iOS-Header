@@ -9,8 +9,7 @@
 #import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
-@class NSMutableArray, NSObject, NSString, TLKRichTextField, TLKTitleContainerView;
-@protocol OS_dispatch_queue;
+@class NSMutableArray, NSString, TLKRichTextField, TLKTitleContainerView;
 
 @interface TLKTextAreaView : TLKStackView <NUIContainerStackViewDelegate, TLKTextAreaViewTesting>
 {
@@ -18,11 +17,9 @@
     TLKTitleContainerView *_titleContainer;
     NSMutableArray *_detailsFields;
     TLKRichTextField *_footnoteLabel;
-    NSObject<OS_dispatch_queue> *_concurrentQueue;
     unsigned long long _style;
 }
 
-@property (strong) NSObject<OS_dispatch_queue> *concurrentQueue; // @synthesize concurrentQueue=_concurrentQueue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) NSMutableArray *detailsFields; // @synthesize detailsFields=_detailsFields;
@@ -35,21 +32,23 @@
 
 + (id)footNoteLabelFont;
 - (void).cxx_destruct;
-- (void)disableObserversOnLabels:(BOOL)arg1;
-- (void)disableUnbatchedUpdates;
+- (id)detailsViews;
 - (id)footnoteLabelString;
 - (id)init;
+- (void)internalTextFieldsInBatchUpdate:(BOOL)arg1;
 - (BOOL)noFootNote;
 - (BOOL)noRichTextFields;
+- (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (id)secondaryTitleLabelString;
 - (void)styleDidChange:(unsigned long long)arg1;
 - (id)textAreaLabelStrings;
 - (id)titleLabelString;
-- (void)updateDetails:(id)arg1 withDisabledObservers:(BOOL)arg2;
-- (void)updateExistingDetailText:(id)arg1;
+- (id)titleView;
+- (void)updateDetails:(id)arg1;
 - (void)updateFootnote:(id)arg1;
 - (void)updateResultWithTitle:(id)arg1 secondaryTitle:(id)arg2 image:(id)arg3 detached:(BOOL)arg4;
 - (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

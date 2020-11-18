@@ -11,18 +11,18 @@
 __attribute__((visibility("hidden")))
 @interface TSTDateNode : TSTExpressionNode
 {
-    NSDate *mValue;
-    BOOL mBlank;
-    NSString *mDateFormat;
+    BOOL _isBlank;
+    NSDate *_value;
+    NSString *_dateFormat;
 }
 
-@property (nonatomic, getter=isBlank) BOOL blank; // @synthesize blank=mBlank;
-@property (strong, nonatomic) NSString *format;
-@property (strong, nonatomic) NSDate *value;
+@property (strong, nonatomic) NSString *dateFormat; // @synthesize dateFormat=_dateFormat;
+@property (nonatomic) BOOL isBlank; // @synthesize isBlank=_isBlank;
+@property (strong, nonatomic) NSDate *value; // @synthesize value=_value;
 
+- (void).cxx_destruct;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
 - (id)date;
-- (void)dealloc;
 - (id)description;
 - (struct TSTDurationWrapper)durationWrapper;
 - (id)exportString;

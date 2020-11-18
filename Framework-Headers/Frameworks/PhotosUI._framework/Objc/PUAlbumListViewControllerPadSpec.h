@@ -10,14 +10,8 @@
 {
 }
 
-- (id)_nameOfAddSharedAlbumPlaceholderImage;
-- (id)_nameOfEmptyAlbumPlaceholderImage;
-- (id)_nameOfEmptySharedAlbumPlaceholderImage;
-- (id)_nameOfHiddenAlbumPlaceholderImage;
-- (id)_nameOfRecentlyDeletedAlbumPlaceholderImage;
 - (long long)albumDeletionConfirmationStyle;
 - (id)albumViewControllerSpec;
-- (BOOL)canDisplaySearchActionInNavigationBar;
 - (BOOL)canShowVirtualCollections;
 - (long long)cellContentViewLayout;
 - (struct CGSize)cellSizeForStackSize:(struct CGSize)arg1;
@@ -26,15 +20,17 @@
 - (double)collageSpacing;
 - (void)configureGridLayout:(id)arg1 forLayoutReferenceSize:(struct CGSize)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 - (void)configureStackViewWithGridStyle:(id)arg1;
-- (BOOL)displaysSearchInPopover;
-- (id)emptyAlbumPlaceholderImage;
 - (id)emptyStackPhotoDecoration;
 - (id)feedViewControllerSpec;
 - (unsigned long long)folderStackViewStyle;
 - (id)gridViewControllerSpec;
 - (struct CGSize)imageSize;
 - (struct CGSize)imageSizeForLayoutReferenceSize:(struct CGSize)arg1 safeAreaInsets:(struct UIEdgeInsets)arg2;
-- (double)maxSearchBarWidth;
+- (id)nameOfAddSharedAlbumPlaceholderImage;
+- (id)nameOfEmptyAlbumPlaceholderImage;
+- (id)nameOfEmptySharedAlbumPlaceholderImage;
+- (id)nameOfHiddenAlbumPlaceholderImage;
+- (id)nameOfRecentlyDeletedAlbumPlaceholderImage;
 - (id)panoramaViewControllerSpec;
 - (id)photosPickerViewControllerSpec;
 - (double)posterSquareCornerRadius;

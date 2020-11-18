@@ -50,6 +50,7 @@
 - (void)_accessibilityKeyboardDidShow:(id)arg1;
 - (double)_accessibilityLastDictationMagicTapTime;
 - (id)_accessibilityLastElement;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (unsigned int)_accessibilityMachPort;
 - (id)_accessibilityMainWindow;
 - (BOOL)_accessibilityMediaFastForward;
@@ -84,6 +85,7 @@
 - (BOOL)_accessibilityStartStopDictation;
 - (id)_accessibilitySummaryElement;
 - (id)_accessibilityTableViewCellWithRowIndex:(long long)arg1 column:(long long)arg2 tableView:(id)arg3;
+- (id)_accessibilityTextReplacementCandidates;
 - (id)_accessibilityTitleBarElement;
 - (id)_accessibilityTypingCandidates;
 - (id)_accessibilityUIWindowFindWithGlobalPoint:(struct CGPoint)arg1;
@@ -100,6 +102,7 @@
 - (id)_lastStatusBarElement;
 - (void)_loadAllAccessibilityInformation;
 - (id)accessibilityAttributeValue:(long long)arg1;
+- (id)accessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (void)accessibilityDisable;
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;

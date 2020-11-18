@@ -7,16 +7,17 @@
 #import <NewsUI/FCCacheFlushing-Protocol.h>
 #import <NewsUI/NSObject-Protocol.h>
 
-@class FCAppConfigurationManager, FCArticleController, FCAssetManager, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCTagController, NSString, NSURL;
-@protocol FCBackgroundTaskable, FCContentContextInternal, FCPPTContext;
+@class FCArticleController, FCAssetManager, FCFlintResourceManager, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
+@protocol FCBackgroundTaskable, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
 
-@property (readonly, nonatomic) FCAppConfigurationManager *appConfigurationManager;
+@property (readonly, nonatomic) id<FCNewsAppConfigurationManager> appConfigurationManager;
 @property (readonly, nonatomic) FCArticleController *articleController;
 @property (readonly, nonatomic) NSURL *assetCacheDirectoryURL;
 @property (readonly, nonatomic) FCAssetManager *assetManager;
 @property (readonly, weak, nonatomic) id<FCBackgroundTaskable> backgroundTaskable;
+@property (readonly, nonatomic) id<FCCoreConfigurationManager> configurationManager;
 @property (readonly, copy, nonatomic) NSString *contentDirectory;
 @property (readonly, copy, nonatomic) NSString *contentEnvironmentToken;
 @property (readonly, copy, nonatomic) NSString *contentStoreFrontID;
@@ -27,7 +28,11 @@
 @property (readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
 @property (readonly, nonatomic) FCTagController *tagController;
 @property (readonly, nonatomic) NSURL *webArchiveCacheDirectoryURL;
+@property (strong, nonatomic) id<FCWebArchiveSource> webArchiveSource;
 
+- (id<FCCoreConfigurationManager><FCNewsAppConfigurationManager>)news_core_ConfigurationManager;
 - (void)ppt_overrideFeedEndpoint:(long long)arg1;
+- (id<FCJSONRecordSourceType>)recordSourceWithSchema:(FCJSONRecordSourceSchema *)arg1;
+- (id<FCJSONRecordTreeSourceType>)recordTreeSourceWithRecordSources:(NSArray *)arg1;
 @end
 

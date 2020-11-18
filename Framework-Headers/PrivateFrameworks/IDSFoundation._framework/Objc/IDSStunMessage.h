@@ -6,22 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+@class NSData, NSString;
 
 @interface IDSStunMessage : NSObject
 {
     long long _type;
     unsigned short _len;
     NSData *_transactionID;
+    NSString *_requestID;
     struct IDSStunAttribute _attributes[20];
     int _numAttribute;
     NSData *_key;
+    struct _CCCryptor *_cryptorRef;
+    BOOL _requiresAES128CTR;
     double _startTime;
 }
 
 @property (copy, nonatomic) NSData *key; // @synthesize key=_key;
+@property (readonly, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
-@property (strong, nonatomic) NSData *transactionID; // @synthesize transactionID=_transactionID;
+@property (readonly, nonatomic) NSData *transactionID; // @synthesize transactionID=_transactionID;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
@@ -29,22 +33,23 @@
 - (void)_addUInt16Attribute:(long long)arg1 value:(unsigned short)arg2;
 - (void)_addUInt32Attribute:(long long)arg1 value:(unsigned int)arg2;
 - (void)_addUInt64Attribute:(long long)arg1 value:(unsigned long long)arg2;
+- (void)_addUInt8Attribute:(long long)arg1 value:(unsigned char)arg2;
 - (void)_addUUIDAttribute:(long long)arg1 value:(id)arg2;
 - (void)_addXORAddressAttribute:(long long)arg1 value:(struct sockaddr *)arg2;
 - (BOOL)addAttribute:(struct IDSStunAttribute *)arg1;
-- (BOOL)allocationRequestWithDictionaryToBuffer:(id)arg1 outputBuffer:(char *)arg2 outputLength:(int *)arg3 lifeTime:(int)arg4;
-- (BOOL)channelBindRequestWithDictionaryToBuffer:(id)arg1 outputBuffer:(char *)arg2 outputLength:(int *)arg3 channelNumber:(unsigned short)arg4;
 - (BOOL)dataIndicationToBuffer:(char *)arg1 outputLength:(int *)arg2 data:(char *)arg3 dataLen:(int)arg4 keyData:(id)arg5;
+- (void)dealloc;
+- (BOOL)decryptAES128CTRStunAttributes:(id)arg1;
 - (id)description;
 - (BOOL)getAttribute:(long long)arg1 attribute:(struct IDSStunAttribute *)arg2;
 - (BOOL)hasAttribute:(unsigned short)arg1;
+- (BOOL)initAES128CTR:(id)arg1;
 - (id)initWithType:(long long)arg1;
-- (BOOL)isMatchingResponse:(id)arg1;
-- (BOOL)quickRelayStunMessageToBuffer:(char *)arg1 outputLength:(int *)arg2 stunMessageDictionary:(id)arg3;
-- (BOOL)read:(char *)arg1 inputLength:(int)arg2;
-- (BOOL)read:(char *)arg1 inputLength:(int)arg2 internal:(BOOL)arg3;
-- (BOOL)refreshRequestToBuffer:(char *)arg1 outputLength:(int *)arg2 lifeTime:(int)arg3;
-- (BOOL)setTransactionID:(id)arg1 attributes:(id)arg2;
+- (BOOL)read:(char *)arg1 inputLength:(unsigned long long)arg2;
+- (BOOL)read:(char *)arg1 inputLength:(unsigned long long)arg2 internal:(BOOL)arg3;
+- (void)setAttributes:(id)arg1;
+- (void)setTransactionID:(id)arg1;
+- (void)setTransactionID:(id)arg1 attributes:(id)arg2;
 - (BOOL)stunRequestToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(char *)arg3 reqCount:(int)arg4 userName:(char *)arg5 usernameLen:(int)arg6 sendTime:(unsigned short)arg7 keyData:(id)arg8;
 - (BOOL)stunResponseToBuffer:(char *)arg1 outputLength:(int *)arg2 transactionID:(id)arg3 reqCount:(int)arg4 echoTime:(unsigned short)arg5 delay:(unsigned short)arg6 keyData:(id)arg7;
 - (BOOL)verifyMessageIntegrityWithKey:(id)arg1 inputBuffer:(char *)arg2 inputLength:(int)arg3;

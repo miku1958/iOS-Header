@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryiPad.h>
+#import <UIKitCore/UIKBRenderFactoryiPad.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryiPadPasscode : UIKBRenderFactoryiPad

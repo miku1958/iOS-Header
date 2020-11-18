@@ -18,10 +18,12 @@
     BOOL _previewOriginalAllowsLongPress;
     BOOL _previewOriginalTimesOut;
     BOOL _livePhotoTrimAllowed;
+    BOOL _showEffectsPicker;
     long long _renderPriority;
     double _cropSideMargins;
     double _cropWheelSize;
     double _cropRecomposeDelay;
+    double _maxRawMP;
     double _previewOriginalDuration;
     double _minimumLivePhotoTrimDuration;
 }
@@ -33,11 +35,13 @@
 @property (nonatomic) double cropSideMargins; // @synthesize cropSideMargins=_cropSideMargins;
 @property (nonatomic) double cropWheelSize; // @synthesize cropWheelSize=_cropWheelSize;
 @property (nonatomic) BOOL livePhotoTrimAllowed; // @synthesize livePhotoTrimAllowed=_livePhotoTrimAllowed;
+@property (nonatomic) double maxRawMP; // @synthesize maxRawMP=_maxRawMP;
 @property (nonatomic) double minimumLivePhotoTrimDuration; // @synthesize minimumLivePhotoTrimDuration=_minimumLivePhotoTrimDuration;
 @property (nonatomic) BOOL previewOriginalAllowsLongPress; // @synthesize previewOriginalAllowsLongPress=_previewOriginalAllowsLongPress;
 @property (nonatomic) double previewOriginalDuration; // @synthesize previewOriginalDuration=_previewOriginalDuration;
 @property (nonatomic) BOOL previewOriginalTimesOut; // @synthesize previewOriginalTimesOut=_previewOriginalTimesOut;
 @property (nonatomic) long long renderPriority; // @synthesize renderPriority=_renderPriority;
+@property (nonatomic) BOOL showEffectsPicker; // @synthesize showEffectsPicker=_showEffectsPicker;
 @property (nonatomic) BOOL showLevelIndicator; // @synthesize showLevelIndicator=_showLevelIndicator;
 @property (nonatomic) BOOL showResetToolButton; // @synthesize showResetToolButton=_showResetToolButton;
 @property (nonatomic) BOOL simulateDownload; // @synthesize simulateDownload=_simulateDownload;

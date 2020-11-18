@@ -26,9 +26,12 @@
 @property (readonly, copy, nonatomic) NSData *sphericalHarmonicsCoefficients;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDirectionalLightEstimate:(id)arg1;
 - (id)initWithSphericalHarmonics:(CDStruct_9c26ff66)arg1 temperature:(double)arg2;
 - (id)lightEstimateByApplyingRotation:(CDStruct_8e0628e6)arg1;

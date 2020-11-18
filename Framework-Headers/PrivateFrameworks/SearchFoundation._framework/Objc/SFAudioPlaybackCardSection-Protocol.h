@@ -6,15 +6,11 @@
 
 #import <SearchFoundation/SFCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFColor, SFImage, SFRichText, SFText;
+@class NSArray, NSData, NSDictionary, NSString, SFColor, SFImage, SFRichText;
 
 @protocol SFAudioPlaybackCardSection <SFCardSection>
 
 @property (strong, nonatomic) SFColor *backgroundColor;
-@property (strong, nonatomic) SFImage *bottomImage;
-@property (copy, nonatomic) NSString *bottomImageEmoji;
-@property (strong, nonatomic) SFText *bottomSubtitle;
-@property (strong, nonatomic) SFText *bottomText;
 @property (nonatomic) BOOL canBeHidden;
 @property (strong, nonatomic) SFRichText *detailText;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
@@ -31,10 +27,6 @@
 @property (strong, nonatomic) SFRichText *subtitle;
 @property (strong, nonatomic) SFImage *thumbnail;
 @property (strong, nonatomic) SFRichText *title;
-@property (strong, nonatomic) SFImage *topImage;
-@property (copy, nonatomic) NSString *topImageEmoji;
-@property (copy, nonatomic) NSString *topSecondaryText;
-@property (strong, nonatomic) SFText *topText;
 @property (copy, nonatomic) NSString *type;
 
 @end

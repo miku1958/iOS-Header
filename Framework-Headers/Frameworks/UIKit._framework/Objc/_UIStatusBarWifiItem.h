@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarItem.h>
+#import <UIKitCore/_UIStatusBarItem.h>
 
 @class _UIStatusBarImageView, _UIStatusBarWifiSignalView;
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarImageView *networkIconView; // @synthesize networkIconView=_networkIconView;
 @property (strong, nonatomic) _UIStatusBarWifiSignalView *signalView; // @synthesize signalView=_signalView;
 
++ (id)groupWithPriority:(long long)arg1;
 + (id)iconDisplayIdentifier;
 + (id)signalStrengthDisplayIdentifier;
 - (void).cxx_destruct;
@@ -29,7 +30,6 @@ __attribute__((visibility("hidden")))
 - (double)_totalWidthForUpdate:(id)arg1;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)dependentEntryKeys;
-- (id)init;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <Symbolication/VMUCommonGraphInterface-Protocol.h>
 
-@class NSMutableArray, NSString, VMUClassInfoMap, VMUDebugTimer, VMUObjectIdentifier, VMUProcessObjectGraph, VMURangeArray, VMUVMRegionIdentifier;
+@class NSMutableArray, NSMutableDictionary, NSString, VMUClassInfoMap, VMUDebugTimer, VMUObjectIdentifier, VMUProcessObjectGraph, VMURangeArray, VMUTaskMemoryCache, VMUVMRegionIdentifier;
 
 @interface VMUTaskMemoryScanner : NSObject <VMUCommonGraphInterface>
 {
@@ -16,6 +16,7 @@
     int _pid;
     unsigned long long _suspendTime;
     unsigned int _suspensionToken;
+    VMUTaskMemoryCache *_memoryCache;
     VMUObjectIdentifier *_objectIdentifier;
     VMUVMRegionIdentifier *_regionIdentifier;
     struct _VMUBlockNode *_blocks;
@@ -26,6 +27,9 @@
     struct _VMURegionMap *_regionMap;
     VMURangeArray *_stackRanges;
     NSMutableArray *_zoneNames;
+    struct _VMURange _dataSegmentsRangeInSharedCache;
+    struct _VMURange _dataSegmentsRangeOutsideSharedCache;
+    VMURangeArray *_dataSegmentsRangeArrayOutsideSharedCache;
     struct _VMUZoneNode *_zones;
     unsigned int _zonesCount;
     unsigned int _zonesSize;
@@ -53,9 +57,9 @@
     CDUnknownBlockType _referenceLogger;
     CDUnknownBlockType _nodeLogger;
     BOOL _abandonedMarkingEnabled;
-    BOOL _saveNodeLabelsInGraph;
     VMUProcessObjectGraph *_processObjectGraph;
     void *_userMarkedAbandoned;
+    NSMutableDictionary *_variantCachesByIsaIndex;
     unsigned long long _cfPasteboardReservedBase;
 }
 
@@ -68,6 +72,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned int mallocNodeCount;
 @property (nonatomic) unsigned long long maxInteriorOffset; // @synthesize maxInteriorOffset=_maxInteriorOffset;
+@property (readonly, nonatomic) VMUTaskMemoryCache *memoryCache; // @synthesize memoryCache=_memoryCache;
 @property (readonly, nonatomic) unsigned int nodeCount; // @synthesize nodeCount=_blocksCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
 @property (readonly, nonatomic) VMUObjectIdentifier *objectIdentifier; // @synthesize objectIdentifier=_objectIdentifier;
@@ -78,7 +83,6 @@
 @property (readonly, nonatomic) NSString *processName; // @synthesize processName=_processName;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses;
 @property (readonly, nonatomic) unsigned int regionCount; // @synthesize regionCount=_regionsCount;
-@property (nonatomic) BOOL saveNodeLabelsInGraph; // @synthesize saveNodeLabelsInGraph=_saveNodeLabelsInGraph;
 @property (nonatomic) unsigned int scanningMask; // @synthesize scanningMask=_scanningMask;
 @property (nonatomic) BOOL showRawClassNames; // @synthesize showRawClassNames=_showRawClassNames;
 @property (readonly) Class superclass;
@@ -91,12 +95,16 @@
 + (id)referenceDescription:(CDStruct_8b65991f)arg1 withSourceNode:(CDStruct_599faf0f)arg2 destinationNode:(CDStruct_599faf0f)arg3 sortedVMRegions:(id)arg4 symbolicator:(struct _CSTypeRef)arg5 alignmentSpacing:(unsigned int)arg6;
 - (void).cxx_destruct;
 - (void)_buildRegionPageBlockMaps;
+- (id)_cachedVariantForGenericInfo:(id)arg1 variantKey:(unsigned long long)arg2;
 - (void)_callRemoteMallocEnumerators:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_destroyLinearClassInfos;
 - (void)_findMarkedAbandonedBlocks;
 - (void)_fixupBlockIsas;
+- (void)_identifyNonObjectsPointedToByTypedIvars;
+- (unsigned int)_indexForClassInfo:(id)arg1;
 - (id)_initWithTask:(unsigned int)arg1 options:(unsigned long long)arg2;
 - (void)_orderedScanWithScanner:(CDUnknownBlockType)arg1 recorder:(CDUnknownBlockType)arg2 keepMapped:(BOOL)arg3 actions:(CDUnknownBlockType)arg4;
+- (void)_registerVariant:(id)arg1 forGenericInfo:(id)arg2 variantKey:(unsigned long long)arg3;
 - (unsigned int)_removeFalsePositiveLeakedVMregionsFromNodes:(unsigned int *)arg1 nodeCount:(unsigned int)arg2 recorder:(CDUnknownBlockType)arg3;
 - (void)_sortAndClassifyBlocks;
 - (void)_sortBlocks;
@@ -108,6 +116,7 @@
 - (void)addMallocNodes:(id)arg1;
 - (void)addMallocNodesFromTask;
 - (void)addRootNodesFromTask;
+- (BOOL)addressIsInDataSegment:(unsigned long long)arg1;
 - (id)classInfoForObjectAtAddress:(unsigned long long)arg1;
 - (void *)contentForNode:(unsigned int)arg1;
 - (void *)copyUserMarked;
@@ -130,12 +139,15 @@
 - (void)orderedNodeTraversal:(int)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)processSnapshotGraph;
 - (id)processSnapshotGraphWithMallocStackLogs:(BOOL)arg1;
+- (id)processSnapshotGraphWithOptions:(unsigned long long)arg1;
 - (id)referenceDescription:(CDStruct_8b65991f)arg1 withSourceNode:(unsigned int)arg2 destinationNode:(unsigned int)arg3 symbolicator:(struct _CSTypeRef)arg4 alignmentSpacing:(unsigned int)arg5;
 - (void)refineTypesWithOverlay:(id)arg1;
 - (void)removeRootReachableNodes;
 - (void)scanNodesForReferences:(CDUnknownBlockType)arg1;
 - (void)setNodeScanningLogger:(CDUnknownBlockType)arg1;
 - (void)setReferenceScanningLogger:(CDUnknownBlockType)arg1;
+- (id)shortLabelForNode:(unsigned int)arg1;
+- (void)unmapAllRegions;
 - (BOOL)validateAddressRange:(struct _VMURange)arg1;
 - (id)vmuVMRegionForAddress:(unsigned long long)arg1;
 - (id)vmuVMRegionForNode:(unsigned int)arg1;

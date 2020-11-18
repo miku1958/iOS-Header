@@ -7,23 +7,23 @@
 #import <objc/NSObject.h>
 
 @class NSHashTable;
-@protocol OS_dispatch_queue;
 
 @interface HFTemperatureUnitCoordinator : NSObject
 {
     BOOL _isCelsius;
-    NSHashTable *_clients;
-    NSObject<OS_dispatch_queue> *_coordinatorQueue;
+    NSHashTable *_observers;
 }
 
-@property (strong, nonatomic) NSHashTable *clients; // @synthesize clients=_clients;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *coordinatorQueue; // @synthesize coordinatorQueue=_coordinatorQueue;
-@property (nonatomic) BOOL isCelsius; // @synthesize isCelsius=_isCelsius;
+@property (readonly, nonatomic) BOOL isCelsius; // @synthesize isCelsius=_isCelsius;
+@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 
 + (id)sharedCoordinator;
 - (void).cxx_destruct;
+- (void)_temperatureUnitDidChange;
+- (void)_updateIsCelsiusNotifyingObservers:(BOOL)arg1;
 - (id)init;
 - (void)registerObserver:(id)arg1;
+- (void)setIsCelsius:(BOOL)arg1;
 - (void)unregisterObserver:(id)arg1;
 
 @end

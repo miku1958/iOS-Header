@@ -20,6 +20,8 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_xpcConnection;
     NSDictionary *_providersByIdentifier;
+    NSDictionary *_localProvidersByIdentifier;
+    NSDictionary *_pairedHostDeviceProvidersByIdentifier;
 }
 
 @property (readonly, nonatomic) BOOL currentProcessCanAccessInitialState;
@@ -27,6 +29,8 @@
 @property (weak, nonatomic) id<TUCallProviderManagerDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSDictionary *localProvidersByIdentifier; // @synthesize localProvidersByIdentifier=_localProvidersByIdentifier;
+@property (copy, nonatomic) NSDictionary *pairedHostDeviceProvidersByIdentifier; // @synthesize pairedHostDeviceProvidersByIdentifier=_pairedHostDeviceProvidersByIdentifier;
 @property (copy, nonatomic) NSDictionary *providersByIdentifier; // @synthesize providersByIdentifier=_providersByIdentifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) BOOL requestedInitialState; // @synthesize requestedInitialState=_requestedInitialState;
@@ -43,7 +47,7 @@
 + (id)synchronousServer;
 - (void).cxx_destruct;
 - (void)_requestInitialState;
-- (void)_updateProvidersByIdentifier:(id)arg1;
+- (void)_updateProvidersByIdentifier:(id)arg1 localProvidersByIdentifier:(id)arg2 pairedHostDeviceProvidersByIdentifier:(id)arg3;
 - (void)blockUntilInitialStateReceived;
 - (void)dealloc;
 - (id)init;
@@ -53,7 +57,7 @@
 - (id)server;
 - (id)serverWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)synchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
-- (oneway void)updateProvidersByIdentifier:(id)arg1;
+- (oneway void)updateProvidersByIdentifier:(id)arg1 localProvidersByIdentifier:(id)arg2 pairedHostDeviceProvidersByIdentifier:(id)arg3;
 
 @end
 

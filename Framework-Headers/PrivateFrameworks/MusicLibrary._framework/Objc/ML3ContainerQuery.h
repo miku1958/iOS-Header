@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSArray *limitedPersistentIDs; // @synthesize limitedPersistentIDs=_limitedPersistentIDs;
 @property (readonly, nonatomic) BOOL requiresSmartLimiting;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countOfDistinctRowsForColumn:(id)arg1;

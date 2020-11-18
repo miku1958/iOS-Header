@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, TPPageLayout, TSDLayoutGeometry;
 
@@ -40,10 +40,12 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)alignmentFrameInRoot;
 - (struct CGPoint)alignmentFrameOriginForFixingInterimPosition;
 - (BOOL)canRotateChildLayout:(id)arg1;
+- (id)childLayoutContainingPossibleDescendentLayout:(id)arg1;
 - (struct CGRect)clipRect;
 - (struct CGRect)clippedRectInRoot:(struct CGRect)arg1;
 - (void)dealloc;
 - (void)exchangeChildAtIndex:(unsigned long long)arg1 withChildAtIndex:(unsigned long long)arg2;
+- (BOOL)exclusivelyProvidesGuidesForChildLayouts;
 - (void)fixTransformFromInterimPosition;
 - (void)fixTransformFromLastInterimPosition;
 - (struct CGRect)frame;

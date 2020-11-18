@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
 - (id)detachDrawable;
+- (void)didFinalizeUnarchivingFromWPStorage:(id)arg1;
 - (int)elementKind;
 - (unsigned long long)hash;
 - (void)infoChanged;

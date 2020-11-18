@@ -4,33 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Vision/NSCopying-Protocol.h>
-#import <Vision/VNObservationsCacheKeyProviding-Protocol.h>
 #import <Vision/VNSequencedRequestSupporting-Protocol.h>
 #import <Vision/VNWarningRecorder-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, VNWarningRecorder;
+@class NSArray, NSDictionary, NSString, VNProcessingDevice, VNRequestConfiguration, VNWarningRecorder;
 @protocol MTLDevice, OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface VNRequest : NSObject <VNWarningRecorder, VNObservationsCacheKeyProviding, VNSequencedRequestSupporting, NSCopying>
+@interface VNRequest : NSObject <VNWarningRecorder, VNSequencedRequestSupporting, NSCopying>
 {
     NSString *_requestName;
     CDUnknownBlockType _completionHandler;
+    VNRequestConfiguration *_configuration;
     NSDictionary *_options;
     VNWarningRecorder *_warningRecorder;
     NSObject<OS_dispatch_semaphore> *_cancellationSemaphore;
     NSObject<OS_dispatch_queue> *_cancellationQueue;
-    unsigned long long _detectionLevel;
-    id<MTLDevice> _preferredMetalContext;
-    unsigned long long _metalContextPriority;
-    BOOL _preferBackgroundProcessing;
+    unsigned long long _revision;
     BOOL _dumpIntermediateImages;
-    BOOL _usesCPUOnly;
     BOOL _cancellationTriggered;
     NSArray *_results;
-    unsigned long long _modelFileBackingStore;
 }
 
 @property (strong) NSObject<OS_dispatch_semaphore> *cancellationSemaphore; // @synthesize cancellationSemaphore=_cancellationSemaphore;
@@ -39,20 +34,30 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long detectionLevel;
-@property (nonatomic) BOOL disallowsGPUUse; // @synthesize disallowsGPUUse=_usesCPUOnly;
+@property (nonatomic) BOOL disallowsGPUUse;
 @property (nonatomic) BOOL dumpIntermediateImages;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) unsigned long long metalContextPriority; // @synthesize metalContextPriority=_metalContextPriority;
-@property (nonatomic) unsigned long long modelFileBackingStore; // @synthesize modelFileBackingStore=_modelFileBackingStore;
+@property (nonatomic) unsigned long long metalContextPriority;
+@property (nonatomic) unsigned long long modelFileBackingStore;
 @property (readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property (nonatomic) BOOL preferBackgroundProcessing;
-@property (strong, nonatomic) id<MTLDevice> preferredMetalContext; // @synthesize preferredMetalContext=_preferredMetalContext;
+@property (strong, nonatomic) id<MTLDevice> preferredMetalContext;
+@property (copy, nonatomic) VNProcessingDevice *processingDevice;
 @property (readonly, copy, nonatomic) NSString *requestName; // @synthesize requestName=_requestName;
 @property (readonly, copy, nonatomic) NSArray *results; // @synthesize results=_results;
+@property (nonatomic) unsigned long long revision; // @synthesize revision=_revision;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesCPUOnly;
 
++ (unsigned long long)_defaultRevisionForBuildVersion:(int)arg1;
++ (id)_introspectionBuiltSupportedRevisions;
++ (unsigned long long)compatibleRevisionForDependentRequestOfClass:(Class)arg1 beingPerformedByRevision:(unsigned long long)arg2;
++ (Class)configurationClass;
++ (unsigned long long)currentRevision;
++ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 + (BOOL)defaultRequestInstanceWarmUpPerformer:(id)arg1 error:(id *)arg2;
++ (unsigned long long)defaultRevision;
++ (const CDStruct_d47b9615 *)dependentRequestCompatability;
 + (BOOL)getDoubleValue:(double *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
 + (BOOL)getDoubleValue:(double *)arg1 forKey:(id)arg2 inOptions:(id)arg3 withDefaultValue:(double)arg4 error:(id *)arg5;
 + (BOOL)getFloatValue:(float *)arg1 forKey:(id)arg2 inOptions:(id)arg3 error:(id *)arg4;
@@ -62,14 +67,22 @@
 + (BOOL)getOptionalObject:(id *)arg1 ofClass:(Class)arg2 forKey:(id)arg3 inOptions:(id)arg4 error:(id *)arg5;
 + (BOOL)getRequiredObject:(id *)arg1 ofClass:(Class)arg2 forKey:(id)arg3 inOptions:(id)arg4 error:(id *)arg5;
 + (void)initialize;
++ (id)newConfigurationInstance;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (id)requestWithName:(id)arg1 options:(id)arg2;
 + (id)requestWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (unsigned long long)resolvedRevisionForRevision:(unsigned long long)arg1;
++ (const CDStruct_7d93034e *)revisionAvailability;
++ (id)supportedRevisions;
 + (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (void)_updateVNRequestOptionPreferredMetalContext;
+- (id)_defaultProcessingDevice;
+- (void)_updateProcessingDeviceOption;
+- (BOOL)allowsCachingOfResults;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (void)cancel;
+- (unsigned long long)compatibleRevisionForDependentRequest:(id)arg1;
+- (id)configuration;
 - (void)copyStateOfRequest:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)dependencyProcessingOrdinality;
@@ -79,12 +92,17 @@
 - (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)internalCancelInContext:(id)arg1 error:(id *)arg2;
 - (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
+- (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (id)newDefaultDetectorOptions;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
 - (id)newDefaultRequestInstance;
-- (id)observationsCacheKey;
 - (BOOL)performInContext:(id)arg1 error:(id *)arg2;
 - (void)recordWarning:(id)arg1 value:(id)arg2;
+- (unsigned long long)resolvedRevision;
+- (CDUnknownBlockType)resultsSortingComparator;
 - (id)sequencedRequestPreviousObservationsKey;
 - (void)setResults:(id)arg1;
+- (void)setSortedResults:(id)arg1;
 - (void)setValue:(id)arg1 forPrivateOption:(id)arg2;
 - (void)setValue:(id)arg1 forRequestOption:(id)arg2;
 - (BOOL)validateConfigurationAndReturnError:(id *)arg1;
@@ -94,6 +112,7 @@
 - (BOOL)wantsSequencedRequestObservationsRecording;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (id)warnings;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

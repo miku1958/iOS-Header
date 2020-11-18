@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     TSUZipArchive *_componentZipArchive;
 }
 
-+ (BOOL)isValidOrEmptyPackageAtURL:(id)arg1 hasNativeUTI:(BOOL)arg2;
++ (BOOL)isValidOrEmptyPackageOrTangierEditingFormatAtURL:(id)arg1 hasNativeUTI:(BOOL)arg2;
 + (BOOL)isValidPackageAtURL:(id)arg1;
 + (BOOL)isValidPackageAtZipArchive:(id)arg1;
++ (BOOL)isValidTangierEditingFormatAtURL:(id)arg1;
++ (BOOL)isValidTangierEditingFormatAtZipArchive:(id)arg1;
 + (unsigned long long)zipArchiveOptions;
 + (id)zipArchiveURLFromPackageURL:(id)arg1;
 - (void).cxx_destruct;

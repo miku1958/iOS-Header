@@ -9,11 +9,13 @@
 @protocol SFSearchResult
 
 @property (strong, nonatomic) SFActionItem *action;
+@property (copy, nonatomic) NSString *appleReferrer;
 @property (copy, nonatomic) NSString *applicationBundleIdentifier;
 @property (copy, nonatomic) NSString *auxiliaryBottomText;
 @property (nonatomic) int auxiliaryBottomTextColor;
 @property (copy, nonatomic) NSString *auxiliaryMiddleText;
 @property (copy, nonatomic) NSString *auxiliaryTopText;
+@property (nonatomic) unsigned long long blockId;
 @property (copy, nonatomic) NSString *calendarIdentifier;
 @property (strong, nonatomic) SFCard *card;
 @property (copy, nonatomic) NSString *completedQuery;
@@ -26,6 +28,7 @@
 @property (strong, nonatomic) SFCustom *customProperties;
 @property (nonatomic) long long dataOwnerType;
 @property (copy, nonatomic) NSArray *descriptions;
+@property (nonatomic) BOOL doNotFold;
 @property (strong, nonatomic) NSNumber *engagementScore;
 @property (copy, nonatomic) NSString *fbr;
 @property (copy, nonatomic) NSDictionary *featureScaling;

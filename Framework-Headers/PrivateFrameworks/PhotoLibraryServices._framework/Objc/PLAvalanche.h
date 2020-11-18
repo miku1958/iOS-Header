@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLAssetChangeObserver-Protocol.h>
 #import <PhotoLibraryServices/PLAssetContainer-Protocol.h>
@@ -71,7 +71,7 @@
 + (struct CGRect)frameOfTopImageInStackForStackFrame:(struct CGRect)arg1;
 + (BOOL)isValidBurstWithAssets:(id)arg1;
 + (void)removeFavoriteStatus:(id)arg1;
-+ (void)revalidateAvalancheAssets:(id)arg1 inLibrary:(id)arg2 deleteNonPicks:(BOOL)arg3 allowDissolve:(BOOL)arg4;
++ (id)revalidateAvalancheAssets:(id)arg1 inLibrary:(id)arg2 deleteNonPicks:(BOOL)arg3 allowDissolve:(BOOL)arg4;
 + (BOOL)shouldHideAvalanchesFromPhotoStream;
 + (BOOL)shouldOnlyShowAvalanchePicks;
 - (void)_recalculateStackAsset;

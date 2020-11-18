@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/NTKTimelineEntryModel.h>
 
-@class NSDate, NSString;
+@class NSDate, NSString, UIColor;
 
 @interface NTKReminderTimelineEntry : NTKTimelineEntryModel
 {
@@ -16,33 +16,27 @@
     NSString *_primaryReminderId;
     NSString *_secondaryReminderTitle;
     unsigned long long _overlappingReminderCount;
+    UIColor *_primaryReminderParentListColor;
 }
 
 @property (nonatomic) BOOL displayAsConflicting; // @synthesize displayAsConflicting=_displayAsConflicting;
 @property (strong, nonatomic) NSDate *dueDate; // @synthesize dueDate=_dueDate;
 @property (nonatomic) unsigned long long overlappingReminderCount; // @synthesize overlappingReminderCount=_overlappingReminderCount;
 @property (strong, nonatomic) NSString *primaryReminderId; // @synthesize primaryReminderId=_primaryReminderId;
+@property (strong, nonatomic) UIColor *primaryReminderParentListColor; // @synthesize primaryReminderParentListColor=_primaryReminderParentListColor;
 @property (strong, nonatomic) NSString *primaryReminderTitle; // @synthesize primaryReminderTitle=_primaryReminderTitle;
 @property (strong, nonatomic) NSString *secondaryReminderTitle; // @synthesize secondaryReminderTitle=_secondaryReminderTitle;
 
 + (id)_analogReminderImageProvider;
-+ (id)_colorReminderImageProvider;
-+ (id)_modularSmallReminderImageProvider;
-+ (id)_modularXLReminderImageProvider;
++ (id)_cornerReminderImageProvider;
 + (id)_reminderImageAnalog;
-+ (id)_reminderImageColorAnalog;
-+ (id)_reminderImageModular;
-+ (id)_reminderImageVictory;
-+ (id)_reminderImageXLarge;
++ (id)_reminderImageCorner;
 + (id)loadingEntryForFamily:(long long)arg1;
 + (id)lockedEntryForFamily:(long long)arg1;
 - (void).cxx_destruct;
-- (id)_createCircularTemplateMedium:(BOOL)arg1;
-- (id)_createExtraLargeTemplate;
 - (id)_createLargeModularTemplate;
 - (id)_createLargeUtilityTemplate;
-- (id)_createSmallModularTemplate;
-- (id)_createSmallUtilityTemplate;
+- (id)_createSignatureCornerTemplate;
 - (id)description;
 - (id)templateForComplicationFamily:(long long)arg1;
 

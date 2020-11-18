@@ -29,6 +29,7 @@
 - (id)_newPeerForConnection:(id)arg1;
 - (void)_peerDidDisconnect:(id)arg1;
 - (void)_remoteObjectForProxy:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)_resetDetails;
 - (void)dealloc;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double customScaleAmount;
 @property (readonly, nonatomic) BOOL customShine;
 @property (readonly, nonatomic) long long customTextDelivery;
+@property (readonly, nonatomic) double customTravelDistance;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSString *delivery;
 @property (readonly, nonatomic) unsigned long long deliveryStyle;
@@ -113,9 +114,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL supportsRandomNumberSeedInspection;
 @property (readonly, nonatomic) BOOL supportsScaleAmount;
 @property (readonly, nonatomic) BOOL supportsShine;
+@property (readonly, nonatomic) BOOL supportsTravelDistance;
 @property (readonly, nonatomic) NSString *title;
 
-+ (id)buildWithEffect:(id)arg1 animationType:(long long)arg2 drawable:(id)arg3;
++ (id)buildWithEffect:(id)arg1 animationType:(long long)arg2 drawable:(id)arg3 slide:(id)arg4;
 + (void)i_repairBuildToDrawableReferencesFromUUIDsForBuilds:(id)arg1 drawables:(id)arg2;
 + (id)menuAnimationInfosForDrawableInfo:(id)arg1 animationType:(long long)arg2;
 + (BOOL)needsObjectUUID;

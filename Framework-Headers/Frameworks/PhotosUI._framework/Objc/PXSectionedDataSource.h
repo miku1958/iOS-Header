@@ -10,6 +10,7 @@
 #import <PhotosUICore/PXSectionedLayoutEngineDataSourceSnapshot-Protocol.h>
 
 @class NSString;
+@protocol OS_os_log;
 
 @interface PXSectionedDataSource : NSObject <NSCopying, PXSectionedLayoutEngineDataSourceSnapshot>
 {
@@ -25,6 +26,7 @@
 @property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) struct PXSimpleIndexPath lastItemIndexPath;
 @property (readonly, nonatomic) long long numberOfSections;
+@property (readonly, nonatomic) NSObject<OS_os_log> *sectionedDataSourceLog;
 @property (readonly) Class superclass;
 
 + (id)emptyDataSource;
@@ -46,6 +48,7 @@
 - (Class)objectReferenceClassForSection;
 - (Class)objectReferenceClassForSubItem;
 - (id)objectReferenceForObjectReference:(id)arg1;
+- (id)objectsInIndexPath:(struct PXSimpleIndexPath)arg1;
 - (void)prefetchIndexPaths:(id)arg1;
 
 @end

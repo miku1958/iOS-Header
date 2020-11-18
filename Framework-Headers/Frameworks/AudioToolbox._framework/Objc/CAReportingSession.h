@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString, RTCReporting;
 @protocol OS_dispatch_queue;
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _started;
     unsigned short _serviceType;
+    struct NSMutableDictionary *_driverSnapShot;
     long long _reporterID;
     NSObject<OS_dispatch_queue> *_sessionReportingQueue;
     NSMutableArray *_aggregatedPayloadData;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong) NSMutableArray *aggregatedPayloadData; // @synthesize aggregatedPayloadData=_aggregatedPayloadData;
 @property (strong) NSMutableDictionary *defaults; // @synthesize defaults=_defaults;
+@property (strong) NSMutableDictionary *driverSnapShot; // @synthesize driverSnapShot=_driverSnapShot;
 @property long long reporterID; // @synthesize reporterID=_reporterID;
 @property (strong) NSObject *reportingAgentToken; // @synthesize reportingAgentToken=_reportingAgentToken;
 @property (strong) RTCReporting *reportingSession; // @synthesize reportingSession=_reportingSession;

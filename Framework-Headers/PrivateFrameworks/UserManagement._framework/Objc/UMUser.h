@@ -28,6 +28,7 @@
     NSString *_givenName;
     NSString *_familyName;
     NSURL *_photoURL;
+    NSString *_userAuxiliaryString;
     id __photo;
     NSDate *_creationDate;
     NSDate *_lastLoginDate;
@@ -79,6 +80,7 @@
 @property (copy, nonatomic) NSURL *photoURL; // @synthesize photoURL=_photoURL;
 @property (nonatomic) BOOL shouldFetchAttributes; // @synthesize shouldFetchAttributes=_shouldFetchAttributes;
 @property (nonatomic) unsigned int uid; // @synthesize uid=_uid;
+@property (copy, nonatomic) NSString *userAuxiliaryString; // @synthesize userAuxiliaryString=_userAuxiliaryString;
 @property (readonly, nonatomic) unsigned long long userType;
 @property (copy, nonatomic) NSString *username; // @synthesize username=_username;
 
@@ -91,6 +93,7 @@
 - (id)description;
 - (void)fetchAttributesIfNeeded;
 - (BOOL)fetchAttributesWithOutError:(id *)arg1;
+- (BOOL)inFirstLoginSession;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToUser:(id)arg1;

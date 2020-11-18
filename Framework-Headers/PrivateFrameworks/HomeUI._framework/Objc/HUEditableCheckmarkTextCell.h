@@ -16,9 +16,9 @@
 @interface HUEditableCheckmarkTextCell : UITableViewCell <HUCellProtocol, HUDisableableCellProtocol, HUEditableTextCellProtocol>
 {
     BOOL _disabled;
-    BOOL _hideCheckmark;
+    BOOL _disableCheckmark;
     BOOL _isChecked;
-    BOOL _allowEditingWhileDisabled;
+    BOOL _allowCheckmarkSelectionWhileDisabled;
     UITextField *_textField;
     HFItem *_item;
     HUCheckmarkAccessoryView *_checkmarkView;
@@ -28,16 +28,16 @@
     UITapGestureRecognizer *_checkmarkTapRecognizer;
 }
 
-@property (nonatomic) BOOL allowEditingWhileDisabled; // @synthesize allowEditingWhileDisabled=_allowEditingWhileDisabled;
+@property (nonatomic) BOOL allowCheckmarkSelectionWhileDisabled; // @synthesize allowCheckmarkSelectionWhileDisabled=_allowCheckmarkSelectionWhileDisabled;
 @property (strong, nonatomic) UITapGestureRecognizer *checkmarkTapRecognizer; // @synthesize checkmarkTapRecognizer=_checkmarkTapRecognizer;
 @property (strong, nonatomic) HUCheckmarkAccessoryView *checkmarkView; // @synthesize checkmarkView=_checkmarkView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUEditableCheckmarkDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableCheckmark; // @synthesize disableCheckmark=_disableCheckmark;
 @property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (strong, nonatomic) NSArray *dynamicConstraints; // @synthesize dynamicConstraints=_dynamicConstraints;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL hideCheckmark; // @synthesize hideCheckmark=_hideCheckmark;
 @property (nonatomic, setter=setChecked:) BOOL isChecked; // @synthesize isChecked=_isChecked;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
 @property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;
@@ -48,7 +48,6 @@
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_checkmarkTapped:(id)arg1;
-- (void)_invalidateCheckmarkConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSIndexSet, NSString, UIEvent, UIResponder, UIViewController;
 
@@ -57,6 +57,7 @@
 - (id)_triggeringEvent;
 - (SEL)action;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (id)discoverabilityInput;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

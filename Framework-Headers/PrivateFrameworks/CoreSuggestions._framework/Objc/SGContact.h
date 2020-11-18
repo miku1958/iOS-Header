@@ -21,6 +21,7 @@
     NSArray *_instantMessageAddresses;
     NSArray *_socialProfiles;
     unsigned long long _significance;
+    unsigned long long _significanceOrigin;
 }
 
 @property (copy, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
@@ -30,6 +31,7 @@
 @property (copy, nonatomic) NSArray *postalAddresses; // @synthesize postalAddresses=_postalAddresses;
 @property (readonly, nonatomic) SGRecordId *recordId; // @synthesize recordId=_recordId;
 @property (nonatomic) unsigned long long significance; // @synthesize significance=_significance;
+@property (nonatomic) unsigned long long significanceOrigin; // @synthesize significanceOrigin=_significanceOrigin;
 @property (copy, nonatomic) NSArray *socialProfiles; // @synthesize socialProfiles=_socialProfiles;
 
 + (id)contactWithId:(id)arg1 name:(id)arg2 emailAddresses:(id)arg3 phones:(id)arg4 postalAddresses:(id)arg5;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/LSApplicationWorkspace.h>
+#import <CoreServices/LSApplicationWorkspace.h>
 
 @interface LSApplicationWorkspace (SafariServicesExtras)
 - (void)_sf_openURL:(id)arg1 inApplication:(id)arg2 withOptions:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

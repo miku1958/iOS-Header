@@ -9,21 +9,20 @@
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 
-@class HMMediaSession, NSString, NSUUID, _HMContext;
+@class HMFUnfairLock, HMMediaSession, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue, _HMAudioControlDelegate;
 
 @interface _HMAudioControl : NSObject <HMFMessageReceiver, HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     BOOL _muted;
     float _volume;
     NSUUID *_uniqueIdentifier;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMMediaSession *_mediaSession;
     id<_HMAudioControlDelegate> _delegate;
     _HMContext *_context;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<_HMAudioControlDelegate> delegate; // @synthesize delegate=_delegate;
@@ -33,18 +32,16 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (getter=isMuted) BOOL muted; // @synthesize muted=_muted;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property float volume; // @synthesize volume=_volume;
 
 - (void).cxx_destruct;
+- (void)__configureWithContext:(id)arg1;
 - (void)_handleAudioControlUpdated:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
-- (void)configure:(id)arg1;
-- (id)delegateCaller;
-- (id)initWithMediaSession:(id)arg1 propertyQueue:(id)arg2;
+- (id)initWithMediaSession:(id)arg1;
 - (id)messageDestination;
 - (void)updateMuted:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateVolume:(float)arg1 completionHandler:(CDUnknownBlockType)arg2;

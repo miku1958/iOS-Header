@@ -7,10 +7,11 @@
 #import <PhotoLibraryServices/PLGenericAlbum.h>
 
 #import <PhotoLibraryServices/PLAlbumContainer-Protocol.h>
+#import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
 
 @class NSOrderedSet, NSString;
 
-@interface PLManagedFolder : PLGenericAlbum <PLAlbumContainer>
+@interface PLManagedFolder : PLGenericAlbum <PLAlbumContainer, PLCloudDeletable>
 {
     BOOL _needsPersistenceUpdate;
     BOOL _needsFixedOrderKeysComplianceUpdate;
@@ -21,6 +22,9 @@
 @property (readonly, nonatomic) unsigned long long albumsCount;
 @property (readonly, copy, nonatomic) CDUnknownBlockType albumsSortingComparator;
 @property (strong, nonatomic) NSOrderedSet *childCollections; // @dynamic childCollections;
+@property (nonatomic) short cloudDeleteState;
+@property (readonly) long long cloudDeletionType;
+@property (readonly, copy) NSString *cloudUUIDForDeletion;
 @property (readonly, nonatomic) unsigned long long containersCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,6 +37,8 @@
 @property (readonly, nonatomic) unsigned long long unreadAlbumsCount;
 
 + (id)childKeyForOrdering;
++ (long long)cloudDeletionTypeForTombstone:(id)arg1;
++ (id)cloudUUIDKeyForDeletion;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)insertInManagedObjectContext:(id)arg1;

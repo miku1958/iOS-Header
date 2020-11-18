@@ -16,6 +16,7 @@
 }
 
 @property (nonatomic) BOOL accessibilityObjectModelEnabled;
+@property (nonatomic) BOOL allowCrossOriginSubresourcesToAskForCredentials;
 @property (nonatomic) BOOL allowMediaContentTypesRequiringHardwareSupportAsFallback;
 @property (nonatomic) BOOL allowsAirPlayForMediaPlayback;
 @property (nonatomic) BOOL allowsAnimatedImageLooping;
@@ -25,6 +26,7 @@
 @property (nonatomic) BOOL attachmentElementEnabled;
 @property (nonatomic) BOOL autosaves;
 @property (nonatomic) unsigned long long cacheModel;
+@property (nonatomic) BOOL colorFilterEnabled;
 @property (nonatomic) BOOL constantPropertiesEnabled;
 @property (copy, nonatomic) NSString *cursiveFontFamily;
 @property (nonatomic) int defaultFixedFontSize;
@@ -55,6 +57,7 @@
 @property (nonatomic) int minimumLogicalFontSize;
 @property (nonatomic, getter=arePlugInsEnabled) BOOL plugInsEnabled;
 @property (nonatomic) BOOL privateBrowsingEnabled;
+@property (nonatomic) BOOL punchOutWhiteBackgroundsInDarkMode;
 @property (nonatomic) BOOL quickLookDocumentSavingEnabled;
 @property (nonatomic) BOOL resourceTimingEnabled;
 @property (copy, nonatomic) NSString *sansSerifFontFamily;
@@ -158,6 +161,7 @@
 - (BOOL)backspaceKeyNavigationEnabled;
 - (BOOL)cacheAPIEnabled;
 - (BOOL)canvasUsesAcceleratedDrawing;
+- (BOOL)crossOriginWindowPolicySupportEnabled;
 - (BOOL)customElementsEnabled;
 - (BOOL)customPasteboardDataEnabled;
 - (BOOL)dataTransferItemsEnabled;
@@ -196,13 +200,11 @@
 - (BOOL)invisibleAutoplayNotPermitted;
 - (BOOL)isAVFoundationEnabled;
 - (BOOL)isAVFoundationNSURLSessionEnabled;
-- (BOOL)isCSSGridLayoutEnabled;
 - (BOOL)isDNSPrefetchingEnabled;
 - (BOOL)isDOMPasteAllowed;
 - (BOOL)isFrameFlatteningEnabled;
 - (BOOL)isHixie76WebSocketProtocolEnabled;
 - (BOOL)isInheritURIQueryComponentEnabled;
-- (BOOL)isQTKitEnabled;
 - (BOOL)isSpatialNavigationEnabled;
 - (BOOL)isVideoPluginProxyEnabled;
 - (BOOL)isWebSecurityEnabled;
@@ -242,6 +244,7 @@
 - (BOOL)readableByteStreamAPIEnabled;
 - (BOOL)requestAnimationFrameEnabled;
 - (BOOL)resourceLoadStatisticsEnabled;
+- (BOOL)serverTimingEnabled;
 - (BOOL)serviceControlsEnabled;
 - (void)setAVFoundationEnabled:(BOOL)arg1;
 - (void)setAVFoundationNSURLSessionEnabled:(BOOL)arg1;
@@ -263,9 +266,9 @@
 - (void)setAuthorAndUserStylesEnabled:(BOOL)arg1;
 - (void)setAutomaticallyDetectsCacheModel:(BOOL)arg1;
 - (void)setBackspaceKeyNavigationEnabled:(BOOL)arg1;
-- (void)setCSSGridLayoutEnabled:(BOOL)arg1;
 - (void)setCacheAPIEnabled:(BOOL)arg1;
 - (void)setCanvasUsesAcceleratedDrawing:(BOOL)arg1;
+- (void)setCrossOriginWindowPolicySupportEnabled:(BOOL)arg1;
 - (void)setCustomElementsEnabled:(BOOL)arg1;
 - (void)setCustomPasteboardDataEnabled:(BOOL)arg1;
 - (void)setDNSPrefetchingEnabled:(BOOL)arg1;
@@ -333,10 +336,10 @@
 - (void)setPeerConnectionEnabled:(BOOL)arg1;
 - (void)setPictographFontFamily:(id)arg1;
 - (void)setPlugInSnapshottingEnabled:(BOOL)arg1;
-- (void)setQTKitEnabled:(BOOL)arg1;
 - (void)setReadableByteStreamAPIEnabled:(BOOL)arg1;
 - (void)setRequestAnimationFrameEnabled:(BOOL)arg1;
 - (void)setResourceLoadStatisticsEnabled:(BOOL)arg1;
+- (void)setServerTimingEnabled:(BOOL)arg1;
 - (void)setServiceControlsEnabled:(BOOL)arg1;
 - (void)setShadowDOMEnabled:(BOOL)arg1;
 - (void)setShouldConvertPositionStyleOnCopy:(BOOL)arg1;
@@ -361,6 +364,7 @@
 - (void)setVideoPlaybackRequiresUserGesture:(BOOL)arg1;
 - (void)setVideoPluginProxyEnabled:(BOOL)arg1;
 - (void)setWantsBalancedSetDefersLoadingBehavior:(BOOL)arg1;
+- (void)setWebAnimationsCSSIntegrationEnabled:(BOOL)arg1;
 - (void)setWebAnimationsEnabled:(BOOL)arg1;
 - (void)setWebArchiveDebugModeEnabled:(BOOL)arg1;
 - (void)setWebAudioEnabled:(BOOL)arg1;
@@ -393,6 +397,7 @@
 - (BOOL)usesEncodingDetector;
 - (BOOL)videoPlaybackRequiresUserGesture;
 - (BOOL)wantsBalancedSetDefersLoadingBehavior;
+- (BOOL)webAnimationsCSSIntegrationEnabled;
 - (BOOL)webAnimationsEnabled;
 - (BOOL)webArchiveDebugModeEnabled;
 - (BOOL)webAudioEnabled;

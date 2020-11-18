@@ -6,27 +6,38 @@
 
 #import <SafariShared/WBSSiteMetadataRequest.h>
 
+#import <SafariShared/WBSIconRequest-Protocol.h>
+
 @class NSString;
 
-@interface WBSTouchIconRequest : WBSSiteMetadataRequest
+@interface WBSTouchIconRequest : WBSSiteMetadataRequest <WBSIconRequest>
 {
     BOOL _iconGenerationEnabled;
+    BOOL _iconDownloadingEnabled;
     NSString *_monogramTitle;
     struct CGSize _minimumIconSize;
     struct CGSize _maximumIconSize;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isIconDownloadingEnabled) BOOL iconDownloadingEnabled; // @synthesize iconDownloadingEnabled=_iconDownloadingEnabled;
 @property (readonly, nonatomic, getter=isIconGenerationEnabled) BOOL iconGenerationEnabled; // @synthesize iconGenerationEnabled=_iconGenerationEnabled;
 @property (readonly, nonatomic) struct CGSize maximumIconSize; // @synthesize maximumIconSize=_maximumIconSize;
 @property (readonly, nonatomic) struct CGSize minimumIconSize; // @synthesize minimumIconSize=_minimumIconSize;
 @property (readonly, copy, nonatomic) NSString *monogramTitle; // @synthesize monogramTitle=_monogramTitle;
+@property (readonly, nonatomic) struct CGSize sizeForDrawing;
+@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *uniqueIdentifier;
 
 + (id)requestWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4;
 + (id)requestWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4 iconGenerationEnabled:(BOOL)arg5;
++ (id)requestWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4 iconGenerationEnabled:(BOOL)arg5 iconDownloadingEnabled:(BOOL)arg6;
 - (void).cxx_destruct;
-- (unsigned long long)hash;
 - (id)initWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4;
 - (id)initWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4 iconGenerationEnabled:(BOOL)arg5;
+- (id)initWithTitle:(id)arg1 url:(id)arg2 minimumIconSize:(struct CGSize)arg3 maximumIconSize:(struct CGSize)arg4 iconGenerationEnabled:(BOOL)arg5 iconDownloadingEnabled:(BOOL)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

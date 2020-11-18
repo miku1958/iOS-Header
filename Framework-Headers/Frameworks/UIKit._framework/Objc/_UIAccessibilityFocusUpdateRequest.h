@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFocusUpdateRequest.h>
+#import <UIKitCore/_UIFocusUpdateRequest.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIAccessibilityFocusUpdateRequest : _UIFocusUpdateRequest

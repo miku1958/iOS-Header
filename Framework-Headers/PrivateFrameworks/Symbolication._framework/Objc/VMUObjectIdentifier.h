@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, VMUClassInfoMap, VMUNonOverlappingRangeArray, VMUTaskMemoryScanner;
+@class NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSString, VMUClassInfo, VMUClassInfoMap, VMUNonOverlappingRangeArray, VMUTaskMemoryScanner;
 
 @interface VMUObjectIdentifier : NSObject
 {
     unsigned int _task;
     struct _CSTypeRef _symbolicator;
     BOOL _targetUsesObjc2runtime;
+    BOOL _needToValidateAddressRange;
     CDUnknownBlockType _memoryReader;
     VMUTaskMemoryScanner *_scanner;
     struct libSwiftRemoteMirrorWrapper *_swiftMirror;
     NSString *_libSwiftRemoteMirrorPath;
+    NSString *_libSwiftRemoteMirrorLegacyPath;
     void *_libSwiftRemoteMirrorHandle;
-    NSArray *_swiftMirrorMachOSections;
+    void *_libSwiftRemoteMirrorLegacyHandle;
     struct _CSTypeRef _swiftCoreSymbolOwner;
     VMUClassInfoMap *_realizedIsaToClassInfo;
     VMUClassInfoMap *_unrealizedClassInfos;
@@ -30,12 +32,14 @@
     unsigned long long _cfClassCount;
     CDUnknownBlockType _isaTranslator;
     BOOL _fragileNonPointerIsas;
+    unsigned long long _lastCPlusPlusIsa;
+    VMUClassInfo *_lastCPlusPlusClassInfo;
+    NSHashTable *_nonObjectIsaHash;
     NSMapTable *_isaToObjectLabelHandlerMap;
     NSMapTable *_itemCountToLabelStringUniquingMap;
     id *_labelStringUniquingMaps;
     id *_stringTypeDescriptions;
     NSMutableSet *_stringUniquingSet;
-    NSHashTable *_objcRuntimeMallocBlocksHash;
     VMUNonOverlappingRangeArray *_targetProcessVMranges;
     BOOL _targetProcessContainsMallocStackLoggingLiteZone;
     unsigned long long _cfBooleanTrueAddress;
@@ -43,6 +47,7 @@
 }
 
 @property (readonly, nonatomic) CDUnknownBlockType memoryReader; // @synthesize memoryReader=_memoryReader;
+@property (readonly) BOOL needToValidateAddressRange; // @synthesize needToValidateAddressRange=_needToValidateAddressRange;
 @property (readonly, nonatomic) VMUClassInfoMap *realizedClasses; // @synthesize realizedClasses=_realizedIsaToClassInfo;
 @property (readonly, nonatomic) NSString *swiftCoreSymbolOwnerPath;
 @property (readonly, nonatomic) struct libSwiftRemoteMirrorWrapper *swiftMirror; // @synthesize swiftMirror=_swiftMirror;
@@ -53,9 +58,9 @@
 - (unsigned long long)SwiftClassCount;
 - (id)_classInfoWithNonobjectType:(id)arg1 binaryPath:(id)arg2;
 - (id)_classInfoWithPthreadType:(id)arg1;
-- (void *)_dlopenLibSwiftRemoteMirrorFromDir:(id)arg1;
-- (void *)_dlopenLibSwiftRemoteMirrorNearLibSwiftCoreWithSymbolicator:(struct _CSTypeRef)arg1 avoidSystem:(BOOL)arg2;
-- (void *)_dlopenLibSwiftRemoteMirrorWithSymbolicator:(struct _CSTypeRef)arg1;
+- (BOOL)_dlopenLibSwiftRemoteMirrorFromDir:(id)arg1;
+- (BOOL)_dlopenLibSwiftRemoteMirrorNearLibSwiftCoreWithSymbolicator:(struct _CSTypeRef)arg1 avoidSystem:(BOOL)arg2;
+- (BOOL)_dlopenLibSwiftRemoteMirrorWithSymbolicator:(struct _CSTypeRef)arg1;
 - (void)_faultClass:(unsigned long long)arg1 ofType:(int)arg2;
 - (BOOL)_isValidInstanceLength:(unsigned long long)arg1 expectedLength:(unsigned long long)arg2;
 - (void)_populateSwiftDebugVariables:(struct libSwiftRemoteMirrorWrapper *)arg1;
@@ -109,6 +114,7 @@
 - (id)labelForNSXPCInterface:(void *)arg1;
 - (id)labelForOSDispatchMach:(void *)arg1;
 - (id)labelForOSDispatchQueue:(void *)arg1;
+- (id)labelForOSLog:(void *)arg1;
 - (id)labelForOSTransaction:(void *)arg1;
 - (id)labelForOSXPCConnection:(void *)arg1;
 - (id)labelForObjectOfClass:(id)arg1 atOffset:(unsigned int)arg2 ofObject:(void *)arg3;
@@ -116,7 +122,6 @@
 - (id)labelForTaggedPointer:(void *)arg1;
 - (id)labelFor__NSMallocBlock__:(void *)arg1;
 - (void)loadSwiftReflectionLibrary;
-- (id)objcRuntimeMallocBlocksHash;
 - (id)objectLabelHandlerForRemoteIsa:(unsigned long long)arg1;
 - (id)osMajorMinorVersionString;
 - (id)uniquifyStringLabel:(id)arg1 stringType:(int)arg2 printDetail:(BOOL)arg3;

@@ -21,6 +21,7 @@
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (readonly, nonatomic) NSString *ownerIdentifier; // @synthesize ownerIdentifier=_ownerIdentifier;
 @property (strong, nonatomic) NSString *pendingOwner; // @synthesize pendingOwner=_pendingOwner;
+@property (readonly, nonatomic) HDCloudSyncSequenceRecord *sequenceRecord;
 @property (readonly, nonatomic) NSUUID *storeIdentifier; // @synthesize storeIdentifier=_storeIdentifier;
 
 + (BOOL)hasFutureSchema:(id)arg1;
@@ -40,8 +41,10 @@
 - (id)description;
 - (BOOL)hasActiveSequence;
 - (BOOL)hasSequenceWithFutureProtocolVersion;
+- (unsigned long long)hash;
 - (id)initInSyncCircle:(id)arg1 ownerIdentifier:(id)arg2 storeIdentifier:(id)arg3;
 - (id)initWithOwnerIdentifier:(id)arg1 storeIdentifier:(id)arg2 pendingOwner:(id)arg3 active:(BOOL)arg4 record:(id)arg5 schemaVersion:(long long)arg6;
+- (BOOL)isEqual:(id)arg1;
 - (id)oldSequenceHeaderRecord;
 
 @end

@@ -36,13 +36,10 @@
 @property (readonly, nonatomic) NSString *toneIdentifier; // @synthesize toneIdentifier=_toneIdentifier;
 @property (readonly, nonatomic) NSString *vibrationIdentifier; // @synthesize vibrationIdentifier=_vibrationIdentifier;
 
-+ (id)_loadDefaultAlarmSoundIsWakeUp:(BOOL)arg1;
-+ (id)_loadDefaultEarlyWakeUpSound;
-+ (id)_loadDefaultGoToSleepSound;
++ (id)_loadDefaultAlarmSound;
 + (id)_loadDefaultTimerSound;
 + (void)_saveDefaultAlarmSound:(id)arg1;
 + (void)_saveDefaultTimerSound:(id)arg1;
-+ (void)_saveDefaultWakeUpSound:(id)arg1;
 + (id)defaultSoundForCategory:(unsigned long long)arg1;
 + (void)setDefaultSound:(id)arg1 forCategory:(unsigned long long)arg2;
 + (id)songSoundWithIdentifier:(id)arg1 vibrationIdentifier:(id)arg2 volume:(id)arg3;
@@ -53,9 +50,15 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMediaItemIdentifier:(id)arg1 vibrationIdentifier:(id)arg2 volume:(id)arg3;
+- (id)initWithSound:(id)arg1 usingVolume:(id)arg2;
 - (id)initWithToneIdentifier:(id)arg1 vibrationIdentifer:(id)arg2 volume:(id)arg3;
+- (BOOL)interruptAudio;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSound:(id)arg1;
+- (id)previewWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)unSound;
+- (id)unSoundIsGoToBed:(BOOL)arg1 isEarlyWakeUp:(BOOL)arg2 isWakeUp:(BOOL)arg3;
+- (void)updatePreview:(id)arg1;
 
 @end
 

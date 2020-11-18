@@ -11,6 +11,7 @@
 @class INInteraction, NSString;
 @protocol INUIHostedViewControlling;
 
+__attribute__((visibility("hidden")))
 @interface _INUIServiceViewController : UIViewController <_INUIRemoteViewControllerServing>
 {
     UIViewController<INUIHostedViewControlling> *_hostedViewController;

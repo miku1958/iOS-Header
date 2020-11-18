@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, VKLabelNavRoadGraph, VKPolylineOverlay;
 
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_pendingTiles;
     NSMutableArray *_junctions;
     VKLabelNavRoadGraph *_roadGraph;
-    vector_ecfc0b70 _activeSigns;
+    vector_1ad5c848 _activeSigns;
     NSMutableArray *_fadingLabels;
     NSMutableDictionary *_visibleLabelsByName;
     NSMutableArray *_visibleLabels;
@@ -57,10 +57,11 @@ __attribute__((visibility("hidden")))
     BOOL _debugEnableShieldsOnRouteLine;
     shared_ptr_a3c46825 _styleManager;
     BOOL _shouldLabelOppositeCarriageways;
-    vector_b4a52264 _externalCollisionLabelsForLayout;
+    vector_83fb13fb _externalCollisionLabelsForLayout;
+    BOOL _hasPendingTilesInSnappingRegion;
 }
 
-@property (readonly, nonatomic) const vector_ecfc0b70 *activeSigns; // @synthesize activeSigns=_activeSigns;
+@property (readonly, nonatomic) const vector_1ad5c848 *activeSigns; // @synthesize activeSigns=_activeSigns;
 @property (nonatomic) struct VKLabelNavArtworkCache *artworkCache; // @synthesize artworkCache=_artworkCache;
 @property (strong, nonatomic) NSString *currentLocationText; // @synthesize currentLocationText=_currentLocationText;
 @property (strong, nonatomic) NSString *currentRoadName; // @synthesize currentRoadName=_currentRoadName;
@@ -81,7 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)_addLabelsForJunctions:(id)arg1 withContext:(struct NavContext *)arg2 maxLabelsToAdd:(unsigned long long)arg3 useAllJunctions:(BOOL)arg4 placeShieldsFrontToBack:(BOOL)arg5;
 - (BOOL)_collideLabel:(id)arg1 activeLabel:(id)arg2 labelsToRemove:(id)arg3;
 - (void)_createOrUpdateLabelForRoad:(id)arg1 isShield:(BOOL)arg2 navContext:(struct NavContext *)arg3;
-- (BOOL)_findRouteOverlappingJunctionFrom:(long long)arg1 routeJunctions:(vector_682a2c99 *)arg2 lookBackward:(BOOL)arg3 firstOverlap:(long long *)arg4 secondOverlap:(long long *)arg5;
+- (BOOL)_findRouteOverlappingJunctionFrom:(long long)arg1 routeJunctions:(vector_34e67f61 *)arg2 lookBackward:(BOOL)arg3 firstOverlap:(long long *)arg4 secondOverlap:(long long *)arg5;
 - (void)_generateCurrentRoadSignWithContext:(struct NavContext *)arg1;
 - (void)_initalizeCurrentRoadInfo;
 - (void)_refreshGuidanceRoadNames;
@@ -101,7 +102,7 @@ __attribute__((visibility("hidden")))
 - (void)grabTilesFromScene:(id)arg1;
 - (id)init;
 - (BOOL)isNavMode;
-- (void)layoutWithNavContext:(struct NavContext *)arg1 externalCollisionLabels:(const vector_b4a52264 *)arg2;
+- (void)layoutWithNavContext:(struct NavContext *)arg1 externalCollisionLabels:(const vector_83fb13fb *)arg2;
 - (unsigned char)orientationForRoadSign:(id)arg1 roadLabel:(id)arg2 navContext:(struct NavContext *)arg3;
 - (void)setStyleManager:(shared_ptr_a3c46825)arg1;
 

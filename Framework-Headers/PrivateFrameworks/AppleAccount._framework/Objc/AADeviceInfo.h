@@ -6,20 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class APSConnection, NSData;
-@protocol OS_dispatch_semaphore;
-
 @interface AADeviceInfo : NSObject
 {
-    APSConnection *_apsConnection;
-    BOOL _tokenDone;
-    NSData *_token;
-    NSObject<OS_dispatch_semaphore> *_tokenSema;
 }
 
 + (id)apnsToken;
 + (id)appleIDClientIdentifier;
 + (id)clientInfoHeader;
++ (id)currentInfo;
 + (id)infoDictionary;
 + (BOOL)isInternalBuild;
 + (BOOL)isMultiUserMode;
@@ -28,10 +22,11 @@
 + (id)serialNumber;
 + (id)udid;
 + (id)userAgentHeader;
-- (void).cxx_destruct;
 - (id)apnsToken;
 - (id)appleIDClientIdentifier;
+- (id)bluetoothMacAddress;
 - (id)buildVersion;
+- (id)chipIdentifier;
 - (id)clientInfoHeader;
 - (id)deviceBackingColor;
 - (id)deviceClass;
@@ -53,6 +48,7 @@
 - (id)serialNumber;
 - (id)storageCapacity;
 - (id)udid;
+- (id)uniqueChipIdentifier;
 - (id)userAgentHeader;
 - (id)wifiMacAddress;
 

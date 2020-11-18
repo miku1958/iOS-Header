@@ -4,20 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDate, NSString, TSCERegexMatcher;
 
 __attribute__((visibility("hidden")))
 @interface TSCELogicalTest : NSObject
 {
-    int mOperation;
-    struct TSCENumberValue mValue;
-    NSString *mString;
-    NSDate *mDate;
-    TSCERegexMatcher *mMatcher;
-    struct TSCEEvaluationContext *mEvaluationContext;
+    int _operation;
+    struct TSCENumberValue _value;
+    NSString *_string;
+    NSDate *_date;
+    TSCERegexMatcher *_matcher;
+    struct TSCEEvaluationContext *_evaluationContext;
 }
+
+@property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (nonatomic) struct TSCEEvaluationContext *evaluationContext; // @synthesize evaluationContext=_evaluationContext;
+@property (strong, nonatomic) TSCERegexMatcher *matcher; // @synthesize matcher=_matcher;
+@property (strong, nonatomic) NSString *string; // @synthesize string=_string;
 
 + (id)logicalTestWithCriterion:(struct TSCEValue)arg1 functionSpec:(id)arg2 evaluationContext:(struct TSCEEvaluationContext *)arg3;
 - (id).cxx_construct;
@@ -25,13 +30,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)compare:(struct TSCEValue)arg1 withContext:(struct TSCEEvaluationContext *)arg2;
 - (unsigned long long)cost;
 - (int)criteriaParser:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithCriterion:(struct TSCEValue)arg1 functionSpec:(id)arg2 evaluationContext:(struct TSCEEvaluationContext *)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (void)setDate:(id)arg1;
-- (void)setRegexMatcher:(id)arg1;
-- (void)setString:(id)arg1;
 
 @end
 

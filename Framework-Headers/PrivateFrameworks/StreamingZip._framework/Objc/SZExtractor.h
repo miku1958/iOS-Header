@@ -51,6 +51,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_invalidateObject;
+- (BOOL)_isValidObject;
 - (void)_prepareForLocalExtraction:(CDUnknownBlockType)arg1;
 - (void)_prepareForRemoteExtraction:(CDUnknownBlockType)arg1;
 - (void)_setUpWithPath:(id)arg1 options:(id)arg2;

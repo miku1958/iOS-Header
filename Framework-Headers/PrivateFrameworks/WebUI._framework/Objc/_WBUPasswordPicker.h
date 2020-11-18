@@ -9,19 +9,21 @@
 #import <WebUI/UISearchBarDelegate-Protocol.h>
 #import <WebUI/UISearchResultsUpdating-Protocol.h>
 
-@class NSArray, NSString, UISearchController, WBUPasswordPickerViewController;
+@class NSCountedSet, NSIndexPath, NSMutableArray, NSString, UISearchController, WBUPasswordPickerViewController;
 
 @interface _WBUPasswordPicker : UITableViewController <UISearchBarDelegate, UISearchResultsUpdating>
 {
-    NSArray *_savedPasswordsMatchingHintStrings;
-    NSArray *_savedPasswords;
-    NSArray *_matchingPasswords;
+    NSMutableArray *_savedPasswordsMatchingHintStrings;
+    NSMutableArray *_savedPasswords;
+    NSMutableArray *_matchingPasswords;
     WBUPasswordPickerViewController *_pickerViewController;
     UISearchController *_searchController;
     NSString *_searchPattern;
     long long _sectionForPrompt;
     long long _sectionForPasswordsMatchingHintStrings;
     long long _sectionForAllPasswords;
+    NSCountedSet *_visibleDomains;
+    NSIndexPath *_indexPathOfRowShowingDetailView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,15 +32,19 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_deletePasswordAtIndexPath:(id)arg1;
 - (id)_passwordForIndexPath:(id)arg1;
 - (void)_setSearchPattern:(id)arg1;
+- (void)_updateIconForDomain:(id)arg1 forCell:(id)arg2;
 - (void)_updateSections;
+- (void)iconDidUpdateForDomain:(id)arg1;
 - (id)initWithPasswordPickerViewController:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (long long)positionForBar:(id)arg1;
 - (void)tableView:(id)arg1 accessoryButtonTappedForRowWithIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 canPerformAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 didEndDisplayingCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
@@ -46,6 +52,8 @@
 - (BOOL)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
+- (id)tableView:(id)arg1 trailingSwipeActionsConfigurationForRowAtIndexPath:(id)arg2;
+- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)updateSearchResultsForSearchController:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/GKNATObserverDelegate-Protocol.h>
 #import <AVConference/VCAudioIODelegate-Protocol.h>
@@ -15,7 +15,7 @@
 #import <AVConference/VCMomentTransportDelegate-Protocol.h>
 #import <AVConference/VCVideoCaptureClient-Protocol.h>
 
-@class FFTMeter, GKNATObserver, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, VCAudioIO, VCAudioPowerLevelMonitor, VCCallSession, VCMoments, VCVideoRule, VideoConferenceManager;
+@class FFTMeter, GKNATObserver, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSString, VCAudioIO, VCAudioPowerLevelMonitor, VCAudioPowerSpectrumSource, VCCallSession, VCMoments, VCVideoRule, VideoConferenceManager;
 @protocol OS_dispatch_queue, VideoConferenceChannelQualityDelegate, VideoConferenceDelegate, VideoConferenceSpeakingDelegate;
 
 @interface VideoConference : NSObject <VCCallSessionDelegate, VCVideoCaptureClient, GKNATObserverDelegate, VCAudioIOSource, VCAudioIOSink, VCAudioIODelegate, VCAudioPowerLevelMonitorDelegate, VCMomentTransportDelegate>
@@ -40,6 +40,10 @@
     FFTMeter *_outputFFTMeter;
     float outputMeterLevel;
     float inputMeterLevel;
+    long long _inputAudioPowerSpectrumToken;
+    long long _outputAudioPowerSpectrumToken;
+    VCAudioPowerSpectrumSource *_inputAudioPowerSpectrumSource;
+    VCAudioPowerSpectrumSource *_outputAudioPowerSpectrumSource;
     BOOL microphoneMuted;
     double dAudioHostTime;
     struct _opaque_pthread_mutex_t xRemoteLayer;
@@ -64,13 +68,13 @@
     BOOL isTalking;
     unsigned int talkTime;
     int packetsPerBundle;
-    unsigned int recvRTPTimeStamp;
+    CDStruct_1b6d18a9 recvRTPTimeStamp;
     BOOL disableVAD;
     BOOL requiresWifi;
     unsigned int preferredCodec;
     int upstreamBandwidth;
     int downstreamBandwidth;
-    BOOL useAFRC;
+    BOOL useRateControl;
     BOOL isGKVoiceChat;
     BOOL isUsingSuppression;
     BOOL shouldTimeoutPackets;
@@ -79,9 +83,7 @@
     NSDictionary *natTypeDictionary;
     struct _opaque_pthread_mutex_t natMutex;
     unsigned int lastSentAudioSampleTime;
-    double lastReceivedAudioTimestamp;
     VCAudioPowerLevelMonitor *_remoteAudioPowerLevelMonitor;
-    int audioTimeStampDelta;
     GKNATObserver *natObserver;
     unsigned int mostRecentStartedCall;
     unsigned int lastActiveCall;
@@ -118,6 +120,7 @@
 @property (getter=isSpeakerPhoneEnabled) BOOL enableSpeakerPhone;
 @property BOOL hasMic;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long inputAudioPowerSpectrumToken; // @synthesize inputAudioPowerSpectrumToken=_inputAudioPowerSpectrumToken;
 @property (nonatomic, getter=isInputFrequencyMeteringEnabled) BOOL inputFrequencyMeteringEnabled;
 @property (readonly, nonatomic) float inputMeterLevel;
 @property (nonatomic, getter=isInputMeteringEnabled) BOOL inputMeteringEnabled;
@@ -129,6 +132,7 @@
 @property (readonly) int localFrameHeight; // @synthesize localFrameHeight;
 @property (readonly) int localFrameWidth; // @synthesize localFrameWidth;
 @property (nonatomic, getter=isMicrophoneMuted) BOOL microphoneMuted;
+@property (readonly, nonatomic) long long outputAudioPowerSpectrumToken; // @synthesize outputAudioPowerSpectrumToken=_outputAudioPowerSpectrumToken;
 @property (nonatomic, getter=isOutputFrequencyMeteringEnabled) BOOL outputFrequencyMeteringEnabled;
 @property (readonly, nonatomic) float outputMeterLevel;
 @property (nonatomic, getter=isOutputMeteringEnabled) BOOL outputMeteringEnabled;
@@ -244,6 +248,7 @@
 - (BOOL)session:(id)arg1 didStopVideoIO:(BOOL)arg2 error:(id *)arg3;
 - (void)session:(id)arg1 didStopWithError:(id)arg2;
 - (void)session:(id)arg1 initiateRelayRequest:(id)arg2;
+- (void)session:(id)arg1 isSendingAudio:(BOOL)arg2 error:(id)arg3;
 - (void)session:(id)arg1 localAudioEnabled:(BOOL)arg2 withCallID:(unsigned int)arg3 error:(id)arg4;
 - (void)session:(id)arg1 localIPChange:(id)arg2 withCallID:(unsigned int)arg3;
 - (void)session:(id)arg1 packMeters:(char *)arg2 withLength:(char *)arg3;
@@ -279,6 +284,7 @@
 - (BOOL)setPauseVideo:(BOOL)arg1 callID:(unsigned int)arg2 error:(id *)arg3;
 - (void)setPeerCN:(id)arg1 callID:(unsigned int)arg2;
 - (void)setPeerProtocolVersion:(unsigned int)arg1 forCallID:(unsigned int)arg2;
+- (void)setPeerReportingID:(id)arg1 sessionID:(id)arg2 callID:(unsigned int)arg3;
 - (void)setSendAudio:(BOOL)arg1 forCallID:(unsigned int)arg2;
 - (void)setSessionID:(id)arg1 callID:(unsigned int)arg2;
 - (void)setUpAudioIO:(int)arg1;
@@ -287,6 +293,7 @@
 - (BOOL)shouldSendAudioForCallID:(unsigned int)arg1;
 - (void)shouldSendBlackFrame:(BOOL)arg1 callID:(id)arg2;
 - (int)sipCallbackNotification:(int)arg1 callID:(unsigned int)arg2 msgIn:(const char *)arg3 msgOut:(char *)arg4 optional:(void *)arg5 confIndex:(int *)arg6;
+- (void)sourceFrameRateDidChange:(unsigned int)arg1;
 - (BOOL)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 oldCallID:(unsigned int)arg3 usingInviteData:(id)arg4 isCaller:(BOOL)arg5 relayResponseDict:(id)arg6 didOriginateRelayRequest:(BOOL)arg7 capabilities:(id)arg8 idsSocket:(int)arg9 destination:(id)arg10 error:(id *)arg11;
 - (BOOL)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 usingInviteData:(id)arg3 isCaller:(BOOL)arg4 capabilities:(id)arg5 idsSocket:(int)arg6 destination:(id)arg7 error:(id *)arg8;
 - (BOOL)startConnectionWithParticipantID:(id)arg1 callID:(unsigned int)arg2 usingInviteData:(id)arg3 isCaller:(BOOL)arg4 relayResponseDict:(id)arg5 didOriginateRelayRequest:(BOOL)arg6 capabilities:(id)arg7 idsSocket:(int)arg8 destination:(id)arg9 error:(id *)arg10;

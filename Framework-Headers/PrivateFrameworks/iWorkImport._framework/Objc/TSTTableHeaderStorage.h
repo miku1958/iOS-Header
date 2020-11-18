@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)setHeader:(id)arg1 forKey:(unsigned int)arg2;
 - (void)shiftKeysAtIndex:(unsigned int)arg1 amount:(int)arg2;
 - (unsigned int)upperBound:(unsigned int)arg1;
+- (void)willModifyAllHeaders;
 
 @end
 

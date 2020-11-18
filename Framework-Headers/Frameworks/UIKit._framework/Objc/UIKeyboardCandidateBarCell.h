@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
-#import <UIKit/UIKBCacheableView-Protocol.h>
+#import <UIKitCore/UIKBCacheableView-Protocol.h>
 
 @class NSString, UIKBThemedView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateBarCell : UICollectionViewCell <UIKBCacheableView>
 {
+    BOOL _inExtendedView;
     BOOL _beginsFirstPage;
     BOOL _endsLastPage;
     BOOL _isAtLeftEdge;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
     UILabel *_label;
     UILabel *_annotationLabel;
     UIView *_centeredBackgroundView;
+    UIView *_proactiveCandidateView;
     NSString *_candidateText;
     NSString *_annotationText;
 }
@@ -28,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UILabel *annotationLabel; // @synthesize annotationLabel=_annotationLabel;
 @property (copy, nonatomic) NSString *annotationText; // @synthesize annotationText=_annotationText;
 @property (nonatomic) BOOL beginsFirstPage; // @synthesize beginsFirstPage=_beginsFirstPage;
+@property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;
 @property (readonly, nonatomic) double cachedWidth;
@@ -37,18 +40,22 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL endsLastPage; // @synthesize endsLastPage=_endsLastPage;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL inExtendedView; // @synthesize inExtendedView=_inExtendedView;
 @property (nonatomic) BOOL isAtLeftEdge; // @synthesize isAtLeftEdge=_isAtLeftEdge;
 @property (nonatomic) BOOL isAutocorrectionCandidate; // @synthesize isAutocorrectionCandidate=_isAutocorrectionCandidate;
 @property (readonly, nonatomic) BOOL keepNonPersistent;
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
+@property (strong, nonatomic) UIView *proactiveCandidateView; // @synthesize proactiveCandidateView=_proactiveCandidateView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIKBThemedView *themedView; // @synthesize themedView=_themedView;
 
 + (id)annotationFont;
++ (id)attributedStringForIcon:(id)arg1 text:(id)arg2 font:(id)arg3 color:(id)arg4;
 + (struct UIEdgeInsets)cacheInsets;
 + (BOOL)drawsSideBorders;
 + (id)font;
 + (BOOL)highlightAffectsBackground;
++ (double)labelOffset;
 + (id)reuseIdentifier;
 + (id)textColorWithHighlight:(BOOL)arg1 whiteText:(BOOL)arg2;
 + (double)widthForCandidate:(id)arg1;
@@ -65,6 +72,7 @@ __attribute__((visibility("hidden")))
 - (void)setCandidate:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
+- (int)style;
 - (void)updateIsAtLeftEdgeState;
 - (void)updateLabels;
 

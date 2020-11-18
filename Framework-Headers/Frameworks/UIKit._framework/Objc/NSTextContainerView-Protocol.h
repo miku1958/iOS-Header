@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
-#import <UIKit/NSTextLayoutOrientationProvider-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
+#import <UIKitCore/NSTextLayoutOrientationProvider-Protocol.h>
 
 @class NSDictionary;
 

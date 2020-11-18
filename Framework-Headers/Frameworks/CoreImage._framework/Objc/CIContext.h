@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CIContext : NSObject
 {
@@ -12,6 +12,7 @@
 }
 
 @property (readonly) struct Context *_internalContext;
+@property (readonly) unsigned long long identifier;
 @property (readonly, nonatomic) struct CGColorSpace *workingColorSpace;
 @property (readonly, nonatomic) int workingFormat;
 
@@ -48,6 +49,7 @@
 - (BOOL)_isMetalInternalContext;
 - (struct CGColorSpace *)_outputColorSpace;
 - (id)_pdfDataRepresentation;
+- (void)_performFaceDetection:(id)arg1 image:(id)arg2 orientation:(int)arg3 filter:(id)arg4;
 - (id)_startTaskToRender:(id)arg1 toDestination:(id)arg2 forPrepareRender:(BOOL)arg3 error:(id *)arg4;
 - (void)abort;
 - (struct CGRect)bounds;
@@ -59,6 +61,9 @@
 - (struct CGLayer *)createCGLayerWithSize:(struct CGSize)arg1 info:(struct __CFDictionary *)arg2;
 - (id)createColorCubeDataForFilters:(id)arg1 dimension:(int)arg2;
 - (void)dealloc;
+- (id)depthBlurEffectFilterForImage:(id)arg1 disparityImage:(id)arg2 portraitEffectsMatte:(id)arg3 orientation:(unsigned int)arg4 options:(id)arg5;
+- (id)depthBlurEffectFilterForImageData:(id)arg1 options:(id)arg2;
+- (id)depthBlurEffectFilterForImageURL:(id)arg1 options:(id)arg2;
 - (id)description;
 - (id)device;
 - (void)drawImage:(id)arg1 atPoint:(struct CGPoint)arg2 fromRect:(struct CGRect)arg3;

@@ -23,6 +23,8 @@
 }
 
 @property (copy, nonatomic) id adjustmentVersion;
+@property (nonatomic) unsigned short ageType;
+@property (nonatomic) unsigned short baldType;
 @property (nonatomic) double blurScore;
 @property (nonatomic) double centerX;
 @property (nonatomic) double centerY;
@@ -32,15 +34,15 @@
 @property (nonatomic) long long clusterSequenceNumber;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) double expressionConfidence;
-@property (nonatomic) double expressionScore1;
-@property (nonatomic) double expressionScore2;
-@property (nonatomic) double expressionScore3;
-@property (nonatomic) long long expressionType1;
-@property (nonatomic) long long expressionType2;
-@property (nonatomic) long long expressionType3;
+@property (nonatomic) unsigned short eyeMakeupType;
+@property (nonatomic) unsigned short eyesState;
 @property (nonatomic) long long faceAlgorithmVersion;
 @property (strong, nonatomic) PHFaceprint *faceprint;
+@property (nonatomic) unsigned short facialHairType;
+@property (nonatomic) unsigned short genderType;
+@property (nonatomic) unsigned short glassesType;
+@property (strong, nonatomic) NSString *groupingIdentifier;
+@property (nonatomic) unsigned short hairColorType;
 @property (nonatomic) BOOL hasSmile;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PHChangeRequestHelper *helper; // @synthesize helper=_helper;
@@ -49,6 +51,7 @@
 @property (nonatomic, getter=isLeftEyeClosed) BOOL leftEyeClosed;
 @property (nonatomic) double leftEyeX;
 @property (nonatomic) double leftEyeY;
+@property (nonatomic) unsigned short lipMakeupType;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (nonatomic) BOOL manual;
 @property (nonatomic) double mouthX;
@@ -58,8 +61,6 @@
 @property (readonly, getter=isNew) BOOL new;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedFace;
-@property (nonatomic) double posePitch;
-@property (nonatomic) double poseRoll;
 @property (nonatomic) double poseYaw;
 @property (nonatomic) long long qualityMeasure;
 @property (nonatomic, getter=isRightEyeClosed) BOOL rightEyeClosed;
@@ -67,6 +68,7 @@
 @property (nonatomic) double rightEyeY;
 @property (nonatomic) BOOL shouldClearFaceCropGenerationState; // @synthesize shouldClearFaceCropGenerationState=_shouldClearFaceCropGenerationState;
 @property (nonatomic) double size;
+@property (nonatomic) unsigned short smileType;
 @property (nonatomic) long long sourceHeight;
 @property (nonatomic) long long sourceWidth;
 @property (readonly) Class superclass;
@@ -86,6 +88,7 @@
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;

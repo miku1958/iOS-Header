@@ -21,6 +21,9 @@
 @property (nonatomic) struct CGPoint anchorPoint;
 @property (nonatomic) struct CGSize size;
 
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (BOOL)supportsSecureCoding;
 + (id)videoNodeWithAVPlayer:(id)arg1;
 + (id)videoNodeWithFileNamed:(id)arg1;
 + (id)videoNodeWithURL:(id)arg1;
@@ -31,8 +34,6 @@
 - (struct SKCNode *)_makeBackingNode;
 - (void)commonInit;
 - (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

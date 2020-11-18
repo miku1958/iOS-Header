@@ -39,7 +39,7 @@
 - (void)handleDisconnectionWithError:(id)arg1 completionQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13;
 - (long long)linkType;
-- (void)notifyDelegateUdpatedStateNumber;
+- (void)notifyDelegateUpdatedStateNumber;
 - (void)updateConnectionIdleTime:(unsigned char)arg1;
 - (void)updatePeripheral:(id)arg1;
 - (BOOL)updatePeripheralIdentifier:(id *)arg1;

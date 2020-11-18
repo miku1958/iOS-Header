@@ -13,7 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityAbsoluteValue;
 - (double)_accessibilityIncreaseAmount:(BOOL)arg1;
+- (struct CGPoint)_accessibilityMaxScrubberPosition;
+- (struct CGPoint)_accessibilityMinScrubberPosition;
 - (BOOL)_axIsLiveContent;
 - (struct CGPoint)accessibilityActivationPoint;
 - (void)accessibilityDecrement;

@@ -12,10 +12,10 @@
 
 @property (readonly, nonatomic) unsigned long long character;
 
-+ (id)_nameLocalizationKeyForValue:(unsigned long long)arg1;
-+ (id)_orderedValues;
-+ (id)_snapshotKeyForValue:(unsigned long long)arg1;
-+ (id)optionWithCharacter:(unsigned long long)arg1;
++ (id)_nameLocalizationKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)_orderedValuesForDevice:(id)arg1;
++ (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)optionWithCharacter:(unsigned long long)arg1 forDevice:(id)arg2;
 - (id)_valueToFaceBundleStringDict;
 - (long long)swatchStyle;
 

@@ -9,22 +9,19 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMHome, HMHomeInvitationData, NSDate, NSString, NSURL, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMFUnfairLock, HMHome, HMHomeInvitationData, NSDate, NSString, NSURL, NSUUID, _HMContext;
 
 @interface HMHomeInvitation : NSObject <HMObjectMerge, NSSecureCoding>
 {
+    HMFUnfairLock *_lock;
     HMHome *_home;
     NSURL *_homeObjectURL;
+    _HMContext *_context;
     HMHomeInvitationData *_invitationData;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSDate *endDate;
 @property (readonly) unsigned long long hash;
@@ -33,7 +30,6 @@
 @property (readonly, copy, nonatomic) NSUUID *identifier;
 @property (strong, nonatomic) HMHomeInvitationData *invitationData; // @synthesize invitationData=_invitationData;
 @property (readonly, nonatomic) long long invitationState;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy, nonatomic) NSDate *startDate;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier;

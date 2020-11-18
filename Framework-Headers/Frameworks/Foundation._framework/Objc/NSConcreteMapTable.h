@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL shouldRehash;
 }
 
++ (BOOL)supportsSecureCoding;
 - (unsigned long long)__capacity;
 - (void)_setBackingStore;
 - (id)allKeys;

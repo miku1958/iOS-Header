@@ -9,11 +9,12 @@
 #import <iTunesStoreUI/SFSafariViewControllerDelegate-Protocol.h>
 #import <iTunesStoreUI/SUScriptModalDialogDelegate-Protocol.h>
 #import <iTunesStoreUI/SUScriptXMLHTTPRequestDelegate-Protocol.h>
+#import <iTunesStoreUI/SUScriptXMLHTTPStoreRequestDelegate-Protocol.h>
 
-@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSObject, NSString, SFSafariViewController, SSAuthenticationContext, SUClientInterface, SUScriptAccount, SUScriptAccountManager, SUScriptAppleAccountStore, SUScriptApplication, SUScriptCarrierBundlingController, SUScriptDevice, SUScriptDictionary, SUScriptFairPlayContext, SUScriptKeyValueStore, SUScriptMediaLibrary, SUScriptMetricsController, SUScriptNavigationBar, SUScriptNotificationObserver, SUScriptOperationDelegate, SUScriptPassbookLibrary, SUScriptPreviewOverlay, SUScriptProtocol, SUScriptPurchaseManager, SUScriptSectionsController, SUScriptStoreBagLoader, SUScriptSubscriptionStatusCoordinator, SUScriptTelephony, SUScriptViewController, SUScriptWindow, SUScriptWindowContext, WebFrame;
+@class NSArray, NSMutableDictionary, NSMutableSet, NSNumber, NSObject, NSString, SFSafariViewController, SSAuthenticationContext, SUClientInterface, SUScriptAccount, SUScriptAccountManager, SUScriptAppleAccountStore, SUScriptApplication, SUScriptCarrierBundlingController, SUScriptDevice, SUScriptDictionary, SUScriptFairPlayContext, SUScriptKeyValueStore, SUScriptMediaLibrary, SUScriptMetricsController, SUScriptNavigationBar, SUScriptNavigationSimulator, SUScriptNotificationObserver, SUScriptOperationDelegate, SUScriptPassbookLibrary, SUScriptPreviewOverlay, SUScriptProtocol, SUScriptPurchaseManager, SUScriptSectionsController, SUScriptStoreBagLoader, SUScriptSubscriptionStatusCoordinator, SUScriptTelephony, SUScriptViewController, SUScriptWindow, SUScriptWindowContext, WebFrame;
 @protocol OS_dispatch_queue, SUScriptInterfaceDelegate;
 
-@interface SUScriptInterface : SUScriptObject <SUScriptModalDialogDelegate, SUScriptXMLHTTPRequestDelegate, SFSafariViewControllerDelegate>
+@interface SUScriptInterface : SUScriptObject <SUScriptModalDialogDelegate, SUScriptXMLHTTPRequestDelegate, SUScriptXMLHTTPStoreRequestDelegate, SFSafariViewControllerDelegate>
 {
     SUScriptAccountManager *_accountManager;
     SUScriptKeyValueStore *_applicationLocalStorage;
@@ -37,6 +38,7 @@
     id _threadSafeDelegate;
     NSObject<OS_dispatch_queue> *_hsaTokenQueue;
     struct __CFString *_hsaCurrentIdentifier;
+    SUScriptNavigationSimulator *_navigationSimulator;
     NSString *_safariViewControllerIdentifier;
     NSNumber *_safariDismissButtonStyle;
     SFSafariViewController *_safariViewController;
@@ -65,14 +67,17 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) SUScriptDevice *device;
 @property (readonly) SUScriptKeyValueStore *deviceLocalStorage;
+@property (readonly) NSArray *deviceOffers;
 @property (readonly) NSString *deviceSerialNumber;
 @property (readonly) id globalRootObject;
+@property (readonly) NSString *gsToken;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSArray *installedSoftwareApplications;
 @property (readonly) id loggingEnabled;
 @property (readonly) SUScriptMediaLibrary *mediaLibrary;
 @property (readonly) SUScriptMetricsController *metricsController;
 @property (readonly) SUScriptNavigationBar *navigationBar;
+@property (readonly) SUScriptNavigationSimulator *navigationSimulator;
 @property (readonly) NSNumber *orientation;
 @property (readonly) SUScriptPassbookLibrary *passbookLibrary;
 @property (readonly) SUScriptPreviewOverlay *previewOverlay;
@@ -98,6 +103,7 @@
 @property (readonly, nonatomic) SUScriptTelephony *telephony;
 @property (readonly) id<SUScriptInterfaceDelegate> threadSafeDelegate;
 @property (readonly) SUScriptDictionary *tidHeaders;
+@property (readonly) NSString *tidState;
 @property (readonly) NSString *userAgent;
 @property (readonly) SUScriptViewController *viewController;
 @property (strong) WebFrame *webFrame;
@@ -155,6 +161,7 @@
 - (void)dismissWindowsWithOptions:(id)arg1;
 - (void)dispatchGlobalEventWithName:(id)arg1 payload:(id)arg2;
 - (void)dispatchXEvent:(id)arg1;
+- (void)financeInterruptionResolved:(id)arg1;
 - (void)finishedTest:(id)arg1 extraResults:(id)arg2;
 - (id)getAudioPlayerForURL:(id)arg1 keyURL:(id)arg2 certificateURL:(id)arg3;
 - (id)getDownloadQueueWithQueueType:(id)arg1;
@@ -221,6 +228,7 @@
 - (id)makeVolumeViewController;
 - (id)makeWindow;
 - (id)makeXMLHTTPRequest;
+- (id)makeXMLHTTPStoreRequest;
 - (void)openCreditCardReaderWithCompletionFunction:(id)arg1;
 - (void)openFamilyCircleSetupWithClientName:(id)arg1 completionFunction:(id)arg2;
 - (void)openURL:(id)arg1;
@@ -235,6 +243,7 @@
 - (void)redeemCode:(id)arg1;
 - (void)registerNavBarButtonWithTitle:(id)arg1 side:(id)arg2 function:(id)arg3;
 - (void)reloadFooterSection:(id)arg1 withURL:(id)arg2;
+- (void)removeDeviceOfferWithIdentifier:(id)arg1 account:(id)arg2;
 - (void)reportAProblemForIdentifier:(id)arg1;
 - (id)requestInfo;
 - (void)requireCellularForResourceWithURL:(id)arg1;
@@ -244,6 +253,7 @@
 - (id)safariViewControllerDismissButtonStyle;
 - (id)scriptAttributeKeys;
 - (BOOL)scriptXMLHTTPRequest:(id)arg1 requiresCellularForURL:(id)arg2;
+- (BOOL)scriptXMLHTTPStoreRequest:(id)arg1 requiresCellularForURL:(id)arg2;
 - (void)selectSectionWithIdentifier:(id)arg1;
 - (void)selectTrackListItemWithIdentifier:(id)arg1;
 - (void)sendPostOfType:(id)arg1 withOptions:(id)arg2;
@@ -253,11 +263,13 @@
 - (void)setCookieForDefaultURL:(id)arg1;
 - (void)setDevice:(id)arg1;
 - (void)setGlobalRootObject:(id)arg1;
+- (void)setGsToken:(id)arg1;
 - (void)setLibraryIdentifierWithType:(id)arg1 value:(id)arg2;
 - (void)setLoggingEnabled:(id)arg1;
 - (void)setMediaLibrary:(id)arg1;
 - (void)setMetricsController:(id)arg1;
 - (void)setNavigationBar:(id)arg1;
+- (void)setNavigationSimulator:(id)arg1;
 - (void)setOrientation:(id)arg1;
 - (void)setReferrerURL:(id)arg1;
 - (void)setReferringUserAgent:(id)arg1;
@@ -265,6 +277,7 @@
 - (void)setStoreFrontIdentifier:(id)arg1;
 - (void)setSubscriptionStatusCoordinator:(id)arg1;
 - (void)setTidHeaders:(id)arg1;
+- (void)setTidState:(id)arg1;
 - (void)setUserAgent:(id)arg1;
 - (void)setWindow:(id)arg1;
 - (id)shouldDisplayPrivacyLinkWithIdentifier:(id)arg1;

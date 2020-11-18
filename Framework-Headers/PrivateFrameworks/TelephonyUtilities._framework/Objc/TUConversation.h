@@ -9,36 +9,56 @@
 #import <TelephonyUtilities/NSCopying-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSSet, NSUUID;
+@class NSSet, NSString, NSUUID, TUContactsDataProvider, TUHandle;
 
 @interface TUConversation : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _audioEnabled;
+    BOOL _videoEnabled;
     BOOL _locallyCreated;
+    TUContactsDataProvider *_contactsDataProvider;
     NSUUID *_UUID;
     NSUUID *_groupUUID;
     long long _state;
     NSSet *_participantHandles;
+    NSSet *_remoteMembers;
     NSSet *_activeRemoteParticipants;
+    long long _avcSessionToken;
+    NSUUID *_messagesGroupUUID;
+    TUHandle *_initiator;
+    NSString *_messagesGroupName;
 }
 
 @property (readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
 @property (copy, nonatomic) NSSet *activeRemoteParticipants; // @synthesize activeRemoteParticipants=_activeRemoteParticipants;
+@property (nonatomic, getter=isAudioEnabled) BOOL audioEnabled; // @synthesize audioEnabled=_audioEnabled;
+@property (nonatomic) long long avcSessionToken; // @synthesize avcSessionToken=_avcSessionToken;
+@property (readonly, nonatomic) TUContactsDataProvider *contactsDataProvider; // @synthesize contactsDataProvider=_contactsDataProvider;
 @property (readonly, nonatomic) NSUUID *groupUUID; // @synthesize groupUUID=_groupUUID;
+@property (strong, nonatomic) TUHandle *initiator; // @synthesize initiator=_initiator;
 @property (nonatomic, getter=isLocallyCreated) BOOL locallyCreated; // @synthesize locallyCreated=_locallyCreated;
+@property (copy, nonatomic) NSString *messagesGroupName; // @synthesize messagesGroupName=_messagesGroupName;
+@property (strong, nonatomic) NSUUID *messagesGroupUUID; // @synthesize messagesGroupUUID=_messagesGroupUUID;
 @property (copy, nonatomic) NSSet *participantHandles; // @synthesize participantHandles=_participantHandles;
+@property (copy, nonatomic) NSSet *remoteMembers; // @synthesize remoteMembers=_remoteMembers;
 @property (nonatomic) long long state; // @synthesize state=_state;
+@property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled; // @synthesize videoEnabled=_videoEnabled;
 
 + (id)emptyConversationWithGroupUUID:(id)arg1;
++ (id)numberFormatter;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 groupUUID:(id)arg2;
+- (id)initiatorLocalizedName;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToConversation:(id)arg1;
+- (BOOL)isRepresentedByRemoteMembers:(id)arg1;
 
 @end
 

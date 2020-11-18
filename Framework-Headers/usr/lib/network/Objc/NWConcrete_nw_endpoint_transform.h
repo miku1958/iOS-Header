@@ -11,6 +11,7 @@
 @class NSString, NWConcrete_nw_endpoint_handler;
 @protocol OS_nw_array, OS_xpc_object;
 
+__attribute__((visibility("hidden")))
 @interface NWConcrete_nw_endpoint_transform : NSObject <OS_nw_endpoint_transform>
 {
     NSObject<OS_nw_array> *child_endpoint_handlers;
@@ -27,7 +28,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)applyWithHandler:(id)arg1 toChildren:(CDUnknownBlockType)arg2;
+- (BOOL)applyWithHandler:(id)arg1 toChildren:(CDUnknownBlockType)arg2;
 - (void)cancelWithHandler:(id)arg1 forced:(BOOL)arg2;
 - (void)dealloc;
 - (id)init;

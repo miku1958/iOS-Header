@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct TSCEErrorValue *_errorValue;
 }
 
+- (id)canonicalKeyString;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)displayString;

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <MaterialKit/MTPillView.h>
 
 #import <MaterialKit/CAAnimationDelegate-Protocol.h>
 
 @class MTLumaDodgePillSettings, NSMutableArray, NSString;
 @protocol MTLumaDodgePillBackgroundLuminanceObserver;
 
-@interface MTLumaDodgePillView : UIView <CAAnimationDelegate>
+@interface MTLumaDodgePillView : MTPillView <CAAnimationDelegate>
 {
     long long _style;
     MTLumaDodgePillSettings *_settings;
@@ -46,8 +46,6 @@
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)bounce;
 - (void)dealloc;
-- (id)init;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)resetBackgroundLuminanceHysteresis;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class EQKitEnvironment, NSData;
 @protocol EQKitExpression;
@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) EQKitEnvironment *environment; // @synthesize environment=mEnvironment;
 @property (readonly, nonatomic) id<EQKitExpression> root; // @synthesize root=mRoot;
 
++ (id)equationSourceFromPDFDocument:(struct CGPDFDocument *)arg1;
 + (id)equationWithData:(id)arg1 format:(int)arg2 environment:(id)arg3 error:(id *)arg4;
 + (id)equationWithString:(id)arg1 format:(int)arg2 environment:(id)arg3 error:(id *)arg4;
 + (id)equationWithString:(id)arg1 format:(int)arg2 error:(id *)arg3;

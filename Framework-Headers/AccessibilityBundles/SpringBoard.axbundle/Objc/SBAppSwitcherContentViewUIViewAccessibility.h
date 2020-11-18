@@ -16,10 +16,8 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (long long)_accessibilityPageCount;
 - (void)_axAddVisibleItemContainer:(id)arg1 forAppLayout:(id)arg2;
-- (id)_axAppContainer;
 - (id)_axAppElements;
 - (id)_axAppElementsDictionary;
-- (id)_axControlCenter;
 - (void)_axCreateAppElementsForLayouts:(id)arg1 visibleItemContainers:(id)arg2;
 - (void)_axDidQuitApp:(id)arg1;
 - (id)_axElementForAppLayout:(id)arg1;
@@ -35,7 +33,6 @@
 - (void)_setAXIsControlCenterView:(BOOL)arg1;
 - (id)accessibilityElements;
 - (BOOL)accessibilityScroll:(long long)arg1;
-- (unsigned long long)accessibilityTraits;
 - (void)setAccessibilityIdentifier:(id)arg1;
 
 @end

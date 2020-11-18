@@ -17,7 +17,7 @@
 - (BOOL)_accessibilityIsOutbox;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityMallSources;
-- (void)_updateBackButtonImage;
+- (void)_updateBackButtonImageWithCount:(unsigned long long)arg1;
 - (void)setTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 

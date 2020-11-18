@@ -17,6 +17,7 @@
     NSArray *_pendingTouchIconURLs;
     NSSet *_touchIconURLs;
     long long _state;
+    BOOL _allowFetchingOverCellularNetwork;
     CDUnknownBlockType _completionHandler;
 }
 
@@ -38,6 +39,7 @@
 - (void)didFailFetch;
 - (void)didFetchTouchIconURLs:(id)arg1 andFaviconURLs:(id)arg2 forURL:(id)arg3;
 - (id)initWithRequest:(id)arg1;
+- (id)initWithRequest:(id)arg1 allowFetchingOverCellularNetwork:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadRequest;

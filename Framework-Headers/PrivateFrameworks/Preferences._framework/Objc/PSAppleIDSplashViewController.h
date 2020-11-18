@@ -6,14 +6,15 @@
 
 #import <Preferences/PSListController.h>
 
+#import <Preferences/AKAppleIDAuthenticationInAppContextPasswordDelegate-Protocol.h>
 #import <Preferences/RemoteUIControllerDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationController, CNMonogrammer, NSString, NSTimer, PSSpecifier, RemoteUIController, UIActivityIndicatorView, UIBarButtonItem, UIImageView;
+@class AKAppleIDAuthenticationController, CNMonogrammer, NSString, NSTimer, PSSpecifier, RemoteUIController, UIActivityIndicatorView, UIBarButtonItem;
 
-@interface PSAppleIDSplashViewController : PSListController <RemoteUIControllerDelegate>
+@interface PSAppleIDSplashViewController : PSListController <AKAppleIDAuthenticationInAppContextPasswordDelegate, RemoteUIControllerDelegate>
 {
     AKAppleIDAuthenticationController *_authController;
-    UIImageView *_silhouetteView;
+    CDUnknownBlockType _passwordHandler;
     UIActivityIndicatorView *_spinner;
     UIBarButtonItem *_spinnerBarItem;
     UIBarButtonItem *_nextButtonBarItem;
@@ -22,6 +23,8 @@
     PSSpecifier *_createNewAccountButtonSpecifier;
     PSSpecifier *_createNewAccountGroupSpecifier;
     PSSpecifier *_signInButtonSpecifier;
+    PSSpecifier *_passwordSpecifier;
+    PSSpecifier *_userSpecifier;
     NSString *_username;
     NSString *_password;
     id _textFieldTextDidChangeObserver;
@@ -44,20 +47,19 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_allowSleepAndDimming;
 - (void)_beginiCloudCreationFlowWithContinuationData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_cancelButtonWasTapped:(id)arg1;
+- (void)_cancelPasswordDelegateIfNecessary;
 - (void)_createNewAppleIDButtonWasTapped:(id)arg1;
 - (double)_heightForCreateNewAccountFooterWithWidth:(double)arg1;
 - (double)_heightForCreateNewAccountSpecifierWithWidth:(double)arg1;
 - (void)_iForgotButtonWasTapped:(id)arg1;
-- (void)_idleTimerFired;
 - (id)_monogrammer;
 - (void)_openWebBasedCredentialRecoveryFlow;
 - (id)_passwordForSpecifier:(id)arg1;
 - (void)_presentAppleIDPrivacyInformationPane;
 - (void)_presentInvalidUsernameAlert;
-- (void)_preventSleepAndDimming;
+- (void)_reloadPasswordSpecifier;
 - (BOOL)_runningInMail;
 - (void)_setInteractionEnabled:(BOOL)arg1;
 - (void)_setPassword:(id)arg1 withSpecifier:(id)arg2;
@@ -67,12 +69,14 @@
 - (void)_signInButtonWasTapped:(id)arg1;
 - (void)_signInWithUsername:(id)arg1 password:(id)arg2;
 - (id)_specifierForGroupWithiForgotLink;
+- (id)_specifierForLoginPasswordForm;
+- (id)_specifierForLoginUserForm;
 - (id)_specifiersForCreateNewAccount;
-- (id)_specifiersForLoginForm;
 - (id)_specifiersForSignInButton;
 - (void)_textFieldValueDidChange:(id)arg1;
 - (void)_updateSignInButton;
 - (id)_usernameForSpecifier:(id)arg1;
+- (void)context:(id)arg1 needsPasswordWithCompletion:(CDUnknownBlockType)arg2;
 - (void)createNewAppleIDWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)didFinishAuthWithContext:(id)arg1 results:(id)arg2 error:(id)arg3;
@@ -91,7 +95,6 @@
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)title;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)willBeginAuthWithContext:(id)arg1;

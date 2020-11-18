@@ -10,8 +10,6 @@
 
 @protocol _CPVisibleResultsFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *results;
 @property (nonatomic) unsigned long long timestamp;

@@ -26,6 +26,7 @@
 @property (readonly) long long numberOfDataPoints; // @synthesize numberOfDataPoints=_numberOfDataPoints;
 @property (readonly) Class superclass;
 
++ (id)heartBeatSequenceSampleFromCSV:(id)arg1 startDate:(id)arg2 metadata:(id)arg3 error:(out id *)arg4;
 + (id)heartbeatSequenceSampleWithData:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 metadata:(id)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -36,7 +37,6 @@
 - (void)enumerateHeartbeatDataWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (id)payload;
 
 @end

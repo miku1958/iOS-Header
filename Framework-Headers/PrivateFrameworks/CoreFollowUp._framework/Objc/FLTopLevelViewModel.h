@@ -8,27 +8,32 @@
 
 #import <CoreFollowUp/FLViewModel-Protocol.h>
 
-@class FLFollowUpController, NSString;
+@class FLFollowUpController, FLItemChangeObserver, NSString;
 
 @interface FLTopLevelViewModel : NSObject <FLViewModel>
 {
     FLFollowUpController *_controller;
-    int _notifyToken;
-    CDUnknownBlockType _itemChangeObserver;
+    FLItemChangeObserver *_observer;
+    NSString *_bundleIdentifier;
+    NSString *_localizedDeviceRowTitle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *localizedDeviceRowTitle; // @synthesize localizedDeviceRowTitle=_localizedDeviceRowTitle;
 @property (readonly) Class superclass;
 
++ (id)_prefixFromBundleIdentifier:(id)arg1;
++ (id)redirectURLForItem:(id)arg1 withAction:(id)arg2;
 - (void).cxx_destruct;
 - (void)_refreshItemsWithExtensionToItemMap:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)allPendingItems;
 - (BOOL)allPendingItemsContains:(id)arg1;
-- (void)dealloc;
 - (id)extensionToItemMapFromItems:(id)arg1;
 - (id)groups;
+- (id)initWithBundleIdentifier:(id)arg1 clientIdentifier:(id)arg2;
+- (id)initWithBundleIdentifier:(id)arg1 controller:(id)arg2;
 - (id)initWithIdentifier:(id)arg1;
 - (void)mapItemsToGroups:(id)arg1;
 - (void)refreshItems:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

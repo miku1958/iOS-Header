@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@protocol VCAudioIOControllerDelegate><VCAudioIOSink><VCAudioIOSource;
+#import <AVConference/VCAudioIOControllerSink-Protocol.h>
+#import <AVConference/VCAudioIOControllerSource-Protocol.h>
+
+@class NSString;
+@protocol VCAudioIOControllerDelegate><VCAudioIOControllerSink><VCAudioIOControllerSource;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioIOControllerClient : NSObject
+@interface VCAudioIOControllerClient : NSObject <VCAudioIOControllerSource, VCAudioIOControllerSink>
 {
     id _delegate;
     struct AudioStreamBasicDescription _format;
@@ -29,11 +33,14 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL allowAudioRecording; // @synthesize allowAudioRecording=_allowAudioRecording;
 @property (readonly, nonatomic) int clientPid; // @synthesize clientPid=_clientPid;
-@property (readonly, nonatomic) id<VCAudioIOControllerDelegate><VCAudioIOSink><VCAudioIOSource> delegate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) id<VCAudioIOControllerDelegate><VCAudioIOControllerSink><VCAudioIOControllerSource> delegate;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
 @property (nonatomic) unsigned char direction; // @synthesize direction=_direction;
 @property (readonly, nonatomic) struct VoiceIOFarEndVersionInfo farEndVersionInfo; // @synthesize farEndVersionInfo=_farEndVersionInfo;
 @property (readonly, nonatomic) struct AudioStreamBasicDescription format; // @synthesize format=_format;
+@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isInputMeteringEnabled) BOOL inputMeteringEnabled; // @synthesize inputMeteringEnabled=_isInputMeteringEnabled;
 @property (readonly, nonatomic) BOOL isRemoteCodecInfoValid; // @synthesize isRemoteCodecInfoValid=_isRemoteCodecInfoValid;
 @property (readonly, nonatomic) BOOL isRemoteVersionInfoValid; // @synthesize isRemoteVersionInfoValid=_isRemoteVersionInfoValid;
@@ -41,10 +48,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isOuputMeteringEnabled) BOOL outputMeteringEnabled; // @synthesize outputMeteringEnabled=_isOutputMeteringEnabled;
 @property (readonly, nonatomic) double remoteCodecSampleRate; // @synthesize remoteCodecSampleRate=_remoteCodecSampleRate;
 @property (readonly, nonatomic) unsigned int remoteCodecType; // @synthesize remoteCodecType=_remoteCodecType;
+@property (readonly) Class superclass;
 
 - (void)dealloc;
-- (id)description;
 - (id)initWithDelegate:(id)arg1 clientPid:(int)arg2;
+- (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1 controllerTime:(const struct _VCAudioIOControllerTime *)arg2;
+- (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1 controllerTime:(const struct _VCAudioIOControllerTime *)arg2;
 - (void)setClientFormat:(struct AudioStreamBasicDescription)arg1;
 - (void)setFarEndVersionInfo:(struct VoiceIOFarEndVersionInfo)arg1;
 - (void)setRemoteCodecType:(unsigned int)arg1 sampleRate:(double)arg2;

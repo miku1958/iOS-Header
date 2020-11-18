@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)__accessibilityUpdateSpeakScreenGestureRecognizer;
 - (id)_accessibilityAppSwitcherApps;
-- (int)_accessibilityApplicationOrientation;
+- (long long)_accessibilityApplicationOrientation;
 - (BOOL)_accessibilityAssistantIsListening;
 - (id)_accessibilityCenterPointOfScreen;
 - (int)_accessibilityCurrentCallState;
@@ -34,6 +34,8 @@
 - (id)_accessibilityLaunchableApps;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityLoadPIPInfo;
+- (unsigned long long)_accessibilityNotificationCount;
+- (id)_accessibilityNotificationSummary:(unsigned long long)arg1;
 - (id)_accessibilityPictureInPictureWindow;
 - (void)_accessibilitySetShouldCallAXStatusChangedOnAppLaunchFinish:(BOOL)arg1;
 - (void)_accessibilitySetShouldLoadAXInfoOnAppLaunchFinish:(BOOL)arg1;
@@ -41,6 +43,7 @@
 - (BOOL)_accessibilityShouldCallAXStatusChangedOnAppLaunchFinish;
 - (BOOL)_accessibilityShouldLoadAXInfoOnAppLaunchFinish;
 - (id)_accessibilitySideAppDividerElement;
+- (id)_accessibilitySoftwareMimicKeyboard;
 - (id)_accessibilitySpeakScreenGestureRecognizer;
 - (id)_accessibilityStatusBar;
 - (void)_accessibilityStatusChanged:(id)arg1;
@@ -49,6 +52,7 @@
 - (void)_accessibilityUpdateSpeakScreenGestureRecognizer;
 - (BOOL)_isDim;
 - (void)_keyboardOrCaseLatchWantsToAttemptUnlock:(int)arg1;
+- (void)_processAccessibilityStatusChange:(id)arg1;
 - (void)_updateRingerState:(int)arg1 withVisuals:(BOOL)arg2 updatePreferenceRegister:(BOOL)arg3;
 - (id)accessibilityAttributeValue:(long long)arg1;
 - (void)accessibilityDisable;

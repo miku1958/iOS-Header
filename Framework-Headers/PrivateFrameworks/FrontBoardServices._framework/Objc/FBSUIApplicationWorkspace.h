@@ -16,7 +16,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBSUIApplicationWorkspaceDelegate> delegate; // @dynamic delegate;
+@property (weak, nonatomic) id<FBSUIApplicationWorkspaceDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

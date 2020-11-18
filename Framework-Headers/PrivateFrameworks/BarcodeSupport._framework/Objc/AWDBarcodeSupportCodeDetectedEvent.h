@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _timestamp;
     int _appLinkPreferredOpenStrategy;
     int _barcodeDataType;
+    int _barcodeSourceType;
     int _barcodeURLType;
     int _clientType;
     int _invalidBarcodeDataType;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
         unsigned int timestamp:1;
         unsigned int appLinkPreferredOpenStrategy:1;
         unsigned int barcodeDataType:1;
+        unsigned int barcodeSourceType:1;
         unsigned int barcodeURLType:1;
         unsigned int clientType:1;
         unsigned int invalidBarcodeDataType:1;
@@ -31,11 +33,13 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) int appLinkPreferredOpenStrategy; // @synthesize appLinkPreferredOpenStrategy=_appLinkPreferredOpenStrategy;
 @property (nonatomic) int barcodeDataType; // @synthesize barcodeDataType=_barcodeDataType;
+@property (nonatomic) int barcodeSourceType; // @synthesize barcodeSourceType=_barcodeSourceType;
 @property (nonatomic) int barcodeURLType; // @synthesize barcodeURLType=_barcodeURLType;
 @property (nonatomic) int clientType; // @synthesize clientType=_clientType;
 @property (nonatomic) unsigned long long detectionTimeMs; // @synthesize detectionTimeMs=_detectionTimeMs;
 @property (nonatomic) BOOL hasAppLinkPreferredOpenStrategy;
 @property (nonatomic) BOOL hasBarcodeDataType;
+@property (nonatomic) BOOL hasBarcodeSourceType;
 @property (nonatomic) BOOL hasBarcodeURLType;
 @property (nonatomic) BOOL hasClientType;
 @property (nonatomic) BOOL hasDetectionTimeMs;
@@ -46,11 +50,13 @@ __attribute__((visibility("hidden")))
 
 - (int)StringAsAppLinkPreferredOpenStrategy:(id)arg1;
 - (int)StringAsBarcodeDataType:(id)arg1;
+- (int)StringAsBarcodeSourceType:(id)arg1;
 - (int)StringAsBarcodeURLType:(id)arg1;
 - (int)StringAsClientType:(id)arg1;
 - (int)StringAsInvalidBarcodeDataType:(id)arg1;
 - (id)appLinkPreferredOpenStrategyAsString:(int)arg1;
 - (id)barcodeDataTypeAsString:(int)arg1;
+- (id)barcodeSourceTypeAsString:(int)arg1;
 - (id)barcodeURLTypeAsString:(int)arg1;
 - (id)clientTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;

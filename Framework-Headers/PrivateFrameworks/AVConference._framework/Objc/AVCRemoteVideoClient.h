@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVConferenceXPCClient, CALayer, NSDictionary, NSString, VideoAttributes;
 @protocol AVCRemoteVideoClientDelegate, OS_dispatch_queue;
@@ -25,6 +25,7 @@
     BOOL _isVideoPaused;
     BOOL _isMediaStalled;
     BOOL _isVideoDegraded;
+    BOOL _isVideoSuspended;
     BOOL _hasReceivedLastFrame;
     BOOL _shouldDisplayVideoInfoLayer;
     VideoAttributes *_remoteScreenAttributes;
@@ -41,6 +42,7 @@
 @property (nonatomic) BOOL isMediaStalled; // @synthesize isMediaStalled=_isMediaStalled;
 @property (nonatomic) BOOL isVideoDegraded; // @synthesize isVideoDegraded=_isVideoDegraded;
 @property (nonatomic) BOOL isVideoPaused; // @synthesize isVideoPaused=_isVideoPaused;
+@property (nonatomic) BOOL isVideoSuspended; // @synthesize isVideoSuspended=_isVideoSuspended;
 @property (strong, nonatomic) VideoAttributes *remoteScreenAttributes; // @synthesize remoteScreenAttributes=_remoteScreenAttributes;
 @property (strong, nonatomic) VideoAttributes *remoteVideoAttributes; // @synthesize remoteVideoAttributes=_remoteVideoAttributes;
 @property (nonatomic) BOOL shouldDisplayVideoInfoLayer; // @synthesize shouldDisplayVideoInfoLayer=_shouldDisplayVideoInfoLayer;
@@ -59,6 +61,7 @@
 - (void)remoteVideoAttributesDidChange:(id)arg1 streamToken:(long long)arg2;
 - (void)remoteVideoDidDegrade:(BOOL)arg1 streamToken:(long long)arg2;
 - (void)remoteVideoDidPause:(BOOL)arg1 streamToken:(long long)arg2;
+- (void)remoteVideoDidSuspend:(BOOL)arg1 streamToken:(long long)arg2;
 - (void)remoteVideoServerDidDie;
 - (void)setActiveVideoLayerForMode:(int)arg1;
 - (void)setVideoLayer:(id)arg1 forMode:(int)arg2;

@@ -6,13 +6,14 @@
 
 #import <CoreImage/CIFilter.h>
 
-@class AVCameraCalibrationData, CIImage, CIVector, NSNumber;
+@class AVCameraCalibrationData, CIImage, CIVector, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CIDepthBlurEffect : CIFilter
 {
     CIImage *inputImage;
     CIImage *inputDisparityImage;
+    CIImage *inputMatteImage;
     NSNumber *inputAperture;
     CIVector *inputLeftEyePositions;
     CIVector *inputRightEyePositions;
@@ -23,22 +24,30 @@ __attribute__((visibility("hidden")))
     NSNumber *inputScaleFactor;
     AVCameraCalibrationData *inputCalibrationData;
     id inputAuxDataMetadata;
+    NSString *inputShape;
 }
 
 @property (strong, nonatomic) NSNumber *inputAperture; // @synthesize inputAperture;
 @property (strong, nonatomic) id inputAuxDataMetadata; // @synthesize inputAuxDataMetadata;
-@property (copy, nonatomic) AVCameraCalibrationData *inputCalibrationData; // @synthesize inputCalibrationData;
-@property (strong, nonatomic) CIVector *inputChinPositions; // @synthesize inputChinPositions;
+@property (strong, nonatomic) AVCameraCalibrationData *inputCalibrationData; // @synthesize inputCalibrationData;
+@property (strong) CIVector *inputChinPositions; // @synthesize inputChinPositions;
 @property (strong) CIImage *inputDisparityImage; // @synthesize inputDisparityImage;
 @property (strong, nonatomic) CIVector *inputFocusRect; // @synthesize inputFocusRect;
 @property (strong) CIImage *inputImage; // @synthesize inputImage;
-@property (strong, nonatomic) CIVector *inputLeftEyePositions; // @synthesize inputLeftEyePositions;
+@property (strong) CIVector *inputLeftEyePositions; // @synthesize inputLeftEyePositions;
 @property (strong, nonatomic) NSNumber *inputLumaNoiseScale; // @synthesize inputLumaNoiseScale;
-@property (strong, nonatomic) CIVector *inputNosePositions; // @synthesize inputNosePositions;
-@property (strong, nonatomic) CIVector *inputRightEyePositions; // @synthesize inputRightEyePositions;
+@property (strong) CIImage *inputMatteImage; // @synthesize inputMatteImage;
+@property (strong) CIVector *inputNosePositions; // @synthesize inputNosePositions;
+@property (strong) CIVector *inputRightEyePositions; // @synthesize inputRightEyePositions;
 @property (strong, nonatomic) NSNumber *inputScaleFactor; // @synthesize inputScaleFactor;
+@property (strong, nonatomic) NSString *inputShape; // @synthesize inputShape;
 
++ (struct CGImageMetadata *)augmentMetadataWithRenderingPropertiesForImage:(id)arg1;
 + (id)customAttributes;
++ (int)getDraftMode:(id)arg1;
++ (struct CGImageMetadata *)metadataFromDictionary:(id)arg1 metadata:(struct CGImageMetadata *)arg2;
++ (struct CGImageMetadata *)replaceRenderingParameters:(struct CGImageMetadata *)arg1 tuningParameters:(id)arg2;
++ (id)tuningParametersFromMetadata:(struct CGImageMetadata *)arg1;
 - (id)_getFocusRect:(id)arg1 focusRect:(id)arg2;
 - (id)outputImage;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;

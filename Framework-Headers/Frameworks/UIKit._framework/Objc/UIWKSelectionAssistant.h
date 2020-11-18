@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIWebSelectionAssistant.h>
+#import <UIKitCore/UIWebSelectionAssistant.h>
 
 @class UILongPressGestureRecognizer, _UITextServiceSession;
 
@@ -19,7 +19,6 @@
 @property (readonly, nonatomic) UILongPressGestureRecognizer *selectionLongPressRecognizer;
 
 - (id)asyncSelectionView;
-- (void)blockSelectionChangedWithTouch:(long long)arg1 withFlags:(long long)arg2 growThreshold:(double)arg3 shrinkThreshold:(double)arg4;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)initializeSelectionView;

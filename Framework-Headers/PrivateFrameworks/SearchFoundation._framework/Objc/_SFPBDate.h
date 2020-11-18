@@ -13,15 +13,11 @@
 
 @interface _SFPBDate : PBCodable <_SFPBDate, NSSecureCoding>
 {
-    struct {
-        unsigned int secondsSince1970:1;
-    } _has;
     double _secondsSince1970;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasSecondsSince1970;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) double secondsSince1970; // @synthesize secondsSince1970=_secondsSince1970;

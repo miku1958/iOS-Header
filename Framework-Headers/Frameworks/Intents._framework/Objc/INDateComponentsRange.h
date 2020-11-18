@@ -17,6 +17,7 @@
     NSDateComponents *_startDateComponents;
     NSDateComponents *_endDateComponents;
     INRecurrenceRule *_recurrenceRule;
+    NSString *_userInput;
 }
 
 @property (readonly, copy, nonatomic) NSDateInterval *dateInterval;
@@ -29,11 +30,14 @@
 @property (readonly, copy, nonatomic) NSDate *startDate;
 @property (readonly, copy, nonatomic) NSDateComponents *startDateComponents; // @synthesize startDateComponents=_startDateComponents;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *userInput; // @synthesize userInput=_userInput;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)EKRecurrenceRule;
 - (id)_dictionaryRepresentation;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1;
+- (id)_userInput;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
@@ -44,6 +48,7 @@
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 onCalendar:(id)arg3 inTimeZone:(id)arg4;
 - (id)initWithStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 - (id)initWithStartDateComponents:(id)arg1 endDateComponents:(id)arg2 recurrenceRule:(id)arg3;
+- (id)initWithStartDateComponents:(id)arg1 endDateComponents:(id)arg2 recurrenceRule:(id)arg3 userInput:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

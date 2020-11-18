@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVWeakReference, NSError, NSString;
 @protocol NSObject><NSCopying;
 
+__attribute__((visibility("hidden")))
 @interface AVMetadataItemValueRequestInternal : NSObject
 {
     AVWeakReference *weakReferenceToMetadataItem;

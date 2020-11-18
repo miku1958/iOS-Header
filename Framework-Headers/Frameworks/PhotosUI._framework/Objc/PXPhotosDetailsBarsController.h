@@ -6,20 +6,22 @@
 
 #import <PhotosUICore/PXBarsController.h>
 
+#import <PhotosUICore/PXActionMenuDelegate-Protocol.h>
 #import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXPhotosDataSourceChangeObserver-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, PXActionPerformer, PXAssetActionManager, PXAssetCollectionActionManager, PXBarAppearance, PXExtendedTraitCollection, PXPhotosDataSource, PXPhotosDetailsBarSpec, PXPhotosDetailsContext, PXPhotosDetailsViewModel, PXSectionedSelectionManager, UIView;
+@class NSMutableDictionary, NSString, PXActionMenuController, PXActionPerformer, PXAssetActionManager, PXAssetCollectionActionManager, PXBarAppearance, PXExtendedTraitCollection, PXPhotosDataSource, PXPhotosDetailsBarSpec, PXPhotosDetailsContext, PXPhotosDetailsUIViewController, PXPhotosDetailsViewModel, PXSectionedSelectionManager, UIView;
 
-@interface PXPhotosDetailsBarsController : PXBarsController <PXPhotosDataSourceChangeObserver, PXChangeObserver, PXActionPerformerDelegate, UIPopoverPresentationControllerDelegate>
+@interface PXPhotosDetailsBarsController : PXBarsController <PXPhotosDataSourceChangeObserver, PXChangeObserver, PXActionPerformerDelegate, PXActionMenuDelegate, UIPopoverPresentationControllerDelegate>
 {
     struct {
         BOOL assetActionManager;
         BOOL assetCollectionActionManager;
     } _needsUpdateFlags;
     BOOL __showTitleView;
+    BOOL _shouldAddActionButton;
     PXAssetActionManager *__assetActionManager;
     PXAssetCollectionActionManager *__assetCollectionActionManager;
     PXBarAppearance *__barAppearance;
@@ -27,6 +29,7 @@
     PXSectionedSelectionManager *__selectionManager;
     PXActionPerformer *__activePerformer;
     PXActionPerformer *__lastActionPerformer;
+    PXActionMenuController *__activeMenuController;
     UIView *__titleView;
     PXPhotosDetailsContext *__context;
     PXPhotosDataSource *__dataSource;
@@ -35,6 +38,7 @@
     NSMutableDictionary *__barButtonItemCacheByBarItemIdentifier;
 }
 
+@property (strong, nonatomic) PXActionMenuController *_activeMenuController; // @synthesize _activeMenuController=__activeMenuController;
 @property (strong, nonatomic, setter=_setActivePerformer:) PXActionPerformer *_activePerformer; // @synthesize _activePerformer=__activePerformer;
 @property (readonly, nonatomic) PXAssetActionManager *_assetActionManager; // @synthesize _assetActionManager=__assetActionManager;
 @property (readonly, nonatomic) PXAssetCollectionActionManager *_assetCollectionActionManager; // @synthesize _assetCollectionActionManager=__assetCollectionActionManager;
@@ -53,12 +57,15 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL shouldAddActionButton; // @synthesize shouldAddActionButton=_shouldAddActionButton;
 @property (readonly) Class superclass;
+@property (weak, nonatomic) PXPhotosDetailsUIViewController *viewController; // @dynamic viewController;
 
 - (void).cxx_destruct;
 - (id)_assetCollection;
 - (id)_barButtonItemForBarItem:(id)arg1 placement:(unsigned long long)arg2;
 - (id)_barButtonItemsForBarItems:(id)arg1 placement:(unsigned long long)arg2;
+- (BOOL)_dismissViewControllerIfSafeAnimated:(BOOL)arg1;
 - (id)_flexibleSpaceBarButtonItem;
 - (void)_invalidateAssetActionManager;
 - (void)_invalidateAssetCollectionActionManager;
@@ -68,6 +75,10 @@
 - (id)_sourceBarButtonItemForActionType:(id)arg1;
 - (long long)_titleViewVerticalSizeClassForExtendedTraitCollection:(id)arg1;
 - (void)_updateTitleViewAlpha;
+- (void)actionMenu:(id)arg1 actionPerformer:(id)arg2 didChangeState:(unsigned long long)arg3;
+- (BOOL)actionMenu:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionMenu:(id)arg1 presentViewController:(id)arg2;
+- (void)actionMenuButtonItemTapped:(id)arg1;
 - (void)actionPerformer:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)actionPerformer:(id)arg1 presentViewController:(id)arg2;
@@ -82,6 +93,7 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)photosDataSource:(id)arg1 didChange:(id)arg2;
 - (void)prepareForPopoverPresentation:(id)arg1;
+- (void)removeActionButton;
 - (void)selectBarButtonItemTapped:(id)arg1;
 - (void)shouldShowTitleView:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateBars;

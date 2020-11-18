@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     id<BCSAction> _action;
 }
 
++ (id)NFCCodeSectionIcon;
 + (id)QRCodeSectionIcon;
 - (void).cxx_destruct;
 - (id)_notificationIconDataForApp:(id)arg1 constraints:(id)arg2;
+- (id)_notificationIconDataForImage:(struct CGImage *)arg1 constraints:(id)arg2;
 - (id)imageDataForConstraints:(id)arg1;
 - (id)initWithAction:(id)arg1;
 

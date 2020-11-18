@@ -10,33 +10,28 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMEventTrigger, HMFMessageDispatcher, NSString, NSUUID;
+@class HMEventTrigger, HMFUnfairLock, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
 @interface HMEvent : NSObject <NSSecureCoding, HMObjectMerge, HMFMessageReceiver>
 {
+    HMFUnfairLock *_lock;
     BOOL _endEvent;
     HMEventTrigger *_eventTrigger;
     NSUUID *_uniqueIdentifier;
+    _HMContext *_context;
     NSUUID *_uuid;
     NSString *_triggerType;
-    HMFMessageDispatcher *_msgDispatcher;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEndEvent) BOOL endEvent; // @synthesize endEvent=_endEvent;
 @property (weak, nonatomic) HMEventTrigger *eventTrigger; // @synthesize eventTrigger=_eventTrigger;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *triggerType; // @synthesize triggerType=_triggerType;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -46,7 +41,7 @@
 + (BOOL)sharedTriggerActivationSupportedForHome:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_configure:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3 msgDispatcher:(id)arg4;
+- (void)__configureWithContext:(id)arg1 eventTrigger:(id)arg2;
 - (void)_handleEventUpdatedNotification:(id)arg1;
 - (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
@@ -54,6 +49,7 @@
 - (id)_serializeForAdd;
 - (void)_updateTriggerType;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDict:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

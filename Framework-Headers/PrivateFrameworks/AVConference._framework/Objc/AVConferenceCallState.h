@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class VCCapabilities;
 
@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     BOOL _audioIsPaused;
     VCCapabilities *_capabilities;
     BOOL _isVideoPaused;
+    BOOL _isAudioSending;
 }
 
 @property (nonatomic, getter=isAudioPaused) BOOL audioIsPaused; // @synthesize audioIsPaused=_audioIsPaused;
 @property (strong, nonatomic) VCCapabilities *capabilities; // @synthesize capabilities=_capabilities;
+@property (nonatomic, getter=isAudioSending) BOOL isAudioSending; // @synthesize isAudioSending=_isAudioSending;
 @property (nonatomic, getter=isVideoPaused) BOOL isVideoPaused; // @synthesize isVideoPaused=_isVideoPaused;
 
 - (void)dealloc;

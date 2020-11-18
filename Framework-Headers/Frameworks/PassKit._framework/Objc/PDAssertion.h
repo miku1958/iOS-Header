@@ -4,18 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
 @interface PDAssertion : NSObject
 {
+    BOOL _invalidateWhenBackgrounded;
     unsigned long long _type;
     NSString *_identifier;
     NSString *_reason;
 }
 
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL invalidateWhenBackgrounded; // @synthesize invalidateWhenBackgrounded=_invalidateWhenBackgrounded;
 @property (readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 

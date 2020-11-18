@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLCloudSharedAlbumProtocol-Protocol.h>
 #import <PhotoLibraryServices/PLIndexMapperDataSource-Protocol.h>
@@ -88,7 +88,6 @@
 @property (readonly, nonatomic) BOOL isRecentlyAddedAlbum;
 @property (readonly, nonatomic) BOOL isStandInAlbum;
 @property (readonly, nonatomic) BOOL isUserLibraryAlbum;
-@property (readonly, nonatomic) BOOL isWallpaperAlbum;
 @property (strong, nonatomic) PLManagedAsset *keyAsset;
 @property (readonly, strong, nonatomic) NSNumber *kind;
 @property (readonly, nonatomic) int kindValue;

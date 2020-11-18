@@ -16,7 +16,9 @@
 - (BOOL)_accessibilityBannerIsSticky;
 - (BOOL)_axClear:(id)arg1;
 - (BOOL)_axDismiss;
+- (BOOL)_axIsGrouped;
 - (BOOL)_axMore:(id)arg1;
+- (id)_axNCNotificationViewController;
 - (void)_axPerformBlockOnNotificationController:(CDUnknownBlockType)arg1;
 - (id)accessibilityCustomActions;
 - (id)accessibilityHint;

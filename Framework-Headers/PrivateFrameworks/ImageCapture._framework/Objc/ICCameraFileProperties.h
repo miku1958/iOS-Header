@@ -4,73 +4,97 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString;
+@class ICCameraFile, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICCameraFileProperties : NSObject
 {
-    long long _fileSize;
+    struct CGImage *_originalThumbnail;
+    struct CGImage *_thumbnail;
     BOOL _hasThumbnail;
     BOOL _hasMetadata;
     BOOL _raw;
-    struct os_unfair_lock_s _fetchingThumbnailLock;
     BOOL _fetchingThumbnail;
-    struct os_unfair_lock_s _fetchingMetadataLock;
     BOOL _fetchingMetadata;
-    struct CGImage *_originalThumbnail;
-    struct CGImage *_thumbnail;
-    NSMutableDictionary *_metadata;
-    NSMutableDictionary *_metadata_hidden;
-    unsigned long long _orientation;
-    BOOL _hasOverriddenOrientation;
-    double _duration;
-    NSString *_burstUUID;
+    BOOL _orientationOverridden;
     BOOL _burstFavorite;
     BOOL _burstPicked;
     BOOL _highFramerate;
     BOOL _timeLapse;
-    NSString *_groupUUID;
-    NSString *_relatedUUID;
-    NSString *_originatingAssetID;
-    NSString *_originalFilename;
-    NSString *_createdFilename;
     BOOL _retrievedThumbnail;
     BOOL _retrievedMetadata;
     BOOL _firstPicked;
+    long long _width;
+    long long _height;
+    NSDate *_fileCreationDate;
+    NSDate *_fileModificationDate;
+    NSDate *_exifCreationDate;
+    NSDate *_exifModificationDate;
+    long long _fileSize;
+    NSMutableDictionary *_metadata;
+    unsigned long long _orientation;
+    double _duration;
     NSMutableArray *_sidecarFiles;
+    NSString *_burstUUID;
+    NSString *_originatingAssetID;
+    NSString *_originalFilename;
+    NSString *_createdFilename;
+    unsigned long long _oUUID;
+    NSString *_groupUUID;
+    NSString *_relatedUUID;
+    unsigned long long _uTime;
+    unsigned long long _mediaMetadata;
+    NSString *_mediaBase;
+    NSDictionary *_mediaData;
+    NSMutableDictionary *_subImages;
+    ICCameraFile *_pairedRawImage;
 }
 
 @property BOOL burstFavorite; // @synthesize burstFavorite=_burstFavorite;
 @property BOOL burstPicked; // @synthesize burstPicked=_burstPicked;
 @property (strong) NSString *burstUUID; // @synthesize burstUUID=_burstUUID;
 @property (strong) NSString *createdFilename; // @synthesize createdFilename=_createdFilename;
+@property (strong) NSDate *creationDate; // @dynamic creationDate;
 @property double duration; // @synthesize duration=_duration;
-@property BOOL fetchingMetadata;
-@property BOOL fetchingThumbnail;
+@property (strong) NSDate *exifCreationDate; // @synthesize exifCreationDate=_exifCreationDate;
+@property (strong) NSDate *exifModificationDate; // @synthesize exifModificationDate=_exifModificationDate;
+@property BOOL fetchingMetadata; // @synthesize fetchingMetadata=_fetchingMetadata;
+@property BOOL fetchingThumbnail; // @synthesize fetchingThumbnail=_fetchingThumbnail;
+@property (strong) NSDate *fileCreationDate; // @synthesize fileCreationDate=_fileCreationDate;
+@property (strong) NSDate *fileModificationDate; // @synthesize fileModificationDate=_fileModificationDate;
 @property long long fileSize; // @synthesize fileSize=_fileSize;
 @property BOOL firstPicked; // @synthesize firstPicked=_firstPicked;
 @property (strong) NSString *groupUUID; // @synthesize groupUUID=_groupUUID;
 @property BOOL hasMetadata; // @synthesize hasMetadata=_hasMetadata;
-@property BOOL hasOverriddenOrientation; // @synthesize hasOverriddenOrientation=_hasOverriddenOrientation;
 @property BOOL hasThumbnail; // @synthesize hasThumbnail=_hasThumbnail;
+@property long long height; // @synthesize height=_height;
 @property BOOL highFramerate; // @synthesize highFramerate=_highFramerate;
+@property (copy) NSString *mediaBase; // @synthesize mediaBase=_mediaBase;
+@property (strong) NSDictionary *mediaData; // @synthesize mediaData=_mediaData;
+@property unsigned long long mediaMetadata; // @synthesize mediaMetadata=_mediaMetadata;
 @property (strong) NSMutableDictionary *metadata; // @synthesize metadata=_metadata;
-@property (strong) NSMutableDictionary *metadata_hidden; // @synthesize metadata_hidden=_metadata_hidden;
+@property (strong) NSDate *modificationDate; // @dynamic modificationDate;
+@property unsigned long long oUUID; // @synthesize oUUID=_oUUID;
 @property unsigned long long orientation; // @synthesize orientation=_orientation;
+@property BOOL orientationOverridden; // @synthesize orientationOverridden=_orientationOverridden;
 @property (strong) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
 @property struct CGImage *originalThumbnail; // @dynamic originalThumbnail;
 @property (strong) NSString *originatingAssetID; // @synthesize originatingAssetID=_originatingAssetID;
+@property (strong) ICCameraFile *pairedRawImage; // @synthesize pairedRawImage=_pairedRawImage;
 @property (getter=isRaw) BOOL raw; // @synthesize raw=_raw;
 @property (strong) NSString *relatedUUID; // @synthesize relatedUUID=_relatedUUID;
 @property BOOL retrievedMetadata; // @synthesize retrievedMetadata=_retrievedMetadata;
 @property BOOL retrievedThumbnail; // @synthesize retrievedThumbnail=_retrievedThumbnail;
 @property (strong) NSMutableArray *sidecarFiles; // @synthesize sidecarFiles=_sidecarFiles;
+@property (strong) NSMutableDictionary *subImages; // @synthesize subImages=_subImages;
 @property struct CGImage *thumbnail; // @dynamic thumbnail;
 @property BOOL timeLapse; // @synthesize timeLapse=_timeLapse;
+@property unsigned long long uTime; // @synthesize uTime=_uTime;
+@property long long width; // @synthesize width=_width;
 
 - (void)dealloc;
-- (void)finalize;
 - (id)init;
 
 @end

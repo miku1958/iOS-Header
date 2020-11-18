@@ -18,6 +18,7 @@
 + (HDSyncEntityIdentifier *)syncEntityIdentifier;
 
 @optional
++ (NSSet *)excludedSyncStoresForSession:(HDSyncSession *)arg1;
 + (BOOL)supportsSyncStore:(id<HDSyncStore>)arg1;
 @end
 

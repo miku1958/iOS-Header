@@ -10,7 +10,7 @@
 #import <iWorkImport/TSKModel-Protocol.h>
 #import <iWorkImport/TSSPresetSource-Protocol.h>
 
-@class NSMutableDictionary, NSString, TSSStylesheet;
+@class NSArray, NSMutableDictionary, NSSet, NSString, TSDMediaStyle, TSSStylesheet, TSWPCharacterStyle, TSWPColumnStyle, TSWPListStyle, TSWPParagraphStyle, TSWPTOCEntryStyle;
 
 __attribute__((visibility("hidden")))
 @interface TSSTheme : TSPObject <TSSPresetSource, TSKModel, TSKDocumentObject>
@@ -23,12 +23,23 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) TSWPCharacterStyle *defaultCharacterStyle;
+@property (readonly, nonatomic) TSWPColumnStyle *defaultColumnStyle;
+@property (readonly, nonatomic) TSDMediaStyle *defaultEquationStyle;
+@property (readonly, nonatomic) TSWPListStyle *defaultListStyle;
+@property (readonly, nonatomic) TSWPParagraphStyle *defaultParagraphStyle;
+@property (readonly, nonatomic) TSWPTOCEntryStyle *defaultTOCEntryStyle;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) TSSStylesheet *documentStylesheet;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) TSWPCharacterStyle *hyperlinkStyle;
 @property (strong, nonatomic) TSSStylesheet *legacyStylesheet;
+@property (readonly, nonatomic) NSString *localizedBodyStyleName;
+@property (readonly, nonatomic) NSArray *paragraphPresetStyles;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *themeIdentifier;
+@property (readonly, nonatomic) NSSet *undeletableStyles;
+@property (readonly, nonatomic) NSSet *unmodifiableStyles;
 
 + (void)bootstrapPresetsOfKind:(id)arg1 inTheme:(id)arg2 alternate:(int)arg3;
 + (id)presetBootstrapOrder;
@@ -40,31 +51,26 @@ __attribute__((visibility("hidden")))
 + (void)tschRegisterPresetSourceClasses;
 + (void)tsdRegisterPresetSourceClasses;
 + (void)tstRegisterPresetSourceClasses;
+- (void).cxx_destruct;
 - (void)addPreset:(id)arg1 ofKind:(id)arg2;
 - (void)bootstrapThemeAlternate:(int)arg1;
 - (void)checkThemeStylesheetConsistency;
 - (id)childEnumerator;
+- (void)clearAllReplacementsOfPresetUUIDs;
 - (void)clearReplacementsOfPresetUUID:(id)arg1;
 - (id)colors;
 - (BOOL)containsCGColor:(struct CGColor *)arg1;
 - (void)createCommentInfoStyleIfNeeded;
 - (void)createDefaultParagraphStyleIfNeeded;
-- (void)dealloc;
-- (id)defaultCharacterStyle;
-- (id)defaultColumnStyle;
-- (id)defaultEquationStyle;
-- (id)defaultListStyle;
-- (id)defaultParagraphStyle;
-- (id)defaultTOCEntryStyle;
 - (void)disablePresetValidation;
 - (void)enablePresetValidation;
 - (BOOL)hasPresetsOfKind:(id)arg1;
-- (id)hyperlinkStyle;
 - (unsigned long long)indexOfPreset:(id)arg1;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 documentStylesheet:(id)arg2;
 - (void)insertPreset:(id)arg1 ofKind:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)installContactCurvedShadowPresets;
+- (void)installDrawingLinePresetsInStylesheet:(id)arg1;
 - (void)installMoviePresetsInStylesheet:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)loadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
@@ -78,7 +84,6 @@ __attribute__((visibility("hidden")))
 - (id)p_identifierForBootstrapTheme:(int)arg1;
 - (id)p_migratedPresetForPreset:(id)arg1 followReplacements:(BOOL)arg2;
 - (BOOL)p_shouldDoDOLCForPreset:(id)arg1;
-- (id)paragraphPresetStyles;
 - (id)paragraphStyleWithContentTag:(id)arg1;
 - (id)paragraphStylesWithContentTag:(id)arg1;
 - (id)paragraphStylesWithPartialContentTag:(id)arg1;
@@ -100,8 +105,6 @@ __attribute__((visibility("hidden")))
 - (void)tstSaveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
 - (void)tswpLoadFromArchive:(const struct ThemeArchive *)arg1 unarchiver:(id)arg2;
 - (void)tswpSaveToArchive:(struct ThemeArchive *)arg1 archiver:(id)arg2;
-- (id)undeletableStyles;
-- (id)unmodifiableStyles;
 - (void)upgradeStylesWithBlock:(CDUnknownBlockType)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;

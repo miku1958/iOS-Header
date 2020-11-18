@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIFoundation/NSCoding-Protocol.h>
 #import <UIFoundation/NSCopying-Protocol.h>
+#import <UIFoundation/NSSecureCoding-Protocol.h>
 
 @class NSColor;
 
-@interface NSShadow : NSObject <NSCopying, NSCoding>
+@interface NSShadow : NSObject <NSCopying, NSSecureCoding>
 {
     unsigned long long _shadowFlags;
     struct CGSize _shadowOffset;
@@ -19,13 +19,15 @@
     NSColor *_shadowColor;
 }
 
-@property (nonatomic) double shadowBlurRadius; // @synthesize shadowBlurRadius=_shadowBlurRadius;
+@property (nonatomic) double shadowBlurRadius;
 @property (strong, nonatomic) id shadowColor;
-@property (nonatomic) struct CGSize shadowOffset; // @synthesize shadowOffset=_shadowOffset;
+@property (nonatomic) struct CGSize shadowOffset;
 
 + (id)defaultShadowColor;
 + (void)initialize;
 + (id)shadow;
++ (BOOL)supportsSecureCoding;
+- (void)_applyToCGContext:(struct CGContext *)arg1 graphicsContext:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

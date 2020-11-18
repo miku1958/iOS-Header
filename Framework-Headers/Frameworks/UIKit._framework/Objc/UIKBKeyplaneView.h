@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBSplitImageView.h>
+#import <UIKitCore/UIKBSplitImageView.h>
 
-#import <UIKit/UIKBCacheableView-Protocol.h>
+#import <UIKitCore/UIKBCacheableView-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSTimer, UIKBCacheToken, UIKBKeyView, UIKBKeyViewAnimator, UIKBRenderConfig, UIKBRenderFactory, UIKBRenderingContext, UIKBTree, UIKeyboardEmojiKeyDisplayController;
 
@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
     UIKBSplitImageView *_keyCaps;
 }
 
+@property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;
 @property (strong, nonatomic) UIKBCacheToken *cacheToken; // @synthesize cacheToken=_cacheToken;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)_generateFactoryIfNeeded;
 - (void)_generateRenderingContextIfNeeded;
 - (BOOL)_shouldAllowKey:(id)arg1;
+- (BOOL)_shouldInheritScreenScaleAsContentScaleFactor;
 - (void)activateKeys;
 - (id)activeKeyViews;
 - (void)addKeyToDelayedDeactivationSet:(id)arg1;
@@ -85,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (void)removeFromSuperview;
 - (void)removeKeyFromDelayedDeactivationSet:(id)arg1;
 - (void)scheduleDelayedDeactivation;
+- (void)setContentScaleFactor:(double)arg1;
 - (void)setState:(int)arg1 forKey:(id)arg2;
 - (BOOL)shouldAnimateInKeyView:(id)arg1;
 - (BOOL)shouldAnimateOutKeyView:(id)arg1;

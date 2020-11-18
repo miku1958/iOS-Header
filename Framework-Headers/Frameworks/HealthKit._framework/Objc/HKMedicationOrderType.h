@@ -10,8 +10,8 @@
 {
 }
 
++ (id)allTypes;
 + (id)medicationOrderType;
-- (Class)dataObjectClass;
 
 @end
 

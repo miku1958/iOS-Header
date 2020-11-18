@@ -50,6 +50,7 @@
 - (void)_updateProgressViewsWithAnimation:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateSubviewsOrdering;
 - (void)beginShowingProgressImmediately:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)beginShowingProgressWithDelay:(double)arg1 animated:(BOOL)arg2;
 - (void)endShowingProgressImmediately:(BOOL)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

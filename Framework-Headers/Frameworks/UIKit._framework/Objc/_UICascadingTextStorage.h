@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "NSConcreteTextStorage.h"
+#import <UIFoundation/NSConcreteTextStorage.h>
 
 @class NSDictionary, NSMutableDictionary, UIColor, UIFont;
 

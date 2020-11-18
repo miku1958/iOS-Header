@@ -6,18 +6,23 @@
 
 #import <NanoTimeKitCompanion/NTKUtilityComplicationView.h>
 
-@class NTKColoringLabel, UIView;
+@class NTKColoringLabel, NTKCurvedColoringLabel, UIImageView, UIView;
 @protocol NTKComplicationImageView;
 
 @interface NTKUtilityFlatComplicationView : NTKUtilityComplicationView
 {
     UIView<NTKComplicationImageView> *_imageView;
     NTKColoringLabel *_label;
+    NTKCurvedColoringLabel *_curvedLabel;
+    UIImageView *_curvedHighlightView;
+    NTKColoringLabel *_activeLabel;
 }
 
++ (void)circleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 interior:(BOOL *)arg4 forPlacement:(unsigned long long)arg5 forDevice:(id)arg6;
 + (BOOL)handlesComplicationTemplate:(id)arg1;
 + (void)load;
 - (void).cxx_destruct;
+- (id)_backgroundPlatterImage;
 - (void)_enumerateColoringStackedImagesViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_shouldLayoutWithImageView;
@@ -27,6 +32,12 @@
 - (double)_widthThatFits;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)setCanUseCurvedText:(BOOL)arg1;
+- (void)setForegroundColor:(id)arg1;
+- (void)setPlacement:(unsigned long long)arg1;
+- (void)setShouldUseBackgroundPlatter:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

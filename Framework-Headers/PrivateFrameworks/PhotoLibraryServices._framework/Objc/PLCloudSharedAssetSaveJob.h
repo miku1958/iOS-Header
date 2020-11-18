@@ -14,6 +14,7 @@
     AssetCollectionInfo *_currentAssetCollectionInfo;
     NSMutableArray *_pendingDownloadNotifications;
     BOOL _isVideo;
+    BOOL _isPhotoIris;
     NSString *_currentFilePath;
     NSString *_currentCloudAssetGUID;
     unsigned long long _currentCloudAssetMediaAssetType;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NSString *currentCloudAssetGUID; // @synthesize currentCloudAssetGUID=_currentCloudAssetGUID;
 @property (nonatomic) unsigned long long currentCloudAssetMediaAssetType; // @synthesize currentCloudAssetMediaAssetType=_currentCloudAssetMediaAssetType;
 @property (strong, nonatomic) NSString *currentFilePath; // @synthesize currentFilePath=_currentFilePath;
+@property (nonatomic) BOOL isPhotoIris; // @synthesize isPhotoIris=_isPhotoIris;
 @property (nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
 @property (nonatomic) long long jobType; // @synthesize jobType=_jobType;
 @property (strong, nonatomic) NSDictionary *mstreamdInfoDictionary; // @synthesize mstreamdInfoDictionary=_mstreamdInfoDictionary;
@@ -50,7 +52,7 @@
 + (void)replaceRecentlyUploadedOriginalWithDerivativeForCollection:(id)arg1 inAlbum:(id)arg2 personID:(id)arg3;
 + (void)saveCloudSharedAssetAtPath:(id)arg1 forAssetCollection:(id)arg2 mediaAssetType:(unsigned long long)arg3 albumGUID:(id)arg4 personID:(id)arg5 info:(id)arg6 shouldPrioritize:(BOOL)arg7;
 - (void)_addDownloadNotification:(id)arg1;
-- (BOOL)_createPlaceHolderInSharedAlbum:(id)arg1;
+- (id)_createPlaceHolderInSharedAlbum:(id)arg1;
 - (void)_incrementDerivativesCount:(long long)arg1 thumbnailsCount:(long long)arg2;
 - (unsigned long long)_insertionIndexForAsset:(id)arg1 inAlbum:(id)arg2;
 - (BOOL)_parseISO6709String:(id)arg1 outLatitude:(double *)arg2 outLongitude:(double *)arg3;

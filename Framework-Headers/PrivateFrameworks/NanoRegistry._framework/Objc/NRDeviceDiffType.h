@@ -9,7 +9,7 @@
 #import <NanoRegistry/NSCopying-Protocol.h>
 #import <NanoRegistry/NSSecureCoding-Protocol.h>
 
-@class NRDeviceDiff;
+@class NRDeviceDiff, NRPBDeviceDiffType;
 
 @interface NRDeviceDiffType : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,6 +19,7 @@
 
 @property (readonly, nonatomic) unsigned long long changeType; // @synthesize changeType=_changeType;
 @property (readonly, nonatomic) NRDeviceDiff *diff; // @synthesize diff=_diff;
+@property (readonly, nonatomic) NRPBDeviceDiffType *protobuf;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -28,6 +29,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDiff:(id)arg1 andChangeType:(unsigned long long)arg2;
+- (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

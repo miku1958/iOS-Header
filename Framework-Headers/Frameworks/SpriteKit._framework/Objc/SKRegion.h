@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class PKRegion;
 
-@interface SKRegion : NSObject <NSCopying, NSCoding>
+@interface SKRegion : NSObject <NSCopying, NSSecureCoding>
 {
     PKRegion *_region;
 }
@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) const struct CGPath *path;
 
 + (id)infiniteRegion;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)containsPoint:(struct CGPoint)arg1;
 - (void)containsPoints:(const float *)arg1 locationStride:(long long)arg2 results:(char *)arg3 resultsStride:(long long)arg4 count:(int)arg5;

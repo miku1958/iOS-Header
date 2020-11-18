@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CAAnimation, CALayer, NSDictionary;
 @protocol TSDCAAnimationContextCacheProtocol;
@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
     double _anchorPointZInitialValue;
     struct CGColor *_borderColorInitialValue;
     double _borderWidthInitialValue;
-    struct CGImage *_contentsInitialValue;
     double _opacityInitialValue;
     double _transformRotationInitialValue;
     double _transformRotationXInitialValue;
@@ -62,6 +61,7 @@ __attribute__((visibility("hidden")))
     struct CGPoint _anchorPointInitialValue;
     struct CGPoint _positionInitialValue;
     struct CGPoint _transformTranslationInitialValue;
+    struct _TSDContentBlend _contentsInitialValue;
     struct CGRect _boundsInitialValue;
     struct CATransform3D _transformInitialValue;
 }
@@ -79,7 +79,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL boundsAnimationExists; // @synthesize boundsAnimationExists=_boundsAnimationExists;
 @property (readonly, nonatomic) struct CGRect boundsInitialValue; // @synthesize boundsInitialValue=_boundsInitialValue;
 @property (readonly, nonatomic) BOOL contentsAnimationExists; // @synthesize contentsAnimationExists=_contentsAnimationExists;
-@property (readonly, nonatomic) struct CGImage *contentsInitialValue; // @synthesize contentsInitialValue=_contentsInitialValue;
+@property (readonly, nonatomic) struct _TSDContentBlend contentsInitialValue; // @synthesize contentsInitialValue=_contentsInitialValue;
 @property (readonly, nonatomic) BOOL doubleSidedAnimationExists; // @synthesize doubleSidedAnimationExists=_doubleSidedAnimationExists;
 @property (readonly, nonatomic) BOOL doubleSidedInitialValue; // @synthesize doubleSidedInitialValue=_doubleSidedInitialValue;
 @property (readonly, nonatomic) BOOL hiddenAnimationExists; // @synthesize hiddenAnimationExists=_hiddenAnimationExists;
@@ -118,12 +118,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double zPositionInitialValue; // @synthesize zPositionInitialValue=_zPositionInitialValue;
 
 + (id)supportedKeyPaths;
+- (void).cxx_destruct;
 - (struct CGPoint)anchorPointCachedValueAtTime:(double)arg1 layer:(id)arg2 animation:(id)arg3;
 - (double)anchorPointZCachedValueAtTime:(double)arg1 layer:(id)arg2 animation:(id)arg3;
 - (double)animationPercentByApplyingTimingFunctionForKeyPath:(id)arg1 atTime:(double)arg2;
 - (double)borderWidthCachedValueAtTime:(double)arg1 layer:(id)arg2 animation:(id)arg3;
 - (struct CGRect)boundsCachedValueAtTime:(double)arg1 layer:(id)arg2 animation:(id)arg3;
-- (void)dealloc;
+- (struct _TSDContentBlend)contentsCachedValueAtTime:(double)arg1 layer:(id)arg2 animation:(id)arg3;
 - (BOOL)doubleSidedCachedValueAtTime:(double)arg1 layer:(id)arg2 animation:(id)arg3;
 - (id)getKeyPathsFromAnimation:(id)arg1;
 - (BOOL)hiddenCachedValueAtTime:(double)arg1 layer:(id)arg2 animation:(id)arg3;

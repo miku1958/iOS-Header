@@ -34,6 +34,8 @@
     BOOL isInstant;
     BOOL isHistorical;
     long long pollingPeriod;
+    BOOL shouldSaveCurrentEventOnShutdown;
+    NSString *knowledgeBaseMetadataClass;
     NSString *_keyPathString;
 }
 
@@ -50,6 +52,7 @@
 @property (readonly, nonatomic) BOOL isHistorical; // @synthesize isHistorical;
 @property (readonly, nonatomic) BOOL isInstant; // @synthesize isInstant;
 @property (readonly, nonatomic) NSString *keyPathString; // @synthesize keyPathString=_keyPathString;
+@property (readonly, nonatomic) NSString *knowledgeBaseMetadataClass; // @synthesize knowledgeBaseMetadataClass;
 @property (readonly, nonatomic) NSString *knowledgeBaseName; // @synthesize knowledgeBaseName;
 @property (readonly, nonatomic) double maxLatency; // @synthesize maxLatency;
 @property (readonly, nonatomic) NSString *name; // @synthesize name;
@@ -57,6 +60,7 @@
 @property (readonly, nonatomic) long long pollingPeriod; // @synthesize pollingPeriod;
 @property (readonly, nonatomic) BOOL setupOnDemand; // @synthesize setupOnDemand;
 @property (readonly, nonatomic) long long sharingPolicy; // @synthesize sharingPolicy;
+@property (readonly, nonatomic) BOOL shouldSaveCurrentEventOnShutdown; // @synthesize shouldSaveCurrentEventOnShutdown;
 @property (readonly, nonatomic) long long statisticsType; // @synthesize statisticsType;
 @property (readonly, nonatomic) double temporalPrecision; // @synthesize temporalPrecision;
 @property (readonly, nonatomic) double timeToLive; // @synthesize timeToLive;

@@ -7,34 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBLocationList-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBCondition;
+@class NSArray, NSString, _INPBCondition;
 
-@interface _INPBLocationList : PBCodable <NSCopying>
+@interface _INPBLocationList : PBCodable <_INPBLocationList, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBCondition *_condition;
-    NSMutableArray *_locations;
+    NSArray *_locations;
 }
 
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCondition;
-@property (strong, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *locations; // @synthesize locations=_locations;
+@property (readonly, nonatomic) unsigned long long locationsCount;
+@property (readonly) Class superclass;
 
 + (Class)locationType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addLocation:(id)arg1;
 - (void)clearLocations;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)locationAtIndex:(unsigned long long)arg1;
-- (unsigned long long)locationsCount;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

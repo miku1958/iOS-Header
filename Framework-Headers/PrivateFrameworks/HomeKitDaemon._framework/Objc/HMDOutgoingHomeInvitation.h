@@ -22,11 +22,15 @@
 
 @property (readonly, nonatomic) NSArray *accessoryInvitationsInformation;
 @property (readonly, nonatomic, getter=isComplete) BOOL complete;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *inviteeDestinationAddress; // @synthesize inviteeDestinationAddress=_inviteeDestinationAddress;
 @property (readonly, nonatomic) NSUUID *messageIdentifier; // @synthesize messageIdentifier=_messageIdentifier;
 @property (strong, nonatomic) NSArray *operationIdentifiers; // @synthesize operationIdentifiers=_operationIdentifiers;
 @property (readonly, nonatomic) NSArray *operations;
 @property (nonatomic) BOOL responseReceived; // @synthesize responseReceived=_responseReceived;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) HMDUser *user; // @synthesize user=_user;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
@@ -34,14 +38,14 @@
 - (void).cxx_destruct;
 - (void)_transactionOutgoingInvitiationUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)cancel;
-- (id)debugDescription;
 - (id)describeWithFormat;
-- (id)description;
+- (id)emptyModelObjectWithChangeType:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInvitee:(id)arg1 invitationState:(long long)arg2 forHome:(id)arg3 expiryDate:(id)arg4 messageIdentifier:(id)arg5;
 - (id)initWithUUID:(id)arg1 invitee:(id)arg2 invitationState:(long long)arg3 forHome:(id)arg4 expiryDate:(id)arg5 messageIdentifier:(id)arg6;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
+- (void)notifyStateChangedForMessage:(id)arg1;
 - (void)processUserManagementOperationIdentifiers:(id)arg1;
 - (BOOL)refreshDisplayName;
 - (id)shortDescription;

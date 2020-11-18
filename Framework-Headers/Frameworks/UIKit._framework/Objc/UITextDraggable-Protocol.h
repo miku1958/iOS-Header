@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextInput-Protocol.h>
+#import <UIKitCore/UITextInput-Protocol.h>
 
 @class UIDragInteraction;
 @protocol UITextDragDelegate;

@@ -12,6 +12,7 @@
 @class NSArray, NSMutableArray;
 @protocol GEOSurchargeType;
 
+__attribute__((visibility("hidden")))
 @interface GEORequestOptions : PBCodable <GEOSurchargeOption, NSCopying>
 {
     int _optionUsed;

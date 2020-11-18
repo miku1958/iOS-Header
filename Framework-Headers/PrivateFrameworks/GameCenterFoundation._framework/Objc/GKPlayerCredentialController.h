@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class ACAccountStore, GKThreadsafeDictionary;
 
@@ -29,6 +29,7 @@
 - (id)_transactAndWait:(CDUnknownBlockType)arg1;
 - (id)accessQueue;
 - (void)accountStoreDidChange:(id)arg1;
+- (void)accountStoreEmailDidChange:(id)arg1;
 - (id)allCredentialsForEnvironment:(long long)arg1;
 - (id)credentialForPlayer:(id)arg1 environment:(long long)arg2;
 - (id)credentialForUsername:(id)arg1 environment:(long long)arg2;

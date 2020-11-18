@@ -26,9 +26,9 @@
 @property (readonly, copy) NSString *description;
 @property (strong) NUIContainerGridView *gridView; // @synthesize gridView=_gridView;
 @property (readonly) unsigned long long hash;
-@property long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
+@property (nonatomic) long long selectedIndex; // @synthesize selectedIndex=_selectedIndex;
 @property (readonly) Class superclass;
-@property (strong) NSArray *tuples; // @synthesize tuples=_tuples;
+@property (strong, nonatomic) NSArray *tuples; // @synthesize tuples=_tuples;
 
 + (unsigned long long)idealNumberOfColumnsForTitles:(id)arg1 fittingSize:(struct CGSize)arg2 containerView:(id)arg3;
 + (unsigned long long)maxColumns;
@@ -38,7 +38,6 @@
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (id)init;
-- (id)observableProperties;
 - (void)observedPropertiesChanged;
 - (void)selectableGridButtonPressed:(id)arg1;
 - (void)styleDidChange:(unsigned long long)arg1;

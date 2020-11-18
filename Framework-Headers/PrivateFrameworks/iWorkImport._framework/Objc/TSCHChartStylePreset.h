@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 + (void)upgradeForTrendLineEquationAndR2LabelsPropertyMigrationFromChartStyle:(id)arg1 seriesStyles:(id)arg2;
 + (void)upgradeShadowPropertyForParagraphStyles:(id)arg1;
 + (void)upgradeTrendLinesAndErrorBarsForSeriesPresets:(id)arg1 valueAxisPresets:(id)arg2 paragraphPresets:(id)arg3;
+- (void).cxx_destruct;
 - (id)allStyles;
 - (id)applyStyleSwapTuple:(id)arg1;
 - (id)buildAxisNonStyle;
@@ -64,9 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)chartStyleState;
 - (id)copyWithContext:(id)arg1;
 - (id)copyWithContext:(id)arg1 shallowCopyStyles:(BOOL)arg2;
-- (void)dealloc;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
-- (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 chartStyle:(id)arg2 legendStyle:(id)arg3 valueAxisStyles:(id)arg4 categoryAxisStyles:(id)arg5 seriesStyles:(id)arg6;
 - (id)initWithContext:(id)arg1 chartStyle:(id)arg2 legendStyle:(id)arg3 valueAxisStyles:(id)arg4 categoryAxisStyles:(id)arg5 seriesStyles:(id)arg6 paragraphStyles:(id)arg7 refLineStyle:(id)arg8;
 - (id)initWithContext:(id)arg1 chartStyle:(id)arg2 legendStyle:(id)arg3 valueAxisStyles:(id)arg4 categoryAxisStyles:(id)arg5 seriesStyles:(id)arg6 paragraphStyles:(id)arg7 refLineStyle:(id)arg8 uuid:(id)arg9;

@@ -6,23 +6,30 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface _NUIViewContainerViewInfo : NSObject
 {
     struct nui_size_cache _sizeCache;
-    struct UIEdgeInsets _customAlignmentInsets;
-    double _customTopBaseline;
-    double _customBottomBaseline;
+    struct CGSize _minSize;
+    struct CGSize _maxSize;
+    double _customScreenScale;
+    struct UIEdgeInsets _alignmentInsets;
+    double _topBaseline;
+    double _bottomBaseline;
     struct {
-        unsigned int baselineRelativeInsets:1;
-        unsigned int allowFastBaselines:1;
+        unsigned int neverCache:1;
         unsigned int alsoInvalidateSuperview:1;
-        unsigned int neverCacheSize:1;
+        unsigned int alignmentInsetsAreCustom:1;
+        unsigned int baselineRelativeInsets:1;
+        unsigned int topBaselineIsCustom:1;
+        unsigned int bottomBaselineIsCustom:1;
     } _flags;
 }
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)init;
+- (void)resetCaches;
 
 @end
 

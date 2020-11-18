@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
@@ -15,6 +15,7 @@
 {
     NSString *_reason;
     long long _rebootType;
+    long long _source;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,10 +23,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (nonatomic) long long rebootType; // @synthesize rebootType=_rebootType;
+@property (nonatomic) long long source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

@@ -47,6 +47,7 @@
 - (id)fetchQuery:(id)arg1 stringArguments:(id)arg2;
 - (id)initWithURL:(id)arg1 queue:(id)arg2;
 - (BOOL)openWithAccessType:(long long)arg1 error:(id *)arg2;
+- (BOOL)openWithAccessType:(long long)arg1 protectionType:(long long)arg2 vfs:(id)arg3 error:(id *)arg4;
 - (BOOL)openWithAccessType:(long long)arg1 vfs:(id)arg2 error:(id *)arg3;
 - (BOOL)reportErrorWithCode:(int)arg1 query:(id)arg2 error:(id *)arg3;
 - (BOOL)reportErrorWithCode:(int)arg1 statement:(struct sqlite3_stmt *)arg2 error:(id *)arg3;

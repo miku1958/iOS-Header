@@ -18,6 +18,7 @@
     NSString *_displayName;
     NSString *_issuerCountryCode;
     NSData *_manifestHash;
+    NSString *_organizationName;
     NSString *_passID;
     NSMutableArray *_paymentApplications;
     NSString *_peerPaymentAccountCurrency;
@@ -43,6 +44,7 @@
 @property (nonatomic) BOOL hasIngestedDate;
 @property (readonly, nonatomic) BOOL hasIssuerCountryCode;
 @property (readonly, nonatomic) BOOL hasManifestHash;
+@property (readonly, nonatomic) BOOL hasOrganizationName;
 @property (readonly, nonatomic) BOOL hasPassID;
 @property (nonatomic) BOOL hasPeerPaymentAccountBalance;
 @property (readonly, nonatomic) BOOL hasPeerPaymentAccountCurrency;
@@ -53,6 +55,7 @@
 @property (nonatomic) double ingestedDate; // @synthesize ingestedDate=_ingestedDate;
 @property (strong, nonatomic) NSString *issuerCountryCode; // @synthesize issuerCountryCode=_issuerCountryCode;
 @property (strong, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
+@property (strong, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
 @property (strong, nonatomic) NSString *passID; // @synthesize passID=_passID;
 @property (strong, nonatomic) NSMutableArray *paymentApplications; // @synthesize paymentApplications=_paymentApplications;
 @property (nonatomic) long long peerPaymentAccountBalance; // @synthesize peerPaymentAccountBalance=_peerPaymentAccountBalance;

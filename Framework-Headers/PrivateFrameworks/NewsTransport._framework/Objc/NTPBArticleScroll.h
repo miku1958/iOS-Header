@@ -8,10 +8,11 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString;
+@class NSData, NSMutableArray, NSString, NTPBAlternateHeadline;
 
 @interface NTPBArticleScroll : PBCodable <NSCopying>
 {
+    NTPBAlternateHeadline *_alternateHeadline;
     NSString *_articleId;
     NSData *_articleSessionId;
     NSData *_articleViewingSessionId;
@@ -38,12 +39,14 @@
 }
 
 @property (nonatomic) BOOL adSupportedChannel; // @synthesize adSupportedChannel=_adSupportedChannel;
+@property (strong, nonatomic) NTPBAlternateHeadline *alternateHeadline; // @synthesize alternateHeadline=_alternateHeadline;
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (strong, nonatomic) NSData *articleSessionId; // @synthesize articleSessionId=_articleSessionId;
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (strong, nonatomic) NSMutableArray *fractionalCohortMemberships; // @synthesize fractionalCohortMemberships=_fractionalCohortMemberships;
 @property (nonatomic) BOOL hasAdSupportedChannel;
+@property (readonly, nonatomic) BOOL hasAlternateHeadline;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;

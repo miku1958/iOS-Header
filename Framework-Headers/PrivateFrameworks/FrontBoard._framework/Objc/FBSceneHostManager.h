@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
@@ -35,23 +35,28 @@
         unsigned int delegateOverrideRequester:1;
         unsigned int delegateShouldEnableHostingForRequester:1;
     } _flags;
+    BOOL _defaultClippingDisabled;
+    struct CGAffineTransform _defaultHostViewTransform;
 }
 
 @property (readonly, nonatomic) long long contentState; // @synthesize contentState=_contentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) UIColor *defaultBackgroundColorWhileHosting;
 @property (copy, nonatomic) UIColor *defaultBackgroundColorWhileNotHosting;
+@property (nonatomic) BOOL defaultClippingDisabled; // @synthesize defaultClippingDisabled=_defaultClippingDisabled;
+@property (nonatomic) struct CGAffineTransform defaultHostViewTransform; // @synthesize defaultHostViewTransform=_defaultHostViewTransform;
 @property (nonatomic) unsigned long long defaultHostedLayerTypes; // @synthesize defaultHostedLayerTypes=_defaultHostedLayerTypes;
 @property (copy, nonatomic) NSString *defaultMinificationFilterName; // @synthesize defaultMinificationFilterName=_defaultMinificationFilterName;
 @property (nonatomic) unsigned long long defaultRenderingMode; // @synthesize defaultRenderingMode=_defaultRenderingMode;
-@property (nonatomic) id<FBSceneHostManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<FBSceneHostManagerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic, getter=isInvalidated) BOOL invalidated; // @synthesize invalidated=_invalidated;
-@property (readonly, strong, nonatomic) FBScene *scene; // @synthesize scene=_scene;
+@property (readonly, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_activateRequester:(id)arg1;
 - (id)_activeHostRequester;
 - (void)_callOutToObservers:(CDUnknownBlockType)arg1;

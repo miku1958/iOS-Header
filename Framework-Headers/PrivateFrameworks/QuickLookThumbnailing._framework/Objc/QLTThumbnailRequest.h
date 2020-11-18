@@ -18,10 +18,12 @@
     QLCacheVersionedFileIdentifier *_fileIdentifier;
     double _scale;
     double _minimumSize;
+    unsigned long long _badgeType;
     long long _sequenceNumber;
     struct CGSize _size;
 }
 
+@property (nonatomic) unsigned long long badgeType; // @synthesize badgeType=_badgeType;
 @property BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (readonly) QLCacheVersionedFileIdentifier *fileIdentifier; // @synthesize fileIdentifier=_fileIdentifier;
 @property (readonly) BOOL iconMode; // @synthesize iconMode=_iconMode;
@@ -35,7 +37,9 @@
 + (id)thumbnailRequestForFPItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 iconMode:(BOOL)arg5;
 + (id)thumbnailRequestForFPItem:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 iconMode:(BOOL)arg4;
 + (id)thumbnailRequestForFileAtURL:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 iconMode:(BOOL)arg5;
++ (id)thumbnailRequestForFileAtURL:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 iconMode:(BOOL)arg5 error:(id *)arg6;
 + (id)thumbnailRequestForFileAtURL:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 iconMode:(BOOL)arg4;
++ (id)thumbnailRequestForFileAtURL:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 iconMode:(BOOL)arg4 error:(id *)arg5;
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -9,11 +9,13 @@
 @interface CKRecord (PKAdditions)
 - (id)description;
 - (BOOL)pk_boolForKey:(id)arg1;
+- (id)pk_dataForKey:(id)arg1;
 - (id)pk_dateForKey:(id)arg1;
 - (id)pk_decimalNumberForKey:(id)arg1;
 - (id)pk_description;
 - (id)pk_dictionaryForKey:(id)arg1;
 - (BOOL)pk_encryptedBoolForKey:(id)arg1;
+- (id)pk_encryptedDataForKey:(id)arg1;
 - (id)pk_encryptedDateForKey:(id)arg1;
 - (id)pk_encryptedDecimalNumberForKey:(id)arg1;
 - (id)pk_encryptedDictionaryForKey:(id)arg1;

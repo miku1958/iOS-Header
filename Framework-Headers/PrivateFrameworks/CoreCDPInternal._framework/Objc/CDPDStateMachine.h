@@ -30,8 +30,8 @@
 @property (strong, nonatomic) id<CDPStateUIProviderInternal> uiProvider; // @synthesize uiProvider=_uiProvider;
 
 - (void).cxx_destruct;
-- (void)_attemptBackupRecoveryByPromptingForRemoteSecretWithLocalSecret:(id)arg1 localSecretType:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 hasPeersForRemoteApproval:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)_attemptBackupRecoveryWithLocalSecret:(id)arg1 type:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 hasPeersForRemoteApproval:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_attemptBackupRecoveryByPromptingForRemoteSecretWithLocalSecret:(id)arg1 localSecretType:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 circleJoinResult:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_attemptBackupRecoveryWithLocalSecret:(id)arg1 type:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 circleJoinResult:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_attemptCDPEnable:(CDUnknownBlockType)arg1;
 - (void)_authenticatedRepairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_authenticatedShouldPerformRepairWithCompletion:(CDUnknownBlockType)arg1;
@@ -41,18 +41,18 @@
 - (void)_enableSecureBackupWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_enrollOrDisableCDPAfterEnabledStateVerified:(CDUnknownBlockType)arg1;
 - (void)_handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_handleInteractiveRecoveryFlowWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handlePreflightError:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_handleRecoveryResetRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleiCDPStatusCheckError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_performInteractivelyAuthenticatedRepair:(CDUnknownBlockType)arg1;
+- (void)_postRecoveryEnableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_predicateForRecordUpgradeCheck;
 - (id)_predicateForRecordUpgradeCheckIgnoringBottled;
 - (void)_preflightAccountStateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_recoverSecureBackupWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_recoverSecureBackupWithHasPeersForRemoteApproval:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_refreshAndAuthenticateWithContext:(id)arg1;
-- (void)_renewAndRepairWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_repairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_resetAccountCDPStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)circleController:(id)arg1 secureBackupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg2;
 - (id)circlePeerIDForSecureBackupController:(id)arg1;

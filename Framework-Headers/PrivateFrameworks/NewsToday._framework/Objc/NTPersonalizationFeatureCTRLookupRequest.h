@@ -8,18 +8,18 @@
 
 #import <NewsToday/NSCopying-Protocol.h>
 
-@class FRPersonalizationFeature;
+@class FCPersonalizationFeature;
 
 @interface NTPersonalizationFeatureCTRLookupRequest : NSObject <NSCopying>
 {
-    FRPersonalizationFeature *_personalizationFeature;
+    FCPersonalizationFeature *_personalizationFeature;
     double _clickPrior;
     double _impressionPrior;
 }
 
 @property (nonatomic) double clickPrior; // @synthesize clickPrior=_clickPrior;
 @property (nonatomic) double impressionPrior; // @synthesize impressionPrior=_impressionPrior;
-@property (copy, nonatomic) FRPersonalizationFeature *personalizationFeature; // @synthesize personalizationFeature=_personalizationFeature;
+@property (copy, nonatomic) FCPersonalizationFeature *personalizationFeature; // @synthesize personalizationFeature=_personalizationFeature;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

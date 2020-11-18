@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <QuickLook/QLAsynchronousOperation.h>
+#import <QuickLookSupport/QLAsynchronousOperation.h>
 
 __attribute__((visibility("hidden")))
 @interface QLAsynchronousBlockOperation : QLAsynchronousOperation

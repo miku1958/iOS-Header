@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface AVCSessionConfiguration : NSObject
 {
     unsigned long long _maxRemoteParticipants;
-    long long _sessionType;
+    long long _sessionMode;
+    id _reportingHierarchyToken;
 }
 
 @property (nonatomic) unsigned long long maxRemoteParticipants; // @synthesize maxRemoteParticipants=_maxRemoteParticipants;
-@property (nonatomic) long long sessionType; // @synthesize sessionType=_sessionType;
+@property (copy, nonatomic) id reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
+@property (nonatomic) long long sessionMode; // @synthesize sessionMode=_sessionMode;
 
-+ (long long)clientSessionTypeWithSessionType:(long long)arg1;
-+ (long long)sessionTypeWithClientSessionType:(long long)arg1;
++ (long long)clientSessionModeWithSessionMode:(long long)arg1;
++ (long long)sessionModeWithClientSessionMode:(long long)arg1;
+- (void)dealloc;
 - (id)dictionary;
 - (void)setUpWithDictionary:(id)arg1;
 

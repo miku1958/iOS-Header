@@ -9,7 +9,7 @@
 #import <ControlCenterUIKit/CCUIContentModule-Protocol.h>
 
 @class CCUICAPackageDescription, CCUIContentModuleContext, CCUIToggleViewController, NSString, UIColor, UIImage, UIViewController;
-@protocol CCUIContentModuleContentViewController;
+@protocol CCUIContentModuleBackgroundViewController, CCUIContentModuleContentViewController;
 
 @interface CCUIToggleModule : NSObject <CCUIContentModule>
 {
@@ -18,7 +18,7 @@
     CCUICAPackageDescription *_glyphPackageDescription;
 }
 
-@property (readonly, nonatomic) UIViewController *backgroundViewController;
+@property (readonly, nonatomic) UIViewController<CCUIContentModuleBackgroundViewController> *backgroundViewController;
 @property (strong, nonatomic) CCUIContentModuleContext *contentModuleContext; // @synthesize contentModuleContext=_contentModuleContext;
 @property (readonly, nonatomic) UIViewController<CCUIContentModuleContentViewController> *contentViewController;
 @property (readonly, copy) NSString *debugDescription;

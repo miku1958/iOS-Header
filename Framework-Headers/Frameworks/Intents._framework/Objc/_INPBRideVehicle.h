@@ -7,12 +7,14 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBRideVehicle-Protocol.h>
 
-@class GEOLocation, NSString, PBUnknownFields, _INPBImageValue;
+@class GEOLocation, NSString, _INPBImageValue;
 
-@interface _INPBRideVehicle : PBCodable <NSCopying>
+@interface _INPBRideVehicle : PBCodable <_INPBRideVehicle, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     GEOLocation *_location;
     NSString *_manufacturer;
     _INPBImageValue *_mapAnnotationImage;
@@ -20,26 +22,25 @@
     NSString *_registrationPlate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (readonly, nonatomic) BOOL hasManufacturer;
 @property (readonly, nonatomic) BOOL hasMapAnnotationImage;
 @property (readonly, nonatomic) BOOL hasModel;
 @property (readonly, nonatomic) BOOL hasRegistrationPlate;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) GEOLocation *location; // @synthesize location=_location;
-@property (strong, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
+@property (copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (strong, nonatomic) _INPBImageValue *mapAnnotationImage; // @synthesize mapAnnotationImage=_mapAnnotationImage;
-@property (strong, nonatomic) NSString *model; // @synthesize model=_model;
-@property (strong, nonatomic) NSString *registrationPlate; // @synthesize registrationPlate=_registrationPlate;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSString *model; // @synthesize model=_model;
+@property (copy, nonatomic) NSString *registrationPlate; // @synthesize registrationPlate=_registrationPlate;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

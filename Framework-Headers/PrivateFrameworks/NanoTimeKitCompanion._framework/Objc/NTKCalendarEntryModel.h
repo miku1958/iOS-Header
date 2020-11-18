@@ -6,13 +6,14 @@
 
 #import <NanoTimeKitCompanion/NTKTimelineEntryModel.h>
 
-@class NSDate, NSString, NSURL;
+@class NSArray, NSDate, NSString, NSURL;
 
 @interface NTKCalendarEntryModel : NTKTimelineEntryModel
 {
     BOOL _displayAsTomorrow;
     BOOL _displayAsConflicting;
     BOOL _displayAsFirstInDay;
+    BOOL _overlappingDates;
     NSString *_identifier;
     NSDate *_eventStartDate;
     NSDate *_eventEndDate;
@@ -23,16 +24,19 @@
     unsigned long long _overlappingEventCount;
     unsigned long long _eventsInDayCount;
     NSURL *_launchURL;
+    NSArray *_eventColors;
 }
 
 @property (nonatomic) BOOL displayAsConflicting; // @synthesize displayAsConflicting=_displayAsConflicting;
 @property (nonatomic) BOOL displayAsFirstInDay; // @synthesize displayAsFirstInDay=_displayAsFirstInDay;
 @property (nonatomic) BOOL displayAsTomorrow; // @synthesize displayAsTomorrow=_displayAsTomorrow;
+@property (strong, nonatomic) NSArray *eventColors; // @synthesize eventColors=_eventColors;
 @property (strong, nonatomic) NSDate *eventEndDate; // @synthesize eventEndDate=_eventEndDate;
 @property (strong, nonatomic) NSDate *eventStartDate; // @synthesize eventStartDate=_eventStartDate;
 @property (nonatomic) unsigned long long eventsInDayCount; // @synthesize eventsInDayCount=_eventsInDayCount;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) NSURL *launchURL; // @synthesize launchURL=_launchURL;
+@property (nonatomic) BOOL overlappingDates; // @synthesize overlappingDates=_overlappingDates;
 @property (nonatomic) unsigned long long overlappingEventCount; // @synthesize overlappingEventCount=_overlappingEventCount;
 @property (strong, nonatomic) NSString *primaryEventLocation; // @synthesize primaryEventLocation=_primaryEventLocation;
 @property (strong, nonatomic) NSString *primaryEventOrganizerName; // @synthesize primaryEventOrganizerName=_primaryEventOrganizerName;
@@ -44,14 +48,22 @@
 + (id)_extraLargeConflictImageProvider;
 + (id)_modularSmallCalendarImageProvider;
 + (id)_modularSmallConflictImageProvider;
++ (id)_signatureCircularCalendarProvider;
++ (id)_signatureCornerImageProvider;
 + (id)_swapPlaceholderString:(id)arg1 withTimeStringForDate:(id)arg2 inString:(id)arg3 usingBaseFont:(id)arg4 smallCapsBaseFont:(id)arg5 timeZone:(id)arg6 options:(unsigned long long)arg7;
 + (id)_utilityCalendarImageProvider;
 + (id)circular:(id)arg1 isMedium:(BOOL)arg2;
++ (id)contentForLargeModular:(id)arg1;
++ (id)contentForSignatureRectangular:(id)arg1;
 + (id)extraLarge:(id)arg1;
 + (id)largeModular:(id)arg1;
 + (id)largeUtility:(id)arg1;
 + (id)loadingEntryForFamily:(long long)arg1;
 + (id)lockedEntryForFamily:(long long)arg1;
++ (id)signatureBezel:(id)arg1;
++ (id)signatureCircular:(id)arg1;
++ (id)signatureCorner:(id)arg1;
++ (id)signatureRectangular:(id)arg1;
 + (id)smallModular:(id)arg1;
 + (id)smallUtility:(id)arg1;
 - (void).cxx_destruct;

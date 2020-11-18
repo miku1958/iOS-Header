@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/NSMutableCopying-Protocol.h>
 #import <MediaRemote/NSSecureCoding-Protocol.h>
@@ -16,7 +16,6 @@
     NSUUID *_uniqueIdentifier;
     NSString *_primaryApplicationDisplayID;
     NSString *_secondaryApplicationDisplayID;
-    BOOL _shouldPrepareAppPlaybackQueue;
     int _status;
     int _creatorProcessID;
 }
@@ -24,7 +23,6 @@
 @property (readonly, nonatomic) int creatorProcessID; // @synthesize creatorProcessID=_creatorProcessID;
 @property (readonly, nonatomic) NSString *primaryApplicationDisplayID; // @synthesize primaryApplicationDisplayID=_primaryApplicationDisplayID;
 @property (readonly, nonatomic) NSString *secondaryApplicationDisplayID; // @synthesize secondaryApplicationDisplayID=_secondaryApplicationDisplayID;
-@property (readonly, nonatomic) BOOL shouldPrepareAppPlaybackQueue; // @synthesize shouldPrepareAppPlaybackQueue=_shouldPrepareAppPlaybackQueue;
 @property (readonly, nonatomic) int status; // @synthesize status=_status;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIFocusEnvironment-Protocol.h>
-#import <UIKit/UIInterfaceActionDisplayPropertyObserver-Protocol.h>
-#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
+#import <UIKitCore/UIFocusEnvironment-Protocol.h>
+#import <UIKitCore/UIInterfaceActionDisplayPropertyObserver-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSString, UIInterfaceAction, UIInterfaceActionVisualStyle, UISpringLoadedInteraction;
-@protocol UIInterfaceActionVisualBackgroundDisplaying;
+@protocol UIFocusEnvironment, UIFocusItemContainer, UIInterfaceActionVisualBackgroundDisplaying;
 
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionRepresentationView : UIView <UIFocusEnvironment, UISpringLoadedInteractionSupporting, UIInterfaceActionDisplayPropertyObserver>
@@ -44,12 +44,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL canRemoveContentFromHierarchyWhenNotVisible; // @synthesize canRemoveContentFromHierarchyWhenNotVisible=_canRemoveContentFromHierarchyWhenNotVisible;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) UISpringLoadedInteraction *interactionForSpringLoading; // @synthesize interactionForSpringLoading=_interactionForSpringLoading;
 @property (readonly, nonatomic) NSLayoutConstraint *minimumHeightConstraint; // @synthesize minimumHeightConstraint=_minimumHeightConstraint;
 @property (readonly, nonatomic) NSLayoutConstraint *minimumWidthConstraint; // @synthesize minimumWidthConstraint=_minimumWidthConstraint;
 @property (nonatomic) BOOL ownsActionContent; // @synthesize ownsActionContent=_ownsActionContent;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property (readonly, weak, nonatomic) UIView *preferredFocusedView;
 @property (nonatomic, getter=isPressed) BOOL pressed; // @synthesize pressed=_pressed;

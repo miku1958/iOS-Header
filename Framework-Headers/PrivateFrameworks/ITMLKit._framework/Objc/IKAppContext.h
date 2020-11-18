@@ -10,16 +10,18 @@
 #import <ITMLKit/IKJSInspectorControllerDelegate-Protocol.h>
 #import <ITMLKit/ISURLOperationDelegate-Protocol.h>
 
-@class IKAppCache, IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, IKViewElementRegistry, JSContext, NSError, NSMutableArray, NSNumber, NSString;
+@class IKAppCache, IKJSArrayBufferStore, IKJSFoundation, IKJSInspectorController, IKViewElementRegistry, JSContext, NSError, NSMutableArray, NSNumber, NSString, NSThread, NSURL;
 @protocol IKAppContextDelegate, IKAppScriptFallbackHandler, IKApplication, OS_dispatch_source;
 
 @interface IKAppContext : NSObject <ISURLOperationDelegate, IKAppCacheDelegate, IKJSInspectorControllerDelegate>
 {
+    NSThread *_validThread;
     IKJSArrayBufferStore *_arrayBufferStore;
     struct __CFRunLoop *_jsThreadRunLoop;
     struct __CFRunLoopSource *_jsThreadRunLoopSource;
     NSObject<OS_dispatch_source> *_lowMemoryWarningSource;
     BOOL _respondsToTraitCollection;
+    BOOL _isAirplaneModeEnabled;
     struct {
         BOOL respondsToHighlightViewForOneElement;
         BOOL respondsToHighlightViewsForManyElements;
@@ -31,6 +33,7 @@
     BOOL _mescalPrimeEnabledForXHRRequests;
     BOOL _trusted;
     BOOL _canAccessPendingQueue;
+    BOOL _running;
     BOOL _privileged;
     BOOL _appUsesDefaultStyleSheets;
     id<IKApplication> _app;
@@ -46,6 +49,7 @@
     NSError *_responseError;
     id _reloadData;
     NSMutableArray *_pendingQueue;
+    NSURL *_resolvedBootURL;
     NSMutableArray *_postEvaluationBlocks;
     IKJSFoundation *_jsFoundation;
     IKViewElementRegistry *_viewElementRegistry;
@@ -78,8 +82,10 @@
 @property (nonatomic, getter=isPrivileged) BOOL privileged; // @synthesize privileged=_privileged;
 @property (strong, nonatomic) id reloadData; // @synthesize reloadData=_reloadData;
 @property (nonatomic) BOOL remoteInspectionEnabled; // @synthesize remoteInspectionEnabled=_remoteInspectionEnabled;
+@property (readonly, copy, nonatomic) NSURL *resolvedBootURL; // @synthesize resolvedBootURL=_resolvedBootURL;
 @property (strong, nonatomic) NSError *responseError; // @synthesize responseError=_responseError;
 @property (copy, nonatomic) NSString *responseScript; // @synthesize responseScript=_responseScript;
+@property (getter=isRunning) BOOL running; // @synthesize running=_running;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isTrusted) BOOL trusted; // @synthesize trusted=_trusted;
 @property (readonly, nonatomic) IKViewElementRegistry *viewElementRegistry; // @synthesize viewElementRegistry=_viewElementRegistry;
@@ -87,7 +93,6 @@
 
 + (id)currentAppContext;
 + (BOOL)isInFactoryMode;
-+ (void)load;
 + (void)registerPrivateProtocols:(id)arg1 forClass:(Class)arg2;
 - (void).cxx_destruct;
 - (void)_addStopRecordToPendingQueueWithReload:(BOOL)arg1;
@@ -101,7 +106,9 @@
 - (void)_evaluateFoundationWithDeviceConfig:(id)arg1 addPrivateInterfaces:(BOOL)arg2;
 - (void)_invalidateJSThread;
 - (void)_jsThreadMain;
+- (void)_networkPropertiesChanged:(id)arg1;
 - (id)_preferredLaunchURL;
+- (BOOL)_prepareStartWithURL:(id)arg1;
 - (void)_sourceCanceledOnRunLoop:(struct __CFRunLoop *)arg1;
 - (void)_sourcePerform;
 - (void)_sourceScheduledOnRunLoop:(struct __CFRunLoop *)arg1;
@@ -115,6 +122,7 @@
 - (void)contextDidFailWithError:(id)arg1;
 - (void)contextDidStartWithJS:(id)arg1 options:(id)arg2;
 - (void)contextDidStopWithOptions:(id)arg1;
+- (void)dealloc;
 - (void)evaluate:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)evaluateDelegateBlockSync:(CDUnknownBlockType)arg1;
 - (void)evaluateFoundationJS;

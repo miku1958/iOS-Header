@@ -11,6 +11,7 @@
 @class NSArray, NSString, NSURL, NUVideoExportClient, PLPhotoEditModel;
 @protocol PUImageInfoNode, PUVideoURLNode, PXRunNodeDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUVideoExportNode : PXRunNode <PUVideoURLExportNode>
 {
     NUVideoExportClient *_exportClient;

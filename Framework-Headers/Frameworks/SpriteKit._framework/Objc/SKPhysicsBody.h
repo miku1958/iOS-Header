@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, SKNode;
 
-@interface SKPhysicsBody : NSObject <NSCopying, NSCoding>
+@interface SKPhysicsBody : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _dynamic;
     BOOL _usesPreciseCollisionDetection;
@@ -75,6 +75,7 @@
 + (id)bodyWithTexture:(id)arg1 alphaThreshold:(float)arg2 size:(struct CGSize)arg3 accuracy:(float)arg4;
 + (id)bodyWithTexture:(id)arg1 size:(struct CGSize)arg2;
 + (id)copyWithZone:(struct _NSZone *)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)allContactedBodies;
 - (void)applyAngularImpulse:(double)arg1;

@@ -24,16 +24,6 @@ struct CC_SHA1state_st {
     int _field9;
 };
 
-struct IPCMessage;
-
-struct NEAgentFilterPluginCallbacks {
-    CDUnknownFunctionPointerType PluginInit;
-    CDUnknownFunctionPointerType PluginStart;
-    CDUnknownFunctionPointerType PluginStop;
-    CDUnknownFunctionPointerType PluginEnvironmentEvent;
-    CDUnknownFunctionPointerType PluginDispose;
-};
-
 struct NEIKEPacketDelegateCallbacks {
     CDUnknownFunctionPointerType registerIKEFlow;
     CDUnknownFunctionPointerType unregisterIKEFlow;
@@ -42,36 +32,19 @@ struct NEIKEPacketDelegateCallbacks {
     void *delegateHandle;
 };
 
-struct _VPNConfigurationPrivate {
-    struct __CFRuntimeBase {
-        unsigned long long _field1;
-        _Atomic unsigned long long _field2;
-    } _field1;
-    struct __CFString *_field2;
-    unsigned char _field3;
-    struct __CFRunLoopSource *_field4;
-    struct __CFRunLoopSource *_field5;
-    struct __CFRunLoopSource *_field6;
-    struct __CFArray *_field7;
-    CDUnknownFunctionPointerType _field8;
-    CDStruct_e097db04 _field9;
-    CDUnknownFunctionPointerType _field10;
-    CDStruct_e097db04 _field11;
-    id _field12;
-    void *_field13;
-    struct ipc_queue _field14;
-    id _field15;
-    struct {
-        struct _VPNConfigurationPrivate *_field1;
-    } _field16;
+struct nw_protocol {
+    unsigned char _field1[16];
+    struct nw_protocol_identifier *_field2;
+    struct nw_protocol_callbacks *_field3;
+    struct nw_protocol *_field4;
+    void *_field5;
+    struct nw_protocol *_field6;
+    void *_field7;
 };
 
-struct __CFRunLoopSource;
+struct nw_protocol_callbacks;
 
-struct ipc_queue {
-    struct IPCMessage *_field1;
-    struct IPCMessage **_field2;
-};
+struct nw_protocol_identifier;
 
 struct sockaddr {
     unsigned char _field1;
@@ -90,10 +63,7 @@ struct sockaddr_storage {
 #pragma mark Typedef'd Structures
 
 typedef struct {
-    long long _field1;
-    void *_field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    CDUnknownFunctionPointerType _field5;
-} CDStruct_e097db04;
+    int _field1;
+    unsigned char _field2[12];
+} CDStruct_c3d3b44c;
 

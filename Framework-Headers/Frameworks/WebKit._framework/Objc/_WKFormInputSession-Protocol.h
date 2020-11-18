@@ -16,9 +16,11 @@
 @property (strong, nonatomic) UIView *customInputView;
 @property (readonly, nonatomic) id<_WKFocusedElementInfo> focusedElementInfo;
 @property (nonatomic) BOOL forceSecureTextEntry;
+@property (readonly, nonatomic) BOOL requiresStrongPasswordAssistance;
 @property (copy, nonatomic) NSArray *suggestions;
 @property (readonly, nonatomic) NSObject<NSSecureCoding> *userObject;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
+- (void)reloadFocusedElementContextView;
 @end
 

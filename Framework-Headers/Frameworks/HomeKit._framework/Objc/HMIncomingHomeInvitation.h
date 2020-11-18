@@ -23,10 +23,10 @@
 + (id)homeInvitationsFromEncodedData:(id)arg1 homeManager:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__configureWithContext:(id)arg1 homeManager:(id)arg2;
 - (void)_acceptInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_acceptInviteWithPresenceAuthStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_cancelInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_configure:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)acceptInviteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)acceptInviteWithPresenceAuthStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVAudioFormat, NSArray, NSData, NSDictionary, NSURL;
+@class AVAudioFormat, NSArray, NSData, NSDictionary, NSString, NSURL;
 @protocol AVAudioPlayerDelegate;
 
 @interface AVAudioPlayer : NSObject
 {
     id _impl;
+    NSString *_currentDevice;
 }
 
 @property (copy, nonatomic) NSArray *channelAssignments;
+@property (copy) NSString *currentDevice; // @synthesize currentDevice=_currentDevice;
 @property double currentTime;
 @property (readonly) NSData *data;
 @property id<AVAudioPlayerDelegate> delegate;

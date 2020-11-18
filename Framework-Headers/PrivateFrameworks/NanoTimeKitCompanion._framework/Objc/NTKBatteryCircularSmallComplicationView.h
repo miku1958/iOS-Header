@@ -6,28 +6,17 @@
 
 #import <NanoTimeKitCompanion/NTKCircularSmallRingTextComplicationView.h>
 
-#import <NanoTimeKitCompanion/NTKBatteryComplicationDisplay-Protocol.h>
+@class NTKColoringLabel;
 
-@class NSString;
-@protocol NTKComplicationDisplayObserver;
-
-@interface NTKBatteryCircularSmallComplicationView : NTKCircularSmallRingTextComplicationView <NTKBatteryComplicationDisplay>
+@interface NTKBatteryCircularSmallComplicationView : NTKCircularSmallRingTextComplicationView
 {
-    double _level;
-    long long _state;
+    NTKColoringLabel *_label;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver;
-@property (readonly) unsigned long long hash;
-@property (nonatomic, getter=isHighlighted) BOOL highlighted;
-@property (nonatomic) BOOL shouldUseTemplateColors;
-@property (readonly) Class superclass;
-
-- (BOOL)_wantsPlatter;
-- (void)setLevel:(float)arg1;
-- (void)setState:(long long)arg1;
++ (BOOL)handlesComplicationTemplate:(id)arg1;
++ (void)load;
+- (void).cxx_destruct;
+- (void)_updateForTemplateChange;
 
 @end
 

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)logHandle;
 + (id)pathForSentinelFile;
 + (BOOL)shouldBehaveAsRestart;
 - (id)createPersistentStoreCoordinator;

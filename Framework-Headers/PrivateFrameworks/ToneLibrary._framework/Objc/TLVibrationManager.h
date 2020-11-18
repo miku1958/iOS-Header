@@ -42,6 +42,7 @@
 - (long long)_currentVibrationWatchAlertPolicyForAlertType:(long long)arg1 topic:(id)arg2;
 - (long long)_currentVibrationWatchAlertPolicyForAlertType:(long long)arg1 topic:(id)arg2 didFindPersistedWatchAlertPolicy:(BOOL *)arg3;
 - (id)_currentVibrationWatchAlertPolicyPreferenceKeyForAlertType:(long long)arg1 topic:(id)arg2;
+- (id)_defaultPreferablyNonSilentVibrationIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (id)_defaultVibrationIdentifierForAlertType:(long long)arg1 topic:(id)arg2 correspondingToneIdentifier:(id)arg3;
 - (void)_didChangeUserGeneratedVibrationPatterns;
 - (void)_didSetVibrationPreferenceSuccessfullyWithKey:(id)arg1 inDomain:(id)arg2 usingPreferencesOfKind:(unsigned long long)arg3;
@@ -82,9 +83,11 @@
 - (id)currentVibrationPatternForAlertType:(long long)arg1;
 - (void)dealloc;
 - (id)defaultVibrationIdentifierForAlertType:(long long)arg1;
+- (id)defaultVibrationIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (id)defaultVibrationNameForAlertType:(long long)arg1;
 - (id)defaultVibrationPatternForAlertType:(long long)arg1;
 - (BOOL)deleteUserGeneratedVibrationPatternWithIdentifier:(id)arg1 error:(id *)arg2;
+- (BOOL)hasSpecificDefaultVibrationIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (id)init;
 - (id)nameOfVibrationWithIdentifier:(id)arg1;
 - (id)noneVibrationName;

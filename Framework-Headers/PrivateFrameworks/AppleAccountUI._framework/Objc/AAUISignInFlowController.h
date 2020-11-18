@@ -41,7 +41,6 @@
 
 - (void).cxx_destruct;
 - (id)_appleAccountType;
-- (BOOL)_carrierBundleSaysHideFindMyiPhone;
 - (void)_hasActivationLockSupportedWatchWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadAccountRepairRemoteUIWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentExistingAccountAlert:(id)arg1;
@@ -59,6 +58,7 @@
 - (void)accountRepairRemoteUI:(id)arg1 account:(id)arg2 didFinishWithSuccess:(BOOL)arg3;
 - (void)genericTermsRemoteUI:(id)arg1 didFinishWithSuccess:(BOOL)arg2;
 - (id)init;
+- (void)prewarmOperationsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)signInOperationManager:(id)arg1 didSaveAccount:(id)arg2 error:(id)arg3;
 - (void)signInWithIDMSAuthenticationResults:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

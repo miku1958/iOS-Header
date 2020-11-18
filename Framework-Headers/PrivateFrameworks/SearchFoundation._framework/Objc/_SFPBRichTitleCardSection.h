@@ -13,23 +13,6 @@
 
 @interface _SFPBRichTitleCardSection : PBCodable <_SFPBRichTitleCardSection, NSSecureCoding>
 {
-    struct {
-        unsigned int canBeHidden:1;
-        unsigned int hasTopPadding:1;
-        unsigned int hasBottomPadding:1;
-        unsigned int separatorStyle:1;
-        unsigned int isCentered:1;
-        unsigned int rating:1;
-        unsigned int reviewNewLine:1;
-        unsigned int auxiliaryBottomTextColor:1;
-        unsigned int auxiliaryAlignment:1;
-        unsigned int hideVerticalDivider:1;
-        unsigned int titleAlign:1;
-        unsigned int titleWeight:1;
-        unsigned int titleNoWrap:1;
-        unsigned int thumbnailCropCircle:1;
-        unsigned int playActionAlign:1;
-    } _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -80,41 +63,8 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property (copy, nonatomic) NSString *footnote; // @synthesize footnote=_footnote;
-@property (readonly, nonatomic) BOOL hasAuxiliaryAlignment;
-@property (readonly, nonatomic) BOOL hasAuxiliaryBottomText;
-@property (readonly, nonatomic) BOOL hasAuxiliaryBottomTextColor;
-@property (readonly, nonatomic) BOOL hasAuxiliaryMiddleText;
-@property (readonly, nonatomic) BOOL hasAuxiliaryTopText;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasContentAdvisory;
-@property (readonly, nonatomic) BOOL hasDescriptionText;
-@property (readonly, nonatomic) BOOL hasFootnote;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasHideVerticalDivider;
-@property (readonly, nonatomic) BOOL hasImageOverlay;
-@property (readonly, nonatomic) BOOL hasIsCentered;
-@property (readonly, nonatomic) BOOL hasPlayAction;
-@property (readonly, nonatomic) BOOL hasPlayActionAlign;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasRating;
-@property (readonly, nonatomic) BOOL hasRatingText;
-@property (readonly, nonatomic) BOOL hasReviewGlyph;
-@property (readonly, nonatomic) BOOL hasReviewNewLine;
-@property (readonly, nonatomic) BOOL hasReviewText;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasSubtitle;
-@property (readonly, nonatomic) BOOL hasThumbnailCropCircle;
-@property (readonly, nonatomic) BOOL hasTitle;
-@property (readonly, nonatomic) BOOL hasTitleAlign;
-@property (readonly, nonatomic) BOOL hasTitleImage;
-@property (readonly, nonatomic) BOOL hasTitleNoWrap;
-@property (readonly, nonatomic) BOOL hasTitleWeight;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideVerticalDivider; // @synthesize hideVerticalDivider=_hideVerticalDivider;
 @property (strong, nonatomic) _SFPBImage *imageOverlay; // @synthesize imageOverlay=_imageOverlay;

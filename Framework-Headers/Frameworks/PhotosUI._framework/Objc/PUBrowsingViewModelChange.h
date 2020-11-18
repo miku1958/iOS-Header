@@ -23,6 +23,7 @@
     BOOL _secondScreenSizeDidChange;
     BOOL _chromeVisibilityDidChange;
     BOOL _presentingOverOneUpDidChange;
+    BOOL _reviewScreenBarsModelDidChange;
 }
 
 @property (readonly, nonatomic) NSMapTable *_mutableSharedViewModelChangesByAsset;
@@ -38,6 +39,7 @@
 @property (nonatomic, setter=_setIsScrollingDidChange:) BOOL isScrollingDidChange; // @synthesize isScrollingDidChange=_isScrollingDidChange;
 @property (nonatomic, setter=_setIsScrubbingDidChange:) BOOL isScrubbingDidChange; // @synthesize isScrubbingDidChange=_isScrubbingDidChange;
 @property (nonatomic, setter=_setPresentingOverOneUpDidChange:) BOOL presentingOverOneUpDidChange; // @synthesize presentingOverOneUpDidChange=_presentingOverOneUpDidChange;
+@property (nonatomic, setter=_setReviewScreenBarsModelDidChange:) BOOL reviewScreenBarsModelDidChange; // @synthesize reviewScreenBarsModelDidChange=_reviewScreenBarsModelDidChange;
 @property (nonatomic, setter=_setSecondScreenSizeDidChange:) BOOL secondScreenSizeDidChange; // @synthesize secondScreenSizeDidChange=_secondScreenSizeDidChange;
 @property (nonatomic, setter=_setTransitionDriverIdentifierDidChange:) BOOL transitionDriverIdentifierDidChange; // @synthesize transitionDriverIdentifierDidChange=_transitionDriverIdentifierDidChange;
 

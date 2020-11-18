@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSCHText : NSObject
@@ -51,8 +51,8 @@ __attribute__((visibility("hidden")))
 - (id)p_textCacheForParagraphStyle:(id)arg1;
 - (id)p_wpColumnForText:(id)arg1 paragraphStyle:(id)arg2 textBlack:(BOOL)arg3 wrapWidth:(double)arg4 textCache:(id)arg5 layoutProperties:(id)arg6;
 - (id)p_wpStorageForAttributedString:(const struct __CFAttributedString *)arg1 paragraphStyle:(id)arg2;
-- (id)p_wpTextForParagraphStyle:(id)arg1 textBlack:(BOOL)arg2 textCache:(id)arg3;
-- (id)p_wpTextForParagraphStyle:(id)arg1 textBlack:(BOOL)arg2 textCache:(id)arg3 cacheKey:(id)arg4;
+- (id)p_wpTextForParagraphStyle:(id)arg1 text:(id)arg2 textBlack:(BOOL)arg3 textCache:(id)arg4;
+- (id)p_wpTextForParagraphStyle:(id)arg1 text:(id)arg2 textBlack:(BOOL)arg3 textCache:(id)arg4 cacheKey:(id)arg5;
 - (const struct __CTFont *)retainedCTFontForParagraphStyle:(id)arg1;
 - (struct TSCHTextLayoutResults)textLayoutResultsForColumn:(id)arg1;
 

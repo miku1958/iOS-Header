@@ -23,6 +23,7 @@
 + (id)suggestedEventInfoWithOpaqueKey:(id)arg1 uniqueKey:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)entityType;
+- (id)semanticIdentifier;
 
 @end
 

@@ -11,6 +11,7 @@
 @class NSArray, NSString, UIButton, UILongPressGestureRecognizer, _UIBackdropView;
 @protocol PUPhotoEditToolbarDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditToolbar : UIView <PUPhotoEditLayoutStaticAdaptable>
 {
     UIView *_mainToolbarContainer;

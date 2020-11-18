@@ -9,32 +9,29 @@
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 
-@class HMFMessageDispatcher, NSDictionary, NSString, NSUUID;
+@class HMFUnfairLock, NSDictionary, NSString, NSUUID, _HMContext;
 @protocol HMDeviceSetupSessionDelegate, OS_dispatch_queue;
 
 @interface HMDeviceSetupSession : NSObject <HMFLogging, HMFMessageReceiver>
 {
+    HMFUnfairLock *_lock;
     BOOL _open;
     NSDictionary *_userInfo;
     id<HMDeviceSetupSessionDelegate> _delegate;
     NSUUID *_identifier;
     long long _role;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMFMessageDispatcher *_messageDispatcher;
+    _HMContext *_context;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak) id<HMDeviceSetupSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (nonatomic, getter=isOpen) BOOL open; // @synthesize open=_open;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) long long role; // @synthesize role=_role;
 @property (readonly) Class superclass;
 @property (readonly, copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;

@@ -21,7 +21,7 @@
 @property (readonly, strong, nonatomic) BKSPersistentConnectionDefaults *persistentConnectionDefaults;
 @property (readonly, strong, nonatomic) BKSSpringBoardDefaults *springBoardDefaults;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

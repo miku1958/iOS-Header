@@ -7,49 +7,38 @@
 #import <objc/NSObject.h>
 
 @class NSCache, NSMapTable, NSOperationQueue;
-@protocol OS_dispatch_queue;
 
 @interface DOCThumbnailCache : NSObject
 {
-    NSObject<OS_dispatch_queue> *_queue;
     NSOperationQueue *_operationQueue;
     NSMapTable *_cachedThumbnailItems;
     NSMapTable *_cachedIconItems;
     NSCache *_cachedGenericItems;
     NSCache *_recentlyUsedItems;
-    long long _thumnailFetchingPriority;
 }
 
 @property (readonly, nonatomic) NSCache *cachedGenericItems; // @synthesize cachedGenericItems=_cachedGenericItems;
 @property (readonly, nonatomic) NSMapTable *cachedIconItems; // @synthesize cachedIconItems=_cachedIconItems;
 @property (readonly, nonatomic) NSMapTable *cachedThumbnailItems; // @synthesize cachedThumbnailItems=_cachedThumbnailItems;
 @property (readonly, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) NSCache *recentlyUsedItems; // @synthesize recentlyUsedItems=_recentlyUsedItems;
-@property (nonatomic) long long thumnailFetchingPriority; // @synthesize thumnailFetchingPriority=_thumnailFetchingPriority;
 
 + (void)clearCache;
-+ (void)decreaseThumnailFetchingPriority;
-+ (id)iconForContentType:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5;
-+ (void)increaseThumnailFetchingPriority;
-+ (void)resetThumnailFetchingPriorityValue;
++ (id)iconForContentType:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5 isInteractive:(BOOL)arg6;
++ (void)setMaximumThumbnailCount:(unsigned long long)arg1;
 + (id)sharedCache;
-+ (id)thumbnailForItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 style:(unsigned long long)arg5 folded:(BOOL)arg6;
-+ (id)thumbnailForItem:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5;
++ (id)thumbnailForItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 style:(unsigned long long)arg5 folded:(BOOL)arg6 isInteractive:(BOOL)arg7;
++ (id)thumbnailForItem:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5 isInteractive:(BOOL)arg6;
 - (void).cxx_destruct;
-- (id)_iconForContentType:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5 qos:(unsigned int)arg6;
-- (id)_thumbnailFallbackForItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 style:(unsigned long long)arg5 folded:(BOOL)arg6 qos:(unsigned int)arg7 currentThumbnail:(id)arg8;
-- (id)_thumbnailForItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 style:(unsigned long long)arg5 folded:(BOOL)arg6 qos:(unsigned int)arg7;
+- (id)_iconForContentType:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5 isInteractive:(BOOL)arg6;
+- (id)_thumbnailFallbackForItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 style:(unsigned long long)arg5 folded:(BOOL)arg6 currentThumbnail:(id)arg7;
+- (id)_thumbnailForItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 style:(unsigned long long)arg5 folded:(BOOL)arg6 isInteractive:(BOOL)arg7;
 - (void)clearCache;
-- (unsigned int)currentQOS;
-- (void)decreaseThumnailFetchingPriority;
-- (id)iconForContentType:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5;
-- (void)increaseThumnailFetchingPriority;
+- (id)iconForContentType:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5 isInteractive:(BOOL)arg6;
 - (id)init;
 - (void)markThumbnailAsRecentlyUsed:(id)arg1;
-- (void)resetThumnailFetchingPriorityValue;
-- (id)thumbnailForItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 style:(unsigned long long)arg5 folded:(BOOL)arg6;
-- (id)thumbnailForItem:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5;
+- (id)thumbnailForItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 style:(unsigned long long)arg5 folded:(BOOL)arg6 isInteractive:(BOOL)arg7;
+- (id)thumbnailForItem:(id)arg1 size:(struct CGSize)arg2 scale:(double)arg3 style:(unsigned long long)arg4 folded:(BOOL)arg5 isInteractive:(BOOL)arg6;
 
 @end
 

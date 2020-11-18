@@ -13,7 +13,6 @@
 
 @interface _SFPBApiResults : PBCodable <_SFPBApiResults, NSSecureCoding>
 {
-    CDStruct_60289f39 _has;
     int _status;
     int _resultType;
     NSArray *_flights;
@@ -22,8 +21,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *flights; // @synthesize flights=_flights;
-@property (readonly, nonatomic) BOOL hasResultType;
-@property (readonly, nonatomic) BOOL hasStatus;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int resultType; // @synthesize resultType=_resultType;

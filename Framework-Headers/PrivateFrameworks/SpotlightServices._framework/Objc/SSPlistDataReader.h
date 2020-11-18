@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSArray *blacklist;
 @property (readonly, nonatomic) unsigned long long count;
 
+- (struct _MDPlistContainer *)container;
 - (void)dealloc;
 - (id)description;
 - (BOOL)doesBundleExistInAppWhiteList:(id)arg1;

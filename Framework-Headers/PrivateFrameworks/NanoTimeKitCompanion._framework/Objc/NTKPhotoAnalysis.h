@@ -30,7 +30,9 @@
 @property (readonly, nonatomic) unsigned int version; // @synthesize version=_version;
 
 + (id)analysisWithImage:(id)arg1 alignment:(id)arg2;
++ (id)analysisWithImage:(id)arg1 alignment:(unsigned long long)arg2 deviceSizeClass:(unsigned long long)arg3;
 + (id)defaultAnalysis;
++ (id)invalidAnalysis;
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)encodeAsDictionary;

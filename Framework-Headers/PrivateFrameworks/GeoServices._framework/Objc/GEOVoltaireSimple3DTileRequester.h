@@ -18,6 +18,7 @@
 - (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileSetForKey:(const struct _GEOTileKey *)arg1;
 - (id)urlForTileKey:(const struct _GEOTileKey *)arg1;
+- (BOOL)useProxyAuthForTileKey:(const struct _GEOTileKey *)arg1;
 
 @end
 

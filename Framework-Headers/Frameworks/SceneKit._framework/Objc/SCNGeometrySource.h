@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -56,7 +56,7 @@
 - (id)initWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 componentType:(short)arg4 componentCount:(unsigned long long)arg5 dataOffset:(long long)arg6 dataStride:(long long)arg7;
 - (id)initWithData:(id)arg1 semantic:(id)arg2 vectorCount:(long long)arg3 floatComponents:(BOOL)arg4 componentsPerVector:(long long)arg5 bytesPerComponent:(long long)arg6 dataOffset:(long long)arg7 dataStride:(long long)arg8;
 - (id)initWithMeshSource:(struct __C3DMeshSource *)arg1;
-- (struct __C3DMeshSource *)meshSource;
+- (const struct __C3DMeshSource *)meshSource;
 - (id)mkSemantic;
 - (id)scene;
 - (struct __C3DScene *)sceneRef;

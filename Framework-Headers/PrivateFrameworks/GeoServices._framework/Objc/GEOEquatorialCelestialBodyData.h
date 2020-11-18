@@ -16,7 +16,9 @@
 @property (readonly, nonatomic) double rightAscension; // @synthesize rightAscension=_rightAscension;
 
 - (id)initWithDate:(id)arg1 body:(long long)arg2;
+- (id)initWithDate:(id)arg1 body:(long long)arg2 useHighPrecision:(BOOL)arg3;
 - (id)initWithJulianDay:(double)arg1 body:(long long)arg2;
+- (id)initWithJulianDay:(double)arg1 body:(long long)arg2 useHighPrecision:(BOOL)arg3;
 
 @end
 

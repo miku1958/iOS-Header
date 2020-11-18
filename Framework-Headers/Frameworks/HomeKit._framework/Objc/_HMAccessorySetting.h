@@ -11,11 +11,12 @@
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessorySettings, NSArray, NSMutableOrderedSet, NSString, NSUUID, _HMContext;
+@class HMAccessorySettings, HMFUnfairLock, NSArray, NSMutableOrderedSet, NSString, NSUUID, _HMContext;
 @protocol NSCopying><NSSecureCoding, OS_dispatch_queue, _HMAccesorySettingDelegate;
 
 @interface _HMAccessorySetting : NSObject <HMFLogging, HMFMessageReceiver, HMFMerging, NSSecureCoding>
 {
+    HMFUnfairLock *_lock;
     NSMutableOrderedSet *_constraints;
     BOOL _reflected;
     id<NSCopying><NSSecureCoding> _value;
@@ -24,13 +25,11 @@
     long long _type;
     unsigned long long _properties;
     NSString *_name;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMAccessorySettings *_accessorySettings;
     _HMContext *_context;
 }
 
 @property (strong, nonatomic) HMAccessorySettings *accessorySettings; // @synthesize accessorySettings=_accessorySettings;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue;
 @property (readonly, copy) NSArray *constraints;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
@@ -42,7 +41,6 @@
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
 @property (readonly) unsigned long long properties; // @synthesize properties=_properties;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, getter=isReflected) BOOL reflected; // @synthesize reflected=_reflected;
 @property (readonly) Class superclass;
 @property (readonly) long long type; // @synthesize type=_type;

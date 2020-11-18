@@ -13,7 +13,6 @@
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (BOOL)curate;
 - (id)curatedFetchResult;
 - (id)curatedOids;
 - (id)description;
@@ -23,8 +22,10 @@
 - (id)filteredFetchResult;
 - (id)includedOids;
 - (id)inclusionPredicate;
+- (BOOL)isCurated;
 - (id)keyAssetsFetchResult;
 - (BOOL)reverseSortOrder;
+- (BOOL)wantsCuration;
 
 @end
 

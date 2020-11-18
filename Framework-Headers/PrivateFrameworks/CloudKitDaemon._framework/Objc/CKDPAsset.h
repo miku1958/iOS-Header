@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     long long _downloadTokenExpiration;
     long long _downloadURLExpiration;
     long long _size;
+    NSString *_assetAuthorizationResponseUUID;
     NSData *_assetCopyMetadata;
     NSData *_clearAssetKey;
     NSString *_contentBaseURL;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
+@property (strong, nonatomic) NSString *assetAuthorizationResponseUUID; // @synthesize assetAuthorizationResponseUUID=_assetAuthorizationResponseUUID;
 @property (strong, nonatomic) NSData *assetCopyMetadata; // @synthesize assetCopyMetadata=_assetCopyMetadata;
 @property (strong, nonatomic) NSData *clearAssetKey; // @synthesize clearAssetKey=_clearAssetKey;
 @property (strong, nonatomic) NSString *contentBaseURL; // @synthesize contentBaseURL=_contentBaseURL;
@@ -47,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *downloadToken; // @synthesize downloadToken=_downloadToken;
 @property (nonatomic) long long downloadTokenExpiration; // @synthesize downloadTokenExpiration=_downloadTokenExpiration;
 @property (nonatomic) long long downloadURLExpiration; // @synthesize downloadURLExpiration=_downloadURLExpiration;
+@property (readonly, nonatomic) BOOL hasAssetAuthorizationResponseUUID;
 @property (readonly, nonatomic) BOOL hasAssetCopyMetadata;
 @property (readonly, nonatomic) BOOL hasClearAssetKey;
 @property (readonly, nonatomic) BOOL hasContentBaseURL;

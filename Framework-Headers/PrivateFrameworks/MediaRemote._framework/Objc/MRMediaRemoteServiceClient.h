@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MRAVRoutingClientController, MRMediaRemoteService, MRNotificationClient, MRNotificationServiceClient, NSArray, NSMutableArray, NSMutableDictionary, NSString, _MRNowPlayingPlayerPathProtobuf;
 @protocol OS_dispatch_queue;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)fetchPickableRoutesWithCategory:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
+- (BOOL)isOriginRegistered:(id)arg1;
 - (void)processPlayerPathInvalidationHandlersWithBlock:(CDUnknownBlockType)arg1;
 - (void)processPlayerPathInvalidationHandlersWithInvalidOrigin:(id)arg1;
 - (void)registerCallbacks;

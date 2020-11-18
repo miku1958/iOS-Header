@@ -22,6 +22,7 @@
 - (id)convertToItemCompatibleWithItem:(id)arg1;
 - (id)convertToItemCompatibleWithItem:(id)arg1 copyIfSameType:(BOOL)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)dictionaryRepresentation;
 - (void)scalarMultiply:(double)arg1;
 - (id)scalarProduct:(double)arg1;
 - (id)sum:(id)arg1;

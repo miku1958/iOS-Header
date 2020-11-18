@@ -83,6 +83,7 @@
 - (BOOL)propertyIsAvailable:(id)arg1;
 - (BOOL)propertyIsReadOnly:(id)arg1;
 - (BOOL)propertyWasSet:(id)arg1;
+- (void)setParentUUIDIfNotNil:(id)arg1;
 - (id)setProperties;
 - (void)setPropertyIfNotNil:(id)arg1 named:(id)arg2;
 - (id)typeNameForDebug;

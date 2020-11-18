@@ -8,7 +8,7 @@
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
 
-@class HFCharacteristicValueTransaction, NACancelationToken, NAFuture, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSSet, NSString;
+@class HFCharacteristicReadLogger, HFCharacteristicValueTransaction, NACancelationToken, NAFuture, NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSSet, NSString;
 @protocol HFCharacteristicOperationContextProviding, HFCharacteristicValueReader, HFCharacteristicValueWriter;
 
 @interface HFCharacteristicValueManager : NSObject <HFCharacteristicValueSource>
@@ -27,6 +27,7 @@
     NSMutableDictionary *_cachedWriteErrorsKeyedByCharacteristicIdentifier;
     NSMutableDictionary *_cachedExecutionErrorsKeyedByActionSetIdentifier;
     NACancelationToken *_inFlightReadCancelationToken;
+    HFCharacteristicReadLogger *_readsCompleteLogger;
     NAFuture *_firstReadCompleteFuture;
 }
 
@@ -49,14 +50,18 @@
 @property (strong, nonatomic) NSMutableSet *mutableAllReadCharacteristics; // @synthesize mutableAllReadCharacteristics=_mutableAllReadCharacteristics;
 @property (strong, nonatomic) HFCharacteristicValueTransaction *openTransaction; // @synthesize openTransaction=_openTransaction;
 @property (strong, nonatomic) NSMutableArray *readTransactionsToExecuteOnNextRunLoop; // @synthesize readTransactionsToExecuteOnNextRunLoop=_readTransactionsToExecuteOnNextRunLoop;
+@property (strong, nonatomic) HFCharacteristicReadLogger *readsCompleteLogger; // @synthesize readsCompleteLogger=_readsCompleteLogger;
 @property (strong, nonatomic) NSMutableArray *runningTransactions; // @synthesize runningTransactions=_runningTransactions;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSRecursiveLock *transactionLock; // @synthesize transactionLock=_transactionLock;
 @property (strong, nonatomic) id<HFCharacteristicValueReader> valueReader; // @synthesize valueReader=_valueReader;
 @property (strong, nonatomic) id<HFCharacteristicValueWriter> valueWriter; // @synthesize valueWriter=_valueWriter;
 
++ (BOOL)_shouldTrackReadsCompleteForPerformanceTesting;
 + (id)na_identity;
 - (void).cxx_destruct;
+- (void)_beginReadsCompleteTrackingForCharacteristics:(id)arg1 withLogger:(id)arg2;
+- (void)_endReadsCompleteTrackingForCharacteristic:(id)arg1 withLogger:(id)arg2 didRead:(BOOL)arg3;
 - (id)_openTransactionCompletionFuture;
 - (id)_transactionLock_characteristicsWithPendingWritesInTransacton:(id)arg1 includeDirectWrites:(BOOL)arg2 includeActionSets:(BOOL)arg3;
 - (void)_transactionLock_executeActionSetTransaction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -79,6 +84,7 @@
 - (void)invalidateCachedValueForCharacteristic:(id)arg1;
 - (void)invalidateCachedValuesForAccessory:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (unsigned long long)loadingStateForCharacteristics:(id)arg1 actionSets:(id)arg2;
 - (id)readValueForCharacteristic:(id)arg1;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;

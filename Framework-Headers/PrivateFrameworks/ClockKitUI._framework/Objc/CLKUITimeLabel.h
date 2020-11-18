@@ -10,7 +10,7 @@
 #import <ClockKitUI/CLKTimeFormatterObserver-Protocol.h>
 #import <ClockKitUI/CLKUILabel-Protocol.h>
 
-@class CLKTimeFormatter, CLKUITimeLabelStyle, NSAttributedString, NSString, UIColor, UIFont;
+@class CLKDevice, CLKTimeFormatter, CLKUITimeLabelStyle, NSAttributedString, NSString, UIColor, UIFont;
 @protocol _CLKUITimeLabelManager;
 
 @interface CLKUITimeLabel : UIView <CLKTimeFormatterObserver, CLKTimeFormatterDelegate, CLKUILabel>
@@ -28,6 +28,7 @@
     BOOL _showsDesignator;
     BOOL _paused;
     BOOL _showSeconds;
+    CLKDevice *_device;
     CLKTimeFormatter *_timeFormatter;
     double _maxWidth;
     CDUnknownBlockType _didResizeHandler;
@@ -38,6 +39,7 @@
 @property (copy, nonatomic) NSAttributedString *attributedText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (copy, nonatomic) CDUnknownBlockType didResizeHandler; // @synthesize didResizeHandler=_didResizeHandler;
 @property (strong, nonatomic) UIFont *font;
 @property (readonly) unsigned long long hash;
@@ -56,6 +58,7 @@
 @property (readonly, nonatomic) CLKTimeFormatter *timeFormatter; // @synthesize timeFormatter=_timeFormatter;
 
 + (id)labelWithOptions:(unsigned long long)arg1;
++ (id)labelWithOptions:(unsigned long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_cancelAnimation;
 - (void)_enumerateUnderlyingLabelsWithBlock:(CDUnknownBlockType)arg1;
@@ -68,7 +71,9 @@
 - (void)didMoveToWindow;
 - (id)identifyingInfoForTimeFormatter:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (id)initWithTimeLabelOptions:(unsigned long long)arg1;
+- (id)initWithTimeLabelOptions:(unsigned long long)arg1 forDevice:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareToTransitionToStyle:(id)arg1;
 - (void)setBlinkingPaused:(BOOL)arg1;
@@ -83,6 +88,8 @@
 - (struct CGSize)styleTransitionCurrentSize;
 - (struct CGSize)styleTransitionEndSize;
 - (void)timeFormatterTextDidChange:(id)arg1;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

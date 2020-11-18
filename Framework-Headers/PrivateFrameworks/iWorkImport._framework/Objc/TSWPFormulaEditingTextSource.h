@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSWPTextSource-Protocol.h>
 
@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (struct _NSRange)unmappedRangeFrom:(struct _NSRange)arg1;
 - (void)updateStorageChangeCount;
 - (struct _NSRange)wordAtCharIndex:(unsigned long long)arg1 includePreviousWord:(BOOL)arg2;
+- (struct _NSRange)wordAtCharIndex:(unsigned long long)arg1 includePreviousWord:(BOOL)arg2 includeHyphenation:(BOOL)arg3;
 
 @end
 

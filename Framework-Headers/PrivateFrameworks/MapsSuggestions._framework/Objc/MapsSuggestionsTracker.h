@@ -8,7 +8,7 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class CLLocation, GEOAutomobileOptions, GEOComposedWaypoint, GEOLocationShifter, MapsSuggestionsManager, MapsSuggestionsMutableWeakEntries, NSMutableDictionary, NSString;
+@class CLLocation, GEOAutomobileOptions, GEOLocationShifter, MapsSuggestionsCanKicker, MapsSuggestionsDonater, MapsSuggestionsETARequester, MapsSuggestionsETARequirements, MapsSuggestionsManager, MapsSuggestionsMutableWeakEntries, MapsSuggestionsNetworkRequester, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface MapsSuggestionsTracker : NSObject <MapsSuggestionsObject>
@@ -19,55 +19,61 @@
     double _refreshDeferTime;
     int _transportType;
     MapsSuggestionsManager *_manager;
-    NSMutableDictionary *_waypoints;
     GEOLocationShifter *_locationShifter;
     struct NSMutableDictionary *_etaTitleFormatters;
     struct NSMutableDictionary *_distanceTitleFormatters;
     BOOL _shouldBeRunning;
+    MapsSuggestionsETARequester *_etaRequester;
+    MapsSuggestionsDonater *_donater;
+    MapsSuggestionsCanKicker *_currentLocationWiper;
+    NSMutableDictionary *_previousETAs;
     int _mapType;
+    MapsSuggestionsETARequirements *_requirements;
     GEOAutomobileOptions *_automobileOptions;
     CLLocation *_currentLocation;
-    GEOComposedWaypoint *_currentLocationWaypoint;
     MapsSuggestionsMutableWeakEntries *_trackedEntries;
+    MapsSuggestionsNetworkRequester *_networkRequester;
 }
 
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property (strong) CLLocation *currentLocation; // @synthesize currentLocation=_currentLocation;
-@property (strong) GEOComposedWaypoint *currentLocationWaypoint; // @synthesize currentLocationWaypoint=_currentLocationWaypoint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int mapType; // @synthesize mapType=_mapType;
+@property (strong, nonatomic) MapsSuggestionsNetworkRequester *networkRequester; // @synthesize networkRequester=_networkRequester;
+@property (copy) MapsSuggestionsETARequirements *requirements; // @synthesize requirements=_requirements;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MapsSuggestionsMutableWeakEntries *trackedEntries; // @synthesize trackedEntries=_trackedEntries;
 @property (readonly, nonatomic) NSString *uniqueName;
 
 + (BOOL)_isLocationShiftRequiredForLocation:(id)arg1;
 - (void).cxx_destruct;
-- (void)_decorateEntry:(id)arg1 eta:(double)arg2 trafficString:(id)arg3;
-- (void)_determineTransportTypeFromOrigin:(id)arg1 withMapsSuggestionsEntry:(id)arg2 andCompletion:(CDUnknownBlockType)arg3;
-- (id)_distanceTitleFormatterForType:(unsigned long long)arg1;
-- (id)_etaTitleFormatterForType:(unsigned long long)arg1;
-- (BOOL)_hasTitleFormatterForType:(unsigned long long)arg1;
-- (BOOL)_keepExistingWaypointsForTrackedEntries:(struct NSArray *)arg1;
+- (id)_bestValidOfflineETAForEntry:(id)arg1 destinationKey:(id)arg2;
+- (void)_decorateEntry:(id)arg1 eta:(id)arg2;
+- (id)_distanceTitleFormatterForType:(long long)arg1;
+- (id)_etaTitleFormatterForType:(long long)arg1;
+- (BOOL)_hasTitleFormatterForType:(long long)arg1;
+- (BOOL)_isMatchingTransportType:(int)arg1;
+- (BOOL)_isUnusableETA:(id)arg1;
 - (void)_prepareShiftForLocation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2 withShiftRequestBlock:(CDUnknownBlockType)arg3;
+- (void)_prunePreviousETAs;
 - (void)_refresh;
-- (BOOL)_requestAllRequiredWaypoints;
+- (void)_rememberETA:(id)arg1 forEntry:(id)arg2;
 - (void)_requestDistances;
 - (void)_requestETAs;
-- (BOOL)_requestWaypointForCurrentLocation:(id)arg1 dispatchGroup:(id)arg2;
-- (BOOL)_requestWaypointForMapsSuggestionsEntry:(id)arg1 dispatchGroup:(id)arg2;
+- (void)_resetAllTitleFormatting;
 - (void)_scheduleRefresh;
 - (void)_scheduleRefreshIfCurrentLocationIsMuchBetterThanLocation:(id)arg1;
 - (void)_shiftLocation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
-- (id)_transportTypesForDestinationEntries:(id)arg1;
 - (void)_unschedule;
 - (void)dealloc;
-- (id)initWithManager:(id)arg1;
+- (id)initWithManager:(id)arg1 requirements:(id)arg2;
 - (id)location;
+- (void)resetAllTitleFormatting;
 - (void)scheduleRefresh;
 - (void)setLocation:(id)arg1;
-- (void)setTitleFormatter:(id)arg1 forType:(unsigned long long)arg2;
+- (void)setTitleFormatter:(id)arg1 forType:(long long)arg2;
 - (void)trackSuggestionEntries:(struct NSArray *)arg1 transportType:(int)arg2;
 - (void)unschedule;
 

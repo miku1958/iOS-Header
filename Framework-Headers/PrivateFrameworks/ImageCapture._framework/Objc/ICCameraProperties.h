@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableArray, NSNumber, NSString;
+@class NSMutableArray, NSMutableIndexSet, NSMutableOrderedSet, NSNumber, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
+__attribute__((visibility("hidden")))
 @interface ICCameraProperties : NSObject
 {
     NSString *_volumePath;
@@ -21,7 +22,6 @@
     unsigned long long _batteryLevel;
     NSMutableArray *_contents;
     NSMutableArray *_mediaFiles;
-    NSMutableArray *_notifyArray;
     NSMutableArray *_toBeNotifiedAddedItems;
     struct os_unfair_lock_s _contentsLock;
     struct os_unfair_lock_s _mediaFilesLock;
@@ -34,11 +34,25 @@
     NSObject<OS_dispatch_queue> *_metadataFetchQ;
     NSObject<OS_dispatch_queue> *_downloadQ;
     NSObject<OS_dispatch_queue> *_generalQ;
+    NSObject<OS_dispatch_queue> *_enumerationQ;
     NSObject<OS_dispatch_semaphore> *_deviceQSemaphore;
+    NSMutableArray *_originalMediaFiles;
+    NSMutableArray *_convertedMediaFiles;
+    NSMutableArray *_universalMediaFiles;
+    NSMutableIndexSet *_enumeratedObjectIndexes;
+    NSMutableOrderedSet *_indexedCameraFiles;
+    NSMutableOrderedSet *_indexedCameraFolders;
     BOOL _accessRestrictedAppleDevice;
+    BOOL _iCloudPhotosEnabled;
     BOOL _applePTPCapable;
     NSMutableArray *_applePTPFiles;
     NSNumber *_applePTPObjectLimit;
+    long long _appleRelatedUUIDSupport;
+    long long _enumerationOrder;
+    unsigned int _deviceFailureCount;
+    unsigned long long _mediaPresentation;
+    NSMutableOrderedSet *_indexedCameraFileUUIDs;
+    NSMutableOrderedSet *_indexedCameraFileDates;
 }
 
 @property BOOL accessRestrictedAppleDevice; // @synthesize accessRestrictedAppleDevice=_accessRestrictedAppleDevice;
@@ -46,6 +60,7 @@
 @property (nonatomic) BOOL applePTPCapable; // @synthesize applePTPCapable=_applePTPCapable;
 @property (strong) NSMutableArray *applePTPFiles; // @synthesize applePTPFiles=_applePTPFiles;
 @property (strong) NSNumber *applePTPObjectLimit; // @synthesize applePTPObjectLimit=_applePTPObjectLimit;
+@property long long appleRelatedUUIDSupport; // @synthesize appleRelatedUUIDSupport=_appleRelatedUUIDSupport;
 @property unsigned long long batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property BOOL batteryLevelAvailable; // @synthesize batteryLevelAvailable=_batteryLevelAvailable;
 @property BOOL beingEjected; // @synthesize beingEjected=_beingEjected;
@@ -53,32 +68,41 @@
 @property BOOL contentReceived; // @synthesize contentReceived=_contentReceived;
 @property (strong) NSMutableArray *contents; // @synthesize contents=_contents;
 @property struct os_unfair_lock_s contentsLock; // @synthesize contentsLock=_contentsLock;
+@property (strong) NSMutableArray *convertedMediaFiles; // @synthesize convertedMediaFiles=_convertedMediaFiles;
+@property unsigned int deviceFailureCount; // @synthesize deviceFailureCount=_deviceFailureCount;
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *deviceQSemaphore; // @synthesize deviceQSemaphore=_deviceQSemaphore;
 @property double downloadCancelTimestamp; // @synthesize downloadCancelTimestamp=_downloadCancelTimestamp;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *downloadQ; // @synthesize downloadQ=_downloadQ;
 @property BOOL ejectable; // @synthesize ejectable=_ejectable;
+@property (strong) NSMutableIndexSet *enumeratedObjectIndexes; // @synthesize enumeratedObjectIndexes=_enumeratedObjectIndexes;
+@property long long enumerationOrder; // @synthesize enumerationOrder=_enumerationOrder;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *enumerationQ; // @synthesize enumerationQ=_enumerationQ;
 @property unsigned long long estimatedNumberOfDownloadableItems; // @synthesize estimatedNumberOfDownloadableItems=_estimatedNumberOfDownloadableItems;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *generalQ; // @synthesize generalQ=_generalQ;
+@property BOOL iCloudPhotosEnabled; // @synthesize iCloudPhotosEnabled=_iCloudPhotosEnabled;
+@property (strong) NSMutableOrderedSet *indexedCameraFileDates; // @synthesize indexedCameraFileDates=_indexedCameraFileDates;
+@property (strong) NSMutableOrderedSet *indexedCameraFileUUIDs; // @synthesize indexedCameraFileUUIDs=_indexedCameraFileUUIDs;
+@property (strong) NSMutableOrderedSet *indexedCameraFiles; // @synthesize indexedCameraFiles=_indexedCameraFiles;
+@property (strong) NSMutableOrderedSet *indexedCameraFolders; // @synthesize indexedCameraFolders=_indexedCameraFolders;
 @property BOOL locked; // @synthesize locked=_locked;
 @property (strong) NSMutableArray *mediaFiles; // @synthesize mediaFiles=_mediaFiles;
 @property struct os_unfair_lock_s mediaFilesLock; // @synthesize mediaFilesLock=_mediaFilesLock;
+@property unsigned long long mediaPresentation; // @synthesize mediaPresentation=_mediaPresentation;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *metadataFetchQ; // @synthesize metadataFetchQ=_metadataFetchQ;
-@property (strong) NSMutableArray *notifyArray; // @synthesize notifyArray=_notifyArray;
 @property unsigned long long numberOfDownloadableItems; // @synthesize numberOfDownloadableItems=_numberOfDownloadableItems;
+@property (strong) NSMutableArray *originalMediaFiles; // @synthesize originalMediaFiles=_originalMediaFiles;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *thumbnailFetchQ; // @synthesize thumbnailFetchQ=_thumbnailFetchQ;
 @property double timeOffset; // @synthesize timeOffset=_timeOffset;
 @property (strong) NSMutableArray *toBeNotifiedAddedItems; // @synthesize toBeNotifiedAddedItems=_toBeNotifiedAddedItems;
-@property (strong) NSString *volumePath; // @synthesize volumePath=_volumePath;
+@property (strong) NSMutableArray *universalMediaFiles; // @synthesize universalMediaFiles=_universalMediaFiles;
+@property (copy) NSString *volumePath; // @synthesize volumePath=_volumePath;
 
-- (void)addToNotifyArray:(id)arg1;
-- (void)clearNotifyArray;
 - (void)dealloc;
-- (void)finalize;
-- (id)getNotifyArray;
+- (unsigned int)incrementDeviceFailureCount;
 - (id)init;
 - (void)lockContents;
 - (void)lockMediaFiles;
-- (void)setupMediaProps;
+- (void)resetFailureCount;
 - (void)unlockContents;
 - (void)unlockMediaFiles;
 

@@ -14,14 +14,13 @@
     NSString *_value;
 }
 
-@property (strong) NSString *key; // @synthesize key=_key;
-@property (strong) NSString *value; // @synthesize value=_value;
+@property (strong, nonatomic) NSString *key; // @synthesize key=_key;
+@property (strong, nonatomic) NSString *value; // @synthesize value=_value;
 
 + (id)tupleWithKey:(id)arg1 value:(id)arg2;
 + (id)tuplesForDictionary:(id)arg1;
 + (id)tuplesForKeys:(id)arg1 values:(id)arg2;
 - (void).cxx_destruct;
-- (id)observableProperties;
 
 @end
 

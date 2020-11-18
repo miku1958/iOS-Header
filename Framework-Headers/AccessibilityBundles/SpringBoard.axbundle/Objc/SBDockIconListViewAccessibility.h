@@ -18,6 +18,7 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (id)_accessibilityScannerGroupElements;
+- (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;

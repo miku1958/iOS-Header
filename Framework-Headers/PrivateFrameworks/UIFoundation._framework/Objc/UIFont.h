@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <UIFoundation/NSCopying-Protocol.h>
 #import <UIFoundation/NSSecureCoding-Protocol.h>
@@ -39,6 +39,8 @@
 + (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumContentSizeCategory:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)_preferredFontForTextStyle:(id)arg1 maximumPointSize:(double)arg2 compatibleWithTraitCollection:(id)arg3;
++ (id)_preferredFontForTextStyle:(id)arg1 variant:(long long)arg2;
++ (id)_preferredFontForTextStyle:(id)arg1 variant:(long long)arg2 maximumContentSizeCategory:(id)arg3;
 + (double)_readableWidth;
 + (id)_sharedFontCache;
 + (id)_sharedZeroPointFont;
@@ -76,6 +78,7 @@
 + (id)userFontOfSize:(double)arg1;
 - (struct __CTFont *)CTFont;
 - (id)_alternateSystemFonts;
+- (void)_applyToCGContext:(struct CGContext *)arg1 graphicsContext:(id)arg2;
 - (double)_ascenderDeltaForBehavior:(long long)arg1;
 - (struct CGFont *)_backingCGSFont;
 - (double)_baseLineHeightForFont:(BOOL)arg1;
@@ -94,7 +97,7 @@
 - (id)_kernOverride;
 - (double)_leading;
 - (double)_scaledValueForValue:(double)arg1;
-- (struct CGAffineTransform)_textMatrixTransformForContext:(struct CGContext *)arg1;
+- (struct CGAffineTransform)_textMatrixTransformForContext:(id)arg1;
 - (double)_totalAdvancementForNativeGlyphs:(const unsigned short *)arg1 count:(long long)arg2;
 - (struct CGSize)advancementForGlyph:(unsigned short)arg1;
 - (id)bestMatchingFontForCharacters:(const unsigned short *)arg1 length:(unsigned long long)arg2 attributes:(id)arg3 actualCoveredLength:(unsigned long long *)arg4;

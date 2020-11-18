@@ -12,25 +12,30 @@
 
 @interface CEMDeviceEraseCommand : CEMCommandBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadPreserveDataPlan;
+    NSNumber *_payloadDisallowProximitySetup;
+    NSString *_payloadPIN;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadPIN;
-@property (readonly, nonatomic) NSNumber *payloadPreserveDataPlan;
+@property (copy, nonatomic) NSNumber *payloadDisallowProximitySetup; // @synthesize payloadDisallowProximitySetup=_payloadDisallowProximitySetup;
+@property (copy, nonatomic) NSString *payloadPIN; // @synthesize payloadPIN=_payloadPIN;
+@property (copy, nonatomic) NSNumber *payloadPreserveDataPlan; // @synthesize payloadPreserveDataPlan=_payloadPreserveDataPlan;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withPIN:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withPreserveDataPlan:(id)arg2 withDisallowProximitySetup:(id)arg3 withPIN:(id)arg4;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)executionLevel;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

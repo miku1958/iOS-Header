@@ -6,6 +6,8 @@
 
 #import <CoreImage/CIFeature.h>
 
+@class NSDictionary;
+
 @interface CIFaceFeature : CIFeature
 {
     struct CGRect bounds;
@@ -24,6 +26,7 @@
     BOOL hasSmile;
     BOOL leftEyeClosed;
     BOOL rightEyeClosed;
+    NSDictionary *landmarks;
 }
 
 @property (readonly) struct CGRect bounds; // @synthesize bounds;
@@ -35,6 +38,7 @@
 @property (readonly) BOOL hasSmile; // @synthesize hasSmile;
 @property (readonly) BOOL hasTrackingFrameCount; // @synthesize hasTrackingFrameCount;
 @property (readonly) BOOL hasTrackingID; // @synthesize hasTrackingID;
+@property (readonly) NSDictionary *landmarks; // @synthesize landmarks;
 @property (readonly) BOOL leftEyeClosed; // @synthesize leftEyeClosed;
 @property (readonly) struct CGPoint leftEyePosition; // @synthesize leftEyePosition;
 @property (readonly) struct CGPoint mouthPosition; // @synthesize mouthPosition;
@@ -43,7 +47,8 @@
 @property (readonly) int trackingFrameCount; // @synthesize trackingFrameCount;
 @property (readonly) int trackingID; // @synthesize trackingID;
 
-- (id)initWithBounds:(struct CGRect)arg1 hasLeftEyePosition:(BOOL)arg2 leftEyePosition:(struct CGPoint)arg3 hasRightEyePosition:(BOOL)arg4 rightEyePosition:(struct CGPoint)arg5 hasMouthPosition:(BOOL)arg6 mouthPosition:(struct CGPoint)arg7 hasFaceAngle:(BOOL)arg8 faceAngle:(float)arg9 hasTrackingID:(BOOL)arg10 trackingID:(int)arg11 hasTrackingFrameCount:(BOOL)arg12 trackingFrameCount:(int)arg13 hasSmile:(BOOL)arg14 leftEyeClosed:(BOOL)arg15 rightEyeClosed:(BOOL)arg16;
+- (void)dealloc;
+- (id)initWithBounds:(struct CGRect)arg1 hasLeftEyePosition:(BOOL)arg2 leftEyePosition:(struct CGPoint)arg3 hasRightEyePosition:(BOOL)arg4 rightEyePosition:(struct CGPoint)arg5 hasMouthPosition:(BOOL)arg6 mouthPosition:(struct CGPoint)arg7 hasFaceAngle:(BOOL)arg8 faceAngle:(float)arg9 hasTrackingID:(BOOL)arg10 trackingID:(int)arg11 hasTrackingFrameCount:(BOOL)arg12 trackingFrameCount:(int)arg13 hasSmile:(BOOL)arg14 leftEyeClosed:(BOOL)arg15 rightEyeClosed:(BOOL)arg16 landmarks:(id)arg17;
 - (id)type;
 
 @end

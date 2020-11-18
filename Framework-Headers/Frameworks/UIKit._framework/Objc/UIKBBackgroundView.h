@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBSplitImageView.h>
+#import <UIKitCore/UIKBSplitImageView.h>
 
-#import <UIKit/UIKBCacheableView-Protocol.h>
+#import <UIKitCore/UIKBCacheableView-Protocol.h>
 
 @class NSObject, NSString, UIKBRenderConfig, UIKBTree, UITextInputTraits;
 
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     UIKBRenderConfig *_renderConfig;
 }
 
+@property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;
 @property (readonly, nonatomic) double cachedWidth;

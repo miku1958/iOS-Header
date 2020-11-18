@@ -6,14 +6,17 @@
 
 #import <AVFoundation/AVAssetInspector.h>
 
-@class NSArray, NSURL;
+@class AVDisplayCriteria, NSArray, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVFigAssetInspector : AVAssetInspector
 {
     struct OpaqueFigAsset *_figAsset;
     struct OpaqueFigFormatReader *_formatReader;
     long long _formatReaderOnce;
     long long _checkIsStreamingOnce;
+    long long _makeDisplayCriteriaOnce;
+    AVDisplayCriteria *_displayCriteria;
     BOOL _isStreaming;
     BOOL didCheckForSaveRestriction;
     BOOL hasSaveRestriction;
@@ -64,6 +67,7 @@
 - (struct CGSize)naturalSize;
 - (int)naturalTimeScale;
 - (CDStruct_1b6d18a9)overallDurationHint;
+- (id)preferredDisplayCriteria;
 - (float)preferredRate;
 - (float)preferredSoundCheckVolumeNormalization;
 - (struct CGAffineTransform)preferredTransform;

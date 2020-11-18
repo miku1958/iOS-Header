@@ -45,6 +45,8 @@
 
 + (id)transitionCoordinatorForChange:(id)arg1 changeHistory:(id)arg2;
 - (void).cxx_destruct;
+- (void)disableAnimationsForTileKind:(unsigned long long)arg1;
+- (void)enableAnimationsForTileKind:(unsigned long long)arg1;
 - (BOOL)getFinalGeometry:(out struct PXTileGeometry *)arg1 finalUserData:(out id *)arg2 forDisappearingTileWithIdentifier:(struct PXTileIdentifier)arg3 fromGeometry:(struct PXTileGeometry)arg4 fromUserData:(id)arg5;
 - (BOOL)getInitialGeometry:(out struct PXTileGeometry *)arg1 initialUserData:(out id *)arg2 forAppearingTileWithIdentifier:(struct PXTileIdentifier)arg3 toGeometry:(struct PXTileGeometry)arg4 toUserData:(id)arg5;
 - (id)initWithTilingChange:(id)arg1 changeHistory:(id)arg2;

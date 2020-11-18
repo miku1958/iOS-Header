@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ViceroyTrace/RTCReportingMessageSentNotifier-Protocol.h>
 #import <ViceroyTrace/VCAggregatorDelegate-Protocol.h>
 
-@class NSArray, NSString, RTCReporting, VCAggregator;
+@class NSArray, NSMutableDictionary, NSString, RTCReporting, VCAggregator;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -22,6 +22,9 @@ __attribute__((visibility("hidden")))
     NSArray *_backends;
     VCAggregator *_aggregator;
     int _clientType;
+    int _nextUnassignedReportingModuleID;
+    NSMutableDictionary *_userInfoMap;
+    BOOL _forceDisableABC;
 }
 
 @property (strong) VCAggregator *aggregator; // @synthesize aggregator=_aggregator;
@@ -29,21 +32,27 @@ __attribute__((visibility("hidden")))
 @property int clientType; // @synthesize clientType=_clientType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (getter=isABCForceDisabled) BOOL forceDisableABC; // @synthesize forceDisableABC=_forceDisableABC;
 @property (readonly) unsigned long long hash;
+@property (readonly) int nextUnassignedReportingModuleID;
 @property (strong) RTCReporting *reportingObject; // @synthesize reportingObject=_reportingObject;
 @property (readonly) NSObject<OS_dispatch_queue> *reportingQueue; // @synthesize reportingQueue=_reportingQueue;
 @property (readonly) Class superclass;
+@property (readonly) NSMutableDictionary *userInfoMap; // @synthesize userInfoMap=_userInfoMap;
 
 - (void)dealloc;
+- (id)deriveFromParentHierarchyToken:(id)arg1;
 - (void)didSendMessageForReportingClient:(id)arg1 event:(id)arg2;
 - (void)initAdaptiveLearningWithParameters:(id)arg1;
-- (id)initWithCallID:(unsigned int)arg1 clientType:(int)arg2;
+- (id)initWithCallID:(unsigned int)arg1 clientType:(int)arg2 parentHierarchyToken:(id)arg3;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
 - (void)releaseReportingObject;
-- (void)report:(id)arg1;
+- (void)report:(id)arg1 segmentDirection:(int)arg2;
 - (void)reportQR:(id)arg1;
+- (void)reportingSetReportCallback:(CDUnknownFunctionPointerType)arg1 withContext:(void *)arg2;
 - (void)reportingSymptom:(unsigned int)arg1 withOptionalDict:(struct __CFDictionary *)arg2;
-- (void)sendAggregatedReport;
+- (void)sendAggregatedCallReport;
+- (void)sendAggregatedSessionReport;
 
 @end
 

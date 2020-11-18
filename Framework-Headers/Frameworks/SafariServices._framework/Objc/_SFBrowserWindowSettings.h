@@ -11,6 +11,7 @@
 @interface _SFBrowserWindowSettings : NSObject
 {
     NSMutableDictionary *_settingsDictionary;
+    BOOL _synchronizeScheduled;
     BOOL _invalidatesClosedWindows;
 }
 
@@ -26,6 +27,7 @@
 - (void)_setBool:(BOOL)arg1 forKey:(id)arg2 windowUUID:(id)arg3;
 - (void)_setString:(id)arg1 forKey:(id)arg2 windowUUID:(id)arg3;
 - (id)_stringForKey:(id)arg1 windowUUID:(id)arg2;
+- (void)_synchronizeNow;
 - (BOOL)activeDocumentIsValidForWindowWithUUID:(id)arg1;
 - (id)blankSnapshotGroupIdentifierForPrivateBrowsing:(BOOL)arg1 forWindowWithUUID:(id)arg2;
 - (id)init;

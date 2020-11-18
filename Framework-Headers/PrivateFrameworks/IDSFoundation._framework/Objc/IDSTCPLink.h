@@ -41,17 +41,18 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (struct IDSTCPConnection_ *)_getIDSTCPConnection:(CDStruct_3b17df7f *)arg1;
+- (struct IDSTCPConnection_ *)_getIDSTCPConnection:(CDStruct_c4cff10b *)arg1;
 - (BOOL)connect:(int)arg1 localAddress:(struct sockaddr_in *)arg2 portRange:(unsigned short)arg3 remoteAddress:(struct sockaddr_in *)arg4 clientUUID:(unsigned char [16])arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)copyLinkStatsDict;
 - (void)dealloc;
 - (BOOL)disconnect:(struct sockaddr_in *)arg1 remoteAddress:(struct sockaddr_in *)arg2;
 - (id)generateLinkReport:(double)arg1 isCurrentLink:(BOOL)arg2;
-- (long long)getPacketLength:(CDStruct_3b17df7f *)arg1 isChannelData:(BOOL *)arg2;
+- (long long)getPacketLength:(CDStruct_c4cff10b *)arg1 isChannelData:(BOOL *)arg2;
 - (id)initWithDeviceUniqueID:(id)arg1 cbuuid:(id)arg2 isSSL:(BOOL)arg3 getPacketLength:(CDUnknownBlockType)arg4;
 - (void)invalidate;
-- (void)processIncomingPacket:(CDStruct_3b17df7f *)arg1;
-- (unsigned long long)sendPacketBuffer:(CDStruct_3b17df7f *)arg1 toDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
+- (void)processIncomingPacket:(CDStruct_c4cff10b *)arg1;
+- (unsigned long long)sendPacketBuffer:(CDStruct_c4cff10b *)arg1 toDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
+- (unsigned long long)sendPacketBufferArray:(CDStruct_183601bc **)arg1 arraySize:(int)arg2 toDeviceUniqueID:(id)arg3 cbuuid:(id)arg4;
 
 @end
 

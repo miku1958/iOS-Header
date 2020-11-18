@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIKeyboardArbitrationClient-Protocol.h>
-#import <UIKit/_UIRemoteKeyboardControllerDelegate-Protocol.h>
-#import <UIKit/_UIRemoteKeyboardDistributedViewSource-Protocol.h>
+#import <UIKitCore/_UIKeyboardArbitrationClient-Protocol.h>
+#import <UIKitCore/_UIRemoteKeyboardControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIRemoteKeyboardDistributedViewSource-Protocol.h>
 
 @class FBSScene, NSArray, NSHashTable, NSMutableArray, NSMutableSet, NSString, NSXPCConnection, UIScreen, UIView, UIWindow, _UIKeyboardChangedInformation;
 @protocol _UIKeyboardArbitration;
@@ -92,6 +92,7 @@
 - (void)didSuspend:(id)arg1;
 - (void)finishWithHostedWindow;
 - (void)forceKeyboardAway;
+- (BOOL)hasAnyHostedViews;
 - (void)ignoreLayoutNotifications:(CDUnknownBlockType)arg1;
 - (id)init;
 - (BOOL)isOnScreenRotating;

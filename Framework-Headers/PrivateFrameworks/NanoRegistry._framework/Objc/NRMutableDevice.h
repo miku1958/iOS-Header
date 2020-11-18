@@ -9,21 +9,21 @@
 #import <NanoRegistry/NRMutableStateParentDelegate-Protocol.h>
 #import <NanoRegistry/NSFastEnumeration-Protocol.h>
 
-@class NSMutableDictionary, NSUUID;
+@class NRPBMutableDevice, NSMutableDictionary, NSUUID;
 
 @interface NRMutableDevice : NRMutableStateBase <NRMutableStateParentDelegate, NSFastEnumeration>
 {
+    NRPBMutableDevice *_protobuf;
     NSMutableDictionary *_properties;
-    NSMutableDictionary *_childMap;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *childMap; // @synthesize childMap=_childMap;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isArchived;
 @property (readonly, nonatomic) BOOL isPaired;
 @property (readonly, nonatomic) BOOL migratable;
 @property (readonly, nonatomic) NSUUID *pairingID;
 @property (strong, nonatomic) NSMutableDictionary *properties; // @synthesize properties=_properties;
+@property (strong, nonatomic) NRPBMutableDevice *protobuf; // @synthesize protobuf=_protobuf;
 
 + (id)diffFrom:(id)arg1 to:(id)arg2;
 + (id)diffsToActivate:(BOOL)arg1 withDate:(id)arg2;
@@ -31,8 +31,10 @@
 + (id)diffsToPair:(BOOL)arg1 withDate:(id)arg2;
 + (id)diffsToSetStatusCode:(unsigned long long)arg1 andCompatibilityState:(unsigned short)arg2;
 + (id)enclosedClassTypes;
++ (void)parseDiff:(id)arg1 forPropertyChange:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_createIndex:(id)arg1;
 - (id)allPropertyNames;
 - (id)applyDiff:(id)arg1 upOnly:(BOOL)arg2 notifyParent:(BOOL)arg3 unconditional:(BOOL)arg4;
 - (void)child:(id)arg1 didApplyDiff:(id)arg2;
@@ -44,6 +46,8 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProtobuf:(id)arg1;
+- (void)invalidate;
 - (BOOL)isEqual:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)propertyForName:(id)arg1;

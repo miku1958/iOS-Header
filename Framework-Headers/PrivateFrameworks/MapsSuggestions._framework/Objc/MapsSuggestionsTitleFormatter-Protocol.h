@@ -6,6 +6,9 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
+@class MapsSuggestionsEntry;
+
 @protocol MapsSuggestionsTitleFormatter <MapsSuggestionsObject>
+- (BOOL)resetTitlesForEntry:(MapsSuggestionsEntry *)arg1;
 @end
 

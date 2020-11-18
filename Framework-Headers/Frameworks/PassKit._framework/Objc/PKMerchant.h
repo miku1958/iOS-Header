@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
@@ -49,6 +49,7 @@
 - (id)_jsonEncodedPostalAddressString;
 - (void)_regenerateDisplayName;
 - (id)description;
+- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)hasCloudArchivableDeviceData;
@@ -58,6 +59,7 @@
 - (BOOL)isCloudArchivableDeviceDataEqual:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToMerchant:(id)arg1;
+- (unsigned long long)itemType;
 - (id)jsonDictionaryRepresentation;
 - (id)recordTypesAndNames;
 

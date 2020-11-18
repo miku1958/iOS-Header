@@ -4,22 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class UIImage;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
+@class BSAtomicSignal, NSThread, UIImage;
 
 @interface BSUIMappedImageCacheFuture : NSObject
 {
-    UIImage *_cacheImage;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    CDUnknownBlockType _waitBlock;
-    NSObject<OS_dispatch_semaphore> *_waitableSemaphore;
-    int _submitted;
-    int _waited;
-    int _workCompletionWasCalled;
+    struct os_unfair_lock_s _lock;
+    BSAtomicSignal *_submitted;
+    NSThread *_submissionThread;
+    CDUnknownBlockType _lock_workBlock;
+    BOOL _lock_workCompletionWasCalled;
+    UIImage *_postlock_cachedImage;
 }
 
+- (void).cxx_destruct;
 - (id)cacheImage;
 - (void)dealloc;
 - (id)init;

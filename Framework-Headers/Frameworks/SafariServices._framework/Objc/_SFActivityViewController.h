@@ -6,12 +6,13 @@
 
 #import <UIKit/UIActivityViewController.h>
 
-@class LPMetadataProvider, NSString, NSURL, _SFSafariSharingExtensionController;
+@class LPMetadataProvider, NSString, NSURL, _SFPrintController, _SFSafariSharingExtensionController;
 @protocol _SFActivityViewControllerDelegate;
 
 @interface _SFActivityViewController : UIActivityViewController
 {
     LPMetadataProvider *_pendingMessageMetadataProvider;
+    _SFPrintController *_printController;
     BOOL _viewCanEarlyDismiss;
     _SFSafariSharingExtensionController *_sharingExtensionController;
     id<_SFActivityViewControllerDelegate> _delegate;
@@ -22,7 +23,7 @@
 @property (copy, nonatomic) NSString *currentExtensionIdentifier; // @synthesize currentExtensionIdentifier=_currentExtensionIdentifier;
 @property (weak, nonatomic) id<_SFActivityViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (weak, nonatomic) _SFSafariSharingExtensionController *sharingExtensionController; // @synthesize sharingExtensionController=_sharingExtensionController;
-@property (readonly, nonatomic) NSURL *sharingURL; // @synthesize sharingURL=_sharingURL;
+@property (strong, nonatomic) NSURL *sharingURL; // @synthesize sharingURL=_sharingURL;
 @property (readonly, nonatomic) BOOL viewCanEarlyDismiss; // @synthesize viewCanEarlyDismiss=_viewCanEarlyDismiss;
 
 + (id)activeWebPageExtensionItemForURL:(id)arg1 withPreviewImageHandler:(CDUnknownBlockType)arg2;
@@ -31,10 +32,12 @@
 - (id)_extensionItemForExtensionActivity:(id)arg1;
 - (id)_javaScriptProcessingFileURLInExtension:(id)arg1;
 - (void)_prepareActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_prepareJavaScriptExtensionItemForActivity:(id)arg1;
+- (void)_preparePrint:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processJavaScriptFinalizeReturnedItems:(id)arg1 forExtension:(id)arg2;
+- (void)_updatePrintControllerWithActivityItems:(id)arg1;
 - (void)activityDidComplete:(id)arg1 withReturnedItems:(id)arg2 success:(BOOL)arg3;
-- (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2 sharingURL:(id)arg3;
+- (id)initWithActivityItems:(id)arg1 applicationActivities:(id)arg2 sharingURL:(id)arg3 sourceURL:(id)arg4;
+- (void)prepareJavaScriptExtensionItemForActivity:(id)arg1;
 - (void)prepareMessageActivity:(id)arg1 withWebView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

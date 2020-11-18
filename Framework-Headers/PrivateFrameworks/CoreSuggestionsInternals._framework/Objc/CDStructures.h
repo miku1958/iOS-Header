@@ -134,10 +134,6 @@ struct _NSRange {
     unsigned long long length;
 };
 
-struct _PASTuple3 {
-    Class _field1;
-};
-
 struct __CFString;
 
 struct __DDQueryOffset {

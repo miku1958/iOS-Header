@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)downloadTrackedForItemWithDocID:(id)arg1 didFinishWithError:(id)arg2;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithDirectoryItem:(id)arg1;
+- (id)initWithName:(id)arg1 session:(id)arg2 readingOptions:(unsigned long long)arg3;
 - (id)initWithURL:(id)arg1 readingOptions:(unsigned long long)arg2 client:(id)arg3 session:(id)arg4;
 - (void)main;
 - (void)networkReachabilityChanged:(BOOL)arg1;

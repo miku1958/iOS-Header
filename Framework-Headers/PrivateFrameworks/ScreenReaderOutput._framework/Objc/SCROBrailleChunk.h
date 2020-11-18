@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ScreenReaderOutput/NSCopying-Protocol.h>
 
-@class NSMutableAttributedString, NSString;
+@class NSAttributedString, NSMutableAttributedString, NSString;
 
 @interface SCROBrailleChunk : NSObject <NSCopying>
 {
@@ -29,6 +29,7 @@
     NSMutableAttributedString *_brailleString;
     NSMutableAttributedString *_pendingBraille;
     NSString *_originalText;
+    NSAttributedString *_originalBraille;
     struct _NSRange _brailleFocus;
     struct _NSRange __textFocus;
 }
@@ -44,6 +45,7 @@
 @property (nonatomic) BOOL isPadding; // @synthesize isPadding=_isPadding;
 @property (readonly, nonatomic) NSString *language; // @synthesize language=_language;
 @property (readonly, nonatomic) unsigned long long length;
+@property (copy, nonatomic) NSAttributedString *originalBraille; // @synthesize originalBraille=_originalBraille;
 @property (copy, nonatomic) NSString *originalText; // @synthesize originalText=_originalText;
 @property (strong, nonatomic) NSMutableAttributedString *pendingBraille; // @synthesize pendingBraille=_pendingBraille;
 @property (readonly, nonatomic) BOOL shouldProvideReplacementRange;
@@ -51,6 +53,7 @@
 @property (readonly, nonatomic) BOOL showEightDot; // @synthesize showEightDot=_showEightDot;
 @property (strong, nonatomic) NSString *text; // @synthesize text=_text;
 @property (readonly, nonatomic) unsigned long long textLength;
+@property (readonly, nonatomic) long long token;
 
 + (void)initialize;
 - (void).cxx_destruct;
@@ -80,7 +83,7 @@
 - (id)initWithText:(id)arg1 language:(id)arg2 selection:(struct _NSRange *)arg3 token:(long long)arg4 textFocus:(struct _NSRange *)arg5 contractionMode:(int)arg6 showEightDot:(BOOL)arg7 showDotsSevenAndEight:(BOOL)arg8 isEditableText:(BOOL)arg9;
 - (id)initWithText:(id)arg1 language:(id)arg2 selection:(struct _NSRange *)arg3 token:(long long)arg4 textFocus:(struct _NSRange *)arg5 contractionMode:(int)arg6 showEightDot:(BOOL)arg7 showDotsSevenAndEight:(BOOL)arg8 technical:(BOOL)arg9 isEditableText:(BOOL)arg10;
 - (id)initWithText:(id)arg1 overrideText:(id)arg2 language:(id)arg3 selection:(struct _NSRange *)arg4 token:(long long)arg5 textFocus:(struct _NSRange *)arg6 contractionMode:(int)arg7 showEightDot:(BOOL)arg8 showDotsSevenAndEight:(BOOL)arg9 technical:(BOOL)arg10 isEditableText:(BOOL)arg11;
-- (id)initWithText:(id)arg1 overrideText:(id)arg2 language:(id)arg3 selection:(struct _NSRange *)arg4 token:(long long)arg5 textFocus:(struct _NSRange *)arg6 contractionMode:(int)arg7 showEightDot:(BOOL)arg8 showDotsSevenAndEight:(BOOL)arg9 technical:(BOOL)arg10 isEditableText:(BOOL)arg11 isPadding:(BOOL)arg12;
+- (id)initWithText:(id)arg1 overrideText:(id)arg2 language:(id)arg3 selection:(struct _NSRange *)arg4 token:(long long)arg5 textFocus:(struct _NSRange *)arg6 contractionMode:(int)arg7 showEightDot:(BOOL)arg8 showDotsSevenAndEight:(BOOL)arg9 technical:(BOOL)arg10 isEditableText:(BOOL)arg11 isPadding:(BOOL)arg12 editingString:(id)arg13;
 - (void)insertBrailleStringAtCursor:(id)arg1 modifiers:(id)arg2;
 - (BOOL)isFocusedOrSelected;
 - (long long)locationForIndex:(long long)arg1;
@@ -88,8 +91,8 @@
 - (BOOL)moveCursorRight;
 - (BOOL)moveCursorTo:(unsigned long long)arg1;
 - (void)removeCursor;
-- (long long)token;
 - (void)translate;
+- (void)translate:(BOOL)arg1;
 - (id)translatedTextForBraille:(out id *)arg1 replacingTextInRange:(out struct _NSRange *)arg2 cursor:(out unsigned long long *)arg3;
 
 @end

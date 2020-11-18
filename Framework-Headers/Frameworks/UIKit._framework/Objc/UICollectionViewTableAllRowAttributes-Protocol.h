@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewTableAttributes-Protocol.h>
-#import <UIKit/UICollectionViewTableAutoRowAttributes-Protocol.h>
-#import <UIKit/UICollectionViewTableOtherRowAttributes-Protocol.h>
+#import <UIKitCore/UICollectionViewTableAttributes-Protocol.h>
+#import <UIKitCore/UICollectionViewTableAutoRowAttributes-Protocol.h>
+#import <UIKitCore/UICollectionViewTableOtherRowAttributes-Protocol.h>
 
 @protocol UICollectionViewTableAllRowAttributes <UICollectionViewTableAttributes, UICollectionViewTableAutoRowAttributes, UICollectionViewTableOtherRowAttributes>
 @end

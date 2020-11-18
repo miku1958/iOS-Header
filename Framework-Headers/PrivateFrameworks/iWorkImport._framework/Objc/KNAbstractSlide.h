@@ -81,6 +81,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic, getter=isSlideNumberVisible) BOOL slideNumberVisible;
 @property (strong, nonatomic) KNSlideStyle *style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsBuilds;
+@property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
 @property (strong, nonatomic) KNTitlePlaceholderInfo *titlePlaceholder; // @synthesize titlePlaceholder=_titlePlaceholder;
 @property (readonly, nonatomic, getter=isTitleVisible) BOOL titleVisible;
 @property (strong, nonatomic) KNTransition *transition; // @synthesize transition=_transition;

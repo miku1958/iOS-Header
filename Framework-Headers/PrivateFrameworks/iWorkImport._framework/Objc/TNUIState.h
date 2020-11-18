@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -81,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)p_exitPaginatedMode;
 - (id)p_fixedUpSelectionPathForRestoration:(id)arg1 forcingUnpagination:(BOOL)arg2;
 - (id)p_uiStateForActiveSheet;
+- (void)removeAllUIStatesForSheet:(id)arg1;
 - (void)removeUIStateForSheet:(id)arg1;
 - (void)saveToArchive:(struct UIStateArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
 - (void)setPreviousVisibleRect:(struct CGRect)arg1 forSheet:(id)arg2;

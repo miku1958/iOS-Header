@@ -13,7 +13,6 @@
 
 @interface _SFPBTrack : PBCodable <_SFPBTrack, NSSecureCoding>
 {
-    CDStruct_62e447a2 _has;
     BOOL _highlighted;
     NSString *_title;
     NSString *_number;
@@ -25,12 +24,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *duration; // @synthesize duration=_duration;
-@property (readonly, nonatomic) BOOL hasDuration;
-@property (readonly, nonatomic) BOOL hasHighlighted;
-@property (readonly, nonatomic) BOOL hasNumber;
-@property (readonly, nonatomic) BOOL hasPlayAction;
-@property (readonly, nonatomic) BOOL hasPreview;
-@property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (readonly, nonatomic) NSData *jsonData;

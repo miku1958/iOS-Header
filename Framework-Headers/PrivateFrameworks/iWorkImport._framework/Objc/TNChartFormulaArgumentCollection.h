@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSFastEnumeration-Protocol.h>
@@ -15,18 +15,19 @@
 __attribute__((visibility("hidden")))
 @interface TNChartFormulaArgumentCollection : NSObject <NSFastEnumeration, NSCopying, NSMutableCopying>
 {
-    NSArray *mArray;
-    BOOL mStoreBadRef;
+    NSArray *_array;
+    BOOL _storeBadRef;
 }
 
-@property (nonatomic) BOOL storeBadRef; // @synthesize storeBadRef=mStoreBadRef;
+@property (nonatomic) BOOL storeBadRef; // @synthesize storeBadRef=_storeBadRef;
 
 + (id)argumentCollectionFromFormula:(struct TSCEFormula *)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3;
 + (id)argumentCollectionFromFormula:(struct TSCEFormula *)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingCalcEngine:(id)arg3 storeBadRef:(BOOL)arg4;
+- (void).cxx_destruct;
+- (unsigned long long)components;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (void)dealloc;
 - (id)description;
 - (id)elementAtIndex:(unsigned long long)arg1;
 - (id)elementEnumerator;
@@ -37,7 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)lastElement;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)reverseElementEnumerator;
-- (id)wrappedChartFormulaWithID:(CDStruct_ed6d627d)arg1 andLocale:(id)arg2;
+- (id)wrappedChartFormulaWithID:(struct TSUCellCoord)arg1 andLocale:(id)arg2;
 
 @end
 

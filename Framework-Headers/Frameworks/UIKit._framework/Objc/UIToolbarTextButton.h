@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIToolbarButton.h>
+#import <UIKitCore/UIToolbarButton.h>
 
 @class NSSet, NSString;
 

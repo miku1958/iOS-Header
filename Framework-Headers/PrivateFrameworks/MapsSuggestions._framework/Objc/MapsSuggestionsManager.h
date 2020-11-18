@@ -10,8 +10,8 @@
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsSourceDelegate-Protocol.h>
 
-@class CLLocation, GEOAutomobileOptions, MapsSuggestionsFakeSource, MapsSuggestionsTracker, NSDate, NSString;
-@protocol MapsSuggestionsLocationUpdater, MapsSuggestionsStrategy, OS_dispatch_queue, OS_dispatch_source;
+@class CLLocation, GEOAutomobileOptions, MapsSuggestionsCanKicker, MapsSuggestionsFakeSource, MapsSuggestionsTracker, NSDate, NSHashTable, NSString;
+@protocol MapsSuggestionsLocationUpdater, MapsSuggestionsStrategy, OS_dispatch_queue;
 
 @interface MapsSuggestionsManager : NSObject <MapsSuggestionsObject, MapsSuggestionsSourceDelegate, MapsSuggestionsLocationUpdaterDelegate>
 {
@@ -21,17 +21,16 @@
     MapsSuggestionsTracker *_tracker;
     NSDate *_etaValidUntil;
     struct NSMutableSet *_sources;
-    struct NSMutableSet *_sinks;
+    NSHashTable *_sinks;
     struct NSMutableDictionary *_storage;
     struct NSArray *_latestResults;
     NSObject<OS_dispatch_queue> *_gatheringQueue;
     NSObject<OS_dispatch_queue> *_storageQueue;
     BOOL _dirtyFlag;
     int _defaultTansportType;
-    NSObject<OS_dispatch_source> *_invalidateSinksOnExpiredTimer;
-    NSObject<OS_dispatch_source> *_wipeStaleETATimer;
-    NSObject<OS_dispatch_source> *_updateAllSourcesDeferTimer;
-    double _updateAllSourcesDeferTime;
+    MapsSuggestionsCanKicker *_expiredEntryInvalidator;
+    MapsSuggestionsCanKicker *_wipeStaleETAWiper;
+    MapsSuggestionsCanKicker *_deferredSourcesUpdater;
     int _mapType;
     long long _style;
     GEOAutomobileOptions *_automobileOptions;
@@ -57,8 +56,10 @@
 - (unsigned long long)_addOrUpdateSuggestionEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
 - (unsigned long long)_deleteEntries:(struct NSArray *)arg1 source:(struct NSString *)arg2;
 - (struct NSArray *)_filteredEntries:(struct NSArray *)arg1 forSink:(struct NSString *)arg2 limit:(unsigned long long)arg3;
+- (BOOL)_loadStorageFromFile:(id)arg1;
 - (struct NSArray *)_pruneExpiredFromEntries:(struct NSArray *)arg1;
 - (void)_pruneExpiredSourceEntries;
+- (BOOL)_removeEntry:(id)arg1;
 - (BOOL)_removeEntry:(id)arg1 sourceName:(struct NSString *)arg2;
 - (void)_restartLocationUpdaterIfNeeded;
 - (void)_scheduleInvalidateSinksOnFirstExpiredOfEntries:(struct NSArray *)arg1;
@@ -72,6 +73,7 @@
 - (void)_updateAllSourcesOnce;
 - (void)_updateCurrentLocation:(id)arg1;
 - (BOOL)_updateResult;
+- (void)_updateSource:(id)arg1 forType:(long long)arg2 repeat:(BOOL)arg3;
 - (void)_updateSource:(id)arg1 repeat:(BOOL)arg2;
 - (void)_wipeStaleETAs;
 - (void)addAdditionalFilter:(id)arg1 forSink:(struct NSString *)arg2;
@@ -89,14 +91,16 @@
 - (BOOL)detachSink:(id)arg1;
 - (BOOL)detachSource:(id)arg1;
 - (id)dumpStorage;
-- (void)hintRefreshOfType:(unsigned long long)arg1;
-- (id)initWithStrategy:(id)arg1 locationUpdater:(id)arg2 fetchETA:(BOOL)arg3;
+- (void)hintRefreshOfType:(long long)arg1;
+- (id)initWithStrategy:(id)arg1 locationUpdater:(id)arg2 ETARequirements:(id)arg3;
 - (BOOL)loadStorageFromFile:(id)arg1;
+- (BOOL)loadStorageFromFile:(id)arg1 callback:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
 - (void)removeAdditionalFilter:(id)arg1 forSink:(struct NSString *)arg2;
+- (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)saveStorageToFile:(id)arg1;
 - (void)scheduleUpdateAllSourcesOnce;
 - (void)sendInvalidateToAllSinks;
-- (void)setTitleFormatter:(id)arg1 forType:(unsigned long long)arg2;
+- (void)setTitleFormatter:(id)arg1 forType:(long long)arg2;
 - (struct NSSet *)sinks;
 - (struct NSSet *)sources;
 - (struct NSDictionary *)storage;

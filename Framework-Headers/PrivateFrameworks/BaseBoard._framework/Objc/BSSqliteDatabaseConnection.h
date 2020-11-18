@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCache, NSHashTable;
 @protocol OS_dispatch_queue;
@@ -18,6 +18,7 @@
 }
 
 + (int)_sqliteOpenFlagsForDataProtectionClass:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (void)_closeConnection;
 - (id)_initWithSqlitePath:(id)arg1 dataProtectionClass:(unsigned long long)arg2;
 - (void)_queue_close;

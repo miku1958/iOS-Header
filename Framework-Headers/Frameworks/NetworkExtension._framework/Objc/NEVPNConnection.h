@@ -6,33 +6,50 @@
 
 #import <objc/NSObject.h>
 
-@class NEVPNManager, NSDate;
+@class NEConfigurationManager, NEVPNManager, NSDate, NSError, NSString;
+@protocol OS_dispatch_queue;
 
 @interface NEVPNConnection : NSObject
 {
+    BOOL _initialized;
     int _sessionType;
     long long _status;
     NSDate *_connectedDate;
+    NEConfigurationManager *_configManager;
+    NSString *_configurationName;
+    NSObject<OS_dispatch_queue> *_queue;
     void *_session;
     NEVPNManager *_weakmanager;
+    NSError *_lastDisconnectError;
 }
 
+@property (readonly, nonatomic) NEConfigurationManager *configManager; // @synthesize configManager=_configManager;
+@property (strong, nonatomic) NSString *configurationName; // @synthesize configurationName=_configurationName;
 @property (readonly) NSDate *connectedDate; // @synthesize connectedDate=_connectedDate;
+@property (nonatomic) BOOL initialized; // @synthesize initialized=_initialized;
+@property (readonly) NSError *lastDisconnectError; // @synthesize lastDisconnectError=_lastDisconnectError;
 @property (readonly) NEVPNManager *manager;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property void *session; // @synthesize session=_session;
-@property (readonly) int sessionType; // @synthesize sessionType=_sessionType;
+@property (readonly, nonatomic) int sessionType; // @synthesize sessionType=_sessionType;
 @property (readonly) long long status; // @synthesize status=_status;
 @property (weak) NEVPNManager *weakmanager; // @synthesize weakmanager=_weakmanager;
 
++ (id)createConnectionForEnabledEnterpriseConfiguration;
++ (id)createDisconnectErrorWithDomain:(id)arg1 code:(unsigned int)arg2;
 - (void).cxx_destruct;
+- (void)createSessionWithConfigurationIdentifier:(id)arg1 forceInfoFetch:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)destroySession;
+- (id)initHeadless;
 - (id)initWithType:(int)arg1;
 - (void)newSessionWithConfigID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)reload;
+- (void)resetLastDisconnectError:(id)arg1;
 - (BOOL)startVPNTunnelAndReturnError:(id *)arg1;
 - (BOOL)startVPNTunnelWithOptions:(id)arg1 andReturnError:(id *)arg2;
 - (void)stopVPNTunnel;
-- (void)updateSessionInfoWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updateSessionInfoForce:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 
 @end
 

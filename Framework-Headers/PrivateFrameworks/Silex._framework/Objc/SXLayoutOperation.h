@@ -55,6 +55,7 @@
 - (BOOL)isFinished;
 - (BOOL)isFinishedLayoutBlueprint:(id)arg1 forLayoutDataProvider:(id)arg2;
 - (BOOL)isValidLayoutBlueprint:(id)arg1 viewportSize:(struct CGSize)arg2;
+- (BOOL)layoutInvalidationRequiredForComponentBlueprint:(id)arg1 columnLayout:(id)arg2 previousColumnLayout:(id)arg3;
 - (void)layouter:(id)arg1 didFinishLayoutForComponent:(id)arg2 layoutBlueprint:(id)arg3 shouldContinueLayout:(BOOL *)arg4;
 - (void)prepareLayoutBlueprint:(id)arg1;
 - (void)registerComponent:(id)arg1 toLayoutBlueprint:(id)arg2 layoutDataProvider:(id)arg3 documentColumnLayout:(id)arg4;

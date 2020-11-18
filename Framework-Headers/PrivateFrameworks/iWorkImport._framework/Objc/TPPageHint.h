@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSWPOffscreenColumn-Protocol.h>
 
@@ -69,8 +69,10 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchive:(struct PageHintArchive *)arg1 archiver:(id)arg2 context:(id)arg3;
 - (void)setFlowHints:(id)arg1 flowTopicNumbers:(id)arg2;
 - (void)setHints:(id)arg1 topicNumbers:(id)arg2;
-- (BOOL)syncsWithEndOfPageHint:(id)arg1 storage:(id)arg2;
+- (BOOL)syncsFlowRanges:(id)arg1 withEndOfPageHint:(id)arg2;
+- (BOOL)syncsWithEndOfPageHint:(id)arg1 bodyStorage:(id)arg2 flowRanges:(id)arg3;
 - (void)trimToCharIndex:(unsigned long long)arg1 inTarget:(id)arg2 removeFootnoteReferenceCount:(unsigned long long)arg3 removeAutoNumberFootnoteCount:(unsigned long long)arg4;
+- (void)updateRangeForIndexPath:(id)arg1 withStorage:(id)arg2;
 
 @end
 

@@ -11,6 +11,7 @@
 @interface IDSAccount : NSObject
 {
     _IDSAccount *_internal;
+    NSString *_loginID;
 }
 
 @property (readonly, strong, nonatomic) _IDSAccount *_internal;
@@ -28,7 +29,7 @@
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isUsableForOuterMessaging;
 @property (readonly, nonatomic) BOOL isUserDisabled;
-@property (strong, nonatomic) NSString *loginID;
+@property (strong, nonatomic) NSString *loginID; // @synthesize loginID=_loginID;
 @property (readonly, nonatomic) NSArray *nearbyDevices;
 @property (readonly, nonatomic) NSDate *nextRegistrationDate;
 @property (readonly, nonatomic) NSString *primaryServiceName;

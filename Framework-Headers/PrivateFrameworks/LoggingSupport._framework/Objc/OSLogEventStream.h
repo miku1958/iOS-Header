@@ -4,45 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <LoggingSupport/OSLogEventStreamBase.h>
 
-@class NSPredicate, OSLogEventSource, _OSLogIndex;
+@class NSObject, NSPredicate, OSLogEventSource, _OSLogCatalogFilter, _OSLogIndex;
 @protocol OS_dispatch_queue;
 
-@interface OSLogEventStream : NSObject
+@interface OSLogEventStream : OSLogEventStreamBase
 {
-    unsigned int _invalidated;
-    NSPredicate *_filterPredicate;
-    unsigned long long _flags;
+    _OSLogCatalogFilter *_catalogFilter;
     _OSLogIndex *_index;
-    CDUnknownBlockType _invalidationHandler;
     OSLogEventSource *_source;
-    CDUnknownBlockType _streamHandler;
-    NSObject<OS_dispatch_queue> *_target;
     struct _os_timesync_db_s *_tsdb;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (copy, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
-@property (nonatomic) unsigned long long flags; // @synthesize flags=_flags;
+@property (strong, nonatomic) _OSLogCatalogFilter *catalogFilter; // @synthesize catalogFilter=_catalogFilter;
+@property (copy, nonatomic) NSPredicate *filterPredicate; // @dynamic filterPredicate;
+@property (nonatomic) unsigned long long flags; // @dynamic flags;
 @property (strong, nonatomic) _OSLogIndex *index; // @synthesize index=_index;
-@property (nonatomic) unsigned int invalidated; // @synthesize invalidated=_invalidated;
-@property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly, nonatomic) OSLogEventSource *source; // @synthesize source=_source;
-@property (copy, nonatomic) CDUnknownBlockType streamHandler; // @synthesize streamHandler=_streamHandler;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *target; // @synthesize target=_target;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *target; // @dynamic target;
 @property (nonatomic) struct _os_timesync_db_s *tsdb; // @synthesize tsdb=_tsdb;
 
 - (void).cxx_destruct;
 - (void)_activateStreamInRange:(struct os_timesync_range_s *)arg1;
+- (void)_foreachIndexFile:(CDUnknownBlockType)arg1;
+- (id)_initWithSource:(id)arg1 flags:(unsigned long long)arg2;
 - (void)activateStreamFromDate:(id)arg1;
 - (void)activateStreamFromLastBoot;
 - (void)activateStreamFromPosition:(id)arg1;
 - (void)dealloc;
 - (id)initWithSource:(id)arg1;
-- (void)invalidate;
-- (void)setEventHandler:(CDUnknownBlockType)arg1;
+- (id)initWithSource:(id)arg1 skipNonSignpostFiles:(BOOL)arg2;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreTelephony/CTMessageAddress-Protocol.h>
 #import <CoreTelephony/NSCopying-Protocol.h>

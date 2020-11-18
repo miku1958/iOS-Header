@@ -13,7 +13,9 @@
 @optional
 - (BOOL)FPAreUTIsImportable:(NSArray *)arg1 toFolderItem:(FPItem *)arg2;
 - (void)FPBookmarkableStringFromDocumentURL:(NSURL *)arg1 completionHandler:(void (^)(NSString *, NSError *))arg2;
+- (NSString *)FPBookmarkableStringFromDocumentURL:(NSURL *)arg1 error:(id *)arg2;
 - (void)FPDocumentURLFromBookmarkableString:(NSString *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
+- (NSURL *)FPDocumentURLFromBookmarkableString:(NSString *)arg1 error:(id *)arg2;
 - (void)FPDocumentURLFromUniversalBookmarkableString:(NSString *)arg1 completionHandler:(void (^)(NSURL *, NSError *))arg2;
 - (void)FPExtendBookmarkForDocumentURL:(NSURL *)arg1 forBundleID:(NSString *)arg2 completionHandler:(void (^)(NSString *, NSError *))arg3;
 - (void)FPFetchProxyFactoryEndpointForMessageInterface:(NSFileProviderMessageInterface *)arg1 completionHandler:(void (^)(NSXPCListenerEndpoint *, void (^)(void), NSError *))arg2;

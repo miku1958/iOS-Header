@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
+- (void)_commonInitWithSize:(struct CGSize)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1 item:(id)arg2;
 - (id)initWithSize:(struct CGSize)arg1 url:(id)arg2;

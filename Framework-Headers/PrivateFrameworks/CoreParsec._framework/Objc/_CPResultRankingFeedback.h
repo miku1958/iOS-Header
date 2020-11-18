@@ -14,11 +14,6 @@
 
 @interface _CPResultRankingFeedback : PBCodable <_CPProcessableFeedback, _CPResultRankingFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int timestamp:1;
-        unsigned int localResultPosition:1;
-        unsigned int personalizationScore:1;
-    } _has;
     unsigned int _localResultPosition;
     unsigned long long _timestamp;
     _CPSearchResultForFeedback *_result;
@@ -34,10 +29,6 @@
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (copy, nonatomic) NSArray *duplicateResults; // @synthesize duplicateResults=_duplicateResults;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasLocalResultPosition;
-@property (readonly, nonatomic) BOOL hasPersonalizationScore;
-@property (readonly, nonatomic) BOOL hasResult;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *hiddenResults; // @synthesize hiddenResults=_hiddenResults;
@@ -48,8 +39,8 @@
 @property (strong, nonatomic) _CPSearchResultForFeedback *result; // @synthesize result=_result;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 
 - (void).cxx_destruct;
 - (void)addDuplicateResults:(id)arg1;

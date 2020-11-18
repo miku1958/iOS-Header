@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSData, NSString;
 
-@interface DMFClearDevicePasscodeRequest : CATTaskRequest
+@interface DMFClearDevicePasscodeRequest : DMFTaskRequest
 {
     NSData *_unlockTokenData;
     NSString *_secret;
@@ -17,6 +17,9 @@
 @property (copy, nonatomic) NSString *secret; // @synthesize secret=_secret;
 @property (copy, nonatomic) NSData *unlockTokenData; // @synthesize unlockTokenData=_unlockTokenData;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

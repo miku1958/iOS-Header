@@ -49,7 +49,7 @@
 - (id)fetchSearchableItemsIndexedByContactIdentifierWithError:(id *)arg1;
 - (BOOL)fullSyncContacts;
 - (BOOL)indexSearchableItems:(id)arg1;
-- (id)init;
+- (id)initWithContactStore:(id)arg1;
 - (id)initWithContactStore:(id)arg1 searchableIndex:(id)arg2 logger:(id)arg3 batchSize:(unsigned long long)arg4;
 - (void)performIndexing;
 - (BOOL)prepareForFullSync:(id)arg1;

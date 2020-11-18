@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/LSApplicationWorkspace.h>
+#import <CoreServices/LSApplicationWorkspace.h>
 
 @interface LSApplicationWorkspace (MCUIMISBlockedApps)
 - (id)blacklistedApps;

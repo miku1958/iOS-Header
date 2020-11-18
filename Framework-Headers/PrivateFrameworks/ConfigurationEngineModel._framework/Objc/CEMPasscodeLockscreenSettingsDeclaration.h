@@ -12,34 +12,42 @@
 
 @interface CEMPasscodeLockscreenSettingsDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadAllowVoiceDialing;
+    NSNumber *_payloadAllowAssistantWhileLocked;
+    NSNumber *_payloadAllowLockScreenTodayView;
+    NSNumber *_payloadAllowPassbookWhileLocked;
+    NSNumber *_payloadAllowLockScreenNotificationsView;
+    NSNumber *_payloadAllowLockScreenControlCenter;
+    NSNumber *_payloadAllowLockScreenWiFiModification;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadAllowAssistantWhileLocked;
-@property (readonly, nonatomic) NSNumber *payloadAllowLockScreenControlCenter;
-@property (readonly, nonatomic) NSNumber *payloadAllowLockScreenNotificationsView;
-@property (readonly, nonatomic) NSNumber *payloadAllowLockScreenTodayView;
-@property (readonly, nonatomic) NSNumber *payloadAllowLockScreenWiFiModification;
-@property (readonly, nonatomic) NSNumber *payloadAllowPassbookWhileLocked;
-@property (readonly, nonatomic) NSNumber *payloadAllowVoiceDialing;
+@property (copy, nonatomic) NSNumber *payloadAllowAssistantWhileLocked; // @synthesize payloadAllowAssistantWhileLocked=_payloadAllowAssistantWhileLocked;
+@property (copy, nonatomic) NSNumber *payloadAllowLockScreenControlCenter; // @synthesize payloadAllowLockScreenControlCenter=_payloadAllowLockScreenControlCenter;
+@property (copy, nonatomic) NSNumber *payloadAllowLockScreenNotificationsView; // @synthesize payloadAllowLockScreenNotificationsView=_payloadAllowLockScreenNotificationsView;
+@property (copy, nonatomic) NSNumber *payloadAllowLockScreenTodayView; // @synthesize payloadAllowLockScreenTodayView=_payloadAllowLockScreenTodayView;
+@property (copy, nonatomic) NSNumber *payloadAllowLockScreenWiFiModification; // @synthesize payloadAllowLockScreenWiFiModification=_payloadAllowLockScreenWiFiModification;
+@property (copy, nonatomic) NSNumber *payloadAllowPassbookWhileLocked; // @synthesize payloadAllowPassbookWhileLocked=_payloadAllowPassbookWhileLocked;
+@property (copy, nonatomic) NSNumber *payloadAllowVoiceDialing; // @synthesize payloadAllowVoiceDialing=_payloadAllowVoiceDialing;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withAllowVoiceDialing:(id)arg2 withAllowAssistantWhileLocked:(id)arg3 withAllowLockScreenTodayView:(id)arg4 withAllowPassbookWhileLocked:(id)arg5 withAllowLockScreenNotificationsView:(id)arg6 withAllowLockScreenControlCenter:(id)arg7 withAllowLockScreenWiFiModification:(id)arg8;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

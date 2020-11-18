@@ -7,13 +7,13 @@
 #import <objc/NSObject.h>
 
 @class NSLocale, NSMutableIndexSet, NSString, SXFontAttributesConstructor;
-@protocol SXActionProvider, SXTextSourceDataSource, SXTextStyleFontDescribing;
+@protocol SXSmartFieldFactory, SXTextSourceDataSource, SXTextStyleFontDescribing;
 
 @interface SXTextSource : NSObject
 {
     id<SXTextSourceDataSource> _dataSource;
     NSString *_string;
-    id<SXActionProvider> _actionProvider;
+    id<SXSmartFieldFactory> _smartFieldFactory;
     NSMutableIndexSet *_deletedRangeOffsets;
     NSMutableIndexSet *_insertedRangeOffsets;
     NSMutableIndexSet *_rangesExcludedOfParagraphSpacing;
@@ -21,7 +21,6 @@
     id<SXTextStyleFontDescribing> _defaultFontDescribing;
 }
 
-@property (readonly, nonatomic) id<SXActionProvider> actionProvider; // @synthesize actionProvider=_actionProvider;
 @property (readonly, weak, nonatomic) id<SXTextSourceDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, nonatomic) id<SXTextStyleFontDescribing> defaultFontDescribing; // @synthesize defaultFontDescribing=_defaultFontDescribing;
 @property (strong, nonatomic) NSMutableIndexSet *deletedRangeOffsets; // @synthesize deletedRangeOffsets=_deletedRangeOffsets;
@@ -29,6 +28,7 @@
 @property (strong, nonatomic) NSMutableIndexSet *insertedRangeOffsets; // @synthesize insertedRangeOffsets=_insertedRangeOffsets;
 @property (readonly, nonatomic) NSLocale *locale;
 @property (strong, nonatomic) NSMutableIndexSet *rangesExcludedOfParagraphSpacing; // @synthesize rangesExcludedOfParagraphSpacing=_rangesExcludedOfParagraphSpacing;
+@property (readonly, nonatomic) id<SXSmartFieldFactory> smartFieldFactory; // @synthesize smartFieldFactory=_smartFieldFactory;
 @property (readonly, nonatomic) NSString *string; // @synthesize string=_string;
 
 - (void).cxx_destruct;
@@ -40,7 +40,7 @@
 - (id)cleanString:(id)arg1;
 - (id)description;
 - (id)fontFaceForTextDescribing:(id)arg1 inheritingFromTextStyle:(id)arg2;
-- (id)initWithString:(id)arg1 actionProvider:(id)arg2 dataSource:(id)arg3;
+- (id)initWithString:(id)arg1 smartFieldFactory:(id)arg2 dataSource:(id)arg3;
 - (int)listLabelTypeForListType:(unsigned long long)arg1;
 - (int)listNumberTypeForListType:(unsigned long long)arg1;
 - (id)populateArray:(id)arg1 withValue:(id)arg2 forSize:(unsigned long long)arg3;

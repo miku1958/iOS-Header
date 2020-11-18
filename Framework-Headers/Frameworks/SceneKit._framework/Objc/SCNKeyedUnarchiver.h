@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSString *lookUpKey; // @synthesize lookUpKey;
 
 - (void)dealloc;
+- (id)initForReadingWithData:(id)arg1 secure:(BOOL)arg2;
 
 @end
 

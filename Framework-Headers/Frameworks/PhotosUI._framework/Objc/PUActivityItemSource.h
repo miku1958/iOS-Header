@@ -8,26 +8,32 @@
 
 #import <PhotosUI/UIActivityItemApplicationExtensionSource-Protocol.h>
 #import <PhotosUI/UIActivityItemDeferredSource-Protocol.h>
+#import <PhotosUI/UIActivityItemImageDataProvider-Protocol.h>
 #import <PhotosUI/UIActivityItemSource-Protocol.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSProgress, NSString, NSURL, PFSharingRemaker, PHAsset, PHAssetExportRequest, PLVideoRemaker, _PUActivityItemSourceOperation;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet, NSProgress, NSString, NSURL, PFSharingRemaker, PHAsset, PHAssetExportRequest, PLVideoRemaker, PUActivityItemSourceAnchorOperation, _PUActivityItemSourceOperation;
+@protocol OS_dispatch_group;
 
-@interface PUActivityItemSource : NSObject <UIActivityItemDeferredSource, UIActivityItemApplicationExtensionSource, UIActivityItemSource>
+@interface PUActivityItemSource : NSObject <UIActivityItemDeferredSource, UIActivityItemApplicationExtensionSource, UIActivityItemImageDataProvider, UIActivityItemSource>
 {
     PHAsset *_asset;
     NSDictionary *_cachedSharingVariants;
+    NSObject<OS_dispatch_group> *_cachedSharingVariantsDisptachGroup;
     NSMutableSet *_onDemandExports;
     NSMutableDictionary *_sharingURLs;
     NSString *_sharingUUID;
     NSString *_assetOriginalFilename;
     BOOL _hasRecognizedVideoAdjustments;
     _PUActivityItemSourceOperation *_currentOperation;
+    PUActivityItemSourceAnchorOperation *_anchorOperation;
     PLVideoRemaker *_remaker;
     CDUnknownBlockType _remakerCompletionHandler;
     id _strongSelf;
     PFSharingRemaker *_photoRemaker;
     NSArray *_nonLocalAssetsActivities;
     BOOL _useStillImage;
+    BOOL _shouldSkipPreparation;
+    BOOL _shouldAnchorPreparation;
     CDUnknownBlockType _progressHandler;
     CDUnknownBlockType _completionHandler;
     CDUnknownBlockType _postCompletionHandler;
@@ -52,11 +58,15 @@
 @property (readonly) unsigned long long hash;
 @property (copy) CDUnknownBlockType postCompletionHandler; // @synthesize postCompletionHandler=_postCompletionHandler;
 @property (copy) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (nonatomic) BOOL shouldAnchorPreparation; // @synthesize shouldAnchorPreparation=_shouldAnchorPreparation;
+@property (nonatomic) BOOL shouldSkipPreparation; // @synthesize shouldSkipPreparation=_shouldSkipPreparation;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL useStillImage; // @synthesize useStillImage=_useStillImage;
 
 + (id)_photosInternalActivities;
 + (id)_sharingErrorWithCode:(long long)arg1 underlyingError:(id)arg2 localizedDescription:(id)arg3 additionalInfo:(id)arg4;
++ (id)activityItemSourceLog;
++ (void)initialize;
 + (BOOL)supportsAssetLocalIdentifierForActivityType:(id)arg1;
 + (BOOL)supportsPhotoIrisBundleForActivityType:(id)arg1;
 - (void).cxx_destruct;
@@ -73,6 +83,7 @@
 - (void)_fetchAlternateForActivityType:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchImageForActivityType:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_fetchPhotoIrisForActivityType:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_fetchSharingVariants;
 - (void)_fetchVideoForActivityType:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_generateURLForType:(long long)arg1 desiredPathExtension:(id)arg2;
 - (BOOL)_isColorOptimizationNeededForAsset:(id)arg1 imageURL:(id)arg2;
@@ -104,7 +115,7 @@
 - (BOOL)_wantsVideoRemakerForActivityType:(id)arg1;
 - (id)activityViewController:(id)arg1 dataTypeIdentifierForActivityType:(id)arg2;
 - (id)activityViewController:(id)arg1 itemForActivityType:(id)arg2;
-- (id)activityViewController:(id)arg1 thumbnailImageForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
+- (id)activityViewController:(id)arg1 thumbnailImageDataForActivityType:(id)arg2 suggestedSize:(struct CGSize)arg3;
 - (id)activityViewControllerApplicationExtensionItem:(id)arg1;
 - (id)activityViewControllerOperation:(id)arg1;
 - (id)activityViewControllerPlaceholderItem:(id)arg1;
@@ -116,6 +127,7 @@
 - (void)remakePhotoWithURL:(id)arg1 progressHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)remakeVideoWithTrimStartTime:(double)arg1 endTime:(double)arg2 forMail:(BOOL)arg3 progressHandler:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)runWithActivityType:(id)arg1;
+- (void)signalAnchorCompletion;
 - (void)videoRemakerDidBeginRemaking:(id)arg1;
 - (void)videoRemakerDidEndRemaking:(id)arg1 temporaryPath:(id)arg2;
 

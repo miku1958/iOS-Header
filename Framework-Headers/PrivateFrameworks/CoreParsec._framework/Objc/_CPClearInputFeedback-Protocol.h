@@ -10,8 +10,6 @@
 
 @protocol _CPClearInputFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent;

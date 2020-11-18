@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "NSTextAttachment.h"
+#import <UIFoundation/NSTextAttachment.h>
 
-#import <UIKit/UIAccessibilityContentSizeCategoryImageAdjusting-Protocol.h>
+#import <UIKitCore/UIAccessibilityContentSizeCategoryImageAdjusting-Protocol.h>
 
 @class NSString;
 

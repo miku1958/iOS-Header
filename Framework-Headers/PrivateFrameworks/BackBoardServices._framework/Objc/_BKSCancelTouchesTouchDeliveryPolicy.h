@@ -20,8 +20,8 @@
 @property (readonly, nonatomic) double initialTouchTimestamp; // @synthesize initialTouchTimestamp=_initialTouchTimestamp;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)assertionEndpoint;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 @class ISWrappedAVPlayer, NSArray, UIImage, UIImageView, _PXVideoView;
+@protocol PXVideoPlayerViewDelegate;
 
 @interface PXVideoPlayerView : UIView
 {
@@ -15,8 +16,10 @@
     UIImageView *_previewImageView;
     NSArray *_previewImageViewConstraints;
     long long _placeholderVisibilityRequestID;
+    CDUnknownBlockType _visibilityChangeCompletionHandler;
     BOOL _displayingPlaceholder;
     BOOL _allowsEdgeAntialiasing;
+    id<PXVideoPlayerViewDelegate> _delegate;
     ISWrappedAVPlayer *_player;
     UIImage *_placeholderImage;
     NSArray *_placeholderImageFilters;
@@ -27,7 +30,8 @@
 }
 
 @property (nonatomic) BOOL allowsEdgeAntialiasing; // @synthesize allowsEdgeAntialiasing=_allowsEdgeAntialiasing;
-@property (nonatomic, getter=isDisplayingPlaceHolder, setter=_setDisplayingPlaceholder:) BOOL displayingPlaceholder; // @synthesize displayingPlaceholder=_displayingPlaceholder;
+@property (weak, nonatomic) id<PXVideoPlayerViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic, getter=isDisplayingPlaceHolder) BOOL displayingPlaceholder; // @synthesize displayingPlaceholder=_displayingPlaceholder;
 @property (nonatomic) long long placeholderDisplayMode; // @synthesize placeholderDisplayMode=_placeholderDisplayMode;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property (nonatomic) struct CGRect placeholderImageContentsRect; // @synthesize placeholderImageContentsRect=_placeholderImageContentsRect;
@@ -37,7 +41,8 @@
 @property (nonatomic) long long videoViewContentMode; // @synthesize videoViewContentMode=_videoViewContentMode;
 
 - (void).cxx_destruct;
-- (void)_setPlaceholderVisible:(BOOL)arg1 requestID:(long long)arg2;
+- (void)_runVisibilityChangeCompletionHandler;
+- (void)_setDisplayingPlaceholder:(BOOL)arg1 requestID:(long long)arg2;
 - (void)_updateContentMode;
 - (void)_updateEdgeAntialiasing;
 - (void)_updateSubviewsVisibility;
@@ -47,6 +52,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)setPlaceholderDisplayMode:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

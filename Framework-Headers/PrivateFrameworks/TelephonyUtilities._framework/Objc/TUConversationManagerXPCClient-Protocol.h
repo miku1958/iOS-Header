@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TelephonyUtilities/NSObject-Protocol.h>
+#import <TelephonyUtilities/TUConversationMediaControllerXPCClient-Protocol.h>
 
 @class NSDictionary;
 
-@protocol TUConversationManagerXPCClient <NSObject>
+@protocol TUConversationManagerXPCClient <TUConversationMediaControllerXPCClient>
 - (oneway void)updateConversationsByGroupUUID:(NSDictionary *)arg1;
 @end
 

@@ -51,6 +51,7 @@
 - (struct CGRect)initialFromViewFrame;
 - (struct CGRect)initialToViewFrame;
 - (id)interactiveTransition;
+- (void)setTransitionContext:(id)arg1;
 - (id)toViewController;
 - (id)transitionContext;
 - (double)transitionDuration:(id)arg1;

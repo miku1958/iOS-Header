@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPickerView.h>
+#import <UIKitCore/UIPickerView.h>
 
-#import <UIKit/UIPickerViewDataSource-Protocol.h>
-#import <UIKit/UIPickerViewDelegate-Protocol.h>
+#import <UIKitCore/UIPickerViewDataSource-Protocol.h>
+#import <UIKitCore/UIPickerViewDelegate-Protocol.h>
 
 @class NSCalendar, NSDate, NSDateComponents, NSLocale, NSString, NSTimeZone, UIDatePicker, UIFont, UILabel, _UIDatePickerChineseCalendar, _UIDatePickerMode;
 

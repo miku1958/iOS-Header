@@ -4,21 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCAudioIOControllerDelegate-Protocol.h>
-#import <AVConference/VCAudioIOSink-Protocol.h>
-#import <AVConference/VCAudioIOSource-Protocol.h>
+#import <AVConference/VCAudioIOControllerSink-Protocol.h>
+#import <AVConference/VCAudioIOControllerSource-Protocol.h>
 
 @class NSString, VCAudioIOControllerClient;
-@protocol VCAudioIOControllerControl;
+@protocol VCAudioIOControllerControl, VCAudioIODelegate><VCAudioIOSource><VCAudioIOSink;
 
 __attribute__((visibility("hidden")))
-@interface VCAudioIO : NSObject <VCAudioIOSource, VCAudioIOSink, VCAudioIOControllerDelegate>
+@interface VCAudioIO : NSObject <VCAudioIOControllerSource, VCAudioIOControllerSink, VCAudioIOControllerDelegate>
 {
     id<VCAudioIOControllerControl> _audioIOController;
     VCAudioIOControllerClient *_controllerClient;
     id _delegate;
+    id<VCAudioIODelegate><VCAudioIOSource><VCAudioIOSink> _loadedDelegate;
     struct AudioStreamBasicDescription _clientFormat;
     unsigned int _clientSamplesPerFrame;
     BOOL _isMuted;
@@ -37,6 +38,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) struct AudioStreamBasicDescription clientAudioFormat; // @synthesize clientAudioFormat=_clientFormat;
+@property (readonly, nonatomic) struct AudioStreamBasicDescription controllerFormat; // @synthesize controllerFormat=_controllerFormat;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned char direction;
@@ -50,6 +52,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)controllerForDeviceRole:(int)arg1;
+- (unsigned int)computeTimestampForControllerTime:(const struct _VCAudioIOControllerTime *)arg1 hostTime:(double)arg2 endpoint:(struct _VCAudioEndpointData *)arg3;
 - (void)controllerFormatChanged:(struct AudioStreamBasicDescription)arg1;
 - (BOOL)createConverterForSource:(BOOL)arg1 error:(id *)arg2;
 - (void)dealloc;
@@ -60,8 +63,8 @@ __attribute__((visibility("hidden")))
 - (void)didSuspend;
 - (void)forceCleanup;
 - (id)initWithOperatingMode:(int)arg1 deviceRole:(int)arg2 direction:(unsigned char)arg3 allowAudioRecording:(BOOL)arg4 delegate:(id)arg5 clientPid:(int)arg6;
-- (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
-- (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
+- (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1 controllerTime:(const struct _VCAudioIOControllerTime *)arg2;
+- (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1 controllerTime:(const struct _VCAudioIOControllerTime *)arg2;
 - (BOOL)reconfigureWithOperatingMode:(int)arg1 deviceRole:(int)arg2 direction:(unsigned char)arg3 allowAudioRecording:(BOOL)arg4;
 - (void)releaseConverters;
 - (void)setClientFormat:(struct AudioStreamBasicDescription)arg1;

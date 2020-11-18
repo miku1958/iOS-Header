@@ -8,7 +8,7 @@
 
 #import <iWorkImport/TSWPObjectIndex-Protocol.h>
 
-@class EQKitEnvironment, NSUUID;
+@class EQKitEnvironment, NSUUID, TSULocale;
 
 __attribute__((visibility("hidden")))
 @interface TSWPDocumentRoot : TSKDocumentRoot <TSWPObjectIndex>
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) EQKitEnvironment *equationEnvironment;
 @property (readonly, nonatomic) double stickyCommentScaleMultiplier;
 @property (readonly, nonatomic) BOOL supportHeaderFooterParagraphAlignmentInInspectors;
+@property (readonly, nonatomic) TSULocale *typesettingLocale;
 
 - (void).cxx_destruct;
 - (double)bodyWidth;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldHyphenate;
 - (id)unavailableDocumentFonts;
 - (BOOL)useLigatures;
+- (BOOL)validatedLoadFromUnarchiver:(id)arg1;
 - (int)verticalAlignmentForTextStorage:(id)arg1;
 - (void)willClose;
 

@@ -8,12 +8,12 @@
 
 #import <EventKit/NSCopying-Protocol.h>
 
-@class CLLocation, NSData, NSString, RTPredictedLocationOfInterest;
+@class CLLocation, EKPredictedLocationOfInterest, NSData, NSString;
 
 @interface EKStructuredLocation : EKObject <NSCopying>
 {
     BOOL _imprecise;
-    RTPredictedLocationOfInterest *_predictedLOI;
+    EKPredictedLocationOfInterest *_predictedLOI;
 }
 
 @property (strong, nonatomic) NSString *address;
@@ -24,7 +24,7 @@
 @property (nonatomic, getter=isImprecise) BOOL imprecise; // @synthesize imprecise=_imprecise;
 @property (readonly, nonatomic) BOOL isStructured;
 @property (copy, nonatomic) NSData *mapKitHandle;
-@property (strong, nonatomic) RTPredictedLocationOfInterest *predictedLOI; // @synthesize predictedLOI=_predictedLOI;
+@property (strong, nonatomic) EKPredictedLocationOfInterest *predictedLOI; // @synthesize predictedLOI=_predictedLOI;
 @property (readonly, nonatomic, getter=isPrediction) BOOL prediction;
 @property (nonatomic) double radius;
 @property (strong, nonatomic) NSString *routing;
@@ -44,9 +44,12 @@
 - (BOOL)isEqualToLocation:(id)arg1;
 - (id)latitude;
 - (id)longitude;
+- (id)radiusRaw;
 - (id)referenceFrame;
+- (id)semanticIdentifier;
 - (void)setLatitude:(id)arg1;
 - (void)setLongitude:(id)arg1;
+- (void)setRadiusRaw:(id)arg1;
 - (void)setReferenceFrame:(id)arg1;
 - (void)updateFromMapItem:(id)arg1;
 

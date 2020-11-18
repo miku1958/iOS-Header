@@ -28,6 +28,7 @@
 - (void)didMoveToSuperview;
 - (void)doneButtonPressed:(id)arg1;
 - (id)init;
+- (void)layoutSubviews;
 - (void)setExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)updateFrameAnimated:(BOOL)arg1;

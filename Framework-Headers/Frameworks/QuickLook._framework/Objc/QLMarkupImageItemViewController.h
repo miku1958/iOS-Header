@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)customEdgeInsets;
 - (struct UIEdgeInsets)customSketchOverlayInsets;
-- (id)draggableView;
+- (struct CGSize)imageSize;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)parallaxView;
 - (void)previewDidAppear:(BOOL)arg1;

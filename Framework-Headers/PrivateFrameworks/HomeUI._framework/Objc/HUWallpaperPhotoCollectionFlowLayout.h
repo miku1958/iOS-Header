@@ -6,6 +6,7 @@
 
 #import <UIKit/UICollectionViewFlowLayout.h>
 
+__attribute__((visibility("hidden")))
 @interface HUWallpaperPhotoCollectionFlowLayout : UICollectionViewFlowLayout
 {
     long long _assetCollectionSubtype;

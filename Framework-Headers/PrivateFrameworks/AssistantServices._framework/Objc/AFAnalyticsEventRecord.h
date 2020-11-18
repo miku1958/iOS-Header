@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <AssistantServices/NSSecureCoding-Protocol.h>
+#import <AssistantServices/SiriCoreSQLiteRecord-Protocol.h>
 
 @class AFAnalyticsEvent, NSDate, NSString;
 
-@interface AFAnalyticsEventRecord : NSObject <NSSecureCoding>
+@interface AFAnalyticsEventRecord : NSObject <SiriCoreSQLiteRecord, NSSecureCoding>
 {
     AFAnalyticsEvent *_event;
     NSString *_streamUID;
@@ -18,14 +19,19 @@
 }
 
 @property (readonly, copy, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) AFAnalyticsEvent *event; // @synthesize event=_event;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *streamUID; // @synthesize streamUID=_streamUID;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEvent:(id)arg1 streamUID:(id)arg2 dateCreated:(id)arg3;
+- (void)siriCoreSQLiteRecord_enumerateStorageKeysAndValuesUsingBlock:(CDUnknownBlockType)arg1;
 
 @end
 

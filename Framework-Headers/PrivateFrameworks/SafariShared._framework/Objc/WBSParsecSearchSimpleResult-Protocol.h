@@ -10,7 +10,7 @@
 @class NSNumber, NSString, UIImage;
 @protocol WBSParsecSearchSession;
 
-@protocol WBSParsecSearchSimpleResult <WBSParsecSearchMapsResultFeedbackSenderClient, WBSParsecSearchResultPresentedInCard>
+@protocol WBSParsecSearchSimpleResult <WBSParsecSearchResultPresentedInCard, WBSParsecSearchMapsResultFeedbackSenderClient>
 
 @property (readonly, nonatomic) NSString *descriptionLeadInText;
 @property (readonly, nonatomic) NSNumber *descriptionMaximumNumberOfLines;

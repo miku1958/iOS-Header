@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL allowsCellularAccess;
 @property (readonly, nonatomic) BOOL allowsPowerNapScheduling;
 @property (readonly, nonatomic) NSString *authPromptReason;
+@property (readonly, nonatomic) BOOL automaticallyRetryNetworkFailures;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (strong, nonatomic) NSMutableArray *childOperations; // @synthesize childOperations=_childOperations;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *childOperationsGroup; // @synthesize childOperationsGroup=_childOperationsGroup;
@@ -63,6 +64,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *deviceIdentifier;
+@property (readonly, nonatomic) unsigned long long discretionaryNetworkBehavior;
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSMutableArray *finishedChildOperationIDs; // @synthesize finishedChildOperationIDs=_finishedChildOperationIDs;
 @property (readonly, nonatomic) NSString *flowControlKey;
@@ -79,6 +81,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *operationID;
 @property (strong, nonatomic) CKOperationInfo *operationInfo; // @synthesize operationInfo=_operationInfo;
 @property (readonly, nonatomic) CKOperationResult *operationResult;
+@property (readonly, nonatomic) NSObject<OS_os_activity> *osActivity;
 @property (weak, nonatomic) CKDOperation *parentOperation; // @synthesize parentOperation=_parentOperation;
 @property (nonatomic) _Atomic int pcsWaitCount; // @synthesize pcsWaitCount=_pcsWaitCount;
 @property (strong, nonatomic) id<NSObject> powerAssertion; // @synthesize powerAssertion=_powerAssertion;

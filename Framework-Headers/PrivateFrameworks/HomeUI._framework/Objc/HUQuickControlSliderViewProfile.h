@@ -8,14 +8,16 @@
 
 #import <HomeUI/HUQuickControlIncrementalConvertibleProfile-Protocol.h>
 
-@class NSString;
+@class HFNumberValueConstraints, NSString;
 
 @interface HUQuickControlSliderViewProfile : HUQuickControlViewProfile <HUQuickControlIncrementalConvertibleProfile>
 {
     BOOL _hasSecondaryValue;
     BOOL _hasOffState;
-    double _stepValue;
+    HFNumberValueConstraints *_primaryValueConstraints;
+    HFNumberValueConstraints *_secondaryValueConstraints;
     unsigned long long _preferredFillSection;
+    unsigned long long _interactionFidelity;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,14 +25,16 @@
 @property (nonatomic) BOOL hasOffState; // @synthesize hasOffState=_hasOffState;
 @property (nonatomic) BOOL hasSecondaryValue; // @synthesize hasSecondaryValue=_hasSecondaryValue;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long interactionFidelity; // @synthesize interactionFidelity=_interactionFidelity;
 @property (nonatomic) unsigned long long preferredFillSection; // @synthesize preferredFillSection=_preferredFillSection;
-@property (nonatomic) double stepValue; // @synthesize stepValue=_stepValue;
+@property (strong, nonatomic) HFNumberValueConstraints *primaryValueConstraints; // @synthesize primaryValueConstraints=_primaryValueConstraints;
+@property (strong, nonatomic) HFNumberValueConstraints *secondaryValueConstraints; // @synthesize secondaryValueConstraints=_secondaryValueConstraints;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (double)gestureDragCoefficient;
 - (id)init;
-- (double)percentageValueForViewValue:(id)arg1;
-- (id)viewValueForPercentageValue:(double)arg1 round:(BOOL)arg2;
 
 @end
 

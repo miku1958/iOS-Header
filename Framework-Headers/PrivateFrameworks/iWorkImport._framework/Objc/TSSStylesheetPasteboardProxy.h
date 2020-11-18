@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
     BOOL mSelfArchiving;
 }
 
+- (void).cxx_destruct;
 - (void)addStyleReference:(id)arg1;
-- (void)dealloc;
 - (id)initWithContext:(id)arg1 stylesheet:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
 

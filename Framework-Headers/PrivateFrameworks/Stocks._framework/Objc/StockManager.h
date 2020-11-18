@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSUbiquitousKeyValueStore;
 
@@ -32,7 +32,6 @@
 - (void)_checkForDeletedStocks;
 - (void)_checkForMovedStocks;
 - (id)_defaultStockDictionaries;
-- (id)_localeStocks;
 - (void)_removeStock:(id)arg1 withRemoteNotification:(BOOL)arg2;
 - (void)_saveDataChangesWithStockDictionaries:(id)arg1;
 - (void)addStock:(id)arg1;

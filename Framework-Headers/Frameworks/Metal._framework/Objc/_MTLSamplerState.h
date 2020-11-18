@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <Metal/MTLSamplerState-Protocol.h>
+#import <Metal/MTLSamplerStateSPI-Protocol.h>
 
 @class NSString;
 @protocol MTLDevice;
 
-@interface _MTLSamplerState : NSObject <MTLSamplerState>
+@interface _MTLSamplerState : NSObject <MTLSamplerStateSPI>
 {
     id<MTLDevice> _device;
     NSString *_label;

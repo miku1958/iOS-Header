@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
 @property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL isInvalid;
 @property (readonly, nonatomic) BOOL needsUpdate;
 @property (strong, nonatomic) NSDate *nextCheckDate; // @synthesize nextCheckDate=_nextCheckDate;
 @property (nonatomic) unsigned long long suggestedValidDuration; // @synthesize suggestedValidDuration=_suggestedValidDuration;
@@ -39,6 +40,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)expirationDate;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

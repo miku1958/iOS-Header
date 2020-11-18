@@ -14,6 +14,7 @@
 @property (strong, nonatomic) UIColor *backgroundColorWhileHosting;
 @property (strong, nonatomic) UIColor *backgroundColorWhileNotHosting;
 @property (nonatomic, getter=isClippingDisabled) BOOL clippingDisabled;
+@property (nonatomic) struct CGAffineTransform hostViewTransform;
 @property (nonatomic) unsigned long long hostedLayerTypes;
 @property (readonly, nonatomic, getter=isHosting) BOOL hosting;
 @property (readonly, nonatomic) double level;

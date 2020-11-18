@@ -6,11 +6,12 @@
 
 #import <UIKit/UISlider.h>
 
+#import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
 @class AVVolumeWarningView, NSNumber, NSString, UIImageView;
 
-@interface AVVolumeSlider : UISlider <AVPlaybackControlsViewItem>
+@interface AVVolumeSlider : UISlider <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
 {
     BOOL _included;
     BOOL _collapsed;
@@ -39,7 +40,9 @@
 @property (weak, nonatomic) AVVolumeWarningView *volumeWarningView; // @synthesize volumeWarningView=_volumeWarningView;
 
 - (void).cxx_destruct;
+- (BOOL)_shouldTrackTouchAtPoint:(struct CGPoint)arg1;
 - (struct UIEdgeInsets)alignmentRectInsets;
+- (BOOL)avkit_shouldPreventExternalGestureRecognizerAtPoint:(struct CGPoint)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
@@ -54,7 +57,6 @@
 - (void)setValue:(float)arg1 animated:(BOOL)arg2;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
-- (void)willMoveToWindow:(id)arg1;
 
 @end
 

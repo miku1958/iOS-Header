@@ -9,7 +9,7 @@
 #import <StoreKitUI/SKUIViewElementView-Protocol.h>
 #import <StoreKitUI/UIKeyInput-Protocol.h>
 
-@class NSMutableArray, NSMutableString, NSString, SKUIViewElement, UIColor, UIFont;
+@class NSMutableArray, NSMutableString, NSString, SKUIViewElement, UIColor, UIFont, UITextInputPasswordRules;
 
 @interface SKUIPINInputControl : UIControl <SKUIViewElementView, UIKeyInput>
 {
@@ -39,6 +39,7 @@
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
 @property (nonatomic) long long numberOfCharacters; // @synthesize numberOfCharacters=_numberOfCharacters;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry; // @synthesize secureTextEntry=_secureTextEntry;
 @property (nonatomic) long long smartDashesType;

@@ -43,6 +43,7 @@
     CDUnknownBlockType _lockedOnAnimationCompletion;
     CDUnknownBlockType _initialSyncPrepCompletion;
     CDUnknownBlockType _languageLocaleCompletion;
+    CDUnknownBlockType _prepareWatchForForcedSUCompletion;
     NSMutableDictionary *_reportMapping;
 }
 
@@ -69,6 +70,7 @@
 @property (copy, nonatomic) CDUnknownBlockType lockedOnAnimationCompletion; // @synthesize lockedOnAnimationCompletion=_lockedOnAnimationCompletion;
 @property (nonatomic) BOOL nonSilentActivation; // @synthesize nonSilentActivation=_nonSilentActivation;
 @property (nonatomic) BOOL passcodeSet; // @synthesize passcodeSet=_passcodeSet;
+@property (copy, nonatomic) CDUnknownBlockType prepareWatchForForcedSUCompletion; // @synthesize prepareWatchForForcedSUCompletion=_prepareWatchForForcedSUCompletion;
 @property (copy, nonatomic) NSString *remoteActivationUserAgent; // @synthesize remoteActivationUserAgent=_remoteActivationUserAgent;
 @property (strong, nonatomic) RUIStyle *remoteUIStyle; // @synthesize remoteUIStyle=_remoteUIStyle;
 @property (strong, nonatomic) NSMutableDictionary *reportMapping; // @synthesize reportMapping=_reportMapping;
@@ -126,6 +128,7 @@
 - (void)queryGizmoForShowWarrantySentinelAndRestoreDeviceName:(id)arg1;
 - (void)refreshTimeoutTimer;
 - (id)reporterForConnection:(id)arg1;
+- (void)sendDemoWatchWirelessCredentials;
 - (void)sendGizmoPasscodeRestrictions;
 - (void)sendProxyActivationRequest:(id)arg1;
 - (void)sendProxyActivationWithCustomRequest:(id)arg1;
@@ -146,9 +149,12 @@
 - (void)tellGizmoToShowLockedOnAnimationTimeToFlash:(double)arg1 animationCompletion:(CDUnknownBlockType)arg2;
 - (void)tellGizmoToUpdateSyncProgressTo:(double)arg1 withState:(long long)arg2;
 - (void)tellWatchLanguagesAndLocaleWithCompletion:(CDUnknownBlockType)arg1;
+- (void)tellWatchToPrepareForForcedSUWithCompletion:(CDUnknownBlockType)arg1;
 - (void)transportBecameReachable;
 - (void)transportBecameUnreachable;
 - (id)viewControllerForAlertPresentation;
+- (void)watchDidIngestWirelessCredentials:(id)arg1;
+- (void)watchDidPrepareForForcedSU:(id)arg1;
 - (void)watchDidPrepareForInitialSync:(id)arg1;
 - (void)watchDidRespondWithLanguageAndLocaleStatus:(id)arg1;
 

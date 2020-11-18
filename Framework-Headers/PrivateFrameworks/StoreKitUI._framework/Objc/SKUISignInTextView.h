@@ -8,7 +8,7 @@
 
 #import <StoreKitUI/UITextInputTraits-Protocol.h>
 
-@class NSString;
+@class NSString, UITextInputPasswordRules;
 
 @interface SKUISignInTextView : UITextField <UITextInputTraits>
 {
@@ -23,6 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long smartDashesType;

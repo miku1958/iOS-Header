@@ -12,6 +12,7 @@
 @class LACachedExternalizedContext, NSData, NSError, NSMutableArray, NSXPCConnection;
 @protocol LAContextXPC, LAUIDelegate, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface LAClient : NSObject <LAContextXPC, LAContextCallbackXPC>
 {
     id<LAContextXPC> _remoteContext;
@@ -64,6 +65,7 @@
 - (void)setCredential:(id)arg1 type:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (BOOL)setServerPropertyForOption:(long long)arg1 value:(id)arg2 error:(id *)arg3;
 - (void)setServerPropertyForOption:(long long)arg1 value:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)setShowingCoachingHint:(BOOL)arg1 event:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)tccPreflightWithService:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end

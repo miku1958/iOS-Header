@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCache, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
@@ -20,6 +20,7 @@
     NSString *_versionPath;
     NSObject<OS_dispatch_queue> *_serialQueueRemoveImagesBackground;
     NSObject<OS_dispatch_queue> *_serialQueueRemoveImagesDefault;
+    NSObject<OS_dispatch_queue> *_storeImageQueue;
     NSObject<OS_dispatch_queue> *_requestQueue;
     NSXPCConnection *_connection;
     BOOL _lockOnRead;
@@ -29,8 +30,10 @@
 @property (readonly, nonatomic) int cacheVersion;
 @property (nonatomic) BOOL lockOnRead; // @synthesize lockOnRead=_lockOnRead;
 
+- (void).cxx_destruct;
 - (int)_cacheVersion;
 - (void)_createConnectionIfNecessary;
+- (void)_createStorageQueueIfNecessary;
 - (void)_idleIfNecessary:(BOOL)arg1;
 - (struct _img)_imgForItem:(id)arg1;
 - (void)_localStoreImageForKey:(id)arg1 inGroup:(id)arg2 withItem:(id)arg3;
@@ -45,7 +48,6 @@
 - (BOOL)imageExistsForKey:(id)arg1 inGroup:(id)arg2;
 - (id)imagePath;
 - (id)initWithLocalAccess:(BOOL)arg1;
-- (unsigned int)memContentOffset;
 - (void *)openAndMmap:(id)arg1 withInfo:(struct _img *)arg2;
 - (void)purge;
 - (void)removeImagesInGroups:(id)arg1 completion:(CDUnknownBlockType)arg2;

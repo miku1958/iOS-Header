@@ -10,14 +10,14 @@
 #import <MapsSuggestions/NSCopying-Protocol.h>
 #import <MapsSuggestions/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSMutableDictionary, NSMutableSet, NSString;
+@class GEOMapItemStorage, NSData, NSDate, NSMutableDictionary, NSMutableSet, NSString;
 
 @interface MapsSuggestionsEntry : NSObject <NSCopying, NSSecureCoding, MapsSuggestionsObject>
 {
     NSMutableSet *_typeHistory;
     NSMutableDictionary *_sourceSpecificInfo;
     BOOL _deleted;
-    unsigned long long _type;
+    long long _type;
     NSString *_title;
     NSString *_titleWhenLocked;
     NSString *_subtitle;
@@ -29,7 +29,7 @@
     NSString *_undecoratedSubtitleWhenLocked;
     double _weight;
     NSDate *_expires;
-    id _geoMapItem;
+    struct GEOMapItemStorage *_geoMapItem;
     struct NSString *_originatingSourceName;
 }
 
@@ -37,7 +37,7 @@
 @property (nonatomic) BOOL deleted; // @synthesize deleted=_deleted;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSDate *expires; // @synthesize expires=_expires;
-@property (strong, nonatomic) id geoMapItem; // @synthesize geoMapItem=_geoMapItem;
+@property (strong, nonatomic) GEOMapItemStorage *geoMapItem; // @synthesize geoMapItem=_geoMapItem;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSData *iconData; // @synthesize iconData=_iconData;
 @property (strong, nonatomic) NSString *originatingSourceName; // @synthesize originatingSourceName=_originatingSourceName;
@@ -46,7 +46,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *titleWhenLocked; // @synthesize titleWhenLocked=_titleWhenLocked;
-@property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) long long type; // @synthesize type=_type;
 @property (strong, nonatomic) NSString *undecoratedSubtitle; // @synthesize undecoratedSubtitle=_undecoratedSubtitle;
 @property (strong, nonatomic) NSString *undecoratedSubtitleWhenLocked; // @synthesize undecoratedSubtitleWhenLocked=_undecoratedSubtitleWhenLocked;
 @property (strong, nonatomic) NSString *undecoratedTitle; // @synthesize undecoratedTitle=_undecoratedTitle;
@@ -59,40 +59,54 @@
 + (id)entryFromSerializedBase64String:(id)arg1 hasPrefix:(BOOL)arg2;
 + (id)entryFromSerializedHexString:(id)arg1 hasPrefix:(BOOL)arg2;
 + (id)entryFromSerializedString:(id)arg1;
-+ (id)entryWithType:(unsigned long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 sourceSpecificInfo:(id)arg6;
++ (id)entryWithData:(id)arg1;
++ (id)entryWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 sourceSpecificInfo:(id)arg6;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)ETAForKey:(id)arg1;
 - (id)URLForKey:(id)arg1;
 - (id)UUIDForKey:(id)arg1;
-- (void)_overrideType:(unsigned long long)arg1;
+- (void)_overrideType:(long long)arg1;
 - (void)_setValue:(id)arg1 forKey:(id)arg2 class:(Class)arg3;
 - (id)_valueForKey:(id)arg1 class:(Class)arg2;
-- (BOOL)_wasEverOfType:(unsigned long long)arg1;
+- (BOOL)_wasEverOfType:(long long)arg1;
 - (BOOL)_wasEverOneOfTypes:(id)arg1;
+- (long long)availableRemovalBehaviors;
 - (BOOL)booleanForKey:(id)arg1;
 - (BOOL)containsKey:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)data;
 - (id)dateForKey:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)endTime;
 - (BOOL)expiresBeforeEntry:(id)arg1;
 - (id)fullDescription;
+- (BOOL)hasEndTime;
 - (BOOL)hasExpired;
+- (BOOL)hasStartAndEndTime;
+- (BOOL)hasStartTime;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithType:(unsigned long long)arg1 title:(id)arg2;
-- (id)initWithType:(unsigned long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 geoMapItem:(id)arg6 sourceSpecificInfo:(id)arg7;
-- (id)initWithType:(unsigned long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 sourceSpecificInfo:(id)arg6;
+- (id)initWithType:(long long)arg1 title:(id)arg2;
+- (id)initWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 geoMapItem:(struct GEOMapItemStorage *)arg6 sourceSpecificInfo:(id)arg7;
+- (id)initWithType:(long long)arg1 title:(id)arg2 subtitle:(id)arg3 weight:(double)arg4 expires:(id)arg5 sourceSpecificInfo:(id)arg6;
+- (long long)integerForKey:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEntry:(id)arg1;
+- (struct NSData *)mapItemHandleData;
 - (void)mergeFromSuggestionEntry:(id)arg1 behavior:(unsigned long long)arg2;
 - (void)mergeFromSuggestionEntry:(id)arg1 behavior:(unsigned long long)arg2 protectTitles:(BOOL)arg3 protectTitleDecorations:(BOOL)arg4 protectMapItem:(BOOL)arg5 protectWeight:(BOOL)arg6 protectExpiration:(BOOL)arg7 protectIcon:(BOOL)arg8;
 - (void)mergeSpecificsFromSuggestionEntry:(id)arg1 behavior:(unsigned long long)arg2;
 - (id)numberForKey:(id)arg1;
-- (int)proactiveItemType;
 - (void)replaceByEntry:(id)arg1;
+- (void)resetAvailableRemovalBehavior:(long long)arg1;
 - (id)serializedBase64String;
 - (id)serializedHexString;
+- (void)setAvailableRemovalBehavior:(long long)arg1;
 - (void)setBoolean:(BOOL)arg1 forKey:(id)arg2;
 - (void)setDate:(id)arg1 forKey:(id)arg2;
+- (void)setETA:(id)arg1 forKey:(id)arg2;
+- (void)setInteger:(long long)arg1 forKey:(id)arg2;
+- (void)setMapItemHandleData:(struct NSData *)arg1;
 - (void)setNumber:(id)arg1 forKey:(id)arg2;
 - (void)setSourceSpecificInfo:(id)arg1;
 - (void)setString:(id)arg1 forKey:(id)arg2;
@@ -101,9 +115,11 @@
 - (void)setUUID:(id)arg1 forKey:(id)arg2;
 - (id)shortDescription;
 - (id)sourceSpecificInfo;
+- (id)startTime;
+- (BOOL)startsBeforeEntry:(id)arg1;
 - (struct NSArray *)stringArrayForKey:(id)arg1;
 - (id)stringForKey:(id)arg1;
-- (BOOL)wasEverOfType:(unsigned long long)arg1;
+- (BOOL)wasEverOfType:(long long)arg1;
 - (BOOL)wasEverOneOfTypes:(id)arg1;
 
 @end

@@ -6,46 +6,82 @@
 
 #import <QuickLook/QLItemViewController.h>
 
+#import <QuickLook/QLCustomItemViewControllerHost-Protocol.h>
 #import <QuickLook/QLPrintingProtocol-Protocol.h>
+#import <QuickLook/QLRemotePopoverTracker-Protocol.h>
 
-@class NSDictionary, NSExtension, NSLayoutConstraint, QLRemotePreviewHostContext, QLRemotePreviewHostViewController;
-@protocol QLPrintingProtocol;
+@class NSDictionary, NSExtension, NSLayoutConstraint, NSString, QLCustomItemViewControllerHostProxy, QLRemotePreviewHostContext, QLRemotePreviewHostViewController;
+@protocol QLPrintingProtocol, QLRemotePopoverTracker;
 
 __attribute__((visibility("hidden")))
-@interface QLRemoteItemViewController : QLItemViewController <QLPrintingProtocol>
+@interface QLRemoteItemViewController : QLItemViewController <QLPrintingProtocol, QLCustomItemViewControllerHost, QLRemotePopoverTracker>
 {
     NSExtension *_extension;
-    id _request;
     QLRemotePreviewHostContext *_hostContext;
-    QLRemotePreviewHostViewController *_remoteViewController;
     NSDictionary *_hostConfiguration;
     NSLayoutConstraint *_topConstraint;
     NSLayoutConstraint *_bottomConstraint;
     id<QLPrintingProtocol> _printer;
-    BOOL _visible;
+    id<QLRemotePopoverTracker> _popoverTracker;
+    QLCustomItemViewControllerHostProxy *_hostViewControllerProxy;
+    BOOL _isVisible;
+    BOOL _isAppearing;
     BOOL _fullScreen;
+    BOOL _needsSetup;
+    BOOL _readyToLoad;
+    CDUnknownBlockType _readyToDisplay;
+    CDUnknownBlockType _loadHandler;
+    BOOL _didBeginForwardingIsAppearingToHostRemoteViewController;
+    BOOL _didEndForwardingIsAppearingToHostRemoteViewController;
+    QLRemotePreviewHostViewController *_remoteViewController;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) QLRemotePreviewHostViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
+@property (readonly) Class superclass;
+
++ (double)maxLoadingTimeForItem:(id)arg1;
 + (Class)transformerClass;
 - (void).cxx_destruct;
+- (void)_loadRemoteViewControllerForContext:(id)arg1;
+- (void)_performLoadHandlerIfNeeded;
+- (void)_performSetUpWithRemoteViewController:(id)arg1 extension:(id)arg2 request:(id)arg3 hostContext:(id)arg4;
+- (void)_registerLoadingHandler:(CDUnknownBlockType)arg1;
+- (void)beginPreviewHostAppearanceTransitionIfNeeded:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPinchToDismiss;
+- (BOOL)canShowNavBar;
+- (BOOL)canShowToolBar;
 - (BOOL)canSwipeToDismiss;
 - (void)dealloc;
+- (void)dismissQuickLook;
+- (void)endPreviewHostAppearanceTransitionIfNeeded:(BOOL)arg1;
+- (id)fullscreenBackgroundColor;
+- (void)getFrameWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)numberOfPagesWithSize:(struct CGSize)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pdfDataForPageAtIndex:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)preloadViewControllerForContext:(id)arg1;
 - (void)prepareForDrawingPages:(struct _NSRange)arg1 ofSize:(struct CGSize)arg2;
+- (void)presentShareSheetWithPopoverTracker:(id)arg1 dismissCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)presenterShouldHandleLoadingView:(id)arg1 readyToDisplay:(CDUnknownBlockType)arg2;
 - (void)previewControllerDidUpdatePreferredContentSize:(id)arg1;
 - (void)previewControllerDidUpdateTitle:(id)arg1;
+- (void)previewControllerWantsFullScreen:(BOOL)arg1;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)previewWillAppear:(BOOL)arg1;
 - (void)previewWillDisappear:(BOOL)arg1;
 - (id)printer;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
+- (void)setFullScreen:(BOOL)arg1;
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

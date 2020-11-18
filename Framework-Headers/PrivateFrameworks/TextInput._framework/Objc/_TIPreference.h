@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -22,7 +22,7 @@
 @property (strong, nonatomic) NSString *key; // @synthesize key=_key;
 
 + (id)preferenceWithKey:(id)arg1 domain:(id)arg2 defaultValue:(id)arg3;
-- (void)dealloc;
+- (void).cxx_destruct;
 
 @end
 

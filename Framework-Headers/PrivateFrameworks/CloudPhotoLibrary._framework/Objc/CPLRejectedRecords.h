@@ -20,10 +20,10 @@
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
-- (id)recordWithIdentifier:(id)arg1;
+- (id)recordWithScopedIdentifier:(id)arg1;
 - (id)rejectedDescriptions;
 - (BOOL)rejectsTheSameRecordsAs:(id)arg1;
-- (void)removeRejectedRecordsWithIdentifiers:(id)arg1;
+- (void)removeRejectedRecordsWithScopedIdentifiers:(id)arg1;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 
 @end

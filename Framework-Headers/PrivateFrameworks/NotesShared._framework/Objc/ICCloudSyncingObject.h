@@ -133,6 +133,7 @@
 - (BOOL)isSharedReadOnly;
 - (BOOL)isSharedRootObject;
 - (BOOL)isSharedViaICloud;
+- (BOOL)isSupportedByCurrentNotes;
 - (BOOL)isValidObject;
 - (void)loadDecryptedValuesIfNecessary;
 - (id)loggingDescription;
@@ -164,6 +165,7 @@
 - (id)recordName;
 - (id)recordType;
 - (id)recordZoneName;
+- (void)requireMinimumVersionIncludingChildObjects:(long long)arg1;
 - (void)resetFailureCounts;
 - (void)resetUniqueIdentifier;
 - (void)saveAndClearDecryptedData;
@@ -188,7 +190,6 @@
 - (void)unmarkForDeletion;
 - (void)updateChangeCount;
 - (void)updateChangeCountsForUnsavedParentReferences;
-- (void)updateMinimumSupportedNotesVersion;
 - (void)updateParentReferenceIfNecessary;
 - (id)userSpecificRecordID;
 - (id)userSpecificRecordType;

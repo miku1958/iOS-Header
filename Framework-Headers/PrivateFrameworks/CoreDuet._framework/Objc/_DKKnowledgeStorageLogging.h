@@ -27,8 +27,9 @@
 - (void)knowledgeStorage:(id)arg1 didDeleteEventsWithStreamNameCounts:(id)arg2;
 - (void)knowledgeStorage:(id)arg1 didInsertEventsWithStreamNameCounts:(id)arg2;
 - (void)knowledgeStorage:(id)arg1 didInsertLocalEventsWithStreamNameCounts:(id)arg2;
+- (void)knowledgeStorage:(id)arg1 didTombstoneEventsWithStreamNameCounts:(id)arg2;
 - (id)portraitStreamNames;
-- (id)typeValueWithStreamName:(id)arg1;
+- (id)streamNamesNotificationWhitelist;
 
 @end
 

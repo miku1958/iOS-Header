@@ -10,6 +10,7 @@
 
 @interface ICPersistentContainer : NSPersistentContainer
 {
+    BOOL _abortAfterReplacingDatabase;
     NSDictionary *_storeOptions;
     NSURL *_storeURL;
     NSString *_storeType;
@@ -17,6 +18,7 @@
     unsigned long long _fakeFreeDiskSpace;
 }
 
+@property (nonatomic) BOOL abortAfterReplacingDatabase; // @synthesize abortAfterReplacingDatabase=_abortAfterReplacingDatabase;
 @property (readonly, nonatomic) NSURL *backupsDirectoryURL;
 @property (nonatomic) unsigned long long fakeFreeDiskSpace; // @synthesize fakeFreeDiskSpace=_fakeFreeDiskSpace;
 @property (strong, nonatomic) NSMergePolicy *mergePolicy; // @synthesize mergePolicy=_mergePolicy;

@@ -21,11 +21,12 @@
 @property (nonatomic) long long section; // @synthesize section=_section;
 
 - (void).cxx_destruct;
+- (void)_acccessibilityClearChildCache;
 - (id)_accessibilityAccessibleElementsInView:(id)arg1;
 - (void)_accessibilityClearChildren;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityIsNotFirstElement;
-- (void)_appendTextChildWithTitle:(id)arg1;
+- (id)_textChildWithTitle:(id)arg1;
 - (id)accessibilityChildren;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
@@ -34,6 +35,7 @@
 - (void)accessibilityScrollToVisibleWithChild:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)initWithAccessibilityContainer:(id)arg1;
 - (BOOL)isAccessibilityElement;
 - (void)updateMockView:(id)arg1;
 

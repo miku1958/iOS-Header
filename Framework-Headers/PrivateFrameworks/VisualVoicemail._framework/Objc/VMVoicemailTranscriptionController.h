@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLocale, NSMapTable, NSOperationQueue, NSProgress, VMTranscriptionAssetModelOperation;
-@protocol OS_dispatch_queue, VMNetworkObserver, VMSpeechRecognizer;
+@protocol OS_dispatch_queue, VMNetworkObserver, VMSpeechRecognizer, VMTranscriptionService;
 
 @interface VMVoicemailTranscriptionController : NSObject
 {
@@ -20,6 +20,7 @@
     NSProgress *_transcriptionProgress;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
     NSMapTable *_delegateToQueue;
+    id<VMTranscriptionService> _transcriptionService;
 }
 
 @property (weak, nonatomic) VMTranscriptionAssetModelOperation *assetModelOperation; // @synthesize assetModelOperation=_assetModelOperation;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic, getter=isTranscribing) BOOL transcribing; // @synthesize transcribing=_transcribing;
 @property (readonly, nonatomic) NSOperationQueue *transcriptionOperationQueue; // @synthesize transcriptionOperationQueue=_transcriptionOperationQueue;
 @property (readonly, nonatomic) NSProgress *transcriptionProgress; // @synthesize transcriptionProgress=_transcriptionProgress;
+@property (strong, nonatomic) id<VMTranscriptionService> transcriptionService; // @synthesize transcriptionService=_transcriptionService;
 
 - (void).cxx_destruct;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;

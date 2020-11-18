@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addFullyChainedRecordInfo:(id)arg1;
 - (void)chainPreparedRecordBatch:(id)arg1;
+- (BOOL)containsRecordInfo:(id)arg1;
 - (id)initWithAppLibrary:(id)arg1;
 
 @end

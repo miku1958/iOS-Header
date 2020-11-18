@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSKeyedUnarchiverDelegate-Protocol.h>
 
@@ -30,6 +30,7 @@
 + (id)_cachedSceneSourceForURL:(id)arg1 options:(id)arg2;
 + (void)_removeCachedSceneSourceIfNeededForURL:(id)arg1;
 + (BOOL)_shouldCacheWithOptions:(id)arg1;
++ (void)patchColorSecureDecodingIfNeeded;
 + (id)sceneFileTypes;
 + (id)sceneSourceWithData:(id)arg1 options:(id)arg2;
 + (id)sceneSourceWithURL:(id)arg1 options:(id)arg2;
@@ -38,6 +39,7 @@
 - (BOOL)_appendToEntries:(id)arg1 entriesWithType:(unsigned long long)arg2 passingTest:(CDUnknownBlockType)arg3 entryObjectConstructor:(CDUnknownBlockType)arg4;
 - (struct __C3DScene *)_createSceneRefWithOptions:(id)arg1 statusHandler:(CDUnknownBlockType)arg2;
 - (id)_sceneWithClass:(Class)arg1 options:(id)arg2 statusHandler:(CDUnknownBlockType)arg3;
+- (id)c3dDataRepresentation;
 - (BOOL)canExportToColladaWithNoDataLoss;
 - (id)copyPropertiesAtIndex:(long long)arg1 options:(id)arg2;
 - (long long)countOfScenes;

@@ -13,12 +13,12 @@
 + (BOOL)isSupported;
 + (id)new;
 + (id)supportedVideoFormats;
+- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
 - (id)init;
 - (id)renderingTechnique;
 - (void)setCameraPosition:(long long)arg1;
 - (void)setLightEstimationEnabled:(BOOL)arg1;
 - (void)setMirroredFrameOutput:(BOOL)arg1;
-- (id)techniques;
 
 @end
 

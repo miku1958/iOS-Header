@@ -12,33 +12,40 @@
 
 @interface CEMAccountCalDAVDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadCalDAVAccountDescription;
+    NSString *_payloadCalDAVHostName;
+    NSString *_payloadCalDAVPrincipalURL;
+    NSNumber *_payloadCalDAVUseSSL;
+    NSNumber *_payloadCalDAVPort;
+    NSString *_payloadCalDAVCredentials;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadCalDAVAccountDescription;
-@property (readonly, nonatomic) NSString *payloadCalDAVCredentials;
-@property (readonly, nonatomic) NSString *payloadCalDAVHostName;
-@property (readonly, nonatomic) NSNumber *payloadCalDAVPort;
-@property (readonly, nonatomic) NSString *payloadCalDAVPrincipalURL;
-@property (readonly, nonatomic) NSNumber *payloadCalDAVUseSSL;
+@property (copy, nonatomic) NSString *payloadCalDAVAccountDescription; // @synthesize payloadCalDAVAccountDescription=_payloadCalDAVAccountDescription;
+@property (copy, nonatomic) NSString *payloadCalDAVCredentials; // @synthesize payloadCalDAVCredentials=_payloadCalDAVCredentials;
+@property (copy, nonatomic) NSString *payloadCalDAVHostName; // @synthesize payloadCalDAVHostName=_payloadCalDAVHostName;
+@property (copy, nonatomic) NSNumber *payloadCalDAVPort; // @synthesize payloadCalDAVPort=_payloadCalDAVPort;
+@property (copy, nonatomic) NSString *payloadCalDAVPrincipalURL; // @synthesize payloadCalDAVPrincipalURL=_payloadCalDAVPrincipalURL;
+@property (copy, nonatomic) NSNumber *payloadCalDAVUseSSL; // @synthesize payloadCalDAVUseSSL=_payloadCalDAVUseSSL;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withCalDAVHostName:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withCalDAVAccountDescription:(id)arg2 withCalDAVHostName:(id)arg3 withCalDAVPrincipalURL:(id)arg4 withCalDAVUseSSL:(id)arg5 withCalDAVPort:(id)arg6 withCalDAVCredentials:(id)arg7;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

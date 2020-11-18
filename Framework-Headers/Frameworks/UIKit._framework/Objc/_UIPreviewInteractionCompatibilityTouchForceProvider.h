@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/_UIPreviewInteractionTouchForceProviding-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIPreviewInteractionTouchForceProviding-Protocol.h>
 
 @class NSString, UITouch, UIView, _UITouchesObservingGestureRecognizer;
 

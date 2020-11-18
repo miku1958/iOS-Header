@@ -13,6 +13,7 @@
     AVCapturePhotoOutputInternal *_internal;
 }
 
+@property (readonly, nonatomic, getter=isAutoRedEyeReductionSupported) BOOL autoRedEyeReductionSupported;
 @property (readonly, nonatomic) NSArray *availableLivePhotoVideoCodecTypes;
 @property (readonly, nonatomic) NSArray *availablePhotoCodecTypes;
 @property (readonly, nonatomic) NSArray *availablePhotoFileTypes;
@@ -70,6 +71,7 @@
 - (void)_setIsFlashScene:(BOOL)arg1 firingKVO:(BOOL)arg2;
 - (void)_setIsHDRScene:(BOOL)arg1 firingKVO:(BOOL)arg2;
 - (void)_setIsStillImageStabilizationScene:(BOOL)arg1 firingKVO:(BOOL)arg2;
+- (void)_updateAutoRedReductionSupportedForSourceDevice:(id)arg1;
 - (void)_updateAvailableLivePhotoVideoCodecTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailablePhotoCodecTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailablePhotoFileTypesForSourceDevice:(id)arg1;
@@ -105,10 +107,13 @@
 - (BOOL)isHDRScene;
 - (BOOL)isImageOptimizationForOfflineVideoStabilizationSupported;
 - (BOOL)isLivePhotoMovieProcessingSuspended;
+- (BOOL)isPortraitEffectsMatteDeliveryEnabled;
+- (BOOL)isPortraitEffectsMatteDeliverySupported;
 - (CDStruct_79c71658)livePhotoMovieDimensions;
 - (CDStruct_1b6d18a9)livePhotoMovieDuration;
 - (CDStruct_1b6d18a9)livePhotoMovieVideoFrameDuration;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (CDStruct_79c71658)optimizedImageDimensionsForOfflineStabilization;
 - (BOOL)optimizesImagesForOfflineVideoStabilization;
 - (void)removeConnection:(id)arg1;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
@@ -118,6 +123,7 @@
 - (void)setFilterRenderingEnabled:(BOOL)arg1;
 - (void)setLivePhotoMovieProcessingSuspended:(BOOL)arg1;
 - (void)setOptimizesImagesForOfflineVideoStabilization:(BOOL)arg1;
+- (void)setPortraitEffectsMatteDeliveryEnabled:(BOOL)arg1;
 - (void)setPreparedPhotoSettingsArray:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)supportedHDRModes;
 - (id)supportedPhotoCodecTypesForFileType:(id)arg1;

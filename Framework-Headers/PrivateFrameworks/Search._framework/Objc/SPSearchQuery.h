@@ -43,6 +43,7 @@
     unsigned long long _whyQuery;
     unsigned long long _queryIdent;
     long long _contentFilters;
+    double _currentTime;
 }
 
 @property (readonly, nonatomic) double cancellationTime; // @synthesize cancellationTime=_cancellationTime;
@@ -50,6 +51,7 @@
 @property (nonatomic) long long contentFilters; // @synthesize contentFilters=_contentFilters;
 @property (readonly, nonatomic) unsigned long long creationStamp; // @synthesize creationStamp=_creationStamp;
 @property (readonly, nonatomic) double creationTime; // @synthesize creationTime=_creationTime;
+@property (readonly, nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property (strong, nonatomic) NSDictionary *dictationResponse; // @synthesize dictationResponse=_dictationResponse;
 @property (nonatomic) BOOL dictationStable; // @synthesize dictationStable=_dictationStable;
 @property (strong, nonatomic) NSArray *disabledApps; // @synthesize disabledApps=_disabledApps;

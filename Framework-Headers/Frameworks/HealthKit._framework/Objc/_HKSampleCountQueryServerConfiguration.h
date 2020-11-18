@@ -16,10 +16,11 @@ __attribute__((visibility("hidden")))
     NSSet *_sampleTypes;
 }
 
-@property (strong, nonatomic) NSSet *sampleTypes; // @synthesize sampleTypes=_sampleTypes;
+@property (copy, nonatomic) NSSet *sampleTypes; // @synthesize sampleTypes=_sampleTypes;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

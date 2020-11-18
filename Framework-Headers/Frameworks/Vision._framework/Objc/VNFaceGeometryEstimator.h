@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     float mCameraCalibrationMatrix[9];
 }
 
-- (id)initWithOptions:(id)arg1 error:(id *)arg2;
+- (BOOL)completeInitializationAndReturnError:(id *)arg1;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 
 @end

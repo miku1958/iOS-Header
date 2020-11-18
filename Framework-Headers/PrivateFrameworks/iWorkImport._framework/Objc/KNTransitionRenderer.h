@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (BOOL)addAnimationsAtTime:(double)arg1 relativeToCurrentMediaTime:(BOOL)arg2;
-- (void)animateWithDelay:(double)arg1;
+- (void)animate;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)dealloc;
 - (void)forceRemoveAnimations;

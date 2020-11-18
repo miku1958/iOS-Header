@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSCopying-Protocol.h>
 #import <QuartzCore/NSSecureCoding-Protocol.h>
@@ -23,6 +23,7 @@
 
 + (void)CAMLParserStartElement:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)CAMLParser:(id)arg1 setValue:(id)arg2 forKey:(id)arg3;
 - (id)CAMLTypeForKey:(id)arg1;
 - (void)apply:(id)arg1;

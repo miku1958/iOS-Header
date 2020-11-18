@@ -19,11 +19,11 @@
     NSDate *_endDate;
 }
 
-@property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
-@property (strong, nonatomic) NSString *personHandle; // @synthesize personHandle=_personHandle;
+@property (readonly, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly, nonatomic) NSString *personHandle; // @synthesize personHandle=_personHandle;
 @property (readonly, nonatomic) NSString *pluginIdentifier; // @synthesize pluginIdentifier=_pluginIdentifier;
 @property (readonly, nonatomic) unsigned long long requestId; // @synthesize requestId=_requestId;
-@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 
 + (id)historicalDataRequestWithPersonHandle:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 + (BOOL)supportsSecureCoding;

@@ -16,13 +16,13 @@
     long long _topBackgroundStatusBarStyle;
     UIColor *_backgroundColor;
     UIColor *_tabBarTintColor;
-    UIColor *_toolBarTintColor;
+    UIColor *_toolbarTintColor;
 }
 
 @property (readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
 @property (strong, nonatomic) UIColor *tabBarTintColor; // @synthesize tabBarTintColor=_tabBarTintColor;
-@property (strong, nonatomic) UIColor *toolBarTintColor; // @synthesize toolBarTintColor=_toolBarTintColor;
+@property (strong, nonatomic) UIColor *toolbarTintColor; // @synthesize toolbarTintColor=_toolbarTintColor;
 @property (readonly, nonatomic) long long topBackgroundStatusBarStyle; // @synthesize topBackgroundStatusBarStyle=_topBackgroundStatusBarStyle;
 
 - (void).cxx_destruct;

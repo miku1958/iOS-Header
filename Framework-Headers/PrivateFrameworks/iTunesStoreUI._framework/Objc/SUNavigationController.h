@@ -27,6 +27,7 @@
 @property (nonatomic, getter=isSkLoading) BOOL skLoading; // @synthesize skLoading=_skLoading;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (long long)ITunesStoreUIBarStyle;
 - (void)_loadingDidChangeNotification:(id)arg1;
 - (id)_sectionForViewController:(id)arg1;

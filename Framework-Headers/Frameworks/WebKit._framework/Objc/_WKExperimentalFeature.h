@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *details;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isHidden) BOOL hidden;
 @property (readonly, copy, nonatomic) NSString *key;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly) Class superclass;

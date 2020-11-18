@@ -6,60 +6,46 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class NSDate, SBUILegibilityLabel, SBUILegibilityView;
+#import <UserNotificationsUIKit/NCLegibilitySettingsAdjusting-Protocol.h>
+#import <UserNotificationsUIKit/PLContentSizeCategoryAdjusting-Protocol.h>
 
-@interface NCNotificationListSectionRevealHintView : UICollectionReusableView
+@class NSString, SBUILegibilityLabel, _UILegibilitySettings;
+
+@interface NCNotificationListSectionRevealHintView : UICollectionReusableView <NCLegibilitySettingsAdjusting, PLContentSizeCategoryAdjusting>
 {
-    BOOL _showingPersistentTitle;
-    BOOL _recentsNotificationSectionEmpty;
-    BOOL _donePerformingInitialReveal;
+    BOOL _adjustsFontForContentSizeCategory;
     BOOL _forceRevealed;
-    BOOL _needsFadeOut;
     double _revealPercentage;
-    double _initialRevealPercentageForPersistentTitle;
-    NSDate *_titleDate;
     SBUILegibilityLabel *_revealHintTitle;
-    SBUILegibilityView *_revealHintChevron;
     double _hintingAlpha;
+    _UILegibilitySettings *_legibilitySettings;
 }
 
-@property (nonatomic, getter=isDonePerformingInitialReveal) BOOL donePerformingInitialReveal; // @synthesize donePerformingInitialReveal=_donePerformingInitialReveal;
+@property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isForceRevealed) BOOL forceRevealed; // @synthesize forceRevealed=_forceRevealed;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double hintingAlpha; // @synthesize hintingAlpha=_hintingAlpha;
-@property (nonatomic) double initialRevealPercentageForPersistentTitle; // @synthesize initialRevealPercentageForPersistentTitle=_initialRevealPercentageForPersistentTitle;
-@property (nonatomic) BOOL needsFadeOut; // @synthesize needsFadeOut=_needsFadeOut;
-@property (nonatomic, getter=isRecentsNotificationSectionEmpty) BOOL recentsNotificationSectionEmpty; // @synthesize recentsNotificationSectionEmpty=_recentsNotificationSectionEmpty;
-@property (strong, nonatomic) SBUILegibilityView *revealHintChevron; // @synthesize revealHintChevron=_revealHintChevron;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
+@property (copy, nonatomic) NSString *preferredContentSizeCategory;
 @property (strong, nonatomic) SBUILegibilityLabel *revealHintTitle; // @synthesize revealHintTitle=_revealHintTitle;
 @property (nonatomic) double revealPercentage; // @synthesize revealPercentage=_revealPercentage;
-@property (nonatomic, getter=isShowingPersistentTitle) BOOL showingPersistentTitle; // @synthesize showingPersistentTitle=_showingPersistentTitle;
-@property (strong, nonatomic) NSDate *titleDate; // @synthesize titleDate=_titleDate;
+@property (readonly) Class superclass;
 
 + (double)minimumViewHeight;
 - (void).cxx_destruct;
 - (double)_alphaValueBasedOnRevealPercentage;
-- (double)_baseAlphaValueBasedOnPersistence;
-- (double)_chevronAlphaForAlpha:(double)arg1;
-- (id)_chevronImage;
-- (void)_configureRevealHintChevronIfNecessary;
 - (void)_configureRevealHintTitleIfNecessary;
 - (double)_hintTitleDisplacementForRevealPercentage:(double)arg1;
 - (id)_labelFont;
-- (void)_layoutRevealHintChevron;
-- (void)_layoutRevealHintChevronForInitialRevealPercentage:(double)arg1;
-- (void)_layoutRevealHintChevronForRevealPercentage:(double)arg1;
 - (void)_layoutRevealHintTitle;
-- (void)_layoutRevealHintTitleForInitialRevealPercentage:(double)arg1;
-- (void)_layoutRevealHintTitleForRevealPercentage:(double)arg1;
 - (void)_updateAlpha;
-- (void)_updateBaseAlpha;
-- (void)_updateHintTitle;
-- (void)_updateHintTitleFont;
-- (void)_updateLayout;
+- (BOOL)adjustForContentSizeCategoryChange;
+- (void)adjustForLegibilitySettingsChange:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateForLegibilitySettings:(id)arg1;
 
 @end
 

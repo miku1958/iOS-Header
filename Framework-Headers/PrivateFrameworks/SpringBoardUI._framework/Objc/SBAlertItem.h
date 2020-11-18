@@ -8,12 +8,14 @@
 
 #import <SpringBoardUI/BSDescriptionProviding-Protocol.h>
 
-@class NSArray, NSString, _SBAlertController;
+@class NSArray, NSString, UIImage, _SBAlertController;
 
 @interface SBAlertItem : NSObject <BSDescriptionProviding>
 {
     _SBAlertController *_alertController;
     NSArray *_allowedBundleIDs;
+    NSString *_iconImagePath;
+    UIImage *_iconImage;
     BOOL _didEverActivate;
     BOOL _didEverDeactivate;
     BOOL _ignoreIfAlreadyDisplaying;
@@ -25,37 +27,39 @@
     BOOL _allowMessageInCar;
     BOOL _presented;
     BOOL _ignoresQuietMode;
-    NSString *_iconImagePath;
-    NSString *_attachmentImagePath;
+    BOOL _suppressForKeynote;
+    UIImage *_headerImage;
+    UIImage *_attachmentImage;
 }
 
+@property (strong, nonatomic, setter=_setAttachmentImage:) UIImage *_attachmentImage; // @synthesize _attachmentImage;
+@property (strong, nonatomic, setter=_setHeaderImage:) UIImage *_headerImage; // @synthesize _headerImage;
 @property (nonatomic, setter=_setIgnoresQuietMode:) BOOL _ignoresQuietMode; // @synthesize _ignoresQuietMode;
 @property (nonatomic) BOOL allowInCar; // @synthesize allowInCar=_allowInCar;
 @property (nonatomic) BOOL allowInSetup; // @synthesize allowInSetup=_allowInSetup;
 @property (nonatomic) BOOL allowMessageInCar; // @synthesize allowMessageInCar=_allowMessageInCar;
 @property (strong, nonatomic) NSArray *allowedBundleIDs; // @synthesize allowedBundleIDs=_allowedBundleIDs;
-@property (strong, nonatomic, getter=_attachmentImagePath) NSString *attachmentImagePath; // @synthesize attachmentImagePath=_attachmentImagePath;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic, setter=setIconImage:) UIImage *iconImage; // @synthesize iconImage=_iconImage;
 @property (strong, nonatomic, getter=_iconImagePath) NSString *iconImagePath; // @synthesize iconImagePath=_iconImagePath;
 @property (nonatomic) BOOL ignoreIfAlreadyDisplaying; // @synthesize ignoreIfAlreadyDisplaying=_ignoreIfAlreadyDisplaying;
 @property (nonatomic) BOOL pendInSetupIfNotAllowed; // @synthesize pendInSetupIfNotAllowed=_pendInSetupIfNotAllowed;
 @property (nonatomic) BOOL pendWhileKeyBagLocked; // @synthesize pendWhileKeyBagLocked=_pendWhileKeyBagLocked;
 @property (nonatomic, getter=_isPresented, setter=_setPresented:) BOOL presented; // @synthesize presented=_presented;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL suppressForKeynote; // @synthesize suppressForKeynote=_suppressForKeynote;
 
 + (id)_alertItemsController;
 + (void)activateAlertItem:(id)arg1;
 - (void).cxx_destruct;
 - (id)_alertController;
-- (id)_attachmentImage;
 - (void)_clearAlertController;
 - (void)_deactivationCompleted;
 - (BOOL)_didEverActivate;
 - (BOOL)_displayActionButtonOnLockScreen;
 - (BOOL)_hasActiveKeyboardOnScreen;
-- (id)_iconImage;
 - (void)_noteVolumeOrLockPressed;
 - (id)_prepareNewAlertControllerWithLockedState:(BOOL)arg1 requirePasscodeForActions:(BOOL)arg2;
 - (id)_publicDescription;

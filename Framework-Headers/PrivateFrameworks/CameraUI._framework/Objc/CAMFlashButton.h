@@ -45,6 +45,7 @@
 - (double)padHeaderViewContentInsetLeft;
 - (void)prepareHeaderViewForExpanding:(BOOL)arg1;
 - (void)reloadData;
+- (void)setAllowsAutomaticFlash:(BOOL)arg1 needsReloadData:(BOOL)arg2;
 - (BOOL)shouldIgnoreMenuInteraction;
 - (id)titleForMenuItemAtIndex:(long long)arg1;
 - (BOOL)wantsSelectedItemToBeVisible;

@@ -65,7 +65,6 @@ __attribute__((visibility("hidden")))
 - (double)_clientPreferredContentHeightPermittingAutolayout:(BOOL)arg1 didUseFittingSize:(BOOL *)arg2;
 - (void)_closeTransactionWithAppearState:(int)arg1;
 - (BOOL)_disableAutomaticKeyboardBehavior;
-- (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (double)_effectiveHeightForRequestedHeight:(double)arg1;
 - (void)_encodeLayerTreeToURL:(id)arg1 withCodingImageFormat:(id)arg2 withReplyHandler:(CDUnknownBlockType)arg3;
 - (void)_enqueueProxyRequest:(CDUnknownBlockType)arg1;

@@ -41,6 +41,7 @@
 - (void)setPasscodeFieldDisabled:(BOOL)arg1;
 - (void)updateViewConstraints;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

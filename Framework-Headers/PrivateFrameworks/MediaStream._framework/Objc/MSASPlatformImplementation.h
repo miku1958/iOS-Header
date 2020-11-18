@@ -8,17 +8,20 @@
 
 #import <MediaStream/MSASPlatform-Protocol.h>
 
-@class NSString;
+@class ACAccountStore, NSString;
 
 @interface MSASPlatformImplementation : NSObject <MSASPlatform>
 {
+    ACAccountStore *_accountStore;
 }
 
+@property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (int)MMCSConcurrentConnectionsCount;
 - (id)MMCSDownloadSocketOptionsForPersonID:(id)arg1;
 - (id)MMCSUploadSocketOptionsForPersonID:(id)arg1;
@@ -29,6 +32,7 @@
 - (id)albumSharingDaemon;
 - (id)baseSharingURLForPersonID:(id)arg1;
 - (BOOL)deviceHasEnoughDiskSpaceRemainingToOperate;
+- (id)init;
 - (void)logLevel:(int)arg1 personID:(id)arg2 albumGUID:(id)arg3 format:(id)arg4;
 - (id)pathAlbumSharingDir;
 - (BOOL)personIDEnabledForAlbumSharing:(id)arg1;

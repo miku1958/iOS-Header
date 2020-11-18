@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_dispatch_queue;
@@ -20,9 +20,11 @@
     struct LogCategory *_ucat;
     BOOL _browseFlagsChanged;
     unsigned int _changeFlags;
+    unsigned int _controlFlags;
     unsigned long long _browseFlags;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_domain;
+    NSString *_interfaceName;
     NSString *_label;
     NSString *_serviceType;
     CDUnknownBlockType _deviceFoundHandler;
@@ -34,11 +36,13 @@
 
 @property (nonatomic) unsigned long long browseFlags; // @synthesize browseFlags=_browseFlags;
 @property (nonatomic) unsigned int changeFlags; // @synthesize changeFlags=_changeFlags;
+@property (nonatomic) unsigned int controlFlags; // @synthesize controlFlags=_controlFlags;
 @property (copy, nonatomic) CDUnknownBlockType deviceChangedHandler; // @synthesize deviceChangedHandler=_deviceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceFoundHandler; // @synthesize deviceFoundHandler=_deviceFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceLostHandler; // @synthesize deviceLostHandler=_deviceLostHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
+@property (copy, nonatomic) NSString *interfaceName; // @synthesize interfaceName=_interfaceName;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;

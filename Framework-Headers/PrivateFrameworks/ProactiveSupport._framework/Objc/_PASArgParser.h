@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSMutableArray *registeredSubcommands; // @synthesize registeredSubcommands=_registeredSubcommands;
 
 + (id)boolValueForArgument:(id)arg1 error:(id *)arg2;
++ (id)enumValueForArgument:(id)arg1 withMapping:(id)arg2 error:(id *)arg3;
 + (id)numberValueForArgument:(id)arg1 error:(id *)arg2;
 + (id)parserWithHandler:(CDUnknownBlockType)arg1;
 + (id)simpleParserWithHelpGenerator:(CDUnknownBlockType)arg1 version:(id)arg2 handler:(CDUnknownBlockType)arg3;

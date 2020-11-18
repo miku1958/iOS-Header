@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIToolbarVisualProvider.h>
+#import <UIKitCore/_UIToolbarVisualProvider.h>
 
-#import <UIKit/_UIBarButtonItemViewOwner-Protocol.h>
+#import <UIKitCore/_UIBarButtonItemViewOwner-Protocol.h>
 
-@class NSLayoutConstraint, NSString, UIView, _UIBarBackground, _UIToolbarContentView;
+@class NSString, UIView, _UIBarBackground, _UIToolbarContentView;
 
 __attribute__((visibility("hidden")))
 @interface _UIToolbarVisualProviderModernIOS : _UIToolbarVisualProvider <_UIBarButtonItemViewOwner>
@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     _UIBarBackground *_barBackgroundView;
     UIView *_customBackgroundView;
     _UIToolbarContentView *_contentView;
-    NSLayoutConstraint *_buttonBarTopConstraint;
     NSString *_backdropViewLayerGroupName;
 }
 

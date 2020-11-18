@@ -6,7 +6,7 @@
 
 #import <UIAccessibility/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, UITextInputPasswordRules;
 
 @protocol UITextInputTraits <NSObject>
 
@@ -15,6 +15,7 @@
 @property (nonatomic) BOOL enablesReturnKeyAutomatically;
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long smartDashesType;

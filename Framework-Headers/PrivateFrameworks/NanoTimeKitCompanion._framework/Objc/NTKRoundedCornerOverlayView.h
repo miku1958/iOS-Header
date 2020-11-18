@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView;
+@class CLKDevice, UIImageView;
 
 @interface NTKRoundedCornerOverlayView : UIView
 {
@@ -15,10 +15,12 @@
     UIImageView *_upperRightCorner;
     UIImageView *_bottomLeftCorner;
     UIImageView *_bottomRightCorner;
+    CLKDevice *_device;
 }
 
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1 cornerRadius:(double)arg2;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2 cornerRadius:(double)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 forDeviceCornerRadius:(id)arg2;
 - (void)layoutSubviews;
 
 @end

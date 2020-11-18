@@ -65,10 +65,13 @@
 - (BOOL)isTopographicallyEqualToAlarm:(id)arg1;
 - (BOOL)isVehicleAlarm;
 - (id)ownerUUID;
+- (id)relativeOffsetRaw;
 - (void)removeSnoozedAlarm:(id)arg1;
+- (id)semanticIdentifier;
 - (void)setAcknowledgedDate:(id)arg1;
 - (void)setAlarmType:(long long)arg1;
 - (void)setIsTimeToLeaveAlarm:(BOOL)arg1;
+- (void)setRelativeOffsetRaw:(id)arg1;
 - (void)setTriggerIsNotRelativeToTravelTime:(BOOL)arg1;
 - (void)setUUID:(id)arg1;
 - (BOOL)shouldIncludeInNormalAlarms;

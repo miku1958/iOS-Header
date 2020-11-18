@@ -11,13 +11,21 @@ __attribute__((visibility("hidden")))
 {
 }
 
-- (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (struct CGRect)clipRect;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)isAccessibilityElement;
+- (double)opacity;
+- (id)p_childrenForDrawingRecursively;
+- (void)p_drawChildShapeReps:(id)arg1 togetherInContext:(struct CGContext *)arg2;
 - (id)p_freehandDrawingInfo;
 - (id)p_freehandDrawingLayout;
+- (BOOL)p_shouldDrawShapeRep:(id)arg1 withOtherShapeRep:(id)arg2;
+- (void)recursivelyDrawChildrenInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
+- (void)recursivelyDrawInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 - (id)textureForDescription:(id)arg1;
+- (BOOL)tsaxAllowedToEditChildren;
+- (id)tsaxChildren;
 - (void)willBeRemoved;
 
 @end

@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (id)baseColorValuesForUserID:(id)arg1;
 - (id)containerScopedUserRecordName;
-- (struct UIColor *)highlightColorForUserID:(id)arg1 withPercentage:(double)arg2 forNote:(id)arg3;
+- (struct UIColor *)highlightColorForUserID:(id)arg1 withPercentage:(double)arg2 forNote:(id)arg3 darkAppearance:(BOOL)arg4;
 - (id)init;
 - (id)participantAXDisplayNameForUserID:(id)arg1 forNote:(id)arg2;
 

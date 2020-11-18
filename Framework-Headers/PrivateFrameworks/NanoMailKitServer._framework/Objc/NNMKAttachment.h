@@ -18,12 +18,16 @@
     NSString *_mimePartNumber;
     unsigned long long _fileSize;
     unsigned long long _type;
+    NSString *_messageId;
+    unsigned long long _syncState;
 }
 
 @property (strong, nonatomic) NSString *contentId; // @synthesize contentId=_contentId;
 @property (strong, nonatomic) NSString *fileName; // @synthesize fileName=_fileName;
 @property (nonatomic) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
+@property (strong, nonatomic) NSString *messageId; // @synthesize messageId=_messageId;
 @property (strong, nonatomic) NSString *mimePartNumber; // @synthesize mimePartNumber=_mimePartNumber;
+@property (nonatomic) unsigned long long syncState; // @synthesize syncState=_syncState;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (strong, nonatomic) NSString *url; // @synthesize url=_url;
 

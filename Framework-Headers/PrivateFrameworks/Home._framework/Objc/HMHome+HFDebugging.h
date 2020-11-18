@@ -6,19 +6,18 @@
 
 #import <HomeKit/HMHome.h>
 
-#import <Home/HFPrettyDescription-Protocol.h>
-#import <Home/HFStateDumpSerializable-Protocol.h>
+#import <Home/HFStateDumpBuildable-Protocol.h>
 
 @class NSString;
 
-@interface HMHome (HFDebugging) <HFPrettyDescription, HFStateDumpSerializable>
+@interface HMHome (HFDebugging) <HFStateDumpBuildable>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)hf_prettyDescriptionOfType:(unsigned long long)arg1;
-- (id)hf_serializedStateDumpRepresentation;
++ (BOOL)hf_prefersAutoSynthesizedDescription;
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
 @end
 

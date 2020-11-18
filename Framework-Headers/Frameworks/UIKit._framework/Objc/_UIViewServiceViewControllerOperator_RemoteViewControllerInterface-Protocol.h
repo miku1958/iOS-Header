@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIViewServiceDeputy_UIViewServiceInterface-Protocol.h>
-#import <UIKit/_UIViewServiceUIBehaviorInterface-Protocol.h>
+#import <UIKitCore/_UIViewServiceDeputy_UIViewServiceInterface-Protocol.h>
+#import <UIKitCore/_UIViewServiceUIBehaviorInterface-Protocol.h>
 
-@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSString, NSUUID, UIColor, UITraitCollection, _UIViewControllerTransitionCoordinatorContextDescription;
+@class BKSAnimationFenceHandle, BSMachPortSendRight, FBSDisplayConfiguration, FBSDisplayIdentity, NSArray, NSString, NSUUID, UIColor, UITraitCollection, _UIBoundingPath, _UIViewControllerTransitionCoordinatorContextDescription;
 
 @protocol _UIViewServiceViewControllerOperator_RemoteViewControllerInterface <_UIViewServiceDeputy_UIViewServiceInterface, _UIViewServiceUIBehaviorInterface>
 - (void)__cancelAlertActionWithToken:(long long)arg1;
@@ -34,7 +34,7 @@
 - (void)__hostViewDidMoveToScreenWithFBSDisplayIdentity:(FBSDisplayIdentity *)arg1 newHostingHandleReplyHandler:(void (^)(_UIHostedWindowHostingHandle *))arg2;
 - (void)__hostViewWillAppear:(BOOL)arg1 inInterfaceOrientation:(long long)arg2 traitCollection:(UITraitCollection *)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(BOOL)arg5 completionHandler:(void (^)(struct CGSize))arg6;
 - (void)__hostViewWillDisappear:(BOOL)arg1;
-- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(_UIViewControllerTransitionCoordinatorContextDescription *)arg2 statusBarHeight:(double)arg3 underlapsStatusBar:(BOOL)arg4 whenDone:(void (^)(struct CGSize, double))arg5;
+- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(_UIViewControllerTransitionCoordinatorContextDescription *)arg2 boundingPath:(_UIBoundingPath *)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(BOOL)arg5 whenDone:(void (^)(struct CGSize, double))arg6;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(BOOL)arg3;
 - (void)__hostWillEnterForeground;
 - (void)__hostWillResignActive;
@@ -44,8 +44,9 @@
 - (void)__restoreStateForSession:(NSString *)arg1 restorationAnchor:(NSString *)arg2;
 - (void)__saveStateForSession:(NSString *)arg1 restorationAnchor:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)__scrollToTopFromTouchAtViewLocation:(struct CGPoint)arg1 resultHandler:(void (^)(BOOL, NSError *))arg2;
-- (void)__setContentSize:(struct CGSize)arg1;
-- (void)__setContentSize:(struct CGSize)arg1 withFence:(BKSAnimationFenceHandle *)arg2;
+- (void)__setBoundingPath:(_UIBoundingPath *)arg1;
+- (void)__setContentSize:(struct CGSize)arg1 boundingPath:(_UIBoundingPath *)arg2;
+- (void)__setContentSize:(struct CGSize)arg1 boundingPath:(_UIBoundingPath *)arg2 withFence:(BKSAnimationFenceHandle *)arg3;
 - (void)__setHostTintColor:(UIColor *)arg1 tintAdjustmentMode:(long long)arg2;
 - (void)__setHostTraitCollection:(UITraitCollection *)arg1 deferIfAnimated:(BOOL)arg2;
 - (void)__setHostViewUnderlapsStatusBar:(BOOL)arg1;

@@ -9,7 +9,6 @@
 @class GEONavigationMapMatcher, MNLocation, NSData, NSTimer;
 @protocol GEODirectionServiceTicket;
 
-__attribute__((visibility("hidden")))
 @interface MNTurnByTurnLocationTracker : MNLocationTracker
 {
     GEONavigationMapMatcher *_mapMatcher;
@@ -25,9 +24,10 @@ __attribute__((visibility("hidden")))
     MNLocation *_lastLocationUsedForReroute;
     unsigned long long _consecutiveOffRouteCount;
     MNLocation *_lastKnownGoodLocationOnRoute;
+    BOOL _isNavigatingInLowGuidance;
 }
 
-@property (strong, nonatomic) NSData *serverSessionState; // @synthesize serverSessionState=_serverSessionState;
+@property (copy, nonatomic) NSData *serverSessionState; // @synthesize serverSessionState=_serverSessionState;
 
 - (void).cxx_destruct;
 - (BOOL)_allowSwitchToTransportType:(int)arg1 forLocation:(id)arg2;
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleOffRouteForLocation:(id)arg1;
 - (BOOL)_isCameraTestMode;
 - (BOOL)_isRerouting;
+- (BOOL)_isRoadFeatureInOppositeDirection:(CDStruct_c707fdd0 *)arg1 ofCoordinate:(CDStruct_2c43369c)arg2 course:(double)arg3;
 - (id)_matchedLocationForLocation:(id)arg1;
 - (id)_matchedLocationForMatchResult:(id)arg1 originalLocation:(id)arg2;
 - (id)_newMapMatcherForRoute:(id)arg1;
@@ -46,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)_reroute:(id)arg1 rerouteReason:(unsigned long long)arg2 request:(id)arg3 response:(id)arg4;
 - (id)_rerouteTicketForLocation:(id)arg1 transportType:(int)arg2 stepIndex:(unsigned long long)arg3;
 - (void)_retryLastRouteRecalculation;
+- (void)_setIsNavigatingInLowGuidance:(BOOL)arg1;
 - (BOOL)_shouldAdvanceGuidanceToRouteMatch:(id)arg1;
 - (BOOL)_shouldThrottleRerouteForLocation:(id)arg1 lastRerouteLocation:(id)arg2;
 - (void)_submitRerouteTicketWithHandler:(CDUnknownBlockType)arg1;

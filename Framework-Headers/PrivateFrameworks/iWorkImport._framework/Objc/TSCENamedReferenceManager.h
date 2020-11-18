@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @interface TSCENamedReferenceManager : TSPObject <TSCEReferenceTrackerDelegate>
 {
     TSCENamedReferenceTrie *_names;
-    struct unordered_map<TSU::UUIDData<TSP::UUIDData>, SFUtility::ObjcSharedPtr<TSUPointerKeyDictionary>, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, SFUtility::ObjcSharedPtr<TSUPointerKeyDictionary>>>> _stringsByTrackedReferenceByTable;
+    struct unordered_map<TSU::UUIDData<TSP::UUIDData>, TSUPointerKeyDictionary *, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, TSUPointerKeyDictionary *>>> _stringsByTrackedReferenceByTable;
     NSObject<OS_dispatch_queue> *_nrmQueue;
     TSCEReferenceTracker *_referenceTracker;
     TSCECalculationEngine *_calcEngine;
@@ -29,8 +29,8 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)beginTrackingNameInCell:(struct TSUCellCoord)arg1 ofResolver:(id)arg2 addingTrackedReferencesTo:(id)arg3;
-- (void)beginTrackingNamesInRange:(struct TSCERangeCoordinate)arg1 ofResolver:(id)arg2 addingTrackedReferencesTo:(id)arg3;
+- (void)beginTrackingNameInCell:(struct TSUCellCoord)arg1 ofResolver:(struct TSCETableResolver *)arg2 addingTrackedReferencesTo:(id)arg3;
+- (void)beginTrackingNamesInRange:(struct TSCERangeCoordinate)arg1 ofResolver:(struct TSCETableResolver *)arg2 addingTrackedReferencesTo:(id)arg3;
 - (id)beginTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1 limitedToRange:(struct TSCERangeCoordinate)arg2;
 - (id)cellRangeWasInserted:(const struct TSCERangeRef *)arg1;
 - (void)commonInit;
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)loadFromUnarchiver:(id)arg1;
 - (struct TSCERangeRef)rangeForTrackedReference:(id)arg1 gettingTrackedCell:(struct TSCECellRef *)arg2;
 - (id)referenceForTrackedReference:(id)arg1 sticky:(BOOL)arg2;
-- (BOOL)referenceNameIsUnique:(id)arg1 forReference:(const struct TSCERangeRef *)arg2 contextTable:(const UUIDData_5fbc143e *)arg3;
+- (BOOL)referenceNameIsUnique:(id)arg1 forReference:(const RefTypeHolder_8c6da553 *)arg2 contextTable:(const UUIDData_5fbc143e *)arg3;
 - (id)referenceTracker;
 - (void)referenceTrackerDidUpdateReferences:(id)arg1;
 - (void)referencedCellWasModified:(id)arg1;
@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)trackedReferencesMatchingPrefix:(id)arg1;
 - (id)trackedReferencesMatchingPrefix:(id)arg1 scopedToTable:(const UUIDData_5fbc143e *)arg2;
 - (void)updateTrackedHeaders:(const UUIDData_5fbc143e *)arg1;
+- (void)willClose;
 
 @end
 

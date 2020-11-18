@@ -6,30 +6,25 @@
 
 #import <NeutrinoCore/NUAutoCalculator.h>
 
-@class MISSING_TYPE, NUFaceDetectionClient, NUImagePropertiesClient;
+@class MISSING_TYPE;
 
 @interface PIPortraitAutoCalculator : NUAutoCalculator
 {
-    NUFaceDetectionClient *_faceClient;
-    NUImagePropertiesClient *_imagePropertiesClient;
-    float _simulatedAperture;
 }
 
 + (struct CGPoint)averagePoints:(const MISSING_TYPE **)arg1 pointCount:(unsigned long long)arg2;
 + (BOOL)canApplyPortraitEffectsWithMetadata:(id)arg1;
 + (struct CGPoint)convertFacePoint:(struct CGPoint)arg1 toImagePointWithFaceRect:(struct CGRect)arg2 orientation:(long long)arg3;
-+ (id)depthEffectInfoDictionaryFromFaceObservations:(id)arg1 focus:(id)arg2 aperture:(float)arg3 lumaNoiseScale:(float)arg4 orientation:(long long)arg5;
-+ (id)depthEffectInfoDictionaryFromFaceObservations:(id)arg1 metadata:(id)arg2 orientation:(long long)arg3 simulatedAperture:(float)arg4;
++ (id)depthEffectInfoDictionaryFromFaceObservations:(id)arg1 focus:(id)arg2 apertureValues:(id)arg3 lumaNoiseScale:(float)arg4 orientation:(long long)arg5;
++ (id)depthEffectInfoDictionaryFromFaceObservations:(id)arg1 metadata:(id)arg2 orientation:(long long)arg3 apertureValues:(id)arg4;
 + (id)focusRectDictionaryFromMetadata:(id)arg1;
 + (id)focusRectDictionaryFromRect:(struct CGRect)arg1;
++ (BOOL)isStillImageDisparity:(id)arg1;
 + (id)portraitEffectInfoDictionaryFromFaceObservations:(id)arg1 orientation:(long long)arg2;
 + (id)portraitInfoDictionaryFromCameraMetadata:(id)arg1;
-+ (id)portraitInfoDictionaryFromFaceObservations:(id)arg1 metadata:(id)arg2 orientation:(long long)arg3 simulatedAperture:(float)arg4;
-- (void).cxx_destruct;
-- (void)_calculateWithImageProperties:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)portraitInfoDictionaryFromFaceObservations:(id)arg1 metadata:(id)arg2 orientation:(long long)arg3 apertureValues:(id)arg4;
+- (void)_calculateWithImageProperties:(id)arg1 apertureValues:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)calculate:(CDUnknownBlockType)arg1;
-- (BOOL)canApplyDepthWithImageProperties:(id)arg1 error:(out id *)arg2;
-- (void)cancel;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <UIKit/_UIIVCResponseDelegate-Protocol.h>
+#import <UIKitCore/_UIIVCResponseDelegate-Protocol.h>
 
 @class NSString;
 @protocol _UIIVCResponseDelegate;

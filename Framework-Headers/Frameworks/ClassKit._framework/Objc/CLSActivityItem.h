@@ -12,11 +12,10 @@
 
 @interface CLSActivityItem : CLSObject <CLSRelationable>
 {
+    NSString *_title;
     NSString *_identifier;
-    NSString *__title;
 }
 
-@property (copy, nonatomic) NSString *_title; // @synthesize _title=__title;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

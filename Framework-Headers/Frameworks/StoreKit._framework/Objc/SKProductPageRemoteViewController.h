@@ -46,6 +46,7 @@
 - (void)setScriptContextDictionary:(id)arg1;
 - (void)setShowsRightBarButton:(BOOL)arg1;
 - (void)setShowsStoreButton:(BOOL)arg1;
+- (void)setVisibleInClientWindow:(id)arg1;
 - (void)setupWithClientBundleID:(id)arg1 bagType:(long long)arg2;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIViewVisitor.h>
+#import <UIKitCore/_UIViewVisitor.h>
 
 @class UIView;
 

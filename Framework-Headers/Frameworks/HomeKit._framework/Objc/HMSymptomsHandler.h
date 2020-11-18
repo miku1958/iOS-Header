@@ -11,36 +11,33 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMFMessageDispatcher, HMThreadSafeMutableArrayCollection, NSSet, NSString, NSUUID;
+@class HMFUnfairLock, HMMutableArray, NSHashTable, NSSet, NSString, NSUUID, _HMContext;
 @protocol HMSymptomsHandlerDelegate, OS_dispatch_queue;
 
-@interface HMSymptomsHandler : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge, HMFLogging>
+@interface HMSymptomsHandler : NSObject <NSSecureCoding, HMFMessageReceiver, HMFLogging, HMObjectMerge>
 {
-    BOOL _canInitiateFix;
-    HMThreadSafeMutableArrayCollection *_currentSymptoms;
-    long long _fixState;
+    HMFUnfairLock *_lock;
+    NSUUID *_sfDeviceIdentifier;
     NSUUID *_uniqueIdentifier;
     id<HMSymptomsHandlerDelegate> _delegate;
+    _HMContext *_context;
+    NSHashTable *_fixSessions;
     NSUUID *_uuid;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    HMDelegateCaller *_delegateCaller;
-    HMFMessageDispatcher *_msgDispatcher;
+    HMMutableArray *_currentSymptoms;
 }
 
-@property (readonly) BOOL canInitiateFix; // @synthesize canInitiateFix=_canInitiateFix;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *currentSymptoms; // @synthesize currentSymptoms=_currentSymptoms;
+@property (readonly) BOOL canInitiateFix;
+@property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) HMMutableArray *currentSymptoms; // @synthesize currentSymptoms=_currentSymptoms;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMSymptomsHandlerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
-@property (readonly) long long fixState; // @synthesize fixState=_fixState;
+@property (strong, nonatomic) NSHashTable *fixSessions; // @synthesize fixSessions=_fixSessions;
+@property (readonly) long long fixState;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (copy, setter=setSFDeviceIdentifier:) NSUUID *sfDeviceIdentifier; // @synthesize sfDeviceIdentifier=_sfDeviceIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, copy) NSSet *symptoms;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -49,22 +46,22 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_callCanFixUpdatedDelegate:(BOOL)arg1;
-- (void)_callFixStateUpdatedDelegate:(long long)arg1;
-- (void)_callStatusUpdateDelegate:(id)arg1;
-- (void)_configureClientQueue:(id)arg1 delegateCaller:(id)arg2 msgDispatcher:(id)arg3;
-- (void)_handleCanPromptFixProxCard:(id)arg1;
-- (void)_handleFixStateUpdated:(id)arg1;
+- (void)__configureWithContext:(id)arg1;
+- (void)_addFixSession:(id)arg1;
+- (void)_callFixSessionAvailabilityUpdatedDelegate;
+- (void)_callSymptomsUpdatedDelegate:(id)arg1;
+- (id)_findAndRemoveFixSessionsForSymptom:(id)arg1;
+- (void)_handleSFDeviceIdentifierUpdated:(id)arg1;
 - (void)_handleSymptomsUpdated:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUUID:(id)arg1;
 - (void)initiateFixWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)logIdentifier;
+- (id)newFixSessionForSymptom:(id)arg1;
 - (void)registerForMessages;
-- (void)setCanInitiateFix:(BOOL)arg1;
-- (void)setFixState:(long long)arg1;
 
 @end
 

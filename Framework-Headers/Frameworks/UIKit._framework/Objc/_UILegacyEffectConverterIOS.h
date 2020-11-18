@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UILegacyEffectConverter.h>
+#import <UIKitCore/_UILegacyEffectConverter.h>
 
 __attribute__((visibility("hidden")))
 @interface _UILegacyEffectConverterIOS : _UILegacyEffectConverter

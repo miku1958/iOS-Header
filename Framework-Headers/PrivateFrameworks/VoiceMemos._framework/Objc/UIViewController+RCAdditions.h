@@ -16,6 +16,7 @@
 - (void)rc_applicationWillEnterForeground;
 - (void)rc_automaticallyUpdateScreenUpdatesDisabled;
 - (BOOL)rc_canAnimate;
+- (void)rc_configurePopoverControllerWithSource:(id)arg1;
 - (void)rc_ensureIsInterfaceOrientationMask:(unsigned long long)arg1 preferredOrientation:(long long)arg2 doneEnsuringBlock:(CDUnknownBlockType)arg3;
 - (BOOL)rc_isDescendantOfViewController:(id)arg1;
 - (BOOL)rc_isPrimaryLayoutAxis:(long long)arg1;

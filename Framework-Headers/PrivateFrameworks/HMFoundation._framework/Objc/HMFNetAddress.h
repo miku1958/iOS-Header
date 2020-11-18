@@ -18,17 +18,14 @@
 @property (readonly, nonatomic) HMFNetAddressInternal *internal; // @synthesize internal=_internal;
 
 + (id)localAddress;
-+ (id)shortDescription;
 - (void).cxx_destruct;
-- (id)debugDescription;
+- (id)attributeDescriptions;
 - (id)description;
-- (id)descriptionWithPointer:(BOOL)arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithHostname:(id)arg1;
 - (id)initWithSocketAddress:(const struct sockaddr *)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)shortDescription;
 
 @end
 

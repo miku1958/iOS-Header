@@ -6,11 +6,11 @@
 
 #import <Cards/CRCommand-Protocol.h>
 
-@protocol NSSecureCoding;
+@protocol NSSecureCoding><NSCopying;
 
 @protocol CRPayloadCommand <CRCommand>
 
-@property (strong, nonatomic) id<NSSecureCoding> payload;
+@property (strong, nonatomic) id<NSSecureCoding><NSCopying> payload;
 
 @end
 

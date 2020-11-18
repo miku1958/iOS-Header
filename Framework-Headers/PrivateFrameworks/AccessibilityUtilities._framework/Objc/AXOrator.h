@@ -18,6 +18,7 @@
     AXDispatchTimer *_audioSessionTimer;
     BOOL _spellOutContent;
     BOOL _shouldSpeakNextItemOnResume;
+    BOOL _preferredLanguageWasSpecified;
     BOOL _isAudioSessionActive;
     BOOL _pendingAudioSessionActive;
     BOOL _isInAudioInterruption;
@@ -37,6 +38,7 @@
     NSString *_lastUtteranceLanguageCode;
     AVSpeechUtterance *_lastUtterance;
     AXLanguageTag *_lastUtteranceLanguageTag;
+    NSString *_currentLanguageCode;
     double _audioInterruptionStartedTime;
     NSString *_requestedLanguageCodeDuringAudioInterruption;
     struct _NSRange _lastSpokenSubstringRange;
@@ -45,6 +47,7 @@
 
 @property (nonatomic) double audioInterruptionStartedTime; // @synthesize audioInterruptionStartedTime=_audioInterruptionStartedTime;
 @property (copy, nonatomic) NSString *content;
+@property (strong, nonatomic) NSString *currentLanguageCode; // @synthesize currentLanguageCode=_currentLanguageCode;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AXOratorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -61,6 +64,7 @@
 @property (nonatomic) struct _NSRange lastUtteranceSubstringRange; // @synthesize lastUtteranceSubstringRange=_lastUtteranceSubstringRange;
 @property (nonatomic) unsigned long long numberOfTokensToSkip; // @synthesize numberOfTokensToSkip=_numberOfTokensToSkip;
 @property (nonatomic) BOOL pendingAudioSessionActive; // @synthesize pendingAudioSessionActive=_pendingAudioSessionActive;
+@property (nonatomic) BOOL preferredLanguageWasSpecified; // @synthesize preferredLanguageWasSpecified=_preferredLanguageWasSpecified;
 @property (copy, nonatomic) NSString *requestedLanguageCodeDuringAudioInterruption; // @synthesize requestedLanguageCodeDuringAudioInterruption=_requestedLanguageCodeDuringAudioInterruption;
 @property (strong, nonatomic) AXLanguageTaggedContent *selectedContent; // @synthesize selectedContent=_selectedContent;
 @property (nonatomic) BOOL shouldSpeakNextItemOnResume; // @synthesize shouldSpeakNextItemOnResume=_shouldSpeakNextItemOnResume;
@@ -81,6 +85,7 @@
 - (long long)_currentTokenIndex:(BOOL)arg1;
 - (void)_didBeginInterruption;
 - (void)_didEndInterruption;
+- (id)_getLangCodeForItem:(id)arg1;
 - (void)_handleAudioInterruption:(id)arg1;
 - (void)_handleMediaServicesWereLost:(id)arg1;
 - (void)_handleMediaServicesWereReset:(id)arg1;

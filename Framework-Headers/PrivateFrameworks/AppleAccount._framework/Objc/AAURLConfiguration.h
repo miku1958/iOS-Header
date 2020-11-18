@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface AAURLConfiguration : NSObject
 {
-    NSDictionary *_urlDictionary;
+    NSDictionary *_dictionary;
 }
 
 @property (readonly, nonatomic) NSString *aboutURL;
+@property (readonly, copy, nonatomic) NSNumber *absintheEnable;
 @property (readonly, nonatomic) NSString *acceptChildTransferURL;
 @property (readonly, nonatomic) NSString *acceptFamilyInviteURL;
 @property (readonly, nonatomic) NSString *acceptFamilyInviteV2URL;
@@ -24,6 +25,7 @@
 @property (readonly, nonatomic) NSString *addFamilyMemberUIURL;
 @property (readonly, nonatomic) NSString *apsEnvironment;
 @property (readonly, nonatomic) NSString *authenticateURL;
+@property (readonly, copy, nonatomic) NSNumber *baaInterval;
 @property (readonly, nonatomic) NSString *checkiCloudMembershipURL;
 @property (readonly, nonatomic) NSString *childAccountCreationUIURL;
 @property (readonly, nonatomic) NSString *cloudKitDevicesListURL;
@@ -90,10 +92,17 @@
 
 + (id)_urlConfigurationWithError:(id *)arg1;
 + (id)itemForKey:(id)arg1 error:(id *)arg2;
++ (id)remoteServer;
 + (void)reset;
++ (void)setRemoteServer:(id)arg1;
 + (id)urlConfiguration;
 - (void).cxx_destruct;
-- (id)initWithDictionary:(id)arg1;
+- (id)_envStringForKey:(id)arg1;
+- (id)_initWithDictionary:(id)arg1;
+- (id)_urlStringForKey:(id)arg1;
+- (id)description;
+- (id)init;
+- (id)urlForEndpoint:(id)arg1;
 
 @end
 

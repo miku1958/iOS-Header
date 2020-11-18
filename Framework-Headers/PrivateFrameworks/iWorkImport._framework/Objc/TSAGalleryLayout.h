@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     TSWPLayout *_galleryCaptionLayout;
     NSMapTable *_captionLayoutsForItems;
     NSArray *_captionLayouts;
+    BOOL _isInvalidatingSize;
     TSUBezierPath *_cachedPathForClippingConnectionLines;
     TSAGalleryItem *_currentItem;
     struct CGRect _imageContainerRect;
@@ -54,7 +55,9 @@ __attribute__((visibility("hidden")))
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (struct CGRect)imageFrameInRootWithDragOffset:(struct CGPoint)arg1;
 - (struct CGRect)imageRectInImageContainerForItem:(id)arg1;
+- (id)infoGeometryForFittingInFrame:(struct CGRect)arg1;
 - (id)initWithInfo:(id)arg1;
+- (id)interiorClippingPath;
 - (void)invalidateExteriorWrap;
 - (void)invalidateForAutosizingTextLayout:(id)arg1;
 - (void)invalidateSize;

@@ -12,6 +12,7 @@
 
 @interface MFMailSignatureControllerWK1 : MFMailSignatureController <DOMEventListener>
 {
+    BOOL _skipEventHandler;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,10 +26,12 @@
 - (BOOL)_isDraftRestore:(id)arg1;
 - (id)_locateSignatureDiv:(id)arg1;
 - (id)_prependSignatureForSender:(id)arg1 document:(id)arg2 node:(id)arg3;
+- (void)_removeSignatureForSender:(id)arg1 document:(id)arg2;
 - (id)_signatureMarkupStringForSender:(id)arg1;
 - (BOOL)_updateToSignature:(id)arg1 forDocument:(id)arg2;
 - (void)addSignatureForSender:(id)arg1 bodyField:(id)arg2 prepend:(BOOL)arg3;
 - (void)finalizeSignatureForBodyField:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getDocument:(id)arg1 withHiddenSignatureHandler:(CDUnknownBlockType)arg2;
 - (void)handleEvent:(id)arg1;
 - (void)invalidateBodyField:(id)arg1;
 - (void)removeSignatureForSender:(id)arg1 bodyField:(id)arg2;

@@ -44,9 +44,9 @@
 + (void)setITunesStoreHeaders:(id)arg1;
 - (void).cxx_destruct;
 - (void)_accountStoreChanged;
+- (void)_bagCacheUpdated;
 - (id)_subscriptionStatusDictionaryWithStatus:(id)arg1 isFinal:(BOOL)arg2;
 - (void)_subscriptionStatusDidChanged:(id)arg1;
-- (void)_updateWithBag:(id)arg1;
 - (id)asPrivateIKJSITunesStore;
 - (void)authenticate:(id)arg1:(id)arg2;
 - (void)clearCookies;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSDescriptionProviding-Protocol.h>
 #import <BaseBoard/BSInvalidatable-Protocol.h>
@@ -28,6 +28,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @dynamic valid;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

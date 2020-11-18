@@ -17,6 +17,7 @@
 + (id)pathForLanguage:(id)arg1;
 - (void)dealloc;
 - (id)initWithPath:(id)arg1;
+- (void)reset;
 
 @end
 

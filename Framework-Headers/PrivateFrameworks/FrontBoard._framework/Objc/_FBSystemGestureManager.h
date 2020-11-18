@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBExclusiveTouchGestureRecognizerDelegate-Protocol.h>
 #import <FrontBoard/UIGestureRecognizerDelegate-Protocol.h>
@@ -40,6 +40,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) BKSTouchStream *touchStream; // @synthesize touchStream=_touchStream;
 
+- (void).cxx_destruct;
 - (void)_addInternalGesturesToView:(id)arg1;
 - (void)_catchSwipeFailureGestureChanged:(id)arg1;
 - (unsigned char)_dispatchModeForExternalGestureCompletion;

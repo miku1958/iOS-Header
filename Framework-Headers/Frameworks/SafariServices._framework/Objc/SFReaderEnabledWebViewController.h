@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)createReaderWebViewForReaderController:(id)arg1;
 - (void)dealloc;
 - (void)loadView;
+- (void)readerController:(id)arg1 contentDidBecomeReadyWithDetectedLanguage:(id)arg2;
 - (void)readerController:(id)arg1 didClickLinkInReaderWithRequest:(id)arg2;
 - (void)readerController:(id)arg1 didClickLinkRequestingNewWindowInReaderWithRequest:(id)arg2;
 - (void)readerController:(id)arg1 didDetermineReaderAvailability:(BOOL)arg2 dueToSameDocumentNavigation:(BOOL)arg3;

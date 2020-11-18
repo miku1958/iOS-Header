@@ -11,6 +11,7 @@
 @interface _SFDialog : NSObject
 {
     BOOL _completed;
+    BOOL _shouldIgnoreGlobalModalUIDisplayPolicy;
 }
 
 @property (readonly, copy, nonatomic) NSArray *additionalCancellationExemptions;
@@ -18,12 +19,14 @@
 @property (readonly, nonatomic) BOOL canceledOnProvisionalNavigation;
 @property (readonly, nonatomic) BOOL completionHandlerBlocksWebProcess;
 @property (readonly, nonatomic) long long presentationStyle;
+@property (readonly, nonatomic) BOOL shouldIgnoreGlobalModalUIDisplayPolicy; // @synthesize shouldIgnoreGlobalModalUIDisplayPolicy=_shouldIgnoreGlobalModalUIDisplayPolicy;
 
 + (id)_dialogWithTitle:(id)arg1 message:(id)arg2 primaryAction:(id)arg3 secondaryAction:(id)arg4 applicationModal:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)authenticationDialogWithAuthenticationChallenge:(id)arg1 committedURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)blockedPopupWindowDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)continuePrintingDialogWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)dialogWithWebUIAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)digitalHealthOverlayForURL:(id)arg1;
 + (id)downloadBlockedDialogWithFileType:(long long)arg1 initiatingURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)formSubmissionDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)genericErrorDialogWithTitle:(id)arg1 message:(id)arg2 applicationModal:(BOOL)arg3;
@@ -36,6 +39,7 @@
 + (id)permanentlyAcceptCertificateDialogWithAcceptanceHandler:(CDUnknownBlockType)arg1;
 + (id)printBlockedDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)redirectDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)requestStorageAccessDialogForDomain:(id)arg1 underCurrentDomain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)telephonyNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)userMediaPermissionDialogWithHost:(id)arg1 devices:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)completeWithResponse:(id)arg1;

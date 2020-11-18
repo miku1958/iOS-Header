@@ -9,7 +9,7 @@
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
 
 @class ARSession, NSMutableDictionary, NSObject, NSSet, NSString;
-@protocol ARSKViewDelegate, NSObject;
+@protocol ARSKViewDelegate;
 
 @interface ARSKView : SKView <ARInternalSessionObserver>
 {
@@ -17,7 +17,6 @@
     NSMutableDictionary *_nodesByAnchorIdentifier;
     NSSet *_lastFrameAnchors;
     long long _interfaceOrientation;
-    id<NSObject> _interfaceOrientationObserver;
     struct CGSize _viewportSize;
 }
 
@@ -35,6 +34,7 @@
 - (id)anchorForNode:(id)arg1;
 - (void)commonInit;
 - (void)dealloc;
+- (void)deviceOrientationDidChange:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 types:(unsigned long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

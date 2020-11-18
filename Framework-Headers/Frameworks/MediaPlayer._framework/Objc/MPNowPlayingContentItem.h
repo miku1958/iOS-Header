@@ -40,6 +40,7 @@
 @property (nonatomic) double elapsedTime;
 @property (readonly, nonatomic) double elapsedTimeTimestamp;
 @property (nonatomic) long long episodeNumber;
+@property (nonatomic) long long episodeType;
 @property (nonatomic, getter=isExplicitItem) BOOL explicitItem;
 @property (copy, nonatomic) NSString *externalContentIdentifier;
 @property (copy, nonatomic) NSString *genreName;

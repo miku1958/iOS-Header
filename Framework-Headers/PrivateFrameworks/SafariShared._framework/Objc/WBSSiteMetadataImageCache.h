@@ -19,6 +19,7 @@
     WBSCacheRetainReleasePolicy *_cachePolicy;
     NSMutableDictionary *_cacheSettings;
     WBSCoalescedAsynchronousWriter *_cacheSettingsWriter;
+    unsigned long long _fileProtectionOptions;
     BOOL _terminating;
     NSURL *_imageDirectoryURL;
     long long _imageType;
@@ -62,6 +63,7 @@
 - (long long)imageStateForKeyString:(id)arg1;
 - (id)init;
 - (id)initWithImageDirectoryURL:(id)arg1 imageType:(long long)arg2;
+- (id)initWithImageDirectoryURL:(id)arg1 imageType:(long long)arg2 fileProtectionOptions:(unsigned long long)arg3;
 - (BOOL)isImageRetainedForKeyString:(id)arg1;
 - (void)purgeUnneededImages;
 - (void)releaseImageForKeyString:(id)arg1;

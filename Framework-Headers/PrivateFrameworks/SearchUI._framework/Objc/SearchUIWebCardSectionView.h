@@ -22,9 +22,8 @@
 @property (readonly) Class superclass;
 
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
-- (id)cssColorForColor:(id)arg1;
 - (id)initWithRowModel:(id)arg1 style:(unsigned long long)arg2 feedbackDelegate:(id)arg3;
-- (id)replaceCSSColorHexCode:(id)arg1 withColor:(id)arg2 inString:(id)arg3;
+- (id)replaceSemanticColor:(id)arg1 withColor:(id)arg2 inString:(id)arg3;
 - (id)setupContentView;
 - (void)webViewDidFinishLoad:(id)arg1;
 

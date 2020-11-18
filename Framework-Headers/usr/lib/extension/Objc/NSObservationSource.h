@@ -12,7 +12,7 @@
 
 @interface NSObservationSource : NSObject <NSObservable>
 {
-    id _observers;
+    id _observers[4];
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,7 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id *)_observerStorage;
+- (void *)_observerStorageOfSize:(unsigned long long)arg1;
 - (void)dealloc;
 
 @end

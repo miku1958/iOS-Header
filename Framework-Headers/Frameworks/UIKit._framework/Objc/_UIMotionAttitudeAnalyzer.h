@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIMotionAnalyzer.h>
+#import <UIKitCore/_UIMotionAnalyzer.h>
 
-#import <UIKit/_UISettingsKeyObserver-Protocol.h>
+#import <UIKitCore/_UISettingsKeyObserver-Protocol.h>
 
 @class NSString, UILabel, UIView, UIWindow;
 

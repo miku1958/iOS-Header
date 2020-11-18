@@ -11,14 +11,14 @@
 #import <DiagnosticExtensionsDaemon/DEDSeedingClientDelegate-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 
-@class DEDBugSession, DEDBugSessionConfiguration, DEDSeedingClient, NSMutableDictionary, NSString;
+@class DEDBugSession, DEDBugSessionConfiguration, DEDSeedingClient, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_source, OS_os_log, OS_os_transaction;
 
 @interface DEDSeedingFinisher : NSObject <DEDFinisher, DEDSeedingClientDelegate, NSSecureCoding, DEDSecureArchiving>
 {
     NSObject<OS_dispatch_source> *_timerSource;
     DEDBugSessionConfiguration *_config;
-    NSMutableDictionary *_uploads;
+    NSMutableSet *_uploads;
     unsigned long long _totalUploadSize;
     NSObject<OS_os_log> *_log;
     DEDBugSession *_session;
@@ -38,7 +38,7 @@
 @property (readonly) Class superclass;
 @property unsigned long long totalUploadSize; // @synthesize totalUploadSize=_totalUploadSize;
 @property (strong) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
-@property (strong) NSMutableDictionary *uploads; // @synthesize uploads=_uploads;
+@property (strong) NSMutableSet *uploads; // @synthesize uploads=_uploads;
 
 + (id)archivedClasses;
 + (BOOL)supportsSecureCoding;
@@ -59,6 +59,7 @@
 - (void)save;
 - (void)startProgressNotifier;
 - (void)updateSessionUploadProgress;
+- (id)uploadItemForTask:(id)arg1;
 - (void)uploadTask:(id)arg1 didCompleteWithError:(id)arg2;
 - (void)uploadTask:(id)arg1 didSendBytes:(long long)arg2;
 - (BOOL)uploadsAreComplete;

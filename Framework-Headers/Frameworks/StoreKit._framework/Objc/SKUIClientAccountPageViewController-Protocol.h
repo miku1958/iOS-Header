@@ -6,12 +6,17 @@
 
 #import <StoreKit/NSObject-Protocol.h>
 
-@class NSError, NSNumber;
+@class NSDictionary, NSError, NSNumber;
 
 @protocol SKUIClientAccountPageViewController <NSObject>
+- (void)didFinishLoading;
 - (void)didPrepareWithResult:(NSNumber *)arg1 error:(NSError *)arg2;
 - (void)dismissViewControllerWithResult:(NSNumber *)arg1 error:(NSError *)arg2;
+- (void)financeInterruptionResolved:(BOOL)arg1;
 - (void)overrideCreditCardPresentationWithCompletion:(void (^)(SUCreditCardReaderOutput *))arg1;
 - (void)overrideRedeemCameraWithCompletion:(void (^)(SKUIRedeem *, NSError *))arg1;
+- (void)popBridgedViewControllersToIndex:(unsigned long long)arg1;
+- (void)pushBridgedViewControllerAnimated:(BOOL)arg1 options:(NSDictionary *)arg2;
+- (void)setBridgedNavigationItemWithOptions:(NSDictionary *)arg1;
 @end
 

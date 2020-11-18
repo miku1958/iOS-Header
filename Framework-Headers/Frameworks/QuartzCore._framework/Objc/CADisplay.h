@@ -4,17 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CADisplayAttributes, CADisplayMode, NSArray, NSString;
 
 @interface CADisplay : NSObject
 {
     void *_impl;
-    BOOL _allowsVirtualModes;
 }
 
-@property BOOL allowsVirtualModes; // @synthesize allowsVirtualModes=_allowsVirtualModes;
+@property BOOL allowsVirtualModes;
 @property (readonly, nonatomic) NSArray *availableModes;
 @property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, getter=isCloned) BOOL cloned;
@@ -28,9 +27,11 @@
 @property (readonly) CADisplayAttributes *externalDisplayAttributes;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly) double heartbeatRate;
+@property (readonly) int linkQuality;
 @property (readonly) long long minimumFrameDuration;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly) NSString *nativeOrientation;
+@property (readonly) unsigned int odLUTVersion;
 @property (copy, nonatomic) NSString *overscanAdjustment;
 @property (readonly) double overscanAmount;
 @property (readonly) struct CGSize overscanAmounts;

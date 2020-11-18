@@ -43,7 +43,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSDictionary *cloudFeedInvitationTitleTextAttributes;
 @property (readonly, nonatomic) NSDictionary *cloudFeedLargerDefaultTextAttributes;
 @property (readonly, nonatomic) NSDictionary *cloudFeedLargerEmphasizedTextAttributes;
-@property (readonly, nonatomic) UIImage *cloudFeedMiniChevronImage;
 @property (readonly, nonatomic) UIImage *cloudFeedSectionHeaderBackgroundImage;
 @property (readonly, nonatomic) UIColor *cloudFeedSeparatorColor;
 @property (readonly, nonatomic) double cloudFeedSeparatorHeight;
@@ -83,7 +82,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double photoCollectionToolbarTextTitleSpacerWidth;
 @property (readonly, nonatomic) UIColor *photoCollectionViewBackgroundColor;
 @property (readonly, nonatomic) int photoCollectionViewBackgroundColorValue;
-@property (readonly, nonatomic) UIColor *photoCollectionViewSecondScreenBackgroundColor;
 @property (readonly, nonatomic) UIColor *photoEditingActiveFilterTitleColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarBackgroundColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarCurrentPositionMarkerColor;
@@ -136,8 +134,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UIColor *playheadColor;
 @property (readonly, nonatomic) UIImage *regularLoadErrorIcon;
 @property (readonly, nonatomic) UIColor *scrubberPlaceholderColor;
+@property (readonly, nonatomic) UIFont *searchItalicTitleLabelFont;
 @property (readonly, nonatomic) UIFont *searchRecentLabelFont;
 @property (readonly, nonatomic) UIColor *searchRecentLabelTextColor;
+@property (readonly, nonatomic) UIFont *searchResultCountLabelFont;
+@property (readonly, nonatomic) UIColor *searchResultCountTextColor;
 @property (readonly, nonatomic) double searchSingleTitleBottomBaselineDistance;
 @property (readonly, nonatomic) double searchSingleTitleTopBaselineDistance;
 @property (readonly, nonatomic) double searchSubtitleBottomBaselineDistance;
@@ -177,7 +178,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double videoPaletteBottomMargin;
 @property (readonly, nonatomic) double videoPaletteSideMargin;
 @property (readonly, nonatomic) UIColor *videoScrubberTileBackgroundColor;
-@property (readonly, nonatomic) UIFont *wallpaperCategoryLabelFont;
 
 - (id)_commentsFont;
 - (void)_configurePhotoCollectionGlobalFooterLabel:(id)arg1 withFontDescriptor:(id)arg2 textColor:(id)arg3;
@@ -187,10 +187,7 @@ __attribute__((visibility("hidden")))
 - (id)cloudWelcomeViewTitleLabelFontForSize:(double)arg1;
 - (id)commentsButtonStringForCount:(long long)arg1;
 - (void)configureAlbumListDeleteButton:(id)arg1;
-- (void)configureAlbumListEmptyStackViewPadPhotoDecoration:(id)arg1;
-- (void)configureAlbumListEmptyStackViewPhonePhotoDecoration:(id)arg1;
 - (void)configureAlbumListSectionTitleLabel:(id)arg1;
-- (void)configureAlbumListStackViewPadPhotoDecoration:(id)arg1;
 - (void)configureAlbumListStackViewPhonePhotoDecoration:(id)arg1;
 - (void)configureAlbumListSubtitleLabel:(id)arg1 asOpaque:(BOOL)arg2;
 - (void)configureAlbumListTitleLabel:(id)arg1 asOpaque:(BOOL)arg2;
@@ -208,6 +205,8 @@ __attribute__((visibility("hidden")))
 - (void)configureEditPluginUserDefaultsAccessorySwitch:(id)arg1;
 - (void)configureEditPluginUserDefaultsCell:(id)arg1 withIcon:(id)arg2 title:(id)arg3;
 - (void)configureEditPluginUserDefaultsTableView:(id)arg1;
+- (void)configureImportHeaderSubtitleLabel:(id)arg1;
+- (void)configureImportHeaderTitleLabel:(id)arg1;
 - (void)configureMapViewAnnotationCountLabel:(id)arg1;
 - (void)configurePhotoCollectionGlobalFooterProgressView:(id)arg1 paused:(BOOL)arg2;
 - (void)configurePhotoCollectionGlobalFooterSubtitleLabel:(id)arg1;
@@ -217,6 +216,7 @@ __attribute__((visibility("hidden")))
 - (void)configurePhotoCollectionHeaderLocationsLabel:(id)arg1 forStyle:(long long)arg2;
 - (void)configurePhotoCollectionHeaderTitleLabel:(id)arg1 forStyle:(long long)arg2;
 - (void)configureProgressIndicatorMessageLabel:(id)arg1;
+- (void)configureSearchResultCountLabel:(id)arg1;
 - (void)configureSearchSubtitleLabel:(id)arg1;
 - (void)configureSearchTitleLabel:(id)arg1;
 - (void)configureSlideshowMusicHeaderTitleLabel:(id)arg1;
@@ -240,6 +240,7 @@ __attribute__((visibility("hidden")))
 - (id)photoCollectionHeaderTitleLabelFontDescriptorForStyle:(long long)arg1;
 - (id)searchDefaultAttributes;
 - (id)searchDimmedAttributes;
+- (id)searchItalicTitleAttributes;
 - (id)searchTitleDimmedTextColor;
 - (id)searchTitleLabelHighlightedFont;
 - (id)searchTitleTextColor;

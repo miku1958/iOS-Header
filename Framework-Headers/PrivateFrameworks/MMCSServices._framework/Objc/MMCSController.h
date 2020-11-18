@@ -4,34 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMutableDictionary, NSRecursiveLock;
 
 @interface MMCSController : NSObject
 {
     long long _connectionBehavior;
     NSMutableDictionary *_transfers;
+    NSMutableDictionary *_transferIDToContextMap;
+    NSRecursiveLock *_transferIDContextMapLock;
 }
 
 @property long long connectionBehavior; // @synthesize connectionBehavior=_connectionBehavior;
 @property (readonly) BOOL isActive;
+@property (strong) NSRecursiveLock *transferIDContextMapLock; // @synthesize transferIDContextMapLock=_transferIDContextMapLock;
+@property (readonly) NSMutableDictionary *transferIDToContextMap; // @synthesize transferIDToContextMap=_transferIDToContextMap;
 @property (readonly) NSMutableDictionary *transfers; // @synthesize transfers=_transfers;
 
++ (void)preMMCSWarm:(id)arg1;
 - (void)_addPreauthorizationOptions:(id)arg1 forFiles:(id)arg2;
 - (id)_optionsForFiles:(id)arg1;
 - (void)_registerPowerAssertionIfNeeded;
 - (void)_releasePowerAssertion;
 - (void)_releasePowerAssertionAndSimulateCrash;
 - (void)_unregisterPowerAssertion;
+- (void)addRequestorContext:(id)arg1 transferID:(id)arg2;
+- (void)cancelPutRequestID:(id)arg1;
 - (void)dealloc;
 - (id)getContentHeadersAsString;
 - (void)getFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 authToken:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (id)init;
 - (id)parseContentHeaderAsDictionary:(id)arg1 treatValuesAsArrays:(BOOL)arg2;
-- (void)putFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 authToken:(id)arg4 preauthenticate:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)putFiles:(id)arg1 requestURL:(id)arg2 requestorID:(id)arg3 transferID:(id)arg4 authToken:(id)arg5 preauthenticate:(BOOL)arg6 completionBlock:(CDUnknownBlockType)arg7;
 - (void)registerFilesForDownload:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)registerFilesForUpload:(id)arg1 withPreauthentication:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)removeRequestorContext:(id)arg1 transferID:(id)arg2;
 - (BOOL)unregisterFiles:(id)arg1;
 
 @end

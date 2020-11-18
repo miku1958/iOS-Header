@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Weather/WeatherPreferencesPersistence-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface WeatherInMemoryDefaults : NSObject <WeatherPreferencesPersistence>
 {
     BOOL _synchronizeWasCalled;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSInvalidatable-Protocol.h>
 
@@ -30,6 +30,7 @@
 
 + (id)_callOutQueue;
 + (void)monitorSendRight:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 - (void)activateWithHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)initWithSendRight:(id)arg1;

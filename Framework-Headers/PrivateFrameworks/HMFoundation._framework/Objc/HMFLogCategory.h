@@ -20,8 +20,6 @@
 @property (readonly, nonatomic) NSString *loggingCategory; // @synthesize loggingCategory=_loggingCategory;
 @property (readonly, nonatomic) NSString *loggingSubsystem; // @synthesize loggingSubsystem=_loggingSubsystem;
 
-+ (void)_addCategory:(id)arg1 inSubsystem:(id)arg2;
-+ (id)_getCategory:(id)arg1;
 + (id)categoryWithName:(id)arg1;
 + (id)categoryWithName:(id)arg1 inSubsystem:(id)arg2;
 + (id)defaultCategory;

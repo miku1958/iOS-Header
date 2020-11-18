@@ -9,6 +9,7 @@
 
 @protocol GEOSimpleTileRequesterSubclass
 - (GEOURLWithHeaders *)urlForTileKey:(const struct _GEOTileKey *)arg1;
+- (BOOL)useProxyAuthForTileKey:(const struct _GEOTileKey *)arg1;
 
 @optional
 - (BOOL)allowsCookies;
@@ -16,6 +17,7 @@
 - (NSString *)editionHeader;
 - (GEOURLWithHeaders *)localizationURLForTileKey:(const struct _GEOTileKey *)arg1;
 - (NSData *)mergeBaseTile:(NSData *)arg1 withLocalizationTile:(NSData *)arg2;
+- (BOOL)needsLocalizationForKey:(const struct _GEOTileKey *)arg1;
 - (NSObject<OS_xpc_object> *)newXPCDataRequestForTileKey:(const struct _GEOTileKey *)arg1;
 - (BOOL)tileDataIsCacheableForTileKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)tileEditionForKey:(const struct _GEOTileKey *)arg1;

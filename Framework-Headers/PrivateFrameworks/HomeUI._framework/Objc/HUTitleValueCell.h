@@ -45,17 +45,18 @@
 - (void).cxx_destruct;
 - (void)_addTitleLabel;
 - (void)_addValueLabel;
+- (void)_ensureCorrectHeaderViewOrientation;
 - (void)_updateCompressionResistance;
 - (void)_updateTitle;
 - (void)_updateValue;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;
-- (void)ensureCorrectHeaderViewOrientation;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 - (void)setDisabled:(BOOL)arg1;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
 - (void)updateUIWithAnimation:(BOOL)arg1;
 

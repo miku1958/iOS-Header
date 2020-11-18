@@ -31,6 +31,7 @@
 - (void)layoutSubviews;
 - (void)setRatingActionSheetDelegate:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

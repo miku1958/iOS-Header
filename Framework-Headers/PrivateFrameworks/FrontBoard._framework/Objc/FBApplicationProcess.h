@@ -22,12 +22,14 @@
     NSMutableSet *_allowedLockedFilePaths;
     NSMutableArray *_queuedSceneBlocksToExecuteAfterLaunch;
     NSMutableArray *_queue_terminateRequestCompletionBlocks;
-    BOOL _bootstrapped;
+    BOOL _attemptedBootstrap;
+    BOOL _attemptedFinalizedLaunch;
+    BOOL _queue_launchEventReceiptAcknowledged;
     BOOL _bootstrapFailed;
-    BOOL _performedLaunch;
-    BOOL _finishedLaunching;
+    BOOL _exitedBeforeAttemptingFinalizedLaunch;
     BOOL _pendingExit;
     BOOL _beingDebugged;
+    BOOL _waitForDebugger;
     BSMachPortSendRight *_gsEventPort;
     FBProcessWatchdog *_watchdog;
     FBSProcessWatchdogPolicy *_sceneCreateWatchdogPolicy;
@@ -37,24 +39,25 @@
     unsigned long long _htAppIdentifier;
     BKSProcess *_bksProcess;
     BKSProcessAssertion *_launchProcessAssertion;
+    BKSProcessAssertion *_viewServiceProcessAssertion;
     BKSProcessAssertion *_continuousProcessAssertion;
     BOOL _recordingAudio;
     BOOL _nowPlayingWithAudio;
     BOOL _connectedToExternalAccessory;
 }
 
-@property (readonly, strong, nonatomic) FBApplicationInfo *applicationInfo; // @synthesize applicationInfo=_applicationInfo;
+@property (readonly, nonatomic) FBApplicationInfo *applicationInfo; // @synthesize applicationInfo=_applicationInfo;
 @property (nonatomic, getter=isBeingDebugged) BOOL beingDebugged; // @synthesize beingDebugged=_beingDebugged;
 @property (nonatomic, getter=isConnectedToExternalAccessory) BOOL connectedToExternalAccessory; // @synthesize connectedToExternalAccessory=_connectedToExternalAccessory;
-@property (readonly, strong, nonatomic, getter=_queue_cpuStatistics) FBProcessCPUStatistics *cpuStatistics; // @synthesize cpuStatistics=_cpuStatistics;
+@property (readonly, nonatomic, getter=_queue_cpuStatistics) FBProcessCPUStatistics *cpuStatistics; // @synthesize cpuStatistics=_cpuStatistics;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<FBApplicationProcessDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double elapsedCPUTime;
 @property (readonly, nonatomic, getter=_queue_execTime) double execTime;
 @property (readonly, copy, nonatomic) FBProcessExecutionContext *executionContext; // @synthesize executionContext=_executionContext;
-@property (readonly, strong, nonatomic) FBApplicationProcessExitContext *exitContext;
-@property (readonly, nonatomic) BOOL finishedLaunching; // @synthesize finishedLaunching=_finishedLaunching;
+@property (readonly, nonatomic) FBApplicationProcessExitContext *exitContext;
+@property (readonly, nonatomic) BOOL finishedLaunching;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isNowPlayingWithAudio) BOOL nowPlayingWithAudio; // @synthesize nowPlayingWithAudio=_nowPlayingWithAudio;
 @property (readonly, nonatomic, getter=isPendingExit) BOOL pendingExit; // @synthesize pendingExit=_pendingExit;
@@ -62,6 +65,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=_queue_terminationReason) long long terminationReason;
 
+- (void).cxx_destruct;
 - (id)GSEventPort;
 - (id)_applicationWorkspace;
 - (id)_createWorkspace;
@@ -76,6 +80,7 @@
 - (void)_queue_doGracefulKillWithDeliveryConfirmation:(CDUnknownBlockType)arg1;
 - (void)_queue_dropContinuousProcessAssertion;
 - (void)_queue_dropLaunchProcessAssertion;
+- (void)_queue_dropViewServiceAssertion;
 - (void)_queue_enumerateApplicationObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)_queue_executeBlockAfterLaunchCompletes:(CDUnknownBlockType)arg1;
 - (void)_queue_executeKillForRequest:(id)arg1;
@@ -92,6 +97,7 @@
 - (id)_queue_name;
 - (id)_queue_newWatchdogForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (unsigned long long)_queue_noteExitedForForceQuit:(BOOL)arg1;
+- (void)_queue_noteSceneCreationAcknowledged:(id)arg1;
 - (int)_queue_ourTaskStateForBKSTaskState:(long long)arg1;
 - (void)_queue_processDidExit;
 - (void)_queue_sceneNeedsGracefulExit:(id)arg1 withDeliveryConfirmation:(CDUnknownBlockType)arg2;
@@ -125,7 +131,6 @@
 - (void)process:(id)arg1 isBeingDebugged:(BOOL)arg2;
 - (void)process:(id)arg1 taskStateDidChange:(long long)arg2;
 - (void)processWillExpire:(id)arg1;
-- (void)setFinishedLaunching:(BOOL)arg1;
 - (void)setPendingExit:(BOOL)arg1;
 - (void)stop;
 

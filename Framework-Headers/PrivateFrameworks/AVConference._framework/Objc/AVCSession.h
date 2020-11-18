@@ -4,44 +4,76 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVCSessionConfiguration, AVCSessionParticipant, AVConferenceXPCClient, NSMutableDictionary, NSString;
+#import <AVConference/AVCSessionParticipantControlProtocol-Protocol.h>
+#import <AVConference/AVCSessionParticipantDelegate-Protocol.h>
+
+@class AVCSessionConfiguration, AVCSessionParticipant, NSArray, NSData, NSMutableDictionary, NSString, VCXPCClientShared;
 @protocol AVCSessionDelegate, OS_dispatch_queue;
 
-@interface AVCSession : NSObject
+@interface AVCSession : NSObject <AVCSessionParticipantDelegate, AVCSessionParticipantControlProtocol>
 {
-    AVCSessionParticipant *_localParticipant;
     NSMutableDictionary *_remoteParticipants;
-    NSMutableDictionary *_cachedParticipants;
+    NSMutableDictionary *_participantsToAdd;
+    AVCSessionParticipant *_localParticipant;
     AVCSessionConfiguration *_configuration;
     NSString *_transportToken;
-    id<AVCSessionDelegate> _delegate;
+    id _delegate;
     NSObject<OS_dispatch_queue> *_delegateNotificationQueue;
     NSObject<OS_dispatch_queue> *_stateQueue;
-    AVConferenceXPCClient *_connection;
+    VCXPCClientShared *_connection;
+    long long _sessionToken;
+    NSString *_uuid;
+    NSData *_frequencyLevels;
+    int _activeConfigurationCount;
 }
 
+@property (nonatomic, getter=isAudioEnabled) BOOL audioEnabled;
+@property (nonatomic, getter=isAudioMuted) BOOL audioMuted;
+@property (nonatomic, getter=isAudioPaused) BOOL audioPaused;
 @property (strong, nonatomic) AVCSessionConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) id<AVCSessionDelegate> delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateNotificationQueue; // @synthesize delegateNotificationQueue=_delegateNotificationQueue;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSData *frequencyLevels; // @synthesize frequencyLevels=_frequencyLevels;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) AVCSessionParticipant *localParticipant; // @synthesize localParticipant=_localParticipant;
-@property (readonly, nonatomic) NSMutableDictionary *remoteParticipants; // @synthesize remoteParticipants=_remoteParticipants;
+@property (readonly, nonatomic) NSData *negotiationData;
+@property (readonly, nonatomic) NSMutableDictionary *participantsToAdd; // @synthesize participantsToAdd=_participantsToAdd;
+@property (readonly, nonatomic) NSArray *remoteParticipants;
+@property (readonly, nonatomic) NSMutableDictionary *remoteParticipantsMap; // @synthesize remoteParticipantsMap=_remoteParticipants;
+@property (readonly, nonatomic) long long sessionToken; // @synthesize sessionToken=_sessionToken;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *uuid;
+@property (nonatomic, getter=isVideoEnabled) BOOL videoEnabled;
+@property (nonatomic, getter=isVideoPaused) BOOL videoPaused;
+@property (nonatomic) float volume;
+@property (readonly, nonatomic) VCXPCClientShared *xpcConnection; // @synthesize xpcConnection=_connection;
 
-- (void)addParticipantWithID:(id)arg1 data:(id)arg2 delegate:(id)arg3 queue:(id)arg4;
+- (void)addParticipant:(id)arg1;
+- (void)addParticipants:(id)arg1;
+- (void)beginParticipantConfiguration;
 - (void)dealloc;
-- (id)delegate;
 - (void)deregisterFromNotifications;
-- (id)description;
+- (void)didDetectErrorHandler:(id)arg1;
+- (void)endParticipantConfiguration;
 - (id)initWithTransportToken:(id)arg1 configuration:(id)arg2 delegate:(id)arg3 queue:(id)arg4;
-- (id)participantForID:(id)arg1;
+- (void)participant:(id)arg1 audioEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
+- (void)participant:(id)arg1 audioPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
+- (void)participant:(id)arg1 frequencyLevelsDidChange:(id)arg2;
+- (void)participant:(id)arg1 videoEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
+- (void)participant:(id)arg1 videoPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(id)arg4;
 - (void)registerBlocksForNotifications;
-- (void)removeParticipantWithID:(id)arg1;
+- (void)removeParticipant:(id)arg1;
+- (void)removeParticipants:(id)arg1;
 - (void)setupNotificationQueue:(id)arg1;
 - (void)start;
 - (void)stop;
 - (void)updateConfiguration:(id)arg1;
-- (BOOL)validateParticipantToAddWithID:(id)arg1 data:(id)arg2 initFailed:(BOOL)arg3;
-- (BOOL)validateParticipantToRemoveWithID:(id)arg1;
+- (BOOL)validateParticipantToAdd:(id)arg1;
+- (BOOL)validateParticipantToRemove:(id)arg1;
 
 @end
 

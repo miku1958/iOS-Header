@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)candidateWithSuggestion:(id)arg1 customInfoType:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)candidate;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)customInfoType;
 - (id)initWithSuggestion:(id)arg1 customInfoType:(unsigned long long)arg2;
 - (id)input;

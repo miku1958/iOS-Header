@@ -9,10 +9,11 @@
 #import <ClockKit/NSCopying-Protocol.h>
 #import <ClockKit/NSSecureCoding-Protocol.h>
 
-@class NSMutableSet, UIColor;
+@class NSDictionary, NSMutableSet, UIColor;
 
 @interface CLKComplicationTemplate : NSObject <NSSecureCoding, NSCopying>
 {
+    NSDictionary *_metadata;
     NSMutableSet *_activeClients;
     BOOL _finalized;
     UIColor *_tintColor;
@@ -28,7 +29,10 @@
 - (void)_enumerateAllKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateBOOLKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateDateKeysWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateEmbeddedTemplateKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateFloatKeysWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateFullColorImageProviderKeysWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateGaugeProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateImageProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateIntegerKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateProgressProviderKeysWithBlock:(CDUnknownBlockType)arg1;
@@ -50,6 +54,8 @@
 - (BOOL)isCompatibleWithFamily:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (struct CGSize)maxSizeForImageProviderKey:(id)arg1;
+- (id)metadata;
+- (void)setMetadata:(id)arg1;
 - (void)validate;
 
 @end

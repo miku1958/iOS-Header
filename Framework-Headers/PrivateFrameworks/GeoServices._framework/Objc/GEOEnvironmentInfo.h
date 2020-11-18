@@ -36,6 +36,7 @@
 - (id)serviceURLs;
 - (void)updateWithURLs:(id)arg1;
 - (id)urlDictionary;
+- (id)useProxyAuth;
 
 @end
 

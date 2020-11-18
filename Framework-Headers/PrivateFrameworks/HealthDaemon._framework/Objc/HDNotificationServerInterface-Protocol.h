@@ -10,6 +10,7 @@
 
 @protocol HDNotificationServerInterface <NSObject>
 - (void)remote_badgeForDomain:(long long)arg1 completion:(void (^)(HKBadge *, NSError *))arg2;
+- (void)remote_postCompanionUserNotificationOfType:(long long)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_setBadge:(HKBadge *)arg1 forDomain:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

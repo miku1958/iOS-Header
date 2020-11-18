@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNScheduler-Protocol.h>
 
@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) unsigned long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
 @property (readonly, nonatomic) id<CNScheduler> scheduler; // @synthesize scheduler=_scheduler;
 @property (readonly) Class superclass;
+@property (readonly) double timestamp;
 
 - (void).cxx_destruct;
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
@@ -32,7 +33,6 @@
 - (void)performBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
-- (double)timestamp;
 
 @end
 

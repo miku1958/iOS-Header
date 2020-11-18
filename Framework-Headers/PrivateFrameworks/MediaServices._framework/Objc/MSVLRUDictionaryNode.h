@@ -8,6 +8,7 @@
 
 #import <MediaServices/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface MSVLRUDictionaryNode : NSObject <NSCopying>
 {
     id _key;

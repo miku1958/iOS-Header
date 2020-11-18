@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TILanguageLikelihoodModeling-Protocol.h>
 
@@ -25,7 +25,6 @@
 + (id)sharedLanguageLikelihoodModel;
 + (id)singletonInstance;
 - (void)addEvidence:(id)arg1 timestamp:(double)arg2 adaptationType:(int)arg3 forRecipient:(id)arg4 app:(id)arg5 language:(id)arg6;
-- (void)dealloc;
 - (unsigned long long)emojiUsageCountForApp:(id)arg1 lastEmojiCountUpdateTime:(double *)arg2;
 - (id)init;
 - (double)lastOfflineAdaptationTimeForApp:(id)arg1;

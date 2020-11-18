@@ -22,8 +22,8 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__configureWithContext:(id)arg1 accessory:(id)arg2;
 - (void)_notifyDelegateOfUpdatedMediaSession:(id)arg1;
-- (void)configureWithAccessory:(id)arg1 home:(id)arg2 context:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (void)setRouteUID:(id)arg1;

@@ -11,9 +11,12 @@
 @property (readonly, nonatomic) BOOL tsu_isSingleContiguousRange;
 
 + (id)tsu_indexSetWithIndices:(unsigned long long *)arg1 count:(unsigned long long)arg2;
+- (struct _NSRange)tsu_boundingRange;
+- (unsigned long long)tsu_firstCommonIndexWithIndexes:(id)arg1;
 - (unsigned long long)tsu_indexAtPosition:(unsigned long long)arg1;
 - (id)tsu_indexSetByAddingIndex:(unsigned long long)arg1;
 - (id)tsu_indexSetByAddingIndexes:(id)arg1;
+- (id)tsu_indexSetByExcludingIndex:(unsigned long long)arg1;
 - (id)tsu_indexSetByExcludingIndexes:(id)arg1;
 - (id)tsu_indexSetByInsertingIndexes:(id)arg1 inRange:(struct _NSRange)arg2;
 - (id)tsu_indexSetByIntersectingWithIndexes:(id)arg1;

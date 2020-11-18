@@ -4,31 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TIKeyboardActivityControlling-Protocol.h>
+#import <TextInputCore/TIKeyboardApplicationStateResponses-Protocol.h>
 #import <TextInputCore/TIKeyboardAssertionManagerDelegate-Protocol.h>
 
-@class NSHashTable, NSString, NSTimer;
+@class NSHashTable, NSString, NSTimer, TIKeyboardApplicationStateMonitor;
 @protocol OS_dispatch_source;
 
-@interface TIKeyboardActivityController : NSObject <TIKeyboardAssertionManagerDelegate, TIKeyboardActivityControlling>
+@interface TIKeyboardActivityController : NSObject <TIKeyboardAssertionManagerDelegate, TIKeyboardActivityControlling, TIKeyboardApplicationStateResponses>
 {
-    BOOL _isDirty;
     BOOL _hadRecentActivity;
     BOOL _hasBackgroundActivity;
     unsigned long long _activityState;
     NSObject<OS_dispatch_source> *_memoryPressureSource;
     long long _inactiveMemoryPressureCount;
+    BOOL _isDirty;
     NSTimer *_inactivityTimer;
     NSHashTable *_observers;
+    TIKeyboardApplicationStateMonitor *_appMonitor;
 }
 
 @property (readonly, nonatomic) unsigned long long activityState;
+@property (strong, nonatomic) TIKeyboardApplicationStateMonitor *appMonitor; // @synthesize appMonitor=_appMonitor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSTimer *inactivityTimer; // @synthesize inactivityTimer=_inactivityTimer;
+@property (nonatomic) BOOL isDirty; // @synthesize isDirty=_isDirty;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly) Class superclass;
 
@@ -38,8 +42,10 @@
 + (void)setSharedController:(id)arg1;
 + (id)sharedController;
 + (id)singletonInstance;
+- (void).cxx_destruct;
 - (void)addActivityObserver:(id)arg1;
 - (void)backgroundActivityAssertionsDidChange;
+- (BOOL)canGoEarlyClean;
 - (id)createMemoryPressureSource;
 - (void)dealloc;
 - (unsigned long long)getExcessMemoryInBytes;
@@ -47,10 +53,9 @@
 - (void)inactivityTimerFired:(id)arg1;
 - (id)init;
 - (void)keyboardAssertionsDidChange;
-- (void)keyboardAssertionsDidChange:(id)arg1;
-- (void)keyboardBackgroundActivityAssertionsDidChange:(id)arg1;
 - (void)notifyMemoryPressureLevel:(unsigned long long)arg1 excessMemoryInBytes:(unsigned long long)arg2;
 - (void)notifyTransitionWithContext:(id)arg1;
+- (void)releaseInputManagers;
 - (void)removeActivityObserver:(id)arg1;
 - (void)setKeyboardCleanIfNecessary;
 - (void)setKeyboardDirtyIfNecessary;

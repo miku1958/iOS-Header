@@ -18,6 +18,7 @@
 @property (strong, nonatomic) TIMecabraWrapper *mecabraWrapper; // @synthesize mecabraWrapper=_mecabraWrapper;
 @property (nonatomic, getter=isPartialCandidate) BOOL partialCandidate; // @synthesize partialCandidate=_partialCandidate;
 
+- (void).cxx_destruct;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithWordSearch:(id)arg1 mecabraCandidate:(void *)arg2 isPartial:(BOOL)arg3;

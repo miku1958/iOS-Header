@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHStyleActAlike-Protocol.h>
 
@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 + (id)defaultNonStyle;
 + (id)defaultValueForProperty:(int)arg1;
 + (id)properties;
-- (id)autorelease;
 - (id)boxedDefaultValueForProperty:(int)arg1;
 - (id)boxedValueForProperty:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -42,9 +41,6 @@ __attribute__((visibility("hidden")))
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (BOOL)overridesProperty:(int)arg1;
 - (id)properties;
-- (oneway void)release;
-- (id)retain;
-- (unsigned long long)retainCount;
 - (id)valueForProperty:(int)arg1;
 
 @end

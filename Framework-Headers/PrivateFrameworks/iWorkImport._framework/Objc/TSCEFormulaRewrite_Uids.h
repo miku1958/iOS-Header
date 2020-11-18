@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSIndexSet;
 
@@ -13,25 +13,28 @@ __attribute__((visibility("hidden")))
 {
     vector_4dc5f307 _uids;
     NSIndexSet *_indexes;
-    struct unordered_map<TSU::UUIDData<TSP::UUIDData>, unsigned short, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, unsigned short>>> _indexesForUids;
-    struct unordered_map<unsigned short, TSU::UUIDData<TSP::UUIDData>, std::__1::hash<unsigned short>, std::__1::equal_to<unsigned short>, std::__1::allocator<std::__1::pair<const unsigned short, TSU::UUIDData<TSP::UUIDData>>>> _uidsForIndexes;
+    struct unordered_map<TSU::UUIDData<TSP::UUIDData>, unsigned int, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, unsigned int>>> _indexesForUids;
+    struct unordered_map<unsigned int, TSU::UUIDData<TSP::UUIDData>, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, TSU::UUIDData<TSP::UUIDData>>>> _uidsForIndexes;
+    vector_4dc5f307 _viewOrderUids;
 }
 
 @property (readonly) NSIndexSet *indexes; // @synthesize indexes=_indexes;
 @property (readonly) const vector_4dc5f307 *uids; // @synthesize uids=_uids;
+@property (readonly) const vector_4dc5f307 *viewOrderUids; // @synthesize viewOrderUids=_viewOrderUids;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)containsIndex:(unsigned short)arg1;
-- (void)dealloc;
+- (unsigned short)columnIndexForUid:(const UUIDData_5fbc143e *)arg1;
+- (BOOL)containsIndex:(unsigned int)arg1;
 - (id)description;
-- (unsigned short)indexForUid:(const UUIDData_5fbc143e *)arg1;
+- (id)indexSetBySubtractingOurIndexesFromIndexSet:(id)arg1;
 - (id)initFromMessage:(const struct IndexedUidsArchive *)arg1;
 - (id)initWithUids:(const vector_4dc5f307 *)arg1;
-- (void)loadIndexesForTable:(id)arg1 isRows:(BOOL)arg2;
+- (void)loadIndexesForTable:(id)arg1 isRows:(BOOL)arg2 shuffleMap:(id)arg3;
+- (unsigned int)rowIndexForUid:(const UUIDData_5fbc143e *)arg1;
 - (void)saveToMessage:(struct IndexedUidsArchive *)arg1;
-- (void)subtractIndexesFromIndexSet:(id)arg1;
-- (UUIDData_5fbc143e)uidForIndex:(unsigned short)arg1;
+- (UUIDData_5fbc143e)uidForIndex:(unsigned int)arg1;
+- (vector_4dc5f307)uidsForIndexes:(id)arg1;
 - (void)unloadIndexes;
 
 @end

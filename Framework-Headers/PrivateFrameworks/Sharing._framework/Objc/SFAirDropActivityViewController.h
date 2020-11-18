@@ -6,16 +6,16 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <Sharing/SFAirDropBrowserDelegate-Protocol.h>
+#import <Sharing/SFAirDropBrowserBatchDelegate-Protocol.h>
 #import <Sharing/SFCollectionViewDelegateLayout-Protocol.h>
 #import <Sharing/SFPersonCollectionViewCellDelegate-Protocol.h>
 #import <Sharing/SFWirelessSettingsControllerDelegate-Protocol.h>
 #import <Sharing/UICollectionViewDataSource-Protocol.h>
 
-@class NSArray, NSCache, NSLayoutConstraint, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSOperationQueue, NSString, SFAirDropActiveIconView, SFAirDropBrowser, SFAirDropIconView, SFCollectionViewLayout, SFPersonCollectionViewCell, SFWirelessSettingsController, UIButton, UICollectionView, UIFocusContainerGuide, UILabel, UITextView, UIVisualEffectView;
+@class NSArray, NSLayoutConstraint, NSMapTable, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSOperationQueue, NSString, SFAirDropActiveIconView, SFAirDropBrowser, SFAirDropIconView, SFCollectionViewLayout, SFWirelessSettingsController, UIButton, UICollectionView, UIFocusContainerGuide, UILabel, UITextView, UIVisualEffectView;
 @protocol SFAirDropActivityViewControllerDelegate;
 
-@interface SFAirDropActivityViewController : UIViewController <UICollectionViewDataSource, SFCollectionViewDelegateLayout, SFAirDropBrowserDelegate, SFPersonCollectionViewCellDelegate, SFWirelessSettingsControllerDelegate>
+@interface SFAirDropActivityViewController : UIViewController <UICollectionViewDataSource, SFCollectionViewDelegateLayout, SFAirDropBrowserBatchDelegate, SFPersonCollectionViewCellDelegate, SFWirelessSettingsControllerDelegate>
 {
     NSString *_sendingAppBundleID;
     long long _attachmentCount;
@@ -48,9 +48,6 @@
     BOOL _shouldExpandTextIfNeeded;
     SFCollectionViewLayout *_collectionViewLayout;
     SFCollectionViewLayout *_detailCollectionViewLayout;
-    SFPersonCollectionViewCell *_prototypeActivityCell;
-    NSCache *_cachedPreferredItemSizesByString;
-    struct CGSize _cachedPreferredItemSize;
     SFAirDropBrowser *_browser;
     id _progressToken;
     NSMutableDictionary *_personToProgress;
@@ -62,7 +59,6 @@
     BOOL _itemsRequested;
     BOOL _itemsReady;
     NSOperationQueue *_operationQueue;
-    NSMutableArray *_objectChanges;
     long long _generatedPreviews;
     UIVisualEffectView *_titleVibrancyView;
     UIVisualEffectView *_instructionsVibrancyView;
@@ -71,11 +67,17 @@
     UIFocusContainerGuide *_fcg;
     struct __SFOperation *_logger;
     struct CGSize _minimumPreferredContentSize;
+    NSArray *_people;
     NSMapTable *_realNameToFirstSeenTimestamp;
     unsigned long long _peopleStartTimestamp;
+    BOOL _browserPaused;
+    BOOL _didSelectNode;
+    int _sharedItemsCount;
+    NSMutableDictionary *_sharedItemsMap;
     BOOL _sharedItemsAvailable;
     BOOL _otherActivityViewPresented;
     BOOL _darkStyleOnLegacyApp;
+    BOOL _manuallyManageBrowsing;
     NSObject<SFAirDropActivityViewControllerDelegate> *_delegate;
     NSString *_overriddenTitleText;
     NSString *_overriddenNoWiFIBTText;
@@ -89,6 +91,7 @@
 @property (weak, nonatomic) NSObject<SFAirDropActivityViewControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL manuallyManageBrowsing; // @synthesize manuallyManageBrowsing=_manuallyManageBrowsing;
 @property (nonatomic) BOOL otherActivityViewPresented; // @synthesize otherActivityViewPresented=_otherActivityViewPresented;
 @property (copy, nonatomic) NSString *overriddenInstructionsText; // @synthesize overriddenInstructionsText=_overriddenInstructionsText;
 @property (copy, nonatomic) NSString *overriddenNoAWDLText; // @synthesize overriddenNoAWDLText=_overriddenNoAWDLText;
@@ -103,28 +106,25 @@
 + (BOOL)isAirDropAvailable;
 - (void).cxx_destruct;
 - (struct CGSize)_cachedPreferredItemSize;
-- (struct CGSize)_cachedPreferredItemSizeForString:(id)arg1;
 - (void)_collectTelemetryForPeople:(id)arg1;
 - (void)_createiOSLayoutConstraints;
 - (void)_createtvOSLayoutConstraints;
 - (void)_emitTelemetryForPerson:(id)arg1;
 - (id)_fontWithStyle:(id)arg1 maxSizeCategory:(id)arg2 traits:(unsigned int)arg3;
+- (void)_setIsLoadingActivityItemProviders:(BOOL)arg1;
 - (void)_startTelemetry;
 - (void)_stopTelemetry;
 - (void)_updateExclusionPathsForTextViews;
 - (void)_updateFontSizes;
-- (BOOL)addAttributedString:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4;
-- (BOOL)addData:(id)arg1 ofType:(id)arg2 withAttachmentName:(id)arg3 description:(id)arg4 previewImage:(id)arg5;
-- (BOOL)addImage:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4;
+- (BOOL)addAttributedString:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4 itemIndex:(int)arg5;
+- (BOOL)addData:(id)arg1 ofType:(id)arg2 withAttachmentName:(id)arg3 description:(id)arg4 previewImage:(id)arg5 itemIndex:(int)arg6;
+- (BOOL)addImage:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4 itemIndex:(int)arg5;
 - (BOOL)addItemProvider:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4;
 - (BOOL)addItemProvider:(id)arg1 withDataType:(id)arg2 attachmentName:(id)arg3 description:(id)arg4 previewImage:(id)arg5;
-- (BOOL)addString:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4;
-- (BOOL)addURL:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4;
+- (BOOL)addString:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4 itemIndex:(int)arg5;
+- (BOOL)addURL:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4 itemIndex:(int)arg5;
 - (id)attributedStringWithTitle:(id)arg1 content:(id)arg2;
-- (void)browser:(id)arg1 didDeletePersonAtIndex:(unsigned long long)arg2;
-- (void)browser:(id)arg1 didInsertPersonAtIndex:(unsigned long long)arg2;
-- (void)browserDidChangePeople:(id)arg1;
-- (void)browserWillChangePeople:(id)arg1;
+- (void)browserDidUpdatePeople:(id)arg1;
 - (struct CGSize)calculatePreferredContentSize;
 - (id)cellForPerson:(id)arg1;
 - (void)cleanupWithSelectedActivityType:(id)arg1;
@@ -135,21 +135,24 @@
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 preferredSizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
-- (BOOL)createURLPayloadForData:(id)arg1 ofType:(id)arg2 withAttachmentName:(id)arg3 description:(id)arg4 previewImage:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (BOOL)createURLPayloadForData:(id)arg1 ofType:(id)arg2 withAttachmentName:(id)arg3 description:(id)arg4 previewImage:(id)arg5 itemIndex:(int)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)dealloc;
 - (void)didEnterBackground:(id)arg1;
 - (void)doneButtonAction:(id)arg1;
 - (void)enableAirDropRequiredFeatures;
+- (BOOL)enableModernShareSheeet;
 - (void)generateSpecialPreviewPhotoForRequestID:(long long)arg1;
-- (void)handleImageItemProvider:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4;
-- (void)handleLivePhotoItemProvider:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4;
+- (void)handleImageItemProvider:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4 itemIndex:(int)arg5;
+- (void)handleLivePhotoItemProvider:(id)arg1 withAttachmentName:(id)arg2 description:(id)arg3 previewImage:(id)arg4 itemIndex:(int)arg5;
 - (void)handleOperationCallback:(struct __SFOperation *)arg1 event:(long long)arg2 withResults:(id)arg3;
 - (void)handleOtherItemProvider:(id)arg1 withDataType:(id)arg2 attachmentName:(id)arg3 description:(id)arg4 previewImage:(id)arg5;
 - (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
+- (id)indexSetToIndexPaths:(id)arg1 inSection:(long long)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)instructionsText;
 - (void)invalidate;
 - (BOOL)isBluetoothEnabled;
+- (BOOL)isDebugMode;
 - (BOOL)isTetheredModeEnabled;
 - (BOOL)isValidPayload:(id)arg1 toPerson:(id)arg2 invalidMessage:(id *)arg3;
 - (BOOL)isWifiEnabled;

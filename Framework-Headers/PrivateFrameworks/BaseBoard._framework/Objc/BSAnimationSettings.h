@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSXPCCoding-Protocol.h>
 #import <BaseBoard/NSCopying-Protocol.h>
@@ -30,13 +30,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) float speed;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) CAMediaTimingFunction *timingFunction;
+@property (readonly, nonatomic) CAMediaTimingFunction *timingFunction;
 
 + (id)settingsWithDuration:(double)arg1;
 + (id)settingsWithDuration:(double)arg1 delay:(double)arg2;
 + (id)settingsWithDuration:(double)arg1 delay:(double)arg2 timingFunction:(id)arg3;
 + (id)settingsWithDuration:(double)arg1 timingFunction:(id)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_initWithDuration:(double)arg1 delay:(double)arg2 frameInterval:(double)arg3 timingFunction:(id)arg4 speed:(float)arg5;
 - (void)_setDelay:(double)arg1;
 - (void)_setDuration:(double)arg1;
@@ -45,7 +46,6 @@
 - (void)_setTimingFunction:(id)arg1;
 - (void)applyToCAAnimation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;

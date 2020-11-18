@@ -7,11 +7,10 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
-@protocol CSIndexQueuableItem, OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CSIndexingQueue : NSObject
 {
-    BOOL _timerArmed;
     long long _mode;
     double _idleTime;
     double _idleTimeLeeway;
@@ -20,26 +19,20 @@
     NSObject<OS_dispatch_queue> *_coalescingQueue;
     NSObject<OS_dispatch_source> *_coalescingTimer;
     CDUnknownBlockType _notifyBlock;
-    double _lastPush;
-    id<CSIndexQueuableItem> _lastPushedItem;
 }
 
 @property (strong) NSObject<OS_dispatch_queue> *coalescingQueue; // @synthesize coalescingQueue=_coalescingQueue;
 @property (strong) NSObject<OS_dispatch_source> *coalescingTimer; // @synthesize coalescingTimer=_coalescingTimer;
 @property double idleTime; // @synthesize idleTime=_idleTime;
 @property double idleTimeLeeway; // @synthesize idleTimeLeeway=_idleTimeLeeway;
-@property double lastPush; // @synthesize lastPush=_lastPush;
-@property (strong, nonatomic) id<CSIndexQueuableItem> lastPushedItem; // @synthesize lastPushedItem=_lastPushedItem;
 @property unsigned long long maximumBatchSize; // @synthesize maximumBatchSize=_maximumBatchSize;
 @property long long mode; // @synthesize mode=_mode;
 @property (copy) CDUnknownBlockType notifyBlock; // @synthesize notifyBlock=_notifyBlock;
 @property (strong) NSMutableDictionary *queuedItems; // @synthesize queuedItems=_queuedItems;
-@property BOOL timerArmed; // @synthesize timerArmed=_timerArmed;
 
 - (void).cxx_destruct;
 - (void)_applicationWillResign:(id)arg1;
 - (void)_flushWithAppResigned:(BOOL)arg1 forced:(BOOL)arg2;
-- (void)_pushLastItem:(id)arg1 time:(double)arg2;
 - (void)_queueItems:(id)arg1;
 - (void)dealloc;
 - (void)flush;

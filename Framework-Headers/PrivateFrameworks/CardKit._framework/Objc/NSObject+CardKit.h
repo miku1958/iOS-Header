@@ -7,8 +7,6 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (CardKit)
-+ (id)crk_interactiveBehaviorPrecedenceOrder;
 - (id)crk_backingPunchout;
-- (unsigned long long)crk_intrinsicInteractiveBehavior;
 @end
 

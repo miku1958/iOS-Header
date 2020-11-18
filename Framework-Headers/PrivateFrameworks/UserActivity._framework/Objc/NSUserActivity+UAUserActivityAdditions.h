@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/NSUserActivity.h>
+#import <Foundation/NSUserActivity.h>
 
 @class NSUUID;
 
 @interface NSUserActivity (UAUserActivityAdditions)
 
 @property (readonly, copy) NSUUID *_originalUniqueIdentifier;
+@property (readonly) unsigned long long _userInfoChangeCount;
 
++ (BOOL)_registerAsProxyForApplication:(int)arg1 options:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (unsigned long long)_beginUserInfoUpdate:(id)arg1;
 - (id)_copyWithNewUUID;
+- (BOOL)_finishUserInfoUpdate;
 @end
 

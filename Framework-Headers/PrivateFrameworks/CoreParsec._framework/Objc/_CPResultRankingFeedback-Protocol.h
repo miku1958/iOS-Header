@@ -11,10 +11,6 @@
 @protocol _CPResultRankingFeedback <NSObject>
 
 @property (copy, nonatomic) NSArray *duplicateResults;
-@property (readonly, nonatomic) BOOL hasLocalResultPosition;
-@property (readonly, nonatomic) BOOL hasPersonalizationScore;
-@property (readonly, nonatomic) BOOL hasResult;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (copy, nonatomic) NSArray *hiddenResults;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned int localResultPosition;

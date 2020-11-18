@@ -29,9 +29,12 @@
 
 + (id)_labelNodeWithFontNamed:(id)arg1;
 + (id)_labelNodeWithFontTexture:(id)arg1 fontDataString:(id)arg2;
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
 + (id)labelNodeWithAttributedText:(id)arg1;
 + (id)labelNodeWithFontNamed:(id)arg1;
 + (id)labelNodeWithText:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)_didMakeBackingNode;
 - (id)_getTextSprites;
 - (void)_initialize;
@@ -39,8 +42,6 @@
 - (id)attributedString;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (struct CGRect)frame;

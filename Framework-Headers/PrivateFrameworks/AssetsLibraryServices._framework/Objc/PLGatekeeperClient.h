@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AssetsLibraryServices/PLAssetsdClientService-Protocol.h>
 
@@ -31,25 +31,24 @@
 
 + (id)securityPolicyErrorForMissingEntitlement:(id)arg1;
 + (id)sharedInstance;
+- (void)acceptMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addAssetWithURL:(id)arg1 toAlbumWithUUID:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)addGroupWithName:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)addLogMark:(id)arg1;
 - (id)allMomentsMetadataWithOutputPath:(id)arg1;
 - (void)analyzeAllMoments;
 - (void)analyzeMomentID:(id)arg1;
 - (void)analyzeMomentListID:(id)arg1;
+- (void)applySearchIndexGraphUpdates:(id)arg1 supportingData:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)applySearchIndexUpdates:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)assetAvailableForIdentifier:(id)arg1 success:(BOOL)arg2 error:(id)arg3;
 - (unsigned long long)attemptToPurgeSharedAssetsExceptForRecentlyViewedAssets;
 - (unsigned long long)attemptToPurgeSharedAssetsSpace:(unsigned long long)arg1;
 - (void)automaticallyDeleteEmptyAlbum:(id)arg1;
-- (void)backupChangeStore;
 - (void)batchSaveAssetsWithJobDictionaries:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)cancelCPLDownloadImageDataWithVirtualTaskIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelCPLDownloadWithContext:(id)arg1;
 - (void)cleanupForStoreDemoMode;
-- (BOOL)cleanupInvalidIgnoreDatesWithError:(id *)arg1;
 - (void)cleanupModelForDataMigration;
-- (void)clearAllBulletinsWithLastClearedRecordID:(unsigned long long)arg1;
-- (void)clearChangeStore;
 - (void)clearUserInfluencedMoments;
 - (void)computeFingerPrintsOfAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)createPhotoLibraryDatabase;
@@ -62,6 +61,7 @@
 - (id)dictionaryWithContentsOfMediaFilePath:(id)arg1;
 - (void)downloadCloudPhotoLibraryAsset:(id)arg1 resourceType:(unsigned long long)arg2 highPriority:(BOOL)arg3 trackCPLDownload:(BOOL)arg4 downloadIsTransient:(BOOL)arg5 proposedTaskIdentifier:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)downloadCloudSharedAsset:(id)arg1 withCloudPlaceholderKind:(unsigned long long)arg2 shouldPrioritize:(BOOL)arg3 shouldExtendTimer:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)downloadFinishedForIdentifier:(id)arg1 success:(BOOL)arg2 url:(id)arg3 data:(id)arg4 info:(id)arg5 error:(id)arg6;
 - (void)downloadStatusForIdentifier:(id)arg1 progress:(double)arg2 completed:(BOOL)arg3 data:(id)arg4 error:(id)arg5;
 - (void)dropSearchIndexWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dumpCloudPhotosStatusIncludingDaemon:(BOOL)arg1;
@@ -71,28 +71,26 @@
 - (void)enableCloudPhotos:(BOOL)arg1;
 - (void)enablePhotostreamsWithStreamID:(id)arg1;
 - (long long)estimatedOutputFileLengthForVideoURL:(id)arg1 fallbackFilePath:(id)arg2 exportPreset:(id)arg3 exportProperties:(id)arg4;
+- (void)fetchMomentShareFromShareURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (int)fileDescriptorForAssetURL:(id)arg1;
 - (int)fileDescriptorForAssetURL:(id)arg1 withAdjustments:(BOOL)arg2 outFileExtension:(id *)arg3;
 - (id)fileURLForAssetURL:(id)arg1 withAdjustments:(BOOL)arg2;
 - (id)fileURLForNewAssetWithType:(unsigned int)arg1 extension:(id)arg2;
 - (void)finalizeOTARestoreRecreatingAlbums:(BOOL)arg1;
+- (void)forceSyncMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)generateOnDemandResourcesForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)getCPLState;
-- (long long)getCurrentApplicationBadgeCount;
-- (id)getCurrentBulletins;
 - (int)getCurrentModelVersion;
 - (void)getCurrentTransferProgress:(CDUnknownBlockType)arg1;
-- (id)getInterestingMemoryBulletinInfoToBeScheduled;
 - (id)getKeywordsForAssetWithUUID:(id)arg1;
 - (void)getLibrarySizes:(CDUnknownBlockType)arg1;
 - (void)getLibrarySizesFromDB:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)getPhotoLibraryStoreXPCListenerEndpoint;
 - (void)getPhotosAndVideosCountWithHandler:(CDUnknownBlockType)arg1;
 - (id)getPhotosXPCEndpoint;
 - (void)getSandboxExtensionForPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSearchIndexProgress:(CDUnknownBlockType)arg1;
-- (id)getStatus;
 - (void)getSystemBudgetsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)getThumbnailImageDataForBulletinWithRecordID:(unsigned long long)arg1;
 - (id)getXPCTransactionStatus;
 - (BOOL)hasCompletedMomentAnalysis;
 - (BOOL)hasCompletedRestorePostProcessing;
@@ -110,30 +108,34 @@
 - (long long)migrateCloudFaces;
 - (id)momentAnalysisStatus;
 - (id)momentGenerationStatus;
+- (id)newAssetsdEndpoint;
+- (void)noteExpiringMomentShareWithUUIDs:(id)arg1 thumbnailImageData:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4;
 - (void)noteInterestingMemoryNotificationForColletionID:(id)arg1 keyAssetUUID:(id)arg2 notificationTitle:(id)arg3 notificationSubtitle:(id)arg4 notificationDeliveryDate:(id)arg5;
 - (void)noteInterestingMemoryNotificationViewedForColletionID:(id)arg1;
-- (void)noteUserRespondedToMemoriesBulletin;
+- (void)noteSuggestedCMMNotificationForColletionID:(id)arg1 notificationDeliveryDate:(id)arg2;
+- (void)noteSuggestedCMMViewedForColletionID:(id)arg1;
+- (void)noteUserRespondedToMemoriesNotification;
 - (void)overrideSystemBudgetsForSyncSession:(BOOL)arg1 forSystemBudgets:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)pauseICloudPhotos:(BOOL)arg1 reason:(short)arg2;
 - (void)pauseICloudPhotos:(BOOL)arg1 reason:(short)arg2 waitForReply:(BOOL)arg3;
 - (id)personInfoDictionaryForPersonID:(id)arg1;
-- (void)postBulletinsImmediately:(id)arg1;
 - (void)prefetchResourcesForMemories:(id)arg1;
 - (void)prepareRevertToOriginalForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)previewRenderedContentURLAtIndex:(unsigned long long)arg1;
 - (void)privateDownloadCloudPhotoLibraryAsset:(id)arg1 resourceType:(unsigned long long)arg2 highPriority:(BOOL)arg3;
 - (void)pruneAssets:(id)arg1 resourceTypes:(id)arg2;
+- (void)publishMomentShare:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)purgeExpiredOutboundSharingAssets;
 - (unsigned long long)purgeableSharedAssetsSpace;
+- (void)queryParticipantsWithEmails:(id)arg1 phoneNumbers:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)rampingRequestForResourceType:(unsigned long long)arg1 numRequested:(unsigned long long)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)rebuildAllThumbnails;
 - (void)rebuildCloudFeed;
 - (void)rebuildMomentLists;
-- (void)rebuildMomentsIncremental:(BOOL)arg1;
+- (void)rebuildMomentsSynchronous:(BOOL)arg1 incremental:(BOOL)arg2 deleteAllMoments:(BOOL)arg3;
 - (void)rebuildSearchIndexWithCompletion:(CDUnknownBlockType)arg1;
 - (void)recoverAssetsInInconsistentCloudState;
 - (void)recoverFromCrashIfNeeded;
-- (void)registerSceneTaxonomySHA:(id)arg1;
 - (void)reloadMomentGenerationOptions;
 - (void)removeAnalysisRecordsForDeletedAssets:(id)arg1 forWorkerType:(short)arg2;
 - (void)removeLocalDuplicates;
@@ -146,10 +148,12 @@
 - (void)requestCPLDownloadImageDataForAssets:(id)arg1 format:(int)arg2 doneTokens:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)requestImageDataForAsset:(id)arg1 format:(int)arg2 allowPlaceholder:(BOOL)arg3 wantURLOnly:(BOOL)arg4 networkAccessAllowed:(BOOL)arg5 trackCPLDownload:(BOOL)arg6 handler:(CDUnknownBlockType)arg7;
 - (void)requestMasterThumbnailForAssetUUID:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)requestSandboxExtensionForMedia;
 - (void)requestVideoPlaybackURLForCloudSharedAsset:(id)arg1 mediaAssetType:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestVideoURLForAsset:(id)arg1 format:(int)arg2 networkAccessAllowed:(BOOL)arg3 streamingAllowed:(BOOL)arg4 restrictToPlayable:(BOOL)arg5 trackCPLDownload:(BOOL)arg6 handler:(CDUnknownBlockType)arg7;
 - (void)resetDupesAnalysis;
 - (BOOL)resetPendingAnalysisStatesWithError:(id *)arg1;
+- (void)resourceURLReceivedForIdentifier:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;
 - (void)revertToOriginalForAsset:(id)arg1;
 - (id)sandboxExtensionForAssetResourcePath:(id)arg1;
 - (void)saveAssetWithJobDictionary:(id)arg1 handler:(CDUnknownBlockType)arg2 imageSurface:(void *)arg3 previewImageSurface:(void *)arg4;
@@ -172,7 +176,7 @@
 - (void)updateSharedAlbumsCachedServerConfigurationLimits;
 - (void)updateThumbnailsForPhotos:(id)arg1 waitForReply:(BOOL)arg2 assignNewIndex:(BOOL)arg3 forceRefresh:(BOOL)arg4;
 - (void)updateUnverifiedFaceCountThreshold;
-- (void)userViewedBulletinWithRecordID:(unsigned long long)arg1;
+- (void)userViewedNotificationWithAlbumCloudGUID:(id)arg1;
 - (void)waitForSearchIndexExistenceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)waitUntilConnectionSendsAllMessages;
 

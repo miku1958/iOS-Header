@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIKeyboardCandidateGridCollectionViewControllerDelegate-Protocol.h>
-#import <UIKit/UIKeyboardCandidateList-Protocol.h>
-#import <UIKit/UIKeyboardCandidateListDelegate-Protocol.h>
-#import <UIKit/UIKeyboardCandidateRowViewControllerDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateGridCollectionViewControllerDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateList-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateListDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateRowViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString, TIKeyboardCandidateResultSet, UIImageView, UIKBBackdropView, UIKeyboardCandidateGridCollectionViewController, UIKeyboardCandidateGridHeader, UIKeyboardCandidateRowViewController, UIKeyboardCandidateSortControl;
 @protocol UICollectionViewDelegate, UIKeyboardCandidateListDelegate;

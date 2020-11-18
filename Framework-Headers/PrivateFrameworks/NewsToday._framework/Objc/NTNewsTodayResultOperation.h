@@ -15,24 +15,28 @@
     NTCatchUpOperationForYouFetchInfo *_forYouFetchInfo;
     NTTodayResults *_resultTodayResults;
     NSDictionary *_resultAssetHandlesByAssetID;
+    NSObject *_resultAssetsHoldToken;
     NTPBTodayResultOperationFetchInfo *_resultFetchInfo;
-    NSObject *_resultHoldToken;
+    NSDictionary *_todayConfigOperationHeldRecordsByType;
 }
 
 @property (copy, nonatomic) NSDate *filterDate; // @synthesize filterDate=_filterDate;
 @property (copy, nonatomic) NTCatchUpOperationForYouFetchInfo *forYouFetchInfo; // @synthesize forYouFetchInfo=_forYouFetchInfo;
 @property (nonatomic) BOOL lastOperationFailedToFinish; // @synthesize lastOperationFailedToFinish=_lastOperationFailedToFinish;
 @property (copy, nonatomic) NSDictionary *resultAssetHandlesByAssetID; // @synthesize resultAssetHandlesByAssetID=_resultAssetHandlesByAssetID;
+@property (strong, nonatomic) NSObject *resultAssetsHoldToken; // @synthesize resultAssetsHoldToken=_resultAssetsHoldToken;
 @property (copy, nonatomic) NTPBTodayResultOperationFetchInfo *resultFetchInfo; // @synthesize resultFetchInfo=_resultFetchInfo;
-@property (strong, nonatomic) NSObject *resultHoldToken; // @synthesize resultHoldToken=_resultHoldToken;
 @property (copy, nonatomic) NTTodayResults *resultTodayResults; // @synthesize resultTodayResults=_resultTodayResults;
+@property (strong, nonatomic) NSDictionary *todayConfigOperationHeldRecordsByType; // @synthesize todayConfigOperationHeldRecordsByType=_todayConfigOperationHeldRecordsByType;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_assembleQueueDescriptorsWithConfig:(id)arg1 allowOnlyWatchEligibleSections:(BOOL)arg2 respectsWidgetVisibleSectionsLimit:(BOOL)arg3 personalizationTreatment:(id)arg4 aggregateStore:(id)arg5 appConfiguration:(id)arg6 todayData:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)_fetchTodayResultsWithFetchHelper:(id)arg1 maximumCachedAgeForForYou:(unsigned long long)arg2 aggregator:(id)arg3 appConfiguration:(id)arg4 feedPersonalizer:(id)arg5 todayData:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_finalizeTodayResultsWithSectionDescriptors:(id)arg1 catchUpOperationResultsBySectionDescriptor:(id)arg2 itemIDsOfLeadingCells:(id)arg3 slotAllocationByDynamicSlotItemID:(id)arg4 appConfiguration:(id)arg5 feedPersonalizer:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_registerForYouFetchWithForYouFetchInfo:(id)arg1;
 - (id)_sectionCTRsWithTodayConfig:(id)arg1 personalizationTreatment:(id)arg2 aggregateStore:(id)arg3;
+- (BOOL)_useForegroundMinimumUpdateInterval;
 - (id)init;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

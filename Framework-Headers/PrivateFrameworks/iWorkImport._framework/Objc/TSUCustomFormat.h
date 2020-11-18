@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) unsigned long long conditionCount;
 @property (readonly, nonatomic) NSMutableArray *conditionList; // @synthesize conditionList=_conditionList;
+@property (readonly, nonatomic) BOOL conditionsAllowed;
 @property (readonly, nonatomic) NSString *currencyCode;
 @property (readonly, nonatomic) TSUCustomFormatData *defaultFormatData; // @synthesize defaultFormatData=_defaultFormatData;
 @property (readonly, nonatomic) NSString *formatName; // @synthesize formatName=_formatName;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)p_addConditionOfType:(int)arg1 value:(double)arg2 data:(id)arg3;
 - (BOOL)p_isEqual:(id)arg1 matchingFullName:(BOOL)arg2;
 - (void)p_makeFormatNameStemAndTag;
+- (void)p_setFormatType:(int)arg1;
 
 @end
 

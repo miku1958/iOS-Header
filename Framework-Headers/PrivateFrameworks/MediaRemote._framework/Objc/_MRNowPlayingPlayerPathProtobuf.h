@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) BOOL hasClient;
 @property (readonly, nonatomic) BOOL hasOrigin;
 @property (readonly, nonatomic) BOOL hasPlayer;
+@property (readonly, nonatomic) BOOL isLocal;
 @property (strong, nonatomic) _MROriginProtobuf *origin; // @synthesize origin=_origin;
 @property (strong, nonatomic) _MRNowPlayingPlayerProtobuf *player; // @synthesize player=_player;
 

@@ -19,6 +19,7 @@
 
 + (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (BOOL)allowsCachingOfResults;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (id)initWithTargetedCGImage:(struct CGImage *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithTargetedCIImage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -26,9 +27,9 @@
 - (id)initWithTargetedImageData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithTargetedImageURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
 - (id)sequencedRequestPreviousObservationsKey;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

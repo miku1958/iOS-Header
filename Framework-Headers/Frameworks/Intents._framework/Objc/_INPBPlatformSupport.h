@@ -7,33 +7,34 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBPlatformSupport-Protocol.h>
 
-@class NSString, PBUnknownFields;
+@class NSString;
 
-@interface _INPBPlatformSupport : PBCodable <NSCopying>
+@interface _INPBPlatformSupport : PBCodable <_INPBPlatformSupport, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSString *_minimumOsVersion;
-    int _supportedPlatform;
     struct {
         unsigned int supportedPlatform:1;
     } _has;
+    int _supportedPlatform;
+    NSString *_minimumOsVersion;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasMinimumOsVersion;
 @property (nonatomic) BOOL hasSupportedPlatform;
-@property (strong, nonatomic) NSString *minimumOsVersion; // @synthesize minimumOsVersion=_minimumOsVersion;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *minimumOsVersion; // @synthesize minimumOsVersion=_minimumOsVersion;
+@property (readonly) Class superclass;
 @property (nonatomic) int supportedPlatform; // @synthesize supportedPlatform=_supportedPlatform;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 - (void).cxx_destruct;
 - (int)StringAsSupportedPlatform:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)supportedPlatformAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

@@ -60,6 +60,7 @@
 - (void)_showActivitySpinnerInToolbar:(id)arg1;
 - (id)_spinnerView;
 - (void)_startRemoteUILoaderWithRequest:(id)arg1;
+- (id)initWithAccountManager:(id)arg1;
 - (id)initWithAppleAccount:(id)arg1 grandSlamSigner:(id)arg2;
 - (void)loadRemoteUI;
 - (void)loader:(id)arg1 didFailWithError:(id)arg2;

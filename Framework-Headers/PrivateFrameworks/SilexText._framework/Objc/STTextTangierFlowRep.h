@@ -34,12 +34,17 @@
 - (void).cxx_destruct;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
+- (id)accessibilityNextTextNavigationElement;
+- (id)accessibilityPreviousTextNavigationElement;
+- (BOOL)accessibilitySupportsTextSelection;
+- (unsigned long long)accessibilityTraits;
 - (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 isTail:(BOOL)arg2 selectionType:(int)arg3;
 - (void)dealloc;
 - (BOOL)forceTiling;
 - (id)hitRep:(struct CGPoint)arg1 withGesture:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
 - (id)interactiveCanvasController;
 - (id)itemsForCustomRotor:(id)arg1;
+- (id)orderedSiblings;
 - (BOOL)p_doesRep:(id)arg1 containCharIndex:(unsigned long long)arg2 isStart:(BOOL)arg3;
 - (BOOL)preventClipToColumn;
 - (id)repForCharIndex:(unsigned long long)arg1 isStart:(BOOL)arg2;
@@ -47,6 +52,8 @@
 - (id)siblings;
 - (id)storage;
 - (id)supportedCustomRotors;
+- (id)sxaxNameForEditRotorAction:(id)arg1;
+- (id)sxaxSupportedEditRotorActions;
 - (BOOL)updateFromVisualPosition;
 - (Class)wpEditorClass;
 

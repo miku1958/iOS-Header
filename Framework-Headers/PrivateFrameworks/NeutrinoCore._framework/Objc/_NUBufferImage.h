@@ -29,6 +29,7 @@
 
 - (BOOL)copyBufferStorage:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toPoint:(CDStruct_912cb5d2)arg3;
 - (BOOL)copySurfaceStorage:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toPoint:(CDStruct_912cb5d2)arg3 device:(id)arg4;
+- (id)debugQuickLookObject;
 - (void)readBufferRegion:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)writeBufferRegion:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 

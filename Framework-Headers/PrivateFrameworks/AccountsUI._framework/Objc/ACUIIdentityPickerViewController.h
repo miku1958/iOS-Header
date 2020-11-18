@@ -15,7 +15,9 @@
     NSString *_property;
     NSArray *_identities;
     NSArray *_emailAddresses;
-    BOOL _allowEditing;
+    BOOL _userInteractiveSwitch;
+    BOOL _userInteractiveIdentityList;
+    BOOL _allowIdentitySelectionForDisabledSwitch;
 }
 
 @property (readonly, nonatomic) NSString *property; // @synthesize property=_property;

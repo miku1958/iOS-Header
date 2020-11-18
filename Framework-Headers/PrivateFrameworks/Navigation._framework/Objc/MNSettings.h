@@ -18,6 +18,7 @@
     BOOL _muteSpeechOverride;
     BOOL _speechEnabled;
     unsigned long long _maxAlternateRoutesCount;
+    BOOL _isConnectedToCarplay;
     BOOL _drivingVoiceGuidance;
     BOOL _walkingVoiceGuidance;
     BOOL _beepBeforeInstruction;
@@ -44,6 +45,7 @@
 @property (readonly, nonatomic) long long fakeTrafficIncidentAlert; // @synthesize fakeTrafficIncidentAlert=_fakeTrafficIncidentAlert;
 @property (readonly, nonatomic) double initialRequestDelay; // @synthesize initialRequestDelay=_initialRequestDelay;
 @property (readonly, nonatomic) double initialTraceSpeedMultiplier; // @synthesize initialTraceSpeedMultiplier=_initialTraceSpeedMultiplier;
+@property (readonly, nonatomic) BOOL isConnectedToCarplay; // @synthesize isConnectedToCarplay=_isConnectedToCarplay;
 @property (readonly, nonatomic) BOOL isTracePlaybackCameraTestMode; // @synthesize isTracePlaybackCameraTestMode=_isTracePlaybackCameraTestMode;
 @property (readonly, nonatomic) unsigned long long maxAlternateRoutesCount; // @synthesize maxAlternateRoutesCount=_maxAlternateRoutesCount;
 @property (readonly, nonatomic) BOOL muteSpeechOverride; // @synthesize muteSpeechOverride=_muteSpeechOverride;

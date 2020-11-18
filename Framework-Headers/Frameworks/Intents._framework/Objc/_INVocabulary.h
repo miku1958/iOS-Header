@@ -7,11 +7,13 @@
 #import <objc/NSObject.h>
 
 @class INVocabularyUpdater, _INVocabularyValidator;
+@protocol OS_dispatch_queue;
 
 @interface _INVocabulary : NSObject
 {
     INVocabularyUpdater *_vocabularyUpdater;
     _INVocabularyValidator *_validator;
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 + (void)enumerateVocabularyUsingBlock:(CDUnknownBlockType)arg1;

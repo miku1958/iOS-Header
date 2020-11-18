@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSMachPortTaskNameRight;
 
@@ -19,10 +19,10 @@
 @property (readonly, nonatomic) double totalElapsedTime;
 @property (readonly, nonatomic) double totalElapsedUserTime;
 
+- (void).cxx_destruct;
 - (double)_elapsedCPUTime;
 - (void)_getApplicationCPUTimesForUser:(double *)arg1 system:(double *)arg2 idle:(double *)arg3;
 - (void)_hostwideUserElapsedCPUTime:(double *)arg1 systemElapsedCPUTime:(double *)arg2 idleElapsedCPUTime:(double *)arg3;
-- (void)dealloc;
 - (id)descriptionForCrashReport;
 - (id)initWithTaskNameRight:(id)arg1;
 - (void)update;

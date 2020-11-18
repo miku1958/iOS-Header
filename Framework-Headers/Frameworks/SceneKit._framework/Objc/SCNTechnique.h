@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -19,6 +19,7 @@
     NSMutableDictionary *_valueForSymbol;
     SCNOrderedDictionary *_animations;
     NSMutableDictionary *_bindings;
+    NSArray *_passes;
 }
 
 @property (readonly) NSArray *animationKeys;
@@ -41,6 +42,7 @@
 - (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2 pausedByNode:(BOOL)arg3;
 - (id)_scnAnimationForKey:(id)arg1;
 - (id)_scnBindings;
+- (void)_setupPasses;
 - (id)_symbolsAssignedValues;
 - (void)_syncObjCAnimations;
 - (void)addAnimation:(id)arg1;
@@ -62,9 +64,11 @@
 - (BOOL)isAnimationForKeyPaused:(id)arg1;
 - (BOOL)isPausedOrPausedByInheritance;
 - (id)objectForKeyedSubscript:(id)arg1;
+- (id)passAtIndex:(unsigned long long)arg1;
 - (void)pauseAnimationForKey:(id)arg1;
 - (id)presentationInstance;
 - (void)removeAllAnimations;
+- (void)removeAllBindings;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;

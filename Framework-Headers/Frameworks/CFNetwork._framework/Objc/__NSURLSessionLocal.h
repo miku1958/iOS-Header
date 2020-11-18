@@ -24,13 +24,10 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_outstandingTasks;
     NSObject<OS_dispatch_queue> *_invalidateQueue;
     CDUnknownBlockType _invalidateCallback;
-    const struct XURLCache *_xCache;
     const struct XCookieStorage *_xCookies;
     const struct XCredentialStorage *_xCreds;
-    BOOL _xCacheInitComplete;
     BOOL _xCookiesInitComplete;
     BOOL _xCredsInitComplete;
-    struct mutex _xCacheStorageInitLock;
     struct mutex _xCookieStorageInitLock;
     struct mutex _xCredStorageInitLock;
     NSArray *_localProtocolClassesForDefaultSession;
@@ -78,8 +75,6 @@ __attribute__((visibility("hidden")))
 - (const struct XCookieStorage *)_createXCookieStorage0;
 - (const struct XCredentialStorage *)_createXCredentialStorage;
 - (const struct XCredentialStorage *)_createXCredentialStorage0;
-- (const struct XURLCache *)_createXURLCache;
-- (const struct XURLCache *)_createXURLCache0;
 - (id)_delegateForTask:(id)arg1;
 - (void)_flushOrResetStorage:(CDUnknownBlockType)arg1 reset:(unsigned char)arg2;
 - (void)_getCookieHeadersForTask:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -109,6 +104,7 @@ __attribute__((visibility("hidden")))
 - (struct GlueTube *)_withConnectionCache_getPendingTubeForProtocol:(struct MetaConnectionCacheClient *)arg1 withKey:(const struct HTTPConnectionCacheKey *)arg2 scheduling:(const struct CoreSchedulingSet *)arg3;
 - (void)_withConnectionCache_setCurrentSSLMethod:(struct __CFString *)arg1 forKey:(const struct HTTPConnectionCacheKey *)arg2 scheduling:(const struct CoreSchedulingSet *)arg3;
 - (void)_withConnectionCache_setIOFallbackForKey:(const struct HTTPConnectionCacheKey *)arg1 scheduling:(const struct CoreSchedulingSet *)arg2;
+- (void)_withXURLCache:(CDUnknownBlockType)arg1;
 - (void)addConnectionlessTask:(id)arg1;
 - (id)connToTask:(id)arg1;
 - (const struct XCookieStorage *)copyBaseStorageForRequest:(struct _CFURLRequest *)arg1;
@@ -122,7 +118,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)nextSeed;
 - (void)removeConnectionlessTask:(id)arg1;
 - (void)replaceTask:(id)arg1 withTask:(id)arg2;
-- (Class)sessionConnectionClass;
+- (Class)sessionConnectionClass:(id)arg1;
 - (void)task:(id)arg1 terminatedConnection:(id)arg2;
 - (id)taskForClass:(Class)arg1 request:(id)arg2 uploadFile:(id)arg3 bodyData:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)uploadTaskForRequest:(id)arg1 uploadFile:(id)arg2 bodyData:(id)arg3 completion:(CDUnknownBlockType)arg4;

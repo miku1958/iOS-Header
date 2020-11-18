@@ -11,6 +11,7 @@
 @class MTKMeshBufferAllocator, NSMutableOrderedSet, NSString;
 @protocol MDLMeshBufferAllocator, MTLBuffer;
 
+__attribute__((visibility("hidden")))
 @interface MTKMeshBufferZone : NSObject <MDLMeshBufferZone>
 {
     NSMutableOrderedSet *_buffers;

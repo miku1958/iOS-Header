@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor;
+@class CLKDevice, UIColor;
 
 @interface NTKChronoPalette : NSObject
 {
     unsigned long long _paletteColor;
     BOOL _showsShadows;
+    CLKDevice *_device;
     UIColor *_backgroundColor;
     UIColor *_foregroundColor;
     UIColor *_tickColor;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) UIColor *chronoHandColor; // @synthesize chronoHandColor=_chronoHandColor;
 @property (readonly, nonatomic) UIColor *dateComplicationColor; // @synthesize dateComplicationColor=_dateComplicationColor;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (readonly, nonatomic) UIColor *glyphBackgroundColor; // @synthesize glyphBackgroundColor=_glyphBackgroundColor;
 @property (readonly, nonatomic) UIColor *glyphColor; // @synthesize glyphColor=_glyphColor;
@@ -41,9 +43,10 @@
 @property (readonly, nonatomic) UIColor *tickColor; // @synthesize tickColor=_tickColor;
 
 + (id)interpolationFromPalette:(id)arg1 toPalette:(id)arg2 fraction:(double)arg3;
-+ (id)paletteWithColor:(unsigned long long)arg1;
++ (id)paletteForDevice:(id)arg1 withColor:(unsigned long long)arg2;
 - (void).cxx_destruct;
-- (id)_initWithColor:(unsigned long long)arg1;
+- (id)_initForDevice:(id)arg1 withColor:(unsigned long long)arg2;
+- (id)initForDevice:(id)arg1;
 
 @end
 

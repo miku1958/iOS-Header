@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)p_replaceCell:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)popLastCell;
 - (void)saveToArchiver:(id)arg1;
+- (id)shallowAddCell:(id)arg1;
 
 @end
 

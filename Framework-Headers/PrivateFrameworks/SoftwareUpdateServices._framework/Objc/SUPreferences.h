@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSNumber, NSString;
+@class NSDate, NSNumber, NSString;
+@protocol SUPreferencesObserver;
 
 @interface SUPreferences : NSObject
 {
+    id<SUPreferencesObserver> _observer;
     BOOL _disableManagedRequest;
     BOOL _disableUserWiFiOnlyPeriod;
     BOOL _disableBuildNumberComparison;
@@ -27,9 +29,30 @@
     NSNumber *_unmetConstraints;
     NSNumber *_mandatorySUFlags;
     NSString *_requestedPMV;
+    NSDate *_autoSUStart;
+    NSDate *_autoSUEnd;
+    NSDate *_autoSUUnlockStart;
+    NSDate *_autoSUUnlockEnd;
+    NSNumber *_autoSUStartDelta;
+    NSNumber *_autoSUEndDelta;
+    NSNumber *_autoSUUnlockStartDelta;
+    NSNumber *_autoSUUnlockEndDelta;
+    BOOL _autoUpdateForceOn;
+    BOOL _autoUpdateForceOff;
+    BOOL _automaticUpdateV2Enabled;
+    BOOL _backgroundDLKnownBuilds;
+    NSNumber *_bannerDelay;
 }
 
 @property (readonly, nonatomic) BOOL allowSameBuildUpdates; // @synthesize allowSameBuildUpdates=_allowSameBuildUpdates;
+@property (readonly, nonatomic) NSNumber *autoSUEndDelta; // @synthesize autoSUEndDelta=_autoSUEndDelta;
+@property (readonly, nonatomic) NSNumber *autoSUStartDelta; // @synthesize autoSUStartDelta=_autoSUStartDelta;
+@property (readonly, nonatomic) NSNumber *autoSUUnlockEndDelta; // @synthesize autoSUUnlockEndDelta=_autoSUUnlockEndDelta;
+@property (readonly, nonatomic) NSNumber *autoSUUnlockStartDelta; // @synthesize autoSUUnlockStartDelta=_autoSUUnlockStartDelta;
+@property (readonly, nonatomic) BOOL autoUpdateForceOff; // @synthesize autoUpdateForceOff=_autoUpdateForceOff;
+@property (readonly, nonatomic) BOOL autoUpdateForceOn; // @synthesize autoUpdateForceOn=_autoUpdateForceOn;
+@property (readonly, nonatomic) BOOL backgroundDLKnownBuilds; // @synthesize backgroundDLKnownBuilds=_backgroundDLKnownBuilds;
+@property (readonly, nonatomic) NSNumber *bannerDelay; // @synthesize bannerDelay=_bannerDelay;
 @property (readonly, nonatomic, getter=isAutoDownloadDisabled) BOOL disableAutoDownload; // @synthesize disableAutoDownload=_disableAutoDownload;
 @property (readonly, nonatomic, getter=isAutoSUDisabled) BOOL disableAutoSU; // @synthesize disableAutoSU=_disableAutoSU;
 @property (readonly, nonatomic) BOOL disableAvailabilityAlerts; // @synthesize disableAvailabilityAlerts=_disableAvailabilityAlerts;
@@ -38,7 +61,9 @@
 @property (readonly, nonatomic) BOOL disableManagedRequest; // @synthesize disableManagedRequest=_disableManagedRequest;
 @property (readonly, nonatomic) BOOL disableUserWiFiOnlyPeriod; // @synthesize disableUserWiFiOnlyPeriod=_disableUserWiFiOnlyPeriod;
 @property (readonly, nonatomic) BOOL forceFullReplacement; // @synthesize forceFullReplacement=_forceFullReplacement;
+@property (nonatomic, setter=enableAutomaticUpdateV2:) BOOL isAutomaticUpdateV2Enabled; // @synthesize isAutomaticUpdateV2Enabled=_automaticUpdateV2Enabled;
 @property (readonly, nonatomic) NSNumber *mandatorySUFlags; // @synthesize mandatorySUFlags=_mandatorySUFlags;
+@property (nonatomic) id<SUPreferencesObserver> observer; // @synthesize observer=_observer;
 @property (readonly, nonatomic) NSString *requestedPMV; // @synthesize requestedPMV=_requestedPMV;
 @property (readonly, nonatomic) BOOL scanWeeklyInternally; // @synthesize scanWeeklyInternally=_scanWeeklyInternally;
 @property (readonly, nonatomic) BOOL shouldDelayInMinutes; // @synthesize shouldDelayInMinutes=_shouldDelayInMinutes;
@@ -51,11 +76,14 @@
 - (id)_copyNumberPreferenceForKey:(id)arg1;
 - (void *)_copyPreferenceForKey:(struct __CFString *)arg1 ofType:(unsigned long long)arg2;
 - (id)_copyStringPreferenceForKey:(id)arg1;
+- (id)_createDatePreferencesForKey:(id)arg1;
 - (BOOL)_getBooleanPreferenceForKey:(id)arg1 withDefaultValue:(BOOL)arg2;
 - (void)_loadPreferences;
 - (id)_mandatorySUFlagsForPreferences;
+- (void)_setBooleanPreferenceForKey:(id)arg1 value:(BOOL)arg2;
 - (void)dealloc;
 - (id)init;
+- (BOOL)isKeySetInPreferences:(id)arg1;
 - (void)reload;
 
 @end

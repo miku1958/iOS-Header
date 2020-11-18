@@ -16,6 +16,7 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (id)_backingSnippetViewController;
+- (id)_legacyCardSectionViewController;
 - (void)_setVirgin:(BOOL)arg1;
 - (id)attributedSubtitle;
 - (void)endEditingAndCorrect:(BOOL)arg1;

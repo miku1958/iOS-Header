@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIEditable-Protocol.h>
+#import <UIKitCore/UIEditable-Protocol.h>
 
 @class UIColor, UIScrollView;
 

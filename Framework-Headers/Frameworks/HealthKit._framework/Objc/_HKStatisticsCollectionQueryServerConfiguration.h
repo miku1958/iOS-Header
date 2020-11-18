@@ -17,13 +17,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _mergeStrategy;
 }
 
-@property (strong, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
-@property (strong, nonatomic) NSDateComponents *intervalComponents; // @synthesize intervalComponents=_intervalComponents;
+@property (copy, nonatomic) NSDate *anchorDate; // @synthesize anchorDate=_anchorDate;
+@property (copy, nonatomic) NSDateComponents *intervalComponents; // @synthesize intervalComponents=_intervalComponents;
 @property (nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property (nonatomic) unsigned long long options; // @synthesize options=_options;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 

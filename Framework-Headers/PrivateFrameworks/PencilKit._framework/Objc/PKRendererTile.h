@@ -6,36 +6,36 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class NSArray, PKRendererController;
+@class NSArray;
+@protocol PKRendererControllerProtocol;
 
 @interface PKRendererTile : CALayer
 {
     _Atomic long long _renderCount;
     BOOL _outOfDate;
-    PKRendererController *_rendererController;
+    id<PKRendererControllerProtocol> _rendererController;
     long long _level;
-    long long _yOffset;
     NSArray *_renderedStrokes;
+    struct CGPoint _offset;
     struct CGRect _drawingFrame;
 }
 
 @property (readonly, nonatomic) struct CGRect drawingFrame; // @synthesize drawingFrame=_drawingFrame;
 @property (readonly, nonatomic) long long level; // @synthesize level=_level;
+@property (readonly, nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
 @property BOOL outOfDate; // @synthesize outOfDate=_outOfDate;
 @property (readonly) long long renderCount;
-@property (strong, nonatomic) NSArray *renderedStrokes; // @synthesize renderedStrokes=_renderedStrokes;
-@property (weak) PKRendererController *rendererController; // @synthesize rendererController=_rendererController;
-@property (readonly, nonatomic) long long yOffset; // @synthesize yOffset=_yOffset;
+@property (copy, nonatomic) NSArray *renderedStrokes; // @synthesize renderedStrokes=_renderedStrokes;
+@property (weak) id<PKRendererControllerProtocol> rendererController; // @synthesize rendererController=_rendererController;
 
-+ (struct CGRect)layerFrameForLevel:(long long)arg1 yOffset:(long long)arg2 frameScale:(double)arg3;
-+ (double)tileHeightForLevel:(long long)arg1 scale:(double)arg2;
++ (struct CGRect)layerFrameForLevel:(long long)arg1 offset:(struct CGPoint)arg2;
++ (double)tileSizeForLevel:(long long)arg1;
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)description;
-- (id)initWithLevel:(long long)arg1 yOffset:(long long)arg2 frameScale:(double)arg3;
-- (id)splitForScale:(double)arg1;
+- (id)initWithLevel:(long long)arg1 offset:(struct CGPoint)arg2 drawingScale:(double)arg3;
 - (void)update;
 - (void)updateFrameForScale:(double)arg1;
 

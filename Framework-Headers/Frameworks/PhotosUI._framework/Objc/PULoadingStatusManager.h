@@ -9,7 +9,6 @@
 @class NSMapTable, NSMutableDictionary, NSMutableSet;
 @protocol PULoadingStatusManagerDelegate;
 
-__attribute__((visibility("hidden")))
 @interface PULoadingStatusManager : NSObject
 {
     struct {

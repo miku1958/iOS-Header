@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) struct _NSRange textRange; // @synthesize textRange=_textRange;
 
 - (void).cxx_destruct;
+- (BOOL)_accessibilityIsScannerElement;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)accessibilityActivate;
 - (struct CGRect)accessibilityFrame;

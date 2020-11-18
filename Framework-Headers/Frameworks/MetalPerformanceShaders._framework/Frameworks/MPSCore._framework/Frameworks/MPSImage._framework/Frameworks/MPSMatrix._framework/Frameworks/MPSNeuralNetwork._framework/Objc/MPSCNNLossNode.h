@@ -21,6 +21,7 @@
 - (id)gradientFilterWithSources:(id)arg1;
 - (id)initWithSource:(id)arg1 lossDescriptor:(id)arg2;
 - (struct FilterGraphNode *)newFilterNode;
+- (id)trainingGraphWithSourceGradient:(id)arg1 nodeHandler:(CDUnknownBlockType)arg2;
 
 @end
 

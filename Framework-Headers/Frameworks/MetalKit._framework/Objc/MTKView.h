@@ -63,9 +63,9 @@
 
 + (Class)layerClass;
 - (void).cxx_destruct;
+- (void)__initCommon;
 - (void)draw;
 - (void)encodeWithCoder:(id)arg1;
-- (void)initCommon;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 device:(id)arg2;

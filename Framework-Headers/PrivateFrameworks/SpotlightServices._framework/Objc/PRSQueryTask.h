@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <SpotlightServices/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSDictionary, NSString, PRSSearchFeedback, PRSSearchSession;
 @protocol OS_dispatch_queue, PRSSearchQueryHandler;
 
-@interface PRSQueryTask : NSObject
+@interface PRSQueryTask : NSObject <NSSecureCoding>
 {
     BOOL _started;
     BOOL _canceled;
@@ -48,10 +50,13 @@
 
 + (void)initialize;
 + (void)resumeDecoding;
++ (BOOL)supportsSecureCoding;
 + (void)suspendDecoding;
 - (void).cxx_destruct;
 - (void)cancel;
+- (void)encodeWithCoder:(id)arg1;
 - (id)feedbackQueryIdentifier;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithSession:(id)arg1 handler:(id)arg2 queue:(id)arg3 feedback:(id)arg4;
 - (void)invalidateHandler;
 - (void)resume;

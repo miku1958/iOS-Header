@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPrintPaper.h>
+#import <UIKitCore/UIPrintPaper.h>
 
 __attribute__((visibility("hidden")))
 @interface UICreatePDFActivityPrintPaper : UIPrintPaper

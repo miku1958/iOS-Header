@@ -12,39 +12,52 @@
 
 @interface CEMSecurityFDEFileVaultDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadEnable;
+    NSNumber *_payloadDefer;
+    NSNumber *_payloadUserEntersMissingInfo;
+    NSNumber *_payloadUseRecoveryKey;
+    NSNumber *_payloadShowRecoveryKey;
+    NSString *_payloadOutputPath;
+    NSString *_payloadUsername;
+    NSString *_payloadPassword;
+    NSNumber *_payloadUseKeychain;
+    NSNumber *_payloadDeferForceAtUserLoginMaxBypassAttempts;
+    NSNumber *_payloadDeferDontAskAtUserLogout;
+    NSString *_payloadCertificateIdentifier;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *payloadCertificateIdentifier;
-@property (readonly, nonatomic) NSNumber *payloadDefer;
-@property (readonly, nonatomic) NSNumber *payloadDeferDontAskAtUserLogout;
-@property (readonly, nonatomic) NSNumber *payloadDeferForceAtUserLoginMaxBypassAttempts;
-@property (readonly, nonatomic) NSString *payloadEnable;
-@property (readonly, nonatomic) NSString *payloadOutputPath;
-@property (readonly, nonatomic) NSString *payloadPassword;
-@property (readonly, nonatomic) NSNumber *payloadShowRecoveryKey;
-@property (readonly, nonatomic) NSNumber *payloadUseKeychain;
-@property (readonly, nonatomic) NSNumber *payloadUseRecoveryKey;
-@property (readonly, nonatomic) NSNumber *payloadUserEntersMissingInfo;
-@property (readonly, nonatomic) NSString *payloadUsername;
+@property (copy, nonatomic) NSString *payloadCertificateIdentifier; // @synthesize payloadCertificateIdentifier=_payloadCertificateIdentifier;
+@property (copy, nonatomic) NSNumber *payloadDefer; // @synthesize payloadDefer=_payloadDefer;
+@property (copy, nonatomic) NSNumber *payloadDeferDontAskAtUserLogout; // @synthesize payloadDeferDontAskAtUserLogout=_payloadDeferDontAskAtUserLogout;
+@property (copy, nonatomic) NSNumber *payloadDeferForceAtUserLoginMaxBypassAttempts; // @synthesize payloadDeferForceAtUserLoginMaxBypassAttempts=_payloadDeferForceAtUserLoginMaxBypassAttempts;
+@property (copy, nonatomic) NSString *payloadEnable; // @synthesize payloadEnable=_payloadEnable;
+@property (copy, nonatomic) NSString *payloadOutputPath; // @synthesize payloadOutputPath=_payloadOutputPath;
+@property (copy, nonatomic) NSString *payloadPassword; // @synthesize payloadPassword=_payloadPassword;
+@property (copy, nonatomic) NSNumber *payloadShowRecoveryKey; // @synthesize payloadShowRecoveryKey=_payloadShowRecoveryKey;
+@property (copy, nonatomic) NSNumber *payloadUseKeychain; // @synthesize payloadUseKeychain=_payloadUseKeychain;
+@property (copy, nonatomic) NSNumber *payloadUseRecoveryKey; // @synthesize payloadUseRecoveryKey=_payloadUseRecoveryKey;
+@property (copy, nonatomic) NSNumber *payloadUserEntersMissingInfo; // @synthesize payloadUserEntersMissingInfo=_payloadUserEntersMissingInfo;
+@property (copy, nonatomic) NSString *payloadUsername; // @synthesize payloadUsername=_payloadUsername;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withEnable:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withEnable:(id)arg2 withDefer:(id)arg3 withUserEntersMissingInfo:(id)arg4 withUseRecoveryKey:(id)arg5 withShowRecoveryKey:(id)arg6 withOutputPath:(id)arg7 withUsername:(id)arg8 withPassword:(id)arg9 withUseKeychain:(id)arg10 withDeferForceAtUserLoginMaxBypassAttempts:(id)arg11 withDeferDontAskAtUserLogout:(id)arg12 withCertificateIdentifier:(id)arg13;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthDaemon/HDQueryServer.h>
+#import <HealthDaemon/HDCurrentActivityCacheQueryServer.h>
 
-@interface HDCurrentActivityCacheDemoQueryServer : HDQueryServer
+@interface HDCurrentActivityCacheDemoQueryServer : HDCurrentActivityCacheQueryServer
 {
 }
 
@@ -14,6 +14,7 @@
 - (id)_demoStatisticsForStandHours;
 - (void)_queue_start;
 - (BOOL)_shouldExecuteWhenProtectedDataIsUnavailable;
+- (BOOL)shouldObserveActivityCache;
 
 @end
 

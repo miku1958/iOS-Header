@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol OS_os_log;
@@ -20,6 +20,7 @@
     struct sqlite3_stmt *_insertMirrorKey;
     struct sqlite3_stmt *_updateMirrorKey;
     struct sqlite3_stmt *_markMirrorKey;
+    struct sqlite3_stmt *_deleteMirrorKeys;
     struct sqlite3_stmt *_resetCurrentMirrorKey;
     struct sqlite3_stmt *_insertEscrowKey;
     struct sqlite3_stmt *_updateEscrowKey;
@@ -34,6 +35,7 @@
 }
 
 @property struct sqlite3_stmt *deleteEscrowKey; // @synthesize deleteEscrowKey=_deleteEscrowKey;
+@property struct sqlite3_stmt *deleteMirrorKeys; // @synthesize deleteMirrorKeys=_deleteMirrorKeys;
 @property struct sqlite3_stmt *deleteStatment; // @synthesize deleteStatment=_deleteStatment;
 @property (strong) NSString *dsid; // @synthesize dsid=_dsid;
 @property struct sqlite3_stmt *insertEscrowKey; // @synthesize insertEscrowKey=_insertEscrowKey;
@@ -58,6 +60,7 @@
 - (BOOL)beginExclusiveTransaction;
 - (void)dealloc;
 - (BOOL)deleteEscrowKey:(id)arg1;
+- (BOOL)deleteMirrorKeys:(int)arg1;
 - (BOOL)deleteRecordAll;
 - (BOOL)deleteRecordID:(id)arg1;
 - (BOOL)endTransaction:(BOOL)arg1;

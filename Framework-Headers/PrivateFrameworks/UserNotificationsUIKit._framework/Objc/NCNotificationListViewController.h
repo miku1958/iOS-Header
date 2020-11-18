@@ -11,7 +11,7 @@
 #import <UserNotificationsUIKit/NCNotificationViewControllerDelegatePrivate-Protocol.h>
 #import <UserNotificationsUIKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NCAnimationCoordinator, NCNotificationListCell, NCNotificationListTouchEater, NCNotificationViewController, NSHashTable, NSMutableDictionary, NSString;
+@class NCAnimationCoordinator, NCNotificationListCell, NCNotificationViewController, NCTouchEaterGestureRecognizer, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
 @protocol NCNotificationListViewControllerDestinationDelegate, NCNotificationListViewControllerUserInteractionDelegate;
 
 @interface NCNotificationListViewController : UICollectionViewController <NCNotificationListCellDelegate, UIGestureRecognizerDelegate, NCNotificationViewControllerDelegatePrivate, NCNotificationListCollectionViewDelegate>
@@ -29,9 +29,11 @@
     NSMutableDictionary *_cellsSizesCaches;
     NSMutableDictionary *_cellsSizesCachesSuppressedContent;
     NSHashTable *_observers;
-    NCNotificationListTouchEater *_touchEater;
+    NCTouchEaterGestureRecognizer *_touchEater;
     NCNotificationListCell *_cellWithRevealedActions;
-    NCAnimationCoordinator *_childPreferredContentSizeChangeCoordinator;
+    NCAnimationCoordinator *_childPreferredContentSizeChangeCoordinatorForCurrentTransaction;
+    NSMutableArray *_childPreferredContentSizeChangeCoordinators;
+    CDStruct_ef5db9df _destinationDelegateFlags;
     struct UIEdgeInsets _insetMargins;
 }
 
@@ -40,10 +42,12 @@
 @property (weak, nonatomic) NCNotificationListCell *cellWithRevealedActions; // @synthesize cellWithRevealedActions=_cellWithRevealedActions;
 @property (strong, nonatomic) NSMutableDictionary *cellsSizesCaches; // @synthesize cellsSizesCaches=_cellsSizesCaches;
 @property (strong, nonatomic) NSMutableDictionary *cellsSizesCachesSuppressedContent; // @synthesize cellsSizesCachesSuppressedContent=_cellsSizesCachesSuppressedContent;
-@property (strong, nonatomic) NCAnimationCoordinator *childPreferredContentSizeChangeCoordinator; // @synthesize childPreferredContentSizeChangeCoordinator=_childPreferredContentSizeChangeCoordinator;
+@property (strong, nonatomic) NCAnimationCoordinator *childPreferredContentSizeChangeCoordinatorForCurrentTransaction; // @synthesize childPreferredContentSizeChangeCoordinatorForCurrentTransaction=_childPreferredContentSizeChangeCoordinatorForCurrentTransaction;
+@property (strong, nonatomic) NSMutableArray *childPreferredContentSizeChangeCoordinators; // @synthesize childPreferredContentSizeChangeCoordinators=_childPreferredContentSizeChangeCoordinators;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<NCNotificationListViewControllerDestinationDelegate> destinationDelegate; // @synthesize destinationDelegate=_destinationDelegate;
+@property (nonatomic) CDStruct_ef5db9df destinationDelegateFlags; // @synthesize destinationDelegateFlags=_destinationDelegateFlags;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct UIEdgeInsets insetMargins; // @synthesize insetMargins=_insetMargins;
 @property (readonly, nonatomic) double itemSpacing;
@@ -54,7 +58,7 @@
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (readonly, nonatomic, getter=isPresentingNotificationInLongLook) BOOL presentingNotificationInLongLook;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NCNotificationListTouchEater *touchEater; // @synthesize touchEater=_touchEater;
+@property (strong, nonatomic) NCTouchEaterGestureRecognizer *touchEater; // @synthesize touchEater=_touchEater;
 @property (weak, nonatomic) id<NCNotificationListViewControllerUserInteractionDelegate> userInteractionDelegate; // @synthesize userInteractionDelegate=_userInteractionDelegate;
 @property (nonatomic) CDStruct_27a46a9e userInteractionDelegateFlags; // @synthesize userInteractionDelegateFlags=_userInteractionDelegateFlags;
 @property (strong, nonatomic) NCNotificationViewController *viewControllerPossiblyPresentingLongLook; // @synthesize viewControllerPossiblyPresentingLongLook=_viewControllerPossiblyPresentingLongLook;
@@ -69,13 +73,17 @@
 - (void)_hintSideSwipeForDefaultActionForNotificationRequest:(id)arg1;
 - (void)_installTouchEater;
 - (BOOL)_isContentSuppressedForNotificationRequest:(id)arg1;
+- (BOOL)_isInViewControllerThatHandlesKeyboardAvoidance;
 - (BOOL)_isPointInWindowSpace:(struct CGPoint)arg1 insideCell:(id)arg2;
+- (BOOL)_isPresentingNotificationManagementSuggestionForNotificationRequest:(id)arg1;
+- (id)_notificationListCellAtIndexPath:(id)arg1;
 - (id)_notificationRequestForCell:(id)arg1;
 - (void)_performCollectionViewOperationBlock:(CDUnknownBlockType)arg1;
 - (void)_performCollectionViewOperationBlockIfNecessary:(CDUnknownBlockType)arg1;
 - (void)_reloadCollectionViewDataIfNecessary;
 - (void)_reloadRequestsAtIndices:(id)arg1;
 - (void)_removeCachedSizesForNotificationRequest:(id)arg1;
+- (id)_sectionSettingsForSectionIdentifier:(id)arg1;
 - (void)addContentObserver:(id)arg1;
 - (id)captureOnlyMaterialViewForCurrentState;
 - (void)clearAll;
@@ -91,6 +99,7 @@
 - (BOOL)collectionView:(id)arg1 shouldShowMenuForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (BOOL)dismissModalFullScreenAnimated:(BOOL)arg1;
+- (BOOL)forwardNotificationRequestToLongLookIfPresented:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (void)handleEatenTouchBeginStateForGestureRecognizer:(id)arg1;
 - (void)handleEatenTouchEndStateForGestureRecognizer:(id)arg1;
@@ -99,10 +108,12 @@
 - (id)hideHomeAffordanceAnimationSettingsForNotificationViewController:(id)arg1;
 - (void)hideRequestsForNotificationSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
 - (void)hideRequestsForNotificationSectionSettings:(id)arg1;
+- (id)homeAffordancePanGesture;
 - (id)indexPathForNotificationRequest:(id)arg1;
 - (id)init;
 - (BOOL)insertNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
 - (BOOL)isContentExtensionVisible:(id)arg1;
+- (BOOL)isHomeAffordanceVisible;
 - (BOOL)isNotificationListCellVisibleForNotificationRequest:(id)arg1;
 - (void)listViewControllerPresentedByUserAction;
 - (void)loadView;
@@ -118,13 +129,19 @@
 - (void)notificationListCellRequestsDefaultAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)notificationListCellRequestsDismissAction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)notificationListCellRequestsPresentingLongLook:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)notificationListCellRequestsPresentingManagementView:(id)arg1 withPresentingView:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)notificationListCellRequestsSectionSettings:(id)arg1 sectionIdentifier:(id)arg2;
 - (void)notificationListCollectionView:(id)arg1 willSetFrame:(struct CGRect)arg2;
 - (id)notificationRequestAtIndexPath:(id)arg1;
 - (id)notificationRequestInLongLook;
 - (id)notificationRequestPossiblyInLongLook;
 - (id)notificationRequestsPassingTest:(CDUnknownBlockType)arg1;
 - (id)notificationUsageTrackingStateForNotificationViewController:(id)arg1;
+- (id)notificationViewController:(id)arg1 auxiliaryOptionsContentProviderForNotificationRequest:(id)arg2 withLongLook:(BOOL)arg3;
 - (void)notificationViewController:(id)arg1 executeAction:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (struct CGRect)notificationViewController:(id)arg1 finalFrameForDismissingLongLookFromView:(id)arg2;
+- (struct CGRect)notificationViewController:(id)arg1 initialFrameForPresentingLongLookFromView:(id)arg2;
+- (id)notificationViewController:(id)arg1 keyboardAssertionForGestureWindow:(id)arg2;
 - (void)notificationViewController:(id)arg1 requestPermissionToExecuteAction:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)notificationViewController:(id)arg1 shouldFinishLongLookTransitionWithCompletionBlock:(CDUnknownBlockType)arg2;
 - (id)notificationViewController:(id)arg1 staticContentProviderForNotificationRequest:(id)arg2;
@@ -151,7 +168,8 @@
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillBeginZooming:(id)arg1 withView:(id)arg2;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
-- (void)setCustomContentHomeAffordanceVisible:(BOOL)arg1 withGestureRecognizer:(id)arg2;
+- (void)setHomeAffordancePanGesture:(id)arg1;
+- (void)setHomeAffordanceVisible:(BOOL)arg1;
 - (void)setTouchEaterEnabled:(BOOL)arg1;
 - (id)settleHomeAffordanceAnimationBehaviorDescriptionForNotificationViewController:(id)arg1;
 - (BOOL)shouldReceiveTouch:(id)arg1 forGestureRecognizer:(id)arg2;
@@ -159,9 +177,11 @@
 - (void)showRequestsForNotificationSectionIdentifier:(id)arg1 subSectionIdentifier:(id)arg2;
 - (void)showRequestsForNotificationSectionSettings:(id)arg1;
 - (id)unhideHomeAffordanceAnimationSettingsForNotificationViewController:(id)arg1;
+- (void)updateContentForNotificationRequest:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

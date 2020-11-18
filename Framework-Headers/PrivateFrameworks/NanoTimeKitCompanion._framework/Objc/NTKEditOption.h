@@ -8,13 +8,15 @@
 
 #import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class CLKDevice, NSString;
 
 @interface NTKEditOption : NSObject <NSSecureCoding>
 {
+    CLKDevice *_device;
 }
 
 @property (readonly, nonatomic) NSString *dailySnapshotKey;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) NSString *localizedName;
 @property (readonly, nonatomic) NSString *localizedNameForAction;
 @property (readonly, nonatomic) long long swatchStyle;
@@ -22,11 +24,13 @@
 + (id)optionsDescription;
 + (struct CGSize)sizeForSwatchStyle:(long long)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithJSONObjectRepresentation:(id)arg1;
+- (id)initWithDevice:(id)arg1;
+- (id)initWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2;
 - (BOOL)isValidOption;
 - (BOOL)optionExistsInOSVersion:(unsigned int)arg1;
 

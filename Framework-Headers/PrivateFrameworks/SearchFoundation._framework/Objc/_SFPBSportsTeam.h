@@ -23,11 +23,6 @@
 @property (copy, nonatomic) NSString *accessibilityDescription; // @synthesize accessibilityDescription=_accessibilityDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasAccessibilityDescription;
-@property (readonly, nonatomic) BOOL hasLogo;
-@property (readonly, nonatomic) BOOL hasName;
-@property (readonly, nonatomic) BOOL hasRecord;
-@property (readonly, nonatomic) BOOL hasScore;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBImage *logo; // @synthesize logo=_logo;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDMixing-Protocol.h>
 
@@ -129,7 +129,7 @@ __attribute__((visibility("hidden")))
 - (float)rotation3DMinX;
 - (float)rotation3DMinY;
 - (Class)sageGeometeryHelperClass;
-- (BOOL)shouldChangeExplosionWithPreviousChartType:(id)arg1 seriesList:(id)arg2;
+- (BOOL)shouldChangeExplosionWithPreviousChartType:(id)arg1 chartInfo:(id)arg2 seriesList:(id)arg3;
 - (int)stackingSignRule;
 - (unsigned long long)styleIndexForAxisID:(id)arg1;
 - (BOOL)suppliesFinalTextures;

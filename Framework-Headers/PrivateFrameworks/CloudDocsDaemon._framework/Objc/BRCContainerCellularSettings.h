@@ -21,11 +21,9 @@ __attribute__((visibility("hidden")))
 + (id)containerCellularSettings;
 - (void).cxx_destruct;
 - (void)_accountDidChange;
-- (BOOL)_isCellularEnabledForBundleID:(id)arg1;
-- (BOOL)_isCellularEnabledForDocumentsAndData;
 - (void)dealloc;
 - (id)init;
-- (BOOL)isCellularEnabledForContainerID:(id)arg1;
+- (BOOL)isCellularEnabled;
 
 @end
 

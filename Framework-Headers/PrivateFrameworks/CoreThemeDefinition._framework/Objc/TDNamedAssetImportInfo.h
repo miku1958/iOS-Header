@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreThemeDefinition/NSCopying-Protocol.h>
 
@@ -16,6 +16,8 @@
     BOOL _optOutOfThinning;
     BOOL _isFlippable;
     BOOL _cubeMap;
+    short _autoscalingType;
+    int _objectVersion;
     NSString *_name;
     long long _nameIdentifier;
     NSURL *_fileURL;
@@ -46,21 +48,37 @@
     long long _texturePixelFormat;
     long long _textureInterpretation;
     NSArray *_textureInfos;
-    struct CGColor *_cgColor;
     long long _colorSpaceID;
     NSArray *_colorComponents;
+    NSString *_systemColorName;
+    NSString *_fontName;
+    double _fontSize;
+    NSString *_foregroundColorName;
+    NSString *_backgroundColorName;
+    long long _backgroundColorSpaceID;
+    NSArray *_backgroundColorComponents;
+    double _maxPointSize;
+    double _minPointSize;
     NSValue *_iconSize;
+    NSString *_appearanceName;
+    long long _appearanceIdentifier;
     struct CGSize _resizableSliceSize;
     struct CGSize _physicalSizeInMeters;
     struct CGSize _canvasSize;
     CDStruct_3c058996 _sliceInsets;
     struct CGRect _alignmentRect;
+    CDStruct_14d5dc5e _transformation;
 }
 
 @property (nonatomic) struct CGRect alignmentRect; // @synthesize alignmentRect=_alignmentRect;
+@property (nonatomic) long long appearanceIdentifier; // @synthesize appearanceIdentifier=_appearanceIdentifier;
+@property (copy, nonatomic) NSString *appearanceName; // @synthesize appearanceName=_appearanceName;
 @property (nonatomic) unsigned long long arrayIndex; // @synthesize arrayIndex=_arrayIndex;
+@property (nonatomic) short autoscalingType; // @synthesize autoscalingType=_autoscalingType;
+@property (copy, nonatomic) NSArray *backgroundColorComponents; // @synthesize backgroundColorComponents=_backgroundColorComponents;
+@property (copy, nonatomic) NSString *backgroundColorName; // @synthesize backgroundColorName=_backgroundColorName;
+@property (nonatomic) long long backgroundColorSpaceID; // @synthesize backgroundColorSpaceID=_backgroundColorSpaceID;
 @property (nonatomic) struct CGSize canvasSize; // @synthesize canvasSize=_canvasSize;
-@property (readonly, nonatomic) struct CGColor *cgColor; // @synthesize cgColor=_cgColor;
 @property (copy, nonatomic) NSArray *colorComponents; // @synthesize colorComponents=_colorComponents;
 @property (nonatomic) long long colorSpaceID; // @synthesize colorSpaceID=_colorSpaceID;
 @property (nonatomic) long long compressionType; // @synthesize compressionType=_compressionType;
@@ -68,6 +86,9 @@
 @property (nonatomic) BOOL cubeMap; // @synthesize cubeMap=_cubeMap;
 @property (nonatomic) long long displayGamut; // @synthesize displayGamut=_displayGamut;
 @property (copy, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (copy, nonatomic) NSString *fontName; // @synthesize fontName=_fontName;
+@property (nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
+@property (copy, nonatomic) NSString *foregroundColorName; // @synthesize foregroundColorName=_foregroundColorName;
 @property (nonatomic) unsigned long long graphicsClass; // @synthesize graphicsClass=_graphicsClass;
 @property (nonatomic) long long graphicsFeatureSetClass; // @synthesize graphicsFeatureSetClass=_graphicsFeatureSetClass;
 @property (copy, nonatomic) NSValue *iconSize; // @synthesize iconSize=_iconSize;
@@ -77,10 +98,13 @@
 @property (copy, nonatomic) NSArray *layerReferences; // @synthesize layerReferences=_layerReferences;
 @property (nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 @property (nonatomic) double lossyCompressionQuality; // @synthesize lossyCompressionQuality=_lossyCompressionQuality;
+@property (nonatomic) double maxPointSize; // @synthesize maxPointSize=_maxPointSize;
 @property (nonatomic) unsigned long long memoryClass; // @synthesize memoryClass=_memoryClass;
+@property (nonatomic) double minPointSize; // @synthesize minPointSize=_minPointSize;
 @property (copy, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long nameIdentifier; // @synthesize nameIdentifier=_nameIdentifier;
+@property (nonatomic) int objectVersion; // @synthesize objectVersion=_objectVersion;
 @property (nonatomic) BOOL optOutOfThinning; // @synthesize optOutOfThinning=_optOutOfThinning;
 @property (nonatomic) struct CGSize physicalSizeInMeters; // @synthesize physicalSizeInMeters=_physicalSizeInMeters;
 @property (nonatomic) BOOL preservesVectorRepresentation; // @synthesize preservesVectorRepresentation=_preservesVectorRepresentation;
@@ -92,6 +116,7 @@
 @property (nonatomic) long long sizeClassVertical; // @synthesize sizeClassVertical=_sizeClassVertical;
 @property (nonatomic) CDStruct_3c058996 sliceInsets; // @synthesize sliceInsets=_sliceInsets;
 @property (nonatomic) long long subtype; // @synthesize subtype=_subtype;
+@property (strong, nonatomic) NSString *systemColorName; // @synthesize systemColorName=_systemColorName;
 @property (copy, nonatomic) NSSet *tags; // @synthesize tags=_tags;
 @property (nonatomic) long long templateRenderingMode; // @synthesize templateRenderingMode=_templateRenderingMode;
 @property (nonatomic) unsigned long long textureDepth; // @synthesize textureDepth=_textureDepth;
@@ -100,6 +125,7 @@
 @property (nonatomic) long long textureInterpretation; // @synthesize textureInterpretation=_textureInterpretation;
 @property (nonatomic) long long texturePixelFormat; // @synthesize texturePixelFormat=_texturePixelFormat;
 @property (nonatomic) unsigned long long textureWidth; // @synthesize textureWidth=_textureWidth;
+@property (nonatomic) CDStruct_14d5dc5e transformation; // @synthesize transformation=_transformation;
 @property (copy, nonatomic) NSString *universalTypeIdentifier; // @synthesize universalTypeIdentifier=_universalTypeIdentifier;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -107,7 +133,6 @@
 - (id)description;
 - (id)init;
 - (long long)renditionSubtype;
-- (void)setCGColor:(struct CGColor *)arg1;
 
 @end
 

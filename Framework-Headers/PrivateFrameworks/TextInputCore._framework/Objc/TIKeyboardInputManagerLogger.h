@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TIKeyboardInputManagerLogging-Protocol.h>
 
@@ -33,11 +33,12 @@
 + (void)writeHumanReadableTraceForTypologyLog:(id)arg1;
 + (id)writePropertyList:(id)arg1 withFilename:(id)arg2;
 + (id)writeToFileWithTypologyLog:(id)arg1;
+- (void).cxx_destruct;
 - (void)backgroundWriteLogsAndSubmitReport;
 - (void)dealloc;
 - (void)disableTypologyLogIfNecessaryForKeyboardState:(id)arg1;
 - (id)init;
-- (void)logAutocorrections:(id)arg1 forKeyboardState:(id)arg2;
+- (void)logAutocorrections:(id)arg1 forKeyboardState:(id)arg2 requestToken:(id)arg3;
 - (void)logCandidateResultSet:(id)arg1 forKeyboardState:(id)arg2;
 - (void)logHitKeyCode:(long long)arg1 forTouchEvent:(id)arg2 keyboardState:(id)arg3;
 - (void)logKeyboardConfig:(id)arg1 forAdjustedPhraseBoundaryInForwardDirection:(BOOL)arg2 granularity:(int)arg3 keyboardState:(id)arg4;

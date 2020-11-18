@@ -7,21 +7,27 @@
 #import <SearchUI/SearchUIResultViewController.h>
 
 #import <SpotlightUI/SPSearchAgentDelegate-Protocol.h>
+#import <SpotlightUI/SPUIResultsViewTestingDelegate-Protocol.h>
 
 @class NSArray, SFResultSection, SFSearchResult;
 @protocol SPUIResultViewDelegate;
 
-@interface SPUIResultViewController : SearchUIResultViewController <SPSearchAgentDelegate>
+@interface SPUIResultViewController : SearchUIResultViewController <SPSearchAgentDelegate, SPUIResultsViewTestingDelegate>
 {
+    unsigned long long _startTime;
     BOOL _hasResultsWaitingToUpdate;
+    CDUnknownBlockType didFinishGettingAllResultsHandler;
     NSArray *_resultSections;
     SFResultSection *_suggestionsSection;
     SFResultSection *_searchThroughSection;
+    unsigned long long _previousQueryId;
 }
 
 @property (readonly) SFSearchResult *actualSearchSuggestionResult;
 @property (weak, nonatomic) id<SPUIResultViewDelegate> delegate; // @dynamic delegate;
+@property (copy, nonatomic) CDUnknownBlockType didFinishGettingAllResultsHandler; // @synthesize didFinishGettingAllResultsHandler;
 @property BOOL hasResultsWaitingToUpdate; // @synthesize hasResultsWaitingToUpdate=_hasResultsWaitingToUpdate;
+@property unsigned long long previousQueryId; // @synthesize previousQueryId=_previousQueryId;
 @property (strong) NSArray *resultSections; // @synthesize resultSections=_resultSections;
 @property (strong) SFResultSection *searchThroughSection; // @synthesize searchThroughSection=_searchThroughSection;
 @property (strong) SFResultSection *suggestionsSection; // @synthesize suggestionsSection=_suggestionsSection;
@@ -29,10 +35,8 @@
 + (unsigned long long)defaultStyle;
 - (void).cxx_destruct;
 - (BOOL)_hasRealSuggestions;
-- (id)_newSuggestionSection;
 - (void)_pushSectionsUpdate;
 - (void)_truncateResultsSectionToFit;
-- (void)_updateCombinedSections;
 - (void)clearSuggestionSection;
 - (id)initWithSearchModel:(id)arg1;
 - (BOOL)isResultOriginalSearchSuggestion:(id)arg1;

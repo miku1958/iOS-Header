@@ -6,28 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-#import <PassKitUIFoundation/PKMotionManagerClientProtocol-Protocol.h>
 #import <PassKitUIFoundation/SCNSceneRendererDelegate-Protocol.h>
 
-@class MISSING_TYPE, NSMutableArray, NSString, SCNMaterial, SCNNode, SCNPlane, SCNView;
+@class NSMutableArray, NSString, PKPeerPayment3DScene, PKPeerPayment3DStore, SCNView;
 
-@interface PKPeerPayment3DTextView : UIView <PKMotionManagerClientProtocol, SCNSceneRendererDelegate>
+@interface PKPeerPayment3DTextView : UIView <SCNSceneRendererDelegate>
 {
     SCNView *_sceneView;
-    SCNMaterial *_textMaterial;
-    SCNPlane *_wallGeometry;
-    SCNNode *_lightNode;
-    SCNNode *_textContainerNode;
-    MISSING_TYPE *_lastRollPitch;
+    PKPeerPayment3DScene *_scene;
     double _sceneWidthUnits;
     double _sceneHeightUnits;
     NSMutableArray *_performHandlers;
-    long long _frameCount;
     double _dynamicRollPitchMix;
     double _startAnimationTime;
     double _animationDuration;
     double _lastRenderTime;
     BOOL _liveMotionEnabled;
+    BOOL _snapshotRequested;
+    BOOL _hasFullyRendered;
+    PKPeerPayment3DStore *_3DStore;
+    BOOL _layoutRequested;
+    NSMutableArray *_charactersToDraw;
     unsigned long long _renderStyle;
     NSString *_text;
 }
@@ -39,20 +38,24 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 
-+ (id)_sharedMotionManager;
 + (id)supportedCharacterSet;
 - (void).cxx_destruct;
+- (void)dealloc;
+- (void)didBecomeActive;
 - (void)didMoveToWindow;
 - (id)generatedSnapshot;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 renderStyle:(unsigned long long)arg2;
 - (void)layoutSubviews;
+- (void)layoutText;
+- (void)loadCharactersAndLayout;
 - (void)performPostRender:(CDUnknownBlockType)arg1;
 - (void)renderer:(id)arg1 didRenderScene:(id)arg2 atTime:(double)arg3;
+- (void)renderer:(id)arg1 updateAtTime:(double)arg2;
 - (void)setMotionEffectEnabled:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)setRollPitch: /* Error: Ran out of types for this method. */;
 - (BOOL)setText:(id)arg1;
 - (void)updateSceneUnits;
+- (void)willResignActive;
 
 @end
 

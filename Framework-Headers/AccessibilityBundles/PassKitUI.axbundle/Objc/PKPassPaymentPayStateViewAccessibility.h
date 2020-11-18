@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_applyStatePreservingGlyphState:(BOOL)arg1 overridingText:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)emphasizeStateIfPossible:(long long)arg1 withTextOverride:(id)arg2;
+- (void)emphasizeStateIfPossible:(long long)arg1 withOverrideText:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

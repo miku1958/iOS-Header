@@ -56,6 +56,7 @@
 @property (nonatomic) BOOL hasDataDetectorResults;
 @property (readonly, nonatomic) BOOL isAlert;
 @property (readonly, nonatomic) BOOL isAudioMessage;
+@property (nonatomic) BOOL isCorrupt;
 @property (readonly, nonatomic) BOOL isDelivered;
 @property (readonly, nonatomic) BOOL isEmote;
 @property (readonly, nonatomic) BOOL isEmpty;

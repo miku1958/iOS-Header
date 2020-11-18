@@ -4,6 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@protocol _WKWebViewPrintProvider
+#import <WebKit/NSObject-Protocol.h>
+
+@class _WKWebViewPrintFormatter;
+
+@protocol _WKWebViewPrintProvider <NSObject>
+
+@property (readonly, nonatomic) struct CGPDFDocument *_wk_printedDocument;
+
+- (unsigned long long)_wk_pageCountForPrintFormatter:(_WKWebViewPrintFormatter *)arg1;
 @end
 

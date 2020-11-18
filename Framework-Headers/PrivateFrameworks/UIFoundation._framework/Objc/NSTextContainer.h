@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <UIFoundation/NSCoding-Protocol.h>
 #import <UIFoundation/NSTextLayoutOrientationProvider-Protocol.h>
 
-@class NSArray, NSDictionary, NSLayoutManager;
+@class NSArray, NSDictionary, NSLayoutManager, UIView;
+@protocol NSTextContainerView;
 
 @interface NSTextContainer : NSObject <NSCoding, NSTextLayoutOrientationProvider>
 {
     NSLayoutManager *_layoutManager;
-    id _textView;
+    UIView<NSTextContainerView> *_textView;
     struct CGSize _size;
     double _lineFragmentPadding;
     unsigned long long _maximumLines;
@@ -35,11 +36,11 @@
     double _minimumWidth;
     long long _layoutOrientation;
     NSDictionary *_attributesForExtraLineFragment;
+    long long _applicationFrameworkContext;
 }
 
 @property (copy, nonatomic) NSArray *exclusionPaths;
 @property (nonatomic) BOOL heightTracksTextView;
-@property (readonly) BOOL isSimpleRectangularTextContainer;
 @property (nonatomic) NSLayoutManager *layoutManager;
 @property (readonly, nonatomic) long long layoutOrientation; // @dynamic layoutOrientation;
 @property (nonatomic) long long lineBreakMode;
@@ -51,9 +52,12 @@
 
 + (void)initialize;
 - (void)_commonInit;
+- (BOOL)_containerObservesTextViewFrameChanges;
+- (void)_containerTextViewFrameChanged:(id)arg1;
 - (void)_resizeAccordingToTextView:(id)arg1;
 - (id)attributesForExtraLineFragment;
 - (struct CGSize)containerSize;
+- (BOOL)containsPoint:(struct CGPoint)arg1;
 - (void)coordinateAccess:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)description;
@@ -71,6 +75,8 @@
 - (void)setLayoutOrientation:(long long)arg1;
 - (void)setMinimumLineFragmentWidth:(double)arg1;
 - (void)setTextView:(id)arg1;
+- (struct NSEdgeInsets)textContainerInsetsForView:(id)arg1;
+- (struct NSEdgeInsets)textContainerInsetsForView_iOS:(id)arg1;
 - (struct CGPoint)textContainerOrigin;
 - (id)textView;
 

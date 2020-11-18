@@ -52,6 +52,7 @@
 - (void)burstCaptureWillStart;
 - (void)closeConnection;
 - (void)countdownCanceled;
+- (void)createConnectionIfNecessary;
 - (void)dealloc;
 - (void)didStartCaptureTimer;
 - (void)didStopCapture;

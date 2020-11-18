@@ -6,27 +6,31 @@
 
 #import <iWorkImport/TSTExpressionNode.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface TSTIdentifierNode : TSTExpressionNode
 {
-    NSString *mSheetName;
-    NSString *mTableName;
-    NSString *mIdentifier;
-    unsigned int mSymbol;
+    NSMutableArray *_components;
+    unsigned int _symbol;
+    NSString *_aggregateFunction;
 }
 
-@property (nonatomic) unsigned int symbol; // @synthesize symbol=mSymbol;
+@property (strong, nonatomic) NSString *aggregateFunction; // @synthesize aggregateFunction=_aggregateFunction;
+@property (readonly, nonatomic) NSString *fullIdentifier;
+@property (readonly, nonatomic) NSString *lastComponentWithWhitespaceAppended;
+@property (readonly, nonatomic) NSString *lastIdentifierComponent;
+@property (nonatomic) unsigned int symbol; // @synthesize symbol=_symbol;
 
+- (void).cxx_destruct;
+- (void)addIdentifierComponent:(id)arg1;
+- (void)appendToLastComponent:(id)arg1;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
-- (id)copyByResolvingIdentifiers:(id)arg1 hostTable:(id)arg2 forceReferenceInterpretation:(BOOL)arg3 symbolTable:(struct TSCESymbolTable *)arg4 oldToNewNodeMap:(id)arg5;
-- (void)dealloc;
-- (id)description;
+- (unsigned long long)componentCount;
+- (id)copyByResolvingIdentifiers:(id)arg1 hostTable:(id)arg2 baseHostCell:(struct TSUCellCoord)arg3 forceReferenceInterpretation:(BOOL)arg4 symbolTable:(struct TSCESymbolTable *)arg5 oldToNewNodeMap:(id)arg6;
 - (id)detokenizedText;
 - (id)formulaPlainText;
-- (id)identifier;
-- (id)identifierWithWhitespaceAppended;
+- (id)identifierComponents;
 - (id)initAsCopyOf:(id)arg1 intoContext:(id)arg2 children:(id)arg3;
 - (id)initWithContext:(id)arg1 children:(id)arg2 firstIndex:(unsigned long long)arg3 lastIndex:(unsigned long long)arg4;
 - (id)initWithContext:(id)arg1 identifier:(id)arg2 firstIndex:(unsigned long long)arg3 lastIndex:(unsigned long long)arg4;
@@ -36,8 +40,6 @@ __attribute__((visibility("hidden")))
 - (struct TSTCSENodeData)recordHashesForSubexpressions:(id)arg1;
 - (void)saveToArchive:(struct IdentifierNodeArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)setSheetName:(id)arg1;
-- (void)setTableName:(id)arg1;
 - (id)sheetName;
 - (id)string;
 - (id)tableName;

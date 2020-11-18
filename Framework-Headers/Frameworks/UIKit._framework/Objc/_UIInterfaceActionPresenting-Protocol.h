@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInterfaceActionHandlerInvocationDelegate-Protocol.h>
+#import <UIKitCore/UIInterfaceActionHandlerInvocationDelegate-Protocol.h>
 
 @class UIColor;
 

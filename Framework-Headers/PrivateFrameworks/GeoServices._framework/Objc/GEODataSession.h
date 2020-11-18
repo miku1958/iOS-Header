@@ -9,10 +9,9 @@
 #import <GeoServices/GEODataSession-Protocol.h>
 #import <GeoServices/GEODataSessionRulesProvider-Protocol.h>
 
-@class GEODataURLSession, GEODataXPCSession, NSString;
+@class GEODataURLSession, NSString;
 @protocol GEODataSession, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface GEODataSession : NSObject <GEODataSessionRulesProvider, GEODataSession>
 {
     NSObject<OS_dispatch_queue> *_sessionIsolation;
@@ -30,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) GEODataURLSession *urlSession; // @synthesize urlSession=_urlSession;
-@property (readonly, nonatomic) GEODataXPCSession *xpcSession; // @synthesize xpcSession=_xpcSession;
+@property (readonly, nonatomic) id<GEODataSession> xpcSession; // @synthesize xpcSession=_xpcSession;
 
 + (id)sharedDataSession;
 - (void).cxx_destruct;
@@ -40,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)manifestManager;
 - (id)preferedRulesForRequest:(id)arg1;
 - (id)taskWithRequest:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
+- (id)taskWithRequest:(id)arg1 rules:(id)arg2 priority:(float)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
 
 @end
 

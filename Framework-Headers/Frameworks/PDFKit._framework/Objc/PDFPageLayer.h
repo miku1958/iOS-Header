@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)page;
 - (id)pageLayerEffectForID:(id)arg1;
 - (void)removePageLayerEffectForID:(id)arg1;
+- (id)renderingProperties;
 - (void)restoreOriginalTileLayout;
 - (void)saveOriginalTileLayout;
 - (void)scalePageLayerEffects:(double)arg1;

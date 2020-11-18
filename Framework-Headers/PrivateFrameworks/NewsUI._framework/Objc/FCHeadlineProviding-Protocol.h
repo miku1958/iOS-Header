@@ -10,8 +10,8 @@
 #import <NewsUI/NFCopying-Protocol.h>
 #import <NewsUI/NSObject-Protocol.h>
 
-@class FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedArticleScoreProfile, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
-@protocol FCChannelProviding, FCContentContext, FCNativeAdProviding;
+@class FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedArticleScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@protocol FCChannelProviding, FCContentContext, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @protocol FCHeadlineProviding <NSObject, NFCopying, FCFeedElement, FCClassifiable, FCFeedTransformationItem>
 
@@ -32,10 +32,12 @@
 @property (readonly, nonatomic, getter=isDisplayingAsNativeAd) BOOL displayAsNativeAd;
 @property (readonly, copy, nonatomic) NSDate *displayDate;
 @property (readonly, copy, nonatomic) NSArray *endOfArticleTopicIDs;
+@property (copy, nonatomic) FCHeadlineExperimentalTitleMetadata *experimentalTitleMetadata;
 @property (readonly, nonatomic, getter=isFeatureCandidate) BOOL featureCandidate;
 @property (readonly, nonatomic) unsigned long long feedOrder;
 @property (readonly, nonatomic) double globalUserFeedback;
 @property (readonly, nonatomic) BOOL hasThumbnail;
+@property (readonly, nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites;
 @property (readonly, nonatomic, getter=isHiddenFromFeeds) BOOL hiddenFromFeeds;
 @property (readonly, copy, nonatomic) NSArray *iAdCategories;
 @property (readonly, copy, nonatomic) NSArray *iAdKeywords;
@@ -51,6 +53,7 @@
 @property (readonly, copy, nonatomic) NSArray *moreFromPublisherArticleIDs;
 @property (readonly, nonatomic) BOOL needsRapidUpdates;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid;
+@property (readonly, nonatomic, getter=isPressRelease) BOOL pressRelease;
 @property (readonly, copy, nonatomic) NSString *primaryAudience;
 @property (readonly, copy, nonatomic) NSDate *publishDate;
 @property (readonly, nonatomic) NSArray *publisherSpecifiedArticleIDs;
@@ -64,6 +67,7 @@
 @property (readonly, copy, nonatomic) NSString *sourceName;
 @property (readonly, nonatomic, getter=isSponsored) BOOL sponsored;
 @property (readonly, copy, nonatomic) NSString *sponsoredBy;
+@property (readonly, nonatomic) id<FCHeadlineStocksFields> stocksFields;
 @property (readonly, nonatomic) FCTopStoriesStyleConfiguration *storyStyle;
 @property (readonly, nonatomic) unsigned long long storyType;
 @property (readonly, copy, nonatomic) NSString *surfacedByBinID;
@@ -92,6 +96,7 @@
 @property (readonly, copy, nonatomic) NSURL *videoCallToActionURL;
 @property (readonly, nonatomic) double videoDuration;
 @property (readonly, nonatomic) NSURL *videoURL;
+@property (readonly, nonatomic) BOOL webEmbedsEnabled;
 
 
 @optional

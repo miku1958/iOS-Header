@@ -22,6 +22,7 @@
 @property struct CGSize viewportSize;
 
 + (id)nodeWithViewportSize:(struct CGSize)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
 - (void)_renderForTime:(double)arg1;

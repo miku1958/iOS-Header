@@ -16,6 +16,7 @@
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
+- (BOOL)isWLAN;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
 
 @end

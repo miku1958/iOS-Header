@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     BOOL needsCompaction;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)_markNeedsCompaction;
 - (void)addPointer:(void *)arg1;
 - (void)arrayGrow:(unsigned long long)arg1;

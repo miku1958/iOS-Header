@@ -7,35 +7,36 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBTemperatureList-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBCondition;
+@class NSArray, NSString, _INPBCondition;
 
-@interface _INPBTemperatureList : PBCodable <NSCopying>
+@interface _INPBTemperatureList : PBCodable <_INPBTemperatureList, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBCondition *_condition;
-    NSMutableArray *_temperatures;
+    NSArray *_temperatures;
 }
 
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCondition;
-@property (strong, nonatomic) NSMutableArray *temperatures; // @synthesize temperatures=_temperatures;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *temperatures; // @synthesize temperatures=_temperatures;
+@property (readonly, nonatomic) unsigned long long temperaturesCount;
 
-+ (id)options;
 + (Class)temperatureType;
 - (void).cxx_destruct;
 - (void)addTemperature:(id)arg1;
 - (void)clearTemperatures;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)temperatureAtIndex:(unsigned long long)arg1;
-- (unsigned long long)temperaturesCount;
 - (void)writeTo:(id)arg1;
 
 @end

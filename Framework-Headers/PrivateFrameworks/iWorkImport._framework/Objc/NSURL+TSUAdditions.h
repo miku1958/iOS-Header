@@ -11,9 +11,7 @@
 @property (readonly, getter=tsu_isInTrash) BOOL tsu_inTrash;
 
 + (id)tsu_fileURLWithPath:(id)arg1;
-- (BOOL)_isShareRole:(out BOOL *)arg1 role:(id)arg2 error:(id *)arg3;
-- (id)tsu_displayName;
-- (BOOL)tsu_displayName:(out id *)arg1 error:(id *)arg2;
+- (id)tsu_contentModificationDateWithLogContext:(id)arg1;
 - (id)tsu_documentIdentifier;
 - (id)tsu_fileProviderBookmarkableString;
 - (unsigned long long)tsu_fileSize;
@@ -26,10 +24,6 @@
 - (BOOL)tsu_isOnAPFSVolume;
 - (BOOL)tsu_isOnForeignVolume;
 - (BOOL)tsu_isOnSameVolumeAs:(id)arg1;
-- (BOOL)tsu_isShareCollaborator;
-- (BOOL)tsu_isShareCollaborator:(out BOOL *)arg1 error:(id *)arg2;
-- (BOOL)tsu_isShareOwner;
-- (BOOL)tsu_isShareOwner:(out BOOL *)arg1 error:(id *)arg2;
 - (BOOL)tsu_isShared;
 - (BOOL)tsu_isShared:(out BOOL *)arg1 error:(id *)arg2;
 - (void)tsu_performSecurityScopedResourceAccessAsynchronouslyUsingBlock:(CDUnknownBlockType)arg1;

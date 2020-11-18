@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
     NSString *_recordType;
     CKRecordID *_recordID;
     NSMutableDictionary *_itemsByRecordKey;
+    NSMutableDictionary *_rereferencedItemsByRecordKey;
     NSMutableDictionary *_sectionItemsByRecordKey;
     NSNumber *_sizeUpperBoundNumber;
+    NSNumber *_rerefSizeUpperBoundNumber;
 }
 
 @property (readonly, nonatomic) NSArray *allMMCSItems;
@@ -23,6 +25,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *itemsByRecordKey; // @synthesize itemsByRecordKey=_itemsByRecordKey;
 @property (readonly, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
 @property (readonly, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
+@property (readonly) unsigned int rerefSizeUpperBound;
+@property (strong, nonatomic) NSNumber *rerefSizeUpperBoundNumber; // @synthesize rerefSizeUpperBoundNumber=_rerefSizeUpperBoundNumber;
+@property (strong, nonatomic) NSMutableDictionary *rereferencedItemsByRecordKey; // @synthesize rereferencedItemsByRecordKey=_rereferencedItemsByRecordKey;
 @property (strong, nonatomic) NSMutableDictionary *sectionItemsByRecordKey; // @synthesize sectionItemsByRecordKey=_sectionItemsByRecordKey;
 @property (readonly) unsigned int sizeUpperBound;
 @property (strong, nonatomic) NSNumber *sizeUpperBoundNumber; // @synthesize sizeUpperBoundNumber=_sizeUpperBoundNumber;
@@ -31,13 +36,19 @@ __attribute__((visibility("hidden")))
 - (id)CKPropertiesDescription;
 - (void)addMMCSItem:(id)arg1;
 - (void)addMMCSSectionItem:(id)arg1;
+- (void)addRereferencedMMCSItem:(id)arg1;
 - (id)allMMCSAndSectionItems;
-- (id)allMMCSAndSectionItemsWithRecordKey:(id)arg1;
 - (id)allRecordKeys;
+- (id)allRegularAndSectionAndRereferenceItems;
+- (id)allRegularAndSectionAndRereferenceItemsWithRecordKey:(id)arg1;
+- (id)allRereferenceMMCSItems;
 - (id)description;
 - (id)firstMMCSItemError;
 - (id)firstMMCSSectionItemError;
 - (id)initWithRecordType:(id)arg1 recordID:(id)arg2;
+- (BOOL)isAssetRecord;
+- (BOOL)isEmpty;
+- (BOOL)isEmptyOfRereferencesAssets;
 - (BOOL)isPackageSectionRecord;
 
 @end

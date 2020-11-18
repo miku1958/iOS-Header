@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
-@interface DMFSetInterfaceOrientationRequest : CATTaskRequest
+@interface DMFSetInterfaceOrientationRequest : DMFTaskRequest
 {
     BOOL _lockOrientation;
     unsigned long long _interfaceOrientation;

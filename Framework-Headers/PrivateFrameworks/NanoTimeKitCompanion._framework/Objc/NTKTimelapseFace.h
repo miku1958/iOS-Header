@@ -10,8 +10,8 @@
 {
 }
 
-+ (id)_defaultSelectedComplicationSlot;
-+ (id)_localizedNameOverrideForCustomEditMode:(long long)arg1;
++ (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
++ (id)_localizedNameOverrideForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
 - (id)_complicationMigrationPaths;
 - (id)_complicationSlotDescriptors;
 - (id)_customEditModes;
@@ -24,7 +24,6 @@
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
 - (id)_orderedComplicationSlots;
 - (BOOL)_snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
-- (long long)complicationPickerStyle;
 
 @end
 

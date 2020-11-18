@@ -31,16 +31,17 @@
 - (void)activate;
 - (void)activate:(CDUnknownBlockType)arg1;
 - (void)cancelQuery:(id)arg1;
+- (void)clearInput:(id)arg1;
 - (void)deactivate;
 - (void)dealloc;
 - (id)init;
-- (id)initWithDaemonName:(id)arg1;
+- (id)initWithDaemonName:(id)arg1 qos:(unsigned int)arg2;
 - (void)preheat;
 - (void)requestParsecParametersWithReply:(CDUnknownBlockType)arg1;
 - (void)retrieveFirstTimeExperienceTextWithReply:(CDUnknownBlockType)arg1;
 - (void)sendApps:(id)arg1;
 - (void)sendMessageForToken:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3;
-- (void)sendSFFeedbackMessage:(SEL)arg1 withFeedback:(id)arg2;
+- (void)sendSFFeedback:(id)arg1 type:(long long)arg2 queryId:(unsigned long long)arg3;
 - (id)startQuery:(id)arg1 withResponse:(id)arg2 isStable:(BOOL)arg3 queue:(id)arg4 delegate:(id)arg5;
 
 @end

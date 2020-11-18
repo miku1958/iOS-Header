@@ -7,38 +7,38 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBBalanceAmountValue-Protocol.h>
 
-@class PBUnknownFields, _INPBCurrencyAmountValue, _INPBDecimalNumberValue, _INPBValueMetadata;
+@class NSString, _INPBCurrencyAmountValue, _INPBDecimalNumberValue, _INPBValueMetadata;
 
-@interface _INPBBalanceAmountValue : PBCodable <NSCopying>
+@interface _INPBBalanceAmountValue : PBCodable <_INPBBalanceAmountValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    CDStruct_f953fb60 _has;
+    int _type;
     _INPBCurrencyAmountValue *_currencyAmount;
     _INPBDecimalNumberValue *_customAmount;
-    int _type;
     _INPBValueMetadata *_valueMetadata;
-    CDStruct_f953fb60 _has;
 }
 
 @property (strong, nonatomic) _INPBCurrencyAmountValue *currencyAmount; // @synthesize currencyAmount=_currencyAmount;
 @property (strong, nonatomic) _INPBDecimalNumberValue *customAmount; // @synthesize customAmount=_customAmount;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCurrencyAmount;
 @property (readonly, nonatomic) BOOL hasCustomAmount;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (nonatomic) int type; // @synthesize type=_type;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

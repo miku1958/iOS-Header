@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable;
 @protocol OS_dispatch_queue;
@@ -35,6 +35,7 @@
 - (id)createPreventLockAssertionWithDuration:(double)arg1;
 - (void)dealloc;
 - (BOOL)disableKeybagStash;
+- (BOOL)hadFirstUnlock;
 - (id)init;
 - (int)installationKeybagStateForDescriptor:(id)arg1;
 - (BOOL)persistKeybagStash;

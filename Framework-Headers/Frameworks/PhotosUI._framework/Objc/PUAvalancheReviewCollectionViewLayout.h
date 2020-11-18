@@ -23,7 +23,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_badgeLayoutAttributesForItemLayoutAttributes:(id)arg1;
 - (struct CGRect)_floatingSelectionBadgeFrameForItemFrame:(struct CGRect)arg1 visibleItemFrame:(struct CGRect)arg2 atIndexPath:(id)arg3;
+- (BOOL)_shouldInvalidateCachedLayoutForBoundsChange:(struct CGRect)arg1;
 - (BOOL)_supportsAdvancedTransitionAnimations;
+- (BOOL)flipsHorizontallyInOppositeLayoutDirection;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (id)layoutAttributesForSupplementaryViewOfKind:(id)arg1 atIndexPath:(id)arg2;

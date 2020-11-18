@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class HKObjectType, NSString;
 
 @interface HDAppSubscription : NSObject
 {
@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) long long lastAckTime; // @synthesize lastAckTime=_lastAckTime;
 @property (readonly, nonatomic) unsigned long long lastAnchor; // @synthesize lastAnchor=_lastAnchor;
 @property (readonly, nonatomic) long long launchTimeHysteresis; // @synthesize launchTimeHysteresis=_launchTimeHysteresis;
+@property (readonly, copy, nonatomic) HKObjectType *objectType;
 @property (readonly, nonatomic) unsigned long long updateFrequency; // @synthesize updateFrequency=_updateFrequency;
 
 - (void).cxx_destruct;

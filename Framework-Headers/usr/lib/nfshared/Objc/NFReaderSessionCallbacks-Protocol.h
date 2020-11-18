@@ -7,13 +7,13 @@
 #import <nfshared/NFSessionCallbackInterface-Protocol.h>
 #import <nfshared/NSObject-Protocol.h>
 
-@class NFTechnologyEvent, NSArray, NSError;
+@class NFFieldNotification, NSArray, NSError;
 
 @protocol NFReaderSessionCallbacks <NSObject, NFSessionCallbackInterface>
 - (void)didTerminate:(NSError *)arg1;
 
 @optional
-- (void)didDetectExternalReader:(NFTechnologyEvent *)arg1;
+- (void)didDetectExternalReaderWithNotification:(NFFieldNotification *)arg1;
 - (void)didDetectNDEFMessages:(NSArray *)arg1 fromTags:(NSArray *)arg2;
 - (void)didDetectTags:(NSArray *)arg1;
 @end

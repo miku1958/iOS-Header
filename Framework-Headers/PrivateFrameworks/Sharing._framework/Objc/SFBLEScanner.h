@@ -8,7 +8,7 @@
 
 #import <Sharing/CBCentralManagerDelegate-Protocol.h>
 
-@class CBCentralManager, CURetrier, NSArray, NSData, NSString;
+@class CBCentralManager, CURetrier, NSArray, NSData, NSSet, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface SFBLEScanner : NSObject <CBCentralManagerDelegate>
@@ -21,6 +21,7 @@
     BOOL _invalidateCalled;
     BOOL _needDups;
     long long _payloadType;
+    BOOL _poweredOffSleep;
     NSObject<OS_dispatch_source> *_rescanTimer;
     struct __sFILE {
         char *_field1;
@@ -48,6 +49,7 @@
     CURetrier *_startRetrier;
     BOOL _timeoutFired;
     NSObject<OS_dispatch_source> *_timeoutTimer;
+    NSSet *_trackedPeersApplied;
     BOOL _updating;
     struct LogCategory *_ucat;
     BOOL _rssiLog;
@@ -72,6 +74,7 @@
     long long _scanWindow;
     double _timeout;
     CDUnknownBlockType _timeoutHandler;
+    NSSet *_trackedPeers;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
@@ -100,6 +103,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) double timeout; // @synthesize timeout=_timeout;
 @property (copy, nonatomic) CDUnknownBlockType timeoutHandler; // @synthesize timeoutHandler=_timeoutHandler;
+@property (copy, nonatomic) NSSet *trackedPeers; // @synthesize trackedPeers=_trackedPeers;
 
 - (void).cxx_destruct;
 - (void)_activateWithCompletion:(CDUnknownBlockType)arg1;
@@ -109,6 +113,8 @@
 - (BOOL)_needActiveScan;
 - (BOOL)_needDups;
 - (void)_poweredOff;
+- (void)_poweredOn;
+- (void)_removeAllDevicesWithReason:(id)arg1;
 - (void)_rescanTimerFired;
 - (void)_restartIfNeeded;
 - (void)_rssiLogClose;

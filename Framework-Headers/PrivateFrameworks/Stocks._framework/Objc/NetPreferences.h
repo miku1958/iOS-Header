@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -12,14 +12,15 @@
 {
     NSString *_buildVersion;
     NSString *_productVersion;
-    NSString *_UUID;
     BOOL _serviceDebugging;
     BOOL _isNetworkReachable;
     NSString *_requestCountryCode;
     NSString *_requestLanguageCode;
     NSString *_acceptLanguageCode;
+    NSString *_UUID;
 }
 
+@property (readonly, nonatomic) NSString *UUID; // @synthesize UUID=_UUID;
 @property (strong) NSString *acceptLanguageCode;
 @property (nonatomic, getter=isNetworkReachable) BOOL networkReachable;
 @property (strong) NSString *requestCountryCode;
@@ -28,7 +29,6 @@
 + (void)clearSharedPreferences;
 + (id)sharedPreferences;
 - (void).cxx_destruct;
-- (id)UUID;
 - (id)_cacheDirectoryPath;
 - (id)_stocksAcceptLanguage;
 - (id)_stocksUserAgent;

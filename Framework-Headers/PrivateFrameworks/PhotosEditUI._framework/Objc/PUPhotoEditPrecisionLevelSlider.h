@@ -10,6 +10,7 @@
 
 @class NSString, PUPhotoEditPrecisionLevelContentView;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditPrecisionLevelSlider : PUPhotoEditLevelSlider <PUPhotoEditPrecisionLevelContentViewDataSource>
 {
     PUPhotoEditPrecisionLevelContentView *_precisionSliderContentView;
@@ -18,6 +19,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hideIdentityIndicator;
+@property (nonatomic) unsigned long long mainTickMarkInterval;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

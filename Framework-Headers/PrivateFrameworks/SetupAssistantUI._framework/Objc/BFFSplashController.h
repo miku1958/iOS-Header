@@ -67,6 +67,7 @@
 - (void)setTitle:(id)arg1 forButtonAtIndex:(unsigned long long)arg2 action:(CDUnknownBlockType)arg3;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBleedColor;
+- (void)updateBleedViewLayout;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;

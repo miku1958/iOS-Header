@@ -117,7 +117,6 @@
 - (BOOL)isAddValuePending;
 - (BOOL)isEnroute;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)supportsExpressPassType:(long long)arg1;
 - (BOOL)supportsInAppPaymentOnNetworks:(id)arg1 capabilities:(unsigned long long)arg2 issuerCountryCodes:(id)arg3 paymentApplicationStates:(id)arg4;
 - (BOOL)supportsInAppPaymentOnNetworks:(id)arg1 issuerCountryCodes:(id)arg2;
 - (id)transitProperties;

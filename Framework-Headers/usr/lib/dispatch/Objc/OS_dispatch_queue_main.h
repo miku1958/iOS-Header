@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <dispatch/OS_dispatch_queue.h>
+#import <dispatch/OS_dispatch_queue_serial.h>
 
 #import <dispatch/OS_dispatch_queue_main-Protocol.h>
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
-@interface OS_dispatch_queue_main : OS_dispatch_queue <OS_dispatch_queue_main>
+@interface OS_dispatch_queue_main : OS_dispatch_queue_serial <OS_dispatch_queue_main>
 {
 }
 

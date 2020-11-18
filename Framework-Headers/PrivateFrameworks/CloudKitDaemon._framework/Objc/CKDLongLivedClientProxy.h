@@ -33,6 +33,7 @@
 - (BOOL)hasDisplaysSystemAcceptPromptEntitlement;
 - (BOOL)hasLightweightPCSEntitlement;
 - (BOOL)hasMasqueradingEntitlement;
+- (BOOL)hasNonLegacyShareURLEntitlement;
 - (BOOL)hasOutOfProcessUIEntitlement;
 - (BOOL)hasParticipantPIIEntitlement;
 - (BOOL)hasProtectionDataEntitlement;

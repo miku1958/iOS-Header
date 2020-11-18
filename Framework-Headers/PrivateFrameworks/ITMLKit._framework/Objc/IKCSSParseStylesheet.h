@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class IKArray;
 
 @interface IKCSSParseStylesheet : NSObject
 {
-    NSArray *_cssValue;
+    IKArray *_cssValue;
 }
 
-@property (strong, nonatomic) NSArray *cssValue; // @synthesize cssValue=_cssValue;
+@property (strong, nonatomic) IKArray *cssValue; // @synthesize cssValue=_cssValue;
 
 - (void).cxx_destruct;
 - (id)description;

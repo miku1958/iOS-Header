@@ -7,6 +7,7 @@
 #import <Foundation/NSArray.h>
 
 @interface NSArray (PhotoLibraryServices)
+- (BOOL)_pl_any:(CDUnknownBlockType)arg1;
 - (id)_pl_filter:(CDUnknownBlockType)arg1;
 - (id)_pl_firstObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)_pl_flatMap:(CDUnknownBlockType)arg1;

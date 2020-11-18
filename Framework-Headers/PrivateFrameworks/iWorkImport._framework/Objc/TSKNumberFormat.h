@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface TSKNumberFormat : TSKFormat <NSCopying>
 {
     BOOL _showThousandsSeparator;
+    BOOL _usePlusSign;
     int _negativeStyle;
     unsigned long long _decimalPlaces;
 }
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long decimalPlaces; // @synthesize decimalPlaces=_decimalPlaces;
 @property (readonly, nonatomic) int negativeStyle; // @synthesize negativeStyle=_negativeStyle;
 @property (readonly, nonatomic) BOOL showThousandsSeparator; // @synthesize showThousandsSeparator=_showThousandsSeparator;
+@property (readonly, nonatomic) BOOL usePlusSign; // @synthesize usePlusSign=_usePlusSign;
 
 - (id)asNumberFormat;
 - (id)description;

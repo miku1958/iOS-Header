@@ -16,6 +16,7 @@
 
 @property (copy, nonatomic) NSData *seed;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

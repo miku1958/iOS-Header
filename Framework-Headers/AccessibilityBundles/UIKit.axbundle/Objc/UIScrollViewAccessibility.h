@@ -24,6 +24,7 @@
 - (id)_accessibilityFindRefreshControl;
 - (id)_accessibilityFirstLastOpaqueElement:(BOOL)arg1;
 - (id)_accessibilityFirstOpaqueElement;
+- (id)_accessibilityHorizontalScrollBarElement;
 - (BOOL)_accessibilityIsScannerGroup;
 - (BOOL)_accessibilityIsScrollAncestor;
 - (id)_accessibilityLastOpaqueElement;
@@ -54,12 +55,17 @@
 - (struct CGRect)_accessibilityUIViewAccessibilityFrame;
 - (BOOL)_accessibilityUseContentInset;
 - (id)_accessibilityUserTestingChildren;
+- (id)_accessibilityVerticalScrollBarElement;
 - (struct UIEdgeInsets)_accessibilityVisibleContentInset;
 - (struct CGPoint)_accessibilityVisibleScrollArea:(BOOL)arg1;
 - (void)_accessibilityZoomAtPoint:(struct CGPoint)arg1 zoomIn:(BOOL)arg2;
 - (double)_accessibilityZoomScale;
 - (void)_announceDelayedStatus;
+- (id)_axHorizontalScrollBar;
+- (void)_axSetHorizontalScrollBar:(id)arg1;
+- (void)_axSetVerticalScrollBar:(id)arg1;
 - (BOOL)_axShouldScrollToAlignWithPage;
+- (id)_axVerticalScrollBar;
 - (void)_handleScrollViewPullDown;
 - (void)_manipulateWithRefreshControl:(id)arg1;
 - (void)_notifyDidScroll;
@@ -67,6 +73,7 @@
 - (void)_scrollViewAnimationEnded:(id)arg1 finished:(BOOL)arg2;
 - (id)_staticScrollBar;
 - (void)accessibilityApplyScrollContent:(struct CGPoint)arg1 sendScrollStatus:(BOOL)arg2 animated:(BOOL)arg3;
+- (long long)accessibilityContainerType;
 - (struct CGRect)accessibilityFrame;
 - (BOOL)accessibilityScrollDownPage;
 - (BOOL)accessibilityScrollDownPageSupported;

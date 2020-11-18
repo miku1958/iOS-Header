@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/NSCopying-Protocol.h>
 
@@ -17,7 +17,10 @@
 
 @property (readonly) MTLPipelineBufferDescriptorArray *buffers; // @dynamic buffers;
 @property (strong, nonatomic) id<MTLFunction> computeFunction; // @dynamic computeFunction;
+@property (nonatomic) BOOL forceResourceIndex; // @dynamic forceResourceIndex;
 @property (copy, nonatomic) NSString *label; // @dynamic label;
+@property (nonatomic) unsigned long long maxTotalThreadsPerThreadgroup; // @dynamic maxTotalThreadsPerThreadgroup;
+@property (nonatomic) unsigned long long resourceIndex; // @dynamic resourceIndex;
 @property (copy, nonatomic) MTLStageInputOutputDescriptor *stageInputDescriptor; // @dynamic stageInputDescriptor;
 @property (nonatomic) BOOL threadGroupSizeIsMultipleOfThreadExecutionWidth; // @dynamic threadGroupSizeIsMultipleOfThreadExecutionWidth;
 

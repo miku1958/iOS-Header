@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, NSString;
 
@@ -38,6 +38,7 @@
 @property (strong, nonatomic) NSMutableArray *temporaryCandidates; // @synthesize temporaryCandidates=_temporaryCandidates;
 @property (nonatomic) int textContentType; // @synthesize textContentType=_textContentType;
 
+- (void).cxx_destruct;
 - (void)acceptInlineCandidates;
 - (void)addContextCandidate:(void *)arg1 accept:(BOOL)arg2;
 - (void)addContextStringCandidate:(void *)arg1;

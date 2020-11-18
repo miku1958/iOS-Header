@@ -13,7 +13,10 @@
 - (id)enumerateWithIncrementalSaveUsingObjects:(id)arg1 shouldRefreshAfterSave:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (id)enumerateWithIncrementalSaveUsingObjects:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (BOOL)isUserInterfaceContext;
+- (id)pathManager;
 - (id)photoLibrary;
+- (BOOL)pl_executeBatchUpdateRequest:(id)arg1 withBatchSize:(unsigned long long)arg2 error:(id *)arg3;
 - (void)pl_refresh;
+- (id)pl_resultWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
 @end
 

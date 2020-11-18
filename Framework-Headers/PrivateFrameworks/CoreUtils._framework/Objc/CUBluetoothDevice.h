@@ -4,19 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, NSUUID;
 
 @interface CUBluetoothDevice : NSObject
 {
     BOOL _magicPaired;
     BOOL _supportsAACPService;
     BOOL _present;
+    unsigned int _connectedServices;
     int _colorCode;
     unsigned int _productIdentifier;
     CDStruct_83abfce7 _address;
     NSString *_addressString;
+    NSUUID *_identifier;
     NSString *_manufacturer;
     NSString *_modelNumber;
     NSString *_name;
@@ -25,6 +27,8 @@
 @property (nonatomic) CDStruct_83abfce7 address; // @synthesize address=_address;
 @property (copy, nonatomic) NSString *addressString; // @synthesize addressString=_addressString;
 @property (nonatomic) int colorCode; // @synthesize colorCode=_colorCode;
+@property (nonatomic) unsigned int connectedServices; // @synthesize connectedServices=_connectedServices;
+@property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL magicPaired; // @synthesize magicPaired=_magicPaired;
 @property (copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
 @property (copy, nonatomic) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;
@@ -35,7 +39,9 @@
 
 - (void).cxx_destruct;
 - (id)description;
+- (unsigned long long)hash;
 - (id)init;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

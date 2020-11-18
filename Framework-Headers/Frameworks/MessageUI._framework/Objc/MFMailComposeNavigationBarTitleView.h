@@ -4,25 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/_UINavigationBarTitleView.h>
 
 @class NSString, UILabel;
 
-@interface MFMailComposeNavigationBarTitleView : UIView
+@interface MFMailComposeNavigationBarTitleView : _UINavigationBarTitleView
 {
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     unsigned long long _style;
 }
 
+@property (copy, nonatomic) NSString *subtitle;
 @property (copy, nonatomic) NSString *title;
 
+- (struct UIEdgeInsets)_contentInsetsWithExclusionRects:(id)arg1 wantsUniformHorizontalInsets:(BOOL)arg2;
+- (long long)_preferredAlignment;
+- (double)_subtitleFontSizeWhenMini:(BOOL)arg1;
 - (id)_subtitleTextColor;
+- (double)_titleFontSizeWhenMini:(BOOL)arg1;
+- (double)_topPaddingForTitleWhenMini:(BOOL)arg1;
 - (double)_verticalOffsetForSubtitleWhenMini:(BOOL)arg1;
-- (void)dealloc;
+- (void)contentDidChange;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
-- (void)setSubtitleText:(id)arg1 withStyle:(unsigned long long)arg2;
+- (void)setSubtitle:(id)arg1 withStyle:(unsigned long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

@@ -23,6 +23,7 @@
 @property (strong, nonatomic) PHFetchResult *outputFetchResult; // @synthesize outputFetchResult=_outputFetchResult;
 
 - (void).cxx_destruct;
+- (void)handleBegin;
 - (void)handleFinish;
 - (id)init;
 - (id)initWithCollection:(id)arg1;

@@ -11,7 +11,7 @@
 #import <MessageUI/UITextInputPrivate-Protocol.h>
 #import <MessageUI/UITextViewDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSIndexSet, NSLayoutConstraint, NSMutableArray, NSString, UIButton, UIColor, UIFont, UIImage, UIInputContextHistory, UILabel, UIScrollView, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _MFAtomFieldEditor, _MFAtomTextViewBaselineLayoutStrut, _UITextFieldRoundedRectBackgroundViewNeue;
+@class NSArray, NSDictionary, NSIndexSet, NSLayoutConstraint, NSMutableArray, NSString, RTIInputSystemSourceSession, UIButton, UIColor, UIFont, UIImage, UIInputContextHistory, UILabel, UIScrollView, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _MFAtomFieldEditor, _MFAtomTextViewBaselineLayoutStrut, _UITextFieldRoundedRectBackgroundViewNeue;
 @protocol MFAtomTextViewDelegate, MFAtomTextViewDelegateInternal, UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer;
 
 @interface MFAtomTextView : UIControl <NSLayoutManagerDelegate, UITextViewDelegate, UITextInputPrivate, UITextInput>
@@ -53,6 +53,7 @@
 }
 
 @property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
+@property (readonly, nonatomic) RTIInputSystemSourceSession *_rtiSourceSession;
 @property (nonatomic) long long _textInputSource;
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
@@ -91,6 +92,7 @@
 @property (nonatomic) BOOL hasDefaultContents;
 @property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hidePrediction;
 @property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate; // @dynamic inputDelegate;
 @property (readonly, nonatomic) id insertDictationResultPlaceholder;
@@ -108,6 +110,7 @@
 @property (nonatomic) BOOL loadKeyboardsForSiriLanguage;
 @property (readonly, nonatomic) UITextRange *markedTextRange; // @dynamic markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle; // @dynamic markedTextStyle;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (copy, nonatomic) NSString *placeholder; // @synthesize placeholder=_placeholder;
 @property (strong, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
 @property (nonatomic) struct NSDirectionalEdgeInsets placeholderInsets; // @synthesize placeholderInsets=_placeholderInsets;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSXPCServerClient-Protocol.h>
 
@@ -26,6 +26,7 @@
 @property (readonly) Class superclass;
 
 + (id)wrapperWithConnection:(id)arg1;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1;
 - (void)invalidate;

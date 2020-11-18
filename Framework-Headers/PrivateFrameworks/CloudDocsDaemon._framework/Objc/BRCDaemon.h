@@ -92,6 +92,7 @@
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)loadAccount;
+- (void)loadAndResumeAccount;
 - (void)localeDidChange;
 - (void)networkReachabilityChanged:(BOOL)arg1;
 - (void)networkReachabilityFlagsChanged:(unsigned int)arg1;

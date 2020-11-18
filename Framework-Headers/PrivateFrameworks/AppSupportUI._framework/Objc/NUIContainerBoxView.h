@@ -40,7 +40,7 @@
 - (void)dealloc;
 - (id)initWithArrangedSubviews:(id)arg1;
 - (BOOL)invalidateIntrinsicContentSizeRequiringArrangedSubviewRemeasurement:(BOOL)arg1;
-- (BOOL)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
+- (void)layoutArrangedSubviewsInBounds:(struct CGRect)arg1;
 - (void)populateBoxArrangementCells:(vector_eb457d57 *)arg1;
 - (void)setBaselineRelativeArrangement:(BOOL)arg1;
 

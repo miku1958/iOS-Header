@@ -16,16 +16,16 @@
 @interface INRideOption : NSObject <INCacheableContainer, INRideOptionExport, NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
+    NSArray *_availablePartySizeOptions;
+    NSArray *_fareLineItems;
     NSString *_name;
     NSDate *_estimatedPickupDate;
     INPriceRange *_priceRange;
     NSNumber *_usesMeteredFare;
     NSString *_disclaimerMessage;
-    NSArray *_availablePartySizeOptions;
     NSString *_availablePartySizeOptionsSelectionPrompt;
     NSString *_specialPricing;
     INImage *_specialPricingBadgeImage;
-    NSArray *_fareLineItems;
     NSUserActivity *_userActivityForBookingInApplication;
 }
 

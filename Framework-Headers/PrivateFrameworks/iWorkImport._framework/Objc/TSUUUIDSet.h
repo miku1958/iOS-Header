@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface TSUUUIDSet : NSObject <NSCopying, NSMutableCopying>
 {
     unsigned int _index;
-    unordered_set_c6a929bd _uuidSet;
+    UUIDSet_bcc2db41 _uuidSet;
 }
 
 @property (readonly) unsigned long long count;
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)expandedSetWithUuid:(const UUIDData_5fbc143e *)arg1;
-- (id)expandedSetWithUuids:(const unordered_set_c6a929bd *)arg1;
+- (id)expandedSetWithUuids:(const UUIDSet_bcc2db41 *)arg1;
 - (id)expandedSetWithUuidsFromVector:(const vector_4dc5f307 *)arg1;
 - (void)foreachUuid:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
@@ -37,17 +37,19 @@ __attribute__((visibility("hidden")))
 - (BOOL)intersectsSet:(id)arg1;
 - (BOOL)isAllInvalid;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isSubsetOf:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (BOOL)p_addUUID:(const UUIDData_5fbc143e *)arg1;
-- (void)p_addUUIDs:(const unordered_set_c6a929bd *)arg1;
+- (void)p_addUUIDs:(const UUIDSet_bcc2db41 *)arg1;
 - (void)p_addUUIDsFromVector:(const vector_4dc5f307 *)arg1;
 - (BOOL)p_removeUUID:(const UUIDData_5fbc143e *)arg1;
-- (void)p_removeUUIDs:(const unordered_set_c6a929bd *)arg1;
+- (void)p_removeUUIDs:(const UUIDSet_bcc2db41 *)arg1;
 - (void)p_removeUUIDsFromVector:(const vector_4dc5f307 *)arg1;
 - (id)reducedSetMinusUuid:(const UUIDData_5fbc143e *)arg1;
-- (id)reducedSetMinusUuids:(const unordered_set_c6a929bd *)arg1;
+- (id)reducedSetMinusUuids:(const UUIDSet_bcc2db41 *)arg1;
 - (id)reducedSetMinusUuidsFromVector:(const vector_4dc5f307 *)arg1;
 - (void)saveToMessage:(struct UuidSetStoreArchive_UuidSet *)arg1;
+- (id)setByUnionWithSet:(id)arg1;
 - (void)setIndex:(unsigned int)arg1;
 - (vector_4dc5f307)uuidsAsVector;
 

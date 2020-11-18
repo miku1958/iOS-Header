@@ -13,16 +13,12 @@
 
 @interface _SFPBGraphicalFloat : PBCodable <_SFPBGraphicalFloat, NSSecureCoding>
 {
-    struct {
-        unsigned int doubleValue:1;
-    } _has;
     double _doubleValue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
-@property (readonly, nonatomic) BOOL hasDoubleValue;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly) Class superclass;

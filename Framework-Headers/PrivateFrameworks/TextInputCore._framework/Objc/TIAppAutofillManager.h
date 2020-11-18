@@ -4,34 +4,48 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class LAContext, NSDictionary, NSString, NSUUID;
+@class IMOneTimeCodeAccelerator, LAContext, NSDictionary, NSString, NSUUID;
+@protocol OS_dispatch_queue;
 
 @interface TIAppAutofillManager : NSObject
 {
+    NSDictionary *_currentOneTimeCode;
     NSUUID *_documentIdentifierForLastAutofillGeneration;
     NSString *_clientIdentifierForLastAutofillGeneration;
     NSString *_clientIdentifierForLastKeyboardSync;
     NSDictionary *_queuedCustomInfo;
     LAContext *_laContext;
+    NSObject<OS_dispatch_queue> *_oneTimeCodeAcceleratorQueue;
+    IMOneTimeCodeAccelerator *_oneTimeCodeAccelerator;
 }
 
 @property (strong, nonatomic) NSString *clientIdentifierForLastAutofillGeneration; // @synthesize clientIdentifierForLastAutofillGeneration=_clientIdentifierForLastAutofillGeneration;
 @property (strong, nonatomic) NSString *clientIdentifierForLastKeyboardSync; // @synthesize clientIdentifierForLastKeyboardSync=_clientIdentifierForLastKeyboardSync;
+@property (strong, nonatomic) NSDictionary *currentOneTimeCode; // @synthesize currentOneTimeCode=_currentOneTimeCode;
 @property (strong, nonatomic) NSUUID *documentIdentifierForLastAutofillGeneration; // @synthesize documentIdentifierForLastAutofillGeneration=_documentIdentifierForLastAutofillGeneration;
 @property (strong, nonatomic) LAContext *laContext; // @synthesize laContext=_laContext;
+@property (strong, nonatomic) IMOneTimeCodeAccelerator *oneTimeCodeAccelerator; // @synthesize oneTimeCodeAccelerator=_oneTimeCodeAccelerator;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *oneTimeCodeAcceleratorQueue; // @synthesize oneTimeCodeAcceleratorQueue=_oneTimeCodeAcceleratorQueue;
 @property (strong, nonatomic) NSDictionary *queuedCustomInfo; // @synthesize queuedCustomInfo=_queuedCustomInfo;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)customInfoFromCredential:(id)arg1;
-- (void)dealloc;
 - (id)generateAutofillFormCandidatesWithSecureCandidateRenderer:(id)arg1 withRenderTraits:(id)arg2 withKeyboardState:(id)arg3;
+- (id)generateAutofillFormSuggestedUsernameWithSecureCandidateRenderer:(id)arg1 withRenderTraits:(id)arg2 withKeyboardState:(id)arg3;
+- (id)generateOneTimeCodeCandidatesWithSecureCandidateRenderer:(id)arg1 withRenderTraits:(id)arg2 withKeyboardState:(id)arg3;
 - (id)getCredentialsWithApplicationIdentifier:(id)arg1 autofillContext:(id)arg2;
+- (id)initPrivate;
+- (BOOL)isValidedString:(id)arg1;
 - (id)obtainApplicationIdentifierFromConnection:(id)arg1;
+- (id)obtainBundleIdentifierFromConnection:(id)arg1;
 - (void)obtainCredential:(id)arg1;
+- (void)obtainOneTimeCodeCredential:(id)arg1;
 - (void)pushQueuedCredentialIfNecessaryForKeyboardState:(id)arg1;
-- (void)shouldAcceptAutofill:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)shouldAcceptAutofill:(id)arg1 withPayload:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)shouldAcceptOneTimeCode:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)shouldAuthenticateToAcceptAutofill;
 
 @end

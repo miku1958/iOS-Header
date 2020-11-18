@@ -14,10 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityAppearanceAnnouncementHandledByEnclosingEntity;
-- (Class)_axCoverSheetWindowClass;
 - (id)_axLongLookView;
-- (id)_axModalAncestorForLongLookView:(id)arg1;
-- (Class)_axNotificationBannerWindowClass;
 - (void)dismissViewControllerWithTransition:(int)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 

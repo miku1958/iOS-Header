@@ -38,6 +38,7 @@
 + (id)compatibilityInfoForAppInfo:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_setLaunchInterfaces:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithBundle:(id)arg1;
@@ -45,7 +46,6 @@
 - (id)initWithXPCDictionary:(id)arg1;
 - (id)launchInterfaceIdentifierForRequest:(id)arg1;
 - (id)launchInterfaceWithIdentifier:(id)arg1;
-- (void)set_launchInterfaces:(id)arg1;
 
 @end
 

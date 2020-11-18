@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface VCPacketBundler : NSObject
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     BOOL _allowLargePackets;
     BOOL _isFull;
     int _operatingMode;
+    unsigned char _priority;
 }
 
 @property (nonatomic) BOOL allowLargePackets; // @synthesize allowLargePackets=_allowLargePackets;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int maxPacketSize;
 @property (readonly, nonatomic) unsigned int packetsPerBundle;
 @property (nonatomic) int payload; // @synthesize payload=_payload;
+@property (readonly, nonatomic) unsigned char priority; // @synthesize priority=_priority;
 @property (nonatomic) unsigned int timestamp; // @synthesize timestamp=_timestamp;
 
 - (BOOL)_copyInputBytes:(void *)arg1 numInputBytes:(unsigned int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4;
@@ -45,7 +47,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)accessUnitHeaderSectionSize;
 - (unsigned int)accessUnitHeaderSectionSizeMaximum;
 - (BOOL)allocateBundleBuffer:(unsigned int)arg1;
-- (BOOL)bundleAudio:(void *)arg1 numInputBytes:(unsigned int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4 voiceActivity:(BOOL)arg5;
+- (BOOL)bundleAudio:(void *)arg1 numInputBytes:(unsigned int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4 voiceActivity:(BOOL)arg5 priority:(unsigned char)arg6;
 - (BOOL)bundleAudioLegacy:(void *)arg1 numInputBytes:(unsigned int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4;
 - (BOOL)bundleAudioRFC3640:(void *)arg1 numInputBytes:(unsigned int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4;
 - (unsigned int)bundleBufferSizeWidthMaxPacketSize:(unsigned int)arg1 maxPacketCount:(unsigned int)arg2;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)resetBuffer;
 - (BOOL)setPacketsPerBundle:(unsigned int)arg1;
 - (void)unlock;
+- (void)updatePriority:(unsigned char)arg1;
 
 @end
 

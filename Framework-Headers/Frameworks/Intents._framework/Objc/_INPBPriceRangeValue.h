@@ -7,36 +7,37 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBPriceRangeValue-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBDecimalNumberValue, _INPBValueMetadata;
+@class NSString, _INPBDecimalNumberValue, _INPBValueMetadata;
 
-@interface _INPBPriceRangeValue : PBCodable <NSCopying>
+@interface _INPBPriceRangeValue : PBCodable <_INPBPriceRangeValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     NSString *_currencyCode;
     _INPBDecimalNumberValue *_maximumPrice;
     _INPBDecimalNumberValue *_minimumPrice;
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (strong, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
+@property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCurrencyCode;
 @property (readonly, nonatomic) BOOL hasMaximumPrice;
 @property (readonly, nonatomic) BOOL hasMinimumPrice;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBDecimalNumberValue *maximumPrice; // @synthesize maximumPrice=_maximumPrice;
 @property (strong, nonatomic) _INPBDecimalNumberValue *minimumPrice; // @synthesize minimumPrice=_minimumPrice;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -13,10 +13,10 @@
     void *_imp;
 }
 
-@property (readonly, strong, nonatomic) NSString *address;
-@property (readonly, strong, nonatomic) NSString *name;
-@property (readonly, strong, nonatomic) NSString *netServiceDomain;
-@property (readonly, strong, nonatomic) NSString *netServiceName;
+@property (readonly, nonatomic) NSString *address;
+@property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) NSString *netServiceDomain;
+@property (readonly, nonatomic) NSString *netServiceName;
 @property (readonly, nonatomic) unsigned long long port;
 
 + (id)fromAddressAsText:(id)arg1 withName:(id)arg2;

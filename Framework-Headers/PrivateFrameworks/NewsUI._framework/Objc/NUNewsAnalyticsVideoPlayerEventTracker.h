@@ -9,7 +9,7 @@
 #import <NewsUI/NSSNewsAnalyticsArticleViewingSessionTracker-Protocol.h>
 #import <NewsUI/NUVideoPlayerEventTracker-Protocol.h>
 
-@class NSArray, NSData, NSSNewsAnalyticsEventAnnotator, NSString, NTPBEvent, NUNewsAnalyticsVideoPlayerEventTrackerConfiguration;
+@class NSOrderedSet, NSSNewsAnalyticsEventAnnotator, NSString, NTPBEvent, NUNewsAnalyticsVideoPlayerEventTrackerConfiguration;
 @protocol NSSNewsAnalyticsPBEventStreamObserver, NSSNewsAnalyticsSessionManager, NUVideoItem;
 
 @interface NUNewsAnalyticsVideoPlayerEventTracker : NSObject <NUVideoPlayerEventTracker, NSSNewsAnalyticsArticleViewingSessionTracker>
@@ -21,8 +21,7 @@
     NUNewsAnalyticsVideoPlayerEventTrackerConfiguration *_configuration;
     NSSNewsAnalyticsEventAnnotator *_eventAnnotator;
     id<NSSNewsAnalyticsSessionManager> _sessionManager;
-    NSArray *_videoItems;
-    NSData *_leadingVideoItemSessionID;
+    NSOrderedSet *_videoItems;
     id<NUVideoItem> _currentVideo;
     NTPBEvent *_articleHostViewExposureEvent;
 }
@@ -35,12 +34,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSSNewsAnalyticsEventAnnotator *eventAnnotator; // @synthesize eventAnnotator=_eventAnnotator;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSData *leadingVideoItemSessionID; // @synthesize leadingVideoItemSessionID=_leadingVideoItemSessionID;
 @property (readonly, weak, nonatomic) id<NSSNewsAnalyticsPBEventStreamObserver> observer; // @synthesize observer=_observer;
 @property (nonatomic) BOOL playbackFinishedForLastVideo; // @synthesize playbackFinishedForLastVideo=_playbackFinishedForLastVideo;
 @property (readonly, weak, nonatomic) id<NSSNewsAnalyticsSessionManager> sessionManager; // @synthesize sessionManager=_sessionManager;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSArray *videoItems; // @synthesize videoItems=_videoItems;
+@property (readonly, copy, nonatomic) NSOrderedSet *videoItems; // @synthesize videoItems=_videoItems;
 @property (nonatomic, getter=isVideoPlayerVisible) BOOL videoPlayerIsVisible; // @synthesize videoPlayerIsVisible=_videoPlayerIsVisible;
 
 - (void).cxx_destruct;
@@ -50,7 +48,6 @@
 - (void)_createArticleHostViewExposureEventConfiguredForVideoItem:(id)arg1 withArticlePresentationReason:(int)arg2;
 - (id)_currentArticleID;
 - (id)_currentArticleViewingSessionID;
-- (unsigned long long)_displayRankOfVideoItem:(id)arg1;
 - (id)_eventForEventObject:(id)arg1;
 - (id)_eventObjectWithAdEngagementEvent:(id)arg1;
 - (id)_eventObjectWithAdImpressionEvent:(id)arg1;
@@ -60,12 +57,13 @@
 - (id)_linkTapEventWithLinkType:(int)arg1 forVideoItem:(id)arg2;
 - (id)_mediaEngageCompleteEventConfiguredForVideoItem:(id)arg1;
 - (id)_mediaEngageEventWithUserAction:(int)arg1 configuredForVideoItem:(id)arg2;
+- (int)_rankInVideoPlaylistOfVideoItem:(id)arg1;
 - (void)_submitEvent:(id)arg1;
 - (void)_submitEventForEventObject:(id)arg1;
 - (id)_widgetEngagementForVideoItem:(id)arg1;
 - (id)articleViewingSessionIDForArticleWithID:(id)arg1;
 - (void)impressionThresholdReachedForVideoAdWithMetadata:(id)arg1;
-- (id)initWithConfiguration:(id)arg1 observer:(id)arg2 sessionManager:(id)arg3 userIDProvider:(id)arg4 videoItems:(id)arg5 leadingVideoItemSessionID:(id)arg6;
+- (id)initWithConfiguration:(id)arg1 observer:(id)arg2 sessionManager:(id)arg3 userIDProvider:(id)arg4 videoItems:(id)arg5;
 - (void)muteStateChanged:(BOOL)arg1 withVideoItem:(id)arg2 metadata:(id)arg3;
 - (void)playbackFailedWithVideoItem:(id)arg1 metadata:(id)arg2;
 - (void)playbackFinishedForVideoAdWithMetadata:(id)arg1;
@@ -82,6 +80,8 @@
 - (void)userEngagedWithNowPlayingButtonWithVideoItem:(id)arg1;
 - (void)userEngagedWithReplayButtonWithVideoItem:(id)arg1;
 - (void)userSkippedPlaybackOfVideoAdWithMetadata:(id)arg1;
+- (void)videoDidAppearWithVideoItem:(id)arg1;
+- (void)videoDidDisappearWithVideoItem:(id)arg1;
 - (void)videoPlayerDidBecomeInvisible;
 - (void)videoPlayerDidBecomeVisible;
 

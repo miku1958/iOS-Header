@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <StoreKit/NSCopying-Protocol.h>
 
 @class NSError, NSNumber, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface SKDownloadChangeset : NSObject <NSCopying>
 {
     NSNumber *_contentLength;
@@ -30,9 +31,9 @@
 @property (copy, nonatomic) NSNumber *timeRemaining; // @synthesize timeRemaining=_timeRemaining;
 
 + (id)changesetWithDownloadID:(id)arg1 state:(long long)arg2;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyXPCEncoding;
-- (void)dealloc;
 - (id)initWithXPCEncoding:(id)arg1;
 
 @end

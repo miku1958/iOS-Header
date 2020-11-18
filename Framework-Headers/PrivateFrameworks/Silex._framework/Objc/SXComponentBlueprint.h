@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/NSCoding-Protocol.h>
 #import <Silex/NSCopying-Protocol.h>
+#import <Silex/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, SXComponentSizer, SXLayoutBlueprint;
 @protocol SXComponent, SXComponentLayout;
 
-@interface SXComponentBlueprint : NSObject <NSCoding, NSCopying>
+@interface SXComponentBlueprint : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _hasValidSize;
     BOOL _hasValidPosition;
@@ -45,6 +45,7 @@
 @property (readonly, weak, nonatomic) SXLayoutBlueprint *rootLayoutBlueprint;
 @property (nonatomic) struct CGSize suggestedSizeAfterInvalidation; // @synthesize suggestedSizeAfterInvalidation=_suggestedSizeAfterInvalidation;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct UIEdgeInsets)contentInsetsForComponentWidth:(double)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

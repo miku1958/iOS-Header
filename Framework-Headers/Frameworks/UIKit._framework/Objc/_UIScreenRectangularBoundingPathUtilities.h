@@ -4,17 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIScreenBoundingPathUtilities.h>
+#import <UIKitCore/_UIScreenBoundingPathUtilities.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIScreenRectangularBoundingPathUtilities : _UIScreenBoundingPathUtilities
 {
 }
 
-- (struct CGRect)_inscribedRectInBoundingPathByInsettingRect:(struct CGRect)arg1 onEdges:(unsigned long long)arg2 inCoordinateSpace:(id)arg3 withOptions:(unsigned long long)arg4;
-- (struct CGRect)_largestInscribedRectInBoundingPathWithCenter:(struct CGPoint)arg1 aspectRatio:(double)arg2 inCoordinateSpace:(id)arg3;
-- (void)_loadBezierPathsForScreen:(id)arg1;
-- (id)initWithScreen:(id)arg1;
+- (id)boundingPathForWindow:(id)arg1;
 
 @end
 

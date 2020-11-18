@@ -18,7 +18,6 @@
 - (id<PVFetchResultProtocol>)pv_fetchCandidatePersonsForPerson:(id<PVPersonProtocol>)arg1;
 - (id<PVFetchResultProtocol>)pv_fetchFaceGroups;
 - (id<PVFetchResultProtocol>)pv_fetchFaceGroupsForPerson:(id<PVPersonProtocol>)arg1;
-- (id<PVFetchResultProtocol>)pv_fetchFaces;
 - (id<PVFetchResultProtocol>)pv_fetchFacesForFaceGroup:(id<PVFaceGroupProtocol>)arg1;
 - (id<PVFetchResultProtocol>)pv_fetchFacesForPerson:(id<PVPersonProtocol>)arg1;
 - (id<PVFetchResultProtocol>)pv_fetchFacesForPerson:(id<PVPersonProtocol>)arg1 inMoment:(id<PVMomentProtocol>)arg2;
@@ -37,6 +36,7 @@
 - (id<PVFetchResultProtocol>)pv_fetchPersonsWithType:(unsigned long long)arg1;
 - (BOOL)pv_isLibraryBeingSynchronized;
 - (NSDate *)pv_lastAssetDate;
+- (unsigned long long)pv_numberOfFacesWithFaceprints;
 - (BOOL)pv_performChangesAndWait:(void (^)(void))arg1 error:(id *)arg2;
 - (NSURL *)pv_persistentStorageDirectoryURL;
 @end

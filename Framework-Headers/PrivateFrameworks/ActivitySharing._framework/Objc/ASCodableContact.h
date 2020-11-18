@@ -8,15 +8,15 @@
 
 #import <ActivitySharing/NSCopying-Protocol.h>
 
-@class ASCodableRelationship, NSMutableArray, NSString;
+@class ASCodableRelationshipContainer, NSMutableArray, NSString;
 
 @interface ASCodableContact : PBCodable <NSCopying>
 {
     NSMutableArray *_destinations;
     NSString *_fullName;
     NSString *_linkedContactStoreIdentifier;
-    ASCodableRelationship *_relationship;
-    ASCodableRelationship *_remoteRelationship;
+    ASCodableRelationshipContainer *_relationshipContainer;
+    ASCodableRelationshipContainer *_remoteRelationshipContainer;
     NSString *_shortName;
 }
 
@@ -24,12 +24,12 @@
 @property (strong, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
 @property (readonly, nonatomic) BOOL hasFullName;
 @property (readonly, nonatomic) BOOL hasLinkedContactStoreIdentifier;
-@property (readonly, nonatomic) BOOL hasRelationship;
-@property (readonly, nonatomic) BOOL hasRemoteRelationship;
+@property (readonly, nonatomic) BOOL hasRelationshipContainer;
+@property (readonly, nonatomic) BOOL hasRemoteRelationshipContainer;
 @property (readonly, nonatomic) BOOL hasShortName;
 @property (strong, nonatomic) NSString *linkedContactStoreIdentifier; // @synthesize linkedContactStoreIdentifier=_linkedContactStoreIdentifier;
-@property (strong, nonatomic) ASCodableRelationship *relationship; // @synthesize relationship=_relationship;
-@property (strong, nonatomic) ASCodableRelationship *remoteRelationship; // @synthesize remoteRelationship=_remoteRelationship;
+@property (strong, nonatomic) ASCodableRelationshipContainer *relationshipContainer; // @synthesize relationshipContainer=_relationshipContainer;
+@property (strong, nonatomic) ASCodableRelationshipContainer *remoteRelationshipContainer; // @synthesize remoteRelationshipContainer=_remoteRelationshipContainer;
 @property (strong, nonatomic) NSString *shortName; // @synthesize shortName=_shortName;
 
 + (Class)destinationsType;

@@ -24,11 +24,12 @@
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *callOutQueue; // @synthesize callOutQueue=_callOutQueue;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, nonatomic) id<FBSWorkspaceClientDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, weak, nonatomic) id<FBSWorkspaceClientDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_debugLog:(id)arg1;
 - (id)_handlerForSceneID:(id)arg1;
 - (id)_loggingProem;

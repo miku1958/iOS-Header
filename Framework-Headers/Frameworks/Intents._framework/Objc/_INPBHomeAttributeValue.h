@@ -7,41 +7,46 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBHomeAttributeValue-Protocol.h>
 
-@class PBUnknownFields, _INPBDouble, _INPBString;
+@class NSString;
 
-@interface _INPBHomeAttributeValue : PBCodable <NSCopying>
+@interface _INPBHomeAttributeValue : PBCodable <_INPBHomeAttributeValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    _INPBDouble *_doubleValue;
-    _INPBString *_stringValue;
-    int _valueType;
-    BOOL _booleanValue;
     struct {
-        unsigned int valueType:1;
         unsigned int booleanValue:1;
+        unsigned int doubleValue:1;
+        unsigned int integerValue:1;
+        unsigned int valueType:1;
     } _has;
+    BOOL _booleanValue;
+    int _valueType;
+    double _doubleValue;
+    long long _integerValue;
+    NSString *_stringValue;
 }
 
 @property (nonatomic) BOOL booleanValue; // @synthesize booleanValue=_booleanValue;
-@property (strong, nonatomic) _INPBDouble *doubleValue; // @synthesize doubleValue=_doubleValue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) double doubleValue; // @synthesize doubleValue=_doubleValue;
 @property (nonatomic) BOOL hasBooleanValue;
-@property (readonly, nonatomic) BOOL hasDoubleValue;
+@property (nonatomic) BOOL hasDoubleValue;
+@property (nonatomic) BOOL hasIntegerValue;
 @property (readonly, nonatomic) BOOL hasStringValue;
 @property (nonatomic) BOOL hasValueType;
-@property (strong, nonatomic) _INPBString *stringValue; // @synthesize stringValue=_stringValue;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long integerValue; // @synthesize integerValue=_integerValue;
+@property (copy, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
+@property (readonly) Class superclass;
 @property (nonatomic) int valueType; // @synthesize valueType=_valueType;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsValueType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)valueTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

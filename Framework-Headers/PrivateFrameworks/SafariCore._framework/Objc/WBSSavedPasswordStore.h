@@ -6,7 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary, WBSKeychainCredentialNotificationMonitor;
+@class NSArray, NSMutableDictionary, NSSet, WBSAutoFillQuirksManager, WBSKeychainCredentialNotificationMonitor;
+@protocol OS_dispatch_queue;
 
 @interface WBSSavedPasswordStore : NSObject
 {
@@ -14,28 +15,38 @@
     NSArray *_savedPasswords;
     WBSKeychainCredentialNotificationMonitor *_keychainMonitor;
     id _keychainNotificationRegistrationToken;
+    WBSAutoFillQuirksManager *_autoFillQuirksManager;
+    NSObject<OS_dispatch_queue> *_queue;
     BOOL _hasPasswordsEligibleForAutoFill;
 }
 
+@property (readonly, nonatomic) BOOL hasDuplicatedPasswords;
 @property (readonly, nonatomic) BOOL hasPasswordsEligibleForAutoFill; // @synthesize hasPasswordsEligibleForAutoFill=_hasPasswordsEligibleForAutoFill;
+@property (readonly, nonatomic) NSSet *highLevelDomainsOfAllSavedPasswordsExcludingNeverSaveMarkerPasswords;
 @property (readonly, nonatomic) NSArray *savedPasswords;
+@property (readonly, nonatomic) NSArray *savedPasswordsExcludingNeverSaveMarkerPasswords;
 
 + (void)removePassword:(id)arg1;
-+ (id)savedPasswordForURL:(id)arg1 user:(id)arg2 password:(id)arg3;
 + (id)sharedStore;
 - (void).cxx_destruct;
 - (id)_allInternetPasswordEntriesFromKeychain;
+- (void)_cleanUpRedundantCredentialsWithoutUsernames;
+- (void)_ensureDomainsToUsersExists;
 - (void)_postSavedPasswordStoreDidChangeNotification;
 - (void)_removePassword:(id)arg1;
+- (id)_savedPasswords;
 - (BOOL)canChangeSavedPassword:(id)arg1 toUser:(id)arg2 password:(id)arg3;
 - (BOOL)canSaveUser:(id)arg1 password:(id)arg2 forProtectionSpace:(id)arg3 highLevelDomain:(id)arg4;
 - (BOOL)changeSavedPassword:(id)arg1 toUser:(id)arg2 password:(id)arg3;
 - (void)dealloc;
-- (id)init;
+- (id)initUsingAutoFillQuirksManager:(BOOL)arg1;
 - (void)removePassword:(id)arg1;
 - (void)removeSite:(id)arg1 fromPassword:(id)arg2;
 - (void)reset;
 - (id)saveUser:(id)arg1 password:(id)arg2 forProtectionSpace:(id)arg3 highLevelDomain:(id)arg4;
+- (id)savedPasswordForURL:(id)arg1 user:(id)arg2 password:(id)arg3;
+- (BOOL)savedPasswordHasReusedPassword:(id)arg1;
+- (id)savedPasswordsWithDuplicatedPassword:(id)arg1;
 
 @end
 

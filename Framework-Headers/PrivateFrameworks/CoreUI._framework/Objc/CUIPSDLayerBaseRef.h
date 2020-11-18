@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUIPSDImageRef;
 
-__attribute__((visibility("hidden")))
 @interface CUIPSDLayerBaseRef : NSObject
 {
     CUIPSDImageRef *_imageRef;
@@ -20,12 +19,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) double fillOpacity;
 @property (readonly) BOOL hasLayerMask;
 @property (readonly) BOOL hasVectorMask;
+@property (strong, nonatomic) CUIPSDImageRef *imageRef; // @synthesize imageRef=_imageRef;
+@property (nonatomic) unsigned int layerIndex; // @synthesize layerIndex=_layerIndex;
 @property (readonly) double opacity;
 @property (readonly) BOOL visibility;
 
 - (struct CGImage *)_createMaskFromAlphaChannel:(long long)arg1;
 - (id)_psdImageRef;
 - (struct CPSDLayerRecord *)_psdLayerRecord;
+- (void)dealloc;
 - (BOOL)isLayerGroup;
 - (id)layerMaskRef;
 - (id)name;

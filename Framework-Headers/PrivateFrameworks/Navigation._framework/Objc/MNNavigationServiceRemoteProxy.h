@@ -43,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (id)_remoteObjectProxy;
 - (void)_updateConnection;
 - (void)acceptReroute:(BOOL)arg1 forTrafficIncidentAlertDetails:(id)arg2;
-- (void)acquireDesiredResourcePolicy;
 - (void)changeSettings:(id)arg1;
 - (void)closeForClient:(id)arg1;
 - (void)dealloc;

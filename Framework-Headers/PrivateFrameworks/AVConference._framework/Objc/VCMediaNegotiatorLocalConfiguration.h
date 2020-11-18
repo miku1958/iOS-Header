@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDictionary, NSSet, NSString, VCAudioRuleCollection, VCBitrateArbiter, VCVideoRuleCollections;
+#import <AVConference/NSCopying-Protocol.h>
+
+@class NSArray, NSDictionary, NSSet, NSString, VCAudioRuleCollection, VCBitrateArbiter, VCVideoRuleCollections;
 
 __attribute__((visibility("hidden")))
-@interface VCMediaNegotiatorLocalConfiguration : NSObject
+@interface VCMediaNegotiatorLocalConfiguration : NSObject <NSCopying>
 {
     unsigned int _audioSSRC;
     unsigned int _videoSSRC;
@@ -30,6 +32,9 @@ __attribute__((visibility("hidden")))
     NSSet *_captionsReceiverLanguages;
     NSSet *_captionsSenderLanguages;
     void *_callLogFile;
+    unsigned long long _creationTime;
+    NSArray *_multiwayAudioStreams;
+    NSArray *_multiwayVideoStreams;
 }
 
 @property (nonatomic) BOOL allowAudioRecording; // @synthesize allowAudioRecording=_allowAudioRecording;
@@ -44,14 +49,18 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) void *callLogFile; // @synthesize callLogFile=_callLogFile;
 @property (strong, nonatomic) NSSet *captionsReceiverLanguages; // @synthesize captionsReceiverLanguages=_captionsReceiverLanguages;
 @property (strong, nonatomic) NSSet *captionsSenderLanguages; // @synthesize captionsSenderLanguages=_captionsSenderLanguages;
+@property (nonatomic) unsigned long long creationTime; // @synthesize creationTime=_creationTime;
 @property (nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
 @property (nonatomic) BOOL isCaller; // @synthesize isCaller=_isCaller;
+@property (strong, nonatomic) NSArray *multiwayAudioStreams; // @synthesize multiwayAudioStreams=_multiwayAudioStreams;
+@property (strong, nonatomic) NSArray *multiwayVideoStreams; // @synthesize multiwayVideoStreams=_multiwayVideoStreams;
 @property (nonatomic) int preferredAudioCodec; // @synthesize preferredAudioCodec=_preferredAudioCodec;
 @property (strong, nonatomic) VCVideoRuleCollections *screenRuleCollections; // @synthesize screenRuleCollections=_screenRuleCollections;
 @property (strong, nonatomic) NSDictionary *videoFeatureStrings; // @synthesize videoFeatureStrings=_videoFeatureStrings;
 @property (strong, nonatomic) VCVideoRuleCollections *videoRuleCollections; // @synthesize videoRuleCollections=_videoRuleCollections;
 @property (nonatomic) unsigned int videoSSRC; // @synthesize videoSSRC=_videoSSRC;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 
 @end

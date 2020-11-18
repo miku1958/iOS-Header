@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableSet;
 
@@ -15,37 +15,31 @@
     NSMutableSet *_adjustedAssetUuids;
     NSMutableSet *_propertyChangedAssetUuids;
     NSMutableSet *_faceChangedAssetUuids;
-    NSMutableArray *_deletedAssets;
     NSMutableArray *_albumInserts;
     NSMutableArray *_albumChanges;
-    NSMutableArray *_albumsToDelete;
     NSMutableArray *_memoryChanges;
-    NSMutableArray *_memoriesToDelete;
     NSMutableArray *_personChanges;
-    NSMutableArray *_personsToDelete;
     NSMutableArray *_faceCropChanges;
-    NSMutableArray *_faceCropsToDelete;
+    NSMutableArray *_suggestionChanges;
     NSMutableSet *_updatedRelationship;
+    NSMutableArray *_deletedRecords;
 }
 
 @property (strong, nonatomic) NSMutableSet *adjustedAssetUuids; // @synthesize adjustedAssetUuids=_adjustedAssetUuids;
 @property (strong, nonatomic) NSMutableArray *albumChanges; // @synthesize albumChanges=_albumChanges;
 @property (strong, nonatomic) NSMutableArray *albumInserts; // @synthesize albumInserts=_albumInserts;
-@property (strong, nonatomic) NSMutableArray *albumsToDelete; // @synthesize albumsToDelete=_albumsToDelete;
-@property (strong, nonatomic) NSMutableArray *deletedAssets; // @synthesize deletedAssets=_deletedAssets;
+@property (strong, nonatomic) NSMutableArray *deletedRecords; // @synthesize deletedRecords=_deletedRecords;
 @property (strong, nonatomic) NSMutableSet *faceChangedAssetUuids; // @synthesize faceChangedAssetUuids=_faceChangedAssetUuids;
 @property (strong, nonatomic) NSMutableArray *faceCropChanges; // @synthesize faceCropChanges=_faceCropChanges;
-@property (strong, nonatomic) NSMutableArray *faceCropsToDelete; // @synthesize faceCropsToDelete=_faceCropsToDelete;
 @property (strong, nonatomic) NSMutableArray *insertedAssets; // @synthesize insertedAssets=_insertedAssets;
-@property (strong, nonatomic) NSMutableArray *memoriesToDelete; // @synthesize memoriesToDelete=_memoriesToDelete;
 @property (strong, nonatomic) NSMutableArray *memoryChanges; // @synthesize memoryChanges=_memoryChanges;
 @property (strong, nonatomic) NSMutableArray *personChanges; // @synthesize personChanges=_personChanges;
-@property (strong, nonatomic) NSMutableArray *personsToDelete; // @synthesize personsToDelete=_personsToDelete;
 @property (strong, nonatomic) NSMutableSet *propertyChangedAssetUuids; // @synthesize propertyChangedAssetUuids=_propertyChangedAssetUuids;
+@property (strong, nonatomic) NSMutableArray *suggestionChanges; // @synthesize suggestionChanges=_suggestionChanges;
 @property (strong, nonatomic) NSMutableArray *updatedAssets; // @synthesize updatedAssets=_updatedAssets;
 @property (strong, nonatomic) NSMutableSet *updatedRelationship; // @synthesize updatedRelationship=_updatedRelationship;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (BOOL)isEmpty;
 - (id)summaryDescription;

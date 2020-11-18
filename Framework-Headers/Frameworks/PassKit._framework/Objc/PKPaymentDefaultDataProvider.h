@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKPaymentDataProvider-Protocol.h>
 #import <PassKitCore/PKPaymentServiceDelegate-Protocol.h>
@@ -26,6 +26,7 @@
 @property (strong, nonatomic) NSString *defaultPaymentPassIdentifier;
 @property (weak, nonatomic) id<PKPaymentDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *deviceName;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDeviceInRestrictedMode;
 @property (readonly, nonatomic) BOOL isPaymentHandoffDisabled;
@@ -36,25 +37,26 @@
 - (void).cxx_destruct;
 - (void)_accessDelegatesWithHandler:(CDUnknownBlockType)arg1;
 - (void)addDelegate:(id)arg1;
+- (void)balancesForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (id)defaultExpressFelicaTransitPassIdentifier;
-- (id)defaultExpressTransitPassIdentifier;
 - (id)defaultPaymentApplicationForPassUniqueIdentifier:(id)arg1;
 - (void)deletePaymentTransactionWithIdentifier:(id)arg1 forPassWithUniqueIdentifier:(id)arg2;
-- (id)expressPassInformationForMode:(id)arg1;
 - (id)expressPassesInformation;
+- (id)expressPassesInformationWithCardType:(long long)arg1;
 - (id)init;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableMessageService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(BOOL)arg2;
+- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveBalanceUpdate:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didUpdateWithTransitPassProperties:(id)arg2;
 - (void)removeDelegate:(id)arg1;
+- (void)removeExpressPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)removeExpressPassesWithCardType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setDefaultPaymentApplication:(id)arg1 forPassUniqueIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setExpressWithPassInformation:(id)arg1 credential:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPaymentHandoffDisabled:(BOOL)arg1;
-- (BOOL)supportsExpressMode:(id)arg1;
-- (BOOL)supportsExpressModeForExpressPassType:(long long)arg1;
+- (BOOL)supportsExpressForAutomaticSelectionTechnologyType:(long long)arg1;
 - (BOOL)supportsInAppPaymentsForPass:(id)arg1;
 - (BOOL)supportsMessagesForPass:(id)arg1;
 - (BOOL)supportsNotificationsForPass:(id)arg1;

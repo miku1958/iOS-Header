@@ -6,26 +6,32 @@
 
 #import <iWorkImport/NSObject-Protocol.h>
 
-@class KNAnimatedBuild, KNAnimationRandomGenerator, NSArray, NSDictionary, TSDGLState;
+@class KNAnimatedBuild, KNAnimationRandomGenerator, NSArray, NSDictionary, TSDGLState, TSDMetalContext;
 
 @protocol KNAnimationPluginContext <NSObject>
 
 @property (readonly, nonatomic) TSDGLState *GLState;
+@property (readonly, nonatomic) NSArray *allTextures;
 @property (readonly, nonatomic) KNAnimatedBuild *animatedBuild;
+@property (readonly, nonatomic) struct CGRect animationFrame;
 @property (nonatomic) struct CGRect boundingRect;
 @property (readonly, nonatomic) struct CGRect boundingRectOnCanvas;
 @property (readonly, nonatomic) unsigned long long direction;
+@property (readonly, nonatomic) struct CGRect drawableFrame;
 @property (readonly, nonatomic) double duration;
+@property (readonly, nonatomic) NSArray *highlightingTextures;
 @property (readonly, nonatomic) BOOL isBuild;
 @property (readonly, nonatomic) BOOL isFrameRenderer;
 @property (readonly, nonatomic) BOOL isMagicMove;
 @property (readonly, nonatomic) BOOL isMetalRenderer;
 @property (readonly, nonatomic) BOOL isMotionBlurred;
+@property (readonly, nonatomic) BOOL isMovieExport;
 @property (readonly, nonatomic) BOOL isOpenGLRenderer;
 @property (readonly, nonatomic) BOOL isPreview;
 @property (readonly, nonatomic) BOOL isTransition;
 @property (readonly, nonatomic) BOOL isWarmingUp;
 @property (readonly, nonatomic) NSArray *magicMoveMatches;
+@property (readonly, nonatomic) TSDMetalContext *metalContext;
 @property (readonly, nonatomic) double percent;
 @property (readonly, nonatomic) KNAnimationRandomGenerator *randomGenerator;
 @property (readonly, nonatomic) NSDictionary *scaledTextures;

@@ -17,6 +17,7 @@
     BOOL _supportsSavingForLater;
     BOOL _boundToContext;
     BOOL _hiddenFromFeeds;
+    BOOL _hiddenFromAutoFavorites;
     NSString *_title;
     NSString *_titleCompact;
     NSString *_shortExcerpt;
@@ -59,6 +60,7 @@
 @property (nonatomic) BOOL displaysWithLeadingCellAppearance; // @synthesize displaysWithLeadingCellAppearance=_displaysWithLeadingCellAppearance;
 @property (copy, nonatomic) NSURL *flintDocumentURL; // @synthesize flintDocumentURL=_flintDocumentURL;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isHiddenFromAutoFavorites) BOOL hiddenFromAutoFavorites; // @synthesize hiddenFromAutoFavorites=_hiddenFromAutoFavorites;
 @property (nonatomic, getter=isHiddenFromFeeds) BOOL hiddenFromFeeds; // @synthesize hiddenFromFeeds=_hiddenFromFeeds;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) unsigned long long itemType;

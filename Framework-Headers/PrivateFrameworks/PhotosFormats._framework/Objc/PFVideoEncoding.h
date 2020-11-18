@@ -10,8 +10,7 @@
 {
 }
 
-+ (BOOL)_deviceSupportsHardwareHEVCEncoding;
-+ (BOOL)shouldGenerateLargeVideoDerivativeForFileURL:(id)arg1 videoDimensions:(struct CGSize)arg2;
++ (BOOL)deviceSupportsHardwareHEVCEncoding;
 
 @end
 

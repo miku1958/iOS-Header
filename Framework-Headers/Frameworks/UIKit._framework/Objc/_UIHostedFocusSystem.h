@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIFocusSystem.h>
+#import <UIKitCore/UIFocusSystem.h>
 
 @protocol UIFocusEnvironment, _UIHostedFocusSystemDelegate;
 

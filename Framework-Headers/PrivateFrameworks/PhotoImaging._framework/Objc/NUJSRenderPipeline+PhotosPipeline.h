@@ -8,5 +8,6 @@
 
 @interface NUJSRenderPipeline (PhotosPipeline)
 + (id)newPhotosPipeline:(out id *)arg1;
++ (id)newPhotosPipelineAtSourceURL:(id)arg1 error:(out id *)arg2;
 @end
 

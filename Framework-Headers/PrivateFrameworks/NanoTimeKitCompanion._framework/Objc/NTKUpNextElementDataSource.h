@@ -4,48 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <RelevanceEngine/REElementDataSource.h>
 
-@class NSString;
-@protocol NTKUpNextElementDataSourceDelegate;
-
-@interface NTKUpNextElementDataSource : NSObject
+@interface NTKUpNextElementDataSource : REElementDataSource
 {
-    BOOL _running;
-    BOOL _allowsLocationUse;
-    BOOL _unlockedSinceBoot;
-    id<NTKUpNextElementDataSourceDelegate> _delegate;
-    unsigned long long _state;
-    NSString *_logHeader;
 }
 
-@property (nonatomic) BOOL allowsLocationUse; // @synthesize allowsLocationUse=_allowsLocationUse;
-@property (weak, nonatomic) id<NTKUpNextElementDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) NSString *logHeader; // @synthesize logHeader=_logHeader;
-@property (readonly, nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
-@property (nonatomic) unsigned long long state; // @synthesize state=_state;
-@property (readonly, nonatomic, getter=hasUnlockedSinceBoot) BOOL unlockedSinceBoot; // @synthesize unlockedSinceBoot=_unlockedSinceBoot;
-
-+ (id)bundleIdentifier;
-+ (id)dataSourceClasses;
-+ (id)overrideDataSourceImage;
-+ (id)overrideLocalizedDataSourceName;
-+ (id)sampleContentElements;
-+ (BOOL)wantsAppPrewarm;
-+ (BOOL)wantsLocationInUseAsserton;
-+ (BOOL)wantsReloadForFirstDeviceUnlock;
-+ (BOOL)wantsReloadForSignificantTimeChange;
-- (void).cxx_destruct;
-- (id)complicationDescriptor;
-- (void)elementWithIdentifierDidBecomeHidden:(id)arg1;
-- (void)elementWithIdentifierWillBecomeVisible:(id)arg1;
 - (void)getElementsDuringDateInterval:(id)arg1 inSection:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (id)init;
-- (void)loadLoggingHeader;
-- (void)pause;
-- (void)resume;
-- (void)setRunning:(BOOL)arg1;
-- (void)setUnlockedSinceBoot:(BOOL)arg1;
+- (id)supportedSections;
 
 @end
 

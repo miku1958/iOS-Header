@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/LSResourceProxy.h>
+#import <CoreServices/LSResourceProxy.h>
 
 @interface LSResourceProxy (LSResourceProxyIconPrivate)
 - (CDStruct_2f66a7ba *)_iconDefinitionForSize:(struct CGSize)arg1 style:(id)arg2;

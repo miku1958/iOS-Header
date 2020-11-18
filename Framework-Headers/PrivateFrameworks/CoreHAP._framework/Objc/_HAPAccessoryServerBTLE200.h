@@ -224,6 +224,7 @@
 - (unsigned long long)hapBLEProtocolVersion;
 - (void)identifyWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithPeripheral:(id)arg1 name:(id)arg2 pairingUsername:(id)arg3 statusFlags:(id)arg4 stateNumber:(id)arg5 stateChanged:(BOOL)arg6 connectReason:(unsigned char)arg7 configNumber:(id)arg8 category:(id)arg9 setupHash:(id)arg10 connectionIdleTime:(unsigned char)arg11 browser:(id)arg12 keyStore:(id)arg13;
+- (BOOL)isBLELinkConnected;
 - (BOOL)isHAPCharacteristic:(id)arg1;
 - (BOOL)isSecuritySessionOpen;
 - (void)listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class DeviceManager, NSString;
 @protocol ICDeviceDelegate;
@@ -21,6 +21,7 @@
 @property DeviceManager *deviceManager;
 @property BOOL hasOpenSession;
 @property (readonly) struct CGImage *icon;
+@property (readonly) BOOL isAppleDevice; // @dynamic isAppleDevice;
 @property (copy) NSString *name;
 @property BOOL openSessionPending;
 @property (copy) NSString *productKind;
@@ -31,7 +32,6 @@
 
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (void)handleCommandCompletionNotification:(id)arg1;
 - (void)handleImageCaptureEventNotification:(id)arg1;
 - (id)init;

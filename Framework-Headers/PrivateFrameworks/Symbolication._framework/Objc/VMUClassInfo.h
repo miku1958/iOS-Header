@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString;
+@class NSMutableArray, NSString;
 
 @interface VMUClassInfo : NSObject
 {
@@ -27,7 +27,6 @@
     VMUClassInfo *_genericLayout;
     NSMutableArray *_variantEvaluators;
     NSMutableArray *_variantActions;
-    NSMutableDictionary *_variantCache;
     const char *_weakLayout;
     const char *_strongLayout;
     BOOL _hasSpecificLayout;
@@ -71,7 +70,6 @@
 - (void)_demangleClassName;
 - (void)_freeLocalIvarList;
 - (id)_initWithClass:(unsigned long long)arg1 realizedOnly:(BOOL)arg2 infoMap:(id)arg3 symbolicator:(struct _CSTypeRef)arg4 type:(int)arg5 swiftFieldMetadataContext:(struct libSwiftRemoteMirrorWrapper *)arg6 memoryReader:(CDUnknownBlockType)arg7;
-- (id)_ivarDescription:(unsigned int)arg1 withSpacing:(unsigned int)arg2;
 - (void)_logDescriptionWithSuperclasses:(BOOL)arg1 indentation:(int)arg2 toLogger:(CDUnknownBlockType)arg3;
 - (void)_parseIvarsAndLayouts;
 - (void)_processARRLayout:(const char *)arg1 scanType:(unsigned int)arg2;
@@ -89,8 +87,10 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateAllFieldsWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateAllPointerFieldsWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateClassHierarchyWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateExternalValuesFromObject:(unsigned long long)arg1 withSize:(unsigned int)arg2 block:(CDUnknownBlockType)arg3;
+- (void)enumeratePointerTypeFieldsWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateScanningLocationsForSize:(unsigned int)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStoredEntriesForObject:(unsigned long long)arg1 ofSize:(unsigned int)arg2 externalValues:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)enumerateSublayoutsForSize:(unsigned int)arg1 withBlock:(CDUnknownBlockType)arg2;

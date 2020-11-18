@@ -8,23 +8,35 @@
 
 #import <AppStoreDaemon/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSDate, NSNumber, NSString;
 
 @interface ASDAppUsageStats : NSObject <NSCopying>
 {
     NSString *_bundleID;
-    double _usageTime;
+    NSString *_bundleVersion;
+    long long _eventTime;
+    NSNumber *_evid;
+    NSNumber *_itemID;
+    NSString *_itemName;
+    NSDate *_startDate;
+    long long _usageTime;
     long long _usageCount;
 }
 
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
+@property (nonatomic) long long eventTime; // @synthesize eventTime=_eventTime;
+@property (copy, nonatomic) NSNumber *evid; // @synthesize evid=_evid;
+@property (copy, nonatomic) NSNumber *itemID; // @synthesize itemID=_itemID;
+@property (copy, nonatomic) NSString *itemName; // @synthesize itemName=_itemName;
+@property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (nonatomic) long long usageCount; // @synthesize usageCount=_usageCount;
-@property (nonatomic) double usageTime; // @synthesize usageTime=_usageTime;
+@property (nonatomic) long long usageTime; // @synthesize usageTime=_usageTime;
 
 - (void).cxx_destruct;
+- (id)_formatTimeInternal:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)formatTime:(long long)arg1;
 
 @end
 

@@ -28,6 +28,7 @@
 - (void)_ensureCurrentImageValuesAreComputed;
 - (void)_ensureInitialImageValuesAreComputed;
 - (BOOL)_imageCurrentValuesCacheIsValid;
+- (id)apertureValuesWithAccuracy:(long long)arg1;
 - (id)autoCropValuesWithAccuracy:(long long)arg1;
 - (void)computeAutoEnhanceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;

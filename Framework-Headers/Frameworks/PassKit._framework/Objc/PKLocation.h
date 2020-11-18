@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -34,6 +34,7 @@
 - (BOOL)hasEqualCoordinatesToLocation:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (double)latitude;
 - (double)longitude;

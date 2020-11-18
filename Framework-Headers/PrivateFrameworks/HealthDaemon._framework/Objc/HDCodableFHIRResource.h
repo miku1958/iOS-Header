@@ -13,10 +13,14 @@
 @interface HDCodableFHIRResource : PBCodable <NSCopying>
 {
     long long _extractionHints;
+    long long _originVersionMajor;
+    long long _originVersionMinor;
+    long long _originVersionPatch;
     double _receivedDate;
     NSString *_accountIdentifier;
     NSString *_fhirVersion;
     NSString *_gatewayExternalID;
+    NSString *_originVersionBuild;
     NSData *_rawContent;
     NSString *_receivedDateTimeZoneName;
     NSString *_resourceID;
@@ -24,6 +28,9 @@
     NSString *_sourceURL;
     struct {
         unsigned int extractionHints:1;
+        unsigned int originVersionMajor:1;
+        unsigned int originVersionMinor:1;
+        unsigned int originVersionPatch:1;
         unsigned int receivedDate:1;
     } _has;
 }
@@ -36,12 +43,20 @@
 @property (nonatomic) BOOL hasExtractionHints;
 @property (readonly, nonatomic) BOOL hasFhirVersion;
 @property (readonly, nonatomic) BOOL hasGatewayExternalID;
+@property (readonly, nonatomic) BOOL hasOriginVersionBuild;
+@property (nonatomic) BOOL hasOriginVersionMajor;
+@property (nonatomic) BOOL hasOriginVersionMinor;
+@property (nonatomic) BOOL hasOriginVersionPatch;
 @property (readonly, nonatomic) BOOL hasRawContent;
 @property (nonatomic) BOOL hasReceivedDate;
 @property (readonly, nonatomic) BOOL hasReceivedDateTimeZoneName;
 @property (readonly, nonatomic) BOOL hasResourceID;
 @property (readonly, nonatomic) BOOL hasResourceType;
 @property (readonly, nonatomic) BOOL hasSourceURL;
+@property (strong, nonatomic) NSString *originVersionBuild; // @synthesize originVersionBuild=_originVersionBuild;
+@property (nonatomic) long long originVersionMajor; // @synthesize originVersionMajor=_originVersionMajor;
+@property (nonatomic) long long originVersionMinor; // @synthesize originVersionMinor=_originVersionMinor;
+@property (nonatomic) long long originVersionPatch; // @synthesize originVersionPatch=_originVersionPatch;
 @property (strong, nonatomic) NSData *rawContent; // @synthesize rawContent=_rawContent;
 @property (nonatomic) double receivedDate; // @synthesize receivedDate=_receivedDate;
 @property (strong, nonatomic) NSString *receivedDateTimeZoneName; // @synthesize receivedDateTimeZoneName=_receivedDateTimeZoneName;

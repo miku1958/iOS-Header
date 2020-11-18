@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary;
+@class NSCache;
 
 @interface INCache : NSObject
 {
-    NSMutableDictionary *_cacheDictionary;
+    NSCache *_underlyingCache;
 }
 
-@property (readonly, nonatomic) NSDictionary *_cacheDictionary;
+@property (readonly, nonatomic) NSCache *_cacheDictionary;
 
 + (id)sharedCache;
 - (void).cxx_destruct;

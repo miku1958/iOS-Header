@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
     struct RetainPtr<UIViewController> _presentationViewController;
     struct RetainPtr<UIPopoverController> _presentationPopover;
     struct RetainPtr<UIDocumentMenuViewController> _documentMenuController;
-    struct RetainPtr<UIAlertController> _actionSheetController;
     int _mediaCaptureType;
     id<WKFileUploadPanelDelegate> _delegate;
 }
@@ -72,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)imagePickerController:(id)arg1 didFinishPickingMultipleMediaWithInfo:(id)arg2;
 - (void)imagePickerControllerDidCancel:(id)arg1;
 - (id)initWithView:(id)arg1;
+- (BOOL)platformSupportsPickerViewController;
 - (void)popoverControllerDidDismissPopover:(id)arg1;
 - (void)presentWithParameters:(struct OpenPanelParameters *)arg1 resultListener:(struct WebOpenPanelResultListenerProxy *)arg2;
 

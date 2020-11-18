@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedbackGeneratorUserInteractionDrivenConfiguration.h>
+#import <UIKitCore/_UIFeedbackGeneratorUserInteractionDrivenConfiguration.h>
 
 @interface _UIButtonFeedbackGeneratorConfiguration : _UIFeedbackGeneratorUserInteractionDrivenConfiguration
 {

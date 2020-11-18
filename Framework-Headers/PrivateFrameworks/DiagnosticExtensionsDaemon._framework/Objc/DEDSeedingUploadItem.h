@@ -6,18 +6,20 @@
 
 #import <DiagnosticExtensionsDaemon/DEDAttachmentItem.h>
 
-@class NSString;
+@class NSString, NSURLSessionUploadTask;
 
 @interface DEDSeedingUploadItem : DEDAttachmentItem
 {
     BOOL _completed;
     NSString *_extensionID;
     unsigned long long _bytesUploaded;
+    NSURLSessionUploadTask *_uploadTask;
 }
 
 @property unsigned long long bytesUploaded; // @synthesize bytesUploaded=_bytesUploaded;
 @property BOOL completed; // @synthesize completed=_completed;
 @property (strong) NSString *extensionID; // @synthesize extensionID=_extensionID;
+@property (strong) NSURLSessionUploadTask *uploadTask; // @synthesize uploadTask=_uploadTask;
 
 + (id)itemAtPath:(id)arg1 enclosedFilename:(id)arg2 extensionID:(id)arg3;
 - (void).cxx_destruct;

@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <PersistentConnection/PCCarrierBundleHelperDelegate-Protocol.h>
 #import <PersistentConnection/PCInterfaceMonitorDelegate-Protocol.h>
 
-@class CUTWeakReference, NSRunLoop, NSString, PCPersistentTimer;
+@class NSRunLoop, NSString, PCPersistentTimer;
 @protocol OS_dispatch_queue, OS_os_log, PCConnectionManagerDelegate, PCGrowthAlgorithm;
 
-@interface PCConnectionManager : NSObject <PCInterfaceMonitorDelegate>
+@interface PCConnectionManager : NSObject <PCCarrierBundleHelperDelegate, PCInterfaceMonitorDelegate>
 {
     int _connectionClass;
     id<PCConnectionManagerDelegate> _delegate;
@@ -25,8 +26,8 @@
     NSRunLoop *_delegateRunLoop;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSObject<OS_os_log> *_logObject;
-    id<PCGrowthAlgorithm> _wwanGrowthAlgorithm;
-    id<PCGrowthAlgorithm> _wifiGrowthAlgorithm;
+    id<PCGrowthAlgorithm> _wwanGrowthAlgorithm[2];
+    id<PCGrowthAlgorithm> _wifiGrowthAlgorithm[2];
     id<PCGrowthAlgorithm> _lastScheduledGrowthAlgorithm;
     PCPersistentTimer *_intervalTimer;
     PCPersistentTimer *_reconnectWakeTimer;
@@ -66,12 +67,13 @@
     int _currentGrowthStage;
     id _duetContextRegistration;
     BOOL _powerOptimizationsForExpensiveNetworkingDisabled;
-    CUTWeakReference *_weakConnectionManager;
     double _nonCellularEarlyFireConstantInterval;
+    int _currentAddressFamily;
 }
 
 @property (nonatomic) BOOL alwaysWantsInterfaceChangeCallbacks; // @synthesize alwaysWantsInterfaceChangeCallbacks=_alwaysWantsInterfaceChangeCallbacks;
 @property (readonly, nonatomic) unsigned long long countOfGrowthActions;
+@property (nonatomic) int currentAddressFamily;
 @property (readonly, nonatomic) int currentGrowthStage;
 @property (readonly, nonatomic) double currentKeepAliveInterval;
 @property (readonly, copy) NSString *debugDescription;
@@ -107,7 +109,7 @@
 - (id)_currentGrowthAlgorithm;
 - (void)_delayTimerFired;
 - (void)_deregisterForDeviceConditionsNotifications;
-- (id)_getCachedWWANKeepAliveInterval;
+- (id)_getCachedWWANKeepAliveIntervalForAddressFamily:(int)arg1;
 - (id)_growthAlgorithmOnInterface:(long long)arg1;
 - (void)_handleDeviceConditionChangeCallback;
 - (BOOL)_hasBudgetRemaining;
@@ -128,11 +130,13 @@
 - (void)_setupTimerForPollForAdjustment:(BOOL)arg1;
 - (void)_setupTimerForPushWithKeepAliveInterval:(double)arg1;
 - (id)_stringForAction:(int)arg1;
+- (id)_stringForAddressFamily:(int)arg1;
 - (id)_stringForEvent:(int)arg1;
 - (id)_stringForStyle:(int)arg1;
 - (void)_takePowerAssertionWithTimeout:(double)arg1;
 - (void)_validateActionForCurrentStyle:(int)arg1;
 - (void)cancelPollingIntervalOverride;
+- (void)carrierBundleDidChange;
 - (int)currentStyle;
 - (void)dealloc;
 - (id)initWithConnectionClass:(int)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 serviceIdentifier:(id)arg4;

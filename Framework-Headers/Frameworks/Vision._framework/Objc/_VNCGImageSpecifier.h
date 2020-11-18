@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)initWithCGImage:(struct CGImage *)arg1;
 - (id)newImageBufferWithOptions:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
 
 @end
 

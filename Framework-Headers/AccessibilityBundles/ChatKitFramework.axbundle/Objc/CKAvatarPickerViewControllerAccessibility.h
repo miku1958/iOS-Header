@@ -14,10 +14,13 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (long long)_axConversationRecipientsCount;
 - (void)_axExecuteBlockOnAvatarCells:(CDUnknownBlockType)arg1;
-- (BOOL)_axIsExpandedMode;
+- (void)_axExposeTitleViewIfNeeded;
+- (BOOL)_axIsPancakeMode;
+- (void)_handleConversationRecipientsDidChange:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)expandToExpandedView;
+- (void)setTitleView:(id)arg1;
 
 @end
 

@@ -10,10 +10,18 @@
 {
     BOOL _showConfidentialityWarnings;
     BOOL _showInternalGIFExport;
+    BOOL _sharingSuggestionsWidgetAllStreamEnabled;
+    BOOL _sharingSuggestionsWidgetHeuristicsEnabled;
+    BOOL _sharingSuggestionsWidgetLearningEnabled;
+    BOOL _sharingSuggestionsWidgetCoreDuetEnabled;
     unsigned long long _confidentialityWarningsVersion;
 }
 
 @property (nonatomic) unsigned long long confidentialityWarningsVersion; // @synthesize confidentialityWarningsVersion=_confidentialityWarningsVersion;
+@property (nonatomic) BOOL sharingSuggestionsWidgetAllStreamEnabled; // @synthesize sharingSuggestionsWidgetAllStreamEnabled=_sharingSuggestionsWidgetAllStreamEnabled;
+@property (nonatomic) BOOL sharingSuggestionsWidgetCoreDuetEnabled; // @synthesize sharingSuggestionsWidgetCoreDuetEnabled=_sharingSuggestionsWidgetCoreDuetEnabled;
+@property (nonatomic) BOOL sharingSuggestionsWidgetHeuristicsEnabled; // @synthesize sharingSuggestionsWidgetHeuristicsEnabled=_sharingSuggestionsWidgetHeuristicsEnabled;
+@property (nonatomic) BOOL sharingSuggestionsWidgetLearningEnabled; // @synthesize sharingSuggestionsWidgetLearningEnabled=_sharingSuggestionsWidgetLearningEnabled;
 @property (nonatomic) BOOL showConfidentialityWarnings; // @synthesize showConfidentialityWarnings=_showConfidentialityWarnings;
 @property (nonatomic) BOOL showInternalGIFExport; // @synthesize showInternalGIFExport=_showInternalGIFExport;
 

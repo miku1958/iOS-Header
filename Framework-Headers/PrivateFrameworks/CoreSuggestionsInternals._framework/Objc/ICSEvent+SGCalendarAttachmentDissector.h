@@ -8,8 +8,8 @@
 
 @interface ICSEvent (SGCalendarAttachmentDissector)
 - (id)attendeeEmailAddresses;
-- (id)entityWithParentEntity:(id)arg1;
-- (id)firstValueOfPropertyForName:(id)arg1;
+- (id)entityWithParentEntity:(id)arg1 withCalendar:(id)arg2;
+- (id)entityWithParentEntity:(id)arg1 withCalendar:(id)arg2 withCorrectnessFlag:(BOOL *)arg3;
 - (int)method;
 @end
 

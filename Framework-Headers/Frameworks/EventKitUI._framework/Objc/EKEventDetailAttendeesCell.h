@@ -6,7 +6,8 @@
 
 #import <EventKitUI/EKEventDetailCell.h>
 
-@class EKEventDetailAttendeesListView, NSLayoutConstraint, UIImageView, UILabel, UIViewController;
+@class EKEventDetailAttendeesListView, NSArray, NSLayoutConstraint, NSObject, UIImageView, UILabel, UIViewController;
+@protocol EKEventDetailAttendeeCellDelegate;
 
 __attribute__((visibility("hidden")))
 @interface EKEventDetailAttendeesCell : EKEventDetailCell
@@ -16,21 +17,26 @@ __attribute__((visibility("hidden")))
     UIImageView *_disclosure;
     NSLayoutConstraint *_listHeight;
     EKEventDetailAttendeesListView *_attendeesListView;
+    NSArray *_cachedAttendeesWithoutOrganizerAndLocations;
     UIViewController *_viewController;
+    NSObject<EKEventDetailAttendeeCellDelegate> *_attendeeCellDelegate;
 }
 
+@property (weak) NSObject<EKEventDetailAttendeeCellDelegate> *attendeeCellDelegate; // @synthesize attendeeCellDelegate=_attendeeCellDelegate;
 @property (weak) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+- (void)_attendeesDidFinishLoadingForTest;
 - (id)_attendeesListView;
+- (id)_attendeesWithoutOrganizerAndLocations;
+- (void)_setAttendees:(id)arg1;
 - (double)displayHeight;
 - (double)footerInset;
 - (double)headerInset;
 - (id)initWithEvent:(id)arg1 editable:(BOOL)arg2;
 - (void)layoutForWidth:(double)arg1 position:(int)arg2;
 - (double)listToTitle;
-- (void)setAttendees:(id)arg1;
 - (BOOL)update;
 
 @end

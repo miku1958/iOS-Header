@@ -22,8 +22,10 @@
 + (id)sharedStore;
 - (void).cxx_destruct;
 - (id)cachedContactForIdentifier:(id)arg1;
+- (id)cachedContactsForIdentifiers:(id)arg1;
 - (id)contactForIdentifier:(id)arg1;
 - (void)fetchContactForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchContactsForIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 
 @end

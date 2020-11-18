@@ -25,7 +25,6 @@ __attribute__((visibility("hidden")))
 - (id)_specifiersForOtherCalendarAccounts;
 - (id)_specifiersForOtherContactsAccounts;
 - (id)_specifiersForOtherMailAccounts;
-- (id)_specifiersForOtherServerAccounts;
 - (id)_viewProvidersManager;
 - (void)setSpecifier:(id)arg1;
 - (void)setupViewControllerDidDismiss:(id)arg1;

@@ -12,39 +12,26 @@
 
 @interface CEMDeviceInformationCommand : CEMCommandBase <CEMRegisteredTypeProtocol>
 {
+    NSArray *_payloadQueries;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *payloadQueries;
+@property (copy, nonatomic) NSArray *payloadQueries; // @synthesize payloadQueries=_payloadQueries;
 @property (readonly) Class superclass;
 
-+ (id)ErrorResponses_ErrorResponsesItem_allowedStatusKeys;
-+ (id)ErrorResponses_allowedStatusKeys;
-+ (id)Queries_allowedPayloadKeys;
-+ (id)QueryResponses_AutoSetupAdminAccountsItem_allowedStatusKeys;
-+ (id)QueryResponses_OSUpdateSettings_allowedStatusKeys;
-+ (id)QueryResponses_OrganizationInfo_allowedStatusKeys;
-+ (id)QueryResponses_allowedStatusKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withQueries:(id)arg2;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (int)executionLevel;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadQueries:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validPayloadQueries_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusErrorResponses_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusErrorResponses_ErrorResponsesItem_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusQueryResponses_AutoSetupAdminAccountsItem_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusQueryResponses_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusQueryResponses_OSUpdateSettings_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusQueryResponses_OrganizationInfo_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

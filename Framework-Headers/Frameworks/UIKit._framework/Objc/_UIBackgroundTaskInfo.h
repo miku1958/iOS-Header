@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class BKSProcessAssertion;
+@class BKSProcessAssertion, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _UIBackgroundTaskInfo : NSObject
@@ -15,13 +15,15 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _expireHandler;
     BKSProcessAssertion *_processAssertion;
     int _count;
+    NSString *_taskName;
 }
 
 + (id)backgroundTaskAssertionQueue;
 - (void).cxx_destruct;
 - (void)dealloc;
+- (id)description;
 - (void)fireExpirationHandler;
-- (id)initWithProcessAssertion:(id)arg1 expirationHandler:(CDUnknownBlockType)arg2;
+- (id)initWithProcessAssertion:(id)arg1 taskName:(id)arg2 expirationHandler:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 
 @end

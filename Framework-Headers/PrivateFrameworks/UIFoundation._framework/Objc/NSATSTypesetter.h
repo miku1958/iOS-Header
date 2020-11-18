@@ -28,7 +28,7 @@
 + (void)initialize;
 + (id)sharedInstance;
 + (id)sharedTypesetter;
-- (CDStruct_9b8416ed *)_allocateAuxData;
+- (CDStruct_3fda14a5 *)_allocateAuxData;
 - (long long)_baseWritingDirection;
 - (BOOL)_baselineRenderingMode;
 - (const char *)_bidiLevels;
@@ -61,10 +61,12 @@
 - (struct _NSRange)layoutCharactersInRange:(struct _NSRange)arg1 forLayoutManager:(id)arg2 maximumNumberOfLineFragments:(unsigned long long)arg3;
 - (void)layoutGlyphsInLayoutManager:(id)arg1 startingAtGlyphIndex:(unsigned long long)arg2 maxNumberOfLineFragments:(unsigned long long)arg3 nextGlyphIndex:(unsigned long long *)arg4;
 - (unsigned long long)layoutParagraphAtPoint:(struct CGPoint *)arg1;
+- (BOOL)limitsLayoutForSuspiciousContents;
 - (unsigned long long)lineBreakStrategy;
 - (struct CGRect)lineFragmentRectForProposedRect:(struct CGRect)arg1 remainingRect:(struct CGRect *)arg2;
 - (id)paragraphArbitrator;
 - (void)setDefaultTighteningFactor:(double)arg1;
+- (void)setLimitsLayoutForSuspiciousContents:(BOOL)arg1;
 - (void)setLineBreakStrategy:(unsigned long long)arg1;
 - (BOOL)shouldBreakLineByHyphenatingBeforeCharacterAtIndex:(unsigned long long)arg1;
 - (BOOL)shouldBreakLineByWordBeforeCharacterAtIndex:(unsigned long long)arg1;

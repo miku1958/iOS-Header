@@ -7,41 +7,53 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBImageValue-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBValueMetadata;
+@class NSData, NSString, _INPBValueMetadata;
 
-@interface _INPBImageValue : PBCodable <NSCopying>
+@interface _INPBImageValue : PBCodable <_INPBImageValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    double _height;
-    double _width;
-    NSString *_uri;
-    _INPBValueMetadata *_valueMetadata;
     struct {
         unsigned int height:1;
+        unsigned int type:1;
         unsigned int width:1;
     } _has;
+    int _type;
+    NSData *_data;
+    double _height;
+    NSString *_proxyServiceIdentifier;
+    NSString *_uri;
+    _INPBValueMetadata *_valueMetadata;
+    double _width;
 }
 
+@property (copy, nonatomic) NSData *data; // @synthesize data=_data;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasData;
 @property (nonatomic) BOOL hasHeight;
+@property (readonly, nonatomic) BOOL hasProxyServiceIdentifier;
+@property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasUri;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
 @property (nonatomic) BOOL hasWidth;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double height; // @synthesize height=_height;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
-@property (strong, nonatomic) NSString *uri; // @synthesize uri=_uri;
+@property (copy, nonatomic) NSString *proxyServiceIdentifier; // @synthesize proxyServiceIdentifier=_proxyServiceIdentifier;
+@property (readonly) Class superclass;
+@property (nonatomic) int type; // @synthesize type=_type;
+@property (copy, nonatomic) NSString *uri; // @synthesize uri=_uri;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 @property (nonatomic) double width; // @synthesize width=_width;
 
-+ (id)options;
 - (void).cxx_destruct;
+- (int)StringAsType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

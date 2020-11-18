@@ -8,5 +8,6 @@
 
 @interface NSString (PhotoLibraryServices)
 - (id)_pl_stringByReplacingPathExtension:(id)arg1;
+- (id)pl_redactedShareURL;
 @end
 

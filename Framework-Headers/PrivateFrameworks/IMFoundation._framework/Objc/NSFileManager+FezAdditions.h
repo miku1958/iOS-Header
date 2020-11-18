@@ -10,9 +10,13 @@
 - (id)_generateLinkForURL:(id)arg1;
 - (BOOL)_isPathOnMissingVolume:(id)arg1;
 - (BOOL)_moveItemAtPath:(id)arg1 toPath:(id)arg2 uniquePath:(id *)arg3 error:(id *)arg4 asCopy:(BOOL)arg5;
+- (id)_randomSimilarFilePathAsPath:(id)arg1;
 - (id)_randomTemporaryPathWithFileName:(id)arg1;
+- (id)_randomTemporaryPathWithFileName:(id)arg1 withAppendedPathComponent:(id)arg2;
 - (id)_randomTemporaryPathWithSuffix:(id)arg1;
 - (id)_randomTemporaryPathWithSuffix:(id)arg1 fileName:(id)arg2;
+- (id)_randomTemporaryPathWithSuffix:(id)arg1 fileName:(id)arg2 withAppendedPathComponent:(id)arg3;
+- (id)_randomTemporaryPathWithSuffix:(id)arg1 withAppendedPathComponent:(id)arg2;
 - (BOOL)copyItemAtPath:(id)arg1 toPath:(id)arg2 uniquePath:(id *)arg3 error:(id *)arg4;
 - (id)createUniqueDirectoryWithName:(id)arg1 atPath:(id)arg2 ofType:(id)arg3;
 - (BOOL)makeDirectoriesInPath:(id)arg1 mode:(unsigned int)arg2;

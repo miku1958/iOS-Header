@@ -14,7 +14,6 @@
     struct __SCNetworkReachability *_reachability;
     NSHashTable *_observers;
     int _currentNetworkType;
-    BOOL _roaming;
     NSMutableDictionary *_networkTypeBlocks;
     NSObject<OS_dispatch_queue> *_networkTypeQueue;
 }
@@ -23,21 +22,13 @@
 + (void)setHoldsWiFiAssertion:(BOOL)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (void)_carrierBundleChanged;
 - (void)_initNetworkObservation;
-- (BOOL)_isCurrentlyRoaming;
-- (int)_networkTypeFromCurrentCellularData;
 - (int)_networkTypeFromFlags:(unsigned int)arg1;
-- (void)_operatorBundleChanged;
 - (void)addObserver:(id)arg1;
 - (int)currentNetworkType;
 - (void)dealloc;
 - (id)init;
-- (BOOL)isCellularDataRoamingEnabled;
-- (BOOL)isCellularRoaming;
-- (BOOL)isNetworkTypeCellular:(int)arg1;
 - (void)removeObserver:(id)arg1;
-- (void)setCellularRoaming:(BOOL)arg1;
 - (void)setCurrentNetworkType:(int)arg1;
 - (void)withMinimumNetworkType:(int)arg1 timeout:(double)arg2 runBlock:(CDUnknownBlockType)arg3;
 

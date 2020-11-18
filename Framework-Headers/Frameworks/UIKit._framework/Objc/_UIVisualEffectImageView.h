@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKitCore/UIImageView.h>
 
-#import <UIKit/_UIVisualEffectSubviewSource-Protocol.h>
+#import <UIKitCore/_UIVisualEffectSubviewSource-Protocol.h>
 
 @class NSArray, NSString, _UIVisualEffectViewBackdropCaptureGroup;
 

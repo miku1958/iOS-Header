@@ -13,8 +13,8 @@
 @interface CLSAsset : CLSObject <CLSRelationable>
 {
     NSURL *_url;
+    BOOL _uploaded;
     BOOL _original;
-    BOOL __uploaded;
     NSString *_ownerPersonID;
     NSString *_brItemID;
     NSString *_brOwnerName;
@@ -24,13 +24,13 @@
     NSString *_relativePathWithinContainer;
 }
 
-@property (nonatomic) BOOL _uploaded; // @synthesize _uploaded=__uploaded;
 @property (strong, nonatomic) NSString *brItemID; // @synthesize brItemID=_brItemID;
 @property (strong, nonatomic) NSString *brOwnerName; // @synthesize brOwnerName=_brOwnerName;
 @property (strong, nonatomic) NSString *brShareName; // @synthesize brShareName=_brShareName;
 @property (strong, nonatomic) NSString *brZoneName; // @synthesize brZoneName=_brZoneName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSURL *fileURL;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isOriginal) BOOL original; // @synthesize original=_original;
 @property (strong, nonatomic) NSString *ownerPersonID; // @synthesize ownerPersonID=_ownerPersonID;
@@ -49,6 +49,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)fetchUsersAndAddToShare:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithFileURL:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (void)mergeWithObject:(id)arg1;
 - (id)uploadFileIfNeeded:(id *)arg1;

@@ -31,6 +31,7 @@
     struct cache_s *_preparedStatements;
     NSObject<OS_dispatch_source> *_stmtCacheSource;
     NSMutableArray *_stmtCacheCleanupQueue;
+    NSObject<OS_dispatch_queue> *_targetQueue;
     BOOL _traced;
     BOOL _crashIfUsedAfterClose;
     int _batchTransactionType;
@@ -87,6 +88,7 @@
 - (void)_resetState;
 - (void)_vacuumIfNeeded;
 - (int)_vacuumMode;
+- (void)assertOnQueue;
 - (long long)autovacuumableSpaceInBytes;
 - (BOOL)backupToURL:(id)arg1 progress:(CDUnknownBlockType)arg2;
 - (BOOL)close:(id *)arg1;
@@ -118,9 +120,12 @@
 - (BOOL)registerFunction:(id)arg1 nArgs:(int)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)setUserVersion:(long long)arg1;
 - (BOOL)setupPragmas;
+- (void)useBatchingOnTargetQueue:(id)arg1 delay:(double)arg2 changeCount:(int)arg3;
+- (void)useBatchingOnTargetQueue:(id)arg1 withPolicyHandler:(CDUnknownBlockType)arg2;
 - (void)useBatchingWithDelay:(double)arg1 changeCount:(int)arg2;
 - (void)useBatchingWithPolicyHandler:(CDUnknownBlockType)arg1;
 - (void)useSerialQueue;
+- (void)useSerialQueueWithTarget:(id)arg1;
 - (id)userVersion;
 
 @end

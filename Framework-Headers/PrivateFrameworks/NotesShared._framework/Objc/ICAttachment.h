@@ -145,6 +145,7 @@
 - (void)clearCachedImages;
 - (id)croppingQuad;
 - (id)dataForTypeIdentifier:(id)arg1;
+- (void)dealloc;
 - (id)defaultTitle;
 - (void)deleteAttachmentPreviewImages;
 - (void)deleteFromLocalDatabase;
@@ -163,6 +164,7 @@
 - (BOOL)hasAllMandatoryFields;
 - (BOOL)hasAnyPNGPreviewImageFiles;
 - (BOOL)hasFallbackImage;
+- (BOOL)hasMetadata;
 - (id)ic_loggingValues;
 - (BOOL)ignoreInSearchIndexer;
 - (id)imageCacheKey;
@@ -208,6 +210,7 @@
 - (struct _NSRange)rangeInNote;
 - (id)recordType;
 - (id)recordZoneName;
+- (void)requireMinimumVersionIncludingChildObjects:(long long)arg1;
 - (void)resetUniqueIdentifier;
 - (void)saveAndClearDecryptedData;
 - (void)saveMergeableDataIfNeeded;

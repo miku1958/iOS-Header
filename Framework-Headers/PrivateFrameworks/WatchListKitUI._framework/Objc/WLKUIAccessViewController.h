@@ -22,6 +22,8 @@
 @property (readonly) Class superclass;
 
 + (id)eligibleBundleIDs;
++ (BOOL)grantAccessToBundleIDs:(id)arg1;
++ (BOOL)grantAccessToBundleIDs:(id)arg1 shouldSuppressWelcomeVideoAddOnOptIn:(BOOL)arg2;
 + (void)resolveBundleIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)initWithBundleIDs:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

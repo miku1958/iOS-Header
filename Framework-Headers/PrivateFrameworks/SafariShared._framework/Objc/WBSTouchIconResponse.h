@@ -6,22 +6,28 @@
 
 #import <SafariShared/WBSSiteMetadataResponse.h>
 
-@class UIColor, UIImage;
+#import <SafariShared/WBSIconResponse-Protocol.h>
 
-@interface WBSTouchIconResponse : WBSSiteMetadataResponse
+@class NSString, UIColor, UIImage;
+
+@interface WBSTouchIconResponse : WBSSiteMetadataResponse <WBSIconResponse>
 {
     BOOL _generated;
     UIImage *_touchIcon;
     UIColor *_extractedBackgroundColor;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIColor *extractedBackgroundColor; // @synthesize extractedBackgroundColor=_extractedBackgroundColor;
 @property (readonly, nonatomic, getter=isGenerated) BOOL generated; // @synthesize generated=_generated;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIImage *icon;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) UIImage *touchIcon; // @synthesize touchIcon=_touchIcon;
 
 + (id)responseWithURL:(id)arg1 touchIcon:(id)arg2 generated:(BOOL)arg3 extractedBackgroundColor:(id)arg4;
 - (void).cxx_destruct;
-- (id)description;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 touchIcon:(id)arg2 generated:(BOOL)arg3 extractedBackgroundColor:(id)arg4;
 

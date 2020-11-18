@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/NSUserActivity.h>
+#import <CoreServices/NSUserActivity.h>
 
 #import <Intents/INCacheableObject-Protocol.h>
 

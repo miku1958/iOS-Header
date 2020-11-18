@@ -13,11 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilitySnarfed;
 - (void)_axAnnounceControlsVisible:(BOOL)arg1;
 - (BOOL)_axOverlayViewVisible;
 - (BOOL)_canHideOverlayView;
 - (void)_handleSingleTap:(id)arg1;
 - (void)_hideOverlayViewWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)_overlayIdleTimerFired:(id)arg1;
 - (void)_showOverlayViewQuickHide:(BOOL)arg1;
 
 @end

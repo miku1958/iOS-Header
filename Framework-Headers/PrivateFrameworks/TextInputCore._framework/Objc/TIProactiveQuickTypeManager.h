@@ -4,15 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+#import <TextInputCore/TIKeyboardActivityObserving-Protocol.h>
 #import <TextInputCore/TIProactiveQuickTypeManaging-Protocol.h>
 
 @class NSDate, NSDictionary, NSString, TIProactiveTrigger;
-@protocol _ICPredictionManaging;
+@protocol OS_dispatch_queue, _ICPredictionManaging;
 
-@interface TIProactiveQuickTypeManager : NSObject <TIProactiveQuickTypeManaging>
+@interface TIProactiveQuickTypeManager : NSObject <TIProactiveQuickTypeManaging, TIKeyboardActivityObserving>
 {
+    NSObject<OS_dispatch_queue> *_queue;
     id<_ICPredictionManaging> _inputContextManager;
     TIProactiveTrigger *_lastTriggerForSuggestion;
     NSDate *_lastSuggestionTime;
@@ -33,10 +35,14 @@
 + (void)setSharedTIProactiveQuickTypeManager:(id)arg1;
 + (id)sharedTIProactiveQuickTypeManager;
 + (id)singletonInstance;
+- (void).cxx_destruct;
+- (id)_makeQueue;
 - (void)addToTypologyTrace:(CDUnknownBlockType)arg1 withTriggerSource:(id)arg2 withTriggerType:(id)arg3 withTriggerSubType:(id)arg4 withPredictionResults:(id)arg5 withFirstTrigger:(id)arg6;
 - (void)dealloc;
 - (id)generateAndRenderProactiveSuggestionsWithInput:(id)arg1 withSecureCandidateRenderer:(id)arg2 withRenderTraits:(id)arg3 textContentType:(id)arg4;
+- (void)generateAndRenderProactiveSuggestionsWithInput:(id)arg1 withSecureCandidateRenderer:(id)arg2 withRenderTraits:(id)arg3 textContentType:(id)arg4 async:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withAdditionalPredictions:(id)arg2 withSecureCandidateRenderer:(id)arg3 withRenderTraits:(id)arg4 withInput:(id)arg5 withRecipient:(id)arg6 withApplication:(id)arg7 withLocale:(id)arg8 withTextContentType:(id)arg9 withAvailableApps:(id)arg10 logBlock:(CDUnknownBlockType)arg11;
+- (void)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withAdditionalPredictions:(id)arg2 withSecureCandidateRenderer:(id)arg3 withRenderTraits:(id)arg4 withInput:(id)arg5 withRecipient:(id)arg6 withApplication:(id)arg7 withLocale:(id)arg8 withTextContentType:(id)arg9 withAvailableApps:(id)arg10 logBlock:(CDUnknownBlockType)arg11 async:(BOOL)arg12 completion:(CDUnknownBlockType)arg13;
 - (id)getCachedRecipientInfoForEmailOrPhone:(id)arg1;
 - (id)getLastSuggestionTime;
 - (id)getMeCardEmailAddresses;
@@ -45,6 +51,7 @@
 - (BOOL)isAutoCompleteEnabled;
 - (BOOL)isAutoPopupEnabled;
 - (BOOL)isEnabled;
+- (void)keyboardActivityDidTransition:(id)arg1;
 - (void)loggingProactiveEngagementMetric:(unsigned long long)arg1 withLocale:(id)arg2 fieldType:(id)arg3;
 - (unsigned long long)matchProactiveCandidateToUserInput:(id)arg1 userInput:(id)arg2;
 - (id)renderItems:(id)arg1 withAdditionalPredictions:(id)arg2 withSecureCandidateRenderer:(id)arg3 withRenderTraits:(id)arg4 withInput:(id)arg5;

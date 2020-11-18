@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CFNetwork/NSCopying-Protocol.h>
 #import <CFNetwork/NSMutableCopying-Protocol.h>
@@ -50,6 +50,7 @@
 - (id)_copyReplacingURLWithURL:(id)arg1;
 - (BOOL)_ignoreHSTS;
 - (id)_initWithCFURLRequest:(struct _CFURLRequest *)arg1;
+- (BOOL)_isIdempotent;
 - (BOOL)_isSafeRequestForBackgroundDownload;
 - (double)_payloadTransmissionTimeout;
 - (BOOL)_preventHSTSStorage;

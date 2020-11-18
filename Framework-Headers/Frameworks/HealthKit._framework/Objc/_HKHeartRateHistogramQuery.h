@@ -36,13 +36,13 @@
 @property (readonly) Class superclass;
 
 + (id)clientInterfaceProtocol;
++ (Class)configurationClass;
 + (void)configureClientInterface:(id)arg1;
 - (void).cxx_destruct;
-- (void)_populateConfiguration:(id)arg1;
 - (void)client_deliverHistogramCollection:(id)arg1 forQuery:(id)arg2;
 - (id)initWithStartDate:(id)arg1 endDate:(id)arg2 contextStyle:(long long)arg3 anchorDate:(id)arg4 intervalComponents:(id)arg5 histogramAnchor:(id)arg6 histogramBucketSize:(id)arg7 completionHandler:(CDUnknownBlockType)arg8;
-- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queue_deliverError:(id)arg1;
+- (void)queue_populateConfiguration:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AssetsLibraryServices/PLAssetsdClientService-Protocol.h>
 
@@ -21,9 +21,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void)_sendMessageForTaskIdentifier:(id)arg1 operation:(long long)arg2 configurationBlock:(CDUnknownBlockType)arg3;
+- (void)assetAvailableForIdentifier:(id)arg1 success:(BOOL)arg2 error:(id)arg3;
 - (void)dealloc;
+- (void)downloadFinishedForIdentifier:(id)arg1 success:(BOOL)arg2 url:(id)arg3 data:(id)arg4 info:(id)arg5 error:(id)arg6;
 - (void)downloadStatusForIdentifier:(id)arg1 progress:(double)arg2 completed:(BOOL)arg3 data:(id)arg4 error:(id)arg5;
 - (id)initWithConnection:(id)arg1;
+- (void)resourceURLReceivedForIdentifier:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;
 
 @end
 

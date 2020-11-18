@@ -30,6 +30,7 @@
 - (void)stopDatabaseVacuumPolicy;
 - (void)timerFired:(id)arg1;
 - (void)vacuum;
+- (void)vacuumHTMLDatabase;
 
 @end
 

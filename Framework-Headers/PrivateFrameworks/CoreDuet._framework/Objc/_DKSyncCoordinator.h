@@ -28,6 +28,7 @@
     NSArray *_streamNamesObservedForAdditions;
     NSArray *_streamNamesObservedForDeletions;
     NSHashTable *_syncCoordinatorEventNotificationDelegates;
+    id c2;
     _DKKnowledgeStorage *_storage;
 }
 
@@ -112,6 +113,7 @@
 - (void)performSyncWithPolicy:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)removeSyncCoordinatorEventNotificationDelegate:(id)arg1;
 - (void)syncWithReply:(CDUnknownBlockType)arg1;
+- (void)synchronizeWithUrgency:(unsigned long long)arg1 client:(id)arg2 reply:(CDUnknownBlockType)arg3;
 
 @end
 

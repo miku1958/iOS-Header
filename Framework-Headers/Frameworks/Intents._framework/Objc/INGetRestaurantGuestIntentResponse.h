@@ -7,10 +7,11 @@
 #import <Intents/INIntentResponse.h>
 
 #import <Intents/INGetRestaurantGuestIntentResponseExport-Protocol.h>
+#import <Intents/INImageProxyInjecting-Protocol.h>
 
 @class INRestaurantGuest, INRestaurantGuestDisplayPreferences, NSString;
 
-@interface INGetRestaurantGuestIntentResponse : INIntentResponse <INGetRestaurantGuestIntentResponseExport>
+@interface INGetRestaurantGuestIntentResponse : INIntentResponse <INImageProxyInjecting, INGetRestaurantGuestIntentResponseExport>
 {
     INRestaurantGuest *_guest;
     INRestaurantGuestDisplayPreferences *_guestDisplayPreferences;
@@ -27,6 +28,9 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
+- (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBackingStore:(id)arg1;
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;

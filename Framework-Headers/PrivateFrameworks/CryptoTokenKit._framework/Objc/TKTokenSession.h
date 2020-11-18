@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LAContext, NSDictionary, NSNumber, TKToken;
+@class LAContext, NSDictionary, NSNumber, NSString, TKToken;
 @protocol OS_dispatch_queue, OS_xpc_object, TKTokenSessionDelegate, TKTokenSessionPrivateDelegate;
 
 @interface TKTokenSession : NSObject
@@ -24,6 +24,7 @@
 @property (strong) NSNumber *callerPID; // @synthesize callerPID=_callerPID;
 @property (readonly) NSObject<OS_xpc_object> *clientConnection; // @synthesize clientConnection=_clientConnection;
 @property (weak) id<TKTokenSessionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) NSString *name;
 @property (strong) NSDictionary *parameters; // @synthesize parameters=_parameters;
 @property (readonly) id<TKTokenSessionPrivateDelegate> privateDelegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionQueue; // @synthesize sessionQueue=_sessionQueue;
@@ -40,8 +41,8 @@
 - (void)decryptData:(id)arg1 usingKey:(id)arg2 algorithm:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)deleteObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)endRequest;
-- (void)evaluateAuthOperation:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 context:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)evaluateAuthOperation:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)evaluateAuthOperation:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 retry:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)evaluateAuthOperation:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)finalizeAuthOperation:(id)arg1 evaluatedAuthOperation:(id)arg2 auditToken:(CDStruct_6ad76789)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)getAccessControlOfObject:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getDataOfObject:(id)arg1 reply:(CDUnknownBlockType)arg2;

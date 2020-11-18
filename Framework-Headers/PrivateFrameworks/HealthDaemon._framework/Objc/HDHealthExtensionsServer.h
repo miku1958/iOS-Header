@@ -15,8 +15,6 @@
 
 @interface HDHealthExtensionsServer : NSObject <HDDiagnosticObject, HKExtendedServerInterface, _HKXPCExportable>
 {
-    BOOL _registeredForAchievementNotifications;
-    BOOL _registeredForAchievementDefinitionUnviewedCountChangeNotifications;
     NSObject<OS_dispatch_queue> *_queue;
     HDXPCClient *_client;
     HDProfile *_profile;
@@ -28,18 +26,11 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (nonatomic) BOOL registeredForAchievementDefinitionUnviewedCountChangeNotifications; // @synthesize registeredForAchievementDefinitionUnviewedCountChangeNotifications=_registeredForAchievementDefinitionUnviewedCountChangeNotifications;
-@property (nonatomic) BOOL registeredForAchievementNotifications; // @synthesize registeredForAchievementNotifications=_registeredForAchievementNotifications;
 @property (readonly) Class superclass;
 
 + (BOOL)_shouldAcceptConnectionForClient:(id)arg1 error:(id *)arg2;
 + (id)serverWithClient:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
-- (void)_achievementDefinitionAvailabilityChanged:(id)arg1;
-- (void)_achievementDefinitionUnviewedCountChanged:(id)arg1;
-- (void)_achievementsAddedOrRemoved:(id)arg1;
-- (void)_callClientRemoteAchievementDefinitionUnviewedCountChanged;
-- (void)_checkForUpdatedAchievementAssetsOnce;
 - (void)connectionInvalidated;
 - (void)dealloc;
 - (id)diagnosticDescription;
@@ -47,31 +38,7 @@
 - (id)initWithClient:(id)arg1 profile:(id)arg2;
 - (id)remoteInterface;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)remote_achievementAssetAvailabilityOnPairedDeviceForIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_addAchievement:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_createMonthlyChallengeAchievementForMonth:(long long)arg1 year:(long long)arg2 predicateString:(id)arg3 progressExpressionString:(id)arg4 goalExpressionString:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)remote_deleteAchievementWithUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_deleteAllAchievementsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_expressionValue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_fetchAchievementAssetsServerURLWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_fetchAchievementsWithCompletedDateBetweenStart:(id)arg1 end:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_fetchDynamicAchievementDefinitionsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_fetchHiddenUnearnedAchievementDefinitionIdentifiersAmongIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_fetchNumberOfUnviewedAchievementsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_fetchUnviewedAchievementDefinitionIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_markAchievementAsViewed:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_markAchievementDefinitionIdentifierAlertViewed:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_markAchievementsAlerted:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_nextScheduledAchievementDefinitionAlertTaskDateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_progressAchievementWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_registerForAchievementDefinitionNotificationsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_registerForAchievementNotificationsAndFetchUnalertedCountWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_resetAchievementDefinitionAlertedStates:(BOOL)arg1 availabilityStates:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_runAchievementsFixupAsDryRun:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)remote_runCompanionAchievementManagerWithCompletion:(CDUnknownBlockType)arg1;
-- (void)remote_setAchievementAssetsServerURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_setCurrentActivityCacheOverrideDate:(id)arg1 timeZone:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)remote_updateAllAchievementAssetsWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

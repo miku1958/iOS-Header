@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewDelegate-Protocol.h>
-#import <UIKit/UITableViewFocusDelegateLegacy-Protocol.h>
+#import <UIKitCore/UITableViewDelegate-Protocol.h>
+#import <UIKitCore/UITableViewFocusDelegateLegacy-Protocol.h>
 
 @class NSArray, NSIndexPath, NSString, UIColor, UITableView, UITableViewCell, UIView, _UITableViewCellActionButton;
 @protocol UISpringLoadedInteractionContext;

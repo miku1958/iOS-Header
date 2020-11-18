@@ -17,6 +17,8 @@
 - (BOOL)_accessibilityHitTestShouldFallbackToNearestChild;
 - (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
 - (void)_dismissCustomizeSheet:(BOOL)arg1;
+- (long long)accessibilityContainerType;
+- (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (void)beginCustomizingItems:(id)arg1;
 - (BOOL)shouldGroupAccessibilityChildren;

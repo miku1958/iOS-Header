@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary;
 
@@ -12,6 +12,8 @@
 {
     NSDictionary *_parameterValues;
 }
+
+@property (readonly, nonatomic) NSDictionary *parameterValues; // @synthesize parameterValues=_parameterValues;
 
 + (id)carrierServiceName;
 + (BOOL)ignoresRoamingSwitch;
@@ -21,9 +23,7 @@
 + (BOOL)supportsGreetingChanges;
 + (BOOL)supportsPasswordChanges;
 - (void).cxx_destruct;
-- (void)_initForBundle:(id)arg1;
-- (id)initForService:(id)arg1;
-- (id)initForServiceBundleId:(id)arg1;
+- (id)initWithSubscriptionContext:(id)arg1 service:(id)arg2;
 - (id)parameterValueForKey:(id)arg1;
 
 @end

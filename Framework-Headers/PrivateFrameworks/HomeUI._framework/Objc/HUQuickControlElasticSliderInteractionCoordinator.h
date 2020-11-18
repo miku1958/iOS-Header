@@ -26,7 +26,6 @@
     HUElasticApplier *_controlHorizontalCompressionApplier;
     double _activeGestureValue;
     unsigned long long _activeGestureValueType;
-    HUQuickControlViewProfile<HUQuickControlIncrementalConvertibleProfile> *_viewProfile;
     CDStruct_ef18196a _modelValue;
 }
 
@@ -47,31 +46,25 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
 @property (nonatomic, getter=isUserInteractionActive) BOOL userInteractionActive; // @synthesize userInteractionActive=_userInteractionActive;
-@property (strong, nonatomic) HUQuickControlViewProfile<HUQuickControlIncrementalConvertibleProfile> *viewProfile; // @synthesize viewProfile=_viewProfile;
+@property (readonly, nonatomic) HUQuickControlViewProfile<HUQuickControlIncrementalConvertibleProfile> *viewProfile;
 
 - (void).cxx_destruct;
 - (id)_allAppliers;
 - (void)_beginReceivingTouchesWithGestureRecognizer:(id)arg1 firstTouchDown:(BOOL)arg2;
-- (CDStruct_c3b9c2ee)_boundedRangeForRange:(CDStruct_c3b9c2ee)arg1;
-- (double)_boundedValueForValue:(double)arg1 valueType:(unsigned long long)arg2 rubberBand:(BOOL)arg3;
-- (CDStruct_c3b9c2ee)_clippedRangeForRange:(CDStruct_c3b9c2ee)arg1;
 - (unsigned long long)_findClosestValueFromTouchLocation:(struct CGPoint)arg1;
 - (void)_handleControlPanGesture:(id)arg1;
 - (void)_handleControlTapGesture:(id)arg1;
 - (CDStruct_c3b9c2ee)_rawViewValueRange;
-- (CDStruct_c3b9c2ee)_roundedRangeForRange:(CDStruct_c3b9c2ee)arg1;
-- (double)_roundedValueForValue:(double)arg1;
 - (double)_rubberBandedStretchProgress;
-- (double)_rubberBandedValueForValue:(double)arg1 valueType:(unsigned long long)arg2;
+- (id)_rubberBandingValueNormalizer;
 - (void)_setupAllValueAppliersIfNecessary;
 - (void)_setupStretchingAppliers;
 - (id)_setupValueApplierForValueType:(unsigned long long)arg1;
 - (double)_sliderValueForLocation:(struct CGPoint)arg1;
-- (void)_updateControlViewPrimaryValue:(double)arg1;
-- (void)_updateControlViewSecondaryValue:(double)arg1;
 - (void)_updateControlViewValueOfType:(unsigned long long)arg1 withValue:(double)arg2;
-- (void)_updateModelValue:(CDStruct_c3b9c2ee)arg1 notifyDelegate:(BOOL)arg2;
+- (void)_updateModelValue:(CDStruct_c3b9c2ee)arg1 roundValue:(BOOL)arg2 notifyDelegate:(BOOL)arg3;
 - (void)_updatePropertiesForControlValueSmoothingApplier:(id)arg1 ofType:(unsigned long long)arg2;
+- (id)_valueNormalizerWithOptions:(id)arg1;
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(id)arg1;
 - (void)dealloc;
 - (void)gestureDidEndForGestureTransformer:(id)arg1;

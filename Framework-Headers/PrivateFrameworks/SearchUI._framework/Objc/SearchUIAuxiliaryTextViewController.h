@@ -19,6 +19,7 @@
 
 + (BOOL)supportsResult:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)isPrimarilyTextView;
 - (id)setupViewWithStyle:(unsigned long long)arg1;
 - (BOOL)shouldVerticallyCenter;
 - (void)updateWithResult:(id)arg1;

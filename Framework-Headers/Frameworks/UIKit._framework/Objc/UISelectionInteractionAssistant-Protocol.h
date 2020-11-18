@@ -4,7 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class UIView;
+
 @protocol UISelectionInteractionAssistant
+- (void)addGestureRecognizersToView:(UIView *)arg1;
 - (void)configureForHighlightMode;
 - (void)configureForSelectionMode;
 - (void)rangedMagnifierWithState:(long long)arg1 atPoint:(struct CGPoint)arg2;

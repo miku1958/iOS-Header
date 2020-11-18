@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     BOOL _viewIsVisible;
     BOOL _deletedParticipants;
     BOOL _fromDetail;
+    BOOL _prohibitCallingSearcherStateChanged;
     EKUIEventInviteesEditViewController *_parentController;
     NSDate *_selectedStartDate;
     NSDate *_selectedEndDate;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) EKUIInviteesViewOriginalConflictSection *originalConflictSection; // @synthesize originalConflictSection=_originalConflictSection;
 @property (weak, nonatomic) EKUIEventInviteesEditViewController *parentController; // @synthesize parentController=_parentController;
 @property (nonatomic) BOOL presentModally;
+@property (nonatomic) BOOL prohibitCallingSearcherStateChanged; // @synthesize prohibitCallingSearcherStateChanged=_prohibitCallingSearcherStateChanged;
 @property (strong, nonatomic) EKUIInviteesViewProposedTimeSection *proposedTimeSection; // @synthesize proposedTimeSection=_proposedTimeSection;
 @property (nonatomic) BOOL resetAttendeesSections; // @synthesize resetAttendeesSections=_resetAttendeesSections;
 @property (nonatomic) BOOL resetConflictResolutionSections; // @synthesize resetConflictResolutionSections=_resetConflictResolutionSections;

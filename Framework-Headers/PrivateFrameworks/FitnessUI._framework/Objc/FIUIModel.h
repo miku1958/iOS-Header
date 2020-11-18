@@ -6,15 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <FitnessUI/FIUIAchievementsModelDelegate-Protocol.h>
-
-@class FIUIAchievementsModel, FIUIWeeklyGoalModel, HKActivityCache, HKActivitySummary, HKCurrentActivityCacheQuery, HKHealthStore, NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSPredicate, NSString, _HKCurrentActivitySummaryQuery;
+@class FIUIWeeklyGoalModel, HKActivityCache, HKActivitySummary, HKCurrentActivityCacheQuery, HKHealthStore, NSArray, NSDictionary, NSHashTable, NSMutableDictionary, NSPredicate, _HKCurrentActivitySummaryQuery;
 @protocol OS_dispatch_queue;
 
-@interface FIUIModel : NSObject <FIUIAchievementsModelDelegate>
+@interface FIUIModel : NSObject
 {
     FIUIWeeklyGoalModel *_weeklyGoalModel;
-    FIUIAchievementsModel *_achievementsModel;
     NSHashTable *_observers;
     NSMutableDictionary *_currentActivitySummaryQueryClients;
     NSMutableDictionary *_currentActivityCacheQueryClients;
@@ -34,14 +31,9 @@
     NSDictionary *_currentActivitySummaryQueryCollectionIntervalOverrides;
 }
 
-@property (readonly, nonatomic) FIUIAchievementsModel *achievementsModel;
 @property (strong, nonatomic) NSDictionary *currentActivitySummaryQueryCollectionIntervalOverrides; // @synthesize currentActivitySummaryQueryCollectionIntervalOverrides=_currentActivitySummaryQueryCollectionIntervalOverrides;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (readonly, nonatomic) NSPredicate *sourcesPredicate;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) FIUIWeeklyGoalModel *weeklyGoalModel;
 
 + (id)_dailyTotalsQueryFromDate:(id)arg1 toDate:(id)arg2 dataType:(id)arg3 predicate:(id)arg4 sendUpdates:(BOOL)arg5 handler:(CDUnknownBlockType)arg6;
@@ -56,7 +48,6 @@
 - (void)_queue_restartCurrentActivityCacheQueryAfterError;
 - (void)_queue_restartCurrentActivitySummaryQueryAfterError;
 - (void)_setKnownSources:(id)arg1;
-- (void)achievementsDidChangeInModel:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)basalEnergyBurnTotalForDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)basalMetabolicRateForDate:(id)arg1 completion:(CDUnknownBlockType)arg2;

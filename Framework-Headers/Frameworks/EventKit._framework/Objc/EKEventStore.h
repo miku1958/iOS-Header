@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKit/EKDaemonConnectionDelegate-Protocol.h>
 
@@ -115,16 +115,20 @@
 - (id)_eventWithURI:(id)arg1 checkValid:(BOOL)arg2;
 - (id)_fetchConstraintsForSourceWithObjectID:(id)arg1;
 - (void)_forgetRegisteredObjects;
+- (id)_importICSData:(id)arg1 intoCalendarsWithIDs:(id)arg2 options:(unsigned long long)arg3;
 - (void)_insertObject:(id)arg1;
 - (BOOL)_isUnitTesting;
 - (void)_loadCalendarsIfNeeded;
 - (void)_loadSourcesIfNeeded;
 - (void)_logMainThreadFetchWarningIfNeeded;
 - (BOOL)_parseURI:(id)arg1 expectedScheme:(id)arg2 identifier:(id *)arg3 options:(id *)arg4;
+- (void)_postEventStoreChangedNotificationWithChangedObjectIDs:(id)arg1;
 - (id)_predicateForRemindersWithDate:(id)arg1 useAsCompletionDate:(BOOL)arg2 calendars:(id)arg3 limitToCompletedOrIncomplete:(BOOL)arg4 completed:(BOOL)arg5 includeDatesBefore:(BOOL)arg6 sortOrder:(int)arg7 preloadProperties:(id)arg8;
+- (id)_predicateForRemindersWithDate:(id)arg1 useAsCompletionDate:(BOOL)arg2 calendars:(id)arg3 limitToCompletedOrIncomplete:(BOOL)arg4 completed:(BOOL)arg5 includeDatesBefore:(BOOL)arg6 sortOrder:(int)arg7 preloadProperties:(id)arg8 maxResults:(unsigned long long)arg9;
 - (BOOL)_refreshDASource:(id)arg1 isUserRequested:(BOOL)arg2;
 - (void)_registerObject:(id)arg1;
 - (void)_registerObjectImmediate:(id)arg1;
+- (void)_removeCachedCalendarFromSource:(id)arg1;
 - (void)_removeCachedCalendarWithID:(id)arg1;
 - (void)_requestAccessForEntityType:(unsigned long long)arg1;
 - (void)_reregisterObject:(id)arg1 oldID:(id)arg2;
@@ -179,6 +183,7 @@
 - (void)enumerateEventsMatchingPredicate:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)eventForUID:(id)arg1 occurrenceDate:(id)arg2;
 - (id)eventForUID:(id)arg1 occurrenceDate:(id)arg2 checkValid:(BOOL)arg3;
+- (id)eventObjectIDsMatchingPredicate:(id)arg1;
 - (id)eventWithIdentifier:(id)arg1;
 - (id)eventWithUUID:(id)arg1;
 - (id)eventWithUniqueId:(id)arg1;
@@ -194,11 +199,13 @@
 - (BOOL)hideCalendarsFromNotificationCenter:(id)arg1 error:(id *)arg2;
 - (id)importICS:(id)arg1 intoCalendar:(id)arg2 options:(unsigned long long)arg3;
 - (id)importICSData:(id)arg1 intoCalendar:(id)arg2 options:(unsigned long long)arg3;
-- (void)importICSData:(id)arg1 intoCalendar:(id)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)importICSData:(id)arg1 intoCalendars:(id)arg2 options:(unsigned long long)arg3;
 - (id)init;
 - (id)initWithEKOptions:(unsigned long long)arg1;
+- (id)initWithEKOptions:(unsigned long long)arg1 path:(id)arg2 changeTrackingClientId:(id)arg3 enablePropertyModificationLogging:(BOOL)arg4;
 - (id)initWithEKOptions:(unsigned long long)arg1 path:(id)arg2 clientIDSuffix:(id)arg3 enablePropertyModificationLogging:(BOOL)arg4;
 - (id)initWithOptions:(int)arg1 path:(id)arg2;
+- (id)initWithOptions:(int)arg1 path:(id)arg2 changeTrackingClientId:(id)arg3 enablePropertyModificationLogging:(BOOL)arg4;
 - (id)initWithOptions:(int)arg1 path:(id)arg2 clientIDSuffix:(id)arg3 enablePropertyModificationLogging:(BOOL)arg4;
 - (void)insertSuggestedEventCalendar;
 - (id)inviteReplyNotifications;
@@ -251,8 +258,11 @@
 - (id)predicateForPotentialTravelEventsInCalendars:(id)arg1 startDate:(id)arg2 endDate:(id)arg3;
 - (id)predicateForPreloadedCompletedRemindersWithDueDate:(id)arg1 calendars:(id)arg2 sortOrder:(int)arg3 preloadProperties:(id)arg4;
 - (id)predicateForPreloadedIncompleteRemindersWithDueDate:(id)arg1 calendars:(id)arg2 sortOrder:(int)arg3 preloadProperties:(id)arg4;
+- (id)predicateForPreloadedIncompleteRemindersWithDueDate:(id)arg1 calendars:(id)arg2 sortOrder:(int)arg3 preloadProperties:(id)arg4 maxResults:(unsigned long long)arg5;
 - (id)predicateForRemindersInCalendars:(id)arg1;
+- (id)predicateForRemindersInCalendars:(id)arg1 preloadProperties:(id)arg2;
 - (id)predicateForRemindersWithSearchTerm:(id)arg1;
+- (id)predicateForRemindersWithSearchTerm:(id)arg1 preloadProperties:(id)arg2;
 - (id)predicateForRemindersWithTitle:(id)arg1 calendars:(id)arg2;
 - (id)predicateForRemindersWithTitle:(id)arg1 listTitle:(id)arg2 limitToCompletedOrIncomplete:(BOOL)arg3 completed:(BOOL)arg4 dueAfter:(id)arg5 dueBefore:(id)arg6 searchTerm:(id)arg7 sortOrder:(int)arg8;
 - (id)predicateForRemindersWithTitle:(id)arg1 listTitle:(id)arg2 limitToCompletedOrIncomplete:(BOOL)arg3 completed:(BOOL)arg4 dueAfter:(id)arg5 dueBefore:(id)arg6 searchTerm:(id)arg7 sortOrder:(int)arg8 maxResults:(unsigned long long)arg9;
@@ -274,6 +284,7 @@
 - (id)registerFetchedObjectWithID:(id)arg1;
 - (id)registerFetchedObjectWithID:(id)arg1 withDefaultLoadedPropertyKeys:(id)arg2 values:(id)arg3;
 - (long long)registerForDetailedChangeTracking:(id *)arg1;
+- (id)reminderObjectIDsMatchingPredicate:(id)arg1;
 - (id)reminderWithExternalURI:(id)arg1;
 - (id)remindersMatchingPredicate:(id)arg1;
 - (id)remindersWithContactIdentifier:(id)arg1;
@@ -305,6 +316,7 @@
 - (BOOL)saveSource:(id)arg1 commit:(BOOL)arg2 error:(id *)arg3;
 - (id)scheduledTaskCacheFetchDaysAndTaskCounts;
 - (id)scheduledTaskCacheFetchTasksOnDay:(id)arg1;
+- (id)scheduledTaskCacheFetchTasksOnDay:(id)arg1 maxResults:(unsigned long long)arg2;
 - (int)sequenceNumber;
 - (void)setDefaultCalendarForNewReminders:(id)arg1;
 - (BOOL)setInvitationStatus:(unsigned long long)arg1 forEvent:(id)arg2 error:(id *)arg3;

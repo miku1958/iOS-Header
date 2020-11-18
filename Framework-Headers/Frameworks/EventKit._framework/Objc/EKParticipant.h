@@ -42,6 +42,7 @@
 - (void).cxx_destruct;
 - (const void *)ABRecordWithAddressBook:(void *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)displayNameRaw;
 - (id)initWithName:(id)arg1 emailAddress:(id)arg2 phoneNumber:(id)arg3 url:(id)arg4;
 - (id)invitedBy;
 - (BOOL)isEqualToParticipant:(id)arg1;
@@ -49,6 +50,7 @@
 - (id)nameComponents;
 - (id)proposedStartDate;
 - (id)proposedStartDateForEvent:(id)arg1;
+- (id)semanticIdentifier;
 - (void)setDisplayName:(id)arg1;
 - (id)setInviterNameString;
 - (void)setProposedStartDate:(id)arg1;

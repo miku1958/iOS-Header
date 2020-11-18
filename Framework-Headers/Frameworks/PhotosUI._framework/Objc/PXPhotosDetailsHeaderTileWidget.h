@@ -120,6 +120,8 @@
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
 @property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
++ (BOOL)canShowMiroMovieHeaderForDataSource:(id)arg1;
++ (double)preferredHeaderContentHeightForWidth:(double)arg1 screen:(id)arg2;
 - (void).cxx_destruct;
 - (struct CGRect)_contentRectInCoordinateSpace:(id)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
 - (id)_contentRegionOfInterestForTileWithIdentifier:(struct PXTileIdentifier)arg1;

@@ -19,8 +19,10 @@
     NSString *_threadIdentifier;
     NSString *_categoryIdentifier;
     NSSet *_subSectionIdentifiers;
+    NSString *_highestPrioritySubSectionIdentifier;
     NSArray *_peopleIdentifiers;
     NSString *_parentSectionIdentifier;
+    BOOL _uniqueThreadIdentifier;
     NSDate *_timestamp;
     NSSet *_requestDestinations;
     NCNotificationContent *_content;
@@ -37,6 +39,7 @@
     BOOL _isCollapsedNotification;
     unsigned long long _collapsedNotificationsCount;
     NSDictionary *_sourceInfo;
+    BOOL _criticalAlert;
 }
 
 @property (readonly, copy, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
@@ -45,10 +48,12 @@
 @property (readonly, nonatomic) unsigned long long collapsedNotificationsCount; // @synthesize collapsedNotificationsCount=_collapsedNotificationsCount;
 @property (readonly, nonatomic) NCNotificationContent *content; // @synthesize content=_content;
 @property (readonly, copy, nonatomic) NSDictionary *context; // @synthesize context=_context;
+@property (readonly, nonatomic, getter=isCriticalAlert) BOOL criticalAlert; // @synthesize criticalAlert=_criticalAlert;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NCNotificationAction *defaultAction; // @synthesize defaultAction=_defaultAction;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *highestPrioritySubSectionIdentifier; // @synthesize highestPrioritySubSectionIdentifier=_highestPrioritySubSectionIdentifier;
 @property (readonly, nonatomic) BOOL isCollapsedNotification; // @synthesize isCollapsedNotification=_isCollapsedNotification;
 @property (readonly, copy, nonatomic) NSString *notificationIdentifier; // @synthesize notificationIdentifier=_notificationIdentifier;
 @property (readonly, nonatomic) NCNotificationOptions *options; // @synthesize options=_options;
@@ -65,6 +70,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *supplementaryActions; // @synthesize supplementaryActions=_supplementaryActions;
 @property (readonly, copy, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 @property (readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic, getter=isUniqueThreadIdentifier) BOOL uniqueThreadIdentifier; // @synthesize uniqueThreadIdentifier=_uniqueThreadIdentifier;
 @property (readonly, nonatomic) UNNotification *userNotification; // @synthesize userNotification=_userNotification;
 
 + (id)notificationRequest;
@@ -107,6 +113,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (id)loggingDescription;
 - (BOOL)matchesRequest:(id)arg1;
+- (BOOL)matchesThreadForRequest:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;

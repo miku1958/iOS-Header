@@ -16,7 +16,7 @@
 + (id)ak_proxiedAnisetteHeadersWithData:(id)arg1;
 + (id)ak_timeZoneHeader;
 - (void)_setAuthorizationHeaderWithToken:(id)arg1 altDSID:(id)arg2 key:(id)arg3;
-- (void)ak_addAbsintheHeader;
+- (void)ak_addAbsintheHeaderWithValue:(id)arg1;
 - (void)ak_addAcceptedSLAHeaderWithVersion:(unsigned long long)arg1;
 - (void)ak_addAnisetteHeaders;
 - (void)ak_addAppleIDHeaderWithValue:(id)arg1;
@@ -24,6 +24,7 @@
 - (void)ak_addAuthorizationHeaderWithHeartbeatToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addAuthorizationHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addAuthorizationHeaderWithServiceToken:(id)arg1 forAltDSID:(id)arg2;
+- (void)ak_addCFUHeader:(id)arg1;
 - (void)ak_addCircleStatusHeader;
 - (void)ak_addClientApp:(id)arg1;
 - (void)ak_addClientInfoHeader;
@@ -47,6 +48,7 @@
 - (void)ak_addLoggedInServicesHeaderForServices:(id)arg1;
 - (void)ak_addPRKRequestHeader;
 - (void)ak_addPasswordResetKeyHeader:(id)arg1;
+- (void)ak_addPhoneInformationHeaderWithValue:(id)arg1;
 - (void)ak_addPhoneNumberCertificateHeaderWithValue:(id)arg1;
 - (void)ak_addPhoneNumberHeader;
 - (void)ak_addProxiedAnisetteHeaders:(id)arg1;
@@ -56,7 +58,7 @@
 - (void)ak_addRecoveryHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addShortLivedTokenHeaderWithIdentityToken:(id)arg1 forAltDSID:(id)arg2;
 - (void)ak_addShowWarranty;
-- (void)ak_addTimeZoneHeader;
+- (void)ak_addTimeZoneHeaders;
 - (void)ak_setBodyWithParameters:(id)arg1;
 - (void)ak_setJSONBodyWithParameters:(id)arg1;
 @end

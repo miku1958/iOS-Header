@@ -8,69 +8,70 @@
 
 #import <NewsUI/ADBannerViewInternalDelegate-Protocol.h>
 #import <NewsUI/NUAdContextProvider-Protocol.h>
-#import <NewsUI/SXVideo-Protocol.h>
-#import <NewsUI/SXVideoAdProviding-Protocol.h>
+#import <NewsUI/SVVideo-Protocol.h>
+#import <NewsUI/SVVideoAdProviding-Protocol.h>
 
-@class NSString, NSURL, NUAdBannerView, SXKeyValueObserver, SXTimeline, SXVideoAdStateManager;
-@protocol NUAdContextProvider, NUAdProvider, NUVideoAdEventTracker, NUVideoAdProviderDataSource, SXVASTAnalyticsEventInfoFactory, SXVideoMetadataProviding, SXVisibilityMonitoring;
+@class NSArray, NSString, NSURL, NUAdBannerView, SVKeyValueObserver, SXVideoAdStateManager;
+@protocol NUAdContextProvider, NUAdProvider, NUVideoAdEventTracker, NUVideoPlaybackCounter, SVModalPresentationViewControllerProviding, SVVideoMetadata, SVVisibilityMonitoring, SXVASTAnalyticsEventInfoFactory;
 
-@interface NUVideoAdProvider : NSObject <NUAdContextProvider, ADBannerViewInternalDelegate, SXVideo, SXVideoAdProviding>
+@interface NUVideoAdProvider : NSObject <NUAdContextProvider, ADBannerViewInternalDelegate, SVVideo, SVVideoAdProviding>
 {
-    id<NUVideoAdProviderDataSource> _dataSource;
-    NSString *_placement;
+    BOOL _appeared;
+    NSString *_identifier;
+    NSArray *_contextProviders;
     id<NUAdContextProvider> _contextProviderForVideoBefore;
     id<NUAdContextProvider> _contextProviderForVideoAfter;
     NUAdBannerView *_bannerView;
     unsigned long long _skipThreshold;
     NSURL *_URL;
-    SXKeyValueObserver *_playbackStartedObserver;
+    SVKeyValueObserver *_playbackStartedObserver;
     id<NUVideoAdEventTracker> _eventTracker;
-    SXTimeline *_timeline;
-    id<SXVideoMetadataProviding> _metadata;
+    id<SVVideoMetadata> _metadata;
     SXVideoAdStateManager *_stateManager;
     id<NUAdProvider> _adProvider;
-    id<SXVisibilityMonitoring> _videoPlayerVisibilityMonitor;
-    id<SXVisibilityMonitoring> _videoVisibilityMonitor;
+    id<SVVisibilityMonitoring> _videoPlayerVisibilityMonitor;
     id<SXVASTAnalyticsEventInfoFactory> _analyticsEventInfoFactory;
+    id<NUVideoPlaybackCounter> _playbackCounter;
+    id<SVModalPresentationViewControllerProviding> _modalPresentationViewControllerProvider;
 }
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, nonatomic) id<NUAdProvider> adProvider; // @synthesize adProvider=_adProvider;
 @property (readonly, nonatomic) BOOL allowsCallToActionBar;
 @property (readonly, nonatomic) id<SXVASTAnalyticsEventInfoFactory> analyticsEventInfoFactory; // @synthesize analyticsEventInfoFactory=_analyticsEventInfoFactory;
+@property (nonatomic) BOOL appeared; // @synthesize appeared=_appeared;
 @property (strong, nonatomic) NUAdBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property (strong, nonatomic) id<NUAdContextProvider> contextProviderForVideoAfter; // @synthesize contextProviderForVideoAfter=_contextProviderForVideoAfter;
 @property (strong, nonatomic) id<NUAdContextProvider> contextProviderForVideoBefore; // @synthesize contextProviderForVideoBefore=_contextProviderForVideoBefore;
-@property (weak, nonatomic) id<NUVideoAdProviderDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (copy, nonatomic) NSArray *contextProviders; // @synthesize contextProviders=_contextProviders;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (weak, nonatomic) id<NUVideoAdEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
+@property (strong, nonatomic) id<NUVideoAdEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
 @property (readonly, nonatomic) BOOL hasAction;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<SXVideoMetadataProviding> metadata; // @synthesize metadata=_metadata;
-@property (readonly, copy, nonatomic) NSString *placement; // @synthesize placement=_placement;
-@property (strong, nonatomic) SXKeyValueObserver *playbackStartedObserver; // @synthesize playbackStartedObserver=_playbackStartedObserver;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) id<SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
+@property (readonly, nonatomic) id<SVModalPresentationViewControllerProviding> modalPresentationViewControllerProvider; // @synthesize modalPresentationViewControllerProvider=_modalPresentationViewControllerProvider;
+@property (readonly, nonatomic) id<NUVideoPlaybackCounter> playbackCounter; // @synthesize playbackCounter=_playbackCounter;
+@property (strong, nonatomic) SVKeyValueObserver *playbackStartedObserver; // @synthesize playbackStartedObserver=_playbackStartedObserver;
 @property (nonatomic) unsigned long long skipThreshold; // @synthesize skipThreshold=_skipThreshold;
 @property (readonly, nonatomic) SXVideoAdStateManager *stateManager; // @synthesize stateManager=_stateManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double threshold;
-@property (strong, nonatomic) SXTimeline *timeline; // @synthesize timeline=_timeline;
-@property (readonly, weak, nonatomic) id<SXVisibilityMonitoring> videoPlayerVisibilityMonitor; // @synthesize videoPlayerVisibilityMonitor=_videoPlayerVisibilityMonitor;
+@property (readonly, weak, nonatomic) id<SVVisibilityMonitoring> videoPlayerVisibilityMonitor; // @synthesize videoPlayerVisibilityMonitor=_videoPlayerVisibilityMonitor;
 @property (readonly, nonatomic) unsigned long long videoType;
-@property (readonly, weak, nonatomic) id<SXVisibilityMonitoring> videoVisibilityMonitor; // @synthesize videoVisibilityMonitor=_videoVisibilityMonitor;
 
 - (void).cxx_destruct;
 - (id)adContextValueForKeyPath:(id)arg1;
-- (double)aspectRatioOfPlayer;
-- (void)configureTimelineForImpressionReporting;
 - (id)contextProvidersForKeyPath:(id)arg1;
-- (id)initWithPlacement:(id)arg1 adProvider:(id)arg2 contextProviderForVideoBefore:(id)arg3 contextProviderForVideoAfter:(id)arg4 eventTracker:(id)arg5 videoPlayerVisibilityMonitor:(id)arg6 videoVisibilityMonitorProvider:(id)arg7 analyticsEventInfoFactory:(id)arg8;
+- (void)didAppear;
+- (void)didDisappear;
+- (void)impressionQuartilePassed:(unsigned long long)arg1;
+- (void)impressionThresholdPassed:(double)arg1;
+- (id)initWithContextProviders:(id)arg1 adProvider:(id)arg2 contextProviderForVideoBefore:(id)arg3 contextProviderForVideoAfter:(id)arg4 eventTracker:(id)arg5 videoPlayerVisibilityMonitor:(id)arg6 analyticsEventInfoFactory:(id)arg7 playbackCounter:(id)arg8 modalPresentationViewControllerProvider:(id)arg9;
 - (CDUnknownBlockType)loadWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)metadataForCurrentState;
 - (void)muteStateChanged:(BOOL)arg1;
-- (unsigned long long)numberOfVideosPlayedInSession;
-- (unsigned long long)numberOfVideosPlayedSinceLastAd;
-- (long long)onboardingVersion;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
 - (void)playbackInitiated;
@@ -82,7 +83,6 @@
 - (void)skipped;
 - (void)tappedAdvance;
 - (void)tappedToToggleControls;
-- (void)timeElapsed:(double)arg1 duration:(double)arg2;
 - (id)viewControllerForStoryboardPresentationFromBannerView:(id)arg1;
 
 @end

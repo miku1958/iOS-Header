@@ -21,8 +21,9 @@
 @property (strong, nonatomic) TIKeyboardState *keyboardState; // @synthesize keyboardState=_keyboardState;
 @property (copy, nonatomic) NSString *textToCommit; // @synthesize textToCommit=_textToCommit;
 
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)shortDescription;

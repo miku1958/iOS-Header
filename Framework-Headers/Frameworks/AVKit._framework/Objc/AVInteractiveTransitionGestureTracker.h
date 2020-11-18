@@ -18,6 +18,7 @@
     BOOL _panToDismissEnabled;
     BOOL _trackingUpwardPan;
     long long _activeGestureType;
+    UIPanGestureRecognizer *_contentTransitioningViewGestureRecognizer;
     double _rotation;
     double _previousPinchScale;
     id<AVInteractiveTransitionGestureTrackerDelegate> _delegate;
@@ -29,6 +30,7 @@
 }
 
 @property (nonatomic) long long activeGestureType; // @synthesize activeGestureType=_activeGestureType;
+@property (weak, nonatomic) UIPanGestureRecognizer *contentTransitioningViewGestureRecognizer; // @synthesize contentTransitioningViewGestureRecognizer=_contentTransitioningViewGestureRecognizer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<AVInteractiveTransitionGestureTrackerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -55,6 +57,7 @@
 - (void)_handleRotationGesture:(id)arg1;
 - (void)_reset;
 - (void)addRecognizersToView:(id)arg1;
+- (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;

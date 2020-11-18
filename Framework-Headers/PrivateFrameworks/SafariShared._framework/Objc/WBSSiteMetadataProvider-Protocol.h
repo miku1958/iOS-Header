@@ -12,6 +12,7 @@
 @protocol WBSSiteMetadataProvider <NSObject>
 
 @property (weak, nonatomic) id<WBSSiteMetadataProviderDelegate> providerDelegate;
+@property (readonly, nonatomic) BOOL providesFavicons;
 
 - (BOOL)canHandleRequest:(WBSSiteMetadataRequest *)arg1;
 - (void)prepareResponseForRequest:(WBSSiteMetadataRequest *)arg1 allowDelayedResponse:(BOOL)arg2;

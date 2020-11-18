@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UISplittableInputView-Protocol.h>
+#import <UIKitCore/UISplittableInputView-Protocol.h>
 
 @class CALayer, NSArray, NSMutableDictionary, NSString, UIImage, UIKBRenderConfig, _UIInputViewContent;
 
@@ -34,6 +34,8 @@
     NSArray *_visibleLayers;
     CALayer *_transitionLayer;
     BOOL _allowsSelfSizing;
+    BOOL _assertSizingWithPredictionBar;
+    struct UIEdgeInsets _backgroundEdgeInsets;
 }
 
 @property (strong, nonatomic) UIImage *_mergedImage; // @synthesize _mergedImage;
@@ -41,6 +43,8 @@
 @property (strong, nonatomic) UIImage *_splitImage; // @synthesize _splitImage;
 @property (strong, nonatomic) NSMutableDictionary *_splitSliceMap; // @synthesize _splitSliceMap;
 @property (nonatomic) BOOL allowsSelfSizing; // @synthesize allowsSelfSizing=_allowsSelfSizing;
+@property (nonatomic) BOOL assertSizingWithPredictionBar; // @synthesize assertSizingWithPredictionBar=_assertSizingWithPredictionBar;
+@property (nonatomic) struct UIEdgeInsets backgroundEdgeInsets; // @synthesize backgroundEdgeInsets=_backgroundEdgeInsets;
 @property (nonatomic) double contentRatio; // @synthesize contentRatio=_contentRatio;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

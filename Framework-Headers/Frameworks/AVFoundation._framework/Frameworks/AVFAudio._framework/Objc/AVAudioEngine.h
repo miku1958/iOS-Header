@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAudioFormat, AVAudioInputNode, AVAudioMixerNode, AVAudioOutputNode;
 
@@ -30,10 +30,16 @@
 - (void)connect:(id)arg1 to:(id)arg2 format:(id)arg3;
 - (void)connect:(id)arg1 to:(id)arg2 fromBus:(unsigned long long)arg3 toBus:(unsigned long long)arg4 format:(id)arg5;
 - (void)connect:(id)arg1 toConnectionPoints:(id)arg2 fromBus:(unsigned long long)arg3 format:(id)arg4;
+- (void)connectMIDI:(id)arg1 to:(id)arg2 format:(id)arg3 block:(CDUnknownBlockType)arg4;
+- (void)connectMIDI:(id)arg1 toNodes:(id)arg2 format:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (id)description;
 - (void)detachNode:(id)arg1;
 - (void)disableManualRenderingMode;
+- (void)disconnectMIDI:(id)arg1 from:(id)arg2;
+- (void)disconnectMIDI:(id)arg1 fromNodes:(id)arg2;
+- (void)disconnectMIDIInput:(id)arg1;
+- (void)disconnectMIDIOutput:(id)arg1;
 - (void)disconnectNodeInput:(id)arg1;
 - (void)disconnectNodeInput:(id)arg1 bus:(unsigned long long)arg2;
 - (void)disconnectNodeOutput:(id)arg1;

@@ -6,12 +6,13 @@
 
 #import <Silex/SXMediaComponentView.h>
 
+#import <Silex/AVPlayerViewControllerDelegate_AppStoreOnly-Protocol.h>
 #import <Silex/SXMediaPlaybackDelegate-Protocol.h>
 
 @class AVPlayerViewController, NSString, SXAVPlayer, SXAudioComponentOverlayView;
 @protocol SXHost, SXResourceDataSource;
 
-@interface SXAudioComponentView : SXMediaComponentView <SXMediaPlaybackDelegate>
+@interface SXAudioComponentView : SXMediaComponentView <SXMediaPlaybackDelegate, AVPlayerViewControllerDelegate_AppStoreOnly>
 {
     BOOL _audioHasPlayed;
     BOOL _startPlaybackWhenReady;
@@ -48,6 +49,7 @@
 - (void)playbackPaused;
 - (void)playbackResumed;
 - (void)playbackStarted;
+- (void)playerViewController:(id)arg1 metricsCollectionEventOccured:(long long)arg2;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)renderContents;
 - (void)setupPlayerViewControllerWithPlayer:(id)arg1;
@@ -56,6 +58,7 @@
 - (void)submitMediaEngageCompleteEvent;
 - (void)submitMediaEngageEventForUserAction:(unsigned long long)arg1;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)viewport:(id)arg1 appearStateChangedFromState:(unsigned long long)arg2;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBSApplicationDataStore, NSString;
 
@@ -13,12 +13,13 @@
     FBSApplicationDataStore *_fbsApplicationDataStore;
 }
 
-@property (readonly, strong, nonatomic) NSString *bundleID;
+@property (readonly, nonatomic) NSString *bundleID;
 
 + (id)applicationsWithAvailableStores;
 + (void)setPrefetchedKeys:(id)arg1;
 + (id)storeForApplication:(id)arg1;
 + (void)synchronize;
+- (void).cxx_destruct;
 - (id)_initWithFBSApplicationDataStore:(id)arg1;
 - (id)archivedObjectForKey:(id)arg1;
 - (void)archivedObjectForKey:(id)arg1 withResult:(CDUnknownBlockType)arg2;

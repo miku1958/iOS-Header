@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSCopying-Protocol.h>
 #import <QuartzCore/NSMutableCopying-Protocol.h>
@@ -17,10 +17,12 @@
     void *_impl;
     unsigned long long _normalization;
     long long _subdivisionSteps;
+    BOOL _replicatesEdges;
 }
 
 @property (readonly, copy) NSString *depthNormalization;
 @property (readonly) unsigned long long faceCount;
+@property (readonly) BOOL replicatesEdges;
 @property (readonly) int subdivisionSteps;
 @property (readonly) unsigned long long vertexCount;
 

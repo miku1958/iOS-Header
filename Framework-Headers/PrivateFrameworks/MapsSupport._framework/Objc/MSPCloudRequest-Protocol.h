@@ -11,6 +11,7 @@
 @property (readonly, nonatomic) BOOL shouldEnqueueDependenciesWhenPerformingAsCloudRequest;
 
 - (void)addCloudAccessCompletionBlock:(void (^)(BOOL, NSError *))arg1;
+- (void)setNetworkBehaviorIsDiscretionary:(BOOL)arg1;
 
 @optional
 - (unsigned long long)maximumRetries;

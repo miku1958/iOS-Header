@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
@@ -22,6 +22,7 @@
     long long _gamut;
     long long _hdr;
     long long _rotation;
+    BOOL _virtual;
 }
 
 @property (readonly, nonatomic) long long colorGamut; // @synthesize colorGamut=_gamut;
@@ -43,10 +44,12 @@
 - (unsigned long long)_caPreferredScale;
 - (double)_caRefreshRate;
 - (unsigned long long)_caWidth;
+- (id)_copyWithOverrideSize:(struct CGSize)arg1;
 - (unsigned long long)_height;
 - (id)_initWithCADisplayMode:(id)arg1 scale:(double)arg2 rotation:(long long)arg3;
-- (id)_initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 preferredScale:(unsigned long long)arg3 scaleOverride:(double)arg4 refreshRate:(double)arg5 gamut:(long long)arg6 hdr:(long long)arg7 rotation:(long long)arg8 validityCheck:(long long)arg9;
+- (id)_initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 preferredScale:(unsigned long long)arg3 scaleOverride:(double)arg4 refreshRate:(double)arg5 gamut:(long long)arg6 hdr:(long long)arg7 rotation:(long long)arg8 virtual:(BOOL)arg9 validityCheck:(long long)arg10;
 - (id)_initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 scale:(unsigned long long)arg3 refreshRate:(double)arg4 gamut:(long long)arg5 hdr:(long long)arg6;
+- (BOOL)_isVirtualMode;
 - (id)_referenceSizeDescription;
 - (long long)_rotation;
 - (unsigned long long)_width;

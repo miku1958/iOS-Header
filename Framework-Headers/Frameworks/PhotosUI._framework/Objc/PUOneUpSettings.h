@@ -19,6 +19,7 @@
     BOOL _allowChromeHiding;
     BOOL _allowDoubleTapZoom;
     BOOL _allowFullsizeJPEGDisplay;
+    BOOL _allowToggleOriginalBarItem;
     BOOL _showFacesAreaRect;
     BOOL _hideToolbarWhenShowingAccessoryView;
     BOOL _useGlobalDetailsVisibility;
@@ -110,6 +111,7 @@
 @property (nonatomic) BOOL allowPlayButtonInBars; // @synthesize allowPlayButtonInBars=_allowPlayButtonInBars;
 @property (nonatomic) BOOL allowScrubber; // @synthesize allowScrubber=_allowScrubber;
 @property (nonatomic) BOOL allowStatusBar; // @synthesize allowStatusBar=_allowStatusBar;
+@property (nonatomic) BOOL allowToggleOriginalBarItem; // @synthesize allowToggleOriginalBarItem=_allowToggleOriginalBarItem;
 @property (nonatomic) BOOL allowUserTransform; // @synthesize allowUserTransform=_allowUserTransform;
 @property (nonatomic) BOOL alwaysShowAirPlayButton; // @synthesize alwaysShowAirPlayButton=_alwaysShowAirPlayButton;
 @property (nonatomic) double barsAreaVerticalOutset; // @synthesize barsAreaVerticalOutset=_barsAreaVerticalOutset;

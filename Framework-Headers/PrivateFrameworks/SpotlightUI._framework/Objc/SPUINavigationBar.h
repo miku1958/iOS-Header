@@ -12,10 +12,8 @@
 {
     BOOL _roundedCornerVisible;
     UIView *_topDividerView;
-    double _currentBlurProgress;
 }
 
-@property double currentBlurProgress; // @synthesize currentBlurProgress=_currentBlurProgress;
 @property (nonatomic, getter=isRoundedCornerVisible) BOOL roundedCornerVisible; // @synthesize roundedCornerVisible=_roundedCornerVisible;
 @property (strong) UIView *topDividerView; // @synthesize topDividerView=_topDividerView;
 
@@ -31,6 +29,7 @@
 - (void)showSeparator:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateBackgroundViewVisibility;
 - (void)updateBlurProgress:(double)arg1 animated:(BOOL)arg2;
+- (void)updateColors;
 
 @end
 

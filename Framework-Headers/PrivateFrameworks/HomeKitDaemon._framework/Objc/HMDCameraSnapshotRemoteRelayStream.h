@@ -42,7 +42,7 @@
 - (void)_sendImageSendFailure:(id)arg1;
 - (void)dealloc;
 - (void)getSnapshot:(unsigned long long)arg1;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 options:(id)arg3 destinationID:(id)arg4 accessory:(id)arg5 delegate:(id)arg6 delegateQueue:(id)arg7 uniqueIdentifier:(id)arg8 snapshotRequestHandler:(id)arg9 residentMessageHandler:(id)arg10;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 options:(id)arg3 device:(id)arg4 accessory:(id)arg5 delegate:(id)arg6 delegateQueue:(id)arg7 uniqueIdentifier:(id)arg8 snapshotRequestHandler:(id)arg9 residentMessageHandler:(id)arg10;
 - (id)logIdentifier;
 - (void)snapShotSendFailed:(id)arg1;
 - (void)snapShotTransferComplete;

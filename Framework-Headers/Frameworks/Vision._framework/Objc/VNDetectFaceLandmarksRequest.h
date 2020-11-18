@@ -12,34 +12,30 @@
 
 @interface VNDetectFaceLandmarksRequest : VNImageBasedRequest <VNFaceObservationAccepting>
 {
-    NSNumber *_cascadeStepCount;
-    BOOL _refineMouthRegion;
-    BOOL _refineLeftEyeRegion;
-    BOOL _refineRightEyeRegion;
-    BOOL _performBlinkDetection;
 }
 
-@property (strong, nonatomic) NSNumber *cascadeStepCount; // @synthesize cascadeStepCount=_cascadeStepCount;
+@property (strong, nonatomic) NSNumber *cascadeStepCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *inputFaceObservations;
-@property (nonatomic) BOOL performBlinkDetection; // @synthesize performBlinkDetection=_performBlinkDetection;
-@property (nonatomic) BOOL refineLeftEyeRegion; // @synthesize refineLeftEyeRegion=_refineLeftEyeRegion;
-@property (nonatomic) BOOL refineMouthRegion; // @synthesize refineMouthRegion=_refineMouthRegion;
-@property (nonatomic) BOOL refineRightEyeRegion; // @synthesize refineRightEyeRegion=_refineRightEyeRegion;
+@property (nonatomic) BOOL performBlinkDetection;
+@property (nonatomic) BOOL refineLeftEyeRegion;
+@property (nonatomic) BOOL refineMouthRegion;
+@property (nonatomic) BOOL refineRightEyeRegion;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
++ (Class)configurationClass;
++ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
++ (const CDStruct_d47b9615 *)dependentRequestCompatability;
++ (const CDStruct_7d93034e *)revisionAvailability;
 - (void)_determineFacesToProcessFrom:(id)arg1 outputFacesThatNeedNoProcessing:(id)arg2 outputFacesThatNeedAlignment:(id)arg3 outputFacesThatNeedLandmarks:(id)arg4;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (long long)dependencyProcessingOrdinality;
-- (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
-- (id)sequencedRequestPreviousObservationsKey;
+- (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

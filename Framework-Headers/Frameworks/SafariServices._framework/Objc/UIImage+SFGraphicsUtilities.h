@@ -7,6 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (SFGraphicsUtilities)
++ (id)sf_imageFromMainBundleNamed:(id)arg1;
 + (id)ss_imageNamed:(id)arg1;
 @end
 

@@ -4,37 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIButton.h>
+#import <PencilKit/_PKInkColorButton.h>
 
-#import <PencilKit/PKInkColorButton-Protocol.h>
+@class CAShapeLayer;
 
-@class CAShapeLayer, UIColor;
-
-@interface _PKFlatInkColorButton : UIButton <PKInkColorButton>
+@interface _PKFlatInkColorButton : _PKInkColorButton
 {
-    BOOL _isCompact;
-    BOOL _isUsedOnDarkBackground;
-    UIColor *_color;
     CAShapeLayer *_fillShapeLayer;
     CAShapeLayer *_strokeShapeLayer;
 }
 
-@property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (strong, nonatomic) CAShapeLayer *fillShapeLayer; // @synthesize fillShapeLayer=_fillShapeLayer;
-@property (nonatomic) BOOL isCompact; // @synthesize isCompact=_isCompact;
-@property (nonatomic) BOOL isUsedOnDarkBackground; // @synthesize isUsedOnDarkBackground=_isUsedOnDarkBackground;
 @property (strong, nonatomic) CAShapeLayer *strokeShapeLayer; // @synthesize strokeShapeLayer=_strokeShapeLayer;
 
-+ (id)buttonWithColor:(id)arg1 isCompact:(BOOL)arg2;
-+ (BOOL)isColorBlack:(id)arg1;
-+ (BOOL)isColorWhite:(id)arg1;
-+ (id)pathForFillShapeLayerWithSwatchRect:(struct CGRect)arg1 selected:(BOOL)arg2;
-+ (id)pathForStrokeShapeLayerWithSwatchRect:(struct CGRect)arg1 selected:(BOOL)arg2 color:(id)arg3 isUsedOnDarkBackground:(BOOL)arg4;
-+ (id)strokeColorForColor:(id)arg1 isUsedOnDarkBackground:(BOOL)arg2;
 - (void).cxx_destruct;
 - (id)initWithColor:(id)arg1 isCompact:(BOOL)arg2;
 - (void)layoutSubviews;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

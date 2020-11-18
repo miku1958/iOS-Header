@@ -6,14 +6,15 @@
 
 #import <HomeKitDaemon/HMDBackingStoreModelObject.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString;
+@class HMDAccountHandle, HMDAccountIdentifier, NSArray, NSDictionary, NSNumber, NSString;
 
 @interface HMDUserModel : HMDBackingStoreModelObject
 {
 }
 
+@property (strong, nonatomic) HMDAccountHandle *accountHandle; // @dynamic accountHandle;
+@property (strong, nonatomic) HMDAccountIdentifier *accountIdentifier; // @dynamic accountIdentifier;
 @property (strong, nonatomic) NSString *changeTag; // @dynamic changeTag;
-@property (strong, nonatomic) NSString *displayName; // @dynamic displayName;
 @property (strong, nonatomic) NSDictionary *pairingIdentity; // @dynamic pairingIdentity;
 @property (strong, nonatomic) NSNumber *presenceAuthorizationStatus; // @dynamic presenceAuthorizationStatus;
 @property (strong, nonatomic) NSNumber *privilege; // @dynamic privilege;

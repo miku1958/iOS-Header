@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableOrderedSet, NSNumber, NSString, NSURL, PLGenericAlbum;
 
@@ -22,6 +22,7 @@
     NSNumber *_kind;
     NSString *_customKeyAssetUUID;
     NSMutableOrderedSet *_assetUUIDs;
+    NSString *_importSessionID;
     PLGenericAlbum *_genericAlbum;
     NSURL *_metadataURL;
 }
@@ -33,6 +34,7 @@
 @property (nonatomic) BOOL customSortAscending; // @synthesize customSortAscending=_customSortAscending;
 @property (nonatomic) int customSortKey; // @synthesize customSortKey=_customSortKey;
 @property (strong, nonatomic) PLGenericAlbum *genericAlbum; // @synthesize genericAlbum=_genericAlbum;
+@property (strong, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
 @property (nonatomic, getter=isInTrash) BOOL inTrash; // @synthesize inTrash=_inTrash;
 @property (readonly, nonatomic) BOOL isFolder; // @synthesize isFolder=_isFolder;
 @property (strong, nonatomic) NSNumber *kind; // @synthesize kind=_kind;
@@ -49,7 +51,7 @@
 - (id)init;
 - (id)initWithPLGenericAlbum:(id)arg1;
 - (id)initWithPersistedDataAtURL:(id)arg1;
-- (id)initWithTitle:(id)arg1 uuid:(id)arg2 cloudGUID:(id)arg3 kind:(id)arg4 assetUUIDs:(id)arg5;
+- (id)initWithTitle:(id)arg1 uuid:(id)arg2 cloudGUID:(id)arg3 kind:(id)arg4 assetUUIDs:(id)arg5 persistedAlbumDataDirectory:(id)arg6;
 - (id)insertAlbumFromDataInManagedObjectContext:(id)arg1;
 - (void)persistAlbumData;
 - (void)removePersistedAlbumData;

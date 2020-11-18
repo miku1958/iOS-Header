@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/MTLPipelineLibrarySPI-Protocol.h>
 
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface _MTLPipelineLibrary : NSObject <MTLPipelineLibrarySPI>
 {
     struct PipelineLibraryData *_pipelineLibraryData;
+    BOOL _disableRunTimeCompilation;
     NSString *_label;
     id<MTLDevice> _device;
     NSArray *_pipelineNames;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device; // @synthesize device=_device;
+@property BOOL disableRunTimeCompilation; // @synthesize disableRunTimeCompilation=_disableRunTimeCompilation;
 @property (readonly, nonatomic) id<MTLPipelineCache> functionCache; // @dynamic functionCache;
 @property (readonly) unsigned long long hash;
 @property (copy) NSString *label; // @synthesize label=_label;

@@ -8,7 +8,7 @@
 
 #import <Silex/AVPlayerItemDelegate-Protocol.h>
 
-@class NSString, SXKeyValueObserver;
+@class NSString, SVKeyValueObserver;
 
 @interface SXAVPlayer : AVPlayer <AVPlayerItemDelegate>
 {
@@ -22,10 +22,10 @@
     double _duration;
     double _frameRate;
     id _timeObserver;
-    SXKeyValueObserver *_timeControlStatusObserver;
-    SXKeyValueObserver *_statusObserver;
-    SXKeyValueObserver *_durationObserver;
-    SXKeyValueObserver *_loadedTimeRangesObserver;
+    SVKeyValueObserver *_timeControlStatusObserver;
+    SVKeyValueObserver *_statusObserver;
+    SVKeyValueObserver *_durationObserver;
+    SVKeyValueObserver *_loadedTimeRangesObserver;
     CDStruct_1b6d18a9 _cumulativeTimePlayed;
 }
 
@@ -34,19 +34,19 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
-@property (strong, nonatomic) SXKeyValueObserver *durationObserver; // @synthesize durationObserver=_durationObserver;
+@property (strong, nonatomic) SVKeyValueObserver *durationObserver; // @synthesize durationObserver=_durationObserver;
 @property (nonatomic) double elapsedTime; // @synthesize elapsedTime=_elapsedTime;
 @property (nonatomic) double frameRate; // @synthesize frameRate=_frameRate;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SXKeyValueObserver *loadedTimeRangesObserver; // @synthesize loadedTimeRangesObserver=_loadedTimeRangesObserver;
+@property (strong, nonatomic) SVKeyValueObserver *loadedTimeRangesObserver; // @synthesize loadedTimeRangesObserver=_loadedTimeRangesObserver;
 @property (copy, nonatomic) CDUnknownBlockType loadingProgressBlock; // @synthesize loadingProgressBlock=_loadingProgressBlock;
 @property (nonatomic) int playbackPosition; // @synthesize playbackPosition=_playbackPosition;
 @property (copy, nonatomic) CDUnknownBlockType playbackProgressBlock; // @synthesize playbackProgressBlock=_playbackProgressBlock;
 @property (nonatomic) int playbackStatus; // @synthesize playbackStatus=_playbackStatus;
 @property (copy, nonatomic) CDUnknownBlockType playbackStatusBlock; // @synthesize playbackStatusBlock=_playbackStatusBlock;
-@property (strong, nonatomic) SXKeyValueObserver *statusObserver; // @synthesize statusObserver=_statusObserver;
+@property (strong, nonatomic) SVKeyValueObserver *statusObserver; // @synthesize statusObserver=_statusObserver;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) SXKeyValueObserver *timeControlStatusObserver; // @synthesize timeControlStatusObserver=_timeControlStatusObserver;
+@property (strong, nonatomic) SVKeyValueObserver *timeControlStatusObserver; // @synthesize timeControlStatusObserver=_timeControlStatusObserver;
 @property (strong, nonatomic) id timeObserver; // @synthesize timeObserver=_timeObserver;
 @property (readonly, nonatomic) double totalTimePlayed;
 

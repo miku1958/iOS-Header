@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDate, NSDictionary, NSHTTPCookieInternal, NSString, NSURL;
 
@@ -46,6 +46,7 @@
 - (id)OriginURL;
 - (id)Path;
 - (id)Port;
+- (id)SameSite;
 - (id)Secure;
 - (id)StoragePartition;
 - (id)Value;
@@ -65,6 +66,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProperties:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)sameSitePolicy;
 
 @end
 

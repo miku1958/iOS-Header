@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVOutputDeviceImpl-Protocol.h>
 
@@ -27,6 +27,8 @@
 @property (readonly, nonatomic) BOOL canBeGroupLeader;
 @property (readonly, nonatomic) BOOL canBeGrouped;
 @property (readonly, nonatomic) BOOL canCommunicateWithAllLogicalDeviceMembers;
+@property (readonly, nonatomic) BOOL canFetchMediaDataFromSender;
+@property (readonly, nonatomic) BOOL canPlayEncryptedProgressiveDownloadAssets;
 @property (readonly, nonatomic) BOOL canRelayCommunicationChannel;
 @property (readonly) BOOL canSetVolume;
 @property (readonly, nonatomic) NSNumber *caseBatteryLevel;
@@ -52,6 +54,7 @@
 @property (readonly, nonatomic) BOOL onlyAllowsConnectionsFromPeersInHomeGroup;
 @property (weak) AVOutputDevice *parentOutputDevice; // @synthesize parentOutputDevice=_parentDevice;
 @property (readonly, nonatomic) BOOL participatesInGroupPlayback;
+@property (readonly, nonatomic) BOOL presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 @property (readonly, nonatomic) BOOL requiresAuthorization;
 @property (readonly, nonatomic) NSNumber *rightBatteryLevel;
 @property (readonly, nonatomic) NSString *serialNumber;

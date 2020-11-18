@@ -12,6 +12,7 @@
 
 @interface RCCaptureInputWaveformDataSource : RCWaveformDataSource <AVCaptureAudioDataOutputSampleBufferDelegate>
 {
+    double captureDelta;
     BOOL _overdub;
     BOOL _canUpdateCaptureComposition;
     RCMutableComposition *_capturedComposition;
@@ -52,18 +53,21 @@
 - (void)_modifyAccumulatedWaveformSegmentsToMatchFinalDuration:(double)arg1;
 - (void)_truncateAccumulatedWaveformSegmentsToEndTime:(double)arg1;
 - (void)_updateCapturedComposition:(BOOL)arg1;
+- (BOOL)appendAveragePowerLevelsByDigestingAudioPCMBuffer:(id)arg1;
 - (BOOL)appendAveragePowerLevelsByDigestingCapturedSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)appendAveragePowerLevelsByDigestingWaveformSegment:(id)arg1;
 - (double)duration;
-- (void)finishLoadingWithCompletionTimeoutDate:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
-- (void)finishLoadingWithCompletionTimeoutDate:(id)arg1 finalizedFragmentDuration:(double)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 finalizedFragmentDuration:(double)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)flushPendingCapturedSampleBuffers;
 - (id)initWithDestinationComposition:(id)arg1 destinationFragment:(id)arg2 isOverdub:(BOOL)arg3;
 - (id)segmentsInCompositionByConvertingFromActiveLoadingFragment:(id)arg1;
 - (BOOL)setPaused:(BOOL)arg1;
+- (BOOL)shouldMergeLiveWaveform;
 - (void)startLoading;
 - (CDStruct_73a5d3ca)timeRangeToHighlight;
 - (void)undoCapture;
+- (void)updateCapturedDelta:(double)arg1;
 - (BOOL)waitUntilFinished;
 - (BOOL)waitUntilFinishedWithFinalizedDestinationFragmentDuration:(double)arg1;
 - (void)waveformGeneratorDidFinishLoading:(id)arg1 error:(id)arg2;

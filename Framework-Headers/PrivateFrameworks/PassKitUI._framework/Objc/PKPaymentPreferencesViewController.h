@@ -23,6 +23,7 @@
     PKPaymentPreferenceButtonCell *_sizingButtonCell;
     PKPaymentPass *_paymentPassForBillingErrors;
     PKPaymentPass *_currentlySelectedPaymentPass;
+    NSArray *_latestPreferences;
     NSArray *_preferences;
     long long _style;
     UITableView *_tableView;
@@ -80,7 +81,8 @@
 - (id)pk_childrenForAppearance;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setErrors:(id)arg1 animated:(BOOL)arg2;
-- (void)setErrors:(id)arg1 pass:(id)arg2 animated:(BOOL)arg3;
+- (void)setErrors:(id)arg1 otherPass:(id)arg2 animated:(BOOL)arg3;
+- (void)setErrors:(id)arg1 selectedPass:(id)arg2 animated:(BOOL)arg3;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;

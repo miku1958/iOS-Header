@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreNFC/NFCHardwareManagerCallbacks-Protocol.h>
 #import <CoreNFC/NFCReaderSession-Protocol.h>
@@ -48,7 +48,7 @@
 - (BOOL)checkPresenceWithError:(id *)arg1;
 - (BOOL)connectTag:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
-- (void)didDetectExternalReader:(id)arg1;
+- (void)didDetectExternalReaderWithNotification:(id)arg1;
 - (void)didDetectTags:(id)arg1;
 - (void)didInvalidate;
 - (void)didStartSession:(id)arg1;

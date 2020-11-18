@@ -6,11 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-#import <NanoTimeKitCompanion/NTKPolygonCylinderFaceView-Protocol.h>
+#import <NanoTimeKitCompanion/NTKPolygonCylinderSideView-Protocol.h>
 
 @class NSString;
 
-@interface _NTKHourStyleCylinderFaceView : UIView <NTKPolygonCylinderFaceView>
+@interface _NTKHourStyleCylinderFaceView : UIView <NTKPolygonCylinderSideView>
 {
 }
 

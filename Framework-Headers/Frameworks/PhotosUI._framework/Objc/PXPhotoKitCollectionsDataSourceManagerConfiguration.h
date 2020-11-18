@@ -6,46 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class NSPredicate, PHCollectionList, PHFetchOptions, PHFetchResult;
+@class PHCollectionList, PHFetchOptions, PHFetchResult;
 
 @interface PXPhotoKitCollectionsDataSourceManagerConfiguration : NSObject
 {
-    BOOL _isRootSharedAlbum;
-    BOOL _isRootFolder;
-    BOOL _shouldHideEmptyCollections;
-    BOOL _shouldHideSmartAlbums;
-    BOOL _canShowVirtualCollections;
-    BOOL _isPickingSession;
-    BOOL _canShowPeopleAlbum;
-    BOOL _canShowScenesAlbum;
-    BOOL _canShowMemoriesAlbum;
-    PHCollectionList *_collectionList;
+    BOOL _separateSectionsForSmartAndUserCollections;
+    BOOL _includePeopleAlbum;
+    BOOL _skipKeyAssetFetches;
+    BOOL _shouldIgnoreLibraryChanges;
     PHFetchResult *_collectionsFetchResult;
-    NSPredicate *_assetFilteringPredicate;
-    long long _filteringAssetTypes;
+    PHCollectionList *_collectionList;
+    unsigned long long _assetTypesToInclude;
+    unsigned long long _collectionTypesToInclude;
 }
 
-@property (strong) NSPredicate *assetFilteringPredicate; // @synthesize assetFilteringPredicate=_assetFilteringPredicate;
-@property BOOL canShowMemoriesAlbum; // @synthesize canShowMemoriesAlbum=_canShowMemoriesAlbum;
-@property BOOL canShowPeopleAlbum; // @synthesize canShowPeopleAlbum=_canShowPeopleAlbum;
-@property BOOL canShowScenesAlbum; // @synthesize canShowScenesAlbum=_canShowScenesAlbum;
-@property BOOL canShowVirtualCollections; // @synthesize canShowVirtualCollections=_canShowVirtualCollections;
-@property (strong) PHCollectionList *collectionList; // @synthesize collectionList=_collectionList;
-@property (strong) PHFetchResult *collectionsFetchResult; // @synthesize collectionsFetchResult=_collectionsFetchResult;
+@property (nonatomic) unsigned long long assetTypesToInclude; // @synthesize assetTypesToInclude=_assetTypesToInclude;
+@property (readonly) PHCollectionList *collectionList; // @synthesize collectionList=_collectionList;
+@property (nonatomic) unsigned long long collectionTypesToInclude; // @synthesize collectionTypesToInclude=_collectionTypesToInclude;
+@property (readonly) PHFetchResult *collectionsFetchResult; // @synthesize collectionsFetchResult=_collectionsFetchResult;
 @property (readonly) PHFetchOptions *customFetchOptions;
-@property (nonatomic) long long filteringAssetTypes; // @synthesize filteringAssetTypes=_filteringAssetTypes;
-@property (readonly) BOOL isPickingSession; // @synthesize isPickingSession=_isPickingSession;
-@property BOOL isRootFolder; // @synthesize isRootFolder=_isRootFolder;
-@property BOOL isRootSharedAlbum; // @synthesize isRootSharedAlbum=_isRootSharedAlbum;
-@property BOOL shouldHideEmptyCollections; // @synthesize shouldHideEmptyCollections=_shouldHideEmptyCollections;
-@property BOOL shouldHideSmartAlbums; // @synthesize shouldHideSmartAlbums=_shouldHideSmartAlbums;
+@property (nonatomic) BOOL includePeopleAlbum; // @synthesize includePeopleAlbum=_includePeopleAlbum;
+@property (nonatomic) BOOL separateSectionsForSmartAndUserCollections; // @synthesize separateSectionsForSmartAndUserCollections=_separateSectionsForSmartAndUserCollections;
+@property BOOL shouldIgnoreLibraryChanges; // @synthesize shouldIgnoreLibraryChanges=_shouldIgnoreLibraryChanges;
+@property (nonatomic) BOOL skipKeyAssetFetches; // @synthesize skipKeyAssetFetches=_skipKeyAssetFetches;
 
 - (void).cxx_destruct;
-- (id)dataSourceManagerConfigurationWithCollectionList:(id)arg1;
-- (id)dataSourceManagerConfigurationWithCollectionsFetchResult:(id)arg1;
+- (id)_generatePredicateForAssetTypesToInclude;
+- (id)_newConfigurationWithCollectionList:(id)arg1 collectionsFetchResult:(id)arg2;
 - (id)init;
+- (id)initWithCollectionList:(id)arg1;
 - (id)initWithCollectionList:(id)arg1 collectionsFetchResult:(id)arg2;
-- (id)initWithCollectionList:(id)arg1 collectionsFetchResult:(id)arg2 isPickingSession:(BOOL)arg3;
+- (id)initWithCollectionsFetchResult:(id)arg1;
+- (BOOL)isRootFolder;
+- (id)newConfigurationWithCollectionList:(id)arg1;
+- (id)newConfigurationWithCollectionsFetchResult:(id)arg1;
+- (void)setIsRootFolder:(BOOL)arg1;
 
 @end
 

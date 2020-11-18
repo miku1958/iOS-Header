@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (id)constrainToRange:(struct _NSRange)arg1;
 - (BOOL)containsCharacterAtIndex:(unsigned long long)arg1;
 - (id)copyWithNewRange:(struct _NSRange)arg1;
+- (id)copyWithNewRange:(struct _NSRange)arg1 newCaretAffinity:(int)arg2;
 - (id)copyWithNewStyleInsertionBehavior:(int)arg1 newCaretAffinity:(int)arg2;
 - (id)copyWithNewType:(int)arg1;
 - (id)copyWithNewType:(int)arg1 range:(struct _NSRange)arg2;

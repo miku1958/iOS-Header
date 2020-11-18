@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary;
 
 __attribute__((visibility("hidden")))
 @interface TSCEWarning : NSObject
 {
-    NSDictionary *mMetadata;
-    BOOL mIgnored;
+    BOOL _ignored;
+    NSDictionary *_metadata;
 }
+
+@property (nonatomic) BOOL ignored; // @synthesize ignored=_ignored;
+@property (strong, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
 
 + (void)reportAutomaticUnitConversionWarningInContext:(struct TSCEWarningReportingContext *)arg1;
 + (void)reportBoolToNumberConversionWarningInContext:(struct TSCEWarningReportingContext *)arg1;
@@ -24,16 +27,15 @@ __attribute__((visibility("hidden")))
 + (void)reportMonthOutOfRangeWarningInContext:(struct TSCEWarningReportingContext *)arg1;
 + (void)reportNonNumericCellWarningInContext:(struct TSCEWarningReportingContext *)arg1 reference:(id)arg2;
 + (BOOL)setHasVisibleWarnings:(id)arg1;
+- (void).cxx_destruct;
 - (id)copyByRemappingEntityIDs:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)displayStringWithCalculationEngine:(id)arg1 forTable:(const UUIDData_5fbc143e *)arg2 andCellID:(struct TSUCellCoord)arg3;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isIgnored;
-- (void)setIgnored:(BOOL)arg1;
 - (id)type;
 
 @end

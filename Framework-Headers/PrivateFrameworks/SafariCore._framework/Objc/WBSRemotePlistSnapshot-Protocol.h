@@ -6,11 +6,10 @@
 
 #import <SafariCore/NSObject-Protocol.h>
 
-@class NSData, NSURL;
+@class NSData;
 
 @protocol WBSRemotePlistSnapshot <NSObject>
 - (id)initWithPlistData:(NSData *)arg1 error:(id *)arg2;
-- (id)initWithPlistURL:(NSURL *)arg1 error:(id *)arg2;
 - (NSData *)plistDataWithFormat:(unsigned long long)arg1;
 @end
 

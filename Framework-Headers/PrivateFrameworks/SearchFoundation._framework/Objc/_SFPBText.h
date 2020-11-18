@@ -13,15 +13,12 @@
 
 @interface _SFPBText : PBCodable <_SFPBText, NSSecureCoding>
 {
-    CDStruct_6afdaceb _has;
     unsigned int _maxLines;
     NSString *_text;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasMaxLines;
-@property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned int maxLines; // @synthesize maxLines=_maxLines;

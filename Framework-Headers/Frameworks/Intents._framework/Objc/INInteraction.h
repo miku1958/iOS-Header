@@ -6,12 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INImageProxyInjecting-Protocol.h>
+#import <Intents/INInteractionExport-Protocol.h>
+#import <Intents/INKeyImageProducing-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
-@class INIntent, INIntentResponse, NSDate, NSDateInterval, NSString, SAUISnippet;
+@class CSSearchableItem, INImage, INIntent, INIntentResponse, NSDate, NSDateInterval, NSString, SAUISnippet;
 
-@interface INInteraction : NSObject <NSSecureCoding, NSCopying>
+@interface INInteraction : NSObject <INInteractionExport, INImageProxyInjecting, INKeyImageProducing, NSSecureCoding, NSCopying>
 {
     BOOL _donatedBySiri;
     SAUISnippet *_snippet;
@@ -25,17 +28,24 @@
 }
 
 @property (readonly, nonatomic) BOOL _donatedBySiri; // @synthesize _donatedBySiri;
+@property (readonly) unsigned long long _indexingHash;
+@property (readonly) INImage *_keyImage;
+@property (readonly, copy) CSSearchableItem *_searchableItem;
 @property (strong, nonatomic, setter=_setSnippet:) SAUISnippet *_snippet; // @synthesize _snippet;
 @property (strong, nonatomic) NSDate *date;
 @property (copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (copy, nonatomic) NSString *domainIdentifier;
 @property (nonatomic) double duration;
 @property (copy, nonatomic) NSString *groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy, nonatomic) INIntent *intent; // @synthesize intent=_intent;
+@property (copy, nonatomic, setter=_setIntent:) INIntent *intent; // @synthesize intent=_intent;
 @property (nonatomic) long long intentHandlingStatus; // @synthesize intentHandlingStatus=_intentHandlingStatus;
-@property (readonly, copy, nonatomic) INIntentResponse *intentResponse; // @synthesize intentResponse=_intentResponse;
+@property (copy, nonatomic, setter=_setIntentResponse:) INIntentResponse *intentResponse; // @synthesize intentResponse=_intentResponse;
+@property (readonly) Class superclass;
 
 + (void)deleteAllInteractionsWithCompletion:(CDUnknownBlockType)arg1;
 + (void)deleteInteractionsWithGroupIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -43,15 +53,16 @@
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 - (id)_dictionaryRepresentation;
 - (void)_donateInteractionWithBundleId:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_searchableItemIncludingData:(BOOL)arg1;
 - (void)_setDonatedBySiri:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)donateInteractionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIntent:(id)arg1 response:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

@@ -29,10 +29,12 @@
 - (id)_evaluateImageGeometry:(out id *)arg1;
 - (id)_evaluateImageProperties:(out id *)arg1;
 - (id)_sourceNode;
+- (id)initWithInput:(id)arg1 settings:(id)arg2;
 - (id)initWithPreparedSource:(id)arg1 container:(id)arg2 pipelineSettings:(id)arg3 sourceOptions:(id)arg4;
-- (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
 - (id)initWithSubsampleFactor:(long long)arg1 source:(id)arg2 container:(id)arg3 pipelineSettings:(id)arg4 sourceOptions:(id)arg5;
 - (id)nodeByReplayingAgainstCache:(id)arg1 pipelineState:(id)arg2 error:(out id *)arg3;
+- (long long)resolveSubsampleFactorForPipelineState:(id)arg1 error:(out id *)arg2;
+- (long long)resolveSubsampleFactorForPipelineState:(id)arg1 sourceScale:(CDStruct_912cb5d2)arg2;
 
 @end
 

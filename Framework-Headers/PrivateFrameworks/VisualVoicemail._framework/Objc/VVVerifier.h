@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSMutableDictionary;
+@class NSArray, NSMutableDictionary, NSString;
 
 @interface VVVerifier : NSObject
 {
     NSMutableDictionary *_checkpointDictionary;
     NSArray *_keyDescriptions;
+    NSString *_serviceIdentifier;
 }
 
-+ (id)sharedVerifier;
+@property (readonly, copy, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
+
++ (id)homeDirectory;
 - (void).cxx_destruct;
 - (id)_checkpointDictionary;
 - (void)_checkpointDictionaryChanged;
@@ -23,6 +26,7 @@
 - (void)_saveCheckpointDictionary;
 - (id)configurationDictionary;
 - (id)humanReadableConfigurationDictionary:(id *)arg1;
+- (id)initWithServiceIdentifier:(id)arg1;
 - (id)keyDescriptions;
 - (id)readableError;
 - (void)storeValue:(BOOL)arg1 forCheckpointKey:(id)arg2;

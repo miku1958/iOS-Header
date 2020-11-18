@@ -43,6 +43,7 @@
 - (void)lookupItemDidLoad:(id)arg1 parameters:(id)arg2;
 - (BOOL)productPageItemDidLoad:(id)arg1 parameters:(id)arg2;
 - (void)rightBarButtonPressed:(id)arg1;
+- (void)setVisibleInClientWindow:(id)arg1;
 - (void)setupWithClientBundleID:(id)arg1 bagType:(long long)arg2;
 - (void)setupWithCustomNavigationItem:(id)arg1 promptString:(id)arg2 askToBuy:(BOOL)arg3;
 - (void)storeButtonPressed:(id)arg1;

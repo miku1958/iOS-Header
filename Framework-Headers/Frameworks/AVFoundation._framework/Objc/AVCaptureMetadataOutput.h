@@ -18,6 +18,7 @@
 
 @property (readonly, nonatomic) NSArray *availableMetadataObjectTypes;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) id delegateOverride;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *metadataObjectTypes;
@@ -36,9 +37,12 @@
 - (id)init;
 - (BOOL)isFaceTrackingMetadataObjectTypesAvailable;
 - (BOOL)isFaceTrackingSupported;
+- (BOOL)isOfflineVideoStabilizationMotionMetadataObjectTypesAvailable;
+- (BOOL)isOfflineVideoStabilizationMotionMetadataSupported;
 - (void)setDelegateOverride:(id)arg1 delegateOverrideCallbackQueue:(id)arg2;
 - (void)setFaceTrackingMetadataObjectTypesAvailable:(BOOL)arg1;
 - (void)setMetadataObjectsDelegate:(id)arg1 queue:(id)arg2;
+- (void)setOfflineVideoStabilizationMotionMetadataObjectTypesAvailable:(BOOL)arg1;
 
 @end
 

@@ -9,7 +9,7 @@
 @class NSString;
 
 @protocol CEMRegisteredTypeProtocol <NSObject>
-+ (NSString *)registeredClass;
-+ (NSString *)registeredType;
++ (NSString *)registeredClassName;
++ (NSString *)registeredIdentifier;
 @end
 

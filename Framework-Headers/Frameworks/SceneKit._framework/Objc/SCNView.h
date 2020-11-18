@@ -9,7 +9,7 @@
 #import <SceneKit/SCNSceneRenderer-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class AVAudioEngine, AVAudioEnvironmentNode, CALayer, EAGLContext, NSArray, NSRecursiveLock, NSString, SCNCameraController, SCNDisplayLink, SCNJitterer, SCNNode, SCNRenderer, SCNScene, SCNSpriteKitEventHandler, SCNTechnique, SKScene, UIColor;
+@class AVAudioEngine, AVAudioEnvironmentNode, CALayer, EAGLContext, NSArray, NSString, SCNCameraController, SCNDisplayLink, SCNJitterer, SCNNode, SCNRecursiveLock, SCNRenderer, SCNScene, SCNSpriteKitEventHandler, SCNTechnique, SKScene, UIColor;
 @protocol SCNCameraControlConfiguration, SCNEventHandler, SCNSceneRendererDelegate;
 
 @interface SCNView : UIView <SCNSceneRenderer, SCNTechniqueSupport>
@@ -34,12 +34,14 @@
     id _delegate;
     SCNRenderer *_renderer;
     SCNScene *_scene;
+    BOOL _displayLinkCreationRequested;
     SCNDisplayLink *_displayLink;
     long long _preferredFramePerSeconds;
     CALayer *_backingLayer;
     SCNJitterer *_jitterer;
-    NSRecursiveLock *_lock;
+    SCNRecursiveLock *_lock;
     UIColor *_backgroundColor;
+    struct CGSize _boundsSize;
     char *_snapshotImageData;
     unsigned long long _snapshotImageDataLength;
     id<SCNEventHandler> _navigationCameraController;
@@ -58,7 +60,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long debugOptions;
 @property (readonly, nonatomic) SCNCameraController *defaultCameraController;
-@property (nonatomic) id<SCNSceneRendererDelegate> delegate;
+@property (weak, nonatomic) id<SCNSceneRendererDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) EAGLContext *eaglContext;
 @property (readonly) unsigned long long hash;
@@ -92,6 +94,7 @@
 - (BOOL)_checkAndUpdateDisplayLinkStateIfNeeded;
 - (void)_commonInit:(id)arg1;
 - (BOOL)_controlsOwnScaleFactor;
+- (void)_createDisplayLinkIfNeeded;
 - (id)_defaultBackgroundColor;
 - (BOOL)_disableLinearRendering;
 - (void)_drawAtTime:(double)arg1;
@@ -106,10 +109,13 @@
 - (int)_ibPreferredRenderingAPI;
 - (id)_ibSceneName;
 - (BOOL)_ibWantsMultisampling;
+- (void)_initializeDisplayLink;
 - (BOOL)_isEditor;
 - (void)_jitterRedisplay;
 - (long long)_preferredFocusMovementStyle;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
+- (unsigned long long)_renderOptions;
+- (double)_renderThreadPriority;
 - (id)_renderingQueue;
 - (void)_resetContentsScaleFactor;
 - (double)_runFPSTestWithDuration:(double)arg1;
@@ -128,6 +134,7 @@
 - (void)_updateGestureRecognizers;
 - (void)_updateOpacity;
 - (void)_updateProbes:(id)arg1 withProgress:(id)arg2;
+- (struct SCNVector4)_viewport;
 - (BOOL)_wantsSceneRendererDelegationMessages;
 - (id)backgroundColor;
 - (void)dealloc;
@@ -171,6 +178,7 @@
 - (void)scn_setBackingLayer:(id)arg1;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setContentScaleFactor:(double)arg1;
+- (void)setDisplayLink:(id)arg1;
 - (void)setEventHandler:(id)arg1;
 - (void)setIbPreferredRenderingAPI:(int)arg1;
 - (void)setIbSceneName:(id)arg1;
@@ -183,6 +191,7 @@
 - (void)set_ibPreferredRenderingAPI:(int)arg1;
 - (void)set_ibSceneName:(id)arg1;
 - (void)set_ibWantsMultisampling:(BOOL)arg1;
+- (void)set_renderOptions:(unsigned long long)arg1;
 - (void)set_screenTransform:(struct SCNMatrix4)arg1;
 - (void)set_showsAuthoringEnvironment:(BOOL)arg1;
 - (void)set_superSamplingFactor:(double)arg1;
@@ -197,6 +206,7 @@
 - (void)touchesMoved:(id)arg1 withEvent:(id)arg2;
 - (void)unlock;
 - (struct SCNVector3)unprojectPoint:(struct SCNVector3)arg1;
+- (void)updateAtTime:(double)arg1;
 - (void)willMoveToWindow:(id)arg1;
 
 @end

@@ -6,10 +6,11 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
-@class NSString;
+@class FCArticle, NSString;
 
 @protocol NUArticleDataProvider <NSObject>
 
+@property (readonly, nonatomic) FCArticle *article;
 @property (readonly, copy, nonatomic) NSString *articleID;
 
 - (void)loadContextWithCompletionBlock:(void (^)(SXContext *, NSError *))arg1;

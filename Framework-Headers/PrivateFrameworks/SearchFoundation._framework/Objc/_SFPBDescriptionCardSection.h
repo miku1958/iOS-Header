@@ -13,19 +13,6 @@
 
 @interface _SFPBDescriptionCardSection : PBCodable <_SFPBDescriptionCardSection, NSSecureCoding>
 {
-    struct {
-        unsigned int canBeHidden:1;
-        unsigned int hasTopPadding:1;
-        unsigned int hasBottomPadding:1;
-        unsigned int separatorStyle:1;
-        unsigned int titleNoWrap:1;
-        unsigned int titleWeight:1;
-        unsigned int descriptionSize:1;
-        unsigned int descriptionWeight:1;
-        unsigned int descriptionExpand:1;
-        unsigned int imageAlign:1;
-        unsigned int textAlign:1;
-    } _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -50,6 +37,7 @@
     NSString *_attributionText;
     _SFPBURL *_attributionURL;
     _SFPBImage *_attributionGlyph;
+    NSArray *_richDescriptions;
 }
 
 @property (strong, nonatomic) _SFPBImage *attributionGlyph; // @synthesize attributionGlyph=_attributionGlyph;
@@ -64,31 +52,8 @@
 @property (strong, nonatomic) _SFPBText *descriptionText; // @synthesize descriptionText=_descriptionText;
 @property (nonatomic) int descriptionWeight; // @synthesize descriptionWeight=_descriptionWeight;
 @property (copy, nonatomic) NSString *expandText; // @synthesize expandText=_expandText;
-@property (readonly, nonatomic) BOOL hasAttributionGlyph;
-@property (readonly, nonatomic) BOOL hasAttributionText;
-@property (readonly, nonatomic) BOOL hasAttributionURL;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasDescriptionExpand;
-@property (readonly, nonatomic) BOOL hasDescriptionSize;
-@property (readonly, nonatomic) BOOL hasDescriptionText;
-@property (readonly, nonatomic) BOOL hasDescriptionWeight;
-@property (readonly, nonatomic) BOOL hasExpandText;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasImage;
-@property (readonly, nonatomic) BOOL hasImageAlign;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
-@property (readonly, nonatomic) BOOL hasSubtitle;
-@property (readonly, nonatomic) BOOL hasTextAlign;
-@property (readonly, nonatomic) BOOL hasTitle;
-@property (readonly, nonatomic) BOOL hasTitleNoWrap;
-@property (readonly, nonatomic) BOOL hasTitleWeight;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _SFPBImage *image; // @synthesize image=_image;
 @property (nonatomic) int imageAlign; // @synthesize imageAlign=_imageAlign;
@@ -96,6 +61,7 @@
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
+@property (copy, nonatomic) NSArray *richDescriptions; // @synthesize richDescriptions=_richDescriptions;
 @property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
@@ -107,7 +73,9 @@
 
 - (void).cxx_destruct;
 - (void)addPunchoutOptions:(id)arg1;
+- (void)addRichDescriptions:(id)arg1;
 - (void)clearPunchoutOptions;
+- (void)clearRichDescriptions;
 - (id)dictionaryRepresentation;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithFacade:(id)arg1;
@@ -116,6 +84,8 @@
 - (id)punchoutOptionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)punchoutOptionsCount;
 - (BOOL)readFrom:(id)arg1;
+- (id)richDescriptionsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)richDescriptionsCount;
 - (void)writeTo:(id)arg1;
 
 @end

@@ -6,12 +6,14 @@
 
 #import <PhotosUICore/PXSettings.h>
 
-@class PXAssetVariationsSettings, PXAssetsSceneSettings, PXDiagnosticsSettings, PXDragAndDropSettings, PXImageModulationSettings, PXKitSettings, PXMemoriesFeedSettings, PXMemoriesRelatedSettings, PXModelSettings, PXPeopleDetailSettings, PXPeopleUISettings, PXPhotosDataSourceSettings, PXPhotosDetailsHeaderTileSettings, PXPhotosDetailsSettings, PXRelatedSettings, PXSharingSettings, PXSnapBackSettings, PXTilingSettings, PXViewControllerTransitionSettings;
+@class PXAssetVariationsSettings, PXAssetsSceneSettings, PXCompleteMyMomentSettings, PXDiagnosticsSettings, PXDragAndDropSettings, PXForYouSettings, PXGridSettings, PXImageModulationSettings, PXKitSettings, PXMemoriesFeedSettings, PXMemoriesRelatedSettings, PXModelSettings, PXPeopleDetailSettings, PXPeopleUISettings, PXPhotoPickerSettings, PXPhotosDataSourceSettings, PXPhotosDetailsHeaderTileSettings, PXPhotosDetailsSettings, PXPhotosLibrarySettings, PXRelatedSettings, PXSharingSettings, PXSnapBackSettings, PXTilingSettings, PXViewControllerTransitionSettings;
 
 @interface PXRootSettings : PXSettings
 {
     PXDiagnosticsSettings *_diagnostics;
     PXImageModulationSettings *_imageModulationSettings;
+    PXPhotosLibrarySettings *_photosLibrarySettings;
+    PXPhotoPickerSettings *_photoPickerSettings;
     PXPhotosDetailsSettings *_photosDetails;
     PXPhotosDetailsHeaderTileSettings *_photosDetailsHeaderTile;
     PXRelatedSettings *_related;
@@ -29,11 +31,17 @@
     PXDragAndDropSettings *_dragAndDrop;
     PXSharingSettings *_sharingSettings;
     PXAssetVariationsSettings *_variationsSettings;
+    PXCompleteMyMomentSettings *_completeMyMoment;
+    PXForYouSettings *_forYou;
+    PXGridSettings *_grid;
 }
 
 @property (strong, nonatomic) PXAssetsSceneSettings *assetsScene; // @synthesize assetsScene=_assetsScene;
+@property (strong, nonatomic) PXCompleteMyMomentSettings *completeMyMoment; // @synthesize completeMyMoment=_completeMyMoment;
 @property (strong, nonatomic) PXDiagnosticsSettings *diagnostics; // @synthesize diagnostics=_diagnostics;
 @property (strong, nonatomic) PXDragAndDropSettings *dragAndDrop; // @synthesize dragAndDrop=_dragAndDrop;
+@property (strong, nonatomic) PXForYouSettings *forYou; // @synthesize forYou=_forYou;
+@property (strong, nonatomic) PXGridSettings *grid; // @synthesize grid=_grid;
 @property (strong, nonatomic) PXImageModulationSettings *imageModulationSettings; // @synthesize imageModulationSettings=_imageModulationSettings;
 @property (strong, nonatomic) PXKitSettings *kit; // @synthesize kit=_kit;
 @property (strong, nonatomic) PXMemoriesRelatedSettings *memoriesRelated; // @synthesize memoriesRelated=_memoriesRelated;
@@ -41,9 +49,11 @@
 @property (strong, nonatomic) PXModelSettings *model; // @synthesize model=_model;
 @property (strong, nonatomic) PXPeopleDetailSettings *peopleDetail; // @synthesize peopleDetail=_peopleDetail;
 @property (strong, nonatomic) PXPeopleUISettings *peopleUISettings; // @synthesize peopleUISettings=_peopleUISettings;
+@property (strong, nonatomic) PXPhotoPickerSettings *photoPickerSettings; // @synthesize photoPickerSettings=_photoPickerSettings;
 @property (strong, nonatomic) PXPhotosDataSourceSettings *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property (strong, nonatomic) PXPhotosDetailsSettings *photosDetails; // @synthesize photosDetails=_photosDetails;
 @property (strong, nonatomic) PXPhotosDetailsHeaderTileSettings *photosDetailsHeaderTile; // @synthesize photosDetailsHeaderTile=_photosDetailsHeaderTile;
+@property (strong, nonatomic) PXPhotosLibrarySettings *photosLibrarySettings; // @synthesize photosLibrarySettings=_photosLibrarySettings;
 @property (strong, nonatomic) PXRelatedSettings *related; // @synthesize related=_related;
 @property (strong, nonatomic) PXSharingSettings *sharingSettings; // @synthesize sharingSettings=_sharingSettings;
 @property (strong, nonatomic) PXSnapBackSettings *snapBack; // @synthesize snapBack=_snapBack;

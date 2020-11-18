@@ -18,7 +18,7 @@
     NSXPCListener *_listener;
     NSObject<OS_dispatch_queue> *_listenerQueue;
     PGPictureInPictureRemoteObject *_activePictureInPictureRemoteObject;
-    PGPictureInPictureRemoteObject *_suspenedPictureInPictureRemoteObject;
+    PGPictureInPictureRemoteObject *_suspendedPictureInPictureRemoteObject;
     id<PGPictureInPictureControllerDelegate> _delegate;
     struct {
         unsigned int pictureInPictureController_didCreatePictureInPictureViewController:1;
@@ -46,6 +46,7 @@
 - (id)_remoteObjectThatShouldStartPictureInPictureEnteringBackgroundForPictureInPictureApplication:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (struct CGRect)initialFrameForInteractivePictureInPictureAnimationEnteringBackgroundForApplication:(id)arg1;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)pictureInPictureInterruptionBegan;
 - (void)pictureInPictureInterruptionEnded;
@@ -55,6 +56,7 @@
 - (void)pictureInPictureRemoteObject:(id)arg1 willHidePictureInPictureViewController:(id)arg2;
 - (void)pictureInPictureRemoteObject:(id)arg1 willShowPictureInPictureViewController:(id)arg2;
 - (BOOL)pictureInPictureRemoteObjectShouldAcceptSetupRequest:(id)arg1;
+- (struct CGSize)preferredContentSizeForInteractivePictureInPictureAnimationEnteringBackgroundForApplication:(id)arg1;
 - (BOOL)shouldStartPictureInPictureForApplicationEnteringBackground:(id)arg1;
 - (void)startPictureInPictureForApplicationEnteringBackground:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

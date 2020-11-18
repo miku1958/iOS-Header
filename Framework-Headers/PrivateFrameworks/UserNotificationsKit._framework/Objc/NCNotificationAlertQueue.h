@@ -52,6 +52,9 @@
 - (void)destination:(id)arg1 requestsClearingNotificationRequests:(id)arg2 fromDestinations:(id)arg3;
 - (void)destination:(id)arg1 requestsClearingNotificationRequestsFromDate:(id)arg2 toDate:(id)arg3 inSections:(id)arg4;
 - (void)destination:(id)arg1 requestsClearingNotificationRequestsInSections:(id)arg2;
+- (void)destination:(id)arg1 setAllowsCriticalAlerts:(BOOL)arg2 forSectionIdentifier:(id)arg3;
+- (void)destination:(id)arg1 setAllowsNotifications:(BOOL)arg2 forSectionIdentifier:(id)arg3;
+- (void)destination:(id)arg1 setDeliverQuietly:(BOOL)arg2 forSectionIdentifier:(id)arg3;
 - (void)destination:(id)arg1 willDismissNotificationRequest:(id)arg2;
 - (void)destination:(id)arg1 willPresentNotificationRequest:(id)arg2;
 - (void)destination:(id)arg1 willPresentNotificationRequest:(id)arg2 suppressAlerts:(BOOL)arg3;
@@ -68,7 +71,7 @@
 - (void)setDestination:(id)arg1 enabled:(BOOL)arg2;
 - (void)setDestination:(id)arg1 ready:(BOOL)arg2;
 - (void)unregisterDestination:(id)arg1;
-- (void)updateNotificationSectionSettings:(id)arg1;
+- (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)withdrawNotificationRequest:(id)arg1 forCoalescedNotification:(id)arg2;
 
 @end

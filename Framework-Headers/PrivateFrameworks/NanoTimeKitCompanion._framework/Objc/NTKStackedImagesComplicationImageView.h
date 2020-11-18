@@ -9,10 +9,11 @@
 #import <NanoTimeKitCompanion/NTKComplicationImageView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKLegibilityView-Protocol.h>
 
-@class CLKImageProvider, NSString, NTKColoringImageView, UIColor, UIImage, UIImageView;
+@class CLKDevice, CLKImageProvider, NSString, NTKColoringImageView, UIColor, UIImage, UIImageView;
 
 @interface NTKStackedImagesComplicationImageView : UIView <NTKComplicationImageView, NTKLegibilityView>
 {
+    CLKDevice *_device;
     NTKColoringImageView *_foregroundImageView;
     NTKColoringImageView *_backgroundImageView;
     UIImageView *_foregroundAccentImageView;
@@ -29,12 +30,14 @@
     UIColor *_color;
     UIColor *_overrideColor;
     double _multicolorAlpha;
+    UIColor *_foregroundColor;
 }
 
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (readonly, nonatomic) UIColor *contentColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CLKImageProvider *imageProvider; // @synthesize imageProvider=_imageProvider;
 @property (nonatomic) BOOL legibilityEnabled; // @dynamic legibilityEnabled;

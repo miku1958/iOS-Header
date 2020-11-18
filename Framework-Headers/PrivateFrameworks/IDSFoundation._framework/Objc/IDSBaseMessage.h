@@ -8,7 +8,7 @@
 
 #import <IDSFoundation/NSCopying-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL;
+@class APSOutgoingMessageCheckpointTrace, NSArray, NSData, NSDate, NSDictionary, NSMutableArray, NSNumber, NSString, NSURL;
 @protocol IDSBaseMessageSigningSession;
 
 @interface IDSBaseMessage : NSObject <NSCopying>
@@ -23,6 +23,7 @@
     BOOL _hasReceivedPushAck;
     BOOL _hasAttemptedAPSDelivery;
     BOOL _httpDoNotDecodeData;
+    BOOL _ignoreMaxRetryCount;
     BOOL _alwaysForceCellular;
     int _timeoutRetries;
     id _context;
@@ -50,6 +51,7 @@
     NSURL *_URLOverride;
     unsigned long long _sentByteCount;
     unsigned long long _receivedByteCount;
+    APSOutgoingMessageCheckpointTrace *_apsdCheckpointTrace;
     NSDate *_requestStart;
     NSDate *_requestEnd;
     NSDate *_responseReceived;
@@ -64,8 +66,10 @@
 @property (readonly) NSDictionary *additionalMessageHeadersForOutgoingPush;
 @property (readonly) NSDictionary *additionalQueryStringParameters;
 @property (readonly) BOOL allowDualDelivery;
+@property (readonly) BOOL allowsServerProvidedLenientAnisetteTimeout;
 @property BOOL alwaysForceCellular; // @synthesize alwaysForceCellular=_alwaysForceCellular;
 @property (readonly) double anisetteHeadersTimeout;
+@property (strong) APSOutgoingMessageCheckpointTrace *apsdCheckpointTrace; // @synthesize apsdCheckpointTrace=_apsdCheckpointTrace;
 @property (readonly) NSString *bagKey;
 @property (copy, nonatomic) NSMutableArray *certDataArray;
 @property (copy) NSDictionary *clientInfo; // @synthesize clientInfo=_clientInfo;
@@ -85,6 +89,7 @@
 @property BOOL httpDoNotDecodeData; // @synthesize httpDoNotDecodeData=_httpDoNotDecodeData;
 @property (readonly, nonatomic) struct __SecKey *identityPrivateKey;
 @property (readonly, nonatomic) struct __SecKey *identityPublicKey;
+@property BOOL ignoreMaxRetryCount; // @synthesize ignoreMaxRetryCount=_ignoreMaxRetryCount;
 @property (readonly) BOOL ignoresNetworkConnectivity;
 @property long long importanceLevel; // @synthesize importanceLevel=_importanceLevel;
 @property (readonly) BOOL isValidMessage;
@@ -127,7 +132,6 @@
 @property (copy, nonatomic) NSMutableArray *userIDArray;
 @property (copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (readonly) BOOL wantsAPSRetries;
-@property (readonly) BOOL wantsAnisetteHeaders;
 @property (readonly) BOOL wantsBagKey;
 @property BOOL wantsBinaryPush; // @synthesize wantsBinaryPush=_wantsBinaryPush;
 @property (readonly) BOOL wantsBodySignature;

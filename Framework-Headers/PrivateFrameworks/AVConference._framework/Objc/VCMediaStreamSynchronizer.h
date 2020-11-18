@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMediaStreamSyncSourceDelegate-Protocol.h>
 
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (double)sourceTimeForDestinationRTPTimestamp:(unsigned int)arg1;
 - (void)updateDestinationNTPTime:(double)arg1 withRTPTimeStamp:(unsigned int)arg2;
 - (void)updateSourceNTPTime:(double)arg1 withRTPTimeStamp:(unsigned int)arg2;
-- (void)updateSourcePlayoutSampleRTPTimestamp:(unsigned int)arg1 systemTime:(double)arg2;
+- (void)updateSourcePlayoutSampleRTPTimestamp:(unsigned int)arg1 systemTime:(double)arg2 uuid:(id)arg3;
 - (void)updateSourceState:(int)arg1;
 
 @end

@@ -11,21 +11,22 @@
 __attribute__((visibility("hidden")))
 @interface VKRoadTileSource : VKVectorTileSource
 {
-    VKTrafficTileSource *_trafficTileSource[1];
+    VKTrafficTileSource *_trafficTileSource;
     struct map<VKTileKey, VKTile *, bool (*)(const VKTileKey &, const VKTileKey &), std::__1::allocator<std::__1::pair<const VKTileKey, VKTile *>>> *_inflightTiles;
     struct map<VKTileKey, geo::_retain_ptr<VKTile *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, bool (*)(const VKTileKey &, const VKTileKey &), std::__1::allocator<std::__1::pair<const VKTileKey, geo::_retain_ptr<VKTile *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>>> *_privateInflightTiles;
     BOOL _trafficEnabled;
 }
 
 @property (nonatomic) BOOL trafficEnabled; // @synthesize trafficEnabled=_trafficEnabled;
+@property (strong, nonatomic) VKTrafficTileSource *trafficTileSource; // @synthesize trafficTileSource=_trafficTileSource;
 
-- (void)_fetchedTile:(id)arg1;
+- (void)_fetchedTile:(id)arg1 isPreliminary:(BOOL)arg2;
+- (id)_privateInflightTileForKey:(const struct VKTileKey *)arg1;
 - (void)_trafficFailed:(const struct VKTileKey *)arg1;
-- (id)_trafficTileSourceForOrigin:(unsigned char)arg1;
 - (void)clearCaches;
 - (void)dealloc;
+- (id)detailedDescription;
 - (void)expireAllTraffic;
-- (void)forEachTrafficTileSource:(CDUnknownBlockType)arg1;
 - (id)inflightTileForKey:(const struct VKTileKey *)arg1;
 - (id)initWithTileSet:(id)arg1 resourceManifestConfiguration:(id)arg2 locale:(id)arg3 sharedResources:(id)arg4 taskContext:(shared_ptr_e963992e)arg5;
 - (unsigned char)mapLayerForZoomLevelRange;
@@ -33,9 +34,9 @@ __attribute__((visibility("hidden")))
 - (void)releaseTraffic;
 - (void)setClient:(id)arg1;
 - (void)setMapType:(long long)arg1;
-- (void)setTrafficTileSource:(id)arg1 atIndex:(unsigned int)arg2;
 - (BOOL)shouldObeyHybridUnavailableRegions;
-- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
+- (id)stateDescriptionForRenderKey:(const struct VKTileKey *)arg1;
+- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3 userInfo:(id)arg4;
 
 @end
 

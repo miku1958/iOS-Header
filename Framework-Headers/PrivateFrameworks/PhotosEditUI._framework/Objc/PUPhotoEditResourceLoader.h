@@ -9,21 +9,26 @@
 @class NSMutableArray, PHResourceDownloadRequest, PUEditableMediaProvider, PUPhotoEditResourceLoadRequest;
 @protocol PUEditableAsset;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditResourceLoader : NSObject
 {
     BOOL _loadingMedia;
     id<PUEditableAsset> _asset;
     PUEditableMediaProvider *_mediaProvider;
     long long _resourcesAvailability;
+    long long _assetRawPropertyCheckState;
     PUPhotoEditResourceLoadRequest *__currentRequest;
     NSMutableArray *__enqueuedRequests;
     PHResourceDownloadRequest *__downloadRequest;
+    unsigned long long __downloadSignpostId;
 }
 
 @property (strong, nonatomic, setter=_setCurrentRequest:) PUPhotoEditResourceLoadRequest *_currentRequest; // @synthesize _currentRequest=__currentRequest;
 @property (strong, nonatomic, setter=_setDownloadRequest:) PHResourceDownloadRequest *_downloadRequest; // @synthesize _downloadRequest=__downloadRequest;
+@property (nonatomic) unsigned long long _downloadSignpostId; // @synthesize _downloadSignpostId=__downloadSignpostId;
 @property (strong, nonatomic, setter=_setEnqueuedRequests:) NSMutableArray *_enqueuedRequests; // @synthesize _enqueuedRequests=__enqueuedRequests;
 @property (readonly, nonatomic) id<PUEditableAsset> asset; // @synthesize asset=_asset;
+@property (readonly, nonatomic) long long assetRawPropertyCheckState; // @synthesize assetRawPropertyCheckState=_assetRawPropertyCheckState;
 @property (readonly, nonatomic, getter=isDownloadingResources) BOOL downloadingResources;
 @property (nonatomic, getter=isLoadingMedia, setter=_setLoadingMedia:) BOOL loadingMedia; // @synthesize loadingMedia=_loadingMedia;
 @property (readonly, nonatomic) PUEditableMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
@@ -34,7 +39,11 @@
 - (BOOL)_assetNeedsImageURLLoaded;
 - (BOOL)_assetNeedsVideoLoaded;
 - (void)_checkIfDownloadRequiredWithRequest:(id)arg1;
+- (void)_checkIfShouldUseRawWithRequest:(id)arg1;
 - (void)_dequeueRequestIfNeeded;
+- (void)_downloadSignpostBegin;
+- (void)_downloadSignpostEnd;
+- (void)_downloadSignpostEvent:(const char *)arg1;
 - (void)_fetchMediaForRequest:(id)arg1 result:(id)arg2;
 - (void)_fetchResourcesWithRequest:(id)arg1;
 - (void)_handleDidLoadAdjustmentData:(id)arg1 forAsset:(id)arg2 completion:(CDUnknownBlockType)arg3;

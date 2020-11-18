@@ -20,6 +20,7 @@
     BOOL _touchRecognizingHint;
     BOOL _persistentEmulationHint;
     BOOL _accessPass;
+    BOOL _useSmallStyleGlyph;
     long long _state;
     PKGlyphView *_glyph;
     UILabel *_label;
@@ -32,7 +33,7 @@
 @property (nonatomic) BOOL biometricsUnavailableHint; // @synthesize biometricsUnavailableHint=_biometricsUnavailableHint;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) UILabel *debugLabel; // @synthesize debugLabel=_debugLabel;
-@property (nonatomic) id<PKPassPaymentPayStateViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPassPaymentPayStateViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PKGlyphView *glyph; // @synthesize glyph=_glyph;
 @property (readonly) unsigned long long hash;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL touchRecognizingHint; // @synthesize touchRecognizingHint=_touchRecognizingHint;
+@property (nonatomic) BOOL useSmallStyleGlyph; // @synthesize useSmallStyleGlyph=_useSmallStyleGlyph;
 
 - (void).cxx_destruct;
 - (void)_applyStatePreservingGlyphState:(BOOL)arg1 overridingText:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -53,12 +55,13 @@
 - (long long)_defaultGlyphStateForState:(long long)arg1;
 - (id)_textForState:(long long)arg1 textOverride:(id)arg2;
 - (void)dealloc;
-- (void)emphasizeStateIfPossible:(long long)arg1 withTextOverride:(id)arg2;
+- (void)emphasizeStateIfPossible:(long long)arg1 withOverrideText:(id)arg2;
 - (void)glyphView:(id)arg1 revealingCheckmark:(BOOL)arg2;
 - (id)initWithStyle:(long long)arg1;
+- (BOOL)labelWillChangeForState:(long long)arg1 withOverrideText:(id)arg2;
 - (void)layoutSubviews;
 - (void)setState:(long long)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)setState:(long long)arg1 preservingGlyphState:(BOOL)arg2 overridingText:(id)arg3 animated:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)setState:(long long)arg1 animated:(BOOL)arg2 withOverrideText:(id)arg3 preserveGlyphState:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)updateDebugLabel:(id)arg1 isErrorState:(BOOL)arg2;
 
 @end

@@ -4,19 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/KNAnimationPluginContext-Protocol.h>
 
-@class KNAnimatedBuild, KNAnimationRandomGenerator, NSArray, NSDictionary, NSString, TSDGLState, TSDRep;
+@class KNAnimatedBuild, KNAnimationRandomGenerator, NSArray, NSDictionary, NSString, TSDGLState, TSDMetalContext, TSDRep;
 
 __attribute__((visibility("hidden")))
 @interface KNAnimationPluginContext : NSObject <KNAnimationPluginContext>
 {
     BOOL _isMotionBlurred;
     BOOL _isPreview;
+    BOOL _isMovieExport;
     BOOL _isWarmingUp;
     NSArray *_textures;
+    NSArray *_highlightingTextures;
+    NSArray *_allTextures;
     NSDictionary *_scaledTextures;
     NSArray *_tags;
     unsigned long long _direction;
@@ -26,32 +29,41 @@ __attribute__((visibility("hidden")))
     NSDictionary *_transitionAttributes;
     NSArray *_magicMoveMatches;
     TSDGLState *_GLState;
+    TSDMetalContext *_metalContext;
     TSDRep *_rep;
     long long _rendererType;
     KNAnimationRandomGenerator *_randomGenerator;
     struct CGRect _boundingRectOnCanvas;
     struct CGRect _boundingRect;
+    struct CGRect _drawableFrame;
+    struct CGRect _animationFrame;
 }
 
 @property (strong, nonatomic) TSDGLState *GLState; // @synthesize GLState=_GLState;
+@property (strong, nonatomic) NSArray *allTextures; // @synthesize allTextures=_allTextures;
 @property (weak, nonatomic) KNAnimatedBuild *animatedBuild; // @synthesize animatedBuild=_animatedBuild;
+@property (nonatomic) struct CGRect animationFrame; // @synthesize animationFrame=_animationFrame;
 @property (nonatomic) struct CGRect boundingRect; // @synthesize boundingRect=_boundingRect;
 @property (nonatomic) struct CGRect boundingRectOnCanvas; // @synthesize boundingRectOnCanvas=_boundingRectOnCanvas;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long direction; // @synthesize direction=_direction;
+@property (nonatomic) struct CGRect drawableFrame; // @synthesize drawableFrame=_drawableFrame;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSArray *highlightingTextures; // @synthesize highlightingTextures=_highlightingTextures;
 @property (readonly, nonatomic) BOOL isBuild;
 @property (readonly, nonatomic) BOOL isFrameRenderer;
 @property (readonly, nonatomic) BOOL isMagicMove;
 @property (readonly, nonatomic) BOOL isMetalRenderer;
 @property (nonatomic) BOOL isMotionBlurred; // @synthesize isMotionBlurred=_isMotionBlurred;
+@property (nonatomic) BOOL isMovieExport; // @synthesize isMovieExport=_isMovieExport;
 @property (readonly, nonatomic) BOOL isOpenGLRenderer;
 @property (nonatomic) BOOL isPreview; // @synthesize isPreview=_isPreview;
 @property (readonly, nonatomic) BOOL isTransition;
 @property (nonatomic) BOOL isWarmingUp; // @synthesize isWarmingUp=_isWarmingUp;
 @property (weak, nonatomic) NSArray *magicMoveMatches; // @synthesize magicMoveMatches=_magicMoveMatches;
+@property (strong, nonatomic) TSDMetalContext *metalContext; // @synthesize metalContext=_metalContext;
 @property (nonatomic) double percent; // @synthesize percent=_percent;
 @property (strong, nonatomic) KNAnimationRandomGenerator *randomGenerator; // @synthesize randomGenerator=_randomGenerator;
 @property (nonatomic) long long rendererType; // @synthesize rendererType=_rendererType;

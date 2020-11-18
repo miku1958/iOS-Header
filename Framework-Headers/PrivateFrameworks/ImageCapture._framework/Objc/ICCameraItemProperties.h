@@ -4,33 +4,47 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class ICCameraDevice, ICCameraFolder, NSDate, NSMutableDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICCameraItemProperties : NSObject
 {
     ICCameraDevice *_device;
     ICCameraFolder *_parentFolder;
+    unsigned long long _objectID;
+    unsigned long long _parentID;
+    unsigned long long _ownerID;
+    unsigned long long _twinID;
     NSString *_name;
     NSString *_UTI;
     NSDate *_creationDate;
     NSDate *_modificationDate;
     BOOL _locked;
     NSMutableDictionary *_userData;
+    unsigned int _ptpObjectHandle;
+    id _userObject;
+    CDUnknownBlockType _completionBlock;
 }
 
 @property (strong) NSString *UTI; // @synthesize UTI=_UTI;
+@property (copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (strong) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property ICCameraDevice *device; // @synthesize device=_device;
 @property BOOL locked; // @synthesize locked=_locked;
 @property (strong) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (strong) NSString *name; // @synthesize name=_name;
+@property unsigned long long objectID; // @synthesize objectID=_objectID;
+@property unsigned long long ownerID; // @synthesize ownerID=_ownerID;
 @property ICCameraFolder *parentFolder; // @synthesize parentFolder=_parentFolder;
+@property unsigned long long parentID; // @synthesize parentID=_parentID;
+@property unsigned int ptpObjectHandle; // @synthesize ptpObjectHandle=_ptpObjectHandle;
+@property unsigned long long twinID; // @synthesize twinID=_twinID;
 @property (strong) NSMutableDictionary *userData; // @synthesize userData=_userData;
+@property (strong) id userObject; // @synthesize userObject=_userObject;
 
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

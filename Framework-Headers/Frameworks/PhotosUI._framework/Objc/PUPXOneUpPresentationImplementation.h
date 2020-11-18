@@ -39,8 +39,10 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)oneUpPresentationHelper:(id)arg1 rectForAssetReference:(id)arg2 cropInsets:(struct UIEdgeInsets *)arg3 contentsRect:(struct CGRect *)arg4;
 - (void)oneUpPresentationHelper:(id)arg1 scrollAssetReferenceToVisible:(id)arg2;
 - (void)oneUpPresentationHelper:(id)arg1 shouldHideAssetReferences:(id)arg2;
+- (unsigned long long)oneUpPresentationHelperAdditionalOptions:(id)arg1;
 - (BOOL)oneUpPresentationHelperShouldAutoPlay:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
+- (id)oneUpPresentationHelperViewHostingTilingView:(id)arg1;
 - (void)presentingViewControllerViewDidAppear:(BOOL)arg1;
 - (void)presentingViewControllerViewDidDisappear:(BOOL)arg1;
 - (void)presentingViewControllerViewWillAppear:(BOOL)arg1;

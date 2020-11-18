@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) long long personModelId; // @synthesize personModelId=_personModelId;
 @property (readonly, nonatomic) long long unnamedFaceCount; // @synthesize unnamedFaceCount=_unnamedFaceCount;
 
-+ (id)entityKeyForPropertyKey:(id)arg1;
++ (id)entityKeyMap;
 + (id)fetchEmptyFaceGroupsWithOptions:(id)arg1;
 + (id)fetchFaceGroupsForPerson:(id)arg1 options:(id)arg2;
 + (id)fetchFaceGroupsGroupedByFaceLocalIdentifierForFaces:(id)arg1 options:(id)arg2;

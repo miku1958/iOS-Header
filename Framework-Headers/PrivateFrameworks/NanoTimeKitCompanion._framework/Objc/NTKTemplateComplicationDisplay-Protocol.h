@@ -12,7 +12,7 @@
 @protocol NTKTemplateComplicationDisplay <NTKComplicationDisplay, NTKTimeTravel>
 + (BOOL)handlesComplicationTemplate:(CLKComplicationTemplate *)arg1;
 - (CLKComplicationTemplate *)complicationTemplate;
-- (void)setComplicationTemplate:(CLKComplicationTemplate *)arg1;
+- (void)setComplicationTemplate:(CLKComplicationTemplate *)arg1 reason:(long long)arg2;
 
 @optional
 + (BOOL)supportsComplicationFamily:(long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class EQKitEnvironment, NSData;
 @protocol EQKitExpression;
@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithRoot:(id)arg1 source:(id)arg2;
 - (BOOL)isBaseFontNameUsed;
 - (id)newLayout;
-- (id)pdfDataWithLayout:(id)arg1 layoutContext:(id)arg2 sourceString:(id)arg3;
+- (id)pdfDataWithLayout:(id)arg1 layoutContext:(id)arg2 sourceString:(id)arg3 tightFit:(BOOL)arg4;
 - (id)pdfDataWithLayoutContext:(id)arg1 baselineOffset:(double *)arg2 sourceString:(id)arg3;
 
 @end

@@ -20,6 +20,7 @@
     BOOL _isAirplaneModeActive;
     BOOL _isAutoDownloadOnCellularAllowed;
     BOOL _isCellularDataActive;
+    BOOL _isCellularDataRestrictedForMusic;
     BOOL _isShowingAllMusic;
     BOOL _isShowingAllVideo;
     BOOL _isUpdateInProgress;
@@ -52,6 +53,7 @@
 - (void)_onQueue_endObservingReachabilityChanges;
 - (void)_onQueue_updateCanShowCloudDownloadButtonsWithNotification:(BOOL)arg1;
 - (void)_onQueue_updateCanShowCloudTracksWithNotification:(BOOL)arg1;
+- (void)_onQueue_updateIsCellularDataRestrictedForMusic;
 - (void)_setNewIsNetworkReachable:(BOOL)arg1 networkType:(long long)arg2;
 - (BOOL)_uncachedIsAutoDownloadOnCellularAllowed;
 - (BOOL)_uncachedIsShowingAllMusic;

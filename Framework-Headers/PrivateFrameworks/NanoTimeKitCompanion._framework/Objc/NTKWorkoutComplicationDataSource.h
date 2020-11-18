@@ -34,11 +34,13 @@
 @property (nonatomic, getter=isLoadingLastWorkout) BOOL loadingLastWorkout; // @synthesize loadingLastWorkout=_loadingLastWorkout;
 @property (strong, nonatomic) HKObserverQuery *workoutObservationQuery; // @synthesize workoutObservationQuery=_workoutObservationQuery;
 
++ (id)_signatureTemplateWithHasActiveWorkout:(BOOL)arg1 hasPausedActiveWorkout:(BOOL)arg2;
 + (id)_templateForWorkout:(id)arg1 family:(long long)arg2;
 + (id)_unknownTemplateForFamily:(long long)arg1;
 + (id)_workoutTintColor;
-+ (BOOL)acceptsComplicationFamily:(long long)arg1;
-+ (BOOL)acceptsComplicationType:(unsigned long long)arg1;
++ (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
++ (BOOL)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
++ (Class)richComplicationDisplayViewClassForType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void).cxx_destruct;
 - (id)_animationImages;
 - (BOOL)_hasActiveWorkout;
@@ -60,7 +62,7 @@
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
-- (id)initWithComplication:(id)arg1 family:(long long)arg2;
+- (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (id)lockedTemplate;
 - (void)pause;
 - (void)resume;

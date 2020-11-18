@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 
 + (struct CGSize)previewImageMaxSizeForType:(unsigned long long)arg1;
 + (struct CGSize)previewImageSizeForType:(unsigned long long)arg1;
++ (BOOL)shouldShowImportedDataNotificationsOnOpen;
 - (void).cxx_destruct;
 - (id)UIStateForChart:(id)arg1;
 - (id)activeSheet;

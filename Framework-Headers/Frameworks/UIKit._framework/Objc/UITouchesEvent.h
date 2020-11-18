@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIEvent.h>
+#import <UIKitCore/UIEvent.h>
 
 @class NSMapTable, NSMutableSet, NSSet, _UITouchPredictionManager;
 
@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeTouch:(id)arg1 fromGestureRecognizer:(id)arg2;
 - (void)_removeTouchesForKey:(id)arg1;
 - (void)_removeTouchesForWindow:(id)arg1;
+- (BOOL)_sendEventToGestureRecognizer:(id)arg1;
 - (void)_setHIDEvent:(struct __IOHIDEvent *)arg1;
 - (id)_touchesForGesture:(id)arg1 withPhase:(long long)arg2;
 - (void)_touchesForGesture:(id)arg1 withPhase:(long long)arg2 intoSet:(id)arg3;

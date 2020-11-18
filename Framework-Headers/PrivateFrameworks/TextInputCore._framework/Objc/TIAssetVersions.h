@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet, TIAsset, TIAssetAttributes;
 
@@ -20,9 +20,9 @@
 @property (readonly, nonatomic) unsigned long long count;
 @property (nonatomic) TIAsset *currentAsset; // @synthesize currentAsset=_currentAsset;
 
+- (void).cxx_destruct;
 - (void)addAsset:(id)arg1;
 - (id)assetContentItemsMatching:(id)arg1;
-- (void)dealloc;
 - (id)initWithAttributes:(id)arg1;
 - (BOOL)isEmpty;
 - (BOOL)purgeAsset:(id)arg1;

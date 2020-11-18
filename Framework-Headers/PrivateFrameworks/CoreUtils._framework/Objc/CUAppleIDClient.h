@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSData, NSDictionary, NSString;
 
@@ -19,6 +19,7 @@
     BOOL _peerSignatureVerified;
     NSDictionary *_peerValidationDict;
     BOOL _peerValidated;
+    int _securityLevel;
     NSString *_myAppleID;
     CUAppleIDClient *_myInfoClient;
     NSString *_peerAppleID;
@@ -39,6 +40,7 @@
 @property (copy, nonatomic) NSArray *peerAppleIDs; // @synthesize peerAppleIDs=_peerAppleIDs;
 @property (copy, nonatomic) NSData *peerCertificateData; // @synthesize peerCertificateData=_peerCertificateData;
 @property (copy, nonatomic) NSData *peerValidationData; // @synthesize peerValidationData=_peerValidationData;
+@property (readonly, nonatomic) int securityLevel;
 
 - (void).cxx_destruct;
 - (struct __SecCertificate *)_getMyCertificateAndReturnError:(id *)arg1;

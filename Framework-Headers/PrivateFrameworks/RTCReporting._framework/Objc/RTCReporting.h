@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <RTCReporting/RTCReportingDeallocNotifierDelegate-Protocol.h>
 
@@ -14,13 +14,15 @@
 @interface RTCReporting : NSObject <RTCReportingDeallocNotifierDelegate>
 {
     NSObject<OS_dispatch_queue> *_reportingQueue;
+    NSObject<OS_dispatch_queue> *_reportingPeriodicTasksQueue;
     CDUnknownBlockType _loggingBlock;
     NSXPCConnection *_connection;
     NSObject<OS_dispatch_source> *_timer;
     int _counter;
-    int _intervalMultiplier;
     NSMutableDictionary *_periodicServiceDict;
     NSArray *_enabledBackendNames;
+    NSArray *_whitelistedEvents;
+    NSArray *_blacklistedEvents;
     RTCReportingDeallocNotifier *_strongDeallocNotifier;
     id _weakDeallocNotifier;
     id _weakMessageSentDelegate;
@@ -33,7 +35,7 @@
 + (id)newHierarchyTokenFromParentToken:(id)arg1;
 + (void)regeneratePersistentIdentifierForDNU:(BOOL)arg1;
 + (BOOL)sendOneMessageWithSessionInfo:(id)arg1 userInfo:(id)arg2 category:(unsigned short)arg3 type:(unsigned short)arg4 payload:(id)arg5 error:(id *)arg6;
-- (void)_myPeriodicTask:(unsigned short)arg1 type:(unsigned short)arg2;
+- (void)_myPeriodicTask:(unsigned short)arg1 type:(unsigned short)arg2 intervalMultiplier:(int)arg3 updateTimeout:(unsigned long long)arg4;
 - (void)aboutToDealloc;
 - (void)dealloc;
 - (void)fetchReportingStatesWithUserInfo:(id)arg1 fetchComplete:(CDUnknownBlockType)arg2;
@@ -42,6 +44,8 @@
 - (void)flushMessagesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithSessionInfo:(id)arg1 userInfo:(id)arg2 frameworksToCheck:(id)arg3;
 - (id)initWithSessionInfo:(id)arg1 userInfo:(id)arg2 frameworksToCheck:(id)arg3 aggregationBlock:(CDUnknownBlockType)arg4;
+- (BOOL)isBlacklistedEvent:(unsigned short)arg1;
+- (BOOL)isWhitelistedEvent:(unsigned short)arg1;
 - (void)notifyMessageWasSent:(id)arg1;
 - (BOOL)registerPeriodicTaskForModule:(unsigned int)arg1 needToUpdate:(BOOL)arg2 needToReport:(BOOL)arg3 serviceBlock:(CDUnknownBlockType)arg4;
 - (oneway void)release;

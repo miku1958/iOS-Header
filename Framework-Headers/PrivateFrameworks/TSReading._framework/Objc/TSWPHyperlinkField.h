@@ -29,6 +29,7 @@
 + (id)urlWithEmailAddress:(id)arg1 subject:(id)arg2;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (BOOL)allowsEditing;
+- (id)canonicalRepresentationURL;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
 - (int)elementKind;

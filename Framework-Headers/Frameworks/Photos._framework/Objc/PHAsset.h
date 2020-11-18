@@ -6,11 +6,12 @@
 
 #import <Photos/PHObject.h>
 
+#import <Photos/PLAssetID-Protocol.h>
 #import <Photos/_PLImageLoadingAsset-Protocol.h>
 
 @class CLLocation, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 
-@interface PHAsset : PHObject <_PLImageLoadingAsset>
+@interface PHAsset : PHObject <_PLImageLoadingAsset, PLAssetID>
 {
     CLLocation *_cachedLocation;
     NSString *_cloudAssetGUID;
@@ -28,6 +29,8 @@
     unsigned short _playbackVariation;
     int _avalanchePickType;
     int _exifOrientation;
+    float _overallAestheticScore;
+    float _hdrGain;
     long long _playbackStyle;
     long long _mediaType;
     unsigned long long _mediaSubtypes;
@@ -49,6 +52,7 @@
     NSDate *_trashedDate;
     NSDate *_adjustmentTimestamp;
     NSString *_originalColorSpace;
+    NSData *_imageRequestHints;
     double _curationScore;
     long long _cloudPlaceholderKind;
     long long _videoCpDurationValue;
@@ -59,9 +63,12 @@
     double _faceAreaMaxY;
     id _faceAdjustmentVersion;
     struct CLLocationCoordinate2D _locationCoordinate;
+    struct CGRect _preferredCropRect;
+    struct CGRect _acceptableCropRect;
 }
 
 @property (readonly, nonatomic) NSURL *ALAssetURL;
+@property (readonly, nonatomic) struct CGRect acceptableCropRect; // @synthesize acceptableCropRect=_acceptableCropRect;
 @property (readonly, nonatomic) NSDate *adjustmentTimestamp; // @synthesize adjustmentTimestamp=_adjustmentTimestamp;
 @property (readonly, nonatomic) double aspectRatio;
 @property (nonatomic) BOOL assetDescriptionWasSet; // @synthesize assetDescriptionWasSet=_assetDescriptionWasSet;
@@ -100,8 +107,10 @@
 @property (readonly, nonatomic) BOOL hasAdjustments; // @synthesize hasAdjustments=_hasAdjustments;
 @property (readonly, nonatomic) BOOL hasPhotoColorAdjustments;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) float hdrGain; // @synthesize hdrGain=_hdrGain;
 @property (readonly, nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, nonatomic) long long imageOrientation;
+@property (readonly, nonatomic) NSData *imageRequestHints; // @synthesize imageRequestHints=_imageRequestHints;
 @property (readonly, nonatomic) BOOL isAnimatedGIF;
 @property (readonly, nonatomic) BOOL isAudio;
 @property (readonly, nonatomic) BOOL isCloudPhotoLibraryAsset;
@@ -113,6 +122,7 @@
 @property (readonly, nonatomic) BOOL isIncludedInMoments;
 @property (readonly, nonatomic) BOOL isJPEG;
 @property (readonly, nonatomic) BOOL isLoopingVideo;
+@property (readonly, nonatomic) BOOL isMomentSharedAsset;
 @property (readonly, nonatomic) BOOL isPartOfBurst;
 @property (readonly, nonatomic) BOOL isPartOfGroup;
 @property (readonly, nonatomic) BOOL isPhoto;
@@ -133,12 +143,16 @@
 @property (readonly, nonatomic) NSString *metadataDebugDescription;
 @property (readonly, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (readonly, nonatomic) NSString *originalColorSpace; // @synthesize originalColorSpace=_originalColorSpace;
+@property (readonly, nonatomic) unsigned long long originalResourceChoice;
+@property (readonly, nonatomic) float overallAestheticScore; // @synthesize overallAestheticScore=_overallAestheticScore;
 @property (readonly, nonatomic) unsigned long long persistenceState; // @synthesize persistenceState=_persistenceState;
 @property (readonly, nonatomic) unsigned long long pixelHeight; // @synthesize pixelHeight=_pixelHeight;
 @property (readonly, nonatomic) unsigned long long pixelWidth; // @synthesize pixelWidth=_pixelWidth;
 @property (readonly, nonatomic) long long playbackStyle; // @synthesize playbackStyle=_playbackStyle;
 @property (readonly, nonatomic) unsigned short playbackVariation; // @synthesize playbackVariation=_playbackVariation;
+@property (readonly, nonatomic) struct CGRect preferredCropRect; // @synthesize preferredCropRect=_preferredCropRect;
 @property (readonly, nonatomic) BOOL representsBurst;
+@property (readonly, nonatomic) NSString *resourcesDebugDescription;
 @property (readonly, nonatomic) short savedAssetType; // @synthesize savedAssetType=_savedAssetType;
 @property (readonly, nonatomic) NSSet *sceneClassifications;
 @property (readonly, nonatomic) unsigned long long sourceType;
@@ -161,7 +175,7 @@
 + (unsigned long long)_extendedPropertyFetchHintsForPropertySets:(id)arg1;
 + (id)_fetchAssetsMatchingAdjustedFingerPrint:(id)arg1;
 + (id)_fetchAssetsMatchingMasterFingerPrint:(id)arg1;
-+ (id)_fetchCuratedAssetInAssetCollection:(id)arg1 referenceAsset:(id)arg2 referencePersons:(id)arg3 onlyKey:(BOOL)arg4;
++ (id)_fetchCuratedAssetInAssetCollection:(id)arg1 referenceAsset:(id)arg2 referencePersons:(id)arg3 fetchOptions:(id)arg4 onlyKey:(BOOL)arg5;
 + (id)_fetchRepresentativeAssetInAssetCollection:(id)arg1;
 + (id)_imageManagerRequestLoggingQueue;
 + (id)_inq_highestImageManagerRequestIDsObserved;
@@ -175,7 +189,7 @@
 + (id)_unfetchedPropertySetsForAssets:(id)arg1 fromPropertySets:(id)arg2;
 + (id)corePropertiesToFetch;
 + (long long)countOfAssetsWithLocationFromUUIDs:(id)arg1;
-+ (id)entityKeyForPropertyKey:(id)arg1;
++ (id)entityKeyMap;
 + (id)faceWorkerPropertiesToFetch;
 + (id)fetchAssetsForFaceGroups:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsForFaces:(id)arg1 options:(id)arg2;
@@ -184,6 +198,7 @@
 + (id)fetchAssetsGroupedByFaceUUIDForFaces:(id)arg1;
 + (id)fetchAssetsInAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsInBoundingBoxWithTopLeftLocation:(id)arg1 bottomRightLocation:(id)arg2 options:(id)arg3;
++ (id)fetchAssetsInImportSessions:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsWithALAssetURLs:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsWithBurstIdentifier:(id)arg1 options:(id)arg2;
 + (id)fetchAssetsWithCloudIdentifiers:(id)arg1 options:(id)arg2;
@@ -192,13 +207,16 @@
 + (id)fetchAssetsWithOptions:(id)arg1;
 + (id)fetchAssetsWithoutOriginalsInAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchCuratedAssetsInAssetCollection:(id)arg1;
++ (id)fetchCuratedAssetsInAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchCuratedAssetsInAssetCollection:(id)arg1 referencePersons:(id)arg2;
 + (id)fetchExtendedCuratedAssetsInAssetCollection:(id)arg1;
++ (id)fetchKeyAssetForSceneIdentifier:(unsigned int)arg1 withConfidenceThreshold:(double)arg2;
 + (id)fetchKeyAssetsInAssetCollection:(id)arg1 options:(id)arg2;
 + (id)fetchKeyCuratedAssetInAssetCollection:(id)arg1 referenceAsset:(id)arg2;
 + (id)fetchKeyCuratedAssetInAssetCollection:(id)arg1 referencePersons:(id)arg2;
 + (id)fetchMovieCuratedAssetsInMemory:(id)arg1;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
++ (id)fetchQuarantinedAsssetsWithOptions:(id)arg1;
 + (id)fetchReducedCuratedAssetsInMemory:(id)arg1 options:(id)arg2;
 + (id)fetchRepresentativeAssetsInAssetCollection:(id)arg1;
 + (id)fetchType;
@@ -241,6 +259,7 @@
 - (id)adjustmentProperties;
 - (id)adjustmentVersion;
 - (id)adjustmentsDebugMetadata;
+- (id)aestheticProperties;
 - (int)analysisStateForWorkerType:(short)arg1 outLastIgnoreDate:(id *)arg2 outIgnoreUntilDate:(id *)arg3;
 - (id)assetAnalysisStateProperties;
 - (short)assetSource;
@@ -254,6 +273,7 @@
 - (id)curationProperties;
 - (id)debugFilename;
 - (id)descriptionProperties;
+- (id)destinationAssetCopyProperties;
 - (id)detailedDebugDescriptionInLibrary:(id)arg1;
 - (unsigned long long)effectiveThumbnailIndex;
 - (void)fetchPropertySetsIfNeeded;
@@ -280,10 +300,12 @@
 - (void)getMasterFingerPrintWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)hasLegacyAdjustments;
 - (struct CGSize)imageSize;
+- (id)importProperties;
 - (id)initWithFetchDictionary:(id)arg1 propertyHint:(unsigned long long)arg2 photoLibrary:(id)arg3;
 - (BOOL)isInFlight;
 - (BOOL)isLocatedAtCoordinates:(struct CLLocationCoordinate2D)arg1;
 - (BOOL)isMediaSubtype:(unsigned long long)arg1;
+- (BOOL)isOriginalRaw;
 - (BOOL)isOriginalSRGB;
 - (BOOL)isPrimaryImageFormat;
 - (BOOL)isVariationSuggestionStatesUnknown;
@@ -291,12 +313,15 @@
 - (short)kindSubtype;
 - (id)mainFileURL;
 - (id)managedAssetForPhotoLibrary:(id)arg1;
+- (id)mediaAnalysisProperties;
 - (id)messagesForRecentImageManagerRequests;
 - (int)orientation;
+- (unsigned long long)originalChoiceToFallbackForUnsupportRAW;
 - (id)originalFileName;
 - (long long)originalImageOrientation;
 - (struct CGSize)originalImageSize;
 - (id)originalMetadataProperties;
+- (id)originalUTI;
 - (id)pathForAdjustedSRGBLargeThumbnailFile;
 - (id)pathForAdjustmentDataFile;
 - (id)pathForAdjustmentDirectory;
@@ -320,6 +345,8 @@
 - (void)recordImageManagerMessageForRequestID:(int)arg1 message:(id)arg2;
 - (unsigned long long)requestContentEditingInputWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)sceneAnalysisProperties;
+- (id)sceneprintProperties;
+- (BOOL)shouldUseRAWResourceAsUnadjustedEditBase;
 - (unsigned long long)variationSuggestionStatesForVariationType:(unsigned long long)arg1;
 
 @end

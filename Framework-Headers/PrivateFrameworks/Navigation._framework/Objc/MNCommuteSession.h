@@ -12,11 +12,9 @@
 @class MNCommuteDestinationUpdater, MNLocation, MNLocationHistory, MNNavigationTraceManager, MNObserverHashTable, MNSuggestionsManager, NSArray, NSMutableDictionary, NSString, NSTimer;
 @protocol MNCommuteSessionObserver;
 
-__attribute__((visibility("hidden")))
 @interface MNCommuteSession : NSObject <MNCommuteDestinationUpdaterDelegate, MNCommuteDestinationObserver>
 {
     MNObserverHashTable<MNCommuteSessionObserver> *_observers;
-    NSTimer *_stateChangeTimer;
     NSMutableDictionary *_suggestions;
     NSArray *_rankedDestinations;
     id _rankedDestinationsSync;
@@ -29,6 +27,7 @@ __attribute__((visibility("hidden")))
     MNSuggestionsManager *_suggestionsManager;
     unsigned long long _commuteSessionState;
     MNCommuteDestinationUpdater *_comparisonDestinationStartTime;
+    unsigned long long _requestedCommuteSessionState;
 }
 
 @property (nonatomic) unsigned long long commuteSessionState; // @synthesize commuteSessionState=_commuteSessionState;
@@ -38,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isMapsActive;
 @property (readonly, nonatomic) NSArray *rankedDestinations;
+@property (nonatomic) unsigned long long requestedCommuteSessionState; // @synthesize requestedCommuteSessionState=_requestedCommuteSessionState;
 @property (readonly) NSString *suggestionsDescription;
 @property (weak, nonatomic) MNSuggestionsManager *suggestionsManager; // @synthesize suggestionsManager=_suggestionsManager;
 @property (readonly) Class superclass;

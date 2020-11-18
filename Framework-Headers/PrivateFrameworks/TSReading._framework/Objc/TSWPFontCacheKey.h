@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -12,16 +12,18 @@
 {
     NSString *_fontName;
     double _fontSize;
+    double _fontWeight;
     unsigned long long _hash;
 }
 
 @property (readonly, nonatomic) NSString *fontName; // @synthesize fontName=_fontName;
 @property (readonly, nonatomic) double fontSize; // @synthesize fontSize=_fontSize;
+@property (readonly, nonatomic) double fontWeight; // @synthesize fontWeight=_fontWeight;
 
-+ (id)cacheKeyWithFontName:(id)arg1 size:(double)arg2;
++ (id)cacheKeyWithFontName:(id)arg1 size:(double)arg2 weight:(double)arg3;
 - (void)dealloc;
 - (unsigned long long)hash;
-- (id)initWithFontName:(id)arg1 size:(double)arg2;
+- (id)initWithFontName:(id)arg1 size:(double)arg2 weight:(double)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

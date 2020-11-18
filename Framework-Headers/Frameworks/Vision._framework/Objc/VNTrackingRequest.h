@@ -23,19 +23,20 @@
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
 + (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (id)_newTrackerOptionsAndReturnError:(id *)arg1;
+- (id)_newTrackerOptionsForRequestRevision:(unsigned long long)arg1 error:(id *)arg2;
 - (id)_resetTrackerIfNeeded:(id)arg1 trackerProvider:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)_trackingLevelOptionFromTrackingLevelEnum;
+- (BOOL)allowsCachingOfResults;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (id)initWithDetectedObjectObservation:(id)arg1;
 - (id)initWithDetectedObjectObservation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
+- (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (id)newDefaultRequestInstance;
-- (id)observationsCacheKey;
 - (id)sequencedRequestPreviousObservationsKey;
 - (id)trackerType;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

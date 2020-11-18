@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class NSArray, NSMutableArray, _MRDeviceInfoMessageProtobuf, _MRNowPlayingClientProtobuf, _MROriginProtobuf;
+@class MRApplicationActivity, NSArray, NSMutableArray, _MRDeviceInfoMessageProtobuf, _MRNowPlayingClientProtobuf, _MROriginProtobuf;
 @protocol OS_dispatch_queue;
 
 @interface MRNowPlayingOriginClient : NSObject <MRNowPlayingClientState>
@@ -21,6 +21,7 @@
     NSMutableArray *_applicationPickedRoutes;
     unsigned int _inputMode;
     unsigned int _volumeCapabilities;
+    MRApplicationActivity *_activity;
     _MRDeviceInfoMessageProtobuf *_deviceInfo;
     CDUnknownBlockType _playbackQueueCallback;
     CDUnknownBlockType _playbackQueueTransactionCallback;
@@ -35,6 +36,7 @@
 }
 
 @property (strong, nonatomic) _MRNowPlayingClientProtobuf *activeNowPlayingClient; // @synthesize activeNowPlayingClient=_activeNowPlayingClient;
+@property (strong, nonatomic) MRApplicationActivity *activity;
 @property (copy, nonatomic) NSArray *applicationPickedRoutes;
 @property (copy, nonatomic) CDUnknownBlockType beginLyricsEventCallback;
 @property (nonatomic) BOOL canBeNowPlayingApp;

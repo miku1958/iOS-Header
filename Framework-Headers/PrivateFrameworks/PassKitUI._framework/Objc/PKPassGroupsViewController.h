@@ -8,20 +8,23 @@
 
 #import <PassKitUI/PKForegroundActiveArbiterObserver-Protocol.h>
 #import <PassKitUI/PKGroupsControllerDelegate-Protocol.h>
+#import <PassKitUI/PKPGSVFooterViewDelegate-Protocol.h>
 #import <PassKitUI/PKPassGroupStackViewDatasource-Protocol.h>
 #import <PassKitUI/PKPassGroupStackViewDelegate-Protocol.h>
 #import <PassKitUI/PKPassPersonalizationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/PKPaymentSetupDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentAccountResolutionControllerDelegate-Protocol.h>
 #import <PassKitUI/PKPerformActionViewControllerDelegate-Protocol.h>
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, NSTimer, PKGroupsController, PKPassGroupStackView, PKPaymentService, PKPeerPaymentService, _UIBackdropView;
-@protocol NSObject, PKPassLibraryDataProvider;
+@class NSArray, NSMutableArray, NSString, NSTimer, PKGroupsController, PKPassGroupStackView, PKPaymentService, PKPeerPaymentAccountResolutionController, PKPeerPaymentService, _UIBackdropView;
+@protocol PKPassLibraryDataProvider;
 
-@interface PKPassGroupsViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, UIScrollViewDelegate, PKForegroundActiveArbiterObserver, PKPaymentServiceDelegate, PKPaymentSetupDelegate, PKPerformActionViewControllerDelegate, PKPassPersonalizationViewControllerDelegate>
+@interface PKPassGroupsViewController : UIViewController <PKGroupsControllerDelegate, PKPassGroupStackViewDatasource, PKPassGroupStackViewDelegate, UIScrollViewDelegate, PKForegroundActiveArbiterObserver, PKPaymentServiceDelegate, PKPaymentSetupDelegate, PKPerformActionViewControllerDelegate, PKPeerPaymentAccountResolutionControllerDelegate, PKPGSVFooterViewDelegate, PKPassPersonalizationViewControllerDelegate>
 {
     long long _backdropStyle;
+    BOOL _invalidated;
     PKPassGroupStackView *_groupStackView;
     _UIBackdropView *_headerBackground;
     _UIBackdropView *_footerBackground;
@@ -38,13 +41,15 @@
     BOOL _passesAreOutdated;
     BOOL _reloadingPasses;
     BOOL _backgroundMode;
+    BOOL _inFailForward;
     BOOL _updatingBackdropSettings;
     CDStruct_6c46ada8 _headerBackgroundVisibility;
     CDStruct_6c46ada8 _footerBackgroundVisibility;
     unsigned long long _instanceFooterSuppressionCounter;
-    id<NSObject> _expressTransactionNotificationObserver;
+    int _expressTransactionNotificationObserver;
     id<PKPassLibraryDataProvider> _passLibraryDataProvider;
     PKPeerPaymentService *_peerPaymentService;
+    PKPeerPaymentAccountResolutionController *_peerPaymentAccountResolutionController;
     BOOL _handleFieldDetection;
     BOOL _welcomeStateEnabled;
     long long _style;
@@ -74,12 +79,13 @@
 - (void)_accessBackgroundStateForType:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)_accessibilitySettingsDidChange:(id)arg1;
 - (void)_applyPresentationState;
+- (id)_barcodePassDetailsViewControllerForBarcodePass:(id)arg1;
 - (void)_beginSuppressingInstanceFooter;
 - (void)_clearPassViewedNotificationTimer;
 - (void)_dismissPresentedVCsWithRequirements:(unsigned long long)arg1 performAction:(CDUnknownBlockType)arg2;
 - (void)_endSuppressingInstanceFooterWithContext:(id)arg1;
 - (void)_handleChildViewControllerRequestingServiceMode:(id)arg1;
-- (void)_handleExpressNotification:(id)arg1;
+- (void)_handleExpressNotification;
 - (void)_handleFooterSupressionChange:(id)arg1;
 - (void)_handlePeerPaymentAccountDidChangeNotification:(id)arg1;
 - (void)_handleProvisioningError:(id)arg1;
@@ -90,6 +96,7 @@
 - (void)_passViewedNotificationTimerFired;
 - (id)_paymentPassDetailsViewControllerForPaymentPass:(id)arg1;
 - (id)_paymentSetupNavigationControllerForProvisioningController:(id)arg1;
+- (id)_peerPaymentAccountResolutionController;
 - (void)_presentAddPassesControllerWithPasses:(id)arg1;
 - (void)_presentGroupWithIndex:(unsigned long long)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_presentTransactionDetailsForTransaction:(id)arg1 paymentPass:(id)arg2;
@@ -102,12 +109,14 @@
 - (void)_updateFooterSuppressionAnimated:(BOOL)arg1;
 - (void)_updateFooterSuppressionWithContext:(id)arg1;
 - (void)_updatePeerPaymentAccount;
+- (void)_warnFailForward;
 - (void)addSimulatorPassWithURL:(id)arg1;
 - (void)addVASPassWithIdentifier:(id)arg1;
 - (void)allowIdleTimer;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
+- (id)featuredGroup;
 - (id)footerForGroupStackView:(id)arg1;
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (id)groupAtIndex:(unsigned long long)arg1;
@@ -135,17 +144,21 @@
 - (id)initWithGroupsController:(id)arg1;
 - (id)initWithGroupsController:(id)arg1 style:(long long)arg2;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)invalidate;
 - (void)loadView;
 - (unsigned long long)numberOfGroups;
 - (void)passPersonalizationViewController:(id)arg1 didFinishPersonalizingPass:(id)arg2;
 - (void)paymentDeviceDidEnterFieldWithProperties:(id)arg1;
 - (void)paymentSetupDidFinish:(id)arg1;
+- (void)peerPaymentAccountResolutionController:(id)arg1 requestsDismissCurrentViewControllerAnimated:(BOOL)arg2;
+- (void)peerPaymentAccountResolutionController:(id)arg1 requestsPresentViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)performActionViewControllerDidCancel:(id)arg1;
 - (void)performActionViewControllerDidPerformAction:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersStatusBarHidden;
 - (void)presentActionViewControllerWithUniqueID:(id)arg1 actionType:(unsigned long long)arg2;
 - (void)presentAutomaticPresentationControllerForPassWithUniqueID:(id)arg1;
+- (void)presentBarcodePassDetailsWithUniqueID:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentDefaultPaymentPassAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentGroupTable;
 - (void)presentGroupTableAnimated:(BOOL)arg1;
@@ -153,6 +166,7 @@
 - (void)presentOffscreenAnimated:(BOOL)arg1 split:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)presentOffscreenAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)presentOnscreen:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)presentPassDetailsWithUniqueID:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentPassWithFieldProperties:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentPassWithFieldProperties:(id)arg1 fieldPassUniqueIdentifiers:(id)arg2 animated:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)presentPassWithUniqueID:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -163,6 +177,8 @@
 - (void)presentPaymentPassDetailsWithUniqueID:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)presentPaymentSetupController;
 - (void)presentPaymentSetupInMode:(long long)arg1 referrerIdentifier:(id)arg2 paymentNetwork:(id)arg3;
+- (void)presentPeerPaymentSetupWithCurrencyAmount:(id)arg1 flowState:(unsigned long long)arg2 senderAddress:(id)arg3;
+- (void)presentPeerPaymentTopUp;
 - (void)presentPileOffscreen;
 - (void)presentTransactionDetailsForTransactionWithIdentifier:(id)arg1;
 - (void)presentTransactionDetailsForTransactionWithServiceIdentifier:(id)arg1;
@@ -186,6 +202,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewSafeAreaInsetsDidChange;
+- (void)viewTapped:(id)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 

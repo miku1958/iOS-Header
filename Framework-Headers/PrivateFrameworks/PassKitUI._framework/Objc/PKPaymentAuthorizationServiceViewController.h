@@ -15,7 +15,7 @@
 #import <PassKitUI/UITableViewDataSource-Protocol.h>
 #import <PassKitUI/UITableViewDelegate-Protocol.h>
 
-@class NSLayoutConstraint, NSString, PKAuthenticator, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationLayout, PKPaymentAuthorizationPasswordButtonView, PKPaymentAuthorizationStateMachine, PKPaymentAuthorizationSummaryItemsView, PKPaymentAuthorizationTotalView, PKPaymentPreferencesViewController, PKPeerPaymentAccount, PKPhysicalButtonView, UIBarButtonItem, UITableView, UIView;
+@class CNContact, LAUIPhysicalButtonView, NSLayoutConstraint, NSMutableSet, NSString, PKAuthenticator, PKPaymentAuthorizationFooterView, PKPaymentAuthorizationLayout, PKPaymentAuthorizationPasswordButtonView, PKPaymentAuthorizationStateMachine, PKPaymentAuthorizationSummaryItemsView, PKPaymentAuthorizationTotalView, PKPaymentPreferencesViewController, PKPeerPaymentAccount, UIBarButtonItem, UITableView, UIView;
 @protocol PKPaymentAuthorizationServiceViewControllerDelegate><PKPaymentAuthorizationHostProtocol;
 
 @interface PKPaymentAuthorizationServiceViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UINavigationControllerDelegate, PKPaymentAuthorizationFooterViewDelegate, PKAuthenticatorDelegate, PKPaymentAuthorizationStateMachineDelegate, AKAppleIDAuthenticationInAppContextDelegate, PKPaymentAuthorizationServiceProtocol>
@@ -32,6 +32,7 @@
     NSLayoutConstraint *_passphraseBottomConstraint;
     BOOL _needsToAccommodateKeyboard;
     UIBarButtonItem *_cancelBarButtonItem;
+    BOOL _cancelButtonDisabled;
     UIView *_passphraseSeparatorView;
     NSLayoutConstraint *_contentViewRightConstraint;
     PKPaymentPreferencesViewController *_shippingMethodPreferencesController;
@@ -55,22 +56,25 @@
     struct __IOHIDEventSystemClient *_hidSystemClient;
     unsigned long long _biometryAttempts;
     PKPeerPaymentAccount *_peerPaymentAccount;
+    BOOL _peerPaymentBalanceIsInsufficient;
+    NSMutableSet *_completionHandlers;
+    CNContact *_lastUnservicableAddress;
     BOOL _userIntentRequired;
     BOOL _shouldIgnorePhysicalButton;
-    BOOL _cancelButtonDisabled;
+    BOOL _blockingHardwareCancels;
     PKPaymentAuthorizationStateMachine *_stateMachine;
     PKAuthenticator *_authenticator;
-    PKPhysicalButtonView *_physicalButtonView;
+    LAUIPhysicalButtonView *_physicalButtonView;
     id<PKPaymentAuthorizationServiceViewControllerDelegate><PKPaymentAuthorizationHostProtocol> _delegate;
 }
 
 @property (strong, nonatomic) PKAuthenticator *authenticator; // @synthesize authenticator=_authenticator;
-@property (readonly, nonatomic) BOOL cancelButtonDisabled; // @synthesize cancelButtonDisabled=_cancelButtonDisabled;
+@property (readonly, nonatomic) BOOL blockingHardwareCancels; // @synthesize blockingHardwareCancels=_blockingHardwareCancels;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKPaymentAuthorizationServiceViewControllerDelegate><PKPaymentAuthorizationHostProtocol> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PKPhysicalButtonView *physicalButtonView; // @synthesize physicalButtonView=_physicalButtonView;
+@property (strong, nonatomic) LAUIPhysicalButtonView *physicalButtonView; // @synthesize physicalButtonView=_physicalButtonView;
 @property (readonly, nonatomic) BOOL shouldIgnorePhysicalButton; // @synthesize shouldIgnorePhysicalButton=_shouldIgnorePhysicalButton;
 @property (strong, nonatomic) PKPaymentAuthorizationStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
@@ -80,6 +84,7 @@
 - (void)_addPassphraseViewControllerToHierarchy:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (long long)_authenticatorPolicy;
 - (id)_availabilityStringForPass:(id)arg1;
+- (id)_availablePasses;
 - (id)_compactNavigationController;
 - (void)_createSubviews;
 - (void)_didCancel:(BOOL)arg1;
@@ -87,6 +92,7 @@
 - (void)_didFailWithFatalError:(id)arg1;
 - (void)_didSucceedWithAuthorizationStateParam:(id)arg1;
 - (id)_evaluationRequest;
+- (void)_executeCompletionHandlers;
 - (void)_handleModelUpdate;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_hostApplicationWillEnterForeground;
@@ -108,12 +114,15 @@
 - (void)_setupShippingContact;
 - (void)_setupShippingMethods;
 - (void)_setupWithPaymentRequest:(id)arg1 fromAppWithLocalizedName:(id)arg2 andApplicationIdentifier:(id)arg3;
+- (void)_showUnservicableAddressAlertForErrors:(id)arg1;
 - (void)_startEvaluation;
 - (void)_startSimulatorHIDListener;
 - (void)_suspendAuthentication;
 - (void)_suspendAuthenticationAndForceReset:(BOOL)arg1;
 - (Class)_tableViewClassForDataItem:(id)arg1;
 - (long long)_totalViewStyle;
+- (id)_unavailablePasses;
+- (void)_updateAvailableCardsPreferences;
 - (void)_updateBackgroundedState:(BOOL)arg1;
 - (void)_updateCancelButtonEnabledForState:(unsigned long long)arg1 param:(id)arg2;
 - (void)_updateFooterStateForBiometricMatchMissIfNecessary;
@@ -147,6 +156,7 @@
 - (void)dismissPasscodeViewController;
 - (void)dismissPassphraseViewController;
 - (void)dismissPassphraseViewControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)handleDismissWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleHostApplicationDidBecomeActive;
 - (void)handleHostApplicationDidCancel;
 - (void)handleHostApplicationWillResignActive:(BOOL)arg1;
@@ -159,6 +169,7 @@
 - (void)presentPasscodeViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)presentPassphraseViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)resumeAndUpdateContentSize;
+- (long long)selectedPaymentApplicationIndexFromCardEntries:(id)arg1;
 - (void)setFooterState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3;
 - (void)setFooterState:(long long)arg1 string:(id)arg2 animated:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)signInViewController:(id)arg1 didAuthenticateWithResults:(id)arg2 error:(id)arg3;
@@ -173,8 +184,10 @@
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

@@ -8,6 +8,7 @@
 
 #import <NanoRegistry/NSSecureCoding-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface NRSwitchRecordCollection : NRPBSwitchRecordCollection <NSSecureCoding>
 {
 }

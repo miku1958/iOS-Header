@@ -10,7 +10,6 @@
 @protocol CDPDaemonProtocol
 - (void)clearFollowUpWithContext:(CDPFollowUpContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)deleteRecoveryKeyWithContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 completion:(void (^)(BOOL, NSError *))arg3;
-- (void)fetchManateeAvailabilityWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)finishOfflineLocalSecretChangeWithContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)generateNewRecoveryKeyWithContext:(CDPContext *)arg1 uiProvider:(id<CDPStateUIProviderInternal>)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)generateRandomRecoveryKeyWithContext:(CDPContext *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

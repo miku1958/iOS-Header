@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/NSObject-Protocol.h>
+#import <PhotosUICore/NSObject-Protocol.h>
 
 @class PXCPLServiceUI;
 @protocol PXCPLServiceUIStatus;
@@ -14,6 +14,6 @@
 
 @optional
 - (BOOL)serviceUI:(PXCPLServiceUI *)arg1 performAction:(long long)arg2;
-- (void)serviceUI:(PXCPLServiceUI *)arg1 progressDidChange:(double)arg2;
+- (void)serviceUI:(PXCPLServiceUI *)arg1 progressDidChange:(float)arg2;
 @end
 

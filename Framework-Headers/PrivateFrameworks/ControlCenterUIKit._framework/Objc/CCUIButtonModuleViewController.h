@@ -36,6 +36,7 @@
 - (void).cxx_destruct;
 - (void)_buttonTapped:(id)arg1 forEvent:(id)arg2;
 - (void)buttonTapped:(id)arg1 forEvent:(id)arg2;
+- (void)didTransitionToExpandedContentMode:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)willTransitionToExpandedContentMode:(BOOL)arg1;
 

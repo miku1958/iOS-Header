@@ -7,24 +7,27 @@
 #import <TextInput/TIKeyboardInputManagerStub.h>
 
 @class TIKeyboardInputManagerBase;
-@protocol TIKeyboardInputManagerLogging;
+@protocol TIClientProxy, TIKeyboardInputManagerLogging;
 
 @interface TIKeyboardInputManagerWrapper : TIKeyboardInputManagerStub
 {
     TIKeyboardInputManagerBase *_inputManager;
     id<TIKeyboardInputManagerLogging> _logger;
+    id<TIClientProxy> _clientProxy;
 }
 
+@property (strong, nonatomic) id<TIClientProxy> clientProxy; // @synthesize clientProxy=_clientProxy;
 @property (strong, nonatomic) TIKeyboardInputManagerBase *inputManager; // @synthesize inputManager=_inputManager;
 @property (strong, nonatomic) id<TIKeyboardInputManagerLogging> logger; // @synthesize logger=_logger;
 
+- (void).cxx_destruct;
 - (void)_updateKeyboardOutput:(id)arg1 withSecureCandidatePayload:(id)arg2;
 - (void)acceptSecureCandidate:(id)arg1 keyboardState:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 granularity:(int)arg2 keyboardState:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)candidateRejected:(id)arg1;
-- (void)dealloc;
 - (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 requestToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)generateAutocorrectionsWithKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)generateCandidatesWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateRefinementsForCandidate:(id)arg1 keyboardState:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

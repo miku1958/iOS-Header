@@ -45,6 +45,7 @@
 - (void)setupTextView;
 - (id)textRulesForTextView:(id)arg1;
 - (id)textSource;
+- (BOOL)userInteractable;
 
 @end
 

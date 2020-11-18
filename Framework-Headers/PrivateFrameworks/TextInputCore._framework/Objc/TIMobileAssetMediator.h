@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet, TIMobileAssetSyncState;
 @protocol OS_dispatch_queue;
@@ -45,6 +45,7 @@
 + (void)saveAssetDownloadsInProgress;
 + (id)uniqueIdentifierForAsset:(id)arg1;
 + (id)uniqueIdentifierWithVersionForAsset:(id)arg1;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (oneway void)downloadAssets:(id)arg1 continuation:(CDUnknownBlockType)arg2;
 - (void)downloadUninstalledAssetsMatching:(id)arg1 continuation:(CDUnknownBlockType)arg2;

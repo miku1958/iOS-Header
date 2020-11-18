@@ -14,14 +14,14 @@
     NSDictionary *_uploadIdentifiers;
     NSArray *_addedRecords;
     NSArray *_updatedRecords;
-    NSArray *_deletedRecordIdentifiers;
-    NSSet *_unquarantinedRecordIdentifiers;
+    NSArray *_deletedRecordScopedIdentifiers;
+    NSSet *_unquarantinedRecordScopedIdentifiers;
 }
 
 @property (readonly, nonatomic) NSArray *addedRecords; // @synthesize addedRecords=_addedRecords;
-@property (readonly, nonatomic) NSArray *deletedRecordIdentifiers; // @synthesize deletedRecordIdentifiers=_deletedRecordIdentifiers;
+@property (readonly, nonatomic) NSArray *deletedRecordScopedIdentifiers; // @synthesize deletedRecordScopedIdentifiers=_deletedRecordScopedIdentifiers;
 @property (readonly, nonatomic) CPLChangeBatch *diffBatch; // @synthesize diffBatch=_diffBatch;
-@property (readonly, nonatomic) NSSet *unquarantinedRecordIdentifiers; // @synthesize unquarantinedRecordIdentifiers=_unquarantinedRecordIdentifiers;
+@property (readonly, nonatomic) NSSet *unquarantinedRecordScopedIdentifiers; // @synthesize unquarantinedRecordScopedIdentifiers=_unquarantinedRecordScopedIdentifiers;
 @property (readonly, nonatomic) NSArray *updatedRecords; // @synthesize updatedRecords=_updatedRecords;
 @property (readonly, nonatomic) NSDictionary *uploadIdentifiers; // @synthesize uploadIdentifiers=_uploadIdentifiers;
 
@@ -32,6 +32,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPushSessionTracker:(id)arg1 error:(id *)arg2;
+- (id)pendingRecordChangeForClientCacheWithLocalScopedIdentifier:(id)arg1;
 - (id)statusDescription;
 - (id)storageForStatusInStore:(id)arg1;
 

@@ -6,28 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NRDevice, NSPointerArray;
+@class NRDevice, NSArray;
 
 @interface NRMigrator : NSObject
 {
-    NSPointerArray *_observers;
     BOOL _migrating;
     NRDevice *_migratingDevice;
 }
 
-@property (readonly, nonatomic) NRDevice *migratingDevice; // @synthesize migratingDevice=_migratingDevice;
+@property (readonly, strong, nonatomic) NSArray *devicesExpectedToBeMigratableAfterRestore;
+@property (readonly, strong, nonatomic) NSArray *migratableDevices;
+@property (readonly, strong, nonatomic) NSArray *migratableDevicesRequiringConsent;
+@property (readonly, strong, nonatomic) NRDevice *migratingDevice; // @synthesize migratingDevice=_migratingDevice;
+@property (readonly, nonatomic) BOOL migrationIsAvailable;
 
++ (void)ingestPostRestoreMigrationDataForConsentedDevices:(id)arg1;
++ (id)migrationDataPreRestoreForConsentedDevices:(id)arg1;
 + (id)sharedMigrator;
 - (void).cxx_destruct;
-- (void)addObserver:(id)arg1;
+- (id)UDIDUUID;
+- (id)_SHA256WithString:(id)arg1;
 - (void)beginMigrationWithDevice:(id)arg1 passcode:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)beginMigrationWithDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)compressMigrationProtobuf:(id)arg1;
+- (id)devicesFromMigrationConsentRequestData:(id)arg1;
 - (void)enterPreMigrationMode;
-- (void)enumerateObservers:(CDUnknownBlockType)arg1;
-- (id)init;
-- (void)removeObserver:(id)arg1;
+- (id)lastMigrationRequestPhoneName;
+- (id)migrationConsentRequestData;
+- (id)packMigrationProtobufs:(id)arg1;
 - (void)setMigrationConsented:(BOOL)arg1 forDevice:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)setMigrationConsented:(BOOL)arg1 forDeviceID:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (id)shortenStringByCompleteUnicodeCharactersToReduceStorageSpace:(id)arg1;
+- (void)shrinkMigrationProtobufs:(id)arg1;
 
 @end
 

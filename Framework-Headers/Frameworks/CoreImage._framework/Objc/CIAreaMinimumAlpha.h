@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreImage/CIAreaMaximum.h>
+#import <CoreImage/CIAreaMaximumAlpha.h>
 
 __attribute__((visibility("hidden")))
-@interface CIAreaMinimumAlpha : CIAreaMaximum
+@interface CIAreaMinimumAlpha : CIAreaMaximumAlpha
 {
 }
 

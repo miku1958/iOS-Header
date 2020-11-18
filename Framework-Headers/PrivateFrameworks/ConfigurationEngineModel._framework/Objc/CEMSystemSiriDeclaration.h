@@ -12,29 +12,36 @@
 
 @interface CEMSystemSiriDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadAllowAssistant;
+    NSNumber *_payloadAllowDictation;
+    NSNumber *_payloadAllowAssistantUserGeneratedContent;
+    NSNumber *_payloadForceAssistantProfanityFilter;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadAllowAssistant;
-@property (readonly, nonatomic) NSNumber *payloadAllowAssistantUserGeneratedContent;
+@property (copy, nonatomic) NSNumber *payloadAllowAssistant; // @synthesize payloadAllowAssistant=_payloadAllowAssistant;
+@property (copy, nonatomic) NSNumber *payloadAllowAssistantUserGeneratedContent; // @synthesize payloadAllowAssistantUserGeneratedContent=_payloadAllowAssistantUserGeneratedContent;
+@property (copy, nonatomic) NSNumber *payloadAllowDictation; // @synthesize payloadAllowDictation=_payloadAllowDictation;
+@property (copy, nonatomic) NSNumber *payloadForceAssistantProfanityFilter; // @synthesize payloadForceAssistantProfanityFilter=_payloadForceAssistantProfanityFilter;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withAllowAssistant:(id)arg2 withAllowDictation:(id)arg3 withAllowAssistantUserGeneratedContent:(id)arg4 withForceAssistantProfanityFilter:(id)arg5;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

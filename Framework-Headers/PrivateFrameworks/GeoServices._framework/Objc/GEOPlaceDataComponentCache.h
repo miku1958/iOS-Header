@@ -41,6 +41,7 @@
 - (void)setPlaceData:(id)arg1 forKey:(struct _GEOTileKey)arg2;
 - (void)setPlaceData:(id)arg1 forMUID:(unsigned long long)arg2;
 - (void)shrinkBySize:(unsigned long long)arg1 callback:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
+- (void)tearDown;
 
 @end
 

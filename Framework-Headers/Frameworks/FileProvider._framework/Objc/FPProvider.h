@@ -18,6 +18,7 @@
     BOOL _enabled;
     BOOL _empty;
     BOOL _isReadOnly;
+    BOOL _usesUniqueItemIdentifiersAcrossDevices;
     NSString *_identifier;
     NSFileProviderDomain *_domain;
     NSString *_localizedName;
@@ -37,6 +38,7 @@
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isAvailableSystemWide;
 @property (readonly, nonatomic) BOOL isReadOnly; // @synthesize isReadOnly=_isReadOnly;
+@property (readonly, nonatomic) BOOL isiCloudDriveProvider;
 @property (readonly, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, nonatomic) NSFileProviderManager *manager; // @synthesize manager=_manager;
 @property (readonly, nonatomic) NSString *providerIdentifier;
@@ -46,6 +48,7 @@
 @property (readonly, nonatomic) NSArray *supportedSortDescriptors; // @synthesize supportedSortDescriptors=_supportedSortDescriptors;
 @property (readonly, nonatomic) BOOL supportsEnumeration;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (nonatomic) BOOL usesUniqueItemIdentifiersAcrossDevices; // @synthesize usesUniqueItemIdentifiersAcrossDevices=_usesUniqueItemIdentifiersAcrossDevices;
 @property (readonly, nonatomic) NSString *version;
 
 + (id)beginMonitoringProviderChangesWithHandler:(CDUnknownBlockType)arg1;
@@ -57,7 +60,7 @@
 + (id)localizedTitleForSortDescriptor:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithIdentifier:(id)arg1 domain:(id)arg2 localizedName:(id)arg3 storageURL:(id)arg4 supportedFileTypes:(id)arg5 type:(long long)arg6 isReadOnly:(BOOL)arg7 isEnabled:(BOOL)arg8;
+- (id)_initWithIdentifier:(id)arg1 domain:(id)arg2 localizedName:(id)arg3 storageURL:(id)arg4 supportedFileTypes:(id)arg5 type:(long long)arg6 isReadOnly:(BOOL)arg7 isEnabled:(BOOL)arg8 usesUniqueItemIdentifiers:(BOOL)arg9;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;

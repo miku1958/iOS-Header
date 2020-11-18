@@ -8,10 +8,12 @@
 
 #import <PhotosUI/PUAssetSharedViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
+#import <PhotosUI/PXImportStatusObserver-Protocol.h>
 
-@class NSDate, NSMutableSet, NSString, PUAssetReference, PUAssetsDataSource, PUCachedMapTable, PUMediaProvider, PXAutoloopScheduler;
+@class NSDate, NSMutableSet, NSString, PUAssetReference, PUAssetsDataSource, PUCachedMapTable, PUMediaProvider, PUReviewScreenBarsModel;
+@protocol PXImportStatusManager;
 
-@interface PUBrowsingViewModel : PUViewModel <PUAssetViewModelChangeObserver, PUAssetSharedViewModelChangeObserver>
+@interface PUBrowsingViewModel : PUViewModel <PUAssetViewModelChangeObserver, PUAssetSharedViewModelChangeObserver, PXImportStatusObserver>
 {
     PUAssetReference *_currentAssetReference;
     NSDate *_currentAssetReferenceChangedDate;
@@ -38,12 +40,13 @@
     id _lastChromeVisibilityChangeContext;
     PUAssetReference *_trailingAssetReference;
     PUAssetReference *_leadingAssetReference;
+    PUReviewScreenBarsModel *_reviewScreenBarsModel;
     long long __userNavigationDistance;
     long long __scrubbingSessionDistance;
     NSMutableSet *__animatingTransitionIdentifiers;
     NSMutableSet *__videoDisallowedReasons;
     PUMediaProvider *_mediaProvider;
-    PXAutoloopScheduler *_autoloopScheduler;
+    id<PXImportStatusManager> _importStatusManager;
     struct CGSize _secondScreenSize;
 }
 
@@ -53,13 +56,13 @@
 @property (strong, nonatomic, setter=_setVideoDisallowedReasons:) NSMutableSet *_videoDisallowedReasons; // @synthesize _videoDisallowedReasons=__videoDisallowedReasons;
 @property (nonatomic) BOOL accessoryViewsDefaultVisibility; // @synthesize accessoryViewsDefaultVisibility=_accessoryViewsDefaultVisibility;
 @property (strong, nonatomic) PUAssetsDataSource *assetsDataSource; // @synthesize assetsDataSource=_assetsDataSource;
-@property (strong, nonatomic) PXAutoloopScheduler *autoloopScheduler; // @synthesize autoloopScheduler=_autoloopScheduler;
 @property (nonatomic, setter=_setBrowsingSpeedRegime:) long long browsingSpeedRegime; // @synthesize browsingSpeedRegime=_browsingSpeedRegime;
 @property (strong, nonatomic) PUAssetReference *currentAssetReference;
 @property (readonly, nonatomic) double currentAssetTransitionProgress; // @synthesize currentAssetTransitionProgress=_currentAssetTransitionProgress;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<PXImportStatusManager> importStatusManager; // @synthesize importStatusManager=_importStatusManager;
 @property (nonatomic, setter=_setAnimatingAnyTransition:) BOOL isAnimatingAnyTransition; // @synthesize isAnimatingAnyTransition=_isAnimatingAnyTransition;
 @property (nonatomic, setter=setChromeVisible:) BOOL isChromeVisible; // @synthesize isChromeVisible=_isChromeVisible;
 @property (nonatomic) BOOL isScrolling; // @synthesize isScrolling=_isScrolling;
@@ -69,6 +72,7 @@
 @property (strong, nonatomic, setter=_setLeadingAssetReference:) PUAssetReference *leadingAssetReference; // @synthesize leadingAssetReference=_leadingAssetReference;
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (nonatomic, getter=isPresentingOverOneUp) BOOL presentingOverOneUp; // @synthesize presentingOverOneUp=_presentingOverOneUp;
+@property (strong, nonatomic) PUReviewScreenBarsModel *reviewScreenBarsModel; // @synthesize reviewScreenBarsModel=_reviewScreenBarsModel;
 @property (nonatomic) struct CGSize secondScreenSize; // @synthesize secondScreenSize=_secondScreenSize;
 @property (readonly) Class superclass;
 @property (strong, nonatomic, setter=_setTrailingAssetReference:) PUAssetReference *trailingAssetReference; // @synthesize trailingAssetReference=_trailingAssetReference;
@@ -82,6 +86,7 @@
 - (void)_handleAssetSharedViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_handleAssetViewModel:(id)arg1 didChange:(id)arg2;
 - (void)_handleAsyncBrowsingSpeedRegimeInvalidation;
+- (long long)_importStateForAssetReference:(id)arg1;
 - (void)_invalidateAllAssetViewModels;
 - (void)_invalidateAssetViewModel:(id)arg1;
 - (void)_invalidateBrowsingSpeedRegime;
@@ -103,6 +108,7 @@
 - (id)currentChange;
 - (id)debugDetailedDescription;
 - (void)didPerformChanges;
+- (void)importStatusManager:(id)arg1 didChangeStatusForAssetReference:(id)arg2;
 - (id)init;
 - (id)newViewModelChange;
 - (void)registerChangeObserver:(id)arg1;

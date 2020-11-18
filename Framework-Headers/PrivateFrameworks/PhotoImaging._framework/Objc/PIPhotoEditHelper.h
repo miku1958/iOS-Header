@@ -23,9 +23,12 @@
 + (id)imageSourceWithCIImage:(id)arg1 orientation:(long long)arg2;
 + (id)imageSourceWithURL:(id)arg1 type:(id)arg2;
 + (id)imageSourceWithURL:(id)arg1 type:(id)arg2 proxyImage:(id)arg3 orientation:(long long)arg4;
++ (id)imageSourceWithURL:(id)arg1 type:(id)arg2 proxyImage:(id)arg3 orientation:(long long)arg4 useEmbeddedPreview:(BOOL)arg5;
++ (id)imageSourceWithURL:(id)arg1 type:(id)arg2 useEmbeddedPreview:(BOOL)arg3;
 + (void)initialize;
 + (BOOL)is3DEffect:(id)arg1;
 + (BOOL)isPortraitEffect:(id)arg1;
++ (BOOL)isPortraitStageEffect:(id)arg1;
 + (BOOL)isSupportedAutoLoopRecipe:(id)arg1;
 + (id)livePhotoSourceWithPhotoSource:(id)arg1 videoSource:(id)arg2;
 + (id)newAdjustmentWithName:(id)arg1;
@@ -38,7 +41,10 @@
 + (id)newVideoExportClientWithName:(id)arg1;
 + (id)newVideoPropertiesClientWithName:(id)arg1;
 + (id)pipelineFiltersForCropping;
-+ (id)pipelineFiltersForShowingOriginal;
++ (id)pipelineFiltersForOriginalGeometry;
++ (id)pipelineFiltersForRAWShowingOriginalWithGeometry;
++ (id)pipelineFiltersForShowingOriginalWithGeometry;
++ (id)portraitEffectsMatteRenderRequestWithComposition:(id)arg1;
 + (id)priorityWithLevel:(long long)arg1;
 + (void)removeAssetIdentifierFromMetadataArray:(id)arg1;
 + (id)videoExportRequestWithComposition:(id)arg1 destinationURL:(id)arg2 wideGamut:(BOOL)arg3;

@@ -15,6 +15,7 @@
 @property (readonly) unsigned long long imageblockSampleLength;
 @property (readonly) NSString *label;
 @property (readonly) unsigned long long maxTotalThreadsPerThreadgroup;
+@property (readonly) BOOL supportIndirectCommandBuffers;
 @property (readonly) BOOL threadgroupSizeMatchesTileSize;
 
 - (unsigned long long)imageblockMemoryLengthForDimensions:(CDStruct_14f26992)arg1;

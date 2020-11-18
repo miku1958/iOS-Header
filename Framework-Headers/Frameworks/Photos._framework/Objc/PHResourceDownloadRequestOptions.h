@@ -9,8 +9,10 @@
 @interface PHResourceDownloadRequestOptions : NSObject
 {
     BOOL _treatLivePhotoAsStill;
+    BOOL _dontAllowRAW;
 }
 
+@property (nonatomic) BOOL dontAllowRAW; // @synthesize dontAllowRAW=_dontAllowRAW;
 @property (nonatomic) BOOL treatLivePhotoAsStill; // @synthesize treatLivePhotoAsStill=_treatLivePhotoAsStill;
 
 - (id)description;

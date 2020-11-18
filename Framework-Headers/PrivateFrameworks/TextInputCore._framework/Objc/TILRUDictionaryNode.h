@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface TILRUDictionaryNode : NSObject
 {
@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) id key; // @synthesize key=_key;
 @property (strong, nonatomic) id object; // @synthesize object=_object;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithKey:(id)arg1 object:(id)arg2;
 
 @end

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIScrollAccessory-Protocol.h>
+#import <UIKitCore/UIScrollAccessory-Protocol.h>
 
 @class NSArray, NSInvocation, UIButton, UIScrollView;
 

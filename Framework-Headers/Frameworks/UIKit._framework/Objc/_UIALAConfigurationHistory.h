@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UILAConfigurationHistory.h>
+#import <UIKitCore/_UILAConfigurationHistory.h>
 
-#import <UIKit/_UIALAPropertySource-Protocol.h>
+#import <UIKitCore/_UIALAPropertySource-Protocol.h>
 
 @class NSSet, NSString;
 

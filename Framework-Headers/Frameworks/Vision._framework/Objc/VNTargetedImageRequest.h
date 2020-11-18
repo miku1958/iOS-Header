@@ -15,6 +15,7 @@
 
 + (id)optionNameForTargetedImageSpecifyingObject;
 - (void).cxx_destruct;
+- (BOOL)allowsCachingOfResults;
 - (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithTargetedCGImage:(struct CGImage *)arg1;
 - (id)initWithTargetedCGImage:(struct CGImage *)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -48,10 +49,10 @@
 - (id)initWithTargetedImageURL:(id)arg1 orientation:(unsigned int)arg2 options:(id)arg3;
 - (id)initWithTargetedImageURL:(id)arg1 orientation:(unsigned int)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)newDefaultRequestInstance;
-- (id)observationsCacheKey;
 - (id)requiredTargetedImageSpecifierReturningError:(id *)arg1;
 - (id)sequencedRequestPreviousObservationsKey;
 - (id)targetedImageSpecifier;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

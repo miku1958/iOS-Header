@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface VSUtilities : NSObject
 {
@@ -12,6 +12,8 @@
 
 + (id)hardwarePlatform;
 + (BOOL)isAudioAccessory;
++ (BOOL)isServerTTSPlatform;
++ (BOOL)isWatch;
 + (id)legacyPlatforms;
 
 @end

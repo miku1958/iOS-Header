@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIPopoverStandardChromeView.h>
+#import <UIKitCore/_UIPopoverStandardChromeView.h>
 
 __attribute__((visibility("hidden")))
 @interface UIActivityViewPopoverBackgroundView : _UIPopoverStandardChromeView

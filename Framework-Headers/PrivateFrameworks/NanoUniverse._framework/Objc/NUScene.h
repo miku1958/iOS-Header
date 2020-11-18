@@ -12,29 +12,31 @@
 
 @interface NUScene : NSObject <NUAnimatable>
 {
-    float _orbit;
-    float _roll;
-    float _yearsSince1970;
-    int _minFrameInterval;
     NSMutableArray *_spheroids;
-    NUSpheroid *_focus;
-    MISSING_TYPE *_position;
-    MISSING_TYPE *_target;
-    MISSING_TYPE *_up;
     unsigned long long _snap;
-    unsigned long long _backgroundType;
-    unsigned long long _projectionType;
     NSMutableArray *_animations;
     NSDate *_date;
     CDUnknownBlockType _currentDateBlock;
     unsigned int _isUpdateNeeded:1;
     unsigned int _isUpdatable:1;
+    float _orbit;
+    float _roll;
+    int _minFrameInterval;
+    float _yearsSince1970;
+    NUSpheroid *_focus;
+    unsigned long long _backgroundType;
+    unsigned long long _projectionType;
+    unsigned long long _collectionType;
+    MISSING_TYPE *_position;
+    MISSING_TYPE *_target;
+    MISSING_TYPE *_up;
 }
 
 @property (readonly, nonatomic) int acceptableFrameInterval;
 @property (nonatomic) unsigned long long backgroundType; // @synthesize backgroundType=_backgroundType;
+@property (nonatomic) unsigned long long collectionType; // @synthesize collectionType=_collectionType;
 @property (copy, nonatomic) CDUnknownBlockType currentDateBlock; // @synthesize currentDateBlock=_currentDateBlock;
-@property (strong, nonatomic) NSDate *date; // @dynamic date;
+@property (readonly, nonatomic) NSDate *date; // @dynamic date;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NUSpheroid *focus; // @synthesize focus=_focus;
@@ -49,7 +51,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) MISSING_TYPE *target; // @synthesize target=_target;
 @property (readonly, nonatomic) MISSING_TYPE *up; // @synthesize up=_up;
-@property (nonatomic) BOOL updatable; // @synthesize updatable=_isUpdatable;
+@property (nonatomic, getter=isUpdatable) BOOL updatable; // @synthesize updatable=_isUpdatable;
 @property (readonly, nonatomic) float yearsSince1970; // @synthesize yearsSince1970=_yearsSince1970;
 
 - (void).cxx_destruct;
@@ -64,8 +66,7 @@
 - (id)spheroidOfType:(unsigned long long)arg1;
 - (void)update:(float)arg1;
 - (void)updateFromDateIfNeeded;
-- (void)updateSunLocation;
-- (void)updateSunLocationForDate:(id)arg1 animated:(BOOL)arg2;
+- (void)updateSunLocationAnimated:(BOOL)arg1;
 
 @end
 

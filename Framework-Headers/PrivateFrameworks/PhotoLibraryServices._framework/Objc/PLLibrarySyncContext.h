@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLSyncContext-Protocol.h>
 
@@ -25,6 +25,7 @@
 @property (readonly) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly) PLCloudRecordOrganizer *recordOrganizer; // @synthesize recordOrganizer=_recordOrganizer;
 @property (readonly, nonatomic) BOOL serverSupportsGraphHome;
+@property (readonly, nonatomic) BOOL serverSupportsSuggestion;
 @property (readonly, nonatomic) BOOL serverSupportsVision;
 @property (readonly) Class superclass;
 

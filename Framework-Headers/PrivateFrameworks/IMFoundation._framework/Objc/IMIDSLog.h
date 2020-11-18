@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface IMIDSLog : NSObject
 {
 }
 
 + (id)daemon;
++ (id)dataDetector;
 + (id)encryption;
 
 @end

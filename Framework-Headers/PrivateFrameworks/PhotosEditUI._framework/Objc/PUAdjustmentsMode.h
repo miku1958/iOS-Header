@@ -6,47 +6,60 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString, PLPhotoEditMutableModel, PUPhotoEditValuesCalculator, UIImage;
+@class NSArray, NSDictionary, NSString, PLEditSource, PLPhotoEditMutableModel, PUAdjustmentsStatisticsCache, PUPhotoEditValuesCalculator, UIImage;
+@protocol OS_dispatch_group;
 
+__attribute__((visibility("hidden")))
 @interface PUAdjustmentsMode : NSObject
 {
     BOOL _toggleable;
     BOOL _useAccurateStatistics;
+    BOOL _calculatingSettings;
     PLPhotoEditMutableModel *_photoEditModel;
     PUPhotoEditValuesCalculator *_valuesCalculator;
     PUAdjustmentsMode *_supermode;
     NSArray *_submodes;
+    PUAdjustmentsStatisticsCache *_statisticsCache;
     long long __modeType;
+    NSObject<OS_dispatch_group> *_autoCalculatorDispatchGroup;
+    PLEditSource *_editSource;
+    NSDictionary *_calculatedSettings;
+    long long _autoCalculatorSequenceID;
 }
 
 @property (readonly, nonatomic) long long _modeType; // @synthesize _modeType=__modeType;
+@property (strong, nonatomic) NSObject<OS_dispatch_group> *autoCalculatorDispatchGroup; // @synthesize autoCalculatorDispatchGroup=_autoCalculatorDispatchGroup;
+@property long long autoCalculatorSequenceID; // @synthesize autoCalculatorSequenceID=_autoCalculatorSequenceID;
+@property (strong, nonatomic) NSDictionary *calculatedSettings; // @synthesize calculatedSettings=_calculatedSettings;
+@property BOOL calculatingSettings; // @synthesize calculatingSettings=_calculatingSettings;
+@property (readonly, strong, nonatomic) PLEditSource *editSource; // @synthesize editSource=_editSource;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic) UIImage *icon;
 @property (readonly, copy, nonatomic) NSString *localizedName;
 @property (readonly, nonatomic) PLPhotoEditMutableModel *photoEditModel; // @synthesize photoEditModel=_photoEditModel;
 @property (readonly, nonatomic) long long sliderStyle;
+@property (readonly, nonatomic) PUAdjustmentsStatisticsCache *statisticsCache; // @synthesize statisticsCache=_statisticsCache;
 @property (copy, nonatomic) NSArray *submodes; // @synthesize submodes=_submodes;
 @property (weak, nonatomic) PUAdjustmentsMode *supermode; // @synthesize supermode=_supermode;
 @property (readonly, nonatomic, getter=isToggleable) BOOL toggleable; // @synthesize toggleable=_toggleable;
 @property (nonatomic) BOOL useAccurateStatistics; // @synthesize useAccurateStatistics=_useAccurateStatistics;
 @property (readonly, nonatomic) PUPhotoEditValuesCalculator *valuesCalculator; // @synthesize valuesCalculator=_valuesCalculator;
 
-+ (id)newVisibleModesWithPhotoEditModel:(id)arg1 valuesCalculator:(id)arg2;
++ (id)newVisibleModesWithPhotoEditModel:(id)arg1 editSource:(id)arg2 valuesCalculator:(id)arg3 statisticsCache:(id)arg4;
 - (void).cxx_destruct;
 - (void)_ensureStatisticsAreReadyForRenderer:(id)arg1;
-- (BOOL)_needsStatistics;
 - (double)_referenceLevelOfType:(long long)arg1;
 - (double)_relativeLevel;
 - (double)_relativeLevelInModel:(id)arg1;
 - (void)_setRelativeLevel:(double)arg1;
 - (double)absoluteLevelForRenderer:(id)arg1;
-- (id)adjustmentsModeWithModel:(id)arg1;
+- (id)adjustmentsModeWithModel:(id)arg1 editSource:(id)arg2;
 - (double)baseLevelForRenderer:(id)arg1;
 - (void)copyLevelsFromModel:(id)arg1;
 - (id)description;
 - (double)identityLevel;
-- (id)initWithModeType:(long long)arg1 photoEditModel:(id)arg2 valuesCalculator:(id)arg3;
-- (id)initWithModeType:(long long)arg1 toggleable:(BOOL)arg2 photoEditModel:(id)arg3 valuesCalculator:(id)arg4;
+- (id)initWithModeType:(long long)arg1 photoEditModel:(id)arg2 editSource:(id)arg3 valuesCalculator:(id)arg4 statisticsCache:(id)arg5;
+- (id)initWithModeType:(long long)arg1 toggleable:(BOOL)arg2 photoEditModel:(id)arg3 editSource:(id)arg4 valuesCalculator:(id)arg5 statisticsCache:(id)arg6;
 - (BOOL)levelsAreEqualInModel:(id)arg1;
 - (double)maximumLevel;
 - (double)minimumLevel;

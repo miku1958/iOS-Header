@@ -11,7 +11,7 @@
 #import <NanoTimeKitCompanion/NTKTimeTravel-Protocol.h>
 
 @class CLKComplicationTemplate, NSDate, NSString, UIView;
-@protocol NTKComplicationDisplay;
+@protocol NTKComplicationDisplay, NTKComplicationDisplayWrapperViewAnimationDelegate;
 
 @interface NTKComplicationDisplayWrapperView : UIControl <NTKComplicationDisplayObserver, NTKControl, NTKTimeTravel>
 {
@@ -25,7 +25,8 @@
     NSDate *_timeTravelDate;
     BOOL _didChangeLayoutOverride;
     BOOL _isAnimating;
-    BOOL _hasTemplateDisplay;
+    BOOL _isDetachedDisplay;
+    BOOL _supportsCurvedText;
     BOOL _paused;
     BOOL _editing;
     BOOL _tapEnabled;
@@ -37,6 +38,7 @@
     CDUnknownBlockType _displayConfigurationHandler;
     CDUnknownBlockType _touchDownHandler;
     CDUnknownBlockType _touchUpInsideHandler;
+    id<NTKComplicationDisplayWrapperViewAnimationDelegate> _animationDelegate;
     CDUnknownBlockType _needsResizeHandler;
     CLKComplicationTemplate *_complicationTemplate;
     double _alphaForDimmedState;
@@ -45,6 +47,7 @@
 }
 
 @property (nonatomic) double alphaForDimmedState; // @synthesize alphaForDimmedState=_alphaForDimmedState;
+@property (weak, nonatomic) id<NTKComplicationDisplayWrapperViewAnimationDelegate> animationDelegate; // @synthesize animationDelegate=_animationDelegate;
 @property (strong, nonatomic) NSString *complicationSlotIdentifier; // @synthesize complicationSlotIdentifier=_complicationSlotIdentifier;
 @property (readonly, nonatomic) CLKComplicationTemplate *complicationTemplate; // @synthesize complicationTemplate=_complicationTemplate;
 @property (readonly, copy) NSString *debugDescription;
@@ -62,34 +65,38 @@
 @property (nonatomic) BOOL paused; // @synthesize paused=_paused;
 @property (readonly, nonatomic) struct CGSize preferredSize;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsCurvedText; // @synthesize supportsCurvedText=_supportsCurvedText;
 @property (nonatomic) BOOL tapEnabled; // @synthesize tapEnabled=_tapEnabled;
 @property (copy, nonatomic) CDUnknownBlockType touchDownHandler; // @synthesize touchDownHandler=_touchDownHandler;
 @property (copy, nonatomic) CDUnknownBlockType touchUpInsideHandler; // @synthesize touchUpInsideHandler=_touchUpInsideHandler;
 
 - (void).cxx_destruct;
 - (void)_didSetDisplayFromDisplay:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
+- (BOOL)_displayIsTappable;
 - (void)_invokeNeedsResizeHandler;
 - (void)_invokeTouchDownHandler;
 - (void)_invokeTouchUpInsideHandler;
 - (void)_prepareToSetDisplay:(id)arg1 withComplicationAnimation:(inout unsigned long long *)arg2;
 - (void)_removeDisplay:(id)arg1;
+- (void)_replaceDisplayWithDisplayClass:(Class)arg1 template:(id)arg2 reason:(long long)arg3 animation:(unsigned long long)arg4;
 - (void)_resetComplicationViews;
 - (void)_setDimmed:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setDisplay:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
 - (void)_setDisplayEditing:(BOOL)arg1;
 - (void)_setDisplayMaxSize:(struct CGSize)arg1;
+- (void)_startDefaultNewDataAnimationFromEarlierView:(id)arg1 laterView:(id)arg2 forward:(BOOL)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (void)_tryToSetDisplayHighlighted:(BOOL)arg1;
 - (void)complicationDisplayNeedsResize:(id)arg1;
 - (void)dealloc;
 - (id)init;
-- (id)initWithDetachedTemplateDisplay:(id)arg1;
+- (id)initWithCustomTemplateDisplay:(id)arg1 isDetachedDisplay:(BOOL)arg2 family:(long long)arg3;
 - (id)initWithFamily:(long long)arg1;
 - (id)initWithLegacyDisplay:(id)arg1;
 - (id)initWithLegacyDisplay:(id)arg1 layoutOverride:(long long)arg2;
 - (void)layoutSubviews;
 - (void)needsResize;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)setComplicationTemplate:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
+- (void)setComplicationTemplate:(id)arg1 reason:(long long)arg2 animation:(unsigned long long)arg3;
 - (void)setComplicationView:(id)arg1 withComplicationAnimation:(unsigned long long)arg2;
 - (void)setDimmed:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setHighlighted:(BOOL)arg1;

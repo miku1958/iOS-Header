@@ -11,11 +11,9 @@
 @interface PSUICarrierSpaceServicesController : PSListController
 {
     NSArray *_appsList;
-    PSListController *_phoneSettingsController;
 }
 
 @property (strong, nonatomic) NSArray *appsList; // @synthesize appsList=_appsList;
-@property (strong, nonatomic) PSListController *phoneSettingsController; // @synthesize phoneSettingsController=_phoneSettingsController;
 
 - (void).cxx_destruct;
 - (void)carrierSpaceChanged;

@@ -7,28 +7,31 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBFinancialAccountValue-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBBalanceAmountValue, _INPBDataString, _INPBValueMetadata;
+@class NSString, _INPBBalanceAmountValue, _INPBDataString, _INPBValueMetadata;
 
-@interface _INPBFinancialAccountValue : PBCodable <NSCopying>
+@interface _INPBFinancialAccountValue : PBCodable <_INPBFinancialAccountValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct {
+        unsigned int accountType:1;
+    } _has;
+    int _accountType;
     _INPBDataString *_accountNickname;
     NSString *_accountNumber;
-    int _accountType;
     _INPBBalanceAmountValue *_balance;
     _INPBDataString *_organizationName;
     _INPBBalanceAmountValue *_secondaryBalance;
     _INPBValueMetadata *_valueMetadata;
-    struct {
-        unsigned int accountType:1;
-    } _has;
 }
 
 @property (strong, nonatomic) _INPBDataString *accountNickname; // @synthesize accountNickname=_accountNickname;
-@property (strong, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
+@property (copy, nonatomic) NSString *accountNumber; // @synthesize accountNumber=_accountNumber;
 @property (nonatomic) int accountType; // @synthesize accountType=_accountType;
 @property (strong, nonatomic) _INPBBalanceAmountValue *balance; // @synthesize balance=_balance;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAccountNickname;
 @property (readonly, nonatomic) BOOL hasAccountNumber;
 @property (nonatomic) BOOL hasAccountType;
@@ -36,21 +39,18 @@
 @property (readonly, nonatomic) BOOL hasOrganizationName;
 @property (readonly, nonatomic) BOOL hasSecondaryBalance;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBDataString *organizationName; // @synthesize organizationName=_organizationName;
 @property (strong, nonatomic) _INPBBalanceAmountValue *secondaryBalance; // @synthesize secondaryBalance=_secondaryBalance;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsAccountType:(id)arg1;
 - (id)accountTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

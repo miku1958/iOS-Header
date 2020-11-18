@@ -37,6 +37,7 @@
 + (id)duplicateKeyForUnrecognizedContactWithIdentity:(id)arg1;
 + (id)duplicateKeyForWebPageFromSource:(id)arg1;
 - (void).cxx_destruct;
+- (id)bundleId;
 - (id)contactDetailKey;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)curatedContactKey;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIAlertControllerContaining-Protocol.h>
+#import <UIKitCore/UIAlertControllerContaining-Protocol.h>
 
 @class NSObject, NSString, UIAlertController, _UIResilientRemoteViewContainerViewController;
 @protocol OS_dispatch_semaphore;

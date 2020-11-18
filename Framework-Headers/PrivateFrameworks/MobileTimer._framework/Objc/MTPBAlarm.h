@@ -34,6 +34,7 @@
     NSString *_toneID;
     NSString *_vibeID;
     BOOL _allowsSnooze;
+    BOOL _bedtimeDoNotDisturb;
     BOOL _isEnabled;
     BOOL _isSleepAlarm;
     struct {
@@ -41,13 +42,16 @@
         unsigned int bedtimeSnoozeFire:1;
         unsigned int dismissed:1;
         unsigned int fired:1;
+        unsigned int mediaID:1;
         unsigned int snoozeFire:1;
+        unsigned int soundVolume:1;
     } _has;
 }
 
 @property (nonatomic) unsigned int active; // @synthesize active=_active;
 @property (strong, nonatomic) NSString *alarmID; // @synthesize alarmID=_alarmID;
 @property (nonatomic) BOOL allowsSnooze; // @synthesize allowsSnooze=_allowsSnooze;
+@property (nonatomic) BOOL bedtimeDoNotDisturb; // @synthesize bedtimeDoNotDisturb=_bedtimeDoNotDisturb;
 @property (nonatomic) double bedtimeForSleepTracking; // @synthesize bedtimeForSleepTracking=_bedtimeForSleepTracking;
 @property (nonatomic) unsigned int bedtimeHour; // @synthesize bedtimeHour=_bedtimeHour;
 @property (nonatomic) unsigned int bedtimeMinute; // @synthesize bedtimeMinute=_bedtimeMinute;
@@ -60,7 +64,9 @@
 @property (nonatomic) BOOL hasBedtimeSnoozeFire;
 @property (nonatomic) BOOL hasDismissed;
 @property (nonatomic) BOOL hasFired;
+@property (nonatomic) BOOL hasMediaID;
 @property (nonatomic) BOOL hasSnoozeFire;
+@property (nonatomic) BOOL hasSoundVolume;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) BOOL hasToneID;
 @property (readonly, nonatomic) BOOL hasVibeID;

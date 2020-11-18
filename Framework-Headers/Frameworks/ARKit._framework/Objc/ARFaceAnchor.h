@@ -8,7 +8,7 @@
 
 #import <ARKit/ARTrackable-Protocol.h>
 
-@class ARFaceGeometry, ARFaceTrackingData, MISSING_TYPE, NSDictionary, NSString;
+@class ARFaceGeometry, ARFaceTrackingData, MISSING_TYPE, NSDictionary, NSError, NSString;
 
 @interface ARFaceAnchor : ARAnchor <ARTrackable>
 {
@@ -16,6 +16,7 @@
     BOOL _isTracked;
     ARFaceGeometry *_geometry;
     ARFaceTrackingData *_trackingData;
+    NSError *_trackingError;
 }
 
 @property (readonly, nonatomic) NSDictionary *blendShapes;
@@ -24,17 +25,25 @@
 @property (readonly, nonatomic) ARFaceGeometry *geometry; // @synthesize geometry=_geometry;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isTracked; // @synthesize isTracked=_isTracked;
+@property (readonly, nonatomic) CDStruct_14d5dc5e leftEyeTransform;
+@property (readonly, nonatomic) MISSING_TYPE *lookAtPoint;
+@property (readonly, nonatomic) CDStruct_14d5dc5e rightEyeTransform;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) ARFaceTrackingData *trackingData; // @synthesize trackingData=_trackingData;
+@property (strong, nonatomic) NSError *trackingError; // @synthesize trackingError=_trackingError;
 
 + (id)blendShapeMapping;
++ (id)blendShapeToMirroredBlendShapeMapping;
 + (void)initialize;
++ (id)mirroredBlendShapeMapping;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (MISSING_TYPE *)gazePoint;
 - (const MISSING_TYPE **)imageVertices;
+- (id)initWithAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithExistingFaceAnchor:(id)arg1 tracked:(BOOL)arg2 trackingError:(id)arg3;
 - (id)initWithIdentifier:(id)arg1 trackingData:(id)arg2;
 - (BOOL)isEqualToFaceAnchor:(id)arg1;
 

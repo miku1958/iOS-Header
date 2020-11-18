@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSCHStyleUtilities : NSObject
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 + (float)centeredDonutLabelExplosionPercentageWithInnerRadius:(double)arg1;
 + (id)chartsNullShadowToDefaultDisabledShadow:(id)arg1;
 + (void)convertToSimpleTSDFillsInProperties:(id)arg1 inMap:(id)arg2 context:(id)arg3;
++ (float)defaultCalloutLineThickness;
 + (float)defaultDonutLabelExplosionPercentage;
 + (float)defaultInnerRadiusPercentage;
 + (float)defaultInnerRadiusPercentageForIconRendering;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)hasNoFill:(id)arg1;
 + (BOOL)hasShadow:(id)arg1;
 + (BOOL)isNullFill:(id)arg1;
++ (BOOL)labelExplosionIsCenteredInWedgeWithInnerRadius:(double)arg1 labelExplosion:(double)arg2;
 + (id)nullFill;
 + (id)nullShadow;
 + (void)p_adjustTrendlineSaturation:(double *)arg1 brightness:(double *)arg2;
@@ -38,6 +40,7 @@ __attribute__((visibility("hidden")))
 + (double)pre2_4BendedCalloutLineLabelExplosionValueFromExplosionValue:(double)arg1 chartModel:(id)arg2 bodySize:(struct CGSize)arg3;
 + (float)pre2_4DefaultPieLabelExplosionPercentageForCalloutLineCalculation;
 + (id)shadowToChartsNullShadow:(id)arg1;
++ (BOOL)shouldAnchorLabelsForSeries:(id)arg1 innerRadius:(double)arg2 calloutLineType:(int)arg3 defaultLabelExplosion:(double)arg4;
 + (id)stylesheetOfStyles:(id)arg1 nilAllowed:(BOOL)arg2;
 + (id)trendlineColorFromCGColor:(struct CGColor *)arg1;
 + (id)tupleToUpdate2_3ExplosionFromValue:(id)arg1 chartInfo:(id)arg2 forStyleOwner:(id)arg3;

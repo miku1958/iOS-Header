@@ -8,6 +8,7 @@
 
 @class NSArray, NSData, NSDictionary, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface RadioManagedStation : NSManagedObject
 {
 }
@@ -52,7 +53,6 @@
 @property (strong, nonatomic) NSURL *streamURL;
 @property (nonatomic, getter=isSubscribed) BOOL subscribed;
 @property (nonatomic) int subscriberCount;
-@property (copy, nonatomic) NSArray *trackPlaybackDescriptorQueue;
 @property (nonatomic) BOOL virtualPlayEnabled;
 
 + (id)defaultPropertiesToFetch;

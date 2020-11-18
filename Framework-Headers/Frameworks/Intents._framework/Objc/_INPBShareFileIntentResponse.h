@@ -7,47 +7,47 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBShareFileIntentResponse-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBShareFileIntentResponse : PBCodable <NSCopying>
+@interface _INPBShareFileIntentResponse : PBCodable <_INPBShareFileIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_recipients;
-    int _shareMode;
-    BOOL _confirm;
-    BOOL _success;
     struct {
-        unsigned int shareMode:1;
         unsigned int confirm:1;
+        unsigned int shareMode:1;
         unsigned int success:1;
     } _has;
+    BOOL _confirm;
+    BOOL _success;
+    int _shareMode;
+    NSArray *_recipients;
 }
 
 @property (nonatomic) BOOL confirm; // @synthesize confirm=_confirm;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasConfirm;
 @property (nonatomic) BOOL hasShareMode;
 @property (nonatomic) BOOL hasSuccess;
-@property (strong, nonatomic) NSMutableArray *recipients; // @synthesize recipients=_recipients;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
+@property (readonly, nonatomic) unsigned long long recipientsCount;
 @property (nonatomic) int shareMode; // @synthesize shareMode=_shareMode;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 + (Class)recipientsType;
 - (void).cxx_destruct;
 - (int)StringAsShareMode:(id)arg1;
 - (void)addRecipients:(id)arg1;
 - (void)clearRecipients;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)recipientsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)recipientsCount;
 - (id)shareModeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

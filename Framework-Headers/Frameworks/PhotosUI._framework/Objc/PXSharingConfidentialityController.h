@@ -10,6 +10,7 @@
 {
 }
 
++ (id)confidentialFeatureWarningMessage;
 + (BOOL)confidentialWarningRequiredForAsset:(id)arg1;
 + (BOOL)confidentialWarningRequiredForAssets:(id)arg1;
 + (BOOL)confidentialityCheckRequired;

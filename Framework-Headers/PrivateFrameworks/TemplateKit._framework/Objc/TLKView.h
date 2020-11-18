@@ -7,37 +7,42 @@
 #import <UIKit/UIView.h>
 
 #import <TemplateKit/TLKObservable-Protocol.h>
+#import <TemplateKit/TLKObserver-Protocol.h>
 
-@class NSString, TLKObserver;
+@class NSString;
+@protocol TLKObserver;
 
-@interface TLKView : UIView <TLKObservable>
+@interface TLKView : UIView <TLKObserver, TLKObservable>
 {
+    BOOL inBatchUpdate;
+    id<TLKObserver> observer;
     unsigned long long _style;
     UIView *_containerView;
-    TLKObserver *_viewObserver;
 }
 
 @property (strong) UIView *containerView; // @synthesize containerView=_containerView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property BOOL inBatchUpdate; // @synthesize inBatchUpdate;
+@property (weak) id<TLKObserver> observer; // @synthesize observer;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
-@property (strong) TLKObserver *viewObserver; // @synthesize viewObserver=_viewObserver;
 
 + (struct UIEdgeInsets)defaultInsets;
++ (void)enableShadow:(BOOL)arg1 forView:(id)arg2;
 + (Class)layerClass;
++ (void)makeContainerShadowCompatible:(id)arg1;
 - (void).cxx_destruct;
-- (void)dealloc;
 - (void)disableUnbatchedUpdates;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
-- (id)observableProperties;
 - (void)observedPropertiesChanged;
 - (void)performBatchUpdates:(CDUnknownBlockType)arg1;
+- (void)propertiesDidChange;
 - (void)setContainer:(id)arg1 withInsets:(struct UIEdgeInsets)arg2;
 - (void)setContainerWithDefaultInsets:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

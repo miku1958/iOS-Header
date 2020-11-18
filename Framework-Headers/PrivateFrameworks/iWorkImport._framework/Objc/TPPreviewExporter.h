@@ -8,19 +8,32 @@
 
 #import <iWorkImport/TSKImageExporter-Protocol.h>
 
-@class NSString;
+@class NSString, TSUProgress;
 
 __attribute__((visibility("hidden")))
 @interface TPPreviewExporter : TPRenderingExporter <TSKImageExporter>
 {
 }
 
+@property (readonly, nonatomic) struct CGRect boundsRect;
+@property (readonly, nonatomic) BOOL canExportInBackground;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *documentSpecificTypeUTI;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long height;
+@property (readonly, nonatomic) BOOL isCancelled;
+@property (readonly, nonatomic) BOOL isExportSupported;
+@property (readonly, nonatomic) BOOL needsSupplementalFiles;
+@property (readonly, nonatomic) unsigned long long pageCount;
+@property (nonatomic) BOOL paginate;
+@property (readonly, nonatomic) TSUProgress *progress;
+@property (readonly, nonatomic) double progressForCurrentPage;
+@property (readonly, nonatomic) NSString *savePanelMessage;
 @property (nonatomic) BOOL scaleToFit;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *typeUTI;
+@property (readonly, nonatomic) struct CGRect unscaledClipRect;
 @property (nonatomic) unsigned long long width;
 
 - (id)p_renderingExporterDelegate;

@@ -10,12 +10,15 @@
 #import <DiagnosticExtensionsDaemon/NSCopying-Protocol.h>
 #import <DiagnosticExtensionsDaemon/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString;
+@class DEDNotifierConfiguration, NSDictionary, NSNumber, NSSet, NSString;
 
 @interface DEDBugSessionConfiguration : NSObject <NSSecureCoding, NSCopying, DEDSecureArchiving>
 {
+    NSSet *_requestedCapabilities;
     BOOL _allowsCellularUpload;
+    BOOL _cloudkitUseDevelopmentEnvironment;
     long long _finishingMove;
+    long long _notifyingMove;
     NSString *_seedingDeviceToken;
     long long _seedingSubmissionID;
     long long _seedingSubmissionType;
@@ -23,15 +26,24 @@
     NSString *_seedingHost;
     NSNumber *_radarProblemID;
     NSString *_radarAuthToken;
+    NSString *_cloudkitContainer;
+    NSDictionary *_cloudkitData;
+    DEDNotifierConfiguration *_notifierConfiguration;
 }
 
 @property BOOL allowsCellularUpload; // @synthesize allowsCellularUpload=_allowsCellularUpload;
+@property (strong) NSString *cloudkitContainer; // @synthesize cloudkitContainer=_cloudkitContainer;
+@property (strong) NSDictionary *cloudkitData; // @synthesize cloudkitData=_cloudkitData;
+@property BOOL cloudkitUseDevelopmentEnvironment; // @synthesize cloudkitUseDevelopmentEnvironment=_cloudkitUseDevelopmentEnvironment;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property long long finishingMove; // @synthesize finishingMove=_finishingMove;
 @property (readonly) unsigned long long hash;
+@property (strong) DEDNotifierConfiguration *notifierConfiguration; // @synthesize notifierConfiguration=_notifierConfiguration;
+@property long long notifyingMove; // @synthesize notifyingMove=_notifyingMove;
 @property (strong) NSString *radarAuthToken; // @synthesize radarAuthToken=_radarAuthToken;
 @property (strong) NSNumber *radarProblemID; // @synthesize radarProblemID=_radarProblemID;
+@property (readonly) NSString *requestedCapabilitiesString;
 @property (strong) NSString *seedingDeviceToken; // @synthesize seedingDeviceToken=_seedingDeviceToken;
 @property long long seedingEnvironment; // @synthesize seedingEnvironment=_seedingEnvironment;
 @property (strong) NSString *seedingHost; // @synthesize seedingHost=_seedingHost;
@@ -48,6 +60,9 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToConfiguration:(id)arg1;
+- (void)requestCapabilities:(id)arg1;
+- (void)requestCapabilitiesSet:(id)arg1;
+- (id)requestedCapabilities;
 - (id)secureArchive;
 
 @end

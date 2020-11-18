@@ -38,6 +38,7 @@
 + (id)noiseFieldWithSmoothness:(double)arg1 animationSpeed:(double)arg2;
 + (id)radialGravityField;
 + (id)springField;
++ (BOOL)supportsSecureCoding;
 + (id)turbulenceFieldWithSmoothness:(double)arg1 animationSpeed:(double)arg2;
 + (id)velocityFieldWithTexture:(id)arg1;
 + (id)velocityFieldWithVector: /* Error: Ran out of types for this method. */;

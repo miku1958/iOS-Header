@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <GameplayKit/NSCoding-Protocol.h>
 #import <GameplayKit/NSCopying-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSMutableDictionary;
 @protocol GKSceneRootNodeType;
 
-@interface GKScene : NSObject <NSCopying, NSCoding>
+@interface GKScene : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableArray *_entities;
     NSMutableDictionary *_graphs;
@@ -26,6 +26,7 @@
 + (id)_sceneWithFileNamed:(id)arg1 rootNode:(id)arg2;
 + (id)sceneWithFileNamed:(id)arg1;
 + (id)sceneWithFileNamed:(id)arg1 rootNode:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addEntity:(id)arg1;
 - (void)addGraph:(id)arg1 name:(id)arg2;

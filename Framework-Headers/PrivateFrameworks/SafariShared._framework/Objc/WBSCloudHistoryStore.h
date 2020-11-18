@@ -8,12 +8,13 @@
 
 #import <SafariShared/WBSCloudHistoryDataStore-Protocol.h>
 
-@class CKDatabase, CKRecordZone, CKRecordZoneID, WBSCloudHistoryConfiguration;
+@class CKDatabase, CKRecordZone, CKRecordZoneID, NSOperationQueue, WBSCloudHistoryConfiguration;
 @protocol OS_dispatch_queue;
 
 @interface WBSCloudHistoryStore : NSObject <WBSCloudHistoryDataStore>
 {
     NSObject<OS_dispatch_queue> *_databaseQueue;
+    NSOperationQueue *_cloudKitOperationQueue;
     CKDatabase *_database;
     CKRecordZoneID *_recordZoneID;
     CKRecordZone *_recordZone;
@@ -35,6 +36,7 @@
 - (void)_resetRecordZone;
 - (void)_saveCloudHistoryVisits:(id)arg1 tombstones:(id)arg2 longLivedOperationPersistenceCompletion:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_saveRecords:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_scheduleOperation:(id)arg1;
 - (BOOL)_shouldTryToResetRecordZoneForError:(id)arg1;
 - (void)fetchNumberOfDevicesInSyncCircleWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchRecordsWithServerChangeTokenData:(id)arg1 completion:(CDUnknownBlockType)arg2;

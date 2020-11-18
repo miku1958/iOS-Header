@@ -6,39 +6,43 @@
 
 #import <ARKit/ARAnchor.h>
 
-@class ARPatchGrid, ARPlaneGeometry, MISSING_TYPE;
+@class ARPatchGrid, ARPlaneGeometry, MISSING_TYPE, NSDictionary;
 
 @interface ARPlaneAnchor : ARAnchor
 {
+    float _uncertaintyAlongNormal;
     long long _alignment;
     ARPlaneGeometry *_geometry;
+    long long _classificationStatus;
+    long long _classification;
     ARPatchGrid *_gridExtent;
     long long _worldAlignmentRotation;
-    long long _activePlaneID;
-    long long _originalPlaneID;
+    NSDictionary *_possibleClassifications;
     MISSING_TYPE *_center;
     MISSING_TYPE *_extent;
-    CDStruct_14d5dc5e _visionTransform;
 }
 
-@property (nonatomic) long long activePlaneID; // @synthesize activePlaneID=_activePlaneID;
 @property (readonly, nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property (nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
+@property (nonatomic) long long classification; // @synthesize classification=_classification;
+@property (nonatomic) long long classificationStatus; // @synthesize classificationStatus=_classificationStatus;
 @property (nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
 @property (strong, nonatomic) ARPlaneGeometry *geometry; // @synthesize geometry=_geometry;
 @property (strong, nonatomic) ARPatchGrid *gridExtent; // @synthesize gridExtent=_gridExtent;
-@property (nonatomic) long long originalPlaneID; // @synthesize originalPlaneID=_originalPlaneID;
-@property (nonatomic) CDStruct_14d5dc5e visionTransform; // @synthesize visionTransform=_visionTransform;
+@property (copy, nonatomic) NSDictionary *possibleClassifications; // @synthesize possibleClassifications=_possibleClassifications;
+@property (nonatomic) float uncertaintyAlongNormal; // @synthesize uncertaintyAlongNormal=_uncertaintyAlongNormal;
 @property (nonatomic) long long worldAlignmentRotation; // @synthesize worldAlignmentRotation=_worldAlignmentRotation;
 
++ (BOOL)isClassificationSupported;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_description:(BOOL)arg1;
 - (id)_hitTestFromOrigin:(BOOL)arg1 withDirection:(BOOL)arg2 usingExtent:usingGeometry: /* Error: Ran out of types for this method. */;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (float)area;
 - (id)debugQuickLookObject;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 alignment:(long long)arg3;
 

@@ -6,21 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSSet;
+@class HDSQLitePredicate, NSDate, NSNumber, NSSet, NSString, _HKAuthorizationRecord;
 
 @interface HDReadAuthorizationStatus : NSObject
 {
-    BOOL _isAuthorized;
+    _HKAuthorizationRecord *_authorizationRecord;
     NSSet *_restrictedSourceEntities;
-    NSNumber *_authorizationAnchor;
+    NSString *_restrictedBundleIdentifier;
+    NSNumber *_deletedObjectBaselineAnchor;
+    NSNumber *_objectLimitAnchor;
 }
 
-@property (readonly, copy, nonatomic) NSNumber *authorizationAnchor; // @synthesize authorizationAnchor=_authorizationAnchor;
-@property (readonly, nonatomic) BOOL isAuthorized; // @synthesize isAuthorized=_isAuthorized;
+@property (readonly, nonatomic) long long authorizationMode;
+@property (readonly, copy, nonatomic) HDSQLitePredicate *authorizationPredicate;
+@property (readonly, copy, nonatomic) _HKAuthorizationRecord *authorizationRecord; // @synthesize authorizationRecord=_authorizationRecord;
+@property (readonly, nonatomic) long long authorizationRequest;
+@property (readonly, nonatomic) long long authorizationStatus;
+@property (readonly, nonatomic) BOOL canRead;
+@property (readonly, copy, nonatomic) NSNumber *deletedObjectBaselineAnchor; // @synthesize deletedObjectBaselineAnchor=_deletedObjectBaselineAnchor;
+@property (readonly, nonatomic) BOOL isAuthorizationDetermined;
+@property (readonly, copy, nonatomic) NSNumber *objectLimitAnchor; // @synthesize objectLimitAnchor=_objectLimitAnchor;
+@property (readonly, copy, nonatomic) NSDate *objectLimitModifiedDate;
+@property (readonly, copy, nonatomic) NSString *restrictedBundleIdentifier; // @synthesize restrictedBundleIdentifier=_restrictedBundleIdentifier;
 @property (readonly, copy, nonatomic) NSSet *restrictedSourceEntities; // @synthesize restrictedSourceEntities=_restrictedSourceEntities;
 
++ (id)notDerminedReadAuthorizationStatus;
++ (id)unrestrictedReadAuthorizationStatus;
 - (void).cxx_destruct;
-- (id)initWithReadAuthorizationStatus:(BOOL)arg1 restrictedSourceEntities:(id)arg2 authorizationAnchor:(id)arg3;
+- (id)description;
+- (void)disableReading;
+- (void)disableSharing;
+- (id)initWithReadAuthorizationStatus:(long long)arg1 authorizationRequest:(long long)arg2 authorizationMode:(long long)arg3 restrictedBundleIdentifier:(id)arg4 restrictedSourceEntities:(id)arg5 deletedObjectBaselineAnchor:(id)arg6 objectLimitAnchor:(id)arg7 objectLimitModifiedDate:(id)arg8;
 
 @end
 

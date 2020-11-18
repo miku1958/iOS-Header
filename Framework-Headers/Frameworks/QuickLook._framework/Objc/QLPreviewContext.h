@@ -8,13 +8,13 @@
 
 #import <QuickLook/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString, NSURL, QLItem, UIColor;
+@class NSDictionary, NSNumber, NSString, NSURL, QLItem, UIColor;
 @protocol QLItemThumbnailGeneratorProtocolInternal;
 
-__attribute__((visibility("hidden")))
 @interface QLPreviewContext : NSObject <NSSecureCoding>
 {
     BOOL _canBeEdited;
+    BOOL _canBeShared;
     id<QLItemThumbnailGeneratorProtocolInternal> _thumbnailGenerator;
     NSString *_previewTitle;
     NSString *_contentType;
@@ -26,16 +26,19 @@ __attribute__((visibility("hidden")))
     NSNumber *_itemSize;
     long long _processIdentifier;
     QLItem *_item;
+    NSDictionary *_clientPreviewOptions;
 }
 
 @property (strong) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property BOOL canBeEdited; // @synthesize canBeEdited=_canBeEdited;
+@property BOOL canBeShared; // @synthesize canBeShared=_canBeShared;
+@property (strong) NSDictionary *clientPreviewOptions; // @synthesize clientPreviewOptions=_clientPreviewOptions;
 @property (strong) NSString *contentType; // @synthesize contentType=_contentType;
 @property unsigned long long editedFileBehavior; // @synthesize editedFileBehavior=_editedFileBehavior;
 @property (strong) NSURL *editedFileURL; // @synthesize editedFileURL=_editedFileURL;
 @property (strong) QLItem *item; // @synthesize item=_item;
 @property (strong) NSNumber *itemSize; // @synthesize itemSize=_itemSize;
-@property (strong) NSString *password; // @synthesize password=_password;
+@property (copy) NSString *password; // @synthesize password=_password;
 @property unsigned long long previewItemType; // @synthesize previewItemType=_previewItemType;
 @property (strong) NSString *previewTitle; // @synthesize previewTitle=_previewTitle;
 @property long long processIdentifier; // @synthesize processIdentifier=_processIdentifier;

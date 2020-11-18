@@ -4,25 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <BackBoardServices/BKSEventFocusManagerClientInterface-Protocol.h>
-
-@class NSHashTable, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSXPCConnection;
+@class NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSXPCConnection;
 @protocol BKSEventFocusIPCInterface, OS_dispatch_queue;
 
-@interface BKSEventFocusManager : NSObject <BKSEventFocusManagerClientInterface>
+@interface BKSEventFocusManager : NSObject
 {
     id<BKSEventFocusIPCInterface> _ipcInterface;
     NSObject<OS_dispatch_queue> *_focusClientQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
+    unsigned long long _propertyUpdateGeneration;
     BOOL _needsFlush;
     BOOL _systemAppControlsFocusOnMainDisplay;
     int _pid;
     NSMutableSet *_currentState;
     NSMutableDictionary *_pendingStatesByPriority;
     NSXPCConnection *_connection;
-    NSHashTable *_focusChangeObservers;
+    NSMapTable *_infoPerFocusChangeObserver;
     NSSet *_cachedFocusedDeferralProperties;
     NSString *_clientIdentifier;
 }
@@ -30,25 +29,24 @@
 @property (strong, nonatomic) NSSet *cachedFocusedDeferralProperties; // @synthesize cachedFocusedDeferralProperties=_cachedFocusedDeferralProperties;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
-@property (readonly, strong, nonatomic) NSMutableSet *currentState; // @synthesize currentState=_currentState;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSHashTable *focusChangeObservers; // @synthesize focusChangeObservers=_focusChangeObservers;
-@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSMutableSet *currentState; // @synthesize currentState=_currentState;
+@property (strong, nonatomic) NSMapTable *infoPerFocusChangeObserver; // @synthesize infoPerFocusChangeObserver=_infoPerFocusChangeObserver;
 @property (nonatomic) BOOL needsFlush; // @synthesize needsFlush=_needsFlush;
-@property (readonly, strong, nonatomic) NSMutableDictionary *pendingStatesByPriority; // @synthesize pendingStatesByPriority=_pendingStatesByPriority;
+@property (readonly, nonatomic) NSMutableDictionary *pendingStatesByPriority; // @synthesize pendingStatesByPriority=_pendingStatesByPriority;
 @property (nonatomic) int pid; // @synthesize pid=_pid;
-@property (readonly) Class superclass;
 @property (nonatomic) BOOL systemAppControlsFocusOnMainDisplay; // @synthesize systemAppControlsFocusOnMainDisplay=_systemAppControlsFocusOnMainDisplay;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_connectToEventFocusService;
 - (void)_pruneSet:(id)arg1 ofDeferralsPassingTest:(CDUnknownBlockType)arg2;
 - (void)_rebuildPendingStatesByPriority;
+- (void)_syncObserverState;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
 - (void)deferEventsForClientWithProperties:(id)arg1 toClientWithProperties:(id)arg2;
 - (void)deferEventsForClientWithProperties:(id)arg1 toClientWithProperties:(id)arg2 withPriority:(int)arg3;
+- (id)description;
 - (void)flush;
 - (void)focusedDeferralPropertiesUpdatedWithProperties:(id)arg1;
 - (id)init;

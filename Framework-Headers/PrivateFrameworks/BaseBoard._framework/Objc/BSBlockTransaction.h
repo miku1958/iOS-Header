@@ -16,11 +16,11 @@
 
 @property (copy, nonatomic) NSString *debugName; // @synthesize debugName=_debugName;
 
+- (void).cxx_destruct;
 - (void)_begin;
 - (BOOL)_canBeInterrupted;
 - (id)_descriptionProem;
 - (id)_graphNodeDebugName;
-- (void)dealloc;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 
 @end

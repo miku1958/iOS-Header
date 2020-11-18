@@ -9,20 +9,20 @@
 #import <Silex/ADBannerViewInternalDelegate-Protocol.h>
 #import <Silex/SXVideoAdProviding-Protocol.h>
 
-@class NSString, SXPrerollAdResponse, SXTimeline, SXVideoAdStateManager;
-@protocol SXAnalyticsReporting, SXVASTAnalyticsEventInfoFactory, SXVideoAdProviderDataSource, SXVideoAdViewControllerProviding, SXVideoMetadataProviding, SXVisibilityMonitoring;
+@class NSString, SVTimeline, SXPrerollAdResponse, SXVideoAdStateManager;
+@protocol SVVideoMetadata, SVVisibilityMonitoring, SXAnalyticsReporting, SXVASTAnalyticsEventInfoFactory, SXVideoAdProviderDataSource, SXVideoAdViewControllerProviding;
 
 @interface SXVideoAdProvider : NSObject <ADBannerViewInternalDelegate, SXVideoAdProviding>
 {
     id<SXVideoAdProviderDataSource> _dataSource;
     id<SXAnalyticsReporting> _analyticsReporter;
     SXPrerollAdResponse *_response;
-    id<SXVideoMetadataProviding> _metadata;
-    SXTimeline *_timeline;
+    id<SVVideoMetadata> _metadata;
+    SVTimeline *_timeline;
     id<SXVideoAdViewControllerProviding> _fullscreenViewControllerProvider;
     SXVideoAdStateManager *_stateManager;
-    id<SXVisibilityMonitoring> _videoVisibilityMonitor;
-    id<SXVisibilityMonitoring> _videoPlayerVisibilityMonitor;
+    id<SVVisibilityMonitoring> _videoVisibilityMonitor;
+    id<SVVisibilityMonitoring> _videoPlayerVisibilityMonitor;
     id<SXVASTAnalyticsEventInfoFactory> _analyticsEventInfoFactory;
 }
 
@@ -34,23 +34,24 @@
 @property (readonly, nonatomic) id<SXVideoAdViewControllerProviding> fullscreenViewControllerProvider; // @synthesize fullscreenViewControllerProvider=_fullscreenViewControllerProvider;
 @property (readonly, nonatomic) BOOL hasAction;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) id<SXVideoMetadataProviding> metadata; // @synthesize metadata=_metadata;
+@property (weak, nonatomic) id<SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
 @property (strong, nonatomic) SXPrerollAdResponse *response; // @synthesize response=_response;
 @property (readonly, nonatomic) unsigned long long skipThreshold;
 @property (readonly, nonatomic) SXVideoAdStateManager *stateManager; // @synthesize stateManager=_stateManager;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) double threshold;
-@property (readonly, nonatomic) SXTimeline *timeline; // @synthesize timeline=_timeline;
-@property (readonly, nonatomic) id<SXVisibilityMonitoring> videoPlayerVisibilityMonitor; // @synthesize videoPlayerVisibilityMonitor=_videoPlayerVisibilityMonitor;
-@property (readonly, nonatomic) id<SXVisibilityMonitoring> videoVisibilityMonitor; // @synthesize videoVisibilityMonitor=_videoVisibilityMonitor;
+@property (readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
+@property (readonly, nonatomic) id<SVVisibilityMonitoring> videoPlayerVisibilityMonitor; // @synthesize videoPlayerVisibilityMonitor=_videoPlayerVisibilityMonitor;
+@property (readonly, nonatomic) id<SVVisibilityMonitoring> videoVisibilityMonitor; // @synthesize videoVisibilityMonitor=_videoVisibilityMonitor;
 
 - (void).cxx_destruct;
+- (void)adVisibilityStateChanged;
 - (void)configureTimelineForImpressionReporting;
 - (void)enteredFullscreen;
 - (void)exitedFullscreen;
 - (id)initWithViewControllerProvider:(id)arg1 analyticsEventInfoFactory:(id)arg2 videoPlayerVisibilityMonitor:(id)arg3 videoVisibilityMonitor:(id)arg4;
 - (CDUnknownBlockType)loadWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)muteStateChanged:(BOOL)arg1;
+- (void)nextVideoStartPlaying;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
 - (void)playbackInitiated;
@@ -62,6 +63,7 @@
 - (void)reportEngagementEventWithType:(unsigned long long)arg1;
 - (void)skipped;
 - (void)tappedToToggleControls;
+- (double)threshold;
 - (void)timeElapsed:(double)arg1 duration:(double)arg2;
 - (id)viewControllerForStoryboardPresentationFromBannerView:(id)arg1;
 

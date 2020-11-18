@@ -8,11 +8,10 @@
 
 @interface CLSBinaryItem : CLSActivityItem
 {
-    BOOL __value;
+    BOOL _value;
     long long _valueType;
 }
 
-@property (nonatomic) BOOL _value; // @synthesize _value=__value;
 @property (nonatomic) BOOL value;
 @property (nonatomic) long long valueType; // @synthesize valueType=_valueType;
 

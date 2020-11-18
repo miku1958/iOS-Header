@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UISwitchVisualElement.h>
+#import <UIKitCore/UISwitchVisualElement.h>
 
 @class CALayer, UIColor, UIImage, UIImageView, UIPanGestureRecognizer, UITapGestureRecognizer, UIView;
 

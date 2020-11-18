@@ -6,18 +6,19 @@
 
 #import <QuickLook/QLItemFetcher.h>
 
-@class NSFileCoordinator, NSMutableArray, NSNumber, NSURL, QLURLHandler;
+@class FPSandboxingURLWrapper, NSFileCoordinator, NSMutableArray, NSNumber, NSURL, QLURLHandler;
 
 __attribute__((visibility("hidden")))
 @interface QLUbiquitousItemFetcher : QLItemFetcher
 {
-    QLURLHandler *_urlHandler;
+    FPSandboxingURLWrapper *_sandboxingWrapper;
     NSFileCoordinator *_fileCoordinator;
     NSMutableArray *_updateBlocks;
     id _progressSubscriber;
     NSNumber *_sizeTotalUnitCount;
     QLURLHandler *_zipPackageUrlHandler;
     BOOL _shouldZipPackageIfNeeded;
+    BOOL _isAccessingURL;
 }
 
 @property (readonly, nonatomic) NSURL *fileURL;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)fetchContentWithAllowedOutputClasses:(id)arg1 inQueue:(id)arg2 updateBlock:(CDUnknownBlockType)arg3 completionBlock:(CDUnknownBlockType)arg4;
 - (id)fetchedContent;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithSandboxingURLWrapper:(id)arg1 shouldZipPackageIfNeeded:(BOOL)arg2;
 - (id)initWithURL:(id)arg1 shouldZipPackageIfNeeded:(BOOL)arg2;
 - (id)initWithZippingPackageIfNeeded:(BOOL)arg1;
 - (BOOL)isLongFetchOperation;

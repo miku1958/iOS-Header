@@ -9,11 +9,10 @@
 #import <HomeUI/HUSoftwareUpdateItemModuleControllerDelegate-Protocol.h>
 #import <HomeUI/HUSwitchCellDelegate-Protocol.h>
 
-@class HUSoftwareUpdateItemModuleController, HUSoftwareUpdateStandaloneItemManager, NAFuture, NSString, UNUserNotificationCenter;
+@class HUSoftwareUpdateItemModuleController, HUSoftwareUpdateStandaloneItemManager, NAFuture, NSString;
 
 @interface HUSoftwareUpdateStandaloneViewController : HUItemTableViewController <HUSoftwareUpdateItemModuleControllerDelegate, HUSwitchCellDelegate>
 {
-    UNUserNotificationCenter *_userNotificationCenter;
     HUSoftwareUpdateItemModuleController *_softwareUpdateModule;
     NAFuture *_softwareUpdateFetchFuture;
 }
@@ -25,7 +24,6 @@
 @property (strong, nonatomic) NAFuture *softwareUpdateFetchFuture; // @synthesize softwareUpdateFetchFuture=_softwareUpdateFetchFuture;
 @property (strong, nonatomic) HUSoftwareUpdateItemModuleController *softwareUpdateModule; // @synthesize softwareUpdateModule=_softwareUpdateModule;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
 
 - (void).cxx_destruct;
 - (void)_kickoffSoftwareUpdate;

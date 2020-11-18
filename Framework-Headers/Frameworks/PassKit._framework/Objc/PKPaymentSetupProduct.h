@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 
@@ -28,6 +28,9 @@
     PKPaymentSetupProductImageAssets *_imageAssets;
     NSArray *_associatedStoreIdentifiers;
     NSURL *_appLaunchURL;
+    NSArray *_searchTerms;
+    NSArray *_supportedCameraCaptureTypes;
+    NSArray *_supportedInAppTypes;
     NSArray *_paymentOptions;
     NSDictionary *_rawDictionary;
     NSString *_identifier;
@@ -53,12 +56,18 @@
 @property (copy, nonatomic) NSSet *regions; // @synthesize regions=_regions;
 @property (strong, nonatomic) NSMutableDictionary *requestedProvisioningMethods; // @synthesize requestedProvisioningMethods=_requestedProvisioningMethods;
 @property (copy, nonatomic) NSArray *requiredFields; // @synthesize requiredFields=_requiredFields;
+@property (readonly, copy, nonatomic) NSArray *searchTerms; // @synthesize searchTerms=_searchTerms;
+@property (readonly, copy, nonatomic) NSArray *supportedCameraCaptureTypes; // @synthesize supportedCameraCaptureTypes=_supportedCameraCaptureTypes;
+@property (readonly, copy, nonatomic) NSArray *supportedInAppTypes; // @synthesize supportedInAppTypes=_supportedInAppTypes;
 @property (copy, nonatomic) NSArray *supportedProtocols; // @synthesize supportedProtocols=_supportedProtocols;
 @property (nonatomic) long long supportedProvisioningMethods; // @synthesize supportedProvisioningMethods=_supportedProvisioningMethods;
 @property (copy, nonatomic) NSURL *termsURL; // @synthesize termsURL=_termsURL;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 
++ (id)_displayNameForCardType:(id)arg1;
++ (id)_inAppProvisioningURLWthScheme:(id)arg1 path:(id)arg2;
 + (id)partnerProductsFromArrayOfPartners:(id)arg1 andProducts:(id)arg2;
++ (id)productsFromBrowseableBankApps:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithDisplayName:(id)arg1 partnerDictionary:(id)arg2 productIdentifier:(id)arg3 paymentOptions:(id)arg4 termsURL:(id)arg5 provisioningMethods:(id)arg6 readerModeMetadata:(id)arg7 requiredFields:(id)arg8 imageAssets:(id)arg9 minimumOSVersion:(id)arg10 region:(id)arg11 hsa2Requirement:(id)arg12;
 - (long long)allSupportedProtocols;

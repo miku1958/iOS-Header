@@ -22,7 +22,6 @@
 - (void)dispatchOneWayCommand:(id)arg1 withServiceHelper:(id)arg2;
 - (void)initQueuesWithIdentifier:(id)arg1;
 - (id)initWithCommandIdentifier:(id)arg1;
-- (BOOL)isPluginTimeoutDisabled;
 
 @end
 

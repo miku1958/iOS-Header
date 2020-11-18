@@ -13,22 +13,23 @@
 __attribute__((visibility("hidden")))
 @interface TSDRootLayout : TSDAbstractLayout <TSDAdaptiveLayout>
 {
-    TSDLayoutController *mLayoutController;
-    BOOL mSupportsAdaptiveLayout;
-    TSURetainedPointerKeyDictionary *mShiftedObjects;
+    TSDLayoutController *_layoutController;
+    BOOL _supportsAdaptiveLayout;
+    TSURetainedPointerKeyDictionary *_shiftedObjects;
 }
 
+@property (readonly, weak, nonatomic) TSDLayoutController *layoutController; // @synthesize layoutController=_layoutController;
+
+- (void).cxx_destruct;
 - (struct CGPoint)adjustMappingPointForInfo:(id)arg1 fromPoint:(struct CGPoint)arg2;
 - (struct CGPoint)applyAdaptiveLayoutTo:(id)arg1 info:(id)arg2 offset:(struct CGPoint)arg3;
 - (void)beginDynamicAdaptiveLayout;
-- (id)childLayoutsInRect:(struct CGRect)arg1;
+- (id)childLayoutsInRect:(struct CGRect)arg1 deep:(BOOL)arg2;
 - (struct CGRect)clippedRectInRoot:(struct CGRect)arg1;
-- (void)dealloc;
 - (void)endDynamicAdaptiveLayout;
 - (id)initWithLayoutController:(id)arg1;
 - (BOOL)isRootLayoutForInspectorGeometry;
 - (BOOL)isSavedShiftForInfo:(id)arg1 equalToOffset:(struct CGPoint)arg2;
-- (id)layoutController;
 - (id)layoutsForProvidingGuidesForChildLayouts;
 - (id)p_shiftedObjects;
 - (BOOL)providesGuidesForChildLayouts;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class SuddenChangeParameters;
 
@@ -34,16 +34,19 @@ __attribute__((visibility("hidden")))
     double _maxDetectableBandwidth;
     unsigned int _maxOverRangePacketsCount;
     double _estimatedBandwidth;
+    double _estimatedBandwidthUncapped;
     unsigned int _radioAccessTechnology;
     unsigned int _mode;
     unsigned int _bandwidthEstimationState;
 }
 
 @property (nonatomic) double estimatedBandwidth; // @synthesize estimatedBandwidth=_estimatedBandwidth;
+@property (nonatomic) double estimatedBandwidthUncapped; // @synthesize estimatedBandwidthUncapped=_estimatedBandwidthUncapped;
 @property (nonatomic) unsigned int mode; // @synthesize mode=_mode;
 @property (nonatomic) unsigned int radioAccessTechnology; // @synthesize radioAccessTechnology=_radioAccessTechnology;
 
 - (void)calculateBandwidthEstimationAtTime:(double)arg1 mediaTimestamp:(unsigned int)arg2 mediaDataSize:(unsigned int)arg3 probingSequence:(BOOL)arg4 probingSequenceID:(unsigned int)arg5;
+- (void)calculateBandwidthEstimationForBandwidthSample:(double)arg1 arrivalTime:(double)arg2;
 - (void)compensateSuddenChangeBandwidths;
 - (void)dealloc;
 - (void)detectSuddenChangeWithBandwidth:(double)arg1 suddenChangeAbove:(BOOL *)arg2 suddenChangeBelow:(BOOL *)arg3;
@@ -52,8 +55,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPacketProcessedLateWithArrivalTime:(double)arg1;
 - (BOOL)isSuddenChangeDurationMetAtArrivalTime:(double)arg1;
 - (void)recordSuddenChangeBandwidth:(double)arg1;
+- (double)resetBandwidthWithParameters:(double)arg1 probingSequenceDuration:(double)arg2 probingSequenceSize:(unsigned int)arg3 packetsInProbingSequence:(unsigned int)arg4;
 - (void)updateBandwidthDivergeCountAtArrivalTime:(double)arg1 suddenChangeAbove:(BOOL)arg2 suddenChangeBelow:(BOOL)arg3;
-- (double)updateBandwidthEstimation:(double)arg1 arrivalTime:(double)arg2 probingSequenceDuration:(double)arg3 probingSequenceSize:(unsigned int)arg4 packetsInProbingSequence:(unsigned int)arg5;
+- (double)updateBandwidthEstimation:(double)arg1 arrivalTime:(double)arg2;
 - (void)updateInitialBandwidthEstimationForCellularAtTime:(double)arg1 bandwidth:(double)arg2;
 - (void)updateQualificationParameters;
 

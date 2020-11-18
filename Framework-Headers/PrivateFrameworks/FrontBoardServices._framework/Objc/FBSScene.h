@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/FBSSceneLayerDelegate-Protocol.h>
@@ -17,14 +17,14 @@
 {
 }
 
-@property (readonly, strong, nonatomic) FBSSceneClientSettings *clientSettings;
+@property (readonly, nonatomic) FBSSceneClientSettings *clientSettings;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<FBSSceneDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, strong, nonatomic) NSArray *layers;
-@property (readonly, strong, nonatomic) FBSSceneSettings *settings;
+@property (readonly, nonatomic) NSArray *layers;
+@property (readonly, nonatomic) FBSSceneSettings *settings;
 @property (readonly) Class superclass;
 
 - (void)_didCreateWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXTilingLayout.h>
 
-@class PXAssetsDataSource, PXBasicTileUserData, PXIndexPathSet, PXOverlayBadgeTileUserData, PXSelectionBadgeTileUserData;
+@class NSIndexSet, PXAssetsDataSource, PXBasicTileUserData, PXIndexPathSet, PXOverlayBadgeTileUserData, PXSelectionBadgeTileUserData;
 
 @interface PXAssetsTilingLayout : PXTilingLayout
 {
@@ -22,6 +22,7 @@
     PXBasicTileUserData *__highlightedDimmingUserData;
     PXBasicTileUserData *__selectedDimmingUserData;
     PXBasicTileUserData *__draggingDimmingUserData;
+    NSIndexSet *_additionalAccessoryTileKinds;
     struct PXSimpleIndexPath _highlightedIndexPath;
     struct PXSimpleIndexPath _focusedIndexPath;
 }
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) PXBasicTileUserData *_selectedDimmingUserData; // @synthesize _selectedDimmingUserData=__selectedDimmingUserData;
 @property (readonly, nonatomic) PXSelectionBadgeTileUserData *_selectedUserData; // @synthesize _selectedUserData=__selectedUserData;
 @property (readonly, nonatomic) PXSelectionBadgeTileUserData *_unselectedUserData; // @synthesize _unselectedUserData=__unselectedUserData;
+@property (strong, nonatomic) NSIndexSet *additionalAccessoryTileKinds; // @synthesize additionalAccessoryTileKinds=_additionalAccessoryTileKinds;
 @property (nonatomic) unsigned long long badgeOptions; // @synthesize badgeOptions=_badgeOptions;
 @property (readonly, nonatomic) PXAssetsDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) PXIndexPathSet *draggingIndexPaths; // @synthesize draggingIndexPaths=_draggingIndexPaths;
@@ -51,6 +53,7 @@
 - (void)adjustGeometry:(struct PXTileGeometry *)arg1 forContentTileWithIndexPath:(struct PXSimpleIndexPath)arg2;
 - (id)description;
 - (void)enumerateAccessoryTilesForContentTileWithIndexPath:(struct PXSimpleIndexPath)arg1 geometry:(const struct PXTileGeometry *)arg2 withOptions:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
+- (BOOL)getAdditionalAccessoryTileIdentifier:(out struct PXTileIdentifier *)arg1 outGeometry:(out struct PXTileGeometry *)arg2 group:(out unsigned long long *)arg3 userData:(out id *)arg4 forTileKind:(unsigned long long)arg5 contentTileGeometry:(const struct PXTileGeometry *)arg6 indexPath:(struct PXSimpleIndexPath)arg7;
 - (BOOL)getGeometry:(out struct PXTileGeometry *)arg1 group:(out unsigned long long *)arg2 userData:(out id *)arg3 forTileWithIdentifier:(struct PXTileIdentifier)arg4;
 - (id)init;
 - (id)initWithDataSource:(id)arg1;

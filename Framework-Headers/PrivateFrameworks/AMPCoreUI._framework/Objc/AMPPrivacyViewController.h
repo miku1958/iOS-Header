@@ -4,45 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKit/UIAlertController.h>
 
-#import <AMPCoreUI/UIViewControllerTransitioningDelegate-Protocol.h>
+@class NSString, NSURL;
+@protocol AMPPrivacyViewControllerDelegate;
 
-@class NSString, NSURL, OBPrivacyLinkController, UIButton, UILabel, UIScrollView;
-
-@interface AMPPrivacyViewController : UIViewController <UIViewControllerTransitioningDelegate>
+@interface AMPPrivacyViewController : UIAlertController
 {
+    id<AMPPrivacyViewControllerDelegate> _acknowledgementDelegate;
     NSString *_identifier;
     NSURL *_url;
-    UIScrollView *_scrollView;
-    UILabel *_titleLabel;
-    UILabel *_infoLabel;
-    OBPrivacyLinkController *_linkController;
-    UIButton *_continueButton;
 }
 
-@property (strong, nonatomic) UIButton *continueButton; // @synthesize continueButton=_continueButton;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<AMPPrivacyViewControllerDelegate> acknowledgementDelegate; // @synthesize acknowledgementDelegate=_acknowledgementDelegate;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (strong, nonatomic) UILabel *infoLabel; // @synthesize infoLabel=_infoLabel;
-@property (strong, nonatomic) OBPrivacyLinkController *linkController; // @synthesize linkController=_linkController;
-@property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
-@property (readonly) Class superclass;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (copy, nonatomic) NSURL *url; // @synthesize url=_url;
 
++ (id)privacyControllerWithIdentifier:(id)arg1 URL:(id)arg2;
 - (void).cxx_destruct;
-- (struct CGSize)_contentSize;
-- (id)animationControllerForDismissedController:(id)arg1;
-- (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
-- (void)continueTapped:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 URL:(id)arg2;
-- (struct CGSize)preferredContentSize;
-- (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
-- (void)viewDidLoad;
-- (void)viewWillLayoutSubviews;
+- (void)_finishWithResult:(unsigned long long)arg1;
 
 @end
 

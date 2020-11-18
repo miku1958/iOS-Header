@@ -7,41 +7,44 @@
 #import <objc/NSObject.h>
 
 #import <AppStoreDaemon/NSCopying-Protocol.h>
+#import <AppStoreDaemon/NSMutableCopying-Protocol.h>
 #import <AppStoreDaemon/NSSecureCoding-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface ASDIAPInfo : NSObject <NSCopying, NSSecureCoding>
+@interface ASDIAPInfo : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
-    unsigned char _type;
-    BOOL _hasUsedFreeOffer;
-    BOOL _hasUsedIntroPricingOffer;
     NSNumber *_adamId;
     NSNumber *_appAdamId;
     NSNumber *_expirationTimestamp;
+    BOOL _hasUsedFreeOffer;
+    BOOL _hasUsedIntroPricingOffer;
     NSNumber *_lastModifiedTimestamp;
     NSNumber *_purchaseTimestamp;
-    NSNumber *_accountId;
     NSString *_subscriptionFamilyId;
+    unsigned char _type;
 }
 
-@property (strong, nonatomic) NSNumber *accountId; // @synthesize accountId=_accountId;
-@property (strong, nonatomic) NSNumber *adamId; // @synthesize adamId=_adamId;
-@property (strong, nonatomic) NSNumber *appAdamId; // @synthesize appAdamId=_appAdamId;
-@property (strong, nonatomic) NSNumber *expirationTimestamp; // @synthesize expirationTimestamp=_expirationTimestamp;
-@property (nonatomic) BOOL hasUsedFreeOffer; // @synthesize hasUsedFreeOffer=_hasUsedFreeOffer;
-@property (nonatomic) BOOL hasUsedIntroPricingOffer; // @synthesize hasUsedIntroPricingOffer=_hasUsedIntroPricingOffer;
-@property (strong, nonatomic) NSNumber *lastModifiedTimestamp; // @synthesize lastModifiedTimestamp=_lastModifiedTimestamp;
-@property (strong, nonatomic) NSNumber *purchaseTimestamp; // @synthesize purchaseTimestamp=_purchaseTimestamp;
-@property (strong, nonatomic) NSString *subscriptionFamilyId; // @synthesize subscriptionFamilyId=_subscriptionFamilyId;
-@property (nonatomic) unsigned char type; // @synthesize type=_type;
+@property (readonly, nonatomic) NSNumber *adamId;
+@property (readonly, nonatomic) NSNumber *appAdamId;
+@property (readonly, nonatomic) NSNumber *expirationTimestamp;
+@property (readonly, nonatomic) BOOL hasUsedFreeOffer;
+@property (readonly, nonatomic) BOOL hasUsedIntroPricingOffer;
+@property (readonly, nonatomic) NSNumber *lastModifiedTimestamp;
+@property (readonly, nonatomic) NSNumber *purchaseTimestamp;
+@property (readonly, nonatomic) NSString *subscriptionFamilyId;
+@property (readonly, nonatomic) unsigned char type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_newCopyWithClass:(Class)arg1 zone:(struct _NSZone *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToIAPInfo:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

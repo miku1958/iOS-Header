@@ -80,6 +80,7 @@
     NSString *_searchIndex;
     NSString *_preferredLikenessSource;
     NSString *_preferredApplePersonaIdentifier;
+    NSString *_preferredChannel;
 }
 
 @property (readonly, copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
@@ -149,6 +150,7 @@
 @property (readonly, copy, nonatomic) NSString *phoneticOrganizationName;
 @property (readonly, copy, nonatomic) NSArray *postalAddresses;
 @property (readonly, copy, nonatomic) NSString *preferredApplePersonaIdentifier;
+@property (readonly, copy, nonatomic) NSString *preferredChannel; // @synthesize preferredChannel=_preferredChannel;
 @property (readonly, nonatomic, getter=isPreferredForImage) BOOL preferredForImage;
 @property (readonly, nonatomic, getter=isPreferredForName) BOOL preferredForName;
 @property (readonly, copy, nonatomic) NSString *preferredLikenessSource;
@@ -226,6 +228,7 @@
 + (id)predicateForContactsMatchingPhoneNumber:(id)arg1;
 + (id)predicateForContactsMatchingPhoneNumber:(id)arg1 prefixHint:(id)arg2;
 + (id)predicateForContactsMatchingPostalAddress:(id)arg1;
++ (id)predicateForContactsMatchingPreferredChannel:(id)arg1 limitOne:(BOOL)arg2;
 + (id)predicateForContactsMatchingSocialProfile:(id)arg1;
 + (id)predicateForContactsMatchingString:(id)arg1 accountIdentifier:(id)arg2 containerIdentifier:(id)arg3 groupIdentifier:(id)arg4;
 + (id)predicateForContactsWithIdentifiers:(id)arg1;

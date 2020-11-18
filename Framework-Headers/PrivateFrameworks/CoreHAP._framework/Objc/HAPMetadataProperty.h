@@ -10,13 +10,13 @@
 
 @interface HAPMetadataProperty : HMFObject
 {
+    NSString *_propertyDescription;
     NSString *_propertyType;
     NSNumber *_bitPosition;
-    NSString *_propertyDescription;
 }
 
 @property (strong, nonatomic) NSNumber *bitPosition; // @synthesize bitPosition=_bitPosition;
-@property (strong, nonatomic) NSString *propertyDescription; // @synthesize propertyDescription=_propertyDescription;
+@property (copy) NSString *propertyDescription; // @synthesize propertyDescription=_propertyDescription;
 @property (strong, nonatomic) NSString *propertyType; // @synthesize propertyType=_propertyType;
 
 + (id)init:(id)arg1 withDictionary:(id)arg2;

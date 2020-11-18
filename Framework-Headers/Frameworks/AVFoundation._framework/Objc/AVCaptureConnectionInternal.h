@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCaptureDevice, AVCaptureInputPort, AVWeakReference, NSArray, NSMutableArray, NSString;
 
@@ -26,6 +26,7 @@
     AVCaptureInputPort *metadataInputPort;
     AVCaptureInputPort *metadataItemInputPort;
     AVCaptureInputPort *depthDataInputPort;
+    AVCaptureInputPort *visionDataInputPort;
     BOOL videoMirroringSupported;
     BOOL automaticallyAdjustsVideoMirroring;
     BOOL videoMirrored;
@@ -43,6 +44,7 @@
     NSString *connectionID;
     BOOL cameraIntrinsicMatrixDeliverySupported;
     BOOL cameraIntrinsicMatrixDeliveryEnabled;
+    BOOL debugMetadataSidecarFileEnabled;
 }
 
 @end

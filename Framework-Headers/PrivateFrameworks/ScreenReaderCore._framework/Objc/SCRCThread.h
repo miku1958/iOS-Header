@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString, NSThread, SCRCStackQueue;
+@class SCRCStackQueue;
 
 @interface SCRCThread : NSObject
 {
@@ -20,9 +20,6 @@
     BOOL _isTimerSet;
     BOOL _shouldStop;
     BOOL _isWaitingForStoppingThread;
-    NSString *_description;
-    BOOL _descriptionChanged;
-    NSThread *_nsThread;
     id __key;
     double _lastStartTime;
 }
@@ -35,6 +32,7 @@
 + (BOOL)_removeThreadFromRegisteredThreads:(id)arg1 withThreadKey:(id)arg2;
 + (long long)activeThreadCount;
 + (id)activity;
++ (id)currentThreadTaskCache;
 + (long long)defaultThreadPriority;
 + (void)initialize;
 + (void)invalidateForKey:(id)arg1;
@@ -43,6 +41,7 @@
 + (void)setDefaultThreadPriority:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_assignThreadPriority;
+- (BOOL)_debug_currentlyRunningOnThisThread;
 - (void)_enqueueImmediateTask:(id)arg1 cancelMask:(unsigned int)arg2 lastStartTime:(double *)arg3;
 - (void)_enqueueTask:(id)arg1 cancelMask:(unsigned int)arg2 lastStartTime:(double *)arg3;
 - (void)_enqueueWaitingTask:(id)arg1 cancelMask:(unsigned int)arg2 lastStartTime:(double *)arg3;
@@ -53,7 +52,6 @@
 - (void)_processQueueFromTimer;
 - (void)_runThread:(id)arg1;
 - (void)_setIsWaitingForStoppingThread:(BOOL)arg1;
-- (void)_setName:(id)arg1;
 - (BOOL)_shouldStop;
 - (void)_threadDidStop;
 - (void)dealloc;

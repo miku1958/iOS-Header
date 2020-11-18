@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSXPCCoding-Protocol.h>
 #import <BaseBoard/NSSecureCoding-Protocol.h>
@@ -22,7 +22,7 @@
     BSAuditToken *_auditToken;
 }
 
-@property (readonly, strong, nonatomic) BSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (readonly, nonatomic) BSAuditToken *auditToken; // @synthesize auditToken=_auditToken;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleID;
 @property (copy, nonatomic) NSString *bundlePath; // @synthesize bundlePath=_bundlePath;
 @property (readonly, copy) NSString *debugDescription;
@@ -32,7 +32,7 @@
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) int pid; // @synthesize pid=_pid;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) BSMachPortTaskNameRight *taskNameRight; // @synthesize taskNameRight=_taskNameRight;
+@property (readonly, nonatomic) BSMachPortTaskNameRight *taskNameRight; // @synthesize taskNameRight=_taskNameRight;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (id)processHandle;
@@ -43,6 +43,7 @@
 + (id)processHandleForTaskNameRight:(id)arg1;
 + (id)processHandleForXPCConnection:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_initWithPID:(int)arg1 bundleID:(id)arg2;
 - (BOOL)_isRunningWithCertainty:(out BOOL *)arg1;
 - (void)dealloc;

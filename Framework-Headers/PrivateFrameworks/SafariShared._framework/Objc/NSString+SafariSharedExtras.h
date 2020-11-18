@@ -22,10 +22,8 @@
 - (id)safari_bestURLStringForUserTypedString;
 - (id)safari_canonicalURLStringForFrequentlyVisitedSites;
 - (id)safari_containedURLs;
-- (unsigned long long)safari_countOfString:(id)arg1;
-- (id)safari_domainFromHost;
 - (void)safari_enumerateSubdomainRangesInHostUsingBlock:(CDUnknownBlockType)arg1;
-- (id)safari_fixedStringByExpandingTildeInPath;
+- (id)safari_fixedStringByExpandingTildeInPathToUserHomeDirectory;
 - (BOOL)safari_hasDirectionalPrefix;
 - (BOOL)safari_isJavaScriptURLString;
 - (BOOL)safari_isPathExtensionAllowedForAnalytics;
@@ -35,13 +33,12 @@
 - (id)safari_possibleTopLevelDomainCorrectionForUserTypedString;
 - (id)safari_scriptIfJavaScriptURLString;
 - (id)safari_sha256Hash;
+- (id)safari_stringByDeletingStartingSlash;
+- (id)safari_stringByDeletingTrailingSlash;
 - (id)safari_stringByFoldingWideCharactersAndNormalizing;
-- (id)safari_stringByRemovingCharactersInSet:(id)arg1;
 - (id)safari_stringByRemovingDirectionalPrefix;
 - (id)safari_stringByRemovingTopLevelDomainFromHost;
 - (id)safari_stringByRemovingUnnecessaryCharactersFromUserTypedURLString;
-- (id)safari_stringByRemovingWwwDotPrefix;
-- (id)safari_stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
 - (id)safari_stringBySubstitutingAmpersandAndAngleBracketsForHTMLEntities;
 - (id)safari_stringBySubstitutingHTMLEntitiesForAmpersandAndAngleBrackets;
 - (id)safari_stringEncodedAsURLQueryParameter;

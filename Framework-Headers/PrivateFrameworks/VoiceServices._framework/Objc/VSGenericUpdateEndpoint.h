@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 #import <VoiceServices/NSXPCListenerDelegate-Protocol.h>
@@ -12,6 +12,7 @@
 @class NSString, NSXPCListener, NSXPCListenerEndpoint;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface VSGenericUpdateEndpoint : NSObject <NSXPCListenerDelegate, NSSecureCoding>
 {
     NSXPCListenerEndpoint *_endpoint;

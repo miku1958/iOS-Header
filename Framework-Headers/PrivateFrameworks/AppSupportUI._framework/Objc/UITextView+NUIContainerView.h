@@ -8,6 +8,5 @@
 
 @interface UITextView (NUIContainerView)
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
-- (BOOL)supportsAsynchronousMeasurement;
 @end
 

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSArray;
 
-@interface DMFDevicePropertyNotificationSubscriptionRequest : CATTaskRequest
+@interface DMFDevicePropertyNotificationSubscriptionRequest : DMFTaskRequest
 {
     NSArray *_propertyKeys;
 }

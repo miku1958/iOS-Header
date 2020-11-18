@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <PhotoLibraryServices/PLRegionsClusteringItem-Protocol.h>
 
 @class CLLocation, NSDate, NSNumber, NSString, PLMomentCluster;
 @protocol NSCopying;
 
-@interface PLMomentNode : NSObject
+@interface PLMomentNode : NSObject <PLRegionsClusteringItem>
 {
     BOOL _marked;
     BOOL _visited;
@@ -26,15 +28,20 @@
 @property (nonatomic) PLMomentCluster *cluster; // @synthesize cluster=__cluster;
 @property (readonly, nonatomic) struct CLLocationCoordinate2D coordinate;
 @property (readonly, strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=__creationDate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CLLocation *location; // @synthesize location=__location;
 @property (nonatomic, getter=isMarked) BOOL marked; // @synthesize marked=_marked;
 @property (readonly, strong, nonatomic) NSObject<NSCopying> *objectID; // @synthesize objectID=__objectID;
+@property (readonly, nonatomic) NSDate *pl_date; // @dynamic pl_date;
+@property (readonly, nonatomic) CLLocation *pl_location; // @dynamic pl_location;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *userTag; // @synthesize userTag=__userTag;
 @property (readonly, nonatomic) unsigned long long userTagType; // @synthesize userTagType=__userTagType;
 @property (nonatomic, getter=isVisited) BOOL visited; // @synthesize visited=_visited;
 
 - (void)dealloc;
-- (id)description;
 - (id)initWithManagedAsset:(id)arg1;
 - (id)initWithPartialFetchDictionary:(id)arg1;
 - (BOOL)isTagged;

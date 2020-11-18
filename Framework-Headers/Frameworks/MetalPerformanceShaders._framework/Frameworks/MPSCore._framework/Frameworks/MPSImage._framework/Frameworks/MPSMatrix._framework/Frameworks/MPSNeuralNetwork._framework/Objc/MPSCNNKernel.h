@@ -31,6 +31,7 @@
     CDUnknownFunctionPointerType _batchEncode;
     void *_encodeData;
     MPSExternalCNNUnary *_plugin;
+    unsigned long long _pluginOptions;
     id<MPSImageAllocator> _destinationImageAllocator;
 }
 
@@ -75,6 +76,7 @@
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (BOOL)isResultStateReusedAcrossBatch;
+- (unsigned long long)maxBatchSize;
 - (struct NSArray *)resultStateBatchForSourceImage:(struct NSArray *)arg1 sourceStates:(id)arg2 destinationImage:(struct NSArray *)arg3;
 - (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (MISSING_TYPE *)sourcePositionOfTopLeftCornerOfFilterWindow;

@@ -46,8 +46,8 @@
 - (void)_resetPrewiredAVPlayer;
 - (void)_setImage:(id)arg1;
 - (void)_setPlayerGestureRecognizer:(id)arg1;
-- (void)_setupContentView;
 - (BOOL)_setupContentViewForMode:(long long)arg1;
+- (void)_setupContentViewWithOptions:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 cacheGroup:(id)arg3 variant:(long long)arg4 options:(unsigned long long)arg5 wallpaperSettingsProvider:(id)arg6;
 - (id)initWithFrame:(struct CGRect)arg1 wallpaperImage:(id)arg2 cacheGroup:(id)arg3 wallpaperVideoURL:(id)arg4 stillTimeInVideo:(double)arg5 staticImageOptions:(unsigned long long)arg6 variant:(long long)arg7 prewireMemory:(BOOL)arg8 useRewindPlaybackStyle:(BOOL)arg9 wallpaperSettingsProvider:(id)arg10;

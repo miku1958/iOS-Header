@@ -13,6 +13,7 @@
     NSCache *_uuidToImageDataCache;
     NSMutableDictionary *_pageURLStringToIconInfoDict;
     NSMutableDictionary *_iconURLStringToIconInfoDict;
+    NSMutableDictionary *_pageURLStringToRejectedResourceIconInfoDict;
 }
 
 - (void).cxx_destruct;
@@ -24,9 +25,11 @@
 - (id)init;
 - (BOOL)linkPageURLString:(id)arg1 toIconURLString:(id)arg2;
 - (id)pageURLStringsWithPrefixesIn:(id)arg1;
+- (id)rejectedResourceInfoForPageURLString:(id)arg1 iconURLString:(id)arg2;
 - (void)removeAllImageDataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeImageDataForPageURLString:(id)arg1;
-- (void)setImageData:(id)arg1 forPageURLString:(id)arg2 iconURLString:(id)arg3 iconSize:(struct CGSize)arg4;
+- (void)setImageData:(id)arg1 forPageURLString:(id)arg2 iconURLString:(id)arg3 iconSize:(struct CGSize)arg4 hasGeneratedResolutions:(BOOL)arg5;
+- (void)setIsRejectedResource:(BOOL)arg1 forPageURLString:(id)arg2 iconURLString:(id)arg3;
 
 @end
 

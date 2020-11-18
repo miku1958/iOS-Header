@@ -27,6 +27,7 @@
 + (id)world;
 - (void)clearWrappers;
 - (void)dealloc;
+- (void)disableOverrideBuiltinsBehavior;
 - (void)makeAllShadowRootsOpen;
 
 @end

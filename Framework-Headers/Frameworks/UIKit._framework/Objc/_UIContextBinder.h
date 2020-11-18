@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIAnimationFenceCoordinating-Protocol.h>
+#import <UIKitCore/_UIAnimationFenceCoordinating-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableOrderedSet, NSPointerArray, NSString;
-@protocol _UICanvasLifecycleStateMonitoring, _UIContextBinding;
+@protocol _UICanvasLifecycleStateMonitoring, _UIContextBinderDelegate, _UIContextBinding;
 
 __attribute__((visibility("hidden")))
 @interface _UIContextBinder : NSObject <_UIAnimationFenceCoordinating>
 {
+    id<_UIContextBinderDelegate> _delegate;
     NSPointerArray *_enrolledBindables;
     NSPointerArray *_attachedBindables;
     NSMutableOrderedSet *_contexts;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *attachedBindables;
 @property (nonatomic) long long contextManagementPolicy; // @synthesize contextManagementPolicy=_contextManagementPolicy;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<_UIContextBinderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *enrolledBindables;
 @property (readonly) unsigned long long hash;
@@ -50,8 +52,8 @@ __attribute__((visibility("hidden")))
 - (void)_synchronizeDrawingWithPreCommitHandler:(CDUnknownBlockType)arg1;
 - (id)_synchronizedDrawingFence;
 - (void)attachBindable:(id)arg1;
+- (BOOL)bindableEnrolled:(id)arg1;
 - (BOOL)bindableIsTopmostAttached:(id)arg1;
-- (BOOL)bindbleEnrolled:(id)arg1;
 - (void)createContextsWithTest:(CDUnknownBlockType)arg1 creationAction:(CDUnknownBlockType)arg2;
 - (void)detachBindable:(id)arg1;
 - (void)enrollBindable:(id)arg1;

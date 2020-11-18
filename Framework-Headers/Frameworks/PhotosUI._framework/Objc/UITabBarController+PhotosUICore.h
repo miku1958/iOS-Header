@@ -8,6 +8,8 @@
 
 @interface UITabBarController (PhotosUICore)
 
+@property (readonly, nonatomic) BOOL px_hidesTabBarForCurrentHorizontalSizeClass;
+@property (readonly, nonatomic) BOOL px_hidesTabBarForRegularHorizontalSizeClass;
 @property (readonly, nonatomic, getter=px_isTabBarHidden) BOOL px_tabBarHidden;
 
 - (BOOL)px_canPerformAddToTabAnimationForTab:(unsigned long long)arg1;

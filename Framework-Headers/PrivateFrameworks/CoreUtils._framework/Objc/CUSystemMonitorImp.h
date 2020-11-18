@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUtils/CXCallObserverDelegate-Protocol.h>
 #import <CoreUtils/FMFSessionDelegate-Protocol.h>
 
-@class CUBluetoothClient, CUWiFiManager, CXCallObserver, NSData, NSString;
-@protocol OS_dispatch_queue;
+@class CUBluetoothClient, CUNetInterfaceMonitor, CUSystemMonitor, CUWiFiManager, CXCallObserver, NSArray, NSData, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
 @interface CUSystemMonitorImp : NSObject <FMFSessionDelegate, CXCallObserverDelegate>
@@ -22,6 +22,11 @@ __attribute__((visibility("hidden")))
     CUBluetoothClient *_bluetoothClient;
     CXCallObserver *_callObserver;
     int _activeCallCount;
+    BOOL _familyFailed;
+    NSArray *_familyMembers;
+    BOOL _familyObserving;
+    CUSystemMonitor *_familyPrimaryIPMonitor;
+    int _familyUpdatedToken;
     int _fmfDevicesChangedToken;
     int _meDeviceChangedToken;
     int _meDeviceRetryToken;
@@ -29,10 +34,18 @@ __attribute__((visibility("hidden")))
     NSString *_meDeviceIDSDeviceID;
     NSString *_meDeviceName;
     BOOL _meDeviceValid;
+    CUNetInterfaceMonitor *_netInterfaceMonitor;
+    unsigned int _netFlags;
+    CDUnion_fab80606 _primaryIPv4Addr;
+    CDUnion_fab80606 _primaryIPv6Addr;
     int _powerSourceToken;
     BOOL _powerUnlimited;
     BOOL _primaryAppleIDIsHSA2;
     BOOL _primaryAppleIDObserving;
+    CDStruct_83abfce7 _rotatingIdentifier48;
+    NSData *_rotatingIdentifierData;
+    CUSystemMonitor *_rotatingIdentifierBluetoothAddressMonitor;
+    NSObject<OS_dispatch_source> *_rotatingIdentifierTimer;
     BOOL _screenLocked;
     int _screenLockedToken;
     BOOL _screenOn;
@@ -54,17 +67,31 @@ __attribute__((visibility("hidden")))
 - (void)_bluetoothAddressMonitorStop;
 - (void)_callMonitorStart;
 - (void)_callMonitorStop;
+- (void)_familyGetMembers:(BOOL)arg1;
+- (void)_familyMonitorStart;
+- (void)_familyMonitorStop;
+- (void)_familyNetworkChanged;
+- (void)_familyUpdated:(id)arg1;
+- (void)_firstUnlockMonitorStart;
+- (void)_firstUnlockMonitorStop;
 - (BOOL)_hasMonitorPassingTest:(CDUnknownBlockType)arg1;
 - (void)_invokeBlock:(CDUnknownBlockType)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (void)_meDeviceCheckCompletion:(id)arg1 error:(id)arg2 firstCheck:(BOOL)arg3;
 - (void)_meDeviceCheckStart:(BOOL)arg1;
 - (void)_meDeviceMonitorStart;
 - (void)_meDeviceMonitorStop;
+- (void)_netInterfaceMonitorStart;
+- (void)_netInterfaceMonitorStop;
 - (void)_powerUnlimitedMonitorStart;
 - (void)_powerUnlimitedMonitorStop;
 - (void)_primaryAppleIDChanged:(id)arg1;
 - (void)_primaryAppleIDMonitorStart;
 - (void)_primaryAppleIDMonitorStop;
+- (void)_rotatingIdentifierBTUpdated;
+- (void)_rotatingIdentifierMonitorStart;
+- (void)_rotatingIdentifierMonitorStop;
+- (void)_rotatingIdentifierTimerFired;
+- (void)_rotatingIdentifierTimerReset:(BOOL)arg1;
 - (void)_screenChanged:(BOOL)arg1;
 - (void)_screenLockedChanged;
 - (void)_screenLockedMonitorStart;

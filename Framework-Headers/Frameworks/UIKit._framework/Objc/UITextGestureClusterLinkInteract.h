@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextGestureCluster.h>
+#import <UIKitCore/UITextGestureCluster.h>
 
 __attribute__((visibility("hidden")))
 @interface UITextGestureClusterLinkInteract : UITextGestureCluster

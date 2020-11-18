@@ -26,6 +26,7 @@
     BOOL _testTransition;
     BOOL _showsActionSpinner;
     BOOL _hasRoundedCorners;
+    BOOL _usesWatchColors;
     BOOL _displaysApplePayLogo;
     BOOL _liveRenderingEnabled;
     unsigned long long _state;
@@ -56,8 +57,10 @@
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL testTransition; // @synthesize testTransition=_testTransition;
+@property (nonatomic) BOOL usesWatchColors; // @synthesize usesWatchColors=_usesWatchColors;
 @property (readonly, nonatomic) BOOL wantsOutline;
 
++ (id)applePayLogo;
 + (id)generatedSnapshotForDataURL:(id)arg1 contentInset:(struct UIEdgeInsets)arg2 isFromMe:(BOOL)arg3;
 + (id)referenceBackgroundColor;
 + (id)referenceBackgroundColorForState:(unsigned long long)arg1;
@@ -65,6 +68,7 @@
 + (struct CGSize)referenceSizeForPeerPaymentStatusResponse:(id)arg1;
 + (struct CGSize)referenceSizeForState:(unsigned long long)arg1;
 + (struct CGSize)referenceSizeForState:(unsigned long long)arg1 andAction:(unsigned long long)arg2;
++ (id)referenceWatchBackgroundColorForState:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_actionButtonTapped:(id)arg1;
 - (id)_actionTitle;
@@ -81,6 +85,7 @@
 - (id)init;
 - (id)initWithAmount:(id)arg1 currency:(id)arg2 state:(unsigned long long)arg3;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithCurrencyAmount:(id)arg1 state:(unsigned long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)interactiveViews;
 - (void)layoutSubviews;

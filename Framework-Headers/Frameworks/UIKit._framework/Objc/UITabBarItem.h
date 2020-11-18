@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIBarItem.h>
+#import <UIKitCore/UIBarItem.h>
 
-#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
 @class NSString, UIColor, UIImage, UITabBarButton, _UITabBarItemAppearanceStorage;
 

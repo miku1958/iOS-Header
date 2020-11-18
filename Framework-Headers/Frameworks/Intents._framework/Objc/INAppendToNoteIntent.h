@@ -21,9 +21,12 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) INNote *targetNote;
 
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
+- (long long)_intentCategory;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithTargetNote:(id)arg1 content:(id)arg2;

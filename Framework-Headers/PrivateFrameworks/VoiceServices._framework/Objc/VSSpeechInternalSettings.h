@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSUserDefaults;
 
@@ -17,6 +17,7 @@
 
 @property (nonatomic) BOOL disableAssetCleaning;
 @property (nonatomic) BOOL disableCache;
+@property (nonatomic) BOOL disableNewBackend;
 @property (nonatomic) BOOL disableServerTimeoutFallback;
 @property (nonatomic) BOOL enableAudioDump;
 @property (nonatomic) BOOL enableHomePodSimulation;
@@ -26,7 +27,6 @@
 @property (strong, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;
 @property (nonatomic) BOOL isInternalBuild; // @synthesize isInternalBuild=_isInternalBuild;
 @property (nonatomic) float serverTTSTimeout;
-@property (nonatomic) BOOL useNewBackend;
 
 + (id)standardInstance;
 - (void).cxx_destruct;

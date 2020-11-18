@@ -10,7 +10,6 @@
 
 @protocol _CPActionItemForFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasPunchout;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _CPPunchoutForFeedback *punchout;
 

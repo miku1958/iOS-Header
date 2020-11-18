@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SoftwareUpdateServices/SUAssetMatcher-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface SUAssetStateMatcher : NSObject <SUAssetMatcher>
 {
     NSString *_assetType;
     int _interestedStates;
+    NSDictionary *_matcherInfo;
 }
 
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int interestedStates; // @synthesize interestedStates=_interestedStates;
+@property (readonly, nonatomic) NSDictionary *matcherInfo; // @synthesize matcherInfo=_matcherInfo;
 @property (readonly) Class superclass;
 
 - (id)_findMatchFromCandidates:(id)arg1 error:(id *)arg2;

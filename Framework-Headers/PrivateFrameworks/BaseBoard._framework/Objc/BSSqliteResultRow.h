@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSInvalidatable-Protocol.h>
 #import <BaseBoard/NSCopying-Protocol.h>
@@ -25,13 +25,13 @@
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (id)resultRowWithStatement:(struct sqlite3_stmt *)arg1;
+- (void).cxx_destruct;
 - (id)_columnNames;
 - (unsigned long long)_indexForKey:(id)arg1;
 - (id)_initWithStatement:(struct sqlite3_stmt *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataAtIndex:(unsigned long long)arg1;
 - (id)dataForKey:(id)arg1;
-- (void)dealloc;
 - (double)doubleAtIndex:(unsigned long long)arg1;
 - (double)doubleForKey:(id)arg1;
 - (id)init;

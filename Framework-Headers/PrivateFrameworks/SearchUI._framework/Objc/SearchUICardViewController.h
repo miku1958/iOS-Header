@@ -30,6 +30,7 @@
 - (double)offScreenContentScrollDistance;
 - (void)setShouldUseInsetRoundedSections:(BOOL)arg1;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
+- (id)testingTableViewController;
 - (void)updateWithCardSections:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

@@ -24,10 +24,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _SFPBGraphicalFloat *greenComponent; // @synthesize greenComponent=_greenComponent;
-@property (readonly, nonatomic) BOOL hasAlphaComponent;
-@property (readonly, nonatomic) BOOL hasBlueComponent;
-@property (readonly, nonatomic) BOOL hasGreenComponent;
-@property (readonly, nonatomic) BOOL hasRedComponent;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBGraphicalFloat *redComponent; // @synthesize redComponent=_redComponent;

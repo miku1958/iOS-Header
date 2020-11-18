@@ -36,7 +36,8 @@ __attribute__((visibility("hidden")))
 - (void)_invalidateCollectionsFetchResult;
 - (void)_updateCollectionsFetchResultIfNeeded;
 - (id)assetsFilterPredicate;
-- (long long)filteringAssetTypes;
+- (BOOL)canShowAvatarViews;
+- (unsigned long long)filteringAssetTypes;
 - (id)init;
 - (void)loadView;
 - (id)newGridViewControllerForAllPhotos;

@@ -10,6 +10,7 @@
 {
 }
 
+- (void)initialize;
 - (void)registerXPCEventHandlers;
 - (void)run;
 - (void)startup;

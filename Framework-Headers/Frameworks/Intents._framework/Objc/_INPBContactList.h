@@ -7,34 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBContactList-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBCondition;
+@class NSArray, NSString, _INPBCondition;
 
-@interface _INPBContactList : PBCodable <NSCopying>
+@interface _INPBContactList : PBCodable <_INPBContactList, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBCondition *_condition;
-    NSMutableArray *_contacts;
+    NSArray *_contacts;
 }
 
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;
-@property (strong, nonatomic) NSMutableArray *contacts; // @synthesize contacts=_contacts;
+@property (copy, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
+@property (readonly, nonatomic) unsigned long long contactsCount;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCondition;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (Class)contactType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addContact:(id)arg1;
 - (void)clearContacts;
 - (id)contactAtIndex:(unsigned long long)arg1;
-- (unsigned long long)contactsCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

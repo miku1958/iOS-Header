@@ -14,18 +14,19 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_accessibilityLoadFullScreenVideoView;
+- (void)_accessibilityLoadInfoOnPipVideoViews;
 - (void)_accessibilityMakeSureWindowIsVisibleToElementFetcher;
-- (void)_accessibilityPIPVideoInfoWithDisplayName:(id)arg1;
-- (void)_accessibilityRemoteVideoInfoWithDisplayName:(id)arg1;
-- (void)_accessibilityUpdateInfoOnLocalVideoView:(id)arg1 devicePosition:(long long)arg2;
-- (void)_accessibilityUpdateInfoOnLocalVideoViewsForDevicePosition:(long long)arg1;
-- (id)_accessibilityValueStringForLocalVideoAndDevicePosition:(long long)arg1;
+- (id)_axCurrentVideoCallDisplayName;
+- (long long)_axDevicePosition;
 - (void)_refreshStatusBarAndPIPAnimated:(BOOL)arg1;
-- (void)_setUpCameraFlipButtonIfNecessary;
+- (BOOL)accessibilityPerformEscape;
+- (void)loadView;
+- (void)setControlsState:(long long)arg1 animated:(BOOL)arg2;
 - (void)toggleLocalCameraType;
 - (void)updateTopBar:(BOOL)arg1 bottomBar:(BOOL)arg2 animated:(BOOL)arg3;
+- (void)videoOverlayViewController:(id)arg1 isShowingOverlay:(BOOL)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

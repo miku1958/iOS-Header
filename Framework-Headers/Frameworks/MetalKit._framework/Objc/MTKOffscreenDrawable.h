@@ -11,6 +11,7 @@
 @class NSString;
 @protocol MTLDevice, MTLTexture;
 
+__attribute__((visibility("hidden")))
 @interface MTKOffscreenDrawable : NSObject <MTLDrawable>
 {
     id<MTLTexture> _texture;

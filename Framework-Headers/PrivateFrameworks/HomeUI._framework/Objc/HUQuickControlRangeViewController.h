@@ -6,13 +6,14 @@
 
 #import <HomeUI/HUQuickControlSingleControlViewController.h>
 
-@class HFRangeControlItem;
+@class HFRangeControlItem, HUQuickControlSliderViewProfile;
 
 @interface HUQuickControlRangeViewController : HUQuickControlSingleControlViewController
 {
 }
 
 @property (readonly, nonatomic) HFRangeControlItem *controlItem; // @dynamic controlItem;
+@property (readonly, nonatomic) HUQuickControlSliderViewProfile *viewProfile; // @dynamic viewProfile;
 
 + (Class)controlItemClass;
 - (id)controlToViewValueTransformer;

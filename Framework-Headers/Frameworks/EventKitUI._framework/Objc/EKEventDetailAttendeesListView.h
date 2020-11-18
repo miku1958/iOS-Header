@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSMutableArray, UIColor, UIViewController;
+@class NSArray, NSMutableArray, UIActivityIndicatorView, UIColor, UIViewController;
 
 __attribute__((visibility("hidden")))
 @interface EKEventDetailAttendeesListView : UIView
@@ -20,14 +20,18 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_inviteeNames;
     BOOL _shouldEvenOutBlocks;
     NSArray *_finalizedNames;
+    UIActivityIndicatorView *_spinnerView;
+    BOOL _showingSpinner;
     BOOL _highlighted;
     BOOL _groupsNames;
     NSArray *_ungrouped;
     UIColor *_textColor;
     UIColor *_highlightedTextColor;
     UIViewController *_viewController;
+    double _bottomSpacingForSpinner;
 }
 
+@property (nonatomic) double bottomSpacingForSpinner; // @synthesize bottomSpacingForSpinner=_bottomSpacingForSpinner;
 @property (nonatomic) BOOL groupsNames; // @synthesize groupsNames=_groupsNames;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedTextColor;
@@ -35,10 +39,15 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *ungrouped; // @synthesize ungrouped=_ungrouped;
 @property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
-+ (id)statusGlyphs;
 - (void).cxx_destruct;
+- (double)_calculateHeightForItemCounts:(long long [4])arg1;
+- (double)_calculateHeightForSpinnerDisplayMode;
+- (void)_createSpinnerViewIfNeeded;
+- (BOOL)_haveContentToDraw;
+- (BOOL)_haveInviteesToDraw;
+- (void)_layoutSpinner;
+- (void)_setShowingSpinner:(BOOL)arg1;
 - (BOOL)_shouldAlwaysDrawSingleColumn;
-- (double)calculateHeightForItemCounts:(long long [4])arg1;
 - (double)calculatedHeight;
 - (void)contentSizeCategoryChanged;
 - (void)dealloc;
@@ -48,10 +57,12 @@ __attribute__((visibility("hidden")))
 - (id)generateAttributedStringsFromNames:(id)arg1 glyph:(id)arg2 displayCount:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutSubviews;
 - (double)maxColumnHeight;
 - (double)maxHeight;
 - (void)setInvitees:(id)arg1 forStatus:(int)arg2;
 - (void)setup;
+- (void)showSpinner;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

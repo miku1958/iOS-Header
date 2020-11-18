@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSString;
 
@@ -20,6 +20,7 @@
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 
 - (void).cxx_destruct;
+- (id)description;
 
 @end
 

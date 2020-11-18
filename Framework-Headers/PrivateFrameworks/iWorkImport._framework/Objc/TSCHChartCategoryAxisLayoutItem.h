@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSCHChartCategoryAxisLabelsLayoutItem *axisCategoryLabelsLayoutItem; // @synthesize axisCategoryLabelsLayoutItem=mCategoryLabels;
 @property (readonly, nonatomic) TSCHChartAxisSeriesLabelsLayoutItem *axisSeriesLabelsLayoutItem; // @synthesize axisSeriesLabelsLayoutItem=mSeriesLabels;
 
+- (void).cxx_destruct;
 - (void)buildSubTree;
-- (void)dealloc;
 - (void)p_layoutLabelsNow;
 - (struct CGRect)protected_layoutSpaceRectForAllLabels;
 - (id)renderersWithRep:(id)arg1;

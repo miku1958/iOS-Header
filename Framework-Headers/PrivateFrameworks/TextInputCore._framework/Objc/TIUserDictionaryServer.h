@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TIKeyboardActivityObserving-Protocol.h>
 #import <TextInputCore/TIUserDictionaryServing-Protocol.h>
@@ -34,6 +34,7 @@
 + (void)setSharedInstance:(id)arg1;
 + (id)sharedInstance;
 + (id)singletonInstance;
+- (void).cxx_destruct;
 - (id)addObserver:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)decrementRecentClientCountAfterDelay;

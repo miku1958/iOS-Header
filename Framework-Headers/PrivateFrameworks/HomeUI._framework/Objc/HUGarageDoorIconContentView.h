@@ -51,6 +51,7 @@
 + (id)_pathForMiddleDoorPanelWithHandleForBounds:(struct CGRect)arg1;
 + (double)_referenceHeightForPanelAtPosition:(unsigned long long)arg1 open:(BOOL)arg2;
 + (double)_referenceOriginYForPanelAtPosition:(unsigned long long)arg1 open:(BOOL)arg2;
++ (double)_scaleFactorForBounds:(struct CGRect)arg1 referenceSize:(struct CGSize)arg2;
 + (id)buildingPathForBounds:(struct CGRect)arg1;
 + (id)carPathForBounds:(struct CGRect)arg1;
 + (id)pathForPanelAtPosition:(unsigned long long)arg1 bounds:(struct CGRect)arg2 showHandle:(BOOL)arg3;

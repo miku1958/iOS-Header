@@ -22,11 +22,11 @@
 @property (readonly, nonatomic, getter=isBoundToContext) BOOL boundToContext;
 @property (readonly, copy, nonatomic) NSString *callToActionTitle;
 @property (readonly, copy, nonatomic) NSURL *callToActionURL;
-@property (readonly, copy, nonatomic) NSString *compactSourceName;
-@property (readonly, nonatomic) FCAssetHandle *compactSourceNameImageAssetHandle;
 @property (readonly, copy, nonatomic) id<FCHeadlineProviding> headline; // @synthesize headline=_headline;
 @property (readonly, nonatomic, getter=isHiddenFromFeeds) BOOL hiddenFromFeeds;
+@property (readonly, nonatomic) FCAssetHandle *nameImageAssetHandle;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid;
+@property (readonly, copy, nonatomic) NSString *sourceName;
 @property (readonly, copy, nonatomic) NSString *sourceTagID;
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSURL *videoURL;

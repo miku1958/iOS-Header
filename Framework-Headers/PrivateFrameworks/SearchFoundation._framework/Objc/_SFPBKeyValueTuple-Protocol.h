@@ -10,8 +10,6 @@
 
 @protocol _SFPBKeyValueTuple <NSObject>
 
-@property (readonly, nonatomic) BOOL hasKey;
-@property (readonly, nonatomic) BOOL hasValue;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *key;
 @property (copy, nonatomic) NSString *value;

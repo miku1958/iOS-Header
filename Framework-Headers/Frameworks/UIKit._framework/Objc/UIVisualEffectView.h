@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, UIImage, UIVisualEffect, _UIVisualEffectBackdropView, _UIVisualEffectHost, _UIVisualEffectViewBackdropCaptureGroup, _UIVisualEffectViewCapturedState;
+@class NSArray, NSString, UIImage, UIVisualEffect, _UIVisualEffectBackdropView, _UIVisualEffectHost, _UIVisualEffectViewBackdropCaptureGroup, _UIVisualEffectViewCapturedState, _UIVisualEffectViewCornerMask;
 
 @interface UIVisualEffectView : UIView <NSSecureCoding>
 {
-    struct {
-        unsigned int suppressReportingEmptyContentView:1;
-        unsigned int cornerRadiusIsContinuous:1;
-    } _effectViewFlags;
     UIView *_maskView;
     UIImage *_maskImage;
     _UIVisualEffectViewBackdropCaptureGroup *_captureGroup;
@@ -23,24 +19,31 @@
     _UIVisualEffectHost *_contentHost;
     BOOL _backgroundHostNeedsUpdate;
     BOOL _contentHostNeedsUpdate;
+    BOOL _isDependent;
     BOOL _noiseEnabled;
     double _backdropViewBackgroundColorAlpha;
     BOOL _useReducedTransparencyForContentHost;
     BOOL __useKeyframeWorkaround;
     BOOL _useLiveMasking;
-    double _cornerRadius;
     UIVisualEffect *_effect;
+    _UIVisualEffectViewCornerMask *__cornerMask;
     _UIVisualEffectViewCapturedState *__capturedStateDuringAnimation;
+    NSArray *__captureDependents;
     NSArray *_backgroundEffects;
     NSArray *_contentEffects;
 }
 
+@property (readonly, nonatomic) BOOL _applyCornerMaskToSelf;
 @property (nonatomic, getter=_backdropViewBackgroundColorAlpha, setter=_setBackdropViewBackgroundColorAlpha:) double _backdropViewBackgroundColorAlpha;
+@property (copy, nonatomic, setter=_setCaptureDependents:) NSArray *_captureDependents; // @synthesize _captureDependents=__captureDependents;
+@property (readonly, nonatomic) _UIVisualEffectViewBackdropCaptureGroup *_captureGroup; // @synthesize _captureGroup;
 @property (weak, nonatomic, setter=_setCaptureView:) _UIVisualEffectBackdropView *_captureView;
 @property (strong, nonatomic, getter=_capturedStateDuringAnimation, setter=_setCapturedStateDuringAnimation:) _UIVisualEffectViewCapturedState *_capturedStateDuringAnimation; // @synthesize _capturedStateDuringAnimation=__capturedStateDuringAnimation;
-@property (nonatomic, setter=_setCornerRadius:) double _cornerRadius; // @synthesize _cornerRadius;
+@property (strong, nonatomic, setter=_setCornerMask:) _UIVisualEffectViewCornerMask *_cornerMask; // @synthesize _cornerMask=__cornerMask;
+@property (nonatomic, setter=_setCornerRadius:) double _cornerRadius;
 @property (copy, nonatomic, setter=_setGroupName:) NSString *_groupName;
 @property (strong, nonatomic, setter=_setMaskImage:) UIImage *_maskImage;
+@property (nonatomic, getter=_isNoiseEnabled, setter=_setNoiseEnabled:) BOOL _noiseEnabled; // @synthesize _noiseEnabled;
 @property (nonatomic, setter=_setUseKeyframeWorkaround:) BOOL _useKeyframeWorkaround; // @synthesize _useKeyframeWorkaround=__useKeyframeWorkaround;
 @property (copy, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
 @property (copy, nonatomic) NSArray *contentEffects; // @synthesize contentEffects=_contentEffects;
@@ -69,16 +72,15 @@
 - (void)_generateWorkaroundKeyframeAnimationsForEffects:(id)arg1;
 - (BOOL)_hasTransformForEffectSubview:(id)arg1;
 - (id)_initialValueForKey:(id)arg1;
-- (BOOL)_isNoiseEnabled;
 - (id)_maskImageForMaskView:(id)arg1;
 - (id)_maskView;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_registerNotifications;
 - (void)_resetEffect;
 - (void)_setContinuousCornerRadius:(double)arg1;
+- (void)_setCornerRadius:(double)arg1 continuous:(BOOL)arg2 maskedCorners:(unsigned long long)arg3;
 - (void)_setEffect:(id)arg1;
 - (void)_setMaskView:(id)arg1;
-- (void)_setNoiseEnabled:(BOOL)arg1;
 - (void)_setTintOpacity:(double)arg1;
 - (BOOL)_shouldManageCornerRadiusForEffectSubview:(id)arg1;
 - (void)_unregisterNotifications;
@@ -93,6 +95,8 @@
 - (void)_updateSubviews;
 - (id)_whatsWrongWithThisEffect;
 - (void)dealloc;
+- (void)didMoveToSuperview;
+- (void)didMoveToWindow;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithEffect:(id)arg1;
@@ -100,7 +104,8 @@
 - (void)layoutSubviews;
 - (void)setContentView:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)viewDidMoveToSuperview;
+- (void)willMoveToSuperview:(id)arg1;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

@@ -10,10 +10,6 @@
 
 @protocol _SFPBUserActivityInfo <NSObject>
 
-@property (readonly, nonatomic) BOOL hasKey;
-@property (readonly, nonatomic) BOOL hasStringValue;
-@property (readonly, nonatomic) BOOL hasUrlValue;
-@property (readonly, nonatomic) BOOL hasValueType;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *key;
 @property (copy, nonatomic) NSString *stringValue;

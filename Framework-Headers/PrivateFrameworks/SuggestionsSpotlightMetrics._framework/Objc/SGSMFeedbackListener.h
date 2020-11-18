@@ -8,13 +8,13 @@
 
 #import <SuggestionsSpotlightMetrics/SFFeedbackListener-Protocol.h>
 
-@class NSCache, NSString, SGSMutableSearchState;
+@class NSCache, NSString, SGSMMutableSearchState;
 @protocol SGSuggestionsServiceEventsProtocol;
 
 @interface SGSMFeedbackListener : NSObject <SFFeedbackListener>
 {
-    SGSMutableSearchState *_searchState;
-    SGSMutableSearchState *_previousState;
+    SGSMMutableSearchState *_searchState;
+    SGSMMutableSearchState *_previousState;
     id<SGSuggestionsServiceEventsProtocol> _suggestionsService;
     NSCache *_eventLastInteractionTime;
 }

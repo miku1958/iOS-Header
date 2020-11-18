@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIViewServiceProxy_ReplyControl-Protocol.h>
+#import <UIKitCore/_UIViewServiceProxy_ReplyControl-Protocol.h>
 
 @class NSLock, _UIViewServiceReplyAwaitingTrampoline, _UIViewServiceReplyControlTrampoline;
 

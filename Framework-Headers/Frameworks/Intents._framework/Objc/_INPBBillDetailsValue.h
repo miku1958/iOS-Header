@@ -7,27 +7,30 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBBillDetailsValue-Protocol.h>
 
-@class PBUnknownFields, _INPBBillPayeeValue, _INPBCurrencyAmountValue, _INPBDateTime, _INPBValueMetadata;
+@class NSString, _INPBBillPayeeValue, _INPBCurrencyAmountValue, _INPBDateTime, _INPBValueMetadata;
 
-@interface _INPBBillDetailsValue : PBCodable <NSCopying>
+@interface _INPBBillDetailsValue : PBCodable <_INPBBillDetailsValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    CDStruct_c8e9def3 _has;
+    int _billType;
+    int _status;
     _INPBCurrencyAmountValue *_amountDue;
     _INPBBillPayeeValue *_billPayee;
-    int _billType;
     _INPBDateTime *_dueDate;
     _INPBCurrencyAmountValue *_lateFee;
     _INPBCurrencyAmountValue *_minimumDue;
     _INPBDateTime *_paymentDate;
-    int _status;
     _INPBValueMetadata *_valueMetadata;
-    CDStruct_c8e9def3 _has;
 }
 
 @property (strong, nonatomic) _INPBCurrencyAmountValue *amountDue; // @synthesize amountDue=_amountDue;
 @property (strong, nonatomic) _INPBBillPayeeValue *billPayee; // @synthesize billPayee=_billPayee;
 @property (nonatomic) int billType; // @synthesize billType=_billType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDateTime *dueDate; // @synthesize dueDate=_dueDate;
 @property (readonly, nonatomic) BOOL hasAmountDue;
 @property (readonly, nonatomic) BOOL hasBillPayee;
@@ -38,24 +41,21 @@
 @property (readonly, nonatomic) BOOL hasPaymentDate;
 @property (nonatomic) BOOL hasStatus;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBCurrencyAmountValue *lateFee; // @synthesize lateFee=_lateFee;
 @property (strong, nonatomic) _INPBCurrencyAmountValue *minimumDue; // @synthesize minimumDue=_minimumDue;
 @property (strong, nonatomic) _INPBDateTime *paymentDate; // @synthesize paymentDate=_paymentDate;
 @property (nonatomic) int status; // @synthesize status=_status;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsBillType:(id)arg1;
 - (int)StringAsStatus:(id)arg1;
 - (id)billTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

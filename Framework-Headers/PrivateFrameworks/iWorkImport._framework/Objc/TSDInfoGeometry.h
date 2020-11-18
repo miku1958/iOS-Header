@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -13,34 +13,38 @@
 __attribute__((visibility("hidden")))
 @interface TSDInfoGeometry : NSObject <TSDMixing, NSCopying, NSMutableCopying>
 {
-    struct CGPoint mPosition;
-    struct CGSize mSize;
+    struct CGPoint _position;
+    struct CGSize _size;
     struct {
         unsigned int widthValid:1;
         unsigned int heightValid:1;
         unsigned int horizontalFlip:1;
         unsigned int verticalFlip:1;
-    } mFlags;
-    double mAngle;
+    } _flags;
+    double _angle;
 }
 
 @property (readonly, nonatomic) BOOL allValuesValidNumbers;
-@property (readonly, nonatomic) double angle; // @synthesize angle=mAngle;
+@property (readonly, nonatomic) double angle; // @synthesize angle=_angle;
+@property (readonly, nonatomic) struct CGRect boundsBeforeRotation;
+@property (readonly, nonatomic) struct CGPoint center;
+@property (readonly, nonatomic) struct CGAffineTransform fullTransform;
 @property (readonly, nonatomic) BOOL heightValid;
 @property (readonly, nonatomic) BOOL horizontalFlip;
-@property (readonly, nonatomic) struct CGPoint position; // @synthesize position=mPosition;
-@property (readonly, nonatomic) struct CGSize size; // @synthesize size=mSize;
+@property (readonly, nonatomic) struct CGPoint position; // @synthesize position=_position;
+@property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (readonly, nonatomic) struct CGAffineTransform transform;
+@property (readonly, nonatomic) struct CGAffineTransform transformWithoutFlips;
+@property (readonly, nonatomic) struct CGRect transformedBounds;
+@property (readonly, nonatomic) struct CGPoint transformedBoundsOrigin;
 @property (readonly, nonatomic) BOOL verticalFlip;
 @property (readonly, nonatomic) BOOL widthValid;
 
 + (id)geometryFromFullTransform:(struct CGAffineTransform)arg1;
 + (id)geometryFromFullTransform:(struct CGAffineTransform)arg1 widthValid:(BOOL)arg2 heightValid:(BOOL)arg3;
 + (id)geometryFromTransform:(struct CGAffineTransform)arg1 withSize:(struct CGSize)arg2;
-- (struct CGRect)boundsBeforeRotation;
-- (struct CGPoint)center;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (struct CGAffineTransform)fullTransform;
 - (id)geometryByAppendingTransform:(struct CGAffineTransform)arg1;
 - (id)geometryRelativeToGeometry:(id)arg1;
 - (id)geometryWithNewBounds:(struct CGRect)arg1;
@@ -68,13 +72,9 @@ __attribute__((visibility("hidden")))
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)normalizedGeometry;
 - (void)saveToArchive:(struct GeometryArchive *)arg1 archiver:(id)arg2;
-- (struct CGAffineTransform)transform;
 - (struct CGAffineTransform)transformBasedOnPoint:(struct CGPoint)arg1 centeredAtPoint:(struct CGPoint)arg2;
 - (struct CGAffineTransform)transformBasedOnPoint:(struct CGPoint)arg1 centeredAtPoint:(struct CGPoint)arg2 withFlips:(BOOL)arg3;
 - (struct CGAffineTransform)transformBasedOnRect:(struct CGRect)arg1;
-- (struct CGAffineTransform)transformWithoutFlips;
-- (struct CGRect)transformedBounds;
-- (struct CGPoint)transformedBoundsOrigin;
 
 @end
 

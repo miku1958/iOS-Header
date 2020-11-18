@@ -32,7 +32,6 @@
 - (id)getTopHitsBasedOnCategoryOrder:(id)arg1 groupedResults:(id)arg2 CEPTopHitThreshold:(double)arg3 CEPProbabilityFactor:(double)arg4 topHitCountLimit:(long long)arg5;
 - (id)init;
 - (id)initWithGroupedResult:(id)arg1 preferredTopHitGroups:(id)arg2 shortcuts:(id)arg3;
-- (id)postDeDuplicationTopHitResultArray:(id)arg1;
 - (BOOL)rankIsMeaningfulForTopHit:(unsigned long long)arg1;
 
 @end

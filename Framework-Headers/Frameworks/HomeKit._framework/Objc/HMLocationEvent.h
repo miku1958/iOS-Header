@@ -25,7 +25,7 @@
 + (id)createWithDictionary:(id)arg1 home:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_configure:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3 msgDispatcher:(id)arg4;
+- (void)__configureWithContext:(id)arg1 eventTrigger:(id)arg2;
 - (void)_handleEventUpdatedNotification:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_retrieveLocationEvent;

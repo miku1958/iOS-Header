@@ -27,6 +27,7 @@
 
 - (void).cxx_destruct;
 - (double)_horizontalInset;
+- (void)_presentAccountUnavailableAlert;
 - (double)_verticalInset;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;

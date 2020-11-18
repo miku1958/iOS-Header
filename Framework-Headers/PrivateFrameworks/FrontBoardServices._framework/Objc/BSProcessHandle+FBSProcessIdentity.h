@@ -24,5 +24,6 @@
 @property (readonly, strong, nonatomic) BSMachPortTaskNameRight *taskNameRight; // @dynamic taskNameRight;
 @property (readonly, nonatomic) long long type;
 
+- (BOOL)_fbs_isApplication;
 @end
 

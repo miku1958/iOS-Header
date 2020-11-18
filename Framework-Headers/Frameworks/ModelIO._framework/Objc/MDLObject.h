@@ -34,10 +34,12 @@
 - (void)addChild:(id)arg1;
 - (struct)boundingBoxAtTime:(double)arg1;
 - (id)componentConformingToProtocol:(id)arg1;
+- (id)description;
 - (void)enumerateChildObjectsOfClass:(Class)arg1 root:(id)arg2 usingBlock:(CDUnknownBlockType)arg3 stopPointer:(BOOL *)arg4;
 - (id)init;
 - (id)objectAtPath:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
+- (id)recursiveDescription;
 - (void)setComponent:(id)arg1 forProtocol:(id)arg2;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 

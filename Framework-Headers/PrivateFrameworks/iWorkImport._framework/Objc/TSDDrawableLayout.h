@@ -13,8 +13,8 @@
 __attribute__((visibility("hidden")))
 @interface TSDDrawableLayout : TSDLayout <TSDWrappable>
 {
-    TSDWrapSegments *mCachedWrapSegments;
     TSUBezierPath *mCachedWrapPath;
+    TSDWrapSegments *mCachedWrapSegments;
     TSUBezierPath *mCachedPathForClippingConnectionLines;
     TSUBezierPath *mCachedExteriorWrapPath;
 }
@@ -35,8 +35,10 @@ __attribute__((visibility("hidden")))
 - (id)i_computeWrapPathClosed:(BOOL)arg1;
 - (void)i_invalidateWrap;
 - (id)i_wrapPath;
+- (void)inRootGeometryChangedBy:(struct CGAffineTransform)arg1;
 - (void)invalidate;
 - (void)invalidateExteriorWrap;
+- (void)invalidateInRootGeometry;
 - (void)invalidateParentForWrap;
 - (BOOL)isHTMLWrap;
 - (id)p_exteriorTextWrapPath;

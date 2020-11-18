@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSTimer, UIButton;
+@class FIUIWorkoutLapLengthIndexTranslator, NSTimer, UIButton;
 
 @interface FIUIValueAdjustmentButtonController : NSObject
 {
@@ -19,6 +19,7 @@
     double _maxValue;
     double _minValue;
     CDUnknownBlockType _valueUpdateHandler;
+    FIUIWorkoutLapLengthIndexTranslator *_lapLengthIndexTranslator;
     CDUnknownBlockType _buttonStateUpdateHandler;
     UIButton *_incrementButton;
     UIButton *_decrementButton;
@@ -28,6 +29,7 @@
 @property (readonly, weak, nonatomic) UIButton *decrementButton; // @synthesize decrementButton=_decrementButton;
 @property (nonatomic) BOOL didUserUpdatevalue; // @synthesize didUserUpdatevalue=_didUserUpdatevalue;
 @property (readonly, weak, nonatomic) UIButton *incrementButton; // @synthesize incrementButton=_incrementButton;
+@property (strong, nonatomic) FIUIWorkoutLapLengthIndexTranslator *lapLengthIndexTranslator; // @synthesize lapLengthIndexTranslator=_lapLengthIndexTranslator;
 @property (nonatomic) double maxValue; // @synthesize maxValue=_maxValue;
 @property (nonatomic) double minValue; // @synthesize minValue=_minValue;
 @property (nonatomic) double minumumStepValueIncrement; // @synthesize minumumStepValueIncrement=_minumumStepValueIncrement;
@@ -39,6 +41,7 @@
 - (void)_incrementRepeatCount;
 - (void)_notifyValueChanged;
 - (void)_performPlusMinusActionWithButton:(id)arg1;
+- (void)_performPlusMinusActionWithIndexTranslationForButton:(id)arg1;
 - (void)_plusMinusActionTimerDidFire:(id)arg1;
 - (void)_plusMinusButtonTouchCancel:(id)arg1;
 - (void)_plusMinusButtonTouchDown:(id)arg1;

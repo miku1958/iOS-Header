@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
 @interface IAPNavigationAccessoryComponent : NSObject
 {
     BOOL _isEnabled;
+    BOOL _requestSourceName;
+    BOOL _requestSourceSupportsRouteGuidance;
     BOOL __enabledModified;
     unsigned long long _identifier;
     NSString *_name;
@@ -30,6 +32,8 @@
 @property unsigned long long maxLength_ManeuverDescription; // @synthesize maxLength_ManeuverDescription=_maxLength_ManeuverDescription;
 @property unsigned long long maxLength_PostManeuverRoadName; // @synthesize maxLength_PostManeuverRoadName=_maxLength_PostManeuverRoadName;
 @property (strong) NSString *name; // @synthesize name=_name;
+@property BOOL requestSourceName; // @synthesize requestSourceName=_requestSourceName;
+@property BOOL requestSourceSupportsRouteGuidance; // @synthesize requestSourceSupportsRouteGuidance=_requestSourceSupportsRouteGuidance;
 
 - (void).cxx_destruct;
 - (id)description;

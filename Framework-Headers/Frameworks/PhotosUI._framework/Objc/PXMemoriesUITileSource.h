@@ -26,10 +26,12 @@
     id<PXMemoriesUITileSourceDelegate> _delegate;
     PXPhotoKitUIMediaProvider *__mediaProvider;
     PXFeedDateFormatter *__dateFormatter;
+    unsigned long long __memoriesStyle;
 }
 
 @property (readonly, nonatomic) PXFeedDateFormatter *_dateFormatter; // @synthesize _dateFormatter=__dateFormatter;
 @property (readonly, nonatomic) PXPhotoKitUIMediaProvider *_mediaProvider; // @synthesize _mediaProvider=__mediaProvider;
+@property (readonly, nonatomic) unsigned long long _memoriesStyle; // @synthesize _memoriesStyle=__memoriesStyle;
 @property (nonatomic) BOOL canRenderTextAsynchronously; // @synthesize canRenderTextAsynchronously=_canRenderTextAsynchronously;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PXMemoriesUITileSourceDelegate> delegate; // @synthesize delegate=_delegate;
@@ -49,7 +51,7 @@
 - (void)checkInTile:(void *)arg1 withIdentifier:(struct PXTileIdentifier)arg2;
 - (void *)checkOutTileForIdentifier:(struct PXTileIdentifier)arg1 layout:(id)arg2;
 - (void)dealloc;
-- (id)initWithScrollViewController:(id)arg1;
+- (id)initWithScrollViewController:(id)arg1 memoriesStyle:(unsigned long long)arg2;
 - (BOOL)providesTileForIdentifier:(struct PXTileIdentifier)arg1;
 - (void)reusableObjectPool:(id)arg1 didCreateReusableObject:(id)arg2;
 - (void)reusableObjectPool:(id)arg1 didEvictReusableObject:(id)arg2;

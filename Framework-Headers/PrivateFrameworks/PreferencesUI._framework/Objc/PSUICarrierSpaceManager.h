@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PreferencesUI/CTCarrierSpaceClientDelegate-Protocol.h>
+#import <PreferencesUI/CoreTelephonyClientSubscriberDelegate-Protocol.h>
 
-@class CTCarrierSpaceAppsInfo, CTCarrierSpaceCapabilities, CTCarrierSpaceClient, CTCarrierSpacePlansInfo, CTCarrierSpaceUsageInfo, CTCarrierSpaceUserConsentFlowInfo, NSNumber, NSString, PSUIAppInstallController;
+@class CTCarrierSpaceAppsInfo, CTCarrierSpaceCapabilities, CTCarrierSpaceClient, CTCarrierSpacePlansInfo, CTCarrierSpaceUsageInfo, CTCarrierSpaceUserConsentFlowInfo, CoreTelephonyClient, NSNumber, NSString, PSUIAppInstallController;
 @protocol OS_dispatch_queue;
 
-@interface PSUICarrierSpaceManager : NSObject <CTCarrierSpaceClientDelegate>
+@interface PSUICarrierSpaceManager : NSObject <CTCarrierSpaceClientDelegate, CoreTelephonyClientSubscriberDelegate>
 {
     NSObject<OS_dispatch_queue> *_carrierSpaceQueue;
     CTCarrierSpaceCapabilities *_capabilities;
@@ -23,6 +24,7 @@
     CTCarrierSpaceUserConsentFlowInfo *_userConsentFlowInfo;
     NSNumber *_userConsentResponse;
     struct __CTServerConnection *_serverConnection;
+    CoreTelephonyClient *_coreTelephonyClient;
     CTCarrierSpaceClient *_carrierSpaceClient;
 }
 
@@ -55,6 +57,7 @@
 - (void)reset;
 - (void)setUserConsent:(BOOL)arg1;
 - (BOOL)shouldShowPlanMetrics:(id)arg1;
+- (void)simStatusDidChange:(id)arg1 status:(id)arg2;
 - (id)subscribedDomesticPlanOptions;
 - (id)subscribedPlanOptions;
 - (BOOL)supportsSweetgum;

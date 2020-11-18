@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
+#import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INRideStatusExport-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class CLPlacemark, INDateComponentsRange, INRideCompletionStatus, INRideDriver, INRideOption, INRideVehicle, NSArray, NSDate, NSString, NSUserActivity;
 
-@interface INRideStatus : NSObject <INCacheableContainer, INRideStatusExport, NSCopying, NSSecureCoding>
+@interface INRideStatus : NSObject <INCacheableContainer, INImageProxyInjecting, INRideStatusExport, NSCopying, NSSecureCoding>
 {
+    NSArray *_waypoints;
     NSString *_rideIdentifier;
     long long _phase;
     INRideCompletionStatus *_completionStatus;
@@ -25,7 +27,6 @@
     NSDate *_estimatedPickupEndDate;
     INDateComponentsRange *_scheduledPickupTime;
     CLPlacemark *_pickupLocation;
-    NSArray *_waypoints;
     CLPlacemark *_dropOffLocation;
     INRideOption *_rideOption;
     NSUserActivity *_userActivityForCancelingInApplication;
@@ -59,6 +60,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_cacheableObjects;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

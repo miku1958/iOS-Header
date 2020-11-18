@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
@@ -16,7 +16,7 @@
     BOOL _representsHomeButton;
 }
 
-@property (readonly, strong, nonatomic, getter=_BSSettings) BSSettings *BSSettings; // @synthesize BSSettings=_settings;
+@property (readonly, nonatomic, getter=_BSSettings) BSSettings *BSSettings; // @synthesize BSSettings=_settings;
 @property (nonatomic) long long clickHapticAssetType;
 @property (readonly, nonatomic, getter=isLongPressEnabled) long long longPressEnabled;
 @property (nonatomic) double maximumLongPressTimeInterval;
@@ -29,8 +29,8 @@
 
 + (id)definitionForHomeButton;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_initWithBSSettings:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

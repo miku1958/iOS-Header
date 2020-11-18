@@ -16,7 +16,7 @@
 - (id)consentedBrands;
 - (void)dealloc;
 - (id)deniedBrands;
-- (void)forceUpdate;
+- (void)forceUpdateWithCallback:(id)arg1;
 - (id)initWithAppContext:(id)arg1;
 - (unsigned long long)privacyFlowContentVersion;
 - (BOOL)privateModeEnabled;

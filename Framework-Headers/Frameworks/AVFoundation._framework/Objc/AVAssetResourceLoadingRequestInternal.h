@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVAssetResourceLoadingContentInformationRequest, AVAssetResourceLoadingDataRequest, AVWeakReference, NSDictionary, NSMutableData, NSMutableURLRequest, NSURLRequest, NSURLResponse;
+@class AVAssetResourceLoadingContentInformationRequest, AVAssetResourceLoadingDataRequest, AVAssetResourceLoadingRequestor, AVWeakReference, NSDictionary, NSMutableData, NSMutableURLRequest, NSURLRequest, NSURLResponse;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetResourceLoadingRequestInternal : NSObject
 {
     AVWeakReference *weakReference;
     AVWeakReference *weakReferenceToResourceLoader;
     struct OpaqueFigCustomURLLoader *customURLLoader;
     struct OpaqueFigCustomURLHandler *customURLHandler;
-    struct OpaqueFigCustomURLHandler *contentKeySessionCustomURLHandler;
     struct __CFDictionary *requestInfo;
     unsigned long long requestID;
     long long responseInfoSentOnceToken;
@@ -36,6 +36,8 @@
     struct OpaqueFigAsset *figAsset;
     CDUnknownBlockType streamingKeyRequestCompletionHandler;
     struct OpaqueFigCPECryptor *figCryptor;
+    AVAssetResourceLoadingRequestor *requestor;
+    unsigned long long cryptorKeyRequestID;
 }
 
 @end

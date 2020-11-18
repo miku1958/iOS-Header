@@ -11,11 +11,11 @@
 __attribute__((visibility("hidden")))
 @interface TSTFunctionNode : TSTExpressionNode
 {
-    int _functionIndex;
     TSTFunctionEndNode *_functionEndNode;
-    NSString *_whitespaceAfterFunctionName;
+    int _functionIndex;
     NSString *_whitespaceAfterLeftParen;
     NSArray *_whitespaceAfterDelimiters;
+    NSString *_whitespaceAfterFunctionName;
     NSString *_invalidFunctionName;
 }
 
@@ -47,8 +47,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqualToExpressionNode:(id)arg1;
 - (BOOL)isFunctionNode;
 - (BOOL)isMissingRequiredArgument;
+- (unsigned long long)lastIndexOfSubtree;
 - (void)loadFromArchive:(const struct FunctionNodeArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)mostSpecificNodeContainingIndex:(unsigned long long)arg1 correspondingIndex:(unsigned long long)arg2;
 - (id)p_functionSpec;
 - (void)p_resetArgumentSpecForChildren;
 - (struct TSTCSENodeData)recordHashesForSubexpressions:(id)arg1;

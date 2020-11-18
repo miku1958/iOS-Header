@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilitySupplementaryFooterViews;
+- (BOOL)isAccessibilityElement;
 
 @end
 

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIAutoScrollBehavior-Protocol.h>
+#import <UIKitCore/_UIAutoScrollBehavior-Protocol.h>
 
 @class NSString;
 

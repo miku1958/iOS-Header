@@ -6,13 +6,13 @@
 
 #import <PhotosUICore/PXSettings.h>
 
-@class PUAirPlaySettings, PUAlbumListSettings, PUFeedSettings, PUIrisSettings, PUMedusaSettings, PUMemoriesSettings, PUMomentsSettings, PUOneUpSettings, PUPerformanceDiagnosticsSettings, PUPhotoEditProtoSettings, PUPhotosGridSettings, PUSceneSettings, PUSlideshowSettings, PUTilingViewSettings, PUWelcomeSettings, PUWorkaroundSettings;
+@class PUAirPlaySettings, PUAlbumListSettings, PUFeedSettings, PUImportSettings, PUIrisSettings, PUMedusaSettings, PUMemoriesSettings, PUMomentsSettings, PUOneUpSettings, PUPerformanceDiagnosticsSettings, PUPhotoEditProtoSettings, PUPhotosGridSettings, PUSceneSettings, PUSearchSettings, PUSlideshowSettings, PUTabbedLibrarySettings, PUTilingViewSettings, PUWelcomeSettings, PUWorkaroundSettings;
 
 @interface PURootSettings : PXSettings
 {
     BOOL _enforceDisableIrisUI;
-    BOOL _forcePlacesMapDisplay;
     BOOL _allowIrisUI;
+    PUTabbedLibrarySettings *_tabbedLibrarySettings;
     PUPhotosGridSettings *_photosGridSettings;
     PUPhotoEditProtoSettings *_photoEditingSettings;
     PUFeedSettings *_feedSettings;
@@ -28,16 +28,18 @@
     PUWelcomeSettings *_welcomeSettings;
     PUWorkaroundSettings *_workaroundSettings;
     PUSceneSettings *_sceneSettings;
+    PUSearchSettings *_searchSettings;
     PUIrisSettings *_irisSettings;
     Class _orbInterfaceThemeClass;
     PUPerformanceDiagnosticsSettings *_performanceDiagnosticsSettings;
+    PUImportSettings *_importSettings;
 }
 
 @property (strong, nonatomic) PUAirPlaySettings *airPlaySettings; // @synthesize airPlaySettings=_airPlaySettings;
 @property (strong, nonatomic) PUAlbumListSettings *albumListSettings; // @synthesize albumListSettings=_albumListSettings;
 @property (nonatomic) BOOL allowIrisUI; // @synthesize allowIrisUI=_allowIrisUI;
 @property (strong, nonatomic) PUFeedSettings *feedSettings; // @synthesize feedSettings=_feedSettings;
-@property (nonatomic) BOOL forcePlacesMapDisplay; // @synthesize forcePlacesMapDisplay=_forcePlacesMapDisplay;
+@property (strong, nonatomic) PUImportSettings *importSettings; // @synthesize importSettings=_importSettings;
 @property (strong, nonatomic) Class interfaceThemeClass; // @synthesize interfaceThemeClass=_interfaceThemeClass;
 @property (strong, nonatomic) PUIrisSettings *irisSettings; // @synthesize irisSettings=_irisSettings;
 @property (strong, nonatomic) PUMedusaSettings *medusaSettings; // @synthesize medusaSettings=_medusaSettings;
@@ -49,7 +51,9 @@
 @property (strong, nonatomic) PUPhotoEditProtoSettings *photoEditingSettings; // @synthesize photoEditingSettings=_photoEditingSettings;
 @property (strong, nonatomic) PUPhotosGridSettings *photosGridSettings; // @synthesize photosGridSettings=_photosGridSettings;
 @property (strong, nonatomic) PUSceneSettings *sceneSettings; // @synthesize sceneSettings=_sceneSettings;
+@property (strong, nonatomic) PUSearchSettings *searchSettings; // @synthesize searchSettings=_searchSettings;
 @property (strong, nonatomic) PUSlideshowSettings *slideshowSettings; // @synthesize slideshowSettings=_slideshowSettings;
+@property (strong, nonatomic) PUTabbedLibrarySettings *tabbedLibrarySettings; // @synthesize tabbedLibrarySettings=_tabbedLibrarySettings;
 @property (strong, nonatomic) PUTilingViewSettings *tilingViewSettings; // @synthesize tilingViewSettings=_tilingViewSettings;
 @property (strong, nonatomic) PUWelcomeSettings *welcomeSettings; // @synthesize welcomeSettings=_welcomeSettings;
 @property (strong, nonatomic) PUWorkaroundSettings *workaroundSettings; // @synthesize workaroundSettings=_workaroundSettings;

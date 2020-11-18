@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     UUIDData_5fbc143e _ownerUID;
 }
 
-@property (readonly) UUIDData_5fbc143e ownerUID;
+@property (readonly, nonatomic) UUIDData_5fbc143e ownerUID;
 
 - (id).cxx_construct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

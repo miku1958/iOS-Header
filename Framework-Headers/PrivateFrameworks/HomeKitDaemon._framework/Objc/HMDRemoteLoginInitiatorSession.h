@@ -6,16 +6,16 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSString;
+@class HMDLogEvent, NSString;
 @protocol HomeKitEventRemoteLoginMetricProtocol;
 
 @interface HMDRemoteLoginInitiatorSession : HMFObject
 {
     NSString *_sessionID;
-    id<HomeKitEventRemoteLoginMetricProtocol> _metric;
+    HMDLogEvent<HomeKitEventRemoteLoginMetricProtocol> *_metric;
 }
 
-@property (strong, nonatomic) id<HomeKitEventRemoteLoginMetricProtocol> metric; // @synthesize metric=_metric;
+@property (strong, nonatomic) HMDLogEvent<HomeKitEventRemoteLoginMetricProtocol> *metric; // @synthesize metric=_metric;
 @property (readonly, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 
 - (void).cxx_destruct;

@@ -10,7 +10,6 @@
 
 @class GEOVersionManifest, NSMutableArray, NSString, PBUnknownFields;
 
-__attribute__((visibility("hidden")))
 @interface GEOResources : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_announcementsSupportedLanguages;
     NSString *_announcementsURL;
     NSMutableArray *_attributions;
+    NSString *_authProxyURL;
     NSString *_authToken;
     NSString *_backgroundDispatcherURL;
     NSString *_backgroundRevGeoURL;
@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_textures;
     NSMutableArray *_tileGroups;
     NSMutableArray *_tileSets;
+    NSMutableArray *_urlInfoSets;
     GEOVersionManifest *_versionManifest;
     NSString *_wifiConnectionQualityProbeURL;
     NSMutableArray *_xmlChecksums;
@@ -76,6 +77,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *announcementsSupportedLanguages; // @synthesize announcementsSupportedLanguages=_announcementsSupportedLanguages;
 @property (strong, nonatomic) NSString *announcementsURL; // @synthesize announcementsURL=_announcementsURL;
 @property (strong, nonatomic) NSMutableArray *attributions; // @synthesize attributions=_attributions;
+@property (strong, nonatomic) NSString *authProxyURL; // @synthesize authProxyURL=_authProxyURL;
 @property (strong, nonatomic) NSString *authToken; // @synthesize authToken=_authToken;
 @property (strong, nonatomic) NSString *backgroundDispatcherURL; // @synthesize backgroundDispatcherURL=_backgroundDispatcherURL;
 @property (strong, nonatomic) NSString *backgroundRevGeoURL; // @synthesize backgroundRevGeoURL=_backgroundRevGeoURL;
@@ -94,6 +96,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasAddressCorrectionInitURL;
 @property (readonly, nonatomic) BOOL hasAddressCorrectionUpdateURL;
 @property (readonly, nonatomic) BOOL hasAnnouncementsURL;
+@property (readonly, nonatomic) BOOL hasAuthProxyURL;
 @property (readonly, nonatomic) BOOL hasAuthToken;
 @property (readonly, nonatomic) BOOL hasBackgroundDispatcherURL;
 @property (readonly, nonatomic) BOOL hasBackgroundRevGeoURL;
@@ -150,6 +153,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *tileGroups; // @synthesize tileGroups=_tileGroups;
 @property (strong, nonatomic) NSMutableArray *tileSets; // @synthesize tileSets=_tileSets;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) NSMutableArray *urlInfoSets; // @synthesize urlInfoSets=_urlInfoSets;
 @property (strong, nonatomic) GEOVersionManifest *versionManifest; // @synthesize versionManifest=_versionManifest;
 @property (strong, nonatomic) NSString *wifiConnectionQualityProbeURL; // @synthesize wifiConnectionQualityProbeURL=_wifiConnectionQualityProbeURL;
 @property (strong, nonatomic) NSMutableArray *xmlChecksums; // @synthesize xmlChecksums=_xmlChecksums;
@@ -172,6 +176,7 @@ __attribute__((visibility("hidden")))
 + (Class)textureType;
 + (Class)tileGroupType;
 + (Class)tileSetType;
++ (Class)urlInfoSetType;
 + (Class)xmlChecksumType;
 + (Class)xmlType;
 - (void).cxx_destruct;
@@ -192,6 +197,7 @@ __attribute__((visibility("hidden")))
 - (void)addTextureChecksum:(id)arg1;
 - (void)addTileGroup:(id)arg1;
 - (void)addTileSet:(id)arg1;
+- (void)addUrlInfoSet:(id)arg1;
 - (void)addXml:(id)arg1;
 - (void)addXmlChecksum:(id)arg1;
 - (id)announcementsSupportedLanguagesAtIndex:(unsigned long long)arg1;
@@ -215,6 +221,7 @@ __attribute__((visibility("hidden")))
 - (void)clearTextures;
 - (void)clearTileGroups;
 - (void)clearTileSets;
+- (void)clearUrlInfoSets;
 - (void)clearXmlChecksums;
 - (void)clearXmls;
 - (void)convertFromLegacyFormat;
@@ -239,6 +246,7 @@ __attribute__((visibility("hidden")))
 - (id)locationShiftEnabledRegionAtIndex:(unsigned long long)arg1;
 - (unsigned long long)locationShiftEnabledRegionsCount;
 - (void)mergeFrom:(id)arg1;
+- (id)preferedURLSetFor:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)regionalResourceAtIndex:(unsigned long long)arg1;
 - (unsigned long long)regionalResourcesCount;
@@ -256,6 +264,8 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)tileGroupsCount;
 - (id)tileSetAtIndex:(unsigned long long)arg1;
 - (unsigned long long)tileSetsCount;
+- (id)urlInfoSetAtIndex:(unsigned long long)arg1;
+- (unsigned long long)urlInfoSetsCount;
 - (void)workAround24919568IfNecessary;
 - (void)writeTo:(id)arg1;
 - (id)xmlAtIndex:(unsigned long long)arg1;

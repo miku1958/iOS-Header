@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)dequeueObjectForIdentifier:(id)arg1;
+- (id)inUseObjectForIdentifier:(id)arg1;
 - (id)initWithObjectConstructor:(CDUnknownBlockType)arg1;
 - (BOOL)isInUse:(id)arg1;
 - (void)prepareObjectForReuse:(id)arg1;

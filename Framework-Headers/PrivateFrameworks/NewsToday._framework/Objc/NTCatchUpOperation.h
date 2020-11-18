@@ -6,7 +6,7 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCachePolicy, NSDate, NSDictionary, NSMutableArray, NTCatchUpOperationForYouFetchInfo, NTCatchUpOperationForYouRequest, NTCatchUpOperationResults;
+@class NSDate, NSDictionary, NSMutableArray, NTCatchUpOperationForYouFetchInfo, NTCatchUpOperationForYouRequest, NTCatchUpOperationResults;
 @protocol FCContentContext, FCFeedPersonalizing, FCNewsAppConfiguration;
 
 @interface NTCatchUpOperation : FCOperation
@@ -15,7 +15,7 @@
     id<FCNewsAppConfiguration> _appConfiguration;
     id<FCContentContext> _contentContext;
     id<FCFeedPersonalizing> _feedPersonalizer;
-    FCCachePolicy *_cachePolicyForArticleLists;
+    NSDictionary *_todayConfigOperationHeldRecordsByType;
     unsigned long long _maximumCachedAgeForForYou;
     NTCatchUpOperationForYouRequest *_forYouRequest;
     CDUnknownBlockType _sessionProvider;
@@ -32,7 +32,6 @@
 @property (copy, nonatomic) id<FCNewsAppConfiguration> appConfiguration; // @synthesize appConfiguration=_appConfiguration;
 @property (strong, nonatomic) NSMutableArray *articleIDsRequests; // @synthesize articleIDsRequests=_articleIDsRequests;
 @property (strong, nonatomic) NSMutableArray *articleListRequests; // @synthesize articleListRequests=_articleListRequests;
-@property (strong, nonatomic) FCCachePolicy *cachePolicyForArticleLists; // @synthesize cachePolicyForArticleLists=_cachePolicyForArticleLists;
 @property (copy, nonatomic) CDUnknownBlockType catchUpCompletionHandler; // @synthesize catchUpCompletionHandler=_catchUpCompletionHandler;
 @property (strong, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property (strong, nonatomic) id<FCFeedPersonalizing> feedPersonalizer; // @synthesize feedPersonalizer=_feedPersonalizer;
@@ -45,6 +44,7 @@
 @property (copy, nonatomic) NSDictionary *resultsByArticleIDsRequestID; // @synthesize resultsByArticleIDsRequestID=_resultsByArticleIDsRequestID;
 @property (copy, nonatomic) NSDictionary *resultsByArticleListID; // @synthesize resultsByArticleListID=_resultsByArticleListID;
 @property (copy, nonatomic) CDUnknownBlockType sessionProvider; // @synthesize sessionProvider=_sessionProvider;
+@property (strong, nonatomic) NSDictionary *todayConfigOperationHeldRecordsByType; // @synthesize todayConfigOperationHeldRecordsByType=_todayConfigOperationHeldRecordsByType;
 
 - (void).cxx_destruct;
 - (void)_fetchArticleListAndArticleIDsResultsIfNeededWithCompletion:(CDUnknownBlockType)arg1;

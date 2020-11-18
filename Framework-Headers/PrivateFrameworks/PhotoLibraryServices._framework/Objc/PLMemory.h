@@ -6,11 +6,12 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
+#import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
 #import <PhotoLibraryServices/PLSearchableAssetCollection-Protocol.h>
 
 @class NSData, NSDate, NSDictionary, NSSet, NSString, PLManagedAsset;
 
-@interface PLMemory : PLManagedObject <PLSearchableAssetCollection>
+@interface PLMemory : PLManagedObject <PLSearchableAssetCollection, PLCloudDeletable>
 {
     BOOL _needsPersistenceUpdate;
 }
@@ -18,15 +19,23 @@
 @property (strong, nonatomic) NSData *assetListPredicate; // @dynamic assetListPredicate;
 @property (strong, nonatomic) NSData *blacklistedFeature; // @dynamic blacklistedFeature;
 @property (nonatomic) short category; // @dynamic category;
+@property (nonatomic) short cloudDeleteState; // @dynamic cloudDeleteState;
+@property (readonly) long long cloudDeletionType;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
+@property (readonly, copy) NSString *cloudUUIDForDeletion;
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
 @property (strong, nonatomic) NSSet *curatedAssets; // @dynamic curatedAssets;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSSet *extendedCuratedAssets; // @dynamic extendedCuratedAssets;
 @property (nonatomic) BOOL favorite; // @dynamic favorite;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PLManagedAsset *keyAsset; // @dynamic keyAsset;
+@property (readonly, nonatomic) NSDate *keyAssetCreationDate;
+@property (readonly, nonatomic) NSString *keyAssetUUID;
 @property (strong, nonatomic) NSDate *lastMoviePlayedDate; // @dynamic lastMoviePlayedDate;
 @property (strong, nonatomic) NSDate *lastViewedDate; // @dynamic lastViewedDate;
 @property (strong, nonatomic) NSDictionary *movieAssetState; // @dynamic movieAssetState;
@@ -34,6 +43,7 @@
 @property (strong, nonatomic) NSData *movieData; // @dynamic movieData;
 @property (nonatomic) BOOL needsPersistenceUpdate; // @synthesize needsPersistenceUpdate=_needsPersistenceUpdate;
 @property (nonatomic) short notificationState; // @dynamic notificationState;
+@property (readonly, nonatomic) unsigned long long numberOfAssets;
 @property (nonatomic) BOOL pending; // @dynamic pending;
 @property (nonatomic) long long pendingPlayCount; // @dynamic pendingPlayCount;
 @property (nonatomic) long long pendingShareCount; // @dynamic pendingShareCount;
@@ -44,10 +54,15 @@
 @property (nonatomic) BOOL rejected; // @dynamic rejected;
 @property (strong, nonatomic) NSSet *representativeAssets; // @dynamic representativeAssets;
 @property (nonatomic) double score; // @dynamic score;
+@property (readonly, nonatomic) NSDate *searchableEndDate;
+@property (readonly, nonatomic) NSDate *searchableStartDate;
 @property (nonatomic) long long shareCount; // @dynamic shareCount;
 @property (nonatomic) short subcategory; // @dynamic subcategory;
+@property (readonly, nonatomic) NSString *subtitle;
 @property (strong, nonatomic) NSString *subtitle; // @dynamic subtitle;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *title;
 @property (strong, nonatomic) NSString *title; // @dynamic title;
 @property (nonatomic) BOOL userCreated; // @dynamic userCreated;
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
@@ -56,10 +71,13 @@
 + (id)_memoriesMatchingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(long long)arg3 inManagedObjectContext:(id)arg4;
 + (BOOL)_shouldPrefetchMemoryMovieCuratedAssetsInPhotoLibrary:(id)arg1;
 + (id)baseSearchIndexPredicate;
++ (long long)cloudDeletionTypeForTombstone:(id)arg1;
++ (id)cloudUUIDKeyForDeletion;
 + (void)deleteMemoriesWithObjectIDs:(id)arg1 inPhotoLibrary:(id)arg2;
 + (void)deletePendingMemoriesCreatedBefore:(id)arg1 inPhotoLibrary:(id)arg2;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
++ (BOOL)indexTitleForMemoryCategory:(unsigned long long)arg1;
 + (id)insertIntoPhotoLibrary:(id)arg1 withUUID:(id)arg2 title:(id)arg3 subtitle:(id)arg4 creationDate:(id)arg5;
 + (id)memoriesToPrefetchInPhotoLibrary:(id)arg1;
 + (id)memoriesToUploadInPhotoLibrary:(id)arg1 limit:(long long)arg2;

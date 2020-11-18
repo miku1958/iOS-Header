@@ -24,6 +24,7 @@
 - (void)scheduleBookmarksDatabaseMaintenance;
 - (void)scheduleBookmarksDatabaseMigrationTask;
 - (void)scheduleHSTSSuperCookieCleanup;
+- (void)schedulePasswordIconsCleanup;
 
 @end
 

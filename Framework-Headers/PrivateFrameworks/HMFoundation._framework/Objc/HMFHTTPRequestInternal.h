@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSData, NSDictionary, NSMutableDictionary, NSString, NSURL;
+@class HMFActivity, NSData, NSDictionary, NSMutableDictionary, NSString, NSURL;
 
 @interface HMFHTTPRequestInternal : HMFObject
 {
@@ -14,9 +14,11 @@
     NSURL *_URL;
     NSString *_method;
     NSData *_body;
+    HMFActivity *_activity;
 }
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (readonly, nonatomic) HMFActivity *activity; // @synthesize activity=_activity;
 @property (strong, nonatomic) NSData *body; // @synthesize body=_body;
 @property (strong, nonatomic) NSDictionary *headerFields; // @synthesize headerFields=_headerFields;
 @property (copy, nonatomic) NSString *method; // @synthesize method=_method;

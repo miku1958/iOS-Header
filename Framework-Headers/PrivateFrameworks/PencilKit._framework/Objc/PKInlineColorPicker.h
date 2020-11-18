@@ -6,39 +6,54 @@
 
 #import <UIKit/UIView.h>
 
+#import <PencilKit/PKColorPickerDelegatePrivate-Protocol.h>
+#import <PencilKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <PencilKit/UIScrollViewDelegate-Protocol.h>
+#import <PencilKit/_PKAllowDrawingWhilePresentingPopoverViewDelegate-Protocol.h>
 
-@class NSArray, NSString, UIColor, UIScrollView;
-@protocol PKInlineColorPickerDelegate;
+@class NSArray, NSString, PKColorPicker, UIColor, UIScrollView;
+@protocol PKInlineColorPickerDelegate, _PKInlineColorPickerAllowDrawingWithPopoverDelegate;
 
-@interface PKInlineColorPicker : UIView <UIScrollViewDelegate>
+@interface PKInlineColorPicker : UIView <UIScrollViewDelegate, PKColorPickerDelegatePrivate, UIPopoverPresentationControllerDelegate, _PKAllowDrawingWhilePresentingPopoverViewDelegate>
 {
     BOOL _isUsedOnDarkBackground;
     BOOL _shouldEmboss;
+    BOOL _didSelectColorUsingSpringLoadedSelection;
     unsigned long long _sizeState;
     unsigned long long _selectionState;
     id<PKInlineColorPickerDelegate> _delegate;
     unsigned long long _colorSet;
     NSArray *_colors;
     unsigned long long _selectedColorIndex;
+    double _selectedColorAlpha;
     NSArray *_buttonItems;
     UIScrollView *_scrollView;
     UIView *_leftOverflowView;
     UIView *_rightOverflowView;
+    PKColorPicker *_presentedColorPicker;
+    UIColor *__pickerColor;
+    UIColor *_selectedColorBeforeSpringLoadedSelection;
+    id<_PKInlineColorPickerAllowDrawingWithPopoverDelegate> __allowDrawingWithPopoverDelegate;
 }
 
+@property (weak, nonatomic) id<_PKInlineColorPickerAllowDrawingWithPopoverDelegate> _allowDrawingWithPopoverDelegate; // @synthesize _allowDrawingWithPopoverDelegate=__allowDrawingWithPopoverDelegate;
+@property (strong, nonatomic) UIColor *_pickerColor; // @synthesize _pickerColor=__pickerColor;
 @property (strong, nonatomic) NSArray *buttonItems; // @synthesize buttonItems=_buttonItems;
 @property (nonatomic) unsigned long long colorSet; // @synthesize colorSet=_colorSet;
 @property (strong, nonatomic) NSArray *colors; // @synthesize colors=_colors;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKInlineColorPickerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didSelectColorUsingSpringLoadedSelection; // @synthesize didSelectColorUsingSpringLoadedSelection=_didSelectColorUsingSpringLoadedSelection;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isUsedOnDarkBackground; // @synthesize isUsedOnDarkBackground=_isUsedOnDarkBackground;
 @property (strong, nonatomic) UIView *leftOverflowView; // @synthesize leftOverflowView=_leftOverflowView;
+@property (strong, nonatomic) PKColorPicker *presentedColorPicker; // @synthesize presentedColorPicker=_presentedColorPicker;
 @property (strong, nonatomic) UIView *rightOverflowView; // @synthesize rightOverflowView=_rightOverflowView;
 @property (strong, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (strong, nonatomic) UIColor *selectedColor;
+@property (nonatomic) double selectedColorAlpha; // @synthesize selectedColorAlpha=_selectedColorAlpha;
+@property (strong, nonatomic) UIColor *selectedColorBeforeSpringLoadedSelection; // @synthesize selectedColorBeforeSpringLoadedSelection=_selectedColorBeforeSpringLoadedSelection;
 @property (nonatomic) unsigned long long selectedColorIndex; // @synthesize selectedColorIndex=_selectedColorIndex;
 @property (nonatomic) unsigned long long selectionState; // @synthesize selectionState=_selectionState;
 @property (nonatomic) BOOL shouldEmboss; // @synthesize shouldEmboss=_shouldEmboss;
@@ -46,25 +61,43 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_allowDrawingWhilePresentingPopoverViewDidBeginDrawing:(id)arg1;
 - (void)_axHandleLongPressOnColorButtonForLargeTextHUD:(id)arg1;
 - (id)_axLabelForColorButton:(id)arg1;
+- (void)_colorPicker:(id)arg1 willDismissAnimated:(BOOL)arg2;
+- (void)_colorPickerUserDidTouchUpInside:(id)arg1;
+- (void)_colorPickerWillDismiss:(id)arg1;
 - (void)_commonInit;
-- (unsigned long long)colorIndexClosestToColor:(id)arg1;
-- (void)colorPressed:(id)arg1;
-- (void)colorTappedInCompactChooseColorState:(id)arg1;
-- (void)colorTappedInCompactChooseToolState:(id)arg1;
-- (void)colorTappedInRegularState:(id)arg1;
-- (void)colorUnpressed:(id)arg1;
+- (void)_dismissColorPickerPopover:(BOOL)arg1;
+- (id)_effectiveViewControllerForPopoverPresentation;
+- (void)_forceSetColorSet:(unsigned long long)arg1;
+- (void)_presentColorPickerPopover:(BOOL)arg1;
+- (id)_representableColorForColor:(id)arg1;
+- (void)_selectColorWithButton:(id)arg1;
+- (void)_showColorPickerFromButton:(id)arg1 animated:(BOOL)arg2;
+- (void)_toggleColorPickerPopoverPresentation:(BOOL)arg1;
+- (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
+- (void)colorButtonTapHandler:(id)arg1;
+- (id)colorForIndex:(long long)arg1;
+- (unsigned long long)colorIndexMatchingColor:(id)arg1;
+- (long long)colorPickerButtonIndex;
+- (void)colorPickerDidChangeSelectedColor:(id)arg1;
 - (id)colorsForColorSet:(unsigned long long)arg1;
 - (id)createColorButtonItemWithColor:(id)arg1 shouldEmboss:(BOOL)arg2;
+- (id)createColorPickerButtonShouldEmboss:(BOOL)arg1;
+- (long long)defaultColorIndex;
 - (id)initWithEmbossing:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)notifiyDelegateDidSelectColor:(BOOL)arg1;
+- (void)notifyDelegateDidSelectColorInCompactChooseToolState;
+- (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)showOverflowViewsIfNeeded;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1 sizeState:(unsigned long long)arg2 selectionState:(unsigned long long)arg3;
+- (void)springLoadingGestureHandler:(id)arg1;
 
 @end
 

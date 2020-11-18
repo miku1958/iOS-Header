@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)perfromSelector:(SEL)arg1 onTarget:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

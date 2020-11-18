@@ -22,7 +22,7 @@
 @property BOOL canHaveSmallSpotlightIcons; // @synthesize canHaveSmallSpotlightIcons=_canHaveSmallSpotlightIcons;
 @property (strong) SFSearchResult *result; // @synthesize result=_result;
 @property (weak) id<SearchUIFeedbackDelegate> selectionAndFeedbackDelegate; // @synthesize selectionAndFeedbackDelegate=_selectionAndFeedbackDelegate;
-@property (strong) UIView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
+@property (weak) UIView *thumbnailView; // @synthesize thumbnailView=_thumbnailView;
 
 - (void).cxx_destruct;
 - (id)bundleID;

@@ -15,6 +15,7 @@
 + (id)brailleTableBundleWithTableIdentifier:(id)arg1;
 + (id)brailleTableIdentifiers;
 + (long long)bundleIndexForBrailleDriverIdentifier:(id)arg1;
++ (id)defaultBrailleTableForLanguageIdentifier:(id)arg1;
 + (BOOL)doesBrailleTableSupportContractions:(id)arg1;
 + (BOOL)doesBrailleTableSupportEightDot:(id)arg1;
 + (id)languageIdentifiersForBrailleTableIdentifier:(id)arg1;

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct MTLTextureDescriptorPrivate _private;
 }
 
+- (BOOL)allowGPUOptimizedContents;
 - (unsigned long long)arrayLength;
 - (unsigned long long)compressionMode;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -19,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)depth;
 - (id)description;
 - (const struct MTLTextureDescriptorPrivate *)descriptorPrivate;
+- (BOOL)forceResourceIndex;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (BOOL)framebufferOnly;
 - (unsigned long long)getSwizzle;
@@ -29,18 +31,22 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (unsigned long long)mipmapLevelCount;
 - (unsigned long long)pixelFormat;
+- (unsigned long long)resourceIndex;
 - (unsigned long long)resourceOptions;
 - (unsigned long long)rotation;
 - (unsigned long long)sampleCount;
+- (void)setAllowGPUOptimizedContents:(BOOL)arg1;
 - (void)setArrayLength:(unsigned long long)arg1;
 - (void)setCompressionMode:(unsigned long long)arg1;
 - (void)setCpuCacheMode:(unsigned long long)arg1;
 - (void)setDepth:(unsigned long long)arg1;
+- (void)setForceResourceIndex:(BOOL)arg1;
 - (void)setFramebufferOnly:(BOOL)arg1;
 - (void)setHeight:(unsigned long long)arg1;
 - (void)setIsDrawable:(BOOL)arg1;
 - (void)setMipmapLevelCount:(unsigned long long)arg1;
 - (void)setPixelFormat:(unsigned long long)arg1;
+- (void)setResourceIndex:(unsigned long long)arg1;
 - (void)setResourceOptions:(unsigned long long)arg1;
 - (void)setRotation:(unsigned long long)arg1;
 - (void)setSampleCount:(unsigned long long)arg1;

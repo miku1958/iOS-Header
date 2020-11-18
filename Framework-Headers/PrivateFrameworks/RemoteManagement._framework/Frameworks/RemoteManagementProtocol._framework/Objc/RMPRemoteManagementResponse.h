@@ -18,14 +18,19 @@
     NSArray *_errorChain;
 }
 
-@property (strong, nonatomic) NSString *UDID; // @synthesize UDID=_UDID;
-@property (strong, nonatomic) NSArray *errorChain; // @synthesize errorChain=_errorChain;
-@property (strong, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
-@property (strong, nonatomic) NSString *status; // @synthesize status=_status;
-@property (strong, nonatomic) NSString *syncToken; // @synthesize syncToken=_syncToken;
-@property (strong, nonatomic) NSString *userShortName; // @synthesize userShortName=_userShortName;
+@property (copy, nonatomic) NSString *UDID; // @synthesize UDID=_UDID;
+@property (copy, nonatomic) NSArray *errorChain; // @synthesize errorChain=_errorChain;
+@property (copy, nonatomic) NSString *requestUUID; // @synthesize requestUUID=_requestUUID;
+@property (copy, nonatomic) NSString *status; // @synthesize status=_status;
+@property (copy, nonatomic) NSString *syncToken; // @synthesize syncToken=_syncToken;
+@property (copy, nonatomic) NSString *userShortName; // @synthesize userShortName=_userShortName;
 
++ (id)responseWithUDID:(id)arg1 withUserShortName:(id)arg2 withSyncToken:(id)arg3 withStatus:(id)arg4 withRequestUUID:(id)arg5 withErrorChain:(id)arg6;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (BOOL)loadResponseFromDictionary:(id)arg1 error:(id *)arg2;
 - (id)serialize;
 

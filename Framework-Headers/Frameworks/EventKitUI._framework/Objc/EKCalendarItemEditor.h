@@ -129,7 +129,7 @@ __attribute__((visibility("hidden")))
 - (void)editItemWantsInjectableViewControllerToBeShown:(id)arg1;
 - (unsigned long long)entityType;
 - (long long)firstTableRowForEditItem:(id)arg1;
-- (void)focusAndSelectTitle;
+- (void)focus:(unsigned long long)arg1 select:(BOOL)arg2;
 - (void)handleTapOutside;
 - (BOOL)hasUnsavedChanges;
 - (id)init;

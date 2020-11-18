@@ -7,24 +7,31 @@
 #import <AVConference/VCTransportSession.h>
 
 #import <AVConference/VCConnectionManagerDelegate-Protocol.h>
+#import <AVConference/VCIDSSessionInfoSynchronizerDelegate-Protocol.h>
 
-@class NSString, VCDatagramChannelIDS;
+@class NSString, VCDatagramChannelIDS, VCIDSSessionInfoSynchronizer;
 
 __attribute__((visibility("hidden")))
-@interface VCTransportSessionIDS : VCTransportSession <VCConnectionManagerDelegate>
+@interface VCTransportSessionIDS : VCTransportSession <VCConnectionManagerDelegate, VCIDSSessionInfoSynchronizerDelegate>
 {
     int _socket;
     NSString *_destination;
     VCDatagramChannelIDS *_datagramChannel;
+    BOOL _requireEncryptionInfo;
+    VCIDSSessionInfoSynchronizer *_sessionInfoSynchronizer;
+    BOOL _isIDSDCEventUsageErrorReported;
+    BOOL _isSessionStarted;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *destination; // @synthesize destination=_destination;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) VCIDSSessionInfoSynchronizer *sessionInfoSynchronizer; // @synthesize sessionInfoSynchronizer=_sessionInfoSynchronizer;
 @property (nonatomic) int socket; // @synthesize socket=_socket;
 @property (readonly) Class superclass;
 
+- (void)VCIDSSessionInfoSynchronizer:(void *)arg1 sendVCIDSSessionInfoRequest:(id)arg2;
 - (void)connectionCallback:(id)arg1 isInitialConnection:(BOOL)arg2;
 - (id)connectionSetupPiggybackBlob;
 - (void)dealloc;
@@ -34,20 +41,26 @@ __attribute__((visibility("hidden")))
 - (void)handleCellularMTUChanged:(id)arg1;
 - (void)handleChannelInfoReport:(id)arg1;
 - (void)handleDefaultLinkUpdatedWithInfo:(id)arg1;
+- (void)handleIDSEncryptionInfoEvent:(id)arg1;
+- (void)handleIDSMembershipChangeInfoEvent:(id)arg1;
 - (void)handleLinkConnectedWithInfo:(id)arg1;
 - (void)handleLinkDisconnectedWithInfo:(id)arg1;
 - (void)handlePreConnectionDataReceived:(id)arg1;
 - (void)handleRATChanged:(id)arg1;
-- (id)initWithCallID:(unsigned int)arg1;
+- (void)handleUpdateRemoteSessionInfo:(id)arg1;
+- (id)initWithCallID:(unsigned int)arg1 reportingAgent:(id)arg2;
+- (id)initWithCallID:(unsigned int)arg1 requireEncryptionInfo:(BOOL)arg2 reportingAgent:(id)arg3 notificationQueue:(id)arg4 isMultiwaySession:(BOOL)arg5;
+- (void)optOutAllStreamsForConnection:(id)arg1;
 - (void)primaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
+- (void)processDatagramChannelEventInfo:(id)arg1;
 - (void)setConnectionSetupPiggybackBlob:(id)arg1;
 - (void)setConnectionSetupTime;
 - (void)setDefaultLink:(id)arg1;
 - (void)setPiggybackBlobPreference;
 - (void)setQuickRelayServerProvider:(int)arg1;
-- (void)setReportingAgent:(struct opaqueRTCReporting *)arg1;
 - (void)start;
 - (void)stop;
+- (void)updateParticipantGenerationCounter:(unsigned char)arg1;
 
 @end
 

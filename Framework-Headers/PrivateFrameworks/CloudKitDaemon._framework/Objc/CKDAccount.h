@@ -68,7 +68,6 @@ __attribute__((visibility("hidden")))
 - (id)_lockediCloudAuthTokenWithError:(id *)arg1;
 - (id)_urlBySettingCustomBaseURL:(id)arg1 onURL:(id)arg2;
 - (BOOL)_userCloudDBURLisInCarryPartition;
-- (id)applicationBundle;
 - (id)baseURLForServerType:(long long)arg1 partitionType:(long long)arg2;
 - (id)bundleID;
 - (void)cloudKitAuthTokenWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -77,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (id)containerScopedUserID;
 - (id)deviceName;
 - (void)displayAuthenticationPromptWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)displayedHostname;
 - (id)dsid;
 - (void)fetchConfigurationForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchDeviceIDForOperation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -103,6 +103,7 @@ __attribute__((visibility("hidden")))
 - (void)renewiCloudAuthTokenWithReason:(id)arg1 shouldForce:(BOOL)arg2 failedToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)resetMescalSession;
 - (id)serverPreferredPushEnvironment;
+- (id)sharingURLHostname;
 - (BOOL)shouldFailAllTasks;
 - (id)trafficContainerIdentifier;
 - (void)validateVettingToken:(id)arg1 vettingEmail:(id)arg2 vettingPhone:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

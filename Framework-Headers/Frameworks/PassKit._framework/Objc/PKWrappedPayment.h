@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -16,9 +16,11 @@
     NSData *_transactionData;
     NSData *_transactionInstructionsSignature;
     PKSecureElementCertificateSet *_certificates;
+    NSString *_kextBlacklistVersion;
 }
 
 @property (copy, nonatomic) PKSecureElementCertificateSet *certificates; // @synthesize certificates=_certificates;
+@property (copy, nonatomic) NSString *kextBlacklistVersion; // @synthesize kextBlacklistVersion=_kextBlacklistVersion;
 @property (copy, nonatomic) NSData *transactionData; // @synthesize transactionData=_transactionData;
 @property (copy, nonatomic) NSString *transactionIdentifier; // @synthesize transactionIdentifier=_transactionIdentifier;
 @property (copy, nonatomic) NSData *transactionInstructionsSignature; // @synthesize transactionInstructionsSignature=_transactionInstructionsSignature;

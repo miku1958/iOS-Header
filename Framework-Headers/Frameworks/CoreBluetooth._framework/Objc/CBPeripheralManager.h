@@ -36,8 +36,10 @@
     NSLock *_updateLock;
     NSNumber *_multipleAdvertisingSupported;
     NSHashTable *_l2capChannels;
+    unsigned long long _attributeIDGenerator;
 }
 
+@property unsigned long long attributeIDGenerator; // @synthesize attributeIDGenerator=_attributeIDGenerator;
 @property (readonly, strong, nonatomic) NSMapTable *centrals; // @synthesize centrals=_centrals;
 @property (readonly, strong, nonatomic) NSMutableDictionary *characteristicIDs; // @synthesize characteristicIDs=_characteristicIDs;
 @property (weak, nonatomic) id<CBPeripheralManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -80,7 +82,9 @@
 - (BOOL)isMsgAllowedWhenOff:(unsigned short)arg1;
 - (id)l2capChannelForPeer:(id)arg1 withPsm:(unsigned short)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)overrideLocalLeAddress:(id)arg1;
 - (id)peerWithInfo:(id)arg1;
+- (void)publishL2CAPChannel:(unsigned short)arg1 requiresEncryption:(BOOL)arg2;
 - (void)publishL2CAPChannel:(unsigned short)arg1 requiresEncryption:(BOOL)arg2 options:(id)arg3;
 - (void)publishL2CAPChannelWithEncryption:(BOOL)arg1;
 - (void)removeAllL2CAPChannels;

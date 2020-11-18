@@ -12,6 +12,6 @@
 
 @property (readonly, nonatomic) BOOL supportsTranscodeChoice;
 
-- (PLPTPConversionResult *)conversionResultForAsset:(PLPTPAsset *)arg1 isVideo:(BOOL)arg2 isRender:(BOOL)arg3;
+- (PLPTPConversionResult *)conversionResultForAsset:(PLPTPAsset *)arg1 isVideo:(BOOL)arg2 isRender:(BOOL)arg3 forceLegacyConversion:(BOOL)arg4;
 @end
 

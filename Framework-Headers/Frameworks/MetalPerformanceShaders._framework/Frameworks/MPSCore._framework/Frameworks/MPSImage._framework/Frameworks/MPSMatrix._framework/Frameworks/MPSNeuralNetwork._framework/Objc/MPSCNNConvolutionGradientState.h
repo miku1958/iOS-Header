@@ -15,6 +15,9 @@
 {
     BOOL _initialized;
     MPSCNNConvolution *_convolution;
+    id<MTLBuffer> _tempWeights;
+    id<MTLBuffer> _tempBiases;
+    unsigned long long _dimSizeN;
 }
 
 @property (readonly, strong, nonatomic) MPSCNNConvolution *convolution; // @synthesize convolution=_convolution;

@@ -10,33 +10,25 @@
 #import <CoreParsec/_CPSearchResultForFeedback-Protocol.h>
 
 @class NSData, NSString, _CPActionItemForFeedback, _CPPunchoutForFeedback, _CPStruct;
+@protocol NSCopying;
 
 @interface _CPSearchResultForFeedback : PBCodable <_CPSearchResultForFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int topHit:1;
-        unsigned int type:1;
-        unsigned int rankingScore:1;
-        unsigned int isStaticCorrection:1;
-        unsigned int queryId:1;
-        unsigned int isLocalApplicationResult:1;
-        unsigned int publiclyIndexable:1;
-        unsigned int isFuzzyMatch:1;
-    } _has;
     BOOL _isStaticCorrection;
     BOOL _isLocalApplicationResult;
     BOOL _publiclyIndexable;
     BOOL _isFuzzyMatch;
+    BOOL _doNotFold;
     int _topHit;
     int _type;
+    int _knownResultBundleId;
+    int _knownSectionBundleIdentifier;
+    int _knownApplicationBundleIdentifier;
     NSString *_identifier;
     _CPActionItemForFeedback *_action;
     _CPPunchoutForFeedback *_punchout;
     NSString *_srf;
     _CPStruct *_localFeatures;
-    NSString *_resultBundleId;
-    NSString *_applicationBundleIdentifier;
-    NSString *_sectionBundleIdentifier;
     NSString *_resultType;
     double _rankingScore;
     unsigned long long _queryId;
@@ -45,44 +37,40 @@
     NSString *_completedQuery;
     NSString *_fbr;
     NSString *_userInput;
+    unsigned long long _blockId;
+    unsigned long long _hashedIdentifier;
+    NSString *_resultBundleId;
+    NSString *_sectionBundleIdentifier;
+    NSString *_applicationBundleIdentifier;
+    unsigned long long _whichResultbundleidentifier;
+    unsigned long long _whichSectionbundleid;
+    unsigned long long _whichApplicationbundleid;
 }
 
 @property (strong, nonatomic) _CPActionItemForFeedback *action; // @synthesize action=_action;
 @property (copy, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
+@property (nonatomic) unsigned long long blockId; // @synthesize blockId=_blockId;
 @property (copy, nonatomic) NSString *completedQuery; // @synthesize completedQuery=_completedQuery;
 @property (copy, nonatomic) NSString *correctedQuery; // @synthesize correctedQuery=_correctedQuery;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL doNotFold; // @synthesize doNotFold=_doNotFold;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
-@property (readonly, nonatomic) BOOL hasAction;
-@property (readonly, nonatomic) BOOL hasApplicationBundleIdentifier;
-@property (readonly, nonatomic) BOOL hasCompletedQuery;
-@property (readonly, nonatomic) BOOL hasCorrectedQuery;
-@property (readonly, nonatomic) BOOL hasFbr;
-@property (readonly, nonatomic) BOOL hasIdentifier;
-@property (readonly, nonatomic) BOOL hasIntendedQuery;
-@property (readonly, nonatomic) BOOL hasIsFuzzyMatch;
-@property (readonly, nonatomic) BOOL hasIsLocalApplicationResult;
-@property (readonly, nonatomic) BOOL hasIsStaticCorrection;
-@property (readonly, nonatomic) BOOL hasLocalFeatures;
-@property (readonly, nonatomic) BOOL hasPubliclyIndexable;
-@property (readonly, nonatomic) BOOL hasPunchout;
-@property (readonly, nonatomic) BOOL hasQueryId;
-@property (readonly, nonatomic) BOOL hasRankingScore;
-@property (readonly, nonatomic) BOOL hasResultBundleId;
-@property (readonly, nonatomic) BOOL hasResultType;
-@property (readonly, nonatomic) BOOL hasSectionBundleIdentifier;
-@property (readonly, nonatomic) BOOL hasSrf;
-@property (readonly, nonatomic) BOOL hasTopHit;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasUserInput;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long hashedIdentifier; // @synthesize hashedIdentifier=_hashedIdentifier;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *intendedQuery; // @synthesize intendedQuery=_intendedQuery;
 @property (nonatomic) BOOL isFuzzyMatch; // @synthesize isFuzzyMatch=_isFuzzyMatch;
 @property (nonatomic) BOOL isLocalApplicationResult; // @synthesize isLocalApplicationResult=_isLocalApplicationResult;
 @property (nonatomic) BOOL isStaticCorrection; // @synthesize isStaticCorrection=_isStaticCorrection;
+@property (readonly, copy, nonatomic) NSString *jsonApplicationBundleIdentifier;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (readonly, copy, nonatomic) id<NSCopying> jsonIdentifier;
+@property (readonly, copy, nonatomic) NSString *jsonResultBundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *jsonSectionBundleIdentifier;
+@property (nonatomic) int knownApplicationBundleIdentifier; // @synthesize knownApplicationBundleIdentifier=_knownApplicationBundleIdentifier;
+@property (nonatomic) int knownResultBundleId; // @synthesize knownResultBundleId=_knownResultBundleId;
+@property (nonatomic) int knownSectionBundleIdentifier; // @synthesize knownSectionBundleIdentifier=_knownSectionBundleIdentifier;
 @property (strong, nonatomic) _CPStruct *localFeatures; // @synthesize localFeatures=_localFeatures;
 @property (nonatomic) BOOL publiclyIndexable; // @synthesize publiclyIndexable=_publiclyIndexable;
 @property (strong, nonatomic) _CPPunchoutForFeedback *punchout; // @synthesize punchout=_punchout;
@@ -96,6 +84,9 @@
 @property (nonatomic) int topHit; // @synthesize topHit=_topHit;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *userInput; // @synthesize userInput=_userInput;
+@property (readonly, nonatomic) unsigned long long whichApplicationbundleid; // @synthesize whichApplicationbundleid=_whichApplicationbundleid;
+@property (readonly, nonatomic) unsigned long long whichResultbundleidentifier; // @synthesize whichResultbundleidentifier=_whichResultbundleidentifier;
+@property (readonly, nonatomic) unsigned long long whichSectionbundleid; // @synthesize whichSectionbundleid=_whichSectionbundleid;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;

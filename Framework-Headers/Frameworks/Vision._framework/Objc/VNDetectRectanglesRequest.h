@@ -6,31 +6,36 @@
 
 #import <Vision/VNImageBasedRequest.h>
 
-@interface VNDetectRectanglesRequest : VNImageBasedRequest
+#import <Vision/VNImageIdealImageSizeProviding-Protocol.h>
+
+@class NSArray, NSString;
+
+@interface VNDetectRectanglesRequest : VNImageBasedRequest <VNImageIdealImageSizeProviding>
 {
-    float _minimumAspectRatio;
-    float _maximumAspectRatio;
-    float _quadratureTolerance;
-    float _minimumSize;
-    float _minimumConfidence;
-    unsigned long long _maximumObservations;
-    unsigned long long _requiredVersion;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) float maximumAspectRatio;
 @property (nonatomic) unsigned long long maximumObservations;
 @property (nonatomic) float minimumAspectRatio;
 @property (nonatomic) float minimumConfidence;
 @property (nonatomic) float minimumSize;
 @property (nonatomic) float quadratureTolerance;
-@property (nonatomic, setter=setRequiredVersion:) unsigned long long requiredVersion; // @synthesize requiredVersion=_requiredVersion;
+@property (nonatomic) unsigned long long requiredVersion;
+@property (readonly) Class superclass;
+@property (readonly) NSArray *supportedImageSizeSet;
 
++ (Class)configurationClass;
+- (id)_detectorOptions;
 - (void)applyConfigurationOfRequest:(id)arg1;
-- (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (long long)dependencyProcessingOrdinality;
 - (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
-- (id)sequencedRequestPreviousObservationsKey;
+- (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (CDUnknownBlockType)resultsSortingComparator;
+- (void)setSortedResults:(id)arg1;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

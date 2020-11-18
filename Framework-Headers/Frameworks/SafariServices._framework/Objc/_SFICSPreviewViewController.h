@@ -17,8 +17,10 @@
     UIBarButtonItem *_activityBarButtonItem;
     UIBarButtonItem *_doneBarButtonItem;
     EKICSPreviewController *_icsController;
+    CDUnknownBlockType _beforeDismissHandler;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType beforeDismissHandler; // @synthesize beforeDismissHandler=_beforeDismissHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -37,6 +39,7 @@
 - (id)popViewControllerAnimated:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

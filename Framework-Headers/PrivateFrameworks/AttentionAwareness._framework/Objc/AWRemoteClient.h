@@ -8,7 +8,7 @@
 
 #import <AttentionAwareness/AWRemoteClient-Protocol.h>
 
-@class AWAttentionEvent, AWScheduler, NSArray, NSString, NSXPCConnection;
+@class AWAttentionAwarenessConfiguration, AWAttentionEvent, AWScheduler, NSArray, NSString, NSXPCConnection;
 @protocol AWFrameworkClient, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
     unsigned long long _tagIndex;
     unsigned long long _eventMask;
     BOOL _samplingClient;
+    int _supportedEventsNotify;
+    AWAttentionAwarenessConfiguration *_lastConfig;
     double _lastNegativeEventTimeoutValueSec;
     NSArray *_attentionLostTimeoutsSec;
     BOOL _invalid;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL unitTestSampling; // @synthesize unitTestSampling=_unitTestSampling;
 
 - (void).cxx_destruct;
+- (void)_reevaluateConfig;
 - (void)_resetAttentionLostTimer;
 - (void)_setClientConfig:(id)arg1 shouldReset:(BOOL)arg2;
 - (id)connection;
@@ -51,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)deliverPollEventType:(unsigned long long)arg1 event:(id)arg2;
 - (id)description;
 - (void)getLastEvent:(CDUnknownBlockType)arg1;
-- (id)initWithProxy:(id)arg1 connection:(id)arg2 clientConfig:(id)arg3;
+- (id)initWithProxy:(id)arg1 connection:(id)arg2 clientConfig:(id)arg3 error:(id *)arg4;
 - (void)invalidate;
 - (unsigned long long)nextAttentionLostTime:(BOOL *)arg1;
 - (unsigned long long)nextSampleTimeForSampler:(id)arg1;

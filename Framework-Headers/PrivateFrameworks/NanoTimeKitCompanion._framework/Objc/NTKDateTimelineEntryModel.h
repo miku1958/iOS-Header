@@ -13,6 +13,7 @@
 
 @property (nonatomic) BOOL lunar; // @synthesize lunar=_lunar;
 
+- (id)_newBezelTemplate;
 - (id)_newCircularTemplateMedium:(BOOL)arg1;
 - (id)_newExtraLargeLunarTemplate;
 - (id)_newExtraLargeTemplate;
@@ -21,6 +22,7 @@
 - (id)_newModularLargeTemplate;
 - (id)_newModularSmallLunarTemplate;
 - (id)_newModularSmallTemplate;
+- (id)_newSignatureCircularTemplate;
 - (id)_newSmallFlatUtilitarianTemplate;
 - (id)templateForComplicationFamily:(long long)arg1;
 

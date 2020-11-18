@@ -16,9 +16,11 @@
     AKCropAnnotation *_cropAnnotation;
     AKInkAnnotation *_inkCanvasAnnotation;
     AKStatistics *_statisticsLogger;
+    struct CGRect _appliedCropRect;
 }
 
 @property (readonly) NSArray *annotations;
+@property struct CGRect appliedCropRect; // @synthesize appliedCropRect=_appliedCropRect;
 @property (strong) AKCropAnnotation *cropAnnotation; // @synthesize cropAnnotation=_cropAnnotation;
 @property (strong) AKInkAnnotation *inkCanvasAnnotation; // @synthesize inkCanvasAnnotation=_inkCanvasAnnotation;
 @property (weak) id representedObject; // @synthesize representedObject=_representedObject;

@@ -9,7 +9,7 @@
 #import <TelephonyUtilities/AVCRemoteVideoClientDelegate-Protocol.h>
 #import <TelephonyUtilities/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSMutableDictionary, NSString, NSUUID, TUCallDisplayContext, TUCallProvider, TUHandle;
+@class NSData, NSDictionary, NSMutableDictionary, NSSet, NSString, NSUUID, TUCallDisplayContext, TUCallProvider, TUHandle;
 @protocol TUCallServicesProxyCallActions, TURemoteVideoClient;
 
 @interface TUProxyCall : TUCall <AVCRemoteVideoClientDelegate, NSSecureCoding>
@@ -24,6 +24,7 @@
     BOOL _mediaStalled;
     BOOL _videoDegraded;
     BOOL _videoPaused;
+    BOOL _videoMirrored;
     BOOL _blocked;
     BOOL _emergency;
     BOOL _sos;
@@ -35,9 +36,13 @@
     BOOL _requiresRemoteVideo;
     BOOL _prefersExclusiveAccessToCellularNetwork;
     BOOL _remoteUplinkMuted;
+    BOOL _shouldSuppressInCallUI;
+    BOOL _wantsStagingArea;
     int _callStatus;
     int _ttyType;
     int _callRelaySupport;
+    float _localMeterLevel;
+    float _remoteMeterLevel;
     NSString *_callUUID;
     TUHandle *_handle;
     TUCallProvider *_backingProvider;
@@ -53,13 +58,14 @@
     NSData *_localFrequency;
     NSData *_remoteFrequency;
     long long _videoStreamToken;
+    long long _inputAudioPowerSpectrumToken;
+    long long _outputAudioPowerSpectrumToken;
     long long _remoteScreenOrientation;
     NSUUID *_callGroupUUID;
     NSDictionary *_providerContext;
     TUCallDisplayContext *_displayContext;
-    NSUUID *_conversationGroupUUID;
-    NSArray *_remoteParticipantHandles;
-    NSArray *_activeRemoteParticipantHandles;
+    NSSet *_remoteParticipantHandles;
+    NSUUID *_localSenderIdentityUUID;
     id<TUCallServicesProxyCallActions> _proxyCallActionsDelegate;
     id<TURemoteVideoClient> _localVideo;
     id<TURemoteVideoClient> _remoteVideo;
@@ -71,7 +77,6 @@
     struct CGRect _remoteVideoContentRect;
 }
 
-@property (copy, nonatomic) NSArray *activeRemoteParticipantHandles; // @synthesize activeRemoteParticipantHandles=_activeRemoteParticipantHandles;
 @property (copy, nonatomic) NSString *audioCategory; // @synthesize audioCategory=_audioCategory;
 @property (copy, nonatomic) NSString *audioMode; // @synthesize audioMode=_audioMode;
 @property (strong, nonatomic) TUCallProvider *backingProvider; // @synthesize backingProvider=_backingProvider;
@@ -82,7 +87,6 @@
 @property (copy, nonatomic) NSString *callUUID; // @synthesize callUUID=_callUUID;
 @property (copy, nonatomic) NSString *callerNameFromNetwork; // @synthesize callerNameFromNetwork=_callerNameFromNetwork;
 @property (nonatomic) long long cameraType; // @synthesize cameraType=_cameraType;
-@property (copy, nonatomic) NSUUID *conversationGroupUUID; // @synthesize conversationGroupUUID=_conversationGroupUUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) TUCallDisplayContext *displayContext; // @synthesize displayContext=_displayContext;
@@ -94,21 +98,26 @@
 @property (strong, nonatomic) TUHandle *handle; // @synthesize handle=_handle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHostedOnCurrentDevice) BOOL hostedOnCurrentDevice; // @synthesize hostedOnCurrentDevice=_hostedOnCurrentDevice;
+@property (nonatomic) long long inputAudioPowerSpectrumToken; // @synthesize inputAudioPowerSpectrumToken=_inputAudioPowerSpectrumToken;
 @property (nonatomic) BOOL isSendingAudio; // @synthesize isSendingAudio=_isSendingAudio;
 @property (nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
 @property (strong, nonatomic) NSData *localFrequency; // @synthesize localFrequency=_localFrequency;
+@property (nonatomic) float localMeterLevel; // @synthesize localMeterLevel=_localMeterLevel;
+@property (copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property (strong, nonatomic) id<TURemoteVideoClient> localVideo; // @synthesize localVideo=_localVideo;
 @property (strong, nonatomic) NSMutableDictionary *localVideoModeToLayer; // @synthesize localVideoModeToLayer=_localVideoModeToLayer;
 @property (nonatomic, getter=isMediaStalled) BOOL mediaStalled; // @synthesize mediaStalled=_mediaStalled;
 @property (nonatomic) BOOL needsManualInCallSounds; // @synthesize needsManualInCallSounds=_needsManualInCallSounds;
 @property (nonatomic, getter=isOutgoing) BOOL outgoing; // @synthesize outgoing=_outgoing;
+@property (nonatomic) long long outputAudioPowerSpectrumToken; // @synthesize outputAudioPowerSpectrumToken=_outputAudioPowerSpectrumToken;
 @property (nonatomic) BOOL prefersExclusiveAccessToCellularNetwork; // @synthesize prefersExclusiveAccessToCellularNetwork=_prefersExclusiveAccessToCellularNetwork;
 @property (strong, nonatomic) NSDictionary *providerContext; // @synthesize providerContext=_providerContext;
 @property (weak, nonatomic) id<TUCallServicesProxyCallActions> proxyCallActionsDelegate; // @synthesize proxyCallActionsDelegate=_proxyCallActionsDelegate;
 @property (nonatomic) struct CGSize remoteAspectRatio; // @synthesize remoteAspectRatio=_remoteAspectRatio;
 @property (nonatomic) long long remoteCameraOrientation; // @synthesize remoteCameraOrientation=_remoteCameraOrientation;
 @property (strong, nonatomic) NSData *remoteFrequency; // @synthesize remoteFrequency=_remoteFrequency;
-@property (copy, nonatomic) NSArray *remoteParticipantHandles; // @synthesize remoteParticipantHandles=_remoteParticipantHandles;
+@property (nonatomic) float remoteMeterLevel; // @synthesize remoteMeterLevel=_remoteMeterLevel;
+@property (copy, nonatomic) NSSet *remoteParticipantHandles; // @synthesize remoteParticipantHandles=_remoteParticipantHandles;
 @property (nonatomic) struct CGSize remoteScreenLandscapeAspectRatio; // @synthesize remoteScreenLandscapeAspectRatio=_remoteScreenLandscapeAspectRatio;
 @property (nonatomic) long long remoteScreenOrientation; // @synthesize remoteScreenOrientation=_remoteScreenOrientation;
 @property (nonatomic) struct CGSize remoteScreenPortraitAspectRatio; // @synthesize remoteScreenPortraitAspectRatio=_remoteScreenPortraitAspectRatio;
@@ -116,6 +125,7 @@
 @property (strong, nonatomic) id<TURemoteVideoClient> remoteVideo; // @synthesize remoteVideo=_remoteVideo;
 @property (nonatomic) struct CGRect remoteVideoContentRect; // @synthesize remoteVideoContentRect=_remoteVideoContentRect;
 @property (strong, nonatomic) NSMutableDictionary *remoteVideoModeToLayer; // @synthesize remoteVideoModeToLayer=_remoteVideoModeToLayer;
+@property (nonatomic) BOOL shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property (nonatomic, getter=isSOS, setter=setSOS:) BOOL sos; // @synthesize sos=_sos;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsTTYWithVoice; // @synthesize supportsTTYWithVoice=_supportsTTYWithVoice;
@@ -123,9 +133,11 @@
 @property (nonatomic) int ttyType; // @synthesize ttyType=_ttyType;
 @property (nonatomic, getter=isUsingBaseband) BOOL usingBaseband; // @synthesize usingBaseband=_usingBaseband;
 @property (nonatomic, getter=isVideoDegraded) BOOL videoDegraded; // @synthesize videoDegraded=_videoDegraded;
+@property (nonatomic, getter=isVideoMirrored) BOOL videoMirrored; // @synthesize videoMirrored=_videoMirrored;
 @property (nonatomic, getter=isVideoPaused) BOOL videoPaused; // @synthesize videoPaused=_videoPaused;
 @property (nonatomic) long long videoStreamToken; // @synthesize videoStreamToken=_videoStreamToken;
 @property (nonatomic, getter=isVoicemail) BOOL voicemail; // @synthesize voicemail=_voicemail;
+@property (nonatomic) BOOL wantsStagingArea; // @synthesize wantsStagingArea=_wantsStagingArea;
 
 + (id)proxyCallWithCall:(id)arg1;
 + (BOOL)supportsSecureCoding;

@@ -10,7 +10,7 @@
 #import <Silex/SXViewportChangeListener-Protocol.h>
 
 @class NFPendingPromise, NFStateMachine, NSString, SXComponentExposureMonitor, SXWebContentComponentExposureEvent, SXWebContentComponentInteractionManager, SXWebContentContainerViewController, UIActivityIndicatorView, UILabel, UITapGestureRecognizer;
-@protocol SXReachabilityProvider, SXWebContentConfigurationProvider, SXWebContentNavigationManager;
+@protocol SXReachabilityProvider, SXResourceDataSource, SXWebContentConfigurationProvider, SXWebContentLoadingPolicyProvider, SXWebContentNavigationManager;
 
 @interface SXWebContentComponentView : SXComponentView <SXViewportChangeListener, SXReachabilityObserver>
 {
@@ -19,6 +19,8 @@
     id<SXWebContentNavigationManager> _navigationManager;
     SXWebContentComponentInteractionManager *_interactionManager;
     id<SXReachabilityProvider> _reachabilityProvider;
+    id<SXResourceDataSource> _resourceDataSource;
+    id<SXWebContentLoadingPolicyProvider> _loadingPolicyProvider;
     NFStateMachine *_stateMachine;
     UIActivityIndicatorView *_loadingIndicator;
     UITapGestureRecognizer *_tapGestureRecognizer;
@@ -40,9 +42,11 @@
 @property (readonly, nonatomic) SXWebContentComponentInteractionManager *interactionManager; // @synthesize interactionManager=_interactionManager;
 @property (strong, nonatomic) NFPendingPromise *invalidationPromise; // @synthesize invalidationPromise=_invalidationPromise;
 @property (readonly, nonatomic) UIActivityIndicatorView *loadingIndicator; // @synthesize loadingIndicator=_loadingIndicator;
+@property (readonly, nonatomic) id<SXWebContentLoadingPolicyProvider> loadingPolicyProvider; // @synthesize loadingPolicyProvider=_loadingPolicyProvider;
 @property (readonly, nonatomic) id<SXWebContentNavigationManager> navigationManager; // @synthesize navigationManager=_navigationManager;
 @property (copy, nonatomic) CDUnknownBlockType queuedExposureBeginWork; // @synthesize queuedExposureBeginWork=_queuedExposureBeginWork;
 @property (readonly, nonatomic) id<SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
+@property (readonly, nonatomic) id<SXResourceDataSource> resourceDataSource; // @synthesize resourceDataSource=_resourceDataSource;
 @property (readonly, nonatomic) NFStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UITapGestureRecognizer *tapGestureRecognizer; // @synthesize tapGestureRecognizer=_tapGestureRecognizer;
@@ -54,12 +58,13 @@
 - (void)configureErrorProvider;
 - (void)configurePresentationManager;
 - (void)configureViewController;
+- (id)createDisabledState;
 - (id)createErrorState;
 - (id)createLoadingState;
 - (id)createPresentationState;
 - (id)createStateMachine;
 - (void)handleTap:(id)arg1;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 containerViewController:(id)arg6 configurationProvider:(id)arg7 navigationManager:(id)arg8 componentExposureMonitor:(id)arg9 interactionManagerFactory:(id)arg10 reachabilityProvider:(id)arg11;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 containerViewController:(id)arg6 configurationProvider:(id)arg7 navigationManager:(id)arg8 componentExposureMonitor:(id)arg9 interactionManagerFactory:(id)arg10 reachabilityProvider:(id)arg11 resourceDataSource:(id)arg12 loadingPolicyProvider:(id)arg13;
 - (void)layout;
 - (void)layoutErrorView;
 - (void)layoutLoadingIndicator;

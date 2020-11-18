@@ -10,12 +10,10 @@
 #import <SafariShared/WBSPerSitePreferenceManagerDefaultsDelegate-Protocol.h>
 #import <SafariShared/WBSPerSitePreferenceManagerStorageDelegate-Protocol.h>
 
-@class NSString, WBSPerSitePreference, WBSPerSitePreferenceValue, WBSPerSitePreferencesSQLiteStore;
+@class NSString, WBSPerSitePreference, WBSPerSitePreferencesSQLiteStore;
 
 @interface WBSContentBlockersPreferenceManager : WBSPerSitePreferenceManager <WBSPerSitePreferenceManagerStorageDelegate, WBSPerSitePreferenceManagerDefaultsDelegate, WBSPerSitePreferenceBinaryToggleItemManager>
 {
-    WBSPerSitePreferenceValue *_disabledPreferenceValue;
-    WBSPerSitePreferenceValue *_enabledPreferenceValue;
     WBSPerSitePreferencesSQLiteStore *_perSitePreferencesStore;
     WBSPerSitePreference *_contentBlockersPreference;
 }
@@ -33,6 +31,7 @@
 - (void)getContentBlockersEnabledStateForDomain:(id)arg1 withTimeout:(double)arg2 fallbackEnabledState:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithPerSitePreferencesStore:(id)arg1;
+- (id)localizedStringForValue:(id)arg1 inPreference:(id)arg2;
 - (id)offValueForPreference:(id)arg1;
 - (id)onValueForPreference:(id)arg1;
 - (id)preferences;

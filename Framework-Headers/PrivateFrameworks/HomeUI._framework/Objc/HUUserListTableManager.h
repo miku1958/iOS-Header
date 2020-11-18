@@ -7,14 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <HomeUI/HMHomeDelegatePrivate-Protocol.h>
-#import <HomeUI/HUAddUserViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUAddPeopleViewControllerDelegate-Protocol.h>
 #import <HomeUI/UITableViewDataSource-Protocol.h>
 #import <HomeUI/UITableViewDelegate-Protocol.h>
 
-@class HMHome, NSArray, NSIndexPath, NSString, UITableView, UIViewController;
+@class CNContactStore, HMHome, NSArray, NSIndexPath, NSString, UITableView, UIViewController;
 @protocol HUUserListManagerTableDelegate;
 
-@interface HUUserListTableManager : NSObject <HUAddUserViewControllerDelegate, HMHomeDelegatePrivate, UITableViewDataSource, UITableViewDelegate>
+@interface HUUserListTableManager : NSObject <HUAddPeopleViewControllerDelegate, HMHomeDelegatePrivate, UITableViewDataSource, UITableViewDelegate>
 {
     BOOL _editing;
     BOOL _allowsEditing;
@@ -25,11 +25,11 @@
     UIViewController *_viewController;
     UITableView *_tableView;
     NSIndexPath *_selectedIndexPath;
-    void *_addressBook;
+    CNContactStore *_contactStore;
 }
 
-@property (nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
 @property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
+@property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUUserListManagerTableDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -45,7 +45,7 @@
 
 - (void).cxx_destruct;
 - (void)_configurePersonViewController:(id)arg1 invitation:(id)arg2;
-- (void *)_copyPersonForUser:(id)arg1;
+- (id)_contactForUser:(id)arg1;
 - (void)_didAddUser:(id)arg1;
 - (void)_didInsertAtIndex:(unsigned long long)arg1;
 - (void)_didReloadAtIndex:(unsigned long long)arg1;
@@ -62,8 +62,8 @@
 - (void)_stopSharing;
 - (void)_stopSharingWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_stringForInvitationState:(long long)arg1;
-- (void)controllerDidDismissWithError:(id)arg1;
-- (void)controllerDidSendInvitations:(id)arg1;
+- (void)addPeopleViewController:(id)arg1 didSendInvitations:(id)arg2;
+- (void)addPeopleViewControllerDidCancel:(id)arg1;
 - (void)home:(id)arg1 didAddUser:(id)arg2;
 - (void)home:(id)arg1 didRemoveUser:(id)arg2;
 - (void)home:(id)arg1 didUpdateStateForOutgoingInvitations:(id)arg2;

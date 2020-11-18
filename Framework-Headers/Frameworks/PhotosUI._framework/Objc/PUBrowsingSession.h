@@ -10,32 +10,34 @@
 #import <PhotosUI/PUAssetsDataSourceManagerDelegate-Protocol.h>
 #import <PhotosUI/PULoadingStatusManagerDelegate-Protocol.h>
 #import <PhotosUI/PXAssetEditOperationManagerObserver-Protocol.h>
-#import <PhotosUI/PXAutoloopSchedulerDelegate-Protocol.h>
 
-@class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUTileAnimator, PXAssetEditOperationManager, PXPhotosDetailsContext;
+@class NSString, PUAssetActionManager, PUAssetsDataSourceManager, PUBrowsingViewModel, PUContentTileProvider, PULoadingStatusManager, PUMediaProvider, PUTileAnimator, PXAssetEditOperationManager, PXGestureProvider, PXPhotosDetailsContext;
+@protocol PXImportStatusManager;
 
-@interface PUBrowsingSession : NSObject <PUAssetsDataSourceManagerDelegate, PUAssetActionManagerDelegate, PULoadingStatusManagerDelegate, PXAssetEditOperationManagerObserver, PXAutoloopSchedulerDelegate>
+@interface PUBrowsingSession : NSObject <PUAssetsDataSourceManagerDelegate, PUAssetActionManagerDelegate, PULoadingStatusManagerDelegate, PXAssetEditOperationManagerObserver>
 {
-    BOOL _active;
     PUAssetsDataSourceManager *_dataSourceManager;
     PUMediaProvider *_mediaProvider;
     PUAssetActionManager *_actionManager;
     PUBrowsingViewModel *_viewModel;
     PUContentTileProvider *_contentTileProvider;
     PULoadingStatusManager *_loadingStatusManager;
+    id<PXImportStatusManager> _importStatusManager;
     PXPhotosDetailsContext *_photosDetailsContext;
+    PXGestureProvider *_gestureProvider;
     PXAssetEditOperationManager *_editOperationManager;
     PUTileAnimator *_tileAnimator;
 }
 
 @property (readonly, nonatomic) PUAssetActionManager *actionManager; // @synthesize actionManager=_actionManager;
-@property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (strong, nonatomic) PUContentTileProvider *contentTileProvider; // @synthesize contentTileProvider=_contentTileProvider;
 @property (readonly, nonatomic) PUAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PXAssetEditOperationManager *editOperationManager; // @synthesize editOperationManager=_editOperationManager;
+@property (readonly, nonatomic) PXGestureProvider *gestureProvider; // @synthesize gestureProvider=_gestureProvider;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<PXImportStatusManager> importStatusManager; // @synthesize importStatusManager=_importStatusManager;
 @property (readonly, nonatomic) PULoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
 @property (strong, nonatomic) PUMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (readonly, nonatomic) PXPhotosDetailsContext *photosDetailsContext; // @synthesize photosDetailsContext=_photosDetailsContext;
@@ -47,13 +49,13 @@
 - (id)assetActionManagerCurrentAssetsDataSource:(id)arg1;
 - (void)assetEditOperationManager:(id)arg1 didChangeEditOperationStatusForAsset:(id)arg2 context:(void *)arg3;
 - (void)assetEditOperationManager:(id)arg1 didChangeEditOperationsPerformedOnAsset:(id)arg2 context:(void *)arg3;
-- (id)assetUUIDToFavorizeForAutoloopScheduler:(id)arg1;
 - (void)assetsDataSourceManager:(id)arg1 didChangeAssetsDataSource:(id)arg2;
 - (id)assetsDataSourceManagerInterestingAssetReferences:(id)arg1;
 - (void)configureTilingView:(id)arg1;
 - (id)init;
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3;
 - (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4;
+- (id)initWithDataSourceManager:(id)arg1 actionManager:(id)arg2 mediaProvider:(id)arg3 photosDetailsContext:(id)arg4 gestureProvider:(id)arg5 importStatusManager:(id)arg6;
 - (void)loadingStatusManager:(id)arg1 didUpdateLoadingStatus:(id)arg2 forItem:(id)arg3;
 
 @end

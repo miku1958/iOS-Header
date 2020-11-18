@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) NSArray *availableVideoCVPixelFormatTypes;
 @property (readonly, nonatomic) NSArray *availableVideoCodecTypes;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) id delegateOverride;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) CDStruct_1b6d18a9 minFrameDuration;
@@ -30,7 +31,6 @@
 
 + (void)initialize;
 + (id)new;
-+ (id)supportedVideoSettingsKeys;
 - (void)_setMinFrameDuration:(CDStruct_1b6d18a9)arg1;
 - (id)addConnection:(id)arg1 error:(id *)arg2;
 - (BOOL)appliesMirroringWithPhysicalFlipForConnection:(id)arg1;
@@ -41,6 +41,7 @@
 - (void)dealloc;
 - (BOOL)hasRequiredOutputFormatForConnection:(id)arg1;
 - (id)init;
+- (BOOL)isVideoSettingsDimensionsOverrideEnabled;
 - (int)outputFormat;
 - (id)outputScalingModeForSourceFormat:(id)arg1;
 - (struct CGSize)outputSizeForSourceFormat:(id)arg1;
@@ -50,7 +51,9 @@
 - (unsigned int)requiredOutputFormatForConnection:(id)arg1;
 - (void)setDelegateOverride:(id)arg1 delegateOverrideCallbackQueue:(id)arg2;
 - (void)setSampleBufferDelegate:(id)arg1 queue:(id)arg2;
+- (void)setVideoSettingsDimensionsOverrideEnabled:(BOOL)arg1;
 - (id)supportedAssetWriterOutputFileTypes;
+- (id)supportedVideoSettingsKeys;
 - (BOOL)usesPreviewSizedBuffers;
 - (id)vettedVideoSettingsForSettingsDictionary:(id)arg1;
 

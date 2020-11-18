@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VideoConferenceDelegate-Protocol.h>
 
@@ -82,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)videoConference:(id)arg1 videoQualityNotificationForCallID:(unsigned int)arg2 isDegraded:(BOOL)arg3 isRemote:(BOOL)arg4;
 - (void)videoConference:(id)arg1 withCallID:(unsigned int)arg2 didPauseAudio:(BOOL)arg3 error:(id)arg4;
 - (void)videoConference:(id)arg1 withCallID:(unsigned int)arg2 didPauseVideo:(BOOL)arg3 error:(id)arg4;
+- (void)videoConference:(id)arg1 withCallID:(unsigned int)arg2 isSendingAudio:(BOOL)arg3 error:(id)arg4;
 - (void)videoConference:(id)arg1 withCallID:(unsigned int)arg2 networkHint:(BOOL)arg3;
 
 @end

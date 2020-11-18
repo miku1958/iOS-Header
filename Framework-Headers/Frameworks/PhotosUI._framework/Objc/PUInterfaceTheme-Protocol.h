@@ -38,7 +38,6 @@
 @property (readonly, nonatomic) NSDictionary *cloudFeedInvitationTitleTextAttributes;
 @property (readonly, nonatomic) NSDictionary *cloudFeedLargerDefaultTextAttributes;
 @property (readonly, nonatomic) NSDictionary *cloudFeedLargerEmphasizedTextAttributes;
-@property (readonly, nonatomic) UIImage *cloudFeedMiniChevronImage;
 @property (readonly, nonatomic) UIImage *cloudFeedSectionHeaderBackgroundImage;
 @property (readonly, nonatomic) UIColor *cloudFeedSeparatorColor;
 @property (readonly, nonatomic) double cloudFeedSeparatorHeight;
@@ -75,7 +74,6 @@
 @property (readonly, nonatomic) double photoCollectionToolbarTextTitleSpacerWidth;
 @property (readonly, nonatomic) UIColor *photoCollectionViewBackgroundColor;
 @property (readonly, nonatomic) int photoCollectionViewBackgroundColorValue;
-@property (readonly, nonatomic) UIColor *photoCollectionViewSecondScreenBackgroundColor;
 @property (readonly, nonatomic) UIColor *photoEditingActiveFilterTitleColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarBackgroundColor;
 @property (readonly, nonatomic) UIColor *photoEditingAdjustmentsBarCurrentPositionMarkerColor;
@@ -128,8 +126,11 @@
 @property (readonly, nonatomic) UIColor *playheadColor;
 @property (readonly, nonatomic) UIImage *regularLoadErrorIcon;
 @property (readonly, nonatomic) UIColor *scrubberPlaceholderColor;
+@property (readonly, nonatomic) UIFont *searchItalicTitleLabelFont;
 @property (readonly, nonatomic) UIFont *searchRecentLabelFont;
 @property (readonly, nonatomic) UIColor *searchRecentLabelTextColor;
+@property (readonly, nonatomic) UIFont *searchResultCountLabelFont;
+@property (readonly, nonatomic) UIColor *searchResultCountTextColor;
 @property (readonly, nonatomic) double searchSingleTitleBottomBaselineDistance;
 @property (readonly, nonatomic) double searchSingleTitleTopBaselineDistance;
 @property (readonly, nonatomic) double searchSubtitleBottomBaselineDistance;
@@ -168,16 +169,12 @@
 @property (readonly, nonatomic) double videoPaletteBottomMargin;
 @property (readonly, nonatomic) double videoPaletteSideMargin;
 @property (readonly, nonatomic) UIColor *videoScrubberTileBackgroundColor;
-@property (readonly, nonatomic) UIFont *wallpaperCategoryLabelFont;
 
 - (NSAttributedString *)attributedStringForCloudFeedGroupHeaderWithText:(NSString *)arg1;
 - (UIFont *)cloudWelcomeViewTitleLabelFontForSize:(double)arg1;
 - (NSString *)commentsButtonStringForCount:(long long)arg1;
 - (void)configureAlbumListDeleteButton:(UIButton *)arg1;
-- (void)configureAlbumListEmptyStackViewPadPhotoDecoration:(PUPhotoDecoration *)arg1;
-- (void)configureAlbumListEmptyStackViewPhonePhotoDecoration:(PUPhotoDecoration *)arg1;
 - (void)configureAlbumListSectionTitleLabel:(UILabel *)arg1;
-- (void)configureAlbumListStackViewPadPhotoDecoration:(PUPhotoDecoration *)arg1;
 - (void)configureAlbumListStackViewPhonePhotoDecoration:(PUPhotoDecoration *)arg1;
 - (void)configureAlbumListSubtitleLabel:(UILabel *)arg1 asOpaque:(BOOL)arg2;
 - (void)configureAlbumListTitleLabel:(UILabel *)arg1 asOpaque:(BOOL)arg2;
@@ -195,6 +192,8 @@
 - (void)configureEditPluginUserDefaultsAccessorySwitch:(UISwitch *)arg1;
 - (void)configureEditPluginUserDefaultsCell:(UITableViewCell *)arg1 withIcon:(UIImage *)arg2 title:(NSString *)arg3;
 - (void)configureEditPluginUserDefaultsTableView:(UITableView *)arg1;
+- (void)configureImportHeaderSubtitleLabel:(UILabel *)arg1;
+- (void)configureImportHeaderTitleLabel:(UILabel *)arg1;
 - (void)configureMapViewAnnotationCountLabel:(UILabel *)arg1;
 - (void)configurePhotoCollectionGlobalFooterProgressView:(UIProgressView *)arg1 paused:(BOOL)arg2;
 - (void)configurePhotoCollectionGlobalFooterSubtitleLabel:(UILabel *)arg1;
@@ -204,6 +203,7 @@
 - (void)configurePhotoCollectionHeaderLocationsLabel:(UILabel *)arg1 forStyle:(long long)arg2;
 - (void)configurePhotoCollectionHeaderTitleLabel:(UILabel *)arg1 forStyle:(long long)arg2;
 - (void)configureProgressIndicatorMessageLabel:(UILabel *)arg1;
+- (void)configureSearchResultCountLabel:(UILabel *)arg1;
 - (void)configureSearchSubtitleLabel:(UILabel *)arg1;
 - (void)configureSearchTitleLabel:(UILabel *)arg1;
 - (void)configureSlideshowMusicHeaderTitleLabel:(UILabel *)arg1;
@@ -226,6 +226,7 @@
 - (UIFontDescriptor *)photoCollectionHeaderTitleLabelFontDescriptorForStyle:(long long)arg1;
 - (NSDictionary *)searchDefaultAttributes;
 - (NSDictionary *)searchDimmedAttributes;
+- (NSDictionary *)searchItalicTitleAttributes;
 - (UIColor *)tintColorForBarStyle:(long long)arg1;
 - (UIImage *)topLevelNavigationBarBackButtonBackgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;
 - (UIImage *)topLevelNavigationBarButtonBackgroundImageForState:(unsigned long long)arg1 barMetrics:(long long)arg2;

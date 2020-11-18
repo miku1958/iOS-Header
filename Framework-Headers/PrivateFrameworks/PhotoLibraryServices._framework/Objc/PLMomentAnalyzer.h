@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLGeoLocationShifterDelegate-Protocol.h>
 
 @class CLLocation, NSDate, NSDateFormatter, NSDictionary, NSMutableArray, NSMutableOrderedSet, NSMutableSet, NSOrderedSet, NSString, PLGeoLocationShifter, PLMomentAnalyzerQueue, PLMomentAnalyzerWorkThread;
-@protocol GEOMapItemPrivate, OS_dispatch_queue, PLMomentGenerationDataManagement;
+@protocol GEOMapItemPrivate, OS_dispatch_queue, PLMomentGenerationDataManagement, PLMomentGenerationDataManagement_Private;
 
 @interface PLMomentAnalyzer : NSObject <PLGeoLocationShifterDelegate>
 {
@@ -28,6 +28,7 @@
     NSDateFormatter *_shortDateFormatter;
     NSDateFormatter *_dayOfTheWeekDateFormatter;
     id<PLMomentGenerationDataManagement> _momentDataManager;
+    id<PLMomentGenerationDataManagement_Private> _privateMomentDataManager;
     BOOL _analyzingAllMoments;
     BOOL _skippedMomentsDuringAnalysis;
     BOOL _passSuccess;
@@ -98,13 +99,14 @@
 - (void)_forwardGeocodeAddressDictionaryOnGeoThread:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (id)_geoLocationForCoordinate:(struct CLLocationCoordinate2D)arg1 date:(id)arg2;
 - (unsigned long long)_geoOrderInPrioritySet:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)_incrementalSaveAndRefresh;
 - (unsigned long long)_indexForGeoOrder:(unsigned long long)arg1 inPrioritySet:(id)arg2;
 - (BOOL)_isNetworkReachable;
 - (BOOL)_loadServerVersionInfo;
 - (id)_localizedNamesForNameInfoArray:(id)arg1 namesUsed:(id)arg2 includeHome:(BOOL)arg3 outAddedHome:(BOOL *)arg4;
 - (id)_locationFromDictionary:(id)arg1;
-- (BOOL)_markInvalidLowQualityAssetsInMoment:(id)arg1 withCurrentProviderId:(id)arg2;
-- (BOOL)_markInvalidOutOfDateAssetsInMoment:(id)arg1 forCurrentCountryVersionMap:(id)arg2 withCurrentProviderId:(id)arg3;
+- (id)_markInvalidLowQualityAssetsInMoment:(id)arg1 withCurrentProviderId:(id)arg2;
+- (id)_markInvalidOutOfDateAssetsInMoment:(id)arg1 forCurrentCountryVersionMap:(id)arg2 withCurrentProviderId:(id)arg3;
 - (void)_networkReachabilityDidChange:(BOOL)arg1;
 - (void)_processGEORequestWithRequestInfo:(id)arg1;
 - (unsigned long long)_processMegaMomentList:(id)arg1;

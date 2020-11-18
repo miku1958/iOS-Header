@@ -11,9 +11,11 @@
 @interface EKScheduledReminderPredicate : EKPredicate
 {
     NSDate *_day;
+    unsigned long long _maxResults;
 }
 
 @property (strong, nonatomic) NSDate *day; // @synthesize day=_day;
+@property (nonatomic) unsigned long long maxResults; // @synthesize maxResults=_maxResults;
 
 + (id)predicateForScheduledRemindersInCalendars:(id)arg1 onDay:(id)arg2;
 + (BOOL)supportsSecureCoding;

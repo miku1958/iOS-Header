@@ -6,16 +6,13 @@
 
 #import <VoiceMemos/RCFileInputWaveformDataSource.h>
 
+__attribute__((visibility("hidden")))
 @interface _RCTimeRangeFileInputWaveformDataSource : RCFileInputWaveformDataSource
 {
     BOOL _isDecomposedFragment;
-    double _destinationBeginTime;
-    CDStruct_73a5d3ca _sourceTimeRange;
 }
 
-@property (nonatomic) double destinationBeginTime; // @synthesize destinationBeginTime=_destinationBeginTime;
 @property (nonatomic) BOOL isDecomposedFragment; // @synthesize isDecomposedFragment=_isDecomposedFragment;
-@property (nonatomic) CDStruct_73a5d3ca sourceTimeRange; // @synthesize sourceTimeRange=_sourceTimeRange;
 
 - (void)saveGeneratedWaveformIfNecessary;
 

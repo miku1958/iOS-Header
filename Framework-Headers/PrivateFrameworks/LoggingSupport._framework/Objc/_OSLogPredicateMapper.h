@@ -8,11 +8,13 @@
 
 #import <LoggingSupport/NSPredicateVisitor-Protocol.h>
 
-@class NSMutableArray, NSPredicate;
+@class NSArray, NSMutableArray, NSMutableSet, NSPredicate;
 
 __attribute__((visibility("hidden")))
 @interface _OSLogPredicateMapper : NSObject <NSPredicateVisitor>
 {
+    int _pass;
+    NSMutableArray *_validationErrors;
     unsigned long long _flags;
     NSPredicate *_predicate;
     NSMutableArray *_stack;
@@ -21,14 +23,21 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic) NSPredicate *mappedPredicate; // @synthesize mappedPredicate=_predicate;
 @property (strong, nonatomic) NSMutableArray *stack; // @synthesize stack=_stack;
+@property (readonly, nonatomic) NSMutableSet *validKeyPaths;
+@property (readonly, nonatomic) NSArray *validationErrors; // @synthesize validationErrors=_validationErrors;
 
 - (void).cxx_destruct;
 - (id)initWithPredicate:(id)arg1;
+- (id)initWithPredicate:(id)arg1 andValidate:(BOOL)arg2;
 - (id)mapEventTypeExpression:(id)arg1;
+- (id)mapKeywordToConstantExpression:(id)arg1 keywordMap:(id)arg2;
 - (void)mapLeftExpression:(id *)arg1 andRightExpression:(id *)arg2;
 - (id)mapMessageTypeExpression:(id)arg1;
+- (id)mapSignpostScopeExpression:(id)arg1;
+- (id)mapSignpostTypeExpression:(id)arg1;
 - (void)processComparisonPredicate:(id)arg1;
 - (void)processCompoundPredicate:(id)arg1;
+- (void)validateExpression:(id)arg1;
 - (void)visitPredicate:(id)arg1;
 - (void)visitPredicateExpression:(id)arg1;
 - (void)visitPredicateOperator:(id)arg1;

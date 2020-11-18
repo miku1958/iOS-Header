@@ -13,14 +13,18 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityGeocodingGroup;
+- (id)_accessibilityGetGeocodingGroup;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (id)_accessibilityNearbyLocationDescription;
+- (void)_accessibilitySetGeocodingGroup:(id)arg1;
 - (void)_accessibilitySetNearbyLocationDescription:(id)arg1;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
+- (void)setCoordinate:(struct CLLocationCoordinate2D)arg1;
 
 @end
 

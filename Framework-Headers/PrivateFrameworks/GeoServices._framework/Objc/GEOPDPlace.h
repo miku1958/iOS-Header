@@ -88,7 +88,6 @@
 - (id)geoMapItemWithDetourInfo:(id)arg1;
 - (BOOL)hasExpiredComponentsAsOf:(double)arg1;
 - (unsigned long long)hash;
-- (BOOL)isCacheable;
 - (BOOL)isDisputed;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isStandAloneBrand;

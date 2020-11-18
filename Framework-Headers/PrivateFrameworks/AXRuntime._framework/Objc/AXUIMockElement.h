@@ -16,11 +16,13 @@
     NSMutableDictionary *_writableAttributes;
     NSMutableDictionary *_performActionLog;
     BOOL _usesCarriageReturnAsLinesSeparator;
+    CDUnknownBlockType _cacheUpdatedCallback;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType cacheUpdatedCallback; // @synthesize cacheUpdatedCallback=_cacheUpdatedCallback;
 @property (nonatomic) BOOL usesCarriageReturnAsLinesSeparator; // @synthesize usesCarriageReturnAsLinesSeparator=_usesCarriageReturnAsLinesSeparator;
 
-+ (void)applyElementAttributeCacheScheme:(int)arg1;
++ (void)applyElementAttributeCacheScheme:(unsigned long long)arg1;
 + (id)uiElementAtCoordinate:(struct CGPoint)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)_lineNumberForPoint:(struct CGPoint)arg1;
@@ -41,7 +43,6 @@
 - (unsigned long long)hash;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isKindOfClass:(Class)arg1;
 - (BOOL)isMockElement;
 - (BOOL)isValid;
 - (BOOL)isValidForApplication:(id)arg1;

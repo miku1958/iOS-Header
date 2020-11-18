@@ -32,10 +32,11 @@ __attribute__((visibility("hidden")))
     int _attempts;
     int _checksumMethod;
     unsigned int _tileEdition;
-    unsigned char _eTagType;
     BOOL _finished;
+    BOOL _existingCachedDataCurrent;
     _Atomic unsigned int _priority;
     GEODataSession *_dataSession;
+    unsigned long long _signpostID;
 }
 
 @property (readonly, nonatomic) NSURL *URL;
@@ -49,8 +50,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, weak, nonatomic) id<GEOSimpleTileRequesterOperationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) unsigned char eTagType; // @synthesize eTagType=_eTagType;
 @property (strong, nonatomic) NSString *editionHeader; // @synthesize editionHeader=_editionHeader;
+@property (readonly, nonatomic, getter=isExistingCachedDataCurrent) BOOL existingCachedDataCurrent; // @synthesize existingCachedDataCurrent=_existingCachedDataCurrent;
 @property (readonly, nonatomic) BOOL finished; // @synthesize finished=_finished;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int httpResponseStatusCode;
@@ -62,6 +63,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *responseEtag; // @synthesize responseEtag=_responseEtag;
 @property (readonly, nonatomic) BOOL responseIsCacheable;
 @property (readonly, nonatomic) long long responseSource;
+@property (nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) GEODataSessionTask *task; // @synthesize task=_task;
 @property unsigned int tileEdition; // @synthesize tileEdition=_tileEdition;

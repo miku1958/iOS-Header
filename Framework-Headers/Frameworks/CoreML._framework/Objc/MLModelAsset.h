@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL;
+@class MLModelConfiguration, NSURL;
 @protocol MLClassifier, MLModeling, MLRegressor;
 
 @interface MLModelAsset : NSObject
@@ -14,21 +14,25 @@
     BOOL _ranLoad;
     NSURL *_compiledURL;
     NSObject<MLModeling> *_asset;
+    MLModelConfiguration *_loadConfiguration;
 }
 
 @property (strong) NSObject<MLModeling> *asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic) id<MLClassifier> classifier;
 @property (readonly) NSURL *compiledURL; // @synthesize compiledURL=_compiledURL;
+@property (readonly, nonatomic) MLModelConfiguration *loadConfiguration; // @synthesize loadConfiguration=_loadConfiguration;
 @property (readonly, nonatomic) id<MLModeling> model;
 @property BOOL ranLoad; // @synthesize ranLoad=_ranLoad;
 @property (readonly, nonatomic) id<MLRegressor> regressor;
 
 + (id)modelAssetWithSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
 + (id)modelAssetWithSpecificationURL:(id)arg1 error:(id *)arg2;
++ (id)modelAssetWithURL:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 + (id)modelAssetWithURL:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)classifierWithError:(id *)arg1;
 - (id)description;
+- (id)initWithURL:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id)initWithURL:(id)arg1 error:(id *)arg2;
 - (BOOL)load:(id *)arg1;
 - (id)modelWithError:(id *)arg1;

@@ -6,8 +6,8 @@
 
 #import <Metal/MTLDevice-Protocol.h>
 
-@class MTLCommandQueueDescriptor, MTLComputePipelineDescriptor, MTLStructType, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSData, NSObject, NSString, _MTLIndirectArgumentBufferLayout;
-@protocol MTLArgumentEncoder, MTLCommandQueue, MTLComputePipelineState, MTLDeviceSPI, MTLFunction, MTLIndirectArgumentEncoder, MTLLibrary, MTLPipelineLibrarySPI, MTLRenderPipelineState, MTLTexture, MTLTextureLayout, OS_dispatch_data;
+@class MTLCommandQueueDescriptor, MTLComputePipelineDescriptor, MTLIndirectCommandBufferDescriptor, MTLStructType, MTLTextureDescriptor, MTLTileRenderPipelineDescriptor, NSArray, NSData, NSObject, NSString, _MTLIndirectArgumentBufferLayout;
+@protocol MTLArgumentEncoder, MTLBuffer, MTLCommandQueue, MTLComputePipelineState, MTLDevice, MTLDeviceSPI, MTLFunction, MTLIndirectArgumentEncoder, MTLIndirectRenderCommandEncoder, MTLLibrary, MTLPipelineLibrarySPI, MTLRenderPipelineState, MTLSharedEvent, MTLTexture, MTLTextureLayout, OS_dispatch_data;
 
 @protocol MTLDeviceSPI <MTLDevice>
 
@@ -21,9 +21,10 @@
 @property (readonly) unsigned long long indirectArgumentBuffersSupport;
 @property (readonly) unsigned long long iosurfaceReadOnlyTextureAlignmentBytes;
 @property (readonly) unsigned long long iosurfaceTextureAlignmentBytes;
-@property (readonly) const CDStruct_230ee03b *limits;
+@property (readonly) const CDStruct_37c53b2f *limits;
 @property (readonly) unsigned long long linearTextureAlignmentBytes;
-@property (readonly) unsigned long long maxBufferLength;
+@property (readonly) unsigned long long linearTextureArrayAlignmentBytes;
+@property (readonly) unsigned long long linearTextureArrayAlignmentSlice;
 @property (readonly) unsigned long long maxColorAttachments;
 @property (readonly) unsigned long long maxComputeBuffers;
 @property (readonly) unsigned long long maxComputeInlineDataSize;
@@ -39,11 +40,16 @@
 @property (readonly) unsigned long long maxFragmentTextures;
 @property (readonly) unsigned long long maxFramebufferStorageBits;
 @property (readonly) unsigned long long maxFunctionConstantIndices;
+@property (readonly) unsigned long long maxIndirectBuffers;
+@property (readonly) unsigned long long maxIndirectSamplers;
+@property (readonly) unsigned long long maxIndirectSamplersPerDevice;
+@property (readonly) unsigned long long maxIndirectTextures;
 @property (readonly) unsigned long long maxInterpolants;
 @property (readonly) unsigned long long maxInterpolatedComponents;
 @property (readonly) float maxLineWidth;
 @property (readonly) float maxPointSize;
 @property (readonly) unsigned long long maxTessellationFactor;
+@property (readonly) unsigned long long maxTextureBufferWidth;
 @property (readonly) unsigned long long maxTextureDepth3D;
 @property (readonly) unsigned long long maxTextureDimensionCube;
 @property (readonly) unsigned long long maxTextureHeight2D;
@@ -62,6 +68,7 @@
 @property (readonly) unsigned long long maxVertexInlineDataSize;
 @property (readonly) unsigned long long maxVertexSamplers;
 @property (readonly) unsigned long long maxVertexTextures;
+@property (readonly) unsigned long long maxViewportCount;
 @property (readonly) unsigned long long maxVisibilityQueryOffset;
 @property (nonatomic) BOOL metalAssertionsEnabled;
 @property (readonly) unsigned long long minBufferNoCopyAlignmentBytes;
@@ -74,25 +81,30 @@
 @property (readonly) BOOL supportPriorityBand;
 @property (readonly) const struct MTLTargetDeviceArch *targetDeviceInfo;
 
-+ (BOOL)metalBufferSanitizerEnabled;
 + (void)registerDevices;
+- (id<MTLDevice>)_deviceWrapper;
 - (void)_setDeviceWrapper:(id<MTLDeviceSPI>)arg1;
 - (void)compilerPropagatesThreadPriority:(BOOL)arg1;
 - (BOOL)deviceOrFeatureProfileSupportsFeatureSet:(unsigned long long)arg1;
 - (BOOL)deviceSupportsFeatureSet:(unsigned long long)arg1;
+- (NSString *)familyName;
 - (CDStruct_c0454aff)libraryCacheStats;
 - (unsigned long long)minLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
 - (id<MTLArgumentEncoder>)newArgumentEncoderWithLayout:(_MTLIndirectArgumentBufferLayout *)arg1;
 - (id<MTLCommandQueue>)newCommandQueueWithDescriptor:(MTLCommandQueueDescriptor *)arg1;
 - (_MTLIndirectArgumentBufferLayout *)newIndirectArgumentBufferLayoutWithStructType:(MTLStructType *)arg1;
 - (id<MTLIndirectArgumentEncoder>)newIndirectArgumentEncoderWithLayout:(_MTLIndirectArgumentBufferLayout *)arg1;
+- (id<MTLBuffer>)newIndirectCommandBufferWithDescriptor:(MTLIndirectCommandBufferDescriptor *)arg1 maxCount:(unsigned long long)arg2 options:(unsigned long long)arg3;
+- (id<MTLIndirectRenderCommandEncoder>)newIndirectRenderCommandEncoderWithBuffer:(id<MTLBuffer>)arg1;
+- (id<MTLSharedEvent>)newSharedEventWithMachPort:(unsigned int)arg1;
 - (CDStruct_c0454aff)pipelineCacheStats;
+- (NSString *)productName;
 - (BOOL)supportsSampleCount:(unsigned long long)arg1;
 - (void)unloadShaderCaches;
+- (NSString *)vendorName;
 
 @optional
 - (NSData *)endCollectingPipelineDescriptors;
-- (NSString *)familyName;
 - (void *)getShaderCacheKeys;
 - (NSObject<OS_dispatch_data> *)indirectArgumentBufferDecodingData;
 - (BOOL)mapShaderSampleBufferWithBuffer:(CDStruct_32a7f38a *)arg1 capacity:(unsigned long long)arg2 size:(unsigned long long)arg3;
@@ -109,11 +121,11 @@
 - (id<MTLRenderPipelineState>)newRenderPipelineStateWithTileDescriptor:(MTLTileRenderPipelineDescriptor *)arg1 error:(id *)arg2;
 - (id<MTLTextureLayout>)newTextureLayoutWithDescriptor:(MTLTextureDescriptor *)arg1 isHeapOrBufferBacked:(BOOL)arg2;
 - (id<MTLTexture>)newTextureWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 descriptor:(MTLTextureDescriptor *)arg3 deallocator:(void (^)(void *, unsigned long long))arg4;
-- (NSString *)productName;
+- (void)reserveResourceIndicesForResourceType:(unsigned long long)arg1 indices:(unsigned long long *)arg2 indexCount:(unsigned long long)arg3;
+- (unsigned long long)resourcePatchingTypeForResourceType:(unsigned long long)arg1;
 - (void)setIndirectArgumentBufferDecodingData:(NSObject<OS_dispatch_data> *)arg1;
 - (void)setupMPSFunctionTable:(struct MPSFunctionTable *)arg1;
 - (void)startCollectingPipelineDescriptors;
 - (void)unmapShaderSampleBuffer;
-- (NSString *)vendorName;
 @end
 

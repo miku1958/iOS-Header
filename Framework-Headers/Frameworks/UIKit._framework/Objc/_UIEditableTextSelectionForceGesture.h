@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITextSelectionForceGesture.h>
+#import <UIKitCore/_UITextSelectionForceGesture.h>
 
 @interface _UIEditableTextSelectionForceGesture : _UITextSelectionForceGesture
 {

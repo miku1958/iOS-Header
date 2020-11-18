@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface CUINamedRenditionInfo : NSObject
@@ -18,8 +18,11 @@ __attribute__((visibility("hidden")))
 - (int)attributePresent:(int)arg1 withValue:(unsigned short)arg2;
 - (id)bitwiseAndWith:(id)arg1;
 - (void)clearAttributePresent:(int)arg1 withValue:(unsigned short)arg2;
+- (BOOL)contentEqualForAttribute:(int)arg1 withRenditionInfo:(id)arg2;
+- (BOOL)contentPresentForAttribute:(int)arg1;
 - (void)dealloc;
 - (id)description;
+- (BOOL)diverseContentPresentForAttribute:(int)arg1;
 - (id)initWithData:(id)arg1 andKeyFormat:(const struct _renditionkeyfmt *)arg2;
 - (id)initWithKeyFormat:(const struct _renditionkeyfmt *)arg1;
 - (BOOL)isEqual:(id)arg1;

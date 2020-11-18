@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKUpNextElementDataSource.h>
+#import <RelevanceEngine/REElementDataSource.h>
 
-@interface NTKUpNextNewsDataSource : NTKUpNextElementDataSource
+@class NTKUpNextElementDataSource;
+
+@interface NTKUpNextNewsDataSource : REElementDataSource
 {
     NTKUpNextElementDataSource *_newsDataSourceProxy;
 }
@@ -15,10 +17,10 @@
 
 + (id)bundleIdentifier;
 + (Class)nanoNewsDataSourceClass;
-+ (id)sampleContentElements;
 + (BOOL)wantsReloadForSignificantTimeChange;
 - (void).cxx_destruct;
 - (void)getElementsDuringDateInterval:(id)arg1 inSection:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
+- (void)getElementsInSection:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)pause;
 - (void)resume;
@@ -26,6 +28,7 @@
 - (void)setDelegate:(id)arg1;
 - (void)setRunning:(BOOL)arg1;
 - (void)setState:(unsigned long long)arg1;
+- (id)supportedSections;
 
 @end
 

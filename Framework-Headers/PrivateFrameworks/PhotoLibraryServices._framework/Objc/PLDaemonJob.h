@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSError, PLXPCTransaction;
 @protocol OS_xpc_object;
@@ -13,6 +13,7 @@
 {
     NSObject<OS_xpc_object> *_xpcReply;
     PLXPCTransaction *_transaction;
+    unsigned long long _signpostId;
     NSObject<OS_xpc_object> *_connection;
 }
 
@@ -36,6 +37,7 @@
 - (void)sendToAssetsd;
 - (void)sendToAssetsdWithReply;
 - (BOOL)shouldArchiveXPCToDisk;
+- (BOOL)shouldRunOnDaemonSerialQueue;
 
 @end
 

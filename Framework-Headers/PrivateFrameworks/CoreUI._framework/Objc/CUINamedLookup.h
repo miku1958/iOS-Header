@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUIRenditionKey, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CUINamedLookup : NSObject
 {
     NSString *_name;
@@ -19,8 +18,19 @@ __attribute__((visibility("hidden")))
     unsigned int _odContent:1;
 }
 
+@property (readonly, nonatomic) NSString *appearance;
+@property (readonly, nonatomic) long long displayGamut;
+@property (readonly, nonatomic) long long graphicsClass;
+@property (readonly, nonatomic) long long idiom;
+@property (copy, nonatomic) CUIRenditionKey *key; // @synthesize key=_key;
+@property (readonly, nonatomic) long long layoutDirection;
+@property (readonly, nonatomic) long long memoryClass;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) BOOL representsOnDemandContent;
+@property (readonly, nonatomic) long long sizeClassHorizontal;
+@property (readonly, nonatomic) long long sizeClassVertical;
+@property (nonatomic) unsigned long long storageRef; // @synthesize storageRef=_storageRef;
+@property (readonly, nonatomic) unsigned long long subtype;
 
 - (BOOL)_cacheRenditionProperties;
 - (unsigned int)_distilledInVersion;

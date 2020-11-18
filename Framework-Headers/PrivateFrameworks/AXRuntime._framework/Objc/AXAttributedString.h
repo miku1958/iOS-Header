@@ -15,6 +15,8 @@
 
 + (id)axAttributedStringWithString:(id)arg1;
 + (id)string;
+- (id)_axRecursivelyPropertyListCoercedRepresentationWithError:(id *)arg1;
+- (id)_axRecursivelyReconstitutedRepresentationFromPropertyListWithError:(id *)arg1;
 - (void)appendAXAttributedString:(id)arg1;
 - (void)appendFormat:(id)arg1;
 - (void)appendString:(id)arg1;
@@ -47,6 +49,7 @@
 - (unsigned long long)length;
 - (id)lowercaseString;
 - (void)removeAttributes:(id)arg1;
+- (void)replaceCharactersInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (void)replaceString:(struct __CFString *)arg1;
 - (void)setAttribute:(id)arg1 forKey:(id)arg2;
 - (void)setAttribute:(id)arg1 forKey:(id)arg2 withRange:(struct _NSRange)arg3;
@@ -54,6 +57,7 @@
 - (void)setAttributes:(id)arg1 withRange:(struct _NSRange)arg2;
 - (id)string;
 - (id)stringByReplacingOccurrencesOfString:(id)arg1 withString:(id)arg2 options:(unsigned long long)arg3 range:(struct _NSRange)arg4;
+- (id)stringByTrimmingCharactersInSet:(id)arg1;
 - (id)substringFromIndex:(unsigned long long)arg1;
 - (id)uppercaseString;
 

@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLFileUtilities : NSObject
 {
 }
 
++ (BOOL)_isFileExistsError:(id)arg1;
 + (id)_mobileOwnerAttributes;
 + (BOOL)changeFileOwnerToMobileAtPath:(id)arg1 error:(id *)arg2;
 + (BOOL)changeFileOwnerToMobileAtPath:(id)arg1 error:(id *)arg2 usingFileManager:(id)arg3;

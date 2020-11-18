@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TSReading/TSDAutoscrollDelegate-Protocol.h>
 #import <TSReading/TSDGestureTarget-Protocol.h>
@@ -135,6 +135,8 @@
 + (id)dropProposalForSession:(id)arg1;
 + (id)previewForDragItem:(id)arg1;
 + (id)retargetedDragItem:(id)arg1 withDefault:(id)arg2 canvasView:(id)arg3 icc:(id)arg4;
+- (id)_addSelectionRectsForLayout:(id)arg1 selection:(id)arg2;
+- (id)_repsForStorage:(id)arg1 selection:(id)arg2;
 - (id)_repsForStorage:(id)arg1 selection:(id)arg2;
 - (void)abandonMarkedText;
 - (void)addAllDictationInterpretationRangesInRange:(struct _NSRange)arg1 toRanges:(struct TSWPRangeVector *)arg2;

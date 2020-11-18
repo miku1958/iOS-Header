@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)_keylineColorForVisualEffectStyle:(unsigned long long)arg1;
 - (double)_roundedKeylineThickness;
+- (double)defaultKeylineInsetForCurrentDevice;
 - (id)initWithType:(long long)arg1 direction:(long long)arg2 visualEffectStyle:(unsigned long long)arg3;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;

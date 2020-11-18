@@ -13,12 +13,14 @@
 @interface AKDeviceListRequestContext : NSObject <NSSecureCoding>
 {
     BOOL _includeUntrustedDevices;
+    BOOL _includeFamilyDevices;
     NSString *_altDSID;
     NSArray *_services;
     NSArray *_operatingSystems;
 }
 
 @property (copy, nonatomic) NSString *altDSID; // @synthesize altDSID=_altDSID;
+@property (nonatomic) BOOL includeFamilyDevices; // @synthesize includeFamilyDevices=_includeFamilyDevices;
 @property (nonatomic) BOOL includeUntrustedDevices; // @synthesize includeUntrustedDevices=_includeUntrustedDevices;
 @property (copy, nonatomic) NSArray *operatingSystems; // @synthesize operatingSystems=_operatingSystems;
 @property (copy, nonatomic) NSArray *services; // @synthesize services=_services;

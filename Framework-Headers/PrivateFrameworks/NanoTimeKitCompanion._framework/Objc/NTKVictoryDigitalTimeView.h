@@ -9,10 +9,11 @@
 #import <NanoTimeKitCompanion/CLKTimeFormatterObserver-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class CLKTimeFormatter, NSString, NTKVictoryDigitsView;
+@class CLKDevice, CLKTimeFormatter, NSString, NTKVictoryDigitsView;
 
 @interface NTKVictoryDigitalTimeView : UIView <CLKTimeFormatterObserver, NTKTimeView>
 {
+    CLKDevice *_device;
     NTKVictoryDigitsView *_upperDigitsView;
     NTKVictoryDigitsView *_lowerDigitsView;
     NTKVictoryDigitsView *_flipDigitsView;
@@ -40,7 +41,7 @@
 - (void)applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;
 - (void)clearEditingTransitions;
-- (id)init;
+- (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)setTimeOffset:(double)arg1;

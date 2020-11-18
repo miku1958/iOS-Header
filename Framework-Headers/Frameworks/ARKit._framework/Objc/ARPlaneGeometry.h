@@ -13,13 +13,17 @@
 @interface ARPlaneGeometry : NSObject <NSSecureCoding>
 {
     vector_1cb3ea33 _vertices;
-    vector_e654105b _textureCoordinates;
+    struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _textureCoordinates;
     vector_00df4d9c _triangleIndices;
     unsigned long long _boundaryVertexCount;
+    MISSING_TYPE *_center;
+    MISSING_TYPE *_extent;
 }
 
 @property (readonly, nonatomic) unsigned long long boundaryVertexCount; // @synthesize boundaryVertexCount=_boundaryVertexCount;
 @property (readonly, nonatomic) const MISSING_TYPE **boundaryVertices;
+@property (readonly, nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
+@property (readonly, nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
 @property (readonly, nonatomic) unsigned long long textureCoordinateCount;
 @property (readonly, nonatomic) const MISSING_TYPE **textureCoordinates;
 @property (readonly, nonatomic) unsigned long long triangleCount;
@@ -33,7 +37,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBoundaryVertices:(const struct vector<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> *)arg1 center:extent: /* Error: Ran out of types for this method. */;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithVertices:(const struct vector<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> *)arg1 textureCoordinates:(const struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> *)arg2 triangleIndices:(const vector_00df4d9c *)arg3 boundaryVertexCount:(unsigned long long)arg4;
+- (id)initWithVertices:(const struct vector<float __attribute__((ext_vector_type(3))), std::__1::allocator<float __attribute__((ext_vector_type(3)))>> *)arg1 triangleIndices:(const vector_00df4d9c *)arg2 boundaryVertexCount:(unsigned long long)arg3 center:extent: /* Error: Ran out of types for this method. */;
 
 @end
 

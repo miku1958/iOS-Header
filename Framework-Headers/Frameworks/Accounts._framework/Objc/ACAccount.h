@@ -11,7 +11,8 @@
 #import <Accounts/NSCopying-Protocol.h>
 #import <Accounts/NSSecureCoding-Protocol.h>
 
-@class ACAccountCredential, ACAccountStore, ACAccountType, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSURL;
+@class ACAccountCredential, ACAccountStore, ACAccountType, ACMutableTrackedSet, ACTrackedSet, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSURL;
+@protocol NSObject;
 
 @interface ACAccount : NSObject <ACProtobufCoding, NSCoding, NSCopying, NSSecureCoding>
 {
@@ -36,17 +37,19 @@
     NSURL *_objectID;
     NSDate *_date;
     NSDate *_lastCredentialRenewalRejectionDate;
+    NSString *_parentAccountIdentifier;
     ACAccount *_parentAccount;
     BOOL _haveCheckedForParentAccount;
-    NSString *_parentAccountIdentifier;
     BOOL _haveCheckedForChildAccounts;
     NSArray *_childAccounts;
-    NSMutableSet *_enabledDataclasses;
-    NSMutableSet *_provisionedDataclasses;
+    ACMutableTrackedSet *_trackedProvisionedDataclasses;
+    BOOL _wasProvisionedDataclassesReset;
+    ACMutableTrackedSet *_trackedEnabledDataclasses;
+    BOOL _wasEnabledDataclassesReset;
     NSMutableSet *_dirtyProperties;
     NSMutableSet *_dirtyAccountProperties;
     NSMutableSet *_dirtyDataclassProperties;
-    id _credentialsDidChangeObserver;
+    id<NSObject> _credentialsDidChangeObserver;
     CDUnknownBlockType _accountPropertiesTransformer;
     BOOL _creatingFromManagedObject;
 }
@@ -84,9 +87,13 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsAuthentication;
 @property (readonly, nonatomic) BOOL supportsPush;
+@property (copy, nonatomic) ACTrackedSet *trackedEnabledDataclasses; // @synthesize trackedEnabledDataclasses=_trackedEnabledDataclasses;
+@property (copy, nonatomic) ACTrackedSet *trackedProvisionedDataclasses; // @synthesize trackedProvisionedDataclasses=_trackedProvisionedDataclasses;
 @property (readonly, nonatomic) NSString *userFullName;
 @property (copy, nonatomic) NSString *username;
 @property (nonatomic, getter=isVisible) BOOL visible;
+@property (readonly, nonatomic) BOOL wasEnabledDataclassesReset; // @synthesize wasEnabledDataclassesReset=_wasEnabledDataclassesReset;
+@property (readonly, nonatomic) BOOL wasProvisionedDataclassesReset; // @synthesize wasProvisionedDataclassesReset=_wasProvisionedDataclassesReset;
 
 + (id)_createNewAccountUID;
 + (BOOL)supportsSecureCoding;
@@ -108,6 +115,8 @@
 - (void)_markPropertyDirty:(id)arg1;
 - (void)_setAccountStore:(id)arg1;
 - (void)_setObjectID:(id)arg1;
+- (void)_unsafe_markAccountPropertyDirty:(id)arg1;
+- (void)_unsafe_markDataclassPropertyDirty:(id)arg1;
 - (void)_unsafe_markPropertyDirty:(id)arg1;
 - (BOOL)_useParentForCredentials;
 - (id)accountByCleaningThirdPartyTransformations;
@@ -122,7 +131,6 @@
 - (void)dealloc;
 - (id)defaultAutodiscoverDomainForChildType:(id)arg1;
 - (id)diffAccount:(id)arg1;
-- (id)enabledAndSyncableDataclasses;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fullDescription;
 - (id)init;
@@ -157,6 +165,7 @@
 - (void)setOwningBundleID:(id)arg1;
 - (void)setProperties:(id)arg1 forDataclass:(id)arg2;
 - (void)setProperty:(id)arg1 forKey:(id)arg2;
+- (void)setProvisioned:(BOOL)arg1 forDataclass:(id)arg2;
 - (void)setSecCertificates:(id)arg1;
 - (void)setSecIdentity:(struct __SecIdentity *)arg1;
 - (void)takeValuesFromModifiedAccount:(id)arg1;

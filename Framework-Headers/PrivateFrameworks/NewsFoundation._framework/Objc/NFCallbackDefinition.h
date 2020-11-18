@@ -8,6 +8,7 @@
 
 @protocol NFDefinitionContainer;
 
+__attribute__((visibility("hidden")))
 @interface NFCallbackDefinition : NSObject
 {
     CDUnknownBlockType _callbackBlock;

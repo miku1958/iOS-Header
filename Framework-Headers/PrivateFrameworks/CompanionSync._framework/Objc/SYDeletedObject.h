@@ -7,11 +7,10 @@
 #import <objc/NSObject.h>
 
 #import <CompanionSync/SYChange-Protocol.h>
-#import <CompanionSync/SYObject-Protocol.h>
 
 @class NSString;
 
-@interface SYDeletedObject : NSObject <SYObject, SYChange>
+@interface SYDeletedObject : NSObject <SYChange>
 {
     NSString *_sequencer;
     NSString *_syncId;

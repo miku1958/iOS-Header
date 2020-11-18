@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleInsertedItems:(id)arg1 deletedItems:(id)arg2 needsMoreWork:(BOOL)arg3 state:(id)arg4 error:(id)arg5;
 - (void)_indexOneChangesBatchFromChangeToken:(id)arg1;
 - (void)_indexOnePageFromPage:(id)arg1;
+- (void)_startIndexing;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (void)handleInsertedItems:(id)arg1 deletedItems:(id)arg2 needsMoreWork:(BOOL)arg3 state:(id)arg4 error:(id)arg5;
 - (id)initWithIndexer:(id)arg1 isInitialIndexing:(BOOL)arg2 queue:(id)arg3;

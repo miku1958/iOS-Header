@@ -53,7 +53,8 @@
 - (void)generateImageForSnapshot:(id)arg1 dataProvider:(id)arg2 writeToFile:(BOOL)arg3 didGenerateImage:(CDUnknownBlockType)arg4 didSaveImage:(CDUnknownBlockType)arg5;
 - (id)initWithApplicationInfo:(id)arg1;
 - (id)initWithContainerIdentity:(id)arg1 store:(id)arg2;
-- (void)manifestDidUpdateUnderMemoryPressure:(id)arg1;
+- (void)manifestDidPurgeSnapshotsWithProtectedContent:(id)arg1;
+- (void)purgeSnapshotsWithProtectedContent;
 - (void)saveSnapshot:(id)arg1 atPath:(id)arg2 withContext:(id)arg3;
 - (id)snapshotsForGroupID:(id)arg1;
 - (id)snapshotsForGroupID:(id)arg1 fetchRequest:(id)arg2;

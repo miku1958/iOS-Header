@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/BSAction.h>
+#import <BaseBoard/BSAction.h>
 
-@class NSObject, UNNotificationResponse;
-@protocol OS_dispatch_semaphore;
+@class UNNotificationResponse;
 
 @interface UINotificationResponseAction : BSAction
 {
-    NSObject<OS_dispatch_semaphore> *_decodeSemaphore;
-    UNNotificationResponse *_cachedResponse;
+    UNNotificationResponse *_response;
 }
 
 @property (readonly, nonatomic) BOOL isDefaultAction;
 @property (readonly, nonatomic) BOOL isLocal;
 @property (readonly, nonatomic) BOOL isRemote;
-@property (readonly, strong, nonatomic) UNNotificationResponse *response;
+@property (readonly, strong, nonatomic) UNNotificationResponse *response; // @synthesize response=_response;
 
 - (void).cxx_destruct;
 - (long long)UIActionType;

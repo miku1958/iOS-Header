@@ -5,10 +5,11 @@
 //
 
 @class NSObject, nw_listener_inbox;
-@protocol OS_nw_connection;
+@protocol OS_nw_connection, OS_nw_error;
 
 @protocol nw_listener_inbox_delegate
 - (void)handleInbound:(NSObject<OS_nw_connection> *)arg1 addProtocolInbox:(BOOL)arg2;
-- (void)handleInboxFailed:(nw_listener_inbox *)arg1 error:(struct __CFError *)arg2;
+- (void)handleInboxCancelComplete:(nw_listener_inbox *)arg1;
+- (void)handleInboxFailed:(nw_listener_inbox *)arg1 error:(NSObject<OS_nw_error> *)arg2;
 @end
 

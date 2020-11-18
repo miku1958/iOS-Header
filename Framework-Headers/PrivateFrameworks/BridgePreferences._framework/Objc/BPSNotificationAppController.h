@@ -20,6 +20,7 @@
     unsigned long long _settingsMode;
 }
 
+@property (readonly, nonatomic) unsigned long long alertingMode;
 @property (strong, nonatomic) NPSDomainAccessor *bbAppsSettings; // @synthesize bbAppsSettings=_bbAppsSettings;
 @property (strong, nonatomic) BBSectionInfo *bbSectionInfo; // @synthesize bbSectionInfo=_bbSectionInfo;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
@@ -34,6 +35,7 @@
 
 - (void).cxx_destruct;
 - (void)_showSettingsNotifications;
+- (BOOL)_suppressSendToNotificationCenterOption;
 - (long long)alertType;
 - (id)applicationBundleIdentifier;
 - (id)applicationGroupSpecifiers;
@@ -50,26 +52,32 @@
 - (id)localizedPreviewGroupLabel;
 - (void)mirrorSettingsChanged:(BOOL)arg1;
 - (id)mirroredApplicationGroupSpecifiers;
+- (id)notificationGroupTitles;
+- (id)notificationGroupValues;
+- (id)notificationGroupingValue:(id)arg1;
 - (void)removeAlertOptions;
 - (void)removeMirrorOptions;
+- (void)removeSendToNotificationCenterOption;
 - (id)sectionInfoForBBSectionInfo:(id)arg1;
+- (void)setAlertingMode:(unsigned long long)arg1;
 - (void)setMirrorSettings:(BOOL)arg1;
-- (void)setShowAlertsValue:(id)arg1 forSpecifier:(id)arg2;
+- (void)setNotificationGroupingValue:(id)arg1 specifier:(id)arg2;
 - (void)setShowPreviewValue:(id)arg1 forSpecifier:(id)arg2;
 - (void)setSoundsValue:(id)arg1 forSpecifier:(id)arg2;
 - (void)setVibrationValue:(id)arg1 forSpecifier:(id)arg2;
 - (BOOL)shouldReloadSpecifiersOnResume;
-- (id)showAlertsValue:(id)arg1;
 - (id)showPreviewValue:(id)arg1;
 - (id)soundsValue:(id)arg1;
 - (id)specifiers;
 - (BOOL)suppressAlertSpecifiers;
 - (BOOL)suppressAllMirrorSpecifiers;
 - (BOOL)suppressMirrorOption;
+- (BOOL)suppressSendToNotificationCenterOption;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)updateSubsections;
 - (id)vibrationValue:(id)arg1;
 - (BOOL)wantsPreviewChoice;
+- (BOOL)watchHasCapabilitySendToNotificationCenter;
 - (void)writeSectionState;
 
 @end

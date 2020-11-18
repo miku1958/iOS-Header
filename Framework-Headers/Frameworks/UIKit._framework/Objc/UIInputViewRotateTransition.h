@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInputViewTransition.h>
+#import <UIKitCore/UIInputViewTransition.h>
 
 __attribute__((visibility("hidden")))
 @interface UIInputViewRotateTransition : UIInputViewTransition

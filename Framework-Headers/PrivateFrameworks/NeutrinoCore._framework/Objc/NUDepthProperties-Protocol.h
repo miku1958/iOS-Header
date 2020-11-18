@@ -4,16 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NeutrinoCore/NSObject-Protocol.h>
+#import <NeutrinoCore/NUAuxiliaryDataProperties-Protocol.h>
 
-@class AVDepthData, NSDictionary, NSString;
+@class AVDepthData, NSString;
 
-@protocol NUDepthProperties <NSObject>
+@protocol NUDepthProperties <NUAuxiliaryDataProperties>
 
 @property (readonly) NSString *depthType;
-@property (readonly) CDStruct_912cb5d2 size;
 
-- (NSDictionary *)auxiliaryData:(out id *)arg1;
 - (AVDepthData *)depthData:(out id *)arg1;
 @end
 

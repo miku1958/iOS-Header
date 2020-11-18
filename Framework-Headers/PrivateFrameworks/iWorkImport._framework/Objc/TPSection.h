@@ -10,7 +10,7 @@
 #import <iWorkImport/TSKModel-Protocol.h>
 #import <iWorkImport/TSWPSection-Protocol.h>
 
-@class NSArray, NSString, TPPageMaster, TPPageTemplate, TSWPStorage;
+@class NSArray, NSString, TPPageMaster, TPPageTemplate, TSDFill, TSWPStorage;
 
 __attribute__((visibility("hidden")))
 @interface TPSection : TSPObject <TSKDocumentObject, TSKModel, TSWPSection>
@@ -25,8 +25,10 @@ __attribute__((visibility("hidden")))
     unsigned int _sectionStartKind;
     unsigned int _sectionPageNumberKind;
     unsigned int _sectionPageNumberStart;
+    TSDFill *_backgroundFill;
 }
 
+@property (strong, nonatomic) TSDFill *backgroundFill; // @synthesize backgroundFill=_backgroundFill;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

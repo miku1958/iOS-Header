@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CellularPlanManager/NSCopying-Protocol.h>
 #import <CellularPlanManager/NSSecureCoding-Protocol.h>
 
-@class CTCellularPlan, NSNumber, NSString;
+@class CTCellularPlan, CTUserLabel, NSNumber, NSString, NSUUID;
 
 @interface CTCellularPlanItem : NSObject <NSCopying, NSSecureCoding>
 {
@@ -20,39 +20,59 @@
     BOOL _isSimStateValid;
     BOOL _shouldDisplay;
     BOOL _shouldAppearDisabled;
+    BOOL _isActiveDataPlan;
+    BOOL _isDefaultVoice;
     BOOL _isSelectable;
+    NSString *_label;
     CTCellularPlan *_plan;
     long long _type;
     long long _lockState;
+    NSString *_uuid;
+    NSString *_phoneNumber;
+    CTUserLabel *_userLabel;
     NSNumber *_isSelectedOverride;
+    NSUUID *_companionSlotUuid;
+    NSString *_companionSimLabelId;
 }
 
+@property (readonly, nonatomic) NSString *carrierName;
+@property (copy, nonatomic) NSString *companionSimLabelId; // @synthesize companionSimLabelId=_companionSimLabelId;
+@property (copy, nonatomic) NSUUID *companionSlotUuid; // @synthesize companionSlotUuid=_companionSlotUuid;
 @property (readonly, nonatomic) NSString *iccid;
 @property (readonly, nonatomic) NSString *identifier;
+@property (nonatomic) BOOL isActiveDataPlan; // @synthesize isActiveDataPlan=_isActiveDataPlan;
 @property (readonly, nonatomic) BOOL isBackedByCellularPlan;
+@property (nonatomic) BOOL isDefaultVoice; // @synthesize isDefaultVoice=_isDefaultVoice;
+@property (readonly, nonatomic) BOOL isInstalling;
 @property (nonatomic) BOOL isSelectable; // @synthesize isSelectable=_isSelectable;
 @property (readonly, nonatomic) BOOL isSelected;
 @property (strong, nonatomic) NSNumber *isSelectedOverride; // @synthesize isSelectedOverride=_isSelectedOverride;
 @property (nonatomic) BOOL isSimStateValid; // @synthesize isSimStateValid=_isSimStateValid;
+@property (nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) long long lockState; // @synthesize lockState=_lockState;
 @property (readonly, nonatomic) NSString *name;
+@property (nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
 @property (readonly, nonatomic) CTCellularPlan *plan; // @synthesize plan=_plan;
 @property (nonatomic) BOOL shouldAppearDisabled; // @synthesize shouldAppearDisabled=_shouldAppearDisabled;
 @property (nonatomic) BOOL shouldAutoSelectWhenInRange; // @synthesize shouldAutoSelectWhenInRange=_shouldAutoSelectWhenInRange;
 @property (readonly, nonatomic) BOOL shouldDisplay; // @synthesize shouldDisplay=_shouldDisplay;
 @property (nonatomic) BOOL shouldDisplayType; // @synthesize shouldDisplayType=_shouldDisplayType;
 @property (nonatomic) long long type; // @synthesize type=_type;
+@property (nonatomic) CTUserLabel *userLabel; // @synthesize userLabel=_userLabel;
+@property (readonly, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
+- (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCellularPlan:(id)arg1;
-- (id)initWithCellularPlan:(id)arg1 iccid:(id)arg2 name:(id)arg3 type:(long long)arg4;
-- (id)initWithCellularPlan:(id)arg1 type:(long long)arg2;
+- (id)initWithCellularPlan:(id)arg1 uuid:(id)arg2;
+- (id)initWithCellularPlan:(id)arg1 uuid:(id)arg2 iccid:(id)arg3 name:(id)arg4 type:(long long)arg5 phoneNumber:(id)arg6 label:(id)arg7;
+- (id)initWithCellularPlan:(id)arg1 uuid:(id)arg2 type:(long long)arg3 phoneNumber:(id)arg4 label:(id)arg5;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIccid:(id)arg1 name:(id)arg2;
+- (id)initWithIccid:(id)arg1 uuid:(id)arg2 name:(id)arg3 phoneNumber:(id)arg4 label:(id)arg5;
+- (id)typeAsString:(long long)arg1;
 
 @end
 

@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, _CUIPSDSublayerInfo;
 
 @interface CUIPSDImageRef : NSObject
 {
-    NSString *_path;
-    BOOL _parsedForLayers;
-    int _file;
     struct CPSDFile *_psd;
+    NSString *_path;
+    int _file;
+    BOOL _parsedForLayers;
     _CUIPSDSublayerInfo *_rootLayers;
 }
+
+@property (nonatomic) int file; // @synthesize file=_file;
+@property (copy, nonatomic) NSString *path; // @synthesize path=_path;
+@property (nonatomic) struct CPSDFile *psd; // @synthesize psd=_psd;
 
 + (BOOL)isValidPSDResourceAtPath:(id)arg1;
 + (BOOL)isValidPSDResourceAtPath:(id)arg1 withImageInfo:(struct _PSDImageInfo *)arg2;
@@ -86,7 +90,6 @@
 - (unsigned int)numberOfLayers;
 - (unsigned int)numberOfSlices;
 - (BOOL)openImageFile;
-- (id)path;
 - (id)patternFromSlice:(unsigned int)arg1 atLayer:(unsigned int)arg2;
 - (id)patternFromSlice:(unsigned int)arg1 atLayer:(unsigned int)arg2 isZeroSizeImage:(BOOL *)arg3;
 - (struct CPSDFile *)psdFile;

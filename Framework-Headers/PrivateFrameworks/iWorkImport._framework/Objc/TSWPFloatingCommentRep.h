@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)modelIsReadOnly;
 - (BOOL)p_shouldDraw;
-- (void)recursivelyDrawChildrenInContext:(struct CGContext *)arg1;
+- (void)recursivelyDrawChildrenInContext:(struct CGContext *)arg1 keepingChildrenPassingTest:(CDUnknownBlockType)arg2;
 
 @end
 

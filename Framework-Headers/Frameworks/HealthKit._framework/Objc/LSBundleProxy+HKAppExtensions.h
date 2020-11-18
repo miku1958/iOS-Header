@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/LSBundleProxy.h>
+#import <CoreServices/LSBundleProxy.h>
 
 @interface LSBundleProxy (HKAppExtensions)
 + (id)_hk_appExtensionContainerBundleProxyWithProperties:(id)arg1;

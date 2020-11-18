@@ -9,7 +9,7 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
-@class HKQuantity, HKQuantityType, NSArray, NSDate, NSDictionary;
+@class HKQuantity, HKQuantityType, NSArray, NSDate, NSDateInterval, NSDictionary;
 
 @interface HKStatistics : NSObject <NSSecureCoding, NSCopying>
 {
@@ -21,30 +21,38 @@
     HKQuantity *_averageQuantity;
     HKQuantity *_minimumQuantity;
     HKQuantity *_maximumQuantity;
+    HKQuantity *_mostRecentQuantity;
+    NSDateInterval *_mostRecentQuantityDateInterval;
     NSDictionary *_averageQuantityBySource;
     NSDictionary *_minimumQuantityBySource;
     NSDictionary *_maximumQuantityBySource;
+    NSDictionary *_mostRecentQuantityBySource;
+    NSDictionary *_mostRecentQuantityDateIntervalBySource;
     NSDictionary *_dataCountBySource;
     HKQuantity *_sumQuantity;
     NSDictionary *_sumQuantityBySource;
     NSDictionary *_sumQuantityBySourceID;
 }
 
-@property (strong, nonatomic) HKQuantity *averageQuantity; // @synthesize averageQuantity=_averageQuantity;
-@property (strong, nonatomic) NSDictionary *averageQuantityBySource; // @synthesize averageQuantityBySource=_averageQuantityBySource;
+@property (copy, nonatomic) HKQuantity *averageQuantity; // @synthesize averageQuantity=_averageQuantity;
+@property (copy, nonatomic) NSDictionary *averageQuantityBySource; // @synthesize averageQuantityBySource=_averageQuantityBySource;
 @property (nonatomic) unsigned long long dataCount; // @synthesize dataCount=_dataCount;
-@property (strong, nonatomic) NSDictionary *dataCountBySource; // @synthesize dataCountBySource=_dataCountBySource;
+@property (copy, nonatomic) NSDictionary *dataCountBySource; // @synthesize dataCountBySource=_dataCountBySource;
 @property (readonly) NSDate *endDate;
-@property (strong, nonatomic) HKQuantity *maximumQuantity; // @synthesize maximumQuantity=_maximumQuantity;
-@property (strong, nonatomic) NSDictionary *maximumQuantityBySource; // @synthesize maximumQuantityBySource=_maximumQuantityBySource;
-@property (strong, nonatomic) HKQuantity *minimumQuantity; // @synthesize minimumQuantity=_minimumQuantity;
-@property (strong, nonatomic) NSDictionary *minimumQuantityBySource; // @synthesize minimumQuantityBySource=_minimumQuantityBySource;
+@property (copy, nonatomic) HKQuantity *maximumQuantity; // @synthesize maximumQuantity=_maximumQuantity;
+@property (copy, nonatomic) NSDictionary *maximumQuantityBySource; // @synthesize maximumQuantityBySource=_maximumQuantityBySource;
+@property (copy, nonatomic) HKQuantity *minimumQuantity; // @synthesize minimumQuantity=_minimumQuantity;
+@property (copy, nonatomic) NSDictionary *minimumQuantityBySource; // @synthesize minimumQuantityBySource=_minimumQuantityBySource;
+@property (copy, nonatomic) HKQuantity *mostRecentQuantity; // @synthesize mostRecentQuantity=_mostRecentQuantity;
+@property (copy, nonatomic) NSDictionary *mostRecentQuantityBySource; // @synthesize mostRecentQuantityBySource=_mostRecentQuantityBySource;
+@property (copy, nonatomic) NSDateInterval *mostRecentQuantityDateInterval; // @synthesize mostRecentQuantityDateInterval=_mostRecentQuantityDateInterval;
+@property (copy, nonatomic) NSDictionary *mostRecentQuantityDateIntervalBySource; // @synthesize mostRecentQuantityDateIntervalBySource=_mostRecentQuantityDateIntervalBySource;
 @property (readonly) HKQuantityType *quantityType;
 @property (readonly) NSArray *sources;
 @property (readonly) NSDate *startDate;
-@property (strong, nonatomic) HKQuantity *sumQuantity; // @synthesize sumQuantity=_sumQuantity;
-@property (strong, nonatomic) NSDictionary *sumQuantityBySource; // @synthesize sumQuantityBySource=_sumQuantityBySource;
-@property (strong, nonatomic) NSDictionary *sumQuantityBySourceID; // @synthesize sumQuantityBySourceID=_sumQuantityBySourceID;
+@property (copy, nonatomic) HKQuantity *sumQuantity; // @synthesize sumQuantity=_sumQuantity;
+@property (copy, nonatomic) NSDictionary *sumQuantityBySource; // @synthesize sumQuantityBySource=_sumQuantityBySource;
+@property (copy, nonatomic) NSDictionary *sumQuantityBySourceID; // @synthesize sumQuantityBySourceID=_sumQuantityBySourceID;
 
 + (void)_validateOptions:(unsigned long long)arg1 forDataType:(id)arg2;
 + (BOOL)supportsSecureCoding;
@@ -60,8 +68,11 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (id)maximumQuantityForSource:(id)arg1;
 - (id)minimumQuantityForSource:(id)arg1;
+- (id)mostRecentQuantityDateIntervalForSource:(id)arg1;
+- (id)mostRecentQuantityForSource:(id)arg1;
 - (id)sumQuantityForSource:(id)arg1;
 
 @end

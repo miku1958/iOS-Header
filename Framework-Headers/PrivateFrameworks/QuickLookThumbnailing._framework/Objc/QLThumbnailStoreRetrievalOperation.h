@@ -50,7 +50,6 @@
 - (id)init;
 - (id)initWithDocumentAtURL:(id)arg1;
 - (BOOL)isConcurrent;
-- (id)issueSandboxExtension;
 - (void)main;
 - (void)start;
 

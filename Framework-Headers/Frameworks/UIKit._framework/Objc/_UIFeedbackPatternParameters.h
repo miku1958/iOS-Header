@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedbackParameters.h>
+#import <UIKitCore/_UIFeedbackParameters.h>
 
 @class _UIFeedbackPattern;
 

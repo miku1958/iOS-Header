@@ -29,6 +29,7 @@
     NSString *_topicIdentifier;
     NSString *_bundleIdentifier;
     NSString *_fbr;
+    NSString *_scopedSearchApplicationBundleIdentifier;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL previouslyEngaged; // @synthesize previouslyEngaged=_previouslyEngaged;
 @property (copy, nonatomic) NSString *query; // @synthesize query=_query;
+@property (copy, nonatomic) NSString *scopedSearchApplicationBundleIdentifier; // @synthesize scopedSearchApplicationBundleIdentifier=_scopedSearchApplicationBundleIdentifier;
 @property (nonatomic) double score; // @synthesize score=_score;
 @property (copy, nonatomic) NSString *suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;

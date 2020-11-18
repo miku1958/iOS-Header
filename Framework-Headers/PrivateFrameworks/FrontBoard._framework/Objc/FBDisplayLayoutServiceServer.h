@@ -4,32 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoard/FBSystemServiceFacility.h>
+#import <FrontBoardServices/FBSServiceFacility.h>
 
-@class NSMutableDictionary;
+@class FBServiceClientAuthenticator, NSMutableDictionary;
 @protocol FBDisplayLayoutServiceServerDelegate;
 
-@interface FBDisplayLayoutServiceServer : FBSystemServiceFacility
+@interface FBDisplayLayoutServiceServer : FBSServiceFacility
 {
     id<FBDisplayLayoutServiceServerDelegate> _delegate;
     NSMutableDictionary *_calloutQueuesByQOS;
     NSMutableDictionary *_defaultQOSClientsByDisplayType;
     NSMutableDictionary *_utilityQOSClientsByDisplayType;
+    FBServiceClientAuthenticator *_connectionAuthenticator;
 }
 
-@property (nonatomic) id<FBDisplayLayoutServiceServerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<FBDisplayLayoutServiceServerDelegate> delegate; // @synthesize delegate=_delegate;
 
+- (void).cxx_destruct;
 - (id)_calloutQueueForQOS:(unsigned long long)arg1;
 - (id)_defaultQOSClientsForDisplayType:(long long)arg1;
+- (id)_prerequisiteMilestones;
 - (void)_sendDisplayLayout:(id)arg1 toClients:(id)arg2 withQualityOfService:(unsigned long long)arg3;
 - (id)_utilityQOSClientsForDisplayType:(long long)arg1;
-- (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 - (void)noteClientDidConnect:(id)arg1 withMessage:(id)arg2;
 - (void)noteClientDidDisconnect:(id)arg1;
 - (void)noteDidReceiveMessage:(id)arg1 withType:(long long)arg2 fromClient:(id)arg3;
-- (id)prerequisiteMilestones;
 - (void)publishDisplayLayout:(id)arg1;
+- (BOOL)shouldAllowClientConnection:(id)arg1 withMessage:(id)arg2;
 
 @end
 

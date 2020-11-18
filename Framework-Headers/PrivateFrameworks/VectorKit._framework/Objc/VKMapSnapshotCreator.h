@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/MapEngineDelegate-Protocol.h>
 #import <VectorKit/VKImageCanvasDelegate-Protocol.h>
@@ -38,6 +38,7 @@
 @property (nonatomic) CDStruct_80aa614a mapDisplayStyle; // @synthesize mapDisplayStyle=_mapDisplayStyle;
 @property (nonatomic) long long mapType;
 @property (nonatomic) BOOL showsBuildings;
+@property (nonatomic) BOOL showsPointLabels;
 @property (nonatomic) BOOL showsPointsOfInterest;
 @property (nonatomic) BOOL showsVenues;
 @property (readonly) struct CGSize size;

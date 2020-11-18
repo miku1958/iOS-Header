@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSIndexSet, TSCEFormulaRewrite_Uids, TSUMutableUUIDSet, TSUUUIDSet;
 
@@ -39,24 +39,27 @@ __attribute__((visibility("hidden")))
 - (struct TSCERangeCoordinate)affectedRangeForInsertRows;
 - (struct TSCERangeCoordinate)affectedRangeForMoveRows;
 - (struct TSCERangeCoordinate)affectedRangeForRemoveRows;
-- (vector_60dd006f)coordRangesForInsertRemove;
+- (unsigned short)columnIndexForUuid:(const UUIDData_5fbc143e *)arg1;
+- (vector_f772ab4d)coordRangesForInsertRemove;
 - (void)createAuxRowColumnInfoForMove;
-- (void)dealloc;
 - (id)description;
-- (unsigned short)indexForUuid:(const UUIDData_5fbc143e *)arg1;
-- (BOOL)indexIsAffected:(unsigned short)arg1;
+- (BOOL)indexIsAffected:(unsigned int)arg1;
 - (id)initFromMessage:(const struct ColumnOrRowUuidsInfoArchive *)arg1;
 - (id)initWithFormulaOwnerUID:(const UUIDData_5fbc143e *)arg1 uuids:(const vector_4dc5f307 *)arg2 areRows:(BOOL)arg3;
-- (void)loadIndexesForTable:(id)arg1 forRemoveRows:(BOOL)arg2;
-- (unsigned short)offsetForRowIndex:(unsigned short)arg1;
-- (unsigned short)offsetForUpdatedRowIndex:(unsigned short)arg1 isRemoveRows:(BOOL)arg2;
-- (struct TSUCellCoord)previousCellCoordinateForRewriteType:(int)arg1 forTableUID:(const UUIDData_5fbc143e *)arg2 updatedCellCoordinate:(struct TSUCellCoord)arg3;
+- (BOOL)isForTable:(const UUIDData_5fbc143e *)arg1;
+- (void)loadIndexesForTable:(id)arg1 uidResolver:(id)arg2 forRemoveRows:(BOOL)arg3 shuffleMap:(id)arg4;
+- (unsigned int)offsetForRowIndex:(unsigned int)arg1;
+- (unsigned int)offsetForUpdatedRowIndex:(unsigned int)arg1 isRemoveRows:(BOOL)arg2;
+- (vector_4dc5f307)orderedUuidsForRange:(struct _NSRange)arg1 inTable:(id)arg2 areRows:(BOOL)arg3 shuffleMap:(id)arg4;
+- (struct TSCECellRef)originalCellRefForRewriteType:(int)arg1 updatedCellRef:(const struct TSCECellRef *)arg2;
+- (unsigned int)rowIndexForUuid:(const UUIDData_5fbc143e *)arg1;
 - (void)saveToMessage:(struct ColumnOrRowUuidsInfoArchive *)arg1;
 - (struct TSCERangeCoordinate)tableRange;
 - (void)unloadIndexes;
-- (struct TSUCellCoord)updatedCellCoordinateForRewriteType:(int)arg1 forTableUID:(const UUIDData_5fbc143e *)arg2 originalCellCoordinate:(struct TSUCellCoord)arg3;
-- (UUIDData_5fbc143e)uuidForIndex:(unsigned short)arg1;
-- (vector_4dc5f307)uuidsForRowsInRange:(struct _NSRange)arg1;
+- (struct TSCECellRef)updatedCellRefForRewriteType:(int)arg1 originalCellRef:(const struct TSCECellRef *)arg2;
+- (UUIDData_5fbc143e)uuidForIndex:(unsigned int)arg1;
+- (vector_4dc5f307)uuidsForIndexes:(id)arg1;
+- (vector_4dc5f307)uuidsInRange:(struct _NSRange)arg1;
 
 @end
 

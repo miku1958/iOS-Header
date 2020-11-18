@@ -6,10 +6,13 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSObject, NSSet, NSString;
+@class NSArray, NSDate, NSDateInterval, NSDictionary, NSObject, NSSet, NSString, PLXPCTransaction;
 @protocol NSCopying, PLMomentAnalysisTransaction, PLMomentAssetData, PLMomentData, PLMomentListData;
 
 @protocol PLMomentGenerationDataManagement <NSObject>
+
+@property (nonatomic) BOOL simulatesTimeout;
+
 - (NSArray *)allAssetIDsNeedingLocationShiftWithError:(id *)arg1;
 - (NSArray *)allAssetIDsToBeIncludedInMomentsWithError:(id *)arg1;
 - (NSArray *)allAssetsToBeIncludedInMomentsWithError:(id *)arg1;
@@ -42,12 +45,17 @@
 - (id<PLMomentListData>)momentListWithUniqueID:(NSObject<NSCopying> *)arg1 forLevel:(short)arg2 error:(id *)arg3;
 - (id<PLMomentData>)momentWithUniqueID:(NSObject<NSCopying> *)arg1 error:(id *)arg2;
 - (NSArray *)momentsBetweenDate:(NSDate *)arg1 andDate:(NSDate *)arg2 sorted:(BOOL)arg3;
-- (NSArray *)momentsBetweenDateRanges:(NSArray *)arg1;
+- (NSArray *)momentsForAssetsWithUniqueIDs:(NSArray *)arg1 error:(id *)arg2;
 - (NSArray *)momentsSinceDate:(NSDate *)arg1;
+- (NSArray *)momentsWithinDateInterval:(NSDateInterval *)arg1;
 - (BOOL)needsLocationsOfInterestProcessing;
+- (NSArray *)orphanedAssetIDsWithError:(id *)arg1;
 - (void)performBlock:(void (^)(void))arg1 synchronously:(BOOL)arg2 completionHandler:(void (^)(void))arg3;
+- (void)performBlock:(void (^)(void))arg1 synchronously:(BOOL)arg2 priority:(long long)arg3 completionHandler:(void (^)(void))arg4;
 - (void)performDataTransaction:(void (^)(void))arg1 synchronously:(BOOL)arg2 completionHandler:(void (^)(void))arg3;
+- (void)performDataTransaction:(void (^)(void))arg1 synchronously:(BOOL)arg2 priority:(long long)arg3 completionHandler:(void (^)(void))arg4;
 - (void)resetOnFailure;
+- (void)runPeriodicMaintenanceTasks:(unsigned long long)arg1 withTransaction:(PLXPCTransaction *)arg2;
 - (BOOL)save:(id *)arg1;
 - (BOOL)saveAnalysisMetadata:(NSDictionary *)arg1;
 - (BOOL)saveServerVersionInfo:(NSDictionary *)arg1;

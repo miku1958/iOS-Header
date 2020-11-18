@@ -9,20 +9,23 @@
 #import <MusicCarDisplayUI/MCDPCContainerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UITabBarControllerDelegate-Protocol.h>
 
-@class AVExternalDevice, MCDPCContainer, MCDPCModel, NSString, UIButton;
+@class AVExternalDevice, MCDPCContainer, MCDPCModel, NSObject, NSString, UIButton;
+@protocol OS_dispatch_queue;
 
 @interface MCDBrowsableContentNavigationController : UITabBarController <UITabBarControllerDelegate, MCDPCContainerDelegate>
 {
     BOOL _hasCarScreen;
     BOOL _didFinishInitialLoad;
+    BOOL _didFinishInitialViewAppear;
     BOOL _visible;
+    MCDPCContainer *_container;
     UITabBarController *_tabBarController;
     UITabBarController *_hostTabBarController;
     AVExternalDevice *_externalDevice;
     MCDPCModel *_model;
     NSString *_bundleID;
     UIButton *_nowPlayingButton;
-    MCDPCContainer *_container;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -30,26 +33,29 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL didFinishInitialLoad; // @synthesize didFinishInitialLoad=_didFinishInitialLoad;
+@property (nonatomic) BOOL didFinishInitialViewAppear; // @synthesize didFinishInitialViewAppear=_didFinishInitialViewAppear;
 @property (strong, nonatomic) AVExternalDevice *externalDevice; // @synthesize externalDevice=_externalDevice;
 @property (nonatomic) BOOL hasCarScreen; // @synthesize hasCarScreen=_hasCarScreen;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UITabBarController *hostTabBarController; // @synthesize hostTabBarController=_hostTabBarController;
 @property (strong, nonatomic) MCDPCModel *model; // @synthesize model=_model;
 @property (strong, nonatomic) UIButton *nowPlayingButton; // @synthesize nowPlayingButton=_nowPlayingButton;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UITabBarController *tabBarController; // @synthesize tabBarController=_tabBarController;
 @property (nonatomic) BOOL visible; // @synthesize visible=_visible;
 
 - (void).cxx_destruct;
+- (void)_appRegisteredForContent:(id)arg1;
 - (id)_hostTabAtIndex:(unsigned long long)arg1 dummyTab:(BOOL)arg2;
 - (void)_loadAllHostTabs;
 - (void)_nowPlayingButtonTapped:(id)arg1;
 - (void)_nowPlayingDidChange:(id)arg1;
+- (id)_tabBarItemForViewController:(id)arg1 fromItem:(id)arg2;
 - (void)_updateNowPlayingButtonVisibility;
 - (void)container:(id)arg1 didInvalidateIndicies:(id)arg2;
 - (id)initWithBundleID:(id)arg1 model:(id)arg2;
-- (void)reloadTabs;
-- (void)setViewControllers:(id)arg1;
+- (void)invalidateAndReloadTabsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)tabBarController:(id)arg1 didSelectViewController:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateTitleAndTabBarItemsAtIndexes:(id)arg1;

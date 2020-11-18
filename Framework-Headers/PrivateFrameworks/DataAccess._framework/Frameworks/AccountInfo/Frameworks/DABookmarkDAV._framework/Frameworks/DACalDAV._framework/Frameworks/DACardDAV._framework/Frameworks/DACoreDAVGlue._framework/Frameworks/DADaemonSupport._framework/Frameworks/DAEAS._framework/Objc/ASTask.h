@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <DAEAS/DATask-Protocol.h>
 #import <DAEAS/NSURLSessionDataDelegate-Protocol.h>
@@ -104,6 +104,7 @@
 - (void)_continuePerformTask;
 - (id)_easVersion;
 - (void)_failImmediately;
+- (id)_getCredential:(id)arg1;
 - (void)_handleAuthenticationChallenge:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleBadPasswordResponse;
 - (BOOL)_handleCertificateError:(id)arg1;
@@ -120,6 +121,7 @@
 - (void)_setHTTPParametersOnRequest:(id)arg1 outBodyStream:(id *)arg2 outBodyData:(id *)arg3;
 - (BOOL)_shouldRedirectToHTTPForRequest:(id)arg1;
 - (BOOL)_shouldSendAuthForRequest:(id)arg1;
+- (BOOL)_shouldUseUsernamePasswordForAuthenticationMethod:(id)arg1;
 - (void)_tearDownResourcesHelper;
 - (void)_timeoutEnforcerFired:(id)arg1;
 - (id)_url;

@@ -8,7 +8,7 @@
 
 #import <iTunesCloud/NSCopying-Protocol.h>
 
-@class ICStoreDialogResponse;
+@class ICStoreDialogResponse, NSDictionary;
 
 @interface ICMusicSubscriptionLeaseStatus : NSObject <NSCopying>
 {
@@ -18,6 +18,7 @@
     BOOL _hasPendingLeaseAcquisition;
     long long _leaseState;
     ICStoreDialogResponse *_stateReasonDialog;
+    NSDictionary *_stateReasonDialogMetricsDictionary;
 }
 
 @property (nonatomic) BOOL hasOfflinePlaybackKeys; // @synthesize hasOfflinePlaybackKeys=_hasOfflinePlaybackKeys;
@@ -26,6 +27,7 @@
 @property (nonatomic) long long leaseState; // @synthesize leaseState=_leaseState;
 @property (nonatomic) BOOL shouldPlaybackRequireOnlineKeys; // @synthesize shouldPlaybackRequireOnlineKeys=_shouldPlaybackRequireOnlineKeys;
 @property (copy, nonatomic) ICStoreDialogResponse *stateReasonDialog; // @synthesize stateReasonDialog=_stateReasonDialog;
+@property (copy, nonatomic) NSDictionary *stateReasonDialogMetricsDictionary; // @synthesize stateReasonDialogMetricsDictionary=_stateReasonDialogMetricsDictionary;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

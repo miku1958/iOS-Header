@@ -12,6 +12,7 @@
 
 @class NSData, NSDictionary, NSMutableArray, NSString, NSXPCConnection, NSXPCListener;
 
+__attribute__((visibility("hidden")))
 @interface UMXPCServer : NSObject <NSXPCListenerDelegate, UMUserSwitchManagement, UMUserSwitchManagement_Private>
 {
     BOOL _currentlyBroadcastingWillSwitchToUser;
@@ -32,6 +33,9 @@
     CDUnknownBlockType _registrationCompletionHandler;
     CDUnknownBlockType _switchCompletionHandler;
     CDUnknownBlockType _suspendQuotasCompletionHandler;
+    CDUnknownBlockType _directSwitchCompletionHandler;
+    CDUnknownBlockType _logoutToLoginSessionCompletionHandler;
+    CDUnknownBlockType _loginUICheckinSessionCompletionHandler;
     CDUnknownBlockType _uploadContentCompletionHandler;
     CDUnknownBlockType _willSwitchCompletionHandler;
     NSMutableArray *_switchBlockingTasks;
@@ -51,8 +55,11 @@
 @property (nonatomic) BOOL didBroadcastWillSwitchToUser; // @synthesize didBroadcastWillSwitchToUser=_didBroadcastWillSwitchToUser;
 @property (nonatomic) BOOL didRegisterStakeholder; // @synthesize didRegisterStakeholder=_didRegisterStakeholder;
 @property (nonatomic) BOOL didSendTasks; // @synthesize didSendTasks=_didSendTasks;
+@property (copy, nonatomic) CDUnknownBlockType directSwitchCompletionHandler; // @synthesize directSwitchCompletionHandler=_directSwitchCompletionHandler;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned int interruptionRetryCount; // @synthesize interruptionRetryCount=_interruptionRetryCount;
+@property (copy, nonatomic) CDUnknownBlockType loginUICheckinSessionCompletionHandler; // @synthesize loginUICheckinSessionCompletionHandler=_loginUICheckinSessionCompletionHandler;
+@property (copy, nonatomic) CDUnknownBlockType logoutToLoginSessionCompletionHandler; // @synthesize logoutToLoginSessionCompletionHandler=_logoutToLoginSessionCompletionHandler;
 @property (strong, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 @property (strong, nonatomic) NSData *passcodeData; // @synthesize passcodeData=_passcodeData;
 @property (strong, nonatomic) NSDictionary *personaSpec; // @synthesize personaSpec=_personaSpec;
@@ -77,6 +84,7 @@
 - (void).cxx_destruct;
 - (void)_abortIfWeDoNotHaveAStakeholder;
 - (void)_abortIfWeDoNotHaveASyncStakeholder;
+- (void)_broadcastReadyToSwitchToLoginSession:(id)arg1;
 - (void)_broadcastReadyToSwitchToUser:(id)arg1;
 - (void)_broadcastWillSwitchToUser:(id)arg1;
 - (int)_pid;
@@ -90,8 +98,13 @@
 - (void)_tearDownConnectionToUMServer;
 - (void)addTask:(id)arg1;
 - (void)bubbleDidPop;
+- (void)deviceLoginSessionStateDidUpdate;
+- (void)directSwitchToUser:(id)arg1 passcodeData:(id)arg2 context:(id)arg3 preferences:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
+- (void)loginUICheckInWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)logoutToLoginSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)readyToSwitchToLoginSession:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)readyToSwitchToUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerCriticalUserSwitchStakeHolder:(id)arg1;
 - (void)registerUserSwitchStakeHolder:(id)arg1;

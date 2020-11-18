@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewController.h>
+#import <UIKitCore/UICollectionViewController.h>
 
-#import <UIKit/PageRangeDelegate-Protocol.h>
-#import <UIKit/UICollectionViewDataSourcePrefetching-Protocol.h>
-#import <UIKit/UICollectionViewDelegate-Protocol.h>
-#import <UIKit/UIDocumentInteractionControllerDelegate-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UINavigationControllerDelegate-Protocol.h>
-#import <UIKit/UIScrollViewDelegate-Protocol.h>
-#import <UIKit/UIViewControllerPreviewingDelegate_Private-Protocol.h>
+#import <UIKitCore/PageRangeDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSourcePrefetching-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UIDocumentInteractionControllerDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UINavigationControllerDelegate-Protocol.h>
+#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
+#import <UIKitCore/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSMutableArray, NSObject, NSString, NSURL, UICollectionViewCell, UIDocumentInteractionController, UIImageView, UILabel, UIPrintPanelViewController, UIPrintPaper, UIView;
 @protocol OS_dispatch_queue;
@@ -103,7 +103,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)gestureRecognizersOfVisibleCells;
-- (id)getPageImageForPage:(long long)arg1 grayscale:(BOOL)arg2;
+- (id)getPageImageForPage:(long long)arg1 grayscale:(BOOL)arg2 deepColor:(BOOL)arg3;
 - (void)handlePinch:(id)arg1;
 - (void)handleTap:(id)arg1;
 - (id)indexPathNearestToPointInCollectionView:(struct CGPoint)arg1;

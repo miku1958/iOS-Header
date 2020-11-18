@@ -12,7 +12,7 @@
 #import <VectorKit/VKPolylineOverlayRouteRibbonObserver-Protocol.h>
 #import <VectorKit/VKTileProviderClient-Protocol.h>
 
-@class GEOResourceManifestConfiguration, NSArray, NSLocale, NSMapTable, NSMutableArray, NSMutableSet, NSSet, NSString, VKNavigationPuck, VKPolylineOverlay, VKRasterOverlayTileSource, VKSceneConfiguration, VKTileProvider, VKTimedAnimation, VKTrafficTileSource;
+@class GEOResourceManifestConfiguration, NSArray, NSHashTable, NSLocale, NSMapTable, NSMutableSet, NSSet, NSString, VKNavigationPuck, VKPolylineOverlay, VKRasterOverlayTileSource, VKSceneConfiguration, VKTileProvider, VKTimedAnimation, VKTrafficTileSource;
 @protocol GEORoutePreloadSession, VKMapModelDelegate, VKRouteMatchedAnnotationPresentation;
 
 __attribute__((visibility("hidden")))
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     VKTileProvider *_additionalManifestTileProvider;
     VKTileProvider *_rasterOverlayProvider[2];
     BOOL _activeMapLayers[33];
+    VKTrafficTileSource *_trafficSource;
     GEOResourceManifestConfiguration *_additionalManifestConfiguration;
     long long _mapMode;
     long long _desiredMapMode;
@@ -69,7 +70,7 @@ __attribute__((visibility("hidden")))
     BOOL _limitingNavCameraHeight;
     NSMutableSet *_blockingStylesheetObservers;
     double _styleTransitionProgress;
-    NSMutableArray *_externalAnchors;
+    NSHashTable *_externalAnchors;
     double _forcedMaxZoomLevel;
     BOOL _disableTransitLines;
     VKTimedAnimation *_modeTransitionAnimation;
@@ -77,7 +78,6 @@ __attribute__((visibility("hidden")))
     struct CartographicRenderer *_renderer;
     struct mutex _rendererMutex;
     struct LogicManager *_logicManager;
-    VKTrafficTileSource *_trafficSource[1];
     struct unique_ptr<md::TrafficSharedResources, std::__1::default_delete<md::TrafficSharedResources>> _trafficSharedResources;
     shared_ptr_887a193f _dataOverrideManager;
     float _navigationPuckSize;
@@ -92,13 +92,14 @@ __attribute__((visibility("hidden")))
     VKNavigationPuck *_navigationPuck;
     struct set<VKPolylineGroupOverlay *, std::__1::less<VKPolylineGroupOverlay *>, std::__1::allocator<VKPolylineGroupOverlay *>> _observedOverlays;
     struct set<geo::_retain_ptr<VKOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::less<geo::_retain_ptr<VKOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>, std::__1::allocator<geo::_retain_ptr<VKOverlay *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>> _overlays;
-    unsigned char _navMapMode;
+    struct optional<gss::MapZoomLevel> _mapZoomLevel;
     BOOL _isEmphasisSet;
     shared_ptr_e963992e _taskContext;
     BOOL _showsPointsOfInterest;
     BOOL _localizeLabels;
     unsigned char _labelScaleFactor;
-    float _navMapModeTransitionZ;
+    float _navMapZoomLevelTransitionZ;
+    float _standardMapZoomLevelTransitionZ;
     long long _shieldSize;
     long long _navigationShieldSize;
     long long _shieldIdiom;
@@ -131,7 +132,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double lodBias;
 @property (readonly, nonatomic) GEOResourceManifestConfiguration *manifestConfiguration; // @synthesize manifestConfiguration=_manifestConfiguration;
 @property (nonatomic) long long mapType; // @synthesize mapType=_mapType;
-@property (nonatomic) float navMapModeTransitionZ; // @synthesize navMapModeTransitionZ=_navMapModeTransitionZ;
+@property (nonatomic) float navMapZoomLevelTransitionZ; // @synthesize navMapZoomLevelTransitionZ=_navMapZoomLevelTransitionZ;
 @property (nonatomic) float navigationPuckSize; // @synthesize navigationPuckSize=_navigationPuckSize;
 @property (nonatomic) long long navigationShieldSize; // @synthesize navigationShieldSize=_navigationShieldSize;
 @property (nonatomic) unsigned long long neighborMode;
@@ -152,6 +153,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL showsBuildings; // @synthesize showsBuildings=_showsBuildings;
 @property (nonatomic) BOOL showsPointsOfInterest; // @synthesize showsPointsOfInterest=_showsPointsOfInterest;
 @property (nonatomic) BOOL showsVenues; // @synthesize showsVenues=_showsVenues;
+@property (nonatomic) float standardMapZoomLevelTransitionZ; // @synthesize standardMapZoomLevelTransitionZ=_standardMapZoomLevelTransitionZ;
 @property (nonatomic) shared_ptr_a3c46825 styleManager; // @synthesize styleManager=_activeStyleManager;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned char targetDisplay;
@@ -167,9 +169,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)numberOfRoadClasses;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_beginNavMapModeTransitionToMode:(unsigned char)arg1;
-- (void)_createTrafficTileSourceAtIndex:(unsigned int)arg1 roadTileSource:(id)arg2 origin:(unsigned char)arg3 sharedResources:(id)arg4;
-- (void)_createTrafficTileSourcesIfNecessary:(id)arg1 sharedResources:(id)arg2;
+- (void)_beginMapZoomLevelTransition:(unsigned char)arg1;
 - (void)_forceLayout;
 - (void)_localeChanged:(id)arg1;
 - (void)_mapConfigurationDidChange;
@@ -205,6 +205,7 @@ __attribute__((visibility("hidden")))
 - (void)configureTileSources;
 - (id)createSourceForLayer:(unsigned char)arg1 tileSet:(id)arg2 useAdditionalManifest:(BOOL)arg3;
 - (id)createSourceForLayer:(unsigned char)arg1 useAdditionalManifest:(BOOL)arg2;
+- (void)createTrafficTileSourceIfNecessary:(id)arg1;
 - (void)dealloc;
 - (void)debugHighlightFeatureMarker:(const shared_ptr_430519ce *)arg1;
 - (void)debugHighlightObjectAtPoint:(struct CGPoint)arg1 highlightTarget:(unsigned char)arg2;
@@ -294,6 +295,7 @@ __attribute__((visibility("hidden")))
 - (id)tileSetForMapLayer:(unsigned char)arg1 tileGroup:(id)arg2;
 - (long long)tileSize;
 - (long long)tileSource:(id)arg1 overrideForMaximumZoomLevel:(long long)arg2;
+- (id)tileStatistics;
 - (int)tileStyleForMapLayer:(unsigned char)arg1;
 - (id)transitLineMarkersForSelectionAtPoint:(struct CGPoint)arg1;
 - (id)transitLineMarkersInCurrentViewport;

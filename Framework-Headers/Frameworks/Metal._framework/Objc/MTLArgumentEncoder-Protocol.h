@@ -7,7 +7,7 @@
 #import <Metal/NSObject-Protocol.h>
 
 @class NSString;
-@protocol MTLArgumentEncoder, MTLBuffer, MTLDevice, MTLSamplerState, MTLTexture;
+@protocol MTLArgumentEncoder, MTLBuffer, MTLDevice, MTLIndirectCommandBuffer, MTLRenderPipelineState, MTLSamplerState, MTLTexture;
 
 @protocol MTLArgumentEncoder <NSObject>
 
@@ -22,6 +22,10 @@
 - (void)setArgumentBuffer:(id<MTLBuffer>)arg1 startOffset:(unsigned long long)arg2 arrayElement:(unsigned long long)arg3;
 - (void)setBuffer:(id<MTLBuffer>)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setBuffers:(const id *)arg1 offsets:(const unsigned long long *)arg2 withRange:(struct _NSRange)arg3;
+- (void)setIndirectCommandBuffer:(id<MTLIndirectCommandBuffer>)arg1 atIndex:(unsigned long long)arg2;
+- (void)setIndirectCommandBuffers:(const id *)arg1 withRange:(struct _NSRange)arg2;
+- (void)setRenderPipelineState:(id<MTLRenderPipelineState>)arg1 atIndex:(unsigned long long)arg2;
+- (void)setRenderPipelineStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setSamplerState:(id<MTLSamplerState>)arg1 atIndex:(unsigned long long)arg2;
 - (void)setSamplerStates:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setTexture:(id<MTLTexture>)arg1 atIndex:(unsigned long long)arg2;

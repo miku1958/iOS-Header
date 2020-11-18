@@ -13,45 +13,45 @@
 
 @interface HKMedicationRecord : HKMedicalRecord <NSSecureCoding, NSCopying>
 {
-    BOOL _notTaken;
+    NSArray *_medicationCodings;
+    long long _assertionType;
     NSString *_asserter;
     HKMedicalDate *_assertionDate;
-    long long _assertionType;
+    HKMedicalCoding *_statusCoding;
     NSArray *_dosages;
     HKMedicalDate *_earliestDosageDate;
-    HKMedicalDate *_effectiveEndDate;
-    HKMedicalDate *_effectiveStartDate;
-    NSArray *_medicationCodings;
     NSArray *_reasonForUseCodings;
+    BOOL _notTaken;
     NSArray *_reasonsNotTakenCodings;
-    HKMedicalCoding *_statusCoding;
+    HKMedicalDate *_effectiveStartDate;
+    HKMedicalDate *_effectiveEndDate;
 }
 
-@property (readonly, copy, nonatomic) NSString *asserter; // @synthesize asserter=_asserter;
-@property (readonly, copy, nonatomic) HKMedicalDate *assertionDate; // @synthesize assertionDate=_assertionDate;
-@property (readonly, nonatomic) long long assertionType; // @synthesize assertionType=_assertionType;
-@property (readonly, copy, nonatomic) NSArray *dosages; // @synthesize dosages=_dosages;
-@property (readonly, copy, nonatomic) HKMedicalDate *earliestDosageDate; // @synthesize earliestDosageDate=_earliestDosageDate;
-@property (readonly, copy, nonatomic) HKMedicalDate *effectiveEndDate; // @synthesize effectiveEndDate=_effectiveEndDate;
-@property (readonly, copy, nonatomic) HKMedicalDate *effectiveStartDate; // @synthesize effectiveStartDate=_effectiveStartDate;
-@property (readonly, copy, nonatomic) NSArray *medicationCodings; // @synthesize medicationCodings=_medicationCodings;
-@property (readonly, nonatomic) HKMedicationRecordType *medicationRecordType;
-@property (readonly, nonatomic) BOOL notTaken; // @synthesize notTaken=_notTaken;
-@property (readonly, copy, nonatomic) NSArray *reasonForUseCodings; // @synthesize reasonForUseCodings=_reasonForUseCodings;
-@property (readonly, copy, nonatomic) NSArray *reasonsNotTakenCodings; // @synthesize reasonsNotTakenCodings=_reasonsNotTakenCodings;
-@property (readonly, copy, nonatomic) HKMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
+@property (readonly, copy) NSString *asserter;
+@property (readonly, copy) HKMedicalDate *assertionDate;
+@property (readonly) long long assertionType;
+@property (readonly, copy) NSArray *dosages;
+@property (readonly, copy) HKMedicalDate *earliestDosageDate;
+@property (readonly, copy) HKMedicalDate *effectiveEndDate;
+@property (readonly, copy) HKMedicalDate *effectiveStartDate;
+@property (readonly, copy) NSArray *medicationCodings;
+@property (readonly, copy) HKMedicationRecordType *medicationRecordType;
+@property (readonly) BOOL notTaken;
+@property (readonly, copy) NSArray *reasonForUseCodings;
+@property (readonly, copy) NSArray *reasonsNotTakenCodings;
+@property (readonly, copy) HKMedicalCoding *statusCoding;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)defaultDisplayString;
 + (id)medicationCodingsPreferredSystems;
-+ (id)medicationRecordWithNote:(id)arg1 enteredInError:(BOOL)arg2 modifiedDate:(id)arg3 FHIRIdentifier:(id)arg4 extractionVersion:(long long)arg5 device:(id)arg6 metadata:(id)arg7 medicationCodings:(id)arg8 assertionType:(long long)arg9 asserter:(id)arg10 assertionDate:(id)arg11 statusCoding:(id)arg12 dosages:(id)arg13 earliestDosageDate:(id)arg14 reasonForUseCodings:(id)arg15 notTaken:(BOOL)arg16 reasonsNotTakenCodings:(id)arg17 effectiveStartDate:(id)arg18 effectiveEndDate:(id)arg19;
++ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 medicationCodings:(id)arg9 assertionType:(long long)arg10 asserter:(id)arg11 assertionDate:(id)arg12 statusCoding:(id)arg13 dosages:(id)arg14 earliestDosageDate:(id)arg15 reasonForUseCodings:(id)arg16 notTaken:(BOOL)arg17 reasonsNotTakenCodings:(id)arg18 effectiveStartDate:(id)arg19 effectiveEndDate:(id)arg20;
++ (id)medicationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 medicationCodings:(id)arg10 assertionType:(long long)arg11 asserter:(id)arg12 assertionDate:(id)arg13 statusCoding:(id)arg14 dosages:(id)arg15 earliestDosageDate:(id)arg16 reasonForUseCodings:(id)arg17 notTaken:(BOOL)arg18 reasonsNotTakenCodings:(id)arg19 effectiveStartDate:(id)arg20 effectiveEndDate:(id)arg21;
 + (id)reasonForUseCodingsPreferredSystems;
 + (id)reasonsNotTakenCodingsPreferredSystems;
 + (id)statusCodingPreferredSystems;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_setAsserter:(id)arg1;
 - (void)_setAssertionDate:(id)arg1;
 - (void)_setAssertionType:(long long)arg1;

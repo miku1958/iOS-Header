@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVURLAsset, AVWeakReference, NSError, NSNumber, NSURL;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetDownloadSessionInternal : NSObject
 {
     AVWeakReference *weakReference;

@@ -110,11 +110,13 @@
 - (BOOL)canRequestNewMemories;
 - (BOOL)canRequestNewMemoriesForReason:(unsigned long long)arg1;
 - (void)didChangeTilingControllerLayout;
-- (void)feedViewControllerDidAppear;
+- (void)feedViewControllerDidAppear:(BOOL)arg1;
 - (void)feedViewControllerDidDisappear;
 - (void)feedViewControllerWillLayoutSubviews;
 - (struct PXSimpleIndexPath)indexPathForMemoryInScrollViewAtPoint:(struct CGPoint)arg1;
 - (struct PXSimpleIndexPath)indexPathForMemoryObjectReference:(id)arg1;
+- (id)initWithPhotoLibrary:(id)arg1;
+- (id)initWithScrollViewController:(id)arg1 photoLibrary:(id)arg2 traitCollection:(id)arg3 memoriesStyle:(unsigned long long)arg4 tilingControllerConfigurationBlock:(CDUnknownBlockType)arg5;
 - (id)initWithScrollViewController:(id)arg1 photoLibrary:(id)arg2 traitCollection:(id)arg3 tilingControllerConfigurationBlock:(CDUnknownBlockType)arg4;
 - (void)invalidateMetrics;
 - (void)layoutEngine:(id)arg1 willGenerateLayoutWithGenerator:(id)arg2 forSection:(unsigned long long)arg3;

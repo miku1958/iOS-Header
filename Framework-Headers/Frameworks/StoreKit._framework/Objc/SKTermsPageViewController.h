@@ -21,11 +21,12 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SKTermsPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SKTermsPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_buttonAccept:(id)arg1;
 - (void)_buttonDecline:(id)arg1;
 - (void)_dismissViewController;
@@ -33,7 +34,6 @@
 - (void)_dismissViewControllerAnimated:(BOOL)arg1 withAcceptance:(BOOL)arg2;
 - (void)_loadSubviews;
 - (id)_markupTermsWithHTML:(id)arg1;
-- (void)dealloc;
 - (unsigned long long)edgesForExtendedLayout;
 - (id)init;
 - (id)initWithTerms:(id)arg1;

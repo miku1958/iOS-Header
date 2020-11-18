@@ -14,17 +14,12 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityAnnounceWaypointDifference;
-- (void)_accessibilityApplyUpdatedSolarPathLabel:(double)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityLoadSolarPathInfo;
-- (id)_accessibilityOffsettedTimeString;
-- (void)_accessibilityUpdateTimeDifferenceLabel;
 - (void)_applyDataMode;
 - (void)_handleViewModeTapGesture:(id)arg1;
 - (void)_loadSnapshotContentViews;
 - (void)_setViewMode:(long long)arg1 animated:(BOOL)arg2;
-- (void)_updateSolarPathForChangedDate:(id)arg1;
-- (void)_updateTimeScrubbingContent;
 - (void)crownInputSequencerIdleDidChange:(id)arg1;
 
 @end

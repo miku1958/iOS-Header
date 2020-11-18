@@ -41,6 +41,7 @@
 @property (readonly, nonatomic) BOOL canPerformZoom;
 @property (readonly, nonatomic) struct CGPoint centerPoint;
 @property (readonly, nonatomic) NSArray *children;
+@property (readonly, nonatomic) unsigned long long containerType;
 @property (readonly, nonatomic) AXElement *currentApplication;
 @property (readonly, nonatomic) NSArray *currentApplications;
 @property (readonly, nonatomic) NSArray *currentApplicationsIgnoringSiri;
@@ -49,6 +50,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *drags;
 @property (readonly, nonatomic) NSArray *drops;
+@property (readonly, nonatomic) AXElement *elementParent;
 @property (readonly, nonatomic) struct __AXUIElement *elementRef;
 @property (readonly, nonatomic) NSArray *elementsWithSemanticContext;
 @property (readonly, nonatomic) NSArray *explorerElements;
@@ -92,8 +94,10 @@
 @property (nonatomic, getter=isPassivelyListeningForEvents) BOOL passivelyListeningForEvents;
 @property (readonly, nonatomic) struct CGPath *path;
 @property (readonly, nonatomic) int pid;
+@property (readonly, nonatomic) NSString *processName;
 @property (readonly, nonatomic) AXElement *remoteParent;
 @property (readonly, nonatomic) BOOL representsScannerGroup; // @synthesize representsScannerGroup=_representsScannerGroup;
+@property (readonly, nonatomic) struct _NSRange rowRange;
 @property (readonly, nonatomic) long long scannerActivateBehavior;
 @property (readonly, nonatomic) unsigned long long scanningBehaviorTraits;
 @property (nonatomic) struct _NSRange selectedTextRange;
@@ -117,6 +121,7 @@
 @property (readonly, nonatomic) struct CGRect visibleFrame;
 @property (readonly, nonatomic) struct CGPoint visiblePoint;
 @property (readonly, nonatomic) unsigned int windowContextId;
+@property (readonly, nonatomic) unsigned int windowDisplayId;
 
 + (id)elementAtCoordinate:(struct CGPoint)arg1 withVisualPadding:(BOOL)arg2;
 + (id)elementWithAXUIElement:(struct __AXUIElement *)arg1;
@@ -145,12 +150,14 @@
 - (BOOL)canScrollInAtLeastOneDirection;
 - (void)clearCachedFrame:(BOOL)arg1 cachedVisibleFrame:(BOOL)arg2;
 - (id)containerTypes;
+- (unsigned int)contextIdForPoint:(struct CGPoint)arg1;
 - (struct CGPath *)convertPath:(struct CGPath *)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromContextId:(unsigned int)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toContextId:(unsigned int)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromContextId:(unsigned int)arg2;
 - (void)dealloc;
 - (void)decreaseAutoscrollSpeed;
+- (unsigned int)displayIdForContextId:(unsigned int)arg1;
 - (double)distanceToElement:(id)arg1;
 - (double)distanceToPoint:(struct CGPoint)arg1;
 - (id)elementForAttribute:(long long)arg1;
@@ -202,9 +209,10 @@
 - (struct __AXUIElement *)scrollAncestorForScrollAction:(int)arg1;
 - (void)scrollToBottom;
 - (void)scrollToTop;
-- (void)scrollToVisible;
+- (BOOL)scrollToVisible;
 - (void)sendUserEventOccurred;
 - (BOOL)setNativeFocus;
+- (BOOL)showContextMenu;
 - (BOOL)supportsAction:(int)arg1;
 - (BOOL)systemLongPressTVMenuButton;
 - (BOOL)systemPressTVDownButton;

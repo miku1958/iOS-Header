@@ -10,6 +10,7 @@
 
 @protocol VSSpeechXPCServiceProtocol <NSObject>
 - (oneway void)beginAudioPowerUpdateWithReply:(void (^)(AFXPCWrapper *))arg1;
+- (oneway void)cachePresynthesizedAudioRequest:(VSPresynthesizedAudioRequest *)arg1;
 - (oneway void)cleanUnusedAssets:(void (^)(NSError *))arg1;
 - (oneway void)continueSpeechRequest;
 - (oneway void)endAudioPowerUpdate;

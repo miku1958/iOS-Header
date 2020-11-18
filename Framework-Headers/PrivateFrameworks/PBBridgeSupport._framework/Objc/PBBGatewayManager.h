@@ -12,9 +12,11 @@
 {
     BOOL _isScheduled;
     NSArray *_bbSections;
+    unsigned long long _repeatedCallsEnabled;
     BBSettingsGateway *_settingsGateway;
     NSString *_allowedGroupName;
-    unsigned long long _privilegedSenderType;
+    unsigned long long _doNotDisturbPrivilegedSenderType;
+    NSString *_doNotDisturbPrivilegedSenderTypeGroupIdentifier;
     NSDateComponents *_dndFromComponents;
     NSDateComponents *_dndToComponents;
 }
@@ -23,10 +25,13 @@
 @property (strong, nonatomic) NSArray *bbSections; // @synthesize bbSections=_bbSections;
 @property (readonly, nonatomic) NSDateComponents *dndFromComponents; // @synthesize dndFromComponents=_dndFromComponents;
 @property (readonly, nonatomic) NSDateComponents *dndToComponents; // @synthesize dndToComponents=_dndToComponents;
+@property (readonly, nonatomic) unsigned long long doNotDisturbPrivilegedSenderType; // @synthesize doNotDisturbPrivilegedSenderType=_doNotDisturbPrivilegedSenderType;
+@property (readonly, nonatomic) NSString *doNotDisturbPrivilegedSenderTypeGroupIdentifier; // @synthesize doNotDisturbPrivilegedSenderTypeGroupIdentifier=_doNotDisturbPrivilegedSenderTypeGroupIdentifier;
 @property (readonly, nonatomic) BOOL isScheduled; // @synthesize isScheduled=_isScheduled;
-@property (readonly, nonatomic) unsigned long long privilegedSenderType; // @synthesize privilegedSenderType=_privilegedSenderType;
+@property (nonatomic) unsigned long long repeatedCallsEnabled; // @synthesize repeatedCallsEnabled=_repeatedCallsEnabled;
 @property (strong, nonatomic) BBSettingsGateway *settingsGateway; // @synthesize settingsGateway=_settingsGateway;
 
++ (id)dateComponentsFromDNDScheduleTime:(id)arg1;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)dealloc;

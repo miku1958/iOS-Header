@@ -8,17 +8,25 @@
 
 #import <iWorkImport/TSKEncryptedDocumentExporter-Protocol.h>
 
-@class NSString;
+@class NSString, TSUProgress;
 
 __attribute__((visibility("hidden")))
 @interface KNPdfSlideExporter : KNSlideExporter <TSKEncryptedDocumentExporter>
 {
 }
 
+@property (readonly, nonatomic) BOOL canExportInBackground;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *documentSpecificTypeUTI;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCancelled;
+@property (readonly, nonatomic) BOOL isExportSupported;
+@property (readonly, nonatomic) BOOL needsSupplementalFiles;
+@property (readonly, nonatomic) TSUProgress *progress;
+@property (readonly, nonatomic) NSString *savePanelMessage;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *typeUTI;
 
 - (id)p_renderingExporterDelegate;
 - (void)setCopyPassphrase:(id)arg1 hint:(id)arg2;

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVKVONotifier-Protocol.h>
 
 @class AVCallbackContextRegistry, AVWeakReference, NSString;
 @protocol AVWeakObservable;
 
+__attribute__((visibility("hidden")))
 @interface AVWeaklyObservedObjectClientBlockKVONotifier : NSObject <AVKVONotifier>
 {
     AVCallbackContextRegistry *_callbackContextRegistry;

@@ -11,6 +11,7 @@
 - (id)hk_MD2Hash;
 - (id)hk_MD4Hash;
 - (id)hk_MD5Hash;
+- (id)hk_MD5HashAsUUID;
 - (id)hk_SHA1Hash;
 - (id)hk_SHA224Hash;
 - (id)hk_SHA256Hash;
@@ -19,8 +20,11 @@
 - (long long)hk_compareBuildVersionWithString:(id)arg1;
 - (id)hk_copyNonEmptyString;
 - (BOOL)hk_isBase64;
+- (BOOL)hk_isCaseInsensitiveSubstringInString:(id)arg1;
+- (BOOL)hk_isValidPurposeString;
 - (id)hk_stringByAppendingKeyPathComponent:(id)arg1;
 - (id)hk_stringByRemovingCharactersInSet:(id)arg1;
+- (id)hk_stringByUnescapingJSONCharactersForDisplay;
 - (id)hk_stripLeadingTrailingWhitespace;
 - (id)hk_trimWhitespaceAndNewlines;
 @end

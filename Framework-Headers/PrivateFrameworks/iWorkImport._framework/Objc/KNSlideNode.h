@@ -132,6 +132,7 @@ __attribute__((visibility("hidden")))
 - (unsigned int)saveNextUntitledResolverIndex;
 - (void)saveToArchive:(struct SlideNodeArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
+- (id)slideAndReturnError:(id *)arg1;
 - (void)uniquifyTableNamesForUpgradeOrImport;
 - (void)upgradeSlideSpecificHyperlinksForSlideNodes:(id)arg1;
 - (void)upgradeSlideSpecificStorageHyperlinksForStorage:(id)arg1 withSlideNodes:(id)arg2;

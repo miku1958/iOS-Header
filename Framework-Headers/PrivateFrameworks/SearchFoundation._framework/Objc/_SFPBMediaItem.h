@@ -31,15 +31,6 @@
 @property (strong, nonatomic) _SFPBImage *contentAdvisoryImage; // @synthesize contentAdvisoryImage=_contentAdvisoryImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasContentAdvisory;
-@property (readonly, nonatomic) BOOL hasContentAdvisoryImage;
-@property (readonly, nonatomic) BOOL hasOverlayImage;
-@property (readonly, nonatomic) BOOL hasPunchout;
-@property (readonly, nonatomic) BOOL hasReviewGlyph;
-@property (readonly, nonatomic) BOOL hasReviewText;
-@property (readonly, nonatomic) BOOL hasSubtitleText;
-@property (readonly, nonatomic) BOOL hasThumbnail;
-@property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBImage *overlayImage; // @synthesize overlayImage=_overlayImage;

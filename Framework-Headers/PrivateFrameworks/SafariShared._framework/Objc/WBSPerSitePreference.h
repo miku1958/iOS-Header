@@ -17,11 +17,10 @@
 
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
-+ (id)new;
++ (id)localizedStringForBinaryPreferenceValue:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)init;
 - (id)initWithIdentifier:(id)arg1;
 
 @end

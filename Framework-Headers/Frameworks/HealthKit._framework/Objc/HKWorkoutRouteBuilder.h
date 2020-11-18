@@ -6,26 +6,33 @@
 
 #import <HealthKit/HKSeriesBuilder.h>
 
-@class HKWorkoutRoute;
+#import <HealthKit/HKSeriesBuilderClientInterface-Protocol.h>
 
-@interface HKWorkoutRouteBuilder : HKSeriesBuilder
+@class NSString;
+
+@interface HKWorkoutRouteBuilder : HKSeriesBuilder <HKSeriesBuilderClientInterface>
 {
-    HKWorkoutRoute *_route;
 }
 
-- (void).cxx_destruct;
-- (void)_associateRoute:(id)arg1 toWorkout:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_resourceQueue_discardWithHandler:(CDUnknownBlockType)arg1;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)clientInterface;
++ (void)configureClientInterface:(id)arg1;
++ (void)configureServerInterface:(id)arg1;
++ (id)serverInterface;
 - (void)_resourceQueue_finishRouteWithWorkout:(id)arg1 metadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_resourceQueue_insertRouteData:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)_validateRouteData:(id)arg1 error:(out id *)arg2;
-- (void)dealloc;
+- (void)addMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)exportedInterface;
 - (void)finishRouteWithWorkout:(id)arg1 metadata:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithHealthStore:(id)arg1 device:(id)arg2;
+- (id)initWithHealthStore:(id)arg1 identifier:(id)arg2 device:(id)arg3 workoutBuilderID:(id)arg4;
 - (void)insertRouteData:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)route;
-- (void)setRoute:(id)arg1;
+- (id)remoteInterface;
 
 @end
 

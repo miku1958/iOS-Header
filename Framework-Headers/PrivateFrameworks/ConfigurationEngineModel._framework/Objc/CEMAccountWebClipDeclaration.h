@@ -12,33 +12,40 @@
 
 @interface CEMAccountWebClipDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadPrecomposed;
+    NSNumber *_payloadFullScreen;
+    NSString *_payloadURL;
+    NSNumber *_payloadIsRemovable;
+    NSString *_payloadLabel;
+    NSString *_payloadIcon;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadFullScreen;
-@property (readonly, nonatomic) NSString *payloadIcon;
-@property (readonly, nonatomic) NSNumber *payloadIsRemovable;
-@property (readonly, nonatomic) NSString *payloadLabel;
-@property (readonly, nonatomic) NSNumber *payloadPrecomposed;
-@property (readonly, nonatomic) NSString *payloadURL;
+@property (copy, nonatomic) NSNumber *payloadFullScreen; // @synthesize payloadFullScreen=_payloadFullScreen;
+@property (copy, nonatomic) NSString *payloadIcon; // @synthesize payloadIcon=_payloadIcon;
+@property (copy, nonatomic) NSNumber *payloadIsRemovable; // @synthesize payloadIsRemovable=_payloadIsRemovable;
+@property (copy, nonatomic) NSString *payloadLabel; // @synthesize payloadLabel=_payloadLabel;
+@property (copy, nonatomic) NSNumber *payloadPrecomposed; // @synthesize payloadPrecomposed=_payloadPrecomposed;
+@property (copy, nonatomic) NSString *payloadURL; // @synthesize payloadURL=_payloadURL;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withURL:(id)arg2 withLabel:(id)arg3;
++ (id)buildWithIdentifier:(id)arg1 withPrecomposed:(id)arg2 withFullScreen:(id)arg3 withURL:(id)arg4 withIsRemovable:(id)arg5 withLabel:(id)arg6 withIcon:(id)arg7;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

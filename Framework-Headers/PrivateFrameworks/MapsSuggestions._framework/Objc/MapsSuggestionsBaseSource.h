@@ -28,14 +28,16 @@
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
 - (unsigned long long)addOrUpdateMySuggestionEntries:(struct NSArray *)arg1 deleteMissing:(BOOL)arg2;
-- (BOOL)canProduceEntriesOfType:(unsigned long long)arg1;
+- (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (id)currentBestLocation;
 - (unsigned long long)deleteMyEntries:(struct NSArray *)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 name:(struct NSString *)arg2;
+- (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
 - (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesOfType:(long long)arg1;
 
 @end
 

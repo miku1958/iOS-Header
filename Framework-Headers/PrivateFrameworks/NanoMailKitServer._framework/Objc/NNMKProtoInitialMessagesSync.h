@@ -22,10 +22,12 @@
     NSString *_syncedMailboxCustomName;
     unsigned int _syncedMailboxType;
     NSString *_syncedMailboxURL;
+    BOOL _organizedByThread;
     struct {
         unsigned int fullSyncVersion:1;
         unsigned int mailboxSyncVersion:1;
         unsigned int syncedMailboxType:1;
+        unsigned int organizedByThread:1;
     } _has;
 }
 
@@ -37,6 +39,7 @@
 @property (nonatomic) BOOL hasFullSyncVersion;
 @property (readonly, nonatomic) BOOL hasMailbox;
 @property (nonatomic) BOOL hasMailboxSyncVersion;
+@property (nonatomic) BOOL hasOrganizedByThread;
 @property (readonly, nonatomic) BOOL hasSyncedMailboxAccountId;
 @property (readonly, nonatomic) BOOL hasSyncedMailboxCustomName;
 @property (nonatomic) BOOL hasSyncedMailboxType;
@@ -44,6 +47,7 @@
 @property (strong, nonatomic) NSMutableArray *initialMessages; // @synthesize initialMessages=_initialMessages;
 @property (strong, nonatomic) NNMKProtoMailbox *mailbox; // @synthesize mailbox=_mailbox;
 @property (nonatomic) unsigned int mailboxSyncVersion; // @synthesize mailboxSyncVersion=_mailboxSyncVersion;
+@property (nonatomic) BOOL organizedByThread; // @synthesize organizedByThread=_organizedByThread;
 @property (strong, nonatomic) NSString *syncedMailboxAccountId; // @synthesize syncedMailboxAccountId=_syncedMailboxAccountId;
 @property (strong, nonatomic) NSString *syncedMailboxCustomName; // @synthesize syncedMailboxCustomName=_syncedMailboxCustomName;
 @property (nonatomic) unsigned int syncedMailboxType; // @synthesize syncedMailboxType=_syncedMailboxType;

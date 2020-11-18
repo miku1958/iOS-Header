@@ -17,10 +17,13 @@
 @property (strong, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property (nonatomic) BOOL showsSeparator; // @synthesize showsSeparator=_showsSeparator;
 
++ (id)defaultTextColor;
 + (id)reuseIdentifier;
 + (id)titleFont;
 - (void).cxx_destruct;
 - (id)_disclosureChevronImage:(BOOL)arg1;
+- (id)_fontForDetailTextLabel;
+- (id)_fontForTextLabel;
 - (void)_fontSizeDidChange;
 - (BOOL)_visibleAtPoint:(struct CGPoint)arg1;
 - (void)dealloc;

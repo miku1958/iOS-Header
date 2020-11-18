@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     VKTileCache *_recentTrafficDynamicTiles;
 }
 
+- (BOOL)allowPreliminaryTiles;
 - (void)clearCaches;
 - (void)dealloc;
 - (long long)defaultMaximumZoomLevel;
@@ -28,7 +29,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)maximumZoomLevelBoundsCamera;
 - (BOOL)minimumZoomLevelBoundsCamera;
 - (id)sourceKeysForRenderKey:(const struct VKTileKey *)arg1;
-- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
+- (id)stateDescriptionForRenderKey:(const struct VKTileKey *)arg1;
+- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3 userInfo:(id)arg4;
 
 @end
 

@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct SKCWait *_mycaction;
 }
 
++ (BOOL)supportsSecureCoding;
 + (id)waitForDuration:(double)arg1;
 + (id)waitForDuration:(double)arg1 withRange:(double)arg2;
 - (void)encodeWithCoder:(id)arg1;

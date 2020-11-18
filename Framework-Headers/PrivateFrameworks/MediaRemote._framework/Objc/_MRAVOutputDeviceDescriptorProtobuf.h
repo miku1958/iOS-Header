@@ -22,12 +22,15 @@
     NSString *_modelID;
     NSData *_modelSpecificInfoData;
     NSString *_name;
+    NSString *_parentGroupIdentifier;
     _MRAVOutputDeviceSourceInfoProtobuf *_sourceInfo;
     NSString *_uniqueIdentifier;
     float _volume;
     BOOL _canAccessAppleMusic;
     BOOL _canAccessRemoteAssets;
     BOOL _canAccessiCloudMusicLibrary;
+    BOOL _canFetchMediaDataFromSender;
+    BOOL _canPlayEncryptedProgressiveDownloadAssets;
     BOOL _canRelayCommunicationChannel;
     BOOL _groupContainsGroupLeader;
     BOOL _isAirPlayReceiverSessionActive;
@@ -38,6 +41,8 @@
     BOOL _isProxyGroupPlayer;
     BOOL _isRemoteControllable;
     BOOL _isVolumeControlAvailable;
+    BOOL _parentGroupContainsDiscoverableLeader;
+    BOOL _presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
     BOOL _requiresAuthorization;
     BOOL _shouldForceRemoteControlabillity;
     BOOL _supportsBufferedAirPlay;
@@ -50,6 +55,8 @@
         unsigned int canAccessAppleMusic:1;
         unsigned int canAccessRemoteAssets:1;
         unsigned int canAccessiCloudMusicLibrary:1;
+        unsigned int canFetchMediaDataFromSender:1;
+        unsigned int canPlayEncryptedProgressiveDownloadAssets:1;
         unsigned int canRelayCommunicationChannel:1;
         unsigned int groupContainsGroupLeader:1;
         unsigned int isAirPlayReceiverSessionActive:1;
@@ -60,6 +67,8 @@
         unsigned int isProxyGroupPlayer:1;
         unsigned int isRemoteControllable:1;
         unsigned int isVolumeControlAvailable:1;
+        unsigned int parentGroupContainsDiscoverableLeader:1;
+        unsigned int presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets:1;
         unsigned int requiresAuthorization:1;
         unsigned int shouldForceRemoteControlabillity:1;
         unsigned int supportsBufferedAirPlay:1;
@@ -71,6 +80,8 @@
 @property (nonatomic) BOOL canAccessAppleMusic; // @synthesize canAccessAppleMusic=_canAccessAppleMusic;
 @property (nonatomic) BOOL canAccessRemoteAssets; // @synthesize canAccessRemoteAssets=_canAccessRemoteAssets;
 @property (nonatomic) BOOL canAccessiCloudMusicLibrary; // @synthesize canAccessiCloudMusicLibrary=_canAccessiCloudMusicLibrary;
+@property (nonatomic) BOOL canFetchMediaDataFromSender; // @synthesize canFetchMediaDataFromSender=_canFetchMediaDataFromSender;
+@property (nonatomic) BOOL canPlayEncryptedProgressiveDownloadAssets; // @synthesize canPlayEncryptedProgressiveDownloadAssets=_canPlayEncryptedProgressiveDownloadAssets;
 @property (nonatomic) BOOL canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
 @property (nonatomic) int deviceSubType; // @synthesize deviceSubType=_deviceSubType;
 @property (nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
@@ -81,6 +92,8 @@
 @property (nonatomic) BOOL hasCanAccessAppleMusic;
 @property (nonatomic) BOOL hasCanAccessRemoteAssets;
 @property (nonatomic) BOOL hasCanAccessiCloudMusicLibrary;
+@property (nonatomic) BOOL hasCanFetchMediaDataFromSender;
+@property (nonatomic) BOOL hasCanPlayEncryptedProgressiveDownloadAssets;
 @property (nonatomic) BOOL hasCanRelayCommunicationChannel;
 @property (nonatomic) BOOL hasDeviceSubType;
 @property (nonatomic) BOOL hasDeviceType;
@@ -100,6 +113,9 @@
 @property (readonly, nonatomic) BOOL hasModelID;
 @property (readonly, nonatomic) BOOL hasModelSpecificInfoData;
 @property (readonly, nonatomic) BOOL hasName;
+@property (nonatomic) BOOL hasParentGroupContainsDiscoverableLeader;
+@property (readonly, nonatomic) BOOL hasParentGroupIdentifier;
+@property (nonatomic) BOOL hasPresentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 @property (nonatomic) BOOL hasRequiresAuthorization;
 @property (nonatomic) BOOL hasShouldForceRemoteControlabillity;
 @property (readonly, nonatomic) BOOL hasSourceInfo;
@@ -120,6 +136,9 @@
 @property (strong, nonatomic) NSString *modelID; // @synthesize modelID=_modelID;
 @property (strong, nonatomic) NSData *modelSpecificInfoData; // @synthesize modelSpecificInfoData=_modelSpecificInfoData;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic) BOOL parentGroupContainsDiscoverableLeader; // @synthesize parentGroupContainsDiscoverableLeader=_parentGroupContainsDiscoverableLeader;
+@property (strong, nonatomic) NSString *parentGroupIdentifier; // @synthesize parentGroupIdentifier=_parentGroupIdentifier;
+@property (nonatomic) BOOL presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets; // @synthesize presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets=_presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 @property (nonatomic) BOOL requiresAuthorization; // @synthesize requiresAuthorization=_requiresAuthorization;
 @property (nonatomic) BOOL shouldForceRemoteControlabillity; // @synthesize shouldForceRemoteControlabillity=_shouldForceRemoteControlabillity;
 @property (strong, nonatomic) _MRAVOutputDeviceSourceInfoProtobuf *sourceInfo; // @synthesize sourceInfo=_sourceInfo;

@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class FLExtensionContext, FLExtensionHostContext, NSExtension, NSString, NSUUID;
+@class FLExtensionContext, NSExtension, NSString, NSUUID;
 @protocol FLExtensionHostContextInterface;
 
 @interface FLHeadlessExtensionLoader : NSObject
 {
     FLExtensionContext *_extensionContext;
-    FLExtensionHostContext *_hostContext;
     id<FLExtensionHostContextInterface> _delegate;
     NSExtension *_extension;
     CDUnknownBlockType _requestInterruptionBlock;
@@ -31,6 +30,9 @@
 - (BOOL)_loadExtension:(id *)arg1;
 - (id)_loadExtensionForIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)_setupSessionIfNeeded:(id *)arg1;
+- (void)_terminate;
+- (void)dealloc;
+- (id)description;
 - (id)initWithFollowUp:(id)arg1 andDelegate:(id)arg2;
 - (id)initWithIdentifier:(id)arg1;
 - (id)remoteInterface;

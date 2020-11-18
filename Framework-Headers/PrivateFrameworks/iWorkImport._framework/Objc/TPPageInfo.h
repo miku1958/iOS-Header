@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDContainerInfo-Protocol.h>
+#import <iWorkImport/TSKModelRootIndexProvider-Protocol.h>
 
 @class NSArray, NSString, TPBodyInfo, TPDocumentRoot, TSDInfoGeometry, TSPObject;
 @protocol TPPageLayoutInfoProvider, TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TPPageInfo : NSObject <TSDContainerInfo>
+@interface TPPageInfo : NSObject <TSDContainerInfo, TSKModelRootIndexProvider>
 {
     unsigned long long _pageIndex;
     TPBodyInfo *_bodyInfo;
@@ -39,8 +40,15 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
 @property (readonly) Class superclass;
 
++ (unsigned long long)documentSetupLeftSidePageIndex;
++ (unsigned long long)documentSetupPageIndex;
++ (unsigned long long)documentSetupRightSidePageIndex;
 + (BOOL)hasBodyInfo;
++ (BOOL)isAlternativePageIndex:(unsigned long long)arg1 documentRoot:(id)arg2;
 + (BOOL)isDocSetupPageIndex:(unsigned long long)arg1;
++ (BOOL)isPageTemplatePageIndex:(unsigned long long)arg1 documentRoot:(id)arg2;
++ (unsigned long long)pageIndexFromPageTemplateIndex:(unsigned long long)arg1;
++ (unsigned long long)pageTemplateIndexFromPageIndex:(unsigned long long)arg1 documentRoot:(id)arg2;
 - (void).cxx_destruct;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (id)copyWithContext:(id)arg1;
@@ -51,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSelectable;
 - (BOOL)isThemeContent;
 - (Class)layoutClass;
+- (long long)modelRootIndex;
 - (Class)repClass;
 - (void)setPrimitiveGeometry:(id)arg1;
 

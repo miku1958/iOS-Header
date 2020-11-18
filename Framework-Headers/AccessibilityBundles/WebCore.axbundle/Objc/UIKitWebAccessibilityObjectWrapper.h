@@ -152,7 +152,6 @@
 - (BOOL)accessibilityCanFuzzyHitTest;
 - (id)accessibilityContainer;
 - (id)accessibilityCustomRotors;
-- (void)accessibilityElementDidBecomeFocused;
 - (struct CGRect)accessibilityFrame;
 - (struct CGRect)accessibilityFrameForScrolling;
 - (id)accessibilityHint;
@@ -161,6 +160,7 @@
 - (BOOL)accessibilityIsMathTopObject;
 - (id)accessibilityLabel;
 - (id)accessibilityLanguage;
+- (id)accessibilityLinkRelationshipType;
 - (id)accessibilityMathBaseObject;
 - (id)accessibilityMathDenominatorObject;
 - (id)accessibilityMathEquation;

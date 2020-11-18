@@ -31,6 +31,7 @@
 @property (copy) NSString *albumPersistentID;
 @property (copy) NSString *applicationName;
 @property (readonly) NSDictionary *attributes; // @synthesize attributes=_attributes;
+@property (strong) NSNumber *backgroundRunnable;
 @property (copy) NSString *bundleID;
 @property (readonly, nonatomic) CDStruct_b7fac349 codedAttributes; // @synthesize codedAttributes=_codedAttributes;
 @property (readonly, nonatomic) CDStruct_b7fac349 codedCustomAttributes; // @synthesize codedCustomAttributes=_codedCustomAttributes;
@@ -57,6 +58,7 @@
 @property (copy) NSArray *fileProviderUserInfoValues;
 @property (copy) NSString *filename;
 @property (readonly, nonatomic) BOOL hasCodedCustomAttributes; // @synthesize hasCodedCustomAttributes=_hasCodedCustomAttributes;
+@property (copy) NSData *intentData;
 @property (strong) NSNumber *isPlaceholder;
 @property (copy) NSDate *lastApplicationLaunchedDate;
 @property (copy) NSString *lastEditorIdentifier;
@@ -82,6 +84,7 @@
 @property (copy) NSString *parentFileItemID;
 @property (strong, getter=isPartiallyDownloaded) NSNumber *partiallyDownloaded;
 @property (copy) NSString *protectionClass;
+@property (copy) NSString *punchoutLabel;
 @property (readonly) NSArray *queryResultMatchedFields;
 @property (copy) NSString *queryResultRelevance;
 @property (strong, nonatomic, getter=isReaderView) NSNumber *readerView;
@@ -91,6 +94,7 @@
 @property (copy) NSString *sharedItemCurrentUserRole;
 @property (strong) NSNumber *subItemCount;
 @property (copy) NSString *subtitle;
+@property (copy) NSString *suggestedInvocationPhrase;
 @property (copy) NSString *textContentDataSource;
 @property (readonly) NSString *textContentNoCopy;
 @property (copy) NSString *textSelected;

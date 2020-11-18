@@ -29,7 +29,6 @@
 @property (readonly, nonatomic) BOOL isRecentlyAddedAlbum;
 @property (readonly, nonatomic) BOOL isStandInAlbum;
 @property (readonly, nonatomic) BOOL isUserLibraryAlbum;
-@property (readonly, nonatomic) BOOL isWallpaperAlbum;
 @property (readonly, strong, nonatomic) NSNumber *kind;
 @property (readonly, nonatomic) int kindValue;
 @property (readonly, strong, nonatomic) NSMutableOrderedSet *mutableAssets;

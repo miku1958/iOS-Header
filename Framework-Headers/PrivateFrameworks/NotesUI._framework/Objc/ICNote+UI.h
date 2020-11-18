@@ -46,6 +46,7 @@
 - (void)textStorageWillChange:(id)arg1;
 - (void)textStorageWillProcessEditing:(id)arg1;
 - (struct UIImage *)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 imageScaling:(unsigned long long *)arg3 showAsFileIcon:(BOOL *)arg4 isMovie:(BOOL *)arg5 movieDuration:(CDStruct_1b6d18a9 *)arg6;
+- (struct UIImage *)thumbnailImageWithMinSize:(struct CGSize)arg1 scale:(double)arg2 imageScaling:(unsigned long long *)arg3 showAsFileIcon:(BOOL *)arg4 isMovie:(BOOL *)arg5 movieDuration:(CDStruct_1b6d18a9 *)arg6 attachment:(id *)arg7;
 - (id)uiAttributedString;
 - (void)updateModificationDateAndChangeCount;
 - (void)updateModificationDateAndChangeCountAndSaveAfterDelay;

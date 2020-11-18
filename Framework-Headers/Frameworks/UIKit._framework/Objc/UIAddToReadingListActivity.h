@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <UIKitCore/UIActivity.h>
 
 @interface UIAddToReadingListActivity : UIActivity
 {
 }
 
 + (unsigned long long)_xpcAttributes;
-- (id)_activityImage;
+- (id)_activityBundleImageConfiguration;
 - (void)_addToReadingList:(id)arg1 withTitle:(id)arg2;
 - (id)activityTitle;
 - (id)activityType;

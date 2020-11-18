@@ -21,8 +21,10 @@
     PSSpecifier *_timePickerSpecifier;
     PSSpecifier *_currentTimeSpecifier;
     PSWallClockMinuteTimer *_minuteTimer;
+    PSSpecifier *_ampmToggleSpecifier;
 }
 
+@property (strong, nonatomic) PSSpecifier *ampmToggleSpecifier; // @synthesize ampmToggleSpecifier=_ampmToggleSpecifier;
 @property (strong) PSSpecifier *currentTimeSpecifier; // @synthesize currentTimeSpecifier=_currentTimeSpecifier;
 @property (strong, nonatomic) PSWallClockMinuteTimer *minuteTimer; // @synthesize minuteTimer=_minuteTimer;
 @property (strong) PSSpecifier *timePickerSpecifier; // @synthesize timePickerSpecifier=_timePickerSpecifier;
@@ -36,8 +38,12 @@
 - (id)currentTimeString;
 - (void)datePickerChanged:(id)arg1;
 - (void)dealloc;
+- (void)effectiveSettingsChanged:(id)arg1;
 - (id)init;
 - (id)is24HourTime:(id)arg1;
+- (id)isShowingAMPMInStatusBar:(id)arg1;
+- (id)isShowingDateInStatusBar:(id)arg1;
+- (void)loadTimeZoneController:(id)arg1;
 - (void)localeChanged:(id)arg1;
 - (id)makeCurrentTimeSpecifier;
 - (id)makeTimePickerSpecifier;
@@ -45,6 +51,8 @@
 - (void)reloadTimezone;
 - (void)set24HourTime:(id)arg1 specifier:(id)arg2;
 - (void)setAutomaticTimeFooter;
+- (void)setShowAMPMInStatusBar:(id)arg1 specifier:(id)arg2;
+- (void)setShowDateInStatusBar:(id)arg1 specifier:(id)arg2;
 - (void)setTimeZoneValue:(id)arg1 specifier:(id)arg2;
 - (void)setUseAutomaticTime:(id)arg1 specifier:(id)arg2;
 - (BOOL)shouldDisplayTimezoneSpinner;

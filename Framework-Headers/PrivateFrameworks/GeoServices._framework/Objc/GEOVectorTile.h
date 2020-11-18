@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEOFeatureStyleAttributes, NSData, NSMutableArray, NSMutableData, NSMutableOrderedSet;
+@class GEOFeatureStyleAttributes, NSData, NSMutableArray, NSMutableData, NSMutableDictionary, NSMutableOrderedSet;
 
 @interface GEOVectorTile : NSObject
 {
@@ -26,7 +26,7 @@
     CDStruct_6e3f967a *_polygonLabelPositions;
     unsigned long long _polygonLabelPositionsCount;
     unsigned long long _venuesCount;
-    CDStruct_7fac6282 *_venues;
+    CDStruct_6b54c102 *_venues;
     unsigned long long _venueSectionsCount;
     unsigned long long _venueBuildingsCount;
     CDStruct_c8220d63 *_venueBuildings;
@@ -38,10 +38,14 @@
     NSMutableData *_extrusionHeightsPool;
     NSMutableData *_baseHeightsPool;
     unsigned long long _buildingFootprintsCount;
+    CDStruct_8e575d68 *_overlapBuildingFootprints;
+    unsigned long long _overlapBuildingFootprintsCount;
     CDStruct_8e575d68 *_hiResBuildingFootprints;
     unsigned long long _hiResBuildingFootprintsCount;
     CDStruct_2da3f85a *_threeDBuildings;
     unsigned long long _threeDBuildingsCount;
+    CDStruct_2da3f85a *_overlapThreeDBuildings;
+    unsigned long long _overlapThreeDBuildingsCount;
     struct {
         BOOL _field1;
         unsigned long long _field2;
@@ -75,6 +79,7 @@
     CDStruct_9df870a8 *_polygonVertices;
     CDStruct_9df870a8 *_coastlineVertices;
     CDStruct_9df870a8 *_footprintVertices;
+    CDStruct_9df870a8 *_overlapFootprintVertices;
     CDStruct_9df870a8 *_hiResFootprintVertices;
     CDStruct_9df870a8 *_venuesVertices;
     CDStruct_183601bc **_venuesSections;
@@ -160,20 +165,33 @@
     unsigned long long _transitNodeCollapseIndexCount;
     unsigned long long *_transitNodeCollapseIDs;
     unsigned long long _transitNodeCollapseIDCount;
+    struct GEOsslpmTileInfo *_sslpmTileInfo;
+    unsigned int _tileLabelLinesCount;
+    struct GEOTileLabelLine *_tileLabelLines;
+    unsigned int _labelLineFeatureSectionsCount;
+    struct GEOLabelLineFeatureSection *_labelLineFeatureSections;
+    unsigned int _labelLineAttributesCount;
+    struct GEOLabelLineAttribute *_labelLineAttributes;
+    unsigned int _debugByteCount;
+    NSMutableDictionary *_debugByteCountPerChapter;
 }
 
 @property (readonly, nonatomic) CDStruct_8e575d68 *buildingFootprints; // @synthesize buildingFootprints=_buildingFootprints;
-@property (readonly, nonatomic) unsigned long long buildingFootprintsCount; // @synthesize buildingFootprintsCount=_buildingFootprintsCount;
+@property (readonly, nonatomic) unsigned long long buildingFootprintsCount;
 @property (readonly, nonatomic) unsigned long long coastlineCharacteristicPointCount; // @synthesize coastlineCharacteristicPointCount=_coastlineCharacteristicPointCount;
 @property (readonly, nonatomic) CDStruct_db2bd8f2 *coastlineCharacteristicPoints; // @synthesize coastlineCharacteristicPoints=_coastlineCharacteristicPoints;
 @property (readonly, nonatomic) CDStruct_a2ef2718 *coastlines; // @synthesize coastlines=_coastlines;
 @property (readonly, nonatomic) unsigned long long coastlinesCount; // @synthesize coastlinesCount=_coastlinesCount;
 @property (readonly, nonatomic) CDStruct_3cfc3106 *curveLineVertices;
+@property (readonly, nonatomic) unsigned int debugByteCount; // @synthesize debugByteCount=_debugByteCount;
+@property (readonly, nonatomic) NSMutableDictionary *debugByteCountPerChapter; // @synthesize debugByteCountPerChapter=_debugByteCountPerChapter;
 @property (readonly, nonatomic) BOOL hasComputedJunctions; // @synthesize hasComputedJunctions=_hasComputedJunctions;
-@property (readonly, nonatomic) CDStruct_8e575d68 *hiResBuildingFootprints; // @synthesize hiResBuildingFootprints=_hiResBuildingFootprints;
-@property (readonly, nonatomic) unsigned long long hiResBuildingFootprintsCount; // @synthesize hiResBuildingFootprintsCount=_hiResBuildingFootprintsCount;
 @property (readonly, nonatomic) CDStruct_3b01f0aa *junctions; // @synthesize junctions=_junctions;
 @property (readonly, nonatomic) unsigned long long junctionsCount; // @synthesize junctionsCount=_junctionsCount;
+@property (readonly, nonatomic) struct GEOLabelLineAttribute *labelLineAttributes; // @synthesize labelLineAttributes=_labelLineAttributes;
+@property (readonly, nonatomic) unsigned int labelLineAttributesCount; // @synthesize labelLineAttributesCount=_labelLineAttributesCount;
+@property (readonly, nonatomic) struct GEOLabelLineFeatureSection *labelLineFeatureSections; // @synthesize labelLineFeatureSections=_labelLineFeatureSections;
+@property (readonly, nonatomic) unsigned int labelLineFeatureSectionsCount; // @synthesize labelLineFeatureSectionsCount=_labelLineFeatureSectionsCount;
 @property (readonly, nonatomic) CDStruct_d2cf4d6c *labelTextPlacements; // @synthesize labelTextPlacements=_labelTextPlacements;
 @property (readonly, nonatomic) unsigned int labelTextPlacementsCount; // @synthesize labelTextPlacementsCount=_labelTextPlacementsCount;
 @property (readonly, nonatomic) CDStruct_7523a67d *laneConnections; // @synthesize laneConnections=_laneConnections;
@@ -189,6 +207,10 @@
 @property (readonly, nonatomic) unsigned long long linesLabelAnnotationCount; // @synthesize linesLabelAnnotationCount=_linesLabelAnnotationCount;
 @property (readonly, nonatomic) CDStruct_361566eb *linesLabelAnnotations; // @synthesize linesLabelAnnotations=_linesLabelAnnotations;
 @property (readonly, nonatomic) unsigned long long linesVertexCount; // @synthesize linesVertexCount=_linesVertexCount;
+@property (readonly, nonatomic) unsigned long long nonOverlappingBuildingFootprintsCount; // @synthesize nonOverlappingBuildingFootprintsCount=_buildingFootprintsCount;
+@property (readonly, nonatomic) unsigned long long nonOverlappingThreeDBuildingsCount; // @synthesize nonOverlappingThreeDBuildingsCount=_threeDBuildingsCount;
+@property (readonly, nonatomic) CDStruct_8e575d68 *overlapBuildingFootprints;
+@property (readonly, nonatomic) CDStruct_2da3f85a *overlapThreeDBuildings;
 @property (readonly, nonatomic) CDStruct_f6a177db *overpasses; // @synthesize overpasses=_overpasses;
 @property (readonly, nonatomic) CDStruct_7523a67d *pointsOnRoad; // @synthesize pointsOnRoad=_pointsOnRoad;
 @property (readonly, nonatomic) unsigned long long pointsOnRoadCount; // @synthesize pointsOnRoadCount=_pointsOnRoadCount;
@@ -201,11 +223,15 @@
 @property (readonly, nonatomic) CDStruct_623f0827 *polygons; // @synthesize polygons=_polygons;
 @property (readonly, nonatomic) unsigned long long polygonsCount; // @synthesize polygonsCount=_polygonsCount;
 @property (readonly, nonatomic) unsigned long long polygonsVertexCount; // @synthesize polygonsVertexCount=_polygonsVertexCount;
-@property (readonly, nonatomic) CDStruct_2da3f85a *threeDBuildings; // @synthesize threeDBuildings=_threeDBuildings;
-@property (readonly, nonatomic) unsigned long long threeDBuildingsCount; // @synthesize threeDBuildingsCount=_threeDBuildingsCount;
+@property (readonly, nonatomic) struct GEOsslpmTileInfo *sslpmTileInfo; // @synthesize sslpmTileInfo=_sslpmTileInfo;
+@property (readonly, nonatomic) CDStruct_2da3f85a *threeDBuildings;
 @property (readonly, nonatomic) struct _GEOTileKey tileKey; // @synthesize tileKey=_key;
+@property (readonly, nonatomic) struct GEOTileLabelLine *tileLabelLines; // @synthesize tileLabelLines=_tileLabelLines;
+@property (readonly, nonatomic) unsigned int tileLabelLinesCount; // @synthesize tileLabelLinesCount=_tileLabelLinesCount;
 @property (readonly, nonatomic) unsigned long long tileReferenceCount; // @synthesize tileReferenceCount=_tileReferenceCount;
 @property (readonly, nonatomic) struct _GEOTileKey *tileReferences; // @synthesize tileReferences=_tileReferences;
+@property (readonly, nonatomic) unsigned long long totalBuildingFootprintsCount;
+@property (readonly, nonatomic) unsigned long long totalThreeDBuildingsCount;
 @property (readonly, nonatomic) unsigned long long transitAccessPointCount; // @synthesize transitAccessPointCount=_transitAccessPointCount;
 @property (readonly, nonatomic) CDStruct_5eab3029 *transitAccessPoints; // @synthesize transitAccessPoints=_transitAccessPoints;
 @property (readonly, nonatomic) BOOL transitCoverage; // @synthesize transitCoverage=_transitCoverage;
@@ -250,7 +276,7 @@
 @property (readonly, nonatomic) CDStruct_9d4f1c73 *venueLevels; // @synthesize venueLevels=_venueLevels;
 @property (readonly, nonatomic) unsigned long long venueLevelsCount; // @synthesize venueLevelsCount=_venueLevelsCount;
 @property (readonly, nonatomic) CDStruct_9df870a8 *venueVertices; // @synthesize venueVertices=_venuesVertices;
-@property (readonly, nonatomic) CDStruct_7fac6282 *venues; // @synthesize venues=_venues;
+@property (readonly, nonatomic) CDStruct_6b54c102 *venues; // @synthesize venues=_venues;
 @property (readonly, nonatomic) unsigned long long venuesCount; // @synthesize venuesCount=_venuesCount;
 
 - (void).cxx_destruct;
@@ -268,6 +294,8 @@
 - (BOOL)_populateTransitConnectivity;
 - (BOOL)_populateTransitNodeStyleAttributes;
 - (BOOL)_read3DBuildings:(CDStruct_effb527d *)arg1;
+- (BOOL)_readBorder3DBuildings:(CDStruct_effb527d *)arg1;
+- (BOOL)_readChapter3DBuildings:(CDStruct_effb527d *)arg1 chapter:(unsigned short)arg2 buildingFeatures:(CDStruct_183601bc **)arg3 count:(unsigned long long *)arg4;
 - (BOOL)_readCoastlines:(CDStruct_effb527d *)arg1;
 - (BOOL)_readConnectivity:(CDStruct_effb527d *)arg1;
 - (BOOL)_readCoverage:(CDStruct_effb527d *)arg1;
@@ -275,8 +303,10 @@
 - (BOOL)_readHighResBuildings:(CDStruct_effb527d *)arg1;
 - (BOOL)_readInfoChapter:(CDStruct_effb527d *)arg1 key:(const struct _GEOTileKey *)arg2;
 - (BOOL)_readLabelAnnotations:(CDStruct_effb527d *)arg1 key:(const struct _GEOTileKey *)arg2 forLines:(BOOL)arg3;
+- (BOOL)_readLabelPlacementMetadata:(CDStruct_effb527d *)arg1;
 - (BOOL)_readLabels:(CDStruct_effb527d *)arg1;
 - (BOOL)_readLines:(CDStruct_effb527d *)arg1;
+- (BOOL)_readLowResBorderBuildings:(CDStruct_effb527d *)arg1;
 - (BOOL)_readLowResBuildings:(CDStruct_effb527d *)arg1;
 - (BOOL)_readModernBuildings:(CDStruct_effb527d *)arg1 chapter:(unsigned short)arg2 vertexPool:(CDStruct_183601bc **)arg3 footprints:(CDStruct_183601bc **)arg4 count:(unsigned long long *)arg5;
 - (BOOL)_readPois:(CDStruct_effb527d *)arg1;
@@ -311,6 +341,7 @@
 - (CDStruct_a2ef2718 *)multiSectionFeatureForGeoID:(unsigned long long)arg1;
 - (CDStruct_6e3f967a *)polygonLabelPositions;
 - (CDStruct_183601bc **)sortedPointsOnRoad;
+- (struct GEOTileLabelLine *)tileLabelLineforLabelLineID:(unsigned long long)arg1;
 - (CDStruct_5eab3029 *)transitAccessPointForFeatureID:(unsigned long long)arg1;
 - (CDStruct_5be08681 *)transitLineForFeatureID:(unsigned long long)arg1;
 - (struct GEOTransitNodeFeature *)transitNodeForFeatureID:(unsigned long long)arg1;

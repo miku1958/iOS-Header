@@ -10,7 +10,7 @@
 #import <SafariServices/_SFFindOnPageToolbarDelegate-Protocol.h>
 #import <SafariServices/_WKFindDelegate-Protocol.h>
 
-@class NSString, WKWebView, _SFFindOnPageToolbar;
+@class NSString, UITextInputPasswordRules, WKWebView, _SFFindOnPageToolbar;
 @protocol _SFFindOnPageViewDelegate;
 
 @interface _SFFindOnPageView : UIView <_SFFindOnPageToolbarDelegate, _WKFindDelegate, UIKeyInput>
@@ -42,6 +42,7 @@
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
 @property (nonatomic) unsigned long long numberOfFindMatches; // @synthesize numberOfFindMatches=_numberOfFindMatches;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) BOOL shouldFocusTextField; // @synthesize shouldFocusTextField=_shouldFocusTextField;
@@ -71,13 +72,13 @@
 - (void)dismissFindOnPage;
 - (void)done;
 - (id)findTextField;
-- (void)getShortMatchLabelText:(id *)arg1 longMatchLabelText:(id *)arg2;
 - (BOOL)hasMatches;
 - (void)hideFindOnPage;
 - (id)initWithDelegate:(id)arg1;
 - (id)inputAccessoryView;
 - (void)insertText:(id)arg1;
 - (id)keyCommands;
+- (id)longMatchLabelText;
 - (id)matchLabelText;
 - (void)next;
 - (void)prepareFindOnPageWithString:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <IMCore/NSObject-Protocol.h>
 
-@class IMItem, IMMessageItem, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString;
+@class IMItem, IMMessageItem, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSString, NSURL;
 
 @protocol IMRemoteDaemonProtocol <NSObject>
 - (void)acceptSubscriptionRequest:(BOOL)arg1 from:(NSString *)arg2 account:(NSString *)arg3;
@@ -28,6 +28,8 @@
 - (void)changeMyStatus:(NSDictionary *)arg1 forAccount:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateDisplayName:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateIsFiltered:(BOOL)arg2;
+- (void)chat:(NSString *)arg1 updateLastAddressHandle:(NSString *)arg2;
+- (void)chat:(NSString *)arg1 updateLastAddressedSIMID:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateProperties:(NSDictionary *)arg2;
 - (void)cleanupAttachments;
 - (void)clearChatZoneSyncToken;
@@ -35,6 +37,7 @@
 - (void)clearHistoryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 beforeGUID:(NSString *)arg4 afterGUID:(NSString *)arg5 chatID:(NSString *)arg6 queryID:(NSString *)arg7;
 - (void)clearLocalCloudKitSyncState;
 - (void)closeSessionChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3 account:(NSString *)arg4;
+- (void)consumeCodeWithMessageGUID:(NSString *)arg1;
 - (void)createAttachmentZone;
 - (void)createChatZone;
 - (void)deactivateAccounts:(NSArray *)arg1;
@@ -52,6 +55,8 @@
 - (void)downloadPurgedAttachmentsForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4;
 - (void)downloadStickerPackWithGUID:(NSString *)arg1 isIncomingMessage:(BOOL)arg2 ignoreCache:(BOOL)arg3;
 - (void)downloadStickerWithGUID:(NSString *)arg1;
+- (void)eagerUploadCancel:(NSURL *)arg1;
+- (void)eagerUploadTransfer:(NSDictionary *)arg1;
 - (void)enrollDeviceForSMSRelay:(NSString *)arg1 account:(NSString *)arg2;
 - (void)enrollSelfDeviceForSMSRelay:(NSString *)arg1;
 - (void)fetchCloudKitSyncStateDebuggingInfo:(NSDictionary *)arg1;
@@ -73,7 +78,7 @@
 - (void)initiateSync;
 - (void)invitePersonInfo:(NSDictionary *)arg1 withMessage:(IMMessageItem *)arg2 toChatID:(NSString *)arg3 identifier:(NSString *)arg4 style:(unsigned char)arg5 account:(NSString *)arg6;
 - (void)invitePersonInfoToiMessageChat:(NSDictionary *)arg1 withMessage:(IMMessageItem *)arg2 toChatID:(NSString *)arg3 identifier:(NSString *)arg4 style:(unsigned char)arg5 account:(NSString *)arg6;
-- (void)joinChatID:(NSString *)arg1 handleInfo:(NSArray *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 groupID:(NSString *)arg5 joinProperties:(NSDictionary *)arg6 account:(NSString *)arg7;
+- (void)joinChatID:(NSString *)arg1 handleInfo:(NSArray *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 groupID:(NSString *)arg5 lastAddressedHandle:(NSString *)arg6 lastAddressedSIMID:(NSString *)arg7 joinProperties:(NSDictionary *)arg8 account:(NSString *)arg9;
 - (void)joinChatID:(NSString *)arg1 handleInfo:(NSArray *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 joinProperties:(NSDictionary *)arg5 account:(NSString *)arg6;
 - (void)leaveChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3 account:(NSString *)arg4;
 - (void)leaveiMessageChatID:(NSString *)arg1 identifier:(NSString *)arg2 style:(unsigned char)arg3 account:(NSString *)arg4;
@@ -98,6 +103,7 @@
 - (void)markAsSpamForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4 queryID:(NSString *)arg5 autoReport:(BOOL)arg6;
 - (BOOL)markAttachment:(NSString *)arg1 sender:(NSString *)arg2 recipients:(NSArray *)arg3 isIncoming:(BOOL)arg4;
 - (void)markHasHadSuccessfulQueryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3;
+- (void)markMessageAsCorrupt:(NSString *)arg1 setCorrupt:(BOOL)arg2;
 - (void)markPlayedExpressiveSendForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 message:(IMMessageItem *)arg4;
 - (void)markPlayedForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 message:(IMMessageItem *)arg4;
 - (void)markPlayedForMessageGUID:(NSString *)arg1;
@@ -109,6 +115,7 @@
 - (void)metricAttachments:(long long)arg1;
 - (void)passwordUpdatedAccount:(NSString *)arg1;
 - (void)performAdditionalStorageRequiredCheck;
+- (void)preWarm;
 - (void)printCachedRampState;
 - (void)printCachedSalt;
 - (void)purgeAttachments:(long long)arg1;
@@ -127,7 +134,9 @@
 - (void)replayMessagesFromDatabasePath:(NSString *)arg1;
 - (void)requestBuddyPicturesAndPropertiesForAccount:(NSString *)arg1;
 - (void)requestGroupsAccount:(NSString *)arg1;
+- (void)requestLastMessagesForChats;
 - (void)requestMOCEnabledState;
+- (void)requestOneTimeCodeStatus;
 - (void)requestPendingACInvites;
 - (void)requestPendingMessages;
 - (void)requestPendingVCInvites;
@@ -165,6 +174,8 @@
 - (void)setValue:(id)arg1 ofProperty:(NSString *)arg2 ofPerson:(NSString *)arg3 account:(NSString *)arg4;
 - (void)setiCloudBackupsDisabled:(BOOL)arg1;
 - (void)silenceChat:(NSString *)arg1 untilDate:(NSDate *)arg2;
+- (void)simulateMessageReceive:(NSString *)arg1 serviceName:(NSString *)arg2 handles:(NSArray *)arg3 sender:(NSString *)arg4;
+- (void)simulateOneTimeCodeArriving:(NSDictionary *)arg1;
 - (void)startWatchingBuddy:(NSString *)arg1 account:(NSString *)arg2;
 - (void)stopRecordingMessagesReplayDatabase;
 - (void)stopWatchingBuddy:(NSString *)arg1 account:(NSString *)arg2;

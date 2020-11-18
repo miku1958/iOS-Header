@@ -30,10 +30,10 @@
 @property (copy, nonatomic) CDUnknownBlockType requestHandler; // @synthesize requestHandler=_requestHandler;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_executeNextRequest;
 - (void)_finishAllRequests;
 - (BOOL)_remainsActionable;
-- (void)dealloc;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (void)executeRequestsWithHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2 expirationHandler:(CDUnknownBlockType)arg3;
 - (Class)fallbackXPCEncodableClass;

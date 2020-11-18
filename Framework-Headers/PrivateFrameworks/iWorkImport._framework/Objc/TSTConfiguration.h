@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSTConfiguration : NSObject
@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
     BOOL _tableNameEnabledInNewTables;
     BOOL _supportsRowColumnAdderKnob;
     BOOL _supportsDragDropMoveMode;
+    BOOL _supportsDynamicallyHidingRowColumnForDragDrop;
     BOOL _formulaEditorEvaluatesFormulas;
     BOOL _showReferenceHighlightsOnFormulaCellSelection;
     BOOL _tokenizeFormulaStringLiterals;
@@ -79,6 +80,8 @@ __attribute__((visibility("hidden")))
     BOOL _supportsStockUI;
     BOOL _shouldZoomOutOnEndEditing;
     BOOL _forceZoomInOnBeginEditing;
+    BOOL _supportsCategorization;
+    BOOL _allowsBlackDragDropBackground;
     unsigned int _maxNumberOfRows;
     unsigned int _maxNumberOfColumns;
     unsigned int _maxNumberOfPopulatedCells;
@@ -89,6 +92,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL allowFreeformFormulaText; // @synthesize allowFreeformFormulaText=_allowFreeformFormulaText;
 @property (nonatomic) BOOL allowHorizontalAutoresize; // @synthesize allowHorizontalAutoresize=_allowHorizontalAutoresize;
 @property (nonatomic) BOOL allowWhitespaceInFormulas; // @synthesize allowWhitespaceInFormulas=_allowWhitespaceInFormulas;
+@property (nonatomic) BOOL allowsBlackDragDropBackground; // @synthesize allowsBlackDragDropBackground=_allowsBlackDragDropBackground;
 @property (nonatomic) BOOL allowsFullyFilteredTables; // @synthesize allowsFullyFilteredTables=_allowsFullyFilteredTables;
 @property (nonatomic) BOOL arrowKeyAtEdgeWhileEditingNavigates; // @synthesize arrowKeyAtEdgeWhileEditingNavigates=_arrowKeyAtEdgeWhileEditingNavigates;
 @property (nonatomic) BOOL arrowKeysNavigateWhenEditingBeganByTyping; // @synthesize arrowKeysNavigateWhenEditingBeganByTyping=_arrowKeysNavigateWhenEditingBeganByTyping;
@@ -133,12 +137,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL supportsAutomaticNumberKeyboard; // @synthesize supportsAutomaticNumberKeyboard=_supportsAutomaticNumberKeyboard;
 @property (nonatomic) BOOL supportsBidiTablesUI; // @synthesize supportsBidiTablesUI=_supportsBidiTablesUI;
 @property (nonatomic) BOOL supportsCanvasReferenceEditing; // @synthesize supportsCanvasReferenceEditing=_supportsCanvasReferenceEditing;
+@property (nonatomic) BOOL supportsCategorization; // @synthesize supportsCategorization=_supportsCategorization;
 @property (nonatomic) BOOL supportsCellCommentsActivityLines; // @synthesize supportsCellCommentsActivityLines=_supportsCellCommentsActivityLines;
 @property (nonatomic) BOOL supportsComplexReorganizeUI; // @synthesize supportsComplexReorganizeUI=_supportsComplexReorganizeUI;
 @property (nonatomic) BOOL supportsContainedTextEditing; // @synthesize supportsContainedTextEditing=_supportsContainedTextEditing;
 @property (nonatomic) BOOL supportsControlCells; // @synthesize supportsControlCells=_supportsControlCells;
 @property (nonatomic) BOOL supportsCreateChartFromSelection; // @synthesize supportsCreateChartFromSelection=_supportsCreateChartFromSelection;
 @property (nonatomic) BOOL supportsDragDropMoveMode; // @synthesize supportsDragDropMoveMode=_supportsDragDropMoveMode;
+@property (nonatomic) BOOL supportsDynamicallyHidingRowColumnForDragDrop; // @synthesize supportsDynamicallyHidingRowColumnForDragDrop=_supportsDynamicallyHidingRowColumnForDragDrop;
 @property (nonatomic) BOOL supportsFormulaEditing; // @synthesize supportsFormulaEditing=_supportsFormulaEditing;
 @property (nonatomic) BOOL supportsFrozenHeaders; // @synthesize supportsFrozenHeaders=_supportsFrozenHeaders;
 @property (nonatomic) BOOL supportsHiddenCells; // @synthesize supportsHiddenCells=_supportsHiddenCells;

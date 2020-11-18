@@ -4,12 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/NSObject-Protocol.h>
-
-@class NSString, TSWPStorage;
-
-@protocol TSWPFootnoteMarkProvider <NSObject>
-- (NSString *)markStringForFootnoteReferenceStorage:(TSWPStorage *)arg1;
-- (NSString *)markStringForFootnoteReferenceStorage:(TSWPStorage *)arg1 ignoreDeletedFootnotes:(BOOL)arg2 forceDocumentEndnotes:(BOOL)arg3;
+@protocol TSWPFootnoteMarkProvider
 @end
 

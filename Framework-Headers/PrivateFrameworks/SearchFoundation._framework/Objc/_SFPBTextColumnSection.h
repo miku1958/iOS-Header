@@ -13,7 +13,6 @@
 
 @interface _SFPBTextColumnSection : PBCodable <_SFPBTextColumnSection, NSSecureCoding>
 {
-    CDStruct_82065ba4 _has;
     BOOL _textNoWrap;
     unsigned int _textWeight;
     NSArray *_textLines;
@@ -21,8 +20,6 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasTextNoWrap;
-@property (readonly, nonatomic) BOOL hasTextWeight;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (readonly) Class superclass;

@@ -6,8 +6,8 @@
 
 #import <Foundation/NSUserActivity.h>
 
-#import <UIKit/NSItemProviderReading-Protocol.h>
-#import <UIKit/NSItemProviderWriting-Protocol.h>
+#import <UIKitCore/NSItemProviderReading-Protocol.h>
+#import <UIKitCore/NSItemProviderWriting-Protocol.h>
 
 @class NSArray, NSString;
 

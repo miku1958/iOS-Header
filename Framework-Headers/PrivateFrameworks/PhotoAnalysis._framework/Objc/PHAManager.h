@@ -6,30 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSURL, PHAAssetResourceDataLoader, PHAJobCoordinator, PHALibraryChangeListener, PHAMonitoring, PHPhotoLibrary;
-@protocol OS_dispatch_queue, PHAManagerDelegate;
+#import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
 
-@interface PHAManager : NSObject
+@class NSDictionary, NSURL, PHAAssetResourceDataLoader, PHAExecutive, PHAGraphManager, PHAJobCoordinator, PHAMonitoring, PHPhotoLibrary;
+
+@interface PHAManager : NSObject <PHAServiceOperationHandling>
 {
     PHAMonitoring *_monitoring;
-    id<PHAManagerDelegate> _delegate;
+    PHAExecutive *_executive;
     PHAAssetResourceDataLoader *_dataLoader;
+    PHAGraphManager *_graphManager;
     NSURL *_libraryURL;
     PHPhotoLibrary *_photoLibrary;
-    NSObject<OS_dispatch_queue> *_executiveStateQueue;
     PHAJobCoordinator *_jobCoordinator;
-    PHALibraryChangeListener *_changeListener;
     NSDictionary *_photoAnalysisWorkersByType;
 }
 
-@property (strong) PHALibraryChangeListener *changeListener; // @synthesize changeListener=_changeListener;
-@property (strong) NSObject<OS_dispatch_queue> *executiveStateQueue; // @synthesize executiveStateQueue=_executiveStateQueue;
+@property (readonly) PHAExecutive *executive; // @synthesize executive=_executive;
+@property (readonly) PHAGraphManager *graphManager; // @synthesize graphManager=_graphManager;
 @property (readonly) PHAJobCoordinator *jobCoordinator; // @synthesize jobCoordinator=_jobCoordinator;
 @property (strong) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
 @property (strong) NSDictionary *photoAnalysisWorkersByType; // @synthesize photoAnalysisWorkersByType=_photoAnalysisWorkersByType;
 @property (strong) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly, getter=isQuiescent) BOOL quiescent;
-@property (readonly, getter=isTurboMode) BOOL turboMode;
 
 + (id)allWorkerClasses;
 + (void)enumerateWorkerClassesUsingBlock:(CDUnknownBlockType)arg1;
@@ -40,12 +39,21 @@
 - (id)description;
 - (void)dumpAnalysisStatusWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)enumerateWorkersUsingBlock:(CDUnknownBlockType)arg1;
+- (id)faceClassificationServiceWorker;
 - (id)faceProcessingServiceWorker;
+- (void)graphManagerDidUnloadGraph:(id)arg1;
+- (void)graphManagerWillLoadGraph:(id)arg1;
 - (id)graphServiceWorker;
+- (void)handleOperation:(id)arg1;
 - (id)init;
-- (id)initWithPhotoLibraryURL:(id)arg1 executiveStateQueue:(id)arg2 delegate:(id)arg3;
+- (id)initWithPhotoLibraryURL:(id)arg1 executive:(id)arg2;
+- (BOOL)isInitialSyncActive;
+- (BOOL)isTurboMode;
 - (id)monitoring;
+- (BOOL)photosIsConnected;
+- (void)requestLocalizedSceneAncestryInformationWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)sceneClassificationServiceWorker;
+- (void)setTurboMode;
 - (void)shutdown;
 - (id)statusAsDictionary;
 - (void)stopBackgroundActivity;

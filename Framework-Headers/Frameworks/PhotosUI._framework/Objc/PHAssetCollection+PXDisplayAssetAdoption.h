@@ -8,13 +8,39 @@
 
 #import <PhotosUICore/PXDisplayAssetCollection-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface PHAssetCollection (PXDisplayAssetAdoption) <PXDisplayAssetCollection>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSDate *endDate;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *localizedSubtitle;
+@property (readonly, nonatomic) NSString *localizedTitle;
+@property (readonly, nonatomic) BOOL px_isAllPhotosSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isFavoriteMemoriesSmartFolder;
+@property (readonly, nonatomic) BOOL px_isFavoritesSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isFolder;
+@property (readonly, nonatomic) BOOL px_isHiddenSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isImportedAlbum;
+@property (readonly, nonatomic) BOOL px_isMacSyncedAlbum;
+@property (readonly, nonatomic) BOOL px_isMacSyncedEventsFolder;
+@property (readonly, nonatomic) BOOL px_isMacSyncedFacesFolder;
+@property (readonly, nonatomic) BOOL px_isMediaTypeSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isMemoriesVirtualCollection;
+@property (readonly, nonatomic) BOOL px_isMyPhotoStreamAlbum;
+@property (readonly, nonatomic) BOOL px_isOwnedSharedAlbum;
+@property (readonly, nonatomic) BOOL px_isPeopleVirtualCollection;
+@property (readonly, nonatomic) BOOL px_isPlacesVirtualCollection;
+@property (readonly, nonatomic) BOOL px_isRecentlyAddedSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isRecentlyDeletedSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isSharedAlbum;
+@property (readonly, nonatomic) BOOL px_isSmartAlbum;
+@property (readonly, nonatomic) BOOL px_isSmartFolder;
+@property (readonly, nonatomic) BOOL px_isStandInAlbum;
+@property (readonly, nonatomic) BOOL px_isVirtualCollection;
+@property (readonly, nonatomic) NSDate *startDate;
 @property (readonly) Class superclass;
 
 @end

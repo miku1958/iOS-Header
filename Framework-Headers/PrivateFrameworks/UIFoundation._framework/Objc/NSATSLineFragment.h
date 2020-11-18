@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSATSTypesetter;
 
@@ -28,6 +28,7 @@
     } _flags;
 }
 
+@property (readonly, getter=isElasticOnly) BOOL elasticOnly;
 @property (readonly, getter=isStandaloneTextAttachment) BOOL standaloneTextAttachment;
 
 - (long long)_charIndexToBreakLineByWordWrappingAtIndex:(long long)arg1 lineFragmentWidth:(double)arg2 hyphenate:(BOOL *)arg3;

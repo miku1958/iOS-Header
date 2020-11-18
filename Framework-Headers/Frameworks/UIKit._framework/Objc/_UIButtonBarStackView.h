@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStackView.h>
+#import <UIKitCore/UIStackView.h>
 
 @class _UIButtonBar;
 
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (Class)layerClass;
 - (void).cxx_destruct;
+- (id)_debug;
 - (id)init;
 - (id)initWithButtonBar:(id)arg1;
 - (id)initWithCoder:(id)arg1;

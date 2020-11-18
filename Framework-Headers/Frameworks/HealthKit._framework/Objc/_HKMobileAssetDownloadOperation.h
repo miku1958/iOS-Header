@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ASAsset, NSDictionary, NSString;
+@class ASAsset, NSDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _completion;
     long long _attemptCount;
     NSObject<OS_dispatch_queue> *_queue;
-    NSString *_operationName;
 }
 
 - (void).cxx_destruct;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_queue_transitionToFailureWithError:(id)arg1;
 - (void)_queue_transitionToInitialized;
 - (void)_queue_transitionToState:(long long)arg1;
+- (id)description;
 - (id)initWithAsset:(id)arg1 serialQueue:(id)arg2 downloadOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)run;
 

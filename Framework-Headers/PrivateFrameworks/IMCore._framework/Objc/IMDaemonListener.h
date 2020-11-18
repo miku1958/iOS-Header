@@ -103,6 +103,7 @@
 - (void)holdChatMessages;
 - (id)init;
 - (id)methodSignatureForSelector:(SEL)arg1;
+- (void)oneTimeCodesDidChange:(id)arg1;
 - (void)persistentProperty:(id)arg1 changedTo:(id)arg2 from:(id)arg3;
 - (void)pinCodeAlertCompleted:(id)arg1 deviceName:(id)arg2 deviceType:(id)arg3 phoneNumber:(id)arg4 responseFromDevice:(BOOL)arg5 wasCancelled:(BOOL)arg6;
 - (void)property:(id)arg1 changedTo:(id)arg2 from:(id)arg3;

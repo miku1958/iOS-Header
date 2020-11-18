@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 + (id)repeatAction:(id)arg1 count:(unsigned long long)arg2;
 + (id)repeatActionForever:(id)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

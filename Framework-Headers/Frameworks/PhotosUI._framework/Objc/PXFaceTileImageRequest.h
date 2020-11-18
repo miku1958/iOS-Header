@@ -20,9 +20,9 @@
     PHAsset *_assetContainingFace;
     NSDate *_ppt_requestStartDate;
     struct CGSize _lastDeliveredSize;
-    struct PXFaceTileImageParams _params;
     struct CGRect _normalizedFaceCropRect;
     struct CGRect _normalizedActualFaceRect;
+    struct PXFaceTileImageParams _params;
 }
 
 @property (strong, nonatomic) PHAsset *assetContainingFace; // @synthesize assetContainingFace=_assetContainingFace;

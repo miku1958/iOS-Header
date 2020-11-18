@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSPointerArray, TSUIntegerKeyDictionary;
-@protocol TSTCustomStrokeProviding, TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding, TSTTableStrokeProviding;
+@protocol TSTCategoryProviding><TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding, TSTCustomStrokeProviding, TSTTableStrokeProviding;
 
 __attribute__((visibility("hidden")))
 @interface TSTStrokeExporter : NSObject
 {
     id<TSTTableStrokeProviding> _defaultStrokeProvider;
     id<TSTCustomStrokeProviding> _customStrokeProvider;
-    id<TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding> _tableProvider;
+    id<TSTCategoryProviding><TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding> _tableProvider;
     NSPointerArray *_topRowStrokes;
     NSPointerArray *_bottomRowStrokes;
     NSPointerArray *_leftColumnStrokes;
@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, strong, nonatomic) NSPointerArray *leftColumnStrokes; // @synthesize leftColumnStrokes=_leftColumnStrokes;
 @property (readonly, strong, nonatomic) NSPointerArray *rightColumnStrokes; // @synthesize rightColumnStrokes=_rightColumnStrokes;
 @property (strong, nonatomic) TSUIntegerKeyDictionary *rowStrokeExportCache; // @synthesize rowStrokeExportCache=_rowStrokeExportCache;
-@property (readonly, strong, nonatomic) id<TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding> tableProvider; // @synthesize tableProvider=_tableProvider;
+@property (readonly, strong, nonatomic) id<TSTCategoryProviding><TSTTableInternalGeometryProviding><TSTTableHiddenRowColumnProviding> tableProvider; // @synthesize tableProvider=_tableProvider;
 @property (readonly, strong, nonatomic) NSPointerArray *topRowStrokes; // @synthesize topRowStrokes=_topRowStrokes;
 
 - (void)dealloc;

@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class UIStoryboard;
 
 __attribute__((visibility("hidden")))
-@interface _UIStoryboardProxy : NSObject
+@interface _UIStoryboardProxy : NSObject <NSSecureCoding>
 {
     UIStoryboard *_storyboard;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

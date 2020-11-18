@@ -13,5 +13,7 @@
 - (void)setAppConfigTreatmentID:(id)arg1;
 - (void)setCTRByPersonalizationFeatureID:(id)arg1;
 - (void)setLocale:(id)arg1;
+- (void)setUserSegmentationSegmentSetIDs:(id)arg1;
+- (void)setUserSegmentationTreatmentIDs:(id)arg1;
 @end
 

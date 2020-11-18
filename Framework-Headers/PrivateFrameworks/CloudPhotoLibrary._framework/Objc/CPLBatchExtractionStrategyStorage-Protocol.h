@@ -6,18 +6,18 @@
 
 #import <CloudPhotoLibrary/NSObject-Protocol.h>
 
-@class CPLRecordChange, NSString;
+@class CPLRecordChange, CPLScopedIdentifier, NSString;
 @protocol NSFastEnumeration;
 
 @protocol CPLBatchExtractionStrategyStorage <NSObject>
-- (id<NSFastEnumeration>)allChanges;
-- (id<NSFastEnumeration>)allChangesWithClass:(Class)arg1 changeType:(unsigned long long)arg2;
-- (id<NSFastEnumeration>)allChangesWithClass:(Class)arg1 relatedIdentifier:(NSString *)arg2;
-- (id<NSFastEnumeration>)allChangesWithClass:(Class)arg1 secondaryIdentifier:(NSString *)arg2;
-- (id<NSFastEnumeration>)allChangesWithClass:(Class)arg1 trashed:(BOOL)arg2;
-- (id<NSFastEnumeration>)allNonDeletedChangesWithClass:(Class)arg1;
-- (CPLRecordChange *)changeWithIdentifier:(NSString *)arg1;
-- (BOOL)hasChanges;
+- (id<NSFastEnumeration>)allChangesWithClass:(Class)arg1 relatedScopedIdentifier:(CPLScopedIdentifier *)arg2;
+- (id<NSFastEnumeration>)allChangesWithClass:(Class)arg1 scopeIdentifier:(NSString *)arg2 changeType:(unsigned long long)arg3;
+- (id<NSFastEnumeration>)allChangesWithClass:(Class)arg1 scopeIdentifier:(NSString *)arg2 trashed:(BOOL)arg3;
+- (id<NSFastEnumeration>)allChangesWithClass:(Class)arg1 secondaryScopedIdentifier:(CPLScopedIdentifier *)arg2;
+- (id<NSFastEnumeration>)allChangesWithScopeIdentifier:(NSString *)arg1;
+- (id<NSFastEnumeration>)allNonDeletedChangesWithClass:(Class)arg1 scopeIdentifier:(NSString *)arg2;
+- (CPLRecordChange *)changeWithScopedIdentifier:(CPLScopedIdentifier *)arg1;
+- (BOOL)hasChangesInScopeWithIdentifier:(NSString *)arg1;
 - (BOOL)removeChange:(CPLRecordChange *)arg1 error:(id *)arg2;
 @end
 

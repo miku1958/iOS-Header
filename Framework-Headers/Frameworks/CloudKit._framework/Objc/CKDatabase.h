@@ -7,18 +7,21 @@
 #import <objc/NSObject.h>
 
 @class CKContainer, NSOperationQueue;
+@protocol OS_dispatch_queue;
 
 @interface CKDatabase : NSObject
 {
     CKContainer *_container;
     long long _scope;
     NSOperationQueue *_operationQueue;
+    NSObject<OS_dispatch_queue> *_underlyingDispatchQueue;
 }
 
 @property (weak, nonatomic) CKContainer *container; // @synthesize container=_container;
 @property (readonly, nonatomic) long long databaseScope;
 @property (readonly, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
 @property (readonly, nonatomic) long long scope; // @synthesize scope=_scope;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *underlyingDispatchQueue; // @synthesize underlyingDispatchQueue=_underlyingDispatchQueue;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;

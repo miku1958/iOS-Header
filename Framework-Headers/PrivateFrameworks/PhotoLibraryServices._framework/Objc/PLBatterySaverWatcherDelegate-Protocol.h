@@ -7,6 +7,6 @@
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
 @protocol PLBatterySaverWatcherDelegate <NSObject>
-- (void)batterySaverModeDidChange:(BOOL)arg1;
+- (void)batterySaverModeDidChange;
 @end
 

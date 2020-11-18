@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class DDScannerResult, IMChat, IMMessage, IMPluginPayload, NSArray, NSAttributedString, NSData, NSMutableSet, NSString, NSURL;
+@class DDScannerResult, IMChat, IMMessage, IMPluginPayload, LPLinkMetadata, NSArray, NSAttributedString, NSData, NSMutableSet, NSString, NSURL;
 
 @interface IMBalloonPluginDataSource : NSObject
 {
@@ -15,6 +15,7 @@
     BOOL _isLast;
     BOOL _isShowingLatestMessageAsBreadcrumb;
     BOOL _hasInvalidatedSize;
+    BOOL _parentChatHasAllUnknownRecipients;
     BOOL _showingLatestMessageAsBreadcrumb;
     IMChat *_chat;
     IMPluginPayload *_pluginPayload;
@@ -52,10 +53,12 @@
 @property (strong, nonatomic) NSString *messageGUID; // @synthesize messageGUID=_messageGUID;
 @property (readonly, nonatomic) long long messageIDOfLastMessageInSession; // @synthesize messageIDOfLastMessageInSession=_messageIDOfLastMessageInSession;
 @property (readonly, strong, nonatomic) NSData *messagePayloadDataForSending;
+@property (nonatomic) BOOL parentChatHasAllUnknownRecipients; // @synthesize parentChatHasAllUnknownRecipients=_parentChatHasAllUnknownRecipients;
 @property (strong, nonatomic) NSData *payload;
 @property (nonatomic) BOOL payloadInShelf; // @synthesize payloadInShelf=_payloadInShelf;
 @property (strong, nonatomic) NSArray *pendingAttachmentData; // @synthesize pendingAttachmentData=_pendingAttachmentData;
 @property (strong, nonatomic) IMPluginPayload *pluginPayload; // @synthesize pluginPayload=_pluginPayload;
+@property (readonly, nonatomic) LPLinkMetadata *richLinkMetadata;
 @property (strong, nonatomic) NSString *sessionGUID; // @synthesize sessionGUID=_sessionGUID;
 @property (readonly, nonatomic, getter=isShowingLatestMessageAsBreadcrumb) BOOL showingLatestMessageAsBreadcrumb; // @synthesize showingLatestMessageAsBreadcrumb=_showingLatestMessageAsBreadcrumb;
 @property (readonly, strong, nonatomic) NSAttributedString *statusAttributedString;

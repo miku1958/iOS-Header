@@ -9,10 +9,12 @@
 #import <GeoServices/_GEOLocationShifterProxy-Protocol.h>
 
 @class NSString;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _GEOLocationShifterRemoteProxy : NSObject <_GEOLocationShifterProxy>
 {
+    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,6 +22,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (id)init;
+- (BOOL)isLocationShiftEnabled;
+- (BOOL)isLocationShiftRequiredForCoordinate:(CDStruct_c3b9c2ee)arg1;
+- (unsigned int)locationShiftFunctionVersion;
 - (void)shiftLatLng:(id)arg1 auditToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end

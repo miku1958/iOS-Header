@@ -4,18 +4,34 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreImage/CIImageProcessorKernel.h>
+#import <CoreImage/CIFilter.h>
+
+@class CIImage, CIVector, NSDictionary, NSNumber;
 
 __attribute__((visibility("hidden")))
-@interface CILensModelCalculator : CIImageProcessorKernel
+@interface CILensModelCalculator : CIFilter
 {
+    CIImage *inputImage;
+    CIImage *inputMinMaxImage;
+    CIVector *inputOriginalSize;
+    CIVector *inputFocusRect;
+    NSNumber *inputSimulatedAperture;
+    NSNumber *inputIntrinsicMatrixFocalLength;
+    NSDictionary *inputTuningParameters;
 }
 
-+ (int)formatForInputAtIndex:(int)arg1;
-+ (int)outputFormat;
-+ (BOOL)processWithInputs:(id)arg1 arguments:(id)arg2 output:(id)arg3 error:(id *)arg4;
-+ (struct CGRect)roiForInput:(int)arg1 arguments:(id)arg2 outputRect:(struct CGRect)arg3;
-+ (BOOL)synchronizeInputs;
+@property (copy, nonatomic) CIVector *inputFocusRect; // @synthesize inputFocusRect;
+@property (strong) CIImage *inputImage; // @synthesize inputImage;
+@property (copy, nonatomic) NSNumber *inputIntrinsicMatrixFocalLength; // @synthesize inputIntrinsicMatrixFocalLength;
+@property (strong) CIImage *inputMinMaxImage; // @synthesize inputMinMaxImage;
+@property (copy, nonatomic) CIVector *inputOriginalSize; // @synthesize inputOriginalSize;
+@property (copy, nonatomic) NSNumber *inputSimulatedAperture; // @synthesize inputSimulatedAperture;
+@property (strong, nonatomic) NSDictionary *inputTuningParameters; // @synthesize inputTuningParameters;
+
++ (id)customAttributes;
+- (id)cpuParams;
+- (id)kernel;
+- (id)outputImage;
 
 @end
 

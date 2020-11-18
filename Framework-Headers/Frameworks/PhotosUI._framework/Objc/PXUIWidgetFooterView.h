@@ -65,6 +65,7 @@
 - (void)_updateIfNeeded;
 - (void)_updateSeparatorsIfNeeded;
 - (void)performChanges:(CDUnknownBlockType)arg1;
+- (void)tintColorDidChange;
 - (void)updateConstraints;
 
 @end

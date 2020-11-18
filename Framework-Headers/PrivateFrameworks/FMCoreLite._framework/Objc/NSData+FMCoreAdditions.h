@@ -7,6 +7,7 @@
 #import <Foundation/NSData.h>
 
 @interface NSData (FMCoreAdditions)
+- (id)fm_MACAddressString;
 - (id)fm_hexString;
 - (id)hexString;
 @end

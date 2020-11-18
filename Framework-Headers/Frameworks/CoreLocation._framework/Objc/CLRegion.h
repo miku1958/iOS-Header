@@ -17,7 +17,7 @@
 }
 
 @property (readonly, nonatomic) struct CLLocationCoordinate2D center;
-@property (readonly, nonatomic) CDStruct_3afce72c clientRegion;
+@property (readonly, nonatomic) CDStruct_5652eb1b clientRegion;
 @property (nonatomic) BOOL conservativeEntry;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (nonatomic) BOOL notifyOnEntry;
@@ -36,7 +36,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initCircularRegionWithCenter:(struct CLLocationCoordinate2D)arg1 radius:(double)arg2 identifier:(id)arg3;
-- (id)initWithClientRegion:(CDStruct_3afce72c)arg1;
+- (id)initWithClientRegion:(CDStruct_5652eb1b)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

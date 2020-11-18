@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AssertionServices/BKSAssertionClientMultiplexerListening-Protocol.h>
 #import <AssertionServices/BKSAssertionClientProtocol-Protocol.h>
@@ -12,6 +12,7 @@
 @class BKSAssertionClientMultiplexer, NSMapTable, NSString;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface BKSBaseAssertionClient : NSObject <BKSAssertionClientProtocol, BKSAssertionClientMultiplexerListening>
 {
     NSMapTable *_assertionHandlersByIdentifier;

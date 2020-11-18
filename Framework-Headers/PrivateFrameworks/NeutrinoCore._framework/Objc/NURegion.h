@@ -23,6 +23,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
 - (void)dealloc;
+- (double)density;
 - (id)description;
 - (void)enumerateRects:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
@@ -54,6 +55,7 @@
 - (id)regionByShrinkingBy:(CDStruct_912cb5d2)arg1;
 - (id)regionByShrinkingBy:(CDStruct_912cb5d2)arg1 inRect:(CDStruct_996ac03c)arg2;
 - (id)regionByTranslatingBy:(CDStruct_912cb5d2)arg1;
+- (id)regionWithSubregionsOfMinimumDensity:(double)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCaptureConnection, AVCaptureSession, AVWeakReference, CALayer, NSArray, NSString;
 @protocol OS_dispatch_queue;
@@ -40,8 +40,8 @@
     BOOL filterRenderingEnabled;
     BOOL unoptimizedFilterRenderingEnabled;
     NSArray *videoPreviewFilters;
-    double d22ScreenWidth;
-    double d22ScreenScale;
+    double oddScreenWidth;
+    double oddScreenScale;
 }
 
 @end

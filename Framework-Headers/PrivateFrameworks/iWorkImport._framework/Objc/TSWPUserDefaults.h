@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSWPUserDefaults : NSObject
@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
 + (BOOL)automaticallyFormatFractions;
 + (void)initialize;
 + (id)invisiblesColor;
++ (unsigned long long)maximumFontSize;
++ (unsigned long long)minimumFontSize;
 + (BOOL)p_UserDefaultSet:(id)arg1 force:(BOOL)arg2;
 + (BOOL)p_cachedBoolForKey:(id)arg1;
 + (id)p_caseInsensitiveDictionary:(id)arg1 mergedWithDictionary:(id)arg2;

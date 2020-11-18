@@ -23,7 +23,6 @@
 @property (nonatomic) struct __CFUserNotification *presentedUserNotification;
 @property (readonly, nonatomic) NSArray *textFields; // @synthesize textFields=_textFields;
 
-+ (id)passwordAlertWithOptions:(id)arg1;
 + (id)systemDialogWithOptions:(id)arg1;
 - (void).cxx_destruct;
 - (void)addTextField:(id)arg1;

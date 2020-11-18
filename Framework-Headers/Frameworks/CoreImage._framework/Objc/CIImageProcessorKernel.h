@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CIImageProcessorKernel : NSObject
 {
@@ -15,6 +15,7 @@
 + (BOOL)allowSRGBTranferFuntionOnInputAtIndex:(int)arg1;
 + (BOOL)allowSRGBTranferFuntionOnOutput;
 + (id)applyWithExtent:(struct CGRect)arg1 inputs:(id)arg2 arguments:(id)arg3 error:(id *)arg4;
++ (BOOL)canReduceOutputChannels;
 + (int)formatForInputAtIndex:(int)arg1;
 + (int)outputFormat;
 + (BOOL)outputIsOpaque;

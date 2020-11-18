@@ -7,7 +7,7 @@
 #import <NeutrinoCore/NURenderJob.h>
 
 @class CIRenderTask, NUImageAccumulationNode, NUPurgeableImageAccessGuard, NUPurgeableStoragePool, NURegion;
-@protocol NUPurgeableImage, NUPurgeableStorage;
+@protocol NUMutablePurgeableImage, NUPurgeableImage, NUPurgeableStorage;
 
 @interface NUImageRenderJob : NURenderJob
 {
@@ -15,6 +15,7 @@
     NUPurgeableStoragePool *_storagePool;
     id<NUPurgeableStorage> _renderDestination;
     NURegion *_regionToRender;
+    id<NUMutablePurgeableImage> _targetImage;
     NURegion *_renderedRegion;
     id<NUPurgeableImage> _renderedImage;
     CIRenderTask *_renderTask;
@@ -25,13 +26,14 @@
 @property (strong, nonatomic) CIRenderTask *renderTask; // @synthesize renderTask=_renderTask;
 @property (readonly, nonatomic) id<NUPurgeableImage> renderedImage; // @synthesize renderedImage=_renderedImage;
 @property (readonly, nonatomic) NURegion *renderedRegion; // @synthesize renderedRegion=_renderedRegion;
+@property (readonly, nonatomic) id<NUMutablePurgeableImage> targetImage; // @synthesize targetImage=_targetImage;
 
 - (void).cxx_destruct;
 - (void)cleanUp;
 - (BOOL)complete:(out id *)arg1;
 - (BOOL)copyStorage:(id)arg1 fromRect:(CDStruct_996ac03c)arg2 toImage:(id)arg3 atPoint:(CDStruct_912cb5d2)arg4;
 - (id)extentPolicy;
-- (id)imageAccumulationNodeWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2 colorSpace:(id)arg3;
+- (id)imageAccumulationNodeWithImageSize:(CDStruct_912cb5d2)arg1 tileSize:(CDStruct_912cb5d2)arg2 format:(id)arg3 colorSpace:(id)arg4;
 - (id)imageRequest;
 - (id)initWithImageRequest:(id)arg1;
 - (id)initWithRequest:(id)arg1;

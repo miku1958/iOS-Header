@@ -27,12 +27,12 @@
 - (struct CGPoint)_visibleBannerCenterPosition:(struct CGSize)arg1;
 - (void)addBannerView:(id)arg1;
 - (void)addConstraintsForBannerView;
+- (void)addConstraintsForTVOSBannerView;
 - (double)bannerWidthForViewSize:(struct CGSize)arg1;
 - (void)dealloc;
 - (void)handleWindowPan:(id)arg1;
 - (void)handleWindowSingleTap:(id)arg1;
 - (void)hideBannerQuickly:(BOOL)arg1;
-- (void)layoutBanner;
 - (void)showCurrentBanner;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

@@ -15,6 +15,7 @@
 }
 
 @property (copy, nonatomic) NSString *assistantId;
+@property (copy, nonatomic) NSString *brandName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *deviceName;

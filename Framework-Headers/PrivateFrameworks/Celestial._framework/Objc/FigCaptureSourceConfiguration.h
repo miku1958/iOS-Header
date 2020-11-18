@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Celestial/FigXPCCoding-Protocol.h>
 #import <Celestial/NSCopying-Protocol.h>
@@ -24,26 +24,34 @@
     float _videoZoomFactor;
     float _videoZoomRampAcceleration;
     int _imageControlMode;
-    BOOL _automaticallyEnablesLowLightBoostWhenAvailable;
-    BOOL _applyMaxIntegrationTimeOverrideWhenAvailable;
+    BOOL _applyMaxExposureDurationFrameworkOverrideWhenAvailable;
+    CDStruct_1b6d18a9 _maxExposureDurationClientOverride;
     NSDictionary *_faceDetectionConfiguration;
     BOOL _sensorHDREnabled;
+    BOOL _highlightRecoveryEnabled;
     int _colorSpace;
     BOOL _depthDataDeliveryEnabled;
     FigCaptureSourceDepthDataFormat *_depthDataFormat;
+    float _depthDataMaxFrameRate;
+    BOOL _builtInMicrophoneStereoAudioCaptureEnabled;
+    BOOL _lowLightVideoCaptureEnabled;
 }
 
-@property (nonatomic) BOOL applyMaxIntegrationTimeOverrideWhenAvailable; // @synthesize applyMaxIntegrationTimeOverrideWhenAvailable=_applyMaxIntegrationTimeOverrideWhenAvailable;
-@property (nonatomic) BOOL automaticallyEnablesLowLightBoostWhenAvailable; // @synthesize automaticallyEnablesLowLightBoostWhenAvailable=_automaticallyEnablesLowLightBoostWhenAvailable;
+@property (nonatomic) BOOL applyMaxExposureDurationFrameworkOverrideWhenAvailable; // @synthesize applyMaxExposureDurationFrameworkOverrideWhenAvailable=_applyMaxExposureDurationFrameworkOverrideWhenAvailable;
+@property (nonatomic) BOOL builtInMicrophoneStereoAudioCaptureEnabled; // @synthesize builtInMicrophoneStereoAudioCaptureEnabled=_builtInMicrophoneStereoAudioCaptureEnabled;
 @property (nonatomic) int colorSpace; // @synthesize colorSpace=_colorSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL depthDataDeliveryEnabled; // @synthesize depthDataDeliveryEnabled=_depthDataDeliveryEnabled;
 @property (strong, nonatomic) FigCaptureSourceDepthDataFormat *depthDataFormat; // @synthesize depthDataFormat=_depthDataFormat;
+@property (nonatomic) float depthDataMaxFrameRate; // @synthesize depthDataMaxFrameRate=_depthDataMaxFrameRate;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDictionary *faceDetectionConfiguration; // @synthesize faceDetectionConfiguration=_faceDetectionConfiguration;
 @property (nonatomic) BOOL hasSetVideoZoomFactorOnCaptureSource; // @synthesize hasSetVideoZoomFactorOnCaptureSource=_hasSetVideoZoomFactorOnCaptureSource;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL highlightRecoveryEnabled; // @synthesize highlightRecoveryEnabled=_highlightRecoveryEnabled;
 @property (nonatomic) int imageControlMode; // @synthesize imageControlMode=_imageControlMode;
+@property (nonatomic) BOOL lowLightVideoCaptureEnabled; // @synthesize lowLightVideoCaptureEnabled=_lowLightVideoCaptureEnabled;
+@property (nonatomic) CDStruct_1b6d18a9 maxExposureDurationClientOverride; // @synthesize maxExposureDurationClientOverride=_maxExposureDurationClientOverride;
 @property (strong, nonatomic) FigCaptureSourceVideoFormat *requiredFormat; // @synthesize requiredFormat=_requiredFormat;
 @property (nonatomic) float requiredMaxFrameRate; // @synthesize requiredMaxFrameRate=_requiredMaxFrameRate;
 @property (nonatomic) float requiredMinFrameRate; // @synthesize requiredMinFrameRate=_requiredMinFrameRate;
@@ -60,6 +68,7 @@
 + (id)stringForSourceType:(int)arg1;
 - (int)_deviceType;
 - (BOOL)_isCameraSource;
+- (BOOL)_isMicSource;
 - (id)_sourceAttributes;
 - (int)_sourceToken;
 - (id)_sourceUID;

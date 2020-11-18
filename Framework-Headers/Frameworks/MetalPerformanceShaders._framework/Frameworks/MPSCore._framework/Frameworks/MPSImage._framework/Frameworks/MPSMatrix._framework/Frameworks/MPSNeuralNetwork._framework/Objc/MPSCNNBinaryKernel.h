@@ -93,6 +93,7 @@
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (BOOL)isResultStateReusedAcrossBatch;
+- (unsigned long long)maxBatchSize;
 - (struct MPSRegion)primarySourceRegionForDestinationSize:(CDStruct_14f26992)arg1;
 - (struct NSArray *)resultStateBatchForPrimaryImage:(struct NSArray *)arg1 secondaryImage:(struct NSArray *)arg2 sourceStates:(id)arg3 destinationImage:(struct NSArray *)arg4;
 - (id)resultStateForPrimaryImage:(id)arg1 secondaryImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;

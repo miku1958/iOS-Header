@@ -22,8 +22,6 @@ __attribute__((visibility("hidden")))
 
 + (id)allowedOutputClasses;
 + (id)animatableContentTypes;
-+ (id)scaledImageFromImageSource:(struct CGImageSource *)arg1 toFitInSize:(double)arg2 scale:(double)arg3;
-+ (id)scaledImageFromImageURL:(id)arg1 toFitInSize:(struct CGSize)arg2 scale:(double)arg3;
 - (id)_contentsFromCGImageSource:(struct CGImageSource *)arg1 context:(id)arg2 scale:(double)arg3;
 - (double)_maximumDimension;
 - (id)transformedContentsFromData:(id)arg1 context:(id)arg2 error:(id *)arg3;

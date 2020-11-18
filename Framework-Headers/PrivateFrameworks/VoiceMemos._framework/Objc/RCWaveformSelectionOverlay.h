@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, NSMutableDictionary, RCOverlayBarLayer, RCTextLayer, RCUIConfiguration;
+@class CALayer, NSMutableDictionary, RCOverlayBarLayer, RCUIConfiguration, UIButton;
 @protocol RCWaveformSelectionOverlayDelegate;
 
 @interface RCWaveformSelectionOverlay : UIView
@@ -16,48 +16,80 @@
     RCOverlayBarLayer *_beginTimeSelection;
     RCOverlayBarLayer *_endTimeSelection;
     CALayer *_middleSelectionOverlay;
+    CALayer *_corneredDimOverlayContainer;
+    CALayer *_leftWaveformLightOverlay;
+    CALayer *_rightWaveformLightOverlay;
+    CALayer *_leftWaveformDimOverlay;
+    CALayer *_rightWaveformDimOverlay;
     RCOverlayBarLayer *_currentTimeBar;
-    RCTextLayer *_beginTimeLayer;
-    RCTextLayer *_endTimeLayer;
+    RCOverlayBarLayer *_compactCurrentTimeBar;
     BOOL _beginTimeLayerOffsetForThumb;
     BOOL _endTimeLayerOffsetForThumb;
+    BOOL _isRecording;
     NSMutableDictionary *_trackedTouches;
     double _requestedAnimatedLayoutDuration;
     BOOL _requestedNonAnimatedLayout;
     BOOL _sublayersCreated;
     BOOL _editingEnabled;
-    BOOL _displayingSelectionTimes;
+    BOOL _insertMode;
+    BOOL _enablePlayBarTracking;
+    BOOL _enableTimeTrackingInView;
+    BOOL _barMatchesKnobRadius;
+    BOOL _overviewTrimHandleStyle;
+    BOOL _playBarOnly;
+    BOOL _isOverView;
     id<RCWaveformSelectionOverlayDelegate> _delegate;
     double _selectedTimeRangeMinimumDuration;
     double _selectedTimeRangeMaximumDuration;
     double _assetCurrentTime;
     double _assetDuration;
     RCUIConfiguration *_UIConfiguration;
+    double _axSegment;
+    double _knobWidthMultiplier;
+    double _playWidthMultiplier;
+    long long _selectionMode;
+    UIView *_selectionBackgroundView;
     double _trackedAssetCurrentTime;
+    UIButton *_resetRegionButton;
     CDStruct_73a5d3ca _selectedTimeRange;
 }
 
 @property (copy, nonatomic) RCUIConfiguration *UIConfiguration; // @synthesize UIConfiguration=_UIConfiguration;
 @property (nonatomic) double assetCurrentTime; // @synthesize assetCurrentTime=_assetCurrentTime;
 @property (nonatomic) double assetDuration; // @synthesize assetDuration=_assetDuration;
+@property (nonatomic) double axSegment; // @synthesize axSegment=_axSegment;
+@property (nonatomic) BOOL barMatchesKnobRadius; // @synthesize barMatchesKnobRadius=_barMatchesKnobRadius;
 @property (readonly, nonatomic) long long beginTimeIndicatorSelectionAffinity;
 @property (readonly, nonatomic) double currentTimeIndicatorCoordinate;
 @property (weak, nonatomic) id<RCWaveformSelectionOverlayDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic, getter=isDisplayingSelectionTimes) BOOL displayingSelectionTimes; // @synthesize displayingSelectionTimes=_displayingSelectionTimes;
 @property (nonatomic, getter=isEditingEnabled) BOOL editingEnabled; // @synthesize editingEnabled=_editingEnabled;
+@property (nonatomic) BOOL enablePlayBarTracking; // @synthesize enablePlayBarTracking=_enablePlayBarTracking;
+@property (nonatomic) BOOL enableTimeTrackingInView; // @synthesize enableTimeTrackingInView=_enableTimeTrackingInView;
 @property (readonly, nonatomic) long long endTimeIndicatorSelectionAffinity;
+@property (nonatomic) BOOL insertMode; // @synthesize insertMode=_insertMode;
+@property (nonatomic) BOOL isOverView; // @synthesize isOverView=_isOverView;
+@property (nonatomic) BOOL isRecording; // @synthesize isRecording=_isRecording;
+@property (nonatomic) double knobWidthMultiplier; // @synthesize knobWidthMultiplier=_knobWidthMultiplier;
+@property (nonatomic) BOOL overviewTrimHandleStyle; // @synthesize overviewTrimHandleStyle=_overviewTrimHandleStyle;
+@property (nonatomic) BOOL playBarOnly; // @synthesize playBarOnly=_playBarOnly;
+@property (nonatomic) double playWidthMultiplier; // @synthesize playWidthMultiplier=_playWidthMultiplier;
+@property (strong, nonatomic) UIButton *resetRegionButton; // @synthesize resetRegionButton=_resetRegionButton;
 @property (readonly, nonatomic) CDStruct_73a5d3ca selectedTimeRange; // @synthesize selectedTimeRange=_selectedTimeRange;
 @property (nonatomic) double selectedTimeRangeMaximumDuration; // @synthesize selectedTimeRangeMaximumDuration=_selectedTimeRangeMaximumDuration;
 @property (nonatomic) double selectedTimeRangeMinimumDuration; // @synthesize selectedTimeRangeMinimumDuration=_selectedTimeRangeMinimumDuration;
+@property (weak, nonatomic) UIView *selectionBackgroundView; // @synthesize selectionBackgroundView=_selectionBackgroundView;
+@property (nonatomic) long long selectionMode; // @synthesize selectionMode=_selectionMode;
 @property (readonly, nonatomic) struct CGRect selectionRect; // @synthesize selectionRect=_selectionRect;
 @property (nonatomic) double trackedAssetCurrentTime; // @synthesize trackedAssetCurrentTime=_trackedAssetCurrentTime;
 
 - (void).cxx_destruct;
 - (BOOL)__shouldDisplayBeginTimeText;
 - (BOOL)__shouldDisplayEndTimeText;
+- (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (void)_accessibilityIncreaseValue:(BOOL)arg1 bySegment:(double)arg2;
 - (struct CGRect)_alternateBeginTimeRectWithSizedTextLayer:(id)arg1;
 - (struct CGRect)_alternateEndTimeRectWithSizedTextLayer:(id)arg1;
-- (void)_autoUpdateIsDisplayingSelectionTimes;
+- (BOOL)_axIsShowingSelectionBars;
 - (struct CGRect)_beginTimeRectWithSizedTextLayer:(id)arg1 isOffsetForThumb:(BOOL *)arg2;
 - (BOOL)_beginTrackingSelectionBar:(id)arg1 selectionBarType:(long long)arg2 withTouch:(id)arg3;
 - (void)_clearStaleTouches;
@@ -71,6 +103,7 @@
 - (double)_minimumOverlaySelectionWidth;
 - (double)_minimumOverlayWidth;
 - (struct CGRect)_selectionBoundsIncludingKnobs;
+- (struct CGRect)_selectionBoundsIncludingKnobsUsingMultiplier:(double)arg1;
 - (struct CGRect)_selectionHighlightBounds;
 - (struct CGRect)_selectionRectForSelectedTimeRange:(CDStruct_73a5d3ca)arg1;
 - (void)_setWantsAnimatedLayoutDuration:(double)arg1;
@@ -79,12 +112,21 @@
 - (BOOL)_shouldOffsetSelectionBarTypeForThumb:(long long)arg1;
 - (id)_touchTrackingInfoForSelectionBarTye:(long long)arg1;
 - (void)_updateSelectedTimeRangeForTrackedTouchesAnimated:(BOOL)arg1;
+- (double)_xAdjustmentAmount;
+- (void)accessibilityDecrement;
+- (id)accessibilityElements;
+- (void)accessibilityIncrement;
+- (BOOL)accessibilityScroll:(long long)arg1;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDelegate:(id)arg1 height:(double)arg2 selectionAreaInsets:(struct UIEdgeInsets)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)isAccessibilityElement;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)reloadSelectionOffsets;
+- (void)resetSelectionButtonPressed;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setSelectedTimeRange:(CDStruct_73a5d3ca)arg1;
 - (void)setSelectedTimeRange:(CDStruct_73a5d3ca)arg1 withAnimationDuration:(double)arg2;

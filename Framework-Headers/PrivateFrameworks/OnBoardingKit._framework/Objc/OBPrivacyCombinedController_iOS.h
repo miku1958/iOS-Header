@@ -8,14 +8,14 @@
 
 #import <OnBoardingKit/UIScrollViewDelegate-Protocol.h>
 
-@class BFFPaneHeaderView, NSArray, NSString, OBPrivacyCombinedTableViewController, OBPrivacySplashController;
+@class NSArray, NSString, OBBuddyPaneHeaderView, OBPrivacyCombinedTableViewController, OBPrivacySplashController;
 
 __attribute__((visibility("hidden")))
 @interface OBPrivacyCombinedController_iOS : OBPrivacyCombinedController <UIScrollViewDelegate>
 {
     OBPrivacySplashController *_initialSplashController;
     OBPrivacyCombinedTableViewController *_tableViewController;
-    BFFPaneHeaderView *_headerView;
+    OBBuddyPaneHeaderView *_headerView;
     BOOL _didFirstLayout;
     NSArray *_identifiers;
 }

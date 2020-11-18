@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) NSURL *imageDataURL;
 @property (readonly, nonatomic) NSString *imageDataUTI;
 @property (readonly, nonatomic) long long imageExifOrientation;
+@property (readonly, nonatomic) BOOL useEmbeddedPreview;
 
 @end
 

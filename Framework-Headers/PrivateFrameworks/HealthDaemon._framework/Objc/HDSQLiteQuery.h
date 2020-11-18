@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HDSQLiteDatabase, HDSQLiteQueryDescriptor;
+@class HDSQLiteDatabase, HDSQLiteQueryDescriptor, NSString;
 
 @interface HDSQLiteQuery : NSObject
 {
     HDSQLiteDatabase *_database;
     HDSQLiteQueryDescriptor *_descriptor;
+    NSString *_lastSQLStatement;
 }
 
 @property (readonly) HDSQLiteDatabase *database; // @synthesize database=_database;
+@property (readonly, copy) NSString *lastSQLStatement; // @synthesize lastSQLStatement=_lastSQLStatement;
 @property (readonly) HDSQLiteQueryDescriptor *queryDescriptor;
 
 - (void).cxx_destruct;

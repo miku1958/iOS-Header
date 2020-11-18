@@ -11,7 +11,6 @@
 @protocol _SFPBUserActivityData <NSObject>
 
 @property (copy, nonatomic) NSString *activityType;
-@property (readonly, nonatomic) BOOL hasActivityType;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *userInfos;
 

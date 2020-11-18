@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Rapport/NSSecureCoding-Protocol.h>
 #import <Rapport/RPCompanionLinkXPCClientInterface-Protocol.h>
 #import <Rapport/RPMessageable-Protocol.h>
 
-@class NSArray, NSString, NSXPCConnection, RPCompanionLinkDevice;
+@class NSArray, NSDictionary, NSMutableOrderedSet, NSString, NSXPCConnection, RPCompanionLinkDevice;
 @protocol OS_dispatch_queue;
 
 @interface RPCompanionLinkClient : NSObject <NSSecureCoding, RPCompanionLinkXPCClientInterface, RPMessageable>
@@ -21,9 +21,11 @@
     struct NSMutableDictionary *_eventRegistrations;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
+    NSMutableOrderedSet *_registeredProfileIDs;
     struct NSMutableDictionary *_requestRegistrations;
     NSXPCConnection *_xpcCnx;
     unsigned int _flags;
+    unsigned long long _controlFlags;
     RPCompanionLinkDevice *_destinationDevice;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _interruptionHandler;
@@ -35,10 +37,12 @@
     CDUnknownBlockType _deviceChangedHandler;
     RPCompanionLinkDevice *_localDevice;
     CDUnknownBlockType _localDeviceUpdatedHandler;
+    NSDictionary *_siriInfo;
 }
 
 @property (readonly, copy) NSArray *activeDevices;
 @property (readonly) RPCompanionLinkDevice *activePersonalCompanion;
+@property (nonatomic) unsigned long long controlFlags; // @synthesize controlFlags=_controlFlags;
 @property (strong, nonatomic) RPCompanionLinkDevice *destinationDevice; // @synthesize destinationDevice=_destinationDevice;
 @property (copy, nonatomic) CDUnknownBlockType deviceChangedHandler; // @synthesize deviceChangedHandler=_deviceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceFoundHandler; // @synthesize deviceFoundHandler=_deviceFoundHandler;
@@ -51,6 +55,7 @@
 @property (copy, nonatomic) CDUnknownBlockType localDeviceUpdatedHandler; // @synthesize localDeviceUpdatedHandler=_localDeviceUpdatedHandler;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
 @property (copy, nonatomic) CDUnknownBlockType promptForPasswordHandler; // @synthesize promptForPasswordHandler=_promptForPasswordHandler;
+@property (copy, nonatomic) NSDictionary *siriInfo; // @synthesize siriInfo=_siriInfo;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -59,11 +64,14 @@
 - (void)_interrupted;
 - (void)_invalidateAssertion:(id)arg1;
 - (void)_invalidated;
+- (void)_invokeBlockActivateSafe:(CDUnknownBlockType)arg1;
 - (void)_lostAllDevices;
 - (void)_registerEventID:(id)arg1 options:(id)arg2 reregister:(BOOL)arg3;
+- (void)_registerProfileID:(id)arg1 reregister:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_registerRequestID:(id)arg1 options:(id)arg2 reregister:(BOOL)arg3;
 - (void)_reregisterAssertions;
 - (void)_reregisterEvents;
+- (void)_reregisterProfileIDs;
 - (void)_reregisterRequests;
 - (id)activateAssertionID:(id)arg1 destinationID:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
@@ -74,6 +82,7 @@
 - (void)companionLinkReceivedEventID:(id)arg1 event:(id)arg2 options:(id)arg3;
 - (void)companionLinkReceivedRequestID:(id)arg1 request:(id)arg2 options:(id)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)deregisterEventID:(id)arg1;
+- (void)deregisterProfileID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deregisterRequestID:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -81,9 +90,11 @@
 - (id)initWithCoder:(id)arg1;
 - (void)invalidate;
 - (void)registerEventID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)registerProfileID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerRequestID:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)sendEventID:(id)arg1 event:(id)arg2 destinationID:(id)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendRequestID:(id)arg1 request:(id)arg2 destinationID:(id)arg3 options:(id)arg4 responseHandler:(CDUnknownBlockType)arg5;
+- (BOOL)shouldReportDevice:(id)arg1;
 - (void)tryPassword:(id)arg1;
 
 @end

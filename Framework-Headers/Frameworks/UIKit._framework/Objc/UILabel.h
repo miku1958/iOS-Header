@@ -4,26 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIContentSizeCategoryAdjusting-Protocol.h>
-#import <UIKit/_UILabelVisualStyleSubject-Protocol.h>
-#import <UIKit/_UIMultilineTextContentSizing-Protocol.h>
-#import <UIKit/_UIViewBaselineSpacing-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIContentSizeCategoryAdjusting-Protocol.h>
+#import <UIKitCore/_UILabelVisualStyleSubject-Protocol.h>
+#import <UIKitCore/_UIMultilineTextContentSizing-Protocol.h>
+#import <UIKitCore/_UIViewBaselineSpacing-Protocol.h>
 
-@class CUICatalog, CUIStyleEffectConfiguration, NSAttributedString, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelContent, _UILabelScaledMetrics, _UILabelVisualStyle;
+@class CUICatalog, CUIStyleEffectConfiguration, NSAttributedString, NSMutableDictionary, NSString, UIColor, UIFont, _UILabelContent, _UILabelScaledMetrics, _UILabelVisualStyle, _UITextSizeCache;
 
 @interface UILabel : UIView <_UIViewBaselineSpacing, _UIMultilineTextContentSizing, _UILabelVisualStyleSubject, NSCoding, UIContentSizeCategoryAdjusting>
 {
     struct CGSize _size;
     UIColor *_highlightedColor;
     long long _numberOfLines;
-    long long _measuredNumberOfLines;
-    struct CGRect _baselineReferenceBounds;
-    double _lastLineBaseline;
+    CDStruct_25ed71ea _baselineInfo;
     double _previousBaselineOffsetFromBottom;
-    double _firstLineBaseline;
     double _previousFirstLineBaseline;
     double _minimumScaleFactor;
     _UILabelContent *_content;
@@ -34,10 +31,12 @@
     long long _lineSpacing;
     id _layout;
     _UILabelScaledMetrics *_scaledMetrics;
-    struct CGSize _cachedIntrinsicContentSize;
+    _UITextSizeCache *_intrinsicContentSizeCache;
     long long _contentsFormat;
     CUICatalog *_cuiCatalog;
     CUIStyleEffectConfiguration *_cuiStyleEffectConfiguration;
+    NSMutableDictionary *_marqueeAnimations;
+    NSMutableDictionary *_marqueeMaskAnimations;
     struct {
         unsigned int highlighted:1;
         unsigned int autosizeTextToFit:1;
@@ -46,6 +45,7 @@
         unsigned int enabled:1;
         unsigned int wordRoundingEnabled:1;
         unsigned int explicitAlignment:1;
+        unsigned int enablesMarqueeWhenAncestorFocused:1;
         unsigned int marqueeEnabled:1;
         unsigned int marqueeRunable:1;
         unsigned int marqueeRequired:1;
@@ -56,9 +56,6 @@
         unsigned int usesSimpleTextEffects:1;
         unsigned int isVariableLengthString:1;
         unsigned int wantsUnderlineForAccessibilityButtonShapesEnabled:1;
-        unsigned int cachedIntrinsicContentSizeIsValid:1;
-        unsigned int overridesDrawRect:1;
-        unsigned int overridesTextAccessors:1;
         unsigned int disableUpdateTextColorOnTraitCollectionChange:1;
         unsigned int textAlignmentFollowsWritingDirection:1;
         unsigned int textAlignmentMirrored:1;
@@ -70,6 +67,7 @@
     BOOL __textColorFollowsTintColor;
     double _preferredMaxLayoutWidth;
     double _multilineContextWidth;
+    UIFont *_fontForShortcutBaselineCalculation;
     _UILabelVisualStyle *__visualStyle;
 }
 
@@ -79,6 +77,7 @@
 @property (nonatomic, setter=_setFirstLineBaselineFrameOriginY:) double _firstLineBaselineFrameOriginY;
 @property (readonly, nonatomic) double _firstLineBaselineOffsetFromBoundsTop;
 @property (nonatomic, setter=_setFirstLineCapFrameOriginY:) double _firstLineCapFrameOriginY;
+@property (strong, nonatomic, setter=set_fontForShortcutBaselineCalculation:) UIFont *_fontForShortcutBaselineCalculation; // @synthesize _fontForShortcutBaselineCalculation;
 @property (readonly, nonatomic) double _lastLineBaseline;
 @property (nonatomic, setter=_setLastLineBaselineFrameOriginY:) double _lastLineBaselineFrameOriginY;
 @property (strong, nonatomic, getter=_synthesizedAttributedText, setter=_setSynthesizedAttributedText:) NSAttributedString *_synthesizedAttributedText;
@@ -97,6 +96,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
+@property (nonatomic) BOOL enablesMarqueeWhenAncestorFocused;
 @property (strong, nonatomic) UIFont *font;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -121,7 +121,6 @@
 + (struct CGRect)_insetRect:(struct CGRect)arg1 forAttributedString:(id)arg2 withDefaultFont:(id)arg3 inView:(id)arg4;
 + (struct UIEdgeInsets)_insetsForAttributedString:(id)arg1 withDefaultFont:(id)arg2 inView:(id)arg3;
 + (struct UIEdgeInsets)_insetsForString:(id)arg1 withFont:(id)arg2 inView:(id)arg3;
-+ (BOOL)_isMonochromeDrawingDisabled;
 + (struct CGSize)_legacy_adjustSizeForWebKitConstraining:(struct CGSize)arg1 withFont:(id)arg2;
 + (struct __CFCharacterSet *)_tooBigChars;
 + (id)defaultFont;
@@ -132,6 +131,7 @@
 - (void)_accessibilityButtonShapesParametersDidChange;
 - (double)_actualScaleFactor;
 - (void)_adjustPreferredFontForCurrentContentSizeCategory;
+- (void)_ancestorWillUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (void)_applicationWillResignActiveNotification:(id)arg1;
 - (id)_associatedScalingLabel;
@@ -143,13 +143,11 @@
 - (void)_baselineOffsetParametersDidChange;
 - (void)_commonInit;
 - (struct UIEdgeInsets)_contentInsetsFromFonts;
-- (long long)_contentsFormatForNonDeepDrawing;
 - (void)_coordinateBeginTimeForMarqueeAnimations:(double)arg1;
 - (id)_cuiCatalog;
 - (id)_cuiStyleEffectConfiguration;
 - (id)_defaultAttributes;
 - (id)_defaultAttributesForUpgradingString:(id)arg1;
-- (long long)_determineContentsFormat;
 - (void)_didChangeFromIdiom:(long long)arg1 onScreen:(id)arg2 traverseHierarchy:(BOOL)arg3;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (id)_disabledFontColor;
@@ -157,7 +155,6 @@
 - (void)_drawTextInRect:(struct CGRect)arg1 baselineCalculationOnly:(BOOL)arg2;
 - (BOOL)_drawsUnderline;
 - (struct CGRect)_ensureBaselineMetricsReturningBounds;
-- (void)_evaluateContentsFormat;
 - (id)_fallbackTextColorForUserInterfaceStyle:(long long)arg1;
 - (double)_firstBaselineOffsetFromTop;
 - (double)_firstLineBaseline;
@@ -169,11 +166,11 @@
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (void)_invalidateAsNeededForNewSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2 withLinkCheck:(BOOL)arg3;
 - (void)_invalidateCachedDefaultAttributes;
-- (void)_invalidateIntrinsicContentSizeNeedingLayout:(BOOL)arg1;
 - (void)_invalidateLayout;
 - (void)_invalidateSynthesizedAttributedTextAndLayout;
 - (void)_invalidateTextSize;
 - (void)_invalidateTextSizeIncludingIntrinsicContentSize:(BOOL)arg1;
+- (unsigned int)_isMarqueeRunnable;
 - (BOOL)_isTextFieldCenteredLabel;
 - (id)_layoutDebuggingTitle;
 - (id)_materializedAttributedString;
@@ -189,7 +186,7 @@
 - (void)_prepareForFirstIntrinsicContentSizeCalculation;
 - (void)_prepareForSecondIntrinsicContentSizeCalculationWithLayoutEngineBounds:(struct CGRect)arg1;
 - (void)_resetUsesExplicitPreferredMaxLayoutWidth;
-- (id)_safeContent:(BOOL *)arg1;
+- (void)_runMarqueeIfEnabledAndAncestorIsFocused;
 - (void)_setAllowsDefaultTighteningForTruncation:(BOOL)arg1;
 - (void)_setColor:(id)arg1;
 - (void)_setCuiCatalog:(id)arg1;
@@ -202,7 +199,6 @@
 - (void)_setMinimumFontSize:(double)arg1;
 - (void)_setMultilineContextWidth:(double)arg1;
 - (void)_setNeedsDisplayForInvalidatedContents;
-- (void)_setNeedsUpdateConstraintsNeedingLayout:(BOOL)arg1;
 - (void)_setOverallWritingDirectionFollowsLayoutDirection:(BOOL)arg1;
 - (void)_setShadow:(id)arg1;
 - (void)_setShadowUIOffset:(struct UIOffset)arg1;
@@ -233,7 +229,6 @@
 - (void)_updateVariableLengthStringIfNeeded;
 - (BOOL)_useShortcutIntrinsicContentSize;
 - (BOOL)_usesSimpleTextEffects;
-- (BOOL)_wantsDeepDrawing;
 - (BOOL)autotrackTextToFit;
 - (BOOL)centersHorizontally;
 - (id)color;
@@ -258,7 +253,6 @@
 - (BOOL)marqueeRunning;
 - (struct CGSize)rawSize;
 - (void)setAutotrackTextToFit:(BOOL)arg1;
-- (void)setBackgroundColor:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setCentersHorizontally:(BOOL)arg1;
 - (void)setColor:(id)arg1;

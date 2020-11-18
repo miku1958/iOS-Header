@@ -11,7 +11,6 @@
 @class NSArray, NSString, PUPhotoSelectionManager;
 @protocol OS_dispatch_queue, PUPhotosGridBarsHelperDelegate;
 
-__attribute__((visibility("hidden")))
 @interface PUPhotosGridBarsHelper : NSObject <PUPhotoSelectionManagerChangeObserver>
 {
     BOOL _isPerformingUpdates;

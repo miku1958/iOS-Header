@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIFocusRegionContainer-Protocol.h>
-#import <UIKit/_UILegacyFocusRegion-Protocol.h>
+#import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
+#import <UIKitCore/_UILegacyFocusRegion-Protocol.h>
 
 @class NSArray, NSString, UICollectionView, UICollectionViewLayoutAttributes, UIView;
-@protocol UIFocusEnvironment;
+@protocol UIFocusEnvironment, UIFocusItemContainer;
 
 __attribute__((visibility("hidden")))
 @interface _UICollectionViewCellPromiseRegion : NSObject <_UILegacyFocusRegion, _UIFocusRegionContainer>
@@ -23,10 +23,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UICollectionViewLayoutAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
-@property (readonly, weak, nonatomic, getter=_parentFocusEnvironment) id<UIFocusEnvironment> parentFocusEnvironment;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property (readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 @property (readonly, weak, nonatomic) UIView *preferredFocusedView;

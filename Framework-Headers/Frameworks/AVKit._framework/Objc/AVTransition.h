@@ -6,47 +6,66 @@
 
 #import <objc/NSObject.h>
 
-@class AVPlayerViewController, UIView, UIViewController, UIViewPropertyAnimator;
-@protocol UIViewControllerContextTransitioning;
+@class AVTransitionPresentationContext, NSMutableArray, UIView, UIViewPropertyAnimator;
+@protocol AVTransitionDelegate, UIViewControllerContextTransitioningEx;
 
 @interface AVTransition : NSObject
 {
     BOOL _wasInitiallyInteractive;
-    id<UIViewControllerContextTransitioning> _transitionContext;
-    AVPlayerViewController *_playerViewController;
+    AVTransitionPresentationContext *_presentationContext;
+    long long _transitionType;
+    id<AVTransitionDelegate> _delegate;
+    id<UIViewControllerContextTransitioningEx> _transitionContext;
+    UIViewPropertyAnimator *_transitionAnimator;
+    UIViewPropertyAnimator *_clientAnimator;
+    UIView *_touchBlockingView;
+    UIView *_containerView;
     UIView *_backgroundView;
-    UIViewPropertyAnimator *_currentAnimator;
-    double _interactiveTransitionPercentComplete;
+    NSMutableArray *_allAnimators;
 }
 
+@property (readonly, nonatomic) NSMutableArray *allAnimators; // @synthesize allAnimators=_allAnimators;
 @property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
-@property (readonly, nonatomic) UIView *containerView;
-@property (weak, nonatomic) UIViewPropertyAnimator *currentAnimator; // @synthesize currentAnimator=_currentAnimator;
-@property (readonly, nonatomic) double duration;
-@property (readonly, nonatomic) UIView *fromView;
-@property (readonly, nonatomic) UIViewController *fromViewController;
-@property (nonatomic) double interactiveTransitionPercentComplete; // @synthesize interactiveTransitionPercentComplete=_interactiveTransitionPercentComplete;
-@property (readonly, weak, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
-@property (readonly, nonatomic) UIView *toView;
-@property (readonly, nonatomic) UIViewController *toViewController;
-@property (readonly, nonatomic) id<UIViewControllerContextTransitioning> transitionContext; // @synthesize transitionContext=_transitionContext;
+@property (readonly, nonatomic) UIViewPropertyAnimator *clientAnimator; // @synthesize clientAnimator=_clientAnimator;
+@property (readonly, weak, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
+@property (weak, nonatomic) id<AVTransitionDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) AVTransitionPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
+@property (readonly, weak, nonatomic) UIView *presentedView;
+@property (readonly, weak, nonatomic) UIView *presentingView;
+@property (readonly, nonatomic) UIView *touchBlockingView; // @synthesize touchBlockingView=_touchBlockingView;
+@property (readonly, nonatomic) UIViewPropertyAnimator *transitionAnimator; // @synthesize transitionAnimator=_transitionAnimator;
+@property (readonly, weak, nonatomic) id<UIViewControllerContextTransitioningEx> transitionContext; // @synthesize transitionContext=_transitionContext;
+@property (readonly, nonatomic) long long transitionType; // @synthesize transitionType=_transitionType;
 @property (nonatomic) BOOL wasInitiallyInteractive; // @synthesize wasInitiallyInteractive=_wasInitiallyInteractive;
 
-+ (id)transitionWithTransitionContext:(id)arg1 playerViewController:(id)arg2;
 - (void).cxx_destruct;
-- (void)animateAlongsideInteractiveTransitionAnimationForCancelling;
-- (void)animateAlongsideInteractiveTransitionAnimationForFinishing;
-- (void)animateAlongsideNonInteractiveTransitionAnimation;
-- (void)animateNonInteractiveTransition;
-- (id)animatorWithDurationFactor:(double)arg1;
+- (void)_animateAlongsideInteractiveDismissalTransitionAnimationForCancelling;
+- (void)_animateAlongsideInteractivePresentationTransitionAnimationForCancelling;
+- (void)_animateFinishInteractiveTransition;
+- (void)_dismissalTransitionDidEnd:(BOOL)arg1;
+- (void)_dismissalTransitionWillBegin;
+- (struct CGRect)_finalFrameForPresentedView;
+- (struct CGAffineTransform)_finalTransformForPresentedView;
+- (void)_freezeDismissingViewForFinishing;
+- (struct CGRect)_initialFrameForPresentedView;
+- (void)_presentationTransitionDidEnd:(BOOL)arg1;
+- (void)_presentationTransitionWillBegin;
+- (struct CGAffineTransform)_rotationTransform:(double)arg1;
+- (struct CGAffineTransform)_rotationTransformFromPresentedViewToSourceView;
+- (struct CGRect)_sourceViewFrameInContainerView;
+- (void)_startOrContinueAnimatorsReversed:(BOOL)arg1;
+- (struct CGAffineTransform)_transformForDismissalAnimation;
+- (struct CGAffineTransform)_transformForScale:(double)arg1 translation:(struct CGPoint)arg2 rotation:(double)arg3 locationInWindow:(struct CGPoint)arg4 sourceRectInContainerView:(struct CGRect)arg5;
+- (void)_updateCornerAppearanceAttributesOfView:(id)arg1 toSourceView:(id)arg2 similarity:(double)arg3;
+- (void)addRunAlongsideAnimationsIfNeeded;
 - (void)cancelInteractiveTransition;
 - (void)completeTransition:(BOOL)arg1;
 - (void)dealloc;
+- (double)duration;
 - (void)finishInteractiveTransition;
-- (id)initWithTransitionContext:(id)arg1 playerViewController:(id)arg2;
+- (id)initWithTransitionContext:(id)arg1;
 - (void)pauseInteractiveTransition;
-- (struct CGAffineTransform)transformForScale:(double)arg1 translation:(struct CGPoint)arg2 rotation:(double)arg3 locationInWindow:(struct CGPoint)arg4 sourceRectInContainerView:(struct CGRect)arg5;
-- (void)transitionWillBegin;
+- (void)startInteractiveTransition;
 - (void)updateWithPercentComplete:(double)arg1 translation:(struct CGPoint)arg2 rotation:(double)arg3 locationInWindow:(struct CGPoint)arg4;
 
 @end

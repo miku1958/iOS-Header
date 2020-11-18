@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class IMMessageContext, NSArray, NSLock, NSMutableArray, NSProtocolChecker, NSRecursiveLock, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_xpc_object;

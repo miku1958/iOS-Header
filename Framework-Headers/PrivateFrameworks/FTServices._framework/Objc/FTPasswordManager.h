@@ -48,6 +48,7 @@
 - (id)init;
 - (id)initWithUserNotificationCenter:(id)arg1;
 - (BOOL)isAuthTokenReceiptTime:(double)arg1 withinGracePeriod:(double)arg2;
+- (void)performCleanUpWithCompletion:(CDUnknownBlockType)arg1;
 - (id)profileIDForACAccount:(id)arg1;
 - (void)removeAuthTokenAllowingGracePeriodForProfileID:(id)arg1 username:(id)arg2;
 - (void)requestAuthTokenForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 badPassword:(BOOL)arg4 showForgotPassword:(BOOL)arg5 failIfNotSilent:(BOOL)arg6 outRequestID:(id *)arg7 completionBlock:(CDUnknownBlockType)arg8;
@@ -58,6 +59,7 @@
 - (void)setHandlesForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 handles:(id)arg4;
 - (void)setPasswordForProfileID:(id)arg1 username:(id)arg2 service:(id)arg3 password:(id)arg4 outRequestID:(id *)arg5 completionBlock:(CDUnknownBlockType)arg6;
 - (BOOL)supportsAuthTokenRequests;
+- (void)updatePreviousUsername:(id)arg1 toNewUsername:(id)arg2;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
     NSArray *faces;
     int nRepairs;
     int nextRepairTag;
-    CDStruct_907e448c repairs[32];
+    CDStruct_8d997f87 repairs[32];
     int lastRepairTag;
     float lastRepairIOD;
     CDStruct_6ca1d5c6 standardTemplate;
@@ -56,11 +56,7 @@ __attribute__((visibility("hidden")))
     int nPolyPoints;
     BOOL polyClosed;
     struct CGPoint polyPoints[20];
-    struct {
-        float a;
-        float b;
-        float c;
-    } polyLines[20];
+    CDStruct_12b04d25 polyLines[20];
     BOOL polyPointConcave[20];
     unsigned char CbCrDistanceTable[65536];
     int nLinears;
@@ -72,8 +68,9 @@ __attribute__((visibility("hidden")))
 + (struct CGRect)supportRectangleWithRepair:(id)arg1 imageSize:(struct CGSize)arg2;
 + (float)upperRepairDistance:(float)arg1;
 + (float)upperRepairDistanceFraction:(float)arg1;
+- (int)applyEyeRepairWithEye:(CDStruct_3edab2bb *)arg1 left:(BOOL)arg2 IOD:(float)arg3 autoPupilTonality:(BOOL)arg4 match:(CDStruct_a734b2e2 *)arg5 faceIndex:(int)arg6 whiteHopper:(CDStruct_08ff8b76 *)arg7;
 - (BOOL)autoPupilTonality;
-- (void)autoRepairExtractAndSearchLeft:(CDStruct_a734b2e2)arg1 right:(CDStruct_a734b2e2)arg2 data:(CDStruct_e0ece3c1 *)arg3 repairSize:(float)arg4 autoPupilTonality:(BOOL)arg5 faceIndex:(int)arg6;
+- (void)autoRepairExtractAndSearchLeft:(CDStruct_a734b2e2)arg1 right:(CDStruct_a734b2e2)arg2 data:(CDStruct_935079c3 *)arg3 repairSize:(float)arg4 autoPupilTonality:(BOOL)arg5 faceIndex:(int)arg6;
 - (void)autoRepairWithFaceArray:(id)arg1;
 - (int)averageValueFromY:(CDStruct_c3faddef *)arg1 withinSkinMask:(CDStruct_c3faddef *)arg2 butOutsideAlpha:(CDStruct_c3faddef *)arg3;
 - (BOOL)computeTrimmedBitmaps:(CDStruct_c3faddef *)arg1 newY:(CDStruct_c3faddef *)arg2 newCbCr:(CDStruct_c3faddef *)arg3 IR:(CDStruct_a734b2e2)arg4 newTrimY:(CDStruct_c3faddef *)arg5 newTrimCbCr:(CDStruct_c3faddef *)arg6 returningYR:(CDStruct_a734b2e2 *)arg7 andCbCrR:(CDStruct_a734b2e2 *)arg8;
@@ -84,12 +81,14 @@ __attribute__((visibility("hidden")))
 - (int)distanceMaskFromPolyToCb:(int)arg1 Cr:(int)arg2;
 - (void)executeRepair:(id)arg1;
 - (void)executeRepairArray:(id)arg1;
-- (float)extractAverageFaceY:(CDStruct_e0ece3c1 *)arg1 contrast:(float *)arg2 faceIndex:(int)arg3;
+- (BOOL)extractAndGatherProminencesWithRect:(CDStruct_a734b2e2)arg1 face:(CDStruct_935079c3 *)arg2 faceIndex:(int)arg3 left:(BOOL)arg4 maxwindowsize:(float)arg5 repairsize:(float)arg6 returningRedHopper:(CDStruct_08ff8b76 *)arg7 whiteHopper:(CDStruct_08ff8b76 *)arg8 redChannel:(CDStruct_c3faddef *)arg9 redChannelMask:(CDStruct_c3faddef *)arg10;
+- (float)extractAverageFaceY:(CDStruct_935079c3 *)arg1 contrast:(float *)arg2 faceIndex:(int)arg3;
 - (BOOL)extractReusableAlignedBitmapsAroundPoint:(CDStruct_c3faddef *)arg1 YR:(CDStruct_a734b2e2)arg2 subYBitmap:(CDStruct_c3faddef *)arg3 subCbCrBitmap:(CDStruct_c3faddef *)arg4;
 - (id)faces;
 - (BOOL)forceLoValue;
 - (int)format;
-- (BOOL)gatherProminencesWithC:(CDStruct_c3faddef *)arg1 MC:(CDStruct_c3faddef *)arg2 altC:(CDStruct_c3faddef *)arg3 altMC:(CDStruct_c3faddef *)arg4 maxwindowsize:(int)arg5 repairsize:(int)arg6 IR:(CDStruct_a734b2e2)arg7 fr:(CDStruct_e0ece3c1 *)arg8 intoHopper:(CDStruct_08ff8b76 *)arg9 faceIndex:(int)arg10 left:(BOOL)arg11;
+- (BOOL)gatherProminencesWithC:(CDStruct_c3faddef *)arg1 MC:(CDStruct_c3faddef *)arg2 altC:(CDStruct_c3faddef *)arg3 altMC:(CDStruct_c3faddef *)arg4 maxwindowsize:(int)arg5 repairsize:(int)arg6 IR:(CDStruct_a734b2e2)arg7 fr:(CDStruct_935079c3 *)arg8 intoHopper:(CDStruct_08ff8b76 *)arg9 faceIndex:(int)arg10 left:(BOOL)arg11;
+- (BOOL)gatherProminencesWithC:(CDStruct_c3faddef *)arg1 MC:(CDStruct_c3faddef *)arg2 maxwindowsize:(int)arg3 repairsize:(int)arg4 IR:(CDStruct_a734b2e2)arg5 fr:(CDStruct_935079c3 *)arg6 intoHopper:(CDStruct_08ff8b76 *)arg7 faceIndex:(int)arg8 left:(BOOL)arg9 coss:(float [10])arg10 sins:(float [10])arg11 bitmapName:(char *)arg12;
 - (BOOL)getBlockSetWithImage:(struct CGImage *)arg1 into:(CDStruct_c3faddef *)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4;
 - (BOOL)getBool:(BOOL *)arg1 d:(id)arg2 s:(id)arg3;
 - (BOOL)getDataProviderBytePtrWithImage:(struct CGImage *)arg1 into:(CDStruct_c3faddef *)arg2 width:(unsigned long long)arg3 height:(unsigned long long)arg4;
@@ -110,9 +109,11 @@ __attribute__((visibility("hidden")))
 - (float)lowerRepairSize:(float)arg1;
 - (float)lowerRepairSizeFraction:(float)arg1;
 - (int)nRepairs;
+- (void)orientPointX:(float *)arg1 Y:(float *)arg2;
+- (void)orientRectangleMinX:(float *)arg1 maxX:(float *)arg2 minY:(float *)arg3 maxY:(float *)arg4;
 - (void)prepareLineFunctions;
 - (BOOL)pupilShadeAlignment;
-- (int)redEyeRemovalWithData:(CDStruct_8b259ba7)arg1;
+- (int)redEyeRemovalWithData:(CDStruct_1c31e7e7)arg1;
 - (int)redEyeRemovalWithPoint:(struct CGPoint)arg1 alignPupilShades:(BOOL)arg2 matching:(CDStruct_a734b2e2)arg3 force:(int)arg4 IOD:(float)arg5 tap:(BOOL)arg6;
 - (int)redEyeThresholdKind;
 - (void)redoLastRepair;
@@ -120,9 +121,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)renderAlpha;
 - (BOOL)renderSpecularShine;
 - (id)repairArray;
+- (CDStruct_3edab2bb)repairDecisionWithFaceRecord:(CDStruct_935079c3 *)arg1 left:(BOOL)arg2 redHopper:(CDStruct_08ff8b76 *)arg3 whiteHopper:(CDStruct_08ff8b76 *)arg4;
 - (void)repairExternalBuffer;
-- (CDStruct_907e448c *)repairWithTag:(int)arg1;
-- (CDStruct_907e448c *)repairs;
+- (CDStruct_8d997f87 *)repairWithTag:(int)arg1;
+- (CDStruct_8d997f87 *)repairs;
 - (void)setAutoPupilTonality:(BOOL)arg1;
 - (void)setColorSpace:(struct CGColorSpace *)arg1;
 - (void)setDebug:(BOOL)arg1;

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     id<UIViewControllerContextTransitioning> _transitionContext;
     id _transitionDriver;
     double _duration;
+    unsigned long long _transitionState;
 }
 
 @property (readonly) UIViewController<QLCustomTransitioning> *animatedController; // @synthesize animatedController=_animatedController;
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (weak) id<UIViewControllerContextTransitioning> transitionContext; // @synthesize transitionContext=_transitionContext;
 @property (readonly) id transitionDriver; // @synthesize transitionDriver=_transitionDriver;
+@property unsigned long long transitionState; // @synthesize transitionState=_transitionState;
 
 - (void).cxx_destruct;
 - (void)_completeBackgroundTransition:(BOOL)arg1;

@@ -25,7 +25,6 @@
     WBSParsecImageRepresentation *_icon;
     NSString *_punchoutAppName;
     NSString *_punchoutAppBundleIdentifier;
-    NSURL *_punchoutAppInstallURL;
     NSURL *_punchoutURL;
 }
 
@@ -43,7 +42,6 @@
 @property (readonly, copy, nonatomic) NSString *offerType; // @synthesize offerType=_offerType;
 @property (readonly, nonatomic, getter=isOverlay) BOOL overlay; // @synthesize overlay=_overlay;
 @property (readonly, copy, nonatomic) NSString *punchoutAppBundleIdentifier; // @synthesize punchoutAppBundleIdentifier=_punchoutAppBundleIdentifier;
-@property (readonly, nonatomic) NSURL *punchoutAppInstallURL; // @synthesize punchoutAppInstallURL=_punchoutAppInstallURL;
 @property (readonly, copy, nonatomic) NSString *punchoutAppName; // @synthesize punchoutAppName=_punchoutAppName;
 @property (readonly, nonatomic) NSURL *punchoutURL; // @synthesize punchoutURL=_punchoutURL;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;

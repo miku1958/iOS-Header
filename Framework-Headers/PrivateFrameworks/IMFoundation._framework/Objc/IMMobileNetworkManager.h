@@ -12,7 +12,10 @@
 {
     BOOL _registered;
     BOOL _shouldBringUpDataContext;
-    BOOL _dataContextActive;
+    BOOL _isDataContextAttached;
+    BOOL _isDataContextActive;
+    BOOL _isDataIndicatorNone;
+    BOOL _isDataContextUsable;
     NSRecursiveLock *_lock;
     NSMutableSet *_cellAutoAssociationTokens;
     NSMutableSet *_wiFiAutoAssociationTokens;
@@ -22,13 +25,16 @@
 @property (readonly, nonatomic) BOOL autoAssociateWiFi;
 @property (strong, nonatomic) NSMutableSet *cellularAutoAssociationTokens; // @synthesize cellularAutoAssociationTokens=_cellAutoAssociationTokens;
 @property (readonly, nonatomic) BOOL dataConnectionExists;
-@property (nonatomic) BOOL dataContextActive; // @synthesize dataContextActive=_dataContextActive;
 @property (readonly, nonatomic) BOOL disableFastDormancy;
 @property (readonly, nonatomic) BOOL has2GDataConnection;
 @property (readonly, nonatomic) BOOL hasLTEDataConnection;
 @property (readonly, nonatomic) BOOL inValidSIMState;
 @property (readonly, nonatomic) BOOL isAirplaneModeEnabled;
 @property (readonly, nonatomic) BOOL isDataConnectionActive;
+@property (nonatomic) BOOL isDataContextActive; // @synthesize isDataContextActive=_isDataContextActive;
+@property (nonatomic) BOOL isDataContextAttached; // @synthesize isDataContextAttached=_isDataContextAttached;
+@property (nonatomic) BOOL isDataContextUsable; // @synthesize isDataContextUsable=_isDataContextUsable;
+@property (nonatomic) BOOL isDataIndicatorNone; // @synthesize isDataIndicatorNone=_isDataIndicatorNone;
 @property (readonly, nonatomic) BOOL isDataSwitchEnabled;
 @property (readonly, nonatomic) BOOL isHostingWiFiHotSpot;
 @property (readonly, nonatomic) BOOL isSIMLocked;
@@ -49,12 +55,11 @@
 @property (readonly, nonatomic) BOOL willTryToSearchForWiFiNetwork;
 
 - (void)_adjustCellularAutoAssociation;
-- (void)_createCTServerConnection;
-- (void)_ctServerCallBack:(id)arg1 object:(id)arg2 userInfo:(id)arg3;
 - (BOOL)_isDataConnectionAvailable;
+- (BOOL)_legacy_inValidSIMState;
 - (void)_lockedAdjustCellularAutoAssociation;
 - (void)_makeDataConnectionAvailable:(BOOL)arg1;
-- (void)_releaseCTServerConnection;
+- (id)_telephonyDataSIMStatus;
 - (void)addCellularAutoAssociationClientToken:(id)arg1;
 - (void)addFastDormancyDisableToken:(id)arg1;
 - (void)addWiFiAutoAssociationClientToken:(id)arg1;

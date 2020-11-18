@@ -16,6 +16,7 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (long long)_accessibilityMapType;
+- (struct CGPoint)_accessibilityMapViewPointForZoomPoint:(struct CGPoint)arg1;
 - (id)_accessibilityScrollStatus;
 - (BOOL)_allowCustomActionHintSpeakOverride;
 - (CDStruct_aca18c62)_axBoundsOfElements;
@@ -26,6 +27,7 @@
 - (BOOL)_axElementsInvalidForVisibleBounds;
 - (void)_axInitializeTimers;
 - (struct CGPoint)_axIntersectionBetweenRoad:(id)arg1 andOtherRoad:(id)arg2;
+- (id)_axLastSummaryForVisibleBounds;
 - (void)_axLoadAccessibility;
 - (id)_axMapLabelLayoutTimer;
 - (id)_axMapViewDelegate;
@@ -33,6 +35,7 @@
 - (void)_axMapVisibleRegionDidChange;
 - (id)_axMapsDelegate;
 - (long long)_axOrientationOfElements;
+- (void)_axSetLastSummaryForVisibleBounds:(id)arg1;
 - (void)_axSetMapLabelLayoutTimer:(id)arg1;
 - (void)_axSetTrackingMode:(long long)arg1;
 - (BOOL)_axShouldSummarizeVisibleBounds;

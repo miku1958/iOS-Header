@@ -4,32 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class NSData, NSDictionary, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CUIThemeRendition : NSObject
 {
-    struct _renditionkeytoken _stackKey[17];
+    struct _renditionkeytoken _stackKey[18];
     struct _renditionkeytoken *_key;
     long long _type;
     unsigned int _subtype;
     unsigned int _scale;
     int _exifOrientation;
     int _blendMode;
-    struct {
-        unsigned int isHeaderFlaggedFPO:1;
-        unsigned int isExcludedFromContrastFilter:1;
-        unsigned int isVectorBased:1;
-        unsigned int isOpaque:1;
-        unsigned int bitmapEncoding:4;
-        unsigned int optOutOfThinning:1;
-        unsigned int isFlippable:1;
-        unsigned int isTintable:1;
-        unsigned int preservedVectorRepresentation:1;
-        unsigned int reserved:20;
-    } _renditionFlags;
+    struct cuithemerenditionrenditionflags _renditionFlags;
     long long _templateRenderingMode;
     long long _artworkStatus;
     unsigned long long _colorSpaceID;
@@ -40,11 +28,19 @@ __attribute__((visibility("hidden")))
     NSString *_utiType;
     struct CGImage *_uncroppedImage;
     struct CGSize _physicalSizeInMeters;
+    NSDictionary *_properties;
 }
 
+@property (nonatomic) long long artworkStatus; // @synthesize artworkStatus=_artworkStatus;
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
 @property (nonatomic) int exifOrientation; // @synthesize exifOrientation=_exifOrientation;
+@property (nonatomic) NSString *internalName; // @synthesize internalName=_name;
+@property (nonatomic) unsigned int internalScale; // @synthesize internalScale=_scale;
+@property (nonatomic) long long internalTemplateRenderingMode; // @synthesize internalTemplateRenderingMode=_templateRenderingMode;
 @property (nonatomic) double opacity; // @synthesize opacity=_opacity;
+@property (readonly, nonatomic) NSData *srcData; // @synthesize srcData=_srcData;
+@property (nonatomic) unsigned int subtype; // @synthesize subtype=_subtype;
+@property (nonatomic) long long type; // @synthesize type=_type;
 
 + (id)displayNameForRenditionType:(long long)arg1;
 + (id)filteredCSIDataFromBaseCSIData:(id)arg1;
@@ -54,11 +50,11 @@ __attribute__((visibility("hidden")))
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)_initalizeMetadataFromCSIData:(const struct _csiheader *)arg1;
 - (void)_initializeCompositingOptionsFromCSIData:(const struct _csiheader *)arg1;
+- (void)_initializePropertiesFromCSIData:(const struct _csiheader *)arg1;
 - (void)_initializeRenditionKey:(const struct _renditionkeytoken *)arg1;
 - (void)_initializeTypeIdentifiersWithLayout:(unsigned short)arg1;
 - (void)_setStructuredThemeStore:(id)arg1;
 - (struct CGRect)alphaCroppedRect;
-- (long long)artworkStatus;
 - (id)assetPackIdentifier;
 - (int)bitmapEncoding;
 - (unsigned long long)colorSpaceID;
@@ -93,21 +89,26 @@ __attribute__((visibility("hidden")))
 - (id)metrics;
 - (id)mipLevels;
 - (id)name;
+- (int)objectVersion;
 - (BOOL)optOutOfThinning;
 - (struct CGSize)originalUncroppedSize;
 - (struct CGPDFDocument *)pdfDocument;
 - (struct CGSize)physicalSizeInMeters;
 - (int)pixelFormat;
 - (BOOL)preservedVectorRepresentation;
+- (id)properties;
 - (id)provideTextureInfo;
+- (struct cuithemerenditionrenditionflags *)renditionFlags;
 - (double)scale;
+- (void)setName:(id)arg1;
 - (id)sizeIndexes;
 - (id)sliceInformation;
 - (unsigned long long)sourceRowbytes;
-- (unsigned int)subtype;
+- (BOOL)substituteWithSystemColor;
+- (id)systemColorName;
 - (long long)templateRenderingMode;
 - (id)textureImages;
-- (long long)type;
+- (CDStruct_14d5dc5e)transformation;
 - (struct CGImage *)uncroppedImage;
 - (struct CGImage *)unslicedImage;
 - (struct CGSize)unslicedSize;

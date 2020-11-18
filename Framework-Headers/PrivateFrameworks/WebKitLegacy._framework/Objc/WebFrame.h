@@ -84,7 +84,7 @@
 - (BOOL)_loadsSynchronously;
 - (id)_markDOMRange;
 - (BOOL)_needsLayout;
-- (id)_nodesFromList:(Vector_2ce69415 *)arg1;
+- (id)_nodesFromList:(Vector_1d266cd7 *)arg1;
 - (unsigned int)_paintBehaviorForDestinationContext:(struct CGContext *)arg1;
 - (unsigned int)_pendingFrameUnloadEventCount;
 - (id)_rectsForRange:(id)arg1;

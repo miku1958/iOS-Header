@@ -7,8 +7,12 @@
 #import <HomeKit/HMHomeManager.h>
 
 @interface HMHomeManager (HFAdditions)
+
+@property (readonly, nonatomic) BOOL hf_hasDetectediCloudIssue;
+
 - (BOOL)hf_hasSeenOnboardingWelcomeView;
 - (id)hf_homeWithIdentifier:(id)arg1;
+- (id)hf_mutableOrderedHomesList;
 - (id)hf_orderedHomes;
 - (id)hf_orderedHomesList;
 - (id)hf_setHasSeenOnboardingWelcomeView:(BOOL)arg1;

@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface RCWeakRef : NSObject
 {
     id _weakStorage;

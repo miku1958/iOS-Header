@@ -20,8 +20,8 @@
 @property (readonly, nonatomic) unsigned int hostContextId; // @synthesize hostContextId=_hostContextId;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)assertionEndpoint;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

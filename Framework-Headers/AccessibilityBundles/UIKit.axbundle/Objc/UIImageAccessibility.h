@@ -12,8 +12,6 @@
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (id)imageAtPath:(id)arg1;
-+ (id)imageNamed:(id)arg1;
-+ (id)imageNamed:(id)arg1 inBundle:(id)arg2;
 + (id)imageNamed:(id)arg1 inBundle:(id)arg2 compatibleWithTraitCollection:(id)arg3;
 + (id)imageWithCGImage:(struct CGImage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 + (id)imageWithContentsOfFile:(id)arg1;
@@ -30,9 +28,11 @@
 - (id)_imageScaledToProportion:(double)arg1 interpolationQuality:(int)arg2;
 - (id)accessibilityIdentifier;
 - (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
 - (id)imageFlippedForRightToLeftLayoutDirection;
 - (id)imageWithAlignmentRectInsets:(struct UIEdgeInsets)arg1;
 - (id)imageWithRenderingMode:(long long)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1;
 - (id)initWithContentsOfFile:(id)arg1 cache:(BOOL)arg2;
 

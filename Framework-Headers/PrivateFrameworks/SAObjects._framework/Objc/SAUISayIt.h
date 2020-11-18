@@ -14,12 +14,14 @@
 }
 
 @property (strong, nonatomic) SAUIAudioData *audioData;
+@property (nonatomic) BOOL canUseServerTTS;
 @property (strong, nonatomic) id<SAAceSerializable> context;
 @property (copy, nonatomic) NSString *dialogIdentifier;
 @property (copy, nonatomic) NSString *gender;
 @property (copy, nonatomic) NSString *languageCode;
 @property (copy, nonatomic) NSNumber *listenAfterSpeaking;
 @property (copy, nonatomic) NSString *message;
+@property (nonatomic) BOOL repeatable;
 
 + (id)sayIt;
 + (id)sayItWithDictionary:(id)arg1 context:(id)arg2;

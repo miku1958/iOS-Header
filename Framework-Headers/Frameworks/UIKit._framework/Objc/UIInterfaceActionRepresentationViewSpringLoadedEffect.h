@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UISpringLoadedInteractionEffect-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionEffect-Protocol.h>
 
 @class NSString;
 @protocol UISpringLoadedInteractionEffect;

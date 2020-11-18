@@ -44,6 +44,7 @@
 - (void)performBackgroundTask;
 - (void)performUserInteractionTask;
 - (void)performWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)preheatUserInteractionTask;
 - (BOOL)presentViewController:(id)arg1;
 
 @end

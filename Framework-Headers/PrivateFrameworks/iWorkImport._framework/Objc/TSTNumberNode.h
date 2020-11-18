@@ -11,15 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface TSTNumberNode : TSTExpressionNode
 {
-    double mNumber;
-    NSString *mString;
+    NSString *_string;
+    double _number;
 }
 
+@property (readonly) double number; // @synthesize number=_number;
 @property (strong, nonatomic) NSString *string;
 
-- (id)argumentSpec;
+- (void).cxx_destruct;
+- (struct TSCEFunctionArgSpec *)argumentSpec;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
-- (void)dealloc;
 - (id)exportString;
 - (void)fixStorageLanguage:(id)arg1;
 - (id)initAsCopyOf:(id)arg1 intoContext:(id)arg2 children:(id)arg3;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqualToExpressionNode:(id)arg1;
 - (void)loadFromArchive:(const struct NumberNodeArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (double)number;
 - (struct TSTCSENodeData)recordHashesForSubexpressions:(id)arg1;
 - (void)saveToArchive:(struct NumberNodeArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;

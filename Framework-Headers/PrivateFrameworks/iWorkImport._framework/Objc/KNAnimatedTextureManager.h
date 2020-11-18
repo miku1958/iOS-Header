@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class KNPlaybackSession, KNSlideNode, NSLock, NSMapTable, NSMutableSet, NSOperationQueue;
 
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)ASVForSlideNode:(id)arg1;
+- (void)addMetalTextureToRasterizationQueue:(id)arg1 asv:(id)arg2;
 - (void)addTextureToRasterizationQueue:(id)arg1 isOpenGL:(BOOL)arg2 asv:(id)arg3;
 - (void)dealloc;
 - (id)description;
@@ -44,6 +45,10 @@ __attribute__((visibility("hidden")))
 - (void)p_serializeExtraSlideNodes;
 - (void)p_serializeTexturesForSlideNode:(id)arg1;
 - (void)p_setCurrentSlideNodeToProcess:(id)arg1;
+- (id)p_setupGenerateTexturesOperationOnSlideNode:(id)arg1;
+- (void)p_setupMetalTexture:(id)arg1 forDevice:(id)arg2;
+- (id)p_setupPrepareAnimationsOperationOnSlideNode:(id)arg1;
+- (id)p_setupRenderTexturesOperationOnSlideNode:(id)arg1;
 - (BOOL)p_shouldProcessSlideNode:(id)arg1;
 - (id)p_slideNodesToCacheAroundCurrentSlideNode:(id)arg1 shouldIncludeExtraSlideAtEnd:(BOOL)arg2;
 - (void)startPreCaching;

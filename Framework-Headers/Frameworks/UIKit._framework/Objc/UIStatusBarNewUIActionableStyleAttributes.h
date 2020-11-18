@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarNewUIStyleAttributes.h>
+#import <UIKitCore/UIStatusBarNewUIStyleAttributes.h>
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarNewUIActionableStyleAttributes : UIStatusBarNewUIStyleAttributes

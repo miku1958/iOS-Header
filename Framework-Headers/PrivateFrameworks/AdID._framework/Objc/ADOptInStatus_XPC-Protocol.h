@@ -5,7 +5,9 @@
 //
 
 @protocol ADOptInStatus_XPC
+- (void)advertisingIdentifier:(void (^)(NSUUID *))arg1;
 - (void)advertisingIdentifierChanged:(void (^)(void))arg1;
+- (void)clearAdvertisingIdentifier;
 - (void)refreshOptInStatusRefreshingWeakToken:(BOOL)arg1 withCompletionHandler:(void (^)(long long))arg2;
 - (void)setOptInStatus:(BOOL)arg1 completionHandler:(void (^)(long long))arg2;
 @end

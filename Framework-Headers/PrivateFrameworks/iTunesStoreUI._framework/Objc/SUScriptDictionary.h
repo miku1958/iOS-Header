@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary;
+@class NSArray, NSDictionary, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 @interface SUScriptDictionary : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
+    NSArray *_stringKeys;
     NSMutableDictionary *_cachedNestedScriptDictionaries;
     NSDictionary *_dictionary;
 }
@@ -29,6 +30,7 @@
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (id)stringRepresentation;
 - (id)valueForKey:(id)arg1;
+- (id)valueForNotNativelySupportedKey:(id)arg1;
 
 @end
 

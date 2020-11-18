@@ -104,7 +104,7 @@
 - (void)loadFriendsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadRecentPlayersWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)registerListener:(id)arg1;
-- (void)removeAllFriends:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)removeAllFriendsWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeFriend:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)reportAuthenticatingWithAuthKitInvocation;
 - (void)reportAuthenticatingWithGreenBuddyInvocation;

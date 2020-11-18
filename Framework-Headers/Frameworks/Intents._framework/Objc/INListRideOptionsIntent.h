@@ -21,9 +21,12 @@
 @property (readonly, copy, nonatomic) CLPlacemark *pickupLocation;
 @property (readonly) Class superclass;
 
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
+- (long long)_intentCategory;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithPickupLocation:(id)arg1 dropOffLocation:(id)arg2;

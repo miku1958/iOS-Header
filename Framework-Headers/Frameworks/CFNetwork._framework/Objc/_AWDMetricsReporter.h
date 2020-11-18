@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface _AWDMetricsReporter : NSObject
 {
 }
 
-+ (void)_reportCacheMetricsToAWD:(id)arg1;
 + (void)_reportStreamTaskTimingDataToAWD:(struct PerformanceTiming *)arg1;
 + (void)_reportTimingDataToAWD:(struct PerformanceTiming *)arg1 request:(id)arg2;
 + (id)getAWDServerConnectionForCFNetwork;

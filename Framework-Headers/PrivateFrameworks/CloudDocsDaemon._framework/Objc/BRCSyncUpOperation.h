@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_performPCSChainOperationIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performShareUpdateAndModifyRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performUpdateSharingProtectionDataIfNecessary:(CDUnknownBlockType)arg1;
+- (BOOL)_recordIsIWorkShareable:(id)arg1;
 - (void)_scheduleShareUpdateAndModifyRecordsAndZoneCreationOperation;
 - (void)_setSharingFieldsOnContentRecord:(id)arg1 withProtectionData:(id)arg2 baseToken:(id)arg3 routingKey:(id)arg4;
 - (id)createActivity;

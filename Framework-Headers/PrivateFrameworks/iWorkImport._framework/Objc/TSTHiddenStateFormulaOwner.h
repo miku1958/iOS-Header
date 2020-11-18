@@ -6,54 +6,25 @@
 
 #import <iWorkImport/TSPObject.h>
 
-#import <iWorkImport/TSCEFormulaOwning-Protocol.h>
-
-@class NSMutableArray, NSObject, NSString, TSCECalculationEngine, TSTInfo, TSTTableFilterSet;
-@protocol OS_dispatch_queue;
+@class NSArray;
 
 __attribute__((visibility("hidden")))
-@interface TSTHiddenStateFormulaOwner : TSPObject <TSCEFormulaOwning>
+@interface TSTHiddenStateFormulaOwner : TSPObject
 {
     UUIDData_5fbc143e _ownerUID;
-    TSTInfo *_tableInfo;
-    TSCECalculationEngine *_calculationEngine;
-    struct vector<std::__1::pair<unsigned short, bool>, std::__1::allocator<std::__1::pair<unsigned short, bool>>> _pendingComputedShowRowResults;
-    NSObject<OS_dispatch_queue> *_pendingComputedShowRowResultsQueue;
-    vector_e87daf7b _cellRangesToInvalidate;
-    vector_8d85e9cb _hiddenRowIndices;
-    TSTTableFilterSet *_rewrittenFilterSet;
-    NSMutableArray *_thresholdCellValues;
+    NSArray *_thresholdCellValues;
     BOOL _needsToUpdateFilterSetForImport;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL needsToUpdateFilterSetForImport; // @synthesize needsToUpdateFilterSetForImport=_needsToUpdateFilterSetForImport;
 @property (nonatomic) UUIDData_5fbc143e ownerUID; // @synthesize ownerUID=_ownerUID;
-@property (readonly) Class superclass;
-@property (weak, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (strong, nonatomic) NSArray *thresholdCellValues; // @synthesize thresholdCellValues=_thresholdCellValues;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)beginRewriteForCalculationEngine:(id)arg1 spec:(id)arg2;
-- (id)calculationEngine;
-- (struct TSCECellRef)cellReferenceForIndex:(unsigned short)arg1;
-- (void)dealloc;
-- (void)dirtyFilterState;
-- (void)filterSetUpdated;
-- (void)hiddenStateChangedForIndex:(unsigned short)arg1;
-- (id)initWithContext:(id)arg1 tableInfo:(id)arg2;
-- (void)invalidateForCalculationEngine:(id)arg1;
+- (id)initWithContext:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (void)p_registerAllFormulaToCalculationEngine;
-- (void)p_removeAllFormulaFromCalculationEngine;
-- (struct TSCERangeRef)rangeReferenceFromIndex:(unsigned short)arg1 toIndex:(unsigned short)arg2;
-- (CDStruct_2a4d9400)recalculateForCalculationEngine:(id)arg1 formulaID:(CDStruct_ed6d627d)arg2 isInCycle:(BOOL)arg3 hasCalculatedPrecedents:(BOOL)arg4;
-- (int)registerWithCalculationEngine:(id)arg1;
-- (void)rewriteForCalculationEngine:(id)arg1 formulaID:(CDStruct_ed6d627d)arg2 rewriteSpec:(id)arg3;
 - (void)saveToArchiver:(id)arg1;
-- (id)thresholdCellValues;
-- (void)writeResultsForCalculationEngine:(id)arg1;
 
 @end
 

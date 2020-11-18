@@ -48,10 +48,12 @@
 - (void)_cleanUpVibrationNameAlertController;
 - (void)_eraseCurrentVibrationComponentDidStartTimeStamp;
 - (void)_finishedWithRecorder;
+- (void)_handleApplicationDidEnterBackgroundNotification:(id)arg1;
 - (id)_indefiniteVibrationPattern;
 - (void)_saveButtonInAlertTapped:(id)arg1;
 - (void)_saveButtonTapped:(id)arg1;
 - (void)_startVibratingWithVibrationPattern:(id)arg1;
+- (void)_stopRecordingOrPlayingForApplicationSuspension;
 - (void)_stopVibrating;
 - (void)_storeVibrationComponentOfTypePause:(BOOL)arg1;
 - (void)_updateStateSaveButtonInAlert;

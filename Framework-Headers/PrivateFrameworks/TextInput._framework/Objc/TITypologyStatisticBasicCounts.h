@@ -43,8 +43,8 @@
 @property (readonly, nonatomic) long long rejectedCandidateCount; // @synthesize rejectedCandidateCount=_rejectedCandidateCount;
 @property (readonly, nonatomic) long long touchCount; // @synthesize touchCount=_touchCount;
 
+- (void).cxx_destruct;
 - (id)aggregateReport;
-- (void)dealloc;
 - (void)handleTouch:(id)arg1;
 - (id)init;
 - (id)structuredReport;

@@ -38,6 +38,7 @@
 - (unsigned long long)hash;
 - (id)initWithOptions:(id)arg1 fetchBlock:(CDUnknownBlockType)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isFullyBackedByObjectIDs;
 - (id)objectIDAtIndex:(unsigned long long)arg1;
 - (id)photoLibrary;
 - (unsigned long long)possibleChangesForChange:(id)arg1;

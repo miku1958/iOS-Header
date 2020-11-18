@@ -18,8 +18,8 @@
 @property (readonly, nonatomic) double minimumSize; // @synthesize minimumSize=_minimumSize;
 
 - (void).cxx_destruct;
-- (id)createOperationWithSize:(struct CGSize)arg1 scale:(double)arg2 style:(unsigned long long)arg3;
-- (id)initWithCache:(id)arg1 item:(id)arg2 size:(struct CGSize)arg3 minimumSize:(double)arg4 scale:(double)arg5 fallback:(id)arg6 style:(unsigned long long)arg7 qos:(unsigned int)arg8;
+- (id)createOperationWithSize:(struct CGSize)arg1 scale:(double)arg2 style:(unsigned long long)arg3 isInteractive:(BOOL)arg4;
+- (id)initWithCache:(id)arg1 item:(id)arg2 size:(struct CGSize)arg3 minimumSize:(double)arg4 scale:(double)arg5 fallback:(id)arg6 style:(unsigned long long)arg7 isInteractive:(BOOL)arg8;
 - (id)thumbnail;
 - (void)updateItemTo:(id)arg1;
 

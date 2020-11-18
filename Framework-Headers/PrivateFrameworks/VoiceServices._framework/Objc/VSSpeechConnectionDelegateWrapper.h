@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VoiceServices/VSSpeechServiceDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, VSPresynthesizedAudioRequest, VSSpeechConnection, VSSpeechRequest;
 @protocol VSSpeechConnectionDelegate;
 
+__attribute__((visibility("hidden")))
 @interface VSSpeechConnectionDelegateWrapper : NSObject <VSSpeechServiceDelegate>
 {
     id<VSSpeechConnectionDelegate> _delegate;

@@ -10,7 +10,7 @@
 #import <iWorkImport/TSWPLayoutParent-Protocol.h>
 #import <iWorkImport/TSWPStorageObserver-Protocol.h>
 
-@class NSMutableDictionary, NSString, TSTInfo, TSTLayoutHint, TSTLayoutSpaceBundle, TSTMasterLayout, TSTTableModel, TSWPLayout, TSWPPadding;
+@class NSMutableDictionary, NSString, TSTInfo, TSTLayoutHint, TSTLayoutSpaceBundle, TSTMasterLayout, TSWPLayout, TSWPPadding;
 
 __attribute__((visibility("hidden")))
 @interface TSTLayout : TSWPTextHostLayout <TSWPColumnMetrics, TSWPLayoutParent, TSWPStorageObserver>
@@ -80,7 +80,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSTLayoutSpaceBundle *spaceBundle; // @synthesize spaceBundle=mSpaceBundle;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) TSTInfo *tableInfo;
-@property (readonly, nonatomic) TSTTableModel *tableModel;
+@property (readonly, nonatomic) TSTInfo *tableModel;
 @property (readonly, nonatomic) double textScaleFactor;
 
 - (struct CGPoint)activityLineUnscaledEndPointForSearchReference:(id)arg1;
@@ -97,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)capturedInfoPositionForAttachment;
 - (id)cellIteratorWithRange:(struct TSUCellRect)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3;
 - (id)children;
+- (id)computeInfoGeometryFromPureLayoutGeometry:(id)arg1;
 - (id)computeLayoutGeometry;
 - (void)dealloc;
 - (id)dependentLayouts;
@@ -104,7 +105,6 @@ __attribute__((visibility("hidden")))
 - (double)gapForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 - (BOOL)inFindReplaceMode;
 - (BOOL)inPrintPreviewMode;
-- (struct CGPoint)infoGeometryPositionForCurrentAttachedLayoutGeometry;
 - (id)initWithInfo:(id)arg1;
 - (id)initWithInfo:(id)arg1 layoutHint:(id)arg2;
 - (id)initialInfoGeometry;
@@ -113,8 +113,8 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (void)invalidateForAutosizingTextLayout:(id)arg1;
 - (void)invalidateLayoutSpaceCoordinates;
-- (void)invalidateLayoutSpaceCoordinatesAfterColumn:(unsigned char)arg1;
-- (void)invalidateLayoutSpaceCoordinatesAfterRow:(unsigned short)arg1;
+- (void)invalidateLayoutSpaceCoordinatesAfterColumn:(unsigned short)arg1;
+- (void)invalidateLayoutSpaceCoordinatesAfterRow:(unsigned int)arg1;
 - (void)invalidateLayoutSpaceTableOffsets;
 - (void)invalidatePosition;
 - (void)invalidateSize;
@@ -122,7 +122,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isBeingManipulated;
 - (BOOL)isDraggable;
 - (BOOL)isStrokeEditing;
-- (BOOL)isZoomedEditing;
 - (void)iterateCellsAndTerminateWithIterator:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)iterateCellsInRange:(struct TSUCellRect)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (id)layoutGeometryFromInfo;
@@ -162,6 +161,7 @@ __attribute__((visibility("hidden")))
 - (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setupContainedTextEditingLayout:(struct TSUCellCoord)arg1;
 - (BOOL)supportsRotation;
+- (BOOL)suppressFrozenHeadersForEditing;
 - (BOOL)textIsVertical;
 - (void)updateChildrenFromInfo;
 - (void)validate;

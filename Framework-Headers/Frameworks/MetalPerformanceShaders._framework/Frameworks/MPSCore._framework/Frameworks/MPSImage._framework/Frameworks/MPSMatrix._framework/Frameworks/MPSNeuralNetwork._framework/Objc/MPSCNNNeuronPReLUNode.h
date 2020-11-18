@@ -17,7 +17,6 @@
 - (void)dealloc;
 - (id)descriptor;
 - (id)initWithSource:(id)arg1 aData:(id)arg2;
-- (struct FilterGraphNode *)newFilterNode;
 
 @end
 

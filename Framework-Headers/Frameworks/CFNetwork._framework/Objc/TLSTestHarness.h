@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CFNetwork/NSURLSessionDataDelegate-Protocol.h>
 #import <CFNetwork/NSURLSessionDelegate-Protocol.h>
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)_createSession;
 - (void)dealloc;
 - (id)fetchRequest:(id)arg1;
 - (id)initWithServer:(shared_ptr_a7890e8d)arg1;

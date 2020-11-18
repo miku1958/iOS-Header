@@ -11,6 +11,8 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property BOOL didAffectMeCard; // @dynamic didAffectMeCard;
+
 + (BOOL)supportsSecureCoding;
 - (void)setContactSnapshot:(id)arg1 forIndexPath:(id)arg2;
 - (void)setContainerSnapshot:(id)arg1 forIndexPath:(id)arg2;

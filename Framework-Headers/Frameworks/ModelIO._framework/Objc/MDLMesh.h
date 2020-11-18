@@ -18,10 +18,12 @@
     NSArray *_controlNodes;
     id<MDLMeshBufferAllocator> _allocator;
     unsigned long long _vertexCount;
+    unsigned long long _subdivisionScheme;
 }
 
 @property (readonly, strong, nonatomic) id<MDLMeshBufferAllocator> allocator; // @synthesize allocator=_allocator;
 @property (readonly, nonatomic) struct boundingBox;
+@property (nonatomic) unsigned long long subdivisionScheme; // @synthesize subdivisionScheme=_subdivisionScheme;
 @property (copy, nonatomic) NSMutableArray *submeshes;
 @property (strong, nonatomic) NSArray *vertexBuffers;
 @property (nonatomic) unsigned long long vertexCount; // @synthesize vertexCount=_vertexCount;
@@ -55,6 +57,7 @@
 - (void)copyDataVector:(vector_f9ed6fc8 *)arg1 toAttr:(id)arg2;
 - (void)createSourceDataVector:(vector_f9ed6fc8 *)arg1 attr:(id)arg2 srcElementCount:(int)arg3 dstElementCount:(int)arg4;
 - (void)debugPrintToFile:(struct __sFILE *)arg1;
+- (id)description;
 - (void)enumerateSubmeshesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)flipTextureCoordinatesInAttributeNamed:(id)arg1;
 - (BOOL)generateAmbientOcclusionTextureWithQuality:(float)arg1 attenuationFactor:(float)arg2 objectsToConsider:(id)arg3 vertexAttributeNamed:(id)arg4 materialPropertyNamed:(id)arg5;
@@ -82,6 +85,7 @@
 - (void)removeAttributeNamed:(id)arg1;
 - (void)replaceAttributeNamed:(id)arg1 withData:(id)arg2;
 - (int)submeshCount;
+- (BOOL)triangulate;
 - (void)updateAttributeNamed:(id)arg1 withData:(id)arg2;
 - (id)vertexAttributeDataForAttributeNamed:(id)arg1;
 - (id)vertexAttributeDataForAttributeNamed:(id)arg1 asFormat:(unsigned long long)arg2;

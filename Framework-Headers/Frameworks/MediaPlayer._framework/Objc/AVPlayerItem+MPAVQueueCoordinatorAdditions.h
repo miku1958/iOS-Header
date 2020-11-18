@@ -10,7 +10,7 @@
 
 @interface AVPlayerItem (MPAVQueueCoordinatorAdditions)
 
-@property (nonatomic) MPQueuePlayer *MP_associatedQueuePlayer;
+@property (weak, nonatomic) MPQueuePlayer *MP_associatedQueuePlayer;
 
 @end
 

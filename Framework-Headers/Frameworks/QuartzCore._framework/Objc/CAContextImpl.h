@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)deleteSlot:(unsigned int)arg1;
 - (float)desiredDynamicRange;
+- (unsigned int)hitTestContext:(struct CGPoint)arg1;
 - (id)initRemoteWithOptions:(id)arg1;
 - (id)initWithOptions:(id)arg1 localContext:(BOOL)arg2;
 - (void)invalidate;

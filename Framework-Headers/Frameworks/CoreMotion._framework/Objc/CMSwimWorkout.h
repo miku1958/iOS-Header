@@ -25,6 +25,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSessionId:(id)arg1 location:(long long)arg2 poolLength:(double)arg3;
+- (id)initWithSessionId:(id)arg1 locationType:(long long)arg2 poolLength:(double)arg3;
+- (id)initWithSessionId:(id)arg1 locationType:(long long)arg2 poolLength:(double)arg3 startDate:(id)arg4 endDate:(id)arg5;
 
 @end
 

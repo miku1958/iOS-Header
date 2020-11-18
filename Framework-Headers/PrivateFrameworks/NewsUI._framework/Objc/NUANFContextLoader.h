@@ -9,7 +9,7 @@
 #import <NewsUI/SXResourceDataSource-Protocol.h>
 
 @class FCAsyncOnceOperation, FCFlintManifest, FCFlintResourceManager, NSString, NUANFAssetLoader, SXContext;
-@protocol SXHost;
+@protocol NUArticleResourceURLTranslator, SXHost;
 
 @interface NUANFContextLoader : NSObject <SXResourceDataSource>
 {
@@ -17,6 +17,7 @@
     FCFlintManifest *_flintManifest;
     FCFlintResourceManager *_flintResourceManager;
     id<SXHost> _host;
+    id<NUArticleResourceURLTranslator> _resourceURLTranslator;
     NUANFAssetLoader *_assetLoader;
     FCAsyncOnceOperation *_asyncOnceOperation;
 }
@@ -30,13 +31,16 @@
 @property (readonly, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<SXHost> host; // @synthesize host=_host;
+@property (readonly, nonatomic) id<NUArticleResourceURLTranslator> resourceURLTranslator; // @synthesize resourceURLTranslator=_resourceURLTranslator;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)asyncLoadContextOnceWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithFlintManifest:(id)arg1 flintResourceManager:(id)arg2 andHost:(id)arg3;
+- (void)fileURLForURL:(id)arg1 onCompletion:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
+- (id)initWithFlintManifest:(id)arg1 flintResourceManager:(id)arg2 host:(id)arg3 resourceURLTranslator:(id)arg4;
 - (id)loadContextWithCompletion:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)loadImagesForImageRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (id)translateURL:(id)arg1;
 
 @end
 

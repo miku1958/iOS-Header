@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInputViewSetPlacement_GenericApplicator.h>
+#import <UIKitCore/UIInputViewSetPlacement_GenericApplicator.h>
 
 __attribute__((visibility("hidden")))
 @interface UIInputViewSetPlacement_AssistantApplicator : UIInputViewSetPlacement_GenericApplicator

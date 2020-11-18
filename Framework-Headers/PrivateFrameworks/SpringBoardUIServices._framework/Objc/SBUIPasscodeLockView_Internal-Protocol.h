@@ -6,11 +6,19 @@
 
 #import <SpringBoardUIServices/SBUIPasscodeLockView-Protocol.h>
 
-@class NSString;
+@class NSString, SBUIProudLockContainerViewController;
 
 @protocol SBUIPasscodeLockView_Internal <SBUIPasscodeLockView>
+
+@property (strong, nonatomic) SBUIProudLockContainerViewController *overrideProudLockContainerViewController;
+@property (nonatomic) CDStruct_4613c6c6 proudLockConfiguration;
+
 - (void)_overrideBiometricMatchingEnabled:(BOOL)arg1 forReason:(NSString *)arg2;
 - (void)_resumeBiometricMatchingAdvisory:(BOOL)arg1;
+- (void)beginTransitionToState:(long long)arg1;
+- (void)didEndTransitionToState:(long long)arg1;
+- (void)updateTransitionWithProgress:(double)arg1;
+- (void)willEndTransitionToState:(long long)arg1;
 
 @optional
 - (void)_noteAppearingForSmartCoverUnlock:(BOOL)arg1;

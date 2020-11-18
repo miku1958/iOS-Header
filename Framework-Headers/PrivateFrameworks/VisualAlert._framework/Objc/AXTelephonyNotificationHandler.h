@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VisualAlert/AXNotificationHandler.h>
+#import <VisualAlert/VISAXNotificationHandler.h>
 
-@interface AXTelephonyNotificationHandler : AXNotificationHandler
+@interface AXTelephonyNotificationHandler : VISAXNotificationHandler
 {
 }
 

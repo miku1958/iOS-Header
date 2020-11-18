@@ -6,11 +6,11 @@
 
 #import <SpriteKit/SKWarpGeometry.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE;
 
-@interface SKWarpGeometryGrid : SKWarpGeometry <NSCoding>
+@interface SKWarpGeometryGrid : SKWarpGeometry <NSSecureCoding>
 {
     struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _sourcePositions;
     struct vector<float __attribute__((ext_vector_type(2))), std::__1::allocator<float __attribute__((ext_vector_type(2)))>> _destPositions;
@@ -28,6 +28,7 @@
 + (id)grid;
 + (id)gridWithColumns:(long long)arg1 rows:(long long)arg2;
 + (id)gridWithColumns:(long long)arg1 rows:(long long)arg2 sourcePositions:(const MISSING_TYPE **)arg3 destPositions:(const MISSING_TYPE **)arg4;
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -38,6 +39,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithColumns:(long long)arg1 rows:(long long)arg2 sourcePositions:(const MISSING_TYPE **)arg3 destPositions:(const MISSING_TYPE **)arg4;
+- (BOOL)isEqualToGrid:(id)arg1;
 - (BOOL)isIdentityWarp;
 - (MISSING_TYPE *)sourcePositionAtIndex:(long long)arg1;
 

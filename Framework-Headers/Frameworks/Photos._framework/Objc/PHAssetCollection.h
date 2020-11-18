@@ -26,7 +26,6 @@
     BOOL _isLibrary;
     BOOL _isCameraRoll;
     BOOL _isPanoramasCollection;
-    BOOL _isWallpaperCollection;
     BOOL _isPhotoStreamCollection;
     BOOL _isCloudSharedAlbum;
     BOOL _isStandInCollection;
@@ -79,10 +78,10 @@
 @property (readonly, nonatomic) BOOL isPanoramasCollection; // @synthesize isPanoramasCollection=_isPanoramasCollection;
 @property (readonly, nonatomic) BOOL isPendingPhotoStreamAlbum; // @synthesize isPendingPhotoStreamAlbum=_isPendingPhotoStreamAlbum;
 @property (readonly, nonatomic) BOOL isPhotoStreamCollection; // @synthesize isPhotoStreamCollection=_isPhotoStreamCollection;
+@property (readonly, nonatomic) BOOL isPlacesAlbum;
 @property (readonly, nonatomic) BOOL isSmartCollection; // @synthesize isSmartCollection=_isSmartCollection;
 @property (readonly, nonatomic) BOOL isStandInCollection; // @synthesize isStandInCollection=_isStandInCollection;
 @property (readonly, nonatomic) BOOL isTrashBin;
-@property (readonly, nonatomic) BOOL isWallpaperCollection; // @synthesize isWallpaperCollection=_isWallpaperCollection;
 @property (readonly, nonatomic) BOOL keyAssetsAtEnd;
 @property (readonly, nonatomic) NSArray *localizedLocationNames; // @synthesize localizedLocationNames=_localizedLocationNames;
 @property (readonly, nonatomic) int pendingItemsCount; // @synthesize pendingItemsCount=_pendingItemsCount;
@@ -103,7 +102,7 @@
 + (id)corePropertiesToFetch;
 + (id)defaultTitleFontNames;
 + (id)descriptionOfTitleCategory:(long long)arg1;
-+ (id)entityKeyForPropertyKey:(id)arg1;
++ (id)entityKeyMap;
 + (id)fetchAssetCollectionsContainingAsset:(id)arg1 withType:(long long)arg2 options:(id)arg3;
 + (id)fetchAssetCollectionsContainingAssets:(id)arg1 withType:(long long)arg2 options:(id)arg3;
 + (id)fetchAssetCollectionsWithALAssetGroupURLs:(id)arg1 options:(id)arg2;
@@ -113,11 +112,17 @@
 + (id)fetchAssetCollectionsWithType:(long long)arg1 localIdentifiers:(id)arg2 options:(id)arg3;
 + (id)fetchAssetCollectionsWithType:(long long)arg1 subtype:(long long)arg2 options:(id)arg3;
 + (id)fetchMomentsBackingMemory:(id)arg1 options:(id)arg2;
++ (id)fetchMomentsBackingSuggestion:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsInMomentList:(id)arg1 options:(id)arg2;
 + (id)fetchMomentsWithOptions:(id)arg1;
++ (id)fetchSharingSuggestionsWithOptions:(id)arg1;
++ (id)fetchSuggestedContributionsForAssetsFetchResult:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedContributionsForAssetsMetadata:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedContributionsForCMMPhotoLibrary:(id)arg1 options:(id)arg2;
++ (id)fetchSuggestedContributionsForFileURLs:(id)arg1 options:(id)arg2;
 + (id)fetchType;
 + (id)fetchUserLibraryAlbumWithOptions:(id)arg1;
-+ (id)graphOptionsForTransientAssetCollection:(id)arg1 needsCompleteMomentsInfo:(BOOL)arg2;
++ (id)graphOptionsForTransientAssetCollection:(id)arg1 needsCompleteMomentsInfo:(BOOL)arg2 options:(id)arg3;
 + (id)identifierCode;
 + (id)managedEntityName;
 + (BOOL)managedObjectSupportsTrashedState;
@@ -125,6 +130,7 @@
 + (id)pl_PHAssetCollectionForAssetContainer:(id)arg1 includeTrash:(BOOL)arg2;
 + (id)posterImageForAssetCollection:(id)arg1;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
++ (id)sharingSuggestionWithRandomPick:(BOOL)arg1 fallbackToRecentMoments:(BOOL)arg2 needsNotification:(BOOL)arg3;
 + (long long)titleCategoryForTitleFontName:(id)arg1;
 + (id)titleFontNameForTitleCategory:(long long)arg1;
 + (unsigned long long)titleFontNameHashFromDate:(id)arg1;
@@ -156,7 +162,6 @@
 - (id)localizedSubtitle;
 - (id)localizedTitle;
 - (id)pl_assetContainer;
-- (BOOL)pl_isWallpaperAlbum;
 
 @end
 

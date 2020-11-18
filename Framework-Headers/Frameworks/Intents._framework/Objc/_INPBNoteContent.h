@@ -7,35 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBNoteContent-Protocol.h>
 
-@class PBUnknownFields, _INPBImageNoteContent, _INPBTextNoteContent;
+@class NSString, _INPBImageNoteContent, _INPBTextNoteContent;
 
-@interface _INPBNoteContent : PBCodable <NSCopying>
+@interface _INPBNoteContent : PBCodable <_INPBNoteContent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    CDStruct_f953fb60 _has;
+    int _type;
     _INPBImageNoteContent *_image;
     _INPBTextNoteContent *_text;
-    int _type;
-    CDStruct_f953fb60 _has;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasImage;
 @property (readonly, nonatomic) BOOL hasText;
 @property (nonatomic) BOOL hasType;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBImageNoteContent *image; // @synthesize image=_image;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBTextNoteContent *text; // @synthesize text=_text;
 @property (nonatomic) int type; // @synthesize type=_type;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

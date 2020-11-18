@@ -6,22 +6,33 @@
 
 #import <ARKit/ARAnchor.h>
 
-@class ARReferenceImage;
+#import <ARKit/ARTrackable-Protocol.h>
 
-@interface ARImageAnchor : ARAnchor
+@class ARReferenceImage, NSString;
+
+@interface ARImageAnchor : ARAnchor <ARTrackable>
 {
+    BOOL _detectionOnly;
+    BOOL _isTracked;
     ARReferenceImage *_referenceImage;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDetectionOnly) BOOL detectionOnly; // @synthesize detectionOnly=_detectionOnly;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isTracked; // @synthesize isTracked=_isTracked;
 @property (readonly, nonatomic) ARReferenceImage *referenceImage; // @synthesize referenceImage=_referenceImage;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (id)copyWithTrackedState:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)initWithAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithReferenceImage:(id)arg1 transform:(CDStruct_14d5dc5e)arg2;
+- (id)initWithReferenceImage:(id)arg1 transform:(CDStruct_14d5dc5e)arg2 detectionOnly:(BOOL)arg3 tracked:(BOOL)arg4;
+- (id)name;
 
 @end
 

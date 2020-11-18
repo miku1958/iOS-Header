@@ -10,6 +10,7 @@
 
 @interface PHANotificationOptions : NSObject
 {
+    unsigned char _type;
     NSString *_title;
     NSString *_subtitle;
     NSString *_bodyText;
@@ -27,9 +28,13 @@
 @property (strong, nonatomic) PHAsset *keyAsset; // @synthesize keyAsset=_keyAsset;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) unsigned char type; // @synthesize type=_type;
 @property (strong, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
++ (id)stringFromNotificationType:(unsigned char)arg1;
 - (void).cxx_destruct;
+- (id)description;
+- (id)initWithType:(unsigned char)arg1;
 
 @end
 

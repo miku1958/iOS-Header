@@ -6,24 +6,48 @@
 
 #import <Vision/VNImageBasedRequest.h>
 
-@class VNSceneObservation;
+#import <Vision/VNImageIdealImageSizeProviding-Protocol.h>
 
-@interface VNSceneClassificationRequest : VNImageBasedRequest
+@class NSArray, NSString, VNSceneClassificationCustomHierarchy, VNSceneObservation;
+
+@interface VNSceneClassificationRequest : VNImageBasedRequest <VNImageIdealImageSizeProviding>
 {
-    VNSceneObservation *_sceneObservation;
 }
 
-@property (readonly, strong, nonatomic) VNSceneObservation *sceneObservation; // @synthesize sceneObservation=_sceneObservation;
+@property (readonly, copy, nonatomic) VNSceneClassificationCustomHierarchy *customHierarchy;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long maximumHierarchicalObservations;
+@property (nonatomic) unsigned long long maximumLeafObservations;
+@property (readonly, strong, nonatomic) VNSceneObservation *sceneObservation;
+@property (readonly) Class superclass;
+@property (readonly) NSArray *supportedImageSizeSet;
 
++ (id)_imageAnalyzerMultiDetectorForRevision:(unsigned long long)arg1 detectionLevel:(unsigned long long)arg2 processingDevice:(id)arg3 requestBackingStore:(unsigned long long)arg4 error:(id *)arg5;
++ (id)_knownVNImageAnalyzerMultiDetectorLabelsForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
++ (id)_knownVNSceneClassifierLabelsForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
++ (id)_sceneClassifierForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
++ (Class)configurationClass;
++ (const CDStruct_d47b9615 *)dependentRequestCompatability;
 + (id)knownSceneClassifications;
-- (void).cxx_destruct;
++ (id)knownSceneClassificationsForRevision:(unsigned long long)arg1 error:(id *)arg2;
++ (const CDStruct_7d93034e *)revisionAvailability;
+- (id)_applicableDetectorAndReturnError:(id *)arg1;
+- (void)_setCustomHierarchy:(id)arg1;
 - (void)applyConfigurationOfRequest:(id)arg1;
+- (BOOL)defineCustomHierarchy:(id)arg1 error:(id *)arg2;
+- (id)defineCustomHierarchyWithRelationships:(id)arg1 error:(id *)arg2;
 - (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithSceneObservation:(id)arg1;
 - (id)initWithSceneObservation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
+- (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (id)newDefaultDetectorOptionsForRequestRevision:(unsigned long long)arg1;
+- (CDUnknownBlockType)resultsSortingComparator;
+- (void)setRevision:(unsigned long long)arg1;
 - (void)setSceneObservation:(id)arg1;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

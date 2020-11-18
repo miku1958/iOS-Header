@@ -30,7 +30,6 @@
 + (id)valueInRangeWithLow:(id)arg1 high:(id)arg2 currentValue:(id)arg3 unit:(id)arg4;
 - (void).cxx_destruct;
 - (void)_assertValidRange;
-- (double)_doubleForCodedQuantity:(id)arg1;
 - (double)_doubleForValue:(id)arg1;
 - (double)_doubleForValueCollection:(id)arg1;
 - (id)_initValueInRangeWithLow:(id)arg1 high:(id)arg2 currentValue:(id)arg3 unit:(id)arg4;

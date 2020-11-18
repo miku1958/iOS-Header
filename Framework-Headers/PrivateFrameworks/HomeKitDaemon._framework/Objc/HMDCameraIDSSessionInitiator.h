@@ -11,14 +11,14 @@
 #import <HomeKitDaemon/IDSServiceDelegate-Protocol.h>
 #import <HomeKitDaemon/IDSSessionDelegate-Protocol.h>
 
-@class AVCPacketRelay, HMDCameraNetworkConfig, HMDCameraSessionID, HMFOSTransaction, NSNumber, NSObject, NSString;
+@class AVCPacketRelay, HMDCameraNetworkConfig, HMDCameraSessionID, HMDDevice, HMFOSTransaction, NSNumber, NSObject, NSString;
 @protocol HMDCameraIDSSessionInitiatorDelegate, OS_dispatch_queue;
 
 @interface HMDCameraIDSSessionInitiator : HMDCameraIDSSessionHandler <IDSServiceDelegate, IDSSessionDelegate, HMDCameraRemoteStreamSenderProtocol, HMDCameraPowerAssertionProtocol>
 {
     id<HMDCameraIDSSessionInitiatorDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    NSString *_destinationID;
+    HMDDevice *_device;
     HMDCameraNetworkConfig *_localNetworkConfig;
     AVCPacketRelay *_packetRelay;
     HMFOSTransaction *_packetRelayTransaction;
@@ -28,7 +28,7 @@
 @property (readonly, weak, nonatomic) id<HMDCameraIDSSessionInitiatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
+@property (readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMDCameraNetworkConfig *localNetworkConfig; // @synthesize localNetworkConfig=_localNetworkConfig;
 @property (readonly, nonatomic) NSNumber *mtu;
@@ -44,7 +44,7 @@
 - (void)_sendInvitation;
 - (void)_startPacketRelayWithVideoSocket:(int)arg1 videoNetworkConfig:(id)arg2 cameraVideoSSRC:(unsigned int)arg3 audioSocket:(int)arg4 audioNetworkConfig:(id)arg5 cameraAudioSSRC:(unsigned int)arg6;
 - (void)dealloc;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 destinationID:(id)arg3 localNetworkConfig:(id)arg4 delegate:(id)arg5 delegateQueue:(id)arg6;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 device:(id)arg3 localNetworkConfig:(id)arg4 delegate:(id)arg5 delegateQueue:(id)arg6;
 - (id)logIdentifier;
 - (void)openRelaySession;
 - (void)session:(id)arg1 receivedInvitationAcceptFromID:(id)arg2;

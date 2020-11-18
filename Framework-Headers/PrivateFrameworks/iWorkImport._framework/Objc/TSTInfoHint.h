@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableSet, TSTCellUIDList;
 
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)addCellUIDToFillList:(struct TSTCellUID)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)setTableStyleImageForArea:(unsigned long long)arg1;
+- (void)setTableStyleImageForStyleArea:(unsigned long long)arg1;
 
 @end
 

@@ -6,11 +6,12 @@
 
 #import <UIKit/UIControl.h>
 
+#import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
 @class AVMicaPackage, NSString, NSTimer, UISelectionFeedbackGenerator, UIViewPropertyAnimator;
 
-@interface AVVolumeButtonControl : UIControl <AVPlaybackControlsViewItem>
+@interface AVVolumeButtonControl : UIControl <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
 {
     long long _trackingState;
     BOOL _included;
@@ -57,7 +58,9 @@
 @property (nonatomic) struct CGPoint translationOfPanFromPreviousTouch; // @synthesize translationOfPanFromPreviousTouch=_translationOfPanFromPreviousTouch;
 
 - (void).cxx_destruct;
+- (void)_updateIsHiddenAndAlpha;
 - (void)_updateMicaPackage:(id)arg1;
+- (BOOL)avkit_shouldPreventExternalGestureRecognizerAtPoint:(struct CGPoint)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

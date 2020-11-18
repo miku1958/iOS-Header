@@ -29,6 +29,10 @@
 - (BOOL)_accessibilityHandleDetailButtonPress:(id)arg1;
 - (void)_accessibilityHandleRemoveConfirm;
 - (void)_accessibilityHandleRemoveSwitch;
+- (BOOL)_accessibilityHandleReorderMove:(id)arg1 up:(BOOL)arg2;
+- (BOOL)_accessibilityHandleReorderMoveDown:(id)arg1;
+- (BOOL)_accessibilityHandleReorderMoveUp:(id)arg1;
+- (BOOL)_accessibilityHasTextOperations;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityIgnoreInternalLabels;
 - (id)_accessibilityImageViewIfExists;
@@ -82,7 +86,7 @@
 - (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (id)_axCustomActionsForActions:(id)arg1;
 - (BOOL)_axPerformAction:(id)arg1;
-- (BOOL)_axSubviewIgnoredDueToHiddenAncestry:(id)arg1;
+- (BOOL)_axSubviewIgnoredDueToHiddenOrZeroAlphaAncestry:(id)arg1;
 - (void)_beginSwiping;
 - (id)_checkmarkImage:(BOOL)arg1;
 - (void)_didRemoveSubview:(id)arg1;

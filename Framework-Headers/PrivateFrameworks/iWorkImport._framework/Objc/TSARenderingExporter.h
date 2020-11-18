@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSKRenderingExporter-Protocol.h>
 
-@class NSString, TSADocumentRoot, TSDBitmapRenderingQualityInfo, TSDImager, TSUProgressContext;
+@class NSString, TSADocumentRoot, TSDBitmapRenderingQualityInfo, TSDImager, TSUProgress, TSUProgressContext;
 @protocol OS_dispatch_queue, TSARenderingExporterDelegate;
 
 __attribute__((visibility("hidden")))
@@ -26,15 +26,27 @@ __attribute__((visibility("hidden")))
     TSDBitmapRenderingQualityInfo *mBitmapRenderingQualityInfo;
 }
 
+@property (readonly, nonatomic) struct CGRect boundsRect;
+@property (readonly, nonatomic) BOOL canExportInBackground;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSString *documentSpecificTypeUTI;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCancelled;
+@property (readonly, nonatomic) BOOL isExportSupported;
+@property (readonly, nonatomic) BOOL needsSupplementalFiles;
+@property (readonly, nonatomic) unsigned long long pageCount;
+@property (nonatomic) BOOL paginate;
+@property (readonly, nonatomic) TSUProgress *progress;
 @property (strong) TSUProgressContext *progressContext; // @synthesize progressContext=mProgressContext;
+@property (readonly, nonatomic) double progressForCurrentPage;
+@property (readonly, nonatomic) NSString *savePanelMessage;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *typeUTI;
+@property (readonly, nonatomic) struct CGRect unscaledClipRect;
 
 - (void).cxx_destruct;
 - (id)bitmapRenderingQualityInfo;
-- (struct CGRect)boundsRect;
 - (void)cancel;
 - (id)currentInfos;
 - (id)documentRoot;
@@ -47,23 +59,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)incrementPage;
 - (id)initWithDocumentRoot:(id)arg1;
 - (id)initWithDocumentRoot:(id)arg1 imager:(id)arg2;
-- (BOOL)isCancelled;
 - (BOOL)isQuit;
 - (void)p_drawCurrentPageWithContext:(struct CGContext *)arg1 returnSuccess:(BOOL *)arg2 createPage:(BOOL)arg3;
 - (BOOL)p_exportToURL:(id)arg1 pageNumber:(unsigned long long)arg2 delegate:(id)arg3 error:(id *)arg4;
 - (id)p_renderingExporterDelegate;
-- (unsigned long long)pageCount;
-- (BOOL)paginate;
 - (void)performBlockWithImager:(CDUnknownBlockType)arg1;
 - (BOOL)preparePage:(unsigned long long)arg1;
-- (double)progressForCurrentPage;
 - (void)quit;
 - (BOOL)setInfosToCurrentPage;
-- (void)setPaginate:(BOOL)arg1;
 - (void)setup;
 - (void)teardown;
 - (double)totalProgess;
-- (struct CGRect)unscaledClipRect;
 - (void)waitForRecalcToFinish;
 
 @end

@@ -13,6 +13,7 @@
 @class NSString, PLSlalomRegionEditor, PUVideoEditScrubberImageSource, UIMovieScrubber, UIView;
 @protocol PUVideoEditScrubberControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUVideoEditScrubberController : NSObject <UIMovieScrubberDataSource, UIMovieScrubberDelegate, PLSlalomRegionEditorDelegate>
 {
     struct {

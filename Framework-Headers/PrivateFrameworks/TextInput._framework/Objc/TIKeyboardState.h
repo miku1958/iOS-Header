@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
@@ -32,6 +32,7 @@
             unsigned int isScreenLocked:1;
             unsigned int longPredictionListEnabled:1;
             unsigned int needAutofill:1;
+            unsigned int needOneTimeCodeAutofill:1;
         } fields;
     } _mask;
     union {
@@ -56,6 +57,7 @@
     TIKeyboardCandidate *_currentCandidate;
     TITextInputTraits *_textInputTraits;
     NSString *_responseContext;
+    unsigned long long _autofillMode;
     NSDictionary *_autofillContext;
     NSArray *_supportedPayloadIds;
 }
@@ -66,6 +68,7 @@
 @property (nonatomic) BOOL autocorrectionListUIAutoDisplayMode;
 @property (nonatomic) BOOL autocorrectionListUIDisplayed;
 @property (strong, nonatomic) NSDictionary *autofillContext; // @synthesize autofillContext=_autofillContext;
+@property (nonatomic) unsigned long long autofillMode; // @synthesize autofillMode=_autofillMode;
 @property (nonatomic) BOOL canSendCurrentLocation;
 @property (nonatomic) BOOL candidateSelectionPredictionEnabled;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
@@ -83,6 +86,7 @@
 @property (copy, nonatomic) TIKeyboardLayoutState *layoutState; // @synthesize layoutState=_layoutState;
 @property (nonatomic) BOOL longPredictionListEnabled;
 @property (nonatomic) BOOL needAutofill;
+@property (nonatomic) BOOL needOneTimeCodeAutofill;
 @property (nonatomic) BOOL needsCandidateMetadata;
 @property (copy, nonatomic) NSString *recipientIdentifier; // @synthesize recipientIdentifier=_recipientIdentifier;
 @property (copy, nonatomic) NSString *responseContext; // @synthesize responseContext=_responseContext;
@@ -100,9 +104,9 @@
 @property (nonatomic) BOOL wordLearningEnabled;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_createTextInputTraitsIfNecessary;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

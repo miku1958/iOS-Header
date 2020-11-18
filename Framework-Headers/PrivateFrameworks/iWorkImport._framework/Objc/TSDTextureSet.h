@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_textureToStageIndexMap;
     NSMapTable *_flattenKeyToFlattenedTextureMap;
     long long _textureZOrder;
+    NSMapTable *_origBoundingRectForStageMap;
     BOOL _isBackground;
     BOOL _isBaked;
     BOOL _isFlippedHorizontally;
@@ -86,6 +87,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
+- (void)drawFrameAtLayerTime:(double)arg1 context:(id)arg2;
 - (void)evictRenderedResources;
 - (id)finalTexturesForStage:(long long)arg1;
 - (id)firstVisibleTextureForTextureType:(long long)arg1;
@@ -98,6 +100,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)p_areAttributes:(id)arg1 equalToAttributes:(id)arg2;
 - (struct CGRect)p_frameAtEventIndex:(unsigned long long)arg1;
 - (void)p_getComponentsOpacity:(double *)arg1 scale:(double *)arg2 angle:(double *)arg3 fromAttributes:(id)arg4 shouldApplyOpacity:(BOOL *)arg5 shouldApplyAngle:(BOOL *)arg6 shouldApplyScale:(BOOL *)arg7;
+- (id)p_insertNewFlattenedTextureWithArray:(id)arg1 rect:(struct CGRect)arg2 stage:(long long)arg3 insertAfter:(id)arg4 flattenKey:(id)arg5;
 - (void)p_resetAttributesWithViewScale:(double)arg1 eventIndex:(unsigned long long)arg2;
 - (void)p_setLayerGeometryWithLayer:(id)arg1;
 - (void)releaseSingleTextures;
@@ -115,6 +118,7 @@ __attribute__((visibility("hidden")))
 - (long long)stageIndexForTexture:(id)arg1;
 - (void)teardown;
 - (id)viewLayerAtEventIndex:(unsigned long long)arg1;
+- (id)visibleTexturesBeforeStage:(long long)arg1 isBuildIn:(BOOL)arg2 isContentBuild:(BOOL)arg3 shouldFlatten:(BOOL)arg4 flattenKey:(id)arg5;
 - (id)visibleTexturesForStage:(long long)arg1 isBuildIn:(BOOL)arg2 isContentBuild:(BOOL)arg3 shouldFlatten:(BOOL)arg4 flattenKey:(id)arg5;
 - (id)visibleTexturesWithTextureType:(long long)arg1;
 

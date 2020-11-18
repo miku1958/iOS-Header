@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSConditionLock, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, VMUProcessDescription, VMUTaskMemoryCache;
+@class NSConditionLock, NSMapTable, NSMutableArray, NSMutableDictionary, NSString, VMUProcessDescription;
 
 @interface VMUSampler : NSObject
 {
@@ -15,13 +15,12 @@
     unsigned int _task;
     BOOL _needTaskPortDealloc;
     BOOL _recordThreadStates;
-    BOOL _taskIs64Bit;
     BOOL _sampling;
     unsigned int _numberOfCopiedBacktraces;
     NSString *_processName;
     VMUProcessDescription *_processDescription;
     struct _CSTypeRef _symbolicator;
-    VMUTaskMemoryCache *_memCache;
+    unsigned int _suspensionToken;
     struct sampling_context_t *_samplingContext;
     NSMapTable *_lastThreadBacktraceMap;
     unsigned int *_previousThreadList;
@@ -57,7 +56,6 @@
 - (void)_makeHighPriority;
 - (void)_makeTimeshare;
 - (void)_runSamplingThread;
-- (id)createOutput;
 - (void)dealloc;
 - (id)delegate;
 - (id)dispatchQueueNameForSerialNumber:(unsigned long long)arg1;
@@ -75,7 +73,7 @@
 - (id)outputString;
 - (int)pid;
 - (void)preloadSymbols;
-- (unsigned long long)recordSampleTo:(id)arg1 beginTime:(double)arg2 endTime:(double)arg3 thread:(unsigned int)arg4 recordFramePointers:(BOOL)arg5;
+- (unsigned long long)recordSampleTo:(id)arg1 beginTime:(double)arg2 endTime:(double)arg3 thread:(unsigned int)arg4 recordFramePointers:(BOOL)arg5 clearMemoryCache:(BOOL)arg6;
 - (id)sampleAllThreadsOnce;
 - (id)sampleAllThreadsOnceWithFramePointers:(BOOL)arg1;
 - (unsigned int)sampleCount;

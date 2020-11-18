@@ -6,30 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+#import <PersonalizationPortrait/NSCopying-Protocol.h>
+#import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
-@interface PPLocationNamedEntities : NSObject
+@class NSData, NSString;
+
+@interface PPLocationNamedEntities : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_locationName;
     NSString *_streetAddress;
     NSString *_city;
     NSString *_stateOrProvince;
+    NSString *_postalCode;
     NSString *_country;
     NSString *_unstructuredLocationString;
     double _score;
     NSString *_documentId;
+    NSData *_mapItem;
 }
 
 @property (strong, nonatomic) NSString *city; // @synthesize city=_city;
 @property (strong, nonatomic) NSString *country; // @synthesize country=_country;
 @property (strong, nonatomic) NSString *documentId; // @synthesize documentId=_documentId;
 @property (strong, nonatomic) NSString *locationName; // @synthesize locationName=_locationName;
+@property (strong, nonatomic) NSData *mapItem; // @synthesize mapItem=_mapItem;
+@property (strong, nonatomic) NSString *postalCode; // @synthesize postalCode=_postalCode;
 @property (nonatomic) double score; // @synthesize score=_score;
 @property (strong, nonatomic) NSString *stateOrProvince; // @synthesize stateOrProvince=_stateOrProvince;
 @property (strong, nonatomic) NSString *streetAddress; // @synthesize streetAddress=_streetAddress;
 @property (strong, nonatomic) NSString *unstructuredLocationString; // @synthesize unstructuredLocationString=_unstructuredLocationString;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

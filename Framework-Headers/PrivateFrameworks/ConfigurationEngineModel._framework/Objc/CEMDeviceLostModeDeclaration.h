@@ -12,31 +12,36 @@
 
 @interface CEMDeviceLostModeDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadEnable;
+    NSString *_payloadMessage;
+    NSString *_payloadPhoneNumber;
+    NSString *_payloadFootnote;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadEnable;
-@property (readonly, nonatomic) NSString *payloadFootnote;
-@property (readonly, nonatomic) NSString *payloadMessage;
-@property (readonly, nonatomic) NSString *payloadPhoneNumber;
+@property (copy, nonatomic) NSNumber *payloadEnable; // @synthesize payloadEnable=_payloadEnable;
+@property (copy, nonatomic) NSString *payloadFootnote; // @synthesize payloadFootnote=_payloadFootnote;
+@property (copy, nonatomic) NSString *payloadMessage; // @synthesize payloadMessage=_payloadMessage;
+@property (copy, nonatomic) NSString *payloadPhoneNumber; // @synthesize payloadPhoneNumber=_payloadPhoneNumber;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withEnable:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withEnable:(id)arg2 withMessage:(id)arg3 withPhoneNumber:(id)arg4 withFootnote:(id)arg5;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

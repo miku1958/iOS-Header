@@ -22,11 +22,13 @@
     unsigned long long _limit;
     unsigned long long _offset;
     long long _resultType;
+    NSArray *_groupByProperties;
     CDUnknownBlockType _resultsHandler;
 }
 
 @property BOOL deduplicateValues; // @synthesize deduplicateValues=_deduplicateValues;
 @property (strong) NSArray *eventStreams; // @synthesize eventStreams=_eventStreams;
+@property (strong) NSArray *groupByProperties; // @synthesize groupByProperties=_groupByProperties;
 @property unsigned long long limit; // @synthesize limit=_limit;
 @property unsigned long long offset; // @synthesize offset=_offset;
 @property (strong) NSPredicate *predicate; // @synthesize predicate=_predicate;

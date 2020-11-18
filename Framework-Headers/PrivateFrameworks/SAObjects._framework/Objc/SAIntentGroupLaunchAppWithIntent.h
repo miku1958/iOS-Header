@@ -13,6 +13,7 @@
 }
 
 @property (strong, nonatomic) SAIntentGroupProtobufMessage *handledIntent;
+@property (strong, nonatomic) SAIntentGroupProtobufMessage *handledIntentResponse;
 
 + (id)launchAppWithIntent;
 + (id)launchAppWithIntentWithDictionary:(id)arg1 context:(id)arg2;

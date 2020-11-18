@@ -15,6 +15,8 @@
     NSString *_eventMessage;
 }
 
++ (id)sharedTimer;
++ (id)sharedTimerIfCreated;
 - (void).cxx_destruct;
 - (id)init;
 - (void)startWithMessage:(id)arg1;

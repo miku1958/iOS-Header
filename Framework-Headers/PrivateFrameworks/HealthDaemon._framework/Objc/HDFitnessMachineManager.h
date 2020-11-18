@@ -9,8 +9,8 @@
 #import <HealthDaemon/HDFitnessMachinePairingManagerDelegate-Protocol.h>
 #import <HealthDaemon/HDFitnessMachineStateTimersDelegate-Protocol.h>
 
-@class HDFitnessMachineAnalyticsCollector, HDFitnessMachineDataCollector, HDFitnessMachineDataProducer, HDFitnessMachinePairingManager, HDFitnessMachineSession, HDFitnessMachineStateTimers, HDHealthServiceManager, HDProfile, NSDate, NSMutableArray, NSString;
-@protocol HDFitnessMachineConnectionInitiatorProtocol, OS_dispatch_queue;
+@class HDFitnessMachineAnalyticsCollector, HDFitnessMachineDataCollector, HDFitnessMachineDataProducer, HDFitnessMachinePairingManager, HDFitnessMachineSession, HDFitnessMachineStateTimers, HDHealthServiceManager, HDProfile, HKObserverSet, NSDate, NSMutableArray, NSString;
+@protocol HDFitnessMachineConnectionInitiatorProtocol, HDMetricsCollector, OS_dispatch_queue;
 
 @interface HDFitnessMachineManager : NSObject <HDFitnessMachinePairingManagerDelegate, HDFitnessMachineStateTimersDelegate>
 {
@@ -23,6 +23,7 @@
     BOOL _shouldReconnect;
     BOOL _resetInProgress;
     NSMutableArray *_characteristicDataBuffer;
+    HKObserverSet *_fitnessMachineSessionObservers;
     HDFitnessMachineDataProducer *_fitnessMachineDataProducer;
     NSDate *_machinePreferredUntilDate;
     HDHealthServiceManager *_serviceManager;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) HDFitnessMachineStateTimers *fitnessMachineStateTimers; // @synthesize fitnessMachineStateTimers=_fitnessMachineStateTimers;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDate *machinePreferredUntilDate; // @synthesize machinePreferredUntilDate=_machinePreferredUntilDate;
+@property (readonly, nonatomic) id<HDMetricsCollector> metricsCollector;
 @property (weak, nonatomic) HDHealthServiceManager *serviceManager; // @synthesize serviceManager=_serviceManager;
 @property (readonly) Class superclass;
 
@@ -73,7 +75,7 @@
 - (void)_queue_handleReceivedMachineStatus:(id)arg1;
 - (void)_queue_performBlockOnConnections:(CDUnknownBlockType)arg1;
 - (void)_queue_reconnectFitnessMachineWithError:(id)arg1;
-- (void)_queue_recoverFromCrashWithSessionConfiguration:(id)arg1 shouldReconnect:(BOOL)arg2;
+- (void)_queue_recoverSessionWithConfiguration:(id)arg1;
 - (void)_queue_registerClient:(id)arg1 withConnectionUUID:(id)arg2;
 - (void)_queue_removeConnectionWithUUID:(id)arg1;
 - (void)_queue_resetConnectionForcing:(BOOL)arg1;
@@ -84,12 +86,16 @@
 - (void)_queue_tearDownAfterStopEvent;
 - (BOOL)_queue_waitingOnInitialStatusAndData;
 - (void)_setQueue:(id)arg1;
+- (void)addFitnessMachineSessionObserver:(id)arg1 queue:(id)arg2;
 - (void)clientInvalidatedWithConnectionUUID:(id)arg1;
 - (unsigned long long)connectionOptionsForSession:(id)arg1 isReconnect:(BOOL)arg2;
+- (id)currentSessionRecoveryConfiguration;
 - (void)dealloc;
 - (void)endFitnessMachineConnectionForFitnessMachineSessionUUID:(id)arg1 withConnectionUUID:(id)arg2;
 - (void)endFitnessMachineConnectionWithUUID:(id)arg1;
-- (void)ensureClientIsRegistered:(id)arg1 sessionConfiguration:(id)arg2 shouldReconnect:(BOOL)arg3;
+- (void)endFitnessMachineSessionWithUUID:(id)arg1;
+- (void)finishSessionWithConfiguration:(id)arg1;
+- (void)hktest_setMachinePreferredUntilDate:(id)arg1;
 - (id)initWithProfile:(id)arg1;
 - (void)markClientReadyWithConnectionUUID:(id)arg1;
 - (void)pairingManager:(id)arg1 didChangeNFCEnabledState:(BOOL)arg2;
@@ -102,13 +108,19 @@
 - (id)pairingManagerRequestsOOBData:(id)arg1 error:(id *)arg2;
 - (void)pairingManagerUpdatedMachineInformation:(id)arg1;
 - (void)pairingManagerWillBeginPairing:(id)arg1 fitnessMachineToken:(id)arg2;
+- (void)recoverSessionWithConfiguration:(id)arg1;
 - (void)registerClient:(id)arg1 withConnectionUUID:(id)arg2;
+- (void)removeFitnessMachineSessionObserver:(id)arg1;
 - (void)simulateDisconnect;
 - (void)stateTimersDisconnectTimeout:(id)arg1;
 - (void)stateTimersMfaTimeout:(id)arg1;
 - (void)stateTimersPauseTimeout:(id)arg1;
 - (void)stateTimersRetryConnectionTimeout:(id)arg1;
 - (void)stateTimersWaitForMachineStartTimeout:(id)arg1;
+- (id)unitTest_currentFitnessMachineSession;
+- (void)unitTest_fakeMachineDiscoveryForType:(unsigned long long)arg1;
+- (void)unitTest_fakeSession:(id)arg1;
+- (void)unitTest_receiveFakeCharacteristicUpdate:(id)arg1;
 
 @end
 

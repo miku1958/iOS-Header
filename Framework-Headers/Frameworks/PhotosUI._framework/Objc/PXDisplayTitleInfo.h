@@ -27,6 +27,7 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
 
++ (id)displayTitleInfoForDetailsOfAssetCollection:(id)arg1 withTitleCategory:(long long)arg2 defaultTitle:(id)arg3 defaultTitleCategory:(long long)arg4 titleKey:(id)arg5 titleCategoryKey:(id)arg6 subtitleKey:(id)arg7 simulatedLoadingDelay:(double)arg8 preferredAttributesPromise:(CDUnknownBlockType)arg9;
 - (void).cxx_destruct;
 - (void)_updatePropertiesFromAssetCollection;
 - (id)init;

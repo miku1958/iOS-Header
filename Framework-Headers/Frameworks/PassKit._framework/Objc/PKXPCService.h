@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/PKForegroundActiveArbiterObserver-Protocol.h>
 
@@ -29,6 +29,7 @@
     int _serviceResumedToken;
     id<PKXPCServiceDelegate> _delegate;
     NSString *_machServiceName;
+    unsigned long long _options;
 }
 
 @property (readonly, nonatomic) BOOL connectionEstablished;
@@ -38,6 +39,7 @@
 @property (nonatomic) BOOL forceConnectionOnResume;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
+@property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
 
@@ -63,6 +65,7 @@
 - (id)init;
 - (id)initWithMachServiceName:(id)arg1 remoteObjectInterface:(id)arg2 exportedObjectInterface:(id)arg3 exportedObject:(id)arg4;
 - (id)initWithMachServiceName:(id)arg1 remoteObjectInterface:(id)arg2 exportedObjectInterface:(id)arg3 exportedObject:(id)arg4 serviceResumedNotificationName:(id)arg5;
+- (id)initWithMachServiceName:(id)arg1 remoteObjectInterface:(id)arg2 exportedObjectInterface:(id)arg3 exportedObject:(id)arg4 serviceResumedNotificationName:(id)arg5 options:(unsigned long long)arg6;
 - (id)remoteObjectProxy;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)remoteObjectProxyWithFailureHandler:(CDUnknownBlockType)arg1;

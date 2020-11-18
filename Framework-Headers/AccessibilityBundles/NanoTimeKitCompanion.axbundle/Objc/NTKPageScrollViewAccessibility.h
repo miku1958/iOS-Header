@@ -6,12 +6,13 @@
 
 #import "__NTKPageScrollViewAccessibility_super.h"
 
+@class NTKPageScrollViewControllerAccessibility;
+
 @interface NTKPageScrollViewAccessibility : __NTKPageScrollViewAccessibility_super
 {
-    id _accessibilityPageScrollViewController;
 }
 
-@property (nonatomic, getter=_accessibilityPageScrollViewController, setter=_accessibilitySetPageScrollViewController:) id accessibilityPageScrollViewController; // @synthesize accessibilityPageScrollViewController=_accessibilityPageScrollViewController;
+@property (weak, nonatomic) NTKPageScrollViewControllerAccessibility *accessibilityPageScrollViewController;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;

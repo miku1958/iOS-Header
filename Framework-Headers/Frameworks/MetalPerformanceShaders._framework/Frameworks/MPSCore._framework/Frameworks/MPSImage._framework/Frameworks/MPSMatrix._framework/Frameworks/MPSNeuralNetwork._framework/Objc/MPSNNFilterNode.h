@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPSNNImageNode, MPSNNStateNode, NSArray, NSMutableArray, NSString;
 @protocol MPSNNPadding;
@@ -38,6 +38,7 @@
 - (id)resultStatesNoAllocate;
 - (id)sourceImages;
 - (id)sourceStates;
+- (id)trainingGraphWithSourceGradient:(id)arg1 nodeHandler:(CDUnknownBlockType)arg2;
 
 @end
 

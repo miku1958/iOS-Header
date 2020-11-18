@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSSPropertyCommandObjectRegistry : NSObject
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (Class)classForIndex:(int)arg1;
 - (int)indexForClass:(Class)arg1;
 - (id)init;
-- (const basic_string_a1f69cfb *)nameForIndex:(int)arg1;
+- (const basic_string_23d93216 *)nameForIndex:(int)arg1;
 - (void)registerClass:(Class)arg1 withField:(id)arg2;
 
 @end

@@ -4,14 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface TLKLayoutUtilities : NSObject
 {
 }
 
++ (void)applyRowBoundedSizingToImageView:(id)arg1;
 + (double)deviceScaledRoundedValue:(double)arg1;
 + (struct CGSize)idealImageSizeWithSize:(struct CGSize)arg1 fittingSize:(struct CGSize)arg2;
++ (BOOL)isSuperLargeAccessibilitySize;
++ (BOOL)isWideScreen;
++ (struct CGSize)maxThumbnailSize;
 + (void)requireIntrinsicSizeForView:(id)arg1;
 + (void)requireIntrinsicSizeForView:(id)arg1 withPriority:(float)arg2;
 + (double)scaledValueForValue:(double)arg1 withFont:(id)arg2;

@@ -16,6 +16,7 @@
 @property (readonly, nonatomic, getter=isAdvertisingTrackingEnabled) BOOL advertisingTrackingEnabled;
 
 + (id)sharedManager;
+- (void)clearAdvertisingIdentifier;
 
 @end
 

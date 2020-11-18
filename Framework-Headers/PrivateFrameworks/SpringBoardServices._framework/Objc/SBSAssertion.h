@@ -6,17 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class BSMachPortReceiveRight, NSString;
 
 @interface SBSAssertion : NSObject
 {
     NSString *_assertionName;
     NSString *_reason;
-    unsigned int _port;
-    struct _opaque_pthread_mutex_t {
-        long long __sig;
-        char __opaque[56];
-    } _lock;
+    BSMachPortReceiveRight *_receiveRight;
 }
 
 @property (readonly, copy, nonatomic) NSString *assertionName; // @synthesize assertionName=_assertionName;
@@ -26,6 +22,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithAssertionName:(id)arg1 reason:(id)arg2 port:(unsigned int)arg3;
+- (id)initWithAssertionName:(id)arg1 reason:(id)arg2 receiveRight:(id)arg3;
 - (void)invalidate;
 
 @end

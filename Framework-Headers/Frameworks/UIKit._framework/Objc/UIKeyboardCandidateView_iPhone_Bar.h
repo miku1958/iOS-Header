@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardCandidateView_iPhone.h>
+#import <UIKitCore/UIKeyboardCandidateView_iPhone.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateView_iPhone_Bar : UIKeyboardCandidateView_iPhone

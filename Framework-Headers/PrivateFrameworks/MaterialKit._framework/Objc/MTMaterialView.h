@@ -8,26 +8,24 @@
 
 #import <MaterialKit/MTMaterialSettingsObserving-Protocol.h>
 
-@class MTVibrantStylingProvider, NSString, UIViewFloatAnimatableProperty;
-@protocol MTMaterialSettings, MTMaterialSettings><MTMaterialSettingsObservable;
+@class MTMaterialSettingsInterpolator, MTVibrantStylingProvider, NSString, UIViewFloatAnimatableProperty, _MTBackdropView;
+@protocol MTMaterialSettings><MTMaterialSettingsObservable;
 
 @interface MTMaterialView : UIView <MTMaterialSettingsObserving>
 {
-    id<MTMaterialSettings> _settings;
-    unsigned long long _options;
-    UIView *_backdropView;
+    MTMaterialSettingsInterpolator *_settingsInterpolator;
+    _MTBackdropView *_backdropView;
+    UIView *_reducedTransparencyBackdropReplacementView;
     UIView *_baseOverlayView;
     UIView *_primaryOverlayView;
     UIView *_secondaryOverlayView;
     BOOL _cornerRadiusIsContinuous;
     BOOL _isConfiguredAsOverlay;
-    BOOL _isInitialWeighting;
     BOOL _highlighted;
     BOOL _shouldCrossfadeIfNecessary;
     BOOL _forceCrossfadeIfNecessary;
     BOOL _useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
     NSString *_groupName;
-    double _weighting;
     CDUnknownBlockType _backdropScaleAdjustment;
     UIViewFloatAnimatableProperty *_backdropFloatAnimatableProperty;
 }
@@ -50,46 +48,47 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
 @property (nonatomic) BOOL useBuiltInAlphaTransformerAndBackdropScaleAdjustment; // @synthesize useBuiltInAlphaTransformerAndBackdropScaleAdjustment=_useBuiltInAlphaTransformerAndBackdropScaleAdjustment;
+@property (nonatomic) BOOL useBuiltInAlphaTransformerAndBackdropScaleAdjustmentIfNecessary;
 @property (readonly, weak, nonatomic) MTVibrantStylingProvider *vibrantStylingProvider;
-@property (nonatomic) double weighting; // @synthesize weighting=_weighting;
+@property (nonatomic) double weighting;
 
 + (void)_validateRecipe:(long long *)arg1 andOptions:(unsigned long long *)arg2;
++ (double)highlightAlpha;
 + (void)initialize;
 + (id)materialViewWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
 + (id)materialViewWithRecipe:(long long)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3;
 + (id)materialViewWithRecipe:(long long)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
 + (id)materialViewWithSettings:(id)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
-- (void)_adjustScaleOfBackdropView:(id)arg1 ifNecessaryWithWeighting:(double)arg2;
+- (BOOL)_adjustScaleOfBackdropView:(id)arg1 ifNecessaryWithSettingsInterpolator:(id)arg2;
 - (id)_backdropLayer;
-- (id)_backdropViewSettingsForMaterialSettings:(id)arg1 options:(unsigned long long)arg2;
-- (id)_basicOverlaySettings;
-- (void)_configureBackdropViewIfNecessaryWithWeighting:(double)arg1;
-- (void)_configureBaseOverlayViewIfNecessaryWithWeighting:(double)arg1;
-- (void)_configureIfNecessaryWithWeighting:(double)arg1;
-- (void)_configureMTBackdropView:(id)arg1 withWeighting:(double)arg2;
-- (id)_configureOverlayView:(id *)arg1 ofClass:(Class)arg2 withOptions:(unsigned long long)arg3 color:(id)arg4 alpha:(double)arg5 weighting:(double)arg6;
-- (void)_configureOverlayView:(id)arg1 withColor:(id)arg2 alpha:(double)arg3 weighting:(double)arg4;
-- (id)_configureOverlayView:(id *)arg1 withOptions:(unsigned long long)arg2 color:(id)arg3 alpha:(double)arg4 weighting:(double)arg5;
-- (void)_configurePrimaryOverlayViewIfNecessaryWithWeighting:(double)arg1;
-- (void)_configureSecondaryOverlayViewIfNecessaryWithWeighting:(double)arg1;
+- (void)_configureBackdropView:(id)arg1 withSettingsInterpolator:(id)arg2;
+- (void)_configureBackdropViewIfNecessaryWithSettingsInterpolator:(id)arg1;
+- (void)_configureBaseOverlayViewIfNecessaryWithSettingsInterpolator:(id)arg1;
+- (void)_configureIfNecessaryWithSettingsInterpolator:(id)arg1;
+- (void)_configureOverlayView:(id *)arg1 forOverlayOption:(unsigned long long)arg2 withSettingsInterpolator:(id)arg3 colorBlock:(CDUnknownBlockType)arg4;
+- (id)_configureOverlayView:(id *)arg1 ofClass:(Class)arg2 withSettingsInterpolator:(id)arg3 color:(id)arg4;
+- (void)_configurePrimaryOverlayViewIfNecessaryWithSettingsInterpolator:(id)arg1;
+- (void)_configureSecondaryOverlayViewIfNecessaryWithSettingsInterpolator:(id)arg1;
 - (double)_continuousCornerRadius;
-- (BOOL)_isBackdropRequiredForOverlay;
 - (BOOL)_isCrossfadeNecessary;
-- (id)_luminanceOverlaySettings;
-- (id)_mtBackdropView;
 - (id)_observableSettings;
 - (void)_reduceMotionStatusDidChange;
 - (void)_reduceTransparencyStatusDidChange;
+- (void)_reevaluateShouldReduceCaptureBitDepth:(BOOL)arg1;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setCornerRadius:(double)arg1;
 - (void)_setupOrInvalidateTransformer;
 - (BOOL)_supportsVariableWeighting;
-- (void)_transitionToSettings:(id)arg1 options:(unsigned long long)arg2;
 - (double)cornerRadius;
 - (void)dealloc;
 - (id)initWithSettings:(id)arg1 options:(unsigned long long)arg2 initialWeighting:(double)arg3 scaleAdjustment:(CDUnknownBlockType)arg4;
+- (void)prune;
+- (void)setFinalRecipe:(long long)arg1 options:(unsigned long long)arg2;
+- (void)setFinalSettings:(id)arg1 options:(unsigned long long)arg2;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (void)transitionToRecipe:(long long)arg1 options:(unsigned long long)arg2 weighting:(double)arg3;
+- (void)transitionToSettings:(id)arg1 options:(unsigned long long)arg2 weighting:(double)arg3;
 
 @end
 

@@ -10,15 +10,16 @@
 #import <VoiceMemos/NSCopying-Protocol.h>
 #import <VoiceMemos/NSSecureCoding-Protocol.h>
 
-@class NSString, NSURL, NSUUID;
+@class NSDictionary, NSString, NSURL, NSUUID;
 
 @interface RCSSavedRecordingAccessToken : NSObject <NSSecureCoding, NSCoding, NSCopying>
 {
     BOOL _exclusive;
     long long _accessIntent;
     NSURL *_compositionAVURL;
-    NSUUID *_identifier;
     NSString *_accessName;
+    NSDictionary *_userInfo;
+    NSUUID *_identifier;
 }
 
 @property (readonly, nonatomic) long long accessIntent; // @synthesize accessIntent=_accessIntent;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) NSURL *compositionAVURL; // @synthesize compositionAVURL=_compositionAVURL;
 @property (readonly, nonatomic, getter=isExclusive) BOOL exclusive; // @synthesize exclusive=_exclusive;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 + (BOOL)supportsSecureCoding;
 + (id)tokenWithName:(id)arg1 accessIntent:(long long)arg2 compositionAVURL:(id)arg3;
@@ -37,6 +39,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithName:(id)arg1 accessIntent:(long long)arg2 compositionAVURL:(id)arg3 identifier:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (void)setUserInfo:(id)arg1;
 
 @end
 

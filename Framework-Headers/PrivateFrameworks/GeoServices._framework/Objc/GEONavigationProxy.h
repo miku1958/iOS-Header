@@ -43,6 +43,7 @@
     GEOCompanionRouteStatus *_companionRouteStatus;
     GEOCompanionRouteContext *_companionRouteContext;
     BOOL _shouldSendRouteWithStatus;
+    BOOL _isConnectedToCarplay;
     id<GEOServerFormattedStepStringFormatter> _formatter;
 }
 
@@ -81,6 +82,7 @@
 - (void)setDestinationName:(id)arg1;
 - (void)setDisplayedStepIndex:(unsigned long long)arg1;
 - (void)setGuidancePromptsEnabled:(BOOL)arg1;
+- (void)setIsConnectedToCarplay:(BOOL)arg1;
 - (void)setIsNavigatingInLowGuidance:(BOOL)arg1;
 - (void)setLastLocation:(id)arg1;
 - (void)setLocationUnreliable:(BOOL)arg1;

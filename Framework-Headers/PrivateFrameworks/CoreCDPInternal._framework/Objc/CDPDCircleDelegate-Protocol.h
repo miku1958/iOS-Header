@@ -7,7 +7,7 @@
 @class CDPContext, CDPDCircleController, CDPDSecureChannelContext;
 
 @protocol CDPDCircleDelegate
-- (void)circleController:(CDPDCircleController *)arg1 secureBackupRecordsArePresentWithCompletion:(void (^)(BOOL, NSError *))arg2;
+- (void)circleController:(CDPDCircleController *)arg1 secureBackupRecordsArePresentWithCompletion:(void (^)(BOOL, BOOL, NSError *))arg2;
 - (CDPContext *)contextForController:(CDPDCircleController *)arg1;
 - (CDPDSecureChannelContext *)secureChannelContextForController:(CDPDCircleController *)arg1;
 @end

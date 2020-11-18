@@ -39,7 +39,6 @@
     NSSet *__internalHandlesShowingLocations;
     FMFMapOptionsViewController *_mapOptionsVC;
     FMFTitleView *_titleView;
-    void *_addressBook;
     UIBarButtonItem *_userTrackingButtonItem;
     UIBarButtonItem *_directionsBarButtonItem;
     UIBarButtonItem *_infoBarButtonItem;
@@ -56,7 +55,6 @@
 @property (nonatomic) BOOL _isRenderingInitialMap; // @synthesize _isRenderingInitialMap=__isRenderingInitialMap;
 @property (strong, nonatomic) NSSet *_preloadedHandles; // @synthesize _preloadedHandles=__preloadedHandles;
 @property (nonatomic) BOOL _refreshingIsPaused; // @synthesize _refreshingIsPaused=__refreshingIsPaused;
-@property (nonatomic) void *addressBook; // @synthesize addressBook=_addressBook;
 @property (nonatomic) BOOL alwaysShowAccuracy; // @synthesize alwaysShowAccuracy=_alwaysShowAccuracy;
 @property (copy, nonatomic) UIColor *annotationTintColor; // @synthesize annotationTintColor=_annotationTintColor;
 @property (strong, nonatomic) UIImageView *cachedMapView; // @synthesize cachedMapView=_cachedMapView;
@@ -94,6 +92,7 @@
 - (void).cxx_destruct;
 - (void)_authorizeMonitoringLocation;
 - (void)_dismiss:(id)arg1;
+- (void)_enablePreloadedHandles:(id)arg1;
 - (id)_internalAnnotationTintColor;
 - (id)_selectedHandleAnnotation;
 - (void)_setUserTrackingMode:(long long)arg1 animated:(BOOL)arg2 fromTrackingButton:(BOOL)arg3;
@@ -102,7 +101,6 @@
 - (void)_updateTitleViewLocation:(id)arg1;
 - (void)addHandlesToSession;
 - (id)annotationImageForAnnotation:(id)arg1 andHandle:(id)arg2;
-- (id)annotationImageForHandle:(id)arg1;
 - (void)applicationDidBecomeActive:(id)arg1;
 - (BOOL)canRotateForHeading;
 - (BOOL)canSelectAnnotation:(id)arg1;

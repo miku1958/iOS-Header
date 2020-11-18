@@ -12,7 +12,6 @@
 
 @property (copy, nonatomic) NSArray *cardSections;
 @property (copy, nonatomic) NSString *fbr;
-@property (readonly, nonatomic) BOOL hasFbr;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (void)addCardSections:(_CPCardSectionForFeedback *)arg1;

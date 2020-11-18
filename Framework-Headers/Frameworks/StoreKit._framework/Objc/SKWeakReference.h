@@ -4,20 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface SKWeakReference : NSObject
 {
     id _object;
-    unsigned long long _objectAddress;
 }
 
-@property (readonly, nonatomic) id object;
+@property (weak, nonatomic) id object; // @synthesize object=_object;
 
-+ (id)weakReferenceWithObject:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (unsigned long long)hash;
+- (id)initWithObject:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

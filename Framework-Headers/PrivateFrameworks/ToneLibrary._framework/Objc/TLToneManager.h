@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) NSString *_systemRingtoneDirectory;
 
 + (BOOL)_checkForFileExistenceAtPath:(id)arg1 allowingTCCPreflight:(BOOL)arg2;
++ (id)_currentOverridePolicyPreferenceKeyForAlertType:(long long)arg1;
 + (id)_defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 + (BOOL)_migrateLegacyToneSettings;
 + (id)_systemWideTonePreferenceKeyForAlertType:(long long)arg1;
@@ -43,15 +44,17 @@
 - (id)_aliasForToneIdentifier:(id)arg1;
 - (id)_allSyncedTones;
 - (id)_baseDirectoryForAlertToneSoundFiles;
+- (long long)_currentOverridePolicyForAlertType:(long long)arg1;
+- (long long)_currentOverridePolicyForAlertType:(long long)arg1 didFindAlertOverridePolicy:(BOOL *)arg2;
 - (id)_currentToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (long long)_currentToneWatchAlertPolicyForAlertType:(long long)arg1;
 - (long long)_currentToneWatchAlertPolicyForAlertType:(long long)arg1 accountIdentifier:(id)arg2;
 - (long long)_currentToneWatchAlertPolicyForAlertType:(long long)arg1 topic:(id)arg2;
 - (long long)_currentToneWatchAlertPolicyForAlertType:(long long)arg1 topic:(id)arg2 didFindPersistedWatchAlertPolicy:(BOOL *)arg3;
 - (id)_currentToneWatchAlertPolicyPreferenceKeyForAlertType:(long long)arg1 topic:(id)arg2;
+- (id)_defaultPreferablyNonSilentToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (id)_defaultRingtoneName;
 - (id)_defaultRingtonePath;
-- (id)_defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (void)_didSetTonePreferenceSuccessfullyWithKey:(id)arg1 inDomain:(id)arg2 usingPreferencesOfKind:(unsigned long long)arg3;
 - (BOOL)_ensureDirectoryExistsAtPath:(id)arg1;
 - (long long)_evaluateOrphanEntriesCleanupStatusForcingReevaluationIfPreviouslyDone:(BOOL)arg1 returningFilePathsForFoundOrphans:(id *)arg2 wasAffectedByAccidentalToneDeletion:(BOOL *)arg3;
@@ -83,6 +86,7 @@
 - (BOOL)_removeToneFromManifestAtPath:(id)arg1 fileName:(id)arg2;
 - (BOOL)_removeToneWithSyncIdentifier:(id)arg1;
 - (BOOL)_removeTonesFromManifestAtPath:(id)arg1 fileNames:(id)arg2 shouldSkipReload:(BOOL)arg3 alreadyLockedManifest:(BOOL)arg4 removedEntries:(id *)arg5;
+- (void)_setCurrentOverridePolicy:(long long)arg1 forAlertType:(long long)arg2;
 - (void)_setCurrentToneWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2;
 - (void)_setCurrentToneWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2 accountIdentifier:(id)arg3;
 - (void)_setCurrentToneWatchAlertPolicy:(long long)arg1 forAlertType:(long long)arg2 topic:(id)arg3;
@@ -93,6 +97,7 @@
 - (id)_systemEmbeddedSoundDirectory;
 - (id)_systemNewSoundDirectory;
 - (id)_systemSoundDirectory;
+- (id)_systemWatchSoundDirectory;
 - (id)_toneForSyncIdentifier:(id)arg1;
 - (id)_toneIdentifierForFileAtPath:(id)arg1 isValid:(BOOL *)arg2;
 - (id)_tonePreferencesFromService;
@@ -116,7 +121,9 @@
 - (void)dealloc;
 - (id)defaultRingtoneIdentifier;
 - (id)defaultToneIdentifierForAlertType:(long long)arg1;
+- (id)defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (id)filePathForToneIdentifier:(id)arg1;
+- (BOOL)hasSpecificDefaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 - (void)importTone:(id)arg1 metadata:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithITunesRingtonePlistAtPath:(id)arg1;

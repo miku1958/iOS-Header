@@ -48,9 +48,11 @@
 - (void)_removeLowQualityBlurForStyle:(long long)arg1 animated:(BOOL)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)_removeSnapshotBlurForStyle:(long long)arg1 animated:(BOOL)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (void)_removeSnapshotDimAnimated:(BOOL)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (double)_resumeFadeInDuration;
 - (void)_setupDimOnSnapshot;
 - (void)_setupLowQualityBlurOnSnapshot;
 - (id)initWithView:(id)arg1 desiredAspectRatio:(long long)arg2;
+- (void)prepareForResumingUsingCrossfade;
 - (void)removeInflightBlurAnimations;
 - (void)setBlurred:(BOOL)arg1 animated:(BOOL)arg2 style:(long long)arg3 withCompletionBlock:(CDUnknownBlockType)arg4;
 - (void)setDimmed:(BOOL)arg1 animated:(BOOL)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;

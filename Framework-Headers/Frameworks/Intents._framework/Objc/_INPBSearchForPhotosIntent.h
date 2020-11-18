@@ -7,41 +7,69 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSearchForPhotosIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBContactList, _INPBDateTimeRange, _INPBIntentMetadata, _INPBLocation, _INPBString, _INPBStringList;
+@class NSString, _INPBActivityList, _INPBContactList, _INPBDataStringList, _INPBDateTimeRange, _INPBEventList, _INPBGeographicalFeatureList, _INPBIntentMetadata, _INPBLocation, _INPBPlaceList, _INPBString, _INPBStringList;
 
-@interface _INPBSearchForPhotosIntent : PBCodable <NSCopying>
+@interface _INPBSearchForPhotosIntent : PBCodable <_INPBSearchForPhotosIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _excludedAttributes;
     CDStruct_95bda58d _includedAttributes;
+    struct _has;
+    _INPBActivityList *_activities;
     _INPBString *_albumName;
+    _INPBContactList *_contentPerson;
     _INPBDateTimeRange *_dateCreated;
+    _INPBEventList *_events;
+    _INPBGeographicalFeatureList *_geographicalFeatures;
     _INPBIntentMetadata *_intentMetadata;
+    _INPBDataStringList *_keyword;
+    _INPBStringList *_keywordString;
     _INPBLocation *_locationCreated;
+    _INPBString *_memoryName;
     _INPBContactList *_peopleInPhoto;
+    _INPBPlaceList *_places;
     _INPBStringList *_searchTerm;
 }
 
+@property (strong, nonatomic) _INPBActivityList *activities; // @synthesize activities=_activities;
 @property (strong, nonatomic) _INPBString *albumName; // @synthesize albumName=_albumName;
+@property (strong, nonatomic) _INPBContactList *contentPerson; // @synthesize contentPerson=_contentPerson;
 @property (strong, nonatomic) _INPBDateTimeRange *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) _INPBEventList *events; // @synthesize events=_events;
 @property (readonly, nonatomic) int *excludedAttributes;
 @property (readonly, nonatomic) unsigned long long excludedAttributesCount;
+@property (strong, nonatomic) _INPBGeographicalFeatureList *geographicalFeatures; // @synthesize geographicalFeatures=_geographicalFeatures;
+@property (readonly, nonatomic) BOOL hasActivities;
 @property (readonly, nonatomic) BOOL hasAlbumName;
+@property (readonly, nonatomic) BOOL hasContentPerson;
 @property (readonly, nonatomic) BOOL hasDateCreated;
+@property (readonly, nonatomic) BOOL hasEvents;
+@property (readonly, nonatomic) BOOL hasGeographicalFeatures;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (readonly, nonatomic) BOOL hasKeyword;
+@property (readonly, nonatomic) BOOL hasKeywordString;
 @property (readonly, nonatomic) BOOL hasLocationCreated;
+@property (readonly, nonatomic) BOOL hasMemoryName;
 @property (readonly, nonatomic) BOOL hasPeopleInPhoto;
+@property (readonly, nonatomic) BOOL hasPlaces;
 @property (readonly, nonatomic) BOOL hasSearchTerm;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int *includedAttributes;
 @property (readonly, nonatomic) unsigned long long includedAttributesCount;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
+@property (strong, nonatomic) _INPBDataStringList *keyword; // @synthesize keyword=_keyword;
+@property (strong, nonatomic) _INPBStringList *keywordString; // @synthesize keywordString=_keywordString;
 @property (strong, nonatomic) _INPBLocation *locationCreated; // @synthesize locationCreated=_locationCreated;
+@property (strong, nonatomic) _INPBString *memoryName; // @synthesize memoryName=_memoryName;
 @property (strong, nonatomic) _INPBContactList *peopleInPhoto; // @synthesize peopleInPhoto=_peopleInPhoto;
+@property (strong, nonatomic) _INPBPlaceList *places; // @synthesize places=_places;
 @property (strong, nonatomic) _INPBStringList *searchTerm; // @synthesize searchTerm=_searchTerm;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsExcludedAttributes:(id)arg1;
 - (int)StringAsIncludedAttributes:(id)arg1;
@@ -50,16 +78,12 @@
 - (void)clearExcludedAttributes;
 - (void)clearIncludedAttributes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (int)excludedAttributeAtIndex:(unsigned long long)arg1;
 - (id)excludedAttributesAsString:(int)arg1;
-- (unsigned long long)hash;
 - (int)includedAttributeAtIndex:(unsigned long long)arg1;
 - (id)includedAttributesAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setExcludedAttributes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setIncludedAttributes:(int *)arg1 count:(unsigned long long)arg2;

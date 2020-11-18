@@ -61,7 +61,7 @@
 
 + (double)HDRValueForAsset:(id)arg1;
 + (long long)_contentTypeForAsset:(id)arg1;
-+ (long long)optionsForAsset:(id)arg1;
++ (CDStruct_fd7332cd)optionsForAsset:(id)arg1;
 - (void).cxx_destruct;
 - (void)_applicationDidBecomeActive:(id)arg1;
 - (void)_applicationDidResignActive:(id)arg1;
@@ -90,7 +90,7 @@
 - (void)_updateLowPowerModeEnabledIfNeeded;
 - (void)_updateRequestedEDRHeadroomFactorIfNeeded;
 - (void)checkInImageLayerModulator:(id)arg1;
-- (id)checkoutImageLayerModulatorWithOptions:(long long)arg1;
+- (id)checkoutImageLayerModulatorWithOptions:(CDStruct_fd7332cd)arg1;
 - (void)dealloc;
 - (void)didPerformChanges;
 - (id)init;

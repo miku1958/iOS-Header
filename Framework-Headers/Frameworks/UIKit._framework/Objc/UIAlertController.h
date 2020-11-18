@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIAlertControllerContaining-Protocol.h>
-#import <UIKit/UIAlertControllerVisualStyleProviding-Protocol.h>
-#import <UIKit/UIPreviewInteractionControllerDelegate-Protocol.h>
-#import <UIKit/_UIAlertControllerTextFieldViewControllerContaining-Protocol.h>
+#import <UIKitCore/UIAlertControllerContaining-Protocol.h>
+#import <UIKitCore/UIAlertControllerVisualStyleProviding-Protocol.h>
+#import <UIKitCore/UIPreviewInteractionControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIAlertControllerTextFieldViewControllerContaining-Protocol.h>
 
 @class NSArray, NSAttributedString, NSIndexSet, NSMapTable, NSMutableArray, NSMutableDictionary, NSObject, NSPointerArray, NSSet, NSString, UIAlertAction, UIAlertControllerVisualStyle, UIGestureRecognizer, UIPopoverController, UIPreviewInteractionController, UITapGestureRecognizer, UIView, _UIAlertControllerShimPresenter, _UIAlertControllerTextFieldViewController, _UIAnimationCoordinator;
 @protocol UIAlertControllerCoordinatedActionPerforming, UIAlertControllerSystemProvidedPresentationDelegate, UIAlertControllerVisualStyleProviding;
@@ -41,6 +41,7 @@
     BOOL __shouldAllowNilParameters;
     BOOL _hasPreservedInputViews;
     NSMutableArray *_actions;
+    UIViewController *_headerContentViewController;
     NSObject<UIAlertControllerVisualStyleProviding> *_styleProvider;
     UIAlertAction *_preferredAction;
     _UIAnimationCoordinator *_temporaryAnimationCoordinator;
@@ -67,6 +68,7 @@
 @property (readonly) UIView *_dimmingView;
 @property (readonly) UIAlertAction *_focusedAction;
 @property (readonly) UIView *_foregroundView;
+@property (strong, nonatomic, setter=_setHeaderContentViewController:) UIViewController *_headerContentViewController; // @synthesize _headerContentViewController;
 @property (nonatomic, getter=_isHidden, setter=_setHidden:) BOOL _hidden; // @synthesize _hidden;
 @property (strong, nonatomic, setter=_setPresentationSourceRepresentationView:) UIView *_presentationSourceRepresentationView; // @synthesize _presentationSourceRepresentationView=__presentationSourceRepresentationView;
 @property (readonly) long long _resolvedStyle; // @synthesize _resolvedStyle;
@@ -126,6 +128,7 @@
 - (long long)_buttonTypeForBackGestureForIdiom:(long long)arg1;
 - (BOOL)_canBePresentedAtLocation:(struct CGPoint)arg1;
 - (BOOL)_canDismissWithGestureRecognizer;
+- (void)_childViewController:(id)arg1 willTransitionToSize:(struct CGSize)arg2 withAnimations:(CDUnknownBlockType)arg3;
 - (void)_clearActionHandlers;
 - (id)_containedAlertController;
 - (struct UIEdgeInsets)_contentInsets;
@@ -151,6 +154,7 @@
 - (BOOL)_hasDetailMessage;
 - (BOOL)_hasMessage;
 - (BOOL)_hasTitle;
+- (void)_headerContentViewControllerWillTransitionToSize:(struct CGSize)arg1 withAnimations:(CDUnknownBlockType)arg2;
 - (BOOL)_idiomSupportsBackGesture:(long long)arg1;
 - (void)_installBackGestureRecognizer;
 - (void)_invokeHandlersForAction:(id)arg1;
@@ -228,6 +232,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (id)visualStyleForAlertControllerStyle:(long long)arg1 traitCollection:(id)arg2 descriptor:(id)arg3;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;

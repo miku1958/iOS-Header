@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBSceneLayerManagerObserver-Protocol.h>
 #import <FrontBoard/FBSceneManagerInternalObserver-Protocol.h>
@@ -35,15 +35,16 @@
 
 @property (copy, nonatomic) FBSceneMonitorBehaviors *behaviors; // @synthesize behaviors=_givenMonitorBehaviors;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBSceneMonitorDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<FBSceneMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) FBSSceneSettings *effectiveSceneSettings; // @synthesize effectiveSceneSettings=_effectiveSettings;
+@property (readonly, nonatomic) FBSSceneSettings *effectiveSceneSettings; // @synthesize effectiveSceneSettings=_effectiveSettings;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) FBScene *scene; // @synthesize scene=_scene;
+@property (readonly, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (readonly, copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
-@property (readonly, strong, nonatomic) FBSSceneSettings *sceneSettings; // @synthesize sceneSettings=_sceneSettings;
+@property (readonly, nonatomic) FBSSceneSettings *sceneSettings; // @synthesize sceneSettings=_sceneSettings;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_effectiveBehaviors;
 - (void)_evaluateEffectiveMonitorBehaviors;
 - (id)_initWithSceneManager:(id)arg1 sceneID:(id)arg2;

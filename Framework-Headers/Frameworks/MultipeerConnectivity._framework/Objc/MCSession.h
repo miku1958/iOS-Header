@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MCPeerID, NSArray, NSMutableDictionary, NSString;
 @protocol MCSessionDelegate, MCSessionPrivateDelegate, OS_dispatch_queue;

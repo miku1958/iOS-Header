@@ -8,13 +8,12 @@
 
 #import <Navigation/GEOETAUpdaterDelegate-Protocol.h>
 
-@class GEOComposedRoute, GEOComposedWaypoint, GEOETAUpdater, GEONavigationMapMatcher, MNActiveRouteInfo, MNLocation, MNNavigationTraceManager, NSString;
+@class GEOComposedRoute, GEOComposedWaypoint, GEOETAUpdater, GEONavigationMapMatcher, MNActiveRouteInfo, MNCommuteDestinationSuggestion, MNLocation, MNNavigationTraceManager, NSString;
 @protocol GEODirectionServiceTicket, GEOMapServiceTicket;
 
 __attribute__((visibility("hidden")))
 @interface MNCommuteLocationTracker : MNLocationTracker <GEOETAUpdaterDelegate>
 {
-    GEOComposedWaypoint *_destination;
     GEOComposedWaypoint *_lastOrigin;
     MNLocation *_lastLocation;
     MNActiveRouteInfo *_routeInfo;
@@ -22,20 +21,22 @@ __attribute__((visibility("hidden")))
     id<GEODirectionServiceTicket> _directionsRequestTicket;
     GEONavigationMapMatcher *_mapMatcher;
     GEOETAUpdater *_etaUpdater;
-    unsigned long long _destinationID;
     MNNavigationTraceManager *_traceManager;
     BOOL _requestNonRecommendedRoutes;
     BOOL _routingInProgress;
+    unsigned long long _destinationID;
+    MNCommuteDestinationSuggestion *_suggestion;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) GEOComposedWaypoint *destination; // @synthesize destination=_destination;
+@property (readonly, nonatomic) GEOComposedWaypoint *destination;
 @property (nonatomic) unsigned long long destinationID; // @synthesize destinationID=_destinationID;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL requestNonRecommendedRoutes; // @synthesize requestNonRecommendedRoutes=_requestNonRecommendedRoutes;
 @property (readonly, nonatomic) GEOComposedRoute *route;
 @property (nonatomic) BOOL routingInProgress; // @synthesize routingInProgress=_routingInProgress;
+@property (readonly, nonatomic) MNCommuteDestinationSuggestion *suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -54,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)etaUpdaterReceivedInvalidRoute:(id)arg1 newRoute:(id)arg2 incidentsOnRoute:(id)arg3 incidentsOffRoute:(id)arg4;
 - (id)etaUpdaterRoutesForETATrafficUpdateRequest:(id)arg1;
 - (void)etaUpdaterUpdatedETA:(id)arg1;
-- (id)initWithDestination:(id)arg1 traceManager:(id)arg2;
+- (id)initWithSuggestion:(id)arg1 traceManager:(id)arg2;
 - (void)startTracking;
 - (void)stopTracking;
 - (int)transportType;

@@ -8,7 +8,6 @@
 
 @interface NSXPCConnection (UserNotificationsServer)
 - (id)uns_clientBundleProxy;
-- (id)uns_clientRemoteNotificationEnvironment;
 - (BOOL)uns_isAllowedToRequestUserNotificationsForBundleIdentifier:(id)arg1;
 @end
 

@@ -9,9 +9,6 @@
 @class TSSPropertySet, TSSPropertySetChangeDetails;
 
 @protocol TSDChangeableInfo <TSDInfo>
-
-@property (readonly, nonatomic) BOOL isUserModifiable;
-
 - (void)beginCollectingChanges;
 - (TSSPropertySetChangeDetails *)endCollectingChanges;
 - (void)willChangeProperty:(int)arg1;

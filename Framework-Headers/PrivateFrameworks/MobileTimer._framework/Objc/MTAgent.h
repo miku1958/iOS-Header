@@ -9,8 +9,8 @@
 #import <MobileTimer/MTAgentDiagnosticDelegate-Protocol.h>
 #import <MobileTimer/MTSystemStateDelegate-Protocol.h>
 
-@class MTAgentDiagnosticListener, MTAgentNotificationManager, MTAlarmScheduler, MTAlarmServer, MTAlarmSnapshot, MTAlarmStorage, MTAlarmSyncDataModel, MTLanguageChangeListener, MTMetrics, MTPairedDeviceListener, MTSleepMetrics, MTSleepMonitor, MTSyncCommandListener, MTSyncManager, MTSyncMonitor, MTSyncStorage, MTSystemStateListener, MTTimeListener, MTTimerScheduler, MTTimerServer, MTTimerSnapshot, MTTimerStorage, NSDate, NSString;
-@protocol MTNotificationPoster;
+@class MTAgentDiagnosticListener, MTAgentNotificationManager, MTAlarmIntentDonor, MTAlarmScheduler, MTAlarmServer, MTAlarmSnapshot, MTAlarmStorage, MTBedtimeDNDMonitor, MTBedtimeSnapshot, MTLanguageChangeListener, MTPairedDeviceListener, MTSleepMetrics, MTSleepMonitor, MTSyncCommandListener, MTSystemStateListener, MTTimeListener, MTTimerIntentDonor, MTTimerScheduler, MTTimerServer, MTTimerSnapshot, MTTimerStorage, NSDate, NSString;
+@protocol MTNotificationCenter, MTNotificationResponseDelegate;
 
 @interface MTAgent : NSObject <MTAgentDiagnosticDelegate, MTSystemStateDelegate>
 {
@@ -24,29 +24,30 @@
     MTAgentDiagnosticListener *_diagnostics;
     MTTimeListener *_timeListener;
     MTAlarmServer *_alarmServer;
-    MTAlarmSyncDataModel *_alarmSyncDataModel;
     MTAlarmScheduler *_alarmScheduler;
-    MTSyncStorage *_alarmSyncStorage;
     MTAlarmSnapshot *_alarmSnapshot;
+    MTBedtimeSnapshot *_bedtimeSnapshot;
     MTAlarmStorage *_alarmStorage;
-    MTSyncManager *_syncManager;
-    MTSyncMonitor *_syncMonitor;
+    MTAlarmIntentDonor *_alarmIntentDonor;
     MTSleepMonitor *_sleepMonitor;
     MTSleepMetrics *_sleepMetrics;
-    MTMetrics *_syncMetrics;
+    MTBedtimeDNDMonitor *_bedtimeDNDMonitor;
     MTTimerServer *_timerServer;
     MTTimerScheduler *_timerScheduler;
     MTTimerSnapshot *_timerSnapshot;
     MTTimerStorage *_timerStorage;
-    id<MTNotificationPoster> _notificationPoster;
+    MTTimerIntentDonor *_timerIntentDonor;
+    id<MTNotificationCenter> _notificationCenter;
+    id<MTNotificationResponseDelegate> _notificationResponseDelegate;
 }
 
+@property (strong, nonatomic) MTAlarmIntentDonor *alarmIntentDonor; // @synthesize alarmIntentDonor=_alarmIntentDonor;
 @property (strong, nonatomic) MTAlarmScheduler *alarmScheduler; // @synthesize alarmScheduler=_alarmScheduler;
 @property (strong, nonatomic) MTAlarmServer *alarmServer; // @synthesize alarmServer=_alarmServer;
 @property (strong, nonatomic) MTAlarmSnapshot *alarmSnapshot; // @synthesize alarmSnapshot=_alarmSnapshot;
 @property (strong, nonatomic) MTAlarmStorage *alarmStorage; // @synthesize alarmStorage=_alarmStorage;
-@property (strong, nonatomic) MTAlarmSyncDataModel *alarmSyncDataModel; // @synthesize alarmSyncDataModel=_alarmSyncDataModel;
-@property (strong, nonatomic) MTSyncStorage *alarmSyncStorage; // @synthesize alarmSyncStorage=_alarmSyncStorage;
+@property (strong, nonatomic) MTBedtimeDNDMonitor *bedtimeDNDMonitor; // @synthesize bedtimeDNDMonitor=_bedtimeDNDMonitor;
+@property (strong, nonatomic) MTBedtimeSnapshot *bedtimeSnapshot; // @synthesize bedtimeSnapshot=_bedtimeSnapshot;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) MTAgentDiagnosticListener *diagnostics; // @synthesize diagnostics=_diagnostics;
@@ -54,18 +55,17 @@
 @property (strong, nonatomic) MTLanguageChangeListener *languageChangeListener; // @synthesize languageChangeListener=_languageChangeListener;
 @property (strong, nonatomic) NSDate *launchDate; // @synthesize launchDate=_launchDate;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
+@property (strong, nonatomic) id<MTNotificationCenter> notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (strong, nonatomic) MTAgentNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
-@property (strong, nonatomic) id<MTNotificationPoster> notificationPoster; // @synthesize notificationPoster=_notificationPoster;
+@property (strong, nonatomic) id<MTNotificationResponseDelegate> notificationResponseDelegate; // @synthesize notificationResponseDelegate=_notificationResponseDelegate;
 @property (strong, nonatomic) MTPairedDeviceListener *pairedDeviceListener; // @synthesize pairedDeviceListener=_pairedDeviceListener;
 @property (strong, nonatomic) MTSleepMetrics *sleepMetrics; // @synthesize sleepMetrics=_sleepMetrics;
 @property (strong, nonatomic) MTSleepMonitor *sleepMonitor; // @synthesize sleepMonitor=_sleepMonitor;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MTSyncCommandListener *syncCommandListener; // @synthesize syncCommandListener=_syncCommandListener;
-@property (strong, nonatomic) MTSyncManager *syncManager; // @synthesize syncManager=_syncManager;
-@property (strong, nonatomic) MTMetrics *syncMetrics; // @synthesize syncMetrics=_syncMetrics;
-@property (strong, nonatomic) MTSyncMonitor *syncMonitor; // @synthesize syncMonitor=_syncMonitor;
 @property (strong, nonatomic) MTSystemStateListener *systemStateListener; // @synthesize systemStateListener=_systemStateListener;
 @property (strong, nonatomic) MTTimeListener *timeListener; // @synthesize timeListener=_timeListener;
+@property (strong, nonatomic) MTTimerIntentDonor *timerIntentDonor; // @synthesize timerIntentDonor=_timerIntentDonor;
 @property (strong, nonatomic) MTTimerScheduler *timerScheduler; // @synthesize timerScheduler=_timerScheduler;
 @property (strong, nonatomic) MTTimerServer *timerServer; // @synthesize timerServer=_timerServer;
 @property (strong, nonatomic) MTTimerSnapshot *timerSnapshot; // @synthesize timerSnapshot=_timerSnapshot;
@@ -73,12 +73,14 @@
 
 + (id)agent;
 - (void).cxx_destruct;
+- (id)_diagnosticProviders;
 - (void)_setupAlarms;
 - (void)_setupInitialListeners;
 - (void)_setupSecondaryListeners;
 - (void)_setupSync;
 - (void)_setupSyncMonitor;
 - (void)_setupTimers;
+- (id)gatherDiagnostics;
 - (void)handleF5Reset;
 - (id)init;
 - (void)printDiagnostics;

@@ -7,15 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <PhotoAnalysis/NSXPCConnectionDelegate-Protocol.h>
+#import <PhotoAnalysis/PHAGraphRegistration-Protocol.h>
+#import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
 #import <PhotoAnalysis/PLPhotoAnalysisServiceProtocol-Protocol.h>
 
-@class NSLock, NSMapTable, NSString, NSXPCConnection, PHAExecutive, PHAManager;
-@protocol OS_dispatch_semaphore;
+@class NSLock, NSMapTable, NSMutableArray, NSString, NSXPCConnection, PHAExecutive, PHAManager;
+@protocol OS_dispatch_group, OS_dispatch_semaphore;
 
-@interface PHAServiceClientHandler : NSObject <NSXPCConnectionDelegate, PLPhotoAnalysisServiceProtocol>
+@interface PHAServiceClientHandler : NSObject <NSXPCConnectionDelegate, PHAServiceOperationHandling, PHAGraphRegistration, PLPhotoAnalysisServiceProtocol>
 {
     NSString *_clientBundleID;
     NSMapTable *_cancelableOperationsById;
+    NSMutableArray *_clientHandlers;
+    unsigned long long _graphLoadCount;
+    NSObject<OS_dispatch_group> *_graphReady;
     PHAManager *_photoAnalysisManager;
     NSXPCConnection *_xpcConnection;
     PHAExecutive *_executive;
@@ -42,12 +47,23 @@
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (id)contextInformationFromInvocation:(id)arg1;
 - (id)forwardingTargetForInvocation:(id)arg1 contextInformation:(id)arg2;
+- (void)graphBecameReady:(id)arg1 forPHAGraphManager:(id)arg2;
+- (void)graphUpdateDidStop;
+- (void)graphUpdateIsConsistent;
+- (void)graphUpdateMadeProgress:(double)arg1;
+- (void)handleOperation:(id)arg1;
 - (id)init;
 - (id)initWithXPCConnection:(id)arg1 executive:(id)arg2;
+- (BOOL)isPhotos;
+- (BOOL)isplphotosctl;
 - (id)libraryURLFromContextInformation:(id)arg1;
+- (void)loadGraphWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)managerForInvocation:(id)arg1 contextInformation:(id)arg2;
 - (void)shutdown;
 - (void)submitBlockToExecutiveStateQueue:(CDUnknownBlockType)arg1;
+- (void)unloadGraphWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (BOOL)wantsGraphUpdateNotifications;
+- (BOOL)wantsLiveGraphUpdates;
 
 @end
 

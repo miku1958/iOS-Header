@@ -20,7 +20,7 @@
 - (void).cxx_destruct;
 - (id)_createEmptyMessageFileForDE:(id)arg1 extensionName:(id)arg2 forSession:(id)arg3 device:(id)arg4 withRootDir:(id)arg5;
 - (id)_processAttachments:(id)arg1 forSession:(id)arg2 extension:(id)arg3 rootDir:(id)arg4;
-- (id)collectedGroupsForSession:(id)arg1 matchingExtensinos:(id)arg2;
+- (id)collectedGroupsForSession:(id)arg1 matchingExtensions:(id)arg2;
 - (id)createEmptyMessageFileForDE:(id)arg1 extensionName:(id)arg2 forSession:(id)arg3 device:(id)arg4;
 - (id)dedDirectory;
 - (id)directoryForBugSession:(id)arg1;
@@ -28,6 +28,7 @@
 - (id)directoryForBugSession:(id)arg1 extension:(id)arg2 rootDirectory:(id)arg3 createIfNeeded:(BOOL)arg4;
 - (id)directoryForBugSession:(id)arg1 rootDirectory:(id)arg2 createIfNeeded:(BOOL)arg3;
 - (unsigned long long)directorySizeForBugSession:(id)arg1;
+- (id)identifierForAdoptingFile:(id)arg1;
 - (id)init;
 - (id)processAttachments:(id)arg1 forSession:(id)arg2 extension:(id)arg3;
 - (void)removeDEFiles:(id)arg1 inSession:(id)arg2;

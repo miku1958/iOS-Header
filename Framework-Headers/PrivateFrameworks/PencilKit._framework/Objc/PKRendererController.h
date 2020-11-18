@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class CAEAGLLayer, NSMutableArray, PKLinedPaper, PKRenderer, PKStrokeGenerator;
+#import <PencilKit/PKRendererControllerProtocol-Protocol.h>
+
+@class CAEAGLLayer, NSMutableArray, NSString, PKLinedPaper, PKRenderer, PKStrokeGenerator;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
-@interface PKRendererController : NSObject
+@interface PKRendererController : NSObject <PKRendererControllerProtocol>
 {
     NSObject<OS_dispatch_queue> *_renderQueue;
     NSObject<OS_dispatch_semaphore> *_canBeginRenderSemaphore;
@@ -25,48 +27,51 @@
     int renderbufferWidth;
     int renderbufferHeight;
     CAEAGLLayer *_presentationLayer;
-    BOOL _drawingCommands;
     PKStrokeGenerator *_inputController;
     PKLinedPaper *_linedPaper;
     PKRenderer *_renderer;
     double _inputScale;
-    struct CGSize _pixelSize;
     struct CGSize _actualSize;
+    struct CGSize _pixelSize;
     struct CGRect _viewScissor;
     struct CGAffineTransform _strokeTransform;
     struct CGAffineTransform _paperTransform;
     struct CGAffineTransform _renderTransform;
 }
 
-@property (nonatomic) struct CGSize actualSize; // @synthesize actualSize=_actualSize;
+@property (readonly, nonatomic) struct CGSize actualSize; // @synthesize actualSize=_actualSize;
 @property (nonatomic) double backboardPaperMultiply;
-@property BOOL drawingCommands; // @synthesize drawingCommands=_drawingCommands;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKStrokeGenerator *inputController; // @synthesize inputController=_inputController;
 @property double inputScale; // @synthesize inputScale=_inputScale;
 @property (strong, nonatomic) PKLinedPaper *linedPaper; // @synthesize linedPaper=_linedPaper;
 @property (nonatomic) struct CGAffineTransform paperTransform; // @synthesize paperTransform=_paperTransform;
-@property (nonatomic) struct CGSize pixelSize; // @synthesize pixelSize=_pixelSize;
+@property (readonly, nonatomic) struct CGSize pixelSize; // @synthesize pixelSize=_pixelSize;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *renderQueue; // @synthesize renderQueue=_renderQueue;
 @property struct CGAffineTransform renderTransform; // @synthesize renderTransform=_renderTransform;
 @property (strong, nonatomic) PKRenderer *renderer; // @synthesize renderer=_renderer;
-@property (nonatomic) BOOL solidColorBackboard;
 @property (nonatomic) struct CGAffineTransform strokeTransform; // @synthesize strokeTransform=_strokeTransform;
+@property (readonly) Class superclass;
 @property (nonatomic) struct CGRect viewScissor; // @synthesize viewScissor=_viewScissor;
 
 - (void).cxx_destruct;
-- (void)_copyIntoTilesFromRenderQueue:(id)arg1;
+- (void)_copyIntoTilesFromRenderQueue:(id)arg1 tileTransform:(struct CGAffineTransform)arg2;
 - (void)_createFramebuffer;
 - (void)_deleteFramebuffer;
 - (void)_discard;
-- (struct CGRect)_getContentsBoundsInStrokeSpace;
+- (void)_drawStrokesAfterClear:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 useLayerContext:(BOOL)arg4 renderCompletion:(CDUnknownBlockType)arg5;
 - (void)_present:(double)arg1;
 - (void)_renderAheadWithTransform:(struct CGAffineTransform)arg1 at:(double)arg2;
 - (void)_renderAndPresent:(BOOL)arg1 withTransform:(struct CGAffineTransform)arg2;
 - (void)_renderDrawPoints;
 - (void)_renderLiveStrokeAndPresentWithTransform:(struct CGAffineTransform)arg1 at:(double)arg2;
+- (void)buildRenderCacheForStrokes:(id)arg1;
 - (void)callBlockAfterPresenting:(CDUnknownBlockType)arg1;
 - (void)cancelAllRendering;
 - (void)cancelLongRunningRenders;
+- (void)cancelVSyncTimeoutBlock;
 - (void)changeRenderSize;
 - (void)clear;
 - (void)copyIntoTiles:(id)arg1;
@@ -87,23 +92,26 @@
 - (void)drawingEnded:(id)arg1 finishStrokeBlock:(CDUnknownBlockType)arg2;
 - (void)enableRendering;
 - (void)flushMemoryIfPossible;
-- (struct CGRect)getContentsBoundsInStrokeSpace;
 - (id)init;
-- (id)initWithPixelSize:(struct CGSize)arg1 actualSize:(struct CGSize)arg2;
+- (id)initWithPixelSize:(struct CGSize)arg1 actualSize:(struct CGSize)arg2 renderQueue:(id)arg3;
 - (BOOL)isAllRenderingCancelled;
 - (BOOL)isLongRunningRenderingCancelled;
 - (struct CGImage *)newCGImage;
 - (struct CGImage *)newCGImageWithClipRect:(struct CGRect)arg1;
 - (BOOL)prerenderWithTransform:(struct CGAffineTransform)arg1 inputScale:(double)arg2 at:(double)arg3;
-- (void)renderTiles:(id)arg1;
+- (void)purgeOriginalBackFramebuffer;
+- (void)renderStrokes:(id)arg1 clippedToStrokeSpaceRect:(struct CGRect)arg2 strokeTransform:(struct CGAffineTransform)arg3 imageClipRect:(struct CGRect)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)renderTiles:(id)arg1 tileTransform:(struct CGAffineTransform)arg2;
 - (void)renderTilesIntoTiles:(id)arg1;
 - (void)resumeLongRunningRenders;
+- (void)resumeLongRunningRendersAfterAllWorkIsDone;
 - (void)setBackgroundColor:(struct CGColor *)arg1;
 - (void)setBackgroundImage:(struct CGImage *)arg1;
 - (void)setPixelSize:(struct CGSize)arg1 actualSize:(struct CGSize)arg2;
 - (void)setPresentationLayer:(id)arg1;
+- (void)setSolidColorBackboard:(BOOL)arg1;
 - (void)setup;
-- (void)setupNewTile:(id)arg1;
+- (BOOL)solidColorBackboard;
 - (void)teardown;
 
 @end

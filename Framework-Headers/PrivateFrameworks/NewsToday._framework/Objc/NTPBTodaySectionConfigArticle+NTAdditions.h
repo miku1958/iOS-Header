@@ -12,12 +12,8 @@
 
 @interface NTPBTodaySectionConfigArticle (NTAdditions) <FCHeadlineMetadata>
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDate *displayDate;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *storyType;
-@property (readonly) Class superclass;
 
 @end
 

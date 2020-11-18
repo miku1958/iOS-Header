@@ -55,10 +55,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double toolbarAlpha; // @synthesize toolbarAlpha=_toolbarAlpha;
 
 - (void).cxx_destruct;
+- (double)_computeClippingExtensionContainerBottomConstraint;
+- (double)_computeClippingExtensionContainerHeightForCurrentHiddenProgress;
 - (void)_embedAccessoryView;
 - (void)_layoutAccessoryView:(id)arg1;
 - (double)_originalToolbarHeightIncludingSafeAreaBottomInset:(BOOL)arg1;
 - (double)_toolbarExtensionHeight;
+- (double)_toolbarSafeAreaInsetBottom;
 - (double)_totalHeight;
 - (BOOL)_tryToSetUp:(BOOL)arg1;
 - (id)init;

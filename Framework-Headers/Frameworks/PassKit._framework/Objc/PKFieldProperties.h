@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -15,10 +15,12 @@
     unsigned long long _technology;
     long long _terminalType;
     long long _valueAddedServiceMode;
+    NSArray *_TCIs;
     NSArray *_merchantIdentifiers;
     NSError *_error;
 }
 
+@property (copy, nonatomic) NSArray *TCIs; // @synthesize TCIs=_TCIs;
 @property (copy, nonatomic) NSError *error; // @synthesize error=_error;
 @property (copy, nonatomic) NSArray *merchantIdentifiers; // @synthesize merchantIdentifiers=_merchantIdentifiers;
 @property (readonly, nonatomic) unsigned long long technology; // @synthesize technology=_technology;

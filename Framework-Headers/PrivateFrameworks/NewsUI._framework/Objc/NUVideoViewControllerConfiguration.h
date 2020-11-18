@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <NewsUI/NSCopying-Protocol.h>
-#import <NewsUI/SXVideoViewControllerConfiguration-Protocol.h>
+#import <NewsUI/SVVideoViewControllerConfiguration-Protocol.h>
 
 @class NUVideoViewControllerAdConfiguration;
 
-@interface NUVideoViewControllerConfiguration : NSObject <NSCopying, SXVideoViewControllerConfiguration>
+@interface NUVideoViewControllerConfiguration : NSObject <NSCopying, SVVideoViewControllerConfiguration>
 {
     BOOL _preferredMuteState;
     BOOL _pagingAllowed;

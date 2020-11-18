@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class BitrateLimits, NSMutableArray, VCAudioTier;
+@class BitrateLimits, NSMutableDictionary, VCAudioTier;
 
 __attribute__((visibility("hidden")))
 @interface VCAudioTierPicker : NSObject
 {
-    NSMutableArray *tierTablesForRedNumPayloads;
+    NSMutableDictionary *tierTablesForRedNumPayloads;
     VCAudioTier *defaultTier;
     VCAudioTier *fallbackTier;
     BOOL usingCellular;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 
 + (id)allPossibleCombinations:(id)arg1 supportedPacketsPerBundle:(id)arg2 redNumPayloads:(unsigned int)arg3 headerSize:(unsigned int)arg4 operatingMode:(int)arg5 usingCellular:(BOOL)arg6 useCaseWatchContinuity:(BOOL)arg7;
 + (BOOL)arrayHasObject:(id)arg1 withPayloadType:(int)arg2;
-+ (id)selectHighestQualityAudioTiers:(id)arg1 forBitrateLimits:(id)arg2;
++ (id)selectHighestQualityAudioTiers:(id)arg1 forBitrateLimits:(id)arg2 isHardLimit:(BOOL)arg3;
 + (BOOL)shouldFilterTierForPayloadConfig:(id)arg1 bitRate:(unsigned int)arg2 packetsPerBundle:(unsigned int)arg3 operatingMode:(int)arg4 redNumPayloads:(unsigned int)arg5 cellular:(BOOL)arg6;
 + (id)valueForNetworkBitrate:(id)arg1 networkBitrate:(unsigned int)arg2;
 - (id)allAudioTiers;

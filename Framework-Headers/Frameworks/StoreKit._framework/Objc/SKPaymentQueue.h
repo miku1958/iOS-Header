@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, SKPaymentQueueClient;
 
@@ -18,6 +18,7 @@
 
 + (BOOL)canMakePayments;
 + (id)defaultQueue;
+- (void).cxx_destruct;
 - (void)_applicationWillEnterForegroundNotification:(id)arg1;
 - (id)_applyDownloadChangeset:(id)arg1;
 - (void)_completeRestoreWithMessage:(id)arg1;
@@ -40,6 +41,7 @@
 - (void)_processUpdates:(id)arg1 trimUnmatched:(BOOL)arg2 sendUpdatedDownloads:(BOOL)arg3;
 - (void)_refreshPaymentsWithPolicy:(long long)arg1;
 - (void)_removeLocalTransaction:(id)arg1;
+- (void)_removeNilTransactionObservers;
 - (void)_removePaymentsForMessage:(id)arg1;
 - (void)_sendAppEnteredForegroundMessage;
 - (void)_sendAppStorePendingPaymentsRequestForMessage:(id)arg1;

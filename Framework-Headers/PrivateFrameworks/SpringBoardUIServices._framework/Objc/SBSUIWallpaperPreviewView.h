@@ -32,6 +32,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SBFWallpaperView *wallpaperView; // @synthesize wallpaperView=_wallpaperView;
 
++ (BOOL)shouldEnableParallaxForEffect:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_effectChanged:(id)arg1;
 - (void)_layoutDateView;
@@ -47,7 +48,9 @@
 - (void)irisWallpaperViewPlaybackStateDidChange:(id)arg1;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (unsigned long long)selectedEffect;
 - (void)setIrisInstructionsVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldEnableParallax;
 
 @end
 

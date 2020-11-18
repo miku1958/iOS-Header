@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedback.h>
+#import <UIKitCore/_UIFeedback.h>
 
-#import <UIKit/_UIFeedbackContinuousPlayable-Protocol.h>
-#import <UIKit/_UIFeedbackDiscretePlayable-Protocol.h>
+#import <UIKitCore/_UIFeedbackContinuousPlayable-Protocol.h>
+#import <UIKitCore/_UIFeedbackDiscretePlayable-Protocol.h>
 
 @class NSArray, NSString, NSTimer;
 

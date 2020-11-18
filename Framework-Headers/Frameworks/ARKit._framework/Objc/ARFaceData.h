@@ -12,17 +12,21 @@
 
 @interface ARFaceData : NSObject <NSSecureCoding>
 {
+    BOOL _mirrored;
     NSArray *_detectedFaces;
     NSDictionary *_faceMeshPayload;
 }
 
 @property (strong, nonatomic) NSArray *detectedFaces; // @synthesize detectedFaces=_detectedFaces;
 @property (strong, nonatomic) NSDictionary *faceMeshPayload; // @synthesize faceMeshPayload=_faceMeshPayload;
+@property (nonatomic, getter=isMirrored) BOOL mirrored; // @synthesize mirrored=_mirrored;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithMetadataObjects:(id)arg1 mirroredVideoInput:(BOOL)arg2 stripDetectionData:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

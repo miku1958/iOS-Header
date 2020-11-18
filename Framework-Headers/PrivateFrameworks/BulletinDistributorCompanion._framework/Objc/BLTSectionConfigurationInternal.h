@@ -15,13 +15,19 @@
 
 - (void).cxx_destruct;
 - (id)_loadConfigurations;
+- (id)additionalBridgeSectionIDsForSectionID:(id)arg1;
+- (BOOL)applyWhitelistToChildSections:(id)arg1;
 - (BOOL)hasSectionIDOptedOutOfAttachmentCoordination:(id)arg1;
 - (BOOL)hasSectionIDOptedOutOfCoordination:(id)arg1 subtype:(long long)arg2;
 - (BOOL)hasSectionIDOptedOutOfCoordination:(id)arg1 subtype:(long long)arg2 category:(id)arg3;
+- (BOOL)hasSectionIDOptedOutOfNotificationTuning:(id)arg1;
+- (BOOL)hasSectionIDOptedOutOfSubtitleRemovalForOlderWatches:(id)arg1;
 - (BOOL)hasSectionIDOptedOutOfWaitForUserIdle:(id)arg1;
 - (id)init;
+- (unsigned long long)legacyMapLocationForSectionID:(id)arg1;
 - (BOOL)shouldSectionIDAlwaysAlert:(id)arg1;
 - (BOOL)shouldSectionIDSettingsAlwaysSync:(id)arg1;
+- (id)watchVersionThatUsesUserInfoForContextForSectionID:(id)arg1;
 
 @end
 

@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class PXSectionedSelectionManager;
 @protocol PUAssetActionManagerDelegate;
 
 @interface PUAssetActionManager : NSObject
@@ -14,14 +15,18 @@
 }
 
 @property (weak, nonatomic) id<PUAssetActionManagerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) PXSectionedSelectionManager *px_selectionManager;
 
 + (CDUnknownBlockType)_unlockDeviceHandler;
 + (id)actionManagerLog;
 + (void)setUnlockDeviceHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (id)_assetsByAssetCollectionForAssetReferences:(id)arg1;
 - (id)actionPerformerForDuplicatingAssetsByAssetCollection:(id)arg1 withNewStillImageTime:(CDStruct_1b6d18a9)arg2;
 - (id)actionPerformerForSettingFavoriteTo:(BOOL)arg1 onAssetsByAssetCollection:(id)arg2;
+- (id)actionPerformerForSimpleActionType:(unsigned long long)arg1 onAssetReferences:(id)arg2;
 - (id)actionPerformerForSimpleActionType:(unsigned long long)arg1 onAssetsByAssetCollection:(id)arg2;
+- (BOOL)canPerformAction:(unsigned long long)arg1 onAllAssetReferences:(id)arg2;
 - (BOOL)canPerformAction:(unsigned long long)arg1 onAllAssetsByAssetCollection:(id)arg2;
 - (BOOL)canPerformActionType:(unsigned long long)arg1 onAsset:(id)arg2 inAssetCollection:(id)arg3;
 - (unsigned long long)preferredTrashActionTypeOnAssetsByAssetCollection:(id)arg1;

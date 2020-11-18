@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <DataDetectorsCore/DataDetectorsSourceAccessProtocol-Protocol.h>
 
@@ -26,9 +26,9 @@
 @property unsigned int userIdentifier; // @synthesize userIdentifier=_clientuid;
 
 - (BOOL)clientCanWriteSource:(int)arg1;
-- (void)fileForSourceRead:(id)arg1 withReply:(CDUnknownBlockType)arg2;
-- (id)fileHandleForSourceRead:(int)arg1;
-- (void)filesForSourceRead:(id)arg1 withReply:(CDUnknownBlockType)arg2;
+- (void)fileForSourceRead:(id)arg1 resourceType:(unsigned long long)arg2 withReply:(CDUnknownBlockType)arg3;
+- (id)fileHandleForSourceRead:(int)arg1 resourceType:(unsigned long long)arg2;
+- (void)filesForSourceRead:(id)arg1 resourceType:(unsigned long long)arg2 withReply:(CDUnknownBlockType)arg3;
 - (BOOL)privacySystemWriteEntitled;
 - (BOOL)privacyUserReadEntitled;
 - (BOOL)privacyUserWriteEntitled;

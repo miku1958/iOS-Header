@@ -8,6 +8,7 @@
 
 #import <CorePDF/CPDisposable-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface CPTableCell : CPChunk <CPDisposable>
 {
     struct CGRect cellBounds;

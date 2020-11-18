@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUTWeakReference, NSArray, NSData, NSMutableArray, NSMutableDictionary, NSString;
 @protocol APSConnectionDelegate, OS_dispatch_queue, OS_dispatch_source, OS_xpc_object;
@@ -35,10 +35,13 @@
     NSObject<OS_dispatch_queue> *_delegateQueue;
     BOOL _everHadDelegate;
     NSMutableArray *_queuedDelegateBlocks;
+    NSString *_processName;
+    BOOL _isShutdown;
 }
 
 @property (nonatomic) id<APSConnectionDelegate> delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
+@property (readonly, nonatomic) BOOL isShutdown; // @synthesize isShutdown=_isShutdown;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *ivarQueue; // @synthesize ivarQueue=_ivarQueue;
 @property (nonatomic) unsigned long long largeMessageSize;
 @property (nonatomic) unsigned long long messageSize;
@@ -71,9 +74,10 @@
 - (void)_deliverConnectionStatusFromDealloc:(BOOL)arg1;
 - (void)_deliverDidReconnectOnIvarQueue;
 - (void)_deliverMessage:(id)arg1;
+- (void)_deliverOutgoingMessageResultWithID:(unsigned long long)arg1 checkpointTraceData:(id)arg2 error:(id)arg3;
 - (void)_deliverOutgoingMessageResultWithID:(unsigned long long)arg1 error:(id)arg2;
-- (void)_deliverPublicToken:(id)arg1;
-- (void)_deliverPublicTokenOnIvarQueue:(id)arg1;
+- (void)_deliverPublicToken:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)_deliverPublicTokenOnIvarQueue:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_deliverToken:(id)arg1 forTopic:(id)arg2 identifier:(id)arg3;
 - (void)_disconnect;
 - (void)_disconnectFromDealloc;
@@ -91,6 +95,7 @@
 - (void)_shutdownFromDealloc;
 - (void)_shutdownOnIvarQueue;
 - (void)cancelOutgoingMessage:(id)arg1;
+- (void)confirmReceiptForMessage:(id)arg1;
 - (void)dealloc;
 - (id)enabledTopics;
 - (BOOL)hasIdentity;
@@ -115,6 +120,8 @@
 - (void)setEnabledTopics:(id)arg1;
 - (void)setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2;
 - (void)setEnabledTopics:(id)arg1 ignoredTopics:(id)arg2 opportunisticTopics:(id)arg3;
+- (void)setIgnoredTopics:(id)arg1;
+- (void)setOpportunisticTopics:(id)arg1;
 - (void)shutdown;
 
 @end

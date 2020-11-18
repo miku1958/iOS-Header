@@ -10,6 +10,7 @@
 {
 }
 
+- (unsigned long long)_itemType;
 - (BOOL)hasContent;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSError, NSMutableData;
 
@@ -15,8 +15,8 @@
     unsigned long long _length;
     void *_bufferBytes;
     NSMutableData *_bufferData;
-    NSData *_data;
     CDUnknownBlockType _completion;
+    NSData *_data;
     unsigned long long _minLength;
     unsigned long long _maxLength;
 }

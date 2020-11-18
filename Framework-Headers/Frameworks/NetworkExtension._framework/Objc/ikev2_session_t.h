@@ -99,6 +99,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)blackholeDetectedSA:(id)arg1;
 - (void)dealloc;
 - (void)deleteSA:(id)arg1;
 - (void)expireSA:(id)arg1;

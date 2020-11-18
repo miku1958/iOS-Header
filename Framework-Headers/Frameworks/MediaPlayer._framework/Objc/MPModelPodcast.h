@@ -27,6 +27,7 @@
 + (id)__title_KEY;
 + (id)kindWithEpisodeKind:(id)arg1;
 - (id)artworkCatalog;
+- (id)humanDescription;
 
 @end
 

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGestureRecognizer.h>
+#import <UIKitCore/UIGestureRecognizer.h>
 
 @class NSTimer;
 
 __attribute__((visibility("hidden")))
 @interface _UISystemGestureGateGestureRecognizer : UIGestureRecognizer
 {
+    unsigned char _systemGestureGateType;
     unsigned int _systemGesturesRecognitionPossible:1;
     unsigned int _waitingForSystemGestureStateNotification:1;
     double _lastTouchTime;
@@ -18,7 +19,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (BOOL)_shouldDefaultToTouches;
-- (int)_gateGestureType;
+- (void)_delayTouch:(id)arg1 forEvent:(id)arg2;
 - (id)_gateGestureTypeString;
 - (void)_resetGestureRecognizer;
 - (void)_systemGestureStateChanged:(id)arg1;
@@ -27,7 +28,9 @@ __attribute__((visibility("hidden")))
 - (BOOL)canPreventGestureRecognizer:(id)arg1;
 - (void)dealloc;
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
-- (id)initWithWindow:(id)arg1;
+- (id)initWithWindow:(id)arg1 type:(unsigned char)arg2;
+- (void)setDelaysTouchesBegan:(BOOL)arg1;
+- (void)setDelaysTouchesEnded:(BOOL)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (BOOL)shouldBeRequiredToFailByGestureRecognizer:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;

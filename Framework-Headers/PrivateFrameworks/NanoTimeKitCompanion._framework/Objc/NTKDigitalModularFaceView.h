@@ -27,7 +27,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_swatchImageForColorOption:(id)arg1;
++ (void)_performIfNonRichModuleView:(id)arg1 actions:(CDUnknownBlockType)arg2;
++ (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyFaceColor:(unsigned long long)arg1 toModuleView:(id)arg2;
@@ -44,9 +45,11 @@
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
+- (long long)_keylineStyleForComplicationSlot:(id)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_layoutForegroundContainerView;
 - (void)_layoutTimeTravelCaptionView:(id)arg1;
@@ -66,6 +69,7 @@
 - (void)_unloadSnapshotContentViews;
 - (void)_updateLocale;
 - (BOOL)_wantsTimeTravelStatusModule;
+- (long long)complicationFamilyForSlot:(id)arg1;
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)performTapAction;

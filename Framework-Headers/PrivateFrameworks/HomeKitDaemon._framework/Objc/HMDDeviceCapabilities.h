@@ -6,53 +6,71 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreModelBackedObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
-#import <HomeKitDaemon/NSMutableCopying-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@interface HMDDeviceCapabilities : HMFObject <NSCopying, NSMutableCopying, NSSecureCoding>
+@class HMDDeviceCapabilitiesModel, NSString, NSUUID;
+
+@interface HMDDeviceCapabilities : HMFObject <HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, NSCopying, NSSecureCoding>
 {
-    BOOL _supportsKeychainSync;
-    BOOL _supportsDeviceSetup;
-    BOOL _supportsKeyTransferClient;
-    BOOL _supportsKeyTransferServer;
-    BOOL _supportsStandaloneMode;
-    BOOL _supportsCloudDataSync;
-    BOOL _supportsWholeHouseAudio;
-    BOOL _supportsAssistantAccessControl;
-    BOOL _residentCapable;
-    BOOL _remoteGatewayCapable;
+    HMDDeviceCapabilitiesModel *_objectModel;
 }
 
-@property (readonly, nonatomic, getter=isRemoteGatewayCapable) BOOL remoteGatewayCapable; // @synthesize remoteGatewayCapable=_remoteGatewayCapable;
-@property (readonly, nonatomic, getter=isResidentCapable) BOOL residentCapable; // @synthesize residentCapable=_residentCapable;
-@property (readonly, nonatomic) BOOL supportsAssistantAccessControl; // @synthesize supportsAssistantAccessControl=_supportsAssistantAccessControl;
-@property (readonly, nonatomic) BOOL supportsCloudDataSync; // @synthesize supportsCloudDataSync=_supportsCloudDataSync;
-@property (readonly, nonatomic) BOOL supportsDeviceSetup; // @synthesize supportsDeviceSetup=_supportsDeviceSetup;
-@property (readonly, nonatomic) BOOL supportsKeyTransferClient; // @synthesize supportsKeyTransferClient=_supportsKeyTransferClient;
-@property (readonly, nonatomic) BOOL supportsKeyTransferServer; // @synthesize supportsKeyTransferServer=_supportsKeyTransferServer;
-@property (readonly, nonatomic) BOOL supportsKeychainSync; // @synthesize supportsKeychainSync=_supportsKeychainSync;
-@property (readonly, nonatomic) BOOL supportsStandaloneMode; // @synthesize supportsStandaloneMode=_supportsStandaloneMode;
-@property (readonly, nonatomic) BOOL supportsWholeHouseAudio; // @synthesize supportsWholeHouseAudio=_supportsWholeHouseAudio;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSUUID *modelIdentifier;
+@property (strong, nonatomic) NSUUID *modelParentIdentifier;
+@property (strong, nonatomic) HMDDeviceCapabilitiesModel *objectModel; // @synthesize objectModel=_objectModel;
+@property (readonly, nonatomic, getter=isRemoteGatewayCapable) BOOL remoteGatewayCapable;
+@property (readonly, nonatomic, getter=isResidentCapable) BOOL residentCapable;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsAssistantAccessControl;
+@property (readonly, nonatomic) BOOL supportsCloudDataSync;
+@property (readonly, nonatomic) BOOL supportsDeviceSetup;
+@property (readonly, nonatomic) BOOL supportsHomeInvitation;
+@property (readonly, nonatomic) BOOL supportsKeyTransferClient;
+@property (readonly, nonatomic) BOOL supportsKeyTransferServer;
+@property (readonly, nonatomic) BOOL supportsKeychainSync;
+@property (readonly, nonatomic) BOOL supportsStandaloneMode;
+@property (readonly, nonatomic) BOOL supportsTargetControl;
+@property (readonly, nonatomic) BOOL supportsWholeHouseAudio;
 
 + (id)deviceCapabilities;
++ (id)deviceCapabilitiesModelIdentifierWithParentIdentifier:(id)arg1;
 + (BOOL)isAppleMediaAccessory;
-+ (id)shortDescription;
++ (BOOL)supportsAddingAccessory;
++ (BOOL)supportsCameraSnapshotRequestViaRelay;
++ (BOOL)supportsCustomerReset;
++ (BOOL)supportsDeviceLock;
++ (BOOL)supportsDismissUserNotificationAndDialog;
 + (BOOL)supportsHomeApp;
++ (BOOL)supportsIntentDonation;
 + (BOOL)supportsLocalization;
++ (BOOL)supportsReceivingRemoteCameraStream;
++ (BOOL)supportsRemoteAccess;
 + (BOOL)supportsSecureCoding;
++ (BOOL)supportsSymptomsHandler;
++ (BOOL)supportsSyncingToSharedUsers;
++ (BOOL)supportsTargetControllerAutoConfigure;
++ (BOOL)supportsUserNotifications;
+- (void).cxx_destruct;
+- (id)attributeDescriptions;
+- (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugDescription;
-- (id)description;
-- (id)descriptionWithPointer:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithObjectModel:(id)arg1;
 - (id)initWithProductInfo:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (id)shortDescription;
+- (id)modelBackedObjects;
+- (id)modelCopyWithChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 
 @end
 

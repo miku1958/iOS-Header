@@ -14,6 +14,7 @@
 
 @property (nonatomic) unsigned long long seed;
 
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

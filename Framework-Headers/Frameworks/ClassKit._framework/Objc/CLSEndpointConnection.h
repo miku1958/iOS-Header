@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <ClassKit/CLSClientDelegate-Protocol.h>
+#import <ClassKit/NSLocking-Protocol.h>
 
-@class NSRecursiveLock, NSString, NSXPCConnection, NSXPCListenerEndpoint;
+@class NSString, NSXPCConnection, NSXPCListenerEndpoint;
 
-@interface CLSEndpointConnection : NSObject <CLSClientDelegate>
+@interface CLSEndpointConnection : NSObject <CLSClientDelegate, NSLocking>
 {
-    NSRecursiveLock *_lock;
+    struct os_unfair_recursive_lock_s _lock;
     NSXPCConnection *_serverConnection;
     NSXPCListenerEndpoint *_endpoint;
     BOOL _connectionBorked;
@@ -29,7 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType onConnect; // @synthesize onConnect=_onConnect;
 @property (copy, nonatomic) CDUnknownBlockType onInterupt; // @synthesize onInterupt=_onInterupt;
-@property (strong, nonatomic) NSString *overrideBundleIdentifier; // @synthesize overrideBundleIdentifier=_overrideBundleIdentifier;
+@property (copy, nonatomic) NSString *overrideBundleIdentifier; // @synthesize overrideBundleIdentifier=_overrideBundleIdentifier;
 @property (readonly) Class superclass;
 
 + (id)classKitEnvironment;
@@ -56,12 +57,14 @@
 - (void)invalidate;
 - (BOOL)isBorked;
 - (void)listAppsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)lock;
 - (id)server:(CDUnknownBlockType)arg1;
 - (id)serverConnection;
 - (void)setOverrideBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)syncDataServer:(CDUnknownBlockType)arg1;
 - (id)syncServer:(CDUnknownBlockType)arg1;
 - (id)syncUtilityServer:(CDUnknownBlockType)arg1;
+- (void)unlock;
 - (id)utilityServer:(CDUnknownBlockType)arg1;
 
 @end

@@ -23,12 +23,18 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)allTransactionsAndStoreLocally:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)allItemsOfItemType:(unsigned long long)arg1 storeLocally:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchAndStoreRecordsForPaymentPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)generateRandomTransactionForPassWithUniqueIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithConnection:(id)arg1;
-- (void)removeTransactionsWithRecordNames:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)itemOfItemType:(unsigned long long)arg1 recordName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)noteAccountDeletedWithHandler:(CDUnknownBlockType)arg1;
+- (void)noteCloudSyncPassesSwitchChangedWithHandler:(CDUnknownBlockType)arg1;
+- (void)removeItemsWithRecordNames:(id)arg1 itemType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetContainerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)resetContainerWithHandler:(CDUnknownBlockType)arg1;
+- (void)resetContainerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)simulateCloudStorePushForContainerIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)simulateCloudStorePushWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateCloudStoreWithLocalItems:(id)arg1 recordSpecificKeys:(id)arg2 completion:(CDUnknownBlockType)arg3;
 

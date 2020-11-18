@@ -6,28 +6,19 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, NSString, _CPStruct;
+@class NSData, NSDictionary, NSString, _CPNetworkTimingData;
 
 @protocol _CPEndNetworkSearchFeedback <NSObject>
 
 @property (nonatomic) double duration;
 @property (copy, nonatomic) NSString *fbq;
-@property (readonly, nonatomic) BOOL hasDuration;
-@property (readonly, nonatomic) BOOL hasFbq;
-@property (readonly, nonatomic) BOOL hasNetworkTimingData;
-@property (readonly, nonatomic) BOOL hasParsecStatus;
-@property (readonly, nonatomic) BOOL hasPartialClientIp;
-@property (readonly, nonatomic) BOOL hasResponseSize;
-@property (readonly, nonatomic) BOOL hasStatusCode;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasUuid;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (strong, nonatomic) _CPStruct *networkTimingData;
 @property (copy, nonatomic) NSString *parsecStatus;
 @property (copy, nonatomic) NSString *partialClientIp;
 @property (nonatomic) long long responseSize;
 @property (nonatomic) int statusCode;
 @property (nonatomic) unsigned long long timestamp;
+@property (strong, nonatomic) _CPNetworkTimingData *timingData;
 @property (copy, nonatomic) NSString *uuid;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;

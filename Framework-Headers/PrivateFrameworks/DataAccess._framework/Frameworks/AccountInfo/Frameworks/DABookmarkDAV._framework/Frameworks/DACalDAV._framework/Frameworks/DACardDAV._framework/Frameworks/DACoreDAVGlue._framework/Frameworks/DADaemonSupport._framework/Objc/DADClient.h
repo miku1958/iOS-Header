@@ -12,7 +12,6 @@
 @interface DADClient : DADisableableObject
 {
     BOOL _persistent;
-    int _numOutstandingAgentDisables;
     int _numOutstandingBlockingClientCalls;
     int _numOutstandingRefreshPriorityClientCalls;
     NSString *_clientBundleID;
@@ -24,16 +23,17 @@
     NSMutableDictionary *_accountTimers;
     NSMutableDictionary *_actionDelegatesById;
     NSString *_clientName;
+    NSMutableDictionary *_agentMonitoringTokens;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *accountTimers; // @synthesize accountTimers=_accountTimers;
 @property (strong, nonatomic) NSMutableDictionary *actionDelegatesById; // @synthesize actionDelegatesById=_actionDelegatesById;
+@property (strong, nonatomic) NSMutableDictionary *agentMonitoringTokens; // @synthesize agentMonitoringTokens=_agentMonitoringTokens;
 @property (strong, nonatomic) NSMutableDictionary *busyIDs; // @synthesize busyIDs=_busyIDs;
 @property (strong, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property (strong, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (strong, nonatomic) NSString *clientUniqueID; // @synthesize clientUniqueID=_clientUniqueID;
 @property (strong, nonatomic) NSObject<OS_xpc_object> *conn; // @synthesize conn=_conn;
-@property (nonatomic) int numOutstandingAgentDisables; // @synthesize numOutstandingAgentDisables=_numOutstandingAgentDisables;
 @property (nonatomic) int numOutstandingBlockingClientCalls; // @synthesize numOutstandingBlockingClientCalls=_numOutstandingBlockingClientCalls;
 @property (nonatomic) int numOutstandingRefreshPriorityClientCalls; // @synthesize numOutstandingRefreshPriorityClientCalls=_numOutstandingRefreshPriorityClientCalls;
 @property (readonly, nonatomic) BOOL persistent; // @synthesize persistent=_persistent;
@@ -52,6 +52,7 @@
 - (void)_cancelDownloadingAttachmentEvent:(id)arg1 eventDict:(id)arg2;
 - (void)_cancelServerContactsSearch:(id)arg1;
 - (void)_checkIsOofSettingsSupported:(id)arg1;
+- (void)_clearAllStopMonitoringAgentsTokens;
 - (void)_clientDiedWithReason:(id)arg1;
 - (id)_clientName;
 - (id)_createReplyToRequest:(id)arg1 withProperties:(id)arg2;
@@ -89,7 +90,10 @@
 - (void)_resumeMonitoringFolders:(id)arg1;
 - (void)_setFolderIdsThatExternalClientsCareAbout:(id)arg1;
 - (void)_startMonitoringAgents:(id)arg1;
+- (void)_startMonitoringAgentsWithClientToken:(unsigned long long)arg1;
+- (void)_startMonitoringAgentsWithServerToken:(unsigned long long)arg1;
 - (void)_stopMonitoringAgents:(id)arg1;
+- (void)_stopMonitoringAgentsWithClientToken:(unsigned long long)arg1;
 - (void)_stopMonitoringFolders:(id)arg1;
 - (void)_suspendMonitoringFolders:(id)arg1;
 - (void)applyClientStatusReportToAggregator:(id)arg1;

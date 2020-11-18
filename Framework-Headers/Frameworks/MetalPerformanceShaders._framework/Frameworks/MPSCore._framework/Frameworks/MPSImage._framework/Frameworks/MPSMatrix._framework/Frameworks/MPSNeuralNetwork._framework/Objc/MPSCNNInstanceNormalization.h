@@ -21,12 +21,15 @@
 @property (nonatomic) float epsilon; // @synthesize epsilon=_epsilon;
 
 + (const struct MPSLibraryInfo *)libraryInfo;
+- (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 dataSource:(id)arg2;
 - (void)reloadDataSource:(id)arg1;
+- (void)reloadDataSourceDeprecated:(id)arg1;
+- (void)reloadGammaAndBetaFromDataSource;
 - (void)reloadGammaAndBetaWithCommandBuffer:(id)arg1 gammaAndBetaState:(id)arg2;
 - (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;

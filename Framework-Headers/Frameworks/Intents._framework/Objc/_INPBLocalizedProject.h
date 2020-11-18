@@ -7,32 +7,34 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBLocalizedProject-Protocol.h>
 
-@class PBUnknownFields, _INPBAppNames, _INPBIntentVocabulary, _INPBLanguageTag;
+@class NSString, _INPBAppNames, _INPBIntentVocabulary, _INPBLanguageTag;
 
-@interface _INPBLocalizedProject : PBCodable <NSCopying>
+@interface _INPBLocalizedProject : PBCodable <_INPBLocalizedProject, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBAppNames *_appNames;
     _INPBIntentVocabulary *_intentVocabulary;
     _INPBLanguageTag *_language;
 }
 
 @property (strong, nonatomic) _INPBAppNames *appNames; // @synthesize appNames=_appNames;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAppNames;
 @property (readonly, nonatomic) BOOL hasIntentVocabulary;
 @property (readonly, nonatomic) BOOL hasLanguage;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentVocabulary *intentVocabulary; // @synthesize intentVocabulary=_intentVocabulary;
 @property (strong, nonatomic) _INPBLanguageTag *language; // @synthesize language=_language;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

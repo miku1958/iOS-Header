@@ -10,10 +10,12 @@
 
 @interface PHAssetCurationProperties : PHAssetPropertySet
 {
+    float _interestingSubjectScore;
     NSDate *_addedDate;
 }
 
 @property (readonly, nonatomic) NSDate *addedDate; // @synthesize addedDate=_addedDate;
+@property (readonly, nonatomic) float interestingSubjectScore; // @synthesize interestingSubjectScore=_interestingSubjectScore;
 
 + (id)keyPathFromPrimaryObject;
 + (id)keyPathToPrimaryObject;

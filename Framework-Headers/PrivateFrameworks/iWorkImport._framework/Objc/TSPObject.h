@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <iWorkImport/TSPReferenceItem-Protocol.h>
 
 @class NSString, NSUUID, TSPComponent, TSPObjectContext, TSPUnknownContent, TSUUUIDPath;
 @protocol TSPObjectDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSPObject : NSObject
+@interface TSPObject : NSObject <TSPReferenceItem>
 {
     _Atomic long long _identifier;
     _Atomic long long _modifyObjectToken;
@@ -25,7 +27,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL allowsImplicitComponentOwnership;
 @property (readonly, nonatomic) TSPObject *componentRootObject;
 @property (readonly, nonatomic) TSPObjectContext *context;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) unsigned int delayedArchivingPriority;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCommandObject;
 @property (readonly, nonatomic) BOOL isComponentRoot;
 @property (readonly, nonatomic) BOOL needsArchiving;
@@ -34,11 +39,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *packageLocator;
 @property (readonly, nonatomic) BOOL shouldDelayArchiving;
 @property (readonly, nonatomic) BOOL storeOutsideObjectArchive;
+@property (readonly) Class superclass;
 @property (weak, nonatomic) TSPComponent *tsp_component; // @synthesize tsp_component=_component;
 @property (weak, nonatomic) id<TSPObjectDelegate> tsp_delegate; // @synthesize tsp_delegate=_delegate;
 @property (readonly, nonatomic) NSString *tsp_description;
 @property (nonatomic) long long tsp_identifier;
 @property (readonly, nonatomic) BOOL tsp_isInDocument;
+@property (readonly, nonatomic) BOOL tsp_isLazyReference;
 @property (readonly, nonatomic) BOOL tsp_isPersisted;
 @property (nonatomic) long long tsp_modifyObjectToken;
 @property (readonly, nonatomic) long long tsp_unarchiverIdentifier; // @synthesize tsp_unarchiverIdentifier=_unarchiverIdentifier;
@@ -49,6 +56,7 @@ __attribute__((visibility("hidden")))
 + (void)performUpgradeUsingBlock:(CDUnknownBlockType)arg1;
 + (id)tsp_deserializeFromData:(id)arg1 options:(id)arg2 context:(id)arg3 error:(id *)arg4;
 + (id)tsp_deserializeFromURL:(id)arg1 options:(id)arg2 context:(id)arg3 isCrossDocumentPaste:(BOOL)arg4 isCrossAppPaste:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
++ (BOOL)tsp_isPerformingUpgrade;
 + (BOOL)tsp_isTransientObjectIdentifier:(long long)arg1;
 - (void).cxx_destruct;
 - (void)commonInit;

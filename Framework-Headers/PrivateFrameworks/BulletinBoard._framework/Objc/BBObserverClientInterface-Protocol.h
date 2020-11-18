@@ -4,18 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class BBBulletin, BBBulletinUpdateTransaction, BBSectionInfo, BBSectionParameters, NSArray, NSNumber, NSString;
+@class BBBulletin, BBBulletinUpdateTransaction, BBSectionInfo, BBSectionParameters, NSString;
 
 @protocol BBObserverClientInterface
 - (void)getObserverDebugInfo:(void (^)(NSString *))arg1;
-- (void)noteAlertBehaviorOverrideStateChanged:(NSNumber *)arg1;
-- (void)noteAlertBehaviorOverridesChanged:(NSNumber *)arg1;
 - (void)noteServerReceivedResponseForBulletin:(BBBulletin *)arg1;
 - (void)removeSection:(NSString *)arg1;
 - (void)updateBulletin:(BBBulletinUpdateTransaction *)arg1 withHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)updateSectionInfo:(BBSectionInfo *)arg1;
-- (void)updateSectionOrder:(NSArray *)arg1;
-- (void)updateSectionOrderRule:(NSNumber *)arg1;
 - (void)updateSectionParameters:(BBSectionParameters *)arg1 forSectionID:(NSString *)arg2;
 @end
 

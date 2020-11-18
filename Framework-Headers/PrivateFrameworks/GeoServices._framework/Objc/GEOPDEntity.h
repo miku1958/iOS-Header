@@ -10,12 +10,16 @@
 
 @class NSMutableArray, NSString, PBUnknownFields;
 
+__attribute__((visibility("hidden")))
 @interface GEOPDEntity : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    CDStruct_95bda58d _placeLookupCategorys;
+    unsigned long long _brandMuid;
     NSMutableArray *_altFaxs;
     NSMutableArray *_altTelephones;
     NSMutableArray *_altUrls;
+    int _capacity;
     int _displayStyle;
     NSString *_fax;
     NSMutableArray *_localizedCategorys;
@@ -32,6 +36,8 @@
     BOOL _isStandaloneBrand;
     BOOL _telephoneAdsOptOut;
     struct {
+        unsigned int brandMuid:1;
+        unsigned int capacity:1;
         unsigned int displayStyle:1;
         unsigned int placeDisplayType:1;
         unsigned int searchSection:1;
@@ -48,9 +54,13 @@
 @property (nonatomic) BOOL altTelephoneAdsOptOut; // @synthesize altTelephoneAdsOptOut=_altTelephoneAdsOptOut;
 @property (strong, nonatomic) NSMutableArray *altTelephones; // @synthesize altTelephones=_altTelephones;
 @property (strong, nonatomic) NSMutableArray *altUrls; // @synthesize altUrls=_altUrls;
+@property (nonatomic) unsigned long long brandMuid; // @synthesize brandMuid=_brandMuid;
+@property (nonatomic) int capacity; // @synthesize capacity=_capacity;
 @property (nonatomic) int displayStyle; // @synthesize displayStyle=_displayStyle;
 @property (strong, nonatomic) NSString *fax; // @synthesize fax=_fax;
 @property (nonatomic) BOOL hasAltTelephoneAdsOptOut;
+@property (nonatomic) BOOL hasBrandMuid;
+@property (nonatomic) BOOL hasCapacity;
 @property (nonatomic) BOOL hasDisplayStyle;
 @property (readonly, nonatomic) BOOL hasFax;
 @property (nonatomic) BOOL hasIsDisputed;
@@ -68,6 +78,8 @@
 @property (strong, nonatomic) NSMutableArray *localizedCategorys; // @synthesize localizedCategorys=_localizedCategorys;
 @property (strong, nonatomic) NSMutableArray *names; // @synthesize names=_names;
 @property (nonatomic) int placeDisplayType; // @synthesize placeDisplayType=_placeDisplayType;
+@property (readonly, nonatomic) int *placeLookupCategorys;
+@property (readonly, nonatomic) unsigned long long placeLookupCategorysCount;
 @property (nonatomic) int searchSection; // @synthesize searchSection=_searchSection;
 @property (strong, nonatomic) NSMutableArray *spokenNames; // @synthesize spokenNames=_spokenNames;
 @property (strong, nonatomic) NSString *telephone; // @synthesize telephone=_telephone;
@@ -86,6 +98,7 @@
 - (void).cxx_destruct;
 - (int)StringAsDisplayStyle:(id)arg1;
 - (int)StringAsPlaceDisplayType:(id)arg1;
+- (int)StringAsPlaceLookupCategorys:(id)arg1;
 - (int)StringAsSearchSection:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (void)addAltFax:(id)arg1;
@@ -93,6 +106,7 @@
 - (void)addAltUrl:(id)arg1;
 - (void)addLocalizedCategory:(id)arg1;
 - (void)addName:(id)arg1;
+- (void)addPlaceLookupCategory:(int)arg1;
 - (void)addSpokenName:(id)arg1;
 - (id)altFaxAtIndex:(unsigned long long)arg1;
 - (unsigned long long)altFaxsCount;
@@ -106,9 +120,11 @@
 - (void)clearAltUrls;
 - (void)clearLocalizedCategorys;
 - (void)clearNames;
+- (void)clearPlaceLookupCategorys;
 - (void)clearSpokenNames;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)displayStyleAsString:(int)arg1;
@@ -120,8 +136,11 @@
 - (id)nameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)namesCount;
 - (id)placeDisplayTypeAsString:(int)arg1;
+- (int)placeLookupCategoryAtIndex:(unsigned long long)arg1;
+- (id)placeLookupCategorysAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)searchSectionAsString:(int)arg1;
+- (void)setPlaceLookupCategorys:(int *)arg1 count:(unsigned long long)arg2;
 - (id)spokenNameAtIndex:(unsigned long long)arg1;
 - (unsigned long long)spokenNamesCount;
 - (id)typeAsString:(int)arg1;

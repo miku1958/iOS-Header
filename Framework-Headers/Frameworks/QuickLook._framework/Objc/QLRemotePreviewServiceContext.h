@@ -8,13 +8,13 @@
 
 #import <QuickLook/QLRemotePreviewHost-Protocol.h>
 
-@class NSString, UIViewController;
-@protocol QLPreviewingController_Private;
+@class NSString;
 
+__attribute__((visibility("hidden")))
 @interface QLRemotePreviewServiceContext : NSExtensionContext <QLRemotePreviewHost>
 {
-    UIViewController<QLPreviewingController_Private> *_previewViewController;
     BOOL _isObservingPreviewController;
+    id _contents;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,15 +29,20 @@
 - (void)_stopObservingPreviewControllerAttributeChanges;
 - (void)dealloc;
 - (void)getPrinterProxyWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)invalidateService;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)previewControllerDidUpdatePreferredContentSize:(id)arg1;
 - (void)previewControllerDidUpdateTitle:(id)arg1;
+- (void)previewControllerWantsFullScreen:(BOOL)arg1;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
+- (id)previewViewController;
 - (void)previewWillAppear:(BOOL)arg1;
 - (void)previewWillDisappear:(BOOL)arg1;
 - (id)protocolHost;
+- (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
+- (void)setHostViewControllerProxy:(id)arg1;
 
 @end
 

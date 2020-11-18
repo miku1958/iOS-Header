@@ -12,6 +12,7 @@
 {
 }
 
+@property (nonatomic) BOOL isTintable; // @dynamic isTintable;
 @property (copy, nonatomic) NSString *layerPath; // @dynamic layerPath;
 
 - (void)_logError:(id)arg1;

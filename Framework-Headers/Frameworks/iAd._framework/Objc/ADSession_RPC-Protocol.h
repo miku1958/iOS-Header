@@ -15,6 +15,7 @@
 - (void)_remote_contentProxyURLConnectDidChange:(NSURL *)arg1;
 - (void)_remote_contentProxyURLDidChange:(NSURL *)arg1;
 - (void)_remote_creativeWithAdSpaceIdentifier:(NSString *)arg1 didFailWithError:(NSError *)arg2;
+- (void)_remote_deviceInfo:(void (^)(ADDeviceInfo *))arg1;
 - (void)_remote_dismissViewControllerForAdSpaceWithIdentifier:(NSString *)arg1;
 - (void)_remote_dismissViewControllerForAdSpaceWithIdentifier:(NSString *)arg1 withCompletionHandler:(void (^)(void))arg2;
 - (void)_remote_openURL:(NSURL *)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
@@ -22,6 +23,5 @@
 - (void)_remote_proxyTypeDidChange:(long long)arg1;
 - (void)_remote_requestViewControllerWithClassName:(NSString *)arg1 forAdSpaceControllerWithIdentifier:(NSString *)arg2 forAdSpaceWithIdentifier:(NSString *)arg3;
 - (void)_remote_setRequiresFastVisibilityTestOnly:(BOOL)arg1 withIdentifier:(NSString *)arg2;
-- (void)_remote_updateActionViewControllerOrientation:(unsigned long long)arg1 forAdSpaceWithIdentifier:(NSString *)arg2;
 @end
 

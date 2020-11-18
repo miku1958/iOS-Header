@@ -9,7 +9,7 @@
 #import <NanoRegistry/NSCopying-Protocol.h>
 #import <NanoRegistry/NSSecureCoding-Protocol.h>
 
-@class NRDeviceCollectionDiff, NRDeviceCollectionHistory, NRMutableDeviceCollection, NSDate;
+@class NRDeviceCollectionDiff, NRDeviceCollectionHistory, NRMutableDeviceCollection, NRPBDeviceCollectionHistoryEntry, NSDate;
 
 @interface NRDeviceCollectionHistoryEntry : NSObject <NSSecureCoding, NSCopying>
 {
@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NRDeviceCollectionDiff *diff; // @synthesize diff=_diff;
 @property (weak, nonatomic) NRDeviceCollectionHistory *historyManager; // @synthesize historyManager=_historyManager;
 @property (nonatomic) unsigned long long index; // @synthesize index=_index;
+@property (readonly, nonatomic) NRPBDeviceCollectionHistoryEntry *protobuf;
 @property (readonly, nonatomic) NRMutableDeviceCollection *state;
 @property (nonatomic) unsigned int switchIndex; // @synthesize switchIndex=_switchIndex;
 
@@ -35,6 +36,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithHistory:(id)arg1 index:(unsigned long long)arg2 date:(id)arg3 diff:(id)arg4 switchIndex:(unsigned int)arg5;
+- (id)initWithProtobuf:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

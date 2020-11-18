@@ -15,6 +15,7 @@
 {
     PKLiveRenderedShaderSet *_liveRenderedShaderSet;
     BOOL _remotePass;
+    BOOL _isCloudKitArchived;
     BOOL _voided;
     BOOL _hasStoredValue;
     BOOL _liveRenderedBackground;
@@ -46,6 +47,7 @@
     NSDate *_modifiedDate;
 }
 
+@property (readonly, nonatomic) NSString *airlineCode;
 @property (readonly, nonatomic) NSURL *appLaunchURL;
 @property (copy, nonatomic) NSSet *associatedPassTypeIdentifiers; // @synthesize associatedPassTypeIdentifiers=_associatedPassTypeIdentifiers;
 @property (copy, nonatomic) NSString *authenticationToken; // @dynamic authenticationToken;
@@ -56,15 +58,21 @@
 @property (copy, nonatomic) PKPassDisplayProfile *displayProfile; // @dynamic displayProfile;
 @property (copy, nonatomic) NSSet *embeddedBeacons; // @synthesize embeddedBeacons=_embeddedBeacons;
 @property (copy, nonatomic) NSSet *embeddedLocations; // @synthesize embeddedLocations=_embeddedLocations;
+@property (readonly, nonatomic) long long eventType;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (readonly, nonatomic) NSString *flightCode;
+@property (readonly, nonatomic) unsigned long long flightNumber;
 @property (readonly, nonatomic) PKImage *footerImage;
 @property (readonly, nonatomic) PKImage *frontFaceImage;
+@property (readonly, nonatomic) PKImage *frontFaceShadowImage;
 @property (readonly, nonatomic) NSArray *frontFieldBuckets;
 @property (copy, nonatomic) NSString *groupingID; // @synthesize groupingID=_groupingID;
+@property (readonly, nonatomic) BOOL hasFlightDetails;
 @property (nonatomic) BOOL hasStoredValue; // @synthesize hasStoredValue=_hasStoredValue;
 @property (readonly, copy, nonatomic) UIImage *icon; // @dynamic icon;
 @property (readonly, nonatomic) PKImage *iconImage;
 @property (strong, nonatomic) NSDate *ingestedDate; // @synthesize ingestedDate=_ingestedDate;
+@property (nonatomic) BOOL isCloudKitArchived; // @synthesize isCloudKitArchived=_isCloudKitArchived;
 @property (readonly, nonatomic) BOOL isPersonalizable;
 @property (nonatomic) BOOL liveRenderedBackground; // @synthesize liveRenderedBackground=_liveRenderedBackground;
 @property (readonly, nonatomic) PKPassLiveRenderedImageSet *liveRenderedImageSet;
@@ -98,6 +106,7 @@
 @property (nonatomic) long long sharingMethod; // @synthesize sharingMethod=_sharingMethod;
 @property (copy, nonatomic) NSString *sharingText; // @synthesize sharingText=_sharingText;
 @property (copy, nonatomic) NSURL *sharingURL; // @synthesize sharingURL=_sharingURL;
+@property (readonly, nonatomic) BOOL silenceRequested;
 @property (readonly, nonatomic) NSArray *storeIdentifiers;
 @property (readonly, nonatomic) struct CGRect stripRect;
 @property (readonly, nonatomic) long long style;
@@ -111,23 +120,30 @@
 @property (copy, nonatomic) NSURL *webServiceURL; // @dynamic webServiceURL;
 
 + (Class)classForPassType:(unsigned long long)arg1;
++ (id)cloudStorePassRecordNamePrefix;
 + (unsigned long long)defaultSettings;
 + (BOOL)isValidObjectWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_changeMessageForFieldKey:(id)arg1;
 - (id)_localizationKeyForMultipleDiff;
+- (id)allSemantics;
 - (BOOL)availableForAutomaticPresentationUsingBeaconContext;
 - (BOOL)availableForAutomaticPresentationUsingVASContext;
 - (id)backgroundImage;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)currencyAmountForSemanticKey:(id)arg1;
+- (id)dateForSemanticKey:(id)arg1;
+- (id)dictionariesForSemanticKey:(id)arg1;
 - (id)diff:(id)arg1;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)encodeWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)fieldForKey:(id)arg1;
 - (BOOL)hasLocationRelevancyInfo;
 - (BOOL)hasTimeOrLocationRelevancyInfo;
 - (BOOL)hasValidNFCPayload;
+- (id)initWithCloudStoreCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 error:(id *)arg2;
 - (id)initWithDictionary:(id)arg1 bundle:(id)arg2;
@@ -135,10 +151,19 @@
 - (BOOL)isExpired;
 - (BOOL)isRelevantDateOld;
 - (BOOL)isUpdatable;
+- (unsigned long long)itemType;
+- (void)loadFlightsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)localizedDescriptionForDiff:(id)arg1;
 - (id)localizedValueForFieldKey:(id)arg1;
+- (id)locationForSemanticKey:(id)arg1;
 - (id)logoImage;
-- (BOOL)shouldSuppressNoChargeAmount;
+- (id)numberForSemanticKey:(id)arg1;
+- (id)personNameComponentsForSemanticKey:(id)arg1;
+- (id)primaryFields;
+- (id)recordTypesAndNames;
+- (id)semantics;
+- (id)stringForSemanticKey:(id)arg1;
+- (id)stringsForSemanticKey:(id)arg1;
 - (id)stripImage;
 - (BOOL)supportsSharing;
 - (id)thumbnailImage;

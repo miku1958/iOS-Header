@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class SFCredentialStore;
+@class _SFCredentialStore;
 
 @interface SFKeychainManager_Ivars : NSObject
 {
-    SFCredentialStore *credentialStore;
+    _SFCredentialStore *credentialStore;
 }
 
 - (void).cxx_destruct;

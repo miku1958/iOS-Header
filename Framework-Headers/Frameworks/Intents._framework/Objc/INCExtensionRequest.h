@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class INCWatchdogTimer, NSArray, NSError, NSExtension, NSOperationQueue, NSString, NSUUID;
+@class INWatchdogTimer, NSArray, NSError, NSExtension, NSOperationQueue, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface INCExtensionRequest : NSObject
 {
     NSUUID *_requestIdentifier;
-    INCWatchdogTimer *_contextTimer;
+    INWatchdogTimer *_contextTimer;
     NSObject<OS_dispatch_queue> *_queue;
     NSOperationQueue *_requestOperationQueue;
+    BOOL _requiresTCC;
     NSExtension *_extension;
     NSError *_error;
     NSString *_identifier;
@@ -25,7 +26,9 @@
 @property (strong, nonatomic) NSExtension *_extension; // @synthesize _extension;
 @property (strong, nonatomic) NSArray *extensionInputItems; // @synthesize extensionInputItems=_extensionInputItems;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL requiresTCC; // @synthesize requiresTCC=_requiresTCC;
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (id)_extensionContextHost;
 - (id)_requestOperationQueue;

@@ -10,6 +10,7 @@
 
 @interface EKUILabeledAvatarView : UIView
 {
+    BOOL _loadContactsAsynchronously;
     UILabel *_label;
     UIViewController *_viewController;
     CNAvatarView *_avatar;
@@ -21,6 +22,7 @@
 @property (strong) CNContact *contact;
 @property (strong) UILabel *label; // @synthesize label=_label;
 @property unsigned long long labelPlacement; // @synthesize labelPlacement=_labelPlacement;
+@property (nonatomic) BOOL loadContactsAsynchronously; // @synthesize loadContactsAsynchronously=_loadContactsAsynchronously;
 @property unsigned long long options; // @synthesize options=_options;
 @property (weak) UIViewController *viewController; // @synthesize viewController=_viewController;
 
@@ -38,6 +40,7 @@
 - (id)initWithPlacement:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void)setUpTap;
 - (void)setup;
+- (void)updateAvatarViewWithAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 - (void)updateLabel;
 - (void)updateWithAddress:(id)arg1 fullName:(id)arg2 firstName:(id)arg3 lastName:(id)arg4;
 - (void)updateWithContacts:(id)arg1;

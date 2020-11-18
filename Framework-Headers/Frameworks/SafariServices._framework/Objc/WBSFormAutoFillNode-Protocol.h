@@ -8,9 +8,12 @@
 
 @protocol WBSFormAutoFillNode <NSObject>
 - (struct CGRect)elementBounds;
+- (long long)htmlInputElementAutoFillButtonType;
+- (long long)htmlInputElementLastAutoFillButtonType;
 - (id)initWithJSWrapper:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;
 - (BOOL)isHTMLInputElementUserEdited;
 - (BOOL)isHTMLTextAreaElementUserEdited;
+- (void)setHTMLInputElementAutoFilledWithAutomaticStrongPassword:(BOOL)arg1;
 - (void)setHTMLInputElementAutofilled:(BOOL)arg1;
 
 @optional

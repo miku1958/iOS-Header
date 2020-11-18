@@ -19,12 +19,14 @@
     struct NSObject *_scrollView;
     NSObject<UICoordinateSpace> *_contentCoordinateSpace;
     NSHashTable *__observers;
+    long long _activeScrollAnimations;
     struct CGSize _scrollViewContentSize;
     struct UIEdgeInsets _contentInset;
 }
 
 @property (readonly, nonatomic) NSHashTable *_observers; // @synthesize _observers=__observers;
 @property (readonly, nonatomic) struct CGRect activeRect;
+@property (readonly, nonatomic) long long activeScrollAnimations; // @synthesize activeScrollAnimations=_activeScrollAnimations;
 @property (readonly, nonatomic) struct CGRect constrainedVisibleRect;
 @property (nonatomic) struct CGRect contentBounds;
 @property (readonly, nonatomic) NSObject<UICoordinateSpace> *contentCoordinateSpace; // @synthesize contentCoordinateSpace=_contentCoordinateSpace;
@@ -32,6 +34,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isAnimatingScroll;
 @property (readonly, nonatomic) struct CGSize referenceSize;
 @property (copy, nonatomic) PXTilingScrollInfo *scrollInfo; // @synthesize scrollInfo=_scrollInfo;
 @property (readonly, nonatomic) NSObject<PXAnonymousScrollView> *scrollView; // @synthesize scrollView=_scrollView;
@@ -43,6 +46,7 @@
 @property (readonly, nonatomic) struct CGRect scrollViewVisibleRect;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<PXTilingScrollControllerUpdateDelegate> updateDelegate; // @synthesize updateDelegate=_updateDelegate;
+@property (nonatomic) struct CGPoint visibleOrigin;
 @property (readonly, nonatomic) struct CGRect visibleRect;
 
 - (void).cxx_destruct;
@@ -56,11 +60,14 @@
 - (void)scrollRectToVisible:(struct CGRect)arg1 avoidingContentInsetEdges:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)scrollViewContentBoundsDidChange;
 - (void)scrollViewDidEndScrolling;
+- (void)scrollViewDidEndScrollingAnimation;
 - (void)scrollViewDidLayout;
 - (void)scrollViewDidScroll;
 - (void)scrollViewLayoutIfNeeded;
 - (void)scrollViewWillBeginScrolling;
+- (void)scrollViewWillBeginScrollingAnimationTowardsContentEdges:(unsigned long long)arg1;
 - (void)scrollViewWillLayout;
+- (void)setActiveScrollAnimations:(long long)arg1;
 - (void)setNeedsUpdate;
 - (void)setScrollViewNeedsLayout;
 - (void)unregisterObserver:(id)arg1;

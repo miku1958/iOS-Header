@@ -20,6 +20,7 @@
 - (BOOL)_accessibilitySupportsActivateAction;
 - (BOOL)_accessibilitySupportsHandwriting;
 - (id)_accessibilityUserTestingVisibleAncestor;
+- (BOOL)_accessibilityUsesFrameInContainerSpace;
 - (BOOL)_accessibilityViewHierarchyHasNativeFocus;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UITableViewDataSource-Protocol.h>
-#import <UIKit/UITableViewDelegate-Protocol.h>
-#import <UIKit/UITableViewFocusDelegateLegacy-Protocol.h>
-#import <UIKit/UIViewControllerPreviewingDelegate-Protocol.h>
-#import <UIKit/UIViewControllerPreviewingDelegate_Deprecated-Protocol.h>
-#import <UIKit/_UIKeyboardAutoRespondingScrollViewController-Protocol.h>
+#import <UIKitCore/UITableViewDataSource-Protocol.h>
+#import <UIKitCore/UITableViewDelegate-Protocol.h>
+#import <UIKitCore/UITableViewFocusDelegateLegacy-Protocol.h>
+#import <UIKitCore/UIViewControllerPreviewingDelegate-Protocol.h>
+#import <UIKitCore/UIViewControllerPreviewingDelegate_Deprecated-Protocol.h>
+#import <UIKitCore/_UIKeyboardAutoRespondingScrollViewController-Protocol.h>
 
 @class NSString, UIAutoRespondingScrollViewControllerKeyboardSupport, UIRefreshControl, UIScrollView, UITableView, UITableViewDataSource, _UIFilteredDataSource;
 @protocol _UIKeyboardAutoRespondingScrollView;
@@ -44,6 +44,7 @@
 - (void)_applyDefaultDataSourceToTable:(id)arg1;
 - (id)_existingTableView;
 - (long long)_filteredDataType;
+- (void)_limitedUIDidChange;
 - (void)_refreshFilteredDataSourceFilterTypeForScreen:(id)arg1;
 - (long long)_resolvedDataSourceFilterTypeForScreen:(id)arg1;
 - (void)_setFilteredDataType:(long long)arg1;

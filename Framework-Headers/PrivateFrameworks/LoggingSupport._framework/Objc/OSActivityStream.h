@@ -6,20 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSCompoundPredicate, NSMutableDictionary, NSMutableSet, NSString, OSLogDevice;
+@class NSCompoundPredicate, NSMutableDictionary, NSMutableSet, OSLogDevice, _OSLogStreamFilter;
 @protocol OSActivityStreamDelegate, OSDeviceDelegate;
 
 @interface OSActivityStream : NSObject
 {
     struct os_activity_stream_s *_stream;
     NSMutableSet *_pids;
-    NSMutableSet *_proc_names;
-    NSString *_waitforProcessName;
     void *_deviceSearchSession;
     void *_deviceEventSession;
     BOOL _delegateStreamErrorLess;
     BOOL _delegateStreamWithError;
     BOOL _delegateHasDidFail;
+    _OSLogStreamFilter *_streamFilter;
     id<OSDeviceDelegate> _deviceDelegate;
     id<OSActivityStreamDelegate> _delegate;
     unsigned long long _options;
@@ -41,13 +40,11 @@
 - (void).cxx_destruct;
 - (void)addFilterForActivity:(id)arg1 andBinary:(id)arg2;
 - (void)addProcessID:(int)arg1;
-- (void)addProcessName:(id)arg1;
 - (void)dealloc;
 - (BOOL)establishTrust:(id)arg1;
 - (id)getInfoForDevice:(id)arg1 andKey:(id)arg2;
 - (id)init;
 - (id)initWithDevice:(void *)arg1;
-- (int)maxProcs;
 - (void)start;
 - (void)startLocal;
 - (void)startRemote;
@@ -55,7 +52,6 @@
 - (void)stopLocal;
 - (void)stopRemote;
 - (BOOL)streamEvent:(id)arg1 error:(id)arg2;
-- (void)waitForProcessName:(id)arg1;
 
 @end
 

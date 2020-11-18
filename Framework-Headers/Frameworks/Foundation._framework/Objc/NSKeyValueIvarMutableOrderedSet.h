@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     struct objc_ivar *_ivar;
 }
 
-+ (CDStruct_7c9a8e9f *)_proxyNonGCPoolPointer;
 - (id)_nonNilMutableOrderedSetValueWithSelector:(SEL)arg1;
 - (id)_proxyInitWithContainer:(id)arg1 getter:(id)arg2;
 - (void)_proxyNonGCFinalize;

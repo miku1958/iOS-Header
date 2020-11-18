@@ -16,7 +16,6 @@
 
 @property (copy, nonatomic) CLKTextProvider *textProvider; // @synthesize textProvider=_textProvider;
 
-+ (void)initialize;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 

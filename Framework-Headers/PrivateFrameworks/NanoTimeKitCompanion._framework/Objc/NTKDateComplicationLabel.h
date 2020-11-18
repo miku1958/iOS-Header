@@ -9,7 +9,7 @@
 #import <NanoTimeKitCompanion/NTKControl-Protocol.h>
 #import <NanoTimeKitCompanion/NTKDateComplicationDisplay-Protocol.h>
 
-@class CLKFont, NSString, UIColor, UILabel, UIView;
+@class CLKDevice, CLKFont, NSString, UIColor, UILabel, UIView;
 @protocol NTKComplicationDisplayObserver;
 
 @interface NTKDateComplicationLabel : UIControl <NTKDateComplicationDisplay, NTKControl>
@@ -19,13 +19,17 @@
     UILabel *_internalLabel;
     UIView *_highlightView;
     struct CGSize _cachedSize;
+    struct _NSRange _dayTextRange;
     BOOL _cachedSizeIsValid;
+    BOOL canUseCurvedText;
     BOOL _usesLegibility;
     BOOL _legibilityHidden;
     id<NTKComplicationDisplayObserver> displayObserver;
     long long _sizeStyle;
+    long long _accentType;
+    CLKDevice *_device;
     CLKFont *_font;
-    UIColor *_numberColor;
+    UIColor *_accentColor;
     unsigned long long _overrideDateStyle;
     struct UIEdgeInsets _touchEdgeInsets;
 }
@@ -33,14 +37,17 @@
 @property (nonatomic, setter=_setFirstLineBaselineFrameOriginY:) double _firstLineBaselineFrameOriginY;
 @property (readonly, nonatomic) double _lastLineBaseline;
 @property (nonatomic, setter=_setLastLineBaselineFrameOriginY:) double _lastLineBaselineFrameOriginY;
+@property (strong, nonatomic) UIColor *accentColor; // @synthesize accentColor=_accentColor;
+@property (readonly, nonatomic) long long accentType; // @synthesize accentType=_accentType;
+@property (nonatomic) BOOL canUseCurvedText; // @synthesize canUseCurvedText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;
 @property (strong, nonatomic) CLKFont *font; // @synthesize font=_font;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (nonatomic) BOOL legibilityHidden; // @synthesize legibilityHidden=_legibilityHidden;
-@property (strong, nonatomic) UIColor *numberColor; // @synthesize numberColor=_numberColor;
 @property (nonatomic) unsigned long long overrideDateStyle; // @synthesize overrideDateStyle=_overrideDateStyle;
 @property (nonatomic) BOOL shouldUseTemplateColors;
 @property (readonly, nonatomic) long long sizeStyle; // @synthesize sizeStyle=_sizeStyle;
@@ -59,11 +66,10 @@
 - (double)_legibtilityShadowRadius;
 - (void)_setFont:(id)arg1;
 - (void)_setText:(id)arg1;
-- (id)initWithSizeStyle:(long long)arg1;
+- (id)initWithSizeStyle:(long long)arg1 accentType:(long long)arg2 forDevice:(id)arg3;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)setContentsMultiplyColor:(id)arg1 animated:(BOOL)arg2 withDuration:(double)arg3;
-- (void)setDateComplicationText:(id)arg1 forDateStyle:(unsigned long long)arg2;
+- (void)setDateComplicationText:(id)arg1 withDayRange:(struct _NSRange)arg2 forDateStyle:(unsigned long long)arg3;
 - (BOOL)shouldCancelTouchesInScrollview;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

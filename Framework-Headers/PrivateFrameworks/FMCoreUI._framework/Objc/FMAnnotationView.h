@@ -40,6 +40,7 @@
 @property (strong, nonatomic) CAShapeLayer *smallRingLayer; // @synthesize smallRingLayer=_smallRingLayer;
 
 + (BOOL)_followsTerrain;
++ (void)preloadAssets;
 + (void)setImagePadding:(double)arg1;
 + (void)setLargeAnnotationBorderVisible:(BOOL)arg1;
 + (void)setShouldMaskLayer:(BOOL)arg1;

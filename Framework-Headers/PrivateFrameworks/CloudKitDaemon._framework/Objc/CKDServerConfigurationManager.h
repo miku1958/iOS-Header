@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)_reallyDropAllConfigurations;
 - (id)_uniqueStringForContainerAndAccount:(id)arg1;
 - (void)_watchForSwitchPrefFileChanges;
+- (void)_writeOutiCloudHostnames:(id)arg1;
 - (void)configurationForOperation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)containerInfoForOperation:(id)arg1 requireUserIDs:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;

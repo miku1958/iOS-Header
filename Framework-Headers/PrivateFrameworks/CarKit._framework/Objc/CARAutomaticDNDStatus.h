@@ -25,10 +25,8 @@
 - (void)_completeDNDBuddyWithOption:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)_detachObservers;
 - (void)_fetchStatusForObserver;
-- (void)_incrementCompletedRidesCountWithDeactivation:(BOOL)arg1;
 - (void)_notifyExitConfirmationActive:(BOOL)arg1;
 - (void)_performCARPreferencesBlock:(CDUnknownBlockType)arg1 forReading:(BOOL)arg2;
-- (void)_resetRecentRideHistory;
 - (void)_resetUserDNDSettingsWithReply:(CDUnknownBlockType)arg1;
 - (void)_xpcFetchWithServiceBlock:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)allowedAutoReplyAudience:(CDUnknownBlockType)arg1;
@@ -45,7 +43,6 @@
 - (BOOL)hasAdjustedTriggerMethod;
 - (BOOL)hasCompletedFirstRidePreference;
 - (BOOL)hasOptedOutOfAutomaticDND;
-- (BOOL)hasReachedRideDeactivationThreshold;
 - (BOOL)hasStartedFirstRidePreference;
 - (id)init;
 - (BOOL)isAutomaticDNDInternalExitConfirmationOverrideEnabledPreference;
@@ -56,7 +53,6 @@
 - (void)outputOfDiagnosticUtilityWithReply:(CDUnknownBlockType)arg1;
 - (BOOL)platformSupportsSendingAutoReplies;
 - (BOOL)platformSupportsUrgentMessages;
-- (id)recentRideHistory;
 - (void)setAllowedAutoReplyAudience:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setAutoReplyMessage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setAutomaticDNDActive:(BOOL)arg1 withReply:(CDUnknownBlockType)arg2;

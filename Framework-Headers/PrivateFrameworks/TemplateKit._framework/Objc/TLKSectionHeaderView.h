@@ -21,7 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) TLKMultilineText *headerText; // @synthesize headerText=_headerText;
+@property (strong, nonatomic) TLKMultilineText *headerText; // @synthesize headerText=_headerText;
 @property (strong) UILabel *headerTextLabel; // @synthesize headerTextLabel=_headerTextLabel;
 @property (readonly) Class superclass;
 
@@ -30,7 +30,6 @@
 - (long long)containerBoxView:(id)arg1 verticalAlignmentForArrangedSubview:(id)arg2;
 - (id)headerLabelText;
 - (id)init;
-- (id)observableProperties;
 - (void)observedPropertiesChanged;
 - (void)styleDidChange:(unsigned long long)arg1;
 

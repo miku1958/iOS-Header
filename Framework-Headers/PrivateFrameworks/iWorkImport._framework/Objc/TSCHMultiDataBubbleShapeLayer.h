@@ -24,10 +24,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSDFill *fill; // @synthesize fill=mFill;
 @property (nonatomic) double viewScale; // @synthesize viewScale=_viewScale;
 
+- (void).cxx_destruct;
 - (BOOL)aboveIntercept;
 - (id)chartRep;
 - (id)currentValueLayer;
-- (void)dealloc;
 - (id)init;
 - (void)p_addAnimationsForUpdatingPath:(struct CGPath *)arg1 position:(struct CGPoint)arg2 toAnimationInfo:(id)arg3 onLayer:(id)arg4;
 - (void)p_addLayerAnimationsForUpdatingImage:(struct CGImage *)arg1 bounds:(struct CGRect)arg2 position:(struct CGPoint)arg3 toAnimationInfo:(id)arg4;

@@ -5,14 +5,14 @@
 //
 
 @class BCMessage;
-@protocol BCApplePayManagerDelegate, BCMessageProtocol;
+@protocol BCApplePayManagerDelegate;
 
 @protocol BCApplePayManagerProtocol
 
 @property (weak, nonatomic) id<BCApplePayManagerDelegate> delegate;
 
 - (long long)applePayStatus;
-- (id)initWithMessage:(id<BCMessageProtocol>)arg1 delegate:(id<BCApplePayManagerDelegate>)arg2;
+- (id)initWithMessage:(BCMessage *)arg1 delegate:(id<BCApplePayManagerDelegate>)arg2;
 - (BCMessage *)message;
 - (void)presentApplePay;
 @end

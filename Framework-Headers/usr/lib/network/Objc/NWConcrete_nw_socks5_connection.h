@@ -9,8 +9,9 @@
 #import <network/OS_nw_socks5_connection-Protocol.h>
 
 @class NSString;
-@protocol OS_dispatch_queue, OS_nw_connection;
+@protocol OS_dispatch_queue, OS_nw_connection, OS_nw_error;
 
+__attribute__((visibility("hidden")))
 @interface NWConcrete_nw_socks5_connection : NSObject <OS_nw_socks5_connection>
 {
     unsigned long long sc_id;
@@ -29,9 +30,15 @@
     unsigned short sc_shoes_request_length_hbo;
     unsigned char sc_out_address_domain_length;
     NSObject<OS_nw_connection> *sc_out_connection;
+    NSObject<OS_nw_error> *sc_error;
     unsigned int sc_out_connection_failed_or_sent_write_close:1;
     unsigned int sc_in_connection_failed_or_sent_write_close:1;
     unsigned int sc_out_disable_proxy:1;
+    unsigned int sc_sent_reply:1;
+    unsigned long long sc_out_connection_bytes_read;
+    unsigned long long sc_out_connection_bytes_written;
+    unsigned long long sc_in_connection_bytes_read;
+    unsigned long long sc_in_connection_bytes_written;
 }
 
 @property (readonly, copy) NSString *debugDescription;

@@ -4,15 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
-
-#import <iWorkImport/TSKApplicationDelegate-Protocol.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSData, NSDate, NSString;
 @protocol TSKCompatibilityDelegate;
 
 __attribute__((visibility("hidden")))
-@interface TSKApplicationDelegate : NSObject <TSKApplicationDelegate>
+@interface TSKApplicationDelegate : NSObject
 {
     id<TSKCompatibilityDelegate> _compatibilityDelegate;
     NSArray *_availableLanguages;
@@ -29,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *bladerunnerContainerIdentifier;
 @property (readonly, nonatomic) NSString *cloudKitContainerIdentifier;
 @property (strong, nonatomic) id<TSKCompatibilityDelegate> compatibilityDelegate; // @synthesize compatibilityDelegate=_compatibilityDelegate;
+@property (nonatomic) long long defaultPresetWhenConvertingToPlayableOnAllDevices;
 @property (readonly, nonatomic) BOOL designModeEnabled;
 @property (readonly, nonatomic) NSString *documentTypeDisplayName;
 @property (readonly, nonatomic) NSString *documentTypeDisplayNameForSharingInvitation;
@@ -41,7 +40,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *initialInputLanguage; // @synthesize initialInputLanguage=_initialInputLanguage;
 @property (readonly, nonatomic) BOOL isCanvasFullScreen;
 @property (readonly, nonatomic) BOOL performanceModeEnabled;
+@property (nonatomic) BOOL shouldOptimizeForiOSOnInsert;
 @property (readonly, nonatomic) BOOL supportsCanvasNativeEquationObjects;
+@property (readonly, nonatomic) BOOL supportsFreehandAnimationUI;
 @property (readonly, nonatomic) BOOL supportsInlineNativeEquationObjects;
 @property (readonly, nonatomic) BOOL supportsLinkedTextBoxes;
 @property (readonly, nonatomic) BOOL supportsPastingIntoGroups;
@@ -80,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldRenderLargeImages;
 - (BOOL)shouldValidateMasterLayoutWhileInsertingRows;
 - (BOOL)sidebarPositionRespectsUserInterfaceLayoutDirection;
+- (id)strokeWidthsForFreehandDrawingToolType:(unsigned long long)arg1;
 - (BOOL)supportsAutosizingTextboxes;
 - (BOOL)supportsRTL;
 - (BOOL)supportsShrinkTextToFit;

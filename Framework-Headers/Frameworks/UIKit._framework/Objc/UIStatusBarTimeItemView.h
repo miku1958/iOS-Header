@@ -4,27 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarItemView.h>
-
-@class NSString;
+#import <UIKitCore/UIStatusBarDateTimeItemView.h>
 
 __attribute__((visibility("hidden")))
-@interface UIStatusBarTimeItemView : UIStatusBarItemView
+@interface UIStatusBarTimeItemView : UIStatusBarDateTimeItemView
 {
-    NSString *_timeString;
-    BOOL _useCustomFadeAnimation;
 }
 
-@property (nonatomic) BOOL useCustomFadeAnimation; // @synthesize useCustomFadeAnimation=_useCustomFadeAnimation;
-
-- (void).cxx_destruct;
-- (id)accessibilityHUDRepresentation;
++ (const char *)_cStringFromData:(CDStruct_1916f467 *)arg1;
+- (id)contentsIOSurface;
 - (id)contentsImage;
-- (void)setFrame:(struct CGRect)arg1;
-- (void)setVisible:(BOOL)arg1 frame:(struct CGRect)arg2 duration:(double)arg3;
-- (BOOL)shouldTintContentImage;
-- (long long)textStyle;
-- (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
 
 @end
 

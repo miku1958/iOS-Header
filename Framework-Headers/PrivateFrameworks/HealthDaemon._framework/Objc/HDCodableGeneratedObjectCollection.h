@@ -14,6 +14,7 @@
 {
     NSMutableArray *_accountOwners;
     NSMutableArray *_allergyRecords;
+    NSMutableArray *_clinicalRecords;
     NSMutableArray *_conditionRecords;
     NSMutableArray *_diagnosticTestReports;
     NSMutableArray *_diagnosticTestResults;
@@ -27,6 +28,7 @@
 
 @property (strong, nonatomic) NSMutableArray *accountOwners; // @synthesize accountOwners=_accountOwners;
 @property (strong, nonatomic) NSMutableArray *allergyRecords; // @synthesize allergyRecords=_allergyRecords;
+@property (strong, nonatomic) NSMutableArray *clinicalRecords; // @synthesize clinicalRecords=_clinicalRecords;
 @property (strong, nonatomic) NSMutableArray *conditionRecords; // @synthesize conditionRecords=_conditionRecords;
 @property (strong, nonatomic) NSMutableArray *diagnosticTestReports; // @synthesize diagnosticTestReports=_diagnosticTestReports;
 @property (strong, nonatomic) NSMutableArray *diagnosticTestResults; // @synthesize diagnosticTestResults=_diagnosticTestResults;
@@ -39,6 +41,7 @@
 
 + (Class)accountOwnerType;
 + (Class)allergyRecordType;
++ (Class)clinicalRecordType;
 + (Class)conditionRecordType;
 + (Class)diagnosticTestReportType;
 + (Class)diagnosticTestResultType;
@@ -53,6 +56,7 @@
 - (unsigned long long)accountOwnersCount;
 - (void)addAccountOwner:(id)arg1;
 - (void)addAllergyRecord:(id)arg1;
+- (void)addClinicalRecord:(id)arg1;
 - (void)addConditionRecord:(id)arg1;
 - (void)addDiagnosticTestReport:(id)arg1;
 - (void)addDiagnosticTestResult:(id)arg1;
@@ -66,6 +70,7 @@
 - (unsigned long long)allergyRecordsCount;
 - (void)clearAccountOwners;
 - (void)clearAllergyRecords;
+- (void)clearClinicalRecords;
 - (void)clearConditionRecords;
 - (void)clearDiagnosticTestReports;
 - (void)clearDiagnosticTestResults;
@@ -75,6 +80,8 @@
 - (void)clearProcedureRecords;
 - (void)clearUnknownRecords;
 - (void)clearVaccinationRecords;
+- (id)clinicalRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)clinicalRecordsCount;
 - (id)conditionRecordAtIndex:(unsigned long long)arg1;
 - (unsigned long long)conditionRecordsCount;
 - (void)copyTo:(id)arg1;

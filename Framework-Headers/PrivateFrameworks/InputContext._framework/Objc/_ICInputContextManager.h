@@ -9,13 +9,11 @@
 #import <InputContext/_ICLexiconManaging-Protocol.h>
 #import <InputContext/_ICPredictionManaging-Protocol.h>
 
-@class NSMutableArray, NSString, _ICPredictionManager;
-@protocol _ICLexiconManaging, _ICLexiconSourcing;
+@class NSString, _ICPredictionManager;
+@protocol _ICLexiconManaging;
 
 @interface _ICInputContextManager : NSObject <_ICPredictionManaging, _ICLexiconManaging>
 {
-    id<_ICLexiconSourcing> _lexiconSource;
-    NSMutableArray *_allPredictionSources;
     struct _LXLexicon *_durableNamedEntityLexicon;
     struct _LXLexicon *_recentNamedEntityLexicon;
     id<_ICLexiconManaging> _lexiconManager;
@@ -30,14 +28,18 @@
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)addContactObserver:(CDUnknownBlockType)arg1;
-- (void)commonLazyInitialization;
-- (void)doInitialization;
+- (void)doInitLexiconManager;
+- (void)doInitPredictionManager;
 - (id)getLexiconManager;
 - (id)getPredictionManager;
+- (void)hibernate;
 - (id)initForIntegrationTesting;
+- (void)initLexiconManager;
+- (void)initPredictionManager;
 - (id)initWithPredictionSource:(id)arg1;
 - (id)lastCachedResultWithInitialCharacters:(id)arg1;
 - (id)loadLexicons:(CDUnknownBlockType)arg1;
+- (id)loadLexiconsUsingFilter:(CDUnknownBlockType)arg1;
 - (void)predictedItemSelected:(id)arg1;
 - (void)removeContactObserver:(CDUnknownBlockType)arg1;
 - (void)reset;
@@ -45,6 +47,7 @@
 - (id)searchForMeCardRegions;
 - (id)searchWithTriggers:(id)arg1 application:(id)arg2 recipient:(id)arg3 localeIdentifier:(id)arg4 timeoutInMilliseconds:(int)arg5 resultLimit:(int)arg6 error:(id *)arg7;
 - (void)unloadLexicons;
+- (void)warmUp;
 
 @end
 

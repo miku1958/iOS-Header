@@ -23,7 +23,9 @@
     BOOL _invalidateCalled;
     BOOL _iTunesCloudCompleted;
     int _iTunesCloudCompleteToken;
+    double _iTunesCloudWaitSeconds;
     BOOL _mediaSystemReady;
+    double _mediaSystemWaitSeconds;
     unsigned long long _peerFeatureFlags;
     SFClient *_sfClient;
     SFService *_sfService;

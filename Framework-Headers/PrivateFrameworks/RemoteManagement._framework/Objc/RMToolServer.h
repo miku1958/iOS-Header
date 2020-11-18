@@ -14,8 +14,8 @@
     RMToolServerDelegate *_delegate;
 }
 
-@property (strong) RMToolServerDelegate *delegate; // @synthesize delegate=_delegate;
-@property (strong) NSXPCListener *listener; // @synthesize listener=_listener;
+@property (strong, nonatomic) RMToolServerDelegate *delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSXPCListener *listener; // @synthesize listener=_listener;
 
 - (void).cxx_destruct;
 - (id)initWithTarget:(id)arg1;

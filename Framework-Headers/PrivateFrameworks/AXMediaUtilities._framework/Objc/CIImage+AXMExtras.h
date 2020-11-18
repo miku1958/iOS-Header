@@ -11,7 +11,7 @@
 - (long long)_imageOrientationForInterfaceOrientation:(long long)arg1 isMirrored:(BOOL)arg2;
 - (id)rotatedImageWithInterfaceOrientation:(long long)arg1 displayOrientation:(long long)arg2 appliedImageOrientation:(long long *)arg3;
 - (id)rotatedImageWithInterfaceOrientation:(long long)arg1 isMirrored:(BOOL)arg2 appliedImageOrientation:(long long *)arg3;
-- (void)saveToURL:(id)arg1 withOrientation:(long long)arg2;
-- (void)writeImageInAllOrientationsToDirectoryAtURL:(id)arg1;
+- (void)saveToURL:(id)arg1 withOrientation:(long long)arg2 diagnostics:(id)arg3;
+- (void)writeImageInAllOrientationsToDirectoryAtURL:(id)arg1 diagnostics:(id)arg2;
 @end
 

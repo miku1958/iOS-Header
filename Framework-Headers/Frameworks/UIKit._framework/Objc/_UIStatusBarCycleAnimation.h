@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/CAAnimationDelegate-Protocol.h>
+#import <UIKitCore/CAAnimationDelegate-Protocol.h>
+#import <UIKitCore/_UIStatusBarPersistentAnimation-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, _UIStatusBarCycleLayerAnimation;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarCycleAnimation : NSObject <CAAnimationDelegate>
+@interface _UIStatusBarCycleAnimation : NSObject <CAAnimationDelegate, _UIStatusBarPersistentAnimation>
 {
     BOOL _stopsAfterReversing;
     BOOL _visible;
@@ -41,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithLayerAnimations:(id)arg1;
+- (void)pausePersistentAnimation;
+- (void)resumePersistentAnimation;
 - (void)start;
 - (void)stopWithCompletionHandler:(CDUnknownBlockType)arg1;
 

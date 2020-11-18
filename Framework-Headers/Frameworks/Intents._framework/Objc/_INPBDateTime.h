@@ -7,41 +7,41 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBDateTime-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBLocalDate, _INPBLocalTime;
+@class NSString, _INPBLocalDate, _INPBLocalTime;
 
-@interface _INPBDateTime : PBCodable <NSCopying>
+@interface _INPBDateTime : PBCodable <_INPBDateTime, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct {
+        unsigned int calendarSystem:1;
+    } _has;
     int _calendarSystem;
     _INPBLocalDate *_date;
     _INPBLocalTime *_time;
     NSString *_timeZoneID;
-    struct {
-        unsigned int calendarSystem:1;
-    } _has;
 }
 
 @property (nonatomic) int calendarSystem; // @synthesize calendarSystem=_calendarSystem;
 @property (strong, nonatomic) _INPBLocalDate *date; // @synthesize date=_date;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasCalendarSystem;
 @property (readonly, nonatomic) BOOL hasDate;
 @property (readonly, nonatomic) BOOL hasTime;
 @property (readonly, nonatomic) BOOL hasTimeZoneID;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBLocalTime *time; // @synthesize time=_time;
-@property (strong, nonatomic) NSString *timeZoneID; // @synthesize timeZoneID=_timeZoneID;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSString *timeZoneID; // @synthesize timeZoneID=_timeZoneID;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsCalendarSystem:(id)arg1;
 - (id)calendarSystemAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

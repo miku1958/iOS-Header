@@ -23,16 +23,21 @@
 + (id)defaultConnection;
 - (void).cxx_destruct;
 - (void)deletePersistentPasteboardWithName:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (unsigned long long)deletePersistentPasteboardWithName:(id)arg1 error:(id *)arg2;
 - (void)didPastePasteboard:(id)arg1;
 - (void)getAllPasteboardsCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)helloCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)localGeneralPasteboard:(id *)arg1;
 - (void)localGeneralPasteboardCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)pasteboardWithName:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)pasteboardWithName:(id)arg1 createIfNeeded:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (id)pasteboardWithName:(id)arg1 createIfNeeded:(BOOL)arg2 error:(id *)arg3;
+- (id)pasteboardWithName:(id)arg1 error:(id *)arg2;
 - (void)performJanitorialTasksCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)requestItemFromPasteboardWithName:(id)arg1 UUID:(id)arg2 itemIndex:(unsigned long long)arg3 typeIdentifier:(id)arg4 completionBlock:(CDUnknownBlockType)arg5;
 - (void)savePasteboard:(id)arg1 dataProviderEndpoint:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (unsigned long long)savePasteboard:(id)arg1 dataProviderEndpoint:(id)arg2 error:(id *)arg3;
 
 @end
 

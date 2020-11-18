@@ -10,5 +10,6 @@
 - (id)deepCopyWithZone:(struct _NSZone *)arg1;
 - (BOOL)getRange:(struct _NSRange *)arg1 ofAttribute:(id)arg2;
 - (BOOL)getRange:(struct _NSRange *)arg1 ofAttribute:(id)arg2 withValue:(id)arg3;
+- (id)scrAttributedStringByTrimmingTrailingNewlines;
 @end
 

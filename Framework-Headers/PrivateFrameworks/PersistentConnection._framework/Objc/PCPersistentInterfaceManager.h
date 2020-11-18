@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <PersistentConnection/CoreTelephonyClientDataDelegate-Protocol.h>
 #import <PersistentConnection/PCInterfaceMonitorDelegate-Protocol.h>
 
-@class NSMapTable, NSRecursiveLock, NSString, NSTimer, PCSimpleTimer;
+@class CoreTelephonyClient, NSMapTable, NSRecursiveLock, NSString, NSTimer, PCSimpleTimer;
 
-@interface PCPersistentInterfaceManager : NSObject <PCInterfaceMonitorDelegate>
+@interface PCPersistentInterfaceManager : NSObject <CoreTelephonyClientDataDelegate, PCInterfaceMonitorDelegate>
 {
     NSRecursiveLock *_lock;
     NSMapTable *_delegatesAndQueues;
@@ -18,7 +19,6 @@
     PCSimpleTimer *_WiFiAutoAssociationDisableTimer;
     struct __CFSet *_wakeOnWiFiDelegates;
     PCSimpleTimer *_wakeOnWiFiDisableTimer;
-    void *_ctServerConnection;
     void *_interfaceAssertion;
     int _WWANContextIdentifier;
     NSString *_WWANInterfaceName;
@@ -36,6 +36,8 @@
     BOOL _isWakeOnWiFiSupported;
     BOOL _isWakeOnWiFiEnabled;
     BOOL _shouldOverrideOnCallBehavior;
+    CoreTelephonyClient *_ctClient;
+    void *_ctServerConnection;
 }
 
 @property (readonly) NSString *WWANInterfaceName;
@@ -73,6 +75,7 @@
 - (BOOL)_isWWANInHomeCountryLocked;
 - (BOOL)_isWiFiUsable;
 - (void)_mainThreadCTConnectionAttempt;
+- (id)_nonCellularMonitor;
 - (void)_scheduleCalloutsForSelector:(SEL)arg1;
 - (void)_updateCTIsWWANInHomeCountry:(BOOL)arg1 isWWANInterfaceDataActive:(BOOL)arg2;
 - (void)_updateWWANInterfaceAssertions;

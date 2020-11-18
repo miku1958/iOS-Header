@@ -8,22 +8,25 @@
 
 #import <SearchAds/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocation, CLLocationManager, CLPlacemark, NSMutableArray, NSString, NSThread;
+@class CLLocation, CLLocationManager, CLPlacemark, NSMutableArray, NSString;
+@protocol OS_dispatch_queue;
 
 @interface ADLocationManager : NSObject <CLLocationManagerDelegate>
 {
+    NSObject<OS_dispatch_queue> *_locationQueue;
     BOOL _updatingPlacemark;
     BOOL _isLocationUpdating;
     BOOL _isLocationInitialized;
+    int _callerStatus;
     CLPlacemark *_currentPlacemark;
     CLLocation *_lastPlacemarkLocation;
     NSMutableArray *_listeners;
     CLLocationManager *_locationManager;
     CLLocation *_actualLocation;
-    NSThread *_myThread;
 }
 
 @property (strong, nonatomic) CLLocation *actualLocation; // @synthesize actualLocation=_actualLocation;
+@property (nonatomic) int callerStatus; // @synthesize callerStatus=_callerStatus;
 @property (strong) CLPlacemark *currentPlacemark; // @synthesize currentPlacemark=_currentPlacemark;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -33,17 +36,16 @@
 @property (strong, nonatomic) CLLocation *lastPlacemarkLocation; // @synthesize lastPlacemarkLocation=_lastPlacemarkLocation;
 @property (strong, nonatomic) NSMutableArray *listeners; // @synthesize listeners=_listeners;
 @property (strong, nonatomic) CLLocationManager *locationManager; // @synthesize locationManager=_locationManager;
-@property (strong, nonatomic) NSThread *myThread; // @synthesize myThread=_myThread;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL updatingPlacemark; // @synthesize updatingPlacemark=_updatingPlacemark;
+@property BOOL updatingPlacemark; // @synthesize updatingPlacemark=_updatingPlacemark;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)addListener:(id)arg1;
-- (void)createLocationManager;
 - (id)currentLocation;
 - (id)init;
 - (BOOL)isLocationBasedAdsEnabled;
+- (BOOL)locationEnabledFor:(int)arg1;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;

@@ -9,7 +9,7 @@
 #import <ClassroomKit/CATRemoteTransportDelegate-Protocol.h>
 #import <ClassroomKit/CATTransportDelegate-Protocol.h>
 
-@class CATRemoteTransport, CATStateMachine, CATTransport, NSString;
+@class CATRemoteTransport, CATStateMachine, CATTransport, CRKRemoteEndpoint, NSString;
 @protocol CRKGrowthFunction, CRKSessionDelegate;
 
 @interface CRKSession : NSObject <CATTransportDelegate, CATRemoteTransportDelegate>
@@ -20,7 +20,7 @@
     BOOL _allowUntrustedConnections;
     BOOL _requiresBeacon;
     id<CRKSessionDelegate> _delegate;
-    NSString *_ipAddress;
+    CRKRemoteEndpoint *_endpoint;
     id<CRKGrowthFunction> _backoffGrowthFunction;
     double _lostBeaconTimeout;
     double _willLoseBeaconWarningTimeout;
@@ -32,9 +32,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CRKSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly) CRKRemoteEndpoint *endpoint; // @synthesize endpoint=_endpoint;
 @property (nonatomic) double failedConnectionRetryInterval; // @synthesize failedConnectionRetryInterval=_failedConnectionRetryInterval;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *ipAddress; // @synthesize ipAddress=_ipAddress;
 @property (nonatomic) double lostBeaconTimeout; // @synthesize lostBeaconTimeout=_lostBeaconTimeout;
 @property (nonatomic) BOOL requiresBeacon; // @synthesize requiresBeacon=_requiresBeacon;
 @property (strong, nonatomic) CATStateMachine *stateMachine; // @synthesize stateMachine=mFSM;
@@ -60,7 +60,7 @@
 - (void)exitBackoffCanConnect;
 - (void)failedToConnect;
 - (void)foundBeacon;
-- (id)initWithIPAddress:(id)arg1;
+- (id)initWithEndpoint:(id)arg1;
 - (void)invalidate;
 - (void)localWiFiBecameAvailable;
 - (void)localWiFiBecameUnavailable;

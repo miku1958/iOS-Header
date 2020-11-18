@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVWeakReference, AVWeakReferencingDelegateStorage, NSDictionary;
 @protocol OS_dispatch_queue;
@@ -17,9 +17,11 @@
     NSDictionary *videoSettings;
     CDStruct_1b6d18a9 deprecatedMinFrameDuration;
     BOOL alwaysDiscardsLateVideoFrames;
+    BOOL videoSettingsDimensionsOverrideEnabled;
     NSObject<OS_dispatch_queue> *bufferQueue;
-    struct OpaqueFigSimpleMutex *remoteQueueMutex;
-    void *remoteReceiverQueue;
+    struct OpaqueFigSimpleMutex *queueMutex;
+    void *remoteQueueReceiver;
+    void *localQueue;
 }
 
 - (void)dealloc;

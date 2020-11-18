@@ -14,6 +14,8 @@
 - (void)deleteRemoteState:(void (^)(BOOL, NSError *))arg1;
 - (void)executeQuery:(_DKQuery *)arg1 reply:(void (^)(NSObject *, NSError *))arg2;
 - (void)saveObjects:(NSArray *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
+- (void)sourceDeviceIdentityWithReply:(void (^)(NSObject *, NSError *))arg1;
 - (void)synchronizeWithReply:(void (^)(BOOL, NSError *))arg1;
+- (void)synchronizeWithUrgency:(unsigned long long)arg1 client:(NSString *)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 @end
 

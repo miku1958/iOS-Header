@@ -31,7 +31,7 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) double samplingDelay; // @synthesize samplingDelay=_samplingDelay;
 @property (nonatomic) double samplingInterval; // @synthesize samplingInterval=_samplingInterval;
-@property (strong, nonatomic) id<NSCopying> tag; // @synthesize tag=_tag;
+@property (copy, nonatomic) id<NSCopying> tag; // @synthesize tag=_tag;
 
 + (void)cancelNotification:(struct AWNotification_s *)arg1;
 + (void)initialize;

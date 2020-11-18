@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIDictationView.h>
+#import <UIKitCore/UIDictationView.h>
 
 @class NSString, UIButton, UILabel;
 

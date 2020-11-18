@@ -31,6 +31,7 @@
 - (id)_newNanoSyncManager;
 - (id)_newNotificationManager;
 - (id)_newWorkoutManager;
+- (id)activityCacheManager;
 - (id)appSubscriptionManager;
 - (id)awdSubmissionManager;
 - (id)cloudSyncManager;
@@ -43,6 +44,7 @@
 - (id)serviceConnectionManager;
 - (id)serviceManager;
 - (void)terminationCleanup;
+- (void)unitTest_setServiceManager:(id)arg1;
 - (id)workoutManager;
 
 @end

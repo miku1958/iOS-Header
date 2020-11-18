@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
     struct UIEdgeInsets _itemsContentInset;
 }
 
+@property (readonly, nonatomic) struct CGRect collectionViewBounds;
 @property (weak, nonatomic) id<PUHorizontalCollectionViewLayoutDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) double interitemSpacing; // @synthesize interitemSpacing=_interitemSpacing;
 @property (nonatomic) struct CGSize itemSize; // @synthesize itemSize=_itemSize;

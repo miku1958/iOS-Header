@@ -34,9 +34,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSCHChartReferenceLineLabelsLayoutItem *refLineLabels; // @synthesize refLineLabels=mRefLineLabels;
 @property (strong, nonatomic) TSCHChartAxisID *referenceLineLabelAxisID; // @synthesize referenceLineLabelAxisID=mReferenceLineLabelAxisID;
 
+- (void).cxx_destruct;
 - (struct CGSize)calcMinSize;
 - (struct CGRect)calcOverhangRect;
-- (void)dealloc;
 - (id)initWithParent:(id)arg1 axisPosition:(int)arg2;
 - (id)p_description;
 - (void)p_layoutInward;

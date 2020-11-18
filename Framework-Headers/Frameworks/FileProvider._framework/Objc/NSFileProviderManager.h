@@ -43,13 +43,15 @@
 + (BOOL)writePlaceholderAtURL:(id)arg1 withMetadata:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (void)_cacheProviderInfo;
-- (void)_callAllCompletionHandlersForItemID:(id)arg1 error:(id)arg2;
+- (void)_callCompletionHandlers:(id)arg1 error:(id)arg2;
 - (id)_connection;
+- (void)_failToSignalPendingChangesWithError:(id)arg1 completionHandlersByItemID:(id)arg2;
 - (id)_initWithProviderIdentifier:(id)arg1;
 - (id)_initWithProviderIdentifier:(id)arg1 domain:(id)arg2;
 - (void)_signalPendingEnumerators;
 - (void)dealloc;
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)fetchRemoteFileProviderSynchronously:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)itemIDForIdentifier:(id)arg1;
 - (void)registerURLSessionTask:(id)arg1 forItemWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)remoteFileProviderWithCompletionHandler:(CDUnknownBlockType)arg1;

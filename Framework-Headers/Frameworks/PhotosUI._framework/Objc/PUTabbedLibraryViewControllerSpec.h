@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosUI/PULegacyViewControllerSpec.h>
 
-@interface PUTabbedLibraryViewControllerSpec : NSObject
+@interface PUTabbedLibraryViewControllerSpec : PULegacyViewControllerSpec
 {
 }
 
++ (id)padSpec;
++ (id)phoneSpec;
 - (id)albumListViewControllerSpec;
 - (id)createAlbumListViewController;
-- (id)createMemoriesViewController;
 - (id)createSharedAlbumListViewController;
 - (id)feedViewControllerSpec;
 - (id)zoomableGridViewControllerSpec;

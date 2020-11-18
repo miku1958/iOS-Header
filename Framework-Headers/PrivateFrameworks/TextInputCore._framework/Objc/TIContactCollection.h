@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -18,8 +18,8 @@
 @property (readonly, nonatomic) long long count; // @synthesize count=_count;
 @property (readonly, nonatomic) BOOL sourceHasRelevancyScore; // @synthesize sourceHasRelevancyScore=_sourceHasRelevancyScore;
 
+- (void).cxx_destruct;
 - (void)addContact:(id)arg1;
-- (void)dealloc;
 - (void)enumerateContactsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)initWithRelevanceScoreType:(BOOL)arg1;
 

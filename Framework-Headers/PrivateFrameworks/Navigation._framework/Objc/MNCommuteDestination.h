@@ -40,7 +40,7 @@
 @property (nonatomic) BOOL invalid; // @synthesize invalid=_invalid;
 @property (strong, nonatomic) MNLocation *lastLocation; // @synthesize lastLocation=_lastLocation;
 @property (strong, nonatomic) MNLocation *lastMatchedLocation; // @synthesize lastMatchedLocation=_lastMatchedLocation;
-@property (readonly, nonatomic) NSString *name;
+@property (readonly, copy, nonatomic) NSString *name;
 @property (strong, nonatomic) GEOComposedRoute *nonRecommendedRoute;
 @property (strong) MNObserverHashTable *observers; // @synthesize observers=_observers;
 @property (nonatomic) double remainingDistance; // @synthesize remainingDistance=_remainingDistance;
@@ -49,10 +49,10 @@
 @property (strong, nonatomic) GEOComposedRoute *route; // @synthesize route=_route;
 @property (strong, nonatomic) GEORouteSet *routeSet; // @synthesize routeSet=_routeSet;
 @property (nonatomic) long long score; // @synthesize score=_score;
-@property (strong, nonatomic) NSDictionary *scores; // @synthesize scores=_scores;
-@property (readonly) NSString *shortDescription;
+@property (copy, nonatomic) NSDictionary *scores; // @synthesize scores=_scores;
+@property (readonly, nonatomic) NSString *shortDescription;
 @property (strong, nonatomic) MNCommuteDestinationSuggestion *suggestion; // @synthesize suggestion=_suggestion;
-@property (readonly, nonatomic) NSString *uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSString *uniqueIdentifier;
 @property (readonly, nonatomic) GEOComposedWaypoint *waypoint;
 
 + (BOOL)supportsSecureCoding;

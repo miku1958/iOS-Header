@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AudioToolbox/NSXPCListenerDelegate-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSString, NSXPCListener;
+@class CAReportingDriverUtility, NSDictionary, NSMutableArray, NSString, NSXPCListener;
 
 __attribute__((visibility("hidden")))
 @interface CAReportingServer : NSObject <NSXPCListenerDelegate>
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BOOL _reportingEnabled;
     NSXPCListener *_listener;
     NSMutableArray *_clients;
+    CAReportingDriverUtility *_driverUtility;
     NSDictionary *_defaults;
 }
 
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (strong) NSDictionary *defaults; // @synthesize defaults=_defaults;
 @property (readonly, copy) NSString *description;
+@property (strong) CAReportingDriverUtility *driverUtility; // @synthesize driverUtility=_driverUtility;
 @property (readonly) unsigned long long hash;
 @property (strong) NSXPCListener *listener; // @synthesize listener=_listener;
 @property BOOL reportingEnabled; // @synthesize reportingEnabled=_reportingEnabled;

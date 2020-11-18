@@ -13,7 +13,8 @@
 - (void)configureAsAccessoryViewContainerForPreviewCollection:(NSUUID *)arg1;
 - (void)getNetworkObserverWithCompletionBlock:(void (^)(id<QLNetworkStateListener>))arg1;
 - (void)getPreviewCollectionUUIDWithCompletionHandler:(void (^)(NSUUID *))arg1;
-- (void)invalidatePreviewCollection;
+- (void)invalidateService;
+- (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(void (^)(void))arg1;
 - (void)setAllowInteractiveTransitions:(BOOL)arg1;
 - (void)setNotificationCenter:(id<QLNotificationCenterProtocol>)arg1;
 @end

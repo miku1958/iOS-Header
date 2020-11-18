@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
+- (void).cxx_destruct;
 - (void)_keyboardVisibilityDidChangeNotification:(id)arg1;
 - (void)dealloc;
 - (void)didFinishWithResult:(id)arg1 error:(id)arg2;

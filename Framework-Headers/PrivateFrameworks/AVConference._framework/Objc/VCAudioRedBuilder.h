@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSPointerArray;
 
@@ -30,9 +30,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int numPayloads; // @synthesize numPayloads=_numPayloads;
 @property (readonly, nonatomic) int redPayloadType; // @synthesize redPayloadType=_redPayloadType;
 
++ (unsigned int)redOverheadForNumPayloads:(unsigned int)arg1;
 - (struct tagVCAudioRedPayload *)buildRedPayloadWithPrimaryPayload:(struct tagVCAudioRedPayload *)arg1 redPayloads:(id)arg2;
 - (void)dealloc;
-- (struct tagVCAudioRedPayload *)getPrimaryPayloadWithBuffer:(char *)arg1 length:(int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4;
+- (struct tagVCAudioRedPayload *)getPrimaryPayloadWithBuffer:(char *)arg1 length:(int)arg2 payloadType:(int)arg3 timestamp:(unsigned int)arg4 priority:(unsigned char)arg5;
 - (id)initWithRedPayloadType:(int)arg1 sampleRate:(unsigned int)arg2 numPayloads:(unsigned int)arg3 maxDelay:(unsigned int)arg4 includeSequenceOffset:(BOOL)arg5;
 - (BOOL)isPayloadTimestampWithinThreshold:(struct tagVCAudioRedPayload *)arg1 forTimestamp:(unsigned int)arg2;
 - (struct tagVCAudioRedPayload *)nearestRedPayloadForTimestamp:(unsigned int)arg1;

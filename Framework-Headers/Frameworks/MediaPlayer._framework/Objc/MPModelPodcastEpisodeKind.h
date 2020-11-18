@@ -18,6 +18,7 @@
 + (id)kindWithVariants:(unsigned long long)arg1 options:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
+- (id)humanDescription;
 - (id)initWithCoder:(id)arg1;
 - (shared_ptr_cf7b8a22)predicateWithBaseProperty:(struct ModelPropertyBase *)arg1;
 

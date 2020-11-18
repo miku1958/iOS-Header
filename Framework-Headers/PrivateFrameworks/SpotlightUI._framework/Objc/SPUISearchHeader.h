@@ -21,13 +21,20 @@
     unsigned long long _suggestionID;
     _UILegibilitySettings *_legibilitySettings;
     SPSearchEntity *_searchEntity;
+    long long _activeInterfaceOrientation;
+    double _blurProgress;
     SPUITextField *_searchField;
     UIButton *_cancelButton;
     NSLayoutConstraint *_searchFieldTrailingConstraint;
     NSLayoutConstraint *_cancelButtonTrailingConstraint;
     NSLayoutConstraint *_widthConstraint;
+    NSLayoutConstraint *_topConstraint;
+    NSLayoutConstraint *_bottomConstraint;
 }
 
+@property (nonatomic) long long activeInterfaceOrientation; // @synthesize activeInterfaceOrientation=_activeInterfaceOrientation;
+@property (nonatomic) double blurProgress; // @synthesize blurProgress=_blurProgress;
+@property (strong) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
 @property (strong) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (strong) NSLayoutConstraint *cancelButtonTrailingConstraint; // @synthesize cancelButtonTrailingConstraint=_cancelButtonTrailingConstraint;
 @property (readonly, nonatomic) NSString *currentQuery;
@@ -44,6 +51,8 @@
 @property BOOL searchTextScheduledForProcessing; // @synthesize searchTextScheduledForProcessing=_searchTextScheduledForProcessing;
 @property unsigned long long suggestionID; // @synthesize suggestionID=_suggestionID;
 @property (readonly) Class superclass;
+@property (strong) NSLayoutConstraint *topConstraint; // @synthesize topConstraint=_topConstraint;
+@property (nonatomic) BOOL useInPlaceFilteredBlur;
 @property (strong) NSLayoutConstraint *widthConstraint; // @synthesize widthConstraint=_widthConstraint;
 @property BOOL willClear; // @synthesize willClear=_willClear;
 
@@ -56,16 +65,18 @@
 - (BOOL)atomTextView:(id)arg1 storeRepresentedObjects:(id)arg2 onPasteboard:(id)arg3;
 - (id)backdropVisualEffectView;
 - (void)beginDictation;
+- (double)bottomPadding;
 - (void)cancelButtonClicked:(id)arg1;
 - (BOOL)cancelButtonIsVisible;
-- (void)changeOrientation:(id)arg1;
 - (void)clearSearchFieldWhyQuery:(unsigned long long)arg1 allowZKW:(BOOL)arg2;
 - (id)currentQueryContextWithString:(id)arg1;
 - (void)dictationButtonPressed;
+- (void)didMoveToSuperview;
 - (void)enableDictationIfRequired;
 - (void)focusSearchField;
 - (void)focusSearchFieldAndBeginDictation:(BOOL)arg1;
 - (id)init;
+- (BOOL)isFirstResponder;
 - (BOOL)isOnDarkBackground;
 - (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(long long)arg3;
 - (BOOL)searchFieldIsFocused;
@@ -84,7 +95,7 @@
 - (double)topPadding;
 - (void)triggerSearchForUnlock;
 - (void)unfocusSearchField;
-- (void)updateBlurProgress:(double)arg1;
+- (void)updateBlurProgress;
 - (void)updateColors;
 
 @end

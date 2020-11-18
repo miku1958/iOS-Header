@@ -6,7 +6,7 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class PKPaymentApplication, PKPaymentPass, UIActivityIndicatorView, UIControl, UILabel, UIView;
+@class CALayer, PKPaymentApplication, PKPaymentPass, UIActivityIndicatorView, UIControl, UILabel, UIView;
 @protocol PKPaymentPassTableCellDelegate;
 
 @interface PKPaymentPassTableCell : PSTableCell
@@ -14,6 +14,8 @@
     PKPaymentApplication *_paymentApplication;
     long long _settingsContext;
     UIView *_cardSnapshotView;
+    CALayer *_cardSnapshotMask;
+    BOOL _snapshotLoaded;
     UIActivityIndicatorView *_spinner;
     BOOL _showState;
     BOOL _showSubTitle;

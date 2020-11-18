@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBKeyView.h>
+#import <UIKitCore/UIKBKeyView.h>
 
-#import <UIKit/UIKeyboardCandidateGridCollectionViewControllerDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateGridCollectionViewControllerDelegate-Protocol.h>
 
 @class NSString, TIKeyboardCandidateResultSet, UIKeyboardCandidateGridCollectionViewController, UIKeyboardCandidateSortControl;
 

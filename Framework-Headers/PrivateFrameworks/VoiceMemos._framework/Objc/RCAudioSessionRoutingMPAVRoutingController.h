@@ -6,15 +6,18 @@
 
 #import <MediaPlayer/MPAVRoutingController.h>
 
-@class AVAudioSession, AVAudioSessionPortDescription, MPAVRoute, NSArray, NSString;
+@class AVAudioSession, AVAudioSessionPortDescription, AVAudioSessionRouteDescription, MPAVRoute, NSArray, NSString, RCAudioSessionRoutingAssertion;
 
 @interface RCAudioSessionRoutingMPAVRoutingController : MPAVRoutingController
 {
     AVAudioSession *_audioSession;
     NSString *_audioSessionCategory;
+    RCAudioSessionRoutingAssertion *_audioSessionAssertion;
     unsigned long long _audioSessionCategoryOptions;
+    AVAudioSessionRouteDescription *_cachedCurrentRoute;
     BOOL _hasCategoryEverBeenActive;
     AVAudioSessionPortDescription *_cachedPickedInputRoutePortDescription;
+    AVAudioSessionPortDescription *_cachedPickedOutputRoutePortDescription;
     MPAVRoute *_cachedPickedOutputRoute;
     NSArray *_cachedPickableOutputRoutes;
 }
@@ -22,6 +25,7 @@
 @property (readonly, nonatomic) NSArray *cachedPickableOutputRoutes; // @synthesize cachedPickableOutputRoutes=_cachedPickableOutputRoutes;
 @property (readonly, nonatomic) AVAudioSessionPortDescription *cachedPickedInputRoutePortDescription; // @synthesize cachedPickedInputRoutePortDescription=_cachedPickedInputRoutePortDescription;
 @property (readonly, nonatomic) MPAVRoute *cachedPickedOutputRoute; // @synthesize cachedPickedOutputRoute=_cachedPickedOutputRoute;
+@property (readonly, nonatomic) AVAudioSessionPortDescription *cachedPickedOutputRoutePortDescription; // @synthesize cachedPickedOutputRoutePortDescription=_cachedPickedOutputRoutePortDescription;
 @property (readonly, nonatomic) BOOL hasCategoryEverBeenActive; // @synthesize hasCategoryEverBeenActive=_hasCategoryEverBeenActive;
 @property (readonly, nonatomic) BOOL isAudioSessionAppropriateForQueryingRoutes;
 @property (readonly, nonatomic) BOOL isRoutingToAirPlayMirrorDestination;
@@ -38,7 +42,7 @@
 - (void)enableDetailedDiscoveryMode;
 - (void)fetchAvailableRoutesWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithName:(id)arg1;
-- (BOOL)makeAudioSessionCategoryActive:(BOOL)arg1;
+- (BOOL)makeAudioSessionCategoryActive:(id)arg1;
 - (long long)outputRouteTypeForNavigationIcon;
 - (BOOL)routeOtherThanHandsetAndSpeakerAvailable;
 - (void)setDelegate:(id)arg1;

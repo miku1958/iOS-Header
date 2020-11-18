@@ -9,17 +9,22 @@
 @class NSNumber, NSString;
 
 @protocol ASServerInterface <NSObject>
+- (void)remote_acceptCompetitionRequestFromFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_acceptInviteRequestFromFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_clearFriendListWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_cloudKitAccountStatusWithCompletion:(void (^)(BOOL, BOOL, NSError *))arg1;
-- (void)remote_consolidateRelationshipEventsForFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)remote_completeCompetitionWithFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)remote_expireChangeTokenWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_fetchAllDataIfTimeSinceLastFetchIsGreaterThan:(unsigned long long)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_fetchAllDataWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_fetchAreMultipleDevicesSharingDataForSnapshotIndex:(NSNumber *)arg1 withCompletion:(void (^)(BOOL, BOOL, NSError *))arg2;
+- (void)remote_friendWithRemoteUUID:(NSString *)arg1 completion:(void (^)(NSData *, BOOL, NSError *))arg2;
+- (void)remote_ignoreCompetitionRequestFromFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_ignoreInviteRequestFromFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_pushActivityDataWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_pushFakeActivityDataWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)remote_removeFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)remote_sendCompetitionRequestToFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_sendInviteRequestToDestination:(NSString *)arg1 callerID:(NSString *)arg2 serviceIdentifier:(NSString *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)remote_sendWithdrawInviteRequestToFriendWithUUID:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)remote_setActivityDataVisible:(BOOL)arg1 toFriendWithUUID:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;

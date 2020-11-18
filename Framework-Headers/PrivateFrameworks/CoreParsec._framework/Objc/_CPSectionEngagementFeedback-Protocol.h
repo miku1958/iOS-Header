@@ -10,9 +10,6 @@
 
 @protocol _CPSectionEngagementFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasSection;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _CPResultSectionForFeedback *section;
 @property (nonatomic) unsigned long long timestamp;

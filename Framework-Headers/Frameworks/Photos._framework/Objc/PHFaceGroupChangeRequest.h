@@ -63,6 +63,7 @@
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 clientEntitlements:(id)arg2 clientName:(id)arg3 clientBundleID:(id)arg4 clientProcessID:(int)arg5;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeFaces:(id)arg1;
 - (void)setKeyFace:(id)arg1;

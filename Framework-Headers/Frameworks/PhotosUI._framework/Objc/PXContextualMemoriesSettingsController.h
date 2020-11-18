@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (void)registerForLocationPrefetchingWithIdentifier:(id)arg1;
-- (void)requestUpdatedContextualMemoriesSettingsWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestUpdatedContextualMemoriesSettingsWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)unregisterForLocationPrefetchingWithIdentifier:(id)arg1;
 
 @end

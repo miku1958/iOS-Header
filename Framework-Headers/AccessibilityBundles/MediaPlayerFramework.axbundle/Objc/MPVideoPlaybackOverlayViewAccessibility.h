@@ -17,12 +17,14 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAnnotateAllButtons;
 - (void)_axAnnotateLeftRightButtons;
+- (void)_axUpdateAirplayButton;
 - (void)_axUpdatePictureInPictureButton;
 - (void)_axUpdatePlayPauseButton;
 - (void)_axUpdateScaleButton;
 - (void)_configureTransportControls;
 - (void)_effectiveScaleModeDidChange:(id)arg1;
 - (void)_playbackStateChanged:(id)arg1;
+- (void)_updateAirplayButton;
 - (void)detailSlider:(id)arg1 didChangeScrubSpeed:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 

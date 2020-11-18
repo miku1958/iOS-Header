@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class SKPaymentQueueClient, SKXPCConnection;
 @protocol SKRequestDelegate;
 
+__attribute__((visibility("hidden")))
 @interface SKRequestInternal : NSObject
 {
     long long _backgroundTaskIdentifier;
@@ -18,7 +19,9 @@
     long long _state;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
+- (id)init;
 
 @end
 

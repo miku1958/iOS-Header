@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <IMAssistantCore/IMAssistantMessageHandler.h>
 
 #import <IMAssistantCore/INSetMessageAttributeIntentHandling-Protocol.h>
 
 @class NSString;
 
-@interface IMAssistantMessageSetAttributeHandler : NSObject <INSetMessageAttributeIntentHandling>
+@interface IMAssistantMessageSetAttributeHandler : IMAssistantMessageHandler <INSetMessageAttributeIntentHandling>
 {
 }
 

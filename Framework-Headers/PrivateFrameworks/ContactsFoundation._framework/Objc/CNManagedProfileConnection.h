@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNManagedProfileConnection-Protocol.h>
 
@@ -29,6 +29,7 @@
 - (id)initWithProfileConnection:(id)arg1;
 - (BOOL)isOpenInRestrictionInEffect;
 - (BOOL)mayShowLocalAccountsForBundleID:(id)arg1 sourceAccountManagement:(long long)arg2;
+- (BOOL)mayShowLocalAccountsForTargetBundleID:(id)arg1 targetAccountManagement:(long long)arg2;
 
 @end
 

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDictationConnectionDelegate-Protocol.h>
-#import <UIKit/UIDictationConnectionTokenFilterProtocol-Protocol.h>
-#import <UIKit/_UITouchPhaseChangeDelegate-Protocol.h>
+#import <UIKitCore/UIDictationConnectionDelegate-Protocol.h>
+#import <UIKitCore/UIDictationConnectionTokenFilterProtocol-Protocol.h>
+#import <UIKitCore/_UITouchPhaseChangeDelegate-Protocol.h>
 
 @class CADisplayLink, NSMutableArray, NSString, NSTimer, UIAlertView, UIDictationConnection, UIDictationConnectionPreferences, UIDictationStreamingOperations, UIKeyboardInputMode, UIWindow, _UIDictationPrivacySheetController, _UIDictationTelephonyMonitor;
 
@@ -38,7 +38,6 @@ __attribute__((visibility("hidden")))
     NSString *_prefixTextForStart;
     NSString *_selectionTextForStart;
     NSString *_postfixTextForStart;
-    BOOL dictationStartedFromGesture;
     BOOL _performingStreamingEditingOperation;
     BOOL _discardNextHypothesis;
     BOOL _hasPreheated;
@@ -50,6 +49,9 @@ __attribute__((visibility("hidden")))
     NSString *_targetHypothesis;
     UIWindow *_dictationPresenterWindow;
     _UIDictationPrivacySheetController *_dictationPrivacySheetController;
+    unsigned long long _reasonType;
+    NSString *_lastRecognitionText;
+    id _lastCorrectionIdentifier;
     UIKeyboardInputMode *_currentInputModeForDictation;
     UIKeyboardInputMode *_keyboardInputModeToReturn;
     struct _NSRange _insertionRange;
@@ -61,20 +63,23 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIWindow *dictationPresenterWindow; // @synthesize dictationPresenterWindow=_dictationPresenterWindow;
 @property (strong, nonatomic) _UIDictationPrivacySheetController *dictationPrivacySheetController; // @synthesize dictationPrivacySheetController=_dictationPrivacySheetController;
-@property (nonatomic) BOOL dictationStartedFromGesture; // @synthesize dictationStartedFromGesture;
 @property (nonatomic) BOOL discardNextHypothesis; // @synthesize discardNextHypothesis=_discardNextHypothesis;
 @property (nonatomic) BOOL hasPreheated; // @synthesize hasPreheated=_hasPreheated;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct _NSRange insertionRange; // @synthesize insertionRange=_insertionRange;
 @property (strong, nonatomic) UIKeyboardInputMode *keyboardInputModeToReturn; // @synthesize keyboardInputModeToReturn=_keyboardInputModeToReturn;
+@property (copy, nonatomic) id lastCorrectionIdentifier; // @synthesize lastCorrectionIdentifier=_lastCorrectionIdentifier;
 @property (copy, nonatomic) NSString *lastHypothesis; // @synthesize lastHypothesis=_lastHypothesis;
+@property (copy, nonatomic) NSString *lastRecognitionText; // @synthesize lastRecognitionText=_lastRecognitionText;
 @property (strong, nonatomic) NSMutableArray *pendingEdits; // @synthesize pendingEdits=_pendingEdits;
 @property (nonatomic) BOOL performingStreamingEditingOperation; // @synthesize performingStreamingEditingOperation=_performingStreamingEditingOperation;
 @property (copy, nonatomic) NSString *previousHypothesis; // @synthesize previousHypothesis=_previousHypothesis;
+@property (nonatomic) unsigned long long reasonType; // @synthesize reasonType=_reasonType;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *targetHypothesis; // @synthesize targetHypothesis=_targetHypothesis;
 @property (nonatomic) BOOL wantsAvailabilityMonitoringWhenAppActive; // @synthesize wantsAvailabilityMonitoringWhenAppActive=_wantsAvailabilityMonitoringWhenAppActive;
 
++ (id)UIDictationStartStopReasonTypeDescription:(unsigned long long)arg1;
 + (BOOL)_applicationIsActive;
 + (id)activeConnection;
 + (id)activeInstance;
@@ -87,13 +92,10 @@ __attribute__((visibility("hidden")))
 + (BOOL)dictationIsFunctional;
 + (void)didBeginEditingInTextView:(id)arg1;
 + (void)didOneFingerTapInTextView:(id)arg1;
-+ (void)disableGestureHandler;
-+ (void)enableGestureHandlerIfNecessary;
 + (BOOL)fetchCurrentInputModeSupportsDictation;
 + (id)interpretation:(id)arg1 forPhraseIndex:(unsigned long long)arg2 isShiftLocked:(BOOL)arg3 autocapitalizationType:(long long)arg4 useServerCapitalization:(BOOL)arg5;
 + (BOOL)isRunning;
 + (BOOL)isTextViewOnStarkScreen:(id)arg1;
-+ (void)keyboardDidSetInputMode;
 + (void)keyboardDidUpdateOnScreenStatus;
 + (void)keyboardWillChangeFromDelegate:(id)arg1 toDelegate:(id)arg2;
 + (void)logCorrectionStatisticsForDelegate:(id)arg1;
@@ -108,7 +110,6 @@ __attribute__((visibility("hidden")))
 + (double)serverManualEndpointingThreshold;
 + (id)sharedInstance;
 + (BOOL)shouldDeleteBackwardInInputDelegate:(id)arg1;
-+ (BOOL)shouldEnableGestureHandler;
 + (BOOL)shouldHideCursorForTextView:(id)arg1;
 + (BOOL)shouldHideSelectionUIForTextView:(id)arg1;
 + (BOOL)shouldInsertText:(id)arg1 inInputDelegate:(id)arg2;
@@ -188,10 +189,9 @@ __attribute__((visibility("hidden")))
 - (void)dictationConnnectionDidChangeAvailability:(id)arg1;
 - (BOOL)dictationEnabled;
 - (BOOL)dictationIsModifyingText;
-- (void)disableAutorotation;
+- (void)didShowAlternatives:(id)arg1;
 - (BOOL)disabledDueToTelephonyActivity;
 - (void)dismissDictationView:(id)arg1;
-- (void)enableProximity;
 - (void)endSessionIfNecessaryForTransitionFromState:(int)arg1 toState:(int)arg2;
 - (void)errorAnimationDidFinish;
 - (id)fieldIdentifierInputDelegate:(id)arg1;
@@ -202,6 +202,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isRecievingResults;
 - (id)language;
 - (id)languageCodeForAssistantLanguageCode:(id)arg1;
+- (void)logAlternativeSelected:(id)arg1 correctionIdentifier:(id)arg2;
+- (void)logDidAcceptDictationResult:(id)arg1 reasonType:(unsigned long long)arg2;
 - (void)markKeyboardDeleteMetricEvent;
 - (void)markKeyboardDidReset;
 - (void)markKeyboardInputMetricEvent;
@@ -210,8 +212,6 @@ __attribute__((visibility("hidden")))
 - (id)prefixTextForInputDelegate:(id)arg1;
 - (void)preheatIfNecessary;
 - (void)presentOptInAlertWithCompletion:(CDUnknownBlockType)arg1;
-- (void)proximityStateChanged:(id)arg1;
-- (void)reenableAutorotation;
 - (void)releaseConnection;
 - (void)releaseConnectionAfterDictationRequest;
 - (void)releaseConnectionAfterStatisticsLogging;

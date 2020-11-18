@@ -8,7 +8,7 @@
 
 #import <ScreenshotServices/BSXPCCoding-Protocol.h>
 
-@class BSSettings, NSArray, NSDate, NSString;
+@class BSSettings, NSArray, NSDate, NSString, SSEnvironmentDescriptionAppleInternalOptions, SSImageSurface, SSUIServiceOptions;
 
 @interface SSEnvironmentDescription : NSObject <BSXPCCoding>
 {
@@ -16,13 +16,15 @@
     NSString *_identifier;
     NSString *_sessionIdentifier;
     unsigned long long _presentationMode;
-    BOOL _isFromMainScreen;
-    struct CGImage *_imageSurface;
+    SSImageSurface *_imageSurface;
     double _imageScale;
+    SSUIServiceOptions *_serviceOptions;
     NSDate *_date;
+    SSEnvironmentDescriptionAppleInternalOptions *_appleInternalOptions;
     struct CGSize _imagePixelSize;
 }
 
+@property (strong, nonatomic) SSEnvironmentDescriptionAppleInternalOptions *appleInternalOptions; // @synthesize appleInternalOptions=_appleInternalOptions;
 @property (readonly, nonatomic) NSString *briefDescription;
 @property (readonly, nonatomic) BSSettings *bsSettings;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
@@ -33,19 +35,20 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) struct CGSize imagePixelSize; // @synthesize imagePixelSize=_imagePixelSize;
+@property (readonly, nonatomic) struct CGSize imagePointSize;
 @property (nonatomic) double imageScale; // @synthesize imageScale=_imageScale;
-@property (nonatomic) struct CGImage *imageSurface; // @synthesize imageSurface=_imageSurface;
-@property (nonatomic) BOOL isFromMainScreen; // @synthesize isFromMainScreen=_isFromMainScreen;
+@property (strong, nonatomic) SSImageSurface *imageSurface; // @synthesize imageSurface=_imageSurface;
 @property (nonatomic) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
-@property (strong, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (strong, nonatomic) SSUIServiceOptions *serviceOptions; // @synthesize serviceOptions=_serviceOptions;
+@property (copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (struct CGSize)_imagePointSize;
 - (void)encodeWithXPCDictionary:(id)arg1;
-- (id)initWithDisplayLayout:(id)arg1;
+- (id)init;
 - (id)initWithXPCDictionary:(id)arg1;
+- (void)takeElementsFromDisplayLayout:(id)arg1;
 
 @end
 

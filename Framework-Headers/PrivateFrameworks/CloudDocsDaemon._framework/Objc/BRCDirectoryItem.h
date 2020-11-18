@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)markChildrenLost;
 - (void)markRemovedFromFilesystemForServerEdit:(BOOL)arg1;
 - (BOOL)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (void)transformIntoFSRoot;
 - (BOOL)updateFromFSAtPath:(id)arg1 parentGlobalID:(id)arg2;
 - (void)updateItemMetadataFromServerItem:(id)arg1 appliedSharingPermission:(BOOL)arg2;
 - (BOOL)updateLocationAndMetaFromFSAtPath:(id)arg1 parentGlobalID:(id)arg2;

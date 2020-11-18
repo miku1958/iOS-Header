@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIVisualEffectLayerConfig.h>
+#import <UIKitCore/_UIVisualEffectLayerConfig.h>
 
 @class NSDictionary, UIColor;
 

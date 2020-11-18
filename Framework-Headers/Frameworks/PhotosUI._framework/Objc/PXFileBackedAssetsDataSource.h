@@ -19,10 +19,12 @@
 
 - (void).cxx_destruct;
 - (id)initWithFileURLsBySection:(id)arg1;
+- (id)inputForItem:(id)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)photosGraphSuggestedContributions;
 
 @end
 

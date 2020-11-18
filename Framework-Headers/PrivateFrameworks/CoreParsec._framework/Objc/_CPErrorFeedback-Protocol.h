@@ -11,9 +11,6 @@
 @protocol _CPErrorFeedback <NSObject>
 
 @property (strong, nonatomic) _CPError *error;
-@property (readonly, nonatomic) BOOL hasError;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasUnderlyingError;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long timestamp;
 @property (strong, nonatomic) _CPError *underlyingError;

@@ -14,7 +14,6 @@
 + (id)_threadedABAddressBookLock;
 + (void *)_threadedABAddressBookRef;
 + (void)_watchLocaleChanges;
-+ (id *)abAddressBook;
 + (void *)abAddressBookRef;
 + (BOOL)addressBookEnabled;
 + (void)performBlock:(CDUnknownBlockType)arg1;

@@ -10,28 +10,30 @@
 @protocol TSDImportExportDelegate;
 
 @protocol TSKExporter <NSObject>
+
+@property (readonly, nonatomic) BOOL canExportInBackground;
+@property (readonly, nonatomic) NSString *documentSpecificTypeUTI;
+@property (readonly, nonatomic) BOOL isCancelled;
+@property (readonly, nonatomic) BOOL isExportSupported;
+@property (readonly, nonatomic) BOOL needsSupplementalFiles;
+@property (readonly, nonatomic) TSUProgress *progress;
+@property (readonly, nonatomic) NSString *savePanelMessage;
+@property (copy, nonatomic) NSString *typeUTI;
+
 - (void)cancel;
 - (BOOL)exportToURL:(NSURL *)arg1 delegate:(id<TSDImportExportDelegate>)arg2 error:(id *)arg3;
 - (id)initWithDocumentRoot:(TSKDocumentRoot *)arg1;
-- (BOOL)isCancelled;
 - (TSUProgressContext *)progressContext;
 - (void)quit;
 - (void)setProgressContext:(TSUProgressContext *)arg1;
 
 @optional
-- (NSString *)documentSpecificTypeUTI;
 - (void)enableRenderAllContent;
 - (NSURL *)exportURLForOutputURL:(NSURL *)arg1;
-- (BOOL)isExportSupported;
-- (BOOL)needsSupplementalFiles;
-- (TSUProgress *)progress;
-- (NSString *)savePanelMessage;
 - (void)setBuildVersionHistory:(NSArray *)arg1;
 - (void)setOptions:(NSDictionary *)arg1;
 - (void)setQuickLookThumbnail:(TSUImage *)arg1;
 - (void)setSaveToURL:(NSURL *)arg1;
-- (void)setTypeUTI:(NSString *)arg1;
 - (void)setUsePackageFormat:(BOOL)arg1;
-- (NSString *)typeUTI;
 @end
 

@@ -6,23 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFSiriActivationListenerDelegate-Protocol.h>
+
+@class AFSiriActivationListener, NSString;
 @protocol OS_dispatch_queue;
 
-@interface AFRemoteRequestWatcher : NSObject
+@interface AFRemoteRequestWatcher : NSObject <AFSiriActivationListenerDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    CDUnknownBlockType _prewarmHandler;
     CDUnknownBlockType _requestHandler;
+    CDUnknownBlockType _intentHandler;
     int _speechRequestToken;
     CDUnknownBlockType _speechRequestHandler;
+    AFSiriActivationListener *_siriActivationListener;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_setupRequestListener;
 - (void)_setupSpeechRequestListener;
 - (void)dealloc;
 - (id)init;
+- (void)setIntentHandler:(CDUnknownBlockType)arg1;
 - (void)setNewRequestHandler:(CDUnknownBlockType)arg1;
 - (void)setNewSpeechRequestHandler:(CDUnknownBlockType)arg1;
+- (void)setPrewarmHandler:(CDUnknownBlockType)arg1;
+- (void)siriActivationListener:(id)arg1 handleActivationWithRequestInfo:(id)arg2;
+- (void)siriActivationListener:(id)arg1 handleIntent:(id)arg2 inBackgroundAppWithBundleId:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)siriActivationListener:(id)arg1 handlePrewarmForRequestInfo:(id)arg2;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <CloudDocs/NSFileProviderItem-Protocol.h>
 
-@class NSNumber, NSString, NSURL;
+@class NSArray, NSNumber, NSString, NSURL;
 
 @protocol NSFileProviderItem_Private <NSFileProviderItem>
 
@@ -21,8 +21,11 @@
 @property (readonly, getter=fp_isUbiquitous) BOOL fp_ubiquitous;
 @property (readonly, copy) NSNumber *hasUnresolvedConflicts;
 @property (readonly, getter=isHidden) BOOL hidden;
+@property (readonly, nonatomic) NSString *preformattedMostRecentEditorName;
+@property (readonly, nonatomic) NSString *preformattedOwnerName;
 @property (readonly, copy) NSString *providerIdentifier;
 @property (readonly, copy) NSString *sharingPermissions;
+@property (readonly, copy) NSArray *tags;
 
 
 @optional

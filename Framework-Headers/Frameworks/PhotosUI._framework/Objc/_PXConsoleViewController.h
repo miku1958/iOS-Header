@@ -10,18 +10,22 @@
 
 @interface _PXConsoleViewController : UIViewController
 {
+    BOOL _toolBarWasHidden;
     UITextView *__textView;
     UIBarButtonItem *__shareBarButtonItem;
 }
 
 @property (readonly, nonatomic) UIBarButtonItem *_shareBarButtonItem; // @synthesize _shareBarButtonItem=__shareBarButtonItem;
 @property (readonly, nonatomic) UITextView *_textView; // @synthesize _textView=__textView;
+@property (nonatomic) BOOL toolBarWasHidden; // @synthesize toolBarWasHidden=_toolBarWasHidden;
 
 - (void).cxx_destruct;
 - (void)_presentSharingViewController:(id)arg1;
 - (void)appendOutput:(id)arg1;
 - (id)init;
 - (void)loadView;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

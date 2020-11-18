@@ -6,10 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
-@interface SKAction : NSObject <NSCopying, NSCoding>
+@interface SKAction : NSObject <NSCopying, NSSecureCoding>
 {
     struct SKCAction *_caction;
 }
@@ -119,6 +119,7 @@
 + (id)stop;
 + (id)strengthBy:(float)arg1 duration:(double)arg2;
 + (id)strengthTo:(float)arg1 duration:(double)arg2;
++ (BOOL)supportsSecureCoding;
 + (Class)unarchiver:(id)arg1 cannotDecodeObjectOfClassName:(id)arg2 originalClasses:(id)arg3;
 + (id)unhide;
 + (id)waitForDuration:(double)arg1;
@@ -132,6 +133,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqualToAction:(id)arg1;
 - (double)ratioForTime:(double)arg1;
 - (id)reversedAction;
 - (void)setCppAction:(void *)arg1;

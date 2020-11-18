@@ -6,32 +6,32 @@
 
 #import <iWorkImport/TSPArchiverBase.h>
 
-@class NSArray, NSHashTable, NSMutableSet, NSObject, NSSet, NSUUID, TSPObject;
+@class NSHashTable, NSMutableSet, NSObject, NSSet, NSUUID, TSPObject, TSPReferenceOrderedSet, TSPUnknownContentSnapshot;
 @protocol OS_dispatch_data, OS_dispatch_group;
 
 __attribute__((visibility("hidden")))
 @interface TSPArchiver : TSPArchiverBase
 {
     _Atomic char _flags;
-    NSArray *_unknownMessages;
+    TSPUnknownContentSnapshot *_unknownContentSnapshot;
     NSObject<OS_dispatch_group> *_archiveGroup;
     NSObject<OS_dispatch_group> *_serializeGroup;
     NSObject<OS_dispatch_data> *_serializedData;
     NSMutableSet *_featureInfos;
-    NSHashTable *_aggregatedStrongReferences;
-    NSHashTable *_aggregatedWeakReferences;
-    NSHashTable *_aggregatedCommandToModelReferences;
-    NSHashTable *_aggregatedLazyReferences;
-    NSHashTable *_aggregatedDataReferences;
     NSUUID *_objectUUID;
     TSPObject *_explicitComponentRootObject;
+    TSPReferenceOrderedSet *_aggregatedStrongReferences;
+    TSPReferenceOrderedSet *_aggregatedWeakReferences;
+    TSPReferenceOrderedSet *_aggregatedCommandToModelReferences;
+    NSHashTable *_aggregatedLazyReferences;
+    NSHashTable *_aggregatedDataReferences;
 }
 
-@property (readonly, nonatomic) NSHashTable *aggregatedCommandToModelReferences; // @synthesize aggregatedCommandToModelReferences=_aggregatedCommandToModelReferences;
+@property (readonly, nonatomic) TSPReferenceOrderedSet *aggregatedCommandToModelReferences; // @synthesize aggregatedCommandToModelReferences=_aggregatedCommandToModelReferences;
 @property (readonly, nonatomic) NSHashTable *aggregatedDataReferences; // @synthesize aggregatedDataReferences=_aggregatedDataReferences;
 @property (readonly, nonatomic) NSHashTable *aggregatedLazyReferences; // @synthesize aggregatedLazyReferences=_aggregatedLazyReferences;
-@property (readonly, nonatomic) NSHashTable *aggregatedStrongReferences; // @synthesize aggregatedStrongReferences=_aggregatedStrongReferences;
-@property (readonly, nonatomic) NSHashTable *aggregatedWeakReferences; // @synthesize aggregatedWeakReferences=_aggregatedWeakReferences;
+@property (readonly, nonatomic) TSPReferenceOrderedSet *aggregatedStrongReferences; // @synthesize aggregatedStrongReferences=_aggregatedStrongReferences;
+@property (readonly, nonatomic) TSPReferenceOrderedSet *aggregatedWeakReferences; // @synthesize aggregatedWeakReferences=_aggregatedWeakReferences;
 @property (readonly, nonatomic) NSObject<OS_dispatch_group> *archiveGroup; // @synthesize archiveGroup=_archiveGroup;
 @property (readonly, nonatomic) TSPObject *explicitComponentRootObject; // @synthesize explicitComponentRootObject=_explicitComponentRootObject;
 @property (readonly, nonatomic) NSSet *featureInfos;
@@ -44,7 +44,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL success;
 
 - (void).cxx_destruct;
-- (void)addDocumentFeatureInfoWithIdentifier:(id)arg1 readVersion:(unsigned long long)arg2 writeVersion:(unsigned long long)arg3;
+- (id)addAlternateArchiverForVersion:(unsigned long long)arg1 fieldPath:(const struct FieldPath *)arg2 isDiffArchiver:(BOOL)arg3 diffReadVersion:(unsigned long long)arg4;
+- (void)addDocumentFeatureInfoWithIdentifier:(id)arg1 readVersion:(unsigned long long)arg2 writeVersion:(unsigned long long)arg3 validatingValues:(BOOL)arg4;
 - (void)aggregateReferencesFromArchiver:(id)arg1;
 - (id)alternateForVersion:(unsigned long long)arg1;
 - (void)archive;

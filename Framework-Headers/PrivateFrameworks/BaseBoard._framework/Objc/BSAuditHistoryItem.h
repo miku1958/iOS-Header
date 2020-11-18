@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSXPCCoding-Protocol.h>
 #import <BaseBoard/NSSecureCoding-Protocol.h>
@@ -27,13 +27,13 @@
 + (id)itemWithString:(id)arg1;
 + (id)itemWithWithFormat:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_timeFormatter;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithString:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
-- (id)itemWithString:(id)arg1;
 
 @end
 

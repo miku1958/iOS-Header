@@ -19,9 +19,11 @@
 
 @property (readonly, nonatomic) BBBulletinRequest *bulletinRequest;
 @property (readonly, nonatomic) BOOL canHandleActionLocally;
+@property (readonly, nonatomic) long long codeType;
 @property (readonly, nonatomic) NSString *identifier;
 @property (nonatomic) int requestingProcessID; // @synthesize requestingProcessID=_requestingProcessID;
 
++ (id)_tlAlertConfiguration;
 + (id)notificationForAction:(id)arg1;
 + (id)tempVCardFileURL;
 - (void).cxx_destruct;

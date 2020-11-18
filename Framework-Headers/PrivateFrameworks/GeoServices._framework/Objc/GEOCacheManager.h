@@ -30,12 +30,6 @@
 - (id)init;
 - (long long)invalidationStateForComponent:(id)arg1;
 - (long long)invalidationStateForPlace:(id)arg1;
-- (id)refreshLOIAssociatedMapItems:(id)arg1 updatedCoordinates:(id)arg2;
-- (void)refreshLOIAssociatedMapItems:(id)arg1 updatedCoordinates:(id)arg2 traits:(id)arg3 auditToken:(id)arg4 handler:(CDUnknownBlockType)arg5;
-- (void)refreshLOIAssociatedMapItems:(id)arg1 updatedCoordinates:(id)arg2 traits:(id)arg3 handler:(CDUnknownBlockType)arg4;
-- (id)refreshLOIReverseGeocodedMapItems:(id)arg1 updatedCoordinates:(id)arg2;
-- (void)refreshLOIReverseGeocodedMapItems:(id)arg1 updatedCoordinates:(id)arg2 traits:(id)arg3 auditToken:(id)arg4 handler:(CDUnknownBlockType)arg5;
-- (void)refreshLOIReverseGeocodedMapItems:(id)arg1 updatedCoordinates:(id)arg2 traits:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)snapshotWithFilePathArray:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)versionsForDomains:(id)arg1 handler:(CDUnknownBlockType)arg2;
 

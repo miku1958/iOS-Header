@@ -24,14 +24,16 @@
 - (void).cxx_destruct;
 - (void)_commitTasks;
 - (id)_descriptionFromTasksByType:(id)arg1;
-- (void)addTask:(long long)arg1 forRecordWithIdentifier:(id)arg2;
+- (void)addTask:(long long)arg1 forRecordWithScopedIdentifier:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (void)enumerateScopedTasksWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateTasksWithBlock:(CDUnknownBlockType)arg1;
 - (id)initEmpty;
 - (id)initWithCoder:(id)arg1;
 - (id)invalidRecordIdentifiers;
+- (id)invalidRecordScopedIdentifiers;
 
 @end
 

@@ -65,6 +65,7 @@
 - (void)insertAssets:(id)arg1 atIndexes:(id)arg2;
 - (void)moveAssetsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeAsset:(id)arg1;
 - (void)removeAssetFromAssetsAtIndex:(unsigned long long)arg1;

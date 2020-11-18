@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKAccountOverrideInfo, CKContainerID, CKDAccount, CKDAppContainerIntersectionMetadata, CKDAppContainerTuple, CKDApplicationMetadata, CKDCachePurger, CKDFlowControlManager, CKDKeyValueDiskCache, CKDMMCS, CKDMescalSession, CKDPCSCache, CKDPCSManager, CKDPublicIdentityLookupService, CKDServerConfiguration, CKDZoneGatekeeper, CKTimeLogger, NSBundle, NSHashTable, NSMutableDictionary, NSString, NSURL;
+@class CKAccountOverrideInfo, CKContainerID, CKDAccount, CKDAppContainerIntersectionMetadata, CKDAppContainerTuple, CKDApplicationMetadata, CKDCachePurger, CKDFlowControlManager, CKDKeyValueDiskCache, CKDMMCS, CKDMescalSession, CKDPCSCache, CKDPCSManager, CKDPublicIdentityLookupService, CKDServerConfiguration, CKDZoneGatekeeper, CKTimeLogger, NSHashTable, NSMutableDictionary, NSString, NSURL;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface CKDClientContext : NSObject
@@ -37,7 +37,6 @@
     NSHashTable *_proxies;
     long long _cachedEnvironment;
     CKContainerID *_containerID;
-    NSBundle *_applicationBundle;
     NSString *_applicationBundleID;
     NSString *_sourceApplicationBundleID;
     NSString *_applicationVersion;
@@ -88,7 +87,6 @@
 @property (strong, nonatomic) CKDAppContainerIntersectionMetadata *appContainerIntersectionMetadata; // @synthesize appContainerIntersectionMetadata=_appContainerIntersectionMetadata;
 @property (strong, nonatomic) CKDAppContainerTuple *appContainerTuple; // @synthesize appContainerTuple=_appContainerTuple;
 @property (strong, nonatomic) NSString *applicationAssetDbDirectory; // @synthesize applicationAssetDbDirectory=_applicationAssetDbDirectory;
-@property (readonly, nonatomic) NSBundle *applicationBundle; // @synthesize applicationBundle=_applicationBundle;
 @property (readonly, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
 @property (strong, nonatomic) NSString *applicationCachesDirectory; // @synthesize applicationCachesDirectory=_applicationCachesDirectory;
 @property (strong, nonatomic) NSString *applicationContainerCloudKitDirectory; // @synthesize applicationContainerCloudKitDirectory=_applicationContainerCloudKitDirectory;
@@ -107,8 +105,6 @@
 @property (strong, nonatomic) CKDPublicIdentityLookupService *backgroundPublicIdentityLookupService; // @synthesize backgroundPublicIdentityLookupService=_backgroundPublicIdentityLookupService;
 @property (strong, nonatomic) CKDZoneGatekeeper *backgroundZoneGatekeeper; // @synthesize backgroundZoneGatekeeper=_backgroundZoneGatekeeper;
 @property (nonatomic) BOOL bypassPCSEncryption; // @synthesize bypassPCSEncryption=_bypassPCSEncryption;
-@property (readonly, nonatomic) unsigned long long c2MetricsReportFrequency;
-@property (readonly, nonatomic) unsigned long long c2MetricsReportFrequencyBase;
 @property (strong, nonatomic) CKDCachePurger *cachePurger; // @synthesize cachePurger=_cachePurger;
 @property long long cachedEnvironment; // @synthesize cachedEnvironment=_cachedEnvironment;
 @property (readonly, nonatomic) BOOL canAccessAccount;
@@ -143,6 +139,7 @@
 @property (nonatomic) BOOL hasDisplaysSystemAcceptPromptEntitlement;
 @property (nonatomic) BOOL hasLightweightPCSEntitlement;
 @property (nonatomic) BOOL hasMasqueradingEntitlement;
+@property (nonatomic) BOOL hasNonLegacyShareURLEntitlement;
 @property (nonatomic) BOOL hasOutOfProcessUIEntitlement;
 @property (nonatomic) BOOL hasParticipantPIIEntitlement;
 @property (nonatomic, setter=setHasSystemServiceEntitlement:) BOOL hasSystemServiceEntitlement;

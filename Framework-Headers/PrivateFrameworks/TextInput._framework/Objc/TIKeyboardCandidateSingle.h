@@ -27,9 +27,9 @@
 + (id)secureCandidateForInput:(id)arg1 slotID:(unsigned int)arg2 customInfoType:(unsigned long long)arg3;
 + (BOOL)supportsSecureCoding;
 + (int)type;
+- (void).cxx_destruct;
 - (id)candidateByReplacingWithCandidate:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCandidate:(id)arg1;
@@ -37,6 +37,7 @@
 - (id)initWithCandidate:(id)arg1 forInput:(id)arg2 extensionCandidate:(BOOL)arg3;
 - (id)initWithCandidateResultSetCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithResponseCandidate:(id)arg1;
 - (id)initWithUnchangedInput:(id)arg1;
 
 @end

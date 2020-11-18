@@ -19,9 +19,11 @@
     HKObjectType *_parentType;
 }
 
+@property (readonly, nonatomic, getter=_isClinicalType) BOOL _clinicalType;
 @property (readonly, nonatomic) long long code;
 @property (readonly, nonatomic) Class dataObjectClass;
 @property (readonly) NSString *identifier;
+@property (readonly, nonatomic) BOOL isClinicalType;
 @property (strong, nonatomic) HKObjectType *parentType; // @synthesize parentType=_parentType;
 
 + (id)_allCategoryTypes;
@@ -35,28 +37,44 @@
 + (BOOL)_allowAuthorizationForSharingWithTypes:(id)arg1 entitlements:(id)arg2 disallowedTypes:(id)arg3;
 + (void)_enumerateObjectTypesWithHandler:(CDUnknownBlockType)arg1;
 + (id)_objectTypeWithIdentifier:(id)arg1 class:(Class)arg2 lookupTable:(id)arg3;
++ (id)_objectTypesFromIdentifierArray:(id)arg1 error:(id *)arg2;
 + (id)_typeWithIdentifier:(id)arg1;
 + (id)_typesIncludingParentTypes:(id)arg1;
++ (id)accountOwnerTypeForIdentifier:(id)arg1;
 + (id)activityCacheType;
 + (id)activitySummaryType;
++ (id)allergyRecordTypeForIdentifier:(id)arg1;
++ (id)bradycardiaType;
 + (id)briskMinuteDataType;
 + (id)calorieGoal;
 + (id)categoryTypeForIdentifier:(id)arg1;
 + (id)characteristicTypeForIdentifier:(id)arg1;
++ (id)clinicalTypeForIdentifier:(id)arg1;
 + (id)coachingEventType;
++ (id)conditionRecordTypeForIdentifier:(id)arg1;
 + (id)correlationTypeForIdentifier:(id)arg1;
 + (id)dataTypeWithCode:(long long)arg1;
 + (id)deepBreathingSessionType;
++ (id)diagnosticTestReportTypeForIdentifier:(id)arg1;
++ (id)diagnosticTestResultTypeForIdentifier:(id)arg1;
 + (id)documentTypeForIdentifier:(id)arg1;
 + (id)fitnessFriendAchievementType;
 + (id)fitnessFriendActivitySnapshotType;
 + (id)fitnessFriendWorkoutType;
++ (id)heartRateType;
++ (id)heartStudyEventType;
 + (id)irregularlyIrregularPulseType;
++ (id)medicationDispenseRecordTypeForIdentifier:(id)arg1;
++ (id)medicationOrderTypeForIdentifier:(id)arg1;
++ (id)medicationRecordTypeForIdentifier:(id)arg1;
 + (id)objectTypeForWorkoutMetric:(unsigned long long)arg1;
++ (id)procedureRecordTypeForIdentifier:(id)arg1;
 + (id)quantityTypeForIdentifier:(id)arg1;
 + (id)seriesTypeForIdentifier:(id)arg1;
-+ (id)stationaryDiscordanceType;
 + (BOOL)supportsSecureCoding;
++ (id)tachycardiaType;
++ (id)unknownRecordTypeForIdentifier:(id)arg1;
++ (id)vaccinationRecordTypeForIdentifier:(id)arg1;
 + (id)watchActivationType;
 + (id)workoutType;
 - (void).cxx_destruct;

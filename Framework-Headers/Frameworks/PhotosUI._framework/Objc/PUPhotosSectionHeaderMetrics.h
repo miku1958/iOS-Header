@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface PUPhotosSectionHeaderMetrics : NSObject
 {
     double _cachedHeights[4];

@@ -10,22 +10,13 @@
 
 @interface UNTextInputNotificationAction : UNNotificationAction
 {
-    NSString *_textInputButtonTitle;
-    NSString *_textInputPlaceholder;
 }
 
-@property (readonly, copy, nonatomic) NSString *textInputButtonTitle; // @synthesize textInputButtonTitle=_textInputButtonTitle;
-@property (readonly, copy, nonatomic) NSString *textInputPlaceholder; // @synthesize textInputPlaceholder=_textInputPlaceholder;
+@property (readonly, copy, nonatomic) NSString *textInputButtonTitle; // @dynamic textInputButtonTitle;
+@property (readonly, copy, nonatomic) NSString *textInputPlaceholder; // @dynamic textInputPlaceholder;
 
-+ (id)actionWithIdentifier:(id)arg1 title:(id)arg2 options:(unsigned long long)arg3;
 + (id)actionWithIdentifier:(id)arg1 title:(id)arg2 options:(unsigned long long)arg3 textInputButtonTitle:(id)arg4 textInputPlaceholder:(id)arg5;
-+ (BOOL)supportsSecureCoding;
-- (void).cxx_destruct;
-- (id)_initWithIdentifier:(id)arg1 title:(id)arg2 options:(unsigned long long)arg3 textInputButtonTitle:(id)arg4 textInputPlaceholder:(id)arg5;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
-- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

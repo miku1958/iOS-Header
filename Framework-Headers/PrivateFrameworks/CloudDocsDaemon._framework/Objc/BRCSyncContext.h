@@ -63,6 +63,8 @@ __attribute__((visibility("hidden")))
 - (void)addForegroundClient:(id)arg1;
 - (void)addOperation:(id)arg1;
 - (void)addOperation:(id)arg1 allowsCellularAccess:(id)arg2;
+- (void)addOperation:(id)arg1 allowsCellularAccess:(id)arg2 nonDiscretionary:(id)arg3;
+- (void)addOperation:(id)arg1 nonDiscretionary:(BOOL)arg2;
 - (BOOL)allowsCellularAccess;
 - (void)cancel;
 - (void)close;

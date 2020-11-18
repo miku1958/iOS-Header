@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/MTLComputePipelineState-Protocol.h>
 
@@ -16,6 +16,8 @@
     NSString *_label;
     id<MTLDevice> _device;
     MTLIndirectArgumentBufferEmulationData *_iabEmulationData;
+    BOOL _supportIndirectCommandBuffers;
+    unsigned long long _uniqueIdentifier;
 }
 
 @property (strong, nonatomic) MTLIndirectArgumentBufferEmulationData *IABEmulationData; // @synthesize IABEmulationData=_iabEmulationData;
@@ -28,6 +30,7 @@
 @property (readonly) unsigned long long staticThreadgroupMemoryLength; // @dynamic staticThreadgroupMemoryLength;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long threadExecutionWidth; // @dynamic threadExecutionWidth;
+@property (readonly) unsigned long long uniqueIdentifier;
 
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;

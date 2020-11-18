@@ -15,7 +15,8 @@
     BOOL _filteredFetchResultIsValid;
     BOOL _inclusionPredicateIsValid;
     BOOL _reverseSortOrder;
-    BOOL _curate;
+    BOOL _wantsCuration;
+    BOOL _preloadAssetTypeCounts;
     NSSet *_excludedOids;
     NSSet *_includedOids;
     NSSet *_curatedOids;
@@ -24,7 +25,6 @@
     PHFetchResult *_keyAssetsFetchResult;
 }
 
-@property (nonatomic) BOOL curate; // @synthesize curate=_curate;
 @property (strong, nonatomic) PHFetchResult *curatedFetchResult; // @synthesize curatedFetchResult=_curatedFetchResult;
 @property (readonly, nonatomic) NSSet *curatedOids; // @synthesize curatedOids=_curatedOids;
 @property (readonly, nonatomic) NSSet *excludedOids; // @synthesize excludedOids=_excludedOids;
@@ -33,10 +33,14 @@
 @property (readonly, nonatomic) PHFetchResult *filteredFetchResult;
 @property (readonly, nonatomic) NSSet *includedOids; // @synthesize includedOids=_includedOids;
 @property (readonly, nonatomic) NSPredicate *inclusionPredicate;
+@property (readonly, nonatomic) BOOL isCurated;
 @property (strong, nonatomic) PHFetchResult *keyAssetsFetchResult; // @synthesize keyAssetsFetchResult=_keyAssetsFetchResult;
+@property (nonatomic) BOOL preloadAssetTypeCounts; // @synthesize preloadAssetTypeCounts=_preloadAssetTypeCounts;
 @property (readonly, nonatomic) BOOL reverseSortOrder; // @synthesize reverseSortOrder=_reverseSortOrder;
+@property (nonatomic) BOOL wantsCuration; // @synthesize wantsCuration=_wantsCuration;
 
 - (void).cxx_destruct;
+- (id)_exposedFetchResultBeforeFiltering;
 - (void)_invalidateFilteredFetchResult;
 - (void)_invalidateInclusionPredicate;
 - (void)_setIncludeOids:(id)arg1;

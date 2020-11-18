@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CellularPlanManager/NSCopying-Protocol.h>
 #import <CellularPlanManager/NSSecureCoding-Protocol.h>
@@ -17,6 +17,7 @@
     BOOL _isBootstrap;
     BOOL _isDisableNotAllowed;
     BOOL _isDeleteNotAllowed;
+    BOOL _requiresUserConsent;
     NSData *_profileId;
     NSString *_iccid;
 }
@@ -27,6 +28,7 @@
 @property (nonatomic) BOOL isDisableNotAllowed; // @synthesize isDisableNotAllowed=_isDisableNotAllowed;
 @property (nonatomic) BOOL isSelected; // @synthesize isSelected=_isSelected;
 @property (copy, nonatomic) NSData *profileId; // @synthesize profileId=_profileId;
+@property (nonatomic) BOOL requiresUserConsent; // @synthesize requiresUserConsent=_requiresUserConsent;
 
 + (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -34,7 +36,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithProfileId:(id)arg1 iccid:(id)arg2 selected:(BOOL)arg3 bootstrap:(BOOL)arg4 disableNotAllowed:(BOOL)arg5 deleteNotAllowed:(BOOL)arg6;
+- (id)initWithProfileId:(id)arg1 iccid:(id)arg2 selected:(BOOL)arg3 bootstrap:(BOOL)arg4 disableNotAllowed:(BOOL)arg5 deleteNotAllowed:(BOOL)arg6 requiresUserConsent:(BOOL)arg7;
 
 @end
 

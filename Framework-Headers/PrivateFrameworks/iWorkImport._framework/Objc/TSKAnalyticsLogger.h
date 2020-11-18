@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDomain:(id)arg1;
 - (void)logDistributionValue:(double)arg1 forKey:(id)arg2;
 - (void)logScalarValue:(long long)arg1 forKey:(id)arg2;
+- (void)logScalarValueAddition:(long long)arg1 forKey:(id)arg2;
 - (void)p_finishMessage;
 - (void)p_logASLMessageWithDistributionValue:(double)arg1 forKey:(id)arg2;
 - (void)p_logASLMessageWithScalarValue:(long long)arg1 forKey:(id)arg2;

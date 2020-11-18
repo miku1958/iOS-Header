@@ -6,40 +6,34 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKPPTController-Protocol.h>
+
+@class NSMutableDictionary;
 @protocol HKPPTInterface, OS_dispatch_queue;
 
-@interface HKPPT : NSObject
+@interface HKPPT : NSObject <HKPPTController>
 {
     id<HKPPTInterface> _pptInterface;
     NSObject<OS_dispatch_queue> *_pptQueue;
+    NSMutableDictionary *_activeTestsByName;
 }
 
 - (void).cxx_destruct;
-- (id)_createStepSampleWithStepCount:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3;
-- (id)_dateComponentsFromString:(id)arg1;
 - (void)_failedTest:(id)arg1;
 - (void)_failedTest:(id)arg1 withResults:(id)arg2;
 - (void)_finishedTest:(id)arg1;
 - (void)_finishedTest:(id)arg1 extraResults:(id)arg2;
-- (id)_generateStepSamples:(long long)arg1;
-- (void)_invalidParams:(id)arg1 forTest:(id)arg2;
-- (unsigned long long)_randomNumberBetweenMin:(unsigned long long)arg1 max:(unsigned long long)arg2;
 - (void)_startedTest:(id)arg1;
+- (id)_testNameForDriver:(id)arg1;
+- (id)builtinTests;
+- (void)dealloc;
+- (void)failedTest:(id)arg1 results:(id)arg2 error:(id)arg3;
+- (void)finishedTest:(id)arg1 extraResults:(id)arg2;
 - (id)init;
 - (id)initWithHKPPTInterface:(id)arg1 usingQueue:(id)arg2;
-- (BOOL)performDateRangeQueryPPTTest:(id)arg1;
-- (BOOL)performJournalMergePPTTest:(id)arg1 healthDirectory:(id)arg2;
-- (BOOL)performLatestSummaryQueryPPTTest:(id)arg1 date:(id)arg2;
-- (BOOL)performPPTTest:(id)arg1 anchoredQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 withLimit:(long long)arg5 anchor:(long long)arg6;
-- (BOOL)performPPTTest:(id)arg1 collectionQueryForType:(id)arg2 anchorDate:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 dateIntervalsString:(id)arg6 separateBySource:(BOOL)arg7 average:(BOOL)arg8 minimum:(BOOL)arg9 maximum:(BOOL)arg10 sum:(BOOL)arg11;
-- (BOOL)performPPTTest:(id)arg1 enumerateWorkoutRouteWithDatumCount:(long long)arg2;
-- (BOOL)performPPTTest:(id)arg1 insertWorkoutRouteWithDatumCount:(long long)arg2 batched:(BOOL)arg3;
-- (BOOL)performPPTTest:(id)arg1 preflightHealthDirectory:(id)arg2 sampleTypes:(id)arg3 killHealthd:(BOOL)arg4;
-- (BOOL)performPPTTest:(id)arg1 sampleQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 withLimit:(long long)arg5;
-- (BOOL)performPPTTest:(id)arg1 saveDataWithCount:(long long)arg2;
-- (BOOL)performPPTTest:(id)arg1 statisticsQueryForType:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 separateBySource:(BOOL)arg5 average:(BOOL)arg6 minimum:(BOOL)arg7 maximum:(BOOL)arg8 sum:(BOOL)arg9;
-- (BOOL)performSyntheticJournalMergePPTTest:(id)arg1 simulatedDuration:(double)arg2;
+- (void)invalidConfigurationForTest:(id)arg1 error:(id)arg2;
 - (BOOL)runTest:(id)arg1 options:(id)arg2;
+- (void)startedTest:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
@@ -14,7 +14,10 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     unsigned long long _lastExpiredMetadataPurgeMachTime;
     NSMutableDictionary *_itemCaches;
+    long long _cacheSize;
 }
+
+@property (nonatomic) long long cacheSize; // @synthesize cacheSize=_cacheSize;
 
 + (unsigned long long)optimalBatchSize;
 + (id)sharedStoreItemMetadataRequestController;

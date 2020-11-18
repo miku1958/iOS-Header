@@ -47,12 +47,14 @@ __attribute__((visibility("hidden")))
 - (void)_collectMetricsFromCompletedItemGroup:(id)arg1;
 - (void)_collectMetricsFromCompletedItemGroupSet:(id)arg1;
 - (void)_collectMetricsFromMMCSOperationMetrics:(id)arg1;
-- (void)_didFetchUploadTokensForAssetTokenRequest:(id)arg1 error:(id)arg2;
+- (BOOL)_didFetchUploadTokensForAssetTokenRequest:(id)arg1 error:(id)arg2 newError:(id *)arg3;
+- (void)_didGetChunkKeysForAssetBatch:(id)arg1 error:(id)arg2;
 - (void)_didMakeProgressForAsset:(id)arg1 progress:(double)arg2;
 - (void)_didMakeProgressForMMCSItem:(id)arg1;
 - (void)_didMakeProgressForMMCSSectionItem:(id)arg1 task:(id)arg2;
 - (void)_didPrepareAsset:(id)arg1;
 - (void)_didPrepareAssetBatch:(id)arg1 error:(id)arg2;
+- (void)_didPutChunkKeysForAssetBatch:(id)arg1 error:(id)arg2;
 - (void)_didUploadAsset:(id)arg1 error:(id)arg2;
 - (void)_didUploadMMCSItem:(id)arg1 error:(id)arg2;
 - (void)_didUploadMMCSItems:(id)arg1 error:(id)arg2;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)_didUploadMMCSSectionItems:(id)arg1 task:(id)arg2 error:(id)arg3;
 - (void)_didUploadPackageWithTask:(id)arg1;
 - (void)_failAllItemsInAssetBatch:(id)arg1 error:(id)arg2;
+- (BOOL)_fetchAssetRereferenceRecords;
 - (BOOL)_fetchUploadTokens;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_openPackage:(id)arg1;

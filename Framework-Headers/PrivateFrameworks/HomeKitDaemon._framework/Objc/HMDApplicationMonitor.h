@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) BOOL activeHomeKitApps;
 @property (weak, nonatomic) HMDApplicationRegistry *appRegistry; // @synthesize appRegistry=_appRegistry;
 @property (readonly, nonatomic) NSSet *backgroundApps;
-@property (readonly, nonatomic) BKSApplicationStateMonitor *bksMonitor; // @synthesize bksMonitor=_bksMonitor;
+@property (strong, nonatomic) BKSApplicationStateMonitor *bksMonitor; // @synthesize bksMonitor=_bksMonitor;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HMDApplicationMonitorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -46,6 +46,11 @@
 - (BOOL)_delegateConformsAndRespondsToSelector:(SEL)arg1;
 - (void)_handleAppStateChangedInfo:(id)arg1;
 - (void)_postAppTerminatedNotification:(id)arg1;
+- (void)_postHomeUIServiceTerminatedNotification;
+- (void)_processAppStateChange:(id)arg1;
+- (void)_removeProcess:(id)arg1;
+- (void)_startMonitoringApplicationStateChangesForBundleIdentifier:(id)arg1;
+- (void)_stopMonitoringApplicationStateChangesForBundleIdentifier:(id)arg1;
 - (unsigned long long)_translateApplicationState:(unsigned int)arg1;
 - (void)_updateProcessInfo:(id)arg1 info:(id)arg2;
 - (id)activeRequests;
@@ -61,7 +66,8 @@
 - (id)processInfoForPID:(int)arg1;
 - (void)removeFromPendingTerminated:(id)arg1;
 - (void)removeProcess:(id)arg1;
-- (void)start;
+- (void)setUpForMonitoring;
+- (void)tearDownMonitoringIfNotInUse;
 - (void)timerDidFire:(id)arg1;
 - (unsigned long long)translateApplicationStateForInfo:(id)arg1 processInfo:(id)arg2;
 

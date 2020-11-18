@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface APSLog : NSObject
 {
 }
 
 + (id)alert;
-+ (id)awd;
 + (id)certificate;
 + (id)connection;
 + (id)connectionServer;
@@ -26,6 +25,7 @@
 + (id)pushHistory;
 + (BOOL)shouldPowerLogEvent:(id)arg1;
 + (id)stream;
++ (id)telemetry;
 + (id)topicManager;
 + (id)xpc;
 

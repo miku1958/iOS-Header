@@ -7,33 +7,42 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBGetCarPowerLevelStatusIntentResponse-Protocol.h>
 
-@class PBUnknownFields, _INPBDistance, _INPBDouble;
+@class NSString, _INPBDistance, _INPBDouble, _INPBInteger;
 
-@interface _INPBGetCarPowerLevelStatusIntentResponse : PBCodable <NSCopying>
+@interface _INPBGetCarPowerLevelStatusIntentResponse : PBCodable <_INPBGetCarPowerLevelStatusIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct {
+        unsigned int charging:1;
+    } _has;
+    BOOL _charging;
     _INPBDouble *_chargePercentRemaining;
     _INPBDistance *_distanceRemaining;
     _INPBDouble *_fuelPercentRemaining;
+    _INPBInteger *_minutesToFull;
 }
 
 @property (strong, nonatomic) _INPBDouble *chargePercentRemaining; // @synthesize chargePercentRemaining=_chargePercentRemaining;
+@property (nonatomic) BOOL charging; // @synthesize charging=_charging;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDistance *distanceRemaining; // @synthesize distanceRemaining=_distanceRemaining;
 @property (strong, nonatomic) _INPBDouble *fuelPercentRemaining; // @synthesize fuelPercentRemaining=_fuelPercentRemaining;
 @property (readonly, nonatomic) BOOL hasChargePercentRemaining;
+@property (nonatomic) BOOL hasCharging;
 @property (readonly, nonatomic) BOOL hasDistanceRemaining;
 @property (readonly, nonatomic) BOOL hasFuelPercentRemaining;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly, nonatomic) BOOL hasMinutesToFull;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _INPBInteger *minutesToFull; // @synthesize minutesToFull=_minutesToFull;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

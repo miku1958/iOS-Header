@@ -9,7 +9,6 @@
 #import <PhotosUI/NSCopying-Protocol.h>
 #import <PhotosUI/NSMutableCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface PUIndexPathSet : NSObject <NSCopying, NSMutableCopying>
 {
 }

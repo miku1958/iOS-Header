@@ -49,6 +49,7 @@
 - (id)_networkConstraintsCachePath;
 - (void)_preprocessURLResolutionCacheDictionary:(id)arg1;
 - (void)_setBagBackendWithDictionary:(id)arg1;
+- (void)_toggleStopSendingLocalCookies;
 - (void)_writeNetworkConstraintsCacheFile;
 - (void)_writeURLResolutionCacheFile;
 - (id)copyExtraHeadersForURL:(id)arg1;

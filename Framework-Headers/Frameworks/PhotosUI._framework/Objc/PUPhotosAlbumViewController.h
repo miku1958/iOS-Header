@@ -49,11 +49,11 @@
 - (void)_getDataForVisualSection:(long long)arg1 hasActionButton:(BOOL *)arg2 locations:(id *)arg3 title:(id *)arg4 startDate:(id *)arg5 endDate:(id *)arg6;
 - (id)_globalHeaderTitle;
 - (void)_invalideSectionHeaders;
-- (BOOL)_navigateToBottomIfNeededAnimated:(BOOL)arg1;
 - (void)_performAddDropWithSession:(id)arg1;
 - (void)_performMoveDropWithCoordinator:(id)arg1;
 - (void)_setNeedsUpdate;
 - (void)_updateSectionHeadersIfNeeded;
+- (unsigned long long)additionalOneUpViewControllerOptions;
 - (BOOL)allowSelectAllButton;
 - (BOOL)canBeginStackCollapseTransition;
 - (BOOL)canDragIn;
@@ -81,7 +81,6 @@
 - (id)newGridLayout;
 - (void)photosDataSource:(id)arg1 didReceivePhotoLibraryChange:(id)arg2;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
-- (BOOL)pu_handleSecondTabTap;
 - (double)sectionedGridLayout:(id)arg1 accessibilitySectionHeaderHeightForVisualSection:(long long)arg2;
 - (double)sectionedGridLayout:(id)arg1 aspectRatioForItemAtIndexPath:(id)arg2;
 - (double)sectionedGridLayout:(id)arg1 sectionHeaderHeightForVisualSection:(long long)arg2;

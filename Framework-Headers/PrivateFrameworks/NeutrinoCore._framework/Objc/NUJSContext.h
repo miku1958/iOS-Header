@@ -17,7 +17,7 @@
     double _executionTimeLimit;
 }
 
-@property (readonly) BOOL didTimeOut; // @synthesize didTimeOut=_didTimeOut;
+@property BOOL didTimeOut; // @synthesize didTimeOut=_didTimeOut;
 @property (strong, nonatomic) NSError *error;
 @property (nonatomic) double executionTimeLimit; // @synthesize executionTimeLimit=_executionTimeLimit;
 
@@ -32,8 +32,6 @@
 - (void)popState;
 - (void)pushState:(id)arg1;
 - (void)resetAllProxies;
-- (void)setDidTimeOut:(BOOL)arg1;
-- (void)setException:(id)arg1;
 - (void)setFunction:(id)arg1 forKey:(id)arg2;
 - (void)setupBuiltInFunctions;
 

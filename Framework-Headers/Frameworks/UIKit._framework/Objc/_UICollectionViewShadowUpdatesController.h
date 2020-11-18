@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UICollectionViewDragDestination_Internal-Protocol.h>
+#import <UIKitCore/UICollectionViewDragDestination_Internal-Protocol.h>
 
 @class NSMutableArray, NSPointerArray, NSString, UICollectionView, _UIDataSourceSnapshotter, _UIDataSourceUpdateMap;
 
@@ -54,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)_collectionView:(id)arg1 moveItemAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (void)_collectionView:(id)arg1 performDropWithCoordinator:(id)arg2;
 - (BOOL)_collectionView:(id)arg1 prefersFullSizePreviewsForDragSession:(id)arg2;
+- (id)_collectionView:(id)arg1 sectionIndexTitlesTrimmedToCount:(unsigned long long)arg2;
 - (BOOL)_collectionView:(id)arg1 shouldApplyTransitionContentOffset:(struct CGPoint)arg2 contentSize:(struct CGSize)arg3;
 - (BOOL)_collectionView:(id)arg1 shouldSpringLoadItemAtIndexPath:(id)arg2 withContext:(id)arg3;
 - (struct CGPoint)_collectionView:(id)arg1 targetContentOffsetForProposedContentOffset:(struct CGPoint)arg2;

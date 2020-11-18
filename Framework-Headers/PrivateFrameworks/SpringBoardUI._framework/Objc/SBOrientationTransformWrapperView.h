@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (void)_updateGeometry;
 - (void)addContentView:(id)arg1;
+- (void)bringContentSubviewToFront:(id)arg1;
 - (struct CGPoint)convertPointFromContainerInterfaceOrientationToContentInterfaceOrientation:(struct CGPoint)arg1;
 - (struct CGPoint)convertPointFromContentInterfaceOrientationToContainerInterfaceOrientation:(struct CGPoint)arg1;
 - (struct CGRect)convertRectFromContainerInterfaceOrientationToContentInterfaceOrientation:(struct CGRect)arg1;

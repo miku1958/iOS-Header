@@ -6,22 +6,27 @@
 
 #import <HomeKitDaemon/HMDBackingStoreTransactionOptions.h>
 
+@class HMDBackingStore;
+
 @interface HMDBackingStoreTransactionActions : HMDBackingStoreTransactionOptions
 {
     BOOL _local;
     BOOL _changed;
     BOOL _saveToAssistant;
     BOOL _saveToSharedUserAccount;
+    HMDBackingStore *_backingStore;
 }
 
+@property (readonly, weak, nonatomic) HMDBackingStore *backingStore; // @synthesize backingStore=_backingStore;
 @property (readonly, nonatomic) BOOL changed; // @synthesize changed=_changed;
 @property (readonly, nonatomic) BOOL local; // @synthesize local=_local;
 @property (readonly, nonatomic) BOOL saveToAssistant; // @synthesize saveToAssistant=_saveToAssistant;
 @property (readonly, nonatomic) BOOL saveToSharedUserAccount; // @synthesize saveToSharedUserAccount=_saveToSharedUserAccount;
 
 + (id)logCategory;
+- (void).cxx_destruct;
 - (id)description;
-- (id)initWithOptions:(id)arg1;
+- (id)initWithBackingStore:(id)arg1 options:(id)arg2;
 - (id)logIdentifier;
 - (void)markChanged;
 - (void)markLocalChanged;

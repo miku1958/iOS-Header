@@ -6,14 +6,15 @@
 
 #import <iWorkImport/TSDRep.h>
 
-#import <iWorkImport/TSDContainerRep-Protocol.h>
 #import <iWorkImport/TSDImageDrawingDataSource-Protocol.h>
+#import <iWorkImport/TSKChangeSourceObserver-Protocol.h>
+#import <iWorkImport/TSWPContainerTextEditingRep-Protocol.h>
 
 @class NSArray, NSObject, NSString, TSAGalleryLayout, TSDImageDrawingHelper, TSWPRep;
 @protocol TSDContainerInfo;
 
 __attribute__((visibility("hidden")))
-@interface TSAGalleryRep : TSDRep <TSDContainerRep, TSDImageDrawingDataSource>
+@interface TSAGalleryRep : TSDRep <TSWPContainerTextEditingRep, TSDImageDrawingDataSource, TSKChangeSourceObserver>
 {
     TSDImageDrawingHelper *_drawingHelper;
     TSWPRep *_captionRep;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) TSWPRep *captionRep; // @synthesize captionRep=_captionRep;
 @property (readonly, nonatomic) NSArray *childReps;
+@property (readonly, nonatomic) TSWPRep *containedRep;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,6 +31,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (double)magicMoveAttributeMatchPercentBetweenOutgoingObject:(id)arg1 incomingObject:(id)arg2 mixingTypeContext:(id)arg3;
++ (struct CGAffineTransform)p_textureLayoutTransformInRootForRep:(id)arg1 isMagicMove:(BOOL)arg2;
++ (struct CGRect)p_textureRectForRep:(id)arg1 isMagicMove:(BOOL)arg2;
++ (struct CGAffineTransform)p_textureRenderTransformRelativeToTextureRect:(struct CGRect)arg1 forRep:(id)arg2 isMagicMove:(BOOL)arg3;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)didDisplayTextureWithDescription:(id)arg1 isAtEndOfBuild:(BOOL)arg2;
@@ -44,8 +49,12 @@ __attribute__((visibility("hidden")))
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (void)invalidateCurrentItem;
 - (void)p_announceNewItemForAccessibilityIfNeeded;
+- (void)p_drawImageInContext:(struct CGContext *)arg1 forLayer:(BOOL)arg2;
+- (id)p_emptyPlaceholderImage;
+- (id)p_galleryItemForTextureStage:(unsigned long long)arg1 isIncoming:(BOOL)arg2;
 - (BOOL)p_isEmpty;
 - (id)p_newTextureForStage:(unsigned long long)arg1 isIncoming:(BOOL)arg2 includeImage:(BOOL)arg3 includeCaption:(BOOL)arg4 size:(struct CGSize)arg5 offset:(struct CGPoint)arg6 renderTransform:(struct CGAffineTransform)arg7;
+- (BOOL)p_shouldIncludeItemCaptionTextForStage:(unsigned long long)arg1 isIncoming:(BOOL)arg2;
 - (void)recursivelyPerformSelector:(SEL)arg1;
 - (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;
 - (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1;

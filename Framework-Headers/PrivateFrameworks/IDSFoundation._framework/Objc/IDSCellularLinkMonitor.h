@@ -26,19 +26,15 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (BOOL)_dataContextUsable:(id)arg1;
-- (void)_processCTServerNotification:(id)arg1 info:(id)arg2;
-- (void)_registerCTNotification:(id)arg1;
 - (void)_setupCTServerConnection;
-- (void)_unregisterCTNotification:(id)arg1;
-- (void)_updateCellularDataInterface;
-- (void)_updateCellularMTU;
+- (BOOL)_updateCellularDataInterface;
+- (BOOL)_updateCellularMTU;
 - (void)_updateDataStatus;
 - (BOOL)_updateRadioAccessTechnology;
 - (void)addCellularLinkDelegate:(id)arg1;
 - (void)currentCellularSignalStrength:(int *)arg1 signalStrength:(int *)arg2 signalGrade:(int *)arg3;
 - (void)dealloc;
-- (BOOL)dropIPPackets:(id)arg1 localAddress:(struct sockaddr *)arg2 remoteAddress:(struct sockaddr *)arg3 isRelay:(BOOL)arg4;
+- (BOOL)dropIPPackets:(id)arg1 localAddress:(struct sockaddr *)arg2 remoteAddress:(struct sockaddr *)arg3 isRelay:(BOOL)arg4 channelNumberMSB:(unsigned char)arg5;
 - (id)init;
 - (void)registerCellularDataStatusNotification:(BOOL)arg1;
 - (void)removeCellularLinkDelegate:(id)arg1;

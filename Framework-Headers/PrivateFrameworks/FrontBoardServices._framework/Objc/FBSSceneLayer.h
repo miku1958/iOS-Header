@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 
@@ -24,14 +24,15 @@
 
 @property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBSSceneLayerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<FBSSceneLayerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double level; // @synthesize level=_level;
-@property (nonatomic) FBSScene *scene; // @synthesize scene=_scene;
+@property (weak, nonatomic) FBSScene *scene; // @synthesize scene=_scene;
 @property (readonly, nonatomic) BOOL shouldObserveUpdates; // @synthesize shouldObserveUpdates=_shouldObserveUpdates;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_initWithLevel:(double)arg1 context:(id)arg2;
 - (void)_setLevel:(double)arg1 fromObserver:(BOOL)arg2;
 - (void)_synchronize:(CDUnknownBlockType)arg1;

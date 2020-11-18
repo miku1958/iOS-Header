@@ -20,6 +20,7 @@
 - (BOOL)mf_hasBackgroundColorOrImage;
 - (BOOL)mf_isContainedInAnyElementInSet:(id)arg1;
 - (int)mf_quoteLevelDelta;
+- (void)mf_setDirAttributeToComputedValue;
 - (void)mf_stripCSSStyle;
 - (void)recursivelyRemoveMailAttributes;
 @end

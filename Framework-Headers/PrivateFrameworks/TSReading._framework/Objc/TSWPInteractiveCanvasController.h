@@ -29,6 +29,7 @@
 - (BOOL)canHandleGesture:(id)arg1;
 - (BOOL)cellCommentsAllowedForTableInfo:(id)arg1;
 - (void)closeHyperlinkPopover;
+- (id)closestRepToPoint:(struct CGPoint)arg1;
 - (id)closestRepToPoint:(struct CGPoint)arg1 forStorage:(id)arg2;
 - (void)dealloc;
 - (void)didBeginEditingText;

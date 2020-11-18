@@ -6,12 +6,12 @@
 
 #import <SpriteKit/SKNode.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE, NSDictionary, NSString, SKShader, SKTileSet, UIColor;
 
-@interface SKTileMapNode : SKNode <NSCopying, NSCoding>
+@interface SKTileMapNode : SKNode <NSCopying, NSSecureCoding>
 {
     struct SKCTileMapNode *_skcTileMapNode;
     SKTileSet *_tileSet;
@@ -42,6 +42,9 @@
 @property (strong, nonatomic) NSString *tileSetName; // @synthesize tileSetName=_tileSetName;
 @property (nonatomic) struct CGSize tileSize;
 
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (BOOL)supportsSecureCoding;
 + (id)tileMapNodeWithTileSet:(id)arg1 columns:(unsigned long long)arg2 rows:(unsigned long long)arg3 tileSize:(struct CGSize)arg4;
 + (id)tileMapNodeWithTileSet:(id)arg1 columns:(unsigned long long)arg2 rows:(unsigned long long)arg3 tileSize:(struct CGSize)arg4 fillWithTileGroup:(id)arg5;
 + (id)tileMapNodeWithTileSet:(id)arg1 columns:(unsigned long long)arg2 rows:(unsigned long long)arg3 tileSize:(struct CGSize)arg4 tileGroupLayout:(id)arg5;
@@ -58,8 +61,6 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createTileStampFromColumn:(unsigned long long)arg1 row:(unsigned long long)arg2 withWidth:(unsigned long long)arg3 height:(unsigned long long)arg4 addToTileSet:(BOOL)arg5;
 - (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (void)fillArray:(unsigned int *)arg1 withTilesFromColumn:(unsigned long long)arg2 row:(unsigned long long)arg3 forWidth:(unsigned long long)arg4 height:(unsigned long long)arg5;
 - (void)fillArrayWithTiles:(unsigned int *)arg1;
@@ -73,6 +74,7 @@
 - (id)initWithTileSet:(id)arg1 columns:(unsigned long long)arg2 rows:(unsigned long long)arg3 tileSize:(struct CGSize)arg4;
 - (id)initWithTileSet:(id)arg1 columns:(unsigned long long)arg2 rows:(unsigned long long)arg3 tileSize:(struct CGSize)arg4 fillWithTileGroup:(id)arg5;
 - (id)initWithTileSet:(id)arg1 columns:(unsigned long long)arg2 rows:(unsigned long long)arg3 tileSize:(struct CGSize)arg4 tileGroupLayout:(id)arg5;
+- (BOOL)isEqualToNode:(id)arg1;
 - (void)rebuildTileSprites;
 - (void)removeAllTiles;
 - (void)setAlpha:(double)arg1;

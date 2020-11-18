@@ -12,9 +12,11 @@
 @class NSArray, NSData, NSString, NSURL, PUEditableMediaProvider;
 @protocol PUEditableAsset, PXRunNodeDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUEditableMediaProviderImageDataNode : PXRunNode <PUImageDataNode, PUImageInfoNode>
 {
     int _requestID;
+    BOOL _useEmbeddedPreview;
     NSData *_imageData;
     NSURL *_imageDataURL;
     NSString *_imageDataUTI;
@@ -40,6 +42,7 @@
 @property (readonly, getter=isRunning) BOOL running;
 @property (readonly) unsigned long long state;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL useEmbeddedPreview; // @synthesize useEmbeddedPreview=_useEmbeddedPreview;
 @property (readonly, nonatomic) long long version; // @synthesize version=_version;
 @property (readonly, getter=isWaiting) BOOL waiting;
 

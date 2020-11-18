@@ -17,7 +17,7 @@
 }
 
 @property (nonatomic) double endTimestamp; // @synthesize endTimestamp=_endTimestamp;
-@property (strong, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
+@property (copy, nonatomic) NSData *routeID; // @synthesize routeID=_routeID;
 @property (nonatomic) unsigned long long selectedRouteIndex; // @synthesize selectedRouteIndex=_selectedRouteIndex;
 @property (nonatomic) double startTimestamp; // @synthesize startTimestamp=_startTimestamp;
 

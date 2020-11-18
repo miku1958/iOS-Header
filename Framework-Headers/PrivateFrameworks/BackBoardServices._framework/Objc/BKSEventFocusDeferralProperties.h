@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
@@ -26,6 +26,7 @@
 + (id)propertiesWithClientID:(id)arg1 pid:(int)arg2 displayUUID:(id)arg3 contextID:(unsigned int)arg4;
 + (id)propertiesWithMainDisplayAndClientID:(id)arg1 pid:(int)arg2 contextID:(unsigned int)arg3;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)conciseDescription;
 - (void)dealloc;
 - (id)description;

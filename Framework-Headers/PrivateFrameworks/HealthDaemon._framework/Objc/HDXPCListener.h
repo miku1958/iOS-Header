@@ -9,12 +9,12 @@
 #import <HealthDaemon/NSXPCListenerDelegate-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString, NSXPCListener, NSXPCListenerEndpoint;
-@protocol HDXPCListenerDelegate, OS_dispatch_queue;
+@protocol HDXPCListenerDelegate;
 
 @interface HDXPCListener : NSObject <NSXPCListenerDelegate>
 {
     NSXPCListener *_underlyingListener;
-    NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _lock;
     NSMutableDictionary *_exportedObjectsByClient;
     id<HDXPCListenerDelegate> _delegate;
 }
@@ -29,6 +29,7 @@
 
 + (id)serviceListener;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)init;
 - (id)initWithMachServiceName:(id)arg1;
 - (id)initWithUnderlyingListener:(id)arg1;

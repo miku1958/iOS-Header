@@ -21,7 +21,7 @@
 
 + (unsigned long long)stateCode;
 - (void).cxx_destruct;
-- (void)_cooldownWorkerIfWarmed:(id)arg1;
+- (BOOL)_cooldownWorkerIfWarmed:(id)arg1;
 - (void)_warmupWorkerIfCooled:(id)arg1;
 - (id)initWithWorkers:(id)arg1;
 - (void)recordConstraintChange:(id)arg1;

@@ -11,13 +11,12 @@
 @protocol _CPPunchoutForFeedback <NSObject>
 
 @property (copy, nonatomic) NSString *bundleIdentifier;
-@property (readonly, nonatomic) BOOL hasBundleIdentifier;
-@property (readonly, nonatomic) BOOL hasLabel;
-@property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) int knownBundleIdentifier;
 @property (copy, nonatomic) NSString *label;
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSArray *urls;
+@property (readonly, nonatomic) unsigned long long whichBundleid;
 
 - (void)addUrls:(NSString *)arg1;
 - (void)clearUrls;

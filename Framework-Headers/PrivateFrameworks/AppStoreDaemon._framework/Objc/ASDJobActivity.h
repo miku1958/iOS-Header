@@ -16,7 +16,9 @@
     BOOL _cancelIfDuplicate;
     BOOL _explicitContent;
     BOOL _hasMessagesExtension;
+    BOOL _hasWatchApp;
     BOOL _isAutomatic;
+    BOOL _isCompatibilityUpdate;
     BOOL _isDeviceBasedVPP;
     BOOL _isGameCenterEnabled;
     BOOL _isInQueue;
@@ -91,10 +93,12 @@
 @property (copy, nonatomic) NSString *genre; // @synthesize genre=_genre;
 @property (copy, nonatomic) NSNumber *genreID; // @synthesize genreID=_genreID;
 @property (nonatomic) BOOL hasMessagesExtension; // @synthesize hasMessagesExtension=_hasMessagesExtension;
+@property (nonatomic) BOOL hasWatchApp; // @synthesize hasWatchApp=_hasWatchApp;
 @property (copy, nonatomic) NSNumber *iAdAttribution; // @synthesize iAdAttribution=_iAdAttribution;
 @property (copy, nonatomic) NSDate *iAdConversionDate; // @synthesize iAdConversionDate=_iAdConversionDate;
 @property (copy, nonatomic) NSDate *iAdImpressionDate; // @synthesize iAdImpressionDate=_iAdImpressionDate;
 @property (nonatomic) BOOL isAutomatic; // @synthesize isAutomatic=_isAutomatic;
+@property (nonatomic) BOOL isCompatibilityUpdate; // @synthesize isCompatibilityUpdate=_isCompatibilityUpdate;
 @property (nonatomic) BOOL isDeviceBasedVPP; // @synthesize isDeviceBasedVPP=_isDeviceBasedVPP;
 @property (nonatomic) BOOL isFromStore; // @synthesize isFromStore=_isFromStore;
 @property (nonatomic) BOOL isGameCenterEnabled; // @synthesize isGameCenterEnabled=_isGameCenterEnabled;

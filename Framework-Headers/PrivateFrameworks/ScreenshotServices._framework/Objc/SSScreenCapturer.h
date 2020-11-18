@@ -6,29 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class SSDittoRemoteConnection, SSScreenshotsWindow, SSSnapshotter;
+#import <ScreenshotServices/SSTestingCoordinatorDelegate-Protocol.h>
+#import <ScreenshotServices/SSUIServiceServerDelegate-Protocol.h>
+
+@class SSDittoRemoteConnection, SSScreenshotsWindow, SSSnapshotter, SSTestingCoordinator, SSUIServiceServer, UIWindow;
 @protocol SSScreenCapturerDelegate;
 
-@interface SSScreenCapturer : NSObject
+@interface SSScreenCapturer : NSObject <SSUIServiceServerDelegate, SSTestingCoordinatorDelegate>
 {
     SSSnapshotter *_snapshotter;
     SSDittoRemoteConnection *_dittoRemoteConnection;
+    SSUIServiceServer *_uiServiceServer;
+    SSTestingCoordinator *_testingCoordinator;
     SSScreenshotsWindow *_serviceWindow;
     id<SSScreenCapturerDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<SSScreenCapturerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) UIWindow *screenshotsWindow;
 
 + (id)_currentDisplayLayout;
 + (void)playScreenshotSound;
 + (BOOL)shouldUseScreenCapturerForScreenshots;
 - (void).cxx_destruct;
-- (void)_actuallyPerformCaptureAndSendEnvironmentDescriptionsWithPresentationOptions:(id)arg1;
-- (void)_saveSnapshotToPhotoLibrary:(id)arg1 environmentDescription:(id)arg2;
-- (void)_sendEnvironmentDescriptionsWithPresentationOptions:(id)arg1;
+- (id)_environmentDescriptionFromImage:(id)arg1;
+- (void)_preheatAndTakeScreenshotIfPossibleWithPresentationOptions:(id)arg1 appleInternalOptions:(id)arg2;
+- (void)_saveImageToPhotoLibrary:(id)arg1 environmentDescription:(id)arg2;
+- (void)_sendEnvironmentDescription:(id)arg1 savingImageToPhotos:(id)arg2;
+- (void)_takeScreenshotWithPresentationOptions:(id)arg1 appleInternalOptions:(id)arg2;
+- (id)_testingCoordinator;
 - (id)init;
+- (void)server:(id)arg1 receivedRequest:(id)arg2;
 - (void)takeScreenshot;
 - (void)takeScreenshotWithPresentationOptions:(id)arg1;
+- (void)testingCoordinator:(id)arg1 requestsTakingScreenshotForRunPPTRequest:(id)arg2;
 
 @end
 

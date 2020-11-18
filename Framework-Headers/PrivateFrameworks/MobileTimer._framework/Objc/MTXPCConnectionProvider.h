@@ -39,6 +39,7 @@
 - (id)description;
 - (void)didReceiveLifecycleNotification;
 - (id)initWithConnectionInfo:(id)arg1 errorHandler:(CDUnknownBlockType)arg2 reconnectHandler:(CDUnknownBlockType)arg3;
+- (void)invalidate;
 - (void)performRemoteBlock:(CDUnknownBlockType)arg1;
 - (void)performRemoteBlock:(CDUnknownBlockType)arg1 withErrorHandler:(CDUnknownBlockType)arg2;
 

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <iTunesStore/NSCoding-Protocol.h>
 #import <iTunesStore/NSCopying-Protocol.h>
+#import <iTunesStore/NSSecureCoding-Protocol.h>
 
 @class NSString, NSURL;
 
-@interface ISReview : NSObject <NSCoding, NSCopying>
+@interface ISReview : NSObject <NSSecureCoding, NSCopying>
 {
     long long _assetType;
     NSString *_body;
@@ -41,6 +41,7 @@
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (nonatomic) unsigned long long titleMaxLength; // @synthesize titleMaxLength=_titleMaxLength;
 
++ (BOOL)supportsSecureCoding;
 - (id)_draftFileName;
 - (id)_draftsDirectoryPath;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -21,6 +21,7 @@
 @property (nonatomic) long long fakeTrafficIncidentAlert; // @dynamic fakeTrafficIncidentAlert;
 @property (nonatomic) double initialRequestDelay; // @dynamic initialRequestDelay;
 @property (nonatomic) double initialTraceSpeedMultiplier; // @dynamic initialTraceSpeedMultiplier;
+@property (nonatomic) BOOL isConnectedToCarplay; // @dynamic isConnectedToCarplay;
 @property (nonatomic) BOOL isTracePlaybackCameraTestMode; // @dynamic isTracePlaybackCameraTestMode;
 @property (nonatomic) unsigned long long maxAlternateRoutesCount; // @dynamic maxAlternateRoutesCount;
 @property (nonatomic) BOOL muteSpeechOverride; // @dynamic muteSpeechOverride;
@@ -30,7 +31,7 @@
 @property (nonatomic) BOOL shouldLoadReroutesFromTrace; // @dynamic shouldLoadReroutesFromTrace;
 @property (nonatomic) BOOL shouldUseGuidanceEventManager; // @dynamic shouldUseGuidanceEventManager;
 @property (nonatomic) BOOL speechEnabled; // @dynamic speechEnabled;
-@property (strong, nonatomic) NSString *voiceLanguage; // @dynamic voiceLanguage;
+@property (copy, nonatomic) NSString *voiceLanguage; // @dynamic voiceLanguage;
 @property (nonatomic) unsigned long long voiceVolume; // @dynamic voiceVolume;
 @property (nonatomic) BOOL walkingVoiceGuidance; // @dynamic walkingVoiceGuidance;
 

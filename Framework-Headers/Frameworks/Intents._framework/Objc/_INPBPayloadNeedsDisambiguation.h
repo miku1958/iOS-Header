@@ -7,31 +7,32 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBPayloadNeedsDisambiguation-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBPayloadNeedsDisambiguation : PBCodable <NSCopying>
+@interface _INPBPayloadNeedsDisambiguation : PBCodable <_INPBPayloadNeedsDisambiguation, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_disambiguationItems;
+    struct _has;
+    NSArray *_disambiguationItems;
 }
 
-@property (strong, nonatomic) NSMutableArray *disambiguationItems; // @synthesize disambiguationItems=_disambiguationItems;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *disambiguationItems; // @synthesize disambiguationItems=_disambiguationItems;
+@property (readonly, nonatomic) unsigned long long disambiguationItemsCount;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (Class)disambiguationItemsType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addDisambiguationItems:(id)arg1;
 - (void)clearDisambiguationItems;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)disambiguationItemsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)disambiguationItemsCount;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

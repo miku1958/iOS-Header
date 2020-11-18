@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_DUIClientSessionSource-Protocol.h>
-#import <UIKit/_DUIClientSource-Protocol.h>
+#import <UIKitCore/_DUIClientSessionSource-Protocol.h>
+#import <UIKitCore/_DUIClientSource-Protocol.h>
+#import <UIKitCore/_UIDruidSourceConnection-Protocol.h>
 
-@class NSXPCConnection;
+@class NSString, NSXPCConnection;
 @protocol _DUIServerSessionSource;
 
 __attribute__((visibility("hidden")))
-@interface _UIDruidSourceConnection : NSObject <_DUIClientSource, _DUIClientSessionSource>
+@interface _UIDruidSourceConnection : NSObject <_DUIClientSource, _DUIClientSessionSource, _UIDruidSourceConnection>
 {
     NSXPCConnection *_connection;
     id<_DUIServerSessionSource> _serverSession;
@@ -30,11 +31,15 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType canHandOffCancelledItemsBlock; // @synthesize canHandOffCancelledItemsBlock=_canHandOffCancelledItemsBlock;
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
 @property (copy, nonatomic) CDUnknownBlockType dataTransferFinishedBlock; // @synthesize dataTransferFinishedBlock=_dataTransferFinishedBlock;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType dragCompletionBlock; // @synthesize dragCompletionBlock=_dragCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType handOffCancelledItemsBlock; // @synthesize handOffCancelledItemsBlock=_handOffCancelledItemsBlock;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType itemDetailProviderBlock; // @synthesize itemDetailProviderBlock=_itemDetailProviderBlock;
 @property (copy, nonatomic) CDUnknownBlockType itemImageProviderBlock; // @synthesize itemImageProviderBlock=_itemImageProviderBlock;
 @property (copy, nonatomic) CDUnknownBlockType itemUpdateBlock; // @synthesize itemUpdateBlock=_itemUpdateBlock;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_internalDragFailed;
@@ -51,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (oneway void)requestDetailForItemIndex:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)requestImageForItemIndex:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)takeOutsideAppSourceOperationMask:(unsigned long long)arg1 prefersFullSizePreview:(BOOL)arg2;
+- (void)takeOperationMasksInsideApp:(unsigned long long)arg1 outsideApp:(unsigned long long)arg2 prefersFullSizePreview:(BOOL)arg3;
 - (oneway void)updateDetail:(id)arg1 forItemIndex:(unsigned long long)arg2;
 
 @end

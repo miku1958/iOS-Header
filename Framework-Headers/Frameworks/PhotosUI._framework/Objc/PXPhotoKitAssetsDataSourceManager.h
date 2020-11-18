@@ -21,6 +21,7 @@
 @property (strong, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 @property (readonly) Class superclass;
 
++ (id)dataSourceManagerWithAsset:(id)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;

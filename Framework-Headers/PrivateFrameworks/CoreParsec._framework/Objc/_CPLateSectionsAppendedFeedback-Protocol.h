@@ -10,7 +10,6 @@
 
 @protocol _CPLateSectionsAppendedFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *sections;
 @property (nonatomic) unsigned long long timestamp;

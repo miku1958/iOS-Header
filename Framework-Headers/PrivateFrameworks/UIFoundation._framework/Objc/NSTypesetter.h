@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface NSTypesetter : NSObject
 {
@@ -19,12 +19,12 @@
 + (void)initialize;
 + (id)sharedSystemTypesetter;
 + (id)sharedSystemTypesetterForBehavior:(long long)arg1;
-- (CDStruct_9b8416ed *)_allocateAuxData;
+- (CDStruct_3fda14a5 *)_allocateAuxData;
 - (BOOL)_allowsEllipsisGlyphSubstitution;
 - (long long)_baseWritingDirection;
 - (id)_ellipsisFontForFont:(id)arg1;
 - (BOOL)_forceOriginalFontBaseline;
-- (CDStruct_9b8416ed *)_getAuxData;
+- (CDStruct_3fda14a5 *)_getAuxData;
 - (unsigned long long)_getRemainingNominalParagraphRange:(struct _NSRange *)arg1 andParagraphSeparatorRange:(struct _NSRange *)arg2 charactarIndex:(unsigned long long)arg3 layoutManager:(id)arg4 string:(id)arg5;
 - (BOOL)_isLineBreakModeOverridden;
 - (void)_layoutGlyphsInLayoutManager:(id)arg1 startingAtGlyphIndex:(unsigned long long)arg2 maxNumberOfLineFragments:(unsigned long long)arg3 maxCharacterIndex:(unsigned long long)arg4 nextGlyphIndex:(unsigned long long *)arg5 nextCharacterIndex:(unsigned long long *)arg6;
@@ -33,6 +33,7 @@
 - (void)_setLineBreakModeOverridden:(BOOL)arg1;
 - (void)_updateParagraphStyleCache:(id)arg1;
 - (unsigned long long)actionForControlCharacterAtIndex:(unsigned long long)arg1;
+- (long long)applicationFrameworkContext;
 - (id)attributedString;
 - (id)attributesForExtraLineFragment;
 - (double)baselineOffsetInLayoutManager:(id)arg1 glyphIndex:(unsigned long long)arg2;
@@ -67,6 +68,7 @@
 - (struct _NSRange)paragraphSeparatorGlyphRange;
 - (double)paragraphSpacingAfterGlyphAtIndex:(unsigned long long)arg1 withProposedLineFragmentRect:(struct CGRect)arg2;
 - (double)paragraphSpacingBeforeGlyphAtIndex:(unsigned long long)arg1 withProposedLineFragmentRect:(struct CGRect)arg2;
+- (void)setApplicationFrameworkContext:(long long)arg1;
 - (void)setAttachmentSize:(struct CGSize)arg1 forGlyphRange:(struct _NSRange)arg2;
 - (void)setAttributedString:(id)arg1;
 - (void)setBidiLevels:(const char *)arg1 forGlyphRange:(struct _NSRange)arg2;

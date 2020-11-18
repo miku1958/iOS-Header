@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAlertControllerVisualStyle.h>
+#import <UIKitCore/UIAlertControllerVisualStyle.h>
 
 __attribute__((visibility("hidden")))
 @interface UIAlertControllerVisualStyleAlert : UIAlertControllerVisualStyle
@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (void)animateAlertControllerView:(id)arg1 ofAlertController:(id)arg2 forPresentation:(BOOL)arg3 inContainerView:(id)arg4 descendantOfContainerView:(id)arg5 duration:(double)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (struct UIEdgeInsets)contentInsets;
+- (struct UIEdgeInsets)contentInsetsForContainerView:(id)arg1;
 - (double)marginAboveMessageLabelFirstBaseline;
 - (double)marginAboveTitleLabelFirstBaseline;
 - (double)marginBelowLastLabelLastBaseline;

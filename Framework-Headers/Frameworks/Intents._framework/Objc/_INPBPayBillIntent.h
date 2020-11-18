@@ -7,27 +7,30 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBPayBillIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBBillPayeeValue, _INPBDateTimeRange, _INPBFinancialAccountValue, _INPBIntentMetadata, _INPBPaymentAmountValue, _INPBString;
+@class NSString, _INPBBillPayeeValue, _INPBDateTimeRange, _INPBFinancialAccountValue, _INPBIntentMetadata, _INPBPaymentAmountValue, _INPBString;
 
-@interface _INPBPayBillIntent : PBCodable <NSCopying>
+@interface _INPBPayBillIntent : PBCodable <_INPBPayBillIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    _INPBBillPayeeValue *_billPayee;
+    struct {
+        unsigned int billType:1;
+    } _has;
     int _billType;
+    _INPBBillPayeeValue *_billPayee;
     _INPBDateTimeRange *_dueDate;
     _INPBFinancialAccountValue *_fromAccount;
     _INPBIntentMetadata *_intentMetadata;
     _INPBPaymentAmountValue *_transactionAmount;
     _INPBString *_transactionNote;
     _INPBDateTimeRange *_transactionScheduledDate;
-    struct {
-        unsigned int billType:1;
-    } _has;
 }
 
 @property (strong, nonatomic) _INPBBillPayeeValue *billPayee; // @synthesize billPayee=_billPayee;
 @property (nonatomic) int billType; // @synthesize billType=_billType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDateTimeRange *dueDate; // @synthesize dueDate=_dueDate;
 @property (strong, nonatomic) _INPBFinancialAccountValue *fromAccount; // @synthesize fromAccount=_fromAccount;
 @property (readonly, nonatomic) BOOL hasBillPayee;
@@ -38,22 +41,19 @@
 @property (readonly, nonatomic) BOOL hasTransactionAmount;
 @property (readonly, nonatomic) BOOL hasTransactionNote;
 @property (readonly, nonatomic) BOOL hasTransactionScheduledDate;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBPaymentAmountValue *transactionAmount; // @synthesize transactionAmount=_transactionAmount;
 @property (strong, nonatomic) _INPBString *transactionNote; // @synthesize transactionNote=_transactionNote;
 @property (strong, nonatomic) _INPBDateTimeRange *transactionScheduledDate; // @synthesize transactionScheduledDate=_transactionScheduledDate;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsBillType:(id)arg1;
 - (id)billTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

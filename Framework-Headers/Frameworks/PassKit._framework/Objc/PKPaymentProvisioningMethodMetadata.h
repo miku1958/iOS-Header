@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDecimalNumber, NSDictionary, NSString, PKPaymentDigitalIssuanceMetadata;
 
@@ -19,6 +19,7 @@
     NSDictionary *_readerModeMetadata;
     PKPaymentDigitalIssuanceMetadata *_digitalIssuanceMetadata;
     NSDictionary *_readerModeResources;
+    NSDecimalNumber *_minimumReaderModeBalance;
 }
 
 @property (readonly, copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) PKPaymentDigitalIssuanceMetadata *digitalIssuanceMetadata; // @synthesize digitalIssuanceMetadata=_digitalIssuanceMetadata;
 @property (readonly, copy, nonatomic) NSDecimalNumber *maxLoadedBalance; // @synthesize maxLoadedBalance=_maxLoadedBalance;
 @property (readonly, copy, nonatomic) NSDecimalNumber *minLoadedBalance; // @synthesize minLoadedBalance=_minLoadedBalance;
+@property (readonly, copy, nonatomic) NSDecimalNumber *minimumReaderModeBalance; // @synthesize minimumReaderModeBalance=_minimumReaderModeBalance;
 @property (readonly, copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *readerModeMetadata; // @synthesize readerModeMetadata=_readerModeMetadata;
 @property (readonly, copy, nonatomic) NSDictionary *readerModeResources; // @synthesize readerModeResources=_readerModeResources;

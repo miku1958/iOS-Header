@@ -27,10 +27,10 @@
     NSArray *_bodyWithNoImageConstraints;
 }
 
-+ (void)initialize;
 - (void).cxx_destruct;
 - (void)configureWithContent:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setPaused:(BOOL)arg1;
 - (void)updateConstraints;
 
 @end

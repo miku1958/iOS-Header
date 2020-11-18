@@ -35,11 +35,15 @@ __attribute__((visibility("hidden")))
     TSUBezierPath *mTracedPath;
     struct CGSize mNaturalSize;
     BOOL mCurrentlyInDocument;
+    double mDescentForInlineLayout;
+    BOOL mDescentForInlineLayoutValid;
 }
 
 @property (strong, nonatomic) TSPData *adjustedImageData; // @synthesize adjustedImageData=mAdjustedImageData;
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText; // @dynamic anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
+@property (readonly, nonatomic) BOOL canAdjustImage;
+@property (readonly, nonatomic) BOOL canBeMasked;
 @property (readonly, nonatomic) NSArray *childInfos;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double descentForInlineLayout;

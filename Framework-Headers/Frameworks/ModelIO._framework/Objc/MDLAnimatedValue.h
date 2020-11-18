@@ -31,7 +31,9 @@
 - (unsigned long long)getTimes:(double *)arg1 maxCount:(unsigned long long)arg2;
 - (id)init;
 - (BOOL)isAnimated;
+- (void)resetWithAnimatedValue:(id)arg1;
 - (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2;
+- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2 time:(double)arg3;
 
 @end
 

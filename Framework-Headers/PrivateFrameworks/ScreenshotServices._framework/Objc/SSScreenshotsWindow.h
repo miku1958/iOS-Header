@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SpringBoardFoundation/SBFSecureWindow.h>
+#import <UIKit/UIWindow.h>
 
 #import <ScreenshotServices/SSActiveInterfaceOrientationObserverDelegate-Protocol.h>
 #import <ScreenshotServices/SSDittoHostViewControllerDelegate-Protocol.h>
@@ -12,7 +12,7 @@
 @class NSObject, SSActiveInterfaceOrientationObserver, SSScreenshotsWindowRootViewController;
 @protocol OS_dispatch_queue;
 
-@interface SSScreenshotsWindow : SBFSecureWindow <SSDittoHostViewControllerDelegate, SSActiveInterfaceOrientationObserverDelegate>
+@interface SSScreenshotsWindow : UIWindow <SSDittoHostViewControllerDelegate, SSActiveInterfaceOrientationObserverDelegate>
 {
     SSActiveInterfaceOrientationObserver *_activeInterfaceOrientationObserver;
     SSScreenshotsWindowRootViewController *_root;
@@ -20,15 +20,14 @@
     NSObject<OS_dispatch_queue> *_notifyQueue;
     int _lockNotificationToken;
     int _backlightNotificationToken;
-    BOOL _contentsHidden;
 }
 
-@property (nonatomic) BOOL contentsHidden; // @synthesize contentsHidden=_contentsHidden;
-
++ (BOOL)_isSecure;
 - (void).cxx_destruct;
+- (BOOL)_canBecomeKeyWindow;
 - (void)_deviceBacklightChanged:(unsigned long long)arg1;
 - (void)_deviceLockStateChanged:(unsigned long long)arg1;
-- (void)_dismissAndHide;
+- (void)_dismiss;
 - (id)_hostViewControllerIfExists;
 - (void)_prepareRemoteViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_shouldAutorotateToInterfaceOrientation:(long long)arg1;

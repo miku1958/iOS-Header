@@ -8,7 +8,7 @@
 
 #import <AWDSupportFramework/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSMutableArray, NSString;
 
 @interface AWDNWConnectionReport : PBCodable <NSCopying>
 {
@@ -47,11 +47,13 @@
     unsigned long long _timestamp;
     unsigned long long _tlsMilliseconds;
     unsigned long long _trafficClass;
+    NSMutableArray *_activities;
     int _appleApp;
     int _appleHost;
     int _connectedAddressFamily;
     int _connectedInterfaceType;
     int _connectionMode;
+    NSString *_connectionUUID;
     int _failureReason;
     int _firstAddressFamily;
     NSString *_processName;
@@ -143,6 +145,7 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSMutableArray *activities; // @synthesize activities=_activities;
 @property (nonatomic) int appleApp; // @synthesize appleApp=_appleApp;
 @property (nonatomic) int appleHost; // @synthesize appleHost=_appleHost;
 @property (nonatomic) unsigned long long bestRTT; // @synthesize bestRTT=_bestRTT;
@@ -156,6 +159,7 @@
 @property (nonatomic) int connectedInterfaceType; // @synthesize connectedInterfaceType=_connectedInterfaceType;
 @property (nonatomic) int connectionMode; // @synthesize connectionMode=_connectionMode;
 @property (nonatomic) unsigned long long connectionReuseCount; // @synthesize connectionReuseCount=_connectionReuseCount;
+@property (strong, nonatomic) NSString *connectionUUID; // @synthesize connectionUUID=_connectionUUID;
 @property (nonatomic) unsigned long long currentRTT; // @synthesize currentRTT=_currentRTT;
 @property (nonatomic) BOOL customProxyConfigured; // @synthesize customProxyConfigured=_customProxyConfigured;
 @property (nonatomic) unsigned long long dataStallCount; // @synthesize dataStallCount=_dataStallCount;
@@ -178,6 +182,7 @@
 @property (nonatomic) BOOL hasConnectedInterfaceType;
 @property (nonatomic) BOOL hasConnectionMode;
 @property (nonatomic) BOOL hasConnectionReuseCount;
+@property (readonly, nonatomic) BOOL hasConnectionUUID;
 @property (nonatomic) BOOL hasCurrentRTT;
 @property (nonatomic) BOOL hasCustomProxyConfigured;
 @property (nonatomic) BOOL hasDataStallCount;
@@ -272,6 +277,7 @@
 @property (nonatomic) int usedProxyType; // @synthesize usedProxyType=_usedProxyType;
 @property (nonatomic) BOOL weakFallback; // @synthesize weakFallback=_weakFallback;
 
++ (Class)activitiesType;
 - (int)StringAsAppleApp:(id)arg1;
 - (int)StringAsAppleHost:(id)arg1;
 - (int)StringAsConnectedAddressFamily:(id)arg1;
@@ -282,8 +288,12 @@
 - (int)StringAsStackLevel:(id)arg1;
 - (int)StringAsTlsVersion:(id)arg1;
 - (int)StringAsUsedProxyType:(id)arg1;
+- (id)activitiesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)activitiesCount;
+- (void)addActivities:(id)arg1;
 - (id)appleAppAsString:(int)arg1;
 - (id)appleHostAsString:(int)arg1;
+- (void)clearActivities;
 - (id)connectedAddressFamilyAsString:(int)arg1;
 - (id)connectedInterfaceTypeAsString:(int)arg1;
 - (id)connectionModeAsString:(int)arg1;

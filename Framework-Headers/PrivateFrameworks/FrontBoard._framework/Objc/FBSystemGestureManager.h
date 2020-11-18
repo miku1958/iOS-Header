@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/UIGestureRecognizerDelegate-Protocol.h>
 
@@ -21,6 +21,7 @@
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_defaultsDidChange:(id)arg1;
 - (id)_systemGestureManagerForDisplayWithIdentityCreatingIfNeeded:(id)arg1;
 - (void)addGestureRecognizer:(id)arg1 recognitionEvent:(long long)arg2 toDisplayWithIdentity:(id)arg3;

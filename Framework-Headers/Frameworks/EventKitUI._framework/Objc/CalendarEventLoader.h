@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class EKEventStore, NSArray, NSMutableSet, NSSet;
 @protocol CalendarEventLoaderDelegate, OS_dispatch_group, OS_dispatch_queue;
@@ -18,6 +18,7 @@
     NSMutableSet *_occurrencesAwaitingRefresh;
     NSMutableSet *_occurrencesAwaitingDeletion;
     NSSet *_selectedCalendars;
+    BOOL _selectedCalendarsWereSet;
     unsigned int _daysOfPadding;
     unsigned int _maxDaysToCache;
     unsigned long long _componentForExpandingRequests;
@@ -34,9 +35,11 @@
     double _currentlyLoadingEnd;
     double _lastRequestedStart;
     double _lastRequestedEnd;
+    BOOL _allowEventLocationPrediction;
     id<CalendarEventLoaderDelegate> _delegate;
 }
 
+@property (nonatomic) BOOL allowEventLocationPrediction; // @synthesize allowEventLocationPrediction=_allowEventLocationPrediction;
 @property (weak, nonatomic) id<CalendarEventLoaderDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
@@ -53,6 +56,7 @@
 - (void)addOccurrenceAwaitingRefresh:(id)arg1;
 - (void)cancelAllLoads;
 - (void)dealloc;
+- (BOOL)firstLoadBegan;
 - (id)initWithEventStore:(id)arg1;
 - (void)loadIfNeeded;
 - (BOOL)loadIsComplete;

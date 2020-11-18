@@ -9,7 +9,7 @@
 #import <CloudPhotoLibrary/NSCopying-Protocol.h>
 #import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDate, NSString;
+@class CPLScopedIdentifier, NSData, NSDate, NSString;
 
 @interface CPLRecordChange : NSObject <NSSecureCoding, NSCopying>
 {
@@ -20,50 +20,66 @@
     BOOL _inTrash;
     BOOL _inExpunged;
     BOOL _serverRecordIsCorrupted;
-    NSString *_identifier;
+    CPLScopedIdentifier *_scopedIdentifier;
     NSDate *_recordModificationDate;
     unsigned long long _changeType;
     NSDate *_dateDeleted;
+    CPLScopedIdentifier *_resourceCopyFromScopedIdentifier;
     NSString *_realIdentifier;
     NSData *_recordChangeData;
 }
 
 @property (nonatomic) unsigned long long changeType; // @synthesize changeType=_changeType;
 @property (copy, nonatomic) NSDate *dateDeleted; // @synthesize dateDeleted=_dateDeleted;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *identifier;
 @property (nonatomic) BOOL inExpunged; // @synthesize inExpunged=_inExpunged;
 @property (nonatomic) BOOL inTrash; // @synthesize inTrash=_inTrash;
 @property (copy, nonatomic) NSString *realIdentifier; // @synthesize realIdentifier=_realIdentifier;
 @property (copy, nonatomic) NSData *recordChangeData; // @synthesize recordChangeData=_recordChangeData;
 @property (copy, nonatomic) NSDate *recordModificationDate; // @synthesize recordModificationDate=_recordModificationDate;
+@property (copy, nonatomic) CPLScopedIdentifier *resourceCopyFromScopedIdentifier; // @synthesize resourceCopyFromScopedIdentifier=_resourceCopyFromScopedIdentifier;
+@property (copy, nonatomic) CPLScopedIdentifier *scopedIdentifier; // @synthesize scopedIdentifier=_scopedIdentifier;
 @property (nonatomic) BOOL serverRecordIsCorrupted; // @synthesize serverRecordIsCorrupted=_serverRecordIsCorrupted;
 
 + (id)_descriptionForChangeType:(unsigned long long)arg1 isSparseFullChange:(BOOL)arg2;
 + (Class)classForStoredClassName:(id)arg1 forCPLArchiver:(id)arg2;
 + (CDUnknownBlockType)copyPropertyBlockForDirection:(unsigned long long)arg1;
 + (id)cplAdditionalSecureClassesForProperty:(id)arg1;
++ (BOOL)cplShouldIgnorePropertyForCoding:(id)arg1;
++ (BOOL)cplShouldIgnorePropertyForEquality:(id)arg1;
 + (id)descriptionForChangeType:(unsigned long long)arg1;
 + (id)descriptionForDirection:(unsigned long long)arg1;
 + (CDUnknownBlockType)equalityBlockForDirection:(unsigned long long)arg1;
 + (long long)maxInlineDataSize;
 + (id)newChangeWithIdentifier:(id)arg1 changeType:(unsigned long long)arg2;
++ (id)newChangeWithScopedIdentifier:(id)arg1 changeType:(unsigned long long)arg2;
 + (id)newChangeWithType:(unsigned long long)arg1;
 + (id)newDeleteChangeWithIdentifier:(id)arg1;
++ (id)newDeleteChangeWithScopedIdentifier:(id)arg1;
 + (id)newRecord;
++ (id)newRecordInScopeWithIdentifier:(id)arg1;
 + (id)newRecordWithIdentifier:(id)arg1;
++ (id)newRecordWithScopedIdentifier:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_canLowerQuota;
 - (void)_setShouldNotTrustCloudCache:(BOOL)arg1;
 - (void)_setUploadIdentifier:(id)arg1;
 - (BOOL)_shouldNotTrustCloudCache;
+- (id)_unscopedIdentifier;
 - (id)_uploadIdentifier;
-- (id)allRelatedIdentifiers;
+- (id)allRelatedScopedIdentifiers;
 - (BOOL)allResourcesAreAvailable;
 - (BOOL)applyChange:(id)arg1 copyPropertiesToFinalChange:(id)arg2 forChangeType:(unsigned long long)arg3 direction:(unsigned long long)arg4 updatedProperty:(id *)arg5;
 - (void)awakeFromStorage;
+- (unsigned long long)baseDerivativeResourceType;
+- (unsigned long long)baseVideoComplemenentResourceType;
 - (CDUnknownBlockType)checkDefaultValueBlockForPropertyWithSelector:(SEL)arg1;
+- (void)clearIdentifiers;
 - (id)compactedChangeWithRelatedChanges:(id)arg1 isOnlyChange:(BOOL)arg2 fullRecord:(id)arg3 usingClientCache:(id)arg4;
+- (id)copyChangeType:(unsigned long long)arg1;
+- (void)copyDerivatives:(unsigned long long *)arg1 count:(int)arg2 avoidResourceType:(unsigned long long)arg3 fromRecord:(id)arg4 inResourcePerType:(id)arg5;
+- (void)copyDerivativesFromRecordIfPossible:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)cplFullDescription;
 - (long long)dequeueOrder;
@@ -73,13 +89,12 @@
 - (unsigned long long)fullChangeTypeForFullRecord;
 - (BOOL)hasChangeType:(unsigned long long)arg1;
 - (unsigned long long)hash;
-- (id)identifierForQuarantine;
-- (id)identifiersForMapping;
-- (id)identifiersForQuarantine;
+- (id)initWithCPLArchiver:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isDelete;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isFullRecord;
+- (BOOL)isInScopeWithIdentifier:(id)arg1;
 - (BOOL)isResourceTypeAGeneratedDerivative:(unsigned long long)arg1;
 - (BOOL)isSparseFullChange;
 - (void)markAsSparseFullChange;
@@ -88,19 +103,27 @@
 - (void)prepareForStorage;
 - (id)propertiesDescription;
 - (id)propertiesForChangeType:(unsigned long long)arg1;
-- (id)proposedCloudIdentifierWithError:(id *)arg1;
-- (id)proposedLocalIdentifier;
+- (id)proposedCloudScopedIdentifierWithError:(id *)arg1;
+- (id)proposedLocalScopedIdentifier;
 - (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3;
 - (id)realRecordChangeFromRecordChange:(id)arg1 direction:(unsigned long long)arg2 newRecord:(id *)arg3 updatedProperties:(id *)arg4;
 - (unsigned long long)realResourceSize;
+- (id)realScopedIdentifier;
 - (id)relatedIdentifier;
+- (id)relatedScopedIdentifier;
 - (BOOL)resourceChangeWillOnlyChangeDerivatives:(id)arg1;
 - (id)resourceForType:(unsigned long long)arg1;
+- (id)resourcePerType;
 - (id)resources;
 - (id)resourcesDescription;
+- (id)scopedIdentifierForQuarantine;
+- (id)scopedIdentifiersForMapping;
+- (id)scopedIdentifiersForQuarantine;
 - (id)secondaryIdentifier;
+- (id)secondaryScopedIdentifier;
 - (void)setRelatedIdentifier:(id)arg1;
 - (void)setResources:(id)arg1;
+- (void)setScopeIndex:(long long)arg1;
 - (void)setSecondaryIdentifier:(id)arg1;
 - (void)setShouldFilterDefaultValuesForNewProperties:(BOOL)arg1;
 - (BOOL)shouldApplyPropertiesWithSelector:(SEL)arg1;

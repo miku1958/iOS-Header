@@ -11,11 +11,6 @@
 @protocol _SFPBFormattedText <NSObject>
 
 @property (strong, nonatomic) _SFPBImage *glyph;
-@property (readonly, nonatomic) BOOL hasGlyph;
-@property (readonly, nonatomic) BOOL hasIsBold;
-@property (readonly, nonatomic) BOOL hasIsEmphasized;
-@property (readonly, nonatomic) BOOL hasText;
-@property (readonly, nonatomic) BOOL hasTextColor;
 @property (nonatomic) BOOL isBold;
 @property (nonatomic) BOOL isEmphasized;
 @property (readonly, nonatomic) NSData *jsonData;

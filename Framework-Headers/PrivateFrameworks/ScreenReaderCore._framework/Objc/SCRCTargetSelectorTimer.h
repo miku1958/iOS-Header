@@ -29,12 +29,15 @@
 - (void)_dispatchMainThread;
 - (void)_dispatchSCRCThread;
 - (void)_dispatchThreadHelper:(CDUnknownBlockType)arg1;
+- (id)_initWithTarget:(id)arg1 selector:(SEL)arg2 threadKeyOrThread:(id)arg3;
+- (void)_runTimerBlock:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (void)dealloc;
 - (void)dispatchAfterDelay:(double)arg1;
 - (void)dispatchAfterDelay:(double)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)dispatchAfterDelay:(double)arg1 withObject:(id)arg2;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2;
+- (id)initWithTarget:(id)arg1 selector:(SEL)arg2 thread:(id)arg3;
 - (id)initWithTarget:(id)arg1 selector:(SEL)arg2 threadKey:(id)arg3;
 - (void)invalidate;
 - (BOOL)isCanceled;

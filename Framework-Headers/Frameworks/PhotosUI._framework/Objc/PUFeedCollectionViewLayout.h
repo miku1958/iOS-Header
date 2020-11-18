@@ -14,8 +14,6 @@ __attribute__((visibility("hidden")))
     PUParallaxComputer *_parallaxComputer;
     NSMutableArray *_sectionLayoutInfos;
     struct CGSize _contentSize;
-    BOOL _hasHeadersAboveContent;
-    BOOL _hasHeadersBelowContent;
     BOOL _shouldDisplayCaptionsBelowBatches;
     BOOL _shouldApplyParallaxEffect;
     BOOL _shouldFloatThumbnails;
@@ -62,13 +60,11 @@ __attribute__((visibility("hidden")))
 - (void)_getSize:(out struct CGSize *)arg1 headerSize:(out struct CGSize *)arg2 footerSize:(out struct CGSize *)arg3 fixedLayoutAttributes:(id)arg4 tileLayoutAttributes:(id)arg5 floatingLayoutAttributes:(id)arg6 type:(out long long *)arg7 forSection:(long long)arg8 isJoined:(BOOL)arg9;
 - (void)_getSizeForHorizontalFlowDirection:(out struct CGSize *)arg1 headerSize:(out struct CGSize *)arg2 footerSize:(out struct CGSize *)arg3 fixedLayoutAttributes:(id)arg4 tileLayoutAttributes:(id)arg5 floatingLayoutAttributes:(id)arg6 type:(out long long *)arg7 forSection:(long long)arg8 isJoined:(BOOL)arg9;
 - (void)_getSizeForVerticalFlowDirection:(out struct CGSize *)arg1 headerSize:(out struct CGSize *)arg2 footerSize:(out struct CGSize *)arg3 fixedLayoutAttributes:(id)arg4 tileLayoutAttributes:(id)arg5 floatingLayoutAttributes:(id)arg6 type:(out long long *)arg7 forSection:(long long)arg8 isJoined:(BOOL)arg9;
-- (struct CGRect)_layoutHorizontalSectionFooterIfNecessary:(id)arg1 fixedLayoutAttributes:(id)arg2 floatingLayoutAttributes:(id)arg3 footerConfig:(long long)arg4 origin:(struct CGPoint)arg5 size:(struct CGSize)arg6 section:(long long)arg7 isJoined:(BOOL)arg8;
 - (long long)_layoutTilesAndGetNumberOfTilesOmittedWithCollectionView:(id)arg1 tileLayoutAttributes:(id)arg2 fixedLayoutAttributes:(id)arg3 origin:(inout struct CGPoint *)arg4 size:(inout struct CGSize *)arg5 sectionContentSize:(struct CGSize)arg6 itemCount:(long long)arg7 section:(long long)arg8;
 - (struct CGRect)_layoutVerticalSectionHeaderIfNecessary:(id)arg1 fixedLayoutAttributes:(id)arg2 floatingLayoutAttributes:(id)arg3 section:(long long)arg4;
 - (id)_parallaxComputer;
 - (void)_sectionAtIndex:(long long)arg1 sizeDidChangeFrom:(struct CGSize)arg2 to:(struct CGSize)arg3;
 - (void)_setOrigin:(struct CGPoint)arg1 forSectionLayoutInfo:(id)arg2;
-- (void)_updateExpectedHeaderLocations;
 - (void)_updateGlobalLayoutInfoWithOptions:(long long)arg1 sectionsWithUpdatedGroupIDs:(out id *)arg2;
 - (void)_updateLayoutInfoForSection:(long long)arg1 ignoreSizeChange:(BOOL)arg2;
 - (void)_updateParallaxComputer;

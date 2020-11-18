@@ -24,6 +24,7 @@
 @property (nonatomic) double starWidth; // @synthesize starWidth=_starWidth;
 @property (nonatomic) float value;
 
+- (void).cxx_destruct;
 - (BOOL)_alwaysHandleScrollerMouseEvent;
 - (struct CGRect)_foregroundImageClipBounds;
 - (id)_newExplanationLabel;
@@ -31,7 +32,6 @@
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (BOOL)canHandleSwipes;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
-- (void)dealloc;
 - (void)endTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (struct CGRect)hitRect;
 - (id)initWithBackgroundImage:(id)arg1 foregroundImage:(id)arg2;

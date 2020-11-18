@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MRXPCConnection;
 @protocol OS_dispatch_queue, OS_xpc_object;
@@ -24,7 +24,16 @@ __attribute__((visibility("hidden")))
         CDUnknownFunctionPointerType _field9;
         void *_field10;
     } *clientModule;
-    const CDStruct_1af33fde *browsableContentEndpoint;
+    const struct {
+        void *_field1;
+        CDUnknownFunctionPointerType _field2;
+        CDUnknownFunctionPointerType _field3;
+        CDUnknownFunctionPointerType _field4;
+        CDUnknownFunctionPointerType _field5;
+        CDUnknownFunctionPointerType _field6;
+        CDUnknownFunctionPointerType _field7;
+        CDUnknownFunctionPointerType _field8;
+    } *browsableContentEndpoint;
     const struct {
         void *_field1;
         CDUnknownFunctionPointerType _field2;

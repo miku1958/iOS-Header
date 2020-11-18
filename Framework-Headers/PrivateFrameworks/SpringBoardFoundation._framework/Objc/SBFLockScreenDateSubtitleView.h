@@ -6,41 +6,32 @@
 
 #import <UIKit/UIView.h>
 
-#import <SpringBoardFoundation/SBFScreenFadeReplicatable-Protocol.h>
+@class NSString, SBUILegibilityLabel, UIFont, _UILegibilitySettings;
 
-@class NSHashTable, NSString, SBUILegibilityLabel, UIFont, _UILegibilitySettings;
-@protocol SBFScreenFadeReplicatable;
-
-@interface SBFLockScreenDateSubtitleView : UIView <SBFScreenFadeReplicatable>
+@interface SBFLockScreenDateSubtitleView : UIView
 {
-    NSHashTable *_replicatedViews;
     SBUILegibilityLabel *_label;
-    UIView<SBFScreenFadeReplicatable> *_accessoryView;
-    UIView<SBFScreenFadeReplicatable> *_backgroundView;
+    UIView *_accessoryView;
+    UIView *_backgroundView;
     _UILegibilitySettings *_legibilitySettings;
     double _strength;
     double _customInterItemSpacing;
 }
 
-@property (strong, nonatomic) UIView<SBFScreenFadeReplicatable> *accessoryView; // @synthesize accessoryView=_accessoryView;
-@property (strong, nonatomic) UIView<SBFScreenFadeReplicatable> *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
+@property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (readonly, nonatomic) double baselineOffsetFromBottom;
 @property (readonly, nonatomic) double baselineOffsetFromOrigin;
 @property (nonatomic) double customInterItemSpacing; // @synthesize customInterItemSpacing=_customInterItemSpacing;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIFont *font;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) double strength; // @synthesize strength=_strength;
 @property (strong, nonatomic) NSString *string;
-@property (readonly) Class superclass;
 
 + (id)labelFont;
++ (CDStruct_d2b197d1)labelFontMetrics;
 + (double)scaledFontSize:(double)arg1 withMaximumFontSizeCategory:(id)arg2;
 - (void).cxx_destruct;
-- (id)_createReplicateView;
-- (void)_enumerateReplicateViews:(CDUnknownBlockType)arg1;
 - (void)_updateForCurrentSizeCategory;
 - (struct CGRect)accessoryViewFrame;
 - (struct CGRect)backgroundViewFrame;
@@ -49,7 +40,6 @@
 - (id)initWithString:(id)arg1 accessoryView:(id)arg2;
 - (double)interItemSpacing;
 - (void)layoutSubviews;
-- (id)replicate;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)subtitleLabelFrame;
 

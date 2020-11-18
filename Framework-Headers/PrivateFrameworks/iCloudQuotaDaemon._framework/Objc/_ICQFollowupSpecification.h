@@ -21,7 +21,6 @@
     NSString *_noteMessage;
     NSString *_altNoteMessage;
     ICQLink *_noteActivateLink;
-    ICQLink *_noteDismissLink;
     ICQLink *_noteClearLink;
 }
 
@@ -32,7 +31,6 @@
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
 @property (strong, nonatomic) ICQLink *noteActivateLink; // @synthesize noteActivateLink=_noteActivateLink;
 @property (strong, nonatomic) ICQLink *noteClearLink; // @synthesize noteClearLink=_noteClearLink;
-@property (strong, nonatomic) ICQLink *noteDismissLink; // @synthesize noteDismissLink=_noteDismissLink;
 @property (strong, nonatomic) NSString *noteMessage; // @synthesize noteMessage=_noteMessage;
 @property (strong, nonatomic) NSString *noteTitle; // @synthesize noteTitle=_noteTitle;
 @property (strong, nonatomic) NSDictionary *serverDict;

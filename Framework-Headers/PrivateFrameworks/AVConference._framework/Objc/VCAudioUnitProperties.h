@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface VCAudioUnitProperties : NSObject
@@ -20,11 +20,13 @@ __attribute__((visibility("hidden")))
     struct VoiceIOFarEndVersionInfo _farEndVersionInfo;
     unsigned int _remoteCodecType;
     double _remoteCodecSampleRate;
+    BOOL _enableDNNVAD;
 }
 
 @property (nonatomic) BOOL allowAudioRecording; // @synthesize allowAudioRecording=_allowAudioRecording;
 @property (nonatomic) unsigned int audioUnitType; // @synthesize audioUnitType=_audioUnitType;
 @property (nonatomic) int deviceRole; // @synthesize deviceRole=_deviceRole;
+@property (nonatomic) BOOL enableDNNVAD; // @synthesize enableDNNVAD=_enableDNNVAD;
 @property (nonatomic) struct VoiceIOFarEndVersionInfo farEndVersionInfo;
 @property (nonatomic) struct AudioStreamBasicDescription format; // @synthesize format=_format;
 @property (readonly, nonatomic) BOOL isFarEndVersionInfoValid; // @synthesize isFarEndVersionInfoValid=_isFarEndVersionInfoValid;

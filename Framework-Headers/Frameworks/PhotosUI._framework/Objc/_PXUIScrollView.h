@@ -23,6 +23,7 @@
 - (void)layoutSubviews;
 - (void)px_addSubview:(id)arg1;
 - (void)scrollRectToVisible:(struct CGRect)arg1 animated:(BOOL)arg2;
+- (void)setContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)cellUIDList;
-+ (id)cellUIDListFromRange:(const struct TSTCellUIDRange *)arg1;
++ (id)cellUIDListFromRange:(const UUIDRect_d701734b *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)addCellRegion:(id)arg1 withColumnUIDs:(const vector_4dc5f307 *)arg2 rowUIDs:(const vector_4dc5f307 *)arg3;
@@ -47,6 +47,8 @@ __attribute__((visibility("hidden")))
 - (id)initFromMessage:(const struct CellUIDListArchive *)arg1 unarchiver:(id)arg2;
 - (id)iterator;
 - (void)p_compressUID:(const UUIDData_5fbc143e *)arg1 index:(unsigned long long)arg2 UIDtoIndexMap:(map_2cd530a9 *)arg3 UIDs:(vector_4dc5f307 *)arg4 compressedIndexes:(vector_12bd641b *)arg5 lastSameUIDIndex:(vector_06e666a8 *)arg6;
+- (id)pruneCellUIDListAgainstTable:(id)arg1 behavior:(unsigned long long)arg2;
+- (id)pruneCellUIDListAgainstTable:(id)arg1 behavior:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (const vector_4dc5f307 *)rowUIDs;
 - (void)saveToMessage:(struct CellUIDListArchive *)arg1 archiver:(id)arg2;
 - (void)setCompressedColumnIndexes:(const vector_12bd641b *)arg1;

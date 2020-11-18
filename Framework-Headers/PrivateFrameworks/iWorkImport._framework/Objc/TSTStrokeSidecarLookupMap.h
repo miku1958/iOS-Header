@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSIndexSet, TSTCellRegion, TSTStrokeLayer, TSTStrokeSidecar;
 
@@ -13,22 +13,22 @@ __attribute__((visibility("hidden")))
 {
     TSTStrokeSidecar *_strokeSidecar;
     TSTCellRegion *_region;
-    NSIndexSet *_columnIndiciesInRow;
+    NSIndexSet *_columnIndexesInRow;
     TSTStrokeLayer *_topStrokeLayer;
     TSTStrokeLayer *_bottomStrokeLayer;
 }
 
 @property (strong, nonatomic) TSTStrokeLayer *bottomStrokeLayer; // @synthesize bottomStrokeLayer=_bottomStrokeLayer;
-@property (strong, nonatomic) NSIndexSet *columnIndiciesInRow; // @synthesize columnIndiciesInRow=_columnIndiciesInRow;
+@property (strong, nonatomic) NSIndexSet *columnIndexesInRow; // @synthesize columnIndexesInRow=_columnIndexesInRow;
 @property (strong, nonatomic) TSTCellRegion *region; // @synthesize region=_region;
 @property (strong, nonatomic) TSTStrokeSidecar *strokeSidecar; // @synthesize strokeSidecar=_strokeSidecar;
 @property (strong, nonatomic) TSTStrokeLayer *topStrokeLayer; // @synthesize topStrokeLayer=_topStrokeLayer;
 
 - (void).cxx_destruct;
 - (BOOL)anyCellBordersInThisRow;
-- (BOOL)cellBorderAtColumn:(unsigned char)arg1;
+- (BOOL)cellBorderAtColumn:(unsigned short)arg1;
 - (id)initWithStrokeSidecar:(id)arg1 region:(id)arg2;
-- (void)setIteratorToRow:(unsigned short)arg1;
+- (void)setIteratorToRow:(unsigned int)arg1;
 
 @end
 

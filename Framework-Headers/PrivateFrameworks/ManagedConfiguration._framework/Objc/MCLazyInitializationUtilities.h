@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface MCLazyInitializationUtilities : NSObject
 {
@@ -12,13 +12,12 @@
 
 + (void)initAddressBook;
 + (void)initAssertionServices;
++ (void)initCoreServices;
 + (void)initCoreText;
 + (void)initDAEAS;
 + (void)initDataAccess;
 + (void)initImageIO;
 + (void)initLoggingSupport;
-+ (void)initMobileCoreServices;
-+ (void)initServerAccounts;
 + (void)initSetupAssistant;
 + (void)initSpringBoardServices;
 + (void)initSpringBoardUIServices;

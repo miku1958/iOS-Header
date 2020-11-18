@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
         BOOL respondsToDelayForButtonAnimation;
     } _delegateFlags;
     BOOL __shouldShowPlayButton;
+    BOOL __shouldSuppressButtonUpdates;
     id<PUPlayButtonTileViewControllerDelegate> _delegate;
     PUBrowsingViewModel *_browsingViewModel;
     PUAssetViewModel *_assetViewModel;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic, setter=_setBrowsingVideoPlayer:) PUBrowsingVideoPlayer *_browsingVideoPlayer; // @synthesize _browsingVideoPlayer=__browsingVideoPlayer;
 @property (strong, nonatomic, setter=_setPlayButton:) UIView<PXVideoOverlayButton> *_playButton; // @synthesize _playButton=__playButton;
 @property (nonatomic, setter=_setShouldShowPlayButton:) BOOL _shouldShowPlayButton; // @synthesize _shouldShowPlayButton=__shouldShowPlayButton;
+@property (nonatomic, setter=_setShouldSuppressButtonUpdates:) BOOL _shouldSuppressButtonUpdates; // @synthesize _shouldSuppressButtonUpdates=__shouldSuppressButtonUpdates;
 @property (strong, nonatomic) PUAssetViewModel *assetViewModel; // @synthesize assetViewModel=_assetViewModel;
 @property (strong, nonatomic) PUBrowsingViewModel *browsingViewModel; // @synthesize browsingViewModel=_browsingViewModel;
 @property (readonly, copy) NSString *debugDescription;
@@ -41,9 +43,10 @@ __attribute__((visibility("hidden")))
 
 + (struct CGSize)playButtonTileSize;
 - (void).cxx_destruct;
+- (BOOL)_canPause;
 - (void)_playButtonTapped:(id)arg1;
 - (void)_setShouldShowPlayButton:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)_updateButtonVisibilityAnimated:(BOOL)arg1;
+- (void)_updateButtonAnimated:(BOOL)arg1;
 - (void)becomeReusable;
 - (void)dealloc;
 - (id)loadView;

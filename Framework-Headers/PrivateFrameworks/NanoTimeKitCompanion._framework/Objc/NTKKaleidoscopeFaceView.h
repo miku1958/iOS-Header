@@ -8,17 +8,18 @@
 
 #import <NanoTimeKitCompanion/CLKUIQuadViewDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/CLKUIResourceProviderDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKColorCircularUtilitarianFaceViewComplicationFactoryDelegate-Protocol.h>
 
-@class CLKUIQuadView, CLKUIResourceProviderKey, NSString, NTKFaceLayoutContentProvider, NTKKaleidoscopePathfinder, UIColor;
+@class CLKUIQuadView, CLKUIResourceProviderKey, NSMapTable, NSString, NTKColorCircularUtilitarianFaceViewComplicationFactory, NTKRoundedCornerOverlayView, UIColor;
 
-@interface NTKKaleidoscopeFaceView : NTKAnalogFaceView <CLKUIQuadViewDelegate, CLKUIResourceProviderDelegate>
+@interface NTKKaleidoscopeFaceView : NTKAnalogFaceView <NTKColorCircularUtilitarianFaceViewComplicationFactoryDelegate, CLKUIQuadViewDelegate, CLKUIResourceProviderDelegate>
 {
     CLKUIQuadView *_quadView;
-    NTKFaceLayoutContentProvider *_layoutContentProvider;
+    NTKRoundedCornerOverlayView *_cornerView;
+    NTKColorCircularUtilitarianFaceViewComplicationFactory *_faceViewComplicationFactory;
     double _crownOffset;
     unsigned int _frameCounter;
     double _contentScale;
-    NTKKaleidoscopePathfinder *_pathfinder;
     UIColor *_complicationColor;
     UIColor *_complicationPlatterColor;
     double _lastComplicationUpdateTime;
@@ -26,6 +27,7 @@
     CLKUIResourceProviderKey *_resourceProviderKey;
     float _crownTurnsPerRotation;
     double _dayDuration;
+    NSMapTable *_quadPathfinderMapTable;
     unsigned long long _currentAsset;
     unsigned long long _currentStyle;
 }
@@ -37,7 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_swatchForEditModeDependsOnOptions:(long long)arg1;
++ (id)_swatchForEditModeDependsOnOptions:(long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_applyDataMode;
 - (void)_applyFrozen;
@@ -45,8 +47,9 @@
 - (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
 - (void)_cleanupAfterEditing;
-- (void)_cleanupAfterTransitionComplicationSlot:(id)arg1;
+- (void)_cleanupAfterTransitionComplicationSlot:(id)arg1 selectedComplication:(id)arg2;
 - (double)_complicationAlphaForEditMode:(long long)arg1;
+- (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_configureReusableTimeView:(id)arg1;
@@ -54,7 +57,11 @@
 - (struct CGPoint)_contentCenterOffset;
 - (double)_contentScaleForEditMode:(long long)arg1;
 - (float)_crownTurnsForStyle:(unsigned long long)arg1;
+- (void)_curvedComplicationCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(BOOL *)arg5 forSlot:(id)arg6;
+- (id)_curvedPickerMaskForSlot:(id)arg1;
 - (void)_disableCrown;
+- (id)_editOptionThatHidesAllComplications;
+- (void)_enableCrown;
 - (double)_handAlphaForEditMode:(long long)arg1;
 - (id)_imageForAsset:(unsigned long long)arg1;
 - (double)_kaleidoscopeTimeForAsset:(unsigned long long)arg1;
@@ -62,6 +69,8 @@
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
+- (long long)_keylineStyleForComplicationSlot:(id)arg1;
+- (id)_keylineViewForComplicationSlot:(id)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
 - (void)_loadCurrentQuad;
@@ -72,7 +81,8 @@
 - (void)_prepareForEditing;
 - (id)_quadWithStyle:(unsigned long long)arg1 asset:(unsigned long long)arg2;
 - (void)_renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
-- (id)_snapshotWithAsset:(unsigned long long)arg1 style:(unsigned long long)arg2;
+- (BOOL)_slotSupportsCurvedText:(id)arg1;
+- (id)_snapshotWithAsset:(unsigned long long)arg1 style:(unsigned long long)arg2 size:(struct CGSize)arg3;
 - (BOOL)_supportsUnadornedSnapshot;
 - (id)_swatchForAsset:(unsigned long long)arg1;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
@@ -87,10 +97,11 @@
 - (void)_updateWithAsset:(unsigned long long)arg1;
 - (double)_verticalPaddingForStatusBar;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (id)provideAtlasBacking:(id)arg1;
 - (void)quadViewWillDisplay:(id)arg1 forTime:(double)arg2;
 - (id)resourceProviderKey;
+- (BOOL)slotUsesCurvedText:(id)arg1;
 
 @end
 

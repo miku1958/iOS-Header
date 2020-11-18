@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/NSCopying-Protocol.h>
 
@@ -16,15 +16,18 @@
 }
 
 @property (nonatomic, getter=isAutoDualCameraFusionEnabled) BOOL autoDualCameraFusionEnabled;
+@property (nonatomic, getter=isAutoRedEyeReductionEnabled) BOOL autoRedEyeReductionEnabled;
 @property (nonatomic, getter=isAutoStillImageStabilizationEnabled) BOOL autoStillImageStabilizationEnabled;
 @property (readonly, nonatomic) NSArray *availableEmbeddedThumbnailPhotoCodecTypes;
 @property (readonly, nonatomic) NSArray *availablePreviewPhotoPixelFormatTypes;
+@property (readonly, nonatomic) NSArray *availableRawEmbeddedThumbnailPhotoCodecTypes;
 @property (nonatomic, getter=isCameraCalibrationDataDeliveryEnabled) BOOL cameraCalibrationDataDeliveryEnabled;
 @property (nonatomic, getter=isDepthDataDeliveryEnabled) BOOL depthDataDeliveryEnabled;
 @property (nonatomic, getter=isDepthDataFiltered) BOOL depthDataFiltered;
 @property (nonatomic, getter=isDualCameraDualPhotoDeliveryEnabled) BOOL dualCameraDualPhotoDeliveryEnabled;
 @property (copy, nonatomic) NSDictionary *embeddedThumbnailPhotoFormat;
 @property (nonatomic) BOOL embedsDepthDataInPhoto;
+@property (nonatomic) BOOL embedsPortraitEffectsMatteInPhoto;
 @property (nonatomic) long long flashMode;
 @property (readonly, copy) NSDictionary *format;
 @property (nonatomic, getter=isHighResolutionPhotoEnabled) BOOL highResolutionPhotoEnabled;
@@ -32,8 +35,10 @@
 @property (copy, nonatomic) NSArray *livePhotoMovieMetadata;
 @property (copy, nonatomic) NSString *livePhotoVideoCodecType;
 @property (copy, nonatomic) NSDictionary *metadata;
+@property (nonatomic, getter=isPortraitEffectsMatteDeliveryEnabled) BOOL portraitEffectsMatteDeliveryEnabled;
 @property (copy, nonatomic) NSDictionary *previewPhotoFormat;
 @property (readonly) NSString *processedFileType;
+@property (copy, nonatomic) NSDictionary *rawEmbeddedThumbnailPhotoFormat;
 @property (readonly) NSString *rawFileType;
 @property (readonly) unsigned int rawPhotoPixelFormatType;
 @property (readonly) long long uniqueID;
@@ -69,6 +74,8 @@
 - (id)photoFilters;
 - (struct CGSize)previewCGSize;
 - (unsigned int)previewFormatFourCC;
+- (struct CGSize)rawEmbeddedThumbnailCGSize;
+- (unsigned int)rawEmbeddedThumbnailFormatFourCC;
 - (void)setAdjustedPhotoFilters:(id)arg1;
 - (void)setEV0PhotoDeliveryEnabled:(BOOL)arg1;
 - (void)setHDRMode:(long long)arg1;

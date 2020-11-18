@@ -37,6 +37,7 @@
 - (NSString *)string;
 - (void)updateStorageChangeCount;
 - (struct _NSRange)wordAtCharIndex:(unsigned long long)arg1 includePreviousWord:(BOOL)arg2;
+- (struct _NSRange)wordAtCharIndex:(unsigned long long)arg1 includePreviousWord:(BOOL)arg2 includeHyphenation:(BOOL)arg3;
 
 @optional
 - (void)enumerateSmartFieldsWithAttributeKind:(int)arg1 inRange:(struct _NSRange)arg2 usingBlock:(void (^)(id, struct _NSRange, BOOL *))arg3;

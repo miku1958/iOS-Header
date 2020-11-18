@@ -9,7 +9,7 @@
 #import <CoreParsec/SFFeedbackListener-Protocol.h>
 #import <CoreParsec/SFResourceLoader-Protocol.h>
 
-@class GEOSearchFoundationFeedbackListener, NSFileManager, NSString, NSXPCConnection, PARBag, PARRanker, PARSearchClient, PARSessionConfiguration;
+@class GEOSearchFoundationFeedbackListener, NSFileManager, NSString, NSXPCConnection, PARBag, PARSearchClient, PARSessionConfiguration;
 @protocol PARSessionDelegate;
 
 @interface PARSession : NSObject <SFFeedbackListener, SFResourceLoader>
@@ -17,21 +17,20 @@
     NSFileManager *_fileManager;
     GEOSearchFoundationFeedbackListener *_mapsListener;
     PARBag *_bag;
+    _Atomic BOOL _sampled;
     PARSearchClient *_client;
-    id<PARSessionDelegate> _delegate;
-    PARRanker *_ranker;
     PARSessionConfiguration *_configuration;
+    id<PARSessionDelegate> _delegate;
 }
 
-@property (strong) PARBag *bag; // @synthesize bag=_bag;
+@property (strong) PARBag *bag;
 @property (strong, nonatomic) PARSearchClient *client; // @synthesize client=_client;
-@property (strong, nonatomic) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
+@property (strong) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) NSXPCConnection *connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<PARSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) PARRanker *ranker; // @synthesize ranker=_ranker;
 @property (readonly) Class superclass;
 
 + (id)sessionWithConfiguration:(id)arg1;
@@ -40,7 +39,6 @@
 + (id)sharedSession;
 - (void).cxx_destruct;
 - (id)awaitBag;
-- (void)captureMapsResultsDisplayedFeedback:(id)arg1;
 - (void)cardViewDidAppear:(id)arg1;
 - (void)cardViewDidDisappear:(id)arg1;
 - (void)didAppendLateSections:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class HapticClient, NSArray;
 
@@ -14,11 +14,13 @@
     BOOL _resourcesAllocated;
     unsigned long long _behavior;
     NSArray *_channelArray;
+    CDUnknownBlockType _connectionErrorHandler;
 }
 
 @property (nonatomic) unsigned long long behavior; // @synthesize behavior=_behavior;
 @property (readonly, nonatomic) NSArray *channels;
 @property (readonly) HapticClient *client; // @synthesize client=_client;
+@property (copy) CDUnknownBlockType connectionErrorHandler;
 @property (readonly) double currentMediaTime;
 @property (readonly) double hapticLatency;
 @property (readonly) BOOL resourcesAllocated; // @synthesize resourcesAllocated=_resourcesAllocated;

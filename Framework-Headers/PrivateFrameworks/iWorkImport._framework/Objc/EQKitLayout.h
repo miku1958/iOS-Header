@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/EQKitLayout-Protocol.h>
 
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (double)naturalAlignmentOffset;
 - (struct CGSize)naturalSize;
 - (void)renderIntoContext:(struct CGContext *)arg1 offset:(struct CGPoint)arg2;
+- (void)setFontSmoothingBackgroundColor:(struct CGColor *)arg1;
 - (double)vsize;
 - (double)width;
 

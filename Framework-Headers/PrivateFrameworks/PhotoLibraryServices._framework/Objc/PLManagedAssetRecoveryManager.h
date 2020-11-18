@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class PLPhotoLibrary;
 @protocol OS_dispatch_queue;
@@ -24,9 +24,15 @@
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (id)_imagesWithZeroWidthHeightPredicate;
++ (id)_irisesWithZeroVideoCpDuration;
++ (id)_jpegImagesPredicate;
++ (id)_predicateForAdjustedAssetsWithMissingResources;
++ (id)_predicateForSupportedAssetTypesForUpload;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (id)_assetKindsAllowedForDownloading;
+- (BOOL)_canUnderstandAdjustmentForAsset:(id)arg1;
 - (void)_downloadResources:(id)arg1 forAsset:(id)arg2 usingCloudPhotoLibraryManager:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_fixAdjustedAssetWithMissingDerivatives:(id)arg1 cloudPhotoLibraryManager:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_fixDimensionsForAsset:(id)arg1 cloudPhotoLibraryManager:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIKeyboardBasedTextSelectionGestureController.h>
+#import <UIKitCore/_UIKeyboardBasedTextSelectionGestureController.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardBasedNonEditableTextSelectionGestureController : _UIKeyboardBasedTextSelectionGestureController
 {
 }
 
-- (Class)gestureCluster;
+- (Class)textInteractionClass;
 
 @end
 

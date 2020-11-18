@@ -16,7 +16,6 @@
     NSPointerArray *_observers;
     BOOL _selectingAssets;
     BOOL _selectingTargetAlbum;
-    BOOL _targetAlbumIsNewLocalAlbum;
     long long _status;
     PUPhotoSelectionManager *_photoSelectionManager;
     PHAssetCollection *_sourceAlbum;
@@ -43,13 +42,14 @@
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<PLAlbumProtocol> *targetAlbum; // @synthesize targetAlbum=_targetAlbum;
-@property (nonatomic) BOOL targetAlbumIsNewLocalAlbum; // @synthesize targetAlbumIsNewLocalAlbum=_targetAlbumIsNewLocalAlbum;
 @property (strong, nonatomic) NSString *targetAlbumName; // @synthesize targetAlbumName=_targetAlbumName;
 @property (copy, nonatomic) NSOrderedSet *transferredAssets; // @synthesize transferredAssets=_transferredAssets;
 
 - (void).cxx_destruct;
 - (void)_enumerateObserversWithBlock:(CDUnknownBlockType)arg1;
 - (void)addSessionInfoObserver:(id)arg1;
+- (BOOL)hasLocalTargetAlbum;
+- (BOOL)hasTargetAlbum;
 - (id)init;
 - (void)photoSelectionManagerSelectionDidChange:(id)arg1;
 - (void)removeSessionInfoObserver:(id)arg1;

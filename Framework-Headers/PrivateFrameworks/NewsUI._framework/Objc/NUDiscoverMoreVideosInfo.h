@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <NewsUI/NSCopying-Protocol.h>
-#import <NewsUI/SXDiscoverMoreConfigurationProviding-Protocol.h>
+#import <NewsUI/SVDiscoverMoreConfigurationProviding-Protocol.h>
 
 @class NSString, NTPBDiscoverMoreVideosInfo;
 
-@interface NUDiscoverMoreVideosInfo : NSObject <NSCopying, SXDiscoverMoreConfigurationProviding>
+@interface NUDiscoverMoreVideosInfo : NSObject <NSCopying, SVDiscoverMoreConfigurationProviding>
 {
     NTPBDiscoverMoreVideosInfo *_discoverMoreVideosInfo;
 }

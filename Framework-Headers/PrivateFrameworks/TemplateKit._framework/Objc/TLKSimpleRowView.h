@@ -31,18 +31,18 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) TLKImage *leadingImage; // @synthesize leadingImage=_leadingImage;
+@property (strong, nonatomic) TLKImage *leadingImage; // @synthesize leadingImage=_leadingImage;
 @property (strong) TLKImageView *leadingImageView; // @synthesize leadingImageView=_leadingImageView;
-@property (strong) TLKRichText *leadingSubtitle; // @synthesize leadingSubtitle=_leadingSubtitle;
+@property (strong, nonatomic) TLKRichText *leadingSubtitle; // @synthesize leadingSubtitle=_leadingSubtitle;
 @property (strong) TLKVibrantLabel *leadingSubtitleLabel; // @synthesize leadingSubtitleLabel=_leadingSubtitleLabel;
-@property (strong) TLKRichText *leadingTitle; // @synthesize leadingTitle=_leadingTitle;
+@property (strong, nonatomic) TLKRichText *leadingTitle; // @synthesize leadingTitle=_leadingTitle;
 @property (strong) TLKVibrantLabel *leadingTitleLabel; // @synthesize leadingTitleLabel=_leadingTitleLabel;
 @property (readonly) Class superclass;
-@property (strong) TLKImage *trailingImage; // @synthesize trailingImage=_trailingImage;
+@property (strong, nonatomic) TLKImage *trailingImage; // @synthesize trailingImage=_trailingImage;
 @property (strong) TLKImageView *trailingImageView; // @synthesize trailingImageView=_trailingImageView;
-@property (strong) TLKRichText *trailingSubtitle; // @synthesize trailingSubtitle=_trailingSubtitle;
+@property (strong, nonatomic) TLKRichText *trailingSubtitle; // @synthesize trailingSubtitle=_trailingSubtitle;
 @property (strong) TLKVibrantLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
-@property (strong) TLKRichText *trailingTitle; // @synthesize trailingTitle=_trailingTitle;
+@property (strong, nonatomic) TLKRichText *trailingTitle; // @synthesize trailingTitle=_trailingTitle;
 @property (strong) TLKVibrantLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
 
 + (void)applyText:(id)arg1 toLabel:(id)arg2;
@@ -56,7 +56,6 @@
 - (id)leadingSubtitleLabelString;
 - (id)leadingTitleLabelFont;
 - (id)leadingTitleLabelString;
-- (id)observableProperties;
 - (void)observedPropertiesChanged;
 - (id)stringForLabel:(id)arg1;
 - (void)styleDidChange:(unsigned long long)arg1;

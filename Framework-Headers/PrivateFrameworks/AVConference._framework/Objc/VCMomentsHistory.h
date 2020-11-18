@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMomentsHistoryBufferDelegate-Protocol.h>
 
@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)registerDirectoryWithFilePath:(id)arg1;
 - (int)rewriteMovieMetadataWithURL:(id)arg1 transactionID:(id)arg2;
 - (void)setCompeletionHandler:(CDUnknownBlockType)arg1 forTransactionID:(id)arg2;
+- (void)setFrameRate:(float)arg1;
 - (void)setupResizingSessionsWithVisibleRect:(struct CGRect)arg1 cameraStatusBit:(unsigned char)arg2;
 - (CDStruct_1b6d18a9)setupStillImageWithTimestamp:(unsigned int)arg1 transactionID:(id)arg2 visibleRect:(struct CGRect *)arg3 cameraStatusBit:(char *)arg4;
 - (void)setupWriterWithTransactionID:(id)arg1 filePath:(id)arg2 stillImageTime:(CDStruct_1b6d18a9)arg3 visibleRect:(struct CGRect)arg4 cameraStatusBit:(unsigned char)arg5;

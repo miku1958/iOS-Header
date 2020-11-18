@@ -7,34 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBQueryHomeIntent-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBIntentMetadata;
 
-@interface _INPBQueryHomeIntent : PBCodable <NSCopying>
+@interface _INPBQueryHomeIntent : PBCodable <_INPBQueryHomeIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_entities;
+    struct _has;
+    NSArray *_entities;
     _INPBIntentMetadata *_intentMetadata;
 }
 
-@property (strong, nonatomic) NSMutableArray *entities; // @synthesize entities=_entities;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *entities; // @synthesize entities=_entities;
+@property (readonly, nonatomic) unsigned long long entitiesCount;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
 + (Class)entitiesType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addEntities:(id)arg1;
 - (void)clearEntities;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)entitiesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)entitiesCount;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

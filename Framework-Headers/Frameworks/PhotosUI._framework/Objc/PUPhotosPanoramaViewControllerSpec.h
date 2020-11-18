@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosUI/PULegacyViewControllerSpec.h>
 
-@interface PUPhotosPanoramaViewControllerSpec : NSObject
+@interface PUPhotosPanoramaViewControllerSpec : PULegacyViewControllerSpec
 {
 }
 
++ (id)padSpec;
++ (id)phoneSpec;
 - (struct CGSize)_itemSizeForWidth:(double)arg1;
 - (long long)cellFillMode;
 - (void)configureCollectionViewGridLayout:(id)arg1 referenceWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;

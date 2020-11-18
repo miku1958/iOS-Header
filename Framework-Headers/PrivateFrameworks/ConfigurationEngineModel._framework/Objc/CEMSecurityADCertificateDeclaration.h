@@ -12,37 +12,50 @@
 
 @interface CEMSecurityADCertificateDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadCertServer;
+    NSString *_payloadCertTemplate;
+    NSString *_payloadDescription;
+    NSNumber *_payloadCertificateRenewalTimeInterval;
+    NSString *_payloadCertificateAuthority;
+    NSString *_payloadCertificateAcquisitionMechanism;
+    NSNumber *_payloadAllowAllAppsAccess;
+    NSNumber *_payloadPromptForCredentials;
+    NSNumber *_payloadKeyIsExtractable;
+    NSNumber *_payloadKeysize;
+    NSNumber *_payloadEnableAutoRenewal;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadAllowAllAppsAccess;
-@property (readonly, nonatomic) NSString *payloadCertServer;
-@property (readonly, nonatomic) NSString *payloadCertTemplate;
-@property (readonly, nonatomic) NSString *payloadCertificateAcquisitionMechanism;
-@property (readonly, nonatomic) NSString *payloadCertificateAuthority;
-@property (readonly, nonatomic) NSNumber *payloadCertificateRenewalTimeInterval;
-@property (readonly, nonatomic) NSString *payloadDescription;
-@property (readonly, nonatomic) NSNumber *payloadKeyIsExtractable;
-@property (readonly, nonatomic) NSNumber *payloadKeysize;
-@property (readonly, nonatomic) NSNumber *payloadPromptForCredentials;
+@property (copy, nonatomic) NSNumber *payloadAllowAllAppsAccess; // @synthesize payloadAllowAllAppsAccess=_payloadAllowAllAppsAccess;
+@property (copy, nonatomic) NSString *payloadCertServer; // @synthesize payloadCertServer=_payloadCertServer;
+@property (copy, nonatomic) NSString *payloadCertTemplate; // @synthesize payloadCertTemplate=_payloadCertTemplate;
+@property (copy, nonatomic) NSString *payloadCertificateAcquisitionMechanism; // @synthesize payloadCertificateAcquisitionMechanism=_payloadCertificateAcquisitionMechanism;
+@property (copy, nonatomic) NSString *payloadCertificateAuthority; // @synthesize payloadCertificateAuthority=_payloadCertificateAuthority;
+@property (copy, nonatomic) NSNumber *payloadCertificateRenewalTimeInterval; // @synthesize payloadCertificateRenewalTimeInterval=_payloadCertificateRenewalTimeInterval;
+@property (copy, nonatomic) NSString *payloadDescription; // @synthesize payloadDescription=_payloadDescription;
+@property (copy, nonatomic) NSNumber *payloadEnableAutoRenewal; // @synthesize payloadEnableAutoRenewal=_payloadEnableAutoRenewal;
+@property (copy, nonatomic) NSNumber *payloadKeyIsExtractable; // @synthesize payloadKeyIsExtractable=_payloadKeyIsExtractable;
+@property (copy, nonatomic) NSNumber *payloadKeysize; // @synthesize payloadKeysize=_payloadKeysize;
+@property (copy, nonatomic) NSNumber *payloadPromptForCredentials; // @synthesize payloadPromptForCredentials=_payloadPromptForCredentials;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withCertServer:(id)arg2 withCertTemplate:(id)arg3;
++ (id)buildWithIdentifier:(id)arg1 withCertServer:(id)arg2 withCertTemplate:(id)arg3 withDescription:(id)arg4 withCertificateRenewalTimeInterval:(id)arg5 withCertificateAuthority:(id)arg6 withCertificateAcquisitionMechanism:(id)arg7 withAllowAllAppsAccess:(id)arg8 withPromptForCredentials:(id)arg9 withKeyIsExtractable:(id)arg10 withKeysize:(id)arg11 withEnableAutoRenewal:(id)arg12;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

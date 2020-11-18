@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol AVOutputContextManagerImpl, OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVOutputContextManagerInternal : NSObject
 {
     NSObject<OS_dispatch_queue> *ivarAccessQueue;

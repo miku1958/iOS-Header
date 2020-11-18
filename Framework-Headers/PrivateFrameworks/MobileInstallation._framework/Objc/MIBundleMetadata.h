@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MobileInstallation/NSCopying-Protocol.h>
 #import <MobileInstallation/NSSecureCoding-Protocol.h>
@@ -19,6 +19,7 @@
     unsigned long long _placeholderFailureReason;
     NSError *_placeholderFailureUnderlyingError;
     unsigned long long _placeholderFailureUnderlyingErrorSource;
+    NSString *_watchKitAppExecutableHash;
 }
 
 @property (copy, nonatomic) NSString *installBuildVersion; // @synthesize installBuildVersion=_installBuildVersion;
@@ -27,11 +28,13 @@
 @property (nonatomic) unsigned long long placeholderFailureReason; // @synthesize placeholderFailureReason=_placeholderFailureReason;
 @property (strong, nonatomic) NSError *placeholderFailureUnderlyingError; // @synthesize placeholderFailureUnderlyingError=_placeholderFailureUnderlyingError;
 @property (nonatomic) unsigned long long placeholderFailureUnderlyingErrorSource; // @synthesize placeholderFailureUnderlyingErrorSource=_placeholderFailureUnderlyingErrorSource;
+@property (copy, nonatomic) NSString *watchKitAppExecutableHash; // @synthesize watchKitAppExecutableHash=_watchKitAppExecutableHash;
 
 + (id)metadataFromURL:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

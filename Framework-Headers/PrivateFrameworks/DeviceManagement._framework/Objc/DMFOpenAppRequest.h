@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSData, NSString;
 
-@interface DMFOpenAppRequest : CATTaskRequest
+@interface DMFOpenAppRequest : DMFTaskRequest
 {
     BOOL _lockInApp;
     NSString *_bundleIdentifier;
@@ -21,6 +21,9 @@
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (nonatomic) BOOL lockInApp; // @synthesize lockInApp=_lockInApp;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

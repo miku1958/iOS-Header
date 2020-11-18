@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1 storage:(id)arg2;
 - (id)initWithStorage:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
-- (BOOL)requiresRichText;
 - (void)saveToArchiver:(id)arg1;
 - (id)string;
 

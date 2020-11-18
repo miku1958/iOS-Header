@@ -6,6 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <ToneKit/PSStateRestoration-Protocol.h>
 #import <ToneKit/TKVibrationPickerCollectionViewCellDelegate-Protocol.h>
 #import <ToneKit/TKVibrationRecorderViewControllerDelegate-Protocol.h>
 #import <ToneKit/UICollectionViewDataSource-Protocol.h>
@@ -16,7 +17,7 @@
 @class NSArray, NSIndexPath, NSMutableDictionary, NSMutableSet, NSString, NSTimer, NSURL, TKVibratorController, TLVibrationManager, UICollectionView;
 @protocol TKVibrationPickerStyleProvider, TKVibrationPickerViewControllerDelegate, TKVibrationPickerViewControllerDismissalDelegate;
 
-@interface TKVibrationPickerViewController : UIViewController <TKVibrationPickerCollectionViewCellDelegate, TKVibrationRecorderViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateTableLayout, UINavigationControllerDelegate>
+@interface TKVibrationPickerViewController : UIViewController <PSStateRestoration, TKVibrationPickerCollectionViewCellDelegate, TKVibrationRecorderViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateTableLayout, UINavigationControllerDelegate>
 {
     long long _alertType;
     BOOL _showsDefault;
@@ -62,9 +63,12 @@
 @property (readonly, nonatomic) BOOL canEnterEditingMode;
 @property (copy, nonatomic) NSString *correspondingToneIdentifier; // @synthesize correspondingToneIdentifier=_correspondingToneIdentifier;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSString *defaultVibrationIdentifier; // @synthesize defaultVibrationIdentifier=_defaultVibrationIdentifier;
 @property (weak, nonatomic) id<TKVibrationPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *noneString; // @synthesize noneString=_noneString;
 @property (strong, nonatomic) NSString *selectedVibrationIdentifier; // @synthesize selectedVibrationIdentifier=_selectedVibrationIdentifier;
@@ -74,6 +78,7 @@
 @property (nonatomic) BOOL showsNothingSelected; // @synthesize showsNothingSelected=_showsNothingSelected;
 @property (nonatomic) BOOL showsUserGenerated; // @synthesize showsUserGenerated=_showsUserGenerated;
 @property (strong, nonatomic) id<TKVibrationPickerStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *topic; // @synthesize topic=_topic;
 
@@ -122,6 +127,7 @@
 - (void)_updateVisibilityOfSynchronizedGroup;
 - (double)_vibrationPickerRowHeight;
 - (void)applicationWillSuspend;
+- (BOOL)canBeShownFromSuspendedState;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;

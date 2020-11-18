@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMapTable, NSMutableArray, NTKComplication;
+@class CLKDevice, NSDate, NSMapTable, NSMutableArray, NTKComplication;
 @protocol NTKComplicationDisplay;
 
 @interface NTKComplicationController : NSObject
@@ -20,6 +20,7 @@
     BOOL _faceZooming;
     NTKComplication *_complication;
     long long _complicationFamily;
+    CLKDevice *_device;
     CDUnknownBlockType _invalidationHandler;
     NSDate *_pauseDate;
     long long _cachingMode;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) long long cachingMode; // @synthesize cachingMode=_cachingMode;
 @property (readonly, nonatomic) NTKComplication *complication; // @synthesize complication=_complication;
 @property (readonly, nonatomic) long long complicationFamily; // @synthesize complicationFamily=_complicationFamily;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) long long effectiveFaceDataMode; // @synthesize effectiveFaceDataMode=_effectiveFaceDataMode;
 @property (nonatomic, getter=isFaceZooming) BOOL faceZooming; // @synthesize faceZooming=_faceZooming;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
@@ -40,11 +42,11 @@
 @property (nonatomic) BOOL showsLockedUI; // @synthesize showsLockedUI=_showsLockedUI;
 @property (readonly, nonatomic) long long updatingMode; // @synthesize updatingMode=_updatingMode;
 
-+ (id)DEPRECATEDControllerForComplication:(id)arg1 withLegacyDisplay:(id)arg2;
-+ (BOOL)_acceptsComplicationType:(unsigned long long)arg1;
-+ (BOOL)_acceptsComplicationType:(unsigned long long)arg1 family:(long long)arg2;
++ (id)DEPRECATEDControllerForComplication:(id)arg1 withLegacyDisplay:(id)arg2 forDevice:(id)arg3;
++ (BOOL)_acceptsComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
++ (BOOL)_acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
 + (BOOL)_isLegacy;
-+ (Class)controllerClassForComplicationType:(unsigned long long)arg1 family:(long long)arg2;
++ (Class)controllerClassForComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 + (id)controllerForComplication:(id)arg1 withRequestedFamily:(long long)arg2 face:(id)arg3 slot:(id)arg4;
 - (void).cxx_destruct;
 - (void)DEPRECATEDInvalidate;
@@ -54,7 +56,7 @@
 - (void)_applyUpdatingMode;
 - (void)_configureForLegacyDisplay:(id)arg1;
 - (void)_deactivate;
-- (id)_initWithComplication:(id)arg1 legacyDisplay:(id)arg2;
+- (id)_initWithComplication:(id)arg1 legacyDisplay:(id)arg2 forDevice:(id)arg3;
 - (void)_openApp:(id)arg1 withURL:(id)arg2 result:(CDUnknownBlockType)arg3;
 - (void)_openAppWithURL:(id)arg1;
 - (void)_updateEffectiveAnimationMode;
@@ -73,10 +75,11 @@
 - (void)enumerateDisplayWrappersWithBlock:(CDUnknownBlockType)arg1;
 - (void)handleFaceDefaultsChanged;
 - (BOOL)hasTapAction;
-- (id)initWithComplication:(id)arg1 family:(long long)arg2;
+- (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void)performBackgroundDataRefresh;
 - (void)performTapAction;
 - (void)removeDisplayWrapper:(id)arg1;
+- (Class)richComplicationDisplayViewClass;
 - (void)setDataMode:(long long)arg1 forDisplayWrapper:(id)arg2;
 - (BOOL)wantsLegacyDisplay;
 

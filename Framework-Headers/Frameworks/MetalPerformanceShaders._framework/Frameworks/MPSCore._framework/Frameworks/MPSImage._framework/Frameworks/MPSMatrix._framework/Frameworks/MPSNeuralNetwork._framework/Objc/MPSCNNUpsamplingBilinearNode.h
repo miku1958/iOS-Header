@@ -10,14 +10,18 @@
 {
     double _scaleFactorX;
     double _scaleFactorY;
+    BOOL _alignCorners;
 }
 
+@property (readonly, nonatomic) BOOL alignCorners; // @synthesize alignCorners=_alignCorners;
 @property (readonly, nonatomic) double scaleFactorX; // @synthesize scaleFactorX=_scaleFactorX;
 @property (readonly, nonatomic) double scaleFactorY; // @synthesize scaleFactorY=_scaleFactorY;
 
 + (id)nodeWithSource:(id)arg1 integerScaleFactorX:(unsigned long long)arg2 integerScaleFactorY:(unsigned long long)arg3;
++ (id)nodeWithSource:(id)arg1 integerScaleFactorX:(unsigned long long)arg2 integerScaleFactorY:(unsigned long long)arg3 alignCorners:(BOOL)arg4;
 - (Class)gradientClass;
 - (id)initWithSource:(id)arg1 integerScaleFactorX:(unsigned long long)arg2 integerScaleFactorY:(unsigned long long)arg3;
+- (id)initWithSource:(id)arg1 integerScaleFactorX:(unsigned long long)arg2 integerScaleFactorY:(unsigned long long)arg3 alignCorners:(BOOL)arg4;
 - (struct FilterGraphNode *)newFilterNode;
 
 @end

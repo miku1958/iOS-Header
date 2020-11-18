@@ -4,25 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
-@class DMFStatusReportingRequirements, NSString, NSXPCListenerEndpoint;
+@class DMFReportingRequirements, NSString, NSXPCListenerEndpoint;
 
-@interface DMFRegisterConfigurationSourceRequest : CATTaskRequest
+@interface DMFRegisterConfigurationSourceRequest : DMFTaskRequest
 {
     NSString *_configurationSourceName;
     NSString *_organizationIdentifier;
     NSString *_machServiceName;
     NSXPCListenerEndpoint *_listenerEndpoint;
-    DMFStatusReportingRequirements *_statusReportingRequirements;
+    DMFReportingRequirements *_reportingRequirements;
 }
 
 @property (copy, nonatomic) NSString *configurationSourceName; // @synthesize configurationSourceName=_configurationSourceName;
 @property (strong, nonatomic) NSXPCListenerEndpoint *listenerEndpoint; // @synthesize listenerEndpoint=_listenerEndpoint;
 @property (copy, nonatomic) NSString *machServiceName; // @synthesize machServiceName=_machServiceName;
 @property (copy, nonatomic) NSString *organizationIdentifier; // @synthesize organizationIdentifier=_organizationIdentifier;
-@property (copy, nonatomic) DMFStatusReportingRequirements *statusReportingRequirements; // @synthesize statusReportingRequirements=_statusReportingRequirements;
+@property (copy, nonatomic) DMFReportingRequirements *reportingRequirements; // @synthesize reportingRequirements=_reportingRequirements;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

@@ -37,7 +37,7 @@
 - (BOOL)_stopwatchIsStopped;
 - (long long)_stopwatchLapCount;
 - (double)chronoDuration;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;
 - (double)secondsAnimationFPS;
 - (void)showChronoMode;

@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class DeviceManager, NSString;
 
+__attribute__((visibility("hidden")))
 @interface ICDeviceProperties : NSObject
 {
     id _delegate;
@@ -42,7 +43,6 @@
 @property int usbVendorID; // @synthesize usbVendorID=_usbVendorID;
 
 - (void)dealloc;
-- (void)finalize;
 
 @end
 

@@ -24,6 +24,7 @@
 - (id)initWithEventStore:(id)arg1 opaqueKey:(id)arg2 uniqueKey:(id)arg3;
 - (id)initWithOpaqueKey:(id)arg1 uniqueKey:(id)arg2;
 - (id)relatedEvent;
+- (id)semanticIdentifier;
 - (void)setTimestampAsDate:(id)arg1;
 - (id)timestampAsDate;
 

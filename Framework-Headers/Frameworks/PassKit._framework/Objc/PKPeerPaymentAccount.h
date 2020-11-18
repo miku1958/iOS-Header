@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -25,6 +25,7 @@
     NSString *_termsIdentifier;
     NSURL *_termsURL;
     NSURL *_associatedPassURL;
+    long long _pendingPaymentCount;
     NSArray *_supportedFeatureDescriptors;
     NSString *_associatedPassSerialNumber;
     NSString *_associatedPassTypeIdentifier;
@@ -42,6 +43,7 @@
 @property (copy, nonatomic) NSDecimalNumber *maximumBalance; // @synthesize maximumBalance=_maximumBalance;
 @property (readonly, nonatomic) NSDictionary *maximumTransferAmounts;
 @property (readonly, nonatomic) NSDictionary *minimumTransferAmounts;
+@property (nonatomic) long long pendingPaymentCount; // @synthesize pendingPaymentCount=_pendingPaymentCount;
 @property (nonatomic) double proactiveFetchPeriod; // @synthesize proactiveFetchPeriod=_proactiveFetchPeriod;
 @property (nonatomic) unsigned long long stage; // @synthesize stage=_stage;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
@@ -54,6 +56,7 @@
 - (void).cxx_destruct;
 - (id)_featureWithIdentifier:(id)arg1;
 - (id)associatedPassUniqueID;
+- (id)cardBalancePromotionFeatureDescriptor;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -65,6 +68,7 @@
 - (id)loadFromCardFeatureDescriptor;
 - (id)requestFromUserFeatureDescriptor;
 - (id)sendToUserFeatureDescriptor;
+- (BOOL)supportsCardBalancePromotion;
 - (BOOL)supportsLoadFromCard;
 - (BOOL)supportsRequestFromUser;
 - (BOOL)supportsSendToUser;

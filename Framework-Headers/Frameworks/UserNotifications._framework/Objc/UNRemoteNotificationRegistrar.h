@@ -26,6 +26,7 @@
 
 + (id)currentRegistrar;
 - (void).cxx_destruct;
+- (BOOL)allowsRemoteNotifications;
 - (void)dealloc;
 - (void)didReceiveDeviceToken:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)getAllowsRemoteNotificationsWithCompletionHandler:(CDUnknownBlockType)arg1;

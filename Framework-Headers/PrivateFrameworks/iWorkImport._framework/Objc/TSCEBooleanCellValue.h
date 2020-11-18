@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (struct TSCEBooleanValue *)booleanValue;
+- (id)canonicalKeyString;
 - (long long)compareToCellValue:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

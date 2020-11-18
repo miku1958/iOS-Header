@@ -6,16 +6,15 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBatchLocationDelegate-Protocol.h>
 #import <HomeKitDaemon/HMDHomeMessageReceiver-Protocol.h>
-#import <HomeKitDaemon/HMDLocationDelegate-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class CLLocation, CLRegion, HMDHome, HMDHomeLocationData, HMFMessageDispatcher, NSDate, NSObject, NSSet, NSString, NSTimeZone, NSUUID;
 @protocol OS_dispatch_queue;
 
-@interface HMDHomeLocationHandler : HMFObject <HMDLocationDelegate, HMDHomeMessageReceiver, NSSecureCoding>
+@interface HMDHomeLocationHandler : HMFObject <HMDBatchLocationDelegate, HMDHomeMessageReceiver, NSSecureCoding>
 {
-    BOOL _isExtractingCurrentLocation;
     int _locationAuthorization;
     CLLocation *_location;
     NSTimeZone *_timeZone;
@@ -30,7 +29,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
-@property (nonatomic) BOOL isExtractingCurrentLocation; // @synthesize isExtractingCurrentLocation=_isExtractingCurrentLocation;
 @property (strong, nonatomic) CLLocation *location; // @synthesize location=_location;
 @property (nonatomic) int locationAuthorization; // @synthesize locationAuthorization=_locationAuthorization;
 @property (readonly, nonatomic) HMDHomeLocationData *locationData;
@@ -48,23 +46,23 @@
 + (BOOL)mergeLocationDataForLocalHome:(id)arg1 withCloudHome:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)_canExtractLocation;
-- (void)_evaluateHomeRegionState:(id)arg1;
+- (BOOL)_canExtractBatchLocations;
+- (void)_evaluateHomeRegionStateForCurrentDeviceLocation:(id)arg1;
 - (id)_handleHomeLocationData:(id)arg1 message:(id)arg2;
 - (void)_handleLocationAuthorization:(int)arg1;
 - (void)_handleLocationAuthorizationMessage:(id)arg1;
 - (void)_handleRetrieveLocation:(id)arg1;
-- (BOOL)_needToExtractLocation;
+- (BOOL)_needToExtractBatchLocations;
 - (void)_registerForMessages;
 - (void)_registerForRegionUpdate;
 - (void)_sendLocationUpdate;
-- (void)_updateLocation:(id)arg1;
 - (void)_updateTimeZone:(id)arg1;
 - (void)accessoriesBecomeReachable;
 - (void)accessoriesBecomeUnreachable;
 - (void)accessoryAdded;
 - (void)configure:(id)arg1 queue:(id)arg2 messageDispatcher:(id)arg3;
 - (void)dealloc;
+- (void)didDetermineBatchLocation:(id)arg1;
 - (void)didDetermineLocation:(id)arg1;
 - (void)didDetermineState:(long long)arg1 forRegion:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

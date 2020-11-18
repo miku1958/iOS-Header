@@ -25,6 +25,6 @@
 @property (readonly) Class superclass;
 
 + (void)px_loadRepresentativeFacesForPersons:(id)arg1;
-- (void)requestFaceTileImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 round:(BOOL)arg3 cacheResult:(BOOL)arg4 boundFaceRect:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
+- (void)requestFaceTileImageWithTargetSize:(struct CGSize)arg1 cropFactor:(unsigned long long)arg2 style:(unsigned long long)arg3 cacheResult:(BOOL)arg4 boundFaceRect:(BOOL)arg5 completionBlock:(CDUnknownBlockType)arg6;
 @end
 

@@ -27,6 +27,7 @@
     GEOLatLng *_routeMatchCoordinate;
     unsigned int _stepID;
     BOOL _guidancePromptsEnabled;
+    BOOL _isConnectedToCarplay;
     BOOL _lowGuidanceNavigation;
     struct {
         unsigned int timestamp:1;
@@ -40,6 +41,7 @@
         unsigned int routeLocationOffset:1;
         unsigned int stepID:1;
         unsigned int guidancePromptsEnabled:1;
+        unsigned int isConnectedToCarplay:1;
         unsigned int lowGuidanceNavigation:1;
     } _has;
 }
@@ -60,6 +62,7 @@
 @property (nonatomic) BOOL hasFeedbackType;
 @property (nonatomic) BOOL hasGuidancePromptsEnabled;
 @property (nonatomic) BOOL hasHapticsType;
+@property (nonatomic) BOOL hasIsConnectedToCarplay;
 @property (readonly, nonatomic) BOOL hasLocation;
 @property (nonatomic) BOOL hasLowGuidanceNavigation;
 @property (nonatomic) BOOL hasRemainingTime;
@@ -69,6 +72,7 @@
 @property (readonly, nonatomic) BOOL hasRouteMatchCoordinate;
 @property (nonatomic) BOOL hasStepID;
 @property (nonatomic) BOOL hasTimestamp;
+@property (nonatomic) BOOL isConnectedToCarplay; // @synthesize isConnectedToCarplay=_isConnectedToCarplay;
 @property (readonly, nonatomic) BOOL isNavigating;
 @property (readonly, nonatomic) BOOL isRecalculating;
 @property (strong, nonatomic) GEOLocation *location; // @synthesize location=_location;

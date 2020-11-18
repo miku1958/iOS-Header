@@ -28,9 +28,8 @@
 @property (copy, nonatomic) CDUnknownBlockType updateCompletionHandler; // @synthesize updateCompletionHandler=_updateCompletionHandler;
 
 - (void).cxx_destruct;
-- (id)_parseDataSourceMapFromDataSourceDictionaries:(id)arg1;
 - (void)_parseExchangeDictionaries:(id)arg1;
-- (void)_parseQuoteDictionaries:(id)arg1 withDataSources:(id)arg2;
+- (void)_parseQuoteDictionaries:(id)arg1 withDataSourceDictionaries:(id)arg2;
 - (BOOL)_updateStocks:(id)arg1 comprehensive:(BOOL)arg2 forceUpdate:(BOOL)arg3;
 - (id)aggregateDictionaryDomain;
 - (void)didParseData;

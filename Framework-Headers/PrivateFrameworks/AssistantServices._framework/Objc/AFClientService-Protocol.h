@@ -34,17 +34,18 @@
 - (oneway void)forceAudioSessionActiveWithOptions:(unsigned long long)arg1 completion:(void (^)(unsigned int, NSError *))arg2;
 - (oneway void)forceAudioSessionInactiveWithOptions:(unsigned long long)arg1 completion:(void (^)(void))arg2;
 - (oneway void)getDeferredObjectsWithIdentifiers:(NSArray *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (oneway void)getRemoteClockTimerSnapshotWithCompletion:(void (^)(AFClockTimerSnapshot *, NSError *))arg1;
 - (oneway void)getSerializedCachedObjectsWithIdentifiers:(NSSet *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (oneway void)performGenericAceCommand:(NSDictionary *)arg1 interruptOutstandingRequest:(BOOL)arg2 reply:(void (^)(BOOL))arg3;
 - (oneway void)preheatWithStyle:(long long)arg1 forOptions:(AFSpeechRequestOptions *)arg2;
 - (oneway void)prepareForPhoneCall;
+- (oneway void)recordAWDSuccessMetrics;
 - (oneway void)recordCancellationMetrics;
 - (oneway void)recordFailureMetricsForError:(NSError *)arg1;
-- (oneway void)recordRequestMetric:(NSString *)arg1 withTimestamp:(double)arg2;
-- (oneway void)recordSuccessMetrics;
 - (oneway void)recordUIMetrics:(AFMetrics *)arg1;
 - (oneway void)reportIssueForError:(NSError *)arg1 type:(long long)arg2 context:(NSDictionary *)arg3;
 - (oneway void)requestStateUpdateWithReply:(void (^)(BOOL, unsigned int))arg1;
+- (oneway void)resumeInterruptedAudioPlaybackIfNeeded;
 - (oneway void)rollbackClearContext;
 - (oneway void)rollbackRequest;
 - (oneway void)setAlertContextDirty;
@@ -52,7 +53,6 @@
 - (oneway void)setApplicationContextForApplicationInfos:(NSArray *)arg1 withRefId:(NSString *)arg2;
 - (oneway void)setCarDNDActive:(BOOL)arg1;
 - (oneway void)setConfiguration:(AFClientConfiguration *)arg1;
-- (oneway void)setIsStark:(BOOL)arg1;
 - (oneway void)setLockState:(BOOL)arg1 showingLockScreen:(BOOL)arg2;
 - (oneway void)setMyriadDecisionResult:(BOOL)arg1;
 - (oneway void)setOverriddenApplicationContext:(NSString *)arg1 withContext:(id)arg2;

@@ -16,7 +16,10 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_contactSnapshotsByIndexPath;
     NSMutableDictionary *_groupSnapshotsByIndexPath;
     NSMutableDictionary *_containerSnapshotsByIndexPath;
+    BOOL _didAffectMeCard;
 }
+
+@property (readonly) BOOL didAffectMeCard;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

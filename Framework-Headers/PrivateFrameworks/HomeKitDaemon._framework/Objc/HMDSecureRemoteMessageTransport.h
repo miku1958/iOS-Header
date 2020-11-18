@@ -12,14 +12,12 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageTransportDelegate-Protocol.h>
 
-@class HMDAccountRegistry, HMDRemoteDeviceMonitor, HMDRemoteIdentityRegistry, HMDRemoteMessageNotifications, NSArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@class HMDRemoteDeviceMonitor, HMDRemoteMessageNotifications, NSArray, NSMutableDictionary, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
 @interface HMDSecureRemoteMessageTransport : HMFMessageTransport <HMDRemoteDeviceMonitorDelegate, HMDSecureRemoteSessionDelegate, HMFLogging, HMFMessageTransportDelegate, HMFDumpState>
 {
     NSArray *_transports;
-    HMDRemoteIdentityRegistry *_identityRegistry;
-    HMDAccountRegistry *_accountRegistry;
     HMDRemoteDeviceMonitor *_deviceMonitor;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
@@ -28,20 +26,19 @@
     NSMutableDictionary *_currentHomeConfigurations;
 }
 
-@property (readonly, nonatomic) HMDAccountRegistry *accountRegistry; // @synthesize accountRegistry=_accountRegistry;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (strong, nonatomic) NSMutableDictionary *currentHomeConfigurations; // @synthesize currentHomeConfigurations=_currentHomeConfigurations;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) HMDRemoteDeviceMonitor *deviceMonitor; // @synthesize deviceMonitor=_deviceMonitor;
+@property (readonly) HMDRemoteDeviceMonitor *deviceMonitor; // @synthesize deviceMonitor=_deviceMonitor;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMDRemoteIdentityRegistry *identityRegistry; // @synthesize identityRegistry=_identityRegistry;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) NSMutableSet *secureRemoteSessions; // @synthesize secureRemoteSessions=_secureRemoteSessions;
 @property (strong, nonatomic) HMDRemoteMessageNotifications *sessionNotifications; // @synthesize sessionNotifications=_sessionNotifications;
 @property (readonly) Class superclass;
-@property (readonly, copy, nonatomic) NSArray *transports; // @synthesize transports=_transports;
+@property (readonly, copy) NSArray *transports; // @synthesize transports=_transports;
 
++ (id)defaultTransport;
 + (id)logCategory;
 + (id)shortDescription;
 - (void).cxx_destruct;
@@ -61,11 +58,12 @@
 - (void)_sendPingToDevice:(id)arg1 timeout:(double)arg2 restriction:(unsigned long long)arg3 responseHandler:(CDUnknownBlockType)arg4;
 - (void)_sendSecureMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateDeviceInformationFromMessage:(id)arg1;
+- (id)accountRegistry;
 - (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)dumpState;
 - (void)electDeviceForUser:(id)arg1 destination:(id)arg2 deviceCapabilities:(id)arg3 responseTimeout:(double)arg4 responseQueue:(id)arg5 responseHandler:(CDUnknownBlockType)arg6;
-- (id)initWithTransports:(id)arg1 identityRegistry:(id)arg2 accountRegistry:(id)arg3;
+- (id)initWithTransports:(id)arg1;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)openSecureSessionToDevice:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)pingDevice:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

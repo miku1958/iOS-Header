@@ -13,10 +13,10 @@
     NSString *_string;
 }
 
-@property (strong) NSString *string; // @synthesize string=_string;
+@property (strong, nonatomic) NSString *string; // @synthesize string=_string;
 
 - (void).cxx_destruct;
-- (id)observableProperties;
+- (unsigned long long)_itemType;
 
 @end
 

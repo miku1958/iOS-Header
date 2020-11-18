@@ -12,6 +12,7 @@
 {
 }
 
+@property (copy, nonatomic) NSArray *aceAudioData;
 @property (copy, nonatomic) NSArray *dialogStrings;
 @property (copy, nonatomic) NSDictionary *speakableContextInfo;
 

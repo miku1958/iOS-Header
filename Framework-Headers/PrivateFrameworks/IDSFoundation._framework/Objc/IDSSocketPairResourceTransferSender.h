@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) BOOL sentFirstMessage; // @synthesize sentFirstMessage=_sentFirstMessage;
 @property (nonatomic) unsigned int sequenceNumber; // @synthesize sequenceNumber=_sequenceNumber;
 @property (nonatomic) unsigned short streamID; // @synthesize streamID=_streamID;
+@property (readonly, nonatomic) unsigned long long totalBytes; // @synthesize totalBytes=_totalBytes;
 
 - (void).cxx_destruct;
 - (void)closeFileAndMarkDone;

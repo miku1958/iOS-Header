@@ -23,8 +23,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (BOOL)testShouldShowReportSpamForChat:(id)arg1 chatItems:(id)arg2;
-+ (BOOL)testShouldShowSMSSpamForChat:(id)arg1 chatItems:(id)arg2;
++ (BOOL)testShouldShowReportSpamForChat:(id)arg1 items:(id)arg2;
++ (BOOL)testShouldShowSMSSpamForChat:(id)arg1 items:(id)arg2;
 - (void).cxx_destruct;
 - (id)_attributionChatItemForChatItem:(id)arg1;
 - (id)_chatItems;

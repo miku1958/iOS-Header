@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIIntervalAnimating-Protocol.h>
+#import <UIKitCore/UIIntervalAnimating-Protocol.h>
 
 @class NSString;
 @protocol UIVectorOperatable;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     id<UIVectorOperatable> _epsilon;
     float _velocityScalingFactor;
     BOOL _parametersInitialized;
-    CDUnknownBlockType _targetValueGetter;
+    id<UIVectorOperatable> _targetValue;
     id<UIVectorOperatable> _value;
     id<UIVectorOperatable> _intermediate;
     id<UIVectorOperatable> _intermediateVelocity;
@@ -36,16 +36,15 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id<UIVectorOperatable> intermediate; // @synthesize intermediate=_intermediate;
 @property (strong, nonatomic) id<UIVectorOperatable> intermediateVelocity; // @synthesize intermediateVelocity=_intermediateVelocity;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) CDUnknownBlockType targetValueGetter; // @synthesize targetValueGetter=_targetValueGetter;
+@property (strong, nonatomic) id<UIVectorOperatable> targetValue; // @synthesize targetValue=_targetValue;
 @property (strong, nonatomic) id<UIVectorOperatable> value; // @synthesize value=_value;
 @property (strong, nonatomic) id<UIVectorOperatable> velocity;
 
 - (void).cxx_destruct;
-- (id)initWithCurrent:(id)arg1 targetValueGetter:(CDUnknownBlockType)arg2;
-- (id)initWithDescription:(id)arg1 current:(id)arg2 targetValueGetter:(CDUnknownBlockType)arg3;
+- (id)initWithCurrent:(id)arg1 targetValue:(id)arg2;
+- (id)initWithDescription:(id)arg1 current:(id)arg2 targetValue:(id)arg3;
 - (BOOL)isStable;
 - (id)stepWithDelta:(double)arg1;
-- (id)targetValue;
 - (void)updateWithDescription:(id)arg1;
 - (void)updateWithDescription:(id)arg1 initial:(BOOL)arg2;
 

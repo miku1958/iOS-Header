@@ -45,6 +45,7 @@
 - (id)initWithCollectionViewLayout:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (void)postCNContactsClientDidDisplayFavoritesNotification;
 - (void)refreshView;
 - (void)refreshViewAnimated:(BOOL)arg1;
 - (void)setContentUnavailable:(BOOL)arg1 animated:(BOOL)arg2;

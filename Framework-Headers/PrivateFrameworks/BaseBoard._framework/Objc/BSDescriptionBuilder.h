@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableString, NSString;
 @protocol NSObject;
@@ -29,6 +29,7 @@
 + (id)descriptionForObject:(id)arg1 withObjectsAndNames:(id)arg2;
 + (id)nameObjectSeparator;
 + (id)succinctDescriptionForObject:(id)arg1;
+- (void).cxx_destruct;
 - (id)_activeComponentString;
 - (void)appendArraySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4;
 - (void)appendArraySection:(id)arg1 withName:(id)arg2 multilinePrefix:(id)arg3 skipIfEmpty:(BOOL)arg4 objectTransformer:(CDUnknownBlockType)arg5;
@@ -72,7 +73,6 @@
 - (id)appendUnsignedInt:(unsigned int)arg1 withName:(id)arg2;
 - (id)appendUnsignedInteger:(unsigned long long)arg1 withName:(id)arg2;
 - (id)build;
-- (void)dealloc;
 - (id)initWithObject:(id)arg1;
 - (id)modifyBody:(CDUnknownBlockType)arg1;
 - (id)modifyProem:(CDUnknownBlockType)arg1;

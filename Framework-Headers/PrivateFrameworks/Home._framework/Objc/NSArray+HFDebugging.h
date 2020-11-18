@@ -6,19 +6,7 @@
 
 #import <Foundation/NSArray.h>
 
-#import <Home/HFPrettyDescription-Protocol.h>
-#import <Home/HFStateDumpSerializable-Protocol.h>
-
-@class NSString;
-
-@interface NSArray (HFDebugging) <HFPrettyDescription, HFStateDumpSerializable>
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
-- (id)hf_prettyDescriptionOfType:(unsigned long long)arg1;
-- (id)hf_serializedStateDumpRepresentation;
+@interface NSArray (HFDebugging)
+- (id)hf_prettyDescription;
 @end
 

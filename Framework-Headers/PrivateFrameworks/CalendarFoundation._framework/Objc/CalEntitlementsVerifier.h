@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CalEntitlementsVerifier : NSObject
 {
@@ -14,6 +14,7 @@
 + (BOOL)currentProcessHasBooleanEntitlement:(id)arg1;
 + (BOOL)currentProcessHasContactsUIEntitlement;
 + (BOOL)currentProcessHasLocationdEffectiveBundleEntitlement;
++ (BOOL)currentProcessHasSyncClientEntitlement;
 + (BOOL)currentProcessHasWatchOSMutableDatabaseEntitlement;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <PencilKit/PKInkToolButton-Protocol.h>
 
-@class NSString, UIColor, UIImageView;
+@class NSString, UIColor, UIImageView, _PKInkToolOpacityLabel;
 
 @interface _PKEmbossedInkToolButton : UIButton <PKInkToolButton>
 {
@@ -16,17 +16,21 @@
     NSString *_identifier;
     UIColor *_color;
     unsigned long long _sizeState;
+    unsigned long long _attributeSet;
     UIImageView *_toolDockMaskImageView;
     UIImageView *_toolBaseImageView;
     UIImageView *_nibImageView;
     UIImageView *_nibEmbossImageView;
+    _PKInkToolOpacityLabel *_opacityLabel;
 }
 
+@property (nonatomic) unsigned long long attributeSet; // @synthesize attributeSet=_attributeSet;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isUsedOnDarkBackground; // @synthesize isUsedOnDarkBackground=_isUsedOnDarkBackground;
 @property (strong, nonatomic) UIImageView *nibEmbossImageView; // @synthesize nibEmbossImageView=_nibEmbossImageView;
 @property (strong, nonatomic) UIImageView *nibImageView; // @synthesize nibImageView=_nibImageView;
+@property (strong, nonatomic) _PKInkToolOpacityLabel *opacityLabel; // @synthesize opacityLabel=_opacityLabel;
 @property (nonatomic) unsigned long long sizeState; // @synthesize sizeState=_sizeState;
 @property (strong, nonatomic) UIImageView *toolBaseImageView; // @synthesize toolBaseImageView=_toolBaseImageView;
 @property (strong, nonatomic) UIImageView *toolDockMaskImageView; // @synthesize toolDockMaskImageView=_toolDockMaskImageView;
@@ -37,6 +41,7 @@
 + (id)imageNameForIdentifier:(id)arg1;
 + (id)imageNameForIdentifier:(id)arg1 sizeState:(unsigned long long)arg2 imageType:(id)arg3;
 - (void).cxx_destruct;
+- (double)embossAlphaForColor:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 color:(id)arg2 sizeState:(unsigned long long)arg3;
 - (void)layoutSubviews;
 - (id)nibEmbossImageName;

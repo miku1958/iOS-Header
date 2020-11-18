@@ -19,11 +19,13 @@
     NSArray *_movieLevelMetadata;
     BOOL _sendPreviewIOSurface;
     BOOL _irisRecording;
+    BOOL _debugMetadataSidecarFileEnabled;
     int _bravoCameraSelectionBehavior;
 }
 
 @property (copy, nonatomic) NSDictionary *audioSettings; // @synthesize audioSettings=_audioSettings;
 @property (nonatomic) int bravoCameraSelectionBehavior; // @synthesize bravoCameraSelectionBehavior=_bravoCameraSelectionBehavior;
+@property (nonatomic) BOOL debugMetadataSidecarFileEnabled; // @synthesize debugMetadataSidecarFileEnabled=_debugMetadataSidecarFileEnabled;
 @property (nonatomic, getter=isIrisRecording) BOOL irisRecording; // @synthesize irisRecording=_irisRecording;
 @property (nonatomic) CDStruct_1b6d18a9 movieFragmentInterval; // @synthesize movieFragmentInterval=_movieFragmentInterval;
 @property (copy, nonatomic) NSArray *movieLevelMetadata; // @synthesize movieLevelMetadata=_movieLevelMetadata;

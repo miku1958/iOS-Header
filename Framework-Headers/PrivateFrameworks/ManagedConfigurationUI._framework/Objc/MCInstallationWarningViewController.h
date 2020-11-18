@@ -11,6 +11,7 @@
 @class NSArray, NSString;
 @protocol MCInstallationWarningDelegate;
 
+__attribute__((visibility("hidden")))
 @interface MCInstallationWarningViewController : UITableViewController <PSStateRestoration>
 {
     BOOL _isMDMInstall;

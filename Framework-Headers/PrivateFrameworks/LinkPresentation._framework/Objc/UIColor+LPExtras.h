@@ -10,8 +10,10 @@
 #import <LinkPresentation/LPHTMLAttributeText-Protocol.h>
 
 @interface UIColor (LPExtras) <LPCSSText, LPHTMLAttributeText>
++ (id)_lp_colorNamed:(id)arg1;
 - (id)_lp_CSSText;
 - (id)_lp_CSSTextHexFormat;
+- (id)_lp_CSSTextWithAlternatePropertiesForName:(id)arg1;
 - (id)_lp_HTMLAttributeText;
 @end
 

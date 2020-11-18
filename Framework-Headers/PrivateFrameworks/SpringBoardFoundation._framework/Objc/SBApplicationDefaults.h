@@ -14,6 +14,7 @@
 @property (readonly, nonatomic) BOOL forcesMedusaAdoption; // @dynamic forcesMedusaAdoption;
 @property (readonly, nonatomic) BOOL ignoresDeclaredNetworkUsage; // @dynamic ignoresDeclaredNetworkUsage;
 @property (readonly, nonatomic) BOOL shouldAllowScreenshotsInLoginWindow; // @dynamic shouldAllowScreenshotsInLoginWindow;
+@property (readonly, nonatomic) BOOL shouldAllowUseOfNonRecapPPT; // @dynamic shouldAllowUseOfNonRecapPPT;
 @property (readonly, nonatomic) BOOL shouldShowInternalApplications; // @dynamic shouldShowInternalApplications;
 @property (readonly, nonatomic) BOOL shouldShowNonDefaultSystemApplications; // @dynamic shouldShowNonDefaultSystemApplications;
 

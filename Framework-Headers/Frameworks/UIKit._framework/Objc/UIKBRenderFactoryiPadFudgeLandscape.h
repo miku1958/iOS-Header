@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryiPadFudge.h>
+#import <UIKitCore/UIKBRenderFactoryiPadFudge.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryiPadFudgeLandscape : UIKBRenderFactoryiPadFudge
@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (double)_row4ControlSegmentWidthRight;
-- (id)capslockKeyImageName;
 - (double)controlKeyFontSize;
 - (struct CGSize)defaultVariantGeometrySize;
 - (double)deleteKeyFontSize;
@@ -35,13 +34,11 @@ __attribute__((visibility("hidden")))
 - (id)messagesWriteboardKeyImageName;
 - (double)moreKeyFontSize;
 - (struct CGPoint)moreKeyOffset;
-- (id)returnKeyImageName;
 - (id)shiftKeyImageName;
 - (id)shiftLockImageName;
 - (id)shiftOnKeyImageName;
 - (double)spaceKeyFontSize;
 - (double)stringKeyFontSize:(unsigned long long)arg1;
-- (id)tabKeyImageName;
 
 @end
 

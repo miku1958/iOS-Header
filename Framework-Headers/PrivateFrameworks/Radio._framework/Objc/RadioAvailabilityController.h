@@ -34,6 +34,7 @@
 - (void).cxx_destruct;
 - (BOOL)_calculateRadioRestricted;
 - (id)_currentStoreFrontIdentifier;
+- (void)_currentStoreFrontIdentifierWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_reloadRadioBagAvailabilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_reloadRadioRestriction;
 - (void)_updateRadioAvailabilityAllowingNotifications:(BOOL)arg1;

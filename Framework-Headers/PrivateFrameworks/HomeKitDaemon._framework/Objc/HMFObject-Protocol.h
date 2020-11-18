@@ -6,12 +6,16 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @protocol HMFObject <NSObject>
 
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
+@property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *shortDescription;
 
++ (NSString *)shortDescription;
 
 @optional
 @end

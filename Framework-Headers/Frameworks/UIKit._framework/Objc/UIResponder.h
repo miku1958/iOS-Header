@@ -4,18 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIResponderStandardEditActions-Protocol.h>
-#import <UIKit/UITextInputAdditions-Protocol.h>
-#import <UIKit/UITextInput_Internal-Protocol.h>
-#import <UIKit/_UIStateRestorationContinuation-Protocol.h>
-#import <UIKit/_UITouchable-Protocol.h>
+#import <UIKitCore/UIResponderStandardEditActions-Protocol.h>
+#import <UIKitCore/UITextInputAdditions-Protocol.h>
+#import <UIKitCore/UITextInput_Internal-Protocol.h>
+#import <UIKitCore/UIUserActivityRestoring-Protocol.h>
+#import <UIKitCore/_UIStateRestorationContinuation-Protocol.h>
+#import <UIKitCore/_UITouchable-Protocol.h>
 
 @class NSArray, NSString, NSUndoManager, NSUserActivity, UIInputViewController, UITextInputAssistantItem, UITextInputMode, UIView;
 @protocol UITextInput, UITextInputPrivate;
 
-@interface UIResponder : NSObject <UITextInput_Internal, UITextInputAdditions, _UIStateRestorationContinuation, _UITouchable, UIResponderStandardEditActions>
+@interface UIResponder : NSObject <UIUserActivityRestoring, _UIStateRestorationContinuation, UITextInput_Internal, UITextInputAdditions, _UITouchable, UIResponderStandardEditActions>
 {
     unsigned int _hasOverrideClient:1;
     unsigned int _hasOverrideHost:1;
@@ -30,9 +31,12 @@
 @property (readonly, nonatomic) BOOL canResignFirstResponder;
 @property (readonly, nonatomic, getter=_caretRect) struct CGRect caretRect;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isEditable) BOOL editable;
 @property (readonly, nonatomic, getter=isEditing) BOOL editing;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIView *inputAccessoryView;
 @property (readonly, nonatomic) UIInputViewController *inputAccessoryViewController;
@@ -43,6 +47,7 @@
 @property (readonly, nonatomic) NSArray *keyCommands;
 @property (readonly, nonatomic) UIResponder *nextResponder;
 @property (copy, nonatomic) NSString *restorationIdentifier;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *textInputContextIdentifier;
 @property (readonly, nonatomic) UITextInputMode *textInputMode;
@@ -59,6 +64,10 @@
 + (void)_updateStateRestorationIdentifierMap;
 + (void)clearTextInputContextIdentifier:(id)arg1;
 + (id)objectWithRestorationIdentifierPath:(id)arg1;
+- (void)__createInteractionAssistantIfNecessaryWithSet:(long long)arg1;
+- (void)__tearDownInteractionAssistantIfNecessary;
+- (id)__textInteractionFromAssistant;
+- (void)_addShortcut:(id)arg1;
 - (id)_asTextSelection;
 - (void)_becomeFirstResponder;
 - (void)_becomeFirstResponderAndMakeVisible;
@@ -89,6 +98,7 @@
 - (id)_currentOverrideClient;
 - (id)_currentOverrideHost;
 - (id)_deepestUnambiguousResponder;
+- (void)_define:(id)arg1;
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
 - (void)_deleteByWord;
 - (void)_deleteForwardAndNotify:(BOOL)arg1;
@@ -113,7 +123,7 @@
 - (id)_fontForCaretSelection;
 - (id)_fullRange;
 - (id)_fullText;
-- (void)_gatherKeyResponders:(id)arg1 indexOfSelf:(unsigned long long *)arg2 visibilityTest:(CDUnknownBlockType)arg3 passingTest:(CDUnknownBlockType)arg4;
+- (void)_gatherKeyResponders:(id)arg1 indexOfSelf:(unsigned long long *)arg2 visibilityTest:(CDUnknownBlockType)arg3 passingTest:(CDUnknownBlockType)arg4 subviewsTest:(CDUnknownBlockType)arg5;
 - (void)_handleGameControllerEvent:(id)arg1;
 - (void)_handleKeyEvent:(struct __GSEvent *)arg1;
 - (void)_handleKeyUIEvent:(id)arg1;
@@ -133,6 +143,7 @@
 - (id)_keyInput;
 - (id)_keyboardResponder;
 - (struct CGRect)_lastRectForRange:(id)arg1;
+- (void)_lookup:(id)arg1;
 - (void)_moveCurrentSelection:(int)arg1;
 - (id)_moveDown:(BOOL)arg1 withHistory:(id)arg2;
 - (id)_moveLeft:(BOOL)arg1 withHistory:(id)arg2;
@@ -167,6 +178,7 @@
 - (id)_primaryContentResponder;
 - (BOOL)_range:(id)arg1 containsRange:(id)arg2;
 - (BOOL)_range:(id)arg1 intersectsRange:(id)arg2;
+- (id)_rangeFromCurrentRangeWithDelta:(struct _NSRange)arg1;
 - (id)_rangeOfEnclosingWord:(id)arg1;
 - (id)_rangeOfLineEnclosingPosition:(id)arg1;
 - (id)_rangeOfParagraphEnclosingPosition:(id)arg1;
@@ -200,6 +212,7 @@
 - (BOOL)_selectionAtDocumentStart;
 - (BOOL)_selectionAtWordStart;
 - (struct CGRect)_selectionClipRect;
+- (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)_setCaretSelectionAtEndOfSelection;
 - (void)_setDragDataOwner:(long long)arg1;
 - (void)_setDropDataOwner:(long long)arg1;
@@ -209,15 +222,19 @@
 - (void)_setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)_setSelectedTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (id)_setSelectionRangeWithHistory:(id)arg1;
+- (void)_setSelectionToPosition:(id)arg1;
+- (void)_share:(id)arg1;
 - (BOOL)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(id)arg2 checkAutocorrection:(BOOL)arg3;
 - (BOOL)_shouldRestorationInputViewsOnlyWhenKeepingFirstResponder;
 - (id)_showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 - (id)_showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
+- (id)_showServiceForType:(long long)arg1 withContext:(id)arg2;
 - (BOOL)_supportsBecomeFirstResponderWhenPossible;
 - (void)_tagAsRestorableResponder;
 - (id)_targetCanPerformBlock:(CDUnknownBlockType)arg1;
 - (id)_textColorForCaretSelection;
 - (id)_textRangeFromNSRange:(struct _NSRange)arg1;
+- (id)_textServicesResponderProxy;
 - (void)_unmarkText;
 - (void)_updateSelectionWithTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (id)_userActivity;

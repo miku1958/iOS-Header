@@ -8,21 +8,19 @@
 
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemon-Protocol.h>
+#import <HealthDaemon/HDTaskServerClassProvider-Protocol.h>
 #import <HealthDaemon/HDXPCListenerDelegate-Protocol.h>
 
-@class HDAchievementAssetManager, HDAchievementDefinitionAlertManager, HDAnalyticsSubmissionCoordinator, HDAppLauncher, HDBackgroundTaskScheduler, HDCloudSyncCoordinator, HDCoachingDiagnosticManager, HDCompanionAchievementManager, HDCompanionWorkoutCreditManager, HDContentProtectionManager, HDDemoDataGenerator, HDDynamicAchievementDefinitionDataStore, HDFitnessAppBadgeManager, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDProfileManager, HDQueryManager, HDXPCListener, NSDictionary, NSMutableArray, NSMutableSet, NSString, NSURL, _HKBehavior;
-@protocol HDAchievementDefinitionAlertNotifier, HDAchievementDefinitionAlertSuppressor, HDAchievementEvaluationDelegate, HDDaemonTester, HDNanoAlertSuppressionService, OS_dispatch_queue;
+@class HDAnalyticsSubmissionCoordinator, HDBackgroundTaskScheduler, HDCloudSyncCoordinator, HDCoachingDiagnosticManager, HDCompanionWorkoutCreditManager, HDContentProtectionManager, HDDemoDataGenerator, HDDevicePowerMonitor, HDFeatureAvailabilityAssetManager, HDFitnessAppBadgeManager, HDMaintenanceWorkCoordinator, HDPluginManager, HDPrimaryProfile, HDProcessStateManager, HDProfileManager, HDQueryManager, HDTaskServerRegistry, HDWorkoutPluginDaemonExtension, HDXPCListener, NSDictionary, NSMutableArray, NSMutableSet, NSString, NSURL, _HKBehavior;
+@protocol HDDaemonTester, HDNanoAlertSuppressionService, OS_dispatch_queue;
 
-@interface HDDaemon : NSObject <HDDiagnosticObject, HDXPCListenerDelegate, HDHealthDaemon>
+@interface HDDaemon : NSObject <HDTaskServerClassProvider, HDDiagnosticObject, HDXPCListenerDelegate, HDHealthDaemon>
 {
     _HKBehavior *_behavior;
     NSString *_healthDirectoryPath;
     NSMutableSet *_endpoints;
     NSObject<OS_dispatch_queue> *_mainQueue;
     int _languageChangeNotifyToken;
-    HDAchievementDefinitionAlertManager *_achievementDefinitionAlertManager;
-    id<HDAchievementDefinitionAlertNotifier> _achievementDefinitionAlertNotifier;
-    id<HDAchievementDefinitionAlertSuppressor> _achievementDefinitionAlertSuppressor;
     HDBackgroundTaskScheduler *_backgroundTaskScheduler;
     HDContentProtectionManager *_contentProtectionManager;
     HDCloudSyncCoordinator *_cloudSyncCoordinator;
@@ -30,7 +28,6 @@
     HDPluginManager *_pluginManager;
     HDProcessStateManager *_processStateManager;
     HDProfileManager *_profileManager;
-    HDDynamicAchievementDefinitionDataStore *_dynamicAchievementDefinitionStore;
     HDPrimaryProfile *_primaryProfile;
     struct MGNotificationTokenStruct *_deviceNameChangesToken;
     NSMutableArray *_daemonLaunchObservers;
@@ -39,41 +36,37 @@
     NSDictionary *_daemonExtensionsByIdentifier;
     NSString *_medicalIDDirectoryPath;
     HDAnalyticsSubmissionCoordinator *_analyticsSubmissionCoordinator;
-    HDAchievementAssetManager *_achievementAssetManager;
-    HDCompanionAchievementManager *_companionAchievementManager;
     id<HDNanoAlertSuppressionService> _alertSuppressionService;
-    HDDynamicAchievementDefinitionDataStore *_dynamicAchievementDefinitionDataStore;
     HDCoachingDiagnosticManager *_coachingDiagnosticManager;
     HDCompanionWorkoutCreditManager *_companionWorkoutCreditManager;
+    HDFeatureAvailabilityAssetManager *_featureAvailabilityAssetManager;
     HDFitnessAppBadgeManager *_fitnessAppBadgeManager;
+    HDMaintenanceWorkCoordinator *_maintenanceWorkCoordinator;
     HDQueryManager *_queryManager;
-    id<HDAchievementEvaluationDelegate> _achievementEvaluationDelegate;
     HDXPCListener *_serviceListener;
-    HDAppLauncher *_appLauncher;
+    HDTaskServerRegistry *_taskServerRegistry;
+    HDDevicePowerMonitor *_devicePowerMonitor;
     id<HDDaemonTester> _daemonTester;
 }
 
-@property (strong, nonatomic) HDAchievementAssetManager *achievementAssetManager; // @synthesize achievementAssetManager=_achievementAssetManager;
-@property (strong, nonatomic) HDAchievementDefinitionAlertManager *achievementDefinitionAlertManager; // @synthesize achievementDefinitionAlertManager=_achievementDefinitionAlertManager;
-@property (weak, nonatomic) id<HDAchievementEvaluationDelegate> achievementEvaluationDelegate; // @synthesize achievementEvaluationDelegate=_achievementEvaluationDelegate;
 @property (strong, nonatomic) id<HDNanoAlertSuppressionService> alertSuppressionService; // @synthesize alertSuppressionService=_alertSuppressionService;
 @property (strong, nonatomic) HDAnalyticsSubmissionCoordinator *analyticsSubmissionCoordinator; // @synthesize analyticsSubmissionCoordinator=_analyticsSubmissionCoordinator;
-@property (readonly, nonatomic) HDAppLauncher *appLauncher; // @synthesize appLauncher=_appLauncher;
 @property (readonly) HDBackgroundTaskScheduler *backgroundTaskScheduler;
 @property (readonly) _HKBehavior *behavior;
 @property (readonly, nonatomic) HDCloudSyncCoordinator *cloudSyncCoordinator; // @synthesize cloudSyncCoordinator=_cloudSyncCoordinator;
 @property (readonly, nonatomic) HDCoachingDiagnosticManager *coachingDiagnosticManager; // @synthesize coachingDiagnosticManager=_coachingDiagnosticManager;
-@property (strong, nonatomic) HDCompanionAchievementManager *companionAchievementManager; // @synthesize companionAchievementManager=_companionAchievementManager;
 @property (readonly, nonatomic) HDCompanionWorkoutCreditManager *companionWorkoutCreditManager; // @synthesize companionWorkoutCreditManager=_companionWorkoutCreditManager;
 @property (readonly, nonatomic) HDContentProtectionManager *contentProtectionManager;
 @property (weak, nonatomic) id<HDDaemonTester> daemonTester; // @synthesize daemonTester=_daemonTester;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) HDDynamicAchievementDefinitionDataStore *dynamicAchievementDefinitionDataStore; // @synthesize dynamicAchievementDefinitionDataStore=_dynamicAchievementDefinitionDataStore;
+@property (readonly, nonatomic) HDDevicePowerMonitor *devicePowerMonitor; // @synthesize devicePowerMonitor=_devicePowerMonitor;
+@property (readonly, nonatomic) HDFeatureAvailabilityAssetManager *featureAvailabilityAssetManager; // @synthesize featureAvailabilityAssetManager=_featureAvailabilityAssetManager;
 @property (readonly, nonatomic) HDFitnessAppBadgeManager *fitnessAppBadgeManager; // @synthesize fitnessAppBadgeManager=_fitnessAppBadgeManager;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *healthDirectoryPath;
 @property (readonly, copy) NSURL *healthDirectoryURL;
+@property (readonly, nonatomic) HDMaintenanceWorkCoordinator *maintenanceWorkCoordinator; // @synthesize maintenanceWorkCoordinator=_maintenanceWorkCoordinator;
 @property (readonly, copy) NSString *medicalIDDirectoryPath; // @synthesize medicalIDDirectoryPath=_medicalIDDirectoryPath;
 @property (readonly) HDPluginManager *pluginManager;
 @property (readonly, nonatomic) HDPrimaryProfile *primaryProfile; // @synthesize primaryProfile=_primaryProfile;
@@ -82,10 +75,13 @@
 @property (readonly, nonatomic) HDQueryManager *queryManager; // @synthesize queryManager=_queryManager;
 @property (readonly, nonatomic) HDXPCListener *serviceListener; // @synthesize serviceListener=_serviceListener;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) HDTaskServerRegistry *taskServerRegistry; // @synthesize taskServerRegistry=_taskServerRegistry;
+@property (readonly, nonatomic) HDWorkoutPluginDaemonExtension *workoutPluginExtension;
 
 - (void).cxx_destruct;
 - (id)IDSServiceWithIdentifier:(id)arg1;
 - (id)_bundleIdentifiersToTerminateAfterObliteration;
+- (void)_handleLaunchServicesEvent:(id)arg1 name:(id)arg2;
 - (void)_handleSigterm;
 - (void)_localeOrLanguageChanged:(id)arg1;
 - (BOOL)_motionTrackingAvailable;
@@ -139,9 +135,11 @@
 - (void)registerForDaemonReady:(id)arg1;
 - (void)registerForLaunchNotification:(const char *)arg1;
 - (void)start;
+- (id)taskServerClasses;
 - (void)terminateClean:(BOOL)arg1 reason:(id)arg2;
 - (void)unitTest_didCreateProfile:(id)arg1;
 - (void)unitTest_queryServerDidInit:(id)arg1;
+- (void)unitTest_taskServerDidInit:(id)arg1;
 - (void)unregisterForLaunchNotification:(const char *)arg1;
 
 @end

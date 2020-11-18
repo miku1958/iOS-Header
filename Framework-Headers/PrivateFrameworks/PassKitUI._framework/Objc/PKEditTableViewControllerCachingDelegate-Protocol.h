@@ -6,10 +6,11 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSIndexPath, PKPass;
+@class NSArray, NSIndexPath, NSString, PKPass;
 
 @protocol PKEditTableViewControllerCachingDelegate <NSObject>
 - (PKPass *)passAtIndexPath:(NSIndexPath *)arg1;
+- (BOOL)passExistsWithUniqueIdentifier:(NSString *)arg1;
 - (void)prefetchItemsAtIndexPaths:(NSArray *)arg1;
 @end
 

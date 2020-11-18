@@ -11,7 +11,6 @@
 @interface GEODataRequestState : GEOCapturedState
 {
     NSURL *_URL;
-    NSDictionary *_xpcRequestDictionary;
     GEOApplicationAuditToken *_auditToken;
     NSDictionary *_additionalHTTPHeaders;
     NSData *_bodyData;
@@ -25,7 +24,6 @@
 
 + (const char *)decoderType;
 + (BOOL)supportsSecureCoding;
-+ (id)xpcRequestDictionaryWithXPCRequest:(id)arg1;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableOrderedSet, NSNumber, NSString, NSURL, PLManagedFolder;
 
@@ -47,7 +47,6 @@
 - (id)init;
 - (id)initWithPLManagedFolder:(id)arg1;
 - (id)initWithPersistedDataAtURL:(id)arg1;
-- (id)initWithTitle:(id)arg1 uuid:(id)arg2 cloudGUID:(id)arg3 kind:(id)arg4 childUUIDs:(id)arg5;
 - (id)insertFolderFromDataInManagedObjectContext:(id)arg1;
 - (void)removePersistedData;
 - (void)updateChildrenOrderingInFolder:(id)arg1 includePendingChanges:(BOOL)arg2;

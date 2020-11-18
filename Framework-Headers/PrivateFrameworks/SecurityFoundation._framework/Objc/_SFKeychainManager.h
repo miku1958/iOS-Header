@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class SFCredentialStore;
+@class _SFCredentialStore;
 
 @interface _SFKeychainManager : NSObject
 {
     id _keychainManagerInternal;
 }
 
-@property (readonly) SFCredentialStore *credentialStore;
+@property (readonly) _SFCredentialStore *credentialStore;
 
 + (id)defaultManager;
 - (void).cxx_destruct;

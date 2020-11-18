@@ -18,8 +18,10 @@
 + (BOOL)isValid:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithAudioCodecType:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

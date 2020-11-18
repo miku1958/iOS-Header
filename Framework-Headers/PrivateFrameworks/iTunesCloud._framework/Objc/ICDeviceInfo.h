@@ -34,8 +34,8 @@
 @property (readonly, copy, nonatomic) NSString *buildVersion;
 @property (readonly, copy, nonatomic) NSString *currentLocale;
 @property (readonly, nonatomic) int deviceClass;
+@property (readonly, copy, nonatomic) NSData *deviceFairPlayGUIDData;
 @property (readonly, copy, nonatomic) NSString *deviceGUID;
-@property (readonly, copy, nonatomic) NSData *deviceGUIDData;
 @property (readonly, copy, nonatomic) NSString *deviceModel;
 @property (readonly, nonatomic) unsigned int fairPlayDeviceType;
 @property (readonly, copy, nonatomic) NSString *hardwarePlatform;

@@ -17,6 +17,7 @@
 
 @property (copy, nonatomic) NSString *recordType; // @dynamic recordType;
 
++ (id)new;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithSubscriptionID:(id)arg1;

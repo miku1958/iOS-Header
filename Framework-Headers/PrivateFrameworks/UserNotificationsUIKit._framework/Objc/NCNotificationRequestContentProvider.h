@@ -14,12 +14,15 @@
 @interface NCNotificationRequestContentProvider : NSObject <NCNotificationStaticContentProviding>
 {
     id<NCNotificationStaticContentProvidingDelegate> _delegate;
+    NSArray *_overriddenActions;
     NCNotificationRequest *_notificationRequest;
 }
 
 @property (readonly, copy, nonatomic) CDUnknownBlockType cancelAction;
 @property (readonly, copy, nonatomic) CDUnknownBlockType clearAction;
 @property (readonly, copy, nonatomic) CDUnknownBlockType closeAction;
+@property (readonly, nonatomic) unsigned long long coalesceCount;
+@property (readonly, copy, nonatomic) NSArray *currentActions;
 @property (readonly, copy, nonatomic) NSDate *date;
 @property (readonly, nonatomic, getter=isDateAllDay) BOOL dateAllDay;
 @property (readonly, copy) NSString *debugDescription;
@@ -27,14 +30,16 @@
 @property (weak, nonatomic) id<NCNotificationStaticContentProvidingDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIImage *icon;
+@property (readonly, nonatomic) NSArray *icons;
 @property (readonly, nonatomic) NSArray *interfaceActions;
 @property (readonly, nonatomic) unsigned long long messageNumberOfLines;
 @property (strong, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
+@property (copy, nonatomic) NSArray *overriddenActions; // @synthesize overriddenActions=_overriddenActions;
 @property (readonly, copy, nonatomic) NSString *primarySubtitleText;
 @property (readonly, copy, nonatomic) NSString *primaryText;
 @property (readonly, copy, nonatomic) NSString *secondaryText;
 @property (readonly, nonatomic) BOOL showsTextInputOnAppearance;
+@property (readonly, copy, nonatomic) NSString *summaryText;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UIImage *thumbnail;
 @property (readonly, copy, nonatomic) NSTimeZone *timeZone;

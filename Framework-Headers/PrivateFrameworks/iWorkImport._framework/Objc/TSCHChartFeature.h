@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
 
@@ -36,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)gridOffsetToSeriesForScatterFormat:(int)arg1;
 - (BOOL)hasExplodableSeriesElements;
 - (BOOL)hasFixedFrameRatio;
-- (id)init;
 - (id)initWithChartType:(id)arg1;
 - (id)initialSceneWithChartInfo:(id)arg1 layoutSettings:(CDStruct_b1c75024)arg2;
 - (BOOL)isHorizontal;

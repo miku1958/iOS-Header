@@ -11,6 +11,7 @@
 }
 
 @property (nonatomic) unsigned int clearStencil; // @dynamic clearStencil;
+@property (nonatomic) unsigned long long stencilResolveFilter; // @dynamic stencilResolveFilter;
 
 + (id)alloc;
 + (id)allocWithZone:(struct _NSZone *)arg1;

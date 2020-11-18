@@ -6,22 +6,24 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSObject;
+@class HMFUnfairLock, NSDate, NSObject;
 @protocol HMFTimerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMFTimer : HMFObject
 {
+    HMFUnfairLock *_lock;
+    NSObject<OS_dispatch_queue> *_queue;
     double _timeInterval;
     unsigned long long _leeway;
     BOOL _running;
+    NSDate *_fireDate;
     id<HMFTimerDelegate> _delegate;
-    NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_source> *_timer;
     unsigned long long _options;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (weak) id<HMFTimerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSDate *fireDate; // @synthesize fireDate=_fireDate;
 @property (readonly, nonatomic) unsigned long long leeway; // @synthesize leeway=_leeway;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
@@ -30,21 +32,16 @@
 
 + (id)shortDescription;
 - (void).cxx_destruct;
-- (void)_fire;
-- (void)_handleExpiration;
-- (void)_kick;
-- (void)_resume;
-- (void)_suspend;
+- (void)__fire;
+- (void)__handleExpiration;
+- (id)attributeDescriptions;
 - (void)dealloc;
-- (id)debugDescription;
-- (id)description;
-- (id)descriptionWithPointer:(BOOL)arg1;
 - (void)fire;
 - (id)init;
 - (id)initWithTimeInterval:(double)arg1 options:(unsigned long long)arg2;
 - (void)kick;
 - (void)resume;
-- (id)shortDescription;
+- (void)setFireDate:(id)arg1;
 - (void)suspend;
 
 @end

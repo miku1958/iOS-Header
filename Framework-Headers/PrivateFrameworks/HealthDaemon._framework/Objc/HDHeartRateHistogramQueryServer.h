@@ -13,8 +13,9 @@
     _HKHeartRateHistogramQueryServerConfiguration *_heartRateQueryServerConfiguration;
 }
 
-@property (readonly, nonatomic) _HKHeartRateHistogramQueryServerConfiguration *heartRateQueryServerConfiguration; // @synthesize heartRateQueryServerConfiguration=_heartRateQueryServerConfiguration;
+@property (readonly, copy, nonatomic) _HKHeartRateHistogramQueryServerConfiguration *heartRateQueryServerConfiguration; // @synthesize heartRateQueryServerConfiguration=_heartRateQueryServerConfiguration;
 
++ (Class)queryClass;
 - (void).cxx_destruct;
 - (id)_intervalsForContextStyle:(long long)arg1 errorOut:(id *)arg2;
 - (id)_queue_fetchHistogramDataWithError:(id *)arg1;
@@ -22,7 +23,7 @@
 - (id)_sqlitePredicateForObjectType:(id)arg1 errorOut:(id *)arg2;
 - (BOOL)_walkSampleDatesWithPredicate:(id)arg1 entityClass:(Class)arg2 errorOut:(id *)arg3 handler:(CDUnknownBlockType)arg4;
 - (BOOL)_walkSampleValuesWithPredicate:(id)arg1 errorOut:(id *)arg2 handler:(CDUnknownBlockType)arg3;
-- (id)initWithQueryUUID:(id)arg1 configuration:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
 
 @end
 

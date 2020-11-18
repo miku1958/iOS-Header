@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCaptureDevice, AVWeakReference, NSArray;
 @protocol AVCallbackCancellation;
@@ -14,7 +14,10 @@
     AVCaptureDevice *device;
     NSArray *ports;
     BOOL ready;
-    BOOL authorizedForCamera;
+    BOOL builtInMicrophoneStereoAudioCaptureEnabled;
+    float simulatedAperture;
+    BOOL unifiedAutoExposureDefaultsEnabled;
+    BOOL visionDataDeliveryEnabled;
     AVWeakReference *weakReference;
     id<AVCallbackCancellation> deviceOpenCallbackInvoker;
 }

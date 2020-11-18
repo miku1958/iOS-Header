@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/NSCoding-Protocol.h>
 #import <AVConference/NSCopying-Protocol.h>
@@ -17,6 +17,7 @@
     BOOL cameraSwitching;
     struct CGRect contentsRect;
     BOOL videoSourceScreen;
+    BOOL videoMirrored;
 }
 
 @property (nonatomic) int camera; // @synthesize camera;
@@ -24,6 +25,7 @@
 @property (nonatomic) struct CGRect contentsRect; // @synthesize contentsRect;
 @property (nonatomic) int orientation; // @synthesize orientation;
 @property (nonatomic) struct CGSize ratio; // @synthesize ratio;
+@property (nonatomic) BOOL videoMirrored; // @synthesize videoMirrored;
 @property (nonatomic) BOOL videoSourceScreen; // @synthesize videoSourceScreen;
 
 + (id)cameraUIDForVideoAttributeCamera:(int)arg1;

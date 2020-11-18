@@ -7,6 +7,8 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
+#import <Intents/INImageProxyInjecting-Protocol.h>
+#import <Intents/INKeyImageProducing-Protocol.h>
 #import <Intents/INPersonExport-Protocol.h>
 #import <Intents/INSpeakable-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
@@ -15,7 +17,7 @@
 
 @class INImage, INPersonHandle, NSArray, NSPersonNameComponents, NSString;
 
-@interface INPerson : NSObject <INCacheableContainer, INSpeakable, INPersonExport, NSMutableCopying, NSCopying, NSSecureCoding>
+@interface INPerson : NSObject <INCacheableContainer, INKeyImageProducing, INImageProxyInjecting, INSpeakable, INPersonExport, NSMutableCopying, NSCopying, NSSecureCoding>
 {
     NSString *_displayName;
     NSPersonNameComponents *_nameComponents;
@@ -32,6 +34,7 @@
     NSString *_relationship;
 }
 
+@property (readonly) INImage *_keyImage;
 @property (readonly, copy, nonatomic) NSArray *aliases;
 @property (copy, nonatomic) NSArray *aliases; // @synthesize aliases=_aliases;
 @property (readonly, copy, nonatomic) NSArray *alternativeSiriMatches;
@@ -42,13 +45,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *displayName;
 @property (readonly, copy, nonatomic) NSString *firstName;
 @property (readonly, copy, nonatomic) NSString *fullName;
-@property (copy, nonatomic) NSString *handle; // @dynamic handle;
+@property (copy, nonatomic) NSString *handle;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -68,6 +74,7 @@
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *userIdentifier;
 @property (readonly, copy, nonatomic) NSString *userName;
 @property (readonly, copy, nonatomic) NSString *userURIString;
@@ -77,10 +84,13 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_aliases;
+- (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 - (id)_dictionaryRepresentation;
 - (id)_displayName;
 - (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(BOOL)arg11 alternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13;
+- (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_cacheableObjects;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)_sourceAppBundleIdentifier;
 - (id)_userInput;
@@ -94,6 +104,7 @@
 - (id)initWithHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5;
 - (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6;
 - (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6 aliases:(id)arg7 suggestionType:(long long)arg8;
+- (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6 isMe:(BOOL)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)spokenPhrases;

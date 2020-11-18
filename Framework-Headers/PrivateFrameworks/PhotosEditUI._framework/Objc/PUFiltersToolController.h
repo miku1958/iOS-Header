@@ -11,6 +11,7 @@
 
 @class NSArray, NSMutableDictionary, NSString, PUFiltersToolControllerSpec, UICollectionView, UICollectionViewFlowLayout;
 
+__attribute__((visibility("hidden")))
 @interface PUFiltersToolController : PUPhotoEditToolController <UICollectionViewDelegate, UICollectionViewDataSource>
 {
     BOOL _didPerformInitialScrollToReveal;

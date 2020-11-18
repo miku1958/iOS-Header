@@ -6,13 +6,13 @@
 
 #import <iTunesStore/NSObject-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @protocol ISBiometricSessionDelegate <NSObject>
 
 @optional
 - (void)sender:(id)arg1 didFallbackToPassword:(BOOL)arg2;
 - (void)sender:(id)arg1 shouldContinueTouchIDSession:(BOOL)arg2;
-- (void)sender:(id)arg1 willSendChallenge:(NSString *)arg2 andSignature:(NSString *)arg3 isPayment:(BOOL)arg4;
+- (void)sender:(id)arg1 willSendChallenge:(NSString *)arg2 andSignature:(NSString *)arg3 isExtendedAction:(BOOL)arg4 isPayment:(BOOL)arg5 additionalHeaders:(NSDictionary *)arg6;
 @end
 

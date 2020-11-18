@@ -13,6 +13,8 @@
 
 @property (readonly, nonatomic) BOOL currentProcessCanAccessInitialState;
 @property (weak, nonatomic) id<TUCallProviderManagerDataSourceDelegate> delegate;
+@property (readonly, copy, nonatomic) NSDictionary *localProvidersByIdentifier;
+@property (readonly, copy, nonatomic) NSDictionary *pairedHostDeviceProvidersByIdentifier;
 @property (readonly, copy, nonatomic) NSDictionary *providersByIdentifier;
 
 - (void)blockUntilInitialStateReceived;

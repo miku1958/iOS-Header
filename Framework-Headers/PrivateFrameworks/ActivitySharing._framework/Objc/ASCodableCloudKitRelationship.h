@@ -20,9 +20,13 @@
     NSString *_outgoingHandshakeToken;
     NSString *_preferredReachableAddress;
     NSString *_preferredReachableService;
+    unsigned int _supportedPhoneFeatures;
+    unsigned int _supportedWatchFeatures;
     NSData *_uuid;
     struct {
         unsigned int eventCount:1;
+        unsigned int supportedPhoneFeatures:1;
+        unsigned int supportedWatchFeatures:1;
     } _has;
 }
 
@@ -36,11 +40,15 @@
 @property (readonly, nonatomic) BOOL hasOutgoingHandshakeToken;
 @property (readonly, nonatomic) BOOL hasPreferredReachableAddress;
 @property (readonly, nonatomic) BOOL hasPreferredReachableService;
+@property (nonatomic) BOOL hasSupportedPhoneFeatures;
+@property (nonatomic) BOOL hasSupportedWatchFeatures;
 @property (readonly, nonatomic) BOOL hasUuid;
 @property (strong, nonatomic) NSString *incomingHandshakeToken; // @synthesize incomingHandshakeToken=_incomingHandshakeToken;
 @property (strong, nonatomic) NSString *outgoingHandshakeToken; // @synthesize outgoingHandshakeToken=_outgoingHandshakeToken;
 @property (strong, nonatomic) NSString *preferredReachableAddress; // @synthesize preferredReachableAddress=_preferredReachableAddress;
 @property (strong, nonatomic) NSString *preferredReachableService; // @synthesize preferredReachableService=_preferredReachableService;
+@property (nonatomic) unsigned int supportedPhoneFeatures; // @synthesize supportedPhoneFeatures=_supportedPhoneFeatures;
+@property (nonatomic) unsigned int supportedWatchFeatures; // @synthesize supportedWatchFeatures=_supportedWatchFeatures;
 @property (strong, nonatomic) NSData *uuid; // @synthesize uuid=_uuid;
 
 + (Class)addressesType;

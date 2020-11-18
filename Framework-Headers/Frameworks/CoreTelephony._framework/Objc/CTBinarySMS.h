@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class CTXPCServiceSubscriptionContext, NSData, NSString;
 
 @interface CTBinarySMS : NSObject
 {
@@ -16,8 +16,10 @@
     NSData *_payload;
     NSString *_destinationAddress;
     NSString *_smscAddress;
+    CTXPCServiceSubscriptionContext *_context;
 }
 
+@property (copy, nonatomic) CTXPCServiceSubscriptionContext *context; // @synthesize context=_context;
 @property (copy, nonatomic) NSString *destinationAddress; // @synthesize destinationAddress=_destinationAddress;
 @property (nonatomic) int dstPort; // @synthesize dstPort=_dstPort;
 @property (copy, nonatomic) NSData *payload; // @synthesize payload=_payload;
@@ -25,6 +27,7 @@
 @property (copy, nonatomic) NSString *smscAddress; // @synthesize smscAddress=_smscAddress;
 @property (nonatomic) int srcPort; // @synthesize srcPort=_srcPort;
 
+- (void)dealloc;
 - (id)init;
 - (BOOL)isValid;
 

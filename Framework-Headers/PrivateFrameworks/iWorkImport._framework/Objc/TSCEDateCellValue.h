@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct TSCEDateValue *_dateValue;
 }
 
+- (id)canonicalKeyString;
 - (long long)compareToCellValue:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct TSCEDateValue *)dateValue;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDateValue:(struct TSCEDateValue *)arg1 locale:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCellValue:(id)arg1;
+- (void)setPopulatedCustomFormat:(id)arg1;
 - (struct TSCEValue)tsceValue;
 
 @end

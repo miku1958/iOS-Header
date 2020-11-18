@@ -56,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (BOOL)drawsInOneStep;
 - (int)fillType;
+- (void)flushImageCache;
 - (unsigned long long)hash;
 - (void)i_commonInit;
 - (id)imageDataAtFillSize;
@@ -63,7 +64,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithImageData:(id)arg1 technique:(int)arg2 tintColor:(id)arg3 size:(struct CGSize)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isOpaque;
-- (SEL)mapThemeAssetSelector;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

@@ -9,8 +9,7 @@
 @protocol KNAnimationPluginContext;
 
 @protocol KNBuildOpenGLAnimator <KNAnimationPluginFrameRendering>
-- (struct CGRect)frameOfEffectWithFrame:(struct CGRect)arg1 context:(id<KNAnimationPluginContext>)arg2;
-- (void)updateAnimationFrame:(struct CGRect)arg1;
+- (struct CGRect)frameOfEffectWithContext:(id<KNAnimationPluginContext>)arg1;
 
 @optional
 + (BOOL)requiresSingleTexturePerStage;

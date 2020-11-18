@@ -18,6 +18,7 @@
 - (id)createDocumentFragmentWithText:(id)arg1;
 - (id)createElement:(id)arg1;
 - (id)createTextNode:(id)arg1;
+- (id)parserYieldToken;
 
 @end
 

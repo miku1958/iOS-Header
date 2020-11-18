@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)saveToArchiver:(id)arg1;
 - (BOOL)supportsAttachedComments;
 - (id)textualEquivalent;
+- (BOOL)wantsPositionFixedWhenCopying;
 
 @end
 

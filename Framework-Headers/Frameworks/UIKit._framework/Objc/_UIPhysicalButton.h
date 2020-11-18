@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPress.h>
+#import <UIKitCore/UIPress.h>
 
-#import <UIKit/_UIResponderForwardable-Protocol.h>
+#import <UIKitCore/_UIResponderForwardable-Protocol.h>
 
 @class NSString, UIResponder, UIWindow;
 

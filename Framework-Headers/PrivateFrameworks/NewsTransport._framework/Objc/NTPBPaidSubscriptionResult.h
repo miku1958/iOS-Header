@@ -17,6 +17,7 @@
     NSString *_campaignId;
     NSString *_campaignType;
     NSString *_creativeId;
+    int _groupType;
     NSString *_iadQtoken;
     int _paidSubscriptionConversionPointType;
     int _parentFeedType;
@@ -28,6 +29,7 @@
     BOOL _sawSubscriptionSheet;
     BOOL _subscriptionOnlyArticlePreview;
     struct {
+        unsigned int groupType:1;
         unsigned int paidSubscriptionConversionPointType:1;
         unsigned int parentFeedType:1;
         unsigned int resultType:1;
@@ -43,12 +45,14 @@
 @property (strong, nonatomic) NSString *campaignId; // @synthesize campaignId=_campaignId;
 @property (strong, nonatomic) NSString *campaignType; // @synthesize campaignType=_campaignType;
 @property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
+@property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (nonatomic) BOOL hasArrivedFromAd;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
 @property (readonly, nonatomic) BOOL hasCampaignId;
 @property (readonly, nonatomic) BOOL hasCampaignType;
 @property (readonly, nonatomic) BOOL hasCreativeId;
+@property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasIadQtoken;
 @property (nonatomic) BOOL hasPaidSubscriptionConversionPointType;
 @property (nonatomic) BOOL hasParentFeedType;
@@ -69,11 +73,13 @@
 @property (strong, nonatomic) NSData *subscriptionPurchaseSessionId; // @synthesize subscriptionPurchaseSessionId=_subscriptionPurchaseSessionId;
 
 - (void).cxx_destruct;
+- (int)StringAsGroupType:(id)arg1;
 - (int)StringAsPaidSubscriptionConversionPointType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)groupTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

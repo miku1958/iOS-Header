@@ -8,17 +8,17 @@
 
 #import <AppleAccount/NSURLSessionDataDelegate-Protocol.h>
 #import <AppleAccount/NSURLSessionDelegate-Protocol.h>
+#import <AppleAccount/NSURLSessionTaskDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSURLSession;
 @protocol OS_dispatch_queue;
 
-@interface AAURLSession : NSObject <NSURLSessionDelegate, NSURLSessionDataDelegate>
+@interface AAURLSession : NSObject <NSURLSessionDataDelegate, NSURLSessionDelegate, NSURLSessionTaskDelegate>
 {
-    NSURLSession *_urlSession;
-    NSMutableDictionary *_pendingCompletionsByTask;
-    NSMutableDictionary *_receivedDataByTask;
-    NSMutableDictionary *_retryCountByURL;
+    BOOL _requiresSigning;
+    NSURLSession *_session;
     NSObject<OS_dispatch_queue> *_sessionQueue;
+    NSMutableDictionary *_pendingSessionOperations;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,17 +26,21 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)sharedURLSession;
++ (id)sharedSession;
++ (id)sharedSigningSession;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
-- (void)URLSession:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
-- (id)_URLSession;
-- (BOOL)_isRecoverableError:(id)arg1;
-- (BOOL)_unsafe_retryTaskIfPossible:(id)arg1;
-- (void)beginDataTaskWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)beginDataTaskWithURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)_enqueueRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_initRequiringSigning:(BOOL)arg1;
+- (void)_sessionQueue_dequeueTask:(id)arg1 withResponse:(id)arg2 error:(id)arg3;
+- (void)_sessionQueue_enqueueTask:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_sessionQueue_updateTask:(id)arg1 withData:(id)arg2;
+- (id)bodyTaskWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)bodyTaskWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)dataTaskWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)dataTaskWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 
 @end

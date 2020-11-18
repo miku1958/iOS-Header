@@ -42,7 +42,7 @@
 - (BOOL)_isDatePickerCellAtIndexPath:(id)arg1;
 - (BOOL)_isLocationPickerCellAtIndexPath:(id)arg1;
 - (BOOL)_isPeopleValueCellAtIndexPath:(id)arg1;
-- (CDStruct_26e8d939)_regionForLocationCoordinate:(struct CLLocationCoordinate2D)arg1;
+- (CDStruct_88bcc19c)_regionForLocationCoordinate:(struct CLLocationCoordinate2D)arg1;
 - (void)_reloadRowAndRestoreSelectionIfNeededAtIndexPath:(id)arg1;
 - (long long)_sectionForDate;
 - (long long)_sectionForLocation;

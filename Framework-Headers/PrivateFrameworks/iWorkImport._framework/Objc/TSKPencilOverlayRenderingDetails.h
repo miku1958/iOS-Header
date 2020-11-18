@@ -4,28 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableArray, TSUImage;
+@class NSArray, NSMutableArray, PKDrawing, TSPData, TSUBezierPath, TSUImage;
+@protocol TSKPencilAnnotationStorage;
 
 __attribute__((visibility("hidden")))
 @interface TSKPencilOverlayRenderingDetails : NSObject
 {
-    BOOL _isSelected;
-    TSUImage *_rasterizedImage;
-    struct CGPath *_path;
-    NSMutableArray *_mutableUnscaledSelectionRects;
+    BOOL _isSplit;
+    id<TSKPencilAnnotationStorage> _pencilAnnotationStorage;
+    TSUImage *_scaledImage;
+    TSPData *_dataToInvalidateFromAfterDownload;
+    PKDrawing *_subDrawing;
+    TSUBezierPath *_transformedPath;
+    NSMutableArray *_mutableUnscaledSelectionRectangles;
+    struct CGRect _unscaledImageClipRect;
     struct CGRect _unscaledImageFrame;
 }
 
-@property (nonatomic) BOOL isSelected; // @synthesize isSelected=_isSelected;
-@property (strong, nonatomic) NSMutableArray *mutableUnscaledSelectionRects; // @synthesize mutableUnscaledSelectionRects=_mutableUnscaledSelectionRects;
-@property (nonatomic) struct CGPath *path; // @synthesize path=_path;
-@property (readonly, nonatomic) TSUImage *rasterizedImage; // @synthesize rasterizedImage=_rasterizedImage;
+@property (readonly, nonatomic) TSPData *dataToInvalidateFromAfterDownload; // @synthesize dataToInvalidateFromAfterDownload=_dataToInvalidateFromAfterDownload;
+@property (nonatomic) BOOL isSplit; // @synthesize isSplit=_isSplit;
+@property (strong, nonatomic) NSMutableArray *mutableUnscaledSelectionRectangles; // @synthesize mutableUnscaledSelectionRectangles=_mutableUnscaledSelectionRectangles;
+@property (strong, nonatomic) id<TSKPencilAnnotationStorage> pencilAnnotationStorage; // @synthesize pencilAnnotationStorage=_pencilAnnotationStorage;
+@property (readonly, nonatomic) TSUImage *scaledImage; // @synthesize scaledImage=_scaledImage;
+@property (strong, nonatomic) PKDrawing *subDrawing; // @synthesize subDrawing=_subDrawing;
+@property (strong, nonatomic) TSUBezierPath *transformedPath; // @synthesize transformedPath=_transformedPath;
+@property (nonatomic) struct CGRect unscaledImageClipRect; // @synthesize unscaledImageClipRect=_unscaledImageClipRect;
 @property (nonatomic) struct CGRect unscaledImageFrame; // @synthesize unscaledImageFrame=_unscaledImageFrame;
+@property (readonly, nonatomic) NSArray *unscaledSelectionRectangles; // @dynamic unscaledSelectionRectangles;
 
 - (void).cxx_destruct;
-- (id)initWithImage:(id)arg1;
+- (void)addUnscaledSelectionRectangle:(id)arg1;
+- (BOOL)containsPointForHitTesting:(struct CGPoint)arg1;
+- (id)description;
+- (id)initWithPencilAnnotation:(id)arg1 scaledImage:(id)arg2 dataToInvalidateFromAfterDownload:(id)arg3;
 
 @end
 

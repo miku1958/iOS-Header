@@ -8,14 +8,17 @@
 
 #import <TemplateKit/NUIContainerStackViewDelegate-Protocol.h>
 #import <TemplateKit/TLKObservable-Protocol.h>
+#import <TemplateKit/TLKObserver-Protocol.h>
 
-@class NSString, TLKEmojiableVibrantLabel, TLKIconsView, TLKObserver, TLKRichText, TLKRoundedCornerLabels, TLKStarsView, UIFont;
+@class NSString, TLKEmojiableVibrantLabel, TLKIconsView, TLKRichText, TLKRoundedCornerLabels, TLKStarsView, UIFont;
+@protocol TLKObserver;
 
-@interface TLKRichTextField : TLKStackView <TLKObservable, NUIContainerStackViewDelegate>
+@interface TLKRichTextField : TLKStackView <NUIContainerStackViewDelegate, TLKObservable, TLKObserver>
 {
+    BOOL inBatchUpdate;
+    id<TLKObserver> observer;
     TLKRichText *_richText;
     TLKEmojiableVibrantLabel *_textLabel;
-    TLKObserver *_richTextObserver;
     TLKRoundedCornerLabels *_roundedCornerLabels;
     TLKStarsView *_starRatingView;
     TLKIconsView *_iconView;
@@ -26,8 +29,9 @@
 @property (strong) UIFont *font;
 @property (readonly) unsigned long long hash;
 @property (strong) TLKIconsView *iconView; // @synthesize iconView=_iconView;
-@property (strong) TLKRichText *richText; // @synthesize richText=_richText;
-@property (strong) TLKObserver *richTextObserver; // @synthesize richTextObserver=_richTextObserver;
+@property BOOL inBatchUpdate; // @synthesize inBatchUpdate;
+@property (weak) id<TLKObserver> observer; // @synthesize observer;
+@property (strong, nonatomic) TLKRichText *richText; // @synthesize richText=_richText;
 @property (strong) TLKRoundedCornerLabels *roundedCornerLabels; // @synthesize roundedCornerLabels=_roundedCornerLabels;
 @property (strong) TLKStarsView *starRatingView; // @synthesize starRatingView=_starRatingView;
 @property (readonly) Class superclass;
@@ -37,17 +41,16 @@
 - (id)attributedString;
 - (struct UIEdgeInsets)containerStackView:(id)arg1 minimumSpacingAdjecentToArrangedSubview:(id)arg2;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
-- (void)dealloc;
-- (void)disableObserver:(BOOL)arg1;
-- (void)disableUnbatchedUpdates;
 - (id)init;
 - (void)makeTertiary;
-- (id)observableProperties;
+- (void)propertiesDidChange;
 - (void)setStyle:(unsigned long long)arg1;
 - (void)updateIcons:(id)arg1;
 - (void)updateRoundedCornerLabels:(id)arg1;
 - (void)updateStarRating:(id)arg1;
 - (void)updateWithRichText:(id)arg1;
+- (id)viewForFirstBaselineLayout;
+- (id)viewForLastBaselineLayout;
 
 @end
 

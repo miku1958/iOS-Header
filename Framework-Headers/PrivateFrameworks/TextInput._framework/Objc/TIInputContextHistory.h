@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
@@ -23,19 +23,20 @@
 @property (readonly, nonatomic) NSArray *entries; // @synthesize entries=_entries;
 @property (readonly, nonatomic) NSString *mostRecentNonSenderTextEntry;
 @property (readonly, nonatomic) BOOL mostRecentTextEntryIsByMe;
+@property (readonly, nonatomic) NSString *mostRecentTextEntryLogString;
 @property (readonly, nonatomic) NSArray *pendingEntries; // @synthesize pendingEntries=_pendingEntries;
 @property (readonly, nonatomic) NSSet *recipientIdentifiers; // @synthesize recipientIdentifiers=_recipientIdentifiers;
 @property (readonly, nonatomic) NSString *senderIdentifier; // @dynamic senderIdentifier;
 @property (readonly, nonatomic) NSSet *senderIdentifiers; // @synthesize senderIdentifiers=_senderIdentifiers;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_enumerateAllEntriesAsInputContextEntries:(CDUnknownBlockType)arg1;
 - (void)addTextEntry:(id)arg1 timestamp:(id)arg2;
 - (void)addTextEntry:(id)arg1 timestamp:(id)arg2 senderIdentifier:(id)arg3;
 - (void)appendPendingEntriesFromInputContextHistory:(id)arg1;
 - (void)assertCheckpointForCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateAllEntries:(CDUnknownBlockType)arg1;
 - (void)enumeratePendingEntries:(CDUnknownBlockType)arg1;

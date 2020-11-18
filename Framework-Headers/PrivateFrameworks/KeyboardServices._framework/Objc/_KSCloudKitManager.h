@@ -17,10 +17,10 @@
     _KSRequestThrottle *_fetchZoneThrottle;
     BOOL _recordZoneOperationInProgress;
     BOOL _subscriptionOperationInProgress;
-    CKDatabase *_cloudKitDatabase;
     CKRecordZone *_recordZone;
     id<_KSCloudKitManagerDelegate> _delegate;
     CKContainer *_cloudKitContainer;
+    CKDatabase *_cloudKitDatabase;
     CKDatabase *_publicDatabase;
     NSString *_recordZoneKey;
     NSString *_subscriptionKey;
@@ -47,9 +47,10 @@
 - (void)_inconvenientOperation:(id)arg1;
 - (void)_submitFetchRecordsOperation:(id)arg1 withPriority:(unsigned long long)arg2 changeToken:(id)arg3 completionHandler:(CDUnknownBlockType)arg4 retryCount:(unsigned long long)arg5;
 - (void)accountStatusDidChange:(id)arg1;
+- (void)addOperation:(id)arg1;
+- (void)addOperation:(id)arg1 priority:(unsigned long long)arg2;
 - (void)copyFieldsFromRecord:(id)arg1 toRecord:(id)arg2;
 - (void)dealloc;
-- (long long)defaultQualityOfService;
 - (void)fetchPublicRecordsWithNames:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchRecordsWithPriority:(unsigned long long)arg1 changeToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)fetchRecordsWithPriority:(unsigned long long)arg1 changeToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3 retryCount:(unsigned long long)arg4;

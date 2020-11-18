@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/CABehaviorDelegate-Protocol.h>
+#import <UIKitCore/CABehaviorDelegate-Protocol.h>
 
 @class NSArray, NSLayoutManager, NSMutableArray, NSString, NSTextContainer, NSTextStorage, UITextView, UIView;
 

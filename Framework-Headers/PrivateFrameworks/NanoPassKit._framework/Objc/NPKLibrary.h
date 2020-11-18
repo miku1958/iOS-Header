@@ -6,106 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <NanoPassKit/NPKGizmoClientProtocol-Protocol.h>
-
-@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString, NSTimer, NSXPCConnection, PKPaymentPass;
-@protocol OS_dispatch_queue, OS_dispatch_semaphore;
-
-@interface NPKLibrary : NSObject <NPKGizmoClientProtocol>
+@interface NPKLibrary : NSObject
 {
-    NSObject<OS_dispatch_semaphore> *_connectionSemaphore;
-    NSXPCConnection *_xpcConnection;
-    NSDate *_dateOfLastInvalidation;
-    int _invalidationOccurrences;
-    BOOL _disabled;
-    BOOL _noPassesInDaemon;
-    int _updatePassDescriptionsFailureCount;
     BOOL _needsRelevancyInformation;
-    BOOL _updatingPassDescriptions;
-    BOOL _needsUpdatePassDescriptions;
-    BOOL _initialLoadComplete;
-    BOOL _serverHasPasses;
-    BOOL _serverHasPotentiallyRelevantPasses;
-    BOOL _disableCaching;
-    NSArray *_passDescriptions;
-    NSMutableDictionary *_preferredPaymentApplicationsCache;
-    NSMutableDictionary *_passCache;
-    NSObject<OS_dispatch_queue> *_passesQueue;
-    NSObject<OS_dispatch_queue> *_updatePassDescriptionsQueue;
-    NSArray *_lastSeenRelevantPassTuples;
-    NSTimer *_passLibraryChangedCoalescingTimer;
-    NSMutableArray *_workToPerformAfterInitialLoad;
 }
 
-@property (readonly, nonatomic) NSArray *contactlessPaymentPassDescriptions;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL disableCaching; // @synthesize disableCaching=_disableCaching;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *inAppPaymentPassDescriptions;
-@property (nonatomic) BOOL initialLoadComplete; // @synthesize initialLoadComplete=_initialLoadComplete;
-@property (strong, nonatomic) NSArray *lastSeenRelevantPassTuples; // @synthesize lastSeenRelevantPassTuples=_lastSeenRelevantPassTuples;
 @property (nonatomic) BOOL needsRelevancyInformation; // @synthesize needsRelevancyInformation=_needsRelevancyInformation;
-@property (nonatomic) BOOL needsUpdatePassDescriptions; // @synthesize needsUpdatePassDescriptions=_needsUpdatePassDescriptions;
-@property (readonly, nonatomic) NSArray *nfcPassDescriptions;
-@property (readonly, nonatomic) NSArray *nonPaymentPassDescriptions; // @dynamic nonPaymentPassDescriptions;
-@property (strong, nonatomic) NSMutableDictionary *passCache; // @synthesize passCache=_passCache;
-@property (strong, nonatomic) NSArray *passDescriptions; // @synthesize passDescriptions=_passDescriptions;
-@property (strong, nonatomic) NSTimer *passLibraryChangedCoalescingTimer; // @synthesize passLibraryChangedCoalescingTimer=_passLibraryChangedCoalescingTimer;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *passesQueue; // @synthesize passesQueue=_passesQueue;
-@property (readonly, nonatomic) NSArray *paymentPassDescriptions; // @dynamic paymentPassDescriptions;
-@property (readonly, nonatomic) PKPaymentPass *peerPaymentPass;
-@property (strong, nonatomic) NSMutableDictionary *preferredPaymentApplicationsCache; // @synthesize preferredPaymentApplicationsCache=_preferredPaymentApplicationsCache;
-@property (readonly, nonatomic) NSArray *relevantPassTuples;
-@property BOOL serverHasPasses; // @synthesize serverHasPasses=_serverHasPasses;
-@property BOOL serverHasPotentiallyRelevantPasses; // @synthesize serverHasPotentiallyRelevantPasses=_serverHasPotentiallyRelevantPasses;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *updatePassDescriptionsQueue; // @synthesize updatePassDescriptionsQueue=_updatePassDescriptionsQueue;
-@property (nonatomic) BOOL updatingPassDescriptions; // @synthesize updatingPassDescriptions=_updatingPassDescriptions;
-@property (strong, nonatomic) NSMutableArray *workToPerformAfterInitialLoad; // @synthesize workToPerformAfterInitialLoad=_workToPerformAfterInitialLoad;
-@property (readonly) NSXPCConnection *xpcConnection; // @dynamic xpcConnection;
 
 + (id)sharedInstance;
-- (void).cxx_destruct;
-- (id)_descriptionsWithFilter:(CDUnknownBlockType)arg1;
-- (id)_init;
-- (BOOL)_shouldUpdatePassDescriptionsWithHighPriority;
-- (void)_tearDownConnectionBecauseOfInvalidation;
-- (void)_updatePassDescriptions;
-- (void)_updatePassDescriptionsWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_updateRelevantPassIDs;
-- (void)addPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addPassData:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)boostDaemonUntilPassDBAvailable:(CDUnknownBlockType)arg1;
-- (id)cachedPassWithID:(id)arg1;
-- (id)cachedPaymentPassWithDPANIdentifier:(id)arg1;
-- (id)cachedPaymentPasses;
-- (void)dealloc;
-- (void)deletePassWithID:(id)arg1;
-- (void)getDeviceHasAnyPaymentPassesWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getDiffForPassWithID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)getPassWithID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)getPassWithID:(id)arg1 reply:(CDUnknownBlockType)arg2 queue:(id)arg3;
-- (void)getSecureElementIdentifiers:(CDUnknownBlockType)arg1;
-- (void)handleAddedValue:(id)arg1 forPassUniqueID:(id)arg2;
-- (void)handleEndedServiceModeRequest;
-- (void)handlePassLibraryChangedNotification:(id)arg1;
-- (void)handlePaymentTransactions:(id)arg1 forPassUniqueIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)handleRelevancyCheckCompletedNotification:(id)arg1;
-- (void)handleRelevancyPotentialChangedNotification:(id)arg1;
-- (void)handleRelevantPassTuplesChanged:(id)arg1;
-- (void)handleRelevantPassTuplesChangedNotification:(id)arg1;
-- (void)handleValueAddedServiceTransactions:(id)arg1 forPassUniqueIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)init;
-- (void)markAsHavingReceivedLocation;
-- (void)noteWebServiceUpdateNeededWithCompletion:(CDUnknownBlockType)arg1;
-- (void)performWorkAfterFirstLibraryLoad:(CDUnknownBlockType)arg1;
-- (id)preferredPaymentApplicationForPaymentPass:(id)arg1;
-- (void)processTransitAppletState:(id)arg1 forPassUniqueID:(id)arg2;
-- (void)processTransitHistory:(id)arg1 forPaymentApplication:(id)arg2 withPassUniqueIdentifier:(id)arg3 transactionDate:(id)arg4;
-- (void)requestPeerAccountTermsAndConditionsAcceptance;
-- (void)setExpressTransitUniqueID:(id)arg1 applicationIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setPreferredPaymentApplication:(id)arg1 forPaymentPass:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

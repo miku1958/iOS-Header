@@ -6,19 +6,24 @@
 
 #import <WebUI/WBSSiteMetadataManager.h>
 
-@class _SFTouchIconCache;
+@class _SFFaviconProvider, _SFPasswordTouchIconCache, _SFTouchIconCache;
 
 @interface _SFSiteMetadataManager : WBSSiteMetadataManager
 {
+    _SFFaviconProvider *_faviconProvider;
+    _SFPasswordTouchIconCache *_passwordTouchIconCache;
     _SFTouchIconCache *_touchIconCache;
 }
 
+@property (readonly, nonatomic) _SFFaviconProvider *faviconProvider; // @synthesize faviconProvider=_faviconProvider;
+@property (readonly, nonatomic) _SFPasswordTouchIconCache *passwordTouchIconCache; // @synthesize passwordTouchIconCache=_passwordTouchIconCache;
 @property (readonly, nonatomic) _SFTouchIconCache *touchIconCache; // @synthesize touchIconCache=_touchIconCache;
 
 + (void)setSharedSiteMetadataManager:(id)arg1;
++ (void)setSharedSiteMetadataManagerProvider:(id)arg1;
 + (id)sharedSiteMetadataManager;
 - (void).cxx_destruct;
-- (id)initWithInjectedBundleURL:(id)arg1 imageCacheDirectoryURL:(id)arg2 cacheIsReadOnly:(BOOL)arg3;
+- (id)initWithInjectedBundleURL:(id)arg1 imageCacheDirectoryURL:(id)arg2 cacheIsReadOnly:(BOOL)arg3 metadataType:(unsigned long long)arg4;
 - (void)scheduleLowPriorityRequestForBookmarks:(id)arg1;
 
 @end

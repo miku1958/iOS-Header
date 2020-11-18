@@ -8,7 +8,7 @@
 
 #import <MapsSuggestions/MapsSuggestionsSource-Protocol.h>
 
-@class GEOLocationShifter, NSArray, NSObject, NSString, RTRoutineManager;
+@class GEOLocationShifter, MapsSuggestionsLimitedDictionary, MapsSuggestionsNetworkRequester, NSArray, NSObject, NSString, RTRoutineManager;
 @protocol MapsSuggestionsSourceDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface MapsSuggestionsRoutineSource : MapsSuggestionsBaseSource <MapsSuggestionsSource>
@@ -22,6 +22,9 @@
     NSObject<OS_dispatch_source> *_updateTimer;
     BOOL _areFrequentLocationsAvailable;
     GEOLocationShifter *_locationShifter;
+    MapsSuggestionsNetworkRequester *_requester;
+    MapsSuggestionsLimitedDictionary *_mapItemCache;
+    MapsSuggestionsLimitedDictionary *_mapItemCacheOrigin;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -35,22 +38,24 @@
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
 - (BOOL)_addCalendarFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
-- (BOOL)_addFieldsToSuggestionsEntry:(id)arg1 fromMapItem:(id)arg2;
+- (BOOL)_addFieldsToSuggestionsEntry:(id)arg1 fromRTMapItem:(id)arg2;
 - (void)_addLabelForEntry:(id)arg1;
 - (BOOL)_addParkedCarFieldsToSuggestionsEntry:(id)arg1 vehicleEvent:(id)arg2;
 - (BOOL)_addRecentsFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
 - (BOOL)_addResumeRouteFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
 - (int)_convertTransportType:(long long)arg1;
-- (unsigned long long)_convertType:(long long)arg1 source:(id)arg2 typeSource:(long long)arg3;
-- (id)_extractTitleAndSubtitleFromMapItem:(id)arg1 forType:(unsigned long long)arg2;
+- (long long)_convertType:(long long)arg1 source:(id)arg2 typeSource:(long long)arg3;
 - (void)_requestTouristInfoFromRoutineIfNeededForLocation:(id)arg1;
+- (void)_resolveMapItemsAndAddEntries:(struct NSArray *)arg1;
 - (void)_setFrequentLocationsAreAvailable:(BOOL)arg1;
 - (void)_startMonitoringVehicleEvents;
 - (id)_suggestionEntryForPredictedLOI:(id)arg1;
+- (void)_treatPLOIs:(id)arg1 stepName:(id)arg2;
 - (void)_updateSuggestionEntries;
-- (BOOL)canProduceEntriesOfType:(unsigned long long)arg1;
+- (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (void)dealloc;
 - (id)initWithDelegate:(id)arg1;
+- (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
 - (double)updateSuggestionEntries;

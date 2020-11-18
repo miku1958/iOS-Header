@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthDaemon/NSCopying-Protocol.h>
+
 @class NSString, NSUUID;
 
-@interface HDCloudSyncOwnerIdentifier : NSObject
+@interface HDCloudSyncOwnerIdentifier : NSObject <NSCopying>
 {
     NSString *_deviceIdentifier;
     NSUUID *_databaseIdentifier;
@@ -16,12 +18,16 @@
     NSString *_ownerIdentifierString;
 }
 
+@property (readonly, nonatomic) NSString *cloudKitIdentifier;
 @property (readonly, nonatomic) NSString *string;
 
 + (id)_databaseUUIDForProfile:(id)arg1 error:(id *)arg2;
 + (void)ownerIdentifierForSyncContainer:(id)arg1 profile:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
 - (id)initWithDatabaseIdentifer:(id)arg1 deviceIdentifier:(id)arg2 ownerDifferentiator:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

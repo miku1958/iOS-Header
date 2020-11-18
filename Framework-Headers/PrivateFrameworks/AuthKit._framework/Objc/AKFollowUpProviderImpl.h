@@ -19,14 +19,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)sharedFollowUpController;
 - (BOOL)addFollowUpItems:(id)arg1 error:(id *)arg2;
 - (BOOL)clearNotificationsForItem:(id)arg1 error:(id *)arg2;
 - (id)pendingAuthKitFollowUpItems:(id *)arg1;
-- (id)pendingAuthKitFollowUpUniqueIdentifiers:(id *)arg1;
 - (BOOL)removeAllAuthKitFollowUpItems:(id *)arg1;
 - (BOOL)removeFollowUpItems:(id)arg1 error:(id *)arg2;
 - (BOOL)removeFollowUpItemsWithIdentifiers:(id)arg1 error:(id *)arg2;
-- (id)sharedFollowUpController;
 
 @end
 

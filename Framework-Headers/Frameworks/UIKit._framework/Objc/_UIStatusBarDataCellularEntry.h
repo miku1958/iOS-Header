@@ -4,18 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarDataNetworkEntry.h>
+#import <UIKitCore/_UIStatusBarDataNetworkEntry.h>
 
 @class NSString;
 
 @interface _UIStatusBarDataCellularEntry : _UIStatusBarDataNetworkEntry
 {
+    BOOL _callForwardingEnabled;
     BOOL _showsEmergencyOnlyWhenDisconnected;
     long long _type;
     NSString *_string;
     NSString *_crossfadeString;
+    NSString *_badgeString;
 }
 
+@property (copy, nonatomic) NSString *badgeString; // @synthesize badgeString=_badgeString;
+@property (nonatomic) BOOL callForwardingEnabled; // @synthesize callForwardingEnabled=_callForwardingEnabled;
 @property (copy, nonatomic) NSString *crossfadeString; // @synthesize crossfadeString=_crossfadeString;
 @property (nonatomic) BOOL showsEmergencyOnlyWhenDisconnected; // @synthesize showsEmergencyOnlyWhenDisconnected=_showsEmergencyOnlyWhenDisconnected;
 @property (copy, nonatomic) NSString *string; // @synthesize string=_string;

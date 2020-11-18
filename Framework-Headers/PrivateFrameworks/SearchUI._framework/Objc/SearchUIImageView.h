@@ -4,28 +4,42 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImageView.h>
+#import <TemplateKit/TLKImageView.h>
 
-@class SFImage;
+#import <SearchUI/CNAvatarViewDelegate-Protocol.h>
 
-@interface SearchUIImageView : UIImageView
+@class CNAvatarView, NSString, SFImage, SearchUIButton, UIView;
+
+@interface SearchUIImageView : TLKImageView <CNAvatarViewDelegate>
 {
-    unsigned long long _style;
     SFImage *_currentImage;
+    SearchUIButton *_overlayPlayButton;
+    unsigned long long _searchUIStyle;
+    CNAvatarView *_avatarView;
+    UIView *_tintView;
 }
 
+@property (strong) CNAvatarView *avatarView; // @synthesize avatarView=_avatarView;
 @property (strong) SFImage *currentImage; // @synthesize currentImage=_currentImage;
-@property unsigned long long style; // @synthesize style=_style;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong) SearchUIButton *overlayPlayButton; // @synthesize overlayPlayButton=_overlayPlayButton;
+@property unsigned long long searchUIStyle; // @synthesize searchUIStyle=_searchUIStyle;
+@property (readonly) Class superclass;
+@property (strong) UIView *tintView; // @synthesize tintView=_tintView;
 
 + (id)imageViewWithImage:(id)arg1 style:(unsigned long long)arg2;
++ (id)thumbnailForResult:(id)arg1;
 - (void).cxx_destruct;
+- (void)appIconDidChange:(id)arg1;
+- (id)init;
 - (id)initWithStyle:(unsigned long long)arg1;
-- (struct CGSize)intrinsicContentSize;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)layoutSubviews;
+- (id)presentingViewControllerForAvatarView:(id)arg1;
 - (void)updateWithImage:(id)arg1;
 - (void)updateWithImage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)updateWithLoadedImage:(id)arg1 forImage:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)updateWithUIImage:(id)arg1 isTemplate:(BOOL)arg2;
+- (void)updateWithImage:(id)arg1 needsOverlayButton:(BOOL)arg2 preventImageScaling:(BOOL)arg3 useMinimumWidthIfPossible:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)willMoveToSuperview:(id)arg1;
 
 @end

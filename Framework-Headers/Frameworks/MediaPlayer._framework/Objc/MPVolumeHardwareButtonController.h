@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol MPVolumeControllerDataSource;
 
@@ -35,6 +35,8 @@
 - (void)cancelVolumeEvent;
 - (void)decreaseVolume;
 - (void)handleVolumeButtonWithType:(long long)arg1 down:(BOOL)arg2;
+- (void)handleVolumeDownButton;
+- (void)handleVolumeUpButton;
 - (void)increaseVolume;
 
 @end

@@ -18,11 +18,13 @@
 {
     BOOL _enabled;
     BOOL _onDemandEnabled;
+    BOOL _disconnectOnDemandEnabled;
     NSArray *_onDemandRules;
     NEVPNProtocol *_protocol;
     NSArray *_exceptionApps;
 }
 
+@property (nonatomic, getter=isDisconnectOnDemandEnabled) BOOL disconnectOnDemandEnabled; // @synthesize disconnectOnDemandEnabled=_disconnectOnDemandEnabled;
 @property (getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (copy) NSArray *exceptionApps; // @synthesize exceptionApps=_exceptionApps;
 @property (getter=isOnDemandEnabled) BOOL onDemandEnabled; // @synthesize onDemandEnabled=_onDemandEnabled;

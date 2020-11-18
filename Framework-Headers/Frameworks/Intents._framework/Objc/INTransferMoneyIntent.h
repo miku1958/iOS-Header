@@ -25,8 +25,10 @@
 @property (readonly, copy, nonatomic) INDateComponentsRange *transactionScheduledDate;
 
 - (id)_dictionaryRepresentation;
+- (BOOL)_isUserConfirmationRequired;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithFromAccount:(id)arg1 toAccount:(id)arg2 transactionAmount:(id)arg3 transactionScheduledDate:(id)arg4 transactionNote:(id)arg5;

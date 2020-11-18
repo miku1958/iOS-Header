@@ -21,11 +21,13 @@ __attribute__((visibility("hidden")))
 + (id)constraintWithHeightRange:(id)arg1;
 + (id)constraintWithWidthRange:(id)arg1;
 + (id)constraintWithWidthRange:(id)arg1 heightRange:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithWidthRange:(id)arg1 heightRange:(id)arg2;
+- (BOOL)isEqualToSizeConstraint:(id)arg1;
 
 @end
 

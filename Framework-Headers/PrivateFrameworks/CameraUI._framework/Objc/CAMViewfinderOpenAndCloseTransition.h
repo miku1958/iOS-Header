@@ -10,17 +10,20 @@
 
 @interface CAMViewfinderOpenAndCloseTransition : NSObject
 {
+    BOOL _didEnterBackground;
     CAMViewfinderView *__viewfinderView;
     CAMSnapshotView *__snapshotView;
 }
 
 @property (strong, nonatomic, setter=_setSnapshotView:) CAMSnapshotView *_snapshotView; // @synthesize _snapshotView=__snapshotView;
 @property (readonly, weak, nonatomic) CAMViewfinderView *_viewfinderView; // @synthesize _viewfinderView=__viewfinderView;
+@property (nonatomic) BOOL didEnterBackground; // @synthesize didEnterBackground=_didEnterBackground;
 
 - (void).cxx_destruct;
 - (void)_closeViewfinder:(BOOL)arg1 animated:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (id)_existingSnapshotViewCreateIfNecessary:(BOOL)arg1 removedOnCompletion:(BOOL)arg2;
 - (void)closeAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)closeWithoutBlurring;
 - (id)initWithViewfinderView:(id)arg1;
 - (void)openAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 

@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface VCMomentsUtil : NSObject
 {
 }
 
++ (struct OpaqueVTPixelTransferSession *)allocTransferSession;
 + (struct __CVBuffer *)createResizeFrame:(struct __CVBuffer *)arg1 transferSession:(struct OpaqueVTPixelTransferSession *)arg2 bufferPool:(struct __CVPixelBufferPool *)arg3;
 + (BOOL)pixelBufferPool:(struct __CVPixelBufferPool *)arg1 matchesWidth:(int)arg2 height:(int)arg3;
 + (int)setupBufferPool:(struct __CVPixelBufferPool **)arg1 width:(double)arg2 height:(double)arg3;
-+ (struct OpaqueVTPixelTransferSession *)setupTransferSession:(struct OpaqueVTPixelTransferSession *)arg1;
 
 @end
 

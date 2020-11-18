@@ -6,13 +6,13 @@
 
 #import <QuickLook/NSObject-Protocol.h>
 
-@class NSData, NSString, NSURL, UIColor;
-@protocol QLPrintingProtocol;
+@class NSData, NSString, NSURL, NSUUID, UIColor;
+@protocol QLPrintingProtocol, QLRemotePopoverTracker;
 
 @protocol QLPreviewControllerStateProtocol <NSObject>
 - (void)beginInteractiveTransition;
 - (void)currentPreviewItemViewControllerHasUnsavedEdits:(BOOL)arg1;
-- (void)expandContentOfURL:(NSURL *)arg1;
+- (void)expandContentOfItemAtIndex:(unsigned long long)arg1 withUUID:(NSUUID *)arg2;
 - (void)openURLIfAllowed:(NSURL *)arg1;
 - (void)presentAlertControllerForScenario:(long long)arg1;
 - (void)previewCollectionPrefersWhitePointAdaptivityStyle:(long long)arg1;
@@ -21,9 +21,12 @@
 - (void)setCanChangeCurrentPage:(BOOL)arg1;
 - (void)setFullScreen:(BOOL)arg1;
 - (void)setFullscreenBackgroundColor:(UIColor *)arg1;
+- (void)setNavBarCanBeVisible:(BOOL)arg1;
 - (void)setPrinter:(id<QLPrintingProtocol>)arg1;
 - (void)setToolbarCanBeVisible:(BOOL)arg1;
 - (void)showShareSheet;
+- (void)showShareSheetWithPopoverTracker:(id<QLRemotePopoverTracker>)arg1 dismissCompletion:(void (^)(void))arg2;
+- (void)triggerQuickLookDismissal;
 - (void)updateKeyCommands;
 - (void)updateOverlayButtons:(BOOL)arg1;
 - (void)updatePreferredContentSize:(struct CGSize)arg1;

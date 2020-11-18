@@ -20,7 +20,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-- (BOOL)formatTitlesForEntry:(id)arg1 eta:(double)arg2 trafficString:(id)arg3;
+- (BOOL)formatTitlesForEntry:(id)arg1 eta:(id)arg2;
 
 @end
 

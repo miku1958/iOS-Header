@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary, SXDocument, SXImageController, SXMetaData, UIColor;
-@protocol SXFontIndex;
+@protocol SXAutoPlacement, SXFontIndex;
 
 @interface SXDocumentController : NSObject
 {
@@ -18,6 +18,7 @@
     NSMutableDictionary *_componentStyles;
 }
 
+@property (readonly, nonatomic) id<SXAutoPlacement> autoplacement;
 @property (strong, nonatomic) NSMutableDictionary *componentStyles; // @synthesize componentStyles=_componentStyles;
 @property (strong, nonatomic) NSMutableDictionary *componentTextStyles; // @synthesize componentTextStyles=_componentTextStyles;
 @property (readonly, nonatomic) SXDocument *document; // @synthesize document=_document;

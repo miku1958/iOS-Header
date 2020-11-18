@@ -9,12 +9,13 @@
 #import <UserNotificationsUI/_UNNotificationContentExtensionLegacyDelegate-Protocol.h>
 #import <UserNotificationsUI/_UNNotificationExtensionRemoteInterface-Protocol.h>
 
-@class NSString;
+@class NSString, UIScrollViewDelayedTouchesBeganGestureRecognizer;
 @protocol UNNotificationContentExtension, _UNNotificationExtensionHostInterface;
 
 @interface _UNNotificationExtensionRemoteViewController : UIViewController <_UNNotificationContentExtensionLegacyDelegate, _UNNotificationExtensionRemoteInterface>
 {
     struct atomic_flag _invalidationOnceFlag;
+    UIScrollViewDelayedTouchesBeganGestureRecognizer *_touchDelayGestureRecognizer;
     BOOL _didCheckActionResponseDelegate;
     UIViewController<UNNotificationContentExtension> *_extensionViewController;
     id<_UNNotificationExtensionHostInterface> _hostService;
@@ -49,8 +50,11 @@
 - (void)addChildViewController:(id)arg1;
 - (void)beginRequestWithExtensionContext:(id)arg1;
 - (void)dealloc;
+- (void)delayed:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)loadView;
 - (void)notificationContentExtension:(id)arg1 setDismissEnabled:(BOOL)arg2;
+- (void)notificationContentExtensionDefaultAction:(id)arg1;
 - (void)notificationContentExtensionDismiss:(id)arg1;
 - (id)notificationExtensionContext;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
@@ -58,6 +62,7 @@
 - (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;

@@ -16,12 +16,10 @@
 }
 
 @property (readonly) AVOutputDevice *av_OutputDevice;
-@property (readonly, nonatomic) unsigned int deviceType;
-@property (readonly, nonatomic, getter=isGroupable) BOOL groupable;
+@property (readonly, nonatomic) unsigned int deviceSubtype;
 @property (readonly, nonatomic) NSString *modelID;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) void *outputDevice; // @synthesize outputDevice=_outputDevice;
-@property (readonly, nonatomic, getter=isRemoteControllable) BOOL remoteControllable;
 @property (readonly, nonatomic) BOOL supportsWHA;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 

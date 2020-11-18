@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_xpc_object;
 
@@ -13,6 +13,7 @@
     NSObject<OS_xpc_object> *_listener;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)endpoint;
 - (id)init;

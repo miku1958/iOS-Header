@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     UITableView *_tableView;
     NSArray *_privacyFlows;
     NSString *_displayLanguage;
+    unsigned long long _displayDeviceType;
 }
 
 @property (nonatomic, getter=isDarkMode) BOOL darkMode; // @synthesize darkMode=_darkMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property unsigned long long displayDeviceType; // @synthesize displayDeviceType=_displayDeviceType;
 @property (strong) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property (readonly) unsigned long long hash;
 @property (strong) NSArray *privacyFlows; // @synthesize privacyFlows=_privacyFlows;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (strong) UITableView *tableView; // @synthesize tableView=_tableView;
 
 - (void).cxx_destruct;
+- (id)init;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;

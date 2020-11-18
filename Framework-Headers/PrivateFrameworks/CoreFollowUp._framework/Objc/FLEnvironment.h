@@ -18,6 +18,9 @@
 - (BOOL)isUnlocked;
 - (void)setFollowUpExtensionSupportEnabled:(BOOL)arg1;
 - (BOOL)shouldHideAllFollowUps;
+- (id)stressBundleIdentifiers;
+- (BOOL)stressMode;
+- (id)supportedBundleIdentifiers;
 
 @end
 

@@ -10,7 +10,6 @@
 
 @protocol _SFPBTimeZone <NSObject>
 
-@property (readonly, nonatomic) BOOL hasIdentifier;
 @property (copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSData *jsonData;
 

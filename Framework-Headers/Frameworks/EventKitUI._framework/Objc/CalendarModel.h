@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKitUI/CalendarEventLoaderDelegate-Protocol.h>
 
@@ -24,6 +24,7 @@
     id<OccurrenceCacheDataSourceProtocol> _occurrenceCacheFilteredDataSource;
     long long _cachedFakeTodayIndex;
     long long _displayableAccountErrorsCount;
+    BOOL _autoStartNotificationMonitor;
     NSSet *_selectedCalendars;
     NSString *_searchString;
     NSCalendar *_calendar;
@@ -32,6 +33,8 @@
     EKEvent *_selectedOccurrence;
 }
 
+@property (nonatomic) BOOL allowEventLocationPrediction;
+@property (nonatomic) BOOL autoStartNotificationMonitor; // @synthesize autoStartNotificationMonitor=_autoStartNotificationMonitor;
 @property (copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
 @property (readonly, nonatomic) long long displayableAccountErrorsCount;
 @property (readonly, nonatomic) EKEventStore *eventStore; // @synthesize eventStore=_eventStore;
@@ -49,6 +52,7 @@
 - (void)_createOccurrenceCacheDataSources;
 - (id)_dataSourceUsingFilter:(BOOL)arg1;
 - (void)_eventStoreChanged:(id)arg1;
+- (void)_finishedFirstLoad;
 - (void)_invalidateCachedOccurrences;
 - (void)_invalidateOccurrenceCacheDataSources;
 - (void)_localeChanged:(id)arg1;
@@ -72,7 +76,7 @@
 - (id)cachedOccurrenceAtIndexPath:(id)arg1 usingFilter:(BOOL)arg2;
 - (BOOL)cachedOccurrencesAreBeingGenerated;
 - (BOOL)cachedOccurrencesAreLoaded;
-- (void)calendarEventLoader:(id)arg1 occurrencesDidUpdateBetweenStart:(double)arg2 end:(double)arg3;
+- (void)calendarEventLoader:(id)arg1 occurrencesDidUpdateBetweenStart:(double)arg2 end:(double)arg3 wasEmptyLoad:(BOOL)arg4;
 - (id)closestOccurrenceToTomorrowForEventUID:(int)arg1;
 - (long long)countSourcesWithErrors;
 - (id)dateForCachedOccurrencesInSection:(long long)arg1;
@@ -111,8 +115,10 @@
 - (void)setDesiredPaddingDays:(unsigned int)arg1;
 - (void)setMaxCachedDays:(unsigned int)arg1;
 - (void)setPreferredReloadStartDate:(id)arg1 endDate:(id)arg2;
+- (void)simulateFirstLoadFinished;
 - (void)startNotificationMonitor;
 - (void)updateAfterAppResume;
+- (void)updateSelectedDateTimeZone;
 
 @end
 

@@ -14,6 +14,10 @@
 
 @interface SFPunchout : NSObject <SFPunchout, NSSecureCoding, NSCopying>
 {
+    struct {
+        unsigned int isRunnableInBackground:1;
+    } _has;
+    BOOL _isRunnableInBackground;
     NSString *_name;
     NSString *_bundleIdentifier;
     NSString *_label;
@@ -28,6 +32,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isRunnableInBackground; // @synthesize isRunnableInBackground=_isRunnableInBackground;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -42,6 +47,7 @@
 - (BOOL)canOpenURL:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)hasIsRunnableInBackground;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProtobuf:(id)arg1;
 - (id)preferredOpenableURL;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIFocusRegionSearchContext-Protocol.h>
+#import <UIKitCore/_UIFocusRegionSearchContext-Protocol.h>
 
 @class NSArray, NSHashTable, NSMutableArray, NSString, UIFocusSystem, UIScreen, _UIFocusMapSnapshotDebugInfo, _UIFocusRegion;
 @protocol UICoordinateSpace, _UIFocusMapArea, _UIFocusRegionContainer;

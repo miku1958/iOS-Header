@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivityIndicatorView.h>
+#import <UIKitCore/UIActivityIndicatorView.h>
 
-#import <UIKit/_UIStatusBarDisplayable-Protocol.h>
+#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
 
 @class NSString, UIAccessibilityHUDItem;
 
@@ -18,10 +18,10 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property (nonatomic) struct UIEdgeInsets alignmentRectInsets; // @synthesize alignmentRectInsets=_alignmentRectInsets;
-@property (readonly, nonatomic) double baselineOffset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long overriddenVerticalAlignment;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL wantsCrossfade;
 

@@ -16,6 +16,7 @@
 @property (nonatomic) double averageGray;
 @property (nonatomic) double bloomBlurRadius;
 @property (nonatomic) double bloomIntensity;
+@property (nonatomic) unsigned long long bloomIteration;
 @property (nonatomic) double bloomThreshold;
 @property (nonatomic) unsigned long long categoryBitMask;
 @property (nonatomic) double colorFringeIntensity;

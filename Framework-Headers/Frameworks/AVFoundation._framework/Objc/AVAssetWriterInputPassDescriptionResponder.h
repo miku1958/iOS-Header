@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAssetWriterInputPassDescription;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterInputPassDescriptionResponder : NSObject
 {
     NSObject<OS_dispatch_queue> *_callbackQueue;

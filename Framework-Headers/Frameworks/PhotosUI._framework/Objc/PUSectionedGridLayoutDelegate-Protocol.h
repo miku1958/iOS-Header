@@ -6,7 +6,7 @@
 
 #import <PhotosUI/NSObject-Protocol.h>
 
-@class NSIndexPath, NSIndexSet, NSString, PUSectionedGridLayout, PUSectionedGridLayoutInvalidationContext;
+@class NSIndexPath, NSIndexSet, PUSectionedGridLayout, PUSectionedGridLayoutInvalidationContext;
 
 @protocol PUSectionedGridLayoutDelegate <NSObject>
 
@@ -23,7 +23,6 @@
 - (NSIndexSet *)sectionedGridLayout:(PUSectionedGridLayout *)arg1 sectionsForVisualSection:(long long)arg2;
 - (struct CGPoint)sectionedGridLayout:(PUSectionedGridLayout *)arg1 targetContentOffsetForProposedUpdatesContentOffset:(struct CGPoint)arg2;
 - (NSIndexPath *)sectionedGridLayoutAnchorItemForAdjustingContentOffset:(PUSectionedGridLayout *)arg1;
-- (NSString *)sectionedGridLayoutName:(PUSectionedGridLayout *)arg1;
 - (BOOL)sectionedGridLayoutTransitionAutoAdjustContentOffsetEnabled:(PUSectionedGridLayout *)arg1;
 - (void)sectionedGridLayoutWillPrepareLayout:(PUSectionedGridLayout *)arg1;
 @end

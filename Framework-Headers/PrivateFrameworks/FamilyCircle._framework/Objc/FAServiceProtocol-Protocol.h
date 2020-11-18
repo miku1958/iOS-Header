@@ -18,5 +18,6 @@
 - (void)launchiCloudFamilySettings;
 - (void)registerPushToken:(NSData *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(NSError *))arg3;
 - (void)removeFamilyMemberWithDSID:(NSNumber *)arg1 options:(NSDictionary *)arg2 replyBlock:(void (^)(BOOL, NSNumber *, NSError *))arg3;
+- (void)updateFamilyMemberFlagWithDSID:(NSNumber *)arg1 flag:(NSString *)arg2 enabled:(BOOL)arg3 replyBlock:(void (^)(NSError *))arg4;
 @end
 

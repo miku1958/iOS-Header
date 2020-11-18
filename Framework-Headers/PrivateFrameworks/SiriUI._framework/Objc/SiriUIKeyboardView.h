@@ -63,6 +63,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (BOOL)resignFirstResponder;
+- (struct UIEdgeInsets)safeAreaInsets;
 - (void)safeAreaInsetsDidChange;
 - (void)setAudioRoutePickerBluetoothOn:(BOOL)arg1;
 - (void)setShowAudioRoutePicker:(BOOL)arg1;

@@ -9,7 +9,7 @@
 #import <TextInputCore/TILanguageSelectionControllerDelegate-Protocol.h>
 #import <TextInputCore/TIRevisionHistoryDelegate-Protocol.h>
 
-@class NSArray, NSCharacterSet, NSMutableArray, NSMutableString, NSString, TIAutoshiftRegularExpressionLoader, TIEmojiCandidateGenerator, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardFeatureSpecialization, TIKeyboardInputManagerConfig, TIKeyboardInputManagerState, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardState, TILRUDictionary, TILanguageSelectionController, TIRevisionHistory, TITextCheckerExemptions;
+@class NSArray, NSCharacterSet, NSMutableString, NSString, TIAutoshiftRegularExpressionLoader, TIEmojiCandidateGenerator, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardFeatureSpecialization, TIKeyboardInputManagerConfig, TIKeyboardInputManagerState, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardState, TILRUDictionary, TILanguageSelectionController, TIRevisionHistory, TITextCheckerExemptions;
 
 @interface TIKeyboardInputManager : TIKeyboardInputManagerBase <TIRevisionHistoryDelegate, TILanguageSelectionControllerDelegate>
 {
@@ -26,7 +26,6 @@
     TILanguageSelectionController *_languageSelectionController;
     TIEmojiCandidateGenerator *_emojiCandidateGenerator;
     TIInputContextHistory *_synchronizedInputContextHistory;
-    NSMutableArray *_conversationTurns;
     BOOL _wordLearningEnabled;
     BOOL _isEditingWordPrefix;
     TIKeyboardState *_keyboardState;
@@ -96,7 +95,6 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_canStartSentenceAfterString:(id)arg1 maxRecursionDepth:(unsigned long long)arg2;
-- (id)_responseKitResponseCandidatesForString:(id)arg1;
 - (void)acceptCurrentCandidateIfSelectedWithContext:(id)arg1;
 - (void)acceptCurrentCandidateWithContext:(id)arg1;
 - (void)acceptInput;
@@ -184,13 +182,15 @@
 - (struct TITokenID)findTokenIDForWord:(id)arg1 context:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 tokenLookupMode:(unsigned int)arg4;
 - (struct TITokenID)findTokenIDForWord:(id)arg1 context:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 tokenLookupMode:(unsigned int)arg4 surfaceFormPtr:(id *)arg5 hasCaseInsensitiveStaticVariant:(BOOL *)arg6;
 - (id)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withAdditionalPredictions:(id)arg2 withInput:(id)arg3;
-- (id)generateAutocorrectionsWithKeyboardState:(id)arg1;
-- (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withAdditionalPredictions:(id)arg2 withInput:(id)arg3 async:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 candidateHandler:(id)arg3;
 - (id)generateAutofillFormWithKeyboardState:(id)arg1;
 - (void)generateCandidatesWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)generateProactiveAutocompletionsWithDocumentState:(id)arg1;
+- (void)generateCannedResponseCandidatesAsyncForString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)generateOneTimeCodeCandidatesWithKeyboardState:(id)arg1;
 - (id)generateReplacementsForString:(id)arg1 keyLayout:(id)arg2;
 - (RefPtr_9bddf3b2)getDictionary;
+- (id)getTestingStateObject;
 - (id)groupedCandidatesFromCandidates:(id)arg1 usingSortingMethod:(id)arg2;
 - (void)groupedCandidatesFromCandidates:(id)arg1 usingSortingMethod:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)handleAcceptedCandidate:(id)arg1 keyboardState:(id)arg2;
@@ -200,15 +200,15 @@
 - (id)humanReadableTrace;
 - (BOOL)ignoresDeadKeys;
 - (BOOL)inHardwareKeyboardMode;
-- (void)incrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 saveToDifferentialPrivacy:(BOOL)arg5;
+- (void)incrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 saveToDifferentialPrivacy:(int)arg5;
 - (void)incrementUsageTrackingKey:(id)arg1;
 - (void)incrementUsageTrackingKeyForAutocorrectionStatistic:(id)arg1 autocorrectionTypes:(unsigned int)arg2;
 - (void)incrementUsageTrackingKeysForDeleteFromInput;
 - (id)indexTitlesForGroupTitles:(id)arg1 sortingMethod:(id)arg2;
 - (id)indexesOfDuplicatesInCandidates:(id)arg1;
 - (struct TIInputManager *)initImplementation;
-- (id)initWithConfig:(id)arg1;
-- (id)initWithInputMode:(id)arg1;
+- (id)initWithConfig:(id)arg1 keyboardState:(id)arg2;
+- (id)initWithInputMode:(id)arg1 keyboardState:(id)arg2;
 - (unsigned long long)initialCandidateBatchCount;
 - (unsigned long long)initialSelectedIndex;
 - (id)inputContext;
@@ -270,12 +270,13 @@
 - (id)rawInputString;
 - (void)reconcileCandidates:(struct CandidateCollection *)arg1 forTypedString:(struct String *)arg2 withPhraseCandidate:(struct Candidate *)arg3 replacing:(const struct String *)arg4;
 - (void)recordAcceptedAutocorrection:(id)arg1 fromPredictiveInputBar:(BOOL)arg2;
-- (void)recordRejectedAutocorrectionForAcceptedText:(id)arg1;
+- (void)recordRejectedAutocorrectionForAcceptedText:(id)arg1 fromPredictiveInputBar:(BOOL)arg2;
 - (void)recordSuggestedAutocorrectionList:(id)arg1;
 - (void)refreshInputManagerState;
 - (void)registerKeyArea:(struct CGRect)arg1 keyCode:(short)arg2 keyString:(const char *)arg3;
 - (void)registerNegativeEvidence:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 intendedTokenID:(struct TITokenID *)arg5 hint:(int)arg6;
 - (void)releaseDynamicLanguageModel;
+- (void)releaseMRLBuffers;
 - (id)remainingInput;
 - (BOOL)removeSuffixOfInputContext:(id)arg1;
 - (id)replacementForDoubleSpace;
@@ -283,7 +284,6 @@
 - (id)resourceInputModes;
 - (void)resume;
 - (id)revisionListFromAutocorrectionList:(id)arg1 afterAcceptingCandidate:(id)arg2;
-- (id)rewriteMoneyAttributes:(id)arg1;
 - (void)scheduleLinguisticResourceUpdate;
 - (id)searchStringForMarkedText;
 - (struct LanguageModelContext)sentenceContextForInputStem:(id)arg1;

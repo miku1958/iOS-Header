@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSXPCConnection, TIKeyboardInputManagerBase, TIKeyboardInputManagerLoaderSyncHelper;
 
@@ -22,12 +22,13 @@
 @property (strong, nonatomic) TIKeyboardInputManagerBase *mostRecentlyRequested; // @synthesize mostRecentlyRequested=_mostRecentlyRequested;
 
 + (id)sharedLoader;
+- (void).cxx_destruct;
 - (id)activeInputModeIdentifiers;
 - (void)cacheInputManager:(id)arg1;
 - (void)dealloc;
 - (BOOL)hasActiveInputManagers;
 - (id)init;
-- (id)inputManagerForInputMode:(id)arg1 withClass:(Class)arg2;
+- (id)inputManagerForInputMode:(id)arg1 withKeyboardState:(id)arg2 class:(Class)arg3;
 - (void)reduceCacheToSize:(unsigned long long)arg1;
 - (id)resourceInputModes;
 - (void)startSyncHelper;

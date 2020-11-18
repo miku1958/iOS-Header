@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)runBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMomentsMessenger-Protocol.h>
 
@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (void)processRemoteVideoRequest:(id)arg1;
 - (void)processRequest:(id)arg1;
 - (void)registerClient;
+- (void)setFrameRate:(float)arg1;
 - (void)setMomentsDelegate:(id)arg1;
 - (void)setTransportDelegate:(id)arg1;
 - (id)transportDelegate;

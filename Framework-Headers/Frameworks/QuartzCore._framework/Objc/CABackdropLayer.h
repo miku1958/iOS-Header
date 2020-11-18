@@ -11,20 +11,23 @@
 
 @interface CABackdropLayer : CALayer
 {
+    BOOL _disablesOccludedBackdropBlurs;
 }
 
 @property BOOL allowsInPlaceFiltering;
 @property struct CGRect backdropRect;
 @property BOOL captureOnly;
 @property (weak) id<CABackdropLayerDelegate><CALayerDelegate> delegate; // @dynamic delegate;
-@property BOOL disablesOccludedBackdropBlurs;
+@property BOOL disablesOccludedBackdropBlurs; // @synthesize disablesOccludedBackdropBlurs=_disablesOccludedBackdropBlurs;
 @property (getter=isEnabled) BOOL enabled;
 @property (copy) NSString *groupName;
 @property double marginWidth;
+@property BOOL reducesCaptureBitDepth;
 @property double scale;
 @property double statisticsInterval;
 @property (copy) NSString *statisticsType;
 @property BOOL usesGlobalGroupNamespace;
+@property double zoom;
 
 + (BOOL)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (BOOL)_hasRenderLayerSubclass;

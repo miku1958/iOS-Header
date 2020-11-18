@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CIImage *inputImage; // @synthesize inputImage;
 
 + (id)customAttributes;
+- (id)_reduceCrop;
 - (id)offsetAndCrop;
 - (id)outputImage;
 

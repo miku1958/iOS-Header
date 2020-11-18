@@ -18,6 +18,7 @@
     NSUUID *_localParticipantIdentifier;
     NSArray *_remoteParticipantIdentifiers;
     _MSMessageAppContext *_context;
+    NSArray *_draftAssetArchives;
     NSString *_senderAddress;
     NSArray *_recipientAddresses;
     id<MSConversationDelegate> _delegate;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) _MSMessageAppContext *context; // @synthesize context=_context;
 @property (readonly, nonatomic) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property (weak, nonatomic) id<MSConversationDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy, nonatomic) NSArray *draftAssetArchives; // @synthesize draftAssetArchives=_draftAssetArchives;
 @property (readonly, nonatomic) NSData *engramID; // @synthesize engramID=_engramID;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSUUID *localParticipantIdentifier; // @synthesize localParticipantIdentifier=_localParticipantIdentifier;
@@ -37,6 +39,8 @@
 + (id)activeConversation;
 - (void).cxx_destruct;
 - (id)_initWithState:(id)arg1 context:(id)arg2;
+- (void)_insertAssetArchive:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_insertAssetArchive:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_insertAttachment:(id)arg1 adamID:(id)arg2 appName:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_insertAttachment:(id)arg1 withAlternateFilename:(id)arg2 skipShelf:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_insertMessage:(id)arg1 localizedChangeDescription:(id)arg2 skipShelf:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -44,6 +48,8 @@
 - (void)_insertRichLink:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_insertSticker:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_insertText:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_removeAssetArchiveWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_sendAssetArchive:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateWithState:(id)arg1;
 - (id)inputMessagePayload;
 - (void)insertAttachment:(id)arg1 withAlternateFilename:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

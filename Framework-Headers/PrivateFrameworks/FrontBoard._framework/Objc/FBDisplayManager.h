@@ -6,21 +6,32 @@
 
 #import <FrontBoardServices/FBSDisplayMonitor.h>
 
-@class FBSDisplayConfiguration;
+#import <FrontBoard/FBSDisplayMonitorDelegate-Protocol.h>
 
-@interface FBDisplayManager : FBSDisplayMonitor
+@class FBSDisplayConfiguration, NSString;
+@protocol FBDisplayManagerDelegate;
+
+@interface FBDisplayManager : FBSDisplayMonitor <FBSDisplayMonitorDelegate>
 {
     BOOL _mainConnected;
+    id<FBDisplayManagerDelegate> _displayManagerDelegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<FBDisplayManagerDelegate> displayManagerDelegate; // @synthesize displayManagerDelegate=_displayManagerDelegate;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) FBSDisplayConfiguration *mainDisplay;
+@property (readonly) Class superclass;
 
 + (id)mainConfiguration;
 + (id)mainDisplay;
 + (id)mainIdentity;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_init;
 - (void)dealloc;
+- (BOOL)displayMonitor:(id)arg1 shouldConnectDisplay:(id)arg2;
 - (id)init;
 - (void)invalidate;
 - (void)postMainDisplayConnection;

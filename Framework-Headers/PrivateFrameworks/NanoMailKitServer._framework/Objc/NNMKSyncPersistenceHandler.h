@@ -31,6 +31,7 @@
 - (id)addMessagesToResend:(id)arg1 mailbox:(id)arg2 isProtectedData:(BOOL)arg3;
 - (id)addMoreConversationSpecificMessages:(id)arg1 conversationId:(id)arg2 mailbox:(id)arg3 isProtectedData:(BOOL)arg4;
 - (id)addMoreMessages:(id)arg1 mailbox:(id)arg2 isProtectedData:(BOOL)arg3;
+- (id)addStandaloneAccountIdentity:(id)arg1;
 - (id)currentDeviceRegistry;
 - (id)deleteMessagesWithIds:(id)arg1 mailbox:(id)arg2;
 - (id)persistAccounts:(id)arg1;

@@ -71,6 +71,8 @@ __attribute__((visibility("hidden")))
 - (void)positionSketchOverlay:(id)arg1 forAnnotationController:(id)arg2;
 - (struct CGRect)positioningRectForCandidatePicker;
 - (id)quadPointsForCharacterIndexes:(id)arg1 onPageAtIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
+- (void)rotateLeft:(id)arg1;
+- (void)rotateRight:(id)arg1;
 - (BOOL)shouldPlaceFormElementAtPoint:(struct CGPoint)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (BOOL)shouldPlaceProposedFormElementAtRect:(struct CGRect)arg1 onOverlayAtPageIndex:(unsigned long long)arg2 forAnnotationController:(id)arg3;
 - (void)teardown;

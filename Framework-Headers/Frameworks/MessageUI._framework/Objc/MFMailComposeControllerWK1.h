@@ -15,7 +15,8 @@
 - (unsigned long long)_bodyFieldTextContentLength;
 - (void)_bodyTextChanged:(id)arg1;
 - (id)_composeBodyField;
-- (id)_copyMessageDataForActivityContinuation;
+- (id)_copyMessageDataForActivityHandoff;
+- (id)_copyMessagePlainTextForDonation;
 - (id)_createSignatureController;
 - (void)_endBlockingBodyScroll;
 - (struct CGRect)_optimalRectForPresentingPopoverInBodyField;

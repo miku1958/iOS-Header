@@ -26,6 +26,7 @@
 - (void)resetWithDouble3Array:(const MISSING_TYPE **)arg1 count:(unsigned long long)arg2 atTimes:(const double *)arg3 count:(unsigned long long)arg4;
 - (void)resetWithFloat3Array:(const MISSING_TYPE **)arg1 count:(unsigned long long)arg2 atTimes:(const double *)arg3 count:(unsigned long long)arg4;
 - (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2;
+- (void)resetWithUsdAttribute:(const struct UsdAttribute *)arg1 timeScale:(double)arg2 time:(double)arg3;
 - (void)setDouble3Array:(const MISSING_TYPE **)arg1 count:(unsigned long long)arg2 atTime:(double)arg3;
 - (void)setFloat3Array:(const MISSING_TYPE **)arg1 count:(unsigned long long)arg2 atTime:(double)arg3;
 

@@ -19,9 +19,11 @@
 @property (readonly) NSNumber *lastRegisteredAccountIdentifier;
 
 + (id)diskBasedPaymentSheet;
-+ (id)keychainLabelForAccountID:(id)arg1;
 + (id)keychainLabelForAccountID:(id)arg1 purpose:(long long)arg2;
++ (id)keychainLabelForCertWithAccountID:(id)arg1 purpose:(long long)arg2;
++ (id)keychainLabelForKeyWithAccountID:(id)arg1 purpose:(long long)arg2;
 + (id)sharedInstance;
++ (BOOL)shouldUseX509;
 - (void).cxx_destruct;
 - (void)addContextToCache:(id)arg1 withToken:(id)arg2;
 - (long long)biometricAvailabilityForAccountIdentifier:(id)arg1;
@@ -29,6 +31,7 @@
 - (BOOL)canPerformExtendedBiometricActionsForAccountIdentifier:(id)arg1;
 - (void)clearLastRegisteredAccountIdentifier;
 - (id)createAttestationDataForAccountIdentifier:(id)arg1 purpose:(long long)arg2 error:(id *)arg3;
+- (id)createX509CertChainDataForAccountIdentifier:(id)arg1 purpose:(long long)arg2 error:(id *)arg3;
 - (BOOL)deleteKeychainTokensForAccountIdentifier:(id)arg1 error:(id *)arg2;
 - (id)fetchContextFromCacheWithToken:(id)arg1 evict:(BOOL)arg2;
 - (unsigned long long)identityMapCount;
@@ -39,6 +42,7 @@
 - (void)registerAccountIdentifier:(id)arg1;
 - (void)saveIdentityMapForAccountIdentifier:(id)arg1;
 - (id)signData:(id)arg1 context:(id)arg2 error:(id *)arg3;
+- (id)x509CertChainDataForAccountIdentifier:(id)arg1 purpose:(long long)arg2 regenerateCerts:(BOOL)arg3 error:(id *)arg4;
 
 @end
 

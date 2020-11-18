@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIScrollViewDelegate-Protocol.h>
-#import <UIKit/_UIInteractiveHighlighting-Protocol.h>
-#import <UIKit/_UILayoutEngineSuspending-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
+#import <UIKitCore/_UIInteractiveHighlighting-Protocol.h>
+#import <UIKitCore/_UILayoutEngineSuspending-Protocol.h>
 
-@class NSIndexPath, NSString, NSTimer, UIColor, UIControl, UIFocusGuide, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UIStoryboardPreviewingSegueTemplateStorage, UITableViewCellDeleteConfirmationView, UITapGestureRecognizer, UITextField, UIVisualEffect, _UIFloatingContentView, _UITableViewCellOldEditingData, _UITableViewCellSeparatorView;
+@class NSArray, NSIndexPath, NSMutableDictionary, NSString, NSTimer, UIColor, UIControl, UIFocusGuide, UIImage, UIImageView, UILabel, UILongPressGestureRecognizer, UIStoryboardPreviewingSegueTemplateStorage, UITableViewCellDeleteConfirmationView, UITapGestureRecognizer, UITextField, UIVisualEffect, _UIFloatingContentView, _UITableViewCellOldEditingData, _UITableViewCellSeparatorView;
 @protocol UITableConstants, UITable_UITableViewCellDelegate;
 
 @interface UITableViewCell : UIView <UIScrollViewDelegate, _UILayoutEngineSuspending, _UIInteractiveHighlighting, NSCoding, UIGestureRecognizerDelegate>
 {
+    NSMutableDictionary *__editingControlTintColors;
     id<UITable_UITableViewCellDelegate> _tableView;
     id _layoutManager;
     id _target;
@@ -69,6 +70,7 @@
     struct UIEdgeInsets _backgroundInset;
     SEL _returnAction;
     UIColor *_selectionTintColor;
+    NSArray *_selectionEffects;
     UIColor *_accessoryTintColor;
     UIImage *_reorderControlImage;
     UILongPressGestureRecognizer *_longPressGesture;
@@ -144,7 +146,6 @@
         unsigned int skipsLayout:1;
         unsigned int separatorInsetIsRelativeToCellEdges:1;
         unsigned int highlightingInteractively:1;
-        unsigned int shouldHighlightAfterInteraction:1;
         unsigned int userInteractionEnabledBeforeDragging:2;
         unsigned int insetsContentViewsToSafeArea:1;
     } _tableCellFlags;
@@ -252,6 +253,7 @@
 - (id)_editableTextField:(BOOL)arg1;
 - (id)_editingAccessoryView:(BOOL)arg1;
 - (double)_editingButtonOffset;
+- (id)_editingControlTintColorForStyle:(long long)arg1;
 - (struct UIEdgeInsets)_effectiveSafeAreaInsets;
 - (id)_encodableSubviews;
 - (void)_endSwiping:(BOOL)arg1;
@@ -269,8 +271,10 @@
 - (void)_handleSwipeDeleteCancelation:(id)arg1;
 - (BOOL)_hasAccessoryView;
 - (BOOL)_hasEditingAccessoryView;
+- (BOOL)_hidesBottomSeparatorWhenUnselected;
 - (void)_highlightDidEndForInteraction:(id)arg1;
 - (void)_highlightForInteraction:(id)arg1 fractionComplete:(double)arg2 ended:(BOOL)arg3;
+- (BOOL)_highlightsAlongsideDefaultEffect;
 - (struct CGSize)_imageInsetSize;
 - (id)_imageView;
 - (id)_imageView:(BOOL)arg1;
@@ -361,6 +365,7 @@
 - (void)_setDrawsTopShadow:(BOOL)arg1;
 - (void)_setDropAnimationContainerView:(id)arg1;
 - (void)_setEditing:(BOOL)arg1 animated:(BOOL)arg2 cellOrAncestorViewForAnimatedLayout:(id)arg3;
+- (void)_setEditingControlTintColor:(id)arg1 forStyle:(long long)arg2;
 - (void)_setEditingStyle:(long long)arg1;
 - (void)_setFont:(id)arg1 layout:(BOOL)arg2;
 - (void)_setFrame:(struct CGRect)arg1 skipLayout:(BOOL)arg2;

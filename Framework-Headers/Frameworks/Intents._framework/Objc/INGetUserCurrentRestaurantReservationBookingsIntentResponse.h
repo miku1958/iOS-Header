@@ -7,10 +7,11 @@
 #import <Intents/INIntentResponse.h>
 
 #import <Intents/INGetUserCurrentRestaurantReservationBookingsIntentResponseExport-Protocol.h>
+#import <Intents/INImageProxyInjecting-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface INGetUserCurrentRestaurantReservationBookingsIntentResponse : INIntentResponse <INGetUserCurrentRestaurantReservationBookingsIntentResponseExport>
+@interface INGetUserCurrentRestaurantReservationBookingsIntentResponse : INIntentResponse <INImageProxyInjecting, INGetUserCurrentRestaurantReservationBookingsIntentResponseExport>
 {
     NSArray *_userCurrentBookings;
 }
@@ -25,6 +26,9 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
+- (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithBackingStore:(id)arg1;

@@ -13,15 +13,18 @@
 
 @interface BBBulletin : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _hasCriticalIcon;
     BOOL _hasEventDate;
     BOOL _dateIsAllDay;
     BOOL _clearable;
     BOOL _turnsOnDisplay;
     BOOL _wantsFullscreenPresentation;
     BOOL _ignoresQuietMode;
+    BOOL _ignoresDowntime;
     BOOL _expiresOnPublisherDeath;
     BOOL _usesExternalSync;
     BOOL _loading;
+    BOOL _preventAutomaticRemovalFromLockScreen;
     NSString *_sectionID;
     NSSet *_subsectionIDs;
     NSString *_publisherRecordID;
@@ -37,6 +40,8 @@
     BBContent *_content;
     BBContent *_modalAlertContent;
     BBContent *_starkBannerContent;
+    NSString *_summaryArgument;
+    unsigned long long _summaryArgumentCount;
     BBSectionIcon *_icon;
     NSDate *_date;
     NSDate *_endDate;
@@ -62,6 +67,9 @@
     NSString *_parentSectionID;
     NSString *_universalSectionID;
     long long _contentPreviewSetting;
+    long long _lockScreenPriority;
+    long long _backgroundStyle;
+    NSString *_header;
     unsigned long long realertCount_deprecated;
     NSSet *alertSuppressionAppIDs_deprecated;
 }
@@ -78,6 +86,7 @@
 @property (readonly, nonatomic) BOOL allowsAutomaticRemovalFromLockScreen;
 @property (copy, nonatomic) BBAction *alternateAction;
 @property (readonly, nonatomic) NSString *alternateActionLabel;
+@property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, nonatomic) NSString *bannerAccessoryRemoteServiceBundleIdentifier;
 @property (readonly, nonatomic) NSString *bannerAccessoryRemoteViewControllerClassName;
 @property (copy, nonatomic) NSString *bulletinID; // @synthesize bulletinID=_bulletinID;
@@ -103,16 +112,20 @@
 @property (nonatomic) BOOL expiresOnPublisherDeath; // @synthesize expiresOnPublisherDeath=_expiresOnPublisherDeath;
 @property (readonly, nonatomic) NSString *fullAlternateActionLabel;
 @property (readonly, nonatomic) NSString *fullUnlockActionLabel;
+@property (nonatomic) BOOL hasCriticalIcon; // @synthesize hasCriticalIcon=_hasCriticalIcon;
 @property (nonatomic) BOOL hasEventDate; // @synthesize hasEventDate=_hasEventDate;
 @property (nonatomic) BOOL hasPrivateContent; // @dynamic hasPrivateContent;
+@property (copy, nonatomic) NSString *header; // @synthesize header=_header;
 @property (readonly, nonatomic) NSString *hiddenPreviewsBodyPlaceholder;
 @property (readonly, nonatomic) long long iPodOutAlertType;
 @property (strong, nonatomic) BBSectionIcon *icon; // @synthesize icon=_icon;
+@property (nonatomic) BOOL ignoresDowntime; // @synthesize ignoresDowntime=_ignoresDowntime;
 @property (nonatomic) BOOL ignoresQuietMode; // @synthesize ignoresQuietMode=_ignoresQuietMode;
 @property (readonly, nonatomic) BOOL inertWhenLocked;
 @property (copy, nonatomic) NSArray *intentIDs; // @synthesize intentIDs=_intentIDs;
 @property (strong, nonatomic) NSDate *lastInterruptDate; // @synthesize lastInterruptDate=_lastInterruptDate;
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
+@property (nonatomic) long long lockScreenPriority; // @synthesize lockScreenPriority=_lockScreenPriority;
 @property (copy, nonatomic) NSString *message;
 @property (readonly, nonatomic) unsigned long long messageNumberOfLines;
 @property (readonly, nonatomic) NSString *missedBannerDescriptionFormat;
@@ -123,6 +136,7 @@
 @property (readonly, nonatomic) BOOL playsSoundForModify;
 @property (readonly, nonatomic) BOOL preemptsPresentedAlert;
 @property (readonly, nonatomic) BOOL preservesUnlockActionCase;
+@property (nonatomic) BOOL preventAutomaticRemovalFromLockScreen; // @synthesize preventAutomaticRemovalFromLockScreen=_preventAutomaticRemovalFromLockScreen;
 @property (readonly, nonatomic) BOOL preventLock;
 @property (copy, nonatomic) BBAttachmentMetadata *primaryAttachment; // @synthesize primaryAttachment=_primaryAttachment;
 @property (readonly, nonatomic) BOOL prioritizeAtTopOfLockScreen;
@@ -144,6 +158,7 @@
 @property (copy, nonatomic) NSString *sectionID; // @synthesize sectionID=_sectionID;
 @property (readonly, nonatomic) BBSectionIcon *sectionIcon;
 @property (nonatomic) long long sectionSubtype; // @synthesize sectionSubtype=_sectionSubtype;
+@property (readonly, nonatomic) BOOL shouldDismissBulletinWhenClosed;
 @property (readonly, nonatomic) BOOL showsContactPhoto;
 @property (readonly, nonatomic) BOOL showsDateInFloatingLockScreenAlert;
 @property (readonly, nonatomic) BOOL showsSubtitle;
@@ -154,6 +169,9 @@
 @property (copy, nonatomic) NSSet *subsectionIDs; // @synthesize subsectionIDs=_subsectionIDs;
 @property (copy, nonatomic) NSString *subtitle;
 @property (readonly, nonatomic) unsigned long long subtypePriority;
+@property (readonly, nonatomic) NSString *subtypeSummaryFormat;
+@property (copy, nonatomic) NSString *summaryArgument; // @synthesize summaryArgument=_summaryArgument;
+@property (nonatomic) unsigned long long summaryArgumentCount; // @synthesize summaryArgumentCount=_summaryArgumentCount;
 @property (strong, nonatomic) NSMutableDictionary *supplementaryActionsByLayout; // @synthesize supplementaryActionsByLayout=_supplementaryActionsByLayout;
 @property (readonly, nonatomic) BOOL suppressesAlertsWhenAppIsActive;
 @property (readonly, nonatomic) BOOL suppressesMessageForPrivacy;

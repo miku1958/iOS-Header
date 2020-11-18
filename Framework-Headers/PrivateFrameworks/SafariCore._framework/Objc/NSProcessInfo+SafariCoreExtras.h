@@ -11,6 +11,7 @@
 @interface NSProcessInfo (SafariCoreExtras)
 
 @property (readonly, copy, nonatomic) NSString *safari_deviceUDID;
+@property (readonly, nonatomic) BOOL safari_systemSupportsBookmarkDAVMoves;
 
 @end
 

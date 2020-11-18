@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPArtworkResizeUtility, MPNowPlayingContentItem, MPNowPlayingInfoCenterArtworkContext, MSVLRUDictionary, MSVTimer, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 @protocol MPNowPlayingInfoLyricsDelegate, MPNowPlayingPlaybackQueueDataSource, MPNowPlayingPlaybackQueueDelegate, OS_dispatch_queue;
@@ -40,9 +40,11 @@
         void *languageOptions;
         void *lyrics;
     } _callbacks;
+    void *_fallbackActivity;
     void *_playerPath;
     id<MPNowPlayingPlaybackQueueDelegate> _playbackQueueDelegate;
     NSString *_playerID;
+    NSString *_representedApplicationBundleIdentifier;
     NSObject<OS_dispatch_queue> *_dataSourceQueue;
 }
 
@@ -55,6 +57,7 @@
 @property (nonatomic) unsigned long long playbackState;
 @property (readonly, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;
 @property (readonly, nonatomic) void *playerPath; // @synthesize playerPath=_playerPath;
+@property (copy, nonatomic) NSString *representedApplicationBundleIdentifier; // @synthesize representedApplicationBundleIdentifier=_representedApplicationBundleIdentifier;
 @property (readonly, nonatomic) BOOL supportsArtworkCatalogLoading;
 
 + (id)defaultCenter;
@@ -82,10 +85,12 @@
 - (void)_onQueue_registerPlaybackQueueDataSourceCallbacks:(id)arg1;
 - (void)_updatePlayerAudioSessionProperties;
 - (void)becomeActive;
+- (void)becomeActiveSystemFallback;
 - (void)dealloc;
 - (id)init;
 - (id)initWithPlayerID:(id)arg1;
 - (void)invalidatePlaybackQueue;
+- (void)resignActiveSystemFallback;
 
 @end
 

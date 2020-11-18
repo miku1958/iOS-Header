@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSDescriptionProviding-Protocol.h>
 
@@ -32,6 +32,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_addEventQueueLock:(id)arg1;
 - (void)_executeOrPendEvents:(id)arg1 position:(int)arg2;
 - (void)_noteQueueDidDrain;
@@ -45,7 +46,6 @@
 - (BOOL)_shouldProcessEvent:(id)arg1 enqueuedDuringExecutionOfEvent:(id)arg2;
 - (id)acquireLockForReason:(id)arg1;
 - (void)cancelEventsWithName:(id)arg1;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)executeOrInsertEvent:(id)arg1 atPosition:(int)arg2;

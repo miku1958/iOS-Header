@@ -6,11 +6,13 @@
 
 #import <MediaRemote/MRTransportExternalDevice.h>
 
-@class NSObject;
+#import <MediaRemote/RTIInputSystemPayloadDelegate-Protocol.h>
+
+@class NSObject, NSString, RTIInputSystemSourceSession;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface MRTelevisionDevice : MRTransportExternalDevice
+@interface MRTelevisionDevice : MRTransportExternalDevice <RTIInputSystemPayloadDelegate>
 {
     NSObject<OS_dispatch_queue> *_serialQueue;
     BOOL _hiliteMode;
@@ -23,20 +25,30 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_recordingStateCallbackQueue;
     CDUnknownBlockType _textInputCallback;
     NSObject<OS_dispatch_queue> *_textInputCallbackQueue;
+    CDUnknownBlockType _rtiCallback;
+    NSObject<OS_dispatch_queue> *_rtiCallbackQueue;
+    RTIInputSystemSourceSession *_rtiSourceSession;
     CDUnknownBlockType _hiliteModeCallback;
     NSObject<OS_dispatch_queue> *_hiliteModeCallbackQueue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned int gameControllerInputMode; // @synthesize gameControllerInputMode=_gameControllerInputMode;
 @property (copy, nonatomic) CDUnknownBlockType gameControllerInputModeCallback; // @synthesize gameControllerInputModeCallback=_gameControllerInputModeCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *gameControllerInputModeCallbackQueue; // @synthesize gameControllerInputModeCallbackQueue=_gameControllerInputModeCallbackQueue;
 @property (copy, nonatomic) CDUnknownBlockType gameControllerPropertiesCallback; // @synthesize gameControllerPropertiesCallback=_gameControllerPropertiesCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *gameControllerPropertiesCallbackQueue; // @synthesize gameControllerPropertiesCallbackQueue=_gameControllerPropertiesCallbackQueue;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hiliteMode; // @synthesize hiliteMode=_hiliteMode;
 @property (copy, nonatomic) CDUnknownBlockType hiliteModeCallback; // @synthesize hiliteModeCallback=_hiliteModeCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *hiliteModeCallbackQueue; // @synthesize hiliteModeCallbackQueue=_hiliteModeCallbackQueue;
 @property (copy, nonatomic) CDUnknownBlockType recordingStateCallback; // @synthesize recordingStateCallback=_recordingStateCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *recordingStateCallbackQueue; // @synthesize recordingStateCallbackQueue=_recordingStateCallbackQueue;
+@property (copy, nonatomic) CDUnknownBlockType rtiCallback; // @synthesize rtiCallback=_rtiCallback;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *rtiCallbackQueue; // @synthesize rtiCallbackQueue=_rtiCallbackQueue;
+@property (strong, nonatomic) RTIInputSystemSourceSession *rtiSourceSession; // @synthesize rtiSourceSession=_rtiSourceSession;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType textInputCallback; // @synthesize textInputCallback=_textInputCallback;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *textInputCallbackQueue; // @synthesize textInputCallbackQueue=_textInputCallbackQueue;
 
@@ -44,17 +56,21 @@ __attribute__((visibility("hidden")))
 - (void)_callCientHiliteModeCallback;
 - (void)_callClientGameControllerInputModeCallback;
 - (void)_callClientGameControllerPropertiesCallback:(id)arg1 controller:(unsigned long long)arg2;
+- (void)_callClientRTICallback:(id)arg1;
 - (void)_callClientRecordingStateCallback;
 - (void)_callClientTextInputCallback:(id)arg1 type:(unsigned int)arg2;
 - (void)_handleHiliteModeMessage:(id)arg1;
 - (void)_handleKeyboardMessage:(id)arg1;
+- (void)_handleRemoteTextInputMessage:(id)arg1;
 - (void)_sendTextInputMessageWithActionType:(unsigned long long)arg1 text:(id)arg2;
 - (void)clearActiveTextEditingSessionData;
 - (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;
 - (id)currentClientUpdatesConfigMessage;
 - (void)deleteBackwardInActiveTextEditingSession;
 - (void)exitHiliteMode;
+- (void)getRTISessionWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getTextEditingSessionWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handleTextActionPayload:(id)arg1;
 - (id)initWithTransport:(id)arg1;
 - (void)insertTextIntoActiveTextEditingSessionWithText:(id)arg1;
 - (void)processVoiceInputAudioDataForDeviceID:(unsigned int)arg1 withBuffer:(id)arg2 time:(CDStruct_ace97b7a)arg3 gain:(float)arg4;
@@ -69,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)setGameControllerPropertiesCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setHiliteMode:(BOOL)arg1;
 - (void)setHiliteModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
+- (void)setRTICallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setTextEditingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setTextOnActiveTextEditingSessionWithText:(id)arg1;
 - (void)setVoiceRecordingState:(unsigned int)arg1;

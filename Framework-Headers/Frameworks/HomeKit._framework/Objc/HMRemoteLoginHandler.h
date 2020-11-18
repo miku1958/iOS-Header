@@ -10,19 +10,19 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class ACAccount, HMAccessory, HMRemoteLoginAnisetteDataProvider, NSString, NSUUID, _HMContext;
+@class ACAccount, HMAccessory, HMFUnfairLock, HMRemoteLoginAnisetteDataProvider, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
 @interface HMRemoteLoginHandler : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     ACAccount *_loggedInAccount;
     NSString *_currentSessionID;
     NSUUID *_uniqueIdentifier;
     HMRemoteLoginAnisetteDataProvider *_anisetteDataProvider;
+    _HMContext *_context;
     NSUUID *_uuid;
     HMAccessory *_accessory;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    _HMContext *_context;
 }
 
 @property (readonly, weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
@@ -36,7 +36,6 @@
 @property (readonly, nonatomic) ACAccount *loggedInAccount; // @synthesize loggedInAccount=_loggedInAccount;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic, getter=isSessionInProgress) BOOL sessionInProgress;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -55,14 +54,11 @@
 - (void)_proxyLoginWithAuthResults:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queryProxiedDevice:(CDUnknownBlockType)arg1;
 - (void)_signout:(CDUnknownBlockType)arg1;
-- (id)clientQueue;
 - (void)companionLoginWithAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)delegateCaller;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)messageDestination;
-- (id)msgDispatcher;
 - (void)proxyLoginWithAuthResults:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)queryProxiedDevice:(CDUnknownBlockType)arg1;
 - (void)registerForMessages;

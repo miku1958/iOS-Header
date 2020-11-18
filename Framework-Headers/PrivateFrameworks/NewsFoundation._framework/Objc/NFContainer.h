@@ -9,12 +9,11 @@
 #import <NewsFoundation/NFDefinitionContainer-Protocol.h>
 #import <NewsFoundation/NFRegistrationContainer-Protocol.h>
 
-@class NFCallbackStore, NFContainerPool, NSMutableDictionary, NSString;
+@class NFCallbackStore, NFContainerPool, NFProxyResolver, NSMutableDictionary, NSString;
 @protocol NFResolver;
 
 @interface NFContainer : NSObject <NFDefinitionContainer, NFRegistrationContainer>
 {
-    id<NFResolver> _resolver;
     NSMutableDictionary *_definitions;
     NFContainerPool *_pool;
     NFCallbackStore *_callbackStore;
@@ -28,7 +27,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NFContainerPool *pool; // @synthesize pool=_pool;
 @property (strong, nonatomic) NSMutableDictionary *privateContainers; // @synthesize privateContainers=_privateContainers;
-@property (strong, nonatomic) id<NFResolver> resolver; // @synthesize resolver=_resolver;
+@property (readonly, nonatomic) NFProxyResolver *proxyResolver;
+@property (readonly, nonatomic) id<NFResolver> resolver;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

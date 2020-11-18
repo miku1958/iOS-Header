@@ -9,12 +9,12 @@
 #import <NewsToday/FCFeedPersonalizing-Protocol.h>
 
 @class FCKeyValueStore, FCPersonalizationTreatment, NSString;
-@protocol FCTodayPrivateData, FRReadonlyPersonalizationAggregateStore, FRRingBufferContainer;
+@protocol FCReadonlyPersonalizationAggregateStore, FCTodayPrivateData, FRRingBufferContainer;
 
 @interface NTFeedPersonalizer : NSObject <FCFeedPersonalizing>
 {
     FCPersonalizationTreatment *_personalizationTreatment;
-    id<FRReadonlyPersonalizationAggregateStore> _readonlyPersonalizationAggregateStore;
+    id<FCReadonlyPersonalizationAggregateStore> _readonlyPersonalizationAggregateStore;
     double _articleDiversificationSimilarityExpectationStart;
     double _articleDiversificationSimilarityExpectationEnd;
     double _articleDiversificationUniquePublisherExpectationSlope;
@@ -34,7 +34,7 @@
 @property (strong, nonatomic) id<FRRingBufferContainer> globalScoresRingBufferContainer; // @synthesize globalScoresRingBufferContainer=_globalScoresRingBufferContainer;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) FCPersonalizationTreatment *personalizationTreatment; // @synthesize personalizationTreatment=_personalizationTreatment;
-@property (strong, nonatomic) id<FRReadonlyPersonalizationAggregateStore> readonlyPersonalizationAggregateStore; // @synthesize readonlyPersonalizationAggregateStore=_readonlyPersonalizationAggregateStore;
+@property (strong, nonatomic) id<FCReadonlyPersonalizationAggregateStore> readonlyPersonalizationAggregateStore; // @synthesize readonlyPersonalizationAggregateStore=_readonlyPersonalizationAggregateStore;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) id<FCTodayPrivateData> todayData; // @synthesize todayData=_todayData;
 
@@ -51,7 +51,9 @@
 - (id)rankTagIDsDescending:(id)arg1;
 - (id)scoresForTagIDs:(id)arg1;
 - (id)sortArticles:(id)arg1;
+- (id)sortArticles:(id)arg1 configurationSet:(long long)arg2;
 - (id)sortArticles:(id)arg1 options:(long long)arg2;
+- (id)sortArticles:(id)arg1 options:(long long)arg2 configurationSet:(long long)arg3;
 - (unsigned long long)whitelistLevelForTagID:(id)arg1;
 
 @end

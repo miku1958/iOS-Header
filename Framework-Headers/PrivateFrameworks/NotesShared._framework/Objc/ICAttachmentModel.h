@@ -47,6 +47,7 @@
 - (id)additionalIndexableTextContentInNote;
 - (void)attachmentAwakeFromFetch;
 - (void)attachmentDidRefresh:(BOOL)arg1;
+- (void)attachmentIsDeallocating:(id)arg1;
 - (id)attachmentModelType;
 - (void)attachmentWillRefresh:(BOOL)arg1;
 - (void)attachmentWillTurnIntoFault;
@@ -60,6 +61,7 @@
 - (id)fileURLForTypeIdentifier:(id)arg1;
 - (id)generateHardLinkURLIfNecessaryForURL:(id)arg1;
 - (id)generateHardLinkURLIfNecessaryForURL:(id)arg1 withFileName:(id)arg2;
+- (id)generateTemporaryURLWithExtension:(id)arg1;
 - (id)hardLinkFolderPath;
 - (id)initWithAttachment:(id)arg1;
 - (BOOL)isReadyToPresent;

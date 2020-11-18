@@ -42,7 +42,6 @@
 - (void)_updateSignificantEvent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateSignificantEventOffset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateTimeZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

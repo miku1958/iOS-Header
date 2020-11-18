@@ -39,7 +39,6 @@
 - (void)dealloc;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 accessory:(id)arg2 role:(id)arg3;
 - (id)logIdentifier;

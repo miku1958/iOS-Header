@@ -12,39 +12,28 @@
 
 @interface CLSHandoutAttachment : CLSObject <CLSRelationable>
 {
+    int _shareType;
+    int _permissionType;
+    NSURL *_URL;
+    NSArray *_contextPath;
+    NSString *_title;
+    NSString *_bundleIdentifier;
+    NSString *_contentStoreIdentifier;
+    int _completionStatus;
+    long long _displayOrder;
+    long long _contextType;
+    NSDate *_dateLastCompleted;
     BOOL _locked;
     int _type;
-    int __completionStatus;
-    int __shareType;
-    int __permissionType;
-    NSDate *__dateLastCompleted;
     NSString *_storeIdentifier;
-    NSString *__title;
-    NSURL *__URL;
-    NSArray *__contextPath;
-    NSString *__contentStoreIdentifier;
-    long long __contextType;
-    long long __displayOrder;
-    NSString *__bundleIdentifier;
 }
 
 @property (copy, nonatomic) NSURL *URL;
-@property (copy, nonatomic) NSURL *_URL; // @synthesize _URL=__URL;
-@property (copy, nonatomic) NSString *_bundleIdentifier; // @synthesize _bundleIdentifier=__bundleIdentifier;
-@property (nonatomic) int _completionStatus; // @synthesize _completionStatus=__completionStatus;
-@property (strong, nonatomic) NSString *_contentStoreIdentifier; // @synthesize _contentStoreIdentifier=__contentStoreIdentifier;
-@property (copy, nonatomic) NSArray *_contextPath; // @synthesize _contextPath=__contextPath;
-@property (nonatomic) long long _contextType; // @synthesize _contextType=__contextType;
-@property (strong, nonatomic) NSDate *_dateLastCompleted; // @synthesize _dateLastCompleted=__dateLastCompleted;
-@property (nonatomic) long long _displayOrder; // @synthesize _displayOrder=__displayOrder;
-@property (nonatomic) int _permissionType; // @synthesize _permissionType=__permissionType;
-@property (nonatomic) int _shareType; // @synthesize _shareType=__shareType;
-@property (copy, nonatomic) NSString *_title; // @synthesize _title=__title;
 @property (readonly, nonatomic) NSArray *assets;
 @property (copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic, getter=isComplete) BOOL complete;
 @property (nonatomic) int completionStatus;
-@property (strong, nonatomic) NSString *contentStoreIdentifier;
+@property (copy, nonatomic) NSString *contentStoreIdentifier;
 @property (copy, nonatomic) NSArray *contextPath;
 @property (nonatomic) long long contextType;
 @property (strong, nonatomic) NSDate *dateLastCompleted;

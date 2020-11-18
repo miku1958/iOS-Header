@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -18,8 +18,8 @@
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 
 + (id)eventWithName:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 - (void)_execute;
-- (void)dealloc;
 - (id)description;
 - (void)execute;
 - (void)executeFromEventQueue;

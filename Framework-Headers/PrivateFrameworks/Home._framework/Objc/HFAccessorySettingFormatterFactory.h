@@ -16,6 +16,7 @@
 @property (strong, nonatomic) NSMutableDictionary *formattersForKey; // @synthesize formattersForKey=_formattersForKey;
 
 + (id)_siriOutputVoiceFormatter;
++ (id)_siriPersonalRequestsFormatter;
 + (id)_siriRecognitionLanguageFormatter;
 + (id)defaultFactory;
 - (void).cxx_destruct;

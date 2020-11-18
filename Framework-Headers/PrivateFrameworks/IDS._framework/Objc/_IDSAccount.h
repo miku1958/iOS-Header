@@ -23,6 +23,7 @@
     NSMapTable *_registrationDelegateToInfo;
     BOOL _devicesLoaded;
     BOOL _isEnabled;
+    NSString *_loginID;
 }
 
 @property (nonatomic, setter=_setIsEnabled:) BOOL _isEnabled;
@@ -44,7 +45,7 @@
 @property (readonly, nonatomic) BOOL isTransientCloudPairingAccount;
 @property (readonly, nonatomic) BOOL isUsableForOuterMessaging;
 @property (readonly, nonatomic) BOOL isUserDisabled;
-@property (strong, nonatomic) NSString *loginID;
+@property (strong, nonatomic) NSString *loginID; // @synthesize loginID=_loginID;
 @property (readonly, nonatomic) NSArray *nearbyDevices;
 @property (readonly, weak, nonatomic) NSDate *nextRegistrationDate;
 @property (readonly, nonatomic) NSString *primaryServiceName;

@@ -10,8 +10,6 @@
 
 @protocol _SFPBTextColumnSection <NSObject>
 
-@property (readonly, nonatomic) BOOL hasTextNoWrap;
-@property (readonly, nonatomic) BOOL hasTextWeight;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *textLines;
 @property (nonatomic) BOOL textNoWrap;

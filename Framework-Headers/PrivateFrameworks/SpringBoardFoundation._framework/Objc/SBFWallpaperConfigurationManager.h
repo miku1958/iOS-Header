@@ -80,7 +80,6 @@
 - (long long)parallaxDeviceType;
 - (double)parallaxFactorForCropRect:(struct CGRect)arg1 portrait:(BOOL)arg2 forImageSize:(struct CGSize)arg3 zoomScale:(double)arg4;
 - (void)performMigrationWithFailureHandler:(CDUnknownBlockType)arg1;
-- (void)preheatImageCacheForVariant:(long long)arg1;
 - (Class)proceduralWallpaperClassForIdentifier:(id)arg1;
 - (id)proceduralWallpaperInfoForVariant:(long long)arg1;
 - (void)regenerateStaticWallpaperThumbnailImages;

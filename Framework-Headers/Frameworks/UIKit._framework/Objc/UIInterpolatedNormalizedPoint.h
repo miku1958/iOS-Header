@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInterpolatedPoint.h>
+#import <UIKitCore/UIInterpolatedPoint.h>
 
 __attribute__((visibility("hidden")))
 @interface UIInterpolatedNormalizedPoint : UIInterpolatedPoint

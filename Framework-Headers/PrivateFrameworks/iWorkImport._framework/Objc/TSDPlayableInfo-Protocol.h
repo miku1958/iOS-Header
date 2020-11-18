@@ -12,6 +12,7 @@
 @property (nonatomic) long long loopOption;
 @property (nonatomic) double startTime;
 @property (readonly, nonatomic) BOOL supportsLooping;
+@property (readonly, nonatomic) BOOL supportsLoopingBackAndForth;
 @property (readonly, nonatomic) BOOL supportsStartTimeAndEndTime;
 @property (nonatomic) float volume;
 

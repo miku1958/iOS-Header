@@ -38,6 +38,8 @@
 @property (nonatomic) double colorVibrancyLevelOffset; // @dynamic colorVibrancyLevelOffset;
 @property (nonatomic) double contrastLevelOffset; // @dynamic contrastLevelOffset;
 @property (nonatomic) struct CGRect cropRect; // @dynamic cropRect;
+@property (nonatomic) double depthEffectAperture; // @dynamic depthEffectAperture;
+@property (nonatomic) double depthEffectApertureCaptured; // @dynamic depthEffectApertureCaptured;
 @property (nonatomic, getter=isDepthEffectEnabled) BOOL depthEffectEnabled; // @dynamic depthEffectEnabled;
 @property (copy, nonatomic) NSDictionary *depthEffectSettings; // @dynamic depthEffectSettings;
 @property (copy, nonatomic) NSString *effectFilterName; // @dynamic effectFilterName;
@@ -45,6 +47,7 @@
 @property (nonatomic) double exposureLevelOffset; // @dynamic exposureLevelOffset;
 @property (nonatomic, getter=isFusionEnabled) BOOL fusionEnabled; // @dynamic fusionEnabled;
 @property (copy, nonatomic) NSDictionary *fusionParameters; // @dynamic fusionParameters;
+@property (nonatomic) BOOL hasPortraitEffectAdjustment; // @dynamic hasPortraitEffectAdjustment;
 @property (nonatomic) double highlightsLevelOffset; // @dynamic highlightsLevelOffset;
 @property (nonatomic) long long inputOrientation; // @dynamic inputOrientation;
 @property (nonatomic) struct CGSize inputSize; // @dynamic inputSize;
@@ -56,6 +59,13 @@
 @property (copy, nonatomic) NSString *portraitEffectFilterName; // @dynamic portraitEffectFilterName;
 @property (nonatomic) long long portraitEffectFilterVersion; // @dynamic portraitEffectFilterVersion;
 @property (copy, nonatomic) NSDictionary *portraitEffectSettings; // @dynamic portraitEffectSettings;
+@property (strong, nonatomic) NSString *rawMethodVersion; // @dynamic rawMethodVersion;
+@property (copy, nonatomic) NSNumber *rawNoiseReductionCNRAmount; // @dynamic rawNoiseReductionCNRAmount;
+@property (copy, nonatomic) NSNumber *rawNoiseReductionContrastAmount; // @dynamic rawNoiseReductionContrastAmount;
+@property (copy, nonatomic) NSNumber *rawNoiseReductionDetailAmount; // @dynamic rawNoiseReductionDetailAmount;
+@property (nonatomic, getter=isRawNoiseReductionEnabled) BOOL rawNoiseReductionEnabled; // @dynamic rawNoiseReductionEnabled;
+@property (copy, nonatomic) NSNumber *rawNoiseReductionLNRAmount; // @dynamic rawNoiseReductionLNRAmount;
+@property (copy, nonatomic) NSNumber *rawNoiseReductionSharpnessAmount; // @dynamic rawNoiseReductionSharpnessAmount;
 @property (copy, nonatomic) NSArray *redEyeCorrections; // @dynamic redEyeCorrections;
 @property (nonatomic) double shadowsLevelOffset; // @dynamic shadowsLevelOffset;
 @property (nonatomic, getter=isSmartBWEnabled) BOOL smartBWEnabled; // @dynamic smartBWEnabled;
@@ -73,11 +83,18 @@
 @property (nonatomic) CDStruct_1b6d18a9 trimEndTime; // @dynamic trimEndTime;
 @property (nonatomic) CDStruct_1b6d18a9 trimStartTime; // @dynamic trimStartTime;
 @property (nonatomic) long long userOrientation; // @dynamic userOrientation;
+@property (nonatomic) long long whiteBalanceColorType; // @dynamic whiteBalanceColorType;
 @property (nonatomic, getter=isWhiteBalanceEnabled) BOOL whiteBalanceEnabled; // @dynamic whiteBalanceEnabled;
 @property (nonatomic) double whiteBalanceFaceI; // @dynamic whiteBalanceFaceI;
 @property (nonatomic) double whiteBalanceFaceQ; // @dynamic whiteBalanceFaceQ;
 @property (nonatomic) double whiteBalanceFaceStrength; // @dynamic whiteBalanceFaceStrength;
 @property (nonatomic) double whiteBalanceFaceWarmth; // @dynamic whiteBalanceFaceWarmth;
+@property (nonatomic) double whiteBalanceGrayI; // @dynamic whiteBalanceGrayI;
+@property (nonatomic) double whiteBalanceGrayQ; // @dynamic whiteBalanceGrayQ;
+@property (nonatomic) double whiteBalanceGrayWarmth; // @dynamic whiteBalanceGrayWarmth;
+@property (nonatomic) double whiteBalanceGrayY; // @dynamic whiteBalanceGrayY;
+@property (nonatomic) double whiteBalanceTemperature; // @dynamic whiteBalanceTemperature;
+@property (nonatomic) double whiteBalanceTint; // @dynamic whiteBalanceTint;
 
 - (void).cxx_destruct;
 - (id)_newModelChangeAnimation;

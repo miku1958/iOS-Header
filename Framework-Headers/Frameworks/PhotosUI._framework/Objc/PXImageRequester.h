@@ -8,8 +8,8 @@
 
 #import <PhotosUICore/PXMutableImageRequester-Protocol.h>
 
-@class NSString, PXImageRequest, PXUIMediaProvider, UIImage;
-@protocol PXDisplayAsset;
+@class NSString, PXImageRequest, UIImage;
+@protocol PXDisplayAsset, PXUIImageProvider;
 
 @interface PXImageRequester : PXObservable <PXMutableImageRequester>
 {
@@ -20,11 +20,12 @@
     } _needsUpdateFlags;
     BOOL _hasFullQuality;
     BOOL _isInCloud;
-    PXUIMediaProvider *_mediaProvider;
+    id<PXUIImageProvider> _mediaProvider;
     id<PXDisplayAsset> _asset;
     double _scale;
     UIImage *_image;
     UIImage *_opportunisticImage;
+    double _loadingProgress;
     id<PXDisplayAsset> __currentImageSourceAsset;
     PXImageRequest *__currentRequest;
     struct CGSize _contentSize;
@@ -47,7 +48,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, setter=_setImage:) UIImage *image; // @synthesize image=_image;
 @property (nonatomic, setter=_setIsInCloud:) BOOL isInCloud; // @synthesize isInCloud=_isInCloud;
-@property (readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property (nonatomic, setter=_setLoadingProgress:) double loadingProgress; // @synthesize loadingProgress=_loadingProgress;
+@property (readonly, nonatomic) id<PXUIImageProvider> mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (strong, nonatomic, setter=_setOpportunisticImage:) UIImage *opportunisticImage; // @synthesize opportunisticImage=_opportunisticImage;
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
 @property (readonly) Class superclass;
@@ -56,6 +58,7 @@
 + (id)defaultOptions;
 - (void).cxx_destruct;
 - (void)_cancelRequests;
+- (void)_handleProgressForImageRequest:(id)arg1 progress:(double)arg2;
 - (void)_handleResultOfImageRequest:(id)arg1 image:(id)arg2 info:(id)arg3;
 - (void)_invalidateImageRequest;
 - (void)_invalidateIsInCloud;

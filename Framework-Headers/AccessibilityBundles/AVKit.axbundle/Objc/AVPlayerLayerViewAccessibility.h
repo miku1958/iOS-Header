@@ -16,6 +16,7 @@
 - (BOOL)_axHasVideo;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (BOOL)isAccessibilityElement;
 
 @end
 

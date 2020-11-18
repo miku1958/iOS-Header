@@ -39,11 +39,12 @@
 + (id)clientWithConnection:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)_initWithConnection:(id)arg1 entitlements:(id)arg2;
+- (id)_watchKitAvailabilityFilter;
 - (id)baseDataEntityEncodingOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)dropEntitlement:(id)arg1;
-- (id)filterWithQueryFilter:(id)arg1 profile:(id)arg2;
+- (id)filterWithQueryFilter:(id)arg1 objectType:(id)arg2 profile:(id)arg3;
 - (BOOL)hasEntitlement:(id)arg1;
 - (BOOL)hasRequiredEntitlement:(id)arg1 error:(id *)arg2;
 - (id)initWithConnection:(id)arg1 entitlements:(id)arg2;
@@ -51,6 +52,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)restoreEntitlement:(id)arg1;
 - (BOOL)shouldBypassAuthorization;
+- (id)sourceVersionWithDaemon:(id)arg1;
 - (id)valueForEntitlement:(id)arg1;
 
 @end

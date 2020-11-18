@@ -34,6 +34,7 @@
 + (id)kindWithSeasonKind:(id)arg1;
 - (id)artworkCatalog;
 - (id)editorialArtworkCatalog;
+- (id)humanDescription;
 
 @end
 

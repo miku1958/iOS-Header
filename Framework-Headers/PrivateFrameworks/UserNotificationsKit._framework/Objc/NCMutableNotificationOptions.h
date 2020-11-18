@@ -22,12 +22,15 @@
 @property (nonatomic) unsigned long long contentPreviewSetting; // @dynamic contentPreviewSetting;
 @property (nonatomic) BOOL dismissAutomatically; // @dynamic dismissAutomatically;
 @property (nonatomic) BOOL hideClearActionInList; // @dynamic hideClearActionInList;
+@property (nonatomic) BOOL lauchUsingSiriForCarPlayDefaultAction; // @dynamic lauchUsingSiriForCarPlayDefaultAction;
 @property (nonatomic) unsigned long long lockScreenPersistence; // @dynamic lockScreenPersistence;
 @property (nonatomic) unsigned long long lockScreenPriority; // @dynamic lockScreenPriority;
 @property (nonatomic) unsigned long long messageNumberOfLines; // @dynamic messageNumberOfLines;
+@property (nonatomic) BOOL overridesDowntime; // @dynamic overridesDowntime;
 @property (nonatomic) BOOL overridesPocketMode; // @dynamic overridesPocketMode;
 @property (nonatomic) BOOL overridesQuietMode; // @dynamic overridesQuietMode;
 @property (nonatomic) BOOL preemptsPresentedNotification; // @dynamic preemptsPresentedNotification;
+@property (nonatomic) BOOL prefersDarkAppearance; // @dynamic prefersDarkAppearance;
 @property (nonatomic) BOOL preventsAutomaticLock; // @dynamic preventsAutomaticLock;
 @property (nonatomic) unsigned long long realertCount; // @dynamic realertCount;
 @property (nonatomic) BOOL requestsFullScreenPresentation; // @dynamic requestsFullScreenPresentation;

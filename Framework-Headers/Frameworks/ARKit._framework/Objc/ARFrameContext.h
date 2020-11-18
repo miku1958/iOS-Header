@@ -8,7 +8,7 @@
 
 #import <ARKit/ARResultDataContext-Protocol.h>
 
-@class ARImageData, NSMutableArray, NSString;
+@class ARImageData, ARWorldMap, NSMutableArray, NSString;
 
 @interface ARFrameContext : NSObject <ARResultDataContext>
 {
@@ -22,6 +22,7 @@
     BOOL _shouldRemoveExistingAnchors;
     ARImageData *_imageData;
     long long _worldAlignment;
+    ARWorldMap *_worldMap;
     unsigned long long _frameDebugOptions;
     CDStruct_14d5dc5e _relocalizationDeltaTransform;
     CDStruct_14d5dc5e _sessionTransform;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) BOOL shouldRemoveExistingAnchors; // @synthesize shouldRemoveExistingAnchors=_shouldRemoveExistingAnchors;
 @property (readonly) Class superclass;
 @property (nonatomic) long long worldAlignment; // @synthesize worldAlignment=_worldAlignment;
+@property (strong, nonatomic) ARWorldMap *worldMap; // @synthesize worldMap=_worldMap;
 
 - (void).cxx_destruct;
 - (void)addAnchor:(id)arg1;

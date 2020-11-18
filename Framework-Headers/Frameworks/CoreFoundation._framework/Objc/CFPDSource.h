@@ -34,19 +34,15 @@ __attribute__((visibility("hidden")))
     BOOL _managedUsesContainer;
     BOOL _neverCache;
     BOOL _checkedForNonPrefsPlist;
-    BOOL _hasDrainedPendingChangesSinceLastReplyToOwner;
     BOOL _restrictedReadability;
     BOOL _waitingForDeviceUnlock;
     BOOL _watchingParentDirectory;
     BOOL _disableBackup;
-    BOOL _hasPreviouslyBeenUnableToDetermineSandboxAccess;
 }
 
-+ (void)removeObservationConnectionsForIdentifier:(unsigned long long)arg1;
 - (void)_writeToDisk:(BOOL)arg1;
 - (id)acceptMessage:(id)arg1;
-- (void)addOwner:(id)arg1;
-- (void)asyncNotifyObserversOfWriteFromConnection:(id)arg1;
+- (void)asyncNotifyObserversOfWriteFromConnection:(id)arg1 message:(id)arg2;
 - (void)asyncWriteToDisk;
 - (void)attachSizeWarningsToReply:(id)arg1 forByteCount:(unsigned long long)arg2;
 - (void)beginHandlingRequest;
@@ -58,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (void)clearCache;
 - (struct __CFString *)cloudConfigurationPath;
 - (struct __CFString *)container;
-- (id)copyCachedObservationConnectionForMessage:(id)arg1;
 - (id)copyPropertyListValidatingPlist:(BOOL)arg1;
 - (id)copyPropertyListWithoutDrainingPendingChangesValidatingPlist:(BOOL)arg1;
 - (struct __CFString *)copyUncanonicalizedPath;
@@ -77,7 +72,6 @@ __attribute__((visibility("hidden")))
 - (void)handleNoPlistFound;
 - (void)handleOpenForWritingFailureWithErrno:(int)arg1;
 - (void)handleSynchronous;
-- (BOOL)hasEverHadMultipleOwners;
 - (BOOL)hasObservers;
 - (unsigned long long)hash;
 - (id)initWithDomain:(struct __CFString *)arg1 userName:(struct __CFString *)arg2 byHost:(BOOL)arg3 managed:(BOOL)arg4 shmemIndex:(short)arg5 daemon:(id)arg6;
@@ -86,9 +80,8 @@ __attribute__((visibility("hidden")))
 - (void)lockedSync:(CDUnknownBlockType)arg1;
 - (BOOL)managed;
 - (void)markNeedsToReloadFromDiskDueToFailedWrite;
+- (void)observingConnectionWasInvalidated:(id)arg1;
 - (void)observingConnectionsLockedSync:(CDUnknownBlockType)arg1;
-- (int)owner;
-- (void)removeOwner;
 - (void)respondToFileWrittenToBehindOurBack;
 - (void)setDirty:(BOOL)arg1;
 - (void)setManagedPreferencesUseContainer:(BOOL)arg1;
@@ -99,7 +92,6 @@ __attribute__((visibility("hidden")))
 - (void)stopNotifyingObserver:(id)arg1;
 - (void)syncWriteToDisk;
 - (void)syncWriteToDiskAndFlushCache;
-- (void)transitionToMultiOwner;
 - (void)updateShmemEntry;
 - (struct __CFString *)user;
 - (BOOL)validateAccessToken:(int)arg1 accessType:(int)arg2;

@@ -16,5 +16,8 @@
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled;
 
 - (void)beginUserInteractionWithFirstTouchGestureRecognizer:(UIGestureRecognizer *)arg1;
+
+@optional
+- (BOOL)shouldShowContentForReachabilityState:(BOOL)arg1;
 @end
 

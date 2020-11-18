@@ -21,7 +21,7 @@
     unsigned long long _state;
 }
 
-@property (strong, nonatomic) NUAdBannerView *bannerView; // @synthesize bannerView=_bannerView;
+@property (weak, nonatomic) NUAdBannerView *bannerView; // @synthesize bannerView=_bannerView;
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

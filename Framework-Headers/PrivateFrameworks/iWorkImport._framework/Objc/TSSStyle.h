@@ -102,7 +102,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasEqualPropertyValues:(id)arg1;
 - (BOOL)hasEqualValues:(id)arg1 forProperties:(id)arg2;
 - (BOOL)hasEqualValuesToPropertyMap:(id)arg1 forProperties:(id)arg2;
-- (id)init;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 name:(id)arg2 overridePropertyMap:(id)arg3 isVariation:(BOOL)arg4;
 - (int)intValueForMUXedProperty:(int)arg1;

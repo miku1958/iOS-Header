@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
 @interface FKTextDetector : NSObject
 {
-    struct *_sessions[8];
+    struct FKSession *_sessions[8];
+    struct CGSize _size;
+    struct CGRect _roi;
     unsigned int _timeDownscale[8];
     unsigned int _timeBinarizer[8];
     unsigned int _timeConcomps[8];

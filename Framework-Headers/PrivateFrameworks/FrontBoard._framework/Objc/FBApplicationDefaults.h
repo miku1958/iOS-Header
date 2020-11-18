@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -27,7 +27,7 @@
 @property (nonatomic) BOOL statusBarHiddenWhenVerticallyCompact; // @synthesize statusBarHiddenWhenVerticallyCompact=_statusBarHiddenWhenVerticallyCompact;
 @property (nonatomic) long long statusBarStyle; // @synthesize statusBarStyle=_statusBarStyle;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 
 @end

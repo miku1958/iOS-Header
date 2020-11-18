@@ -24,7 +24,7 @@
 - (id)analyticsFilePathsWithError:(id *)arg1;
 - (id)init;
 - (id)initWithProfile:(id)arg1;
-- (BOOL)submitJSONAnaltyicsData:(id)arg1 bugType:(id)arg2 error:(id *)arg3;
+- (BOOL)submitJSONAnalyticsData:(id)arg1 bugType:(id)arg2 error:(id *)arg3;
 
 @end
 

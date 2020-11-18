@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     TSCECalculationEngine *_calculationEngine;
     TSTInfo *_hostInfo;
     NSString *_initialWhitespace;
-    struct TSUCellCoord _hostCell;
+    struct TSUModelCellCoord _hostCell;
     BOOL _syntaxError;
     BOOL _fixupFormulas;
     BOOL _formulaWasFixable;
@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 
 + (id)doubleQuoteCharacters;
 + (id)equalsCharacters;
-+ (id)formulaForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2 inTable:(id)arg3;
++ (id)formulaForCell:(id)arg1 atCellID:(struct TSUViewCellCoord)arg2 inTable:(id)arg3;
 + (int)formulaQuoteContextAtCharIndex:(unsigned long long)arg1 inStorage:(id)arg2;
 + (id)leadingSingleQuoteEscapeCharacters;
 + (id)leftParenCharacters;
@@ -48,6 +48,7 @@ __attribute__((visibility("hidden")))
 + (int)quoteContextAtCharIndex:(unsigned long long)arg1 previousContext:(int)arg2 inStorage:(id)arg3;
 + (id)rightParenCharacters;
 + (id)singleQuoteCharacters;
++ (BOOL)storageExceedsMaxFormulaLength:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)canSimplify;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -55,10 +56,13 @@ __attribute__((visibility("hidden")))
 - (id)formulaDetokenizedText;
 - (id)formulaPlainText;
 - (BOOL)hasBareArgumentPlaceholders;
-- (id)initWithCalculationEngine:(id)arg1 expressionTree:(id)arg2 hostCell:(struct TSUCellCoord)arg3 hostTable:(id)arg4;
-- (id)initWithCalculationEngine:(id)arg1 hostCell:(struct TSUCellCoord)arg2 hostTable:(id)arg3;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 hostCell:(struct TSUCellCoord)arg3 TSCEFormula:(const struct TSCEFormula *)arg4 ownerUID:(const UUIDData_5fbc143e *)arg5;
-- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 hostCell:(struct TSUCellCoord)arg3 TSCEFormula:(const struct TSCEFormula *)arg4 ownerUID:(const UUIDData_5fbc143e *)arg5 suppressAutomaticNamedReferenceInvalidation:(BOOL)arg6;
+- (id)initWithCalculationEngine:(id)arg1 baseHostCell:(struct TSUModelCellCoord)arg2 hostTable:(id)arg3;
+- (id)initWithCalculationEngine:(id)arg1 expressionTree:(id)arg2 baseHostCell:(struct TSUModelCellCoord)arg3 hostTable:(id)arg4;
+- (id)initWithCalculationEngine:(id)arg1 viewHostCell:(struct TSUViewCellCoord)arg2 hostTable:(id)arg3;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 baseHostCell:(struct TSUModelCellCoord)arg3 TSCEFormula:(const struct TSCEFormula *)arg4 ownerUID:(const UUIDData_5fbc143e *)arg5;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 baseHostCell:(struct TSUModelCellCoord)arg3 TSCEFormula:(const struct TSCEFormula *)arg4 ownerUID:(const UUIDData_5fbc143e *)arg5 suppressAutomaticNamedReferenceInvalidation:(BOOL)arg6;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 viewHostCell:(struct TSUViewCellCoord)arg3 TSCEFormula:(const struct TSCEFormula *)arg4 ownerUID:(const UUIDData_5fbc143e *)arg5;
+- (id)initWithContext:(id)arg1 calculationEngine:(id)arg2 viewHostCell:(struct TSUViewCellCoord)arg3 TSCEFormula:(const struct TSCEFormula *)arg4 ownerUID:(const UUIDData_5fbc143e *)arg5 suppressAutomaticNamedReferenceInvalidation:(BOOL)arg6;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(BOOL)arg2;
 - (id)nodesToCheckForBareArgumentPlaceholders;
 - (id)p_fixFormula:(id)arg1;

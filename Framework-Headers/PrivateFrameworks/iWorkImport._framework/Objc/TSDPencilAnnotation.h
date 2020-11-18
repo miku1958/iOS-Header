@@ -10,12 +10,12 @@
 #import <iWorkImport/TSKPencilAnnotation-Protocol.h>
 #import <iWorkImport/TSPCopying-Protocol.h>
 
-@class NSString, PKDrawing, TSDDrawableInfo, TSKPencilAnnotationStorage;
+@class NSString, PKDrawing, TSDDrawableInfo, TSDPencilAnnotationStorage;
 
 __attribute__((visibility("hidden")))
 @interface TSDPencilAnnotation : TSPObject <TSPCopying, TSKDocumentObject, TSKPencilAnnotation>
 {
-    TSKPencilAnnotationStorage *_pencilAnnotationStorage;
+    TSDPencilAnnotationStorage *_pencilAnnotationStorage;
     TSDDrawableInfo *_parent;
 }
 
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PKDrawing *drawing; // @dynamic drawing;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) TSDDrawableInfo *parent; // @synthesize parent=_parent;
-@property (readonly, nonatomic) TSKPencilAnnotationStorage *pencilAnnotationStorage; // @synthesize pencilAnnotationStorage=_pencilAnnotationStorage;
+@property (strong, nonatomic) TSDPencilAnnotationStorage *pencilAnnotationStorage; // @synthesize pencilAnnotationStorage=_pencilAnnotationStorage;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uuid;
 

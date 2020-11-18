@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/CKDSystemAvailabilityWatcher-Protocol.h>
 
-@class CKDClientContext, CKWatchdog, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection;
+@class CKDClientContext, NSArray, NSDate, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection;
 @protocol NSObject, OS_dispatch_queue;
 
 @interface CKDClientProxy : NSObject <CKDSystemAvailabilityWatcher>
@@ -33,7 +33,6 @@
     NSArray *_cachedSandboxExtensions;
     NSMutableArray *_pendingContexts;
     NSMutableSet *_pendingOperationIDs;
-    CKWatchdog *_watchdog;
     NSDate *_connectionDate;
     long long _hasTCCAuthorizationTernary;
     NSDictionary *_connectionEntitlements;
@@ -74,8 +73,8 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSOperationQueue *tccAuthOpQueue; // @synthesize tccAuthOpQueue=_tccAuthOpQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *tccAuthQueue; // @synthesize tccAuthQueue=_tccAuthQueue;
-@property (strong, nonatomic) CKWatchdog *watchdog; // @synthesize watchdog=_watchdog;
 
++ (id)operationStatusReport:(id)arg1;
 + (id)sharedClientThrottlingOperationQueue;
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
@@ -99,7 +98,6 @@
 - (BOOL)_lockedHasTCCAuthorization;
 - (void)_lockedSetHasTCCAuthorizationTernary:(long long)arg1;
 - (id)_locked_eligiblePendingContextForSetupInfo:(id)arg1;
-- (id)_operationStatusReport:(id)arg1;
 - (void)_performFetchCurrentUserRecordOperation:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_reallyPerformFetchRecordsOperation:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_setApplicationPermission:(unsigned long long)arg1 enabled:(BOOL)arg2 setupInfo:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -125,6 +123,7 @@
 - (void)clearCachesForZoneWithSetupInfo:(id)arg1 zoneID:(id)arg2 databaseScope:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)clearCachesWithSetupInfo:(id)arg1 options:(unsigned long long)arg2 databaseScope:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)clearContextFromMetadataCache;
+- (void)clearPCSCachesForKnownContextsWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)clearPILSCacheForLookupInfos:(id)arg1;
 - (void)clearRecordCacheWithSetupInfo:(id)arg1 databaseScope:(long long)arg2;
 - (void)currentDeviceIDWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -156,6 +155,7 @@
 - (BOOL)hasDisplaysSystemAcceptPromptEntitlement;
 - (BOOL)hasLightweightPCSEntitlement;
 - (BOOL)hasMasqueradingEntitlement;
+- (BOOL)hasNonLegacyShareURLEntitlement;
 - (BOOL)hasOutOfProcessUIEntitlement;
 - (BOOL)hasParticipantPIIEntitlement;
 - (BOOL)hasProtectionDataEntitlement;
@@ -210,6 +210,7 @@
 - (void)showAssetCacheWithSetupInfo:(id)arg1 databaseScope:(long long)arg2;
 - (void)statusForApplicationPermission:(unsigned long long)arg1 setupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)statusGroupsForApplicationPermission:(unsigned long long)arg1 setupInfo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)submitClientEventMetric:(id)arg1 withSetupInfo:(id)arg2;
 - (void)systemAvailabilityChanged:(unsigned long long)arg1;
 - (void)tearDown;
 - (void)tossConfigWithSetupInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

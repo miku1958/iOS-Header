@@ -17,7 +17,7 @@
 
 - (CDStruct_d2b197d1)attachmentBoundsMargins;
 - (BOOL)canDragWithoutSelecting;
-- (void)fixAttachmentForAttributedString:(id)arg1 range:(struct _NSRange)arg2 forPlainText:(BOOL)arg3;
+- (void)fixAttachmentForAttributedString:(id)arg1 range:(struct _NSRange)arg2 forPlainText:(BOOL)arg3 forStandardizedText:(BOOL)arg4;
 - (id)printableTextContent;
 
 @end

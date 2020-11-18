@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VoiceServices/NSSecureCoding-Protocol.h>
 
@@ -15,6 +15,7 @@
     BOOL _shouldCache;
     BOOL _disableCompactVoiceFallback;
     BOOL _forceServerTTS;
+    BOOL _canUseServerTTS;
     BOOL _useCustomVoice;
     BOOL _audioSessionIDIsValid;
     BOOL _maintainsInput;
@@ -45,6 +46,7 @@
 @property (nonatomic) unsigned int audioQueueFlags; // @synthesize audioQueueFlags=_audioQueueFlags;
 @property (nonatomic) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
 @property (nonatomic) BOOL audioSessionIDIsValid; // @synthesize audioSessionIDIsValid=_audioSessionIDIsValid;
+@property (nonatomic) BOOL canUseServerTTS; // @synthesize canUseServerTTS=_canUseServerTTS;
 @property (copy, nonatomic) NSString *clientBundleIdentifier; // @synthesize clientBundleIdentifier=_clientBundleIdentifier;
 @property (copy, nonatomic) NSDictionary *contextInfo; // @synthesize contextInfo=_contextInfo;
 @property (nonatomic) BOOL disableCompactVoiceFallback; // @synthesize disableCompactVoiceFallback=_disableCompactVoiceFallback;

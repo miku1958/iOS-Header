@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CLKFont, CLKTimeFormatter, CLKUITimeLabelStyle, NSAttributedString, UIColor, UIView;
+@class CLKDevice, CLKFont, CLKTimeFormatter, CLKUITimeLabelStyle, NSAttributedString, UIColor, UIView;
 
 @protocol _CLKUITimeLabelManager
 
@@ -19,12 +19,13 @@
 - (NSAttributedString *)effectiveAttributedText;
 - (CLKFont *)effectiveFont;
 - (void)enumerateUnderlyingLabelsWithBlock:(void (^)(UILabel *, BOOL))arg1;
-- (id)initWithTimeFormatter:(CLKTimeFormatter *)arg1 options:(unsigned long long)arg2 labelFactory:(UILabel * (^)(BOOL))arg3;
+- (id)initWithForDevice:(CLKDevice *)arg1 timeFormatter:(CLKTimeFormatter *)arg2 options:(unsigned long long)arg3 labelFactory:(UILabel * (^)(BOOL))arg4;
 - (void)setMaxWidth:(double)arg1;
 - (void)setShowsDesignator:(BOOL)arg1;
 - (void)setStyle:(CLKUITimeLabelStyle *)arg1;
 - (struct CGSize)sizeThatFits;
 - (void)sizeViewToFit;
 - (void)updateTimeText;
+- (UIView *)viewForLastBaselineLayout;
 @end
 

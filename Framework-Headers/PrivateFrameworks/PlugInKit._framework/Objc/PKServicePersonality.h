@@ -20,6 +20,7 @@
     NSUserDefaults *_preferences;
 }
 
+@property (copy) NSDictionary *_userInfo; // @dynamic _userInfo;
 @property (readonly) NSDictionary *bundleInfoDictionary;
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;

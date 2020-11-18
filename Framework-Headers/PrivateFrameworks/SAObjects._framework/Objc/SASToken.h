@@ -20,6 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSNumber *endTime;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *ipaPhoneSequence;
 @property (copy, nonatomic) NSString *originalText;
 @property (copy, nonatomic) NSString *phoneSequence;
 @property (copy, nonatomic) NSString *recognitionStability;

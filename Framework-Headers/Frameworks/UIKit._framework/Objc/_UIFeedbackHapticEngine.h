@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedbackEngine.h>
+#import <UIKitCore/_UIFeedbackEngine.h>
 
 @class AVHapticPlayer, NSMutableIndexSet, NSMutableSet, NSTimer;
 
@@ -15,11 +15,13 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_playersInUse;
     BOOL _serverDown;
     AVHapticPlayer *_feedbackPlayer;
+    unsigned long long _mediaserverdDeathCount;
     NSTimer *_finishTimeoutTimer;
 }
 
 @property (strong, nonatomic) AVHapticPlayer *feedbackPlayer; // @synthesize feedbackPlayer=_feedbackPlayer;
 @property (strong, nonatomic) NSTimer *finishTimeoutTimer; // @synthesize finishTimeoutTimer=_finishTimeoutTimer;
+@property (nonatomic) unsigned long long mediaserverdDeathCount; // @synthesize mediaserverdDeathCount=_mediaserverdDeathCount;
 @property (nonatomic) BOOL serverDown; // @synthesize serverDown=_serverDown;
 
 + (void)_setHapticPlayerCreationBlock:(CDUnknownBlockType)arg1;

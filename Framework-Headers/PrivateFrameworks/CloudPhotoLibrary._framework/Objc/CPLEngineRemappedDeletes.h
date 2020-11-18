@@ -12,7 +12,7 @@
 
 @interface CPLEngineRemappedDeletes : CPLEngineStorage <CPLAbstractObject>
 {
-    NSMutableDictionary *_perTransactionRemappedIdentifiers;
+    NSMutableDictionary *_perTransactionRemappedScopedIdentifiers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,11 +22,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_fixupRemappedDeletesAndReturnBestCloudIdentifierFromRemappedIdentifiers:(id)arg1 fallback:(id)arg2;
-- (void)discardDeleteForRemappedRecordWithIdentifier:(id)arg1;
-- (id)realIdentifierForRemappedIdentifier:(id)arg1;
-- (BOOL)resetWithError:(id *)arg1;
-- (void)scheduleDeleteForRemappedRecordWithIdentifier:(id)arg1 realIdentifier:(id)arg2 asap:(BOOL)arg3;
+- (id)_fixupRemappedDeletesAndReturnBestCloudScopedIdentifierFromRemappedScopedIdentifiers:(id)arg1 fallback:(id)arg2;
+- (BOOL)deleteRecordsForScopeIndex:(long long)arg1 maxCount:(long long)arg2 deletedCount:(long long *)arg3 error:(id *)arg4;
+- (void)discardDeleteForRemappedRecordWithScopedIdentifier:(id)arg1;
+- (id)realScopedIdentifierForRemappedScopedIdentifier:(id)arg1;
+- (void)scheduleDeleteForRemappedRecordWithScopedIdentifier:(id)arg1 realScopedIdentifier:(id)arg2 asap:(BOOL)arg3;
+- (unsigned long long)scopeType;
 - (void)writeTransactionDidFail;
 - (void)writeTransactionDidSucceed;
 

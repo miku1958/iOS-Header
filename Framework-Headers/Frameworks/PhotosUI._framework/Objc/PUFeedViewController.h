@@ -6,18 +6,19 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PhotosUI/PLCloudFeedNavigating-Protocol.h>
-#import <PhotosUI/PLNavigableCloudFeedViewController-Protocol.h>
 #import <PhotosUI/PUAlbumStreamActivityDelegate-Protocol.h>
+#import <PhotosUI/PUFeedCaptionCellDelegate-Protocol.h>
 #import <PhotosUI/PUFeedCollectionViewLayoutDelegate-Protocol.h>
 #import <PhotosUI/PUFeedImageCellDelegate-Protocol.h>
 #import <PhotosUI/PUFeedInvitationCellDelegate-Protocol.h>
 #import <PhotosUI/PUFeedPlayerCellDelegate-Protocol.h>
-#import <PhotosUI/PUFeedSectionInfosManagerDelegate-Protocol.h>
 #import <PhotosUI/PUFeedTextCellDelegate-Protocol.h>
 #import <PhotosUI/PUOneUpPresentationHelperDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoBrowserZoomTransitionDelegate-Protocol.h>
 #import <PhotosUI/PUScrollViewSpeedometerDelegate-Protocol.h>
+#import <PhotosUI/PXCloudFeedNavigating-Protocol.h>
+#import <PhotosUI/PXFeedSectionInfosManagerDelegate-Protocol.h>
+#import <PhotosUI/PXNavigableCloudFeedViewController-Protocol.h>
 #import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 #import <PhotosUI/UICollectionViewDataSource-Protocol.h>
 #import <PhotosUI/UICollectionViewDelegate-Protocol.h>
@@ -28,10 +29,10 @@
 #import <PhotosUI/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 #import <PhotosUI/_UISettingsKeyObserver-Protocol.h>
 
-@class NSDictionary, NSIndexPath, NSMutableArray, NSMutableSet, NSString, PHCachingImageManager, PLCloudSharedAlbum, PLCloudSharedComment, PLManagedAlbumList, PLManagedAsset, PUAlbumStreamActivity, PUFeedAssetContainerList, PUFeedSectionInfosManager, PUFeedViewControllerRestorableState, PUFeedViewControllerSpec, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor, PUPhotoPinchGestureRecognizer, PUPhotosPickerViewController, PUScrollViewSpeedometer, PXFeedDateFormatter, UIBarButtonItem, UICollectionView, UITapGestureRecognizer, _UIContentUnavailableView;
+@class NSDictionary, NSIndexPath, NSMutableArray, NSMutableSet, NSString, PHCachingImageManager, PLCloudSharedAlbum, PLCloudSharedComment, PLManagedAlbumList, PLManagedAsset, PUAlbumStreamActivity, PUFeedAssetContainerList, PUFeedViewControllerRestorableState, PUFeedViewControllerSpec, PUOneUpPresentationHelper, PUPhotoBrowserOneUpPresentationAdaptor, PUPhotoPinchGestureRecognizer, PUPhotosPickerViewController, PUScrollViewSpeedometer, PXFeedDateFormatter, PXFeedSectionInfosManager, UIBarButtonItem, UICollectionView, UITapGestureRecognizer, _UIContentUnavailableView;
 @protocol UIViewControllerPreviewing;
 
-@interface PUFeedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate, PUFeedCollectionViewLayoutDelegate, PUFeedSectionInfosManagerDelegate, PUPhotoBrowserZoomTransitionDelegate, PUFeedImageCellDelegate, PUFeedPlayerCellDelegate, PUFeedTextCellDelegate, PUFeedInvitationCellDelegate, UIGestureRecognizerDelegate, PUAlbumStreamActivityDelegate, _UISettingsKeyObserver, PUScrollViewSpeedometerDelegate, PUOneUpPresentationHelperDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, PXSettingsKeyObserver, UICollectionViewDragSource, PLCloudFeedNavigating, PLNavigableCloudFeedViewController>
+@interface PUFeedViewController : UIViewController <UICollectionViewDataSource, UICollectionViewDelegate, UIPopoverPresentationControllerDelegate, PUFeedCollectionViewLayoutDelegate, PXFeedSectionInfosManagerDelegate, PUPhotoBrowserZoomTransitionDelegate, PUFeedImageCellDelegate, PUFeedPlayerCellDelegate, PUFeedTextCellDelegate, PUFeedInvitationCellDelegate, PUFeedCaptionCellDelegate, UIGestureRecognizerDelegate, PUAlbumStreamActivityDelegate, _UISettingsKeyObserver, PUScrollViewSpeedometerDelegate, PUOneUpPresentationHelperDelegate, UIViewControllerPreviewingDelegate, UIViewControllerPreviewingDelegate_Private, PXSettingsKeyObserver, UICollectionViewDragSource, PXCloudFeedNavigating, PXNavigableCloudFeedViewController>
 {
     BOOL __flowDirectionReversed;
     BOOL __collectionViewScrolledToNewest;
@@ -43,12 +44,14 @@
     BOOL __interfaceBatchUpdateScheduled;
     BOOL __invitationsPopoverShowPending;
     BOOL __libraryUpdatingPreviouslyExpired;
+    BOOL __checkedLibraryUpdatingExpiration;
     BOOL __oneUpDataSourceUpdateScheduled;
     BOOL __needsUpdateLayout;
     BOOL __hasAppeared;
+    BOOL _observingPopoverContentSizeChange;
     PUFeedViewControllerSpec *_spec;
     long long _contentType;
-    PUFeedSectionInfosManager *__feedSectionInfosManager;
+    PXFeedSectionInfosManager *__feedSectionInfosManager;
     PHCachingImageManager *__cachingImageManager;
     NSMutableArray *__lastPreheatIndexPathList;
     NSMutableArray *__lastPreheatIndexPathInfoList;
@@ -85,6 +88,8 @@
     PUPhotoBrowserOneUpPresentationAdaptor *__photoBrowserOneUpPresentationAdaptor;
     PUFeedAssetContainerList *__oneUpPresentationAssetContainerList;
     id<UIViewControllerPreviewing> __previewingItem;
+    NSMutableSet *_imageCellsPlayingVideo;
+    CDUnknownBlockType _onNextViewLayout;
     struct CGSize __targetSize;
     struct CGPoint __lastPreheatedContentOffset;
     struct CGSize __assetsAddedCachedSectionHeaderSize;
@@ -99,13 +104,14 @@
 @property (strong, nonatomic, setter=_setBrowsingSelectedAsset:) PLManagedAsset *_browsingSelectedAsset; // @synthesize _browsingSelectedAsset=__browsingSelectedAsset;
 @property (strong, nonatomic, setter=_setBrowsingSelectedComment:) PLCloudSharedComment *_browsingSelectedComment; // @synthesize _browsingSelectedComment=__browsingSelectedComment;
 @property (readonly, nonatomic) PHCachingImageManager *_cachingImageManager; // @synthesize _cachingImageManager=__cachingImageManager;
+@property (nonatomic, getter=_hasCheckedLibraryUpdatingExpiration, setter=_setCheckedLibraryUpdatingExpiration:) BOOL _checkedLibraryUpdatingExpiration; // @synthesize _checkedLibraryUpdatingExpiration=__checkedLibraryUpdatingExpiration;
 @property (nonatomic, getter=_isCollectionViewScrolledToNewest, setter=_setCollectionViewScrolledToNewest:) BOOL _collectionViewScrolledToNewest; // @synthesize _collectionViewScrolledToNewest=__collectionViewScrolledToNewest;
 @property (strong, nonatomic, setter=_setCollectionViewSpeedometer:) PUScrollViewSpeedometer *_collectionViewSpeedometer; // @synthesize _collectionViewSpeedometer=__collectionViewSpeedometer;
 @property (strong, nonatomic, setter=_setCurrentCollectionView:) UICollectionView *_currentCollectionView; // @synthesize _currentCollectionView=__currentCollectionView;
 @property (nonatomic, setter=_setCurrentCollectionViewType:) long long _currentCollectionViewType; // @synthesize _currentCollectionViewType=__currentCollectionViewType;
 @property (readonly, nonatomic) PXFeedDateFormatter *_dateFormatter; // @synthesize _dateFormatter=__dateFormatter;
 @property (strong, nonatomic, setter=_setEmptyPlaceholderView:) _UIContentUnavailableView *_emptyPlaceholderView; // @synthesize _emptyPlaceholderView=__emptyPlaceholderView;
-@property (readonly, nonatomic) PUFeedSectionInfosManager *_feedSectionInfosManager; // @synthesize _feedSectionInfosManager=__feedSectionInfosManager;
+@property (readonly, nonatomic) PXFeedSectionInfosManager *_feedSectionInfosManager; // @synthesize _feedSectionInfosManager=__feedSectionInfosManager;
 @property (nonatomic, getter=_isFlowDirectionReversed, setter=_setFlowDirectionReversed:) BOOL _flowDirectionReversed; // @synthesize _flowDirectionReversed=__flowDirectionReversed;
 @property (nonatomic, setter=_setHasAppeared:) BOOL _hasAppeared; // @synthesize _hasAppeared=__hasAppeared;
 @property (copy, nonatomic, setter=_setIndexPathForImageHiddenDuringZoomTransition:) NSIndexPath *_indexPathForImageHiddenDuringZoomTransition; // @synthesize _indexPathForImageHiddenDuringZoomTransition=__indexPathForImageHiddenDuringZoomTransition;
@@ -149,6 +155,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSMutableSet *imageCellsPlayingVideo; // @synthesize imageCellsPlayingVideo=_imageCellsPlayingVideo;
+@property (nonatomic) BOOL observingPopoverContentSizeChange; // @synthesize observingPopoverContentSizeChange=_observingPopoverContentSizeChange;
+@property (copy, nonatomic) CDUnknownBlockType onNextViewLayout; // @synthesize onNextViewLayout=_onNextViewLayout;
 @property (readonly, nonatomic) PUFeedViewControllerSpec *spec; // @synthesize spec=_spec;
 @property (readonly) Class superclass;
 
@@ -162,6 +171,7 @@
 - (id)_assetForItemAtIndexPath:(id)arg1 inCollectionView:(id)arg2;
 - (void)_autoHideBarsNow;
 - (BOOL)_beginInteractiveNavigationForItemAtIndexPath:(id)arg1 inCollectionView:(id)arg2;
+- (BOOL)_beginPlayingVideoInCellIfNeeded:(id)arg1;
 - (id)_browsingSelectedIndexPath;
 - (long long)_browsingSelectedSection;
 - (void)_cancelBarsAutoHide;
@@ -172,6 +182,8 @@
 - (long long)_collectionViewTypeForSize:(struct CGSize)arg1;
 - (id)_collectionViews;
 - (BOOL)_confidentialityWarningRequiredForAsset:(id)arg1;
+- (void)_configureBadgedThumbnailCell:(id)arg1 forThumbnailsAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
+- (void)_configureCaptionCell:(id)arg1 forCaptionAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (void)_configureCollectionView:(id)arg1 isVertical:(BOOL)arg2;
 - (void)_configureImageCell:(id)arg1 forAssetAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (void)_configureImageCell:(id)arg1 forThumbnailAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
@@ -179,13 +191,14 @@
 - (void)_configurePlayerCell:(id)arg1 forAssetAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (void)_configureSpeedometer:(id)arg1;
 - (void)_configureStackCell:(id)arg1 forThumbnailsAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
-- (void)_configureTextCell:(id)arg1 forCaptionAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (void)_configureTextCell:(id)arg1 forCommentAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (BOOL)_configureTextCell:(id)arg1 forFooterOfSection:(long long)arg2 inCollectionView:(id)arg3;
 - (void)_configureTextCell:(id)arg1 forHeaderOfGroupID:(id)arg2 inCollectionView:(id)arg3;
 - (void)_configureTextCell:(id)arg1 forHeaderOfSections:(id)arg2 inCollectionView:(id)arg3 animated:(BOOL)arg4;
 - (void)_configureTextCell:(id)arg1 forLikesAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (void)_configureTextCell:(id)arg1 forTextAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
+- (void)_configureTitleCell:(id)arg1 forHeaderOfSections:(id)arg2 inCollectionView:(id)arg3 animated:(BOOL)arg4;
+- (void)_configureTitleCell:(id)arg1 forTextAtIndexPath:(id)arg2 inCollectionView:(id)arg3;
 - (void)_contextDidFinishRemoteMerge:(id)arg1;
 - (void)_createNewStream;
 - (id)_createOneUpPhotosDataSource;
@@ -200,6 +213,7 @@
 - (void)_didTapThumbnailOrOverlayPlayButtonInFeedCell:(id)arg1;
 - (void)_dismissInvitationsPopoverIfNeeded;
 - (id)_dragItemsForIndexPath:(id)arg1;
+- (void)_endPlayingVideoInCellIfNeeded:(id)arg1;
 - (void)_ensureOneUpPresentationHelper;
 - (void)_ensureWindowOfLoadedSectionInfosIncludesSection:(long long)arg1;
 - (void)_enumerateCenterAssetsInRestorableState:(id)arg1 inCollectionView:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -209,6 +223,8 @@
 - (void)_handlePinch:(id)arg1;
 - (void)_handlePlaceholderAction;
 - (void)_handleTap:(id)arg1;
+- (void)_handleVideoRequestID:(int)arg1 forCellAtIndexPath:(id)arg2 withTag:(long long)arg3;
+- (void)_handleVideoRequestResult:(id)arg1 forCellAtIndexPath:(id)arg2 withTag:(long long)arg3;
 - (id)_indexPathForItemWithAsset:(id)arg1 inCollectionView:(id)arg2;
 - (id)_indexPathForPosition:(struct CGPoint)arg1 inCollectionView:(id)arg2 outHitCell:(id *)arg3;
 - (void)_invalidateCachedMetrics;
@@ -230,6 +246,7 @@
 - (long long)_numberOfSectionInfosForCollectionView:(id)arg1;
 - (void)_openiCloudSettings;
 - (void)_performInterfaceBatchUpdateNow;
+- (void)_performOnNextViewLayout:(CDUnknownBlockType)arg1;
 - (void)_performOneUpDataSourceUpdateNow;
 - (long long)_placeholderTypeForSizeTransitionState:(long long)arg1;
 - (void)_preferredContentSizeChanged:(id)arg1;
@@ -252,16 +269,20 @@
 - (BOOL)_shouldHideSectionInfo:(id)arg1 forCollectionView:(id)arg2;
 - (BOOL)_shouldHideSectionWithType:(long long)arg1 inCollectionViewType:(long long)arg2;
 - (BOOL)_shouldJoinSectionInfo:(id)arg1 withSectionInfo:(id)arg2 collectionViewType:(long long)arg3;
+- (BOOL)_shouldNavigateToNewestContent;
 - (BOOL)_shouldShowBarsForCollectionViewType:(long long)arg1;
 - (BOOL)_shouldShowTransitionUI;
 - (void)_showInvitationsPopoverAnimated:(BOOL)arg1;
 - (void)_showOutOfNetworkInvitationMessageForSharedAlbum:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_startObservingPopoverContentSizeIfNecessary;
+- (void)_stopObservingPopoverContentSizeIfNecessary;
 - (id)_suppressionContexts;
 - (void)_tearDownBrowsing;
 - (id)_textForDate:(id)arg1;
 - (long long)_typeForCollectionView:(id)arg1;
 - (long long)_typeForSectionInfo:(id)arg1;
 - (void)_updateBrowsingAssetContainerList;
+- (void)_updateCellsVideoEnabledness;
 - (void)_updateCollectionViews;
 - (void)_updateEmptyPlaceholderAnimated:(BOOL)arg1;
 - (void)_updateInterfaceForDeletedSections:(id)arg1 insertedSections:(id)arg2 updatedSections:(id)arg3;
@@ -273,6 +294,7 @@
 - (void)_updatePeripheralInterfaceAnimated:(BOOL)arg1;
 - (void)_updatePreheatedAssetsForCollectionView:(id)arg1;
 - (void)_updateSectionsWithCaptionChangesFromUpdatedAssets:(id)arg1;
+- (void)_updateSectionsWithLikesAndCommentChangesFromUpdatedAssets:(id)arg1;
 - (BOOL)_updateSpec;
 - (void)_updateSubviewsOrdering;
 - (void)_updateWindowOfLoadedSectionInfos;
@@ -289,11 +311,14 @@
 - (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (id)collectionView:(id)arg1 layout:(id)arg2 batchIDForTileAtIndexPath:(id)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 captionSizeForTileAtIndexPath:(id)arg3 proposedSize:(struct CGSize)arg4;
+- (long long)collectionView:(id)arg1 layout:(id)arg2 commentCountForTileAtIndexPath:(id)arg3;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 commentSizeForTileAtIndexPath:(id)arg3 commentIndex:(long long)arg4 proposedSize:(struct CGSize)arg5;
 - (long long)collectionView:(id)arg1 layout:(id)arg2 configurationForSectionHeaderType:(long long)arg3;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 contentInsetsForSection:(long long)arg3;
 - (id)collectionView:(id)arg1 layout:(id)arg2 groupIDForSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 headerSizeForGroupID:(id)arg3 proposedSize:(struct CGSize)arg4;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 imageSizeForTileAtIndexPath:(id)arg3;
+- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 likesSizeForTileAtIndexPath:(id)arg3 proposedSize:(struct CGSize)arg4;
 - (struct PUFeedSeparatorMetrics)collectionView:(id)arg1 layout:(id)arg2 metricsForSeparatorBetweenRowAtIndexPath:(id)arg3 andRowAtIndexPath:(id)arg4 proposedMetrics:(struct PUFeedSeparatorMetrics)arg5;
 - (struct PUFeedSeparatorMetrics)collectionView:(id)arg1 layout:(id)arg2 metricsForSeparatorBetweenSection:(long long)arg3 andSection:(long long)arg4 proposedMetrics:(struct PUFeedSeparatorMetrics)arg5;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 mininumSizeForTileAtIndexPath:(id)arg3;
@@ -302,6 +327,7 @@
 - (BOOL)collectionView:(id)arg1 layout:(id)arg2 shouldHideSection:(long long)arg3;
 - (BOOL)collectionView:(id)arg1 layout:(id)arg2 shouldJoinSection:(long long)arg3 withSection:(long long)arg4;
 - (BOOL)collectionView:(id)arg1 layout:(id)arg2 shouldShowCaptionForTileAtIndexPath:(id)arg3;
+- (BOOL)collectionView:(id)arg1 layout:(id)arg2 shouldShowLikesForTileAtIndexPath:(id)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForFooterInSection:(long long)arg3 proposedSize:(struct CGSize)arg4;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForHeaderOfSections:(id)arg3 proposedSize:(struct CGSize)arg4;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForRowAtIndexPath:(id)arg3 proposedSize:(struct CGSize)arg4;
@@ -311,13 +337,13 @@
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
-- (struct CGSize)contentSizeForViewInPopover;
 - (void)dealloc;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (void)didTapButtonInFeedTextCell:(id)arg1;
 - (void)didTapCommentButtonInFeedImageCell:(id)arg1;
 - (void)didTapCommentButtonInFeedPlayerCell:(id)arg1;
 - (void)didTapFeedCell:(id)arg1;
+- (void)didTapLikeButtonInFeedCaptionCell:(id)arg1;
 - (void)didTapOverlayPlayButtonInFeedImageCell:(id)arg1;
 - (void)feedInvitationCell:(id)arg1 didAccept:(BOOL)arg2;
 - (void)feedInvitationCell:(id)arg1 presentViewController:(id)arg2;
@@ -333,13 +359,16 @@
 - (void)navigateToRevealCloudFeedComment:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigateToRevealCloudFeedInvitationForAlbum:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)oneUpPresentationHelper:(id)arg1 didDismissOneUpViewController:(id)arg2;
 - (void)oneUpPresentationHelper:(id)arg1 willPresentOneUpViewController:(id)arg2;
 - (id)oneUpPresentationHelperScrollView:(id)arg1;
 - (BOOL)oneUpPresentationHelperShouldLeaveContentOnSecondScreen:(id)arg1;
 - (id)oneUpPresentationHelperViewController:(id)arg1;
+- (void)performWhenReadyToNavigate:(CDUnknownBlockType)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (id)ppt_currentCollectionView;
+- (struct CGSize)preferredContentSize;
 - (long long)preferredStatusBarUpdateAnimation;
 - (BOOL)prefersStatusBarHidden;
 - (BOOL)prepareForDismissingForced:(BOOL)arg1;
@@ -347,7 +376,6 @@
 - (void)previewingContext:(id)arg1 commitViewController:(id)arg2;
 - (id)previewingContext:(id)arg1 viewControllerForLocation:(struct CGPoint)arg2;
 - (BOOL)pu_handleSecondTabTap;
-- (BOOL)pu_shouldActAsTabRootViewController;
 - (BOOL)pu_wantsNavigationBarVisible;
 - (BOOL)pu_wantsTabBarVisible;
 - (BOOL)pu_wantsToolbarVisible;

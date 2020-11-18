@@ -13,12 +13,16 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_axIsStockWidget;
+- (BOOL)_axIsWeatherWidget;
+- (void)_axSetIsStockWidget:(BOOL)arg1;
+- (void)_axSetIsWeatherWidget:(BOOL)arg1;
+- (void)_configureAttributedString;
 - (id)accessibilityAttributedValue;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
-- (BOOL)axIsStockWidget;
-- (BOOL)axIsWeatherWidget;
 - (BOOL)isAccessibilityElement;
 
 @end

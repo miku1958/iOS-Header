@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLKeyFaceManager : NSObject
 {
 }
 
 + (id)sharedInstance;
-- (void)markPersonAsNeedingKeyFace:(id)arg1;
+- (void)markPersonAsNeedingKeyFace:(id)arg1 photoLibrary:(id)arg2;
 
 @end
 

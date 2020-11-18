@@ -14,12 +14,6 @@
 
 @interface _CPCardSectionEngagementFeedback : PBCodable <_CPProcessableFeedback, _CPCardSectionEngagementFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int timestamp:1;
-        unsigned int triggerEvent:1;
-        unsigned int actionCardType:1;
-        unsigned int destinationWasPARPunchout:1;
-    } _has;
     BOOL _destinationWasPARPunchout;
     int _triggerEvent;
     int _actionCardType;
@@ -42,15 +36,6 @@
 @property (nonatomic) BOOL destinationWasPARPunchout; // @synthesize destinationWasPARPunchout=_destinationWasPARPunchout;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasActionCardType;
-@property (readonly, nonatomic) BOOL hasCardSection;
-@property (readonly, nonatomic) BOOL hasCardSectionId;
-@property (readonly, nonatomic) BOOL hasDestination;
-@property (readonly, nonatomic) BOOL hasDestinationWasPARPunchout;
-@property (readonly, nonatomic) BOOL hasParPunchoutActionTarget;
-@property (readonly, nonatomic) BOOL hasResultId;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
@@ -59,8 +44,8 @@
 @property (copy, nonatomic) NSString *resultId; // @synthesize resultId=_resultId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 
 - (void).cxx_destruct;

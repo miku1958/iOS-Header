@@ -29,6 +29,7 @@
     PHFetchResult *_placesAssetsFetchResult;
     PHFetchResult *_assetCountFetchResult;
     NSTimer *_assetCountChangedTimer;
+    NSMutableArray *_localSearches;
 }
 
 @property (strong, nonatomic) NSTimer *assetCountChangedTimer; // @synthesize assetCountChangedTimer=_assetCountChangedTimer;
@@ -39,26 +40,31 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isRegisteredForPhotoLibraryChanges; // @synthesize isRegisteredForPhotoLibraryChanges=_isRegisteredForPhotoLibraryChanges;
+@property (strong, nonatomic) NSMutableArray *localSearches; // @synthesize localSearches=_localSearches;
 @property (strong, nonatomic) PHFetchResult *placesAssetsFetchResult; // @synthesize placesAssetsFetchResult=_placesAssetsFetchResult;
 @property (strong, nonatomic) PHAssetCollection *placesCollection; // @synthesize placesCollection=_placesCollection;
 @property (strong, nonatomic) PHAsset *snapshottedAsset; // @synthesize snapshottedAsset=_snapshottedAsset;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addLocalSearch:(id)arg1;
 - (void)_fetchImageOfAsset:(id)arg1 withSnapshotOptions:(id)arg2 andCompletion:(CDUnknownBlockType)arg3;
 - (void)_handleAsyncPlacesLibraryAlbumSnapshotWithSnapshotOptions:(id)arg1 andCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_imageExistsWithLocalIdentifier:(id)arg1;
 - (id)_latestAssetWithLocation;
 - (id)_placeHolderImageForExtendedTraitCollection:(id)arg1;
+- (void)_removeLocalSearch:(id)arg1;
+- (void)_requestPlacesSnapshotWithSnapshotOptions:(id)arg1 visibleRegion:(CDStruct_26e8d939)arg2 andCompletion:(CDUnknownBlockType)arg3;
 - (void)_saveImage:(id)arg1 ofAsset:(id)arg2 atPath:(id)arg3;
 - (long long)assetCountWithForcedRefresh:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)photoLibraryDidChange:(id)arg1;
 - (void)removePreviousCachedImage;
+- (void)requestAssetCountWithForcedRefresh:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)requestMapSnapshotForQuery:(id)arg1 snapshotOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestPlacesImageOfAsset:(id)arg1 withSnapshotOptions:(id)arg2 andCompletion:(CDUnknownBlockType)arg3;
 - (void)requestPlacesLibraryAlbumSnapshotWithSnapshotOptions:(id)arg1 andCompletion:(CDUnknownBlockType)arg2;
-- (void)requestPlacesLibraryImageWithSnapshotOptions:(id)arg1 andCompletion:(CDUnknownBlockType)arg2;
 - (void)requestPlacesSnapshotWithSnapshotOptions:(id)arg1 assets:(id)arg2 andCompletion:(CDUnknownBlockType)arg3;
 - (void)tickAssetCountChangedTimer:(id)arg1;
 

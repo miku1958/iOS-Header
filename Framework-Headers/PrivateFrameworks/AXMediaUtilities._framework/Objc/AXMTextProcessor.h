@@ -20,7 +20,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)_preprocessText:(id)arg1;
+- (id)_preprocessText:(id)arg1 diagnostics:(id)arg2;
 - (id)dataDetector;
 - (id)init;
 - (id)lexiconManager;

@@ -8,26 +8,21 @@
 
 #import <GeoServices/GEOActiveTileGroupMigrationTask-Protocol.h>
 
-@class GEOActiveTileGroup, GEORegionalResourcesVersionMigrator, GEOReportedProgress, GEOResourceLoader, GEOResourceManifestConfiguration, GEOResources, GEOTileGroup, NSArray, NSProgress, NSSet, NSString;
+@class GEORegionalResourcesVersionMigrator, GEOReportedProgress, GEOResourceManifestConfiguration, GEOResources, GEOTileGroup, NSProgress, NSSet, NSString;
 @protocol NSObject, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _GEORegionalResourcesVersionMigrationTask : NSObject <GEOActiveTileGroupMigrationTask>
 {
     GEORegionalResourcesVersionMigrator *_migrator;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    BOOL _running;
     GEOResourceManifestConfiguration *_manifestConfiguration;
     GEOTileGroup *_newTileGroup;
     GEOResources *_resourceManifest;
-    GEOActiveTileGroup *_oldTileGroup;
     NSSet *_activeScales;
     NSSet *_activeScenarios;
     CDUnknownBlockType _completionHandler;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     GEOReportedProgress *_progress;
-    GEOResourceLoader *_resourceLoader;
-    NSArray *_loadedResources;
     id<NSObject> _transaction;
 }
 
@@ -39,13 +34,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) id<NSObject> transaction; // @synthesize transaction=_transaction;
 
-+ (id)_resourceLoaderFactoryWithTargetDirectory:(id)arg1 baseURLString:(id)arg2 resources:(id)arg3 maximumConcurrentLoads:(unsigned long long)arg4 additionalDirectoryToConsider:(id)arg5;
 + (id)_resourcesDirectory:(id)arg1;
 - (void).cxx_destruct;
 - (id)_resourcesDirectory;
 - (void)cancel;
 - (id)init;
-- (id)initWithMigrator:(id)arg1 manifestConfiguration:(id)arg2 newTileGroup:(id)arg3 inResourceManifest:(id)arg4 oldTileGroup:(id)arg5 activeScales:(id)arg6 activeScenarios:(id)arg7;
+- (id)initWithMigrator:(id)arg1 manifestConfiguration:(id)arg2 newTileGroup:(id)arg3 inResourceManifest:(id)arg4 activeScales:(id)arg5 activeScenarios:(id)arg6;
 - (void)populateTileGroup:(id)arg1;
 - (void)removeOldData:(id)arg1;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;

@@ -6,19 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCConnection;
+#import <Intents/INImageLoading-Protocol.h>
+#import <Intents/INImageStoring-Protocol.h>
 
-@interface INImageServiceConnection : NSObject
+@class NSCache, NSString, NSXPCConnection;
+
+@interface INImageServiceConnection : NSObject <INImageLoading, INImageStoring>
 {
-    NSXPCConnection *_underlyingConnection;
+    NSXPCConnection *_connection;
+    NSCache *_localStorageCache;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *serviceIdentifier;
+@property (readonly, nonatomic) unsigned long long servicePriority;
+@property (readonly) Class superclass;
 
 + (id)sharedConnection;
 - (void).cxx_destruct;
-- (id)_init;
+- (id)_localStorageCache;
+- (BOOL)canLoadImageDataForImage:(id)arg1;
+- (BOOL)canStoreImage:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)loadDataImageFromImage:(id)arg1 scaledSize:(CDStruct_8caa76fc)arg2 error:(id *)arg3;
+- (void)loadDataImageFromImage:(id)arg1 usingPortableImageLoader:(id)arg2 scaledSize:(CDStruct_8caa76fc)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)loadImageDataAndSizeForImage:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)loadSchemasForBundleIdentifiers:(id)arg1 error:(id *)arg2;
+- (void)purgeImageWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)retrieveImageWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)serviceProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)storeImage:(id)arg1 scaled:(BOOL)arg2 qualityOfService:(unsigned int)arg3 storeType:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)synchronousServiceProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 
 @end
 

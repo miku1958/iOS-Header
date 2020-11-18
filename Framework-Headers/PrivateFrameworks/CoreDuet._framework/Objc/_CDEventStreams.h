@@ -10,20 +10,28 @@
 
 @interface _CDEventStreams : NSObject
 {
-    NSDictionary *_allKBEventStreams;
+    BOOL _allStreamsLoaded;
     NSDictionary *_allEventStreams;
+    NSDictionary *_allKBEventStreams;
 }
 
 @property (readonly, nonatomic) NSDictionary *allEventStreams; // @synthesize allEventStreams=_allEventStreams;
+@property (strong, nonatomic) NSDictionary *allKBEventStreams; // @synthesize allKBEventStreams=_allKBEventStreams;
+@property (nonatomic) BOOL allStreamsLoaded; // @synthesize allStreamsLoaded=_allStreamsLoaded;
 
 + (id)ephemeralitySchedule;
 + (id)eventStreamForName:(id)arg1;
++ (id)eventStreamPropertiesForEventStream:(id)arg1;
 + (id)eventStreamPropertiesForKBName:(id)arg1;
 + (id)eventStreamPropertiesForName:(id)arg1;
-+ (id)privacyPolicy;
-+ (id)rateLimitPolicy;
++ (void)loadAllEventStreams;
++ (id)privacyPolicyForEventStreamName:(id)arg1;
++ (id)rateLimiterForEventStreamName:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_eventStreamForName:(id)arg1 orKBName:(id)arg2;
+- (id)init;
+- (void)setAllEventStreams:(id)arg1;
 
 @end
 

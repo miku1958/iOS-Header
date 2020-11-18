@@ -9,7 +9,7 @@
 #import <MediaPlayer/MPVolumeControllerDelegate-Protocol.h>
 #import <MediaPlayer/MPVolumeDisplaying-Protocol.h>
 
-@class MPAVController, MPAVRoute, MPVolumeController, NSString, NSTimer, UIImage, UIImageView, UILabel, UILayoutGuide, UIView;
+@class MPAVController, MPAVEndpointRoute, MPAVOutputDeviceRoute, MPAVRoute, MPVolumeController, NSString, NSTimer, UIImage, UIImageView, UILabel, UILayoutGuide, UIView;
 
 @interface MPVolumeSlider : UISlider <MPVolumeControllerDelegate, MPVolumeDisplaying>
 {
@@ -24,7 +24,7 @@
     UIView *_volumeWarningView;
     BOOL _volumeWarningBlinking;
     UIImage *_volumeWarningTrackImage;
-    BOOL _userWasBlocked;
+    BOOL _beganTrackingFromEUVolumeLimit;
     double _originalMinTrackViewAlphaOverride;
     double _originalMinValueViewAlphaOverride;
     double _originalMaxValueViewAlphaOverride;
@@ -32,19 +32,24 @@
     float _optimisticValue;
     UILayoutGuide *_trackLayoutGuide;
     MPVolumeController *_volumeController;
+    MPAVController *_player;
+    MPAVEndpointRoute *_groupRoute;
+    MPAVOutputDeviceRoute *_outputDeviceRoute;
     struct UIEdgeInsets _hitRectInsets;
 }
 
 @property (nonatomic, setter=_setIsOffScreen:) BOOL _isOffScreen;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) MPAVEndpointRoute *groupRoute; // @synthesize groupRoute=_groupRoute;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets hitRectInsets; // @synthesize hitRectInsets=_hitRectInsets;
 @property (readonly, nonatomic, getter=isOnScreen) BOOL onScreen;
 @property (readonly, nonatomic, getter=isOnScreenForVolumeDisplay) BOOL onScreenForVolumeDisplay;
 @property (nonatomic, getter=isInOptimisticState) BOOL optimisticState; // @synthesize optimisticState=_optimisticState;
 @property (nonatomic) float optimisticValue; // @synthesize optimisticValue=_optimisticValue;
-@property (strong, nonatomic) MPAVController *player;
+@property (strong, nonatomic) MPAVOutputDeviceRoute *outputDeviceRoute; // @synthesize outputDeviceRoute=_outputDeviceRoute;
+@property (strong, nonatomic) MPAVController *player; // @synthesize player=_player;
 @property (strong, nonatomic) MPAVRoute *route;
 @property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
@@ -81,7 +86,7 @@
 - (struct CGRect)hitRect;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
-- (id)initWithoutDataSource:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2 endpointRoute:(id)arg3 outputDeviceRoute:(id)arg4;
 - (void)layoutSubviews;
 - (float)maximumValue;
 - (float)minimumValue;
@@ -99,6 +104,7 @@
 - (void)volumeController:(id)arg1 volumeControlAvailableDidChange:(BOOL)arg2;
 - (void)volumeController:(id)arg1 volumeControlLabelDidChange:(id)arg2;
 - (void)volumeController:(id)arg1 volumeValueDidChange:(float)arg2;
+- (void)volumeController:(id)arg1 volumeWarningStateDidChange:(long long)arg2;
 
 @end
 

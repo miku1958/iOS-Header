@@ -9,6 +9,7 @@
 #import <MobileTimer/MTDictionarySerializable-Protocol.h>
 #import <MobileTimer/MTDiffable-Protocol.h>
 #import <MobileTimer/MTScheduleable-Protocol.h>
+#import <MobileTimer/MTTimerIntentSupport-Protocol.h>
 #import <MobileTimer/NAEquatable-Protocol.h>
 #import <MobileTimer/NSCopying-Protocol.h>
 #import <MobileTimer/NSMutableCopying-Protocol.h>
@@ -17,7 +18,7 @@
 @class MTSound, NSDate, NSString, NSURL, NSUUID;
 @protocol MTTimerTime;
 
-@interface MTTimer : NSObject <MTScheduleable, MTDictionarySerializable, MTDiffable, NAEquatable, NSCopying, NSMutableCopying, NSSecureCoding>
+@interface MTTimer : NSObject <MTScheduleable, MTDictionarySerializable, MTDiffable, MTTimerIntentSupport, NAEquatable, NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSUUID *_timerID;
     unsigned long long _state;
@@ -36,38 +37,52 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDate *dismissedDate; // @synthesize dismissedDate=_dismissedDate;
 @property (readonly, nonatomic) NSString *displayTitle;
+@property (readonly, nonatomic) double duration;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
+@property (readonly, nonatomic) NSDate *fireDate;
 @property (copy, nonatomic) id<MTTimerTime> fireTime; // @synthesize fireTime=_fireTime;
 @property (copy, nonatomic) NSDate *firedDate; // @synthesize firedDate=_firedDate;
+@property (readonly, nonatomic) BOOL hasDefaultTitle;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSDate *lastModifiedDate;
 @property (copy, nonatomic) NSDate *lastModifiedDate; // @synthesize lastModifiedDate=_lastModifiedDate;
 @property (readonly, nonatomic) double remainingTime;
+@property (readonly, nonatomic) double remainingTime;
 @property (copy, nonatomic) MTSound *sound; // @synthesize sound=_sound;
+@property (readonly, nonatomic) unsigned long long state;
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSUUID *timerID;
 @property (readonly, nonatomic) NSUUID *timerID; // @synthesize timerID=_timerID;
 @property (readonly, nonatomic) NSString *timerIDString;
 @property (readonly, nonatomic) NSURL *timerURL;
+@property (readonly, nonatomic) NSString *title;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)_timerTimeForState:(unsigned long long)arg1 remainingTime:(double)arg2 currentDateProvider:(CDUnknownBlockType)arg3;
++ (id)currentTimerFromTimers:(id)arg1;
 + (id)descriptionForState:(unsigned long long)arg1;
++ (BOOL)stateChangeIsAllowableFromState:(unsigned long long)arg1 toState:(unsigned long long)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_copyStateOntoTimer:(id)arg1;
-- (id)_initForCopy;
+- (id)_initCommon;
 - (BOOL)_isEqualToTimer:(id)arg1 checkLastModified:(BOOL)arg2;
 - (void)_setDuration:(double)arg1;
 - (long long)compare:(id)arg1;
@@ -78,6 +93,7 @@
 - (id)initWithIdentifier:(id)arg1;
 - (id)initWithState:(unsigned long long)arg1 duration:(double)arg2;
 - (id)initWithState:(unsigned long long)arg1 duration:(double)arg2 currentDateProvider:(CDUnknownBlockType)arg3;
+- (BOOL)isCurrentTimer;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualIgnoringLastModifiedDate:(id)arg1;
 - (BOOL)isEqualToTimer:(id)arg1;

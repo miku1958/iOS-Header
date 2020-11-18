@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMSharedUtilities/CUTPowerMonitorDelegate-Protocol.h>
 #import <IMSharedUtilities/CUTWiFiManagerDelegate-Protocol.h>
@@ -25,6 +25,7 @@
 + (id)sharedInstance;
 - (id)_getExternalLastConnectedDate;
 - (double)_getExternalTotalDuration;
+- (id)_getPowerAndWifiDictionaryForKey:(id)arg1;
 - (BOOL)_isOnPower;
 - (BOOL)_isWifiUsable;
 - (void)_notePowerDidChangeForInternalCollection:(BOOL)arg1 isOnWifi:(BOOL)arg2;
@@ -40,7 +41,6 @@
 - (void)dealloc;
 - (void)disconnectFromResourceForTotalDurationKey:(id)arg1 dateKey:(id)arg2 powerWifiDict:(id)arg3;
 - (void)disconnectedFromAResource_ExternalCollection;
-- (id)getPowerAndWifiDictionaryForKey:(id)arg1;
 - (id)init;
 - (void)reconnectToResourceForTotalDurationKey:(id)arg1 dateKey:(id)arg2 powerWifiDict:(id)arg3;
 - (void)reconnectedToBothResources_ExternalCollection;

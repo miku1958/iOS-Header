@@ -7,19 +7,26 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBIntentSupport-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBIntentSupport : PBCodable <NSCopying>
+@interface _INPBIntentSupport : PBCodable <_INPBIntentSupport, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_intentsRestrictedWhileLockeds;
-    NSMutableArray *_intentsSupporteds;
+    struct _has;
+    NSArray *_intentsRestrictedWhileLockeds;
+    NSArray *_intentsSupporteds;
 }
 
-@property (strong, nonatomic) NSMutableArray *intentsRestrictedWhileLockeds; // @synthesize intentsRestrictedWhileLockeds=_intentsRestrictedWhileLockeds;
-@property (strong, nonatomic) NSMutableArray *intentsSupporteds; // @synthesize intentsSupporteds=_intentsSupporteds;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *intentsRestrictedWhileLockeds; // @synthesize intentsRestrictedWhileLockeds=_intentsRestrictedWhileLockeds;
+@property (readonly, nonatomic) unsigned long long intentsRestrictedWhileLockedsCount;
+@property (copy, nonatomic) NSArray *intentsSupporteds; // @synthesize intentsSupporteds=_intentsSupporteds;
+@property (readonly, nonatomic) unsigned long long intentsSupportedsCount;
+@property (readonly) Class superclass;
 
 + (Class)intentsRestrictedWhileLockedType;
 + (Class)intentsSupportedType;
@@ -29,15 +36,10 @@
 - (void)clearIntentsRestrictedWhileLockeds;
 - (void)clearIntentsSupporteds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (id)intentsRestrictedWhileLockedAtIndex:(unsigned long long)arg1;
-- (unsigned long long)intentsRestrictedWhileLockedsCount;
 - (id)intentsSupportedAtIndex:(unsigned long long)arg1;
-- (unsigned long long)intentsSupportedsCount;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

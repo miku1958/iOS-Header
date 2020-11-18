@@ -11,13 +11,13 @@
 __attribute__((visibility("hidden")))
 @interface TSTStringNode : TSTExpressionNode
 {
-    NSString *mValue;
+    NSString *_value;
 }
 
-@property (strong, nonatomic) NSString *value;
+@property (strong, nonatomic) NSString *value; // @synthesize value=_value;
 
+- (void).cxx_destruct;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
-- (void)dealloc;
 - (id)exportString;
 - (void)fixStorageLanguage:(id)arg1;
 - (id)formulaPlainText;
@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqualToExpressionNode:(id)arg1;
 - (void)loadFromArchive:(const struct StringNodeArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
-- (id)p_languageGuessForString:(id)arg1 isRTL:(BOOL *)arg2;
 - (struct TSTCSENodeData)recordHashesForSubexpressions:(id)arg1;
 - (void)saveToArchive:(struct StringNodeArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;

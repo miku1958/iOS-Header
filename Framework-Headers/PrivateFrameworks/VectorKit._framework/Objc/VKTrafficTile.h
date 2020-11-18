@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (const struct TrafficMeshStyle *)builtTrafficStyle;
 - (void)dealloc;
 - (id)description;
-- (id)initWithKey:(const struct VKTileKey *)arg1 downloadKey:(const struct _GEOTileKey *)arg2 data:(id)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_9226c869 *)arg7;
+- (id)initWithKey:(const struct VKTileKey *)arg1 downloadKey:(const struct _GEOTileKey *)arg2 data:(id)arg3 userInfo:(id)arg4 styleManager:(shared_ptr_a3c46825)arg5 sharedResources:(id)arg6 contentScale:(double)arg7 device:(Device_9226c869 *)arg8;
 - (void)setupStyleAttributesWithRoadData:(id)arg1;
 
 @end

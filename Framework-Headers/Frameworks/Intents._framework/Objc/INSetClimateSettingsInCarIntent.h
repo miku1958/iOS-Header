@@ -8,13 +8,14 @@
 
 #import <Intents/INSetClimateSettingsInCarIntentExport-Protocol.h>
 
-@class NSMeasurement, NSNumber, NSString;
+@class INSpeakableString, NSMeasurement, NSNumber, NSString;
 
 @interface INSetClimateSettingsInCarIntent : INIntent <INSetClimateSettingsInCarIntentExport>
 {
 }
 
 @property (readonly, nonatomic) long long airCirculationMode;
+@property (readonly, copy, nonatomic) INSpeakableString *carName;
 @property (readonly, nonatomic) long long climateZone;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -30,14 +31,19 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSMeasurement *temperature;
 
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
+- (long long)_intentCategory;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithEnableFan:(id)arg1 enableAirConditioner:(id)arg2 enableClimateControl:(id)arg3 enableAutoMode:(id)arg4 airCirculationMode:(long long)arg5 fanSpeedIndex:(id)arg6 fanSpeedPercentage:(id)arg7 relativeFanSpeedSetting:(long long)arg8 temperature:(id)arg9 relativeTemperatureSetting:(long long)arg10 climateZone:(long long)arg11;
+- (id)initWithEnableFan:(id)arg1 enableAirConditioner:(id)arg2 enableClimateControl:(id)arg3 enableAutoMode:(id)arg4 airCirculationMode:(long long)arg5 fanSpeedIndex:(id)arg6 fanSpeedPercentage:(id)arg7 relativeFanSpeedSetting:(long long)arg8 temperature:(id)arg9 relativeTemperatureSetting:(long long)arg10 climateZone:(long long)arg11 carName:(id)arg12;
 - (id)parametersByName;
 - (void)setAirCirculationMode:(long long)arg1;
+- (void)setCarName:(id)arg1;
 - (void)setClimateZone:(long long)arg1;
 - (void)setDomain:(id)arg1;
 - (void)setEnableAirConditioner:(id)arg1;

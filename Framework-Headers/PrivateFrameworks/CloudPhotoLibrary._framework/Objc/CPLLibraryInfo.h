@@ -6,14 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class CPLAccountFlags, CPLFeatureVersionHistory, NSData, NSDictionary;
+#import <CloudPhotoLibrary/NSCopying-Protocol.h>
+#import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
 
-@interface CPLLibraryInfo : NSObject
+@class CPLAccountFlags, CPLFeatureVersionHistory, CPLMomentShare, NSData, NSDictionary;
+
+@interface CPLLibraryInfo : NSObject <NSSecureCoding, NSCopying>
 {
     NSDictionary *_assetCounts;
     CPLFeatureVersionHistory *_featureVersionHistory;
-    NSData *_lastKnownSyncAnchor;
+    struct NSData *_lastKnownSyncAnchor;
     NSData *_accountFlagsData;
+    CPLMomentShare *_momentShare;
 }
 
 @property (readonly, nonatomic) CPLAccountFlags *accountFlags;
@@ -21,8 +25,13 @@
 @property (copy, nonatomic) NSDictionary *assetCounts; // @synthesize assetCounts=_assetCounts;
 @property (strong, nonatomic) CPLFeatureVersionHistory *featureVersionHistory; // @synthesize featureVersionHistory=_featureVersionHistory;
 @property (copy, nonatomic) NSData *lastKnownSyncAnchor; // @synthesize lastKnownSyncAnchor=_lastKnownSyncAnchor;
+@property (strong, nonatomic) CPLMomentShare *momentShare; // @synthesize momentShare=_momentShare;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)prettyDescriptionWithAnchorDesciptionBlock:(CDUnknownBlockType)arg1;
 
 @end

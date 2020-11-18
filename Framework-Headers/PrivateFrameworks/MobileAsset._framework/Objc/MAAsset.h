@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSString;
 
@@ -24,22 +24,30 @@
 + (void)startCatalogDownload:(id)arg1 options:(id)arg2 then:(CDUnknownBlockType)arg3;
 + (void)startCatalogDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (id)assetProperty:(id)arg1;
+- (id)assetServerUrl;
 - (void)attachProgressCallBack:(CDUnknownBlockType)arg1;
 - (long long)calculateTimeout;
 - (void)cancelDownload:(CDUnknownBlockType)arg1;
+- (long long)cancelDownloadSync;
 - (void)commonAssetDownload:(id)arg1 options:(id)arg2 then:(CDUnknownBlockType)arg3;
+- (void)configDownload:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (long long)configDownloadSync:(id)arg1;
 - (id)createExtractor;
 - (void)dealloc;
 - (id)getLocalFileUrl;
 - (id)getLocalUrl;
 - (id)hashToString:(id)arg1;
 - (id)initWithAttributes:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (void)logAsset;
 - (void)purge:(CDUnknownBlockType)arg1;
+- (long long)purgeSync;
 - (BOOL)refreshState;
+- (BOOL)spaceCheck:(long long *)arg1;
 - (void)startDownload:(CDUnknownBlockType)arg1;
 - (void)startDownload:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (void)startDownloadWithExtractor:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)startDownloadWithExtractor:(CDUnknownBlockType)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

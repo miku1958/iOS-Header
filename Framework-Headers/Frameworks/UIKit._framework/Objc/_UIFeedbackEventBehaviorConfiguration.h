@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UINotificationFeedbackGeneratorConfiguration.h>
+#import <UIKitCore/_UINotificationFeedbackGeneratorConfiguration.h>
 
 @interface _UIFeedbackEventBehaviorConfiguration : _UINotificationFeedbackGeneratorConfiguration
 {

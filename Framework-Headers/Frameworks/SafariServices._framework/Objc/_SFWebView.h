@@ -27,6 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_SFWebViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UIView *effectiveViewToLayOut;
 @property (readonly, copy, nonatomic) NSString *evOrganizationName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets hitTestInsets; // @synthesize hitTestInsets=_hitTestInsets;

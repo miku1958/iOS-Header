@@ -13,6 +13,7 @@
 @class NSString, NURenderPipelineFilter, PLEditSource, PLPhotoEditAggregateSession, PLPhotoEditMutableModel, PUPhotoEditToolControllerSpec, PUPhotoEditValuesCalculator, UIButton, UIColor, UIImage;
 @protocol PUPhotoEditToolControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditToolController : UIViewController <PUViewControllerSpecChangeObserver, PUPhotoEditLayoutDynamicAdaptable, UIScrollViewDelegate>
 {
     BOOL _performingLiveInteraction;
@@ -61,8 +62,6 @@
 - (void)_photoEditModelDidChange:(id)arg1;
 - (void)_updateTraitCollectionAndLayoutReferenceSize;
 - (void)_updateTraitCollectionAndLayoutReferenceSize:(struct CGSize)arg1;
-- (void)animateBecomingActiveTool;
-- (void)animateResigningActiveTool;
 - (void)baseLivePhotoInvalidated;
 - (void)basePhotoInvalidated;
 - (BOOL)canBecomeActiveTool;
@@ -70,10 +69,12 @@
 - (void)dealloc;
 - (void)didBecomeActiveTool;
 - (void)didResignActiveTool;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
 - (BOOL)installTogglePreviewGestureRecognizer:(id)arg1;
 - (void)loadView;
+- (void)mediaViewIsReady;
 - (void)photoEditModelDidChange;
 - (void)prepareForSave;
 - (void)resetToDefaultValueAnimated:(BOOL)arg1;

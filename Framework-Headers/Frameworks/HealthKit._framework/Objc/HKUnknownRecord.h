@@ -16,16 +16,16 @@
     NSString *_displayName;
 }
 
-@property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
-@property (readonly, nonatomic) HKUnknownRecordType *unknownRecordType;
+@property (readonly, copy) NSString *displayName;
+@property (readonly, copy) HKUnknownRecordType *unknownRecordType;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)defaultDisplayString;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
-+ (id)unknownRecordWithNote:(id)arg1 enteredInError:(BOOL)arg2 modifiedDate:(id)arg3 FHIRIdentifier:(id)arg4 extractionVersion:(long long)arg5 device:(id)arg6 metadata:(id)arg7 displayName:(id)arg8;
++ (id)unknownRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 displayName:(id)arg9;
++ (id)unknownRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 displayName:(id)arg10;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_setDisplayName:(id)arg1;
 - (id)_validateConfiguration;
 - (id)copyWithZone:(struct _NSZone *)arg1;

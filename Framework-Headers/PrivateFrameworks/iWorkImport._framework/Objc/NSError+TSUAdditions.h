@@ -9,6 +9,7 @@
 @interface NSError (TSUAdditions)
 
 @property (readonly, nonatomic) BOOL tsu_isCancelError;
+@property (readonly, nonatomic) BOOL tsu_isNoPermissionError;
 @property (readonly, nonatomic) BOOL tsu_isNoSuchFileError;
 @property (readonly, nonatomic) BOOL tsu_isOutOfSpaceError;
 
@@ -18,6 +19,7 @@
 + (id)tsu_errorWithDomain:(id)arg1 code:(long long)arg2 description:(id)arg3 recoverySuggestion:(id)arg4;
 + (id)tsu_errorWithDomain:(id)arg1 code:(long long)arg2 description:(id)arg3 underlyingError:(id)arg4;
 + (id)tsu_errorWithError:(id)arg1 alertTitle:(id)arg2 alertMessage:(id)arg3 additionalUserInfo:(id)arg4;
+- (void)tsu_enumerateErrorUsingBlock:(CDUnknownBlockType)arg1;
 - (id)tsu_errorPreservingAlertTitle;
 - (id)tsu_errorPreservingCancel;
 - (BOOL)tsu_isErrorPassingTest:(CDUnknownBlockType)arg1;

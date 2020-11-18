@@ -14,6 +14,7 @@
     BOOL _treatsForcePressAsLongPress;
     BOOL _multipleTouchesEndsTracking;
     BOOL _disablesHighlightWhenLongPressed;
+    BOOL _clampsHitRectInsetsWhenContainedInScrollableView;
     BOOL _wasForcePressTriggered;
     BOOL _collapsed;
     BOOL _included;
@@ -38,6 +39,7 @@
     struct NSDirectionalEdgeInsets _hitRectInsets;
 }
 
+@property (nonatomic) BOOL clampsHitRectInsetsWhenContainedInScrollableView; // @synthesize clampsHitRectInsetsWhenContainedInScrollableView=_clampsHitRectInsetsWhenContainedInScrollableView;
 @property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
 @property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded;
 @property (nonatomic) BOOL disablesHighlightWhenLongPressed; // @synthesize disablesHighlightWhenLongPressed=_disablesHighlightWhenLongPressed;
@@ -73,6 +75,7 @@
 - (struct CGSize)_preferredLayoutSize;
 - (void)_resetTrackedState;
 - (void)_updateImageIfNeeded;
+- (void)_updateIsHiddenAndAlpha;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (void)cancelTrackingWithEvent:(id)arg1;
 - (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;

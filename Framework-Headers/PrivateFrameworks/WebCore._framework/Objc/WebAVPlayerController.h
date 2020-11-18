@@ -88,12 +88,13 @@ __attribute__((visibility("hidden")))
 @property (strong) AVPlayerController *playerControllerProxy; // @synthesize playerControllerProxy=_playerControllerProxy;
 @property (getter=isPlaying) BOOL playing;
 @property (readonly, getter=isPlayingOnExternalScreen) BOOL playingOnExternalScreen;
-@property (readonly, getter=isPlayingOnSecondScreen) BOOL playingOnSecondScreen; // @synthesize playingOnSecondScreen=_playingOnSecondScreen;
+@property (nonatomic, getter=isPlayingOnSecondScreen) BOOL playingOnSecondScreen; // @synthesize playingOnSecondScreen=_playingOnSecondScreen;
 @property double rate; // @synthesize rate=_rate;
 @property (strong) NSArray *seekableTimeRanges; // @synthesize seekableTimeRanges=_seekableTimeRanges;
 @property double seekableTimeRangesLastModifiedTime; // @synthesize seekableTimeRangesLastModifiedTime=_seekableTimeRangesLastModifiedTime;
 @property long long status; // @synthesize status=_status;
 @property (strong) AVValueTiming *timing; // @synthesize timing=_timing;
+@property double volume;
 
 + (id)keyPathsForValuesAffectingCanScanForward;
 + (id)keyPathsForValuesAffectingCanSeekToBeginning;
@@ -140,6 +141,7 @@ __attribute__((visibility("hidden")))
 - (void)togglePlayback:(id)arg1;
 - (void)togglePlaybackEvenWhenInBackground:(id)arg1;
 - (void)updateMinMaxTiming;
+- (void)volumeChanged:(double)arg1;
 
 @end
 

@@ -6,9 +6,13 @@
 
 #import <NeutrinoCore/NUImageRenderRequest.h>
 
+@protocol NUMutableBufferImage;
+
 @interface NUBufferRenderRequest : NUImageRenderRequest
 {
 }
+
+@property id<NUMutableBufferImage> targetBufferImage;
 
 - (id)newRenderJob;
 - (void)submit:(CDUnknownBlockType)arg1;

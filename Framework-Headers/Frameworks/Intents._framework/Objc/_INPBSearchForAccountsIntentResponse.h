@@ -7,31 +7,32 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSearchForAccountsIntentResponse-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBSearchForAccountsIntentResponse : PBCodable <NSCopying>
+@interface _INPBSearchForAccountsIntentResponse : PBCodable <_INPBSearchForAccountsIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_accounts;
+    struct _has;
+    NSArray *_accounts;
 }
 
-@property (strong, nonatomic) NSMutableArray *accounts; // @synthesize accounts=_accounts;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSArray *accounts; // @synthesize accounts=_accounts;
+@property (readonly, nonatomic) unsigned long long accountsCount;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (Class)accountsType;
-+ (id)options;
 - (void).cxx_destruct;
 - (id)accountsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)accountsCount;
 - (void)addAccounts:(id)arg1;
 - (void)clearAccounts;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <AdCore/ADSingleton.h>
 
-@class ACAccount, NSString, NSURL, NSUUID, SSAccount;
+@class ACAccount, NSString, NSURL, NSUUID;
 
 @interface ADCoreSettings : ADSingleton
 {
@@ -16,7 +16,6 @@
     int _connectionType;
     float _timezone;
     int _runState;
-    NSUUID *_IDFA;
     NSURL *_defaultServerURL;
     NSURL *_defaultConfigurationServerURL;
     double _jingleTimeoutInterval;
@@ -34,7 +33,7 @@
     NSString *_iTunesStorefront;
 }
 
-@property (strong, nonatomic) NSUUID *IDFA; // @synthesize IDFA=_IDFA;
+@property (readonly, nonatomic) NSUUID *IDFA;
 @property (nonatomic) double NSURLConnectionTimeout; // @synthesize NSURLConnectionTimeout=_NSURLConnectionTimeout;
 @property (nonatomic) double NSURLTransactionTimeout; // @synthesize NSURLTransactionTimeout=_NSURLTransactionTimeout;
 @property (nonatomic) double adServerTimeoutInterval; // @synthesize adServerTimeoutInterval=_adServerTimeoutInterval;
@@ -54,12 +53,14 @@
 @property (readonly, nonatomic) ACAccount *iCloudAccount;
 @property (readonly, nonatomic) NSString *iCloudAccountIdentifier;
 @property (readonly, nonatomic) NSString *iCloudDSID;
-@property (readonly, nonatomic) NSString *iTunesAccountIdentifier;
-@property (readonly, nonatomic) SSAccount *iTunesStoreAccount;
+@property (readonly, nonatomic) NSString *iTunesAccountDSID;
+@property (readonly, nonatomic) ACAccount *iTunesStoreAccount;
 @property (strong, nonatomic) NSString *iTunesStorefront; // @synthesize iTunesStorefront=_iTunesStorefront;
 @property (nonatomic) BOOL internationalRoaming; // @synthesize internationalRoaming=_internationalRoaming;
+@property (nonatomic) BOOL isLATEnabled;
 @property (readonly, nonatomic) BOOL isManagedAppleID;
 @property (readonly, nonatomic) BOOL isManagediCloudAccount;
+@property (readonly, nonatomic) BOOL isManagediTunesAccount;
 @property (nonatomic) double jingleTimeoutInterval; // @synthesize jingleTimeoutInterval=_jingleTimeoutInterval;
 @property (readonly, nonatomic) BOOL limitAdTrackingRestrictionEnabledBySpringboard;
 @property (readonly, nonatomic) NSString *localeIdentifier;
@@ -73,11 +74,15 @@
 + (BOOL)educationModeEnabled;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)clearAdvertisingIdentifier;
 - (id)deviceDescription;
 - (int)deviceRunStateForBundleIdentifier:(id)arg1;
+- (BOOL)deviceUnlockedOnce;
 - (void)expire;
 - (void)gatherTelephonyData;
 - (id)init;
+- (BOOL)isLATRestrictedByProfile;
+- (BOOL)purpleBuddyWillRun;
 - (void)reloadStorefront:(CDUnknownBlockType)arg1;
 
 @end

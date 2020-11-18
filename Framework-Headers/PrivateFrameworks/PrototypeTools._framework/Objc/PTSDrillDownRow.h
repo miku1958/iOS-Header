@@ -4,16 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PrototypeTools/PTSRow.h>
+#import <PrototypeTools/PTDrillDownRow.h>
 
-@interface PTSDrillDownRow : PTSRow
+@interface PTSDrillDownRow : PTDrillDownRow
 {
 }
-
-+ (id)rowWithTitle:(id)arg1 childSettingsKeyPath:(id)arg2;
-+ (id)rowWithTitleKeyPath:(id)arg1 childSettingsKeyPath:(id)arg2;
-- (id)init;
-- (Class)rowTableViewCellClass;
 
 @end
 

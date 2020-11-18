@@ -13,12 +13,14 @@
 @interface HMDAWDRemoteSessionMetric : HMDLogEvent <HMDAWDLogEvent>
 {
     BOOL _submitted;
+    BOOL _authenticated;
     int _role;
     int _closeReason;
     NSDate *_creation;
     NSUUID *_sessionID;
 }
 
+@property (getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
 @property (readonly, nonatomic) int closeReason; // @synthesize closeReason=_closeReason;
 @property (strong, nonatomic) NSDate *creation; // @synthesize creation=_creation;
 @property (readonly, copy) NSString *debugDescription;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAudioSessionDataSourceDescription, NSArray, NSString;
 
@@ -22,8 +22,7 @@
 @property (readonly) AVAudioSessionDataSourceDescription *preferredDataSource;
 @property (readonly) AVAudioSessionDataSourceDescription *selectedDataSource;
 
-+ (id)privateCreateOrConfigureArray:(id)arg1 withRawPortArray:(id)arg2 owningSession:(id)arg3;
-+ (BOOL)privateMatchesInputs:(id)arg1 toRawInputs:(id)arg2;
++ (id)privateCreateArray:(id)arg1 owningSession:(id)arg2;
 - (void)configureChannelsAndDataSources:(id)arg1;
 - (void)dealloc;
 - (id)description;
@@ -35,9 +34,9 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPort:(id)arg1 compareStrict:(BOOL)arg2;
 - (BOOL)isHeadphones;
+- (BOOL)isLiveListenSupported;
 - (id)privateGetID;
 - (struct PortDescriptionImpl *)privateGetImplementation;
-- (BOOL)privateMatchesRawDescription:(id)arg1;
 - (BOOL)setPreferredDataSource:(id)arg1 error:(id *)arg2;
 
 @end

@@ -21,6 +21,8 @@
 - (BOOL)cam_isOnScreen:(id)arg1;
 - (BOOL)cam_isPoint:(struct CGPoint)arg1 withinBoundsWithPadding:(struct UIEdgeInsets)arg2;
 - (BOOL)cam_isPoint:(struct CGPoint)arg1 withinBoundsWithPadding:(struct UIEdgeInsets)arg2 checkVisibility:(BOOL)arg3 recursive:(BOOL)arg4;
+- (void)cam_removeAllAnimationsOnLayer:(id)arg1 recursively:(BOOL)arg2 shouldLog:(BOOL)arg3;
+- (void)cam_removeAllAnimationsRecursively:(BOOL)arg1 shouldLog:(BOOL)arg2;
 - (void)cam_removeAnimationForKey:(id)arg1 setToCurrentPresentationValue:(BOOL)arg2;
 - (void)cam_removeAnimationsForKeys:(id)arg1 setToCurrentPresentationValues:(BOOL)arg2;
 - (void)cam_rotateWithInterfaceOrientation:(long long)arg1 animated:(BOOL)arg2;

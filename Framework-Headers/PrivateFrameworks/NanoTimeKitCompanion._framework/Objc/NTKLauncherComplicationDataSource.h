@@ -10,18 +10,23 @@
 {
 }
 
-+ (BOOL)acceptsComplicationFamily:(long long)arg1;
-+ (BOOL)acceptsComplicationType:(unsigned long long)arg1;
-- (id)_appImage;
-- (id)_appImageProvider;
++ (BOOL)acceptsComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2 forDevice:(id)arg3;
+- (void)_addBackgroundColor:(id)arg1 toTemplate:(id)arg2;
 - (id)_appTintColor;
 - (id)_appTitle;
 - (id)_circularTemplateMedium:(BOOL)arg1;
 - (id)_complicationApplicationIdentifier;
+- (id)_complicationLaunchURL;
 - (id)_currentTimelineEntry;
 - (id)_extraLarge;
+- (id)_fullColorImageProvider;
 - (id)_modularLargeTemplate;
 - (id)_modularSmallTemplate;
+- (id)_signatureBezelTemplate;
+- (id)_signatureCircularTemplate;
+- (id)_signatureCornerTemplate;
+- (id)_tinCanAppTintColor;
+- (id)_tintableAppImageProvider;
 - (id)_utilitarianLargeTemplate;
 - (id)_utilitarianSmallTemplate;
 - (id)complicationApplicationIdentifier;

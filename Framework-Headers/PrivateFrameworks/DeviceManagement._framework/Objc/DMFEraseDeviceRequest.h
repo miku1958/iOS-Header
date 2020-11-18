@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSString;
 
-@interface DMFEraseDeviceRequest : CATTaskRequest
+@interface DMFEraseDeviceRequest : DMFTaskRequest
 {
     BOOL _hideProximitySetupPane;
     unsigned long long _eraseDeviceType;
@@ -21,6 +21,9 @@
 @property (nonatomic) BOOL hideProximitySetupPane; // @synthesize hideProximitySetupPane=_hideProximitySetupPane;
 @property (copy, nonatomic) NSString *pin; // @synthesize pin=_pin;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

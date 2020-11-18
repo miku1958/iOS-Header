@@ -11,11 +11,10 @@
 @interface RCChronologicalAnnotationView : UIView
 {
     long long _lastHourComponentsUsedForMajorTickUpdate;
-    double _majorTickTimeUnit;
     double _majorTickMinimumSpacing;
     UIFont *_timeLabelFont;
+    BOOL _isPlayback;
     double _contentDuration;
-    unsigned long long _maximumMajorUnitsInVisibleDuration;
     RCUIConfiguration *_UIConfiguration;
     UIColor *_backgroundDebugColor;
     CDStruct_73a5d3ca _visibleTimeRange;
@@ -25,8 +24,8 @@
 @property (copy, nonatomic) RCUIConfiguration *UIConfiguration; // @synthesize UIConfiguration=_UIConfiguration;
 @property (strong, nonatomic) UIColor *backgroundDebugColor; // @synthesize backgroundDebugColor=_backgroundDebugColor;
 @property (nonatomic) double contentDuration; // @synthesize contentDuration=_contentDuration;
+@property (nonatomic) BOOL isPlayback; // @synthesize isPlayback=_isPlayback;
 @property (nonatomic) CDStruct_73a5d3ca markerClippingRange; // @synthesize markerClippingRange=_markerClippingRange;
-@property (nonatomic) unsigned long long maximumMajorUnitsInVisibleDuration; // @synthesize maximumMajorUnitsInVisibleDuration=_maximumMajorUnitsInVisibleDuration;
 @property (nonatomic) CDStruct_73a5d3ca visibleTimeRange; // @synthesize visibleTimeRange=_visibleTimeRange;
 
 + (long long)_determineWidestTimeLabelDigit;
@@ -35,12 +34,10 @@
 - (id)_timeLabelAttributes;
 - (id)_timeLabelAttributesWithFont:(id)arg1;
 - (void)_updateMajorTickMinimumSpacingForContentDuration:(double)arg1;
-- (void)_updateMajorTickTimeUnit;
 - (id)description;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)labelsSize;
-- (void)setFrame:(struct CGRect)arg1;
 
 @end
 

@@ -6,12 +6,12 @@
 
 #import <GameplayKit/GKComponent.h>
 
-#import <GameplayKit/NSCoding-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class GKBehavior, MISSING_TYPE;
 @protocol GKAgentDelegate;
 
-@interface GKAgent : GKComponent <NSCoding>
+@interface GKAgent : GKComponent <NSSecureCoding>
 {
     struct GKSimpleVehicle _vehicle;
     id<GKAgentDelegate> _delegate;
@@ -26,6 +26,7 @@
 @property (nonatomic) float radius;
 @property (nonatomic) float speed;
 
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

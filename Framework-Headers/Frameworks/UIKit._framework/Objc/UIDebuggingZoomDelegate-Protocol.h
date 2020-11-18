@@ -8,6 +8,6 @@
 
 @protocol UIDebuggingZoomDelegate
 - (NSArray *)drawLinesAtPoint:(struct CGPoint)arg1;
-- (struct CGImage *)newCaptureSnapshotAtRect:(struct CGRect)arg1 withTransform:(struct CGAffineTransform *)arg2 window:(UIWindow *)arg3;
+- (struct CGImage *)newCaptureSnapshotAtRect:(struct CGRect)arg1 window:(UIWindow *)arg2;
 @end
 

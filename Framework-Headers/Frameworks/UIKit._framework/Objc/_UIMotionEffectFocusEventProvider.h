@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIMotionEffectEventProvider.h>
+#import <UIKitCore/_UIMotionEffectEventProvider.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIMotionEffectFocusEventProvider : _UIMotionEffectEventProvider

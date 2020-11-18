@@ -36,6 +36,7 @@
 - (id)_accessibilitySpeakThisString;
 - (BOOL)_accessibilitySupportsActivateAction;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (BOOL)_accessibilityUseElementAtPositionAfterActivation;
 - (id)_tableViewCellAttributeDelegate;
 - (id)_tableViewCellTextDelegate;
 - (BOOL)accessibilityActivate;

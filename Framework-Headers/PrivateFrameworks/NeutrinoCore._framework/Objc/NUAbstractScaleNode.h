@@ -10,7 +10,11 @@
 {
 }
 
+@property (readonly, nonatomic) NURenderNode *inputNode;
+
 - (id)_scaleImage:(id)arg1 by:(CDStruct_912cb5d2)arg2 sampleMode:(long long)arg3;
+- (id)initWithInput:(id)arg1 settings:(id)arg2;
+- (id)initWithSettings:(id)arg1 inputs:(struct NSDictionary *)arg2;
 - (BOOL)shouldCacheNodeForPipelineState:(id)arg1;
 
 @end

@@ -7,11 +7,12 @@
 #import <PhotoAnalysis/PHAWorker.h>
 
 #import <PhotoAnalysis/PHAVisionServiceAssetsAnalyzingOperationDelegate-Protocol.h>
+#import <PhotoAnalysis/PVVisionIntegrating-Protocol.h>
 
 @class NSMapTable, NSMutableDictionary, NSNumber, NSObject, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue;
 
-@interface PHAVisionServiceWorker : PHAWorker <PHAVisionServiceAssetsAnalyzingOperationDelegate>
+@interface PHAVisionServiceWorker : PHAWorker <PHAVisionServiceAssetsAnalyzingOperationDelegate, PVVisionIntegrating>
 {
     NSOperationQueue *_assetAnalysisOperationQueue;
     NSObject<OS_dispatch_queue> *_commandDispatchQueue;
@@ -21,6 +22,7 @@
     NSNumber *_lastRecordedDarkWakeState;
     _Atomic unsigned long long _lastPerformedJobScenario;
     BOOL _analysisJobCancelled;
+    unsigned int _visionAlgorithmUmbrellaVersion;
 }
 
 @property BOOL analysisJobCancelled; // @synthesize analysisJobCancelled=_analysisJobCancelled;
@@ -28,9 +30,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned int visionAlgorithmUmbrellaVersion; // @synthesize visionAlgorithmUmbrellaVersion=_visionAlgorithmUmbrellaVersion;
 
 + (CDUnknownBlockType)assetResourceLargestToSmallestComparator;
 + (CDUnknownBlockType)assetResourceSmallestToLargestComparator;
++ (id)defaultImageCreationOptions;
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)_checkForDarkWakeStateTransition;
@@ -45,9 +49,9 @@
 - (BOOL)canProvideAnalysisJobResultInformation:(id)arg1 withoutRequiringAssetResourceForAsset:(id)arg2;
 - (void)coalesceJobResult:(unsigned long long)arg1 forAssetLocalIdentifier:(id)arg2;
 - (void)coalesceResultsDictionary:(id)arg1 forAssetLocalIdentifier:(id)arg2;
+- (void)configureRequest:(id)arg1 algorithmUmbrellaVersion:(unsigned int)arg2;
 - (struct CGImage *)createCGImageForAssetResource:(id)arg1 imageOptions:(id)arg2 orientation:(unsigned long long *)arg3 error:(id *)arg4;
 - (struct CGImage *)createCGImageFromImageFileURL:(id)arg1 imageOptions:(id)arg2 orientation:(unsigned long long *)arg3 error:(id *)arg4;
-- (id)defaultImageCreationOptions;
 - (void)didPerformJob:(id)arg1;
 - (BOOL)getLocallyAvailableAssetResource:(id *)arg1 forAnalyzingAsset:(id)arg2 error:(id *)arg3;
 - (id)imageDataForAssetResource:(id)arg1 error:(id *)arg2;
@@ -56,9 +60,8 @@
 - (BOOL)isExecutingDuringDarkWake;
 - (unsigned long long)lastPerformedJobScenario;
 - (id)localFileURLForAssetResource:(id)arg1 error:(id *)arg2;
-- (id)newCVMLRequestOptions;
-- (void)performCVMLForcedCleanup;
-- (void)performCVMLForcedCleanupWithOptions:(id)arg1;
+- (void)performVisionForcedCleanup;
+- (void)performVisionForcedCleanupWithOptions:(id)arg1;
 - (id)preferredAssetResourcesForAnalyzingAsset:(id)arg1;
 - (BOOL)processAsset:(id)arg1 error:(id *)arg2;
 - (void)shutdown;

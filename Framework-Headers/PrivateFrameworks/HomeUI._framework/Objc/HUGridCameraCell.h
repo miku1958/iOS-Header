@@ -23,6 +23,7 @@
 
 @property (strong, nonatomic) NSArray *allConstraints; // @synthesize allConstraints=_allConstraints;
 @property (strong, nonatomic) HUCameraView *cameraView; // @synthesize cameraView=_cameraView;
+@property (nonatomic) double cameraViewAlpha;
 @property (strong, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
 @property (strong, nonatomic) NADecayingTimer *descriptionLabelUpdateTimer; // @synthesize descriptionLabelUpdateTimer=_descriptionLabelUpdateTimer;
 @property (strong, nonatomic) NSArray *labelsConstraints; // @synthesize labelsConstraints=_labelsConstraints;

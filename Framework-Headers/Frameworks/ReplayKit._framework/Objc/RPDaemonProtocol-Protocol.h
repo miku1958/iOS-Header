@@ -28,6 +28,7 @@
 - (oneway void)stopRecordingWithHandler:(void (^)(NSURL *, NSError *))arg1;
 - (oneway void)stopRecordingWithStartClipDuration:(double)arg1 endClipDuration:(double)arg2 handler:(void (^)(NSURL *, NSError *))arg3;
 - (oneway void)synchronousGetCurrentState:(void (^)(NSDictionary *))arg1;
+- (oneway void)synchronousIsBroadcastingWithPreferredExtension:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
 - (oneway void)updateProcessIDForAudioCaptureWithPID:(int)arg1;
 @end
 

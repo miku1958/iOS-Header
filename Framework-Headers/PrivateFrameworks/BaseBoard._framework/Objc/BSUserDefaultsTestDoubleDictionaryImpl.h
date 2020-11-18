@@ -13,6 +13,7 @@
     NSMutableDictionary *_dictionary;
 }
 
+- (void).cxx_destruct;
 - (id)URLForKey:(id)arg1;
 - (id)arrayForKey:(id)arg1;
 - (BOOL)boolForKey:(id)arg1;

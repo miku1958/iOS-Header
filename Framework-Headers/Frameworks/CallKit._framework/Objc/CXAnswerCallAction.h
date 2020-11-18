@@ -10,12 +10,14 @@
 
 @interface CXAnswerCallAction : CXCallAction
 {
+    BOOL _downgradeToAudio;
     NSDate *_dateConnected;
     struct CGSize _localPortraitAspectRatio;
     struct CGSize _localLandscapeAspectRatio;
 }
 
 @property (copy, nonatomic) NSDate *dateConnected; // @synthesize dateConnected=_dateConnected;
+@property (nonatomic) BOOL downgradeToAudio; // @synthesize downgradeToAudio=_downgradeToAudio;
 
 + (BOOL)supportsSecureCoding;
 + (double)timeout;

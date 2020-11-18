@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOPDAddressObjectGeocodingResult, GEOPDAutocompleteResult, GEOPDBatchPopularNearbySearchResult, GEOPDBrandLookupResult, GEOPDCanonicalLocationSearchResult, GEOPDCategorySearchResult, GEOPDClusterGeocodingResult, GEOPDExternalTransitLookupResult, GEOPDFeatureIdGeocodingResult, GEOPDGeocodingResult, GEOPDIpGeoLookupResult, GEOPDLocationDirectedSearchResult, GEOPDMapsIdentifierPlaceLookupResult, GEOPDMerchantLookupResult, GEOPDNearbySearchResult, GEOPDPlaceLookupResult, GEOPDPlaceRefinementResult, GEOPDPopularNearbySearchResult, GEOPDReverseGeocodingResult, GEOPDSearchBrowseCategorySuggestionResult, GEOPDSearchFieldPlaceholderResult, GEOPDSearchResult, GEOPDSearchZeroKeywordCategorySuggestionResult, GEOPDSearchZeroKeywordWithSearchResultsSuggestionResult, GEOPDSiriSearchResult, GEOPDVendorSpecificPlaceRefinementResult, GEOPDWifiFingerprintResult, PBUnknownFields;
+@class GEOPDAddressObjectGeocodingResult, GEOPDAutocompleteResult, GEOPDBatchPopularNearbySearchResult, GEOPDBatchSpatialLookupResult, GEOPDBrandLookupResult, GEOPDCanonicalLocationSearchResult, GEOPDCategorySearchResult, GEOPDClusterGeocodingResult, GEOPDExternalTransitLookupResult, GEOPDFeatureIdGeocodingResult, GEOPDGeocodingResult, GEOPDIpGeoLookupResult, GEOPDLocationDirectedSearchResult, GEOPDMapsIdentifierPlaceLookupResult, GEOPDMerchantLookupResult, GEOPDNearbySearchResult, GEOPDPlaceLookupResult, GEOPDPlaceRefinementResult, GEOPDPopularNearbySearchResult, GEOPDReverseGeocodingResult, GEOPDSearchBrowseCategorySuggestionResult, GEOPDSearchFieldPlaceholderResult, GEOPDSearchResult, GEOPDSearchZeroKeywordCategorySuggestionResult, GEOPDSearchZeroKeywordWithSearchResultsSuggestionResult, GEOPDSiriSearchResult, GEOPDVendorSpecificPlaceRefinementResult, GEOPDWifiFingerprintResult, PBUnknownFields;
 
 @interface GEOPDPlaceGlobalResult : PBCodable <NSCopying>
 {
@@ -16,6 +16,7 @@
     GEOPDAddressObjectGeocodingResult *_addressObjectGeocodingResult;
     GEOPDAutocompleteResult *_autocompleteResult;
     GEOPDBatchPopularNearbySearchResult *_batchPopularNearbySearchResult;
+    GEOPDBatchSpatialLookupResult *_batchSpatialLookupResult;
     GEOPDBrandLookupResult *_brandLookupResult;
     GEOPDSearchBrowseCategorySuggestionResult *_browseCategorySuggestionResult;
     GEOPDCanonicalLocationSearchResult *_canonicalSearchResult;
@@ -45,6 +46,7 @@
 @property (strong, nonatomic) GEOPDAddressObjectGeocodingResult *addressObjectGeocodingResult; // @synthesize addressObjectGeocodingResult=_addressObjectGeocodingResult;
 @property (strong, nonatomic) GEOPDAutocompleteResult *autocompleteResult; // @synthesize autocompleteResult=_autocompleteResult;
 @property (strong, nonatomic) GEOPDBatchPopularNearbySearchResult *batchPopularNearbySearchResult; // @synthesize batchPopularNearbySearchResult=_batchPopularNearbySearchResult;
+@property (strong, nonatomic) GEOPDBatchSpatialLookupResult *batchSpatialLookupResult; // @synthesize batchSpatialLookupResult=_batchSpatialLookupResult;
 @property (strong, nonatomic) GEOPDBrandLookupResult *brandLookupResult; // @synthesize brandLookupResult=_brandLookupResult;
 @property (strong, nonatomic) GEOPDSearchBrowseCategorySuggestionResult *browseCategorySuggestionResult; // @synthesize browseCategorySuggestionResult=_browseCategorySuggestionResult;
 @property (strong, nonatomic) GEOPDCanonicalLocationSearchResult *canonicalSearchResult; // @synthesize canonicalSearchResult=_canonicalSearchResult;
@@ -56,6 +58,7 @@
 @property (readonly, nonatomic) BOOL hasAddressObjectGeocodingResult;
 @property (readonly, nonatomic) BOOL hasAutocompleteResult;
 @property (readonly, nonatomic) BOOL hasBatchPopularNearbySearchResult;
+@property (readonly, nonatomic) BOOL hasBatchSpatialLookupResult;
 @property (readonly, nonatomic) BOOL hasBrandLookupResult;
 @property (readonly, nonatomic) BOOL hasBrowseCategorySuggestionResult;
 @property (readonly, nonatomic) BOOL hasCanonicalSearchResult;

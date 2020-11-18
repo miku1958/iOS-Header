@@ -95,6 +95,7 @@
 - (void)sendSessionMessage:(id)arg1;
 - (void)sendSessionMessage:(id)arg1 toDestinations:(id)arg2;
 - (void)session:(id)arg1 audioEnabled:(BOOL)arg2;
+- (void)session:(id)arg1 didReceiveReport:(id)arg2;
 - (void)session:(id)arg1 invitationSentToTokens:(id)arg2 shouldBreakBeforeMake:(BOOL)arg3;
 - (void)session:(id)arg1 muted:(BOOL)arg2;
 - (void)sessionAcceptReceived:(id)arg1 fromID:(id)arg2 withData:(id)arg3;

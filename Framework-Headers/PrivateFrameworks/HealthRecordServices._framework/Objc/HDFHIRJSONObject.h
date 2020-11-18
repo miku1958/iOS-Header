@@ -25,6 +25,7 @@
 @property (readonly, copy, nonatomic) NSString *sourceString;
 @property (readonly, copy, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
 
++ (id)_dataFromJSONObject:(id)arg1 JSONOptions:(unsigned long long)arg2;
 + (id)objectWithResourceData:(id)arg1 error:(id *)arg2;
 + (id)resourceTypeOfJSONObject:(id)arg1 error:(id *)arg2;
 + (BOOL)supportsSecureCoding;

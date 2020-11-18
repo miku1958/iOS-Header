@@ -13,13 +13,6 @@
 
 @interface _CPClientSession : PBCodable <_CPClientSession, NSSecureCoding>
 {
-    struct {
-        unsigned int sessionStart:1;
-        unsigned int previousSessionEndReason:1;
-        unsigned int firstUseOfTheDay:1;
-        unsigned int firstUseDate:1;
-        unsigned int removeTimestamps:1;
-    } _has;
     BOOL _firstUseOfTheDay;
     BOOL _removeTimestamps;
     int _previousSessionEndReason;
@@ -28,7 +21,7 @@
     NSDictionary *_resourceVersions;
     double _sessionStart;
     double _firstUseDate;
-    NSString *_version;
+    NSString *_parsecDeveloperID;
     NSArray *_feedbacks;
 }
 
@@ -38,23 +31,15 @@
 @property (copy, nonatomic) NSArray *feedbacks; // @synthesize feedbacks=_feedbacks;
 @property (nonatomic) double firstUseDate; // @synthesize firstUseDate=_firstUseDate;
 @property (nonatomic) BOOL firstUseOfTheDay; // @synthesize firstUseOfTheDay=_firstUseOfTheDay;
-@property (readonly, nonatomic) BOOL hasAgent;
-@property (readonly, nonatomic) BOOL hasFirstUseDate;
-@property (readonly, nonatomic) BOOL hasFirstUseOfTheDay;
-@property (readonly, nonatomic) BOOL hasPreviousSessionEndReason;
-@property (readonly, nonatomic) BOOL hasRemoveTimestamps;
-@property (readonly, nonatomic) BOOL hasSessionStart;
-@property (readonly, nonatomic) BOOL hasUserGuidString;
-@property (readonly, nonatomic) BOOL hasVersion;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *parsecDeveloperID; // @synthesize parsecDeveloperID=_parsecDeveloperID;
 @property (nonatomic) int previousSessionEndReason; // @synthesize previousSessionEndReason=_previousSessionEndReason;
 @property (nonatomic) BOOL removeTimestamps; // @synthesize removeTimestamps=_removeTimestamps;
 @property (copy, nonatomic) NSDictionary *resourceVersions; // @synthesize resourceVersions=_resourceVersions;
 @property (nonatomic) double sessionStart; // @synthesize sessionStart=_sessionStart;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *userGuidString; // @synthesize userGuidString=_userGuidString;
-@property (copy, nonatomic) NSString *version; // @synthesize version=_version;
 
 - (void).cxx_destruct;
 - (void)addFeedback:(id)arg1;

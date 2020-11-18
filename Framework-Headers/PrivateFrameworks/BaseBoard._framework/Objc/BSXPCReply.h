@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_xpc_object;
 
@@ -16,8 +16,8 @@
 
 + (id)messageWithReply:(id)arg1;
 + (id)replyForMessage:(id)arg1;
+- (void).cxx_destruct;
 - (id)_initWithReply:(id)arg1;
-- (void)dealloc;
 - (id)initForMessage:(id)arg1;
 - (id)initWithReply:(id)arg1;
 - (id)message;

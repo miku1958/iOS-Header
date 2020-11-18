@@ -35,6 +35,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_allProcessPoolsForTesting;
 + (void)_forceGameControllerFramework;
 + (id)_sharedProcessPool;
 + (id)_websiteDataURLForContainerWithURL:(id)arg1;
@@ -42,13 +43,21 @@
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_addSupportedPlugin:(id)arg1 named:(id)arg2 withMimeTypes:(id)arg3 withExtensions:(id)arg4;
 - (void)_automationCapabilitiesDidChange;
+- (void)_clearSupportedPlugins;
+- (void)_disableServiceWorkerProcessTerminationDelay;
 - (id)_initWithConfiguration:(id)arg1;
+- (void)_makeNextNetworkProcessLaunchFailForTesting;
+- (void)_makeNextWebProcessLaunchFailForTesting;
 - (int)_networkProcessIdentifier;
 - (id)_objectForBundleParameter:(id)arg1;
 - (unsigned long long)_pluginProcessCount;
 - (void)_preconnectToServer:(id)arg1;
+- (unsigned long long)_prewarmedWebProcessCount;
+- (void)_registerURLSchemeAsCanDisplayOnlyIfCanRequest:(id)arg1;
 - (void)_registerURLSchemeServiceWorkersCanHandle:(id)arg1;
+- (unsigned long long)_serviceWorkerProcessCount;
 - (void)_setAllowsAnySSLCertificateForServiceWorker:(BOOL)arg1;
 - (void)_setAllowsSpecificHTTPSCertificate:(id)arg1 forHost:(id)arg2;
 - (void)_setAutomationSession:(id)arg1;
@@ -60,11 +69,12 @@
 - (int)_storageProcessIdentifier;
 - (void)_syncNetworkProcessCookies;
 - (void)_terminateNetworkProcess;
-- (void)_terminateServiceWorkerProcess;
+- (void)_terminateServiceWorkerProcesses;
 - (void)_terminateStorageProcess;
 - (void)_warmInitialProcess;
 - (unsigned long long)_webPageContentProcessCount;
 - (unsigned long long)_webProcessCount;
+- (unsigned long long)_webProcessCountIgnoringPrewarmed;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

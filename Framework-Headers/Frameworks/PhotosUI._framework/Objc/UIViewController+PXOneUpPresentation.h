@@ -18,5 +18,6 @@
 - (void)_pxswizzled_oneUpPresentation_viewWillAppear:(BOOL)arg1;
 - (void)_pxswizzled_oneUpPresentation_viewWillDisappear:(BOOL)arg1;
 - (void)px_enableOneUpPresentation;
+- (void)px_enableOneUpPresentationFromViewController:(id)arg1;
 @end
 

@@ -15,12 +15,6 @@
 
 @interface _CPStartNetworkSearchFeedback : PBCodable <_CPProcessableFeedback, _CPFeedbackUUID, _CPStartNetworkSearchFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int timestamp:1;
-        unsigned int queryId:1;
-        unsigned int endpoint:1;
-        unsigned int tuscanyStatus:1;
-    } _has;
     int _endpoint;
     int _triggerEvent;
     int _lookupSelectionType;
@@ -41,15 +35,6 @@
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) int endpoint; // @synthesize endpoint=_endpoint;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasEndpoint;
-@property (readonly, nonatomic) BOOL hasInput;
-@property (readonly, nonatomic) BOOL hasLookupSelectionType;
-@property (readonly, nonatomic) BOOL hasQueryId;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
-@property (readonly, nonatomic) BOOL hasTuscanyStatus;
-@property (readonly, nonatomic) BOOL hasUrl;
-@property (readonly, nonatomic) BOOL hasUuid;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSDictionary *headers; // @synthesize headers=_headers;
@@ -60,8 +45,8 @@
 @property (readonly, nonatomic) BOOL requiresQueryId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property (nonatomic) int tuscanyStatus; // @synthesize tuscanyStatus=_tuscanyStatus;
 @property (copy, nonatomic) NSString *url; // @synthesize url=_url;

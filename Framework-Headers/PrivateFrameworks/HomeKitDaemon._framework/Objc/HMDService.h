@@ -13,11 +13,12 @@
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMDHome, HMFMessageDispatcher, NSArray, NSMutableDictionary, NSNumber, NSObject, NSSet, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@protocol HMDServiceOwner, OS_dispatch_queue;
 
 @interface HMDService : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
 {
     BOOL _hidden;
+    BOOL _isEmptyConfiguredNameAllowed;
     BOOL _primary;
     HMDApplicationData *_appData;
     NSUUID *_uuid;
@@ -36,6 +37,9 @@
     NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFMessageDispatcher *_messageDispatcher;
     NSUUID *_cachedAccessoryUUID;
+    id<HMDServiceOwner> _owner;
+    NSString *_expectedConfiguredName;
+    NSString *_lastSeenConfiguredName;
     NSMutableDictionary *_deviceLastRequestPresenceDateMap;
     NSString *_providedName;
 }
@@ -53,18 +57,22 @@
 @property (readonly, copy, nonatomic) NSString *defaultName;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableDictionary *deviceLastRequestPresenceDateMap; // @synthesize deviceLastRequestPresenceDateMap=_deviceLastRequestPresenceDateMap;
+@property (copy, nonatomic) NSString *expectedConfiguredName; // @synthesize expectedConfiguredName=_expectedConfiguredName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
 @property (readonly, nonatomic) HMDHome *home;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
+@property (nonatomic) BOOL isEmptyConfiguredNameAllowed; // @synthesize isEmptyConfiguredNameAllowed=_isEmptyConfiguredNameAllowed;
 @property (strong, nonatomic) NSNumber *labelIndex; // @synthesize labelIndex=_labelIndex;
 @property (strong, nonatomic) NSNumber *labelNamespace; // @synthesize labelNamespace=_labelNamespace;
+@property (copy, nonatomic) NSString *lastSeenConfiguredName; // @synthesize lastSeenConfiguredName=_lastSeenConfiguredName;
 @property (copy, nonatomic) NSArray *linkedServices; // @synthesize linkedServices=_linkedServices;
 @property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (weak, nonatomic) id<HMDServiceOwner> owner; // @synthesize owner=_owner;
 @property (getter=isPrimary) BOOL primary; // @synthesize primary=_primary;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) NSString *providedName; // @synthesize providedName=_providedName;
@@ -85,10 +93,14 @@
 - (void)_readRequiredBTLECharacteristicValuesForceReadFWVersion:(BOOL)arg1;
 - (void)_recalculateUUID;
 - (void)_registerForMessages;
+- (void)_saveCurrentNameAsExpectedAndLastSeen:(id)arg1;
 - (void)_setServiceProperties:(id)arg1;
 - (void)_shouldServiceBeHidden;
 - (BOOL)_supportsBulletinNotification;
 - (void)_transactionServiceUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (void)_updateAllowsEmptyName;
+- (BOOL)_updateExpectedConfiguredName:(id)arg1;
+- (BOOL)_updateLastSeenConfiguredName:(id)arg1;
 - (id)_updateProvidedName:(id)arg1;
 - (void)appDataRemoved:(id)arg1 message:(id)arg2;
 - (void)appDataUpdated:(id)arg1 message:(id)arg2;
@@ -105,14 +117,15 @@
 - (id)gatherRequiredReadRequestsForceReadFWVersion:(BOOL)arg1;
 - (id)getConfiguredName;
 - (id)init;
-- (id)initWithAccessory:(id)arg1 instance:(id)arg2 uuid:(id)arg3;
+- (id)initWithAccessory:(id)arg1 owner:(id)arg2 instance:(id)arg3 uuid:(id)arg4;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTransaction:(id)arg1 accessory:(id)arg2;
+- (id)initWithTransaction:(id)arg1 accessory:(id)arg2 owner:(id)arg3;
 - (BOOL)isReadingRequiredForBTLEServiceCharacteristic:(id)arg1;
 - (BOOL)listsEqual:(id)arg1 to:(id)arg2;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 - (BOOL)shouldEnableDaemonRelaunch;
 - (BOOL)shouldIncludePresenceForDeviceWithDestination:(id)arg1;
+- (BOOL)shouldUpdateLastSeenConfiguredName:(id)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (BOOL)updateAssociatedServiceType:(id)arg1 error:(id *)arg2;

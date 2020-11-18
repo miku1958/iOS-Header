@@ -15,13 +15,6 @@
 @property (copy, nonatomic) NSString *carrierPhoneNumber;
 @property (copy, nonatomic) NSString *flightID;
 @property (copy, nonatomic) NSString *flightNumber;
-@property (readonly, nonatomic) BOOL hasCarrierCode;
-@property (readonly, nonatomic) BOOL hasCarrierName;
-@property (readonly, nonatomic) BOOL hasCarrierPhoneNumber;
-@property (readonly, nonatomic) BOOL hasFlightID;
-@property (readonly, nonatomic) BOOL hasFlightNumber;
-@property (readonly, nonatomic) BOOL hasOperatorCarrierCode;
-@property (readonly, nonatomic) BOOL hasOperatorFlightNumber;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *legs;
 @property (copy, nonatomic) NSString *operatorCarrierCode;

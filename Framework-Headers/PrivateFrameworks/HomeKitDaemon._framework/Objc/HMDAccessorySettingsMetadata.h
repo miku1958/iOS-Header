@@ -8,18 +8,21 @@
 
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 
-@class HMDAccessorySettingGroupMetadata, NSString;
+@class HMDAccessorySettingGroupMetadata, NSArray, NSString;
 
 @interface HMDAccessorySettingsMetadata : HMFObject <HMFObject>
 {
     HMDAccessorySettingGroupMetadata *_rootGroup;
 }
 
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
 @property (readonly) HMDAccessorySettingGroupMetadata *rootGroup; // @synthesize rootGroup=_rootGroup;
+@property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -16,7 +16,6 @@
 @property (nonatomic) BOOL shouldIndentSeparator; // @synthesize shouldIndentSeparator=_shouldIndentSeparator;
 
 + (id)reuseIdentifier;
-- (void)_resetIndentation;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 

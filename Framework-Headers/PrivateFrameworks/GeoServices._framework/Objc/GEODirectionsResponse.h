@@ -44,6 +44,7 @@
     NSMutableArray *_trafficCameras;
     NSString *_transitDataVersion;
     GEOPBTransitRoutingIncidentMessage *_transitIncidentMessage;
+    BOOL _hasKhSegments;
     BOOL _isNavigable;
     BOOL _routeDeviatesFromOriginal;
     struct {
@@ -53,6 +54,7 @@
         unsigned int liveRouteSavingsSeconds:1;
         unsigned int localDistanceUnits:1;
         unsigned int selectedRouteIndex:1;
+        unsigned int hasKhSegments:1;
         unsigned int isNavigable:1;
         unsigned int routeDeviatesFromOriginal:1;
     } _has;
@@ -76,8 +78,10 @@
 @property (readonly, nonatomic) BOOL hasDisplayHints;
 @property (readonly, nonatomic) BOOL hasEtaServiceSummary;
 @property (readonly, nonatomic) BOOL hasFailureAlert;
+@property (nonatomic) BOOL hasHasKhSegments;
 @property (nonatomic) BOOL hasInstructionSignFillColor;
 @property (nonatomic) BOOL hasIsNavigable;
+@property (nonatomic) BOOL hasKhSegments; // @synthesize hasKhSegments=_hasKhSegments;
 @property (nonatomic) BOOL hasLiveRouteSavingsSeconds;
 @property (nonatomic) BOOL hasLocalDistanceUnits;
 @property (readonly, nonatomic) BOOL hasNonRecommendedRoutesCache;

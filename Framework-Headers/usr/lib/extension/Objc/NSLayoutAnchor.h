@@ -42,8 +42,8 @@
 - (id)_equationDescriptionInParent;
 - (id)_equationDescriptionLegendEntries;
 - (id)_expressionForValueInItem:(id)arg1;
-- (id)_expressionInContext:(CDStruct_6db0658e)arg1;
-- (id)_expressionInDefaultContext;
+- (id)_expressionInContext:(CDStruct_1b4a36b4)arg1;
+- (id)_expressionInDefaultContextWithEngine:(id)arg1;
 - (BOOL)_isReferencedByConstraint:(id)arg1;
 - (id)_nearestAncestorLayoutItem;
 - (long long)_proxiedAttribute;

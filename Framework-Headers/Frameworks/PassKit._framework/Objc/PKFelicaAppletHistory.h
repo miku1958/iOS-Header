@@ -11,7 +11,6 @@
 @interface PKFelicaAppletHistory : PKTransitAppletHistory
 {
     NSSet *_existingKeys;
-    BOOL _inShinkansenStation;
     BOOL _shinkansenTicketActive;
     BOOL _greenCarTicketUsed;
     BOOL _balanceAllowedForCommute;
@@ -28,7 +27,7 @@
 @property (readonly, nonatomic, getter=isBalanceAllowedForCommute) BOOL balanceAllowedForCommute; // @synthesize balanceAllowedForCommute=_balanceAllowedForCommute;
 @property (readonly, nonatomic) PKFelicaGreenCarTicket *greenCarTicket; // @synthesize greenCarTicket=_greenCarTicket;
 @property (readonly, nonatomic, getter=isGreenCarTicketUsed) BOOL greenCarTicketUsed; // @synthesize greenCarTicketUsed=_greenCarTicketUsed;
-@property (readonly, nonatomic, getter=isInShinkansenStation) BOOL inShinkansenStation; // @synthesize inShinkansenStation=_inShinkansenStation;
+@property (readonly, nonatomic, getter=isInShinkansenStation) BOOL inShinkansenStation; // @dynamic inShinkansenStation;
 @property (readonly, nonatomic, getter=isLowBalanceNotificationEnabled) BOOL lowBalanceNotificationEnabled; // @synthesize lowBalanceNotificationEnabled=_lowBalanceNotificationEnabled;
 @property (readonly, copy, nonatomic) PKFelicaShinkansenTicket *shinkansenTicket; // @synthesize shinkansenTicket=_shinkansenTicket;
 @property (readonly, nonatomic, getter=isShinkansenTicketActive) BOOL shinkansenTicketActive; // @synthesize shinkansenTicketActive=_shinkansenTicketActive;
@@ -43,6 +42,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 source:(long long)arg2;
+- (BOOL)isInStation;
 - (void)sanitizeValuesWithState:(id)arg1;
 
 @end

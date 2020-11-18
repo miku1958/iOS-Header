@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIBarPositioning-Protocol.h>
-#import <UIKit/UIStatusBarTinting-Protocol.h>
-#import <UIKit/UITextInputTraits-Protocol.h>
-#import <UIKit/UITextInputTraits_Private-Protocol.h>
-#import <UIKit/_UIBarPositioningInternal-Protocol.h>
-#import <UIKit/_UINavigationBarAugmentedTitleView-Protocol.h>
+#import <UIKitCore/UIBarPositioning-Protocol.h>
+#import <UIKitCore/UIStatusBarTinting-Protocol.h>
+#import <UIKitCore/UITextInputTraits-Protocol.h>
+#import <UIKitCore/UITextInputTraits_Private-Protocol.h>
+#import <UIKitCore/_UIBarPositioningInternal-Protocol.h>
+#import <UIKitCore/_UINavigationBarAugmentedTitleView-Protocol.h>
 
-@class NSArray, NSIndexSet, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UIInputContextHistory, UILabel, UISearchBarTextField, UISearchController, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputTraits, _UIBackdropView, _UINavigationBarTitleViewOverlayRects, _UISearchBarNavigationItem, _UISearchBarScopeBarBackground;
+@class NSArray, NSIndexSet, NSString, UIBarButtonItem, UIButton, UIColor, UIImage, UIImageView, UIInputContextHistory, UILabel, UISearchBarTextField, UISearchController, UITapGestureRecognizer, UITextInputAssistantItem, UITextInputPasswordRules, UITextInputTraits, _UIBackdropView, _UINavigationBarTitleViewOverlayRects, _UISearchBarNavigationItem, _UISearchBarScopeBarBackground;
 @protocol UISearchBarDelegate, UISearchBarDelegate><UISearchBarDelegate_Private, _UINavigationBarTitleViewDataSource;
 
 @interface UISearchBar : UIView <UITextInputTraits_Private, UIStatusBarTinting, _UIBarPositioningInternal, _UINavigationBarAugmentedTitleView, UIBarPositioning, UITextInputTraits>
@@ -53,6 +53,7 @@
         unsigned int barStyle:3;
         unsigned int showsBookmarkButton:1;
         unsigned int showsCancelButton:1;
+        unsigned int showsDeleteButton:1;
         unsigned int barTranslucence:3;
         unsigned int autoDisableCancelButton:1;
         unsigned int showsScopeBar:1;
@@ -71,6 +72,8 @@
         unsigned int centerPlaceholder:1;
         unsigned int searchFieldLeftViewMode:2;
         unsigned int cancelButtonWantsLetterpress:1;
+        unsigned int isAnimatingScopeBarIn:1;
+        unsigned int isAnimatingScopeBarOut:1;
     } _searchBarFlags;
     BOOL __forceCenteredPlaceholderLayout;
     BOOL __transplanting;
@@ -92,6 +95,7 @@
 @property (readonly, strong, nonatomic) UIButton *_leftButton; // @synthesize _leftButton;
 @property (readonly, nonatomic) double _navigationBarBackButtonMaximumWidth;
 @property (readonly, nonatomic) double _navigationBarContentHeight;
+@property (readonly, nonatomic) long long _preferredAlignment;
 @property (nonatomic, setter=_setScopeBarPosition:) unsigned long long _scopeBarPosition; // @synthesize _scopeBarPosition=__scopeBarPosition;
 @property (nonatomic, setter=_setSearchController:) UISearchController *_searchController; // @synthesize _searchController=__searchController;
 @property (strong, nonatomic, setter=_setStatusBarTintColor:) UIColor *_statusBarTintColor; // @synthesize _statusBarTintColor;
@@ -128,6 +132,7 @@
 @property (nonatomic) BOOL forceEnableDictation;
 @property (nonatomic) BOOL hasDefaultContents;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hidePrediction;
 @property (strong, nonatomic) UIView *inputAccessoryView; // @synthesize inputAccessoryView=_inputAccessoryView;
 @property (readonly, nonatomic) UITextInputAssistantItem *inputAssistantItem;
 @property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
@@ -139,8 +144,8 @@
 @property (nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property (nonatomic) BOOL learnsCorrections;
 @property (nonatomic) BOOL loadKeyboardsForSiriLanguage;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (copy, nonatomic) NSString *placeholder;
-@property (readonly, nonatomic) int preferredAlignment;
 @property (copy, nonatomic) NSString *prompt;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext;
@@ -183,6 +188,7 @@
 @property (nonatomic) BOOL useInterfaceLanguageForLocalization;
 @property (nonatomic) struct _NSRange validTextRange;
 
++ (void)_initializeForIdiom:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (void)_allowCursorToAppear:(BOOL)arg1;
@@ -202,6 +208,7 @@
 - (void)_bookmarkButtonPressed;
 - (id)_cancelBarButtonItem;
 - (void)_cancelButtonPressed;
+- (void)_cancelOperation:(id)arg1;
 - (id)_colorForComponent:(unsigned long long)arg1 disabled:(BOOL)arg2;
 - (void)_commonInit;
 - (BOOL)_consideredInBarWithSuperview:(id)arg1;
@@ -215,6 +222,7 @@
 - (double)_defaultHeightForOrientation:(long long)arg1;
 - (id)_defaultPromptString;
 - (double)_defaultWidth;
+- (void)_deleteButtonPressed;
 - (void)_destroyCancelButton;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (BOOL)_disableAutomaticKeyboardUI;
@@ -279,6 +287,7 @@
 - (void)_setSeparatorImage:(id)arg1;
 - (void)_setShadowVisibleIfNecessary:(BOOL)arg1;
 - (void)_setShowsCancelButton:(BOOL)arg1;
+- (void)_setShowsDeleteButton:(BOOL)arg1;
 - (void)_setShowsScopeBar:(BOOL)arg1 animateOpacity:(BOOL)arg2;
 - (void)_setShowsSeparator:(BOOL)arg1;
 - (void)_setUpScopeBar;
@@ -317,6 +326,7 @@
 - (BOOL)becomeFirstResponder;
 - (void)bringSubviewToFront:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
+- (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (BOOL)canResignFirstResponder;
 - (id)cancelButton;
 - (BOOL)centerPlaceholder;
@@ -344,6 +354,7 @@
 - (void)layoutSubviewsInBounds:(struct CGRect)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (struct UIOffset)positionAdjustmentForSearchBarIcon:(long long)arg1;
+- (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;
 - (BOOL)pretendsIsInBar;
 - (void)reloadInputViews;

@@ -12,8 +12,8 @@
 #import <CoreSpeech/CSTimerMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerDelegate-Protocol.h>
 
-@class CSAsset, NSString, NSUserDefaults;
-@protocol OS_dispatch_queue;
+@class CSAsset, CSSmartSiriVolumeEnablePolicy, NSString, NSUserDefaults;
+@protocol CSSmartSiriVolumeDelegate, OS_dispatch_queue;
 
 @interface CSSmartSiriVolume : NSObject <CSMediaPlayingMonitorDelegate, CSAlarmMonitorDelegate, CSTimerMonitorDelegate, CSSpeechManagerDelegate, CSVoiceTriggerDelegate>
 {
@@ -22,6 +22,7 @@
     struct unique_ptr<SmartSiriVolume, std::__1::default_delete<SmartSiriVolume>> _smartSiriVolumeLKFS;
     struct vector<float, std::__1::allocator<float>> _floatBuffer;
     NSUserDefaults *_defaults;
+    CSSmartSiriVolumeEnablePolicy *_ssvEnablePolicy;
     unsigned long long _startAnalyzeSampleCount;
     unsigned long long _samplesFed;
     unsigned long long _processedSampleCount;
@@ -30,6 +31,7 @@
     BOOL _shouldPauseLKFSProcess;
     BOOL _alarmSoundIsFiring;
     BOOL _timerSoundIsFiring;
+    BOOL _mediaIsPlaying;
     CSAsset *_currentAsset;
     float _musicVolumeDB;
     float _alarmVolume;
@@ -58,9 +60,12 @@
     float _userOffsetOutputRangeHigh;
     float _TTSVolumeLowerLimitDB;
     float _TTSVolumeUpperLimitDB;
+    float _noiseWeight;
+    id<CSSmartSiriVolumeDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<CSSmartSiriVolumeDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -76,10 +81,12 @@
 - (float)_convertDB2Mag:(float)arg1;
 - (float)_estimatedTTSVolume:(float)arg1 lowerLimit:(float)arg2 upperLimit:(float)arg3 TTSmappingInputRangeLow:(float)arg4 TTSmappingInputRangeHigh:(float)arg5 TTSmappingOutputRangeLow:(float)arg6 TTSmappingOutputRangeHigh:(float)arg7;
 - (float)_getMusicVolumeDB:(float)arg1;
+- (void)_pauseSSVProcessing;
 - (void)_prepareSoundLevelBufferFromSamples:(unsigned int)arg1 soundType:(long long)arg2;
 - (void)_processAudioChunk:(id)arg1 soundType:(long long)arg2;
 - (void)_reset;
 - (void)_resetStartAnalyzeTime;
+- (void)_resumeSSVProcessing;
 - (float)_scaleInputWithInRangeOutRange:(float)arg1 minIn:(float)arg2 maxIn:(float)arg3 minOut:(float)arg4 maxOut:(float)arg5;
 - (void)_setAsset:(id)arg1;
 - (void)_setDefaultParameters;
@@ -91,10 +98,8 @@
 - (void)initializeAlarmState;
 - (void)initializeMediaPlayingState;
 - (void)initializeTimerState;
-- (void)pauseSSVProcessing;
 - (void)prepareSoundLevelBufferFromSamples:(id)arg1 soundType:(long long)arg2 firedVoiceTriggerEvent:(BOOL)arg3 triggerStartTimeSampleOffset:(unsigned long long)arg4 triggerEndTimeSampleOffset:(unsigned long long)arg5;
 - (void)reset;
-- (void)resumeSSVProcessing;
 - (void)setAsset:(id)arg1;
 - (void)speechManagerDidStartForwarding:(id)arg1 successfully:(BOOL)arg2 error:(id)arg3;
 - (void)speechManagerDidStopForwarding:(id)arg1 forReason:(long long)arg2;

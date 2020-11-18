@@ -16,6 +16,7 @@
 }
 
 @property (readonly, nonatomic) unsigned long long age;
+@property (readonly, copy, nonatomic) NSNumber *altDSID;
 @property (readonly, copy, nonatomic) NSString *appleID;
 @property (readonly, copy, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly, copy, nonatomic) NSNumber *dsid;
@@ -29,9 +30,11 @@
 @property (readonly, copy, nonatomic) NSString *inviteEmail;
 @property (readonly, nonatomic) BOOL isChildAccount;
 @property (readonly, nonatomic) BOOL isMe;
+@property (readonly, nonatomic) BOOL isOrganizer;
 @property (readonly, nonatomic) BOOL isParent;
 @property (readonly, copy, nonatomic) NSDate *joinedDate;
 @property (readonly, copy, nonatomic) NSString *lastName;
+@property (readonly, nonatomic) long long memberType;
 @property (readonly, copy, nonatomic) NSString *memberTypeDisplayString;
 @property (readonly, copy, nonatomic) NSString *memberTypeString;
 @property (readonly, copy, nonatomic) NSString *statusString;

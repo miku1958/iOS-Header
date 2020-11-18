@@ -7,21 +7,14 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBRideCompletionStatus-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBCurrencyAmountValue, _INPBUserActivity;
+@class NSArray, NSString, _INPBCurrencyAmountValue, _INPBUserActivity;
 
-@interface _INPBRideCompletionStatus : PBCodable <NSCopying>
+@interface _INPBRideCompletionStatus : PBCodable <_INPBRideCompletionStatus, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _feedbackTypes;
-    _INPBUserActivity *_completionUserActivity;
-    NSMutableArray *_defaultTippingOptions;
-    _INPBCurrencyAmountValue *_paymentAmount;
-    BOOL _canceled;
-    BOOL _canceledByService;
-    BOOL _completed;
-    BOOL _missedPickup;
-    BOOL _outstanding;
     struct {
         unsigned int canceled:1;
         unsigned int canceledByService:1;
@@ -29,13 +22,24 @@
         unsigned int missedPickup:1;
         unsigned int outstanding:1;
     } _has;
+    BOOL _canceled;
+    BOOL _canceledByService;
+    BOOL _completed;
+    BOOL _missedPickup;
+    BOOL _outstanding;
+    _INPBUserActivity *_completionUserActivity;
+    NSArray *_defaultTippingOptions;
+    _INPBCurrencyAmountValue *_paymentAmount;
 }
 
 @property (nonatomic) BOOL canceled; // @synthesize canceled=_canceled;
 @property (nonatomic) BOOL canceledByService; // @synthesize canceledByService=_canceledByService;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
 @property (strong, nonatomic) _INPBUserActivity *completionUserActivity; // @synthesize completionUserActivity=_completionUserActivity;
-@property (strong, nonatomic) NSMutableArray *defaultTippingOptions; // @synthesize defaultTippingOptions=_defaultTippingOptions;
+@property (readonly, copy) NSString *debugDescription;
+@property (copy, nonatomic) NSArray *defaultTippingOptions; // @synthesize defaultTippingOptions=_defaultTippingOptions;
+@property (readonly, nonatomic) unsigned long long defaultTippingOptionsCount;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) int *feedbackTypes;
 @property (readonly, nonatomic) unsigned long long feedbackTypesCount;
 @property (nonatomic) BOOL hasCanceled;
@@ -45,13 +49,13 @@
 @property (nonatomic) BOOL hasMissedPickup;
 @property (nonatomic) BOOL hasOutstanding;
 @property (readonly, nonatomic) BOOL hasPaymentAmount;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL missedPickup; // @synthesize missedPickup=_missedPickup;
 @property (nonatomic) BOOL outstanding; // @synthesize outstanding=_outstanding;
 @property (strong, nonatomic) _INPBCurrencyAmountValue *paymentAmount; // @synthesize paymentAmount=_paymentAmount;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
 + (Class)defaultTippingOptionsType;
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsFeedbackTypes:(id)arg1;
 - (void)addDefaultTippingOptions:(id)arg1;
@@ -59,16 +63,11 @@
 - (void)clearDefaultTippingOptions;
 - (void)clearFeedbackTypes;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)defaultTippingOptionsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)defaultTippingOptionsCount;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (int)feedbackTypeAtIndex:(unsigned long long)arg1;
 - (id)feedbackTypesAsString:(int)arg1;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setFeedbackTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)writeTo:(id)arg1;

@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
+@protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
 @interface TSWPFont : NSObject
@@ -14,7 +15,9 @@ __attribute__((visibility("hidden")))
     NSString *_fontName;
     NSString *_compatibilityName;
     NSString *_displayName;
+    NSObject<OS_dispatch_semaphore> *_displayNameSem;
     NSString *_familyName;
+    NSObject<OS_dispatch_semaphore> *_familyNameSem;
     unsigned long long _hash;
     int _availability;
 }

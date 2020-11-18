@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVConferenceXPCClient, CALayer, NSDictionary, NSMutableDictionary, NSTimer;
 @protocol AVConferenceDelegate, OS_dispatch_queue;
@@ -21,6 +21,8 @@
     NSMutableDictionary *_stateCacheForCallID;
     NSObject<OS_dispatch_queue> *_stateQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
+    long long _inputAudioPowerSpectrumToken;
+    long long _outputAudioPowerSpectrumToken;
     BOOL shouldDisplayNetworkQualityGraph_;
     NSTimer *networkQualityUpdateTimer_;
     CALayer *networkQualityGraphLayer_;
@@ -28,6 +30,7 @@
 
 @property (nonatomic) NSObject<AVConferenceDelegate> *delegate;
 @property (getter=isSpeakerPhoneEnabled) BOOL enableSpeakerPhone;
+@property (readonly) long long inputAudioPowerSpectrumToken; // @synthesize inputAudioPowerSpectrumToken=_inputAudioPowerSpectrumToken;
 @property (nonatomic, getter=isInputFrequencyMeteringEnabled) BOOL inputFrequencyMeteringEnabled;
 @property (readonly) float inputMeterLevel;
 @property (nonatomic, getter=isInputMeteringEnabled) BOOL inputMeteringEnabled;
@@ -37,6 +40,7 @@
 @property (readonly) unsigned int natType;
 @property (strong) CALayer *networkQualityGraphLayer; // @synthesize networkQualityGraphLayer=networkQualityGraphLayer_;
 @property (strong) NSTimer *networkQualityUpdateTimer; // @synthesize networkQualityUpdateTimer=networkQualityUpdateTimer_;
+@property (readonly) long long outputAudioPowerSpectrumToken; // @synthesize outputAudioPowerSpectrumToken=_outputAudioPowerSpectrumToken;
 @property (nonatomic, getter=isOutputFrequencyMeteringEnabled) BOOL outputFrequencyMeteringEnabled;
 @property (readonly) float outputMeterLevel;
 @property (nonatomic, getter=isOutputMeteringEnabled) BOOL outputMeteringEnabled;
@@ -67,6 +71,7 @@
 - (void)deregisterBlocksForVCNotifications;
 - (unsigned int)doBlockingConnectionCheck;
 - (BOOL)getIsAudioPaused:(BOOL *)arg1 callID:(long long)arg2 error:(id *)arg3;
+- (BOOL)getIsSendingAudio:(BOOL *)arg1 callID:(long long)arg2 error:(id *)arg3;
 - (BOOL)getIsVideoPaused:(BOOL *)arg1 callID:(long long)arg2 error:(id *)arg3;
 - (void)handleGKSConnectivitySettingsUpdate:(id)arg1;
 - (id)init;
@@ -119,6 +124,7 @@
 - (void)setPeerReportingIdentifier:(id)arg1 sessionIdentifier:(id)arg2 forCallID:(long long)arg3;
 - (void)setRemoteVideoBackLayer:(void *)arg1;
 - (void)setRemoteVideoLayer:(void *)arg1;
+- (BOOL)setSendingAudio:(BOOL)arg1 callID:(long long)arg2 error:(id *)arg3;
 - (BOOL)setServerInfo:(id)arg1;
 - (void)setSessionID:(id)arg1 callID:(long long)arg2;
 - (void)setSetSessionID:(id)arg1 forCallID:(long long)arg2;
@@ -167,6 +173,7 @@
 - (void)videoConference:(id)arg1 videoQualityNotificationForCallID:(unsigned int)arg2 isDegraded:(BOOL)arg3 isRemote:(BOOL)arg4;
 - (void)videoConference:(id)arg1 withCallID:(long long)arg2 didPauseAudio:(BOOL)arg3 error:(id)arg4;
 - (void)videoConference:(id)arg1 withCallID:(long long)arg2 didPauseVideo:(BOOL)arg3 error:(id)arg4;
+- (void)videoConference:(id)arg1 withCallID:(long long)arg2 isSendingAudio:(BOOL)arg3 error:(id)arg4;
 - (void)videoConference:(id)arg1 withCallID:(unsigned int)arg2 networkHint:(BOOL)arg3;
 - (long long)videoStreamTokenForCallID:(long long)arg1;
 - (void)warmupForCall;

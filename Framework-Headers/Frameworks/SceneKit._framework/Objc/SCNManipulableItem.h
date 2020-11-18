@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class SCNNode;
 
@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) struct SCNVector3 elementPosition;
 @property (strong, nonatomic) SCNNode *node; // @synthesize node;
 @property (nonatomic) struct SCNMatrix4 transform;
+@property (nonatomic) struct SCNMatrix4 worldTransform;
 
 + (void)addItems:(id)arg1 toScene:(id)arg2;
 + (void)removeItemsFromScene:(id)arg1;
@@ -35,7 +36,6 @@
 - (void)setPosition:(struct SCNVector3)arg1;
 - (void)setScreenSize:(double)arg1;
 - (void)validateClone;
-- (struct SCNMatrix4)worldTransform;
 
 @end
 

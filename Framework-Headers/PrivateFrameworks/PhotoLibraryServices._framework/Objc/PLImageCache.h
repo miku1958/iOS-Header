@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class PLImageCacheList, PLImageLoadingThread;
 
@@ -17,7 +17,6 @@
 - (void)_addImageToCache:(id)arg1;
 - (id)_cachedImageFromSource:(id)arg1 asset:(id)arg2;
 - (id)_imageLoader;
-- (void)_uncacheImage:(id)arg1;
 - (id)cachedImageFromSource:(id)arg1 asset:(id)arg2 loadIfNeeded:(BOOL)arg3 synchronously:(BOOL)arg4 priority:(int)arg5 forImageLoadingQueue:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (id)cachedImageFromSource:(id)arg1 forAsset:(id)arg2 loadIfNeeded:(BOOL)arg3 synchronously:(BOOL)arg4 priority:(int)arg5 forImageLoadingQueue:(id)arg6;
 - (void)cancelLoadFromSource:(id)arg1 asset:(id)arg2 imageLoadingQueue:(id)arg3;

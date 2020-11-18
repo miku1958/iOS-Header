@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, HDXPCClient, NSMutableArray, NSUUID;
+@class HDClientAuthorizationOracle, HDProfile, HDXPCClient, NSMutableArray, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HDAuthorizationServer : NSObject
 {
+    HDClientAuthorizationOracle *_authorizationOracle;
     int _invalidated;
     HDXPCClient *_client;
     HDProfile *_profile;
@@ -32,11 +33,12 @@
 - (void)_performIfAuthorizedForTypes:(id)arg1 sharing:(BOOL)arg2 onQueue:(id)arg3 usingBlock:(CDUnknownBlockType)arg4 errorHandler:(CDUnknownBlockType)arg5;
 - (void)_queue_beginAuthorizationRequestDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_enqueueAuthorizationRequestForBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 authorizationNeededHandler:(CDUnknownBlockType)arg4 requestCompletionHandler:(CDUnknownBlockType)arg5;
-- (void)_setAuthorizationStatusesEntitled:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_setAuthorizationStatusesEntitled:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)allAuthorizationRecordsForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (id)allAuthorizationRecordsForType:(id)arg1 error:(id *)arg2;
 - (id)allDocumentAuthorizationRecordsForType:(id)arg1 bundleIdentifier:(id)arg2 error:(id *)arg3;
 - (id)allObjectAuthorizationsForSampleWithUUID:(id)arg1 error:(id *)arg2;
+- (id)allSourcesRequestingTypes:(id)arg1 error:(id *)arg2;
 - (id)authorizationStatusForType:(id)arg1 error:(id *)arg2;
 - (void)beginAuthorizationRequestDelegateTransactionWithRequestRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beginAuthorizationRequestDelegateTransactionWithSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -57,7 +59,7 @@
 - (void)requestAuthorizationForBundleIdentifier:(id)arg1 writeTypes:(id)arg2 readTypes:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)resetAuthorizationStatusForBundleIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)resetAuthorizationStatusesForObjects:(id)arg1 error:(id *)arg2;
-- (void)setAuthorizationStatuses:(id)arg1 forBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setAuthorizationStatuses:(id)arg1 authorizationModes:(id)arg2 forBundleIdentifier:(id)arg3 options:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)updateDefaultAuthorizationStatusesWithCompletion:(CDUnknownBlockType)arg1;
 
 @end

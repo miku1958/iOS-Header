@@ -40,6 +40,7 @@
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 arithmeticType:(int)arg2 isSecondarySourceFilter:(BOOL)arg3;
+- (unsigned long long)maxBatchSize;
 - (void)setSecondaryStrideInPixelsX:(unsigned long long)arg1;
 - (void)setSecondaryStrideInPixelsY:(unsigned long long)arg1;
 

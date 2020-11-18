@@ -7,10 +7,11 @@
 #import <objc/NSObject.h>
 
 @class NSMutableArray, PKPassLibrary, UIWindow;
-@protocol OS_dispatch_semaphore;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface PKPassSnapshotter : NSObject
 {
+    NSObject<OS_dispatch_queue> *_queue;
     PKPassLibrary *_passLibrary;
     NSObject<OS_dispatch_semaphore> *_snapshotSem;
     UIWindow *_snapshotWindow;

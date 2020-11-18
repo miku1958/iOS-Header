@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class NSString, UIColor, UIFontMetrics, UILabel;
+@class NSString, UIColor, UIFont, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarModernPromptView : UIView
 {
     UILabel *_promptLabel;
-    UIFontMetrics *_fontMetrics;
+    UIFont *_font;
     NSString *_prompt;
     UIColor *_textColor;
 }
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (double)_promptHeight;
+- (void)_updateFontFromPreviousTraitCollection:(id)arg1;
 - (void)_updatePromptLabel;
 - (id)defaultFontDescriptor;
 - (id)initWithFrame:(struct CGRect)arg1;

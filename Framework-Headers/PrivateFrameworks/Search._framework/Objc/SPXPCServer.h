@@ -11,28 +11,32 @@
 
 @interface SPXPCServer : NSObject
 {
+    double _idleTimerInterval;
+    BOOL _shutdown;
     NSObject<OS_xpc_object> *_conn;
     NSMutableSet *_connections;
     NSMutableDictionary *_handlerMap;
     NSObject<OS_dispatch_queue> *_connectionsQueue;
     NSObject<OS_dispatch_queue> *_eventQueue;
     NSObject<OS_dispatch_queue> *_timerQueue;
-    double _idleTimerInterval;
-    BOOL _shutdown;
+    unsigned int _qos;
+    BOOL hadConnection;
     CDUnknownBlockType _disconnectHandler;
     CDUnknownBlockType _defaultMessageHandler;
+    CDUnknownBlockType _firstConnectionBlock;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType defaultMessageHandler; // @synthesize defaultMessageHandler=_defaultMessageHandler;
 @property (copy, nonatomic) CDUnknownBlockType disconnectHandler; // @synthesize disconnectHandler=_disconnectHandler;
+@property (copy, nonatomic) CDUnknownBlockType firstConnectionBlock; // @synthesize firstConnectionBlock=_firstConnectionBlock;
 
 - (void).cxx_destruct;
-- (void)_handleNewConnection:(id)arg1;
+- (void)_handleNewConnection:(id)arg1 qos:(unsigned int)arg2;
 - (CDUnknownBlockType)_handlerForMessageName:(id)arg1;
 - (id)_highAvailabilityQueue;
 - (void)dealloc;
 - (id)initListenerWithServiceName:(id)arg1;
-- (id)initListenerWithServiceName:(id)arg1 onQueue:(id)arg2;
+- (id)initListenerWithServiceName:(id)arg1 onQueue:(id)arg2 qos:(unsigned int)arg3;
 - (void)setHandlerForMessageName:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)shutdown;
 - (void)startListening;

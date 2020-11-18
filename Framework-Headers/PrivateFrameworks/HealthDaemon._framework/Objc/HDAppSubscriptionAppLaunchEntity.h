@@ -10,9 +10,9 @@
 {
 }
 
-+ (BOOL)_getLaunchTimesWithArray:(id)arg1 predicate:(id)arg2 profile:(id)arg3 error:(id *)arg4;
++ (id)_launchTimesWithPredicate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)_predicateForBundleID:(id)arg1;
-+ (id)columnsDefinition;
++ (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 + (id)launchTimeForBundleID:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (long long)protectionClass;

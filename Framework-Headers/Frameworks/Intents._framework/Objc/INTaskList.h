@@ -21,17 +21,18 @@
     NSString *_identifier;
 }
 
-@property (readonly, copy) NSDateComponents *createdDateComponents; // @synthesize createdDateComponents=_createdDateComponents;
-@property (readonly, copy) INSpeakableString *groupName; // @synthesize groupName=_groupName;
-@property (readonly, copy) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, copy) NSDateComponents *modifiedDateComponents; // @synthesize modifiedDateComponents=_modifiedDateComponents;
+@property (readonly, copy, nonatomic) NSDateComponents *createdDateComponents; // @synthesize createdDateComponents=_createdDateComponents;
+@property (readonly, copy, nonatomic) INSpeakableString *groupName; // @synthesize groupName=_groupName;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSDateComponents *modifiedDateComponents; // @synthesize modifiedDateComponents=_modifiedDateComponents;
 @property (readonly) long long taskListType;
-@property (readonly, copy) NSArray *tasks; // @synthesize tasks=_tasks;
-@property (readonly, copy) INSpeakableString *title; // @synthesize title=_title;
+@property (readonly, copy, nonatomic) NSArray *tasks; // @synthesize tasks=_tasks;
+@property (readonly, copy, nonatomic) INSpeakableString *title; // @synthesize title=_title;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;

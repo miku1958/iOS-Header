@@ -6,15 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSError, NSMutableOrderedSet, NSOrderedSet, NSString, PUActivityViewController;
+#import <PhotosUI/PXCMMActionPerformerDelegate-Protocol.h>
 
-@interface PUActivityItemSourceController : NSObject
+@class NSArray, NSError, NSMutableOrderedSet, NSOrderedSet, NSString, NSURL, PUActivityViewController;
+
+@interface PUActivityItemSourceController : NSObject <PXCMMActionPerformerDelegate>
 {
     NSMutableOrderedSet *_assetItems;
     NSMutableOrderedSet *_assetItemSources;
     int _taskId;
     PUActivityViewController *_activityViewController;
     CDUnknownBlockType _progressHandler;
+    NSURL *_publishedURL;
     NSArray *__activeItemSources;
     NSError *__error;
     NSString *_activeActivityType;
@@ -27,15 +30,26 @@
 @property (readonly, copy, nonatomic) NSOrderedSet *assetItemSources;
 @property (copy, nonatomic) NSOrderedSet *assetItems; // @synthesize assetItems=_assetItems;
 @property (readonly, copy, nonatomic) NSOrderedSet *assets;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (strong, nonatomic, setter=_setPublishedURL:) NSURL *publishedURL; // @synthesize publishedURL=_publishedURL;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_cleanupAfterPerform;
+- (void)_didPublishMomentShareLinkToURL:(id)arg1 error:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)_prepareForPerformWithActivityType:(id)arg1 error:(id *)arg2;
+- (BOOL)actionPerformer:(id)arg1 dismissViewController:(struct NSObject *)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)actionPerformer:(id)arg1 presentViewController:(struct NSObject *)arg2;
 - (id)activityItemSourceForAsset:(id)arg1;
 - (void)addAssetItem:(id)arg1;
 - (void)cancel;
 - (long long)countOfImagesToShare;
 - (long long)countOfLoopsToShare;
 - (long long)countOfVideosToShare;
+- (void)publishLinkForActivityType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeAssetItem:(id)arg1;
 - (void)runExplicitly:(BOOL)arg1 withActivityType:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

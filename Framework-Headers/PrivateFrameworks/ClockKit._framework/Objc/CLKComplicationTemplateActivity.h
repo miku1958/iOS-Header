@@ -21,6 +21,8 @@
 @property (nonatomic) double standHoursPercentComplete; // @synthesize standHoursPercentComplete=_standHoursPercentComplete;
 
 + (id)activityTemplateWithFamily:(long long)arg1;
+- (void)_enumerateBOOLKeysWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateFloatKeysWithBlock:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)isCompatibleWithFamily:(long long)arg1;
 

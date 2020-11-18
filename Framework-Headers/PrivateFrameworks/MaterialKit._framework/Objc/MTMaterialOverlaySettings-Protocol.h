@@ -10,6 +10,8 @@
 
 @protocol MTMaterialOverlaySettings <NSObject>
 
+@property (readonly, copy, nonatomic) UIColor *baseOverlayColor;
+@property (nonatomic) double baseOverlayTintAlpha;
 @property (nonatomic) double primaryOverlayTintAlpha;
 @property (readonly, copy, nonatomic) UIColor *primaryOverlayTintColor;
 @property (nonatomic) double secondaryOverlayTintAlpha;

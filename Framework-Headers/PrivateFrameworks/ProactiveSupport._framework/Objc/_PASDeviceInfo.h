@@ -14,6 +14,7 @@
 + (BOOL)isAudioAccessory;
 + (BOOL)isBatterySaverEnabled;
 + (BOOL)isBetaBuild;
++ (BOOL)isDNUEnabled;
 + (BOOL)isDemoModeEnabled;
 + (BOOL)isInternalBuild;
 + (BOOL)isLowEndHardware;

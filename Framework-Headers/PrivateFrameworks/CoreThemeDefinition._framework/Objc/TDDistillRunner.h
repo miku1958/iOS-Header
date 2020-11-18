@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSURL, TDDistiller, TDLogger;
 
@@ -17,11 +17,13 @@
     TDLogger *_logger;
     NSString *_assetStoreVersionString;
     long long _assetStoreVersionNumber;
+    NSString *_minDeploymentTarget;
 }
 
 @property long long assetStoreVersionNumber; // @synthesize assetStoreVersionNumber=_assetStoreVersionNumber;
 @property (copy) NSString *assetStoreVersionString; // @synthesize assetStoreVersionString=_assetStoreVersionString;
 @property (strong, nonatomic) TDLogger *logger; // @synthesize logger=_logger;
+@property (nonatomic) NSString *minDeploymentTarget; // @synthesize minDeploymentTarget=_minDeploymentTarget;
 @property (copy, nonatomic) NSURL *outputURL; // @synthesize outputURL=_outputURL;
 @property (nonatomic) BOOL packImagesInDocument;
 

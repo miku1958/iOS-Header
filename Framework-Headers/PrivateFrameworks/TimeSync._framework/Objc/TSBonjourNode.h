@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSString;
 
@@ -13,11 +13,11 @@
     NSString *_name;
     NSString *_type;
     NSString *_domain;
-    NSDictionary *_addresses;
+    NSDictionary *_interfaces;
 }
 
-@property (copy, nonatomic) NSDictionary *addresses; // @synthesize addresses=_addresses;
 @property (readonly, copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
+@property (copy, nonatomic) NSDictionary *interfaces; // @synthesize interfaces=_interfaces;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 

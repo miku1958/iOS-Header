@@ -9,7 +9,7 @@
 #import <SpotlightServices/PARSessionDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSSet, NSString, PARSession, PRSFeedbackProxy, PRSRankingServerKnobs, SSPlistDataReader;
-@protocol OS_dispatch_queue, PRSSessionController, SFFeedbackListener;
+@protocol OS_dispatch_queue, OS_dispatch_source, PRSSessionController, SFFeedbackListener;
 
 @interface PRSSearchSession : NSObject <PARSessionDelegate>
 {
@@ -20,13 +20,15 @@
     NSDictionary *_sqfData;
     NSDictionary *_serverFeatures;
     NSString *_userAgent;
+    BOOL _parsecFeedbackAllowed;
     PRSFeedbackProxy *_listener;
+    BOOL _configuredSession;
     NSObject<OS_dispatch_queue> *_clientQueue;
     double _sessionStartTime;
     NSArray *_supportedServices;
     NSString *_modelL2Version;
-    NSString *_modelL3Version;
     PARSession *_session;
+    NSObject<OS_dispatch_source> *_quiescenceTimer;
     double _retryAfter;
 }
 
@@ -34,18 +36,20 @@
 @property (readonly, nonatomic) SSPlistDataReader *cannedCEPValues;
 @property (readonly, nonatomic) SSPlistDataReader *cepDictionary;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property BOOL configuredSession; // @synthesize configuredSession=_configuredSession;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL disableAsTypedSuggestion;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<SFFeedbackListener> listener;
 @property (readonly, nonatomic) NSString *modelL2Version; // @synthesize modelL2Version=_modelL2Version;
-@property (readonly, nonatomic) NSString *modelL3Version; // @synthesize modelL3Version=_modelL3Version;
+@property (strong) NSObject<OS_dispatch_source> *quiescenceTimer; // @synthesize quiescenceTimer=_quiescenceTimer;
 @property (readonly, nonatomic) PRSRankingServerKnobs *rankingKnobs;
 @property double retryAfter; // @synthesize retryAfter=_retryAfter;
 @property (readonly, nonatomic) double searchRenderTimeout;
 @property (strong) PARSession *session; // @synthesize session=_session;
 @property (nonatomic) double sessionStartTime; // @synthesize sessionStartTime=_sessionStartTime;
+@property (readonly, nonatomic) double suggestionsRenderTimeout;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *supportedServices; // @synthesize supportedServices=_supportedServices;
 @property (strong) NSString *userAgent; // @synthesize userAgent=_userAgent;

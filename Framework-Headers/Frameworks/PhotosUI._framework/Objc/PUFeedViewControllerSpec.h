@@ -65,10 +65,10 @@ __attribute__((visibility("hidden")))
 - (void)configureFeedCollectionViewLayout:(id)arg1 forCollectionViewType:(long long)arg2 collectionViewSize:(struct CGSize)arg3;
 - (void)configureGradientCell:(id)arg1 forSectionHeaderBackgroundInCollectionViewType:(long long)arg2;
 - (void)configureSeparatorMetrics:(inout struct PUFeedSeparatorMetrics *)arg1 betweenSectionWithInfo:(id)arg2 andSectionWithInfo:(id)arg3 joined:(BOOL)arg4 collectionViewType:(long long)arg5;
-- (void)configureTextCell:(id)arg1 forCaption:(id)arg2;
-- (void)configureTextCell:(id)arg1 forCommentWithDescriptionPhrase:(id)arg2;
+- (void)configureTextCell:(id)arg1 forCaption:(id)arg2 date:(id)arg3;
+- (void)configureTextCell:(id)arg1 forCommentWithDescriptionPhrase:(id)arg2 date:(id)arg3;
 - (void)configureTextCell:(id)arg1 forEventWithDescriptionPhrase:(id)arg2;
-- (void)configureTextCell:(id)arg1 forLikesWithDescriptionPhrase:(id)arg2;
+- (void)configureTextCell:(id)arg1 forLikesWithDescriptionPhrase:(id)arg2 date:(id)arg3;
 - (void)configureTextCell:(id)arg1 forSectionFooterWithActionText:(id)arg2 collectionViewType:(long long)arg3;
 - (void)configureTextCell:(id)arg1 forSectionFooterWithDateText:(id)arg2 collectionViewType:(long long)arg3;
 - (void)configureTextCell:(id)arg1 forSectionGroupHeaderWithText:(id)arg2 collectionViewType:(long long)arg3;
@@ -80,8 +80,11 @@ __attribute__((visibility("hidden")))
 - (void)getFastImageFormat:(out int *)arg1 qualityImageFormat:(out int *)arg2 forSourceSize:(struct CGSize)arg3 destinationSize:(struct CGSize)arg4 allowCrop:(BOOL)arg5;
 - (void)getReferenceMaximumLength:(double *)arg1 minimumNumberOfTilesToOmit:(long long *)arg2 forSectionType:(long long)arg3 collectionViewType:(long long)arg4;
 - (id)init;
+- (void)setLayoutReferenceWidth:(double)arg1;
 - (BOOL)shouldShowCommentBadgesInCollectionViewType:(long long)arg1;
 - (double)spacingBetweenSectionWithInfo:(id)arg1 andHeaderWithGroupID:(id)arg2;
+- (struct UIEdgeInsets)textInsetsForHeadersAndFootersInSectionType:(long long)arg1 collectionViewType:(long long)arg2;
+- (double)textSpacingBetweenText:(id)arg1 detailText:(id)arg2;
 - (struct CGSize)thumbnailSizeForImageSize:(struct CGSize)arg1;
 - (void)updateFormats;
 

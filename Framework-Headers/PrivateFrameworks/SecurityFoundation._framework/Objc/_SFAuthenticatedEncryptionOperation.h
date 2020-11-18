@@ -28,8 +28,11 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)decrypt:(id)arg1 withKey:(id)arg2 additionalAuthenticatedData:(id)arg3 error:(id *)arg4;
 - (id)decrypt:(id)arg1 withKey:(id)arg2 error:(id *)arg3;
 - (void)encodeWithCoder:(id)arg1;
+- (id)encrypt:(id)arg1 withKey:(id)arg2 additionalAuthenticatedData:(id)arg3 error:(id *)arg4;
+- (id)encrypt:(id)arg1 withKey:(id)arg2 additionalAuthenticatedData:(id)arg3 ivGenerator:(id)arg4 error:(id *)arg5;
 - (id)encrypt:(id)arg1 withKey:(id)arg2 error:(id *)arg3;
 - (id)encrypt:(id)arg1 withKey:(id)arg2 ivGenerator:(id)arg3 error:(id *)arg4;
 - (id)init;

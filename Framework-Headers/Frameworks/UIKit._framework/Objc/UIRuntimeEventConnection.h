@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIRuntimeConnection.h>
+#import <UIKitCore/UIRuntimeConnection.h>
 
 __attribute__((visibility("hidden")))
 @interface UIRuntimeEventConnection : UIRuntimeConnection

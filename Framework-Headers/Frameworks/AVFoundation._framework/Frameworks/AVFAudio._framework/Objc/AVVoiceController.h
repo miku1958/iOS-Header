@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVAudioFormat, NSDictionary, NSString, NSXPCConnection;
-@protocol AVVoiceControllerPlaybackDelegate, AVVoiceControllerRecordDelegate, AVVoiceControllerVoiceTriggerDelegate, Endpointer;
+@class AVAudioFormat, NSDictionary, NSString;
+@protocol AVVoiceControllerPlaybackDelegate, AVVoiceControllerRecordDelegate, Endpointer;
 
 @interface AVVoiceController : NSObject
 {
@@ -41,13 +41,11 @@
 @property (getter=isStopOnBargeInEnabled) BOOL stopOnBargeInEnabled;
 @property (getter=isStopOnEndpointEnabled) BOOL stopOnEndpointEnabled;
 @property (getter=isSynchronousCallbackEnabled) BOOL synchronousCallbackEnabled;
-@property id<AVVoiceControllerVoiceTriggerDelegate> voiceTriggerDelegate;
 @property (readonly) NSDictionary *voiceTriggerInfo;
-@property (readonly) unsigned long long voiceTriggerPastDataFramesAvailable;
-@property (readonly, strong) NSXPCConnection *voiceTriggerServerConnection; // @dynamic voiceTriggerServerConnection;
 
 - (BOOL)IsDeviceAvailableInLocalRoute:(id)arg1 error:(id *)arg2;
-- (void)avAudioPCMRecordBufferListReceived:(struct AudioBufferList *)arg1 atTime:(unsigned long long)arg2;
+- (void)alertPlaybackFinishedOfType:(int)arg1;
+- (void)avAudioPCMRecordBufferListReceived:(struct AudioBufferList *)arg1 numChannels:(unsigned int)arg2 atTime:(unsigned long long)arg3;
 - (void)avAudioPCMRecordBufferReceived:(id)arg1 atTime:(unsigned long long)arg2;
 - (float)averagePowerForChannel:(unsigned long long)arg1;
 - (void)beganPlaying;
@@ -56,10 +54,10 @@
 - (void)beginPlaybackInterruption;
 - (void)beginRecordInterruption;
 - (void)beginRecordInterruptionWithContext:(id)arg1;
+- (id)currentRecordDeviceInfo;
 - (void)dealloc;
 - (void)decodeError;
 - (int)doStartRecordingAtTime:(unsigned long long)arg1 behavior:(id)arg2;
-- (void)enableVoiceTriggerListening:(BOOL)arg1;
 - (void)encodeError;
 - (void)endAudioSessionActivate:(BOOL)arg1;
 - (void)endPlaybackInterruption;
@@ -74,11 +72,14 @@
 - (void)handleInterruption:(id)arg1;
 - (void)handleMediaServerDeath:(id)arg1;
 - (void)handleMediaServerReset:(id)arg1;
+- (void)handlePluginDidPublishDevice:(id)arg1;
+- (void)handlePluginDidUnpublishDevice:(id)arg1;
 - (void)handleRouteChange:(id)arg1;
 - (void)hardwareConfigChanged;
 - (struct ControllerImpl *)impl;
 - (id)initWithContext:(id)arg1 error:(id *)arg2;
 - (void)interspeechPointDetected;
+- (void)lpcmRecordBufferForNonLPCMReceived:(struct AudioQueueBuffer *)arg1 atTime:(unsigned long long)arg2;
 - (void)lpcmRecordBufferReceived:(struct AudioQueueBuffer *)arg1 atTime:(unsigned long long)arg2;
 - (float)peakPowerForChannel:(unsigned long long)arg1;
 - (BOOL)playAlertSoundForType:(int)arg1;
@@ -92,6 +93,7 @@
 - (void)recordBufferReceived:(struct MyAudioQueueBuffer *)arg1 atTime:(unsigned long long)arg2;
 - (void)releaseAudioSession;
 - (void)releaseAudioSession:(unsigned long long)arg1;
+- (void)removePluginNotifications;
 - (void)removeSessionNotifications;
 - (void)resetEndpointer;
 - (void)sendRemoteConnectionMessage:(id)arg1;
@@ -101,6 +103,7 @@
 - (BOOL)setRecordBufferDuration:(double)arg1;
 - (void)setSessionNotifications;
 - (void)setupAlertBehavior:(id)arg1;
+- (void)setupPluginNotifications;
 - (BOOL)startPlaying;
 - (BOOL)startRecording;
 - (BOOL)startRecording:(id *)arg1;
@@ -110,8 +113,6 @@
 - (void)stopPlaying;
 - (void)stopRecording;
 - (void)updateMeters;
-- (void)updateVoiceTriggerConfiguration:(id)arg1;
-- (void)voiceTriggerNotification:(id)arg1;
 - (BOOL)willAcceptContext:(id)arg1;
 
 @end

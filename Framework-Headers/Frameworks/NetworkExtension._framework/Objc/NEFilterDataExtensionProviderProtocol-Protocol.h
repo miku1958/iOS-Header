@@ -6,7 +6,7 @@
 
 #import <NetworkExtension/NEFilterExtensionProviderProtocol-Protocol.h>
 
-@class NSDictionary, NSFileHandle;
+@class NEFilterReport, NSDictionary, NSFileHandle;
 
 @protocol NEFilterDataExtensionProviderProtocol <NEFilterExtensionProviderProtocol>
 - (void)fetchProviderConnectionWithCompletionHandler:(void (^)(NSXPCListenerEndpoint *))arg1;
@@ -14,5 +14,6 @@
 - (void)provideRemediationMap:(NSDictionary *)arg1;
 - (void)provideURLAppendStringMap:(NSDictionary *)arg1;
 - (void)providerControlSocketFileHandle:(NSFileHandle *)arg1;
+- (void)report:(NEFilterReport *)arg1;
 @end
 

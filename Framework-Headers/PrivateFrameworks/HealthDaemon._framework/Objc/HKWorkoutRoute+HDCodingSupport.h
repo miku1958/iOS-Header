@@ -6,7 +6,17 @@
 
 #import <HealthKit/HKWorkoutRoute.h>
 
-@interface HKWorkoutRoute (HDCodingSupport)
+#import <HealthDaemon/HDCoding-Protocol.h>
+
+@class NSString;
+
+@interface HKWorkoutRoute (HDCodingSupport) <HDCoding>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 + (id)createWithCodable:(id)arg1;
 - (BOOL)addCodableRepresentationToCollection:(id)arg1;
 - (id)codableRepresentationForSync;

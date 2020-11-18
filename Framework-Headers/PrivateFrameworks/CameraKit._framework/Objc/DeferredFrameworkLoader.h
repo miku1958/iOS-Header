@@ -10,13 +10,12 @@
 
 @interface DeferredFrameworkLoader : NSObject
 {
+    BOOL _frameworkLoaded;
     NSString *_path;
     void *_frameworkHandle;
-    long long _frameworkLoadedToken;
 }
 
 @property (nonatomic) void *frameworkHandle; // @synthesize frameworkHandle=_frameworkHandle;
-@property (nonatomic) long long frameworkLoadedToken; // @synthesize frameworkLoadedToken=_frameworkLoadedToken;
 @property (strong, nonatomic) NSString *path; // @synthesize path=_path;
 
 + (id)PhotosUIFrameworkPath;

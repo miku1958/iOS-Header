@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadContentViewIfNeeded;
 - (void)_logAssetSelectionIfNeeded:(id)arg1;
 - (void)_setPhotoPickerInViewController:(id)arg1;
+- (BOOL)_useLibraryPresentation;
 - (void)beginRequestWithExtensionContext:(id)arg1;
 - (void)cancelPhotoPicker;
 - (void)dealloc;

@@ -12,10 +12,14 @@
 {
     UITextField *_textField;
     BOOL _isLeftToRight;
+    double _minimumCellHeight;
     BOOL _inlineEditingEnabled;
+    double _leadingOffset;
 }
 
 @property (nonatomic) BOOL inlineEditingEnabled; // @synthesize inlineEditingEnabled=_inlineEditingEnabled;
+@property (nonatomic) double leadingOffset; // @synthesize leadingOffset=_leadingOffset;
+@property (nonatomic) double minimumCellHeight; // @synthesize minimumCellHeight=_minimumCellHeight;
 @property (readonly, nonatomic) UITextField *textField; // @synthesize textField=_textField;
 
 - (void).cxx_destruct;

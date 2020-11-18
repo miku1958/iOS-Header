@@ -10,12 +10,6 @@
 
 @protocol _CPStartLocalSearchFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasIndexType;
-@property (readonly, nonatomic) BOOL hasInput;
-@property (readonly, nonatomic) BOOL hasQueryId;
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasTriggerEvent;
-@property (readonly, nonatomic) BOOL hasUuid;
 @property (nonatomic) int indexType;
 @property (copy, nonatomic) NSString *input;
 @property (readonly, nonatomic) NSData *jsonData;

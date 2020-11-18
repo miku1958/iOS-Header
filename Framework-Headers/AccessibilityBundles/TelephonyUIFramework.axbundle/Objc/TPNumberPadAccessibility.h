@@ -17,6 +17,7 @@
 - (BOOL)_accessibilityProvidesScannerGroupElements;
 - (id)_accessibilityScannerGroupElements;
 - (unsigned long long)_accessibilityScannerGroupTraits;
+- (BOOL)shouldGroupAccessibilityChildren;
 
 @end
 

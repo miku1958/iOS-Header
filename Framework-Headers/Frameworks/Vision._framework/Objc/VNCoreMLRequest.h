@@ -11,21 +11,23 @@
 @interface VNCoreMLRequest : VNImageBasedRequest
 {
     VNCoreMLModel *_model;
-    unsigned long long _imageCropAndScaleOption;
 }
 
-@property (nonatomic) unsigned long long imageCropAndScaleOption; // @synthesize imageCropAndScaleOption=_imageCropAndScaleOption;
+@property (nonatomic) unsigned long long imageCropAndScaleOption;
 @property (readonly, nonatomic) VNCoreMLModel *model; // @synthesize model=_model;
 
++ (Class)configurationClass;
++ (id)defaultProcessingDeviceForRevision:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (BOOL)allowsCachingOfResults;
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (id)initWithModel:(id)arg1;
 - (id)initWithModel:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
+- (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
 - (id)newDefaultRequestInstance;
-- (id)observationsCacheKey;
 - (id)sequencedRequestPreviousObservationsKey;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

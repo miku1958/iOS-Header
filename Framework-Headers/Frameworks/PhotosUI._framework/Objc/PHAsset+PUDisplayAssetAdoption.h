@@ -40,6 +40,7 @@
 @property (readonly, nonatomic) NSDate *modificationDate;
 @property (readonly, nonatomic) int originalEXIFOrientation;
 @property (readonly, nonatomic) unsigned long long originalFilesize;
+@property (readonly, nonatomic) unsigned long long originalResourceChoice;
 @property (readonly, copy, nonatomic) NSString *pathForOriginalImageFile;
 @property (readonly, copy, nonatomic) NSString *pathForOriginalVideoFile;
 @property (readonly, copy, nonatomic) NSString *pathForTrimmedVideoFile;

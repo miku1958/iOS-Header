@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSTCellRegionIterating-Protocol.h>
 #import <iWorkImport/TSTMutableCellIteratorDataUpdating-Protocol.h>
@@ -15,10 +15,10 @@
 __attribute__((visibility("hidden")))
 @interface TSTStrokeSidecarIterator : NSObject <TSTCellRegionIterating, TSTMutableCellIteratorDataUpdating>
 {
-    struct TSUCellCoord _curCellID;
     TSTStrokeSidecar *_strokeSidecar;
     TSTCellRegion *_region;
     struct NSObject *_regionIterator;
+    struct TSUCellCoord _curCellID;
 }
 
 @property (nonatomic) struct TSUCellCoord curCellID; // @synthesize curCellID=_curCellID;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDPathPainter-Protocol.h>
 #import <iWorkImport/TSSPreset-Protocol.h>
@@ -51,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (void)paintPath:(struct CGPath *)arg1 naturalBounds:(struct CGRect)arg2 inContext:(struct CGContext *)arg3 isPDF:(BOOL)arg4;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (id)referenceColor;
+- (BOOL)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 - (void)saveToArchive:(struct FillArchive *)arg1 archiver:(id)arg2;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (BOOL)shouldBeReappliedToCALayer:(id)arg1;

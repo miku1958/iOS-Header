@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface AVAudioSessionRouteDescription : NSObject
 {
@@ -15,15 +15,15 @@
 
 @property (readonly) NSArray *inputs;
 @property (readonly) NSArray *outputs;
+@property (readonly) NSString *siriRemoteInputIdentifier;
 
-+ (id)privateCreateOrConfigure:(id)arg1 withRawDescription:(id)arg2 owningSession:(id)arg3;
 - (void)dealloc;
 - (id)description;
 - (id)init;
 - (id)initWithCategory:(id)arg1;
+- (id)initWithRawDescription:(id)arg1 owningSession:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRoute:(id)arg1;
-- (BOOL)matchesRawDescription:(id)arg1;
 - (struct RouteDescriptionImpl *)privateGetImplementation;
 
 @end

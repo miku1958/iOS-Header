@@ -12,6 +12,7 @@
 
 @interface DOCThumbnailKey : NSObject <NSCopying>
 {
+    BOOL _isInteractive;
     NSObject<NSCopying> *_primaryKey;
     double _minimumSize;
     double _scale;
@@ -19,6 +20,7 @@
     struct CGSize _size;
 }
 
+@property (readonly, nonatomic) BOOL isInteractive; // @synthesize isInteractive=_isInteractive;
 @property (readonly, nonatomic) double minimumSize; // @synthesize minimumSize=_minimumSize;
 @property (readonly, nonatomic) NSObject<NSCopying> *primaryKey; // @synthesize primaryKey=_primaryKey;
 @property (readonly, nonatomic) double scale; // @synthesize scale=_scale;
@@ -28,7 +30,7 @@
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
-- (id)initWithPrimaryKey:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 style:(unsigned long long)arg5;
+- (id)initWithPrimaryKey:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 style:(unsigned long long)arg5 isInteractive:(BOOL)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

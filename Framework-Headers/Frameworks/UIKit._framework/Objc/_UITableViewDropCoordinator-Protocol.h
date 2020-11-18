@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewDropCoordinator-Protocol.h>
+#import <UIKitCore/UITableViewDropCoordinator-Protocol.h>
 
 @class NSArray, NSIndexPath, NSString, UIDragItem, UIDragPreviewTarget, UITableViewDropProposal;
 @protocol UIDropSession, _UITableViewPlaceholderContext;

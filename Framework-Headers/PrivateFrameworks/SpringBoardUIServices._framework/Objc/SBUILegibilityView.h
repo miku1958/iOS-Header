@@ -13,7 +13,7 @@
 @interface SBUILegibilityView : _UILegibilityView <SBUILegibility>
 {
     _UILegibilitySettings *_legibilitySettings;
-    long long _tintColor;
+    long long _tintStyle;
     UIImage *_tintImage;
     struct UIEdgeInsets _hitTestEdgeInsets;
 }
@@ -25,12 +25,12 @@
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
 @property (nonatomic) double strength; // @dynamic strength;
 @property (readonly) Class superclass;
-@property (nonatomic) long long tintColor; // @synthesize tintColor=_tintColor;
 @property (strong, nonatomic) UIImage *tintImage; // @synthesize tintImage=_tintImage;
+@property (nonatomic) long long tintStyle; // @synthesize tintStyle=_tintStyle;
 
 - (void).cxx_destruct;
 - (id)_tintColorForSettings:(id)arg1;
-- (id)initWithSettings:(id)arg1 strength:(double)arg2 image:(id)arg3 tintColor:(long long)arg4;
+- (id)initWithSettings:(id)arg1 strength:(double)arg2 image:(id)arg3 tintStyle:(long long)arg4;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setSettings:(id)arg1 image:(id)arg2 shadowImage:(id)arg3;
 - (void)updateForChangedSettings:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKit/NSCopying-Protocol.h>
 
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_cleanupEmptySetsForMultiValueKey:(id)arg1;
 - (id)_initWithChangeSet:(id)arg1 filter:(CDUnknownBlockType)arg2;
 - (BOOL)_isNewAndUnsaved;
-- (id)_uniqueIDToObjectMapForObjects:(id)arg1;
+- (id)_semanticIdentifierToObjectMapForObjects:(id)arg1;
 - (void)addChanges:(id)arg1;
 - (void)addToChanges:(id)arg1 forMultiValueKey:(id)arg2 basedOn:(id)arg3;
 - (void)changeSingleValue:(id)arg1 forKey:(id)arg2 basedOn:(id)arg3;

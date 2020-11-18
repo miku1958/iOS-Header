@@ -13,20 +13,21 @@
 
 @interface SKStoreProductActivityViewController : UIViewController <UIViewControllerTransitioningDelegate>
 {
-    id<SKStoreProductActivityViewControllerDelegate> _delegate;
     SKInvocationQueueProxy<SKUIServiceProductActivityViewController> *_serviceProxy;
     _UIAsyncInvocation *_cancelRequest;
     SKRemoteProductActivityViewController *_remoteViewController;
     NSDictionary *_parameters;
     _SKStoreProductActivityAnimationController *_animationController;
+    id<SKStoreProductActivityViewControllerDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SKStoreProductActivityViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SKStoreProductActivityViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_didFinishWithResult:(unsigned long long)arg1 error:(id)arg2;
 - (void)_requestRemoteViewController;

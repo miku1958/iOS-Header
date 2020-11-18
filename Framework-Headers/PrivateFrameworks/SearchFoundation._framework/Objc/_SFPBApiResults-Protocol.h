@@ -11,8 +11,6 @@
 @protocol _SFPBApiResults <NSObject>
 
 @property (copy, nonatomic) NSArray *flights;
-@property (readonly, nonatomic) BOOL hasResultType;
-@property (readonly, nonatomic) BOOL hasStatus;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int resultType;
 @property (nonatomic) int status;

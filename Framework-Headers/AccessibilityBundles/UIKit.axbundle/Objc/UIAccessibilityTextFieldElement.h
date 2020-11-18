@@ -19,6 +19,7 @@
 - (id)_accessibilityAXAttributedHint;
 - (id)_accessibilityAXAttributedLabel;
 - (id)_accessibilityAXAttributedValue;
+- (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
 - (void)_accessibilityCopy;
 - (void)_accessibilityCut;
 - (void)_accessibilityDelete;
@@ -31,6 +32,7 @@
 - (void)_accessibilityPaste;
 - (void)_accessibilityReplace;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
+- (BOOL)_accessibilityReplaceTextInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (void)_accessibilitySelect;
 - (void)_accessibilitySelectAll;
 - (struct _NSRange)_accessibilitySelectedTextRange;

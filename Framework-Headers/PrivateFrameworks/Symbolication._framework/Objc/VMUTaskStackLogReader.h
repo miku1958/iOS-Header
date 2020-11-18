@@ -12,7 +12,6 @@
 
 @interface VMUTaskStackLogReader : VMUStackLogReaderBase <VMUStackLogReader>
 {
-    BOOL _usesLiteMode;
     VMUTaskMemoryScanner *_scanner;
     struct _CSTypeRef _symbolicator;
 }
@@ -27,7 +26,7 @@
 @property (weak, nonatomic) VMUTaskMemoryScanner *scanner; // @synthesize scanner=_scanner;
 @property (readonly) Class superclass;
 @property (readonly) unsigned int task;
-@property (readonly) BOOL usesLiteMode; // @synthesize usesLiteMode=_usesLiteMode;
+@property (readonly) BOOL usesLiteMode;
 
 - (void).cxx_destruct;
 - (id)binaryImagePathForPCaddress:(unsigned long long)arg1;

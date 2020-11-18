@@ -11,6 +11,7 @@
 @interface UNSAttachmentRecord : NSObject
 {
     BOOL _thumbnailHidden;
+    BOOL _hiddenFromDefaultExpandedView;
     NSString *_identifier;
     unsigned long long _family;
     NSURL *_URL;
@@ -22,6 +23,7 @@
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (nonatomic) unsigned long long family; // @synthesize family=_family;
+@property (nonatomic) BOOL hiddenFromDefaultExpandedView; // @synthesize hiddenFromDefaultExpandedView=_hiddenFromDefaultExpandedView;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) struct CGRect thumbnailClippingRect; // @synthesize thumbnailClippingRect=_thumbnailClippingRect;
 @property (copy, nonatomic) NSNumber *thumbnailFrameNumber; // @synthesize thumbnailFrameNumber=_thumbnailFrameNumber;

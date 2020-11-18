@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString;
 
@@ -29,7 +29,6 @@
 @property (strong, nonatomic) NSMutableArray *subtrees; // @synthesize subtrees;
 @property (nonatomic) int type; // @synthesize type;
 
-+ (long long)extraIdiomForVisualStyling:(CDStruct_227bb23d)arg1 width:(double)arg2;
 + (id)key;
 + (id)keyboard;
 + (id)mergeStringForKeyName:(id)arg1;
@@ -41,9 +40,12 @@
 + (id)uniqueName;
 - (void)_addKeylayoutKeys:(id)arg1;
 - (id)_cacheRootNameForKey:(id)arg1;
+- (id)_horizontallyCoincidentKeysWithKey:(id)arg1;
 - (long long)_keyCountOnNamedRow:(id)arg1;
 - (struct CGRect)_keyplaneFrame;
+- (void)_mutateKeys:(id)arg1 scale:(double)arg2 withShapeOperation:(CDUnknownBlockType)arg3;
 - (BOOL)_needsScaling;
+- (struct CGRect)_originalKeyplaneFrame;
 - (BOOL)_renderAsStringKey;
 - (int)_variantType;
 - (id)activeGeometriesList;
@@ -103,12 +105,14 @@
 - (id)gestureKey;
 - (id)gestureKeyplaneName;
 - (BOOL)ghost;
+- (unsigned long long)groupNeighbor;
 - (BOOL)hasLayoutTag:(id)arg1;
 - (long long)highlightedVariantIndex;
 - (id)highlightedVariantsList;
 - (int)indexOfSubtree:(id)arg1;
 - (id)initWithType:(int)arg1;
 - (id)initWithType:(int)arg1 withName:(id)arg2 withProperties:(id)arg3 withSubtrees:(id)arg4 withCache:(id)arg5;
+- (void)insertKey:(id)arg1 withFrame:(struct CGRect)arg2 andShiftKeys:(id)arg3 scale:(double)arg4;
 - (long long)intForProperty:(id)arg1;
 - (int)interactionType;
 - (BOOL)isAlphabeticPlane;
@@ -146,6 +150,7 @@
 - (BOOL)looksExactlyLikeShiftAlternate;
 - (BOOL)looksLike:(id)arg1;
 - (BOOL)looksLikeShiftAlternate;
+- (BOOL)mergeAsMoreKey;
 - (id)mergeKeyNames:(id)arg1;
 - (void)mergeReturnKey:(id)arg1 withReturnKey:(id)arg2;
 - (BOOL)modifiesKeyplane;
@@ -155,8 +160,10 @@
 - (BOOL)noLanguageIndicator;
 - (BOOL)notUseCandidateSelection;
 - (id)numberForProperty:(id)arg1;
+- (unsigned long long)numberOfRows;
 - (id)objectForProperty:(id)arg1;
 - (void)orderVariantKeys:(BOOL)arg1;
+- (struct CGRect)originalFrame;
 - (id)overrideDisplayString;
 - (struct CGRect)paddedFrame;
 - (id)parentKey;
@@ -164,11 +171,18 @@
 - (double)primaryKeylayoutOffset;
 - (double)primaryKeylayoutWidthRatio;
 - (id)recursiveDescription;
+- (void)removeKey:(id)arg1;
+- (void)removeKey:(id)arg1 andShiftKeys:(id)arg2 scale:(double)arg3;
+- (void)removeKeyFromAllCachedLists:(id)arg1;
 - (void)removeKeyFromCachedKeyList:(id)arg1;
 - (BOOL)renderKeyInKeyplane:(id)arg1;
 - (int)rendering;
+- (void)replaceKey:(id)arg1 withKey:(id)arg2;
+- (void)repositionKeys:(id)arg1 withOffset:(struct CGPoint)arg2 scale:(double)arg3;
 - (id)representedString;
 - (id)rightSpaceKey;
+- (void)scaleKeys:(id)arg1 withFactor:(struct CGSize)arg2 scale:(double)arg3;
+- (id)scriptSwitchKey;
 - (id)secondaryDisplayStrings;
 - (id)secondaryRepresentedStrings;
 - (long long)selectedVariantIndex;
@@ -188,10 +202,12 @@
 - (void)setGeometry:(id)arg1;
 - (void)setGestureKey:(id)arg1;
 - (void)setGhost:(BOOL)arg1;
+- (void)setGroupNeighbor:(unsigned long long)arg1;
 - (void)setHighlightedVariantsList:(id)arg1;
 - (void)setInteractionType:(int)arg1;
 - (void)setIsGenerated:(BOOL)arg1;
 - (void)setLayoutTag:(id)arg1 passingKeyTest:(CDUnknownBlockType)arg2;
+- (void)setMergeAsMoreKey:(BOOL)arg1;
 - (BOOL)setObject:(id)arg1 forProperty:(id)arg2;
 - (void)setOverrideDisplayString:(id)arg1;
 - (void)setPaddedFrame:(struct CGRect)arg1;
@@ -213,6 +229,7 @@
 - (id)shape;
 - (id)shapeFromFrame:(struct CGRect)arg1 leftPadding:(double)arg2 rightPadding:(double)arg3;
 - (id)shiftAlternateKeyplaneName;
+- (void)shiftRowAndResizeLeadingControlKey:(id)arg1 toSize:(struct CGSize)arg2 scale:(double)arg3;
 - (BOOL)shouldCacheKey;
 - (BOOL)shouldSkipCandidateSelection;
 - (BOOL)shouldSkipCandidateSelectionForVariants;

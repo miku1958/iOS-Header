@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVAsynchronousKeyValueLoading-Protocol.h>
 #import <AVFoundation/NSCopying-Protocol.h>
 
-@class AVAssetInternal, NSArray;
+@class AVAssetInternal, AVDisplayCriteria, NSArray;
+@protocol AVLoggingIdentifier;
 
 @interface AVAsset : NSObject <NSCopying, AVAsynchronousKeyValueLoading>
 {
@@ -19,8 +20,10 @@
 @property (readonly) NSArray *availableChapterLocales;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 duration;
 @property (readonly, nonatomic) BOOL isProxy;
+@property (readonly, strong, nonatomic) id<AVLoggingIdentifier> loggingIdentifier;
 @property (readonly, nonatomic) long long moovAtomSize;
 @property (readonly, nonatomic) struct CGSize naturalSize;
+@property (readonly, nonatomic) AVDisplayCriteria *preferredDisplayCriteria;
 @property (readonly, nonatomic) float preferredRate;
 @property (readonly, nonatomic) struct CGAffineTransform preferredTransform;
 @property (readonly, nonatomic) float preferredVolume;
@@ -31,10 +34,9 @@
 + (id)assetWithURL:(id)arg1;
 + (id)assetWithURL:(id)arg1 figPlaybackItem:(struct OpaqueFigPlaybackItem *)arg2 trackIDs:(id)arg3 dynamicBehavior:(BOOL)arg4;
 + (BOOL)expectsPropertyRevisedNotifications;
++ (id)makeAssetLoggingIdentifier;
 + (BOOL)supportsPlayerItems;
 - (id)_ID3Metadata;
-- (id)_URLSessionDataDelegate;
-- (id)_URLSessionOperationQueue;
 - (id)_absoluteURL;
 - (unsigned long long)_addChapterMetadataItem:(id)arg1 timeRange:(CDStruct_e83c9415)arg2 toChapters:(id)arg3 fromIndex:(unsigned long long)arg4;
 - (id)_assetAnalysisMessages;
@@ -63,11 +65,12 @@
 - (id)_mediaSelectionGroupDictionaries;
 - (BOOL)_mindsFragments;
 - (struct OpaqueFigMutableComposition *)_mutableComposition;
+- (id)_nameForLogging;
 - (BOOL)_needsLegacyChangeNotifications;
 - (struct OpaqueFigPlaybackItem *)_playbackItem;
-- (id)_resourceLoaderURLSession;
 - (void)_setFragmentMindingInterval:(double)arg1;
 - (void)_setIsAssociatedWithFragmentMinder:(BOOL)arg1;
+- (void)_setLoggingIdentifier:(id)arg1;
 - (void)_tracksDidChange;
 - (id)_tracksWithClass:(Class)arg1;
 - (id)_weakReference;

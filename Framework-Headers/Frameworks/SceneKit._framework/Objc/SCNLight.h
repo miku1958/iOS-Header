@@ -4,21 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
 #import <SceneKit/SCNAnimatable-Protocol.h>
 #import <SceneKit/SCNTechniqueSupport-Protocol.h>
 
-@class NSArray, NSData, NSMutableDictionary, NSString, NSURL, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
-@protocol MTLTexture;
+@class MISSING_TYPE, NSArray, NSData, NSMutableDictionary, NSString, NSURL, SCNMaterialProperty, SCNOrderedDictionary, SCNTechnique;
 
 @interface SCNLight : NSObject <SCNAnimatable, SCNTechniqueSupport, NSCopying, NSSecureCoding>
 {
     struct __C3DLight *_light;
     unsigned int _isPresentationInstance:1;
-    unsigned int _goboProjectShadows:1;
     unsigned int _castsShadow:1;
     unsigned int _usesDeferredShadows:1;
     unsigned int _usesModulatedMode:1;
@@ -48,6 +46,13 @@
     double _zNear;
     double _zFar;
     double _shadowBias;
+    long long _probeType;
+    long long _probeUpdateType;
+    BOOL _parallaxCorrectionEnabled;
+    MISSING_TYPE *_probeExtents;
+    MISSING_TYPE *_probeOffset;
+    MISSING_TYPE *_parallaxExtentsFactor;
+    MISSING_TYPE *_parallaxCenterOffset;
     float _attenuationStartDistance;
     float _attenuationEndDistance;
     float _attenuationFalloffExponent;
@@ -55,11 +60,11 @@
     float _spotOuterAngle;
     float _spotFalloffExponent;
     SCNMaterialProperty *_gobo;
-    SCNMaterialProperty *_ies;
     NSURL *_IESProfileURL;
     SCNTechnique *_technique;
     NSData *_sphericalHarmonics;
-    id<MTLTexture> _probeTexture;
+    SCNMaterialProperty *_probeEnvironment;
+    NSArray *_probeTextureMipsArray;
 }
 
 @property (strong, nonatomic) NSURL *IESProfileURL;
@@ -111,7 +116,7 @@
 - (void)_customEncodingOfSCNLight:(id)arg1;
 - (void)_didDecodeSCNLight:(id)arg1;
 - (void)_pauseAnimation:(BOOL)arg1 forKey:(id)arg2 pausedByNode:(BOOL)arg3;
-- (id)_probeTexture;
+- (id)_probeTextureMipsArray;
 - (id)_scnAnimationForKey:(id)arg1;
 - (id)_scnBindings;
 - (double)_shadowCascadeDebugFactor;
@@ -145,10 +150,19 @@
 - (BOOL)isPausedOrPausedByInheritance;
 - (struct __C3DLight *)lightRef;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (MISSING_TYPE *)parallaxCenterOffset;
+- (BOOL)parallaxCorrectionEnabled;
+- (MISSING_TYPE *)parallaxExtentsFactor;
 - (void)pauseAnimationForKey:(id)arg1;
 - (id)presentationInstance;
 - (id)presentationLight;
+- (id)probeEnvironment;
+- (MISSING_TYPE *)probeExtents;
+- (MISSING_TYPE *)probeOffset;
+- (long long)probeType;
+- (long long)probeUpdateType;
 - (void)removeAllAnimations;
+- (void)removeAllBindings;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
@@ -160,6 +174,13 @@
 - (void)setBaked:(BOOL)arg1;
 - (void)setForceBackFaceCasters:(BOOL)arg1;
 - (void)setIdentifier:(id)arg1;
+- (void)setParallaxCenterOffset: /* Error: Ran out of types for this method. */;
+- (void)setParallaxCorrectionEnabled:(BOOL)arg1;
+- (void)setParallaxExtentsFactor: /* Error: Ran out of types for this method. */;
+- (void)setProbeExtents: /* Error: Ran out of types for this method. */;
+- (void)setProbeOffset: /* Error: Ran out of types for this method. */;
+- (void)setProbeType:(long long)arg1;
+- (void)setProbeUpdateType:(long long)arg1;
 - (void)setShouldBakeDirectLighting:(BOOL)arg1;
 - (void)setShouldBakeIndirectLighting:(BOOL)arg1;
 - (void)setSpeed:(double)arg1 forAnimationKey:(id)arg2;
@@ -167,7 +188,7 @@
 - (void)setSpotFalloffExponent:(double)arg1;
 - (void)setUsesDeferredShadows:(BOOL)arg1;
 - (void)setUsesModulatedMode:(BOOL)arg1;
-- (void)set_probeTexture:(id)arg1;
+- (void)set_probeTextureMipsArray:(id)arg1;
 - (void)set_shadowCascadeDebugFactor:(double)arg1;
 - (void)set_sphericalHarmonics:(id)arg1;
 - (BOOL)shouldBakeDirectLighting;

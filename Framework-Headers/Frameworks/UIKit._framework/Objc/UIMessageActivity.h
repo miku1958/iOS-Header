@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <UIKitCore/UIActivity.h>
 
-#import <UIKit/UIManagedConfigurationRestrictableActivity-Protocol.h>
+#import <UIKitCore/UIManagedConfigurationRestrictableActivity-Protocol.h>
 
 @class MFMessageComposeViewController, NSString;
 
@@ -21,10 +21,12 @@
 @property (copy, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 
++ (void)_preheatAsyncIfNeeded;
 + (unsigned long long)_xpcAttributes;
 + (long long)activityCategory;
 + (id)applicationBundleID;
 - (void).cxx_destruct;
+- (CDUnknownBlockType)_backgroundPreheatBlock;
 - (id)_bundleIdentifierForActivityImageCreation;
 - (void)_cleanup;
 - (id)activityTitle;

@@ -11,10 +11,9 @@
 #import <GeoServices/GEOResourceManifestServerProxy-Protocol.h>
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceManifestConfiguration, GEOResourceManifestDownload, NSArray, NSError, NSLock, NSMutableArray, NSMutableData, NSProgress, NSString, NSTimer, NSURLSession, NSURLSessionTask, NSURLSessionTaskMetrics, _GEOResourceManifestServerLocalProxyMigrationState;
-@protocol GEOResourceManifestServerProxyDelegate, NSObject;
+@class GEOActiveTileGroup, GEOResourceFiltersManager, GEOResourceManifestConfiguration, GEOResourceManifestDownload, NSArray, NSError, NSLock, NSMutableArray, NSMutableData, NSOperationQueue, NSProgress, NSString, NSURLSession, NSURLSessionTask, NSURLSessionTaskMetrics, _GEOResourceManifestServerLocalProxyMigrationState;
+@protocol GEOResourceManifestServerProxyDelegate, NSObject, OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface GEOResourceManifestServerLocalProxy : NSObject <NSURLSessionDataDelegate, GEOResourceFiltersManagerDelegate, GEODataStateCapturing, GEOResourceManifestServerProxy>
 {
     id<GEOResourceManifestServerProxyDelegate> _delegate;
@@ -23,11 +22,13 @@ __attribute__((visibility("hidden")))
     NSMutableData *_responseData;
     NSString *_responseETag;
     int _httpResponseStatusCode;
+    NSObject<OS_dispatch_queue> *_workQueue;
+    NSOperationQueue *_workOperationQueue;
     GEOResourceManifestConfiguration *_configuration;
     BOOL _wantsManifestUpdateOnReachabilityChange;
-    NSTimer *_manifestUpdateTimer;
+    NSObject<OS_dispatch_source> *_manifestUpdateTimer;
     BOOL _wantsTileGroupUpdateOnReachabilityChange;
-    NSTimer *_tileGroupUpdateTimer;
+    NSObject<OS_dispatch_source> *_tileGroupUpdateTimer;
     GEOResourceManifestDownload *_resourceManifest;
     GEOActiveTileGroup *_activeTileGroup;
     id<NSObject> _newActiveTileGroupTransaction;
@@ -66,26 +67,28 @@ __attribute__((visibility("hidden")))
 - (void)_activeTileGroupOverridesChanged:(id)arg1;
 - (void)_cancelMigrationTasks;
 - (void)_cancelSession;
-- (void)_changeActiveTileGroup:(id)arg1 activeScales:(id)arg2 activeScenarios:(id)arg3 migrationTasks:(id)arg4 flushTileCache:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)_changeActiveTileGroup:(id)arg1 activeScales:(id)arg2 activeScenarios:(id)arg3 dataSet:(id)arg4 migrationTasks:(id)arg5 flushTileCache:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
 - (void)_cleanupSession;
 - (void)_considerChangingActiveTileGroup;
 - (void)_countryProvidersDidChange:(id)arg1;
+- (void)_createMigrators;
 - (void)_forceChangeActiveTileGroup:(id)arg1 flushTileCache:(BOOL)arg2 ignoreIdentifier:(BOOL)arg3;
 - (id)_idealTileGroupToUse;
 - (void)_loadFromDisk;
 - (id)_manifestURL;
+- (void)_manifestURLDidChange:(id)arg1;
 - (void)_networkDefaultsDidChange:(id)arg1;
 - (void)_notifyManifestUpdateCompletionHandlers:(id)arg1;
 - (void)_reachabilityChanged:(id)arg1;
 - (void)_scheduleTileGroupUpdateTimerWithTimeInterval:(double)arg1;
 - (void)_scheduleUpdateTimerWithTimeInterval:(double)arg1;
-- (void)_startOpportunisticMigrationToTileGroup:(id)arg1 inResourceManifest:(id)arg2 activeScales:(id)arg3 activeScenarios:(id)arg4;
+- (void)_startOpportunisticMigrationToTileGroup:(id)arg1 inResourceManifest:(id)arg2 activeScales:(id)arg3 activeScenarios:(id)arg4 dataSet:(id)arg5;
 - (void)_startServer;
-- (void)_tileGroupTimerFired:(id)arg1;
+- (void)_tileGroupTimerFired;
 - (void)_updateManifest;
 - (void)_updateManifest:(CDUnknownBlockType)arg1;
 - (BOOL)_updateManifestIfNecessary:(CDUnknownBlockType)arg1;
-- (void)_updateTimerFired:(id)arg1;
+- (void)_updateTimerFired;
 - (BOOL)_writeActiveTileGroupToDisk:(id)arg1 error:(id *)arg2;
 - (BOOL)_writeManifestToDisk:(id)arg1 error:(id *)arg2;
 - (void)activateResourceScale:(int)arg1;
@@ -95,14 +98,14 @@ __attribute__((visibility("hidden")))
 - (id)captureStateDataWithHints:(struct os_state_hints_s *)arg1;
 - (void)closeConnection;
 - (id)configuration;
-- (void)createMigratorsWithAdditionalMigrationTaskClasses:(id)arg1;
 - (void)deactivateResourceScale:(int)arg1;
 - (void)deactivateResourceScenario:(int)arg1;
 - (void)dealloc;
 - (void)filtersManagerDidChangeActiveFilters:(id)arg1;
 - (void)forceUpdate:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getResourceManifestWithHandler:(CDUnknownBlockType)arg1;
-- (id)initWithDelegate:(id)arg1 configuration:(id)arg2 additionalMigrationTaskClasses:(id)arg3;
+- (id)initWithDelegate:(id)arg1 configuration:(id)arg2;
+- (unsigned long long)maximumZoomLevelForStyle:(int)arg1 scale:(int)arg2;
 - (void)openConnection;
 - (void)performOpportunisticResourceLoading;
 - (oneway void)resetActiveTileGroup;

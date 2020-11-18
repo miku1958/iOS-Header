@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CSSearchableIndex, NSData, NSString;
+@class CSDataWrapper, CSSearchableIndex, NSData, NSString;
 
 @interface CSSearchableIndexRequest : NSObject
 {
@@ -22,12 +22,14 @@
     CDUnknownBlockType _completionBlock;
     CSSearchableIndex *_index;
     NSString *_label;
+    CSDataWrapper *_dataWrapper;
     unsigned long long _retryCount;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (copy, nonatomic) CDUnknownBlockType completionDataBlock; // @synthesize completionDataBlock=_completionDataBlock;
-@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
+@property (strong, nonatomic) CSDataWrapper *dataWrapper; // @synthesize dataWrapper=_dataWrapper;
 @property (nonatomic) BOOL finished; // @synthesize finished=_finished;
 @property (strong, nonatomic) CSSearchableIndex *index; // @synthesize index=_index;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
@@ -50,7 +52,7 @@
 - (void)finishWithError:(id)arg1;
 - (id)initWithSearchableIndex:(id)arg1 label:(id)arg2;
 - (void)retryIfNecessaryWithError:(id)arg1;
-- (void)retryIfNecessaryWithError:(id)arg1 data:(id)arg2;
+- (void)retryIfNecessaryWithError:(id)arg1 dataWrapper:(id)arg2;
 - (void)start;
 
 @end

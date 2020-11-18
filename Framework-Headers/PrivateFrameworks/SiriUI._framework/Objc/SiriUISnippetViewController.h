@@ -25,6 +25,7 @@
     BOOL _virgin;
     BOOL _willAnimateConfirmation;
     BOOL _willAnimateCancellation;
+    BOOL _awaitingSuccessOrFailureEvent;
     BOOL _showHeaderChevron;
     BOOL _provisional;
     UIColor *_titleTextColor;
@@ -41,6 +42,7 @@
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedSubtitle; // @synthesize attributedSubtitle=_attributedSubtitle;
+@property (nonatomic, getter=_isAwaitingSuccessOrFailureEvent, setter=_setAwaitingSuccessOrFailureEvent:) BOOL awaitingSuccessOrFailureEvent; // @synthesize awaitingSuccessOrFailureEvent=_awaitingSuccessOrFailureEvent;
 @property (nonatomic, getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (nonatomic, getter=isConfirmed) BOOL confirmed; // @synthesize confirmed=_confirmed;
 @property (weak, nonatomic) UIView *containingView; // @synthesize containingView=_containingView;

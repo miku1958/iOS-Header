@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSTTableHiddenRowColumnProviding-Protocol.h>
 #import <iWorkImport/TSTTableInternalGeometryProviding-Protocol.h>
 #import <iWorkImport/TSTTableMergeRangeProviding-Protocol.h>
 
 @class NSIndexSet, NSMutableArray, NSMutableSet, NSPointerArray, NSString, TSDFill, TSDInfoGeometry, TSDLayoutGeometry, TSKChangeNotifier, TSTCellRegion, TSTCellSelection, TSTConcurrentMutableIndexSet, TSTDupContentCache, TSTHiddenRowsColumnsCache, TSTInfo, TSTLayout, TSTLayoutDynamicResizeInfo, TSTMergeRangeSortedSet, TSTRWRetainedPointerKeyDictionary, TSTStrokeDefaultVendor, TSTStrokeWidthCache, TSTWPColumnCache, TSTWidthHeightCache, TSUColor, TSUWidthLimitedQueue, TSWPColumnStyle;
-@protocol OS_dispatch_group, TSTLayoutDynamicCellFillProtocol, TSTLayoutDynamicColumnMoveProtocol, TSTLayoutDynamicContentProtocol, TSTLayoutDynamicRowMoveProtocol;
+@protocol OS_dispatch_group, TSTLayoutDynamicCellFillProtocol, TSTLayoutDynamicContentProtocol;
 
 __attribute__((visibility("hidden")))
 @interface TSTMasterLayout : NSObject <TSTTableHiddenRowColumnProviding, TSTTableInternalGeometryProviding, TSTTableMergeRangeProviding>
 {
-    double _tableDefaultFontHeightForArea[5];
+    double _tableDefaultFontHeightForArea[15];
     NSObject<OS_dispatch_group> *_layoutInFlight;
     struct _opaque_pthread_rwlock_t _strokesRWLock;
     struct _opaque_pthread_rwlock_t _contentRWLock;
@@ -28,11 +28,11 @@ __attribute__((visibility("hidden")))
     BOOL _dynamicResizingColumns;
     BOOL _dynamicResizingRows;
     BOOL _processHiddenRowsForExport;
+    BOOL _tableNameEnabled;
     BOOL _headerColumnsFrozen;
     BOOL _headerRowsFrozen;
     BOOL _headerColumnsRepeat;
     BOOL _headerRowsRepeat;
-    BOOL _tableNameEnabled;
     BOOL _tableNameHeightValid;
     BOOL _bandedFillIsValid;
     BOOL _useBandedFill;
@@ -41,16 +41,17 @@ __attribute__((visibility("hidden")))
     BOOL _isGrouped;
     BOOL _dynamicRepressFrozenHeaderRows;
     BOOL _dynamicRepressFrozenHeaderColumns;
-    unsigned short _cachedNumberOfHeaderColumns;
-    unsigned short _cachedNumberOfHeaderRows;
-    unsigned short _cachedNumberOfFooterRows;
     unsigned int _maxConcurrentTasks;
     unsigned int _numCellsPerTask;
     int _tableEnvironment;
     int _tableRowsBehavior;
     int _dynamicColumnAdjustment;
     int _dynamicRowAdjustment;
-    struct TSUCellCoord _dynamicSuppressingConditionalStylesCellID;
+    unsigned int _cachedNumberOfColumns;
+    unsigned int _cachedNumberOfRows;
+    unsigned int _cachedNumberOfHeaderColumns;
+    unsigned int _cachedNumberOfHeaderRows;
+    unsigned int _cachedNumberOfFooterRows;
     TSTInfo *_tableInfo;
     TSKChangeNotifier *_changeNotifier;
     TSTStrokeDefaultVendor *_strokesDefaultVendor;
@@ -64,18 +65,16 @@ __attribute__((visibility("hidden")))
     double _dynamicAddOrRemoveRowElementSize;
     double _dynamicColumnTabSize;
     TSUColor *_dynamicFontColor;
-    struct TSUCellRect _dynamicFontColorCellRange;
     TSDInfoGeometry *_dynamicInfoGeometry;
     double _dynamicWidthResize;
     double _dynamicHeightResize;
-    struct TSUCellRect _dynamicResizingColumnRange;
     double _dynamicResizingColumnAdjustment;
-    struct TSUCellRect _dynamicResizingRowRange;
     double _dynamicResizingRowAdjustment;
     double _dynamicRowTabSize;
     TSDLayoutGeometry *_dynamicSavedLayoutGeometry;
     TSTCellSelection *_dynamicSelection;
     double _dynamicTableNameResize;
+    struct TSUCellCoord _dynamicSuppressingConditionalStylesCellID;
     NSMutableArray *_changeDescriptors;
     TSTMergeRangeSortedSet *_mergeRanges;
     TSUWidthLimitedQueue *_layoutQueue;
@@ -94,18 +93,20 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_contentReadingThreads;
     NSMutableSet *_dynamicLayoutParticipants;
     TSTLayout *_dynamicLayout;
-    id<TSTLayoutDynamicColumnMoveProtocol> _dynamicColumnMoveDelegate;
     id<TSTLayoutDynamicContentProtocol> _dynamicContentDelegate;
+    long long _dynamicHidingRowsColsDirection;
+    TSTLayoutDynamicResizeInfo *_dynamicResizeInfo;
+    long long _dynamicRevealingRowsColsDirection;
+    id<TSTLayoutDynamicCellFillProtocol> _dynamicCellFillDelegate;
+    struct TSUCellRect _dynamicFontColorCellRange;
+    struct TSUCellRect _dynamicResizingColumnRange;
+    struct TSUCellRect _dynamicResizingRowRange;
+    struct CGSize _maximumPartitionSize;
     struct TSUCellRect _dynamicHidingContent;
     struct TSUCellRect _dynamicHidingRowsCols;
-    long long _dynamicHidingRowsColsDirection;
     struct TSUCellRect _dynamicHidingText;
-    TSTLayoutDynamicResizeInfo *_dynamicResizeInfo;
+    struct TSUCellRect _dynamicRemovingText;
     struct TSUCellRect _dynamicRevealingRowsCols;
-    long long _dynamicRevealingRowsColsDirection;
-    id<TSTLayoutDynamicRowMoveProtocol> _dynamicRowMoveDelegate;
-    id<TSTLayoutDynamicCellFillProtocol> _dynamicCellFillDelegate;
-    struct CGSize _maximumPartitionSize;
     struct CGRect _tableNameBounds;
 }
 
@@ -114,11 +115,15 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSPointerArray *bottomRowStrokes; // @synthesize bottomRowStrokes=_bottomRowStrokes;
 @property (nonatomic) unsigned long long cachedMaxNumberOfColumns; // @synthesize cachedMaxNumberOfColumns=_cachedMaxNumberOfColumns;
 @property (nonatomic) unsigned long long cachedMaxNumberOfRows; // @synthesize cachedMaxNumberOfRows=_cachedMaxNumberOfRows;
-@property (nonatomic) unsigned short cachedNumberOfFooterRows; // @synthesize cachedNumberOfFooterRows=_cachedNumberOfFooterRows;
-@property (nonatomic) unsigned short cachedNumberOfHeaderColumns; // @synthesize cachedNumberOfHeaderColumns=_cachedNumberOfHeaderColumns;
-@property (nonatomic) unsigned short cachedNumberOfHeaderRows; // @synthesize cachedNumberOfHeaderRows=_cachedNumberOfHeaderRows;
+@property (nonatomic) unsigned int cachedNumberOfColumns; // @synthesize cachedNumberOfColumns=_cachedNumberOfColumns;
+@property (nonatomic) unsigned int cachedNumberOfFooterRows; // @synthesize cachedNumberOfFooterRows=_cachedNumberOfFooterRows;
+@property (nonatomic) unsigned int cachedNumberOfHeaderColumns; // @synthesize cachedNumberOfHeaderColumns=_cachedNumberOfHeaderColumns;
+@property (nonatomic) unsigned int cachedNumberOfHeaderRows; // @synthesize cachedNumberOfHeaderRows=_cachedNumberOfHeaderRows;
+@property (nonatomic) unsigned int cachedNumberOfRows; // @synthesize cachedNumberOfRows=_cachedNumberOfRows;
 @property (nonatomic) double cachedTableNameHeight; // @synthesize cachedTableNameHeight=_cachedTableNameHeight;
+@property (readonly, nonatomic) struct TSUCellRect categoryColumnsCellRange;
 @property (strong, nonatomic) TSTWPColumnCache *cellIDToWPColumnCache; // @synthesize cellIDToWPColumnCache=_cellIDToWPColumnCache;
+@property (readonly, nonatomic) struct TSUCellRect cellRange;
 @property (strong, nonatomic) TSTCellRegion *cellRegionForClearedMergeStrokes; // @synthesize cellRegionForClearedMergeStrokes=_cellRegionForClearedMergeStrokes;
 @property (strong, nonatomic) NSMutableArray *changeDescriptors; // @synthesize changeDescriptors=_changeDescriptors;
 @property (weak, nonatomic) TSKChangeNotifier *changeNotifier; // @synthesize changeNotifier=_changeNotifier;
@@ -134,7 +139,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL dynamicBandedFillSetting; // @synthesize dynamicBandedFillSetting=_dynamicBandedFillSetting;
 @property (strong, nonatomic) id<TSTLayoutDynamicCellFillProtocol> dynamicCellFillDelegate; // @synthesize dynamicCellFillDelegate=_dynamicCellFillDelegate;
 @property (nonatomic) int dynamicColumnAdjustment; // @synthesize dynamicColumnAdjustment=_dynamicColumnAdjustment;
-@property (strong, nonatomic) id<TSTLayoutDynamicColumnMoveProtocol> dynamicColumnMoveDelegate; // @synthesize dynamicColumnMoveDelegate=_dynamicColumnMoveDelegate;
 @property (nonatomic) double dynamicColumnTabSize; // @synthesize dynamicColumnTabSize=_dynamicColumnTabSize;
 @property (strong, nonatomic) id<TSTLayoutDynamicContentProtocol> dynamicContentDelegate; // @synthesize dynamicContentDelegate=_dynamicContentDelegate;
 @property (strong, nonatomic) TSUColor *dynamicFontColor; // @synthesize dynamicFontColor=_dynamicFontColor;
@@ -147,6 +151,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSDInfoGeometry *dynamicInfoGeometry; // @synthesize dynamicInfoGeometry=_dynamicInfoGeometry;
 @property (strong, nonatomic) TSTLayout *dynamicLayout; // @synthesize dynamicLayout=_dynamicLayout;
 @property (strong, nonatomic) NSMutableSet *dynamicLayoutParticipants; // @synthesize dynamicLayoutParticipants=_dynamicLayoutParticipants;
+@property (nonatomic) struct TSUCellRect dynamicRemovingText; // @synthesize dynamicRemovingText=_dynamicRemovingText;
 @property (nonatomic) BOOL dynamicRepResize; // @synthesize dynamicRepResize=_dynamicRepResize;
 @property (nonatomic) BOOL dynamicRepressFrozenHeaderColumns; // @synthesize dynamicRepressFrozenHeaderColumns=_dynamicRepressFrozenHeaderColumns;
 @property (nonatomic) BOOL dynamicRepressFrozenHeaderRows; // @synthesize dynamicRepressFrozenHeaderRows=_dynamicRepressFrozenHeaderRows;
@@ -160,7 +165,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct TSUCellRect dynamicRevealingRowsCols; // @synthesize dynamicRevealingRowsCols=_dynamicRevealingRowsCols;
 @property (nonatomic) long long dynamicRevealingRowsColsDirection; // @synthesize dynamicRevealingRowsColsDirection=_dynamicRevealingRowsColsDirection;
 @property (nonatomic) int dynamicRowAdjustment; // @synthesize dynamicRowAdjustment=_dynamicRowAdjustment;
-@property (strong, nonatomic) id<TSTLayoutDynamicRowMoveProtocol> dynamicRowMoveDelegate; // @synthesize dynamicRowMoveDelegate=_dynamicRowMoveDelegate;
 @property (nonatomic) double dynamicRowTabSize; // @synthesize dynamicRowTabSize=_dynamicRowTabSize;
 @property (copy, nonatomic) TSDLayoutGeometry *dynamicSavedLayoutGeometry; // @synthesize dynamicSavedLayoutGeometry=_dynamicSavedLayoutGeometry;
 @property (strong, nonatomic) TSTCellSelection *dynamicSelection; // @synthesize dynamicSelection=_dynamicSelection;
@@ -168,6 +172,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double dynamicTableNameResize; // @synthesize dynamicTableNameResize=_dynamicTableNameResize;
 @property (nonatomic) double dynamicWidthResize; // @synthesize dynamicWidthResize=_dynamicWidthResize;
 @property (nonatomic) BOOL emptyFilteredTable; // @synthesize emptyFilteredTable=_emptyFilteredTable;
+@property (readonly, nonatomic) struct TSUCellRect entireActualHeaderColumnsCellRange;
+@property (readonly, nonatomic) struct TSUCellRect entireBodyCellRange;
+@property (readonly, nonatomic) struct TSUCellRect entireBodyRowsCellRange;
+@property (readonly, nonatomic) struct TSUCellRect entireFooterRowsCellRange;
+@property (readonly, nonatomic) struct TSUCellRect entireHeaderColumnsCellRange;
+@property (readonly, nonatomic) struct TSUCellRect entireHeaderRowsCellRange;
+@property (readonly, nonatomic) BOOL hasActiveFilters;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL headerColumnsFrozen; // @synthesize headerColumnsFrozen=_headerColumnsFrozen;
 @property (nonatomic) BOOL headerColumnsRepeat; // @synthesize headerColumnsRepeat=_headerColumnsRepeat;
@@ -185,10 +196,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TSTMergeRangeSortedSet *mergeRanges; // @synthesize mergeRanges=_mergeRanges;
 @property (nonatomic) unsigned int numCellsPerTask; // @synthesize numCellsPerTask=_numCellsPerTask;
 @property (readonly, nonatomic) unsigned short numberOfColumns;
-@property (readonly, nonatomic) unsigned short numberOfFooterRows;
-@property (readonly, nonatomic) unsigned short numberOfHeaderColumns;
-@property (readonly, nonatomic) unsigned short numberOfHeaderRows;
-@property (readonly, nonatomic) unsigned short numberOfRows;
+@property (readonly, nonatomic) unsigned int numberOfFooterRows;
+@property (readonly, nonatomic) unsigned int numberOfHeaderColumns;
+@property (readonly, nonatomic) unsigned int numberOfHeaderRows;
+@property (readonly, nonatomic) unsigned int numberOfNonHiddenFooterRows;
+@property (readonly, nonatomic) unsigned int numberOfRows;
 @property (strong, nonatomic) TSTRWRetainedPointerKeyDictionary *paraStyleToHeightCache; // @synthesize paraStyleToHeightCache=_paraStyleToHeightCache;
 @property (nonatomic) BOOL processHiddenRowsForExport; // @synthesize processHiddenRowsForExport=_processHiddenRowsForExport;
 @property (strong, nonatomic) NSPointerArray *rightColumnStrokes; // @synthesize rightColumnStrokes=_rightColumnStrokes;
@@ -215,7 +227,6 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)tableNameTextSize:(id)arg1;
 + (int)tableRowsBehaviorForTable:(id)arg1 andEnvironment:(int)arg2;
 - (void).cxx_destruct;
-- (id)accountingParagraphStylePropertyMapForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
 - (void)addChangeDescriptor:(id)arg1;
 - (void)addChangeDescriptorWithType:(int)arg1 andCellRange:(struct TSUCellRect)arg2;
 - (void)addChangeDescriptorWithType:(int)arg1 andCellRange:(struct TSUCellRect)arg2 andStrokeRange:(struct TSUCellRect)arg3;
@@ -228,11 +239,16 @@ __attribute__((visibility("hidden")))
 - (double)calculatedTableNameHeight;
 - (double)calculatedTableNameHeightIncludingDynamicResize:(BOOL)arg1;
 - (void)captureDynamicResizeInfo;
+- (unsigned char)categoryGroupLevelAtLabelRow:(unsigned int)arg1;
+- (unsigned char)categoryGroupLevelAtSummaryRow:(unsigned int)arg1;
 - (BOOL)cell:(id *)arg1 forCellID:(struct TSUCellCoord)arg2;
 - (id)cellIteratorWithRange:(struct TSUCellRect)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3;
 - (void)clearDynamicStrokesForCellRange:(struct TSUCellRect)arg1;
 - (void)clearModelHeightWidthCacheForCellRange:(struct TSUCellRect)arg1;
 - (BOOL)containsAnyContentInRange:(struct TSUCellRect)arg1;
+- (double)contentHeightForCellRange:(struct TSUCellRect)arg1 skipDynamicSwap:(BOOL)arg2;
+- (struct CGSize)contentSizeForCellRange:(struct TSUCellRect)arg1 skipDynamicSwap:(BOOL)arg2;
+- (double)contentWidthForCellRange:(struct TSUCellRect)arg1 skipDynamicSwap:(BOOL)arg2;
 - (id)customStrokeProvider;
 - (void)dealloc;
 - (struct UIEdgeInsets)defaultPaddingForCellID:(struct TSUCellCoord)arg1;
@@ -245,20 +261,31 @@ __attribute__((visibility("hidden")))
 - (struct TSUCellRect)expandCellRangeToCoverMergedCells:(struct TSUCellRect)arg1;
 - (struct TSUCellRect)expandCellRangeToVisibleNeighbors:(struct TSUCellRect)arg1;
 - (id)expandCellRegionToCoverMergedCells:(id)arg1;
-- (unsigned short)firstEmptyBodyRow;
+- (unsigned int)firstEmptyBodyRow;
 - (double)fontHeightOfParagraphStyle:(id)arg1;
-- (BOOL)hasHiddenColumnAtIndex:(unsigned char)arg1;
-- (BOOL)hasHiddenRowAtIndex:(unsigned short)arg1;
+- (id)formattedDataParagraphStylePropertyMapForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
+- (BOOL)hasHiddenColumnAtIndex:(unsigned short)arg1;
+- (BOOL)hasHiddenRowAtIndex:(unsigned int)arg1;
+- (BOOL)hasRangeSpanningRowsForCellRange:(struct TSUCellRect)arg1;
 - (BOOL)hasStrokeSpillForLeftGridColumn:(unsigned int)arg1 inRow:(unsigned int)arg2;
+- (double)heightOfRow:(unsigned int)arg1 skipDynamicSwap:(BOOL)arg2 withStrokeHeights:(BOOL)arg3 returnZeroIfHidden:(BOOL)arg4 clampToPartitionSize:(BOOL)arg5 outIsFitting:(BOOL *)arg6;
+- (double)heightOfRowIgnoringFitting:(unsigned int)arg1 withStrokeHeights:(BOOL)arg2;
 - (BOOL)hintIsValid:(id)arg1;
-- (unsigned char)indexOfVisibleColumnAfterAndIncludingColumnAtIndex:(unsigned char)arg1;
-- (unsigned char)indexOfVisibleColumnAfterColumnAtIndex:(unsigned char)arg1;
-- (unsigned char)indexOfVisibleColumnBeforeAndIncludingColumnAtIndex:(unsigned char)arg1;
-- (unsigned char)indexOfVisibleColumnBeforeColumnAtIndex:(unsigned char)arg1;
-- (unsigned short)indexOfVisibleRowAfterAndIncludingRowAtIndex:(unsigned short)arg1;
-- (unsigned short)indexOfVisibleRowAfterRowAtIndex:(unsigned short)arg1;
-- (unsigned short)indexOfVisibleRowBeforeAndIncludingRowAtIndex:(unsigned short)arg1;
-- (unsigned short)indexOfVisibleRowBeforeRowAtIndex:(unsigned short)arg1;
+- (unsigned short)indexOfVisibleColumnAfterAndIncludingColumnAtIndex:(unsigned short)arg1;
+- (unsigned short)indexOfVisibleColumnAfterColumnAtIndex:(unsigned short)arg1;
+- (unsigned short)indexOfVisibleColumnBeforeAndIncludingColumnAtIndex:(unsigned short)arg1;
+- (unsigned short)indexOfVisibleColumnBeforeColumnAtIndex:(unsigned short)arg1;
+- (unsigned int)indexOfVisibleRowAfterAndIncludingRowAtIndex:(unsigned int)arg1;
+- (unsigned int)indexOfVisibleRowAfterRowAtIndex:(unsigned int)arg1;
+- (unsigned int)indexOfVisibleRowBeforeAndIncludingRowAtIndex:(unsigned int)arg1;
+- (unsigned int)indexOfVisibleRowBeforeRowAtIndex:(unsigned int)arg1;
+- (id)indexesForCategoryColumns;
+- (id)indexesForCategoryColumnsInRegion:(id)arg1;
+- (id)indexesForLabelRows;
+- (id)indexesForLabelRowsInRegion:(id)arg1;
+- (id)indexesForSummaryAndLabelRows;
+- (id)indexesForSummaryRows;
+- (id)indexesForSummaryRowsInRegion:(id)arg1;
 - (id)initWithInfo:(id)arg1;
 - (void)invalidateBandedFill;
 - (void)invalidateDefaultFontHeights;
@@ -266,6 +293,17 @@ __attribute__((visibility("hidden")))
 - (void)invalidateStrokeDefaults;
 - (void)invalidateStrokeSpills;
 - (void)invalidateTableNameHeight;
+- (BOOL)isCategorized;
+- (BOOL)isCategoryColumn:(unsigned short)arg1;
+- (BOOL)isCategoryColumnUneditableCell:(struct TSUCellCoord)arg1;
+- (BOOL)isCategoryGroupValueCell:(struct TSUCellCoord)arg1;
+- (BOOL)isCategoryGroupValueLabelCell:(struct TSUCellCoord)arg1;
+- (BOOL)isCategoryLabelCell:(struct TSUCellCoord)arg1;
+- (BOOL)isCategoryLastSummaryRowCollapsed;
+- (BOOL)isCategorySummaryCell:(struct TSUCellCoord)arg1;
+- (BOOL)isCategorySummaryOrLabelRow:(unsigned int)arg1;
+- (BOOL)isCategorySummaryRow:(unsigned int)arg1;
+- (BOOL)isCategorySummaryRowCollapsed:(unsigned int)arg1;
 - (BOOL)isDynamicallyChangingCellFill;
 - (BOOL)isDynamicallyChangingColumnCount;
 - (BOOL)isDynamicallyChangingContent;
@@ -277,29 +315,28 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDynamicallyColumnTabResizing;
 - (BOOL)isDynamicallyHidingContentOfCellID:(struct TSUCellCoord)arg1;
 - (BOOL)isDynamicallyHidingRowsCols;
-- (BOOL)isDynamicallyHidingRowsCols:(long long)arg1 rowColIndex:(unsigned short)arg2;
+- (BOOL)isDynamicallyHidingRowsCols:(long long)arg1 rowColIndex:(unsigned int)arg2;
 - (BOOL)isDynamicallyHidingRowsColsCellID:(struct TSUCellCoord)arg1;
 - (BOOL)isDynamicallyHidingTextOfCellID:(struct TSUCellCoord)arg1;
-- (BOOL)isDynamicallyMovingColumns;
-- (BOOL)isDynamicallyMovingRows;
+- (BOOL)isDynamicallyRemovingTextOfCellID:(struct TSUCellCoord)arg1;
 - (BOOL)isDynamicallyRepressingFrozenHeaderColumns;
 - (BOOL)isDynamicallyRepressingFrozenHeaderRows;
 - (BOOL)isDynamicallyResizing:(long long)arg1;
-- (BOOL)isDynamicallyResizing:(long long)arg1 rowColIndex:(unsigned short)arg2;
+- (BOOL)isDynamicallyResizing:(long long)arg1 rowColIndex:(unsigned int)arg2;
 - (BOOL)isDynamicallyResizingCellID:(struct TSUCellCoord)arg1;
 - (BOOL)isDynamicallyResizingTableName;
 - (BOOL)isDynamicallyRevealingRowsCols;
-- (BOOL)isDynamicallyRevealingRowsCols:(long long)arg1 rowColIndex:(unsigned short)arg2;
+- (BOOL)isDynamicallyRevealingRowsCols:(long long)arg1 rowColIndex:(unsigned int)arg2;
 - (BOOL)isDynamicallyRowTabResizing;
 - (BOOL)isDynamicallySettingBandedFill;
 - (BOOL)isEntireCellRangeHidden:(struct TSUCellRect)arg1;
-- (BOOL)isRowUserHidden:(unsigned short)arg1;
+- (BOOL)isRowUserHidden:(unsigned int)arg1;
 - (void)iterateCellsAndTerminateWithIterator:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)iterateCellsInRange:(struct TSUCellRect)arg1 flags:(unsigned long long)arg2 searchFlags:(unsigned long long)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (struct TSUCellCoord)layoutCellIDForModelCellID:(struct TSUCellCoord)arg1;
 - (id)layoutCellRegionForModelCellRegion:(id)arg1;
-- (unsigned char)layoutColumnForModelColumn:(unsigned char)arg1;
-- (unsigned short)layoutRowForModelRow:(unsigned short)arg1;
+- (unsigned short)layoutColumnForModelColumn:(unsigned short)arg1;
+- (unsigned int)layoutRowForModelRow:(unsigned int)arg1;
 - (void)measureTextForLayoutState:(id)arg1;
 - (id)mergeRangesProppingRowHeightsInRegion:(id)arg1;
 - (id)mergedStrokesForGridColumn:(unsigned int)arg1;
@@ -308,15 +345,18 @@ __attribute__((visibility("hidden")))
 - (id)mergesIntersectingRange:(struct TSUCellRect)arg1;
 - (struct TSUCellCoord)modelCellIDForLayoutCellID:(struct TSUCellCoord)arg1;
 - (id)modelCellRegionForLayoutCellRegion:(id)arg1;
-- (unsigned char)modelColumnForLayoutColumn:(unsigned char)arg1;
-- (unsigned short)modelRowForLayoutRow:(unsigned short)arg1;
+- (unsigned short)modelColumnForLayoutColumn:(unsigned short)arg1;
+- (unsigned int)modelRowForLayoutRow:(unsigned int)arg1;
 - (void)modifySafelyUsingBlock:(CDUnknownBlockType)arg1;
 - (id)newLayoutHint;
 - (id)newTextEngineForCell:(id)arg1 atCellID:(struct TSUCellCoord)arg2;
-- (unsigned short)nonUserHiddenRowAfterAndIncludingRow:(unsigned short)arg1;
+- (unsigned int)nonUserHiddenRowAfterAndIncludingRow:(unsigned int)arg1;
+- (unsigned int)numberOfCategoryLevels;
 - (void)p_clearStrokesForMergesInCellRegion:(id)arg1;
+- (double)p_defaultFontHeightForTableStyleArea:(unsigned long long)arg1;
 - (BOOL)p_deferredMergeExpansionForChangeDescriptorType:(int)arg1;
 - (void)p_invalidateClearedStrokesForCellRegion:(id)arg1;
+- (void)p_setDefaultFontHeight:(double)arg1 forTableStyleArea:(unsigned long long)arg2;
 - (void)p_setDynamicStroke:(id)arg1 strokeOrder:(int)arg2 forGridColumn:(unsigned int)arg3 isLeft:(BOOL)arg4 beginRow:(unsigned int)arg5 endRow:(unsigned int)arg6;
 - (void)p_setDynamicStroke:(id)arg1 strokeOrder:(int)arg2 forGridRow:(unsigned int)arg3 isTop:(BOOL)arg4 beginColumn:(unsigned int)arg5 endColumn:(unsigned int)arg6;
 - (id)p_strokesForGridColumn:(unsigned int)arg1 isLeft:(BOOL)arg2 takeStrokeWriteLock:(BOOL)arg3;
@@ -327,12 +367,12 @@ __attribute__((visibility("hidden")))
 - (void)p_validateStrokesForRegion:(id)arg1;
 - (id)p_validationFittingCellRegionForColumnsDeleted:(id)arg1 currentRegionToValidate:(id)arg2;
 - (id)p_validationFittingCellRegionForColumnsInserted:(id)arg1 currentRegionToValidate:(id)arg2;
-- (id)p_validationFittingCellRegionForColumnsMovedFrom:(id)arg1 toColumnIndex:(unsigned char)arg2 currentRegionToValidate:(id)arg3;
+- (id)p_validationFittingCellRegionForColumnsMovedFrom:(id)arg1 toColumnIndex:(unsigned short)arg2 currentRegionToValidate:(id)arg3;
 - (id)p_validationFittingCellRegionForColumnsVisibility:(id)arg1 currentRegionToValidate:(id)arg2;
 - (id)p_validationFittingCellRegionForRangeMergeUnmerge:(id)arg1 currentRegionToValidate:(id)arg2;
 - (id)p_validationFittingCellRegionForRowsDeleted:(id)arg1 currentRegionToValidate:(id)arg2;
 - (id)p_validationFittingCellRegionForRowsInserted:(id)arg1 currentRegionToValidate:(id)arg2;
-- (id)p_validationFittingCellRegionForRowsMovedFrom:(id)arg1 toRowIndex:(unsigned short)arg2 currentRegionToValidate:(id)arg3;
+- (id)p_validationFittingCellRegionForRowsMovedFrom:(id)arg1 toRowIndex:(unsigned int)arg2 currentRegionToValidate:(id)arg3;
 - (id)p_validationFittingCellRegionForStrokesChanged:(id)arg1 currentRegionToValidate:(id)arg2;
 - (id)p_validationFittingForChangeDescriptorType:(int)arg1 regionFromChangeDescriptor:(id)arg2 currentRegionToValidate:(id)arg3;
 - (struct UIEdgeInsets)paddingForCellID:(struct TSUCellCoord)arg1;
@@ -344,7 +384,7 @@ __attribute__((visibility("hidden")))
 - (void)setClearedStrokeForGridRow:(unsigned int)arg1 beginColumn:(unsigned int)arg2 endColumn:(unsigned int)arg3;
 - (void)setDynamicCellBorder:(id)arg1 forCellID:(struct TSUCellCoord)arg2;
 - (void)setStrokeSpillForRightGridColumn:(unsigned int)arg1 leftGridColumn:(unsigned int)arg2 inRow:(unsigned int)arg3;
-- (BOOL)shouldRowUseBandedFill:(unsigned short)arg1;
+- (BOOL)shouldRowUseBandedFill:(unsigned int)arg1;
 - (double)strokeHeightOfGridRow:(unsigned int)arg1 atColumnIndex:(unsigned int)arg2;
 - (double)strokeHeightOfGridRow:(unsigned int)arg1 beginColumn:(unsigned int)arg2 endColumn:(unsigned int)arg3;
 - (double)strokeWidthOfGridColumn:(unsigned int)arg1 atRowIndex:(unsigned int)arg2;
@@ -355,8 +395,10 @@ __attribute__((visibility("hidden")))
 - (id)tableNameTextEngine;
 - (struct CGSize)tableNameTextSize;
 - (id)tableStrokeProvider;
+- (unsigned long long)tableStyleAreaForCellID:(struct TSUCellCoord)arg1;
 - (double)unwrappedFittingWidthsForColumnInCellRegionWorker:(id)arg1;
 - (id)unwrappedFittingWidthsForColumnsInCellRegion:(id)arg1;
+- (void)updateCellRange;
 - (void)updateDynamicFontColor:(id)arg1 andRange:(struct TSUCellRect)arg2;
 - (void)updateDynamicResizeInfo:(id)arg1;
 - (void)updateDynamicTableNameSize:(double)arg1;
@@ -379,6 +421,7 @@ __attribute__((visibility("hidden")))
 - (void)validateStrokesForChangeDescriptors:(id)arg1;
 - (void)validateTableNameHeight;
 - (void)waitForLayoutToComplete;
+- (double)widthOfColumn:(unsigned short)arg1 skipDynamicSwap:(BOOL)arg2 returnZeroIfHidden:(BOOL)arg3 outIsFitting:(BOOL *)arg4;
 
 @end
 

@@ -54,7 +54,7 @@
 - (void)unlockDatabaseWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateSpotlightIndexForBundleID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)updateSpotlightIndexMetadataForItemsWithIdentifiers:(id)arg1 bundleID:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)validateDatabaseAtPath:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)validateDatabaseAtPath:(id)arg1 error:(id *)arg2;
 
 @end
 

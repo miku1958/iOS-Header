@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <Preferences/PSSpecifierGroupController-Protocol.h>
+#import <Preferences/PSSpecifierGroup-Protocol.h>
 
 @class NSString, PSListController, PSSpecifier;
 
-@interface PSPearlAttentionGroupController : NSObject <PSSpecifierGroupController>
+@interface PSPearlAttentionGroupController : NSObject <PSSpecifierGroup>
 {
     NSString *_pinCode;
     PSListController *_listController;

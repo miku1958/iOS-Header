@@ -12,12 +12,11 @@
 
 @interface NTKPhoto : NSObject <NSCopying>
 {
+    NTKPhotoAnalysis *_analyses[4];
     BOOL _isIris;
     NSString *_localIdentifier;
     NSDate *_modificationDate;
     NSURL *_imageURL;
-    NTKPhotoAnalysis *_topAnalysis;
-    NTKPhotoAnalysis *_bottomAnalysis;
     NSURL *_irisVideoURL;
     double _irisDuration;
     double _irisStillDisplayTime;
@@ -25,27 +24,27 @@
     struct CGRect _crop;
 }
 
-@property (copy, nonatomic) NTKPhotoAnalysis *bottomAnalysis; // @synthesize bottomAnalysis=_bottomAnalysis;
 @property (nonatomic) struct CGRect crop; // @synthesize crop=_crop;
 @property (copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property (nonatomic) double irisDuration; // @synthesize irisDuration=_irisDuration;
 @property (nonatomic) double irisStillDisplayTime; // @synthesize irisStillDisplayTime=_irisStillDisplayTime;
 @property (copy, nonatomic) NSURL *irisVideoURL; // @synthesize irisVideoURL=_irisVideoURL;
 @property (nonatomic) BOOL isIris; // @synthesize isIris=_isIris;
+@property (readonly, nonatomic) BOOL isMissingAnalysis;
 @property (copy, nonatomic) NSString *localIdentifier; // @synthesize localIdentifier=_localIdentifier;
 @property (copy, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (nonatomic) struct CGRect originalCrop; // @synthesize originalCrop=_originalCrop;
-@property (copy, nonatomic) NTKPhotoAnalysis *topAnalysis; // @synthesize topAnalysis=_topAnalysis;
 @property (readonly, nonatomic) NSString *uuidFromLocalIdentifierAndModificationDate;
 
 + (id)decodeFromDictionary:(id)arg1 forResourceDirectory:(id)arg2;
 - (void).cxx_destruct;
+- (id)analysisForAlignment:(unsigned long long)arg1 deviceSizeClass:(unsigned long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)encodeAsDictionary;
-- (id)initWithAsset:(id)arg1;
 - (id)initWithLegacySidecar:(id)arg1;
 - (BOOL)isEqualToAsset:(id)arg1;
 - (BOOL)isEqualToPhoto:(id)arg1;
+- (void)setAnalysis:(id)arg1 alignment:(unsigned long long)arg2 deviceSizeClass:(unsigned long long)arg3;
 
 @end
 

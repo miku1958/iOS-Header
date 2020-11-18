@@ -18,7 +18,6 @@
 @property (strong, nonatomic) UIButton *noNumberButton; // @synthesize noNumberButton=_noNumberButton;
 
 - (void).cxx_destruct;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 context:(long long)arg2;
 - (BOOL)isBuddyiPad;
 - (void)layoutSubviews;

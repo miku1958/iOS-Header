@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Preferences/CommerceRemoteUIDelegateDelegate-Protocol.h>
 
@@ -15,6 +15,7 @@
 {
     CommerceRemoteUIDelegate *_commerceDelegate;
     BOOL _shouldOfferFamilySharePlansOnly;
+    BOOL _shouldOfferDeviceOffers;
     BOOL _skipRetryWithoutToken;
     BOOL _skipCompletionAlert;
     BOOL _supportsModernAlerts;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long requiredStorageThreshold; // @synthesize requiredStorageThreshold=_requiredStorageThreshold;
+@property (nonatomic) BOOL shouldOfferDeviceOffers; // @synthesize shouldOfferDeviceOffers=_shouldOfferDeviceOffers;
 @property (nonatomic) BOOL shouldOfferFamilySharePlansOnly; // @synthesize shouldOfferFamilySharePlansOnly=_shouldOfferFamilySharePlansOnly;
 @property (nonatomic) BOOL skipCompletionAlert; // @synthesize skipCompletionAlert=_skipCompletionAlert;
 @property (nonatomic) BOOL skipRetryWithoutToken; // @synthesize skipRetryWithoutToken=_skipRetryWithoutToken;

@@ -18,7 +18,12 @@
     UIImageView *_overlayPlayBackground;
     id _target;
     SEL _action;
+    BOOL _showAsPause;
+    BOOL __didConfigureForPause;
 }
+
+@property (nonatomic, setter=_setDidConfigureForPause:) BOOL _didConfigureForPause; // @synthesize _didConfigureForPause=__didConfigureForPause;
+@property (nonatomic) BOOL showAsPause; // @synthesize showAsPause=_showAsPause;
 
 - (void).cxx_destruct;
 - (void)_playButtonActivate:(id)arg1;

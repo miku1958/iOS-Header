@@ -26,8 +26,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) FBScene *targetScene; // @synthesize targetScene=_targetScene;
+@property (readonly, nonatomic) FBScene *targetScene; // @synthesize targetScene=_targetScene;
 
+- (void).cxx_destruct;
 - (void)_updateHostingState;
 - (void)_updateTargetScene;
 - (void)dealloc;

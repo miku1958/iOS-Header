@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)clipRectForHeaderFooter:(long long)arg1 atIndex:(long long)arg2;
 - (id)headerFooterLayout:(long long)arg1 atIndex:(long long)arg2;
 - (void)i_clearHeaderFooterLayouts;
-- (void)i_insertValidatedHeaderFooterLayouts;
+- (id)i_insertValidatedHeaderFooterLayouts;
 - (BOOL)i_updateHeaderFooterLayouts;
 - (BOOL)isHeaderFooterLayout:(id)arg1;
 - (BOOL)p_isHeaderFooter:(long long)arg1 editingAtFragmentIndex:(long long)arg2;

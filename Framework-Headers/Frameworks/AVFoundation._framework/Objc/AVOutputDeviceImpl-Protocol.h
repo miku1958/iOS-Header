@@ -20,6 +20,8 @@
 @property (readonly, nonatomic) BOOL canBeGroupLeader;
 @property (readonly, nonatomic) BOOL canBeGrouped;
 @property (readonly, nonatomic) BOOL canCommunicateWithAllLogicalDeviceMembers;
+@property (readonly, nonatomic) BOOL canFetchMediaDataFromSender;
+@property (readonly, nonatomic) BOOL canPlayEncryptedProgressiveDownloadAssets;
 @property (readonly, nonatomic) BOOL canRelayCommunicationChannel;
 @property (readonly) BOOL canSetVolume;
 @property (readonly, nonatomic) NSNumber *caseBatteryLevel;
@@ -42,6 +44,7 @@
 @property (readonly, nonatomic) BOOL onlyAllowsConnectionsFromPeersInHomeGroup;
 @property (weak) AVOutputDevice *parentOutputDevice;
 @property (readonly, nonatomic) BOOL participatesInGroupPlayback;
+@property (readonly, nonatomic) BOOL presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 @property (readonly, nonatomic) BOOL requiresAuthorization;
 @property (readonly, nonatomic) NSNumber *rightBatteryLevel;
 @property (readonly, nonatomic) NSString *serialNumber;

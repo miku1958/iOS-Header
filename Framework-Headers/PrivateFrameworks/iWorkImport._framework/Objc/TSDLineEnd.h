@@ -4,32 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/TSDMixing-Protocol.h>
 #import <iWorkImport/TSSPropertyValueArchiving-Protocol.h>
 
-@class NSString;
+@class NSString, TSUBezierPath;
 
 __attribute__((visibility("hidden")))
 @interface TSDLineEnd : NSObject <TSSPropertyValueArchiving, NSCopying, TSDMixing>
 {
-    struct CGPath *mPath;
-    struct CGPath *mWrapPath;
-    struct CGPoint mEndPoint;
-    BOOL mIsFilled;
-    NSString *mIdentifier;
-    int mLineJoin;
+    TSUBezierPath *_path;
+    TSUBezierPath *_wrapPath;
+    struct CGPoint _endPoint;
+    BOOL _isFilled;
+    NSString *_identifier;
+    int _lineJoin;
 }
 
-@property (readonly, nonatomic) struct CGPoint endPoint; // @synthesize endPoint=mEndPoint;
-@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=mIdentifier;
-@property (readonly, nonatomic) BOOL isFilled; // @synthesize isFilled=mIsFilled;
+@property (readonly, nonatomic) struct CGPoint endPoint; // @synthesize endPoint=_endPoint;
+@property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL isFilled; // @synthesize isFilled=_isFilled;
 @property (readonly, nonatomic) BOOL isNone;
-@property (readonly, nonatomic) int lineJoin; // @synthesize lineJoin=mLineJoin;
-@property (readonly, nonatomic) struct CGPath *path; // @synthesize path=mPath;
-@property (readonly, nonatomic) struct CGPath *wrapPath;
+@property (readonly, nonatomic) int lineJoin; // @synthesize lineJoin=_lineJoin;
+@property (readonly, copy, nonatomic) TSUBezierPath *path; // @synthesize path=_path;
+@property (readonly, copy, nonatomic) TSUBezierPath *wrapPath;
 
 + (id)filledArrow;
 + (id)filledCircle;
@@ -39,21 +39,22 @@ __attribute__((visibility("hidden")))
 + (id)invertedArrow;
 + (id)line;
 + (id)lineEndWithIdentifier:(id)arg1;
-+ (id)lineEndWithPath:(struct CGPath *)arg1 endPoint:(struct CGPoint)arg2 isFilled:(BOOL)arg3 identifier:(id)arg4;
-+ (id)lineEndWithPath:(struct CGPath *)arg1 wrapPath:(struct CGPath *)arg2 endPoint:(struct CGPoint)arg3 isFilled:(BOOL)arg4 identifier:(id)arg5;
++ (id)lineEndWithPath:(const struct CGPath *)arg1 endPoint:(struct CGPoint)arg2 isFilled:(BOOL)arg3 identifier:(id)arg4;
++ (id)lineEndWithPath:(const struct CGPath *)arg1 wrapPath:(const struct CGPath *)arg2 endPoint:(struct CGPoint)arg3 isFilled:(BOOL)arg4 identifier:(id)arg5;
 + (id)lineEndWithType:(int)arg1;
 + (id)none;
 + (id)openArrow;
 + (id)openCircle;
 + (id)openSquare;
 + (id)simpleArrow;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithArchive:(const struct LineEndArchive *)arg1 unarchiver:(id)arg2;
-- (id)initWithPath:(struct CGPath *)arg1 endPoint:(struct CGPoint)arg2 isFilled:(BOOL)arg3 identifier:(id)arg4;
-- (id)initWithPath:(struct CGPath *)arg1 wrapPath:(struct CGPath *)arg2 endPoint:(struct CGPoint)arg3 isFilled:(BOOL)arg4 identifier:(id)arg5 lineJoin:(int)arg6;
+- (id)initWithBezierPath:(id)arg1 wrapPath:(id)arg2 endPoint:(struct CGPoint)arg3 isFilled:(BOOL)arg4 identifier:(id)arg5 lineJoin:(int)arg6;
+- (id)initWithPath:(const struct CGPath *)arg1 endPoint:(struct CGPoint)arg2 isFilled:(BOOL)arg3 identifier:(id)arg4;
+- (id)initWithPath:(const struct CGPath *)arg1 wrapPath:(const struct CGPath *)arg2 endPoint:(struct CGPoint)arg3 isFilled:(BOOL)arg4 identifier:(id)arg5 lineJoin:(int)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;

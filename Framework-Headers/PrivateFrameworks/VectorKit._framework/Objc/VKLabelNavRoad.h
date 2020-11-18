@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VectorKit/VKLabelNavFeature-Protocol.h>
 
@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
 @interface VKLabelNavRoad : NSObject <VKLabelNavFeature>
 {
     VKLabelTile *_tile;
-    CDStruct_c707fdd0 *_data;
+    CDStruct_64195c06 *_data;
     unsigned long long _vertexIndexA;
     unsigned long long _vertexIndexB;
     CDStruct_3b01f0aa *_junctionA;
     CDStruct_3b01f0aa *_junctionB;
     VKLabelNavJunction *_navJunctionA;
-    vector_554e3200 _simplifiedPoints;
+    vector_2b358fc6 _simplifiedPoints;
     Matrix_8746f91e _direction;
     BOOL _isRoadLabelUnique;
     BOOL _isOnRoute;
@@ -81,8 +81,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateWithNavContext:(struct NavContext *)arg1;
 - (void)_updateWithNavContext:(struct NavContext *)arg1 threshold:(double)arg2;
 - (BOOL)_worldPointForRoadOffset:(float)arg1 worldPoint:(Mercator3_40a88dec *)arg2;
-- (void)_worldRoadPoints:(vector_554e3200 *)arg1;
-- (void)appendSimplifiedWorldRoadPoints:(vector_554e3200 *)arg1;
+- (void)_worldRoadPoints:(vector_2b358fc6 *)arg1;
+- (void)appendSimplifiedWorldRoadPoints:(vector_2b358fc6 *)arg1;
 - (void)clearRoadSign;
 - (void)createLabelWithNavContext:(struct NavContext *)arg1 isShieldLabel:(BOOL)arg2 desiredOffsetDistance:(float)arg3 maxOffsetDistance:(float)arg4 minJunctionDistance:(float)arg5 minRouteDistance:(float)arg6 roadGraph:(id)arg7 artworkCache:(struct VKLabelNavArtworkCache *)arg8;
 - (void)dealloc;

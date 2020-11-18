@@ -17,17 +17,17 @@
 {
     PKPassView *_passView;
     PKPassFooterContentView *_contentView;
-    PKPaymentSessionHandle *_sessionHandle;
     NSObject<OS_dispatch_source> *_sessionStartTimer;
     long long _paymentApplicationState;
     BOOL _isBackgrounded;
     BOOL _isAssistantActive;
     BOOL _acquiringSession;
     unsigned long long _sessionToken;
+    NSObject<OS_dispatch_group> *_sessionDelayGroup;
+    PKPaymentSessionHandle *_sessionHandle;
     BOOL _invalidated;
     unsigned char _visibility;
     unsigned char _contentViewVisibility;
-    NSObject<OS_dispatch_group> *_sessionDelayGroup;
     BOOL _userIntentRequired;
     long long _state;
     id<PKPassFooterViewDelegate> _delegate;
@@ -44,7 +44,7 @@
 @property (readonly, nonatomic, getter=isUserIntentRequired) BOOL userIntentRequired; // @synthesize userIntentRequired=_userIntentRequired;
 
 - (void).cxx_destruct;
-- (void)_acquireContactlessInterfaceSessionWithHandler:(CDUnknownBlockType)arg1;
+- (void)_acquireContactlessInterfaceSessionWithSessionToken:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_advanceContentViewVisibilityToState:(unsigned char)arg1 animated:(BOOL)arg2;
 - (void)_advanceVisibilityToState:(unsigned char)arg1 animated:(BOOL)arg2;
 - (BOOL)_canApplyContentViewForPersonalizedApplication;
@@ -59,7 +59,7 @@
 - (void)_lostModeButtonTapped;
 - (void)_setContentView:(id)arg1 animated:(BOOL)arg2;
 - (void)_setUserIntentRequired:(BOOL)arg1;
-- (void)_startContactlessInterfaceSessionWithSessionAvailable:(CDUnknownBlockType)arg1 sessionUnavailable:(CDUnknownBlockType)arg2;
+- (void)_startContactlessInterfaceSessionWithContext:(id)arg1 sessionAvailable:(CDUnknownBlockType)arg2 sessionUnavailable:(CDUnknownBlockType)arg3;
 - (void)_updateForForegroundActivePresentationIfNecessaryAnimated:(BOOL)arg1;
 - (void)_updateForNonForegroundActivePresentationAnimated:(BOOL)arg1;
 - (void)configureForState:(long long)arg1 context:(id)arg2 passView:(id)arg3;
@@ -70,11 +70,13 @@
 - (void)foregroundActiveArbiter:(id)arg1 didUpdateForegroundActiveState:(CDStruct_973bafd3)arg2;
 - (id)initWithPassView:(id)arg1 state:(long long)arg2 context:(id)arg3;
 - (void)invalidate;
+- (BOOL)isPassFooterContentViewInGroup:(id)arg1;
 - (void)layoutSubviews;
 - (void)passFooterContentViewDidBeginAuthenticating:(id)arg1;
 - (void)passFooterContentViewDidChangeUserIntentRequirement:(id)arg1;
 - (void)passFooterContentViewDidEndAuthenticating:(id)arg1;
 - (void)passFooterContentViewRequestsSessionSuppression:(id)arg1;
+- (unsigned long long)suppressedContentForContentView:(id)arg1;
 - (void)willBecomeHiddenAnimated:(BOOL)arg1;
 - (void)willBecomeVisibleAnimated:(BOOL)arg1;
 

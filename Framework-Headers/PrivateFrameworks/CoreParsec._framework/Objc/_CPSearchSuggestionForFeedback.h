@@ -13,10 +13,6 @@
 
 @interface _CPSearchSuggestionForFeedback : PBCodable <_CPSearchSuggestionForFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int score:1;
-        unsigned int type:1;
-    } _has;
     int _type;
     NSString *_identifier;
     NSString *_suggestion;
@@ -28,12 +24,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
-@property (readonly, nonatomic) BOOL hasFbr;
-@property (readonly, nonatomic) BOOL hasIdentifier;
-@property (readonly, nonatomic) BOOL hasQuery;
-@property (readonly, nonatomic) BOOL hasScore;
-@property (readonly, nonatomic) BOOL hasSuggestion;
-@property (readonly, nonatomic) BOOL hasType;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSData *jsonData;

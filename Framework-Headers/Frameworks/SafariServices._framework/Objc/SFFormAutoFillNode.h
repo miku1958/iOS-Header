@@ -25,10 +25,13 @@ __attribute__((visibility("hidden")))
 + (id)autoFillNodeWithNodeHandle:(id)arg1;
 - (void).cxx_destruct;
 - (struct CGRect)elementBounds;
+- (long long)htmlInputElementAutoFillButtonType;
+- (long long)htmlInputElementLastAutoFillButtonType;
 - (id)initWithJSWrapper:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;
 - (id)initWithNodeHandle:(id)arg1;
 - (BOOL)isHTMLInputElementUserEdited;
 - (BOOL)isHTMLTextAreaElementUserEdited;
+- (void)setHTMLInputElementAutoFilledWithAutomaticStrongPassword:(BOOL)arg1;
 - (void)setHTMLInputElementAutofilled:(BOOL)arg1;
 
 @end

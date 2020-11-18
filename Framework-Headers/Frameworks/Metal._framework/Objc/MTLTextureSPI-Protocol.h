@@ -14,6 +14,7 @@
 @property (readonly) BOOL isCompressed;
 @property (readonly) BOOL isDrawable;
 @property (readonly) unsigned long long numFaces;
+@property (readonly) unsigned long long resourceIndex;
 @property (readonly) unsigned long long rotation;
 @property unsigned long long swizzle;
 @property (readonly) unsigned long long uniqueIdentifier;

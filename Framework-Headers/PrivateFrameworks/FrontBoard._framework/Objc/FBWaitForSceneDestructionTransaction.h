@@ -19,9 +19,10 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) FBScene *scene; // @synthesize scene=_sceneToWaitForDeath;
+@property (readonly, nonatomic) FBScene *scene; // @synthesize scene=_sceneToWaitForDeath;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_begin;
 - (BOOL)_canBeInterrupted;
 - (id)_customizedDescriptionProperties;

@@ -13,7 +13,6 @@
 
 @interface _SFPBUserActivityInfo : PBCodable <_SFPBUserActivityInfo, NSSecureCoding>
 {
-    CDStruct_00e03ae1 _has;
     int _valueType;
     NSString *_key;
     NSString *_stringValue;
@@ -22,10 +21,6 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasKey;
-@property (readonly, nonatomic) BOOL hasStringValue;
-@property (readonly, nonatomic) BOOL hasUrlValue;
-@property (readonly, nonatomic) BOOL hasValueType;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;

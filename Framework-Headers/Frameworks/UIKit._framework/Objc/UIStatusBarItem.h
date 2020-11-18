@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 + (id)itemWithType:(int)arg1 idiom:(long long)arg2;
 + (BOOL)typeIsValid:(int)arg1;
 - (BOOL)appearsInRegion:(int)arg1;
+- (BOOL)appearsOnCenter;
 - (BOOL)appearsOnLeft;
 - (BOOL)appearsOnRight;
 - (int)centerOrder;

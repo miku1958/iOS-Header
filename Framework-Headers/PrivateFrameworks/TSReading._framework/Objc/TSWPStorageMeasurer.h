@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TSReading/TSWPColumnMetrics-Protocol.h>
 #import <TSReading/TSWPLayoutOwner-Protocol.h>
@@ -64,6 +64,7 @@
 @property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
 @property (readonly, nonatomic) const struct TSWPTopicNumberHints *previousTargetTopicNumbers;
 @property (readonly, nonatomic) BOOL pushAscendersIntoColumn;
+@property (readonly, nonatomic) double reservedWidthWhenTruncating;
 @property (readonly, nonatomic) BOOL shouldHyphenate;
 @property (readonly, nonatomic) BOOL shrinkTextToFit;
 @property (readonly) Class superclass;

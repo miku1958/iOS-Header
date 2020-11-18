@@ -9,7 +9,7 @@
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface CKAccountOverrideInfo : NSObject <NSCopying, NSSecureCoding>
 {
@@ -19,12 +19,16 @@
     NSString *_email;
     NSString *_password;
     NSString *_secondEmail;
+    NSDictionary *_accountPropertyOverrides;
+    NSDictionary *_overridesByDataclass;
 }
 
+@property (copy, nonatomic) NSDictionary *accountPropertyOverrides; // @synthesize accountPropertyOverrides=_accountPropertyOverrides;
 @property (nonatomic) BOOL accountWantsFlowControl; // @synthesize accountWantsFlowControl=_accountWantsFlowControl;
 @property (nonatomic) BOOL accountWantsPushRegistration; // @synthesize accountWantsPushRegistration=_accountWantsPushRegistration;
 @property (readonly, nonatomic) NSString *email; // @synthesize email=_email;
 @property (nonatomic) BOOL isUnitTestingAccount; // @synthesize isUnitTestingAccount=_isUnitTestingAccount;
+@property (copy, nonatomic) NSDictionary *overridesByDataclass; // @synthesize overridesByDataclass=_overridesByDataclass;
 @property (readonly, nonatomic) NSString *password; // @synthesize password=_password;
 @property (copy, nonatomic) NSString *secondEmail; // @synthesize secondEmail=_secondEmail;
 

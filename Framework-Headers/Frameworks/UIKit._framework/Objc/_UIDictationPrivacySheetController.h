@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UINavigationController.h>
+#import <UIKitCore/UINavigationController.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIDictationPrivacySheetController : UINavigationController

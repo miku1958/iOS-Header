@@ -6,10 +6,10 @@
 
 #import <SafariShared/NSObject-Protocol.h>
 
-@class WBSPerSitePreference, WBSPerSitePreferenceValue;
+@class WBSPerSitePreference;
 
 @protocol WBSPerSitePreferenceBinaryToggleItemManager <NSObject>
-- (WBSPerSitePreferenceValue *)offValueForPreference:(WBSPerSitePreference *)arg1;
-- (WBSPerSitePreferenceValue *)onValueForPreference:(WBSPerSitePreference *)arg1;
+- (id)offValueForPreference:(WBSPerSitePreference *)arg1;
+- (id)onValueForPreference:(WBSPerSitePreference *)arg1;
 @end
 

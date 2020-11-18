@@ -8,28 +8,33 @@
 
 #import <PhotosUICore/PXPhotoLibraryUIChangeObserver-Protocol.h>
 
-@class NSString, PHFetchResult, PHPhotoLibrary, PXMemoriesFeedDataSource;
+@class NSString, PHFetchOptions, PHFetchResult, PHPhotoLibrary, PXMemoriesFeedDataSource;
 
 @interface PXMemoriesFeedDataSourceManagerBase : PXSectionedDataSourceManager <PXPhotoLibraryUIChangeObserver>
 {
     PHPhotoLibrary *_photoLibrary;
+    BOOL _memoryGenerationHasStarted;
     BOOL __generatingAdditionalEntries;
-    unsigned long long __firstUngroupedMemoryIndex;
+    PHFetchOptions *_baseFetchOptions;
     PHFetchResult *_memoriesFetchResult;
+    unsigned long long _firstUngroupedMemoryIndex;
 }
 
-@property (nonatomic, setter=_setFirstUngroupedMemoryIndex:) unsigned long long _firstUngroupedMemoryIndex; // @synthesize _firstUngroupedMemoryIndex=__firstUngroupedMemoryIndex;
 @property (nonatomic, getter=_isGeneratingAdditionalEntries, setter=_setGeneratingAdditionalEntries:) BOOL _generatingAdditionalEntries; // @synthesize _generatingAdditionalEntries=__generatingAdditionalEntries;
+@property (readonly, nonatomic) PHFetchOptions *baseFetchOptions; // @synthesize baseFetchOptions=_baseFetchOptions;
 @property (readonly, nonatomic) PXMemoriesFeedDataSource *dataSource; // @dynamic dataSource;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long firstUngroupedMemoryIndex; // @synthesize firstUngroupedMemoryIndex=_firstUngroupedMemoryIndex;
 @property (readonly, nonatomic) BOOL hasAnyMemories;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PHFetchResult *memoriesFetchResult; // @synthesize memoriesFetchResult=_memoriesFetchResult;
 @property (readonly) Class superclass;
 
 + (id)_updatedFetchResultsForMemoriesForDatasource:(id)arg1 changeDetails:(id)arg2 changeInstance:(id)arg3;
++ (id)baseFetchOptions;
 + (id)generateEntriesFromMemories:(id)arg1 startingFromIndex:(unsigned long long)arg2 maximumNumberOfEntries:(unsigned long long)arg3 finalMemoryIndex:(out unsigned long long *)arg4;
++ (id)mostRecentCreationDate;
 + (BOOL)shouldGroupTogetherMemoriesWithCreationDate:(id)arg1 andCreationDate:(id)arg2;
 - (void).cxx_destruct;
 - (void)_clearPendingNotificationForMemory:(id)arg1;

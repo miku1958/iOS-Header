@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-@property (nonatomic) CDStruct_28403e59 formatStruct; // @dynamic formatStruct;
+@property (nonatomic) CDStruct_b1066b25 formatStruct; // @dynamic formatStruct;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)remapCustomFormatKeysWithOldToNewKeyMap:(id)arg1;

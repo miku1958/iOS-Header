@@ -21,18 +21,30 @@
 + (void)reportAppBackgroundRefreshed;
 + (void)reportAppLaunched;
 + (void)reportAppResumed;
++ (void)reportAttachmentDownloadDuration:(double)arg1;
 + (void)reportCellRighSwipeActionChanged:(id)arg1;
 + (void)reportCellRighSwipeActionIgnored;
 + (void)reportCellSwipeActionTypeExecuted:(id)arg1;
 + (void)reportComposedMessageSendFailure;
 + (void)reportComposedMessageSizeInBytes:(unsigned long long)arg1;
 + (void)reportContentDisplayedForMessageWithId:(id)arg1 hasMainAlternative:(BOOL)arg2 hasTextAlternative:(BOOL)arg3;
++ (void)reportContentDownloadDuration:(double)arg1;
 + (void)reportContentReceivedForMessageWithId:(id)arg1 sizeInBytes:(unsigned long long)arg2 fullSyncVersion:(unsigned long long)arg3 dateSynced:(id)arg4;
++ (void)reportCredentialsExpired;
++ (void)reportDisplayingHtmlMessage;
++ (void)reportDisplayingTextMessage;
 + (void)reportFetchForBatchResponseLatency:(double)arg1;
 + (void)reportFetchForBatchedResponse:(BOOL)arg1;
++ (void)reportFetchManualCloud;
++ (void)reportFetchManualInRange;
++ (void)reportFetchManualStandalone;
 + (void)reportFetchOlderMessages;
++ (void)reportFetchResumeCloud;
++ (void)reportFetchResumeInRange;
++ (void)reportFetchResumeStandalone;
 + (void)reportFullSyncRequestedFromWatch:(BOOL)arg1 corruptionDetected:(BOOL)arg2 migrationRelated:(BOOL)arg3 idsFailureRelated:(BOOL)arg4 fullSyncVersionMatchRelated:(BOOL)arg5;
 + (void)reportHaltSyncRequestedFromWatch:(BOOL)arg1;
++ (void)reportHtmlContentRenderingTime:(double)arg1;
 + (void)reportImageAttachmentReceivedForMessageWithId:(id)arg1 contentId:(id)arg2 sizeInBytes:(unsigned long long)arg3 fullSyncVersion:(unsigned long long)arg4 dateSynced:(id)arg5;
 + (void)reportMailAttachmentHandoffAdvertisedByNotification:(BOOL)arg1;
 + (void)reportMailAttachmentHandoffContinuedByNotification:(BOOL)arg1;
@@ -41,6 +53,7 @@
 + (void)reportMailboxSelectionChanged:(id)arg1 fromWatch:(BOOL)arg2;
 + (void)reportMessageDeletionCountFetchedOverCloudMessaging:(unsigned long long)arg1;
 + (void)reportMessageDeletionReceivedForMessageWithId:(id)arg1 fullSyncVersion:(unsigned long long)arg2 dateSynced:(id)arg3;
++ (void)reportMessageDeliveryDuration:(double)arg1;
 + (void)reportMessageReceivedWithId:(id)arg1 willGenerateNotification:(BOOL)arg2 fullSyncVersion:(unsigned long long)arg3 dateSynced:(id)arg4;
 + (void)reportMessageRepliedFromApp:(BOOL)arg1;
 + (void)reportMessageUpdateCountFetchedOverCloudMessaging:(unsigned long long)arg1;
@@ -52,6 +65,17 @@
 + (void)reportNotificationReceivedOverCloudMessaging;
 + (void)reportOriginalMessageContentSizeInBytes:(unsigned long long)arg1;
 + (void)reportRenderedNotificationUsingLocalContent:(BOOL)arg1 mailboxSynced:(BOOL)arg2 messageSynced:(BOOL)arg3 contentDownloaded:(BOOL)arg4;
++ (void)reportStandaloneAttachmentDownloadFailed;
++ (void)reportStandaloneContentDownloadFailed;
++ (void)reportStandaloneFetchFailed;
++ (void)reportStandaloneMessageDeliveryFailed;
++ (void)reportSyncAccountsStandaloneActiveCount:(unsigned long long)arg1;
++ (void)reportSyncAccountsStandaloneNotSupportCount:(unsigned long long)arg1;
++ (void)reportSyncAccountsStandalonePendingCount:(unsigned long long)arg1;
++ (void)reportTextContentRenderingTime:(double)arg1;
++ (void)reportWebKitLinkTapped;
++ (void)reportWebKitRenderingProcessCrash;
++ (void)reportWebKitZoomInteraction;
 
 @end
 

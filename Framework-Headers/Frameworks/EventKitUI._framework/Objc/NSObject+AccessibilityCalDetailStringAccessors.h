@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface NSObject (AccessibilityCalDetailStringAccessors)
 + (void)_accessibilityCalDetailStringForEvent:(id)arg1 inLine1:(id *)arg2 inLine2:(id *)arg3 inLine3:(id *)arg4 inLine4:(id *)arg5;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIContentUnavailableView.h>
+#import <UIKitCore/_UIContentUnavailableView.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIContentUnavailableViewTV : _UIContentUnavailableView

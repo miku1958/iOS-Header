@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIScrollViewScrollObserver_Internal-Protocol.h>
+#import <UIKitCore/_UIScrollViewScrollObserver_Internal-Protocol.h>
 
 @class NSString, UIScrollView;
 @protocol _UIScrollViewScrollObserver_Internal;

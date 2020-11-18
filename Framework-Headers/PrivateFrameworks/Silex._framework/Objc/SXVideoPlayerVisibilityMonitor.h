@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/SXVisibilityMonitoring-Protocol.h>
+#import <Silex/SVVisibilityMonitoring-Protocol.h>
 
-@class NSMutableArray, NSString, SXVisibilityMonitor;
+@class NSMutableArray, NSString, SVVisibilityMonitor;
 
-@interface SXVideoPlayerVisibilityMonitor : NSObject <SXVisibilityMonitoring>
+@interface SXVideoPlayerVisibilityMonitor : NSObject <SVVisibilityMonitoring>
 {
-    SXVisibilityMonitor *_visibilityMonitor;
+    SVVisibilityMonitor *_visibilityMonitor;
     NSMutableArray *_willAppearBlocks;
     NSMutableArray *_didAppearBlocks;
     NSMutableArray *_visiblePercentageBlocks;
@@ -27,8 +27,9 @@
 @property (readonly, nonatomic) NSMutableArray *didDisappearBlocks; // @synthesize didDisappearBlocks=_didDisappearBlocks;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) id object;
+@property (readonly, nonatomic) unsigned long long state;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) SXVisibilityMonitor *visibilityMonitor; // @synthesize visibilityMonitor=_visibilityMonitor;
+@property (strong, nonatomic) SVVisibilityMonitor *visibilityMonitor; // @synthesize visibilityMonitor=_visibilityMonitor;
 @property (readonly, nonatomic) double visiblePercentage;
 @property (readonly, nonatomic) NSMutableArray *visiblePercentageBlocks; // @synthesize visiblePercentageBlocks=_visiblePercentageBlocks;
 @property (readonly, nonatomic) NSMutableArray *willAppearBlocks; // @synthesize willAppearBlocks=_willAppearBlocks;

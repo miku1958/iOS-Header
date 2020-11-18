@@ -6,52 +6,121 @@
 
 #import <ImageCapture/ICCameraItem.h>
 
-@class NSMutableDictionary, NSString;
+@class NSArray, NSDate, NSString;
 
 @interface ICCameraFile : ICCameraItem
 {
     void *_fileProperties;
+    BOOL _retrievedMetadata;
+    BOOL _retrievedThumbnail;
+    unsigned int _ptpObjectHandle;
 }
 
 @property (readonly) BOOL burstFavorite;
 @property (readonly) BOOL burstPicked;
 @property (readonly) NSString *burstUUID;
 @property (readonly) NSString *createdFilename;
+@property (readonly) double duration;
+@property (readonly) NSDate *exifCreationDate;
+@property (readonly) NSDate *exifModificationDate;
 @property BOOL fetchingMetadata;
 @property BOOL fetchingThumbnail;
+@property (readonly) NSDate *fileCreationDate;
+@property (readonly) NSDate *fileModificationDate;
 @property long long fileSize;
+@property (readonly) BOOL firstPicked;
 @property (readonly) NSString *groupUUID;
-@property (readonly) BOOL hasOverriddenOrientation;
+@property (readonly) long long height;
 @property (readonly) BOOL highFramerate;
-@property (strong) NSMutableDictionary *metadata_hidden;
+@property (readonly) NSString *mediaBase;
 @property unsigned long long orientation;
+@property (readonly) BOOL orientationOverridden;
 @property (readonly) NSString *originalFilename;
 @property (readonly) NSString *originatingAssetID;
+@property (strong) ICCameraFile *pairedRawImage;
+@property (readonly) unsigned int ptpObjectHandle; // @synthesize ptpObjectHandle=_ptpObjectHandle;
 @property (getter=isRaw) BOOL raw;
 @property (readonly) NSString *relatedUUID;
+@property (readonly) BOOL retrievedMetadata; // @synthesize retrievedMetadata=_retrievedMetadata;
+@property (readonly) BOOL retrievedThumbnail; // @synthesize retrievedThumbnail=_retrievedThumbnail;
+@property (readonly) NSArray *sidecarFiles;
 @property (readonly) BOOL timeLapse;
+@property (readonly) long long width;
 
+- (void)addSidecarFile:(id)arg1;
+- (void)addSubImageDict:(id)arg1;
+- (id)base;
+- (BOOL)convertedFamily;
+- (id)creationDate;
 - (void)dealloc;
+- (id)debugIdentity;
+- (id)debugMediaMetadata;
 - (id)description;
-- (double)duration;
-- (void)finalize;
-- (BOOL)firstPicked;
+- (void)flagAsSidecar;
+- (void)flagMediaMetadata:(unsigned long long)arg1;
 - (void)flushMetadataCache;
 - (void)flushThumbnailCache;
 - (void)handleCommandCompletionNotification:(id)arg1;
 - (BOOL)hasMetadata;
 - (BOOL)hasThumbnail;
 - (id)initWithName:(id)arg1 parentFolder:(id)arg2 device:(id)arg3;
+- (BOOL)isAudio;
+- (BOOL)isConverted;
+- (BOOL)isData;
+- (BOOL)isDataUniversal;
+- (BOOL)isEdited:(unsigned long long)arg1;
+- (BOOL)isEditedConverted;
+- (BOOL)isEditedOriginal;
+- (BOOL)isEditedUniversal;
+- (BOOL)isImage;
+- (BOOL)isJPEG;
+- (BOOL)isLegacy;
+- (BOOL)isMovie;
+- (BOOL)isNonRawImage;
+- (BOOL)isOriginal;
+- (BOOL)isSidecar;
+- (BOOL)isUniversal;
+- (BOOL)isUntouched:(unsigned long long)arg1;
+- (id)mediaData;
 - (id)metadata;
+- (id)modificationDate;
+- (BOOL)originalFamily;
 - (void)overrideOrientation:(unsigned long long)arg1;
+- (BOOL)partOfFamily:(unsigned long long)arg1;
 - (void)requestMetadata;
+- (void)requestMetadataWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestThumbnail;
+- (void)requestThumbnailWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setBurstFavorite:(BOOL)arg1;
+- (void)setBurstPicked:(BOOL)arg1;
+- (void)setBurstUUID:(id)arg1;
+- (void)setCreatedFilename:(id)arg1;
+- (void)setDuration:(double)arg1;
+- (void)setExifCreationDate:(id)arg1;
+- (void)setExifModificationDate:(id)arg1;
+- (void)setFileCreationDate:(id)arg1;
+- (void)setFileModificationDate:(id)arg1;
+- (void)setFirstPicked:(BOOL)arg1;
+- (void)setGroupUUID:(id)arg1;
 - (void)setHasMetadata:(BOOL)arg1;
 - (void)setHasThumbnail:(BOOL)arg1;
+- (void)setHeight:(long long)arg1;
+- (void)setHighFramerate:(BOOL)arg1;
 - (void)setKeywordPropertiesFromMetadata;
 - (BOOL)setMetadata:(id)arg1;
+- (void)setOriginalFilename:(id)arg1;
+- (void)setOriginatingAssetID:(id)arg1;
+- (void)setRelatedUUID:(id)arg1;
 - (BOOL)setThumbnailData:(struct __CFData *)arg1 withOrientation:(id)arg2;
+- (void)setTimeLapse:(BOOL)arg1;
+- (void)setUTI:(id)arg1;
+- (void)setUTime:(unsigned long long)arg1;
+- (void)setWidth:(long long)arg1;
+- (id)subImageDictForPixelWidth:(id)arg1;
+- (id)subImages;
 - (struct CGImage *)thumbnail;
+- (unsigned long long)uTime;
+- (BOOL)universalFamily;
 
 @end
 

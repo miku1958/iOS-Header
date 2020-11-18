@@ -4,16 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarCellularItem.h>
+#import <UIKitCore/_UIStatusBarCellularItem.h>
+
+@class _UIStatusBarBadgeView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarCellularExpandedItem : _UIStatusBarCellularItem
 {
+    _UIStatusBarBadgeView *_badgeView;
 }
 
-- (id)_fontForEntry:(id)arg1 baselineOffset:(double *)arg2;
+@property (strong, nonatomic) _UIStatusBarBadgeView *badgeView; // @synthesize badgeView=_badgeView;
+
++ (id)badgeDisplayIdentifier;
++ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2;
+- (void).cxx_destruct;
 - (id)_stringForCellularType:(long long)arg1;
-- (id)init;
+- (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
+- (id)viewForIdentifier:(id)arg1;
 
 @end
 

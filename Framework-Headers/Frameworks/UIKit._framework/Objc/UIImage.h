@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSItemProviderReading-Protocol.h>
-#import <UIKit/NSItemProviderWriting-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
-#import <UIKit/UIItemProviderPresentationSizeProviding-Protocol.h>
-#import <UIKit/UIItemProviderReading-Protocol.h>
-#import <UIKit/UIItemProviderWriting-Protocol.h>
+#import <UIKitCore/NSItemProviderReading-Protocol.h>
+#import <UIKitCore/NSItemProviderWriting-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
+#import <UIKitCore/UIItemProviderPresentationSizeProviding-Protocol.h>
+#import <UIKitCore/UIItemProviderReading-Protocol.h>
+#import <UIKitCore/UIItemProviderWriting-Protocol.h>
 
-@class CIImage, NSArray, NSString, UIGraphicsImageRendererFormat, UIImageAsset, UITraitCollection, _UIImageVectorImageSupport;
+@class CIImage, NSArray, NSMapTable, NSString, UIGraphicsImageRendererFormat, UIImageAsset, UITraitCollection, _UIImageVectorImageSupport;
 
 @interface UIImage : NSObject <NSItemProviderReading, NSItemProviderWriting, UIItemProviderPresentationSizeProviding, UIItemProviderReading, UIItemProviderWriting, NSSecureCoding>
 {
@@ -29,6 +29,7 @@
         unsigned int suppressesAccessibilityHairlineThickening:1;
         unsigned int hasDecompressionInfo:1;
     } _imageFlags;
+    NSMapTable *_siblingImages;
     BOOL _flipsForRightToLeftLayoutDirection;
     UITraitCollection *_traitCollection;
     _UIImageVectorImageSupport *_vectorImageSupport;
@@ -150,6 +151,7 @@
 - (id)_decompressionInfo;
 - (id)_doubleBezeledImageWithExteriorShadowRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 interiorShadowRed:(double)arg5 green:(double)arg6 blue:(double)arg7 alpha:(double)arg8 fillRed:(double)arg9 green:(double)arg10 blue:(double)arg11 alpha:(double)arg12;
 - (void)_drawImageForLegibilitySettings:(id)arg1 strength:(double)arg2 size:(struct CGSize)arg3;
+- (void)_drawImageForLegibilitySettings:(id)arg1 strength:(double)arg2 size:(struct CGSize)arg3 alphaOnly:(BOOL)arg4;
 - (void)_drawImageForLegibilityStyle:(long long)arg1 size:(struct CGSize)arg2;
 - (void)_encodeDataWithCoder:(id)arg1 imageName:(id)arg2;
 - (void)_encodePropertiesWithCoder:(id)arg1;
@@ -158,6 +160,7 @@
 - (void)_flipImageOrientationHorizontally;
 - (BOOL)_hasDecompressionInfo;
 - (id)_imageForLegibilitySettings:(id)arg1 strength:(double)arg2;
+- (id)_imageForLegibilitySettings:(id)arg1 strength:(double)arg2 alphaOnly:(BOOL)arg3;
 - (id)_imageForLegibilityStyle:(long long)arg1;
 - (long long)_imageOrientationConsideringRTL;
 - (long long)_imageOrientationConsideringRTLForUserInterfaceLayoutDirection:(long long)arg1;
@@ -170,6 +173,7 @@
 - (id)_initWithCGPDFPage:(struct CGPDFPage *)arg1 scale:(double)arg2 orientation:(long long)arg3;
 - (id)_initWithContentsOfLCRFile:(id)arg1;
 - (id)_initWithData:(id)arg1 immediateLoadWithMaxSize:(struct CGSize)arg2 scale:(double)arg3 renderingIntent:(int)arg4;
+- (id)_initWithData:(id)arg1 immediateLoadWithMaxSize:(struct CGSize)arg2 scale:(double)arg3 renderingIntent:(int)arg4 cache:(BOOL)arg5;
 - (id)_initWithData:(id)arg1 preserveScale:(BOOL)arg2;
 - (id)_initWithData:(id)arg1 preserveScale:(BOOL)arg2 cache:(BOOL)arg3;
 - (id)_initWithData:(id)arg1 scale:(double)arg2;
@@ -190,7 +194,6 @@
 - (id)_resizableImageWithSubimageInsets:(struct UIEdgeInsets)arg1 resizeInsets:(struct UIEdgeInsets)arg2;
 - (void)_saveDecompressedImage:(struct CGImage *)arg1;
 - (double)_scaleFromPDF;
-- (id)_selectedTabBarItemImageWithTintColor:(id)arg1 metrics:(long long)arg2 style:(long long)arg3 forScreenScale:(double)arg4;
 - (id)_serializedData;
 - (void)_setAlignmentRectInsets:(struct UIEdgeInsets)arg1;
 - (void)_setAlwaysStretches:(BOOL)arg1;
@@ -210,9 +213,7 @@
 - (id)_stretchableImageWithCapInsets:(struct UIEdgeInsets)arg1;
 - (id)_subimageInRect:(struct CGRect)arg1;
 - (BOOL)_suppressesAccessibilityHairlineThickening;
-- (id)_tabBarItemImageWithTintColor:(id)arg1 selected:(BOOL)arg2 metrics:(long long)arg3 style:(long long)arg4 forScreenScale:(double)arg5;
 - (struct CGColor *)_tiledPatternColor;
-- (id)_unselectedTabBarItemImageWithTintColor:(id)arg1 metrics:(long long)arg2 style:(long long)arg3 forScreenScale:(double)arg4;
 - (struct CGPDFPage *)_vectorImageCGPDFPage;
 - (id)_vectorImageFlatColor;
 - (struct UIEdgeInsets)_vectorImagePaddingInsets;

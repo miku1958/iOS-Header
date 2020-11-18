@@ -4,28 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_DUIClientDestination-Protocol.h>
-#import <UIKit/_DUIClientSessionDestination-Protocol.h>
+#import <UIKitCore/_DUIClientDestination-Protocol.h>
+#import <UIKitCore/_DUIClientSessionDestination-Protocol.h>
+#import <UIKitCore/_UIDruidDestinationConnection-Protocol.h>
 
 @class NSXPCConnection;
 @protocol _DUIServerSessionDestination;
 
 __attribute__((visibility("hidden")))
-@interface _UIDruidDestinationConnection : NSObject <_DUIClientDestination, _DUIClientSessionDestination>
+@interface _UIDruidDestinationConnection : NSObject <_DUIClientDestination, _DUIClientSessionDestination, _UIDruidDestinationConnection>
 {
     NSXPCConnection *_connection;
     id<_DUIServerSessionDestination> _serverSession;
     unsigned int _sessionIdentifier;
     CDUnknownBlockType _connectionBlock;
-    CDUnknownBlockType _itemImageProviderBlock;
-    CDUnknownBlockType _itemDetailProviderBlock;
-    CDUnknownBlockType _itemUpdateBlock;
-    CDUnknownBlockType _itemsAddedBlock;
+    CDUnknownBlockType _dragEndBlock;
     CDUnknownBlockType _dropPerformBlock;
     CDUnknownBlockType _handOffDroppedItemsBlock;
-    CDUnknownBlockType _dragEndBlock;
+    CDUnknownBlockType _itemDetailProviderBlock;
+    CDUnknownBlockType _itemImageProviderBlock;
+    CDUnknownBlockType _itemsAddedBlock;
+    CDUnknownBlockType _itemUpdateBlock;
     long long _state;
 }
 

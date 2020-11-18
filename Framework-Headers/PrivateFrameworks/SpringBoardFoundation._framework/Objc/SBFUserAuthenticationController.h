@@ -11,7 +11,7 @@
 #import <SpringBoardFoundation/SBFPasscodeFieldChangeObserver-Protocol.h>
 #import <SpringBoardFoundation/SBFUserAuthenticationModelDelegate-Protocol.h>
 
-@class NSDate, NSHashTable, NSMutableArray, NSString, PCPersistentTimer, SBFAuthenticationAssertion, SBFAuthenticationAssertionManager, SBFMobileKeyBag;
+@class NSDate, NSHashTable, NSMutableArray, NSString, PCPersistentTimer, SBFAuthenticationAssertion, SBFAuthenticationAssertionManager, SBFMobileKeyBag, SBFMobileKeyBagState;
 @protocol SBFAuthenticationPolicy, SBFUserAuthenticationModel;
 
 @interface SBFUserAuthenticationController : NSObject <SBFMobileKeyBagObserver, SBFUserAuthenticationModelDelegate, SBFAuthenticationStatusProvider, SBFPasscodeFieldChangeObserver>
@@ -30,6 +30,7 @@
     PCPersistentTimer *_unblockTimer;
     long long _cachedAuthFlag;
     BOOL _inSecureMode;
+    SBFMobileKeyBagState *_cachedExtendedState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -45,6 +46,7 @@
 - (void)_addPrivateAuthenticationObserver:(id)arg1;
 - (BOOL)_authenticateIfInGracePeriod;
 - (BOOL)_boolForAuthenticationResult:(long long)arg1;
+- (id)_cachedLockStateExtended;
 - (void)_clearBlockedState;
 - (void)_clearUnblockTimer;
 - (long long)_evaluateAuthenticationAttempt:(id)arg1 outError:(id *)arg2;

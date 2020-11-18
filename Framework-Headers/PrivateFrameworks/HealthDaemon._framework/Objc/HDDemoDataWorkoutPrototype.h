@@ -45,6 +45,7 @@
 
 + (id)HIITPrototype;
 + (id)ellipticalPrototype;
++ (id)hikingPrototype;
 + (id)runningPrototype;
 + (id)swimmingPrototype;
 + (id)thirdPartyWorkoutPrototype;

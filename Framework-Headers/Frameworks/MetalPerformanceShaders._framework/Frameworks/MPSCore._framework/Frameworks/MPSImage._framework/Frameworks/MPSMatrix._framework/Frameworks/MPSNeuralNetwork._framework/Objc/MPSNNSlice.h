@@ -11,8 +11,6 @@
 }
 
 + (const struct MPSLibraryInfo *)libraryInfo;
-- (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
-- (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1;

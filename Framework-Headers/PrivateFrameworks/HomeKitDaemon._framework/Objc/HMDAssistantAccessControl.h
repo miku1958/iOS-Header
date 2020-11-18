@@ -26,6 +26,7 @@
 }
 
 @property (readonly, copy) NSArray *accessories;
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly) unsigned long long cachedHash; // @synthesize cachedHash=_cachedHash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,8 +36,10 @@
 @property (readonly, copy) HMDAssistantAccessControlModel *model;
 @property (readonly, copy) NSUUID *modelID;
 @property unsigned long long options; // @synthesize options=_options;
+@property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
 @property (readonly) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 @property (weak) HMDUser *user; // @synthesize user=_user;
 

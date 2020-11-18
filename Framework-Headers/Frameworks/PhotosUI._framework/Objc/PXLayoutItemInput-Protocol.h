@@ -8,6 +8,8 @@
 
 @protocol PXLayoutItemInput <NSObject>
 
+@property (readonly, nonatomic) struct CGRect acceptableCropRect;
+@property (readonly, nonatomic) struct CGRect preferredCropRect;
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly, nonatomic) double weight;
 

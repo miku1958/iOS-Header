@@ -21,9 +21,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSString *defaultValue; // @synthesize defaultValue=_defaultValue;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasDefaultValue;
-@property (readonly, nonatomic) BOOL hasName;
-@property (readonly, nonatomic) BOOL hasOptions;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;

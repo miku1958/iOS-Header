@@ -8,11 +8,12 @@
 
 #import <IDSFoundation/CUTAWDMetric-Protocol.h>
 #import <IDSFoundation/CUTCoreAnalyticsMetric-Protocol.h>
+#import <IDSFoundation/CUTRTCMetric-Protocol.h>
 
 @class NSDictionary, NSString, PBCodable;
 @protocol NSCopying;
 
-@interface IDSRegistrationCompletedMetric : NSObject <CUTCoreAnalyticsMetric, CUTAWDMetric>
+@interface IDSRegistrationCompletedMetric : NSObject <CUTCoreAnalyticsMetric, CUTAWDMetric, CUTRTCMetric>
 {
     long long _registrationType;
     NSString *_serviceIdentifier;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) long long registrationError; // @synthesize registrationError=_registrationError;
 @property (readonly, nonatomic) long long registrationType; // @synthesize registrationType=_registrationType;
+@property (readonly, nonatomic) unsigned short rtcType;
 @property (readonly, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL wasSuccessful; // @synthesize wasSuccessful=_wasSuccessful;

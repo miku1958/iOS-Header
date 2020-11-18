@@ -19,17 +19,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)_executeCTConnectionDependentBlock:(CDUnknownBlockType)arg1;
 + (BOOL)isOnCallOfSubType:(struct __CFString *)arg1;
-+ (BOOL)isProvisioning;
-+ (BOOL)isVoiceEnabled;
-+ (void)setVoiceEnabled:(BOOL)arg1;
-+ (BOOL)shouldShowVoiceOptions;
-+ (unsigned long long)voiceAvailability;
++ (BOOL)isProvisioning:(id)arg1;
++ (BOOL)isVoiceEnabled:(id)arg1;
++ (void)setVoice:(id)arg1 enabled:(BOOL)arg2;
++ (BOOL)shouldShowVoiceOptions:(id)arg1;
++ (unsigned long long)voiceAvailability:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)listItemSelected:(id)arg1;
-- (void)presentCallCarrierAlert;
+- (void)presentCallCarrierAlert:(id)arg1;
 - (BOOL)presentOnCallAlertIfNeededForService:(unsigned long long)arg1 okayCompletion:(CDUnknownBlockType)arg2;
 - (id)specifiers;
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;

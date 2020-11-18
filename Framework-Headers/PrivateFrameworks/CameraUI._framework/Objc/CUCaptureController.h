@@ -89,12 +89,14 @@
 @property (readonly, nonatomic) CAMRemoteShutterController *_remoteShutterController; // @synthesize _remoteShutterController=__remoteShutterController;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *_responseQueue; // @synthesize _responseQueue=__responseQueue;
 @property (readonly, nonatomic) CAMThumbnailGenerator *_responseThumbnailGenerator; // @synthesize _responseThumbnailGenerator=__responseThumbnailGenerator;
+@property (readonly, nonatomic) BOOL _shouldResetFocusAndExposureAfterCapture;
 @property (nonatomic, setter=_setShouldResetFocusAndExposureAfterIrisVideoCapture:) BOOL _shouldResetFocusAndExposureAfterIrisVideoCapture; // @synthesize _shouldResetFocusAndExposureAfterIrisVideoCapture=__shouldResetFocusAndExposureAfterIrisVideoCapture;
 @property (weak, nonatomic) id<CAMAvailabilityDelegate> availabilityDelegate; // @synthesize availabilityDelegate=_availabilityDelegate;
 @property (weak, nonatomic) id<CAMBurstDelegate> burstDelegate; // @synthesize burstDelegate=_burstDelegate;
 @property (nonatomic, getter=isCaptureAvailable, setter=_setCaptureAvailable:) BOOL captureAvailable; // @synthesize captureAvailable=_captureAvailable;
 @property (readonly, nonatomic, getter=isCapturingBurst) BOOL capturingBurst;
 @property (readonly, nonatomic, getter=isCapturingPanorama) BOOL capturingPanorama;
+@property (readonly, nonatomic, getter=isCapturingStillImage) BOOL capturingStillImage;
 @property (readonly, nonatomic, getter=isCapturingStillImagePairedVideo) BOOL capturingStillImagePairedVideo;
 @property (nonatomic, getter=isCapturingTimelapse) BOOL capturingTimelapse; // @synthesize capturingTimelapse=_capturingTimelapse;
 @property (readonly, nonatomic, getter=isCapturingVideo) BOOL capturingVideo;
@@ -148,6 +150,7 @@
 - (id)_focusKVOKeyPaths;
 - (void)_focusResultChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
 - (void)_handleCaptureEngineExecutionNotification:(id)arg1;
+- (void)_handleShallowDepthOfFieldStatusChangedNotification:(id)arg1;
 - (void)_handleSystemPressureStateChanged;
 - (id)_identifierForPendingVideoForStillImageRequest:(id)arg1;
 - (BOOL)_kvoDidEndForChange:(id)arg1;
@@ -168,12 +171,9 @@
 - (void)_setupExposureMonitoring;
 - (void)_setupFocusAndExposureMonitoring;
 - (void)_setupFocusMonitoring;
-- (void)_setupShallowDepthOfFieldMonitoring;
 - (void)_setupSuggestionMonitoring;
 - (void)_setupSystemPressureStateMonitoring;
 - (void)_setupZoomMonitoring;
-- (void)_shallowDepthOfFieldMonitoringChangedForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3;
-- (id)_shallowDepthOfFieldMonitoringKeyPaths;
 - (BOOL)_shouldMonitorSystemPressureState;
 - (void)_startShowingLivePhotoIndicatorForStillImageRequest:(id)arg1;
 - (void)_stopShowingLivePhotoIndicatorForStillImageRequest:(id)arg1;
@@ -184,7 +184,6 @@
 - (id)_systemPressureStateMonitoringKeyPaths;
 - (void)_teardownAvailabilityMonitoring;
 - (void)_teardownFocusAndExposureMonitoring;
-- (void)_teardownShallowDepthOfFieldMonitoring;
 - (void)_teardownSuggestionMonitoring;
 - (void)_teardownSystemPressureStateMonitoring;
 - (void)_teardownZoomMonitoring;
@@ -214,12 +213,14 @@
 - (void)changeToLockedExposure;
 - (void)changeToPanoramaDirection:(long long)arg1;
 - (void)changeToPanoramaEncodingBehavior:(long long)arg1;
+- (void)changeToPortraitAperture:(double)arg1;
 - (void)changeToPreviewConfiguration:(unsigned long long)arg1;
 - (void)changeToPreviewDisabled;
 - (void)changeToPreviewEnabledWithConfiguration:(unsigned long long)arg1;
 - (void)changeToPreviewFilters:(id)arg1;
 - (void)changeToTorchLevel:(float)arg1;
 - (void)changeToTorchMode:(long long)arg1;
+- (void)changeToVideoHDRSuspended:(BOOL)arg1;
 - (void)changeToVideoRecordingCaptureOrientation:(long long)arg1;
 - (void)changeToVideoZoomFactor:(double)arg1;
 - (void)dealloc;
@@ -253,6 +254,7 @@
 - (void)registerVideoThumbnailContentsDelegate:(id)arg1;
 - (void)resumeCapturingStillImagePairedVideo;
 - (void)startCaptureSession;
+- (void)startCaptureSessionWithRetryCount:(unsigned long long)arg1 retryInterval:(double)arg2 logReason:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)startCapturingBurstWithRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)startCapturingPanoramaWithRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)startCapturingVideoWithRequest:(id)arg1 error:(id *)arg2;
@@ -267,6 +269,7 @@
 - (void)stillImageRequestDidStopCapturingVideo:(id)arg1;
 - (void)stillImageRequestWillStartCapturingVideo:(id)arg1;
 - (void)stopCaptureSession;
+- (void)stopCaptureSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stopCapturingBurst;
 - (BOOL)stopCapturingPanorama;
 - (BOOL)stopCapturingVideo;

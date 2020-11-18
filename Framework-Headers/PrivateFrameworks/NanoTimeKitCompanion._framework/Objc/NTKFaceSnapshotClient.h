@@ -16,6 +16,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_handleActiveDeviceChangedNotification;
 - (void)_handleConnectionInterrupted;
 - (void)_handleCustomMonogramChangedNotification;
 - (void)_handleSignificantLocationChangeNotification;
@@ -29,6 +30,7 @@
 - (void)performAfterCompletingCurrentlyPendingSnapshots:(CDUnknownBlockType)arg1;
 - (void)requestSnapshotOfFace:(id)arg1;
 - (void)snapshotFace:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)snapshotLibrarySelectedFaceForDeviceUUID:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)synchronouslyUpdateAllSnapshots;
 
 @end

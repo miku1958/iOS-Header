@@ -10,6 +10,7 @@
 {
 }
 
+@property (nonatomic, getter=isAutoDownload) BOOL autoDownload;
 @property (nonatomic) int downloadFeeAgreementStatus; // @dynamic downloadFeeAgreementStatus;
 @property (nonatomic) BOOL enforceWifiOnlyOverride; // @dynamic enforceWifiOnlyOverride;
 @property (nonatomic) int termsAndConditionsAgreementStatus; // @dynamic termsAndConditionsAgreementStatus;

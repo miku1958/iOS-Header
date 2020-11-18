@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) FBSUIApplicationLaunchResponse *response; // @synthesize response=_response;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 

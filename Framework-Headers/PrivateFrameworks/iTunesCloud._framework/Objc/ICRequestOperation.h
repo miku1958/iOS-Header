@@ -19,7 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) NSProgress *progress; // @synthesize progress=_progress;
+@property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

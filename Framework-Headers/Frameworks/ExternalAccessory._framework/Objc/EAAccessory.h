@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class EAAccessoryInternal, NSArray, NSString;
 @protocol EAAccessoryDelegate;
@@ -57,6 +57,7 @@
 - (BOOL)createdByCoreAccessories;
 - (void)dealloc;
 - (id)description;
+- (unsigned long long)destinationSharingOptions;
 - (id)dictionaryWithLowercaseKeys:(id)arg1;
 - (unsigned int)eqIndex;
 - (id)eqNames;
@@ -86,6 +87,7 @@
 - (BOOL)sendPointOfInterestInformation:(id)arg1 identifier:(unsigned short)arg2;
 - (void)setCameraComponents:(id)arg1;
 - (int)setCameraProperties:(unsigned int)arg1 forCameraId:(unsigned short)arg2 withProperties:(id)arg3;
+- (void)setDestinationSharingOptions:(unsigned long long)arg1;
 - (void)setEqIndex:(unsigned int)arg1;
 - (void)setEqNames:(id)arg1;
 - (void)setIAPTimeSyncParams:(id)arg1;

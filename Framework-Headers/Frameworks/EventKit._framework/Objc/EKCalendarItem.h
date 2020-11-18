@@ -52,6 +52,7 @@
 - (id)_generateNewUniqueID;
 - (BOOL)_hadAttendees;
 - (BOOL)_hadRecurrenceRules;
+- (BOOL)_isExternallyOrganizedInvitationWithAttendees:(BOOL)arg1;
 - (void)_moveToCalendar:(id)arg1 forCommittingItem:(id)arg2;
 - (void)_recursivelyPerformBlockOnSelfAndDetachedItems:(CDUnknownBlockType)arg1 forCommittingItem:(id)arg2;
 - (void)_removeAttachment:(id)arg1;

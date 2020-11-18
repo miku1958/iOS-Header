@@ -7,28 +7,27 @@
 #import <objc/NSObject.h>
 
 #import <PhotoAnalysis/PHAActivityGovernorDelegate-Protocol.h>
-#import <PhotoAnalysis/PHAAnalysisStateObserverDelegate-Protocol.h>
 #import <PhotoAnalysis/PHADirtyChangeCoalescerDelegate-Protocol.h>
+#import <PhotoAnalysis/PHAGraphManagerClientMessagesReceiver-Protocol.h>
 #import <PhotoAnalysis/PHAJobCoalescerDelegate-Protocol.h>
 #import <PhotoAnalysis/PHAJobConstraintsObserverDelegate-Protocol.h>
 #import <PhotoAnalysis/PHAWorkerJobDelegate-Protocol.h>
 #import <PhotoAnalysis/PLPhotoAnalysisJobServiceProtocol-Protocol.h>
 
-@class NSDictionary, NSMutableArray, NSMutableSet, NSString, PHAActivityGovernor, PHAAnalysisStateObserver, PHADirtyChangeCoalescer, PHAJobCoalescer, PHAJobConstraints, PHAJobConstraintsObserver, PHAJobGenerator, PHAManager, PHAWorkerHealthMonitor, PHAWorkerJob, PHAWorkerWarmer;
-@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, OS_voucher, PHAJobCoordinatorDelegate;
+@class NSDictionary, NSMutableArray, NSMutableSet, NSString, PHAActivityGovernor, PHADirtyChangeCoalescer, PHAJobCoalescer, PHAJobConstraints, PHAJobConstraintsObserver, PHAJobGenerator, PHAManager, PHAWorkerHealthMonitor, PHAWorkerJob, PHAWorkerWarmer;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_os_transaction, PHAJobCoordinatorDelegate;
 
-@interface PHAJobCoordinator : NSObject <PHAJobCoalescerDelegate, PHAJobConstraintsObserverDelegate, PHAWorkerJobDelegate, PHAAnalysisStateObserverDelegate, PHADirtyChangeCoalescerDelegate, PHAActivityGovernorDelegate, PLPhotoAnalysisJobServiceProtocol>
+@interface PHAJobCoordinator : NSObject <PHAJobCoalescerDelegate, PHAJobConstraintsObserverDelegate, PHAWorkerJobDelegate, PHADirtyChangeCoalescerDelegate, PHAActivityGovernorDelegate, PHAGraphManagerClientMessagesReceiver, PLPhotoAnalysisJobServiceProtocol>
 {
     _Atomic int _pendingAsyncTasksCount;
-    NSObject<OS_voucher> *_turboModeBoostVoucher;
-    BOOL _turboMode;
+    BOOL _graphUpdateNeeded;
     BOOL _newConstraintsPending;
     BOOL _shouldIgnoreConstraintChanges;
+    PHAWorkerWarmer *_warmer;
     PHAJobCoalescer *_jobCoalescer;
     PHADirtyChangeCoalescer *_dirtyCoalescer;
     PHAJobConstraintsObserver *_constraintsObserver;
     double _maxIntervalSinceLastJobReport;
-    PHAAnalysisStateObserver *_stateObserver;
     id<PHAJobCoordinatorDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_maintenanceTimer;
@@ -36,7 +35,6 @@
     PHAWorkerHealthMonitor *_healthMonitor;
     PHAActivityGovernor *_activityGovernor;
     PHAJobGenerator *_jobGenerator;
-    PHAWorkerWarmer *_warmer;
     PHAManager *_manager;
     PHAJobConstraints *_currentConstraints;
     PHAWorkerJob *_currentForegroundJob;
@@ -44,6 +42,7 @@
     PHAWorkerJob *_currentBackgroundJob;
     NSObject<OS_os_transaction> *_runningJobTransaction;
     NSMutableSet *_workerTypesServicedForUserFG;
+    NSObject<OS_os_transaction> *_foregroundTransaction;
 }
 
 @property (readonly, nonatomic) PHAActivityGovernor *activityGovernor; // @synthesize activityGovernor=_activityGovernor;
@@ -56,6 +55,8 @@
 @property (weak, nonatomic) id<PHAJobCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) PHADirtyChangeCoalescer *dirtyCoalescer; // @synthesize dirtyCoalescer=_dirtyCoalescer;
+@property (strong, nonatomic) NSObject<OS_os_transaction> *foregroundTransaction; // @synthesize foregroundTransaction=_foregroundTransaction;
+@property (readonly) BOOL graphUpdateNeeded; // @synthesize graphUpdateNeeded=_graphUpdateNeeded;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PHAWorkerHealthMonitor *healthMonitor; // @synthesize healthMonitor=_healthMonitor;
 @property (readonly, nonatomic) PHAJobCoalescer *jobCoalescer; // @synthesize jobCoalescer=_jobCoalescer;
@@ -68,9 +69,7 @@
 @property (readonly, nonatomic, getter=isQuiescent) BOOL quiescent;
 @property (strong, nonatomic) NSObject<OS_os_transaction> *runningJobTransaction; // @synthesize runningJobTransaction=_runningJobTransaction;
 @property (nonatomic) BOOL shouldIgnoreConstraintChanges; // @synthesize shouldIgnoreConstraintChanges=_shouldIgnoreConstraintChanges;
-@property (readonly, nonatomic) PHAAnalysisStateObserver *stateObserver; // @synthesize stateObserver=_stateObserver;
 @property (readonly) Class superclass;
-@property (nonatomic, getter=isTurboMode) BOOL turboMode; // @synthesize turboMode=_turboMode;
 @property (readonly, nonatomic) NSMutableArray *waitingForegroundJobs; // @synthesize waitingForegroundJobs=_waitingForegroundJobs;
 @property (readonly, nonatomic) PHAWorkerWarmer *warmer; // @synthesize warmer=_warmer;
 @property (strong, nonatomic) NSMutableSet *workerTypesServicedForUserFG; // @synthesize workerTypesServicedForUserFG=_workerTypesServicedForUserFG;
@@ -96,7 +95,6 @@
 - (id)_nextAdditionalJobForWorkerTypeObj:(id)arg1 scenario:(unsigned long long)arg2;
 - (void)_scheduleNextJob;
 - (id)_workerForJob:(id)arg1;
-- (void)analysisStateObserver:(id)arg1 didChangeAnalysisStateTo:(int)arg2 from:(int)arg3 assetIdentifier:(id)arg4 workerFlags:(int)arg5 workerType:(short)arg6;
 - (void)coalescer:(id)arg1 didCoalesce:(id)arg2;
 - (void)dealloc;
 - (void)didFinishJob:(id)arg1;
@@ -106,11 +104,16 @@
 - (void)governorDidGrantForegroundAccess:(id)arg1;
 - (void)governorDidRevokeBackgroundAccess:(id)arg1;
 - (void)governorDidRevokeForegroundAccess:(id)arg1;
+- (void)graphManagerDidUnloadGraph:(id)arg1;
+- (void)graphManagerWillLoadGraph:(id)arg1;
+- (void)handleOperation:(id)arg1;
 - (id)initWithManager:(id)arg1;
 - (id)initWithManager:(id)arg1 initialConstraints:(id)arg2 additionalWorkersByType:(id)arg3;
 - (void)jobCoalescer:(id)arg1 didProduceJob:(id)arg2;
 - (void)jobConstraintsObserver:(id)arg1 constraintsDidChange:(id)arg2 mask:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)operationDidFinish:(id)arg1;
 - (id)photoLibrary;
+- (void)processJobs;
 - (void)scheduleAssetForOnDemandAnalysisWithUUID:(id)arg1 workerType:(short)arg2 workerFlags:(int)arg3 context:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)shutdown;

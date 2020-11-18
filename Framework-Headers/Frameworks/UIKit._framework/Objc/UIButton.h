@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIAccessibilityContentSizeCategoryImageAdjusting-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/_UIFloatingContentViewDelegate-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIAccessibilityContentSizeCategoryImageAdjusting-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIFloatingContentViewDelegate-Protocol.h>
 
 @class NSArray, NSAttributedString, NSString, UIColor, UIFont, UIImage, UIImageView, UILabel, UITapGestureRecognizer, UIView, UIVisualEffectView, _UIButtonMaskAnimationView, _UIFloatingContentView;
 
@@ -284,7 +284,6 @@
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)invalidateIntrinsicContentSize;
 - (BOOL)isAccessibilityElementByDefault;
 - (BOOL)isElementAccessibilityExposedToInterfaceBuilder;
 - (BOOL)isSpringLoaded;

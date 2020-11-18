@@ -6,13 +6,15 @@
 
 #import <Home/HFItemManager.h>
 
-@class HFHomeBuilder, HFItem, HFResidentDeviceItemProvider;
+@class HFHomeBuilder, HFItem, HFResidentDeviceItemProvider, HUUserNotificationTopicListModule;
 
 @interface HUEditLocationItemManager : HFItemManager
 {
+    HUUserNotificationTopicListModule *_notificationSettingsModule;
     HFItem *_nameItem;
     HFItem *_usersItem;
     HFItem *_inviteUsersItem;
+    HFItem *_wallpaperPickerItem;
     HFItem *_cameraItem;
     HFItem *_chooseWallpaperItem;
     HFItem *_wallpaperThumbnailItem;
@@ -33,14 +35,17 @@
 @property (strong, nonatomic) HFHomeBuilder *homeBuilder; // @synthesize homeBuilder=_homeBuilder;
 @property (strong, nonatomic) HFItem *inviteUsersItem; // @synthesize inviteUsersItem=_inviteUsersItem;
 @property (strong, nonatomic) HFItem *nameItem; // @synthesize nameItem=_nameItem;
+@property (strong, nonatomic) HUUserNotificationTopicListModule *notificationSettingsModule; // @synthesize notificationSettingsModule=_notificationSettingsModule;
 @property (strong, nonatomic) HFItem *removeItem; // @synthesize removeItem=_removeItem;
 @property (strong, nonatomic) HFResidentDeviceItemProvider *residentDeviceItemProvider; // @synthesize residentDeviceItemProvider=_residentDeviceItemProvider;
 @property (strong, nonatomic) HFItem *softwareUpdateItem; // @synthesize softwareUpdateItem=_softwareUpdateItem;
 @property (strong, nonatomic) HFItem *usersItem; // @synthesize usersItem=_usersItem;
+@property (strong, nonatomic) HFItem *wallpaperPickerItem; // @synthesize wallpaperPickerItem=_wallpaperPickerItem;
 @property (strong, nonatomic) HFItem *wallpaperThumbnailItem; // @synthesize wallpaperThumbnailItem=_wallpaperThumbnailItem;
 
 + (CDUnknownBlockType)residentDeviceItemComparator;
 - (void).cxx_destruct;
+- (id)_buildItemModulesForHome:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_homeFuture;

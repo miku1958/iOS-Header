@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryiPad10Key_Portrait.h>
+#import <UIKitCore/UIKBRenderFactoryiPad10Key_Portrait.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryiPad10Key_Landscape : UIKBRenderFactoryiPad10Key_Portrait

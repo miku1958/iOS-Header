@@ -10,19 +10,17 @@
 
 @interface CLSFavorite : CLSObject
 {
+    NSString *_title;
+    NSString *_storeIdentifier;
     int _type;
     NSArray *_contextIdentifierPath;
     NSURL *_URL;
     long long _contextType;
     NSString *_bundleIdentifier;
     NSString *_contentStoreIdentifier;
-    NSString *__title;
-    NSString *__storeIdentifier;
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
-@property (copy, nonatomic) NSString *_storeIdentifier; // @synthesize _storeIdentifier=__storeIdentifier;
-@property (copy, nonatomic) NSString *_title; // @synthesize _title=__title;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *contentStoreIdentifier; // @synthesize contentStoreIdentifier=_contentStoreIdentifier;
 @property (strong, nonatomic) NSArray *contextIdentifierPath; // @synthesize contextIdentifierPath=_contextIdentifierPath;

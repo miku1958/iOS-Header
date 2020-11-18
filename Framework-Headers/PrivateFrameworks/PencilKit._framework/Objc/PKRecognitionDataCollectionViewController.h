@@ -43,6 +43,7 @@
 - (id)initWithDrawings:(id)arg1 metadata:(id)arg2;
 - (void)openAppleFeedbackAssistantWithTempDirectoryURL:(id)arg1;
 - (void)openTapToRadarWithTempDirectoryURL:(id)arg1;
+- (void)openURL:(id)arg1;
 - (id)saveDataForDrawings:(id)arg1 baseURL:(id)arg2 shouldSaveRecognitionData:(BOOL)arg3;
 - (void)sendRadarButtonTapped:(id)arg1;
 - (id)synchronousImageForDrawing:(id)arg1;

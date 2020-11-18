@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UILayoutContainerViewDelegate-Protocol.h>
-#import <UIKit/UISplitViewControllerImpl-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UILayoutContainerViewDelegate-Protocol.h>
+#import <UIKitCore/UISplitViewControllerImpl-Protocol.h>
 
-@class NSArray, NSString, UIBarButtonItem, UIFocusContainerGuide, UIGestureRecognizer, UIPopoverController, UIResponder, UISnapshotView, UISplitViewController, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController;
+@class NSArray, NSString, UIBarButtonItem, UIFocusContainerGuide, UIGestureRecognizer, UIPopoverController, UIResponder, UISnapshotView, UISplitViewController, UISplitViewControllerDisplayModeBarButtonItem, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController;
 @protocol UISplitViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
     UISplitViewController *_svc;
     id _delegate;
     UIBarButtonItem *_barButtonItem;
-    UIBarButtonItem *_displayModeButtonItem;
+    UISplitViewControllerDisplayModeBarButtonItem *_displayModeButtonItem;
     NSString *_buttonTitle;
     UIPopoverController *_hiddenPopoverController;
     UIView *_rotationSnapshotView;
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
     struct CGRect _rotatingToMasterViewFrame;
     NSArray *_cornerImageViews;
     UIView *_underBarSeparatorView;
+    UITraitCollection *_traitCollectionWhenRemovedFromWindow;
     BOOL _presentsWithGesture;
     UIGestureRecognizer *_popoverPresentationGestureRecognizer;
     UITapGestureRecognizer *_menuGestureRecognizer;
@@ -81,6 +82,9 @@ __attribute__((visibility("hidden")))
         unsigned int hasTransitioningToInternalMode:1;
         unsigned int delegateImplementsPrivateIsPrimaryVisible:1;
         unsigned int delegateImplementsPrivateCollapseSecondaryViewControllerWhileSuspended:1;
+        unsigned int usesExtraWidePrimaryColumn:1;
+        unsigned int usesDeviceOverlayPreferences:1;
+        unsigned int prefersOverlayInRegularWidthPhone:1;
     } _splitViewControllerFlags;
     NSString *_displayModeButtonItemTitle;
     double _preferredPrimaryColumnWidthFraction;
@@ -112,9 +116,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double minimumPrimaryColumnWidth; // @synthesize minimumPrimaryColumnWidth=_minimumPrimaryColumnWidth;
 @property (nonatomic) long long preferredDisplayMode;
 @property (nonatomic) double preferredPrimaryColumnWidthFraction; // @synthesize preferredPrimaryColumnWidthFraction=_preferredPrimaryColumnWidthFraction;
+@property (nonatomic) BOOL prefersOverlayInRegularWidthPhone;
 @property (nonatomic) BOOL presentsWithGesture; // @synthesize presentsWithGesture=_presentsWithGesture;
 @property (nonatomic) long long primaryEdge;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL usesDeviceOverlayPreferences;
+@property (nonatomic, getter=_usesExtraWidePrimaryColumn, setter=_setUsesExtraWidePrimaryColumn:) BOOL usesExtraWidePrimaryColumn;
 @property (copy, nonatomic) NSArray *viewControllers;
 
 + (double)_defaultGutterWidthInView:(id)arg1;
@@ -137,9 +144,11 @@ __attribute__((visibility("hidden")))
 - (void)_completeTransitionFromOrientation:(long long)arg1 masterChange:(long long)arg2;
 - (double)_contentMarginForChildViewController:(id)arg1;
 - (struct CGSize)_contentSizeForChildViewController:(id)arg1 inPopoverController:(id)arg2;
+- (long long)_currentInterfaceIdiom;
 - (id)_defaultDisplayModes;
 - (double)_defaultMaximumPrimaryColumnWidthForSize:(struct CGSize)arg1;
 - (long long)_defaultTargetDisplayMode;
+- (BOOL)_defersUpdateDelegateHiddenMasterAspectRatios;
 - (void)_descendantWillPresentViewController:(id)arg1 modalSourceViewController:(id)arg2 presentationController:(id)arg3 animated:(BOOL)arg4;
 - (struct CGRect)_detailViewFrame;
 - (struct CGRect)_detailViewFrame:(struct CGRect)arg1;
@@ -149,6 +158,7 @@ __attribute__((visibility("hidden")))
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_disableAutomaticKeyboardBehavior;
 - (void)_dismissMasterViewController:(BOOL)arg1;
+- (void)_displayModeBarButtonItemWasUsedForFirstTime:(id)arg1;
 - (void)_displayModeDidChange;
 - (void)_displayModeWillChangeTo:(long long)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
@@ -162,6 +172,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)_hasPreferredInterfaceOrientationForPresentation;
 - (BOOL)_hidesMasterViewInCurrentOrientation;
 - (BOOL)_hidesMasterViewInOrientation:(long long)arg1 medusaState:(long long)arg2;
+- (BOOL)_iPhoneShouldUseOverlayIfRegularWidth;
+- (BOOL)_iPhoneShouldUseOverlayInCurrentEnvironment;
 - (void)_initWithCoder:(id)arg1;
 - (long long)_internalModeForTraitCollection:(id)arg1 orientation:(long long)arg2 viewSize:(struct CGSize)arg3 medusaState:(long long)arg4;
 - (void)_invalidateHidesMasterViewForAspectRatio:(long long)arg1;

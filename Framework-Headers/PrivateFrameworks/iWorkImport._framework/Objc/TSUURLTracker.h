@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSUURLWrapper-Protocol.h>
 
@@ -19,7 +19,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSURL *URL;
 @property (readonly) NSURL *URLIfAvailable;
 @property (readonly) NSData *bookmarkData;
+@property (readonly) NSData *bookmarkDataIfAvailable;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly) BOOL deleted;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

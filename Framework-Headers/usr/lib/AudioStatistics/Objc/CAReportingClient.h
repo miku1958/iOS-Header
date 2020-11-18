@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AudioStatistics/NSXPCListenerDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSXPCConnection;
 @protocol CAReportingServerInterface;
 
+__attribute__((visibility("hidden")))
 @interface CAReportingClient : NSObject <NSXPCListenerDelegate>
 {
     NSXPCConnection *_connection;

@@ -10,8 +10,8 @@
 {
 }
 
++ (id)allTypes;
 + (id)vaccinationRecordType;
-- (Class)dataObjectClass;
 
 @end
 

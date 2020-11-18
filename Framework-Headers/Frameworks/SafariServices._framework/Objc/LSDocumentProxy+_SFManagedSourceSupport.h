@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/LSDocumentProxy.h>
+#import <CoreServices/LSDocumentProxy.h>
 
 @interface LSDocumentProxy (_SFManagedSourceSupport)
 + (id)_sf_documentProxyForName:(id)arg1 type:(id)arg2 MIMEType:(id)arg3 sourceURL:(id)arg4;

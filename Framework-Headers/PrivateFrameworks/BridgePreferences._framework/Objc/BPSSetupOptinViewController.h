@@ -56,13 +56,18 @@
 - (id)init;
 - (void)learnMoreButtonPressed:(id)arg1;
 - (id)learnMoreButtonTitle;
+- (double)noHWDetailOffset;
+- (double)noHWImageOffset;
 - (void)okayButtonPressed:(id)arg1;
 - (id)okayButtonTitle;
 - (double)okayButtonTopPadding;
+- (id)optinLocalizationBundle;
+- (id)optinLocalizationStringsFile;
 - (void)showOptinConfirmationAlert:(id)arg1 optinChoice:(BOOL)arg2;
 - (double)sidePadding;
 - (void)suggestedButtonPressed:(id)arg1;
 - (id)suggestedButtonTitle;
+- (double)suggestedChoicePillDetailTextLabelVerticalOffset;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

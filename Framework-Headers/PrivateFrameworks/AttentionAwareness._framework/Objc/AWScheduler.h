@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)addClient:(id)arg1 clientConfig:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)armEvents;
+- (void)createUnitTestSampler;
 - (void)getDebugPreferences:(CDUnknownBlockType)arg1;
 - (void)getSupportedEventsWithReply:(CDUnknownBlockType)arg1;
 - (void)getUnitTestSamplerWithReply:(CDUnknownBlockType)arg1;

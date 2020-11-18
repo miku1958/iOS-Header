@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/FBSOrientationObserverClientDelegate-Protocol.h>
 
@@ -25,6 +25,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (long long)activeInterfaceOrientation;
 - (void)activeInterfaceOrientationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)client:(id)arg1 handleOrientationUpdate:(id)arg2;
 - (void)dealloc;

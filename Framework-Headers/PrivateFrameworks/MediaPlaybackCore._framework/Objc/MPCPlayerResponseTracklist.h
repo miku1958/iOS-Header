@@ -10,6 +10,7 @@
 
 @interface MPCPlayerResponseTracklist : NSObject
 {
+    unsigned long long _changeItemSupport;
     NSString *_uniqueIdentifier;
     long long _lastChangeDirection;
     long long _upNextItemCount;
@@ -37,6 +38,7 @@
 + (id)insertCommandForPlayerPath:(id)arg1 devices:(id)arg2;
 + (id)resetCommandForPlayerPath:(id)arg1 devices:(id)arg2;
 - (void).cxx_destruct;
+- (unsigned long long)_determineChangeItemSupport;
 - (id)changeItemCommand;
 - (id)disableModificationsCommand;
 - (id)initWithResponse:(id)arg1;

@@ -9,27 +9,27 @@
 #import <Silex/SXComponentSizerFactory-Protocol.h>
 
 @class NSString;
-@protocol SXActionProvider, SXDocumentControllerProvider, SXTextComponentLayoutHosting;
+@protocol SXDocumentControllerProvider, SXSmartFieldFactory, SXTextComponentLayoutHosting;
 
 @interface SXTextComponentSizerFactory : NSObject <SXComponentSizerFactory>
 {
     id<SXDocumentControllerProvider> _documentControllerProvider;
     id<SXTextComponentLayoutHosting> _textComponentLayoutHosting;
-    id<SXActionProvider> _actionProvider;
+    id<SXSmartFieldFactory> _smartFieldFactory;
 }
 
-@property (readonly, nonatomic) id<SXActionProvider> actionProvider; // @synthesize actionProvider=_actionProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<SXDocumentControllerProvider> documentControllerProvider; // @synthesize documentControllerProvider=_documentControllerProvider;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int role;
+@property (readonly, nonatomic) id<SXSmartFieldFactory> smartFieldFactory; // @synthesize smartFieldFactory=_smartFieldFactory;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<SXTextComponentLayoutHosting> textComponentLayoutHosting; // @synthesize textComponentLayoutHosting=_textComponentLayoutHosting;
 @property (readonly, nonatomic) NSString *type;
 
 - (void).cxx_destruct;
-- (id)initWithDocumentControllerProvider:(id)arg1 textComponentLayoutHosting:(id)arg2 actionProvider:(id)arg3;
+- (id)initWithDocumentControllerProvider:(id)arg1 textComponentLayoutHosting:(id)arg2 smartFieldFactory:(id)arg3;
 - (id)sizerForComponent:(id)arg1 componentLayout:(id)arg2 layoutAttributes:(id)arg3;
 
 @end

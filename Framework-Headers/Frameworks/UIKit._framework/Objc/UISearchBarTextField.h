@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextField.h>
+#import <UIKitCore/UITextField.h>
 
-#import <UIKit/_UISearchBarTextFieldOrMailReplacement-Protocol.h>
+#import <UIKitCore/_UISearchBarTextFieldOrMailReplacement-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSValue, _UISearchBarSearchFieldBackgroundView;
 
@@ -20,6 +20,9 @@ __attribute__((visibility("hidden")))
     _UISearchBarSearchFieldBackgroundView *_effectBackgroundBottom;
     BOOL _deferringFirstResponder;
     BOOL _animatePlaceholderOnResignFirstResponder;
+    struct {
+        unsigned int delegateWantsShouldSendContentChangedNotificationsIfOnlyMarkedTextChanged:1;
+    } _searchBarTextFieldFlags;
     BOOL __preventSelectionViewActivation;
     long long __textInputSource;
 }
@@ -46,7 +49,6 @@ __attribute__((visibility("hidden")))
 - (id)_clearButtonImageForState:(unsigned long long)arg1;
 - (struct CGSize)_clearButtonSize;
 - (id)_createEffectsBackgroundViewWithStyle:(unsigned long long)arg1 applyFilter:(id)arg2;
-- (BOOL)_hasActionForEventMask:(unsigned long long)arg1;
 - (id)_offsetValueForIcon:(long long)arg1;
 - (id)_placeholderColor;
 - (Class)_placeholderLabelClass;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)_setOffsetValue:(id)arg1 forIcon:(long long)arg2;
 - (BOOL)_shouldCenterPlaceholder;
 - (BOOL)_shouldDetermineInterfaceStyleTextColor;
+- (BOOL)_shouldResignOnEditingDidEndOnExit;
 - (BOOL)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
 - (struct CGRect)_suffixFrame;
 - (long long)_suffixLabelTextAlignment;
@@ -68,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateBackgroundView:(id)arg1 withStyle:(unsigned long long)arg2 filter:(id)arg3;
 - (void)_updateBackgroundViewsAnimated:(BOOL)arg1;
 - (BOOL)canBecomeFirstResponder;
+- (BOOL)canBecomeFocused;
 - (BOOL)canResignFirstResponder;
 - (struct CGRect)clearButtonRectForBounds:(struct CGRect)arg1;
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
@@ -77,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)placeholderRectForBounds:(struct CGRect)arg1;
 - (BOOL)resignFirstResponder;
 - (struct CGRect)rightViewRectForBounds:(struct CGRect)arg1;
+- (void)setDelegate:(id)arg1;
 - (id)textInputTraits;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;
 - (void)tintColorDidChange;

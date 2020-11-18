@@ -8,7 +8,7 @@
 
 #import <CoreML/MLModelSpecificationLoader-Protocol.h>
 
-@class NSArray;
+@class NSArray, NSString;
 
 @interface MLSVMEngine : NSObject <MLModelSpecificationLoader>
 {
@@ -20,13 +20,17 @@
 }
 
 @property (strong, nonatomic) NSArray *classLabels; // @synthesize classLabels=_classLabels;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property BOOL freeModelOnDealloc; // @synthesize freeModelOnDealloc=_freeModelOnDealloc;
+@property (readonly) unsigned long long hash;
 @property unsigned long long inputSize; // @synthesize inputSize=_inputSize;
 @property BOOL isInputSizeLowerBoundOnly; // @synthesize isInputSizeLowerBoundOnly=_isInputSizeLowerBoundOnly;
 @property struct svm_model *model; // @synthesize model=_model;
 @property (readonly, nonatomic) unsigned long long numberOfClasses;
+@property (readonly) Class superclass;
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
++ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (struct svm_node *)allocSVMNodeVector:(unsigned long long)arg1;
 - (void)dealloc;

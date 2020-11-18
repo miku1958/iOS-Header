@@ -38,6 +38,7 @@
 @property (readonly, nonatomic) NSURLCache *URLCache;
 @property (readonly, nonatomic) NSString *URLCacheID;
 @property (strong, nonatomic, setter=_setAccountDSIDOverride:) NSNumber *_accountDSIDOverride; // @synthesize _accountDSIDOverride=__accountDSIDOverride;
+@property (strong, setter=_setActiveURLRequest:) NSURLRequest *_activeURLRequest;
 @property (getter=_loadsHTTPFailures, setter=_setLoadsHTTPFailures:) BOOL _loadsHTTPFailures; // @synthesize _loadsHTTPFailures;
 @property (getter=_shouldSetCookies, setter=_setShouldSetCookies:) BOOL _shouldSetCookies; // @synthesize _shouldSetCookies;
 @property (getter=_usesPrivateCookieStore, setter=_setUsesPrivateCookieStore:) BOOL _usesPrivateCookieStore; // @synthesize _usesPrivateCookieStore;
@@ -82,7 +83,6 @@
 - (void)URLSession:(id)arg1 task:(id)arg2 willPerformHTTPRedirection:(id)arg3 newRequest:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_accountIdentifier;
 - (id)_activeURL;
-- (id)_activeURLRequest;
 - (id)_copyAuthenticationContext;
 - (id)_copyConnectionPropertiesWithDataConnectionServiceType:(struct __CFString *)arg1;
 - (id)_copyQueryStringDictionaryForRedirect:(id)arg1;
@@ -111,7 +111,6 @@
 - (void)_sendOutputToDelegate:(id)arg1;
 - (void)_sendRequestToDelegate:(id)arg1;
 - (void)_sendResponseToDelegate:(id)arg1;
-- (void)_setActiveURLRequest:(id)arg1;
 - (BOOL)_shouldFollowRedirectWithRequest:(id)arg1 error:(id *)arg2;
 - (void)_stopConnection;
 - (void)_stopIfCancelled;

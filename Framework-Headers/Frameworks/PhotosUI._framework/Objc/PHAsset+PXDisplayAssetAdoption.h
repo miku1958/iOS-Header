@@ -6,23 +6,36 @@
 
 #import <Photos/PHAsset.h>
 
-#import <PhotosUICore/PXDisplayAsset-Protocol.h>
+#import <PhotosUICore/PXPhotoKitAdjustedDisplayAsset-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
-@interface PHAsset (PXDisplayAssetAdoption) <PXDisplayAsset>
+@interface PHAsset (PXDisplayAssetAdoption) <PXPhotoKitAdjustedDisplayAsset>
 
+@property (readonly, nonatomic) NSString *adjustedContentIdentifier;
+@property (readonly, nonatomic) double aspectRatio;
+@property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) BOOL isInCloud;
+@property (readonly, nonatomic) NSString *localizedGeoDescription;
 @property (readonly, nonatomic) unsigned long long mediaSubtypes;
 @property (readonly, nonatomic) long long mediaType;
+@property (readonly, nonatomic) PHAsset *photoKitAsset;
 @property (readonly, nonatomic) long long playbackStyle;
 @property (readonly, nonatomic) long long playbackVariation;
+@property (readonly, nonatomic) BOOL representsBurst;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL wantsAdjustments;
 
+- (void)_adjustRectWithFaces:(struct CGRect *)arg1 forAssetRect:(struct CGRect)arg2 verticalContentMode:(long long)arg3;
+- (id)applyAdjustmentsToEditModel:(id)arg1 editSource:(id)arg2;
+- (struct CGRect)bestCropRectForAspectRatio:(double)arg1;
+- (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (long long)isContentEqualTo:(id)arg1;
 @end
 

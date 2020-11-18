@@ -11,12 +11,6 @@
 @protocol _SFPBTrack <NSObject>
 
 @property (copy, nonatomic) NSString *duration;
-@property (readonly, nonatomic) BOOL hasDuration;
-@property (readonly, nonatomic) BOOL hasHighlighted;
-@property (readonly, nonatomic) BOOL hasNumber;
-@property (readonly, nonatomic) BOOL hasPlayAction;
-@property (readonly, nonatomic) BOOL hasPreview;
-@property (readonly, nonatomic) BOOL hasTitle;
 @property (nonatomic) BOOL highlighted;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *number;

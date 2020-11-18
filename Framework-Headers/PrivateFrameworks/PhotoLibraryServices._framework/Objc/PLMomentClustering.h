@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CLGeocoder, NSArray, NSMutableDictionary, NSSet, PLMomentNodeCache;
+@class NSArray, NSMutableDictionary, NSSet, PLMomentNodeCache;
 
 @interface PLMomentClustering : NSObject
 {
@@ -35,7 +35,6 @@
     unsigned long long __numberOfVisitedNodes;
     unsigned long long __totalNumberOfNodes;
     PLMomentNodeCache *__nodeCache;
-    CLGeocoder *__geocoder;
     NSMutableDictionary *__markedNodesByObjectID;
     NSMutableDictionary *__clustersByObjectID;
     NSMutableDictionary *__clustersByNodeObjectID;
@@ -43,7 +42,6 @@
 
 @property (readonly, nonatomic) NSMutableDictionary *_clustersByNodeObjectID; // @synthesize _clustersByNodeObjectID=__clustersByNodeObjectID;
 @property (readonly, nonatomic) NSMutableDictionary *_clustersByObjectID; // @synthesize _clustersByObjectID=__clustersByObjectID;
-@property (readonly, nonatomic) CLGeocoder *_geocoder; // @synthesize _geocoder=__geocoder;
 @property (readonly, nonatomic) NSMutableDictionary *_markedNodesByObjectID; // @synthesize _markedNodesByObjectID=__markedNodesByObjectID;
 @property (nonatomic, setter=_setMinimumNumberOfNodes:) unsigned long long _minimumNumberOfNodes; // @synthesize _minimumNumberOfNodes=__minimumNumberOfNodes;
 @property (readonly, nonatomic) PLMomentNodeCache *_nodeCache; // @synthesize _nodeCache=__nodeCache;
@@ -72,7 +70,7 @@
 @property (nonatomic) double theta; // @synthesize theta=_theta;
 @property (copy, nonatomic, setter=_setUpdatedClusters:) NSSet *updatedClusters; // @synthesize updatedClusters=_updatedClusters;
 
-+ (double)maximumClusterTime;
++ (double)maximumClusterDuration;
 - (id)_clustersByMergingUserInfluencedClusters:(id)arg1;
 - (id)_clustersBySplittingUserInfluencedClusters:(id)arg1;
 - (id)_clustersSplitByLocationsOfInterest:(id)arg1;
@@ -82,7 +80,6 @@
 - (id)clustersWithNodes:(id)arg1 sigma:(double)arg2 theta:(double)arg3;
 - (void)dealloc;
 - (id)generateClustersForAssets:(id)arg1;
-- (void)generateClustersForAssets:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithManagedMoments:(id)arg1;
 - (void)markNodeForDiagnosis:(id)arg1;

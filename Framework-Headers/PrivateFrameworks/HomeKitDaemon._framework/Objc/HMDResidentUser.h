@@ -6,31 +6,36 @@
 
 #import <HomeKitDaemon/HMDUser.h>
 
-@class NSString;
+@class HMDDevice;
 
 @interface HMDResidentUser : HMDUser
 {
-    NSString *_deviceIdentifier;
+    HMDDevice *_device;
     unsigned long long _configurationState;
 }
 
-@property (nonatomic) unsigned long long configurationState; // @synthesize configurationState=_configurationState;
-@property (readonly, copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property unsigned long long configurationState; // @synthesize configurationState=_configurationState;
+@property (readonly) HMDDevice *device; // @synthesize device=_device;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)configureWithIDSDevice:(id)arg1;
+- (void)configureWithHome:(id)arg1;
+- (id)deviceIdentifier;
+- (id)displayName;
 - (void)encodeWithCoder:(id)arg1;
 - (id)encodingRemoteDisplayName;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDevice:(id)arg1 home:(id)arg2 pairingIdentity:(id)arg3 configurationState:(unsigned long long)arg4;
 - (id)initWithModelObject:(id)arg1;
-- (id)initWithUserID:(id)arg1 displayName:(id)arg2 forHomeIdentifier:(id)arg3 uuid:(id)arg4 pairingIdentity:(id)arg5 deviceIdentifier:(id)arg6 configurationState:(unsigned long long)arg7;
-- (BOOL)mergeFromUser:(id)arg1 dataVersion:(long long)arg2;
-- (id)modelObjectWithChangeType:(unsigned long long)arg1;
+- (id)legacyUser;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (BOOL)refreshDisplayName;
+- (void)registerIdentity;
 - (BOOL)requiresMakoSupport;
-- (void)setDeviceIdentifier:(id)arg1;
+- (void)setDevice:(id)arg1;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (BOOL)updateWithDevice:(id)arg1;
+- (id)userID;
 
 @end
 

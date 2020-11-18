@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class _UIBackdropViewSettings, _UIVisualEffectConfig;
 
@@ -31,6 +31,8 @@
 - (void).cxx_destruct;
 - (void)_enumerateEffects:(CDUnknownBlockType)arg1;
 - (long long)_expectedUsage;
+- (BOOL)_needsUpdateForMovingToSuperview:(id)arg1 fromSuperview:(id)arg2 inEffectView:(id)arg3;
+- (BOOL)_needsUpdateForMovingToWindow:(id)arg1 fromWindow:(id)arg2 inEffectView:(id)arg3;
 - (BOOL)_needsUpdateForOption:(id)arg1;
 - (BOOL)_needsUpdateForTransitionFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
 - (BOOL)_selectorOverriden:(SEL)arg1;

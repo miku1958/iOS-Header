@@ -30,8 +30,6 @@
 - (void)_populateCKRecordWithIMMessageItemFields:(id)arg1;
 - (void)_populateCKRecordWithIMParticipantChangeItemFields:(id)arg1;
 - (id)_recordFromServerChangeToken;
-- (id)_recordIDUsingName:(id)arg1 zoneID:(id)arg2;
-- (id)_recordNameUsingSalt:(id)arg1;
 - (id)_recordType;
 - (BOOL)_shouldDownloadIfPhoneNumberAndNoSIM:(id)arg1;
 - (BOOL)_usingStingRay;

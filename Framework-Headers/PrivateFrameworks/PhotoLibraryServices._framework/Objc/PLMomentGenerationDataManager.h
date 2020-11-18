@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLMomentGenerationDataManagement_Private-Protocol.h>
 
@@ -21,6 +21,7 @@
     NSDictionary *_generationOptions;
     BOOL _observingReachability;
     BOOL _isLightweightMigrationManager;
+    BOOL _simulatesTimeout;
     NSManagedObjectContext *_managedObjectContext;
     PLPhotoLibrary *_momentGenerationLibrary;
 }
@@ -31,6 +32,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property (strong, nonatomic) PLPhotoLibrary *momentGenerationLibrary; // @synthesize momentGenerationLibrary=_momentGenerationLibrary;
+@property (nonatomic) BOOL simulatesTimeout; // @synthesize simulatesTimeout=_simulatesTimeout;
 @property (readonly) Class superclass;
 
 + (void)_setManagedObjectContextMomentarilyBlessed:(id)arg1;
@@ -74,6 +76,7 @@
 - (id)insertNewMomentListForGranularityLevel:(short)arg1;
 - (id)insertedObjects;
 - (void)invalidateLocationDataForAssetsInMoment:(id)arg1;
+- (void)invalidateLocationDataForAssetsWithOIDs:(id)arg1;
 - (void)invalidateLocationsOfInterest;
 - (void)invalidateShiftedLocationForAllAssetsInMoments;
 - (BOOL)isMomentAnalysisNeeded;
@@ -89,18 +92,22 @@
 - (id)momentListWithUniqueID:(id)arg1 forLevel:(short)arg2 error:(id *)arg3;
 - (id)momentWithUniqueID:(id)arg1 error:(id *)arg2;
 - (id)momentsBetweenDate:(id)arg1 andDate:(id)arg2 sorted:(BOOL)arg3;
-- (id)momentsBetweenDateRanges:(id)arg1;
+- (id)momentsForAssetsWithUniqueIDs:(id)arg1 error:(id *)arg2;
 - (id)momentsSinceDate:(id)arg1;
+- (id)momentsWithinDateInterval:(id)arg1;
 - (BOOL)needsLocationsOfInterestProcessing;
 - (id)orphanedAssetIDsWithError:(id *)arg1;
 - (void)pendingChangesUpdated:(unsigned long long)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 synchronously:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)performBlock:(CDUnknownBlockType)arg1 synchronously:(BOOL)arg2 priority:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)performDataTransaction:(CDUnknownBlockType)arg1 synchronously:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)performDataTransaction:(CDUnknownBlockType)arg1 synchronously:(BOOL)arg2 priority:(long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)refreshAllObjects;
 - (void)refreshObject:(id)arg1 mergeChanges:(BOOL)arg2;
 - (void)reloadGenerationOptions;
 - (id)replayLogPath;
 - (void)resetOnFailure;
+- (void)runPeriodicMaintenanceTasks:(unsigned long long)arg1 withTransaction:(id)arg2;
 - (BOOL)save:(id *)arg1;
 - (BOOL)saveAnalysisMetadata:(id)arg1;
 - (BOOL)saveServerVersionInfo:(id)arg1;

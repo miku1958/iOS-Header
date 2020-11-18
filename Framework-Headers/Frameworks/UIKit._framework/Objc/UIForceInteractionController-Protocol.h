@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewControllerInteractiveTransitioning-Protocol.h>
+#import <UIKitCore/UIViewControllerInteractiveTransitioning-Protocol.h>
 
 @protocol UIForceInteractionController <UIViewControllerInteractiveTransitioning>
 

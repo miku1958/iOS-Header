@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class BKSApplicationStateMonitor, NSMutableDictionary, NSString;
 
 @interface IMMessageNotificationTimeManager : NSObject
 {
     NSMutableDictionary *_chatsStartTimeDictionary;
     NSString *_latestIDSTokenURI;
+    BKSApplicationStateMonitor *_appStateMonitor;
 }
 
+@property (strong, nonatomic) BKSApplicationStateMonitor *appStateMonitor; // @synthesize appStateMonitor=_appStateMonitor;
 @property (strong, nonatomic) NSMutableDictionary *chatsStartTimeDictionary; // @synthesize chatsStartTimeDictionary=_chatsStartTimeDictionary;
 @property (strong, nonatomic) NSString *latestIDSTokenURI; // @synthesize latestIDSTokenURI=_latestIDSTokenURI;
 
@@ -22,6 +24,7 @@
 - (long long)_getToneTimeWindow;
 - (BOOL)_isToneToggleSwitchOn;
 - (BOOL)_shouldSendNotificationForChatIdentifier:(id)arg1;
+- (void)acquireAssertionToUnsuspendProcess;
 - (void)dealloc;
 - (id)init;
 - (void)sendNotificationMessageIfNeededForIncomingMessageFromChatIdentifier:(id)arg1;

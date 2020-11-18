@@ -10,7 +10,7 @@
 #import <AccessibilityUtilities/NSCopying-Protocol.h>
 #import <AccessibilityUtilities/NSSecureCoding-Protocol.h>
 
-@class AXEventAccelerometerInfoRepresentation, AXEventData, AXEventGameControllerInfoRepresentation, AXEventHandInfoRepresentation, AXEventKeyInfoRepresentation, AXEventPointerInfoRepresentation, NSData, NSString;
+@class AXEventAccelerometerInfoRepresentation, AXEventData, AXEventGameControllerInfoRepresentation, AXEventHandInfoRepresentation, AXEventIOSMACPointerInfoRepresentation, AXEventKeyInfoRepresentation, AXEventPointerInfoRepresentation, NSData, NSString;
 
 @interface AXEventRepresentation : NSObject <AXEventRepresentationDescription, NSSecureCoding, NSCopying>
 {
@@ -20,6 +20,7 @@
     BOOL _useOriginalHIDTime;
     BOOL _redirectEvent;
     BOOL _setTouchFlagOnSubevents;
+    BOOL _systemDrag;
     unsigned int _type;
     unsigned int _originalType;
     int _subtype;
@@ -36,6 +37,7 @@
     AXEventAccelerometerInfoRepresentation *_accelerometerInfo;
     AXEventGameControllerInfoRepresentation *_gameControllerInfo;
     AXEventPointerInfoRepresentation *_pointerControllerInfo;
+    AXEventIOSMACPointerInfoRepresentation *_iosmacPointerInfo;
     NSString *_clientId;
     unsigned long long _HIDTime;
     NSData *_HIDAttributeData;
@@ -68,6 +70,7 @@
 @property (nonatomic) long long generationCount; // @synthesize generationCount=_generationCount;
 @property (strong, nonatomic) AXEventHandInfoRepresentation *handInfo; // @synthesize handInfo=_handInfo;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) AXEventIOSMACPointerInfoRepresentation *iosmacPointerInfo; // @synthesize iosmacPointerInfo=_iosmacPointerInfo;
 @property (nonatomic) BOOL isBuiltIn; // @synthesize isBuiltIn=_isBuiltIn;
 @property (readonly, nonatomic) BOOL isCancel;
 @property (readonly, nonatomic) BOOL isChordChange;
@@ -90,6 +93,7 @@
 @property (nonatomic) BOOL setTouchFlagOnSubevents; // @synthesize setTouchFlagOnSubevents=_setTouchFlagOnSubevents;
 @property (nonatomic) int subtype; // @synthesize subtype=_subtype;
 @property (readonly) Class superclass;
+@property (nonatomic, getter=isSystemDrag) BOOL systemDrag; // @synthesize systemDrag=_systemDrag;
 @property (nonatomic) unsigned int taskPort; // @synthesize taskPort=_taskPort;
 @property (nonatomic) unsigned long long time; // @synthesize time=_time;
 @property (nonatomic) unsigned int type; // @synthesize type=_type;
@@ -108,6 +112,7 @@
 + (id)accelerometerRepresentation:(id)arg1;
 + (id)buttonRepresentationWithType:(unsigned int)arg1;
 + (id)cancelEventForPathIndexMask:(unsigned int)arg1;
++ (id)iosmacPointerRepresentationWithTypeWithPointerInfo:(id)arg1;
 + (id)keyRepresentationWithType:(unsigned int)arg1;
 + (id)representationWithData:(id)arg1;
 + (id)representationWithEventRecord:(CDStruct_7f3c0925 *)arg1;
@@ -123,9 +128,11 @@
 - (struct __IOHIDEvent *)_accessibilityEventFromRealEvent:(struct __IOHIDEvent *)arg1;
 - (void)_applyAccessibilityDataToRealEvent:(struct __IOHIDEvent *)arg1;
 - (unsigned int)_contextIDFromHIDEvent:(struct __IOHIDEvent *)arg1;
+- (unsigned long long)_machTimeForHIDEventRef;
 - (struct __IOHIDEvent *)_newAccelerometerHIDEventRef;
 - (struct __IOHIDEvent *)_newButtonHIDEventRefWithType:(unsigned int)arg1;
 - (struct __IOHIDEvent *)_newHandHIDEventRef;
+- (struct __IOHIDEvent *)_newIOSMACPointerRef;
 - (struct __IOHIDEvent *)_newKeyboardHIDEventRef;
 - (id)_senderNameForID;
 - (id)accessibilityEventRepresentationTabularDescription;

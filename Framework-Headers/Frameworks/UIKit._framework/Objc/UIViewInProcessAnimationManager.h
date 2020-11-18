@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIViewInProcessAnimationManagerDriver-Protocol.h>
+#import <UIKitCore/_UIViewInProcessAnimationManagerDriver-Protocol.h>
 
 @class CADisplayLink, NSHashTable, NSMutableArray, NSRunLoop, NSString, NSThread, _UIAppCACommitFuture;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source, _UIViewInProcessAnimationManagerDriver;
 
 @interface UIViewInProcessAnimationManager : NSObject <_UIViewInProcessAnimationManagerDriver>
 {
+    NSMutableArray *_preCommitBlocks;
     NSMutableArray *_entries;
     NSMutableArray *_newlyAddedEntries;
     NSMutableArray *_postTickBlocks;
-    NSMutableArray *_preTickBlocks;
     NSMutableArray *_preExitBlocks;
     NSMutableArray *_presentationModifierGroupRequestBlocks;
     id<_UIViewInProcessAnimationManagerDriver> _animatorAdvancer;
@@ -26,15 +26,13 @@
     NSObject<OS_dispatch_queue> *_tickPrepQueue;
     NSObject<OS_dispatch_queue> *_tickQueue;
     NSObject<OS_dispatch_queue> *_entryLockingQueue;
-    NSObject<OS_dispatch_queue> *_preTickLockingQueue;
-    NSObject<OS_dispatch_queue> *_animationAdvancerWaitingFlagQueue;
     NSObject<OS_dispatch_queue> *_timerQueue;
     NSObject<OS_dispatch_queue> *_displayLinkAccessQueue;
     NSObject<OS_dispatch_queue> *_backlightQueue;
     NSObject<OS_dispatch_source> *_timerSource;
     NSObject<OS_dispatch_semaphore> *_postTicksDelaySemaphore;
+    BOOL _processingPreCommits;
     BOOL _waitingForAnimatorAdvancerToStart;
-    NSMutableArray *_animationBlocksToStart;
     _UIAppCACommitFuture *_caCommitFuture;
     CADisplayLink *_displayLink;
     int _screenDimmingNotificationToken;
@@ -90,12 +88,12 @@
 - (void)_processEntriesCollectingEntriesToRemove:(id)arg1 cancel:(BOOL)arg2;
 - (void)_processPostTicks;
 - (void)_processPostTicksDelayIfNecessary:(double)arg1;
-- (void)_processPreTicks;
+- (void)_processPreCommitBlocks;
 - (void)_processPresentationModifierRequestsAndFlush;
 - (void)_processTickExitRemovingEntries:(id)arg1;
 - (void)_registerBacklightChangedNotification;
 - (id)_requestPresentationModifierGroup:(CDUnknownBlockType)arg1;
-- (void)_runAnimationBlocks;
+- (unsigned long long)_runPreCommitBlocks;
 - (void)_setAnimationExecutionParameters;
 - (void)_setCurrentMediaTime:(double)arg1;
 - (BOOL)_shouldKeepAnimationThreadAlive;
@@ -103,13 +101,10 @@
 - (void)dealloc;
 - (void)finishAdvancingAnimationManager;
 - (id)init;
-- (BOOL)isWaitingForAnimatorAdvancerToStart;
 - (void)performAfterTick:(CDUnknownBlockType)arg1;
 - (void)performBeforeExiting:(CDUnknownBlockType)arg1;
-- (void)performBeforeTick:(CDUnknownBlockType)arg1;
 - (double)refreshInterval;
 - (void)scheduleAnimatorAdvancerToStart;
-- (void)setWaitingForAnimatorAdvancerToStart:(BOOL)arg1;
 - (void)startAdvancingAnimationManager:(id)arg1;
 - (void)startAnimationAdvancerIfNeeded;
 

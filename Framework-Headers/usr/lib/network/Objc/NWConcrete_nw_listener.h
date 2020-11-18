@@ -12,6 +12,7 @@
 @class NSString;
 @protocol OS_dispatch_queue, OS_nw_advertise_descriptor, OS_nw_array, OS_nw_connection, OS_nw_endpoint, OS_nw_parameters, OS_nw_path, OS_nw_path_evaluator, OS_xpc_object;
 
+__attribute__((visibility("hidden")))
 @interface NWConcrete_nw_listener : NSObject <nw_listener_inbox_delegate, OS_nw_listener>
 {
     struct os_unfair_lock_s lock;
@@ -19,11 +20,14 @@
     unsigned short id_value;
     char id_str[6];
     NSObject<OS_nw_connection> *join_connection;
+    char *launchd_key;
     NSObject<OS_dispatch_queue> *client_queue;
+    unsigned int client_qos_class;
     CDUnknownBlockType event_handler;
     CDUnknownBlockType new_connection_handler;
     int state;
     NSObject<OS_nw_array> *inboxes;
+    NSObject<OS_nw_array> *flow_registrations;
     NSObject<OS_nw_path_evaluator> *evaluator;
     NSObject<OS_nw_path> *path;
     NSObject<OS_xpc_object> *inactive_agents;
@@ -31,9 +35,10 @@
     NSObject<OS_xpc_object> *triggered_agents;
     NSObject<OS_nw_parameters> *current_derived_parameters;
     NSObject<OS_nw_advertise_descriptor> *advertise_descriptor;
-    void *dnssrc;
+    CDUnknownBlockType advertised_endpoint_changed_handler;
     struct _DNSServiceRef_t *dnsref;
     NSObject<OS_nw_endpoint> *local_endpoint;
+    unsigned int defer_socket;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,7 +49,8 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)handleInbound:(id)arg1 addProtocolInbox:(BOOL)arg2;
-- (void)handleInboxFailed:(id)arg1 error:(struct __CFError *)arg2;
+- (void)handleInboxCancelComplete:(id)arg1;
+- (void)handleInboxFailed:(id)arg1 error:(id)arg2;
 - (id)initWithParameters:(id)arg1;
 
 @end

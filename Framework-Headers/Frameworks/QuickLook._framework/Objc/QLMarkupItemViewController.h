@@ -51,13 +51,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)needsToSaveChanges;
 - (void)performFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (void)prepareForActionSheetPresentation;
+- (void)previewDidAppear:(BOOL)arg1;
+- (void)previewDidDisappear:(BOOL)arg1;
 - (void)previewWillDisappear:(BOOL)arg1;
 - (id)registeredKeyCommands;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
 - (void)showingSignatureView:(BOOL)arg1;
 - (id)toolbarButtonsForTraitCollection:(id)arg1;
-- (void)updateMarkupEdgeInsets:(BOOL)arg1;
+- (void)updateMarkupEdgeInsets:(BOOL)arg1 resetScrollViewZoomScaleToMinimum:(BOOL)arg2;
 
 @end
 

@@ -16,10 +16,12 @@
 @property (readonly, nonatomic) NSMutableDictionary *_loadHandlers; // @synthesize _loadHandlers=__loadHandlers;
 @property (readonly, nonatomic) NSSet *registeredIdentifiers;
 
++ (id)providerWithItem:(id)arg1 identifier:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)hasItemForIdentifier:(id)arg1;
 - (id)init;
 - (id)itemForIdentifier:(id)arg1;
+- (void)registerItem:(id)arg1 forIdentifier:(id)arg2;
 - (void)registerItemForIdentifier:(id)arg1 loadHandler:(CDUnknownBlockType)arg2;
 
 @end

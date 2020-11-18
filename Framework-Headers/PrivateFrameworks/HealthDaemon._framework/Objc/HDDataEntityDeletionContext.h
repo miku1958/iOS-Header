@@ -16,12 +16,14 @@
     NSMutableDictionary *_localSourceIDsByOriginalSourceID;
     NSMutableSet *_deletedObjectTypeSet;
     BOOL _insertDeletedObjects;
+    BOOL _callWillDeleteFromDatabase;
     HDSQLiteDatabase *_database;
     CDUnknownBlockType _recursiveDeleteAuthorizationBlock;
     NSNumber *_lastInsertedDeletedObjectPersistentID;
     unsigned long long _deletedObjectCount;
 }
 
+@property (nonatomic) BOOL callWillDeleteFromDatabase; // @synthesize callWillDeleteFromDatabase=_callWillDeleteFromDatabase;
 @property (readonly, nonatomic) HDSQLiteDatabase *database; // @synthesize database=_database;
 @property (readonly, nonatomic) unsigned long long deletedObjectCount; // @synthesize deletedObjectCount=_deletedObjectCount;
 @property (readonly, copy, nonatomic) NSSet *deletedObjectTypeSet; // @synthesize deletedObjectTypeSet=_deletedObjectTypeSet;

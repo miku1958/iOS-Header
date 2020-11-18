@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-#import <UIKit/UIActivityItemSource-Protocol.h>
+#import <UIKitCore/UIActivityItemSource-Protocol.h>
 
 @class NSString;
 

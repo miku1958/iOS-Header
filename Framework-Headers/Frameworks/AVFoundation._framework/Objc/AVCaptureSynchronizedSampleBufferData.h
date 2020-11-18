@@ -20,6 +20,7 @@
 - (id)_initWithSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 sampleBufferWasDropped:(BOOL)arg2;
 - (void)dealloc;
 - (BOOL)hasCorrespondingDepthData;
+- (BOOL)hasCorrespondingVisionData;
 
 @end
 

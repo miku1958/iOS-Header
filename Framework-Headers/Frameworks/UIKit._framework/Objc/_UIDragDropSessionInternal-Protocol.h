@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIDragDropSessionPrivate-Protocol.h>
+#import <UIKitCore/_UIDragDropSessionPrivate-Protocol.h>
 
 @class _UIDraggingSession;
 

@@ -21,14 +21,15 @@
     NSMutableArray *_pendingUpdateSceneBlocks;
 }
 
-@property (readonly, strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) FBApplicationProcess *process; // @dynamic process;
+@property (readonly, nonatomic) FBApplicationProcess *process; // @dynamic process;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL waitsForSceneCommits; // @synthesize waitsForSceneCommits=_waitsForSceneCommits;
 
+- (void).cxx_destruct;
 - (BOOL)_canBeInterrupted;
 - (id)_customizedDescriptionProperties;
 - (void)_didComplete;
@@ -43,7 +44,6 @@
 - (void)_willFailWithReason:(id)arg1;
 - (void)_willInterruptWithReason:(id)arg1;
 - (void)addObserver:(id)arg1;
-- (void)dealloc;
 - (id)initWithApplicationBundleID:(id)arg1 executionContextProvider:(CDUnknownBlockType)arg2;
 - (void)removeObserver:(id)arg1;
 - (void)transaction:(id)arg1 didLaunchProcess:(id)arg2;

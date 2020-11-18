@@ -15,7 +15,7 @@
     NSXPCConnection *_connection;
 }
 
-@property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 
 + (id)v2MDMServiceClient;
 - (void).cxx_destruct;

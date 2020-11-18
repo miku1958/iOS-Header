@@ -6,7 +6,7 @@
 
 #import <Foundation/NSOperation.h>
 
-@class CKOperationConfiguration, CKOperationGroup, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationMetrics, CKPlaceholderOperation, CKTimeLogger, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString;
+@class CKEventMetric, CKOperationConfiguration, CKOperationGroup, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationMetrics, CKPlaceholderOperation, CKTimeLogger, NSArray, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_os_activity, OS_os_transaction, OS_voucher;
 
 @interface CKOperation : NSOperation
@@ -15,7 +15,9 @@
     NSObject<OS_voucher> *_clientVoucher;
     NSObject<OS_os_activity> *_osActivity;
     BOOL _isOutstandingOperation;
+    BOOL _usesBackgroundSession;
     BOOL _isFinished;
+    BOOL _isFinishingOnCallbackQueue;
     BOOL _clouddConnectionInterrupted;
     BOOL _queueHasStarted;
     NSObject<OS_dispatch_queue> *_callbackQueue;
@@ -26,11 +28,11 @@
     CKOperationGroup *_group;
     NSString *_operationID;
     NSObject<OS_dispatch_source> *_timeoutSource;
-    long long _usesBackgroundSessionOverride;
     NSError *_cancelError;
     NSMutableArray *_savedRequestUUIDs;
     NSMutableDictionary *_savedResponseHTTPHeadersByRequestUUID;
     NSMutableDictionary *_savedW3CNavigationTimingByRequestUUID;
+    CKEventMetric *_operationMetric;
     CKPlaceholderOperation *_placeholderOperation;
     NSError *_error;
     NSString *_sectionID;
@@ -53,14 +55,17 @@
 @property (readonly, nonatomic) id context; // @synthesize context=_context;
 @property (strong, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) NSString *flowControlKey;
 @property (strong, nonatomic) CKOperationGroup *group; // @synthesize group=_group;
 @property (nonatomic) BOOL isExecuting;
 @property (nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
+@property (readonly, nonatomic) BOOL isFinishingOnCallbackQueue; // @synthesize isFinishingOnCallbackQueue=_isFinishingOnCallbackQueue;
 @property (nonatomic) BOOL isOutstandingOperation; // @synthesize isOutstandingOperation=_isOutstandingOperation;
 @property (copy, nonatomic) CDUnknownBlockType longLivedOperationWasPersistedBlock; // @synthesize longLivedOperationWasPersistedBlock=_longLivedOperationWasPersistedBlock;
 @property (strong, nonatomic) CKOperationMetrics *metrics; // @synthesize metrics=_metrics;
 @property (copy, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
 @property (readonly, nonatomic) CKOperationInfo *operationInfo;
+@property (readonly, nonatomic) CKEventMetric *operationMetric; // @synthesize operationMetric=_operationMetric;
 @property (strong, nonatomic) NSObject<OS_os_activity> *osActivity; // @synthesize osActivity=_osActivity;
 @property (readonly, nonatomic) NSString *parentSectionID; // @synthesize parentSectionID=_parentSectionID;
 @property (strong) CKPlaceholderOperation *placeholderOperation; // @synthesize placeholderOperation=_placeholderOperation;
@@ -78,8 +83,7 @@
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (strong, nonatomic) CKTimeLogger *timeLogger; // @synthesize timeLogger=_timeLogger;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timeoutSource; // @synthesize timeoutSource=_timeoutSource;
-@property (nonatomic) BOOL usesBackgroundSession;
-@property (nonatomic) long long usesBackgroundSessionOverride; // @synthesize usesBackgroundSessionOverride=_usesBackgroundSessionOverride;
+@property (nonatomic) BOOL usesBackgroundSession; // @synthesize usesBackgroundSession=_usesBackgroundSession;
 @property (readonly, nonatomic) NSDictionary *w3cNavigationTimingByRequestUUID;
 
 - (void).cxx_destruct;

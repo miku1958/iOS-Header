@@ -10,6 +10,8 @@
 
 @interface PHAJobGenerator : NSObject
 {
+    BOOL _skippedSomeWorker;
+    BOOL _graphIncompatibleWorkersAreInhibited;
     PHPhotoLibrary *_library;
     PHAWorkerHealthMonitor *_healthMonitor;
     NSMutableDictionary *_workInfoReadersByMode;
@@ -20,6 +22,7 @@
 
 @property (readonly, nonatomic) NSMutableDictionary *countOfJobsGeneratedByWorkerType; // @synthesize countOfJobsGeneratedByWorkerType=_countOfJobsGeneratedByWorkerType;
 @property (nonatomic) long long generatedJobCountGoal; // @synthesize generatedJobCountGoal=_generatedJobCountGoal;
+@property BOOL graphIncompatibleWorkersAreInhibited; // @synthesize graphIncompatibleWorkersAreInhibited=_graphIncompatibleWorkersAreInhibited;
 @property (readonly, nonatomic) PHAWorkerHealthMonitor *healthMonitor; // @synthesize healthMonitor=_healthMonitor;
 @property (readonly, nonatomic) PHPhotoLibrary *library; // @synthesize library=_library;
 @property (readonly, nonatomic) NSMutableDictionary *workInfoReadersByMode; // @synthesize workInfoReadersByMode=_workInfoReadersByMode;

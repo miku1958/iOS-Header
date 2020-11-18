@@ -10,6 +10,7 @@
 
 @interface _SYInputDataItem : NSObject
 {
+    struct os_unfair_lock_s _lock;
     unsigned long long _length;
     NSMutableData *_data;
     CDUnknownBlockType _callback;
@@ -19,9 +20,10 @@
 @property (readonly, nonatomic) NSMutableData *data; // @synthesize data=_data;
 @property (nonatomic) unsigned long long length; // @synthesize length=_length;
 @property (readonly, nonatomic) unsigned long long lengthRemaining;
+@property (nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
 
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithLength:(unsigned long long)arg1 callback:(CDUnknownBlockType)arg2;
 
 @end
 

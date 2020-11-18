@@ -10,12 +10,14 @@
 
 @class NSArray, NSString, PHAsset, PHContentEditingOutput, PLPhotoEditModel, PUPhotoEditIrisModel, PUPhotoKitAdjustmentSaveNode, PUVideoExportNode;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditSaveRequest : NSObject <PXRunNodeDelegate>
 {
     CDUnknownBlockType _completionHandler;
     double _beginTimestamp;
     PUPhotoKitAdjustmentSaveNode *_outputNode;
     PUVideoExportNode *_videoExportNode;
+    BOOL _useRawIfAvailable;
     int _identifier;
     PHAsset *_photo;
     PLPhotoEditModel *_editModel;
@@ -54,9 +56,9 @@
 - (void)beginSaveOperationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cancelSaveOperation;
 - (id)init;
-- (id)initWithPhoto:(id)arg1 contentEditingOutput:(id)arg2 workImageVersion:(long long)arg3 irisEditModel:(id)arg4;
-- (id)initWithPhoto:(id)arg1 editModel:(id)arg2 contentEditingOutput:(id)arg3 workImageVersion:(long long)arg4 irisEditModel:(id)arg5;
-- (id)initWithPhoto:(id)arg1 editModel:(id)arg2 workImageVersion:(long long)arg3 irisEditModel:(id)arg4;
+- (id)initWithPhoto:(id)arg1 contentEditingOutput:(id)arg2 workImageVersion:(long long)arg3 irisEditModel:(id)arg4 useRawIfAvailable:(BOOL)arg5;
+- (id)initWithPhoto:(id)arg1 editModel:(id)arg2 contentEditingOutput:(id)arg3 workImageVersion:(long long)arg4 irisEditModel:(id)arg5 useRawIfAvailable:(BOOL)arg6;
+- (id)initWithPhoto:(id)arg1 editModel:(id)arg2 workImageVersion:(long long)arg3 irisEditModel:(id)arg4 useRawIfAvailable:(BOOL)arg5;
 - (id)initWithPhotoToRevertToOriginal:(id)arg1;
 - (void)runNode:(id)arg1 didCancelWithError:(id)arg2;
 - (void)runNode:(id)arg1 didCompleteWithError:(id)arg2;

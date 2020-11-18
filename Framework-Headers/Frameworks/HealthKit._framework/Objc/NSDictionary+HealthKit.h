@@ -8,9 +8,10 @@
 
 @interface NSDictionary (HealthKit)
 - (id)hk_allValuesBySortedKeys;
-- (BOOL)hk_containsKeys:(id)arg1;
 - (id)hk_dictionaryByAddingEntriesFromDictionary:(id)arg1;
+- (id)hk_filter:(CDUnknownBlockType)arg1;
 - (id)hk_filterKeysWithBlock:(CDUnknownBlockType)arg1;
+- (id)hk_filteredDictionaryForKeys:(id)arg1;
 - (id)hk_sortedKeys;
 @end
 

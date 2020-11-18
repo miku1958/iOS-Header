@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBApplicationDataStoreRepository-Protocol.h>
 
@@ -24,11 +24,12 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBApplicationDataStoreRepositoryReadingDelegate> delegate;
+@property (weak, nonatomic) id<FBApplicationDataStoreRepositoryReadingDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (BOOL)_isEligibleForSaving:(id)arg1;
 - (void)_load;
 - (void)_notifyDelegateOfChangeForKeys:(id)arg1 application:(id)arg2;
@@ -40,6 +41,7 @@
 - (void)_stateQueue_removeStoreForIdentifier:(id)arg1;
 - (id)_stateQueue_storeForIdentifier:(id)arg1;
 - (void)_writeQueue_flushSynchronously;
+- (id)allObjectsForKeys:(id)arg1;
 - (id)applicationIdentifiersWithState;
 - (void)beginBatchedUpdate;
 - (void)close;
@@ -52,8 +54,6 @@
 - (id)keysForApplication:(id)arg1;
 - (id)location;
 - (id)objectForKey:(id)arg1 forApplication:(id)arg2;
-- (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3;
-- (void)objectForKeys:(id)arg1 forAllApplicationsWithResult:(CDUnknownBlockType)arg2;
 - (void)removeAllObjectsForApplication:(id)arg1;
 - (void)removeObjectForKey:(id)arg1 forApplication:(id)arg2;
 - (void)removeObjectsForKeys:(id)arg1 forApplication:(id)arg2;

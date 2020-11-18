@@ -41,6 +41,7 @@
 + (id)defaultPreferencesOptions;
 + (id)defaultResidenceOptions;
 + (id)defaultXPCOptions;
++ (id)localPushBackOptions;
 + (id)logCategory;
 + (id)optionsWithSource:(unsigned long long)arg1 destination:(unsigned long long)arg2 mustReplay:(BOOL)arg3 mustPush:(BOOL)arg4;
 + (id)stringForHMDBackingStoreDestination:(unsigned long long)arg1;

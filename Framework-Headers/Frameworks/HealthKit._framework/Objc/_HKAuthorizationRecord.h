@@ -9,35 +9,38 @@
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
+@class NSDate;
+
 @interface _HKAuthorizationRecord : NSObject <NSCopying, NSSecureCoding>
 {
     long long _status;
     long long _request;
-    long long _objectAnchor;
-    long long _modificationEpoch;
-    double _modificationDate;
+    long long _mode;
+    NSDate *_anchorLimitModifiedDate;
 }
 
-@property (readonly, nonatomic) double modificationDate; // @synthesize modificationDate=_modificationDate;
-@property (readonly, nonatomic) long long modificationEpoch; // @synthesize modificationEpoch=_modificationEpoch;
-@property (readonly, nonatomic) long long objectAnchor; // @synthesize objectAnchor=_objectAnchor;
+@property (readonly, copy, nonatomic) NSDate *anchorLimitModifiedDate; // @synthesize anchorLimitModifiedDate=_anchorLimitModifiedDate;
+@property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic) long long request; // @synthesize request=_request;
-@property (readonly, nonatomic) long long status; // @synthesize status=_status;
+@property (nonatomic) long long status; // @synthesize status=_status;
 
-+ (id)recordWithReadingDisabledFromRecord:(id)arg1;
-+ (id)recordWithSharingDisabledFromRecord:(id)arg1;
++ (id)recordWithStatus:(long long)arg1 request:(long long)arg2 mode:(long long)arg3 anchorLimitModifiedDate:(id)arg4;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)_deepCopy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)deniedReading;
 - (BOOL)deniedSharing;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithAuthorizationStatus:(long long)arg1 authorizationRequest:(long long)arg2 objectAnchor:(long long)arg3 modificationEpoch:(long long)arg4 modificationDate:(double)arg5;
+- (id)initWithAuthorizationStatus:(long long)arg1 authorizationRequest:(long long)arg2 authorizationMode:(long long)arg3 anchorLimitModifiedDate:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isCompatibleStatus:(long long)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readingEnabled;
+- (id)recordWithReadingDisabled;
+- (id)recordWithSharingDisabled;
 - (BOOL)requestedReading;
 - (BOOL)requestedSharing;
 - (BOOL)sharingEnabled;

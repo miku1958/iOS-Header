@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBKeyView.h>
+#import <UIKitCore/UIKBKeyView.h>
 
-#import <UIKit/UICollectionViewDataSource-Protocol.h>
-#import <UIKit/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <UIKit/UIKeyboardCandidateList-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegateFlowLayout-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateList-Protocol.h>
 
 @class NSArray, NSString, TIKeyboardCandidateResultSet, UIKBCandidateCollectionView, UIKeyboardCandidateLogButton, UIKeyboardCandidatePocketShadow;
 @protocol UIKeyboardCandidateList, UIKeyboardCandidateListDelegate;

@@ -75,7 +75,6 @@
 - (void)_queue_runDemoDataGeneratorForDemoPerson:(id)arg1 endDate:(id)arg2;
 - (void)_queue_setupDemoDataSampleGenerators;
 - (BOOL)_queue_unarchiveFromDirectoryPath:(id)arg1;
-- (void)_runAchievementDoctorWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_stateDirectory;
 - (double)_timeIntervalFromInitialGenerationPeriod:(long long)arg1 currentDate:(id)arg2;
 - (void)_triggerDemoDataGenerationAfterTimeInterval:(double)arg1;

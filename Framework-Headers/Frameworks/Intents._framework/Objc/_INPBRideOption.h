@@ -7,34 +7,39 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBRideOption-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields, _INPBImageValue, _INPBPriceRangeValue, _INPBTimestamp, _INPBUserActivity;
+@class NSArray, NSString, _INPBImageValue, _INPBPriceRangeValue, _INPBTimestamp, _INPBUserActivity;
 
-@interface _INPBRideOption : PBCodable <NSCopying>
+@interface _INPBRideOption : PBCodable <_INPBRideOption, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_availablePartySizeOptions;
+    struct {
+        unsigned int usesMeteredFare:1;
+    } _has;
+    BOOL _usesMeteredFare;
+    NSArray *_availablePartySizeOptions;
     NSString *_availablePartySizeOptionsSelectionPrompt;
     NSString *_disclaimerMessage;
     _INPBTimestamp *_estimatedPickupDate;
-    NSMutableArray *_fareLineItems;
+    NSArray *_fareLineItems;
     NSString *_name;
     _INPBPriceRangeValue *_priceRange;
     NSString *_specialPricing;
     _INPBImageValue *_specialPricingBadgeImage;
     NSString *_subtitle;
     _INPBUserActivity *_userActivityForBookingInApplication;
-    BOOL _usesMeteredFare;
-    struct {
-        unsigned int usesMeteredFare:1;
-    } _has;
 }
 
-@property (strong, nonatomic) NSMutableArray *availablePartySizeOptions; // @synthesize availablePartySizeOptions=_availablePartySizeOptions;
-@property (strong, nonatomic) NSString *availablePartySizeOptionsSelectionPrompt; // @synthesize availablePartySizeOptionsSelectionPrompt=_availablePartySizeOptionsSelectionPrompt;
-@property (strong, nonatomic) NSString *disclaimerMessage; // @synthesize disclaimerMessage=_disclaimerMessage;
+@property (copy, nonatomic) NSArray *availablePartySizeOptions; // @synthesize availablePartySizeOptions=_availablePartySizeOptions;
+@property (readonly, nonatomic) unsigned long long availablePartySizeOptionsCount;
+@property (copy, nonatomic) NSString *availablePartySizeOptionsSelectionPrompt; // @synthesize availablePartySizeOptionsSelectionPrompt=_availablePartySizeOptionsSelectionPrompt;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *disclaimerMessage; // @synthesize disclaimerMessage=_disclaimerMessage;
 @property (strong, nonatomic) _INPBTimestamp *estimatedPickupDate; // @synthesize estimatedPickupDate=_estimatedPickupDate;
-@property (strong, nonatomic) NSMutableArray *fareLineItems; // @synthesize fareLineItems=_fareLineItems;
+@property (copy, nonatomic) NSArray *fareLineItems; // @synthesize fareLineItems=_fareLineItems;
+@property (readonly, nonatomic) unsigned long long fareLineItemsCount;
 @property (readonly, nonatomic) BOOL hasAvailablePartySizeOptionsSelectionPrompt;
 @property (readonly, nonatomic) BOOL hasDisclaimerMessage;
 @property (readonly, nonatomic) BOOL hasEstimatedPickupDate;
@@ -45,33 +50,28 @@
 @property (readonly, nonatomic) BOOL hasSubtitle;
 @property (readonly, nonatomic) BOOL hasUserActivityForBookingInApplication;
 @property (nonatomic) BOOL hasUsesMeteredFare;
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) _INPBPriceRangeValue *priceRange; // @synthesize priceRange=_priceRange;
-@property (strong, nonatomic) NSString *specialPricing; // @synthesize specialPricing=_specialPricing;
+@property (copy, nonatomic) NSString *specialPricing; // @synthesize specialPricing=_specialPricing;
 @property (strong, nonatomic) _INPBImageValue *specialPricingBadgeImage; // @synthesize specialPricingBadgeImage=_specialPricingBadgeImage;
-@property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBUserActivity *userActivityForBookingInApplication; // @synthesize userActivityForBookingInApplication=_userActivityForBookingInApplication;
 @property (nonatomic) BOOL usesMeteredFare; // @synthesize usesMeteredFare=_usesMeteredFare;
 
 + (Class)availablePartySizeOptionsType;
 + (Class)fareLineItemsType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addAvailablePartySizeOptions:(id)arg1;
 - (void)addFareLineItems:(id)arg1;
 - (id)availablePartySizeOptionsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)availablePartySizeOptionsCount;
 - (void)clearAvailablePartySizeOptions;
 - (void)clearFareLineItems;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)fareLineItemsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)fareLineItemsCount;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

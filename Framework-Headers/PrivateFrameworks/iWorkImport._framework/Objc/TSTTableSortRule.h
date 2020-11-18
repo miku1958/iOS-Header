@@ -4,28 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface TSTTableSortRule : NSObject <NSCopying>
 {
-    unsigned char mColumnIndex;
-    int mDirection;
+    struct TSUModelColumnIndex _baseColumnIndex;
+    int _direction;
 }
 
-@property (readonly, nonatomic) unsigned char columnIndex; // @synthesize columnIndex=mColumnIndex;
-@property (readonly, nonatomic) int direction; // @synthesize direction=mDirection;
+@property (readonly, nonatomic) struct TSUModelColumnIndex baseColumnIndex; // @synthesize baseColumnIndex=_baseColumnIndex;
+@property (readonly, nonatomic) int direction; // @synthesize direction=_direction;
 
-+ (id)ruleWithColumnIndex:(unsigned char)arg1 direction:(int)arg2;
++ (id)ruleWithBaseColumnIndex:(struct TSUModelColumnIndex)arg1 direction:(int)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeToArchive:(struct TableSortOrderArchive_SortRuleArchive *)arg1;
 - (unsigned long long)hash;
 - (id)initFromArchive:(const struct TableSortOrderArchive_SortRuleArchive *)arg1;
-- (id)initWithColumnIndex:(unsigned char)arg1 direction:(int)arg2;
+- (id)initWithBaseColumnIndex:(struct TSUModelColumnIndex)arg1 direction:(int)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (id)ruleByChangingColumnIndexTo:(unsigned char)arg1;
+- (id)ruleByChangingBaseColumnIndexTo:(struct TSUModelColumnIndex)arg1;
 - (id)ruleByChangingDirectionTo:(int)arg1;
 
 @end

@@ -16,6 +16,7 @@
     NSMutableSet *_restrictedSystemApps;
     NSMutableSet *_removedSystemApps;
     NSObject<OS_dispatch_queue> *_internalQueue;
+    NSString *_tinCanBundleID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,6 +31,8 @@
 - (void)_queue_initializeRestrictedSystemApps;
 - (id)_queue_removedSystemApps;
 - (id)_queue_restrictedSystemApps;
+- (void)_queue_tinCanSettingsChanged;
+- (void)_tinCanSettingsChanged;
 - (void)applicationStateDidChange:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;
 - (void)applicationsDidUninstall:(id)arg1;

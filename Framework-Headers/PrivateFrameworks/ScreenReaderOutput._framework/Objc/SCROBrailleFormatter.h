@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ScreenReaderOutput/NSCopying-Protocol.h>
 
@@ -57,7 +57,7 @@
 - (void)addText:(id)arg1 language:(id)arg2 selection:(struct _NSRange *)arg3 token:(long long)arg4 focus:(struct _NSRange *)arg5 isEditableText:(BOOL)arg6;
 - (void)addText:(id)arg1 language:(id)arg2 selection:(struct _NSRange *)arg3 token:(long long)arg4 focus:(struct _NSRange *)arg5 technical:(BOOL)arg6 isEditableText:(BOOL)arg7;
 - (void)addText:(id)arg1 overrideText:(id)arg2 language:(id)arg3 selection:(struct _NSRange *)arg4 token:(long long)arg5 focus:(struct _NSRange *)arg6 technical:(BOOL)arg7 isEditableText:(BOOL)arg8;
-- (void)addText:(id)arg1 overrideText:(id)arg2 language:(id)arg3 selection:(struct _NSRange *)arg4 token:(long long)arg5 focus:(struct _NSRange *)arg6 technical:(BOOL)arg7 isEditableText:(BOOL)arg8 paddingRange:(struct _NSRange)arg9;
+- (void)addText:(id)arg1 overrideText:(id)arg2 language:(id)arg3 selection:(struct _NSRange *)arg4 token:(long long)arg5 focus:(struct _NSRange *)arg6 technical:(BOOL)arg7 isEditableText:(BOOL)arg8 paddingRange:(struct _NSRange)arg9 editingString:(id)arg10;
 - (void)addText:(id)arg1 selection:(struct _NSRange *)arg2 token:(long long)arg3 focus:(struct _NSRange *)arg4 isEditableText:(BOOL)arg5;
 - (void)addText:(id)arg1 selection:(struct _NSRange *)arg2 token:(long long)arg3 focus:(struct _NSRange *)arg4 technical:(BOOL)arg5 isEditableText:(BOOL)arg6;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -66,7 +66,9 @@
 - (void)enumerateChunksOfText:(id)arg1 selection:(struct _NSRange *)arg2 focus:(struct _NSRange *)arg3 paddingRange:(struct _NSRange)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (id)initWithOutputContractionMode:(int)arg1 inputContractionMode:(int)arg2 outputShowEightDot:(BOOL)arg3 inputShowEightDot:(BOOL)arg4 showDotsSevenAndEight:(BOOL)arg5;
 - (struct _NSRange)rangeOfBrailleCellRepresentingCharacterAtIndex:(unsigned long long)arg1;
+- (void)replaceObjectInChunkArrayAtIndex:(unsigned long long)arg1 withObject:(id)arg2;
 - (void)translate;
+- (void)translate:(BOOL)arg1;
 
 @end
 

@@ -21,6 +21,7 @@
 
 + (unsigned long long)defaultPriority;
 + (BOOL)supportsSecureCoding;
+- (id)_diagnosticNameForRequests:(id)arg1 diagnostics:(id)arg2;
 - (void)boostEffectivePriority;
 - (void)encodeWithCoder:(id)arg1;
 - (void)evaluate:(id)arg1;

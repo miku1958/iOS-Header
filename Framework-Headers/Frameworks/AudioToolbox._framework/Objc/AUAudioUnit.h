@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AUAudioUnitBusArray, AUAudioUnitPreset, AUParameterTree, NSArray, NSDictionary, NSString;
 
@@ -35,6 +35,7 @@
     CDUnknownBlockType _transportStateBlock;
     NSString *_contextName;
     NSArray *_channelMap;
+    CDUnknownBlockType _profileChangedBlock;
     struct AudioComponentDescription _componentDescription;
 }
 
@@ -65,6 +66,7 @@
 @property (copy, nonatomic) CDUnknownBlockType musicalContextBlock; // @synthesize musicalContextBlock=_musicalContextBlock;
 @property (readonly, nonatomic) AUAudioUnitBusArray *outputBusses;
 @property (readonly, nonatomic) AUParameterTree *parameterTree;
+@property (copy, nonatomic) CDUnknownBlockType profileChangedBlock; // @synthesize profileChangedBlock=_profileChangedBlock;
 @property (readonly, nonatomic) BOOL providesUserInterface;
 @property (readonly, nonatomic) CDUnknownBlockType renderBlock;
 @property (nonatomic) long long renderQuality; // @synthesize renderQuality=_renderQuality;
@@ -89,12 +91,15 @@
 - (struct UIViewController *)cachedViewController;
 - (void)dealloc;
 - (void)deallocateRenderResources;
+- (BOOL)disableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
+- (BOOL)enableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
 - (struct AUEventSchedule *)eventSchedule;
 - (id)init;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 error:(id *)arg2;
 - (id)initWithComponentDescription:(struct AudioComponentDescription)arg1 options:(unsigned int)arg2 error:(id *)arg3;
 - (void)invalidateAudioUnit;
 - (id)parametersForOverviewWithCount:(long long)arg1;
+- (id)profileStateForCable:(unsigned char)arg1 channel:(unsigned char)arg2;
 - (void)removeRenderObserver:(long long)arg1;
 - (void)removeRenderObserver:(CDUnknownFunctionPointerType)arg1 userData:(void *)arg2;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;

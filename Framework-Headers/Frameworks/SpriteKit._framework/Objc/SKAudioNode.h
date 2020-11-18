@@ -6,11 +6,11 @@
 
 #import <SpriteKit/SKNode.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class AVAudioNode;
 
-@interface SKAudioNode : SKNode <NSCoding>
+@interface SKAudioNode : SKNode <NSSecureCoding>
 {
     struct SKCAudioNode *_skcAudioNode;
     BOOL _autoplayLooped;
@@ -22,6 +22,7 @@
 @property (nonatomic, getter=isPositional) BOOL positional; // @synthesize positional=_positional;
 
 + (id)_audioURLWithName:(id)arg1 bundle:(id)arg2;
++ (BOOL)supportsSecureCoding;
 - (void)_connectToScene:(id)arg1;
 - (void)_didMakeBackingNode;
 - (struct SKCNode *)_makeBackingNode;
@@ -38,6 +39,7 @@
 - (id)initWithFileNamed:(id)arg1;
 - (id)initWithFileNamed:(id)arg1 bundle:(id)arg2;
 - (id)initWithURL:(id)arg1;
+- (BOOL)isEqualToNode:(id)arg1;
 - (void)setAudioFileName:(id)arg1;
 - (void)setAudioURL:(id)arg1;
 

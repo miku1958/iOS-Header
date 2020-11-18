@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class _KSFileEntry;
 
@@ -13,6 +13,7 @@
     _KSFileEntry *_entry;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)execute;
 - (id)initWithEntry:(id)arg1;

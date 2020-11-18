@@ -9,12 +9,13 @@
 #import <NanoTimeKitCompanion/NTKContainerViewLayoutDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKControl-Protocol.h>
 
-@class NSString, NTKContainerView, NTKFaceColorScheme, UIColor, UIView;
+@class CLKDevice, NSString, NTKContainerView, NTKFaceColorScheme, UIColor, UIView;
 
 @interface NTKModuleView : UIControl <NTKContainerViewLayoutDelegate, NTKControl>
 {
     NTKContainerView *_contentView;
     UIView *_highlightView;
+    CLKDevice *_device;
     UIColor *_foregroundColor;
     UIColor *_secondaryForegroundColor;
     UIColor *_highlightBackgroundColor;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (strong, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double highlightAlpha; // @synthesize highlightAlpha=_highlightAlpha;
@@ -41,7 +43,8 @@
 @property (strong, nonatomic) UIColor *secondaryForegroundColor; // @synthesize secondaryForegroundColor=_secondaryForegroundColor;
 @property (readonly) Class superclass;
 
-+ (double)cornerRadius;
++ (double)_defaultCornerRadiusForDevice:(id)arg1;
++ (double)cornerRadiusForComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateSecondaryForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;

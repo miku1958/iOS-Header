@@ -6,33 +6,38 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, UIImageView, UILabel;
+@class UIImageView, UILabel;
 
 @interface EKCustomTitleView : UIView
 {
+    BOOL _showSubtitle;
     BOOL _animating;
     UILabel *_originalTitle;
     UILabel *_title;
     UIImageView *_originalImage;
     UIImageView *_titleImage;
     UILabel *_subTitle;
-    NSArray *_changingConstraints;
 }
 
 @property BOOL animating; // @synthesize animating=_animating;
-@property (strong) NSArray *changingConstraints; // @synthesize changingConstraints=_changingConstraints;
 @property (strong) UIImageView *originalImage; // @synthesize originalImage=_originalImage;
 @property (strong) UILabel *originalTitle; // @synthesize originalTitle=_originalTitle;
+@property BOOL showSubtitle; // @synthesize showSubtitle=_showSubtitle;
 @property (strong) UILabel *subTitle; // @synthesize subTitle=_subTitle;
 @property (strong) UILabel *title; // @synthesize title=_title;
 @property (strong) UIImageView *titleImage; // @synthesize titleImage=_titleImage;
 
 - (void).cxx_destruct;
+- (struct CGRect)_centerAndClipFrame:(struct CGRect)arg1;
+- (id)accessibilityElementAtIndex:(long long)arg1;
+- (long long)accessibilityElementCount;
 - (void)animateInWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)animateOutWithCompletionBlock:(CDUnknownBlockType)arg1;
-- (void)display;
+- (long long)indexOfAccessibilityElement:(id)arg1;
 - (id)initWithTitle:(id)arg1 subTitle:(id)arg2 eventViewController:(id)arg3;
+- (BOOL)isAccessibilityElement;
 - (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

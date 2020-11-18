@@ -87,12 +87,19 @@
 @property (nonatomic) BOOL showsPhysics;
 @property (nonatomic) BOOL showsQuadCount;
 
++ (void)_setCurrentTime:(double)arg1;
++ (id)debugHierarchyAdditionalGroupingIDs;
++ (id)debugHierarchyObjectsInGroupWithID:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3;
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
 + (Class)layerClass;
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)CBApplicationDidBecomeActive;
 - (void)CBApplicationWillResignActive;
 - (void)_commonInit;
+- (void)_dispatchRenderToIOSurfaceID:(unsigned int)arg1 async:(BOOL)arg2 onQueue:(id)arg3 waitOnFence:(BOOL)arg4 preRender:(CDUnknownBlockType)arg5 postRender:(CDUnknownBlockType)arg6;
 - (void)_endFrameStats;
 - (void)_ensureRenderer;
 - (id)_focusedItemRegionContainer;
@@ -100,12 +107,12 @@
 - (unsigned long long)_getEffectivePreferredFramesPerSecond;
 - (id)_getPerformanceStats;
 - (float)_getViewContentsScale;
-- (void)_ibSetSceneName:(id)arg1;
 - (long long)_preferredFocusMovementStyle;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_renderContent;
 - (void)_renderSynchronouslyForTime:(double)arg1 preRender:(CDUnknownBlockType)arg2 postRender:(CDUnknownBlockType)arg3;
 - (void)_renderToIOSurfaceID:(unsigned int)arg1 scaleFactor:(float)arg2 asynchronous:(BOOL)arg3 preRender:(CDUnknownBlockType)arg4 postRender:(CDUnknownBlockType)arg5;
+- (void)_renderToIOSurfaceID:(unsigned int)arg1 scaleFactor:(float)arg2 asynchronous:(BOOL)arg3 waitOnFence:(BOOL)arg4 preRender:(CDUnknownBlockType)arg5 postRender:(CDUnknownBlockType)arg6;
 - (BOOL)_renderUpdateEnabled;
 - (void)_reshape;
 - (void)_searchForFocusRegionsInContext:(id)arg1;
@@ -128,9 +135,6 @@
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 fromScene:(id)arg2;
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toScene:(id)arg2;
 - (void)dealloc;
-- (id)debugHierarchyAdditionalGroupingIDs;
-- (id)debugHierarchyObjectsInGroupWithID:(id)arg1 outOptions:(id *)arg2;
-- (id)debugHierarchyPropertyDescriptions;
 - (void)debugPrint;
 - (void)didMoveToWindow;
 - (void)drawRect:(struct CGRect)arg1;
@@ -143,6 +147,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 updateQueue:(id)arg2;
+- (BOOL)isEqualToView:(id)arg1;
 - (BOOL)isOpaque;
 - (void)layoutSubviews;
 - (shared_ptr_2ce53ef7)nextFramebuffer;

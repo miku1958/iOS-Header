@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIWindow.h>
+#import <UIKitCore/UIWindow.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyCommandDiscoverabilityHUDWindow : UIWindow

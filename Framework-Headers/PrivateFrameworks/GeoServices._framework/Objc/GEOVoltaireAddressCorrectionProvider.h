@@ -33,7 +33,9 @@
 @property (copy, nonatomic) CDUnknownBlockType updateFinishedHandler; // @synthesize updateFinishedHandler=_updateFinishedHandler;
 @property (strong, nonatomic) GEOProtobufSessionTask *updateTask; // @synthesize updateTask=_updateTask;
 
++ (BOOL)acInitNeedsProxy;
 + (id)acInitURL;
++ (BOOL)acUpdateNeedsProxy;
 + (id)acUpdateURL;
 - (void).cxx_destruct;
 - (id)cancelError;

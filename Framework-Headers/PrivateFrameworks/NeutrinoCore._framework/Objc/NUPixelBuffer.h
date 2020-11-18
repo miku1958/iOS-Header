@@ -4,17 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NeutrinoCore/NUMutableBufferAdapter.h>
+#import <objc/NSObject.h>
 
-@class NSMutableData;
+#import <NeutrinoCore/NSCopying-Protocol.h>
+#import <NeutrinoCore/NSMutableCopying-Protocol.h>
+#import <NeutrinoCore/NUBuffer-Protocol.h>
 
-@interface NUPixelBuffer : NUMutableBufferAdapter
+@class NSString, NUBufferStorage, NUPixelFormat;
+@protocol NUBuffer;
+
+@interface NUPixelBuffer : NSObject <NUBuffer, NSCopying, NSMutableCopying>
 {
-    NSMutableData *_backing;
+    NUBufferStorage *_storage;
+    id<NUBuffer> _buffer;
 }
 
+@property (readonly, nonatomic) const void *bytes;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NUPixelFormat *format;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long rowBytes;
+@property (readonly, nonatomic) CDStruct_912cb5d2 size;
+@property (readonly) Class superclass;
+
 - (void).cxx_destruct;
-- (id)initWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2;
+- (const void *)bytesAtPoint:(CDStruct_912cb5d2)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
+- (id)debugQuickLookObject;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
+- (id)privateInit;
 
 @end
 

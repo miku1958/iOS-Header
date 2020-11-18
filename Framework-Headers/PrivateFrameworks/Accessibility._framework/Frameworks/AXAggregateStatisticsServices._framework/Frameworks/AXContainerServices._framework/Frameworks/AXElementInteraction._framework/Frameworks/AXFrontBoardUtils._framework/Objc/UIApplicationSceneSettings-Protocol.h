@@ -10,16 +10,25 @@
 
 @protocol UIApplicationSceneSettings <NSObject>
 
+@property (readonly, nonatomic) unsigned long long artworkSubtype;
 @property (readonly, nonatomic) BOOL canShowAlerts;
 @property (readonly, nonatomic) unsigned long long deactivationReasons;
 @property (readonly, nonatomic) long long deviceOrientation;
 @property (readonly, nonatomic) BOOL deviceOrientationEventsEnabled;
 @property (readonly, nonatomic) BOOL forcedStatusBarForegroundTransparent;
-@property (readonly, strong, nonatomic) NSNumber *forcedStatusBarHidden;
-@property (readonly, strong, nonatomic) NSNumber *forcedStatusBarStyle;
+@property (readonly, nonatomic) NSNumber *forcedStatusBarStyle;
+@property (readonly, nonatomic) double homeAffordanceOverlayAllowance;
 @property (readonly, nonatomic) BOOL idleModeEnabled;
+@property (readonly, nonatomic) struct UIEdgeInsets peripheryInsets;
+@property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeLeft;
+@property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsLandscapeRight;
+@property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortrait;
+@property (readonly, nonatomic) struct UIEdgeInsets safeAreaInsetsPortraitUpsideDown;
+@property (readonly, nonatomic) struct CGRect statusBarAvoidanceFrame;
 @property (readonly, nonatomic) BOOL statusBarDisabled;
+@property (readonly, nonatomic) long long statusBarParts;
 @property (readonly, nonatomic) int statusBarStyleOverridesToSuppress;
+@property (readonly, nonatomic) double systemMinimumMargin;
 @property (readonly, nonatomic) BOOL underLock;
 @property (readonly, nonatomic) long long userInterfaceStyle;
 

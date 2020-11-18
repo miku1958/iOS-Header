@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/NSCopying-Protocol.h>
 #import <MediaPlayer/NSSecureCoding-Protocol.h>
@@ -54,6 +54,7 @@
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly, nonatomic, getter=isExplicitContent) BOOL explicitContent;
 @property (readonly, nonatomic) long long explicitRating;
+@property (readonly, copy, nonatomic) NSArray *formerStoreAdamIDs;
 @property (readonly, copy, nonatomic) NSArray *genreNames;
 @property (readonly, copy, nonatomic) NSString *handle;
 @property (readonly, nonatomic) BOOL hasArtistBiography;
@@ -61,6 +62,7 @@
 @property (readonly, nonatomic) BOOL hasSocialPosts;
 @property (readonly, nonatomic) BOOL hasSubscriptionOffer;
 @property (readonly, copy, nonatomic) NSString *iTunesBrandType;
+@property (readonly, nonatomic) BOOL isChart;
 @property (readonly, nonatomic) BOOL isPreorder;
 @property (readonly, copy, nonatomic) NSString *itemKind;
 @property (readonly, copy, nonatomic) NSDate *lastModifiedDate;

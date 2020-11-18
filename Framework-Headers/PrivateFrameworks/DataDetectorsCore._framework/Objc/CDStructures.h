@@ -17,13 +17,6 @@ struct _NSRange {
 
 struct __CFString;
 
-struct __DDExpressionPosition {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-};
-
 struct __DDQueryOffset {
     unsigned int :32;
     unsigned int :32;

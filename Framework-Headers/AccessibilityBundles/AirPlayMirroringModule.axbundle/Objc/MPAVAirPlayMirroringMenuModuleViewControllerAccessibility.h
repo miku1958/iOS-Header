@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityControlCenterElementToFocusAfterClose;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)setupUnexpandedLayout;
 

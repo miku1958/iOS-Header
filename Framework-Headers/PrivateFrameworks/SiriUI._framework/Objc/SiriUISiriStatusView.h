@@ -10,12 +10,12 @@
 #import <SiriUI/SiriUISiriStatusViewProtocol-Protocol.h>
 #import <SiriUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AVAudioSession, AVPlayerItem, AVPlayerLayer, AVPlayerLooper, AVQueuePlayer, NSObject, NSString, SUICFlamesView, SiriUIConfiguration, UIButton, UILongPressGestureRecognizer, UIScreen;
-@protocol OS_dispatch_group, SiriUISiriStatusViewAnimationDelegate, SiriUISiriStatusViewDelegate;
+@class AVAudioSession, AVPlayerItem, AVPlayerLayer, AVPlayerLooper, AVQueuePlayer, NSObject, NSString, SUICFlamesView, SiriUIConfiguration, UILongPressGestureRecognizer, UIScreen;
+@protocol OS_dispatch_queue, SiriUISiriStatusViewAnimationDelegate, SiriUISiriStatusViewDelegate;
 
 @interface SiriUISiriStatusView : UIView <SUICFlamesViewDelegate, UIGestureRecognizerDelegate, SiriUISiriStatusViewProtocol>
 {
-    UIButton *_button;
+    UIView *_touchInputView;
     UILongPressGestureRecognizer *_longPressRecognizer;
     UIView *_flamesContainerView;
     SUICFlamesView *_flamesView;
@@ -24,12 +24,14 @@
     AVPlayerLooper *_glyphPlayerLooper;
     AVQueuePlayer *_glyphQueuePlayer;
     AVPlayerItem *_glyphPlayerItem;
-    NSObject<OS_dispatch_group> *_glyphConfigurationGroup;
-    AVAudioSession *_glyphAuxiliaryAudioSession;
+    AVAudioSession *_glyphAudioSession;
+    NSObject<OS_dispatch_queue> *_glyphConfigurationQueue;
     double _lastStateChangeTime;
     UIScreen *_screen;
     int _deferredFlamesViewState;
     SiriUIConfiguration *_configuration;
+    BOOL _textInputEnabled;
+    BOOL _siriGlyphHidden;
     BOOL _flamesViewDeferred;
     BOOL _inUITrackingMode;
     BOOL _paused;
@@ -55,13 +57,11 @@
 @property (readonly, nonatomic) double statusViewHeight;
 @property (readonly) Class superclass;
 
++ (struct CGRect)activeFrameForScreen:(id)arg1 frame:(struct CGRect)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;
 - (void).cxx_destruct;
-- (struct CGRect)_adjustedInsetRectForRect:(struct CGRect)arg1;
 - (void)_animateSiriGlyphHidden:(BOOL)arg1;
 - (void)_attachFlamesViewIfNeeded;
-- (void)_configureGlyph;
-- (void)_createLooperIfNeeded;
-- (void)_createQueuePlayerIfNeeded;
+- (BOOL)_deviceNeedsReducedFramerateForCarPlayThinkingState;
 - (struct CGRect)_flamesFrame;
 - (id)_flamesView;
 - (struct CGRect)_flamesViewFrame;
@@ -71,9 +71,9 @@
 - (void)_micButtonHeld:(id)arg1;
 - (void)_micButtonTapped:(id)arg1;
 - (void)_setFlamesViewState:(int)arg1;
+- (void)_setupOrbIfNeeded:(CDUnknownBlockType)arg1;
 - (struct CGRect)_siriGlyphTappableRect;
 - (float)audioLevelForFlamesView:(id)arg1;
-- (void)configureGlyphWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)fadeOutCurrentAura;
 - (void)forceMicVisible:(BOOL)arg1;
@@ -83,6 +83,7 @@
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct UIEdgeInsets)safeAreaInsets;
 - (void)safeAreaInsetsDidChange;
+- (void)setupOrbIfNeeded;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

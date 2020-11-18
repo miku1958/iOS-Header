@@ -9,13 +9,11 @@
 #import <AccountsUI/ACUIAccountOperationsDelegate-Protocol.h>
 #import <AccountsUI/UIActionSheetDelegate-Protocol.h>
 
-@class ACAccountStore, ACUIAccountOperationsHelper, NSString, NSTimer, UIBarButtonItem, UIProgressHUD;
+@class ACAccountStore, ACUIAccountOperationsHelper, NSString, UIBarButtonItem, UIProgressHUD;
 @protocol ACUIViewControllerAccountChangeObserver;
 
 @interface ACUIViewController : PSListController <UIActionSheetDelegate, ACUIAccountOperationsDelegate>
 {
-    NSTimer *_idleJiggleTimer;
-    void *_powerAssertion;
     BOOL _addedToTaskList;
     BOOL _activityInProgress;
     CDUnknownBlockType _confirmationViewCompletion;
@@ -45,8 +43,6 @@
 - (id)_actionSheetWithButtons:(id)arg1 title:(id)arg2 destructive:(BOOL)arg3 cancelButtonIndex:(long long)arg4 context:(id)arg5;
 - (id)_alertViewWithButtons:(id)arg1 title:(id)arg2 message:(id)arg3 cancelButtonIndex:(long long)arg4 context:(id)arg5;
 - (id)_effectiveParentController;
-- (void)_jiggleIdleTimerFired;
-- (void)_preventSleepAndDimming:(BOOL)arg1;
 - (void)actionSheet:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)alertView:(id)arg1 didDismissWithButtonIndex:(long long)arg2;
 - (void)cancelButtonTapped:(id)arg1;

@@ -35,7 +35,7 @@
 @property (strong, nonatomic) id<IMDCKSyncTokenStore> syncTokenStore; // @synthesize syncTokenStore=_syncTokenStore;
 
 + (id)sharedInstance;
-- (void)__syncChatsWithCloudKit:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)__syncChatsWithCloudKit:(long long)arg1 attemptCount:(unsigned long long)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_anyChatExistsOnServerWithResultsLimit:(int)arg1 changeToken:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_changeTokenKey;
 - (BOOL)_chatZoneCreated;

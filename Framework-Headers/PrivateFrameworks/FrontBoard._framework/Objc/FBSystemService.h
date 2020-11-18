@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class FBSSerialQueue, FBSystemServiceServer;
+@class FBSSerialQueue, FBServiceFacilityServer;
 @protocol FBSystemServiceDelegate;
 
 @interface FBSystemService : NSObject
@@ -14,15 +14,16 @@
     FBSSerialQueue *_queue;
     int _pendingExit;
     id<FBSystemServiceDelegate> _delegate;
-    FBSystemServiceServer *_server;
+    FBServiceFacilityServer *_server;
 }
 
-@property (nonatomic) id<FBSystemServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<FBSystemServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, getter=isPendingExit) BOOL pendingExit;
-@property (readonly, strong, nonatomic) FBSSerialQueue *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) FBSystemServiceServer *server; // @synthesize server=_server;
+@property (readonly, nonatomic) FBSSerialQueue *queue; // @synthesize queue=_queue;
+@property (strong, nonatomic) FBServiceFacilityServer *server; // @synthesize server=_server;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_activateApplication:(id)arg1 requestID:(unsigned int)arg2 options:(id)arg3 source:(id)arg4 originalSource:(id)arg5 withResult:(CDUnknownBlockType)arg6;
 - (BOOL)_isTrustedRequestToOpenApplication:(id)arg1 options:(id)arg2 source:(id)arg3 originalSource:(id)arg4;
 - (BOOL)_isWhitelistedLaunchSuspendedApp:(id)arg1;
@@ -47,6 +48,7 @@
 - (void)setSystemIdleSleepDisabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)shutdownAndReboot:(BOOL)arg1;
 - (void)shutdownWithOptions:(unsigned long long)arg1;
+- (void)shutdownWithOptions:(unsigned long long)arg1 forSource:(long long)arg2;
 - (void)terminateApplication:(id)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 source:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)terminateApplicationGroup:(long long)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 source:(id)arg5;
 - (void)terminateApplicationGroup:(long long)arg1 forReason:(long long)arg2 andReport:(BOOL)arg3 withDescription:(id)arg4 source:(id)arg5 completion:(CDUnknownBlockType)arg6;

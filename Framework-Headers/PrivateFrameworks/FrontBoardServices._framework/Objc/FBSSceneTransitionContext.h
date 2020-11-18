@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
@@ -35,6 +35,7 @@
 @property (strong, nonatomic) FBSceneUpdateContext *updateContext; // @synthesize updateContext=_updateContext;
 
 + (id)transitionContext;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;

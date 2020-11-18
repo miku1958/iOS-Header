@@ -7,6 +7,7 @@
 #import <Foundation/NSUUID.h>
 
 @interface NSUUID (ARAdditions)
++ (id)ar_UUIDWithData:(id)arg1;
 + (id)ar_UUIDWithIntegerValue:(unsigned long long)arg1;
 + (id)ar_zeroUUID;
 - (unsigned long long)ar_integerValue;

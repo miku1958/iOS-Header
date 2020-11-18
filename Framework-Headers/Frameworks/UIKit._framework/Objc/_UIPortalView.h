@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class CAPortalLayer;
 
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     UIView *_sourceView;
 }
 
+@property (nonatomic) BOOL allowsBackdropGroups; // @dynamic allowsBackdropGroups;
 @property (nonatomic) BOOL hidesSourceView; // @dynamic hidesSourceView;
 @property (nonatomic) BOOL matchesAlpha; // @dynamic matchesAlpha;
 @property (nonatomic) BOOL matchesPosition; // @dynamic matchesPosition;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
-@class UIColor, UIFont, UIImage, UITableViewCell, UITableViewHeaderFooterView;
-@protocol UITable;
+@class NSArray, UIColor, UIFont, UIImage, UITableViewCell, UITableViewHeaderFooterView;
+@protocol UITable, UITableConstants;
 
 @protocol UITableConstants <NSObject>
 + (id)sharedConstants;
@@ -15,11 +15,11 @@
 - (double)defaultAlphaForReorderingCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (UIColor *)defaultBackgroundColorForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (UIColor *)defaultBackgroundColorForTableViewStyle:(long long)arg1;
+- (NSArray *)defaultBackgroundEffectsForTableViewStyle:(long long)arg1;
 - (UIImage *)defaultCheckmarkImageForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (double)defaultContentAccessoryPaddingForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (double)defaultContentEditPaddingForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (double)defaultContentReorderPaddingForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
-- (UIImage *)defaultDeleteBackgroundImageForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (UIImage *)defaultDeleteImageForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (struct CGRect)defaultDeleteMinusRectForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (UIColor *)defaultDetailTextColorForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
@@ -61,6 +61,7 @@
 - (double)defaultRowHeightForTableView:(id<UITable>)arg1 cellStyle:(long long)arg2;
 - (double)defaultSectionFooterHeightForTableView:(id<UITable>)arg1;
 - (double)defaultSectionHeaderHeightForTableView:(id<UITable>)arg1;
+- (NSArray *)defaultSelectionEffectsForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (UIColor *)defaultSelectionTintColorForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (UIColor *)defaultSeparatorColorForTableViewStyle:(long long)arg1;
 - (long long)defaultSeparatorStyleForTableViewStyle:(long long)arg1;
@@ -71,7 +72,9 @@
 - (double)defaultTrailingCellMarginWidthForTableView:(id<UITable>)arg1;
 - (BOOL)imageViewOffsetByLayoutMarginsForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
 - (BOOL)reorderingCellWantsShadows:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2;
+- (id<UITableConstants>)sidebarVariant;
 - (BOOL)supportsUserInterfaceStyles;
+- (id<UITableConstants>)variantForActive:(BOOL)arg1 dark:(BOOL)arg2;
 
 @optional
 - (UIColor *)defaultDetailTextColorForCell:(UITableViewCell *)arg1 inTableView:(id<UITable>)arg2 forUserInterfaceStyle:(long long)arg3;

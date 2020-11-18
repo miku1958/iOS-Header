@@ -47,6 +47,7 @@
 - (id)queryRankStringForPredicateIdentifier:(int)arg1;
 - (id)querySelectPropertiesForPredicateIdentifier:(int)arg1;
 - (id)queryWhereStringForPredicateIdentifier:(int)arg1;
+- (BOOL)shouldSerialize;
 
 @end
 

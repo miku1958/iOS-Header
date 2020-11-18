@@ -78,6 +78,7 @@
 + (BOOL)supportsLibraryRemoval;
 - (id)artworkCatalog;
 - (id)contentItemCollectionInfo;
+- (id)humanDescription;
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;
 - (long long)libraryRemovalSupportedOptions;
 - (id)newKeepLocalStatusObserverConfiguration;

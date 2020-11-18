@@ -15,6 +15,7 @@
 - (long long)tsce_minute;
 - (long long)tsce_month;
 - (long long)tsce_second;
+- (long long)tsce_weekNumberForType:(int)arg1;
 - (long long)tsce_weekday;
 - (long long)tsce_year;
 @end

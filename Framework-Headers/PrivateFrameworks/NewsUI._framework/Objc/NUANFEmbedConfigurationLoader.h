@@ -8,17 +8,18 @@
 
 #import <NewsUI/NUEmbedConfigurationLoader-Protocol.h>
 
-@class FCAppConfigurationManager, FCAsyncOnceOperation, FCFlintResourceManager, NSString, SXJSONDictionary;
+@class FCAsyncOnceOperation, FCFlintResourceManager, NSString, SXJSONDictionary;
+@protocol FCNewsAppConfigurationManager;
 
 @interface NUANFEmbedConfigurationLoader : NSObject <NUEmbedConfigurationLoader>
 {
     SXJSONDictionary *_embedConfiguration;
-    FCAppConfigurationManager *_appConfigurationManager;
+    id<FCNewsAppConfigurationManager> _appConfigurationManager;
     FCFlintResourceManager *_flintResourceManager;
     FCAsyncOnceOperation *_asyncOnceOperation;
 }
 
-@property (strong, nonatomic) FCAppConfigurationManager *appConfigurationManager; // @synthesize appConfigurationManager=_appConfigurationManager;
+@property (strong, nonatomic) id<FCNewsAppConfigurationManager> appConfigurationManager; // @synthesize appConfigurationManager=_appConfigurationManager;
 @property (strong, nonatomic) FCAsyncOnceOperation *asyncOnceOperation; // @synthesize asyncOnceOperation=_asyncOnceOperation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

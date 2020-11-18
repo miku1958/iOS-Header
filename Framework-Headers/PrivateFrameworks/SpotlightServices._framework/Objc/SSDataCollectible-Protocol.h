@@ -6,10 +6,10 @@
 
 #import <SpotlightServices/NSObject-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSString;
 
 @protocol SSDataCollectible <NSObject>
 - (NSString *)dataCollectionBundle;
-- (NSMutableDictionary *)dataCollectionRepresentation;
+- (BOOL)serializeToJSON:(void *)arg1 valuesOnly:(BOOL)arg2;
 @end
 

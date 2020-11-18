@@ -8,11 +8,12 @@
 
 #import <Home/HFAccessoryObserver-Protocol.h>
 #import <Home/HFCameraObserver-Protocol.h>
+#import <Home/HFExecutionEnvironmentObserver-Protocol.h>
 
-@class HMCameraProfile, NSDate, NSError, NSMapTable, NSString;
+@class HFExecutionEnvironment, HMCameraProfile, NSDate, NSError, NSMapTable, NSString;
 @protocol NACancelable;
 
-@interface HFCameraManager : NSObject <HFAccessoryObserver, HFCameraObserver>
+@interface HFCameraManager : NSObject <HFAccessoryObserver, HFCameraObserver, HFExecutionEnvironmentObserver>
 {
     BOOL _isRegisteredForEvents;
     NSError *_cachedStreamError;
@@ -22,12 +23,14 @@
     id<NACancelable> _nextSnapshotEvent;
     NSDate *_snapshotErrorDate;
     unsigned long long _snapshotErrorCount;
+    HFExecutionEnvironment *_executionEnvironment;
 }
 
 @property (strong, nonatomic) NSError *cachedStreamError; // @synthesize cachedStreamError=_cachedStreamError;
 @property (readonly, weak, nonatomic) HMCameraProfile *cameraProfile; // @synthesize cameraProfile=_cameraProfile;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) HFExecutionEnvironment *executionEnvironment; // @synthesize executionEnvironment=_executionEnvironment;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isRegisteredForEvents; // @synthesize isRegisteredForEvents=_isRegisteredForEvents;
 @property (strong, nonatomic) id<NACancelable> nextSnapshotEvent; // @synthesize nextSnapshotEvent=_nextSnapshotEvent;
@@ -44,7 +47,6 @@
 - (void)_dispatchStreamStateUpdate;
 - (void)_endContinuousStreaming;
 - (void)_endPeriodicSnapshots;
-- (void)_handleApplicationDidBecomeActiveNotificationNotification;
 - (BOOL)_hasSnapshotRequesters;
 - (BOOL)_hasStreamRequesters;
 - (id)_nextSnapshotDate;
@@ -63,6 +65,10 @@
 - (void)dealloc;
 - (void)endContinuousStreamingWithRequester:(id)arg1;
 - (void)endPeriodicSnapshotsWithRequester:(id)arg1;
+- (void)executionEnvironmentDidBecomeActive:(id)arg1;
+- (void)executionEnvironmentDidBecomeOccluded:(id)arg1;
+- (void)executionEnvironmentDidBecomeVisible:(id)arg1;
+- (void)executionEnvironmentWillResignActive:(id)arg1;
 - (id)initWithCameraProfile:(id)arg1;
 
 @end

@@ -13,7 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (double)_axDisplayZoomValue;
+- (double)_axMaximumZoomFactor;
+- (double)_axMinimumZoomFactor;
 - (double)_axRoundedZoomFactor:(double)arg1;
+- (void)_axSetZoomFactorForDisplayValue:(double)arg1;
 - (double)_axZoomFactor;
 - (void)_setAXZoomFactor:(double)arg1;
 - (BOOL)accessibilityActivate;

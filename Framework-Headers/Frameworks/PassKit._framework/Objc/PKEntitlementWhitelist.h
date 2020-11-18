@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -54,7 +54,11 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_arrayValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
+- (BOOL)_boolValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
+- (void *)_copyValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
 - (void)_probeEntitlementsWithConnection:(id)arg1;
+- (id)_stringValueOfEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
 - (id)initWithConnection:(id)arg1;
 - (BOOL)isEntitledForMerchantSession:(id)arg1;
 - (BOOL)isEntitledForPaymentRequest:(id)arg1;

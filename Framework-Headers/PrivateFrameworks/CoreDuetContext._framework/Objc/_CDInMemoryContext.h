@@ -28,6 +28,9 @@
 + (id)context;
 - (void).cxx_destruct;
 - (void)addCallback:(id)arg1 forKeyPath:(id)arg2;
+- (BOOL)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3;
+- (id)addObjects:(id)arg1 andRemoveObjects:(id)arg2 fromArrayAtKeyPath:(id)arg3 valueDidChange:(BOOL *)arg4;
+- (BOOL)addObjects:(id)arg1 toArrayAtKeyPath:(id)arg2;
 - (void)deregisterCallback:(id)arg1;
 - (id)description;
 - (BOOL)evaluatePredicate:(id)arg1;
@@ -38,11 +41,13 @@
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)propertiesForContextualKeyPath:(id)arg1;
 - (void)registerCallback:(id)arg1;
+- (BOOL)removeObjects:(id)arg1 fromArrayAtKeyPath:(id)arg2;
 - (void)setContextValue:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forContextualKeyPath:(id)arg2;
 - (BOOL)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
 - (id)setObject:(id)arg1 returningMetadataForContextualKeyPath:(id)arg2;
 - (void)unsafeDeregisterCallback:(id)arg1;
+- (id)unsafe_setObject:(id)arg1 returningMetadataForContextualKeyPath:(id)arg2;
 
 @end
 

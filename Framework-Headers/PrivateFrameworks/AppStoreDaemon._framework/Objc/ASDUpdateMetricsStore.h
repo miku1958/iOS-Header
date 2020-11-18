@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSLock;
+@class NSArray, NSDate, NSLock;
 
 @interface ASDUpdateMetricsStore : NSObject
 {
     NSLock *_lock;
-    NSArray *_metrics;
     double _averagePollTime;
+    NSArray *_metrics;
+    NSDate *_lastAutoPollDate;
 }
 
 @property (readonly, nonatomic) double averagePollTime; // @synthesize averagePollTime=_averagePollTime;
+@property (readonly, nonatomic) NSDate *lastAutoPollDate; // @synthesize lastAutoPollDate=_lastAutoPollDate;
 @property (readonly, nonatomic) NSArray *metrics; // @synthesize metrics=_metrics;
 
 + (void)_setUpdateMetrics:(id)arg1;

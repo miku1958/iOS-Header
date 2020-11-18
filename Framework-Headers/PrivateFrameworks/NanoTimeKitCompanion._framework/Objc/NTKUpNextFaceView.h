@@ -6,16 +6,17 @@
 
 #import <NanoTimeKitCompanion/NTKDigitalFaceView.h>
 
-#import <NanoTimeKitCompanion/NTKUpNextCellDelegate-Protocol.h>
-#import <NanoTimeKitCompanion/NTKUpNextElementActionDelegate-Protocol.h>
-#import <NanoTimeKitCompanion/NTKUpNextFaceElementControllerDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKSensitiveUIStateObserver-Protocol.h>
+#import <NanoTimeKitCompanion/REElementActionDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/REUIElementIntentActionDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/REUIRelevanceEngineControllerDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/UICollectionViewDataSource-Protocol.h>
 #import <NanoTimeKitCompanion/UICollectionViewDelegateFlowLayout-Protocol.h>
 #import <NanoTimeKitCompanion/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSOrderedSet, NSString, NSTimer, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, NTKUpNextCollectionView, NTKUpNextCollectionViewFlowLayout, NTKUpNextFaceElementController, NTKUpNextScheduler, NTKUtilityComplicationFactory, UIImage, UITapGestureRecognizer, UIView;
+@class NSArray, NSOrderedSet, NSSet, NSString, NSTimer, NTKDigitalTimeLabel, NTKDigitalTimeLabelStyle, NTKUpNextCollectionView, NTKUpNextCollectionViewFlowLayout, NTKUtilityComplicationFactory, REUIRelevanceEngineController, REUpNextScheduler, UIImage, UITapGestureRecognizer, UIView;
 
-@interface NTKUpNextFaceView : NTKDigitalFaceView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate, NTKUpNextFaceElementControllerDelegate, NTKUpNextElementActionDelegate, NTKUpNextCellDelegate>
+@interface NTKUpNextFaceView : NTKDigitalFaceView <REUIRelevanceEngineControllerDelegate, REElementActionDelegate, REUIElementIntentActionDelegate, NTKSensitiveUIStateObserver, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIGestureRecognizerDelegate>
 {
     NTKDigitalTimeLabel *_timeLabel;
     NTKDigitalTimeLabelStyle *_timeLabelDefaultStyle;
@@ -23,10 +24,11 @@
     NTKUtilityComplicationFactory *_utilityComplicationFactory;
     NTKUpNextCollectionView *_contentView;
     NTKUpNextCollectionViewFlowLayout *_layout;
-    NTKUpNextFaceElementController *_elementController;
+    REUIRelevanceEngineController *_engineController;
     UITapGestureRecognizer *_viewModeTapGesture;
     long long _previousViewMode;
     NSTimer *_viewResetTimer;
+    NSTimer *_positiveDwellForTopElementsTimer;
     NSTimer *_wakeWheelTimer;
     NSTimer *_wheelDelayTimer;
     NSTimer *_buttonPressTimer;
@@ -36,6 +38,7 @@
     BOOL _isAnimating;
     UIImage *_cellContentBackground;
     UIView *_timeLabelPlatter;
+    UIView *_scalableView;
     BOOL _needsUpdatesWhileSuppressed;
     BOOL _isInflightScroll;
     BOOL _cancelInflightScroll;
@@ -44,8 +47,10 @@
     BOOL _suppressUpdates;
     BOOL _suppressCrownEvents;
     BOOL _inBatchUpdate;
+    BOOL _isBacklightOn;
     NSOrderedSet *_currentApplicationIdentifiers;
-    NTKUpNextScheduler *_applicationIdentifierUpdateScheduler;
+    REUpNextScheduler *_applicationIdentifierUpdateScheduler;
+    NSSet *_dwellIndexPathes;
     long long _interactiveState;
     CDUnknownBlockType _modeTransitionApplier;
     CDUnknownBlockType _modeTransitionCompletion;
@@ -54,6 +59,7 @@
     struct CGPoint _secondaryOffsetForModeTransition;
     BOOL _scrollingStoppedTransition;
     long long _previousDataMode;
+    unsigned long long _faceColor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -61,21 +67,28 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)initialize;
++ (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
++ (id)_swatchImageForColorOption:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (id)_additionalPrelaunchApplicationIdentifiers;
 - (void)_allowContentViewInteractive:(BOOL)arg1;
+- (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (void)_applyDataMode;
+- (void)_applyFraction:(double)arg1 fromFaceColor:(unsigned long long)arg2 toFaceColor:(unsigned long long)arg3 onCell:(id)arg4;
 - (void)_applyOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
+- (void)_applyRubberBandingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (BOOL)_applyShouldUseCanonicalContent;
 - (void)_applyShowContentForUnadornedSnapshot;
 - (BOOL)_applyShowIdealizedContent;
 - (void)_applyShowsCanonicalContent;
 - (void)_applyShowsLockedUI;
+- (void)_applyTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 forCustomEditMode:(long long)arg4 slot:(id)arg5;
+- (void)_availableDataSourcesDidChange;
 - (void)_becameActiveFace;
 - (void)_becameInactiveFace;
+- (void)_cleanupAfterEditing;
 - (void)_cleanupAfterSettingViewMode:(long long)arg1 scroll:(BOOL)arg2 targetOffset:(struct CGPoint)arg3 needsLayout:(BOOL)arg4;
-- (void)_cleanupAfterTransitionComplicationSlot:(id)arg1;
+- (void)_cleanupAfterTransitionComplicationSlot:(id)arg1 selectedComplication:(id)arg2;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (struct CGPoint)_defaultPointForDefaultMode;
@@ -83,38 +96,49 @@
 - (void)_deviceOrientationInvertedDidChangeNotification:(id)arg1;
 - (BOOL)_dismissPresentedViewControllerIfNecessary:(BOOL)arg1;
 - (unsigned long long)_distanceForIndexPathFromNow:(id)arg1;
+- (void)_finalizeForSnapshotting:(CDUnknownBlockType)arg1;
+- (void)_handleEngineChangeNotification;
 - (void)_handleOrdinaryScreenWake;
 - (void)_handleViewModeTapGesture:(id)arg1;
 - (void)_handleWristRaiseScreenWake;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
+- (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
+- (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_layoutTimeLabelForViewMode:(long long)arg1;
 - (void)_layoutTimeLabelPlatterViewMode:(long long)arg1;
+- (void)_loadEngineController;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
 - (BOOL)_needsForegroundContainerView;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;
 - (void)_performWristRaiseAnimation;
+- (void)_postPositiveDwellEventsForTopElements;
 - (void)_prepareWristRaiseAnimation;
-- (void)_presentTrainingSheetForElementAtIndexPath:(id)arg1;
 - (void)_reloadContentIfNeeded;
+- (void)_resetVisibilityForCells;
+- (id)_sectionEnumerationOrder;
+- (void)_setSiriBlurColor;
 - (void)_setViewMode:(long long)arg1 scroll:(BOOL)arg2 scrollToPoint:(struct CGPoint)arg3 secondaryPoint:(struct CGPoint)arg4 force:(BOOL)arg5 velocity:(double)arg6 animated:(BOOL)arg7;
 - (BOOL)_shouldUseCanonicalContent;
+- (void)_showSiriUnavailableAlert:(id)arg1;
+- (void)_startPositiveDwellForTopElementsTimerIfNeeded;
 - (void)_startViewResetTimer;
+- (void)_stopPositiveDwellForTopElementsTimer;
 - (void)_stopViewResetTimer;
 - (BOOL)_supportsTimeScrubbing;
 - (void)_switchViewModeForCurrentMode:(long long)arg1 animated:(BOOL)arg2;
 - (void)_switchViewModeToDefault;
 - (id)_timeLabelStyleForViewMode:(long long)arg1;
 - (void)_unloadSnapshotContentViews;
-- (void)_updateApplicationIdentifiers;
+- (void)_updateApplicationIdentifiersAndLocationAuthorization;
 - (void)_updateCrownInvertedSetting;
 - (void)_updateDisabledDataSources;
+- (void)_updateVisibilityForCells;
 - (BOOL)_usesCustomZoom;
 - (double)_verticalPaddingForStatusBar;
 - (BOOL)_wantsStatusBarHidden;
-- (void)cellDidLongPress:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didUnhighlightItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
@@ -124,22 +148,29 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)dealloc;
-- (void)faceElementController:(id)arg1 didInsertElement:(id)arg2 atIndexPath:(id)arg3;
-- (void)faceElementController:(id)arg1 didMoveElement:(id)arg2 fromIndexPath:(id)arg3 toIndexPath:(id)arg4;
-- (void)faceElementController:(id)arg1 didReloadContent:(id)arg2 atIndexPath:(id)arg3;
-- (void)faceElementController:(id)arg1 didRemoveElement:(id)arg2 atIndexPath:(id)arg3;
-- (BOOL)faceElementController:(id)arg1 isElementAtIndexPathVisible:(id)arg2;
-- (void)faceElementController:(id)arg1 performBatchUpdateBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)elementAction:(id)arg1 didFinishTask:(BOOL)arg2;
+- (void)elementAction:(id)arg1 wantsToPerformTapActionForComplicationSlot:(id)arg2;
+- (void)elementAction:(id)arg1 wantsViewControllerDisplayed:(id)arg2;
+- (void)engineController:(id)arg1 didInsertContent:(id)arg2 atIndexPath:(id)arg3;
+- (void)engineController:(id)arg1 didMoveContent:(id)arg2 fromIndexPath:(id)arg3 toIndexPath:(id)arg4;
+- (void)engineController:(id)arg1 didReloadContent:(id)arg2 atIndexPath:(id)arg3;
+- (void)engineController:(id)arg1 didRemoveContent:(id)arg2 atIndexPath:(id)arg3;
+- (BOOL)engineController:(id)arg1 isElementAtIndexPathVisible:(id)arg2;
+- (void)engineController:(id)arg1 performBatchUpdateBlock:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
+- (id)intentActionWantsBackgroundImageForAlert:(id)arg1;
+- (id)intentActionWantsViewToBlurForAlert:(id)arg1;
 - (void)layoutSubviews;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (BOOL)presentedViewControllerShouldBecomeFirstResponder:(id)arg1;
+- (void)scrollViewDidEndDecelerating:(id)arg1;
+- (void)scrollViewDidEndDragging:(id)arg1 willDecelerate:(BOOL)arg2;
+- (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)sensitiveUIStateChanged;
 - (void)setViewMode:(long long)arg1;
-- (void)upNextElementAction:(id)arg1 didFinishTask:(BOOL)arg2;
-- (void)upNextElementAction:(id)arg1 wantsToPerformTapActionForComplicationSlot:(id)arg2;
-- (void)upNextElementAction:(id)arg1 wantsViewControllerDisplayed:(id)arg2;
+- (void)updateTimeLabelBackground;
 
 @end
 

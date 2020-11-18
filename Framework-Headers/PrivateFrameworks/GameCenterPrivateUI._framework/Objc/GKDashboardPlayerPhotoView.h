@@ -18,6 +18,7 @@
 @property (nonatomic) BOOL useDarkerPlaceholder; // @synthesize useDarkerPlaceholder=_useDarkerPlaceholder;
 
 - (void)dealloc;
+- (void)invalidatePhoto;
 
 @end
 

@@ -29,11 +29,11 @@
 @property (strong, nonatomic) NSUUID *triggerUUID; // @synthesize triggerUUID=_triggerUUID;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)achievementCompletionEventWithAchievement:(id)arg1;
++ (id)achievementCompletionEventWithAchievement:(struct _HKFitnessFriendAchievement *)arg1;
 + (id)deletedWorkoutEventWithUUID:(id)arg1;
 + (id)goalCompletionEventWithActivitySummary:(id)arg1;
 + (id)notificationEventWithRecord:(id)arg1 friendUUID:(id)arg2;
-+ (id)workoutCompletionEventWithWorkout:(id)arg1;
++ (id)workoutCompletionEventWithWorkout:(struct _HKFitnessFriendWorkout *)arg1;
 - (void).cxx_destruct;
 - (id)recordWithZoneID:(id)arg1;
 

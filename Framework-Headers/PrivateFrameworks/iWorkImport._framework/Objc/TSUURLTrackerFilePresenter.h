@@ -4,28 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSFilePresenter-Protocol.h>
 
-@class NSData, NSError, NSOperationQueue, NSSet, NSString, NSURL;
+@class NSData, NSError, NSOperationQueue, NSSet, NSString, NSURL, TSUURLTracker;
 @protocol OS_dispatch_queue, TSUURLTrackerDelegate;
 
 __attribute__((visibility("hidden")))
 @interface TSUURLTrackerFilePresenter : NSObject <NSFilePresenter>
 {
+    TSUURLTracker *_urlTracker;
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _hasStarted;
     NSData *_bookmarkDataIfAvailable;
+    BOOL _forceEncodingBookmarkData;
     NSError *_latestError;
     id<TSUURLTrackerDelegate> _delegate;
+    BOOL _deleted;
     NSOperationQueue *_presentedItemOperationQueue;
     NSURL *_URLIfAvailable;
 }
 
 @property (copy) NSURL *URLIfAvailable; // @synthesize URLIfAvailable=_URLIfAvailable;
 @property (readonly) NSData *bookmarkData;
+@property (readonly) NSData *bookmarkDataIfAvailable;
 @property (readonly, copy) NSString *debugDescription;
+@property BOOL deleted; // @synthesize deleted=_deleted;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSSet *observedPresentedItemUbiquityAttributes;
@@ -40,15 +45,18 @@ __attribute__((visibility("hidden")))
 - (id)_bookmarkData;
 - (id)_bookmarkDataAndReturnError:(id *)arg1;
 - (id)_description;
+- (void)_notifyURLTrackerPresentedItemContentsDidChange;
+- (void)_notifyURLTrackerPresentedItemDidMoveToURL:(id)arg1;
+- (void)_notifyURLTrackerPresentedItemWasDeleted;
 - (void)accommodatePresentedItemDeletionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)bookmarkDataAndReturnError:(id *)arg1;
 - (id)init;
-- (id)initWithURL:(id)arg1 bookmarkData:(id)arg2 delegate:(id)arg3;
-- (void)pause;
+- (id)initWithURL:(id)arg1 bookmarkData:(id)arg2 urlTracker:(id)arg3 delegate:(id)arg4;
+- (void)pauseForEnteringBackground:(BOOL)arg1;
 - (void)presentedItemDidChangeUbiquityAttributes:(id)arg1;
 - (void)presentedItemDidMoveToURL:(id)arg1;
 - (void)relinquishPresentedItemToWriter:(CDUnknownBlockType)arg1;
-- (void)startOrResume;
+- (void)startOrResumeForEnteringForeground:(BOOL)arg1;
 - (void)stop;
 
 @end

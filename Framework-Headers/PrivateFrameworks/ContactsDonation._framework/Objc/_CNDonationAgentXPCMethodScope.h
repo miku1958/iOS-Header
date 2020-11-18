@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithConnection:(id)arg1 promise:(id)arg2 proxy:(id)arg3;
 - (id)initWithPromise:(id)arg1 proxy:(id)arg2;
 
 @end

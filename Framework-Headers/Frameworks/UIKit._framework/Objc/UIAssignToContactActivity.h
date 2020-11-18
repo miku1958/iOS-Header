@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <UIKitCore/UIActivity.h>
 
-#import <UIKit/CNContactPickerDelegate-Protocol.h>
-#import <UIKit/CNContactViewControllerDelegate-Protocol.h>
-#import <UIKit/UIImagePickerControllerDelegate-Protocol.h>
-#import <UIKit/UINavigationControllerDelegate-Protocol.h>
+#import <UIKitCore/CNContactPickerDelegate-Protocol.h>
+#import <UIKitCore/CNContactViewControllerDelegate-Protocol.h>
+#import <UIKitCore/UIImagePickerControllerDelegate-Protocol.h>
+#import <UIKitCore/UINavigationControllerDelegate-Protocol.h>
 
 @class CNContact, CNContactPickerViewController, NSString, UIImage, UIImagePickerController;
 
@@ -32,7 +32,7 @@
 
 + (unsigned long long)_xpcAttributes;
 - (void).cxx_destruct;
-- (id)_activityImage;
+- (id)_activityBundleImageConfiguration;
 - (void)_cleanup;
 - (id)_embeddedActivityViewController;
 - (void)_willPresentAsFormSheet;

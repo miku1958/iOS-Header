@@ -20,6 +20,7 @@
 @property (strong, nonatomic) id<UIViewControllerTransitioningDelegate> paymentTransitioningDelegate; // @synthesize paymentTransitioningDelegate=_paymentTransitioningDelegate;
 
 - (void).cxx_destruct;
+- (id)_backgroundColorForModalFormSheet;
 - (id)init;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;

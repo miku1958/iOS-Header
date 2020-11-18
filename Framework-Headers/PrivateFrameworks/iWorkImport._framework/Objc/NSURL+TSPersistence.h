@@ -7,6 +7,7 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (TSPersistence)
++ (id)tsp_iWorkAVAssetURLWithUUID:(id)arg1 filename:(id)arg2 contentTypeUTI:(id)arg3;
 - (id)tsp_URLExceptPrivate;
 - (id)tsp_embeddedUTI;
 - (id)tsp_fileIdentifier;

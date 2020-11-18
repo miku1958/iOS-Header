@@ -11,7 +11,7 @@
 
 @protocol TUCallProviderManagerXPCServer <NSObject>
 - (oneway void)launchAppForDialRequest:(TUDialRequest *)arg1 reply:(void (^)(NSError *))arg2;
-- (oneway void)providersByIdentifier:(void (^)(NSDictionary *))arg1;
+- (oneway void)providersByIdentifier:(void (^)(NSDictionary *, NSDictionary *, NSDictionary *))arg1;
 - (void)registerClient:(id<TUCallProviderManagerXPCClient>)arg1;
 - (void)unregisterClient:(id<TUCallProviderManagerXPCClient>)arg1;
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TSReading/TSWPColumnMetrics-Protocol.h>
 #import <TSReading/TSWPLayoutOwner-Protocol.h>
@@ -30,12 +30,15 @@
     unsigned int _naturalAlignment;
     int _naturalDirection;
     NSObject<TSWPTextDelegate> *_delegate;
+    BOOL _allowsLastLineTruncation;
+    unsigned int _maxLineCount;
     id<TSWPStyleProvider> _styleProvider;
+    double _reservedWidthWhenTruncating;
 }
 
 @property (readonly, nonatomic) struct CGSize adjustedInsets;
 @property (readonly, nonatomic) BOOL allowsDescendersToClip;
-@property (readonly, nonatomic) BOOL allowsLastLineTruncation;
+@property (nonatomic) BOOL allowsLastLineTruncation; // @synthesize allowsLastLineTruncation=_allowsLastLineTruncation;
 @property (readonly, nonatomic) BOOL alwaysAllowWordSplit;
 @property (readonly, nonatomic) BOOL alwaysStartsNewTarget;
 @property (readonly, nonatomic) struct CGPoint anchorPoint;
@@ -58,7 +61,7 @@
 @property (readonly, nonatomic) TSWPPadding *layoutMargins;
 @property (readonly, nonatomic) struct CGRect maskRect;
 @property (readonly, nonatomic) double maxAnchorY;
-@property (readonly, nonatomic) unsigned int maxLineCount;
+@property (nonatomic) unsigned int maxLineCount; // @synthesize maxLineCount=_maxLineCount;
 @property (readonly, nonatomic) struct CGSize maxSize;
 @property (readonly, nonatomic) struct CGSize minSize;
 @property (readonly, nonatomic) unsigned int naturalAlignment; // @synthesize naturalAlignment=_naturalAlignment;
@@ -74,6 +77,7 @@
 @property (readonly, strong, nonatomic) id<TSWPOffscreenColumn> previousTargetLastColumn;
 @property (readonly, nonatomic) const struct TSWPTopicNumberHints *previousTargetTopicNumbers;
 @property (readonly, nonatomic) BOOL pushAscendersIntoColumn;
+@property (nonatomic) double reservedWidthWhenTruncating; // @synthesize reservedWidthWhenTruncating=_reservedWidthWhenTruncating;
 @property (readonly, nonatomic) BOOL shouldHyphenate;
 @property (readonly, nonatomic) BOOL shrinkTextToFit;
 @property (strong, nonatomic) id<TSWPStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
@@ -84,6 +88,8 @@
 @property (readonly, nonatomic) unsigned int verticalAlignment;
 @property (readonly, nonatomic) BOOL wantsLineFragments;
 
++ (void)renderColumn:(id)arg1 selection:(id)arg2 inContext:(struct CGContext *)arg3 isFlipped:(BOOL)arg4 viewScale:(double)arg5;
++ (void)renderColumns:(id)arg1 selection:(id)arg2 inContext:(struct CGContext *)arg3 isFlipped:(BOOL)arg4 viewScale:(double)arg5;
 - (void)addAttachmentLayout:(id)arg1;
 - (BOOL)adjustColumnOriginForAlignment;
 - (BOOL)caresAboutStorageChanges;
@@ -108,6 +114,7 @@
 - (id)layoutForInlineDrawable:(id)arg1;
 - (void)layoutManager:(id)arg1 didClearDirtyRangeWithDelta:(long long)arg2 afterCharIndex:(unsigned long long)arg3;
 - (void)layoutManagerNeedsLayout:(id)arg1;
+- (id)layoutMultiColumnTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 pageNumber:(unsigned long long)arg5 pageCount:(unsigned long long)arg6 flags:(int)arg7;
 - (id)layoutText:(id)arg1 kind:(int)arg2 minSize:(struct CGSize)arg3 maxSize:(struct CGSize)arg4 anchor:(struct CGPoint)arg5 flags:(int)arg6;
 - (id)layoutText:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 flags:(int)arg5;
 - (id)layoutTextStorage:(id)arg1 minSize:(struct CGSize)arg2 maxSize:(struct CGSize)arg3 anchor:(struct CGPoint)arg4 flags:(int)arg5;

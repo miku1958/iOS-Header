@@ -6,25 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class CDSession, NSString;
+@class NSString;
 
 @interface CDDevice : NSObject
 {
-    CDSession *_session;
-    int remoteDataNotificationToken;
+    BOOL _isDefaultPaired;
     unsigned int _identifier;
     NSString *_modelIdentifier;
-    BOOL _defaultPaired;
-    BOOL _isDefaultPaired;
 }
 
 @property (readonly) unsigned int identifier; // @synthesize identifier=_identifier;
 @property BOOL isDefaultPaired; // @synthesize isDefaultPaired=_isDefaultPaired;
 @property (readonly) NSString *modelIdentifier; // @synthesize modelIdentifier=_modelIdentifier;
-@property (readonly) CDSession *session; // @synthesize session=_session;
 
 - (void).cxx_destruct;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithSession:(id)arg1 identifier:(unsigned int)arg2 modelIdentifier:(id)arg3 defaultPaired:(BOOL)arg4 error:(id *)arg5;

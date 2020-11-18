@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface __CNCallStack : NSObject
 {
@@ -15,7 +15,6 @@
 - (id)copyArrayRepresentation;
 - (void)dealloc;
 - (id)description;
-- (void)finalize;
 - (unsigned int)frameCount;
 - (void **)frames;
 - (unsigned long long)hash;

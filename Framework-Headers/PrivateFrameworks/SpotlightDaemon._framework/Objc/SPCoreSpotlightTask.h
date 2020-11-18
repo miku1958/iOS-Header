@@ -13,6 +13,7 @@
     BOOL _canceled;
     BOOL _finished;
     BOOL _hasPausedResults;
+    BOOL _willAsyncStart;
     NSString *_queryString;
     struct __SIQuery *_siQuery;
     SPQueryResultsQueue *_resultsQueue;
@@ -37,9 +38,12 @@
 @property (copy, nonatomic) CDUnknownBlockType scheduleBlock; // @synthesize scheduleBlock=_scheduleBlock;
 @property (nonatomic) struct __SIQuery *siQuery; // @synthesize siQuery=_siQuery;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
+@property (nonatomic) BOOL willAsyncStart; // @synthesize willAsyncStart=_willAsyncStart;
 
-+ (id)_makeBundleQueryStringWithBundleIDs:(id)arg1;
-+ (id)_makeQueryStringWithQueryString:(id)arg1 queryContext:(id)arg2;
++ (id)_makeBundleQueryStringForField:(id)arg1 withBundleIDs:(id)arg2;
++ (id)_makeBundleQueryStringForQueryContext:(id)arg1;
++ (id)_makeDisabledBundlesQueryStringForQueryContext:(id)arg1;
++ (id)_makeFilterQueryStringForQueryContext:(id)arg1;
 + (struct __SIQuery *)_makeSIQueryWithQueryString:(id)arg1 queryContext:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)addJob:(id)arg1;

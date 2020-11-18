@@ -36,6 +36,7 @@
 - (id)initWithNotificationCenter:(id)arg1;
 - (void)performOnApplicationDidBecomeActive:(CDUnknownBlockType)arg1;
 - (void)performOnApplicationDidEnterBackground:(CDUnknownBlockType)arg1;
+- (void)removeObserver:(id)arg1;
 
 @end
 

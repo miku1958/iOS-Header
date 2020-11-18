@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface _UIInputViewControllerOutput : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _shouldDismiss;
+    BOOL _proceedShouldReturn;
     BOOL _shouldAdvanceInputMode;
     BOOL _hasDictation;
     BOOL _requiresInputManagerSync;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGPoint inputModeListUpdatePoint; // @synthesize inputModeListUpdatePoint=_inputModeListUpdatePoint;
 @property (strong, nonatomic) NSArray *keyboardOutputs; // @synthesize keyboardOutputs=_keyboardOutputs;
 @property (copy, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage=_primaryLanguage;
+@property (nonatomic) BOOL proceedShouldReturn; // @synthesize proceedShouldReturn=_proceedShouldReturn;
 @property (nonatomic) BOOL requiresInputManagerSync; // @synthesize requiresInputManagerSync=_requiresInputManagerSync;
 @property (nonatomic) BOOL shouldAdvanceInputMode; // @synthesize shouldAdvanceInputMode=_shouldAdvanceInputMode;
 @property (nonatomic) BOOL shouldAdvanceResponder; // @synthesize shouldAdvanceResponder=_shouldAdvanceResponder;

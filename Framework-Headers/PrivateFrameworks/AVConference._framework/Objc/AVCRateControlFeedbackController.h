@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCStatisticsCollector;
 
@@ -14,21 +14,28 @@ __attribute__((visibility("hidden")))
     unsigned int _mode;
     AVCStatisticsCollector *_statisticsCollector;
     unsigned int _feedbackMessageCount;
+    unsigned int _remoteTotalPacketReceivedCount;
+    BOOL _isFeedbackReceived;
+    BOOL _didRegisterPacketReceivedHandler;
+    unsigned int _maxBurstyLossCache;
 }
 
+@property (nonatomic) unsigned int maxBurstyLossCache; // @synthesize maxBurstyLossCache=_maxBurstyLossCache;
 @property (nonatomic) unsigned int mode; // @synthesize mode=_mode;
-@property (strong, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
 
-- (void)dealloc;
+- (BOOL)detectOutOfOrderFeedbackMessage:(CDStruct_bcb9d60a)arg1;
 - (BOOL)getFeedbackMessage:(id *)arg1 type:(unsigned int)arg2 metaData:(id *)arg3 error:(id *)arg4;
-- (id)getRateControlDataWithStatistics:(id)arg1;
 - (BOOL)getRateControlFeedbackMessage:(id *)arg1 type:(unsigned int)arg2 metaData:(id *)arg3 error:(id *)arg4;
+- (BOOL)getVCStatisticsFeedbackMessage:(CDStruct_48a7b5a5 *)arg1 time:(double)arg2;
+- (id)initWithStatisticsCollector:(id)arg1;
 - (BOOL)processFeedbackMessage:(id)arg1 type:(unsigned int)arg2 metaData:(id)arg3 error:(id *)arg4;
-- (BOOL)processRateControlFeedbackMessage:(CDStruct_a561fd19)arg1 type:(unsigned int)arg2 error:(id *)arg3;
-- (BOOL)processRateControlProbingMessage:(CDStruct_0004415b)arg1 type:(unsigned int)arg2 error:(id *)arg3;
-- (CDStruct_a561fd19)translateAFRCFeedbackMessage:(struct tagAFRCFB)arg1;
-- (BOOL)translateMediaControlInfo:(void *)arg1 feedbackMessage:(CDStruct_a561fd19 *)arg2;
-- (CDStruct_a561fd19)translateRateControlFeedbackMessageFromData:(id)arg1;
+- (BOOL)processRateControlFeedbackMessage:(CDStruct_bcb9d60a)arg1 type:(unsigned int)arg2 error:(id *)arg3;
+- (BOOL)processRateControlProbingMessage:(CDStruct_4c345eff)arg1 type:(unsigned int)arg2 error:(id *)arg3;
+- (void)setPacketReceivedStatistics:(CDStruct_4c5da9d9)arg1;
+- (CDStruct_bcb9d60a)translateAFRCFeedbackMessage:(struct tagAFRCFB)arg1;
+- (BOOL)translateMediaControlInfo:(void *)arg1 feedbackMessage:(CDStruct_bcb9d60a *)arg2;
+- (id)translateRateControlDataWithFeedbackMessage:(CDStruct_bcb9d60a)arg1;
+- (CDStruct_bcb9d60a)translateRateControlFeedbackMessageFromData:(id)arg1;
 
 @end
 

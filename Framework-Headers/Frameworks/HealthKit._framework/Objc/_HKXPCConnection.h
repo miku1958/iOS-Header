@@ -32,6 +32,7 @@
 - (void)invalidate;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)resume;
+- (void)unitTest_interrupt;
 
 @end
 

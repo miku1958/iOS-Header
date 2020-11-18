@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)canAuthWithCloudKit;
 - (BOOL)canRenew;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
+- (id)displayedHostname;
 - (id)dsid;
 - (id)fullName;
 - (id)iCloudAuthTokenWithError:(id *)arg1;

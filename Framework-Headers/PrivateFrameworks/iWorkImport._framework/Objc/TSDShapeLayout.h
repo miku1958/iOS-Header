@@ -13,24 +13,24 @@ __attribute__((visibility("hidden")))
 {
     struct {
         unsigned int path:1;
-        unsigned int pathBounds:1;
-        unsigned int pathBoundsWithoutStroke:1;
         unsigned int pathIsOpen:1;
         unsigned int pathIsLineSegment:1;
-        unsigned int alignmentFrame:1;
-        unsigned int alignmentFrameInRoot:1;
         unsigned int headAndTail:1;
         unsigned int headLineEnd:1;
         unsigned int tailLineEnd:1;
         unsigned int clippedPath:1;
     } mShapeInvalidFlags;
     TSUBezierPath *mCachedPath;
-    struct CGRect mCachedPathBounds;
-    struct CGRect mCachedPathBoundsWithoutStroke;
     BOOL mCachedPathIsOpen;
     BOOL mCachedPathIsLineSegment;
-    struct CGRect mCachedAlignmentFrame;
-    struct CGRect mCachedAlignmentFrameInRoot;
+    CDStruct_5bfcb38a mCachedPathBoundsStruct;
+    CDStruct_5bfcb38a mCachedPathBoundsWithoutStrokeStruct;
+    TSUBezierPath *mCachedClippedPath;
+    CDStruct_5bfcb38a mCachedClippedPathStroked;
+    CDStruct_5bfcb38a mCachedClippedPathRotatedStroked;
+    struct CGAffineTransform mClippedPathRotatedTransform;
+    CDStruct_5bfcb38a mCachedAlignmentFrame;
+    CDStruct_5bfcb38a mCachedAlignmentFrameInRoot;
     struct CGAffineTransform mCachedAlignmentFrameInRootTransformInRoot;
     struct CGPoint mHeadPoint;
     struct CGPoint mTailPoint;
@@ -42,7 +42,6 @@ __attribute__((visibility("hidden")))
     long long mTailCutSegment;
     double mHeadCutT;
     double mTailCutT;
-    TSUBezierPath *mCachedClippedPath;
     TSDPathSource *mShrunkenPathSource;
     TSDPathSource *mOriginalShrunkenPathSource;
     TSDEditableBezierPathSource *mCachedEditableBezierPathSource;
@@ -53,6 +52,7 @@ __attribute__((visibility("hidden")))
     TSDMutableStroke *mDynamicStroke;
     TSDFill *mDynamicFill;
     NSArray *mDynamicStrokeOffsetArray;
+    BOOL mIsDynamicallyInvisible;
 }
 
 @property (readonly, nonatomic) TSUBezierPath *clippedPathForLineEnds;
@@ -106,6 +106,7 @@ __attribute__((visibility("hidden")))
 - (double)lineEndScale:(BOOL)arg1;
 - (struct CGSize)minimumSize;
 - (struct CGRect)p_boundsOfLineEndForHead:(BOOL)arg1 transform:(struct CGAffineTransform)arg2;
+- (struct CGRect)p_cachedClippedPathStroked;
 - (id)p_cachedPath;
 - (struct CGRect)p_cachedPathBounds;
 - (struct CGRect)p_cachedPathBoundsWithoutStroke;
@@ -116,6 +117,7 @@ __attribute__((visibility("hidden")))
 - (void)p_invalidateHead;
 - (void)p_invalidateTail;
 - (id)p_unitePath:(id)arg1 withLineEndForHead:(BOOL)arg2 stroke:(id)arg3;
+- (struct CGRect)p_updatedCachedClipRectIfNeededForRotation:(struct CGAffineTransform)arg1;
 - (void)p_validateHeadAndTail;
 - (void)p_validateHeadLineEnd;
 - (void)p_validateTailLineEnd;

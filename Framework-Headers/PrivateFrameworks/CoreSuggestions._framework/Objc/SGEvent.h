@@ -61,8 +61,9 @@
 + (id)eventWithRecordId:(id)arg1 origin:(id)arg2 uniqueKey:(id)arg3 opaqueKey:(id)arg4 title:(id)arg5 notes:(id)arg6 start:(id)arg7 startTimeZone:(id)arg8 end:(id)arg9 endTimeZone:(id)arg10 isAllDay:(BOOL)arg11 creationDate:(id)arg12 lastModifiedDate:(id)arg13 locations:(id)arg14 tags:(id)arg15 URL:(id)arg16;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_applyTimeRangeToEKEvent:(id)arg1;
+- (void)_applyTimeRangeToEKEvent:(id)arg1 withTZID:(id)arg2;
 - (id)_componentsForDate:(id)arg1 timeZone:(id)arg2 isEnd:(BOOL)arg3 calendar:(id)arg4;
+- (void)_mergeTagsIntoEKEvent:(id)arg1 withStore:(id)arg2;
 - (id)_naturalLanguageEventTagsInTags:(id)arg1;
 - (id)dateForUTCDate:(id)arg1 withTimeZone:(id)arg2;
 - (double)duration;

@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <CameraUI/NSCoding-Protocol.h>
-
 @class CAMVideoThumbnailOutputConfiguration, NSArray;
 
-@interface CAMCaptureGraphConfiguration : NSObject <NSCoding>
+@interface CAMCaptureGraphConfiguration : NSObject
 {
+    BOOL _videoHDRSuspended;
+    BOOL _enableAutoLowLightVideoIfSupported;
     long long _mode;
     long long _device;
     long long _videoConfiguration;
@@ -26,6 +26,7 @@
 
 @property (readonly, nonatomic) long long audioConfiguration; // @synthesize audioConfiguration=_audioConfiguration;
 @property (readonly, nonatomic) long long device; // @synthesize device=_device;
+@property (readonly, nonatomic) BOOL enableAutoLowLightVideoIfSupported; // @synthesize enableAutoLowLightVideoIfSupported=_enableAutoLowLightVideoIfSupported;
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic) long long photoEncodingBehavior; // @synthesize photoEncodingBehavior=_photoEncodingBehavior;
 @property (readonly, nonatomic) unsigned long long previewConfiguration; // @synthesize previewConfiguration=_previewConfiguration;
@@ -33,14 +34,13 @@
 @property (readonly, nonatomic) long long previewSampleBufferVideoFormat; // @synthesize previewSampleBufferVideoFormat=_previewSampleBufferVideoFormat;
 @property (readonly, nonatomic) long long videoConfiguration; // @synthesize videoConfiguration=_videoConfiguration;
 @property (readonly, nonatomic) long long videoEncodingBehavior; // @synthesize videoEncodingBehavior=_videoEncodingBehavior;
+@property (readonly, nonatomic, getter=isVideoHDRSuspended) BOOL videoHDRSuspended; // @synthesize videoHDRSuspended=_videoHDRSuspended;
 @property (readonly, nonatomic) CAMVideoThumbnailOutputConfiguration *videoThumbnailOutputConfiguration; // @synthesize videoThumbnailOutputConfiguration=_videoThumbnailOutputConfiguration;
 
 - (void).cxx_destruct;
 - (id)completeDescription;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 previewConfiguration:(unsigned long long)arg5 previewSampleBufferVideoFormat:(long long)arg6 previewFilters:(id)arg7 videoThumbnailOutputConfiguration:(id)arg8 photoEncodingBehavior:(long long)arg9 videoEncodingBehavior:(long long)arg10;
-- (id)initWithCoder:(id)arg1;
+- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 previewConfiguration:(unsigned long long)arg5 previewSampleBufferVideoFormat:(long long)arg6 previewFilters:(id)arg7 videoThumbnailOutputConfiguration:(id)arg8 photoEncodingBehavior:(long long)arg9 videoEncodingBehavior:(long long)arg10 enableAutoLowLightVideoIfSupported:(BOOL)arg11 videoHDRSuspended:(BOOL)arg12;
 - (id)shortDescription;
 
 @end

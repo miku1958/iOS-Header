@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPickerView.h>
+#import <UIKitCore/UIPickerView.h>
 
 __attribute__((visibility("hidden")))
 @interface UIPrintRangePickerView : UIPickerView

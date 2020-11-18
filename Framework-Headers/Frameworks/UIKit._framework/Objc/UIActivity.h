@@ -4,22 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIActivityExtensionItemDataProviding-Protocol.h>
-#import <UIKit/UIActivityExtensionItemDataReceiving-Protocol.h>
+#import <UIKitCore/UIActivityExtensionItemDataProviding-Protocol.h>
+#import <UIKitCore/UIActivityExtensionItemDataReceiving-Protocol.h>
 
-@class NSExtension, NSString, NSUUID, UIImage, UIViewController;
+@class NSExtension, NSString, NSUUID, UIImage, UIViewController, _UIActivityResourceLoader;
 
 @interface UIActivity : NSObject <UIActivityExtensionItemDataProviding, UIActivityExtensionItemDataReceiving>
 {
     long long _defaultPriority;
+    _UIActivityResourceLoader *_activityImageLoader;
+    _UIActivityResourceLoader *_activitySettingsImageLoader;
     CDUnknownBlockType _activityCompletionWithItemsHandler;
     CDUnknownBlockType _didFinishPerformingActivityHandler;
+    long long _maxPreviews;
     unsigned long long _indexInApplicationDefinedActivities;
     NSUUID *_activityUUID;
 }
 
+@property (readonly, nonatomic) _UIActivityResourceLoader *_activityImageLoader;
+@property (readonly, nonatomic) _UIActivityResourceLoader *_activitySettingsImageLoader;
+@property (readonly, nonatomic) CDUnknownBlockType _backgroundPreheatBlock;
 @property (copy, nonatomic) CDUnknownBlockType activityCompletionWithItemsHandler; // @synthesize activityCompletionWithItemsHandler=_activityCompletionWithItemsHandler;
 @property (readonly, nonatomic) UIImage *activityImage;
 @property (readonly, nonatomic) NSString *activityTitle;
@@ -32,19 +38,26 @@
 @property (copy, nonatomic) CDUnknownBlockType didFinishPerformingActivityHandler; // @synthesize didFinishPerformingActivityHandler=_didFinishPerformingActivityHandler;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long indexInApplicationDefinedActivities; // @synthesize indexInApplicationDefinedActivities=_indexInApplicationDefinedActivities;
+@property (nonatomic) long long maxPreviews; // @synthesize maxPreviews=_maxPreviews;
 @property (readonly) Class superclass;
 
 + (id)_activityExtensionItemsForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;
 + (id)_activityImageForActionRepresentationImage:(id)arg1;
 + (id)_activityImageForApplicationBundleIdentifier:(id)arg1;
-+ (id)_activitySettingsImageForApplication:(id)arg1;
++ (id)_activityImageForBundleImageConfiguration:(id)arg1;
++ (id)_activitySettingsImageForApplicationBundleIdentifier:(id)arg1;
++ (id)_activitySettingsImageForBundleImageConfiguration:(id)arg1;
 + (id)_defaultFallbackActivityType;
++ (id)_imageByApplyingDefaultEffectsToImage:(id)arg1 activityCategory:(long long)arg2;
++ (void)_performAfterActivityImageLoadingCompletes:(CDUnknownBlockType)arg1;
 + (unsigned long long)_xpcAttributes;
 + (long long)activityCategory;
 + (Class)classForPreparingExtensionItemData;
 + (id)preparedActivityExtensionItemDataForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;
 - (void).cxx_destruct;
+- (id)_activityBundleImageConfiguration;
 - (id)_activityImage;
+- (id)_activitySettingsBundleImageConfiguration;
 - (id)_activitySettingsImage;
 - (BOOL)_activitySupportsPromiseURLs;
 - (id)_activityTypeUsingFallbackActivityTypeIfNecessary;
@@ -70,6 +83,7 @@
 - (struct CGSize)_thumbnailSize;
 - (BOOL)_wantsAttachmentURLItemData;
 - (BOOL)_wantsThumbnailItemData;
+- (void)_willBePerformedOrPresented;
 - (void)_willPresentAsFormSheet;
 - (void)activityDidFinish:(BOOL)arg1;
 - (void)activityDidFinish:(BOOL)arg1 items:(id)arg2 error:(id)arg3;

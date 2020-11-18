@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSURL, TIAssetAttributes;
 
@@ -30,9 +30,9 @@
 + (id)knownAssetTypes;
 + (BOOL)shouldLenientlyMatchWithContentItemsForRegion:(id)arg1;
 + (long long)supportedCompatibilityVersion;
+- (void).cxx_destruct;
 - (void)addAssertion;
 - (id)assetContentItemsMatching:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (BOOL)hasAssertions;
 - (unsigned long long)hash;

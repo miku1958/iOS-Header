@@ -9,9 +9,12 @@
 @interface NSNumber (HFAdditions)
 
 @property (readonly, copy, nonatomic) NSNumber *hf_absoluteValue;
+@property (readonly, nonatomic) BOOL hf_isFloatValue;
+@property (readonly, nonatomic) BOOL hf_isSignedValue;
 
 - (long long)hf_compareAbsoluteValue:(id)arg1;
 - (id)hf_largerNumber:(id)arg1;
 - (id)hf_smallerNumber:(id)arg1;
+- (id)hf_valueRoundedToNearestStepValue:(id)arg1 relativeToBaseValue:(id)arg2;
 @end
 

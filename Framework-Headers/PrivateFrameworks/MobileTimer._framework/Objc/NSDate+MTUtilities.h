@@ -7,10 +7,10 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (MTUtilities)
-+ (CDUnknownBlockType)mtCurrentDateProvider;
++ (id)mtNow;
 - (id)mtDateNearestMatchingComponents:(id)arg1;
 - (BOOL)mtIsAfterDate:(id)arg1;
-- (BOOL)mtIsAfterOrSameDate:(id)arg1;
+- (BOOL)mtIsAfterOrSameAsDate:(id)arg1;
 - (BOOL)mtIsBeforeDate:(id)arg1;
 - (BOOL)mtIsBeforeOrSameAsDate:(id)arg1;
 @end

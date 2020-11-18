@@ -46,7 +46,6 @@
 @property (readonly, copy, nonatomic) NSString *cacheGroup;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) BOOL continuousColorSamplingEnabled; // @synthesize continuousColorSamplingEnabled=_continuousColorSamplingEnabled;
-@property (readonly, nonatomic) BOOL contrastRequiresGradient;
 @property (readonly, nonatomic) struct CGRect cropRect;
 @property (readonly, nonatomic) double cropZoomScale;
 @property (readonly, copy) NSString *debugDescription;
@@ -84,7 +83,7 @@
 - (void)_beginDisallowRasterizationBlock;
 - (id)_blurReplacementImage;
 - (id)_blurredImage;
-- (id)_cacheKeyForParameters:(CDStruct_83077358)arg1 includingTint:(BOOL)arg2;
+- (id)_cacheKeyForParameters:(CDStruct_83077358)arg1 includingTint:(BOOL)arg2 downsampleFactor:(double)arg3;
 - (id)_computeAverageColor;
 - (double)_contrastInContentViewRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
 - (id)_displayedImage;
@@ -114,7 +113,6 @@
 - (double)contrast;
 - (double)contrastInRect:(struct CGRect)arg1;
 - (double)contrastInRect:(struct CGRect)arg1 contrastWithinBoxes:(double *)arg2 contrastBetweenBoxes:(double *)arg3;
-- (BOOL)contrastRequiresTreatments;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)imageForBackdropParameters:(CDStruct_83077358)arg1 includeTint:(BOOL)arg2;
@@ -123,9 +121,10 @@
 - (BOOL)isDisplayingWallpaperWithConfiguration:(id)arg1 forVariant:(long long)arg2;
 - (void)layoutSubviews;
 - (void)legibilitySettingsDidChange;
-- (BOOL)luminanceInRectRequiresTreatments:(struct CGRect)arg1;
+- (void)preheatImageData;
 - (void)prepareToAppear;
 - (void)prepareToDisappear;
+- (void)resetLegibilitySettingsForAverageColor:(id)arg1;
 - (void)setContentsRect:(struct CGRect)arg1;
 - (void)setCropRect:(struct CGRect)arg1 zoomScale:(double)arg2;
 - (void)setGeneratesBlurredImages:(BOOL)arg1;

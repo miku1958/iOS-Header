@@ -49,6 +49,7 @@
 @property (nonatomic) long long temporaryPersistenceOptions;
 @property (nonatomic, getter=isTimelapse) BOOL timelapse; // @dynamic timelapse;
 @property (nonatomic) long long torchMode; // @dynamic torchMode;
+@property (nonatomic) double userInitationTimestamp; // @dynamic userInitationTimestamp;
 @property (nonatomic) long long videoEncodingBehavior;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -16,12 +16,14 @@
 - (void)_axMoveToCancelButton;
 - (void)_axSpeakInfo;
 - (BOOL)accessibilityPerformEscape;
+- (BOOL)accessibilityPerformMagicTap;
 - (void)presentMedicalID;
 - (void)showSOSDialCanceled;
 - (void)showSOSDialCountdown;
 - (void)showSOSNotificationCanceled;
 - (void)showSOSNotificationCountdown;
 - (void)showSOSNotified;
+- (void)showSOSNumbersList;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUIMutableCommonAssetStorage, CoreThemeDocument, NSArray, NSMutableArray, NSString, NSThread, NSUUID, TDLogger;
 
@@ -80,6 +80,7 @@
 - (BOOL)distillCustomFonts;
 - (BOOL)distillNamedElements;
 - (BOOL)distillRenditions;
+- (BOOL)distillThemeAppearances;
 - (id)documentPath;
 - (void)finishDistillationWithSuccess:(BOOL)arg1;
 - (id)initWithDocument:(id)arg1 outputPath:(id)arg2;

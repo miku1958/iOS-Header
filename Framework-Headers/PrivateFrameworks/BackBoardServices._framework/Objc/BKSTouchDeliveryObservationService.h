@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/BKSEventFocusManagerClientInterface-Protocol.h>
 
-@class NSHashTable, NSMapTable, NSString, NSXPCConnection;
+@class BSMutableIntegerMap, NSHashTable, NSMapTable, NSString, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface BKSTouchDeliveryObservationService : NSObject <BKSEventFocusManagerClientInterface>
@@ -16,7 +16,7 @@
     NSObject<OS_dispatch_queue> *_calloutQueue;
     NSObject<OS_dispatch_queue> *_touchClientQueue;
     NSXPCConnection *_connection;
-    NSMapTable *_touchIdentifierToObserverLists;
+    BSMutableIntegerMap *_touchIdentifierToObserverLists;
     NSMapTable *_observersToTouchIdentifiers;
     NSHashTable *_generalObservers;
 }
@@ -28,9 +28,10 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *observersToTouchIdentifiers; // @synthesize observersToTouchIdentifiers=_observersToTouchIdentifiers;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSMapTable *touchIdentifierToObserverLists; // @synthesize touchIdentifierToObserverLists=_touchIdentifierToObserverLists;
+@property (strong, nonatomic) BSMutableIntegerMap *touchIdentifierToObserverLists; // @synthesize touchIdentifierToObserverLists=_touchIdentifierToObserverLists;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (BOOL)_addObserver:(id)arg1 forTouchIdentifier:(unsigned int)arg2;
 - (void)_connectToTouchDeliveryService;
 - (id)_observersForTouchIdentifier:(unsigned int)arg1;

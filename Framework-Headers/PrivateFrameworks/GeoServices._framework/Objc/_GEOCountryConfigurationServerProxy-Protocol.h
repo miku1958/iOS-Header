@@ -6,12 +6,11 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@protocol _GEOCountryConfigurationServerProxyDelegate;
+@class NSObject;
+@protocol OS_dispatch_queue, _GEOCountryConfigurationServerProxyDelegate;
 
 @protocol _GEOCountryConfigurationServerProxy <NSObject>
-
-@property (weak, nonatomic) id<_GEOCountryConfigurationServerProxyDelegate> delegate;
-
-- (void)updateCountryCode:(void (^)(NSError *))arg1;
+- (id)initWithDelegate:(id<_GEOCountryConfigurationServerProxyDelegate>)arg1 delegateQueue:(NSObject<OS_dispatch_queue> *)arg2;
+- (void)updateCountryCodeWithCallbackQueue:(NSObject<OS_dispatch_queue> *)arg1 callback:(void (^)(NSError *))arg2;
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -25,6 +25,7 @@
 + (id)predicateForContactsMatchingMultivalueProperty:(int)arg1 value:(id)arg2;
 + (id)predicateForContactsMatchingName:(id)arg1 addressBook:(void *)arg2;
 + (id)predicateForContactsMatchingOrganizationName:(id)arg1;
++ (id)predicateForContactsMatchingPreferredChannel:(id)arg1 limitOne:(BOOL)arg2;
 + (id)predicateForContactsWithLegacyIdentifier:(int)arg1;
 + (id)predicateForContactsWithUUIDs:(id)arg1 ignoreUnifiedIdentifiers:(BOOL)arg2;
 + (id)predicateForSingleContactMatchingMultivalueProperty:(int)arg1 value:(id)arg2;

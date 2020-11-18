@@ -6,12 +6,11 @@
 
 #import <AccountsUI/ACUIViewController.h>
 
-@class ACAccount, NSArray, NSMutableArray, NSMutableDictionary, NSString, PSSpecifier;
+@class ACAccount, NSArray, NSMutableDictionary, NSString, PSSpecifier;
 
 @interface ACUIDataclassConfigurationViewController : ACUIViewController
 {
     BOOL _forceMailSetup;
-    NSMutableArray *_dirtyDataclassCells;
     NSString *_accountIdentifier;
     NSMutableDictionary *_allDesiredDataclassActions;
     BOOL _isMergingSyncData;
@@ -45,20 +44,18 @@
 + (BOOL)shouldPresentAsModalSheet;
 - (void).cxx_destruct;
 - (id)_accountIdentifier;
-- (id)_activityInProgressTextForDataclass:(id)arg1 isBeingEnabled:(BOOL)arg2;
 - (BOOL)_confirmDeleteLocalDataForDataclasses:(id)arg1;
 - (BOOL)_confirmKeepLocalDataForDataclasses:(id)arg1;
 - (BOOL)_confirmSyncDelete;
 - (void)_enableAllProvisionedDataclassesWithoutRequringUserInteraction;
 - (BOOL)_isShowingDeleteAccountButton;
-- (void)_markDataclassSwitchCellAsDirty:(id)arg1;
 - (id)_navigationTitle;
 - (void)_notifyOfAccountSetupCompletion;
 - (id)_orderDataclassList:(id)arg1;
 - (BOOL)_promptUserToConfirmAccountDeletion;
 - (long long)_promptUserToConfirmAccountSyncDeletion;
 - (void)_setDataclass:(id)arg1 enabled:(BOOL)arg2;
-- (void)_showDelayedActivityInProgressUIWithMessage:(id)arg1;
+- (id)_setupSpinnerTimerForSpecifier:(id)arg1;
 - (id)_specifiersForDataclasses:(id)arg1;
 - (Class)accountInfoControllerClass;
 - (void)appendDeleteAccountButton;
@@ -72,7 +69,6 @@
 - (id)displayedShortAccountTypeString;
 - (void)doneButtonTapped:(id)arg1;
 - (void)forceMailSetup;
-- (void)hideActivityInProgressUIWithDelay:(double)arg1;
 - (id)init;
 - (BOOL)isAppleMailAccount:(id)arg1;
 - (id)messageForAccountDeletionProgressUI;
@@ -85,7 +81,6 @@
 - (void)operationsHelper:(id)arg1 willSaveAccount:(id)arg2;
 - (id)otherSpecifiers;
 - (void)reloadDynamicSpecifiersWithAnimation:(BOOL)arg1;
-- (void)resetDirtyDataclassSwitchCells;
 - (void)setDataclass:(id)arg1 enabled:(BOOL)arg2;
 - (BOOL)shouldAutomaticallyTryEnablingDataclassDuringSetup:(id)arg1;
 - (BOOL)shouldShowOtherSpecifiersDuringFirstSetup;

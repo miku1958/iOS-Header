@@ -53,6 +53,7 @@
 - (id)copyrightTopicItem;
 - (void)dealloc;
 - (id)dynamicServerSectionsForIdentifiers:(id)arg1 level:(long long)arg2 parent:(id)arg3 tocMap:(id)arg4;
+- (void)fetchDataWithDataType:(long long)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)helpItemForID:(id)arg1;
 - (id)helpTopicItemForID:(id)arg1;
 - (id)helpTopicItemForName:(id)arg1;

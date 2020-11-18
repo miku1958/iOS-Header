@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, SCNProgram;
 
+__attribute__((visibility("hidden")))
 @interface SCNShadableHelper : NSObject <NSSecureCoding>
 {
     id _owner;
     SCNProgram *_program;
     NSDictionary *_shaderModifiers;
+    NSArray *_c3dShaderModifierCache;
     NSMutableArray *_argumentsNames;
     NSDictionary *_symbolToBinder;
     NSDictionary *_symbolToUnbinder;
@@ -32,11 +34,11 @@
 - (void)_customDecodingOfSCNShadableHelper:(id)arg1;
 - (void)_customEncodingOfSCNShadableHelper:(id)arg1;
 - (void)_didDecodeSCNShadableHelper:(id)arg1;
+- (void)_parseAndSetShaderModifier:(id)arg1;
 - (void)_programDidChange:(id)arg1;
 - (struct __C3DFXGLSLProgram *)_programFromPassAtIndex:(long long)arg1;
 - (void)_setC3DProgram;
 - (void)_setC3DProgramDelegate;
-- (void)_shaderModifiersDidChange;
 - (void)_startObservingProgram;
 - (void)_stopObservingProgram;
 - (struct __C3DFXTechnique *)_technique;
@@ -44,6 +46,7 @@
 - (void)_updateAllC3DProgramInputs;
 - (void)_updateC3DProgramInput:(struct __C3DFXGLSLProgram *)arg1 forSymbol:(id)arg2;
 - (void)_updateC3DProgramInputForSymbol:(id)arg1;
+- (void)copyModifiersFrom:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleBindingOfSymbol:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -52,6 +55,7 @@
 - (id)initWithOwner:(id)arg1;
 - (BOOL)isOpaque;
 - (void)ownerWillDie;
+- (id)shaderModifierCache;
 
 @end
 

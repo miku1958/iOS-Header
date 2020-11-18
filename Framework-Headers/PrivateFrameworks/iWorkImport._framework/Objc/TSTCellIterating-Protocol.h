@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <iWorkImport/TSTDataStoreIterating-Protocol.h>
+#import <iWorkImport/NSObject-Protocol.h>
 
 @class TSTInfo;
 @protocol TSTCellIteratorData;
 
-@protocol TSTCellIterating <TSTDataStoreIterating>
+@protocol TSTCellIterating <NSObject>
 
 @property (readonly, strong, nonatomic) TSTInfo *tableInfo;
 

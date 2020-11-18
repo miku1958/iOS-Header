@@ -6,18 +6,25 @@
 
 #import <ApplePushService/APSMessage.h>
 
-@class NSData, NSDate;
+@class APSIncomingMessageCheckpointTrace, NSData, NSDate;
 
 @interface APSIncomingMessage : APSMessage
 {
+    APSIncomingMessageCheckpointTrace *_checkpointTrace;
 }
 
+@property (strong, nonatomic) APSIncomingMessageCheckpointTrace *checkpointTrace; // @synthesize checkpointTrace=_checkpointTrace;
 @property (nonatomic, getter=wasFromStorage) BOOL fromStorage;
 @property (nonatomic, getter=wasLastMessageFromStorage) BOOL lastMessageFromStorage;
 @property (nonatomic) long long priority;
 @property (copy, nonatomic) NSDate *timestamp;
 @property (copy, nonatomic) NSData *token;
+@property (nonatomic, getter=isTracingEnabled) BOOL tracingEnabled;
+@property (copy, nonatomic) NSData *tracingUUID;
 
+- (void)dealloc;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

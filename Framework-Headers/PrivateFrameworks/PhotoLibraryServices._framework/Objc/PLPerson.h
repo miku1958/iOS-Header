@@ -6,22 +6,28 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
+#import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
 #import <PhotoLibraryServices/PLSyncablePerson-Protocol.h>
 
 @class NSDictionary, NSSet, NSString, PLDetectedFace, PLDetectedFaceGroup;
 
-@interface PLPerson : PLManagedObject <PLSyncablePerson>
+@interface PLPerson : PLManagedObject <PLSyncablePerson, PLCloudDeletable>
 {
 }
 
 @property (strong, nonatomic) PLDetectedFaceGroup *associatedFaceGroup; // @dynamic associatedFaceGroup;
+@property (nonatomic) short cloudDeleteState; // @dynamic cloudDeleteState;
+@property (readonly) long long cloudDeletionType;
 @property (nonatomic) short cloudLocalState;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
+@property (readonly, copy) NSString *cloudUUIDForDeletion;
 @property (nonatomic) int cloudVerifiedType; // @dynamic cloudVerifiedType;
 @property (nonatomic) int cloudVerifiedType; // @dynamic cloudVerifiedType;
 @property (strong, nonatomic) NSSet *clusterRejectedFaces; // @dynamic clusterRejectedFaces;
 @property (strong, nonatomic) NSDictionary *contactMatchingDictionary; // @dynamic contactMatchingDictionary;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSSet *detectedFaces; // @dynamic detectedFaces;
 @property (strong, nonatomic) NSString *displayName; // @dynamic displayName;
@@ -31,6 +37,7 @@
 @property (strong, nonatomic) NSString *fullName;
 @property (strong, nonatomic) NSString *fullName; // @dynamic fullName;
 @property (readonly, nonatomic) BOOL graphVerified;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inPersonNamingModel; // @dynamic inPersonNamingModel;
 @property (strong, nonatomic) NSSet *invalidMergeCandidates; // @dynamic invalidMergeCandidates;
@@ -50,6 +57,7 @@
 @property (strong, nonatomic) NSSet *rejectedFaces; // @dynamic rejectedFaces;
 @property (strong, nonatomic) NSSet *rejectedFacesNeedingFaceCrops; // @dynamic rejectedFacesNeedingFaceCrops;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (nonatomic) int type; // @dynamic type;
 @property (readonly, nonatomic) BOOL userVerified;
 @property (nonatomic) int verifiedType; // @dynamic verifiedType;
@@ -60,14 +68,17 @@
 + (id)_stringFromContact:(id)arg1 preferGivenName:(BOOL)arg2;
 + (id)allPersonsInManagedObjectContext:(id)arg1;
 + (void)batchFetchAssociatedPersonByFaceGroupUUIDWithFaceGroupUUIDs:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
-+ (void)batchFetchPersonUUIDsByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)batchFetchPersonUUIDsByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 inManagedObjectContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (void)batchFetchPersonsByAssetUUIDWithAssetUUIDs:(id)arg1 predicate:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (long long)cloudDeletionTypeForTombstone:(id)arg1;
++ (id)cloudUUIDKeyForDeletion;
 + (void)createAssociatedPersonForFaceGroup:(id)arg1;
 + (void)createAssociatedPersonForFaceGroup:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)displayNameFromContact:(id)arg1;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (void)enumerateAssetUUIDsForSearchIndexingWithPersonUUID:(id)arg1 managedObjectContext:(id)arg2 assetUUIDHandler:(CDUnknownBlockType)arg3;
++ (id)fetchFinalMergeTargetPersonForPersonWithUUID:(id)arg1 context:(id)arg2;
 + (id)fetchPersonCountByAssetUUIDForAssetUUIDs:(id)arg1 predicate:(id)arg2 error:(id *)arg3;
 + (id)fullNameFromContact:(id)arg1;
 + (id)insertIntoManagedObjectContext:(id)arg1 withPersonUUID:(id)arg2 fullName:(id)arg3 verifiedType:(int)arg4;
@@ -98,6 +109,7 @@
 - (BOOL)isSyncableChange;
 - (BOOL)isValidForPersistence;
 - (void)mergePersons:(id)arg1 withOptimalState:(id)arg2;
+- (id)momentShare;
 - (id)mutableFaceCrops;
 - (id)mutableFaces;
 - (id)mutableInvalidMergeCandidates;

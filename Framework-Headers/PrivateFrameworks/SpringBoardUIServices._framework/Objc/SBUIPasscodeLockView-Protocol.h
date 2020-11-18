@@ -6,7 +6,7 @@
 
 #import <SpringBoardUIServices/NSObject-Protocol.h>
 
-@class BSAnimationSettings, NSString, SBUIProudLockIconView, UIColor;
+@class BSAnimationSettings, NSString, UIColor;
 @protocol SBFLegibilitySettingsProvider, SBUIPasscodeLockViewDelegate;
 
 @protocol SBUIPasscodeLockView <NSObject>
@@ -18,8 +18,8 @@
 @property (nonatomic) BOOL biometricPresentationAncillaryButtonsVisible;
 @property (strong, nonatomic) UIColor *customBackgroundColor;
 @property (weak, nonatomic) id<SBUIPasscodeLockViewDelegate> delegate;
-@property (strong, nonatomic) SBUIProudLockIconView *overrideProudLockView;
 @property (readonly, nonatomic) NSString *passcode;
+@property (nonatomic) long long passcodeLockViewState;
 @property (nonatomic) BOOL playsKeypadSounds;
 @property (nonatomic) BOOL proudLockShowsBiometricStates;
 @property (nonatomic, getter=isScreenOn) BOOL screenOn;
@@ -40,6 +40,7 @@
 - (void)resetForSuccessViaPasscode:(BOOL)arg1;
 - (void)setAllowsStatusTextUpdatingOnResignFirstResponder:(BOOL)arg1;
 - (void)setKeypadVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setPasscodeLockViewState:(long long)arg1 animated:(BOOL)arg2;
 - (void)updateStatusText:(NSString *)arg1 subtitle:(NSString *)arg2 animated:(BOOL)arg3;
 @end
 

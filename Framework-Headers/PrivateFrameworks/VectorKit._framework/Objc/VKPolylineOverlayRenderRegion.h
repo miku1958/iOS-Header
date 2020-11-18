@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSSet;
 
@@ -13,12 +13,10 @@ __attribute__((visibility("hidden")))
 {
     NSSet *_tiles;
     Box_3d7e3c2c _visibleRect;
-    Box_3d7e3c2c _snappingRect;
-    vector_d0224be8 _rectsForSnapping;
     struct vector<VKTileKey, std::__1::allocator<VKTileKey>> _snappedTileKeys;
+    struct MultiRectRegion _snappingRegion;
 }
 
-@property (readonly, nonatomic) Box_3d7e3c2c snappingRect; // @synthesize snappingRect=_snappingRect;
 @property (readonly, nonatomic) NSSet *tiles; // @synthesize tiles=_tiles;
 @property (readonly, nonatomic) Box_3d7e3c2c visibleRect; // @synthesize visibleRect=_visibleRect;
 
@@ -27,7 +25,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)initForKeysInView:(id)arg1 tiles:(id)arg2 allowsSnapping:(BOOL)arg3;
 - (BOOL)isEquivalentToNewRegion:(id)arg1;
-- (const vector_d0224be8 *)rectsForSnapping;
+- (const struct MultiRectRegion *)snappingRegion;
 
 @end
 

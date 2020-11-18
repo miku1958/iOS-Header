@@ -16,6 +16,8 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_axAddIfVisible:(id)arg1 toArray:(id)arg2;
 - (void)_axAnnotateCollectionViewCellIfNeeded;
+- (BOOL)_axDidPostScreenChangeAfterAppearance;
+- (void)_axSetDidPostScreenChangeAfterAppearance:(BOOL)arg1;
 - (void)setSharedItemsAvailable:(BOOL)arg1;
 - (void)updateContentAreaAnimated:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;

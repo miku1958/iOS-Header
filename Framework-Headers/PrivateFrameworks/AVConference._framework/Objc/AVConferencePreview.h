@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVConferenceXPCClient, CALayer, NSString, VideoAttributes;
 @protocol AVConferencePreviewClientDelegate, OS_dispatch_queue;
@@ -29,11 +29,14 @@
 @property (strong, nonatomic) NSObject<AVConferencePreviewClientDelegate> *delegate; // @synthesize delegate;
 
 + (id)AVConferencePreviewSingleton;
+- (void)addStickerWithURL:(id)arg1 isFaceSticker:(BOOL)arg2 atPosition:(struct CGPoint)arg3 identifier:(id)arg4;
 - (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)autorelease;
 - (void)beginPIPToPreviewAnimation;
 - (void)beginPreviewToPIPAnimation;
 - (void)cameraDidBecomeAvailableForUniqueID:(id)arg1;
+- (void)cameraDidBecomeInterruptedForForUniqueID:(id)arg1 reason:(long long)arg2;
+- (void)clearAllStickers:(BOOL)arg1;
 - (void)connectLayer:(id)arg1 withSlot:(unsigned int)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -61,12 +64,13 @@
 - (oneway void)release;
 - (id)retain;
 - (unsigned long long)retainCount;
+- (void)setAnimoji:(id)arg1;
 - (void)setLocalCamera:(unsigned int)arg1;
-- (void)setLocalCameraWithPosition:(int)arg1;
 - (void)setLocalCameraWithUID:(id)arg1;
 - (void)setLocalScreenAttributes:(id)arg1;
 - (void)setLocalVideoAttributes:(id)arg1;
 - (void)setLocalVideoLayer:(id)arg1 front:(BOOL)arg2;
+- (void)setMemoji:(id)arg1;
 - (void)startPreview;
 - (void)startPreviewUnpausing:(BOOL)arg1;
 - (void)stopPreview;

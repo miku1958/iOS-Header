@@ -10,32 +10,24 @@
 
 @interface VNDetectTextRectanglesRequest : VNImageBasedRequest
 {
-    unsigned long long _algorithm;
-    NSString *_textRecognition;
-    unsigned long long _minimumCharacterPixelHeight;
-    BOOL _reportCharacterBoxes;
-    BOOL _detectDiacritics;
-    BOOL _minimizeFalseDetections;
 }
 
-@property (nonatomic) unsigned long long algorithm; // @synthesize algorithm=_algorithm;
-@property (nonatomic) BOOL detectDiacritics; // @synthesize detectDiacritics=_detectDiacritics;
-@property (nonatomic) BOOL minimizeFalseDetections; // @synthesize minimizeFalseDetections=_minimizeFalseDetections;
-@property (nonatomic) unsigned long long minimumCharacterPixelHeight; // @synthesize minimumCharacterPixelHeight=_minimumCharacterPixelHeight;
-@property (nonatomic) BOOL reportCharacterBoxes; // @synthesize reportCharacterBoxes=_reportCharacterBoxes;
-@property (copy, nonatomic) NSString *textRecognition; // @synthesize textRecognition=_textRecognition;
+@property (nonatomic) unsigned long long algorithm;
+@property (nonatomic) BOOL detectDiacritics;
+@property (nonatomic) BOOL minimizeFalseDetections;
+@property (nonatomic) unsigned long long minimumCharacterPixelHeight;
+@property (nonatomic) BOOL reportCharacterBoxes;
+@property (copy, nonatomic) NSString *textRecognition;
 
++ (Class)configurationClass;
 + (void)initialize;
 + (void)recordDefaultOptionsInDictionary:(id)arg1;
-- (void).cxx_destruct;
-- (BOOL)_detectCreditCardTextWithRequestPerformingContext:(id)arg1 error:(id *)arg2;
-- (BOOL)_detectTextWithRequestPerformingContext:(id)arg1 error:(id *)arg2;
+- (BOOL)_detectCreditCardTextWithRequestPerformingContext:(id)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)_detectTextWithRequestPerformingContext:(id)arg1 requestRevision:(unsigned long long)arg2 error:(id *)arg3;
 - (void)applyConfigurationOfRequest:(id)arg1;
-- (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithName:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
-- (id)sequencedRequestPreviousObservationsKey;
+- (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;
+- (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end
 

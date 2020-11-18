@@ -10,8 +10,6 @@
 
 @protocol _SFPBPointSize <NSObject>
 
-@property (readonly, nonatomic) BOOL hasHeight;
-@property (readonly, nonatomic) BOOL hasWidth;
 @property (strong, nonatomic) _SFPBGraphicalFloat *height;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBGraphicalFloat *width;

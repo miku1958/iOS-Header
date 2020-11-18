@@ -12,32 +12,40 @@
 
 @interface CEMNetworkCellularSettingsDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadAllowDataRoaming;
+    NSNumber *_payloadAllowVoiceRoaming;
+    NSNumber *_payloadAllowPersonalHotspot;
+    NSNumber *_payloadAllowGlobalBackgroundFetchWhenRoaming;
+    NSNumber *_payloadAllowCellularPlanModification;
+    NSNumber *_payloadAllowAppCellularDataModification;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadAllowCellularPlanModification;
-@property (readonly, nonatomic) NSNumber *payloadAllowDataRoaming;
-@property (readonly, nonatomic) NSNumber *payloadAllowGlobalBackgroundFetchWhenRoaming;
-@property (readonly, nonatomic) NSNumber *payloadAllowPersonalHotspot;
-@property (readonly, nonatomic) NSNumber *payloadAllowVoiceRoaming;
+@property (copy, nonatomic) NSNumber *payloadAllowAppCellularDataModification; // @synthesize payloadAllowAppCellularDataModification=_payloadAllowAppCellularDataModification;
+@property (copy, nonatomic) NSNumber *payloadAllowCellularPlanModification; // @synthesize payloadAllowCellularPlanModification=_payloadAllowCellularPlanModification;
+@property (copy, nonatomic) NSNumber *payloadAllowDataRoaming; // @synthesize payloadAllowDataRoaming=_payloadAllowDataRoaming;
+@property (copy, nonatomic) NSNumber *payloadAllowGlobalBackgroundFetchWhenRoaming; // @synthesize payloadAllowGlobalBackgroundFetchWhenRoaming=_payloadAllowGlobalBackgroundFetchWhenRoaming;
+@property (copy, nonatomic) NSNumber *payloadAllowPersonalHotspot; // @synthesize payloadAllowPersonalHotspot=_payloadAllowPersonalHotspot;
+@property (copy, nonatomic) NSNumber *payloadAllowVoiceRoaming; // @synthesize payloadAllowVoiceRoaming=_payloadAllowVoiceRoaming;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withAllowDataRoaming:(id)arg2 withAllowVoiceRoaming:(id)arg3 withAllowPersonalHotspot:(id)arg4 withAllowGlobalBackgroundFetchWhenRoaming:(id)arg5 withAllowCellularPlanModification:(id)arg6 withAllowAppCellularDataModification:(id)arg7;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

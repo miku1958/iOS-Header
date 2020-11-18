@@ -14,6 +14,7 @@
     NSObject<OS_dispatch_queue> *_appServiceQueue;
 }
 
++ (void)initialize;
 - (void).cxx_destruct;
 - (void)_cancelAwakeNotifyToken;
 - (void)_registerAwakeNotifyToken;

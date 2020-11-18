@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CIBurstActionClassifier, CIBurstImageFaceAnalysisContext, CIBurstYUVImage, NSArray, NSCountedSet, NSDictionary, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
@@ -33,28 +33,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *statsByImageIdentifier;
     NSMutableDictionary *clusterByImageIdentifier;
     NSString *burstLogFileName;
-    struct __sFILE {
-        char *_field1;
-        int _field2;
-        int _field3;
-        short _field4;
-        short _field5;
-        struct __sbuf _field6;
-        int _field7;
-        void *_field8;
-        CDUnknownFunctionPointerType _field9;
-        CDUnknownFunctionPointerType _field10;
-        CDUnknownFunctionPointerType _field11;
-        CDUnknownFunctionPointerType _field12;
-        struct __sbuf _field13;
-        struct __sFILEX *_field14;
-        int _field15;
-        unsigned char _field16[3];
-        unsigned char _field17[1];
-        struct __sbuf _field18;
-        int _field19;
-        long long _field20;
-    } *burstLogFileHandle;
+    struct __sFILE *burstLogFileHandle;
     CIBurstActionClassifier *actionClassifier;
     int curClusterIndexToProcess;
     NSMutableArray *bestImageIdentifiersArray;

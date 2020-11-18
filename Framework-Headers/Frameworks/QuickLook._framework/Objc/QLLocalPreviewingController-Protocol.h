@@ -16,6 +16,7 @@
 @optional
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPinchToDismiss;
+- (BOOL)canShowNavBar;
 - (BOOL)canShowToolBar;
 - (BOOL)canSwipeToDismiss;
 - (BOOL)canToggleFullScreen;

@@ -20,7 +20,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong) id<RMConfigurationXPCInterface> target; // @synthesize target=_target;
+@property (strong, nonatomic) id<RMConfigurationXPCInterface> target; // @synthesize target=_target;
 
 - (void).cxx_destruct;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;

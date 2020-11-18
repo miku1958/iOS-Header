@@ -22,6 +22,7 @@
     } _needsUpdateFlags;
     BOOL _enabled;
     BOOL _displayingVideoComplement;
+    float _hdrGain;
     CALayer *_layer;
     ISLivePhotoUIView *_livePhotoView;
     CAFilter *_filter;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) long long filterType; // @synthesize filterType=_filterType;
 @property (strong, nonatomic) CALayer *filteredLayer; // @synthesize filteredLayer=_filteredLayer;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) float hdrGain; // @synthesize hdrGain=_hdrGain;
 @property (readonly, nonatomic) double intensity; // @synthesize intensity=_intensity;
 @property (nonatomic) double intensityAnimationDuration; // @synthesize intensityAnimationDuration=_intensityAnimationDuration;
 @property (readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
@@ -63,7 +65,7 @@
 - (void)_updateIfNeeded;
 - (void)basePlayerUIView:(id)arg1 didChange:(unsigned long long)arg2 withAnimationDuration:(double)arg3;
 - (id)init;
-- (id)initWithContentType:(long long)arg1 filterType:(long long)arg2;
+- (id)initWithContentType:(long long)arg1 filterType:(long long)arg2 hdrGain:(float)arg3;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)performChanges_Private:(CDUnknownBlockType)arg1;
 - (void)prepareForReuse;

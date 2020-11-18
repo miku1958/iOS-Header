@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSAttributedString, NSMutableArray, NSString, RMList;
+@class CPRMList, NSAttributedString, NSMutableArray, NSString;
 
 @interface CPReadingModel : NSObject
 {
@@ -30,7 +30,7 @@
     long long _pageNumberMemo;
     CDStruct_627e0f85 _textRangeMemo;
     struct _NSRange _rangeMemo;
-    RMList *_currentList;
+    CPRMList *_currentList;
 }
 
 - (void)addListsInColumn:(struct CGPDFNode *)arg1;

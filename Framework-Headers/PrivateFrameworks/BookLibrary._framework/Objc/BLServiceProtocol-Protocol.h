@@ -15,7 +15,7 @@
 - (void)getCrashSimulationOverrideValuesWithReply:(void (^)(BOOL, BOOL, BOOL, BOOL, NSError *))arg1;
 - (void)getValueSimulateDeviceOutOfSpaceWithReply:(void (^)(BOOL, NSError *))arg1;
 - (void)pauseDownloadWithID:(NSString *)arg1 withReply:(void (^)(NSError *))arg2;
-- (void)purchaseWithBuyParameters:(NSString *)arg1 storeID:(NSString *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
+- (void)purchaseWithBuyParameters:(NSString *)arg1 storeID:(NSString *)arg2 reply:(void (^)(NSString *, BLPurchaseResponse *, NSError *))arg3;
 - (void)requestDownloadWithMetadata:(NSDictionary *)arg1 isRestore:(BOOL)arg2 reply:(void (^)(NSString *, NSError *))arg3;
 - (void)requestDownloadWithParameters:(NSDictionary *)arg1 reply:(void (^)(NSString *, NSError *))arg2;
 - (void)requestDownloadsWithMetadata:(NSArray *)arg1 areRestore:(BOOL)arg2 reply:(void (^)(NSArray *, NSError *))arg3;

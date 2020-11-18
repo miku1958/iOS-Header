@@ -8,7 +8,7 @@
 
 #import <VoiceMemos/RCCaptureSessionObserver-Protocol.h>
 
-@class NSString, RCAudioSessionRoutingController, RCCaptureSession, _RCCaptureInputDeviceSession;
+@class NSString, RCAudioSessionRoutingController, _RCCaptureInputDeviceSession;
 
 @interface RCCaptureInputDevice : NSObject <RCCaptureSessionObserver>
 {
@@ -20,7 +20,6 @@
     _RCCaptureInputDeviceSession *_activeInputSession;
 }
 
-@property (readonly, nonatomic) RCCaptureSession *activeCaptureSession; // @dynamic activeCaptureSession;
 @property (readonly, nonatomic) NSString *activeInputRouteName; // @synthesize activeInputRouteName=_activeInputRouteName;
 @property (strong, nonatomic) _RCCaptureInputDeviceSession *activeInputSession; // @synthesize activeInputSession=_activeInputSession;
 @property (readonly, nonatomic) RCAudioSessionRoutingController *audioRouteController; // @synthesize audioRouteController=_audioRouteController;
@@ -34,6 +33,7 @@
 @property (strong, nonatomic) _RCCaptureInputDeviceSession *preparingInputSession; // @synthesize preparingInputSession=_preparingInputSession;
 @property (readonly) Class superclass;
 
++ (id)activeCaptureSession;
 + (id)sharedCaptureDevice;
 - (void).cxx_destruct;
 - (id)_activeOrPreparingCaptureSession;
@@ -50,9 +50,10 @@
 - (void)_updateInputAvailabilityAndPostNotification:(BOOL)arg1;
 - (void)_updateSelectedRouteAndPostNotification:(BOOL)arg1;
 - (void)beginRecordingWithCaptureWaveformDataSource:(id)arg1 useStartSoundEffect:(BOOL)arg2 sessionPreparedBlock:(CDUnknownBlockType)arg3 sessionFinishedBlock:(CDUnknownBlockType)arg4;
-- (void)captureSession:(id)arg1 destinationFragmentDurationDidChangeToDuration:(double)arg2;
+- (void)captureSession:(id)arg1 destinationFragmentDurationDidChangeToDuration:(double)arg2 captureTime:(double)arg3 usingDisplayLinkSmoothing:(BOOL)arg4;
 - (void)captureSession:(id)arg1 didFinishWithSuccess:(BOOL)arg2;
 - (void)captureSession:(id)arg1 rateDidChangeToRate:(float)arg2;
+- (void)dealloc;
 - (void)fetchActiveInputRouteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)finishRecordingWithSession:(id)arg1 sessionFinishedBlock:(CDUnknownBlockType)arg2;
 - (id)init;

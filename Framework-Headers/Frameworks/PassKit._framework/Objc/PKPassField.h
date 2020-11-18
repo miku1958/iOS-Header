@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface PKPassField : NSObject <NSSecureCoding>
 {
@@ -20,14 +20,22 @@
     NSString *_changeMessage;
     long long _textAlignment;
     long long _cellStyle;
+    unsigned long long _row;
     unsigned long long _dataDetectorTypes;
+    NSDictionary *_semantics;
+    long long _foreignReferenceType;
+    NSString *_foreignReferenceIdentifier;
 }
 
 @property (nonatomic) long long cellStyle; // @synthesize cellStyle=_cellStyle;
 @property (copy, nonatomic) NSString *changeMessage; // @synthesize changeMessage=_changeMessage;
 @property (nonatomic) unsigned long long dataDetectorTypes; // @synthesize dataDetectorTypes=_dataDetectorTypes;
+@property (strong, nonatomic) NSString *foreignReferenceIdentifier; // @synthesize foreignReferenceIdentifier=_foreignReferenceIdentifier;
+@property (nonatomic) long long foreignReferenceType; // @synthesize foreignReferenceType=_foreignReferenceType;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (nonatomic) unsigned long long row; // @synthesize row=_row;
+@property (copy, nonatomic) NSDictionary *semantics; // @synthesize semantics=_semantics;
 @property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (copy, nonatomic) id unformattedValue; // @synthesize unformattedValue=_unformattedValue;
@@ -40,7 +48,6 @@
 - (void)flushCachedValue;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

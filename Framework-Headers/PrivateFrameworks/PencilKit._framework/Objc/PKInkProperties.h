@@ -10,10 +10,16 @@
 {
 }
 
++ (id)arrayForBezierControlPoints:(CDStruct_d2b197d1)arg1;
++ (BOOL)bezierControlPoints:(CDStruct_d2b197d1)arg1 isEqual:(CDStruct_d2b197d1)arg2;
++ (id)blendModeNames;
 + (CDStruct_d2b197d1)controlPointsForFunctionType:(unsigned long long)arg1;
++ (double)defaultValueForInput:(unsigned long long)arg1;
 + (id)functionNames;
++ (unsigned long long)functionTypeForBezierControlPoints:(CDStruct_d2b197d1)arg1;
 + (unsigned long long)functionTypeForName:(id)arg1;
 + (id)inkPropertyNames;
++ (id)inkTypeNames;
 + (id)inputMaskNames;
 + (id)inputNames;
 + (CDStruct_c3b9c2ee)rangeForInkProperty:(unsigned long long)arg1;

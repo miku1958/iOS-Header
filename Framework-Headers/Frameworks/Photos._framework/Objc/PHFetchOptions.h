@@ -16,16 +16,19 @@
     NSNumber *_includeAllBurstAssetsNumber;
     NSNumber *_includeAssetSourceTypesNumber;
     NSNumber *_fetchLimitNumber;
+    NSNumber *_fetchOffsetNumber;
+    NSNumber *_curationTypeNumber;
     NSNumber *_wantsIncrementalChangeDetailsNumber;
     NSNumber *_chunkSizeForFetchNumber;
     NSNumber *_cacheSizeForFetchNumber;
     NSNumber *_reverseSortOrderNumber;
-    NSNumber *_includeWallpaperAssetsNumber;
     NSNumber *_includeDuplicateAssetsNumber;
     NSNumber *_includePendingMemoriesNumber;
     NSNumber *_includeRejectedMemoriesNumber;
     NSNumber *_personContextNumber;
     NSNumber *_includeTrashedAssetsNumber;
+    NSNumber *_includeTrashedMomentSharesNumber;
+    NSNumber *_includeExpiredMomentSharesNumber;
     NSNumber *_includeFavoriteMemoriesCollectionListNumber;
     NSNumber *_includePlacesSmartAlbumNumber;
     NSNumber *_excludeMontageAssetsNumber;
@@ -39,6 +42,7 @@
     NSNumber *_isExclusivePredicateNumber;
     NSMutableSet *_propertySets;
     NSNumber *_shouldPrefetchCountNumber;
+    NSNumber *_sharingStreamNumber;
     NSPredicate *_predicate;
     NSArray *_sortDescriptors;
     NSArray *_customObjectIDSortOrder;
@@ -46,19 +50,23 @@
     NSPredicate *_internalPredicate;
     NSArray *_internalSortDescriptors;
     NSPredicate *_internalInclusionPredicate;
+    NSSet *_verifiedPersonTypes;
     PHPhotoLibrary *_photoLibrary;
 }
 
 @property (nonatomic) long long cacheSizeForFetch;
 @property (nonatomic) long long chunkSizeForFetch;
+@property (nonatomic) long long curationType;
 @property (strong, nonatomic) NSArray *customObjectIDSortOrder; // @synthesize customObjectIDSortOrder=_customObjectIDSortOrder;
 @property (nonatomic) BOOL excludeMontageAssets;
 @property (nonatomic) unsigned long long fetchLimit;
+@property (nonatomic) unsigned long long fetchOffset;
 @property (strong, nonatomic) NSArray *fetchPropertySets;
 @property (readonly, nonatomic) NSSet *fetchPropertySetsAsSet;
 @property (nonatomic) BOOL includeAllBurstAssets;
 @property (nonatomic) unsigned long long includeAssetSourceTypes;
 @property (nonatomic) BOOL includeDuplicateAssets;
+@property (nonatomic) BOOL includeExpiredMomentShares;
 @property (nonatomic) BOOL includeFavoriteMemoriesCollectionList;
 @property (nonatomic) BOOL includeHiddenAssets;
 @property (nonatomic) BOOL includeNonvisibleFaces;
@@ -70,7 +78,7 @@
 @property (nonatomic) BOOL includePlacesSmartAlbum;
 @property (nonatomic) BOOL includeRejectedMemories;
 @property (nonatomic) BOOL includeTrashedAssets;
-@property (nonatomic) BOOL includeWallpaperAssets;
+@property (nonatomic) BOOL includeTrashedMomentShares;
 @property (strong, nonatomic) NSPredicate *internalInclusionPredicate; // @synthesize internalInclusionPredicate=_internalInclusionPredicate;
 @property (strong, nonatomic) NSPredicate *internalPredicate; // @synthesize internalPredicate=_internalPredicate;
 @property (strong, nonatomic) NSArray *internalSortDescriptors; // @synthesize internalSortDescriptors=_internalSortDescriptors;
@@ -81,11 +89,14 @@
 @property (strong, nonatomic) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (strong, nonatomic) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (nonatomic) BOOL reverseSortOrder;
+@property (nonatomic) unsigned long long sharingStream;
 @property (nonatomic) BOOL shouldPrefetchCount;
 @property (strong, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 @property (strong, nonatomic) NSString *transientIdentifier; // @synthesize transientIdentifier=_transientIdentifier;
+@property (copy, nonatomic) NSSet *verifiedPersonTypes; // @synthesize verifiedPersonTypes=_verifiedPersonTypes;
 @property (nonatomic) BOOL wantsIncrementalChangeDetails;
 
++ (id)effectivePhotoLibraryForFetchOptions:(id)arg1;
 + (id)fetchOptionsWithInclusiveDefaults;
 - (void).cxx_destruct;
 - (void)addFetchPropertySets:(id)arg1;

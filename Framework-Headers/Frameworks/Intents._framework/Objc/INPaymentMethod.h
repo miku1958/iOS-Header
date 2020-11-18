@@ -7,20 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
-#import <Intents/INPaymentMethodExport-Protocol.h>
+#import <Intents/INKeyImageProducing-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class INImage, NSString;
 
-@interface INPaymentMethod : NSObject <INCacheableContainer, INPaymentMethodExport, NSCopying, NSSecureCoding>
+@interface INPaymentMethod : NSObject <INCacheableContainer, INKeyImageProducing, NSCopying, NSSecureCoding>
 {
     long long _type;
     NSString *_name;
-    NSString *_identificationHint;
     INImage *_icon;
+    NSString *_identificationHint;
 }
 
+@property (readonly) INImage *_keyImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -29,25 +30,25 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) INImage *icon; // @synthesize icon=_icon;
 @property (readonly, copy, nonatomic) NSString *identificationHint; // @synthesize identificationHint=_identificationHint;
-@property (readonly, nonatomic) NSString *identifier;
-@property (readonly, nonatomic) INImage *image;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSString *title;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)applePayPaymentMethod;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 - (id)_dictionaryRepresentation;
+- (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_cacheableObjects;
+- (id)_intents_localizedCopyForLanguage:(id)arg1;
+- (id)_intents_readableDescriptionForLanguage:(id)arg1;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 title:(id)arg2 image:(id)arg3;
 - (id)initWithType:(long long)arg1 name:(id)arg2 identificationHint:(id)arg3 icon:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 

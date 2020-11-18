@@ -17,6 +17,7 @@
 }
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
+@property (readonly, nonatomic) double firstLineBaseline;
 @property (copy, nonatomic) NSString *text;
 @property (nonatomic) BOOL usesShortTextWidth; // @synthesize usesShortTextWidth=_usesShortTextWidth;
 

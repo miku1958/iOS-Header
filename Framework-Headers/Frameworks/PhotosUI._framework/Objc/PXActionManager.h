@@ -19,6 +19,7 @@
 + (void)setEnsureUnlockedDeviceHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)actionPerformerForActionType:(id)arg1;
+- (id)alertActionForActionType:(id)arg1;
 - (id)barButtonItemForActionType:(id)arg1;
 - (BOOL)canPerformActionType:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;

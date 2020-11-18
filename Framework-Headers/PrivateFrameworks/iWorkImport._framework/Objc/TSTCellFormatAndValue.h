@@ -4,72 +4,71 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/TSSPropertyCommandSerializing-Protocol.h>
 #import <iWorkImport/TSTCellDiffing-Protocol.h>
 
-@class NSDate, NSString, TSUFormatObject, TSWPStorage;
+@class NSDate, NSString, TSKFormat, TSWPStorage;
 
 __attribute__((visibility("hidden")))
 @interface TSTCellFormatAndValue : NSObject <NSCopying, TSTCellDiffing, TSSPropertyCommandSerializing>
 {
-    unsigned int mValueType:8;
-    BOOL mUseAllSpareFormats;
-    BOOL mSuppressApplyValue;
-    BOOL mApplySpareFormatOnly;
-    int mSpareFormatType;
-    union {
-        double mDouble;
-        BOOL mBool;
-        NSDate *mDate;
-        NSString *mString;
-        TSWPStorage *mStorage;
-    } mValue;
-    NSString *mFormattedValue;
-    TSWPStorage *mFormattedRichTextStorage;
-    unsigned short mExplicitFlags;
-    int mCurrentFormatType;
-    TSUFormatObject *mNumberFormat;
-    TSUFormatObject *mCurrencyFormat;
-    TSUFormatObject *mDateFormat;
-    TSUFormatObject *mDurationFormat;
-    TSUFormatObject *mStepperSliderFormat;
-    TSUFormatObject *mBaseFormat;
-    TSUFormatObject *mMultipleChoiceFormat;
-    TSUFormatObject *mCustomFormat;
+    unsigned int _valueType:8;
+    BOOL _useAllSpareFormats;
+    BOOL _suppressApplyValue;
+    BOOL _applySpareFormatOnly;
+    int _spareFormatType;
+    BOOL _boolValue;
+    double _doubleValue;
+    NSObject *_objValue;
+    NSString *_formattedValue;
+    TSWPStorage *_formattedRichTextStorage;
+    unsigned short _explicitFlags;
+    unsigned int _cellFormatKind;
+    TSKFormat *_numberFormat;
+    TSKFormat *_currencyFormat;
+    TSKFormat *_dateFormat;
+    TSKFormat *_durationFormat;
+    TSKFormat *_booleanFormat;
+    TSKFormat *_textFormat;
 }
 
+@property (readonly, copy, nonatomic) NSDate *dateValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isApplySpareFormatOnly;
+@property (readonly, nonatomic) BOOL isFormulaSyntaxError;
+@property (readonly, nonatomic) double numberOrCurrencyDoubleValue;
+@property (readonly, nonatomic) TSWPStorage *richTextOrErrorTextStorageValue;
+@property (readonly, copy, nonatomic) NSString *stringValue;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) int valueType;
 
 + (id)cellDiffProperties;
-+ (id)formatAndValueForCoercingControlCellToNonControlType:(id)arg1;
 + (id)formatAndValueFromCell:(id)arg1 applySpareFormatOnly:(int)arg2;
 + (id)formatAndValueFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2;
 + (id)formatAndValueFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2 forceNoContent:(BOOL)arg3;
 + (id)formatAndValueFromRichTextCell:(id)arg1 updatingStorageWithBlock:(CDUnknownBlockType)arg2;
+- (void).cxx_destruct;
 - (void)applyToCell:(id)arg1;
+- (id)cellValueWithLocale:(id)arg1;
 - (id)copyForApplyingNoContent;
 - (id)copyForApplyingNoContentWithSuppressApplyValue:(BOOL)arg1;
 - (id)copyForNotApplyingValue;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)getCurrentFormat;
 - (BOOL)hasStringContentMatchingCell:(id)arg1;
 - (id)initFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2;
 - (id)initFromCell:(id)arg1 useAllSpareFormats:(BOOL)arg2 forceNoContent:(BOOL)arg3 applySpareFormatOnly:(int)arg4;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
-- (BOOL)isControl;
-- (BOOL)isFormulaSyntaxError;
 - (id)objectByRemovingPropertiesInMap:(id)arg1 addingPropertiesInMap:(id)arg2 updateInverseResetPropertyMap:(id)arg3 updateInverseSetPropertyMap:(id)arg4;
-- (id *)p_formatObjectForFormatType:(int)arg1;
-- (id)p_sikritCopyStorage:(id)arg1;
+- (id)p_copyStorage:(id)arg1;
+- (id)p_formatForFormatType:(unsigned int)arg1;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
-- (int)valueType;
+- (void)setDateValue:(id)arg1;
 
 @end
 

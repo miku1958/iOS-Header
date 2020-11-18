@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCMediaStreamDelegate-Protocol.h>
 
@@ -37,6 +37,7 @@
 @property (nonatomic, getter=isRTPTimeOutEnabled) BOOL rtpTimeOutEnabled;
 @property (nonatomic) double rtpTimeOutIntervalSec;
 @property (readonly) Class superclass;
+@property (nonatomic) float volume;
 
 + (id)capabilities;
 - (BOOL)configure:(id)arg1 error:(id *)arg2;

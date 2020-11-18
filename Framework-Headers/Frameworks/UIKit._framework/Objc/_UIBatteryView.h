@@ -4,53 +4,72 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class CALayer, CAShapeLayer, UIColor, _UIBatteryViewAXHUDImageCacheInfo;
+#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
 
-@interface _UIBatteryView : UIView
+@class CALayer, CAShapeLayer, NSString, UIAccessibilityHUDItem, UIColor, UILabel, _UIBatteryViewAXHUDImageCacheInfo;
+
+@interface _UIBatteryView : UIView <_UIStatusBarDisplayable>
 {
     BOOL _saverModeActive;
     BOOL _showsInlineChargingIndicator;
-    BOOL _compact;
-    long long _sizeCategory;
+    BOOL _showsPercentage;
     double _chargePercent;
     long long _chargingState;
     UIColor *_fillColor;
     UIColor *_bodyColor;
     UIColor *_pinColor;
+    long long _iconSize;
     CAShapeLayer *_bodyLayer;
     CAShapeLayer *_pinLayer;
     CALayer *_fillLayer;
     CAShapeLayer *_boltMaskLayer;
     CAShapeLayer *_boltLayer;
+    UILabel *_percentageLabel;
     _UIBatteryViewAXHUDImageCacheInfo *_accessibilityHUDImageCacheInfo;
+    long long _internalSizeCategory;
 }
 
 @property (strong, nonatomic) _UIBatteryViewAXHUDImageCacheInfo *accessibilityHUDImageCacheInfo; // @synthesize accessibilityHUDImageCacheInfo=_accessibilityHUDImageCacheInfo;
+@property (readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property (copy, nonatomic) UIColor *bodyColor; // @synthesize bodyColor=_bodyColor;
 @property (strong, nonatomic) CAShapeLayer *bodyLayer; // @synthesize bodyLayer=_bodyLayer;
 @property (strong, nonatomic) CAShapeLayer *boltLayer; // @synthesize boltLayer=_boltLayer;
 @property (strong, nonatomic) CAShapeLayer *boltMaskLayer; // @synthesize boltMaskLayer=_boltMaskLayer;
 @property (nonatomic) double chargePercent; // @synthesize chargePercent=_chargePercent;
 @property (nonatomic) long long chargingState; // @synthesize chargingState=_chargingState;
-@property (nonatomic) BOOL compact; // @synthesize compact=_compact;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) UIColor *fillColor; // @synthesize fillColor=_fillColor;
 @property (strong, nonatomic) CALayer *fillLayer; // @synthesize fillLayer=_fillLayer;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long iconSize; // @synthesize iconSize=_iconSize;
+@property (nonatomic) long long internalSizeCategory; // @synthesize internalSizeCategory=_internalSizeCategory;
 @property (readonly, nonatomic, getter=isLowBattery) BOOL lowBattery;
+@property (readonly, nonatomic) long long overriddenVerticalAlignment;
+@property (strong, nonatomic) UILabel *percentageLabel; // @synthesize percentageLabel=_percentageLabel;
 @property (copy, nonatomic) UIColor *pinColor; // @synthesize pinColor=_pinColor;
 @property (strong, nonatomic) CAShapeLayer *pinLayer; // @synthesize pinLayer=_pinLayer;
 @property (nonatomic) BOOL saverModeActive; // @synthesize saverModeActive=_saverModeActive;
 @property (nonatomic) BOOL showsInlineChargingIndicator; // @synthesize showsInlineChargingIndicator=_showsInlineChargingIndicator;
-@property (nonatomic) long long sizeCategory; // @synthesize sizeCategory=_sizeCategory;
+@property (nonatomic) BOOL showsPercentage; // @synthesize showsPercentage=_showsPercentage;
+@property (nonatomic) long long sizeCategory;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL wantsCrossfade;
 
++ (struct CGSize)_batterySizeForIconSize:(long long)arg1;
++ (double)_lineWidthAndInterspaceForIconSize:(long long)arg1;
++ (struct CGSize)_pinSizeForIconSize:(long long)arg1;
++ (struct CGSize)_statusBarIntrinsicContentSizeForIconSize:(long long)arg1;
 - (void).cxx_destruct;
-- (id)_batteryColor;
+- (id)_batteryFillColor;
 - (struct CGSize)_batterySizeForTraitCollection:(id)arg1;
+- (id)_batteryTextColor;
 - (void)_commonInit;
+- (BOOL)_currentlyShowsPercentage;
 - (double)_insideCornerRadiusForTraitCollection:(id)arg1;
-- (double)_lineWidthForTraitCollection:(id)arg1;
-- (double)_marginForTraitCollection:(id)arg1;
+- (double)_lineWidthAndInterspaceForTraitCollection:(id)arg1;
 - (double)_outsideCornerRadiusForTraitCollection:(id)arg1;
 - (struct CGSize)_pinSizeForTraitCollection:(id)arg1;
 - (void)_unflipBoltIfNecessary;
@@ -58,7 +77,8 @@
 - (void)_updateBolt;
 - (void)_updateFillColor;
 - (void)_updateFillLayer;
-- (id)accessibilityHUDRepresentation;
+- (void)_updatePercentage;
+- (void)applyStyleAttributes:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithSizeCategory:(long long)arg1;

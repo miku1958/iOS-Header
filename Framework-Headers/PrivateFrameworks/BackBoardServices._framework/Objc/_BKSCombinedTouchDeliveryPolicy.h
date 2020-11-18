@@ -13,11 +13,11 @@
     NSArray *_policies;
 }
 
-@property (readonly, strong, nonatomic) NSArray *policies; // @synthesize policies=_policies;
+@property (readonly, nonatomic) NSArray *policies; // @synthesize policies=_policies;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)assertionEndpoint;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

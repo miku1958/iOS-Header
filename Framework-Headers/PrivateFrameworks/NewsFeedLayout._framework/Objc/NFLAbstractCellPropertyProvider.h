@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) double scaleValue; // @synthesize scaleValue=_scaleValue;
 @property (readonly, nonatomic) NSSet *supportedColumnSpans; // @synthesize supportedColumnSpans=_supportedColumnSpans;
 
++ (id)plistProvider;
 + (id)publisherTitleFontLarge;
 + (id)publisherTitleFontSmall;
 - (void).cxx_destruct;

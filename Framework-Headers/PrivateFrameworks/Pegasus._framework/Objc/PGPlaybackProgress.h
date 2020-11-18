@@ -8,6 +8,7 @@
 
 #import <Pegasus/NSSecureCoding-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface PGPlaybackProgress : NSObject <NSSecureCoding>
 {
     double _anchorProgress;

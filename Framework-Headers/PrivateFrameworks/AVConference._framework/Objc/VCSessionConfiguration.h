@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface VCSessionConfiguration : NSObject
 {
     unsigned long long _maxRemoteParticipants;
-    long long _sessionType;
+    long long _sessionMode;
+    id _reportingHierarchyToken;
 }
 
 @property (readonly, nonatomic) BOOL isContinuity;
 @property (nonatomic) unsigned long long maxRemoteParticipants; // @synthesize maxRemoteParticipants=_maxRemoteParticipants;
-@property (nonatomic) long long sessionType; // @synthesize sessionType=_sessionType;
+@property (strong, nonatomic) id reportingHierarchyToken; // @synthesize reportingHierarchyToken=_reportingHierarchyToken;
+@property (nonatomic) long long sessionMode; // @synthesize sessionMode=_sessionMode;
 
 - (BOOL)applyConfigurationUsingClientDict:(id)arg1;
+- (void)dealloc;
 - (id)initWithClientDictionary:(id)arg1;
 - (BOOL)updateWithClientDictionary:(id)arg1;
 

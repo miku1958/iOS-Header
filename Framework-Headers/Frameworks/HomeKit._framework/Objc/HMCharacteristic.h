@@ -9,11 +9,11 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMCharacteristicMetadata, HMDelegateCaller, HMService, NSArray, NSDate, NSNumber, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMCharacteristicMetadata, HMFUnfairLock, HMService, NSArray, NSDate, NSNumber, NSString, NSUUID, _HMContext;
 
 @interface HMCharacteristic : NSObject <NSSecureCoding, HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     BOOL _notificationEnabled;
     BOOL _requiresDeviceUnlock;
     BOOL _hasAuthorizationData;
@@ -26,16 +26,13 @@
     NSDate *_notificationEnabledTime;
     HMService *_service;
     HMCharacteristicMetadata *_metadata;
+    _HMContext *_context;
     NSNumber *_instanceID;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
 }
 
 @property (copy, nonatomic) NSString *characteristicType; // @synthesize characteristicType=_characteristicType;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property BOOL hasAuthorizationData; // @synthesize hasAuthorizationData=_hasAuthorizationData;
 @property (readonly) unsigned long long hash;
@@ -46,7 +43,6 @@
 @property (nonatomic) BOOL notificationEnabledByThisClient; // @synthesize notificationEnabledByThisClient=_notificationEnabledByThisClient;
 @property (copy, nonatomic) NSDate *notificationEnabledTime; // @synthesize notificationEnabledTime=_notificationEnabledTime;
 @property (copy, nonatomic) NSArray *properties; // @synthesize properties=_properties;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (nonatomic) BOOL requiresDeviceUnlock; // @synthesize requiresDeviceUnlock=_requiresDeviceUnlock;
 @property (weak, nonatomic) HMService *service; // @synthesize service=_service;
 @property (readonly) Class superclass;
@@ -57,10 +53,11 @@
 + (id)__localizedDescriptionForCharacteristicType:(id)arg1;
 + (id)_characteristicTypeAsString:(id)arg1;
 + (id)localizedDescriptionForCharacteristicType:(id)arg1;
++ (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__configureWithContext:(id)arg1 service:(id)arg2;
 - (id)_characteristicTypeDescription;
-- (void)_configure:(id)arg1 clientQueue:(id)arg2 delegateCaller:(id)arg3;
 - (void)_enableNotification:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_readValueWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -72,6 +69,7 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)logIdentifier;
 - (id)mapHAPProperties:(long long)arg1;
 - (void)readValueWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setValueUpdateTime:(id)arg1;

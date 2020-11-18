@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue, VCVideoStreamRateControlProtocol;
 
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)className;
 - (void)createLogDumpFile:(unsigned int)arg1;
 - (void)dealloc;
-- (void)doRateControlWithTime:(double)arg1 roundTripTime:(double)arg2 packetLossRate:(double)arg3 operatingBitrate:(unsigned int)arg4 averageBitrate:(unsigned int)arg5;
+- (void)doRateControlWithTime:(double)arg1 roundTripTime:(double)arg2 packetLossRate:(double)arg3 operatingBitrate:(unsigned int)arg4 averageReceivedBitrate:(unsigned int)arg5;
 - (id)initWithDumpID:(unsigned int)arg1;
 - (unsigned short)maxTierIndex:(unsigned int)arg1;
 - (unsigned short)minTierIndex:(unsigned int)arg1;

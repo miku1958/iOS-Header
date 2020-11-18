@@ -6,12 +6,51 @@
 
 #import <objc/NSObject.h>
 
+@class UIColor;
+
 @interface NTKZeusColorPalette : NSObject
 {
+    unsigned long long _color;
+    UIColor *_dialColor;
+    UIColor *_complicationColor;
+    UIColor *_secondHandColor;
+    UIColor *_minuteHandColor;
+    UIColor *_hourHandColor;
+    UIColor *_handInlayColor;
+    UIColor *_backgroundColor;
+    double _secondHandAlpha;
+    unsigned long long _bleed;
+    UIColor *_splitColor;
 }
 
-+ (id)orangeColor;
-+ (id)silverColor;
+@property (readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (readonly, nonatomic) unsigned long long bleed; // @synthesize bleed=_bleed;
+@property (readonly, nonatomic) UIColor *complicationColor; // @synthesize complicationColor=_complicationColor;
+@property (readonly, nonatomic) UIColor *dialColor; // @synthesize dialColor=_dialColor;
+@property (readonly, nonatomic) UIColor *handInlayColor; // @synthesize handInlayColor=_handInlayColor;
+@property (readonly, nonatomic) UIColor *hourHandColor; // @synthesize hourHandColor=_hourHandColor;
+@property (readonly, nonatomic) UIColor *minuteHandColor; // @synthesize minuteHandColor=_minuteHandColor;
+@property (readonly, nonatomic) double secondHandAlpha; // @synthesize secondHandAlpha=_secondHandAlpha;
+@property (readonly, nonatomic) UIColor *secondHandColor; // @synthesize secondHandColor=_secondHandColor;
+@property (readonly, nonatomic) UIColor *splitColor; // @synthesize splitColor=_splitColor;
+
++ (id)ambreColor;
++ (id)bordeauxColor;
++ (id)capucineColor;
++ (id)charcoalColor;
++ (id)craieColor;
++ (id)feuColor;
++ (id)indigoColor;
++ (id)offWhiteColor;
++ (id)paletteForColor:(unsigned long long)arg1;
++ (id)roseAzaleeColor;
++ (id)roseExtremeColor;
++ (id)swatchColorForColor:(unsigned long long)arg1;
++ (id)swatchImageForColor:(unsigned long long)arg1;
++ (id)zeusOrangeColor;
++ (id)zeusSilverColor;
+- (void).cxx_destruct;
+- (id)initWithColor:(unsigned long long)arg1;
 
 @end
 

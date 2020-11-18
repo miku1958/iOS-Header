@@ -7,36 +7,37 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBIntentSlotVocabularyValue-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBIntentSlotVocabularyValue : PBCodable <NSCopying>
+@interface _INPBIntentSlotVocabularyValue : PBCodable <_INPBIntentSlotVocabularyValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_examples;
+    struct _has;
+    NSArray *_examples;
     NSString *_phrase;
     NSString *_pronunciation;
 }
 
-@property (strong, nonatomic) NSMutableArray *examples; // @synthesize examples=_examples;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *examples; // @synthesize examples=_examples;
+@property (readonly, nonatomic) unsigned long long examplesCount;
 @property (readonly, nonatomic) BOOL hasPhrase;
 @property (readonly, nonatomic) BOOL hasPronunciation;
-@property (strong, nonatomic) NSString *phrase; // @synthesize phrase=_phrase;
-@property (strong, nonatomic) NSString *pronunciation; // @synthesize pronunciation=_pronunciation;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *phrase; // @synthesize phrase=_phrase;
+@property (copy, nonatomic) NSString *pronunciation; // @synthesize pronunciation=_pronunciation;
+@property (readonly) Class superclass;
 
-+ (Class)examplesType;
 - (void).cxx_destruct;
 - (void)addExamples:(id)arg1;
 - (void)clearExamples;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)examplesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)examplesCount;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

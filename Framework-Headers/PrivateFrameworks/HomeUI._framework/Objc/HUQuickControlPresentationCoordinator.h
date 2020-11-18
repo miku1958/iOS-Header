@@ -11,7 +11,7 @@
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <HomeUI/UITraitEnvironment-Protocol.h>
 
-@class HUForceInterpolatedPressGestureRecognizer, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UITraitCollection, UIView, UIViewController;
+@class HUForceInterpolatedPressGestureRecognizer, HUPressedItemContext, HUQuickControlContainerViewController, HUQuickControlPresentationContext, NSMapTable, NSMutableSet, NSString, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController;
 @protocol HUQuickControlPresentationCoordinatorDelegate, NACancelable;
 
 @interface HUQuickControlPresentationCoordinator : NSObject <HUQuickControlContainerViewControllerDelegate, HUPresentationDelegate, UIGestureRecognizerDelegate, UITraitEnvironment>
@@ -20,6 +20,8 @@
     HUQuickControlContainerViewController *_quickControlViewController;
     UIView *_targetView;
     id<HUQuickControlPresentationCoordinatorDelegate> _delegate;
+    UITapGestureRecognizer *_singleTapGestureRecognizer;
+    UITapGestureRecognizer *_doubleTapGestureRecognizer;
     HUForceInterpolatedPressGestureRecognizer *_pressGestureRecognizer;
     NSMutableSet *_mutuallyExclusiveGestureRecognizers;
     id<NACancelable> _pressGestureActiveTimerCancellationToken;
@@ -30,6 +32,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUQuickControlPresentationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer; // @synthesize doubleTapGestureRecognizer=_doubleTapGestureRecognizer;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSMutableSet *mutuallyExclusiveGestureRecognizers; // @synthesize mutuallyExclusiveGestureRecognizers=_mutuallyExclusiveGestureRecognizers;
 @property (strong, nonatomic) HUQuickControlPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
@@ -39,6 +42,7 @@
 @property (readonly, nonatomic) NSMapTable *pressedItemContexts; // @synthesize pressedItemContexts=_pressedItemContexts;
 @property (readonly, nonatomic, getter=isQuickControlPresented) BOOL quickControlIsPresented;
 @property (strong, nonatomic) HUQuickControlContainerViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
+@property (strong, nonatomic) UITapGestureRecognizer *singleTapGestureRecognizer; // @synthesize singleTapGestureRecognizer=_singleTapGestureRecognizer;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UIView *targetView; // @synthesize targetView=_targetView;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;
@@ -52,12 +56,15 @@
 - (id)_dismissQuickControlViewControllerAnimated:(BOOL)arg1;
 - (void)_endUsingTapticFeedbackIfAvailable;
 - (id)_gestureInstallationView;
+- (void)_handleDoubleTapGesture:(id)arg1;
 - (void)_handleMutuallyExclusiveGesture:(id)arg1;
 - (void)_handlePressGesture:(id)arg1;
+- (void)_handleSingleTapGesture:(id)arg1;
+- (void)_initiateProgrammaticBounceForItem:(id)arg1;
 - (void)_installGestureRecognizer;
 - (void)_logUserMetricsAfterPress;
 - (void)_prepareForTapticFeedbackIfAvailable;
-- (void)_preparePressedItemContextForPresentationContext:(id)arg1 startApplier:(BOOL)arg2;
+- (void)_preparePressedItemContextForItem:(id)arg1 startApplier:(BOOL)arg2;
 - (void)_pressGestureDidBecomeActive;
 - (void)_pressGestureDidBeginWithLocation:(struct CGPoint)arg1;
 - (void)_pressGestureDidEnd:(BOOL)arg1;
@@ -72,6 +79,7 @@
 - (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)hasDetailsActionForQuickControlViewController:(id)arg1 item:(id)arg2;
 - (id)initWithTargetView:(id)arg1 delegate:(id)arg2;
 - (void)playBounceForItem:(id)arg1;

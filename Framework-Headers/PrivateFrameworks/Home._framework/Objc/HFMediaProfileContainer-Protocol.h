@@ -8,9 +8,10 @@
 #import <Home/HFFavoritable-Protocol.h>
 #import <Home/HFGroupableItemProtocol-Protocol.h>
 #import <Home/HFHomeKitObject-Protocol.h>
-#import <Home/HFPrettyDescription-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFRoomContextProviding-Protocol.h>
+#import <Home/HFStateDumpBuildable-Protocol.h>
+#import <Home/HFSymptomFixableObject-Protocol.h>
 #import <Home/HFSymptomsHandlerVendor-Protocol.h>
 #import <Home/HFSymptomsVendor-Protocol.h>
 #import <Home/HMMediaObject-Protocol.h>
@@ -18,7 +19,7 @@
 @class ACAccount, HFAccessorySettingAdapterManager, HFMediaProfileContainerSettingsValueManager, HFServiceNameComponents, HMAccessory, HMHome, HMMediaSession, NAFuture, NSSet, NSString;
 @protocol HFMediaValueSource;
 
-@protocol HFMediaProfileContainer <HMMediaObject, HFAccessoryVendor, HFHomeKitObject, HFPrettyDescription, HFReorderableHomeKitObject, HFFavoritable, HFRoomContextProviding, HFGroupableItemProtocol, HFSymptomsVendor, HFSymptomsHandlerVendor>
+@protocol HFMediaProfileContainer <HMMediaObject, HFAccessoryVendor, HFHomeKitObject, HFStateDumpBuildable, HFReorderableHomeKitObject, HFFavoritable, HFRoomContextProviding, HFGroupableItemProtocol, HFSymptomsVendor, HFSymptomsHandlerVendor, HFSymptomFixableObject>
 
 @property (readonly, nonatomic) HMAccessory *hf_backingAccessory;
 @property (readonly, nonatomic) NSString *hf_defaultName;

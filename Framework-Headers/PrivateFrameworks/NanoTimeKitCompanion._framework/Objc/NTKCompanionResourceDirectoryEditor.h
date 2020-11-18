@@ -6,21 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class CLKDevice, NSString;
 
 @interface NTKCompanionResourceDirectoryEditor : NSObject
 {
     BOOL _resourceDirectoryIsHardLink;
+    CLKDevice *_device;
     NSString *_resourceDirectory;
     long long _state;
     NSString *_galleryPreviewResourceDirectory;
 }
 
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (strong, nonatomic) NSString *galleryPreviewResourceDirectory; // @synthesize galleryPreviewResourceDirectory=_galleryPreviewResourceDirectory;
 @property (strong, nonatomic) NSString *resourceDirectory; // @synthesize resourceDirectory=_resourceDirectory;
 @property (nonatomic) long long state; // @synthesize state=_state;
 
-+ (id)_createResourceDirectoryWithAsset:(id)arg1 previewOnly:(BOOL)arg2;
++ (id)_createResourceDirectoryWithAsset:(id)arg1 forDevice:(id)arg2 previewOnly:(BOOL)arg3;
 + (id)_cropAndScaleUIImage:(id)arg1 cropRect:(struct CGRect)arg2 outputSize:(struct CGSize)arg3;
 + (void)_imageDataForAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)_linkPhoto:(id)arg1 to:(id)arg2 previewOnly:(BOOL)arg3;
@@ -39,7 +41,7 @@
 - (void)dealloc;
 - (void)finalizeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateGalleryPreviewResourceDirectoryWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithResourceDirectory:(id)arg1;
+- (id)initWithResourceDirectory:(id)arg1 forDevice:(id)arg2;
 
 @end
 

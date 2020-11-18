@@ -8,8 +8,8 @@
 
 #import <HealthDaemon/CLLocationSmootherDelegate-Protocol.h>
 
-@class CLLocationSmoother, HDProfile, HDSmoothingTask, NSMutableArray, NSString, NSTimer;
-@protocol OS_dispatch_queue;
+@class CLLocationSmoother, HDProfile, HDSmoothingTask, NSMutableArray, NSString;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface HDWorkoutLocationSmoother : NSObject <CLLocationSmootherDelegate>
 {
@@ -19,7 +19,8 @@
     HDProfile *_profile;
     NSMutableArray *_pendingSmoothingTasks;
     HDSmoothingTask *_currentSmoothingTask;
-    NSTimer *_timeoutTimer;
+    NSObject<OS_dispatch_source> *_timeoutSource;
+    double _smoothingTaskTimeout;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -33,17 +34,19 @@
 - (BOOL)_deleteSample:(id)arg1 error:(id *)arg2;
 - (void)_finishSmoothingSample;
 - (id)_locationsForSampleUUID:(id)arg1 error:(id *)arg2;
-- (BOOL)_queue_createNewSeriesFromTask:(id)arg1 locations:(id)arg2 error:(id *)arg3;
-- (void)_queue_didSmoothLocations:(id)arg1;
+- (void)_queue_cancelTimeout;
+- (id)_queue_createNewSeriesFromTask:(id)arg1 locations:(id)arg2 error:(id *)arg3;
+- (BOOL)_queue_insertInitialMetadataForRoute:(id)arg1 syncIdentifier:(id)arg2 error:(id *)arg3;
+- (void)_queue_locationManagerDidSmoothLocations:(id)arg1 forTask:(id)arg2 error:(id)arg3;
+- (void)_queue_saveLocations:(id)arg1 forTask:(id)arg2 smoothingError:(id)arg3;
+- (void)_queue_scheduleSmoothingTimeoutTimerForTask:(id)arg1;
 - (void)_queue_smoothNextSample;
 - (void)_queue_smoothRouteSampleForTask:(id)arg1;
-- (void)_queue_smoothingDidTimeout;
-- (void)_scheduleSmoothingTimeoutTimer;
-- (BOOL)_workoutExistsForSample:(id)arg1;
+- (void)_queue_smoothingDidFailForTask:(id)arg1 error:(id)arg2 shouldRetry:(BOOL)arg3;
+- (void)_queue_startSmoothingTask:(id)arg1;
 - (id)initWithProfile:(id)arg1;
-- (void)locationManager:(id)arg1 didSmoothLocations:(id)arg2 ofType:(int)arg3;
 - (void)smoothRouteSample:(id)arg1;
-- (void)unitTest_smoothRouteSample:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unitTest_smoothRouteSample:(id)arg1 withSmoother:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

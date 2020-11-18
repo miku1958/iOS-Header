@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UITextInputDelegate-Protocol.h>
-#import <UIKit/_UITextDocumentInterfaceDelegate-Protocol.h>
+#import <UIKitCore/UITextInputDelegate-Protocol.h>
+#import <UIKitCore/_UITextDocumentInterfaceDelegate-Protocol.h>
 
 @class NSString, UIInputView, UIKeyboard;
 @protocol UITextDocumentProxy;
@@ -64,6 +64,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
+- (void)proceedShouldReturnIfPossibleForASP;
 - (void)requestSupplementaryLexiconWithCompletion:(CDUnknownBlockType)arg1;
 - (void)returnToPreviousInputMode;
 - (void)selectionDidChange:(id)arg1;

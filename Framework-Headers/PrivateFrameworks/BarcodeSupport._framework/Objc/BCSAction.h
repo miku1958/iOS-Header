@@ -9,7 +9,7 @@
 #import <BarcodeSupport/BCSActionPrivate-Protocol.h>
 
 @class BCSActionPickerViewAssistant, NSArray, NSDictionary, NSString, NSURL;
-@protocol BCSActionDelegate, BCSParsedDataPrivate;
+@protocol BCSActionDelegate, BCSCodePayload, BCSParsedDataPrivate;
 
 __attribute__((visibility("hidden")))
 @interface BCSAction : NSObject <BCSActionPrivate>
@@ -19,10 +19,13 @@ __attribute__((visibility("hidden")))
     NSURL *urlThatCanBeOpened;
     id<BCSParsedDataPrivate> _data;
     NSURL *_url;
+    id<BCSCodePayload> _codePayload;
 }
 
 @property (readonly, copy, nonatomic) NSArray *actionPickerItems;
 @property (readonly, nonatomic) BOOL canSkipUnlock;
+@property (readonly, nonatomic) id<BCSCodePayload> codePayload; // @synthesize codePayload=_codePayload;
+@property (readonly, nonatomic) long long codeType;
 @property (readonly, nonatomic) id<BCSParsedDataPrivate> data; // @synthesize data=_data;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy, nonatomic) NSDictionary *debugDescriptionDictionary;
@@ -42,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)debugDescriptionExtraInfoDictionary;
 - (void)determineActionabilityWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)initWithData:(id)arg1;
+- (id)initWithData:(id)arg1 codePayload:(id)arg2;
 - (void)performAction;
 - (void)performDefaultAction;
 - (void)showActionPicker;

@@ -18,6 +18,7 @@
 - (id)accessibilityElements;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isAccessibilityElement;
+- (void)layoutSubviews;
 
 @end
 

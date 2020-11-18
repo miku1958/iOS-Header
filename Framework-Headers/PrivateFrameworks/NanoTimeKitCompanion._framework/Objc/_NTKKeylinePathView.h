@@ -8,11 +8,12 @@
 
 #import <NanoTimeKitCompanion/NTKKeylineView-Protocol.h>
 
-@class NSString, UIBezierPath, UIColor;
+@class NSString, NTKKeylineTouchable, UIBezierPath, UIColor;
 
 @interface _NTKKeylinePathView : NTKColoringView <NTKKeylineView>
 {
     UIBezierPath *_path;
+    NTKKeylineTouchable *touchable;
 }
 
 @property (strong, nonatomic) UIColor *color;
@@ -22,11 +23,13 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIColor *overrideColor;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) NTKKeylineTouchable *touchable; // @synthesize touchable;
 @property (nonatomic) BOOL usesLegibility;
 
 - (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithPath:(id)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

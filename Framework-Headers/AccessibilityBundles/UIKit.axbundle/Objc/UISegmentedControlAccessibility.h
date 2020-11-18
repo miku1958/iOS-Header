@@ -15,8 +15,10 @@
 - (BOOL)_accessibilityHasNativeFocus;
 - (id)_accessibilityNativeFocusPreferredElement;
 - (BOOL)_accessibilitySupportsContentSizeCategory:(id)arg1;
+- (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (BOOL)accessibilityElementsHidden;
+- (unsigned long long)accessibilityTraits;
 - (BOOL)isAccessibilityElement;
 - (void)sendActionsForControlEvents:(unsigned long long)arg1;
 - (BOOL)shouldGroupAccessibilityChildren;

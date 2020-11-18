@@ -55,6 +55,7 @@
 - (void)getFilerTokenForPromise:(id)arg1 withSuccess:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (void)getPromise:(id)arg1 withSuccess:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (id)initWithConfiguration:(id)arg1 sessionID:(id)arg2 delegate:(id)arg3;
+- (BOOL)isLoggedIn;
 - (void)jsonForURL:(id)arg1 success:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (void)jsonForURLRequest:(id)arg1 success:(CDUnknownBlockType)arg2 error:(CDUnknownBlockType)arg3;
 - (id)loginWithTokenURL;

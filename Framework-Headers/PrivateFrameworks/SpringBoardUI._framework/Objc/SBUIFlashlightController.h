@@ -40,8 +40,8 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)removeAllObservers;
 - (void)removeObserver:(id)arg1;
-- (void)turnFlashlightOff;
-- (void)turnFlashlightOn;
+- (void)turnFlashlightOffForReason:(id)arg1;
+- (void)turnFlashlightOnForReason:(id)arg1;
 - (void)warmUp;
 
 @end

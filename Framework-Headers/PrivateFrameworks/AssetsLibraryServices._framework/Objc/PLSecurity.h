@@ -4,14 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLSecurity : NSObject
 {
 }
 
 + (id)_secTask:(struct __SecTask *)arg1 grantedEntitlements:(id)arg2;
-+ (BOOL)canSkipUserPromptsForProcessWithName:(id)arg1 identifier:(int)arg2;
++ (unsigned long long)assetsdEntitlementTypesForConnection:(id)arg1;
++ (unsigned long long)assetsdEntitlementTypesForCurrentProcess;
++ (unsigned long long)assetsdEntitlementTypesFromSecTask:(struct __SecTask *)arg1;
++ (BOOL)auditToken:(CDStruct_6ad76789)arg1 hasEntitlement:(id)arg2;
 + (id)connection:(id)arg1 grantedEntitlements:(id)arg2;
 + (BOOL)connection:(id)arg1 hasEntitlement:(id)arg2;
 + (id)connection:(id)arg1 valueForEntitlement:(id)arg2;

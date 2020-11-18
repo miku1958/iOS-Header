@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDCameraTLVDescription.h>
+#import <HomeKitDaemon/HMDTLVDescription.h>
 
-@interface HMDNumberParser : HMDCameraTLVDescription
+@interface HMDNumberParser : HMDTLVDescription
 {
     unsigned long long _decodedNumber;
 }

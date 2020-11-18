@@ -10,7 +10,6 @@
 
 @interface CacheManagementAsset : NSObject
 {
-    BOOL _hasLegacyXattrs;
     int _priority;
     unsigned int _assetVersion;
     NSString *_displayName;
@@ -34,7 +33,6 @@
 @property double download_completion_date; // @synthesize download_completion_date=_download_completion_date;
 @property double download_start_date; // @synthesize download_start_date=_download_start_date;
 @property double expiration_date; // @synthesize expiration_date=_expiration_date;
-@property BOOL hasLegacyXattrs; // @synthesize hasLegacyXattrs=_hasLegacyXattrs;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property double last_viewed_date; // @synthesize last_viewed_date=_last_viewed_date;
 @property (strong, nonatomic) NSData *metadata; // @synthesize metadata=_metadata;

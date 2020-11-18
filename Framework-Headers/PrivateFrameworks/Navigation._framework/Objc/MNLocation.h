@@ -44,9 +44,9 @@
 @property (nonatomic) struct CLLocationCoordinate2D rawShiftedCoordinate; // @synthesize rawShiftedCoordinate=_rawShiftedCoordinate;
 @property (nonatomic) unsigned int roadLineType; // @synthesize roadLineType=_roadLineType;
 @property (strong, nonatomic) GEORoadMatch *roadMatch; // @synthesize roadMatch=_roadMatch;
-@property (strong, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
+@property (copy, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
 @property (strong, nonatomic) GEORouteMatch *routeMatch; // @synthesize routeMatch=_routeMatch;
-@property (strong, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
+@property (copy, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
 @property (nonatomic) long long shieldType; // @synthesize shieldType=_shieldType;
 @property (nonatomic) unsigned long long speedLimit; // @synthesize speedLimit=_speedLimit;
 @property (nonatomic) BOOL speedLimitIsMPH; // @synthesize speedLimitIsMPH=_speedLimitIsMPH;

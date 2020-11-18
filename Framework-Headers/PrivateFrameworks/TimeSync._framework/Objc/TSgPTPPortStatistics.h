@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
 @interface TSgPTPPortStatistics : NSObject
 {
+    int _portType;
+    int _portRole;
     unsigned int _receivedSyncCounter;
     unsigned int _receivedFollowUpCounter;
     unsigned int _receivedAnnounceCounter;
@@ -45,8 +47,6 @@
     unsigned int _attemptedDelayRequestCounter;
     unsigned int _receivedDelayResponseCounter;
     NSString *_portIdentifier;
-    long long _portType;
-    long long _portRole;
 }
 
 @property (readonly, nonatomic) unsigned int allowedLostResponsesExceededCounter; // @synthesize allowedLostResponsesExceededCounter=_allowedLostResponsesExceededCounter;
@@ -61,8 +61,8 @@
 @property (readonly, nonatomic) unsigned int attemptedSignalCounter; // @synthesize attemptedSignalCounter=_attemptedSignalCounter;
 @property (readonly, nonatomic) unsigned int attemptedSyncCounter; // @synthesize attemptedSyncCounter=_attemptedSyncCounter;
 @property (readonly, copy, nonatomic) NSString *portIdentifier; // @synthesize portIdentifier=_portIdentifier;
-@property (readonly, nonatomic) long long portRole; // @synthesize portRole=_portRole;
-@property (readonly, nonatomic) long long portType; // @synthesize portType=_portType;
+@property (readonly, nonatomic) int portRole; // @synthesize portRole=_portRole;
+@property (readonly, nonatomic) int portType; // @synthesize portType=_portType;
 @property (readonly, nonatomic) unsigned int rawDelayExceededCounter; // @synthesize rawDelayExceededCounter=_rawDelayExceededCounter;
 @property (readonly, nonatomic) unsigned int rawDelayMeasurementCounter; // @synthesize rawDelayMeasurementCounter=_rawDelayMeasurementCounter;
 @property (readonly, nonatomic) unsigned int receivedAnnounceCounter; // @synthesize receivedAnnounceCounter=_receivedAnnounceCounter;

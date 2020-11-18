@@ -9,7 +9,7 @@
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
 #import <ARKit/_SCNSceneRendererDelegate-Protocol.h>
 
-@class ARPointCloud, ARSession, CIWarpKernel, NSMutableArray, NSMutableDictionary, NSObject, NSString, SCNNode, SCNScene, UIView;
+@class ARPointCloud, ARSession, CIWarpKernel, MISSING_TYPE, NSMutableArray, NSMutableDictionary, NSObject, NSString, SCNNode, SCNScene, UIView;
 @protocol ARSCNViewDelegate, OS_dispatch_semaphore, SCNCaptureDeviceOutputConsumer;
 
 @interface ARSCNView : SCNView <ARInternalSessionObserver, _SCNSceneRendererDelegate>
@@ -20,27 +20,35 @@
     SCNNode *_lightNode;
     SCNNode *_cameraNode;
     NSMutableDictionary *_nodesByAnchorIdentifier;
+    NSMutableDictionary *_occlusionGeometryNodesByAnchorIdentifier;
+    NSObject<OS_dispatch_semaphore> *_nodesSemaphore;
     NSMutableArray *_addedAnchors;
     NSMutableArray *_updatedAnchors;
     NSMutableArray *_removedAnchors;
+    NSObject<OS_dispatch_semaphore> *_anchorsSemaphore;
     SCNNode *_worldOriginNode;
     SCNNode *_featurePointNode;
     ARPointCloud *_currentlyVisibleDebugPointerCloud;
-    NSObject<OS_dispatch_semaphore> *_anchorsSemaphore;
     id _originalBackgroundContents;
     unsigned long long _arDebugOptions;
     long long _interfaceOrientation;
     long long _lastInterfaceOrientation;
     struct CGSize _viewportSize;
+    double _contentsScale;
     UIView *_rotationSnapshot;
     CIWarpKernel *_warpKernel;
     unsigned long long _warpKernelLensType;
+    NSMutableArray *_environmentProbeNodes;
+    NSMutableArray *_environmentProbeNodesToRemove;
+    BOOL _renderThreadFixed;
     BOOL _automaticallyUpdatesLighting;
+    BOOL _providesOcclusionGeometry;
     BOOL _shouldRestrictFrameRate;
     BOOL _drawsCameraImage;
     long long _targetFramesPerSecond;
     long long _developerPreferredFramesPerSecond;
     long long _frameToRemoveRotationSnapshotOn;
+    long long _rotationSnapshotState;
 }
 
 @property (nonatomic) long long actualPreferredFramesPerSecond;
@@ -52,6 +60,8 @@
 @property BOOL drawsCameraImage; // @synthesize drawsCameraImage=_drawsCameraImage;
 @property long long frameToRemoveRotationSnapshotOn; // @synthesize frameToRemoveRotationSnapshotOn=_frameToRemoveRotationSnapshotOn;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL providesOcclusionGeometry; // @synthesize providesOcclusionGeometry=_providesOcclusionGeometry;
+@property long long rotationSnapshotState; // @synthesize rotationSnapshotState=_rotationSnapshotState;
 @property (strong, nonatomic) SCNScene *scene; // @dynamic scene;
 @property (strong, nonatomic) ARSession *session;
 @property BOOL shouldRestrictFrameRate; // @synthesize shouldRestrictFrameRate=_shouldRestrictFrameRate;
@@ -59,27 +69,29 @@
 @property long long targetFramesPerSecond; // @synthesize targetFramesPerSecond=_targetFramesPerSecond;
 
 - (void).cxx_destruct;
-- (void)_addAnchors;
+- (void)_addAnchors:(id)arg1;
+- (void)_addOcclusionGeometryForAnchor:(id)arg1;
 - (id)_anchorForNode:(id)arg1 inFrame:(id)arg2;
 - (void)_commonInit;
 - (void)_forceUpdateCamera;
 - (id)_hitTest:(struct CGPoint)arg1 frame:(id)arg2 types:(unsigned long long)arg3;
 - (void)_loadWarpKernalForLensType:(unsigned long long)arg1;
-- (void)_removeAnchors;
+- (void)_removeAnchors:(id)arg1;
 - (void)_renderCapturedPixelBuffer:(struct __CVBuffer *)arg1;
 - (void)_renderer:(id)arg1 updateAtTime:(double)arg2;
-- (void)_updateAnchors;
+- (void)_updateAnchors:(id)arg1 frame:(id)arg2;
+- (void)_updateBackingSize;
 - (void)_updateCamera:(id)arg1;
 - (void)_updateDebugVisualization:(id)arg1;
 - (void)_updateFramesPerSecondWithTarget:(long long)arg1 shouldRestrictFrameRate:(BOOL)arg2;
 - (void)_updateLighting:(id)arg1;
-- (void)_updateNode:(id)arg1 forAnchor:(id)arg2;
+- (void)_updateNode:(id)arg1 forAnchor:(id)arg2 frame:(id)arg3;
 - (void)_updatePreferredFramesPerSecond;
+- (void)_updateProbesWithFrame:(id)arg1;
 - (struct __CVBuffer *)_warpPixelBuffer:(struct __CVBuffer *)arg1 withCamera:(id)arg2;
 - (id)anchorForNode:(id)arg1;
 - (void)cleanupLingeringRotationState;
 - (unsigned long long)debugOptions;
-- (void)deviceOrientationDidChange:(id)arg1;
 - (void)didMoveToWindow;
 - (void)encodeWithCoder:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 types:(unsigned long long)arg2;
@@ -88,6 +100,7 @@
 - (id)initWithFrame:(struct CGRect)arg1 options:(id)arg2;
 - (void)layoutSubviews;
 - (id)nodeForAnchor:(id)arg1;
+- (id)occlusionGeometryNodeForAnchor:(id)arg1;
 - (long long)preferredFramesPerSecond;
 - (void)session:(id)arg1 cameraDidChangeTrackingState:(id)arg2;
 - (void)session:(id)arg1 didAddAnchors:(id)arg2;
@@ -97,12 +110,14 @@
 - (void)session:(id)arg1 didRemoveAnchors:(id)arg2;
 - (void)session:(id)arg1 didUpdateAnchors:(id)arg2;
 - (void)session:(id)arg1 didUpdateFrame:(id)arg2;
+- (void)session:(id)arg1 willRunWithConfiguration:(id)arg2;
 - (void)sessionInterruptionEnded:(id)arg1;
 - (void)sessionShouldAttemptRelocalization:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sessionWasInterrupted:(id)arg1;
 - (void)setDebugOptions:(unsigned long long)arg1;
 - (void)setPointOfView:(id)arg1;
 - (void)setPreferredFramesPerSecond:(long long)arg1;
+- (MISSING_TYPE *)unprojectPoint:(struct CGPoint)arg1 ontoPlaneWithTransform:(CDStruct_14d5dc5e)arg2;
 - (void)windowDidRotateNotification:(id)arg1;
 - (void)windowWillAnimateRotateNotification:(id)arg1;
 - (void)windowWillRotateNotification:(id)arg1;

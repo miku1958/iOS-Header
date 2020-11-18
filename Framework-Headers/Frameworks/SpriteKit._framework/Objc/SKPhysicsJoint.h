@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class SKPhysicsBody;
 
-@interface SKPhysicsJoint : NSObject <NSCoding>
+@interface SKPhysicsJoint : NSObject <NSSecureCoding>
 {
     BOOL __implicit;
     SKPhysicsBody *bodyA;
@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) double reactionTorque; // @synthesize reactionTorque;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

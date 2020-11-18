@@ -41,6 +41,7 @@
 - (id)init;
 - (void)invalidateLayout;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
+- (id)layoutAttributesForInteractivelyMovingItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;
 - (id)layoutAttributesForItemAtIndexPath:(id)arg1;
 - (void)prepareLayout;
 - (void)registerChildGridLayout:(id)arg1;

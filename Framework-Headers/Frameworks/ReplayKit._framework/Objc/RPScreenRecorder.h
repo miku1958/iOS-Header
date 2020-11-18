@@ -78,8 +78,6 @@
 
 + (id)sharedRecorder;
 - (void).cxx_destruct;
-- (BOOL)_isScreenRecordingAllowed;
-- (BOOL)_isScreenRecordingSupportedOnDevice;
 - (void)_startRecordingWithMicrophoneEnabled:(BOOL)arg1 cameraEnabled:(BOOL)arg2 streamingEnabled:(BOOL)arg3 captureEnabled:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 - (id)applicationWindow;
 - (id)audioQueue;
@@ -94,10 +92,13 @@
 - (void)discardRecordingWithHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)notifyDelegateOfRecorderAvailability;
+- (void)notifyDelegateOfUpdatedState;
 - (void)pauseRecording;
-- (void)recordingLockInterrupted:(id)arg1;
+- (void)recordingDidStopWithError:(id)arg1 movieURL:(id)arg2;
 - (void)recordingTimerDidUpdate:(id)arg1;
 - (void)resumeRecording;
+- (BOOL)screenRecordingAllowed;
+- (BOOL)screenRecordingSupportedOnDevice;
 - (void)setMicrophoneEnabledPersistent:(BOOL)arg1;
 - (void)setWindowRotationLocked:(BOOL)arg1;
 - (void)startBroadcastWithHandler:(CDUnknownBlockType)arg1;
@@ -110,13 +111,12 @@
 - (void)stopCaptureWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopRecordingAndSaveToCameraRoll:(CDUnknownBlockType)arg1;
 - (void)stopRecordingWithAdditionalShareFileAttachment:(id)arg1 overrideShareMessage:(id)arg2 previewViewControllerOverrideTintColor:(id)arg3 handler:(CDUnknownBlockType)arg4;
-- (void)stopRecordingWithError:(id)arg1 movieURL:(id)arg2;
 - (void)stopRecordingWithHandler:(CDUnknownBlockType)arg1;
 - (void)stopRecordingWithVideoURLHandler:(CDUnknownBlockType)arg1;
 - (void)stopSystemRecording:(CDUnknownBlockType)arg1;
 - (void)updateCurrentState;
 - (void)updateRecordingAvailability;
-- (void)updateScreenRecordingState:(BOOL)arg1;
+- (void)updateScreenRecordingState;
 - (id)videoQueue;
 
 @end

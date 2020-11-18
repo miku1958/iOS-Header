@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (id)registeredKeyCommands;
 - (id)scrollView;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldLayoutContentBasedOnPeripheryInsets;
 - (void)transitionWillFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)willBeginZooming;

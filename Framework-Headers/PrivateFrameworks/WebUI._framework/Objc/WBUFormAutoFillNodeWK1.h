@@ -24,10 +24,13 @@
 + (id)autoFillNodeWithDOMNode:(id)arg1;
 - (void).cxx_destruct;
 - (struct CGRect)elementBounds;
+- (long long)htmlInputElementAutoFillButtonType;
+- (long long)htmlInputElementLastAutoFillButtonType;
 - (id)initWithDOMNode:(id)arg1;
 - (id)initWithJSWrapper:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;
 - (BOOL)isHTMLInputElementUserEdited;
 - (BOOL)isHTMLTextAreaElementUserEdited;
+- (void)setHTMLInputElementAutoFilledWithAutomaticStrongPassword:(BOOL)arg1;
 - (void)setHTMLInputElementAutofilled:(BOOL)arg1;
 
 @end

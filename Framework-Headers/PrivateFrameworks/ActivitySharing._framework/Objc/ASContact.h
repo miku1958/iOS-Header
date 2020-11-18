@@ -7,11 +7,10 @@
 #import <objc/NSObject.h>
 
 #import <ActivitySharing/NSCopying-Protocol.h>
-#import <ActivitySharing/NSSecureCoding-Protocol.h>
 
-@class ASCodableContact, ASRelationship, CNContactStore, NSSet, NSString, NSUUID;
+@class ASRelationship, CNContactStore, NSSet, NSString, NSUUID;
 
-@interface ASContact : NSObject <NSCopying, NSSecureCoding>
+@interface ASContact : NSObject <NSCopying>
 {
     CNContactStore *_contactStore;
     NSString *_linkedContactStoreIdentifier;
@@ -23,7 +22,6 @@
 }
 
 @property (readonly, nonatomic) NSUUID *UUID;
-@property (readonly, nonatomic) ASCodableContact *codableContact;
 @property (copy, nonatomic) NSSet *destinations; // @synthesize destinations=_destinations;
 @property (readonly, copy, nonatomic) NSString *displayName;
 @property (copy, nonatomic) NSString *fullName; // @synthesize fullName=_fullName;
@@ -34,16 +32,14 @@
 @property (copy, nonatomic) NSString *shortName; // @synthesize shortName=_shortName;
 
 + (id)contactWithCodableContact:(id)arg1;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_bestDestinationForContact:(id)arg1;
 - (id)_bestDestinationFromKnownDestinations;
+- (id)codableContactIncludingCloudKitFields:(BOOL)arg1;
 - (id)contactStore;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToContact:(id)arg1;
 - (void)setContactStore:(id)arg1;

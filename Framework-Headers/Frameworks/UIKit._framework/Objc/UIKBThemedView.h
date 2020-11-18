@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIKBCacheableView-Protocol.h>
+#import <UIKitCore/UIKBCacheableView-Protocol.h>
 
 @class CALayer, NSString;
 
@@ -19,7 +19,8 @@ __attribute__((visibility("hidden")))
     BOOL _lightKeyboard;
     BOOL _active;
     BOOL _usePersistentCaching;
-    BOOL _showsTopAndBottomBorders;
+    BOOL _showsTopBorder;
+    BOOL _showsBottomBorder;
     BOOL _showsLeftBorder;
     BOOL _showsRightBorder;
     int _style;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
+@property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (nonatomic) struct UIEdgeInsets cacheInsets; // @synthesize cacheInsets=_cacheInsets;
 @property (readonly, nonatomic) NSString *cacheKey;
@@ -35,9 +37,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL keepNonPersistent;
+@property (nonatomic) BOOL showsBottomBorder; // @synthesize showsBottomBorder=_showsBottomBorder;
 @property (nonatomic) BOOL showsLeftBorder; // @synthesize showsLeftBorder=_showsLeftBorder;
 @property (nonatomic) BOOL showsRightBorder; // @synthesize showsRightBorder=_showsRightBorder;
-@property (nonatomic) BOOL showsTopAndBottomBorders; // @synthesize showsTopAndBottomBorders=_showsTopAndBottomBorders;
+@property (nonatomic) BOOL showsTopBorder; // @synthesize showsTopBorder=_showsTopBorder;
 @property (nonatomic) int style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usePersistentCaching; // @synthesize usePersistentCaching=_usePersistentCaching;

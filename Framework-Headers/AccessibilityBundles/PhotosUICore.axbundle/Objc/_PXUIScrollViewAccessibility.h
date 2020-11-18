@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityOnlyComparesByXAxis;
+- (BOOL)_accessibilityScrollAcrossPageBoundaries;
 - (id)_accessibilitySortedElementsWithin;
 - (long long)_axCompareView:(id)arg1 toView:(id)arg2;
 - (BOOL)isAccessibilityOpaqueElementProvider;

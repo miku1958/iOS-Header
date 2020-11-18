@@ -17,10 +17,10 @@
 @property (readonly, copy, nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 @property (readonly, copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 
+- (void).cxx_destruct;
 - (id)_initWithBundleIdentifier:(id)arg1 url:(id)arg2;
 - (id)_initWithBundleProxy:(id)arg1 url:(id)arg2;
 - (id)_initWithPlugInKitProxy:(id)arg1;
-- (void)dealloc;
 
 @end
 

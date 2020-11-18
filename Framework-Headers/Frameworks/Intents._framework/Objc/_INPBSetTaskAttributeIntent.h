@@ -7,41 +7,41 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSetTaskAttributeIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBIntentMetadata, _INPBSpatialEventTrigger, _INPBTask, _INPBTemporalEventTrigger;
+@class NSString, _INPBIntentMetadata, _INPBSpatialEventTrigger, _INPBTask, _INPBTemporalEventTrigger;
 
-@interface _INPBSetTaskAttributeIntent : PBCodable <NSCopying>
+@interface _INPBSetTaskAttributeIntent : PBCodable <_INPBSetTaskAttributeIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    CDStruct_47fe53f2 _has;
+    int _status;
     _INPBIntentMetadata *_intentMetadata;
     _INPBSpatialEventTrigger *_spatialEventTrigger;
-    int _status;
     _INPBTask *_targetTask;
     _INPBTemporalEventTrigger *_temporalEventTrigger;
-    CDStruct_47fe53f2 _has;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasSpatialEventTrigger;
 @property (nonatomic) BOOL hasStatus;
 @property (readonly, nonatomic) BOOL hasTargetTask;
 @property (readonly, nonatomic) BOOL hasTemporalEventTrigger;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBSpatialEventTrigger *spatialEventTrigger; // @synthesize spatialEventTrigger=_spatialEventTrigger;
 @property (nonatomic) int status; // @synthesize status=_status;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBTask *targetTask; // @synthesize targetTask=_targetTask;
 @property (strong, nonatomic) _INPBTemporalEventTrigger *temporalEventTrigger; // @synthesize temporalEventTrigger=_temporalEventTrigger;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)statusAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

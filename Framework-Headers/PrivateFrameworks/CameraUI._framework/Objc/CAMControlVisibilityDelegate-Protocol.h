@@ -13,9 +13,10 @@
 @property (readonly, nonatomic) BOOL shouldHideFlashButton;
 @property (readonly, nonatomic) BOOL shouldHideFlipButton;
 @property (readonly, nonatomic) BOOL shouldHideHDRButton;
-@property (readonly, nonatomic) BOOL shouldHideIrisButton;
 @property (readonly, nonatomic) BOOL shouldHideLightingControl;
+@property (readonly, nonatomic) BOOL shouldHideLivePhotoButton;
 @property (readonly, nonatomic) BOOL shouldHidePortraitModeInstructionLabel;
+@property (readonly, nonatomic) BOOL shouldHideQRCodeInstructionLabel;
 @property (readonly, nonatomic) BOOL shouldHideTimerButton;
 @property (readonly, nonatomic) BOOL shouldHideTopBar;
 @property (readonly, nonatomic) BOOL shouldShiftPreviewForUtilityBar;

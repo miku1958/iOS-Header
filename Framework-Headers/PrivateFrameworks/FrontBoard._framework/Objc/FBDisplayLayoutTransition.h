@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -28,6 +28,7 @@
 + (void)flushLayoutForDisplayType:(long long)arg1;
 + (BOOL)isTransitioningForDisplayType:(long long)arg1;
 + (id)layoutForDisplayType:(long long)arg1;
+- (void).cxx_destruct;
 - (void)beginTransition;
 - (void)dealloc;
 - (id)description;

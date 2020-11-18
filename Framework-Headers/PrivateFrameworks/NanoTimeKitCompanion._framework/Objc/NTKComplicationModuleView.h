@@ -13,10 +13,12 @@
 
 @interface NTKComplicationModuleView : NTKModuleView <NTKComplicationDisplay>
 {
+    BOOL canUseCurvedText;
     BOOL _isXL;
     id<NTKComplicationDisplayObserver> displayObserver;
 }
 
+@property (nonatomic) BOOL canUseCurvedText; // @synthesize canUseCurvedText;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<NTKComplicationDisplayObserver> displayObserver; // @synthesize displayObserver;

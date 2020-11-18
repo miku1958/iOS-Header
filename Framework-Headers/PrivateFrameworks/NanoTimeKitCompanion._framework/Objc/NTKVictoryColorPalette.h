@@ -6,25 +6,42 @@
 
 #import <objc/NSObject.h>
 
+@class UIColor;
+
 @interface NTKVictoryColorPalette : NSObject
 {
+    BOOL _hasWhiteElements;
+    UIColor *_numbersColor;
+    UIColor *_handsColor;
+    UIColor *_logoColor;
+    UIColor *_secondHandColor;
+    UIColor *_handInlayColor;
+    UIColor *_analogComplicationsColor;
+    UIColor *_analogDotColor;
+    UIColor *_digitalComplicationsColor;
+    UIColor *_digitalComplicationsPlatterColor;
+    UIColor *_platterColor;
+    UIColor *_backgroundColor;
 }
 
-+ (BOOL)_colorIsPairedWithWhite:(unsigned long long)arg1;
-+ (id)_grayColor;
-+ (id)_offWhiteColor;
-+ (id)_primaryColorForColor:(unsigned long long)arg1;
-+ (id)analogComplicationsColorForColor:(unsigned long long)arg1;
-+ (id)analogDotColorForColor:(unsigned long long)arg1;
-+ (BOOL)colorHasWhiteElements:(unsigned long long)arg1;
-+ (id)digitalComplicationsColorForColor:(unsigned long long)arg1;
-+ (id)digitalComplicationsPlatterColorForColor:(unsigned long long)arg1;
-+ (id)handInlayColorForColor:(unsigned long long)arg1;
-+ (id)handsAndLogoColorForColor:(unsigned long long)arg1;
-+ (id)numbersColorForColor:(unsigned long long)arg1;
-+ (id)platterColor;
-+ (id)secondHandColorForColor:(unsigned long long)arg1;
+@property (readonly, nonatomic) UIColor *analogComplicationsColor; // @synthesize analogComplicationsColor=_analogComplicationsColor;
+@property (readonly, nonatomic) UIColor *analogDotColor; // @synthesize analogDotColor=_analogDotColor;
+@property (readonly, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (readonly, nonatomic) UIColor *digitalComplicationsColor; // @synthesize digitalComplicationsColor=_digitalComplicationsColor;
+@property (readonly, nonatomic) UIColor *digitalComplicationsPlatterColor; // @synthesize digitalComplicationsPlatterColor=_digitalComplicationsPlatterColor;
+@property (readonly, nonatomic) UIColor *handInlayColor; // @synthesize handInlayColor=_handInlayColor;
+@property (readonly, nonatomic) UIColor *handsColor; // @synthesize handsColor=_handsColor;
+@property (readonly, nonatomic) BOOL hasWhiteElements; // @synthesize hasWhiteElements=_hasWhiteElements;
+@property (readonly, nonatomic) UIColor *logoColor; // @synthesize logoColor=_logoColor;
+@property (readonly, nonatomic) UIColor *numbersColor; // @synthesize numbersColor=_numbersColor;
+@property (readonly, nonatomic) UIColor *platterColor; // @synthesize platterColor=_platterColor;
+@property (readonly, nonatomic) UIColor *secondHandColor; // @synthesize secondHandColor=_secondHandColor;
+
++ (id)paletteForColor:(unsigned long long)arg1 bleed:(unsigned long long)arg2;
++ (id)paletteForColor:(unsigned long long)arg1 style:(unsigned long long)arg2;
 + (id)voltColor;
+- (void).cxx_destruct;
+- (id)initWithColor:(unsigned long long)arg1 bleed:(unsigned long long)arg2;
 
 @end
 

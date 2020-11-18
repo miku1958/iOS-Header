@@ -10,8 +10,6 @@
 
 @protocol _CPSearchViewDisappearFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasTimestamp;
-@property (readonly, nonatomic) BOOL hasViewDisappearEvent;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int viewDisappearEvent;

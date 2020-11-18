@@ -16,6 +16,7 @@
 
 - (void).cxx_destruct;
 - (void)cancel;
+- (id)init;
 - (void)main;
 - (void)stop;
 

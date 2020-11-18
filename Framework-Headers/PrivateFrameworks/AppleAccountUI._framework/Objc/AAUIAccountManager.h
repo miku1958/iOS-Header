@@ -11,7 +11,6 @@
 
 @interface AAUIAccountManager : NSObject
 {
-    id _accountStoreDidChangeObserver;
     ACAccountStore *_accountStore;
     struct NSDictionary *_accounts;
     id<AAUIAccountManagerDelegate> _delegate;
@@ -23,12 +22,9 @@
 
 - (void).cxx_destruct;
 - (struct NSDictionary *)_delegate_accountsForAccountManager;
-- (void)beginObservingAccountStoreDidChangeNotification;
-- (void)dealloc;
 - (id)grandSlamAccountForService:(id)arg1;
 - (id)init;
 - (id)initWithAccountStore:(id)arg1;
-- (void)stopObservingAccountStoreDidChangeNotification;
 
 @end
 

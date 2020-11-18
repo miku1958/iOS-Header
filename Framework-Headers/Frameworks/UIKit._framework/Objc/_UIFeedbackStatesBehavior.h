@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatesFeedbackGenerator.h>
+#import <UIKitCore/_UIStatesFeedbackGenerator.h>
 
 @interface _UIFeedbackStatesBehavior : _UIStatesFeedbackGenerator
 {

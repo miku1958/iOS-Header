@@ -7,31 +7,37 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSetSeatSettingsInCarIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBInteger, _INPBIntentMetadata;
+@class NSString, _INPBDataString, _INPBInteger, _INPBIntentMetadata;
 
-@interface _INPBSetSeatSettingsInCarIntent : PBCodable <NSCopying>
+@interface _INPBSetSeatSettingsInCarIntent : PBCodable <_INPBSetSeatSettingsInCarIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    _INPBIntentMetadata *_intentMetadata;
-    _INPBInteger *_level;
-    int _relativeLevelSetting;
-    int _seat;
-    BOOL _enableCooling;
-    BOOL _enableHeating;
-    BOOL _enableMassage;
     struct {
-        unsigned int relativeLevelSetting:1;
-        unsigned int seat:1;
         unsigned int enableCooling:1;
         unsigned int enableHeating:1;
         unsigned int enableMassage:1;
+        unsigned int relativeLevelSetting:1;
+        unsigned int seat:1;
     } _has;
+    BOOL _enableCooling;
+    BOOL _enableHeating;
+    BOOL _enableMassage;
+    int _relativeLevelSetting;
+    int _seat;
+    _INPBDataString *_carName;
+    _INPBIntentMetadata *_intentMetadata;
+    _INPBInteger *_level;
 }
 
+@property (strong, nonatomic) _INPBDataString *carName; // @synthesize carName=_carName;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enableCooling; // @synthesize enableCooling=_enableCooling;
 @property (nonatomic) BOOL enableHeating; // @synthesize enableHeating=_enableHeating;
 @property (nonatomic) BOOL enableMassage; // @synthesize enableMassage=_enableMassage;
+@property (readonly, nonatomic) BOOL hasCarName;
 @property (nonatomic) BOOL hasEnableCooling;
 @property (nonatomic) BOOL hasEnableHeating;
 @property (nonatomic) BOOL hasEnableMassage;
@@ -39,22 +45,19 @@
 @property (readonly, nonatomic) BOOL hasLevel;
 @property (nonatomic) BOOL hasRelativeLevelSetting;
 @property (nonatomic) BOOL hasSeat;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBInteger *level; // @synthesize level=_level;
 @property (nonatomic) int relativeLevelSetting; // @synthesize relativeLevelSetting=_relativeLevelSetting;
 @property (nonatomic) int seat; // @synthesize seat=_seat;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsRelativeLevelSetting:(id)arg1;
 - (int)StringAsSeat:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)relativeLevelSettingAsString:(int)arg1;
 - (id)seatAsString:(int)arg1;

@@ -10,6 +10,9 @@
 {
 }
 
++ (id)IDSDataChannels;
++ (id)_IDSGroupSession;
++ (id)_IDSGroupSession_oversize;
 + (id)transactionLog;
 
 @end

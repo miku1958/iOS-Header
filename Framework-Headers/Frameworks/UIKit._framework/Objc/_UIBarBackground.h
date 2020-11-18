@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSArray, NSString, UIColor, UIImage, UIImageView, UIVisualEffectView;
 
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     double _topInset;
 }
 
+@property (readonly, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
 @property (strong, nonatomic) UIView *customBackgroundView; // @synthesize customBackgroundView=_customBackgroundView;
 @property (nonatomic) BOOL disableBlur;
 @property (nonatomic) BOOL disableTinting; // @synthesize disableTinting=_disableTinting;

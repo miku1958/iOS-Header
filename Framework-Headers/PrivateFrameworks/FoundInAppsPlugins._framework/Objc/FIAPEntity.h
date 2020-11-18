@@ -24,16 +24,16 @@
     NSDate *_detectionDate;
 }
 
-@property (strong, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
-@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
-@property (strong, nonatomic) NSDate *contentCreationDate; // @synthesize contentCreationDate=_contentCreationDate;
-@property (strong, nonatomic) NSDate *detectionDate; // @synthesize detectionDate=_detectionDate;
-@property (strong, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
+@property (copy, nonatomic) NSString *activityType; // @synthesize activityType=_activityType;
+@property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (copy, nonatomic) NSDate *contentCreationDate; // @synthesize contentCreationDate=_contentCreationDate;
+@property (copy, nonatomic) NSDate *detectionDate; // @synthesize detectionDate=_detectionDate;
+@property (copy, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property (readonly, nonatomic) NSString *languageIdentifier; // @synthesize languageIdentifier=_languageIdentifier;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *pluginIdentifier; // @synthesize pluginIdentifier=_pluginIdentifier;
+@property (copy, nonatomic) NSString *pluginIdentifier; // @synthesize pluginIdentifier=_pluginIdentifier;
 @property (readonly, nonatomic) unsigned char type; // @synthesize type=_type;
-@property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
+@property (copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (id)entityWithName:(id)arg1 type:(unsigned char)arg2 languageIdentifier:(id)arg3;
 + (BOOL)supportsSecureCoding;

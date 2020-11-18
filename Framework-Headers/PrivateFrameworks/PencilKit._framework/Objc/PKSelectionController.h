@@ -8,7 +8,7 @@
 
 #import <PencilKit/UIDropInteractionDelegate_Private-Protocol.h>
 
-@class NSString, NSUUID, PKSelectionView, PKStrokeSelection, UIDropInteraction;
+@class NSString, NSUUID, PKSelectionView, PKSpaceInsertionController, PKStrokeSelection, UIDropInteraction;
 @protocol PKSelectionDelegate;
 
 @interface PKSelectionController : NSObject <UIDropInteractionDelegate_Private>
@@ -16,8 +16,10 @@
     struct CGPoint _dropPosition;
     NSUUID *_previousDrawingUUIDForSelection;
     int _selectionViewCount;
+    PKSpaceInsertionController *_spaceInsertionController;
     UIDropInteraction *_dropInteraction;
     BOOL _hasCurrentSelection;
+    BOOL _isCurrentlyAddingSpace;
     id<PKSelectionDelegate> _selectionDelegate;
     PKStrokeSelection *_currentStrokeSelection;
     PKSelectionView *_selectionView;
@@ -29,15 +31,16 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasCurrentSelection; // @synthesize hasCurrentSelection=_hasCurrentSelection;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isCurrentlyAddingSpace; // @synthesize isCurrentlyAddingSpace=_isCurrentlyAddingSpace;
 @property (weak, nonatomic) id<PKSelectionDelegate> selectionDelegate; // @synthesize selectionDelegate=_selectionDelegate;
 @property (nonatomic) struct CGAffineTransform selectionTransform; // @synthesize selectionTransform=_selectionTransform;
 @property (strong, nonatomic) PKSelectionView *selectionView; // @synthesize selectionView=_selectionView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_commitStrokeSelection:(id)arg1 toDrawing:(id)arg2 removeStrokesFromSource:(BOOL)arg3;
-- (void)_commitStrokeSelection:(id)arg1 toDrawing:(id)arg2 removeStrokesFromSource:(BOOL)arg3 createSelection:(BOOL)arg4;
-- (void)_commitStrokeSelection:(id)arg1 toDrawing:(id)arg2 removeStrokesFromSource:(BOOL)arg3 createSelection:(BOOL)arg4 withCompletion:(CDUnknownBlockType)arg5;
+- (id)_commitStrokeSelection:(id)arg1 toDrawing:(id)arg2 removeStrokesFromSource:(BOOL)arg3;
+- (id)_commitStrokeSelection:(id)arg1 toDrawing:(id)arg2 removeStrokesFromSource:(BOOL)arg3 createSelection:(BOOL)arg4;
+- (id)_commitStrokeSelection:(id)arg1 toDrawing:(id)arg2 removeStrokesFromSource:(BOOL)arg3 createSelection:(BOOL)arg4 withCompletion:(CDUnknownBlockType)arg5;
 - (void)_createSelectionViewForDropSession:(id)arg1 removeFromSource:(BOOL)arg2;
 - (void)_createSelectionViewForDropSession:(id)arg1 removeFromSource:(BOOL)arg2 withStrokeSelection:(id)arg3;
 - (long long)_dropInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
@@ -55,10 +58,13 @@
 - (void)cut:(id)arg1;
 - (void)dealloc;
 - (void)delete:(id)arg1;
-- (void)didSelect:(id)arg1 withLassoStroke:(id)arg2;
-- (void)didSelect:(id)arg1 withLassoStroke:(id)arg2 withTransform:(struct CGAffineTransform)arg3;
-- (void)didSelect:(id)arg1 withLassoStroke:(id)arg2 withTransform:(struct CGAffineTransform)arg3 drawing:(id)arg4;
+- (void)didBeginSpaceInsertionWithLassoStroke:(id)arg1 drawing:(id)arg2;
+- (BOOL)didResizeWhitespace;
+- (void)didScroll:(struct CGPoint)arg1;
+- (void)didSelect:(id)arg1 lassoStroke:(id)arg2 transform:(struct CGAffineTransform)arg3 drawing:(id)arg4;
+- (void)didSelect:(id)arg1 lassoStroke:(id)arg2 transform:(struct CGAffineTransform)arg3 drawing:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)didSelectStrokesNotification:(id)arg1;
+- (void)dismissSpacingResizeHandles;
 - (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
 - (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
 - (id)dropInteraction:(id)arg1 previewForDroppingItem:(id)arg2 withDefault:(id)arg3;
@@ -67,7 +73,11 @@
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (void)duplicate:(id)arg1;
 - (void)eraseSelection;
+- (void)hideStrokes:(id)arg1 inDrawing:(id)arg2;
 - (id)initWithSelectionDelegate:(id)arg1;
+- (id)intersectedStrokesFromStroke:(id)arg1 drawing:(id)arg2;
+- (id)intersectedStrokesFromStroke:(id)arg1 drawing:(id)arg2 visibleOnscreenStrokes:(id)arg3;
+- (struct CGPoint)intersectionPointAlongStroke:(id)arg1 fromPoint:(struct CGPoint)arg2 toPoint:(struct CGPoint)arg3;
 - (void)moveSelectionViewBasedOnStrokeTransform:(struct CGAffineTransform)arg1 drawing:(id)arg2;
 - (void)moveStrokeSelectionToLocation:(struct CGPoint)arg1;
 - (id)newStrokesForSelection:(id)arg1 toDrawing:(id)arg2;
@@ -75,6 +85,8 @@
 - (void)registerCommandWithUndoManager:(id)arg1;
 - (void)resetStrokesAndClearSelectionForceRefresh:(BOOL)arg1;
 - (id)rotateUIImage:(id)arg1 clockwise:(BOOL)arg2;
+- (id)setupSpaceInsertionControllerIfNecessary;
+- (id)strokesForSpaceInsertionWithStrokeSelection:(id)arg1 inDrawing:(id)arg2 offset:(double)arg3;
 - (struct CGSize)viewSizeForStrokeSelection:(id)arg1;
 
 @end

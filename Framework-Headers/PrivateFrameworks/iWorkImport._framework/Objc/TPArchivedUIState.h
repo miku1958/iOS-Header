@@ -6,20 +6,21 @@
 
 #import <iWorkImport/TSPObject.h>
 
-@class TPArchivedLayoutState, TPArchivedViewState;
+@class TPUIState;
 
 __attribute__((visibility("hidden")))
 @interface TPArchivedUIState : TSPObject
 {
-    TPArchivedLayoutState *_layoutState;
-    TPArchivedViewState *_viewState;
+    TPUIState *_uiState;
 }
 
-@property (strong, nonatomic) TPArchivedLayoutState *layoutState;
-@property (readonly, nonatomic) TPArchivedViewState *viewState; // @synthesize viewState=_viewState;
+@property (copy, nonatomic) TPUIState *uiState; // @synthesize uiState=_uiState;
 
 - (void).cxx_destruct;
-- (id)initWithContext:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithContext:(id)arg1 uiState:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToArchivedUIState:(id)arg1;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 

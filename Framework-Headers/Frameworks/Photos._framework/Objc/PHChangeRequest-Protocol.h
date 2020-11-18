@@ -6,7 +6,7 @@
 
 #import <Photos/NSObject-Protocol.h>
 
-@class NSManagedObjectID, NSObject, NSSet, NSString;
+@class NSError, NSManagedObjectID, NSObject, NSSet, NSString, PHPhotoLibrary;
 @protocol OS_xpc_object;
 
 @protocol PHChangeRequest <NSObject>
@@ -21,6 +21,11 @@
 - (void)encodeToXPCDict:(NSObject<OS_xpc_object> *)arg1;
 - (id)initWithUUID:(NSString *)arg1 objectID:(NSManagedObjectID *)arg2;
 - (id)initWithXPCDict:(NSObject<OS_xpc_object> *)arg1 clientEntitlements:(NSSet *)arg2 clientName:(NSString *)arg3 clientBundleID:(NSString *)arg4 clientProcessID:(int)arg5;
+- (BOOL)prepareForPhotoLibraryCheck:(PHPhotoLibrary *)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
+
+@optional
+- (void)changeFailedOnClientWithError:(NSError *)arg1;
+- (void)changeFailedOnDaemonWithError:(NSError *)arg1;
 @end
 

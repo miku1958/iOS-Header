@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable;
 
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)broadcastStorage:(id)arg1 didDeleteParagraphsInIndexRange:(struct _NSRange)arg2;
 - (void)broadcastStorage:(id)arg1 didInsertParagraphsInIndexRange:(struct _NSRange)arg2;
 - (void)dealloc;
-- (id)init;
 - (void)removeAllObservers;
 - (void)removeObserver:(id)arg1;
 - (void)removeParagraphObserver:(id)arg1;

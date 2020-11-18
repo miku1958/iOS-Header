@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBlurEffectImpl.h>
+#import <UIKitCore/_UIBlurEffectImpl.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIBlurEffectModernImpl : _UIBlurEffectImpl

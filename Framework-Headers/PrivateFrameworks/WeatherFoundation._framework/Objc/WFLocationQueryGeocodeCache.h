@@ -9,6 +9,7 @@
 @class NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface WFLocationQueryGeocodeCache : NSObject
 {
     NSMutableDictionary *_cache;

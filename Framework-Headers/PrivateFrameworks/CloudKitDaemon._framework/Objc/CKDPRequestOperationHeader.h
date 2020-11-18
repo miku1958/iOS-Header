@@ -8,7 +8,7 @@
 
 #import <CloudKitDaemon/NSCopying-Protocol.h>
 
-@class CKDPIdentifier, CKDPLocale, NSData, NSMutableArray, NSString;
+@class CKDPIdentifier, CKDPLocale, CKDPRequestOperationHeaderAssetAuthorizeGetRequestOptions, NSData, NSMutableArray, NSString;
 
 @interface CKDPRequestOperationHeader : PBCodable <NSCopying>
 {
@@ -22,6 +22,7 @@
     NSString *_applicationContainer;
     int _applicationContainerEnvironment;
     NSString *_applicationVersion;
+    CKDPRequestOperationHeaderAssetAuthorizeGetRequestOptions *_assetAuthorizeGetRequestOptions;
     NSData *_clientChangeToken;
     NSString *_deviceAssignedName;
     NSString *_deviceFlowControlKey;
@@ -61,6 +62,7 @@
 @property (strong, nonatomic) NSString *applicationContainer; // @synthesize applicationContainer=_applicationContainer;
 @property (nonatomic) int applicationContainerEnvironment; // @synthesize applicationContainerEnvironment=_applicationContainerEnvironment;
 @property (strong, nonatomic) NSString *applicationVersion; // @synthesize applicationVersion=_applicationVersion;
+@property (strong, nonatomic) CKDPRequestOperationHeaderAssetAuthorizeGetRequestOptions *assetAuthorizeGetRequestOptions; // @synthesize assetAuthorizeGetRequestOptions=_assetAuthorizeGetRequestOptions;
 @property (strong, nonatomic) NSData *clientChangeToken; // @synthesize clientChangeToken=_clientChangeToken;
 @property (strong, nonatomic) NSString *deviceAssignedName; // @synthesize deviceAssignedName=_deviceAssignedName;
 @property (nonatomic) unsigned long long deviceFlowControlBudget; // @synthesize deviceFlowControlBudget=_deviceFlowControlBudget;
@@ -81,6 +83,7 @@
 @property (readonly, nonatomic) BOOL hasApplicationContainer;
 @property (nonatomic) BOOL hasApplicationContainerEnvironment;
 @property (readonly, nonatomic) BOOL hasApplicationVersion;
+@property (readonly, nonatomic) BOOL hasAssetAuthorizeGetRequestOptions;
 @property (readonly, nonatomic) BOOL hasClientChangeToken;
 @property (readonly, nonatomic) BOOL hasDeviceAssignedName;
 @property (nonatomic) BOOL hasDeviceFlowControlBudget;

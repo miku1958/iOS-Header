@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, TSUTemporaryDirectory;
 @protocol OS_dispatch_queue;
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 {
     TSUTemporaryDirectory *_temporaryDirectory;
     NSMutableDictionary *_bookmarkDataURLsForFilenames;
+    NSMutableDictionary *_digestStringsForFilenames;
     NSObject<OS_dispatch_queue> *_queue;
 }
 

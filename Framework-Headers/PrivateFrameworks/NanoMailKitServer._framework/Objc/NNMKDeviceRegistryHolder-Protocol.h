@@ -11,5 +11,6 @@
 @protocol NNMKDeviceRegistryHolder <NSObject>
 - (NNMKDeviceSyncRegistry *)currentDeviceRegistry;
 - (BOOL)pairedDeviceSupportsMultipleMailboxes;
+- (BOOL)pairedDeviceSupportsStandaloneMode;
 @end
 

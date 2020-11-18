@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInputView.h>
+#import <UIKitCore/UIInputView.h>
 
-#import <UIKit/UIKeyboardCandidateDisplay-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateDisplay-Protocol.h>
 
 @class NSString, UIImageView, UIKeyboardCandidateBar, UIKeyboardCandidateGrid, UIKeyboardCandidateSortControl, UIKeyboardCandidateSplitKeyboardToggleButton, UIKeyboardCandidateUnsplitKeyboardToggleButton, UIView;
 @protocol UIKeyboardCandidateList;

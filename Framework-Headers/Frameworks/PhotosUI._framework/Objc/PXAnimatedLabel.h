@@ -30,7 +30,6 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
-- (void)setText:(id)arg1 animated:(BOOL)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)setText:(id)arg1 withAnimationStyle:(long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
 
 @end

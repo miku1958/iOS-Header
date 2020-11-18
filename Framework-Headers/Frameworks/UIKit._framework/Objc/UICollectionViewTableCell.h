@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
-#import <UIKit/UITable_UITableViewCellDelegate-Protocol.h>
+#import <UIKitCore/UITable_UITableViewCellDelegate-Protocol.h>
 
 @class NSArray, NSString, UICollectionViewLayout, UICollectionViewTableLayout, UICollectionViewTableLayoutAttributes, UIColor, UIImageView, UILabel, UIScrollView, UIShadowView, UITableViewCell, UITableViewCollectionCell, UIView;
 

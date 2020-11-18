@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAsset, AVAssetExportSessionInternal, NSError, NSString, NSURL;
 
@@ -45,6 +45,7 @@
 - (id)init;
 - (id)initWithAsset:(id)arg1 presetName:(id)arg2;
 - (CDStruct_1b6d18a9)maxDuration;
+- (BOOL)maximizePowerEfficiency;
 - (id)metadata;
 - (id)metadataItemFilter;
 - (CDStruct_1b6d18a9)minVideoFrameDuration;
@@ -54,6 +55,7 @@
 - (void)setCanPerformMultiplePassesOverSourceMediaData:(BOOL)arg1;
 - (void)setDirectoryForTemporaryFiles:(id)arg1;
 - (void)setFileLengthLimit:(long long)arg1;
+- (void)setMaximizePowerEfficiency:(BOOL)arg1;
 - (void)setMetadata:(id)arg1;
 - (void)setMetadataItemFilter:(id)arg1;
 - (void)setMinVideoFrameDuration:(CDStruct_1b6d18a9)arg1;

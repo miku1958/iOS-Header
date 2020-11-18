@@ -37,6 +37,7 @@
 - (id)figCaptureSourceAudioSettingsForSessionPreset:(id)arg1;
 - (BOOL)hasMediaType:(id)arg1;
 - (id)init;
+- (BOOL)isBuiltInStereoAudioCaptureSupported;
 - (BOOL)isConnected;
 - (BOOL)isInUseByAnotherApplication;
 - (id)localizedName;

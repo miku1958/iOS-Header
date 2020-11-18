@@ -6,13 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Sharing/NSSecureCoding-Protocol.h>
-#import <Sharing/SFXPCInterface-Protocol.h>
-
-@class NSDictionary, NSString, NSURL, NSXPCConnection, SDXPCServer;
+@class NSDictionary, NSString, NSURL, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface SFUserAlert : NSObject <NSSecureCoding, SFXPCInterface>
+@interface SFUserAlert : NSObject
 {
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
@@ -34,7 +31,6 @@
     NSString *_defaultButtonTitle;
     NSString *_alternateButtonTitle;
     NSString *_otherButtonTitle;
-    SDXPCServer *_server;
 }
 
 @property (strong, nonatomic) NSDictionary *additionalInfo; // @synthesize additionalInfo=_additionalInfo;
@@ -48,7 +44,6 @@
 @property (strong, nonatomic) NSString *message; // @synthesize message=_message;
 @property (strong, nonatomic) NSString *otherButtonTitle; // @synthesize otherButtonTitle=_otherButtonTitle;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
-@property (strong, nonatomic) SDXPCServer *server; // @synthesize server=_server;
 @property (strong, nonatomic) NSURL *soundURL; // @synthesize soundURL=_soundURL;
 @property (nonatomic) BOOL textInput; // @synthesize textInput=_textInput;
 @property (strong, nonatomic) NSString *textInputTitle; // @synthesize textInputTitle=_textInputTitle;

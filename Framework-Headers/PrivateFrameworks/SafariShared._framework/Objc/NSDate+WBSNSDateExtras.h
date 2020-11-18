@@ -7,6 +7,9 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (WBSNSDateExtras)
+
+@property (readonly, nonatomic) double safari_timeIntervalUntilNow;
+
 + (void)safari_dateFromNTPServerWithTimeout:(double)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)safari_dateOfMidnightNumberOfDaysAgo:(long long)arg1;
 + (double)safari_oneDayInSeconds;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarItem.h>
+#import <UIKitCore/_UIStatusBarItem.h>
 
 @class _UIBatteryView, _UIStatusBarImageView, _UIStatusBarStringView;
 
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)dependentEntryKeys;
-- (id)init;
+- (void)prepareForHighlighting;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

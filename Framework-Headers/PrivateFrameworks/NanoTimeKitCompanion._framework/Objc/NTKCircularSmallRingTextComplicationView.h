@@ -21,7 +21,6 @@
 - (void)_updateForTemplateChange;
 - (void)_updateLabelWithTextProvider:(id)arg1;
 - (void)_updateLabelsForFontChange;
-- (BOOL)_wantsPlatter;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)updateLabelWithString:(id)arg1;

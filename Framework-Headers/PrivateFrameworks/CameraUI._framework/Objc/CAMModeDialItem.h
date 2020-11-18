@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class CAShapeLayer, NSAttributedString, NSString, UIFont;
+@class CAShapeLayer, NSString, UIFont;
 
 @interface CAMModeDialItem : UIView
 {
@@ -18,7 +18,7 @@
     struct CGSize __textFrameSize;
 }
 
-@property (readonly, nonatomic) NSAttributedString *_attributedTitle;
+@property (readonly, nonatomic) struct __CFAttributedString *_attributedTitle;
 @property (readonly, nonatomic) CAShapeLayer *_scalableTextLayer; // @synthesize _scalableTextLayer=__scalableTextLayer;
 @property (nonatomic, setter=_setTextFrameSize:) struct CGSize _textFrameSize; // @synthesize _textFrameSize=__textFrameSize;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
@@ -28,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (void)_commonCAMModeDialItemInitialization;
-- (struct CGPath *)_pathForAttributedString:(id)arg1;
+- (struct CGPath *)_pathForAttributedString:(struct __CFAttributedString *)arg1;
 - (struct CGColor *)_textColor;
 - (void)_updateScalableTextPathFromAttributedTitle;
 - (id)initWithCoder:(id)arg1;

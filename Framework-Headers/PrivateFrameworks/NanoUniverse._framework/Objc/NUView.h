@@ -6,53 +6,37 @@
 
 #import <UIKit/UIView.h>
 
-@class CADisplayLink, EAGLContext, NSMutableArray, NUScene;
+#import <NanoUniverse/CLKUIQuadViewDelegate-Protocol.h>
 
-@interface NUView : UIView
+@class CLKDevice, CLKUIQuadView, NSString, NUGLQuad, NUScene;
+@protocol NUViewDelegate;
+
+@interface NUView : UIView <CLKUIQuadViewDelegate>
 {
-    EAGLContext *_context;
-    NUScene *_scene;
-    int _frameInterval;
-    CADisplayLink *_displayLink;
-    unsigned int _isAnimated:1;
-    unsigned int _isAnimating:1;
-    int _backingWidth;
-    int _backingHeight;
-    unsigned int _vertexArray;
-    unsigned int _defaultFramebuffer;
-    unsigned int _colorRenderbuffer;
-    unsigned int _depthRenderbuffer;
-    NSMutableArray *_portals;
-    double _baseTime;
+    CLKDevice *_device;
+    CLKUIQuadView *_quadView;
+    NUGLQuad *_quad;
+    id<NUViewDelegate> _delegate;
 }
 
-@property (readonly, nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_isAnimating;
-@property (nonatomic) int animationFrameInterval; // @dynamic animationFrameInterval;
-@property (readonly, nonatomic) int backingHeight; // @synthesize backingHeight=_backingHeight;
-@property (readonly, nonatomic) int backingWidth; // @synthesize backingWidth=_backingWidth;
-@property (strong, nonatomic) NUScene *scene; // @synthesize scene=_scene;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<NUViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NUScene *scene;
+@property (readonly) Class superclass;
 
-+ (Class)layerClass;
 - (void).cxx_destruct;
-- (void)_backgrounded:(id)arg1;
-- (void)_foregrounded:(id)arg1;
-- (BOOL)_init;
-- (void)_resizeFramebuffer;
-- (void)_startAnimation;
-- (void)_stopAnimation;
-- (void)addPortal:(id)arg1;
-- (void)dealloc;
-- (void)drawRect:(struct CGRect)arg1;
-- (void)drawView:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)quadViewWillDisplay:(id)arg1 forTime:(double)arg2;
 - (void)renderSynchronouslyWithImageQueueDiscard:(BOOL)arg1;
+- (void)setAnimationFrameInterval:(int)arg1;
+- (void)setOpaque:(BOOL)arg1;
 - (id)snapshot;
 - (id)snapshot:(id)arg1 size:(struct CGSize)arg2;
 - (void)startAnimation;
 - (void)stopAnimation;
-- (void)willMoveToWindow:(id)arg1;
 
 @end
 

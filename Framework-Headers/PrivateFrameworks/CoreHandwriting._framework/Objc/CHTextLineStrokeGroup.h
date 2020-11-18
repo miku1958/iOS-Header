@@ -18,7 +18,7 @@
 }
 
 @property (readonly, nonatomic) struct CGVector averageStrokeDeviation; // @synthesize averageStrokeDeviation=_averageStrokeDeviation;
-@property (readonly, nonatomic) vector_5071ab7f localStrokeWritingOrientations; // @synthesize localStrokeWritingOrientations=_localStrokeWritingOrientations;
+@property (readonly, nonatomic) vector_5071ab7f *localStrokeWritingOrientations; // @synthesize localStrokeWritingOrientations=_localStrokeWritingOrientations;
 @property (readonly, strong, nonatomic) NSArray *writingDirectionSortedStrokeIdentifiers; // @synthesize writingDirectionSortedStrokeIdentifiers=_writingDirectionSortedStrokeIdentifiers;
 @property (readonly, strong, nonatomic) NSArray *writingDirectionSortedSubstrokes; // @synthesize writingDirectionSortedSubstrokes=_writingDirectionSortedSubstrokes;
 

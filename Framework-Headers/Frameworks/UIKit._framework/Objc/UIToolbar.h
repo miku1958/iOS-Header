@@ -4,17 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIAccessibilityHUDGestureHosting-Protocol.h>
-#import <UIKit/UIBarPositioning-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegatePrivate-Protocol.h>
-#import <UIKit/_UIBarPositioningInternal-Protocol.h>
+#import <UIKitCore/UIAccessibilityHUDGestureDelegate-Protocol.h>
+#import <UIKitCore/UIBarPositioning-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
+#import <UIKitCore/_UIBarPositioningInternal-Protocol.h>
 
 @class NSArray, NSString, UIAccessibilityHUDGestureManager, UIColor, _UIToolbarVisualProvider;
 @protocol UIToolbarDelegate;
 
-@interface UIToolbar : UIView <UIAccessibilityHUDGestureHosting, _UIBarPositioningInternal, UIGestureRecognizerDelegatePrivate, UIBarPositioning>
+@interface UIToolbar : UIView <UIAccessibilityHUDGestureDelegate, _UIBarPositioningInternal, UIGestureRecognizerDelegatePrivate, UIBarPositioning>
 {
     id<UIToolbarDelegate> _delegate;
     NSArray *_items;
@@ -61,6 +61,7 @@
 @property (strong, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 @property (nonatomic, getter=isTranslucent) BOOL translucent;
 
++ (BOOL)_forceLegacyVisualProvider;
 + (id)defaultButtonFont;
 + (double)defaultHeight;
 + (double)defaultHeightForBarSize:(int)arg1;

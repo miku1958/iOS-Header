@@ -20,7 +20,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)asynchronousDataFromURL:(id)arg1 key:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
-- (id)cachedImageFormKey:(id)arg1;
+- (id)cachedImageFromKey:(id)arg1;
 
 @end
 

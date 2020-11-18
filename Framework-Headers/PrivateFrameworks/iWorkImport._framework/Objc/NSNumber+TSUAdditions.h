@@ -7,8 +7,10 @@
 #import <Foundation/NSNumber.h>
 
 @interface NSNumber (TSUAdditions)
+
+@property (readonly, nonatomic) double CGFloatValue;
+
 + (id)numberWithCGFloat:(double)arg1;
-- (double)CGFloatValue;
 - (BOOL)isFloatingPointType;
 - (BOOL)tsu_isAlmostEqual:(id)arg1;
 @end

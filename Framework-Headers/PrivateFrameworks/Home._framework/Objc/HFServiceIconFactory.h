@@ -17,6 +17,7 @@
 + (id)defaultIconDescriptorForService:(id)arg1;
 + (id)defaultIconDescriptorForServiceType:(id)arg1 serviceSubtype:(id)arg2;
 + (id)iconDescriptorForAccessoryCategory:(id)arg1;
++ (id)iconDescriptorForAccessoryCategoryType:(id)arg1;
 + (id)iconDescriptorWithIdentifier:(id)arg1 forService:(id)arg2;
 + (id)iconDescriptorWithIdentifier:(id)arg1 forServiceType:(id)arg2 serviceSubtype:(id)arg3;
 

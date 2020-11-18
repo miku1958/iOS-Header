@@ -31,11 +31,10 @@
 - (void).cxx_destruct;
 - (void)_handleResponse:(id)arg1;
 - (void)clearSectionInfoSentCache;
-- (void)enableNotifications:(BOOL)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3;
-- (void)enableNotifications:(BOOL)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3 spoolToFile:(BOOL)arg4;
-- (void)handleEnableNotificationsRequest:(id)arg1;
 - (void)handleFileURL:(id)arg1 extraMetadata:(id)arg2;
 - (void)handleRemoveSectionRequest:(id)arg1;
+- (void)handleSetNotificationsAlertLevelRequest:(id)arg1;
+- (void)handleSetNotificationsGroupingRequest:(id)arg1;
 - (void)handleSetSectionInfoRequest:(id)arg1;
 - (void)handleSetSectionInfoResponse:(id)arg1;
 - (void)handleSetSectionSubtypeParametersIconRequest:(id)arg1;
@@ -43,8 +42,14 @@
 - (id)init;
 - (BOOL)isSectionInfoSentCacheEmpty;
 - (void)registerProtobufHandlers;
+- (void)removeSectionInfoSentCacheForSectionID:(id)arg1;
 - (void)removeSectionWithSectionID:(id)arg1;
+- (void)removeSectionWithSectionID:(id)arg1 sent:(CDUnknownBlockType)arg2;
 - (void)sendSpooledRequestsNowWithSent:(CDUnknownBlockType)arg1 withAcknowledgement:(CDUnknownBlockType)arg2;
+- (void)setNotificationsGrouping:(int)arg1 sectionID:(id)arg2;
+- (void)setNotificationsGrouping:(int)arg1 sectionID:(id)arg2 spoolToFile:(BOOL)arg3;
+- (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3;
+- (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(id)arg2 mirror:(BOOL)arg3 spoolToFile:(BOOL)arg4;
 - (void)setSectionInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setSectionInfo:(id)arg1 withQueue:(id)arg2 withSent:(CDUnknownBlockType)arg3 withAcknowledgement:(CDUnknownBlockType)arg4 spoolToFile:(BOOL)arg5;
 - (void)setSectionSubtypeParametersIcon:(id)arg1 forSectionID:(id)arg2 forSubtypeID:(long long)arg3;

@@ -13,8 +13,8 @@
 - (void)removeThumbnailAdditionsOnURL:(NSURL *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (void)requestThumbnailOfMaximumSize:(struct CGSize)arg1 scale:(double)arg2 forThumbnailItem:(QLThumbnailItem *)arg3 completionHandler:(void (^)(UIImage *))arg4;
 - (void)requestWritingThumbnailOfMaximumSize:(struct CGSize)arg1 forDocumentAtURL:(NSURL *)arg2 sandboxExtension:(NSString *)arg3 toFileHandle:(NSFileHandle *)arg4 atBackgroundPriority:(BOOL)arg5 completionHandler:(void (^)(id<QLThumbnailGenerationRequest>))arg6;
-- (void)requestWritingThumbnailOfMaximumSize:(struct CGSize)arg1 forDocumentAtURL:(NSURL *)arg2 toFileHandle:(NSFileHandle *)arg3 atBackgroundPriority:(BOOL)arg4 completionHandler:(void (^)(id<QLThumbnailGenerationRequest>))arg5;
-- (void)thumbnailForRequest:(QLTThumbnailRequest *)arg1 completionHandler:(void (^)(NSData *, QLTBitmapFormat *, NSError *))arg2;
+- (void)requestWritingThumbnailOfMaximumSize:(struct CGSize)arg1 forThumbnailItem:(QLThumbnailItem *)arg2 toFileHandle:(NSFileHandle *)arg3 atBackgroundPriority:(BOOL)arg4 completionHandler:(void (^)(id<QLThumbnailGenerationRequest>))arg5;
+- (void)thumbnailForRequest:(QLTThumbnailRequest *)arg1 completionHandler:(void (^)(NSData *, QLTBitmapFormat *, BOOL, NSError *))arg2;
 - (void)thumbnailsStoreURLForURL:(NSURL *)arg1 completionBlock:(void (^)(NSURL *, NSDictionary *, NSString *, NSError *))arg2;
 @end
 

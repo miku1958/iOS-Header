@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/QLPreviewControllerDelegate-Protocol.h>
-#import <UIKit/UIActionSheetDelegate-Protocol.h>
-#import <UIKit/_UIDICActivityViewControllerDelegate-Protocol.h>
+#import <UIKitCore/QLPreviewControllerDelegate-Protocol.h>
+#import <UIKitCore/UIActionSheetDelegate-Protocol.h>
+#import <UIKitCore/_UIDICActivityViewControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, NSURL, QLPreviewController, UIBarButtonItem, UIPopoverController, UIView, UIViewController, _UIDICActivityViewController, _UIDICPreviewItem;
 @protocol UIDocumentInteractionControllerDelegate;

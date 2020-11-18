@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -15,26 +15,34 @@
 
 @property (nonatomic) BOOL canReduceOutputChannels;
 @property (readonly) NSString *name;
+@property (nonatomic) struct CGSize outputGroupSize;
 @property (nonatomic) BOOL perservesAlpha;
 @property (nonatomic) BOOL preservesRange;
 
++ (id)SDOFV2MetalKernelNamed:(id)arg1;
++ (id)SDOFV3MetalKernelNamed:(id)arg1;
 + (id)betterString:(id)arg1;
 + (id)colorMatrixBiasKernel;
 + (id)hashForString:(id)arg1;
 + (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 error:(id *)arg3;
++ (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 outputGroupSize:(struct CGSize)arg3 error:(id *)arg4;
 + (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 outputPixelFormat:(int)arg3 error:(id *)arg4;
++ (id)kernelWithFunctionName:(id)arg1 fromMetalLibraryData:(id)arg2 outputPixelFormat:(int)arg3 outputGroupSize:(struct CGSize)arg4 error:(id *)arg5;
 + (id)kernelWithString:(id)arg1;
++ (id)kernelWithString:(id)arg1 fromMetalLibraryData:(id)arg2;
 + (id)kernelsWithString:(id)arg1;
++ (id)kernelsWithString:(id)arg1 andMetalLibrary:(id)arg2 messageLog:(id)arg3;
++ (id)kernelsWithString:(id)arg1 fromMetalLibraryData:(id)arg2;
 + (id)kernelsWithString:(id)arg1 messageLog:(id)arg2;
 + (id)modifiedKernelStringForFosl:(id)arg1;
 - (SEL)ROISelector;
-- (id)_initWithDict:(id)arg1;
-- (id)_initWithFirstKernelFromString:(id)arg1 withCruftCompatibility:(BOOL)arg2;
 - (id)_initWithInternalRepresentation:(void *)arg1;
+- (id)_initWithReflection:(struct CIKernelReflection)arg1;
+- (id)_initWithString:(id)arg1 andMetalLibrary:(id)arg2 usingCruftCompatibility:(BOOL)arg3;
+- (id)_initWithString:(id)arg1 usingCruftCompatibility:(BOOL)arg2;
 - (void *)_internalRepresentation;
 - (BOOL)_isValidOutputPixelFormat:(int)arg1;
 - (int)_outputFormatUsingDictionary:(id)arg1 andKernel:(struct Kernel *)arg2;
-- (int)_outputPixelFormatFromExplicitAttributes:(id)arg1;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3 options:(id)arg4;
 - (void)dealloc;

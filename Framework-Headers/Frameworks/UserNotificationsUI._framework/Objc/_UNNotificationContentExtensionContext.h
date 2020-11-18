@@ -6,19 +6,25 @@
 
 #import <Foundation/NSExtensionContext.h>
 
+@class NSArray;
 @protocol _UNNotificationExtensionHostInterface;
 
 @interface _UNNotificationContentExtensionContext : NSExtensionContext
 {
     id<_UNNotificationExtensionHostInterface> _hostService;
+    NSArray *_notificationActions;
 }
 
 @property (weak, nonatomic) id<_UNNotificationExtensionHostInterface> hostService; // @synthesize hostService=_hostService;
+@property (copy, nonatomic) NSArray *notificationActions; // @synthesize notificationActions=_notificationActions;
 
 - (void).cxx_destruct;
+- (void)dismissNotificationContentExtension;
+- (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
 - (void)mediaPlayingPaused;
 - (void)mediaPlayingStarted;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)performNotificationDefaultAction;
 - (void)requestDismiss;
 
 @end

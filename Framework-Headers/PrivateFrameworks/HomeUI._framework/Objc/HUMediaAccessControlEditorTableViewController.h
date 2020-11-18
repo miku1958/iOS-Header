@@ -24,13 +24,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_passwordSectionFooterTitle;
-- (void)_updateHeaderFooterView:(id)arg1 forSection:(long long)arg2;
+- (void)_updateFooterView:(id)arg1 forSection:(long long)arg2;
 - (void)accessControlEditorModuleController:(id)arg1 didUpdateAccessControl:(id)arg2;
 - (id)initWithHome:(id)arg1;
 - (id)itemModuleControllers;
-- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
-- (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)viewDidLoad;
 

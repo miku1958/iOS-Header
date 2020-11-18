@@ -70,12 +70,15 @@ __attribute__((visibility("hidden")))
 @property double pageHeaderInset; // @synthesize pageHeaderInset=_pageHeaderInset;
 @property int pageOrder; // @synthesize pageOrder=mPageOrder;
 @property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (readonly, nonatomic) BOOL preventsChangeTracking;
 @property (readonly, nonatomic) BOOL preventsComments;
 @property (nonatomic) struct UIEdgeInsets printMargins; // @synthesize printMargins=_printMargins;
 @property (nonatomic) BOOL showPageNumbers; // @synthesize showPageNumbers=mShowPageNumbers;
 @property long long startPageNumber; // @synthesize startPageNumber=_startPageNumber;
 @property (readonly, nonatomic) BOOL storageChangesInvalidateWrap;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
+@property (readonly, nonatomic) BOOL supportsMultipleColumns;
 @property (readonly, nonatomic) BOOL textIsLinked;
 @property (readonly, nonatomic) BOOL textIsVertical;
 @property (nonatomic) BOOL usesSingleHeaderFooter; // @synthesize usesSingleHeaderFooter=mUsesSingleHeaderFooter;

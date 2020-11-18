@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewLayout.h>
+#import <UIKitCore/UICollectionViewLayout.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSSet;
 

@@ -17,8 +17,8 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDAccessory, HMDCameraResidentMessageHandler, HMDCameraSnapshotMonitorEvents, HMDCameraStreamSnapshotHandler, HMDNotificationRegistration, HMDSnapshotCacheRequestHandler, HMDSnapshotLocalSession, HMDSnapshotSlotManager, HMFMessageDispatcher, HMFNetMonitor, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
-@protocol HMDSnapshotRequestHandlerProtocol, OS_dispatch_queue;
+@class HMDAccessory, HMDCameraResidentMessageHandler, HMDCameraSnapshotMonitorEvents, HMDCameraStreamSnapshotHandler, HMDNotificationRegistration, HMDSnapshotCacheRequestHandler, HMDSnapshotLocalSession, HMDSnapshotRequestHandler, HMDSnapshotSlotManager, HMFMessageDispatcher, HMFNetMonitor, NSMutableArray, NSMutableDictionary, NSObject, NSSet, NSString, NSUUID;
+@protocol OS_dispatch_queue;
 
 @interface HMDCameraSnapshotManager : HMFObject <HMDCameraSnapshotLocalDelegate, HMDCameraSnapshotRemoteRelaySenderDelegate, HMDCameraSnapshotRemoteRelayReceiverDelegate, HMDCameraSnapshotRemoteStreamSenderDelegate, HMDCameraSnapshotRemoteStreamReceiverDelegate, HMDCameraSnapshotRemoteRelayStreamDelegate, HMFTimerDelegate, HMFLogging, HMDCameraStreamSnapshotHandlerDelegate, HMDHomeMessageReceiver>
 {
@@ -31,7 +31,7 @@
     NSString *_imageCacheDirectory;
     NSString *_logID;
     HMDCameraSnapshotMonitorEvents *_monitorServicesManager;
-    id<HMDSnapshotRequestHandlerProtocol> _snapshotRequestHandler;
+    HMDSnapshotRequestHandler *_snapshotRequestHandler;
     HMDSnapshotCacheRequestHandler *_snapshotCacheRequestHandler;
     HMDSnapshotSlotManager *_snapshotSlotManager;
     HMDCameraStreamSnapshotHandler *_streamSnapshotHandler;
@@ -61,7 +61,7 @@
 @property (readonly, nonatomic) NSMutableArray *pendingSnapshotRequestDuringStreamSetup; // @synthesize pendingSnapshotRequestDuringStreamSetup=_pendingSnapshotRequestDuringStreamSetup;
 @property (readonly, nonatomic) HMDCameraResidentMessageHandler *residentMessageHandler; // @synthesize residentMessageHandler=_residentMessageHandler;
 @property (readonly, nonatomic) HMDSnapshotCacheRequestHandler *snapshotCacheRequestHandler; // @synthesize snapshotCacheRequestHandler=_snapshotCacheRequestHandler;
-@property (readonly, nonatomic) id<HMDSnapshotRequestHandlerProtocol> snapshotRequestHandler; // @synthesize snapshotRequestHandler=_snapshotRequestHandler;
+@property (readonly, nonatomic) HMDSnapshotRequestHandler *snapshotRequestHandler; // @synthesize snapshotRequestHandler=_snapshotRequestHandler;
 @property (readonly, nonatomic) HMDSnapshotSlotManager *snapshotSlotManager; // @synthesize snapshotSlotManager=_snapshotSlotManager;
 @property (readonly, nonatomic) HMDCameraStreamSnapshotHandler *streamSnapshotHandler; // @synthesize streamSnapshotHandler=_streamSnapshotHandler;
 @property (readonly) Class superclass;

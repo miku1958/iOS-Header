@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (void)removeOverlay:(id)arg1;
 - (struct VKTileKey)sourceKeyForDownloadKey:(const struct _GEOTileKey *)arg1;
 - (struct VKTileKey)sourceKeyForRenderKey:(const struct VKTileKey *)arg1;
-- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3;
+- (id)tileForData:(id)arg1 downloadKey:(const struct _GEOTileKey *)arg2 sourceKey:(const struct VKTileKey *)arg3 userInfo:(id)arg4;
 - (id)tileForKey:(const struct VKTileKey *)arg1;
 - (long long)tileSize;
 - (long long)zEquivalenceClass;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInteractionProgress.h>
+#import <UIKitCore/UIInteractionProgress.h>
 
-#import <UIKit/_UIForceLevelClassifierDelegate-Protocol.h>
+#import <UIKitCore/_UIForceLevelClassifierDelegate-Protocol.h>
 
 @class NSObservation, NSString, _UIForceLevelClassifier, _UITouchForceObservable;
 

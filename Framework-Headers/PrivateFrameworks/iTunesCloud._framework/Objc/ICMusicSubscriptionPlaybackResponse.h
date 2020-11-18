@@ -20,6 +20,7 @@
 @property (readonly, copy, nonatomic) NSArray *items;
 @property (readonly, copy, nonatomic) NSDate *leaseExpirationDate;
 @property (readonly, copy, nonatomic) NSData *leaseInfoData;
+@property (readonly, copy, nonatomic) NSDictionary *metricsDictionary;
 @property (readonly, copy, nonatomic) NSError *serverError;
 @property (readonly, copy, nonatomic) NSData *subscriptionKeyBagData;
 

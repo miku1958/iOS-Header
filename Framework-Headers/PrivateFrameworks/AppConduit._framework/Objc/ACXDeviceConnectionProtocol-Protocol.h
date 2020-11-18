@@ -11,6 +11,7 @@
 @protocol ACXDeviceConnectionProtocol <NSObject>
 - (void)activeComplicationsForDeviceWithPairingID:(NSUUID *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)cancelPendingInstallations;
+- (void)cancelUpdatePendingForCompanionApp:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)disableObservers;
 - (void)enableObservers;
 - (void)fetchApplicationWithContainingApplicationBundleID:(NSString *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
@@ -29,6 +30,7 @@
 - (void)removeApplication:(NSString *)arg1 fromDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(long long))arg3;
 - (void)removeProvisioningProfileWithID:(NSString *)arg1 fromDeviceWithPairingID:(NSUUID *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)retryPendingAppInstallationsOnDeviceWithPairingID:(NSUUID *)arg1;
+- (void)setUpdatePendingForCompanionApp:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updatePreferencesForApplicationWithIdentifier:(NSString *)arg1 preferences:(NSDictionary *)arg2 forDeviceWithPairingID:(NSUUID *)arg3 completion:(void (^)(NSError *))arg4;
 @end
 

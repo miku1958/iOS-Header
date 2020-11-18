@@ -11,33 +11,33 @@
 @interface HDPluginManager : NSObject
 {
     NSArray *_plugins;
-    HDDaemon *_daemon;
     NSArray *_legacyPlugins;
+    HDDaemon *_daemon;
     NSDictionary *_legacyPluginsByIdentifier;
 }
 
 @property (weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
-@property (strong, nonatomic) NSArray *legacyPlugins; // @synthesize legacyPlugins=_legacyPlugins;
 @property (strong, nonatomic) NSDictionary *legacyPluginsByIdentifier; // @synthesize legacyPluginsByIdentifier=_legacyPluginsByIdentifier;
 
 - (void).cxx_destruct;
+- (id)_builtInPluginClasses;
 - (id)_createLegacyPluginsFromClasses:(id)arg1;
 - (id)_createPluginsFromClasses:(id)arg1;
-- (id)_internalPluginsPath;
+- (id)_internalPluginsDirectoryPath;
 - (void)_loadPlugins;
 - (Class)_loadPrincipalClassConformingToProtocols:(id)arg1 fromBundleAtPath:(id)arg2;
 - (id)_loadPrincipalClassesConformingToProtocols:(id)arg1 fromBundlesInDirectoryAtPath:(id)arg2 error:(id *)arg3;
 - (id)_pluginClasses;
-- (id)_pluginPaths;
-- (id)_pluginsPath;
+- (id)_pluginDirectoryPaths;
+- (id)_pluginsDirectoryPath;
 - (id)_principalClassProtocols;
 - (id)createExtensionsForDaemon:(id)arg1;
 - (id)createExtensionsForProfile:(id)arg1;
 - (id)initWithDaemon:(id)arg1;
+- (id)legacyPlugins;
 - (id)pluginForIdentifier:(id)arg1;
 - (id)pluginsConformingToProtocol:(id)arg1;
 - (id)pluginsForProtocol:(id)arg1;
-- (id)queryServerForUUID:(id)arg1 serverDataObject:(id)arg2 queryClass:(Class)arg3 clientProxy:(id)arg4 client:(id)arg5 profile:(id)arg6 queryDelegate:(id)arg7;
 
 @end
 

@@ -4,40 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+#import <Message/CXCallObserverDelegate-Protocol.h>
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 #import <Message/RadiosPreferencesDelegate-Protocol.h>
 
-@class AWDMailNetworkDiagnosticsReport, MFObservable, NSConditionLock, NSMutableArray, NSMutableSet, NSString, NSThread, RadiosPreferences;
+@class AWDMailNetworkDiagnosticsReport, CXCallObserver, CoreTelephonyClient, MFObservable, NSLock, NSMutableArray, NSMutableSet, NSString, RadiosPreferences;
 @protocol OS_dispatch_queue;
 
-@interface MFNetworkController : NSObject <MFDiagnosticsGenerator, RadiosPreferencesDelegate>
+@interface MFNetworkController : NSObject <MFDiagnosticsGenerator, RadiosPreferencesDelegate, CXCallObserverDelegate>
 {
-    NSConditionLock *_lock;
+    NSLock *_lock;
     struct __CFRunLoop *_rl;
-    NSThread *_thread;
     NSMutableArray *_observers;
     unsigned int _flags;
     BOOL _dns;
-    NSMutableSet *_calls;
+    unsigned long long _activeCalls;
     NSMutableSet *_backgroundWifiClients;
-    int _interface;
     struct __SCPreferences *_wiFiPreferences;
     BOOL _hasCellDataCapability;
     BOOL _hasWiFiCapability;
     BOOL _isWiFiEnabled;
     BOOL _isRoamingAllowed;
-    BOOL _data;
     BOOL _alternateAdviceState;
-    NSString *_dataIndicator;
     RadiosPreferences *_radiosPreferences;
     NSObject<OS_dispatch_queue> *_prefsQueue;
     int _symptomsToken;
+    CoreTelephonyClient *_ctc;
+    int _dataIndicator;
+    NSObject<OS_dispatch_queue> *_dataStatusQueue;
+    BOOL _cellularDataAvailable;
     struct __SCNetworkReachability *_reachability;
     struct __SCDynamicStore *_store;
     struct __CFRunLoopSource *_store_source;
-    struct __CTServerConnection *_telephony;
+    CXCallObserver *_callObserver;
 }
 
 @property (readonly, nonatomic) AWDMailNetworkDiagnosticsReport *awdNetworkDiagnosticReport;
@@ -50,26 +51,28 @@
 
 + (id)networkAssertionWithIdentifier:(id)arg1;
 + (id)sharedInstance;
+- (void)_carrierBundleDidChange;
 - (void)_checkKeys:(id)arg1 forStore:(struct __SCDynamicStore *)arg2;
-- (void)_checkKeys_nts:(id)arg1 forStore:(struct __SCDynamicStore *)arg2;
-- (void)_handleNotification:(id)arg1 info:(id)arg2 forConnection:(struct __CTServerConnection *)arg3;
 - (void)_handleWiFiNotification:(unsigned int)arg1;
+- (void)_initializeDataStatus;
 - (void)_inititializeWifiManager;
 - (BOOL)_isNetworkUp_nts;
 - (id)_networkAssertionWithIdentifier:(id)arg1;
-- (CDStruct_1ef3fb1f)_pollDataAndCallStatus_nts;
 - (void)_setDataStatus_nts:(id)arg1;
 - (void)_setFlags:(unsigned int)arg1 forReachability:(struct __SCNetworkReachability *)arg2;
-- (void)_setUpTelephony_nts;
 - (void)_setupSymptons;
 - (BOOL)_simulationOverrideForType:(unsigned long long)arg1 actualValue:(BOOL)arg2;
-- (void)_tearDownTelephony_nts;
+- (void)_updateActiveCalls;
 - (void)_updateWifiClientType;
 - (void)addBackgroundWifiClient:(id)arg1;
 - (id)addNetworkObserverBlock:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (void)airplaneModeChanged;
+- (void)callObserver:(id)arg1 callChanged:(id)arg2;
+- (void)connectionActivationError:(id)arg1 connection:(int)arg2 error:(int)arg3;
+- (id)copyCarrierBundleValue:(id)arg1;
 - (id)copyDiagnosticInformation;
 - (int)dataStatus;
+- (void)dataStatus:(id)arg1 dataStatusInfo:(id)arg2;
 - (void)dealloc;
 - (BOOL)hasAlternateAdvice;
 - (BOOL)inAirplaneMode;
@@ -81,8 +84,10 @@
 - (BOOL)isFatPipe;
 - (BOOL)isNetworkUp;
 - (BOOL)isOnWWAN;
+- (void)preferredDataSimChanged:(id)arg1;
 - (void)removeBackgroundWifiClient:(id)arg1;
 - (void)removeNetworkObserver:(id)arg1;
+- (void)simStatusDidChange:(id)arg1 status:(id)arg2;
 
 @end
 

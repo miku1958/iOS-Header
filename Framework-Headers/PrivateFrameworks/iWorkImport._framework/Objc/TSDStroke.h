@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -45,7 +45,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int i_join; // @synthesize i_join=mJoin;
 @property (nonatomic) double i_miterLimit; // @synthesize i_miterLimit=mMiterLimit;
 @property (copy, nonatomic, setter=i_setPattern:) TSDStrokePattern *i_pattern; // @synthesize i_pattern=mPattern;
-@property (readonly, nonatomic) double i_verticalOffsetForSwatch;
 @property (nonatomic) double i_width; // @synthesize i_width=mWidth;
 @property (readonly, nonatomic) BOOL isDash;
 @property (readonly, nonatomic) BOOL isFrame;
@@ -94,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)boundsForPath:(id)arg1;
 - (BOOL)canApplyDirectlyToRepCALayer;
 - (BOOL)canApplyToCAShapeLayer;
+- (BOOL)canDrawWithOtherStroke:(id)arg1;
 - (id)colorForCGContext:(struct CGContext *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -127,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPath *)pathToStrokeFromCGPath:(struct CGPath *)arg1;
 - (id)pathToStrokeFromTSUBezierPath:(id)arg1;
 - (BOOL)prefersToApplyToCAShapeLayerDuringManipulation;
+- (BOOL)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 - (void)saveToArchive:(struct StrokeArchive *)arg1 archiver:(id)arg2;
 - (void)saveToPropertyCommandMessage:(struct Message *)arg1 archiver:(id)arg2;
 - (BOOL)shouldAntialiasDefeat;

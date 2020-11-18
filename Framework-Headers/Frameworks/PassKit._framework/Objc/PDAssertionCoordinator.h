@@ -7,30 +7,50 @@
 #import <PassKitCore/PDXPCService.h>
 
 #import <PassKitCore/PDAssertionCoordinatorExportedInterface-Protocol.h>
+#import <PassKitCore/PDAssertionRequestDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSObject, NSString;
+@class NSMutableArray, NSMutableDictionary, NSObject, NSString, PKEntitlementWhitelist;
 @protocol OS_dispatch_queue, PDAssertionCoordinatorDelegate;
 
-@interface PDAssertionCoordinator : PDXPCService <PDAssertionCoordinatorExportedInterface>
+@interface PDAssertionCoordinator : PDXPCService <PDAssertionRequestDelegate, PDAssertionCoordinatorExportedInterface>
 {
     NSMutableDictionary *_assertionsByType;
     NSObject<OS_dispatch_queue> *_coordinatorSerialQueue;
+    PKEntitlementWhitelist *_whitelist;
+    long long _suppressionPermissionState;
+    NSMutableArray *_pendingAssertionRequests;
+    BOOL _isForegroundApplication;
     id<PDAssertionCoordinatorDelegate> _delegate;
+    NSString *_bundleIdentifier;
 }
 
+@property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PDAssertionCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isForegroundApplication; // @synthesize isForegroundApplication=_isForegroundApplication;
 @property (readonly) Class superclass;
 
++ (id)suppressionApplicationRegistry;
 - (void).cxx_destruct;
+- (void)_acquireAssertion:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_acquireContactlessInterfaceSuppressionAssertion:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_addRequestForAssertion:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_cancelPendingAssertionRequest:(id)arg1;
+- (void)_processPendingAssertionRequests;
+- (void)_showAlertForContactlessInterfaceSuppression;
 - (void)acquireAssertionOfType:(unsigned long long)arg1 withIdentifier:(id)arg2 reason:(id)arg3 handler:(CDUnknownBlockType)arg4;
-- (void)assertionExistsOfType:(unsigned long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)assertionOfType:(unsigned long long)arg1 withIdentifier:(id)arg2 isValid:(CDUnknownBlockType)arg3;
+- (void)assertionOfType:(unsigned long long)arg1 withIdentifier:(id)arg2 shouldInvalidateWhenBackgrounded:(BOOL)arg3;
+- (void)assertionRequestDidTimeout:(id)arg1;
 - (id)assertionsOfType:(unsigned long long)arg1;
+- (void)cancelPendingAssertionRequests;
 - (id)initWithConnection:(id)arg1;
 - (void)invalidateAllAssertions;
 - (void)invalidateAssertionOfType:(unsigned long long)arg1 withIdentifier:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)invalidateAssertionsForBackgroundApplicationState;
+- (void)processPendingAssertionRequests;
 
 @end
 

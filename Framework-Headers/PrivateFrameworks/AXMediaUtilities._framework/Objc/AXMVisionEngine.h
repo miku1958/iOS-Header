@@ -13,7 +13,7 @@
 #import <AXMediaUtilities/NSCopying-Protocol.h>
 #import <AXMediaUtilities/NSSecureCoding-Protocol.h>
 
-@class AXMFeatureTrackingManager, AXMService, AXMTaskDispatcher, AXMVisionEngineCache, AXMVisionEngineDiagnosticInfo, NSArray, NSMapTable, NSMutableArray, NSString, _AXMVisionEngineAnalysisTask;
+@class AXMFeatureTrackingManager, AXMService, AXMTaskDispatcher, AXMVisionEngineCache, NSArray, NSMapTable, NSMutableArray, NSString, _AXMVisionEngineAnalysisTask;
 @protocol OS_dispatch_queue;
 
 @interface AXMVisionEngine : NSObject <AXMVisionEngineNodeConnectionDelegate, AXMFeatureTrackingManagerDelegate, AXMTaskDispatcherDelegate, NSCopying, NSSecureCoding, AXMDescribing>
@@ -33,7 +33,6 @@
     long long _maximumQueueSize;
     unsigned long long _thresholdPriority;
     AXMVisionEngineCache *_cache;
-    AXMVisionEngineDiagnosticInfo *_diagnosticInfo;
     AXMService *_axMediaUtilsService;
     AXMTaskDispatcher *_taskDispatcher;
 }
@@ -43,7 +42,6 @@
 @property (readonly, nonatomic) long long cacheSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) AXMVisionEngineDiagnosticInfo *diagnosticInfo; // @synthesize diagnosticInfo=_diagnosticInfo;
 @property (nonatomic, getter=areDiagnosticsEnabled) BOOL diagnosticsEnabled; // @synthesize diagnosticsEnabled=_diagnosticsEnabled;
 @property (readonly, nonatomic) NSArray *evaluationNodes;
 @property (nonatomic, getter=isFeatureTrackingEnabled) BOOL featureTrackingEnabled; // @synthesize featureTrackingEnabled=_featureTrackingEnabled;
@@ -88,6 +86,7 @@
 - (void)addFeatureTrackingObbserver:(id)arg1 targetQueue:(id)arg2;
 - (void)addResultHandler:(CDUnknownBlockType)arg1;
 - (void)addSourceNode:(id)arg1;
+- (void)addSourceNodes:(id)arg1 evaluationNodes:(id)arg2;
 - (void)axmAppendRecursiveDescription:(id)arg1 withIndentation:(long long)arg2;
 - (id)axmDescription;
 - (BOOL)canAddEvaluationNode:(id)arg1;

@@ -8,13 +8,16 @@
 
 #import <CarKit/CARSessionCommandDelegate-Protocol.h>
 
-@class CARInputDeviceManager, CARSessionConfiguration, NSNumber, NSString;
+@class CARInputDeviceManager, CARSessionConfiguration, NSArray, NSNumber, NSString;
 
 @interface CARSession : NSObject <CARSessionCommandDelegate>
 {
+    struct OpaqueFigEndpoint *_endpoint;
     BOOL _authenticated;
     CARSessionConfiguration *_configuration;
     CARInputDeviceManager *_inputDeviceManager;
+    NSArray *_screenInfo;
+    NSArray *_screenIDs;
 }
 
 @property (readonly, nonatomic, getter=isAuthenticated) BOOL authenticated; // @synthesize authenticated=_authenticated;
@@ -26,18 +29,24 @@
 @property (strong, nonatomic) CARInputDeviceManager *inputDeviceManager; // @synthesize inputDeviceManager=_inputDeviceManager;
 @property (readonly, copy, nonatomic) NSNumber *limitUserInterfaces;
 @property (readonly, copy, nonatomic) NSNumber *nightMode;
+@property (copy, nonatomic) NSArray *screenIDs; // @synthesize screenIDs=_screenIDs;
+@property (copy, nonatomic) NSArray *screenInfo; // @synthesize screenInfo=_screenInfo;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)MFiCertificateSerialNumber;
+- (id)_endpointValueForKey:(struct __CFString *)arg1;
+- (void)_fetchAuthenticationStatus;
 - (id)borrowScreenForClient:(id)arg1 reason:(id)arg2;
-- (id)initWithFigEndpoint:(id)arg1;
+- (struct OpaqueFigEndpoint *)endpoint;
+- (id)initWithFigEndpoint:(struct OpaqueFigEndpoint *)arg1;
+- (unsigned long long)navigationOwner;
 - (BOOL)ownsScreen;
-- (BOOL)ownsTurnByTurnNavigation;
 - (BOOL)recognizingSpeech;
+- (void)releaseTurnByTurnOwnership;
 - (void)requestCarUI;
 - (void)requestCarUIForURL:(id)arg1;
-- (id)requestTurnByTurnNavigationOwnership;
+- (void)requestTurnByTurnOwnership;
 - (void)sendCommand:(id)arg1 withParameters:(id)arg2;
 - (void)takeScreenForClient:(id)arg1 reason:(id)arg2;
 - (void)takeScreenForConnection;

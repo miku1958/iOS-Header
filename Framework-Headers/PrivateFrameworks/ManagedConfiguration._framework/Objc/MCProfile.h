@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDate, NSDictionary, NSString;
 @protocol OS_dispatch_queue;
@@ -84,6 +84,7 @@
 + (int)evaluateTrust:(struct __SecTrust *)arg1;
 + (int)evaluateTrustOfCertificateChain:(id)arg1 signatureVersion:(id)arg2;
 + (int)evaluateTrustOfCertificateChain:(id)arg1 signatureVersion:(id)arg2 outIsAllowedToInstallUnsupportedPayloads:(BOOL *)arg3 outIsAllowedToWriteDefaults:(BOOL *)arg4;
++ (int)evaluateTrustOfCertificateChain:(id)arg1 signatureVersion:(id)arg2 outIsAllowedToInstallUnsupportedPayloads:(BOOL *)arg3 outIsAllowedToWriteDefaults:(BOOL *)arg4 outIsAllowedToInstallSupervisedRestrictionsOnUnsupervisedDevices:(BOOL *)arg5;
 + (int)evaluateTrustOfCertificateChain:(id)arg1 signatureVersion:(id)arg2 outIsAllowedToWriteDefaults:(BOOL *)arg3;
 + (id)missingFieldErrorWithField:(id)arg1;
 + (id)newProfileSignatureVersion;
@@ -115,6 +116,7 @@
 - (id)malformedProfileErrorWithError:(id)arg1;
 - (BOOL)mayInstallWithOptions:(id)arg1 hasInteractionClient:(BOOL)arg2 outError:(id *)arg3;
 - (id)payloadWithUUID:(id)arg1;
+- (void)replacePayloadWithUUID:(id)arg1 withPayload:(id)arg2;
 - (id)restrictionsWithHeuristicsAppliedOutError:(id *)arg1;
 - (id)signatureVersion;
 - (id)stubDictionary;

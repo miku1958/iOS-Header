@@ -70,6 +70,7 @@
 - (id)guidForNewOutgoingTransferWithLocalURL:(id)arg1;
 - (id)guidsForStoredAttachmentPayloadData:(id)arg1 messageGUID:(id)arg2;
 - (BOOL)isFileTransfer:(id)arg1 preauthorizedWithDictionary:(id)arg2;
+- (void)preWarmConnection;
 - (void)preauthorizeFileTransferFromOtherPerson:(id)arg1 account:(id)arg2 filename:(id)arg3 saveToPath:(id)arg4;
 - (BOOL)registerGUID:(id)arg1 forNewOutgoingTransferWithLocalURL:(id)arg2;
 - (void)registerTransferWithDaemon:(id)arg1;

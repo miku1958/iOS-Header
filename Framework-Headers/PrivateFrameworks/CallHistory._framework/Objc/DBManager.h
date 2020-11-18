@@ -21,7 +21,6 @@
 + (id)getPersistentCoordinator:(id)arg1;
 + (id)getPropertyValueForKey:(id)arg1 forContext:(id)arg2;
 + (id)getStoreURLforContext:(id)arg1;
-+ (long long)getVersionForMappingModel:(id)arg1;
 + (id)instanceWithModelURL:(id)arg1;
 + (long long)isDataStoreAtURLInitialized:(id)arg1 withModelAtURL:(id)arg2;
 + (BOOL)makeDatabaseAtURLClassCDataProtected:(id)arg1;
@@ -33,6 +32,7 @@
 + (BOOL)replacePersistentStore:(id)arg1 withURL:(id)arg2;
 + (void)setPropertyValue:(id)arg1 forKey:(id)arg2 forContext:(id)arg3;
 + (long long)versionForDBAtLocation:(id)arg1;
++ (long long)versionForManagedObjectModel:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)addDataStoreAtLocation:(id)arg1 isEncrypted:(BOOL)arg2;
 - (id)createManagedObjectContext;

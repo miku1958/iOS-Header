@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIInterfaceActionVisualSectionSeparatorDisplaying-Protocol.h>
-#import <UIKit/UIInterfaceActionVisualSeparatorDisplaying-Protocol.h>
+#import <UIKitCore/UIInterfaceActionVisualSectionSeparatorDisplaying-Protocol.h>
+#import <UIKitCore/UIInterfaceActionVisualSeparatorDisplaying-Protocol.h>
 
 @class NSString, _UIInterfaceActionSeparatorConstraintController;
 

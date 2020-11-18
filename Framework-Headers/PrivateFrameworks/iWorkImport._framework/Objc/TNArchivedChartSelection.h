@@ -13,16 +13,16 @@
 __attribute__((visibility("hidden")))
 @interface TNArchivedChartSelection : TSPObject <TSKArchivedSelection>
 {
-    TNChartSelection *mSelection;
+    TNChartSelection *_selection;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) TSKSelection *selection; // @synthesize selection=mSelection;
+@property (strong, nonatomic) TSKSelection *selection; // @synthesize selection=_selection;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)loadFromUnarchiver:(id)arg1;
 - (void)saveToArchiver:(id)arg1;
 

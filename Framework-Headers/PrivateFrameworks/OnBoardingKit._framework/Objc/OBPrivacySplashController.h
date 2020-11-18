@@ -8,7 +8,7 @@
 
 #import <OnBoardingKit/UIScrollViewDelegate-Protocol.h>
 
-@class NSString, OBPrivacyFlow;
+@class NSString, OBPrivacyFlow, UIButton, UILabel;
 
 @interface OBPrivacySplashController : OBSplashController <UIScrollViewDelegate>
 {
@@ -22,19 +22,31 @@
     BOOL _useModalStyle;
     BOOL _isCombined;
     NSString *_displayLanguage;
+    unsigned long long _displayDeviceType;
+    UIButton *_linkToPrivacyGatewayButton;
+    UILabel *_privacyGatewayDescription;
+    UILabel *_linkToPrivacyGateway;
+    UIButton *_unifiedAboutButton;
+    double _incomingNavigationBarOpacity;
 }
 
 @property BOOL allowsOpeningSafari; // @synthesize allowsOpeningSafari=_allowsOpeningSafari;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property unsigned long long displayDeviceType; // @synthesize displayDeviceType=_displayDeviceType;
 @property (strong) NSString *displayLanguage; // @synthesize displayLanguage=_displayLanguage;
 @property BOOL forceLargeMargins; // @synthesize forceLargeMargins=_forceLargeMargins;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double incomingNavigationBarOpacity; // @synthesize incomingNavigationBarOpacity=_incomingNavigationBarOpacity;
 @property (nonatomic) BOOL isCombined; // @synthesize isCombined=_isCombined;
+@property (strong) UILabel *linkToPrivacyGateway; // @synthesize linkToPrivacyGateway=_linkToPrivacyGateway;
+@property (strong) UIButton *linkToPrivacyGatewayButton; // @synthesize linkToPrivacyGatewayButton=_linkToPrivacyGatewayButton;
+@property (strong) UILabel *privacyGatewayDescription; // @synthesize privacyGatewayDescription=_privacyGatewayDescription;
 @property (nonatomic) BOOL showLinkToPrivacyGateway; // @synthesize showLinkToPrivacyGateway=_showLinkToPrivacyGateway;
 @property BOOL showsLinkToUnifiedAbout; // @synthesize showsLinkToUnifiedAbout=_showsLinkToUnifiedAbout;
 @property (readonly) Class superclass;
 @property BOOL suppressPerPageAnalyticsLogging; // @synthesize suppressPerPageAnalyticsLogging=_suppressPerPageAnalyticsLogging;
+@property (strong) UIButton *unifiedAboutButton; // @synthesize unifiedAboutButton=_unifiedAboutButton;
 @property BOOL useModalStyle; // @synthesize useModalStyle=_useModalStyle;
 @property BOOL useSmallTitle; // @synthesize useSmallTitle=_useSmallTitle;
 
@@ -50,8 +62,12 @@
 - (BOOL)shouldUseTiledTextViews;
 - (void)showPrivacyGateway:(id)arg1;
 - (void)showUnifiedAbout:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateFontForPrivacyGateway;
+- (void)updateFontForUnifiedAboutButton;
 - (void)updateNavigationBarAnimated:(BOOL)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

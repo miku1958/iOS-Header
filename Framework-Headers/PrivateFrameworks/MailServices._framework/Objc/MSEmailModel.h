@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MailServices/NSSecureCoding-Protocol.h>
 
@@ -12,19 +12,23 @@
 
 @interface MSEmailModel : NSObject <NSSecureCoding>
 {
+    BOOL _skipAddingSignature;
+    int _type;
     NSString *_subject;
-    NSString *_body;
+    NSString *_sender;
     NSArray *_to;
     NSArray *_cc;
     NSArray *_bcc;
+    NSString *_body;
     NSURL *_reference;
-    int _type;
 }
 
 @property (copy, nonatomic) NSArray *bcc; // @synthesize bcc=_bcc;
 @property (strong, nonatomic) NSString *body; // @synthesize body=_body;
 @property (copy, nonatomic) NSArray *cc; // @synthesize cc=_cc;
 @property (strong, nonatomic) NSURL *reference; // @synthesize reference=_reference;
+@property (copy, nonatomic) NSString *sender; // @synthesize sender=_sender;
+@property (nonatomic) BOOL skipAddingSignature; // @synthesize skipAddingSignature=_skipAddingSignature;
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (copy, nonatomic) NSArray *to; // @synthesize to=_to;
 @property (nonatomic) int type; // @synthesize type=_type;

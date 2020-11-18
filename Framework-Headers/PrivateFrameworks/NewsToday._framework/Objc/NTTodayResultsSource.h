@@ -19,7 +19,7 @@
     id<FCContentContext> _contentContext;
     CDUnknownBlockType _sessionProvider;
     FCAsyncOnceOperation *_firstOperationCompletionOperation;
-    NSObject *_latestConstituentRecordsHoldToken;
+    NSObject *_latestConstituentAssetsHoldToken;
 }
 
 @property (strong, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
@@ -29,7 +29,7 @@
 @property (strong, nonatomic) FCAsyncOnceOperation *firstOperationCompletionOperation; // @synthesize firstOperationCompletionOperation=_firstOperationCompletionOperation;
 @property (nonatomic, getter=hasFlushingBeenEnabled) BOOL flushingHasBeenEnabled; // @synthesize flushingHasBeenEnabled=_flushingHasBeenEnabled;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSObject *latestConstituentRecordsHoldToken; // @synthesize latestConstituentRecordsHoldToken=_latestConstituentRecordsHoldToken;
+@property (strong, nonatomic) NSObject *latestConstituentAssetsHoldToken; // @synthesize latestConstituentAssetsHoldToken=_latestConstituentAssetsHoldToken;
 @property (strong, nonatomic) id<NTReadablePrivateDataStorage> privateDataStorage; // @synthesize privateDataStorage=_privateDataStorage;
 @property (copy, nonatomic) CDUnknownBlockType sessionProvider; // @synthesize sessionProvider=_sessionProvider;
 @property (readonly) Class superclass;

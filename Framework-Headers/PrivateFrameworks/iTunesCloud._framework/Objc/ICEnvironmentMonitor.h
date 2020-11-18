@@ -20,6 +20,7 @@
     BOOL _isRemoteServerLikelyReachable;
     BOOL _isWiFiActive;
     BOOL _currentNetworkLinkHighQuality;
+    BOOL _wifiAssociated;
     NSString *_telephonyOperatorName;
     NSString *_telephonyRegistrationStatus;
     NSString *_telephonyStatusIndicator;
@@ -36,6 +37,7 @@
 @property (readonly, copy, nonatomic) NSString *telephonyRegistrationStatus; // @synthesize telephonyRegistrationStatus=_telephonyRegistrationStatus;
 @property (readonly, copy, nonatomic) NSString *telephonyStatusIndicator; // @synthesize telephonyStatusIndicator=_telephonyStatusIndicator;
 @property (readonly, nonatomic, getter=isWiFiActive) BOOL wiFiActive; // @synthesize wiFiActive=_isWiFiActive;
+@property (readonly, nonatomic, getter=isWiFiAssociated) BOOL wifiAssociated; // @synthesize wifiAssociated=_wifiAssociated;
 
 + (id)sharedMonitor;
 - (void).cxx_destruct;

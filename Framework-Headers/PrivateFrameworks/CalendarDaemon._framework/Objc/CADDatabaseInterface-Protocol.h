@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CADDatabaseInitializationOptions, CADObjectID, NSArray, NSData;
+@class CADDatabaseInitializationOptions, CADObjectID, NSArray;
 
 @protocol CADDatabaseInterface
 - (void)CADDatabaseCanModifyCalendarDatabase:(void (^)(int, BOOL))arg1;
@@ -18,7 +18,7 @@
 - (void)CADDatabaseGetNextAssignableColorWithReply:(void (^)(int, NSString *))arg1;
 - (void)CADDatabaseGetSequenceNumber:(void (^)(int, int))arg1;
 - (void)CADDatabaseGetUUID:(void (^)(int, NSString *))arg1;
-- (void)CADDatabaseImportICSData:(NSData *)arg1 intoCalendarWithID:(int)arg2 optionsMask:(unsigned long long)arg3 reply:(void (^)(int, NSArray *))arg4;
+- (void)CADDatabaseImportICSData:(NSArray *)arg1 intoCalendarsWithIDs:(NSArray *)arg2 optionsMask:(unsigned long long)arg3 reply:(void (^)(int, NSArray *))arg4;
 - (void)CADDatabaseLastConfirmedSplashScreenVersion:(void (^)(int, unsigned long long))arg1;
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(void (^)(int))arg2;
 - (void)CADDatabaseRebuildOccurrenceCacheWithReply:(void (^)(int))arg1;

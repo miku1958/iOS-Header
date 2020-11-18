@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSNumber, NSString, NSTimer;
 
@@ -28,7 +28,7 @@
 - (BOOL)_hasMessagesWithGUIDs:(id)arg1;
 - (BOOL)_isUsingStingRay;
 - (BOOL)_itemClassShouldUpdateTransferForItem:(id)arg1;
-- (id)_itemsWithAssociatedGUID:(id)arg1;
+- (id)_itemsWithAssociatedGUID:(id)arg1 shouldLoadAttachments:(BOOL)arg2;
 - (id)_itemsWithGUIDs:(id)arg1;
 - (id)_messagesThatNeedSyncWithCloudKitWithLimit:(long long)arg1 attemptCount:(unsigned long long)arg2;
 - (id)_messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4 onlyMessages:(BOOL)arg5;
@@ -84,6 +84,7 @@
 - (id)messageWithReplaceMessageID:(int)arg1 fromHandle:(id)arg2 onService:(id)arg3;
 - (id)messagesThatNeedSyncWithCloudKitWithLimit:(long long)arg1;
 - (id)messagesWithAssociatedGUID:(id)arg1;
+- (id)messagesWithAssociatedGUID:(id)arg1 shouldLoadAttachments:(BOOL)arg2;
 - (id)messagesWithGUIDs:(id)arg1;
 - (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 limit:(unsigned long long)arg3;
 - (id)messagesWithHandles:(id)arg1 onServices:(id)arg2 messageGUID:(id)arg3 limit:(unsigned long long)arg4;

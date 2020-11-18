@@ -16,11 +16,11 @@
     BOOL _embeddedInApp;
     NSObject<OS_os_log> *_log;
     DEDConfiguration *_config;
-    DEDController *_controller;
     NSOperationQueue *_backgroundOpQueue;
     NSOperationQueue *_userInitiatedOpQueue;
     NSObject<OS_dispatch_queue> *_diskAccessQueue;
     DEDDiagnosticCollector *__diagnosticCollector;
+    DEDController *_controller;
 }
 
 @property (strong) DEDDiagnosticCollector *_diagnosticCollector; // @synthesize _diagnosticCollector=__diagnosticCollector;
@@ -43,8 +43,10 @@
 - (void)_getSessionStatusWithSession:(id)arg1;
 - (void)_logOperations;
 - (void)_streamOperationStatus;
+- (void)_syncSessionStatusWithSession:(id)arg1 withIdentifiers:(BOOL)arg2;
 - (void)adoptFiles:(id)arg1 forSession:(id)arg2;
 - (id)attachmentHandler;
+- (void)cancelNotificationForSession:(id)arg1;
 - (void)cancelSession:(id)arg1;
 - (void)commitSession:(id)arg1;
 - (void)configureForEmbedded:(BOOL)arg1;
@@ -54,8 +56,11 @@
 - (void)listAvailableExtensionsForSession:(id)arg1;
 - (BOOL)observesOperations;
 - (void)pingSession:(id)arg1;
+- (void)scheduleNotificationForSession:(id)arg1;
 - (void)start;
+- (void)startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 deferRunUntil:(id)arg3 session:(id)arg4;
 - (void)startDiagnosticWithIdentifier:(id)arg1 parameters:(id)arg2 session:(id)arg3;
+- (void)syncSessionStatusWithSession:(id)arg1;
 - (void)terminateExtension:(id)arg1 info:(id)arg2 session:(id)arg3;
 - (long long)transportType;
 

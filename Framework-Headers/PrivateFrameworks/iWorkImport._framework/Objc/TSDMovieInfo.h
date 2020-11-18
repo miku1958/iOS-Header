@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     float mVolume;
     BOOL mAudioOnly;
     BOOL mStreaming;
+    BOOL mNativeAudioRecording;
     TSDMediaStyle *mStyle;
 }
 
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long loopOption; // @synthesize loopOption=mLoopOption;
 @property (strong, nonatomic) TSPData *movieData;
 @property (strong, nonatomic) NSURL *movieRemoteURL;
+@property (nonatomic, getter=isNativeAudioRecording) BOOL nativeAudioRecording;
 @property (strong, nonatomic) TSPData *posterImageData; // @synthesize posterImageData=mPosterImageData;
 @property (nonatomic) double posterTime;
 @property (nonatomic) double startTime;
@@ -57,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsLooping;
+@property (readonly, nonatomic) BOOL supportsLoopingBackAndForth;
 @property (readonly, nonatomic) BOOL supportsStartTimeAndEndTime;
 @property (nonatomic) float volume;
 
@@ -65,6 +68,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)acceptVisitor:(id)arg1;
 - (id)animationFilters;
+- (BOOL)canBeMediaPlaceholder;
+- (BOOL)canBeReplaced;
 - (BOOL)canChangeWrapType;
 - (BOOL)canResetMediaSize;
 - (BOOL)containsProperty:(int)arg1;
@@ -93,7 +98,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)needsDownload;
 - (id)newImplicitAmbientBuildRendererWithAnimatedBuild:(id)arg1 buildChunk:(id)arg2 session:(id)arg3 animatedSlideView:(id)arg4;
 - (id)objectForProperty:(int)arg1;
-- (id)p_makePosterImageDataWithAVAsset:(id)arg1 inContext:(id)arg2;
+- (id)p_makePosterImageDataWithAVAsset:(id)arg1 inContext:(id)arg2 time:(double)arg3;
 - (void)p_setPropertiesFromLoadedAsset:(id)arg1;
 - (id)presetKind;
 - (id)promisedDataForType:(id)arg1;
@@ -110,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsHyperlinks;
 - (BOOL)supportsStyleInspecting;
 - (id)synchronouslyGenerateDefaultPosterImageForContext:(id)arg1;
+- (id)synchronouslyGenerateNewPosterImageForAsset:(id)arg1 time:(double)arg2;
 - (id)typesToPromiseWhenCopyingSingleDrawable;
 - (BOOL)willRenderContentViaImager;
 

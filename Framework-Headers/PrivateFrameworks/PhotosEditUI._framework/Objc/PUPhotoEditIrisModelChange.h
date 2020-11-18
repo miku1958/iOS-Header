@@ -6,6 +6,7 @@
 
 #import <PhotosUI/PUViewModelChange.h>
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditIrisModelChange : PUViewModelChange
 {
     BOOL _videoEnabledDidChange;

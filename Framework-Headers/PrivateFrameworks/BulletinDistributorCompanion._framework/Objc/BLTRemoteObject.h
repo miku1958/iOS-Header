@@ -18,7 +18,6 @@
     NSMutableDictionary *_idsFileIDToResponseHandler;
     NSString *_serviceName;
     BOOL _full;
-    double _lastTimeRaisedBadIDSProtobuf;
     NSObject<OS_dispatch_queue> *_idsQueue;
     id<BLTAbstractIDSDevice> _defaultPairedDevice;
     NSMutableDictionary *_idsRequestMessageTypeToSelector;
@@ -46,7 +45,6 @@
 - (void).cxx_destruct;
 - (BOOL)_callSendCompletionHandlerWithSuccess:(BOOL)arg1 identifier:(id)arg2 error:(id)arg3;
 - (void)_deviceConnectionStatusChanged:(id)arg1;
-- (void)_handleDebugException;
 - (void)_handleNewSessionState:(unsigned long long)arg1;
 - (BOOL)_idsQueueCallSendCompletionHandlerWithSuccess:(BOOL)arg1 identifier:(id)arg2 error:(id)arg3;
 - (void)_queueHandleIDSProtobuf:(id)arg1;

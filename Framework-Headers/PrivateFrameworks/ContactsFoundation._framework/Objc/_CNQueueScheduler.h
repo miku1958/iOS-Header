@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNScheduler-Protocol.h>
 
@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
+@property (readonly) double timestamp;
 
 - (void).cxx_destruct;
 - (id)_queueForQualityOfService:(unsigned long long)arg1;
@@ -31,7 +32,6 @@
 - (void)performBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
-- (double)timestamp;
 
 @end
 

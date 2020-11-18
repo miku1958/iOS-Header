@@ -8,13 +8,14 @@
 
 #import <Photos/PHPhotoLibraryChangeObserver-Protocol.h>
 
-@class NSString, PHImageManagerSettings;
+@class NSString, PDImageManager, PHImageManagerSettings;
 @protocol OS_dispatch_source;
 
 @interface PHImageManager : NSObject <PHPhotoLibraryChangeObserver>
 {
     id _cachedDomain;
     PHImageManagerSettings *_settings;
+    PDImageManager *_newImageManager;
     NSObject<OS_dispatch_source> *_memoryEventSource;
     unsigned long long _managerID;
 }
@@ -30,13 +31,16 @@
 + (id)defaultManager;
 + (struct CGSize)fullScreenSizeForScreen:(id)arg1 contentMode:(long long *)arg2;
 + (void)initialize;
++ (struct CGSize)maximumImageSizeFromProperties:(id)arg1;
 + (struct CGSize)sizeOfBestNonFullscreenThumbnailAndContentMode:(long long *)arg1;
 + (BOOL)useNewImageManager;
 - (void).cxx_destruct;
 - (id)_asyncFetchCloudSharedVideoForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (id)_domain;
+- (id)_modernImageManager;
 - (int)_requestAVAssetForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (id)_requestAsynchronousVideoURLForAsset:(id)arg1 chainedToMasterRequest:(id)arg2 options:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
+- (int)_requestImagePropertiesFromFileForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (id)_videoAVObjectBuilderFromVideoURL:(id)arg1 info:(id)arg2 playbackOnly:(BOOL)arg3;
 - (void)cancelImageRequest:(int)arg1;
 - (void)dealloc;
@@ -57,6 +61,7 @@
 - (int)requestExportSessionForVideo:(id)arg1 options:(id)arg2 exportPreset:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (int)requestImageDataForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)requestImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
+- (int)requestImagePropertiesForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (int)requestLivePhotoForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (int)requestPlayerItemForVideo:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)requestSynchronousImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;

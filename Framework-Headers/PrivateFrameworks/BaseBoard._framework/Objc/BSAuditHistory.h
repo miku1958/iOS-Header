@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSDescriptionProviding-Protocol.h>
 #import <BaseBoard/BSXPCCoding-Protocol.h>
@@ -21,13 +21,13 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasItems;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) NSArray *items; // @synthesize items=_items;
+@property (readonly, nonatomic) NSArray *items; // @synthesize items=_items;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)addItem:(id)arg1;
 - (void)addItemWithFormat:(id)arg1;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

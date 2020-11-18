@@ -35,8 +35,10 @@
 @property (readonly, nonatomic) BOOL allowsBackgroundNetworking;
 @property (readonly, nonatomic) BOOL allowsCellularAccess;
 @property (readonly, nonatomic) NSString *authPromptReason;
+@property (readonly, nonatomic) BOOL automaticallyRetryNetworkFailures;
 @property (nonatomic) unsigned int clientSDKVersion; // @synthesize clientSDKVersion=_clientSDKVersion;
 @property (strong, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (readonly, nonatomic) unsigned long long discretionaryNetworkBehavior;
 @property (strong, nonatomic) CKOperationGroup *group; // @synthesize group=_group;
 @property (nonatomic) BOOL isLongLived; // @synthesize isLongLived=_isLongLived;
 @property (nonatomic) BOOL isOutstandingOperation; // @synthesize isOutstandingOperation=_isOutstandingOperation;

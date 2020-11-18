@@ -8,7 +8,7 @@
 
 #import <NanoTimeKitCompanion/NTKActivityFaceViewFactoryDelegate-Protocol.h>
 
-@class HKRingsView, NSDate, NSString, NTKActivityFaceControl, NTKActivityFaceViewFactory, NTKDigitalTimeLabel, NTKPolygonCylinderView, UILabel, UIView;
+@class HKRingsView, NSDate, NSString, NTKActivityFaceViewFactory, NTKDigitalTimeLabel, NTKFaceViewTapControl, NTKPolygonCylinderView, UILabel, UIView;
 
 @interface NTKActivityDigitalFaceView : NTKFaceView <NTKActivityFaceViewFactoryDelegate>
 {
@@ -17,7 +17,7 @@
     UILabel *_energyLabel;
     UILabel *_briskMinutesLabel;
     UILabel *_standHoursLabel;
-    NTKActivityFaceControl *_tapToLaunchButton;
+    NTKFaceViewTapControl *_tapToLaunchButton;
     UIView *_timeLabelBackgroundView;
     NTKPolygonCylinderView *_densityEditingPolygonView;
     NSDate *_timeDensityEditingOverrideDate;
@@ -29,7 +29,6 @@
     long long _energyStringMetricWidth;
     long long _briskStringMetricWidth;
     long long _standStringMetricWidth;
-    BOOL _useTimeTravelStyleForTimeLabel;
     BOOL _showSeconds;
     double _rightTimeViewInset;
 }
@@ -41,11 +40,10 @@
 @property (nonatomic) BOOL showSeconds; // @synthesize showSeconds=_showSeconds;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NTKDigitalTimeLabel *timeView; // @dynamic timeView;
-@property (nonatomic) BOOL useTimeTravelStyleForTimeLabel; // @synthesize useTimeTravelStyleForTimeLabel=_useTimeTravelStyleForTimeLabel;
 
 + (id)_newRingsView;
-+ (void)_prewarm;
-+ (id)_swatchColorForColorOption:(id)arg1;
++ (void)_prewarmForDevice:(id)arg1;
++ (id)_swatchColorForColorOption:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (id)_additionalPrelaunchApplicationIdentifiers;
 - (void)_applyBreathingFraction:(double)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
@@ -61,22 +59,22 @@
 - (void)_cleanUpAfterDetailEditing;
 - (void)_cleanupAfterEditing;
 - (void)_cleanupAfterZoom;
+- (long long)_complicationPickerStyleForSlot:(id)arg1;
 - (void)_configureComplicationView:(id)arg1 forSlot:(id)arg2;
 - (void)_configureForDetailEditing;
 - (void)_configureForEditMode:(long long)arg1;
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
-- (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_enumerateActivityLabels:(CDUnknownBlockType)arg1;
 - (BOOL)_fadesComplicationSlot:(id)arg1 inEditMode:(long long)arg2;
 - (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
+- (struct UIEdgeInsets)_keylineLabelActiveAreaInsetsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
 - (unsigned long long)_keylineLabelAlignmentForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_keylineLabelShouldShowIndividualOptionNamesForCustomEditMode:(long long)arg1;
+- (long long)_keylineStyleForComplicationSlot:(id)arg1;
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_launchButtonPressed:(id)arg1;
 - (void)_layoutForegroundContainerView;
-- (void)_layoutTimeTravelCaptionView:(id)arg1;
-- (void)_layoutTimeTravelStatusModule:(id)arg1;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
 - (void)_loadLayoutRules;
 - (void)_loadSnapshotContentViews;
@@ -92,23 +90,20 @@
 - (double)_ringAlphaForEditMode:(long long)arg1;
 - (struct CGPoint)_ringCenterForLayout:(struct RingLayout)arg1;
 - (id)_ringGroupController;
-- (void)_scrubToDate:(id)arg1 animated:(BOOL)arg2;
 - (void)_setActivityViewsAlpha:(double)arg1 animated:(BOOL)arg2;
 - (void)_setZoomFraction:(double)arg1 iconDiameter:(double)arg2;
-- (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (BOOL)_supportsTimeScrubbing;
 - (double)_timeAlphaForEditMode:(long long)arg1;
 - (struct CGRect)_timeViewBackgroundRect;
 - (void)_unloadSnapshotContentViews;
 - (void)_updateCurrentRingLayoutIfNecessary;
 - (void)_updateTimeViewSecondsDisplayState;
-- (BOOL)_wantsTimeTravelStatusModule;
 - (void)applyEntryModel:(id)arg1 animated:(BOOL)arg2;
 - (void)applyEntryModelWithUnfilledRings:(id)arg1;
 - (void)dealloc;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFaceStyle:(long long)arg1 forDevice:(id)arg2 clientIdentifier:(id)arg3;
 - (void)setDataMode:(long long)arg1;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
+- (BOOL)slotUsesCurvedText:(id)arg1;
 - (void)timeTravelDateEnteredOrExitedTimelineBounds:(BOOL)arg1;
 
 @end

@@ -4,28 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class NSDate, NSNumber, NSString, TSTUidRangeRef;
+@class NSDate, NSNumber, NSString, TSTUIDRectRef;
 
 __attribute__((visibility("hidden")))
 @interface TSTFormulaPredArg : NSObject <NSCopying>
 {
     int _type;
     id _objcData;
-    struct TSCECellRef _cellRef;
+    RefTypeHolder_a8d05c9a _baseCellRef;
     struct TSCERelativeCellRef _relativeCellRef;
     BOOL _hasRelativeCellRef;
-    TSTUidRangeRef *_uidRangeRef;
-    struct TSUCellCoord _hostCellCoord;
+    TSTUIDRectRef *_uidRectRef;
+    struct TSCECategoryRef _categoryRef;
+    struct TSUModelCellCoord _hostCellCoord;
+    struct TSUPreserveFlags _preserveFlags;
     union {
         BOOL _boolValue;
-        struct {
-            BOOL _columnIsAbsolute;
-            BOOL _rowIsAbsolute;
-        } _stickyBits;
         struct {
             double _value;
             int _units;
@@ -34,49 +32,54 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL boolValue;
-@property (nonatomic) BOOL columnIsAbsolute;
+@property (nonatomic) struct TSCECategoryRef categoryRef;
 @property (strong, nonatomic) NSDate *date;
 @property (nonatomic) int durationUnits;
 @property (nonatomic) double durationValue;
+@property (readonly, nonatomic) BOOL hasCategoryRef;
 @property (readonly, nonatomic) BOOL hasRelativeCellRef; // @synthesize hasRelativeCellRef=_hasRelativeCellRef;
-@property (nonatomic) struct TSUCellCoord hostCellCoord; // @synthesize hostCellCoord=_hostCellCoord;
+@property (nonatomic) struct TSUModelCellCoord hostCellCoord; // @synthesize hostCellCoord=_hostCellCoord;
 @property (strong, nonatomic) NSNumber *number;
 @property (nonatomic) double numberValue;
-@property (nonatomic) BOOL rowIsAbsolute;
+@property (readonly, nonatomic) BOOL preserveColumn;
+@property (nonatomic) struct TSUPreserveFlags preserveFlags;
+@property (readonly, nonatomic) BOOL preserveRow;
 @property (copy, nonatomic) NSString *string;
 @property (readonly, nonatomic) int type; // @synthesize type=_type;
-@property (strong, nonatomic) TSTUidRangeRef *uidRangeRef;
+@property (strong, nonatomic) TSTUIDRectRef *uidRectRef; // @synthesize uidRectRef=_uidRectRef;
 
 + (id)defaultPredicateArg;
 - (id).cxx_construct;
-- (const struct TSCECellRef *)cellRef;
-- (struct TSCECellRef)cellRefForHostCoord:(struct TSUCellCoord)arg1;
+- (void).cxx_destruct;
+- (const RefTypeHolder_a8d05c9a *)baseCellRef;
+- (struct TSCECellRef)cellRefForHostCoord:(struct TSUModelCellCoord)arg1;
 - (id)cellReference;
-- (id)cellReferenceForHostCoord:(struct TSUCellCoord)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
-- (struct TSCEFormulaCreator)formulaCreatorForPredArgAtHostCell:(const struct TSUCellCoord *)arg1;
-- (BOOL)hasUidRangeRef;
+- (struct TSCEFormulaCreator)formulaCreatorForPredArgAtHostCell:(const struct TSCECellRef *)arg1 calcEngine:(id)arg2;
+- (BOOL)hasUidRectRef;
 - (id)init;
+- (id)initWithBaseCellRef:(const RefTypeHolder_a8d05c9a *)arg1 preserveFlags:(const struct TSUPreserveFlags *)arg2;
+- (id)initWithBaseCellReference:(id)arg1 preserveColumn:(BOOL)arg2 preserveRow:(BOOL)arg3;
 - (id)initWithBool:(BOOL)arg1;
-- (id)initWithCellRef:(const struct TSCECellRef *)arg1 columnIsAbsolute:(BOOL)arg2 rowIsAbsolute:(BOOL)arg3;
-- (id)initWithCellReference:(id)arg1 columnIsAbsolute:(BOOL)arg2 rowIsAbsolute:(BOOL)arg3;
+- (id)initWithCategoryRef:(const struct TSCECategoryRef *)arg1;
 - (id)initWithDate:(id)arg1;
 - (id)initWithDouble:(double)arg1;
 - (id)initWithDuration:(double)arg1 units:(int)arg2;
 - (id)initWithNumber:(id)arg1;
 - (id)initWithRelativeCellRef:(const struct TSCERelativeCellRef *)arg1;
 - (id)initWithString:(id)arg1;
-- (id)initWithUidRangeRef:(id)arg1;
+- (id)initWithUIDRectRef:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqual:(id)arg1 atHostCoord:(struct TSUCellCoord)arg2;
+- (BOOL)isEqual:(id)arg1 atHostCoord:(struct TSUModelCellCoord)arg2;
 - (const struct TSCERelativeCellRef *)relativeCellRef;
-- (void)setCellRef:(const struct TSCECellRef *)arg1;
-- (void)setCellRef:(const struct TSCECellRef *)arg1 columnIsAbsolute:(BOOL)arg2 rowIsAbsolute:(BOOL)arg3;
-- (void)setCellReference:(id)arg1;
-- (void)setCellReference:(id)arg1 columnIsAbsolute:(BOOL)arg2 rowIsAbsolute:(BOOL)arg3;
+- (void)setBaseCellRef:(const RefTypeHolder_a8d05c9a *)arg1;
+- (void)setBaseCellRef:(const RefTypeHolder_a8d05c9a *)arg1 preserveColumn:(BOOL)arg2 preserveRow:(BOOL)arg3;
+- (void)setBaseCellRef:(const RefTypeHolder_a8d05c9a *)arg1 preserveFlags:(const struct TSUPreserveFlags *)arg2;
+- (void)setBaseCellReference:(id)arg1;
+- (void)setBaseCellReference:(id)arg1 preserveColumn:(BOOL)arg2 preserveRow:(BOOL)arg3;
 - (void)setRelativeCellRef:(const struct TSCERelativeCellRef *)arg1;
+- (void)setUIDRectRef:(id)arg1;
 
 @end
 

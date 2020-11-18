@@ -10,9 +10,10 @@
 {
 }
 
-+ (id)columnsDefinition;
++ (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 + (BOOL)enumerateValuesWithProfile:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
++ (id)foreignKeys;
 + (id)indices;
 + (BOOL)insertSyncIdentifierWithProfile:(id)arg1 objectID:(long long)arg2 localSourceID:(long long)arg3 externalSyncObjectCode:(long long)arg4 syncIdentifier:(id)arg5 syncVersion:(id)arg6 deleted:(BOOL)arg7 errorOut:(id *)arg8;
 + (BOOL)populateSyncInfoForProfile:(id)arg1 localSourceID:(long long)arg2 externalSyncObjectCode:(long long)arg3 syncIdentifier:(id)arg4 deleted:(BOOL)arg5 objectIDOut:(id *)arg6 errorOut:(id *)arg7;

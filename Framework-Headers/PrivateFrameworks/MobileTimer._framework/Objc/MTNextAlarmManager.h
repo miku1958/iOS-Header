@@ -6,30 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <MobileTimer/UNSNotificationSchedulerDelegate-Protocol.h>
+@class MTAlarmManager, NSSet;
+@protocol NAScheduler;
 
-@class NSSet, NSString, UNSNotificationScheduler;
-
-@interface MTNextAlarmManager : NSObject <UNSNotificationSchedulerDelegate>
+@interface MTNextAlarmManager : NSObject
 {
     NSSet *_nextAlarms;
     CDUnknownBlockType _updateHandler;
-    UNSNotificationScheduler *_scheduler;
+    id<NAScheduler> _serializer;
+    MTAlarmManager *_alarmManager;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) MTAlarmManager *alarmManager; // @synthesize alarmManager=_alarmManager;
 @property (strong, nonatomic) NSSet *nextAlarms; // @synthesize nextAlarms=_nextAlarms;
-@property (strong, nonatomic) UNSNotificationScheduler *scheduler; // @synthesize scheduler=_scheduler;
-@property (readonly) Class superclass;
+@property (strong, nonatomic) id<NAScheduler> serializer; // @synthesize serializer=_serializer;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
 - (void).cxx_destruct;
-- (void)calculateNextAlarmsFromNotifications:(id)arg1;
+- (void)_handleAlarmsDidChange;
+- (void)calculateNextAlarms;
 - (id)init;
-- (id)initWithNotificationScheduler:(id)arg1;
-- (void)notificationScheduler:(id)arg1 didChangeScheduledLocalNotifications:(id)arg2;
 
 @end
 

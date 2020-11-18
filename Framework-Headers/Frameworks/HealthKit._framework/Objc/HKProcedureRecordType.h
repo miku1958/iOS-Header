@@ -10,8 +10,8 @@
 {
 }
 
++ (id)allTypes;
 + (id)procedureRecordType;
-- (Class)dataObjectClass;
 
 @end
 

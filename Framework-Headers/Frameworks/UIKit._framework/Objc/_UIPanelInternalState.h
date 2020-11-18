@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
-@class UISlidingBarConfiguration, UISlidingBarStateRequest, UIViewController, _UIPanelAnimationState, _UIPanelInteractionState;
+@class UISlidingBarConfiguration, UISlidingBarStateRequest, UIViewController, _UIPanelAnimationState;
 @protocol UIPanelControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
     UISlidingBarStateRequest *_stateRequest;
     UISlidingBarStateRequest *_externallyAnimatingStateRequest;
     long long _externallyAnimatingAffectedSides;
-    _UIPanelInteractionState *_interactionState;
     _UIPanelAnimationState *_animationState;
     long long _collapsedState;
     long long _collapsedSecondaryIndex;
@@ -38,7 +37,6 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<UIPanelControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long externallyAnimatingAffectedSides; // @synthesize externallyAnimatingAffectedSides=_externallyAnimatingAffectedSides;
 @property (copy, nonatomic) UISlidingBarStateRequest *externallyAnimatingStateRequest; // @synthesize externallyAnimatingStateRequest=_externallyAnimatingStateRequest;
-@property (strong, nonatomic) _UIPanelInteractionState *interactionState; // @synthesize interactionState=_interactionState;
 @property (nonatomic) double keyboardAdjustment; // @synthesize keyboardAdjustment=_keyboardAdjustment;
 @property (strong, nonatomic) UIViewController *leadingViewController; // @synthesize leadingViewController=_leadingViewController;
 @property (strong, nonatomic) UIViewController *mainViewController; // @synthesize mainViewController=_mainViewController;

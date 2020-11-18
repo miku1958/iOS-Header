@@ -9,14 +9,14 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/IDSSessionDelegate-Protocol.h>
 
-@class HMDSnapshotFile, IDSSession, NSMutableData, NSObject, NSString;
+@class HMDDevice, HMDSnapshotFile, IDSSession, NSMutableData, NSObject, NSString;
 @protocol HMDCameraSnapshotIDSRelayInitiatorDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMDCameraSnapshotIDSRelayInitiator : HMDCameraSnapshotIDSRelay <IDSSessionDelegate, HMFLogging>
 {
     BOOL _idsSessionStarted;
     HMDSnapshotFile *_snapshotFile;
-    NSString *_destinationID;
+    HMDDevice *_device;
     NSMutableData *_fileLengthAndData;
     NSObject<OS_dispatch_source> *_socketSource;
     IDSSession *_idsSession;
@@ -28,7 +28,7 @@
 @property (readonly, weak, nonatomic) id<HMDCameraSnapshotIDSRelayInitiatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSString *destinationID; // @synthesize destinationID=_destinationID;
+@property (readonly, nonatomic) HMDDevice *device; // @synthesize device=_device;
 @property (strong, nonatomic) NSMutableData *fileLengthAndData; // @synthesize fileLengthAndData=_fileLengthAndData;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) IDSSession *idsSession; // @synthesize idsSession=_idsSession;
@@ -45,7 +45,7 @@
 - (id)_smallData;
 - (void)_startFileTransfer;
 - (void)dealloc;
-- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 destinationID:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
+- (id)initWithSessionID:(id)arg1 workQueue:(id)arg2 device:(id)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
 - (id)logIdentifier;
 - (void)sendFile:(id)arg1;
 - (void)sendInvitation;

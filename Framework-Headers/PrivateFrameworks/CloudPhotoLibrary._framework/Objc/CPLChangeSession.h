@@ -39,8 +39,6 @@
 - (void)finalizeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithLibraryManager:(id)arg1;
-- (void)pause;
-- (void)resume;
 - (void)tearDownWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end

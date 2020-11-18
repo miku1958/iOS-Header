@@ -7,35 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBTemperatureValue-Protocol.h>
 
-@class PBUnknownFields, _INPBValueMetadata;
+@class NSString, _INPBValueMetadata;
 
-@interface _INPBTemperatureValue : PBCodable <NSCopying>
+@interface _INPBTemperatureValue : PBCodable <_INPBTemperatureValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    double _magnitude;
-    int _unit;
-    _INPBValueMetadata *_valueMetadata;
     CDStruct_74078a21 _has;
+    int _unit;
+    double _magnitude;
+    _INPBValueMetadata *_valueMetadata;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasMagnitude;
 @property (nonatomic) BOOL hasUnit;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double magnitude; // @synthesize magnitude=_magnitude;
+@property (readonly) Class superclass;
 @property (nonatomic) int unit; // @synthesize unit=_unit;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) _INPBValueMetadata *valueMetadata; // @synthesize valueMetadata=_valueMetadata;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsUnit:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)unitAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

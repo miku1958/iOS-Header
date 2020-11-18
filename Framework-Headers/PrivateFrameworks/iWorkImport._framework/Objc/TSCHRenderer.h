@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHSupportsTextEditing-Protocol.h>
 
@@ -14,12 +14,12 @@
 __attribute__((visibility("hidden")))
 @interface TSCHRenderer : NSObject <TSCHSupportsTextEditing>
 {
-    id<TSCHSupportsRendering> mChartRep;
     TSCHChartLayoutItem *mChartLayoutItem;
+    id<TSCHSupportsRendering> mChartRep;
 }
 
 @property (readonly, nonatomic) TSCHChartInfo *chartInfo;
-@property (readonly, nonatomic) id<TSCHSupportsRendering> chartRep; // @synthesize chartRep=mChartRep;
+@property (readonly, weak, nonatomic) id<TSCHSupportsRendering> chartRep; // @synthesize chartRep=mChartRep;
 @property (readonly, nonatomic) struct CGColor *debugColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) BOOL debugLayout;

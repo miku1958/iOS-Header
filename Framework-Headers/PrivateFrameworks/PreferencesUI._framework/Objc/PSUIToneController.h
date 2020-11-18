@@ -9,11 +9,12 @@
 #import <PreferencesUI/TKTonePickerViewControllerDelegate-Protocol.h>
 #import <PreferencesUI/TKVibrationPickerViewControllerDelegate-Protocol.h>
 
-@class NSString, TKTonePickerViewController;
+@class NSString, TKTonePickerViewController, TKVibrationPickerViewController;
 
 @interface PSUIToneController : PSViewController <TKTonePickerViewControllerDelegate, TKVibrationPickerViewControllerDelegate>
 {
     TKTonePickerViewController *_tonePickerViewController;
+    TKVibrationPickerViewController *_vibrationPickerViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -21,11 +22,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TKTonePickerViewController *tonePickerViewController; // @synthesize tonePickerViewController=_tonePickerViewController;
+@property (strong, nonatomic) TKVibrationPickerViewController *vibrationPickerViewController; // @synthesize vibrationPickerViewController=_vibrationPickerViewController;
 
 - (void).cxx_destruct;
+- (id)_defaultToneIdentifierForTonePickerWithAlertType:(long long)arg1 topic:(id)arg2;
+- (id)_defaultVibrationIdentifierForVibrationPickerWithAlertType:(long long)arg1 topic:(id)arg2;
+- (void)_handleAlertOverridePolicyDidChangeNotification:(id)arg1;
 - (void)_insertTonePickerView;
 - (void)_updateReloadSpecifierInParentController;
 - (void)dealloc;
+- (id)init;
 - (void)setSpecifier:(id)arg1;
 - (void)tonePickerViewController:(id)arg1 didDismissVibrationPickerViewController:(id)arg2;
 - (void)tonePickerViewController:(id)arg1 selectedToneWithIdentifier:(id)arg2;

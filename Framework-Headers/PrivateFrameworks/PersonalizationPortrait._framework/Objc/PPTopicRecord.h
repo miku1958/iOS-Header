@@ -8,10 +8,11 @@
 
 #import <PersonalizationPortrait/NSCopying-Protocol.h>
 #import <PersonalizationPortrait/NSMutableCopying-Protocol.h>
+#import <PersonalizationPortrait/NSSecureCoding-Protocol.h>
 
 @class NSString, PPSource, PPTopic;
 
-@interface PPTopicRecord : NSObject <NSCopying, NSMutableCopying>
+@interface PPTopicRecord : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     PPTopic *_topic;
     PPSource *_source;
@@ -33,8 +34,11 @@
 @property (readonly, nonatomic) PPTopic *topic; // @synthesize topic=_topic;
 
 + (id)describeAlgorithm:(unsigned long long)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

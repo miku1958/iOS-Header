@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class MRAVOutputDevice, MRExternalDevice, NSArray, NSMutableArray, NSOperationQueue, NSString, NSTimer, _MRAVEndpointDescriptorProtobuf;
+@class MRAVOutputDevice, MRExternalDevice, NSArray, NSDictionary, NSMutableArray, NSOperationQueue, NSString, NSTimer, _MRAVEndpointDescriptorProtobuf;
 
 __attribute__((visibility("hidden")))
 @interface MRAVEndpoint : NSObject
@@ -27,6 +27,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) _MRAVEndpointDescriptorProtobuf *descriptor;
 @property (readonly, nonatomic) MRAVOutputDevice *designatedGroupLeader;
 @property (readonly, nonatomic) MRExternalDevice *externalDevice;
+@property (readonly, nonatomic) NSDictionary *jsonEncodableDictionaryRepresentation;
+@property (readonly, nonatomic, getter=isLocalEndpoint) BOOL localEndpoint;
 @property (strong, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
 @property (readonly, nonatomic) unsigned long long logicalOutputDeviceCount;
 @property (readonly, nonatomic) NSArray *outputDeviceUIDs;

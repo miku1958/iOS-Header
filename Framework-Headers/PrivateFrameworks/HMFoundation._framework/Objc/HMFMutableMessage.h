@@ -6,12 +6,13 @@
 
 #import <HMFoundation/HMFMessage.h>
 
-@class HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
+@class HMFActivity, HMFMessageDestination, HMFMessageTransport, NSDictionary, NSString, NSUUID;
 
 @interface HMFMutableMessage : HMFMessage
 {
 }
 
+@property (strong, nonatomic) HMFActivity *activity; // @dynamic activity;
 @property (strong, nonatomic) HMFMessageDestination *destination; // @dynamic destination;
 @property (copy, nonatomic) NSDictionary *headers; // @dynamic headers;
 @property (copy, nonatomic) NSUUID *identifier; // @dynamic identifier;

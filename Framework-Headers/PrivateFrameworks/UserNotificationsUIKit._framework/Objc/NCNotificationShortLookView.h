@@ -4,53 +4,74 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MaterialKit/MTTitledPlatterView.h>
+#import <PlatterKit/PLTitledPlatterView.h>
 
+#import <UserNotificationsUIKit/NCAuxiliaryOptionsSupporting-Protocol.h>
 #import <UserNotificationsUIKit/NCNotificationStaticContentAccepting-Protocol.h>
 
-@class MTFontProvider, NCNotificationContentView, NCNotificationGrabberView, NSArray, NSDate, NSString, NSTimeZone, UIImage, UIView;
+@class BSUIFontProvider, NCAuxiliaryOptionsView, NCNotificationContentView, NCNotificationGrabberView, NSArray, NSDate, NSString, NSTimeZone, UIButton, UIImage, UIView;
 
-@interface NCNotificationShortLookView : MTTitledPlatterView <NCNotificationStaticContentAccepting>
+@interface NCNotificationShortLookView : PLTitledPlatterView <NCNotificationStaticContentAccepting, NCAuxiliaryOptionsSupporting>
 {
-    MTFontProvider *_fontProvider;
+    BSUIFontProvider *_fontProvider;
     NCNotificationContentView *_notificationContentView;
     NCNotificationGrabberView *_grabberView;
+    NCAuxiliaryOptionsView *_auxiliaryOptionsView;
+    BOOL _mainOverlayLayoutValid;
+    BOOL _defersAnimatedUpdates;
+    BOOL _banner;
 }
 
 @property (strong, nonatomic) UIView *accessoryView;
+@property (nonatomic) BOOL adjustsFontForContentSizeCategory;
+@property (nonatomic) BOOL auxiliaryOptionsVisible;
+@property (nonatomic, getter=_isBanner, setter=_setBanner:) BOOL banner; // @synthesize banner=_banner;
 @property (copy, nonatomic) NSDate *date;
-@property (readonly, nonatomic, getter=isDateAllDay) BOOL dateAllDay;
+@property (nonatomic, getter=isDateAllDay) BOOL dateAllDay;
+@property (nonatomic) long long dateFormatStyle;
 @property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL defersAnimatedUpdates; // @synthesize defersAnimatedUpdates=_defersAnimatedUpdates;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic, getter=_fontProvider, setter=_setFontProvider:) BSUIFontProvider *fontProvider;
+@property (readonly, nonatomic, getter=_grabberView) NCNotificationGrabberView *grabberView;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIImage *icon;
+@property (readonly, nonatomic) NSArray *iconButtons;
+@property (copy, nonatomic) NSArray *icons;
 @property (strong, nonatomic) NSArray *interfaceActions;
 @property (nonatomic) unsigned long long messageNumberOfLines;
+@property (readonly, nonatomic, getter=_notificationContentView) NCNotificationContentView *notificationContentView;
+@property (nonatomic) unsigned long long numberOfOptionButtons;
+@property (readonly, nonatomic) NSArray *optionButtons;
+@property (copy, nonatomic) NSString *optionsSummaryText;
+@property (copy, nonatomic) NSString *preferredContentSizeCategory;
 @property (copy, nonatomic) NSString *primarySubtitleText;
 @property (copy, nonatomic) NSString *primaryText;
 @property (copy, nonatomic) NSString *secondaryText;
+@property (copy, nonatomic) NSString *summaryText;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIImage *thumbnail;
 @property (copy, nonatomic) NSTimeZone *timeZone;
 @property (copy, nonatomic) NSString *title;
+@property (readonly, nonatomic) UIButton *utilityButton;
 
++ (unsigned long long)_optionsForMainOverlayForRecipe:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_configureAuxiliaryOptionsViewIfNecessary;
+- (void)_configureCustomContentView;
 - (void)_configureHeaderContentView;
 - (void)_configureNotificationContentViewIfNecessary;
-- (id)_fontProvider;
-- (id)_grabberView;
+- (void)_layoutAuxiliaryOptionsView;
 - (void)_layoutGrabber;
+- (void)_layoutMainOverlay;
+- (void)_layoutNotificationContentView;
 - (id)_newNotificationContentView;
-- (id)_notificationContentView;
-- (void)_setFontProvider:(id)arg1;
+- (unsigned long long)_optionsForMainOverlay;
 - (BOOL)_shouldShowGrabber;
+- (struct CGSize)_sizeThatFitsContentWithSize:(struct CGSize)arg1 withAuxiliaryOptionsViewVisible:(BOOL)arg2;
 - (BOOL)adjustForContentSizeCategoryChange;
-- (BOOL)adjustsFontForContentSizeCategory;
-- (struct CGSize)contentSizeForSize:(struct CGSize)arg1;
-- (id)init;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithRecipe:(long long)arg1 options:(unsigned long long)arg2;
 - (void)layoutSubviews;
-- (void)setAdjustsFontForContentSizeCategory:(BOOL)arg1;
+- (void)nc_performDeferredActionsIfNeeded;
 - (void)setBackgroundView:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFitsContentWithSize:(struct CGSize)arg1;

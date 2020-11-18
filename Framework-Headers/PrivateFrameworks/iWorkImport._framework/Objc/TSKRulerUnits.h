@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSFormatter;
 
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)formatter:(BOOL)arg1 lenient:(BOOL)arg2;
 - (id)init;
+- (id)localizedCompatibleRulerAbbreviatedUnits;
 - (id)localizedCompatibleRulerUnits;
 
 @end

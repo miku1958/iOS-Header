@@ -32,13 +32,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (readonly, nonatomic) id feedbackJSON;
-@property (readonly, nonatomic) BOOL hasBool_value;
-@property (readonly, nonatomic) BOOL hasBytes_value;
-@property (readonly, nonatomic) BOOL hasList_value;
-@property (readonly, nonatomic) BOOL hasNull_value;
-@property (readonly, nonatomic) BOOL hasNumber_value;
-@property (readonly, nonatomic) BOOL hasString_value;
-@property (readonly, nonatomic) BOOL hasStruct_value;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;

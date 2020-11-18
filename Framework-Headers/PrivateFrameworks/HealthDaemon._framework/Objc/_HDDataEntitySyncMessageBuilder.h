@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HDDataProvenanceCache, HDEntityEncoder, HDProfile, HDSQLiteDatabase, HDSyncSession, NSArray, NSMutableDictionary;
+@class HDDataProvenanceCache, HDEntityEncoder, HDProfile, HDSQLiteDatabase, HDSyncSession, NSArray;
 
 @interface _HDDataEntitySyncMessageBuilder : NSObject
 {
@@ -19,9 +19,6 @@
     long long _currentEncodedBytes;
     BOOL _hasSentObject;
     BOOL _didSendFinal;
-    BOOL _requiresLocalSourceConversion;
-    NSMutableDictionary *_syncPrimarySourceMapping;
-    NSMutableDictionary *_syncPrimaryProvenanceMapping;
     long long _maxEncodedBytesPerMessage;
     long long _lastSyncAnchor;
     HDSyncSession *_syncSession;

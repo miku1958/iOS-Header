@@ -4,25 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary, PLGatekeeperClient, PLManagedObjectContext, PLPhotoLibrary;
+@class PLGatekeeperClient, PLManagedObjectContext, PLPhotoLibrary;
 
 @interface PLKeywordManager : NSObject
 {
     PLPhotoLibrary *_photoLibrary;
     PLManagedObjectContext *_libraryContext;
     PLGatekeeperClient *_assetsdClient;
-    NSMutableDictionary *_keywordCache;
 }
 
-+ (id)writeQueue;
++ (void)_inq_loadKeywordsUsingContextIfNecessary:(id)arg1;
++ (void)_invalidateKeywordCache;
++ (id)_writeQueue;
 - (BOOL)_assetsdSetKeywords:(id)arg1 forAssetUUID:(id)arg2;
-- (id)_keywordObjectsForKeywords:(id)arg1;
+- (id)_inq_keywordObjectsForKeywords:(id)arg1;
 - (id)_keywordsForAsset:(id)arg1;
-- (void)_loadKeywords;
-- (id)allKeywordObjectIDs;
-- (id)allKeywords;
 - (void)dealloc;
 - (id)initWithPhotoLibrary:(id)arg1;
 - (id)keywordsForAsset:(id)arg1;

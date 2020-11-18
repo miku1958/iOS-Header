@@ -4,20 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PrototypeTools/PTSRow.h>
+#import <PrototypeTools/PTEditFloatRow.h>
 
-@interface PTSEditFloatRow : PTSRow
+@interface PTSEditFloatRow : PTEditFloatRow
 {
-    unsigned long long _precision;
 }
-
-@property (nonatomic) unsigned long long precision; // @synthesize precision=_precision;
-
-- (id)between:(double)arg1 and:(double)arg2;
-- (id)init;
-- (id)precision:(unsigned long long)arg1;
-- (Class)rowTableViewCellClass;
-- (void)updateWithRow:(id)arg1;
 
 @end
 

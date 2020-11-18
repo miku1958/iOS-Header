@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     BOOL _isVisible;
     BOOL _isAppearing;
-    BOOL _isDisappearing;
     BOOL _fullScreen;
     QLAppearance *_appearance;
     id<QLPreviewItemViewControllerDelegate> _delegate;
@@ -29,14 +28,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)automaticallyUpdateScrollViewContentInset;
 - (BOOL)automaticallyUpdateScrollViewContentOffset;
 - (BOOL)automaticallyUpdateScrollViewIndicatorInset;
+- (void)beginPreviewHostAppearanceTransitionIfNeeded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)buttonPressedWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)canEnterFullScreen;
 - (BOOL)canPerformFirstTimeAppearanceActions:(unsigned long long)arg1;
 - (BOOL)canPinchToDismiss;
+- (BOOL)canShowNavBar;
 - (BOOL)canShowToolBar;
 - (BOOL)canSwipeToDismiss;
 - (id)delegate;
 - (id)draggableView;
+- (void)endPreviewHostAppearanceTransitionIfNeeded:(BOOL)arg1;
 - (id)excludedToolbarButtonIdentifiersForTraitCollection:(id)arg1;
 - (id)fullscreenBackgroundColor;
 - (id)parallaxView;
@@ -59,12 +61,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldAcceptTouch:(id)arg1 ofGestureRecognizer:(id)arg2;
 - (BOOL)shouldRecognizeGestureRecognizer:(id)arg1;
 - (void)showPreviewViewController:(id)arg1;
+- (void)showPreviewViewController:(id)arg1 animatingWithCrossfade:(BOOL)arg2;
 - (id)title;
 - (id)toolbarButtonsForTraitCollection:(id)arg1;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)transitionDidStart:(BOOL)arg1;
 - (void)transitionWillFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (id)transitioningView;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

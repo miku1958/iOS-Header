@@ -7,46 +7,46 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSearchForAccountsIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBDataString, _INPBIntentMetadata;
+@class NSString, _INPBDataString, _INPBIntentMetadata;
 
-@interface _INPBSearchForAccountsIntent : PBCodable <NSCopying>
+@interface _INPBSearchForAccountsIntent : PBCodable <_INPBSearchForAccountsIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    _INPBDataString *_accountNickname;
-    int _accountType;
-    _INPBIntentMetadata *_intentMetadata;
-    _INPBDataString *_organizationName;
-    int _requestedBalanceType;
     struct {
         unsigned int accountType:1;
         unsigned int requestedBalanceType:1;
     } _has;
+    int _accountType;
+    int _requestedBalanceType;
+    _INPBDataString *_accountNickname;
+    _INPBIntentMetadata *_intentMetadata;
+    _INPBDataString *_organizationName;
 }
 
 @property (strong, nonatomic) _INPBDataString *accountNickname; // @synthesize accountNickname=_accountNickname;
 @property (nonatomic) int accountType; // @synthesize accountType=_accountType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasAccountNickname;
 @property (nonatomic) BOOL hasAccountType;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasOrganizationName;
 @property (nonatomic) BOOL hasRequestedBalanceType;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
 @property (strong, nonatomic) _INPBDataString *organizationName; // @synthesize organizationName=_organizationName;
 @property (nonatomic) int requestedBalanceType; // @synthesize requestedBalanceType=_requestedBalanceType;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsAccountType:(id)arg1;
 - (int)StringAsRequestedBalanceType:(id)arg1;
 - (id)accountTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)requestedBalanceTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

@@ -8,7 +8,7 @@
 @protocol AWFrameworkClient;
 
 @protocol AWScheduler
-- (void)addClient:(id<AWFrameworkClient>)arg1 clientConfig:(AWAttentionAwarenessConfiguration *)arg2 reply:(void (^)(id<AWRemoteClient>))arg3;
+- (void)addClient:(id<AWFrameworkClient>)arg1 clientConfig:(AWAttentionAwarenessConfiguration *)arg2 reply:(void (^)(id<AWRemoteClient>, NSError *))arg3;
 - (void)getDebugPreferences:(void (^)(NSDictionary *))arg1;
 - (void)getSupportedEventsWithReply:(void (^)(unsigned long long))arg1;
 - (void)getUnitTestSamplerWithReply:(void (^)(id<AWUnitTestSampler>))arg1;

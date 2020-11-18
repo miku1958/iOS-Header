@@ -8,37 +8,38 @@
 
 #import <ConfigurationEngineModel/CEMRegisteredTypeProtocol-Protocol.h>
 
-@class NSDictionary, NSString;
+@class CEMSystemAllowedMediaDeclaration_MediaItems, NSString;
 
 @interface CEMSystemAllowedMediaDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    CEMSystemAllowedMediaDeclaration_MediaItems *_payloadLogoutEject;
+    CEMSystemAllowedMediaDeclaration_MediaItems *_payloadMountControls;
+    CEMSystemAllowedMediaDeclaration_MediaItems *_payloadUnmountControls;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSDictionary *payloadLogoutEject;
-@property (readonly, nonatomic) NSDictionary *payloadMountControls;
-@property (readonly, nonatomic) NSDictionary *payloadUnmountControls;
+@property (copy, nonatomic) CEMSystemAllowedMediaDeclaration_MediaItems *payloadLogoutEject; // @synthesize payloadLogoutEject=_payloadLogoutEject;
+@property (copy, nonatomic) CEMSystemAllowedMediaDeclaration_MediaItems *payloadMountControls; // @synthesize payloadMountControls=_payloadMountControls;
+@property (copy, nonatomic) CEMSystemAllowedMediaDeclaration_MediaItems *payloadUnmountControls; // @synthesize payloadUnmountControls=_payloadUnmountControls;
 @property (readonly) Class superclass;
 
-+ (id)VolumesDictionary_allowedPayloadKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withLogoutEject:(id)arg2 withMountControls:(id)arg3 withUnmountControls:(id)arg4;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadVolumesDictionary:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validPayloadVolumesDictionary_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

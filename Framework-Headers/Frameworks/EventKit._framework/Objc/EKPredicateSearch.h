@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKit/EKCancellableRemoteOperation-Protocol.h>
 
@@ -31,10 +31,14 @@ __attribute__((visibility("hidden")))
 + (id)searchWithEntityClass:(Class)arg1 predicate:(id)arg2 store:(id)arg3;
 - (void).cxx_destruct;
 - (id)_createOSActivity;
+- (void)_fetchObjectIDsActualWithCompletion:(CDUnknownBlockType)arg1 synchronous:(BOOL)arg2;
 - (void)_startActivityWithCompletion:(CDUnknownBlockType)arg1 synchronous:(BOOL)arg2;
 - (void)_startActualWithCompletion:(CDUnknownBlockType)arg1 synchronous:(BOOL)arg2;
+- (void)_startFetchObjectIDsActivityWithCompletion:(CDUnknownBlockType)arg1 synchronous:(BOOL)arg2;
+- (void)_startProcessingWithCompletion:(CDUnknownBlockType)arg1 synchronous:(BOOL)arg2 processor:(CDUnknownBlockType)arg3;
 - (void)cancel;
 - (void)disconnect;
+- (id)fetchObjectIDs;
 - (id)initWithEntityClass:(Class)arg1 predicate:(id)arg2 store:(id)arg3;
 - (id)runSynchronously;
 - (id)startWithCompletion:(CDUnknownBlockType)arg1;

@@ -20,6 +20,7 @@
 - (id)_accessibilityControlCenterButtonLabel;
 - (id)_accessibilityControlCenterButtonPath;
 - (unsigned long long)_accessibilityControlCenterButtonTraits;
+- (id)_accessibilityControlCenterElementToFocusAfterClose;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)viewDidLoad;
 

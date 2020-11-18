@@ -6,10 +6,11 @@
 
 #import <SpriteKit/SKNode.h>
 
-@class NSArray, SKAction;
+@class CLKDevice, NSArray, SKAction;
 
 @interface NTKCollectionNode : SKNode
 {
+    CLKDevice *_device;
     NSArray *_nodes;
     SKAction *_appearAction;
     SKAction *_disappearAction;
@@ -19,33 +20,33 @@
 
 @property (copy, nonatomic) CDUnknownBlockType animateBlock; // @synthesize animateBlock=_animateBlock;
 @property (strong, nonatomic) SKAction *appearAction; // @synthesize appearAction=_appearAction;
+@property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (strong, nonatomic) SKAction *disappearAction; // @synthesize disappearAction=_disappearAction;
 @property (strong, nonatomic) NSArray *nodes; // @synthesize nodes=_nodes;
 @property (nonatomic) double radius; // @synthesize radius=_radius;
 
-+ (id)hours12;
-+ (id)hours12ZeusWithFont:(long long)arg1;
-+ (id)hours4;
-+ (id)hoursChrono;
-+ (float)innerRadius;
-+ (id)labels30Chrono;
-+ (id)labels3Chrono;
-+ (id)labels3_10_90Chrono;
-+ (id)labels60Chrono;
-+ (id)labels6Chrono;
-+ (id)labels6_10_40Chrono;
-+ (id)minutesPills;
-+ (id)minutesUtilitarian;
-+ (float)outerRadius;
-+ (id)ticks120;
-+ (id)ticks240;
-+ (id)ticks30Chrono;
-+ (id)ticks60;
-+ (id)ticks60Chrono;
-+ (id)ticks60Utilitarian;
-+ (id)ticks6Chrono;
-+ (id)ticksColorAnalog;
-+ (id)ticksPills;
++ (id)hours12ForDevice:(id)arg1;
++ (id)hours4ForDevice:(id)arg1;
++ (id)hoursChronoForDevice:(id)arg1;
++ (float)innerRadiusForDevice:(id)arg1;
++ (id)labels30ChronoForDevice:(id)arg1;
++ (id)labels3ChronoForDevice:(id)arg1;
++ (id)labels3_10_90ChronoForDevice:(id)arg1;
++ (id)labels60ChronoForDevice:(id)arg1;
++ (id)labels6ChronoForDevice:(id)arg1;
++ (id)labels6_10_40ChronoForDevice:(id)arg1;
++ (id)minutesPillsForDevice:(id)arg1;
++ (id)minutesUtilitarianForDevice:(id)arg1;
++ (float)outerRadiusForDevice:(id)arg1;
++ (id)ticks120ForDevice:(id)arg1;
++ (id)ticks240ForDevice:(id)arg1;
++ (id)ticks30ChronoForDevice:(id)arg1;
++ (id)ticks60ChronoForDevice:(id)arg1;
++ (id)ticks60ForDevice:(id)arg1;
++ (id)ticks60UtilitarianForDevice:(id)arg1;
++ (id)ticks6ChronoForDevice:(id)arg1;
++ (id)ticksColorAnalogForDevice:(id)arg1;
++ (id)ticksPillsForDevice:(id)arg1;
 - (void).cxx_destruct;
 - (void)appearAnimated;
 - (void)applyAppearanceFraction:(double)arg1;
@@ -56,8 +57,8 @@
 - (void)fadeAndScale:(double)arg1;
 - (void)fadeNodes:(double)arg1;
 - (void)fadeNodes:(double)arg1 except:(id)arg2;
-- (id)init;
-- (id)initWithName:(id)arg1 nodes:(id)arg2 animateBlock:(CDUnknownBlockType)arg3;
+- (id)initForDevice:(id)arg1;
+- (id)initForDevice:(id)arg1 withName:(id)arg2 nodes:(id)arg3 animateBlock:(CDUnknownBlockType)arg4;
 - (void)scaleNodes:(double)arg1;
 - (void)scaleNodes:(double)arg1 andResetNodesAtIndices:(id)arg2;
 - (void)scaleNodes:(id)arg1 fraction:(double)arg2;

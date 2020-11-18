@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (void)add:(id)arg1;
 - (void)add:(id)arg1 withMessage:(id)arg2;
+- (void)addObjects:(id)arg1;
 - (id)debugString:(BOOL)arg1;
 - (void)dumpDebug;
 - (void)dumpDebug:(id)arg1;

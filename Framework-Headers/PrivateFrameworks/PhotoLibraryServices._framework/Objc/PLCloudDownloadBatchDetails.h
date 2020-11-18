@@ -4,19 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class NSArray;
 
 @interface PLCloudDownloadBatchDetails : NSObject
 {
     BOOL _hasResourceChanges;
     long long _numberOfPhotos;
     long long _numberOfVideos;
+    NSArray *_cmmUUIDsToNotify;
+    NSArray *_flippedPlaceholderAssetUUIDs;
 }
 
+@property (copy, nonatomic) NSArray *cmmUUIDsToNotify; // @synthesize cmmUUIDsToNotify=_cmmUUIDsToNotify;
+@property (copy, nonatomic) NSArray *flippedPlaceholderAssetUUIDs; // @synthesize flippedPlaceholderAssetUUIDs=_flippedPlaceholderAssetUUIDs;
 @property (nonatomic) BOOL hasResourceChanges; // @synthesize hasResourceChanges=_hasResourceChanges;
 @property (nonatomic) long long numberOfPhotos; // @synthesize numberOfPhotos=_numberOfPhotos;
 @property (nonatomic) long long numberOfVideos; // @synthesize numberOfVideos=_numberOfVideos;
 
+- (void).cxx_destruct;
 - (void)unionBatchDetails:(id)arg1;
 
 @end

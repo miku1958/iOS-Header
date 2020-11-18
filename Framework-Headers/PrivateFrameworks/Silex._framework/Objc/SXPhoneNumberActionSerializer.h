@@ -19,7 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)URLForAction:(id)arg1;
+- (id)URLForAction:(id)arg1 type:(long long)arg2;
 
 @end
 

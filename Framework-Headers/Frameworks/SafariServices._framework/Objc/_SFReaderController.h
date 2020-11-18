@@ -22,10 +22,10 @@
     CDUnknownBlockType _readerMailContentCompletionHandler;
     CDUnknownBlockType _readerPrintContentCompletionHandler;
     NSMutableDictionary *_bookmarkIdentifierToReadingListItemInfoCompletionMap;
-    BOOL _readerWebViewContentDidBecomeReady;
     CDUnknownBlockType _actionsDelayedUntilReaderWebViewIsReady;
     NSTimer *_actionsDelayedUntilReaderWebViewIsReadyTimer;
     BOOL _readerAvailable;
+    BOOL _contentIsReady;
     WKWebView *_webView;
     WKWebView *_readerWebView;
     id<_SFReaderControllerDelegate> _delegate;
@@ -34,6 +34,7 @@
 }
 
 @property (readonly, nonatomic) NSString *articleText; // @synthesize articleText=_articleText;
+@property (nonatomic) BOOL contentIsReady; // @synthesize contentIsReady=_contentIsReady;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<_SFReaderControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -76,6 +77,7 @@
 - (void)didCollectReadingListItemInfo:(id)arg1 bookmarkID:(id)arg2;
 - (void)didCreateReaderWebView:(id)arg1;
 - (void)didDetermineReaderAvailability:(BOOL)arg1 dueToSameDocumentNavigation:(BOOL)arg2;
+- (void)didFinishPresentationUpdateAfterTransitioningToReader;
 - (void)didPrepareReaderContentForPrinting:(id)arg1;
 - (void)didSetReaderConfiguration:(id)arg1;
 - (id)fontManager;
@@ -87,7 +89,7 @@
 - (void)owningWebViewDidCommitNavigation;
 - (void)prepareReaderPrintingIFrameWithCompletion:(CDUnknownBlockType)arg1;
 - (id)readerControllerProxy;
-- (void)readerTextWasExtracted:(id)arg1;
+- (void)readerTextWasExtracted:(id)arg1 withMetadata:(id)arg2 wasDeterminingAvailabilility:(BOOL)arg3;
 - (id)readerURL;
 - (id)scrollPositionInformation;
 - (void)setReaderFont:(id)arg1;
@@ -98,6 +100,7 @@
 - (BOOL)shouldCreateArticleFinder;
 - (void)stopLoadingNextPage;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
+- (void)willHideReader;
 
 @end
 

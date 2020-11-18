@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUI/NSCopying-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface CUIRenditionSliceInformation : NSObject <NSCopying>
 {
     long long _renditionType;

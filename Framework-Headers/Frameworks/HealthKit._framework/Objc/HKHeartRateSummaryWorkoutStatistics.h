@@ -10,12 +10,14 @@
 
 @interface HKHeartRateSummaryWorkoutStatistics : HKHeartRateSummaryStatistics
 {
+    unsigned long long _workoutActivityType;
     HKQuantity *_averageHeartRate;
     HKQuantity *_maximumHeartRate;
 }
 
 @property (strong, nonatomic, setter=_setAverageHeartRate:) HKQuantity *averageHeartRate; // @synthesize averageHeartRate=_averageHeartRate;
 @property (strong, nonatomic, setter=_setMaximumHeartRate:) HKQuantity *maximumHeartRate; // @synthesize maximumHeartRate=_maximumHeartRate;
+@property (readonly, nonatomic) unsigned long long workoutActivityType; // @synthesize workoutActivityType=_workoutActivityType;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -23,6 +25,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDateInterval:(id)arg1 numberOfBuckets:(long long)arg2 workoutUUID:(id)arg3 workoutActivityType:(unsigned long long)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

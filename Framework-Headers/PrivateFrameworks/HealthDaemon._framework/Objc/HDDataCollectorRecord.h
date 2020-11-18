@@ -19,6 +19,7 @@
 @property (strong, nonatomic) HDDataCollectorState *state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
+- (id)description;
 
 @end
 

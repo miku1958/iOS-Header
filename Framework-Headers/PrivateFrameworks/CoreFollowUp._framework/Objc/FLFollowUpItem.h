@@ -18,6 +18,7 @@
     NSString *_uniqueIdentifier;
     NSString *_groupIdentifier;
     FLFollowUpNotification *_notification;
+    NSString *_targetBundleIdentifier;
     NSString *_title;
     NSString *_informativeText;
     unsigned long long _displayStyle;
@@ -42,6 +43,7 @@
 @property BOOL shouldPersistWhenDismissed; // @synthesize shouldPersistWhenDismissed=_shouldPersistWhenDismissed;
 @property (nonatomic) BOOL showInSettings; // @synthesize showInSettings=_showInSettings;
 @property (nonatomic) unsigned long long sqlID; // @synthesize sqlID=_sqlID;
+@property (copy, nonatomic) NSString *targetBundleIdentifier; // @synthesize targetBundleIdentifier=_targetBundleIdentifier;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
@@ -52,9 +54,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithoutDefaults;
 - (BOOL)isHSA2LoginItem;
 - (BOOL)isHSA2PasswordResetItem;
-- (id)redirectURLWithAction:(id)arg1;
 
 @end
 

@@ -11,11 +11,12 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMBulletinBoardNotification, HMDelegateCaller, HMFMessageDispatcher, NSArray, NSSet, NSString, NSUUID;
+@class HMBulletinBoardNotification, HMFUnfairLock, NSArray, NSSet, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
-@interface HMBulletinBoardNotificationServiceGroup : NSObject <NSSecureCoding, HMObjectMerge, HMFMessageReceiver, HMFLogging>
+@interface HMBulletinBoardNotificationServiceGroup : NSObject <HMFLogging, HMFMessageReceiver, NSSecureCoding, HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     NSArray *_cameraProfiles;
     NSArray *_associatedServices;
     NSSet *_cameraProfileUUIDs;
@@ -23,10 +24,7 @@
     HMBulletinBoardNotification *_bulletinBoardNotification;
     NSUUID *_uniqueIdentifier;
     NSUUID *_targetUUID;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
-    HMFMessageDispatcher *_msgDispatcher;
+    _HMContext *_context;
     NSString *_logID;
 }
 
@@ -35,16 +33,13 @@
 @property (readonly, weak, nonatomic) HMBulletinBoardNotification *bulletinBoardNotification; // @synthesize bulletinBoardNotification=_bulletinBoardNotification;
 @property (strong, nonatomic) NSSet *cameraProfileUUIDs; // @synthesize cameraProfileUUIDs=_cameraProfileUUIDs;
 @property (strong, nonatomic) NSArray *cameraProfiles; // @synthesize cameraProfiles=_cameraProfiles;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *targetUUID; // @synthesize targetUUID=_targetUUID;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -52,8 +47,8 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__configureWithContext:(id)arg1;
 - (void)_callServiceGroupUpdate;
-- (void)_configureClientQueue:(id)arg1 delegateCaller:(id)arg2 msgDispatcher:(id)arg3;
 - (void)_findObjects;
 - (void)_handleBulletinBoardNotificationServiceGroupUpdateNotification:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;

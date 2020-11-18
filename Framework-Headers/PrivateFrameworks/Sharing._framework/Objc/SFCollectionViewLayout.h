@@ -7,10 +7,12 @@
 #import <UIKit/UICollectionViewLayout.h>
 
 @class NSArray;
+@protocol SFCollectionViewDelegateLayout;
 
 __attribute__((visibility("hidden")))
 @interface SFCollectionViewLayout : UICollectionViewLayout
 {
+    id<SFCollectionViewDelegateLayout> _fallbackDelegate;
     double _evaluatedHorizontalItemOffset;
     NSArray *_preparedLayoutAttributes;
     NSArray *_preparedUpdateItems;
@@ -23,6 +25,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double evaluatedHorizontalItemOffset; // @synthesize evaluatedHorizontalItemOffset=_evaluatedHorizontalItemOffset;
 @property (nonatomic) struct UIEdgeInsets evaluatedInset; // @synthesize evaluatedInset=_evaluatedInset;
 @property (nonatomic) struct CGSize evaluatedItemSize; // @synthesize evaluatedItemSize=_evaluatedItemSize;
+@property (weak, nonatomic) id<SFCollectionViewDelegateLayout> fallbackDelegate; // @synthesize fallbackDelegate=_fallbackDelegate;
 @property (copy, nonatomic) NSArray *preparedLayoutAttributes; // @synthesize preparedLayoutAttributes=_preparedLayoutAttributes;
 @property (copy, nonatomic) NSArray *preparedUpdateItems; // @synthesize preparedUpdateItems=_preparedUpdateItems;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, TSCH3DCamera, TSCH3DSceneObject, TSCH3DScenePropertyAccessor, TSUNoCopyDictionary;
 @protocol TSCH3DSceneDelegate, TSCH3DScenePropertyAccessorFactory;

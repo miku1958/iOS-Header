@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, PLMomentAnalyzer;
+@class NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSSet, PLMomentAnalyzer;
 @protocol OS_dispatch_queue, PLMomentGenerationDataManagement;
 
 @interface PLMomentGeneration : NSObject
@@ -20,32 +20,36 @@
     PLMomentAnalyzer *_pairedAnalyzer;
     PLMomentAnalyzer *_analyzer;
     BOOL _isInStressTestMode;
+    NSSet *_clusteringDeletedClusters;
     id<PLMomentGenerationDataManagement> _momentGenerationDataManager;
 }
 
 @property (nonatomic) PLMomentAnalyzer *analyzer;
-@property (nonatomic) id<PLMomentGenerationDataManagement> momentGenerationDataManager; // @synthesize momentGenerationDataManager=_momentGenerationDataManager;
+@property (strong, nonatomic) NSSet *clusteringDeletedClusters; // @synthesize clusteringDeletedClusters=_clusteringDeletedClusters;
+@property (readonly, nonatomic) id<PLMomentGenerationDataManagement> momentGenerationDataManager; // @synthesize momentGenerationDataManager=_momentGenerationDataManager;
 
 + (id)_insertMegaMomentListsForMoments:(id)arg1 inMomentDataManager:(id)arg2;
-+ (id)_insertMomentsForAssets:(id)arg1 inManager:(id)arg2 withAffectedMoments:(id)arg3;
 + (id)_insertYearMomentListsForMoments:(id)arg1 earliestDate:(id)arg2 latestDate:(id)arg3 inMomentDataManager:(id)arg4;
 + (BOOL)_rebuildAllMomentListsWithDataManager:(id)arg1 error:(id *)arg2;
 + (void)_updateMoment:(id)arg1 fromCluster:(id)arg2 inManager:(id)arg3;
 + (id)generateMergeCustomMomentUUID;
 + (id)generateSplitCustomMomentUUID;
 - (void)_appendAssetsToReplayLog:(id)arg1 forBatchUpdate:(BOOL)arg2;
+- (void)_cleanUpMoment:(id)arg1;
 - (void)_clearReplayLog;
-- (id)_coalescedDateRangesFromRanges:(id)arg1;
 - (BOOL)_deleteAllMomentDataInManager:(id)arg1 incremental:(BOOL)arg2 error:(id *)arg3;
 - (id)_detailsForAsset:(id)arg1 simpleOnly:(BOOL)arg2;
 - (id)_detailsForMoment:(id)arg1;
+- (id)_insertAndUpdateRemainingMomentsInManager:(id)arg1 withAffectedMoments:(id)arg2;
 - (id)_insertMegaMomentListsForMoments:(id)arg1 inMomentDataManager:(id)arg2;
-- (id)_insertMomentsForAssets:(id)arg1 inManager:(id)arg2 withAffectedMoments:(id)arg3;
+- (id)_insertMomentsForMomentClusters:(id)arg1 inManager:(id)arg2;
 - (id)_insertYearMomentListsForMoments:(id)arg1 earliestDate:(id)arg2 latestDate:(id)arg3 inMomentDataManager:(id)arg4;
 - (BOOL)_isAsset:(id)arg1 identicalToAssetForMoments:(id)arg2;
 - (id)_logEntryForAssets:(id)arg1 isBatchUpdate:(BOOL)arg2;
+- (id)_momentClustersForAssets:(id)arg1 inManager:(id)arg2 updateDeletedClusters:(BOOL)arg3;
 - (id)_nameForMomentGenerationType:(short)arg1;
 - (id)_newPublicGlobalUUIDsToAssetsMappingWithAssets:(id)arg1;
+- (void)_processMomentsWithAssets:(id)arg1 hiddenAssets:(id)arg2 inManager:(id)arg3 affectedMoments:(id)arg4 updatedMoments:(id *)arg5;
 - (BOOL)_rebuildAllMomentsInManager:(id)arg1 shouldAnalyze:(BOOL)arg2 error:(id *)arg3;
 - (void)_refreshObjects:(id)arg1 withDataManager:(id)arg2;
 - (void)_runIncrementalGenerationPassWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -55,14 +59,14 @@
 - (id)allMomentsMetadataWriteToFile:(id)arg1;
 - (void)clearUserInfluencedMoments;
 - (void)dealloc;
-- (void)generateWithAssetInsertsAndUpdates:(id)arg1 andDeletes:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)generateWithAssetInsertsAndUpdates:(id)arg1 assetDeletes:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)generateWithIncrementalDataCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)init;
+- (id)initWithMomentGenerationDataManager:(id)arg1;
 - (id)momentGenerationStatus;
 - (void)rebuildAllMomentLists:(CDUnknownBlockType)arg1;
 - (BOOL)rebuildAllMomentsWithManager:(id)arg1 error:(id *)arg2;
 - (void)rebuildAllMomentsWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)saveChangesForAssetInsertsAndUpdates:(id)arg1 andDeletes:(id)arg2;
+- (void)saveChangesForAssetInsertsAndUpdates:(id)arg1 assetDeletes:(id)arg2;
 
 @end
 

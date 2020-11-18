@@ -36,6 +36,7 @@
 - (void)_setDataSource:(id)arg1 withChangeHistory:(id)arg2;
 - (void)_updateIfNeeded;
 - (void)_updateSelectionSnapshotIfNeeded;
+- (BOOL)areAllUnsavedAssetsSelectedWithImportStatusManager:(id)arg1;
 - (void)deselectAll;
 - (void)didPerformChanges;
 - (id)init;
@@ -44,6 +45,8 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (id)sectionedDataSourceManagerInterestingObjectReferences:(id)arg1;
+- (void)selectAllItems;
+- (void)selectNonCopiedAssetsWithImportStatusManager:(id)arg1;
 - (void)setSelectedIndexPaths:(id)arg1;
 - (void)setSelectedState:(BOOL)arg1 forIndexPath:(struct PXSimpleIndexPath)arg2;
 - (void)setSelectedState:(BOOL)arg1 forIndexPathSet:(id)arg2;

@@ -54,9 +54,12 @@
 @property (nonatomic) struct CGPoint visibleRectCenter;
 @property (nonatomic) struct CGSize visibleRectSize;
 
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
 + (id)sceneWithContentsOfFile:(id)arg1;
 + (id)sceneWithContentsOfFile:(id)arg1 size:(struct CGSize)arg2;
 + (id)sceneWithSize:(struct CGSize)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_didMakeBackingNode;
 - (void)_didMoveToView:(id)arg1;
@@ -65,7 +68,6 @@
 - (BOOL)_isDirty;
 - (struct SKCNode *)_makeBackingNode;
 - (void)_notifyNextDirtyState;
-- (id)_parentFocusEnvironment;
 - (void)_registerConstraintsForNode:(id)arg1;
 - (void)_removeConstraintsForNode:(id)arg1;
 - (void)_setBackgroundContentsWithBuffer:(struct __CVBuffer *)arg1;
@@ -81,8 +83,6 @@
 - (struct CGPoint)convertPointToView:(struct CGPoint)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)debugHierarchyPropertyDescriptions;
-- (id)debugHierarchyValueForPropertyWithName:(id)arg1;
 - (id)description;
 - (void)didApplyConstraints;
 - (void)didChangeSize:(struct CGSize)arg1;
@@ -97,6 +97,8 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSize:(struct CGSize)arg1;
+- (BOOL)isEqualToNode:(id)arg1;
+- (id)parentFocusEnvironment;
 - (struct CGPoint)position;
 - (void)sceneDidLoad;
 - (void)setPaused:(BOOL)arg1;

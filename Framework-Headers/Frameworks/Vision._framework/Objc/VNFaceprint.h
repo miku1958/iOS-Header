@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Vision/NSCopying-Protocol.h>
 #import <Vision/NSSecureCoding-Protocol.h>
-#import <Vision/VNFaceprintModel-Protocol.h>
+#import <Vision/VNRequestRevisionProviding-Protocol.h>
 #import <Vision/VNSerializing-Protocol.h>
 
 @class NSData, NSString;
 
-@interface VNFaceprint : NSObject <VNFaceprintModel, NSSecureCoding, NSCopying, VNSerializing>
+@interface VNFaceprint : NSObject <NSSecureCoding, NSCopying, VNSerializing, VNRequestRevisionProviding>
 {
+    unsigned long long _requestRevision;
     unsigned int _platform;
     unsigned int _profile;
     NSData *_faceprint;
@@ -27,14 +28,18 @@
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
 @property (nonatomic) unsigned int platform; // @synthesize platform=_platform;
 @property (nonatomic) unsigned int profile; // @synthesize profile=_profile;
+@property (readonly, nonatomic) unsigned long long requestRevision;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_serializeVersion1StateAndReturnError:(id *)arg1;
+- (id)_serializeVersion2StateAndReturnError:(id *)arg1;
 - (id)computeDistanceToFaceprint:(id)arg1 withDistanceFunction:(long long)arg2 error:(id *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRequestRevision:(unsigned long long)arg1;
 - (id)initWithState:(id)arg1 error:(id *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)serializeStateAndReturnError:(id *)arg1;

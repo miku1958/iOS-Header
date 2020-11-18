@@ -28,12 +28,14 @@
     ISWrappedAVAudioSession *_wrappedAudioSession;
     id<ISBasePlayerUIViewChangeObserver> __changeObserver;
     struct CGPoint _scaleAnchorOffset;
+    struct CGRect _contentsRect;
 }
 
 @property (weak, nonatomic, setter=_setChangeObserver:) id<ISBasePlayerUIViewChangeObserver> _changeObserver; // @synthesize _changeObserver=__changeObserver;
 @property (readonly, nonatomic) UIView *_containerView; // @synthesize _containerView=__containerView;
 @property (readonly, nonatomic) UIImageView *_photoView; // @synthesize _photoView=__photoView;
 @property (readonly, nonatomic) ISVideoPlayerUIView *_videoView; // @synthesize _videoView=__videoView;
+@property (nonatomic) struct CGRect contentsRect; // @synthesize contentsRect=_contentsRect;
 @property (strong, nonatomic) UIView *customPhotoView; // @synthesize customPhotoView=_customPhotoView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

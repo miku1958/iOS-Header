@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, UIViewController;
+@class NSDictionary, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 @interface RPService : NSObject
@@ -24,7 +24,6 @@
     unsigned int _advertiseRate;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_label;
-    UIViewController *_presentingViewController;
     NSString *_serviceType;
     NSDictionary *_txtDictionary;
     CDUnknownBlockType _errorHandler;
@@ -45,7 +44,6 @@
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (nonatomic) BOOL needsSetup; // @synthesize needsSetup=_needsSetup;
-@property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (copy, nonatomic) CDUnknownBlockType sessionEndedHandler; // @synthesize sessionEndedHandler=_sessionEndedHandler;
 @property (copy, nonatomic) CDUnknownBlockType sessionStartedHandler; // @synthesize sessionStartedHandler=_sessionStartedHandler;

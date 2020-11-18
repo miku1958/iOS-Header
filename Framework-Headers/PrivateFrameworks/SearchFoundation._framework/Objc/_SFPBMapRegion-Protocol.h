@@ -11,10 +11,6 @@
 @protocol _SFPBMapRegion <NSObject>
 
 @property (nonatomic) double eastLng;
-@property (readonly, nonatomic) BOOL hasEastLng;
-@property (readonly, nonatomic) BOOL hasNorthLat;
-@property (readonly, nonatomic) BOOL hasSouthLat;
-@property (readonly, nonatomic) BOOL hasWestLng;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) double northLat;
 @property (nonatomic) double southLat;

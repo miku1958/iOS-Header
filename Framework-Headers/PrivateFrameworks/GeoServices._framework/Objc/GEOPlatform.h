@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)isRunningInGeod;
 + (void)setIsRunningInGeod:(BOOL)arg1;
 + (id)sharedPlatform;
 - (BOOL)_deviceSupportsNavigation;
@@ -20,6 +21,7 @@
 - (long long)deviceScreenWidthInPixels;
 - (id)hardwareIdentifier;
 - (id)hardwareModel;
+- (BOOL)isCellDataPossible;
 - (BOOL)isInternalInstall;
 - (BOOL)mapsFeatureFreedomEnabled;
 - (id)osVersion;

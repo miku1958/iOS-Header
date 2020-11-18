@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TNPageController, TNPageCoordinateDictionary, TSDDrawableInfo;
 
@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 {
     TNPageController *mPageController;
     TSDDrawableInfo *mInfo;
-    CDStruct_d8c645bd mPageRange;
+    CDStruct_39acd760 mPageRange;
     BOOL mIsMaxColumnValid;
     BOOL mIsMaxRowValid;
     TNPageCoordinateDictionary *mHintCacheEntryDictionary;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidate;
 - (id)layoutAtCoordinate:(struct TSUCellCoord)arg1 parentLayout:(id)arg2;
 - (id)p_hintCacheEntryAtCoordinate:(struct TSUCellCoord)arg1;
-- (CDStruct_d8c645bd)pageRangeWithUpperBound:(struct TSUCellCoord)arg1;
+- (CDStruct_39acd760)pageRangeWithUpperBound:(struct TSUCellCoord)arg1;
 
 @end
 

@@ -6,11 +6,12 @@
 
 #import <UIKit/UIView.h>
 
-@class CALayer, CAMediaTimingFunction, NSArray, NSDictionary, NSMutableDictionary, NTKVictoryAnalogFakeComplicationButton, UIImage;
+@class CALayer, CAMediaTimingFunction, CLKDevice, NSArray, NSDictionary, NSMutableDictionary, NTKVictoryAnalogFakeComplicationButton, UIImage;
 @protocol NTKVictoryAnalogBackgroundViewDelegate;
 
 @interface NTKVictoryAnalogBackgroundView : UIView
 {
+    CLKDevice *_device;
     UIImage *_dotImage;
     NSMutableDictionary *_regularNumberImages;
     NSMutableDictionary *_largeNumberImages;
@@ -41,13 +42,13 @@
 
 + (id)_disabledLayerActions;
 - (void).cxx_destruct;
-- (void)_applyColorForStyle:(unsigned long long)arg1;
+- (void)_applyColor:(unsigned long long)arg1 forStyle:(unsigned long long)arg2;
+- (void)_applyTransitionFraction:(double)arg1 fromPalette:(id)arg2 toPalette:(id)arg3 style:(unsigned long long)arg4;
 - (id)_bigNumberInitialTransforms;
 - (void)_clearTransitionStateForStyle:(unsigned long long)arg1;
 - (id)_createAndAddLayersWithCount:(unsigned long long)arg1;
 - (void)_createBigNumberLayersIfNeeded;
 - (void)_createRingLayersIfNeeded;
-- (double)_dotAlphaForColor:(unsigned long long)arg1 style:(unsigned long long)arg2;
 - (id)_dotImage;
 - (double)_elementScaleForTransitionProgress:(double)arg1 initialScale:(double)arg2 middleScale:(double)arg3 finalScale:(double)arg4;
 - (struct CATransform3D)_intermediateTransformForBigNumberAtIndex:(unsigned long long)arg1 fraction:(double)arg2;
@@ -61,7 +62,7 @@
 - (double)_transitionProgressForDigitAtIndex:(unsigned long long)arg1 overallProgress:(double)arg2 delayPerDigit:(double)arg3 digitTransitionLength:(double)arg4;
 - (void)applyTransitionFraction:(double)arg1 fromColor:(unsigned long long)arg2 toColor:(unsigned long long)arg3;
 - (void)applyTransitionFraction:(double)arg1 fromStyle:(unsigned long long)arg2 toStyle:(unsigned long long)arg3;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (void)layoutSubviews;
 - (void)setInTimeTravel:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)willBeginEditing;

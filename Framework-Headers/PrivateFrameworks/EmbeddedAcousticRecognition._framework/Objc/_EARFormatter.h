@@ -20,6 +20,8 @@
 - (vector_2f7ba0dc)formatWords:(const vector_2f7ba0dc *)arg1 task:(id)arg2;
 - (id)formattedRecognitionWithNBestList:(id)arg1;
 - (id)formattedStringWithStrings:(id)arg1;
+- (id)formattedStringWithStrings:(id)arg1 preToPostItnArray:(id)arg2;
+- (id)formattedStringWithStrings:(id)arg1 preToPostItnArray:(id)arg2 task:(id)arg3;
 - (id)formattedStringWithStrings:(id)arg1 task:(id)arg2;
 - (basic_string_23d93216)getOrthography:(const vector_2f7ba0dc *)arg1;
 - (id)initWithGeneralVoc:(id)arg1 withLexiconEnh:(id)arg2 withItnEnh:(id)arg3;

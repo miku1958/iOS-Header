@@ -6,10 +6,19 @@
 
 #import <Foundation/NSLocale.h>
 
+@class NSArray, NSString;
+
 @interface NSLocale (InternationalSupportExtensions)
+
+@property (readonly, copy) NSArray *availableNumberingSystems;
+@property (readonly) NSString *languageIdentifier;
+@property (readonly, copy) NSString *numberingSystem;
+
 + (id)_ICUdisplayNameForLanguage:(id)arg1 capitalization:(struct ULocaleDisplayNames *)arg2;
 + (id)_addLikelySubtagsForLocaleIdentifier:(id)arg1;
++ (id)_displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
 + (id)_displayNameForNormalizedLanguage:(id)arg1 context:(long long)arg2 displayLanguage:(id)arg3;
++ (id)_displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(BOOL)arg4;
 + (id)_filterLanguageList:(id)arg1 forRegion:(id)arg2 fromLanguages:(id)arg3;
 + (id)_languageNameOverrides;
 + (id)_languagesForRegionWithoutFiltering:(id)arg1;
@@ -29,5 +38,9 @@
 + (id)systemLanguagesForRegion:(id)arg1;
 - (id)displayNameForLanguage:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3;
 - (id)displayNameForRegion:(id)arg1 displayLanguage:(id)arg2 context:(long long)arg3 short:(BOOL)arg4;
+- (BOOL)isEquivalentTo:(id)arg1;
+- (id)localizedStringForLanguage:(id)arg1 context:(long long)arg2;
+- (id)localizedStringForNumberingSystem:(id)arg1 short:(BOOL)arg2;
+- (id)localizedStringForRegion:(id)arg1 context:(long long)arg2 short:(BOOL)arg3;
 @end
 

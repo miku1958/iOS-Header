@@ -10,6 +10,7 @@
 
 @protocol MTLTexture <MTLResource>
 
+@property (readonly) BOOL allowGPUOptimizedContents;
 @property (readonly) unsigned long long arrayLength;
 @property (readonly) id<MTLBuffer> buffer;
 @property (readonly) unsigned long long bufferBytesPerRow;

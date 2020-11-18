@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewAnimationState.h>
+#import <UIKitCore/UIViewAnimationState.h>
 
 __attribute__((visibility("hidden")))
 @interface UIViewAnimationRemovingAnimationState : UIViewAnimationState

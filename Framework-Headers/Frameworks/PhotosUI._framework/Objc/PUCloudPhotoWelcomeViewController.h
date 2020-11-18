@@ -8,18 +8,18 @@
 
 #import <PhotosUI/AAUIGenericTermsRemoteUIDelegate-Protocol.h>
 #import <PhotosUI/PSCloudStorageOffersManagerDelegate-Protocol.h>
-#import <PhotosUI/PUCloudPhotoWelcomeNavigationControllerDismissDelegate-Protocol.h>
-#import <PhotosUI/PUCloudPhotoWelcomeViewDelegate-Protocol.h>
+#import <PhotosUI/PXCloudPhotoWelcomeNavigationControllerDismissDelegate-Protocol.h>
+#import <PhotosUI/PXCloudPhotoWelcomeViewDelegate-Protocol.h>
 
-@class AAUIGenericTermsRemoteUI, NSString, PSCloudStorageOffersManager, PUCloudPhotoWelcomeView;
+@class AAUIGenericTermsRemoteUI, NSString, PSCloudStorageOffersManager, PXCloudPhotoWelcomeView;
 
-@interface PUCloudPhotoWelcomeViewController : PUWelcomeViewController <PUCloudPhotoWelcomeViewDelegate, PSCloudStorageOffersManagerDelegate, AAUIGenericTermsRemoteUIDelegate, PUCloudPhotoWelcomeNavigationControllerDismissDelegate>
+@interface PUCloudPhotoWelcomeViewController : PUWelcomeViewController <PXCloudPhotoWelcomeViewDelegate, PSCloudStorageOffersManagerDelegate, AAUIGenericTermsRemoteUIDelegate, PXCloudPhotoWelcomeNavigationControllerDismissDelegate>
 {
     PSCloudStorageOffersManager *_offersManager;
     AAUIGenericTermsRemoteUI *_termsManager;
     BOOL _requireStorageUpgrade;
     BOOL _enableOnAppear;
-    PUCloudPhotoWelcomeView *_welcomeView;
+    PXCloudPhotoWelcomeView *_welcomeView;
     CDUnknownBlockType __completionHandler;
 }
 
@@ -28,7 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) PUCloudPhotoWelcomeView *welcomeView; // @synthesize welcomeView=_welcomeView;
+@property (strong, nonatomic) PXCloudPhotoWelcomeView *welcomeView; // @synthesize welcomeView=_welcomeView;
 
 + (BOOL)_isPhotoStreamEnabled;
 + (void)_showWithPresentingViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -56,10 +56,12 @@
 - (void)navigationControllerDidDismissViewController:(id)arg1;
 - (struct CGSize)preferredContentSize;
 - (long long)preferredInterfaceOrientationForPresentation;
+- (id)presentingViewControllerTraitCollection;
 - (BOOL)shouldAutorotate;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

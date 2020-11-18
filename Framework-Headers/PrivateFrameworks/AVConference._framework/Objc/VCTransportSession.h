@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TimingCollection, VCConnectionManager;
 @protocol OS_dispatch_queue;
@@ -44,9 +44,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)getConnectionSetupData:(id *)arg1 withOptions:(id)arg2 error:(id *)arg3;
 - (void)handleMediaReceivedOverPeerToPeerLinkWithConnectionId:(int)arg1;
 - (void)handleMediaReceivedOverRelayLinkWithConnectionId:(int)arg1;
-- (id)init;
+- (id)initWithNotificationQueue:(id)arg1 reportingAgent:(struct opaqueRTCReporting *)arg2;
 - (void)reportNetworkConditionsDegraded;
-- (void)setReportingAgent:(struct opaqueRTCReporting *)arg1;
 - (void)start;
 - (void)stop;
 

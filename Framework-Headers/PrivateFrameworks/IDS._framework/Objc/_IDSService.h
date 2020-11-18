@@ -19,7 +19,6 @@
     IDSAccountController *_accountController;
     NSMutableDictionary *_uniqueIDToConnection;
     NSSet *_commands;
-    NSString *_rerouteService;
     NSMapTable *_delegateToInfo;
     id _delegateContext;
     NSMutableDictionary *_protobufSelectors;
@@ -32,6 +31,7 @@
     NSObject<OS_xpc_object> *_connection;
     IDSGroupContextController *_groupContextController;
     id _idsSimulatorSupportDataHandlerToken;
+    NSMutableDictionary *_uniqueIDToProgress;
     IDSQuickSwitchAcknowledgementTracker *_acknowledgementTracker;
     CDUnknownBlockType _pendingRegisteredIdentitiesBlock;
 }
@@ -82,6 +82,8 @@
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (BOOL)canSendMessageWithAccount:(id)arg1 toDestination:(id)arg2;
 - (BOOL)cancelIdentifier:(id)arg1 error:(id *)arg2;
+- (void)connection:(id)arg1 account:(id)arg2 receivedGroupSessionParticipantDataUpdate:(id)arg3;
+- (void)connection:(id)arg1 account:(id)arg2 receivedGroupSessionParticipantUpdate:(id)arg3;
 - (void)connection:(id)arg1 account:(id)arg2 sessionInviteReceived:(id)arg3 fromID:(id)arg4 transportType:(id)arg5 options:(id)arg6 context:(id)arg7 messageContext:(id)arg8;
 - (void)connection:(id)arg1 connectedDevicesChanged:(id)arg2;
 - (void)connection:(id)arg1 devicesChanged:(id)arg2;
@@ -89,7 +91,7 @@
 - (void)connection:(id)arg1 didUpdateDeviceIdentity:(id)arg2 error:(id)arg3 context:(id)arg4;
 - (void)connection:(id)arg1 identifier:(id)arg2 alternateCallbackID:(id)arg3 willSendToDestinations:(id)arg4 skippedDestinations:(id)arg5 registrationPropertyToDestinations:(id)arg6;
 - (void)connection:(id)arg1 identifier:(id)arg2 didSendWithSuccess:(BOOL)arg3 error:(id)arg4 context:(id)arg5;
-- (void)connection:(id)arg1 identifier:(id)arg2 hasBeenDeliveredWithContext:(id)arg3;
+- (void)connection:(id)arg1 identifier:(id)arg2 fromID:(id)arg3 hasBeenDeliveredWithContext:(id)arg4;
 - (void)connection:(id)arg1 incomingAccessoryData:(id)arg2 fromID:(id)arg3 context:(id)arg4;
 - (void)connection:(id)arg1 incomingAccessoryReportMessage:(id)arg2 accessoryID:(id)arg3 controllerID:(id)arg4 context:(id)arg5;
 - (void)connection:(id)arg1 incomingData:(id)arg2 fromID:(id)arg3 context:(id)arg4;
@@ -120,6 +122,7 @@
 - (void)enableiCloudUser;
 - (void)fetchRegisteredDeviceIdentityWithCompletion:(CDUnknownBlockType)arg1;
 - (id)firstRoutableInternetDestinationForSelf;
+- (BOOL)getProgressUpdateForIdentifier:(id)arg1 error:(id *)arg2;
 - (id)groupContextController:(id)arg1 accountsForAlises:(id)arg2;
 - (void)groupContextController:(id)arg1 didCreateGroup:(id)arg2;
 - (void)identitiesForGroupContextController:(id)arg1 completion:(CDUnknownBlockType)arg2;

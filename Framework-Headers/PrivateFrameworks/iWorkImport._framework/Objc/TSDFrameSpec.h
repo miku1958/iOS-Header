@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
-@class NSBundle, NSMutableDictionary, NSString, TSUOnce;
+@class NSBundle, NSDictionary, NSMutableDictionary, NSString, TSUOnce;
 
 __attribute__((visibility("hidden")))
 @interface TSDFrameSpec : NSObject <NSCopying>
 {
     NSBundle *mBundle;
+    NSDictionary *mInfoDictionary;
     BOOL mProviderWasInvalid;
     NSString *mFrameName;
     double mLeftInset;

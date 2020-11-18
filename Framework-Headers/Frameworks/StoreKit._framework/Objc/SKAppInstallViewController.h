@@ -25,6 +25,7 @@
 @property (strong, nonatomic) SKStoreRemoteViewController *remoteViewController; // @synthesize remoteViewController=_remoteViewController;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_requestRemoteViewController;
 - (void)_setupChildViewController:(id)arg1 animated:(BOOL)arg2;

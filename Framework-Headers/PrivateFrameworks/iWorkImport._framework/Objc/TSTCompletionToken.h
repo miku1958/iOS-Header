@@ -12,21 +12,22 @@
 __attribute__((visibility("hidden")))
 @interface TSTCompletionToken : TSTWPTokenAttachment
 {
-    NSString *mCompletionText;
-    struct _NSRange mPrefixRange;
-    int mRenderAsTokenType;
-    TSTReferenceNode *mEditingReferenceNode;
-    TSUColor *mReferenceColor;
-    id<TSTCanvasReferenceProvider> mCanvasReferenceProvider;
+    int _renderAsTokenType;
+    NSString *_completionText;
+    TSTReferenceNode *_editingReferenceNode;
+    TSUColor *_referenceColor;
+    id<TSTCanvasReferenceProvider> _canvasReferenceProvider;
+    struct _NSRange _prefixRange;
 }
 
-@property (nonatomic) id<TSTCanvasReferenceProvider> canvasReferenceProvider; // @synthesize canvasReferenceProvider=mCanvasReferenceProvider;
-@property (strong, nonatomic) NSString *completionText; // @synthesize completionText=mCompletionText;
-@property (strong, nonatomic) TSTReferenceNode *editingReferenceNode; // @synthesize editingReferenceNode=mEditingReferenceNode;
-@property (nonatomic) struct _NSRange prefixRange; // @synthesize prefixRange=mPrefixRange;
-@property (strong, nonatomic) TSUColor *referenceColor; // @synthesize referenceColor=mReferenceColor;
-@property (readonly, nonatomic) int renderAsTokenType; // @synthesize renderAsTokenType=mRenderAsTokenType;
+@property (weak, nonatomic) id<TSTCanvasReferenceProvider> canvasReferenceProvider; // @synthesize canvasReferenceProvider=_canvasReferenceProvider;
+@property (strong, nonatomic) NSString *completionText; // @synthesize completionText=_completionText;
+@property (strong, nonatomic) TSTReferenceNode *editingReferenceNode; // @synthesize editingReferenceNode=_editingReferenceNode;
+@property (nonatomic) struct _NSRange prefixRange; // @synthesize prefixRange=_prefixRange;
+@property (strong, nonatomic) TSUColor *referenceColor; // @synthesize referenceColor=_referenceColor;
+@property (readonly, nonatomic) int renderAsTokenType; // @synthesize renderAsTokenType=_renderAsTokenType;
 
+- (void).cxx_destruct;
 - (id)copyIntoContext:(id)arg1 bakeModes:(BOOL)arg2;
 - (void)dealloc;
 - (id)description;

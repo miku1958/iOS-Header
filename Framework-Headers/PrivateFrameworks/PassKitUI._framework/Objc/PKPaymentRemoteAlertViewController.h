@@ -9,12 +9,13 @@
 #import <PassKitUI/PKPaymentServiceDelegate-Protocol.h>
 #import <PassKitUI/SBSHardwareButtonEventConsuming-Protocol.h>
 
-@class CLInUseAssertion, NSArray, NSObject, NSString, PKAssertion, PKFieldDetectEducationViewController, PKFieldProperties, PKPassGroupsViewController, PKPaymentService, SBSAssertion;
+@class CLInUseAssertion, NSArray, NSObject, NSString, PKAssertion, PKEducationViewController, PKFieldProperties, PKPassGroupsViewController, PKPaymentService, SBSAssertion;
 @protocol BSInvalidatable, OS_dispatch_group;
 
 @interface PKPaymentRemoteAlertViewController : SBUIRemoteAlertServiceViewController <PKPaymentServiceDelegate, SBSHardwareButtonEventConsuming>
 {
     PKPassGroupsViewController *_passGroupsViewController;
+    id _staticGlyphResources;
     PKPaymentService *_paymentService;
     PKFieldProperties *_fieldProperties;
     NSArray *_fieldPassUniqueIdentifiers;
@@ -30,7 +31,7 @@
     BOOL _deviceUILocked;
     BOOL _processHomeButtonEvents;
     BOOL _brightnessRampingAllowed;
-    PKFieldDetectEducationViewController *_educationVC;
+    PKEducationViewController *_educationVC;
     BOOL _appearedOnce;
     BOOL _insertedGroupsVC;
     BOOL _shouldInsertGroupsVC;

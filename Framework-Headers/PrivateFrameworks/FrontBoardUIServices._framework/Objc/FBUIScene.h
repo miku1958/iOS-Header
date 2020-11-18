@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardUIServices/FBUISceneContentManager-Protocol.h>
 #import <FrontBoardUIServices/FBUISceneSurrogate-Protocol.h>
@@ -34,7 +34,7 @@
 
 @property (readonly, nonatomic, getter=isActivated) BOOL activated; // @synthesize activated=_activated;
 @property (copy, nonatomic) FBSSceneClientSettings *clientSettings; // @synthesize clientSettings=_clientSettings;
-@property (readonly, strong, nonatomic) id<FBUISceneContentManager> contentManager; // @dynamic contentManager;
+@property (readonly, nonatomic) id<FBUISceneContentManager> contentManager; // @dynamic contentManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<FBUISceneDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

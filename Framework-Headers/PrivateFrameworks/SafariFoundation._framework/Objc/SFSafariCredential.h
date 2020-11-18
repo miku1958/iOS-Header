@@ -9,6 +9,7 @@
 #import <SafariFoundation/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
+@protocol SFSafariPasswordCredential;
 
 @interface SFSafariCredential : NSObject <NSSecureCoding>
 {
@@ -16,9 +17,12 @@
     NSString *_password;
     NSString *_site;
     NSDate *_creationDate;
+    id<SFSafariPasswordCredential> _externalCredential;
 }
 
 @property (readonly, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly, nonatomic, getter=isExternal) BOOL external;
+@property (readonly, nonatomic) id<SFSafariPasswordCredential> externalCredential; // @synthesize externalCredential=_externalCredential;
 @property (readonly, nonatomic) NSString *password; // @synthesize password=_password;
 @property (readonly, nonatomic) NSString *site; // @synthesize site=_site;
 @property (readonly, nonatomic) NSString *user; // @synthesize user=_user;
@@ -29,6 +33,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithExternalCredential:(id)arg1;
 - (id)initWithUser:(id)arg1 password:(id)arg2 site:(id)arg3 creationDate:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
@@ -25,6 +25,7 @@
     BOOL __hasSZExtractor;
     BOOL __doesSZExtractorConsumeExtractedData;
     BOOL _initializedWithAVAsset;
+    unsigned int _qos;
     unsigned long long _identifier;
     unsigned long long _taskKind;
     double _creationTime;
@@ -45,6 +46,7 @@
     unsigned long long _retryCount;
     unsigned long long _lowThroughputTimerRetryCount;
     long long _basePriority;
+    long long _discretionaryOverride;
     NSString *_uniqueIdentifier;
     NSString *_storagePartitionIdentifier;
     long long _bytesPerSecondLimit;
@@ -101,6 +103,7 @@
 @property (copy) NSURL *destinationURL; // @synthesize destinationURL=_destinationURL;
 @property BOOL disablesRetry; // @synthesize disablesRetry=_disablesRetry;
 @property (getter=isDiscretionary) BOOL discretionary; // @synthesize discretionary=_discretionary;
+@property long long discretionaryOverride; // @synthesize discretionaryOverride=_discretionaryOverride;
 @property (copy) NSURL *downloadFileURL; // @synthesize downloadFileURL=_downloadFileURL;
 @property (copy) NSDate *earliestBeginDate; // @synthesize earliestBeginDate=_earliestBeginDate;
 @property (copy) NSError *error; // @synthesize error=_error;
@@ -116,6 +119,7 @@
 @property (copy) NSDictionary *options; // @synthesize options=_options;
 @property (copy) NSURLRequest *originalRequest; // @synthesize originalRequest=_originalRequest;
 @property (copy) NSString *pathToDownloadTaskFile; // @synthesize pathToDownloadTaskFile=_pathToDownloadTaskFile;
+@property unsigned int qos; // @synthesize qos=_qos;
 @property (copy) NSDictionary *resolvedMediaSelectionPlist; // @synthesize resolvedMediaSelectionPlist=_resolvedMediaSelectionPlist;
 @property BOOL respondedToWillBeginDelayedRequestCallback; // @synthesize respondedToWillBeginDelayedRequestCallback=_respondedToWillBeginDelayedRequestCallback;
 @property (copy) NSURLResponse *response; // @synthesize response=_response;

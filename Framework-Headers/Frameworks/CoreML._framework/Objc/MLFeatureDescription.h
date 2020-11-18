@@ -8,20 +8,28 @@
 
 #import <CoreML/NSCopying-Protocol.h>
 
-@class NSDictionary, NSString;
+@class MLDictionaryConstraint, MLImageConstraint, MLMultiArrayConstraint, MLSequenceConstraint, NSDictionary, NSString;
 
 @interface MLFeatureDescription : NSObject <NSCopying>
 {
     BOOL _optional;
     NSString *_name;
     long long _type;
-    NSDictionary *_valueContraints;
+    NSDictionary *_valueConstraints;
+    MLMultiArrayConstraint *_multiArrayConstraintCached;
+    MLImageConstraint *_imageConstraintCached;
+    MLDictionaryConstraint *_dictionaryConstraintCached;
+    MLSequenceConstraint *_sequenceConstraintCached;
 }
 
+@property (readonly, nonatomic) MLDictionaryConstraint *dictionaryConstraintCached; // @synthesize dictionaryConstraintCached=_dictionaryConstraintCached;
+@property (readonly, nonatomic) MLImageConstraint *imageConstraintCached; // @synthesize imageConstraintCached=_imageConstraintCached;
+@property (readonly, nonatomic) MLMultiArrayConstraint *multiArrayConstraintCached; // @synthesize multiArrayConstraintCached=_multiArrayConstraintCached;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic, getter=isOptional) BOOL optional; // @synthesize optional=_optional;
+@property (readonly, nonatomic) MLSequenceConstraint *sequenceConstraintCached; // @synthesize sequenceConstraintCached=_sequenceConstraintCached;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
-@property (strong) NSDictionary *valueContraints; // @synthesize valueContraints=_valueContraints;
+@property (strong) NSDictionary *valueConstraints; // @synthesize valueConstraints=_valueConstraints;
 
 + (id)featureDescriptionWithName:(id)arg1 type:(long long)arg2 optional:(BOOL)arg3 constraints:(id)arg4;
 - (void).cxx_destruct;
@@ -35,6 +43,7 @@
 - (BOOL)isAllowedValue:(id)arg1;
 - (BOOL)isAllowedValue:(id)arg1 error:(id *)arg2;
 - (id)multiArrayConstraint;
+- (id)sequenceConstraint;
 
 @end
 

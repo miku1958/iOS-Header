@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -62,6 +64,12 @@ struct UIImageView {
 struct UIView {
     Class _field1;
 };
+
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    MISSING_TYPE *columns[4];
+} CDStruct_14d5dc5e;
 
 #pragma mark Named Unions
 

@@ -41,6 +41,7 @@
 @property (readonly, nonatomic) BOOL isDeviceSystemRoute;
 @property (copy, nonatomic) NSString *label;
 @property (readonly, nonatomic) MPCPlayerPath *playerPath;
+@property (readonly, copy, nonatomic) NSString *representedBundleID;
 @property (readonly, nonatomic) MPRequestResponseController *requestController; // @synthesize requestController=_requestController;
 @property (readonly, nonatomic) MPCPlayerResponse *response;
 @property (strong, nonatomic) MPAVEndpointRoute *route;
@@ -65,7 +66,6 @@
 - (void)dealloc;
 - (id)initWithEndpoint:(id)arg1;
 - (void)launchNowPlayingApp;
-- (id)representedBundleID;
 - (void)routingController:(id)arg1 pickedRouteDidChange:(id)arg2;
 - (void)routingControllerAvailableRoutesDidChange:(id)arg1;
 - (void)updateRoutePropertiesIfNeeded;

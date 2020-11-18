@@ -6,8 +6,8 @@
 
 #import <objc/NSObject.h>
 
-@class UIViewController;
-@protocol PXOneUpPresentationDelegate, PXOneUpPresentationImplementationDelegate;
+@class PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXPhotosDetailsContext, PXUIMediaProvider, UIViewController;
+@protocol PXImportStatusManager, PXOneUpPresentationDelegate, PXOneUpPresentationImplementationDelegate;
 
 @interface PXOneUpPresentation : NSObject
 {
@@ -20,6 +20,10 @@
         BOOL respondsToSetHiddenAssetReferences;
         BOOL respondsToShouldAutoPlay;
         BOOL respondsToActionManager;
+        BOOL respondsToActionManagerForPreviewing;
+        BOOL respondsToActionContext;
+        BOOL respondsToGestureProvider;
+        BOOL respondsToImportStatusManager;
     } _delegateFlags;
     struct {
         BOOL respondsToPresentingViewControllerViewWillAppear;
@@ -35,38 +39,44 @@
     id<PXOneUpPresentationImplementationDelegate> __implementationDelegate;
     id<PXOneUpPresentationDelegate> _delegate;
     UIViewController *_presentingViewController;
+    UIViewController *_originalPresentingViewController;
     id<PXOneUpPresentationImplementationDelegate> _implementationDelegate;
 }
 
 @property (weak, nonatomic, setter=_setImplementationDelegate:) id<PXOneUpPresentationImplementationDelegate> _implementationDelegate; // @synthesize _implementationDelegate=__implementationDelegate;
+@property (readonly, nonatomic) long long actionContext;
+@property (readonly, nonatomic) PXAssetActionManager *actionManager;
+@property (readonly, nonatomic) PXAssetActionManager *actionManagerForPreviewing;
 @property (readonly, nonatomic) BOOL canStart;
 @property (readonly, nonatomic) BOOL canStop;
+@property (readonly, nonatomic) PXAssetsDataSourceManager *dataSourceManager;
 @property (weak, nonatomic) id<PXOneUpPresentationDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
+@property (readonly, nonatomic) PXGestureProvider *gestureProvider;
 @property (weak, nonatomic) id<PXOneUpPresentationImplementationDelegate> implementationDelegate; // @synthesize implementationDelegate=_implementationDelegate;
+@property (readonly, nonatomic) id<PXImportStatusManager> importStatusManager;
+@property (readonly, nonatomic) PXAssetReference *initialAssetReference;
+@property (readonly, nonatomic) PXUIMediaProvider *mediaProvider;
+@property (weak, nonatomic) UIViewController *originalPresentingViewController; // @synthesize originalPresentingViewController=_originalPresentingViewController;
+@property (readonly, nonatomic) PXPhotosDetailsContext *photosDetailsContext;
 @property (readonly, weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (readonly, nonatomic) BOOL shouldAutoPlay;
 
 - (void).cxx_destruct;
 - (void)_updateImplementationDelegate;
-- (id)actionManager;
 - (void)commitPreviewViewController:(id)arg1;
 - (id)currentImageForAssetReference:(id)arg1;
-- (id)dataSourceManager;
 - (void)didDismissPreviewViewController:(id)arg1 committing:(BOOL)arg2;
 - (BOOL)handlePresentingPinchGestureRecognizer:(id)arg1;
 - (id)init;
 - (id)initWithPresentingViewController:(id)arg1;
-- (id)initialAssetReference;
 - (void)invalidatePresentingGeometry;
-- (id)mediaProvider;
-- (id)photosDetailsContext;
 - (void)presentingViewControllerViewDidAppear:(BOOL)arg1;
 - (void)presentingViewControllerViewDidDisappear:(BOOL)arg1;
 - (void)presentingViewControllerViewWillAppear:(BOOL)arg1;
 - (void)presentingViewControllerViewWillDisappear:(BOOL)arg1;
 - (id)previewViewControllerAllowingActions:(BOOL)arg1;
-- (id)regionOfInterestForAssetReference:(id)arg1 inCoordinateSpace:(id)arg2;
+- (id)regionOfInterestForAssetReference:(id)arg1;
 - (void)scrollAssetReferenceToVisible:(id)arg1;
 - (void)setHiddenAssetReferences:(id)arg1;
 - (BOOL)startAnimated:(BOOL)arg1 interactiveMode:(long long)arg2;

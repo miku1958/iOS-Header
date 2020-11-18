@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -14,17 +14,19 @@ __attribute__((visibility("hidden")))
 @interface TSTCellRegion : NSObject <NSCopying>
 {
     vector_e87daf7b _cellRanges;
+    unsigned long long _cellCount;
     struct TSUCellCoord _firstCellID;
     struct TSUCellCoord _lastCellID;
-    struct TSUCellRect _boundingCellRange;
-    unsigned long long _cellCount;
     NSIndexSet *_intersectingColumnsIndexSet;
     NSIndexSet *_intersectingRowsIndexSet;
+    struct TSUCellRect _boundingCellRange;
 }
 
 @property (readonly, nonatomic) struct TSUCellCoord boundingBottomRightCellID;
 @property (nonatomic) struct TSUCellRect boundingCellRange; // @synthesize boundingCellRange=_boundingCellRange;
+@property (readonly, nonatomic) struct TSUModelCellRect boundingModelCellRect;
 @property (readonly, nonatomic) struct TSUCellCoord boundingTopLeftCellID;
+@property (readonly, nonatomic) struct TSUViewCellRect boundingViewCellRect;
 @property (nonatomic) unsigned long long cellCount; // @synthesize cellCount=_cellCount;
 @property (readonly, nonatomic) const vector_e87daf7b *cellRanges; // @synthesize cellRanges=_cellRanges;
 @property (nonatomic) struct TSUCellCoord firstCellID; // @synthesize firstCellID=_firstCellID;
@@ -33,16 +35,18 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isEmpty;
 @property (readonly, nonatomic) BOOL isRectangle;
 @property (nonatomic) struct TSUCellCoord lastCellID; // @synthesize lastCellID=_lastCellID;
-@property (readonly, nonatomic) unsigned short numberOfIntersectingColumns;
-@property (readonly, nonatomic) unsigned short numberOfIntersectingRows;
+@property (readonly, nonatomic) unsigned int numberOfIntersectingColumns;
+@property (readonly, nonatomic) unsigned int numberOfIntersectingRows;
 
 + (id)invalidRegion;
 + (id)region:(id)arg1 addingRange:(struct TSUCellRect)arg2;
 + (id)region:(id)arg1 addingRegion:(id)arg2;
 + (id)region:(id)arg1 intersectingRange:(struct TSUCellRect)arg2;
 + (id)region:(id)arg1 intersectingRegion:(id)arg2;
++ (id)region:(id)arg1 subtractingColumnIndexes:(id)arg2;
 + (id)region:(id)arg1 subtractingRange:(struct TSUCellRect)arg2;
 + (id)region:(id)arg1 subtractingRegion:(id)arg2;
++ (id)region:(id)arg1 subtractingRowIndexes:(id)arg2;
 + (id)regionFillingColumnsFromRegion:(id)arg1;
 + (id)regionFillingRowsFromRegion:(id)arg1;
 + (id)regionFromCellDiffMap:(id)arg1 withTableInfo:(id)arg2;
@@ -50,12 +54,14 @@ __attribute__((visibility("hidden")))
 + (id)regionFromCellMap:(id)arg1 withTableInfo:(id)arg2;
 + (id)regionFromCellMap:(id)arg1 withTableInfo:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
 + (id)regionFromCellRangeVector:(const vector_e87daf7b *)arg1;
++ (id)regionFromCellUIDVector:(const vector_7670e6f2 *)arg1 withTableInfo:(id)arg2;
 + (id)regionFromColumnIndexes:(id)arg1 rowIndexes:(id)arg2;
 + (id)regionFromColumnIndices:(id)arg1;
 + (id)regionFromColumnIndices:(id)arg1 rowRange:(struct _NSRange)arg2;
 + (id)regionFromMergeActionArray:(id)arg1 withTableInfo:(id)arg2;
 + (id)regionFromMergeList:(const vector_e87daf7b *)arg1;
-+ (id)regionFromMergeMap:(id)arg1;
++ (id)regionFromModelCellRect:(struct TSUModelCellRect)arg1;
++ (id)regionFromModelMergeList:(const vector_54ceaeac *)arg1;
 + (id)regionFromPropertyListRepresentation:(id)arg1;
 + (id)regionFromRange:(struct TSUCellRect)arg1;
 + (id)regionFromRowIndices:(id)arg1;
@@ -66,6 +72,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsCellID:(struct TSUCellCoord)arg1;
 - (BOOL)containsCellRange:(struct TSUCellRect)arg1;
 - (BOOL)containsCellRegion:(id)arg1;
+- (BOOL)containsModelCellCoord:(struct TSUModelCellCoord)arg1;
+- (BOOL)containsModelCellRect:(struct TSUModelCellRect)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)enumerateCellIDsUsingBlock:(CDUnknownBlockType)arg1;
@@ -80,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateInDirection:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateMissingColumnsIntersectingCellRange:(struct TSUCellRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateMissingRowsIntersectingCellRange:(struct TSUCellRect)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateModelCellRectsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRowRangesInReverseUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRowRangesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateRowsInReverseUsingBlock:(CDUnknownBlockType)arg1;
@@ -88,14 +97,19 @@ __attribute__((visibility("hidden")))
 - (BOOL)equalsCellRange:(struct TSUCellRect)arg1;
 - (BOOL)equalsCellRegion:(id)arg1;
 - (void)fillCellRangeRowMajorSet:(set_5fd94db8 *)arg1 leftToRight:(BOOL)arg2;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initFromMessage:(const struct CellRegion *)arg1;
-- (id)intersectingColumnsInRow:(unsigned short)arg1;
+- (id)intersectingColumnsInRow:(unsigned int)arg1;
 - (BOOL)intersectsCellRange:(struct TSUCellRect)arg1;
-- (BOOL)intersectsColumn:(unsigned char)arg1;
-- (BOOL)intersectsRow:(unsigned short)arg1;
+- (BOOL)intersectsCellRegion:(id)arg1;
+- (BOOL)intersectsColumn:(unsigned short)arg1;
+- (BOOL)intersectsModelCellRect:(struct TSUModelCellRect)arg1;
+- (BOOL)intersectsRow:(unsigned int)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;
 - (struct TSUCellRect)largestRangeContainingCellID:(struct TSUCellCoord)arg1;
+- (vector_54ceaeac)modelCellRanges;
 - (struct NSObject *)newIterator;
 - (struct NSObject *)newRightToLeftIterator;
 - (void)p_calculateAncillaryInformation;
@@ -105,32 +119,47 @@ __attribute__((visibility("hidden")))
 - (id)p_copy;
 - (void)p_insertRangeIntoRegion:(struct TSUCellRect)arg1;
 - (BOOL)partiallyIntersectsCellRange:(struct TSUCellRect)arg1;
+- (BOOL)partiallyIntersectsModelCellRect:(struct TSUModelCellRect)arg1;
 - (id)propertyListRepresentation;
-- (id)regionAfterColumnIndex:(unsigned char)arg1;
-- (id)regionAfterColumnIndexRtoL:(unsigned char)arg1;
-- (id)regionAfterRowIndex:(unsigned short)arg1;
+- (id)prunedCellRegionAgainstTable:(id)arg1 behavior:(unsigned long long)arg2;
+- (id)prunedCellRegionAgainstTable:(id)arg1 behavior:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (id)regionAfterColumnIndex:(unsigned short)arg1;
+- (id)regionAfterColumnIndexRtoL:(unsigned short)arg1;
+- (id)regionAfterRowIndex:(unsigned int)arg1;
 - (id)regionByAddingColumns:(id)arg1;
+- (id)regionByAddingModelCellRect:(struct TSUModelCellRect)arg1;
+- (id)regionByAddingModelCellRegion:(id)arg1;
 - (id)regionByAddingRange:(struct TSUCellRect)arg1;
 - (id)regionByAddingRegion:(id)arg1;
 - (id)regionByAddingRows:(id)arg1;
+- (id)regionByAddingViewCellRect:(struct TSUViewCellRect)arg1;
+- (id)regionByAddingViewCellRegion:(id)arg1;
 - (id)regionByApplyingRowMapping:(id)arg1;
+- (id)regionByCollapsingRangesForRemovedColumns:(id)arg1;
+- (id)regionByCollapsingRangesForRemovedRows:(id)arg1;
 - (id)regionByIntersectingColumnIndices:(id)arg1;
 - (id)regionByIntersectingRange:(struct TSUCellRect)arg1;
 - (id)regionByIntersectingRegion:(id)arg1;
 - (id)regionByIntersectingRowIndices:(id)arg1;
-- (id)regionByMovingColumnsFromRange:(struct _NSRange)arg1 toIndex:(unsigned char)arg2;
-- (id)regionByMovingRowsFromRange:(struct _NSRange)arg1 toIndex:(unsigned short)arg2;
+- (id)regionByMovingColumnsFromRange:(struct _NSRange)arg1 toIndex:(unsigned short)arg2;
+- (id)regionByMovingRowsFromRange:(struct _NSRange)arg1 toIndex:(unsigned int)arg2;
 - (id)regionByRemovingColumns:(id)arg1;
 - (id)regionByRemovingRows:(id)arg1;
+- (id)regionBySubtractingColumnIndexes:(id)arg1;
+- (id)regionBySubtractingModelCellRect:(struct TSUModelCellRect)arg1;
+- (id)regionBySubtractingModelCellRegion:(id)arg1;
 - (id)regionBySubtractingRange:(struct TSUCellRect)arg1;
 - (id)regionBySubtractingRegion:(id)arg1;
+- (id)regionBySubtractingRowIndexes:(id)arg1;
+- (id)regionBySubtractingViewCellRect:(struct TSUViewCellRect)arg1;
+- (id)regionBySubtractingViewCellRegion:(id)arg1;
 - (id)regionByTrimmingAroundColumnIndices:(id)arg1;
 - (id)regionByTrimmingAroundRowIndices:(id)arg1;
 - (id)regionByUnioningEveryRangeInRegionWithRange:(struct TSUCellRect)arg1;
-- (id)regionOffsetBy:(CDStruct_945081a1)arg1;
-- (id)regionUpToColumnIndex:(unsigned char)arg1;
-- (id)regionUpToColumnIndexRtoL:(unsigned char)arg1 maxColumnIndex:(unsigned char)arg2;
-- (id)regionUpToRowIndex:(unsigned short)arg1;
+- (id)regionOffsetBy:(CDStruct_1ef3fb1f)arg1;
+- (id)regionUpToColumnIndex:(unsigned short)arg1;
+- (id)regionUpToColumnIndexRtoL:(unsigned short)arg1 maxColumnIndex:(unsigned short)arg2;
+- (id)regionUpToRowIndex:(unsigned int)arg1;
 - (void)saveToMessage:(struct CellRegion *)arg1;
 - (struct TSUCellCoord)suitableAnchor;
 - (struct TSUCellCoord)suitableCursor;

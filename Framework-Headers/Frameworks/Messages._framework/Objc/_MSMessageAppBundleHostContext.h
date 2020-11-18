@@ -25,12 +25,16 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_contentDidLoad;
 - (void)_dismiss;
+- (void)_dismissAndPresentPhotosApp;
 - (void)_openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_remoteViewDidBecomeReadyForDisplay;
-- (void)_requestPresentationStyleExpanded:(BOOL)arg1;
+- (void)_removeAssetArchiveWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_requestPresentationStyle:(unsigned long long)arg1;
 - (void)_requestResize;
 - (void)_stageAppItem:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_stageAssetArchive:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_stageMediaItem:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_stageRichLink:(id)arg1 skipShelf:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_startDragMediaItem:(id)arg1 frameInRemoteView:(struct CGRect)arg2 fence:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

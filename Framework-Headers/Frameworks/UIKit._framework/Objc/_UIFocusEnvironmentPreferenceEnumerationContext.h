@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIFocusEnvironmentPreferenceEnumerationContext-Protocol.h>
+#import <UIKitCore/_UIFocusEnvironmentPreferenceEnumerationContext-Protocol.h>
 
 @class NSArray, NSHashTable, NSMutableArray, NSString, UIFocusSystem, _UIDebugLogReport;
 @protocol UIFocusEnvironment, _UIFocusEnvironmentPreferenceEnumerationContextDelegate;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/KNAnimationPlugin-Protocol.h>
 
@@ -32,6 +32,10 @@ __attribute__((visibility("hidden")))
 + (id)thumbnailImageNameForType:(long long)arg1;
 + (id)updateDirectionAttributeValue:(long long)arg1 andCustomTextDirectionValue:(unsigned long long)arg2 turnOffBounce:(BOOL)arg3 turnOffMotionBlur:(BOOL)arg4 forAttributes:(id)arg5;
 - (id)initWithAnimationContext:(id)arg1;
+- (struct CATransform3D)mvpMatrixWithContext:(id)arg1;
+- (struct CATransform3D)mvpMatrixWithTexture:(id)arg1 andFrame:(struct CGRect)arg2;
+- (struct CATransform3D)perspectiveMVPMatrixWithContext:(id)arg1;
+- (struct CATransform3D)perspectiveMVPMatrixWithTexture:(id)arg1 andFrame:(struct CGRect)arg2;
 
 @end
 

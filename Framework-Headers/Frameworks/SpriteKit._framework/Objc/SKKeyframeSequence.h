@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class NSMutableArray;
 
-@interface SKKeyframeSequence : NSObject <NSCoding, NSCopying>
+@interface SKKeyframeSequence : NSObject <NSSecureCoding, NSCopying>
 {
     unsigned long long _count;
     NSMutableArray *_values;
@@ -24,6 +24,7 @@
 @property (nonatomic) long long interpolationMode;
 @property (nonatomic) long long repeatMode;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (struct SKCKeyframeSequence *)_createSKCKeyframeSequence;
 - (void)_dirtySKCKeyframeSequence;
@@ -40,6 +41,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCount:(unsigned long long)arg1;
 - (id)initWithKeyframeValues:(id)arg1 times:(id)arg2;
+- (BOOL)isEqualToSequence:(id)arg1;
 - (void)removeAllKeyframes;
 - (void)removeKeyframeAtIndex:(unsigned long long)arg1;
 - (void)removeLastKeyframe;

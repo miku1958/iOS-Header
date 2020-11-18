@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL previouslyEngaged;
 @property (copy, nonatomic) NSString *query;
+@property (copy, nonatomic) NSString *scopedSearchApplicationBundleIdentifier;
 @property (nonatomic) double score;
 @property (copy, nonatomic) NSString *suggestion;
 @property (copy, nonatomic) NSString *topicIdentifier;

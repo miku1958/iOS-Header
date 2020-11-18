@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -28,9 +28,9 @@
     unsigned long long m_bufferOffset;
 }
 
+- (void).cxx_destruct;
 - (struct _NSRange)advanceToNextToken;
 - (id)allTokensForString:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (struct _NSRange)rangeOfCurrentToken;
 - (void)setString:(id)arg1 withSearchRange:(struct _NSRange)arg2;

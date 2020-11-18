@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 + (id)moveToX:(double)arg1 duration:(double)arg2;
 + (id)moveToX:(double)arg1 y:(double)arg2 duration:(double)arg3;
 + (id)moveToY:(double)arg1 duration:(double)arg2;
++ (BOOL)supportsSecureCoding;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

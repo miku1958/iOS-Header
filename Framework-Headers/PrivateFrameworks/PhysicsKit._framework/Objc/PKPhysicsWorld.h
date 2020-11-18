@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <PhysicsKit/NSCoding-Protocol.h>
+#import <PhysicsKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE, NSMutableArray;
 @protocol PKPhysicsContactDelegate;
 
-@interface PKPhysicsWorld : NSObject <NSCoding>
+@interface PKPhysicsWorld : NSObject <NSSecureCoding>
 {
     struct b2World *_world;
     struct b2Vec2 _gravity;
@@ -35,6 +35,7 @@
 @property (nonatomic) double speed;
 @property (nonatomic) double velocityThreshold;
 
++ (BOOL)supportsSecureCoding;
 + (id)world;
 - (id).cxx_construct;
 - (void).cxx_destruct;
@@ -51,7 +52,7 @@
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (void)debugDraw:(float)arg1 matrix:(union _GLKMatrix4)arg2 showsPhysics:(BOOL)arg3 showsOutlineInterior:(BOOL)arg4 showsFields:(BOOL)arg5;
+- (void)debugDraw:(float)arg1 matrix:(union _GLSKMatrix4)arg2 showsPhysics:(BOOL)arg3 showsOutlineInterior:(BOOL)arg4 showsFields:(BOOL)arg5;
 - (const struct PKDebugDrawPacket *)debugDrawPacket;
 - (void)encodeWithCoder:(id)arg1;
 - (void)enumerateBodiesAlongRayStart:(struct CGPoint)arg1 end:(struct CGPoint)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -62,6 +63,7 @@
 - (BOOL)hasFields;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqualToWorld:(id)arg1;
 - (id)joints;
 - (void)removeAllBodies;
 - (void)removeAllFields;

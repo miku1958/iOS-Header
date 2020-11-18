@@ -41,6 +41,7 @@
     NSData *_chainParentPublicKeyID;
     NSArray *_tombstonedPublicKeyIDs;
     NSURL *_mutableURL;
+    NSString *_displayedHostname;
     CKRecordValueStore *_valueStore;
     CKEncryptedRecordValueStore *_encryptedValueStore;
     NSString *_modifiedByDevice;
@@ -76,6 +77,7 @@
 @property (copy, nonatomic) CKRecordID *creatorUserRecordID; // @synthesize creatorUserRecordID=_creatorUserRecordID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *displayedHostname; // @synthesize displayedHostname=_displayedHostname;
 @property (readonly, nonatomic) NSData *encryptedFullTokenData;
 @property (readonly, nonatomic) NSData *encryptedPublicSharingKey;
 @property (strong, nonatomic) CKEncryptedRecordValueStore *encryptedValueStore; // @synthesize encryptedValueStore=_encryptedValueStore;
@@ -124,6 +126,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *tombstonedPublicKeyIDs; // @synthesize tombstonedPublicKeyIDs=_tombstonedPublicKeyIDs;
 @property (nonatomic) BOOL trackChanges; // @synthesize trackChanges=_trackChanges;
+@property (readonly, nonatomic) NSURL *uncachedURL;
 @property (nonatomic) BOOL useLightweightPCS; // @synthesize useLightweightPCS=_useLightweightPCS;
 @property (strong, nonatomic) CKRecordValueStore *valueStore; // @synthesize valueStore=_valueStore;
 @property (readonly, nonatomic) NSDictionary *values;
@@ -139,7 +142,7 @@
 + (id)encryptFullToken:(id)arg1 shortSharingTokenData:(id)arg2;
 + (id)fullTokenFromBaseToken:(id)arg1 privateToken:(id)arg2;
 + (id)recordWithDuplicatedPackagesOfRecord:(id)arg1 error:(id *)arg2;
-+ (id)shareURLWithShortToken:(id)arg1 shareTitle:(id)arg2 shareType:(id)arg3 containerID:(id)arg4;
++ (id)shareURLWithShortToken:(id)arg1 shareTitle:(id)arg2 shareType:(id)arg3 containerID:(id)arg4 displayedHostname:(id)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)CKAssignToContainerWithID:(id)arg1;
@@ -154,6 +157,7 @@
 - (BOOL)_valueIsUsingCKEncryptedData:(id)arg1;
 - (id)allKeys;
 - (id)allTokens;
+- (id)allValues;
 - (id)changedKeys;
 - (void)claimPackagesWithSuccessBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)copyWithOriginalValues;

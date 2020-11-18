@@ -164,10 +164,6 @@ struct _opaque_pthread_mutex_t {
     char __opaque[56];
 };
 
-struct atomic_flag {
-    _Atomic BOOL _Value;
-};
-
 struct objc_method_description {
     SEL _field1;
     char *_field2;

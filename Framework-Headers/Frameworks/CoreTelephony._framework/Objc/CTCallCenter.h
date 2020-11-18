@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreTelephony/CXCallObserverDelegate-Protocol.h>
 
@@ -20,7 +20,7 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType callEventHandler;
-@property CXCallObserver *callKitObserver; // @synthesize callKitObserver=_callKitObserver;
+@property (strong) CXCallObserver *callKitObserver; // @synthesize callKitObserver=_callKitObserver;
 @property (strong) NSSet *currentCalls; // @dynamic currentCalls;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -21,12 +21,11 @@
     BOOL _cancel;
     BOOL _loaded;
     BOOL _accessory;
-    int _carrierCellState;
     id<NSObject> _photoVideoNotificationToken;
     NSLock *_lock;
     BOOL _hasLoadedSpecifiers;
-    NSString *_serviceProviderNameForSPN;
-    long long _simCellState;
+    NSMutableDictionary *_carrierCellState;
+    NSMutableDictionary *_simCellState;
     NSString *_deviceNameToIgnoreOnce;
 }
 
@@ -45,14 +44,11 @@
 - (void)_addKey:(id)arg1 value:(id)arg2 isCopyable:(BOOL)arg3;
 - (id)_bluetoothMACAddress;
 - (id)_carrierVersion:(id)arg1;
-- (id)_cellularRegistrationInfo;
-- (id)_getCTMobileEquipmentInfo:(struct __CFString *)arg1;
-- (BOOL)_isUsingBootstrap;
+- (BOOL)_isUsingBootstrap:(id)arg1;
 - (void)_loadMediaFinished:(id)arg1;
 - (void)_loadValues;
 - (id)_macAddress;
 - (id)_macAddressSpecifierKey;
-- (id)_mobileEquipmentInfo;
 - (id)_modelRegionString;
 - (id)_myNumber;
 - (id)_photos:(id)arg1;
@@ -75,7 +71,7 @@
 - (void)reloadDeviceName;
 - (void)reloadSpecifiers;
 - (void)setDeviceName:(id)arg1 specifier:(id)arg2;
-- (BOOL)shouldShowSIMSpecifier;
+- (BOOL)shouldShowSIMSpecifier:(id)arg1;
 - (void)simStatusChangedToReady;
 - (id)specifiersForSpecifier:(id)arg1 observer:(id)arg2;
 - (void)updateCarrierSpecifier:(id)arg1;

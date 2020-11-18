@@ -6,16 +6,13 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, _CPResultSectionForFeedback;
+@class NSData, NSDictionary, NSString;
 
 @protocol _CPVisibleSectionHeaderFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasHeaderType;
-@property (readonly, nonatomic) BOOL hasSection;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (nonatomic) int headerType;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (strong, nonatomic) _CPResultSectionForFeedback *section;
+@property (copy, nonatomic) NSString *sectionId;
 @property (nonatomic) unsigned long long timestamp;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;

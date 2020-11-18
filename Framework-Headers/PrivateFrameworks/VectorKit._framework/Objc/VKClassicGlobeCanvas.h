@@ -13,7 +13,7 @@
 #import <VectorKit/VKInteractiveMap-Protocol.h>
 #import <VectorKit/VKMapDataAccess-Protocol.h>
 
-@class GEOResourceManifestConfiguration, NSArray, NSMutableArray, NSSet, NSString, VKARCameraController, VKAnchorWrapper, VKGlobeCameraController, VKGlobeLineContainer;
+@class GEOResourceManifestConfiguration, NSArray, NSHashTable, NSSet, NSString, VKARCameraController, VKAnchorWrapper, VKGlobeCameraController, VKGlobeLineContainer;
 @protocol VKInteractiveMapDelegate, VKRouteMatchedAnnotationPresentation;
 
 __attribute__((visibility("hidden")))
@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
     double _currentZoomLevel;
     CDUnknownBlockType _sceneDidLoadCallback;
     CDUnknownBlockType _artworkIsReadyBlock;
-    NSMutableArray *_externalAnchors;
+    NSHashTable *_externalAnchors;
     GEOResourceManifestConfiguration *_manifestConfiguration;
     struct shared_ptr<md::AnchorContext> _anchorContext;
     VKARCameraController *_arCameraController;
@@ -161,6 +161,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareFlyoverAnimation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (const Matrix_08d701e4 *)projectionMatrix;
 - (void)puckAnimator:(id)arg1 updatedPosition:(const Coordinate3D_bc242218 *)arg2 course:(const Unit_3d259e8a *)arg3;
+- (void)puckAnimator:(id)arg1 updatedTargetPosition:(const Coordinate3D_bc242218 *)arg2;
 - (void)removeExternalAnchor:(id)arg1;
 - (void)removeOverlay:(id)arg1;
 - (void)removePersistentOverlay:(id)arg1;

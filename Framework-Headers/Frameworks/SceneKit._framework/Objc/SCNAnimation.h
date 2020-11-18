@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -69,6 +69,7 @@
 + (id)animationWithC3DAnimation:(struct __C3DAnimation *)arg1;
 + (id)animationWithCAAnimation:(id)arg1;
 + (id)animationWithContentsOfURL:(id)arg1;
++ (id)animationWithMDLTransform:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (const void *)__CFObject;
 - (void)_didMutate;

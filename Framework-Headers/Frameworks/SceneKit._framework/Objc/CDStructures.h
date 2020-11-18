@@ -20,22 +20,6 @@ struct AVAudio3DPoint {
     float _field3;
 };
 
-struct C3DColor4 {
-    union {
-        float rgba[4];
-        struct {
-            float r;
-            float g;
-            float b;
-            float a;
-        } ;
-    } ;
-};
-
-struct C3DPlane {
-    CDUnion_915c2b1f _field1;
-};
-
 struct C3DSphere {
     MISSING_TYPE *vector;
 };
@@ -384,6 +368,10 @@ struct SCNVector4 {
     float w;
 };
 
+struct SkelNodesMap {
+    struct map<MDLSkeleton *, (anonymous namespace)::SkelNodes, std::__1::less<MDLSkeleton *>, std::__1::allocator<std::__1::pair<MDLSkeleton *const, (anonymous namespace)::SkelNodes>>> _field1;
+};
+
 struct VolatileObject {
     struct __C3DArray *_field1;
     unsigned int _field2;
@@ -397,8 +385,6 @@ struct _NSRange {
 };
 
 struct __C3DArray;
-
-struct __C3DBlendStates;
 
 struct __C3DCamera {
     struct __C3DEntity _field1;
@@ -416,8 +402,9 @@ struct __C3DCamera {
         float _field4;
         double _field5;
         union C3DMatrix4x4 _field6;
-        double _field7;
+        CDStruct_14d5dc5e _field7;
         double _field8;
+        double _field9;
     } _field2;
     float _field3;
     float _field4;
@@ -443,7 +430,7 @@ struct __C3DCamera {
     float _field20;
     float _field21;
     float _field22;
-    float _field23;
+    int _field23;
     float _field24;
     float _field25;
     float _field26;
@@ -452,6 +439,7 @@ struct __C3DCamera {
     float _field29;
     float _field30;
     float _field31;
+    float _field32;
     struct {
         float _field1;
         float _field2;
@@ -460,10 +448,10 @@ struct __C3DCamera {
         float _field5;
         int _field6;
         int _field7;
-    } _field32;
-    struct __C3DEffectSlot *_field33;
-    unsigned long long _field34;
-    struct __C3DFXTechnique *_field35;
+    } _field33;
+    struct __C3DEffectSlot *_field34;
+    unsigned long long _field35;
+    struct __C3DFXTechnique *_field36;
 };
 
 struct __C3DConstraint {
@@ -516,7 +504,17 @@ struct __C3DEffectCommonProfile {
 
 struct __C3DEffectSlot {
     struct __CFRuntimeBase _field1;
-    struct C3DColor4 _field2;
+    struct C3DColor4 {
+        union {
+            float _field1[4];
+            struct {
+                float _field1;
+                float _field2;
+                float _field3;
+                float _field4;
+            } _field2;
+        } _field1;
+    } _field2;
     void *_field3;
     union {
         struct __C3DImage *_field1;
@@ -535,6 +533,18 @@ struct __C3DEffectSlot {
     float _field8;
     int _field9;
     void *_field10;
+};
+
+struct __C3DEngineNotificationQueue {
+    struct __CFRuntimeBase _field1;
+    struct __CFDictionary *_field2;
+    struct __CFDictionary *_field3;
+    struct os_unfair_lock_s _field4;
+    double _field5;
+    BOOL _field6;
+    BOOL _field7;
+    BOOL _field8;
+    void *_field9;
 };
 
 struct __C3DEngineStats {
@@ -575,6 +585,7 @@ struct __C3DEngineStats {
     double glFlushTime;
     double waitDisplayLinkTime;
     double drawableWaitTime;
+    double gpuTime;
     double lastDisplayLinkTime;
     unsigned int prgCount;
     unsigned int texCount;
@@ -592,6 +603,12 @@ struct __C3DEngineStats {
     unsigned int texMemory;
     unsigned int backBufferMemory;
     unsigned int depthBuffersMemory;
+    unsigned int onlineShaderCount;
+    double onlineShaderCompilationTime;
+    unsigned int renderPipelineCount;
+    double renderPipelineCompilationTime;
+    unsigned int computePipelineCount;
+    double computePipelineCompilationTime;
     double frmAvgTime;
     double frmMinTime;
     double frmMaxTime;
@@ -611,89 +628,6 @@ struct __C3DEntity {
     long long _field7;
 };
 
-struct __C3DFXPass {
-    struct __CFRuntimeBase _field1;
-    struct __CFString *_field2;
-    int _field3;
-    int _field4;
-    BOOL _field5;
-    struct __C3DFXTechnique *_field6;
-    struct __CFString *_field7;
-    struct __CFString *_field8;
-    struct __CFString *_field9;
-    struct __CFString *_field10;
-    BOOL _field11;
-    struct __C3DFXProgram *_field12;
-    struct __C3DMaterial *_field13;
-    struct __C3DBlendStates *_field14;
-    struct __C3DRasterizerStates *_field15;
-    struct C3DColor4 _field16;
-    unsigned char _field17;
-    unsigned int _field18;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    struct __C3DRendererElement *_field19;
-    unsigned long long _field20;
-    unsigned long long _field21;
-    struct {
-        CDUnknownFunctionPointerType _field1;
-        CDUnknownFunctionPointerType _field2;
-        CDUnknownFunctionPointerType _field3;
-        CDUnknownFunctionPointerType _field4;
-        CDUnknownFunctionPointerType _field5;
-        CDUnknownFunctionPointerType _field6;
-        CDUnknownFunctionPointerType _field7;
-        CDUnknownFunctionPointerType _field8;
-        void *_field9;
-    } _field22;
-    struct {
-        CDStruct_fd8065c6 _field1[4];
-        CDStruct_fd8065c6 _field2;
-        unsigned int :3;
-        unsigned int :1;
-        unsigned int :1;
-    } _field23;
-    struct CGPoint _field24;
-    CDStruct_183601bc *_field25;
-    unsigned int _field26;
-    struct __C3DNode *_field27;
-    struct __C3DNode *_field28;
-    struct __CFArray *_field29;
-    struct __C3DNode *_field30;
-    struct __CFString *_field31;
-    struct __CFString *_field32;
-    struct __CFString *_field33;
-    struct __C3DFXPassInput **_field34;
-    long long _field35;
-    long long _field36;
-    struct __CFDictionary *_field37;
-    struct __CFDictionary *_field38;
-};
-
 struct __C3DFXProgram {
     struct __C3DEntity _field1;
     int _field2;
@@ -701,6 +635,8 @@ struct __C3DFXProgram {
     unsigned int :1;
     struct __C3DFXProgramDelegate *_field3;
 };
+
+struct __C3DFXProgramObject;
 
 struct __C3DFXTechnique;
 
@@ -743,59 +679,6 @@ struct __C3DGeometry {
 
 struct __C3DImage;
 
-struct __C3DLight {
-    struct __C3DEntity _field1;
-    struct C3DColor4 _field2;
-    int _field3;
-    float _field4;
-    float _field5;
-    float _field6;
-    float _field7;
-    float _field8;
-    float _field9;
-    float _field10;
-    float _field11;
-    struct C3DColor4 _field12;
-    float _field13;
-    float _field14;
-    float _field15;
-    float _field16;
-    float _field17;
-    unsigned char _field18;
-    unsigned char _field19;
-    unsigned long long _field20;
-    BOOL _field21;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    unsigned int :1;
-    double _field22;
-    double _field23;
-    double _field24;
-    struct __C3DEffectSlot *_field25;
-    struct __C3DEffectSlot *_field26;
-    int _field27;
-    float _field28;
-    struct __C3DFXTechnique *_field29;
-    void *_field30;
-    struct __CFData *_field31;
-};
-
-struct __C3DLightRuntimeData {
-    unsigned int _field1;
-    float _field2;
-    CDStruct_14d5dc5e _field3[4];
-    void *_field4;
-    struct __C3DTextureSampler *_field5;
-    void *_field6;
-    struct __C3DTextureSampler *_field7;
-};
-
 struct __C3DMaterial;
 
 struct __C3DMesh;
@@ -813,7 +696,10 @@ struct __C3DMeshElement {
         struct __CFData *_field2;
         unsigned int _field3;
         unsigned int *_field4;
-        CDStruct_912cb5d2 _field5;
+        struct {
+            long long _field1;
+            long long _field2;
+        } _field5;
         unsigned char _field6;
         BOOL _field7;
     } _field8;
@@ -900,7 +786,10 @@ struct __C3DNode {
     unsigned int :1;
     unsigned int :3;
     struct {
-        CDStruct_d65e47c4 _field1;
+        struct {
+            unsigned short _field1;
+            unsigned short _field2;
+        } _field1;
         unsigned int _field2;
     } _field12;
     CDStruct_183601bc *_field13;
@@ -942,8 +831,6 @@ struct __C3DParametricGeometry {
     struct __CFData *_field4;
 };
 
-struct __C3DRasterizerStates;
-
 struct __C3DRendererContext {
     struct __CFRuntimeBase _field1;
     int _field2;
@@ -961,18 +848,27 @@ struct __C3DRendererContext {
     BOOL _field14;
     BOOL _field15;
     BOOL _field16;
-    BOOL _field17;
-    struct __CFDictionary *_field18;
-    unsigned int _field19;
+    struct __CFDictionary *_field17;
+    unsigned int _field18;
+    struct __CFDictionary *_field19;
     struct __CFDictionary *_field20;
     struct __CFDictionary *_field21;
-    struct __CFDictionary *_field22;
-    struct C3DColor4 _field23;
-    void *_field24;
-    long long _field25;
-    struct __C3DFXProgramObject *_field26;
-    struct __C3DEngineStats _field27;
-    struct Cache _field28;
+    struct C3DColor4 {
+        union {
+            float _field1[4];
+            struct {
+                float _field1;
+                float _field2;
+                float _field3;
+                float _field4;
+            } _field2;
+        } _field1;
+    } _field22;
+    void *_field23;
+    long long _field24;
+    struct __C3DFXProgramObject *_field25;
+    struct __C3DEngineStats _field26;
+    struct Cache _field27;
     struct {
         unsigned int _field1[2];
         int _field2[5];
@@ -980,8 +876,8 @@ struct __C3DRendererContext {
             int _field1;
             unsigned int _field2;
             unsigned int _field3;
-        } _field3[12];
-        unsigned int _field4[12];
+        } _field3[14];
+        unsigned int _field4[14];
         CDUnknownFunctionPointerType _field5;
         CDUnknownFunctionPointerType _field6;
         CDUnknownFunctionPointerType _field7;
@@ -991,11 +887,11 @@ struct __C3DRendererContext {
         CDUnknownFunctionPointerType _field11;
         CDUnknownFunctionPointerType _field12;
         CDUnknownFunctionPointerType _field13;
-    } _field29;
-    struct VolatileObject _field30[2];
-    struct __C3DArray *_field31;
-    unsigned int _field32;
-    struct __CFDictionary *_field33;
+    } _field28;
+    struct VolatileObject _field29[2];
+    struct __C3DArray *_field30;
+    unsigned int _field31;
+    struct __CFDictionary *_field32;
 };
 
 struct __C3DShapeGeometry {
@@ -1041,7 +937,17 @@ struct __C3DTextureSampler {
     int _field5;
     int _field6;
     int _field7;
-    struct C3DColor4 _field8;
+    struct C3DColor4 {
+        union {
+            float _field1[4];
+            struct {
+                float _field1;
+                float _field2;
+                float _field3;
+                float _field4;
+            } _field2;
+        } _field1;
+    } _field8;
     float _field9;
     unsigned char _field10;
     int _field11;
@@ -1708,6 +1614,18 @@ struct c3dPhysicsField {
     float _field12;
 };
 
+struct map<MDLSkeleton *, (anonymous namespace)::SkelNodes, std::__1::less<MDLSkeleton *>, std::__1::allocator<std::__1::pair<MDLSkeleton *const, (anonymous namespace)::SkelNodes>>> {
+    struct __tree<std::__1::__value_type<MDLSkeleton *, (anonymous namespace)::SkelNodes>, std::__1::__map_value_compare<MDLSkeleton *, std::__1::__value_type<MDLSkeleton *, (anonymous namespace)::SkelNodes>, std::__1::less<MDLSkeleton *>, true>, std::__1::allocator<std::__1::__value_type<MDLSkeleton *, (anonymous namespace)::SkelNodes>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<MDLSkeleton *, (anonymous namespace)::SkelNodes>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<MDLSkeleton *, std::__1::__value_type<MDLSkeleton *, (anonymous namespace)::SkelNodes>, std::__1::less<MDLSkeleton *>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -1748,6 +1666,22 @@ struct vector<unsigned short, std::__1::allocator<unsigned short>> {
     } __end_cap_;
 };
 
+#if 0
+// Names with conflicting types:
+typedef struct {
+    union {
+        float _field1[4];
+        struct {
+            float _field1;
+            float _field2;
+            float _field3;
+            float _field4;
+        } _field2;
+    } _field1;
+} C3DColor4_0cad58d8;
+
+#endif
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -1758,12 +1692,6 @@ typedef struct {
 } CDStruct_4c02ed10;
 
 typedef struct {
-    unsigned char _field1;
-    unsigned char _field2;
-    BOOL _field3;
-} CDStruct_42085215;
-
-typedef struct {
     unsigned char format;
     unsigned char sampleCount;
     unsigned char textureUsage;
@@ -1772,13 +1700,9 @@ typedef struct {
     unsigned int viewportDependant:1;
     unsigned int renderToIOSurface:1;
     unsigned int mipmapped:1;
+    unsigned int textureCube:1;
     unsigned char padding[4];
-} CDStruct_fd8065c6;
-
-typedef struct {
-    unsigned short _field1;
-    unsigned short _field2;
-} CDStruct_d65e47c4;
+} CDStruct_ace98575;
 
 typedef struct {
     MISSING_TYPE *columns[4];
@@ -1792,6 +1716,18 @@ typedef struct {
     CDUnknownFunctionPointerType _field5;
     CDUnknownFunctionPointerType _field6;
 } CDStruct_92625ca6;
+
+typedef struct {
+    unsigned int supportsUpdate:1;
+    unsigned int supportsDidApplyAnimations:1;
+    unsigned int supportsDidSimulatePhysics:1;
+    unsigned int supportsDidApplyConstraints:1;
+    unsigned int supportsWillRender:1;
+    unsigned int supportsDidRender:1;
+    unsigned int supportsInputTime:1;
+    unsigned int supportsReadSubdivCache:1;
+    unsigned int supportsWriteSubdivCache:1;
+} CDStruct_f76d274b;
 
 typedef struct {
     char _field1;
@@ -1816,31 +1752,17 @@ typedef struct {
     long long _field4;
 } CDStruct_198678f7;
 
-typedef struct {
-    long long _field1;
-    long long _field2;
-} CDStruct_912cb5d2;
-
 typedef struct CDStruct_183601bc;
 
 typedef struct {
     id _field1;
-    struct CGPoint _field2;
+    id _field2;
     struct CGPoint _field3;
-    struct SCNVector3 _field4;
+    struct CGPoint _field4;
     struct SCNVector3 _field5;
-    double _field6;
-} CDStruct_edec59f9;
-
-typedef struct {
-    struct __C3DEnginePipeline *_field1;
-    struct __C3DEngineContext *_field2;
-    struct __C3DFXPassInstance *_field3;
-    int *_field4;
-    struct __C3DNode *_field5;
-    BOOL _field6;
-    BOOL _field7;
-} CDStruct_256c7a3c;
+    struct SCNVector3 _field6;
+    double _field7;
+} CDStruct_8affffdd;
 
 typedef struct {
     struct __C3DFXProgram *weakProgram;
@@ -1872,6 +1794,10 @@ typedef struct {
     NSMutableSet *_usedMeshElements;
     NSMutableSet *_freeMeshElements;
 } CDStruct_4aabc75a;
+
+typedef struct {
+    CDUnion_915c2b1f _field1[6];
+} CDStruct_7841dd09;
 
 typedef struct {
     struct {

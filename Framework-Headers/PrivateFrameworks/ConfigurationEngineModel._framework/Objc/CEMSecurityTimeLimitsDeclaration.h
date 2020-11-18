@@ -8,39 +8,36 @@
 
 #import <ConfigurationEngineModel/CEMRegisteredTypeProtocol-Protocol.h>
 
-@class NSDictionary, NSNumber, NSString;
+@class CEMSecurityTimeLimitsDeclaration_TimeLimits, NSNumber, NSString;
 
 @interface CEMSecurityTimeLimitsDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadFamilyControlsEnabled;
+    CEMSecurityTimeLimitsDeclaration_TimeLimits *_payloadTimeLimits;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadFamilyControlsEnabled;
-@property (readonly, nonatomic) NSDictionary *payloadTimeLimits;
+@property (copy, nonatomic) NSNumber *payloadFamilyControlsEnabled; // @synthesize payloadFamilyControlsEnabled=_payloadFamilyControlsEnabled;
+@property (copy, nonatomic) CEMSecurityTimeLimitsDeclaration_TimeLimits *payloadTimeLimits; // @synthesize payloadTimeLimits=_payloadTimeLimits;
 @property (readonly) Class superclass;
 
-+ (id)Allowance_allowedPayloadKeys;
-+ (id)TimeLimits_allowedPayloadKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withFamilyControlsEnabled:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withFamilyControlsEnabled:(id)arg2 withTimeLimits:(id)arg3;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadAllowance:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadTimeLimits:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadAllowance_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validPayloadTimeLimits_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

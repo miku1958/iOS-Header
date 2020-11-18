@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSTCellIterating-Protocol.h>
 #import <iWorkImport/TSTCellRegionIterating-Protocol.h>
@@ -18,13 +18,13 @@ __attribute__((visibility("hidden")))
 {
     BOOL _rightToLeft;
     BOOL _terminated;
-    unsigned short _curRowIndex;
-    struct TSUCellCoord _curCellID;
+    unsigned int _curRowIndex;
     TSTTableModel *_tableModel;
     TSTTableDataStore *_dataStore;
     TSTCellRegion *_region;
     struct NSObject *_regionIterator;
     unsigned long long _searchMask;
+    struct TSUCellCoord _curCellID;
     TSTTableTile *_curTile;
     TSTTableTileRowInfo *_curRow;
     TSTCell *_cell;
@@ -32,10 +32,9 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) TSTCell *cell; // @synthesize cell=_cell;
-@property (readonly, nonatomic) unsigned short cellCountInRow;
 @property (nonatomic) struct TSUCellCoord curCellID; // @synthesize curCellID=_curCellID;
 @property (strong, nonatomic) TSTTableTileRowInfo *curRow; // @synthesize curRow=_curRow;
-@property (nonatomic) unsigned short curRowIndex; // @synthesize curRowIndex=_curRowIndex;
+@property (nonatomic) unsigned int curRowIndex; // @synthesize curRowIndex=_curRowIndex;
 @property (strong, nonatomic) TSTTableTile *curTile; // @synthesize curTile=_curTile;
 @property (nonatomic) struct _NSRange curTileRange; // @synthesize curTileRange=_curTileRange;
 @property (readonly, nonatomic) TSTTableDataStore *dataStore; // @synthesize dataStore=_dataStore;
@@ -56,7 +55,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (struct TSUCellCoord)getNext;
 - (BOOL)getNextCellData:(id *)arg1;
-- (id)initWithTableModel:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchMask:(unsigned long long)arg4;
+- (id)initWithInfo:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchMask:(unsigned long long)arg4;
+- (id)initWithModel:(id)arg1 region:(id)arg2 flags:(unsigned long long)arg3 searchMask:(unsigned long long)arg4;
 - (void)iterateCellsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)nextCellData;
 - (void)p_setupTileAndRowAtCellID:(struct TSUCellCoord)arg1;

@@ -17,7 +17,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)containerView;
+- (id)containingView;
 - (BOOL)isContainedByItem:(id)arg1;
 - (id)view;
 @end

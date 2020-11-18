@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -14,19 +14,19 @@ __attribute__((visibility("hidden")))
     int _formatType;
 }
 
-@property (readonly, nonatomic) CDStruct_28403e59 formatStruct;
+@property (readonly, nonatomic) CDStruct_b1066b25 formatStruct;
 @property (readonly, nonatomic) int formatType; // @synthesize formatType=_formatType;
 
 + (id)booleanFormat;
 + (id)checkboxFormat;
 + (id)defaultFormatWithFormatType:(int)arg1 locale:(id)arg2;
-+ (id)defaultRootFormatForCustomFormatType:(int)arg1;
 + (id)formatFromArchive:(const struct FormatStructArchive *)arg1;
-+ (id)formatFromTSUFormatStruct:(CDStruct_28403e59)arg1;
++ (id)formatFromTSUFormatStruct:(CDStruct_b1066b25)arg1;
 + (id)ratingFormat;
 + (id)textFormat;
 + (unsigned int)validatedDecimalPlaces:(unsigned long long)arg1;
 - (id)asBaseFormat;
+- (id)asBooleanFormat;
 - (id)asCurrencyFormat;
 - (id)asCustomFormatWrapper;
 - (id)asDateTimeFormat;
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeToArchive:(struct FormatStructArchive *)arg1;
+- (void)encodeToArchive:(struct FormatStructArchive *)arg1 archivingCustomFormats:(BOOL)arg2;
 - (BOOL)hasSimpleFormatType;
 - (unsigned long long)hash;
 - (id)initWithFormatType:(int)arg1;

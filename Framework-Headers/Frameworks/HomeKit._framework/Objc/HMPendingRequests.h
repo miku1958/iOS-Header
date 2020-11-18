@@ -6,17 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
-@protocol OS_dispatch_queue;
+@class HMFUnfairLock, NSMutableArray;
 
 @interface HMPendingRequests : NSObject
 {
-    NSObject<OS_dispatch_queue> *_workQueue;
+    HMFUnfairLock *_lock;
     NSMutableArray *_contextLists;
 }
 
 @property (strong, nonatomic) NSMutableArray *contextLists; // @synthesize contextLists=_contextLists;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
 - (void)_addRequest:(id)arg1 ofType:(long long)arg2 forIdentifier:(id)arg3;

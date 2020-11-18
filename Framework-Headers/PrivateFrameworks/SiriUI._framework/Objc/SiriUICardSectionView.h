@@ -38,6 +38,7 @@
 
 + (struct CGSize)sizeThatFitsCardSection:(id)arg1 boundingSize:(struct CGSize)arg2;
 - (void).cxx_destruct;
+- (id)accessibilityIdentifier;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)removeFromComposedSuperview;

@@ -51,12 +51,13 @@
     BOOL _alwaysShowUndoButton;
     BOOL _shareButtonHidden;
     BOOL _translucent;
-    BOOL _useThickInks;
+    BOOL _contentsHidden;
     AKController *_annotationController;
 }
 
 @property (nonatomic) BOOL alwaysShowUndoButton; // @synthesize alwaysShowUndoButton=_alwaysShowUndoButton;
 @property (weak, nonatomic) AKController *annotationController; // @synthesize annotationController=_annotationController;
+@property (nonatomic) BOOL contentsHidden; // @synthesize contentsHidden=_contentsHidden;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -66,7 +67,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isTranslucent) BOOL translucent; // @synthesize translucent=_translucent;
 @property (nonatomic) BOOL undoRedoButtonsHidden; // @synthesize undoRedoButtonsHidden=_undoRedoButtonsHidden;
-@property (nonatomic) BOOL useThickInks; // @synthesize useThickInks=_useThickInks;
 
 + (id)redoButtonImage;
 + (id)redoButtonImageWithStyle:(unsigned long long)arg1;
@@ -103,6 +103,7 @@
 - (void)dealloc;
 - (void)dismissPresentedPopovers;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)inkPicker;
 - (void)inlineInkPicker:(id)arg1 didSelectColor:(id)arg2;
 - (void)inlineInkPicker:(id)arg1 didSelectTool:(id)arg2;
 - (struct CGSize)intrinsicContentSize;
@@ -119,6 +120,7 @@
 - (void)revalidateItems;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setBackgroundImage:(id)arg1 forToolbarPosition:(long long)arg2 barMetrics:(long long)arg3;
+- (void)setContentsHidden:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setOpaque:(BOOL)arg1;
 - (void)setShadowImage:(id)arg1 forToolbarPosition:(long long)arg2;
 - (BOOL)shouldUseCompactHeight;
@@ -132,6 +134,8 @@
 - (void)toolsList:(id)arg1 didSelectToolWithTag:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)upateAttributesPickerButtonWithCurrentSelection:(id)arg1;
+- (id)viewControllerForPopoverPresentationFromColorPicker:(id)arg1;
+- (id)viewControllerForPopoverPresentationFromInlineInkPicker:(id)arg1;
 
 @end
 

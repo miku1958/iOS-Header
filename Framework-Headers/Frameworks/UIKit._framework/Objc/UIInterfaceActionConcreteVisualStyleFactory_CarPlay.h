@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIInterfaceActionConcreteVisualStyleFactory-Protocol.h>
+#import <UIKitCore/UIInterfaceActionConcreteVisualStyleFactory-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionConcreteVisualStyleFactory_CarPlay : NSObject <UIInterfaceActionConcreteVisualStyleFactory>

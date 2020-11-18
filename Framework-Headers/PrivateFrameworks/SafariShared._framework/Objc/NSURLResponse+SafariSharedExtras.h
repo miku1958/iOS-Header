@@ -8,5 +8,6 @@
 
 @interface NSURLResponse (SafariSharedExtras)
 - (BOOL)safari_hasAttachment;
+- (long long)safari_statusCodeGroup;
 @end
 

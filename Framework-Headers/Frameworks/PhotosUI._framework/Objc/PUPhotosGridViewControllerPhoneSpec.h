@@ -10,11 +10,9 @@
 {
 }
 
-+ (struct CGSize)bestItemSizeForAvailableWidth:(double)arg1 screenScale:(double)arg2 bestSpacing:(double *)arg3 bestInset:(double *)arg4;
 - (id)albumPickerViewControllerSpec;
 - (struct CGSize)baseInterItemSpacing;
 - (BOOL)canDisplayOptionsInPopover;
-- (BOOL)canDisplaySearchActionInNavigationBar;
 - (BOOL)canDisplaySlideshowButton;
 - (long long)cellFillMode;
 - (void)configureCollectionViewGridLayout:(id)arg1 forWidth:(double)arg2 safeAreaInsets:(struct UIEdgeInsets)arg3;

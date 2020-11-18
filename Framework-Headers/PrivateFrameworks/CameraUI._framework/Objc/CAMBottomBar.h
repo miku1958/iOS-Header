@@ -10,7 +10,7 @@
 #import <CameraUI/CAMBarsAccessibilityHUDManagerGestureProvider-Protocol.h>
 #import <CameraUI/CAMExpandableMenuButtonDelegate-Protocol.h>
 
-@class CAMExpandableMenuButton, CAMFlashButton, CAMFlipButton, CAMHDRButton, CAMImageWell, CAMIrisButton, CAMModeDial, CAMTimerButton, CAMUtilityBar, CUShutterButton, NSString, UIButton;
+@class CAMCreativeCameraButton, CAMExpandableMenuButton, CAMFlashButton, CAMFlipButton, CAMHDRButton, CAMImageWell, CAMLivePhotoButton, CAMModeDial, CAMTimerButton, CAMUtilityBar, CUShutterButton, NSString, PUReviewScreenDoneButton, UIButton;
 
 @interface CAMBottomBar : UIView <CAMExpandableMenuButtonDelegate, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
 {
@@ -22,11 +22,13 @@
     CAMModeDial *_modeDial;
     CAMImageWell *_imageWell;
     UIButton *_reviewButton;
+    CAMCreativeCameraButton *_creativeCameraButton;
+    PUReviewScreenDoneButton *_doneButton;
     CAMFlipButton *_flipButton;
     CAMFlashButton *_flashButton;
     CAMHDRButton *_HDRButton;
     CAMTimerButton *_timerButton;
-    CAMIrisButton *_irisButton;
+    CAMLivePhotoButton *_livePhotoButton;
     CAMUtilityBar *_utilityBar;
     double _utilityBarExtensionAboveTopEdge;
     CAMExpandableMenuButton *__expandedMenuButton;
@@ -36,14 +38,16 @@
 @property (strong, nonatomic, setter=_setExpandedMenuButton:) CAMExpandableMenuButton *_expandedMenuButton; // @synthesize _expandedMenuButton=__expandedMenuButton;
 @property (nonatomic) long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
 @property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) CAMCreativeCameraButton *creativeCameraButton; // @synthesize creativeCameraButton=_creativeCameraButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) PUReviewScreenDoneButton *doneButton; // @synthesize doneButton=_doneButton;
 @property (strong, nonatomic) CAMFlashButton *flashButton; // @synthesize flashButton=_flashButton;
 @property (strong, nonatomic) CAMFlipButton *flipButton; // @synthesize flipButton=_flipButton;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CAMImageWell *imageWell; // @synthesize imageWell=_imageWell;
-@property (strong, nonatomic) CAMIrisButton *irisButton; // @synthesize irisButton=_irisButton;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
+@property (strong, nonatomic) CAMLivePhotoButton *livePhotoButton; // @synthesize livePhotoButton=_livePhotoButton;
 @property (strong, nonatomic) CAMModeDial *modeDial; // @synthesize modeDial=_modeDial;
 @property (strong, nonatomic) UIButton *reviewButton; // @synthesize reviewButton=_reviewButton;
 @property (strong, nonatomic) CUShutterButton *shutterButton; // @synthesize shutterButton=_shutterButton;
@@ -53,12 +57,15 @@
 @property (strong, nonatomic) CAMUtilityBar *utilityBar; // @synthesize utilityBar=_utilityBar;
 @property (nonatomic) double utilityBarExtensionAboveTopEdge; // @synthesize utilityBarExtensionAboveTopEdge=_utilityBarExtensionAboveTopEdge;
 
++ (struct CGRect)shutterButtonAlignmentRectInBounds:(struct CGRect)arg1 forLayoutStyle:(long long)arg2;
 + (BOOL)wantsVerticalBarForLayoutStyle:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_commonCAMBottomBarInitializationInitWithLayoutStyle:(long long)arg1;
 - (id)_currentMenuButtons;
 - (void)_ensureSubviewOrdering;
 - (void)_iterateViewsInHUDManager:(id)arg1 forHUDItem:(CDUnknownBlockType)arg2;
+- (void)_layoutCreativeCameraButtonForLayoutStyle:(long long)arg1;
+- (void)_layoutDoneButtonForLayoutStyle:(long long)arg1;
 - (void)_layoutFlipButtonForLayoutStyle:(long long)arg1;
 - (void)_layoutImageWellForLayoutStyle:(long long)arg1;
 - (void)_layoutMenuButtons:(id)arg1 apply:(BOOL)arg2 withExpandedMenuButton:(id)arg3 collapsingMenuButton:(id)arg4 collapsingFrame:(struct CGRect *)arg5;
@@ -68,6 +75,7 @@
 - (void)_layoutStillDuringVideoButtonForLayoutStyle:(long long)arg1;
 - (void)_layoutUtilityBarForLayoutStyle:(long long)arg1;
 - (double)_opacityForBackgroundStyle:(long long)arg1;
+- (void)_updateCreativeCameraButtonTappableEdgeInsets;
 - (void)_updateFlipButtonTappableEdgeInsets;
 - (void)_updateImageWellTappableEdgeInsets;
 - (void)collapseMenuButton:(id)arg1 animated:(BOOL)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TelephonyUI/TUCallProviderManagerDelegate-Protocol.h>
 
@@ -17,13 +17,11 @@
     NSCache *_contactCache;
     CNContactStore *_contactStore;
     NSArray *_favoritesEntries;
-    CNFavorites *_favoritesReadManager;
-    CNFavorites *_favoritesWriteManager;
+    CNFavorites *_favoritesManager;
     NSCache *_transportNameCache;
     unsigned long long _prefetchCount;
     NSObject<OS_dispatch_queue> *_completionDispatchQueue;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
-    NSObject<OS_dispatch_queue> *_favoritesWriteManagerDispatchQueue;
 }
 
 @property (readonly, nonatomic) TUCallProviderManager *callProviderManager; // @synthesize callProviderManager=_callProviderManager;
@@ -33,9 +31,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSArray *favoritesEntries; // @synthesize favoritesEntries=_favoritesEntries;
-@property (strong, nonatomic) CNFavorites *favoritesReadManager; // @synthesize favoritesReadManager=_favoritesReadManager;
-@property (readonly, nonatomic) CNFavorites *favoritesWriteManager; // @synthesize favoritesWriteManager=_favoritesWriteManager;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *favoritesWriteManagerDispatchQueue; // @synthesize favoritesWriteManagerDispatchQueue=_favoritesWriteManagerDispatchQueue;
+@property (readonly, nonatomic) CNFavorites *favoritesManager; // @synthesize favoritesManager=_favoritesManager;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long prefetchCount; // @synthesize prefetchCount=_prefetchCount;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
@@ -54,7 +50,7 @@
 - (id)fetchContactForFavoritesEntry:(id)arg1 keyDescriptors:(id)arg2;
 - (id)fetchFavoritesEntries;
 - (id)fetchTransportNameForFavoritesEntry:(id)arg1;
-- (void)handleCNContactStoreDidChangeNotification:(id)arg1;
+- (void)handleContactsFavoritesDidChangeNotification:(id)arg1;
 - (id)init;
 - (id)initWithPrefetchCount:(unsigned long long)arg1;
 - (void)moveEntryAtIndex:(unsigned long long)arg1 toIndex:(unsigned long long)arg2;

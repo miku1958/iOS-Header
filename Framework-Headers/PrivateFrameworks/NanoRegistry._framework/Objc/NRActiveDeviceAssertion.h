@@ -18,7 +18,7 @@
 }
 
 @property (strong, nonatomic) NRDevice *device; // @synthesize device=_device;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL isActive; // @synthesize isActive=_isActive;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 

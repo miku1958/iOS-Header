@@ -7,36 +7,36 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBIntentResponsePayloadSuccess-Protocol.h>
 
-@class NSData, NSString, PBUnknownFields;
+@class NSData, NSString;
 
-@interface _INPBIntentResponsePayloadSuccess : PBCodable <NSCopying>
+@interface _INPBIntentResponsePayloadSuccess : PBCodable <_INPBIntentResponsePayloadSuccess, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSData *_responseMessageData;
-    NSString *_responseTypeName;
-    BOOL _shouldOpenContainingApplication;
     struct {
         unsigned int shouldOpenContainingApplication:1;
     } _has;
+    BOOL _shouldOpenContainingApplication;
+    NSData *_responseMessageData;
+    NSString *_responseTypeName;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasResponseMessageData;
 @property (readonly, nonatomic) BOOL hasResponseTypeName;
 @property (nonatomic) BOOL hasShouldOpenContainingApplication;
-@property (strong, nonatomic) NSData *responseMessageData; // @synthesize responseMessageData=_responseMessageData;
-@property (strong, nonatomic) NSString *responseTypeName; // @synthesize responseTypeName=_responseTypeName;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSData *responseMessageData; // @synthesize responseMessageData=_responseMessageData;
+@property (copy, nonatomic) NSString *responseTypeName; // @synthesize responseTypeName=_responseTypeName;
 @property (nonatomic) BOOL shouldOpenContainingApplication; // @synthesize shouldOpenContainingApplication=_shouldOpenContainingApplication;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

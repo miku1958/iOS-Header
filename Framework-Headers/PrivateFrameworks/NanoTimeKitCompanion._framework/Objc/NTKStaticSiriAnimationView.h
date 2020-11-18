@@ -8,10 +8,11 @@
 
 #import <NanoTimeKitCompanion/NTKComplicationImageView-Protocol.h>
 
-@class CLKImageProvider, NSString, UIColor, UIImageView;
+@class CLKDevice, CLKImageProvider, NSString, UIColor, UIImageView;
 
 @interface NTKStaticSiriAnimationView : UIView <NTKComplicationImageView>
 {
+    CLKDevice *_device;
     UIImageView *_imageView;
     struct CGSize _complicationSize;
     BOOL _usesLegibility;
@@ -31,7 +32,7 @@
 @property (nonatomic) BOOL usesLegibility; // @synthesize usesLegibility=_usesLegibility;
 
 - (void).cxx_destruct;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TNChartFormulaWrapper : NSObject
 {
-    struct TSCEFormula *mPtrToFormula;
-    long long mCachedNumberOfValues;
-    struct TSCEVector *mCachedOuputValueVector;
+    struct TSCEFormula *_ptrToFormula;
+    long long _cachedNumberOfValues;
+    struct TSCEVector *_cachedOutputValueVector;
 }
 
 @property (readonly) struct TSCEFormula *formula;
@@ -20,13 +20,16 @@ __attribute__((visibility("hidden")))
 + (id)chartFormulaForCellRegion:(id)arg1 inTable:(id)arg2;
 + (id)chartFormulaForRangeReference:(struct TSCERangeRef)arg1;
 + (id)chartFormulaForString:(id)arg1;
++ (id)chartFormulaForTractAsRangeReferences:(id)arg1;
++ (id)chartFormulaForTractReference:(id)arg1;
 + (id)chartFormulaWithCopyOfTSCEFormula:(const struct TSCEFormula *)arg1;
 + (id)emptyChartFormula;
-- (id)argumentCollectionWithCalcEngine:(id)arg1 inTable:(const UUIDData_5fbc143e *)arg2;
-- (id)argumentCollectionWithCalcEngine:(id)arg1 inTable:(const UUIDData_5fbc143e *)arg2 storeBadRef:(BOOL)arg3;
+- (id)argumentCollectionWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2;
+- (id)argumentCollectionWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2 storeBadRef:(BOOL)arg3;
 - (void)clearCacheForCalculationEngine:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (id)formulaByBakingValuesWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
 - (id)formulaByProcessingArgumentsWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)formulaByRewriting:(BOOL)arg1 withCalcEngine:(id)arg2 andHostUID:(const UUIDData_5fbc143e *)arg3;
 - (BOOL)formulaIsEqualTo:(id)arg1;
@@ -34,11 +37,11 @@ __attribute__((visibility("hidden")))
 - (id)initWithCopyOfTSCEFormula:(const struct TSCEFormula *)arg1;
 - (BOOL)isAllStaticValuesWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (unsigned long long)numberOfValuesWithCalcEngine:(id)arg1 inTable:(const UUIDData_5fbc143e *)arg2;
-- (struct TSCEVector *)outputValueVectorWithCalcEngine:(id)arg1 inTable:(const UUIDData_5fbc143e *)arg2;
+- (unsigned long long)numberOfValuesWithCalcEngine:(id)arg1 inChart:(const UUIDData_5fbc143e *)arg2;
+- (struct TSCEVector *)outputValueVector:(struct TSCEEvaluationContext *)arg1 inChromeOrder:(BOOL)arg2;
 - (struct TSCERangeRef)rangeCircumscribingPrecedentsWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
 - (id)stringValueForFormulaWithCalcEngine:(id)arg1 inOwner:(const UUIDData_5fbc143e *)arg2;
-- (struct TSCEValue)valueAtIndex:(unsigned long long)arg1 withCalcEngine:(id)arg2 inTable:(const UUIDData_5fbc143e *)arg3;
+- (struct TSCEValue)valueAtIndex:(unsigned long long)arg1 withCalcEngine:(id)arg2 inChart:(const UUIDData_5fbc143e *)arg3;
 
 @end
 

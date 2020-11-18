@@ -26,6 +26,8 @@
     BOOL _hasCustomOccurrencePadding;
     EKEvent *_selectedEvent;
     NSMutableArray *_dayStarts;
+    NSMutableArray *_itemsForPreloadByDay;
+    NSMutableArray *_itemsForPreloadByDayByEndDate;
     NSMutableArray *_itemsByDay;
     NSMutableArray *_itemsByDayByEndDate;
     struct CGRect _latestVisibleRect;
@@ -92,21 +94,20 @@
 - (void)_configureOccurrenceViewMarginAndPadding:(id)arg1;
 - (struct _NSRange)_dayRangeForEvent:(id)arg1 useProposedTime:(BOOL)arg2;
 - (struct _NSRange)_dayRangeForEventWithStartDate:(id)arg1 endDate:(id)arg2;
-- (id)_dayStarts;
 - (double)_dayWidth;
 - (BOOL)_doOffscreenOccurrences;
 - (BOOL)_getBottomPinRegion:(double *)arg1 dayIndex:(unsigned long long *)arg2 forPoint:(struct CGPoint)arg3;
 - (void)_layoutDay:(unsigned long long)arg1 isLoadingAsync:(BOOL)arg2;
 - (void)_layoutDaysIfVisible;
 - (void)_tapRecognized:(id)arg1;
-- (id)allItems;
+- (id)allVisibleItems;
 - (void)applyContentItem:(id)arg1 toView:(id)arg2;
 - (void)applyLoadedOccurrenceBatchStartingAtIndex:(long long)arg1 batchSize:(long long)arg2 fromArray:(id)arg3 animated:(BOOL)arg4 reverse:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)applyLoadedOccurrencesWithBatching:(BOOL)arg1 animated:(BOOL)arg2 reverse:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)configureOccurrenceViewForGestureController:(id)arg1;
-- (BOOL)containsEvent:(id)arg1;
 - (double)dateForPoint:(struct CGPoint)arg1;
 - (void)dayOccurrenceViewSelected:(id)arg1 atPoint:(struct CGPoint)arg2 wasTapped:(BOOL)arg3;
+- (id)dayStarts;
 - (void)dealloc;
 - (BOOL)eventsIntersectRect:(struct CGRect)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
@@ -114,11 +115,12 @@
 - (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 orientation:(long long)arg2 backgroundColor:(id)arg3 opaque:(BOOL)arg4 numberOfDaysToDisplay:(unsigned long long)arg5;
 - (struct UIEdgeInsets)insetsForInterfaceLayout:(struct UIEdgeInsets)arg1;
-- (id)itemsByDay;
+- (id)itemsForPreloadByDay;
 - (id)lastDisplayedSecond;
 - (void)layoutSubviews;
 - (void)loadAndLayoutOccurrences:(id)arg1;
 - (void)loadOccurrences:(id)arg1;
+- (void)movePreloadedItemsToVisible;
 - (id)occurrenceViewForEvent:(id)arg1;
 - (id)occurrenceViewForEvent:(id)arg1 onDate:(double)arg2;
 - (id)occurrenceViews;
@@ -132,6 +134,7 @@
 - (void)setStartDateWithDateComponents:(id)arg1;
 - (void)setViewsDimmed:(BOOL)arg1 forEvent:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (id)visibleItemsByDay;
 
 @end
 

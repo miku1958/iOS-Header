@@ -11,11 +11,15 @@
 @interface BKMatchPearlOperation : BKMatchOperation
 {
     BOOL _longTimeout;
+    BOOL _shouldAutoRetry;
 }
 
 @property (weak, nonatomic) id<BKMatchPearlOperationDelegate> delegate; // @dynamic delegate;
 @property (nonatomic) BOOL longTimeout; // @synthesize longTimeout=_longTimeout;
+@property (nonatomic) BOOL shouldAutoRetry; // @synthesize shouldAutoRetry=_shouldAutoRetry;
 
+- (BOOL)enableAutoRetry:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)pauseFaceDetectTimer:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)startNewMatchAttemptWithError:(id *)arg1;
 
 @end

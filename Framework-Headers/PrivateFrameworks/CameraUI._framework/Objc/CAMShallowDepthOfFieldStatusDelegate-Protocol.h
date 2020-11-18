@@ -9,6 +9,6 @@
 @class CUCaptureController;
 
 @protocol CAMShallowDepthOfFieldStatusDelegate <NSObject>
-- (void)captureController:(CUCaptureController *)arg1 didOutputShallowDepthOfFieldStatus:(long long)arg2;
+- (void)captureController:(CUCaptureController *)arg1 didOutputShallowDepthOfFieldStatus:(long long)arg2 stagePreviewStatus:(long long)arg3;
 @end
 

@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) MISSING_TYPE *gridPosition;
 
 + (id)nodeWithGridPosition: /* Error: Ran out of types for this method. */;
++ (BOOL)supportsSecureCoding;
 - (struct GKCGridGraphNode *)cGridGraphNode;
 - (float)costToNode:(id)arg1;
 - (void)deleteCGraphNode;

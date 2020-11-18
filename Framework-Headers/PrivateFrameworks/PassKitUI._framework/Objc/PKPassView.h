@@ -43,6 +43,7 @@
 @property (readonly, strong, nonatomic) PKPass *pass; // @synthesize pass=_pass;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
+@property (readonly, nonatomic) BOOL suppressesPile;
 @property (readonly, nonatomic) NSString *uniqueID;
 
 - (void).cxx_destruct;
@@ -51,20 +52,20 @@
 - (unsigned long long)_regionsForCurrentModes;
 - (void)_resizePassAnimated:(BOOL)arg1 notify:(BOOL)arg2;
 - (void)_updateFrontFaceSuppressedContent;
+- (void)_updateHighEndLayerShadowAnimated:(BOOL)arg1 withDelay:(double)arg2;
 - (void)_updateLayerShadowAnimated:(BOOL)arg1 withDelay:(double)arg2;
-- (void)_updateResizeIfNecessary;
+- (void)_updateLowEndLayerShadowAnimated:(BOOL)arg1 withDelay:(double)arg2;
 - (BOOL)_visibleFaceShouldClipForCurrentViewMode:(double *)arg1;
-- (BOOL)canResize;
+- (BOOL)canShowBarcode;
 - (void)dealloc;
 - (struct CGRect)frameOfVisibleFace;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithPass:(id)arg1;
 - (id)initWithPass:(id)arg1 content:(long long)arg2;
+- (id)initWithPass:(id)arg1 content:(long long)arg2 suppressedContent:(unsigned long long)arg3;
 - (id)item;
 - (void)layoutSubviews;
-- (BOOL)passFaceBarcodeButtonEnabled;
-- (void)passFaceBarcodeButtonPressed:(id)arg1;
 - (BOOL)passFaceDeleteButtonEnabled;
 - (void)passFaceDeleteButtonPressed:(id)arg1;
 - (void)passFaceInfoButtonPressed:(id)arg1;

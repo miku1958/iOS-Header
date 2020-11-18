@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @protocol _UIScreenRoutePickerRemoteViewController <NSObject>
 - (void)_disconnectRouteWithCompletion:(void (^)(void))arg1;

@@ -48,6 +48,7 @@
     long long _activeSectionIndex;
     SUPageSectionGroup *_sectionsGroup;
     SUSegmentedControl *_segmentedControl;
+    BOOL _didPageViewLoad;
 }
 
 @property (copy, nonatomic) SSURLRequestProperties *URLRequestProperties;
@@ -60,6 +61,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) id<SUStorePageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didPageViewLoad; // @synthesize didPageViewLoad=_didPageViewLoad;
 @property (readonly, nonatomic) struct CGRect documentBounds;
 @property (nonatomic, getter=isExternalRequest) BOOL externalRequest; // @synthesize externalRequest=_externalRequest;
 @property (readonly) unsigned long long hash;
@@ -98,7 +100,6 @@
 - (id)_newSegmentedControlWithItems:(id)arg1;
 - (void)_performActionForProtocolButton:(id)arg1;
 - (void)_reloadBackgroundViewProperties;
-- (void)_reloadContentInsets;
 - (void)_reloadForAppearance:(BOOL)arg1;
 - (void)_reloadForNetworkTypeChange:(id)arg1;
 - (void)_reloadNavigationBar;
@@ -128,6 +129,7 @@
 - (BOOL)_shouldDisplaySegmentedControlInNavigationBar:(id)arg1;
 - (BOOL)_shouldFetchAutomatically;
 - (BOOL)_shouldReloadForAppearance;
+- (BOOL)_shouldShowPlaceholderForEmptyPage;
 - (void)_showPlaceholderViewControllerWithTearDown:(BOOL)arg1;
 - (void)_tabConfigurationChanged:(id)arg1;
 - (void)_tearDownNavigationMenu;
@@ -147,6 +149,7 @@
 - (id)displayedURL;
 - (void)enqueueFetchOperation;
 - (void)enqueueFetchOperationForPageSection:(id)arg1;
+- (void)forceLoadingForNeverAppearedPage;
 - (void)handleApplicationURL:(id)arg1 withSourceApplication:(id)arg2 sourceURL:(id)arg3;
 - (void)handleFailureWithError:(id)arg1;
 - (void)handleStoreFailureWithError:(id)arg1;
@@ -205,7 +208,6 @@
 - (BOOL)viewIsReady;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (void)viewWillLayoutSubviews;
 - (void)willAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 - (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 

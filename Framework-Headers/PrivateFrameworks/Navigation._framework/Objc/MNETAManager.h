@@ -32,8 +32,8 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long maxAlternateRoutesCount;
 @property (nonatomic) double requestInterval; // @synthesize requestInterval=_requestInterval;
-@property (strong, nonatomic) NSString *requestingAppIdentifier;
-@property (strong, nonatomic) NSArray *routes; // @synthesize routes=_routes;
+@property (copy, nonatomic) NSString *requestingAppIdentifier;
+@property (copy, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

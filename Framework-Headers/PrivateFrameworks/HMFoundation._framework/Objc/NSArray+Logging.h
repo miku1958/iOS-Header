@@ -10,6 +10,5 @@
 - (id)describeElements:(CDUnknownBlockType)arg1;
 - (id)secureDescriptionWithBlacklistKeys:(id)arg1;
 - (id)secureDescriptionWithIndent:(id)arg1 newLine:(BOOL)arg2 blacklistedKeys:(id)arg3;
-- (id)shortDescription;
 @end
 

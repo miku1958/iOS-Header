@@ -27,10 +27,10 @@
 
 + (BOOL)supportsSecureCoding;
 + (int)type;
+- (void).cxx_destruct;
 - (id)candidate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)cursorMovement;
-- (void)dealloc;
 - (unsigned long long)deleteCount;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -9,16 +9,20 @@
 #import <ResponseKit/RKDisplayStringsProvider-Protocol.h>
 #import <ResponseKit/RKPolarityDataProvider-Protocol.h>
 
-@class NSBundle, NSMutableDictionary;
+@class NSBundle, NSMutableDictionary, NSURL, RKAssets;
 
 @interface RKBundleDataProvider : NSObject <RKDisplayStringsProvider, RKPolarityDataProvider>
 {
     NSBundle *_bundle;
+    RKAssets *_assets;
+    NSURL *_assetPlistURL;
     NSMutableDictionary *_displayStringsByPlatformByLanguage;
     NSMutableDictionary *_polarityMapsByLanguageID;
     NSMutableDictionary *_localizationsByLanguageID;
 }
 
+@property (readonly) NSURL *assetPlistURL; // @synthesize assetPlistURL=_assetPlistURL;
+@property (readonly) RKAssets *assets; // @synthesize assets=_assets;
 @property (readonly) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property (readonly) NSMutableDictionary *displayStringsByPlatformByLanguage; // @synthesize displayStringsByPlatformByLanguage=_displayStringsByPlatformByLanguage;
 @property (strong) NSMutableDictionary *localizationsByLanguageID; // @synthesize localizationsByLanguageID=_localizationsByLanguageID;
@@ -27,6 +31,7 @@
 - (void).cxx_destruct;
 - (id)displayStringsForPlatform:(id)arg1 languageID:(id)arg2;
 - (id)init;
+- (id)initWithAssetPlist:(id)arg1;
 - (id)initWithBundle:(id)arg1;
 - (struct __LSMMap *)polarityMapForLanguageID:(id)arg1;
 - (id)stringsFromTable:(id)arg1 forLanguageIdentifier:(id)arg2;

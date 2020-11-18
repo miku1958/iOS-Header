@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSWPFontHeightCache : NSObject
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (CDStruct_5b0a1db3)fontHeightInfoForFont:(struct __CTFont *)arg1;
 - (id)init;
 - (void)p_addEntryForFont:(struct __CTFont *)arg1 heightInfo:(const CDStruct_5b0a1db3 *)arg2;
-- (BOOL)p_findEntryForFont:(struct __CTFont *)arg1 outHeightInfo:(CDStruct_5b0a1db3 *)arg2 collision:(BOOL *)arg3;
+- (BOOL)p_findEntryForFont:(struct __CTFont *)arg1 outHeightInfo:(out CDStruct_5b0a1db3 *)arg2 collision:(out BOOL *)arg3;
 
 @end
 

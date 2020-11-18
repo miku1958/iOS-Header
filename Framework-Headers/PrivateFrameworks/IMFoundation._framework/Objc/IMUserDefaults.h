@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <IMFoundation/IMUserDefaults-Protocol.h>
 
@@ -20,21 +20,16 @@
 @property (readonly) Class superclass;
 
 + (BOOL)isAbsintheV4Enabled;
-+ (BOOL)isBAACertEnabled;
++ (BOOL)isBAACertDisabled;
 + (BOOL)isDebugPiscoLoggingEnabled;
 + (BOOL)isDeviceScoringEnabled;
 + (BOOL)isEngramEnabled;
 + (BOOL)isLiveDeliveryWarmUpEnabled;
-+ (BOOL)isPiscoEnabled;
++ (BOOL)isPiscoDisabled;
 + (long long)phoneNumberValidationMode;
 + (id)phoneNumberValidationPreflightTestData;
-+ (void)setEnableAbsintheV4:(BOOL)arg1;
-+ (void)setEnableBAACert:(BOOL)arg1;
-+ (void)setEnableDebugPiscoLogging:(BOOL)arg1;
-+ (void)setEnableDeviceScoring:(BOOL)arg1;
 + (void)setEnableEngram:(BOOL)arg1;
 + (void)setEnableLiveDeliveryWarmUp:(BOOL)arg1;
-+ (void)setEnablePisco:(BOOL)arg1;
 + (void)setPhoneNumberValidationMode:(long long)arg1;
 + (void)setPhoneNumberValidationPreflightTestData:(id)arg1;
 + (id)sharedDefaults;

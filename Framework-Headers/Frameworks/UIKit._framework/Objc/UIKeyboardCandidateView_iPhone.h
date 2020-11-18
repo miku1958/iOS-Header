@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardCandidateView.h>
+#import <UIKitCore/UIKeyboardCandidateView.h>
 
-#import <UIKit/UICollectionViewDelegate-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, UIKeyboardCandidateGridHeader;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 
@@ -22,14 +22,14 @@
 
 @property (readonly, nonatomic) BOOL allowsProtectedContent; // @synthesize allowsProtectedContent=_allowsProtectedContent;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBSSceneSnapshotRequestDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<FBSSceneSnapshotRequestDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *sceneID; // @synthesize sceneID=_sceneID;
 @property (readonly, copy, nonatomic) FBSSceneSettings *settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

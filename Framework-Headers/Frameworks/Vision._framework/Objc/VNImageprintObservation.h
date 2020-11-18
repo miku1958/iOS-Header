@@ -6,7 +6,7 @@
 
 #import <Vision/VNObservation.h>
 
-@class NSData, NSString, NSUUID, VNImageprint;
+@class NSData, NSString, VNImageprint;
 
 @interface VNImageprintObservation : VNObservation
 {
@@ -15,7 +15,6 @@
     NSString *_imageprintVersion;
 }
 
-@property (copy, nonatomic) NSUUID *identifier;
 @property (strong, nonatomic) VNImageprint *imageprint; // @synthesize imageprint=_imageprint;
 @property (readonly, nonatomic) BOOL imageprintValid; // @synthesize imageprintValid=_imageprintValid;
 @property (readonly, copy, nonatomic) NSString *imageprintVersion; // @synthesize imageprintVersion=_imageprintVersion;

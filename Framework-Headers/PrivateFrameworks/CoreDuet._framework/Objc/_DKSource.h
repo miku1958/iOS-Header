@@ -30,7 +30,8 @@
 @property (readonly) NSString *itemID; // @synthesize itemID=_itemID;
 @property (readonly) NSString *sourceID; // @synthesize sourceID=_sourceID;
 @property (readonly) Class superclass;
-@property (readonly) NSNumber *userID; // @synthesize userID=_userID;
+@property (readonly) NSString *syncDeviceID;
+@property (strong) NSNumber *userID; // @synthesize userID=_userID;
 
 + (id)defaultSourceID;
 + (id)entityName;

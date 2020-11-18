@@ -40,6 +40,7 @@
     unsigned int _lastUpdatedCapabilities;
     BOOL _requestingConnection;
     NSMutableDictionary *_requestQOSClassCompletionBlocks;
+    CDUnknownBlockType _prewarmingBlock;
 }
 
 @property (setter=_setAutoReconnect:) BOOL _autoReconnect; // @synthesize _autoReconnect;
@@ -54,6 +55,7 @@
 @property (readonly, nonatomic) BOOL isConnected;
 @property (readonly, nonatomic) BOOL isConnecting;
 @property (readonly, nonatomic) IMDaemonListener *listener; // @synthesize listener=_daemonListener;
+@property (copy, nonatomic) CDUnknownBlockType prewarmingBlock; // @synthesize prewarmingBlock=_prewarmingBlock;
 @property (strong, nonatomic) NSMutableDictionary *requestQOSClassCompletionBlocks; // @synthesize requestQOSClassCompletionBlocks=_requestQOSClassCompletionBlocks;
 @property (readonly, nonatomic, getter=isRequestingConnection) BOOL requestingConnection; // @synthesize requestingConnection=_requestingConnection;
 

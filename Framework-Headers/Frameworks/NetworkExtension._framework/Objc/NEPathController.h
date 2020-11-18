@@ -23,7 +23,7 @@
 
 @property long long cellularFallbackFlags; // @synthesize cellularFallbackFlags=_cellularFallbackFlags;
 @property (getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
-@property (readonly) BOOL hasNonDefaultRules;
+@property (readonly, nonatomic) BOOL hasNonDefaultRules;
 @property (copy) NSArray *pathRules; // @synthesize pathRules=_pathRules;
 @property (copy) NSArray *payloadAppRules; // @synthesize payloadAppRules=_payloadAppRules;
 

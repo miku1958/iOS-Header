@@ -22,6 +22,7 @@
     long long _squareModeEffectFilterType;
     long long _portraitModeEffectFilterType;
     long long _portraitModeLightingEffectType;
+    double _portraitModeApertureValue;
 }
 
 @property (readonly, nonatomic) long long HDRMode; // @synthesize HDRMode=_HDRMode;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property (readonly, nonatomic, getter=isPhotoBooth) BOOL photoBooth; // @synthesize photoBooth=_photoBooth;
 @property (readonly, nonatomic) long long photoModeEffectFilterType; // @synthesize photoModeEffectFilterType=_photoModeEffectFilterType;
+@property (readonly, nonatomic) double portraitModeApertureValue; // @synthesize portraitModeApertureValue=_portraitModeApertureValue;
 @property (readonly, nonatomic) long long portraitModeEffectFilterType; // @synthesize portraitModeEffectFilterType=_portraitModeEffectFilterType;
 @property (readonly, nonatomic) long long portraitModeLightingEffectType; // @synthesize portraitModeLightingEffectType=_portraitModeLightingEffectType;
 @property (readonly, nonatomic) long long squareModeEffectFilterType; // @synthesize squareModeEffectFilterType=_squareModeEffectFilterType;
@@ -40,14 +42,14 @@
 @property (readonly, nonatomic) long long videoConfiguration; // @synthesize videoConfiguration=_videoConfiguration;
 
 + (long long)_fallbackVideoConfigurationForUnsupportedConfiguration:(long long)arg1;
-+ (long long)audioConfigurationForMode:(long long)arg1 device:(long long)arg2 emulationMode:(long long)arg3 duringCall:(BOOL)arg4;
++ (long long)audioConfigurationForMode:(long long)arg1 device:(long long)arg2 emulationMode:(long long)arg3 duringCall:(BOOL)arg4 forceMonoAudioRecording:(BOOL)arg5;
 + (id)captureGraphConfigurationUsingConfiguration:(id)arg1;
 + (id)configuration:(id)arg1 withDevice:(long long)arg2;
 + (long long)sanitizeVideoConfigurationForDesiredConfiguration:(long long)arg1 mode:(long long)arg2 device:(long long)arg3;
 + (id)tinyConfigurationForConfiguration:(id)arg1 preserveFilters:(BOOL)arg2;
 - (id)_previewFilters;
 - (id)initForPhotoBoothWithCaptureDevice:(long long)arg1;
-- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 flashMode:(long long)arg5 torchMode:(long long)arg6 HDRMode:(long long)arg7 irisMode:(long long)arg8 timerDuration:(long long)arg9 photoModeEffectFilterType:(long long)arg10 squareModeEffectFilterType:(long long)arg11 portraitModeEffectFilterType:(long long)arg12 portraitModeLightingEffectType:(long long)arg13;
+- (id)initWithCaptureMode:(long long)arg1 captureDevice:(long long)arg2 videoConfiguration:(long long)arg3 audioConfiguration:(long long)arg4 flashMode:(long long)arg5 torchMode:(long long)arg6 HDRMode:(long long)arg7 irisMode:(long long)arg8 timerDuration:(long long)arg9 photoModeEffectFilterType:(long long)arg10 squareModeEffectFilterType:(long long)arg11 portraitModeEffectFilterType:(long long)arg12 portraitModeLightingEffectType:(long long)arg13 portraitModeApertureValue:(double)arg14;
 - (id)initWithConfiguration:(id)arg1;
 
 @end

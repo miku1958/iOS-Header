@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol MTLTexture;
 
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) unsigned long long bytesPerRow;
+@property (readonly, nonatomic) void *device;
 @property (readonly, nonatomic) int format;
 @property (readonly, nonatomic) struct __CVBuffer *pixelBuffer;
 @property (readonly, nonatomic) struct CGRect region; // @synthesize region=_region;

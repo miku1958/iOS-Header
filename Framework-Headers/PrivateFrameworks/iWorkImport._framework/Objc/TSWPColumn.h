@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSWPOffscreenColumn-Protocol.h>
 
@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long startCharIndex; // @synthesize startCharIndex=_startCharIndex;
 @property (readonly, nonatomic) TSWPStorage *storage; // @synthesize storage=_storage;
 @property (nonatomic) unsigned long long storageChangeCount; // @synthesize storageChangeCount=_storageChangeCount;
-@property (strong, nonatomic) id<TSWPStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
+@property (weak, nonatomic) id<TSWPStyleProvider> styleProvider; // @synthesize styleProvider=_styleProvider;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double textBottom;
 @property (nonatomic) BOOL textIsVertical; // @synthesize textIsVertical=_textIsVertical;
@@ -66,17 +66,35 @@ __attribute__((visibility("hidden")))
 
 + (struct CGRect)boundsRectForSelection:(id)arg1 columnArray:(id)arg2 includeRuby:(BOOL)arg3 includePaginatedAttachments:(BOOL)arg4;
 + (struct CGRect)caretRectForInsertionPoint:(id)arg1 withColumns:(id)arg2;
-+ (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 leadingEdge:(BOOL *)arg6;
-+ (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 pastCenterGoesToNextChar:(BOOL)arg5 constrainToAscentAndDescent:(BOOL)arg6 isAtEndOfLine:(BOOL *)arg7 leadingEdge:(BOOL *)arg8;
-+ (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 pastCenterGoesToNextChar:(BOOL)arg5 isAtEndOfLine:(BOOL *)arg6 leadingEdge:(BOOL *)arg7;
++ (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 ignoreEmptyColumns:(BOOL)arg5 isAtEndOfLine:(BOOL *)arg6 leadingEdge:(BOOL *)arg7;
++ (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 pastCenterGoesToNextChar:(BOOL)arg5 constrainToAscentAndDescent:(BOOL)arg6 ignoreEmptyColumns:(BOOL)arg7 isAtEndOfLine:(BOOL *)arg8 leadingEdge:(BOOL *)arg9;
++ (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 pastCenterGoesToNextChar:(BOOL)arg5 ignoreEmptyColumns:(BOOL)arg6 isAtEndOfLine:(BOOL *)arg7 leadingEdge:(BOOL *)arg8;
++ (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 constrainToAscentAndDescent:(BOOL)arg2 inLayoutTarget:(id)arg3;
++ (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 inLayoutTarget:(id)arg2;
++ (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 isTail:(BOOL)arg2 selectionType:(int)arg3 inLayoutTarget:(id)arg4;
++ (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 constrainToAscentAndDescent:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 leadingEdge:(BOOL *)arg6 inLayoutTarget:(id)arg7;
++ (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 isAtEndOfLine:(BOOL *)arg4 leadingEdge:(BOOL *)arg5 inLayoutTarget:(id)arg6;
++ (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 pastCenterGoesToNextChar:(BOOL)arg4 constrainToAscentAndDescent:(BOOL)arg5 isAtEndOfLine:(BOOL *)arg6 leadingEdge:(BOOL *)arg7 ignoreEmptyColumns:(BOOL)arg8 inLayoutTarget:(id)arg9;
++ (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 pastCenterGoesToNextChar:(BOOL)arg4 constrainToAscentAndDescent:(BOOL)arg5 isAtEndOfLine:(BOOL *)arg6 leadingEdge:(BOOL *)arg7 inLayoutTarget:(id)arg8;
++ (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 pastCenterGoesToNextChar:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 leadingEdge:(BOOL *)arg6 inLayoutTarget:(id)arg7;
++ (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 constrainToAscentAndDescent:(BOOL)arg3 isAtEndOfLine:(BOOL *)arg4 inLayoutTarget:(id)arg5;
++ (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 isAtEndOfLine:(BOOL *)arg3 inLayoutTarget:(id)arg4;
++ (struct _NSRange)charRangeOnSingleLineFragmentFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 inLayoutTarget:(id)arg3;
 + (id)closestColumnInColumnsArray:(id)arg1 forPoint:(struct CGPoint)arg2 ignoreEmptyColumns:(BOOL)arg3 ignoreDrawableOnlyColumns:(BOOL)arg4;
 + (id)columnForCharIndex:(unsigned long long)arg1 allowEndOfColumn:(BOOL)arg2 withColumns:(id)arg3;
++ (struct CGRect)columnRectForRange:(struct _NSRange)arg1 withColumns:(id)arg2;
 + (id)commentKnobBaseOriginForHighlightAtTextRange:(struct _NSRange)arg1 withColumns:(id)arg2;
 + (struct CGPoint)connectionLinePointForChangeRange:(struct _NSRange)arg1 withColumns:(id)arg2 layoutTarget:(id)arg3;
 + (id)footnoteMarkAttachmentInColumnArray:(id)arg1 atPoint:(struct CGPoint)arg2;
 + (id)footnoteReferenceAttachmentInColumnArray:(id)arg1 atPoint:(struct CGPoint)arg2;
 + (struct CGSize)layoutSizeForParagraphEnumerator:(const struct TSWPParagraphEnumerator *)arg1 inColumns:(id)arg2 lineCount:(out unsigned long long *)arg3 nextLineOffset:(out double *)arg4;
++ (struct CGPoint)p_pinPoint:(struct CGPoint)arg1 toRect:(struct CGRect)arg2;
++ (BOOL)partitionedAttachmentStartsAtCharIndex:(unsigned long long)arg1 withColumns:(id)arg2;
 + (id)pathForHighlightWithRange:(struct _NSRange)arg1 columnArray:(id)arg2 pathStyle:(int)arg3;
++ (CDStruct_d12891c8)pencilAnnotationLineMetricsAtCharIndex:(unsigned long long)arg1 withColumns:(id)arg2;
++ (id)pencilAnnotationRectsForSelection:(id)arg1 withColumns:(id)arg2 outRanges:(id *)arg3;
++ (struct CGPoint)pinPoint:(struct CGPoint)arg1 toBottomOfLineFragmentInColumns:(id)arg2;
++ (struct CGPoint)pinToNaturalBounds:(struct CGPoint)arg1 andLastLineFragment:(BOOL)arg2 inLayoutTarget:(id)arg3;
 + (struct _NSRange)rangeOfColumns:(id)arg1;
 + (struct CGRect)rectForSelection:(id)arg1 withColumns:(id)arg2;
 + (struct CGRect)rectForSelection:(id)arg1 withColumns:(id)arg2 useParagraphModeRects:(BOOL)arg3;
@@ -135,13 +153,15 @@ __attribute__((visibility("hidden")))
 - (id)pMutableRectsForSelectionRange:(struct _NSRange)arg1 selectionType:(int)arg2 includeSpaceAfter:(BOOL)arg3 includeSpaceBefore:(BOOL)arg4 includeLeading:(BOOL)arg5 forParagraphMode:(BOOL)arg6 includeRuby:(BOOL)arg7 includePaginatedAttachments:(BOOL)arg8 inranges:(id)arg9 outranges:(id *)arg10;
 - (unsigned long long)pRemapCharIndex:(unsigned long long)arg1 outIsAfterBreak:(out BOOL *)arg2 outWithTextSource:(out id *)arg3;
 - (unsigned long long)p_charIndexWithTextClosestToWPPoint:(struct CGPoint)arg1 pastCenterGoesToNextChar:(BOOL)arg2 outFragment:(const struct TSWPLineFragment **)arg3 leadingEdge:(BOOL *)arg4;
+- (BOOL)p_isFirstPartitionForCharIndex:(unsigned long long)arg1;
 - (BOOL)p_pencilAnnotationsShouldSkipLineFragment:(const struct TSWPLineFragment *)arg1;
 - (id)partitionedLayoutForInfo:(id)arg1;
 - (struct _NSRange)rangeOfLineFragmentAtIndex:(unsigned long long)arg1;
 - (id)rectsForSelection:(id)arg1 ranges:(id *)arg2;
+- (id)rectsForSelection:(id)arg1 ranges:(id *)arg2 includePaginatedAttachments:(BOOL)arg3;
 - (id)rectsForSelectionRange:(struct _NSRange)arg1 selectionType:(int)arg2 forParagraphMode:(BOOL)arg3 includeRuby:(BOOL)arg4 includePaginatedAttachments:(BOOL)arg5;
 - (id)rectsForSelectionRanges:(id)arg1 selectionType:(int)arg2;
-- (void)renderWithRenderer:(id)arg1 currentSelection:(id)arg2 limitSelection:(id)arg3 listRange:(struct _NSRange)arg4 rubyGlyphRange:(struct _NSRange)arg5 isCanvasInteractive:(BOOL)arg6 suppressedMisspellingRange:(struct _NSRange)arg7 blackAndWhite:(BOOL)arg8 dictationInterpretations:(id)arg9 autocorrections:(id)arg10 markedRange:(struct _NSRange)arg11 markedText:(id)arg12 renderMode:(int)arg13 pageCount:(unsigned long long)arg14 suppressInvisibles:(BOOL)arg15 suppressFontSmoothing:(BOOL)arg16 currentCanvasSelection:(id)arg17;
+- (void)renderWithRenderer:(id)arg1 currentSelection:(id)arg2 limitSelection:(id)arg3 listRange:(struct _NSRange)arg4 rubyGlyphRange:(struct _NSRange)arg5 isCanvasInteractive:(BOOL)arg6 isInDrawingMode:(BOOL)arg7 suppressedMisspellingRange:(struct _NSRange)arg8 blackAndWhite:(BOOL)arg9 dictationInterpretations:(id)arg10 autocorrections:(id)arg11 markedRange:(struct _NSRange)arg12 markedText:(id)arg13 renderMode:(int)arg14 pageCount:(unsigned long long)arg15 suppressInvisibles:(BOOL)arg16 suppressFontSmoothing:(BOOL)arg17 currentCanvasSelection:(id)arg18;
 - (BOOL)requiresGlyphVectorsForHeightMeasurement;
 - (void)setLineFragmentArray:(const shared_ptr_1a254aea *)arg1;
 - (id)singleLinePartitionedInfoAtStart:(BOOL)arg1;

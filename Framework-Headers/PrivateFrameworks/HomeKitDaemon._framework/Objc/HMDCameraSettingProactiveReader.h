@@ -36,6 +36,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (void)_callDidCompleteReadDelegateCallbackWithMessageHandled:(BOOL)arg1;
 - (void)_handleStreamStatusMultireadResponse:(id)arg1;
 - (id)initWithWorkQueue:(id)arg1 accessory:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 message:(id)arg5 streamMessageHandlers:(id)arg6 logID:(id)arg7;
 - (id)logIdentifier;

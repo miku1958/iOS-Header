@@ -15,6 +15,7 @@
 @property (strong, nonatomic) TDThemeCompressionType *compressionType; // @dynamic compressionType;
 
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
+- (id)renditionPackName;
 
 @end
 

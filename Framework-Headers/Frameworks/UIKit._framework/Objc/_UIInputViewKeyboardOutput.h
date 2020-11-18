@@ -6,8 +6,8 @@
 
 #import <TextInput/TIKeyboardOutput.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIInputViewKeyboardOutput : TIKeyboardOutput <NSCopying, NSSecureCoding>

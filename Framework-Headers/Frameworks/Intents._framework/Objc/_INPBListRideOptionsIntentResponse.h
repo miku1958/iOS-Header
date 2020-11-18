@@ -7,24 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBListRideOptionsIntentResponse-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBTimestamp;
+@class NSArray, NSString, _INPBTimestamp;
 
-@interface _INPBListRideOptionsIntentResponse : PBCodable <NSCopying>
+@interface _INPBListRideOptionsIntentResponse : PBCodable <_INPBListRideOptionsIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct {
+        unsigned int supportsApplePayForPayment:1;
+    } _has;
+    BOOL _supportsApplePayForPayment;
     _INPBTimestamp *_expirationDate;
-    NSMutableArray *_paymentMethods;
-    NSMutableArray *_rideOptions;
+    NSArray *_paymentMethods;
+    NSArray *_rideOptions;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBTimestamp *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly, nonatomic) BOOL hasExpirationDate;
-@property (strong, nonatomic) NSMutableArray *paymentMethods; // @synthesize paymentMethods=_paymentMethods;
-@property (strong, nonatomic) NSMutableArray *rideOptions; // @synthesize rideOptions=_rideOptions;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (nonatomic) BOOL hasSupportsApplePayForPayment;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *paymentMethods; // @synthesize paymentMethods=_paymentMethods;
+@property (readonly, nonatomic) unsigned long long paymentMethodsCount;
+@property (copy, nonatomic) NSArray *rideOptions; // @synthesize rideOptions=_rideOptions;
+@property (readonly, nonatomic) unsigned long long rideOptionsCount;
+@property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsApplePayForPayment; // @synthesize supportsApplePayForPayment=_supportsApplePayForPayment;
 
-+ (id)options;
 + (Class)paymentMethodsType;
 + (Class)rideOptionsType;
 - (void).cxx_destruct;
@@ -33,16 +44,11 @@
 - (void)clearPaymentMethods;
 - (void)clearRideOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (id)paymentMethodsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)paymentMethodsCount;
 - (BOOL)readFrom:(id)arg1;
 - (id)rideOptionsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)rideOptionsCount;
 - (void)writeTo:(id)arg1;
 
 @end

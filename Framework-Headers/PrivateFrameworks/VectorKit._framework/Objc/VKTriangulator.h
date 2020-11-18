@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableData;
 
+__attribute__((visibility("hidden")))
 @interface VKTriangulator : NSObject
 {
     void *_opaque_triangulator;

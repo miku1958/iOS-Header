@@ -4,17 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppSupport/CPExclusiveLock.h>
+#import <objc/NSObject.h>
 
-@interface ACAccountMigrationLock : CPExclusiveLock
+#import <Accounts/NSLocking-Protocol.h>
+
+@class CPExclusiveLock;
+
+@interface ACAccountMigrationLock : NSObject <NSLocking>
 {
+    CPExclusiveLock *_underlyingLock;
 }
 
 + (id)_currentSystemVersion;
-+ (id)createAccountMigrationLock;
-+ (BOOL)migrationFinished;
++ (BOOL)isMigrationFinished;
 + (void)signalMigrationFinished;
 + (void)writeMigrationVersionPref;
+- (void).cxx_destruct;
+- (id)init;
+- (void)lock;
+- (void)unlock;
 
 @end
 

@@ -25,6 +25,7 @@
 - (BOOL)removeAccessoryKeyForName:(NSString *)arg1 error:(id *)arg2;
 - (BOOL)removeAllAccessoryKeys:(id *)arg1;
 - (BOOL)removeControllerKeyPairForIdentifier:(NSString *)arg1 leaveTombstone:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)removeControllerKeyPairLeaveTombstone:(BOOL)arg1 error:(id *)arg2;
 - (BOOL)removeControllerKeyPairWithError:(id *)arg1;
 - (BOOL)saveKeyPair:(NSData *)arg1 username:(NSString *)arg2 syncable:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)saveLocalPairingIdentity:(HAPPairingIdentity *)arg1 syncable:(BOOL)arg2 error:(id *)arg3;

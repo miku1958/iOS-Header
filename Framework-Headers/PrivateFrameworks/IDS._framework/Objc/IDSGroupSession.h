@@ -20,15 +20,18 @@
 - (void).cxx_destruct;
 - (id)_internal;
 - (void)dealloc;
-- (void)groupSessionParticipantsWithRequestID:(id)arg1;
+- (id)initWithAccount:(id)arg1 destinations:(id)arg2 options:(id)arg3;
 - (id)initWithAccount:(id)arg1 options:(id)arg2;
 - (void)joinGroupSession;
+- (void)joinWithOptions:(id)arg1;
 - (void)leaveGroupSession;
+- (void)requestActiveParticipants;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (void)setParticipantInfo:(id)arg1;
 - (void)setPreferences:(id)arg1;
 - (unsigned int)state;
-- (void)updateMembers:(id)arg1 forGroupID:(id)arg2 isTriggeredLocally:(BOOL)arg3;
+- (void)updateMembers:(id)arg1 withContext:(id)arg2 triggeredLocally:(BOOL)arg3;
+- (void)updateParticipantData:(id)arg1 withContext:(id)arg2;
 
 @end
 

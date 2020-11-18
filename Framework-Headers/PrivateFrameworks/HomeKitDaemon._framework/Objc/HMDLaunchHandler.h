@@ -11,24 +11,26 @@
 
 @interface HMDLaunchHandler : HMFObject
 {
-    int _beingConfigured;
     NSObject<OS_dispatch_queue> *_handlerQueue;
-    NSMutableSet *_relaunchTriggeringClients;
+    NSMutableSet *_registeredRelaunchClients;
 }
 
-@property (nonatomic) int beingConfigured; // @synthesize beingConfigured=_beingConfigured;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *handlerQueue; // @synthesize handlerQueue=_handlerQueue;
-@property (strong, nonatomic) NSMutableSet *relaunchTriggeringClients; // @synthesize relaunchTriggeringClients=_relaunchTriggeringClients;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *handlerQueue; // @synthesize handlerQueue=_handlerQueue;
+@property (readonly, nonatomic) NSMutableSet *registeredRelaunchClients; // @synthesize registeredRelaunchClients=_registeredRelaunchClients;
 
++ (BOOL)_fileExistsAtPath:(id)arg1;
++ (BOOL)_removeFileAtPath:(id)arg1 error:(id *)arg2;
++ (int)_setJetsamPriorityUsingCommand:(int)arg1;
++ (BOOL)_writeDictionary:(id)arg1 toFileURL:(id)arg2 error:(id *)arg3;
++ (id)relaunchPlistPath;
 + (id)sharedHandler;
 - (void).cxx_destruct;
-- (void)_reevaluate;
-- (void)_removeAssertionPlist;
-- (void)_saveAssertionPlist;
-- (void)beingConfigured:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_setJetsamPriorityElevated:(BOOL)arg1;
+- (void)_updateOrRemoveRelaunchPlist;
 - (void)deregisterForRelaunch:(id)arg1;
 - (id)init;
 - (void)registerForRelaunch:(id)arg1;
+- (void)removePersistentRelaunchRegistrationsIfNecessary;
 
 @end
 

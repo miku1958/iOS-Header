@@ -22,6 +22,7 @@
     SafariFetcherServerProxy *_safariFetcherServerProxy;
     BOOL _readonly;
     BOOL _skipExternalNotifications;
+    BOOL _setupFinished;
     long long _mergeMode;
     WBDatabaseLockAcquisitor *_databaseLockAcquisitor;
     long long _lastObservedLocalMigrationState;
@@ -206,7 +207,7 @@
 - (BOOL)_reindexBookmarkID:(int)arg1 title:(id)arg2;
 - (void)_rerunMigrationsIfNecessary;
 - (BOOL)_restoreBookmarkBarIfMissing;
-- (BOOL)_restoreMissingSpecialBookmarks;
+- (BOOL)_restoreMissingSpecialBookmarksWithChangeNotification:(BOOL)arg1;
 - (void)_restoreOrMergeReadingListFolderWithChangeNotification:(BOOL)arg1;
 - (void)_restoreOrMergeWhiteListFolderAndContentsWithWebFilterWhiteList:(id)arg1 ensureChildCount:(BOOL)arg2 postChangeNotification:(BOOL)arg3;
 - (id)_rootFolderHiddenChildrenClause;

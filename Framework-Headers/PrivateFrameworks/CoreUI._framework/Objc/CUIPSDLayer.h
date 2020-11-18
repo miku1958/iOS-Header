@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CUIPSDLayer : NSObject
 {
     double _opacity;

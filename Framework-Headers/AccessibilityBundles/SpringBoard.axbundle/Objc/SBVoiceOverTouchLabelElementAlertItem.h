@@ -28,7 +28,7 @@
 - (void).cxx_destruct;
 - (BOOL)allowMenuButtonDismissal;
 - (void)configure:(BOOL)arg1 requirePasscodeForActions:(BOOL)arg2;
-- (BOOL)dismissOnLock;
+- (BOOL)reappearsAfterLock;
 - (BOOL)shouldShowInEmergencyCall;
 - (BOOL)shouldShowInLockScreen;
 - (BOOL)willShowInAwayItems;

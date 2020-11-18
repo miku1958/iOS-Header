@@ -12,8 +12,8 @@
 @protocol INRidePartySizeOptionExport <NSObject, JSExport>
 
 @property (nonatomic) struct _NSRange partySizeRange;
-@property (strong, nonatomic) INPriceRange *priceRange;
-@property (strong, nonatomic) NSString *sizeDescription;
+@property (copy, nonatomic) INPriceRange *priceRange;
+@property (copy, nonatomic) NSString *sizeDescription;
 
 - (id)init;
 @end

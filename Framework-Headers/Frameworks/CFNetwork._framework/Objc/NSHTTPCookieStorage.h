@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSHTTPCookieStorageInternal;
 
@@ -30,9 +30,12 @@
 - (void)_getCookieStoragePartitionsCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_getCookiesForPartition:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_getCookiesForURL:(id)arg1 mainDocumentURL:(id)arg2 partition:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_getCookiesForURL:(id)arg1 mainDocumentURL:(id)arg2 partition:(id)arg3 policyProperties:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)_initWithCFHTTPCookieStorage:(struct OpaqueCFHTTPCookieStorage *)arg1;
 - (id)_initWithIdentifier:(id)arg1 private:(BOOL)arg2;
 - (void)_saveCookies;
+- (void)_saveCookies:(CDUnknownBlockType)arg1;
+- (void)_setCookies:(id)arg1 forURL:(id)arg2 mainDocumentURL:(id)arg3 policyProperties:(id)arg4;
 - (void)_setPrivateBrowsingEnabled:(BOOL)arg1;
 - (void)_testingOfStoringOfCookie:(id)arg1;
 - (id)cookieRequestHeaderFieldsForURL:(id)arg1;

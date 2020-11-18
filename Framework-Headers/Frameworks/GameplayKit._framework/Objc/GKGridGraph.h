@@ -21,6 +21,7 @@
 
 + (id)graphFromGridStartingAt:(int)arg1 width:(int)arg2 height:(BOOL)arg3 diagonalsAllowed: /* Error: Ran out of types for this method. */;
 + (id)graphFromGridStartingAt:(int)arg1 width:(int)arg2 height:(BOOL)arg3 diagonalsAllowed:(Class)arg4 nodeClass: /* Error: Ran out of types for this method. */;
++ (BOOL)supportsSecureCoding;
 - (struct GKCGridGraph *)cGridGraph;
 - (Class)classForGenericArgumentAtIndex:(unsigned long long)arg1;
 - (void)connectNodeToAdjacentNodes:(id)arg1;

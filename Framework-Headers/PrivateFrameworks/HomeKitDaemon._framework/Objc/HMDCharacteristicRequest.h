@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithCharacteristic:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

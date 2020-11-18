@@ -22,7 +22,7 @@
 + (id)_propertiesForDevice;
 + (id)_sqlPropertyForPredicateProperty:(id)arg1;
 + (BOOL)_validateCodableDevice:(id)arg1 error:(id *)arg2;
-+ (id)columnsDefinition;
++ (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 + (id)deviceEntitiesWithDevice:(id)arg1 healthDatabase:(id)arg2 error:(id *)arg3;
 + (id)deviceEntitiesWithProperty:(id)arg1 matchingValues:(id)arg2 healthDatabase:(id)arg3 error:(id *)arg4;

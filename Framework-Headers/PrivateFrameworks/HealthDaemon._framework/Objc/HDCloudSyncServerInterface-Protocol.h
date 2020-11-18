@@ -14,7 +14,7 @@
 - (NSProgress *)remote_fetchCloudDescriptionWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)remote_fetchCloudSyncStatusWithCompletion:(void (^)(BOOL, NSDate *, NSDate *, BOOL, NSError *))arg1;
 - (NSProgress *)remote_forceCloudResetWithCompletion:(void (^)(BOOL, NSError *))arg1;
-- (NSProgress *)remote_forceCloudSyncWithOptions:(unsigned long long)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (NSProgress *)remote_forceCloudSyncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (NSProgress *)remote_waitOnHealthCloudSyncWithUUID:(NSUUID *)arg1 completion:(void (^)(long long, NSError *))arg2;
 - (NSProgress *)retmote_fetchCloudSyncProgressWithCompletion:(void (^)(BOOL, NSError *))arg1;
 @end

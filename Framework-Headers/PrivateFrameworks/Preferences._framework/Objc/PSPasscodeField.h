@@ -8,7 +8,7 @@
 
 #import <Preferences/UIKeyInput-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableString, NSString, UIColor;
+@class NSArray, NSMutableArray, NSMutableString, NSString, UIColor, UITextInputPasswordRules;
 @protocol PSPasscodeFieldDelegate;
 
 @interface PSPasscodeField : UIView <UIKeyInput>
@@ -42,6 +42,7 @@
 @property (nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance=_keyboardAppearance;
 @property (nonatomic) long long keyboardType;
 @property (nonatomic) unsigned long long numberOfEntryFields; // @synthesize numberOfEntryFields=_numberOfEntryFields;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic) BOOL securePasscodeEntry; // @synthesize securePasscodeEntry=_securePasscodeEntry;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;

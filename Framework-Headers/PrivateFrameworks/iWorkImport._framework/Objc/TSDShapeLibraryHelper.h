@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSDShapeLibraryHelper : NSObject
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 + (id)keywordByCapitalizingLowercasedKeyword:(id)arg1 locale:(id)arg2;
 + (id)keywordsByCapitalizingLowercasedKeywords:(id)arg1 locale:(id)arg2;
 + (BOOL)shouldAddBaseShapeNameAndKeywordsForLocale:(id)arg1;
-+ (BOOL)shouldUseStringScoreBasedSearchForLocale:(id)arg1;
 
 @end
 

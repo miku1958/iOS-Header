@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSThread, NSURLSessionDataTask;
 @protocol NSURLSessionDataDelegate;
@@ -25,7 +25,9 @@
 - (void)dealloc;
 - (id)initWithTask:(id)arg1 delegate:(id)arg2 modes:(id)arg3;
 - (void)invalidate;
+- (void)perform:(CDUnknownBlockType)arg1 waitUntilDone:(BOOL)arg2;
 - (void)performBlock:(CDUnknownBlockType)arg1;
+- (void)performBlockAndWait:(CDUnknownBlockType)arg1;
 - (void)performBlockOnClientThread:(CDUnknownBlockType)arg1;
 
 @end

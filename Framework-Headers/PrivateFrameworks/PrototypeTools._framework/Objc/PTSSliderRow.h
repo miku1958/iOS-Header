@@ -4,21 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PrototypeTools/PTSRow.h>
+#import <PrototypeTools/PTSliderRow.h>
 
-@interface PTSSliderRow : PTSRow
+@interface PTSSliderRow : PTSliderRow
 {
-    double _minValue;
-    double _maxValue;
 }
-
-@property (nonatomic) double maxValue; // @synthesize maxValue=_maxValue;
-@property (nonatomic) double minValue; // @synthesize minValue=_minValue;
-
-- (id)init;
-- (id)minValue:(double)arg1 maxValue:(double)arg2;
-- (Class)rowTableViewCellClass;
-- (void)updateWithRow:(id)arg1;
 
 @end
 

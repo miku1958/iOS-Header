@@ -11,10 +11,12 @@
 __attribute__((visibility("hidden")))
 @interface TSKFractionFormat : TSKFormat <NSCopying>
 {
+    BOOL _usePlusSign;
     int _fractionAccuracy;
 }
 
 @property (readonly, nonatomic) int fractionAccuracy; // @synthesize fractionAccuracy=_fractionAccuracy;
+@property (readonly, nonatomic) BOOL usePlusSign; // @synthesize usePlusSign=_usePlusSign;
 
 - (id)asFractionFormat;
 - (unsigned long long)hash;

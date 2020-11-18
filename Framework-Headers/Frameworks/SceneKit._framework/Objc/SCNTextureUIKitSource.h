@@ -6,6 +6,7 @@
 
 #import <SceneKit/SCNTextureLayerSource.h>
 
+__attribute__((visibility("hidden")))
 @interface SCNTextureUIKitSource : SCNTextureLayerSource
 {
     BOOL _setup;

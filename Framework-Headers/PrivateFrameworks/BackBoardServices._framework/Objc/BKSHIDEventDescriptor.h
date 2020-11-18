@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/BSDescriptionProviding-Protocol.h>
+#import <BackBoardServices/NSCopying-Protocol.h>
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface BKSHIDEventDescriptor : NSObject <NSSecureCoding, BSDescriptionProviding>
+@interface BKSHIDEventDescriptor : NSObject <NSSecureCoding, BSDescriptionProviding, NSCopying>
 {
     unsigned int _hidEventType;
 }
@@ -27,6 +28,7 @@
 + (id)reusableKeyboardDescriptorWithPage:(unsigned int)arg1 usage:(unsigned int)arg2;
 + (id)reusableVendorDefinedDescriptorWithPage:(unsigned int)arg1 usage:(unsigned int)arg2;
 + (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)describes:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

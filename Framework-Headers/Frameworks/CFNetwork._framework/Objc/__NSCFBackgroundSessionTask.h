@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithSession:(id)arg1 remoteSession:(id)arg2 request:(id)arg3 ident:(unsigned long long)arg4;
 - (id)initWithTaskInfo:(id)arg1 session:(id)arg2 remoteSession:(id)arg3 ident:(unsigned long long)arg4;
 - (void)setTaskDescription:(id)arg1;
+- (void)set_discretionaryOverride:(long long)arg1;
 
 @end
 

@@ -6,45 +6,25 @@
 
 #import <ManagedConfiguration/MCPayload.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class CRKEDUPayload, NSArray, NSData, NSDictionary, NSString;
 
 @interface MCEDUClassroomPayload : MCPayload
 {
-    BOOL _screenObservationPermissionModificationAllowed;
-    NSString *_organizationUUID;
-    NSString *_organizationName;
-    NSString *_payloadCertificateUUID;
-    NSData *_payloadCertificatePersistentID;
-    NSArray *_leaderPayloadCertificateAnchorUUID;
-    NSArray *_leaderPayloadCertificateAnchorPersistentID;
-    NSArray *_memberPayloadCertificateAnchorUUID;
-    NSArray *_memberPayloadCertificateAnchorPersistentID;
     NSString *_resourcePayloadCertificateUUID;
     NSData *_resourcePayloadCertificatePersistentID;
-    NSString *_userIdentifier;
-    NSArray *_departments;
-    NSArray *_groups;
-    NSArray *_users;
-    NSArray *_deviceGroups;
+    CRKEDUPayload *_crk_payload;
 }
 
 @property (readonly, copy, nonatomic) NSDictionary *configuration;
-@property (strong, nonatomic) NSArray *departments; // @synthesize departments=_departments;
-@property (strong, nonatomic) NSArray *deviceGroups; // @synthesize deviceGroups=_deviceGroups;
-@property (strong, nonatomic) NSArray *groups; // @synthesize groups=_groups;
-@property (strong, nonatomic) NSArray *leaderPayloadCertificateAnchorPersistentID; // @synthesize leaderPayloadCertificateAnchorPersistentID=_leaderPayloadCertificateAnchorPersistentID;
-@property (strong, nonatomic) NSArray *leaderPayloadCertificateAnchorUUID; // @synthesize leaderPayloadCertificateAnchorUUID=_leaderPayloadCertificateAnchorUUID;
-@property (strong, nonatomic) NSArray *memberPayloadCertificateAnchorPersistentID; // @synthesize memberPayloadCertificateAnchorPersistentID=_memberPayloadCertificateAnchorPersistentID;
-@property (strong, nonatomic) NSArray *memberPayloadCertificateAnchorUUID; // @synthesize memberPayloadCertificateAnchorUUID=_memberPayloadCertificateAnchorUUID;
-@property (strong, nonatomic) NSString *organizationName; // @synthesize organizationName=_organizationName;
-@property (strong, nonatomic) NSString *organizationUUID; // @synthesize organizationUUID=_organizationUUID;
-@property (strong, nonatomic) NSData *payloadCertificatePersistentID; // @synthesize payloadCertificatePersistentID=_payloadCertificatePersistentID;
-@property (strong, nonatomic) NSString *payloadCertificateUUID; // @synthesize payloadCertificateUUID=_payloadCertificateUUID;
+@property (strong, nonatomic) CRKEDUPayload *crk_payload; // @synthesize crk_payload=_crk_payload;
+@property (strong, nonatomic) NSArray *leaderPayloadCertificateAnchorPersistentID;
+@property (strong, nonatomic) NSArray *leaderPayloadCertificateAnchorUUID;
+@property (strong, nonatomic) NSArray *memberPayloadCertificateAnchorPersistentID;
+@property (strong, nonatomic) NSArray *memberPayloadCertificateAnchorUUID;
+@property (strong, nonatomic) NSData *payloadCertificatePersistentID;
+@property (copy, nonatomic) NSString *payloadCertificateUUID;
 @property (strong, nonatomic) NSData *resourcePayloadCertificatePersistentID; // @synthesize resourcePayloadCertificatePersistentID=_resourcePayloadCertificatePersistentID;
-@property (strong, nonatomic) NSString *resourcePayloadCertificateUUID; // @synthesize resourcePayloadCertificateUUID=_resourcePayloadCertificateUUID;
-@property (nonatomic) BOOL screenObservationPermissionModificationAllowed; // @synthesize screenObservationPermissionModificationAllowed=_screenObservationPermissionModificationAllowed;
-@property (strong, nonatomic) NSString *userIdentifier; // @synthesize userIdentifier=_userIdentifier;
-@property (strong, nonatomic) NSArray *users; // @synthesize users=_users;
+@property (copy, nonatomic) NSString *resourcePayloadCertificateUUID; // @synthesize resourcePayloadCertificateUUID=_resourcePayloadCertificateUUID;
 
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
@@ -52,13 +32,10 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
-- (id)parseDepartmentFromDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;
-- (id)parseDeviceGroupFromDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;
-- (id)parseGroupFromDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;
-- (id)parseUserFromDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;
 - (id)title;
+- (id)translatedCRKError:(id)arg1;
 
 @end
 

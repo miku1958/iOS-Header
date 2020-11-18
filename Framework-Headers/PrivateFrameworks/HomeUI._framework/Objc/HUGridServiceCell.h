@@ -15,6 +15,7 @@
 {
     BOOL _shouldColorDescription;
     BOOL _shouldShowLoadingState;
+    BOOL _shouldShowRoomName;
     BOOL _hasUpdatedUISinceLastReuse;
     BOOL _showingUpdatingState;
     BOOL _showingProgressIndicator;
@@ -48,6 +49,7 @@
 @property (strong, nonatomic) HUGridServiceCellTextView *serviceTextView; // @synthesize serviceTextView=_serviceTextView;
 @property (nonatomic) BOOL shouldColorDescription; // @synthesize shouldColorDescription=_shouldColorDescription;
 @property (nonatomic) BOOL shouldShowLoadingState; // @synthesize shouldShowLoadingState=_shouldShowLoadingState;
+@property (nonatomic) BOOL shouldShowRoomName; // @synthesize shouldShowRoomName=_shouldShowRoomName;
 @property (nonatomic) BOOL showProgressIndicatorAfterDelay;
 @property (strong, nonatomic) id<NACancelable> showProgressIndicatorAfterDelayToken; // @synthesize showProgressIndicatorAfterDelayToken=_showProgressIndicatorAfterDelayToken;
 @property (nonatomic) BOOL showUpdatingStateAfterDelay;

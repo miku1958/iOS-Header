@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSSStyleObject-Protocol.h>
 
@@ -18,8 +18,8 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)promiseForStyle:(id)arg1;
+- (void).cxx_destruct;
 - (void)addPromisee:(id)arg1;
-- (void)dealloc;
 - (void)fulfillWithStyle:(id)arg1;
 - (id)initWithStyle:(id)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <CoreParsec/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _CPParsecFeedback;
+@class NSArray, NSData, NSDictionary, NSString, _CPFeedbackPayload;
 
 @protocol _CPClientSession <NSObject>
 
@@ -14,25 +14,17 @@
 @property (copy, nonatomic) NSArray *feedbacks;
 @property (nonatomic) double firstUseDate;
 @property (nonatomic) BOOL firstUseOfTheDay;
-@property (readonly, nonatomic) BOOL hasAgent;
-@property (readonly, nonatomic) BOOL hasFirstUseDate;
-@property (readonly, nonatomic) BOOL hasFirstUseOfTheDay;
-@property (readonly, nonatomic) BOOL hasPreviousSessionEndReason;
-@property (readonly, nonatomic) BOOL hasRemoveTimestamps;
-@property (readonly, nonatomic) BOOL hasSessionStart;
-@property (readonly, nonatomic) BOOL hasUserGuidString;
-@property (readonly, nonatomic) BOOL hasVersion;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *parsecDeveloperID;
 @property (nonatomic) int previousSessionEndReason;
 @property (nonatomic) BOOL removeTimestamps;
 @property (copy, nonatomic) NSDictionary *resourceVersions;
 @property (nonatomic) double sessionStart;
 @property (copy, nonatomic) NSString *userGuidString;
-@property (copy, nonatomic) NSString *version;
 
-- (void)addFeedback:(_CPParsecFeedback *)arg1;
+- (void)addFeedback:(_CPFeedbackPayload *)arg1;
 - (void)clearFeedback;
-- (_CPParsecFeedback *)feedbackAtIndex:(unsigned long long)arg1;
+- (_CPFeedbackPayload *)feedbackAtIndex:(unsigned long long)arg1;
 - (unsigned long long)feedbackCount;
 - (BOOL)getResourceVersions:(id *)arg1 forKey:(NSString *)arg2;
 - (id)initWithDictionary:(NSDictionary *)arg1;

@@ -20,7 +20,7 @@
 - (void)toolControllerDidFinish:(PUPhotoEditToolController *)arg1;
 - (void)toolControllerDidFinishLoadingThumbnails:(PUPhotoEditToolController *)arg1;
 - (UIView *)toolControllerHitEventForwardView:(PUPhotoEditToolController *)arg1;
-- (long long)toolControllerImageModulationOptions:(PUPhotoEditToolController *)arg1;
+- (CDStruct_910f5d27)toolControllerImageModulationOptions:(PUPhotoEditToolController *)arg1;
 - (PHLivePhoto *)toolControllerLivePhoto:(PUPhotoEditToolController *)arg1;
 - (UIView *)toolControllerMainContainerView:(PUPhotoEditToolController *)arg1;
 - (PLPhotoEditRenderer *)toolControllerMainRenderer:(PUPhotoEditToolController *)arg1;

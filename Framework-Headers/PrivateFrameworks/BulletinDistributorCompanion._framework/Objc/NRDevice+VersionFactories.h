@@ -7,14 +7,19 @@
 #import <NanoRegistry/NRDevice.h>
 
 @interface NRDevice (VersionFactories)
-+ (BOOL)_activePairedDeviceSupportIsGreaterEqualVersion:(unsigned int)arg1;
++ (BOOL)activePairedDeviceSupportIsGreaterEqualVersion:(unsigned int)arg1;
 + (BOOL)activePairedDeviceSupportsAddBulletinReplyToken;
 + (BOOL)activePairedDeviceSupportsAttachmentFiles;
-+ (BOOL)activePairedDeviceSupportsDNDAssertionSync;
++ (BOOL)activePairedDeviceSupportsAuthorizationStatusLockScreenAndNCSettings;
++ (BOOL)activePairedDeviceSupportsCriticalAndGroupingSettings;
++ (BOOL)activePairedDeviceSupportsDisplayingSubtitle;
 + (BOOL)activePairedDeviceSupportsFileBulletinAdd;
 + (BOOL)activePairedDeviceSupportsFileSettingSync;
 + (BOOL)activePairedDeviceSupportsMultiplteAttachments;
 + (BOOL)activePairedDeviceSupportsNSNullPListExtenion;
++ (BOOL)activePairedDeviceSupportsSendingOnlyCategoryID;
++ (BOOL)activePairedDeviceSupportsSiriActionAppList;
++ (BOOL)activePairedDeviceSupportsUserNotificationListDestination;
 - (unsigned long long)bltVersion;
 @end
 

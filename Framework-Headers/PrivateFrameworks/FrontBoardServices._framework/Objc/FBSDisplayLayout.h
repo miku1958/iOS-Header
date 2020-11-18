@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
@@ -34,12 +34,12 @@
 @property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (readonly, nonatomic) struct CGRect referenceBounds; // @synthesize referenceBounds=_referenceBounds;
 @property (readonly) Class superclass;
-@property (readonly, strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
+- (void).cxx_destruct;
 - (id)_initWithElements:(id)arg1;
 - (void)_sortElements;
 - (void)addElement:(id)arg1;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)display;

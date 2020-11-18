@@ -22,7 +22,7 @@
 }
 
 @property (readonly, nonatomic) double distanceToStartOfManeuver; // @synthesize distanceToStartOfManeuver=_distanceToStartOfManeuver;
-@property (strong, nonatomic) NSDictionary *eventData; // @synthesize eventData=_eventData;
+@property (copy, nonatomic) NSDictionary *eventData; // @synthesize eventData=_eventData;
 @property (nonatomic) unsigned long long eventType; // @synthesize eventType=_eventType;
 @property (readonly, nonatomic) MNLocation *location; // @synthesize location=_location;
 @property (readonly, nonatomic) NSString *primaryDescription;

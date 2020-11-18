@@ -10,14 +10,14 @@
 {
 }
 
-+ (void)_sendNotificationsAfterRunningBlock:(CDUnknownBlockType)arg1;
++ (void)_sendNotificationsAndCallbacksAfterRunningBlock:(CDUnknownBlockType)arg1;
++ (id)_senderIdentityCapabilitiesByUUID;
 + (BOOL)accountsMatchForSecondaryCalling;
 + (BOOL)accountsSupportSecondaryCalling;
++ (void)addDelegate:(id)arg1 queue:(id)arg2;
 + (BOOL)areCTCapabilitiesValid;
 + (BOOL)areRelayCallingFeaturesEnabled;
-+ (BOOL)canAttemptEmergencyCallsInAirplaneMode;
 + (BOOL)canAttemptEmergencyCallsWithoutCellularConnection;
-+ (BOOL)canAttemptTelephonyCallsInAirplaneMode;
 + (BOOL)canAttemptTelephonyCallsWithoutCellularConnection;
 + (void)cancelPinRequestFromPrimaryDevice;
 + (id)client;
@@ -51,7 +51,10 @@
 + (BOOL)isWiFiCallingRoamingEnabled;
 + (id)outgoingRelayCallerID;
 + (int)relayCallingAvailability;
++ (void)removeDelegate:(id)arg1;
 + (void)requestPinFromPrimaryDevice;
++ (id)senderIdentityCapabilities;
++ (id)senderIdentityCapabilitiesWithUUID:(id)arg1;
 + (void)setRelayCallingEnabled:(BOOL)arg1;
 + (void)setRelayCallingEnabled:(BOOL)arg1 forDeviceWithID:(id)arg2;
 + (void)setThumperCallingAllowed:(BOOL)arg1 onSecondaryDeviceWithID:(id)arg2;

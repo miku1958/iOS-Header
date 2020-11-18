@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <UIKitCore/UIActivity.h>
 
-#import <UIKit/UIManagedConfigurationRestrictableActivity-Protocol.h>
-#import <UIKit/UIPrintInteractionControllerActivityDelegate-Protocol.h>
+#import <UIKitCore/UIManagedConfigurationRestrictableActivity-Protocol.h>
+#import <UIKitCore/UIPrintInteractionControllerActivityDelegate-Protocol.h>
 
 @class NSString, UIViewController, UIWindow;
 
@@ -30,7 +30,7 @@
 
 + (unsigned long long)_xpcAttributes;
 - (void).cxx_destruct;
-- (id)_activityImage;
+- (id)_activityBundleImageConfiguration;
 - (id)_embeddedActivityViewController;
 - (void)activityDidFinish:(BOOL)arg1;
 - (id)activityTitle;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_dispatch_queue, OS_xpc_object;
 
@@ -20,10 +20,10 @@ __attribute__((visibility("hidden")))
 @property (copy) CDUnknownBlockType disconnectBlock;
 @property (copy) CDUnknownBlockType messageBlock;
 
+- (void).cxx_destruct;
 - (id)_initSKXPCConnection;
 - (void)_reloadEventHandler;
 - (id)createXPCEndpoint;
-- (void)dealloc;
 - (id)init;
 - (id)initWithServiceName:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1;

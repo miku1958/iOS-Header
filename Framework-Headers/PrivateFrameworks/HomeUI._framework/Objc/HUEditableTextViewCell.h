@@ -11,12 +11,14 @@
 
 @interface HUEditableTextViewCell : HUIconCell
 {
+    BOOL _editEnabled;
     BOOL _showingPlaceholder;
     NSString *_text;
     NSString *_placeholderText;
     UITextView *_textView;
 }
 
+@property (nonatomic) BOOL editEnabled; // @synthesize editEnabled=_editEnabled;
 @property (copy, nonatomic) NSString *placeholderText; // @synthesize placeholderText=_placeholderText;
 @property (nonatomic) BOOL showingPlaceholder; // @synthesize showingPlaceholder=_showingPlaceholder;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;

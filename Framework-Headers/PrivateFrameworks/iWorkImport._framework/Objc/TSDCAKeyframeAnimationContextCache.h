@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *timingFunctions; // @synthesize timingFunctions=_timingFunctions;
 @property (readonly, nonatomic) NSArray *values; // @synthesize values=_values;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithAnimation:(id)arg1;
 - (double)percentAtTime:(double)arg1;
 - (id)valueAtTime:(double)arg1 initialValue:(id)arg2 groupTimingFactor:(double)arg3;

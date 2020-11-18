@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSSecureCoding-Protocol.h>
 
@@ -18,6 +18,8 @@
 + (id)functionWithName:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)CAMLType;
+- (unsigned long long)CA_copyNumericValue:(double [20])arg1;
+- (struct Object *)CA_copyRenderValue;
 - (void)_getPoints:(double *)arg1;
 - (float)_solveForInput:(float)arg1;
 - (void)dealloc;

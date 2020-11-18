@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBCacheToken.h>
+#import <UIKitCore/UIKBCacheToken.h>
 
 @class NSString;
 
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _size;
     int _state;
     int _clipCorners;
+    unsigned long long _groupNeighbors;
     BOOL _usesInsets;
     struct UIEdgeInsets _displayInsets;
 }

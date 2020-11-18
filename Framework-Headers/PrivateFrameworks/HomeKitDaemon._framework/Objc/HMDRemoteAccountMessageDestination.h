@@ -4,20 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HMFoundation/HMFMessageDestination.h>
+#import <HomeKitDaemon/HMDRemoteAccountHandleMessageDestination.h>
 
 @class HMDAccount;
 
-@interface HMDRemoteAccountMessageDestination : HMFMessageDestination
+@interface HMDRemoteAccountMessageDestination : HMDRemoteAccountHandleMessageDestination
 {
-    BOOL _multicast;
     HMDAccount *_account;
 }
 
 @property (readonly, nonatomic) HMDAccount *account; // @synthesize account=_account;
-@property (readonly, nonatomic, getter=isMulticast) BOOL multicast; // @synthesize multicast=_multicast;
 
-+ (id)allMessageDestinations;
 + (id)shortDescription;
 - (void).cxx_destruct;
 - (id)debugDescription;
@@ -26,7 +23,9 @@
 - (unsigned long long)hash;
 - (id)initWithTarget:(id)arg1;
 - (id)initWithTarget:(id)arg1 account:(id)arg2 multicast:(BOOL)arg3;
+- (id)initWithTarget:(id)arg1 handle:(id)arg2 multicast:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)remoteDestinationString;
 - (id)shortDescription;
 
 @end

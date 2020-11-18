@@ -16,6 +16,7 @@
 @interface FPItem : NSObject <NSFileProviderItem_Private, NSFileProviderItem, NSCopying, NSSecureCoding>
 {
     NSProgress *_progress;
+    NSArray *_tags;
     BOOL _downloading;
     BOOL _mostRecentVersionDownloaded;
     BOOL _uploaded;
@@ -50,6 +51,8 @@
     NSString *_containerDisplayName;
     NSString *_filename;
     NSString *_appContainerBundleIdentifier;
+    NSString *_preformattedOwnerName;
+    NSString *_preformattedMostRecentEditorName;
     NSString *_formerIdentifier;
     NSNumber *_hasUnresolvedConflicts;
     NSURL *_fileURL;
@@ -60,7 +63,6 @@
     NSString *_displayName;
     NSNumber *_favoriteRank;
     NSDate *_lastUsedDate;
-    NSData *_tagData;
     NSString *_providerIdentifier;
 }
 
@@ -113,6 +115,8 @@
 @property (nonatomic, getter=isPending) BOOL pending; // @synthesize pending=_pending;
 @property (nonatomic) NSString *placeholdIdentifier; // @synthesize placeholdIdentifier=_placeholdIdentifier;
 @property (readonly, nonatomic, getter=isPlaceholder) BOOL placeholder;
+@property (strong, nonatomic) NSString *preformattedMostRecentEditorName; // @synthesize preformattedMostRecentEditorName=_preformattedMostRecentEditorName;
+@property (strong, nonatomic) NSString *preformattedOwnerName; // @synthesize preformattedOwnerName=_preformattedOwnerName;
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) NSString *providerIdentifier; // @synthesize providerIdentifier=_providerIdentifier;
 @property (readonly, nonatomic, getter=isReadable) BOOL readable;
@@ -123,8 +127,8 @@
 @property (nonatomic) unsigned long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsMostRecentVersionDownloaded; // @synthesize supportsMostRecentVersionDownloaded=_supportsMostRecentVersionDownloaded;
-@property (copy, nonatomic) NSData *tagData; // @synthesize tagData=_tagData;
-@property (copy, nonatomic) NSArray *tags;
+@property (readonly, copy, nonatomic) NSData *tagData;
+@property (copy, nonatomic) NSArray *tags; // @synthesize tags=_tags;
 @property (nonatomic, getter=isTrashed) BOOL trashed; // @synthesize trashed=_trashed;
 @property (copy, nonatomic) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property (nonatomic, getter=isUbiquitous) BOOL ubiquitous; // @synthesize ubiquitous=_isUbiquitous;

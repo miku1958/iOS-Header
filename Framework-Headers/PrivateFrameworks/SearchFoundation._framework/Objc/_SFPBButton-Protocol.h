@@ -10,9 +10,6 @@
 
 @protocol _SFPBButton <NSObject>
 
-@property (readonly, nonatomic) BOOL hasImage;
-@property (readonly, nonatomic) BOOL hasIsSelected;
-@property (readonly, nonatomic) BOOL hasSelectedImage;
 @property (strong, nonatomic) _SFPBImage *image;
 @property (nonatomic) BOOL isSelected;
 @property (readonly, nonatomic) NSData *jsonData;

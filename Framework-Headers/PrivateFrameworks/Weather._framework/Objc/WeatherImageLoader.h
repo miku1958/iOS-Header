@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CPBitmapStore, NSCache;
 
@@ -20,10 +20,13 @@
 
 + (void)cacheImageIfNecessary:(id)arg1;
 + (id)cachedImageNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)colorForImageColor:(id)arg1 lighter:(BOOL)arg2;
 + (id)conditionImageBundle;
 + (id)conditionImageNameWithConditionIndex:(long long)arg1;
-+ (id)conditionImageNamed:(id)arg1;
++ (id)conditionImageNamed:(id)arg1 size:(struct CGSize)arg2 cloudAligned:(BOOL)arg3 stroke:(BOOL)arg4 strokeAlpha:(double)arg5 lighterColors:(BOOL)arg6;
++ (id)conditionImageNamed:(id)arg1 style:(long long)arg2;
 + (id)conditionImageWithConditionIndex:(long long)arg1;
++ (id)conditionImageWithConditionIndex:(long long)arg1 style:(long long)arg2;
 + (id)sharedImageLoader;
 - (void).cxx_destruct;
 - (id)cachedImageForKey:(id)arg1;

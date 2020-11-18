@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSOrderedSet;
 @protocol OS_dispatch_queue;
@@ -45,6 +45,7 @@
 + (id)nowPlayingNotifications;
 - (void).cxx_destruct;
 - (BOOL)_postNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (void)dispatchNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3;
 - (id)init;
 - (BOOL)postNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3;
 - (void)registerForNowPlayingNotificationsWithQueue:(id)arg1;

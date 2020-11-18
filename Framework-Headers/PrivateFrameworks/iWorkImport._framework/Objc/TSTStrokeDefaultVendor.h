@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSPointerArray;
-@protocol TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding, TSTTableStrokeProviding;
+@protocol TSTCategoryProviding, TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding, TSTTableStrokeProviding;
 
 __attribute__((visibility("hidden")))
 @interface TSTStrokeDefaultVendor : NSObject
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _isValid;
     id<TSTTableStrokeProviding> _strokeProvider;
     id<TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding> _tableProvider;
+    id<TSTCategoryProviding> _categoryProvider;
     NSPointerArray *_strokeTypeToLayerMap;
     struct _NSRange _headerSideBorderColumnRange;
     struct _NSRange _headerColumnSeparatorColumnRange;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) struct _NSRange bodySideBorderColumnRange; // @synthesize bodySideBorderColumnRange=_bodySideBorderColumnRange;
 @property (nonatomic) struct _NSRange bottomBorderRowRange; // @synthesize bottomBorderRowRange=_bottomBorderRowRange;
+@property (weak, nonatomic) id<TSTCategoryProviding> categoryProvider; // @synthesize categoryProvider=_categoryProvider;
 @property (nonatomic) struct _NSRange footerRowSeparatorRowRange; // @synthesize footerRowSeparatorRowRange=_footerRowSeparatorRowRange;
 @property (nonatomic) struct _NSRange headerColumnSeparatorColumnRange; // @synthesize headerColumnSeparatorColumnRange=_headerColumnSeparatorColumnRange;
 @property (nonatomic) struct _NSRange headerRowSeparatorRowRange; // @synthesize headerRowSeparatorRowRange=_headerRowSeparatorRowRange;
@@ -38,8 +40,10 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct _NSRange topBorderRowRange; // @synthesize topBorderRowRange=_topBorderRowRange;
 
 - (void).cxx_destruct;
-- (id)initWithStrokeProvider:(id)arg1 tableProvider:(id)arg2;
+- (id)initWithStrokeProvider:(id)arg1 tableProvider:(id)arg2 categoryProvider:(id)arg3;
 - (void)invalidate;
+- (BOOL)p_headerColumnSeparatorColumnRangeIsValid;
+- (BOOL)p_headerRowSeparatorRowRangeIsValid;
 - (int)p_strokeTypeForColumn:(unsigned int)arg1;
 - (int)p_strokeTypeForRow:(unsigned int)arg1;
 - (void)p_updateStrokeLayer:(id)arg1 forColumnStrokeType:(int)arg2;

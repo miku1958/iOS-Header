@@ -35,6 +35,9 @@
     long long _constraintState;
     long long _queuedConstraintState;
     BOOL _constraintsDirty;
+    BOOL _isPad;
+    BOOL _hasPearl;
+    double _minimumHeight;
     long long _state;
     PKPaymentAuthorizationLayout *_layout;
     unsigned long long _requestType;
@@ -65,7 +68,7 @@
 - (id)_titleAttributedStringForState:(long long)arg1;
 - (id)_titleLabelAttributedString:(id)arg1;
 - (void)dealloc;
-- (id)defaultHeightConstraint;
+- (id)defaultHeightConstraints;
 - (void)glyphView:(id)arg1 revealingCheckmark:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 layout:(id)arg2;

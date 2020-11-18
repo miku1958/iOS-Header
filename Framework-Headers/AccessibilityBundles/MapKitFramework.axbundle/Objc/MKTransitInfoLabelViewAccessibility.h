@@ -14,7 +14,6 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_axLabelFromLabelItems:(id)arg1;
-- (id)_axLabelFromMapItem;
 - (id)accessibilityLabel;
 - (BOOL)isAccessibilityElement;
 

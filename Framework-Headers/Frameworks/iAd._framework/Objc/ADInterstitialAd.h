@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iAd/ADAdRecipient-Protocol.h>
 
-@class ADAdSpace, ADInterstitialAdPresentationViewController, ADInterstitialView, NSString, UIView, UIViewController;
+@class ADAdSpace, ADInterstitialAdPresentationViewController, ADInterstitialView, ADLayoutOptions, NSString, UIView, UIViewController;
 @protocol ADInterstitialAdDelegate;
 
 @interface ADInterstitialAd : NSObject <ADAdRecipient>
@@ -30,9 +30,10 @@
     long long _options;
     NSString *_adResponseId;
     long long _lastErrorCode;
+    ADLayoutOptions *_layoutOptions;
     ADInterstitialAdPresentationViewController *_presentationViewController;
-    ADInterstitialView *_interstitialView;
     ADAdSpace *_adSpace;
+    ADInterstitialView *_interstitialView;
 }
 
 @property (nonatomic, getter=isActionInProgress) BOOL actionInProgress; // @synthesize actionInProgress=_actionInProgress;
@@ -53,6 +54,7 @@
 @property (weak, nonatomic) UIViewController *internalPresentingViewController;
 @property (strong, nonatomic) ADInterstitialView *interstitialView; // @synthesize interstitialView=_interstitialView;
 @property (nonatomic) long long lastErrorCode; // @synthesize lastErrorCode=_lastErrorCode;
+@property (strong, nonatomic) ADLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (nonatomic, getter=isLoaded) BOOL loaded; // @synthesize loaded=_loaded;
 @property (readonly, nonatomic) long long options; // @synthesize options=_options;
 @property (strong, nonatomic) ADInterstitialAdPresentationViewController *presentationViewController; // @synthesize presentationViewController=_presentationViewController;
@@ -66,9 +68,9 @@
 
 - (BOOL)_considerClosingAdSpace;
 - (void)_dismissModalInterstitial;
+- (id)_initWithInternalAdType:(int)arg1 layoutOptions:(id)arg2 options:(long long)arg3;
 - (void)_notifyDelegateOfBannerLoad;
 - (void)_presentFromViewController:(id)arg1;
-- (BOOL)_shouldClampPresentedFrame;
 - (void)adlibManagedVideoAdDidCompletePlay:(int)arg1;
 - (void)adlibManagedVideoAdDidImpress;
 - (void)adlibManagedVideoAdDidPausePlay;

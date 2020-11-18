@@ -22,20 +22,36 @@ __attribute__((visibility("hidden")))
     UUIDData_5fbc143e _nextSortRuleReferenceTrackerOwnerUid;
     UUIDData_5fbc143e _mergeOwnerUid;
     UUIDData_5fbc143e _nextMergeOwnerUid;
+    UUIDData_5fbc143e _pencilAnnotationOwnerUid;
+    UUIDData_5fbc143e _nextPencilAnnotationOwnerUid;
+    UUIDData_5fbc143e _categoryOwnerUid;
+    UUIDData_5fbc143e _nextCategoryOwnerUid;
+    UUIDData_5fbc143e _categoryAggregatesOwnerUid;
+    UUIDData_5fbc143e _nextCategoryAggregatesOwnerUid;
+    UUIDData_5fbc143e _groupByUid;
+    UUIDData_5fbc143e _nextGroupByUid;
     UUIDData_5fbc143e _pbTableUid;
 }
 
+@property (readonly, nonatomic) UUIDData_5fbc143e categoryAggregatesOwnerUid; // @synthesize categoryAggregatesOwnerUid=_categoryAggregatesOwnerUid;
+@property (readonly, nonatomic) UUIDData_5fbc143e categoryOwnerUID; // @synthesize categoryOwnerUID=_categoryOwnerUid;
 @property (readonly, nonatomic) UUIDData_5fbc143e conditionalStyleOwnerUID; // @synthesize conditionalStyleOwnerUID=_conditionalStyleOwnerUid;
+@property (readonly, nonatomic) UUIDData_5fbc143e groupByUid; // @synthesize groupByUid=_groupByUid;
 @property (readonly, nonatomic) UUIDData_5fbc143e hiddenStateForColumnsOwnerUid; // @synthesize hiddenStateForColumnsOwnerUid=_hiddenStateForColumnsOwnerUid;
 @property (readonly, nonatomic) UUIDData_5fbc143e hiddenStateForRowsOwnerUid; // @synthesize hiddenStateForRowsOwnerUid=_hiddenStateForRowsOwnerUid;
 @property (readonly, nonatomic) UUIDData_5fbc143e mergeOwnerUID; // @synthesize mergeOwnerUID=_mergeOwnerUid;
+@property (nonatomic) UUIDData_5fbc143e nextCategoryAggregatesOwnerUid; // @synthesize nextCategoryAggregatesOwnerUid=_nextCategoryAggregatesOwnerUid;
+@property (nonatomic) UUIDData_5fbc143e nextCategoryOwnerUID; // @synthesize nextCategoryOwnerUID=_nextCategoryOwnerUid;
 @property (nonatomic) UUIDData_5fbc143e nextConditionalStyleOwnerUID; // @synthesize nextConditionalStyleOwnerUID=_nextConditionalStyleOwnerUid;
+@property (nonatomic) UUIDData_5fbc143e nextGroupByUid; // @synthesize nextGroupByUid=_nextGroupByUid;
 @property (nonatomic) UUIDData_5fbc143e nextHiddenStateForColumnsOwnerUid; // @synthesize nextHiddenStateForColumnsOwnerUid=_nextHiddenStateForColumnsOwnerUid;
 @property (nonatomic) UUIDData_5fbc143e nextHiddenStateForRowsOwnerUid; // @synthesize nextHiddenStateForRowsOwnerUid=_nextHiddenStateForRowsOwnerUid;
 @property (nonatomic) UUIDData_5fbc143e nextMergeOwnerUID; // @synthesize nextMergeOwnerUID=_nextMergeOwnerUid;
+@property (nonatomic) UUIDData_5fbc143e nextPencilAnnotationOwnerUID; // @synthesize nextPencilAnnotationOwnerUID=_nextPencilAnnotationOwnerUid;
 @property (nonatomic) UUIDData_5fbc143e nextSortRuleReferenceTrackerOwnerUID; // @synthesize nextSortRuleReferenceTrackerOwnerUID=_nextSortRuleReferenceTrackerOwnerUid;
 @property (nonatomic) UUIDData_5fbc143e nextTableUID; // @synthesize nextTableUID=_nextTableUid;
 @property (readonly, nonatomic) UUIDData_5fbc143e pbTableUID; // @synthesize pbTableUID=_pbTableUid;
+@property (readonly, nonatomic) UUIDData_5fbc143e pencilAnnotationOwnerUID; // @synthesize pencilAnnotationOwnerUID=_pencilAnnotationOwnerUid;
 @property (readonly, nonatomic) UUIDData_5fbc143e sortRuleReferenceTrackerOwnerUID; // @synthesize sortRuleReferenceTrackerOwnerUID=_sortRuleReferenceTrackerOwnerUid;
 @property (nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUid;
 
@@ -45,7 +61,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithArchive:(const struct OwnerUIDMapperArchive *)arg1;
 - (id)initWithFormulaOwnerUID:(const UUIDData_5fbc143e *)arg1;
 - (id)initWithIdentityMapping;
-- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 pasteBoardTableUID:(const UUIDData_5fbc143e *)arg2 hiddenStateOwnerForRowsUID:(const UUIDData_5fbc143e *)arg3 hiddenStateOwnerForColumnsUID:(const UUIDData_5fbc143e *)arg4 conditionalStyleOwnerUID:(const UUIDData_5fbc143e *)arg5 sortRuleReferenceTrackerOwnerUID:(const UUIDData_5fbc143e *)arg6 mergeOwnerUID:(const UUIDData_5fbc143e *)arg7;
+- (id)initWithTableUID:(const UUIDData_5fbc143e *)arg1 pasteBoardTableUID:(const UUIDData_5fbc143e *)arg2 hiddenStateOwnerForRowsUID:(const UUIDData_5fbc143e *)arg3 hiddenStateOwnerForColumnsUID:(const UUIDData_5fbc143e *)arg4 conditionalStyleOwnerUID:(const UUIDData_5fbc143e *)arg5 sortRuleReferenceTrackerOwnerUID:(const UUIDData_5fbc143e *)arg6 mergeOwnerUID:(const UUIDData_5fbc143e *)arg7 pencilAnnotationOwnerUID:(const UUIDData_5fbc143e *)arg8 categoryOwnerUID:(const UUIDData_5fbc143e *)arg9 categoryAggregatesOwnerUID:(const UUIDData_5fbc143e *)arg10 groupByUID:(const UUIDData_5fbc143e *)arg11;
 - (id)makeInverse;
 - (const UUIDMap_b66c2694 *)ownerUIDMap;
 - (void)recreateUIDs;

@@ -44,12 +44,10 @@
 @property (readonly, nonatomic) id<GEOResourceManifestServerProxy> serverProxy; // @synthesize serverProxy=_serverProxy;
 @property (readonly) Class superclass;
 
-+ (id)additionalMigrationTaskClasses;
 + (void)disableServerConnection;
 + (id)modernManager;
 + (id)modernManagerForConfiguration:(id)arg1;
 + (id)modernManagerForTileGroupIdentifier:(unsigned int)arg1;
-+ (void)setAdditionalMigrationTaskClasses:(id)arg1;
 + (void)setHiDPI:(BOOL)arg1;
 + (void)setServerProxyClass:(Class)arg1;
 + (id)sharedManager;
@@ -60,9 +58,11 @@
 - (id)_activeTileSetForKey:(const struct _GEOTileKey *)arg1;
 - (void)_buildResourceNamesToPaths;
 - (id)_detailedDescriptionDictionaryRepresentationForTileGroup:(id)arg1;
+- (unsigned long long)_fromgeod_maximumZoomLevelForStyle:(int)arg1 scale:(int)arg2;
 - (id)_loadActiveTileGroupIfNecessary:(BOOL)arg1;
 - (void)_localeChanged:(id)arg1;
 - (void)_notifyObserversOfResourcesChange;
+- (void)_purgeCachedResourceInfo;
 - (void)_registerHandlerForStateCapture;
 - (void)_scheduleCachedResourceInfoPurgeTimer;
 - (struct os_state_data_s *)_stateCapture;
@@ -80,6 +80,7 @@
 - (id)baseURLStringForTileKey:(const struct _GEOTileKey *)arg1;
 - (void)cancelCurrentManifestUpdate;
 - (void)closeServerConnection;
+- (void)closeServerConnection:(BOOL)arg1;
 - (void)deactivateResourceScale:(int)arg1;
 - (void)deactivateResourceScenario:(int)arg1;
 - (void)dealloc;
@@ -124,6 +125,7 @@
 - (void)updateManifest:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateManifestIfNecessary:(CDUnknownBlockType)arg1;
 - (id)updateProgress;
+- (BOOL)useProxyAuthForTileKey:(const struct _GEOTileKey *)arg1;
 - (unsigned int)versionForTileKey:(const struct _GEOTileKey *)arg1;
 
 @end

@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSString, TILRUDictionary, TIRevisionHistoryToken;
 @protocol TIRevisionHistoryDelegate;
 
 @interface TIRevisionHistory : NSObject
 {
+    BOOL _shouldReportRevisionToDP;
     id<TIRevisionHistoryDelegate> _delegate;
     TILRUDictionary *_recentAutocorrections;
     NSString *_documentText;
@@ -27,12 +28,14 @@
 @property (strong, nonatomic) TIRevisionHistoryToken *lastRejectedToken; // @synthesize lastRejectedToken=_lastRejectedToken;
 @property (strong, nonatomic) TILRUDictionary *recentAutocorrections; // @synthesize recentAutocorrections=_recentAutocorrections;
 @property (nonatomic) struct _NSRange selectedRange; // @synthesize selectedRange=_selectedRange;
+@property (nonatomic) BOOL shouldReportRevisionToDP; // @synthesize shouldReportRevisionToDP=_shouldReportRevisionToDP;
 @property (readonly, nonatomic) NSMutableArray *tokenization; // @synthesize tokenization=_tokenization;
 @property (readonly, nonatomic) void *tokenizer; // @synthesize tokenizer=_tokenizer;
 
+- (void).cxx_destruct;
 - (void)acceptCurrentSentence;
 - (void)acceptText:(id)arg1 isAutoshifted:(BOOL)arg2;
-- (void)acceptToken:(id)arg1 withContext:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 saveToDifferentialPrivacy:(BOOL)arg4;
+- (void)acceptToken:(id)arg1 withContext:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 saveToDifferentialPrivacy:(int)arg4;
 - (void)acceptTokensInRange:(struct _NSRange)arg1;
 - (void)addRevisedTokenString:(id)arg1 withTokenID:(struct TITokenID)arg2 inDocumentRange:(struct _NSRange)arg3 toRevision:(id)arg4;
 - (void)adjustTokenOffsetAfterDeletedTokenRange:(struct _NSRange)arg1 withDeletedCharacterCount:(unsigned long long)arg2;

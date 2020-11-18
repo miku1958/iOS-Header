@@ -8,7 +8,7 @@
 
 #import <TemplateKit/TLKTextAreaViewTesting-Protocol.h>
 
-@class NSArray, NSString, TLKImage, TLKMultilineText, TLKObserver, TLKRichText, TLKTextAreaView;
+@class NSArray, NSString, TLKImage, TLKMultilineText, TLKRichText, TLKTextAreaView;
 
 @interface TLKDetailsView : TLKView <TLKTextAreaViewTesting>
 {
@@ -19,36 +19,28 @@
     NSArray *_details;
     TLKRichText *_footnote;
     TLKTextAreaView *_textAreaView;
-    TLKObserver *_detailsObserver;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong) NSArray *details; // @synthesize details=_details;
-@property (strong) TLKObserver *detailsObserver; // @synthesize detailsObserver=_detailsObserver;
-@property (strong) TLKRichText *footnote; // @synthesize footnote=_footnote;
+@property (strong, nonatomic) NSArray *details; // @synthesize details=_details;
+@property (strong, nonatomic) TLKRichText *footnote; // @synthesize footnote=_footnote;
 @property (readonly) unsigned long long hash;
-@property (strong) TLKMultilineText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
-@property (strong) TLKImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
-@property BOOL secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
+@property (strong, nonatomic) TLKMultilineText *secondaryTitle; // @synthesize secondaryTitle=_secondaryTitle;
+@property (strong, nonatomic) TLKImage *secondaryTitleImage; // @synthesize secondaryTitleImage=_secondaryTitleImage;
+@property (nonatomic) BOOL secondaryTitleIsDetached; // @synthesize secondaryTitleIsDetached=_secondaryTitleIsDetached;
 @property (readonly) Class superclass;
 @property (strong) TLKTextAreaView *textAreaView; // @synthesize textAreaView=_textAreaView;
-@property (strong) TLKRichText *title; // @synthesize title=_title;
+@property (strong, nonatomic) TLKRichText *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
-- (void)dealloc;
-- (void)disableUnbatchedUpdates;
-- (struct UIEdgeInsets)effectiveAlignmentRectInsets;
 - (id)footnoteLabelString;
 - (id)init;
-- (id)observableProperties;
 - (void)observedPropertiesChanged;
-- (void)performBatchUpdates:(CDUnknownBlockType)arg1;
 - (id)secondaryTitleLabelString;
 - (void)styleDidChange:(unsigned long long)arg1;
 - (id)textAreaLabelStrings;
 - (id)titleLabelString;
-- (void)updateExistingDetailText:(id)arg1;
 
 @end
 

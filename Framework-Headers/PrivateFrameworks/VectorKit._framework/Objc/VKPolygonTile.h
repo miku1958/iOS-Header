@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)buildCoastlinesWithStyleManager:(shared_ptr_a3c46825 *)arg1;
 - (void)buildMeshesWithDevice:(Device_9226c869 *)arg1 triangulator:(id)arg2 prepareExtrusion:(BOOL)arg3;
 - (void)dealloc;
-- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 prepareExtrusion:(BOOL)arg3 styleManager:(shared_ptr_a3c46825)arg4 sharedResources:(id)arg5 contentScale:(double)arg6 device:(Device_9226c869 *)arg7;
+- (id)initWithKey:(const struct VKTileKey *)arg1 modelTile:(id)arg2 userInfo:(id)arg3 prepareExtrusion:(BOOL)arg4 styleManager:(shared_ptr_a3c46825)arg5 sharedResources:(id)arg6 contentScale:(double)arg7 device:(Device_9226c869 *)arg8;
 - (void)setTransitNodesRouteAttributes:(const unordered_map_aa0d84a8 *)arg1;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VoiceServices/VSSpeechConnectionDelegate-Protocol.h>
 
@@ -92,6 +92,7 @@
 - (id)availableLanguageCodes;
 - (id)availableVoicesForLanguageCode:(id)arg1;
 - (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
+- (id)cachePresynthesizedAudioRequest:(id)arg1;
 - (void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
 - (void)connection:(id)arg1 presynthesizedAudioRequest:(id)arg2 didStopAtEnd:(BOOL)arg3 error:(id)arg4;
 - (void)connection:(id)arg1 presynthesizedAudioRequest:(id)arg2 successWithInstrumentMetrics:(id)arg3 error:(id)arg4;

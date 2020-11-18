@@ -21,7 +21,6 @@
     PSListController *_presenter;
     PSSpecifier *_familyCellSpecifier;
     PSSpecifier *_invitationsCellSpecifier;
-    BOOL _didAttemptToGetFamilyDetails;
     BOOL _isLoadingFamilyDetails;
     BOOL _didFailToGetFamilyDetails;
     NSMutableArray *_pendingFamilyDetailsCompletionBlocks;
@@ -36,8 +35,8 @@
     AAUIAccountManager *_accountManager;
     AAGrandSlamSigner *_grandSlamSigner;
     FARequestConfigurator *_requestConfigurator;
-    BOOL _isUsingV2Flows;
     FACircleContext *_context;
+    BOOL _delayedEnterInitiateFlow;
     id<AAUISpecifierProviderDelegate> _delegate;
     NSArray *_specifiers;
 }
@@ -54,7 +53,9 @@
 - (id)_acuPresenter;
 - (id)_appleAccount;
 - (void)_clearFamilyState;
-- (id)_configureContextWithType:(id)arg1 ResourceDictionary:(id)arg2;
+- (id)_configureContextWithType:(id)arg1 resourceDictionary:(id)arg2;
+- (id)_familySpecifier;
+- (unsigned long long)_familyState;
 - (id)_grandSlamSigner;
 - (void)_handleFamilyDetailsResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_handleFamilyEligibilityResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -65,6 +66,10 @@
 - (void)_handleShowInviteActionURL:(id)arg1 isChildTransfer:(BOOL)arg2;
 - (void)_handleShowInvitesActionURL:(id)arg1;
 - (void)_handleStartFamilySetupActionURL:(id)arg1;
+- (void)_initiateFamily;
+- (void)_initiateFamilyWithResources:(id)arg1;
+- (id)_invitationsCellSpecifier;
+- (BOOL)_isEnabled;
 - (void)_loadFamilyDetailsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadFamilyEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_pendingInvitationsSpecifierWasTapped:(id)arg1;
@@ -75,8 +80,6 @@
 - (id)_requestConfigurator;
 - (void)_setUpFamilySpecifierWasTapped:(id)arg1;
 - (void)_showUnderageAlertWithEligibilityResponse:(id)arg1;
-- (void)_v2InitiateFamily;
-- (void)_v2InitiateFamily:(id)arg1;
 - (id)_valueForFamilySpecifier:(id)arg1;
 - (id)_valueForInvitiationsSpecifier:(id)arg1;
 - (void)_viewFamilySpecifierWasTapped:(id)arg1;
@@ -87,7 +90,6 @@
 - (BOOL)handleURL:(id)arg1;
 - (id)initWithAccountManager:(id)arg1;
 - (id)initWithAccountManager:(id)arg1 presenter:(id)arg2;
-- (BOOL)isAccountInGrayMode;
 - (void)reloadSpecifiers;
 - (void)remoteUIController:(id)arg1 didRefreshObjectModel:(id)arg2;
 - (BOOL)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3;

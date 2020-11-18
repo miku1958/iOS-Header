@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <CoreImage/CIFeature.h>
 
 __attribute__((visibility("hidden")))
-@interface CIVNFeature : NSObject
+@interface CIVNFeature : CIFeature
 {
     float confidence;
 }

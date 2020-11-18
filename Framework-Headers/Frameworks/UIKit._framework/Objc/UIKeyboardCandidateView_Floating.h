@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardCandidateView.h>
+#import <UIKitCore/UIKeyboardCandidateView.h>
 
-#import <UIKit/UIKeyboardCandidateViewInline-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateViewInline-Protocol.h>
 
 @class NSString;
 
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setCandidateViewExtended:(BOOL)arg1;
+- (BOOL)shouldUseKeyboardBackground:(id)arg1;
 
 @end
 

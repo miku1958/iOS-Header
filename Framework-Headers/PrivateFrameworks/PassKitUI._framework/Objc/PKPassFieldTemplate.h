@@ -16,21 +16,27 @@
     NSNumber *_boxedTextAlignment;
     NSNumber *_boxedVerticalPadding;
     NSNumber *_boxedSuppressesLabel;
+    NSNumber *_boxedLabelCaseStyle;
+    NSNumber *_boxedValueSignificant;
     NSNumber *_boxedValueCanWrap;
     NSNumber *_boxedSuppressesEmptyLabel;
 }
 
+@property (strong, nonatomic) NSNumber *boxedLabelCaseStyle; // @synthesize boxedLabelCaseStyle=_boxedLabelCaseStyle;
 @property (strong, nonatomic) NSNumber *boxedSuppressesEmptyLabel; // @synthesize boxedSuppressesEmptyLabel=_boxedSuppressesEmptyLabel;
 @property (strong, nonatomic) NSNumber *boxedSuppressesLabel; // @synthesize boxedSuppressesLabel=_boxedSuppressesLabel;
 @property (strong, nonatomic) NSNumber *boxedTextAlignment; // @synthesize boxedTextAlignment=_boxedTextAlignment;
 @property (strong, nonatomic) NSNumber *boxedValueCanWrap; // @synthesize boxedValueCanWrap=_boxedValueCanWrap;
+@property (strong, nonatomic) NSNumber *boxedValueSignificant; // @synthesize boxedValueSignificant=_boxedValueSignificant;
 @property (strong, nonatomic) NSNumber *boxedVerticalPadding; // @synthesize boxedVerticalPadding=_boxedVerticalPadding;
+@property (nonatomic) long long labelCaseStyle;
 @property (strong, nonatomic) UIFont *labelFont; // @synthesize labelFont=_labelFont;
 @property (nonatomic) BOOL suppressesEmptyLabel;
 @property (nonatomic) BOOL suppressesLabel;
 @property (nonatomic) long long textAlignment;
 @property (nonatomic) BOOL valueCanWrap;
 @property (strong, nonatomic) UIFont *valueFont; // @synthesize valueFont=_valueFont;
+@property (nonatomic) BOOL valueSignificant;
 @property (nonatomic) double verticalPadding;
 @property (strong, nonatomic) Class viewSubclass; // @synthesize viewSubclass=_viewSubclass;
 

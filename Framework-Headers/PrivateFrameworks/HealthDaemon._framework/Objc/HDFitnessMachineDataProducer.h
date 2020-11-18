@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDEurotasData, HDHealthServiceManager, HDProfile, HKQuantity, _HDFTMProducerMetricTracker;
+#import <HealthDaemon/HDWorkoutDataAccumulatorObserver-Protocol.h>
+
+@class HDEurotasData, HDHealthServiceManager, HDProfile, HKQuantity, NSString, _HDFTMProducerMetricTracker;
 @protocol OS_dispatch_queue;
 
-@interface HDFitnessMachineDataProducer : NSObject
+@interface HDFitnessMachineDataProducer : NSObject <HDWorkoutDataAccumulatorObserver>
 {
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _sessionIdentifier;
@@ -23,29 +25,31 @@
     HDProfile *_profile;
 }
 
-@property (readonly, nonatomic) BOOL connected;
+@property (readonly, nonatomic) BOOL attached;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HDHealthServiceManager *healthServiceManager;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_queue_detachHealthServiceSession;
 - (id)_queue_generateEurotasData;
-- (void)_queue_metricsAddedToWorkout:(id)arg1;
-- (void)_queue_quantitiesAddedToWorkout:(id)arg1;
 - (void)_queue_sendEurotasData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_queue_updateFitnessMachine;
 - (void)_queue_updateFitnessMachineWithCompletion:(CDUnknownBlockType)arg1 forcing:(BOOL)arg2;
+- (void)_queue_workoutDataAccumulator:(id)arg1 didUpdateStatistics:(id)arg2;
 - (void)_readHeartRateEnabledPreference;
-- (void)connectToHealthServiceSession:(unsigned long long)arg1;
+- (void)attachHealthServiceSession:(unsigned long long)arg1;
 - (void)dealloc;
-- (void)deliverFinalValues:(CDUnknownBlockType)arg1;
-- (void)disconnectHealthServiceSession;
+- (void)deliverFinalValuesAndDetachWithCompletion:(CDUnknownBlockType)arg1;
+- (void)detachHealthServiceSession;
 - (id)initWithProfile:(id)arg1;
-- (void)metricsAddedToWorkout:(id)arg1;
 - (void)pauseCurrentSession;
-- (void)quantitiesAddedToWorkout:(id)arg1;
-- (void)quantitiesResetForWorkout:(id)arg1;
 - (void)resumeCurrentSession;
 - (void)sendInitialValues;
+- (void)workoutDataAccumulator:(id)arg1 didUpdateStatistics:(id)arg2;
 
 @end
 

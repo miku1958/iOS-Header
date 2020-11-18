@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioMix, AVComposition, AVDepthData, AVVideoComposition, CIImage, NSDictionary, NSString, NUGeometrySpaceMap, NUImageGeometry;
+@class AVAudioMix, AVComposition, AVDepthData, AVPortraitEffectsMatte, AVVideoComposition, CIImage, NSDictionary, NSString, NUGeometrySpaceMap, NUImageGeometry;
 @protocol NUImageProperties, NUVideoProperties;
 
 @interface NURenderNode : NSObject
@@ -20,6 +20,7 @@
     struct NSDictionary *_xforms;
     CIImage *_cached_outputImage;
     AVDepthData *_cached_outputDepthData;
+    AVPortraitEffectsMatte *_cached_outputPortraitEffectsMatte;
     AVComposition *_cached_outputVideo;
     AVVideoComposition *_cached_outputVideoComposition;
     AVAudioMix *_cached_outputAudioMix;
@@ -37,6 +38,7 @@
 @property (strong) AVDepthData *cached_outputDepthData; // @synthesize cached_outputDepthData=_cached_outputDepthData;
 @property (strong) CIImage *cached_outputImage; // @synthesize cached_outputImage=_cached_outputImage;
 @property (strong) NUImageGeometry *cached_outputImageGeometry; // @synthesize cached_outputImageGeometry=_cached_outputImageGeometry;
+@property (strong) AVPortraitEffectsMatte *cached_outputPortraitEffectsMatte; // @synthesize cached_outputPortraitEffectsMatte=_cached_outputPortraitEffectsMatte;
 @property (strong) AVComposition *cached_outputVideo; // @synthesize cached_outputVideo=_cached_outputVideo;
 @property (strong) AVVideoComposition *cached_outputVideoComposition; // @synthesize cached_outputVideoComposition=_cached_outputVideoComposition;
 @property (strong) id<NUVideoProperties> cached_videoProperties; // @synthesize cached_videoProperties=_cached_videoProperties;
@@ -62,6 +64,7 @@
 - (id)_evaluateImage:(out id *)arg1;
 - (id)_evaluateImageGeometry:(out id *)arg1;
 - (id)_evaluateImageProperties:(out id *)arg1;
+- (id)_evaluatePortraitEffectsMatte:(out id *)arg1;
 - (id)_evaluateVideo:(out id *)arg1;
 - (id)_evaluateVideoComposition:(out id *)arg1;
 - (id)_evaluateVideoProperties:(out id *)arg1;
@@ -87,6 +90,7 @@
 - (id)nodeByReplayingAgainstCache:(id)arg1 pipelineState:(id)arg2 error:(out id *)arg3;
 - (void)nu_updateDigest:(id)arg1;
 - (id)originalDepthData:(out id *)arg1;
+- (id)originalPortraitEffectsMatte:(out id *)arg1;
 - (id)outputAudioMix:(out id *)arg1;
 - (id)outputGeometrySpaceMap:(out id *)arg1;
 - (id)outputImage:(out id *)arg1;

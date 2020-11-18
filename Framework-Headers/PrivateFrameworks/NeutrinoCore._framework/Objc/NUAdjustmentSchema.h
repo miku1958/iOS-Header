@@ -22,6 +22,7 @@
 - (id)deserialize:(id)arg1 error:(out id *)arg2;
 - (id)deserializeAdjustment:(id)arg1 error:(out id *)arg2;
 - (BOOL)deserializeSettings:(id)arg1 fromDictionary:(id)arg2 error:(out id *)arg3;
+- (void)enumerateProperties:(CDUnknownBlockType)arg1;
 - (id)initWithIdentifier:(id)arg1 attributes:(id)arg2;
 - (id)initWithIdentifier:(id)arg1 settings:(struct NSDictionary *)arg2 attributes:(id)arg3;
 - (BOOL)isValid:(out id *)arg1;

@@ -13,11 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (struct CGPoint)accessibilityActivationPoint;
+- (id)_axOverlayViewElement;
+- (id)_axOverlayViewLayers;
+- (void)_axSetOverlayViewElement:(id)arg1;
+- (void)_axSetOverlayViewLayers:(id)arg1;
+- (BOOL)_axShouldExposeDrawingElement;
 - (id)accessibilityElements;
-- (id)accessibilityHint;
-- (id)accessibilityLabel;
-- (BOOL)isAccessibilityElement;
 
 @end
 

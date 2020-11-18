@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) _DKEvent *currentEvent;
 @property (copy, nonatomic) CDUnknownBlockType instantHandler;
 
+- (void)setCurrentEvent:(_DKEvent *)arg1 inferHistoricalState:(BOOL)arg2;
 - (void)start;
 - (void)stop;
 - (void)synchronouslyReflectCurrentValue;

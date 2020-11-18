@@ -16,7 +16,7 @@
     BOOL _shouldIgnoreInteractionMode;
     BOOL _inProcess;
     BOOL _forPickingDocuments;
-    BOOL _sourceIsManaged;
+    BOOL _isContentManaged;
     BOOL _neverCreateBookmarkForOpenInPlace;
     BOOL _pickingItemsShouldBumpLastOpenDate;
     BOOL _suppressBlackCallout;
@@ -53,6 +53,7 @@
     NSString *_roleIdentifier;
     NSArray *_forbiddenActionIdentifiers;
     double _thumbnailFetchingTimeOut;
+    double _thumbnailFadeAnimationDuration;
     NSArray *_documentTypes;
 }
 
@@ -70,6 +71,7 @@
 @property (copy, nonatomic) NSString *hostIdentifier; // @synthesize hostIdentifier=_hostIdentifier;
 @property BOOL inProcess; // @synthesize inProcess=_inProcess;
 @property unsigned long long interactionMode; // @synthesize interactionMode=_interactionMode;
+@property (nonatomic) BOOL isContentManaged; // @synthesize isContentManaged=_isContentManaged;
 @property (readonly) BOOL isFilesApp;
 @property unsigned long long maximumNumberOfItemsToFetch; // @synthesize maximumNumberOfItemsToFetch=_maximumNumberOfItemsToFetch;
 @property unsigned long long maximumNumberOfRows; // @synthesize maximumNumberOfRows=_maximumNumberOfRows;
@@ -91,9 +93,9 @@
 @property BOOL showSearchInNavBar; // @synthesize showSearchInNavBar=_showSearchInNavBar;
 @property BOOL singleSourceMode; // @synthesize singleSourceMode=_singleSourceMode;
 @property BOOL skipDownload; // @synthesize skipDownload=_skipDownload;
-@property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property BOOL sourceIsWritableFileProvider; // @synthesize sourceIsWritableFileProvider=_sourceIsWritableFileProvider;
 @property BOOL suppressBlackCallout; // @synthesize suppressBlackCallout=_suppressBlackCallout;
+@property double thumbnailFadeAnimationDuration; // @synthesize thumbnailFadeAnimationDuration=_thumbnailFadeAnimationDuration;
 @property double thumbnailFetchingTimeOut; // @synthesize thumbnailFetchingTimeOut=_thumbnailFetchingTimeOut;
 @property (strong) NSArray *urls; // @synthesize urls=_urls;
 @property BOOL useExpandedSourceList; // @synthesize useExpandedSourceList=_useExpandedSourceList;

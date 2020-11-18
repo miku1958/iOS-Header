@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableOrderedSet, NSOrderedSet;
 
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSOrderedSet *attributeSets;
 @property (readonly, nonatomic) Matrix_8746f91e centroid; // @synthesize centroid=_centroid;
 @property (readonly, nonatomic) unsigned int cullingMask; // @synthesize cullingMask=_cullingMask;
+@property (readonly, nonatomic) const unordered_set_bb7a56cc *featureIds;
 @property (readonly, nonatomic) vector_74364602 *fillMeshes;
 @property (readonly, nonatomic) BOOL isFixedSize; // @synthesize isFixedSize=_isFixedSize;
 @property (readonly, nonatomic) const Matrix_811b2232 *maxPoint;
@@ -52,7 +53,7 @@ __attribute__((visibility("hidden")))
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)canAcceptPolygon:(CDStruct_c707fdd0 *)arg1;
+- (BOOL)canAcceptPolygon:(CDStruct_64195c06 *)arg1;
 - (void)clearRouteAttributes;
 - (const MultiRange_4bdc93a8 *)commitRangesToFillRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3 featureIdPredicate:(function_d674753c)arg4;
 - (const MultiRange_4bdc93a8 *)commitRangesToHorizontalVenueWallStrokeRenderItemBatcher:(struct Batcher *)arg1 forMeshAtIndex:(unsigned long long)arg2 cullingMask:(unsigned int)arg3;

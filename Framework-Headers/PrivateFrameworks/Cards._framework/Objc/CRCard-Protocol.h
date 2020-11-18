@@ -4,15 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <Cards/CRContent-Protocol.h>
+#import <Cards/NSCopying-Protocol.h>
 #import <Cards/NSObject-Protocol.h>
 #import <Cards/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSSet, SFCard;
+@class NSArray, NSSet, NSString, SFCard;
 
-@protocol CRCard <NSObject, NSSecureCoding>
+@protocol CRCard <NSObject, NSSecureCoding, NSCopying, CRContent>
 
 @property (readonly, nonatomic) BOOL asynchronous;
 @property (readonly, nonatomic) SFCard *backingCard;
+@property (readonly, nonatomic) unsigned long long cardFormat;
+@property (readonly, copy, nonatomic) NSString *cardIdentifier;
 @property (readonly, nonatomic) NSArray *cardSections;
 @property (readonly, nonatomic) NSArray *dismissalCommands;
 @property (readonly, nonatomic) BOOL flexibleSectionOrder;

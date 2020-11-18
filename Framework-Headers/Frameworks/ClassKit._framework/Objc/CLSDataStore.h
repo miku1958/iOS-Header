@@ -7,18 +7,24 @@
 #import <objc/NSObject.h>
 
 #import <ClassKit/CLSFaultProcessorDelegate-Protocol.h>
+#import <ClassKit/NSLocking-Protocol.h>
 
-@class CLSActivity, CLSContext, CLSCurrentUser, CLSEndpointConnection, CLSGraph, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class CLSActivity, CLSAuthTree, CLSContext, CLSCurrentUser, CLSEndpointConnection, CLSGraph, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol CLSDataStoreDelegate;
 
-@interface CLSDataStore : NSObject <CLSFaultProcessorDelegate>
+@interface CLSDataStore : NSObject <CLSFaultProcessorDelegate, NSLocking>
 {
     NSMutableSet *_dataObservers;
     struct NSMutableDictionary *_deletedObjectsByID;
     NSMutableDictionary *_objectGenerationsByID;
     CLSCurrentUser *_cachedCurrentUser;
     int _accountChangeToken;
+    struct os_unfair_recursive_lock_s _lock;
+    NSMutableArray *_pendingSaves;
+    BOOL _saveInProgress;
+    CLSAuthTree *_authTree;
     NSMutableArray *_runningActivities;
+    NSDate *_lastPruneDate;
     id<CLSDataStoreDelegate> _delegate;
     CLSContext *_mainAppContext;
     CLSEndpointConnection *_endpointConnection;
@@ -26,6 +32,7 @@
 }
 
 @property (readonly, nonatomic) CLSContext *activeContext;
+@property (readonly, nonatomic) CLSAuthTree *authTree;
 @property (strong, nonatomic) CLSCurrentUser *cachedCurrentUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CLSDataStoreDelegate> delegate; // @synthesize delegate=_delegate;
@@ -34,7 +41,6 @@
 @property (readonly, nonatomic) CLSGraph *graph; // @synthesize graph=_graph;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CLSContext *mainAppContext; // @synthesize mainAppContext=_mainAppContext;
-@property (readonly, copy, nonatomic) NSArray *runningActivities;
 @property (readonly, nonatomic) CLSActivity *runningActivity;
 @property (readonly) Class superclass;
 
@@ -50,12 +56,15 @@
 - (void)_connectionConnected;
 - (void)_connectionInterupted;
 - (void)_createMainAppContext;
+- (id)_filterObjectsBeingSavedFromObjects:(id)arg1;
+- (id)_modifiedObjects;
 - (void)_reconnect;
 - (void)_reenableObservers;
 - (void)_refreshMainAppContext;
-- (void)_registerDataObserver:(id)arg1;
 - (void)_registerForDarwinNotifications;
+- (void)_save;
 - (void)_saveObjects:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_validateObjects:(id)arg1;
 - (void)addFavorite:(id)arg1;
 - (void)addHandout:(id)arg1;
 - (id)addObject:(id)arg1;
@@ -92,9 +101,13 @@
 - (BOOL)isAppClient;
 - (BOOL)isDashboardAPIEnabled;
 - (BOOL)isRemovedObject:(id)arg1;
+- (void)lock;
 - (void)markObjectAsDeleted:(id)arg1;
+- (id)objectWithObjectID:(id)arg1;
 - (void)personsInClassWithClassID:(id)arg1 role:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)pruneDeletedObjectsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)publishHandout:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)refreshAuthTreeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)refreshMainAppContext;
 - (void)registerDataObserver:(id)arg1;
 - (void)removeContext:(id)arg1;
@@ -105,13 +118,17 @@
 - (void)removeObjectWithObjectID:(id)arg1 class:(Class)arg2;
 - (void)removeRunningActivitiesObject:(id)arg1;
 - (void)reset;
+- (id)runningActivities;
 - (void)saveObjects:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setShouldSyncTeacherBrowsedContexts:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)shouldSyncTeacherBrowsedContextsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)syncDataServer:(CDUnknownBlockType)arg1;
+- (void)syncFetchWithCompletion:(CDUnknownBlockType)arg1;
+- (id)syncUtilityServer:(CDUnknownBlockType)arg1;
 - (void)triggerProgressTransparencyMessageIfNeeded;
-- (void)updateAuthStatusesForContexts:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unlock;
+- (id)utilityServer:(CDUnknownBlockType)arg1;
 
 @end
 

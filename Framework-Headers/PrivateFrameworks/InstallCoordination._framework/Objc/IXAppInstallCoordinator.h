@@ -62,6 +62,7 @@
 + (id)coordinatorForAppWithBundleID:(id)arg1 withClientID:(unsigned long long)arg2 createIfNotExisting:(BOOL)arg3 created:(BOOL *)arg4 error:(id *)arg5;
 + (int)daemonPid;
 + (BOOL)demoteAppToPlaceholderWithBundleID:(id)arg1 forReason:(unsigned long long)arg2 error:(id *)arg3;
++ (BOOL)demoteAppToPlaceholderWithBundleID:(id)arg1 forReason:(unsigned long long)arg2 waitForDeletion:(BOOL)arg3 error:(id *)arg4;
 + (void)enumerateCoordinatorsUsingBlock:(CDUnknownBlockType)arg1;
 + (BOOL)enumerateCoordinatorsWithBlock:(CDUnknownBlockType)arg1 error:(id *)arg2;
 + (BOOL)enumerateCoordinatorsWithError:(id *)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -81,6 +82,7 @@
 + (BOOL)setTestingEnabled:(BOOL)arg1;
 + (BOOL)uninstallAppWithBundleID:(id)arg1 error:(id *)arg2;
 + (void)uninstallAppWithBundleID:(id)arg1 requestUserConfirmation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)uninstallAppWithBundleID:(id)arg1 requestUserConfirmation:(BOOL)arg2 waitForDeletion:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (oneway void)_clientDelegate_didCancelWithError:(id)arg1 client:(unsigned long long)arg2;
 - (oneway void)_clientDelegate_didComplete;
@@ -97,6 +99,7 @@
 - (void)cancelForReason:(id)arg1;
 - (BOOL)cancelForReason:(id)arg1 client:(unsigned long long)arg2 error:(id *)arg3;
 - (void)dealloc;
+- (unsigned long long)importanceWithError:(id *)arg1;
 - (id)init;
 - (id)initWithBundleID:(id)arg1 creator:(unsigned long long)arg2 intent:(unsigned long long)arg3;
 - (id)initWithSeed:(id)arg1;
@@ -111,6 +114,7 @@
 - (BOOL)setAppAssetPromise:(id)arg1 error:(id *)arg2;
 - (BOOL)setAppAssetPromiseResponsibleClient:(unsigned long long)arg1 error:(id *)arg2;
 - (BOOL)setAutoEnabledExtensionTypes:(id)arg1 error:(id *)arg2;
+- (BOOL)setImportance:(unsigned long long)arg1 error:(id *)arg2;
 - (BOOL)setInitialODRAssetPromises:(id)arg1 error:(id *)arg2;
 - (BOOL)setInstallOptions:(id)arg1 error:(id *)arg2;
 - (BOOL)setPlaceholderPromise:(id)arg1 error:(id *)arg2;

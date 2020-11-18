@@ -6,11 +6,11 @@
 
 #import <GameplayKit/GKAgent.h>
 
-#import <GameplayKit/NSCoding-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE;
 
-@interface GKAgent2D : GKAgent <NSCoding>
+@interface GKAgent2D : GKAgent <NSSecureCoding>
 {
 }
 
@@ -18,6 +18,7 @@
 @property (nonatomic) float rotation;
 @property (readonly, nonatomic) MISSING_TYPE *velocity;
 
++ (BOOL)supportsSecureCoding;
 - (void)applyBrakingForce:(float)arg1 deltaTime:(double)arg2;
 - (void)applySteeringForce:(double)arg1 deltaTime: /* Error: Ran out of types for this method. */;
 - (void)encodeWithCoder:(id)arg1;

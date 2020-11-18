@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <PhotoLibraryServices/PLCameraPreviewWellImageChangeObserver-Protocol.h>
+@class NSData, NSOperationQueue, SBSApplicationShortcutService;
 
-@class NSData, SBSApplicationShortcutService;
-
-@interface PLQuickActionManager : NSObject <PLCameraPreviewWellImageChangeObserver>
+@interface PLQuickActionManager : NSObject
 {
+    id _cameraWellObserver;
+    id _localeObserver;
+    NSOperationQueue *_operationQueue;
     BOOL __mostRecentPhotoIsInvalid;
     NSData *__cachedMostRecentPhotoData;
     SBSApplicationShortcutService *__appShortcutService;
@@ -30,16 +31,16 @@
 + (id)sharedManager;
 - (id)_buildFavoritesQuickAction;
 - (id)_buildMostRecentPhotoQuickAction;
-- (id)_buildOneYearAgoQuickAction;
+- (id)_buildOneYearAgoQuickAction:(id)arg1;
 - (id)_buildSearchQuickAction;
 - (id)_shortcutImageNamed:(id)arg1;
-- (BOOL)_userHasPhotos;
-- (BOOL)_userHasPhotosFromLastYear;
+- (BOOL)_userHasPhotos:(id)arg1;
+- (BOOL)_userHasPhotosFromLastYear:(id)arg1;
 - (void)buildQuickActionItems;
-- (void)cameraPreviewWellImageDidChange:(id)arg1;
+- (void)cameraPreviewWellImageDidChange;
 - (void)dealloc;
 - (id)init;
-- (void)rebuildQuickActionForLocaleChanges:(id)arg1;
+- (void)rebuildQuickActionForLocaleChanges;
 
 @end
 

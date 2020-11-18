@@ -16,6 +16,7 @@
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)setBannerView:(id)arg1;
 - (void)setListView:(id)arg1;
+- (void)setPreviewView:(id)arg1;
 
 @end
 

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UINavigationBarTitleViewDataSource-Protocol.h>
-#import <UIKit/_UINavigationBarTransitionContextParticipant-Protocol.h>
+#import <UIKitCore/_UINavigationBarTitleViewDataSource-Protocol.h>
+#import <UIKitCore/_UINavigationBarTransitionContextParticipant-Protocol.h>
 
 @class NSArray, NSDictionary, NSString, UIFontMetrics, _UINavigationBarLargeTitleViewLayout, _UINavigationBarTransitionContext, _UINavigationControllerRefreshControlHost;
 
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
     NSString *_title;
     NSArray *_alternateTitles;
     NSDictionary *_titleAttributes;
-    double _restingHeightOfTitleView;
     UIView *_accessoryView;
     unsigned long long _accessoryViewHorizontalAlignment;
     _UINavigationControllerRefreshControlHost *_refreshControlHost;
@@ -42,7 +41,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _UINavigationControllerRefreshControlHost *refreshControlHost; // @synthesize refreshControlHost=_refreshControlHost;
 @property (nonatomic) double restingHeightOfRefreshControl; // @dynamic restingHeightOfRefreshControl;
-@property (readonly, nonatomic) double restingHeightOfTitleView; // @synthesize restingHeightOfTitleView=_restingHeightOfTitleView;
+@property (readonly, nonatomic) double restingHeightOfTitleView;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsTwoLines; // @synthesize supportsTwoLines=_supportsTwoLines;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
@@ -53,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)_effectiveTitle;
 - (id)_layoutForMeasurement;
 - (id)_newLayout;
+- (id)_newTitleLabel;
 - (void)_setupTitle;
 - (id)_titleForCurrentWidth;
 - (void)_updateContentAndInvalidate:(BOOL)arg1;

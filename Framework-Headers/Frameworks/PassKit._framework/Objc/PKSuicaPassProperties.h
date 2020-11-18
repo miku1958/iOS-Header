@@ -10,7 +10,6 @@
 
 @interface PKSuicaPassProperties : PKTransitPassProperties
 {
-    BOOL _inShinkansenStation;
     BOOL _balanceAllowedForCommute;
     BOOL _lowBalanceGateNotificationEnabled;
     BOOL _greenCarTicketUsed;
@@ -19,7 +18,7 @@
 @property (readonly, nonatomic, getter=isBalanceAllowedForCommute) BOOL balanceAllowedForCommute; // @synthesize balanceAllowedForCommute=_balanceAllowedForCommute;
 @property (readonly, nonatomic, getter=isBlacklisted) BOOL blacklisted; // @dynamic blacklisted;
 @property (readonly, nonatomic, getter=isGreenCarTicketUsed) BOOL greenCarTicketUsed; // @synthesize greenCarTicketUsed=_greenCarTicketUsed;
-@property (readonly, nonatomic, getter=isInShinkansenStation) BOOL inShinkansenStation; // @synthesize inShinkansenStation=_inShinkansenStation;
+@property (readonly, nonatomic, getter=isInShinkansenStation) BOOL inShinkansenStation; // @dynamic inShinkansenStation;
 @property (readonly, nonatomic, getter=isInStation) BOOL inStation; // @dynamic inStation;
 @property (readonly, nonatomic, getter=isLowBalanceGateNotificationEnabled) BOOL lowBalanceGateNotificationEnabled; // @synthesize lowBalanceGateNotificationEnabled=_lowBalanceGateNotificationEnabled;
 @property (readonly, copy, nonatomic) NSDecimalNumber *transitBalance; // @dynamic transitBalance;

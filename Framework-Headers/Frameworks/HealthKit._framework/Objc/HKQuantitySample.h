@@ -6,23 +6,34 @@
 
 #import <HealthKit/HKSample.h>
 
-@class HKQuantity, HKQuantityType;
+@class HDCodableQuantitySample, HKQuantity, HKQuantityType;
 
 @interface HKQuantitySample : HKSample
 {
     HKQuantity *_quantity;
+    long long _freezeState;
+    long long _count;
+    HDCodableQuantitySample *_codableQuantitySample;
 }
 
-@property (readonly) HKQuantity *quantity;
-@property (readonly) HKQuantityType *quantityType;
+@property (strong, nonatomic, setter=_setCodableQuantitySample:) HDCodableQuantitySample *codableQuantitySample; // @synthesize codableQuantitySample=_codableQuantitySample;
+@property (readonly) long long count; // @synthesize count=_count;
+@property (nonatomic, getter=_frozen, setter=_setFrozen:) BOOL frozen;
+@property (readonly, copy) HKQuantity *quantity;
+@property (readonly, copy) HKQuantityType *quantityType;
 
 + (BOOL)_isConcreteObjectClass;
++ (id)_unfrozenQuantitySampleWithQuantityType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 device:(id)arg4;
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4;
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;
 + (id)quantitySampleWithType:(id)arg1 quantity:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 metadata:(id)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_init;
+- (void)_setCount:(long long)arg1;
+- (void)_setFreezing;
 - (void)_setQuantity:(id)arg1;
+- (BOOL)_shouldNotifyOnInsert;
 - (id)_validateConfiguration;
 - (id)_valueDescription;
 - (void)encodeWithCoder:(id)arg1;

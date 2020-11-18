@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/NSCopying-Protocol.h>
 
@@ -17,12 +17,12 @@
     NSString *_site;
 }
 
-@property (readonly, strong, nonatomic) NSString *password; // @synthesize password=_password;
-@property (readonly, strong, nonatomic) NSString *site; // @synthesize site=_site;
-@property (readonly, strong, nonatomic) NSString *username; // @synthesize username=_username;
+@property (readonly, nonatomic) NSString *password; // @synthesize password=_password;
+@property (readonly, nonatomic) NSString *site; // @synthesize site=_site;
+@property (readonly, nonatomic) NSString *username; // @synthesize username=_username;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)initWithUsername:(id)arg1 password:(id)arg2 site:(id)arg3;
 - (BOOL)isEqual:(id)arg1;

@@ -27,6 +27,7 @@
 
 + (id)jointWithBody:(id)arg1 anchor:(struct SCNVector3)arg2;
 + (id)jointWithBodyA:(id)arg1 anchorA:(struct SCNVector3)arg2 bodyB:(id)arg3 anchorB:(struct SCNVector3)arg4;
++ (BOOL)supportsSecureCoding;
 - (void)_addToPhysicsWorld:(id)arg1;
 - (void)_willRemoveFromPhysicsWorld:(id)arg1;
 - (void)dealloc;

@@ -4,47 +4,46 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/_UIStatusBarPersistentAnimationView.h>
 
-#import <UIKit/_UIStatusBarDisplayable-Protocol.h>
+#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
 
 @class NSString, UIAccessibilityHUDItem, UIColor;
 
-@interface _UIStatusBarSignalView : UIView <_UIStatusBarDisplayable>
+@interface _UIStatusBarSignalView : _UIStatusBarPersistentAnimationView <_UIStatusBarDisplayable>
 {
     BOOL _smallSize;
-    BOOL _visible;
     long long _numberOfBars;
     long long _numberOfActiveBars;
     long long _signalMode;
     UIColor *_inactiveColor;
     UIColor *_activeColor;
+    long long _iconSize;
 }
 
 @property (readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property (copy, nonatomic) UIColor *activeColor; // @synthesize activeColor=_activeColor;
-@property (readonly, nonatomic) double baselineOffset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long iconSize; // @synthesize iconSize=_iconSize;
 @property (copy, nonatomic) UIColor *inactiveColor; // @synthesize inactiveColor=_inactiveColor;
 @property (nonatomic) long long numberOfActiveBars; // @synthesize numberOfActiveBars=_numberOfActiveBars;
 @property (nonatomic) long long numberOfBars; // @synthesize numberOfBars=_numberOfBars;
+@property (readonly, nonatomic) long long overriddenVerticalAlignment;
 @property (nonatomic) long long signalMode; // @synthesize signalMode=_signalMode;
 @property (nonatomic) BOOL smallSize; // @synthesize smallSize=_smallSize;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL visible; // @synthesize visible=_visible;
 @property (readonly, nonatomic) BOOL wantsCrossfade;
 
++ (struct CGSize)_intrinsicContentSizeForNumberOfBars:(long long)arg1 iconSize:(long long)arg2;
 - (void).cxx_destruct;
 - (void)_colorsDidChange;
-- (void)_commonInit;
+- (void)_iconSizeDidChange;
 - (void)_updateActiveBars;
 - (void)_updateBars;
 - (void)_updateFromMode:(long long)arg1;
-- (void)_visibilityDidChange;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (void)applyStyleAttributes:(id)arg1;
 
 @end
 

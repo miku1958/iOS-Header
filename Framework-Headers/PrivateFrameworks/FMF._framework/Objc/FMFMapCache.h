@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSDate, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_pendingMapImageMetaData;
     NSString *_cachePath;
     NSString *_imageCachePath;
+    NSDate *_lastPruneDate;
     NSObject<OS_dispatch_queue> *_cacheMetaQueue;
     NSObject<OS_dispatch_queue> *_gridImageQueue;
     NSObject<OS_dispatch_queue> *_noLocationImageQueue;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *gridImageMetaData; // @synthesize gridImageMetaData=_gridImageMetaData;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *gridImageQueue; // @synthesize gridImageQueue=_gridImageQueue;
 @property (strong, nonatomic) NSString *imageCachePath; // @synthesize imageCachePath=_imageCachePath;
+@property (strong, nonatomic) NSDate *lastPruneDate; // @synthesize lastPruneDate=_lastPruneDate;
 @property (strong, nonatomic) NSMutableDictionary *mapImageMetaData; // @synthesize mapImageMetaData=_mapImageMetaData;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *mapImageQueue; // @synthesize mapImageQueue=_mapImageQueue;
 @property (nonatomic) double mapLocationDistanceThreshold; // @synthesize mapLocationDistanceThreshold=_mapLocationDistanceThreshold;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *pendingMapImageMetaData; // @synthesize pendingMapImageMetaData=_pendingMapImageMetaData;
 
 - (void).cxx_destruct;
+- (double)cacheExpiryInSeconds;
 - (void)cacheGridImage:(id)arg1 forWidth:(double)arg2 andHeight:(double)arg3;
 - (void)cacheMapImage:(id)arg1 forLocation:(id)arg2 altitude:(double)arg3 pitch:(double)arg4 width:(double)arg5 andHeight:(double)arg6;
 - (void)cacheMapImage:(id)arg1 forRequest:(id)arg2;
@@ -52,12 +55,15 @@ __attribute__((visibility("hidden")))
 - (id)cachedMapImageForLocation:(id)arg1 altitude:(double)arg2 pitch:(double)arg3 width:(double)arg4 andHeight:(double)arg5;
 - (id)cachedMapImageForRequest:(id)arg1;
 - (id)cachedNoLocationImageForWidth:(double)arg1 andHeight:(double)arg2;
+- (void)flushCache;
 - (id)gridKeyForWidth:(double)arg1 andHeight:(double)arg2;
 - (id)init;
 - (id)mapImageKeyForLocation:(id)arg1 altitude:(double)arg2 pitch:(double)arg3 width:(double)arg4 andHeight:(double)arg5;
 - (id)noLocationKeyForWidth:(double)arg1 andHeight:(double)arg2;
 - (BOOL)pendingMapImageForLocation:(id)arg1 altitude:(double)arg2 pitch:(double)arg3 width:(double)arg4 andHeight:(double)arg5;
 - (BOOL)pendingMapImageForRequest:(id)arg1;
+- (void)pruneCacheIfNeeded;
+- (double)pruneIntervalInSeconds;
 - (void)readMetaData;
 - (void)saveMetaData;
 

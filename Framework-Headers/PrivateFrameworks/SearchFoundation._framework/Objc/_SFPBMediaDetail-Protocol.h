@@ -11,8 +11,6 @@
 @protocol _SFPBMediaDetail <NSObject>
 
 @property (strong, nonatomic) _SFPBText *content;
-@property (readonly, nonatomic) BOOL hasContent;
-@property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *title;
 

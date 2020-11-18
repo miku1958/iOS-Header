@@ -11,11 +11,12 @@
 #import <NanoTimeKitCompanion/NTKEditModeMapping-Protocol.h>
 #import <NanoTimeKitCompanion/NTKInstalledSystemApplicationsChangeObserver-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSNumber, NSString, NTKFaceConfiguration;
+@class CLKDevice, NSArray, NSDate, NSDictionary, NSHashTable, NSMutableDictionary, NSNumber, NSString, NTKFaceConfiguration;
 
 @interface NTKFace : NSObject <NSSecureCoding, NSCopying, NTKInstalledSystemApplicationsChangeObserver, NTKEditModeMapping>
 {
     NTKFaceConfiguration *_configuration;
+    NSHashTable *_fvcObservers;
     NSHashTable *_observers;
     NSDictionary *_complicationSlotDescriptors;
     BOOL _editOptionsPrepared;
@@ -25,20 +26,22 @@
     BOOL _resourceDirectoryIsHardLink;
     NSString *_cachedDefaultName;
     BOOL _isLibraryFace;
+    BOOL _complicationExistenceInvalidatesSnapshot;
     BOOL _beingEdited;
     long long _faceStyle;
+    CLKDevice *_device;
     NSString *_resourceDirectory;
     long long _mostRecentEditMode;
-    long long _complicationPickerStyle;
 }
 
 @property (nonatomic) BOOL beingEdited; // @synthesize beingEdited=_beingEdited;
-@property (readonly, nonatomic) long long complicationPickerStyle; // @synthesize complicationPickerStyle=_complicationPickerStyle;
+@property (readonly, nonatomic) BOOL complicationExistenceInvalidatesSnapshot; // @synthesize complicationExistenceInvalidatesSnapshot=_complicationExistenceInvalidatesSnapshot;
 @property (readonly, nonatomic) NTKFaceConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) NSDate *creationDate;
 @property (readonly, nonatomic) NSString *dailySnapshotKey;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) long long editModeForCustomEditViewController;
 @property (readonly, nonatomic) NSArray *editModes;
 @property (readonly, nonatomic, getter=isEditable) BOOL editable;
@@ -59,42 +62,44 @@
 @property (readonly, nonatomic) BOOL wantsUnadornedSnapshot;
 
 + (id)PPTBlankFace;
-+ (BOOL)_complication:(id)arg1 isValidForSlot:(id)arg2;
-+ (long long)_convertFaceStyleToValidFaceStyleForCurrentDevice:(long long)arg1;
-+ (BOOL)_customEditMode:(long long)arg1 hasActionForOption:(id)arg2;
-+ (BOOL)_customEditModeIsColor:(long long)arg1;
-+ (BOOL)_customEditModeIsRows:(long long)arg1;
-+ (BOOL)_customEditModeIsShowSeconds:(long long)arg1;
-+ (id)_dateComplicationSlot;
-+ (unsigned long long)_dateComplicationSlotSupportedStyles;
-+ (id)_defaultSelectedComplicationSlot;
-+ (id)_defaultSelectedSlotForCustomEditMode:(long long)arg1;
++ (BOOL)_complication:(id)arg1 isValidForSlot:(id)arg2 forDevice:(id)arg3;
++ (BOOL)_customEditMode:(long long)arg1 hasActionForOption:(id)arg2 forDevice:(id)arg3;
++ (BOOL)_customEditModeIsColor:(long long)arg1 forDevice:(id)arg2;
++ (BOOL)_customEditModeIsRows:(long long)arg1 forDevice:(id)arg2;
++ (BOOL)_customEditModeIsShowSeconds:(long long)arg1 forDevice:(id)arg2;
++ (id)_dateComplicationSlotForDevice:(id)arg1;
++ (unsigned long long)_dateComplicationSlotSupportedStylesForDevice:(id)arg1;
++ (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
++ (id)_defaultSelectedSlotForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
 + (Class)_faceClassForStyle:(long long)arg1;
-+ (id)_initialDefaultComplicationForSlot:(id)arg1;
-+ (BOOL)_isInternalOnly;
++ (id)_initialDefaultComplicationForSlot:(id)arg1 forDevice:(id)arg2;
++ (BOOL)_isInternalOnlyForDevice:(id)arg1;
 + (id)_linkedResourceRootDirectory;
-+ (id)_localizedNameOverrideForCustomEditMode:(long long)arg1;
-+ (id)_monogramComplicationSlot;
-+ (id)_sampleFaceDifferentFromFaces:(id)arg1;
-+ (id)_slotsForCustomEditMode:(long long)arg1;
-+ (id)availableInternalFaceStyles;
-+ (BOOL)customEditMode:(long long)arg1 hasActionForOption:(id)arg2;
-+ (BOOL)customEditModeIsColor:(long long)arg1;
-+ (BOOL)customEditModeIsRows:(long long)arg1;
-+ (BOOL)customEditModeIsShowSeconds:(long long)arg1;
-+ (id)dateSlot;
-+ (id)defaultFaceOfStyle:(long long)arg1;
-+ (id)defaultFaceOfStyle:(long long)arg1 initCustomization:(CDUnknownBlockType)arg2;
-+ (id)faceWithJSONObjectRepresentation:(id)arg1;
-+ (id)faceWithJSONObjectRepresentation:(id)arg1 forMigration:(BOOL)arg2;
-+ (id)fixedComplicationSlots;
-+ (BOOL)isFaceStyleAvailableInternal:(long long)arg1;
-+ (BOOL)isFaceStyleRestricted:(long long)arg1;
-+ (BOOL)isRestricted;
-+ (id)localizedNameForCustomEditMode:(long long)arg1;
++ (id)_localizedNameOverrideForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
++ (id)_monogramComplicationSlotForDevice:(id)arg1;
++ (id)_richComplicationSlotsForDevice:(id)arg1;
++ (id)_sampleFaceDifferentFromFaces:(id)arg1 forDevice:(id)arg2;
++ (id)_slotsForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
++ (id)availableInternalFaceStylesForDevice:(id)arg1;
++ (BOOL)customEditMode:(long long)arg1 hasActionForOption:(id)arg2 forDevice:(id)arg3;
++ (BOOL)customEditModeIsColor:(long long)arg1 forDevice:(id)arg2;
++ (BOOL)customEditModeIsRows:(long long)arg1 forDevice:(id)arg2;
++ (BOOL)customEditModeIsShowSeconds:(long long)arg1 forDevice:(id)arg2;
++ (id)dateSlotForDevice:(id)arg1;
++ (id)defaultFaceOfStyle:(long long)arg1 forDevice:(id)arg2;
++ (id)defaultFaceOfStyle:(long long)arg1 forDevice:(id)arg2 initCustomization:(CDUnknownBlockType)arg3;
++ (id)faceWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2;
++ (id)faceWithJSONObjectRepresentation:(id)arg1 forDevice:(id)arg2 forMigration:(BOOL)arg3;
++ (id)fixedComplicationSlotsForDevice:(id)arg1;
++ (BOOL)isFaceStyleAvailableInternal:(long long)arg1 forDevice:(id)arg2;
++ (BOOL)isFaceStyleRestricted:(long long)arg1 forDevice:(id)arg2;
++ (BOOL)isRestrictedForDevice:(id)arg1;
++ (id)localizedNameForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
 + (unsigned long long)maximumRemoteComplicationsOnAnyFace;
-+ (id)monogramSlot;
-+ (id)sampleFaceOfStyle:(long long)arg1 differentFromFaces:(id)arg2;
++ (unsigned long long)maximumRemoteComplicationsOnAnyFaceForDevice:(id)arg1;
++ (id)monogramSlotForDevice:(id)arg1;
++ (id)richComplicationSlotsForDevice:(id)arg1;
++ (id)sampleFaceOfStyle:(long long)arg1 forDevice:(id)arg2 differentFromFaces:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
@@ -124,12 +129,14 @@
 - (BOOL)_hasCustomSwitcherSelectionAction;
 - (BOOL)_hasOptionsForCustomEditMode:(long long)arg1;
 - (unsigned long long)_indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (id)_initWithFaceStyle:(long long)arg1;
+- (id)_initWithFaceStyle:(long long)arg1 forDevice:(id)arg2;
 - (id)_localizedNameForComplicationSlot:(id)arg1;
 - (void)_noteOptionChangedFrom:(id)arg1 to:(id)arg2 forCustomEditMode:(long long)arg3 slot:(id)arg4;
 - (void)_notifyObserversFaceConfigurationDidChange;
+- (void)_notifyObserversFaceResourceDirectoryDidChange;
 - (void)_notifyObserversFaceUpgradeOccurred;
 - (void)_notifyObserversOptionsDidChangeForEditMode:(long long)arg1;
+- (void)_notifyObserversThatRespondToSelector:(SEL)arg1 callSelector:(CDUnknownBlockType)arg2;
 - (unsigned long long)_numberOfOptionsForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (BOOL)_option:(id)arg1 isValidForCustomEditMode:(long long)arg2 slot:(id)arg3;
 - (BOOL)_option:(id)arg1 migratesToValidOption:(id *)arg2 forCustomEditMode:(long long)arg3;
@@ -140,6 +147,7 @@
 - (void)_performCustomSwitcherSelectionAction;
 - (void)_prepareEditOptions;
 - (void)_prepareForDeletion;
+- (void)_registerComplicationsDidChangeNotification;
 - (id)_resourceDirectorySnapshotKey;
 - (void)_selectDefaultSlots;
 - (void)_setResourceDirectory:(id)arg1;
@@ -180,7 +188,6 @@
 - (void)incrementNumberOfCompanionEdits;
 - (void)incrementNumberOfGizmoEdits;
 - (unsigned long long)indexOfOption:(id)arg1 forCustomEditMode:(long long)arg2 slot:(id)arg3;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)installedSystemApplicationsDidChange;
 - (BOOL)isEqual:(id)arg1;

@@ -14,10 +14,9 @@
     BOOL _canDisplaySlideshowButton;
     BOOL _canDisplayEditActionsInNavigationBar;
     BOOL _usesStackPopTransition;
-    double _maxSearchBarWidth;
     PUPhotosPickerViewControllerSpec *_photosPickerViewControllerSpec;
     PUAlbumPickerViewControllerSpec *_albumPickerViewControllerSpec;
-    long long _layoutVariant;
+    long long _sizeSubclass;
     struct CGSize _baseInterItemSpacing;
     struct UIEdgeInsets _safeAreaInsets;
     struct UIEdgeInsets _layoutMargins;
@@ -28,7 +27,6 @@
 @property (readonly, nonatomic) BOOL canCommitPreview;
 @property (readonly, nonatomic) BOOL canDisplayEditActionsInNavigationBar; // @synthesize canDisplayEditActionsInNavigationBar=_canDisplayEditActionsInNavigationBar;
 @property (readonly, nonatomic) BOOL canDisplayOptionsInPopover; // @synthesize canDisplayOptionsInPopover=_canDisplayOptionsInPopover;
-@property (readonly, nonatomic) BOOL canDisplaySearchActionInNavigationBar;
 @property (readonly, nonatomic) BOOL canDisplaySlideshowButton; // @synthesize canDisplaySlideshowButton=_canDisplaySlideshowButton;
 @property (readonly, nonatomic) long long cellBannerTextAlignment;
 @property (readonly, nonatomic) long long cellFillMode;
@@ -37,8 +35,6 @@
 @property (readonly, nonatomic) long long forceLoadInitialSectionCount;
 @property (readonly, nonatomic) struct UIEdgeInsets gridContentInsets;
 @property (readonly, nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
-@property (readonly, nonatomic) long long layoutVariant; // @synthesize layoutVariant=_layoutVariant;
-@property (readonly, nonatomic) double maxSearchBarWidth; // @synthesize maxSearchBarWidth=_maxSearchBarWidth;
 @property (readonly, nonatomic) PUPhotosPickerViewControllerSpec *photosPickerViewControllerSpec; // @synthesize photosPickerViewControllerSpec=_photosPickerViewControllerSpec;
 @property (nonatomic) struct UIEdgeInsets safeAreaInsets; // @synthesize safeAreaInsets=_safeAreaInsets;
 @property (readonly, nonatomic) double sectionHeaderHeight;
@@ -46,6 +42,7 @@
 @property (readonly, nonatomic) long long sectionHeaderStyle;
 @property (readonly, nonatomic) BOOL shouldPlaceDeleteInCenterToolbarPosition;
 @property (readonly, nonatomic) BOOL shouldPlaceSelectAllButtonInRightNavigationBar;
+@property (readonly, nonatomic) long long sizeSubclass; // @synthesize sizeSubclass=_sizeSubclass;
 @property (readonly, nonatomic) int thumbnailImageFormat;
 @property (readonly, nonatomic) BOOL usesStackPopTransition; // @synthesize usesStackPopTransition=_usesStackPopTransition;
 @property (readonly, nonatomic) BOOL wantsBackButtonTitleForPhotoBrowser;

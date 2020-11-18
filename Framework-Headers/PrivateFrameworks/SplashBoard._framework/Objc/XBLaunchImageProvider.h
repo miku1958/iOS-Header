@@ -6,18 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue;
+@class NSMutableSet;
+@protocol BSInvalidatable, OS_dispatch_queue;
 
 @interface XBLaunchImageProvider : NSObject
 {
     NSObject<OS_dispatch_queue> *_workQueue;
+    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSMutableSet *_blacklistedBundleIdentifiers;
+    id<BSInvalidatable> _stateCaptureAssertion;
 }
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_addStateCaptureHandler;
+- (void)_blacklistApp:(id)arg1 forError:(id)arg2;
+- (void)_clearBlacklistForApp:(id)arg1;
 - (void)_generateImageForSnapshot:(id)arg1 inManifest:(id)arg2 withContext:(id)arg3 dataProvider:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)_isAppBlacklisted:(id)arg1;
 - (void)captureLaunchImageForManifest:(id)arg1 withCompatibilityInfo:(id)arg2 launchRequests:(id)arg3 firstImageIsReady:(CDUnknownBlockType)arg4 withCompletionHandler:(CDUnknownBlockType)arg5;
 - (CDUnknownBlockType)createLaunchImageGeneratorWithContext:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (void)preheatServiceWithTimeout:(double)arg1;
 

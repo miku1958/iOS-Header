@@ -27,6 +27,7 @@
 - (void).cxx_destruct;
 - (BOOL)allowUserInteractionForInteractionType:(unsigned long long)arg1;
 - (id)initWithWebContentViewController:(id)arg1 interactionProvider:(id)arg2 errorProvider:(id)arg3 configurationManager:(id)arg4 presentationManager:(id)arg5;
+- (void)loadHTMLString:(id)arg1 baseURL:(id)arg2;
 - (void)loadURL:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

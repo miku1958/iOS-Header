@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/FBSSystemServiceFacilityClient.h>
+#import <FrontBoardServices/FBSServiceFacilityClient.h>
 
-@interface SBSWallpaperClient : FBSSystemServiceFacilityClient
+@interface SBSWallpaperClient : FBSServiceFacilityClient
 {
 }
 
 - (void)fetchThumbnailForVariant:(unsigned int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithCalloutQueue:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 calloutQueue:(id)arg2;
+- (BOOL)setWallpaperWithVideo:(id)arg1 cropRect:(struct CGRect)arg2;
 
 @end
 

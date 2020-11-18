@@ -9,20 +9,20 @@
 #import <Silex/SXVASTAnalyticsEventInfoFactory-Protocol.h>
 
 @class NSString;
-@protocol SXVisibilityMonitoring, SXVolumeProviding;
+@protocol SVVisibilityMonitoring, SVVolumeProviding;
 
 @interface SXVASTAnalyticsEventInfoFactory : NSObject <SXVASTAnalyticsEventInfoFactory>
 {
-    id<SXVisibilityMonitoring> _visibilityMonitor;
-    id<SXVolumeProviding> _volumeProvider;
+    id<SVVisibilityMonitoring> _visibilityMonitor;
+    id<SVVolumeProviding> _volumeProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<SXVisibilityMonitoring> visibilityMonitor; // @synthesize visibilityMonitor=_visibilityMonitor;
-@property (readonly, nonatomic) id<SXVolumeProviding> volumeProvider; // @synthesize volumeProvider=_volumeProvider;
+@property (readonly, nonatomic) id<SVVisibilityMonitoring> visibilityMonitor; // @synthesize visibilityMonitor=_visibilityMonitor;
+@property (readonly, nonatomic) id<SVVolumeProviding> volumeProvider; // @synthesize volumeProvider=_volumeProvider;
 
 - (void).cxx_destruct;
 - (id)createAnalyticsEventInfo;

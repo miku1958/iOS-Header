@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIAppearanceContainer-Protocol.h>
-#import <UIKit/UIContentContainer-Protocol.h>
-#import <UIKit/UIFocusEnvironment-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UITraitEnvironment-Protocol.h>
-#import <UIKit/_UIAppearanceContainer-Protocol.h>
-#import <UIKit/_UIContentContainerInternal-Protocol.h>
-#import <UIKit/_UITraitEnvironmentInternal-Protocol.h>
+#import <UIKitCore/UIAppearanceContainer-Protocol.h>
+#import <UIKitCore/UIContentContainer-Protocol.h>
+#import <UIKitCore/UIFocusEnvironment-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UITraitEnvironment-Protocol.h>
+#import <UIKitCore/_UIAppearanceContainer-Protocol.h>
+#import <UIKitCore/_UIContentContainerInternal-Protocol.h>
+#import <UIKitCore/_UITraitEnvironmentInternal-Protocol.h>
 
 @class NSArray, NSString, NSUUID, UIBarButtonItem, UITapGestureRecognizer, UITraitCollection, UIView, UIViewController;
-@protocol UIAdaptivePresentationControllerDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning, UIViewControllerTransitionCoordinator, UIViewControllerTransitionCoordinatorContext;
+@protocol UIAdaptivePresentationControllerDelegate, UIFocusEnvironment, UIFocusItemContainer, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning, UIViewControllerTransitionCoordinator, UIViewControllerTransitionCoordinatorContext;
 
 @interface UIPresentationController : NSObject <_UIAppearanceContainer, _UITraitEnvironmentInternal, _UIContentContainerInternal, UIGestureRecognizerDelegate, UIAppearanceContainer, UITraitEnvironment, UIContentContainer, UIFocusEnvironment>
 {
@@ -84,10 +84,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIAdaptivePresentationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, nonatomic) struct CGRect frameOfPresentedViewInContainerView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isCurrentStateCancelled; // @synthesize isCurrentStateCancelled=_isCurrentStateCancelled;
 @property (copy, nonatomic) UITraitCollection *overrideTraitCollection; // @synthesize overrideTraitCollection=_overrideTraitCollection;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (readonly, nonatomic) struct CGSize preferredContentSize;
 @property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property (readonly, weak, nonatomic) UIView *preferredFocusedView;
@@ -105,9 +107,9 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;
 
-+ (struct UIEdgeInsets)_defaultBaseContentInsetsForView:(id)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 + (BOOL)_preventsAppearanceProxyCustomization;
 + (BOOL)_shouldPostPresentationControllerNotifications;
++ (struct UIEdgeInsets)_statusBarOverlapAndMarginInfoForView:(id)arg1;
 - (void).cxx_destruct;
 - (CDStruct_d58201db)__sizeClassPair;
 - (id)_activePresentationController;
@@ -145,7 +147,6 @@
 - (BOOL)_keyboardShouldAnimateAlongsideForInteractiveTransitions;
 - (BOOL)_monitorsSystemLayoutFittingSize;
 - (void)_parent:(id)arg1 willTransitionToTraitCollection:(id)arg2 withTransitionCoordinator:(id)arg3;
-- (id)_parentFocusEnvironment;
 - (id)_parentPresentationController;
 - (id)_parentPresentationControllerImmediate:(BOOL)arg1;
 - (id)_parentTraitCollection;

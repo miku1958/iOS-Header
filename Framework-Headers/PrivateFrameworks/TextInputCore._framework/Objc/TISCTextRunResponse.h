@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 
@@ -17,6 +17,7 @@
 
 + (id)textRunResponseByMergingResponses:(id)arg1;
 + (id)textRunResponseWithFont:(struct __CTFont *)arg1;
+- (void).cxx_destruct;
 - (struct __CFArray *)ctLines;
 - (void)dealloc;
 - (struct __CTFont *)font;

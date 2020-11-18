@@ -15,7 +15,10 @@
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityFileProviderController;
 - (BOOL)_accessibilityPerformDocumentAction:(id)arg1;
+- (id)_axAttrTitle;
 - (id)accessibilityCustomActions;
+- (id)accessibilityIdentifier;
+- (BOOL)accessibilityScrollToVisible;
 
 @end
 

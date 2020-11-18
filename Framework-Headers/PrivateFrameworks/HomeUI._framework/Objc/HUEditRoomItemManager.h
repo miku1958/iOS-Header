@@ -14,6 +14,7 @@
     HFStaticItem *_cameraItem;
     HFStaticItem *_chooseWallpaperItem;
     HFStaticItem *_wallpaperThumbnailItem;
+    HFStaticItem *_wallpaperPickerItem;
     HFStaticItem *_removeItem;
     HFZoneModule *_zoneModule;
     HFRoomBuilder *_roomBuilder;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) HFStaticItem *nameItem; // @synthesize nameItem=_nameItem;
 @property (strong, nonatomic) HFStaticItem *removeItem; // @synthesize removeItem=_removeItem;
 @property (strong, nonatomic) HFRoomBuilder *roomBuilder; // @synthesize roomBuilder=_roomBuilder;
+@property (strong, nonatomic) HFStaticItem *wallpaperPickerItem; // @synthesize wallpaperPickerItem=_wallpaperPickerItem;
 @property (strong, nonatomic) HFStaticItem *wallpaperThumbnailItem; // @synthesize wallpaperThumbnailItem=_wallpaperThumbnailItem;
 @property (strong, nonatomic) HFZoneModule *zoneModule; // @synthesize zoneModule=_zoneModule;
 

@@ -12,6 +12,7 @@
 {
     EKAvailabilityCache *_availabilityCache;
     BOOL _isFacebook;
+    BOOL _snoozeAlarmRequiresDetach;
     NSDate *_timeOfLastExternalIdentificationCache;
     NSString *_cachedHost;
     long long _cachedPort;
@@ -19,12 +20,19 @@
 }
 
 @property (readonly, nonatomic) NSSet *allCalendars;
+@property (nonatomic) BOOL allowsCalendarAddDeleteModify;
+@property (nonatomic) BOOL allowsEvents;
+@property (nonatomic) BOOL allowsProposeNewTime;
+@property (nonatomic) BOOL allowsTasks;
 @property (readonly, nonatomic) EKAvailabilityCache *availabilityCache;
 @property (strong, nonatomic) NSString *cachedHost; // @synthesize cachedHost=_cachedHost;
 @property (strong, nonatomic) NSSet *cachedOwnerAddresses; // @synthesize cachedOwnerAddresses=_cachedOwnerAddresses;
 @property (nonatomic) long long cachedPort; // @synthesize cachedPort=_cachedPort;
 @property (readonly, nonatomic) NSSet *calendars;
 @property (readonly, nonatomic) CDBSourceConstraints *constraints;
+@property (strong, nonatomic) NSString *constraintsDescriptionPath;
+@property (copy, nonatomic) NSString *creatorBundleID;
+@property (copy, nonatomic) NSString *creatorCodeSigningIdentity;
 @property (copy, nonatomic) NSNumber *defaultAlarmOffset;
 @property (readonly, nonatomic) int displayOrderForNewCalendar;
 @property (nonatomic, getter=isEnabled) BOOL enabled;
@@ -32,7 +40,7 @@
 @property (copy, nonatomic) NSString *externalModificationTag;
 @property (nonatomic) int flags;
 @property (readonly, nonatomic) BOOL hasOwnerEmailAddress;
-@property (readonly, nonatomic) BOOL isFacebook; // @synthesize isFacebook=_isFacebook;
+@property (nonatomic) BOOL isFacebook; // @synthesize isFacebook=_isFacebook;
 @property (readonly, nonatomic) BOOL isFacebookSource;
 @property (readonly, nonatomic) BOOL isSyncing;
 @property (strong, nonatomic) NSDate *lastSyncEndDate;
@@ -41,15 +49,29 @@
 @property (nonatomic) BOOL onlyCreatorCanModify;
 @property (readonly, nonatomic) NSSet *ownerAddresses;
 @property (nonatomic) long long preferredEventPrivateValue;
+@property (nonatomic) BOOL prohibitsDetachmentOnCommentChange;
+@property (nonatomic) BOOL prohibitsICSImport;
+@property (nonatomic) BOOL prohibitsMultipleDaysInMonthlyRecurrence;
+@property (nonatomic) BOOL prohibitsMultipleMonthsInYearlyRecurrence;
+@property (nonatomic) BOOL prohibitsPrivateEventsWithAttendees;
+@property (nonatomic) BOOL prohibitsYearlyRecurrenceInterval;
+@property (nonatomic) BOOL requiresSamePrivacyLevelAcrossRecurrenceSeries;
 @property (readonly, nonatomic) NSString *serverHost;
 @property (readonly, nonatomic) long long serverPort;
+@property (nonatomic) BOOL snoozeAlarmRequiresDetach; // @synthesize snoozeAlarmRequiresDetach=_snoozeAlarmRequiresDetach;
 @property (strong, nonatomic) NSString *sourceIdentifier;
 @property (nonatomic) long long sourceType;
 @property (nonatomic) long long strictestEventPrivateValue;
+@property (nonatomic) BOOL supportsAlarmAcknowledgedDate;
+@property (nonatomic) BOOL supportsAvailabilityRequests;
 @property (readonly, nonatomic) BOOL supportsCalendarCreation;
+@property (nonatomic) BOOL supportsIgnoringEventsInAvailabilityRequests;
 @property (readonly, nonatomic) BOOL supportsJunkReporting;
+@property (nonatomic) BOOL supportsLocationDirectorySearches;
 @property (readonly, nonatomic) BOOL supportsPhoneNumbers;
+@property (nonatomic) BOOL supportsPrivateEvents;
 @property (readonly, nonatomic) BOOL supportsReminderActions;
+@property (nonatomic) BOOL supportsSharedCalendars;
 @property (readonly, nonatomic) BOOL syncs;
 @property (strong, nonatomic) NSDate *timeOfLastExternalIdentificationCache; // @synthesize timeOfLastExternalIdentificationCache=_timeOfLastExternalIdentificationCache;
 @property (copy, nonatomic) NSString *title;

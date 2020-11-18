@@ -35,10 +35,12 @@
 - (BOOL)_needsUpdate;
 - (void)_updateIfNeeded;
 - (double)_zPositionForItemAtIndexPath:(struct PXSimpleIndexPath)arg1;
+- (void)adjustGeometry:(struct PXTileGeometry *)arg1 forAdditionalTileWithKind:(unsigned long long)arg2 indexPath:(struct PXSimpleIndexPath)arg3;
 - (void)adjustGeometry:(struct PXTileGeometry *)arg1 forContentTileWithIndexPath:(struct PXSimpleIndexPath)arg2;
 - (struct CGRect)contentBounds;
 - (id)dataSource;
 - (void)enumerateTilesInRect:(struct CGRect)arg1 withOptions:(id)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (BOOL)getAdditionalTileIdentifier:(struct PXTileIdentifier *)arg1 group:(unsigned long long *)arg2 layoutGeometryKind:(unsigned long long)arg3 indexPath:(struct PXSimpleIndexPath)arg4;
 - (BOOL)getGeometry:(struct PXTileGeometry *)arg1 group:(unsigned long long *)arg2 userData:(id *)arg3 forTileWithIdentifier:(struct PXTileIdentifier)arg4;
 - (id)initWithDataSource:(id)arg1;
 - (id)initWithLayoutEngineSnapshot:(id)arg1;

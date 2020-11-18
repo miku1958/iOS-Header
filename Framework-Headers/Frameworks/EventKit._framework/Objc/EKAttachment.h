@@ -28,6 +28,7 @@
 - (id)externalId;
 - (id)fileNameRaw;
 - (id)fileSizeRaw;
+- (id)semanticIdentifier;
 - (void)setExternalId:(id)arg1;
 - (void)setFileFormat:(id)arg1;
 - (void)setFileNameRaw:(id)arg1;

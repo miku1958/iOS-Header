@@ -107,6 +107,7 @@
 - (void)mergePersons:(id)arg1;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
 - (id)personUUID;
+- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)rejectMergeCandidatePersons:(id)arg1;
 - (void)removeFaces:(id)arg1;

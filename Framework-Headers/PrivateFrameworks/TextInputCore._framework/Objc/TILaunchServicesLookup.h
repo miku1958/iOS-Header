@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TIKeyboardActivityObserving-Protocol.h>
 
@@ -28,6 +28,7 @@
 + (id)genreIDsForApplicationIdentifier:(id)arg1;
 + (id)lookupAppNames;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)appNames;
 - (void)cacheNames:(id)arg1;
 - (void)dealloc;

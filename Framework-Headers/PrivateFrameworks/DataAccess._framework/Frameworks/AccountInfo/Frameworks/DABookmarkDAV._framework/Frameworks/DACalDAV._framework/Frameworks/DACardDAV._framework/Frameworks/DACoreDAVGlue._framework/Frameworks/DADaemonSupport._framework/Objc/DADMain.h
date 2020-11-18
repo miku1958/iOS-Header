@@ -31,20 +31,17 @@
 - (void)_forceShutdownDaemonOnLogoutInTimeInterval:(int)arg1;
 - (void)_forceShutdownTimerFired:(id)arg1;
 - (void)_setRunLoopStopped:(BOOL)arg1;
-- (void)_shutdownDaemonCheckingForAccounts:(BOOL)arg1;
-- (void)_shutdownDaemonIfNoAccountsExistInTimeInterval:(int)arg1;
+- (void)_shutdownDaemon;
 - (void)_shutdownNotification:(id)arg1;
 - (void)addLanguageChangeHandler;
 - (void)addSignalHandler;
 - (void)addToOperationsQueueDisabledCheckAndGoBlock:(CDUnknownBlockType)arg1 wrappedBlock:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (void)delayedShutdownTimerFired:(id)arg1;
 - (void)didFinishAllXPCTransactions;
 - (void)disable;
 - (id)init;
 - (void)setRunLoopStoppedRef:(BOOL *)arg1;
 - (void)shutdownDAD;
-- (void)shutdownDaemonIfNoAccountsExist;
 - (void)waitForSystemAvailability;
 - (void)willSwitchUser;
 

@@ -22,7 +22,8 @@
 - (void).cxx_destruct;
 - (void)cancel;
 - (BOOL)generateThumbnail:(id *)arg1 representativeIcon:(BOOL *)arg2;
-- (id)initWithItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 delegate:(id)arg5 style:(unsigned long long)arg6 qos:(unsigned int)arg7;
+- (id)initWithItem:(id)arg1 size:(struct CGSize)arg2 minimumSize:(double)arg3 scale:(double)arg4 delegate:(id)arg5 style:(unsigned long long)arg6 isInteractive:(BOOL)arg7;
+- (id)subOperation;
 
 @end
 

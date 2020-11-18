@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/PLDaemonJob.h>
 
-@class NSObject, NSOrderedSet;
+@class NSObject, NSOrderedSet, PLAssetsdClientServiceSender;
 @protocol OS_xpc_object;
 
 @interface PHChangeRequestJob : PLDaemonJob
@@ -18,8 +18,10 @@
     NSObject<OS_xpc_object> *_xpcInserts;
     NSObject<OS_xpc_object> *_xpcUpdates;
     NSObject<OS_xpc_object> *_xpcDeletes;
+    PLAssetsdClientServiceSender *_clientSender;
 }
 
+@property (strong, nonatomic) PLAssetsdClientServiceSender *clientSender; // @synthesize clientSender=_clientSender;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (copy, nonatomic) NSOrderedSet *deletes; // @synthesize deletes=_deletes;
 @property (copy, nonatomic) NSOrderedSet *inserts; // @synthesize inserts=_inserts;

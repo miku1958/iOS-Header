@@ -53,7 +53,7 @@
 - (void).cxx_destruct;
 - (id)_componentsForDate:(id)arg1 timeZone:(id)arg2;
 - (id)absoluteRange;
-- (void)applyToEKEvent:(id)arg1 isAllDay:(BOOL)arg2;
+- (void)applyToEKEvent:(id)arg1 isAllDay:(BOOL)arg2 isFloating:(BOOL)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)endDateComponents;
@@ -66,6 +66,7 @@
 - (BOOL)isValidAllDayRange;
 - (id)stableStringRepresentation;
 - (id)startDateComponents;
+- (BOOL)startedMoreThan24HoursAgo;
 
 @end
 

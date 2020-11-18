@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)animationFilter;
 + (id)animationName;
 + (id)localizedMenuString:(long long)arg1;
++ (long long)rendererTypeForAnimationContext:(id)arg1;
 + (BOOL)startsAmbientAnimation;
 + (id)supportedTypes;
 + (id)thumbnailImageNameForType:(long long)arg1;

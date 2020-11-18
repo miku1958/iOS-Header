@@ -8,7 +8,6 @@
 
 @class CUIPSDGradient, NSDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CUIThemeSchemaRendition : CUIThemeRendition
 {
     NSDictionary *cuiInfo;
@@ -28,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGRect *sliceRects;
 
 - (struct CGRect)alignmentRectangle;
+- (unsigned short)appearance;
 - (long long)columnSlices;
 - (CDStruct_3c058996)contentInsets;
 - (id)coreUIOptions;

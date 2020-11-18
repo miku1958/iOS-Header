@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     double _dynamicOpacity;
 }
 
+@property (readonly, nonatomic) struct CGRect frameForMovieExport;
 @property (readonly, nonatomic) TSDFreehandDrawingInfo *freehandInfo;
 @property (readonly, nonatomic) double opacity;
 @property (nonatomic) double p_dynamicOpacity; // @synthesize p_dynamicOpacity=_dynamicOpacity;
@@ -25,7 +26,11 @@ __attribute__((visibility("hidden")))
 - (id)additionalInfosForChildLayouts;
 - (struct CGRect)computeBoundsForStandardKnobs;
 - (id)descendentWrappables;
+- (BOOL)descendentWrappablesContainsWrappable:(id)arg1;
+- (struct CGSize)minimumSize;
 - (id)p_sizeEnforcingChild;
+- (void)processChangedProperty:(int)arg1;
+- (BOOL)shouldSnapWhileResizing;
 - (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
 
 @end

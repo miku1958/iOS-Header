@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UIBasicAnimationFactory-Protocol.h>
+#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
 
 @class CADisplayLink, NSOperation, NSString, UITextRange;
 

@@ -20,8 +20,8 @@
     NSString *_subtitle;
     PXViewSpec *_textViewSpec;
     CDUnknownBlockType _placeholderViewFactory;
-    struct CGRect _rect;
     struct CGRect _imageContentsRect;
+    struct CGRect _rect;
 }
 
 @property (readonly, nonatomic) NSObject<UICoordinateSpace> *coordinateSpace; // @synthesize coordinateSpace=_coordinateSpace;

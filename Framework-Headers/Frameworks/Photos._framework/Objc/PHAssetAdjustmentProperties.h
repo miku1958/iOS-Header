@@ -12,10 +12,12 @@
 {
     NSString *_formatIdentifier;
     NSString *_formatVersion;
+    unsigned long long _originalResourceChoice;
 }
 
 @property (readonly, nonatomic) NSString *formatIdentifier; // @synthesize formatIdentifier=_formatIdentifier;
 @property (readonly, nonatomic) NSString *formatVersion; // @synthesize formatVersion=_formatVersion;
+@property (readonly, nonatomic) unsigned long long originalResourceChoice; // @synthesize originalResourceChoice=_originalResourceChoice;
 
 + (id)propertiesToFetch;
 + (id)propertySetName;

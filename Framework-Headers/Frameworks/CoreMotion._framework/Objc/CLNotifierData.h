@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithData:(void *)arg1 destructor:(CDUnknownBlockType)arg2;
+- (void)invalidate;
 
 @end
 

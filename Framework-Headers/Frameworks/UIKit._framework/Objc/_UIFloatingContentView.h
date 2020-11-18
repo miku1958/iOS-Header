@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSMutableArray, UIImage, _UIFloatingContentCornerRadiusAnimatingScreenScaleInheritingView, _UIFloatingContentCornerRadiusAnimatingView, _UIFloatingContentTransformView, _UIFocusAnimationConfiguration;
 @protocol _UIFloatingContentViewDelegate;
@@ -18,6 +18,7 @@
     _UIFloatingContentCornerRadiusAnimatingView *_visualEffectContainerView;
     UIView *_shadowView;
     UIView *_contentView;
+    UIView *_highContrastFocusIndicatorView;
     struct __CFDictionary *_backgroundColorsByState;
     NSMutableArray *_contentMotionEffects;
     double _shadowOpacityLight;
@@ -34,6 +35,7 @@
     BOOL _scalesBackwards;
     BOOL _roundContentWhenDeselected;
     BOOL __disableOutsetShadowPath;
+    BOOL _showsHighContrastFocusIndicator;
     double _cornerRadius;
     double _visualEffectContainerViewScaleFactor;
     _UIFocusAnimationConfiguration *_focusAnimationConfiguration;
@@ -80,6 +82,7 @@
 @property (nonatomic) double shadowRadius; // @synthesize shadowRadius=_shadowRadius;
 @property (nonatomic) struct CGSize shadowSize; // @synthesize shadowSize=_shadowSize;
 @property (nonatomic) double shadowVerticalOffset; // @synthesize shadowVerticalOffset=_shadowVerticalOffset;
+@property (nonatomic) BOOL showsHighContrastFocusIndicator; // @synthesize showsHighContrastFocusIndicator=_showsHighContrastFocusIndicator;
 @property (nonatomic) struct CGSize unfocusedShadowExpansion; // @synthesize unfocusedShadowExpansion=_unfocusedShadowExpansion;
 @property (nonatomic) double unfocusedShadowOpacity; // @synthesize unfocusedShadowOpacity=_unfocusedShadowOpacity;
 @property (nonatomic) double unfocusedShadowRadius; // @synthesize unfocusedShadowRadius=_unfocusedShadowRadius;
@@ -95,6 +98,7 @@
 - (double)_effectiveShadowOpacity;
 - (double)_effectiveShadowRadius;
 - (void)_installContentMotionEffects;
+- (void)_layoutHighContrastFocusIndicator;
 - (void)_layoutShadow;
 - (id)_preferredConfigurationForFocusAnimation:(long long)arg1 inContext:(id)arg2;
 - (unsigned long long)_primaryStateForState:(unsigned long long)arg1;
@@ -105,6 +109,8 @@
 - (BOOL)_shouldApplyCornerRadiusForPrimaryState:(unsigned long long)arg1;
 - (void)_uninstallContentMotionEffects;
 - (void)_updateContainerLayerQualityForPrimaryState:(unsigned long long)arg1;
+- (void)_updateHighContrastFocusIndicatorForPrimaryState:(unsigned long long)arg1;
+- (void)_updateHighContrastFocusIndicatorView;
 - (void)_updateHighlightViewForPrimaryState:(unsigned long long)arg1;
 - (void)_updateScaleFactor;
 - (void)_updateShadowContentsScaleForPrimaryState:(unsigned long long)arg1;

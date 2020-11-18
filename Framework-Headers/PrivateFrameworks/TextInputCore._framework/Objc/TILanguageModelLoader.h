@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString, TIInputMode, TILanguageModelAdaptationContext;
 @protocol _ICContactFetchingDelegate;
@@ -52,7 +52,6 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)clearDynamicLearningCaches;
-- (void)dealloc;
 - (void)findRecordsMatchingRecipient:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)flushDynamicLearningCaches;
 - (id)initWithInputMode:(id)arg1 dynamicResourcePath:(id)arg2 mobileAssets:(id)arg3 usesLinguisticContext:(BOOL)arg4;

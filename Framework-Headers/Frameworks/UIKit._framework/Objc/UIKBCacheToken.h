@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSSet, NSString;
 
 @interface UIKBCacheToken : NSObject <NSCopying>
 {
@@ -16,6 +16,7 @@
     NSString *_name;
     double _scale;
     int _emptyFields;
+    NSSet *_transformationIdentifiers;
     long long _renderFlags;
 }
 
@@ -25,9 +26,11 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long renderFlags; // @synthesize renderFlags=_renderFlags;
 @property (nonatomic) int rowHint;
+@property (nonatomic) double scale; // @synthesize scale=_scale;
 @property (nonatomic) struct CGSize size;
 @property (readonly, nonatomic) NSString *string;
 @property (nonatomic) CDStruct_227bb23d styling;
+@property (strong, nonatomic) NSSet *transformationIdentifiers; // @synthesize transformationIdentifiers=_transformationIdentifiers;
 
 + (id)tokenForKey:(id)arg1 style:(CDStruct_227bb23d)arg2;
 + (id)tokenForKey:(id)arg1 style:(CDStruct_227bb23d)arg2 displayInsets:(struct UIEdgeInsets)arg3;

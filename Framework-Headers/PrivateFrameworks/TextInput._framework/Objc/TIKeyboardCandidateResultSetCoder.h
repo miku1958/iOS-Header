@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData, NSMutableData;
 
@@ -25,9 +25,9 @@
 + (Class)classFromCandidateType:(int)arg1;
 + (id)decodeWithData:(id)arg1;
 + (id)encodeWithCandidateResultSet:(id)arg1;
+- (void).cxx_destruct;
 - (id)candidateResultSet;
 - (id)dataFromCandidateResultSet:(id)arg1;
-- (void)dealloc;
 - (BOOL)decodeBool;
 - (unsigned char)decodeByte;
 - (id)decodeCandidate;

@@ -6,11 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <Messages/MSRootViewControllerProtocol-Protocol.h>
 #import <Messages/MSStickerBrowserViewDataSource-Protocol.h>
 
 @class MSStickerBrowserView, NSString;
 
-@interface MSStickerBrowserViewController : UIViewController <MSStickerBrowserViewDataSource>
+@interface MSStickerBrowserViewController : UIViewController <MSRootViewControllerProtocol, MSStickerBrowserViewDataSource>
 {
     BOOL _viewHasAppeared;
     MSStickerBrowserView *_stickerBrowserView;
@@ -43,7 +44,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
-- (void)viewWillLayoutSubviews;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)willTransitionToPresentationStyle:(unsigned long long)arg1;
 
 @end

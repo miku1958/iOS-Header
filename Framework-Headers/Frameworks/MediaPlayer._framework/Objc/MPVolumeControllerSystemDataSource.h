@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaPlayer/MPVolumeControllerDataSource-Protocol.h>
 
@@ -14,15 +14,15 @@
 @interface MPVolumeControllerSystemDataSource : NSObject <MPVolumeControllerDataSource>
 {
     BOOL _debugVolumeWarning;
-    id<MPVolumeControllerDataSourceDelegate> _delegate;
-    float _volume;
-    BOOL _muted;
-    BOOL _volumeControlAvailable;
     BOOL _volumeInitialized;
     BOOL _volumeControlCapabilitiesInitialized;
+    BOOL _volumeControlAvailable;
+    BOOL _muted;
     BOOL _volumeWarningEnabled;
+    float _volume;
     float _EUVolumeLimit;
     NSString *_volumeAudioCategory;
+    id<MPVolumeControllerDataSourceDelegate> _delegate;
     NSString *_volumeControlLabel;
     long long _volumeWarningState;
 }

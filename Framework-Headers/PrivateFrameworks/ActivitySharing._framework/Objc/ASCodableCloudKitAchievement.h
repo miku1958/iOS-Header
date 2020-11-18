@@ -15,14 +15,15 @@
     double _completedDate;
     double _doubleValue;
     long long _intValue;
-    long long _workActivityType;
+    long long _workoutActivityType;
     NSString *_definitionIdentifier;
     ASCodableCloudKitSample *_sample;
+    NSString *_templateUniqueName;
     struct {
         unsigned int completedDate:1;
         unsigned int doubleValue:1;
         unsigned int intValue:1;
-        unsigned int workActivityType:1;
+        unsigned int workoutActivityType:1;
     } _has;
 }
 
@@ -34,10 +35,12 @@
 @property (nonatomic) BOOL hasDoubleValue;
 @property (nonatomic) BOOL hasIntValue;
 @property (readonly, nonatomic) BOOL hasSample;
-@property (nonatomic) BOOL hasWorkActivityType;
+@property (readonly, nonatomic) BOOL hasTemplateUniqueName;
+@property (nonatomic) BOOL hasWorkoutActivityType;
 @property (nonatomic) long long intValue; // @synthesize intValue=_intValue;
 @property (strong, nonatomic) ASCodableCloudKitSample *sample; // @synthesize sample=_sample;
-@property (nonatomic) long long workActivityType; // @synthesize workActivityType=_workActivityType;
+@property (strong, nonatomic) NSString *templateUniqueName; // @synthesize templateUniqueName=_templateUniqueName;
+@property (nonatomic) long long workoutActivityType; // @synthesize workoutActivityType=_workoutActivityType;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

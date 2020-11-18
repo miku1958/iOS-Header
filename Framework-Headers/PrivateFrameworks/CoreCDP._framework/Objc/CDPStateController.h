@@ -12,7 +12,6 @@
 
 - (void)deleteRecoveryKey:(CDUnknownBlockType)arg1;
 - (BOOL)deleteRecoveryKeyWithError:(id *)arg1;
-- (void)fetchManateeAvailabilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)finishOfflineLocalSecretChangeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateNewRecoveryKey:(CDUnknownBlockType)arg1;
 - (id)generateRandomRecoveryKey:(id *)arg1;

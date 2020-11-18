@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSLinguisticTagger, NSMutableArray, NSMutableOrderedSet, NSString;
+@class NSArray, NSMutableArray, NSMutableOrderedSet, NSString;
 
 @interface AXLanguageTaggedContent : NSObject
 {
@@ -14,25 +14,28 @@
     struct _NSRange _currentChunk;
     BOOL _predictedByTagger;
     BOOL _tagged;
-    BOOL _splitContentOnNewlines;
     NSMutableArray *_tags;
-    NSLinguisticTagger *_linguisticTagger;
     NSMutableOrderedSet *_unpredictedAmbiguousLangMaps;
     NSString *_userPreferredLangID;
+    NSMutableOrderedSet *_predictedSecondaryLangMaps;
+    NSString *_contentString;
 }
 
 @property (readonly, nonatomic) NSString *content;
+@property (copy, nonatomic) NSString *contentString; // @synthesize contentString=_contentString;
 @property (strong, nonatomic) NSArray *currentDialects; // @synthesize currentDialects=_currentDialects;
-@property (strong, nonatomic) NSLinguisticTagger *linguisticTagger; // @synthesize linguisticTagger=_linguisticTagger;
-@property (nonatomic) BOOL splitContentOnNewlines; // @synthesize splitContentOnNewlines=_splitContentOnNewlines;
+@property (strong, nonatomic) NSMutableOrderedSet *predictedSecondaryLangMaps; // @synthesize predictedSecondaryLangMaps=_predictedSecondaryLangMaps;
 @property (nonatomic, getter=isTagged) BOOL tagged; // @synthesize tagged=_tagged;
 @property (strong, nonatomic) NSMutableArray *tags; // @synthesize tags=_tags;
 @property (strong, nonatomic) NSMutableOrderedSet *unpredictedAmbiguousLangMaps; // @synthesize unpredictedAmbiguousLangMaps=_unpredictedAmbiguousLangMaps;
 @property (copy, nonatomic) NSString *userPreferredLangID; // @synthesize userPreferredLangID=_userPreferredLangID;
 
 - (void).cxx_destruct;
+- (BOOL)_addLanguageTagForCurrentChunk;
 - (void)_addTag;
+- (id)_allLangIDs;
 - (BOOL)_isStringCombinationOfCommonAndEmoji:(id)arg1;
+- (CDStruct_3a8d9e70 *)_languageHintsEvenlyDistributedWithProbability:(float)arg1 excludingHints:(id)arg2;
 - (void)_manuallyProcessContentWithRange:(struct _NSRange)arg1;
 - (id)ambiguousLangMaps;
 - (id)description;
@@ -41,6 +44,8 @@
 - (BOOL)hasOnlyNonWesternLangMaps;
 - (BOOL)hasOnlyWesternLangMaps;
 - (id)initWithContent:(id)arg1;
+- (id)langCodeForlangId:(int)arg1;
+- (int)langIDforLangCode:(id)arg1;
 - (BOOL)langMapIsSignificant:(id)arg1;
 - (id)primaryAmbiguousDialect;
 - (id)primaryUnambiguousDialect;

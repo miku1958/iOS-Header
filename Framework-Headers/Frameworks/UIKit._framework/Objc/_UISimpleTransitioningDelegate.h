@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UINavigationControllerDelegate-Protocol.h>
-#import <UIKit/UIViewControllerTransitioningDelegate-Protocol.h>
+#import <UIKitCore/UINavigationControllerDelegate-Protocol.h>
+#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSString;
 @protocol UIViewControllerAnimatedTransitioning;

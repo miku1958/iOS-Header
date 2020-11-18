@@ -11,28 +11,26 @@
 #import <HelpKit/HLPHelpTopicViewControllerDelegate-Protocol.h>
 #import <HelpKit/HLPReachabilityManagerDelegate-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPHelpUsageController, HLPReachabilityManager, NSArray, NSLayoutConstraint, NSMutableDictionary, NSString, NSURL, UIBarButtonItem, UIView;
+@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocaleController, HLPHelpTableOfContentViewController, HLPHelpTopicViewController, HLPHelpUsageController, HLPReachabilityManager, NSArray, NSDictionary, NSLayoutConstraint, NSMutableDictionary, NSString, NSURL, UIBarButtonItem, UIView;
 @protocol HLPHelpViewControllerDelegate;
 
 @interface HLPHelpViewController : UIViewController <HLPHelpTableOfContentViewControllerDelegate, HLPHelpTopicViewControllerDelegate, HLPReachabilityManagerDelegate, HLPHelpLoadingViewDelegate>
 {
+    BOOL _fullBookView;
     BOOL _showingHelpTopic;
+    BOOL _shouldDismissWelcomeTopic;
+    NSDictionary *_context;
     NSString *_helpBookBasePath;
     NSString *_helpbookVersion;
-    NSURL *_helpBookURL;
-    NSMutableDictionary *_localHelpBookNameIDMap;
     UIBarButtonItem *_doneBarButtonItem;
     NSLayoutConstraint *_loadingViewTopConstraint;
     UIView *_fullBookViewSeparator;
     HLPHelpUsageController *_usageController;
-    HLPHelpLocaleController *_localeListController;
-    HLPHelpBookController *_helpBookController;
     HLPHelpTopicViewController *_topicViewController;
     BOOL _hideDoneButton;
     BOOL _displayHelpTopicsOnly;
     BOOL _showTopicNameAsTitle;
     BOOL _showTopicViewOnLoad;
-    BOOL __fullBookView;
     id<HLPHelpViewControllerDelegate> _delegate;
     NSString *_identifier;
     NSString *_version;
@@ -41,21 +39,28 @@
     NSString *_selectedHelpTopicID;
     NSArray *_preferredLanguagesOverride;
     NSString *_selectedHelpTopicName;
+    NSMutableDictionary *_localHelpBookNameIDMap;
+    NSURL *_helpBookURL;
+    HLPHelpLocaleController *_localeListController;
+    HLPHelpBookController *_helpBookController;
     HLPReachabilityManager *_reachabilityManager;
     HLPHelpLoadingView *_loadingView;
     HLPHelpTableOfContentViewController *_tableOfContentViewController;
 }
 
-@property (nonatomic, getter=_fullBookView, setter=_setFullBookView:) BOOL _fullBookView; // @synthesize _fullBookView=__fullBookView;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HLPHelpViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL displayHelpTopicsOnly; // @synthesize displayHelpTopicsOnly=_displayHelpTopicsOnly;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HLPHelpBookController *helpBookController; // @synthesize helpBookController=_helpBookController;
+@property (strong, nonatomic) NSURL *helpBookURL; // @synthesize helpBookURL=_helpBookURL;
 @property (nonatomic) BOOL hideDoneButton; // @synthesize hideDoneButton=_hideDoneButton;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) HLPHelpLoadingView *loadingView; // @synthesize loadingView=_loadingView;
 @property (copy, nonatomic) NSURL *localHelpBookFileURL; // @synthesize localHelpBookFileURL=_localHelpBookFileURL;
+@property (strong, nonatomic) NSMutableDictionary *localHelpBookNameIDMap; // @synthesize localHelpBookNameIDMap=_localHelpBookNameIDMap;
+@property (strong, nonatomic) HLPHelpLocaleController *localeListController; // @synthesize localeListController=_localeListController;
 @property (copy, nonatomic) NSArray *preferredLanguagesOverride; // @synthesize preferredLanguagesOverride=_preferredLanguagesOverride;
 @property (strong, nonatomic) HLPReachabilityManager *reachabilityManager; // @synthesize reachabilityManager=_reachabilityManager;
 @property (copy, nonatomic) NSString *selectedHelpTopicID; // @synthesize selectedHelpTopicID=_selectedHelpTopicID;
@@ -67,18 +72,22 @@
 @property (strong, nonatomic) HLPHelpTableOfContentViewController *tableOfContentViewController; // @synthesize tableOfContentViewController=_tableOfContentViewController;
 @property (copy, nonatomic) NSString *version; // @synthesize version=_version;
 
++ (void)clearCacheControllers;
 + (id)helpViewController;
 + (id)helpViewControllerWithIdentifier:(id)arg1 version:(id)arg2;
 + (id)helpViewControllerWithLocalHelpBookFileURL:(id)arg1;
 + (id)helpViewControllerWithTitle:(id)arg1 identifier:(id)arg2 version:(id)arg3;
 + (id)helpViewControllerWithTitle:(id)arg1 identifier:(id)arg2 version:(id)arg3 subpath:(id)arg4;
 - (void).cxx_destruct;
+- (void)_setContext:(id)arg1;
+- (void)_setFullBookView:(BOOL)arg1;
 - (id)currentHelpTopicItemForTableOfContentViewController:(id)arg1;
 - (void)dealloc;
 - (void)dismiss;
 - (void)displayHelpBookWithLocale:(id)arg1;
 - (void)helpTopicViewController:(id)arg1 failToLoadWithError:(id)arg2;
 - (void)helpTopicViewController:(id)arg1 selectedHelpTopicItem:(id)arg2;
+- (void)helpTopicViewController:(id)arg1 topicLoaded:(id)arg2;
 - (void)helpTopicViewControllerCurrentTopicIsPassionPoint:(id)arg1;
 - (void)helpTopicViewControllerDoneButtonTapped:(id)arg1;
 - (void)helpTopicViewControllerShowHelpBookInfo:(id)arg1;
@@ -89,6 +98,7 @@
 - (void)loadHelpTopicID:(id)arg1;
 - (void)popWelcomeTopicView;
 - (void)reachabilityManagerConnectionStatusChanged:(id)arg1 connected:(BOOL)arg2;
+- (void)removeDDMLoadFailVersion;
 - (void)setupFullBookView;
 - (void)setupTableContentViewController;
 - (void)setupTopicViewController;
@@ -99,8 +109,10 @@
 - (void)tableOfContentViewController:(id)arg1 showHelpTopicItem:(id)arg2;
 - (void)tableOfContentViewControllerShowHelpBookInfo:(id)arg1;
 - (id)topicIDForTopicName:(id)arg1 locale:(id)arg2;
+- (void)updateCacheControllerToLanguageCode:(id)arg1;
 - (void)updateChildViewConstraints;
 - (void)updateDoneButton;
+- (void)updateLastLoadVersion;
 - (void)updateTOCButton;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

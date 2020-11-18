@@ -8,9 +8,18 @@
 
 @interface PIFaceBalanceAutoCalculator : NUAutoCalculator
 {
+    long long _rawState;
 }
 
+@property (readonly) long long rawState; // @synthesize rawState=_rawState;
+
++ (void)calculateRAWWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)calculateWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (CDStruct_39925896)faceBalanceFromFaceImage:(id)arg1 forFaceRect:(CDStruct_996ac03c)arg2;
++ (id)faceBalanceResultFromFaceObservations:(id)arg1 request:(id)arg2 error:(out id *)arg3;
++ (CDStruct_996ac03c)faceRectFromNormalizedFaceRet:(struct CGRect)arg1 forImageExtent:(CDStruct_996ac03c)arg2 scaleX:(double)arg3 scaleY:(double)arg4;
 - (void)calculate:(CDUnknownBlockType)arg1;
+- (id)initWithRequest:(id)arg1 isRAW:(BOOL)arg2;
 
 @end
 

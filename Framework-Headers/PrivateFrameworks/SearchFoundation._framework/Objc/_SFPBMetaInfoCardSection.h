@@ -13,7 +13,6 @@
 
 @interface _SFPBMetaInfoCardSection : PBCodable <_SFPBMetaInfoCardSection, NSSecureCoding>
 {
-    CDStruct_b48e3102 _has;
     BOOL _canBeHidden;
     BOOL _hasTopPadding;
     BOOL _hasBottomPadding;
@@ -35,20 +34,8 @@
 @property (strong, nonatomic) _SFPBURL *contentURL; // @synthesize contentURL=_contentURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
-@property (readonly, nonatomic) BOOL hasBadge;
 @property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasContentURL;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasHostPageURL;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
 @property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
-@property (readonly, nonatomic) BOOL hasTrending;
-@property (readonly, nonatomic) BOOL hasType;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _SFPBURL *hostPageURL; // @synthesize hostPageURL=_hostPageURL;
 @property (readonly, nonatomic) NSData *jsonData;

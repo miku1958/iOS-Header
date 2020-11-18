@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (id)p_chartType;
 - (void)p_drawShadowedContentIntoContext:(struct CGContext *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 preset:(id)arg4 shouldCache:(BOOL *)arg5;
+- (struct CGRect)p_stackRectWithRects:(struct CGRect *)arg1 atIndex:(unsigned long long)arg2;
 
 @end
 

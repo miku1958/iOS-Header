@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-#import <UIKit/UIClickInteractionDelegate-Protocol.h>
-#import <UIKit/_UIInteractiveHighlighting-Protocol.h>
+#import <UIKitCore/UIClickInteractionDelegate-Protocol.h>
+#import <UIKitCore/_UIInteractiveHighlighting-Protocol.h>
 
 @class NSArray, NSString, UIClickInteraction, UIColor, UIImage, UIImageView, UIView, UIVisualEffectView;
 
@@ -25,15 +25,16 @@
     BOOL _didActivateDuringInteraction;
     double _maxForceDuringInteraction;
     BOOL _pronounced;
-    BOOL _prefersDarkUserInterfaceStyle;
     UIImage *_image;
     UIImage *_selectedImage;
     UIColor *_selectedTintColor;
     NSString *_localizedAccessoryTitle;
+    NSString *_backgroundEffectViewGroupName;
     NSString *_statisticsIdentifier;
     struct UIEdgeInsets _edgeInsets;
 }
 
+@property (copy, nonatomic) NSString *backgroundEffectViewGroupName; // @synthesize backgroundEffectViewGroupName=_backgroundEffectViewGroupName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
@@ -41,7 +42,6 @@
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (nonatomic, getter=isLatching) BOOL latching;
 @property (copy, nonatomic) NSString *localizedAccessoryTitle; // @synthesize localizedAccessoryTitle=_localizedAccessoryTitle;
-@property (nonatomic) BOOL prefersDarkUserInterfaceStyle; // @synthesize prefersDarkUserInterfaceStyle=_prefersDarkUserInterfaceStyle;
 @property (nonatomic, getter=isPronounced) BOOL pronounced; // @synthesize pronounced=_pronounced;
 @property (strong, nonatomic) UIImage *selectedImage; // @synthesize selectedImage=_selectedImage;
 @property (strong, nonatomic) UIColor *selectedTintColor; // @synthesize selectedTintColor=_selectedTintColor;
@@ -64,6 +64,7 @@
 - (void)layoutSubviews;
 - (void)setSelected:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

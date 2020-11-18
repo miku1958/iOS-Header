@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SafariServices/_SFManagedActivityViewController.h>
+#import <SafariServices/_SFActivityViewController.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _SFOpenInOtherAppActivityViewController : _SFManagedActivityViewController
+@interface _SFOpenInOtherAppActivityViewController : _SFActivityViewController
 {
     NSString *_filePath;
 }

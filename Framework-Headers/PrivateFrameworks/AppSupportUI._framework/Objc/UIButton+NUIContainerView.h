@@ -9,7 +9,7 @@
 @interface UIButton (NUIContainerView)
 - (long long)_nui_isUIButtonType;
 - (struct UIEdgeInsets)_nui_rectInsetsForBaseline;
-- (double)effectiveBaselineOffsetFromContentBottom;
-- (double)effectiveFirstBaselineOffsetFromContentTop;
+- (double)effectiveBaselineOffsetFromBottom;
+- (double)effectiveFirstBaselineOffsetFromTop;
 @end
 

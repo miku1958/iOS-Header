@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFloatingContentView.h>
+#import <UIKitCore/_UIFloatingContentView.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIKBFloatingContentView : _UIFloatingContentView

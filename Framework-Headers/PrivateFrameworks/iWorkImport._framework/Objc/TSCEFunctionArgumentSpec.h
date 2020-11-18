@@ -4,76 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
-
-#import <iWorkImport/NSCopying-Protocol.h>
-
-@class NSArray, TSCEFunctionSpec;
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
-@interface TSCEFunctionArgumentSpec : NSObject <NSCopying>
+@interface TSCEFunctionArgumentSpec : NSObject
 {
-    int mArgumentType;
-    BOOL mForceArrayMode;
-    double mMinValue;
-    double mMaxValue;
-    BOOL mDisallowDuration;
-    BOOL mDisallowCurrency;
-    short mIndex;
-    int mAccessorMode;
-    int mArgumentContext;
-    unsigned char mRangeContext;
-    NSArray *mDisallowedTypes;
-    vector_10088e46 *mModeValues;
-    short mDefaultModeIndex;
-    TSCEFunctionSpec *mFunctionSpec;
-    BOOL mMinInclusive;
-    BOOL mMaxInclusive;
-    BOOL mIsInteger;
-    BOOL mReferenceForGeometryOnly;
+    struct TSCEFunctionArgSpec _argSpec;
 }
 
-@property (readonly, nonatomic) int accessorMode; // @synthesize accessorMode=mAccessorMode;
-@property (readonly, nonatomic) int argumentContext; // @synthesize argumentContext=mArgumentContext;
-@property (readonly, nonatomic) short defaultModeIndex; // @synthesize defaultModeIndex=mDefaultModeIndex;
-@property (readonly, nonatomic) BOOL disallowCurrency; // @synthesize disallowCurrency=mDisallowCurrency;
-@property (readonly, nonatomic) BOOL disallowDuration; // @synthesize disallowDuration=mDisallowDuration;
-@property (readonly, nonatomic) NSArray *disallowedTypes;
-@property (readonly, nonatomic) BOOL forceArrayMode; // @synthesize forceArrayMode=mForceArrayMode;
-@property (nonatomic) TSCEFunctionSpec *functionSpec; // @synthesize functionSpec=mFunctionSpec;
-@property (readonly, nonatomic) short index; // @synthesize index=mIndex;
-@property (readonly, nonatomic) BOOL isInteger; // @synthesize isInteger=mIsInteger;
-@property (readonly, nonatomic) BOOL isMode;
-@property (readonly, nonatomic) BOOL isOptional;
-@property (readonly, nonatomic) BOOL maxInclusive; // @synthesize maxInclusive=mMaxInclusive;
-@property (readonly, nonatomic) double maxValue; // @synthesize maxValue=mMaxValue;
-@property (readonly, nonatomic) BOOL minInclusive; // @synthesize minInclusive=mMinInclusive;
-@property (readonly, nonatomic) double minValue; // @synthesize minValue=mMinValue;
-@property (readonly, nonatomic) vector_10088e46 *modeValues; // @synthesize modeValues=mModeValues;
-@property (readonly, nonatomic) short numModes;
-@property (nonatomic) unsigned char rangeContext; // @synthesize rangeContext=mRangeContext;
-@property (readonly, nonatomic) BOOL referenceForGeometryOnly; // @synthesize referenceForGeometryOnly=mReferenceForGeometryOnly;
-
-+ (id)argumentSpecWithIndex:(short)arg1 type:(int)arg2 accessorMode:(int)arg3 disallowedTypes:(id)arg4 argumentContext:(int)arg5 rangeContext:(unsigned char)arg6 minValue:(double)arg7 minInclusive:(BOOL)arg8 maxValue:(double)arg9 maxInclusive:(BOOL)arg10 isInteger:(BOOL)arg11 disallowDuration:(BOOL)arg12 disallowCurrency:(BOOL)arg13 modeValues:(vector_10088e46 *)arg14 defaultModeIndex:(short)arg15 referenceForGeometryOnly:(BOOL)arg16 forceArrayMode:(BOOL)arg17;
-- (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (long long)indexForModeBool:(BOOL)arg1 locale:(id)arg2;
-- (long long)indexForModeNumber:(double)arg1 locale:(id)arg2;
-- (long long)indexForModeString:(id)arg1 locale:(id)arg2;
-- (long long)indexForModeValue:(struct TSCEValue *)arg1 locale:(id)arg2;
-- (id)initArgumentSpecWithIndex:(short)arg1 type:(int)arg2 accessorMode:(int)arg3 disallowedTypes:(id)arg4 argumentContext:(int)arg5 rangeContext:(unsigned char)arg6 minValue:(double)arg7 minInclusive:(BOOL)arg8 maxValue:(double)arg9 maxInclusive:(BOOL)arg10 isInteger:(BOOL)arg11 disallowDuration:(BOOL)arg12 disallowCurrency:(BOOL)arg13 modeValues:(vector_10088e46 *)arg14 defaultModeIndex:(short)arg15 referenceForGeometryOnly:(BOOL)arg16 forceArrayMode:(BOOL)arg17;
-- (BOOL)isModeEnabled:(short)arg1;
-- (id)localizedArgumentNameForLocale:(id)arg1;
-- (id)localizedFunctionNameForLocale:(id)arg1;
-- (id)localizedModeMenuItemStringForModeIndex:(short)arg1 locale:(id)arg2;
-- (id)localizedModeNameForModeIndex:(short)arg1 locale:(id)arg2;
-- (id)localizedModeToolTipStringForModeIndex:(short)arg1 locale:(id)arg2;
-- (id)localizedToolTipStringForLocale:(id)arg1;
-- (id)nativeSyntaxString;
-- (id)nativeSyntaxStringForModeIndex:(short)arg1;
-- (int)preferredType;
-- (BOOL)typeIsDisallowed:(int)arg1 value:(struct TSCEValue *)arg2;
-- (struct TSCEValue)valueForModeIndex:(short)arg1;
++ (struct TSCEFunctionArgSpec)argSpecWithType:(int)arg1 accessorMode:(int)arg2 rangeContext:(unsigned char)arg3;
++ (struct TSCEFunctionArgSpec)argSpecWithType:(int)arg1 accessorMode:(int)arg2 rangeContext:(unsigned char)arg3 argumentContext:(int)arg4;
++ (struct TSCEFunctionArgSpec)argSpecWithType:(int)arg1 accessorMode:(int)arg2 rangeContext:(unsigned char)arg3 argumentContext:(int)arg4 minValue:(double)arg5 minInclusive:(BOOL)arg6 maxValue:(double)arg7 maxInclusive:(BOOL)arg8 isInteger:(BOOL)arg9 disallowedTypes:(const unordered_set_07fa9bdb *)arg10 disallowDuration:(BOOL)arg11 disallowCurrency:(BOOL)arg12 modeValues:(const vector_a1208d01 *)arg13 defaultModeIndex:(short)arg14 referenceForGeometryOnly:(BOOL)arg15 forceArrayMode:(BOOL)arg16;
++ (struct TSCEFunctionArgSpec)argSpecWithType:(int)arg1 accessorMode:(int)arg2 rangeContext:(unsigned char)arg3 disallowedTypes:(const unordered_set_07fa9bdb *)arg4 disallowDuration:(BOOL)arg5 disallowCurrency:(BOOL)arg6;
++ (struct TSCEFunctionArgSpec)argSpecWithType:(int)arg1 accessorMode:(int)arg2 rangeContext:(unsigned char)arg3 minValue:(double)arg4 minInclusive:(BOOL)arg5 maxValue:(double)arg6 maxInclusive:(BOOL)arg7 disallowedTypes:(const unordered_set_07fa9bdb *)arg8 disallowDuration:(BOOL)arg9 disallowCurrency:(BOOL)arg10;
++ (struct TSCEFunctionArgSpec)argSpecWithType:(int)arg1 accessorMode:(int)arg2 rangeContext:(unsigned char)arg3 modeValues:(const vector_a1208d01 *)arg4 defaultModeIndex:(short)arg5;
+- (id).cxx_construct;
+- (void).cxx_destruct;
 
 @end
 

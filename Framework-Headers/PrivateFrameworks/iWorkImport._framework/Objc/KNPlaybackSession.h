@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDAnimationSession-Protocol.h>
 
-@class KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationTestResultLogger, KNShow, KNSlideNode, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSKAccessController;
+@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationTestResultLogger, KNShow, KNSlideNode, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMetalLayer, TSKAccessController;
 @protocol MTLDevice, TSDCanvasDelegate, TSKAccessControllerReadTicket;
 
 __attribute__((visibility("hidden")))
@@ -16,12 +16,14 @@ __attribute__((visibility("hidden")))
 {
     KNSlideNode *_currentSlideNode;
     BOOL _hasEndShowHandlerBeenCancelled;
-    id<MTLDevice> _metalDevice;
+    BOOL _isMetalEnabled;
     BOOL _isMetalCapable;
     BOOL _isMetalCapableCheckInitialized;
+    CALayer *_noMetalBadgeLayer;
     BOOL _disableAutoAnimationRemoval;
     BOOL _disableTransitionTextureCaching;
     BOOL _isExitingShow;
+    BOOL _isMovieExport;
     BOOL _isShowLayerVisible;
     BOOL _shouldAlwaysSetCurrentGLContextWhenDrawing;
     BOOL _shouldAnimateTransitionOnLastSlide;
@@ -49,6 +51,9 @@ __attribute__((visibility("hidden")))
     id<TSDCanvasDelegate> _canvasDelegate;
     CDUnknownBlockType _endShowHandler;
     long long _playMode;
+    CALayer *_rootLayer;
+    id<MTLDevice> _metalDevice;
+    TSDMetalLayer *_sharedMetalLayer;
     KNShow *_show;
     TSDGLLayer *_sharedGLLayer;
     NSMutableArray *_animationDurationArray;
@@ -80,13 +85,17 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isExitingShow; // @synthesize isExitingShow=_isExitingShow;
 @property (readonly, nonatomic) BOOL isMetalCapable;
+@property (readonly, nonatomic) BOOL isMetalEnabled;
+@property (nonatomic) BOOL isMovieExport; // @synthesize isMovieExport=_isMovieExport;
 @property (readonly, nonatomic) BOOL isOffscreenPlayback;
 @property (readonly, nonatomic) BOOL isPreview;
 @property (nonatomic) BOOL isShowLayerVisible; // @synthesize isShowLayerVisible=_isShowLayerVisible;
 @property (readonly, nonatomic) BOOL isWideGamut;
-@property (readonly, nonatomic) id<MTLDevice> metalDevice;
+@property (readonly, nonatomic) id<MTLDevice> metalDevice; // @synthesize metalDevice=_metalDevice;
 @property (nonatomic) long long playMode; // @synthesize playMode=_playMode;
+@property (readonly, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property (strong, nonatomic) TSDGLLayer *sharedGLLayer; // @synthesize sharedGLLayer=_sharedGLLayer;
+@property (strong, nonatomic) TSDMetalLayer *sharedMetalLayer; // @synthesize sharedMetalLayer=_sharedMetalLayer;
 @property (nonatomic) BOOL shouldAlwaysSetCurrentGLContextWhenDrawing; // @synthesize shouldAlwaysSetCurrentGLContextWhenDrawing=_shouldAlwaysSetCurrentGLContextWhenDrawing;
 @property (nonatomic) BOOL shouldAnimateNullTransitions; // @synthesize shouldAnimateNullTransitions=_shouldAnimateNullTransitions;
 @property (nonatomic) BOOL shouldAnimateTransitionOnLastSlide; // @synthesize shouldAnimateTransitionOnLastSlide=_shouldAnimateTransitionOnLastSlide;
@@ -117,6 +126,7 @@ __attribute__((visibility("hidden")))
 - (id)currentSlideNode;
 - (void)dealloc;
 - (void)dropABreadCrumb;
+- (void)enableMetalBadge:(BOOL)arg1;
 - (void)executeEndShowHandlerAfterDelay:(double)arg1;
 - (id)firstSlideNode;
 - (id)gotoFirstSlide;
@@ -125,16 +135,21 @@ __attribute__((visibility("hidden")))
 - (id)gotoPreviousSlide;
 - (void)gotoSlideNode:(id)arg1;
 - (id)init;
-- (id)initWithShow:(id)arg1 viewScale:(double)arg2 showLayer:(id)arg3 canvasDelegate:(id)arg4 endShowHandler:(CDUnknownBlockType)arg5;
+- (id)initWithShow:(id)arg1 viewScale:(double)arg2 showLayer:(id)arg3 canvasDelegate:(id)arg4 isMetalEnabled:(BOOL)arg5 endShowHandler:(CDUnknownBlockType)arg6;
+- (BOOL)isPreCachingOperationActive;
 - (id)lastSlideNode;
+- (void)makeSharedMetalLayerVisible:(BOOL)arg1;
 - (id)nextSlideAfterCurrent;
 - (id)nextSlideNodeAfterCurrent;
 - (id)nextSlideNodeAfterSlideNode:(id)arg1;
 - (void)p_executeEndShowHandler;
 - (void)p_setCurrentSlideNode:(id)arg1;
+- (void)p_setupBadging;
+- (void)performSlideRead:(CDUnknownBlockType)arg1;
 - (id)previousSlideNodeBeforeCurrent;
 - (id)previousSlideNodeBeforeSlideNode:(id)arg1;
 - (id)repForInfo:(id)arg1 onCanvas:(id)arg2;
+- (void)resizeShowLayer;
 - (void)setSharedGLContextAsCurrentContextShouldCreate:(BOOL)arg1;
 - (unsigned long long)slideNumberForSlideNode:(id)arg1;
 - (void)tearDown;

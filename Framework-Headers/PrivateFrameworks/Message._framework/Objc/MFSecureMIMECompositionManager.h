@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MFError, MailAccount, NSLock, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol MFSecureMIMECompositionManagerDelegate, OS_dispatch_queue;
@@ -44,12 +44,12 @@
 + (id)copyEncryptionCertificatesForAccount:(id)arg1 recipientAddress:(id)arg2 error:(id *)arg3;
 + (struct __SecIdentity *)copyEncryptionIdentityForAccount:(id)arg1 sendingAddress:(id)arg2 error:(id *)arg3;
 + (struct __SecIdentity *)copySigningIdentityForAccount:(id)arg1 sendingAddress:(id)arg2 error:(id *)arg3;
-+ (BOOL)isRevokedCertificate:(struct __SecCertificate *)arg1 sendingAddress:(id)arg2;
++ (unsigned int)evaluateTrustForSigningCertificate:(struct __SecCertificate *)arg1 sendingAddress:(id)arg2;
 - (void)_determineEncryptionStatusWithNewRecipients:(id)arg1;
 - (void)_determineEncryptionStatusWithSendingAddress:(id)arg1;
 - (void)_determineIdentitiesWithSendingAddress:(id)arg1 forSigning:(BOOL)arg2 encryption:(BOOL)arg3;
-- (void)_determineRevocationStatusWithIdentity:(struct __SecIdentity *)arg1 sendingAddress:(id)arg2;
 - (void)_determineSigningStatusWithSendingAddress:(id)arg1;
+- (void)_determineTrustStatusForSigningIdentity:(struct __SecIdentity *)arg1 sendingAddress:(id)arg2;
 - (void)_notifyDelegateEncryptionStatusDidChange:(int)arg1 certsByRecipient:(id)arg2 errorsByRecipient:(id)arg3 identity:(struct __SecIdentity *)arg4 error:(id)arg5;
 - (void)_notifyDelegateSigningStatusDidChange:(int)arg1 identity:(struct __SecIdentity *)arg2 error:(id)arg3;
 - (void)_nts_copyEncryptionIdentity:(struct __SecIdentity **)arg1 error:(id *)arg2 certificatesByRecipient:(id *)arg3 errorsByRecipient:(id *)arg4;

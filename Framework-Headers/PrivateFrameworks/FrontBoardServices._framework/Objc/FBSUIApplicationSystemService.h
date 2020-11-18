@@ -4,29 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSString;
-@protocol FBSUIApplicationSystemServiceDelegate, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface FBSUIApplicationSystemService : NSObject
 {
     NSObject<OS_dispatch_queue> *_delegateQueue;
-    id<FBSUIApplicationSystemServiceDelegate> _delegate;
 }
 
-@property (readonly, nonatomic) double backgroundTimeRemaining;
-@property (nonatomic) long long badgeNumber;
-@property (copy, nonatomic) NSString *badgeString;
-@property (nonatomic) double currentBacklightLevel;
-@property (nonatomic) id<FBSUIApplicationSystemServiceDelegate> delegate; // @synthesize delegate=_delegate;
-
-- (id)_getBadgeValue;
-- (long long)activeInterfaceOrientation;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
-- (BOOL)setNextWakeInterval:(double)arg1;
 - (void)suspendCurrentApplication;
 
 @end

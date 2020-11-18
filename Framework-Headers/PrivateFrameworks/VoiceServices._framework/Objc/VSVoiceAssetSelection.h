@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class ASAsset, NSString, VSVoiceAsset;
 
@@ -22,7 +22,11 @@
 @property (strong, nonatomic) NSString *voicePath; // @synthesize voicePath=_voicePath;
 
 - (void).cxx_destruct;
+- (id)descriptiveKey;
+- (BOOL)isDownloading;
+- (BOOL)isInstalled;
 - (id)key;
+- (unsigned long long)size;
 
 @end
 

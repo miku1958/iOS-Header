@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CADisplayLink;
+@class CADisplayLink, SCNRecursiveLock;
 @protocol OS_dispatch_queue;
 
+__attribute__((visibility("hidden")))
 @interface SCNDisplayLink : NSObject
 {
     CADisplayLink *_caDisplayLink;
@@ -20,6 +21,7 @@
     BOOL _invalidated;
     double _lastFrameTime;
     float _preferredFrameRate;
+    SCNRecursiveLock *_runningLock;
     _Atomic int _queuedFrameCount;
 }
 

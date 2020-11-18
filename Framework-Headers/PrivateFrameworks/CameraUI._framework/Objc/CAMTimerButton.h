@@ -39,6 +39,7 @@
 - (double)padHeaderViewContentInsetLeft;
 - (void)reloadData;
 - (void)setDuration:(long long)arg1 animated:(BOOL)arg2;
+- (void)setHideOffWhenCollapsed:(BOOL)arg1 needsReloadData:(BOOL)arg2;
 - (id)shownIndexesWhileCollapsed;
 - (id)titleForMenuItemAtIndex:(long long)arg1;
 

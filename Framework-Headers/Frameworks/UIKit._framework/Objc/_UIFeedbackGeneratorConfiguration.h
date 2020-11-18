@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 @class NSArray, NSSet, NSString;
 
@@ -15,9 +15,11 @@
     BOOL _settingsEnabled;
     BOOL _setup;
     BOOL _enabled;
+    NSSet *_usedFeedbacks;
     CDUnknownBlockType _preparationBlock;
     Class _clientClass;
     NSString *_usage;
+    long long _requiredSupportLevel;
     long long _activationStyle;
     long long _outputMode;
     NSString *__stats_key;
@@ -32,17 +34,17 @@
 @property (readonly, nonatomic) NSArray *feedbackKeyPaths;
 @property (nonatomic) long long outputMode; // @synthesize outputMode=_outputMode;
 @property (copy, nonatomic) CDUnknownBlockType preparationBlock; // @synthesize preparationBlock=_preparationBlock;
-@property (readonly, nonatomic) long long requiredSupportLevel;
+@property (nonatomic) long long requiredSupportLevel; // @synthesize requiredSupportLevel=_requiredSupportLevel;
 @property (nonatomic) BOOL settingsEnabled; // @synthesize settingsEnabled=_settingsEnabled;
 @property (nonatomic, getter=isSetup) BOOL setup; // @synthesize setup=_setup;
 @property (copy, nonatomic) NSString *usage; // @synthesize usage=_usage;
-@property (readonly, nonatomic) NSSet *usedFeedbacks;
+@property (readonly, nonatomic) NSSet *usedFeedbacks; // @synthesize usedFeedbacks=_usedFeedbacks;
 
 + (id)_configurationWithKey:(id)arg1 preparationBlock:(CDUnknownBlockType)arg2;
++ (id)_configurationWithKey:(id)arg1 requiredSupportLevel:(long long)arg2 preparationBlock:(CDUnknownBlockType)arg3;
 + (id)_disabledConfiguration;
 + (id)defaultConfiguration;
 - (void).cxx_destruct;
-- (BOOL)_hasMutableFeedbackKeyPaths;
 - (void)_preferencesUpdated:(id)arg1;
 - (BOOL)_setupRegardlessOfPreferences:(BOOL)arg1;
 - (BOOL)_shouldEnable;

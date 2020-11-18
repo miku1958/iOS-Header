@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, PHFetchResult;
+@class NSSet, NSString, PHFetchResult;
 @protocol OS_dispatch_queue, PUSearchGridDataSourceDelegate;
 
 __attribute__((visibility("hidden")))
@@ -16,14 +16,13 @@ __attribute__((visibility("hidden")))
     BOOL _hasPendingChanges;
     id<PUSearchGridDataSourceDelegate> _delegate;
     NSSet *_assetUUIDs;
-    NSSet *_additionalAssetUUIDs;
     unsigned long long _searchCategories;
+    NSString *_title;
     NSObject<OS_dispatch_queue> *_queue;
     unsigned long long _taskId;
     PHFetchResult *_fetchResult;
 }
 
-@property (strong, nonatomic) NSSet *additionalAssetUUIDs; // @synthesize additionalAssetUUIDs=_additionalAssetUUIDs;
 @property (strong, nonatomic) NSSet *assetUUIDs; // @synthesize assetUUIDs=_assetUUIDs;
 @property (weak, nonatomic) id<PUSearchGridDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) PHFetchResult *fetchResult; // @synthesize fetchResult=_fetchResult;
@@ -32,16 +31,17 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) unsigned long long searchCategories; // @synthesize searchCategories=_searchCategories;
 @property (nonatomic) unsigned long long taskId; // @synthesize taskId=_taskId;
+@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
 - (void)_inqClearPendingChanges;
 - (BOOL)_inqIsCancelledWithTaskId:(unsigned long long)arg1;
 - (BOOL)_isCancelledWithTaskId:(unsigned long long)arg1;
-- (void)_updateAssetUUIDs:(id)arg1 additionalAssetUUIDs:(id)arg2 taskId:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_updateFetchResult:(id)arg1 taskId:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)mergePendingChanges;
-- (void)updateAssetUUIDs:(id)arg1 additionalAssetUUIDs:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateAssetUUIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updateFetchResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

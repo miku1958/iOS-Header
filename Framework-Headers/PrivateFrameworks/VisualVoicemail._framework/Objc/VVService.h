@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <VisualVoicemail/VMTranscriptionService-Protocol.h>
+#import <VisualVoicemail/VMStateRequestControllerDelegate-Protocol.h>
 
-@class NSArray, NSError, NSMutableDictionary, NSRecursiveLock, NSString, VMStateRequestController, VMVoicemailTranscriptionController, VMVoicemailTranscriptionTask;
+@class CTXPCServiceSubscriptionContext, NSArray, NSDictionary, NSError, NSMutableDictionary, NSRecursiveLock, NSString, VMStateRequestController, VMTranscriptionService, VVVerifier;
 @protocol OS_dispatch_queue;
 
-@interface VVService : NSObject <VMTranscriptionService>
+@interface VVService : NSObject <VMStateRequestControllerDelegate>
 {
     NSRecursiveLock *_lock;
     long long _capabilities;
@@ -39,45 +39,45 @@
     } _serviceFlags;
     NSMutableDictionary *_stateRequestAttemptCount;
     NSString *_serviceIdentifier;
-    VMVoicemailTranscriptionController *_transcriptionController;
-    VMVoicemailTranscriptionTask *_transcriptionTask;
+    NSString *_serviceDestinationID;
+    VMTranscriptionService *_transcriptionService;
+    VVVerifier *_verifier;
+    CTXPCServiceSubscriptionContext *_context;
     unsigned long long _numFailedAttemptsToSyncOverWifi;
     struct __CFString *_lastConnectionTypeUsed;
+    NSDictionary *_accountDictionary;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
     VMStateRequestController *_stateRequestController;
 }
 
+@property (strong, nonatomic) NSDictionary *accountDictionary; // @synthesize accountDictionary=_accountDictionary;
+@property (readonly, nonatomic) CTXPCServiceSubscriptionContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct __CFString *lastConnectionTypeUsed; // @synthesize lastConnectionTypeUsed=_lastConnectionTypeUsed;
 @property (nonatomic) unsigned long long numFailedAttemptsToSyncOverWifi; // @synthesize numFailedAttemptsToSyncOverWifi=_numFailedAttemptsToSyncOverWifi;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
+@property (strong, nonatomic) NSString *serviceDestinationID; // @synthesize serviceDestinationID=_serviceDestinationID;
 @property (strong, nonatomic) NSString *serviceIdentifier; // @synthesize serviceIdentifier=_serviceIdentifier;
 @property (readonly, nonatomic) NSMutableDictionary *stateRequestAttemptCount; // @synthesize stateRequestAttemptCount=_stateRequestAttemptCount;
 @property (readonly, nonatomic) VMStateRequestController *stateRequestController; // @synthesize stateRequestController=_stateRequestController;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=isTranscriptionAvailable) BOOL transcriptionAvailable;
-@property (strong, nonatomic) VMVoicemailTranscriptionController *transcriptionController; // @dynamic transcriptionController;
-@property (strong, nonatomic) VMVoicemailTranscriptionController *transcriptionController; // @synthesize transcriptionController=_transcriptionController;
-@property (strong, nonatomic) VMVoicemailTranscriptionTask *transcriptionTask; // @dynamic transcriptionTask;
-@property (strong, nonatomic) VMVoicemailTranscriptionTask *transcriptionTask; // @synthesize transcriptionTask=_transcriptionTask;
+@property (strong, nonatomic) VMTranscriptionService *transcriptionService; // @synthesize transcriptionService=_transcriptionService;
+@property (strong, nonatomic) VVVerifier *verifier; // @synthesize verifier=_verifier;
 
 + (struct __CTServerConnection *)CTServerConnection;
 + (void)_acquireAssertionsForInsomniaState:(BOOL)arg1;
-+ (void)_handleSIMChanged;
 + (BOOL)_lockedSharedServiceIsSubscribed;
 + (void)_setInsomniaStateSupressed:(BOOL)arg1;
 + (void)_subscriptionStateChanged;
 + (unsigned int)_voicemailPowerAssertion;
-+ (BOOL)_vvmAssertionReady;
-+ (BOOL)_waitingForInsomniaStateToBecomeActive;
++ (id)accountDictionaryForURL:(id)arg1;
 + (void)initialize;
 + (void)obtainInsomniaAssertion;
 + (void)releaseInsomniaAssertion;
-+ (id)sharedService;
++ (id)serviceWithIdentifier:(id)arg1 context:(id)arg2;
 + (BOOL)sharedServiceIsSubscribed;
-+ (id)transcriptionLanguageCodes;
 - (void).cxx_destruct;
 - (void)_attemptDelayedSynchronize;
 - (void)_attemptScheduledTrashCompaction:(id)arg1;
@@ -100,6 +100,7 @@
 - (void)_setActivationError:(id)arg1;
 - (void)_setOnline:(BOOL)arg1 fallbackMode:(BOOL)arg2;
 - (void)_updateOnlineStatus;
+- (id)accountParamsAtFilePath:(id)arg1;
 - (id)activationError;
 - (long long)attemptCountForStateRequest:(id)arg1;
 - (void)cancelAutomatedTrashCompaction;
@@ -118,28 +119,26 @@
 - (void)displayPasswordRequestIfNecessary;
 - (BOOL)doTrashCompaction;
 - (BOOL)doesClientManageTrashCompaction;
-- (unsigned long long)failureReasonForError:(id)arg1;
 - (BOOL)greetingAvailable;
 - (BOOL)greetingFetchExistsProgressiveLoadInProgress:(BOOL *)arg1;
-- (void)handleAFLanguageCodeDidChangeNotification:(id)arg1;
+- (void)handleDataContextDeactivated;
 - (void)handleNotification:(id)arg1 isMWI:(BOOL)arg2;
 - (void)handlePasswordRequestCancellation;
 - (void)handleVVServiceDataAvailableNotification:(id)arg1;
+- (void)handleVoicemailInfoUpdate:(id)arg1;
 - (BOOL)headerChangesPending;
 - (void)incrementAttemptCountForStateRequest:(id)arg1;
-- (id)init;
+- (id)initWithServiceIdentifier:(id)arg1 context:(id)arg2;
 - (BOOL)isInSync;
 - (BOOL)isMessageWaiting;
 - (BOOL)isOfflineDueToRoaming;
 - (BOOL)isOnline;
 - (BOOL)isPasswordReady;
 - (BOOL)isSubscribed;
-- (BOOL)isSupportedTranscriptionLanguageCode:(id)arg1;
 - (BOOL)isSyncInProgress;
 - (BOOL)isVVMAvailableOverWiFi;
 - (void)kill;
 - (BOOL)lastUsedConnectionTypeWasCellular;
-- (void)loadTranscriptionService;
 - (long long)mailboxGreetingType;
 - (id)mailboxName;
 - (BOOL)mailboxRequiresSetup;
@@ -151,11 +150,11 @@
 - (void)moveRecordsWithIdentifiersToInbox:(id)arg1;
 - (void)moveRecordsWithIdentifiersToTrash:(id)arg1;
 - (Class)notificationInterpreterClass;
+- (id)parametersFilePathForUUIDString:(id)arg1;
 - (id)password;
 - (BOOL)passwordChangeRequiresEnteringOldPassword;
 - (id)passwordIgnoringSubscription:(BOOL)arg1;
 - (void)performSynchronousBlock:(CDUnknownBlockType)arg1;
-- (void)processTranscriptForRecord:(const void *)arg1 priority:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)progressiveDataLengthsForRecord:(void *)arg1 expected:(unsigned int *)arg2 current:(unsigned int *)arg3;
 - (id)provisionalPassword;
 - (void)removeAllNonDetachedRecords;
@@ -164,12 +163,9 @@
 - (void)reportError:(id)arg1;
 - (void)reportFailedToSyncOverWifi;
 - (void)reportSucessfulSync;
-- (void)reportTranscriptionProblemForRecord:(const void *)arg1;
-- (void)reportTranscriptionRatedAccurate:(BOOL)arg1 forRecord:(const void *)arg2;
 - (void)resetCounts;
 - (void)resetDelayedSynchronizationAttemptCount;
 - (BOOL)respectsMWINotifications;
-- (void)retranscribeAllVoicemails;
 - (void)retrieveDataForRecord:(void *)arg1;
 - (void)retrieveGreeting;
 - (id)retryIntervals;
@@ -196,7 +192,6 @@
 - (BOOL)taskOfTypeExists:(long long)arg1;
 - (double)trashCompactionAge;
 - (unsigned int)trashedCount;
-- (void)unloadTranscriptionService;
 - (unsigned int)unreadCount;
 - (void)updateCountsForChangedFlags:(unsigned int)arg1 currentRecordFlags:(unsigned int)arg2;
 - (void)updateLoggingSettings;

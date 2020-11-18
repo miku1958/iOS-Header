@@ -6,20 +6,22 @@
 
 #import <GeoServices/GEOTileServerProxy.h>
 
+#import <GeoServices/GEOProactiveTileDownloaderDelegate-Protocol.h>
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 
-@class GEODBReader, GEODBWriter, NSLock, NSMapTable, NSMutableArray, NSObject, NSString;
+@class GEOProactiveTileDownloader, GEOTileDB, NSLock, NSMapTable, NSMutableArray, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface GEOTileServerLocalProxy : GEOTileServerProxy <GEOResourceManifestTileGroupObserver>
+@interface GEOTileServerLocalProxy : GEOTileServerProxy <GEOProactiveTileDownloaderDelegate, GEOResourceManifestTileGroupObserver>
 {
-    GEODBWriter *_dbWriter;
-    GEODBReader *_dbReader;
+    GEOTileDB *_tileCache;
     NSString *_cacheLocation;
     NSMapTable *_providers;
     NSMutableArray *_inProgress;
     NSLock *_inProgressLock;
     NSObject<OS_dispatch_queue> *_workQueue;
+    GEOProactiveTileDownloader *_proactiveTileDownloader;
+    BOOL _updatingManifestForProactiveTileDownload;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +29,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)enableCDSObserversIfNecessary;
 - (void).cxx_destruct;
+- (void)_forceDataSaverPreload:(id)arg1;
+- (void)_initiateDataSaverPreloadIfPossible;
 - (void)_registerBuiltInProviders;
 - (void)_updateExpiringTilesets;
 - (void)beginPreloadSessionOfSize:(unsigned long long)arg1 exclusive:(BOOL)arg2;
@@ -37,20 +42,23 @@
 - (void)dealloc;
 - (void)endPreloadSession;
 - (void)flushPendingWrites;
+- (void)generateRequestedFromTileLoaderBeginSignpost:(unsigned long long)arg1;
+- (void)generateRequestedFromTileLoaderEndSignpost:(unsigned long long)arg1;
 - (id)initWithCacheLocation:(id)arg1 manifestConfiguration:(id)arg2 locale:(id)arg3 delegateQueue:(id)arg4 delegate:(id)arg5;
-- (void)loadTiles:(id)arg1 priorities:(const unsigned int *)arg2 hasAdditionalInfos:(const BOOL *)arg3 additionalInfos:(const CDStruct_58878026 *)arg4 options:(unsigned long long)arg5 client:(id)arg6;
+- (void)loadTiles:(id)arg1 priorities:(const unsigned int *)arg2 hasAdditionalInfos:(const BOOL *)arg3 additionalInfos:(const CDStruct_58878026 *)arg4 signpostIDs:(const unsigned long long *)arg5 reason:(unsigned char)arg6 options:(unsigned long long)arg7 client:(id)arg8;
 - (void)open;
+- (void)proactiveTileDownloaderDidFinish:(id)arg1;
 - (void)registerProvider:(Class)arg1;
 - (void)reportCorruptTile:(const struct _GEOTileKey *)arg1;
 - (void)reprioritizeKey:(const struct _GEOTileKey *)arg1 newPriority:(unsigned int)arg2;
-- (void)resourceManifestManagerDidChangeActiveTileGroup:(id)arg1;
+- (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 - (void)resourceManifestManagerWillChangeActiveTileGroup:(id)arg1;
 - (void)shrinkDiskCacheToSize:(unsigned long long)arg1;
 - (BOOL)skipNetworkForKeysWhenPreloading:(id)arg1;
 - (void)tileRequester:(id)arg1 receivedData:(id)arg2 tileEdition:(unsigned int)arg3 tileSet:(unsigned int)arg4 etag:(id)arg5 forKey:(struct _GEOTileKey)arg6 userInfo:(id)arg7;
 - (void)tileRequester:(id)arg1 receivedError:(id)arg2;
 - (void)tileRequesterFinished:(id)arg1;
-- (id)userInfoForRequesterUserInfo:(id)arg1 tileEdition:(unsigned int)arg2 tileSet:(unsigned int)arg3 eTag:(id)arg4 bundleIdentifier:(id)arg5;
+- (id)userInfoForRequesterUserInfo:(id)arg1 tileEdition:(unsigned int)arg2 tileSet:(unsigned int)arg3 eTag:(id)arg4 bundleIdentifier:(id)arg5 reason:(unsigned char)arg6;
 
 @end
 

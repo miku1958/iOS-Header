@@ -10,7 +10,7 @@
 #import <MediaPlayer/MPRTCReportingItemSessionContaining-Protocol.h>
 #import <MediaPlayer/MPShuffleControllerDataSource-Protocol.h>
 
-@class MPMediaItem, MPMediaLibraryConnectionAssertion, MPMediaQuery, MPMutableBidirectionalDictionary, MPShuffleController, NSArray, NSDictionary, NSString;
+@class MPMediaItem, MPMediaLibraryConnectionAssertion, MPMediaQuery, MPShuffleController, MSVMutableBidirectionalDictionary, NSArray, NSDictionary, NSString;
 
 @interface MPMediaQueryQueueFeeder : MPQueueFeeder <MPAVRoutingControllerDelegate, MPRTCReportingItemSessionContaining, MPShuffleControllerDataSource>
 {
@@ -22,7 +22,7 @@
     NSArray *_queryItems;
     MPShuffleController *_shuffleController;
     vector_bbba3654 _itemPIDs;
-    MPMutableBidirectionalDictionary *_indexToIdentifierCache;
+    MSVMutableBidirectionalDictionary *_indexToIdentifierCache;
     unsigned long long _currentInvalidationRevision;
     NSDictionary *_startTimeModifications;
     NSDictionary *_endTimeModifications;

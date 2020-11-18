@@ -55,7 +55,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasICloudConflict;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isBeingLocalized; // @synthesize isBeingLocalized=_isBeingLocalized;
-@property (readonly, nonatomic) BOOL isCollaborative;
+@property (readonly, nonatomic) BOOL isCollaborativeClient;
+@property (readonly, nonatomic) BOOL isCollaborativeClientOrServer;
 @property (readonly, nonatomic) unsigned long long maxMediaItemFileSize;
 @property (strong, nonatomic) TSKPasteboardController *pasteboardController; // @synthesize pasteboardController=_pasteboardController;
 @property (readonly, nonatomic) TSKSelectionDispatcher *selectionDispatcher; // @synthesize selectionDispatcher=_selectionDispatcher;
@@ -82,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (void)didConnectToServerWithCollaborationContext:(id)arg1;
 - (void)didDisconnectFromServerWithCollaborationContext:(id)arg1;
 - (void)didSaveWithEncryptionChange;
+- (BOOL)documentAllowsPencilAnnotationsOnModel:(id)arg1;
 - (void)documentDidLoad;
 - (BOOL)documentDisallowsHighlightsOnStorage:(id)arg1;
 - (void)dumpReaderWriterThreads;
@@ -116,9 +118,8 @@ __attribute__((visibility("hidden")))
 - (void)pauseRecalculation;
 - (void)pauseRecalculationForBlock:(CDUnknownBlockType)arg1;
 - (void)pauseRecalculationSometimeSoon;
-- (void)removeCommentsFromDrawables:(id)arg1;
+- (void)removeAllAnnotationsFromDrawables:(id)arg1;
 - (void)removeICloudTeardownObserver:(long long)arg1;
-- (void)removePencilAnnotationsFromDrawables:(id)arg1;
 - (void)resumeRecalculation;
 - (void)saveToArchive:(struct DocumentArchive *)arg1 archiver:(id)arg2;
 - (void)setStylesheet:(id)arg1 andThemeForImport:(id)arg2;
@@ -126,6 +127,7 @@ __attribute__((visibility("hidden")))
 - (void)setTheme:(id)arg1;
 - (void)setThemeForTemplateImport:(id)arg1;
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
+- (void)setupAccessController;
 - (BOOL)shouldShowComments;
 - (id)stylesToNotResizeInStylesheet:(id)arg1;
 - (id)tableIdRemappingCommandsForTablesInDrawables:(id)arg1;

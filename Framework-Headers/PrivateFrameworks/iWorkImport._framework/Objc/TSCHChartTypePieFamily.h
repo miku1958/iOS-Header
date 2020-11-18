@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)layoutFrameShouldEncloseInfoGeometry;
 - (struct CGSize)mungeBodySize:(struct CGSize)arg1;
 - (Class)repClass;
-- (BOOL)shouldChangeExplosionWithPreviousChartType:(id)arg1 seriesList:(id)arg2;
+- (BOOL)shouldChangeExplosionWithPreviousChartType:(id)arg1 chartInfo:(id)arg2 seriesList:(id)arg3;
 
 @end
 

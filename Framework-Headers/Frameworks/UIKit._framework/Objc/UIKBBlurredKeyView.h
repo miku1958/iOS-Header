@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBContainerKeyView.h>
+#import <UIKitCore/UIKBContainerKeyView.h>
 
 @class UIKBBackdropView;
 

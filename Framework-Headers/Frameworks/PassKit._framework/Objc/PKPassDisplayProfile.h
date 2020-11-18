@@ -18,6 +18,7 @@
     BOOL _hasStripImage;
     long long _passStyle;
     PKColor *_backgroundColor;
+    PKColor *_secondaryBackgroundColor;
     PKColor *_foregroundColor;
     PKColor *_labelColor;
     PKColor *_stripColor;
@@ -32,6 +33,7 @@
 @property (readonly, nonatomic) long long layoutMode;
 @property (strong, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
 @property (nonatomic) long long passStyle; // @synthesize passStyle=_passStyle;
+@property (strong, nonatomic) PKColor *secondaryBackgroundColor; // @synthesize secondaryBackgroundColor=_secondaryBackgroundColor;
 @property (readonly, nonatomic) BOOL showsBackgroundImage;
 @property (readonly, nonatomic) BOOL showsStripImage;
 @property (strong, nonatomic) PKColor *stripColor; // @synthesize stripColor=_stripColor;

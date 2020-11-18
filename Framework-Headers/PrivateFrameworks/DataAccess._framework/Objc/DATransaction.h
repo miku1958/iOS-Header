@@ -4,20 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
 @interface DATransaction : NSObject
 {
+    NSString *_label;
     NSString *_transactionId;
 }
 
+@property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) NSString *transactionId; // @synthesize transactionId=_transactionId;
 
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
+- (id)initWithLabel:(id)arg1;
 
 @end
 

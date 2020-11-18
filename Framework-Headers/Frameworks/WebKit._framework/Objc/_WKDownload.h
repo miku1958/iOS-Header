@@ -23,6 +23,7 @@
 @property (readonly, copy, nonatomic) NSArray *redirectChain;
 @property (readonly, nonatomic) NSURLRequest *request;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL wasUserInitiated;
 
 - (void)cancel;
 - (void)dealloc;

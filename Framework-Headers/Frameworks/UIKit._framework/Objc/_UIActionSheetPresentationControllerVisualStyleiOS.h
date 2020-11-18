@@ -4,20 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIActionSheetPresentationControllerVisualStyle-Protocol.h>
+#import <UIKitCore/UIActionSheetPresentationControllerVisualStyle-Protocol.h>
 
-@class NSString, UIActionSheetiOSDismissActionView, UIColor, UITraitCollection;
+@class NSString, UIActionSheetiOSDismissActionView, UIColor;
 
 __attribute__((visibility("hidden")))
 @interface _UIActionSheetPresentationControllerVisualStyleiOS : NSObject <UIActionSheetPresentationControllerVisualStyle>
 {
-    UITraitCollection *_traitCollection;
     UIActionSheetiOSDismissActionView *_dismissActionView;
 }
 
-@property (readonly) struct UIEdgeInsets contentInsets;
 @property (readonly) double cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -26,9 +24,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) double dismissToContentSpacing;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
 - (void).cxx_destruct;
+- (struct UIEdgeInsets)contentInsetsForContainerView:(id)arg1;
 - (id)init;
 
 @end

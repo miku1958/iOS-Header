@@ -8,7 +8,7 @@
 
 #import <CoreParsec/PARClientXPC-Protocol.h>
 
-@class NSMutableArray, NSXPCConnection, NSXPCListenerEndpoint, PARImageLoader, PARSessionConfiguration, QueryIdMapper;
+@class NSMutableArray, NSString, NSXPCConnection, NSXPCListenerEndpoint, PARImageLoader, PARSessionConfiguration, QueryIdMapper;
 @protocol OS_dispatch_queue, PARDaemonXPC;
 
 @interface PARSearchClient : NSObject <PARClientXPC>
@@ -26,32 +26,35 @@
 
 @property (strong) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong) NSXPCListenerEndpoint *endpoint;
+@property (readonly) unsigned long long hash;
 @property (readonly) PARImageLoader *imageLoader; // @synthesize imageLoader=_imageLoader;
+@property (readonly) Class superclass;
 
 + (id)_deafListenerEndpoint;
 + (id)daemonConnection;
++ (id)sharedClient;
 - (void).cxx_destruct;
 - (void)_invalidateConnection;
 - (unsigned long long)_queryId:(unsigned long long)arg1 forObject:(id)arg2;
 - (void)addCompletion:(id)arg1 forInput:(id)arg2;
 - (void)addSession:(id)arg1;
-- (void)bag:(CDUnknownBlockType)arg1;
+- (void)bag:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)bagDidLoad:(id)arg1 error:(id)arg2;
 - (void)clearCompletionsFromDate:(id)arg1 toDate:(id)arg2;
-- (void)configure;
+- (void)configure:(id)arg1;
 - (void)dealloc;
 - (void)didDeleteResource:(id)arg1;
 - (void)didDownloadResource:(id)arg1;
-- (void)feedback:(CDUnknownBlockType)arg1;
 - (void)fileHandleAndAttributesForResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getImageMap:(CDUnknownBlockType)arg1;
 - (id)init;
-- (id)initWithConnection:(id)arg1 configuration:(id)arg2;
+- (id)initWithConnection:(id)arg1;
 - (void)listSessions:(CDUnknownBlockType)arg1;
-- (void)listenToFlusher:(CDUnknownBlockType)arg1;
-- (void)reportFeedback:(id)arg1 queryId:(unsigned long long)arg2;
-- (unsigned long long)request:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)reportFeedback:(id)arg1 feedback:(id)arg2 queryId:(unsigned long long)arg3;
+- (unsigned long long)request:(id)arg1 request:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)updateParameters:(double)arg1 safariLast1day:(double)arg2 safariLast1week:(double)arg3 safariLast1month:(double)arg4 safariAll:(double)arg5 safariMostRecent:(double)arg6 minThresholdToSend:(double)arg7;
 
 @end

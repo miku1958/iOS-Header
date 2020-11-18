@@ -40,18 +40,18 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_auditAccessoryStatus;
-- (void)_handleMediaSystemSymptoms:(id)arg1 message:(id)arg2;
-- (void)_handleNewProblemFlags:(unsigned long long)arg1 accessory:(id)arg2;
+- (void)_handleNewDiscoveredSymptoms:(id)arg1 forAccessory:(id)arg2;
 - (struct NSDictionary *)_initializePlaceholderSymptomsDict:(id)arg1;
-- (void)_updateStatus:(struct NSDictionary *)arg1;
-- (void)auditAccessoryStatus;
+- (void)_refreshCurrentDeviceSymptoms;
+- (void)_updateBackingStoreModelWithNewSymptoms:(struct NSDictionary *)arg1;
 - (void)configureWithWorkQueue:(id)arg1 messageDispatcher:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (void)handleNewProblemFlags:(unsigned long long)arg1 accessory:(id)arg2;
+- (void)handleMediaSystemSymptoms:(struct NSDictionary *)arg1 message:(id)arg2;
+- (void)handleNewDiscoveredSymptoms:(id)arg1 forAccessory:(id)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMediaSystem:(id)arg1 symptoms:(id)arg2;
 - (id)logIdentifier;
+- (void)refreshCurrentDeviceSymptoms;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/TSSPreset-Protocol.h>
@@ -28,8 +28,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long colorRGBSpace; // @synthesize colorRGBSpace=mColorRGBSpace;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) TSUColor *grayscaleColor;
 @property (readonly, nonatomic) double greenComponent;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *hexString;
+@property (readonly, nonatomic) TSUColor *invertedColor;
+@property (readonly, nonatomic) BOOL isNearlyWhite;
+@property (readonly, nonatomic) BOOL isOpaque;
+@property (readonly, nonatomic) double luminance;
 @property (readonly, nonatomic) NSString *presetKind;
 @property (readonly, nonatomic) double redComponent;
 @property (readonly) Class superclass;
@@ -70,8 +76,6 @@ __attribute__((visibility("hidden")))
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)getRGBAComponents:(double *)arg1;
-- (id)grayscaleColor;
-- (id)hexString;
 - (double)hueComponent;
 - (id)initFromPropertyCommandMessage:(const struct Message *)arg1 unarchiver:(id)arg2;
 - (id)initWithArchive:(const struct Color *)arg1 unarchiver:(id)arg2;
@@ -86,13 +90,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4 colorSpace:(unsigned long long)arg5;
 - (id)initWithUIColor:(id)arg1;
 - (id)initWithWhite:(double)arg1 alpha:(double)arg2;
-- (id)invertedColor;
 - (BOOL)isAlmostEqualToColor:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualWithTolerance:(id)arg1;
-- (BOOL)isNearlyWhite;
-- (BOOL)isOpaque;
-- (double)luminance;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1 context:(id)arg2;
 - (id)newBlendedColorWithFraction:(double)arg1 ofColor:(id)arg2;
@@ -101,6 +101,7 @@ __attribute__((visibility("hidden")))
 - (double)p_rgbComponentWithIndex:(unsigned char)arg1;
 - (void)paintPath:(struct CGPath *)arg1 inContext:(struct CGContext *)arg2;
 - (void)paintRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
+- (BOOL)requiresOutlineOnBackgroundWithAppearance:(unsigned long long)arg1;
 - (double)saturationComponent;
 - (void)saveToArchive:(struct Color *)arg1 archiver:(id)arg2;
 - (void)saveToMessage:(struct Color *)arg1;

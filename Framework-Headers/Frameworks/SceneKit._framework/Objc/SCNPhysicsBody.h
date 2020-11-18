@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -19,6 +19,7 @@
     double _friction;
     double _restitution;
     double _rollingFriction;
+    double _continuousCollisionDetectionThreshold;
     SCNPhysicsShape *_physicsShape;
     long long _type;
     double _damping;
@@ -28,8 +29,11 @@
     struct SCNVector3 _angularVelocityFactor;
     struct SCNVector3 _velocity;
     BOOL _ignoreGravity;
+    double _linearRestingThreshold;
+    double _angularRestingThreshold;
     BOOL _explicitMomentOfInertia;
     struct SCNVector3 _momentOfInertia;
+    struct SCNVector3 _centerOfMassOffset;
     unsigned long long _categoryBitMask;
     unsigned long long _collisionBitMask;
     unsigned long long _contactTestBitMask;
@@ -41,15 +45,19 @@
 @property (nonatomic, getter=isAffectedByGravity) BOOL affectedByGravity;
 @property (nonatomic) BOOL allowsResting;
 @property (nonatomic) double angularDamping;
+@property (nonatomic) double angularRestingThreshold;
 @property (nonatomic) struct SCNVector4 angularVelocity;
 @property (nonatomic) struct SCNVector3 angularVelocityFactor;
 @property (nonatomic) unsigned long long categoryBitMask;
+@property (nonatomic) struct SCNVector3 centerOfMassOffset;
 @property (nonatomic) double charge;
 @property (nonatomic) unsigned long long collisionBitMask;
 @property (nonatomic) unsigned long long contactTestBitMask;
+@property (nonatomic) double continuousCollisionDetectionThreshold; // @synthesize continuousCollisionDetectionThreshold=_continuousCollisionDetectionThreshold;
 @property (nonatomic) double damping;
 @property (nonatomic) double friction;
 @property (readonly, nonatomic) BOOL isResting;
+@property (nonatomic) double linearRestingThreshold;
 @property (nonatomic) double mass;
 @property (nonatomic) struct SCNVector3 momentOfInertia;
 @property (strong, nonatomic) SCNPhysicsShape *physicsShape;
@@ -74,16 +82,19 @@
 - (void)_removeOwner;
 - (void)_setOwner:(id)arg1;
 - (struct btCollisionShape *)_shapeHandleWithShape:(id)arg1 owner:(id)arg2;
+- (double)angularSleepingThreshold;
 - (void)applyForce:(struct SCNVector3)arg1 atPosition:(struct SCNVector3)arg2 impulse:(BOOL)arg3;
 - (void)applyForce:(struct SCNVector3)arg1 impulse:(BOOL)arg2;
 - (void)applyTorque:(struct SCNVector4)arg1 impulse:(BOOL)arg2;
 - (void)clearAllForces;
+- (double)continuousCollisionDetection;
 - (id)copy;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(long long)arg1 shape:(id)arg2;
+- (double)linearSleepingThreshold;
 - (void)moveToPosition:(struct SCNVector3)arg1;
 - (void)moveToTransform:(struct SCNMatrix4)arg1;
 - (void)resetToTransform:(struct SCNMatrix4)arg1;
@@ -91,6 +102,9 @@
 - (BOOL)respondsToCollision;
 - (void)rotateToAxisAngle:(struct SCNVector4)arg1;
 - (struct __C3DScene *)sceneRef;
+- (void)setAngularSleepingThreshold:(double)arg1;
+- (void)setLinearSleepingThreshold:(double)arg1;
+- (void)setResting:(BOOL)arg1;
 
 @end
 

@@ -57,9 +57,11 @@
 - (void).cxx_destruct;
 - (id)_buildIntentSlotResolutionResultWithIntentSlotDescription:(id)arg1;
 - (id)_dataForIntentSlotDescription:(id)arg1;
+- (id)_initWithIntentSlotResolutionResult:(id)arg1 slotDescription:(id)arg2;
 - (id)_initWithResolutionResult:(id)arg1;
 - (id)_initWithResultCode:(long long)arg1;
 - (id)_intentSlotValueForObject:(id)arg1 slotDescription:(id)arg2;
+- (id)_objectForIntentSlotValue:(id)arg1 slotDescription:(id)arg2;
 - (id)_stringForResultCode:(long long)arg1;
 - (id)_vocabularyValueForObject:(id)arg1 slotDescription:(id)arg2;
 - (id)descriptionAtIndent:(unsigned long long)arg1;

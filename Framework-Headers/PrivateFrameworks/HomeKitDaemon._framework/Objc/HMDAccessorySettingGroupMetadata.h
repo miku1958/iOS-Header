@@ -17,13 +17,16 @@
     NSArray *_settings;
 }
 
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSArray *groups; // @synthesize groups=_groups;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
+@property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
 @property (readonly, copy) NSArray *settings; // @synthesize settings=_settings;
+@property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 
 + (id)groupWithDictonaryRepresentation:(id)arg1;

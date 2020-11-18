@@ -4,30 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
 __attribute__((visibility("hidden")))
 @interface TSTEphemeralFilter : NSObject
 {
-    unsigned long long mFilterIndex;
-    unsigned char mColumnIndex;
-    NSArray *mRules;
+    unsigned long long _filterIndex;
+    struct TSUModelColumnIndex _baseColumnIndex;
+    NSArray *_rules;
 }
 
-@property (readonly, nonatomic) unsigned char columnIndex; // @synthesize columnIndex=mColumnIndex;
-@property (readonly, nonatomic) unsigned long long filterIndex; // @synthesize filterIndex=mFilterIndex;
+@property (readonly, nonatomic) struct TSUModelColumnIndex baseColumnIndex; // @synthesize baseColumnIndex=_baseColumnIndex;
+@property (readonly, nonatomic) unsigned long long filterIndex; // @synthesize filterIndex=_filterIndex;
 @property (readonly, nonatomic) unsigned long long ruleCount;
 
-+ (id)filterWithIndex:(unsigned long long)arg1 columnIndex:(unsigned char)arg2 rules:(id)arg3;
-- (void)dealloc;
++ (id)filterWithIndex:(unsigned long long)arg1 baseColumnIndex:(struct TSUModelColumnIndex)arg2 rules:(id)arg3;
+- (void).cxx_destruct;
 - (id)description;
+- (void)enumerateRulesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)filterByAddingRule:(id)arg1;
 - (id)filterByClearingRules;
 - (id)filterByRemovingRuleAtIndex:(unsigned long long)arg1;
 - (id)filterWithRule:(id)arg1 atIndex:(unsigned long long)arg2;
-- (id)initWithIndex:(unsigned long long)arg1 columnIndex:(unsigned char)arg2 rules:(id)arg3;
+- (id)initWithIndex:(unsigned long long)arg1 baseColumnIndex:(struct TSUModelColumnIndex)arg2 rules:(id)arg3;
 - (id)ruleAtIndex:(unsigned long long)arg1;
 
 @end

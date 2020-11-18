@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class NSArray, NSDictionary, NSMutableArray, NSString, UICalloutBarBackground, UICalloutBarButton, UIResponder, UIScrollView, UIStackView, UIWindow;
+@class NSArray, NSDictionary, NSMutableArray, NSString, UICalloutBarBackground, UICalloutBarButton, UIResponder, UIScrollView, UIStackView;
 
 @interface UICalloutBar : UIView
 {
@@ -25,7 +25,7 @@
     BOOL m_supressesHorizontalMovement;
     struct CGRect m_controlFrame;
     struct CGRect m_targetRect;
-    UIWindow *m_targetWindow;
+    UIView *m_targetView;
     struct CGRect m_supressesHorizontalMovementFrame;
     double m_supressedHorizontalMovementX;
     int m_arrowDirection;
@@ -74,7 +74,7 @@
 @property (nonatomic) BOOL targetHorizontal; // @synthesize targetHorizontal=m_targetHorizontal;
 @property (nonatomic) struct CGPoint targetPoint; // @synthesize targetPoint=m_targetPoint;
 @property (nonatomic) struct CGRect targetRect; // @synthesize targetRect=m_targetRect;
-@property (weak, nonatomic) UIWindow *targetWindow; // @synthesize targetWindow=m_targetWindow;
+@property (weak, nonatomic) UIView *targetView; // @synthesize targetView=m_targetView;
 @property (copy, nonatomic) NSString *untruncatedString; // @synthesize untruncatedString=m_untruncatedString;
 @property (readonly, nonatomic) UIScrollView *verticalScrollView; // @synthesize verticalScrollView=m_verticalScrollView;
 @property (readonly, nonatomic) UIStackView *verticalStackView; // @synthesize verticalStackView=m_verticalStackView;
@@ -83,17 +83,22 @@
 + (void)_releaseSharedInstance;
 + (id)activeCalloutBar;
 + (void)fadeSharedCalloutBar;
++ (void)fadeSharedCalloutBarIfTargetView:(id)arg1;
 + (void)hideSharedCalloutBar;
++ (void)hideSharedCalloutBarIfTargetView:(id)arg1;
 + (void)performWithoutAffectingSharedCalloutBar:(CDUnknownBlockType)arg1;
 + (id)sharedCalloutBar;
 + (BOOL)sharedCalloutBarIsVisible;
 - (void).cxx_destruct;
+- (SEL)_actionForButton:(id)arg1;
 - (void)_endOngoingAppearOrFadeAnimations;
 - (void)_fadeAfterCommand:(SEL)arg1;
 - (void)_showNextItems:(id)arg1;
 - (void)_showPreviousItems:(id)arg1;
+- (id)_targetForAction:(SEL)arg1;
 - (BOOL)_touchesInsideShouldHideCalloutBar;
 - (BOOL)_updateVisibleItemsAnimated:(BOOL)arg1;
+- (id)_visibleButtons;
 - (void)addRectToEvade:(struct CGRect)arg1;
 - (void)addVerticalSeparatorAfterButton:(id)arg1;
 - (void)adjustFrameToAvoidDividerOnArrow;
@@ -113,8 +118,10 @@
 - (void)dealloc;
 - (void)fade;
 - (void)fadeAnimationDidStopWithContext:(id)arg1 finished:(BOOL)arg2;
+- (void)fadeIfTargetView:(id)arg1;
 - (BOOL)hasReplacements;
 - (void)hide;
+- (void)hideIfTargetView:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (double)maxVerticalCalloutHeightForMinButtonHeight:(double)arg1;
@@ -130,7 +137,6 @@
 - (void)show;
 - (void)shrinkButtonTextSize:(id)arg1;
 - (double)supressHorizontalXMovementIfNeededForPoint:(struct CGPoint)arg1 proposedX:(double)arg2;
-- (id)targetForAction:(SEL)arg1;
 - (int)textEffectsVisibilityLevel;
 - (struct CGRect)textEffectsWindowSafeArea;
 - (void)update;

@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/FBSSystemServiceFacilityClient.h>
+#import <FrontBoardServices/FBSServiceFacilityClient.h>
 
 @protocol FBSDisplayLayoutMonitorClientDelegate;
 
-@interface FBSDisplayLayoutMonitorClient : FBSSystemServiceFacilityClient
+@interface FBSDisplayLayoutMonitorClient : FBSServiceFacilityClient
 {
     id<FBSDisplayLayoutMonitorClientDelegate> _delegate;
 }
 
+- (void).cxx_destruct;
 - (void)_handleDisplayLayoutUpdate:(id)arg1;
 - (void)configureConnectMessage:(id)arg1;
 - (void)handleMessage:(id)arg1 withType:(long long)arg2;

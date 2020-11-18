@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 @class UIKBGeometry;
 
@@ -34,6 +34,7 @@
 
 + (id)shape;
 + (id)shapeByCombining:(id)arg1 withShape:(id)arg2;
++ (id)shapeByResizingShape:(id)arg1 byAmount:(struct CGSize)arg2;
 - (struct CGRect)_scaleRect:(struct CGRect)arg1 inYAxis:(BOOL)arg2;
 - (void)addRectFrom:(id)arg1;
 - (void)addRectFrom:(id)arg1 mergeActionFactors:(id)arg2;

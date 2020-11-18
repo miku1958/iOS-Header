@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UISpringLoadedInteractionBehavior_Private-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionBehavior_Private-Protocol.h>
 
 @class CADisplayLink, NSString, _UIVelocityIntegrator;
 @protocol UISpringLoadedInteractionBehaviorDelegate, UISpringLoadedInteractionContext;

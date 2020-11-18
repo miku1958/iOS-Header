@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIFocusUpdateContext.h>
+#import <UIKitCore/UIFocusUpdateContext.h>
 
 @class NSIndexPath, UICollectionView;
 

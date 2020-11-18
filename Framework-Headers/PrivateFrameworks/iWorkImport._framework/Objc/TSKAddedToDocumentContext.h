@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 @protocol TSKMultiTableRemapping;
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 + (id)dragCopyContext;
 + (id)dragMoveContext;
 + (id)exportFootnoteContext;
++ (id)exportMergedHeaderContext;
 + (id)importingContextWithImporterID:(id)arg1;
 + (id)importingMasterTemplateContextWithImporterID:(id)arg1;
 + (id)insertingPrototypeContext;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)pastingContext;
 + (id)pastingMatchStyleContext;
 + (id)preserveParentStorageContext;
++ (id)textBoxLinkageContext;
 + (id)unarchivingContext;
 + (id)undoDeleteContext;
 + (id)unhidingContext;

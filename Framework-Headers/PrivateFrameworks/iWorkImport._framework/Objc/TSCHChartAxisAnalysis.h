@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
 __attribute__((visibility("hidden")))
 @interface TSCHChartAxisAnalysis : NSObject
 {
-    _Atomic long long _retainCount;
     double _min;
     double _max;
     double _modelMin;
@@ -37,11 +36,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double modelMin; // @synthesize modelMin=_modelMin;
 @property (copy, nonatomic) NSArray *totals; // @synthesize totals=_totals;
 
-+ (id)allocWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (oneway void)release;
-- (id)retain;
-- (unsigned long long)retainCount;
+- (void).cxx_destruct;
 
 @end
 

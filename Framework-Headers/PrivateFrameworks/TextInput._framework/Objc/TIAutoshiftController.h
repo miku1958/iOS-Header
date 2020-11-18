@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TITextInputTraits;
 
@@ -17,8 +17,8 @@
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) TITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
 
+- (void).cxx_destruct;
 - (unsigned long long)actionForDocumentState:(id)arg1 inputMangerState:(id)arg2;
-- (void)dealloc;
 - (id)initWithTextInputTraits:(id)arg1;
 - (BOOL)isSelectionAtSentenceAutoshiftBoundaryWithDocumentState:(id)arg1 inputManagerState:(id)arg2;
 

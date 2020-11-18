@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDComment-Protocol.h>
 
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int annotationType;
 @property (strong, nonatomic) NSString *annotationUUID; // @synthesize annotationUUID=_annotationUUID;
 @property (strong, nonatomic) TSKAnnotationAuthor *author;
-@property (readonly, nonatomic) struct TSUCellCoord cellID;
+@property (readonly, nonatomic) struct TSUModelCellCoord baseCellCoord;
 @property (readonly, nonatomic) struct TSTCellUID cellUID; // @synthesize cellUID=_cellUID;
 @property (readonly, nonatomic) NSDate *date;
 @property (readonly, copy) NSString *debugDescription;
@@ -33,13 +33,15 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSDCommentStorage *storage;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TSTInfo *tableInfo; // @synthesize tableInfo=_tableInfo;
+@property (readonly, nonatomic) struct TSUViewCellCoord viewCellCoord;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)commentWillBeAddedToDocumentRoot;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (Class)editorClass;
-- (id)initWithStorage:(id)arg1 forTableInfo:(id)arg2 cellID:(struct TSUCellCoord)arg3;
+- (id)initWithStorage:(id)arg1 forTableInfo:(id)arg2 baseCellCoord:(struct TSUModelCellCoord)arg3;
+- (id)initWithStorage:(id)arg1 forTableInfo:(id)arg2 cellUID:(struct TSTCellUID)arg3;
 - (BOOL)isFloatingComment;
 - (BOOL)isInDocument;
 - (void)p_updateAnnotationUUID;

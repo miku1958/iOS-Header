@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/NSISEngineDelegate-Protocol.h>
-#import <UIKit/_UIContextBindable-Protocol.h>
-#import <UIKit/_UIFocusEventRecognizerDelegate-Protocol.h>
-#import <UIKit/_UIFocusMovementActionForwarding-Protocol.h>
+#import <UIKitCore/NSISEngineDelegate-Protocol.h>
+#import <UIKitCore/_UIContextBindable-Protocol.h>
+#import <UIKitCore/_UIFocusEventRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIFocusMovementActionForwarding-Protocol.h>
 
 @class CAContext, CALayer, NSArray, NSMutableArray, NSMutableSet, NSString, NSUndoManager, UIAccessibilityHUDView, UIResponder, UIScreen, UITraitCollection, UIViewController, _UICanvas, _UIContextBinder, _UIFocusEventRecognizer, _UISystemGestureGateGestureRecognizer, _UIViewControllerNullAnimationTransitionCoordinator, _UIWindowAnimationController;
 @protocol UIFocusItem;
@@ -74,6 +74,7 @@
         unsigned int isMainSceneSized:1;
         unsigned int didSetRestorationIdentifier:1;
         unsigned int resigningFirstResponderFromHost:1;
+        unsigned int needsBoundingPathUpdate:1;
     } _windowFlags;
     id _windowController;
     _UISystemGestureGateGestureRecognizer *_systemGestureGateForGestures;
@@ -146,7 +147,6 @@
 + (void)_clearKeyWindowStack;
 + (BOOL)_clearPreCommitHandlerRegistration;
 + (void)_enumerateWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2 allowMutation:(BOOL)arg3 withBlock:(CDUnknownBlockType)arg4;
-+ (void)_enumerateWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 + (void)_executeDeferredLaunchBlocks;
 + (id)_externalKeyWindow;
 + (id)_findWindowForControllingOverallAppearance;
@@ -188,7 +188,6 @@
 + (void *)createIOSurfaceFromScreen:(id)arg1;
 + (void *)createIOSurfaceOnScreen:(id)arg1 withContextIds:(const unsigned int *)arg2 count:(unsigned long long)arg3 frame:(struct CGRect)arg4 baseTransform:(struct CGAffineTransform)arg5;
 + (void *)createIOSurfaceOnScreen:(id)arg1 withContextIds:(const unsigned int *)arg2 count:(unsigned long long)arg3 frame:(struct CGRect)arg4 usePurpleGfx:(BOOL)arg5 outTransform:(struct CGAffineTransform *)arg6;
-+ (void *)createIOSurfaceWithContextId:(unsigned int)arg1 frame:(struct CGRect)arg2;
 + (void *)createIOSurfaceWithContextIds:(const unsigned int *)arg1 count:(unsigned long long)arg2 frame:(struct CGRect)arg3;
 + (void *)createIOSurfaceWithContextIds:(const unsigned int *)arg1 count:(unsigned long long)arg2 frame:(struct CGRect)arg3 outTransform:(struct CGAffineTransform *)arg4;
 + (void *)createIOSurfaceWithContextIds:(const unsigned int *)arg1 count:(unsigned long long)arg2 frame:(struct CGRect)arg3 usePurpleGfx:(BOOL)arg4 outTransform:(struct CGAffineTransform *)arg5;
@@ -216,16 +215,18 @@
 - (void)_beginModalSession;
 - (double)_bindableLevel;
 - (id)_bindingLayer;
+- (id)_boundingPath;
 - (BOOL)_cachedTraitCollectionIsValid;
 - (BOOL)_canActAsKeyWindowForScreen:(id)arg1;
 - (BOOL)_canAffectDisplayAdaptation;
 - (BOOL)_canAffectStatusBarAppearance;
 - (BOOL)_canBecomeKeyWindow;
 - (BOOL)_canBecomeLayoutEngineDelegate;
+- (BOOL)_canIgnoreInteractionEvents;
 - (BOOL)_canPromoteFromKeyWindowStack;
 - (id)_canvas;
 - (id)_canvasFromScene:(id)arg1;
-- (id)_centerExpressionInContainer:(id)arg1 vertical:(BOOL)arg2 contentInsetScale:(double)arg3;
+- (id)_centerExpressionInContainer:(id)arg1 vertical:(BOOL)arg2 contentInsetScale:(double)arg3 engine:(id)arg4;
 - (double)_chargeMultiplicationFactor;
 - (struct CGPoint)_clampPointToScreenJail:(struct CGPoint)arg1;
 - (double)_classicOffset;
@@ -303,6 +304,7 @@
 - (id)_initWithOrientation:(long long)arg1;
 - (void)_initializeLayoutEngine;
 - (void)_installFocusEventRecognizer;
+- (long long)_interfaceOrientationForSceneSafeAreaInsetsIncludingStatusBar:(BOOL)arg1;
 - (void)_invalidateWindowInternalConstraints;
 - (BOOL)_isAnyWindowRotating;
 - (BOOL)_isConstrainedByScreenJail;
@@ -327,10 +329,12 @@
 - (BOOL)_legacyShouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (void)_makeExternalKeyWindow;
 - (void)_makeKeyWindowIgnoringOldKeyWindow:(BOOL)arg1;
+- (struct UIEdgeInsets)_managedSafeAreaInsets;
 - (void)_matchDeviceOrientation;
 - (void)_moveWithEvent:(id)arg1;
 - (BOOL)_needsShakesWhenInactive;
 - (id)_normalInheritedTintColor;
+- (struct UIEdgeInsets)_normalizedSafeAreaInsets;
 - (void)_noteOverlayInsetsDidChange;
 - (void)_notifyRotatableViewOrientation:(long long)arg1 duration:(double)arg2;
 - (void)_orderFrontWithoutMakingKey;
@@ -340,7 +344,6 @@
 - (struct UIEdgeInsets)_overlayInsets;
 - (long long)_overriddenInterfaceOrientation;
 - (id)_overridingPreferredFocusEnvironment;
-- (id)_parentFocusEnvironment;
 - (void)_performTouchContinuationWithOverrideHitTestedView:(id)arg1;
 - (void)_positionHeaderView:(id)arg1 andFooterView:(id)arg2 outsideContentViewForInterfaceOrientation:(long long)arg3;
 - (void)_propagateTraitCollectionChangedForStateRestoration;
@@ -353,6 +356,7 @@
 - (void)_removeFocusEventRecognizer;
 - (void)_removeRotationViewController:(id)arg1;
 - (void)_removeTintView:(id)arg1;
+- (BOOL)_requiresKeyboardPresentationFence;
 - (void)_resignKeyWindowStatus;
 - (BOOL)_resizeWindowFrameToSceneBoundsIfNecessary;
 - (void)_resizeWindowToFullScreenIfNecessary;
@@ -369,6 +373,8 @@
 - (void)_sceneBoundsDidChange;
 - (long long)_sceneOrientation;
 - (struct CGRect)_sceneReferenceBounds;
+- (struct UIEdgeInsets)_sceneSafeAreaInsetsIncludingStatusBar:(BOOL)arg1;
+- (void)_sceneSettingsSafeAreaInsetsDidChange;
 - (id)_screen;
 - (void)_screenWillTransitionToTraitCollection:(id)arg1;
 - (void)_scrollToTopViewsUnderScreenPointIfNecessary:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
@@ -383,6 +389,7 @@
 - (void)_setIsSettingFirstResponder:(BOOL)arg1;
 - (void)_setMouseDownView:(id)arg1 withEvent:(struct __GSEvent *)arg2;
 - (void)_setMouseEnteredView:(id)arg1;
+- (void)_setNeedsBoundingPathUpdate;
 - (void)_setRotatableClient:(id)arg1 toOrientation:(long long)arg2 updateStatusBar:(BOOL)arg3 duration:(double)arg4 force:(BOOL)arg5 isRotating:(BOOL)arg6;
 - (void)_setRotatableViewOrientation:(long long)arg1 duration:(double)arg2;
 - (void)_setRotatableViewOrientation:(long long)arg1 duration:(double)arg2 force:(BOOL)arg3;
@@ -526,6 +533,7 @@
 - (id)nextResponder;
 - (void)orderFront:(id)arg1;
 - (void)orderOut:(id)arg1;
+- (id)parentFocusEnvironment;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)preferredFocusEnvironments;
 - (id)preferredFocusedView;

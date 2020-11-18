@@ -9,10 +9,10 @@
 __attribute__((visibility("hidden")))
 @interface TSTBooleanNode : TSTExpressionNode
 {
-    BOOL mValue;
+    BOOL _value;
 }
 
-@property (nonatomic) BOOL value;
+@property (nonatomic) BOOL value; // @synthesize value=_value;
 
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
 - (id)exportString;

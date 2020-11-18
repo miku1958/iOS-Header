@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL sendAllFields; // @synthesize sendAllFields=_sendAllFields;
 
 - (void).cxx_destruct;
+- (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
 - (id)initWithRecordsToSave:(id)arg1 recordIDsToDelete:(id)arg2 oplock:(BOOL)arg3 sendAllFields:(BOOL)arg4 clientChangeTokenData:(id)arg5;
 - (int)isolationLevel;

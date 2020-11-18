@@ -4,31 +4,41 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class TSCECellTractRef;
 
 __attribute__((visibility("hidden")))
 @interface TNChartFormulaArgument : NSObject
 {
-    int mType;
-    void *mData;
+    int _type;
+    void *_data;
 }
 
+@property (readonly) struct TSCECategoryRef categoryReference;
 @property (readonly) struct TSCECellRef cellReference;
 @property (readonly) BOOL isBadRef;
+@property (readonly) BOOL isCategoryReference;
 @property (readonly) BOOL isCellReference;
+@property (readonly) BOOL isGeometricReference;
 @property (readonly) BOOL isRangeReference;
 @property (readonly) BOOL isReference;
 @property (readonly) BOOL isStaticValue;
+@property (readonly) BOOL isTractReference;
 @property (readonly) struct TSCERangeRef rangeReference;
 @property (readonly) struct TSCEValue *staticValue;
-@property (readonly) int type; // @synthesize type=mType;
+@property (readonly) TSCECellTractRef *tractReference;
+@property (readonly) int type; // @synthesize type=_type;
 
 - (void)dealloc;
 - (id)description;
 - (id)initWithBadRef;
+- (id)initWithCategoryReference:(struct TSCECategoryRef)arg1;
 - (id)initWithCellReference:(struct TSCECellRef)arg1;
 - (id)initWithRangeReference:(struct TSCERangeRef)arg1;
 - (id)initWithStaticValue:(const struct TSCEValue *)arg1;
+- (id)initWithTractReference:(id)arg1;
+- (UUIDData_5fbc143e)tableUID:(id)arg1;
 
 @end
 

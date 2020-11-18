@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSFastEnumeration-Protocol.h>
 
@@ -13,11 +13,11 @@
 __attribute__((visibility("hidden")))
 @interface TNChartFormulaArgumentEnumerator : NSObject <NSFastEnumeration>
 {
-    NSEnumerator *mUnderlyingEnumerator;
+    NSEnumerator *_underlyingEnumerator;
 }
 
+- (void).cxx_destruct;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (void)dealloc;
 - (id)initWithEnumerator:(id)arg1;
 - (id)nextElement;
 - (id)nextObject;

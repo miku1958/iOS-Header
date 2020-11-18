@@ -6,14 +6,17 @@
 
 #import <Contacts/NSObject-Protocol.h>
 
-@class CNChangeHistoryAnchor, CNChangeHistoryFetchRequest, CNContact, CNContactFetchRequest, CNContainer, CNSaveRequest, NSArray, NSData, NSDictionary, NSPredicate, NSString;
+@class CNChangeHistoryAnchor, CNChangeHistoryFetchRequest, CNContact, CNContactFetchRequest, CNContainer, CNGeminiHandle, CNSaveRequest, NSArray, NSData, NSDictionary, NSPredicate, NSString;
 @protocol ProgressiveResultsHandlerProtocol;
 
 @protocol CNXPCDataMapperService <NSObject>
 - (void)accountsMatchingPredicate:(NSPredicate *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
+- (void)bestGeminiResultForContact:(CNContact *)arg1 substituteDefaultForDangling:(BOOL)arg2 withReply:(void (^)(CNGeminiResult *, NSError *))arg3;
+- (void)bestSenderIdentityForHandle:(CNGeminiHandle *)arg1 withReply:(void (^)(TUSenderIdentity *, NSError *))arg2;
 - (void)changeHistoryWithFetchRequest:(CNChangeHistoryFetchRequest *)arg1 withReply:(void (^)(CNChangeHistoryResult *, NSError *))arg2;
 - (void)clearChangeHistoryForClientIdentifier:(NSString *)arg1 toChangeAnchor:(CNChangeHistoryAnchor *)arg2 withReply:(void (^)(NSNumber *, NSError *))arg3;
 - (void)configureServiceWithOptions:(NSDictionary *)arg1;
+- (void)contactCountForFetchRequest:(CNContactFetchRequest *)arg1 withReply:(void (^)(NSNumber *, NSError *))arg2;
 - (void)contactWithUserActivityUserInfo:(NSDictionary *)arg1 keysToFetch:(NSArray *)arg2 withReply:(void (^)(CNContact *))arg3;
 - (void)contactsForFetchRequest:(CNContactFetchRequest *)arg1 withMatchInfoReply:(void (^)(NSArray *, NSDictionary *, NSError *))arg2;
 - (void)containersMatchingPredicate:(NSPredicate *)arg1 withReply:(void (^)(NSArray *, NSError *))arg2;
@@ -37,6 +40,6 @@
 - (void)unregisterChangeHistoryClientIdentifier:(NSString *)arg1 withReply:(void (^)(NSNumber *, NSError *))arg2;
 - (void)userActivityForContact:(CNContact *)arg1 withReply:(void (^)(NSDictionary *))arg2;
 - (void)verifyIndexWithReply:(void (^)(NSString *, NSError *))arg1;
-- (void)writeFavoritesPropertyListData:(NSData *)arg1 toPath:(NSString *)arg2 withReply:(void (^)(BOOL, NSError *))arg3;
+- (void)writeFavoritesPropertyListData:(NSData *)arg1 toPath:(NSString *)arg2 withReply:(void (^)(NSNumber *, NSError *))arg3;
 @end
 

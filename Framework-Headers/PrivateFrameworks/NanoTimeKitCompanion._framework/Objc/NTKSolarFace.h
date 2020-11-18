@@ -10,8 +10,12 @@
 {
 }
 
++ (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
+- (id)_complicationSlotDescriptors;
+- (id)_faceDescriptionForLibrary;
+- (id)_localizedNameForComplicationSlot:(id)arg1;
+- (id)_orderedComplicationSlots;
 - (BOOL)_snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
-- (BOOL)isSingular;
 
 @end
 

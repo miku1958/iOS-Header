@@ -14,7 +14,7 @@
 
 @property (readonly, weak, nonatomic) id<NTKStopwatchComplicationDisplay> legacyDisplay; // @dynamic legacyDisplay;
 
-+ (BOOL)_acceptsComplicationType:(unsigned long long)arg1;
++ (BOOL)_acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
 - (void)_activate;
 - (void)_configureForLegacyDisplay:(id)arg1;
 - (void)_deactivate;

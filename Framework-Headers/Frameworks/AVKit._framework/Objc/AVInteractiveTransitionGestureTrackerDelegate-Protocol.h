@@ -6,11 +6,12 @@
 
 #import <AVKit/NSObject-Protocol.h>
 
-@class AVInteractiveTransitionGestureTracker;
+@class AVInteractiveTransitionGestureTracker, UIGestureRecognizer, UITouch;
 
 @protocol AVInteractiveTransitionGestureTrackerDelegate <NSObject>
 - (void)gestureTracker:(AVInteractiveTransitionGestureTracker *)arg1 didBeginTrackingGesture:(long long)arg2;
 - (void)gestureTracker:(AVInteractiveTransitionGestureTracker *)arg1 didTrackPercentComplete:(double)arg2 translation:(struct CGPoint)arg3 rotation:(double)arg4 locationInWindow:(struct CGPoint)arg5;
+- (BOOL)gestureTracker:(AVInteractiveTransitionGestureTracker *)arg1 gestureRecognizer:(UIGestureRecognizer *)arg2 shouldReceiveTouch:(UITouch *)arg3;
 - (void)gestureTrackerDidCancelTracking:(AVInteractiveTransitionGestureTracker *)arg1;
 - (void)gestureTrackerDidFinishTracking:(AVInteractiveTransitionGestureTracker *)arg1;
 - (BOOL)gestureTrackerShouldTrackPanToDismiss:(AVInteractiveTransitionGestureTracker *)arg1;

@@ -28,13 +28,25 @@
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (id)_baseIdentifier;
+- (void)addFollowUpForPageAndDevice:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)addFollowUpForPageWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)contentViewIsInAdjustedScrollView;
+- (id)followUpActions;
+- (id)followUpIdentifier;
 - (id)init;
+- (id)localizedInformativeNotificationText;
+- (id)localizedInformativeText;
+- (id)localizedNotificationTitle;
+- (id)localizedTitle;
+- (void)removeFollowupForPageWithCompletion:(CDUnknownBlockType)arg1;
+- (id)titleAttributedString;
 - (id)titleString;
 - (void)updateTitleLabel;
 - (double)verticalTitleInset;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (BOOL)wantsFollowUpNotification;
 
 @end
 

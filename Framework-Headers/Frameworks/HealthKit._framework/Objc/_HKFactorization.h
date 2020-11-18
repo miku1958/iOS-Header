@@ -23,9 +23,8 @@ __attribute__((visibility("hidden")))
 + (id)factorizationWithFactorsAndExponents:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_allFactors;
+- (void)_enumerateFactorsWithHandler:(CDUnknownBlockType)arg1;
 - (long long)_exponentForFactor:(id)arg1;
-- (BOOL)_hasSameFactorsAndExponentsAs:(id)arg1;
 - (void)_multiplyByFactor:(id)arg1 exponent:(long long)arg2;
 - (void)_multiplyByFactorization:(id)arg1;
 - (void)_raiseToExponent:(long long)arg1;

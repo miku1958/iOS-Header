@@ -9,19 +9,18 @@
 #import <GeoServices/GEODataSession-Protocol.h>
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEODataURLSessionList, GEODataURLSessionTaskQueue, NSMutableDictionary, NSOperationQueue, NSString;
+@class GEODataURLSessionList, NSMutableDictionary, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface GEODataURLSession : NSObject <NSURLSessionDataDelegate, GEODataSession>
 {
     GEODataURLSessionList *_urlSessions;
     NSObject<OS_dispatch_queue> *_sessionIsolation;
     NSOperationQueue *_sessionIsolationOperationQueue;
     NSMutableDictionary *_sessionTasks;
-    GEODataURLSessionTaskQueue *_tileTaskQueue;
     NSObject<OS_dispatch_source> *_memoryNotificationEventSource;
     unsigned int _nextSessionIdentifier;
+    int _symptomsAlternateAdviceToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSMutableDictionary *sessionTasks; // @synthesize sessionTasks=_sessionTasks;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) GEODataURLSessionTaskQueue *tileTaskQueue;
 @property (readonly, nonatomic) GEODataURLSessionList *urlSessions; // @synthesize urlSessions=_urlSessions;
 
 - (void).cxx_destruct;
@@ -49,12 +47,14 @@ __attribute__((visibility("hidden")))
 - (id)activeSessionIdentifiers;
 - (void)configureTask:(id)arg1 withRequest:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
 - (id)createNewURLSessionWithRequest:(id)arg1;
-- (void)didReceiveMemmoryPressureWarning;
+- (void)dealloc;
+- (void)didReceiveMemoryPressureWarning;
 - (id)init;
 - (void)pruneInactiveSessions;
 - (id)removeTaskForURLSession:(id)arg1 task:(id)arg2;
 - (id)taskForURLSession:(id)arg1 task:(id)arg2;
 - (id)taskWithRequest:(id)arg1 rules:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4;
+- (id)taskWithRequest:(id)arg1 rules:(id)arg2 priority:(float)arg3 delegate:(id)arg4 delegateQueue:(id)arg5;
 - (void)tearDown;
 - (id)urlSessionForRequest:(id)arg1;
 

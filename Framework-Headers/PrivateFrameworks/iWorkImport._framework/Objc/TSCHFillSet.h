@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary, NSMutableArray, NSString, TSUImage;
 
@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (id)fillFromSageProperties:(id)arg1;
 - (id)fillsForDefaultSeriesType;
 - (id)fillsForSeriesType:(id)arg1 context:(id)arg2;
-- (id)init;
 - (id)initWithIdentifier:(id)arg1 plistPath:(id)arg2;
 - (void)p_createSeriesSwatchImagesWithSeriesCount:(unsigned long long)arg1 swatchSize:(struct CGSize)arg2;
 - (id)p_propertyMapsToApplyToChart:(id)arg1 context:(id)arg2;

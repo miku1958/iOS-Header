@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBadgePhonePadVisualStyle.h>
+#import <UIKitCore/_UIBadgePhonePadVisualStyle.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIBadgePhonePadHorizontalVisualStyle : _UIBadgePhonePadVisualStyle

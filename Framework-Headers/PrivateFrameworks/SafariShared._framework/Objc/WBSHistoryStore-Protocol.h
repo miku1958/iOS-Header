@@ -22,6 +22,7 @@
 
 - (void)addOrUpdateItemsOnDatabaseQueue:(NSSet *)arg1;
 - (NSSet *)allVisitsForItemsOnDatabaseQueue:(NSSet *)arg1;
+- (void)checkIfLocalVisitExistsInAnyOfItems:(NSSet *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (void)clearHistoryVisitsAddedAfterDate:(NSDate *)arg1 beforeDate:(NSDate *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)clearHistoryWithCompletionHandler:(void (^)(void))arg1;
 - (void)closeWithCompletionHandler:(void (^)(void))arg1;

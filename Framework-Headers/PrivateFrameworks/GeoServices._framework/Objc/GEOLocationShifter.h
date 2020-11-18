@@ -9,11 +9,10 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 
 @class NSCache, NSLock, NSMutableArray, NSString;
-@protocol OS_dispatch_queue, _GEOLocationShifterProxy;
+@protocol OS_dispatch_queue;
 
 @interface GEOLocationShifter : NSObject <GEOResourceManifestTileGroupObserver>
 {
-    id<_GEOLocationShifterProxy> _proxy;
     BOOL _isRequestingShiftFunction;
     NSLock *_lock;
     NSMutableArray *_locationsToShift;
@@ -28,9 +27,9 @@
 @property (readonly, nonatomic) BOOL locationShiftEnabled;
 @property (readonly) Class superclass;
 
++ (id)_proxy;
 + (BOOL)isLocationShiftEnabled;
 + (BOOL)isLocationShiftRequiredForCoordinate:(CDStruct_c3b9c2ee)arg1;
-+ (BOOL)isLocationShiftRequiredForRegion:(id)arg1;
 + (unsigned int)locationShiftFunctionVersion;
 + (void)useLocalProxy;
 - (void).cxx_destruct;

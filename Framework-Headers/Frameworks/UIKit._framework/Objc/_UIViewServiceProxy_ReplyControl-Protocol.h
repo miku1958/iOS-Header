@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIViewServiceProxy_ReplyAwaiting-Protocol.h>
+#import <UIKitCore/_UIViewServiceProxy_ReplyAwaiting-Protocol.h>
 
 @protocol _UIViewServiceProxy_ReplyControl <_UIViewServiceProxy_ReplyAwaiting>
 - (id)_deliveringRepliesAsynchronously;

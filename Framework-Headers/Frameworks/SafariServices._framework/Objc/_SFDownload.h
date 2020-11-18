@@ -6,27 +6,59 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, NSURL, NSURLRequest, WKWebView, _WKUserInitiatedAction;
+#import <SafariServices/WBSFluidProgressStateSource-Protocol.h>
+#import <SafariServices/_WKDownloadDelegate-Protocol.h>
 
-@interface _SFDownload : NSObject
+@class NSString, NSURL, WBSFluidProgressController, WBSFluidProgressState, _WKDownload, _WKUserInitiatedAction;
+@protocol _SFDownloadDelegate;
+
+@interface _SFDownload : NSObject <_WKDownloadDelegate, WBSFluidProgressStateSource>
 {
+    _WKDownload *_download;
+    unsigned long long _downloadBackgroundTaskIdentifier;
+    long long _bytesExpected;
+    unsigned long long _bytesLoaded;
+    BOOL _hasFailed;
+    BOOL _wasCanceled;
+    WBSFluidProgressState *_fluidProgressState;
+    double _timeLastProgressNotificationWasSent;
     NSURL *_sourceURL;
     NSString *_fileDownloadPath;
     long long _fileType;
-    WKWebView *_originatingWebView;
-    NSURLRequest *_request;
     _WKUserInitiatedAction *_userInitiatedAction;
+    WBSFluidProgressController *_fluidProgressController;
+    id<_SFDownloadDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<_SFDownloadDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *fileDownloadPath; // @synthesize fileDownloadPath=_fileDownloadPath;
 @property (readonly, nonatomic) long long fileType; // @synthesize fileType=_fileType;
-@property (readonly, weak, nonatomic) WKWebView *originatingWebView; // @synthesize originatingWebView=_originatingWebView;
-@property (readonly, nonatomic) NSURLRequest *request; // @synthesize request=_request;
+@property (weak, nonatomic) WBSFluidProgressController *fluidProgressController; // @synthesize fluidProgressController=_fluidProgressController;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSURL *sourceURL; // @synthesize sourceURL=_sourceURL;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) _WKUserInitiatedAction *userInitiatedAction; // @synthesize userInitiatedAction=_userInitiatedAction;
 
-+ (id)downloadWithSourceURL:(id)arg1 path:(id)arg2 fileType:(long long)arg3 webKitDownload:(id)arg4 userInitiatedAction:(id)arg5;
++ (id)provisionalDownloadWithType:(long long)arg1 userInitiatedAction:(id)arg2;
 - (void).cxx_destruct;
+- (void)_beginDownloadBackgroundTask;
+- (void)_download:(id)arg1 decideDestinationWithSuggestedFilename:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_download:(id)arg1 didFailWithError:(id)arg2;
+- (void)_download:(id)arg1 didReceiveData:(unsigned long long)arg2;
+- (void)_download:(id)arg1 didReceiveResponse:(id)arg2;
+- (void)_downloadDidCancel:(id)arg1;
+- (void)_downloadDidFinish:(id)arg1;
+- (void)_downloadDidStart:(id)arg1;
+- (void)_endDownloadBackgroundTask;
+- (void)cancel;
+- (void)clearFluidProgressState;
+- (BOOL)createFluidProgressState;
+- (double)estimatedProgress;
+- (id)expectedOrCurrentURL;
+- (BOOL)hasFailedURL;
+- (id)progressState;
 - (BOOL)removeFromDisk;
 
 @end

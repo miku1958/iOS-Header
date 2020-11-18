@@ -24,9 +24,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct __CVBuffer *pixelBuffer;
 @property (readonly, nonatomic) struct CGRect region;
 
+- (unsigned int)contextID;
 - (void)dealloc;
 - (id)initWithSurface:(struct __IOSurface *)arg1 texture:(struct Texture)arg2 allowSRGB:(BOOL)arg3 bounds:(struct CGRect)arg4 context:(struct Context *)arg5;
 - (BOOL)metalCommandBufferRequested;
+- (id)metalContext;
+- (struct CGColorSpace *)workingColorSpace;
 
 @end
 

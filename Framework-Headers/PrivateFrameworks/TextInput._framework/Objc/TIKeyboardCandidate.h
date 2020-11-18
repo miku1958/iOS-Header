@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
@@ -14,6 +14,7 @@
 
 @interface TIKeyboardCandidate : NSObject <NSCopying, NSSecureCoding, TIKeyboardCandidateCoding>
 {
+    BOOL _responseCandidate;
     BOOL _isSendCurrentLocation;
     unsigned int _slotID;
     NSString *_alternativeText;
@@ -44,11 +45,13 @@
 @property (readonly, nonatomic) BOOL isAutocorrection;
 @property (readonly, nonatomic) BOOL isForShortcutConversion;
 @property (nonatomic) BOOL isSendCurrentLocation; // @synthesize isSendCurrentLocation=_isSendCurrentLocation;
-@property (readonly, nonatomic) NSString *label;
-@property (readonly, strong, nonatomic) TIProactiveTrigger *proactiveTrigger;
+@property (copy, nonatomic) NSString *label;
+@property (readonly, nonatomic) TIProactiveTrigger *proactiveTrigger;
 @property (readonly, nonatomic, getter=isPunctuationCompletionCandidate) BOOL punctuationCompletionCandidate;
 @property (readonly, nonatomic, getter=isPunctuationKeyCandidate) BOOL punctuationKeyCandidate;
 @property (readonly, nonatomic, getter=isRegionalCandidate) BOOL regionalCandidate;
+@property (readonly, nonatomic, getter=isResponseCandidate) BOOL responseCandidate; // @synthesize responseCandidate=_responseCandidate;
+@property (readonly, nonatomic) NSString *responseKitCategory;
 @property (readonly, nonatomic, getter=isSecureContentCandidate) BOOL secureContentCandidate;
 @property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
 @property (readonly) Class superclass;
@@ -57,8 +60,8 @@
 
 + (BOOL)supportsSecureCoding;
 + (int)type;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCandidateResultSetCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCandidateResultSetCoder:(id)arg1;

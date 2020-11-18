@@ -6,51 +6,49 @@
 
 #import <objc/NSObject.h>
 
-#import <NanoTimeKitCompanion/NTKComplicationTimelineDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKUtilityComplicationFactoryDelegate-Protocol.h>
 #import <NanoTimeKitCompanion/NTKWellnessTimelineModelSubscriber-Protocol.h>
 
-@class NSDate, NSString, NTKActivityFaceTimeline, NTKUtilityComplicationFactory, NTKWellnessEntryModel;
+@class CLKDevice, NSString, NTKUtilityComplicationFactory, NTKWellnessEntryModel;
 @protocol NTKActivityFaceViewFactoryDelegate, OS_dispatch_source;
 
-@interface NTKActivityFaceViewFactory : NSObject <NTKUtilityComplicationFactoryDelegate, NTKWellnessTimelineModelSubscriber, NTKComplicationTimelineDelegate>
+@interface NTKActivityFaceViewFactory : NSObject <NTKUtilityComplicationFactoryDelegate, NTKWellnessTimelineModelSubscriber>
 {
+    NTKWellnessEntryModel *_nowEntryModel;
     BOOL _wantsUpdateNowEntryModelNextLive;
-    BOOL _timeTravellingOutsideBounds;
     double _lastWristRaiseTime;
     double _wristRaiseTimoutDuration;
     NSObject<OS_dispatch_source> *_memoryNotificationEventSource;
+    BOOL _analog;
     BOOL _hasBeenLiveOrOnDeck;
-    BOOL _isHistoricalDataLoaded;
     BOOL _isLoadingData;
     BOOL _showsCanonicalContent;
     BOOL _showsLockedContent;
+    CLKDevice *_device;
     NTKUtilityComplicationFactory *_complicationFactory;
-    NTKActivityFaceTimeline *_timeline;
-    NSDate *_timeTravelDate;
     id<NTKActivityFaceViewFactoryDelegate> _delegate;
     long long _dataMode;
 }
 
+@property (readonly, nonatomic) BOOL analog; // @synthesize analog=_analog;
 @property (strong, nonatomic) NTKUtilityComplicationFactory *complicationFactory; // @synthesize complicationFactory=_complicationFactory;
 @property (readonly, nonatomic) NTKWellnessEntryModel *currentEntryModel;
 @property (nonatomic) long long dataMode; // @synthesize dataMode=_dataMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NTKActivityFaceViewFactoryDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (nonatomic) BOOL hasBeenLiveOrOnDeck; // @synthesize hasBeenLiveOrOnDeck=_hasBeenLiveOrOnDeck;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL isHistoricalDataLoaded; // @synthesize isHistoricalDataLoaded=_isHistoricalDataLoaded;
 @property (nonatomic) BOOL isLoadingData; // @synthesize isLoadingData=_isLoadingData;
 @property (nonatomic) BOOL showsCanonicalContent; // @synthesize showsCanonicalContent=_showsCanonicalContent;
 @property (nonatomic) BOOL showsLockedContent; // @synthesize showsLockedContent=_showsLockedContent;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSDate *timeTravelDate; // @synthesize timeTravelDate=_timeTravelDate;
-@property (strong, nonatomic) NTKActivityFaceTimeline *timeline; // @synthesize timeline=_timeline;
 
 + (void)_purgeGLContexts;
++ (void)initialize;
 + (id)prelaunchApplicationIdentifiers;
-+ (void)prewarm;
++ (void)prewarmForDevice:(id)arg1;
 + (BOOL)userActiveEnergyIsCalories;
 + (id)userActiveEnergyUnit;
 - (void).cxx_destruct;
@@ -60,43 +58,38 @@
 - (void)_configureComplicationFactory:(id)arg1;
 - (id)_dateComplicationFontForStyle:(unsigned long long)arg1;
 - (double)_edgeGapForState:(long long)arg1;
-- (void)_extendRightWithEntryModel:(id)arg1;
-- (void)_extendTimelineIfNecessaryAndPossible;
 - (void)_handleActiveEnergyUnitChange;
 - (double)_keylinePaddingForState:(long long)arg1;
 - (double)_lisaGapForState:(long long)arg1;
 - (void)_loadCurrentEntry;
 - (void)_loadCurrentEntryForce:(BOOL)arg1;
-- (void)_nowEntryDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)_resetWristRaiseAnimationTimeout;
-- (void)_startExtendOperationIfNecessaryForWindow:(id)arg1 withDate:(id)arg2 minBuffer:(double)arg3;
-- (void)_updateDimStateForCurrentTimeline;
-- (void)_updateRingsForCurrentEntryModel;
+- (id)_slotForUtilitySlot:(long long)arg1;
+- (BOOL)_slotUsesCurvedText:(long long)arg1;
 - (void)_updateRingsForCurrentEntryModelAnimated:(BOOL)arg1;
-- (void)_updateTimeTravelBoundaries;
 - (id)_utilityComplicationSlots;
 - (long long)_utilitySlotForSlot:(id)arg1;
+- (long long)complicationPickerStyleForSlot:(id)arg1;
+- (void)curvedCircleRadius:(double *)arg1 centerAngle:(double *)arg2 maxAngularWidth:(double *)arg3 circleCenter:(struct CGPoint *)arg4 interior:(BOOL *)arg5 forSlot:(id)arg6;
+- (id)curvedMaskForSlot:(id)arg1;
 - (void)dealloc;
 - (id)debugStringForEntry:(id)arg1;
-- (void)endScrubbing;
 - (void)faceView:(id)arg1 configureComplicationView:(id)arg2 forSlot:(id)arg3;
 - (double)faceView:(id)arg1 keylineCornerRadiusForComplicationSlot:(id)arg2;
 - (unsigned long long)faceView:(id)arg1 keylineLabelAlignmentForComplicationSlot:(id)arg2;
 - (long long)faceView:(id)arg1 legacyLayoutOverrideforComplicationType:(unsigned long long)arg2 slot:(id)arg3;
 - (id)faceView:(id)arg1 newLegacyViewForComplication:(id)arg2 family:(long long)arg3 slot:(id)arg4;
-- (id)init;
+- (id)initForAnalog:(BOOL)arg1 forDevice:(id)arg2;
+- (long long)keylineStyleForComplicationSlot:(id)arg1;
+- (id)keylineViewForComplicationSlot:(id)arg1;
 - (void)launchActivityApp;
 - (void)loadLayoutRulesForFaceView:(id)arg1;
-- (void)nowEntryDidChangeFrom:(id)arg1 to:(id)arg2;
 - (void)performWristRaiseAnimation;
 - (void)prepareWristRaiseAnimation;
-- (void)scrubToDate:(id)arg1;
 - (BOOL)shouldPerformFromZeroWristRaise;
-- (void)startScrubbing;
-- (void)timeTravelEntryDidChangeFrom:(id)arg1 to:(id)arg2;
+- (BOOL)slotUsesCurvedText:(long long)arg1;
 - (id)utilityDateComplicationFontForDateStyle:(unsigned long long)arg1;
 - (void)wellnessTimeLineModelCurrentEntryModelUpdated:(id)arg1;
-- (void)wellnessTimelineModelHistorcalDataLoaded:(BOOL)arg1;
 
 @end
 

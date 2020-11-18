@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL formatStringContainsAMPMSpecifier;
 @property (readonly, nonatomic) BOOL formatStringContainsOnlyDate;
 
++ (id)defaultDateOnlyShortFormatForLocale:(id)arg1;
 + (id)nowFormatForLocale:(id)arg1;
 + (id)todayFormatForLocale:(id)arg1;
 - (void).cxx_destruct;

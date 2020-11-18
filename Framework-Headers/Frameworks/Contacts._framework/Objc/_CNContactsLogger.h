@@ -28,6 +28,7 @@
 - (void)XPCConnectionWasInterrupted;
 - (void)XPCConnectionWasInvalidated;
 - (void)addingContacts:(id)arg1 toContainerWithIdentifier:(id)arg2;
+- (void)changedMeContact:(id)arg1;
 - (void)changingMeContact:(CDUnknownBlockType)arg1;
 - (void)clearingChangeHistory:(CDUnknownBlockType)arg1;
 - (void)contactsAccessWasGranted:(BOOL)arg1;

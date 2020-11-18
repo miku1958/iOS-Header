@@ -4,25 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+#import <FrontBoardServices/BSXPCCoding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSURL;
+@class NSDictionary, NSMutableDictionary, NSString, NSURL;
 
-@interface FBSOpenApplicationOptions : NSObject <NSCopying>
+@interface FBSOpenApplicationOptions : NSObject <BSXPCCoding, NSCopying>
 {
     NSMutableDictionary *_payload;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_payload;
-@property (readonly, strong, nonatomic) NSURL *url;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSURL *url;
 
 + (id)optionsWithDictionary:(id)arg1;
+- (void).cxx_destruct;
 - (void)_sanitizeAndValidatePayload;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

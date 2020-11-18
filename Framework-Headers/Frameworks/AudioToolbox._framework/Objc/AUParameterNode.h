@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AUParameterGroup, NSString;
 
@@ -37,8 +37,9 @@
 @property (nonatomic) unsigned long long indexInGroup; // @synthesize indexInGroup=_indexInGroup;
 @property (readonly, copy, nonatomic) NSString *keyPath;
 @property (nonatomic) struct AUObserverList *observerList; // @synthesize observerList=_observerList;
-@property (nonatomic) AUParameterGroup *parentNode; // @synthesize parentNode=_parentNode;
+@property (weak, nonatomic) AUParameterGroup *parentNode; // @synthesize parentNode=_parentNode;
 
+- (void).cxx_destruct;
 - (void *)_addRecObserver:(CDUnknownBlockType)arg1 autoObserver:(CDUnknownBlockType)arg2;
 - (void)_deserialize:(struct CADeserializer *)arg1;
 - (void)_observersChanged:(BOOL)arg1 deltaCount:(int)arg2;

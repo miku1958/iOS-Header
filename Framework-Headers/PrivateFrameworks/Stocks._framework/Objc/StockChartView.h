@@ -84,6 +84,7 @@
 - (void)clearData;
 - (void)createYLabelsForMode:(id)arg1;
 - (id)currentGraphView;
+- (void)dealloc;
 - (void)didTransitionToDisplayMode:(id)arg1;
 - (void)enumerateGraphsAndDisplayModesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)forceLayout;

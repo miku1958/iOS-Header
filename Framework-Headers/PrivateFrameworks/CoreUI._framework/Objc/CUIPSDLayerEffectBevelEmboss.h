@@ -36,6 +36,7 @@
 @property unsigned long long softenSize; // @synthesize softenSize=_softenSize;
 
 - (void)dealloc;
+- (id)description;
 - (unsigned int)effectType;
 - (id)init;
 - (id)initWithEffectFromPreset:(id)arg1 atIndex:(unsigned int)arg2;

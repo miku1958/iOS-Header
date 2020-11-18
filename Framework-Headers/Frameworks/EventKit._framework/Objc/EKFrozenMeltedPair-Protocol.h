@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic) BOOL isFrozen;
 @property (readonly, nonatomic) BOOL isPartialObject;
+@property (readonly, nonatomic) NSString *semanticIdentifier;
 @property (readonly, nonatomic) NSString *uniqueIdentifier;
 
 + (Class)frozenClass;

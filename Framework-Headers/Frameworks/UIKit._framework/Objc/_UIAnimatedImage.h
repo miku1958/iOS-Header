@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImage.h>
+#import <UIKitCore/UIImage.h>
 
 @class NSArray;
 
@@ -27,11 +27,9 @@ __attribute__((visibility("hidden")))
 - (id)_initWithOtherImage:(id)arg1;
 - (BOOL)_isResizable;
 - (BOOL)_isTiledWhenStretchedToSize:(struct CGSize)arg1;
-- (id)_selectedTabBarItemImageWithTintColor:(id)arg1 metrics:(long long)arg2 style:(long long)arg3 forScreenScale:(double)arg4;
 - (void)_setAlignmentRectInsets:(struct UIEdgeInsets)arg1;
 - (void)_setAlwaysStretches:(BOOL)arg1;
 - (struct CGSize)_sizeWithHairlineThickening:(BOOL)arg1 renderingEffects:(unsigned long long)arg2 forTraitCollection:(id)arg3;
-- (id)_unselectedTabBarItemImageWithTintColor:(id)arg1 metrics:(long long)arg2 style:(long long)arg3 forScreenScale:(double)arg4;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (struct UIEdgeInsets)capInsets;
 - (double)duration;

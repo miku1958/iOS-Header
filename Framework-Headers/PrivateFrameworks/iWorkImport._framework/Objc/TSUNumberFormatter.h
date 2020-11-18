@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSLocale, NSMutableArray, NSMutableDictionary, NSString, TSULocaleStructuredDictionary;
 
@@ -64,12 +64,14 @@ __attribute__((visibility("hidden")))
 + (id)groupingSeparatorForLocale:(id)arg1;
 + (unsigned long long)groupingSizeForLocale:(id)arg1;
 + (void)initialize;
++ (void)lock;
 + (id)numberFormatStringSpecialSymbols;
 + (id)percentSymbolForLocale:(id)arg1;
 + (int)positionOfCurrencySymbolInNumberFormatSubpattern:(id)arg1;
 + (int)positionOfMinusSignInNumberFormatSubpattern:(id)arg1;
 + (int)positionOfSymbol:(id)arg1 inNumberFormatSubpattern:(id)arg2;
 + (id)stringBySubstitutingCharactersCFNumberFormatterDoesntUnderstand:(id)arg1;
++ (void)unlock;
 + (id)userVisibleCurrencyCodes;
 - (void).cxx_destruct;
 - (id)currencyCode;

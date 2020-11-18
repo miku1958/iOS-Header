@@ -4,15 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
-@interface DMFFetchProfilesRequest : CATTaskRequest
+@interface DMFFetchProfilesRequest : DMFTaskRequest
 {
     unsigned long long _filterFlags;
 }
 
 @property (nonatomic) unsigned long long filterFlags; // @synthesize filterFlags=_filterFlags;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void)encodeWithCoder:(id)arg1;

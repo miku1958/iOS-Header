@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, NSNumber;
 
 @interface BLTSectionConfigurationItem : NSObject
 {
@@ -15,16 +15,30 @@
     BOOL _alwaysSyncSettings;
     BOOL _alwaysAlert;
     BOOL _optOutOfWaitForUserIdle;
+    BOOL _applyWhitelistToChildSections;
+    BOOL _optOutOfNotificationTuning;
+    BOOL _hasLegacyMapInUserInfo;
+    BOOL _hasLegacyMapInContext;
+    BOOL _optOutOfSubtitleRemovalForOlderWatches;
     NSArray *_whitelistedSubtypes;
     NSArray *_blacklistedCategories;
+    NSNumber *_watchVersionThatUsesUserInfoForContext;
+    NSArray *_additionalBridgeSectionIDs;
 }
 
+@property (strong, nonatomic) NSArray *additionalBridgeSectionIDs; // @synthesize additionalBridgeSectionIDs=_additionalBridgeSectionIDs;
 @property (nonatomic) BOOL alwaysAlert; // @synthesize alwaysAlert=_alwaysAlert;
 @property (nonatomic) BOOL alwaysSyncSettings; // @synthesize alwaysSyncSettings=_alwaysSyncSettings;
+@property (nonatomic) BOOL applyWhitelistToChildSections; // @synthesize applyWhitelistToChildSections=_applyWhitelistToChildSections;
 @property (strong, nonatomic) NSArray *blacklistedCategories; // @synthesize blacklistedCategories=_blacklistedCategories;
+@property (nonatomic) BOOL hasLegacyMapInContext; // @synthesize hasLegacyMapInContext=_hasLegacyMapInContext;
+@property (nonatomic) BOOL hasLegacyMapInUserInfo; // @synthesize hasLegacyMapInUserInfo=_hasLegacyMapInUserInfo;
 @property (nonatomic) BOOL optOutOfAttachmentTransmission; // @synthesize optOutOfAttachmentTransmission=_optOutOfAttachmentTransmission;
 @property (nonatomic) BOOL optOutOfCoordination; // @synthesize optOutOfCoordination=_optOutOfCoordination;
+@property (nonatomic) BOOL optOutOfNotificationTuning; // @synthesize optOutOfNotificationTuning=_optOutOfNotificationTuning;
+@property (nonatomic) BOOL optOutOfSubtitleRemovalForOlderWatches; // @synthesize optOutOfSubtitleRemovalForOlderWatches=_optOutOfSubtitleRemovalForOlderWatches;
 @property (nonatomic) BOOL optOutOfWaitForUserIdle; // @synthesize optOutOfWaitForUserIdle=_optOutOfWaitForUserIdle;
+@property (strong, nonatomic) NSNumber *watchVersionThatUsesUserInfoForContext; // @synthesize watchVersionThatUsesUserInfoForContext=_watchVersionThatUsesUserInfoForContext;
 @property (strong, nonatomic) NSArray *whitelistedSubtypes; // @synthesize whitelistedSubtypes=_whitelistedSubtypes;
 
 - (void).cxx_destruct;

@@ -19,6 +19,9 @@
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)init;
+- (BOOL)isEqual:(id)arg1;
+- (id)mergedConfiguration:(id)arg1;
 
 @end
 

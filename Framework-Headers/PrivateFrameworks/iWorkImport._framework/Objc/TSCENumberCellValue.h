@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
     struct TSCENumberValue *_numberValue;
 }
 
+- (id)canonicalKeyString;
 - (long long)compareToCellValue:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCellValue:(id)arg1;
 - (struct TSCENumberValue *)numberValue;
+- (void)setPopulatedCustomFormat:(id)arg1;
 - (struct TSCEValue)tsceValue;
 
 @end

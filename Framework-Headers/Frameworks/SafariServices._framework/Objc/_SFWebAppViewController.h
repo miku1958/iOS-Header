@@ -26,6 +26,7 @@
 + (id)requestViewControllerWithConnectionHandler:(CDUnknownBlockType)arg1;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (void)didChangeFullScreen:(BOOL)arg1;
 - (void)didChangeLoadingState:(BOOL)arg1;
 - (void)didDecideCookieSharingForURL:(id)arg1 shouldCancel:(BOOL)arg2;
 - (void)didFinishInitialLoad:(BOOL)arg1;

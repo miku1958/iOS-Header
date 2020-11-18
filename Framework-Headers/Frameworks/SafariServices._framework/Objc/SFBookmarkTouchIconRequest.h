@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithBookmark:(id)arg1;
 - (id)initWithBookmark:(id)arg1 iconGenerationEnabled:(BOOL)arg2;
+- (id)uniqueIdentifier;
 
 @end
 

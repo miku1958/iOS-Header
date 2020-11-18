@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextSuggestion.h>
+#import <UIKitCore/UITextSuggestion.h>
 
 @class NSString;
 
@@ -19,6 +19,7 @@
 
 + (id)autofillSuggestionWithUsername:(id)arg1 password:(id)arg2;
 - (void).cxx_destruct;
+- (id)_keyboardCandidate;
 - (id)initWithUsername:(id)arg1 password:(id)arg2;
 
 @end

@@ -12,9 +12,11 @@
 
 @interface CKDPShare : PBCodable <NSCopying>
 {
+    NSString *_displayedHostname;
     NSString *_etag;
     NSMutableArray *_invitedKeyToRemoves;
     CKDPProtectionInfo *_invitedPcs;
+    NSString *_origin;
     NSMutableArray *_participants;
     NSMutableArray *_potentialMatchs;
     int _publicAccess;
@@ -22,16 +24,23 @@
     CKDPShareIdentifier *_shareId;
     NSData *_shortTokenHash;
     NSString *_shortTokenRoutingKey;
+    BOOL _anonymousPublicAccess;
     BOOL _publisherModel;
     struct {
         unsigned int publicAccess:1;
+        unsigned int anonymousPublicAccess:1;
         unsigned int publisherModel:1;
     } _has;
 }
 
+@property (nonatomic) BOOL anonymousPublicAccess; // @synthesize anonymousPublicAccess=_anonymousPublicAccess;
+@property (strong, nonatomic) NSString *displayedHostname; // @synthesize displayedHostname=_displayedHostname;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
+@property (nonatomic) BOOL hasAnonymousPublicAccess;
+@property (readonly, nonatomic) BOOL hasDisplayedHostname;
 @property (readonly, nonatomic) BOOL hasEtag;
 @property (readonly, nonatomic) BOOL hasInvitedPcs;
+@property (readonly, nonatomic) BOOL hasOrigin;
 @property (nonatomic) BOOL hasPublicAccess;
 @property (nonatomic) BOOL hasPublisherModel;
 @property (readonly, nonatomic) BOOL hasSelfAddedPcs;
@@ -40,6 +49,7 @@
 @property (readonly, nonatomic) BOOL hasShortTokenRoutingKey;
 @property (strong, nonatomic) NSMutableArray *invitedKeyToRemoves; // @synthesize invitedKeyToRemoves=_invitedKeyToRemoves;
 @property (strong, nonatomic) CKDPProtectionInfo *invitedPcs; // @synthesize invitedPcs=_invitedPcs;
+@property (strong, nonatomic) NSString *origin; // @synthesize origin=_origin;
 @property (strong, nonatomic) NSMutableArray *participants; // @synthesize participants=_participants;
 @property (strong, nonatomic) NSMutableArray *potentialMatchs; // @synthesize potentialMatchs=_potentialMatchs;
 @property (nonatomic) int publicAccess; // @synthesize publicAccess=_publicAccess;

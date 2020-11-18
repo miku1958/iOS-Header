@@ -27,6 +27,7 @@
     SBUIButton *_emergencyCallButton;
     SBUIButton *_backspaceButton;
     SBUIButton *_cancelButton;
+    UIColor *_reduceTransparencyButtonColor;
 }
 
 @property (nonatomic) double ancillaryButtonOffset; // @synthesize ancillaryButtonOffset=_ancillaryButtonOffset;
@@ -39,6 +40,7 @@
 @property (strong, nonatomic) UIControl<SBUIPasscodeNumberPadButton> *downButton; // @synthesize downButton=_downButton;
 @property (readonly, nonatomic) SBUIButton *emergencyCallButton; // @synthesize emergencyCallButton=_emergencyCallButton;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) UIColor *reduceTransparencyButtonColor; // @synthesize reduceTransparencyButtonColor=_reduceTransparencyButtonColor;
 @property (nonatomic) BOOL showsBackspaceButton; // @synthesize showsBackspaceButton=_showsBackspaceButton;
 @property (nonatomic) BOOL showsCancelButton; // @synthesize showsCancelButton=_showsCancelButton;
 @property (nonatomic) BOOL showsEmergencyCallButton; // @synthesize showsEmergencyCallButton=_showsEmergencyCallButton;

@@ -11,30 +11,51 @@
 __attribute__((visibility("hidden")))
 @interface VCMediaNegotiationBlobMultiwayAudioStream : PBCodable <NSCopying>
 {
-    unsigned int _maxAudioBitrate;
-    unsigned int _payloadFlags;
+    unsigned int _maxMediaBitrate;
+    unsigned int _maxNetworkBitrate;
+    float _maxPacketsPerSecond;
+    unsigned int _qualityIndex;
+    unsigned int _repairedMaxNetworkBitrate;
+    unsigned int _repairedStreamID;
     unsigned int _ssrc;
+    unsigned int _streamID;
+    unsigned int _supportedPayloads;
     struct {
-        unsigned int maxAudioBitrate:1;
-        unsigned int payloadFlags:1;
+        unsigned int maxMediaBitrate:1;
+        unsigned int maxNetworkBitrate:1;
+        unsigned int maxPacketsPerSecond:1;
+        unsigned int repairedMaxNetworkBitrate:1;
+        unsigned int repairedStreamID:1;
+        unsigned int supportedPayloads:1;
     } _has;
 }
 
-@property (nonatomic) BOOL hasMaxAudioBitrate;
-@property (nonatomic) BOOL hasPayloadFlags;
-@property (nonatomic) unsigned int maxAudioBitrate; // @synthesize maxAudioBitrate=_maxAudioBitrate;
-@property (nonatomic) unsigned int payloadFlags; // @synthesize payloadFlags=_payloadFlags;
+@property (nonatomic) BOOL hasMaxMediaBitrate;
+@property (nonatomic) BOOL hasMaxNetworkBitrate;
+@property (nonatomic) BOOL hasMaxPacketsPerSecond;
+@property (nonatomic) BOOL hasRepairedMaxNetworkBitrate;
+@property (nonatomic) BOOL hasRepairedStreamID;
+@property (nonatomic) BOOL hasSupportedPayloads;
+@property (nonatomic) unsigned int maxMediaBitrate; // @synthesize maxMediaBitrate=_maxMediaBitrate;
+@property (nonatomic) unsigned int maxNetworkBitrate; // @synthesize maxNetworkBitrate=_maxNetworkBitrate;
+@property (nonatomic) float maxPacketsPerSecond; // @synthesize maxPacketsPerSecond=_maxPacketsPerSecond;
+@property (nonatomic) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
+@property (nonatomic) unsigned int repairedMaxNetworkBitrate; // @synthesize repairedMaxNetworkBitrate=_repairedMaxNetworkBitrate;
+@property (nonatomic) unsigned int repairedStreamID; // @synthesize repairedStreamID=_repairedStreamID;
 @property (nonatomic) unsigned int ssrc; // @synthesize ssrc=_ssrc;
+@property (nonatomic) unsigned int streamID; // @synthesize streamID=_streamID;
+@property (nonatomic) unsigned int supportedPayloads; // @synthesize supportedPayloads=_supportedPayloads;
 
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
-- (id)initWithSSRC:(unsigned int)arg1 audioRuleCollection:(id)arg2 maxAudioBitrate:(unsigned int)arg3;
+- (id)initWithMultiwayConfig:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
-- (id)newAudioRuleCollectionWithAudioSettings:(id)arg1;
+- (id)newAudioRuleCollectionWithAudioRuleCollection:(id)arg1;
+- (void)printWithLogFile:(void *)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setPayloadFlagsWithAudioRuleCollection:(id)arg1;
 - (void)writeTo:(id)arg1;

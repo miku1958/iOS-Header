@@ -12,11 +12,13 @@
 
 @interface CSLocalizedString : NSString <CSCoderEncoder>
 {
+    BOOL _didTrySettingDefaultString;
     NSString *_defaultString;
     NSDictionary *_localizedStrings;
 }
 
 @property (readonly, nonatomic) NSString *defaultString; // @synthesize defaultString=_defaultString;
+@property (nonatomic) BOOL didTrySettingDefaultString; // @synthesize didTrySettingDefaultString=_didTrySettingDefaultString;
 @property (readonly, nonatomic) NSDictionary *localizedStrings; // @synthesize localizedStrings=_localizedStrings;
 
 + (BOOL)supportsSecureCoding;

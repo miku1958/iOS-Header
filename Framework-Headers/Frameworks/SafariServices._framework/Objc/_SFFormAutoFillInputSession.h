@@ -26,6 +26,8 @@
 
 - (void).cxx_destruct;
 - (id)_initWithFormInputSession:(id)arg1 focusedElement:(id)arg2;
+- (void)_updateAutoFillInputSessionUserObject:(id)arg1;
+- (id)autoFillInputSessionByReplacingInputSessionUserObject:(id)arg1;
 - (id)initWithFocusedElement:(id)arg1;
 - (id)initWithFormInputSession:(id)arg1;
 

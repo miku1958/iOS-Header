@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSCache, NSLocale, NSLock, NSMutableArray, NSMutableDictionary, NSString, NSTimeZone, TSUDateParserLibrary;
 
@@ -129,6 +129,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithLocale:(id)arg1 documentLanguageIdentifier:(id)arg2;
 - (id)initWithLocale:(id)arg1 documentLanguageIdentifier:(id)arg2 useAutoupdating:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
+- (id)languageIdentifierWithLanguageAndRegionOnly;
 - (void)loadLocalizedStrings;
 - (id)localeIdentifierWithLanguageAndRegionOnly;
 - (id)localeIdentifierWithLanguageScriptAndRegionOnly;
@@ -142,6 +143,7 @@ __attribute__((visibility("hidden")))
 - (id)localizedFalseStrings;
 - (id)localizedFunctionCategoryDictionary;
 - (id)localizedFunctionNameForMenuTag:(int)arg1;
+- (id)localizedLabelForAggType:(unsigned char)arg1;
 - (id)localizedModeNameForArgument:(short)arg1 modeIndex:(short)arg2 ofFunction:(id)arg3;
 - (id)localizedModeToolTipForArgument:(short)arg1 modeIndex:(short)arg2 ofFunction:(id)arg3;
 - (id)localizedNameForArgument:(short)arg1 ofFunction:(id)arg2;

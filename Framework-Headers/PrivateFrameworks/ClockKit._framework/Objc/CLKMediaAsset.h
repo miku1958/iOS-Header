@@ -8,10 +8,11 @@
 
 #import <ClockKit/NSCopying-Protocol.h>
 
-@class CLKVideo, UIImage;
+@class CLKDevice, CLKVideo, UIImage;
 
 @interface CLKMediaAsset : NSObject <NSCopying>
 {
+    CLKDevice *_device;
     CLKVideo *_video;
     UIImage *_image;
     double _videoDuration;
@@ -23,16 +24,16 @@
 @property (readonly, nonatomic) CLKVideo *video; // @synthesize video=_video;
 @property (readonly, nonatomic) double videoDuration; // @synthesize videoDuration=_videoDuration;
 
-+ (id)mediaAssetWithImage:(id)arg1;
-+ (id)mediaAssetWithVideo:(id)arg1 image:(id)arg2;
-+ (id)mediaAssetWithVideo:(id)arg1 image:(id)arg2 videoDuration:(double)arg3 stillDisplayTime:(double)arg4;
-+ (id)mediaAssetWithVideoAndImageNamed:(id)arg1;
++ (id)mediaAssetWithImage:(id)arg1 forDevice:(id)arg2;
++ (id)mediaAssetWithVideo:(id)arg1 image:(id)arg2 forDevice:(id)arg3;
++ (id)mediaAssetWithVideo:(id)arg1 image:(id)arg2 videoDuration:(double)arg3 stillDisplayTime:(double)arg4 forDevice:(id)arg5;
++ (id)mediaAssetWithVideoAndImageNamed:(id)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (id)initWithImage:(id)arg1;
-- (id)initWithVideo:(id)arg1 image:(id)arg2;
-- (id)initWithVideo:(id)arg1 image:(id)arg2 videoDuration:(double)arg3 stillDisplayTime:(double)arg4;
+- (id)initWithImage:(id)arg1 forDevice:(id)arg2;
+- (id)initWithVideo:(id)arg1 image:(id)arg2 forDevice:(id)arg3;
+- (id)initWithVideo:(id)arg1 image:(id)arg2 videoDuration:(double)arg3 stillDisplayTime:(double)arg4 forDevice:(id)arg5;
 
 @end
 

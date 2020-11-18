@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol FBSApplicationDataStoreRepositoryClient;
@@ -16,7 +16,7 @@
     BOOL _clientNeedsCheckin;
 }
 
-@property (readonly, strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleId;
+@property (readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleId;
 
 + (void)_doWithClassClient:(CDUnknownBlockType)arg1;
 + (void)_setClassClient:(id)arg1;
@@ -25,6 +25,7 @@
 + (id)storeForApplication:(id)arg1;
 + (void)synchronize;
 + (void)synchronizeWithCompletion:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (id)_initWithBundleId:(id)arg1 client:(id)arg2;
 - (id)_makeSafe:(id)arg1 forType:(Class)arg2;
 - (id)archivedObjectForKey:(id)arg1;

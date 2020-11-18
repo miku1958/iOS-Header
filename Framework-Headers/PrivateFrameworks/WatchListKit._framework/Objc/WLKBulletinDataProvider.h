@@ -32,6 +32,7 @@
 - (id)displayNameForSubsectionID:(id)arg1;
 - (void)handleBulletinActionResponse:(id)arg1;
 - (id)sectionIdentifier;
+- (id)sectionParameters;
 - (id)sortDescriptors;
 
 @end

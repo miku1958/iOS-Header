@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <GameplayKit/NSCoding-Protocol.h>
+#import <GameplayKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray;
 
-@interface GKGraphNode : NSObject <NSCoding>
+@interface GKGraphNode : NSObject <NSSecureCoding>
 {
     NSMutableArray *_connectedNodes;
     struct GKCGraphNode *_cGraphNode;
@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSArray *connectedNodes;
 
 + (id)node;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)addConnection:(id)arg1 bidirectional:(BOOL)arg2;
 - (void)addConnectionsToNodes:(id)arg1 bidirectional:(BOOL)arg2;

@@ -6,20 +6,27 @@
 
 #import <PhotosUICore/PXLayoutGenerator.h>
 
-@class PXGridLayoutMetrics;
+@class NSIndexSet, PXGridLayoutMetrics;
 
 @interface PXGridLayoutGenerator : PXLayoutGenerator
 {
     long long _numberOfItemsWide;
+    NSIndexSet *_geometrySet;
 }
 
 @property (readonly, copy, nonatomic) PXGridLayoutMetrics *metrics; // @dynamic metrics;
 
-- (struct _PXLayoutGeometry)_geometryForItemAtIndex:(unsigned long long)arg1;
+- (void).cxx_destruct;
+- (void)_getAdditionalGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2;
+- (void)_getContentGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2;
+- (void)_getHeaderGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2;
 - (struct CGSize)estimatedSize;
+- (id)geometryKinds;
 - (void)getGeometries:(struct _PXLayoutGeometry *)arg1 inRange:(struct _NSRange)arg2 withKind:(long long)arg3;
+- (void)getGeometry:(struct _PXLayoutGeometry *)arg1 forItemAtIndex:(unsigned long long)arg2;
 - (id)init;
 - (id)initWithMetrics:(id)arg1;
+- (unsigned long long)numberOfGeometriesWithKind:(long long)arg1;
 - (struct CGSize)size;
 
 @end

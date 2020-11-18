@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     struct RefPtr<WebCore::Frame, WTF::DumbPtrTraits<WebCore::Frame>> _frame;
     Function_b05ff6eb _policyFunction;
     struct RetainPtr<NSURL> _appLinkURL;
+    int _defaultPolicy;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,8 +32,8 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)download;
 - (void)ignore;
-- (id)initWithFrame:(struct Frame *)arg1 policyFunction:(Function_b05ff6eb *)arg2;
-- (id)initWithFrame:(struct Frame *)arg1 policyFunction:(Function_b05ff6eb *)arg2 appLinkURL:(id)arg3;
+- (id)initWithFrame:(struct Frame *)arg1 policyFunction:(Function_b05ff6eb *)arg2 defaultPolicy:(int)arg3;
+- (id)initWithFrame:(struct Frame *)arg1 policyFunction:(Function_b05ff6eb *)arg2 defaultPolicy:(int)arg3 appLinkURL:(id)arg4;
 - (void)invalidate;
 - (void)receivedPolicyDecision:(int)arg1;
 - (void)use;

@@ -28,6 +28,7 @@
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (id)description;
 
 @end
 

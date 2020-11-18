@@ -10,8 +10,6 @@
 
 @protocol _CPSuggestionEngagementFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasSuggestion;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _CPSearchSuggestionForFeedback *suggestion;
 @property (nonatomic) unsigned long long timestamp;

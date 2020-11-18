@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/SXVideoQueueModifying-Protocol.h>
+#import <NewsUI/SVVideoQueueModifying-Protocol.h>
 
 @class NSString;
 
-@interface NUVideoQueueModifier : NSObject <SXVideoQueueModifying>
+@interface NUVideoQueueModifier : NSObject <SVVideoQueueModifying>
 {
 }
 

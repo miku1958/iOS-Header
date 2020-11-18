@@ -16,7 +16,8 @@
 #import <Home/HFResidentDeviceObserver-Protocol.h>
 #import <Home/HFSoftwareUpdateControllerObserver-Protocol.h>
 #import <Home/HFSoftwareUpdateObserver-Protocol.h>
-#import <Home/HFStateDumpSerializable-Protocol.h>
+#import <Home/HFStateDumpBuildable-Protocol.h>
+#import <Home/HFSymptomFixSessionObserver-Protocol.h>
 #import <Home/HFSymptomsHandlerObserver-Protocol.h>
 #import <Home/HFTemperatureUnitObserver-Protocol.h>
 #import <Home/HFUserObserver-Protocol.h>
@@ -24,16 +25,20 @@
 @class HFItem, HFItemManagerBatchedDelegateAdapter, HMHome, NAFuture, NSArray, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol HFCharacteristicReadPolicy, HFItemManagerDelegate;
 
-@interface HFItemManager : NSObject <HFStateDumpSerializable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFTemperatureUnitObserver, HFItemUpdating>
+@interface HFItemManager : NSObject <HFStateDumpBuildable, HFHomeManagerObserver, HFHomeObserver, HFAccessoryObserver, HFResidentDeviceObserver, HFCameraObserver, HFMediaSessionObserver, HFMediaObjectObserver, HFSoftwareUpdateControllerObserver, HFSoftwareUpdateObserver, HFSymptomsHandlerObserver, HFUserObserver, HFSymptomFixSessionObserver, HFTemperatureUnitObserver, HFItemUpdating>
 {
     BOOL _hasRequestedFirstUpdate;
     id<HFItemManagerDelegate> _delegate;
     HFItem *_sourceItem;
     HMHome *_home;
     NSArray *_itemProviders;
+    NSArray *_itemModules;
+    NSString *_identifier;
     id<HFCharacteristicReadPolicy> _readPolicy;
     unsigned long long _overallLoadingState;
     NAFuture *_firstFastUpdateFuture;
+    NSSet *_subclassItemProviderSet;
+    NSSet *_moduleItemProviderSet;
     HMHome *_lastUpdatedHome;
     NSArray *_sections;
     NSMapTable *_childItemsByParentItem;
@@ -64,12 +69,16 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSArray *itemModules; // @synthesize itemModules=_itemModules;
 @property (strong, nonatomic) NSArray *itemProviders; // @synthesize itemProviders=_itemProviders;
 @property (strong, nonatomic) HMHome *lastUpdatedHome; // @synthesize lastUpdatedHome=_lastUpdatedHome;
+@property (strong, nonatomic) NSSet *moduleItemProviderSet; // @synthesize moduleItemProviderSet=_moduleItemProviderSet;
 @property (nonatomic) unsigned long long overallLoadingState; // @synthesize overallLoadingState=_overallLoadingState;
 @property (strong, nonatomic) id<HFCharacteristicReadPolicy> readPolicy; // @synthesize readPolicy=_readPolicy;
 @property (strong, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (strong, nonatomic) HFItem *sourceItem; // @synthesize sourceItem=_sourceItem;
+@property (strong, nonatomic) NSSet *subclassItemProviderSet; // @synthesize subclassItemProviderSet=_subclassItemProviderSet;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -83,6 +92,7 @@
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_batchItemUpdateFutureWrappers:(id)arg1 removedItems:(id)arg2 batchingIntervals:(id)arg3 logger:(id)arg4;
+- (id)_buildItemModulesForHome:(id)arg1;
 - (id)_buildItemProvidersForHome:(id)arg1;
 - (id)_buildSectionsWithDisplayedItems:(id)arg1;
 - (id)_cameraForCameraControl:(id)arg1;
@@ -102,6 +112,7 @@
 - (id)_internalItems;
 - (id)_invalidationReasonsForAddedOrRemovedAccessory:(id)arg1;
 - (id)_invalidationReasonsForAddedOrRemovedMediaSystem:(id)arg1;
+- (BOOL)_isUsingOnlyItemModules;
 - (id)_itemForSorting;
 - (id)_itemsOfClass:(Class)arg1 inItems:(id)arg2 allowTransformedItems:(BOOL)arg3;
 - (id)_itemsToHideInSet:(id)arg1;
@@ -136,6 +147,7 @@
 - (id)_itemsToUpdateForOutgoingInvitation:(id)arg1;
 - (id)_itemsToUpdateForRemoteAccessChange;
 - (id)_itemsWithDependenciesPassingTest:(CDUnknownBlockType)arg1 forItems:(id)arg2;
+- (id)_legacy_buildSectionsWithDisplayedItems:(id)arg1;
 - (unsigned long long)_loadingStateForItem:(id)arg1;
 - (void)_notifyDelegateOfChangesFromDiff:(id)arg1 logger:(id)arg2;
 - (void)_notifyDelegateOfItemOperations:(id)arg1 logger:(id)arg2;
@@ -169,7 +181,10 @@
 - (id)_updateResultsForItems:(id)arg1 context:(id)arg2;
 - (id)_updateResultsForItems:(id)arg1 removedItems:(id)arg2 context:(id)arg3 allowDelaying:(BOOL)arg4;
 - (void)_willUpdateSections;
+- (void)accessory:(id)arg1 didAddControlTarget:(id)arg2;
 - (void)accessory:(id)arg1 didAddProfile:(id)arg2;
+- (void)accessory:(id)arg1 didAddSymptomsHandler:(id)arg2;
+- (void)accessory:(id)arg1 didRemoveControlTarget:(id)arg2;
 - (void)accessory:(id)arg1 didRemoveProfile:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateApplicationDataForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateAssociatedServiceTypeForService:(id)arg2;
@@ -186,12 +201,14 @@
 - (void)accessory:(id)arg1 didUpdateSoftwareVersion:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateStoreID:(id)arg2;
 - (void)accessory:(id)arg1 service:(id)arg2 didUpdateValueForCharacteristic:(id)arg3;
+- (void)accessoryDidRemoveSymptomsHandler:(id)arg1;
 - (void)accessoryDidUpdateAdditionalSetupRequired:(id)arg1;
 - (void)accessoryDidUpdateApplicationData:(id)arg1;
 - (void)accessoryDidUpdateControllable:(id)arg1;
 - (void)accessoryDidUpdateName:(id)arg1;
 - (void)accessoryDidUpdateReachability:(id)arg1;
 - (void)accessoryDidUpdateServices:(id)arg1;
+- (void)accessoryDidUpdateTargetControlSupport:(id)arg1;
 - (void)accessorySettings:(id)arg1 didWriteValueForSettings:(id)arg2 failedSettings:(id)arg3;
 - (void)accessorySettings:(id)arg1 willWriteValueForSettings:(id)arg2;
 - (id)attributedFooterTitleForSection:(unsigned long long)arg1;
@@ -207,14 +224,17 @@
 - (id)childItemsForItem:(id)arg1 ofClass:(Class)arg2;
 - (id)childItemsForItem:(id)arg1 ofClass:(Class)arg2 conformingToProtocol:(id)arg3;
 - (void)dealloc;
+- (void)didUpdateDemoModeStateForAccessory:(id)arg1;
 - (void)disableExternalUpdatesWithReason:(id)arg1;
 - (id)displayedItemAtIndexPath:(id)arg1;
 - (id)displayedItemsInSection:(unsigned long long)arg1;
+- (id)displayedItemsInSectionWithIdentifier:(id)arg1;
 - (id)displayedSectionIdentifierForSectionIndex:(unsigned long long)arg1;
 - (void)endDisableExternalUpdatesWithReason:(id)arg1;
 - (void)endSuppressingUpdatesForCharacteristicsWithReason:(id)arg1 updateAffectedItems:(BOOL)arg2;
+- (void)fixSession:(id)arg1 didChangeState:(long long)arg2;
 - (id)footerTitleForSection:(unsigned long long)arg1;
-- (id)hf_serializedStateDumpRepresentation;
+- (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (void)home:(id)arg1 didAddAccessory:(id)arg2;
 - (void)home:(id)arg1 didAddActionSet:(id)arg2;
 - (void)home:(id)arg1 didAddMediaSystem:(id)arg2;
@@ -289,26 +309,24 @@
 - (void)mediaSystem:(id)arg1 didUpdateComponents:(id)arg2;
 - (void)mediaSystem:(id)arg1 didUpdateConfiguredName:(id)arg2;
 - (void)mediaSystem:(id)arg1 didUpdateName:(id)arg2;
-- (void)notificationSettingsInvalidatedForManager:(id)arg1;
 - (unsigned long long)numberOfSections;
 - (id)performItemUpdateRequest:(id)arg1;
 - (void)recalculateVisibilityAndSortAllItems;
 - (id)reloadAndUpdateAllItemsFromSenderSelector:(SEL)arg1;
 - (id)reloadAndUpdateItemsForProviders:(id)arg1 senderSelector:(SEL)arg2;
-- (void)resetItemProviders;
+- (void)resetItemProvidersAndModules;
 - (void)residentDevice:(id)arg1 didUpdateCapabilities:(unsigned long long)arg2;
 - (void)residentDevice:(id)arg1 didUpdateEnabled:(BOOL)arg2;
 - (void)residentDevice:(id)arg1 didUpdateName:(id)arg2;
 - (void)residentDevice:(id)arg1 didUpdateStatus:(unsigned long long)arg2;
 - (unsigned long long)sectionIndexForDisplayedSectionIdentifier:(id)arg1;
 - (void)settingsDidUpdate:(id)arg1;
+- (void)settingsInvalidatedForNotificationCenter:(id)arg1;
 - (void)softwareUpdate:(id)arg1 didUpdateDocumentation:(id)arg2;
 - (void)softwareUpdate:(id)arg1 didUpdateDocumentationAvailable:(BOOL)arg2;
 - (void)softwareUpdate:(id)arg1 didUpdateState:(long long)arg2;
 - (void)softwareUpdateController:(id)arg1 didUpdateAvailableUpdate:(id)arg2;
 - (void)sortDisplayedItemsInSection:(long long)arg1;
-- (void)symptomsHandler:(id)arg1 didUpdateCanInitiateFix:(long long)arg2;
-- (void)symptomsHandler:(id)arg1 didUpdateFixState:(long long)arg2;
 - (void)symptomsHandler:(id)arg1 didUpdateSymptoms:(id)arg2;
 - (void)temperatureUnitObserver:(id)arg1 didChangeTemperatureUnit:(BOOL)arg2;
 - (id)titleForSection:(unsigned long long)arg1;

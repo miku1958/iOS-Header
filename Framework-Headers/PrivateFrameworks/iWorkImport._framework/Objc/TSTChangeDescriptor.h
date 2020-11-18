@@ -4,27 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSHashTable, TSTCellRegion;
+@class NSHashTable, TSKShuffleMapping, TSTCellRegion;
 
 __attribute__((visibility("hidden")))
 @interface TSTChangeDescriptor : NSObject
 {
-    int mChangeDescriptor;
-    TSTCellRegion *mCellRegion;
-    struct TSUCellCoord mCellID;
-    TSTCellRegion *mStrokeRegion;
-    NSHashTable *mReferenceIdentifiers;
+    int _changeDescriptor;
+    NSHashTable *_referenceIdentifiers;
+    TSTCellRegion *_cellRegion;
+    struct TSUCellCoord _cellID;
+    TSTCellRegion *_strokeRegion;
+    TSKShuffleMapping *_shuffleMapping;
 }
 
-@property (readonly, nonatomic) struct TSUCellCoord cellID; // @synthesize cellID=mCellID;
+@property (nonatomic) struct TSUCellCoord cellID; // @synthesize cellID=_cellID;
 @property (readonly, nonatomic) struct TSUCellRect cellRange;
-@property (readonly, nonatomic) TSTCellRegion *cellRegion; // @synthesize cellRegion=mCellRegion;
-@property (readonly, nonatomic) int changeDescriptor; // @synthesize changeDescriptor=mChangeDescriptor;
-@property (readonly, nonatomic) NSHashTable *referenceIdentifiers; // @synthesize referenceIdentifiers=mReferenceIdentifiers;
+@property (strong, nonatomic) TSTCellRegion *cellRegion; // @synthesize cellRegion=_cellRegion;
+@property (nonatomic) int changeDescriptor; // @synthesize changeDescriptor=_changeDescriptor;
+@property (strong, nonatomic) NSHashTable *referenceIdentifiers; // @synthesize referenceIdentifiers=_referenceIdentifiers;
+@property (strong, nonatomic) TSKShuffleMapping *shuffleMapping; // @synthesize shuffleMapping=_shuffleMapping;
 @property (readonly, nonatomic) struct TSUCellRect strokeRange;
-@property (readonly, nonatomic) TSTCellRegion *strokeRegion; // @synthesize strokeRegion=mStrokeRegion;
+@property (strong, nonatomic) TSTCellRegion *strokeRegion; // @synthesize strokeRegion=_strokeRegion;
 
 + (id)changeDescriptorWithType:(int)arg1;
 + (id)changeDescriptorWithType:(int)arg1 cellID:(struct TSUCellCoord)arg2 cellRange:(struct TSUCellRect)arg3;
@@ -36,11 +38,12 @@ __attribute__((visibility("hidden")))
 + (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2;
 + (id)changeDescriptorWithType:(int)arg1 cellRegion:(id)arg2 strokeRegion:(id)arg3;
 + (id)changeDescriptorWithType:(int)arg1 referenceIdentifiers:(id)arg2;
++ (id)changeDescriptorWithType:(int)arg1 shuffleMapping:(id)arg2;
 + (id)changeDescriptorWithType:(int)arg1 strokeRange:(struct TSUCellRect)arg2;
 + (id)changeDescriptorWithType:(int)arg1 strokeRegion:(id)arg2;
 + (void)enumerateChangeRecords:(id)arg1 withType:(int)arg2 block:(CDUnknownBlockType)arg3;
-- (void)dealloc;
-- (id)initWithChangeDescriptorType:(int)arg1 andCellRegion:(id)arg2 andCellID:(struct TSUCellCoord)arg3 andStrokeRegion:(id)arg4 andReferenceIdentifiers:(id)arg5;
+- (void).cxx_destruct;
+- (id)initWithChangeDescriptorType:(int)arg1 cellRegion:(id)arg2 cellID:(struct TSUCellCoord)arg3 strokeRegion:(id)arg4 referenceIdentifiers:(id)arg5 shuffleMapping:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -8,23 +8,28 @@
 
 #import <TelephonyUtilities/TUVideoDeviceControllerProviderDelegate-Protocol.h>
 
-@class AVCaptureDevice, CALayer, NSArray;
-@protocol OS_dispatch_queue, TUVideoDeviceControllerProvider;
+@class AVCaptureDevice, CALayer, NSArray, TUVideoEffect;
+@protocol OS_dispatch_queue, TUVideoDeviceControllerProvider><TUVideoEffectsProvider;
 
 @interface TUVideoDeviceController : NSObject <TUVideoDeviceControllerProviderDelegate>
 {
     BOOL _wantsPreview;
+    BOOL _hasRefreshedPreviewAfterError;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    id<TUVideoDeviceControllerProvider> _provider;
+    id<TUVideoDeviceControllerProvider><TUVideoEffectsProvider> _provider;
 }
 
+@property (readonly, copy, nonatomic) NSArray *availableVideoEffects;
 @property (strong, nonatomic) AVCaptureDevice *currentInputDevice;
+@property (strong, nonatomic) TUVideoEffect *currentVideoEffect;
 @property (nonatomic) int currentVideoOrientation;
+@property (nonatomic) BOOL hasRefreshedPreviewAfterError; // @synthesize hasRefreshedPreviewAfterError=_hasRefreshedPreviewAfterError;
 @property (readonly, copy, nonatomic) NSArray *inputDevices;
 @property (strong, nonatomic) CALayer *localBackLayer;
 @property (strong, nonatomic) CALayer *localFrontLayer;
+@property (readonly, nonatomic) struct CGRect localScreenContentsRect;
 @property (readonly, nonatomic, getter=isPreviewRunning) BOOL previewRunning;
-@property (readonly, nonatomic) id<TUVideoDeviceControllerProvider> provider; // @synthesize provider=_provider;
+@property (readonly, nonatomic) id<TUVideoDeviceControllerProvider><TUVideoEffectsProvider> provider; // @synthesize provider=_provider;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (nonatomic) BOOL wantsPreview; // @synthesize wantsPreview=_wantsPreview;
 

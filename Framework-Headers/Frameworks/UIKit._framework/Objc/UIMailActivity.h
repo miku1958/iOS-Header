@@ -4,16 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <UIKitCore/UIActivity.h>
 
-#import <UIKit/UIManagedConfigurationRestrictableActivity-Protocol.h>
-#import <UIKit/UIStateRestoring-Protocol.h>
+#import <UIKitCore/UIManagedConfigurationRestrictableActivity-Protocol.h>
+#import <UIKitCore/UIStateRestoring-Protocol.h>
 
 @class MFMailComposeViewController, NSString;
 @protocol UIStateRestoring;
 
 @interface UIMailActivity : UIActivity <UIStateRestoring, UIManagedConfigurationRestrictableActivity>
 {
+    struct os_unfair_lock_s _canSendMailLock;
+    BOOL _canSendMailChecked;
+    struct {
+        unsigned int _hasManagedAccounts:1;
+        unsigned int _hasUnmanagedAccounts:1;
+    } _canSendMail;
     BOOL _sourceIsManaged;
     BOOL _keyboardVisible;
     BOOL _hasAnyAccount;
@@ -43,7 +49,9 @@
 + (long long)activityCategory;
 + (id)applicationBundleID;
 - (void).cxx_destruct;
+- (CDUnknownBlockType)_backgroundPreheatBlock;
 - (id)_bundleIdentifierForActivityImageCreation;
+- (CDStruct_d7010776)_checkCanSendMail;
 - (void)_cleanup;
 - (void)_deleteMailDraftIdentifierRestorationArchive:(id)arg1;
 - (id)_mailDraftRestorationURL;

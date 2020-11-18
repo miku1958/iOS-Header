@@ -6,45 +6,67 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <StoreKit/SKUIRedeemCameraViewControllerDelegate-Protocol.h>
+#import <StoreKit/SKUIRedeemViewCameraOverrideDelegate-Protocol.h>
 
-@class NSString, NSURL, SKInvocationQueueProxy, SKRemoteAccountPageViewController, _UIAsyncInvocation;
+@class ACAccount, NSString, NSURL, SKInvocationQueueProxy, SKRemoteAccountPageViewController, _UIAsyncInvocation;
 @protocol SKAccountPageViewControllerDelegate, SKUIServiceAccountPageViewController;
 
-@interface SKAccountPageViewController : UIViewController <SKUIRedeemCameraViewControllerDelegate>
+@interface SKAccountPageViewController : UIViewController <SKUIRedeemViewCameraOverrideDelegate>
 {
     NSURL *_accountURL;
     _UIAsyncInvocation *_cancelRequest;
-    id<SKAccountPageViewControllerDelegate> _delegate;
     CDUnknownBlockType _prepareBlock;
+    CDUnknownBlockType _loadBlock;
     SKRemoteAccountPageViewController *_remoteViewController;
     SKInvocationQueueProxy<SKUIServiceAccountPageViewController> *_serviceProxy;
     BOOL _isRemoteViewControllerReady;
     BOOL _cameraDidShow;
+    BOOL _viewHasAppeared;
+    BOOL _isRemoteViewControllerSetup;
     CDUnknownBlockType redeemCompletionHandler;
+    BOOL _loadFromBridgedNavigation;
+    id<SKAccountPageViewControllerDelegate> _delegate;
+    ACAccount *_account;
+    SKAccountPageViewController *_preWarmedViewController;
 }
 
+@property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<SKAccountPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<SKAccountPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL loadFromBridgedNavigation; // @synthesize loadFromBridgedNavigation=_loadFromBridgedNavigation;
+@property (strong, nonatomic) SKAccountPageViewController *preWarmedViewController; // @synthesize preWarmedViewController=_preWarmedViewController;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_addRemoteView;
+- (void)_bridgedRightButtonPressed:(id)arg1;
+- (void)_didFinishLoading;
 - (void)_didPrepareWithResult:(BOOL)arg1 error:(id)arg2;
 - (void)_dismissViewControllerWithResult:(BOOL)arg1 error:(id)arg2;
+- (void)_financeInterruptionResolved:(BOOL)arg1;
+- (unsigned long long)_indexForFirstBridgedNavigationViewController;
 - (void)_overrideCreditCardPresentationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_overrideRedeemCameraWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_popAllBridgedNavigationViewControllers;
+- (void)_popBridgedViewControllersToIndex:(unsigned long long)arg1;
+- (void)_pushBridgedViewControllerAnimated:(BOOL)arg1 options:(id)arg2;
 - (void)_requestRemoteViewController;
+- (void)_setBridgedNavigationItemWithOptions:(id)arg1;
+- (void)_setupPreWarmedViewController;
+- (void)_setupRemoteViewController:(BOOL)arg1;
 - (void)_sk_applicationDidEnterBackground:(id)arg1;
 - (void)_sk_applicationWillEnterForeground:(id)arg1;
 - (void)dealloc;
 - (id)initWithAccountURL:(id)arg1;
 - (void)loadView;
+- (void)loadWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)overrideRedeemOperationWithCode:(id)arg1 cameraRecognized:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)prepareWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)redeemCameraViewController:(id)arg1 didFinishWithRedeem:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

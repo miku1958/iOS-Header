@@ -6,10 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer, NSString, UIColor, _AdjustableLabel;
+@class CAGradientLayer, CLKDevice, NSString, UIColor, _AdjustableLabel;
 
 @interface NTKVictoryDigitsView : UIView
 {
+    CLKDevice *_device;
     _AdjustableLabel *_mainLabel;
     _AdjustableLabel *_outlineBackgroundLabel;
     BOOL _hasSetAppearance;
@@ -25,11 +26,11 @@
 @property (copy, nonatomic) NSString *digitText;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
-+ (id)_cachedFontForAppearance:(long long)arg1;
++ (id)_cachedFontForAppearance:(long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (id)_makeLabel;
 - (void)_updateFonts;
-- (id)init;
+- (id)initForDevice:(id)arg1;
 - (void)layoutSubviews;
 - (void)prepareAppearance:(long long)arg1;
 - (void)setDimmingFactor:(double)arg1 isUpper:(BOOL)arg2;

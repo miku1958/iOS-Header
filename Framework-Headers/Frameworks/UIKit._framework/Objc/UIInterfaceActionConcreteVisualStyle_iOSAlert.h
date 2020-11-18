@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInterfaceActionConcreteVisualStyle_iOS.h>
+#import <UIKitCore/UIInterfaceActionConcreteVisualStyle_iOS.h>
 
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionConcreteVisualStyle_iOSAlert : UIInterfaceActionConcreteVisualStyle_iOS

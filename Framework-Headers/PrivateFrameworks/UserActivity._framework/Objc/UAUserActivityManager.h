@@ -68,6 +68,7 @@
 - (void)makeInactive:(id)arg1;
 - (void)markUserActivityAsDirty:(id)arg1 forceImmediate:(BOOL)arg2;
 - (void)pinUserActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)registerAsProxyForApplication:(int)arg1 options:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)registerForApplicationDeactivateIfNecessary;
 - (void)removeDynamicUserActivity:(id)arg1 matching:(id)arg2;
 - (void)removeUserActivity:(id)arg1;

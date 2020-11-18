@@ -20,7 +20,7 @@
 @property (readonly, nonatomic) NTKDateComplication *complication; // @dynamic complication;
 @property (readonly, weak, nonatomic) id<NTKDateComplicationDisplay> legacyDisplay; // @dynamic legacyDisplay;
 
-+ (BOOL)_acceptsComplicationType:(unsigned long long)arg1;
++ (BOOL)_acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)_textForDate:(id)arg1 dateStyle:(unsigned long long)arg2;
 + (id)textForDateStyle:(unsigned long long)arg1;
 - (void).cxx_destruct;

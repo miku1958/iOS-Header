@@ -23,6 +23,7 @@
         BOOL respondsToAssetExplorerReviewScreenBadgeSizeForItemAtIndexPath;
         BOOL respondsToShouldShowPlayButtonForItemAtIndexPath;
         BOOL respondsToShouldShowProgressIndicatorForItemAtIndexPath;
+        BOOL respondsToShouldMoveProgressIndicatorForItemAtIndexPath;
         BOOL respondsToShouldShowBufferingIndicatorForItemAtIndexPath;
         BOOL respondsToLoadingIndicatorSizeForItemAtIndexPath;
         BOOL respondsToModelTileTransformForItemAtIndexPath;
@@ -32,16 +33,22 @@
         BOOL respondsToMinimumVisibleAccessoryHeightForItemAtIndexPath;
         BOOL respondsToShouldShowVideoPlaceholderForItemAtIndexPath;
         BOOL respondsToDisableInitialZoomToFillForItemAtIndexPath;
+        BOOL respondsToShouldShowReviewScreenScrubberBar;
+        BOOL respondsToAlphaForReviewScreenBarsInLayout;
     } _delegateFlags;
     NSMutableDictionary *_layoutInfosByIndexPathByTileKind;
     BOOL _useBackgroundTile;
     BOOL _useBadgeTiles;
     BOOL _useAssetExplorerReviewScreenBadgeTiles;
-    BOOL _useAssetExplorerReviewScreenSelectionIndicatorTiles;
+    BOOL _useSelectionIndicatorTiles;
+    BOOL _useImportStatusIndicatorTiles;
+    BOOL _useReviewScreenBars;
+    BOOL _useVerticalReviewScreenControlBarLayout;
     BOOL _canDisplayLoadingIndicators;
     BOOL _useUserTransformTiles;
     BOOL _shouldPinContentToTop;
     id<PUOneUpTilingLayoutDelegate> _delegate;
+    long long _windowInterfaceOrientation;
     long long _tileInitialContentMode;
     UITraitCollection *_traitCollection;
     PUParallaxComputer *_parallaxComputer;
@@ -72,10 +79,14 @@
 @property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (readonly, nonatomic) double transitionProgress; // @synthesize transitionProgress=_transitionProgress;
 @property (nonatomic) BOOL useAssetExplorerReviewScreenBadgeTiles; // @synthesize useAssetExplorerReviewScreenBadgeTiles=_useAssetExplorerReviewScreenBadgeTiles;
-@property (nonatomic) BOOL useAssetExplorerReviewScreenSelectionIndicatorTiles; // @synthesize useAssetExplorerReviewScreenSelectionIndicatorTiles=_useAssetExplorerReviewScreenSelectionIndicatorTiles;
 @property (nonatomic) BOOL useBackgroundTile; // @synthesize useBackgroundTile=_useBackgroundTile;
 @property (nonatomic) BOOL useBadgeTiles; // @synthesize useBadgeTiles=_useBadgeTiles;
+@property (nonatomic) BOOL useImportStatusIndicatorTiles; // @synthesize useImportStatusIndicatorTiles=_useImportStatusIndicatorTiles;
+@property (nonatomic) BOOL useReviewScreenBars; // @synthesize useReviewScreenBars=_useReviewScreenBars;
+@property (nonatomic) BOOL useSelectionIndicatorTiles; // @synthesize useSelectionIndicatorTiles=_useSelectionIndicatorTiles;
 @property (nonatomic) BOOL useUserTransformTiles; // @synthesize useUserTransformTiles=_useUserTransformTiles;
+@property (nonatomic) BOOL useVerticalReviewScreenControlBarLayout; // @synthesize useVerticalReviewScreenControlBarLayout=_useVerticalReviewScreenControlBarLayout;
+@property (nonatomic) long long windowInterfaceOrientation; // @synthesize windowInterfaceOrientation=_windowInterfaceOrientation;
 
 + (id)centerTileKinds;
 + (void)initialize;
@@ -106,6 +117,7 @@
 - (void)invalidateLayoutWithContext:(id)arg1;
 - (void)invalidateLoadingIndicatorForItemAtIndexPath:(id)arg1;
 - (void)invalidateModelTileTransformForItemAtIndexPath:(id)arg1;
+- (void)invalidateProgressIndicatorForItemAtIndexPath:(id)arg1;
 - (void)invalidateVideoPlaceholderForItemAtIndexPath:(id)arg1;
 - (id)layoutInfoForTileWithIndexPath:(id)arg1 kind:(id)arg2;
 - (id)preferredScrollInfo;

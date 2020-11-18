@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCondition;
 
+__attribute__((visibility("hidden")))
 @interface AVEventWaiter : NSObject
 {
     NSCondition *_condition;

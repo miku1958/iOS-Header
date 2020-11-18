@@ -12,12 +12,12 @@
 
 @interface AARequest : NSObject <NSURLSessionDataDelegate>
 {
+    CDUnknownBlockType _handler;
     NSString *_initialURLString;
     BOOL _flushCache;
     struct OpaqueCFHTTPCookieStorage *_cookieStorage;
     NSString *_oneTimePassword;
     NSString *_machineId;
-    CDUnknownBlockType _handler;
     NSDictionary *_customHeaders;
 }
 

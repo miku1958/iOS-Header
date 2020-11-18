@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityControlCenterButtonIdentifier;
+- (BOOL)_accessibilityControlCenterButtonIsToggle;
 - (id)_accessibilityControlCenterButtonLabel;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)viewDidLoad;

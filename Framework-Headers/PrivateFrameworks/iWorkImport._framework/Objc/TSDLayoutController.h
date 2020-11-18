@@ -4,25 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableSet, TSDCanvas, TSDLayout, TSDRootLayout;
+@class NSMapTable, NSMutableSet, TSDCanvas, TSDLayout, TSDRootLayout;
 
 __attribute__((visibility("hidden")))
 @interface TSDLayoutController : NSObject
 {
-    TSDCanvas *mCanvas;
-    TSDRootLayout *mRootLayout;
-    struct __CFDictionary *mLayoutsByInfo;
-    NSMutableSet *mInvalidLayouts;
-    NSMutableSet *mLayoutsNeedingRecreating;
-    NSMutableSet *mInvalidChildrenLayouts;
-    TSDLayout *mValidatingLayout;
+    TSDCanvas *_canvas;
+    TSDRootLayout *_rootLayout;
+    NSMapTable *_layoutsByInfo;
+    NSMutableSet *_invalidLayouts;
+    NSMutableSet *_layoutsNeedingRecreating;
+    NSMutableSet *_invalidChildrenLayouts;
+    TSDLayout *_validatingLayout;
 }
+
+@property (readonly, weak, nonatomic) TSDCanvas *canvas; // @synthesize canvas=_canvas;
+@property (readonly, nonatomic) struct CGRect rectOfTopLevelLayouts;
+@property (readonly, nonatomic) TSDRootLayout *rootLayout; // @synthesize rootLayout=_rootLayout;
 
 + (id)allInteractiveLayoutControllers;
 + (void)temporaryLayoutControllerForInfos:(id)arg1 useInBlock:(CDUnknownBlockType)arg2;
-- (id)canvas;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)i_registerLayout:(id)arg1;
 - (void)i_removeAllLayouts;
@@ -37,10 +41,9 @@ __attribute__((visibility("hidden")))
 - (id)layoutsForInfo:(id)arg1;
 - (id)layoutsForInfos:(id)arg1;
 - (id)layoutsInRect:(struct CGRect)arg1;
+- (id)layoutsInRect:(struct CGRect)arg1 deep:(BOOL)arg2;
 - (void)notifyThatLayoutsChangedOutsideOfLayout;
 - (void)p_recreateLayoutsIfNeededToValidateLayouts:(id)arg1;
-- (struct CGRect)rectOfTopLevelLayouts;
-- (id)rootLayout;
 - (void)setInfos:(id)arg1;
 - (id)sortLayoutsForDependencies:(id)arg1;
 - (void)validateLayoutWithDependencies:(id)arg1;

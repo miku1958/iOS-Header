@@ -39,7 +39,8 @@
 - (void)dealloc;
 - (void)didBecomeHiddenAnimated:(BOOL)arg1;
 - (void)didBecomeVisibleAnimated:(BOOL)arg1;
-- (id)initWithStyle:(long long)arg1 pass:(id)arg2;
+- (id)init;
+- (id)initWithPass:(id)arg1;
 - (void)invalidate;
 - (void)layoutSubviews;
 - (void)willBecomeHiddenAnimated:(BOOL)arg1;

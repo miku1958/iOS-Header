@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface MFObservable : NSObject
 {
@@ -38,6 +38,7 @@
 - (id)filter:(CDUnknownBlockType)arg1;
 - (id)first;
 - (id)map:(CDUnknownBlockType)arg1;
+- (id)multicast:(id)arg1;
 - (id)observeOn:(id)arg1;
 - (id)publish;
 - (id)replay;

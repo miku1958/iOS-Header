@@ -14,8 +14,8 @@
     NSMutableSet *_visitsPendingWriteToDataStore;
     long long _databaseID;
     unsigned long long _visitCount;
-    Vector_c7837a24 _dailyVisitCountScores;
-    Vector_c7837a24 _weeklyVisitCountScores;
+    Vector_3b5d2a9f _dailyVisitCountScores;
+    Vector_3b5d2a9f _weeklyVisitCountScores;
     NSMutableArray *_redirectSourceItems;
     NSMutableArray *_autocompleteTriggers;
     NSMutableArray *_visits;
@@ -76,9 +76,9 @@
 - (id)_autocompleteTriggersFromSynchronizationQueue;
 - (void)_collapseDailyVisitsToWeekly;
 - (void)_padDailyCountsForNewVisitAtTime:(double)arg1 indexOfNewVisit:(int *)arg2;
-- (Vector_7b793afa)_timesForSynthesizedVisitsPreceedingDailyAndWeeklyRange:(unsigned long long)arg1;
-- (Vector_7b793afa)_timesForVisits:(unsigned long long)arg1 toSynthesizeBetweenStartTime:(double)arg2 endTime:(double)arg3;
-- (Vector_7b793afa)_timesOfVisitsToSynthesizeFromDailyCounts:(const Vector_c7837a24 *)arg1 weeklyCounts:(const Vector_c7837a24 *)arg2;
+- (Vector_23cb8338)_timesForSynthesizedVisitsPreceedingDailyAndWeeklyRange:(unsigned long long)arg1;
+- (Vector_23cb8338)_timesForVisits:(unsigned long long)arg1 toSynthesizeBetweenStartTime:(double)arg2 endTime:(double)arg3;
+- (Vector_23cb8338)_timesOfVisitsToSynthesizeFromDailyCounts:(const Vector_3b5d2a9f *)arg1 weeklyCounts:(const Vector_3b5d2a9f *)arg2;
 - (void)_wasVisitedOnSynchronizationQueue:(id)arg1;
 - (BOOL)addAutocompleteTrigger:(id)arg1;
 - (void)addRedirectSourceItemFromSynchronizationQueue:(id)arg1;

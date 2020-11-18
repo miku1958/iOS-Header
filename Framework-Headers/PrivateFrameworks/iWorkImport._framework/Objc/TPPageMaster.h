@@ -68,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isHeaderFooterEmpty:(long long)arg1 fragmentAtIndex:(long long)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)masterDrawablesSortedByZOrder:(id)arg1;
+- (id)objectUUIDPath;
 - (double)pHeightOfHeaderFooter:(long long)arg1;
 - (void)p_filterParagraphStylesOnHeaderFooterStorage:(id)arg1 stylesheet:(id)arg2;
 - (id)p_headerAndFooterStorages;

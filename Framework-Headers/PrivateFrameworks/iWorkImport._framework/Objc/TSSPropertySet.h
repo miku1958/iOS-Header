@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -21,11 +21,11 @@ __attribute__((visibility("hidden")))
 + (id)propertySetWithArray:(id)arg1;
 + (id)propertySetWithProperties:(int)arg1;
 + (id)propertySetWithProperty:(int)arg1;
+- (void).cxx_destruct;
 - (BOOL)containsProperties:(id)arg1;
 - (BOOL)containsProperty:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
-- (void)dealloc;
 - (id)description;
 - (void)enumeratePropertiesUsingBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;

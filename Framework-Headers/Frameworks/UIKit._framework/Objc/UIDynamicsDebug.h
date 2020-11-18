@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/GLKViewDelegate-Protocol.h>
+#import <UIKitCore/GLKViewDelegate-Protocol.h>
 
 @class EAGLContext, GLKBaseEffect, GLKView, MISSING_TYPE, NSString, UIDynamicAnimator;
 

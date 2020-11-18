@@ -6,19 +6,24 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSMutableArray;
+@class NSArray, NSMutableArray, NSString;
 
 @interface PXPeopleNamePickerResultsTableViewController : UITableViewController
 {
+    NSString *_personLocalIdentifier;
     NSMutableArray *_items;
+    NSArray *_suggestedContacts;
 }
 
-@property (readonly, nonatomic) BOOL hasResuls;
+@property (readonly, nonatomic) BOOL hasResults;
 @property (strong) NSMutableArray *items; // @synthesize items=_items;
+@property (strong) NSString *personLocalIdentifier; // @synthesize personLocalIdentifier=_personLocalIdentifier;
+@property (strong) NSArray *suggestedContacts; // @synthesize suggestedContacts=_suggestedContacts;
 
 - (void).cxx_destruct;
 - (id)contactAtIndexPath:(id)arg1;
 - (id)initWithStyle:(long long)arg1;
+- (id)initWithStyle:(long long)arg1 personLocalIdentifier:(id)arg2 suggestedContacts:(id)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)personAtIndexPath:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSBundle, NSString;
 
@@ -19,18 +19,18 @@
     Class _principalClass;
 }
 
-@property (readonly, strong, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
+@property (readonly, nonatomic) NSBundle *bundle; // @synthesize bundle=_bundle;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic, getter=isLoaded) BOOL loaded; // @dynamic loaded;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, strong, nonatomic) Class principalClass; // @synthesize principalClass=_principalClass;
+@property (readonly, nonatomic) Class principalClass; // @synthesize principalClass=_principalClass;
 @property (copy, nonatomic) NSString *requiredClassOrProtocolName; // @synthesize requiredClassOrProtocolName=_requiredClassOrProtocolName;
 @property (copy, nonatomic) NSString *specifiedClassName; // @synthesize specifiedClassName=_specifiedClassName;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (readonly, nonatomic, getter=isValid) BOOL valid; // @dynamic valid;
 
 + (id)bundleWithPath:(id)arg1 availableSpecifications:(id)arg2;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

@@ -12,6 +12,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType block;
 
++ (BOOL)supportsSecureCoding;
 - (id)_descriptionClassName;
 - (void)_initialize;
 - (CDUnknownBlockType)batchBlock;

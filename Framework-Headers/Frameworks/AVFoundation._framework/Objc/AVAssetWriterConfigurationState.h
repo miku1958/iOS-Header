@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVMediaFileType, NSArray, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterConfigurationState : NSObject
 {
     NSURL *_URL;

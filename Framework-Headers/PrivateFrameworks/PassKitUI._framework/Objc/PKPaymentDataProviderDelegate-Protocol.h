@@ -6,13 +6,14 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSString, PKFelicaPassProperties, PKPaymentTransaction, PKTransitPassProperties;
+@class NSSet, NSString, PKFelicaPassProperties, PKPaymentTransaction, PKTransitPassProperties;
 
 @protocol PKPaymentDataProviderDelegate <NSObject>
 
 @optional
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didEnableMessageService:(BOOL)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didEnableTransactionService:(BOOL)arg2;
+- (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didReceiveBalanceUpdate:(NSSet *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didReceiveTransaction:(PKPaymentTransaction *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didRemoveTransactionWithIdentifier:(NSString *)arg2;
 - (void)paymentPassWithUniqueIdentifier:(NSString *)arg1 didUpdateWithFelicaPassProperties:(PKFelicaPassProperties *)arg2;

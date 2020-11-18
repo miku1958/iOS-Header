@@ -11,14 +11,14 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAssistantAccessControl, HMFPairingIdentity, HMHome, HMHomeAccessControl, HMThreadSafeMutableArrayCollection, NSString, NSUUID, _HMContext;
+@class HMAssistantAccessControl, HMFPairingIdentity, HMFUnfairLock, HMHome, HMHomeAccessControl, HMMutableArray, NSString, NSUUID, _HMContext;
 @protocol HMUserDelegatePrivate, OS_dispatch_queue;
 
 @interface HMUser : NSObject <HMFLogging, HMFMessageReceiver, NSSecureCoding, HMObjectMerge>
 {
-    HMThreadSafeMutableArrayCollection *_pendingAccessoryInvitations;
+    HMFUnfairLock *_lock;
+    HMMutableArray *_pendingAccessoryInvitations;
     BOOL _currentUser;
-    _HMContext *_context;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     HMHomeAccessControl *_homeAccessControl;
@@ -26,13 +26,12 @@
     NSString *_userID;
     HMHome *_home;
     HMFPairingIdentity *_pairingIdentity;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    _HMContext *_context;
     id<HMUserDelegatePrivate> _delegate;
     NSUUID *_uuid;
 }
 
 @property (copy) HMAssistantAccessControl *assistantAccessControl; // @synthesize assistantAccessControl=_assistantAccessControl;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue;
 @property (strong) _HMContext *context; // @synthesize context=_context;
 @property (nonatomic, getter=isCurrentUser) BOOL currentUser; // @synthesize currentUser=_currentUser;
 @property (readonly, copy) NSString *debugDescription;
@@ -45,7 +44,6 @@
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (copy, nonatomic) NSString *userID; // @synthesize userID=_userID;
@@ -54,7 +52,7 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_configureWith:(id)arg1 context:(id)arg2;
+- (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (id)_filterAccessoryInvitationsFromOutgoingInvitation:(id)arg1;
 - (void)_handleUpdatedAssistantAccessControl:(id)arg1;
 - (BOOL)_mergeWithNewAccessoryInvitations:(id)arg1 operations:(id)arg2;
@@ -71,6 +69,7 @@
 - (id)logIdentifier;
 - (BOOL)mergePendingAccessoryInvitationsWithOutgoingInvitation:(id)arg1 operations:(id)arg2;
 - (id)messageDestination;
+- (void)pairingIdentityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)pendingAccessoryInvitations;
 - (void)setPendingAccessoryInvitationsWithOutgoingInvitation:(id)arg1;
 - (void)updateAssistantAccessControl:(id)arg1 forHome:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

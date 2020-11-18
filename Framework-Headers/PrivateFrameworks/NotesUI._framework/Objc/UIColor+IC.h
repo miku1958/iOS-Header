@@ -7,6 +7,7 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (IC)
++ (struct UIColor *)ICAccountHeaderLabelColor;
 + (struct UIColor *)ICActiveTintedSelectionColor;
 + (id)ICDarkenedTintColor;
 + (struct UIColor *)ICDrawingToolsBottomMarginColor;

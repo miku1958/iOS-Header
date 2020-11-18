@@ -15,8 +15,8 @@
 {
     BOOL _profileOffersReenroll;
     BOOL _profileRemovable;
-    int _profileViewMode;
     id<MCProfileViewControllerDelegate> _profileViewControllerDelegate;
+    long long _profileViewMode;
     MCUIProfile *_UIProfile;
 }
 
@@ -27,7 +27,7 @@
 @property (nonatomic) BOOL profileOffersReenroll; // @synthesize profileOffersReenroll=_profileOffersReenroll;
 @property (nonatomic) BOOL profileRemovable; // @synthesize profileRemovable=_profileRemovable;
 @property (weak, nonatomic) id<MCProfileViewControllerDelegate> profileViewControllerDelegate; // @synthesize profileViewControllerDelegate=_profileViewControllerDelegate;
-@property (nonatomic) int profileViewMode; // @synthesize profileViewMode=_profileViewMode;
+@property (nonatomic) long long profileViewMode; // @synthesize profileViewMode=_profileViewMode;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -42,7 +42,7 @@
 - (void)dealloc;
 - (void)didReceiveMemoryWarning;
 - (id)initWithStyle:(long long)arg1;
-- (id)initWithStyle:(long long)arg1 profile:(id)arg2 profileViewMode:(int)arg3;
+- (id)initWithStyle:(long long)arg1 profile:(id)arg2 profileViewMode:(long long)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)setProfile:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

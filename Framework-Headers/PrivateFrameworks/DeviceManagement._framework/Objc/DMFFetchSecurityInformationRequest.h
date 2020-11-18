@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSArray;
 
-@interface DMFFetchSecurityInformationRequest : CATTaskRequest
+@interface DMFFetchSecurityInformationRequest : DMFTaskRequest
 {
     NSArray *_infoKeys;
 }
@@ -18,7 +18,10 @@
 + (id)allPlatformSecurityInfoKeys;
 + (id)currentPlatformSecurityInfoKeys;
 + (id)iOSSecurityInfoKeys;
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
 + (id)macOSSecurityInfoKeys;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (id)tvOSSecurityInfoKeys;
 + (id)watchOSSecurityInfoKeys;

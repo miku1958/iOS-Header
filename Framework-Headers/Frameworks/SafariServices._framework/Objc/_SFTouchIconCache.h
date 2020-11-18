@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 + (id)defaultBackgroundColor;
 + (id)defaultFavoritesIcon;
 - (id)_operationWithRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)canHandleRequest:(id)arg1;
 
 @end
 

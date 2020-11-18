@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSSignal, NSArray;
 @protocol OS_dispatch_queue, OS_xpc_object;
@@ -38,6 +38,7 @@
 - (unsigned int)applicationStateForApplication:(id)arg1;
 - (id)bundleInfoValueForKey:(id)arg1 PID:(int)arg2;
 - (void)dealloc;
+- (id)dumpDescriptionForSubsystem:(id)arg1;
 - (id)init;
 - (id)initWithBundleIDs:(id)arg1 states:(unsigned int)arg2;
 - (id)initWithBundleIDs:(id)arg1 states:(unsigned int)arg2 elevatedPriority:(BOOL)arg3;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSXPCConnectionDelegate-Protocol.h>
-#import <UIKit/_UIViewServiceDeputyManagerDelegate-Protocol.h>
-#import <UIKit/_UIViewServiceViewControllerOperatorDelegate-Protocol.h>
+#import <UIKitCore/NSXPCConnectionDelegate-Protocol.h>
+#import <UIKitCore/_UIViewServiceDeputyManagerDelegate-Protocol.h>
+#import <UIKitCore/_UIViewServiceViewControllerOperatorDelegate-Protocol.h>
 
 @class NSString, NSXPCConnection, _UIAsyncInvocation, _UIViewServiceDeputyManager;
 @protocol OS_dispatch_queue;

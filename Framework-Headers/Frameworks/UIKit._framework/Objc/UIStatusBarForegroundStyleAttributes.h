@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 @class NSMutableDictionary, NSString, UIColor;
 
@@ -55,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (void)drawTextInRect:(struct CGRect)arg1 withColor:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (struct UIEdgeInsets)edgeInsetsForBatteryInsides;
 - (struct UIEdgeInsets)edgeInsetsForBluetoothBatteryInsides;
-- (double)edgePadding;
 - (id)expandedNameForImageName:(id)arg1;
 - (id)generateUniqueIdentifier;
 - (double)height;
@@ -67,11 +66,12 @@ __attribute__((visibility("hidden")))
 - (id)imageWithText:(id)arg1 ofItemType:(int)arg2 forWidth:(double)arg3 lineBreakMode:(long long)arg4 letterSpacing:(double)arg5 textAlignment:(long long)arg6 style:(long long)arg7 withLegibilityStyle:(long long)arg8 legibilityStrength:(double)arg9 shouldCache:(BOOL)arg10;
 - (id)initWithHeight:(double)arg1 legibilityStyle:(long long)arg2 tintColor:(id)arg3 hasBusyBackground:(BOOL)arg4;
 - (id)initWithHeight:(double)arg1 legibilityStyle:(long long)arg2 tintColor:(id)arg3 hasBusyBackground:(BOOL)arg4 idiom:(long long)arg5;
+- (double)leftEdgePadding;
 - (long long)legibilityStyle;
 - (id)makeTextFontForStyle:(long long)arg1;
 - (double)middlePadding;
 - (struct CGPoint)positionForMoonMaskInBounds:(struct CGRect)arg1;
-- (id)proportionalFontForFont:(id)arg1;
+- (double)rightEdgePadding;
 - (double)scale;
 - (id)shadowImageForImage:(id)arg1 withIdentifier:(id)arg2 forStyle:(long long)arg3 withStrength:(double)arg4;
 - (id)shadowImageForImage:(id)arg1 withIdentifier:(id)arg2 forStyle:(long long)arg3 withStrength:(double)arg4 inTempGroup:(id)arg5;

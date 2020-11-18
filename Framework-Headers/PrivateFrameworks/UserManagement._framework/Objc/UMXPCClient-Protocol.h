@@ -10,6 +10,8 @@
 
 @protocol UMXPCClient <NSObject>
 - (void)bubbleDidPop;
+- (void)deviceLoginSessionStateDidUpdate;
+- (void)readyToSwitchToLoginSession:(NSDictionary *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)readyToSwitchToUser:(NSDictionary *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)uploadContentWithCompletionHandler:(void (^)(void))arg1;
 - (void)userSwitchTaskListDidUpdate;

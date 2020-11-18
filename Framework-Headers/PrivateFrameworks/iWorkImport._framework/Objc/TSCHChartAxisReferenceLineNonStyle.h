@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, TSCHChartAxisID;
 
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSCHChartAxisID *axisIdentifier; // @synthesize axisIdentifier=mAxisIdentifier;
 @property (copy, nonatomic) NSArray *referenceLineNonStyleItems; // @synthesize referenceLineNonStyleItems=mReferenceLineNonStyleItems;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)didInitFromSOS;
 
 @end

@@ -6,7 +6,8 @@
 
 #import <MPSNeuralNetwork/MPSCNNKernel.h>
 
-@protocol MPSCNNBatchNormalizationDataSource;
+@class MPSNNNeuronDescriptor;
+@protocol MPSCNNBatchNormalizationDataSource, MTLBuffer;
 
 @interface MPSCNNBatchNormalization : MPSCNNKernel
 {
@@ -16,6 +17,8 @@
     struct MPSAutoBuffer *_varDS;
     id<MPSCNNBatchNormalizationDataSource> _dataSource;
     BOOL _stateNeedsToLoad;
+    MPSNNNeuronDescriptor *_fusedNeuronDescriptor;
+    id<MTLBuffer> _preluBuffer;
     float _epsilon;
     unsigned long long _numberOfFeatureChannels;
 }
@@ -25,18 +28,28 @@
 @property (readonly, nonatomic) unsigned long long numberOfFeatureChannels; // @synthesize numberOfFeatureChannels=_numberOfFeatureChannels;
 
 + (const struct MPSLibraryInfo *)libraryInfo;
+- (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;
 - (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 batchNormalizationState:(id)arg3;
 - (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 batchNormalizationState:(id)arg3 destinationImages:(struct NSArray *)arg4;
+- (void)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 destinationStates:(struct NSArray *)arg3 destinationImages:(struct NSArray *)arg4;
+- (struct NSArray *)encodeBatchToCommandBuffer:(id)arg1 sourceImages:(struct NSArray *)arg2 destinationStates:(struct NSArray **)arg3 destinationStateIsTemporary:(BOOL)arg4;
 - (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 batchNormalizationState:(id)arg3;
 - (void)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 batchNormalizationState:(id)arg3 destinationImage:(id)arg4;
+- (void)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 destinationState:(id)arg3 destinationImage:(id)arg4;
+- (id)encodeToCommandBuffer:(id)arg1 sourceImage:(id)arg2 destinationState:(id *)arg3 destinationStateIsTemporary:(BOOL)arg4;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1 device:(id)arg2;
 - (id)initWithDevice:(id)arg1 dataSource:(id)arg2;
+- (id)initWithDevice:(id)arg1 dataSource:(id)arg2 fusedNeuronDescriptor:(id)arg3;
 - (BOOL)isResultStateReusedAcrossBatch;
 - (void)reloadDataSource:(id)arg1;
+- (void)reloadDataSourceDeprecated:(id)arg1 doReloadWeights:(BOOL)arg2 doReloadStats:(BOOL)arg3;
+- (void)reloadGammaAndBetaFromDataSource;
 - (void)reloadGammaAndBetaWithCommandBuffer:(id)arg1 gammaAndBetaState:(id)arg2;
+- (void)reloadMeanAndVarianceFromDataSource;
+- (void)reloadMeanAndVarianceWithCommandBuffer:(id)arg1 meanAndVarianceState:(id)arg2;
 - (id)resultStateForSourceImage:(id)arg1 sourceStates:(id)arg2 destinationImage:(id)arg3;
 - (id)temporaryResultStateForCommandBuffer:(id)arg1 sourceImage:(id)arg2 sourceStates:(id)arg3 destinationImage:(id)arg4;
 

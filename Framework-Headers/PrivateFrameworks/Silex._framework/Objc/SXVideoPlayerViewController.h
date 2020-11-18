@@ -6,14 +6,17 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <Silex/AVPlayerViewControllerDelegatePrivate-Protocol.h>
 #import <Silex/AVPlayerViewControllerDelegate_WebKitOnly-Protocol.h>
 #import <Silex/SXAutomaticFullscreenVideoPlaybackBehaviorManagerDelegate-Protocol.h>
+#import <Silex/SXVideoAdViewControllerProviding-Protocol.h>
 #import <Silex/SXVideoPlaybackObserver-Protocol.h>
+#import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
-@class AVPlayerViewController, NSString, SXAdPrivacyButton, SXAutomaticFullscreenVideoPlaybackBehaviorManager, SXKeyValueObserver, SXLearnMoreButton, SXPlaybackCoordinator, SXTouchForwardingView, SXVideoAdSkipButton, SXVideoPlaybackQueue, SXVideoVolumeObserver, UIActivityIndicatorView;
-@protocol SXVideoPlayerViewControllerDataSource, SXVideoPlayerViewControllerDelegate, SXVolumeReporting;
+@class AVPlayerViewController, NSString, SVAdPrivacyButton, SVKeyValueObserver, SVLearnMoreButton, SXAutomaticFullscreenVideoPlaybackBehaviorManager, SXPlaybackCoordinator, SXVideoAdSkipButton, SXVideoPlaybackQueue, SXVideoVolumeObserver, UIActivityIndicatorView, UIGestureRecognizer;
+@protocol SVVolumeReporting, SXVideoAdProviding, SXVideoPlayerViewControllerDataSource, SXVideoPlayerViewControllerDelegate;
 
-@interface SXVideoPlayerViewController : UIViewController <SXVideoPlaybackObserver, AVPlayerViewControllerDelegate_WebKitOnly, SXAutomaticFullscreenVideoPlaybackBehaviorManagerDelegate>
+@interface SXVideoPlayerViewController : UIViewController <SXVideoPlaybackObserver, AVPlayerViewControllerDelegate_WebKitOnly, AVPlayerViewControllerDelegatePrivate, SXAutomaticFullscreenVideoPlaybackBehaviorManagerDelegate, UIGestureRecognizerDelegate, SXVideoAdViewControllerProviding>
 {
     BOOL _fullscreen;
     id<SXVideoPlayerViewControllerDelegate> _delegate;
@@ -22,20 +25,21 @@
     unsigned long long _fullscreenBehavior;
     SXVideoPlaybackQueue *_queue;
     SXPlaybackCoordinator *_coordinator;
+    id<SXVideoAdProviding> _videoAd;
     AVPlayerViewController *_playerViewController;
-    SXLearnMoreButton *_learnMoreButton;
+    SVLearnMoreButton *_learnMoreButton;
     SXVideoAdSkipButton *_skipButton;
-    SXAdPrivacyButton *_adPrivacyButton;
+    SVAdPrivacyButton *_adPrivacyButton;
     UIActivityIndicatorView *_activityIndicatorView;
-    SXKeyValueObserver *_videoBoundsObserver;
+    SVKeyValueObserver *_videoBoundsObserver;
     SXAutomaticFullscreenVideoPlaybackBehaviorManager *_fullscreenBehaviorManager;
-    SXTouchForwardingView *_touchForwardingView;
-    id<SXVolumeReporting> _volumeReporter;
+    id<SVVolumeReporting> _volumeReporter;
     SXVideoVolumeObserver *_volumeObserver;
+    UIGestureRecognizer *_tapGesture;
 }
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicatorView; // @synthesize activityIndicatorView=_activityIndicatorView;
-@property (strong, nonatomic) SXAdPrivacyButton *adPrivacyButton; // @synthesize adPrivacyButton=_adPrivacyButton;
+@property (strong, nonatomic) SVAdPrivacyButton *adPrivacyButton; // @synthesize adPrivacyButton=_adPrivacyButton;
 @property (strong, nonatomic) SXPlaybackCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property (weak, nonatomic) id<SXVideoPlayerViewControllerDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
@@ -45,17 +49,19 @@
 @property (nonatomic) unsigned long long fullscreenBehavior; // @synthesize fullscreenBehavior=_fullscreenBehavior;
 @property (readonly, nonatomic) SXAutomaticFullscreenVideoPlaybackBehaviorManager *fullscreenBehaviorManager; // @synthesize fullscreenBehaviorManager=_fullscreenBehaviorManager;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SXLearnMoreButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
+@property (strong, nonatomic) SVLearnMoreButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
 @property (readonly, nonatomic, getter=isPlaying) BOOL playing;
 @property (strong, nonatomic) SXVideoPlaybackQueue *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) SXVideoAdSkipButton *skipButton; // @synthesize skipButton=_skipButton;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) SXTouchForwardingView *touchForwardingView; // @synthesize touchForwardingView=_touchForwardingView;
-@property (strong, nonatomic) SXKeyValueObserver *videoBoundsObserver; // @synthesize videoBoundsObserver=_videoBoundsObserver;
+@property (readonly, nonatomic) UIGestureRecognizer *tapGesture; // @synthesize tapGesture=_tapGesture;
+@property (strong, nonatomic) id<SXVideoAdProviding> videoAd; // @synthesize videoAd=_videoAd;
+@property (strong, nonatomic) SVKeyValueObserver *videoBoundsObserver; // @synthesize videoBoundsObserver=_videoBoundsObserver;
+@property (readonly, nonatomic) UIViewController *viewControllerForModalPresentation;
 @property (strong, nonatomic) SXVideoVolumeObserver *volumeObserver; // @synthesize volumeObserver=_volumeObserver;
-@property (readonly, nonatomic) id<SXVolumeReporting> volumeReporter; // @synthesize volumeReporter=_volumeReporter;
+@property (readonly, nonatomic) id<SVVolumeReporting> volumeReporter; // @synthesize volumeReporter=_volumeReporter;
 
 - (void).cxx_destruct;
 - (void)adPrivacyButtonTapped:(id)arg1;
@@ -66,6 +72,7 @@
 - (void)exitFullscreenWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)finished;
 - (void)fullscreenBehaviorManagerRequiresFullscreenPlayback:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)initWithVolumeReporter:(id)arg1;
 - (void)learnMoreButtonTapped:(id)arg1;
 - (void)loadView;
@@ -81,12 +88,18 @@
 - (void)playbackCoordinatorStateChanged:(id)arg1;
 - (void)playerViewController:(id)arg1 metricsCollectionEventOccured:(long long)arg2;
 - (BOOL)playerViewController:(id)arg1 shouldExitFullScreenWithReason:(long long)arg2;
+- (void)playerViewController:(id)arg1 willBeginFullScreenPresentationWithAnimationCoordinator:(id)arg2;
+- (void)playerViewController:(id)arg1 willEndFullScreenPresentationWithAnimationCoordinator:(id)arg2;
+- (void)playerViewController:(id)arg1 willTransitionToVisibilityOfPlaybackControls:(BOOL)arg2 withAnimationCoordinator:(id)arg3;
 - (void)refreshControlsForPlaybackCoordinator:(id)arg1;
 - (void)setupQueueIfNeeded;
 - (void)startPlaybackForCoordinatorIfAllowed:(id)arg1;
+- (void)tapped;
 - (void)transitionToCoordinator:(id)arg1;
 - (void)updateSkipButtonWithThreshold:(unsigned long long)arg1 time:(double)arg2;
 - (void)updateViewConstraints;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

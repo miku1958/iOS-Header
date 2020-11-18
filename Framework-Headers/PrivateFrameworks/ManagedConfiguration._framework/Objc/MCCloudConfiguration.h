@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSDictionary;
 @protocol OS_dispatch_queue;
@@ -35,6 +35,7 @@
 - (id)provisionalEnrollmentExpirationDate;
 - (void)refreshDetailsFromDisk;
 - (id)region;
+- (id)tvProviderUserToken;
 - (int)userMode;
 
 @end

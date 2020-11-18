@@ -26,11 +26,10 @@ __attribute__((visibility("hidden")))
 + (Class)archivedSelectionClass;
 + (id)emptySelectionWithChartInfo:(id)arg1;
 + (id)selectionWithChartInfo:(id)arg1 paths:(id)arg2;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initFromArchive:(const struct ChartSelectionArchive *)arg1 unarchiver:(id)arg2;
 - (id)initWithChartInfo:(id)arg1 path:(id)arg2;
 - (id)initWithChartInfo:(id)arg1 paths:(id)arg2;

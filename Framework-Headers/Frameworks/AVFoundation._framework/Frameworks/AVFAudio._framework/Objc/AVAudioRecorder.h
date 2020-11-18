@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFAudio/AVAudioSessionParticipant-Protocol.h>
 
@@ -38,6 +38,7 @@
 - (void)endInterruptionWithFlags;
 - (void)finalize;
 - (void)finishedRecording;
+- (void)handleInterruption:(id)arg1;
 - (struct AudioRecorderImpl *)impl;
 - (id)initWithURL:(id)arg1 format:(id)arg2 error:(id *)arg3;
 - (id)initWithURL:(id)arg1 settings:(id)arg2 error:(id *)arg3;

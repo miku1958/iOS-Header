@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDragGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIInteraction-Protocol.h>
-#import <UIKit/UIInteraction_Internal-Protocol.h>
-#import <UIKit/UISpringLoadedInteractionBehaviorDelegate-Protocol.h>
+#import <UIKitCore/UIDragGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIInteraction-Protocol.h>
+#import <UIKitCore/UIInteraction_Internal-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionBehaviorDelegate-Protocol.h>
 
 @class NSString, UIDelayedAction, UISpringLoadedInteractionContextImpl, UIView;
 @protocol UISpringLoadedInteractionBehavior, UISpringLoadedInteractionEffect;

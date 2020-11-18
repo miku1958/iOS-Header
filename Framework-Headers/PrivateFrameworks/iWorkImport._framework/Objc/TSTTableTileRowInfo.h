@@ -9,29 +9,31 @@
 __attribute__((visibility("hidden")))
 @interface TSTTableTileRowInfo : TSPContainedObject
 {
-    struct __CFData *mStorageBuffer;
-    unsigned short mStorageOffsets[255];
-    unsigned short mBufferSize;
-    unsigned short mTileRowIndex;
-    unsigned short mCellCount;
-    unsigned char mMaxTileColumnIndex;
-    BOOL mMaxTileColumnIndexValid;
-    unsigned char mStorageVersion;
+    struct __CFData *_storageBuffer;
+    unsigned short _storageOffsets[255];
+    unsigned short _bufferSize;
+    struct __CFData *_storageBufferPreBNC;
+    unsigned short _storageOffsetsPreBNC[255];
+    unsigned short _bufferSizePreBNC;
+    unsigned short _maxTileColumnIndex;
+    BOOL _maxTileColumnIndexValid;
+    unsigned char _storageVersion;
+    unsigned short _cellCount;
+    unsigned int _tileRowIndex;
 }
 
-@property (readonly, nonatomic) unsigned short cellCount; // @synthesize cellCount=mCellCount;
-@property (nonatomic) unsigned short tileRowIndex; // @synthesize tileRowIndex=mTileRowIndex;
+@property (readonly, nonatomic) BOOL bncStorageBufferExists;
+@property (readonly, nonatomic) unsigned short cellCount; // @synthesize cellCount=_cellCount;
+@property (nonatomic) unsigned int tileRowIndex; // @synthesize tileRowIndex=_tileRowIndex;
 
 - (void)dealloc;
-- (void)debugDump;
 - (id)description;
+- (void)enumerateStoragesInColumnRange:(struct _NSRange)arg1 getPreBNC:(BOOL)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateStoragesInColumnRange:(struct _NSRange)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (void)i_upgradeWithDataStore:(id)arg1;
 - (id)initWithArchive:(const struct TileRowInfo *)arg1 owner:(id)arg2;
-- (id)initWithOwner:(id)arg1 tileRowIndex:(unsigned short)arg2;
-- (id)p_debugDumpCompact;
+- (id)initWithOwner:(id)arg1 tileRowIndex:(unsigned int)arg2;
 - (void)saveToArchive:(struct TileRowInfo *)arg1 archiver:(id)arg2;
-- (BOOL)searchCellStorageRefAtColumnIndex:(unsigned char)arg1 searchMask:(unsigned long long)arg2;
+- (BOOL)searchCellStorageRefAtColumnIndex:(unsigned short)arg1 searchMask:(unsigned long long)arg2;
 - (void)validate;
 - (BOOL)validateWithResult:(id *)arg1;
 

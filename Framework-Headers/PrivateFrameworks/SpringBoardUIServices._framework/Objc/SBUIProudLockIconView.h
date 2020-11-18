@@ -6,26 +6,43 @@
 
 #import <UIKit/UIView.h>
 
-@class LAUIPearlGlyphView, NSSet, SBUICAPackageView, _UILegibilitySettings;
+@class LAUIPearlGlyphView, NSSet, SBUICAPackageView, SBUIFaceIDCameraGlyphView, UIColor, _UILegibilitySettings;
 
 @interface SBUIProudLockIconView : UIView
 {
     long long _state;
-    _UILegibilitySettings *_legibilitySettings;
     SBUICAPackageView *_lockView;
     NSSet *_imageLayers;
+    NSSet *_shadowImageLayers;
+    NSSet *_shadowFilterLayers;
     LAUIPearlGlyphView *_lazy_pearlGlyphView;
+    id _pearlGlyphViewSharedResources;
+    SBUIFaceIDCameraGlyphView *_cameraCoveredView;
+    _UILegibilitySettings *_legibilitySettings;
+    double _durationOnCameraCoveredGlyphBeforeCoaching;
+    UIColor *_contentColor;
 }
 
+@property (readonly, nonatomic) SBUIFaceIDCameraGlyphView *cameraCoveredView; // @synthesize cameraCoveredView=_cameraCoveredView;
+@property (strong, nonatomic) UIColor *contentColor; // @synthesize contentColor=_contentColor;
+@property (nonatomic) double durationOnCameraCoveredGlyphBeforeCoaching; // @synthesize durationOnCameraCoveredGlyphBeforeCoaching=_durationOnCameraCoveredGlyphBeforeCoaching;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) long long state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
-- (id)_activeViewForState:(long long)arg1;
+- (id)_activeViewsForState:(long long)arg1;
+- (id)_alphaAnimationSettingsForTransitionFromViews:(id)arg1 andState:(long long)arg2 toViews:(id)arg3 andState:(long long)arg4 forIncomingViews:(BOOL)arg5;
+- (double)_alphaForActiveViewForState:(long long)arg1;
+- (void)_configureShadowFromLegibilitySettings:(id)arg1;
+- (id)_defaultAnimationSettingsForTransitionFromViews:(id)arg1 andState:(long long)arg2 toViews:(id)arg3 andState:(long long)arg4;
 - (void)_forEachLayerInHierarchy:(id)arg1 perform:(CDUnknownBlockType)arg2;
+- (struct CGAffineTransform)_incomingTransformForActiveView:(id)arg1 forState:(long long)arg2;
+- (struct CGAffineTransform)_outgoingTransformForView:(id)arg1 fromState:(long long)arg2;
 - (id)_pearlGlyphView;
+- (id)_transformAnimationSettingsForTransitionFromViews:(id)arg1 andState:(long long)arg2 toViews:(id)arg3 andState:(long long)arg4 forIncomingViews:(BOOL)arg5;
+- (struct CGAffineTransform)_transformForActiveViewForState:(long long)arg1;
 - (void)_transitionToState:(long long)arg1 animated:(BOOL)arg2 options:(long long)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)init;
+- (id)fileNameForCurrentDevice;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setState:(long long)arg1 animated:(BOOL)arg2;

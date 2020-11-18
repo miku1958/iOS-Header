@@ -9,7 +9,7 @@
 #import <KeyboardServices/_KSTextReplacementSyncProtocol-Protocol.h>
 
 @class NSString, _KSTextReplacementCKStore, _KSTextReplacementLegacyStore;
-@protocol OS_dispatch_queue, _KSMigrationDelegate, _KSTextReplacementStoreProtocol;
+@protocol OS_dispatch_queue, _KSMigrationDelegate, _KSTextReplacementSyncProtocol;
 
 @interface _KSTextReplacementManager : NSObject <_KSTextReplacementSyncProtocol>
 {
@@ -20,7 +20,7 @@
     BOOL _didCheckMigrationOnCloud;
     _KSTextReplacementCKStore *_ckStore;
     _KSTextReplacementLegacyStore *_legacyStore;
-    NSObject<_KSTextReplacementStoreProtocol> *_textReplacementStore;
+    NSObject<_KSTextReplacementSyncProtocol> *_textReplacementStore;
     NSString *_directoryPath;
     id<_KSMigrationDelegate> _delegate;
 }
@@ -37,7 +37,7 @@
 @property (strong, nonatomic) _KSTextReplacementLegacyStore *legacyStore; // @synthesize legacyStore=_legacyStore;
 @property (nonatomic) BOOL pendingMigration; // @synthesize pendingMigration=_pendingMigration;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSObject<_KSTextReplacementStoreProtocol> *textReplacementStore; // @synthesize textReplacementStore=_textReplacementStore;
+@property (strong, nonatomic) NSObject<_KSTextReplacementSyncProtocol> *textReplacementStore; // @synthesize textReplacementStore=_textReplacementStore;
 
 + (id)textReplacementStoreWithTestDirectory:(id)arg1 withDelegate:(id)arg2 forceMigration:(BOOL)arg3 forceCloudKitSync:(BOOL)arg4;
 - (void).cxx_destruct;
@@ -49,7 +49,7 @@
 - (BOOL)deviceDidMigrate;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithDirectoryPath:(id)arg1;
-- (id)initWithDirectoryPath:(id)arg1 ignoreMigrationBatchCheck:(BOOL)arg2 forceCloudKitSync:(BOOL)arg3;
+- (id)initWithDirectoryPath:(id)arg1 ignoreMigrationBatchCheck:(BOOL)arg2 syncMode:(int)arg3;
 - (void)migrateLegacyStore;
 - (void)migrateLocallyCheckCompatibility:(BOOL)arg1;
 - (double)minimumUptimeRemaining;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSMutableSet, TSPObjectContext, TSPPersistedObjectUUIDMap;
 @protocol OS_dispatch_queue;
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)beginAssertOnRead;
 - (void)endAssertOnRead;
+- (BOOL)hasObjectUUID:(id)arg1;
 - (id)init;
 - (id)initWithContext:(id)arg1;
 - (void)object:(id)arg1 didChangeUUIDToValue:(id)arg2 fromValue:(id)arg3;

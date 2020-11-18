@@ -12,11 +12,11 @@
 {
     NSString *_luminanceColorMapName;
     BOOL _preservesFiltersAtZero;
-    double _zoom;
     UIColor *_colorMatrixColor;
     UIColor *_colorAddColor;
 }
 
+@property (copy, nonatomic) NSString *blurInputQuality;
 @property (nonatomic) double blurRadius;
 @property (nonatomic) double brightness;
 @property (copy, nonatomic) UIColor *colorAddColor; // @synthesize colorAddColor=_colorAddColor;
@@ -24,14 +24,14 @@
 @property (copy, nonatomic) NSString *groupName;
 @property (nonatomic) double luminanceAlpha;
 @property (nonatomic, getter=_preservesFiltersAtZero, setter=_setPreservesFiltersAtZero:) BOOL preservesFiltersAtZero; // @synthesize preservesFiltersAtZero=_preservesFiltersAtZero;
-@property (nonatomic) double rasterizationScale;
 @property (nonatomic) double saturation;
-@property (nonatomic) double zoom; // @synthesize zoom=_zoom;
+@property (nonatomic) double zoom;
 
++ (id)_luminanceColorMapWithName:(id)arg1;
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (id)_backdropLayer;
-- (void)_configureFilterOfTypeIfNecessary:(id)arg1;
+- (void)_configureFilterOfTypeIfNecessary:(id)arg1 withConfigurationBlock:(CDUnknownBlockType)arg2;
 - (id)_luminanceColorMapName;
 - (void)_removeFilterOfTypeIfNecessary:(id)arg1;
 - (void)_setFloatValue:(double)arg1 forFilterOfType:(id)arg2 valueKey:(id)arg3 configurationBlock:(CDUnknownBlockType)arg4;

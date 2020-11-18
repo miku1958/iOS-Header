@@ -8,11 +8,11 @@
 
 @interface PXMemoriesRelatedSettings : PXSettings
 {
-    BOOL _enableUI;
     BOOL _enableFeedbackUI;
     BOOL _enableFeedbackComboUI;
     BOOL _enableMemoriesLivingOnFeedback;
     BOOL _enableManualRefreshUI;
+    BOOL _fakePeopleProximity;
     BOOL _enableMemoryBlurryHeader;
     double _refreshPhotoKitTimeout;
     double _widgetRefreshTimeInterval;
@@ -28,7 +28,7 @@
 @property (nonatomic) BOOL enableManualRefreshUI; // @synthesize enableManualRefreshUI=_enableManualRefreshUI;
 @property (nonatomic) BOOL enableMemoriesLivingOnFeedback; // @synthesize enableMemoriesLivingOnFeedback=_enableMemoriesLivingOnFeedback;
 @property (nonatomic) BOOL enableMemoryBlurryHeader; // @synthesize enableMemoryBlurryHeader=_enableMemoryBlurryHeader;
-@property (nonatomic) BOOL enableUI; // @synthesize enableUI=_enableUI;
+@property (nonatomic) BOOL fakePeopleProximity; // @synthesize fakePeopleProximity=_fakePeopleProximity;
 @property (nonatomic) long long minimumNumberOfCuratedAssetsForInterestingMoments; // @synthesize minimumNumberOfCuratedAssetsForInterestingMoments=_minimumNumberOfCuratedAssetsForInterestingMoments;
 @property (nonatomic) long long minimumNumberOfCuratedAssetsForMemories; // @synthesize minimumNumberOfCuratedAssetsForMemories=_minimumNumberOfCuratedAssetsForMemories;
 @property (nonatomic) long long minimumNumberOfCuratedAssetsForMovieHeader; // @synthesize minimumNumberOfCuratedAssetsForMovieHeader=_minimumNumberOfCuratedAssetsForMovieHeader;

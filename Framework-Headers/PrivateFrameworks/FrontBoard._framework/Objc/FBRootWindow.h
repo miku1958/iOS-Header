@@ -25,9 +25,9 @@
 @property (readonly) Class superclass;
 
 + (BOOL)_isSecure;
+- (void).cxx_destruct;
 - (BOOL)_appearsInLoupe;
 - (BOOL)_canBecomeKeyWindow;
-- (void)_configureRootLayer:(id)arg1 transformLayer:(id)arg2;
 - (id)_focusResponder;
 - (BOOL)_shouldPrepareScreenForWindow;
 - (id)_systemGestureView;

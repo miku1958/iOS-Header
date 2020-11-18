@@ -41,8 +41,8 @@ __attribute__((visibility("hidden")))
 
 + (long long)activityCategory;
 - (void).cxx_destruct;
-- (id)_activityImage;
-- (id)_activitySettingsImage;
+- (id)_activityBundleImageConfiguration;
+- (id)_activitySettingsBundleImageConfiguration;
 - (void)_createStreamsPickerContainerWithExisting:(BOOL)arg1;
 - (void)_handleDismissWithSuccess:(BOOL)arg1;
 - (void)_performPresentationOnViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;

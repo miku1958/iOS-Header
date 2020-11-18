@@ -11,7 +11,6 @@
 @protocol SXVideoPlaybackObserver <NSObject>
 
 @optional
-- (void)mediaSelectionOptionsAvailabilityChangedForPlaybackCoordinator:(SXPlaybackCoordinator *)arg1;
 - (void)playbackCoordinator:(SXPlaybackCoordinator *)arg1 loadingProgressed:(double)arg2;
 - (void)playbackCoordinator:(SXPlaybackCoordinator *)arg1 playbackFailedWithError:(NSError *)arg2;
 - (void)playbackCoordinator:(SXPlaybackCoordinator *)arg1 timeElapsed:(double)arg2 duration:(double)arg3;

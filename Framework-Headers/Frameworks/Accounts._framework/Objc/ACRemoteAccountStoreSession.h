@@ -13,6 +13,7 @@
 @interface ACRemoteAccountStoreSession : NSObject <NSXPCProxyCreating>
 {
     NSXPCConnection *_connection;
+    struct os_unfair_lock_s _connectionLock;
     BOOL _hasConfiguredRemoteAccountStore;
     BOOL _xpcConnectionHasBeenInvalidated;
     BOOL _notificationsEnabled;
@@ -26,6 +27,8 @@
 - (void)_configureConnection;
 - (void)_configureRemoteAccountStoreIfNecessary;
 - (id)_connection;
+- (void)_setConnectionInterrupted;
+- (void)_setConnectionInvalidated;
 - (void)connect;
 - (void)disconnect;
 - (id)initWithXPCConnection:(id)arg1;

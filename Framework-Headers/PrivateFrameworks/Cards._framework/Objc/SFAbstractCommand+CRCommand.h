@@ -12,6 +12,7 @@
 
 @interface SFAbstractCommand (CRCommand) <CRReferentialCommand>
 
+@property (nonatomic) unsigned long long commandDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

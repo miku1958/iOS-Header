@@ -7,24 +7,25 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBCallRecordValue-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBCallMetrics, _INPBContactValue, _INPBDateTime;
+@class NSString, _INPBCallMetrics, _INPBContactValue, _INPBDateTime;
 
-@interface _INPBCallRecordValue : PBCodable <NSCopying>
+@interface _INPBCallRecordValue : PBCodable <_INPBCallRecordValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    int _callCapability;
-    _INPBCallMetrics *_callMetrics;
-    int _callType;
-    _INPBContactValue *_caller;
-    _INPBDateTime *_dateCreated;
-    NSString *_identifier;
-    BOOL _unseen;
     struct {
         unsigned int callCapability:1;
         unsigned int callType:1;
         unsigned int unseen:1;
     } _has;
+    BOOL _unseen;
+    int _callCapability;
+    int _callType;
+    _INPBCallMetrics *_callMetrics;
+    _INPBContactValue *_caller;
+    _INPBDateTime *_dateCreated;
+    NSString *_identifier;
 }
 
 @property (nonatomic) int callCapability; // @synthesize callCapability=_callCapability;
@@ -32,6 +33,8 @@
 @property (nonatomic) int callType; // @synthesize callType=_callType;
 @property (strong, nonatomic) _INPBContactValue *caller; // @synthesize caller=_caller;
 @property (strong, nonatomic) _INPBDateTime *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasCallCapability;
 @property (readonly, nonatomic) BOOL hasCallMetrics;
 @property (nonatomic) BOOL hasCallType;
@@ -39,22 +42,19 @@
 @property (readonly, nonatomic) BOOL hasDateCreated;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasUnseen;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL unseen; // @synthesize unseen=_unseen;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsCallCapability:(id)arg1;
 - (int)StringAsCallType:(id)arg1;
 - (id)callCapabilityAsString:(int)arg1;
 - (id)callTypeAsString:(int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

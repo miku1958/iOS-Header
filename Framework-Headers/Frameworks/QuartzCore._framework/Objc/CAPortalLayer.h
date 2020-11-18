@@ -10,6 +10,7 @@
 {
 }
 
+@property BOOL allowsBackdropGroups;
 @property BOOL hidesSourceLayer;
 @property BOOL matchesOpacity;
 @property BOOL matchesPosition;

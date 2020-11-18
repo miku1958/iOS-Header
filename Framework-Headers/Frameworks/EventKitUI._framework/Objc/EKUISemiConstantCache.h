@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary, UIFont;
+@class NSArray, NSMutableDictionary, UIFont;
 
 @interface EKUISemiConstantCache : NSObject
 {
@@ -21,6 +21,7 @@
     double _dayOccurrenceMinimumCachedLineHeightSmall;
     UIFont *_dayOccurrenceUncompressedSecondaryTextFont;
     NSMutableDictionary *_commentIconStrings;
+    NSArray *_statusGlyphs;
     NSMutableDictionary *_birthdayImages;
     double _weekAllDayBaselineForLargeFormatWeekView;
     double _weekAllDayBaselineForSmallFormatWeekView;
@@ -56,6 +57,7 @@
 - (id)birthdayImageForFont:(id)arg1 withColor:(id)arg2;
 - (id)commentIconStringForFont:(id)arg1;
 - (id)init;
+- (id)statusGlyphForStatusType:(int)arg1;
 - (void)updateMetrics;
 - (void)updateWindowSize;
 

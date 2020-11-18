@@ -7,40 +7,50 @@
 #import <objc/NSObject.h>
 
 #import <UserNotifications/NSCopying-Protocol.h>
+#import <UserNotifications/NSMutableCopying-Protocol.h>
 #import <UserNotifications/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface UNNotificationCategory : NSObject <NSCopying, NSSecureCoding>
+@interface UNNotificationCategory : NSObject <NSMutableCopying, NSCopying, NSSecureCoding>
 {
     NSArray *_actions;
     NSArray *_minimalActions;
     NSArray *_intentIdentifiers;
     NSString *_identifier;
     NSString *_hiddenPreviewsBodyPlaceholder;
+    NSString *_categorySummaryFormat;
     unsigned long long _options;
+    unsigned long long _backgroundStyle;
+    unsigned long long _listPriority;
 }
 
 @property (readonly, copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (readonly, nonatomic) unsigned long long backgroundStyle; // @synthesize backgroundStyle=_backgroundStyle;
+@property (readonly, copy, nonatomic) NSString *categorySummaryFormat; // @synthesize categorySummaryFormat=_categorySummaryFormat;
 @property (readonly, copy, nonatomic) NSString *hiddenPreviewsBodyPlaceholder; // @synthesize hiddenPreviewsBodyPlaceholder=_hiddenPreviewsBodyPlaceholder;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) NSArray *intentIdentifiers; // @synthesize intentIdentifiers=_intentIdentifiers;
+@property (readonly, nonatomic) unsigned long long listPriority; // @synthesize listPriority=_listPriority;
 @property (readonly, copy, nonatomic) NSArray *minimalActions; // @synthesize minimalActions=_minimalActions;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 
++ (id)categoryWithIdentifier:(id)arg1 actions:(id)arg2 intentIdentifiers:(id)arg3 hiddenPreviewsBodyPlaceholder:(id)arg4 categorySummaryFormat:(id)arg5 options:(unsigned long long)arg6;
 + (id)categoryWithIdentifier:(id)arg1 actions:(id)arg2 intentIdentifiers:(id)arg3 hiddenPreviewsBodyPlaceholder:(id)arg4 options:(unsigned long long)arg5;
 + (id)categoryWithIdentifier:(id)arg1 actions:(id)arg2 intentIdentifiers:(id)arg3 options:(unsigned long long)arg4;
++ (id)categoryWithIdentifier:(id)arg1 actions:(id)arg2 minimalActions:(id)arg3 intentIdentifiers:(id)arg4 hiddenPreviewsBodyPlaceholder:(id)arg5 categorySummaryFormat:(id)arg6 options:(unsigned long long)arg7;
 + (id)categoryWithIdentifier:(id)arg1 actions:(id)arg2 minimalActions:(id)arg3 intentIdentifiers:(id)arg4 hiddenPreviewsBodyPlaceholder:(id)arg5 options:(unsigned long long)arg6;
 + (id)categoryWithIdentifier:(id)arg1 actions:(id)arg2 minimalActions:(id)arg3 intentIdentifiers:(id)arg4 options:(unsigned long long)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithIdentifier:(id)arg1 actions:(id)arg2 minimalActions:(id)arg3 intentIdentifiers:(id)arg4 hiddenPreviewsBodyPlaceholder:(id)arg5 options:(unsigned long long)arg6;
+- (id)_initWithIdentifier:(id)arg1 actions:(id)arg2 minimalActions:(id)arg3 intentIdentifiers:(id)arg4 hiddenPreviewsBodyPlaceholder:(id)arg5 categorySummaryFormat:(id)arg6 options:(unsigned long long)arg7 backgroundStyle:(unsigned long long)arg8 listPriority:(unsigned long long)arg9;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end
 

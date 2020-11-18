@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <VoiceServices/AVAudioPlayerDelegate-Protocol.h>
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface VSAudioPreviewDelegate : NSObject <AVAudioPlayerDelegate>
 {
     CDUnknownBlockType _completion;

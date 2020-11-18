@@ -6,32 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class CLKUIShader, CLKUITexture, MISSING_TYPE;
-
 @interface CLKUIQuad : NSObject
 {
     BOOL _opaque;
-    float _alpha;
-    float _rotation;
-    CLKUITexture *_primaryTexture;
-    CLKUITexture *_secondaryTexture;
-    CLKUIShader *_shader;
-    MISSING_TYPE *_sampleCenter;
-    MISSING_TYPE *_sampleRadius;
 }
 
-@property (nonatomic) float alpha; // @synthesize alpha=_alpha;
 @property (nonatomic, getter=isOpaque) BOOL opaque; // @synthesize opaque=_opaque;
-@property (strong, nonatomic) CLKUITexture *primaryTexture; // @synthesize primaryTexture=_primaryTexture;
-@property (nonatomic) float rotation; // @synthesize rotation=_rotation;
-@property (nonatomic) MISSING_TYPE *sampleCenter; // @synthesize sampleCenter=_sampleCenter;
-@property (nonatomic) MISSING_TYPE *sampleRadius; // @synthesize sampleRadius=_sampleRadius;
-@property (strong, nonatomic) CLKUITexture *secondaryTexture; // @synthesize secondaryTexture=_secondaryTexture;
-@property (readonly, nonatomic) CLKUIShader *shader; // @synthesize shader=_shader;
 
-+ (id)quadWithShader:(id)arg1;
-- (void).cxx_destruct;
-- (id)initWithShader:(id)arg1;
+- (void)encodeGLforSize:(struct CLKUIQuadSize)arg1;
+- (void)encodeMetalForSize:(struct CLKUIQuadSize)arg1 encoder:(id)arg2;
+- (id)init;
+- (void)prepare;
+- (void)purge;
 
 @end
 

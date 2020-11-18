@@ -4,17 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <objc/NSObject.h>
 
-@class PKCanvasView;
-
-@interface PKCanvasViewController : UIViewController
+@interface PKCanvasViewController : NSObject
 {
 }
-
-@property (readonly, nonatomic) PKCanvasView *canvasView;
-
-- (void)loadView;
 
 @end
 

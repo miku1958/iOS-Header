@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIDebugReportFormatter.h>
+#import <UIKitCore/_UIDebugReportFormatter.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusUpdateReportFormatter : _UIDebugReportFormatter

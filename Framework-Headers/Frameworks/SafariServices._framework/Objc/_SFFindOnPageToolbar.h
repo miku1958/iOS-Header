@@ -8,7 +8,7 @@
 
 #import <SafariServices/UISearchBarDelegate-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSString, NSTimer, UIBarButtonItem, UILabel, UITextField, UIToolbar, _SFFindOnPageInputBarContainer;
+@class NSArray, NSString, NSTimer, UIBarButtonItem, UILabel, UITextField, UIToolbar, _SFFindOnPageInputBar;
 @protocol _SFFindOnPageToolbarDelegate;
 
 @interface _SFFindOnPageToolbar : UIInputView <UISearchBarDelegate>
@@ -16,15 +16,14 @@
     UIToolbar *_toolbar;
     UIBarButtonItem *_previousButtonItem;
     UIBarButtonItem *_nextButtonItem;
-    _SFFindOnPageInputBarContainer *_inputBarContainer;
+    _SFFindOnPageInputBar *_inputBar;
     UIBarButtonItem *_doneBarButtonItem;
     NSArray *_toolbarItems;
     id<_SFFindOnPageToolbarDelegate> _findDelegate;
     NSTimer *_textChangedUpdateTimer;
     UILabel *_inFieldMatchLabel;
-    UILabel *_matchLabel;
-    NSLayoutConstraint *_matchLabelZeroWidthConstraint;
     BOOL _editing;
+    BOOL _useBottomInset;
     BOOL _usesNarrowLayout;
     NSString *_searchText;
 }
@@ -38,13 +37,16 @@
 @property (nonatomic) BOOL usesNarrowLayout; // @synthesize usesNarrowLayout=_usesNarrowLayout;
 
 - (void).cxx_destruct;
+- (double)_accessoryViewHeight;
 - (void)_doUpdateSearchText;
 - (void)_done;
 - (void)_initializeToolbarItems;
 - (BOOL)_keyboardIsSplit;
-- (void)_orientationDidChange:(id)arg1;
+- (void)_keyboardWillChangeFrame:(id)arg1;
+- (id)_matchLabelText;
+- (struct CGRect)_toolbarFrame;
+- (double)_toolbarVerticalInset;
 - (BOOL)_updateEditing:(BOOL)arg1;
-- (void)dealloc;
 - (void)dismiss:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (struct CGSize)intrinsicContentSize;

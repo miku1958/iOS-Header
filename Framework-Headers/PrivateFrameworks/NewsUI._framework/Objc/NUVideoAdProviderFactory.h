@@ -8,33 +8,35 @@
 
 #import <NewsUI/NUVideoAdProviderFactory-Protocol.h>
 
-@class NSString;
-@protocol NUAdProvider, NUVideoAdEventTracker, SXVASTAnalyticsEventInfoFactory, SXVideoVisibilityMonitorProviding, SXVisibilityMonitoring;
+@class NSArray, NSString;
+@protocol NUAdProvider, NUVideoAdEventTracker, NUVideoPlaybackCounter, SVModalPresentationViewControllerProviding, SVVisibilityMonitoring, SXVASTAnalyticsEventInfoFactory;
 
 @interface NUVideoAdProviderFactory : NSObject <NUVideoAdProviderFactory>
 {
     id<NUAdProvider> _adProvider;
-    NSString *_placement;
+    NSArray *_contextProviders;
     id<NUVideoAdEventTracker> _eventTracker;
-    id<SXVisibilityMonitoring> _videoPlayerVisibilityMonitor;
-    id<SXVideoVisibilityMonitorProviding> _visibilityMonitorProviding;
+    id<SVVisibilityMonitoring> _videoPlayerVisibilityMonitor;
     id<SXVASTAnalyticsEventInfoFactory> _analyticsEventInfoFactory;
+    id<NUVideoPlaybackCounter> _playbackCounter;
+    id<SVModalPresentationViewControllerProviding> _modalPresentationViewControllerProvider;
 }
 
 @property (readonly, nonatomic) id<NUAdProvider> adProvider; // @synthesize adProvider=_adProvider;
 @property (readonly, nonatomic) id<SXVASTAnalyticsEventInfoFactory> analyticsEventInfoFactory; // @synthesize analyticsEventInfoFactory=_analyticsEventInfoFactory;
+@property (readonly, copy, nonatomic) NSArray *contextProviders; // @synthesize contextProviders=_contextProviders;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<NUVideoAdEventTracker> eventTracker; // @synthesize eventTracker=_eventTracker;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSString *placement; // @synthesize placement=_placement;
+@property (readonly, nonatomic) id<SVModalPresentationViewControllerProviding> modalPresentationViewControllerProvider; // @synthesize modalPresentationViewControllerProvider=_modalPresentationViewControllerProvider;
+@property (readonly, nonatomic) id<NUVideoPlaybackCounter> playbackCounter; // @synthesize playbackCounter=_playbackCounter;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<SXVisibilityMonitoring> videoPlayerVisibilityMonitor; // @synthesize videoPlayerVisibilityMonitor=_videoPlayerVisibilityMonitor;
-@property (readonly, nonatomic) id<SXVideoVisibilityMonitorProviding> visibilityMonitorProviding; // @synthesize visibilityMonitorProviding=_visibilityMonitorProviding;
+@property (readonly, nonatomic) id<SVVisibilityMonitoring> videoPlayerVisibilityMonitor; // @synthesize videoPlayerVisibilityMonitor=_videoPlayerVisibilityMonitor;
 
 - (void).cxx_destruct;
 - (id)createVideoAdProviderWithContextProviderForVideoBefore:(id)arg1 contextProviderForVideoAfter:(id)arg2;
-- (id)initWithAdProvider:(id)arg1 placement:(id)arg2 eventTracker:(id)arg3 videoPlayerVisibilityMonitor:(id)arg4 videoVisibilityMonitorProvider:(id)arg5 analyticsEventInfoFactory:(id)arg6;
+- (id)initWithAdProvider:(id)arg1 contextProviders:(id)arg2 eventTracker:(id)arg3 videoPlayerVisibilityMonitor:(id)arg4 analyticsEventInfoFactory:(id)arg5 playbackCounter:(id)arg6 modalPresentationViewControllerProvider:(id)arg7;
 
 @end
 

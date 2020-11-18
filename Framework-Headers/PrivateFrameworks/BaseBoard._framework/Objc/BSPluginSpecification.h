@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -15,12 +15,12 @@
     NSString *_classOrProtocolName;
 }
 
-@property (readonly, strong, nonatomic) NSString *requiredClassOrProtocolName; // @synthesize requiredClassOrProtocolName=_classOrProtocolName;
+@property (readonly, nonatomic) NSString *requiredClassOrProtocolName; // @synthesize requiredClassOrProtocolName=_classOrProtocolName;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (id)specificationsFromHostBundle:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

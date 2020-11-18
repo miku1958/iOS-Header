@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
-@class NSString, UILabel;
+@class NSString, UIImage, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateGridCell : UICollectionViewCell
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     BOOL _needsUpdateLabels;
     int _candidatesVisualStyle;
     NSString *_text;
+    UIImage *_icon;
     NSString *_alternativeText;
     NSString *_annotationText;
     unsigned long long _candidateNumber;
@@ -53,6 +54,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long edges; // @synthesize edges=_edges;
 @property (nonatomic) BOOL emphasizedAppearance; // @synthesize emphasizedAppearance=_emphasizedAppearance;
 @property (nonatomic) BOOL facemarkCategoryAppearance; // @synthesize facemarkCategoryAppearance=_facemarkCategoryAppearance;
+@property (copy, nonatomic) UIImage *icon; // @synthesize icon=_icon;
 @property (nonatomic) double minimumWidth; // @synthesize minimumWidth=_minimumWidth;
 @property (nonatomic) BOOL needsUpdateLabels; // @synthesize needsUpdateLabels=_needsUpdateLabels;
 @property (nonatomic) double rightPadding; // @synthesize rightPadding=_rightPadding;

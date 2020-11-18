@@ -45,6 +45,7 @@
 - (id)_allowedClassNames;
 - (BOOL)_allowsValueCoding;
 - (id)_blobForCurrentObject;
+- (BOOL)_containsNextUnkeyedObject;
 - (unsigned int)_currentUniqueIdentifier;
 - (id)_decodeArrayOfObjectsForKey:(id)arg1;
 - (id)_decodePropertyListForKey:(id)arg1;

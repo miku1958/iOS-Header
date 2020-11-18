@@ -16,30 +16,33 @@
 @property (readonly) NSArray *connectedLinks;
 @property (readonly) IDSDataChannelLinkContext *defaultLink;
 
++ (id)realTimeContext;
 - (void).cxx_destruct;
 - (void)_logReceivingStats:(unsigned long long)arg1;
 - (void)_logSendingStats:(unsigned long long)arg1;
-- (void)_setNeedEncryptionInfoPreference:(BOOL)arg1;
-- (void)_writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_d008d4b8 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)_reportFirstPacketTimeForMKI:(id)arg1;
+- (void)_writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_920a6c75 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)addNewIDSDataChannelLinkWithAttributes:(char *)arg1 linkAttributesLength:(unsigned short)arg2;
 - (id)cachedMetadata;
 - (void)close;
 - (void)dealloc;
 - (id)description;
-- (unsigned short)generateMetadata:(char *)arg1 maxSize:(unsigned long long)arg2 withDatagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_d008d4b8 *)arg4;
+- (unsigned short)generateMetadata:(char *)arg1 maxSize:(unsigned long long)arg2 withDatagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_920a6c75 *)arg4 currentDatagramCount:(unsigned char)arg5 totalDatagramCount:(unsigned char)arg6;
 - (id)initWithDestination:(id)arg1;
 - (id)initWithSocketDescriptor:(int)arg1;
 - (void)invalidate;
 - (void)optinStreamIDs:(id)arg1;
 - (void)optoutStreamIDs:(id)arg1;
-- (void)processMetadataForDatagram:(char *)arg1 size:(unsigned long long)arg2 datagramInfo:(CDStruct_54fea20c *)arg3 options:(CDStruct_d008d4b8 *)arg4;
+- (void)processMetadataForDatagram:(char *)arg1 size:(unsigned long long)arg2 datagramInfo:(CDStruct_54fea20c *)arg3 options:(CDStruct_920a6c75 *)arg4;
 - (void)readDatagramWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)readDatagramsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)readyToRead;
 - (void)removeIDSDataChannelLinkContext:(BOOL)arg1 linkUUID:(id)arg2;
+- (void)reportFirstPacketTimeForMKI:(id)arg1;
+- (void)requestSessionInfoWithOptions:(id)arg1;
 - (void)selectDefaultLink:(BOOL)arg1;
 - (void)sendEventConnectedWithDummyLinkInfo;
-- (void)sendMediaEncryptionInfoWithMKM:(id)arg1 MKS:(id)arg2 MKI:(unsigned int)arg3;
+- (void)sendMediaEncryptionInfoWithMKM:(id)arg1 MKS:(id)arg2 MKI:(id)arg3 isLocallyGenerated:(BOOL)arg4;
 - (void)sendMediaMembershipChangedInfo:(unsigned char)arg1;
 - (void)sendMetadata;
 - (void)setChannelPreferences:(id)arg1;
@@ -48,9 +51,10 @@
 - (void)setReadHandlerWithOptions:(CDUnknownBlockType)arg1;
 - (void)start;
 - (int)underlyingFileDescriptor;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_d008d4b8 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_920a6c75 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 flags:(CDStruct_54fea20c)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)writeDatagrams:(const void **)arg1 datagramSizes:(unsigned int *)arg2 datagramInfo:(CDStruct_54fea20c)arg3 datagramCount:(int)arg4 options:(CDStruct_d008d4b8 *)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)writeDatagrams:(const void **)arg1 datagramSizes:(unsigned int *)arg2 datagramInfo:(CDStruct_54fea20c)arg3 datagramCount:(int)arg4 options:(CDStruct_920a6c75 *)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_54fea20c *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
 
 @end
 

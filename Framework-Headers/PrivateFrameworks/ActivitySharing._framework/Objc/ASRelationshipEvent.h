@@ -6,35 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <ActivitySharing/NSCopying-Protocol.h>
-#import <ActivitySharing/NSSecureCoding-Protocol.h>
+@class NSDate;
 
-@class ASCodableRelationshipEvent, NSDate;
-
-@interface ASRelationshipEvent : NSObject <NSCopying, NSSecureCoding>
+@interface ASRelationshipEvent : NSObject
 {
-    long long _version;
-    long long _type;
-    unsigned long long _anchor;
+    unsigned short _type;
+    unsigned short _anchor;
     NSDate *_timestamp;
 }
 
-@property (nonatomic) unsigned long long anchor; // @synthesize anchor=_anchor;
-@property (readonly, nonatomic) ASCodableRelationshipEvent *codableRelationshipEvent;
-@property (strong, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
-@property (nonatomic) long long type; // @synthesize type=_type;
-@property (nonatomic) long long version; // @synthesize version=_version;
+@property (readonly, nonatomic) unsigned short anchor; // @synthesize anchor=_anchor;
+@property (readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic) unsigned short type; // @synthesize type=_type;
 
 + (id)_relationshipEventWithCodable:(id)arg1;
-+ (id)relationshipEventWithCodableRelationshipEvent:(id)arg1;
 + (id)relationshipEventWithRecord:(id)arg1;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_codableRelationshipEvent;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
+- (id)initWithType:(unsigned short)arg1 anchor:(unsigned short)arg2 timestamp:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToRelationshipEvent:(id)arg1;
 

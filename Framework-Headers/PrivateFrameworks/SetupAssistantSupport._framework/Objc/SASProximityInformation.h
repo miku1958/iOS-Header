@@ -20,6 +20,7 @@
     NSString *_appleID;
     NSArray *_networks;
     NSArray *_networkPasswords;
+    NSNumber *_connectedToWiFi;
     NSDictionary *_localePreferences;
     NSString *_timeZone;
     NSString *_firstName;
@@ -33,6 +34,7 @@
     NSNumber *_appAnalyticsOptIn;
     NSNumber *_siriOptIn;
     NSNumber *_deviceTermsIdentifier;
+    NSString *_productVersion;
 }
 
 @property (strong) NSNumber *appAnalyticsOptIn; // @synthesize appAnalyticsOptIn=_appAnalyticsOptIn;
@@ -40,6 +42,7 @@
 @property BOOL automaticTimeZoneEnabled; // @synthesize automaticTimeZoneEnabled=_automaticTimeZoneEnabled;
 @property (strong) NSData *backupMetadata; // @synthesize backupMetadata=_backupMetadata;
 @property (copy) NSString *backupUUID; // @synthesize backupUUID=_backupUUID;
+@property (strong) NSNumber *connectedToWiFi; // @synthesize connectedToWiFi=_connectedToWiFi;
 @property (strong) NSNumber *deviceAnalyticsOptIn; // @synthesize deviceAnalyticsOptIn=_deviceAnalyticsOptIn;
 @property (copy) NSString *deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (copy) NSString *deviceModel; // @synthesize deviceModel=_deviceModel;
@@ -52,6 +55,7 @@
 @property BOOL locationServicesOptIn; // @synthesize locationServicesOptIn=_locationServicesOptIn;
 @property (copy) NSArray *networkPasswords; // @synthesize networkPasswords=_networkPasswords;
 @property (copy) NSArray *networks; // @synthesize networks=_networks;
+@property (strong) NSString *productVersion; // @synthesize productVersion=_productVersion;
 @property (getter=isRestoring) BOOL restoring; // @synthesize restoring=_restoring;
 @property (strong) NSNumber *siriOptIn; // @synthesize siriOptIn=_siriOptIn;
 @property (copy) NSString *timeZone; // @synthesize timeZone=_timeZone;

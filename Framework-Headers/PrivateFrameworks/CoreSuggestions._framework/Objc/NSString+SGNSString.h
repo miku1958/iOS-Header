@@ -8,5 +8,6 @@
 
 @interface NSString (SGNSString)
 - (id)sg_deepCopy;
+- (id)sg_md5Hash;
 @end
 

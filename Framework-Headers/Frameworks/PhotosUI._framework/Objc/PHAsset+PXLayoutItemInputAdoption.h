@@ -12,9 +12,11 @@
 
 @interface PHAsset (PXLayoutItemInputAdoption) <PXLayoutItemInput>
 
+@property (readonly, nonatomic) struct CGRect acceptableCropRect;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) struct CGRect preferredCropRect;
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) double weight;

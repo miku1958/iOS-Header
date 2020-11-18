@@ -6,27 +6,26 @@
 
 #import <objc/NSObject.h>
 
-#import <UserNotificationsServer/UNSNotificationServiceExtensionSessionDelegate-Protocol.h>
-
-@class NSExtension, NSMutableDictionary;
+@class LSPlugInKitProxy, NSExtension;
 @protocol OS_dispatch_queue;
 
-@interface UNSNotificationServiceExtension : NSObject <UNSNotificationServiceExtensionSessionDelegate>
+@interface UNSNotificationServiceExtension : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSExtension *_extension;
-    NSMutableDictionary *_sessionBySessionUUID;
+    double _serviceTime;
+    double _graceTime;
 }
 
-+ (void)extensionForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+@property (readonly, nonatomic) LSPlugInKitProxy *proxy; // @dynamic proxy;
+
++ (void)_allowAccessToNotificationCenterForServiceExtensionWithIdentifier:(id)arg1;
++ (void)_disallowAccessToNotificationCenterForServiceExtensionWithIdentifier:(id)arg1;
++ (id)_extensionIdentifiersCurrentlyAllowedAccessToNotificationCenter;
++ (BOOL)isAccessToNotificationCenterAllowedForServiceExtensionWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
-- (id)_initWithExtension:(id)arg1;
-- (void)_setSession:(id)arg1 forSessionUUID:(id)arg2;
-- (void)_setupExtension;
-- (id)_takeSessionForSessionUUID:(id)arg1;
-- (void)beginSessionWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)proxy;
-- (void)session:(id)arg1 wasCancelledWithError:(id)arg2;
+- (id)_initWithExtension:(id)arg1 serviceTime:(double)arg2 graceTime:(double)arg3;
+- (id)mutateContentForNotificationRequest:(id)arg1 error:(id *)arg2;
 
 @end
 

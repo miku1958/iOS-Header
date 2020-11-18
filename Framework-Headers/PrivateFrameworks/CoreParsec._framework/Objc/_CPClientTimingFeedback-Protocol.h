@@ -11,11 +11,6 @@
 @protocol _CPClientTimingFeedback <NSObject>
 
 @property (copy, nonatomic) NSString *eventName;
-@property (readonly, nonatomic) BOOL hasEventName;
-@property (readonly, nonatomic) BOOL hasInput;
-@property (readonly, nonatomic) BOOL hasNanosecondInterval;
-@property (readonly, nonatomic) BOOL hasQueryId;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (copy, nonatomic) NSString *input;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long nanosecondInterval;

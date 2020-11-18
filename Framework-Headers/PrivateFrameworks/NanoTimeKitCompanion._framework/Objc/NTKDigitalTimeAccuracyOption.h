@@ -12,11 +12,11 @@
 
 @property (readonly, nonatomic) unsigned long long accuracy;
 
-+ (id)_nameLocalizationKeyForValue:(unsigned long long)arg1;
-+ (id)_orderedValues;
-+ (id)_snapshotKeyForValue:(unsigned long long)arg1;
-+ (long long)indexForAccuracy:(unsigned long long)arg1;
-+ (id)optionWithAccuracy:(unsigned long long)arg1;
++ (id)_nameLocalizationKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)_orderedValuesForDevice:(id)arg1;
++ (id)_snapshotKeyForValue:(unsigned long long)arg1 forDevice:(id)arg2;
++ (long long)indexForAccuracy:(unsigned long long)arg1 forDevice:(id)arg2;
++ (id)optionWithAccuracy:(unsigned long long)arg1 forDevice:(id)arg2;
 - (id)_valueToFaceBundleStringDict;
 
 @end

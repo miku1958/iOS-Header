@@ -6,31 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class HDSQLiteEntityForeignKey, NSString;
 
 @interface _HDSQLiteEntityColumn : NSObject
 {
+    unsigned char _keyPathType;
     NSString *_name;
     NSString *_columnType;
-    unsigned long long _keyPathType;
-    Class _targetEntityClass;
-    NSString *_targetProperty;
-    long long _deletionAction;
+    HDSQLiteEntityForeignKey *_foreignKey;
 }
 
 @property (readonly, copy, nonatomic) NSString *columnType; // @synthesize columnType=_columnType;
-@property (readonly, nonatomic) long long deletionAction; // @synthesize deletionAction=_deletionAction;
-@property (readonly, nonatomic) unsigned long long keyPathType; // @synthesize keyPathType=_keyPathType;
+@property (readonly, nonatomic) HDSQLiteEntityForeignKey *foreignKey; // @synthesize foreignKey=_foreignKey;
+@property (readonly, nonatomic) unsigned char keyPathType; // @synthesize keyPathType=_keyPathType;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) Class targetEntityClass; // @synthesize targetEntityClass=_targetEntityClass;
-@property (readonly, copy, nonatomic) NSString *targetProperty; // @synthesize targetProperty=_targetProperty;
 
 - (void).cxx_destruct;
 - (id)_columnNameAndTypeString;
 - (id)creationSQL;
 - (id)description;
-- (id)initWithName:(id)arg1 columnType:(id)arg2 keyPathType:(unsigned long long)arg3;
-- (id)initWithName:(id)arg1 columnType:(id)arg2 keyPathType:(unsigned long long)arg3 targetEntityClass:(Class)arg4 targetProperty:(id)arg5 deletionAction:(long long)arg6;
+- (id)initWithName:(id)arg1 columnType:(id)arg2 keyPathType:(unsigned char)arg3;
+- (id)initWithName:(id)arg1 columnType:(id)arg2 keyPathType:(unsigned char)arg3 foreignKey:(id)arg4;
+- (id)initWithName:(id)arg1 columnType:(id)arg2 keyPathType:(unsigned char)arg3 targetEntityClass:(Class)arg4 targetProperty:(id)arg5 deletionAction:(long long)arg6;
 
 @end
 

@@ -6,10 +6,11 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXSectionedSelectionManager;
+@class NSSet, PXSectionedSelectionManager;
 
 @protocol PXMutablePhotosDetailsViewModel <NSObject>
 
+@property (strong, nonatomic) NSSet *disabledActionTypes;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled;
 @property (nonatomic, getter=isSelecting) BOOL selecting;
 @property (strong, nonatomic) PXSectionedSelectionManager *selectionManager;

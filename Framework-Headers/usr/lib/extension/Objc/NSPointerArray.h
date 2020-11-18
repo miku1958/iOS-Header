@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <Foundation/NSCoding-Protocol.h>
 #import <Foundation/NSCopying-Protocol.h>
 #import <Foundation/NSFastEnumeration-Protocol.h>
+#import <Foundation/NSSecureCoding-Protocol.h>
 
 @class NSPointerFunctions;
 
-@interface NSPointerArray : NSObject <NSFastEnumeration, NSCopying, NSCoding>
+@interface NSPointerArray : NSObject <NSFastEnumeration, NSCopying, NSSecureCoding>
 {
 }
 
@@ -25,6 +25,7 @@
 + (id)pointerArrayWithStrongObjects;
 + (id)pointerArrayWithWeakObjects;
 + (id)strongObjectsPointerArray;
++ (BOOL)supportsSecureCoding;
 + (id)weakObjectsPointerArray;
 - (void)addPointer:(void *)arg1;
 - (id)allObjects;

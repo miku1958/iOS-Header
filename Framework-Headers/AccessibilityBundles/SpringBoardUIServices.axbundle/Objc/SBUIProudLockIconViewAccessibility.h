@@ -15,8 +15,10 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityIsBuddyRunning;
 - (BOOL)_accessibilityIsInSleepState;
-- (id)accessibilityLabel;
-- (BOOL)isAccessibilityElement;
+- (void)_accessibilityLoadAccessibilityInformation;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (id)lockViewAccessibilityLabel;
+- (BOOL)lockViewIsAccessibilityElement;
 - (void)setState:(long long)arg1 animated:(BOOL)arg2;
 
 @end

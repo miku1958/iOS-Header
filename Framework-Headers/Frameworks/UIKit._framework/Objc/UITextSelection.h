@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class DOMRange, UIResponder, UITextRange;
 @protocol UITextInputPrivate;
@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 - (void)collapseSelection;
 - (void)commit;
 - (void)dealloc;
+- (void)extendSelectionToPoint:(struct CGPoint)arg1;
 - (BOOL)hasEditableSelection;
 - (void)increaseSelectionGranularity;
 - (id)initWithDocument:(id)arg1;

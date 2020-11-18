@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSMutableArray, NSString;
+@class NSArray, NSDate, NSMutableArray, NSSet, NSString;
 
 @interface MAAssetQuery : NSObject
 {
@@ -15,10 +15,12 @@
     NSMutableArray *_queryParams;
     NSString *_assetType;
     NSArray *_results;
+    NSSet *_assetIds;
     long long _returnTypes;
     NSDate *_lastFetchDate;
 }
 
+@property (readonly, nonatomic) NSSet *assetIds; // @synthesize assetIds=_assetIds;
 @property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
 @property (readonly, nonatomic) BOOL augmentState; // @synthesize augmentState=_augmentState;
 @property (readonly, nonatomic) NSDate *lastFetchDate; // @synthesize lastFetchDate=_lastFetchDate;
@@ -33,6 +35,7 @@
 - (void)dealloc;
 - (void)getResultsFromMessage:(id)arg1;
 - (id)initWithType:(id)arg1;
+- (long long)queryInstalledAssetIds;
 - (void)queryMetaData:(CDUnknownBlockType)arg1;
 - (long long)queryMetaDataSync;
 - (void)returnTypes:(long long)arg1;

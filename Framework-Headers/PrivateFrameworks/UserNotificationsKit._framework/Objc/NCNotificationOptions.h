@@ -18,6 +18,7 @@
     NSString *_alternateActionLabel;
     BOOL _dismissAutomatically;
     BOOL _overridesQuietMode;
+    BOOL _overridesDowntime;
     BOOL _alertsWhenLocked;
     BOOL _addToLockScreenWhenLocked;
     unsigned long long _lockScreenPersistence;
@@ -31,6 +32,7 @@
     BOOL _requestsFullScreenPresentation;
     BOOL _hideClearActionInList;
     unsigned long long _messageNumberOfLines;
+    BOOL _prefersDarkAppearance;
     BOOL _preemptsPresentedNotification;
     BOOL _revealsAdditionalContentOnPresentation;
     BOOL _suppressesTitleWhenLocked;
@@ -40,6 +42,7 @@
     BOOL _coalescesWhenLocked;
     BOOL _preventsAutomaticLock;
     BOOL _revealsAdditionalContentIfNoDefaultAction;
+    BOOL _lauchUsingSiriForCarPlayDefaultAction;
 }
 
 @property (readonly, nonatomic) BOOL addToLockScreenWhenUnlocked; // @synthesize addToLockScreenWhenUnlocked=_addToLockScreenWhenLocked;
@@ -55,12 +58,15 @@
 @property (readonly, nonatomic) BOOL dismissAutomatically; // @synthesize dismissAutomatically=_dismissAutomatically;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hideClearActionInList; // @synthesize hideClearActionInList=_hideClearActionInList;
+@property (readonly, nonatomic) BOOL lauchUsingSiriForCarPlayDefaultAction; // @synthesize lauchUsingSiriForCarPlayDefaultAction=_lauchUsingSiriForCarPlayDefaultAction;
 @property (readonly, nonatomic) unsigned long long lockScreenPersistence; // @synthesize lockScreenPersistence=_lockScreenPersistence;
 @property (readonly, nonatomic) unsigned long long lockScreenPriority; // @synthesize lockScreenPriority=_lockScreenPriority;
 @property (readonly, nonatomic) unsigned long long messageNumberOfLines; // @synthesize messageNumberOfLines=_messageNumberOfLines;
+@property (readonly, nonatomic) BOOL overridesDowntime; // @synthesize overridesDowntime=_overridesDowntime;
 @property (readonly, nonatomic) BOOL overridesPocketMode; // @synthesize overridesPocketMode=_overridesPocketMode;
 @property (readonly, nonatomic) BOOL overridesQuietMode; // @synthesize overridesQuietMode=_overridesQuietMode;
 @property (readonly, nonatomic) BOOL preemptsPresentedNotification; // @synthesize preemptsPresentedNotification=_preemptsPresentedNotification;
+@property (readonly, nonatomic) BOOL prefersDarkAppearance; // @synthesize prefersDarkAppearance=_prefersDarkAppearance;
 @property (readonly, nonatomic) BOOL preventsAutomaticLock; // @synthesize preventsAutomaticLock=_preventsAutomaticLock;
 @property (readonly, nonatomic) unsigned long long realertCount; // @synthesize realertCount=_realertCount;
 @property (readonly, nonatomic) BOOL requestsFullScreenPresentation; // @synthesize requestsFullScreenPresentation=_requestsFullScreenPresentation;

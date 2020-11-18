@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class NSString, NSUUID;
+@class ARReferenceImageManager, NSString, NSUUID;
 
-@interface ARReferenceImage : NSObject <NSSecureCoding, NSCopying>
+@interface ARReferenceImage : NSObject <NSSecureCoding>
 {
     NSString *_name;
+    double _estimatedQuality;
+    ARReferenceImageManager *_referenceImageManager;
     struct __CVBuffer *_pixelBuffer;
     struct __CVBuffer *_alphaMask;
     NSUUID *_identifier;
@@ -21,12 +22,15 @@
 }
 
 @property (readonly, nonatomic) struct __CVBuffer *alphaMask; // @synthesize alphaMask=_alphaMask;
+@property double estimatedQuality; // @synthesize estimatedQuality=_estimatedQuality;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) struct CGSize imageSize;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) struct CGSize physicalSize; // @synthesize physicalSize=_physicalSize;
 @property (readonly, nonatomic) struct __CVBuffer *pixelBuffer; // @synthesize pixelBuffer=_pixelBuffer;
+@property (strong) ARReferenceImageManager *referenceImageManager; // @synthesize referenceImageManager=_referenceImageManager;
 
++ (id)referenceImageManager;
 + (id)referenceImagesInGroupNamed:(id)arg1 bundle:(id)arg2;
 + (id)referenceImagesInGroupNamed:(id)arg1 catalog:(id)arg2;
 + (id)referenceImagesInGroupNamed:(id)arg1 catalogName:(id)arg2 bundle:(id)arg3;
@@ -37,11 +41,14 @@
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (void)estimateQualityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)hash;
 - (id)initWithCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3;
-- (id)initWithCIImage:(id)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3 alphaInfo:(unsigned int *)arg4;
+- (id)initWithCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3 addPadding:(BOOL)arg4;
+- (id)initWithCIImage:(id)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3 alphaInfo:(unsigned int *)arg4 addPadding:(BOOL)arg5;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3;
+- (id)initWithPixelBuffer:(struct __CVBuffer *)arg1 orientation:(unsigned int)arg2 physicalWidth:(double)arg3 addPadding:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

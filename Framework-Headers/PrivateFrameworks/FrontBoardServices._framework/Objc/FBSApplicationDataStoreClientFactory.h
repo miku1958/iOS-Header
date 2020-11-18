@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 @protocol FBSApplicationDataStoreRepositoryClient, OS_dispatch_queue;
@@ -21,9 +21,9 @@
 @property (strong, nonatomic) NSArray *prefetchedKeys; // @synthesize prefetchedKeys=_prefetchedKeys;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)checkin;
 - (id)checkout;
-- (void)dealloc;
 - (id)init;
 - (void)registerClientClass:(Class)arg1;
 

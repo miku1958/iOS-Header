@@ -4,21 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PrototypeTools/PTSettingsController.h>
+#import <PrototypeToolsUI/PTUISettingsController.h>
+
+@class UINavigationController, _UISettings;
 
 __attribute__((visibility("hidden")))
-@interface _PUSettingsController : PTSettingsController
+@interface _PUSettingsController : PTUISettingsController
 {
+    UINavigationController *_searchNavigationController;
+    _UISettings *_rootSettings;
     CDUnknownBlockType _onViewDidDisappearBlock;
     CDUnknownBlockType _dismissButtonFactory;
+    CDUnknownBlockType _searchBarButtonItemFactory;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType dismissButtonFactory; // @synthesize dismissButtonFactory=_dismissButtonFactory;
 @property (copy, nonatomic) CDUnknownBlockType onViewDidDisappearBlock; // @synthesize onViewDidDisappearBlock=_onViewDidDisappearBlock;
+@property (readonly, nonatomic) _UISettings *rootSettings; // @synthesize rootSettings=_rootSettings;
+@property (copy, nonatomic) CDUnknownBlockType searchBarButtonItemFactory; // @synthesize searchBarButtonItemFactory=_searchBarButtonItemFactory;
+@property (readonly, nonatomic) UINavigationController *searchNavigationController; // @synthesize searchNavigationController=_searchNavigationController;
 
 - (void).cxx_destruct;
-- (void)_updateDismissButtonOfViewController:(id)arg1;
+- (void)_invalidateNavigationItems;
+- (void)_updateNavigationItemOfViewController:(id)arg1;
 - (void)callOnViewDidDisappearBlock;
+- (void)handleSearchBarButtonItem:(id)arg1;
+- (id)initWithRootSettings:(id)arg1;
 - (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)viewDidDisappear:(BOOL)arg1;
 

@@ -7,12 +7,16 @@
 #import <NanoTimeKitCompanion/NTKCFaceDetailSectionController.h>
 
 #import <NanoTimeKitCompanion/NTKCFaceDetailToggleCellDelegate-Protocol.h>
+#import <NanoTimeKitCompanion/NTKCUpNextDataSourcesManagerIdentifiersDelegate-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSArray, NSString, NTKCUpNextDataSourcesManager;
 @protocol NTKCFaceDetailDataSourcesSectionDelegate;
 
-@interface NTKCFaceDetailDataSourcesSectionController : NTKCFaceDetailSectionController <NTKCFaceDetailToggleCellDelegate>
+@interface NTKCFaceDetailDataSourcesSectionController : NTKCFaceDetailSectionController <NTKCFaceDetailToggleCellDelegate, NTKCUpNextDataSourcesManagerIdentifiersDelegate>
 {
+    BOOL _showsTitleWhenEmpty;
+    NTKCUpNextDataSourcesManager *_manager;
+    NSString *_headerTitle;
     id<NTKCFaceDetailDataSourcesSectionDelegate> _delegate;
 }
 
@@ -20,17 +24,19 @@
 @property (weak, nonatomic) id<NTKCFaceDetailDataSourcesSectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableArray *rows; // @dynamic rows;
+@property (copy, nonatomic) NSString *headerTitle; // @synthesize headerTitle=_headerTitle;
+@property (strong, nonatomic) NTKCUpNextDataSourcesManager *manager; // @synthesize manager=_manager;
+@property (strong, nonatomic) NSArray *rows; // @dynamic rows;
+@property (nonatomic) BOOL showsTitleWhenEmpty; // @synthesize showsTitleWhenEmpty=_showsTitleWhenEmpty;
 @property (readonly) Class superclass;
 
 + (BOOL)hasDataSourcesSectionForFace:(id)arg1 inGallery:(BOOL)arg2;
 - (void).cxx_destruct;
-- (void)_buildRows;
-- (void)_commonInit;
-- (BOOL)_dataSourceAvailableOnGizmo:(id)arg1;
+- (void)_buildRowsWithDataSourceIdentifiers:(id)arg1 donatedAppIdentifiers:(id)arg2;
 - (id)_getDisabledDataSources;
-- (void)dealloc;
+- (void)_updatedDisabledDataSources:(id)arg1;
 - (void)faceDidChange;
+- (void)manager:(id)arg1 didUpdateDataSourceIdentifiers:(id)arg2 donatedIdentifiers:(id)arg3;
 - (id)titleForHeader;
 - (void)toggleCell:(id)arg1 didToggle:(BOOL)arg2;
 

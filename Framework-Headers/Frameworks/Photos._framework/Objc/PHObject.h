@@ -35,6 +35,7 @@
 
 + (id)authorizationAwareFetchResultWithOptions:(id)arg1 fetchBlock:(CDUnknownBlockType)arg2;
 + (id)entityKeyForPropertyKey:(id)arg1;
++ (id)entityKeyMap;
 + (void)extendPropertiesToFetch:(id)arg1 withProperties:(id)arg2;
 + (void)extendPropertiesToFetch:(id)arg1 withPropertySetClass:(Class)arg2;
 + (id)fetchPredicateFromComparisonPredicate:(id)arg1 options:(id)arg2;
@@ -49,6 +50,8 @@
 + (BOOL)managedObjectSupportsFaceState;
 + (BOOL)managedObjectSupportsHiddenState;
 + (BOOL)managedObjectSupportsKeyFaces;
++ (BOOL)managedObjectSupportsMomentShareExpiredState;
++ (BOOL)managedObjectSupportsMomentShareTrashedState;
 + (BOOL)managedObjectSupportsMontage;
 + (BOOL)managedObjectSupportsPendingState;
 + (BOOL)managedObjectSupportsPersonFilters;
@@ -58,6 +61,7 @@
 + (BOOL)managedObjectSupportsVisibilityState;
 + (id)propertiesToFetchWithHint:(unsigned long long)arg1;
 + (unsigned long long)propertyFetchHintsForPropertySets:(id)arg1;
++ (id)propertyKeyForEntityKey:(id)arg1;
 + (id)propertySetAccessorsByPropertySet;
 + (Class)propertySetClassForPropertySet:(id)arg1;
 + (id)propertySetsForPropertyFetchHints:(unsigned long long)arg1;

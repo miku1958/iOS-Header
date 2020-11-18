@@ -15,6 +15,7 @@
     NSString *_articleId;
     NSData *_articleViewingSessionId;
     NSData *_feedViewExposureId;
+    int _groupType;
     NSString *_iadQtoken;
     int _paidSubscriptionConversionPointExposureLocation;
     int _paidSubscriptionConversionPointExposurePresentationReason;
@@ -27,6 +28,7 @@
     BOOL _arrivedFromAd;
     BOOL _subscriptionOnlyArticlePreview;
     struct {
+        unsigned int groupType:1;
         unsigned int paidSubscriptionConversionPointExposureLocation:1;
         unsigned int paidSubscriptionConversionPointExposurePresentationReason:1;
         unsigned int paidSubscriptionConversionPointType:1;
@@ -41,10 +43,12 @@
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
+@property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (nonatomic) BOOL hasArrivedFromAd;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
+@property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasIadQtoken;
 @property (nonatomic) BOOL hasPaidSubscriptionConversionPointExposureLocation;
 @property (nonatomic) BOOL hasPaidSubscriptionConversionPointExposurePresentationReason;
@@ -67,12 +71,14 @@
 @property (nonatomic) int userAction; // @synthesize userAction=_userAction;
 
 - (void).cxx_destruct;
+- (int)StringAsGroupType:(id)arg1;
 - (int)StringAsPaidSubscriptionConversionPointExposureLocation:(id)arg1;
 - (int)StringAsPaidSubscriptionConversionPointType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)groupTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

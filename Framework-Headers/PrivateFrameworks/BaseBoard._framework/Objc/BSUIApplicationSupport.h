@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface BSUIApplicationSupport : NSObject
 {
@@ -12,6 +12,8 @@
 
 + (id)GSEventPortNameForBundleID:(id)arg1;
 + (id)UIRemoteApplicationPortNameForBundleID:(id)arg1;
++ (id)_GSEventPortNameForBundleID:(id)arg1;
++ (id)_UIRemoteApplicationPortNameForBundleID:(id)arg1;
 + (id)defaultEnvironment;
 + (id)defaultMachServicesForBundleID:(id)arg1;
 + (id)generateLaunchJobLabelForBundleID:(id)arg1;

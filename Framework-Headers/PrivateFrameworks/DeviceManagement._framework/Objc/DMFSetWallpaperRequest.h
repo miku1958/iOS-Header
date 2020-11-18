@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSData, NSFileHandle, NSURL;
 
-@interface DMFSetWallpaperRequest : CATTaskRequest
+@interface DMFSetWallpaperRequest : DMFTaskRequest
 {
     NSURL *_imageURL;
     NSData *_imageData;
@@ -21,6 +21,9 @@
 @property (copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property (nonatomic) long long location; // @synthesize location=_location;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

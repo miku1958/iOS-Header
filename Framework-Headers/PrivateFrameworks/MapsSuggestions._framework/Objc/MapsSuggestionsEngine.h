@@ -29,17 +29,20 @@
 
 + (id)defaultCachePath;
 + (id)defaultEngine;
++ (void)load;
 - (void).cxx_destruct;
 - (void)addAdditionalFilter:(id)arg1 forSink:(id)arg2;
 - (BOOL)attachSink:(id)arg1;
 - (id)currentLocation;
 - (BOOL)detachSink:(id)arg1;
 - (id)fakeSource;
-- (void)hintRefreshOfType:(unsigned long long)arg1;
+- (void)hintRefreshOfType:(long long)arg1;
 - (id)initWithManager:(id)arg1;
 - (BOOL)loadStorageFromFile:(id)arg1;
+- (BOOL)loadStorageFromFile:(id)arg1 callback:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
 - (id)manager;
 - (void)removeAdditionalFilter:(id)arg1 forSink:(id)arg2;
+- (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)reset;
 - (BOOL)saveStorageToFile:(id)arg1;
 - (void)setFakeSource:(id)arg1;

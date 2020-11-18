@@ -15,11 +15,12 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityActivateSpotlight;
 - (double)_accessibilityAllowedGeometryOverlap;
+- (id)_accessibilityCurrentFolderIconForPage:(long long)arg1;
 - (BOOL)_accessibilitySBScrollToNextPage;
 - (BOOL)_accessibilitySBScrollToPreviousPage;
+- (id)_accessibilityScrollDescriptionForCurrentPage:(long long)arg1;
 - (id)_accessibilityScrollStatus;
 - (id)_accessibilityScrollStatus:(BOOL)arg1;
-- (id)_accessibilityUpdateCurrentPage:(long long)arg1 post:(BOOL)arg2;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)_axIsRootFolder;
 - (BOOL)accessibilityScroll:(long long)arg1;

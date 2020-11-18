@@ -14,12 +14,6 @@
 @property (nonatomic) BOOL discarded;
 @property (copy, nonatomic) NSString *domain;
 @property (nonatomic) int grade;
-@property (readonly, nonatomic) BOOL hasContext;
-@property (readonly, nonatomic) BOOL hasDiscarded;
-@property (readonly, nonatomic) BOOL hasDomain;
-@property (readonly, nonatomic) BOOL hasGrade;
-@property (readonly, nonatomic) BOOL hasHintRange;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (strong, nonatomic) _CPRange *hintRange;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long timestamp;

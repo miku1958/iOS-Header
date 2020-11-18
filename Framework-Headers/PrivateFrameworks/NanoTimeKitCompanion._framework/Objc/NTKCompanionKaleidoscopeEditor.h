@@ -25,7 +25,7 @@
 - (void)finalizeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateGalleryPreviewResourceDirectoryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)imageForPhotoWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithResourceDirectory:(id)arg1;
+- (id)initWithResourceDirectory:(id)arg1 forDevice:(id)arg2;
 - (void)setAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setPhoto:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setRawImage:(id)arg1 completion:(CDUnknownBlockType)arg2;

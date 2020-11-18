@@ -16,13 +16,13 @@
     NSString *_informativeText;
     FLFollowUpAction *_activateAction;
     FLFollowUpAction *_clearAction;
-    FLFollowUpAction *_dismissAction;
     NSString *_unlockActionLabel;
     double _frequency;
     double _firstNotificationDelay;
     NSSet *_options;
     unsigned long long _sqlID;
     NSDate *_previousNotificationActionDate;
+    FLFollowUpAction *_dismissAction;
     NSDate *_creationDate;
 }
 

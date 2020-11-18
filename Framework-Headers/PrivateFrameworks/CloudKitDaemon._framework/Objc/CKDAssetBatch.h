@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) NSArray *allMMCSItems;
 @property (readonly, nonatomic) NSArray *allMMCSSectionItems;
+@property (readonly, nonatomic) NSArray *allRegularAndSectionAndRereferenceItems;
+@property (readonly, nonatomic) NSArray *allRereferenceMMCSItems;
 @property (strong, nonatomic) NSMutableArray *assetRecords; // @synthesize assetRecords=_assetRecords;
 @property (weak, nonatomic) CKDAssetTokenRequest *assetTokenRequest; // @synthesize assetTokenRequest=_assetTokenRequest;
 @property (strong, nonatomic) CKDAssetZone *assetZone; // @synthesize assetZone=_assetZone;
@@ -37,10 +39,13 @@ __attribute__((visibility("hidden")))
 - (void)addAssetRecord:(id)arg1;
 - (id)allMMCSAndSectionItems;
 - (id)description;
+- (void)failIfNotDoneAllRegularAndSectionAndRereferenceItemsWithError:(id)arg1;
 - (id)firstMMCSItemError;
 - (id)initWithAssetZone:(id)arg1;
-- (BOOL)isEmpty;
+- (BOOL)isEmptyOfAssets;
+- (BOOL)isEmptyOfRereferencesAssets;
 - (BOOL)isPackageSectionBatch;
+- (BOOL)isRereferenceAssetBatch;
 
 @end
 

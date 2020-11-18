@@ -6,11 +6,17 @@
 
 #import <CardKit/NSObject-Protocol.h>
 
-@class NSArray, NSString;
-@protocol CRKCardSectionViewProviderHelping;
+@class NSArray;
+@protocol CRCard, CRCardSection;
 
 @protocol CRKCardSectionViewProviding <NSObject>
-+ (NSString *)cardSectionViewProviderIdentifier;
-- (void)viewConfigurationsForCardSections:(NSArray *)arg1 providerHelper:(id<CRKCardSectionViewProviderHelping>)arg2 reply:(void (^)(BOOL, NSArray *))arg3;
+
+@property (readonly, nonatomic) id<CRCard> card;
+@property (readonly, nonatomic) NSArray *viewConfigurations;
+
+
+@optional
+- (unsigned long long)displayPriorityForCardSection:(id<CRCardSection>)arg1;
+- (BOOL)vetoDisplayOfCardSection:(id<CRCardSection>)arg1;
 @end
 

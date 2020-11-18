@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSError, NSNumber, NSString;
+@class APSOutgoingMessageCheckpointTrace, NSArray, NSData, NSDictionary, NSError, NSNumber, NSString;
 
 @interface IDSDeliveryContext : NSObject
 {
@@ -19,6 +19,7 @@
     NSError *_deliveryError;
     long long _idsResponseCode;
     BOOL _lastCall;
+    APSOutgoingMessageCheckpointTrace *_apsCheckpointTrace;
     NSString *_deviceID;
     NSNumber *_currentAverageRTT;
     NSNumber *_isDeviceBlackedOut;
@@ -26,8 +27,10 @@
     NSString *_wpConnectionErrorDomain;
     NSNumber *_wpConnectionErrorCode;
     NSDictionary *_wpConnectionErrorUserInfo;
+    APSOutgoingMessageCheckpointTrace *_apsdCheckpointTrace;
 }
 
+@property (copy, nonatomic) APSOutgoingMessageCheckpointTrace *apsdCheckpointTrace; // @synthesize apsdCheckpointTrace=_apsdCheckpointTrace;
 @property (copy, nonatomic) NSNumber *currentAverageRTT; // @synthesize currentAverageRTT=_currentAverageRTT;
 @property (copy, nonatomic) NSError *deliveryError; // @synthesize deliveryError=_deliveryError;
 @property (copy, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;

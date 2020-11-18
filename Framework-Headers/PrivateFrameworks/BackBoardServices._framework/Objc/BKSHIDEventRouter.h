@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
@@ -17,16 +17,16 @@
 }
 
 @property (readonly) long long destination; // @synthesize destination=_destination;
-@property (readonly, strong) NSSet *hidEventDescriptors; // @synthesize hidEventDescriptors=_hidEventDescriptors;
+@property (readonly) NSSet *hidEventDescriptors; // @synthesize hidEventDescriptors=_hidEventDescriptors;
 
 + (id)defaultEventRouters;
 + (id)defaultFocusedAppEventRouter;
 + (id)defaultSystemAppEventRouter;
 + (id)routerWithDestination:(long long)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)addHIDEventDescriptors:(id)arg1;
 - (BOOL)containsDescriptor:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (id)dumpContents;
 - (void)encodeWithCoder:(id)arg1;

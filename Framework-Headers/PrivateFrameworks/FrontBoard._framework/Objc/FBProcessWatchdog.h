@@ -17,7 +17,7 @@
 @property (readonly, nonatomic) long long event; // @synthesize event=_event;
 @property (readonly, strong, nonatomic) FBProcessWatchdogEventContext *eventContext; // @synthesize eventContext=_eventContext;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithProcess:(id)arg1 context:(id)arg2 policy:(id)arg3;
 
 @end

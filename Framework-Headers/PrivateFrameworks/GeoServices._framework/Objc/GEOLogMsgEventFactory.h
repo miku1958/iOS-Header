@@ -23,6 +23,8 @@
 - (id)init;
 - (id)logMsgEventForBatchTrafficProbes:(id)arg1;
 - (id)logMsgEventForCacheHitWithCacheType:(int)arg1 cacheHitCount:(unsigned int)arg2 cacheMissCount:(unsigned int)arg3;
+- (id)logMsgEventForClientACKeypressWithQuery:(id)arg1 queryTokens:(id)arg2 acSuggestionEntries:(id)arg3 keyPressStatus:(int)arg4;
+- (id)logMsgEventForClientACResponseWithQuery:(id)arg1 queryTokens:(id)arg2 acSuggestionEntries:(id)arg3;
 - (id)logMsgEventForClientACSuggestionsWithQuery:(id)arg1 queryTokens:(id)arg2 acSuggestionEntries:(id)arg3 selectedIndex:(int)arg4;
 - (id)logMsgEventForCommuteDoomWindow:(id)arg1 exitTime:(id)arg2 destinations:(id)arg3 reason:(long long)arg4 networkRequests:(unsigned long long)arg5 alerts:(unsigned long long)arg6;
 - (id)logMsgEventForDirectionsFeedbacks:(id)arg1 finalLocation:(id)arg2 arrivedAtDestination:(BOOL)arg3 navigationAudioFeedback:(struct GEONavigationAudioFeedback)arg4 durationOfTrip:(double)arg5 durationsInNavigationModes:(id)arg6;
@@ -33,6 +35,7 @@
 - (id)logMsgEventForLogFrameworkMetricType:(int)arg1 metricState:(int)arg2 purgeReason:(int)arg3 logMessageType:(int)arg4;
 - (id)logMsgEventForMapLaunch:(id)arg1 sourceAppId:(id)arg2 isLaunchedFromTTL:(BOOL)arg3 ttlEventTime:(id)arg4;
 - (id)logMsgEventForNetworkService:(int)arg1 requestAppId:(id)arg2 requestErrorDomain:(id)arg3 requestErrorCode:(long long)arg4 requestDataSize:(int)arg5 responseDataSize:(int)arg6 responseTime:(int)arg7 httpResponseStatusCode:(int)arg8 remoteAddressAndPort:(id)arg9;
+- (id)logMsgEventForParkedCarAtLocation:(id)arg1 atTime:(double)arg2 withUncertainty:(double)arg3;
 - (id)logMsgEventForPlaceDataCacheFromAppWithID:(id)arg1;
 - (id)logMsgEventForProactiveSuggestionInteractionForType:(int)arg1 items:(id)arg2 interactedWithItemIndex:(int)arg3 forDuration:(double)arg4;
 - (id)logMsgEventForRealtimeTrafficProbes:(id)arg1;
@@ -45,6 +48,8 @@
 - (id)logMsgEventForTablebookingWithSessionID:(id)arg1 endState:(int)arg2 endView:(int)arg3 bookTableAppId:(id)arg4 muid:(unsigned long long)arg5 blurredReservationTimestamp:(long long)arg6 blurredBookingTimestamp:(long long)arg7 durationOfSessionInSeconds:(double)arg8 installNeeded:(BOOL)arg9 installNeededTappedAppId:(id)arg10 installCompleted:(BOOL)arg11 tableSize:(unsigned int)arg12 addedSpecialRequest:(BOOL)arg13 swipedAvailableTimes:(BOOL)arg14 tappedDatePicker:(BOOL)arg15 errorMessages:(id)arg16;
 - (id)logMsgEventForTelemetricWithEntities:(id)arg1;
 - (id)logMsgEventForTelemetricWithEventKey:(int)arg1 eventValue:(unsigned long long)arg2 eventDetail:(id)arg3;
+- (id)logMsgEventForTileCacheHitAnalyticForRequestReason:(int)arg1 tileSource:(int)arg2 hitCount:(unsigned int)arg3 hitByteCount:(unsigned int)arg4;
+- (id)logMsgEventForTileCacheMissAnalyticForRequestReason:(int)arg1 missType:(int)arg2 missCount:(unsigned int)arg3 missByteCount:(unsigned int)arg4 httpStatus:(unsigned int)arg5 errors:(id)arg6;
 - (id)logMsgEventForTileSetState:(int)arg1 newCoverage:(double)arg2 oldCoverage:(double)arg3 seconds:(double)arg4;
 - (id)logMsgEventForTileUsageWithRequestAppId:(id)arg1 andTileUsageInfo:(id)arg2;
 - (id)logMsgEventForTimeToLeaveHypothesisWithEarlyDepartureDelta:(double)arg1 lateDepartureDelta:(double)arg2 earlyArrivalDelta:(double)arg3 lateArrivalDelta:(double)arg4 rerouteCount:(unsigned long long)arg5 uiNotification:(int)arg6;

@@ -7,41 +7,41 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBHomeEntity-Protocol.h>
 
-@class PBUnknownFields, _INPBString;
+@class NSString, _INPBString;
 
-@interface _INPBHomeEntity : PBCodable <NSCopying>
+@interface _INPBHomeEntity : PBCodable <_INPBHomeEntity, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    int _deviceType;
-    int _entityType;
-    _INPBString *_name;
     struct {
         unsigned int deviceType:1;
         unsigned int entityType:1;
     } _has;
+    int _deviceType;
+    int _entityType;
+    _INPBString *_name;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) int deviceType; // @synthesize deviceType=_deviceType;
 @property (nonatomic) int entityType; // @synthesize entityType=_entityType;
 @property (nonatomic) BOOL hasDeviceType;
 @property (nonatomic) BOOL hasEntityType;
 @property (readonly, nonatomic) BOOL hasName;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsDeviceType:(id)arg1;
 - (int)StringAsEntityType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)deviceTypeAsString:(int)arg1;
 - (id)dictionaryRepresentation;
 - (id)entityTypeAsString:(int)arg1;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -50,8 +50,10 @@
 - (void)_setTransparentFooterView:(id)arg1;
 - (void)_setTransparentHeaderView:(id)arg1;
 - (void)_snippetPunchOutButtonTapped:(id)arg1;
+- (id)accessibilityIdentifier;
 - (void)animateSnippetCancellationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)animateSnippetConfirmationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)animateSnippetResizeToSize:(struct CGSize)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForReuse;

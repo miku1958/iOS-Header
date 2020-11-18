@@ -8,28 +8,33 @@
 
 #import <HomeUI/HFHomeManagerObserver-Protocol.h>
 #import <HomeUI/HUAddPeopleViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUPresentationDelegateHost-Protocol.h>
 #import <HomeUI/HUWallpaperEditingViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUWallpaperPickerInlineViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUWallpaperPickerViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUWallpaperThumbnailCellDelegate-Protocol.h>
 #import <HomeUI/UIImagePickerControllerDelegate-Protocol.h>
 #import <HomeUI/UINavigationControllerDelegate-Protocol.h>
 #import <HomeUI/UITextFieldDelegate-Protocol.h>
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class HFHomeBuilder, HUEditLocationItemManager, HUEditableTextCell, HUEditableTextViewCell, HUHomeUsersCollectionViewController, NSString, UIBarButtonItem;
-@protocol HUEditLocationViewControllerAddLocationDelegate, HUEditLocationViewControllerPresentationDelegate;
+@class HFHomeBuilder, HUEditLocationItemManager, HUEditableTextCell, HUEditableTextViewCell, HUHomeUsersCollectionViewController, HUUserNotificationTopicListModuleController, HUWallpaperPickerInlineViewController, NSString, UIBarButtonItem;
+@protocol HUEditLocationViewControllerAddLocationDelegate, HUPresentationDelegate;
 
-@interface HUEditLocationViewController : HUItemTableViewController <UITextFieldDelegate, UITextViewDelegate, HUWallpaperPickerViewControllerDelegate, HUWallpaperEditingViewControllerDelegate, HUAddPeopleViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, HFHomeManagerObserver>
+@interface HUEditLocationViewController : HUItemTableViewController <UITextFieldDelegate, UITextViewDelegate, HUWallpaperPickerViewControllerDelegate, HUWallpaperEditingViewControllerDelegate, HUAddPeopleViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, HFHomeManagerObserver, HUWallpaperThumbnailCellDelegate, HUWallpaperPickerInlineViewControllerDelegate, HUPresentationDelegateHost>
 {
+    id<HUPresentationDelegate> _presentationDelegate;
     HUHomeUsersCollectionViewController *_usersViewController;
     HFHomeBuilder *_homeBuilder;
-    id<HUEditLocationViewControllerPresentationDelegate> _presentationDelegate;
     id<HUEditLocationViewControllerAddLocationDelegate> _addLocationDelegate;
     unsigned long long _context;
+    HUUserNotificationTopicListModuleController *_notificationTopicModuleController;
     HUEditLocationItemManager *_homeItemManager;
     HUEditableTextCell *_nameCell;
     NSString *_editedName;
     HUEditableTextViewCell *_detailNotesCell;
     NSString *_editedNotes;
+    HUWallpaperPickerInlineViewController *_wallpaperPickerViewController;
     UIBarButtonItem *_savedButtonBarItem;
 }
 
@@ -44,15 +49,18 @@
 @property (readonly, nonatomic) HFHomeBuilder *homeBuilder; // @synthesize homeBuilder=_homeBuilder;
 @property (weak, nonatomic) HUEditLocationItemManager *homeItemManager; // @synthesize homeItemManager=_homeItemManager;
 @property (weak, nonatomic) HUEditableTextCell *nameCell; // @synthesize nameCell=_nameCell;
-@property (weak, nonatomic) id<HUEditLocationViewControllerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
+@property (strong, nonatomic) HUUserNotificationTopicListModuleController *notificationTopicModuleController; // @synthesize notificationTopicModuleController=_notificationTopicModuleController;
+@property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (strong, nonatomic) UIBarButtonItem *savedButtonBarItem; // @synthesize savedButtonBarItem=_savedButtonBarItem;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HUHomeUsersCollectionViewController *usersViewController; // @synthesize usersViewController=_usersViewController;
+@property (readonly, nonatomic) HUWallpaperPickerInlineViewController *wallpaperPickerViewController; // @synthesize wallpaperPickerViewController=_wallpaperPickerViewController;
 
 - (void).cxx_destruct;
 - (void)addButtonPressed:(id)arg1;
-- (void)addPeopleViewControllerDidFinish:(id)arg1;
+- (void)addPeopleViewControllerDidCancel:(id)arg1;
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
+- (id)buildItemModuleControllerForModule:(id)arg1;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;
 - (id)currentTextForTextField:(id)arg1 item:(id)arg2;
@@ -61,18 +69,27 @@
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (id)initWithHomeBuilder:(id)arg1 presentationDelegate:(id)arg2 addLocationDelegate:(id)arg3;
 - (id)initWithHomeBuilder:(id)arg1 presentationDelegate:(id)arg2 addLocationDelegate:(id)arg3 context:(unsigned long long)arg4;
+- (void)scrollToNotificationTopicsAnimated:(BOOL)arg1;
 - (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
+- (BOOL)shouldHideSeparatorsForCell:(id)arg1 indexPath:(id)arg2;
 - (BOOL)shouldManageTextFieldForItem:(id)arg1;
+- (id)showNotificationSettingsForHomeKitObject:(id)arg1 animated:(BOOL)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)textDidChange:(id)arg1 forTextField:(id)arg2 item:(id)arg3;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)textViewDidChange:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
 - (void)updateWallpaper:(id)arg1 image:(id)arg2;
 - (void)viewDidLoad;
 - (void)wallpaperEditing:(id)arg1 didFinishWithWallpaper:(id)arg2 image:(id)arg3;
 - (void)wallpaperEditingDidCancel:(id)arg1;
+- (void)wallpaperPicker:(id)arg1 didReceiveDroppedImage:(id)arg2;
+- (void)wallpaperPicker:(id)arg1 didSelectWallpaper:(id)arg2 withImage:(id)arg3;
 - (void)wallpaperPickerDidFinish:(id)arg1 wallpaper:(id)arg2 image:(id)arg3;
+- (void)wallpaperPickerRequestOpenWallpaperEditor:(id)arg1;
+- (void)wallpaperThumbnailCell:(id)arg1 didReceiveDroppedImage:(id)arg2;
 
 @end
 

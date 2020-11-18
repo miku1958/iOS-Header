@@ -13,7 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_axDetailView;
+- (id)_axScrollView;
 - (void)_axUpdateStateForDetailView;
 - (void)accessibilityDecrement;
 - (void)accessibilityIncrement;

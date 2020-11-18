@@ -13,17 +13,8 @@
 @property (strong, nonatomic) _SFPBColor *backgroundColor;
 @property (nonatomic) BOOL borderless;
 @property (nonatomic) BOOL canBeHidden;
-@property (readonly, nonatomic) BOOL hasBackgroundColor;
-@property (readonly, nonatomic) BOOL hasBorderless;
 @property (nonatomic) BOOL hasBottomPadding;
-@property (readonly, nonatomic) BOOL hasCanBeHidden;
-@property (readonly, nonatomic) BOOL hasHasBottomPadding;
-@property (readonly, nonatomic) BOOL hasHasTopPadding;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerDismissText;
-@property (readonly, nonatomic) BOOL hasPunchoutPickerTitle;
-@property (readonly, nonatomic) BOOL hasSeparatorStyle;
 @property (nonatomic) BOOL hasTopPadding;
-@property (readonly, nonatomic) BOOL hasType;
 @property (copy, nonatomic) NSArray *images;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *punchoutOptions;

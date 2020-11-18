@@ -30,6 +30,7 @@
     BOOL _hasVideo;
     BOOL _isExplicitContent;
     BOOL _isFromBlockedStorefront;
+    BOOL _isHiddenFromAutoFavorites;
     BOOL _isPaid;
     struct {
         unsigned int contentType:1;
@@ -44,6 +45,7 @@
         unsigned int hasVideo:1;
         unsigned int isExplicitContent:1;
         unsigned int isFromBlockedStorefront:1;
+        unsigned int isHiddenFromAutoFavorites:1;
         unsigned int isPaid:1;
     } _has;
 }
@@ -66,6 +68,7 @@
 @property (nonatomic) BOOL hasHasVideo;
 @property (nonatomic) BOOL hasIsExplicitContent;
 @property (nonatomic) BOOL hasIsFromBlockedStorefront;
+@property (nonatomic) BOOL hasIsHiddenFromAutoFavorites;
 @property (nonatomic) BOOL hasIsPaid;
 @property (nonatomic) BOOL hasMinimumNewsVersion;
 @property (nonatomic) BOOL hasOrder;
@@ -77,6 +80,7 @@
 @property (nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
 @property (nonatomic) BOOL isExplicitContent; // @synthesize isExplicitContent=_isExplicitContent;
 @property (nonatomic) BOOL isFromBlockedStorefront; // @synthesize isFromBlockedStorefront=_isFromBlockedStorefront;
+@property (nonatomic) BOOL isHiddenFromAutoFavorites; // @synthesize isHiddenFromAutoFavorites=_isHiddenFromAutoFavorites;
 @property (nonatomic) BOOL isPaid; // @synthesize isPaid=_isPaid;
 @property (nonatomic) long long minimumNewsVersion; // @synthesize minimumNewsVersion=_minimumNewsVersion;
 @property (nonatomic) unsigned long long order; // @synthesize order=_order;

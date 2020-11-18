@@ -24,12 +24,18 @@
     NSDictionary *_purchaseBundleDictionary;
     NSURL *_streamingKeyCertificateURL;
     NSURL *_streamingKeyServerURL;
+    NSURL *_alternateHLSPlaylistURL;
+    NSURL *_alternateHLSKeyServerURL;
+    NSURL *_alternateHLSKeyCertificateURL;
     id _suzeLeaseID;
     CDUnknownBlockType _willBecomeActivePlayerItemHandler;
 }
 
 @property (nonatomic) BOOL allowsAssetCaching; // @synthesize allowsAssetCaching=_allowsAssetCaching;
 @property (nonatomic) BOOL allowsAssetInfoCaching; // @synthesize allowsAssetInfoCaching=_allowsAssetInfoCaching;
+@property (copy, nonatomic) NSURL *alternateHLSKeyCertificateURL; // @synthesize alternateHLSKeyCertificateURL=_alternateHLSKeyCertificateURL;
+@property (copy, nonatomic) NSURL *alternateHLSKeyServerURL; // @synthesize alternateHLSKeyServerURL=_alternateHLSKeyServerURL;
+@property (copy, nonatomic) NSURL *alternateHLSPlaylistURL; // @synthesize alternateHLSPlaylistURL=_alternateHLSPlaylistURL;
 @property (copy, nonatomic) NSString *assetPathExtension; // @synthesize assetPathExtension=_assetPathExtension;
 @property (nonatomic) long long assetProtectionType; // @synthesize assetProtectionType=_assetProtectionType;
 @property (nonatomic) long long assetQualityType; // @synthesize assetQualityType=_assetQualityType;

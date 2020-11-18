@@ -21,7 +21,7 @@
 - (void)cleanupAfterZoom;
 - (void)endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)hideTicks;
-- (id)initWithSize:(struct CGSize)arg1;
+- (id)initWithSize:(struct CGSize)arg1 forDevice:(id)arg2;
 - (void)performWristRaiseAnimation;
 - (void)prepareWristRaiseAnimation;
 - (id)scrubbingObscuredCollectionNodes;

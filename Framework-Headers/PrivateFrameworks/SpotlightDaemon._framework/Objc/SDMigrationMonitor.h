@@ -35,6 +35,8 @@
 - (id)init;
 - (void)monitorDataMigrationWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)registerHandlerWithEventMonitor:(id)arg1;
+- (void)resumeMigrationQueue;
+- (void)suspendMigrationQueue;
 - (void)unlock;
 
 @end

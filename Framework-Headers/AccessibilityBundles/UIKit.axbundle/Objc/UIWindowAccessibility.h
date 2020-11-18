@@ -14,13 +14,14 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)_accessibilityAllRemoteElements;
-- (id)_accessibilityFirstElement;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (long long)_accessibilityInterfaceOrientationForScreenCoordinates;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (id)_accessibilityMarzipanRotors;
 - (id)_accessibilityRemoteElement;
 - (int)_accessibilityRemotePid;
 - (void)_accessibilitySetAllRemoteElements:(id)arg1;
+- (void)_accessibilitySetMarzipanRotors:(id)arg1;
 - (id)_accessibilityUserTestingParent;
 - (unsigned int)_accessibilityWindowContextId;
 - (void)_axListenForRemoteElement;

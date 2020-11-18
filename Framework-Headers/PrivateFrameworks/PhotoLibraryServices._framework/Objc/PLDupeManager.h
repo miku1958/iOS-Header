@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCountedSet, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, PLPhotoLibrary;
 
@@ -18,13 +18,12 @@
     NSMutableSet *_normalInserts;
     NSMutableSet *_cloudInserts;
     PLPhotoLibrary *_photoLibrary;
-    long long _once;
     NSCountedSet *_pauseReasons;
     NSSet *_softPauseReasons;
     double _rebuildStartTime;
 }
 
-@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary;
+@property (readonly, nonatomic) PLPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 
 + (BOOL)_computeHashForAsset:(id)arg1;
 + (id)_hashForFileAtPath:(id)arg1 utiType:(id)arg2;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBKeyView.h>
+#import <UIKitCore/UIKBKeyView.h>
 
-#import <UIKit/UICollectionViewDataSource-Protocol.h>
-#import <UIKit/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
 
 @class NSArray, NSString, UICollectionView, UICollectionViewFlowLayout;
 

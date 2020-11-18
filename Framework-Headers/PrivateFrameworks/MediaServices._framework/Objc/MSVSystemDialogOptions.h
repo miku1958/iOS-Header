@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, NSURL;
 
 @interface MSVSystemDialogOptions : NSObject
 {
@@ -16,12 +16,14 @@
     BOOL _dismissOverlaysOnLockscreen;
     NSString *_alertHeader;
     NSString *_alertMessage;
+    NSURL *_alertIconURL;
     NSArray *_allowedApplicationBundleIDs;
     NSString *_defaultButtonTitle;
     NSString *_alternateButtonTitle;
 }
 
 @property (copy, nonatomic) NSString *alertHeader; // @synthesize alertHeader=_alertHeader;
+@property (copy, nonatomic) NSURL *alertIconURL; // @synthesize alertIconURL=_alertIconURL;
 @property (copy, nonatomic) NSString *alertMessage; // @synthesize alertMessage=_alertMessage;
 @property (copy, nonatomic) NSArray *allowedApplicationBundleIDs; // @synthesize allowedApplicationBundleIDs=_allowedApplicationBundleIDs;
 @property (copy, nonatomic) NSString *alternateButtonTitle; // @synthesize alternateButtonTitle=_alternateButtonTitle;

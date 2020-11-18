@@ -83,13 +83,13 @@
 - (void)_updateNumberOfViews;
 - (void)_updatePhotoViews;
 - (void)_updateSubviewsOrdering;
-- (struct CGRect)frameOfFrontStackItemRelativeToView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isImageHiddenForItemAtIndex:(long long)arg1;
 - (void)layoutSubviews;
 - (id)newLayoutAttributesForItemAtIndex:(long long)arg1 relativeToView:(id)arg2;
 - (id)newLayoutAttributesForVisbleItemsRelativeToView:(id)arg1 maxCount:(long long)arg2;
 - (void)prepareForReuse;
+- (struct CGRect)rectOfStackItemAtIndex:(long long)arg1 inCoordinateSpace:(id)arg2;
 - (void)setBadgeInfo:(struct PXAssetBadgeInfo)arg1 forItemAtIndex:(long long)arg2;
 - (void)setBadgeInfo:(struct PXAssetBadgeInfo)arg1 style:(long long)arg2 forItemAtIndex:(long long)arg3;
 - (void)setCollectionTileLayoutTemplate:(id)arg1 forItemAtIndex:(long long)arg2;

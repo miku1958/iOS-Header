@@ -7,15 +7,18 @@
 #import <objc/NSObject.h>
 
 @class _CDAutoSuConfig;
+@protocol _DKKnowledgeQuerying;
 
 @interface _CDSleepForAutoSu : NSObject
 {
     BOOL _enableCaching;
+    id<_DKKnowledgeQuerying> _knowledgeStore;
     _CDAutoSuConfig *_autoSuConfig;
 }
 
 @property (strong) _CDAutoSuConfig *autoSuConfig; // @synthesize autoSuConfig=_autoSuConfig;
 @property BOOL enableCaching; // @synthesize enableCaching=_enableCaching;
+@property (strong, nonatomic) id<_DKKnowledgeQuerying> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 
 + (id)defaultTuningConfiguration;
 + (id)readConfigurationFromDefaults;
@@ -27,6 +30,7 @@
 - (id)getUnlockAndSoftwareUpdateTimes;
 - (id)getUnlockAndSoftwareUpdateTimesWithConfig:(id)arg1 referenceDate:(id)arg2;
 - (id)init;
+- (id)initWithKnowledgeStore:(id)arg1;
 - (id)makeDictionaryForEventStreamWhenPredictionTemporarilyUnavailable:(id)arg1;
 - (id)predicitLastUnlockForDay:(id)arg1;
 - (id)predictForDate:(id)arg1 fromState:(id)arg2;

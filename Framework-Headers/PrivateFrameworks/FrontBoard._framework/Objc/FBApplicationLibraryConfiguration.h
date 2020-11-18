@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/NSCopying-Protocol.h>
 
@@ -23,8 +23,8 @@
 @property (copy, nonatomic) CDUnknownBlockType installedApplicationFilter; // @synthesize installedApplicationFilter=_installedApplicationFilter;
 @property (copy, nonatomic) CDUnknownBlockType placeholderFilter; // @synthesize placeholderFilter=_placeholderFilter;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 
 @end

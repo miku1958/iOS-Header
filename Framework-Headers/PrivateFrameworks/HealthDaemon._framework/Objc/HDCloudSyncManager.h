@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile;
+@class HDAssertion, HDProfile;
 @protocol OS_dispatch_queue;
 
 @interface HDCloudSyncManager : NSObject
 {
+    HDAssertion *_preparedDatabaseAccessibilityAssertion;
     BOOL _shouldResync;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
@@ -18,24 +19,32 @@
 }
 
 @property (nonatomic) long long inProgressSyncCount; // @synthesize inProgressSyncCount=_inProgressSyncCount;
+@property (strong) HDAssertion *preparedDatabaseAccessibilityAssertion; // @synthesize preparedDatabaseAccessibilityAssertion=_preparedDatabaseAccessibilityAssertion;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (nonatomic) BOOL shouldResync; // @synthesize shouldResync=_shouldResync;
 
++ (void)_containerIdentifiersWithEncryptionSupportEnabled:(BOOL)arg1 accountManateeEnabled:(BOOL)arg2 internalSettingManateeEnabled:(BOOL)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
 - (void)_addFinalProgressUpdateWithTaskTree:(id)arg1 progress:(id)arg2;
-- (void)_cloudSyncContainersForProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_cloudSyncRepositoriesForProfile:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_containerIdentifiersForCurrentAccountWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_containerWithIdentifier:(id)arg1 error:(id *)arg2;
+- (BOOL)_isAccountManateeEnabled;
+- (id)_primaryiCloudAccountAltDSID;
+- (unsigned long long)_primaryiCloudAccountSecurityLevel;
+- (void)dealloc;
 - (id)disableAndDeleteAllSyncDataWithTaskTree:(id)arg1;
 - (void)disableSyncLocallyWithTaskTree:(id)arg1;
 - (id)fetchDescriptionWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3 resultHandler:(CDUnknownBlockType)arg4;
 - (void)fetchSyncStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithProfile:(id)arg1;
 - (id)lastPushForwardProgressDate;
-- (void)queue_cloudSyncContainersWithCompletion:(CDUnknownBlockType)arg1;
+- (void)prepareForSync;
+- (void)queue_cloudSyncRepositoriesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestImmediateResync;
 - (id)resetWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3;
+- (id)syncSessionForSyncStore:(id)arg1 reason:(id)arg2 delegate:(id)arg3 accessibilityAssertion:(id)arg4 excludedStores:(id)arg5;
 - (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3;
 - (id)syncWithOptions:(unsigned long long)arg1 reason:(long long)arg2 taskTree:(id)arg3 permitResync:(BOOL)arg4;

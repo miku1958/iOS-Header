@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSDictionary, NSString, NSURL;
 
@@ -16,6 +16,7 @@
     NSString *rawFileType;
     long long uniqueID;
     long long flashMode;
+    BOOL autoRedEyeReductionEnabled;
     long long HDRMode;
     BOOL EV0PhotoDeliveryEnabled;
     BOOL autoStillImageStabilizationEnabled;
@@ -26,6 +27,8 @@
     BOOL embedsDepthDataInPhoto;
     BOOL depthDataFiltered;
     BOOL cameraCalibrationDataDeliveryEnabled;
+    BOOL portraitEffectsMatteDeliveryEnabled;
+    BOOL embedsPortraitEffectsMatteInPhoto;
     NSDictionary *metadata;
     NSURL *livePhotoMovieFileURL;
     NSURL *livePhotoMovieFileURLForOriginalPhoto;
@@ -34,6 +37,7 @@
     NSArray *livePhotoMovieMetadataForOriginalPhoto;
     NSDictionary *previewPhotoFormat;
     NSDictionary *embeddedThumbnailPhotoFormat;
+    NSDictionary *rawEmbeddedThumbnailPhotoFormat;
     BOOL squareCropEnabled;
     BOOL turboModeEnabled;
     BOOL burstQualityCaptureEnabled;

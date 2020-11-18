@@ -12,8 +12,9 @@
 #import <PhotosEditUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <PhotosEditUI/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSMapTable, NSMutableSet, NSString, PUAdjustmentsMode, PUAdjustmentsModeBar, PUAdjustmentsToolControllerSpec, PXUISnappingController, UIScrollView;
+@class NSArray, NSMapTable, NSMutableSet, NSString, PUAdjustmentsMode, PUAdjustmentsModeBar, PUAdjustmentsStatisticsCache, PUAdjustmentsToolControllerSpec, PXUISnappingController, UIScrollView;
 
+__attribute__((visibility("hidden")))
 @interface PUAdjustmentsToolController : PUPhotoEditToolController <UIScrollViewDelegate, UIGestureRecognizerDelegate, PUAdjustmentsModeBarDataSource, PUAdjustmentsModeBarDelegate, PUPhotoEditVisualLevelSliderDataSource>
 {
     PUAdjustmentsModeBar *_adjustmentsModeBar;
@@ -32,6 +33,8 @@
     NSMutableSet *_cleanSliderThumbnailsModes;
     BOOL _ppt_EverAdjusted;
     double _ppt_scrollDelta;
+    long long _viewLoadingStartTime;
+    PUAdjustmentsStatisticsCache *_statisticsCache;
     PXUISnappingController *__snappingController;
 }
 
@@ -81,9 +84,11 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (BOOL)installLivePhotoPlaybackGestureRecognizer:(id)arg1;
 - (BOOL)installTogglePreviewGestureRecognizer:(id)arg1;
+- (void)invalidateStatisticsCacheWithEditModel:(id)arg1 andUpdate:(BOOL)arg2;
 - (void)loadView;
 - (id)localizedName;
 - (id)localizedResetToolActionTitle;
+- (void)mediaViewIsReady;
 - (void)photoEditModelDidChange;
 - (void)ppt_scrollSelectedSliderByDelta;
 - (void)ppt_selectBWSlider:(CDUnknownBlockType)arg1;
@@ -101,9 +106,11 @@
 - (id)selectedToolbarIcon;
 - (void)setLayoutOrientation:(long long)arg1;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
+- (void)setupWithPhotoEditModel:(id)arg1 editSource:(id)arg2 valuesCalculator:(id)arg3;
 - (void)specDidChange;
 - (id)toolbarIcon;
 - (void)updateViewConstraints;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;

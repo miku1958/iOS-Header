@@ -14,7 +14,6 @@
 - (id)currentLocation;
 - (id)init;
 - (id)previousLocation;
-- (struct NSString *)startLocationUpdatesWithHandler:(CDUnknownBlockType)arg1;
 - (struct NSString *)startLocationUpdatesWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)stopLocationUpdatesForToken:(struct NSString *)arg1;
 

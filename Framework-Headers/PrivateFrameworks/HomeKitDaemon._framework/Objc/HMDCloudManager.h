@@ -85,6 +85,15 @@
 
 + (BOOL)isControllerKeyAvailable;
 - (void).cxx_destruct;
+- (void)__addCKDatabaseOperation:(id)arg1;
+- (void)__deleteRecordWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)__deleteRecordZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)__deleteRecordZonesWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)__fetchAllRecordZonesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)__fetchRecordZoneWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)__fetchSubscriptionWithID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)__saveRecordZone:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)__saveSubscription:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_accountIsActive;
 - (void)_addHomeZoneName:(id)arg1 owner:(id)arg2;
 - (void)_auditProxSetupNotification;
@@ -107,7 +116,6 @@
 - (void)_registerForPushNotifications;
 - (void)_removeAllHomeZonesCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_removeHomeZoneName:(id)arg1;
-- (void)_removeZones:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeZonesTransactions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_resetCloudCache:(CDUnknownBlockType)arg1;
 - (void)_resetCloudDataAndDeleteMetadataForCurrentAccount:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

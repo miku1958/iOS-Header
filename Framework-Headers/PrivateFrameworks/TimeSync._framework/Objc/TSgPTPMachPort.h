@@ -15,7 +15,7 @@
 - (void)dealloc;
 - (id)initWithMatchingDictionary:(id)arg1;
 - (id)initWithService:(unsigned int)arg1;
-- (long long)portType;
+- (int)portType;
 
 @end
 

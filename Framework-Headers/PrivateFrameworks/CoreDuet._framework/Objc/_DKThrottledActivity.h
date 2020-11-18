@@ -6,32 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSCountedSet;
-@protocol _DKThrottledActivityStore;
+@class NSString;
+@protocol _DKSimpleKeyValueStore;
 
 @interface _DKThrottledActivity : NSObject
 {
-    NSCountedSet *_minimumIntervalScheduledActions;
-    NSCountedSet *_delayScheduledActions;
-    id<_DKThrottledActivityStore> _store;
+    NSString *_namespace;
+    id<_DKSimpleKeyValueStore> _store;
 }
 
-@property (strong, nonatomic) id<_DKThrottledActivityStore> store; // @synthesize store=_store;
+@property (strong, nonatomic) id<_DKSimpleKeyValueStore> store; // @synthesize store=_store;
 
 + (id)standardInstance;
 - (void).cxx_destruct;
-- (void)_minimumIntervalScheduledActionsAddActionName:(id)arg1;
-- (BOOL)_minimumIntervalScheduledActionsContainsActionName:(id)arg1;
-- (void)_minimumIntervalScheduledActionsRemoveActionName:(id)arg1;
-- (void)_performNoMoreOftenInSecondsThan:(double)arg1 name:(id)arg2 activityBlock:(CDUnknownBlockType)arg3 throttleBlock:(CDUnknownBlockType)arg4;
-- (void)_performOrScheduleWithTimeInterval:(double)arg1 name:(id)arg2 queue:(id)arg3 activityBlock:(CDUnknownBlockType)arg4 callDepth:(unsigned long long)arg5;
-- (void)_performWithDelayInSecondsOf:(double)arg1 name:(id)arg2 queue:(id)arg3 activityBlock:(CDUnknownBlockType)arg4;
-- (void)clearDateForKey:(id)arg1;
+- (id)activityThrottler;
 - (void)clearHistoryForName:(id)arg1;
-- (id)dateForKey:(id)arg1;
 - (id)description;
 - (id)initWithStore:(id)arg1;
-- (id)keyForName:(id)arg1;
+- (id)initWithStore:(id)arg1 namespace:(id)arg2;
 - (void)performNoMoreOftenInDaysThan:(double)arg1 name:(id)arg2 activityBlock:(CDUnknownBlockType)arg3;
 - (void)performNoMoreOftenInDaysThan:(double)arg1 name:(id)arg2 activityBlock:(CDUnknownBlockType)arg3 throttleBlock:(CDUnknownBlockType)arg4;
 - (void)performNoMoreOftenInHoursThan:(double)arg1 name:(id)arg2 activityBlock:(CDUnknownBlockType)arg3;
@@ -48,7 +40,7 @@
 - (void)performWithMinimumIntervalInHoursOf:(double)arg1 name:(id)arg2 queue:(id)arg3 activityBlock:(CDUnknownBlockType)arg4;
 - (void)performWithMinimumIntervalInMinutesOf:(double)arg1 name:(id)arg2 queue:(id)arg3 activityBlock:(CDUnknownBlockType)arg4;
 - (void)performWithMinimumIntervalInSecondsOf:(double)arg1 name:(id)arg2 queue:(id)arg3 activityBlock:(CDUnknownBlockType)arg4;
-- (void)setDate:(id)arg1 forKey:(id)arg2;
+- (void)setDate:(id)arg1 forName:(id)arg2;
 
 @end
 

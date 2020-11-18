@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -89,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsFillSetFill;
 - (BOOL)supportsLineConnectionStyle;
 - (BOOL)supportsLineTypeNone;
+- (BOOL)supportsRoundedCorners;
 - (BOOL)supportsSeries3DFill;
 - (BOOL)supportsSeriesFill;
 - (BOOL)supportsSeriesGradientFill;

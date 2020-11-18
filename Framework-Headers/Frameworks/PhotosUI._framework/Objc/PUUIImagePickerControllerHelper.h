@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_handleSelectionOfDownloadedAssets:(id)arg1;
 - (id)_imagePickerController;
-- (BOOL)_isPhotosPickerExtensionAvailable;
 - (id)_mediaTypes;
 - (void)_notifyImagePickerOfAssetAvailability:(id)arg1;
 - (id)_pickerProperties;

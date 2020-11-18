@@ -28,10 +28,11 @@ __attribute__((visibility("hidden")))
 - (id)initWithParent:(id)arg1;
 - (struct CGPath *)newDragAndDropHighlightPathForSelection:(id)arg1;
 - (id)p_titleParagraphStyle;
-- (struct CGAffineTransform)p_transformForRenderingRangePtr:(struct _NSRange *)arg1 outElementSize:(struct CGSize *)arg2 outClipRect:(struct CGRect *)arg3 forSubselection:(BOOL)arg4;
+- (struct CGAffineTransform)p_transformForRenderingRangePtr:(struct _NSRange *)arg1 outElementSize:(struct CGSize *)arg2 outClipRect:(struct CGRect *)arg3 forSubselection:(BOOL)arg4 forSearchSelection:(BOOL)arg5;
 - (BOOL)pointHitsTitleRect:(struct CGPoint)arg1;
 - (void)protected_iterateHitChartElements:(struct CGPoint)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)renderersWithRep:(id)arg1;
+- (struct CGAffineTransform)searchSelectionTransformForRenderingRange:(struct _NSRange)arg1 outElementSize:(struct CGSize *)arg2 outClipRect:(struct CGRect *)arg3;
 - (BOOL)shouldPlaceTitleAtCenter;
 - (id)subselectionHaloPositionsForSelections:(id)arg1;
 - (id)subselectionKnobPositionsForSelection:(id)arg1;

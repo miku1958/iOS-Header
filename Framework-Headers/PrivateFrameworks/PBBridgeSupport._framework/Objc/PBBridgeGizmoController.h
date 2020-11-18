@@ -54,12 +54,14 @@
 + (id)warrantyFilePathForLanguageCode:(id)arg1 countryCode:(id)arg2;
 - (void).cxx_destruct;
 - (BOOL)_getActivationData:(BOOL)arg1 forRequest:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)_recordThatWatchFinishedActivating;
 - (BOOL)_sendRemoteCommandWithMessageID:(unsigned short)arg1 withArguments:(id)arg2;
 - (BOOL)_sendResponseToMessage:(id)arg1 withResponseMessageID:(unsigned short)arg2 withArguments:(id)arg3;
 - (void)activationTimeout:(id)arg1;
 - (void)beganAwaitingAbilityToActivate;
 - (void)companionBecameAvailableWantsConfirmation:(id)arg1;
 - (void)companionDidSendLanguageAndLocale:(id)arg1;
+- (void)companionDidSendWirelessCredentials:(id)arg1;
 - (id)customDescriptionOfMessageType:(unsigned short)arg1;
 - (void)doInitialSyncPrep:(id)arg1;
 - (void)enableSiriForGizmoWithCompletion:(CDUnknownBlockType)arg1;
@@ -76,6 +78,7 @@
 - (id)init;
 - (void)invalidateTimeoutTimer;
 - (void)popToControllerType:(id)arg1;
+- (void)prepareForForcedWatchSU:(id)arg1;
 - (void)pushControllerType:(id)arg1;
 - (void)refreshTimeoutTimer;
 - (void)remoteRequestToKeepAlive:(id)arg1;
@@ -94,6 +97,7 @@
 - (BOOL)tellCompanionGizmoBeganActivating;
 - (BOOL)tellCompanionGizmoFailedActivating:(id)arg1;
 - (BOOL)tellCompanionGizmoFinishedActivating;
+- (BOOL)tellCompanionGizmoFinishedActivatingAsDeKOTA;
 - (void)tellCompanionThatGizmoFailedToCreatePasscode:(int)arg1;
 - (void)tellCompanionThatGizmoFinishedSettingPasscode:(BOOL)arg1 isLong:(BOOL)arg2;
 - (void)tellCompanionThatGizmoFinishedUnlockPairing:(BOOL)arg1;

@@ -17,7 +17,9 @@
 
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
++ (id)globalConfiguration;
 + (id)main;
++ (void)setGlobalConfiguration:(id)arg1;
 - (void).cxx_destruct;
 - (void)afterInterval:(double)arg1 async:(CDUnknownBlockType)arg2;
 - (void)assertInside;

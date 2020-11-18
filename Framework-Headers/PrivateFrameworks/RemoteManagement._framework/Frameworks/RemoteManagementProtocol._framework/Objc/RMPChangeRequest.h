@@ -6,11 +6,11 @@
 
 #import <RemoteManagementProtocol/RMPRemoteManagementRequest.h>
 
-#import <RemoteManagementProtocol/CEMRegisteredTypeProtocol-Protocol.h>
+#import <RemoteManagementProtocol/RMPRegisteredTypeProtocol-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface RMPChangeRequest : RMPRemoteManagementRequest <CEMRegisteredTypeProtocol>
+@interface RMPChangeRequest : RMPRemoteManagementRequest <RMPRegisteredTypeProtocol>
 {
     NSString *_syncToken;
     NSArray *_updateDeclarations;
@@ -20,19 +20,19 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSArray *removeDeclarations; // @synthesize removeDeclarations=_removeDeclarations;
+@property (copy, nonatomic) NSArray *removeDeclarations; // @synthesize removeDeclarations=_removeDeclarations;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSString *syncToken; // @synthesize syncToken=_syncToken;
-@property (strong, nonatomic) NSArray *updateDeclarations; // @synthesize updateDeclarations=_updateDeclarations;
+@property (copy, nonatomic) NSString *syncToken; // @synthesize syncToken=_syncToken;
+@property (copy, nonatomic) NSArray *updateDeclarations; // @synthesize updateDeclarations=_updateDeclarations;
 
-+ (id)RemoveDeclarationsItem_allowedKeys;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
++ (id)requestWithUUID:(id)arg1 withSyncToken:(id)arg2 withUpdateDeclarations:(id)arg3 withRemoveDeclarations:(id)arg4;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)loadRequestFromDictionary:(id)arg1 error:(id *)arg2;
+- (id)removeDMFDeclarations;
 - (id)serialize;
-- (id)serializeRemoveDeclarationsItem:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validRemoveDeclarationsItem_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
 
 @end
 

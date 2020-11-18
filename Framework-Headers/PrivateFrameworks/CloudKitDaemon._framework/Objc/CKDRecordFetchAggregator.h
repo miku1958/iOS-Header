@@ -53,7 +53,8 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
-- (void)_addRecordFetchInfo:(id)arg1;
+- (void)_addRecordFetchInfos:(id)arg1;
+- (id)_fetchRecord:(id)arg1 recordReadyHandle:(BOOL *)arg2 withRecordCompletion:(CDUnknownBlockType)arg3;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
 - (void)_finishRecordFetchAggregator;
 - (void)_flushFetchedRecordsToConsumerLocked;
@@ -62,9 +63,10 @@ __attribute__((visibility("hidden")))
 - (void)_lockedSendFetchRequest;
 - (void)_performCallbackForFetchInfoLocked:(id)arg1;
 - (void)_recordFetchesAvailable;
+- (id)activityCreate;
 - (void)dealloc;
 - (id)description;
-- (void)fetchRecordFromResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)fetchRecords:(id)arg1 withPerRecordCompletion:(CDUnknownBlockType)arg2;
 - (void)finishIfAppropriate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;

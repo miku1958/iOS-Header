@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoardUI/NSCopying-Protocol.h>
 #import <BaseBoardUI/_UIBasicAnimationFactory-Protocol.h>
@@ -53,7 +53,7 @@
 + (id)factoryWithSettings:(id)arg1;
 + (id)factoryWithSettings:(id)arg1 timingFunction:(id)arg2;
 + (double)globalSlowDownFactor;
-+ (void)setGlobalSlowDownFactor:(double)arg1;
+- (void).cxx_destruct;
 - (void)_animateWithAdditionalDelay:(double)arg1 options:(unsigned long long)arg2 actions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (id)_initWithSettings:(id)arg1;
@@ -61,7 +61,6 @@
 - (id)_timingFunctionForAnimation;
 - (void)applySettingsToCAAnimation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)factoryWithTimingFunction:(id)arg1;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;

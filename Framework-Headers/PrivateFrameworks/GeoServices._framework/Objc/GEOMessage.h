@@ -9,7 +9,6 @@
 @class GEOApplicationAuditToken, GEOPeer, NSDictionary, NSProgress, NSString;
 @protocol OS_xpc_object;
 
-__attribute__((visibility("hidden")))
 @interface GEOMessage : NSObject
 {
     NSObject<OS_xpc_object> *_xpcMessage;

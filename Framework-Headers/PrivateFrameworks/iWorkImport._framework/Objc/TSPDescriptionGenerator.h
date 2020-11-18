@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSMutableOrderedSet, TSPObjectContext;
 @protocol OS_dispatch_queue;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 + (id)filenameForPackageIdentifier:(unsigned char)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (map_33c58e88 *)_messageAlternateMapFromArchivableContent:(id)arg1;
+- (map_4bea934e *)_messageAlternateMapFromArchivableContent:(id)arg1;
 - (unordered_map_38045d47 *)_strongReferencesFromArchiver:(id)arg1;
 - (void)addArchiver:(id)arg1;
 - (void)addComponent:(id)arg1;

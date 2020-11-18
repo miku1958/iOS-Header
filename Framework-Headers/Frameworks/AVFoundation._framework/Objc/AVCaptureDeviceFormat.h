@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVCaptureDeviceFormatInternal, NSArray, NSString;
 
@@ -38,27 +38,37 @@
 - (id)AVCaptureSessionPresets;
 - (id)_stringForMediaType:(unsigned int)arg1 formatDescription:(struct opaqueCMFormatDescription *)arg2 frameRateRanges:(id)arg3;
 - (void)dealloc;
+- (id)debugDescription;
 - (CDStruct_1b6d18a9)defaultActiveMaxFrameDuration;
 - (CDStruct_1b6d18a9)defaultActiveMinFrameDuration;
+- (float)defaultSimulatedAperture;
 - (id)description;
 - (id)figCaptureSourceDepthDataFormat;
 - (id)figCaptureSourceVideoFormat;
 - (CDStruct_1b6d18a9)highestSupportedVideoFrameDuration;
 - (id)initWithFigCaptureSourceFormat:(id)arg1;
 - (BOOL)isDefaultActiveFormat;
-- (BOOL)isDepthSupported;
-- (BOOL)isDisparitySupported;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isExperimental;
 - (BOOL)isHighResPhotoFormat;
 - (BOOL)isIrisSupported;
 - (BOOL)isIrisVideoStabilizationSupported;
+- (BOOL)isLowLightVideoCaptureSupported;
 - (BOOL)isPhotoFormat;
+- (BOOL)isPortraitEffectsMatteStillImageDeliverySupported;
 - (BOOL)isSISSupported;
 - (BOOL)isStereoFusionSupported;
+- (BOOL)isStillImageDepthSupported;
+- (BOOL)isStillImageDisparitySupported;
+- (BOOL)isStreamingDepthSupported;
+- (BOOL)isStreamingDisparitySupported;
+- (BOOL)isVideoHDRSuspensionSupported;
 - (BOOL)isVideoStabilizationModeSupported:(long long)arg1;
+- (BOOL)isVisionDataDeliverySupported;
 - (BOOL)isWideColorSupported;
 - (CDStruct_1b6d18a9)lowestSupportedVideoFrameDuration;
+- (float)maxSimulatedAperture;
+- (float)minSimulatedAperture;
 - (BOOL)needsPhotoPreviewDPCC;
 - (id)optimizedPhotoFilterNames;
 - (id)optimizedVideoPreviewFilterNames;
@@ -72,8 +82,9 @@
 - (BOOL)supportsDynamicCrop;
 - (BOOL)supportsHighProfileH264;
 - (BOOL)supportsHighResolutionStillImageOutput;
-- (BOOL)supportsLowLightBoost;
 - (BOOL)supportsQuadraHighResolutionStillImageOutput;
+- (BOOL)supportsRedEyeReduction;
+- (long long)videoHDRFlavor;
 - (id)videoZoomSupportedDownscaleStages;
 - (id)videoZoomSupportedUpscaleStages;
 - (id)vtScalingMode;

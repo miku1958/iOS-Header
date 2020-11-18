@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSUUID, TIDocumentState, TITextInputTraits, UITextInputMode;
 
 __attribute__((visibility("hidden")))
 @interface _UIInputViewControllerState : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _needsInputModeSwitchKey;
     TIDocumentState *_documentState;
     TITextInputTraits *_textInputTraits;
     UITextInputMode *_documentInputMode;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSUUID *documentIdentifier; // @synthesize documentIdentifier=_documentIdentifier;
 @property (strong, nonatomic) UITextInputMode *documentInputMode; // @synthesize documentInputMode=_documentInputMode;
 @property (strong, nonatomic) TIDocumentState *documentState; // @synthesize documentState=_documentState;
+@property (nonatomic) BOOL needsInputModeSwitchKey; // @synthesize needsInputModeSwitchKey=_needsInputModeSwitchKey;
 @property (strong, nonatomic) TITextInputTraits *textInputTraits; // @synthesize textInputTraits=_textInputTraits;
 
 + (id)stateForKeyboardState:(id)arg1;

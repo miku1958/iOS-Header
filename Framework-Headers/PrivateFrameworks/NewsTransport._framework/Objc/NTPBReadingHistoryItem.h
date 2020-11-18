@@ -15,10 +15,12 @@
     long long _maxVersionRead;
     long long _maxVersionSeen;
     NSString *_articleID;
+    NSString *_deviceID;
     NTPBDate *_firstSeenDate;
     NTPBDate *_firstSeenDateOfMaxVersionSeen;
     unsigned int _flags;
     NTPBDate *_lastVisitedDate;
+    NSString *_sourceChannelTagID;
     struct {
         unsigned int maxVersionRead:1;
         unsigned int maxVersionSeen:1;
@@ -27,19 +29,23 @@
 }
 
 @property (strong, nonatomic) NSString *articleID; // @synthesize articleID=_articleID;
+@property (strong, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (strong, nonatomic) NTPBDate *firstSeenDate; // @synthesize firstSeenDate=_firstSeenDate;
 @property (strong, nonatomic) NTPBDate *firstSeenDateOfMaxVersionSeen; // @synthesize firstSeenDateOfMaxVersionSeen=_firstSeenDateOfMaxVersionSeen;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (readonly, nonatomic) BOOL hasArticleID;
+@property (readonly, nonatomic) BOOL hasDeviceID;
 @property (readonly, nonatomic) BOOL hasFirstSeenDate;
 @property (readonly, nonatomic) BOOL hasFirstSeenDateOfMaxVersionSeen;
 @property (nonatomic) BOOL hasFlags;
 @property (readonly, nonatomic) BOOL hasLastVisitedDate;
 @property (nonatomic) BOOL hasMaxVersionRead;
 @property (nonatomic) BOOL hasMaxVersionSeen;
+@property (readonly, nonatomic) BOOL hasSourceChannelTagID;
 @property (strong, nonatomic) NTPBDate *lastVisitedDate; // @synthesize lastVisitedDate=_lastVisitedDate;
 @property (nonatomic) long long maxVersionRead; // @synthesize maxVersionRead=_maxVersionRead;
 @property (nonatomic) long long maxVersionSeen; // @synthesize maxVersionSeen=_maxVersionSeen;
+@property (strong, nonatomic) NSString *sourceChannelTagID; // @synthesize sourceChannelTagID=_sourceChannelTagID;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPickerView.h>
+#import <UIKitCore/UIPickerView.h>
 
-#import <UIKit/UIPickerViewDataSource-Protocol.h>
-#import <UIKit/UIPickerViewDelegate-Protocol.h>
-#import <UIKit/UIWebFormControl-Protocol.h>
+#import <UIKitCore/UIPickerViewDataSource-Protocol.h>
+#import <UIKitCore/UIPickerViewDelegate-Protocol.h>
+#import <UIKitCore/UIWebFormControl-Protocol.h>
 
 @class DOMHTMLSelectElement, NSArray, NSString;
 @protocol UIWebSelectedItemPrivate;

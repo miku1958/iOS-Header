@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UILayoutSpacer.h>
+#import <UIKitCore/_UILayoutSpacer.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIOLAGapGuide : _UILayoutSpacer

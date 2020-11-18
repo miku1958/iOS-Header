@@ -24,10 +24,10 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)_activityBundleImageConfiguration;
 - (void)_registerForAirPlayNotifications;
 - (void)_unregisterForAirPlayNotifications;
 - (void)_updateRouteAvailabilityIfNeeded;
-- (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;
 - (void)airPlayControllerRouteAvailabilityChanged:(id)arg1;

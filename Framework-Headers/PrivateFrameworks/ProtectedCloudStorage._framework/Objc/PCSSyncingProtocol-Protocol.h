@@ -14,7 +14,6 @@
 - (void)fetchAllDeviceKeys:(NSDictionary *)arg1 withReply:(void (^)(NSString *, NSData *, NSData *, NSArray *, NSError *))arg2;
 - (void)fetchStats:(void (^)(UserRegistryStats *))arg1;
 - (void)getAllClients:(void (^)(NSDictionary *, NSError *))arg1;
-- (void)getPCSKeyHash:(void (^)(NSData *, NSError *))arg1;
 - (NSArray *)getServicesToRoll;
 - (void)keyRollPending:(NSString *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)manateeStatus:(NSString *)arg1 complete:(void (^)(unsigned int))arg2;

@@ -61,7 +61,6 @@
 - (id)descriptionWithPointer:(BOOL)arg1;
 - (id)deviceForHTTPDevice:(id)arg1;
 - (void)handleServerEnabled:(BOOL)arg1;
-- (id)init;
 - (id)initWithAccountRegistry:(id)arg1;
 - (BOOL)isDeviceConnected:(id)arg1;
 - (id)logIdentifier;

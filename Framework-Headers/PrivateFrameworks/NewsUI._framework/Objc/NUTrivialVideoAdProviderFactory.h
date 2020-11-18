@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI/SXVideoAdProviderFactory-Protocol.h>
+#import <NewsUI/SVVideoAdProviderFactory-Protocol.h>
 
 @class NSString;
 
-@interface NUTrivialVideoAdProviderFactory : NSObject <SXVideoAdProviderFactory>
+@interface NUTrivialVideoAdProviderFactory : NSObject <SVVideoAdProviderFactory>
 {
 }
 

@@ -32,6 +32,7 @@
         BOOL supportsGetPlaceholderTemplate;
         BOOL supportsGetLocalizableDescriptionProvider;
         BOOL supportsGetLocalizableSampleTemplate;
+        BOOL exceptionOnSkippedHandler;
     } _dataSourceFlags;
 }
 

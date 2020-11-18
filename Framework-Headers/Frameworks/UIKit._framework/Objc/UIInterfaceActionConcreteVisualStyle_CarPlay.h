@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInterfaceActionConcreteVisualStyle.h>
+#import <UIKitCore/UIInterfaceActionConcreteVisualStyle.h>
 
-#import <UIKit/UIInterfaceActionConcreteVisualStyleImpl-Protocol.h>
+#import <UIKitCore/UIInterfaceActionConcreteVisualStyleImpl-Protocol.h>
 
 @class NSString;
 

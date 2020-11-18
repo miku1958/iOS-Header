@@ -11,7 +11,7 @@
 #import <PassKitUI/UIScrollViewDelegate-Protocol.h>
 #import <PassKitUI/WLCardViewDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, PKBarcodePassDetailViewController, PKGroup, PKPassView, PKReusablePassViewQueue, UILongPressGestureRecognizer, UIMotionEffectGroup, UIPageControl, UIPanGestureRecognizer, UIScrollView;
+@class NSMutableDictionary, NSString, PKGroup, PKPassView, PKReusablePassViewQueue, UILongPressGestureRecognizer, UIMotionEffectGroup, UIPageControl, UIPanGestureRecognizer, UIScrollView, UIViewController;
 @protocol PKPassGroupViewDelegate;
 
 @interface PKPassGroupView : UIView <WLCardViewDelegate, PKGroupDelegate, UIScrollViewDelegate, UIGestureRecognizerDelegate>
@@ -45,7 +45,7 @@
     UIMotionEffectGroup *_motionEffectGroup;
     BOOL _isAuthenticating;
     id<PKPassGroupViewDelegate> _delegate;
-    PKBarcodePassDetailViewController *_detailsVC;
+    UIViewController *_detailsVC;
     NSString *_passBeingPresented;
     BOOL _groupWasMarkedDeleted;
     BOOL _passBeingPresentedWasDeleted;
@@ -118,15 +118,16 @@
 - (BOOL)passView:(id)arg1 deleteButtonEnabledForPass:(id)arg2;
 - (void)passView:(id)arg1 deleteButtonPressedForPass:(id)arg2;
 - (void)passView:(id)arg1 didPresentPassDetailsViewController:(id)arg2;
-- (void)passView:(id)arg1 resizeButtonPressedForPass:(id)arg2 withBarcode:(BOOL)arg3;
 - (void)passView:(id)arg1 willPresentPassDetailsViewController:(id)arg2;
+- (BOOL)passViewCanShowBarcode:(id)arg1;
 - (void)passViewDidBeginAuthenticating:(id)arg1;
 - (void)passViewDidEndAuthenticating:(id)arg1;
-- (void)passViewDidResize:(id)arg1 animated:(BOOL)arg2;
-- (BOOL)passViewShouldResize:(id)arg1;
+- (id)passViewForIndex:(unsigned long long)arg1;
 - (void)passViewTapped:(id)arg1;
+- (void)passViewUpdateBarcodeVisibility:(id)arg1 animated:(BOOL)arg2;
 - (void)presentDiff:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentPassWithUniqueID:(id)arg1;
+- (void)presentPassWithUniqueID:(id)arg1 withContext:(id)arg2;
 - (void)removeFromSuperview;
 - (void)resizePassViewForPass:(id)arg1 animated:(BOOL)arg2;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
@@ -134,7 +135,9 @@
 - (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setDimmer:(double)arg1 animated:(BOOL)arg2;
+- (void)setFrontmostPassView:(id)arg1 withContext:(id)arg2;
 - (void)setFrontmostPassViewFromPassIndex:(long long)arg1;
+- (void)setFrontmostPassViewFromPassIndex:(long long)arg1 withContext:(id)arg2;
 - (void)setPresentationState:(long long)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;

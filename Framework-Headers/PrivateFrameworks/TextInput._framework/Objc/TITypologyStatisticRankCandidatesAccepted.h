@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) long long lengthOfSelectedCandidates; // @synthesize lengthOfSelectedCandidates=_lengthOfSelectedCandidates;
 @property (readonly, nonatomic) long long lengthOfSelectedPredictions; // @synthesize lengthOfSelectedPredictions=_lengthOfSelectedPredictions;
 
+- (void).cxx_destruct;
 - (void)addLengthOfSelectedCandidate:(id)arg1;
 - (void)addLengthOfSelectedPrediction:(id)arg1;
 - (void)countSelectedAutocorrection:(id)arg1;
@@ -26,7 +27,6 @@
 - (void)countSelectedInputString;
 - (void)countSelectedInputStringToRejectAutocorrection;
 - (void)countSelectedPrediction:(id)arg1 withRank:(unsigned long long)arg2;
-- (void)dealloc;
 - (id)init;
 - (BOOL)isCandidatePrediction:(id)arg1;
 - (void)rankAndCountSelectedCandidate:(id)arg1;

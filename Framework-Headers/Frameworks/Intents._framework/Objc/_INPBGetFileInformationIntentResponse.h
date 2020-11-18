@@ -7,34 +7,34 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBGetFileInformationIntentResponse-Protocol.h>
 
-@class PBUnknownFields, _INPBFileProperty, _INPBString;
+@class NSString, _INPBFileProperty, _INPBString;
 
-@interface _INPBGetFileInformationIntentResponse : PBCodable <NSCopying>
+@interface _INPBGetFileInformationIntentResponse : PBCodable <_INPBGetFileInformationIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    CDStruct_f2ecb737 _has;
+    BOOL _success;
     _INPBString *_entityName;
     _INPBFileProperty *_property;
-    BOOL _success;
-    CDStruct_f2ecb737 _has;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBString *entityName; // @synthesize entityName=_entityName;
 @property (readonly, nonatomic) BOOL hasEntityName;
 @property (readonly, nonatomic) BOOL hasProperty;
 @property (nonatomic) BOOL hasSuccess;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBFileProperty *property; // @synthesize property=_property;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

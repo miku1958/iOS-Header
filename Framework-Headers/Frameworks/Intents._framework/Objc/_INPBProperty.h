@@ -7,30 +7,31 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBProperty-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBIntentSlotValue;
+@class NSString, _INPBIntentSlotValue;
 
-@interface _INPBProperty : PBCodable <NSCopying>
+@interface _INPBProperty : PBCodable <_INPBProperty, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBIntentSlotValue *_payload;
     NSString *_role;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasPayload;
 @property (readonly, nonatomic) BOOL hasRole;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentSlotValue *payload; // @synthesize payload=_payload;
-@property (strong, nonatomic) NSString *role; // @synthesize role=_role;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSString *role; // @synthesize role=_role;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

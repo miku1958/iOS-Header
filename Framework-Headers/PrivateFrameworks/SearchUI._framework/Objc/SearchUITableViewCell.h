@@ -8,8 +8,8 @@
 
 #import <SearchUI/SearchUIKeyboardableNavigationProtocol-Protocol.h>
 
-@class NSArray, NSString, SearchUIDragSource, SearchUIDropTarget, UIView;
-@protocol SearchUIFeedbackDelegateInternal, SearchUIRowModel;
+@class NSArray, NSString, SearchUIDragSource, SearchUIDropTarget, UIView, UIViewController;
+@protocol SearchUIFeedbackDelegateInternal, SearchUIResultShortLook, SearchUIRowModel;
 
 @interface SearchUITableViewCell : UITableViewCell <SearchUIKeyboardableNavigationProtocol>
 {
@@ -20,6 +20,7 @@
     UIView *_sizingContainer;
     SearchUIDragSource *_dragSource;
     SearchUIDropTarget *_dropTarget;
+    UIViewController<SearchUIResultShortLook> *_shortLookViewController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,6 +31,7 @@
 @property (readonly) unsigned long long hash;
 @property BOOL isExpanded; // @synthesize isExpanded=_isExpanded;
 @property (strong) id<SearchUIRowModel> rowModel; // @synthesize rowModel=_rowModel;
+@property (weak) UIViewController<SearchUIResultShortLook> *shortLookViewController; // @synthesize shortLookViewController=_shortLookViewController;
 @property (strong) UIView *sizingContainer; // @synthesize sizingContainer=_sizingContainer;
 @property unsigned long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;

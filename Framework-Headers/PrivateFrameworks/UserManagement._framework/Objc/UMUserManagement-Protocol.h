@@ -12,7 +12,9 @@
 @protocol UMUserManagement <NSObject>
 
 @property (readonly, copy, nonatomic) UMUser *currentUser;
+@property (readonly, nonatomic) BOOL isLoginSession;
 @property (readonly, nonatomic) BOOL isMultiUser;
+@property (readonly, copy, nonatomic) UMUser *loginUser;
 @property (readonly, nonatomic) unsigned long long maxNumberOfUsers;
 
 - (BOOL)canAccessUserProperties;

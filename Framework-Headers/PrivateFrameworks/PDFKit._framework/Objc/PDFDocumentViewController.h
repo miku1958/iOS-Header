@@ -6,6 +6,7 @@
 
 #import <UIKit/UIPageViewController.h>
 
+#import <PDFKit/PDFDocumentPageChangeDelegate-Protocol.h>
 #import <PDFKit/PDFPageBackgroundManagerDelegate-Protocol.h>
 #import <PDFKit/UIPageViewControllerDataSource-Protocol.h>
 #import <PDFKit/UIPageViewControllerDelegate-Protocol.h>
@@ -14,7 +15,7 @@
 @class NSString, PDFDocumentViewControllerPrivate;
 
 __attribute__((visibility("hidden")))
-@interface PDFDocumentViewController : UIPageViewController <PDFPageBackgroundManagerDelegate, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
+@interface PDFDocumentViewController : UIPageViewController <PDFPageBackgroundManagerDelegate, PDFDocumentPageChangeDelegate, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate>
 {
     PDFDocumentViewControllerPrivate *_private;
 }
@@ -37,6 +38,8 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)convertPoint:(struct CGPoint)arg1 toPage:(id)arg2;
 - (id)currentPage;
 - (void)dealloc;
+- (void)didInsertPage:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)didRemovePage:(id)arg1 atIndex:(unsigned long long)arg2;
 - (id)document;
 - (void)enableTextSelectionHandles;
 - (id)findPageViewControllerForPageIndex:(long long)arg1;

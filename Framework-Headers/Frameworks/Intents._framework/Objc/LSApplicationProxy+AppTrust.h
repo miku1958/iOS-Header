@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/LSApplicationProxy.h>
+#import <CoreServices/LSApplicationProxy.h>
 
 @interface LSApplicationProxy (AppTrust)
 - (BOOL)_inapptrust_isFirstParty;

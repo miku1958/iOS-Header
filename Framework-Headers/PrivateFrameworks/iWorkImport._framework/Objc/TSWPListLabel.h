@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, TSDImageProvider, TSDShadow;
 
@@ -47,6 +47,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double width;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)initWithType:(int)arg1 imageProvider:(id)arg2 size:(struct CGSize)arg3 baselineOffset:(double)arg4;
 - (id)initWithType:(int)arg1 labelString:(id)arg2 textLine:(struct __CTLine *)arg3 listNumber:(unsigned long long)arg4 isTateChuYoko:(BOOL)arg5 baselineOffset:(double)arg6;
 - (BOOL)isEqualToListLabel:(id)arg1;

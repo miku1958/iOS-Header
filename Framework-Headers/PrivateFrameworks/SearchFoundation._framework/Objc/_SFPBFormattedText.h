@@ -13,7 +13,6 @@
 
 @interface _SFPBFormattedText : PBCodable <_SFPBFormattedText, NSSecureCoding>
 {
-    CDStruct_87e10b33 _has;
     BOOL _isEmphasized;
     BOOL _isBold;
     int _textColor;
@@ -24,11 +23,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _SFPBImage *glyph; // @synthesize glyph=_glyph;
-@property (readonly, nonatomic) BOOL hasGlyph;
-@property (readonly, nonatomic) BOOL hasIsBold;
-@property (readonly, nonatomic) BOOL hasIsEmphasized;
-@property (readonly, nonatomic) BOOL hasText;
-@property (readonly, nonatomic) BOOL hasTextColor;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isBold; // @synthesize isBold=_isBold;
 @property (nonatomic) BOOL isEmphasized; // @synthesize isEmphasized=_isEmphasized;

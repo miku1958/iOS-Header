@@ -8,7 +8,7 @@
 
 #import <PhotosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSHashTable, NSString, PUBrowsingSession, PUDoubleTapZoomController, PULongPressDragController, PUOneUpBarsController, PUTouchingGestureRecognizer;
+@class NSHashTable, NSString, PUBrowsingSession, PUDoubleTapZoomController, PULongPressDragController, PUOneUpBarsController, PUTouchingGestureRecognizer, UILongPressGestureRecognizer;
 @protocol PUOneUpGestureRecognizerCoordinatorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
         BOOL respondsToShouldAllowIrisGestureRecognizer;
     } _delegateFlags;
     PUTouchingGestureRecognizer *_touchingGestureRecognizer;
+    UILongPressGestureRecognizer *_longPressGestureRecognizer;
     BOOL __needsUpdateGestureRecognizers;
     id<PUOneUpGestureRecognizerCoordinatorDelegate> _delegate;
     PUBrowsingSession *_browsingSession;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)invalidateViewHostingGestureRecognizers;
+- (id)longPressGestureRecognizer;
 
 @end
 

@@ -6,12 +6,12 @@
 
 #import <UIKit/UIMessageActivity.h>
 
-#import <PhotosUI/PUActivity-Protocol.h>
+#import <PhotosUI/PUMomentShareActivity-Protocol.h>
 
 @class NSString, PUActivityItemSourceController;
 
 __attribute__((visibility("hidden")))
-@interface PUMessageActivity : UIMessageActivity <PUActivity>
+@interface PUMessageActivity : UIMessageActivity <PUMomentShareActivity>
 {
     PUActivityItemSourceController *_itemSourceController;
 }
@@ -22,8 +22,13 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) PUActivityItemSourceController *itemSourceController; // @synthesize itemSourceController=_itemSourceController;
 @property (readonly) Class superclass;
 
++ (BOOL)wantsMomentShareLinkForAssetCount:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_prepareWithMomentShareLink:(id)arg1;
+- (id)activityViewController;
 - (BOOL)canPerformWithActivityItems:(id)arg1;
+- (void)performActivity;
+- (void)prepareWithActivityItems:(id)arg1;
 
 @end
 

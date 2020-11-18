@@ -15,6 +15,7 @@
 @interface BFFPasscodeViewController : UIViewController <BFFPasscodeCreationDelegate, BFFPasscodeInputViewDelegate>
 {
     BOOL _footerButtonIsSkip;
+    BOOL _showingSpinner;
     NSObject<BFFPasscodeViewControllerDelegate> *_passcodeCreationDelegate;
     BFFPasscodeCreationManager *_passcodeManager;
 }
@@ -50,8 +51,8 @@
 - (void)passcodeInput:(id)arg1 enteredPasscode:(id)arg2;
 - (void)passcodeInput:(id)arg1 tappedFooterButton:(id)arg2;
 - (void)passcodeInput:(id)arg1 willChangeContents:(id)arg2;
+- (void)passcodeManager:(id)arg1 didSetPasscodeWithSuccess:(BOOL)arg2 error:(id)arg3;
 - (void)passcodeManager:(id)arg1 didTransitionFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
-- (void)passcodeManagerDidSetPasscode:(id)arg1;
 - (void)passcodeManagerWillSetPasscode:(id)arg1;
 - (id)passcodeOptionAlertController;
 - (id)titleForState:(unsigned long long)arg1;

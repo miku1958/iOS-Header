@@ -7,31 +7,32 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBPayloadNeedsValue-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBPayloadNeedsValue : PBCodable <NSCopying>
+@interface _INPBPayloadNeedsValue : PBCodable <_INPBPayloadNeedsValue, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_promptItems;
+    struct _has;
+    NSArray *_promptItems;
 }
 
-@property (strong, nonatomic) NSMutableArray *promptItems; // @synthesize promptItems=_promptItems;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *promptItems; // @synthesize promptItems=_promptItems;
+@property (readonly, nonatomic) unsigned long long promptItemsCount;
+@property (readonly) Class superclass;
 
-+ (id)options;
 + (Class)promptItemsType;
 - (void).cxx_destruct;
 - (void)addPromptItems:(id)arg1;
 - (void)clearPromptItems;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (id)promptItemsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)promptItemsCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

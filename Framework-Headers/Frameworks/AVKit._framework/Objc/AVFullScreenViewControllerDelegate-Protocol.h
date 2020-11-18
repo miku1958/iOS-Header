@@ -6,16 +6,17 @@
 
 #import <AVKit/NSObject-Protocol.h>
 
-@class AVFullScreenViewController, UIResponder, UIView, UIViewController;
-@protocol UIViewControllerTransitioningDelegate;
+@class AVFullScreenViewController, UIResponder, UIView;
+@protocol UIViewControllerTransitionCoordinator;
 
 @protocol AVFullScreenViewControllerDelegate <NSObject>
+- (void)fullScreenViewController:(AVFullScreenViewController *)arg1 viewWillTransitionToSize:(struct CGSize)arg2 coordinator:(id<UIViewControllerTransitionCoordinator>)arg3;
 - (void)fullScreenViewControllerNeedsAppBasedStatusBarAppearanceUpdate:(AVFullScreenViewController *)arg1;
 - (void)fullScreenViewControllerWillBeginFullScreenPresentation:(AVFullScreenViewController *)arg1;
+- (void)fullScreenViewControllerWillEndFullScreenPresentation:(AVFullScreenViewController *)arg1;
 - (UIResponder *)keyCommandResponderForFullScreenViewController:(AVFullScreenViewController *)arg1;
-- (long long)modalPresentationStyleForFullScreenViewController:(AVFullScreenViewController *)arg1 presentingViewController:(UIViewController *)arg2;
+- (long long)preferredStatusStyleForFullScreenViewController:(AVFullScreenViewController *)arg1;
 - (BOOL)prefersStatusBarHiddenForFullScreenViewController:(AVFullScreenViewController *)arg1;
-- (id<UIViewControllerTransitioningDelegate>)transitioningDelegateForFullScreenViewController:(AVFullScreenViewController *)arg1;
 - (UIView *)viewForFullScreenViewController:(AVFullScreenViewController *)arg1;
 @end
 

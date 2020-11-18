@@ -13,7 +13,7 @@
     NSXPCConnection *_connection;
 }
 
-@property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
+@property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 
 + (id)client;
 - (void).cxx_destruct;

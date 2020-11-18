@@ -19,8 +19,9 @@
 @property (strong, nonatomic) TIKeyboardState *keyboardState; // @synthesize keyboardState=_keyboardState;
 @property (strong, nonatomic) TIAutocorrectionList *refinements; // @synthesize refinements=_refinements;
 
++ (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)applyToStatistic:(id)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)shortDescription;

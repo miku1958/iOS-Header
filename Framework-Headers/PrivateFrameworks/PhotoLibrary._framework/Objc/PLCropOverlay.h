@@ -7,10 +7,10 @@
 #import <UIKit/UIView.h>
 
 @class NSString, PLContactPhotoOverlay, PLCropOverlayBottomBar, PLCropOverlayCropView, PLCropOverlayWallpaperBottomBar, PLProgressHUD, UIButton, UIImageView, UILabel, UIToolbar;
+@protocol PLCropOverlayDelegate;
 
 @interface PLCropOverlay : UIView
 {
-    id _delegate;
     PLCropOverlayCropView *_cropView;
     UIImageView *_shadowView;
     UIView *_overlayContainerView;
@@ -37,6 +37,7 @@
     BOOL _displayedInPopover;
     PLContactPhotoOverlay *_contactPhotoOverlay;
     NSString *_defaultOKButtonTitle;
+    id<PLCropOverlayDelegate> _delegate;
     PLCropOverlayBottomBar *__bottomBar;
     UIButton *__cameraCancelButton;
 }
@@ -46,6 +47,7 @@
 @property (strong, nonatomic) UIView *cameraBottomBar;
 @property (readonly, nonatomic) PLContactPhotoOverlay *contactPhotoOverlay; // @synthesize contactPhotoOverlay=_contactPhotoOverlay;
 @property (copy, nonatomic) NSString *defaultOKButtonTitle; // @synthesize defaultOKButtonTitle=_defaultOKButtonTitle;
+@property (weak, nonatomic) id<PLCropOverlayDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isDisplayedInPopover) BOOL displayedInPopover; // @synthesize displayedInPopover=_displayedInPopover;
 @property (nonatomic) BOOL isEditingHomeScreen; // @synthesize isEditingHomeScreen=_isEditingHomeScreen;
 @property (nonatomic) BOOL isEditingLockScreen; // @synthesize isEditingLockScreen=_isEditingLockScreen;
@@ -54,6 +56,7 @@
 @property (nonatomic) BOOL previewMode;
 @property (readonly, nonatomic) PLCropOverlayWallpaperBottomBar *wallpaperBottomBar;
 
+- (void).cxx_destruct;
 - (void)_backgroundSavePhoto:(id)arg1;
 - (void)_createCropView;
 - (void)_fadeOutCompleted:(id)arg1;
@@ -103,7 +106,6 @@
 - (void)setCancelButtonTitle:(id)arg1;
 - (void)setControlsAreVisible:(BOOL)arg1;
 - (void)setCropRectVisible:(BOOL)arg1 duration:(float)arg2;
-- (void)setDelegate:(id)arg1;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setOKButtonShowsCamera:(BOOL)arg1;
 - (void)setOKButtonTitle:(id)arg1;

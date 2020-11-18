@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)_initialDefaultComplicationForSlot:(id)arg1;
++ (id)_initialDefaultComplicationForSlot:(id)arg1 forDevice:(id)arg2;
 - (id)_complicationSlotDescriptors;
 - (long long)_customEditModeForUniqueConfiguration;
 - (id)_customEditModes;

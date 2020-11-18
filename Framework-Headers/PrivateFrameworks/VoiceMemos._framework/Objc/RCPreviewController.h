@@ -28,6 +28,7 @@
     NSHashTable *_weakObservers;
     NSMutableDictionary *_monitoredDispatchSourcesByURL;
     BOOL _useVoiceMemoSettings;
+    BOOL _didJumpTime;
     AVPlayerItem *_AVPlayerItem;
     double _currentTimeDelegateUpdateRate;
     RCAVPlayer *_AVPlayer;
@@ -41,6 +42,7 @@
 @property (nonatomic) double currentTimeDelegateUpdateRate; // @synthesize currentTimeDelegateUpdateRate=_currentTimeDelegateUpdateRate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didJumpTime; // @synthesize didJumpTime=_didJumpTime;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) CDStruct_73a5d3ca playableTimeRange;
 @property (readonly, nonatomic) float rate;
@@ -66,12 +68,15 @@
 - (void)_playerCurrentRateDidChangeToRate:(float)arg1 hadPlaybackItem:(BOOL)arg2;
 - (void)_postDelegateCurrentTimeUpdate;
 - (void)_postDelegateDidBeginPlaybackWithRate:(float)arg1;
+- (void)_postDelegateJumpTimeUpdate;
 - (void)_readyToPlay_playPlayer:(id)arg1;
 - (id)_recreateAVPlayer;
 - (void)_setPreparingToPlay:(BOOL)arg1 notifyObservers:(BOOL)arg2;
 - (void)_stopMonitoringUnderylingAssetPath;
 - (void)addObserver:(id)arg1;
+- (void)beginScrubbing;
 - (void)dealloc;
+- (void)endScrubbing;
 - (void)handlePreviewEnded;
 - (id)init;
 - (void)pause;
@@ -81,6 +86,7 @@
 - (void)playerCurrentTimeDidChange:(id)arg1;
 - (void)playerDidBecomeInvalid:(id)arg1;
 - (void)removeObserver:(id)arg1;
+- (void)sendCurrentTimeUpdates;
 - (void)setRate:(float)arg1;
 - (void)stop;
 

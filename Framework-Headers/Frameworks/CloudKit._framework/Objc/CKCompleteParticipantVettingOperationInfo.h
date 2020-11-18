@@ -18,9 +18,11 @@
     NSString *_routingKey;
     NSData *_encryptedKey;
     NSString *_baseToken;
+    NSString *_displayedHostname;
 }
 
 @property (strong, nonatomic) NSString *baseToken; // @synthesize baseToken=_baseToken;
+@property (strong, nonatomic) NSString *displayedHostname; // @synthesize displayedHostname=_displayedHostname;
 @property (strong, nonatomic) NSData *encryptedKey; // @synthesize encryptedKey=_encryptedKey;
 @property (strong, nonatomic) NSString *routingKey; // @synthesize routingKey=_routingKey;
 @property (strong, nonatomic) NSString *vettingEmail; // @synthesize vettingEmail=_vettingEmail;

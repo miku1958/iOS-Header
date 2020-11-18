@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
@@ -41,6 +41,7 @@
 
 + (BOOL)_isMutable;
 + (id)settings;
+- (void).cxx_destruct;
 - (struct CGRect)bounds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

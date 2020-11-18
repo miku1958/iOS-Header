@@ -11,9 +11,9 @@
     double _starRating;
 }
 
-@property double starRating; // @synthesize starRating=_starRating;
+@property (nonatomic) double starRating; // @synthesize starRating=_starRating;
 
-- (id)observableProperties;
+- (unsigned long long)_itemType;
 
 @end
 

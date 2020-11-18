@@ -12,35 +12,46 @@
 
 @interface CEMApplicationSettingsDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadDiagnosticSubmission;
+    NSNumber *_payloadAppAnalytics;
+    NSNumber *_payloadAllowDiagnosticSubmission;
+    NSArray *_payloadAutonomousSingleAppModePermittedAppIDs;
+    NSNumber *_payloadAllowActivityContinuation;
+    NSNumber *_payloadAllowEnterpriseAppTrust;
+    NSNumber *_payloadAllowDiagnosticSubmissionModification;
+    NSNumber *_payloadAllowAutomaticAppUpdates;
+    NSNumber *_payloadAllowAutomaticAppUpdatesModification;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadAllowActivityContinuation;
-@property (readonly, nonatomic) NSNumber *payloadAllowAppCellularDataModification;
-@property (readonly, nonatomic) NSNumber *payloadAllowDiagnosticSubmission;
-@property (readonly, nonatomic) NSNumber *payloadAllowDiagnosticSubmissionModification;
-@property (readonly, nonatomic) NSNumber *payloadAllowEnterpriseAppTrust;
-@property (readonly, nonatomic) NSNumber *payloadAppAnalytics;
-@property (readonly, nonatomic) NSArray *payloadAutonomousSingleAppModePermittedAppIDs;
-@property (readonly, nonatomic) NSNumber *payloadDiagnosticSubmission;
+@property (copy, nonatomic) NSNumber *payloadAllowActivityContinuation; // @synthesize payloadAllowActivityContinuation=_payloadAllowActivityContinuation;
+@property (copy, nonatomic) NSNumber *payloadAllowAutomaticAppUpdates; // @synthesize payloadAllowAutomaticAppUpdates=_payloadAllowAutomaticAppUpdates;
+@property (copy, nonatomic) NSNumber *payloadAllowAutomaticAppUpdatesModification; // @synthesize payloadAllowAutomaticAppUpdatesModification=_payloadAllowAutomaticAppUpdatesModification;
+@property (copy, nonatomic) NSNumber *payloadAllowDiagnosticSubmission; // @synthesize payloadAllowDiagnosticSubmission=_payloadAllowDiagnosticSubmission;
+@property (copy, nonatomic) NSNumber *payloadAllowDiagnosticSubmissionModification; // @synthesize payloadAllowDiagnosticSubmissionModification=_payloadAllowDiagnosticSubmissionModification;
+@property (copy, nonatomic) NSNumber *payloadAllowEnterpriseAppTrust; // @synthesize payloadAllowEnterpriseAppTrust=_payloadAllowEnterpriseAppTrust;
+@property (copy, nonatomic) NSNumber *payloadAppAnalytics; // @synthesize payloadAppAnalytics=_payloadAppAnalytics;
+@property (copy, nonatomic) NSArray *payloadAutonomousSingleAppModePermittedAppIDs; // @synthesize payloadAutonomousSingleAppModePermittedAppIDs=_payloadAutonomousSingleAppModePermittedAppIDs;
+@property (copy, nonatomic) NSNumber *payloadDiagnosticSubmission; // @synthesize payloadDiagnosticSubmission=_payloadDiagnosticSubmission;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withDiagnosticSubmission:(id)arg2 withAppAnalytics:(id)arg3 withAllowDiagnosticSubmission:(id)arg4 withAutonomousSingleAppModePermittedAppIDs:(id)arg5 withAllowActivityContinuation:(id)arg6 withAllowEnterpriseAppTrust:(id)arg7 withAllowDiagnosticSubmissionModification:(id)arg8 withAllowAutomaticAppUpdates:(id)arg9 withAllowAutomaticAppUpdatesModification:(id)arg10;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

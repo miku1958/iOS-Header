@@ -11,6 +11,7 @@
 @property (nonatomic) BOOL hasDarkBackground;
 
 - (void)startGrowAnimation;
+- (void)startGrowAnimationWithCompletionBlock:(void (^)(void))arg1;
 - (void)startPulseAnimation;
 - (void)startShrinkAnimationWithCompletionBlock:(void (^)(void))arg1;
 - (void)stopAnimation;

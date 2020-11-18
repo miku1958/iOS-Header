@@ -6,7 +6,7 @@
 
 #import <ARKit/ARData-Protocol.h>
 
-@class ARLightEstimate, ARPointCloud, NSArray, NSMutableArray;
+@class ARLightEstimate, ARPointCloud, ARWorldTrackingState, NSArray, NSMutableArray;
 
 @protocol ARResultData <ARData>
 
@@ -16,8 +16,8 @@
 - (ARPointCloud *)featurePoints;
 - (ARLightEstimate *)lightEstimate;
 - (double)timestamp;
-- (CDStruct_ca3abd1f)trackingState;
 - (unsigned long long)worldAlignmentModifiers;
 - (CDStruct_14d5dc5e)worldAlignmentTransform;
+- (ARWorldTrackingState *)worldTrackingState;
 @end
 

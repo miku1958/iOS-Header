@@ -11,10 +11,6 @@
 @protocol _SFPBAppLink <NSObject>
 
 @property (strong, nonatomic) _SFPBPunchout *appPunchout;
-@property (readonly, nonatomic) BOOL hasAppPunchout;
-@property (readonly, nonatomic) BOOL hasImage;
-@property (readonly, nonatomic) BOOL hasImageAlign;
-@property (readonly, nonatomic) BOOL hasTitle;
 @property (strong, nonatomic) _SFPBImage *image;
 @property (nonatomic) int imageAlign;
 @property (readonly, nonatomic) NSData *jsonData;

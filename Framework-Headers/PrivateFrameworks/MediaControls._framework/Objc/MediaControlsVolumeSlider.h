@@ -11,6 +11,7 @@
 }
 
 - (id)_thumbImageForStyle:(long long)arg1;
+- (void)_updateStyle;
 - (id)createThumbView;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
@@ -19,6 +20,7 @@
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2 value:(float)arg3;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

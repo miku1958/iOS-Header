@@ -15,7 +15,7 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_createVideoPlayerViewIfNeeded;
-- (void)_handleTapToPlayVideoGesture;
+- (void)_handleTapToPlayVideoGesture:(id)arg1;
 
 @end
 

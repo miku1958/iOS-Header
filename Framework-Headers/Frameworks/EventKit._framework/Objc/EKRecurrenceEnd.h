@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <EventKit/NSCopying-Protocol.h>
+#import <EventKit/NSSecureCoding-Protocol.h>
 
 @class NSDate;
 
-@interface EKRecurrenceEnd : NSObject <NSCopying>
+@interface EKRecurrenceEnd : NSObject <NSCopying, NSSecureCoding>
 {
     NSDate *_endDate;
     unsigned long long _occurrenceCount;
@@ -22,6 +23,7 @@
 
 + (id)recurrenceEndWithEndDate:(id)arg1;
 + (id)recurrenceEndWithOccurrenceCount:(unsigned long long)arg1;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

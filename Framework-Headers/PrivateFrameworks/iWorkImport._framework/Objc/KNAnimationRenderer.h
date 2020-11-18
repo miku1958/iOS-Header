@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class KNAnimatedSlideView, KNPlaybackSession;
 @protocol KNAnimationPluginContext;
@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)generateTextures;
 - (void)pauseAnimations;
 - (void)pauseAnimationsAtTime:(double)arg1;
+- (void)prepareAnimations;
 - (void)renderTextures;
 - (void)resumeAnimationsIfPaused;
 - (void)resumeAnimationsIfPausedAtTime:(double)arg1;

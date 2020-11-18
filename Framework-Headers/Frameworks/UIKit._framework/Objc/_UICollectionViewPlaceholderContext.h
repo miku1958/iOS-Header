@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UICollectionViewPlaceholderContext-Protocol.h>
-#import <UIKit/_UICollectionViewDropPlaceholderContext-Protocol.h>
+#import <UIKitCore/UICollectionViewPlaceholderContext-Protocol.h>
+#import <UIKitCore/_UICollectionViewDropPlaceholderContext-Protocol.h>
 
 @class NSIndexPath, NSString, NSUUID, UIDragItem, _UIDropAnimationHandlers;
 @protocol _UICollectionViewPlaceholderContextDelegate;

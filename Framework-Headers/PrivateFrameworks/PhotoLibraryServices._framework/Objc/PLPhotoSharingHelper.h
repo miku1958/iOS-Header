@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface PLPhotoSharingHelper : NSObject
 {
@@ -20,6 +20,8 @@
 + (void)_resetServerSideConfigurationDictionary;
 + (long long)_serverLimitValueForKey:(id)arg1 withDefaultResult:(long long)arg2;
 + (id)_transactionWithName:(const char *)arg1;
++ (void)_userDidDeleteSharedAlbum:(id)arg1;
++ (void)_userDidDeleteSharedAssets:(id)arg1;
 + (void)acceptPendingInvitationForAlbum:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)accountMatchesEmail:(id)arg1;
 + (void)accountSettingsChanged;
@@ -78,6 +80,7 @@
 + (void)pollForAlbumListUpdates;
 + (id)prefixForBreadcrumbState:(int)arg1;
 + (void)prioritizeDownloadsForAlbumGUID:(id)arg1;
++ (void)pruneNonRecentlyViewedCloudSharingAssetsInLibrary:(id)arg1;
 + (void)publishCloudSharedAlbumToServer:(id)arg1;
 + (void)publishCloudSharedCommentToServer:(id)arg1;
 + (unsigned long long)purgeSpace:(unsigned long long)arg1;
@@ -94,7 +97,6 @@
 + (id)serverSideConfigurationDictionary;
 + (BOOL)sharedStreamsEnabled;
 + (BOOL)sharedStreamsExplictlyDisabled;
-+ (BOOL)sharedStreamsUIEnabled;
 + (id)sharingPersonID;
 + (id)sharingUsername;
 + (id)streamdVideoCache;

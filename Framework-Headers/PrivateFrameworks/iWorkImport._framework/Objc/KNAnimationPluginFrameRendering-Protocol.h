@@ -6,7 +6,6 @@
 
 #import <iWorkImport/KNAnimationPlugin-Protocol.h>
 
-@class KNAnimatedBuild;
 @protocol KNAnimationPluginContext;
 
 @protocol KNAnimationPluginFrameRendering <KNAnimationPlugin>
@@ -15,7 +14,6 @@
 - (void)renderFrameWithContext:(id<KNAnimationPluginContext>)arg1;
 
 @optional
-+ (BOOL)wantsParameterizedStrokeDrawingReversedWithAnimatedBuild:(KNAnimatedBuild *)arg1;
-+ (BOOL)wantsParameterizedStrokeTexture;
++ (BOOL)shouldRenderNonFrameRenderingTexture;
 @end
 

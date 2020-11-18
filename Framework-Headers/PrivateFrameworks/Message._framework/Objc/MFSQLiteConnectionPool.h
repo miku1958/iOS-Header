@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSLock, NSMutableSet;
-@protocol MFSQLiteConnectionPoolDelegate, OS_dispatch_semaphore, OS_dispatch_source;
+@protocol MFSQLiteConnectionPoolDelegate, OS_dispatch_semaphore;
 
 @interface MFSQLiteConnectionPool : NSObject
 {
@@ -24,7 +24,6 @@
     int _backgroundReadersWaiting;
     NSObject<OS_dispatch_semaphore> *_writerSemaphore;
     int _writersWaiting;
-    NSObject<OS_dispatch_source> *_terminationTimer;
 }
 
 @property (readonly) unsigned long long backgroundReadersWaiting;
@@ -35,15 +34,13 @@
 @property (readonly) unsigned long long writersWaiting;
 
 - (id)_connectionWithType:(unsigned long long)arg1;
-- (void)_interruptActiveConnections;
 - (id)_semaphoreForConnectionType:(unsigned long long)arg1 waitCounter:(int **)arg2;
 - (id)backgroundReaderConnection;
-- (void)cancelTerminationTimer;
 - (void)checkInConnection:(id)arg1;
 - (void)dealloc;
+- (void)detachProtectedDatabase;
 - (void)flush;
 - (id)initWithDelegate:(id)arg1 maxConcurrentBackgroundReaders:(unsigned long long)arg2;
-- (void)interruptConnectionsAfterDelay:(double)arg1;
 - (unsigned long long)maxConcurrentReaders;
 - (id)readerConnection;
 - (id)writerConnection;

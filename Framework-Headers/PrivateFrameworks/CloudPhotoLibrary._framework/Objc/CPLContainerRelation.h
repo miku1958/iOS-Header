@@ -31,6 +31,7 @@
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)proposedIdentifierForItemIdentifier:(id)arg1;
+- (id)proposedScopedIdentifierForItemScopedIdentifier:(id)arg1;
 
 @end
 

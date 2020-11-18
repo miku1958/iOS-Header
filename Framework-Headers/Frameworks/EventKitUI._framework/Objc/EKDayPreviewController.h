@@ -66,6 +66,7 @@
 - (id)initWithDate:(id)arg1 event:(id)arg2 overriddenEventStartDate:(id)arg3 overriddenEventEndDate:(id)arg4;
 - (void)loadView;
 - (struct CGSize)preferredContentSize;
+- (void)reload;
 - (void)renderPressHighlight:(BOOL)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)toggleExpandedState;

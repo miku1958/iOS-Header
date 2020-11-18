@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSTimer, NSDate;
 @protocol BSWatchdogDelegate, BSWatchdogProviding, OS_dispatch_queue;
@@ -25,11 +25,12 @@
 
 @property (strong, nonatomic) id<BSWatchdogDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic, getter=hasFired) BOOL fired; // @synthesize fired=_hasFired;
-@property (readonly, strong, nonatomic) id<BSWatchdogProviding> provider; // @synthesize provider=_provider;
-@property (readonly, strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (readonly, strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, nonatomic) id<BSWatchdogProviding> provider; // @synthesize provider=_provider;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly, nonatomic) double timeout; // @synthesize timeout=_timeout;
 
+- (void).cxx_destruct;
 - (void)_completeWatchdogAfterFiring:(BOOL)arg1;
 - (void)_invalidateTimer;
 - (void)_setupTimerWithInterval:(double)arg1 handler:(CDUnknownBlockType)arg2;

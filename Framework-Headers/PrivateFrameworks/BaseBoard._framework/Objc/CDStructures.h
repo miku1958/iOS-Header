@@ -4,8 +4,6 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSObject;
-
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
@@ -78,11 +76,6 @@ typedef struct {
     id _field3;
     CDUnknownBlockType _field4;
 } CDStruct_7eb2cf46;
-
-typedef struct {
-    unsigned int port;
-    NSObject *endpoint;
-} CDStruct_28fcad39;
 
 typedef struct {
     unsigned int _field1;

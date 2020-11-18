@@ -8,6 +8,8 @@
 
 #import <Photos/NSCopying-Protocol.h>
 
+@protocol OS_dispatch_queue;
+
 @interface PHImageRequestOptions : NSObject <NSCopying>
 {
     BOOL _networkAccessAllowed;
@@ -16,6 +18,7 @@
     BOOL _deliveryFirstResultAsynchronously;
     BOOL _allowPlaceholder;
     BOOL _allowSecondaryOpportunisticImage;
+    BOOL _routeToNewImageManager;
     int _requestID;
     long long _version;
     long long _deliveryMode;
@@ -27,6 +30,7 @@
     double _aspectRatioHint;
     double _downloadUpdateInterval;
     CDUnknownBlockType _cachingCompletedHandler;
+    NSObject<OS_dispatch_queue> *_resultHandlerQueue;
     struct CGRect _normalizedCropRect;
 }
 
@@ -46,6 +50,8 @@
 @property (nonatomic) long long rank; // @synthesize rank=_rank;
 @property (nonatomic) int requestID; // @synthesize requestID=_requestID;
 @property (nonatomic) long long resizeMode; // @synthesize resizeMode=_resizeMode;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *resultHandlerQueue; // @synthesize resultHandlerQueue=_resultHandlerQueue;
+@property (nonatomic) BOOL routeToNewImageManager; // @synthesize routeToNewImageManager=_routeToNewImageManager;
 @property (nonatomic, getter=isSynchronous) BOOL synchronous; // @synthesize synchronous=_synchronous;
 @property (nonatomic) long long version; // @synthesize version=_version;
 

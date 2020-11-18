@@ -24,6 +24,8 @@
 + (id)siriui_mediumWeightBodySizeFont;
 + (id)siriui_mediumWeightBodySubtextSizeFont;
 + (id)siriui_mediumWeightFontWithSize:(double)arg1;
++ (float)siriui_preferredDynamicBodySize;
++ (float)siriui_preferredDynamicBodySubtextSize;
 + (id)siriui_ratingFont;
 + (id)siriui_serverTipFont;
 + (id)siriui_serverTipPrefixFont;

@@ -6,10 +6,10 @@
 
 #import <TextInputCore/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary, NSString, NSURL, TIAutocorrectionList, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TIKeyboardConfiguration, TIKeyboardInput, TIKeyboardLayout, TIKeyboardOutput, TIKeyboardState, TIKeyboardTouchEvent;
+@class NSArray, NSDictionary, NSString, NSURL, TIAutocorrectionList, TICandidateRequestToken, TIKeyboardCandidate, TIKeyboardCandidateResultSet, TIKeyboardConfiguration, TIKeyboardInput, TIKeyboardLayout, TIKeyboardOutput, TIKeyboardState, TIKeyboardTouchEvent;
 
 @protocol TIKeyboardInputManagerLogging <NSObject>
-- (void)logAutocorrections:(TIAutocorrectionList *)arg1 forKeyboardState:(TIKeyboardState *)arg2;
+- (void)logAutocorrections:(TIAutocorrectionList *)arg1 forKeyboardState:(TIKeyboardState *)arg2 requestToken:(TICandidateRequestToken *)arg3;
 - (void)logCandidateResultSet:(TIKeyboardCandidateResultSet *)arg1 forKeyboardState:(TIKeyboardState *)arg2;
 - (void)logHitKeyCode:(long long)arg1 forTouchEvent:(TIKeyboardTouchEvent *)arg2 keyboardState:(TIKeyboardState *)arg3;
 - (void)logKeyboardConfig:(TIKeyboardConfiguration *)arg1 forAdjustedPhraseBoundaryInForwardDirection:(BOOL)arg2 granularity:(int)arg3 keyboardState:(TIKeyboardState *)arg4;

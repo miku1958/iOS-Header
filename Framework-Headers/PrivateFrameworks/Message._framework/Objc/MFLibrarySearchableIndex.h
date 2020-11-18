@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Message/CSSearchableIndexDelegate-Protocol.h>
 #import <Message/MFDiagnosticsGenerator-Protocol.h>
 #import <Message/MFLibrarySearchableIndexVerifierDataSource-Protocol.h>
+#import <Message/MFSearchableIndexSchedulable-Protocol.h>
 
-@class CSSearchableIndex, MFCancelationToken, MFCoalescer, MFLazyCache, MFWeakSet, NSMutableArray, NSMutableSet, NSString, _MFLibrarySearchableIndexBudgetConfiguration, _MFLibrarySearchableIndexPendingRemovals;
-@protocol MFLibrarySearchableIndexDataSource, MFScheduler, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
+@class CSSearchableIndex, MFCancelationToken, MFLazyCache, MFWeakSet, NSMutableArray, NSMutableSet, NSString, _MFLibrarySearchableIndexPendingRemovals;
+@protocol MFLibrarySearchableIndexDataSource, MFScheduler, MFSearchableIndexSchedulableDelegate, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
 
-@interface MFLibrarySearchableIndex : NSObject <MFDiagnosticsGenerator, CSSearchableIndexDelegate, MFLibrarySearchableIndexVerifierDataSource>
+@interface MFLibrarySearchableIndex : NSObject <MFDiagnosticsGenerator, CSSearchableIndexDelegate, MFLibrarySearchableIndexVerifierDataSource, MFSearchableIndexSchedulable>
 {
     NSString *_indexName;
     MFCancelationToken *_cancelationToken;
@@ -24,9 +25,6 @@
     unsigned long long _throttledIndexingBatchSize;
     unsigned long long _throttledDataSourceBatchSize;
     unsigned long long _currentMaximumBatchSize;
-    MFCoalescer *_budgetCoalescer;
-    double _remainingIndexingBudget;
-    long long _remainingIndexingBudgetOverage;
     NSObject<OS_os_activity> *_batchIndexingActivity;
     NSMutableArray *_pendingItems;
     NSMutableSet *_pendingDomainRemovals;
@@ -45,26 +43,30 @@
     BOOL _scheduledProcessing;
     BOOL _scheduledRefresh;
     BOOL _scheduledVerification;
+    BOOL _suspendedForContentProtection;
+    BOOL _dataSourceIndexingPermitted;
     id<MFLibrarySearchableIndexDataSource> _dataSource;
-    _MFLibrarySearchableIndexBudgetConfiguration *_budgetConfiguration;
+    id<MFSearchableIndexSchedulableDelegate> _schedulableDelegate;
     CSSearchableIndex *_csIndex;
 }
 
-@property (readonly, nonatomic) _MFLibrarySearchableIndexBudgetConfiguration *budgetConfiguration; // @synthesize budgetConfiguration=_budgetConfiguration;
 @property (strong, nonatomic) CSSearchableIndex *csIndex; // @synthesize csIndex=_csIndex;
-@property (nonatomic) id<MFLibrarySearchableIndexDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (weak, nonatomic) id<MFLibrarySearchableIndexDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (nonatomic, getter=isDataSourceIndexingPermitted) BOOL dataSourceIndexingPermitted; // @synthesize dataSourceIndexingPermitted=_dataSourceIndexingPermitted;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=_isForeground, setter=_setForeground:) BOOL foreground;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *indexName;
 @property (readonly, nonatomic) unsigned long long pendingIndexItemsCount;
+@property (weak, nonatomic) id<MFSearchableIndexSchedulableDelegate> schedulableDelegate; // @synthesize schedulableDelegate=_schedulableDelegate;
 @property (readonly) Class superclass;
 @property (readonly, getter=_transaction) long long transaction;
 
 + (id)_localClientState;
 + (id)_localClientStateURL;
 + (void)_saveLocalClientState:(id)arg1;
-- (id)_budgetPersistenceKey;
+- (void).cxx_destruct;
 - (void)_coalescingTimerFired;
 - (id)_consumeBatchOfSize:(unsigned long long)arg1;
 - (void)_dataSourceAssignTransaction:(long long)arg1 forIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -77,10 +79,8 @@
 - (void)_getDomainRemovals:(id *)arg1 identifierRemovals:(id *)arg2;
 - (void)_indexItems:(id)arg1 fromRefresh:(BOOL)arg2;
 - (void)_invalidateCache;
-- (void)_logIndexingPowerEventWithIdentifier:(id)arg1 additionalEventData:(id)arg2 usePersistentLog:(BOOL)arg3;
 - (long long)_nextTransaction;
 - (void)_noteNeedsLastClientStateFetch;
-- (void)_persistRemainingIndexingBudgetValue:(id)arg1;
 - (void)_powerStateChanged;
 - (id)_processDomainRemovals:(id)arg1;
 - (void)_processIdentifierRemovals:(id)arg1;
@@ -93,14 +93,14 @@
 - (void)_queueTransitionActive:(BOOL)arg1;
 - (void)_registerDistantFutureSpotlightVerification;
 - (void)_reindexAllSearchableItemsWithOptions:(unsigned long long)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
-- (void)_resetIndexingBudgetTimer;
+- (void)_resume;
 - (void)_scheduleDataSourceRefresh;
 - (void)_scheduleProcessPendingItems;
-- (void)_scheduleResetIndexingBudgetTimer;
 - (void)_scheduleSpotlightVerification;
 - (void)_scheduleSpotlightVerificationOnIndexingQueueWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_startCoalescingTimer;
 - (void)_stopCoalescingTimer;
+- (void)_suspend;
 - (double)_throttleRequestedSize:(unsigned long long *)arg1 action:(CDUnknownBlockType)arg2;
 - (void)_transitionWithBudgetTimeUsed:(double)arg1;
 - (void)_verifySpotlightIndex;
@@ -115,7 +115,6 @@
 - (id)indexedEmptySubjectIdentifers;
 - (id)initWithName:(id)arg1 dataSource:(id)arg2;
 - (id)librarySearchableIndexForSearchableIndexVerifier:(id)arg1;
-- (double)persistedRemainingIndexingBudget;
 - (void)refresh;
 - (void)reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg1;
 - (void)reindexSearchableItemsWithIdentifiers:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
@@ -125,10 +124,11 @@
 - (void)removeItemsWithIdentifiers:(id)arg1 reasons:(id)arg2;
 - (id)requestSpotlightDiagnosticsForMessageRowId:(id)arg1;
 - (void)resume;
+- (void)resumeForContentProtection;
 - (void)searchableIndex:(id)arg1 reindexAllSearchableItemsWithAcknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)searchableIndex:(id)arg1 reindexSearchableItemsWithIdentifiers:(id)arg2 acknowledgementHandler:(CDUnknownBlockType)arg3;
-- (void)setRemainingIndexingBudget:(double)arg1 shouldPersist:(BOOL)arg2;
 - (void)suspend;
+- (void)suspendForContentProtection;
 
 @end
 

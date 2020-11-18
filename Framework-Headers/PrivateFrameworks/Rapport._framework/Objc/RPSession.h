@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CUMobileDeviceSession, NSMutableArray, NSString, RPDevice, UIViewController;
+@class CUMobileDeviceSession, NSMutableArray, NSString, RPDevice;
 @protocol OS_dispatch_queue;
 
 @interface RPSession : NSObject
@@ -25,7 +25,6 @@
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     NSString *_label;
     RPDevice *_peerDevice;
-    UIViewController *_presentingViewController;
     NSString *_serviceType;
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _interruptionHandler;
@@ -39,7 +38,6 @@
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (strong, nonatomic) RPDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
-@property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (copy, nonatomic) CDUnknownBlockType promptForPINHandler; // @synthesize promptForPINHandler=_promptForPINHandler;
 @property (nonatomic) unsigned int securityFlags; // @synthesize securityFlags=_securityFlags;
 @property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;

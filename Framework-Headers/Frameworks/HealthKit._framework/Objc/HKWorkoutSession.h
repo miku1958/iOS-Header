@@ -6,18 +6,27 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKStateMachineDelegate-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
-#import <HealthKit/_HKWorkoutSessionDelegate-Protocol.h>
+#import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKWorkoutConfiguration, NSDate, NSString, _HKWorkoutSession;
+@class HKHealthStore, HKLiveWorkoutBuilder, HKStateMachine, HKTaskServerProxyProvider, HKWorkoutConfiguration, HKWorkoutSessionTaskConfiguration, NSDate, NSString, NSUUID;
 @protocol HKWorkoutSessionDelegate, OS_dispatch_queue;
 
-@interface HKWorkoutSession : NSObject <_HKWorkoutSessionDelegate, NSSecureCoding>
+@interface HKWorkoutSession : NSObject <_HKXPCExportable, HKStateMachineDelegate, NSSecureCoding>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    id<HKWorkoutSessionDelegate> _strongDelegate;
+    NSObject<OS_dispatch_queue> *_clientQueue;
     id<HKWorkoutSessionDelegate> _delegate;
-    _HKWorkoutSession *_privateSession;
+    long long _state;
+    NSDate *_startDate;
+    NSDate *_endDate;
+    HKWorkoutSessionTaskConfiguration *_configuration;
+    HKTaskServerProxyProvider *_proxyProvider;
+    id<HKWorkoutSessionDelegate> _strongDelegate;
+    HKLiveWorkoutBuilder *_associatedWorkoutBuilder;
+    HKStateMachine *_targetStateMachine;
+    HKHealthStore *_healthStore;
 }
 
 @property (readonly) unsigned long long activityType;
@@ -26,24 +35,62 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) NSDate *endDate;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
+@property (readonly, copy, nonatomic) NSUUID *identifier;
+@property (readonly, nonatomic) BOOL isGymKitSession;
 @property (readonly) long long locationType;
-@property (readonly, nonatomic, getter=_privateSession) _HKWorkoutSession *privateSession; // @synthesize privateSession=_privateSession;
 @property (readonly) NSDate *startDate;
 @property (readonly) long long state;
 @property (readonly) Class superclass;
 @property (readonly, copy) HKWorkoutConfiguration *workoutConfiguration;
 
++ (BOOL)_applicationHasRunningWorkout;
++ (void)_unitTest_clearAllRunningWorkouts;
++ (id)clientInterface;
++ (id)serverInterface;
 + (BOOL)supportsSecureCoding;
++ (id)targetWorkoutSessionStateMachineForSessionUUID:(id)arg1;
 - (void).cxx_destruct;
-- (id)_init;
+- (id)_initWithHealthStore:(id)arg1 taskConfiguration:(id)arg2 error:(id *)arg3;
+- (void)_queue_markRecoveryRequired;
+- (BOOL)_queue_shouldAttemptRecovery;
+- (void)_recoverWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_setAssociatedWorkoutBuilder:(id)arg1;
+- (void)_setupWithHealthStore:(id)arg1;
+- (void)_unitTest_discardAssociatedWorkoutBuilder;
+- (id)associatedWorkoutBuilder;
+- (id)associatedWorkoutBuilderWithDevice:(id)arg1 goalType:(unsigned long long)arg2 goal:(id)arg3;
+- (void)client_didChangeToState:(long long)arg1 date:(id)arg2;
+- (void)client_didFailWithError:(id)arg1;
+- (void)client_didGenerateEvents:(id)arg1;
+- (void)client_didUpdateStartDate:(id)arg1 endDate:(id)arg2;
+- (void)client_synchronizeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)connectionInterrupted;
+- (void)connectionInvalidated;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (void)end;
+- (void)endWithCompletion:(CDUnknownBlockType)arg1;
+- (id)exportedInterface;
 - (id)initWithActivityType:(unsigned long long)arg1 locationType:(long long)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 error:(id *)arg2;
-- (void)workoutSession:(id)arg1 didChangeToState:(long long)arg2 fromState:(long long)arg3 date:(id)arg4;
-- (void)workoutSession:(id)arg1 didFailWithError:(id)arg2;
-- (void)workoutSession:(id)arg1 didGenerateEvent:(id)arg2;
-- (void)workoutSession:(id)arg1 didUpdateMetrics:(id)arg2;
+- (id)initWithHealthStore:(id)arg1 configuration:(id)arg2 error:(id *)arg3;
+- (void)pause;
+- (void)pauseWithCompletion:(CDUnknownBlockType)arg1;
+- (void)prepare;
+- (void)prepareWithCompletion:(CDUnknownBlockType)arg1;
+- (id)remoteInterface;
+- (void)resume;
+- (void)resumeWithCompletion:(CDUnknownBlockType)arg1;
+- (void)startActivity;
+- (void)startActivityWithDate:(id)arg1;
+- (void)startActivityWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)stateMachine:(id)arg1 didIgnoreEvent:(long long)arg2 state:(id)arg3;
+- (void)stateMachine:(id)arg1 didTransition:(id)arg2 fromState:(id)arg3 toState:(id)arg4 date:(id)arg5 error:(id)arg6;
+- (void)stopActivity;
+- (void)stopActivityWithDate:(id)arg1;
+- (void)stopActivityWithDate:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

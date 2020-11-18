@@ -6,15 +6,13 @@
 
 #import <SpringBoardFoundation/SBAbstractSpringBoardDefaultDomain.h>
 
-@class NSArray;
-
 @interface SBMiscellaneousDefaults : SBAbstractSpringBoardDefaultDomain
 {
 }
 
 @property (nonatomic) float backlightLevel; // @dynamic backlightLevel;
 @property (nonatomic) long long dataPlanActivationPromptCount; // @dynamic dataPlanActivationPromptCount;
-@property (readonly, nonatomic) NSArray *fakeDuetTriggers; // @dynamic fakeDuetTriggers;
+@property (nonatomic) BOOL suppressAlertsForKeynote; // @dynamic suppressAlertsForKeynote;
 @property (readonly, nonatomic) BOOL suppressNoSimAlert; // @dynamic suppressNoSimAlert;
 @property (readonly, nonatomic) BOOL walletPreArmForceLockButton; // @dynamic walletPreArmForceLockButton;
 

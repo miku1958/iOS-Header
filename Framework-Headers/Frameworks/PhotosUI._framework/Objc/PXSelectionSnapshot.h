@@ -18,9 +18,11 @@
 @property (readonly, nonatomic) PXIndexPathSet *selectedIndexPaths; // @synthesize selectedIndexPaths=_selectedIndexPaths;
 
 - (void).cxx_destruct;
+- (BOOL)areAllItemsSelected;
 - (id)description;
 - (id)init;
 - (id)initWithDataSource:(id)arg1 selectedIndexPaths:(id)arg2;
+- (BOOL)isAnyItemSelected;
 - (BOOL)isIndexPathSelected:(struct PXSimpleIndexPath)arg1;
 
 @end

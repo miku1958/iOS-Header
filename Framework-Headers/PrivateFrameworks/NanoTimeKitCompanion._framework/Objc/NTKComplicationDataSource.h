@@ -6,27 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NTKComplication;
+@class CLKDevice, NTKComplication;
 @protocol NTKComplicationDataSourceDelegate;
 
 @interface NTKComplicationDataSource : NSObject
 {
     NTKComplication *_complication;
     long long _family;
+    CLKDevice *_device;
     id<NTKComplicationDataSourceDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) NTKComplication *complication; // @synthesize complication=_complication;
 @property (weak, nonatomic) id<NTKComplicationDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) CLKDevice *device; // @synthesize device=_device;
 @property (readonly, nonatomic) long long family; // @synthesize family=_family;
 @property (readonly, nonatomic) BOOL supportsTapAction;
 @property (readonly, nonatomic) unsigned long long timelineAnimationBehavior;
 
-+ (BOOL)acceptsComplicationFamily:(long long)arg1;
-+ (BOOL)acceptsComplicationType:(unsigned long long)arg1;
-+ (BOOL)acceptsComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2;
-+ (Class)dataSourceClassForComplicationType:(unsigned long long)arg1 family:(long long)arg2;
++ (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
++ (BOOL)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
++ (BOOL)acceptsComplicationType:(unsigned long long)arg1 withFamily:(long long)arg2 forDevice:(id)arg3;
++ (Class)dataSourceClassForComplicationType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
++ (Class)richComplicationDisplayViewClassForType:(unsigned long long)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (void).cxx_destruct;
+- (BOOL)alwaysShowIdealizedTemplateInSwitcher;
 - (void)becomeActive;
 - (void)becomeInactive;
 - (id)complicationApplicationIdentifier;
@@ -41,7 +45,7 @@
 - (void)getTimelineEntriesAfterDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getTimelineEntriesBeforeDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getTimelineStartDateWithHandler:(CDUnknownBlockType)arg1;
-- (id)initWithComplication:(id)arg1 family:(long long)arg2;
+- (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (id)lockedTemplate;
 - (void)pause;
 - (void)pauseAnimations;

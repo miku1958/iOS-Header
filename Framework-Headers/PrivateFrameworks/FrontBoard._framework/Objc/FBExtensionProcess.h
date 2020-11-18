@@ -17,12 +17,12 @@
 }
 
 @property (readonly, nonatomic, getter=isXPCBundle) BOOL XPCBundle; // @synthesize XPCBundle=_XPCBundle;
-@property (readonly, strong, nonatomic) FBExtensionInfo *extensionInfo; // @synthesize extensionInfo=_extensionInfo;
+@property (readonly, nonatomic) FBExtensionInfo *extensionInfo; // @synthesize extensionInfo=_extensionInfo;
 @property (readonly, copy, nonatomic) NSString *hostBundleID; // @synthesize hostBundleID=_hostBundleID;
 @property (readonly, nonatomic) int hostPID; // @synthesize hostPID=_hostPID;
-@property (readonly, nonatomic) FBProcess *hostProcess; // @dynamic hostProcess;
+@property (readonly, weak, nonatomic) FBProcess *hostProcess; // @dynamic hostProcess;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)initWithBundleID:(id)arg1 pid:(int)arg2 callOutQueue:(id)arg3;
 - (BOOL)isExtensionProcess;
 - (id)succinctDescriptionBuilder;

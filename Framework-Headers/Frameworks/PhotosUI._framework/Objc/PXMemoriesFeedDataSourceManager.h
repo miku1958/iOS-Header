@@ -16,10 +16,8 @@
     NSObject<OS_dispatch_queue> *_privateWorkQueue;
     unsigned long long _workTag;
     BOOL __generatingAdditionalEntries;
-    unsigned long long __firstUngroupedMemoryIndex;
 }
 
-@property (nonatomic, setter=_setFirstUngroupedMemoryIndex:) unsigned long long _firstUngroupedMemoryIndex; // @synthesize _firstUngroupedMemoryIndex=__firstUngroupedMemoryIndex;
 @property (nonatomic, getter=_isGeneratingAdditionalEntries, setter=_setGeneratingAdditionalEntries:) BOOL _generatingAdditionalEntries; // @synthesize _generatingAdditionalEntries=__generatingAdditionalEntries;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

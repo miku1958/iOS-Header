@@ -7,34 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBPaymentMethodList-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBCondition;
+@class NSArray, NSString, _INPBCondition;
 
-@interface _INPBPaymentMethodList : PBCodable <NSCopying>
+@interface _INPBPaymentMethodList : PBCodable <_INPBPaymentMethodList, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBCondition *_condition;
-    NSMutableArray *_paymentMethods;
+    NSArray *_paymentMethods;
 }
 
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCondition;
-@property (strong, nonatomic) NSMutableArray *paymentMethods; // @synthesize paymentMethods=_paymentMethods;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSArray *paymentMethods; // @synthesize paymentMethods=_paymentMethods;
+@property (readonly, nonatomic) unsigned long long paymentMethodsCount;
+@property (readonly) Class superclass;
 
-+ (id)options;
 + (Class)paymentMethodsType;
 - (void).cxx_destruct;
 - (void)addPaymentMethods:(id)arg1;
 - (void)clearPaymentMethods;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (id)paymentMethodsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)paymentMethodsCount;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

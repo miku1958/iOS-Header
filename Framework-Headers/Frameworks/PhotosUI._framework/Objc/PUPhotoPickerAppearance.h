@@ -8,6 +8,7 @@
 
 @class NSDictionary, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoPickerAppearance : NSObject
 {
     BOOL _navigationBarIsTranslucent;

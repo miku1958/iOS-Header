@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIViewControllerPreviewingDelegate-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIViewControllerPreviewingDelegate-Protocol.h>
 
 @class NSString, UIStoryboardPreviewingSegueTemplateStorage, UIView, UIViewController;
 @protocol UIViewControllerPreviewing;

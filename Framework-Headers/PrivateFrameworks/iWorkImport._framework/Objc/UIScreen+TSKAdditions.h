@@ -13,14 +13,17 @@
 + (BOOL)tsk_appIsInSplitViewMode;
 + (BOOL)tsk_deviceCanUseSidebar;
 + (double)tsk_expectedScreenScale;
++ (BOOL)tsk_is3xScreenScale;
 + (BOOL)tsk_pad1112H;
 + (BOOL)tsk_pad1366H;
++ (BOOL)tsk_pad1366HOrLarger;
 + (BOOL)tsk_phoneUI568H;
 + (BOOL)tsk_phoneUI568HOrSmaller;
 + (BOOL)tsk_phoneUI667H;
 + (BOOL)tsk_phoneUI667HOrSmaller;
 + (BOOL)tsk_phoneUI736H;
 + (BOOL)tsk_phoneUI812H;
++ (BOOL)tsk_phoneUI896H;
 + (void)tsk_resetScreenScaleCache;
 + (double)tsk_screenScale;
 + (void)tsk_setAppIsInDarkMode:(BOOL)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/NSCopying-Protocol.h>
 
@@ -40,10 +40,17 @@
     double _bwHueLevelOffset;
     double _bwGrainLevelOffset;
     BOOL _whiteBalanceEnabled;
+    long long _whiteBalanceColorType;
     double _whiteBalanceFaceI;
     double _whiteBalanceFaceQ;
     double _whiteBalanceFaceStrength;
     double _whiteBalanceFaceWarmth;
+    double _whiteBalanceTemperature;
+    double _whiteBalanceTint;
+    double _whiteBalanceGrayWarmth;
+    double _whiteBalanceGrayY;
+    double _whiteBalanceGrayI;
+    double _whiteBalanceGrayQ;
     double _straightenAngleRadiansCW;
     struct CGRect _cropRect;
     long long _cropConstraintWidth;
@@ -71,10 +78,20 @@
     NSDictionary *_fusionParameters;
     BOOL _depthEffectEnabled;
     NSDictionary *_depthEffectSettings;
+    double _depthEffectAperture;
+    double _depthEffectApertureCaptured;
     BOOL _portraitEffectEnabled;
+    BOOL _hasPortraitEffectAdjustment;
     NSDictionary *_portraitEffectSettings;
     NSString *_portraitEffectFilterName;
     long long _portraitEffectFilterVersion;
+    NSString *_rawMethodVersion;
+    BOOL _rawNoiseReductionEnabled;
+    NSNumber *_rawNoiseReductionDetailAmount;
+    NSNumber *_rawNoiseReductionLNRAmount;
+    NSNumber *_rawNoiseReductionCNRAmount;
+    NSNumber *_rawNoiseReductionSharpnessAmount;
+    NSNumber *_rawNoiseReductionContrastAmount;
     long long _inputOrientation;
     struct CGSize _inputSize;
     BOOL _canRenderPortraitEffect;
@@ -108,6 +125,8 @@
 @property (readonly, nonatomic) long long cropConstraintHeight; // @synthesize cropConstraintHeight=_cropConstraintHeight;
 @property (readonly, nonatomic) long long cropConstraintWidth; // @synthesize cropConstraintWidth=_cropConstraintWidth;
 @property (readonly, nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
+@property (readonly, nonatomic) double depthEffectAperture; // @synthesize depthEffectAperture=_depthEffectAperture;
+@property (readonly, nonatomic) double depthEffectApertureCaptured; // @synthesize depthEffectApertureCaptured=_depthEffectApertureCaptured;
 @property (readonly, nonatomic, getter=isDepthEffectEnabled) BOOL depthEffectEnabled; // @synthesize depthEffectEnabled=_depthEffectEnabled;
 @property (readonly, nonatomic) NSDictionary *depthEffectSettings; // @synthesize depthEffectSettings=_depthEffectSettings;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
@@ -118,6 +137,7 @@
 @property (readonly, nonatomic) NSDictionary *fusionParameters; // @synthesize fusionParameters=_fusionParameters;
 @property (readonly, nonatomic) BOOL hasAnyAutoEnhancement;
 @property (readonly, nonatomic) BOOL hasIdentityCrop;
+@property (readonly, nonatomic) BOOL hasPortraitEffectAdjustment; // @synthesize hasPortraitEffectAdjustment=_hasPortraitEffectAdjustment;
 @property (readonly, nonatomic) BOOL hasRedEyeCorrections;
 @property (readonly, nonatomic) BOOL hasStillPhotoTime;
 @property (readonly, nonatomic) double highlightsLevelOffset; // @synthesize highlightsLevelOffset=_highlightsLevelOffset;
@@ -131,6 +151,13 @@
 @property (readonly, nonatomic) NSString *portraitEffectFilterName; // @synthesize portraitEffectFilterName=_portraitEffectFilterName;
 @property (readonly, nonatomic) long long portraitEffectFilterVersion; // @synthesize portraitEffectFilterVersion=_portraitEffectFilterVersion;
 @property (readonly, nonatomic) NSDictionary *portraitEffectSettings; // @synthesize portraitEffectSettings=_portraitEffectSettings;
+@property (readonly, nonatomic) NSString *rawMethodVersion; // @synthesize rawMethodVersion=_rawMethodVersion;
+@property (readonly, nonatomic) NSNumber *rawNoiseReductionCNRAmount; // @synthesize rawNoiseReductionCNRAmount=_rawNoiseReductionCNRAmount;
+@property (readonly, nonatomic) NSNumber *rawNoiseReductionContrastAmount; // @synthesize rawNoiseReductionContrastAmount=_rawNoiseReductionContrastAmount;
+@property (readonly, nonatomic) NSNumber *rawNoiseReductionDetailAmount; // @synthesize rawNoiseReductionDetailAmount=_rawNoiseReductionDetailAmount;
+@property (readonly, nonatomic, getter=isRawNoiseReductionEnabled) BOOL rawNoiseReductionEnabled; // @synthesize rawNoiseReductionEnabled=_rawNoiseReductionEnabled;
+@property (readonly, nonatomic) NSNumber *rawNoiseReductionLNRAmount; // @synthesize rawNoiseReductionLNRAmount=_rawNoiseReductionLNRAmount;
+@property (readonly, nonatomic) NSNumber *rawNoiseReductionSharpnessAmount; // @synthesize rawNoiseReductionSharpnessAmount=_rawNoiseReductionSharpnessAmount;
 @property (readonly, copy, nonatomic) NSArray *redEyeCorrections; // @synthesize redEyeCorrections=_redEyeCorrections;
 @property (readonly, nonatomic) double shadowsLevelOffset; // @synthesize shadowsLevelOffset=_shadowsLevelOffset;
 @property (readonly, nonatomic, getter=isSmartBWEnabled) BOOL smartBWEnabled; // @synthesize smartBWEnabled=_smartBWEnabled;
@@ -148,11 +175,18 @@
 @property (readonly, nonatomic) CDStruct_1b6d18a9 trimEndTime; // @synthesize trimEndTime=_trimEndTime;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 trimStartTime; // @synthesize trimStartTime=_trimStartTime;
 @property (readonly, nonatomic) long long userOrientation; // @synthesize userOrientation=_userOrientation;
+@property (readonly, nonatomic) long long whiteBalanceColorType; // @synthesize whiteBalanceColorType=_whiteBalanceColorType;
 @property (readonly, nonatomic, getter=isWhiteBalanceEnabled) BOOL whiteBalanceEnabled; // @synthesize whiteBalanceEnabled=_whiteBalanceEnabled;
 @property (readonly, nonatomic) double whiteBalanceFaceI; // @synthesize whiteBalanceFaceI=_whiteBalanceFaceI;
 @property (readonly, nonatomic) double whiteBalanceFaceQ; // @synthesize whiteBalanceFaceQ=_whiteBalanceFaceQ;
 @property (readonly, nonatomic) double whiteBalanceFaceStrength; // @synthesize whiteBalanceFaceStrength=_whiteBalanceFaceStrength;
 @property (readonly, nonatomic) double whiteBalanceFaceWarmth; // @synthesize whiteBalanceFaceWarmth=_whiteBalanceFaceWarmth;
+@property (readonly, nonatomic) double whiteBalanceGrayI; // @synthesize whiteBalanceGrayI=_whiteBalanceGrayI;
+@property (readonly, nonatomic) double whiteBalanceGrayQ; // @synthesize whiteBalanceGrayQ=_whiteBalanceGrayQ;
+@property (readonly, nonatomic) double whiteBalanceGrayWarmth; // @synthesize whiteBalanceGrayWarmth=_whiteBalanceGrayWarmth;
+@property (readonly, nonatomic) double whiteBalanceGrayY; // @synthesize whiteBalanceGrayY=_whiteBalanceGrayY;
+@property (readonly, nonatomic) double whiteBalanceTemperature; // @synthesize whiteBalanceTemperature=_whiteBalanceTemperature;
+@property (readonly, nonatomic) double whiteBalanceTint; // @synthesize whiteBalanceTint=_whiteBalanceTint;
 
 + (void)_loadReferenceLevelsFromCIFilterWithName:(id)arg1 attributeKeys:(id)arg2 intoLevelStructs:(CDStruct_183601bc **)arg3;
 + (void)_loadSubfilterReferenceLevelsIfNeeded;

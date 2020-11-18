@@ -7,34 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBConflictingParameter-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBConflictingParameter : PBCodable <NSCopying>
+@interface _INPBConflictingParameter : PBCodable <_INPBConflictingParameter, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_alternateItems;
+    struct _has;
+    NSArray *_alternateItems;
     NSString *_keyPath;
 }
 
-@property (strong, nonatomic) NSMutableArray *alternateItems; // @synthesize alternateItems=_alternateItems;
+@property (copy, nonatomic) NSArray *alternateItems; // @synthesize alternateItems=_alternateItems;
+@property (readonly, nonatomic) unsigned long long alternateItemsCount;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasKeyPath;
-@property (strong, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *keyPath; // @synthesize keyPath=_keyPath;
+@property (readonly) Class superclass;
 
 + (Class)alternateItemsType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addAlternateItems:(id)arg1;
 - (id)alternateItemsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)alternateItemsCount;
 - (void)clearAlternateItems;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

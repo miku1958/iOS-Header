@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventCacheHit, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventDirections, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventNetwork, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStaleResource, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, GEOLogMsgEventWifiConnectionQualityProbe, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray;
+@class GEOLogMsgEventBatchTrafficProbe, GEOLogMsgEventCacheHit, GEOLogMsgEventClientACSuggestions, GEOLogMsgEventCommuteWindow, GEOLogMsgEventDirections, GEOLogMsgEventFullNavTrace, GEOLogMsgEventGenericAppError, GEOLogMsgEventListInteractionSession, GEOLogMsgEventLogFramework, GEOLogMsgEventMapLaunch, GEOLogMsgEventMapsWidgetsInteractionSession, GEOLogMsgEventNetwork, GEOLogMsgEventParkedCar, GEOLogMsgEventPlaceDataCache, GEOLogMsgEventProactiveSuggestionInteractionSession, GEOLogMsgEventRealtimeTrafficProbe, GEOLogMsgEventRefineSearchSession, GEOLogMsgEventStaleResource, GEOLogMsgEventStateTiming, GEOLogMsgEventTelemetric, GEOLogMsgEventTileCacheAnalytic, GEOLogMsgEventTileSetState, GEOLogMsgEventTimeToLeaveHypothesis, GEOLogMsgEventTimeToLeaveInitialTravelTime, GEOLogMsgEventTransitAppLaunch, GEOLogMsgEventUserAction, GEOLogMsgEventWifiConnectionQualityProbe, LOGMSGEVENTLogMsgEventRideBookedSession, LOGMSGEVENTLogMsgEventRideBookingSession, LOGMSGEVENTLogMsgEventTableBookedSession, LOGMSGEVENTLogMsgEventTableBookingSession, NSMutableArray;
 
 @interface GEOLogMsgEvent : PBCodable <NSCopying>
 {
@@ -27,6 +27,7 @@
     GEOLogMsgEventMapLaunch *_mapLaunchEvent;
     GEOLogMsgEventMapsWidgetsInteractionSession *_mapsWidgetsInteractionSession;
     GEOLogMsgEventNetwork *_networkEvent;
+    GEOLogMsgEventParkedCar *_parkedCar;
     GEOLogMsgEventPlaceDataCache *_placeDataCacheEvent;
     GEOLogMsgEventProactiveSuggestionInteractionSession *_proactiveSuggestionInteractionSessionEvent;
     GEOLogMsgEventRealtimeTrafficProbe *_realtimeTrafficProbeCollection;
@@ -38,6 +39,7 @@
     LOGMSGEVENTLogMsgEventTableBookedSession *_tableBookedSession;
     LOGMSGEVENTLogMsgEventTableBookingSession *_tableBookingSession;
     GEOLogMsgEventTelemetric *_telemetric;
+    GEOLogMsgEventTileCacheAnalytic *_tileCacheAnalytic;
     GEOLogMsgEventTileSetState *_tileSetStateEvent;
     GEOLogMsgEventTimeToLeaveHypothesis *_timeToLeaveHypothesisEvent;
     GEOLogMsgEventTimeToLeaveInitialTravelTime *_timeToLeaveInitialTravelTimeEvent;
@@ -71,6 +73,7 @@
 @property (readonly, nonatomic) BOOL hasMapLaunchEvent;
 @property (readonly, nonatomic) BOOL hasMapsWidgetsInteractionSession;
 @property (readonly, nonatomic) BOOL hasNetworkEvent;
+@property (readonly, nonatomic) BOOL hasParkedCar;
 @property (readonly, nonatomic) BOOL hasPlaceDataCacheEvent;
 @property (readonly, nonatomic) BOOL hasProactiveSuggestionInteractionSessionEvent;
 @property (readonly, nonatomic) BOOL hasRealtimeTrafficProbeCollection;
@@ -82,6 +85,7 @@
 @property (readonly, nonatomic) BOOL hasTableBookedSession;
 @property (readonly, nonatomic) BOOL hasTableBookingSession;
 @property (readonly, nonatomic) BOOL hasTelemetric;
+@property (readonly, nonatomic) BOOL hasTileCacheAnalytic;
 @property (readonly, nonatomic) BOOL hasTileSetStateEvent;
 @property (readonly, nonatomic) BOOL hasTimeToLeaveHypothesisEvent;
 @property (readonly, nonatomic) BOOL hasTimeToLeaveInitialTravelTimeEvent;
@@ -95,6 +99,7 @@
 @property (strong, nonatomic) GEOLogMsgEventMapLaunch *mapLaunchEvent; // @synthesize mapLaunchEvent=_mapLaunchEvent;
 @property (strong, nonatomic) GEOLogMsgEventMapsWidgetsInteractionSession *mapsWidgetsInteractionSession; // @synthesize mapsWidgetsInteractionSession=_mapsWidgetsInteractionSession;
 @property (strong, nonatomic) GEOLogMsgEventNetwork *networkEvent; // @synthesize networkEvent=_networkEvent;
+@property (strong, nonatomic) GEOLogMsgEventParkedCar *parkedCar; // @synthesize parkedCar=_parkedCar;
 @property (strong, nonatomic) GEOLogMsgEventPlaceDataCache *placeDataCacheEvent; // @synthesize placeDataCacheEvent=_placeDataCacheEvent;
 @property (strong, nonatomic) GEOLogMsgEventProactiveSuggestionInteractionSession *proactiveSuggestionInteractionSessionEvent; // @synthesize proactiveSuggestionInteractionSessionEvent=_proactiveSuggestionInteractionSessionEvent;
 @property (strong, nonatomic) GEOLogMsgEventRealtimeTrafficProbe *realtimeTrafficProbeCollection; // @synthesize realtimeTrafficProbeCollection=_realtimeTrafficProbeCollection;
@@ -106,6 +111,7 @@
 @property (strong, nonatomic) LOGMSGEVENTLogMsgEventTableBookedSession *tableBookedSession; // @synthesize tableBookedSession=_tableBookedSession;
 @property (strong, nonatomic) LOGMSGEVENTLogMsgEventTableBookingSession *tableBookingSession; // @synthesize tableBookingSession=_tableBookingSession;
 @property (strong, nonatomic) GEOLogMsgEventTelemetric *telemetric; // @synthesize telemetric=_telemetric;
+@property (strong, nonatomic) GEOLogMsgEventTileCacheAnalytic *tileCacheAnalytic; // @synthesize tileCacheAnalytic=_tileCacheAnalytic;
 @property (strong, nonatomic) GEOLogMsgEventTileSetState *tileSetStateEvent; // @synthesize tileSetStateEvent=_tileSetStateEvent;
 @property (strong, nonatomic) GEOLogMsgEventTimeToLeaveHypothesis *timeToLeaveHypothesisEvent; // @synthesize timeToLeaveHypothesisEvent=_timeToLeaveHypothesisEvent;
 @property (strong, nonatomic) GEOLogMsgEventTimeToLeaveInitialTravelTime *timeToLeaveInitialTravelTimeEvent; // @synthesize timeToLeaveInitialTravelTimeEvent=_timeToLeaveInitialTravelTimeEvent;

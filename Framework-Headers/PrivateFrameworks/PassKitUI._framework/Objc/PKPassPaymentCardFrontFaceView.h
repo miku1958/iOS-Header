@@ -20,10 +20,8 @@
 - (void)dealloc;
 - (void)layoutSubviews;
 - (void)setShowsLiveBalance:(BOOL)arg1;
-- (id)shortFaceTemplate;
-- (id)shortScrunchedFaceTemplate;
 - (BOOL)showsShare;
-- (id)tallFaceTemplate;
+- (id)templateForLayoutMode:(long long)arg1;
 
 @end
 

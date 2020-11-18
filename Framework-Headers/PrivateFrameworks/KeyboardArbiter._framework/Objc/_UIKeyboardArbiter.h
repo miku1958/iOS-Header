@@ -38,8 +38,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_descriptionWithScene:(BOOL)arg1;
 - (void)activateClients;
 - (void)attemptConnection;
+- (void)captureStateForDebug;
 - (void)checkHostingState;
 - (void)completeKeyboardStatusChangedFromHandler:(id)arg1;
 - (void)dealloc;
@@ -56,6 +58,7 @@
 - (void)reevaluateHardwareKeyboardClient;
 - (void)reevaluateSceneSettings;
 - (void)resume;
+- (void)retrieveClientDebugInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)retrieveDebugInformationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)runOperations:(CDUnknownBlockType)arg1 onHandler:(id)arg2;
 - (void)scheduleWindowTimeout;

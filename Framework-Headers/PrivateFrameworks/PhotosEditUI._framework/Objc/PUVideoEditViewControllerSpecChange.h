@@ -6,6 +6,7 @@
 
 #import <PhotosUI/PUViewControllerSpecChange.h>
 
+__attribute__((visibility("hidden")))
 @interface PUVideoEditViewControllerSpecChange : PUViewControllerSpecChange
 {
     BOOL _wantsScrubberInToolbarChanged;

@@ -6,18 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class _CFXPreferences;
+@class _CFXPreferences, __CFPrefsWeakObservers;
 
 __attribute__((visibility("hidden")))
 @interface CFPrefsSource : NSObject
 {
     _CFXPreferences *_containingPreferences;
     struct __CFDictionary *_dict;
-    struct __CFArray *_observers;
+    __CFPrefsWeakObservers *_observers;
     _Atomic long long _generationCount;
-    _Atomic union *shmemEntry;
-    struct _opaque_pthread_mutex_t *_lock;
-    CDUnion_f9025cb3 lastKnownShmemState;
+    _Atomic _Atomic unsigned int *shmemEntry;
+    _Atomic unsigned int lastKnownShmemState;
+    struct os_unfair_lock_s _lock;
     BOOL _isSearchList;
 }
 
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 - (long long)alreadylocked_generationCount;
 - (void)alreadylocked_removePreferencesObserver:(id)arg1;
 - (BOOL)alreadylocked_requestNewData;
-- (void)alreadylocked_setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
+- (void)alreadylocked_setPrecopiedValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
 - (void)alreadylocked_updateObservingRemoteChanges;
 - (struct __CFString *)container;
 - (struct __CFDictionary *)copyDictionary;
@@ -51,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isByHost;
 - (BOOL)isVolatile;
 - (void)lock;
-- (void)lockObservers;
 - (BOOL)managed;
 - (void)mergeIntoDictionary:(struct __CFDictionary *)arg1 sourceDictionary:(struct __CFDictionary *)arg2;
 - (void)removeAllValues_from:(id)arg1;
@@ -62,11 +61,10 @@ __attribute__((visibility("hidden")))
 - (void)setDaemonCacheEnabled:(BOOL)arg1;
 - (void)setStoreName:(struct __CFString *)arg1;
 - (void)setValue:(void *)arg1 forKey:(struct __CFString *)arg2 from:(id)arg3;
-- (void)setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 from:(id)arg4;
-- (void)setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 removeValuesForKeys:(const struct __CFString **)arg4 count:(long long)arg5 from:(id)arg6;
+- (void)setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 copyValues:(BOOL)arg4 from:(id)arg5;
+- (void)setValues:(const void **)arg1 forKeys:(const struct __CFString **)arg2 count:(long long)arg3 copyValues:(BOOL)arg4 removeValuesForKeys:(const struct __CFString **)arg5 count:(long long)arg6 from:(id)arg7;
 - (BOOL)synchronize;
 - (void)unlock;
-- (void)unlockObservers;
 - (struct __CFString *)userIdentifier;
 
 @end

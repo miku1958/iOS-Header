@@ -11,6 +11,7 @@
 @class HUQuickControlViewProfile, MTMaterialView, NSString;
 @protocol HUQuickControlViewInteractionDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _HUQuickControlControllableHostView : UIView <HUQuickControlInteractiveView>
 {
     BOOL _userInteractionActive;

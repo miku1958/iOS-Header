@@ -14,11 +14,12 @@
 {
     id _pingHandler;
     BOOL _forBulletin;
-    BOOL _canAck;
     NSString *_sectionID;
+    unsigned long long _ackType;
 }
 
-@property (nonatomic) BOOL canAck; // @synthesize canAck=_canAck;
+@property (nonatomic) unsigned long long ackType; // @synthesize ackType=_ackType;
+@property (readonly, nonatomic) BOOL canAck;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL forBulletin; // @synthesize forBulletin=_forBulletin;
@@ -27,6 +28,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_performPingWithAckableForwardBlock:(CDUnknownBlockType)arg1 ackableNoParametersBlock:(CDUnknownBlockType)arg2 noAckBlock:(CDUnknownBlockType)arg3 clientAck:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithPingHandler:(id)arg1;
 - (void)pingWithBulletin:(id)arg1 ack:(CDUnknownBlockType)arg2;

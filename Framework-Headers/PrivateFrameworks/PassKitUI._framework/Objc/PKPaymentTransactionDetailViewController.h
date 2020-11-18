@@ -15,6 +15,7 @@
 @interface PKPaymentTransactionDetailViewController : PKSectionTableViewController <PKPeerPaymentContactResolverDelegate, PKPaymentDataProviderDelegate>
 {
     BOOL _issuerAppDeepLinkingEnabled;
+    BOOL _inBridge;
     PKPaymentTransaction *_transaction;
     PKPaymentPass *_paymentPass;
     id<PKPaymentDataProvider> _paymentServiceDataProvider;
@@ -35,6 +36,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKPaymentTransactionDetailHeaderView *headerView; // @synthesize headerView=_headerView;
+@property (nonatomic) BOOL inBridge; // @synthesize inBridge=_inBridge;
 @property (nonatomic) BOOL issuerAppDeepLinkingEnabled; // @synthesize issuerAppDeepLinkingEnabled=_issuerAppDeepLinkingEnabled;
 @property (strong, nonatomic) NSArray *lineItems; // @synthesize lineItems=_lineItems;
 @property (strong, nonatomic) UIImage *mapTilePlaceholderImage; // @synthesize mapTilePlaceholderImage=_mapTilePlaceholderImage;

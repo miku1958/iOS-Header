@@ -19,6 +19,8 @@
     double _duration;
     NSArray *_alternativeSubstrings;
     NSArray *_alternativeConfidences;
+    NSString *_phoneSequence;
+    NSString *_ipaPhoneSequence;
     struct _NSRange _substringRange;
 }
 
@@ -26,13 +28,15 @@
 @property (readonly, nonatomic) NSArray *alternativeSubstrings; // @synthesize alternativeSubstrings=_alternativeSubstrings;
 @property (readonly, nonatomic) float confidence; // @synthesize confidence=_confidence;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
+@property (readonly, nonatomic) NSString *ipaPhoneSequence; // @synthesize ipaPhoneSequence=_ipaPhoneSequence;
+@property (readonly, nonatomic) NSString *phoneSequence; // @synthesize phoneSequence=_phoneSequence;
 @property (readonly, copy, nonatomic) NSString *substring; // @synthesize substring=_substring;
 @property (readonly, nonatomic) struct _NSRange substringRange; // @synthesize substringRange=_substringRange;
 @property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithSubstring:(id)arg1 range:(struct _NSRange)arg2 timestamp:(double)arg3 duration:(double)arg4 confidence:(float)arg5 alternativeSubstrings:(id)arg6 alternativeConfidences:(id)arg7;
+- (id)_initWithSubstring:(id)arg1 range:(struct _NSRange)arg2 timestamp:(double)arg3 duration:(double)arg4 confidence:(float)arg5 alternativeSubstrings:(id)arg6 alternativeConfidences:(id)arg7 phoneSequence:(id)arg8 ipaPhoneSequence:(id)arg9;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

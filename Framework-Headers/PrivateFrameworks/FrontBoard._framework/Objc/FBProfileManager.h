@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSSet;
 @protocol OS_dispatch_queue;
@@ -20,6 +20,7 @@
 @property (readonly, nonatomic, getter=isStarted) BOOL started; // @dynamic started;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)_managedAppsChangedNotification:(id)arg1;
 - (void)_reloadProfiles;
 - (void)_workQueue_reloadManagedApplicationBundleIDs;

@@ -30,12 +30,12 @@ struct CATransform3D {
 };
 
 struct CGAffineTransform {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-    double _field5;
-    double _field6;
+    double a;
+    double b;
+    double c;
+    double d;
+    double tx;
+    double ty;
 };
 
 struct CGPathElement {
@@ -89,12 +89,6 @@ struct CharacterStateSpecs {
     float hourElbowBend;
 };
 
-struct LabelPosition {
-    struct CGPoint _field1;
-    long long _field2;
-    long long _field3;
-};
-
 struct NSArray {
     Class _field1;
 };
@@ -132,9 +126,15 @@ struct NTKKaleidoscopePathfinderPoint {
     double _field1[4];
 };
 
+struct NTKLabelPosition {
+    struct CGPoint _field1;
+    long long _field2;
+    long long _field3;
+};
+
 struct NUProgram {
     unsigned int program;
-    int uniforms[11];
+    int uniforms[12];
 };
 
 struct RingLayout {
@@ -153,8 +153,8 @@ struct UIEdgeInsets {
 };
 
 struct _NSRange {
-    unsigned long long _field1;
-    unsigned long long _field2;
+    unsigned long long location;
+    unsigned long long length;
 };
 
 struct _NTKCompanion1stPartyInfo {
@@ -162,6 +162,12 @@ struct _NTKCompanion1stPartyInfo {
     id _field2;
     unsigned long long _field3;
     id _field4;
+};
+
+struct jetsam_info {
+    long long currentKB;
+    long long maxLifetimeKB;
+    long long maxIntervalKB;
 };
 
 #pragma mark Typedef'd Structures
@@ -186,6 +192,23 @@ typedef struct {
     unsigned long long *_field3;
     unsigned long long _field4[5];
 } CDStruct_70511ce9;
+
+typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+    double _field9;
+    double _field10;
+    double _field11;
+    double _field12;
+    double _field13;
+    double _field14;
+} CDStruct_05cddbcc;
 
 typedef struct {
     float _field1;

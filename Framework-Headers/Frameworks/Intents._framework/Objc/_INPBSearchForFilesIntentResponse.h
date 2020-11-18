@@ -7,41 +7,41 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSearchForFilesIntentResponse-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBInteger, _INPBString;
+@class NSArray, NSString, _INPBInteger, _INPBString;
 
-@interface _INPBSearchForFilesIntentResponse : PBCodable <NSCopying>
+@interface _INPBSearchForFilesIntentResponse : PBCodable <_INPBSearchForFilesIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_entities;
+    CDStruct_f2ecb737 _has;
+    BOOL _success;
+    NSArray *_entities;
     _INPBInteger *_numResults;
     _INPBString *_query;
-    BOOL _success;
-    CDStruct_f2ecb737 _has;
 }
 
-@property (strong, nonatomic) NSMutableArray *entities; // @synthesize entities=_entities;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSArray *entities; // @synthesize entities=_entities;
+@property (readonly, nonatomic) unsigned long long entitiesCount;
 @property (readonly, nonatomic) BOOL hasNumResults;
 @property (readonly, nonatomic) BOOL hasQuery;
 @property (nonatomic) BOOL hasSuccess;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBInteger *numResults; // @synthesize numResults=_numResults;
 @property (strong, nonatomic) _INPBString *query; // @synthesize query=_query;
 @property (nonatomic) BOOL success; // @synthesize success=_success;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
 + (Class)entitiesType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addEntities:(id)arg1;
 - (void)clearEntities;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)entitiesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)entitiesCount;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

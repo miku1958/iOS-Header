@@ -22,6 +22,7 @@
 - (void)isMigrationNeeded:(CDUnknownBlockType)arg1;
 - (void)migrateCheckingNecessity:(BOOL)arg1 lastRelevantPlugin:(id)arg2 testMigrationInfrastructureOnly:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)migrationPhaseDescription:(CDUnknownBlockType)arg1;
+- (void)migrationPluginResults:(CDUnknownBlockType)arg1;
 - (void)orderedPluginIdentifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)previousBuildVersion:(CDUnknownBlockType)arg1;
 - (void)reportMigrationFailure;

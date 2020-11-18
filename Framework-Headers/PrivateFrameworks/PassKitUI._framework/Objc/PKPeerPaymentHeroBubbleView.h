@@ -6,15 +6,22 @@
 
 #import <UIKit/UIImageView.h>
 
-@class UIView;
+@class PKPeerPaymentBubbleView, UILabel, UIView;
 
 @interface PKPeerPaymentHeroBubbleView : UIImageView
 {
     UIView *_pluginBalloonView;
-    UIView *_backgroundView;
+    PKPeerPaymentBubbleView *_peerPaymentBubbleView;
+    unsigned long long _bubbleState;
+    UILabel *_bubbleAmountLabel;
 }
 
+@property (readonly, nonatomic) UILabel *bubbleAmountLabel; // @synthesize bubbleAmountLabel=_bubbleAmountLabel;
+@property (readonly, nonatomic) UIView *pluginBalloonView; // @synthesize pluginBalloonView=_pluginBalloonView;
+
 - (void).cxx_destruct;
+- (id)_bubbleAmountLabelTextAttributes;
+- (id)_bubbleAmountLabelTextWithAmount:(id)arg1;
 - (unsigned long long)_bubbleStateForRegistrationState:(unsigned long long)arg1;
 - (id)initWithCurrencyAmount:(id)arg1 regitrationFlowState:(unsigned long long)arg2;
 - (void)layoutSubviews;

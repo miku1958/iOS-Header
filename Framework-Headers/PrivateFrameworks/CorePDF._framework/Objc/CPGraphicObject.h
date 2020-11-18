@@ -9,6 +9,7 @@
 @class CPParagraph, CPTextLine;
 @protocol CPGraphicUser;
 
+__attribute__((visibility("hidden")))
 @interface CPGraphicObject : CPChunk
 {
     unsigned int clipIndex;

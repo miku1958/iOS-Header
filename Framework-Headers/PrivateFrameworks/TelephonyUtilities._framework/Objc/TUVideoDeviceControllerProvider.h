@@ -8,16 +8,21 @@
 
 #import <TelephonyUtilities/AVConferencePreviewClientDelegate-Protocol.h>
 #import <TelephonyUtilities/TUVideoDeviceControllerProvider-Protocol.h>
+#import <TelephonyUtilities/TUVideoEffectsProvider-Protocol.h>
 
-@class AVConferencePreview, NSArray, NSString, VideoAttributes;
+@class AVConferencePreview, NSArray, NSString, TUVideoEffect, VideoAttributes;
 @protocol TUVideoDeviceControllerProviderDelegate;
 
-@interface TUVideoDeviceControllerProvider : NSObject <AVConferencePreviewClientDelegate, TUVideoDeviceControllerProvider>
+__attribute__((visibility("hidden")))
+@interface TUVideoDeviceControllerProvider : NSObject <AVConferencePreviewClientDelegate, TUVideoDeviceControllerProvider, TUVideoEffectsProvider>
 {
     id<TUVideoDeviceControllerProviderDelegate> _delegate;
+    TUVideoEffect *_currentVideoEffect;
     AVConferencePreview *_preview;
 }
 
+@property (readonly, nonatomic) NSArray *availableVideoEffects;
+@property (strong, nonatomic) TUVideoEffect *currentVideoEffect; // @synthesize currentVideoEffect=_currentVideoEffect;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<TUVideoDeviceControllerProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -50,6 +55,7 @@
 - (void)setLocalVideoLayer:(id)arg1 front:(BOOL)arg2;
 - (void)startPreview;
 - (void)stopPreview;
+- (id)thumbnailImageForVideoEffectName:(id)arg1;
 
 @end
 

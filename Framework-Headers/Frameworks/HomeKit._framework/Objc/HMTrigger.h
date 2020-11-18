@@ -10,11 +10,12 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMDelegateCaller, HMDevice, HMFMessageDispatcher, HMHome, HMThreadSafeMutableArrayCollection, HMUser, NSArray, NSDate, NSString, NSUUID;
+@class HMDevice, HMFUnfairLock, HMHome, HMMutableArray, HMUser, NSArray, NSDate, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue;
 
 @interface HMTrigger : NSObject <HMFMessageReceiver, NSSecureCoding, HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     BOOL _enabled;
     NSString *_name;
     NSUUID *_uniqueIdentifier;
@@ -23,18 +24,14 @@
     HMHome *_home;
     HMDevice *_ownerDevice;
     HMUser *_owner;
-    HMThreadSafeMutableArrayCollection *_currentActionSets;
-    HMFMessageDispatcher *_msgDispatcher;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
+    _HMContext *_context;
+    HMMutableArray *_currentActionSets;
 }
 
 @property (readonly, copy, nonatomic) NSArray *actionSets;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *currentActionSets; // @synthesize currentActionSets=_currentActionSets;
+@property (readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
+@property (strong, nonatomic) HMMutableArray *currentActionSets; // @synthesize currentActionSets=_currentActionSets;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
@@ -42,20 +39,18 @@
 @property (copy, nonatomic) NSDate *lastFireDate; // @synthesize lastFireDate=_lastFireDate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
-@property (strong, nonatomic) HMFMessageDispatcher *msgDispatcher; // @synthesize msgDispatcher=_msgDispatcher;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (weak, nonatomic) HMUser *owner; // @synthesize owner=_owner;
 @property (strong, nonatomic) HMDevice *ownerDevice; // @synthesize ownerDevice=_ownerDevice;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)_addActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_addActionSetWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_configure:(id)arg1 uuid:(id)arg2 messageDispatcher:(id)arg3 clientQueue:(id)arg4 delegateCaller:(id)arg5;
 - (void)_enable:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_handleTriggerActivatedNotification:(id)arg1;
 - (void)_handleTriggerFired:(id)arg1;

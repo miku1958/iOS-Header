@@ -4,35 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
+@protocol OS_dispatch_queue;
 
 @interface PLCloudTaskManager : NSObject
 {
     NSMutableDictionary *_pendingTaskForTaskIdentifier;
-    NSMutableDictionary *_resourceForTaskIdentifier;
     NSMutableDictionary *_highPriorityResourceToTaskIdentifierMap;
     NSMutableDictionary *_lowPriorityResourceToTaskIdentifierMap;
+    NSObject<OS_dispatch_queue> *_isolationQueue;
 }
 
+- (void).cxx_destruct;
 - (id)_identifierForResource:(id)arg1;
+- (void)_removeTaskIdentifiersForResource:(id)arg1 highPriority:(BOOL)arg2;
+- (void)_setTaskIdentifiers:(id)arg1 forResource:(id)arg2 highPriority:(BOOL)arg3;
+- (id)_taskForResource:(id)arg1 highPriority:(BOOL)arg2;
+- (id)_taskIdentifiersForResource:(id)arg1 highPriority:(BOOL)arg2;
 - (BOOL)addProgressBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2 forResource:(id)arg3 highPriority:(BOOL)arg4 withTaskIdentifier:(id)arg5;
-- (BOOL)cancelTaskWithTaskIdentifier:(id)arg1;
-- (void)createPendingTaskWithProgressBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2 forResource:(id)arg3 highPriority:(BOOL)arg4 withTaskIdentifier:(id)arg5;
-- (void)dealloc;
-- (id)firstTaskIdentifierForResource:(id)arg1 highPriority:(BOOL)arg2;
+- (void)cancelTaskWithTaskIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getPendingTaskForTaskIdentifier:(id)arg1;
-- (BOOL)hasTaskIdentifierForResource:(id)arg1 highPriority:(BOOL)arg2;
 - (id)init;
-- (void)removeTaskIdentifiersForResource:(id)arg1 highPriority:(BOOL)arg2;
-- (void)reportCompletionForResource:(id)arg1 withError:(id)arg2 highPriority:(BOOL)arg3;
-- (void)reportProgress:(float)arg1 forResource:(id)arg2 highPriority:(BOOL)arg3;
+- (void)reportCompletionForResourceTransferTask:(id)arg1 withError:(id)arg2;
+- (void)reportProgress:(float)arg1 forResourceTransferTask:(id)arg2;
 - (void)reset;
 - (void)setPendingTaskWithTransferTask:(id)arg1 withTaskIdentifier:(id)arg2;
-- (void)setTaskIdentifiers:(id)arg1 forResource:(id)arg2 highPriority:(BOOL)arg3;
-- (id)taskForResource:(id)arg1 highPriority:(BOOL)arg2;
-- (id)taskIdentifiersForResource:(id)arg1 highPriority:(BOOL)arg2;
 
 @end
 

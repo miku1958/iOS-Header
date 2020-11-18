@@ -46,8 +46,9 @@
 - (void)_addCallback:(CDUnknownBlockType)arg1 requestIdentifier:(id)arg2 forURL:(id)arg3;
 - (BOOL)_cacheParsedForecastData:(id)arg1 type:(unsigned long long)arg2 location:(id)arg3 date:(id)arg4 requestIdentifier:(id)arg5;
 - (void)_cancelWithRequestIdentifier:(id)arg1;
-- (void)_executeCallbacksForURL:(id)arg1 requestIdentifier:(id)arg2 conditions:(id)arg3 error:(id)arg4;
-- (void)_executeCallbacksForURL:(id)arg1 requestIdentifier:(id)arg2 parsedForecastData:(id)arg3 error:(id)arg4;
+- (void)_cleanupCallbacksAndTasksForURL:(id)arg1;
+- (void)_executeCallbacksForURL:(id)arg1 conditions:(id)arg2 error:(id)arg3;
+- (void)_executeCallbacksForURL:(id)arg1 parsedForecastData:(id)arg2 error:(id)arg3;
 - (BOOL)_forecastConditionsForType:(unsigned long long)arg1 location:(id)arg2 date:(id)arg3 requestIdentifier:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)_isConnectivityAvailableForWeatherHost:(id *)arg1;
 - (void)_setTask:(id)arg1 requestIdentifier:(id)arg2 callback:(CDUnknownBlockType)arg3 forURL:(id)arg4;

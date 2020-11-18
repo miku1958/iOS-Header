@@ -7,7 +7,7 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (SCNAdditions)
-+ (id)scn_colorWithC3DColor:(const struct C3DColor4 *)arg1;
-- (struct C3DColor4)scn_C3DColorIgnoringColorSpace:(BOOL)arg1 success:(BOOL *)arg2;
++ (id)scn_colorWithC3DColor:(const C3DColor4_0cad58d8 *)arg1;
+- (C3DColor4_0cad58d8)scn_C3DColorIgnoringColorSpace:(BOOL)arg1 success:(BOOL *)arg2;
 @end
 

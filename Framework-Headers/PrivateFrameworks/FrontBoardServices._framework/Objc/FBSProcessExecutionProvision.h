@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
@@ -26,7 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<FBSProcessExecutionProvisionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isMonitoring) BOOL monitoring; // @synthesize monitoring=_monitoring;
 @property (readonly, weak, nonatomic) id<FBSProcess> process; // @synthesize process=_process;
@@ -41,7 +41,6 @@
 - (void)_stopMonitoring;
 - (void)_updateProgress;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (id)init;

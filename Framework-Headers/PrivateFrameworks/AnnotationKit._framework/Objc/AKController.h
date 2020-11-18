@@ -23,6 +23,7 @@
     BOOL _isLogging;
     BOOL _selectNewlyCreatedAnnotations;
     BOOL _shapeDetectionEnabled;
+    BOOL _useHighVisibilityDefaultInks;
     id<AKControllerDelegateProtocol> _delegate;
     AKModelController *_modelController;
     UIView *_toolbarView;
@@ -91,6 +92,7 @@
 @property (strong) UIView *toolbarView; // @synthesize toolbarView=_toolbarView;
 @property (strong) AKToolbarViewController *toolbarViewController; // @synthesize toolbarViewController=_toolbarViewController;
 @property (strong) AKUndoController *undoController; // @synthesize undoController=_undoController;
+@property (nonatomic) BOOL useHighVisibilityDefaultInks; // @synthesize useHighVisibilityDefaultInks=_useHighVisibilityDefaultInks;
 
 + (BOOL)_isInLowMemoryEnvironment;
 + (void)adjustAnnotationBoundsToFitText:(id)arg1;
@@ -108,8 +110,10 @@
 - (struct CGRect)_popoverAnchorFrameInModelForAnnotations:(id)arg1;
 - (BOOL)_validateCutCopyDelete;
 - (void)addPopupToAnnotation:(id)arg1 openPopup:(BOOL)arg2;
+- (void)applyCurrentCrop;
 - (void)beginLogging:(id)arg1 documentType:(id)arg2;
 - (BOOL)canBeginEditingTextAnnotation:(id)arg1;
+- (void)clearUndoStack;
 - (void)commitEditing;
 - (struct CGRect)contentAlignedRectForRect:(struct CGRect)arg1 onPageAtIndex:(unsigned long long)arg2;
 - (void)copy:(id)arg1;
@@ -151,6 +155,7 @@
 - (void)resetToDefaultToolMode;
 - (id)rotationGestureRecognizer;
 - (void)selectAll:(id)arg1;
+- (void)setToolMode:(unsigned long long)arg1;
 - (BOOL)shouldDrawVariableStrokeDoodles;
 - (void)showAttributeInspector:(id)arg1;
 - (void)showSelectionMenu:(id)arg1;
@@ -158,6 +163,7 @@
 - (BOOL)supportForPencilAlwaysDrawsSatisfied;
 - (id)tapGestureRecognizer;
 - (void)teardown;
+- (unsigned long long)toolMode;
 - (id)toolbarButtonItemOfType:(unsigned long long)arg1;
 - (void)undo:(id)arg1;
 - (void)updateOverlayViewAtIndex:(unsigned long long)arg1;

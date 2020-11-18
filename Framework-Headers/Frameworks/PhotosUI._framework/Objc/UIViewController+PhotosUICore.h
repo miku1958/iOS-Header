@@ -11,6 +11,8 @@
 @interface UIViewController (PhotosUICore)
 
 @property (readonly, nonatomic) struct UIEdgeInsets px_layoutMargins;
+@property (readonly, nonatomic) UIViewController *px_nextViewControllerInNavigationController;
+@property (readonly, nonatomic) UIViewController *px_previousViewControllerInNavigationController;
 @property (readonly, nonatomic) struct UIEdgeInsets px_safeAreaInsets;
 @property (copy, nonatomic, setter=px_setSubtitle:) NSString *px_subtitle;
 @property (readonly, nonatomic, getter=px_isVisible) BOOL px_visible;

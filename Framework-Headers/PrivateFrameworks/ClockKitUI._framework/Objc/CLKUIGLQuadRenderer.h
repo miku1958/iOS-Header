@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)render;
+- (void)renderForSize:(struct CLKUIQuadSize)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSString, NSTimer;
 
@@ -12,6 +12,7 @@
 {
     NSMutableDictionary *_completionBlocks;
     NSTimer *_suspensionTimer;
+    BOOL _enabled;
     BOOL _suspended;
     long long _prewarmCount;
     long long _state;
@@ -23,6 +24,7 @@
 @property (readonly, nonatomic) NSString *_stats_key;
 @property (nonatomic, getter=_backgroundTaskIdentifier, setter=_setBackgroundTaskIdentifier:) unsigned long long backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
 @property (readonly, nonatomic) double currentTime;
+@property (nonatomic, getter=isEnabled, setter=_setEnabled:) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) unsigned long long numberOfClients; // @synthesize numberOfClients=_numberOfClients;
 @property (nonatomic) long long prewarmCount; // @synthesize prewarmCount=_prewarmCount;
 @property (nonatomic, getter=_state, setter=_setState:) long long state; // @synthesize state=_state;

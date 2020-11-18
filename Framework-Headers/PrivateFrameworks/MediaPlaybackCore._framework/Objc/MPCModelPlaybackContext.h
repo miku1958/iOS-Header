@@ -30,6 +30,7 @@
 + (id)requiredPropertiesForStaticMediaClips;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)descriptionComponents;
 - (void)encodeWithCoder:(id)arg1;
 - (void)getRemotePlaybackQueueRepresentationWithPlayerPath:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;

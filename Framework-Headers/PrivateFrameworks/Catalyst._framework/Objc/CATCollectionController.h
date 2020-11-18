@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSIndexSet, NSMutableArray, NSMutableIndexSet, NSMutableSet, NSPredicate, NSSet, NSString, NSTimer, NSValueTransformer;
 @protocol CATCollectionControllerDelegate;
@@ -39,7 +39,7 @@
 @property (strong) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
 @property (readonly) NSArray *selectedObjects;
 @property (copy) NSIndexSet *selectionIndexes; // @synthesize selectionIndexes=_selectionIndexes;
-@property (strong) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
+@property (copy) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 
 - (void).cxx_destruct;
 - (void)addObject:(id)arg1;

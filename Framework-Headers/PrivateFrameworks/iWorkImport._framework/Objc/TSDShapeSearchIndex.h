@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCharacterSet, NSDictionary, TSULocale;
 
@@ -25,13 +25,13 @@ __attribute__((visibility("hidden")))
 - (void)addSearchResults:(id)arg1;
 - (id)initWithLocale:(id)arg1;
 - (id)p_keywords;
+- (id)p_permuteStrings:(id)arg1;
 - (id)p_predicateWithSearchTerm:(id)arg1 shouldPerformDiacriticInsensitiveSearch:(BOOL)arg2;
 - (struct _NSRange)p_rangeOfSearchTerm:(id)arg1 inString:(id)arg2 shouldPerformDiacriticInsensitiveSearch:(BOOL)arg3;
 - (void)p_removeSearchResultWithIdentifier:(id)arg1 forTokenizedKeyword:(id)arg2;
 - (id)p_resultsDictionaryForSearchTerm:(id)arg1 withFilteredKeywords:(id)arg2 shouldPerformDiacriticInsensitiveSearch:(BOOL)arg3;
 - (id)p_resultsForKeyword:(id)arg1;
 - (id)p_resultsForSearchTermBasedOnAnchoredSearch:(id)arg1 shouldPerformDiacriticInsensitiveSearch:(BOOL)arg2;
-- (id)p_resultsForSearchTermBasedOnStringScore:(id)arg1 shouldPerformDiacriticInsensitiveSearch:(BOOL)arg2;
 - (id)p_sortedFilteredKeywordsForSearchTerm:(id)arg1 usingPredicate:(id)arg2;
 - (void)p_tokenizeKeywordIfNeeded:(id)arg1 yieldingKeyword:(CDUnknownBlockType)arg2;
 - (void)removeSearchResultWithIdentifier:(id)arg1 forKeyword:(id)arg2;

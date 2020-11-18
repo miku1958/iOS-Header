@@ -21,13 +21,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isNotification;
+@property (readonly, nonatomic) BOOL isVisible;
 @property (copy, nonatomic) id<MTScheduleable> scheduleable; // @synthesize scheduleable=_scheduleable;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) MTTrigger *trigger; // @synthesize trigger=_trigger;
+@property (readonly, nonatomic) unsigned long long type;
 
 + (id)scheduledObjectForScheduleable:(id)arg1 trigger:(id)arg2;
-+ (BOOL)triggerTypeRepresentsNotification:(unsigned long long)arg1;
++ (unsigned long long)scheduledTypeForTriggerType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithScheduleable:(id)arg1 trigger:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewController.h>
+#import <UIKitCore/UICollectionViewController.h>
 
 @class NSArray, UILabel;
 
@@ -25,6 +25,7 @@
 
 - (void).cxx_destruct;
 - (double)_accessibilityDefaultContentHeightForViewController:(id)arg1;
+- (id)_visibleGroupSeparators;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForFooterInSection:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
@@ -32,6 +33,7 @@
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (double)displayHeight;
+- (void)hideGroups;
 - (id)initWithActivityGroupViewControllers:(id)arg1 embedded:(BOOL)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCollectionViewLayout:(id)arg1;
@@ -41,8 +43,10 @@
 - (double)preferredContentHeightForViewController:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (BOOL)shouldShowNoActionsPlaceholder;
+- (void)showGroups;
 - (void)updateVisibleActivityGroupViewControllers;
 - (id)viewControllerForItemAtIndexPath:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewSafeAreaInsetsDidChange;
 

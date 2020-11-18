@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableSet, PLPhotoLibrary;
 
@@ -12,7 +12,7 @@
 {
     PLPhotoLibrary *_photoLibrary;
     NSMutableArray *_uploadBatchArray;
-    NSMutableSet *_downloadedDeleteUuid;
+    NSMutableSet *_downloadedDeleteRecords;
     NSMutableSet *_cameraAsset;
     BOOL _initialUpload;
     BOOL _shouldGenerateDerivatives;
@@ -21,46 +21,47 @@
 @property BOOL initialUpload; // @synthesize initialUpload=_initialUpload;
 @property BOOL shouldGenerateDerivatives; // @synthesize shouldGenerateDerivatives=_shouldGenerateDerivatives;
 
+- (void).cxx_destruct;
 - (void)_addAsset:(id)arg1 toAssetChanges:(id)arg2 isInsert:(BOOL)arg3 seenAssetUuid:(id)arg4;
 - (void)_addLocalResourcesToRecord:(id)arg1;
 - (void)_cleanUploadedResources:(id)arg1;
-- (id)_fetchChangesFromEvent:(id)arg1 shouldTriggerPrefetch:(BOOL *)arg2;
+- (id)_fetchChangesFromLocalEvent:(id)arg1 shouldTriggerPrefetch:(BOOL *)arg2;
 - (id)_getLocalRecordFromCPLRecord:(id)arg1;
 - (void)_handleInvalidAsset:(id)arg1;
 - (void)_incrementUploadAttemptsAndPushStateForAssets:(id)arg1;
-- (BOOL)_isKnownDeletionForUuid:(id)arg1;
-- (BOOL)_needsToIncludeMaster:(id)arg1 forAsset:(id)arg2;
 - (id)_personsToUploadIncludingReverseOrderedMergeTargetsForPersons:(id)arg1;
-- (void)_processAlbumDeletes:(id)arg1 albumInserts:(id)arg2 albumChanges:(id)arg3 withBatchManager:(id)arg4;
+- (void)_processAlbumInserts:(id)arg1 albumChanges:(id)arg2 withBatchManager:(id)arg3;
 - (void)_processChangeToFullRecordCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processGenerateDerivativesCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processIncludeMasterCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
+- (void)_processInvalidResourceCopySourceCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
+- (void)_processInvalidScopeCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)_processPendingObjects:(id)arg1 withBatchManager:(id)arg2;
 - (void)_processQuarantineRecordsCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (BOOL)_processRepushAlbumError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
+- (void)_promptToFileRadarWithTitle:(id)arg1 description:(id)arg2;
 - (void)_push:(id)arg1;
 - (void)_pushBatches:(id)arg1;
+- (void)_quarantineObject:(id)arg1;
 - (void)_sendAlbums:(id)arg1 toBatchManager:(id)arg2;
 - (void)_sendAssets:(id)arg1 toBatchManager:(id)arg2;
 - (void)_sendOneBatch:(id)arg1 toBatchManager:(id)arg2;
 - (void)_sortData:(id)arg1 isInsert:(BOOL)arg2 forUploadChanges:(id)arg3 shouldTriggerPrefetch:(BOOL *)arg4 inManagedObjectContext:(id)arg5;
 - (void)_sortRelationshipData:(id)arg1 forRelationshipUpdate:(id)arg2 inManagedObjectContext:(id)arg3;
+- (id)_syncDescriptionForObject:(id)arg1;
+- (BOOL)_validate:(id)arg1 onRelatedObject:(id)arg2;
 - (id)_validateAssets:(id)arg1 fromCloudUuidDeleteList:(id)arg2;
 - (void)addBatches:(id)arg1;
 - (void)clearUploadArray;
 - (id)createBatchesForChanges:(id)arg1 outInsertedPhotoCount:(unsigned long long *)arg2 outInsertedVideoCount:(unsigned long long *)arg3 withUploadTracker:(id)arg4;
-- (id)createUploadBatchesForDeletionFromEvent:(id)arg1;
-- (void)dealloc;
-- (void)handleUploadBatchesForDeletionFromEvent:(id)arg1;
-- (void)handleUploadBatchesFromEvent:(id)arg1 outInsertedPhotoCount:(unsigned long long *)arg2 outInsertedVideoCount:(unsigned long long *)arg3 shouldTriggerPrefetch:(BOOL *)arg4 withUploadTracker:(id)arg5;
+- (void)handleUploadBatchesFromLocalEvent:(id)arg1 outInsertedPhotoCount:(unsigned long long *)arg2 outInsertedVideoCount:(unsigned long long *)arg3 shouldTriggerPrefetch:(BOOL *)arg4 withUploadTracker:(id)arg5;
 - (BOOL)hasBatchesToUpload;
 - (id)initWithLibrary:(id)arg1;
 - (unsigned long long)numberOfBatchesToUpload;
 - (id)pop;
 - (id)processCommitError:(id)arg1 andFinalizeError:(id)arg2 forUploadBatchContainer:(id)arg3 withUploadTracker:(id)arg4;
 - (void)quarantineRecord:(id)arg1;
-- (void)recordDeletionOnUuids:(id)arg1;
-- (BOOL)shouldProcessDuringInitialUpload:(id)arg1;
+- (void)recordDeletions:(id)arg1;
 - (void)tryToFixCommitError:(id)arg1 inUploadBatch:(id)arg2 forRecords:(id)arg3;
 - (void)uploadFullPhotoLibraryToCloud;
 

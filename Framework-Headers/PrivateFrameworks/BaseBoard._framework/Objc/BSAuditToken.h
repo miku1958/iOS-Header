@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSXPCCoding-Protocol.h>
 #import <BaseBoard/NSCopying-Protocol.h>
@@ -16,6 +16,8 @@
 {
     NSString *_bundleID;
     CDStruct_4c969caf _auditToken;
+    struct os_unfair_lock_s _secTaskLock;
+    struct __SecTask *_lazy_secTaskLock_secTask;
 }
 
 @property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -34,6 +36,8 @@
 + (id)tokenFromNSXPCConnection:(id)arg1;
 + (id)tokenFromXPCConnection:(id)arg1;
 + (id)tokenFromXPCMessage:(id)arg1;
+- (void).cxx_destruct;
+- (void)_accessSecTask:(CDUnknownBlockType)arg1;
 - (id)_bundleIDGeneratingIfNeeded:(BOOL)arg1;
 - (id)_dataWithValue:(id)arg1;
 - (id)_valueFromData:(id)arg1 ofType:(const char *)arg2;

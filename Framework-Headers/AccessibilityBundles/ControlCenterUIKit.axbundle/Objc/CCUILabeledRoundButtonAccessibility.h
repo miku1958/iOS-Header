@@ -14,7 +14,12 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (BOOL)_axLabelsVisible;
+- (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
 - (id)initWithGlyphImage:(id)arg1 highlightColor:(id)arg2;
+- (BOOL)isAccessibilityElement;
 
 @end
 

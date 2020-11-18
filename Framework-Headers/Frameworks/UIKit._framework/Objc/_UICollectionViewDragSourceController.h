@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDragInteractionDelegate_Private-Protocol.h>
-#import <UIKit/_UICollectionViewShadowUpdatesRebaseApplicable-Protocol.h>
+#import <UIKitCore/UIDragInteractionDelegate_Private-Protocol.h>
+#import <UIKitCore/_UICollectionViewShadowUpdatesRebaseApplicable-Protocol.h>
 
 @class NSArray, NSIndexPath, NSString, UICollectionView, UIDragInteraction, _UICollectionViewDragSourceControllerDragState, _UICollectionViewDragSourceControllerSessionState;
 @protocol UIDragSession, _UICollectionViewDragSourceControllerDelegate;

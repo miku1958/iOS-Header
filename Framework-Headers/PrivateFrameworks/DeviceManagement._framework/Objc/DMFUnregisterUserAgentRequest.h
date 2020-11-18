@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSString;
 
-@interface DMFUnregisterUserAgentRequest : CATTaskRequest
+@interface DMFUnregisterUserAgentRequest : DMFTaskRequest
 {
     NSString *_appleID;
 }
 
 @property (copy, nonatomic) NSString *appleID; // @synthesize appleID=_appleID;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;

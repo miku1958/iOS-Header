@@ -12,6 +12,7 @@
 
 + (id)_contactsForEmailAddresses:(id)arg1 names:(id)arg2;
 + (id)_contactsForPersons:(id)arg1;
++ (id)_locationMetadataForSearchableItem:(id)arg1 userAction:(id)arg2;
 + (id)_metadataForSearchableItem:(id)arg1 userAction:(id)arg2;
 + (id)collectionEventForSearchableItem:(id)arg1 userAction:(id)arg2;
 + (BOOL)contentTypeTree:(id)arg1 conformsToUTIType:(id)arg2;
@@ -22,6 +23,7 @@
 + (long long)getInteractionMechanismForContentUTI:(id)arg1 typeTree:(id)arg2;
 + (id)interactionForSearchableItem:(id)arg1;
 + (id)interactionUUIDForSearchableItemWithUID:(id)arg1 bundleID:(id)arg2;
++ (BOOL)isLocationBasedItem:(id)arg1;
 + (id)knowledgeEventsForSearchableItem:(id)arg1 userAction:(id)arg2;
 + (id)mechanismUtiMap;
 + (id)policies;

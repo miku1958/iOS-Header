@@ -17,7 +17,7 @@
 #import <PhotosUICore/PXUIWidget-Protocol.h>
 #import <PhotosUICore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSMutableSet, NSString, PHFetchResult, PXActionPerformer, PXActionRowTile, PXOneUpPresentation, PXPhotoKitAssetCollectionActionManager, PXPhotosDataSource, PXPhotosDetailsActionsSpecManager, PXPhotosDetailsContext, PXReusableObjectPool, PXSectionedSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetSpec;
+@class NSArray, NSMutableSet, NSString, PHFetchResult, PXActionPerformer, PXActionRowTile, PXOneUpPresentation, PXPhotoKitAssetCollectionActionManager, PXPhotosDataSource, PXPhotosDetailsActionsSpecManager, PXPhotosDetailsContext, PXPhotosDetailsViewModel, PXReusableObjectPool, PXSectionedSelectionManager, PXTilingController, PXUIScrollViewController, PXWidgetSpec;
 @protocol PXActionPerformerDelegate, PXAnonymousView, PXTileAnimator, PXWidgetDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPhotosDetailsActionsUIWidget : NSObject <PXPhotosDataSourceChangeObserver, PXTileSource, PXTilingControllerTransitionDelegate, PXReusableObjectPoolDelegate, PXActionRowTileDelegate, PXActionPerformerDelegate, PXChangeObserver, PXPhotoLibraryUIChangeObserver, UIPopoverPresentationControllerDelegate, PXUIWidget>
@@ -50,7 +50,7 @@
     PXPhotoKitAssetCollectionActionManager *__assetCollectionActionManager;
     NSArray *__allowedActionTypes;
     NSArray *__performableActionTypes;
-    NSMutableSet *__disabledActionTypes;
+    PXPhotosDetailsViewModel *__viewModel;
     PXPhotosDetailsActionsSpecManager *__specManager;
     PXActionRowTile *__measuringActionRowTile;
     double __rowHeight;
@@ -61,7 +61,6 @@
 @property (strong, nonatomic, setter=_setActivePerformer:) PXActionPerformer *_activePerformer; // @synthesize _activePerformer=__activePerformer;
 @property (strong, nonatomic, setter=_setAllowedActionTypes:) NSArray *_allowedActionTypes; // @synthesize _allowedActionTypes=__allowedActionTypes;
 @property (strong, nonatomic, setter=_setAssetCollectionActionManager:) PXPhotoKitAssetCollectionActionManager *_assetCollectionActionManager; // @synthesize _assetCollectionActionManager=__assetCollectionActionManager;
-@property (readonly, nonatomic) NSMutableSet *_disabledActionTypes; // @synthesize _disabledActionTypes=__disabledActionTypes;
 @property (readonly, nonatomic) PXActionRowTile *_measuringActionRowTile; // @synthesize _measuringActionRowTile=__measuringActionRowTile;
 @property (strong, nonatomic, setter=_setPeopleFetchResult:) PHFetchResult *_peopleFetchResult; // @synthesize _peopleFetchResult=__peopleFetchResult;
 @property (strong, nonatomic, setter=_setPerformableActionTypes:) NSArray *_performableActionTypes; // @synthesize _performableActionTypes=__performableActionTypes;
@@ -73,6 +72,7 @@
 @property (readonly, nonatomic) PXReusableObjectPool *_tileReusePool; // @synthesize _tileReusePool=__tileReusePool;
 @property (readonly, nonatomic) NSMutableSet *_tilesInUse; // @synthesize _tilesInUse=__tilesInUse;
 @property (readonly, nonatomic) PXTilingController *_tilingController; // @synthesize _tilingController=__tilingController;
+@property (strong, nonatomic, setter=_setViewModel:) PXPhotosDetailsViewModel *_viewModel; // @synthesize _viewModel=__viewModel;
 @property (weak, nonatomic) id<PXActionPerformerDelegate> actionPerformerDelegate; // @synthesize actionPerformerDelegate=_actionPerformerDelegate;
 @property (nonatomic) BOOL allowCreateMemoryAction; // @synthesize allowCreateMemoryAction=_allowCreateMemoryAction;
 @property (nonatomic) BOOL allowRevealInMomentAction; // @synthesize allowRevealInMomentAction=_allowRevealInMomentAction;

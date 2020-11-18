@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TIInputMode;
 
@@ -21,6 +21,7 @@
 
 + (struct USet *)createAcceptableCharacterSetForKeyboardLocale:(id)arg1;
 + (id)createSpecializationForInputMode:(id)arg1;
+- (void).cxx_destruct;
 - (id)accentKeyStringForKeyboardState:(id)arg1;
 - (BOOL)acceptsCharacter:(unsigned int)arg1;
 - (BOOL)allowsAutocorrectionOfValidWords;

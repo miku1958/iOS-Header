@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MPSCore/MPSImageAllocator-Protocol.h>
 
@@ -23,6 +23,7 @@
 + (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (struct NSArray *)imageBatchForCommandBuffer:(id)arg1 imageDescriptor:(id)arg2 kernel:(id)arg3 count:(unsigned long long)arg4;
 - (id)imageForCommandBuffer:(id)arg1 imageDescriptor:(id)arg2 kernel:(id)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

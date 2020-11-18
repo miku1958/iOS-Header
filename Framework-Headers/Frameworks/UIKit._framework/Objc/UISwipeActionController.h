@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIScrollViewScrollObserver-Protocol.h>
+#import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
 
 @class NSIndexPath, NSMutableDictionary, NSString, UIScrollView, UISwipeActionsConfiguration, UISwipeHandler, UIView;
 @protocol UISwipeActionHost;
@@ -39,13 +39,13 @@
 - (void).cxx_destruct;
 - (id)_currentSwipeOccurrence;
 - (void)_observeScrollViewDidScroll:(id)arg1;
-- (void)_resetSwipedItemAnimated:(BOOL)arg1 swipeInfo:(CDStruct_b06b0113)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_resetSwipedItemAnimated:(BOOL)arg1 swipeInfo:(CDStruct_9b6dff2a)arg2 completion:(CDUnknownBlockType)arg3;
 - (CDStruct_324b76a9)configureForSwipeDirection:(unsigned long long)arg1 configuration:(id)arg2 startingAtTouchLocation:(struct CGPoint)arg3;
 - (void)dealloc;
 - (id)initWithSwipeActionHost:(id)arg1 style:(unsigned long long)arg2;
 - (void)resetSwipedItemAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)swipeHandler:(id)arg1 didConfirmSwipeWithInfo:(CDStruct_b06b0113)arg2;
-- (void)swipeHandler:(id)arg1 didGenerateSwipeWithInfo:(CDStruct_b06b0113)arg2;
+- (void)swipeHandler:(id)arg1 didConfirmSwipeWithInfo:(CDStruct_9b6dff2a)arg2;
+- (void)swipeHandler:(id)arg1 didGenerateSwipeWithInfo:(CDStruct_9b6dff2a)arg2;
 - (BOOL)swipeHandler:(id)arg1 mayBeginSwipeAtLocation:(struct CGPoint)arg2 withDirection:(unsigned long long)arg3;
 - (void)swipeHandlerDidBeginSwipe:(id)arg1;
 - (void)swipeItemAtIndexPath:(id)arg1 configuration:(id)arg2 direction:(unsigned long long)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;

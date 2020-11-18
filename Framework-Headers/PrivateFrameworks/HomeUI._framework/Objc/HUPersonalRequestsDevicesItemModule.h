@@ -9,10 +9,12 @@
 #import <HomeUI/HULocationDeviceManagerObserver-Protocol.h>
 
 @class HFItem, HFItemProvider, HFUserItem, HMAssistantAccessControl, HMHome, HULocationDeviceManager, NAFuture, NSArray, NSSet, NSString;
+@protocol HFMediaProfileContainer;
 
 @interface HUPersonalRequestsDevicesItemModule : HFItemModule <HULocationDeviceManagerObserver>
 {
     NSSet *_itemProviders;
+    id<HFMediaProfileContainer> _sourceMediaProfileContainer;
     HMHome *_home;
     HFUserItem *_sourceItem;
     HFItemProvider *_devicesItemProvider;
@@ -35,6 +37,7 @@
 @property (copy, nonatomic) NSArray *personalRequestsHomePods;
 @property (readonly, nonatomic) HFItem *personalRequestsToggleItem; // @synthesize personalRequestsToggleItem=_personalRequestsToggleItem;
 @property (readonly, nonatomic) HFUserItem *sourceItem; // @synthesize sourceItem=_sourceItem;
+@property (strong, nonatomic) id<HFMediaProfileContainer> sourceMediaProfileContainer; // @synthesize sourceMediaProfileContainer=_sourceMediaProfileContainer;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -47,7 +50,6 @@
 - (BOOL)isItemPersonalRequestsFooter:(id)arg1;
 - (BOOL)isItemPersonalRequestsToggle:(id)arg1;
 - (void)locationDeviceManager:(id)arg1 didUpdateActiveLocationDevice:(id)arg2;
-- (unsigned long long)personalRequestsAuthenticationRequirement;
 - (void)registerForExternalUpdates;
 - (void)toggleAllPersonalRequestsDevices;
 - (void)unregisterForExternalUpdates;

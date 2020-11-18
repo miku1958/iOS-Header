@@ -11,8 +11,6 @@
 + (int)maxServerTime;
 + (int)minServerTime;
 - (id)doubleDateTimeAsString;
-- (BOOL)isAfterDate:(id)arg1;
-- (BOOL)isBeforeDate:(id)arg1;
 - (id)localDateTimeAsString;
 - (int)toServerTime;
 - (id)universalDateTimeAsString;

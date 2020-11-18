@@ -7,16 +7,20 @@
 #import <objc/NSObject.h>
 
 #import <HealthKit/HKQueryClientInterface-Protocol.h>
+#import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKHealthStore, HKObjectType, HKSampleType, NSPredicate, NSString, NSUUID, _HKFilter;
+@class HKHealthStore, HKObjectType, HKQueryServerProxyProvider, HKSampleType, NSPredicate, NSString, NSUUID, _HKFilter;
 @protocol HKQueryDelegate, HKQueryServerInterface, OS_dispatch_queue;
 
-@interface HKQuery : NSObject <HKQueryClientInterface>
+@interface HKQuery : NSObject <_HKXPCExportable, HKQueryClientInterface>
 {
     BOOL _hasBeenExecuted;
     id<HKQueryDelegate> _delegate;
-    HKHealthStore *_strongHealthStore;
+    HKQueryServerProxyProvider *_proxyProvider;
     _Atomic BOOL _deactivating;
+    _Atomic int _deactivateCallCount;
+    HKHealthStore *_strongHealthStore;
+    id<HKQueryServerInterface> _serverProxy;
     BOOL _shouldSuppressDataCollection;
     HKObjectType *_objectType;
     NSPredicate *_predicate;
@@ -24,13 +28,13 @@
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSUUID *_activationUUID;
-    id<HKQueryServerInterface> _serverProxy;
     _HKFilter *_filter;
 }
 
 @property (readonly, nonatomic) long long activationState; // @synthesize activationState=_activationState;
 @property (readonly, nonatomic) NSUUID *activationUUID; // @synthesize activationUUID=_activationUUID;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (readonly) long long deactivateCallCount;
 @property (readonly) BOOL deactivating;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<HKQueryDelegate> delegate;
@@ -41,7 +45,6 @@
 @property (strong) NSPredicate *predicate; // @synthesize predicate=_predicate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) HKSampleType *sampleType;
-@property (readonly, nonatomic) id<HKQueryServerInterface> serverProxy; // @synthesize serverProxy=_serverProxy;
 @property (nonatomic) BOOL shouldSuppressDataCollection; // @synthesize shouldSuppressDataCollection=_shouldSuppressDataCollection;
 @property (readonly) Class superclass;
 
@@ -49,12 +52,15 @@
 + (id)_predicateForObjectsFromAppleWatches;
 + (id)clientInterface;
 + (id)clientInterfaceProtocol;
++ (Class)configurationClass;
 + (void)configureClientInterface:(id)arg1;
 + (void)configureServerInterface:(id)arg1;
 + (id)predicateForActivityCachesBetweenStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 + (id)predicateForActivitySummariesBetweenStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 + (id)predicateForActivitySummaryWithDateComponents:(id)arg1;
 + (id)predicateForCategorySamplesWithOperatorType:(unsigned long long)arg1 value:(long long)arg2;
++ (id)predicateForClinicalRecordsFromSource:(id)arg1 FHIRResourceType:(id)arg2 identifier:(id)arg3;
++ (id)predicateForClinicalRecordsWithFHIRResourceType:(id)arg1;
 + (id)predicateForCreationDateWithTodayViewRange:(id)arg1;
 + (id)predicateForDiagnosticTestResultCategory:(id)arg1;
 + (id)predicateForObjectWithUUID:(id)arg1;
@@ -71,6 +77,7 @@
 + (id)predicateForObjectsWithUUIDs:(id)arg1;
 + (id)predicateForQuantitySamplesWithOperatorType:(unsigned long long)arg1 quantity:(id)arg2;
 + (id)predicateForRecordsFromClinicalAccountIdentifier:(id)arg1;
++ (id)predicateForRecordsFromGatewayWithExternalIdentifier:(id)arg1;
 + (id)predicateForRecordsWithSortDateFromStartDateComponents:(id)arg1 endDateComponents:(id)arg2;
 + (id)predicateForSamplesAssociatedWithSample:(id)arg1;
 + (id)predicateForSamplesForDayFromDate:(id)arg1 calendar:(id)arg2 options:(unsigned long long)arg3;
@@ -86,16 +93,20 @@
 + (id)serverInterface;
 + (id)serverInterfaceProtocol;
 + (BOOL)shouldApplyAdditionalPredicateForObjectType:(id)arg1;
++ (id)taskIdentifier;
 - (void).cxx_destruct;
 - (id)_initWithObjectType:(id)arg1 predicate:(id)arg2;
 - (id)_predicateFilterClasses;
 - (void)_queue_activateWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_queue_deactivateWithError:(id)arg1;
+- (void)_queue_finishActivationWithServerProxy:(id)arg1 activationUUID:(id)arg2 error:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_throwInvalidArgumentExceptionIfHasBeenExecuted:(SEL)arg1;
 - (void)activateWithClientQueue:(id)arg1 healthStore:(id)arg2 delegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)client_deliverError:(id)arg1 forQuery:(id)arg2;
+- (void)connectionInterrupted;
+- (void)connectionInvalidated;
 - (void)deactivate;
-- (void)queue_connectToQueryServerWithHealthStore:(id)arg1 activationUUID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)exportedInterface;
 - (void)queue_deactivate;
 - (void)queue_deliverError:(id)arg1;
 - (void)queue_dispatchToClientForUUID:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -105,6 +116,7 @@
 - (BOOL)queue_shouldDeactivateAfterInitialResults;
 - (void)queue_validate;
 - (void)reactivateWithHealthStore:(id)arg1;
+- (id)remoteInterface;
 
 @end
 

@@ -11,11 +11,10 @@
 
 @protocol FBSApplicationDataStoreRepositoryClient <NSObject>
 - (void)addObserver:(id<FBSApplicationDataStoreRepositoryClientObserver>)arg1;
-- (void)addPrefetchedKeys:(NSArray *)arg1 withCompletion:(void (^)(NSError *))arg2;
-- (void)availableDataStores:(void (^)(NSArray *, NSError *))arg1;
+- (void)addPrefetchedKeys:(NSArray *)arg1;
+- (NSArray *)availableDataStores;
 - (void)invalidate;
-- (void)objectForKey:(NSString *)arg1 forApplication:(NSString *)arg2 withResult:(void (^)(id, NSError *))arg3;
-- (void)objectForKey:(NSString *)arg1 forApplication:(NSString *)arg2 withResult:(void (^)(id, NSError *))arg3 checkPrefetch:(BOOL)arg4;
+- (id)objectForKey:(NSString *)arg1 forApplication:(NSString *)arg2;
 - (BOOL)prefetchedObjectIfAvailableForKey:(NSString *)arg1 application:(NSString *)arg2 outObject:(id *)arg3;
 - (void)removeAllObjectsForApplication:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)removeObjectForKey:(NSString *)arg1 forApplication:(NSString *)arg2 withCompletion:(void (^)(NSError *))arg3;
@@ -23,8 +22,5 @@
 - (void)removePrefetchedKeys:(NSArray *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)setObject:(id)arg1 forKey:(NSString *)arg2 forApplication:(NSString *)arg3 withCompletion:(void (^)(NSError *))arg4;
 - (void)synchronizeWithCompletion:(void (^)(NSError *))arg1;
-
-@optional
-- (id)objectForKey:(NSString *)arg1 forApplication:(NSString *)arg2 checkPrefetch:(BOOL)arg3;
 @end
 

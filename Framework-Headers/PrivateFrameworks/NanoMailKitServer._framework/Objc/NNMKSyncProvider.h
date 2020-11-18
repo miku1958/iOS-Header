@@ -23,6 +23,7 @@
 {
     BOOL _pairedDeviceSupportsMultipleMailboxes;
     BOOL _fullSyncRecoveredInThisSession;
+    BOOL _triggeredInitialSyncToRecoverFromSyncVersionMismatch;
     id<NNMKSyncProviderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_providerQueue;
     id<NNMKSyncStateManager> _syncStateManager;
@@ -68,6 +69,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NNMKSyncController *syncController; // @synthesize syncController=_syncController;
 @property (strong, nonatomic) id<NNMKSyncStateManager> syncStateManager; // @synthesize syncStateManager=_syncStateManager;
+@property (nonatomic) BOOL triggeredInitialSyncToRecoverFromSyncVersionMismatch; // @synthesize triggeredInitialSyncToRecoverFromSyncVersionMismatch=_triggeredInitialSyncToRecoverFromSyncVersionMismatch;
 
 + (BOOL)prepareForSystemAppDeletion:(id *)arg1;
 - (void).cxx_destruct;
@@ -86,8 +88,8 @@
 - (void)_handleDidUnpair;
 - (id)_handleFetchRequest:(id)arg1 shouldResumeSync:(BOOL *)arg2;
 - (void)_handleFetchRequestFromWatch:(id)arg1;
+- (void)_handleForwardNotificationPayload:(CDUnknownBlockType)arg1 forBulletin:(id)arg2;
 - (void)_handleHaltSyncForMailbox:(id)arg1;
-- (void)_handleNotificationPayloadAck:(CDUnknownBlockType)arg1 forMessageId:(id)arg2;
 - (id)_initialSyncForMailbox:(id)arg1 messages:(id)arg2 shouldUseProtectedChannel:(BOOL)arg3;
 - (BOOL)_isConnectedToWatch;
 - (BOOL)_isPaired;
@@ -111,10 +113,12 @@
 - (void)_requestDelegateForMoreMessagesWithMailbox:(id)arg1 beforeDate:(id)arg2 messagesForspecialMailboxFilterType:(unsigned long long)arg3;
 - (void)_requestDelegateForResendingAccountWithId:(id)arg1;
 - (void)_requestDelegateForResendingMessagesWithIds:(id)arg1;
+- (void)_requestDelegateForVIPList:(id)arg1;
 - (void)_requestDelegateToSendComposedMessage:(id)arg1;
 - (void)_requestDelegateToStopDownloadingAllMessageElements;
 - (void)_requestDelegateToStopDownloadingMessageElementsForMessageWithId:(id)arg1;
 - (id)_sendFirstMessages:(id)arg1 mailboxes:(id)arg2 shouldUseProtectedChannel:(BOOL)arg3;
+- (void)_sendStandaloneAccountIdentity:(id)arg1 resendInterval:(unsigned long long)arg2;
 - (void)_sendUpdatedMailboxSelection:(unsigned long long)arg1;
 - (void)_sendUpdatedMailboxSelection:(unsigned long long)arg1 resendInterval:(unsigned long long)arg2;
 - (void)_setPairedDeviceSupportsMultipleMailboxes:(BOOL)arg1;
@@ -123,13 +127,17 @@
 - (void)_triggerFullSyncForMailbox:(id)arg1;
 - (void)_triggerFullSyncForMailboxes:(id)arg1;
 - (void)_triggerInitialSync;
+- (void)_triggerInitialSyncToRecoverFromSyncVersionMismatch;
 - (void)_triggerInitialSyncTrackingProgress:(BOOL)arg1;
 - (void)_updateMailboxSelection:(id)arg1 notifyClient:(BOOL)arg2;
 - (void)_updateMessagesStatus:(id)arg1 mailbox:(id)arg2;
 - (BOOL)_verifyDatabaseOkForFullSyncVersion:(unsigned long long)arg1;
 - (BOOL)_verifyDatabaseOkForFullSyncVersion:(unsigned long long)arg1 mailbox:(id)arg2;
 - (void)_verifyPairingForcingSync:(BOOL)arg1;
+- (id)_watchAccounts;
+- (void)accountsSyncServiceServer:(id)arg1 didChangeAccountSourceType:(id)arg2;
 - (void)accountsSyncServiceServer:(id)arg1 didFailSendingProtobufWithIDSIdentifier:(id)arg2 errorCode:(long long)arg3;
+- (void)accountsSyncServiceServer:(id)arg1 didReceivedAccountAuthenticationStatus:(id)arg2;
 - (void)accountsSyncServiceServer:(id)arg1 didSendProtobufSuccessfullyWithIDSIdentifier:(id)arg2;
 - (void)addImageAttachment:(id)arg1 forMessageId:(id)arg2 contentId:(id)arg3 loadedProtected:(BOOL)arg4;
 - (void)addMessageContent:(id)arg1 forMessage:(id)arg2 loadedProtected:(BOOL)arg3;
@@ -142,6 +150,7 @@
 - (void)dealloc;
 - (void)deleteMessagesWithIds:(id)arg1;
 - (void)fetchesSyncServiceServer:(id)arg1 didFailSendingProtobufWithIDSIdentifier:(id)arg2 errorCode:(long long)arg3;
+- (void)fetchesSyncServiceServer:(id)arg1 didNotifyAboutWebKitStatus:(id)arg2;
 - (void)fetchesSyncServiceServer:(id)arg1 didNotifyInitialSyncFinished:(id)arg2;
 - (void)fetchesSyncServiceServer:(id)arg1 didRequestContent:(id)arg2;
 - (void)fetchesSyncServiceServer:(id)arg1 didRequestFetch:(id)arg2;
@@ -171,6 +180,7 @@
 - (void)messagesSyncServiceServerSpaceBecameAvailable:(id)arg1;
 - (void)notifyFetchCompleted;
 - (BOOL)pairedDeviceSupportsMultipleMailboxes;
+- (BOOL)pairedDeviceSupportsStandaloneMode;
 - (void)replyWithAccountToResend:(id)arg1;
 - (void)replyWithAccounts:(id)arg1;
 - (void)replyWithFirstMessages:(id)arg1 includesProtectedMessages:(BOOL)arg2 mailboxes:(id)arg3 organizedByThread:(BOOL)arg4;
@@ -180,21 +190,25 @@
 - (void)replyWithMoreMessages:(id)arg1 context:(id)arg2;
 - (void)reportMessageContentDownloadFailureForMessageId:(id)arg1;
 - (void)reportWillDownloadFirstMessages;
+- (id)requestWatchAccounts;
 - (void)resendObjectsForIDSIdentifier:(id)arg1;
 - (void)resendScheduler:(id)arg1 didRequestDequeueIDSIdentifierForResend:(id)arg2;
 - (void)resendScheduler:(id)arg1 didRequestEnqueueIDSIdentifierForResend:(id)arg2 date:(id)arg3 silent:(BOOL)arg4;
 - (void)resendScheduler:(id)arg1 didRequestEnqueueIDSIdentifiersForResend:(id)arg2;
 - (unsigned long long)resendScheduler:(id)arg1 didRequestNewResendIntervalForPreviousResendInterval:(unsigned long long)arg2 errorCode:(long long)arg3;
 - (void)resendScheduler:(id)arg1 didRequestRetryFullSyncForMailboxes:(id)arg2;
+- (void)resendScheduler:(id)arg1 didRequestRetrySendingAccountIdentifier:(id)arg2 resendInterval:(unsigned long long)arg3;
 - (void)resendScheduler:(id)arg1 didRequestRetrySendingAccountWithId:(id)arg2;
 - (void)resendScheduler:(id)arg1 didRequestRetrySendingComposeMessageProgress:(long long)arg2 messageId:(id)arg3 resendInterval:(unsigned long long)arg4;
 - (void)resendScheduler:(id)arg1 didRequestRetrySendingContentForMessageId:(id)arg2 highPriority:(BOOL)arg3;
 - (void)resendScheduler:(id)arg1 didRequestRetrySendingDeletionForAccountWithId:(id)arg2 resendInterval:(unsigned long long)arg3;
+- (void)resendScheduler:(id)arg1 didRequestRetrySendingMailboxSelectionWithResendInterval:(unsigned long long)arg2;
 - (void)resendScheduler:(id)arg1 didRequestRetrySendingMessageDeletions:(id)arg2 deletionsMessageIds:(id)arg3 resendInterval:(unsigned long long)arg4;
 - (void)resendScheduler:(id)arg1 didRequestRetrySendingMessageWithIds:(id)arg2;
-- (void)resendScheduler:(id)arg1 didRequestToRetrySendMailboxSelectionWithResendInterval:(unsigned long long)arg2;
+- (void)resendScheduler:(id)arg1 didRequestRetrySendingVIPListWithResendInterval:(unsigned long long)arg2;
 - (id)syncServiceEndpoints;
-- (void)syncStateManager:(id)arg1 didAcknowledgeNotificationPayload:(CDUnknownBlockType)arg2 forRecordId:(id)arg3;
+- (void)syncStandaloneAccountIdentity:(id)arg1;
+- (void)syncStateManager:(id)arg1 didAcknowledgeForwardNotificationPayload:(CDUnknownBlockType)arg2 forBulletin:(id)arg3;
 - (void)syncStateManagerDidBeginSyncSession:(id)arg1 syncSessionType:(id)arg2 syncSessionIdentifier:(id)arg3;
 - (void)syncStateManagerDidChangePairedDevice:(id)arg1;
 - (void)syncStateManagerDidInvalidateSyncSession:(id)arg1 syncSessionIdentifier:(id)arg2;
@@ -203,6 +217,9 @@
 - (void)trackerDidFinishSendingInitialSyncContentToPairedDevice:(id)arg1;
 - (void)updateMailboxSelection:(id)arg1;
 - (void)updateMessagesStatus:(id)arg1;
+- (void)updateVIPSenderList:(id)arg1;
+- (void)updateVIPSenderList:(id)arg1 requestContext:(id)arg2;
+- (id)watchAccounts;
 
 @end
 

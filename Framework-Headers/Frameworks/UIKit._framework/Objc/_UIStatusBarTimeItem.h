@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarItem.h>
+#import <UIKitCore/_UIStatusBarItem.h>
 
 @class _UIStatusBarStringView;
 
@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 + (id)timeDisplayIdentifier;
 - (void).cxx_destruct;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
+- (id)createDisplayItemForIdentifier:(id)arg1;
 - (id)dependentEntryKeys;
-- (id)init;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

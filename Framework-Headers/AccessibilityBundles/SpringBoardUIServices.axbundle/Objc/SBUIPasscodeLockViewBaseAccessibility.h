@@ -16,9 +16,9 @@
 - (BOOL)_accessibilityEntryFieldIsFirstResponder;
 - (BOOL)_accessibilityHandwritingActivateKeyboardReturnKey;
 - (BOOL)_accessibilityHandwritingAttributeAcceptsRawInput;
-- (int)_accessibilityHandwritingAttributeAllowedCharacterSets;
+- (unsigned long long)_accessibilityHandwritingAttributeAllowedCharacterSets;
 - (BOOL)_accessibilityHandwritingAttributeCanDeleteCharacter;
-- (int)_accessibilityHandwritingAttributePreferredCharacterSet;
+- (unsigned long long)_accessibilityHandwritingAttributePreferredCharacterSet;
 - (BOOL)_accessibilityHandwritingAttributeShouldEchoCharacter;
 - (BOOL)_accessibilityHandwritingAttributeShouldPlayKeyboardSecureClickSound;
 - (void)_accessibilityInsertText:(id)arg1 atPosition:(long long)arg2;

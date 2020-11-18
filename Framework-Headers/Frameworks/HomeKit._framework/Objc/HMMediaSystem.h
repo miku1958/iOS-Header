@@ -15,11 +15,12 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMAccessorySettings, HMApplicationData, HMHome, HMMediaSession, HMSymptomsHandler, HMThreadSafeMutableArrayCollection, NSArray, NSString, NSUUID, _HMContext;
+@class HMAccessoryCategory, HMAccessorySettings, HMApplicationData, HMFUnfairLock, HMHome, HMMediaSession, HMMutableArray, HMSymptomsHandler, NSArray, NSString, NSUUID, _HMContext;
 @protocol HMMediaSystemDelegate, OS_dispatch_queue;
 
-@interface HMMediaSystem : NSObject <HMFLogging, NSSecureCoding, HMObjectMerge, HMFMessageReceiver, HMControllable, HMMediaObject, HMApplicationData, HMAccessorySettingsContainer>
+@interface HMMediaSystem : NSObject <HMFLogging, HMFMessageReceiver, NSSecureCoding, HMObjectMerge, HMControllable, HMMediaObject, HMApplicationData, HMAccessorySettingsContainer>
 {
+    HMFUnfairLock *_lock;
     BOOL _compatible;
     NSString *_name;
     NSString *_configuredName;
@@ -29,17 +30,16 @@
     HMApplicationData *_applicationData;
     HMHome *_home;
     HMSymptomsHandler *_symptomsHandler;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    NSUUID *_uuid;
     _HMContext *_context;
-    HMThreadSafeMutableArrayCollection *_componentsArray;
+    NSUUID *_uuid;
+    HMMutableArray *_componentsArray;
 }
 
 @property (strong, nonatomic) HMApplicationData *applicationData; // @synthesize applicationData=_applicationData;
 @property (readonly, nonatomic) HMAccessoryCategory *category;
 @property (readonly, nonatomic, getter=isCompatible) BOOL compatible; // @synthesize compatible=_compatible;
 @property (readonly, nonatomic) NSArray *components;
-@property (strong, nonatomic) HMThreadSafeMutableArrayCollection *componentsArray; // @synthesize componentsArray=_componentsArray;
+@property (strong, nonatomic) HMMutableArray *componentsArray; // @synthesize componentsArray=_componentsArray;
 @property (readonly, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
 @property (readonly, weak) HMHome *containerHome;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
@@ -53,7 +53,6 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) HMAccessorySettings *settings; // @synthesize settings=_settings;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HMSymptomsHandler *symptomsHandler; // @synthesize symptomsHandler=_symptomsHandler;
@@ -64,7 +63,7 @@
 + (id)mediaSystemWithDictionary:(id)arg1 home:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_configureWithHome:(id)arg1 context:(id)arg2;
+- (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)_handleAppDataUpdatedNotification:(id)arg1;
 - (void)_handleRootSettingsUpdated:(id)arg1;
 - (void)_handleSystemUpdatedNotification:(id)arg1;

@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+@class GEOTileLoader;
 @protocol OS_dispatch_queue;
 
 @interface GEOMapFeatureAccess : NSObject
@@ -14,6 +15,7 @@
     BOOL _allowNetworkTileLoad;
     BOOL _flipNegativeTravelDirectionRoads;
     BOOL _visitDoubleTravelDirectionRoadsTwice;
+    GEOTileLoader *_tileLoader;
 }
 
 @property (nonatomic) BOOL allowNetworkTileLoad; // @synthesize allowNetworkTileLoad=_allowNetworkTileLoad;
@@ -48,6 +50,7 @@
 - (id)findTransitStopsNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 handler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithQueue:(id)arg1;
+- (id)initWithQueue:(id)arg1 memoryCacheCountLimit:(unsigned long long)arg2 memoryCacheCostLimit:(unsigned long long)arg3;
 - (void)preloadBuildingTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preloadRoadTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)preloadTransitTilesNear:(CDStruct_c3b9c2ee)arg1 radius:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;

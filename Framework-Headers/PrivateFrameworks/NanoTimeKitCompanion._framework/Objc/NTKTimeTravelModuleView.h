@@ -26,7 +26,8 @@
 
 @property (weak, nonatomic) id<NTKTimeTravelModuleViewTapClient> tapDelegate; // @synthesize tapDelegate=_tapDelegate;
 
-+ (double)_actualCornerRadius;
++ (double)_actualCornerRadiusForDevice:(id)arg1;
++ (double)_defaultHeightForDevice:(id)arg1;
 + (double)cornerRadius;
 + (id)timeTravelColor;
 - (void).cxx_destruct;

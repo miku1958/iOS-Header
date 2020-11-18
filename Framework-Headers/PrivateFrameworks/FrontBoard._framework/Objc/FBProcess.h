@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 #import <FrontBoard/FBSProcessIdentity-Protocol.h>
@@ -39,7 +39,7 @@
 @property (readonly, nonatomic) long long backgroundingPolicy; // @synthesize backgroundingPolicy=_backgroundingPolicy;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBProcessDelegate> delegate;
+@property (weak, nonatomic) id<FBProcessDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL executableLivesOnSystemPartition;
 @property (readonly, nonatomic, getter=isForeground) BOOL foreground;
@@ -61,7 +61,7 @@
 @property (nonatomic, getter=_queue_supportsSuspendOnLock, setter=_queue_setSupportsSuspendOnLock:) BOOL supportsSuspendOnLock; // @synthesize supportsSuspendOnLock=_supportsSuspendOnLock;
 @property (readonly, strong, nonatomic) BSMachPortTaskNameRight *taskNameRight;
 @property (readonly, nonatomic) long long type;
-@property (readonly, strong, nonatomic) FBWorkspace *workspace; // @synthesize workspace=_workspace;
+@property (readonly, nonatomic) FBWorkspace *workspace; // @synthesize workspace=_workspace;
 
 - (void).cxx_destruct;
 - (id)_createWorkspace;
@@ -77,6 +77,7 @@
 - (BOOL)_queue_executableLivesOnSystemPartition;
 - (BOOL)_queue_isForeground;
 - (id)_queue_newWatchdogForContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_queue_noteSceneCreationAcknowledged:(id)arg1;
 - (void)_queue_processDidExit;
 - (void)_queue_sceneLifecycleStateChanged:(id)arg1;
 - (void)_queue_toggleProcessDeathObserver:(BOOL)arg1;

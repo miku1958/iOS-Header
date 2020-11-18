@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     TSUBezierPath *mPath;
     BOOL mIsRectangular;
     struct CGSize mNaturalSize;
+    TSUBezierPath *mBezierPathWithoutFlips;
 }
 
 @property (nonatomic) struct CGSize naturalSize; // @synthesize naturalSize=mNaturalSize;

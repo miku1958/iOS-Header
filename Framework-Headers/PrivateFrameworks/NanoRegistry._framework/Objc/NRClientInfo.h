@@ -9,18 +9,14 @@
 #import <NanoRegistry/NSCopying-Protocol.h>
 #import <NanoRegistry/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSString;
 
 @interface NRClientInfo : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_processName;
-    NSArray *_entitlements;
-    unsigned long long _lastIndexCheckin;
 }
 
-@property (strong, nonatomic) NSArray *entitlements; // @synthesize entitlements=_entitlements;
-@property (nonatomic) unsigned long long lastIndexCheckin; // @synthesize lastIndexCheckin=_lastIndexCheckin;
-@property (strong, nonatomic) NSString *processName; // @synthesize processName=_processName;
+@property (copy, nonatomic) NSString *processName; // @synthesize processName=_processName;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

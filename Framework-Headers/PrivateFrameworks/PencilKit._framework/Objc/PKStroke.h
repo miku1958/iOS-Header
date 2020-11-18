@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <PencilKit/NSCopying-Protocol.h>
+
 @class NSMutableArray, PKInk, _PKStrokeData, _PKStrokeIDWrapper;
 
-@interface PKStroke : NSObject
+@interface PKStroke : NSObject <NSCopying>
 {
     _PKStrokeData *_strokeData;
     NSMutableArray *_pointsArray;
@@ -26,6 +28,8 @@
     double _timestamp;
     struct _PKStrokeID _version;
     struct CGRect _bounds;
+    struct CGRect _tightBounds;
+    struct CGRect __untransformedBounds;
 }
 
 @property (nonatomic) struct CGRect _bounds; // @synthesize _bounds;
@@ -33,17 +37,23 @@
 @property (nonatomic) BOOL _inflight; // @synthesize _inflight;
 @property (nonatomic, setter=_setInputType:) long long _inputType; // @synthesize _inputType;
 @property (nonatomic, setter=_setStrokeID:) struct _PKStrokeID _strokeID;
+@property (nonatomic) struct CGRect _tightBounds; // @synthesize _tightBounds;
 @property (nonatomic, setter=_setTransform:) struct CGAffineTransform _transform; // @synthesize _transform;
+@property (nonatomic) struct CGRect _untransformedBounds; // @synthesize _untransformedBounds=__untransformedBounds;
 @property (nonatomic) struct _PKStrokeID _version; // @synthesize _version;
 @property (strong) PKInk *ink; // @synthesize ink=_ink;
 @property (readonly) NSMutableArray *points;
 @property double timestamp; // @synthesize timestamp=_timestamp;
 
++ (long long)_asciiBitfieldIndexForX:(long long)arg1 y:(long long)arg2 width:(long long)arg3;
++ (long long)_asciiDimensionForBoundsDimension:(double)arg1;
 + (long long)compareStrokeWithIDWrapper:(id)arg1 toStrokeIDWrapper:(id)arg2;
 - (void).cxx_destruct;
 - (void)_addStrokePoint:(void *)arg1;
 - (void)_applyTransform:(struct CGAffineTransform)arg1;
+- (id)_ascii;
 - (struct _PKStrokePoint)_baseValues;
+- (struct CGRect)_calculateBounds:(BOOL)arg1;
 - (struct CGPoint)_clipNormal;
 - (struct CGPoint)_clipOrigin;
 - (struct PKCompressedStrokePoint *)_completedPoints;
@@ -54,12 +64,13 @@
 - (void)_invalidateBounds;
 - (BOOL)_isClipped;
 - (double)_lengthOfSplineSegment:(unsigned long long)arg1;
+- (BOOL *)_newAsciiBitfield;
+- (BOOL *)_newAsciiBitfieldWithWidth:(long long)arg1 height:(long long)arg2;
 - (void *)_points;
 - (unsigned long long)_pointsCount;
 - (unsigned int)_randomSeed;
 - (void)_removeLastStrokePoint;
 - (void)_removeStrokePointAtIndex:(unsigned long long)arg1;
-- (double)_renderCost;
 - (void)_replaceStrokePointAtIndex:(unsigned long long)arg1 withStrokePoint:(void *)arg2;
 - (void)_setBaseValues:(struct _PKStrokePoint)arg1;
 - (void)_setClipNormal:(struct CGPoint)arg1;
@@ -71,11 +82,12 @@
 - (id)_strokeData;
 - (double)_strokeLength;
 - (void *)_strokePointAtIndex:(unsigned long long)arg1;
-- (struct CGRect)bounds;
+- (id)_substrokeWithRange:(struct _NSRange)arg1;
 - (struct CGRect)bounds;
 - (struct CGPoint)clipNormal;
 - (struct CGPoint)clipOrigin;
 - (long long)compareToStroke:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionExtended;
 - (double)endTimestamp;
@@ -86,6 +98,7 @@
 - (id)initWithArchive:(const struct Stroke *)arg1 version:(unsigned int)arg2 sortedUUIDs:(id)arg3 inks:(id)arg4;
 - (id)initWithLegacyArchive:(const struct Command *)arg1 version:(unsigned int)arg2 sortedUUIDs:(id)arg3;
 - (id)initWithPath:(struct CGPath *)arg1 ink:(id)arg2 inputScale:(double)arg3;
+- (id)initWithPath:(struct CGPath *)arg1 ink:(id)arg2 inputScale:(double)arg3 velocityForDistanceFunction:(CDUnknownBlockType)arg4;
 - (id)initWithStroke:(id)arg1 hidden:(BOOL)arg2 version:(struct _PKStrokeID)arg3;
 - (id)initWithStroke:(id)arg1 hidden:(BOOL)arg2 version:(struct _PKStrokeID)arg3 ink:(id)arg4 transform:(struct CGAffineTransform)arg5;
 - (id)initWithStroke:(id)arg1 hidden:(BOOL)arg2 version:(struct _PKStrokeID)arg3 transform:(struct CGAffineTransform)arg4;
@@ -93,6 +106,7 @@
 - (BOOL)isClipped;
 - (BOOL)isEqual:(id)arg1;
 - (struct CGPath *)newPathRepresentation;
+- (unsigned long long)oldHashForRandomSeedSoonToBeObsoleted;
 - (struct CGPoint)readPointFromArchive:(const struct Point *)arg1;
 - (struct _PKStrokePoint)readPointFromLegacyArchive:(const struct Point *)arg1 deltaFrom:(const struct _PKStrokePoint *)arg2;
 - (struct _PKStrokeID)readStrokeIDFromArchive:(const struct StrokeID *)arg1 withSortedUUIDs:(id)arg2;

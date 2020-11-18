@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -13,30 +13,32 @@
 __attribute__((visibility("hidden")))
 @interface TSTTableFilterRule : NSObject <NSCopying>
 {
-    TSTFormulaPredicate *mPredicate;
-    BOOL mDoesNotNeedFormulaRewriteForImport;
+    BOOL _doesNotNeedFormulaRewriteForImport;
+    TSTFormulaPredicate *_predicate;
 }
 
-+ (id)ruleWhereValuesInTable:(id)arg1 inColumn:(unsigned char)arg2 matchCell:(id)arg3;
+@property (nonatomic) BOOL doesNotNeedFormulaRewriteForImport; // @synthesize doesNotNeedFormulaRewriteForImport=_doesNotNeedFormulaRewriteForImport;
+@property (strong, nonatomic) TSTFormulaPredicate *predicate; // @synthesize predicate=_predicate;
+
++ (id)ruleWhereValuesInTable:(id)arg1 inBaseColumn:(struct TSUModelColumnIndex)arg2 matchCell:(id)arg3;
 + (id)ruleWithFormulaPredicate:(id)arg1;
-- (unsigned char)columnIndexForFilterRuleInTableInfo:(id)arg1;
+- (void).cxx_destruct;
+- (struct TSUModelColumnIndex)baseColumnIndexForFilterRuleInTableInfo:(id)arg1;
 - (id)copyByRewritingToGeometricFormWithTableInfo:(id)arg1 containsBadRef:(BOOL *)arg2;
 - (id)copyByRewritingToUidFormWithTableInfo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeToArchive:(struct FilterRuleArchive *)arg1 archiver:(id)arg2;
 - (struct TSCEFormula *)formula;
 - (unsigned long long)hash;
 - (id)initFromArchive:(const struct FilterRuleArchive *)arg1;
-- (id)initRuleWhereValuesInTable:(id)arg1 inColumn:(unsigned char)arg2 matchCell:(id)arg3;
+- (id)initRuleWhereValuesInTable:(id)arg1 inBaseColumn:(struct TSUModelColumnIndex)arg2 matchCell:(id)arg3;
 - (id)initWithFormulaPredicate:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)matchesCell:(id)arg1;
-- (BOOL)matchesRow:(unsigned short)arg1 withFormulaTableUID:(const UUIDData_5fbc143e *)arg2 withCalculationEngine:(id)arg3;
+- (BOOL)matchesRow:(unsigned int)arg1 withFormulaTableUID:(const UUIDData_5fbc143e *)arg2 withCalculationEngine:(id)arg3;
 - (BOOL)needsFormulaRewriteForImport;
 - (BOOL)needsThreshold;
-- (id)predicate;
 - (void)setDoesNotNeedFormulaRewriteForImport;
 
 @end

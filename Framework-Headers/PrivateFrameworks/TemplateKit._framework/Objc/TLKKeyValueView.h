@@ -26,14 +26,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong) TLKImage *image; // @synthesize image=_image;
+@property (strong, nonatomic) TLKImage *image; // @synthesize image=_image;
 @property (strong) TLKImageView *imageView; // @synthesize imageView=_imageView;
 @property BOOL isInMeasurementPass; // @synthesize isInMeasurementPass=_isInMeasurementPass;
 @property (strong) TLKKeyValueGridView *leadingGrid; // @synthesize leadingGrid=_leadingGrid;
-@property (strong) NSArray *leadingTuples; // @synthesize leadingTuples=_leadingTuples;
+@property (strong, nonatomic) NSArray *leadingTuples; // @synthesize leadingTuples=_leadingTuples;
 @property (readonly) Class superclass;
 @property (strong) TLKKeyValueGridView *trailingGrid; // @synthesize trailingGrid=_trailingGrid;
-@property (strong) NSArray *trailingTuples; // @synthesize trailingTuples=_trailingTuples;
+@property (strong, nonatomic) NSArray *trailingTuples; // @synthesize trailingTuples=_trailingTuples;
 
 + (unsigned long long)visibleRowsInGrid:(id)arg1;
 - (void).cxx_destruct;
@@ -46,7 +46,6 @@
 - (id)leadingTextKeyLabels;
 - (unsigned long long)numberOfVisibleRowsForLeadingGrid;
 - (unsigned long long)numberOfVisibleRowsForTrailingGrid;
-- (id)observableProperties;
 - (void)observedPropertiesChanged;
 - (void)styleDidChange:(unsigned long long)arg1;
 - (BOOL)trailingGridIsHidden;

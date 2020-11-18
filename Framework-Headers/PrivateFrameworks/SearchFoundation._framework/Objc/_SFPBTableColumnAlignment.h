@@ -13,7 +13,6 @@
 
 @interface _SFPBTableColumnAlignment : PBCodable <_SFPBTableColumnAlignment, NSSecureCoding>
 {
-    CDStruct_92ac6441 _has;
     BOOL _isEqualWidth;
     int _columnAlignment;
     int _dataAlignment;
@@ -23,9 +22,6 @@
 @property (nonatomic) int dataAlignment; // @synthesize dataAlignment=_dataAlignment;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) BOOL hasColumnAlignment;
-@property (readonly, nonatomic) BOOL hasDataAlignment;
-@property (readonly, nonatomic) BOOL hasIsEqualWidth;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isEqualWidth; // @synthesize isEqualWidth=_isEqualWidth;
 @property (readonly, nonatomic) NSData *jsonData;

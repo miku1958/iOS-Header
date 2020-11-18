@@ -29,6 +29,7 @@
 + (id)requiredPropertiesForStaticMediaClips;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)descriptionComponents;
 - (id)init;
 
 @end

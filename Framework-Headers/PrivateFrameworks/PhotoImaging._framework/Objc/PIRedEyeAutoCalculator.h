@@ -10,6 +10,7 @@
 {
 }
 
+- (void)_configureRequest:(id)arg1;
 - (id)_options;
 - (void)calculate:(CDUnknownBlockType)arg1;
 

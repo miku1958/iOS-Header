@@ -15,10 +15,10 @@
 
 @property (readonly, nonatomic) RCCompositionController *compositionController; // @synthesize compositionController=_compositionController;
 
-+ (id)_newPresentedPrepareAlertControllerForComposition:(id)arg1 dismissHandler:(CDUnknownBlockType)arg2;
-+ (id)_newPresentedPrepareFailureAlertControllerForComposition:(id)arg1;
-+ (void)prepareToShareComposition:(id)arg1 ignoringInteraction:(BOOL)arg2 shouldContinuePreparingBlock:(CDUnknownBlockType)arg3 preparedHandler:(CDUnknownBlockType)arg4;
-+ (void)presentInViewController:(id)arg1 composition:(id)arg2 ignoringInteraction:(BOOL)arg3 shouldContinuePreparingBlock:(CDUnknownBlockType)arg4 preparedToPresentBlock:(CDUnknownBlockType)arg5;
++ (id)_newPresentedPrepareAlertControllerForComposition:(id)arg1 source:(id)arg2 dismissHandler:(CDUnknownBlockType)arg3;
++ (id)_newPresentedPrepareFailureAlertControllerForComposition:(id)arg1 source:(id)arg2;
++ (void)prepareToShareComposition:(id)arg1 ignoringInteraction:(BOOL)arg2 source:(id)arg3 shouldContinuePreparingBlock:(CDUnknownBlockType)arg4 preparedHandler:(CDUnknownBlockType)arg5;
++ (void)presentInViewController:(id)arg1 source:(id)arg2 composition:(id)arg3 ignoringInteraction:(BOOL)arg4 shouldContinuePreparingBlock:(CDUnknownBlockType)arg5 preparedToPresentBlock:(CDUnknownBlockType)arg6;
 + (id)unsupportedActivityTypes;
 - (void).cxx_destruct;
 - (id)initWithCompositionController:(id)arg1;

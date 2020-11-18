@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewControllerPreviewing_Private-Protocol.h>
+#import <UIKitCore/UIViewControllerPreviewing_Private-Protocol.h>
 
 @protocol UICoordinateSpace, UIViewControllerPreviewingDelegate;
 

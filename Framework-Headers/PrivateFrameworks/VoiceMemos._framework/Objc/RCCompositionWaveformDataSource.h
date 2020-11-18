@@ -34,10 +34,11 @@
 @property (nonatomic) BOOL saveGeneratedWaveform; // @synthesize saveGeneratedWaveform=_saveGeneratedWaveform;
 @property (readonly) Class superclass;
 
++ (id)fragmentLoadingOperationQueue;
 - (void).cxx_destruct;
 - (BOOL)_synchronouslyAppendSegmentsForAVContentURL:(id)arg1 isDecomposedFragment:(BOOL)arg2 sourceTimeRange:(CDStruct_73a5d3ca)arg3 destinationTime:(double)arg4;
 - (double)duration;
-- (void)finishLoadingWithCompletionTimeoutDate:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)initWithComposition:(id)arg1;
 - (float)loadingProgress;
 - (id)saveableWaveform;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIPickerTableViewContainerDelegate-Protocol.h>
-#import <UIKit/UIPickerViewScrollTesting-Protocol.h>
-#import <UIKit/UITableViewDataSource-Protocol.h>
-#import <UIKit/UITableViewDelegate-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIPickerTableViewContainerDelegate-Protocol.h>
+#import <UIKitCore/UIPickerViewScrollTesting-Protocol.h>
+#import <UIKitCore/UITableViewDataSource-Protocol.h>
+#import <UIKitCore/UITableViewDelegate-Protocol.h>
 
 @class CALayer, NSMutableArray, NSString, UIColor, UIImageView, UISelectionFeedbackGenerator, _UIPickerViewTestParameters;
 @protocol UIPickerViewDataSource, UIPickerViewDelegate;

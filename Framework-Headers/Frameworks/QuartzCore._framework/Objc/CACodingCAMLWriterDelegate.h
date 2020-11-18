@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/CAMLWriterDelegate-Protocol.h>
 
@@ -13,20 +13,23 @@
 __attribute__((visibility("hidden")))
 @interface CACodingCAMLWriterDelegate : NSObject <CAMLWriterDelegate>
 {
-    NSString *_resource_dir;
+    NSString *_resourceDir;
     int _serial;
-    NSString *_image_format;
-    NSDictionary *_image_encode_options;
+    NSString *_imageFormat;
+    NSDictionary *_imageEncodeOptions;
+    BOOL _skipHiddenLayers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy) NSDictionary *image_encode_options; // @synthesize image_encode_options=_image_encode_options;
-@property (copy) NSString *image_format; // @synthesize image_format=_image_format;
+@property (copy) NSDictionary *imageEncodeOptions; // @synthesize imageEncodeOptions=_imageEncodeOptions;
+@property (copy) NSString *imageFormat; // @synthesize imageFormat=_imageFormat;
+@property BOOL skipHiddenLayers; // @synthesize skipHiddenLayers=_skipHiddenLayers;
 @property (readonly) Class superclass;
 
 - (id)CAMLWriter:(id)arg1 URLForResource:(id)arg2;
+- (BOOL)CAMLWriter:(id)arg1 shouldEncodeObject:(id)arg2;
 - (id)CAMLWriter:(id)arg1 typeForObject:(id)arg2;
 - (void)dealloc;
 - (id)initWithResourceDir:(id)arg1;

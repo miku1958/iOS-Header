@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSString, PLPhotoLibrary;
 
 @interface PLFileSystemAssetImporter : NSObject
 {
     PLPhotoLibrary *_photoLibrary;
+    NSString *_mediaDirectoryPath;
     NSString *_photoLibraryStoreUUID;
     NSMutableIndexSet *_thumbIndexes;
     BOOL _hasProcessedAnyAssets;
@@ -25,7 +26,6 @@
 @property (strong, nonatomic) NSMutableDictionary *existingUUIDsByUppercasePath; // @synthesize existingUUIDsByUppercasePath=_existingUUIDsByUppercasePath;
 @property (nonatomic) unsigned long long thumbnailBatchFetchSize; // @synthesize thumbnailBatchFetchSize=_thumbnailBatchFetchSize;
 
-+ (id)_mediaDirectoryPath;
 - (id)_addAssetWithURL:(id)arg1 existingOID:(id)arg2;
 - (BOOL)_setupAdjustmentsFromAdjustmentFileForAsset:(id)arg1;
 - (BOOL)_setupPhotoAsset:(id)arg1 withURL:(id)arg2;
@@ -38,6 +38,7 @@
 - (id)assetURLisInDatabase:(id)arg1;
 - (void)dealloc;
 - (id)initWithPhotoLibrary:(id)arg1;
+- (id)mediaDirectoryPathWithPhotoLibrary:(id)arg1;
 - (unsigned long long)nextThumbnailIndex;
 - (void)setModificationAndCreationDateOnAsset:(id)arg1 withURL:(id)arg2;
 

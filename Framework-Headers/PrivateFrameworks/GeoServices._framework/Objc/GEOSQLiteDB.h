@@ -42,6 +42,7 @@
 @property (readonly, nonatomic) NSObject<OS_os_log> *log;
 @property (readonly, nonatomic) NSDictionary *pragmas;
 @property (readonly, nonatomic) struct sqlite3 *sqliteDB;
+@property (nonatomic) long long user_version;
 
 + (id)defaultPragmas;
 - (void).cxx_destruct;
@@ -54,6 +55,7 @@
 - (void)_createParentDirectory;
 - (void)_debug_lockDB:(id)arg1;
 - (void)_debug_unlockDB:(id)arg1;
+- (BOOL)_deleteAllDBFiles;
 - (BOOL)_deleteAllDatabaseFilesIfCorrupt:(int)arg1;
 - (void)_deleteAndReopenDatabaseIfCorrupt:(int)arg1;
 - (void)_doneWritingToChannel:(id)arg1;
@@ -68,6 +70,7 @@
 - (BOOL)bindBlobParameter:(const char *)arg1 toValue:(id)arg2 inStatement:(struct sqlite3_stmt *)arg3 error:(id *)arg4;
 - (BOOL)bindInt64Parameter:(const char *)arg1 toValue:(long long)arg2 inStatement:(struct sqlite3_stmt *)arg3 error:(id *)arg4;
 - (BOOL)bindIntParameter:(const char *)arg1 toValue:(int)arg2 inStatement:(struct sqlite3_stmt *)arg3 error:(id *)arg4;
+- (BOOL)bindNullParameter:(const char *)arg1 inStatement:(struct sqlite3_stmt *)arg2 error:(id *)arg3;
 - (BOOL)bindParameter:(const char *)arg1 toUUID:(id)arg2 inStatement:(struct sqlite3_stmt *)arg3 error:(id *)arg4;
 - (BOOL)bindRealParameter:(const char *)arg1 toValue:(double)arg2 inStatement:(struct sqlite3_stmt *)arg3 error:(id *)arg4;
 - (BOOL)bindTextParameter:(const char *)arg1 toValue:(id)arg2 inStatement:(struct sqlite3_stmt *)arg3 error:(id *)arg4;
@@ -76,6 +79,7 @@
 - (void)clearStatement:(id)arg1;
 - (BOOL)createTable:(const char *)arg1 withDrop:(const char *)arg2;
 - (void)dealloc;
+- (BOOL)deleteAllDBFiles;
 - (BOOL)deleteExternalResourceAtURL:(id)arg1 error:(id *)arg2;
 - (id)description;
 - (double)doubleForColumn:(int)arg1 inStatment:(struct sqlite3_stmt *)arg2;
@@ -105,6 +109,7 @@
 - (id)stringForColumn:(int)arg1 inStatment:(struct sqlite3_stmt *)arg2;
 - (void)tearDown;
 - (BOOL)unregisterVirtualTable:(id)arg1;
+- (BOOL)vacuum;
 - (BOOL)writeBlobData:(id)arg1 toTable:(const char *)arg2 column:(const char *)arg3 rowID:(long long)arg4 error:(id *)arg5;
 - (BOOL)writeExternalResourceWithData:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 

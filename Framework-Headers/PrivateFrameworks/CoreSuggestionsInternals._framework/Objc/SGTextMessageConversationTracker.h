@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class SGLRUCache;
+@class _PASLRUCache;
 
 @interface SGTextMessageConversationTracker : NSObject
 {
     struct _opaque_pthread_mutex_t _lock;
-    SGLRUCache *_conversations;
+    _PASLRUCache *_conversations;
 }
 
 + (id)instance;

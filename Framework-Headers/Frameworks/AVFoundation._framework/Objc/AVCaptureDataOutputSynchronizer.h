@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVCaptureAudioDataOutputSampleBufferDelegate-Protocol.h>
 #import <AVFoundation/AVCaptureDepthDataOutputDelegate-Protocol.h>
 #import <AVFoundation/AVCaptureMetadataOutputObjectsDelegate-Protocol.h>
 #import <AVFoundation/AVCaptureVideoDataOutputSampleBufferDelegate-Protocol.h>
+#import <AVFoundation/AVCaptureVisionDataOutputDelegate-Protocol.h>
 
 @class AVCaptureDataOutputSynchronizerInternal, NSArray, NSString;
 @protocol AVCaptureDataOutputSynchronizerDelegate, OS_dispatch_queue;
 
-@interface AVCaptureDataOutputSynchronizer : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate, AVCaptureDepthDataOutputDelegate>
+@interface AVCaptureDataOutputSynchronizer : NSObject <AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptureAudioDataOutputSampleBufferDelegate, AVCaptureMetadataOutputObjectsDelegate, AVCaptureDepthDataOutputDelegate, AVCaptureVisionDataOutputDelegate>
 {
     AVCaptureDataOutputSynchronizerInternal *_internal;
 }
@@ -46,6 +47,8 @@
 - (void)depthDataOutput:(id)arg1 didOutputDepthData:(id)arg2 timestamp:(CDStruct_1b6d18a9)arg3 connection:(id)arg4;
 - (id)initWithDataOutputs:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
+- (void)visionDataOutput:(id)arg1 didDropVisionDataPixelBufferForTimestamp:(CDStruct_1b6d18a9)arg2 connection:(id)arg3 reason:(long long)arg4;
+- (void)visionDataOutput:(id)arg1 didOutputVisionDataPixelBuffer:(struct __CVBuffer *)arg2 timestamp:(CDStruct_1b6d18a9)arg3 connection:(id)arg4;
 
 @end
 

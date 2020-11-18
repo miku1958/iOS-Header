@@ -37,7 +37,6 @@
 @property (copy) NSString *text;
 
 + (BOOL)supportsSecureCoding;
-+ (id)textWithString:(id)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

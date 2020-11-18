@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
@@ -25,10 +25,10 @@
 @property (readonly, nonatomic) BOOL inverted; // @synthesize inverted=_inverted;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)awakeAfterUsingCoder:(id)arg1;
 - (void)clearCachedCharacterSet;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

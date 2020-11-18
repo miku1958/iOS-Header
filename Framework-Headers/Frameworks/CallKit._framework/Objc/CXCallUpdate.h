@@ -27,6 +27,7 @@
     BOOL _requiresInCallSounds;
     BOOL _prefersExclusiveAccessToCellularNetwork;
     BOOL _remoteUplinkMuted;
+    BOOL _shouldSuppressInCallUI;
     BOOL _supportsUnambiguousMultiPartyState;
     BOOL _supportsAddCall;
     BOOL _supportsSendingToVoicemail;
@@ -41,6 +42,7 @@
     long long _audioInterruptionProvider;
     long long _audioInterruptionOperationMode;
     NSString *_crossDeviceIdentifier;
+    NSUUID *_localSenderIdentityUUID;
     NSSet *_remoteParticipantHandles;
     NSSet *_activeRemoteParticipantHandles;
     CXHandoffContext *_handoffContext;
@@ -65,6 +67,7 @@
 @property (nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long inCallSoundRegion; // @synthesize inCallSoundRegion=_inCallSoundRegion;
+@property (copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property (copy, nonatomic) NSString *localizedCallerName; // @synthesize localizedCallerName=_localizedCallerName;
 @property (nonatomic) BOOL mayRequireBreakBeforeMake; // @synthesize mayRequireBreakBeforeMake=_mayRequireBreakBeforeMake;
 @property (nonatomic) BOOL prefersExclusiveAccessToCellularNetwork; // @synthesize prefersExclusiveAccessToCellularNetwork=_prefersExclusiveAccessToCellularNetwork;
@@ -72,6 +75,7 @@
 @property (copy, nonatomic) NSSet *remoteParticipantHandles; // @synthesize remoteParticipantHandles=_remoteParticipantHandles;
 @property (nonatomic, getter=isRemoteUplinkMuted) BOOL remoteUplinkMuted; // @synthesize remoteUplinkMuted=_remoteUplinkMuted;
 @property (nonatomic) BOOL requiresInCallSounds; // @synthesize requiresInCallSounds=_requiresInCallSounds;
+@property (nonatomic) BOOL shouldSuppressInCallUI; // @synthesize shouldSuppressInCallUI=_shouldSuppressInCallUI;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsAddCall; // @synthesize supportsAddCall=_supportsAddCall;
 @property (nonatomic) BOOL supportsDTMF; // @synthesize supportsDTMF=_supportsDTMF;

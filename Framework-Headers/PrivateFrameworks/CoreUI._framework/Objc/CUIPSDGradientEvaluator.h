@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUI/NSCoding-Protocol.h>
 #import <CoreUI/NSCopying-Protocol.h>
 
 @class NSArray;
 
-__attribute__((visibility("hidden")))
 @interface CUIPSDGradientEvaluator : NSObject <NSCoding, NSCopying>
 {
     NSArray *colorStops;

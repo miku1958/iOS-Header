@@ -13,7 +13,6 @@
 
 @interface _SFPBMapRegion : PBCodable <_SFPBMapRegion, NSSecureCoding>
 {
-    CDStruct_d6cfdf4e _has;
     double _southLat;
     double _westLng;
     double _northLat;
@@ -23,10 +22,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) double eastLng; // @synthesize eastLng=_eastLng;
-@property (readonly, nonatomic) BOOL hasEastLng;
-@property (readonly, nonatomic) BOOL hasNorthLat;
-@property (readonly, nonatomic) BOOL hasSouthLat;
-@property (readonly, nonatomic) BOOL hasWestLng;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) double northLat; // @synthesize northLat=_northLat;

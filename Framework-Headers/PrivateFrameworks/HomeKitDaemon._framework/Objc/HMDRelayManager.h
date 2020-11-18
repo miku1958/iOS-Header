@@ -18,7 +18,6 @@
 {
     BOOL _supported;
     BOOL _enabled;
-    BOOL _networkReachable;
     unsigned long long _currentState;
     NSString *_controllerIdentifier;
     HMDHome *_home;
@@ -43,7 +42,6 @@
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) IDSService *idsService; // @synthesize idsService=_idsService;
 @property (readonly, nonatomic) HMFNetMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
-@property (nonatomic, getter=isNetworkReachable) BOOL networkReachable; // @synthesize networkReachable=_networkReachable;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) NSHashTable *relayAccessories; // @synthesize relayAccessories=_relayAccessories;
 @property (readonly, nonatomic) NSMutableArray *relayStreams; // @synthesize relayStreams=_relayStreams;

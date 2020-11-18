@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (strong, nonatomic) NSString *localizedTypeDescription; // @synthesize localizedTypeDescription=_localizedTypeDescription;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSURL *url;
 @property (strong, nonatomic) NSString *uti; // @synthesize uti=_uti;
 
 + (id)assetMetadataFromURL:(id)arg1;

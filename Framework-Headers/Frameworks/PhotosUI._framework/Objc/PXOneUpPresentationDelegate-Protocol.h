@@ -6,8 +6,8 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class NSSet, PXActionManager, PXAssetReference, PXAssetsDataSourceManager, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIMediaProvider, UIImage;
-@protocol UICoordinateSpace;
+@class NSSet, PXAssetActionManager, PXAssetReference, PXAssetsDataSourceManager, PXGestureProvider, PXOneUpPresentation, PXPhotosDetailsContext, PXRegionOfInterest, PXUIMediaProvider, UIImage;
+@protocol PXImportStatusManager;
 
 @protocol PXOneUpPresentationDelegate <NSObject>
 - (PXAssetsDataSourceManager *)oneUpPresentationDataSourceManager:(PXOneUpPresentation *)arg1;
@@ -15,10 +15,14 @@
 
 @optional
 - (UIImage *)oneUpPresentation:(PXOneUpPresentation *)arg1 currentImageForAssetReference:(PXAssetReference *)arg2;
-- (PXRegionOfInterest *)oneUpPresentation:(PXOneUpPresentation *)arg1 regionOfInterestForAssetReference:(PXAssetReference *)arg2 inCoordinateSpace:(id<UICoordinateSpace>)arg3;
+- (PXRegionOfInterest *)oneUpPresentation:(PXOneUpPresentation *)arg1 regionOfInterestForAssetReference:(PXAssetReference *)arg2;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 scrollAssetReferenceToVisible:(PXAssetReference *)arg2;
 - (void)oneUpPresentation:(PXOneUpPresentation *)arg1 setHiddenAssetReferences:(NSSet *)arg2;
-- (PXActionManager *)oneUpPresentationActionManager:(PXOneUpPresentation *)arg1;
+- (long long)oneUpPresentationActionContext:(PXOneUpPresentation *)arg1;
+- (PXAssetActionManager *)oneUpPresentationActionManager:(PXOneUpPresentation *)arg1;
+- (PXAssetActionManager *)oneUpPresentationActionManagerForPreviewing:(PXOneUpPresentation *)arg1;
+- (PXGestureProvider *)oneUpPresentationGestureProvider:(PXOneUpPresentation *)arg1;
+- (id<PXImportStatusManager>)oneUpPresentationImportStatusManager:(PXOneUpPresentation *)arg1;
 - (PXAssetReference *)oneUpPresentationInitialAssetReference:(PXOneUpPresentation *)arg1;
 - (PXPhotosDetailsContext *)oneUpPresentationPhotosDetailsContext:(PXOneUpPresentation *)arg1;
 - (BOOL)oneUpPresentationShouldAutoPlay:(PXOneUpPresentation *)arg1;

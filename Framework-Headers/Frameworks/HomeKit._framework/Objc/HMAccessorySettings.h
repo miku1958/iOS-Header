@@ -9,27 +9,28 @@
 #import <HomeKit/HMFLogging-Protocol.h>
 #import <HomeKit/HMObjectMerge-Protocol.h>
 
-@class HMAccessory, HMAccessorySettingGroup, NSString, NSUUID;
-@protocol HMAccessorySettingsContainer, HMAccessorySettingsDelegate, HMControllable, OS_dispatch_queue;
+@class HMAccessory, HMAccessorySettingGroup, HMFUnfairLock, NSString, NSUUID, _HMContext;
+@protocol HMAccessorySettingsContainer, HMAccessorySettingsDelegate, HMControllable;
 
 @interface HMAccessorySettings : NSObject <HMFLogging, HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     id<HMAccessorySettingsContainer> _settingsContainer;
     id<HMControllable> _settingsControl;
     id<HMAccessorySettingsDelegate> _delegate;
     HMAccessorySettingGroup *_rootGroup;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
+    _HMContext *_context;
 }
 
 @property (readonly, weak) HMAccessory *accessory;
+@property (readonly, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, getter=isControllable) BOOL controllable;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<HMAccessorySettingsDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) HMAccessorySettingGroup *rootGroup; // @synthesize rootGroup=_rootGroup;
-@property (readonly, weak) id<HMAccessorySettingsContainer> settingsContainer; // @synthesize settingsContainer=_settingsContainer;
+@property (weak) id<HMAccessorySettingsContainer> settingsContainer; // @synthesize settingsContainer=_settingsContainer;
 @property (weak) id<HMControllable> settingsControl; // @synthesize settingsControl=_settingsControl;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier;
@@ -43,7 +44,6 @@
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_updateSettingsWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithSettingsContainer:(id)arg1 settingsControl:(id)arg2 rootGroup:(id)arg3;
-- (void)setSettingsContainer:(id)arg1;
 
 @end
 

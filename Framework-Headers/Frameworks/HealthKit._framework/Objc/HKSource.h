@@ -34,15 +34,16 @@
 + (id)_generateIdentifierForAppleDeviceWithUUID:(id)arg1;
 + (BOOL)_isPlaceholderBundleIdentifier:(id)arg1;
 + (id)_localDeviceSource;
++ (id)_privateSourceForClinicalAccountIdentifier:(id)arg1 name:(id)arg2;
++ (id)_publicSourceForGatewayExternalIdentifier:(id)arg1 name:(id)arg2;
 + (BOOL)_representsCurrentDeviceWithBundleIdentifier:(id)arg1;
 + (id)_sourceBundleIdentifierWithEntitlements:(id)arg1 processBundleIdentifier:(id)arg2 isExtension:(BOOL)arg3;
-+ (id)_sourceForClinicalAccountIdentifier:(id)arg1;
 + (id)_sourceNameWithRepresentsCurrentDevice:(BOOL)arg1 defaultSource:(BOOL)arg2;
 + (id)_sourceWithBundleIdentifier:(id)arg1 name:(id)arg2 productType:(id)arg3 options:(unsigned long long)arg4;
 + (id)defaultSource;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_clinicalAccountIdentifier;
+- (id)_deducedClinicalAccountIdentifier;
 - (BOOL)_hasFirstPartyBundleID;
 - (id)_init;
 - (BOOL)_isAppleDevice;

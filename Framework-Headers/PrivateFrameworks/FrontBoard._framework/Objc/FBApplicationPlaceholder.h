@@ -24,7 +24,7 @@
 @property (readonly, nonatomic, getter=isPausable) BOOL pausable;
 @property (readonly, nonatomic) double percentComplete;
 @property (readonly, nonatomic, getter=isPrioritizable) BOOL prioritizable;
-@property (readonly, strong, nonatomic) id<FBApplicationPlaceholderProgress> progress;
+@property (readonly, nonatomic) id<FBApplicationPlaceholderProgress> progress;
 @property (strong, nonatomic, getter=_proxy, setter=_setProxy:) LSApplicationProxy *proxy;
 @property (readonly, nonatomic, getter=isRestricted) BOOL restricted;
 @property (readonly, nonatomic, getter=isResumable) BOOL resumable;

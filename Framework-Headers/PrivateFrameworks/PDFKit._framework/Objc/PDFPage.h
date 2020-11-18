@@ -39,6 +39,8 @@
 - (void)_commonInit;
 - (unsigned long long)_documentIndex;
 - (void)_drawAnnotationsWithBox:(long long)arg1 inContext:(struct CGContext *)arg2;
+- (void)_drawPageCGImageInContext:(struct CGContext *)arg1 withDisplayBox:(long long)arg2;
+- (void)_drawPageImageInContext:(struct CGContext *)arg1 withRotation:(BOOL)arg2 withDisplayBox:(long long)arg3;
 - (void)_drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withRotation:(BOOL)arg3 withAntialiasing:(BOOL)arg4 isThumbnail:(BOOL)arg5 withAnnotations:(BOOL)arg6 withBookmark:(BOOL)arg7 withDelegate:(id)arg8;
 - (struct CGImage *)_newCGImageWithBox:(long long)arg1 bitmapSize:(struct CGSize)arg2 scale:(double)arg3 offset:(struct CGPoint)arg4 fillBackground:(BOOL)arg5 withRotation:(BOOL)arg6 withAntialiasing:(BOOL)arg7 withAnnotations:(BOOL)arg8 withBookmark:(BOOL)arg9 withDelegate:(id)arg10;
 - (void)_postAnnotationsChangedNotificationCoalesced;
@@ -46,6 +48,7 @@
 - (void)addAnnotation:(id)arg1;
 - (void)addAnnotationFormField:(id)arg1;
 - (void)addScannedAnnotation:(id)arg1;
+- (BOOL)akDidSetupRealPageModelController;
 - (id)akPageAdaptor;
 - (id)allAnnotations;
 - (id)annotationAtPoint:(struct CGPoint)arg1;
@@ -86,6 +89,7 @@
 - (BOOL)hasBleedBox;
 - (BOOL)hasCropBox;
 - (BOOL)hasOpenPopups;
+- (BOOL)hasPopups;
 - (BOOL)hasRunDataDetectors;
 - (BOOL)hasTrimBox;
 - (id)image;
@@ -95,6 +99,7 @@
 - (id)imageOfSize:(struct CGSize)arg1 forBox:(long long)arg2 withRotation:(BOOL)arg3 withAntialiasing:(BOOL)arg4 withAnnotations:(BOOL)arg5 withBookmark:(BOOL)arg6 withDelegate:(id)arg7;
 - (id)init;
 - (id)initWithImage:(id)arg1;
+- (id)initWithImageSource:(struct CGImageSource *)arg1;
 - (id)initWithPageRef:(struct CGPDFPage *)arg1;
 - (void)insertAnnotation:(id)arg1 atIndex:(long long)arg2;
 - (BOOL)isBookmarked;
@@ -129,6 +134,7 @@
 - (id)selectionFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 type:(int)arg3;
 - (id)selectionFromPointToBottom:(struct CGPoint)arg1 type:(int)arg2;
 - (id)selectionFromTopToPoint:(struct CGPoint)arg1 type:(int)arg2;
+- (void)setAKDidSetupRealPageModelController:(BOOL)arg1;
 - (void)setBookmarked:(BOOL)arg1;
 - (void)setBookmarked:(BOOL)arg1 updateBookmarks:(BOOL)arg2;
 - (void)setBounds:(struct CGRect)arg1 forBox:(long long)arg2;

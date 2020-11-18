@@ -6,25 +6,21 @@
 
 #import <objc/NSObject.h>
 
-#import <SafariShared/WBSHistoryClientProtocol-Protocol.h>
 #import <SafariShared/WBSHistoryConnectionProxy-Protocol.h>
 
 @class NSXPCConnection;
 @protocol OS_dispatch_queue;
 
-@interface WBSHistoryConnectionProxy : NSObject <WBSHistoryClientProtocol, WBSHistoryConnectionProxy>
+@interface WBSHistoryConnectionProxy : NSObject <WBSHistoryConnectionProxy>
 {
     NSXPCConnection *_connection;
-    BOOL _registeredForHistoryNotifications;
     NSObject<OS_dispatch_queue> *_connectionProxyQueue;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *connectionProxyQueue; // @synthesize connectionProxyQueue=_connectionProxyQueue;
-@property (readonly, nonatomic, getter=isRegisteredForHistoryNotifications) BOOL registeredForHistoryNotifications; // @synthesize registeredForHistoryNotifications=_registeredForHistoryNotifications;
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_defaultProxyErrorHandlerWithSimpleReplyCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_registerForHistoryNotifications;
 - (void)beginHistoryAccessSession:(CDUnknownBlockType)arg1;
 - (void)beginURLCompletionSession:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -35,11 +31,8 @@
 - (void)groupVisitsIntoSessionsBetweenStartDate:(id)arg1 endDate:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)killService;
-- (void)processRemoteHistoryNotification:(id)arg1;
 - (void)queryMemoryFootprint:(CDUnknownBlockType)arg1;
 - (id)queryMemoryFootprintWithError:(id *)arg1;
-- (void)registerForHistoryNotifications;
-- (void)unregisterForHistoryNotifications;
 
 @end
 

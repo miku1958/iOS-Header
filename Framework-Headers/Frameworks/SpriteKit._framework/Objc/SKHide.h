@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)hide;
++ (BOOL)supportsSecureCoding;
 + (id)unhide;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

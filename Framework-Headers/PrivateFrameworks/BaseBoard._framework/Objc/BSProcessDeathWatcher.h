@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class BSDispatchSource;
 
@@ -14,6 +14,7 @@
     CDUnknownBlockType _deathHandler;
 }
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)initWithPID:(int)arg1 queue:(id)arg2 deathHandler:(CDUnknownBlockType)arg3;
 - (void)invalidate;

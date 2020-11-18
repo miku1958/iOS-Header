@@ -34,9 +34,9 @@
     struct LogCategory *_ucatCrypto;
     NSXPCConnection *_xpcCnx;
     unsigned char _deviceActionType;
+    BOOL _duetSync;
     BOOL _needsAWDL;
     BOOL _needsKeyboard;
-    BOOL _needsNAN;
     BOOL _needsSetup;
     BOOL _overrideScreenOff;
     BOOL _pairSetupDisabled;
@@ -52,6 +52,7 @@
     unsigned char _serviceType;
     BOOL _touchRemoteEnabled;
     BOOL _watchLocked;
+    BOOL _wifiP2P;
     unsigned int _pinType;
     unsigned int _sessionFlags;
     long long _advertiseRate;
@@ -96,6 +97,7 @@
 @property (nonatomic) unsigned char deviceColorCode; // @synthesize deviceColorCode=_deviceColorCode;
 @property (nonatomic) unsigned char deviceModelCode; // @synthesize deviceModelCode=_deviceModelCode;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (nonatomic) BOOL duetSync; // @synthesize duetSync=_duetSync;
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property (copy, nonatomic) CDUnknownBlockType eventMessageHandler; // @synthesize eventMessageHandler=_eventMessageHandler;
 @property (copy, nonatomic) NSString *fixedPIN; // @synthesize fixedPIN=_fixedPIN;
@@ -109,7 +111,6 @@
 @property (strong, nonatomic) CUAppleIDClient *myAppleIDInfoClient; // @synthesize myAppleIDInfoClient=_myAppleIDInfoClient;
 @property (nonatomic) BOOL needsAWDL; // @synthesize needsAWDL=_needsAWDL;
 @property (nonatomic) BOOL needsKeyboard; // @synthesize needsKeyboard=_needsKeyboard;
-@property (nonatomic) BOOL needsNAN; // @synthesize needsNAN=_needsNAN;
 @property (nonatomic) BOOL needsSetup; // @synthesize needsSetup=_needsSetup;
 @property (nonatomic) BOOL overrideScreenOff; // @synthesize overrideScreenOff=_overrideScreenOff;
 @property (copy, nonatomic) NSDictionary *pairSetupACL; // @synthesize pairSetupACL=_pairSetupACL;
@@ -141,6 +142,7 @@
 @property (nonatomic) BOOL touchRemoteEnabled; // @synthesize touchRemoteEnabled=_touchRemoteEnabled;
 @property (nonatomic) BOOL wakeDevice; // @synthesize wakeDevice=_wakeDevice;
 @property (nonatomic) BOOL watchLocked; // @synthesize watchLocked=_watchLocked;
+@property (nonatomic) BOOL wifiP2P; // @synthesize wifiP2P=_wifiP2P;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -15,6 +15,7 @@
 @property (strong) id colorMap;
 @property (copy) NSArray *colors;
 @property struct CGPoint endPoint;
+@property (copy) NSArray *interpolations;
 @property (copy) NSArray *locations;
 @property struct CGPoint startPoint;
 @property (copy) NSString *type;

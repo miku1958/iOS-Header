@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSDShapeSearchResultProviding-Protocol.h>
 
@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (void)p_addUserDefinedShapeWithPathSource:(id)arg1 atIndex:(unsigned long long)arg2 pathSourceDefaults:(id)arg3 withChangedIndexSet:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)p_createSearchIndexWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)p_identifierAtIndex:(unsigned long long)arg1;
-- (void)p_notifyForIndexesChanged:(id)arg1 changeType:(unsigned long long)arg2 documentRoot:(id)arg3;
+- (void)p_notifyForIndexesChanged:(id)arg1 changeType:(unsigned long long)arg2 categoryChangeType:(unsigned long long)arg3 documentRoot:(id)arg4;
 - (id)p_pathSourceDefaults;
 - (void)p_setPathSourceDefaults:(id)arg1;
 - (id)p_shadowPathSourceDefaults;

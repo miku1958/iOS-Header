@@ -12,14 +12,15 @@
 #import <iWorkImport/TSWPOverlappingField-Protocol.h>
 #import <iWorkImport/TSWPTextSpanningObject-Protocol.h>
 
-@class NSString, PKDrawing, TSKPencilAnnotationStorage, TSWPStorage;
+@class NSString, PKDrawing, TSWPStorage;
+@protocol TSKPencilAnnotationStorage;
 
 __attribute__((visibility("hidden")))
 @interface TSWPPencilAnnotation : TSPObject <TSPCopying, TSKDocumentObject, TSWPTextSpanningObject, TSWPOverlappingField, TSKPencilAnnotation>
 {
     TSWPStorage *_parentStorage;
     NSString *_textAttributeUUIDString;
-    TSKPencilAnnotationStorage *_pencilAnnotationStorage;
+    id<TSKPencilAnnotationStorage> _pencilAnnotationStorage;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) PKDrawing *drawing; // @dynamic drawing;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) TSWPStorage *parentStorage; // @synthesize parentStorage=_parentStorage;
-@property (strong, nonatomic) TSKPencilAnnotationStorage *pencilAnnotationStorage; // @synthesize pencilAnnotationStorage=_pencilAnnotationStorage;
+@property (strong, nonatomic) id<TSKPencilAnnotationStorage> pencilAnnotationStorage; // @synthesize pencilAnnotationStorage=_pencilAnnotationStorage;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *textAttributeUUIDString; // @synthesize textAttributeUUIDString=_textAttributeUUIDString;
 @property (readonly, nonatomic) NSString *uuid;

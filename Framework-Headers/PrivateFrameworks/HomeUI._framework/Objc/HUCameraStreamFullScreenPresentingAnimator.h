@@ -8,22 +8,25 @@
 
 #import <HomeUI/UIViewControllerAnimatedTransitioning-Protocol.h>
 
-@class HMCameraSnapshot, NSString;
+@class HMCameraSnapshot, NSString, NSURL;
 
 @interface HUCameraStreamFullScreenPresentingAnimator : HUCameraStreamFullScreenAnimator <UIViewControllerAnimatedTransitioning>
 {
     HMCameraSnapshot *_cameraSnapshot;
+    NSURL *_demoSnapshotURL;
 }
 
 @property (readonly, nonatomic) HMCameraSnapshot *cameraSnapshot; // @synthesize cameraSnapshot=_cameraSnapshot;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NSURL *demoSnapshotURL; // @synthesize demoSnapshotURL=_demoSnapshotURL;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)animateTransition:(id)arg1;
-- (id)initWithSourceFrameInPresentingView:(struct CGRect)arg1 cameraSnapshot:(id)arg2;
+- (id)initWithSourceCameraCell:(id)arg1 cameraSnapshot:(id)arg2;
+- (id)initWithSourceCameraCell:(id)arg1 cameraSnapshot:(id)arg2 snapshotDemoURL:(id)arg3;
 - (double)transitionDuration:(id)arg1;
 
 @end

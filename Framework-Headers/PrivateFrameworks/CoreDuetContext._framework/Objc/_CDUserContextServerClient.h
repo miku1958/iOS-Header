@@ -36,6 +36,8 @@
 
 + (id)clientOfService:(id)arg1 withConnection:(id)arg2 andContext:(id)arg3;
 - (void).cxx_destruct;
+- (void)addObjects:(id)arg1 andRemoveObjects:(id)arg2 forArrayAtPath:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)addObjects:(id)arg1 toArrayAtPath:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)deregisterAllCallbacks:(BOOL)arg1;
 - (void)deregisterCallback:(id)arg1;
@@ -45,6 +47,7 @@
 - (id)initForService:(id)arg1 withConnection:(id)arg2 andContext:(id)arg3;
 - (void)propertiesOfPath:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)registerCallback:(id)arg1;
+- (void)removeObjects:(id)arg1 fromArrayAtPath:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)setObject:(id)arg1 forPath:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)valuesForPaths:(id)arg1 inContextsMatching:(id)arg2 handler:(CDUnknownBlockType)arg3;
 

@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSString, UIButton, UIColor, UIFont, UILabel, UIVisualEffectView;
+@class NSArray, NSString, PXViewLayoutHelper, UIButton, UIColor, UIFont, UILabel, UIVisualEffectView;
 @protocol PXUIWidgetHeaderViewDelegate;
 
 @interface PXUIWidgetHeaderView : UIView
@@ -26,6 +26,7 @@
     BOOL _allowUserInteractionWithSubtitle;
     BOOL _allowUserInteractionWithCaption;
     BOOL __hasContent;
+    PXViewLayoutHelper *_layoutHelper;
     id<PXUIWidgetHeaderViewDelegate> _delegate;
     NSString *_title;
     NSString *_subtitle;
@@ -65,6 +66,7 @@
 @property (weak, nonatomic) id<PXUIWidgetHeaderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) double distanceBetweenTitleBaselineAndSubtitleBaseline; // @synthesize distanceBetweenTitleBaselineAndSubtitleBaseline=_distanceBetweenTitleBaselineAndSubtitleBaseline;
 @property (nonatomic) double horizontalSpacingBetweenTitleAndSubtitle; // @synthesize horizontalSpacingBetweenTitleAndSubtitle=_horizontalSpacingBetweenTitleAndSubtitle;
+@property (readonly, nonatomic) PXViewLayoutHelper *layoutHelper; // @synthesize layoutHelper=_layoutHelper;
 @property (nonatomic) long long layoutStyle; // @synthesize layoutStyle=_layoutStyle;
 @property (nonatomic) double minimumDistanceBetweenLastBaselineAndBottom; // @synthesize minimumDistanceBetweenLastBaselineAndBottom=_minimumDistanceBetweenLastBaselineAndBottom;
 @property (nonatomic) double minimumDistanceBetweenTopAndFirstBaseline; // @synthesize minimumDistanceBetweenTopAndFirstBaseline=_minimumDistanceBetweenTopAndFirstBaseline;
@@ -75,6 +77,7 @@
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (BOOL)_canComposeTitleWithSubtitle;
 - (id)_captionButtonCreateIfNeeded:(BOOL)arg1;
 - (id)_captionLabelCreateIfNeeded:(BOOL)arg1;
 - (void)_handleCaptionButton:(id)arg1;

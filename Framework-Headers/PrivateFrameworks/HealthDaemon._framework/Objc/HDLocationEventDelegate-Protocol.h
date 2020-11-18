@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HKLocationSeriesSample, HKWorkoutRoute;
+@class HKWorkoutRoute;
 
 @protocol HDLocationEventDelegate
 - (void)elevationUpdated:(unsigned long long)arg1;
-- (void)locationSeriesSampleUpdated:(HKLocationSeriesSample *)arg1;
 - (void)workoutRouteUpdated:(HKWorkoutRoute *)arg1;
 @end
 

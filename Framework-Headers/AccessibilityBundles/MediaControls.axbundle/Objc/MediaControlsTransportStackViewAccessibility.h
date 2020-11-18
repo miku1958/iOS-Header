@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityDescriptionForCommandRequest:(id)arg1;
 - (void)_accessibilityLoadAccessibilityInformation;
 - (void)_updateButtonImage:(id)arg1 button:(id)arg2;
 - (id)accessibilityElements;

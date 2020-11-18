@@ -11,6 +11,7 @@
 @class NSArray, NSString, PUReviewAsset;
 @protocol PUAdjustmentURLNode, PUImageDataRenderNode, PUImageInfoNode, PUReviewImageURLNode, PUReviewVideoURLNode, PUVideoAssetNode, PUVideoURLExportNode, PXRunNodeDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUReviewCreateAssetNode : PXRunNode <PUReviewAssetNode>
 {
     PUReviewAsset *_reviewAsset;

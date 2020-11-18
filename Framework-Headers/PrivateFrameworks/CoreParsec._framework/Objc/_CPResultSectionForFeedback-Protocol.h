@@ -12,14 +12,12 @@
 
 @property (copy, nonatomic) NSString *bundleIdentifier;
 @property (copy, nonatomic) NSData *fallbackResultSection;
-@property (readonly, nonatomic) BOOL hasBundleIdentifier;
-@property (readonly, nonatomic) BOOL hasFallbackResultSection;
-@property (readonly, nonatomic) BOOL hasIdentifier;
-@property (readonly, nonatomic) BOOL hasRankingScore;
 @property (copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (nonatomic) int knownBundleIdentifier;
 @property (nonatomic) double rankingScore;
 @property (copy, nonatomic) NSArray *results;
+@property (readonly, nonatomic) unsigned long long whichBundleid;
 
 - (void)addResults:(_CPSearchResultForFeedback *)arg1;
 - (void)clearResults;

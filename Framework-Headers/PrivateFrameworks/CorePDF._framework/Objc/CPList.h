@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CorePDF/CPDisposable-Protocol.h>
 
-@class CPListItem;
+@class CPParagraphListItem;
 
+__attribute__((visibility("hidden")))
 @interface CPList : NSObject <CPDisposable>
 {
     struct CGRect spacer;
     int type;
     unsigned int ordinalPrefixLength;
     unsigned int ordinalSuffixLength;
-    CPListItem *parentItem;
+    CPParagraphListItem *parentItem;
     struct __CFArray *items;
 }
 
 @property (nonatomic) unsigned int ordinalPrefixLength; // @synthesize ordinalPrefixLength;
 @property (nonatomic) unsigned int ordinalSuffixLength; // @synthesize ordinalSuffixLength;
-@property (strong, nonatomic) CPListItem *parentItem; // @synthesize parentItem;
+@property (strong, nonatomic) CPParagraphListItem *parentItem; // @synthesize parentItem;
 @property (nonatomic) struct CGRect spacer; // @synthesize spacer;
 @property (nonatomic) int type; // @synthesize type;
 

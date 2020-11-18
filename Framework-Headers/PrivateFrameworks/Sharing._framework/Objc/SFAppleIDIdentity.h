@@ -34,6 +34,7 @@
 @property (readonly, nonatomic) BOOL certificateExpired;
 @property (strong, nonatomic) NSData *certificatePersistentReference; // @synthesize certificatePersistentReference=_certificatePersistentReference;
 @property (strong, nonatomic) NSData *intermediateCertificatePersistentReference; // @synthesize intermediateCertificatePersistentReference=_intermediateCertificatePersistentReference;
+@property (readonly, nonatomic) BOOL isInvalid;
 @property (strong, nonatomic) NSDate *lastValidationAttemptDate; // @synthesize lastValidationAttemptDate=_lastValidationAttemptDate;
 @property (strong, nonatomic) NSDate *lastValidationDate; // @synthesize lastValidationDate=_lastValidationDate;
 @property (nonatomic) BOOL linkedToCurrentUser; // @synthesize linkedToCurrentUser=_linkedToCurrentUser;
@@ -58,6 +59,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToIdentity:(id)arg1;
 - (void)removeFromKeychain;
+- (int)verifyKeys;
 
 @end
 

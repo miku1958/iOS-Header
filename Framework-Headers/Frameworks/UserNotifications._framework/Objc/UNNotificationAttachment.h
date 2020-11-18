@@ -26,6 +26,7 @@
 @property (readonly, copy, nonatomic) UNNotificationAttachmentOptions *options; // @synthesize options=_options;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 
++ (id)_systemDirectoryURL;
 + (id)attachmentWithIdentifier:(id)arg1 URL:(id)arg2 options:(id)arg3 error:(id *)arg4;
 + (unsigned long long)stagingActionForAttachmentURL:(id)arg1 bundleProxy:(id)arg2 error:(id *)arg3;
 + (BOOL)supportsSecureCoding;

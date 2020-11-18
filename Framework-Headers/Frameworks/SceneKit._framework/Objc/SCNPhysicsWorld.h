@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -33,7 +33,7 @@
 }
 
 @property (readonly, nonatomic) NSArray *allBehaviors;
-@property id<SCNPhysicsContactDelegate> contactDelegate;
+@property (weak) id<SCNPhysicsContactDelegate> contactDelegate;
 @property (nonatomic) struct SCNVector3 gravity;
 @property (nonatomic) double speed;
 @property (nonatomic) double timeStep;
@@ -61,6 +61,7 @@
 - (void)_removeFieldFromWorld:(id)arg1;
 - (void)_reset;
 - (void)_step:(double)arg1;
+- (void)_updatePhysicsFieldsTrasforms;
 - (void)addBehavior:(id)arg1;
 - (void)addPhysicsBody:(id)arg1 nodeRef:(struct __C3DNode *)arg2 colGroup:(unsigned long long)arg3 colMask:(unsigned long long)arg4 colTest:(unsigned long long)arg5;
 - (void)commonInit;

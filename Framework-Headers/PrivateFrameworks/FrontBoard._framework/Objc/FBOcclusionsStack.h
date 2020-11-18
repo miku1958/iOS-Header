@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCountedSet, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
@@ -17,8 +17,8 @@
     NSMutableSet *_dirtyKeys;
 }
 
+- (void).cxx_destruct;
 - (void)_adjustEntry:(id)arg1 forLevel:(double)arg2 occlusions:(id)arg3;
-- (void)dealloc;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

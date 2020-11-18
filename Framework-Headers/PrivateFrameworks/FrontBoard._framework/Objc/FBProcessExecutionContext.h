@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/NSCopying-Protocol.h>
 #import <FrontBoard/NSMutableCopying-Protocol.h>
@@ -41,10 +41,10 @@
 @property (strong, nonatomic) id<FBProcessWatchdogProviding> watchdogProvider; // @synthesize watchdogProvider=_watchdogProvider;
 @property (nonatomic) double watchdogScaleFactor; // @synthesize watchdogScaleFactor=_watchdogScaleFactor;
 
+- (void).cxx_destruct;
 - (id)_initWithExecutionContext:(id)arg1;
 - (unsigned int)_launchAssertionFlags;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)init;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

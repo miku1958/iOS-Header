@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -15,7 +15,7 @@
 
 @property (strong, nonatomic) NSArray *eventRouters; // @synthesize eventRouters=_eventRouters;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)init;
 - (long long)routerDestinationForDescriptor:(id)arg1;

@@ -14,12 +14,12 @@
 }
 
 @property (readonly, nonatomic) AVCaptureDevice *device;
+@property (nonatomic) BOOL unifiedAutoExposureDefaultsEnabled;
 
 + (id)deviceInputWithDevice:(id)arg1 error:(id *)arg2;
 + (void)initialize;
-- (BOOL)_authorizedToUseDevice:(id)arg1;
+- (BOOL)_authorizedToUseDeviceAndRequestIfNecessary:(id)arg1;
 - (void)_handleNotification:(id)arg1 payload:(id)arg2;
-- (int)_requestCameraRecordPermissionForDevice:(id)arg1;
 - (void)_sourceFormatDidChange:(struct opaqueCMFormatDescription *)arg1;
 - (void)attachSafelyToFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (struct OpaqueCMClock *)clock;
@@ -28,8 +28,15 @@
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (id)init;
 - (id)initWithDevice:(id)arg1 error:(id *)arg2;
+- (BOOL)isBuiltInMicrophoneStereoAudioCaptureEnabled;
+- (BOOL)isBuiltInMicrophoneStereoAudioCaptureSupported;
+- (BOOL)isVisionDataDeliveryEnabled;
 - (id)notReadyError;
 - (id)ports;
+- (void)setBuiltInMicrophoneStereoAudioCaptureEnabled:(BOOL)arg1;
+- (void)setSimulatedAperture:(float)arg1;
+- (void)setVisionDataDeliveryEnabled:(BOOL)arg1;
+- (float)simulatedAperture;
 
 @end
 

@@ -45,6 +45,7 @@
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id *)arg3;
+- (id)contactCountForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)contactFromPerson:(void *)arg1;
 - (id)contactFromPerson:(void *)arg1 keysToFetch:(id)arg2;
 - (id)contactFromPerson:(void *)arg1 keysToFetch:(id)arg2 mutable:(BOOL)arg3;

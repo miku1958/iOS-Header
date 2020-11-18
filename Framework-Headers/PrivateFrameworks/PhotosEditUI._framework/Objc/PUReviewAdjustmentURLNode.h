@@ -11,6 +11,7 @@
 @class NSArray, NSString, NSURL, PHContentEditingOutput, PUReviewAsset;
 @protocol PXRunNodeDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUReviewAdjustmentURLNode : PXRunNode <PUAdjustmentURLNode>
 {
     NSURL *_adjustmentURL;

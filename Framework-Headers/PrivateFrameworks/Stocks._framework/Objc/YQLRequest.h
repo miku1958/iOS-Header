@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Stocks/NSURLSessionDataDelegate-Protocol.h>
 
@@ -16,14 +16,12 @@
     NSURLSessionTask *_dataTask;
     NSURLRequest *_request;
     NSMutableData *_rawData;
-    BOOL _taggedAsInvalid;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (nonatomic, getter=hasBeenTaggedAsInvalid) BOOL taggedAsInvalid; // @synthesize taggedAsInvalid=_taggedAsInvalid;
 
 + (void)appendDebugString:(id)arg1;
 + (void)saveDebugString;
@@ -35,13 +33,12 @@
 - (id)YQLCountryCode;
 - (id)YQLLanguageCode;
 - (void)_createDefaultSession;
+- (void)_loadDefaultSessionIfNeeded;
 - (id)_yahooDoppelganger_taskForRequest:(id)arg1 delegate:(id)arg2;
 - (id)aggregateDictionaryDomain;
-- (id)arrayWithDictionaryKeyPath:(id)arg1 inJSONObject:(id)arg2 wrapResultIfDictionary:(BOOL)arg3;
 - (void)cancel;
 - (void)cancelAndInvalidate;
 - (void)dealloc;
-- (id)dictionaryWithDictionaryKeyPath:(id)arg1 inJSONObject:(id)arg2;
 - (void)didParseData;
 - (void)failToParseWithData:(id)arg1;
 - (void)failToParseWithDataSeriesDictionary:(id)arg1;
@@ -49,8 +46,6 @@
 - (id)init;
 - (BOOL)isLoading;
 - (void)loadRequest:(id)arg1;
-- (id)objectOfClass:(Class)arg1 withDictionaryKeyPath:(id)arg2 inJSONObject:(id)arg3;
-- (id)objectWithDictionaryKeyPath:(id)arg1 inJSONObject:(id)arg2;
 - (void)parseData:(id)arg1;
 - (id)taskForRequest:(id)arg1 delegate:(id)arg2;
 

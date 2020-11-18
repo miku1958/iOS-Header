@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBackdropViewSettingsDark.h>
+#import <UIKitCore/_UIBackdropViewSettingsDark.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIBackdropViewSettingsDarkLow : _UIBackdropViewSettingsDark

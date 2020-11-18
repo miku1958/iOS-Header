@@ -48,7 +48,6 @@
 - (void)_cancelPreloadTasks;
 - (void)_retryFailuresWithErrorsReset:(BOOL)arg1;
 - (void)_start;
-- (void)_withDownloadedRegionsOnQueue:(id)arg1 perform:(CDUnknownBlockType)arg2;
 - (void)addTileSetStyle:(int)arg1 betweenZoom:(unsigned int)arg2 andZoom:(unsigned int)arg3;
 - (void)beginLoading;
 - (void)dealloc;

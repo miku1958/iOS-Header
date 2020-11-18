@@ -24,6 +24,7 @@
 - (id)identifyText:(id)arg1;
 - (id)init;
 - (id)initWithLanguageID:(id)arg1;
+- (void)resetEventIdentifierModel;
 
 @end
 

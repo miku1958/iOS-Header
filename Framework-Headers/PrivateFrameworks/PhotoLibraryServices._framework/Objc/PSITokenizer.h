@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
-
-@class NSCharacterSet;
+#import <objc/NSObject.h>
 
 @interface PSITokenizer : NSObject
 {
-    NSCharacterSet *_excludedSingleCharacterSet;
-    void *_tokenizer;
+    void *_tagger;
     struct __CFStringTokenizer *_nameTokenizer;
+    struct __CFLocale *_locale;
+    BOOL _localeIsGerman;
 }
 
 - (void)dealloc;
-- (id)init;
+- (id)initWithLocale:(id)arg1;
 - (id)newTokensFromString:(id)arg1 withOptions:(long long)arg2 outCopyRanges:(id *)arg3;
-- (id)normalizeString:(id)arg1 includeWildcard:(BOOL)arg2;
+- (id)normalizeString:(id)arg1 matchType:(unsigned long long)arg2 insertDoubleQuotes:(BOOL)arg3;
 - (void)tokenizePersonName:(id)arg1 tokenOutput:(struct tokenOutput_t *)arg2;
 - (void)tokenizeString:(id)arg1 withOptions:(long long)arg2 tokenOutput:(struct tokenOutput_t *)arg3;
 

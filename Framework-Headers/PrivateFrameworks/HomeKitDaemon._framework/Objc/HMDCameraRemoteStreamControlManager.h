@@ -70,6 +70,7 @@
 - (void)streamingManagerDidStopStream:(id)arg1 error:(id)arg2;
 - (void)streamingManagerDidUpdateConfiguration:(id)arg1;
 - (void)updateAudioSetting:(unsigned long long)arg1;
+- (void)updateAudioVolume:(id)arg1 callback:(CDUnknownBlockType)arg2;
 
 @end
 

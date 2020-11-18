@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
 @interface FKTextFeature : NSObject
 {
     CDUnion_a5814135 _backingIndex;
-    CDStruct_6a58b7ce *_session;
+    struct FKSession *_session;
     int _scale;
     long long _featureID;
     NSArray *_corners;
@@ -28,10 +28,10 @@
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
-+ (id)featureFromConcompIndex:(int)arg1 session:(CDStruct_6a58b7ce *)arg2 roiOffset:(struct CGPoint)arg3 dimensions:(struct CGSize)arg4 type:(long long)arg5 createDiacriticFeatures:(BOOL)arg6 featureID:(long long *)arg7 scale:(int)arg8;
-+ (id)featureFromSequenceIndex:(int)arg1 session:(CDStruct_6a58b7ce *)arg2 roiOffset:(struct CGPoint)arg3 dimensions:(struct CGSize)arg4 createConcompFeatures:(BOOL)arg5 createDiacriticFeatures:(BOOL)arg6 featureID:(long long *)arg7 scale:(int)arg8;
++ (id)featureFromConcompIndex:(int)arg1 session:(struct FKSession *)arg2 roiOffset:(struct CGPoint)arg3 dimensions:(struct CGSize)arg4 type:(long long)arg5 createDiacriticFeatures:(BOOL)arg6 featureID:(long long *)arg7 scale:(int)arg8;
++ (id)featureFromSequenceIndex:(int)arg1 session:(struct FKSession *)arg2 roiOffset:(struct CGPoint)arg3 dimensions:(struct CGSize)arg4 createConcompFeatures:(BOOL)arg5 createDiacriticFeatures:(BOOL)arg6 featureID:(long long *)arg7 scale:(int)arg8;
 - (void)dealloc;
-- (id)initWithType:(long long)arg1 boundingBox:(struct CGRect *)arg2 corners:(id)arg3 featureID:(long long)arg4 session:(CDStruct_6a58b7ce *)arg5 backingIndex:(CDUnion_a5814135)arg6 scale:(int)arg7;
+- (id)initWithType:(long long)arg1 boundingBox:(struct CGRect *)arg2 corners:(id)arg3 featureID:(long long)arg4 session:(struct FKSession *)arg5 backingIndex:(CDUnion_a5814135)arg6 scale:(int)arg7;
 
 @end
 

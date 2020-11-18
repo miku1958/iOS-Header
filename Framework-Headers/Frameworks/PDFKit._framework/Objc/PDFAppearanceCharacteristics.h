@@ -28,6 +28,7 @@
 - (void)addColor:(id)arg1 forKey:(struct __CFString *)arg2 toDictionaryRef:(struct __CFDictionary *)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (struct __CFDictionary *)createDictionaryRef;
+- (void)dealloc;
 - (struct CGPDFForm *)icon;
 - (id)init;
 - (id)initWithAnnotationDictionary:(struct CGPDFDictionary *)arg1 forControlType:(long long)arg2;

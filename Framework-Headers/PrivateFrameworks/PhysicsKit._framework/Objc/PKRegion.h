@@ -6,10 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <PhysicsKit/NSCoding-Protocol.h>
 #import <PhysicsKit/NSCopying-Protocol.h>
+#import <PhysicsKit/NSSecureCoding-Protocol.h>
 
-@interface PKRegion : NSObject <NSCopying, NSCoding>
+@interface PKRegion : NSObject <NSCopying, NSSecureCoding>
 {
     int _shape;
     BOOL _isExclusive;
@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) struct CGPath *path;
 
 + (id)infiniteRegion;
++ (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)containsPoint:(struct CGPoint)arg1;
@@ -36,6 +37,7 @@
 - (id)initWithSize:(struct CGSize)arg1;
 - (id)inverseRegion;
 - (BOOL)isEmpty;
+- (BOOL)isEqualToRegion:(id)arg1;
 - (BOOL)isInfinite;
 - (id)regionByDifferenceFromRegion:(id)arg1;
 - (id)regionByIntersectionWithRegion:(id)arg1;

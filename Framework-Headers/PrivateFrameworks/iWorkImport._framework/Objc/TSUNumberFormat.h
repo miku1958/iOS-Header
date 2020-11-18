@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -57,7 +57,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (id)instanceWithArchive:(const struct FormatStructArchive *)arg1 unarchiver:(id)arg2;
-+ (id)numberFormatFromFormatStruct:(CDStruct_28403e59)arg1;
++ (id)numberFormatFromFormatStruct:(CDStruct_b1066b25)arg1;
 + (id)numberFormatWithValueType:(int)arg1 formatString:(id)arg2 decimalPlaces:(unsigned short)arg3 currencyCode:(id)arg4 useAccountingStyle:(BOOL)arg5 negativeStyle:(int)arg6 showThousandsSeparator:(BOOL)arg7 fractionAccuracy:(int)arg8;
 + (id)numberFormatWithValueType:(int)arg1 formatString:(id)arg2 decimalPlaces:(unsigned short)arg3 currencyCode:(id)arg4 useAccountingStyle:(BOOL)arg5 negativeStyle:(int)arg6 showThousandsSeparator:(BOOL)arg7 fractionAccuracy:(int)arg8 prefixString:(id)arg9 suffixString:(id)arg10 scaleFactor:(double)arg11 base:(unsigned char)arg12 basePlaces:(unsigned short)arg13 baseUseMinusSign:(BOOL)arg14 isCustom:(BOOL)arg15 formatName:(id)arg16;
 - (unsigned short)base;
@@ -74,7 +74,7 @@ __attribute__((visibility("hidden")))
 - (unsigned short)decimalPlaces;
 - (id)formatName;
 - (id)formatString;
-- (CDStruct_28403e59)formatStructAndCustomFormatData:(id *)arg1;
+- (CDStruct_b1066b25)formatStructAndCustomFormatData:(id *)arg1;
 - (int)fractionAccuracy;
 - (BOOL)hasValidDecimalPlaces;
 - (BOOL)ignoreDecimalPlacesForZeroValue;

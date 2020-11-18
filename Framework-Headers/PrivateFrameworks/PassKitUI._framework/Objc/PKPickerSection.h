@@ -16,7 +16,7 @@
 }
 
 @property (copy, nonatomic) NSString *footer; // @synthesize footer=_footer;
-@property (strong, nonatomic) NSMutableArray *items; // @synthesize items=_items;
+@property (readonly, copy, nonatomic) NSMutableArray *items; // @synthesize items=_items;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 + (id)sectionWithTitle:(id)arg1;

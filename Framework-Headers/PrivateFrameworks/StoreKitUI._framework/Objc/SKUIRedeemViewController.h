@@ -24,6 +24,7 @@
     SKUIRedeemConfiguration *_redeemConfiguration;
     SKUIRedeemStepViewController *_inputViewController;
     long long _initialBarStyle;
+    BOOL _cameraRedeemVisible;
     BOOL _shouldPerformInitialOperationOnAppear;
     id<SKUIRedeemViewCameraOverrideDelegate> _cameraDelegate;
     UIBarButtonItem *_cancelButtonItem;
@@ -31,6 +32,7 @@
 
 @property (nonatomic) BOOL attempsAutomaticRedeem; // @synthesize attempsAutomaticRedeem=_attempsAutomaticRedeem;
 @property (weak, nonatomic) id<SKUIRedeemViewCameraOverrideDelegate> cameraDelegate; // @synthesize cameraDelegate=_cameraDelegate;
+@property (nonatomic) BOOL cameraRedeemVisible; // @synthesize cameraRedeemVisible=_cameraRedeemVisible;
 @property (strong, nonatomic) UIBarButtonItem *cancelButtonItem; // @synthesize cancelButtonItem=_cancelButtonItem;
 @property (readonly, nonatomic) long long category; // @synthesize category=_category;
 @property (strong, nonatomic) SKUIClientContext *clientContext; // @synthesize clientContext=_clientContext;
@@ -39,6 +41,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *initialCode; // @synthesize initialCode=_initialCode;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
+@property (strong, nonatomic) SKUIRedeemConfiguration *redeemConfiguration; // @synthesize redeemConfiguration=_redeemConfiguration;
 @property (nonatomic) BOOL shouldPerformInitialOperationOnAppear; // @synthesize shouldPerformInitialOperationOnAppear=_shouldPerformInitialOperationOnAppear;
 @property (readonly) Class superclass;
 

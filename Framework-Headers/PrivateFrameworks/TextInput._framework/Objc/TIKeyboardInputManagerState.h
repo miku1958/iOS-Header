@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInput/NSCopying-Protocol.h>
 #import <TextInput/NSSecureCoding-Protocol.h>
@@ -88,9 +88,9 @@
 @property (copy, nonatomic) NSString *wordSeparator; // @synthesize wordSeparator=_wordSeparator;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (BOOL)acceptInputString:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)inputStringAcceptsCurrentCandidateIfSelected:(id)arg1;

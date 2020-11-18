@@ -6,18 +6,26 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class UIControl;
-@protocol UITextInput;
+#import <SearchUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@interface SearchUIKeyboardableTableViewController : UITableViewController
+@class NSString, UIControl;
+@protocol SearchUIKeyboardableTableViewScrollDelegate, UITextInput;
+
+@interface SearchUIKeyboardableTableViewController : UITableViewController <UIGestureRecognizerDelegate>
 {
     BOOL _shouldHideTableCellsUnderKeyboard;
     UIControl<UITextInput> *_textField;
     double _keyboardHeight;
+    id<SearchUIKeyboardableTableViewScrollDelegate> _scrollDelegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property double keyboardHeight; // @synthesize keyboardHeight=_keyboardHeight;
+@property (weak) id<SearchUIKeyboardableTableViewScrollDelegate> scrollDelegate; // @synthesize scrollDelegate=_scrollDelegate;
 @property (nonatomic) BOOL shouldHideTableCellsUnderKeyboard; // @synthesize shouldHideTableCellsUnderKeyboard=_shouldHideTableCellsUnderKeyboard;
+@property (readonly) Class superclass;
 @property (weak) UIControl<UITextInput> *textField; // @synthesize textField=_textField;
 
 - (void).cxx_destruct;
@@ -25,8 +33,11 @@
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canHighlightRowAtIndexPath:(id)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (BOOL)cellsVisibleUnderKeyboard;
+- (double)contentHeight;
 - (void)deletePressed;
 - (void)downArrowPressed:(id)arg1;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (void)goBack;
 - (void)hideCellsBelowKeyboardIfNecessary;
 - (void)highlightRowAtIndexPath:(id)arg1 upward:(BOOL)arg2;
@@ -44,8 +55,10 @@
 - (void)rightArrowPressed;
 - (void)scrollIndexPathToVisible:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)selectHighlightedRow;
+- (void)setTableView:(id)arg1;
 - (void)showKeyboard;
 - (void)upArrowPressed:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

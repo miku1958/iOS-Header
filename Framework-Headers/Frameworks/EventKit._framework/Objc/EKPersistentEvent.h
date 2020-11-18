@@ -34,6 +34,7 @@
 - (id)originalStartDate;
 - (long long)privacyLevel;
 - (id)proposedStartDate;
+- (BOOL)pushDirtyProperties:(id *)arg1;
 - (id)responseComment;
 - (void)setAvailability:(long long)arg1;
 - (void)setBirthdayID:(id)arg1;

@@ -6,27 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <CardKit/CRKCardSectionViewProviderManaging-Protocol.h>
+#import <CardKit/CRKCardSectionViewSourcing-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSMutableSet, NSString;
+@protocol CRCard, _CRKCardSectionViewLoaderDelegate;
 
-@interface _CRKCardSectionViewLoader : NSObject <CRKCardSectionViewProviderManaging>
+@interface _CRKCardSectionViewLoader : NSObject <CRKCardSectionViewSourcing>
 {
     NSMutableDictionary *_cardSectionViewConfigurationsByCardSectionIdentifiersByProviderIdentifiers;
-    NSMutableArray *_loadedCards;
-    NSArray *_providers;
+    NSMutableDictionary *_vetoingProviderIdentifiersByVetoedCardSectionIdentifiers;
+    NSMutableSet *_identifiedCardSectionViewProviders;
+    id<_CRKCardSectionViewLoaderDelegate> _delegate;
+    id<CRCard> _loadedCard;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<_CRKCardSectionViewLoaderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSArray *loadedCards;
-@property (strong, nonatomic) NSArray *providers; // @synthesize providers=_providers;
+@property (readonly, nonatomic) NSMutableSet *identifiedCardSectionViewProviders; // @synthesize identifiedCardSectionViewProviders=_identifiedCardSectionViewProviders;
+@property (strong, nonatomic) id<CRCard> loadedCard; // @synthesize loadedCard=_loadedCard;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_allViewConfigurations;
+- (void)_loadIdentifiedCardSectionViewProvidersFromCard:(id)arg1 identifiedProviders:(id)arg2 delegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_viewConfigurationForCardSection:(id)arg1 providerIdentifier:(id)arg2;
+- (BOOL)cardSectionShouldBeDisplayed:(id)arg1;
 - (id)init;
-- (void)loadCardSectionViewsFromCard:(id)arg1 providerHelper:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)viewConfigurationForCardSection:(id)arg1;
 
 @end

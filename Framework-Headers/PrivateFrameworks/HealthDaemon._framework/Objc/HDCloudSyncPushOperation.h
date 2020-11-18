@@ -23,9 +23,9 @@
     HDCloudSyncSequenceRecord *_sequenceRecordForPush;
     BOOL _isNewStoreRecord;
     NSMutableArray *_changeRecordsPendingPush;
-    BOOL _isSecondaryContainer;
     NSUUID *_operationIdentifier;
     NSDate *_startTime;
+    NSString *_cloudKitIdentifier;
     BOOL _queue_hasStarted;
     CDUnknownBlockType _completion;
     NSProgress *_progress;
@@ -39,17 +39,19 @@
 
 - (void).cxx_destruct;
 - (void)_finishWithSuccess:(BOOL)arg1 error:(id)arg2;
-- (id)_getStoreRecordForStoreIdentifier:(id)arg1 isNewRecord:(BOOL *)arg2;
 - (id)_queue_computeSequenceRecordForPushWithStoreRecord:(id)arg1;
 - (void)_queue_deactivatePendingOwnerStores;
 - (void)_queue_endSyncSessionWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (id)_queue_estimateSyncEntityClassesWithChangesForSession:(id)arg1;
-- (id)_queue_excludedStoresForIdentifiers:(id)arg1 error:(id *)arg2;
+- (id)_queue_excludedStoresForZones:(id)arg1 error:(id *)arg2;
 - (BOOL)_queue_finalizeNextChangeRecordForUploadToSession:(id)arg1 error:(id *)arg2;
 - (void)_queue_finalizePushForSession:(id)arg1;
-- (void)_queue_pushRecords:(id)arg1 recordIDsToDelete:(id)arg2 zoneToCreate:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)_queue_getStoreRecordForPushZone:(id)arg1 isNewRecord:(BOOL *)arg2;
+- (void)_queue_performSyncExcludingStoreZones:(id)arg1;
+- (void)_queue_pushRecords:(id)arg1 recordIDsToDelete:(id)arg2 zoneToCreate:(id)arg3 containerID:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)_queue_pushStoreIdentifier;
+- (id)_queue_pushStoreWithIdentifier:(id)arg1;
 - (void)_queue_setInitialForwardProgressDateIfNecessary;
-- (void)_queue_syncStore:(id)arg1 excludingStores:(id)arg2;
 - (void)_queue_uploadChangesForSyncSession:(id)arg1 isFinalUpload:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_recordForwardProgressDate;
 - (id)initWithConfiguration:(id)arg1 fetchOperationResult:(id)arg2;

@@ -32,7 +32,6 @@
 
 @property (nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property (nonatomic) struct _PKStrokeID boundsVersion; // @synthesize boundsVersion=_boundsVersion;
-@property (readonly, nonatomic) BOOL canChangeTransientOrientation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -50,6 +49,7 @@
 @property (readonly, nonatomic) NSMutableArray *visibleStrokes;
 @property (strong, nonatomic) PKVisualizationManager *visualizationManager; // @synthesize visualizationManager=_visualizationManager;
 
++ (id)_drawingWithUnzippedData:(id)arg1;
 + (id)_enabledLocales;
 + (struct CGSize)defaultPixelSize;
 + (struct CGSize)defaultSize;
@@ -58,6 +58,8 @@
 + (void)sortStrokes:(id)arg1;
 - (void).cxx_destruct;
 - (id)CHDrawing;
+- (id)_ascii;
+- (BOOL *)_newAsciiBitfield;
 - (void)_teardownRecognitionObjects;
 - (void)_updateRecognitionSession;
 - (id)addNewGeneratedStroke:(id)arg1;
@@ -98,12 +100,12 @@
 - (void)setForcedRecognitionLocales:(id)arg1;
 - (void)setNeedsRecognitionUpdate;
 - (void)setRecognitionEnabled:(BOOL)arg1;
+- (id)setStroke:(id)arg1 applyTransform:(struct CGAffineTransform)arg2;
 - (id)setStroke:(id)arg1 hidden:(BOOL)arg2;
 - (id)setStroke:(id)arg1 hidden:(BOOL)arg2 ink:(id)arg3;
 - (id)setStroke:(id)arg1 hidden:(BOOL)arg2 ink:(id)arg3 transform:(struct CGAffineTransform)arg4;
 - (id)setStroke:(id)arg1 hidden:(BOOL)arg2 transform:(struct CGAffineTransform)arg3;
 - (void)setStrokeIDForInsertion:(id)arg1;
-- (BOOL)setTransientOrientation:(long long)arg1;
 - (void)sortStrokes;
 - (id)strokeForIdentifier:(id)arg1;
 - (struct _PKStrokeID)strokeIDForNewStroke;
@@ -111,8 +113,8 @@
 - (id)strokeProviderSnapshot;
 - (id)strokeProviderVersionFromData:(id)arg1;
 - (struct _PKStrokeID)strokeVersionForUpdatedStroke:(id)arg1;
-- (id)strokesIntersectedByPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2;
-- (id)strokesIntersectedByPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2 minThreshold:(double)arg3 transform:(struct CGAffineTransform)arg4;
+- (id)strokesIntersectedByPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2 minThreshold:(double)arg3 transform:(struct CGAffineTransform)arg4 onscreenVisibleStrokes:(id)arg5;
+- (id)strokesIntersectedByPoint:(struct CGPoint)arg1 prevPoint:(struct CGPoint)arg2 onscreenVisibleStrokes:(id)arg3;
 - (void)takeOrientationFrom:(id)arg1;
 - (id)visibleStrokeForInsertingStroke:(id)arg1;
 - (id)visibleStrokeForInsertingStroke:(id)arg1 transform:(struct CGAffineTransform)arg2;

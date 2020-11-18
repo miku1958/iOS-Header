@@ -22,13 +22,14 @@
 @property (readonly, nonatomic) unsigned long long maxResults; // @synthesize maxResults=_maxResults;
 @property (readonly, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 
++ (Class)queryClass;
++ (id)requiredEntitlements;
 - (void).cxx_destruct;
 - (BOOL)_deliverAuthorizedSamplesToClient:(id)arg1 errorOut:(id *)arg2;
 - (BOOL)_deliverOneSample:(id)arg1 client:(id)arg2 errorOut:(id *)arg3;
 - (void)_queue_start;
 - (void)authorizeSamples:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithQueryUUID:(id)arg1 configuration:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
-- (id)requiredEntitlements;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
 - (id)samplesBeforeAuthorizationWithSortDescriptors:(id)arg1 errorOut:(id *)arg2;
 
 @end

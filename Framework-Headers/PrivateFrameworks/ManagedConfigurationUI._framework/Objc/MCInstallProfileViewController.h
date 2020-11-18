@@ -15,23 +15,25 @@
 #import <ManagedConfigurationUI/UIAlertViewDelegate-Protocol.h>
 
 @class MCInstallProfileQuestionViewController, MCProfile, MCProfileViewController, NSArray, NSData, NSSManager, NSString, UIAlertController;
+@protocol MCInstallProfileDelegate;
 
-@interface MCInstallProfileViewController : UIViewController <MCInstallationConsentDelegate, MCInstallationWarningDelegate, PSStateRestoration, UIAlertViewDelegate, DevicePINControllerDelegate, MCInteractionDelegate, MCProfileQuestionsControllerDelegate>
+@interface MCInstallProfileViewController : UIViewController <MCInstallationConsentDelegate, MCInstallationWarningDelegate, MCProfileQuestionsControllerDelegate, PSStateRestoration, UIAlertViewDelegate, DevicePINControllerDelegate, MCInteractionDelegate>
 {
+    MCInstallProfileQuestionViewController *_questionsController;
+    CDUnknownBlockType _didAppearBlock;
     BOOL _processingPayload;
     BOOL _installHasFailed;
     BOOL _userCancelledInstall;
     BOOL _waitingForMoreInput;
     BOOL _isInteractionDelegate;
     BOOL _secondaryProfileReceived;
-    MCInstallProfileQuestionViewController *_questionsController;
-    CDUnknownBlockType _didAppearBlock;
     BOOL _initialQuestionsHaveBeenAsked;
-    NSString *_pin;
     BOOL _delayUserInput;
     int _installState;
+    NSString *_pin;
     MCProfile *_profile;
     NSData *_profileData;
+    id<MCInstallProfileDelegate> _delegate;
     MCProfileViewController *_profileViewController;
     NSArray *_warningsToPresent;
     UIAlertController *_activeAlertController;
@@ -44,17 +46,26 @@
 @property (strong, nonatomic) UIAlertController *activeAlertController; // @synthesize activeAlertController=_activeAlertController;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) BOOL delayUserInput; // @synthesize delayUserInput=_delayUserInput;
+@property (weak, nonatomic) id<MCInstallProfileDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL initialQuestionsHaveBeenAsked; // @synthesize initialQuestionsHaveBeenAsked=_initialQuestionsHaveBeenAsked;
+@property (nonatomic) BOOL installHasFailed; // @synthesize installHasFailed=_installHasFailed;
 @property (nonatomic) int installState; // @synthesize installState=_installState;
+@property (nonatomic) BOOL isInteractionDelegate; // @synthesize isInteractionDelegate=_isInteractionDelegate;
 @property (strong, nonatomic) NSSManager *nssManager; // @synthesize nssManager=_nssManager;
 @property (strong, nonatomic) MCProfile *originalProfile; // @synthesize originalProfile=_originalProfile;
 @property (strong, nonatomic) NSData *originalProfileData; // @synthesize originalProfileData=_originalProfileData;
+@property (strong, nonatomic) NSString *pin; // @synthesize pin=_pin;
+@property (nonatomic) BOOL processingPayload; // @synthesize processingPayload=_processingPayload;
 @property (strong, nonatomic) MCProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSData *profileData; // @synthesize profileData=_profileData;
 @property (strong, nonatomic) id profileListChangedObserver; // @synthesize profileListChangedObserver=_profileListChangedObserver;
 @property (strong, nonatomic) MCProfileViewController *profileViewController; // @synthesize profileViewController=_profileViewController;
+@property (nonatomic) BOOL secondaryProfileReceived; // @synthesize secondaryProfileReceived=_secondaryProfileReceived;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL userCancelledInstall; // @synthesize userCancelledInstall=_userCancelledInstall;
+@property (nonatomic) BOOL waitingForMoreInput; // @synthesize waitingForMoreInput=_waitingForMoreInput;
 @property (strong, nonatomic) NSArray *warningsToPresent; // @synthesize warningsToPresent=_warningsToPresent;
 
 + (void)_showRebootAlert;

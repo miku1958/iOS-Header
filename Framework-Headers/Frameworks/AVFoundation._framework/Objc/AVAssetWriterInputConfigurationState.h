@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVOutputSettings, NSArray, NSDictionary, NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetWriterInputConfigurationState : NSObject
 {
     NSString *_mediaType;
@@ -34,6 +35,7 @@
     long long _chunkSize;
     NSString *_mediaDataLocation;
     NSURL *_sampleReferenceBaseURL;
+    BOOL _maximizePowerEfficiency;
 }
 
 @property (nonatomic) short alternateGroupID; // @synthesize alternateGroupID=_alternateGroupID;
@@ -42,6 +44,7 @@
 @property (copy, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (nonatomic) long long layer; // @synthesize layer=_layer;
 @property (nonatomic) BOOL marksOutputTrackAsEnabled; // @synthesize marksOutputTrackAsEnabled=_marksOutputTrackAsEnabled;
+@property (nonatomic) BOOL maximizePowerEfficiency; // @synthesize maximizePowerEfficiency=_maximizePowerEfficiency;
 @property (copy, nonatomic) NSString *mediaDataLocation; // @synthesize mediaDataLocation=_mediaDataLocation;
 @property (nonatomic) int mediaTimeScale; // @synthesize mediaTimeScale=_mediaTimeScale;
 @property (copy, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;

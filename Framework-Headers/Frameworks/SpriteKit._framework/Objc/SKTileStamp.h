@@ -6,10 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface SKTileStamp : NSObject <NSCoding>
+@interface SKTileStamp : NSObject <NSSecureCoding>
 {
     unsigned int _columns;
     unsigned int _rows;
@@ -20,12 +20,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long numberOfRows;
 @property (readonly, nonatomic) unsigned int *tileData;
 
++ (BOOL)supportsSecureCoding;
 + (id)tileStampWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 tileData:(unsigned int *)arg3;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 tileData:(unsigned int *)arg3;
+- (BOOL)isEqualToNode:(id)arg1;
 - (void)setTileData:(unsigned int *)arg1 size:(unsigned long long)arg2;
 - (id)tileDefinitionsForTileMap:(id)arg1;
 

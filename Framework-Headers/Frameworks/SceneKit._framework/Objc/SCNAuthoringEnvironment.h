@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class MISSING_TYPE, NSArray, NSMutableArray, NSMutableOrderedSet, NSSet, SCNAuthoringEnvironment2, SCNManipulator;
+@class MISSING_TYPE, NSArray, NSMutableArray, NSMutableOrderedSet, NSSet, SCNAuthoringEnvironment2, SCNManipulator, SCNNode;
 @protocol SCNAuthoringEnvironmentDelegate, SCNSceneRenderer;
 
 @interface SCNAuthoringEnvironment : NSObject
 {
     struct __C3DEngineContext *_engineContext;
     id<SCNSceneRenderer> _sceneRenderer;
+    BOOL _sceneRendererIsSCNView;
     struct __C3DFXProgram *_noColorProgram;
     struct __C3DFXProgram *_colorOnlyProgram;
     struct __C3DFXProgram *_colorAndTextureProgram;
@@ -20,9 +21,6 @@
     struct __C3DFXProgram *_wireframeProgram;
     CDStruct_4aabc75a _logsInfo;
     CDStruct_4aabc75a _boldLogsInfo;
-    CDStruct_4aabc75a _upArrowInfo;
-    CDStruct_4aabc75a _xyQuadrantInfo;
-    CDStruct_4aabc75a _xyQuadrantRingInfo;
     CDStruct_4aabc75a _dynamicLinesInfo;
     CDStruct_4aabc75a _dynamicLinesNoDepthTestInfo;
     CDStruct_4aabc75a _dynamicTrianglesInfo;
@@ -42,6 +40,10 @@
     unsigned short _quadrantIndicesCount;
     const void *_quadrantRingIndicesOffset;
     unsigned short _quadrantRingIndicesCount;
+    double _timedRecordingExpirationTime;
+    unsigned char _timedRecordingBuffer[64000];
+    unsigned int _timedRecordingBufferStart;
+    unsigned int _timedRecordingBufferEnd;
     long long _authoringDisplayMask;
     unsigned int _hasLighting:1;
     BOOL _shouldSnapOnGrid;
@@ -56,13 +58,16 @@
     NSSet *_initialSelection;
     NSMutableOrderedSet *_selection;
     NSArray *_selectedNodes;
+    BOOL _isOrbiting;
     float _lastGridDistance;
     double _gridUnit;
     NSMutableArray *_visibleManipulableItems;
     void *_wireframeRenderer;
+    unsigned int _consoleLineCount;
     struct {
         BOOL initialized;
         BOOL showFullStatistics;
+        BOOL showRenderOptionsPanel;
         float fps;
         float waitDisplayLinkTime;
         long long pressedButtonIndex;
@@ -73,12 +78,12 @@
         struct __C3DEngineStats stats;
     } _statisticsInfo;
     float _drawScale;
-    SCNManipulator *_manipulator;
     id _delegate;
     SCNAuthoringEnvironment2 *_authEnv2;
 }
 
 @property (nonatomic) long long authoringDisplayMask;
+@property (readonly, nonatomic) SCNNode *authoringOverlayLayer;
 @property (weak, nonatomic) id<SCNAuthoringEnvironmentDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long editingSpace; // @synthesize editingSpace=_editingSpace;
 @property (nonatomic) BOOL graphicalSelectionEnabled; // @synthesize graphicalSelectionEnabled=_graphicalSelectionEnabled;
@@ -93,20 +98,28 @@
 @property (readonly, nonatomic) struct SCNMatrix4 viewMatrix;
 
 + (id)authoringEnvironmentForSceneRenderer:(id)arg1;
++ (id)authoringEnvironmentForSceneRenderer:(id)arg1 createIfNeeded:(BOOL)arg2;
 + (long long)defaultAuthoringDisplayMask;
++ (id)rendererForSceneRenderer:(id)arg1;
 - (id)_initWithEngineContext:(struct __C3DEngineContext *)arg1;
-- (void)_updateManipulatorTargets;
+- (void)_setupAuthoringEnv2:(id)arg1;
+- (id)authoringEnvironment2;
 - (void)beginEditingNode:(id)arg1;
 - (void)beginEditingNodes:(id)arg1;
+- (void)beginOrbiting;
 - (void)cancelEdition;
 - (void)dealloc;
 - (BOOL)didTapAtPoint:(struct CGPoint)arg1;
 - (void)drawLineFromPoint:(struct SCNVector3)arg1 toPoint:(struct SCNVector3)arg2 color:(id)arg3;
 - (void)drawString:(id)arg1 atPoint:(struct CGPoint)arg2 color:(id)arg3;
+- (void)endOrbiting;
 - (id)init;
 - (BOOL)isEditingSubComponent;
+- (id)renderer;
 - (void)saveInitialSelection;
+- (void)sceneDidChange:(id)arg1;
 - (id)selectedItems;
+- (void)setupAuthoringEnv2;
 - (void)update;
 
 @end

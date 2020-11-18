@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AudioToolbox/NSXPCListenerDelegate-Protocol.h>
 
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     struct HapticSharedMemory _sharedBuffer;
     unsigned long long _uniqueID;
     int _serverTimeout;
+    CDUnknownBlockType _connectionCallback;
     BOOL _prewarmed;
     BOOL _running;
     BOOL _connected;
@@ -31,6 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) NSArray *channelKeys; // @synthesize channelKeys=_channelKeys;
 @property (readonly) unsigned long long clientID; // @synthesize clientID=_clientID;
 @property BOOL connected; // @synthesize connected=_connected;
+@property (copy) CDUnknownBlockType connectionCallback; // @synthesize connectionCallback=_connectionCallback;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) double hapticLatency;
@@ -52,8 +54,9 @@ __attribute__((visibility("hidden")))
 - (void)doInit;
 - (BOOL)enableSequenceLooping:(unsigned long long)arg1 enable:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)finish:(CDUnknownBlockType)arg1;
-- (void)handleConnectionError;
-- (void)handleHapticServerCrash;
+- (id)getAsyncDelegateForMethod:(SEL)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)handleServerConnectionInterruption;
+- (void)handleServerConnectionInvalidation;
 - (id)initAndReturnError:(id *)arg1;
 - (BOOL)loadHapticEvent:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (BOOL)loadHapticPattern:(id)arg1 reply:(CDUnknownBlockType)arg2;

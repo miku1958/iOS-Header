@@ -26,7 +26,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithIcon:(id)arg1 iconSize:(struct CGSize)arg2 text:(id)arg3 dataDetectorTypes:(unsigned long long)arg4;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateConstraints;
+- (void)updateFont;
 - (id)viewForFirstBaselineLayout;
 - (id)viewForLastBaselineLayout;
 

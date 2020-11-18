@@ -6,13 +6,19 @@
 
 #import "__VideoHeaderLockupViewAccessibility_super.h"
 
+@class NSString;
+
 @interface VideoHeaderLockupViewAccessibility : __VideoHeaderLockupViewAccessibility_super
 {
+    NSString *_accessibilityVideoLabel;
 }
+
+@property (strong, nonatomic) NSString *accessibilityVideoLabel; // @synthesize accessibilityVideoLabel=_accessibilityVideoLabel;
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void).cxx_destruct;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

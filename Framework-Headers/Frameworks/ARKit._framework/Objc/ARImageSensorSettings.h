@@ -6,22 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class ARVideoFormat, AVCaptureSession;
+#import <ARKit/NSCopying-Protocol.h>
 
-@interface ARImageSensorSettings : NSObject
+@class ARVideoFormat, AVCaptureSession, NSDictionary;
+
+@interface ARImageSensorSettings : NSObject <NSCopying>
 {
     BOOL _autoFocusEnabled;
     BOOL _mirrorVideoOutput;
+    BOOL _audioCaptureEnabled;
+    BOOL _allowCameraInMultipleForegroundAppLayout;
+    BOOL _visionDataOutputEnabled;
     ARVideoFormat *_videoFormat;
+    NSDictionary *_visionDataOutputParameters;
     AVCaptureSession *_captureSession;
 }
 
+@property (nonatomic) BOOL allowCameraInMultipleForegroundAppLayout; // @synthesize allowCameraInMultipleForegroundAppLayout=_allowCameraInMultipleForegroundAppLayout;
+@property (nonatomic) BOOL audioCaptureEnabled; // @synthesize audioCaptureEnabled=_audioCaptureEnabled;
 @property (nonatomic) BOOL autoFocusEnabled; // @synthesize autoFocusEnabled=_autoFocusEnabled;
 @property (strong, nonatomic) AVCaptureSession *captureSession; // @synthesize captureSession=_captureSession;
 @property (nonatomic) BOOL mirrorVideoOutput; // @synthesize mirrorVideoOutput=_mirrorVideoOutput;
 @property (readonly, nonatomic) ARVideoFormat *videoFormat; // @synthesize videoFormat=_videoFormat;
+@property (nonatomic) BOOL visionDataOutputEnabled; // @synthesize visionDataOutputEnabled=_visionDataOutputEnabled;
+@property (strong, nonatomic) NSDictionary *visionDataOutputParameters; // @synthesize visionDataOutputParameters=_visionDataOutputParameters;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (id)initWithVideoFormat:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

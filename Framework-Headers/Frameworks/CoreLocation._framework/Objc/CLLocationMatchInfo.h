@@ -9,6 +9,8 @@
 #import <CoreLocation/NSCopying-Protocol.h>
 #import <CoreLocation/NSSecureCoding-Protocol.h>
 
+@class NSData;
+
 @interface CLLocationMatchInfo : NSObject <NSCopying, NSSecureCoding>
 {
     id _internal;
@@ -16,6 +18,7 @@
 
 @property (readonly, nonatomic) struct CLLocationCoordinate2D matchCoordinate;
 @property (readonly, nonatomic) double matchCourse;
+@property (readonly, nonatomic) NSData *matchDataArray;
 @property (readonly, nonatomic) int matchFormOfWay;
 @property (readonly, nonatomic) long long matchQuality;
 @property (readonly, nonatomic) int matchRoadClass;
@@ -28,6 +31,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithMatchQuality:(long long)arg1 matchCoordinate:(struct CLLocationCoordinate2D)arg2 matchCourse:(double)arg3 matchFormOfWay:(int)arg4 matchRoadClass:(int)arg5 matchShifted:(BOOL)arg6;
+- (id)initWithMatchQuality:(long long)arg1 matchCoordinate:(struct CLLocationCoordinate2D)arg2 matchCourse:(double)arg3 matchFormOfWay:(int)arg4 matchRoadClass:(int)arg5 matchShifted:(BOOL)arg6 matchDataArray:(id)arg7;
 - (id)shortDescription;
 
 @end

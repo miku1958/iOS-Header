@@ -16,6 +16,8 @@ struct ARContext;
 
 struct AdditionalRouteInfo;
 
+struct Allocator;
+
 struct AlphaAtlas {
     BOOL _field1;
     unsigned int _field2;
@@ -71,7 +73,7 @@ struct BaseMesh {
     struct ResourceManager *_field4;
     struct RenderResource *_field5;
     struct MeshCReflection *_field6;
-    struct vector<std::__1::shared_ptr<ggl::VertexData>, std::__1::allocator<std::__1::shared_ptr<ggl::VertexData>>> _field7;
+    struct vector<std::__1::shared_ptr<ggl::VertexData>, geo::StdAllocator<std::__1::shared_ptr<ggl::VertexData>, ggl::Allocator>> _field7;
     struct shared_ptr<ggl::IndexData> _field8;
 };
 
@@ -79,8 +81,8 @@ struct BasePipelineSetup {
     CDUnknownFunctionPointerType *_field1;
     struct PipelineDataCReflection *_field2;
     struct shared_ptr<ggl::PipelineState> _field3;
-    struct vector<ggl::ConstantDataElement, std::__1::allocator<ggl::ConstantDataElement>> _field4;
-    struct vector<ggl::Texture *, std::__1::allocator<ggl::Texture *>> _field5;
+    struct vector<ggl::ConstantDataElement, geo::StdAllocator<ggl::ConstantDataElement, ggl::Allocator>> _field4;
+    struct vector<ggl::Texture *, geo::StdAllocator<ggl::Texture *, ggl::Allocator>> _field5;
     struct Mesh *_field6;
 };
 
@@ -90,7 +92,7 @@ struct BasicViewNode;
 
 struct Batcher {
     MultiRange_4bdc93a8 _field1;
-    struct vector<gm::MultiRange<unsigned long>, std::__1::allocator<gm::MultiRange<unsigned long>>> _field2;
+    struct vector<gm::MultiRange<unsigned long>, geo::StdAllocator<gm::MultiRange<unsigned long>, ggl::Allocator>> _field2;
     MultiRange_4bdc93a8 _field3;
 };
 
@@ -152,11 +154,6 @@ struct CGRect {
 struct CGSize {
     double width;
     double height;
-};
-
-struct CGVector {
-    double _field1;
-    double _field2;
 };
 
 struct CLabelCache;
@@ -286,7 +283,7 @@ struct CartographicRenderer {
     shared_ptr_e963992e _field2;
     struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue>> _field3;
     struct RenderLayer *_field4[28];
-    struct RenderLayer *_field5[65];
+    struct RenderLayer *_field5[66];
     struct RunLoopController *_field6;
     struct MapEngine *_field7;
     id _field8;
@@ -396,6 +393,8 @@ struct CullingGridWithHeight {
 };
 
 struct CullingNode;
+
+struct CustomLandmarksContainer;
 
 struct DashTexture;
 
@@ -544,13 +543,13 @@ struct ExtraStyle {
     struct Matrix<unsigned int, 2, 1> _glyphImageSize;
     struct Matrix<unsigned int, 2, 1> _landmarkImageSize;
     struct Matrix<unsigned int, 2, 1> _outlineImageSize;
-    basic_string_23d93216 _text;
+    struct basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>> _text;
 };
 
 struct FeatureAttributePair;
 
 struct FeatureAttributeSet {
-    struct vector<gss::FeatureAttributePair, std::__1::allocator<gss::FeatureAttributePair>> _attributes;
+    struct vector<gss::FeatureAttributePair, geo::StdAllocator<gss::FeatureAttributePair, gss::Allocator>> _attributes;
 };
 
 struct FeatureMarker;
@@ -603,7 +602,7 @@ struct Geocentric<double> {
 struct GlobeAdapter {
     struct shared_ptr<md::GlobeAdapterData> _field1;
     struct GlobeView *_field2;
-    struct vector<std::__1::shared_ptr<md::LabelMapTile>, std::__1::allocator<std::__1::shared_ptr<md::LabelMapTile>>> _field3;
+    struct vector<std::__1::shared_ptr<md::LabelMapTile>, geo::StdAllocator<std::__1::shared_ptr<md::LabelMapTile>, lhp::Allocator>> _field3;
     shared_ptr_e1d4bd06 _field4;
     struct unique_ptr<md::LabelSettings, std::__1::default_delete<md::LabelSettings>> _field5;
     struct _retain_ptr<GEOResourceManifestConfiguration *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _field6;
@@ -655,7 +654,7 @@ struct GlobeView {
         double _field3;
         struct vector<altitude::AnimationObjectHolder, std::__1::allocator<altitude::AnimationObjectHolder>> _field4;
     } _field21;
-    struct Timer _field22;
+    struct Stopwatch _field22;
     double _field23;
     BOOL _field24;
     double _field25;
@@ -791,10 +790,10 @@ struct LabelCustomFeatureProvider {
         struct _release_objc _field4;
     } _field3;
     struct _retain_ptr<id<VKCustomFeatureDataSource>, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _field4;
-    struct map<VKTileKey, md::LabelCustomFeatureProvider::TileInfo, md::LabelCustomFeatureProvider::TileKeyLess, std::__1::allocator<std::__1::pair<const VKTileKey, md::LabelCustomFeatureProvider::TileInfo>>> _field5;
+    struct map<VKTileKey, md::LabelCustomFeatureProvider::TileInfo, md::LabelCustomFeatureProvider::TileKeyLess, geo::StdAllocator<std::__1::pair<const VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, lhp::Allocator>> _field5;
     struct _retain_ptr<id<VKCustomFeatureAnnotation>, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> _field6;
     struct shared_ptr<md::LabelScene> _field7;
-    struct map<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo, std::__1::less<id<VKCustomFeatureAnnotation>>, std::__1::allocator<std::__1::pair<const id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>>> _field8;
+    struct map<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo, std::__1::less<id<VKCustomFeatureAnnotation>>, geo::StdAllocator<std::__1::pair<const id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, lhp::Allocator>> _field8;
     struct unique_ptr<md::LabelClusterProvider, std::__1::default_delete<md::LabelClusterProvider>> _field9;
     BOOL _field10;
     unsigned char _field11;
@@ -810,12 +809,12 @@ struct LabelExternalIconRenderer;
 struct LabelExternalObjectsModerator {
     struct shared_ptr<md::weak_interface_ptr<md::LabelExternalObjectsModerator>> _field1;
     struct LabelExternalIconRenderer *_field2;
-    struct vector<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>, std::__1::allocator<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>>> _field3;
+    struct vector<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>, geo::StdAllocator<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>, lhp::Allocator>> _field3;
     struct unordered_set<std::__1::shared_ptr<md::LabelExternalIcon>, std::__1::hash<std::__1::shared_ptr<md::LabelExternalIcon>>, std::__1::equal_to<std::__1::shared_ptr<md::LabelExternalIcon>>, std::__1::allocator<std::__1::shared_ptr<md::LabelExternalIcon>>> _field4;
-    struct set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> _field5;
-    struct set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> _field6;
-    struct unordered_map<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>, std::__1::hash<const GEOTransitLink *>, std::__1::equal_to<const GEOTransitLink *>, std::__1::allocator<std::__1::pair<const GEOTransitLink *const, std::__1::weak_ptr<md::LabelExternalTransitLink>>>> _field7;
-    struct unordered_map<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>>> _field8;
+    struct set<unsigned long long, std::__1::less<unsigned long long>, geo::StdAllocator<unsigned long long, lhp::Allocator>> _field5;
+    struct set<unsigned long long, std::__1::less<unsigned long long>, geo::StdAllocator<unsigned long long, lhp::Allocator>> _field6;
+    struct unordered_map<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>, std::__1::hash<const GEOTransitLink *>, std::__1::equal_to<const GEOTransitLink *>, geo::StdAllocator<std::__1::pair<const GEOTransitLink *const, std::__1::weak_ptr<md::LabelExternalTransitLink>>, lhp::Allocator>> _field7;
+    struct unordered_map<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, geo::StdAllocator<std::__1::pair<const unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, lhp::Allocator>> _field8;
     struct mutex _field9;
     struct mutex _field10;
     BOOL _field11;
@@ -825,8 +824,6 @@ struct LabelExternalObjectsModerator {
 struct LabelExternalPointFeature;
 
 struct LabelFeature;
-
-struct LabelFeatureMarker;
 
 struct LabelFeaturePool;
 
@@ -926,8 +923,8 @@ struct LabelManager {
     BOOL _field35;
     BOOL _field36;
     BOOL _field37;
-    struct atomic<bool> _field38;
-    BOOL _field39;
+    BOOL _field38;
+    struct atomic<bool> _field39;
     BOOL _field40;
     BOOL _field41;
     BOOL _field42;
@@ -941,75 +938,75 @@ struct LabelManager {
     BOOL _field50;
     BOOL _field51;
     BOOL _field52;
-    Box_55c4a776 _field53;
+    BOOL _field53;
     Box_55c4a776 _field54;
-    BOOL _field55;
+    Box_55c4a776 _field55;
     BOOL _field56;
-    struct LabelLayoutContext *_field57;
-    struct LabelLayoutContext _field58;
+    BOOL _field57;
+    struct LabelLayoutContext *_field58;
     struct LabelLayoutContext _field59;
-    struct LabelNavLayoutContext _field60;
-    double _field61[5];
-    double _field62;
-    int _field63;
-    struct unique_ptr<md::LabelExternalObjectsModerator, std::__1::default_delete<md::LabelExternalObjectsModerator>> _field64;
-    struct unique_ptr<md::LabelTransitSupport, std::__1::default_delete<md::LabelTransitSupport>> _field65;
-    struct unique_ptr<md::LabelCustomFeatureSupport, std::__1::default_delete<md::LabelCustomFeatureSupport>> _field66;
-    struct unique_ptr<md::LabelNavSupport, std::__1::default_delete<md::LabelNavSupport>> _field67;
-    struct unique_ptr<md::LabelNavTrafficSupport, std::__1::default_delete<md::LabelNavTrafficSupport>> _field68;
-    struct unique_ptr<md::LabelImageLoader, std::__1::default_delete<md::LabelImageLoader>> _field69;
-    struct unique_ptr<md::LabelTextDataLoader, std::__1::default_delete<md::LabelTextDataLoader>> _field70;
-    struct unique_ptr<md::LabelGlyphImageLoader, std::__1::default_delete<md::LabelGlyphImageLoader>> _field71;
-    struct vector<std::__1::shared_ptr<md::LabelMapTile>, std::__1::allocator<std::__1::shared_ptr<md::LabelMapTile>>> _field72;
-    struct set<std::__1::shared_ptr<md::LabelMapTile>, std::__1::less<std::__1::shared_ptr<md::LabelMapTile>>, std::__1::allocator<std::__1::shared_ptr<md::LabelMapTile>>> _field73;
-    struct unique_ptr<md::LabelFeaturePool, std::__1::default_delete<md::LabelFeaturePool>> _field74;
-    struct unique_ptr<md::LabelFeatureStyler, std::__1::default_delete<md::LabelFeatureStyler>> _field75;
-    struct unique_ptr<md::LabelPool, std::__1::default_delete<md::LabelPool>> _field76;
-    struct vector<std::__1::shared_ptr<md::Label>, std::__1::allocator<std::__1::shared_ptr<md::Label>>> _field77;
-    struct vector<std::__1::shared_ptr<md::Label>, std::__1::allocator<std::__1::shared_ptr<md::Label>>> _field78;
-    struct vector<md::Label *, std::__1::allocator<md::Label *>> _field79;
-    struct unique_ptr<md::FontAtlas, std::__1::default_delete<md::FontAtlas>> _field80;
-    struct unique_ptr<md::FontTrackingCache, std::__1::default_delete<md::FontTrackingCache>> _field81;
+    struct LabelLayoutContext _field60;
+    struct LabelNavLayoutContext _field61;
+    double _field62[5];
+    double _field63;
+    int _field64;
+    struct unique_ptr<md::LabelExternalObjectsModerator, std::__1::default_delete<md::LabelExternalObjectsModerator>> _field65;
+    struct unique_ptr<md::LabelTransitSupport, std::__1::default_delete<md::LabelTransitSupport>> _field66;
+    struct unique_ptr<md::LabelCustomFeatureSupport, std::__1::default_delete<md::LabelCustomFeatureSupport>> _field67;
+    struct unique_ptr<md::LabelNavSupport, std::__1::default_delete<md::LabelNavSupport>> _field68;
+    struct unique_ptr<md::LabelNavTrafficSupport, std::__1::default_delete<md::LabelNavTrafficSupport>> _field69;
+    struct unique_ptr<md::LabelImageLoader, std::__1::default_delete<md::LabelImageLoader>> _field70;
+    struct unique_ptr<md::LabelTextDataLoader, std::__1::default_delete<md::LabelTextDataLoader>> _field71;
+    struct unique_ptr<md::LabelGlyphImageLoader, std::__1::default_delete<md::LabelGlyphImageLoader>> _field72;
+    struct vector<std::__1::shared_ptr<md::LabelMapTile>, geo::StdAllocator<std::__1::shared_ptr<md::LabelMapTile>, lhp::Allocator>> _field73;
+    Box_3d7e3c2c _field74;
+    struct set<std::__1::shared_ptr<md::LabelMapTile>, std::__1::less<std::__1::shared_ptr<md::LabelMapTile>>, geo::StdAllocator<std::__1::shared_ptr<md::LabelMapTile>, lhp::Allocator>> _field75;
+    struct unique_ptr<md::LabelFeaturePool, std::__1::default_delete<md::LabelFeaturePool>> _field76;
+    struct unique_ptr<md::LabelFeatureStyler, std::__1::default_delete<md::LabelFeatureStyler>> _field77;
+    struct unique_ptr<md::LabelPool, std::__1::default_delete<md::LabelPool>> _field78;
+    struct vector<std::__1::shared_ptr<md::Label>, geo::StdAllocator<std::__1::shared_ptr<md::Label>, lhp::Allocator>> _field79;
+    struct vector<std::__1::shared_ptr<md::Label>, geo::StdAllocator<std::__1::shared_ptr<md::Label>, lhp::Allocator>> _field80;
+    struct vector<md::Label *, geo::StdAllocator<md::Label *, lhp::Allocator>> _field81;
+    struct unique_ptr<md::FontAtlas, std::__1::default_delete<md::FontAtlas>> _field82;
+    struct unique_ptr<md::FontTrackingCache, std::__1::default_delete<md::FontTrackingCache>> _field83;
     struct {
         struct unique_ptr<md::FontGlyphCache, std::__1::default_delete<md::FontGlyphCache>> _field1;
-    } _field82;
-    struct unique_ptr<md::LabelMesh, std::__1::default_delete<md::LabelMesh>> _field83;
-    struct unique_ptr<md::LabelStyleCache, std::__1::default_delete<md::LabelStyleCache>> _field84;
-    shared_ptr_c37d6e02 _field85;
-    struct unique_ptr<md::LabelCollider, std::__1::default_delete<md::LabelCollider>> _field86;
-    struct unique_ptr<md::OcclusionManager, std::__1::default_delete<md::OcclusionManager>> _field87;
-    unsigned long long _field88;
-    unsigned long long _field89;
-    struct shared_ptr<md::LabelTrafficTilePool> _field90;
-    struct mutex _field91;
-    struct vector<std::__1::shared_ptr<md::LabelManagerCommand>, std::__1::allocator<std::__1::shared_ptr<md::LabelManagerCommand>>> _field92;
-    unsigned int _field93;
-    unsigned int _field94;
+    } _field84;
+    struct unique_ptr<md::LabelMesh, std::__1::default_delete<md::LabelMesh>> _field85;
+    struct unique_ptr<md::LabelStyleCache, std::__1::default_delete<md::LabelStyleCache>> _field86;
+    shared_ptr_c37d6e02 _field87;
+    struct unique_ptr<md::LabelCollider, std::__1::default_delete<md::LabelCollider>> _field88;
+    struct unique_ptr<md::OcclusionManager, std::__1::default_delete<md::OcclusionManager>> _field89;
+    unsigned long long _field90;
+    unsigned long long _field91;
+    struct shared_ptr<md::LabelTrafficTilePool> _field92;
+    struct mutex _field93;
+    struct vector<std::__1::shared_ptr<md::LabelManagerCommand>, geo::StdAllocator<std::__1::shared_ptr<md::LabelManagerCommand>, lhp::Allocator>> _field94;
     unsigned int _field95;
-    double _field96;
-    double _field97;
-    unsigned long long _field98;
-    BOOL _field99;
-    unsigned int _field100;
-    unsigned int _field101;
+    unsigned int _field96;
+    unsigned int _field97;
+    double _field98;
+    double _field99;
+    unsigned long long _field100;
+    BOOL _field101;
     unsigned int _field102;
-    float _field103;
+    unsigned int _field103;
     unsigned int _field104;
-    struct array<bool, 12> _field105;
-    float _field106;
-    BOOL _field107;
-    BOOL _field108;
-    struct shared_ptr<md::Label> _field109;
-    struct shared_ptr<md::LabelFeature> _field110;
-    struct LabelIdentifier _field111;
-    BOOL _field112;
-    long long _field113;
-    long long _field114;
-    float _field115;
+    float _field105;
+    unsigned int _field106;
+    struct array<bool, 12> _field107;
+    float _field108;
+    BOOL _field109;
+    BOOL _field110;
+    struct shared_ptr<md::Label> _field111;
+    struct shared_ptr<md::LabelFeature> _field112;
+    struct LabelIdentifier _field113;
+    BOOL _field114;
+    long long _field115;
     long long _field116;
-    unsigned char _field117;
-    BOOL _field118;
-    BOOL _field119;
+    float _field117;
+    long long _field118;
+    unsigned char _field119;
     BOOL _field120;
     BOOL _field121;
     BOOL _field122;
@@ -1023,22 +1020,24 @@ struct LabelManager {
     BOOL _field130;
     BOOL _field131;
     BOOL _field132;
-    struct atomic<bool> _field133;
-    struct atomic<bool> _field134;
+    BOOL _field133;
+    BOOL _field134;
     struct atomic<bool> _field135;
     struct atomic<bool> _field136;
-    int _field137;
-    int _field138;
-    shared_ptr_2d33c5e4 _field139;
-    struct SelectedLabelState _field140;
-    struct unique_ptr<md::Timer, std::__1::default_delete<md::Timer>> _field141;
-    struct unique_ptr<md::Timer, std::__1::default_delete<md::Timer>> _field142;
+    struct atomic<bool> _field137;
+    struct atomic<bool> _field138;
+    int _field139;
+    int _field140;
+    shared_ptr_2d33c5e4 _field141;
+    struct SelectedLabelState _field142;
+    struct unique_ptr<md::Timer, std::__1::default_delete<md::Timer>> _field143;
+    struct unique_ptr<md::Timer, std::__1::default_delete<md::Timer>> _field144;
     struct _retain_ptr<VKClientLocalizedStrings *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_field1;
         id _field2;
         struct _retain_objc _field3;
         struct _release_objc _field4;
-    } _field143;
+    } _field145;
     struct {
         shared_ptr_a3c46825 _field1;
         shared_ptr_2d33c5e4 _field2;
@@ -1046,11 +1045,11 @@ struct LabelManager {
         BOOL _field4;
         BOOL _field5;
         BOOL _field6;
-    } _field144;
-    unsigned int _field145;
-    BOOL _field146;
-    float _field147;
-    vector_ecfc0b70 _field148;
+    } _field146;
+    unsigned int _field147;
+    BOOL _field148;
+    float _field149;
+    vector_1ad5c848 _field150;
 };
 
 struct LabelMapTile;
@@ -1143,12 +1142,12 @@ struct LabelTransitSupport {
     BOOL _field8;
     BOOL _field9;
     double _field10;
-    struct vector<std::__1::shared_ptr<md::LabelExternalPointFeature>, std::__1::allocator<std::__1::shared_ptr<md::LabelExternalPointFeature>>> _field11;
-    struct vector<std::__1::shared_ptr<md::LabelFeature>, std::__1::allocator<std::__1::shared_ptr<md::LabelFeature>>> _field12;
+    struct vector<std::__1::shared_ptr<md::LabelExternalPointFeature>, geo::StdAllocator<std::__1::shared_ptr<md::LabelExternalPointFeature>, lhp::Allocator>> _field11;
+    struct vector<std::__1::shared_ptr<md::LabelFeature>, geo::StdAllocator<std::__1::shared_ptr<md::LabelFeature>, lhp::Allocator>> _field12;
     unordered_set_bb7a56cc _field13;
-    struct vector<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::allocator<std::__1::shared_ptr<md::LabelExternalRoadFeature>>> _field14;
-    struct vector<std::__1::shared_ptr<md::LabelFeature>, std::__1::allocator<std::__1::shared_ptr<md::LabelFeature>>> _field15;
-    struct map<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>, md::LabelExternalRoadFeatureLess, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>>> _field16;
+    struct vector<std::__1::shared_ptr<md::LabelExternalRoadFeature>, geo::StdAllocator<std::__1::shared_ptr<md::LabelExternalRoadFeature>, lhp::Allocator>> _field14;
+    struct vector<std::__1::shared_ptr<md::LabelFeature>, geo::StdAllocator<std::__1::shared_ptr<md::LabelFeature>, lhp::Allocator>> _field15;
+    struct map<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>, md::LabelExternalRoadFeatureLess, geo::StdAllocator<std::__1::pair<const std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, lhp::Allocator>> _field16;
     struct _retain_ptr<VKRouteLineObserver *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
         CDUnknownFunctionPointerType *_field1;
         id _field2;
@@ -1158,7 +1157,7 @@ struct LabelTransitSupport {
     struct shared_ptr<md::LabelTransitRoute> _field18;
     struct shared_ptr<md::LabelTransitRouteLine> _field19;
     unsigned int _field20;
-    struct unordered_map<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>, md::LabelTransitSupport::TransitLineColorKeyHash, std::__1::equal_to<std::__1::pair<unsigned long long, bool>>, std::__1::allocator<std::__1::pair<const std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>>> _field21;
+    struct unordered_map<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>, md::LabelTransitSupport::TransitLineColorKeyHash, std::__1::equal_to<std::__1::pair<unsigned long long, bool>>, geo::StdAllocator<std::__1::pair<const std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, lhp::Allocator>> _field21;
 };
 
 struct Latitude {
@@ -1220,8 +1219,6 @@ struct Longitude {
     unsigned int _field1;
 };
 
-struct MITManager;
-
 struct ManeuverArrowCoordinates {
     struct vector<md::ManeuverArrowInfo, std::__1::allocator<md::ManeuverArrowInfo>> _maneuverArrows;
 };
@@ -1274,12 +1271,13 @@ struct MapEngine {
     shared_ptr_e1d4bd06 _field21;
     shared_ptr_e1d4bd06 _field22;
     struct unique_ptr<md::LogicManager, std::__1::default_delete<md::LogicManager>> _field23;
-    BOOL _field24;
+    struct unique_ptr<md::Statistics, std::__1::default_delete<md::Statistics>> _field24;
     BOOL _field25;
     BOOL _field26;
-    struct atomic<bool> _field27;
+    BOOL _field27;
     struct atomic<bool> _field28;
-    BOOL _field29;
+    struct atomic<bool> _field29;
+    BOOL _field30;
 };
 
 struct Matrix<double, 2, 1> {
@@ -1343,7 +1341,7 @@ struct Mesh {
     struct ResourceManager *_field4;
     struct RenderResource *_field5;
     struct MeshCReflection *_field6;
-    struct vector<std::__1::shared_ptr<ggl::VertexData>, std::__1::allocator<std::__1::shared_ptr<ggl::VertexData>>> _field7;
+    struct vector<std::__1::shared_ptr<ggl::VertexData>, geo::StdAllocator<std::__1::shared_ptr<ggl::VertexData>, ggl::Allocator>> _field7;
     struct shared_ptr<ggl::IndexData> _field8;
 };
 
@@ -1422,22 +1420,26 @@ struct MeshSet<ggl::VenueWall::MeshMesh, ggl::VenueWall::DefaultVbo> {
 };
 
 struct MeshVendor<ggl::BuildingFacade::BuildingMesh> {
-    struct vector<ggl::BuildingFacade::BuildingMesh *, std::__1::allocator<ggl::BuildingFacade::BuildingMesh *>> _field1;
+    struct vector<ggl::BuildingFacade::BuildingMesh *, geo::StdAllocator<ggl::BuildingFacade::BuildingMesh *, ggl::Allocator>> _field1;
     struct BuildingMesh *_field2;
 };
 
 struct MeshVendor<ggl::BuildingPointyRoof::BuildingMesh> {
-    struct vector<ggl::BuildingPointyRoof::BuildingMesh *, std::__1::allocator<ggl::BuildingPointyRoof::BuildingMesh *>> _field1;
+    struct vector<ggl::BuildingPointyRoof::BuildingMesh *, geo::StdAllocator<ggl::BuildingPointyRoof::BuildingMesh *, ggl::Allocator>> _field1;
     struct BuildingMesh *_field2;
 };
 
 struct MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh> {
-    struct vector<ggl::PrefilteredLine::PrefilteredLineMesh *, std::__1::allocator<ggl::PrefilteredLine::PrefilteredLineMesh *>> _field1;
+    struct vector<ggl::PrefilteredLine::PrefilteredLineMesh *, geo::StdAllocator<ggl::PrefilteredLine::PrefilteredLineMesh *, ggl::Allocator>> _field1;
     struct PrefilteredLineMesh *_field2;
 };
 
 struct MultiRange<unsigned long> {
     struct vector<gm::Range<unsigned long>, std::__1::allocator<gm::Range<unsigned long>>> _field1;
+};
+
+struct MultiRectRegion {
+    struct set<gm::Box<double, 2>, md::MultiRectSetCompare, std::__1::allocator<gm::Box<double, 2>>> _rects;
 };
 
 struct Mutex {
@@ -1459,7 +1461,7 @@ struct NavContext {
 
 struct NavCurrentRoadSign {
     CDUnknownFunctionPointerType *_field1;
-    basic_string_23d93216 _field2;
+    struct basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>> _field2;
     struct shared_ptr<md::LabelStyle> _field3;
     BOOL _field4;
     shared_ptr_c5d816ee _field5;
@@ -1672,7 +1674,7 @@ struct RealisticRenderer {
     shared_ptr_e963992e _field2;
     struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue>> _field3;
     struct RenderLayer *_field4[28];
-    struct RenderLayer *_field5[65];
+    struct RenderLayer *_field5[66];
     struct RunLoopController *_field6;
     struct MapEngine *_field7;
     id _field8;
@@ -1864,7 +1866,7 @@ struct RoadSignTextMetrics {
     double _verticalMargin;
     double _verticalOffset;
     double _textSize;
-    basic_string_23d93216 _fontFamily;
+    struct basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>> _fontFamily;
     double _textDrawWidth;
     double _textWrapWidth;
 };
@@ -1948,14 +1950,206 @@ struct StandardLibrary {
     struct ResourceManager *_field2;
     struct RenderResource *_field3;
     struct ShaderLibraryDescriptor *_field4;
-    struct vector<ggl::ShaderLibrary::FunctionEntry, std::__1::allocator<ggl::ShaderLibrary::FunctionEntry>> _field5;
-    struct vector<ggl::ShaderLibrary::ShaderEntry, std::__1::allocator<ggl::ShaderLibrary::ShaderEntry>> _field6;
-    struct vector<ggl::ShaderLibrary::ComputeShaderEntry, std::__1::allocator<ggl::ShaderLibrary::ComputeShaderEntry>> _field7;
-    struct vector<std::__1::shared_ptr<ggl::Shader>, std::__1::allocator<std::__1::shared_ptr<ggl::Shader>>> _field8;
+    struct vector<ggl::ShaderLibrary::FunctionEntry, geo::StdAllocator<ggl::ShaderLibrary::FunctionEntry, ggl::Allocator>> _field5;
+    struct vector<ggl::ShaderLibrary::ShaderEntry, geo::StdAllocator<ggl::ShaderLibrary::ShaderEntry, ggl::Allocator>> _field6;
+    struct vector<ggl::ShaderLibrary::ComputeShaderEntry, geo::StdAllocator<ggl::ShaderLibrary::ComputeShaderEntry, ggl::Allocator>> _field7;
+    struct vector<std::__1::shared_ptr<ggl::Shader>, geo::StdAllocator<std::__1::shared_ptr<ggl::Shader>, ggl::Allocator>> _field8;
     struct shared_ptr<ggl::ShaderLibraryData> _field9;
 };
 
 struct Statistics;
+
+struct StdAllocator<LabelNavJunctionInfo, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<RouteJunctionInfo, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<RouteSegment, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<char, gss::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<char, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<ggl::BuildingFacade::BuildingMesh *, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<ggl::BuildingPointyRoof::BuildingMesh *, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<ggl::CommandBuffer *, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<ggl::ComputeQueue *, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<ggl::ConstantDataElement, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<ggl::PrefilteredLine::PrefilteredLineMesh *, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<ggl::RenderQueue::Pass, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<ggl::ShaderLibrary::ComputeShaderEntry, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<ggl::ShaderLibrary::FunctionEntry, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<ggl::ShaderLibrary::ShaderEntry, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<ggl::Texture *, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<gm::Matrix<double, 2, 1>, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<gm::MultiRange<unsigned long>, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<gss::FeatureAttributePair, gss::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<md::IconImage::IconLayer, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<md::Label *, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__tree_node<std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, void *>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__tree_node<std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, void *>, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
+
+struct StdAllocator<std::__1::__tree_node<std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, void *>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__tree_node<std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, void *>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__tree_node<std::__1::shared_ptr<md::LabelMapTile>, void *>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::__tree_node<unsigned long long, void *>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<ggl::DebugRenderer>, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<ggl::Shader>, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<ggl::VertexData>, ggl::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<md::Label>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<md::LabelExternalPointFeature>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<md::LabelExternalRoadFeature>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<md::LabelFeature>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<md::LabelManagerCommand>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<md::LabelMapTile>, lhp::Allocator> {
+    struct Allocator *_field1;
+};
+
+struct StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator> {
+    struct Allocator *_allocator;
+};
 
 struct StencilManager {
     unsigned char _field1;
@@ -1975,6 +2169,10 @@ struct StencilState {
     unsigned int _field8;
 };
 
+struct Stopwatch {
+    struct time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000000>>> _field1;
+};
+
 struct String {
     struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> _field1;
 };
@@ -1988,7 +2186,7 @@ struct StrokeBufferSizing {
 
 struct Style {
     struct optional<gss::IconStyle> _iconStyle;
-    struct vector<md::IconImage::IconLayer, std::__1::allocator<md::IconImage::IconLayer>> _iconLayers;
+    struct vector<md::IconImage::IconLayer, geo::StdAllocator<md::IconImage::IconLayer, lhp::Allocator>> _iconLayers;
     float _scale;
     float _contentScale;
     float _fillWeight;
@@ -2003,9 +2201,10 @@ struct Style {
     FixedPointVector_f041f768 _glyphColor;
     FixedPointVector_f041f768 _gradientTop;
     FixedPointVector_f041f768 _gradientBottom;
+    FixedPointVector_f041f768 _overlayColor;
     unsigned char _glyphBlendMode;
     unsigned char _glyphStyle;
-    basic_string_23d93216 _shieldID;
+    struct basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>> _shieldID;
 };
 
 struct StyleSheet<gss::PropertyID>;
@@ -2025,15 +2224,22 @@ struct StylesheetVendor;
 struct TaskContext {
     id _field1;
     id _field2;
-    id _field3;
+    struct unique_ptr<geo::TaskQueue, std::__1::default_delete<geo::TaskQueue>> _field3;
     id _field4;
     struct unique_ptr<geo::TaskQueue, std::__1::default_delete<geo::TaskQueue>> _field5;
     struct unique_ptr<geo::TaskQueue, std::__1::default_delete<geo::TaskQueue>> _field6;
     struct unique_ptr<geo::TaskQueue, std::__1::default_delete<geo::TaskQueue>> _field7;
     struct unique_ptr<geo::TaskQueue, std::__1::default_delete<geo::TaskQueue>> _field8;
+    struct unique_ptr<geo::TaskQueue, std::__1::default_delete<geo::TaskQueue>> _field9;
 };
 
-struct TaskQueue;
+struct TaskQueue {
+    BOOL _field1;
+    id _field2;
+    BOOL _field3;
+    id _field4;
+    unsigned char _field5;
+};
 
 struct TexelRun {
     float _field1;
@@ -2093,9 +2299,7 @@ struct TileSelector;
 
 struct TileSetNode;
 
-struct Timer {
-    double _field1;
-};
+struct Timer;
 
 struct TrafficDynamicTile;
 
@@ -2167,7 +2371,7 @@ struct TransitNodeFeaturePool {
     CDUnknownFunctionPointerType *_field2;
     struct vector<geo::_retain_ptr<VKTile *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::allocator<geo::_retain_ptr<VKTile *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>> _field3;
     struct vector<geo::_retain_ptr<VKTile *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::allocator<geo::_retain_ptr<VKTile *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>> _field4;
-    struct fast_shared_ptr<md::unsynchronized_weak_interface_ptr<md::TransitNodeFeaturePool>> _field5;
+    struct fast_shared_ptr<md::unsynchronized_weak_interface_ptr<md::TransitNodeFeaturePool>, std::allocator> _field5;
     struct LabelExternalObjectsModerator *_field6;
     struct unordered_map<unsigned long long, std::__1::shared_ptr<md::TransitNodeFeature>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::shared_ptr<md::TransitNodeFeature>>>> _field7;
     struct unordered_map<unsigned long long, std::__1::shared_ptr<md::TransitNodeFeature>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::shared_ptr<md::TransitNodeFeature>>>> _field8;
@@ -2335,8 +2539,11 @@ struct Venue {
     struct vector<md::VenueBuilding, std::__1::allocator<md::VenueBuilding>> _field3;
     struct Polygon2<double> _field4;
     struct ConvexHull2<double> _field5;
-    basic_string_23d93216 _field6;
+    Mercator2_57ec32b6 _field6;
     basic_string_23d93216 _field7;
+    basic_string_23d93216 _field8;
+    struct optional<std::__1::basic_string<char>> _field9;
+    struct optional<std::__1::basic_string<char>> _field10;
 };
 
 struct VenueBuilding {
@@ -2481,25 +2688,7 @@ struct _NSRange {
 struct _RunLoopCallbacker;
 
 struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
-    struct __rep {
-        union {
-            struct __long {
-                unsigned long long __cap_;
-                unsigned long long __size_;
-                char *__data_;
-            } __l;
-            struct __short {
-                union {
-                    unsigned char __size_;
-                    char __lx;
-                } ;
-                char __data_[23];
-            } __s;
-            struct __raw {
-                unsigned long long __words[3];
-            } __r;
-        } ;
-    } __value_;
+    struct __rep __value_;
 };
 
 struct __hash_node_base<std::__1::__hash_node<TransitLineWithLink, void *>*> {
@@ -2546,12 +2735,8 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<md::Tr
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<md::TrafficStream::SectionKey, md::TrafficStream::TexelRun>, void *>*> *_field1;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*> *__next_;
-};
-
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*> *__next_;
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*> *__next_;
 };
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*> {
@@ -2620,6 +2805,26 @@ struct __list_node_base<geo::detail::_CacheItem<md::ShieldCacheKey, VKShieldArtw
 struct __list_node_base<md::TransitDisplayConnection, void *> {
     struct __list_node_base<md::TransitDisplayConnection, void *> *__prev_;
     struct __list_node_base<md::TransitDisplayConnection, void *> *__next_;
+};
+
+struct __rep {
+    union {
+        struct __long {
+            unsigned long long __cap_;
+            unsigned long long __size_;
+            char *__data_;
+        } __l;
+        struct __short {
+            union {
+                unsigned char __size_;
+                char __lx;
+            } ;
+            char __data_[23];
+        } __s;
+        struct __raw {
+            unsigned long long __words[3];
+        } __r;
+    } ;
 };
 
 struct __shared_weak_count;
@@ -2730,6 +2935,20 @@ struct atomic<ggl::Texture2D *> {
     _Atomic struct Texture2D *_field1;
 };
 
+struct basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, gss::Allocator>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, gss::Allocator>>::__rep, geo::StdAllocator<char, gss::Allocator>> {
+        struct __rep _field1;
+        struct StdAllocator<char, gss::Allocator> _field2;
+    } _field1;
+};
+
+struct basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>::__rep, geo::StdAllocator<char, lhp::Allocator>> {
+        struct __rep __value_;
+        struct StdAllocator<char, lhp::Allocator> __value_;
+    } __r_;
+};
+
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
     struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> __r_;
 };
@@ -2749,11 +2968,15 @@ struct deque<std::__1::function<void ()>, std::__1::allocator<std::__1::function
     } __size_;
 };
 
-struct fast_shared_ptr<md::RouteLineSection> {
+struct duration<long long, std::__1::ratio<1, 1000000000>> {
+    long long _field1;
+};
+
+struct fast_shared_ptr<md::RouteLineSection, std::allocator> {
     struct _fast_shared_ptr_control *_control;
 };
 
-struct fast_shared_ptr<md::unsynchronized_weak_interface_ptr<md::TransitNodeFeaturePool>> {
+struct fast_shared_ptr<md::unsynchronized_weak_interface_ptr<md::TransitNodeFeaturePool>, std::allocator> {
     struct _fast_shared_ptr_control *_field1;
 };
 
@@ -2829,6 +3052,21 @@ struct map<VKPolylineOverlay *, std::__1::weak_ptr<altitude::RouteLineData>, std
     } __tree_;
 };
 
+struct map<VKTileKey, IncompleteTileData, bool (*)(const VKTileKey &, const VKTileKey &), std::__1::allocator<std::__1::pair<const VKTileKey, IncompleteTileData>>> {
+    struct __tree<std::__1::__value_type<VKTileKey, IncompleteTileData>, std::__1::__map_value_compare<VKTileKey, std::__1::__value_type<VKTileKey, IncompleteTileData>, bool (*)(const VKTileKey &, const VKTileKey &), false>, std::__1::allocator<std::__1::__value_type<VKTileKey, IncompleteTileData>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<VKTileKey, IncompleteTileData>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<VKTileKey, std::__1::__value_type<VKTileKey, IncompleteTileData>, bool (*)(const VKTileKey &, const VKTileKey &), false>> {
+            unsigned long long _field1;
+            struct __map_value_compare<VKTileKey, std::__1::__value_type<VKTileKey, IncompleteTileData>, bool (*)(const VKTileKey &, const VKTileKey &), false> {
+                CDUnknownFunctionPointerType _field1;
+            } _field2;
+        } _field3;
+    } _field1;
+};
+
 struct map<VKTileKey, VKTile *, bool (*)(const VKTileKey &, const VKTileKey &), std::__1::allocator<std::__1::pair<const VKTileKey, VKTile *>>> {
     struct __tree<std::__1::__value_type<VKTileKey, VKTile *>, std::__1::__map_value_compare<VKTileKey, std::__1::__value_type<VKTileKey, VKTile *>, bool (*)(const VKTileKey &, const VKTileKey &), false>, std::__1::allocator<std::__1::__value_type<VKTileKey, VKTile *>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
@@ -2859,11 +3097,12 @@ struct map<VKTileKey, geo::_retain_ptr<VKTile *, geo::_retain_objc, geo::_releas
     } _field1;
 };
 
-struct map<VKTileKey, md::LabelCustomFeatureProvider::TileInfo, md::LabelCustomFeatureProvider::TileKeyLess, std::__1::allocator<std::__1::pair<const VKTileKey, md::LabelCustomFeatureProvider::TileInfo>>> {
-    struct __tree<std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, std::__1::__map_value_compare<VKTileKey, std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, md::LabelCustomFeatureProvider::TileKeyLess, true>, std::__1::allocator<std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>>> {
+struct map<VKTileKey, md::LabelCustomFeatureProvider::TileInfo, md::LabelCustomFeatureProvider::TileKeyLess, geo::StdAllocator<std::__1::pair<const VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, lhp::Allocator>> {
+    struct __tree<std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, std::__1::__map_value_compare<VKTileKey, std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, md::LabelCustomFeatureProvider::TileKeyLess, true>, geo::StdAllocator<std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, lhp::Allocator>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, geo::StdAllocator<std::__1::__tree_node<std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, void *>, lhp::Allocator>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+            struct StdAllocator<std::__1::__tree_node<std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, void *>, lhp::Allocator> _field2;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::__map_value_compare<VKTileKey, std::__1::__value_type<VKTileKey, md::LabelCustomFeatureProvider::TileInfo>, md::LabelCustomFeatureProvider::TileKeyLess, true>> {
             unsigned long long _field1;
@@ -2883,11 +3122,12 @@ struct map<_GEOTileKey, std::__1::shared_ptr<altitude::GeoServicesLoadJob>, GEOT
     } __tree_;
 };
 
-struct map<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>, NSStringMapComparison, std::__1::allocator<std::__1::pair<const geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>>> {
-    struct __tree<std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, std::__1::__map_value_compare<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, NSStringMapComparison, true>, std::__1::allocator<std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>>> {
+struct map<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>, NSStringMapComparison, geo::StdAllocator<std::__1::pair<const geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, lhp::Allocator>> {
+    struct __tree<std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, std::__1::__map_value_compare<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, NSStringMapComparison, true>, geo::StdAllocator<std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, lhp::Allocator>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, geo::StdAllocator<std::__1::__tree_node<std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, void *>, lhp::Allocator>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+            struct StdAllocator<std::__1::__tree_node<std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, void *>, lhp::Allocator> __value_;
         } __pair1_;
         struct __compressed_pair<unsigned long, std::__1::__map_value_compare<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::__value_type<geo::_retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::shared_ptr<gss::StylesheetManager<gss::PropertyID>>>, NSStringMapComparison, true>> {
             unsigned long long __value_;
@@ -2907,11 +3147,12 @@ struct map<gm::Matrix<int, 2, 1>, std::__1::pair<bool, geo::Coordinate3D<Radians
     } _field1;
 };
 
-struct map<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo, std::__1::less<id<VKCustomFeatureAnnotation>>, std::__1::allocator<std::__1::pair<const id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>>> {
-    struct __tree<std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, std::__1::__map_value_compare<id<VKCustomFeatureAnnotation>, std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, std::__1::less<id<VKCustomFeatureAnnotation>>, true>, std::__1::allocator<std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>>> {
+struct map<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo, std::__1::less<id<VKCustomFeatureAnnotation>>, geo::StdAllocator<std::__1::pair<const id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, lhp::Allocator>> {
+    struct __tree<std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, std::__1::__map_value_compare<id<VKCustomFeatureAnnotation>, std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, std::__1::less<id<VKCustomFeatureAnnotation>>, true>, geo::StdAllocator<std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, lhp::Allocator>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, geo::StdAllocator<std::__1::__tree_node<std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, void *>, lhp::Allocator>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+            struct StdAllocator<std::__1::__tree_node<std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, void *>, lhp::Allocator> _field2;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::__map_value_compare<id<VKCustomFeatureAnnotation>, std::__1::__value_type<id<VKCustomFeatureAnnotation>, md::LabelCustomFeatureProvider::FeatureInfo>, std::__1::less<id<VKCustomFeatureAnnotation>>, true>> {
             unsigned long long _field1;
@@ -2955,11 +3196,12 @@ struct map<std::__1::basic_string<char>, std::__1::shared_ptr<ggl::Texture2D>, s
     } __tree_;
 };
 
-struct map<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>, md::LabelExternalRoadFeatureLess, std::__1::allocator<std::__1::pair<const std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>>> {
-    struct __tree<std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, std::__1::__map_value_compare<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, md::LabelExternalRoadFeatureLess, true>, std::__1::allocator<std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>>> {
+struct map<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>, md::LabelExternalRoadFeatureLess, geo::StdAllocator<std::__1::pair<const std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, lhp::Allocator>> {
+    struct __tree<std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, std::__1::__map_value_compare<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, md::LabelExternalRoadFeatureLess, true>, geo::StdAllocator<std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, lhp::Allocator>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, geo::StdAllocator<std::__1::__tree_node<std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, void *>, lhp::Allocator>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+            struct StdAllocator<std::__1::__tree_node<std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, void *>, lhp::Allocator> _field2;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::__value_type<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::shared_ptr<md::RoadLabelFeature>>, md::LabelExternalRoadFeatureLess, true>> {
             unsigned long long _field1;
@@ -2998,12 +3240,22 @@ struct mutex {
     } __m_;
 };
 
-struct optional<gss::IconStyle> {
+struct optional<float> {
     BOOL _hasValue;
     union ValueUnion {
-        unsigned char data[1];
-        unsigned char type;
+        unsigned char data[4];
+        float type;
     } _value;
+};
+
+struct optional<gss::IconStyle> {
+    BOOL _hasValue;
+    ValueUnion_42b55164 _value;
+};
+
+struct optional<gss::MapZoomLevel> {
+    BOOL _hasValue;
+    ValueUnion_42b55164 _value;
 };
 
 struct optional<md::MeshSet<ggl::BuildingFlatStroke::BuildingFlatStrokeMesh, ggl::BuildingFlatStroke::DefaultVbo>> {
@@ -3060,6 +3312,14 @@ struct optional<md::MeshSet<ggl::VenueWall::MeshMesh, ggl::VenueWall::DefaultVbo
         unsigned char data[152];
         struct MeshSet<ggl::VenueWall::MeshMesh, ggl::VenueWall::DefaultVbo> type;
     } _value;
+};
+
+struct optional<std::__1::basic_string<char>> {
+    BOOL _field1;
+    union ValueUnion {
+        unsigned char _field1[24];
+        basic_string_23d93216 _field2;
+    } _field2;
 };
 
 struct pair<TransitLineWithLink, float>;
@@ -3130,11 +3390,24 @@ struct set<geo::_retain_ptr<VKTile *, geo::_retain_objc, geo::_release_objc, geo
     } _field1;
 };
 
-struct set<std::__1::shared_ptr<md::LabelMapTile>, std::__1::less<std::__1::shared_ptr<md::LabelMapTile>>, std::__1::allocator<std::__1::shared_ptr<md::LabelMapTile>>> {
-    struct __tree<std::__1::shared_ptr<md::LabelMapTile>, std::__1::less<std::__1::shared_ptr<md::LabelMapTile>>, std::__1::allocator<std::__1::shared_ptr<md::LabelMapTile>>> {
+struct set<gm::Box<double, 2>, md::MultiRectSetCompare, std::__1::allocator<gm::Box<double, 2>>> {
+    struct __tree<gm::Box<double, 2>, md::MultiRectSetCompare, std::__1::allocator<gm::Box<double, 2>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<gm::Box<double, 2>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, md::MultiRectSetCompare> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
+struct set<std::__1::shared_ptr<md::LabelMapTile>, std::__1::less<std::__1::shared_ptr<md::LabelMapTile>>, geo::StdAllocator<std::__1::shared_ptr<md::LabelMapTile>, lhp::Allocator>> {
+    struct __tree<std::__1::shared_ptr<md::LabelMapTile>, std::__1::less<std::__1::shared_ptr<md::LabelMapTile>>, geo::StdAllocator<std::__1::shared_ptr<md::LabelMapTile>, lhp::Allocator>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::shared_ptr<md::LabelMapTile>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, geo::StdAllocator<std::__1::__tree_node<std::__1::shared_ptr<md::LabelMapTile>, void *>, lhp::Allocator>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+            struct StdAllocator<std::__1::__tree_node<std::__1::shared_ptr<md::LabelMapTile>, void *>, lhp::Allocator> _field2;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::less<std::__1::shared_ptr<md::LabelMapTile>>> {
             unsigned long long _field1;
@@ -3142,21 +3415,17 @@ struct set<std::__1::shared_ptr<md::LabelMapTile>, std::__1::less<std::__1::shar
     } _field1;
 };
 
-struct set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> {
-    struct __tree<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> {
+struct set<unsigned long long, std::__1::less<unsigned long long>, geo::StdAllocator<unsigned long long, lhp::Allocator>> {
+    struct __tree<unsigned long long, std::__1::less<unsigned long long>, geo::StdAllocator<unsigned long long, lhp::Allocator>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<unsigned long long, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, geo::StdAllocator<std::__1::__tree_node<unsigned long long, void *>, lhp::Allocator>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+            struct StdAllocator<std::__1::__tree_node<unsigned long long, void *>, lhp::Allocator> _field2;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::less<unsigned long long>> {
             unsigned long long _field1;
         } _field3;
     } _field1;
-};
-
-struct shared_ptr<MITManager> {
-    struct MITManager *__ptr_;
-    struct __shared_weak_count *__cntrl_;
 };
 
 struct shared_ptr<altitude::AnchorManager> {
@@ -3477,11 +3746,6 @@ struct shared_ptr<md::LabelFeature> {
     struct __shared_weak_count *_field2;
 };
 
-struct shared_ptr<md::LabelFeatureMarker> {
-    struct LabelFeatureMarker *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-};
-
 struct shared_ptr<md::LabelImageKey> {
     struct LabelImageKey *_field1;
     struct __shared_weak_count *_field2;
@@ -3626,8 +3890,18 @@ struct shared_ptr<zilch::TrafficSkeletonTile> {
     struct __shared_weak_count *__cntrl_;
 };
 
+struct time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1, 1000000000>>> {
+    struct duration<long long, std::__1::ratio<1, 1000000000>> _field1;
+};
+
 struct type {
     unsigned char _field1[32];
+};
+
+struct unique_ptr<(anonymous namespace)::CustomLandmarksContainer, std::__1::default_delete<(anonymous namespace)::CustomLandmarksContainer>> {
+    struct __compressed_pair<(anonymous namespace)::CustomLandmarksContainer *, std::__1::default_delete<(anonymous namespace)::CustomLandmarksContainer>> {
+        struct CustomLandmarksContainer *__value_;
+    } __ptr_;
 };
 
 struct unique_ptr<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long>>, std::__1::default_delete<LRUCache<unsigned long, CGImage *, std::__1::hash<unsigned long>>>> {
@@ -3716,19 +3990,19 @@ struct unique_ptr<ggl::LoaderImpl, std::__1::default_delete<ggl::LoaderImpl>> {
 
 struct unique_ptr<ggl::MeshVendor<ggl::BuildingFacade::BuildingMesh>, std::__1::default_delete<ggl::MeshVendor<ggl::BuildingFacade::BuildingMesh>>> {
     struct __compressed_pair<ggl::MeshVendor<ggl::BuildingFacade::BuildingMesh>*, std::__1::default_delete<ggl::MeshVendor<ggl::BuildingFacade::BuildingMesh>>> {
-        MeshVendor_396e6e4f *__value_;
+        MeshVendor_04441547 *__value_;
     } __ptr_;
 };
 
 struct unique_ptr<ggl::MeshVendor<ggl::BuildingPointyRoof::BuildingMesh>, std::__1::default_delete<ggl::MeshVendor<ggl::BuildingPointyRoof::BuildingMesh>>> {
     struct __compressed_pair<ggl::MeshVendor<ggl::BuildingPointyRoof::BuildingMesh>*, std::__1::default_delete<ggl::MeshVendor<ggl::BuildingPointyRoof::BuildingMesh>>> {
-        MeshVendor_c6d8e5cd *__value_;
+        MeshVendor_96ac8e76 *__value_;
     } __ptr_;
 };
 
 struct unique_ptr<ggl::MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh>, std::__1::default_delete<ggl::MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh>>> {
     struct __compressed_pair<ggl::MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh>*, std::__1::default_delete<ggl::MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh>>> {
-        MeshVendor_8027e961 *__value_;
+        MeshVendor_b901c95c *__value_;
     } __ptr_;
 };
 
@@ -4098,6 +4372,12 @@ struct unique_ptr<md::SolidTrafficLayer, std::__1::default_delete<md::SolidTraff
     } __ptr_;
 };
 
+struct unique_ptr<md::Statistics, std::__1::default_delete<md::Statistics>> {
+    struct __compressed_pair<md::Statistics *, std::__1::default_delete<md::Statistics>> {
+        struct Statistics *_field1;
+    } _field1;
+};
+
 struct unique_ptr<md::StyleTexture<md::TransitLineSegment::StylePixel>, std::__1::default_delete<md::StyleTexture<md::TransitLineSegment::StylePixel>>> {
     struct __compressed_pair<md::StyleTexture<md::TransitLineSegment::StylePixel>*, std::__1::default_delete<md::StyleTexture<md::TransitLineSegment::StylePixel>>> {
         struct StyleTexture<md::TransitLineSegment::StylePixel> *__value_;
@@ -4185,12 +4465,13 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__h
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*>>> {
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*, lhp::Allocator>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>**, std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*, lhp::Allocator>>> {
         struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*>> {
+        struct __bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*, lhp::Allocator>> {
+            struct __compressed_pair<unsigned long, geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*, lhp::Allocator>> {
                 unsigned long long _field1;
+                struct StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*, lhp::Allocator> _field2;
             } _field1;
         } _field2;
     } _field1;
@@ -4273,34 +4554,25 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__h
     } _field1;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*>> {
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*, lhp::Allocator>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>**, std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*, lhp::Allocator>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*> **__value_;
+        struct __bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*, lhp::Allocator>> {
+            struct __compressed_pair<unsigned long, geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*, lhp::Allocator>> {
                 unsigned long long __value_;
+                struct StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*, lhp::Allocator> __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*>>> {
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*, lhp::Allocator>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>**, std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*, lhp::Allocator>>> {
         struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*>> {
+        struct __bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*, lhp::Allocator>> {
+            struct __compressed_pair<unsigned long, geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*, lhp::Allocator>> {
                 unsigned long long _field1;
+                struct StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*, lhp::Allocator> _field2;
             } _field1;
         } _field2;
     } _field1;
@@ -4394,12 +4666,13 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__h
     } _field1;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*>>> {
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*, lhp::Allocator>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>**, std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*, lhp::Allocator>>> {
         struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*>> {
+        struct __bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*, lhp::Allocator>> {
+            struct __compressed_pair<unsigned long, geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*, lhp::Allocator>> {
                 unsigned long long _field1;
+                struct StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*, lhp::Allocator> _field2;
             } _field1;
         } _field2;
     } _field1;
@@ -4442,11 +4715,12 @@ struct unordered_map<GEOGenericTileType, std::__1::shared_ptr<ggl::Texture2D>, s
     } __table_;
 };
 
-struct unordered_map<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>, std::__1::hash<const GEOTransitLink *>, std::__1::equal_to<const GEOTransitLink *>, std::__1::allocator<std::__1::pair<const GEOTransitLink *const, std::__1::weak_ptr<md::LabelExternalTransitLink>>>> {
-    struct __hash_table<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, std::__1::__unordered_map_hasher<const GEOTransitLink *, std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, std::__1::hash<const GEOTransitLink *>, true>, std::__1::__unordered_map_equal<const GEOTransitLink *, std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, std::__1::equal_to<const GEOTransitLink *>, true>, std::__1::allocator<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>>> {
+struct unordered_map<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>, std::__1::hash<const GEOTransitLink *>, std::__1::equal_to<const GEOTransitLink *>, geo::StdAllocator<std::__1::pair<const GEOTransitLink *const, std::__1::weak_ptr<md::LabelExternalTransitLink>>, lhp::Allocator>> {
+    struct __hash_table<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, std::__1::__unordered_map_hasher<const GEOTransitLink *, std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, std::__1::hash<const GEOTransitLink *>, true>, std::__1::__unordered_map_equal<const GEOTransitLink *, std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, std::__1::equal_to<const GEOTransitLink *>, true>, geo::StdAllocator<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, lhp::Allocator>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>*, lhp::Allocator>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*>, geo::StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>, lhp::Allocator>> {
             struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>*> _field1;
+            struct StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, void *>, lhp::Allocator> _field2;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<const GEOTransitLink *, std::__1::__hash_value_type<const GEOTransitLink *, std::__1::weak_ptr<md::LabelExternalTransitLink>>, std::__1::hash<const GEOTransitLink *>, true>> {
             unsigned long long _field1;
@@ -4562,41 +4836,28 @@ struct unordered_map<md::TrafficStream::SectionKey, md::TrafficStream::TexelRun,
     } _field1;
 };
 
-struct unordered_map<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*> __value_;
+struct unordered_map<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, geo::StdAllocator<std::__1::pair<const std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, lhp::Allocator>> {
+    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, true>, geo::StdAllocator<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, lhp::Allocator>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*, lhp::Allocator>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>, geo::StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>, lhp::Allocator>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*> __value_;
+            struct StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>, lhp::Allocator> __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::hash<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, true>> {
             float __value_;
         } __p3_;
     } __table_;
 };
 
-struct unordered_map<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, void *>*> __value_;
-        } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, std::__1::hash<std::__1::basic_string<char>>, true>> {
-            unsigned long long __value_;
-        } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>>>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
-            float __value_;
-        } __p3_;
-    } __table_;
-};
-
-struct unordered_map<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>, md::LabelTransitSupport::TransitLineColorKeyHash, std::__1::equal_to<std::__1::pair<unsigned long long, bool>>, std::__1::allocator<std::__1::pair<const std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, std::__1::__unordered_map_hasher<std::__1::pair<unsigned long long, bool>, std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, md::LabelTransitSupport::TransitLineColorKeyHash, true>, std::__1::__unordered_map_equal<std::__1::pair<unsigned long long, bool>, std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, std::__1::equal_to<std::__1::pair<unsigned long long, bool>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>>> {
+struct unordered_map<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>, md::LabelTransitSupport::TransitLineColorKeyHash, std::__1::equal_to<std::__1::pair<unsigned long long, bool>>, geo::StdAllocator<std::__1::pair<const std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, lhp::Allocator>> {
+    struct __hash_table<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, std::__1::__unordered_map_hasher<std::__1::pair<unsigned long long, bool>, std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, md::LabelTransitSupport::TransitLineColorKeyHash, true>, std::__1::__unordered_map_equal<std::__1::pair<unsigned long long, bool>, std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, std::__1::equal_to<std::__1::pair<unsigned long long, bool>>, true>, geo::StdAllocator<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, lhp::Allocator>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>*, lhp::Allocator>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*>, geo::StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>, lhp::Allocator>> {
             struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>*> _field1;
+            struct StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, void *>, lhp::Allocator> _field2;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::pair<unsigned long long, bool>, std::__1::__hash_value_type<std::__1::pair<unsigned long long, bool>, gm::FixedPointVector<uint8_t, 4>>, md::LabelTransitSupport::TransitLineColorKeyHash, true>> {
             unsigned long long _field1;
@@ -4727,11 +4988,12 @@ struct unordered_map<unsigned long long, std::__1::vector<unsigned long long, st
     } _field1;
 };
 
-struct unordered_map<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>>> {
+struct unordered_map<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, geo::StdAllocator<std::__1::pair<const unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, lhp::Allocator>> {
+    struct __hash_table<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, std::__1::equal_to<unsigned long long>, true>, geo::StdAllocator<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, lhp::Allocator>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>*, lhp::Allocator>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*>, geo::StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>, lhp::Allocator>> {
             struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>*> _field1;
+            struct StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, void *>, lhp::Allocator> _field2;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, std::__1::weak_ptr<md::LabelExternalTransitNode>>, std::__1::hash<unsigned long long>, true>> {
             unsigned long long _field1;
@@ -4834,35 +5096,39 @@ struct vector<GEOLocationCoordinate2D, std::__1::allocator<GEOLocationCoordinate
     } __end_cap_;
 };
 
-struct vector<LabelNavJunctionInfo, std::__1::allocator<LabelNavJunctionInfo>> {
+struct vector<LabelNavJunctionInfo, geo::StdAllocator<LabelNavJunctionInfo, lhp::Allocator>> {
     struct LabelNavJunctionInfo *__begin_;
     struct LabelNavJunctionInfo *__end_;
-    struct __compressed_pair<LabelNavJunctionInfo *, std::__1::allocator<LabelNavJunctionInfo>> {
+    struct __compressed_pair<LabelNavJunctionInfo *, geo::StdAllocator<LabelNavJunctionInfo, lhp::Allocator>> {
         struct LabelNavJunctionInfo *__value_;
+        struct StdAllocator<LabelNavJunctionInfo, lhp::Allocator> __value_;
     } __end_cap_;
 };
 
-struct vector<RouteJunctionInfo, std::__1::allocator<RouteJunctionInfo>> {
+struct vector<RouteJunctionInfo, geo::StdAllocator<RouteJunctionInfo, lhp::Allocator>> {
     struct RouteJunctionInfo *_field1;
     struct RouteJunctionInfo *_field2;
-    struct __compressed_pair<RouteJunctionInfo *, std::__1::allocator<RouteJunctionInfo>> {
+    struct __compressed_pair<RouteJunctionInfo *, geo::StdAllocator<RouteJunctionInfo, lhp::Allocator>> {
         struct RouteJunctionInfo *_field1;
+        struct StdAllocator<RouteJunctionInfo, lhp::Allocator> _field2;
     } _field3;
 };
 
-struct vector<RouteSegment, std::__1::allocator<RouteSegment>> {
+struct vector<RouteSegment, geo::StdAllocator<RouteSegment, lhp::Allocator>> {
     struct RouteSegment *__begin_;
     struct RouteSegment *__end_;
-    struct __compressed_pair<RouteSegment *, std::__1::allocator<RouteSegment>> {
+    struct __compressed_pair<RouteSegment *, geo::StdAllocator<RouteSegment, lhp::Allocator>> {
         struct RouteSegment *__value_;
+        struct StdAllocator<RouteSegment, lhp::Allocator> __value_;
     } __end_cap_;
 };
 
-struct vector<VKLabelNavRoadLabel *, std::__1::allocator<VKLabelNavRoadLabel *>> {
+struct vector<VKLabelNavRoadLabel *, geo::StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator>> {
     id *__begin_;
     id *__end_;
-    struct __compressed_pair<VKLabelNavRoadLabel **, std::__1::allocator<VKLabelNavRoadLabel *>> {
+    struct __compressed_pair<VKLabelNavRoadLabel **, geo::StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator>> {
         id *__value_;
+        struct StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator> __value_;
     } __end_cap_;
 };
 
@@ -4930,11 +5196,12 @@ struct vector<geo::_retain_ptr<VKPolylineGroupOverlay *, geo::_retain_objc, geo:
     } __end_cap_;
 };
 
-struct vector<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, std::__1::allocator<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>> {
+struct vector<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, geo::StdAllocator<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, lhp::Allocator>> {
     struct _retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> *__begin_;
     struct _retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> *__end_;
-    struct __compressed_pair<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>*, std::__1::allocator<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>>> {
+    struct __compressed_pair<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>*, geo::StdAllocator<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, lhp::Allocator>> {
         struct _retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> *__value_;
+        struct StdAllocator<geo::_retain_ptr<VKRouteContext *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc>, lhp::Allocator> __value_;
     } __end_cap_;
 };
 
@@ -4954,11 +5221,11 @@ struct vector<geo::_retain_ptr<VKVenueGroup *, geo::_retain_objc, geo::_release_
     } __end_cap_;
 };
 
-struct vector<geo::fast_shared_ptr<md::RouteLineSection>, std::__1::allocator<geo::fast_shared_ptr<md::RouteLineSection>>> {
-    struct fast_shared_ptr<md::RouteLineSection> *__begin_;
-    struct fast_shared_ptr<md::RouteLineSection> *__end_;
-    struct __compressed_pair<geo::fast_shared_ptr<md::RouteLineSection>*, std::__1::allocator<geo::fast_shared_ptr<md::RouteLineSection>>> {
-        struct fast_shared_ptr<md::RouteLineSection> *__value_;
+struct vector<geo::fast_shared_ptr<md::RouteLineSection, std::allocator>, std::__1::allocator<geo::fast_shared_ptr<md::RouteLineSection, std::allocator>>> {
+    struct fast_shared_ptr<md::RouteLineSection, std::allocator> *__begin_;
+    struct fast_shared_ptr<md::RouteLineSection, std::allocator> *__end_;
+    struct __compressed_pair<geo::fast_shared_ptr<md::RouteLineSection, std::allocator>*, std::__1::allocator<geo::fast_shared_ptr<md::RouteLineSection, std::allocator>>> {
+        struct fast_shared_ptr<md::RouteLineSection, std::allocator> *__value_;
     } __end_cap_;
 };
 
@@ -4970,43 +5237,48 @@ struct vector<ggl::Batcher, std::__1::allocator<ggl::Batcher>> {
     } __end_cap_;
 };
 
-struct vector<ggl::BuildingFacade::BuildingMesh *, std::__1::allocator<ggl::BuildingFacade::BuildingMesh *>> {
+struct vector<ggl::BuildingFacade::BuildingMesh *, geo::StdAllocator<ggl::BuildingFacade::BuildingMesh *, ggl::Allocator>> {
     struct BuildingMesh **_field1;
     struct BuildingMesh **_field2;
-    struct __compressed_pair<ggl::BuildingFacade::BuildingMesh **, std::__1::allocator<ggl::BuildingFacade::BuildingMesh *>> {
+    struct __compressed_pair<ggl::BuildingFacade::BuildingMesh **, geo::StdAllocator<ggl::BuildingFacade::BuildingMesh *, ggl::Allocator>> {
         struct BuildingMesh **_field1;
+        struct StdAllocator<ggl::BuildingFacade::BuildingMesh *, ggl::Allocator> _field2;
     } _field3;
 };
 
-struct vector<ggl::BuildingPointyRoof::BuildingMesh *, std::__1::allocator<ggl::BuildingPointyRoof::BuildingMesh *>> {
+struct vector<ggl::BuildingPointyRoof::BuildingMesh *, geo::StdAllocator<ggl::BuildingPointyRoof::BuildingMesh *, ggl::Allocator>> {
     struct BuildingMesh **_field1;
     struct BuildingMesh **_field2;
-    struct __compressed_pair<ggl::BuildingPointyRoof::BuildingMesh **, std::__1::allocator<ggl::BuildingPointyRoof::BuildingMesh *>> {
+    struct __compressed_pair<ggl::BuildingPointyRoof::BuildingMesh **, geo::StdAllocator<ggl::BuildingPointyRoof::BuildingMesh *, ggl::Allocator>> {
         struct BuildingMesh **_field1;
+        struct StdAllocator<ggl::BuildingPointyRoof::BuildingMesh *, ggl::Allocator> _field2;
     } _field3;
 };
 
-struct vector<ggl::CommandBuffer *, std::__1::allocator<ggl::CommandBuffer *>> {
+struct vector<ggl::CommandBuffer *, geo::StdAllocator<ggl::CommandBuffer *, ggl::Allocator>> {
     struct CommandBuffer **_field1;
     struct CommandBuffer **_field2;
-    struct __compressed_pair<ggl::CommandBuffer **, std::__1::allocator<ggl::CommandBuffer *>> {
+    struct __compressed_pair<ggl::CommandBuffer **, geo::StdAllocator<ggl::CommandBuffer *, ggl::Allocator>> {
         struct CommandBuffer **_field1;
+        struct StdAllocator<ggl::CommandBuffer *, ggl::Allocator> _field2;
     } _field3;
 };
 
-struct vector<ggl::ComputeQueue *, std::__1::allocator<ggl::ComputeQueue *>> {
+struct vector<ggl::ComputeQueue *, geo::StdAllocator<ggl::ComputeQueue *, ggl::Allocator>> {
     struct ComputeQueue **_field1;
     struct ComputeQueue **_field2;
-    struct __compressed_pair<ggl::ComputeQueue **, std::__1::allocator<ggl::ComputeQueue *>> {
+    struct __compressed_pair<ggl::ComputeQueue **, geo::StdAllocator<ggl::ComputeQueue *, ggl::Allocator>> {
         struct ComputeQueue **_field1;
+        struct StdAllocator<ggl::ComputeQueue *, ggl::Allocator> _field2;
     } _field3;
 };
 
-struct vector<ggl::ConstantDataElement, std::__1::allocator<ggl::ConstantDataElement>> {
+struct vector<ggl::ConstantDataElement, geo::StdAllocator<ggl::ConstantDataElement, ggl::Allocator>> {
     struct ConstantDataElement *_field1;
     struct ConstantDataElement *_field2;
-    struct __compressed_pair<ggl::ConstantDataElement *, std::__1::allocator<ggl::ConstantDataElement>> {
+    struct __compressed_pair<ggl::ConstantDataElement *, geo::StdAllocator<ggl::ConstantDataElement, ggl::Allocator>> {
         struct ConstantDataElement *_field1;
+        struct StdAllocator<ggl::ConstantDataElement, ggl::Allocator> _field2;
     } _field3;
 };
 
@@ -5026,19 +5298,21 @@ struct vector<ggl::PatternedRibbon::BaseMesh *, std::__1::allocator<ggl::Pattern
     } _field3;
 };
 
-struct vector<ggl::PrefilteredLine::PrefilteredLineMesh *, std::__1::allocator<ggl::PrefilteredLine::PrefilteredLineMesh *>> {
+struct vector<ggl::PrefilteredLine::PrefilteredLineMesh *, geo::StdAllocator<ggl::PrefilteredLine::PrefilteredLineMesh *, ggl::Allocator>> {
     struct PrefilteredLineMesh **_field1;
     struct PrefilteredLineMesh **_field2;
-    struct __compressed_pair<ggl::PrefilteredLine::PrefilteredLineMesh **, std::__1::allocator<ggl::PrefilteredLine::PrefilteredLineMesh *>> {
+    struct __compressed_pair<ggl::PrefilteredLine::PrefilteredLineMesh **, geo::StdAllocator<ggl::PrefilteredLine::PrefilteredLineMesh *, ggl::Allocator>> {
         struct PrefilteredLineMesh **_field1;
+        struct StdAllocator<ggl::PrefilteredLine::PrefilteredLineMesh *, ggl::Allocator> _field2;
     } _field3;
 };
 
-struct vector<ggl::RenderQueue::Pass, std::__1::allocator<ggl::RenderQueue::Pass>> {
+struct vector<ggl::RenderQueue::Pass, geo::StdAllocator<ggl::RenderQueue::Pass, ggl::Allocator>> {
     struct Pass *_field1;
     struct Pass *_field2;
-    struct __compressed_pair<ggl::RenderQueue::Pass *, std::__1::allocator<ggl::RenderQueue::Pass>> {
+    struct __compressed_pair<ggl::RenderQueue::Pass *, geo::StdAllocator<ggl::RenderQueue::Pass, ggl::Allocator>> {
         struct Pass *_field1;
+        struct StdAllocator<ggl::RenderQueue::Pass, ggl::Allocator> _field2;
     } _field3;
 };
 
@@ -5050,35 +5324,39 @@ struct vector<ggl::Ribbon::BaseMesh *, std::__1::allocator<ggl::Ribbon::BaseMesh
     } _field3;
 };
 
-struct vector<ggl::ShaderLibrary::ComputeShaderEntry, std::__1::allocator<ggl::ShaderLibrary::ComputeShaderEntry>> {
+struct vector<ggl::ShaderLibrary::ComputeShaderEntry, geo::StdAllocator<ggl::ShaderLibrary::ComputeShaderEntry, ggl::Allocator>> {
     struct ComputeShaderEntry *_field1;
     struct ComputeShaderEntry *_field2;
-    struct __compressed_pair<ggl::ShaderLibrary::ComputeShaderEntry *, std::__1::allocator<ggl::ShaderLibrary::ComputeShaderEntry>> {
+    struct __compressed_pair<ggl::ShaderLibrary::ComputeShaderEntry *, geo::StdAllocator<ggl::ShaderLibrary::ComputeShaderEntry, ggl::Allocator>> {
         struct ComputeShaderEntry *_field1;
+        struct StdAllocator<ggl::ShaderLibrary::ComputeShaderEntry, ggl::Allocator> _field2;
     } _field3;
 };
 
-struct vector<ggl::ShaderLibrary::FunctionEntry, std::__1::allocator<ggl::ShaderLibrary::FunctionEntry>> {
+struct vector<ggl::ShaderLibrary::FunctionEntry, geo::StdAllocator<ggl::ShaderLibrary::FunctionEntry, ggl::Allocator>> {
     struct FunctionEntry *_field1;
     struct FunctionEntry *_field2;
-    struct __compressed_pair<ggl::ShaderLibrary::FunctionEntry *, std::__1::allocator<ggl::ShaderLibrary::FunctionEntry>> {
+    struct __compressed_pair<ggl::ShaderLibrary::FunctionEntry *, geo::StdAllocator<ggl::ShaderLibrary::FunctionEntry, ggl::Allocator>> {
         struct FunctionEntry *_field1;
+        struct StdAllocator<ggl::ShaderLibrary::FunctionEntry, ggl::Allocator> _field2;
     } _field3;
 };
 
-struct vector<ggl::ShaderLibrary::ShaderEntry, std::__1::allocator<ggl::ShaderLibrary::ShaderEntry>> {
+struct vector<ggl::ShaderLibrary::ShaderEntry, geo::StdAllocator<ggl::ShaderLibrary::ShaderEntry, ggl::Allocator>> {
     struct ShaderEntry *_field1;
     struct ShaderEntry *_field2;
-    struct __compressed_pair<ggl::ShaderLibrary::ShaderEntry *, std::__1::allocator<ggl::ShaderLibrary::ShaderEntry>> {
+    struct __compressed_pair<ggl::ShaderLibrary::ShaderEntry *, geo::StdAllocator<ggl::ShaderLibrary::ShaderEntry, ggl::Allocator>> {
         struct ShaderEntry *_field1;
+        struct StdAllocator<ggl::ShaderLibrary::ShaderEntry, ggl::Allocator> _field2;
     } _field3;
 };
 
-struct vector<ggl::Texture *, std::__1::allocator<ggl::Texture *>> {
+struct vector<ggl::Texture *, geo::StdAllocator<ggl::Texture *, ggl::Allocator>> {
     struct Texture **_field1;
     struct Texture **_field2;
-    struct __compressed_pair<ggl::Texture **, std::__1::allocator<ggl::Texture *>> {
+    struct __compressed_pair<ggl::Texture **, geo::StdAllocator<ggl::Texture *, ggl::Allocator>> {
         struct Texture **_field1;
+        struct StdAllocator<ggl::Texture *, ggl::Allocator> _field2;
     } _field3;
 };
 
@@ -5098,11 +5376,12 @@ struct vector<ggl::TransitLineRibbon::BaseMesh *, std::__1::allocator<ggl::Trans
     } _field3;
 };
 
-struct vector<gm::Box<double, 2>, std::__1::allocator<gm::Box<double, 2>>> {
-    Box_3d7e3c2c *__begin_;
-    Box_3d7e3c2c *__end_;
-    struct __compressed_pair<gm::Box<double, 2>*, std::__1::allocator<gm::Box<double, 2>>> {
-        Box_3d7e3c2c *__value_;
+struct vector<gm::Matrix<double, 2, 1>, geo::StdAllocator<gm::Matrix<double, 2, 1>, lhp::Allocator>> {
+    Matrix_2bdd42a3 *__begin_;
+    Matrix_2bdd42a3 *__end_;
+    struct __compressed_pair<gm::Matrix<double, 2, 1>*, geo::StdAllocator<gm::Matrix<double, 2, 1>, lhp::Allocator>> {
+        Matrix_2bdd42a3 *__value_;
+        struct StdAllocator<gm::Matrix<double, 2, 1>, lhp::Allocator> __value_;
     } __end_cap_;
 };
 
@@ -5122,11 +5401,12 @@ struct vector<gm::Matrix<float, 2, 1>, std::__1::allocator<gm::Matrix<float, 2, 
     } _field3;
 };
 
-struct vector<gm::MultiRange<unsigned long>, std::__1::allocator<gm::MultiRange<unsigned long>>> {
+struct vector<gm::MultiRange<unsigned long>, geo::StdAllocator<gm::MultiRange<unsigned long>, ggl::Allocator>> {
     MultiRange_4bdc93a8 *_field1;
     MultiRange_4bdc93a8 *_field2;
-    struct __compressed_pair<gm::MultiRange<unsigned long>*, std::__1::allocator<gm::MultiRange<unsigned long>>> {
+    struct __compressed_pair<gm::MultiRange<unsigned long>*, geo::StdAllocator<gm::MultiRange<unsigned long>, ggl::Allocator>> {
         MultiRange_4bdc93a8 *_field1;
+        struct StdAllocator<gm::MultiRange<unsigned long>, ggl::Allocator> _field2;
     } _field3;
 };
 
@@ -5146,11 +5426,12 @@ struct vector<gm::Range<unsigned long>, std::__1::allocator<gm::Range<unsigned l
     } _field3;
 };
 
-struct vector<gss::FeatureAttributePair, std::__1::allocator<gss::FeatureAttributePair>> {
+struct vector<gss::FeatureAttributePair, geo::StdAllocator<gss::FeatureAttributePair, gss::Allocator>> {
     struct FeatureAttributePair *__begin_;
     struct FeatureAttributePair *__end_;
-    struct __compressed_pair<gss::FeatureAttributePair *, std::__1::allocator<gss::FeatureAttributePair>> {
+    struct __compressed_pair<gss::FeatureAttributePair *, geo::StdAllocator<gss::FeatureAttributePair, gss::Allocator>> {
         struct FeatureAttributePair *__value_;
+        struct StdAllocator<gss::FeatureAttributePair, gss::Allocator> __value_;
     } __end_cap_;
 };
 
@@ -5170,19 +5451,21 @@ struct vector<md::CommandBufferId, std::__1::allocator<md::CommandBufferId>> {
     } _field3;
 };
 
-struct vector<md::IconImage::IconLayer, std::__1::allocator<md::IconImage::IconLayer>> {
+struct vector<md::IconImage::IconLayer, geo::StdAllocator<md::IconImage::IconLayer, lhp::Allocator>> {
     unsigned char *__begin_;
     unsigned char *__end_;
-    struct __compressed_pair<md::IconImage::IconLayer *, std::__1::allocator<md::IconImage::IconLayer>> {
+    struct __compressed_pair<md::IconImage::IconLayer *, geo::StdAllocator<md::IconImage::IconLayer, lhp::Allocator>> {
         unsigned char *__value_;
+        struct StdAllocator<md::IconImage::IconLayer, lhp::Allocator> __value_;
     } __end_cap_;
 };
 
-struct vector<md::Label *, std::__1::allocator<md::Label *>> {
+struct vector<md::Label *, geo::StdAllocator<md::Label *, lhp::Allocator>> {
     struct Label **_field1;
     struct Label **_field2;
-    struct __compressed_pair<md::Label **, std::__1::allocator<md::Label *>> {
+    struct __compressed_pair<md::Label **, geo::StdAllocator<md::Label *, lhp::Allocator>> {
         struct Label **_field1;
+        struct StdAllocator<md::Label *, lhp::Allocator> _field2;
     } _field3;
 };
 
@@ -5346,11 +5629,12 @@ struct vector<std::__1::shared_ptr<ggl::BuildingFlatStroke::BuildingFlatStrokeMe
     } __end_cap_;
 };
 
-struct vector<std::__1::shared_ptr<ggl::DebugRenderer>, std::__1::allocator<std::__1::shared_ptr<ggl::DebugRenderer>>> {
+struct vector<std::__1::shared_ptr<ggl::DebugRenderer>, geo::StdAllocator<std::__1::shared_ptr<ggl::DebugRenderer>, ggl::Allocator>> {
     struct shared_ptr<ggl::DebugRenderer> *_field1;
     struct shared_ptr<ggl::DebugRenderer> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<ggl::DebugRenderer>*, std::__1::allocator<std::__1::shared_ptr<ggl::DebugRenderer>>> {
+    struct __compressed_pair<std::__1::shared_ptr<ggl::DebugRenderer>*, geo::StdAllocator<std::__1::shared_ptr<ggl::DebugRenderer>, ggl::Allocator>> {
         struct shared_ptr<ggl::DebugRenderer> *_field1;
+        struct StdAllocator<std::__1::shared_ptr<ggl::DebugRenderer>, ggl::Allocator> _field2;
     } _field3;
 };
 
@@ -5370,11 +5654,12 @@ struct vector<std::__1::shared_ptr<ggl::PolygonCommonStroke::MeshMesh>, std::__1
     } __end_cap_;
 };
 
-struct vector<std::__1::shared_ptr<ggl::Shader>, std::__1::allocator<std::__1::shared_ptr<ggl::Shader>>> {
+struct vector<std::__1::shared_ptr<ggl::Shader>, geo::StdAllocator<std::__1::shared_ptr<ggl::Shader>, ggl::Allocator>> {
     struct shared_ptr<ggl::Shader> *_field1;
     struct shared_ptr<ggl::Shader> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<ggl::Shader>*, std::__1::allocator<std::__1::shared_ptr<ggl::Shader>>> {
+    struct __compressed_pair<std::__1::shared_ptr<ggl::Shader>*, geo::StdAllocator<std::__1::shared_ptr<ggl::Shader>, ggl::Allocator>> {
         struct shared_ptr<ggl::Shader> *_field1;
+        struct StdAllocator<std::__1::shared_ptr<ggl::Shader>, ggl::Allocator> _field2;
     } _field3;
 };
 
@@ -5418,11 +5703,12 @@ struct vector<std::__1::shared_ptr<ggl::VenueWall::MeshMesh>, std::__1::allocato
     } __end_cap_;
 };
 
-struct vector<std::__1::shared_ptr<ggl::VertexData>, std::__1::allocator<std::__1::shared_ptr<ggl::VertexData>>> {
+struct vector<std::__1::shared_ptr<ggl::VertexData>, geo::StdAllocator<std::__1::shared_ptr<ggl::VertexData>, ggl::Allocator>> {
     struct shared_ptr<ggl::VertexData> *_field1;
     struct shared_ptr<ggl::VertexData> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<ggl::VertexData>*, std::__1::allocator<std::__1::shared_ptr<ggl::VertexData>>> {
+    struct __compressed_pair<std::__1::shared_ptr<ggl::VertexData>*, geo::StdAllocator<std::__1::shared_ptr<ggl::VertexData>, ggl::Allocator>> {
         struct shared_ptr<ggl::VertexData> *_field1;
+        struct StdAllocator<std::__1::shared_ptr<ggl::VertexData>, ggl::Allocator> _field2;
     } _field3;
 };
 
@@ -5450,75 +5736,75 @@ struct vector<std::__1::shared_ptr<md::DebugTreeNode>, std::__1::allocator<std::
     } __end_cap_;
 };
 
-struct vector<std::__1::shared_ptr<md::Label>, std::__1::allocator<std::__1::shared_ptr<md::Label>>> {
+struct vector<std::__1::shared_ptr<md::Label>, geo::StdAllocator<std::__1::shared_ptr<md::Label>, lhp::Allocator>> {
     struct shared_ptr<md::Label> *_field1;
     struct shared_ptr<md::Label> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<md::Label>*, std::__1::allocator<std::__1::shared_ptr<md::Label>>> {
+    struct __compressed_pair<std::__1::shared_ptr<md::Label>*, geo::StdAllocator<std::__1::shared_ptr<md::Label>, lhp::Allocator>> {
         struct shared_ptr<md::Label> *_field1;
+        struct StdAllocator<std::__1::shared_ptr<md::Label>, lhp::Allocator> _field2;
     } _field3;
 };
 
-struct vector<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>, std::__1::allocator<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>>> {
+struct vector<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>, geo::StdAllocator<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>, lhp::Allocator>> {
     struct shared_ptr<md::LabelCreateExternalIconRequest> *_field1;
     struct shared_ptr<md::LabelCreateExternalIconRequest> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>*, std::__1::allocator<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>>> {
+    struct __compressed_pair<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>*, geo::StdAllocator<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>, lhp::Allocator>> {
         struct shared_ptr<md::LabelCreateExternalIconRequest> *_field1;
+        struct StdAllocator<std::__1::shared_ptr<md::LabelCreateExternalIconRequest>, lhp::Allocator> _field2;
     } _field3;
 };
 
-struct vector<std::__1::shared_ptr<md::LabelExternalPointFeature>, std::__1::allocator<std::__1::shared_ptr<md::LabelExternalPointFeature>>> {
+struct vector<std::__1::shared_ptr<md::LabelExternalPointFeature>, geo::StdAllocator<std::__1::shared_ptr<md::LabelExternalPointFeature>, lhp::Allocator>> {
     shared_ptr_e9082761 *_field1;
     shared_ptr_e9082761 *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<md::LabelExternalPointFeature>*, std::__1::allocator<std::__1::shared_ptr<md::LabelExternalPointFeature>>> {
+    struct __compressed_pair<std::__1::shared_ptr<md::LabelExternalPointFeature>*, geo::StdAllocator<std::__1::shared_ptr<md::LabelExternalPointFeature>, lhp::Allocator>> {
         shared_ptr_e9082761 *_field1;
+        struct StdAllocator<std::__1::shared_ptr<md::LabelExternalPointFeature>, lhp::Allocator> _field2;
     } _field3;
 };
 
-struct vector<std::__1::shared_ptr<md::LabelExternalRoadFeature>, std::__1::allocator<std::__1::shared_ptr<md::LabelExternalRoadFeature>>> {
+struct vector<std::__1::shared_ptr<md::LabelExternalRoadFeature>, geo::StdAllocator<std::__1::shared_ptr<md::LabelExternalRoadFeature>, lhp::Allocator>> {
     struct shared_ptr<md::LabelExternalRoadFeature> *_field1;
     struct shared_ptr<md::LabelExternalRoadFeature> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<md::LabelExternalRoadFeature>*, std::__1::allocator<std::__1::shared_ptr<md::LabelExternalRoadFeature>>> {
+    struct __compressed_pair<std::__1::shared_ptr<md::LabelExternalRoadFeature>*, geo::StdAllocator<std::__1::shared_ptr<md::LabelExternalRoadFeature>, lhp::Allocator>> {
         struct shared_ptr<md::LabelExternalRoadFeature> *_field1;
+        struct StdAllocator<std::__1::shared_ptr<md::LabelExternalRoadFeature>, lhp::Allocator> _field2;
     } _field3;
 };
 
-struct vector<std::__1::shared_ptr<md::LabelFeature>, std::__1::allocator<std::__1::shared_ptr<md::LabelFeature>>> {
+struct vector<std::__1::shared_ptr<md::LabelFeature>, geo::StdAllocator<std::__1::shared_ptr<md::LabelFeature>, lhp::Allocator>> {
     struct shared_ptr<md::LabelFeature> *_field1;
     struct shared_ptr<md::LabelFeature> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<md::LabelFeature>*, std::__1::allocator<std::__1::shared_ptr<md::LabelFeature>>> {
+    struct __compressed_pair<std::__1::shared_ptr<md::LabelFeature>*, geo::StdAllocator<std::__1::shared_ptr<md::LabelFeature>, lhp::Allocator>> {
         struct shared_ptr<md::LabelFeature> *_field1;
+        struct StdAllocator<std::__1::shared_ptr<md::LabelFeature>, lhp::Allocator> _field2;
     } _field3;
 };
 
-struct vector<std::__1::shared_ptr<md::LabelFeatureMarker>, std::__1::allocator<std::__1::shared_ptr<md::LabelFeatureMarker>>> {
-    shared_ptr_27db7edb *_field1;
-    shared_ptr_27db7edb *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<md::LabelFeatureMarker>*, std::__1::allocator<std::__1::shared_ptr<md::LabelFeatureMarker>>> {
-        shared_ptr_27db7edb *_field1;
-    } _field3;
-};
-
-struct vector<std::__1::shared_ptr<md::LabelManagerCommand>, std::__1::allocator<std::__1::shared_ptr<md::LabelManagerCommand>>> {
+struct vector<std::__1::shared_ptr<md::LabelManagerCommand>, geo::StdAllocator<std::__1::shared_ptr<md::LabelManagerCommand>, lhp::Allocator>> {
     struct shared_ptr<md::LabelManagerCommand> *_field1;
     struct shared_ptr<md::LabelManagerCommand> *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<md::LabelManagerCommand>*, std::__1::allocator<std::__1::shared_ptr<md::LabelManagerCommand>>> {
+    struct __compressed_pair<std::__1::shared_ptr<md::LabelManagerCommand>*, geo::StdAllocator<std::__1::shared_ptr<md::LabelManagerCommand>, lhp::Allocator>> {
         struct shared_ptr<md::LabelManagerCommand> *_field1;
+        struct StdAllocator<std::__1::shared_ptr<md::LabelManagerCommand>, lhp::Allocator> _field2;
     } _field3;
 };
 
-struct vector<std::__1::shared_ptr<md::LabelMapTile>, std::__1::allocator<std::__1::shared_ptr<md::LabelMapTile>>> {
+struct vector<std::__1::shared_ptr<md::LabelMapTile>, geo::StdAllocator<std::__1::shared_ptr<md::LabelMapTile>, lhp::Allocator>> {
     shared_ptr_d0281386 *_field1;
     shared_ptr_d0281386 *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<md::LabelMapTile>*, std::__1::allocator<std::__1::shared_ptr<md::LabelMapTile>>> {
+    struct __compressed_pair<std::__1::shared_ptr<md::LabelMapTile>*, geo::StdAllocator<std::__1::shared_ptr<md::LabelMapTile>, lhp::Allocator>> {
         shared_ptr_d0281386 *_field1;
+        struct StdAllocator<std::__1::shared_ptr<md::LabelMapTile>, lhp::Allocator> _field2;
     } _field3;
 };
 
-struct vector<std::__1::shared_ptr<md::NavLabel>, std::__1::allocator<std::__1::shared_ptr<md::NavLabel>>> {
+struct vector<std::__1::shared_ptr<md::NavLabel>, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator>> {
     shared_ptr_93ff9d4a *__begin_;
     shared_ptr_93ff9d4a *__end_;
-    struct __compressed_pair<std::__1::shared_ptr<md::NavLabel>*, std::__1::allocator<std::__1::shared_ptr<md::NavLabel>>> {
+    struct __compressed_pair<std::__1::shared_ptr<md::NavLabel>*, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator>> {
         shared_ptr_93ff9d4a *__value_;
+        struct StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator> __value_;
     } __end_cap_;
 };
 
@@ -5643,29 +5929,13 @@ typedef struct {
 
 typedef struct {
     CDUnknownFunctionPointerType *_field1;
-    struct Device *_field2;
-    unsigned long long _field3;
-    unsigned long long _field4;
-    unsigned long long _field5;
-    BOOL _field6;
-    float _field7;
-    struct vector<std::__1::shared_ptr<ggl::DebugRenderer>, std::__1::allocator<std::__1::shared_ptr<ggl::DebugRenderer>>> _field8;
-    struct unique_ptr<ggl::RenderQueue, std::__1::default_delete<ggl::RenderQueue>> _field9;
-    struct shared_ptr<ggl::CommonLibrary> _field10;
-    struct unique_ptr<ggl::RenderResourceFences, std::__1::default_delete<ggl::RenderResourceFences>> _field11;
-    struct Texture2D *_field12;
-    struct unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer>> _field13;
-} Renderer_8d52ff56;
-
-typedef struct {
-    CDUnknownFunctionPointerType *_field1;
     shared_ptr_e963992e _field2;
     struct unique_ptr<md::RenderQueue, std::__1::default_delete<md::RenderQueue>> _field3;
     struct RenderLayer *_field4[28];
-    struct RenderLayer *_field5[65];
+    struct RenderLayer *_field5[66];
     struct RunLoopController *_field6;
     struct MapEngine *_field7;
-} Renderer_94857723;
+} Renderer_3c643a9a;
 
 typedef struct {
     int _field1;
@@ -5674,12 +5944,28 @@ typedef struct {
 } Device_0f0703c5;
 
 typedef struct {
-    struct vector<ggl::RenderQueue::Pass, std::__1::allocator<ggl::RenderQueue::Pass>> _field1;
-    struct vector<ggl::ComputeQueue *, std::__1::allocator<ggl::ComputeQueue *>> _field2;
-    struct vector<ggl::CommandBuffer *, std::__1::allocator<ggl::CommandBuffer *>> _field3;
+    CDUnknownFunctionPointerType *_field1;
+    struct Device *_field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    unsigned long long _field5;
+    BOOL _field6;
+    float _field7;
+    struct vector<std::__1::shared_ptr<ggl::DebugRenderer>, geo::StdAllocator<std::__1::shared_ptr<ggl::DebugRenderer>, ggl::Allocator>> _field8;
+    struct unique_ptr<ggl::RenderQueue, std::__1::default_delete<ggl::RenderQueue>> _field9;
+    struct shared_ptr<ggl::CommonLibrary> _field10;
+    struct unique_ptr<ggl::RenderResourceFences, std::__1::default_delete<ggl::RenderResourceFences>> _field11;
+    struct Texture2D *_field12;
+    struct unique_ptr<ggl::CommandBuffer, std::__1::default_delete<ggl::CommandBuffer>> _field13;
+} Renderer_ddacdd1c;
+
+typedef struct {
+    struct vector<ggl::RenderQueue::Pass, geo::StdAllocator<ggl::RenderQueue::Pass, ggl::Allocator>> _field1;
+    struct vector<ggl::ComputeQueue *, geo::StdAllocator<ggl::ComputeQueue *, ggl::Allocator>> _field2;
+    struct vector<ggl::CommandBuffer *, geo::StdAllocator<ggl::CommandBuffer *, ggl::Allocator>> _field3;
     struct shared_ptr<ggl::RenderTransaction> _field4;
-    struct vector<ggl::Texture *, std::__1::allocator<ggl::Texture *>> _field5;
-} RenderQueue_5bbf3210;
+    struct vector<ggl::Texture *, geo::StdAllocator<ggl::Texture *, ggl::Allocator>> _field5;
+} RenderQueue_efd5f737;
 
 typedef struct {
     CDUnknownFunctionPointerType *_field1;
@@ -5805,6 +6091,13 @@ typedef struct {
 } CDStruct_58ec0031;
 
 typedef struct {
+    float r;
+    float g;
+    float b;
+    float a;
+} CDStruct_83984b6f;
+
+typedef struct {
     float _field1;
     float _field2;
 } CDStruct_b2fbf00d;
@@ -5883,12 +6176,6 @@ typedef struct {
 } CDStruct_5be08681;
 
 typedef struct {
-    CDStruct_58d0ca89 _field1;
-    char *_field2;
-    unsigned long long _field3;
-} CDStruct_2da3f85a;
-
-typedef struct {
     CDStruct_58ec0031 _color;
     float _offsetX;
     float _offsetY;
@@ -5905,6 +6192,10 @@ typedef struct {
 } CDStruct_f43f0670;
 
 typedef struct {
+    CDStruct_83984b6f transitLineColor;
+} CDStruct_b3fd5d76;
+
+typedef struct {
     Matrix_6e1d3589 position;
     Matrix_6e1d3589 tangent;
     BOOL tangentValid;
@@ -5914,10 +6205,6 @@ typedef struct {
     Matrix_8746f91e _field1;
     Matrix_8746f91e _field2;
 } CDStruct_5ae1f918;
-
-typedef struct {
-    Matrix_5173352a transitLineColor;
-} CDStruct_87ab733e;
 
 typedef struct {
     CDStruct_58d0ca89 _field1;
@@ -5933,12 +6220,7 @@ typedef struct {
             CDStruct_b2fbf00d _field1;
             CDStruct_b2fbf00d _field2;
         } _field1;
-        struct {
-            float _field1;
-            float _field2;
-            float _field3;
-            float _field4;
-        } _field2;
+        CDStruct_83984b6f _field2;
     } _field9;
     CDStruct_183601bc *_field10;
     struct {
@@ -5956,18 +6238,18 @@ typedef struct {
     struct _NSRange _field20;
     BOOL _field21;
     unsigned int _field22;
-} CDStruct_c707fdd0;
+} CDStruct_64195c06;
 
 typedef struct {
-    CDStruct_c707fdd0 _field1;
+    CDStruct_64195c06 _field1;
     unsigned long long _field2;
     unsigned long long _field3;
     BOOL _field4;
     BOOL _field5;
-} CDStruct_bc04cdca;
+} CDStruct_4bb03b42;
 
 typedef struct {
-    CDStruct_c707fdd0 _field1;
+    CDStruct_64195c06 _field1;
     CDStruct_b2fbf00d _field2;
     BOOL _field3;
     BOOL _field4;
@@ -5976,7 +6258,7 @@ typedef struct {
     unsigned long long _field7;
     CDStruct_b2fbf00d _field8;
     unsigned long long _field9;
-} CDStruct_f65f1467;
+} CDStruct_dbfa07c5;
 
 // Ambiguous groups
 typedef struct {
@@ -6083,19 +6365,19 @@ typedef struct Mercator3<double> {
 } Mercator3_40a88dec;
 
 typedef struct MeshVendor<ggl::BuildingFacade::BuildingMesh> {
-    struct vector<ggl::BuildingFacade::BuildingMesh *, std::__1::allocator<ggl::BuildingFacade::BuildingMesh *>> _field1;
+    struct vector<ggl::BuildingFacade::BuildingMesh *, geo::StdAllocator<ggl::BuildingFacade::BuildingMesh *, ggl::Allocator>> _field1;
     struct BuildingMesh *_field2;
-} MeshVendor_396e6e4f;
+} MeshVendor_04441547;
 
 typedef struct MeshVendor<ggl::BuildingPointyRoof::BuildingMesh> {
-    struct vector<ggl::BuildingPointyRoof::BuildingMesh *, std::__1::allocator<ggl::BuildingPointyRoof::BuildingMesh *>> _field1;
+    struct vector<ggl::BuildingPointyRoof::BuildingMesh *, geo::StdAllocator<ggl::BuildingPointyRoof::BuildingMesh *, ggl::Allocator>> _field1;
     struct BuildingMesh *_field2;
-} MeshVendor_c6d8e5cd;
+} MeshVendor_96ac8e76;
 
 typedef struct MeshVendor<ggl::PrefilteredLine::PrefilteredLineMesh> {
-    struct vector<ggl::PrefilteredLine::PrefilteredLineMesh *, std::__1::allocator<ggl::PrefilteredLine::PrefilteredLineMesh *>> _field1;
+    struct vector<ggl::PrefilteredLine::PrefilteredLineMesh *, geo::StdAllocator<ggl::PrefilteredLine::PrefilteredLineMesh *, ggl::Allocator>> _field1;
     struct PrefilteredLineMesh *_field2;
-} MeshVendor_8027e961;
+} MeshVendor_b901c95c;
 
 typedef struct MultiRange<unsigned long> {
     struct vector<gm::Range<unsigned long>, std::__1::allocator<gm::Range<unsigned long>>> _field1;
@@ -6153,6 +6435,13 @@ typedef struct array<gm::Matrix<double, 2, 1>, 2> {
     Matrix_2bdd42a3 _field1[2];
 } array_39cc276d;
 
+typedef struct basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, gss::Allocator>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, gss::Allocator>>::__rep, geo::StdAllocator<char, gss::Allocator>> {
+        struct __rep _field1;
+        struct StdAllocator<char, gss::Allocator> _field2;
+    } _field1;
+} basic_string_2821fe74;
+
 typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
     struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> __r_;
 } basic_string_23d93216;
@@ -6173,6 +6462,14 @@ typedef struct list<md::TransitDisplayConnection, std::__1::allocator<md::Transi
         unsigned long long __value_;
     } __size_alloc_;
 } list_547ec3e7;
+
+typedef struct optional<float> {
+    BOOL _hasValue;
+    union ValueUnion {
+        unsigned char data[4];
+        float type;
+    } _value;
+} optional_44235073;
 
 typedef struct pair<void *, unsigned long> {
     void *_field1;
@@ -6309,11 +6606,6 @@ typedef struct shared_ptr<md::LabelExternalPointFeature> {
     struct __shared_weak_count *__cntrl_;
 } shared_ptr_e9082761;
 
-typedef struct shared_ptr<md::LabelFeatureMarker> {
-    struct LabelFeatureMarker *__ptr_;
-    struct __shared_weak_count *__cntrl_;
-} shared_ptr_27db7edb;
-
 typedef struct shared_ptr<md::LabelImageKey> {
     struct LabelImageKey *_field1;
     struct __shared_weak_count *_field2;
@@ -6425,20 +6717,21 @@ typedef struct unordered_map<md::RoadBatchKey, std::__1::vector<std::__1::unique
     } _field1;
 } unordered_map_59c55433;
 
-typedef struct unordered_map<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, void *>*> __value_;
+typedef struct unordered_map<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, geo::StdAllocator<std::__1::pair<const std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, lhp::Allocator>> {
+    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, true>, geo::StdAllocator<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, lhp::Allocator>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*[], std::__1::__bucket_list_deallocator<geo::StdAllocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>*, lhp::Allocator>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*>, geo::StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>, lhp::Allocator>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>*> __value_;
+            struct StdAllocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, void *>, lhp::Allocator> __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::hash<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::hash<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::__hash_value_type<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>, std::__1::shared_ptr<NavRoadFeature>>, std::__1::equal_to<std::__1::basic_string<char, std::__1::char_traits<char>, geo::StdAllocator<char, lhp::Allocator>>>, true>> {
             float __value_;
         } __p3_;
     } __table_;
-} unordered_map_e9427026;
+} unordered_map_4d0b7b3a;
 
 typedef struct unordered_map<unsigned long long, md::PolygonRouteAttributes, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, md::PolygonRouteAttributes>>> {
     struct __hash_table<std::__1::__hash_value_type<unsigned long long, md::PolygonRouteAttributes>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, md::PolygonRouteAttributes>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, md::PolygonRouteAttributes>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, md::PolygonRouteAttributes>>> {
@@ -6501,21 +6794,23 @@ typedef struct vector<GEO3DBuildingFeature, std::__1::allocator<GEO3DBuildingFea
     } _field3;
 } vector_25c79282;
 
-typedef struct vector<RouteJunctionInfo, std::__1::allocator<RouteJunctionInfo>> {
+typedef struct vector<RouteJunctionInfo, geo::StdAllocator<RouteJunctionInfo, lhp::Allocator>> {
     struct RouteJunctionInfo *_field1;
     struct RouteJunctionInfo *_field2;
-    struct __compressed_pair<RouteJunctionInfo *, std::__1::allocator<RouteJunctionInfo>> {
+    struct __compressed_pair<RouteJunctionInfo *, geo::StdAllocator<RouteJunctionInfo, lhp::Allocator>> {
         struct RouteJunctionInfo *_field1;
+        struct StdAllocator<RouteJunctionInfo, lhp::Allocator> _field2;
     } _field3;
-} vector_682a2c99;
+} vector_34e67f61;
 
-typedef struct vector<VKLabelNavRoadLabel *, std::__1::allocator<VKLabelNavRoadLabel *>> {
+typedef struct vector<VKLabelNavRoadLabel *, geo::StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator>> {
     id *__begin_;
     id *__end_;
-    struct __compressed_pair<VKLabelNavRoadLabel **, std::__1::allocator<VKLabelNavRoadLabel *>> {
+    struct __compressed_pair<VKLabelNavRoadLabel **, geo::StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator>> {
         id *__value_;
+        struct StdAllocator<VKLabelNavRoadLabel *, lhp::Allocator> __value_;
     } __end_cap_;
-} vector_b4a52264;
+} vector_83fb13fb;
 
 typedef struct vector<geo::Coordinate3D<Radians, double>, std::__1::allocator<geo::Coordinate3D<Radians, double>>> {
     Coordinate3D_bc242218 *__begin_;
@@ -6541,21 +6836,22 @@ typedef struct vector<geo::_retain_ptr<VKVenueGroup *, geo::_retain_objc, geo::_
     } __end_cap_;
 } vector_d75ebb28;
 
-typedef struct vector<geo::fast_shared_ptr<md::RouteLineSection>, std::__1::allocator<geo::fast_shared_ptr<md::RouteLineSection>>> {
-    struct fast_shared_ptr<md::RouteLineSection> *__begin_;
-    struct fast_shared_ptr<md::RouteLineSection> *__end_;
-    struct __compressed_pair<geo::fast_shared_ptr<md::RouteLineSection>*, std::__1::allocator<geo::fast_shared_ptr<md::RouteLineSection>>> {
-        struct fast_shared_ptr<md::RouteLineSection> *__value_;
+typedef struct vector<geo::fast_shared_ptr<md::RouteLineSection, std::allocator>, std::__1::allocator<geo::fast_shared_ptr<md::RouteLineSection, std::allocator>>> {
+    struct fast_shared_ptr<md::RouteLineSection, std::allocator> *__begin_;
+    struct fast_shared_ptr<md::RouteLineSection, std::allocator> *__end_;
+    struct __compressed_pair<geo::fast_shared_ptr<md::RouteLineSection, std::allocator>*, std::__1::allocator<geo::fast_shared_ptr<md::RouteLineSection, std::allocator>>> {
+        struct fast_shared_ptr<md::RouteLineSection, std::allocator> *__value_;
     } __end_cap_;
-} vector_7b5b20f1;
+} vector_78427fd2;
 
-typedef struct vector<gm::Box<double, 2>, std::__1::allocator<gm::Box<double, 2>>> {
-    Box_3d7e3c2c *__begin_;
-    Box_3d7e3c2c *__end_;
-    struct __compressed_pair<gm::Box<double, 2>*, std::__1::allocator<gm::Box<double, 2>>> {
-        Box_3d7e3c2c *__value_;
+typedef struct vector<gm::Matrix<double, 2, 1>, geo::StdAllocator<gm::Matrix<double, 2, 1>, lhp::Allocator>> {
+    Matrix_2bdd42a3 *__begin_;
+    Matrix_2bdd42a3 *__end_;
+    struct __compressed_pair<gm::Matrix<double, 2, 1>*, geo::StdAllocator<gm::Matrix<double, 2, 1>, lhp::Allocator>> {
+        Matrix_2bdd42a3 *__value_;
+        struct StdAllocator<gm::Matrix<double, 2, 1>, lhp::Allocator> __value_;
     } __end_cap_;
-} vector_d0224be8;
+} vector_2b358fc6;
 
 typedef struct vector<gm::Matrix<double, 2, 1>, std::__1::allocator<gm::Matrix<double, 2, 1>>> {
     Matrix_2bdd42a3 *__begin_;
@@ -6709,21 +7005,14 @@ typedef struct vector<std::__1::shared_ptr<md::CoastlineGroup>, std::__1::alloca
     } __end_cap_;
 } vector_018386b3;
 
-typedef struct vector<std::__1::shared_ptr<md::LabelFeatureMarker>, std::__1::allocator<std::__1::shared_ptr<md::LabelFeatureMarker>>> {
-    shared_ptr_27db7edb *_field1;
-    shared_ptr_27db7edb *_field2;
-    struct __compressed_pair<std::__1::shared_ptr<md::LabelFeatureMarker>*, std::__1::allocator<std::__1::shared_ptr<md::LabelFeatureMarker>>> {
-        shared_ptr_27db7edb *_field1;
-    } _field3;
-} vector_8bf6b0e5;
-
-typedef struct vector<std::__1::shared_ptr<md::NavLabel>, std::__1::allocator<std::__1::shared_ptr<md::NavLabel>>> {
+typedef struct vector<std::__1::shared_ptr<md::NavLabel>, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator>> {
     shared_ptr_93ff9d4a *__begin_;
     shared_ptr_93ff9d4a *__end_;
-    struct __compressed_pair<std::__1::shared_ptr<md::NavLabel>*, std::__1::allocator<std::__1::shared_ptr<md::NavLabel>>> {
+    struct __compressed_pair<std::__1::shared_ptr<md::NavLabel>*, geo::StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator>> {
         shared_ptr_93ff9d4a *__value_;
+        struct StdAllocator<std::__1::shared_ptr<md::NavLabel>, lhp::Allocator> __value_;
     } __end_cap_;
-} vector_ecfc0b70;
+} vector_1ad5c848;
 
 typedef struct vector<std::__1::shared_ptr<md::ObjectGroup>, std::__1::allocator<std::__1::shared_ptr<md::ObjectGroup>>> {
     struct shared_ptr<md::ObjectGroup> *__begin_;
@@ -6758,4 +7047,15 @@ typedef struct weak_ptr<md::GlobeOverlayContainer> {
     struct GlobeOverlayContainer *__ptr_;
     struct __shared_weak_count *__cntrl_;
 } weak_ptr_96fca551;
+
+#pragma mark Named Unions
+
+#if 0
+// Names with conflicting types:
+typedef union {
+    unsigned char data[1];
+    unsigned char type;
+} ValueUnion_42b55164;
+
+#endif
 

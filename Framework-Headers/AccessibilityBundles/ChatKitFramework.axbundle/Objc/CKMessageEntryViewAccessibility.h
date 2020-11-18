@@ -37,6 +37,7 @@
 - (void)presentAudioActionMenu;
 - (BOOL)shouldGroupAccessibilityChildren;
 - (void)touchUpInsideDeleteAudioRecordingButton:(id)arg1;
+- (void)touchUpInsideSendButton:(id)arg1;
 - (void)updateEntryView;
 
 @end

@@ -7,81 +7,102 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBMessage-Protocol.h>
 
-@class NSMutableArray, NSString, PBUnknownFields, _INPBContact, _INPBDataString, _INPBDateTime, _INPBInteger;
+@class NSArray, NSString, _INPBContact, _INPBCurrencyAmountValue, _INPBDataString, _INPBDateTime, _INPBInteger, _INPBMessageLinkMetadata;
 
-@interface _INPBMessage : PBCodable <NSCopying>
+@interface _INPBMessage : PBCodable <_INPBMessage, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
     CDStruct_95bda58d _attributes;
-    NSString *_content;
-    NSString *_conversationIdentifier;
-    _INPBDateTime *_dateLastMessageRead;
-    _INPBDateTime *_dateSent;
-    int _effect;
-    NSString *_identifier;
-    _INPBInteger *_numberOfAttachments;
-    NSMutableArray *_recipients;
-    _INPBMessage *_referencedMessage;
-    _INPBContact *_sender;
-    _INPBDataString *_speakableGroupName;
-    int _type;
     struct {
         unsigned int effect:1;
         unsigned int type:1;
     } _has;
+    int _effect;
+    int _type;
+    NSArray *_attachments;
+    NSString *_content;
+    NSString *_conversationIdentifier;
+    _INPBDateTime *_dateLastMessageRead;
+    _INPBDateTime *_dateSent;
+    NSString *_fileExtension;
+    NSString *_groupName;
+    NSString *_identifier;
+    _INPBMessageLinkMetadata *_linkMetadata;
+    NSString *_locationName;
+    _INPBInteger *_numberOfAttachments;
+    _INPBCurrencyAmountValue *_paymentAmount;
+    NSArray *_recipients;
+    _INPBMessage *_referencedMessage;
+    _INPBContact *_sender;
+    _INPBDataString *_speakableGroupName;
 }
 
+@property (copy, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
+@property (readonly, nonatomic) unsigned long long attachmentsCount;
 @property (readonly, nonatomic) int *attributes;
 @property (readonly, nonatomic) unsigned long long attributesCount;
-@property (strong, nonatomic) NSString *content; // @synthesize content=_content;
-@property (strong, nonatomic) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
+@property (copy, nonatomic) NSString *content; // @synthesize content=_content;
+@property (copy, nonatomic) NSString *conversationIdentifier; // @synthesize conversationIdentifier=_conversationIdentifier;
 @property (strong, nonatomic) _INPBDateTime *dateLastMessageRead; // @synthesize dateLastMessageRead=_dateLastMessageRead;
 @property (strong, nonatomic) _INPBDateTime *dateSent; // @synthesize dateSent=_dateSent;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) int effect; // @synthesize effect=_effect;
+@property (copy, nonatomic) NSString *fileExtension; // @synthesize fileExtension=_fileExtension;
+@property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (readonly, nonatomic) BOOL hasContent;
 @property (readonly, nonatomic) BOOL hasConversationIdentifier;
 @property (readonly, nonatomic) BOOL hasDateLastMessageRead;
 @property (readonly, nonatomic) BOOL hasDateSent;
 @property (nonatomic) BOOL hasEffect;
+@property (readonly, nonatomic) BOOL hasFileExtension;
+@property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (readonly, nonatomic) BOOL hasLinkMetadata;
+@property (readonly, nonatomic) BOOL hasLocationName;
 @property (readonly, nonatomic) BOOL hasNumberOfAttachments;
+@property (readonly, nonatomic) BOOL hasPaymentAmount;
 @property (readonly, nonatomic) BOOL hasReferencedMessage;
 @property (readonly, nonatomic) BOOL hasSender;
 @property (readonly, nonatomic) BOOL hasSpeakableGroupName;
 @property (nonatomic) BOOL hasType;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) _INPBMessageLinkMetadata *linkMetadata; // @synthesize linkMetadata=_linkMetadata;
+@property (copy, nonatomic) NSString *locationName; // @synthesize locationName=_locationName;
 @property (strong, nonatomic) _INPBInteger *numberOfAttachments; // @synthesize numberOfAttachments=_numberOfAttachments;
-@property (strong, nonatomic) NSMutableArray *recipients; // @synthesize recipients=_recipients;
+@property (strong, nonatomic) _INPBCurrencyAmountValue *paymentAmount; // @synthesize paymentAmount=_paymentAmount;
+@property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
+@property (readonly, nonatomic) unsigned long long recipientsCount;
 @property (strong, nonatomic) _INPBMessage *referencedMessage; // @synthesize referencedMessage=_referencedMessage;
 @property (strong, nonatomic) _INPBContact *sender; // @synthesize sender=_sender;
 @property (strong, nonatomic) _INPBDataString *speakableGroupName; // @synthesize speakableGroupName=_speakableGroupName;
+@property (readonly) Class superclass;
 @property (nonatomic) int type; // @synthesize type=_type;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
++ (Class)attachmentType;
 + (Class)recipientType;
 - (void).cxx_destruct;
 - (int)StringAsAttributes:(id)arg1;
 - (int)StringAsEffect:(id)arg1;
 - (int)StringAsType:(id)arg1;
+- (void)addAttachment:(id)arg1;
 - (void)addAttribute:(int)arg1;
 - (void)addRecipient:(id)arg1;
+- (id)attachmentAtIndex:(unsigned long long)arg1;
 - (int)attributeAtIndex:(unsigned long long)arg1;
 - (id)attributesAsString:(int)arg1;
+- (void)clearAttachments;
 - (void)clearAttributes;
 - (void)clearRecipients;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
-- (id)description;
 - (id)dictionaryRepresentation;
 - (id)effectAsString:(int)arg1;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)recipientAtIndex:(unsigned long long)arg1;
-- (unsigned long long)recipientsCount;
 - (void)setAttributes:(int *)arg1 count:(unsigned long long)arg2;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

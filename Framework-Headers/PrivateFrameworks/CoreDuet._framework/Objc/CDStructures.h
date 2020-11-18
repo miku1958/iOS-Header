@@ -14,21 +14,34 @@ struct NSArray {
     Class _field1;
 };
 
+struct NSMapTable {
+    Class _field1;
+};
+
 struct XSPerfCollection {
-    id _field1;
+    struct _opaque_pthread_mutex_t {
+        long long _field1;
+        char _field2[56];
+    } _field1;
     unsigned int _field2;
     unsigned int _field3;
-    struct XSPerfCounter *_field4;
-    struct XSPerfMetric *_field5;
-    char *_field6;
+    unsigned int _field4;
+    _Atomic unsigned short _field5;
+    struct XSPerfCounter *_field6;
+    struct XSPerfMetric *_field7;
+    struct XSPerfString *_field8;
+    char *_field9;
 };
 
-struct XSPerfCounter {
-    _Atomic unsigned long long _field1;
-};
+struct XSPerfCounter;
 
-struct XSPerfMetric {
-    unsigned long long _field1[32];
+struct XSPerfMetric;
+
+struct XSPerfString;
+
+struct _CDPerfEvent {
+    unsigned long long CDPM_startTime;
+    unsigned long long CDPM_endTime;
 };
 
 struct _cdp_prediction_result {
@@ -38,16 +51,12 @@ struct _cdp_prediction_result {
     int _field4;
 };
 
-struct cdpm_shared_memory_region_s {
-    char _field1;
-    char _field2[1024];
-    struct cdpm_shared_memory_slot_s _field3[256];
+struct os_activity_scope_state_s {
+    unsigned long long opaque[2];
 };
 
-struct cdpm_shared_memory_slot_s {
-    char _field1[32];
-    struct XSPerfCounter _field2[8];
-    struct XSPerfMetric _field3[1];
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 
 #pragma mark Typedef'd Structures

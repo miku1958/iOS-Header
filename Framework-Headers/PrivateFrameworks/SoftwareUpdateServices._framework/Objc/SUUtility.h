@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SUUtility : NSObject
 {
@@ -42,6 +42,7 @@
 + (BOOL)isCellularDataCapable;
 + (BOOL)isDaemon;
 + (BOOL)isWiFiCapable;
++ (void)postAutoUpdateInformationalNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4 withCompletion:(CDUnknownBlockType)arg5;
 + (void)postFailureNotification:(id)arg1 body:(id)arg2 buttonText:(id)arg3 altButtonText:(id)arg4;
 + (id)prettyPrintDate:(id)arg1;
 + (void)purgeV1SUAssets;

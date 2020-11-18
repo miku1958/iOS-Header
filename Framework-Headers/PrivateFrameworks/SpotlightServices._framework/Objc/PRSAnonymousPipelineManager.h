@@ -42,11 +42,12 @@
 + (id)relativePositionKey;
 + (id)sharedManager;
 + (id)submittedLogsURL;
++ (id)submittedLogsURLForUser:(id)arg1;
 + (id)submitttedSpotlightReportsError:(id *)arg1;
 + (id)whitelistedBundles;
 - (void).cxx_destruct;
 - (id)_abandonedItemsFromItems:(id)arg1 withIndexOfEngagedItem:(unsigned long long)arg2;
-- (void)_addQueryInfoToFeatureMetadata:(id)arg1 withQuery:(id)arg2 cepData:(id)arg3 forClient:(id)arg4 keyboardPrimaryLanguage:(id)arg5;
+- (void)_addQueryInfoToJSONWriter:(struct json_writer *)arg1 withQuery:(id)arg2 cepData:(id)arg3 forClient:(id)arg4 keyboardPrimaryLanguage:(id)arg5;
 - (void)_addRelativePositionToFeatureDict:(id)arg1 relativePosition:(id)arg2 forItem:(id)arg3;
 - (void)_extractTrainingSamplesForQuery:(id)arg1 withIndexOfEngagedItem:(unsigned long long)arg2 withItems:(id)arg3 withCEPData:(id)arg4 forClientBundle:(id)arg5 keyboardPrimaryLanguage:(id)arg6;
 - (void)_increaseUserDefaultsEngagementCountForBundle:(id)arg1;
@@ -62,7 +63,7 @@
 - (id)init;
 - (void)queryWillFinishWithItems:(id)arg1 forClient:(id)arg2 forQuery:(id)arg3 anonymousDataCollectionAllowed:(BOOL)arg4;
 - (void)registerXPCActivity;
-- (id)retrieveAndCopyFeedbackDataToSendInDirectory:(id)arg1;
+- (id)retrieveFeedbackURLToSendInDirectory:(id)arg1;
 - (void)sendCustomFeedback:(id)arg1;
 - (void)sendMLFeedbackActivity:(id)arg1;
 - (void)setFeedbackDelegate:(id)arg1;

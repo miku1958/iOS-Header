@@ -57,6 +57,7 @@
 - (BOOL)areSystemGesturesDisabledByAccessibility;
 - (BOOL)areSystemGesturesDisabledNatively;
 - (void)armApplePay;
+- (BOOL)canSetDockIconActivationMode;
 - (void)cancelReachabilityDetection;
 - (void)cleanupAlertHandler;
 - (void)copyStringToPasteboard:(id)arg1;
@@ -96,6 +97,7 @@
 - (BOOL)isRingerMuted;
 - (BOOL)isScreenLockedWithPasscode:(BOOL *)arg1;
 - (BOOL)isScreenSaverVisible;
+- (BOOL)isScreenshotWindowVisible;
 - (BOOL)isSettingsAppFrontmost;
 - (BOOL)isShowingHomescreen;
 - (BOOL)isSideSwitchUsedForOrientation;
@@ -122,6 +124,7 @@
 - (void)pauseMedia;
 - (void)pauseMediaForApp:(id)arg1;
 - (BOOL)performMedusaGesture:(unsigned long long)arg1;
+- (void)performVoiceShortcutWithIdentifier:(id)arg1 bundleID:(id)arg2;
 - (int)pid;
 - (void)pid:(CDUnknownBlockType)arg1;
 - (int)purpleBuddyPID;
@@ -142,6 +145,7 @@
 - (id)runningAppProcesses;
 - (void)screenLockStatus:(CDUnknownBlockType)arg1;
 - (void)setCancelGestureActivation:(unsigned long long)arg1 cancelEnabled:(BOOL)arg2;
+- (void)setDockIconActivationMode:(unsigned long long)arg1;
 - (void)setHearingAidControlVisible:(BOOL)arg1;
 - (void)setLockScreenDimTimerEnabled:(BOOL)arg1;
 - (void)setOrientationLocked:(BOOL)arg1;
@@ -152,7 +156,7 @@
 - (void)setVolume:(double)arg1;
 - (void)showAlert:(long long)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)showAlert:(long long)arg1 withHandler:(CDUnknownBlockType)arg2 withData:(id)arg3;
-- (void)showControlCenter:(BOOL)arg1;
+- (BOOL)showControlCenter:(BOOL)arg1;
 - (void)showNotificationCenter;
 - (BOOL)showNotificationCenter:(BOOL)arg1;
 - (void)showRemoteView:(long long)arg1 withData:(id)arg2;

@@ -9,10 +9,13 @@
 #import <network/OS_nw_pac_resolver-Protocol.h>
 
 @class NSString;
+@protocol OS_nw_context;
 
+__attribute__((visibility("hidden")))
 @interface NWConcrete_nw_pac_resolver : NSObject <OS_nw_pac_resolver>
 {
     CDUnknownBlockType result_block;
+    NSObject<OS_nw_context> *context;
     struct __CFURL *endpointURL;
     struct __CFURL *pacURL;
     struct __CFString *pacScript;

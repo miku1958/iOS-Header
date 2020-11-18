@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVConference/VCAudioIOControllerControl-Protocol.h>
 #import <AVConference/VCAudioIOSink-Protocol.h>
@@ -30,6 +30,8 @@ __attribute__((visibility("hidden")))
     VCAudioRelay *_relay;
     struct AudioStreamBasicDescription _format;
     unsigned int _samplesPerFrame;
+    struct _VCAudioIOControllerIOState _sinkData;
+    struct _VCAudioIOControllerIOState _sourceData;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -44,6 +46,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstanceSafeViewRemoteFacing;
 - (void)_cleanupDeadClients;
 - (BOOL)addClient:(id)arg1;
+- (void)addClient:(id)arg1 clientArray:(id)arg2 eventQueue:(struct AudioEventQueue_t *)arg3;
 - (void)addStartingClient:(id)arg1 controllerFormat:(struct AudioStreamBasicDescription *)arg2;
 - (void)computeFormat:(struct AudioStreamBasicDescription *)arg1 newClient:(id)arg2;
 - (void)dealloc;
@@ -55,6 +58,8 @@ __attribute__((visibility("hidden")))
 - (void)pullAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (void)pushAudioSamples:(struct opaqueVCAudioBufferList *)arg1;
 - (BOOL)removeClient:(id)arg1;
+- (void)removeClient:(id)arg1 clientArray:(id)arg2 eventQueue:(struct AudioEventQueue_t *)arg3;
+- (void)resetAudioTimestamps;
 - (void)startClient:(id)arg1;
 - (BOOL)startRelayIO:(id)arg1;
 - (BOOL)stateIdleWithNegotiatedFormat:(struct AudioStreamBasicDescription *)arg1 client:(id)arg2 newState:(unsigned int *)arg3;

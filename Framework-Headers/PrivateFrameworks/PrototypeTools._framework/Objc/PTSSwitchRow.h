@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PrototypeTools/PTSRow.h>
+#import <PrototypeTools/PTSwitchRow.h>
 
-@interface PTSSwitchRow : PTSRow
+@interface PTSSwitchRow : PTSwitchRow
 {
 }
-
-- (Class)rowTableViewCellClass;
 
 @end
 

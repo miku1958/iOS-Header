@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CUICatalog, CUIStyleEffectConfiguration;
+#import <UIFoundation/NSTextApplicationFrameworkContextClient-Protocol.h>
 
-@interface NSLineFragmentRenderingContext : NSObject
+@class CUICatalog, CUIStyleEffectConfiguration, NSGraphicsContext, NSString;
+
+@interface NSLineFragmentRenderingContext : NSObject <NSTextApplicationFrameworkContextClient>
 {
     void *_runs;
     long long _numRuns;
@@ -25,18 +27,26 @@
         unsigned int _vAdvance:1;
         unsigned int _flipped:1;
         unsigned int _usesSimpleTextEffects:1;
-        unsigned int _reserved:28;
+        unsigned int _applicationFrameworkContext:3;
+        unsigned int _reserved:25;
     } _flags;
     long long _resolvedDirection;
     long long _resolvedAlignment;
     CUICatalog *_catalog;
     CUIStyleEffectConfiguration *_styleEffects;
+    NSGraphicsContext *_graphicsContext;
 }
 
+@property long long applicationFrameworkContext;
 @property (strong, nonatomic) CUICatalog *cuiCatalog; // @synthesize cuiCatalog=_catalog;
 @property (strong, nonatomic) CUIStyleEffectConfiguration *cuiStyleEffects; // @synthesize cuiStyleEffects=_styleEffects;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSGraphicsContext *graphicsContext; // @synthesize graphicsContext=_graphicsContext;
+@property (readonly) unsigned long long hash;
 @property long long resolvedBaseWritingDirection; // @synthesize resolvedBaseWritingDirection=_resolvedDirection;
 @property long long resolvedTextAlignment; // @synthesize resolvedTextAlignment=_resolvedAlignment;
+@property (readonly) Class superclass;
 @property (nonatomic, getter=_usesSimpleTextEffects, setter=_setUsesSimpleTextEffects:) BOOL usesSimpleTextEffects;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;

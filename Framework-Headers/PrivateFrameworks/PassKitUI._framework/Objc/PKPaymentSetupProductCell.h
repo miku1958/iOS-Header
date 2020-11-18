@@ -24,8 +24,6 @@
 - (void)_updateDisplay;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)pk_applyAppearance:(id)arg1;
 - (id)pk_childrenForAppearance;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNQueueingStrategy-Protocol.h>
 
@@ -18,6 +18,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) CDUnknownBlockType priorityComparator; // @synthesize priorityComparator=_priorityComparator;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

@@ -12,10 +12,6 @@
 
 @property (strong, nonatomic) _CPCardForFeedback *card;
 @property (copy, nonatomic) NSString *fbr;
-@property (readonly, nonatomic) BOOL hasCard;
-@property (readonly, nonatomic) BOOL hasFbr;
-@property (readonly, nonatomic) BOOL hasLevel;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned int level;
 @property (nonatomic) unsigned long long timestamp;

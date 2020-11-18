@@ -11,11 +11,12 @@
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, SXAnimatedImageController, SXDragManager, SXImageView;
-@protocol SXImageViewFactory;
+@protocol SXImageViewFactory, SXMediaSharingPolicyProvider;
 
 @interface SXImageComponentView : SXMediaComponentView <UIGestureRecognizerDelegate, SXImageViewDelegate, SXDragManagerDataSource>
 {
     id<SXImageViewFactory> _imageViewFactory;
+    id<SXMediaSharingPolicyProvider> _mediaSharingPolicyProvider;
     SXImageView *_imageView;
     SXAnimatedImageController *_animatedImageController;
     SXDragManager *_dragManager;
@@ -28,6 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SXImageView *imageView; // @synthesize imageView=_imageView;
 @property (readonly, nonatomic) id<SXImageViewFactory> imageViewFactory; // @synthesize imageViewFactory=_imageViewFactory;
+@property (readonly, nonatomic) id<SXMediaSharingPolicyProvider> mediaSharingPolicyProvider; // @synthesize mediaSharingPolicyProvider=_mediaSharingPolicyProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -40,7 +42,7 @@
 - (id)imageResource;
 - (void)imageView:(id)arg1 didLoadAnimatedImage:(id)arg2;
 - (void)imageView:(id)arg1 didLoadImage:(id)arg2;
-- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7;
+- (id)initWithDocumentController:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 analyticsReporting:(id)arg4 componentStyleRendererFactory:(id)arg5 appStateMonitor:(id)arg6 imageViewFactory:(id)arg7 mediaSharingPolicyProvider:(id)arg8;
 - (void)layoutImageView;
 - (void)loadComponent:(id)arg1;
 - (struct CGRect)originalFrameForContentView:(id)arg1 behavior:(id)arg2;

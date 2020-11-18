@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+@class VCRateControlMediaController;
 
 __attribute__((visibility("hidden")))
 @interface VCBasebandMetrics : NSObject
 {
-    CDStruct_f402fb06 _lastBasebandNotification;
+    VCRateControlMediaController *_mediaController;
+    CDStruct_b203c80d _lastBasebandNotification;
     double _bdcd;
     double _normalizedBDCD;
     double _normalizedDelay;
@@ -42,13 +45,15 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) BOOL isTargetBitrateStabilized; // @synthesize isTargetBitrateStabilized=_isTargetBitrateStabilized;
+@property (strong, nonatomic) VCRateControlMediaController *mediaController; // @synthesize mediaController=_mediaController;
 @property (nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
 
 - (void)addBDCDListWithNotificationArrivalTime:(double)arg1 bdcd:(double)arg2 queuingDelay:(double)arg3;
 - (void)addInfoListWithNotificationArrivalTime:(double)arg1 transmittedBytes:(unsigned int)arg2;
 - (void)calculateBitratesAndDelays:(unsigned int)arg1 totalQueueDepth:(unsigned int)arg2;
+- (void)dealloc;
 - (void)enableBasebandLogDump:(void *)arg1;
-- (CDStruct_5cb394a5)getBasebandMetricsWithNotification:(CDStruct_f402fb06 *)arg1;
+- (CDStruct_48a7b5a5)getBasebandMetricsWithNotification:(CDStruct_b203c80d *)arg1;
 - (void)normalizeBDCD:(double)arg1;
 - (void)resetBDCDList;
 

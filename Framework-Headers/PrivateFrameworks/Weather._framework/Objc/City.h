@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFGeocodeRequest, WFLocation, WFTemperature;
 
@@ -29,8 +29,8 @@
     NSArray *_dayForecasts;
     NSArray *_hourlyForecasts;
     NSString *_updateTimeString;
-    NSString *_woeid;
     NSString *_name;
+    NSString *_woeid;
     NSString *_state;
     NSString *_ISO3166CountryAbbreviation;
     WFTemperature *_temperature;
@@ -84,7 +84,7 @@
 @property (nonatomic) unsigned long long lastUpdateStatus; // @synthesize lastUpdateStatus=_lastUpdateStatus;
 @property (nonatomic) double latitude;
 @property (copy, nonatomic) NSURL *link; // @synthesize link=_link;
-@property (copy, nonatomic) CLLocation *location; // @synthesize location=_location;
+@property (copy) CLLocation *location; // @synthesize location=_location;
 @property (readonly, nonatomic) NSString *locationID;
 @property (nonatomic) BOOL lockedForDemoMode; // @synthesize lockedForDemoMode=_lockedForDemoMode;
 @property (nonatomic) double longitude;
@@ -137,6 +137,7 @@
 - (id)displayName;
 - (double)distanceToLatitude:(double)arg1 longitude:(double)arg2;
 - (double)distanceToLocation:(id)arg1;
+- (id)getName;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithDictionaryRepresentation:(id)arg1;

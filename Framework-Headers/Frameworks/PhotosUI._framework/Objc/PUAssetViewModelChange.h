@@ -17,6 +17,7 @@
     BOOL _loadingStatusChanged;
     BOOL _saveProgressChanged;
     BOOL _saveStateChanged;
+    BOOL _importStateChanged;
     BOOL _forceBadgesVisibleChanged;
     BOOL _badgeInfoChanged;
     BOOL _isUpdatingDisplayedContentChanged;
@@ -36,6 +37,7 @@
 @property (nonatomic, setter=_setContentOffsetChanged:) BOOL contentOffsetChanged; // @synthesize contentOffsetChanged=_contentOffsetChanged;
 @property (nonatomic, setter=_setFocusValueChanged:) BOOL focusValueChanged; // @synthesize focusValueChanged=_focusValueChanged;
 @property (nonatomic, setter=_setForceBadgesVisibleChanged:) BOOL forceBadgesVisibleChanged; // @synthesize forceBadgesVisibleChanged=_forceBadgesVisibleChanged;
+@property (nonatomic, setter=_setImportStateChanged:) BOOL importStateChanged; // @synthesize importStateChanged=_importStateChanged;
 @property (strong, nonatomic, setter=_setIrisPlayerChange:) PUBrowsingIrisPlayerChange *irisPlayerChange; // @synthesize irisPlayerChange=_irisPlayerChange;
 @property (nonatomic, setter=_setIsFavoriteChanged:) BOOL isFavoriteChanged; // @synthesize isFavoriteChanged=_isFavoriteChanged;
 @property (nonatomic, setter=_setIsInEditModeChanged:) BOOL isInEditModeChanged; // @synthesize isInEditModeChanged=_isInEditModeChanged;

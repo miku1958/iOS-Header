@@ -4,17 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class NSString;
 
-@interface DMFBeginTransactionRequest : CATTaskRequest
+@interface DMFBeginTransactionRequest : DMFTaskRequest
 {
     NSString *_name;
 }
 
-@property (strong, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 + (Class)whitelistedClassForResultObject;
 - (void).cxx_destruct;

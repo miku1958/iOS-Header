@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) _OSLogDirectoryReference *diagnosticsDirectoryReference; // @synthesize diagnosticsDirectoryReference=_diagnosticsDirectoryReference;
 @property (readonly, nonatomic) _OSLogDirectoryReference *timesyncReference; // @synthesize timesyncReference=_timesyncReference;
 
-+ (id)localDBRef;
++ (id)localDBRefWithError:(id *)arg1;
 + (id)referenceWithURL:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (void)close;

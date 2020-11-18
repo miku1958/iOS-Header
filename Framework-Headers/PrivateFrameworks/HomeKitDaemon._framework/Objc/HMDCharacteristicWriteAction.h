@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDActionSet, HMDCharacteristic, NSUUID;
+@class HMDActionSet, HMDCharacteristic, NSString, NSUUID;
 
 @interface HMDCharacteristicWriteAction : HMFObject <NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
@@ -21,6 +21,10 @@
 
 @property (readonly, weak, nonatomic) HMDActionSet *actionSet; // @synthesize actionSet=_actionSet;
 @property (readonly, weak, nonatomic) HMDCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) id targetValue; // @synthesize targetValue=_targetValue;
 @property (readonly, copy, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 

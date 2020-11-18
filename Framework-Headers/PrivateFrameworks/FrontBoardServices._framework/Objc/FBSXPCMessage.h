@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol OS_xpc_object;
 
@@ -13,12 +13,12 @@
     NSObject<OS_xpc_object> *_payload;
 }
 
-@property (readonly, strong, nonatomic) NSObject<OS_xpc_object> *payload; // @synthesize payload=_payload;
+@property (readonly, nonatomic) NSObject<OS_xpc_object> *payload; // @synthesize payload=_payload;
 
 + (id)message;
 + (id)messageWithPacker:(CDUnknownBlockType)arg1;
 + (id)messageWithPayload:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithMessagePacker:(CDUnknownBlockType)arg1;
 - (id)initWithMessagePayload:(id)arg1;

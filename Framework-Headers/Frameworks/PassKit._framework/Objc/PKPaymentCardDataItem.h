@@ -6,18 +6,23 @@
 
 #import <PassKitCore/PKPaymentDataItem.h>
 
-@class CNContact, PKPaymentApplication, PKPaymentPass;
+@class CNContact, PKCurrencyAmount, PKPaymentApplication, PKPaymentPass;
 
 @interface PKPaymentCardDataItem : PKPaymentDataItem
 {
+    BOOL _showPeerPaymentBalance;
+    PKCurrencyAmount *_peerPaymentBalance;
 }
 
 @property (readonly, nonatomic) CNContact *billingAddress;
 @property (readonly, nonatomic) PKPaymentPass *pass;
 @property (readonly, nonatomic) PKPaymentApplication *paymentApplication;
+@property (strong, nonatomic) PKCurrencyAmount *peerPaymentBalance; // @synthesize peerPaymentBalance=_peerPaymentBalance;
 @property (readonly, nonatomic) BOOL requiresBillingAddress;
+@property (nonatomic) BOOL showPeerPaymentBalance; // @synthesize showPeerPaymentBalance=_showPeerPaymentBalance;
 
 + (long long)dataType;
+- (void).cxx_destruct;
 - (id)errors;
 - (BOOL)isValidWithError:(id *)arg1;
 - (long long)status;

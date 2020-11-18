@@ -10,14 +10,16 @@
 
 @interface UNSNotificationRecordReplaceUpdate : UNSNotificationRecordUpdate
 {
+    BOOL _shouldRepost;
     UNSNotificationRecord *_replacedNotificationRecord;
 }
 
 @property (readonly, nonatomic) UNSNotificationRecord *replacedNotificationRecord; // @synthesize replacedNotificationRecord=_replacedNotificationRecord;
+@property (readonly, nonatomic) BOOL shouldRepost; // @synthesize shouldRepost=_shouldRepost;
 
-+ (id)updateWithNotificationRecord:(id)arg1 replacedNotificationRecord:(id)arg2;
++ (id)updateWithNotificationRecord:(id)arg1 replacedNotificationRecord:(id)arg2 shouldRepost:(BOOL)arg3;
 - (void).cxx_destruct;
-- (id)_initWithNotificationRecord:(id)arg1 replacedNotificationRecord:(id)arg2;
+- (id)_initWithNotificationRecord:(id)arg1 replacedNotificationRecord:(id)arg2 shouldRepost:(BOOL)arg3;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 

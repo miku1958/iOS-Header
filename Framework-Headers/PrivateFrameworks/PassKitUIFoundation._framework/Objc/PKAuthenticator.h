@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@protocol BSInvalidatable, OS_dispatch_queue, PKAuthenticatorDelegate;
+@protocol OS_dispatch_queue, PKAuthenticatorDelegate;
 
 @interface PKAuthenticator : NSObject
 {
     unsigned long long _authenticationIdentifier;
     NSObject<OS_dispatch_queue> *_contextMutationQueue;
     BOOL _invalidated;
-    BOOL _acquiringHintSupressionAssertion;
-    id<BSInvalidatable> _hintSupressionAssertion;
     id<PKAuthenticatorDelegate> _delegate;
     double _fingerPresentTimeout;
 }

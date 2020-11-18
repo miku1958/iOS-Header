@@ -6,11 +6,11 @@
 
 #import <Notes/NSObject-Protocol.h>
 
-@class CSSearchableItem, NSArray, NSError, NSManagedObjectContext, NSPersistentStoreCoordinator, NSString;
+@class CSSearchableItem, NSArray, NSDictionary, NSError, NSManagedObjectContext, NSPersistentStoreCoordinator, NSString;
 @protocol ICSearchIndexable;
 
 @protocol ICSearchIndexerDataSource <NSObject>
-- (NSArray *)allIndexableObjectIDs;
+- (NSDictionary *)allIndexableObjectIdentifiersByObjectID;
 - (NSString *)dataSourceIdentifier;
 - (NSArray *)indexableObjectIDsWithIdentifiers:(NSArray *)arg1;
 - (BOOL)isObservingChanges;
@@ -22,12 +22,11 @@
 - (NSPersistentStoreCoordinator *)persistentStoreCoordinator;
 - (void)searchIndexerDidFinishDeletingSearchableItemsWithIdentifiers:(NSArray *)arg1 error:(NSError *)arg2;
 - (void)searchIndexerDidFinishIndexingObjectIDs:(NSArray *)arg1 error:(NSError *)arg2;
-- (void)searchIndexerDidFinishReindexingWithError:(NSError *)arg1;
-- (void)searchIndexerWillBeginReindexing;
 - (void)searchIndexerWillDeleteSearchableItemsWithIdentifiers:(NSArray *)arg1;
 - (void)searchIndexerWillIndexObjectIDs:(NSArray *)arg1;
 - (NSArray *)searchableItemIdentifiersToBeDeleted;
 - (NSArray *)searchableItemsForObjectIDs:(NSArray *)arg1;
+- (void)stageForReindexing;
 - (void)startObservingChanges;
 - (void)stopObservingChanges;
 @end

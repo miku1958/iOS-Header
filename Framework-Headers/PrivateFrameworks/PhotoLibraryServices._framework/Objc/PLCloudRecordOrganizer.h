@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, PLPhotoLibrary;
 
@@ -14,6 +14,7 @@
     NSMutableArray *_assetRecordsWithContainerChange;
     NSMutableArray *_albumRecordsWithContainerChange;
     NSMutableArray *_personRecords;
+    NSMutableArray *_scopeRecords;
     NSMutableArray *_masterRecords;
     NSMutableArray *_assetRecords;
     NSMutableArray *_albumRecords;
@@ -22,6 +23,7 @@
     NSMutableArray *_deleteRecords;
     NSMutableArray *_deletePersonRecords;
     NSMutableArray *_expungedRecords;
+    NSMutableArray *_suggestionRecords;
 }
 
 @property (readonly) NSMutableArray *albumRecords; // @synthesize albumRecords=_albumRecords;
@@ -35,9 +37,11 @@
 @property (readonly) NSMutableArray *masterRecords; // @synthesize masterRecords=_masterRecords;
 @property (readonly) NSMutableArray *memoryRecords; // @synthesize memoryRecords=_memoryRecords;
 @property (readonly) NSMutableArray *personRecords; // @synthesize personRecords=_personRecords;
+@property (readonly) NSMutableArray *scopeRecords; // @synthesize scopeRecords=_scopeRecords;
+@property (readonly) NSMutableArray *suggestionRecords; // @synthesize suggestionRecords=_suggestionRecords;
 
-+ (BOOL)records:(id)arg1 containsIdentifier:(id)arg2;
-- (void)dealloc;
++ (BOOL)records:(id)arg1 containsScopedIdentifier:(id)arg2;
+- (void).cxx_destruct;
 - (id)initWithPhotoLibrary:(id)arg1;
 - (void)organizeRecords:(id)arg1;
 

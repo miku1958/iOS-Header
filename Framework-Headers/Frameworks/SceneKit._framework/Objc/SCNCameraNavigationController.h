@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/SCNCameraControllerDelegate-Protocol.h>
 #import <SceneKit/SCNEventHandler-Protocol.h>
@@ -30,9 +30,13 @@
     BOOL _translationAllowed;
     BOOL _didEverFocusNode;
     BOOL _isSceneBoundingSphereComputed;
+    BOOL _cameraTargetComputed;
     BOOL _pinchShouldMoveCamera;
     BOOL _shouldUpdateTarget;
     BOOL _shouldIgnoreMomentumEvents;
+    BOOL _isOrbiting;
+    BOOL _recordingPointOfViewEvents;
+    BOOL _mouseDown;
     CDUnion_915c2b1f _sceneBoundingSphere;
     MISSING_TYPE *_translationOrigin;
     float _initialZoom;
@@ -44,6 +48,7 @@
     double _rotationSensitivity;
     struct CGPoint _initialInputLocation;
     struct CGPoint _lastInputLocation;
+    struct CGPoint _accumulatedDrag;
     double _lastRotationAngle;
     struct os_unfair_lock_s _drawAtTimeLock;
     struct {
@@ -106,7 +111,9 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (float)_browseScale;
+- (void)__didChangePointOfView;
+- (void)__willChangePointOfView;
+- (float)_cappedTranslationDelta:(float)arg1;
 - (void)_computeAutomaticTargetPointIfNeeded;
 - (BOOL)_computeBoundingSphereOmittingFloorsForNode:(struct __C3DNode *)arg1 sphere:(struct C3DSphere *)arg2;
 - (void)_computeStickyAxisIfNeeded:(struct CGPoint)arg1;
@@ -133,6 +140,7 @@
 - (void)_startBrowsingIfNeeded:(struct CGPoint)arg1;
 - (void)_stopInertia;
 - (void)_switchToFreeViewCamera;
+- (float)_targetDistance;
 - (void)_translateToViewPoint:(struct CGPoint)arg1;
 - (float)_translationCoef;
 - (void)_willBeginInteraction;

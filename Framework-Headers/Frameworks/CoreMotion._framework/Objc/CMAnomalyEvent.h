@@ -6,19 +6,37 @@
 
 #import <objc/NSObject.h>
 
+#import <CoreMotion/NSCopying-Protocol.h>
+#import <CoreMotion/NSSecureCoding-Protocol.h>
+
 @class NSDate;
 
-@interface CMAnomalyEvent : NSObject
+@interface CMAnomalyEvent : NSObject <NSSecureCoding, NSCopying>
 {
-    double _absTimestamp;
-    unsigned long long _aopTimestamp;
+    BOOL _acknowledgement;
+    long long _state;
+    long long _response;
+    long long _resolution;
+    double _absoluteTimestamp;
+    unsigned long long _identifier;
 }
 
+@property (nonatomic) double absoluteTimestamp; // @synthesize absoluteTimestamp=_absoluteTimestamp;
+@property (nonatomic, getter=isAcknowledgement) BOOL acknowledgement; // @synthesize acknowledgement=_acknowledgement;
+@property (readonly, nonatomic) NSDate *date;
+@property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) long long resolution; // @synthesize resolution=_resolution;
+@property (nonatomic) long long response; // @synthesize response=_response;
+@property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) NSDate *timestamp;
 
-- (unsigned long long)aopTimestamp;
++ (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
 - (id)description;
-- (id)initWithAbsTimestamp:(double)arg1 aopTimestamp:(unsigned long long)arg2;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(unsigned long long)arg1 absoluteTimestamp:(double)arg2 state:(long long)arg3 response:(long long)arg4 resolution:(long long)arg5;
 
 @end
 

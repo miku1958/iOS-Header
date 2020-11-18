@@ -6,6 +6,7 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
+@class MapsSuggestionsEntry;
 @protocol MapsSuggestionsSourceDelegate;
 
 @protocol MapsSuggestionsSource <MapsSuggestionsObject>
@@ -14,11 +15,13 @@
 
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
-- (BOOL)canProduceEntriesOfType:(unsigned long long)arg1;
+- (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (id)init;
 - (id)initWithDelegate:(id<MapsSuggestionsSourceDelegate>)arg1;
+- (BOOL)removeEntry:(MapsSuggestionsEntry *)arg1 behavior:(long long)arg2 handler:(void (^)(void))arg3;
 - (void)start;
 - (void)stop;
 - (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesOfType:(long long)arg1;
 @end
 

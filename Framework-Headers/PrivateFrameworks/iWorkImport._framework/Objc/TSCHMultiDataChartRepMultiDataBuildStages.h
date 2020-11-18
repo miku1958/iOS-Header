@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCHUnretainedParent-Protocol.h>
 
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 + (id)buildStagesWithRep:(id)arg1 stages:(struct _NSRange)arg2 totalDuration:(double)arg3;
 + (unsigned long long)dataSetIndexForRep:(id)arg1 buildStage:(unsigned long long)arg2;
 + (unsigned long long)numberOfFadingBuildStages;
+- (void).cxx_destruct;
 - (void)advanceStage;
 - (id)chartLayout;
 - (void)clearParent;

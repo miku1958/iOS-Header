@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryiPad.h>
+#import <UIKitCore/UIKBRenderFactoryiPad.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryiPadLandscape : UIKBRenderFactoryiPad
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (id)ZWNJKeyImageName;
 - (double)bottomRowDefaultFontSize;
+- (id)capslockKeyImageName;
 - (double)defaultVariantSizeThreshold;
 - (double)deleteKeyFontSize;
 - (id)deleteKeyImageName;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (double)moreKeyFontSize;
 - (id)multitapCompleteKeyImageName;
 - (id)muttitapReverseKeyImageName;
+- (id)returnKeyImageName;
 - (double)shiftKeyFontSize;
 - (id)shiftKeyImageName;
 - (struct CGPoint)shiftKeyOffset;
@@ -50,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (double)smallKanaKeyFontSize;
 - (double)spaceKeyFontSize;
 - (double)stringKeyFontSize;
+- (id)tabKeyImageName;
 - (double)tinyPunctuationGlyphFontSize;
 - (struct CGPoint)tinyPunctuationGlyphOffset;
 - (double)zhuyinFirstToneKeyFontSize;

@@ -12,29 +12,36 @@
 
 @interface CEMPasscodeScreensaverDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSNumber *_payloadAskForPassword;
+    NSNumber *_payloadAskForPasswordDelay;
+    NSNumber *_payloadLoginWindowIdleTime;
+    NSString *_payloadLoginWindowModulePath;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadAskForPassword;
-@property (readonly, nonatomic) NSNumber *payloadAskForPasswordDelay;
+@property (copy, nonatomic) NSNumber *payloadAskForPassword; // @synthesize payloadAskForPassword=_payloadAskForPassword;
+@property (copy, nonatomic) NSNumber *payloadAskForPasswordDelay; // @synthesize payloadAskForPasswordDelay=_payloadAskForPasswordDelay;
+@property (copy, nonatomic) NSNumber *payloadLoginWindowIdleTime; // @synthesize payloadLoginWindowIdleTime=_payloadLoginWindowIdleTime;
+@property (copy, nonatomic) NSString *payloadLoginWindowModulePath; // @synthesize payloadLoginWindowModulePath=_payloadLoginWindowModulePath;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withAskForPassword:(id)arg2 withAskForPasswordDelay:(id)arg3 withLoginWindowIdleTime:(id)arg4 withLoginWindowModulePath:(id)arg5;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

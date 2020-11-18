@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PrototypeTools/PTSRow.h>
+#import <PrototypeTools/PTEditStringRow.h>
 
-@interface PTSEditStringRow : PTSRow
+@interface PTSEditStringRow : PTEditStringRow
 {
 }
-
-- (Class)rowTableViewCellClass;
 
 @end
 

@@ -103,7 +103,6 @@
 - (struct CGPoint)modelPointFromWindowPoint:(struct CGPoint)arg1 foundOnPageController:(id *)arg2;
 - (void)teardown;
 - (id)topmostAnnotationForBorderAndInteriorHitTestAtPoint:(struct CGPoint)arg1 inAnnotations:(id)arg2 onPageController:(id)arg3 wasOnBorder:(BOOL *)arg4 wasOnText:(BOOL *)arg5;
-- (void)updateCropHandleVisibilityForEvent:(id)arg1;
 - (void)updateCursorForEvent:(id)arg1;
 - (struct CGPoint)windowPointFromEvent:(id)arg1 orRecognizer:(id)arg2;
 

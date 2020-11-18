@@ -50,7 +50,6 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)inlineWebContainerViewDidFinishLoadingContent:(id)arg1;
 - (void)layoutSubviews;
-- (void)updateConstraints;
 - (void)updateUIWithAnimation:(BOOL)arg1;
 
 @end

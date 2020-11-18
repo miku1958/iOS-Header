@@ -14,11 +14,6 @@
 
 @interface _CPLookupHintRelevancyFeedback : PBCodable <_CPProcessableFeedback, _CPLookupHintRelevancyFeedback, NSSecureCoding>
 {
-    struct {
-        unsigned int timestamp:1;
-        unsigned int discarded:1;
-        unsigned int grade:1;
-    } _has;
     BOOL _discarded;
     int _grade;
     unsigned long long _timestamp;
@@ -37,12 +32,6 @@
 @property (copy, nonatomic) NSString *domain; // @synthesize domain=_domain;
 @property (readonly, nonatomic) id feedbackJSON;
 @property (nonatomic) int grade; // @synthesize grade=_grade;
-@property (readonly, nonatomic) BOOL hasContext;
-@property (readonly, nonatomic) BOOL hasDiscarded;
-@property (readonly, nonatomic) BOOL hasDomain;
-@property (readonly, nonatomic) BOOL hasGrade;
-@property (readonly, nonatomic) BOOL hasHintRange;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _CPRange *hintRange; // @synthesize hintRange=_hintRange;
@@ -50,8 +39,8 @@
 @property (readonly, nonatomic) BOOL requiresQueryId;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned long long timestamp;
-@property (nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
+@property (nonatomic) unsigned long long timestamp;
+@property (nonatomic) unsigned long long timestamp;
 
 - (void).cxx_destruct;
 - (id)init;

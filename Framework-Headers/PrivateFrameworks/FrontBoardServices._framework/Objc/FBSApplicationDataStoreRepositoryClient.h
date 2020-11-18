@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/FBSSystemServiceFacilityClient.h>
+#import <FrontBoardServices/FBSServiceFacilityClient.h>
 
 #import <FrontBoardServices/FBSApplicationDataStoreRepositoryClient-Protocol.h>
 
-@class NSHashTable, NSMutableDictionary, NSObject, NSString;
+@class NSCountedSet, NSHashTable, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface FBSApplicationDataStoreRepositoryClient : FBSSystemServiceFacilityClient <FBSApplicationDataStoreRepositoryClient>
+@interface FBSApplicationDataStoreRepositoryClient : FBSServiceFacilityClient <FBSApplicationDataStoreRepositoryClient>
 {
-    NSMutableDictionary *_prefetchedKeyCounts;
+    NSCountedSet *_prefetchedKeys;
     NSMutableDictionary *_prefetchedKeyValues;
     NSMutableDictionary *_pendingChangesToPrefetchedKeys;
     NSObject<OS_dispatch_queue> *_prefetchedDataQueue;
@@ -26,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_allPrefetchedChangesInFlightForApplication:(id)arg1;
 - (void)_handleStoreInvalidated:(id)arg1;
 - (void)_handleValueChanged:(id)arg1;
@@ -36,18 +37,15 @@
 - (void)_setChangeInFlight:(BOOL)arg1 forPrefetchedKey:(id)arg2 application:(id)arg3;
 - (void)_setPrefetchedObjectIfNecessary:(id)arg1 forKey:(id)arg2 application:(id)arg3;
 - (void)addObserver:(id)arg1;
-- (void)addPrefetchedKeys:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)availableDataStores:(CDUnknownBlockType)arg1;
+- (void)addPrefetchedKeys:(id)arg1;
+- (id)availableDataStores;
 - (id)clientCallbackQueue;
-- (void)dealloc;
-- (void)fireCompletion:(CDUnknownBlockType)arg1 arrayResults:(id)arg2 error:(id)arg3;
 - (void)fireCompletion:(CDUnknownBlockType)arg1 error:(id)arg2;
 - (void)fireCompletion:(CDUnknownBlockType)arg1 result:(id)arg2 error:(id)arg3;
 - (void)handleMessage:(id)arg1 withType:(long long)arg2;
 - (id)init;
 - (void)invalidate;
-- (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3;
-- (void)objectForKey:(id)arg1 forApplication:(id)arg2 withResult:(CDUnknownBlockType)arg3 checkPrefetch:(BOOL)arg4;
+- (id)objectForKey:(id)arg1 forApplication:(id)arg2;
 - (BOOL)prefetchedObjectIfAvailableForKey:(id)arg1 application:(id)arg2 outObject:(id *)arg3;
 - (void)removeAllObjectsForApplication:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)removeObjectForKey:(id)arg1 forApplication:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;

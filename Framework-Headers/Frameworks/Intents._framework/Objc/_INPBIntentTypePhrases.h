@@ -7,33 +7,34 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBIntentTypePhrases-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBIntentType;
+@class NSArray, NSString, _INPBIntentType;
 
-@interface _INPBIntentTypePhrases : PBCodable <NSCopying>
+@interface _INPBIntentTypePhrases : PBCodable <_INPBIntentTypePhrases, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBIntentType *_intentType;
-    NSMutableArray *_intentVocabularyExamples;
+    NSArray *_intentVocabularyExamples;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentType;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentType *intentType; // @synthesize intentType=_intentType;
-@property (strong, nonatomic) NSMutableArray *intentVocabularyExamples; // @synthesize intentVocabularyExamples=_intentVocabularyExamples;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSArray *intentVocabularyExamples; // @synthesize intentVocabularyExamples=_intentVocabularyExamples;
+@property (readonly, nonatomic) unsigned long long intentVocabularyExamplesCount;
+@property (readonly) Class superclass;
 
-+ (Class)intentVocabularyExamplesType;
 - (void).cxx_destruct;
 - (void)addIntentVocabularyExamples:(id)arg1;
 - (void)clearIntentVocabularyExamples;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (id)intentVocabularyExamplesAtIndex:(unsigned long long)arg1;
-- (unsigned long long)intentVocabularyExamplesCount;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

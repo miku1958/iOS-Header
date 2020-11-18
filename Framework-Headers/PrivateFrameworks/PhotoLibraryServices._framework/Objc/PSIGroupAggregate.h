@@ -4,34 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray;
+@class NSArray, NSMutableArray, NSString;
+@protocol OS_dispatch_queue;
 
 @interface PSIGroupAggregate : NSObject
 {
     NSArray *_searchTokens;
-    NSMutableArray *_rangesMatchingTokens;
-    NSMutableArray *_groups;
-    NSMutableArray *_assetIdArrays;
-    NSMutableArray *_primaryAssetIdArrays;
-    NSMutableArray *_secondaryAssetIdArrays;
+    NSMutableArray *_groupAggregateItems;
     NSMutableArray *_aggregatedGroupIds;
+    NSMutableArray *_aggregateItemPool;
+    NSObject<OS_dispatch_queue> *_groupResultsQueue;
+    NSString *_transientToken;
 }
 
 @property (readonly, nonatomic) NSArray *searchTokens; // @synthesize searchTokens=_searchTokens;
+@property (copy, nonatomic) NSString *transientToken; // @synthesize transientToken=_transientToken;
 
 + (BOOL)_canDedupeGroupResult:(id)arg1 withGroupResult:(id)arg2;
 + (BOOL)_prefer:(id)arg1 over:(id)arg2;
-+ (void)postProcessGroupResults:(id)arg1;
++ (void)postProcessGroupResults:(id)arg1 dedupedGroupResults:(out id *)arg2;
 - (struct __CFArray *)_newSortedGroupIds;
-- (struct _NSRange)_rangeOfString:(id)arg1 inGroup:(id)arg2 excludingRanges:(id)arg3;
+- (struct _NSRange)_rangeOfString:(id)arg1 inGroup:(id)arg2 extendingSearchRange:(BOOL)arg3 matchingFullToken:(BOOL)arg4 excludingRanges:(id)arg5;
 - (BOOL)_verifySortedGroupIdsUnique;
+- (id)aggregateItemWithSearchToken:(id)arg1 rangeMatchingToken:(id)arg2 group:(id)arg3;
 - (void)dealloc;
-- (id)initWithSearchTokens:(id)arg1;
+- (id)initWithSearchTokens:(id)arg1 groupResultsQueue:(id)arg2;
 - (id)newGroupResult;
+- (id)newGroupResultWithDateFilter:(id)arg1;
 - (void)pop;
-- (BOOL)pushGroup:(id)arg1 secondaryPairedGroup:(id)arg2;
+- (BOOL)pushGroup:(id)arg1;
 
 @end
 

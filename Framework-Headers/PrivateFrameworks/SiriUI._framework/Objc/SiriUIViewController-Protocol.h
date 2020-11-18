@@ -6,7 +6,7 @@
 
 #import <SiriUI/NSObject-Protocol.h>
 
-@class AceObject, NSString;
+@class AFDialogPhase, AceObject, NSString;
 @protocol SiriUIViewController;
 
 @protocol SiriUIViewController <NSObject>
@@ -29,6 +29,7 @@
 - (void)handleAceCommand:(AceObject *)arg1;
 - (NSString *)navigationTitle;
 - (BOOL)shouldHidePriorViews;
+- (void)siriDidReceiveViewsWithDialogPhase:(AFDialogPhase *)arg1;
 - (void)siriDidScrollVisible:(BOOL)arg1;
 - (void)siriDidStartSpeakingWithIdentifier:(NSString *)arg1;
 - (void)siriDidStopSpeakingWithIdentifier:(NSString *)arg1 speechQueueIsEmpty:(BOOL)arg2;

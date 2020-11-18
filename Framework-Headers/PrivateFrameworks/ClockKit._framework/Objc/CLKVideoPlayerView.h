@@ -30,9 +30,11 @@
     BOOL _pausedViewEnabled;
     BOOL _playing;
     id<CLKVideoPlayerViewDelegate> _delegate;
+    long long _gravityResize;
 }
 
 @property (weak, nonatomic) id<CLKVideoPlayerViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (nonatomic) long long gravityResize; // @synthesize gravityResize=_gravityResize;
 @property (nonatomic) BOOL pausedViewEnabled; // @synthesize pausedViewEnabled=_pausedViewEnabled;
 @property (readonly, nonatomic) AVQueuePlayer *player;
 @property (readonly, nonatomic) BOOL playing; // @synthesize playing=_playing;
@@ -62,6 +64,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pause;
 - (void)play;
+- (void)prepareNextQueuedVideo;
 - (void)preroll;
 - (void)queueVideo:(id)arg1;
 - (void)seekToTime:(CDStruct_1b6d18a9)arg1;

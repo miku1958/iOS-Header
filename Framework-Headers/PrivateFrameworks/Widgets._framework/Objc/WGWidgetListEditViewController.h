@@ -50,6 +50,7 @@
 - (unsigned long long)_indexForInsertingItemWithIdentifier:(id)arg1 intoArray:(id)arg2;
 - (long long)_indexOfFirstEnabledWidgetInSection:(unsigned long long)arg1;
 - (long long)_indexOfLastEnabledWidgetInSection:(unsigned long long)arg1;
+- (id)_indexPathForItemWithIdentifier:(id)arg1;
 - (BOOL)_isNewItem:(id)arg1;
 - (id)_itemIdentifierForIndexPath:(id)arg1;
 - (id)_itemIdentifiersInSection:(unsigned long long)arg1;

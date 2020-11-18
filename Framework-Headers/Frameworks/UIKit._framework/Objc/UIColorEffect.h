@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIVisualEffect.h>
+#import <UIKitCore/UIVisualEffect.h>
 
 @class NSDictionary, NSString;
 
@@ -32,6 +32,7 @@
 - (id)_filterEntry;
 - (void)_updateEffectNode:(id)arg1 forTraitCollection:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

@@ -13,14 +13,17 @@
     unsigned long long _inputFeatureChannels;
     unsigned long long _outputFeatureChannels;
     unsigned long long _groups;
+    unsigned long long _channelMultiplier;
     unsigned long long _gradientOption;
     id<MTLBuffer> _weights;
     BOOL _fullyConnected;
     unsigned int _weightsDataType;
-    BOOL _serializeWeightsAndBiases;
     id<MPSCNNConvolutionDataSource> _dataSource;
+    struct _opaque_pthread_mutex_t _lock;
+    BOOL _serializeWeightsAndBiases;
 }
 
+@property (readonly, nonatomic) unsigned long long channelMultiplier; // @synthesize channelMultiplier=_channelMultiplier;
 @property (readonly, strong, nonatomic) id<MPSCNNConvolutionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (nonatomic) unsigned long long gradientOption; // @synthesize gradientOption=_gradientOption;
 @property (readonly, nonatomic) unsigned long long groups; // @synthesize groups=_groups;
@@ -29,6 +32,7 @@
 @property (readonly, nonatomic) unsigned long long sourceImageFeatureChannels; // @synthesize sourceImageFeatureChannels=_outputFeatureChannels;
 
 + (const struct MPSLibraryInfo *)libraryInfo;
+- (id)PeakAtWeights:(id)arg1;
 - (id)biases;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
@@ -38,11 +42,12 @@
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 weights:(id)arg2;
 - (id)initWithDevice:(id)arg1 weights:(id)arg2 fullyConnected:(BOOL)arg3;
-- (void)initialize:(id)arg1 convDesc:(id)arg2 weights:(void *)arg3 dataType:(unsigned int)arg4 serializeWeightsAndBiases:(BOOL)arg5 fullyConnected:(BOOL)arg6;
-- (void)initialize:(id)arg1 weights:(id)arg2 fullyConnected:(BOOL)arg3 serializeWeightsAndBiases:(BOOL)arg4;
+- (void)initialize:(id)arg1 convDesc:(id)arg2 weights:(void *)arg3 dataType:(unsigned int)arg4 fullyConnected:(BOOL)arg5;
+- (void)initialize:(id)arg1 weights:(id)arg2 fullyConnected:(BOOL)arg3;
 - (BOOL)isResultStateReusedAcrossBatch;
+- (unsigned long long)maxBatchSize;
+- (void)reloadWeightsAndBiasesFromDataSource;
 - (void)reloadWeightsAndBiasesWithCommandBuffer:(id)arg1 state:(id)arg2;
-- (void)reloadWeightsAndBiasesWithDataSource:(id)arg1;
 - (id)weights;
 
 @end

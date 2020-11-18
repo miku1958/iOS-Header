@@ -11,8 +11,8 @@
 @interface AVVolumeController : NSObject
 {
     BOOL _changingVolume;
-    BOOL _prefersSystemVolumeHUDHidden;
     BOOL _currentRouteHasVolumeControl;
+    BOOL _prefersSystemVolumeHUDHidden;
     BOOL _prefersSystemVolumeHUDHiddenInternal;
     BOOL _EUVolumeLimitEnabled;
     BOOL _EUVolumeLimitOverridden;
@@ -44,6 +44,7 @@
 @property (readonly, nonatomic) NSString *volumeCategory; // @synthesize volumeCategory=_volumeCategory;
 @property (nonatomic) BOOL volumeChangesThrottled; // @synthesize volumeChangesThrottled=_volumeChangesThrottled;
 
++ (id)clientsPreferringVolumeHUDHidden;
 + (id)sharedVolumeController;
 - (void).cxx_destruct;
 - (void)_applyProposedVolumeIfNeeded;
@@ -59,6 +60,7 @@
 - (void)dealloc;
 - (void)endChangingVolume;
 - (id)init;
+- (void)setClientWithIdentifier:(id)arg1 prefersSystemVolumeHUDHidden:(BOOL)arg2;
 - (void)setSystemVolumeHUDEnabled:(BOOL)arg1;
 - (void)setTargetVolume:(float)arg1;
 

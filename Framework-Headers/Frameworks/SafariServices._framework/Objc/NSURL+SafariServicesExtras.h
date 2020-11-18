@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) LSAppLink *sf_appLink;
 @property (readonly, nonatomic) BOOL sf_isFacetimeURL;
 @property (readonly, nonatomic) BOOL sf_isOfflineReadingListURL;
+@property (readonly, nonatomic) BOOL sf_isTestWebArchiveURL;
 @property (readonly, nonatomic) BOOL sf_isWebSearchURL;
 
 + (BOOL)_sf_canCreateURLsFromDropSession:(id)arg1;

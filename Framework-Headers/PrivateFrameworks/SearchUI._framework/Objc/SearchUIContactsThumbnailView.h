@@ -10,6 +10,7 @@
 {
 }
 
+- (id)init;
 - (struct CGSize)systemLayoutSizeFittingSize:(struct CGSize)arg1;
 
 @end

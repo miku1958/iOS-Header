@@ -53,7 +53,7 @@
 - (void)loadKeyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)modifyInformationWithOperations:(CDUnknownBlockType)arg1;
 - (void)overwriteFilesWithRecords:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)readFilesWithRecordIDs:(id)arg1 forColumns:(id)arg2 qos:(long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
+- (void)readFilesWithRecordIDs:(id)arg1 forColumns:(id)arg2 priority:(unsigned long long)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (id)recordIDForLanguage:(id)arg1 withKey:(id)arg2;
 - (void)saveKey:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 

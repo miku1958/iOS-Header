@@ -21,12 +21,16 @@
     NSString *_overrideProcessName;
     NSMutableArray *_consoleErrorMessages;
     id<AXValidationReportingServices> _validationReportingServices;
+    unsigned long long _numberOfValidationWarnings;
+    NSMutableArray *_consoleWarningMessages;
 }
 
 @property (strong, nonatomic) NSMutableArray *consoleErrorMessages; // @synthesize consoleErrorMessages=_consoleErrorMessages;
+@property (strong, nonatomic) NSMutableArray *consoleWarningMessages; // @synthesize consoleWarningMessages=_consoleWarningMessages;
 @property (nonatomic, getter=isDebugBuild) BOOL debugBuild; // @synthesize debugBuild=_debugBuild;
 @property (nonatomic) BOOL forceDoNotReport; // @synthesize forceDoNotReport=_forceDoNotReport;
 @property (nonatomic) unsigned long long numberOfValidationErrors; // @synthesize numberOfValidationErrors=_numberOfValidationErrors;
+@property (nonatomic) unsigned long long numberOfValidationWarnings; // @synthesize numberOfValidationWarnings=_numberOfValidationWarnings;
 @property (copy, nonatomic) NSString *overrideProcessName; // @synthesize overrideProcessName=_overrideProcessName;
 @property (nonatomic) BOOL shouldCrashOnError; // @synthesize shouldCrashOnError=_shouldCrashOnError;
 @property (nonatomic) BOOL shouldLogToConsole; // @synthesize shouldLogToConsole=_shouldLogToConsole;
@@ -39,6 +43,11 @@
 - (BOOL)_client:(id)arg1 validateClass:(id)arg2 hasClassMethod:(id)arg3 withFullSignature:(const char *)arg4 argList:(struct __va_list_tag [1])arg5;
 - (BOOL)_client:(id)arg1 validateClass:(id)arg2 hasMethod:(id)arg3 methodType:(int)arg4;
 - (BOOL)_client:(id)arg1 validateClass:(id)arg2 hasMethod:(id)arg3 methodType:(int)arg4 returnType:(id)arg5 arguments:(id)arg6;
+- (void)_generateWarningsForMethodType:(int)arg1 onClass:(Class)arg2 superclassMethods:(struct objc_method **)arg3 numberOfSuperclassMethods:(unsigned int)arg4;
+- (void)_generateWarningsForPrefixedMethodNames:(id)arg1 client:(id)arg2 methodType:(int)arg3 methodName:(id)arg4 className:(id)arg5;
+- (void)_generateWarningsOnSafeCategoryClass:(Class)arg1;
+- (void)_iterateMethodsOfType:(int)arg1 onClass:(Class)arg2 block:(CDUnknownBlockType)arg3;
+- (id)_nameForMethod:(struct objc_method *)arg1;
 - (void)_printConsoleReport:(BOOL)arg1 isDelayed:(BOOL)arg2;
 - (BOOL)client:(id)arg1 validateClass:(id)arg2;
 - (BOOL)client:(id)arg1 validateClass:(id)arg2 conformsToProtocol:(id)arg3;

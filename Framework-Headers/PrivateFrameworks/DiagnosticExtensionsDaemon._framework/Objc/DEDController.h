@@ -28,10 +28,9 @@
     id<DEDPairingProtocol> _pairingDelegate;
     CDUnknownBlockType _devicesCompletion;
     CDUnknownBlockType _pongBlock;
+    CDUnknownBlockType _sessionExistsCompletion;
     NSMutableDictionary *_sessionStartBlocks;
     NSMutableDictionary *_sessionDidStartBlocks;
-    NSMutableDictionary *_devices;
-    NSMutableDictionary *_sessions;
     DEDIDSConnection *__idsConnection;
     DEDSharingConnection *__sharingConnection;
     double _sessionStartTimeout;
@@ -39,6 +38,8 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     NSObject<OS_os_log> *_log;
     CDUnknownBlockType _didCancelCompletion;
+    NSMutableDictionary *_devices;
+    NSMutableDictionary *_sessions;
 }
 
 @property (strong) DEDIDSConnection *_idsConnection; // @synthesize _idsConnection=__idsConnection;
@@ -57,6 +58,7 @@
 @property (copy) CDUnknownBlockType pongBlock; // @synthesize pongBlock=_pongBlock;
 @property (strong) NSObject<OS_dispatch_queue> *replyQueue; // @synthesize replyQueue=_replyQueue;
 @property (strong) NSMutableDictionary *sessionDidStartBlocks; // @synthesize sessionDidStartBlocks=_sessionDidStartBlocks;
+@property (copy) CDUnknownBlockType sessionExistsCompletion; // @synthesize sessionExistsCompletion=_sessionExistsCompletion;
 @property (strong) NSMutableDictionary *sessionStartBlocks; // @synthesize sessionStartBlocks=_sessionStartBlocks;
 @property double sessionStartTimeout; // @synthesize sessionStartTimeout=_sessionStartTimeout;
 @property (strong) NSMutableDictionary *sessions; // @synthesize sessions=_sessions;
@@ -72,13 +74,18 @@
 
 + (id)archivedClasses;
 - (void).cxx_destruct;
+- (id)_allKnownDevicesWithIdentifier:(id)arg1;
+- (id)_deviceForIncomingDevice:(id)arg1;
+- (id)_deviceForIncomingDevice:(id)arg1 needsReady:(BOOL)arg2;
 - (void)_didAbortSessionWithID:(id)arg1;
+- (id)_sharingDeviceForIncomingDevice:(id)arg1;
 - (void)_timeOutSessionStartBlockWithIdentifier:(id)arg1 timeout:(double)arg2;
 - (void)abortSession:(id)arg1;
 - (void)abortSession:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)addDevice:(id)arg1;
 - (void)addDidStartSessionCompletion:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
 - (void)addSessionStartCompletion:(CDUnknownBlockType)arg1 withIdentifier:(id)arg2;
+- (id)allKnownDevices;
 - (void)configureClientDelegate:(id)arg1;
 - (void)configureForDaemon;
 - (void)configureForEmbedded:(BOOL)arg1;
@@ -87,13 +94,18 @@
 - (void)configurePairingDelegate:(id)arg1;
 - (void)configureWorkerDelegate:(id)arg1;
 - (id)deviceForIdentifier:(id)arg1;
+- (id)devicesWithIdentifier:(id)arg1;
 - (void)didDiscoverDevices:(id)arg1;
 - (void)didStartBugSessionWithInfo:(id)arg1;
 - (void)discoverAllAvailableDevices;
 - (void)discoverDevicesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)gotDeviceUpdate:(id)arg1;
+- (void)hasActiveSession:(id)arg1;
+- (void)hasActiveSessionForIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)hasCompletionBlockWithIdentifier:(id)arg1;
+- (BOOL)hasDevice:(id)arg1;
 - (id)idsConnection;
+- (BOOL)induceTimeOutIfNeededAndReturnCanProceedWithDevice:(id)arg1 sessionId:(id)arg2;
 - (id)init;
 - (id)knownDevices;
 - (id)knownSessions;
@@ -108,6 +120,7 @@
 - (id)remoteXPCObject;
 - (void)reset;
 - (id)sessionForIdentifier:(id)arg1;
+- (void)sessionWithIdentifier:(id)arg1 isActive:(BOOL)arg2;
 - (id)sharingConnection;
 - (void)start;
 - (void)startBugSessionWithIdentifier:(id)arg1 configuration:(id)arg2 caller:(id)arg3 target:(id)arg4;

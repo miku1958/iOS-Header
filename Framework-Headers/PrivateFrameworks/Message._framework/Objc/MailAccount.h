@@ -6,9 +6,11 @@
 
 #import <Message/MFAccount.h>
 
+#import <Message/EMReceivingAccount-Protocol.h>
+
 @class MFError, MFLock, MFMailboxUid, MFMessageLibrary, MFWeakObjectCache, NSMutableDictionary, NSString;
 
-@interface MailAccount : MFAccount
+@interface MailAccount : MFAccount <EMReceivingAccount>
 {
     NSString *_path;
     NSString *_nonPersistentPath;
@@ -39,11 +41,17 @@
     BOOL _supportsFastRemoteBodySearch;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSString *defaultPath;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *hostname;
 @property (readonly, copy, nonatomic) NSString *mailboxPathExtension;
 @property (readonly, nonatomic) BOOL needsRemoteSearchResultsVerification;
+@property (copy, nonatomic) NSString *password;
 @property (readonly) BOOL shouldArchiveByDefault;
 @property (readonly) BOOL sourceIsManaged;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsFastRemoteBodySearch; // @synthesize supportsFastRemoteBodySearch=_supportsFastRemoteBodySearch;
 
 + (id)URLForInfo:(id)arg1;
@@ -179,6 +187,7 @@
 - (int)cachePolicy;
 - (BOOL)canAppendMessages;
 - (BOOL)canArchiveForMailbox:(id)arg1;
+- (BOOL)canAuthenticateWithCurrentCredentials;
 - (BOOL)canCreateNewMailboxes;
 - (BOOL)canFetch;
 - (BOOL)canForwardWithoutDownload;
@@ -203,7 +212,6 @@
 - (BOOL)deliveryAccountInUseByOtherAccounts:(id)arg1;
 - (void)deliveryAccountWillBeRemoved:(id)arg1;
 - (BOOL)derivesDeliveryAccountInfoFromMailAccount;
-- (id)description;
 - (void)didFinishActionForChokePoint:(id)arg1 coalescePoint:(id)arg2 withResult:(id)arg3;
 - (id)displayName;
 - (id)displayNameForMailboxUid:(id)arg1;
@@ -301,7 +309,6 @@
 - (void)setEnabled:(BOOL)arg1 forEmailAddress:(id)arg2;
 - (void)setEncryptionIdentityPersistentReference:(id)arg1 forAddress:(id)arg2;
 - (void)setFullUserName:(id)arg1;
-- (void)setHostname:(id)arg1;
 - (void)setLastEmailAliasesSyncDate:(id)arg1;
 - (void)setLastKnownHostname:(id)arg1;
 - (void)setLibrary:(id)arg1;
@@ -322,6 +329,7 @@
 - (BOOL)shouldFetchBodiesWhenMovingToTrash;
 - (BOOL)shouldRestoreMessagesAfterFailedDelete;
 - (id)signingIdentityPersistentReferenceForAddress:(id)arg1;
+- (id)smtpIdentifier;
 - (id)specialMailboxNameForType:(int)arg1;
 - (void)startListeningForNotifications;
 - (id)statisticsKind;
@@ -331,7 +339,7 @@
 - (id)storeForMailboxUid:(id)arg1;
 - (BOOL)supportsAppend;
 - (BOOL)supportsArchiving;
-- (BOOL)supportsContinuationType:(id)arg1;
+- (BOOL)supportsHandoffType:(id)arg1;
 - (BOOL)supportsMailDrop;
 - (BOOL)supportsMailboxEditing;
 - (BOOL)supportsMessageFlagging;
@@ -348,7 +356,7 @@
 - (id)unactionableInvitationICSRepresentationInMessage:(id)arg1 summary:(id *)arg2;
 - (id)uniqueIdForPersistentConnection;
 - (id)uniqueServerIdForMessage:(id)arg1;
-- (id)unsupportedContinuationTypes;
+- (id)unsupportedHandoffTypes;
 - (BOOL)updateEmailAliases;
 - (id)valueInAccountLookAsidePropertiesForKey:(id)arg1;
 - (BOOL)willPerformActionForChokePoint:(id)arg1 coalescePoint:(id)arg2 result:(id *)arg3;

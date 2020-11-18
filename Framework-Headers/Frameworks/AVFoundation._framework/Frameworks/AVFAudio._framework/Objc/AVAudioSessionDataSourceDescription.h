@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSNumber, NSString;
 
@@ -21,7 +21,7 @@
 @property (readonly) NSString *selectedPolarPattern;
 @property (readonly) NSArray *supportedPolarPatterns;
 
-+ (id)privateCreateOrConfigureArray:(id)arg1 withRawSourceArray:(id)arg2 portID:(id)arg3 sessionID:(unsigned int)arg4;
++ (id)privateCreateArray:(id)arg1 portID:(id)arg2 sessionID:(unsigned int)arg3;
 - (void)configurePolarPatterns:(id)arg1;
 - (void)dealloc;
 - (id)description;

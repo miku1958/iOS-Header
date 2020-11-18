@@ -8,14 +8,18 @@
 
 @interface UIView (NUIContainerView)
 
-@property (nonatomic) BOOL allowsBaselineOffsetApproximation;
 @property (nonatomic, getter=isBaselineRelativeAlignmentRectInsets) BOOL baselineRelativeAlignmentRectInsets;
 @property (nonatomic) struct UIEdgeInsets customAlignmentRectInsets;
 @property (nonatomic) double customBaselineOffsetFromBottom;
 @property (nonatomic) double customFirstBaselineOffsetFromContentTop;
+@property (nonatomic) double customFirstBaselineOffsetFromTop;
+@property (nonatomic) double customScreenScale;
 @property (nonatomic) BOOL invalidatingIntrinsicContentSizeAlsoInvalidatesSuperview;
+@property (nonatomic) struct CGSize maximumLayoutSize;
+@property (nonatomic) struct CGSize minimumLayoutSize;
 
 - (id)containerViewInfoCreateIfNeeded:(BOOL)arg1;
+- (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (BOOL)supportsAsynchronousMeasurement;
 @end

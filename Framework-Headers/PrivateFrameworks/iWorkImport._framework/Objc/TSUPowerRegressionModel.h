@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *mSuperscriptRangesArray;
 }
 
+- (void).cxx_destruct;
 - (double)coefficientAtIndex:(int)arg1;
 - (void)dealloc;
 - (double)estimateForX:(double *)arg1;

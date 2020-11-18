@@ -90,6 +90,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *authPromptReason;
 @property (weak, nonatomic) id<CKDURLRequestAuthRetryDelegate> authRetryDelegate; // @synthesize authRetryDelegate=_authRetryDelegate;
 @property (strong, nonatomic) NSString *automatedDeviceGroup; // @synthesize automatedDeviceGroup=_automatedDeviceGroup;
+@property (readonly, nonatomic) BOOL automaticallyRetryNetworkFailures;
 @property (strong) C2RequestOptions *c2RequestOptions; // @synthesize c2RequestOptions=_c2RequestOptions;
 @property (nonatomic) long long cachedPartitionType; // @synthesize cachedPartitionType=_cachedPartitionType;
 @property (nonatomic) long long cachedServerType; // @synthesize cachedServerType=_cachedServerType;
@@ -106,6 +107,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *deviceID; // @synthesize deviceID=_deviceID;
 @property (nonatomic) BOOL didReceiveResponseBodyData; // @synthesize didReceiveResponseBodyData=_didReceiveResponseBodyData;
 @property (nonatomic) BOOL didRetryAuth; // @synthesize didRetryAuth=_didRetryAuth;
+@property (readonly, nonatomic) unsigned long long discretionaryNetworkBehavior;
 @property (strong) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) BOOL expectsResponseBody;
 @property (strong, nonatomic) NSDictionary *fakeResponseOperationResultByItemID; // @synthesize fakeResponseOperationResultByItemID=_fakeResponseOperationResultByItemID;
@@ -144,6 +146,7 @@ __attribute__((visibility("hidden")))
 @property (strong) NSURLRequest *request; // @synthesize request=_request;
 @property (readonly, nonatomic) NSInputStream *requestBodyStream;
 @property (readonly, nonatomic) NSString *requestContentType;
+@property (readonly, nonatomic) BOOL requestGETPreAuth;
 @property (readonly, nonatomic) NSArray *requestOperationClasses;
 @property (readonly, nonatomic) NSArray *requestOperations; // @synthesize requestOperations=_requestOperations;
 @property (copy, nonatomic) CDUnknownBlockType requestProgressBlock; // @synthesize requestProgressBlock=_requestProgressBlock;
@@ -156,6 +159,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType responseProgressBlock; // @synthesize responseProgressBlock=_responseProgressBlock;
 @property (readonly, nonatomic) long long responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
 @property (readonly, nonatomic) NSString *sectionID;
+@property (readonly, nonatomic) BOOL sendRequestAnonymously;
 @property (copy, nonatomic) NSString *serverProvidedAutoBugCaptureReason; // @synthesize serverProvidedAutoBugCaptureReason=_serverProvidedAutoBugCaptureReason;
 @property (strong, nonatomic) NSString *serverProvidedAutoSysdiagnoseCollectionReason; // @synthesize serverProvidedAutoSysdiagnoseCollectionReason=_serverProvidedAutoSysdiagnoseCollectionReason;
 @property (strong, nonatomic) CKDTapToRadarRequest *serverProvidedTapToRadarRequest; // @synthesize serverProvidedTapToRadarRequest=_serverProvidedTapToRadarRequest;
@@ -191,6 +195,7 @@ __attribute__((visibility("hidden")))
 - (id)_CFNetworkTaskIdentifierString;
 - (void)_acquireZoneGates;
 - (void)_addRequestHeadersToTransmittedSignature:(id)arg1;
+- (void)_authTokenWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_errorFromHTTPResponse:(id)arg1;
 - (void)_fetchContainerScopedUserID;
 - (void)_fetchDeviceID;
@@ -222,6 +227,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)allowsAuthedAccount;
 - (void)cancel;
 - (id)ckShortDescription;
+- (id)createAssetAuthorizeGetRequestOptionsHeaderInfoWithKey:(id)arg1 value:(id)arg2;
 - (void)dealloc;
 - (id)defaultParserForContentType:(id)arg1;
 - (id)deviceIdentifier;
@@ -240,6 +246,7 @@ __attribute__((visibility("hidden")))
 - (void)performRequest;
 - (void)prepareRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reportStatusWithError:(id)arg1;
+- (void)requestDidComplete;
 - (void)requestDidParse509CertObject:(id)arg1;
 - (void)requestDidParseJSONObject:(id)arg1;
 - (void)requestDidParseNodeFailure:(id)arg1;
@@ -254,7 +261,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)requiresSignature;
 - (BOOL)requiresTokenRegistration;
 - (BOOL)requiresUserPartitionURL;
-- (BOOL)sendRequestAnonymously;
 - (BOOL)shouldLogResponseBody;
 - (id)statusReportWithIndent:(unsigned long long)arg1;
 - (void)tearDownResources;

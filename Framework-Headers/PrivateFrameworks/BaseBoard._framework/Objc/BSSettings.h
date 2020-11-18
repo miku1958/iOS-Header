@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSDescriptionProviding-Protocol.h>
 #import <BaseBoard/BSXPCCoding-Protocol.h>
@@ -12,14 +12,14 @@
 #import <BaseBoard/NSMutableCopying-Protocol.h>
 #import <BaseBoard/NSSecureCoding-Protocol.h>
 
-@class NSMapTable, NSString;
+@class BSMutableIntegerMap, NSString;
 @protocol BSSettingDescriptionProvider;
 
 @interface BSSettings : NSObject <NSCopying, NSMutableCopying, BSXPCCoding, NSSecureCoding, BSDescriptionProviding>
 {
     id<BSSettingDescriptionProvider> _descriptionProvider;
-    NSMapTable *_settingToFlagMap;
-    NSMapTable *_settingToObjectMap;
+    BSMutableIntegerMap *_settingToFlagMap;
+    BSMutableIntegerMap *_settingToObjectMap;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -45,7 +45,6 @@
 - (id)basicDescriptionWithPrefix:(id)arg1;
 - (BOOL)boolForSetting:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;

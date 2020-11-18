@@ -16,9 +16,13 @@ __attribute__((visibility("hidden")))
     _OSLogChunkFileReference *_cfr;
     _OSLogChunkStore *_cs;
     unsigned char _bootu[16];
-    BOOL _catalogsScanned;
+    BOOL _timespanDetermined;
+    unsigned long long _cot_header;
+    unsigned long long _cot;
+    unsigned long long _cet;
     unsigned long long _et;
     unsigned long long _ot;
+    char *_path;
 }
 
 @property (readonly, nonatomic) const char *bootUUID;
@@ -27,12 +31,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long endTime; // @synthesize endTime=_et;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long oldestTime; // @synthesize oldestTime=_ot;
+@property (readonly, nonatomic) char *path; // @synthesize path=_path;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_loadCatalogMetadata;
+- (BOOL)_determineTimespan;
+- (BOOL)_loadCatalogMetadataForTimespan;
 - (BOOL)_loadHeaderMetadata:(id)arg1;
 - (id)copyMappedChunkStore:(id *)arg1;
+- (void)dealloc;
 - (id)initWithChunkStore:(id)arg1 error:(id *)arg2;
 - (id)initWithTraceFile:(id)arg1 error:(id *)arg2;
 

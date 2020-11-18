@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, TSCHLegendCellMetrics, TSCHLegendViewCache, TSDShadow, TSDStroke, TSWPParagraphStyle;
 
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     BOOL mReverseSingleColumnLegendOrder;
     double mLastLegendWidth;
     TSCHLegendViewCache *mLastLegendViewCache;
+    BOOL mLegendIsRTL;
     double mSymbolGap;
 }
 
@@ -36,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) id fill; // @synthesize fill=mFill;
 @property (readonly) double horizontalCellSpacing; // @synthesize horizontalCellSpacing=mHorizontalCellSpacing;
 @property (readonly) struct CGSize largestCellSize; // @synthesize largestCellSize=mLargestCellSize;
+@property (readonly) BOOL legendIsRTL; // @synthesize legendIsRTL=mLegendIsRTL;
 @property (readonly) BOOL legendOn; // @synthesize legendOn=mLegendOn;
 @property (readonly) double opacity; // @synthesize opacity=mOpacity;
 @property (readonly) TSWPParagraphStyle *paragraphStyle; // @synthesize paragraphStyle=mParagraphStyle;

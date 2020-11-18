@@ -13,16 +13,16 @@
 @interface HDCodableCodedQuantity : PBCodable <NSCopying>
 {
     HDCodableMedicalCoding *_comparatorCoding;
+    NSString *_rawValue;
     HDCodableMedicalCoding *_unitCoding;
-    NSString *_value;
 }
 
 @property (strong, nonatomic) HDCodableMedicalCoding *comparatorCoding; // @synthesize comparatorCoding=_comparatorCoding;
 @property (readonly, nonatomic) BOOL hasComparatorCoding;
+@property (readonly, nonatomic) BOOL hasRawValue;
 @property (readonly, nonatomic) BOOL hasUnitCoding;
-@property (readonly, nonatomic) BOOL hasValue;
+@property (strong, nonatomic) NSString *rawValue; // @synthesize rawValue=_rawValue;
 @property (strong, nonatomic) HDCodableMedicalCoding *unitCoding; // @synthesize unitCoding=_unitCoding;
-@property (strong, nonatomic) NSString *value; // @synthesize value=_value;
 
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;

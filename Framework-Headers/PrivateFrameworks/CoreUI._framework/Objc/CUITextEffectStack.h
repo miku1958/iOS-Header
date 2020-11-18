@@ -9,7 +9,7 @@
 __attribute__((visibility("hidden")))
 @interface CUITextEffectStack : CUIShapeEffectStack
 {
-    BOOL renderHighQuality;
+    BOOL _renderHighQuality;
 }
 
 - (void)_drawShadow:(CDStruct_ca46f23f)arg1 forGlyphs:(const unsigned short *)arg2 inContext:(struct CGContext *)arg3 usingFont:(struct __CTFont *)arg4 atPositions:(const struct CGPoint *)arg5 count:(unsigned long long)arg6;

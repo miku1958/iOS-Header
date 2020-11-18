@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPopoverPresentationController.h>
+#import <UIKitCore/UIPopoverPresentationController.h>
 
-#import <UIKit/_UISearchControllerPresenting-Protocol.h>
+#import <UIKitCore/_UISearchControllerPresenting-Protocol.h>
 
 @class NSString, UIPresentationController, UIView, _UISearchPresentationAssistant;
 @protocol _UISearchControllerPresenting;

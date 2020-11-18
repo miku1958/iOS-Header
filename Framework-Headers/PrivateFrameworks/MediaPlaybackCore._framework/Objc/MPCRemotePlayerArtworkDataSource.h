@@ -11,6 +11,7 @@
 }
 
 + (id)bestArtworkSizes;
++ (id)sharedDataSource;
 - (id)_urlForCatalog:(id)arg1 size:(struct CGSize)arg2;
 - (BOOL)areRepresentationsAvailableForCatalog:(id)arg1;
 - (id)cacheKeyForCatalog:(id)arg1 size:(struct CGSize)arg2;

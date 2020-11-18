@@ -6,19 +6,21 @@
 
 #import <iWorkImport/TSPObject.h>
 
+#import <iWorkImport/TSDChangeableInfo-Protocol.h>
 #import <iWorkImport/TSDModelContainer-Protocol.h>
 #import <iWorkImport/TSDMutableContainerInfo-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
 
-@class NSArray, NSMutableArray, NSObject, NSString, TSDInfoGeometry;
+@class NSArray, NSMutableArray, NSObject, NSString, TSDInfoGeometry, TSSPropertySetChangeDetails;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TSDContainerInfo : TSPObject <TSDMutableContainerInfo, TSKDocumentObject, TSDModelContainer>
+@interface TSDContainerInfo : TSPObject <TSDMutableContainerInfo, TSKDocumentObject, TSDModelContainer, TSDChangeableInfo>
 {
-    TSDInfoGeometry *mGeometry;
-    NSObject<TSDContainerInfo> *mParentInfo;
-    NSMutableArray *mChildInfos;
+    TSDInfoGeometry *_geometry;
+    NSObject<TSDContainerInfo> *_parentInfo;
+    NSMutableArray *_childInfos;
+    TSSPropertySetChangeDetails *_changes;
 }
 
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
@@ -28,19 +30,23 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isFloatingAboveText) BOOL floatingAboveText;
-@property (copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=mGeometry;
+@property (copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=_geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=mParentInfo;
+@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsCollaborativeEditing;
 
+- (void).cxx_destruct;
 - (void)addChildInfo:(id)arg1;
+- (void)beginCollectingChanges;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
+- (id)endCollectingChanges;
 - (id)infoForSelectionPath:(id)arg1;
 - (id)initWithContext:(id)arg1 geometry:(id)arg2;
 - (void)insertChildInfo:(id)arg1 above:(id)arg2;
@@ -68,6 +74,8 @@ __attribute__((visibility("hidden")))
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)willBeRemovedFromDocumentRoot:(id)arg1;
+- (void)willChangeProperties:(id)arg1;
+- (void)willChangeProperty:(int)arg1;
 
 @end
 

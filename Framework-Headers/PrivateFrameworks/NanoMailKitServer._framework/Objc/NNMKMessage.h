@@ -15,11 +15,13 @@
 @interface NNMKMessage : NSObject <NNMKMailboxItem, NSSecureCoding, NSCopying>
 {
     BOOL _isThreadSpecific;
+    BOOL _replaceStandaloneNotification;
     NSString *_subject;
     NSDate *_dateReceived;
     NSString *_preview;
     unsigned long long _status;
     NSString *_messageId;
+    NSString *_serverId;
     NSString *_accountId;
     NSString *_mailboxId;
     NSString *_conversationId;
@@ -30,6 +32,7 @@
     NSDate *_dateSent;
     NSString *_messageIdHeader;
     NSString *_notificationMessageId;
+    NSString *_publisherBulletinId;
     unsigned long long _source;
     unsigned long long _statusVersion;
     unsigned long long _isSpecialMailboxSpecific;
@@ -53,6 +56,9 @@
 @property (copy, nonatomic) NSString *messageIdHeader; // @synthesize messageIdHeader=_messageIdHeader;
 @property (copy, nonatomic) NSString *notificationMessageId; // @synthesize notificationMessageId=_notificationMessageId;
 @property (strong, nonatomic) NSString *preview; // @synthesize preview=_preview;
+@property (copy, nonatomic) NSString *publisherBulletinId; // @synthesize publisherBulletinId=_publisherBulletinId;
+@property (nonatomic) BOOL replaceStandaloneNotification; // @synthesize replaceStandaloneNotification=_replaceStandaloneNotification;
+@property (copy, nonatomic) NSString *serverId; // @synthesize serverId=_serverId;
 @property (nonatomic) unsigned long long source; // @synthesize source=_source;
 @property (nonatomic) unsigned long long status; // @synthesize status=_status;
 @property (nonatomic) unsigned long long statusVersion; // @synthesize statusVersion=_statusVersion;
@@ -66,6 +72,9 @@
 + (unsigned long long)addState:(unsigned long long)arg1 toStatus:(unsigned long long)arg2;
 + (id)attachmentIdForURL:(id)arg1;
 + (BOOL)checkStatus:(unsigned long long)arg1 stateToCheck:(unsigned long long)arg2;
++ (id)generateConversationIdWithAccountId:(id)arg1 conversationId:(id)arg2;
++ (id)generateMessageHashForMessage:(id)arg1;
++ (id)generateNotificationIdWithFolderId:(id)arg1 remoteId:(id)arg2;
 + (BOOL)isMessageURL:(id)arg1;
 + (BOOL)messageHasMultipleRecipients:(id)arg1;
 + (id)messageIdForURL:(id)arg1;

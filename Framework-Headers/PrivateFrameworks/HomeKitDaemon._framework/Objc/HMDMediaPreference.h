@@ -4,24 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDPreference.h>
+#import <HMFoundation/HMFPreference.h>
 
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 
-@class HMDSystemPreference, NSString;
+@class HMFSystemPreference, NSArray, NSString;
 
-@interface HMDMediaPreference : HMDPreference <HMFObject>
+@interface HMDMediaPreference : HMFPreference <HMFObject>
 {
-    HMDSystemPreference *_homeKitPreference;
+    HMFSystemPreference *_homeKitPreference;
 }
 
-@property (readonly, copy) HMDPreference *airPlay2Preference;
-@property (readonly, copy) HMDPreference *appleMediaPreference;
+@property (readonly, copy) HMFPreference *airPlay2Preference;
+@property (readonly, copy) HMFPreference *appleMediaPreference;
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) HMDSystemPreference *homeKitPreference; // @synthesize homeKitPreference=_homeKitPreference;
+@property (readonly) HMFSystemPreference *homeKitPreference; // @synthesize homeKitPreference=_homeKitPreference;
+@property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 
 + (void)load;

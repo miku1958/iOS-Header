@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBProcess, FBSOpenApplicationOptions, NSString;
 
@@ -22,7 +22,7 @@
 @property (nonatomic, getter=isTrusted) BOOL trusted; // @synthesize trusted=_trusted;
 
 + (id)request;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 
 @end

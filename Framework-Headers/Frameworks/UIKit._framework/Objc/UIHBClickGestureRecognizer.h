@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGestureRecognizer.h>
+#import <UIKitCore/UIGestureRecognizer.h>
 
-#import <UIKit/UIPressesEventTerminalRegistration-Protocol.h>
+#import <UIKitCore/UIPressesEventTerminalRegistration-Protocol.h>
 
 @class NSArray, NSString, UIPressesEvent;
 

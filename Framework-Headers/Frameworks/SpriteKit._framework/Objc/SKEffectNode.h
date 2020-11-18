@@ -29,11 +29,13 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SKWarpGeometry *warpGeometry;
 
++ (id)debugHierarchyPropertyDescriptions;
++ (id)debugHierarchyValueForPropertyWithName:(id)arg1 onObject:(id)arg2 outOptions:(id *)arg3 outError:(id *)arg4;
++ (BOOL)supportsSecureCoding;
 - (void)_didMakeBackingNode;
 - (void)_flippedChangedFrom:(BOOL)arg1 to:(BOOL)arg2;
 - (struct SKCNode *)_makeBackingNode;
 - (void)_scaleFactorChangedFrom:(float)arg1 to:(float)arg2;
-- (id)debugHierarchyPropertyDescriptions;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

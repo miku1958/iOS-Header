@@ -19,12 +19,15 @@
 @property (copy, nonatomic) NSDate *datePlayed; // @dynamic datePlayed;
 @property (copy, nonatomic) NSString *descriptionText; // @dynamic descriptionText;
 @property (nonatomic) double duration; // @dynamic duration;
+@property (readonly, nonatomic) long long episodeNumber; // @dynamic episodeNumber;
+@property (readonly, nonatomic) long long episodeType; // @dynamic episodeType;
 @property (nonatomic, getter=isExplicitEpisode) BOOL explicitEpisode; // @dynamic explicitEpisode;
 @property (readonly, nonatomic) BOOL hasVideo; // @dynamic hasVideo;
 @property (strong, nonatomic) MPModelFileAsset *localFileAsset; // @dynamic localFileAsset;
 @property (strong, nonatomic) MPModelPlaybackPosition *playbackPosition; // @dynamic playbackPosition;
 @property (strong, nonatomic) MPModelPodcast *podcast; // @dynamic podcast;
 @property (copy, nonatomic) NSDateComponents *releaseDateComponents; // @dynamic releaseDateComponents;
+@property (readonly, nonatomic) long long seasonNumber; // @dynamic seasonNumber;
 @property (copy, nonatomic) NSURL *shareURL; // @dynamic shareURL;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
 @property (nonatomic) float userRating; // @dynamic userRating;
@@ -34,12 +37,15 @@
 + (id)__datePlayed_KEY;
 + (id)__descriptionText_KEY;
 + (id)__duration_KEY;
++ (id)__episodeNumber_KEY;
++ (id)__episodeType_KEY;
 + (id)__explicitEpisode_KEY;
 + (id)__hasVideo_KEY;
 + (id)__localFileAsset_KEY;
 + (id)__playbackPosition_KEY;
 + (id)__podcast_KEY;
 + (id)__releaseDateComponents_KEY;
++ (id)__seasonNumber_KEY;
 + (id)__shareURL_KEY;
 + (id)__title_KEY;
 + (id)__userRating_KEY;
@@ -47,6 +53,7 @@
 + (id)kindWithVariants:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)artworkCatalog;
+- (id)humanDescription;
 
 @end
 

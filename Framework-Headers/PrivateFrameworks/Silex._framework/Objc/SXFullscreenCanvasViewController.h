@@ -6,23 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-@class SXKeyValueObserver;
-
 @interface SXFullscreenCanvasViewController : UIViewController
 {
-    BOOL _visible;
-    SXKeyValueObserver *_navigationBarObserver;
+    BOOL _isTransitioning;
+    CDUnknownBlockType _onTransition;
 }
 
-@property (strong, nonatomic) SXKeyValueObserver *navigationBarObserver; // @synthesize navigationBarObserver=_navigationBarObserver;
-@property (nonatomic) BOOL visible; // @synthesize visible=_visible;
+@property (nonatomic) BOOL isTransitioning; // @synthesize isTransitioning=_isTransitioning;
+@property (copy, nonatomic) CDUnknownBlockType onTransition; // @synthesize onTransition=_onTransition;
 
 - (void).cxx_destruct;
-- (long long)preferredStatusBarStyle;
 - (long long)preferredStatusBarUpdateAnimation;
 - (BOOL)prefersStatusBarHidden;
 - (void)viewWillAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

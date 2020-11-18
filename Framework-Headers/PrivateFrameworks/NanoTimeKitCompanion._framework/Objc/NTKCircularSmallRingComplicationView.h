@@ -18,7 +18,6 @@
 
 - (void).cxx_destruct;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
-- (BOOL)_wantsPlatter;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setForegroundColor:(id)arg1;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <UIKitCore/UIActivity.h>
 
-#import <UIKit/_UICloudSharingControllerDelegate_Internal-Protocol.h>
-#import <UIKit/_UIDocumentSharingControllerDelegate_Private-Protocol.h>
+#import <UIKitCore/_UICloudSharingControllerDelegate_Internal-Protocol.h>
+#import <UIKitCore/_UIDocumentSharingControllerDelegate_Private-Protocol.h>
 
 @class NSString, UIImage, UIViewController;
 

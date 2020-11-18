@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SBUISound, SFChargingUICoordinator, SFWirelessChargingMonitor;
+@class NSMutableDictionary, SFChargingUICoordinator, SFWirelessChargingMonitor;
 @protocol OS_dispatch_queue;
 
 @interface SFChargingCenterClient : NSObject
@@ -19,38 +19,43 @@
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _visualInformationRequestHandler;
     CDUnknownBlockType _requestHandler;
-    SBUISound *_chimeSound;
+    NSObject<OS_dispatch_queue> *_workQueue;
     SFWirelessChargingMonitor *_monitor;
     SFChargingUICoordinator *_uiCoordinator;
+    NSMutableDictionary *_errorNotifications;
 }
 
-@property (strong, nonatomic) SBUISound *chimeSound; // @synthesize chimeSound=_chimeSound;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (strong, nonatomic) NSMutableDictionary *errorNotifications; // @synthesize errorNotifications=_errorNotifications;
 @property (strong, nonatomic) SFWirelessChargingMonitor *monitor; // @synthesize monitor=_monitor;
 @property (readonly, nonatomic) long long numberOfDevicesCharging;
 @property (copy, nonatomic) CDUnknownBlockType requestHandler; // @synthesize requestHandler=_requestHandler;
 @property (strong, nonatomic) SFChargingUICoordinator *uiCoordinator; // @synthesize uiCoordinator=_uiCoordinator;
 @property (copy, nonatomic) CDUnknownBlockType visualInformationRequestHandler; // @synthesize visualInformationRequestHandler=_visualInformationRequestHandler;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
++ (void)notificationFeedbackConfigurationWithSound:(BOOL)arg1 andHaptic:(BOOL)arg2 forFeedbackType:(long long)arg3 completion:(CDUnknownBlockType)arg4;
++ (void)playShortEngagementWithSound:(BOOL)arg1 haptic:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)activate;
 - (void)checkDefaults;
 - (void)contextsForRemoteAlertActivationWithReason:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)dataRepresentationForInformationProvider:(id)arg1;
+- (void)createWorkQueue;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;
 - (void)listenToNotifications;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)onqueue_activate;
+- (id)onqueue_dataRepresentationForInformationProvider:(id)arg1;
 - (void)onqueue_invalidate;
-- (void)playChime;
-- (void)presentationRequestContextsForReason:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
-- (void)sendPresentationRequestForPowerSource:(id)arg1 removed:(BOOL)arg2;
+- (void)onqueue_presentationRequestContextsForReason:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)onqueue_sendPresentationRequestForPowerSource:(id)arg1 removed:(BOOL)arg2;
+- (void)onqueue_updateConfigurationContext:(id)arg1 withInformationProvider:(id)arg2;
+- (void)onqueue_updateConfigurationContext:(id)arg1 withKeyPowerSource:(id)arg2;
+- (void)onqueue_updateConfigurationContextWithPowerSourcesData:(id)arg1;
 - (void)setUpMonitor;
-- (void)updateConfigurationContext:(id)arg1 withInformationProvider:(id)arg2;
-- (void)updateConfigurationContext:(id)arg1 withKeyPowerSource:(id)arg2;
-- (void)updateConfigurationContextWithPowerSourcesData:(id)arg1;
+- (void)updateErrorNotificationsForPowerSource:(id)arg1 removed:(BOOL)arg2;
 
 @end
 

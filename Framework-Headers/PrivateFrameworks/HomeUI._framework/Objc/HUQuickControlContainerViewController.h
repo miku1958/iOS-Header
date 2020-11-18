@@ -61,6 +61,7 @@
 + (id)_sourceViewTransitionAnimationSettingsForPresenting:(BOOL)arg1;
 + (id)_statusBarHidingAnimationSettingsForPresenting:(BOOL)arg1;
 - (void).cxx_destruct;
+- (void)_backButtonPressed:(id)arg1;
 - (void)_controlDidDismiss;
 - (void)_createControlContainerViewWithSourceRect:(struct CGRect)arg1;
 - (id)_dismissDetailsViewControllerAnimated:(BOOL)arg1 dismissControl:(BOOL)arg2;
@@ -68,7 +69,9 @@
 - (void)_performTransitionToPresentationState:(unsigned long long)arg1 animated:(BOOL)arg2 initialProgress:(double)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_prepareDetailViewController;
 - (id)_presentControlOfType:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (void)_settingsButtonPressed:(id)arg1;
 - (void)_updateActiveControlViewController;
+- (void)_updateAlternateControlButtonVisibility;
 - (void)_updateControlStatusText;
 - (void)_updateIconDescriptorAnimated:(BOOL)arg1;
 - (void)_updateReachabilityStateForActiveControl;
@@ -91,8 +94,11 @@
 - (id)presentDetailViewControllerAnimated:(BOOL)arg1;
 - (void)quickControlContent:(id)arg1 requestDismissalOfType:(unsigned long long)arg2;
 - (void)quickControlContent:(id)arg1 showAuxiliaryView:(id)arg2;
+- (void)quickControlContentDidUpdateDesiredVisbilityState:(id)arg1;
 - (struct CGAffineTransform)sourceViewTransformForPresentationProgress:(double)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

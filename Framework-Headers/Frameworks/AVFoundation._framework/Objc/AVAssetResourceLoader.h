@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/NSURLAuthenticationChallengeSender-Protocol.h>
 
@@ -39,7 +39,6 @@
 - (void)_handleRequest:(struct __CFDictionary *)arg1 requestID:(unsigned long long)arg2 willHandleRequest:(BOOL *)arg3;
 - (void)_issueLoadingRequestWithKey:(id)arg1 loadingRequest:(id)arg2 isRenewalRequest:(BOOL)arg3 fallbackHandler:(CDUnknownBlockType)arg4;
 - (void)_issueLoadingRequestWithKey:(id)arg1 requestDictionary:(id)arg2 fallbackHandler:(CDUnknownBlockType)arg3;
-- (void)_makeURLSessionSupportGooIfNecessary;
 - (void)_noteFinishingOfRequest:(id)arg1;
 - (void)_performDelegateCallbackSynchronouslyIfCurrentDelegateQueueIsQueue:(id)arg1 delegateCallbackBlock:(CDUnknownBlockType)arg2;
 - (void)_performDelegateSelector:(SEL)arg1 withObject:(id)arg2 representingNewRequest:(BOOL)arg3 key:(id)arg4 fallbackHandler:(CDUnknownBlockType)arg5;
@@ -55,14 +54,12 @@
 - (void)cancelAuthenticationChallenge:(id)arg1;
 - (void)cancelLoading;
 - (void)continueWithoutCredentialForAuthenticationChallenge:(id)arg1;
-- (id)customURLBridge;
 - (void)dealloc;
 - (void)finalize;
 - (id)init;
 - (id)initWithURLRequestHelper:(id)arg1 asset:(id)arg2;
 - (void)performDefaultHandlingForAuthenticationChallenge:(id)arg1;
 - (void)rejectProtectionSpaceAndContinueWithChallenge:(id)arg1;
-- (void)setCustomURLBridge:(id)arg1;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
 - (id)stateQueue;
 - (void)useCredential:(id)arg1 forAuthenticationChallenge:(id)arg2;

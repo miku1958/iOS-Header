@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     TSTCellUIDList *_cellUIDs;
     NSMutableArray *_cellLists;
     unordered_map_d2ee14f6 *_searchableIDMap;
-    unordered_map_cc9c6ffa *_searchableUIDMap;
+    unordered_map_7f472e10 *_searchableUIDMap;
 }
 
 @property (strong, nonatomic) NSMutableArray *cellLists; // @synthesize cellLists=_cellLists;
@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL mayModifyValuesReferencedByFormulas; // @synthesize mayModifyValuesReferencedByFormulas=_mayModifyValuesReferencedByFormulas;
 @property (readonly, nonatomic, getter=isOneToMany) BOOL oneToMany; // @synthesize oneToMany=_oneToMany;
 @property (nonatomic) unordered_map_d2ee14f6 *searchableIDMap; // @synthesize searchableIDMap=_searchableIDMap;
-@property (nonatomic) unordered_map_cc9c6ffa *searchableUIDMap; // @synthesize searchableUIDMap=_searchableUIDMap;
+@property (nonatomic) unordered_map_7f472e10 *searchableUIDMap; // @synthesize searchableUIDMap=_searchableUIDMap;
 @property (nonatomic, getter=isUIDBased) BOOL uidBased; // @synthesize uidBased=_uidBased;
 
 + (id)cellMapWithContext:(id)arg1;
@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (id)cellIDBasedCellMapByTableInfo:(id)arg1;
 - (const vector_38b190b0 *)cellIDs;
 - (id)cellMapMaskedByUIDs:(const vector_4dc5f307 *)arg1 inRows:(BOOL)arg2;
-- (id)changeDescriptorsForTable:(id)arg1;
+- (id)changeDescriptorsForTable:(id)arg1 outCellRegion:(out id *)arg2;
 - (void)clearDataListIDs;
 - (void)clearMerges;
 - (const vector_4dc5f307 *)columnUIDs;
@@ -74,11 +74,13 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)p_cellCount;
 - (void)p_copyCellsAndUUIDsFromCellMap:(id)arg1 convertingToCellIDsWithTableInfo:(id)arg2;
 - (void)p_resolveCellIDsToUUIDsByTableInfo:(id)arg1 preserveHostCells:(BOOL)arg2;
+- (void)p_shallowAddCell:(id)arg1 atCellCoord:(struct TSUCellCoord)arg2;
 - (void)popLastCell;
 - (void)remapUIDsByColumnMap:(const UUIDMap_b66c2694 *)arg1 rowMap:(const UUIDMap_b66c2694 *)arg2 ownerMap:(const UUIDMap_b66c2694 *)arg3;
 - (void)replaceCellAtIndex0:(id)arg1;
 - (const vector_4dc5f307 *)rowUIDs;
 - (void)saveToArchiver:(id)arg1;
+- (id)shallowCopyToCoordFormUsingMap:(id)arg1;
 - (id)uuidBasedCellMapByTableInfo:(id)arg1;
 - (id)uuidBasedCellMapByTableInfo:(id)arg1 preserveHostCells:(BOOL)arg2;
 

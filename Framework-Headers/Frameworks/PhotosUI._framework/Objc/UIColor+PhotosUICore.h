@@ -11,6 +11,10 @@
 @property (readonly, nonatomic, getter=px_isTransparent) BOOL px_transparent;
 
 + (id)alternateSelectedControlColor;
++ (id)px_assetExplorerBackgroundColor;
++ (id)px_assetPlaceholderGray;
++ (id)px_barHairlineShadowColor;
++ (id)px_messagesBubbleGray;
 + (id)px_systemMidGray;
 @end
 

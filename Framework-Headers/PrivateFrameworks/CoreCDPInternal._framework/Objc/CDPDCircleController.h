@@ -42,7 +42,7 @@
 - (id)peerID;
 - (void)prepareCircleStateForRecovery;
 - (void)promptForCredentials:(CDUnknownBlockType)arg1;
-- (void)resetCircleIncludingCloudKitData:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)resetCircleIncludingCloudKitData:(BOOL)arg1 cloudKitResetReasonDescription:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)synchronizeCircleViews;
 - (void)useCircleInfoToUpdateNameForDevices:(id)arg1;
 

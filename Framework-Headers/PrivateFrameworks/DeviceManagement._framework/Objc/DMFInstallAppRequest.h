@@ -15,6 +15,9 @@
 @property (nonatomic) BOOL allowFreePurchases; // @synthesize allowFreePurchases=_allowFreePurchases;
 @property (nonatomic) unsigned long long licenseType; // @synthesize licenseType=_licenseType;
 
++ (BOOL)isPermittedOnSystemConnection;
++ (BOOL)isPermittedOnUserConnection;
++ (id)permittedPlatforms;
 + (BOOL)supportsSecureCoding;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

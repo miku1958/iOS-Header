@@ -16,6 +16,7 @@
 @property (readonly, weak) id<HMDAuthServerDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
+- (void)getPPIDInfo:(id)arg1 model:(id)arg2 cert:(id)arg3 context:(id)arg4;
 - (id)initWithDelegate:(id)arg1;
 - (void)sendActivationConfirmation:(id)arg1 uuid:(id)arg2 context:(id)arg3;
 - (void)sendActivationRequest:(id)arg1 uuid:(id)arg2 context:(id)arg3;

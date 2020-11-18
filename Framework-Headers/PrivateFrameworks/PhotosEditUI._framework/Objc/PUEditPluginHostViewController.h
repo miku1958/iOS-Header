@@ -11,6 +11,7 @@
 @class NSNumber, NSString, PUEditPlugin;
 @protocol NSCopying, PUEditPluginHostViewControllerDataSource, PUEditPluginHostViewControllerDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUEditPluginHostViewController : UIViewController <PLDismissableViewController>
 {
     BOOL __extensionDidBeginContentEditing;

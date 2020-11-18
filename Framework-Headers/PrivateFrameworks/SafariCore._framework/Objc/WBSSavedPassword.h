@@ -6,27 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSString;
+@class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSSet, NSString;
 
 @interface WBSSavedPassword : NSObject
 {
     NSMutableDictionary *_siteToProtectionSpaces;
     NSMutableArray *_sites;
     BOOL _userIsNeverSaveMarker;
+    BOOL __domainEligibleForPasswordReuseWarning;
     NSString *_highLevelDomain;
     NSString *_user;
     NSString *_password;
     NSDate *_earliestModifiedDateForSites;
+    NSSet *_associatedDomains;
 }
 
+@property (nonatomic, getter=_isDomainEligibleForPasswordReuseWarning) BOOL _domainEligibleForPasswordReuseWarning; // @synthesize _domainEligibleForPasswordReuseWarning=__domainEligibleForPasswordReuseWarning;
+@property (readonly, nonatomic) NSSet *associatedDomains; // @synthesize associatedDomains=_associatedDomains;
 @property (readonly, nonatomic) NSDate *earliestModifiedDateForSites; // @synthesize earliestModifiedDateForSites=_earliestModifiedDateForSites;
 @property (readonly, nonatomic) NSString *highLevelDomain; // @synthesize highLevelDomain=_highLevelDomain;
 @property (readonly, nonatomic) NSString *password; // @synthesize password=_password;
 @property (readonly, nonatomic) NSArray *protectionSpaces;
+@property (readonly, nonatomic) BOOL qualifiesForPasswordAuditing;
 @property (readonly, nonatomic) NSArray *sites;
 @property (readonly, nonatomic) NSString *user; // @synthesize user=_user;
 @property (readonly, nonatomic) BOOL userIsNeverSaveMarker; // @synthesize userIsNeverSaveMarker=_userIsNeverSaveMarker;
+@property (readonly, nonatomic) NSString *userVisibleHighLevelDomain;
+@property (readonly, nonatomic) NSArray *userVisibleSites;
 
++ (void)enumerateRangesMatchingPatternWithTokenizer:(struct __CFStringTokenizer *)arg1 string:(id)arg2 pattern:(id)arg3 matchingType:(long long)arg4 withBlock:(CDUnknownBlockType)arg5;
++ (BOOL)stringMatchesPatternWithTokenizer:(struct __CFStringTokenizer *)arg1 string:(id)arg2 pattern:(id)arg3 matchingType:(long long)arg4;
 - (void).cxx_destruct;
 - (void)_addModificationDate:(id)arg1;
 - (void)_addProtectionSpace:(id)arg1 forSite:(id)arg2;
@@ -35,10 +44,19 @@
 - (void)_deleteCredentialForProtectionSpace:(id)arg1 fromStorage:(id)arg2;
 - (void)_deleteCredentials;
 - (void)_deleteCredentialsForSite:(id)arg1;
-- (id)_initWithHighLevelDomain:(id)arg1 user:(id)arg2 password:(id)arg3;
+- (id)_initWithHighLevelDomain:(id)arg1 user:(id)arg2 password:(id)arg3 associatedDomains:(id)arg4;
+- (BOOL)_matchesSearchPattern:(id)arg1 matchAgainstUser:(BOOL)arg2;
 - (void)_setUser:(id)arg1 password:(id)arg2;
+- (void)addObject:(id)arg1;
 - (long long)compare:(id)arg1;
 - (id)description;
+- (BOOL)hasDuplicatedPasswordWithSavedPassword:(id)arg1;
+- (unsigned long long)hash;
+- (BOOL)isDuplicateWithoutUserNameOfPassword:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)matchesDomain:(id)arg1;
+- (BOOL)matchesServiceNameHintString:(id)arg1;
+- (BOOL)matchesUserTypedSearchPattern:(id)arg1;
 
 @end
 

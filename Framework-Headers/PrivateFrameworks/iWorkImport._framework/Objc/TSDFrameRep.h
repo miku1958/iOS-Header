@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CALayer, NSArray, TSDBitmapImageProvider, TSDFrame;
 
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     TSDBitmapImageProvider *_adornment;
     CALayer *_maskLayer;
     BOOL _shouldEnableBlendMode;
+    BOOL _missingImageProviders;
 }
 
 @property (readonly, nonatomic) TSDFrame *frame; // @synthesize frame=_frame;
@@ -39,6 +40,10 @@ __attribute__((visibility("hidden")))
 - (struct CGImage *)p_newRenderedFrameForMask:(BOOL)arg1 size:(struct CGSize)arg2 forCALayer:(BOOL)arg3 viewScale:(double)arg4;
 - (void)p_setRepeatingLayerWithIndex:(unsigned int)arg1 sublayers:(id)arg2 maskLayers:(id)arg3 toRect:(struct CGRect)arg4 start:(double)arg5 end:(double)arg6;
 - (void)p_setUnreplicatedLayerWithIndex:(unsigned int)arg1 sublayers:(id)arg2 maskLayers:(id)arg3 toRect:(struct CGRect)arg4;
+- (BOOL)p_shouldRender;
+- (BOOL)p_shouldRenderForRectWithCoverage:(struct CGRect)arg1;
+- (BOOL)p_shouldRenderForRectWithoutCoverage:(struct CGRect)arg1;
+- (BOOL)p_willRenderForRect:(struct CGRect)arg1;
 - (void)updateCALayer:(id)arg1 toRect:(struct CGRect)arg2 withRepLayer:(id)arg3 maskLayer:(id)arg4 viewScale:(double)arg5 maskLayerTransform:(struct CGAffineTransform)arg6;
 
 @end

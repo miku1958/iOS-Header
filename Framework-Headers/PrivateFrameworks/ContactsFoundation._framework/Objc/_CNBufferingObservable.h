@@ -16,6 +16,10 @@
     NSMutableArray *_results;
 }
 
+@property (strong, nonatomic) id<CNObservable> observable; // @synthesize observable=_observable;
+@property (strong, nonatomic) NSMutableArray *results; // @synthesize results=_results;
+@property (strong, nonatomic) id<_CNBufferingStrategy> strategy; // @synthesize strategy=_strategy;
+
 - (void).cxx_destruct;
 - (id)initWithBufferingStrategy:(id)arg1 observable:(id)arg2;
 - (id)initWithLength:(unsigned long long)arg1 observable:(id)arg2;

@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)noDestinationStateFromStateManager:(id)arg1;
 - (void)addCommuteDestinationSuggestion:(id)arg1;
 - (void)commuteSession:(id)arg1 didUpdateDestinations:(id)arg2;
 - (void)enterState;

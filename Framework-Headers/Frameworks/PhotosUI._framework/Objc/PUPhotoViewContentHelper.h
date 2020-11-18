@@ -48,6 +48,7 @@
     UIImage *_placeHolderImage;
     PUPhotoDecoration *_photoDecoration;
     double _cornerRadius;
+    unsigned long long _cornersToRound;
     UIColor *_overlayColor;
     double _contentAlpha;
     UIColor *_backgroundColor;
@@ -96,6 +97,7 @@
 @property (nonatomic) double contentAlpha; // @synthesize contentAlpha=_contentAlpha;
 @property (readonly, weak, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
+@property (readonly, nonatomic) unsigned long long cornersToRound; // @synthesize cornersToRound=_cornersToRound;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUPhotoViewContentHelperDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -106,6 +108,7 @@
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (readonly, nonatomic) struct CGRect imageContentFrame;
 @property (nonatomic) struct CGAffineTransform imageTransform; // @synthesize imageTransform=_imageTransform;
+@property (nonatomic, getter=isImageViewEdgeAntialiasingEnabled) BOOL imageViewEdgeAntialiasingEnabled;
 @property (strong, nonatomic) PHLivePhoto *livePhoto; // @synthesize livePhoto=_livePhoto;
 @property (nonatomic, getter=isLivePhotoHidden) BOOL livePhotoHidden; // @synthesize livePhotoHidden=_livePhotoHidden;
 @property (strong, nonatomic) PHLivePhotoView *livePhotoView; // @synthesize livePhotoView=_livePhotoView;
@@ -166,7 +169,8 @@
 - (void)layoutSubviewsOfContentView;
 - (void)livePhotoView:(id)arg1 willBeginPlaybackWithStyle:(long long)arg2;
 - (struct CGRect)photoDecorationBorderViewFrameForImageContentFrame:(struct CGRect)arg1;
-- (void)setCornerRadius:(double)arg1 useOverlay:(BOOL)arg2 overlayColor:(id)arg3;
+- (void)setCornerRadius:(double)arg1 cornersToRound:(unsigned long long)arg2 useOverlay:(BOOL)arg3 overlayColor:(id)arg4;
+- (void)setCornersToRound:(unsigned long long)arg1;
 - (void)startPlaybackWithStyle:(long long)arg1;
 - (void)stopPlayback;
 - (void)updatePhotoImageWithoutReconfiguring:(id)arg1;

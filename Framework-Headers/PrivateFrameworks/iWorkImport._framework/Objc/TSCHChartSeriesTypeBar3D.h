@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (Class)sceneObjectClass;
 - (id)g_genericToSpecificPropertyMap3DBar;
 - (id)genericToSpecificPropertyMap;
+- (BOOL)supportsRoundedCorners;
 
 @end
 

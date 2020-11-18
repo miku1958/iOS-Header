@@ -59,12 +59,11 @@
 - (void)fadeOutLowerSubdialAnimated:(BOOL)arg1;
 - (void)fadeTimeScaleLabelWithMode:(id)arg1;
 - (void)hideMode:(id)arg1 animate:(BOOL)arg2;
-- (id)initWithSize:(struct CGSize)arg1;
+- (id)initWithSize:(struct CGSize)arg1 forDevice:(id)arg2;
 - (BOOL)isTimeMode;
 - (id)scrubbingObscuredCollectionNodes;
 - (void)setCurrentMode:(id)arg1 animate:(BOOL)arg2;
 - (void)setRegularDeviceLowerDialLabelPositions;
-- (void)setRegularDeviceUpperDialLabelPositions:(id)arg1;
 - (void)showChronoModeAnimated:(BOOL)arg1;
 - (void)showMode:(id)arg1 animate:(BOOL)arg2;
 - (void)showTimeModeAnimated:(BOOL)arg1;

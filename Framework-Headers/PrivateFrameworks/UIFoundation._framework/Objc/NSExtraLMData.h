@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CUIStyleEffectConfiguration, NSLayoutManagerTextBlockRowArrayCache, NSLock, NSMutableArray, NSMutableSet, NSParagraphArbitrator, NSRunStorage, NSTextContainer;
 
@@ -53,10 +53,15 @@
         unsigned int forcesTrackingFloor:1;
         unsigned int isLiveScrolling:1;
         unsigned int hasCustomUnderlineColor:1;
-        unsigned int reserved:9;
+        unsigned int applicationPlatformContext:3;
+        unsigned int limitsLayoutForSuspiciousContents:1;
+        unsigned int delegateRespondsToRenderingColor:1;
+        unsigned int firstTextViewRespondsToRenderingColor:1;
+        unsigned int reserved:3;
     } _lmFlags2;
     struct _NSGlyphIndexForPointCache _glyphIndexForPointCache;
     long long _currentChangeInLength;
+    double _timeStampForResizeInScroll;
 }
 
 @end

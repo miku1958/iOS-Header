@@ -15,6 +15,7 @@
 
 @property (readonly, nonatomic) NSString *emailAddress; // @synthesize emailAddress=_emailAddress;
 
++ (id)emailAddress:(id)arg1 label:(id)arg2 extractionType:(unsigned long long)arg3 withRecordId:(id)arg4;
 + (id)emailAddress:(id)arg1 label:(id)arg2 extractionType:(unsigned long long)arg3 withRecordId:(id)arg4 origin:(id)arg5;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -22,7 +23,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEmailAddress:(id)arg1 label:(id)arg2 extractionType:(unsigned long long)arg3 recordId:(id)arg4 origin:(id)arg5;
+- (id)initWithEmailAddress:(id)arg1 label:(id)arg2 extractionType:(unsigned long long)arg3 recordId:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEmailAddress:(id)arg1;
 

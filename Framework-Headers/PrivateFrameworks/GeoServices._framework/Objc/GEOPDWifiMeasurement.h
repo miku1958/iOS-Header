@@ -10,13 +10,24 @@
 
 @class NSMutableArray, PBUnknownFields;
 
+__attribute__((visibility("hidden")))
 @interface GEOPDWifiMeasurement : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    unsigned long long _entryTime;
+    unsigned long long _exitTime;
     NSMutableArray *_locations;
     NSMutableArray *_wifiAccessPoints;
+    struct {
+        unsigned int entryTime:1;
+        unsigned int exitTime:1;
+    } _has;
 }
 
+@property (nonatomic) unsigned long long entryTime; // @synthesize entryTime=_entryTime;
+@property (nonatomic) unsigned long long exitTime; // @synthesize exitTime=_exitTime;
+@property (nonatomic) BOOL hasEntryTime;
+@property (nonatomic) BOOL hasExitTime;
 @property (strong, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 @property (strong, nonatomic) NSMutableArray *wifiAccessPoints; // @synthesize wifiAccessPoints=_wifiAccessPoints;

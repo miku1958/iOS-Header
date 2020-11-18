@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TILanguageModelOfflineLearningStrategy-Protocol.h>
 
@@ -21,7 +21,7 @@
 @property (readonly) TILanguageModelOfflineLearningTask *learningTask; // @synthesize learningTask=_learningTask;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)didFinishLearning;
 - (id)filterMessages:(id)arg1;
 - (id)identifyLanguagesForMessages:(id)arg1;

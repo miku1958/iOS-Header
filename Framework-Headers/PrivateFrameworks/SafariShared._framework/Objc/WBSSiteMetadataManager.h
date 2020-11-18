@@ -52,7 +52,9 @@
 - (BOOL)_updateOperationForRequestIfPossible:(id)arg1;
 - (void)cancelRequestWithToken:(id)arg1;
 - (void)cancelRequestsWithTokens:(id)arg1;
+- (void)cancelRequestsWithTokens:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)emptyProviderCaches;
+- (void)emptyProviderCachesIncludingFavicons:(BOOL)arg1;
 - (id)init;
 - (id)initWithInjectedBundleURL:(id)arg1;
 - (void)preloadRequest:(id)arg1 withPriority:(long long)arg2;

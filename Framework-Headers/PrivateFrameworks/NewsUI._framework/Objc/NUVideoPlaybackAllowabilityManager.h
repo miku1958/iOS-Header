@@ -9,22 +9,22 @@
 #import <NewsUI/NUVideoPlayerEventTracker-Protocol.h>
 
 @class NSString;
-@protocol SXVideoPlaybackController, SXVideoPlaybackPolicy, SXVisibilityMonitoring;
+@protocol SVVideoPlaybackController, SVVideoPlaybackPolicy, SVVisibilityMonitoring;
 
 @interface NUVideoPlaybackAllowabilityManager : NSObject <NUVideoPlayerEventTracker>
 {
-    id<SXVisibilityMonitoring> _visibilityMonitor;
-    id<SXVideoPlaybackController> _playbackController;
-    id<SXVideoPlaybackPolicy> _playbackPolicy;
+    id<SVVisibilityMonitoring> _visibilityMonitor;
+    id<SVVideoPlaybackController> _playbackController;
+    id<SVVideoPlaybackPolicy> _playbackPolicy;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<SXVideoPlaybackController> playbackController; // @synthesize playbackController=_playbackController;
-@property (readonly, nonatomic) id<SXVideoPlaybackPolicy> playbackPolicy; // @synthesize playbackPolicy=_playbackPolicy;
+@property (readonly, nonatomic) id<SVVideoPlaybackController> playbackController; // @synthesize playbackController=_playbackController;
+@property (readonly, nonatomic) id<SVVideoPlaybackPolicy> playbackPolicy; // @synthesize playbackPolicy=_playbackPolicy;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<SXVisibilityMonitoring> visibilityMonitor; // @synthesize visibilityMonitor=_visibilityMonitor;
+@property (readonly, nonatomic) id<SVVisibilityMonitoring> visibilityMonitor; // @synthesize visibilityMonitor=_visibilityMonitor;
 
 - (void).cxx_destruct;
 - (id)init;

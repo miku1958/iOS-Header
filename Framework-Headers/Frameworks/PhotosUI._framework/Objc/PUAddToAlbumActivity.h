@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 
 + (long long)activityCategory;
 - (void).cxx_destruct;
-- (id)activityImage;
+- (id)_activityBundleImageConfiguration;
 - (id)activityTitle;
 - (id)activityType;
 - (id)activityViewController;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable, NSMapTable;
 @protocol OS_dispatch_queue;
@@ -24,6 +24,7 @@
 + (unsigned int)countFromEncodeIdentifier:(unsigned long long)arg1;
 + (int)pidFromEncodeIdentifier:(unsigned long long)arg1;
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (unsigned long long)addHandle:(id)arg1;
 - (void)dealloc;
 - (id)description;

@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PDPassLibraryInAppExportedInterface-Protocol.h>
 
-@class CLLocation, NSArray, NSString, PKCatalog, PKContact, PKDisplayProfile, PKFieldProperties, PKPass;
+@class CLLocation, NSArray, NSSet, NSString, PKCatalog, PKContact, PKDisplayProfile, PKFieldProperties, PKPass;
 
 @protocol PDPassLibraryExtendedExportedInterface <PDPassLibraryInAppExportedInterface>
 - (void)enabledValueAddedServicePassesWithHandler:(void (^)(NSArray *))arg1;
@@ -14,6 +14,7 @@
 - (void)fetchHasCandidatePasses:(void (^)(BOOL))arg1;
 - (void)forceImmediateRevocationCheck;
 - (void)getArchivedObjectWithUniqueID:(NSString *)arg1 handler:(void (^)(NSData *))arg2;
+- (void)getDataForBundleResources:(NSSet *)arg1 objectUniqueIdentifier:(NSString *)arg2 handler:(void (^)(NSDictionary *))arg3;
 - (void)getDiffForPassUpdateUserNotificationWithIdentifier:(NSString *)arg1 handler:(void (^)(PKDiff *))arg2;
 - (void)getImageSetContainerForUniqueID:(NSString *)arg1 ofType:(long long)arg2 displayProfile:(PKDisplayProfile *)arg3 handler:(void (^)(PKImageSetXPCContainer *))arg4;
 - (void)getPassUniqueIdentifiersForFieldProperties:(PKFieldProperties *)arg1 handler:(void (^)(NSArray *))arg2;
@@ -38,10 +39,12 @@
 - (void)recomputeRelevantPassesWithSearchMode:(long long)arg1;
 - (void)removeAllScheduledActivities;
 - (void)removePassesOfType:(unsigned long long)arg1 withDiagnosticReason:(NSString *)arg2 handler:(void (^)(void))arg3;
-- (void)requestContactlessInterfaceSuppressionWithHandler:(void (^)(BOOL))arg1;
 - (void)rescheduleCommutePlanRenewalReminderForPassWithUniqueID:(NSString *)arg1;
 - (void)sendUserEditedCatalog:(PKCatalog *)arg1;
 - (void)shuffleGroups:(int)arg1;
+- (void)spotlightDeleteIndexEntriesForAllPassesWithCompletion:(void (^)(NSError *))arg1;
+- (void)spotlightReindexAllPassesWithCompletion:(void (^)(NSError *))arg1;
+- (void)spotlightReindexPassesWithUniqueIDs:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)updateObjectWithUniqueIdentifier:(NSString *)arg1 handler:(void (^)(BOOL))arg2;
 - (void)updateSettings:(unsigned long long)arg1 forObjectWithUniqueID:(NSString *)arg2;
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIVisualEffectView.h>
+#import <UIKitCore/UIVisualEffectView.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIInteractiveHighlightBackgroundEffectView : UIVisualEffectView

@@ -19,6 +19,7 @@
 
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) BOOL requiresSessionModification;
+@property (readonly, copy, nonatomic) NSString *sessionModificationLogReason;
 @property (copy, nonatomic) NSArray *subcommands; // @synthesize subcommands=_subcommands;
 @property (readonly, nonatomic) NSDictionary *userInfo;
 

@@ -8,12 +8,13 @@
 
 #import <InstallCoordination/IXCoordinatorWithAppAssetPromise-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithAutoEnablingExtensionTypes-Protocol.h>
+#import <InstallCoordination/IXCoordinatorWithImportance-Protocol.h>
 #import <InstallCoordination/IXCoordinatorWithInstallOptions-Protocol.h>
 #import <InstallCoordination/IXUserInitiatedCoordinator-Protocol.h>
 
 @class NSString;
 
-@interface IXPromotingAppInstallCoordinator : IXAppInstallCoordinator <IXCoordinatorWithAppAssetPromise, IXCoordinatorWithInstallOptions, IXCoordinatorWithAutoEnablingExtensionTypes, IXUserInitiatedCoordinator>
+@interface IXPromotingAppInstallCoordinator : IXAppInstallCoordinator <IXCoordinatorWithAppAssetPromise, IXCoordinatorWithInstallOptions, IXCoordinatorWithAutoEnablingExtensionTypes, IXUserInitiatedCoordinator, IXCoordinatorWithImportance>
 {
 }
 

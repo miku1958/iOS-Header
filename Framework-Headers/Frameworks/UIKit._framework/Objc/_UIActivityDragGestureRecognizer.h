@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UILongPressGestureRecognizer.h>
+#import <UIKitCore/UILongPressGestureRecognizer.h>
 
-#import <UIKit/UIAutoscrollDelegate-Protocol.h>
-#import <UIKit/_UIScrollViewScrollObserver-Protocol.h>
+#import <UIKitCore/UIAutoscrollDelegate-Protocol.h>
+#import <UIKitCore/_UIScrollViewScrollObserver-Protocol.h>
 
 @class NSString, UIAutoscroll, UIScrollView;
 

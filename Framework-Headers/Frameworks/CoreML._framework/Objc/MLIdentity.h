@@ -8,13 +8,20 @@
 
 #import <CoreML/MLModelSpecificationLoader-Protocol.h>
 
+@class NSString;
+
 @interface MLIdentity : MLModel <MLModelSpecificationLoader>
 {
 }
 
-+ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 error:(id *)arg2;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)loadModelFromSpecification:(struct _MLModelSpecification *)arg1 configuration:(id)arg2 error:(id *)arg3;
 - (id)init;
-- (id)predictionFromFeatures:(id)arg1 error:(id *)arg2;
+- (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
 
 @end
 

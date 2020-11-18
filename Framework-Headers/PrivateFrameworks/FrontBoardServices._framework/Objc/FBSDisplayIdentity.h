@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSXPCCoding-Protocol.h>
 #import <FrontBoardServices/NSCopying-Protocol.h>
@@ -25,6 +25,7 @@
 }
 
 @property (readonly, nonatomic, getter=isCarDisplay) BOOL carDisplay;
+@property (readonly, nonatomic, getter=isCarInstrumentsDisplay) BOOL carInstrumentsDisplay;
 @property (readonly, nonatomic) unsigned int connectionSeed; // @synthesize connectionSeed=_connectionSeed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -37,12 +38,11 @@
 @property (readonly, copy, nonatomic) FBSDisplayIdentity *rootIdentity;
 @property (readonly, nonatomic, getter=isSecure) BOOL secure; // @synthesize secure=_secure;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic, getter=isTatlDisplay) BOOL tatlDisplay;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)_initWithType:(long long)arg1 displayID:(unsigned int)arg2 connectionSeed:(unsigned int)arg3 pid:(int)arg4 external:(BOOL)arg5 uniqueIdentifier:(id)arg6 secure:(BOOL)arg7 root:(id)arg8;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (BOOL)expectsSecureRendering;

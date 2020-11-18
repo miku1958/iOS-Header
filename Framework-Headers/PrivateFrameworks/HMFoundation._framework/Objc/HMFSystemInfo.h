@@ -6,39 +6,53 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSObject, NSString;
-@protocol OS_dispatch_queue;
+#import <HMFoundation/HMFSystemInfoMigrationDataSourceDelegate-Protocol.h>
+#import <HMFoundation/HMFSystemInfoNameDataSourceDelegate-Protocol.h>
 
-@interface HMFSystemInfo : HMFObject
+@class HMFMACAddress, HMFSoftwareVersion, NSString;
+@protocol HMFSystemInfoBluetoothLEDataSource, HMFSystemInfoMarketingInformationDataSource, HMFSystemInfoMigrationDataSource, HMFSystemInfoNameDataSource, HMFSystemInfoProductInfoDataSource, HMFSystemInfoSerialNumberDataSource, HMFSystemInfoSoftwareVersionDataSource, HMFSystemInfoWiFiDataSource;
+
+@interface HMFSystemInfo : HMFObject <HMFSystemInfoNameDataSourceDelegate, HMFSystemInfoMigrationDataSourceDelegate>
 {
-    NSString *_name;
-    NSString *_model;
-    NSString *_serialNumber;
-    NSString *_regionInfo;
-    NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    struct MGNotificationTokenStruct *_notificationToken;
+    id<HMFSystemInfoNameDataSource> _nameDataSource;
+    id<HMFSystemInfoMarketingInformationDataSource> _marketingDataSource;
+    id<HMFSystemInfoSerialNumberDataSource> _serialNumberDataSource;
+    id<HMFSystemInfoProductInfoDataSource> _productInfoDataSource;
+    id<HMFSystemInfoSoftwareVersionDataSource> _softwareVersionDataSource;
+    id<HMFSystemInfoMigrationDataSource> _migrationDataSource;
+    id<HMFSystemInfoWiFiDataSource> _WiFiDataSource;
+    id<HMFSystemInfoBluetoothLEDataSource> _bluetoothLEDataSource;
 }
 
-@property (readonly, copy) NSString *model; // @synthesize model=_model;
-@property (copy) NSString *name; // @synthesize name=_name;
-@property (readonly) struct MGNotificationTokenStruct *notificationToken; // @synthesize notificationToken=_notificationToken;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
-@property (readonly, copy) NSString *regionInfo; // @synthesize regionInfo=_regionInfo;
-@property (readonly, copy) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
+@property (readonly, nonatomic) id<HMFSystemInfoWiFiDataSource> WiFiDataSource; // @synthesize WiFiDataSource=_WiFiDataSource;
+@property (readonly, copy) HMFMACAddress *WiFiInterfaceMACAddress;
+@property (readonly, nonatomic) id<HMFSystemInfoBluetoothLEDataSource> bluetoothLEDataSource; // @synthesize bluetoothLEDataSource=_bluetoothLEDataSource;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<HMFSystemInfoMarketingInformationDataSource> marketingDataSource; // @synthesize marketingDataSource=_marketingDataSource;
+@property (readonly, getter=isMigrating) BOOL migrating;
+@property (readonly, nonatomic) id<HMFSystemInfoMigrationDataSource> migrationDataSource; // @synthesize migrationDataSource=_migrationDataSource;
+@property (readonly, copy) NSString *model;
+@property (readonly, copy) NSString *name;
+@property (readonly, nonatomic) id<HMFSystemInfoNameDataSource> nameDataSource; // @synthesize nameDataSource=_nameDataSource;
+@property (readonly) long long productClass;
+@property (readonly, nonatomic) id<HMFSystemInfoProductInfoDataSource> productInfoDataSource; // @synthesize productInfoDataSource=_productInfoDataSource;
+@property (readonly) long long productPlatform;
+@property (readonly) long long productVariant;
+@property (readonly, copy) NSString *regionInfo;
+@property (readonly, copy) NSString *serialNumber;
+@property (readonly, nonatomic) id<HMFSystemInfoSerialNumberDataSource> serialNumberDataSource; // @synthesize serialNumberDataSource=_serialNumberDataSource;
+@property (readonly, copy) HMFSoftwareVersion *softwareVersion;
+@property (readonly, nonatomic) id<HMFSystemInfoSoftwareVersionDataSource> softwareVersionDataSource; // @synthesize softwareVersionDataSource=_softwareVersionDataSource;
+@property (readonly) Class superclass;
+@property (readonly) BOOL supportsBLE;
 
++ (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)systemInfo;
 - (void).cxx_destruct;
-- (void)__initialize;
-- (void)dealloc;
-- (id)init;
-- (void)notifyNameUpdated:(id)arg1;
-- (void)setModel:(id)arg1;
-- (void)setRegionInfo:(id)arg1;
-- (void)setSerialNumber:(id)arg1;
-- (void)startMonitoringSystemChanges;
-- (void)updateName;
+- (void)dataSource:(id)arg1 didUpdateMigrating:(BOOL)arg2;
+- (void)dataSource:(id)arg1 didUpdateName:(id)arg2;
 
 @end
 

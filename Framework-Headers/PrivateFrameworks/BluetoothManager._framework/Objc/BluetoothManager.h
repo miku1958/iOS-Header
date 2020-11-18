@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary;
 
@@ -82,6 +82,7 @@
 - (BOOL)isDiscoverable;
 - (BOOL)isServiceSupported:(unsigned int)arg1;
 - (id)localAddress;
+- (int)maskLocalDeviceEvents:(unsigned int)arg1;
 - (id)pairedDevices;
 - (void)postNotification:(id)arg1;
 - (void)postNotificationName:(id)arg1 object:(id)arg2;

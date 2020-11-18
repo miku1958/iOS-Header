@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextGestureClusterKeyboardTextSelectionForEditableTextField.h>
+#import <UIKitCore/UITextGestureClusterKeyboardTextSelectionForEditableTextField.h>
 
-#import <UIKit/_UIKeyboardTextSelectionGestureControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIKeyboardTextSelectionGestureControllerDelegate-Protocol.h>
 
 @class NSString, UIKeyboardTaskQueue, _UIKeyboardTextSelectionController;
 

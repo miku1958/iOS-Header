@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <Vision/VNObservationsCacheKeyProviding-Protocol.h>
+#import <Vision/VNSequencedRequestSupporting-Protocol.h>
 
-@class MLModel, NSString;
+@class MLModel, MLObjectBoundingBoxOutputDescription, NSString;
+@protocol NSObject><NSCopying;
 
-@interface VNCoreMLModel : NSObject <VNObservationsCacheKeyProviding>
+@interface VNCoreMLModel : NSObject <VNSequencedRequestSupporting>
 {
     NSString *_uuidStringForCacheIdentifier;
     int _modelType;
@@ -19,25 +20,38 @@
     NSString *_inputImageKey;
     NSString *_predictedFeatureKey;
     NSString *_predictedProbabilitiesKey;
+    MLObjectBoundingBoxOutputDescription *_boundingBoxOutputDescription;
     unsigned long long _inputImageWidth;
     unsigned long long _inputImageHeight;
+    unsigned long long _scenePrintRevision;
+    NSString *_inputScenePrintKey;
+    long long _inputScenePrintMLMultiArrayDataType;
 }
 
+@property (readonly) MLObjectBoundingBoxOutputDescription *boundingBoxOutputDescription; // @synthesize boundingBoxOutputDescription=_boundingBoxOutputDescription;
+@property (readonly, copy, nonatomic) id<NSObject><NSCopying> cachingIdentifier;
 @property (readonly) unsigned int inputImageFormat; // @synthesize inputImageFormat=_inputImageFormat;
 @property (readonly) unsigned long long inputImageHeight; // @synthesize inputImageHeight=_inputImageHeight;
 @property (strong) NSString *inputImageKey; // @synthesize inputImageKey=_inputImageKey;
 @property (readonly) unsigned long long inputImageWidth; // @synthesize inputImageWidth=_inputImageWidth;
+@property (strong) NSString *inputScenePrintKey; // @synthesize inputScenePrintKey=_inputScenePrintKey;
+@property (readonly) long long inputScenePrintMLMultiArrayDataType; // @synthesize inputScenePrintMLMultiArrayDataType=_inputScenePrintMLMultiArrayDataType;
 @property (strong) MLModel *model; // @synthesize model=_model;
 @property int modelType; // @synthesize modelType=_modelType;
 @property (strong) NSString *predictedFeatureKey; // @synthesize predictedFeatureKey=_predictedFeatureKey;
 @property (readonly) NSString *predictedProbabilitiesKey; // @synthesize predictedProbabilitiesKey=_predictedProbabilitiesKey;
+@property (readonly) unsigned long long scenePrintRevision; // @synthesize scenePrintRevision=_scenePrintRevision;
 
 + (id)modelForMLModel:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (void)_updateModelWithFlexibleImageConstraintUsingWidth:(long long)arg1 height:(long long)arg2;
+- (id)featureValueFromScenePrint:(id)arg1 dataType:(long long)arg2;
 - (id)initWithMLModel:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
 - (id)predictWithCVPixelBuffer:(struct __CVBuffer *)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)predictWithScenePrint:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)sequencedRequestPreviousObservationsKey;
 - (BOOL)setupInputImageFromModelDescription:(id)arg1;
+- (BOOL)wantsSequencedRequestObservationsRecording;
 
 @end
 

@@ -8,18 +8,15 @@
 
 #import <ITMLKit/IKJSDevice-Protocol.h>
 #import <ITMLKit/NSObject-Protocol.h>
-#import <ITMLKit/RadiosPreferencesDelegate-Protocol.h>
 #import <ITMLKit/_IKJSDevice-Protocol.h>
 #import <ITMLKit/_IKJSDeviceProxy-Protocol.h>
 
-@class NSNumber, NSString, RadiosPreferences;
+@class NSNumber, NSString;
 @protocol IKAppDeviceConfig;
 
-@interface IKJSDevice : IKJSObject <RadiosPreferencesDelegate, NSObject, IKJSDevice, _IKJSDeviceProxy, _IKJSDevice>
+@interface IKJSDevice : IKJSObject <NSObject, IKJSDevice, _IKJSDeviceProxy, _IKJSDevice>
 {
-    id _isNetworkTypeChangedToken;
-    id _networkReachabilityChangedToken;
-    RadiosPreferences *_radioPrefs;
+    id _networkPropertiesChangedToken;
     id<IKAppDeviceConfig> _deviceConfig;
 }
 
@@ -45,9 +42,7 @@
 
 + (id)getMobileGestaltString:(struct __CFString *)arg1;
 - (void).cxx_destruct;
-- (void)_notifyObservers;
 - (id)advertisingIdentifier;
-- (void)airplaneModeChanged;
 - (id)asPrivateIKJSDevice;
 - (id)capacity:(id)arg1;
 - (void)dealloc;

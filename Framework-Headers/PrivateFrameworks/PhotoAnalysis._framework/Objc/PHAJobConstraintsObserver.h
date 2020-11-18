@@ -11,6 +11,8 @@
 
 @interface PHAJobConstraintsObserver : NSObject
 {
+    BOOL _shutdownRequested;
+    BOOL _resetTurbo;
     id<PHAJobConstraintsObserverDelegate> _delegate;
     PHAJobConstraints *_currentConstraints;
 }
@@ -19,14 +21,12 @@
 @property (weak, nonatomic) id<PHAJobConstraintsObserverDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (void)_handleBackgroundProcessingAllowedNotification:(id)arg1;
-- (void)_handleBackgroundProcessingAllowedOnSleepWakeNotification:(id)arg1;
-- (void)_handleBackgroundProcessingDisallowedNotification:(id)arg1;
-- (void)_handleBackgroundProcessingDisallowedOnSleepWakeNotification:(id)arg1;
 - (id)acceptConstraints:(id)arg1 mask:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)init;
 - (id)initWithInitialConstraints:(id)arg1 delegate:(id)arg2;
+- (void)resetTurbo;
+- (void)setShutdownRequested;
 
 @end
 

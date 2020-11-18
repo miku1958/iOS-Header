@@ -23,6 +23,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addStateHandler;
 - (void)handleNotification:(id)arg1;
 - (BOOL)handlesNotification:(id)arg1;
 - (id)initWithDelegate:(id)arg1;

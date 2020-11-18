@@ -8,5 +8,6 @@
 
 @interface UIImage (AVAdditions)
 + (id)avkit_flatWhiteResizableTemplateImage;
++ (void)avkit_imageNamed:(id)arg1 completion:(CDUnknownBlockType)arg2;
 @end
 

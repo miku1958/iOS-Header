@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface AVCameraCalibrationDataInternal : NSObject
 {
     CDStruct_8e0628e6 intrinsicMatrix;

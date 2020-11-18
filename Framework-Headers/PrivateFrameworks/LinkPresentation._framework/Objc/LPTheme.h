@@ -45,8 +45,10 @@ __attribute__((visibility("hidden")))
 + (id)themeWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3;
 - (void).cxx_destruct;
 - (id)CSSCustomPropertiesForThemePropertiesInSet:(id)arg1;
-- (id)CSSTextForThemeProperty:(id)arg1;
+- (id)CSSTextForProperty:(id)arg1 withValue:(id)arg2 allowsAlternateProperties:(BOOL)arg3;
+- (id)CSSTextForThemeProperty:(id)arg1 allowsAlternateProperties:(BOOL)arg2;
 - (id)initWithStyle:(long long)arg1 icon:(id)arg2 platform:(long long)arg3;
+- (id)valueForThemeProperty:(id)arg1;
 - (id)valueForUndefinedKey:(id)arg1;
 
 @end

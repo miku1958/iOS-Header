@@ -30,6 +30,7 @@
 + (id)getSharedInstance;
 - (void).cxx_destruct;
 - (BOOL)applyProtoBufData:(id)arg1 callbackOperations:(id)arg2;
+- (id)categoryForCategoryType:(id)arg1;
 - (id)categoryForNumber:(id)arg1;
 - (id)characteristicTypeDescription:(id)arg1;
 - (id)serviceTypeDescription:(id)arg1;

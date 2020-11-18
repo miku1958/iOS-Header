@@ -20,9 +20,12 @@
 - (void).cxx_destruct;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_updateForTemplateChange;
+- (void)_updateLabelColors;
 - (void)_updateLabelsForFontChange;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setForegroundColor:(id)arg1;
+- (void)setUsesMultiColor:(BOOL)arg1;
 
 @end
 

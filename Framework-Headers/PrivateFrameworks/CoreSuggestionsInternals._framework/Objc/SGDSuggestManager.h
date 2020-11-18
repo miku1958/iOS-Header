@@ -8,23 +8,22 @@
 
 #import <CoreSuggestionsInternals/SGDSuggestManagerAllProtocol-Protocol.h>
 
-@class CNContactStore, EKEventStore, NSDictionary, NSOperationQueue, NSString, NSXPCConnection, SGDManagerForCTS, SGQueryPredictions, SGServiceContext, SGSqlEntityStore, SGSuggestHistory, _PASNotificationToken;
-@protocol PMLTrainingProtocol;
+@class CNContactStore, EKEventStore, NSDictionary, NSLock, NSMutableSet, NSOperationQueue, NSString, NSXPCConnection, SGDManagerForCTS, SGServiceContext, SGSqlEntityStore, SGSuggestHistory, SGXpcTransaction, _PASNotificationToken;
 
 @interface SGDSuggestManager : NSObject <SGDSuggestManagerAllProtocol>
 {
     SGSqlEntityStore *_harvestStore;
     NSXPCConnection *_connection;
     SGSuggestHistory *_history;
-    BOOL _dirty;
     _PASNotificationToken *_assetUpdateToken;
     NSOperationQueue *_messageHarvestQueue;
     SGDManagerForCTS *_ctsManager;
     EKEventStore *_ekStore;
     CNContactStore *_contactStore;
     NSDictionary *_bundleIdToPET;
-    id<PMLTrainingProtocol> _pmlTraining;
-    SGQueryPredictions *_queryPredictions;
+    NSLock *_dirtyLock;
+    SGXpcTransaction *_dirtyTransaction;
+    NSMutableSet *_recentlyHarvestedDetail;
     SGServiceContext *_context;
     NSString *_clientName;
 }
@@ -37,7 +36,7 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (struct SGMContactDetailUsedApp_)_appEnumForBundleId:(id)arg1;
-- (BOOL)_canBannerUseStoredDissection:(id)arg1 needsOptionalDissectorsToRun:(BOOL *)arg2 options:(unsigned long long)arg3;
+- (BOOL)_canBannerUseStoredDissection:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)_clientIsMail;
 - (BOOL)_clientIsMessages;
 - (BOOL)_isContactInteresting:(id)arg1 emailEntity:(id)arg2 enrichments:(id)arg3 hasContactCard:(BOOL)arg4;
@@ -46,6 +45,7 @@
 - (void)_onInteractionBlacklistUpdate:(id)arg1;
 - (void)_performAction:(id)arg1 onContactDetailRecord:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_performAction:(id)arg1 onRecord:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)_pmlTraining;
 - (void)_sendChatChangedNotificationWithDomainIdentifier:(id)arg1;
 - (void)_setupHistoryObserver:(id)arg1;
 - (void)_storeAndGeocodeEntity:(id)arg1 spotlightBundleIdentifier:(id)arg2 spotlightUniqueIdentifier:(id)arg3 spotlightDomainIdentifier:(id)arg4 store:(id)arg5 afterCallbackQueue:(id)arg6 finalize:(CDUnknownBlockType)arg7;
@@ -90,7 +90,8 @@
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 domainIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)deleteSpotlightReferencesWithBundleIdentifier:(id)arg1 uniqueIdentifiers:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)dissectMessage:(id)arg1 fromSource:(id)arg2 store:(id)arg3 existingEnrichments:(id)arg4;
+- (id)dissectMessage:(id)arg1 fromSource:(id)arg2 store:(id)arg3;
+- (id)dissectMessage:(id)arg1 fromSource:(id)arg2 store:(id)arg3 context:(id)arg4;
 - (void)drainQueueCompletelyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)emailAddressIsSignificant:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)enqueueSearchableItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -110,7 +111,6 @@
 - (id)initWithMessagesConnection:(id)arg1 store:(id)arg2;
 - (id)initWithStore:(id)arg1;
 - (id)initWithStore:(id)arg1 ctsManager:(id)arg2 ekStore:(id)arg3 contactStore:(id)arg4;
-- (id)initWithStore:(id)arg1 queryPredictions:(id)arg2 ctsManager:(id)arg3 ekStore:(id)arg4 contactStore:(id)arg5;
 - (void)isEnabledWithCompletion:(CDUnknownBlockType)arg1;
 - (void)isEventCandidateForURL:(id)arg1 title:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)isSGEntity:(id)arg1 duplicateOfEKEvent:(id)arg2 withStore:(id)arg3;
@@ -130,7 +130,6 @@
 - (void)logMetricSuggestedContactDetailUsed:(id)arg1 contactIdentifier:(id)arg2 bundleId:(id)arg3;
 - (void)logUnknownContactInformationShownCount:(unsigned long long)arg1 notShownCount:(unsigned long long)arg2 bundleId:(id)arg3;
 - (void)messagesToRefreshWithCompletion:(CDUnknownBlockType)arg1;
-- (void)modelMetadataUpdateWithPayload:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)namesForDetail:(id)arg1 limitTo:(unsigned long long)arg2 prependMaybe:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)namesForDetailCacheSnapshotsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)noopWithCompletion:(CDUnknownBlockType)arg1;
@@ -149,15 +148,13 @@
 - (void)rejectEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)rejectEventByRecordId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)rejectRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)relevantABRecordIDsWithLimit:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeAllStoredPseudoContactsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)reportMessagesFound:(id)arg1 lost:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)resetConfirmationAndRejectionHistory:(CDUnknownBlockType)arg1;
 - (void)resolveFullDownloadRequests:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)schemaOrgToEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendRTCLogsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setQueryPredictionsForTesting:(id)arg1;
-- (void)setupManagerWithConnection:(id)arg1 store:(id)arg2 queryPredictions:(id)arg3 ctsManager:(id)arg4 ekStore:(id)arg5 contactStore:(id)arg6;
+- (void)setupManagerWithConnection:(id)arg1 store:(id)arg2 ctsManager:(id)arg3 ekStore:(id)arg4 contactStore:(id)arg5;
 - (id)shortNamesAndRealtimeEventsFromEntity:(id)arg1 enrichments:(id)arg2 store:(id)arg3;
 - (void)sleepWithCompletion:(CDUnknownBlockType)arg1;
 - (void)spotlightReimportFromIdentifier:(id)arg1 forPersonHandle:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;

@@ -19,6 +19,7 @@
 - (id)_axChatItemForBalloon;
 - (BOOL)_axIsBalloonOfType:(id)arg1;
 - (BOOL)_axIsImessage;
+- (BOOL)_axIsInNotification;
 - (BOOL)_axIsMessageFromMe;
 - (BOOL)_axIsTextMessage;
 - (id)_axMessageForBalloon;

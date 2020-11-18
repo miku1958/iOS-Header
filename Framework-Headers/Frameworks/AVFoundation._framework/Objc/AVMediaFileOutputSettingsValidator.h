@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVOutputSettingsValidation-Protocol.h>
 
 @class AVMediaFileType;
 
+__attribute__((visibility("hidden")))
 @interface AVMediaFileOutputSettingsValidator : NSObject <AVOutputSettingsValidation>
 {
     AVMediaFileType *_fileType;

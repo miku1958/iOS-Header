@@ -40,6 +40,7 @@
 - (void)_deleteMessagesWithRecordIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_deleteStingRaySyncToken;
 - (BOOL)_deviceConditionsAllowsMessageSync;
+- (BOOL)_deviceConditionsAllowsMessageSyncForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (BOOL)_doesAnyRecordZoneIDHavePendingArchivedRecords:(long long)arg1;
 - (void)_fetchArchivedRecordsIfNeeded:(BOOL)arg1 currentBatchCount:(long long)arg2 maxNumberOfBatches:(long long)arg3 WithCompletionBlock:(CDUnknownBlockType)arg4;
 - (void)_fetchMessageZoneChangesSyncType:(long long)arg1 currentBatchCount:(long long)arg2 maxNumberOfBatches:(long long)arg3 completionBlock:(CDUnknownBlockType)arg4;
@@ -74,6 +75,7 @@
 - (BOOL)_shouldMarkAllMessagesAsNeedingSync;
 - (id)_syncOperationGroupName;
 - (void)_updateAllMessagesAsNotNeedingReUpload;
+- (void)_updateDeviceCondictionsToCheckIfNeededForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (void)_writeDirtyMessagesToCloudKitWithCompletion:(CDUnknownBlockType)arg1;
 - (void)clearLocalSyncState;
 - (void)dealloc;

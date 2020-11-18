@@ -9,6 +9,6 @@
 @class NSString;
 
 @protocol BLTSettingSyncingClient <BLTSettingSyncing>
-- (void)enableNotifications:(BOOL)arg1 sectionID:(NSString *)arg2 mirror:(BOOL)arg3 fromRemote:(BOOL)arg4;
+- (void)setNotificationsLevel:(unsigned long long)arg1 sectionID:(NSString *)arg2 mirror:(BOOL)arg3 fromRemote:(BOOL)arg4;
 @end
 

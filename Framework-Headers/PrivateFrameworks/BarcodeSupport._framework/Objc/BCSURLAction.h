@@ -7,13 +7,11 @@
 #import <BarcodeSupport/BCSAction.h>
 
 @class LSApplicationProxy, NSArray, NSURL;
-@protocol BCSCodePayload;
 
 __attribute__((visibility("hidden")))
 @interface BCSURLAction : BCSAction
 {
     NSArray *_appLinks;
-    id<BCSCodePayload> _codePayload;
     LSApplicationProxy *_applicationProxy;
     BOOL _deviceDataIsUnavailable;
     NSURL *_appStoreSearchURLForUnsupportedScheme;
@@ -28,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_actionDescriptionForURL:(id)arg1 application:(id)arg2 shouldShowHostNameForSafariURL:(BOOL)arg3;
 - (id)_actionDescriptionWithoutTargetApplicationForURL:(id)arg1;
-- (BOOL)_isCodeFromQRScanner;
+- (BOOL)_isCodeFromQRScannerInCamera;
 - (void)_resolveTargetApplicationForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldBlockHandlingURL:(id)arg1;
 - (BOOL)_shouldOpenInAppForAppLink:(id)arg1;
@@ -38,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)determineActionabilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithData:(id)arg1 codePayload:(id)arg2;
 - (id)localizedDefaultActionDescription;
+- (id)localizedDefaultActionTitle;
 - (void)performAction;
 - (void)performDefaultAction;
 - (void)performDefaultActionWithFBOptions:(id)arg1;

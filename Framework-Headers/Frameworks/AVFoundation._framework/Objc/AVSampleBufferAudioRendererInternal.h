@@ -4,10 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVMediaDataRequester, AVScheduledAudioParameters, AVWeakReference, NSError, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVSampleBufferAudioRendererInternal : NSObject
 {
     NSString *audioOutputDeviceUniqueID;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class KNAnimatedSlideView, KNPlaybackSession, KNTransitionRenderer, NSArray, NSMapTable, NSMutableArray, NSMutableSet, NSSet;
 
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMapTable *_infoToArrayOfAnimatedBuildsMap;
     NSMapTable *_animatedBuildToRendererMap;
     NSMutableSet *_ambientBuildRenderers;
+    BOOL _isMetalSlide;
     unsigned long long _numberOfAddedEvents;
     KNTransitionRenderer *_transitionRenderer;
     KNPlaybackSession *_session;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSSet *ambientBuildRenderers; // @synthesize ambientBuildRenderers=_ambientBuildRenderers;
 @property (readonly, nonatomic) NSArray *animatedBuilds; // @synthesize animatedBuilds=_animatedBuilds;
 @property (readonly, nonatomic, getter=isFirstBuildEventAutomatic) BOOL firstBuildEventAutomatic;
+@property (readonly, nonatomic) BOOL isMetalSlide; // @synthesize isMetalSlide=_isMetalSlide;
 @property (nonatomic) unsigned long long numberOfAddedEvents; // @synthesize numberOfAddedEvents=_numberOfAddedEvents;
 @property (weak, nonatomic) KNPlaybackSession *session; // @synthesize session=_session;
 @property (readonly, nonatomic) KNTransitionRenderer *transitionRenderer; // @synthesize transitionRenderer=_transitionRenderer;
@@ -51,11 +53,13 @@ __attribute__((visibility("hidden")))
 - (double)initialDelayForEventIndex:(unsigned long long)arg1;
 - (id)lastAnimatedBuildForInfo:(id)arg1;
 - (double)maxScaleFactorForDrawable:(id)arg1;
+- (id)nextRendererAfterRenderer:(id)arg1;
 - (long long)outEventForInfo:(id)arg1;
 - (void)p_addAmbientBuildRenderer:(id)arg1;
 - (id)p_animatedBuildForInfo:(id)arg1 event:(long long)arg2 buildIn:(BOOL)arg3;
 - (id)p_animatedBuildsForInfo:(id)arg1 animationType:(long long)arg2 duringEvent:(long long)arg3 time:(double)arg4;
 - (id)p_applyThemeCurvesToBuildAttributes:(id)arg1;
+- (void)p_checkIfSlideIsMetalCapableWithBuildChunks:(id)arg1 andInfos:(id)arg2;
 - (void)p_convertToBuildEvents:(id)arg1;
 - (id)p_createBuildAnimationRecords:(id)arg1 info:(id)arg2 event:(long long)arg3 start:(double)arg4 eventStart:(double)arg5 animateAtEndOfPreviousBuild:(BOOL)arg6 previousAnimatedBuild:(id)arg7 parentBuild:(id)arg8;
 - (BOOL)p_determineVisiblityOfInfo:(id)arg1 inOverloadedEvent:(long long)arg2 duringEvent:(long long)arg3;
@@ -66,6 +70,7 @@ __attribute__((visibility("hidden")))
 - (id)p_newImplicitAmbientBuildRendererWithDrawable:(id)arg1 stageIndex:(long long)arg2 buildChunk:(id)arg3 startTime:(double)arg4 eventStartTime:(double)arg5 event:(long long)arg6 animateAtEndOfPreviousBuild:(BOOL)arg7;
 - (id)p_newTransition;
 - (id)p_previousAnimatedBuildOfType:(long long)arg1 forInfo:(id)arg2 priorToBuild:(id)arg3;
+- (Class)p_rendererClassForBuildChunk:(id)arg1 parentBuild:(id)arg2 effectClass:(Class *)arg3;
 - (void)p_setRenderer:(id)arg1 forAnimatedBuild:(id)arg2;
 - (void)p_sortAnimatedBuilds;
 - (void)p_updatePreviousAndFinalAttributes;
@@ -74,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)previousBuildInForInfo:(id)arg1 priorToBuild:(id)arg2;
 - (id)previousContentBuildForInfo:(id)arg1 priorToBuild:(id)arg2;
 - (id)rendererForAnimatedBuild:(id)arg1;
+- (id)sortRenderers:(id)arg1;
 
 @end
 

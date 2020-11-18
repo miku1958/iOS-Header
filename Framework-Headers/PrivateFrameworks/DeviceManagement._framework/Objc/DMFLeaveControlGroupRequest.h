@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Catalyst/CATTaskRequest.h>
+#import <DeviceManagement/DMFTaskRequest.h>
 
 @class DMFControlGroupIdentifier, NSArray;
 
-@interface DMFLeaveControlGroupRequest : CATTaskRequest
+@interface DMFLeaveControlGroupRequest : DMFTaskRequest
 {
     DMFControlGroupIdentifier *_groupIdentifier;
     NSArray *_leaderIdentifiers;

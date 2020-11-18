@@ -9,16 +9,16 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/HMFNetServiceBrowserDelegate-Protocol.h>
 
-@class HMFNetService, HMFNetServiceBrowser, NSObject, NSString;
+@class HMFNetService, HMFNetServiceBrowser, HMFUnfairLock, NSObject, NSString;
 @protocol OS_dispatch_queue, _HMFNetServiceMonitorDelegate;
 
 @interface _HMFNetServiceMonitor : HMFObject <HMFNetServiceBrowserDelegate, HMFLogging>
 {
+    HMFUnfairLock *_lock;
     BOOL _reachable;
     HMFNetService *_netService;
     id<_HMFNetServiceMonitorDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFNetServiceBrowser *_netServiceBrowser;
 }
 
@@ -29,7 +29,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy) HMFNetService *netService; // @synthesize netService=_netService;
 @property (readonly, nonatomic) HMFNetServiceBrowser *netServiceBrowser; // @synthesize netServiceBrowser=_netServiceBrowser;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, getter=isReachable) BOOL reachable; // @synthesize reachable=_reachable;
 @property (readonly) Class superclass;
 
@@ -41,8 +40,6 @@
 - (void)netServiceBrowser:(id)arg1 didAddService:(id)arg2;
 - (void)netServiceBrowser:(id)arg1 didRemoveService:(id)arg2;
 - (void)netServiceBrowser:(id)arg1 didStopBrowsingWithError:(id)arg2;
-- (void)notifyDelegateOfReachabilityChange:(BOOL)arg1;
-- (void)notifyDelegateOfUpdatedNetService:(id)arg1;
 - (void)setNetService:(id)arg1;
 - (void)setReachable:(BOOL)arg1;
 

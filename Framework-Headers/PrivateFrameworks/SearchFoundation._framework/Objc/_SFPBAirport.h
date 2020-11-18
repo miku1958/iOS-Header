@@ -33,17 +33,6 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *district; // @synthesize district=_district;
-@property (readonly, nonatomic) BOOL hasCity;
-@property (readonly, nonatomic) BOOL hasCode;
-@property (readonly, nonatomic) BOOL hasCountry;
-@property (readonly, nonatomic) BOOL hasCountryCode;
-@property (readonly, nonatomic) BOOL hasDistrict;
-@property (readonly, nonatomic) BOOL hasLocation;
-@property (readonly, nonatomic) BOOL hasName;
-@property (readonly, nonatomic) BOOL hasPostalCode;
-@property (readonly, nonatomic) BOOL hasState;
-@property (readonly, nonatomic) BOOL hasStreet;
-@property (readonly, nonatomic) BOOL hasTimezone;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBLatLng *location; // @synthesize location=_location;

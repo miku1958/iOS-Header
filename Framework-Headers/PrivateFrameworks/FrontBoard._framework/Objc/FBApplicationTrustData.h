@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBApplicationInfo, NSArray;
 @protocol OS_dispatch_queue;
@@ -21,13 +21,13 @@
 
 @property (readonly, nonatomic) NSArray *profiles; // @synthesize profiles=_provisioningProfiles;
 
+- (void).cxx_destruct;
 - (void)_acceptApplicationSignatureIdentity;
 - (id)_initWithApplicationInfo:(id)arg1 andProvisioningProfiles:(id)arg2 isManaged:(BOOL)arg3;
 - (void)_initializeProfiles:(id)arg1;
 - (id)_workQueue_expirationDateForProvisioningProfile;
 - (BOOL)_workQueue_signatureNeedsExplicitUserTrust;
 - (void)acknowledgeTrust;
-- (void)dealloc;
 - (unsigned long long)trustState;
 - (unsigned long long)trustStateWithTrustRequiredReasons:(unsigned long long *)arg1;
 

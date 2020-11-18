@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TNDocumentRoot, TNPageCoordinateDictionary, TNPrintProperties, TNSheet, TSUPointerKeyDictionary;
 @protocol TNPageControllerDelegate;
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     BOOL _updateViewScaleForDrawablesChangeAfterProcessingChanges;
     BOOL _postAutoFitContentScaleDidChangeNotificationAfterProcessingChanges;
     BOOL _inDynamicContentScaleChange;
-    struct TSUCellCoord _maxPageCoordinate;
     NSObject<TNPageControllerDelegate> *_delegate;
     TNDocumentRoot *_documentRoot;
     TNSheet *_sheet;
@@ -34,6 +33,7 @@ __attribute__((visibility("hidden")))
     long long _cachedPageCountDuringDynamicContentScaleChange;
     long long _priorPageCount;
     long long _subsequentPageCount;
+    struct TSUCellCoord _maxPageCoordinate;
     TNPrintProperties *_printProperties;
 }
 
@@ -85,19 +85,19 @@ __attribute__((visibility("hidden")))
 - (void)invalidatePageLayoutGeometries;
 - (BOOL)isPagePlaceholderAtPageCoordinate:(struct TSUCellCoord)arg1;
 - (void)layoutAtPageIndex:(unsigned long long)arg1 forLayoutController:(id)arg2;
-- (void)layoutInPageRange:(CDStruct_d8c645bd)arg1 forLayoutController:(id)arg2;
+- (void)layoutInPageRange:(CDStruct_39acd760)arg1 forLayoutController:(id)arg2;
 - (void)p_clearHintCache;
 - (void)p_computePriorPageCountForCurrentSheet;
 - (void)p_computeSubsequentPageCountForCurrentSheet;
 - (void)p_didEndDynamicContentScaleChange:(id)arg1;
-- (void)p_enumerateOverPageRange:(CDStruct_d8c645bd)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)p_enumerateOverPageRange:(CDStruct_39acd760)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (BOOL)p_headersOrFootersContainPageNumberRelatedAttachments;
 - (id)p_hintCacheForInfo:(id)arg1;
 - (void)p_invalidateCachedAutoFitContentScaleForSheet:(id)arg1 notify:(BOOL)arg2;
 - (void)p_invalidatePageCounts;
 - (id)p_layoutForInfo:(id)arg1 atCoordinate:(struct TSUCellCoord)arg2 parentLayout:(id)arg3;
 - (void)p_layoutInfo:(id)arg1 intoPageLayout:(id)arg2 atPageCoordinate:(struct TSUCellCoord)arg3;
-- (void)p_layoutInfo:(id)arg1 intoPageRange:(CDStruct_d8c645bd)arg2;
+- (void)p_layoutInfo:(id)arg1 intoPageRange:(CDStruct_39acd760)arg2;
 - (void)p_measureHeadersAndFooters;
 - (struct TSUCellCoord)p_pageCoordinateForPageLayoutAtDevicePoint:(struct CGPoint)arg1;
 - (long long)p_pageCountForSheet:(id)arg1;
@@ -107,7 +107,7 @@ __attribute__((visibility("hidden")))
 - (double)p_printViewDefaultUserViewScale;
 - (long long)p_priorPageCount;
 - (long long)p_updateCachedPageCountForCurrentSheet;
-- (void)p_updateVisiblePageRange:(CDStruct_d8c645bd)arg1 forLayoutController:(id)arg2;
+- (void)p_updateVisiblePageRange:(CDStruct_39acd760)arg1 forLayoutController:(id)arg2;
 - (void)p_willBeginDynamicContentScaleChange:(id)arg1;
 - (struct TSUCellCoord)pageCoordinateForDrawableAtUnscaledPoint:(struct CGPoint)arg1;
 - (struct TSUCellCoord)pageCoordinateForMaxVisiblePage;
@@ -118,11 +118,11 @@ __attribute__((visibility("hidden")))
 - (id)pageLayoutGeometryForPageCoordinate:(struct TSUCellCoord)arg1;
 - (id)pageLayoutGeometryForPrintingAtPageCoordinate:(struct TSUCellCoord)arg1;
 - (unsigned long long)pageNumberForPageCoordinate:(struct TSUCellCoord)arg1;
-- (CDStruct_d8c645bd)pageRangeForContent;
-- (CDStruct_d8c645bd)pageRangeForContentWithUpperBound:(struct TSUCellCoord)arg1;
-- (CDStruct_d8c645bd)pageRangeForInfo:(id)arg1 upperBound:(struct TSUCellCoord)arg2;
-- (CDStruct_d8c645bd)pageRangeForPageIndex:(unsigned long long)arg1;
-- (CDStruct_d8c645bd)pageRangeWithPlaceholdersWithUpperBound:(struct TSUCellCoord)arg1;
+- (CDStruct_39acd760)pageRangeForContent;
+- (CDStruct_39acd760)pageRangeForContentWithUpperBound:(struct TSUCellCoord)arg1;
+- (CDStruct_39acd760)pageRangeForInfo:(id)arg1 upperBound:(struct TSUCellCoord)arg2;
+- (CDStruct_39acd760)pageRangeForPageIndex:(unsigned long long)arg1;
+- (CDStruct_39acd760)pageRangeWithPlaceholdersWithUpperBound:(struct TSUCellCoord)arg1;
 - (struct CGSize)pageSizeWithGutter;
 - (struct CGRect)printingLayoutRectForPageIndex:(unsigned long long)arg1;
 - (void)registerPageLayout:(id)arg1 atPageCoordinate:(struct TSUCellCoord)arg2;

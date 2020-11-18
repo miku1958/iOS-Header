@@ -48,7 +48,9 @@
 + (void)resetLocaleIfNeeded;
 + (id)scriptKey;
 + (double)unhighlightedCircleViewAlpha;
++ (BOOL)useLargeFont;
 + (BOOL)usesBoldAssets;
++ (BOOL)usesButtonSaturationFilters;
 + (BOOL)usesTelephonyGlyphsWhereAvailable;
 + (double)verticalPadding;
 - (void).cxx_destruct;

@@ -22,8 +22,8 @@
 @property (readonly, strong, nonatomic) FBSceneSnapshot *sceneSnapshot; // @synthesize sceneSnapshot=_snapshot;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_initWithSnapshot:(id)arg1;
-- (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

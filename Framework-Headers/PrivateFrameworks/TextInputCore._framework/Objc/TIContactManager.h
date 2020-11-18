@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/TIContactManaging-Protocol.h>
 
@@ -24,8 +24,8 @@
 + (void)setSharedTIContactManager:(id)arg1;
 + (id)sharedTIContactManager;
 + (id)singletonInstance;
+- (void).cxx_destruct;
 - (CDUnknownBlockType)addContactObserver:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (void)getOnce:(CDUnknownBlockType)arg1;
 - (void)handleMemoryPressureLevel:(unsigned long long)arg1 excessMemoryInBytes:(unsigned long long)arg2;
 - (void)keyboardActivityDidTransition:(id)arg1;

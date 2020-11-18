@@ -12,7 +12,6 @@
     unsigned int _task;
     BOOL _taskIs64Bit;
     BOOL _stopped;
-    BOOL _shouldTouchPages;
 }
 
 + (BOOL)taskIs64Bit:(unsigned int)arg1;
@@ -21,6 +20,7 @@
 - (void)dealloc;
 - (void)flushMemoryCache;
 - (id)initWithTask:(unsigned int)arg1;
+- (int)mapAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 returnedAddress:(unsigned long long *)arg3 returnedSize:(unsigned long long *)arg4;
 - (int)peekAtAddress:(unsigned long long)arg1 size:(unsigned long long)arg2 returnsBuf:(void **)arg3;
 - (int)readPointerAt:(unsigned long long)arg1 value:(unsigned long long *)arg2;
 - (int)startPeeking;

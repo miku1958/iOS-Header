@@ -22,8 +22,10 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithLabel:(id)arg1 extractionType:(unsigned long long)arg2 recordId:(id)arg3;
 - (id)initWithLabel:(id)arg1 extractionType:(unsigned long long)arg2 recordId:(id)arg3 origin:(id)arg4;
-- (BOOL)isEqualToSuggestion:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToLabeledObject:(id)arg1;
 - (id)localizedLabel;
 
 @end

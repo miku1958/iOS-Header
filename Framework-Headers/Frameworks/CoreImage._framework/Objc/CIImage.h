@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreImage/NSCopying-Protocol.h>
 #import <CoreImage/NSSecureCoding-Protocol.h>
 
-@class AVDepthData, CIFilterShape, NSDictionary, NSURL;
+@class AVDepthData, AVPortraitEffectsMatte, CIFilterShape, NSDictionary, NSURL;
 
 @interface CIImage : NSObject <NSSecureCoding, NSCopying>
 {
@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) AVDepthData *depthData;
 @property (readonly, nonatomic) struct CGRect extent;
 @property (readonly, nonatomic) struct __CVBuffer *pixelBuffer;
+@property (readonly, nonatomic) AVPortraitEffectsMatte *portraitEffectsMatte;
 @property (readonly) NSDictionary *properties;
 @property (readonly) NSURL *url;
 
@@ -56,6 +57,8 @@
 + (id)imageWithImageProvider:(id)arg1 userInfo:(id)arg2 size:(struct CGSize)arg3 format:(int)arg4 flipped:(BOOL)arg5 colorSpace:(struct CGColorSpace *)arg6;
 + (id)imageWithInternalRepresentation:(void *)arg1;
 + (id)imageWithMTLTexture:(id)arg1 options:(id)arg2;
++ (id)imageWithPortaitEffectsMatte:(id)arg1;
++ (id)imageWithPortaitEffectsMatte:(id)arg1 options:(id)arg2;
 + (id)imageWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 colorSpace:(struct CGColorSpace *)arg4;
 + (id)imageWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 options:(id)arg4;
 + (id)imageWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 options:(id)arg3;
@@ -71,7 +74,7 @@
 + (BOOL)supportsSecureCoding;
 - (id)TIFFRepresentation;
 - (id)_autoRedEyeFilterWithFeatures:(id)arg1 imageProperties:(id)arg2 context:(id)arg3 options:(id)arg4;
-- (id)_dictForFeature:(id)arg1 scale:(double)arg2 imageHeight:(float)arg3;
+- (id)_dictForFeature:(id)arg1 invOrientationTransform:(struct CGAffineTransform)arg2 extent:(struct CGRect)arg3;
 - (id)_imageByApplyingBlur:(double)arg1;
 - (id)_imageByApplyingGamma:(double)arg1;
 - (id)_imageByClampingAlpha;
@@ -93,8 +96,8 @@
 - (struct __CVBuffer *)_originalCVPixelBuffer;
 - (id)_pdfDataRepresentation;
 - (id)_scaleImageToMaxDimension:(unsigned int)arg1;
-- (void)_setOriginalCGImage:(struct CGImage *)arg1;
-- (void)_setOriginalCVPixelBuffer:(struct __CVBuffer *)arg1;
+- (void)_setOriginalCGImage:(struct CGImage *)arg1 options:(id)arg2;
+- (void)_setOriginalCVPixelBuffer:(struct __CVBuffer *)arg1 options:(id)arg2;
 - (id)autoAdjustmentFilters;
 - (id)autoAdjustmentFiltersWithImageProperties:(id)arg1 options:(id)arg2;
 - (id)autoAdjustmentFiltersWithOptions:(id)arg1;
@@ -126,21 +129,26 @@
 - (id)imageByColorMatchingWorkingSpaceToRGBorGrayColorSpace:(struct CGColorSpace *)arg1;
 - (id)imageByCompositingOverImage:(id)arg1;
 - (id)imageByCroppingToRect:(struct CGRect)arg1;
+- (id)imageByInsertingIntermediate;
+- (id)imageByInsertingIntermediate:(BOOL)arg1;
 - (id)imageByPremultiplyingAlpha;
 - (id)imageBySamplingLinear;
 - (id)imageBySamplingNearest;
 - (id)imageBySettingAlphaOneInExtent:(struct CGRect)arg1;
 - (id)imageBySettingProperties:(id)arg1;
+- (id)imageBySettingPropertiesNoCopy:(id)arg1;
 - (id)imageByTaggingWithColorSpace:(struct CGColorSpace *)arg1;
 - (id)imageByUnpremultiplyingAlpha;
 - (struct CGAffineTransform)imageTransformForCGOrientation:(unsigned int)arg1;
 - (struct CGAffineTransform)imageTransformForOrientation:(int)arg1;
 - (id)imageWithExtent:(struct CGRect)arg1 processorDescription:(id)arg2 argumentDigest:(unsigned long long)arg3 inputFormat:(int)arg4 outputFormat:(int)arg5 options:(id)arg6 roiCallback:(CDUnknownBlockType)arg7 processor:(CDUnknownBlockType)arg8;
+- (id)imageWithMesh:(id)arg1 transform:(struct CGAffineTransform)arg2;
 - (id)init;
 - (id)initAuxiliaryWithImageSource:(struct CGImageSource *)arg1 options:(id)arg2 depth:(BOOL)arg3;
 - (id)initForRenderingWithMPS:(id)arg1 orNonMPS:(id)arg2;
 - (id)initForRenderingWithMetal:(id)arg1 orNonMetal:(id)arg2;
 - (id)initForRenderingWithMetalContext:(id)arg1 orOpenGLContextUsingMetal:(id)arg2 orNonMetalContext:(id)arg3;
+- (id)initMatteWithImageSource:(struct CGImageSource *)arg1 options:(id)arg2;
 - (id)initWithArrayOfImages:(id)arg1 selector:(CDUnknownBlockType)arg2;
 - (id)initWithAttributedString:(id)arg1 format:(int)arg2;
 - (id)initWithAttributedString:(id)arg1 format:(int)arg2 options:(id)arg3;
@@ -171,13 +179,19 @@
 - (id)initWithImageProvider:(id)arg1 userInfo:(id)arg2 size:(struct CGSize)arg3 format:(int)arg4 flipped:(BOOL)arg5 colorSpace:(struct CGColorSpace *)arg6;
 - (id)initWithImageProvider:(CDUnknownBlockType)arg1 width:(unsigned long long)arg2 height:(unsigned long long)arg3 format:(int)arg4 colorSpace:(struct CGColorSpace *)arg5 options:(id)arg6;
 - (id)initWithMTLTexture:(id)arg1 options:(id)arg2;
+- (id)initWithPortaitEffectsMatte:(id)arg1;
+- (id)initWithPortaitEffectsMatte:(id)arg1 options:(id)arg2;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 colorSpace:(struct CGColorSpace *)arg4;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 flipped:(BOOL)arg3 options:(id)arg4;
 - (id)initWithTexture:(unsigned int)arg1 size:(struct CGSize)arg2 options:(id)arg3;
+- (struct CGAffineTransform)inverseImageTransformForOrientation:(int)arg1;
 - (BOOL)isOpaque;
 - (id)localLightStatistics;
 - (id)localLightStatisticsNoProxy;
 - (id)localLightStatisticsWithProxy:(BOOL)arg1;
+- (id)metalImageByApplyingFilter:(id)arg1;
+- (id)metalImageByApplyingFilter:(id)arg1 withInputParameters:(id)arg2;
+- (struct CGPoint)pointWithDictionary:(id)arg1 name:(id)arg2 index:(int)arg3 transformedBy:(struct CGAffineTransform)arg4;
 - (void)printTree;
 - (struct CGRect)regionOfInterestForImage:(id)arg1 inRect:(struct CGRect)arg2;
 - (void)setCacheHint:(BOOL)arg1;

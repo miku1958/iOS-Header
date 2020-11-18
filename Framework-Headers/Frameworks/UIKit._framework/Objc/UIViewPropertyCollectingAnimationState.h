@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewInProcessAnimationState.h>
+#import <UIKitCore/UIViewInProcessAnimationState.h>
 
 @class _UICompoundObjectMap;
 
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)actionForLayer:(id)arg1 forKey:(id)arg2 forView:(id)arg3;
 - (id)init;
-- (void)pop;
 
 @end
 

@@ -16,8 +16,11 @@
     NSMutableSet *_lazyMonitorNames;
     CDUnknownBlockType _generalInstantHandler;
     CDUnknownBlockType _generalHistoricalHandler;
+    CDUnknownBlockType _generalHistoricalDeletingHandler;
+    CDUnknownBlockType _generalShutdownHandler;
     NSMutableDictionary *_instantHandlerMap;
     NSMutableDictionary *_historicalHandlerMap;
+    NSMutableSet *_shutdownHandlingMonitors;
     NSObject<OS_dispatch_queue> *_monitorWorkQueue;
 }
 
@@ -41,6 +44,7 @@
 - (id)currentEvent;
 - (id)currentEventForStream:(id)arg1;
 - (void)deliverNotificationEvent:(id)arg1;
+- (void)handleShutdownNotification;
 - (BOOL)hasMonitor:(id)arg1;
 - (id)init;
 - (id)initWithEventStreams:(id)arg1;
@@ -48,10 +52,12 @@
 - (id)lastUpdateForStream:(id)arg1;
 - (void)populateCurrentValueForStreamName:(id)arg1;
 - (void)removeMonitor:(id)arg1;
+- (void)setHistoricalDeletingHandler:(CDUnknownBlockType)arg1;
 - (void)setHistoricalHandler:(CDUnknownBlockType)arg1;
 - (void)setHistoricalHandler:(CDUnknownBlockType)arg1 forStream:(id)arg2;
 - (void)setInstantHandler:(CDUnknownBlockType)arg1;
 - (void)setInstantHandler:(CDUnknownBlockType)arg1 forStream:(id)arg2;
+- (void)setShutdownHandler:(CDUnknownBlockType)arg1;
 - (void)start;
 - (void)startMonitorForStream:(id)arg1;
 - (void)stop;

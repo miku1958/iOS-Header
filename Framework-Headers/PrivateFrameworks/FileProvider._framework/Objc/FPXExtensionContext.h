@@ -74,7 +74,6 @@ __attribute__((visibility("hidden")))
 - (void)itemForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)privilegedValuesForAttributes:(id)arg1 forItemAtURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)providePlaceholderAtURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)refreshInstalledAppsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeListenerDelegate:(id)arg1;
 - (void)removeTrashedItemsOlderThanDate:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setAlternateContentsURL:(id)arg1 onDocumentURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

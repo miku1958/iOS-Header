@@ -41,7 +41,6 @@
 - (void)layoutMarginsDidChange;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
-- (void)staticViewNeedsDisplay;
 
 @end
 

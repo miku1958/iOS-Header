@@ -12,30 +12,38 @@
 
 @interface CEMNetworkVPNAppLayerDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    NSString *_payloadVPNUUID;
+    NSArray *_payloadSafariDomains;
+    NSNumber *_payloadOnDemandMatchAppEnabled;
+    NSArray *_payloadSMBDomains;
+    NSString *_payloadProviderType;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSNumber *payloadOnDemandMatchAppEnabled;
-@property (readonly, nonatomic) NSArray *payloadSafariDomains;
-@property (readonly, nonatomic) NSString *payloadVPNUUID;
+@property (copy, nonatomic) NSNumber *payloadOnDemandMatchAppEnabled; // @synthesize payloadOnDemandMatchAppEnabled=_payloadOnDemandMatchAppEnabled;
+@property (copy, nonatomic) NSString *payloadProviderType; // @synthesize payloadProviderType=_payloadProviderType;
+@property (copy, nonatomic) NSArray *payloadSMBDomains; // @synthesize payloadSMBDomains=_payloadSMBDomains;
+@property (copy, nonatomic) NSArray *payloadSafariDomains; // @synthesize payloadSafariDomains=_payloadSafariDomains;
+@property (copy, nonatomic) NSString *payloadVPNUUID; // @synthesize payloadVPNUUID=_payloadVPNUUID;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 withVPNUUID:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 withVPNUUID:(id)arg2 withSafariDomains:(id)arg3 withOnDemandMatchAppEnabled:(id)arg4 withSMBDomains:(id)arg5 withProviderType:(id)arg6;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

@@ -21,6 +21,7 @@
 + (id)__name_KEY;
 + (id)kindWithAlbumKind:(id)arg1;
 - (id)artworkCatalog;
+- (id)humanDescription;
 
 @end
 

@@ -42,6 +42,7 @@
 - (void).cxx_destruct;
 - (id)_compressedDataForData:(id)arg1;
 - (BOOL)_shouldHandleEvent;
+- (void)_stop;
 - (void)dealloc;
 - (id)initWithInputStream:(id)arg1 queue:(id)arg2;
 - (void)readAllDataIntoFileHandle:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -49,6 +50,7 @@
 - (id)readAllDataWithError:(id *)arg1;
 - (void)start;
 - (void)stop;
+- (void)stopWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 
 @end

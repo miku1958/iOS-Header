@@ -51,7 +51,6 @@
 @property (nonatomic) float opticalVignetting; // @synthesize opticalVignetting=_opticalVignetting;
 @property (nonatomic) unsigned long long projection; // @synthesize projection=_projection;
 @property (readonly, nonatomic) CDStruct_14d5dc5e projectionMatrix;
-@property (readonly, nonatomic) struct RTCamera *rtCamera;
 @property (nonatomic) float sensorAspect;
 @property (nonatomic) MISSING_TYPE *sensorEnlargement;
 @property (nonatomic) MISSING_TYPE *sensorShift;
@@ -65,6 +64,7 @@
 - (id)bokehKernelWithSize: /* Error: Ran out of types for this method. */;
 - (float)circleOfConfusionForDistance:(float)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (float)fov;
 - (void)frameBoundingBox:(struct)arg1 setNearAndFar:(BOOL)arg2;
 - (CDStruct_14d5dc5e)getProjectionMatrixAtTime:(double)arg1;
@@ -73,6 +73,7 @@
 - (void)lookAt: /* Error: Ran out of types for this method. */;
 - (void)lookAt:from: /* Error: Ran out of types for this method. */;
 - (MISSING_TYPE *)rayTo:forViewPort: /* Error: Ran out of types for this method. */;
+- (struct RTCamera *)rtCamera;
 - (void)setAperture:(float)arg1;
 - (void)setAspect:(float)arg1;
 - (void)setFov:(float)arg1;

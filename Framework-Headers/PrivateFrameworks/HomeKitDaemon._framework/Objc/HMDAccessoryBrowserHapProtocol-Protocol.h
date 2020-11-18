@@ -9,7 +9,7 @@
 
 @protocol HMDAccessoryBrowserHapProtocol
 - (void)configureAccessory:(HMDHAPAccessory *)arg1 trackState:(BOOL)arg2 connectionPriority:(BOOL)arg3;
-- (void)retrieveCurrentStateForIdentifer:(NSString *)arg1 onQueue:(NSObject<OS_dispatch_queue> *)arg2 withCompletion:(void (^)(NSNumber *, BOOL))arg3;
+- (void)retrieveCurrentStateForIdentifer:(NSString *)arg1 onQueue:(NSObject<OS_dispatch_queue> *)arg2 withCompletion:(void (^)(NSNumber *, BOOL, unsigned long long))arg3;
 - (void)updateBroadcastKeyForIdentifer:(NSString *)arg1 key:(NSData *)arg2 keyUpdatedStateNumber:(NSNumber *)arg3 keyUpdatedTime:(double)arg4;
 - (void)updateStateForIdentifier:(NSString *)arg1 stateNumber:(NSNumber *)arg2;
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGraphicsRendererFormat.h>
+#import <UIKitCore/UIGraphicsRendererFormat.h>
 
 @class NSDictionary, NSMutableData, NSURL;
 

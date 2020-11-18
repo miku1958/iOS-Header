@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSBlockSentinelSignalContext-Protocol.h>
 
@@ -18,7 +18,7 @@
 }
 
 @property (nonatomic, getter=isComplete) BOOL complete; // @synthesize complete=_complete;
-@property (nonatomic) id context; // @synthesize context=_context;
+@property (weak, nonatomic) id context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isFailed) BOOL failed; // @synthesize failed=_failed;
@@ -27,6 +27,7 @@
 
 + (id)context;
 + (id)failureContext;
+- (void).cxx_destruct;
 
 @end
 

@@ -11,6 +11,7 @@
 @protocol PUOneUpTilingLayoutDelegate <NSObject>
 
 @optional
+- (double)alphaForReviewScreenBarsInLayout:(PUOneUpTilingLayout *)arg1;
 - (struct CGPoint)layout:(PUOneUpTilingLayout *)arg1 accessoryOffsetForItemAtIndexPath:(NSIndexPath *)arg2;
 - (double)layout:(PUOneUpTilingLayout *)arg1 aspectRatioForItemAtIndexPath:(NSIndexPath *)arg2;
 - (struct CGSize)layout:(PUOneUpTilingLayout *)arg1 assetExplorerReviewScreenBadgeSizeForItemAtIndexPath:(NSIndexPath *)arg2;
@@ -21,11 +22,13 @@
 - (double)layout:(PUOneUpTilingLayout *)arg1 minimumVisibleAccessoryHeightForItemAtIndexPath:(NSIndexPath *)arg2;
 - (double)layout:(PUOneUpTilingLayout *)arg1 minimumVisibleContentHeightForItemAtIndexPath:(NSIndexPath *)arg2;
 - (PUModelTileTransform *)layout:(PUOneUpTilingLayout *)arg1 modelTileTransformForItemAtIndexPath:(NSIndexPath *)arg2;
+- (BOOL)layout:(PUOneUpTilingLayout *)arg1 shouldMoveProgressIndicatorForItemAtIndexPath:(NSIndexPath *)arg2;
 - (BOOL)layout:(PUOneUpTilingLayout *)arg1 shouldScaleToFitSafeInsetsForItemAtIndexPath:(NSIndexPath *)arg2;
 - (BOOL)layout:(PUOneUpTilingLayout *)arg1 shouldShowAccessoryForItemAtIndexPath:(NSIndexPath *)arg2;
 - (BOOL)layout:(PUOneUpTilingLayout *)arg1 shouldShowBufferingIndicatorForItemAtIndexPath:(NSIndexPath *)arg2;
 - (BOOL)layout:(PUOneUpTilingLayout *)arg1 shouldShowPlayButtonForItemAtIndexPath:(NSIndexPath *)arg2;
 - (BOOL)layout:(PUOneUpTilingLayout *)arg1 shouldShowProgressIndicatorForItemAtIndexPath:(NSIndexPath *)arg2;
 - (BOOL)layout:(PUOneUpTilingLayout *)arg1 shouldShowVideoPlaceholderForItemAtIndexPath:(NSIndexPath *)arg2;
+- (BOOL)layoutShouldShowReviewScreenScrubberBar:(PUOneUpTilingLayout *)arg1;
 @end
 

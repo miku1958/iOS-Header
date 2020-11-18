@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIDebuggingInformationValueViewObserver-Protocol.h>
-#import <UIKit/UIDebuggingInformationViewController-Protocol.h>
-#import <UIKit/UITableViewDataSource-Protocol.h>
-#import <UIKit/UITableViewDelegate-Protocol.h>
+#import <UIKitCore/UIDebuggingInformationValueViewObserver-Protocol.h>
+#import <UIKitCore/UIDebuggingInformationViewController-Protocol.h>
+#import <UIKitCore/UITableViewDataSource-Protocol.h>
+#import <UIKitCore/UITableViewDelegate-Protocol.h>
 
 @class NSMutableArray, NSMutableDictionary, NSString, UITableView;
 

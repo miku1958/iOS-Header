@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CLLocation, NSArray, NSCountedSet, NSDate, NSMutableArray, NSMutableSet, NSString;
 @protocol NSCopying;
@@ -32,7 +32,7 @@
 @property (strong, nonatomic, setter=_setEndingDate:) NSDate *endingDate; // @synthesize endingDate=__endingDate;
 @property (nonatomic) short generationType; // @synthesize generationType=_generationType;
 @property (readonly, copy, nonatomic) NSArray *nodes;
-@property (readonly, nonatomic) NSObject<NSCopying> *objectID; // @synthesize objectID=__objectID;
+@property (copy, nonatomic) NSObject<NSCopying> *objectID; // @synthesize objectID=__objectID;
 @property (strong, nonatomic, setter=_setStartingDate:) NSDate *startingDate; // @synthesize startingDate=__startingDate;
 @property (strong, nonatomic) NSString *title; // @synthesize title=__title;
 @property (nonatomic) BOOL usedLocationsOfInterest; // @synthesize usedLocationsOfInterest=__usedLocationsOfInterest;

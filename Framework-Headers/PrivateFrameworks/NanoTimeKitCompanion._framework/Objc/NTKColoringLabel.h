@@ -10,14 +10,13 @@
 #import <NanoTimeKitCompanion/NTKColoringView-Protocol.h>
 #import <NanoTimeKitCompanion/NTKTimeTravelState-Protocol.h>
 
-@class CLKFont, CLKTextProvider, NSAttributedString, NSParagraphStyle, NSString, UIColor, UIFont, _NTKColorManager;
+@class CLKDevice, CLKFont, CLKTextProvider, NSAttributedString, NSParagraphStyle, NSString, UIColor, UIFont, _NTKColorManager;
 
 @interface NTKColoringLabel : NTKLegibilityLabel <NTKColoringView, CLKUILabel, NTKTimeTravelState>
 {
+    CLKDevice *_device;
     unsigned long long _options;
     _NTKColorManager *_colorManager;
-    struct CGSize _cachedSingleLineSize;
-    BOOL _cachedSizeIsValid;
     struct UIEdgeInsets _cachedOpticalEdgeInsets;
     BOOL _cachedOpticalEdgeInsetsIsValid;
     struct NSNumber *_updateToken;
@@ -25,18 +24,25 @@
     CLKFont *_preTimeTravelFont;
     BOOL _inTimeTravel;
     BOOL _uppercase;
+    BOOL _usesTextProviderTintColoring;
+    BOOL _cachedSizeIsValid;
+    BOOL _usesTextProviderSize;
     UIColor *_overrideColor;
     CLKTextProvider *_textProvider;
     CLKFont *_textProviderFont;
     CLKFont *_textProviderSmallCapsBaseFont;
     double _maxWidth;
     NSParagraphStyle *_paragraphStyle;
+    double _tracking;
     CDUnknownBlockType _nowProvider;
     CDUnknownBlockType _needsResizeHandler;
+    struct CGSize _cachedSingleLineSize;
 }
 
 @property (readonly, nonatomic) double _lastLineBaseline;
 @property (copy, nonatomic) NSAttributedString *attributedText;
+@property (nonatomic) struct CGSize cachedSingleLineSize; // @synthesize cachedSingleLineSize=_cachedSingleLineSize;
+@property (nonatomic) BOOL cachedSizeIsValid; // @synthesize cachedSizeIsValid=_cachedSizeIsValid;
 @property (strong, nonatomic) UIColor *color;
 @property (readonly, nonatomic) UIColor *contentColor; // @dynamic contentColor;
 @property (readonly, copy) NSString *debugDescription;
@@ -58,8 +64,11 @@
 @property (strong, nonatomic) CLKTextProvider *textProvider; // @synthesize textProvider=_textProvider;
 @property (strong, nonatomic) CLKFont *textProviderFont; // @synthesize textProviderFont=_textProviderFont;
 @property (strong, nonatomic) CLKFont *textProviderSmallCapsBaseFont; // @synthesize textProviderSmallCapsBaseFont=_textProviderSmallCapsBaseFont;
+@property (nonatomic) double tracking; // @synthesize tracking=_tracking;
 @property (nonatomic) BOOL uppercase; // @synthesize uppercase=_uppercase;
 @property (nonatomic) BOOL usesLegibility; // @dynamic usesLegibility;
+@property (nonatomic) BOOL usesTextProviderSize; // @synthesize usesTextProviderSize=_usesTextProviderSize;
+@property (nonatomic) BOOL usesTextProviderTintColoring; // @synthesize usesTextProviderTintColoring=_usesTextProviderTintColoring;
 
 + (id)labelWithOptions:(unsigned long long)arg1;
 - (void).cxx_destruct;
@@ -81,6 +90,7 @@
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setNumberOfLines:(long long)arg1;
 - (void)setShadowOffset:(struct CGSize)arg1;
+- (void)setusesTextProviderTintColoring:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;
 - (BOOL)usesLegibility:(BOOL)arg1;

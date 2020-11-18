@@ -13,8 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityFavoriteButton;
+- (BOOL)_accessibilityFavoriteButtonActivate:(id)arg1;
+- (id)_accessibilityPersonName;
 - (unsigned long long)_axPeopleHomeCellSelectionMode;
 - (void)_setAXPeopleHomeCellSelectionMode:(unsigned long long)arg1;
+- (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;

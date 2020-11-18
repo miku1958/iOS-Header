@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
+#import <Message/EMAccount-Protocol.h>
 #import <Message/MFPubliclyDescribable-Protocol.h>
 
 @class ACAccount, NSDictionary, NSMutableDictionary, NSString;
 
-@interface MFAccount : NSObject <MFPubliclyDescribable>
+@interface MFAccount : NSObject <EMAccount, MFPubliclyDescribable>
 {
     ACAccount *_persistentAccount;
     struct os_unfair_lock_s _persistentAccountLock;
@@ -23,12 +24,13 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *displayName;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *hostname;
-@property (readonly) NSString *identifier;
+@property (copy, nonatomic) NSString *hostname;
+@property (readonly, copy) NSString *identifier;
 @property (readonly) NSString *managedTag;
 @property (readonly, copy, nonatomic) NSString *mf_publicDescription;
 @property (readonly) ACAccount *parentAccount;
 @property (readonly) NSString *parentAccountIdentifier;
+@property (copy, nonatomic) NSString *password;
 @property (readonly) ACAccount *persistentAccount;
 @property (readonly) NSDictionary *properties;
 @property (copy, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
@@ -36,7 +38,7 @@
 @property (readonly) NSString *syncStoreIdentifier;
 @property (readonly) NSString *type;
 @property (readonly) NSString *uniqueId;
-@property (strong, nonatomic) NSString *username;
+@property (strong) NSString *username;
 
 + (id)_accountClass;
 + (id)_basicPropertyForKey:(id)arg1 persistentAccount:(id)arg2;
@@ -88,6 +90,7 @@
 - (id)alternateConnectionSettings;
 - (void)applySettingsAsDefault:(id)arg1;
 - (id)authenticatedConnection;
+- (BOOL)canAuthenticateWithCurrentCredentials;
 - (BOOL)canGoOffline;
 - (id)certUIService;
 - (id)clientCertificates;
@@ -107,6 +110,7 @@
 - (BOOL)enableAccount;
 - (id)enabledDataclasses;
 - (BOOL)fetchTokensIfNecessary:(id *)arg1;
+- (BOOL)hasPasswordCredential;
 - (id)inaccessiblePasswordErrorWithTitle:(id)arg1;
 - (id)init;
 - (id)initWithPersistentAccount:(id)arg1;
@@ -120,8 +124,8 @@
 - (id)loginDisabledErrorWithTitle:(id)arg1;
 - (id)missingPasswordErrorWithTitle:(id)arg1;
 - (id)nameForMailboxUid:(id)arg1;
+- (id)networkAccountIdentifier;
 - (id)oauth2Token;
-- (id)password;
 - (void)persistentAccountDidChange:(id)arg1 previousAccount:(id)arg2;
 - (unsigned int)portNumber;
 - (id)preferredAuthScheme;
@@ -146,7 +150,6 @@
 - (BOOL)setCredentialItem:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
 - (void)setDomain:(id)arg1;
 - (BOOL)setOAuth2Token:(id)arg1 refreshToken:(id)arg2 error:(id *)arg3;
-- (void)setPassword:(id)arg1;
 - (void)setPersistentAccount:(id)arg1;
 - (void)setPortNumber:(unsigned int)arg1;
 - (void)setPreferredAuthScheme:(id)arg1;
@@ -157,6 +160,7 @@
 - (BOOL)shouldEnableAfterError:(id)arg1;
 - (BOOL)shouldFetchACEDBInfoForError:(id)arg1;
 - (BOOL)supportsMailDrop;
+- (id)systemAccount;
 - (BOOL)usesSSL;
 - (id)valueInAccountPropertiesForKey:(id)arg1;
 

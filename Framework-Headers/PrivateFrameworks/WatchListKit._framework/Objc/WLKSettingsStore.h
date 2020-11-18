@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableArray, NSNumber, NSString, NSXPCConnection;
+@class NSDate, NSMutableArray, NSNumber, NSString, NSUserDefaults, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface WLKSettingsStore : NSObject
@@ -22,6 +22,7 @@
     BOOL _migratediOS;
     BOOL _migratedtvOS;
     NSMutableArray *_apps;
+    NSUserDefaults *_defaultsAccessor;
     int _didChangeNotificationToken;
     NSXPCConnection *_connection;
     BOOL _hasOutstandingChanges;
@@ -37,13 +38,14 @@
 @property (nonatomic) BOOL migratediOS;
 @property (nonatomic) BOOL migratedtvOS;
 @property (nonatomic) BOOL optedIn;
-@property (strong, nonatomic) NSNumber *optedInVal; // @synthesize optedInVal=_optedInVal;
+@property (copy, nonatomic) NSNumber *optedInVal; // @synthesize optedInVal=_optedInVal;
 @property (nonatomic) BOOL privateModeEnabled;
-@property (strong, nonatomic) NSString *pushToken;
+@property (copy, nonatomic) NSString *pushToken;
 @property (nonatomic) BOOL sportsScoreSpoilersAllowed;
 
 + (id)keyPathsForValuesAffectingValueForKey:(id)arg1;
 + (id)sharedSettings;
++ (void)synchronizeSettingsDefaultsForKeys:(id)arg1;
 - (void).cxx_destruct;
 - (void)_accountStoreChangedNotification:(id)arg1;
 - (id)_appsForChannelID:(id)arg1;
@@ -66,7 +68,7 @@
 - (id)deniedBrands;
 - (id)description;
 - (void)endIgnoringChanges;
-- (void)forceUpdate;
+- (void)forceUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)refresh;
 - (void)setLastSyncDate:(id)arg1;

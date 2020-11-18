@@ -11,6 +11,7 @@
 - (BOOL)fp_createSubFolder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)fp_deleteWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)fp_existingURLOfChildWithName:(id)arg1;
+- (id)fp_existingURLOfChildWithName:(id)arg1 notMatchingFileID:(id)arg2;
 - (BOOL)fp_importUnderFolder:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)fp_moveUnderFolder:(id)arg1 withNewName:(id)arg2 allowBounce:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)fp_moveUnderFolder:(id)arg1 withNewName:(id)arg2 coordinationOptions:(unsigned long long)arg3 allowBounce:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;

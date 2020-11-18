@@ -62,7 +62,6 @@
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 strokeSelection:(id)arg2 selectionController:(id)arg3;
 - (BOOL)lassoContainsPoint:(struct CGPoint)arg1;
-- (void)makeViewAliveAtLocation:(struct CGPoint)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (struct CGColor *)selectionColor;
 - (void)setupAnimatedLasso;

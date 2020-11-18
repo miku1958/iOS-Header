@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAccessibilityHUDLayoutManager.h>
+#import <UIKitCore/UIAccessibilityHUDLayoutManager.h>
 
 __attribute__((visibility("hidden")))
 @interface UIAccessibilityLabelOnlyHUDLayoutManager : UIAccessibilityHUDLayoutManager

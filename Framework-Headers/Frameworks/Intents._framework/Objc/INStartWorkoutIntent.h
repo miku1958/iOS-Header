@@ -24,12 +24,16 @@
 @property (readonly, nonatomic) long long workoutLocationType;
 @property (readonly, copy, nonatomic) INSpeakableString *workoutName;
 
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
+- (long long)_intentCategory;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (void)_setMetadata:(id)arg1;
 - (id)_typedBackingStore;
 - (id)domain;
 - (id)initWithWorkoutName:(id)arg1 goalValue:(id)arg2 workoutGoalUnitType:(long long)arg3 workoutLocationType:(long long)arg4 isOpenEnded:(id)arg5;
+- (id)localizeValueOfSlotDescription:(id)arg1 forLanguage:(id)arg2;
 - (id)parametersByName;
 - (void)setDomain:(id)arg1;
 - (void)setGoalValue:(id)arg1;

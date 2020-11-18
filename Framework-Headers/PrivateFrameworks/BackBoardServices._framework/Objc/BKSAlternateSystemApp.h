@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/BKSAlternateSystemAppClientProtocol-Protocol.h>
 
@@ -25,7 +25,7 @@
 @property (copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<BKSAlternateSystemAppDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<BKSAlternateSystemAppDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
@@ -34,6 +34,7 @@
 @property (nonatomic) BOOL stateChangeWaiter; // @synthesize stateChangeWaiter=_stateChangeWaiter;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (void)_handleInterruptedConnection;
 - (void)_handleInvalidatedConnection;
 - (void)_queue_changeState:(long long)arg1;

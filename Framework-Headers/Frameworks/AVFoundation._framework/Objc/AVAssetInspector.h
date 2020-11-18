@@ -8,8 +8,9 @@
 
 #import <AVFoundation/NSCopying-Protocol.h>
 
-@class AVMetadataItem, NSArray, NSData, NSDictionary, NSString;
+@class AVDisplayCriteria, AVMetadataItem, NSArray, NSData, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVAssetInspector : AVFigObjectInspector <NSCopying>
 {
 }
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) int naturalTimeScale;
 @property (readonly, nonatomic) CDStruct_1b6d18a9 overallDurationHint;
 @property (readonly, nonatomic, getter=isPlayable) BOOL playable;
+@property (readonly, nonatomic) AVDisplayCriteria *preferredDisplayCriteria;
 @property (readonly, nonatomic) float preferredRate;
 @property (readonly, nonatomic) float preferredSoundCheckVolumeNormalization;
 @property (readonly, nonatomic) struct CGAffineTransform preferredTransform;

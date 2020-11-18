@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSString;
+@class NSArray, NSData, NSString;
 @protocol OS_dispatch_queue;
 
 @interface CUSystemMonitor : NSObject
@@ -19,12 +19,18 @@
     CDUnknownBlockType _invalidationHandler;
     CDUnknownBlockType _bluetoothAddressChangedHandler;
     CDUnknownBlockType _callChangedHandler;
+    CDUnknownBlockType _consoleUserChangedHandler;
+    CDUnknownBlockType _familyUpdatedHandler;
     CDUnknownBlockType _meDeviceChangedHandler;
+    CDUnknownBlockType _netFlagsChangedHandler;
+    CDUnknownBlockType _primaryIPChangedHandler;
     CDUnknownBlockType _powerUnlimitedChangedHandler;
     CDUnknownBlockType _primaryAppleIDChangedHandler;
+    CDUnknownBlockType _rotatingIdentifierChangedHandler;
     CDUnknownBlockType _screenLockedChangedHandler;
     CDUnknownBlockType _screenOnChangedHandler;
     CDUnknownBlockType _screenSaverChangedHandler;
+    CDUnknownBlockType _firstUnlockHandler;
     CDUnknownBlockType _wifiStateChangedHandler;
 }
 
@@ -33,17 +39,32 @@
 @property (copy) CDUnknownBlockType bluetoothAddressChangedHandler; // @synthesize bluetoothAddressChangedHandler=_bluetoothAddressChangedHandler;
 @property (readonly, copy) NSData *bluetoothAddressData;
 @property (copy) CDUnknownBlockType callChangedHandler; // @synthesize callChangedHandler=_callChangedHandler;
+@property (copy, nonatomic) CDUnknownBlockType consoleUserChangedHandler; // @synthesize consoleUserChangedHandler=_consoleUserChangedHandler;
+@property (readonly) unsigned int consoleUserID;
+@property (readonly, copy) NSString *consoleUserName;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
+@property (readonly, copy) NSArray *familyMembers;
+@property (copy) CDUnknownBlockType familyUpdatedHandler; // @synthesize familyUpdatedHandler=_familyUpdatedHandler;
+@property (copy, nonatomic) CDUnknownBlockType firstUnlockHandler; // @synthesize firstUnlockHandler=_firstUnlockHandler;
+@property (readonly, nonatomic) BOOL firstUnlocked;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy) CDUnknownBlockType meDeviceChangedHandler; // @synthesize meDeviceChangedHandler=_meDeviceChangedHandler;
 @property (readonly, copy) NSString *meDeviceFMFDeviceID;
 @property (readonly, copy) NSString *meDeviceIDSDeviceID;
 @property (readonly, copy) NSString *meDeviceName;
 @property (readonly) BOOL meDeviceValid;
+@property (readonly) unsigned int netFlags;
+@property (copy) CDUnknownBlockType netFlagsChangedHandler; // @synthesize netFlagsChangedHandler=_netFlagsChangedHandler;
 @property (readonly) BOOL powerUnlimited;
 @property (copy) CDUnknownBlockType powerUnlimitedChangedHandler; // @synthesize powerUnlimitedChangedHandler=_powerUnlimitedChangedHandler;
 @property (copy) CDUnknownBlockType primaryAppleIDChangedHandler; // @synthesize primaryAppleIDChangedHandler=_primaryAppleIDChangedHandler;
 @property (readonly) BOOL primaryAppleIDIsHSA2;
+@property (copy) CDUnknownBlockType primaryIPChangedHandler; // @synthesize primaryIPChangedHandler=_primaryIPChangedHandler;
+@property (readonly, nonatomic) CDUnion_fab80606 primaryIPv4Addr;
+@property (readonly, nonatomic) CDUnion_fab80606 primaryIPv6Addr;
+@property (readonly) CDStruct_83abfce7 rotatingIdentifier48;
+@property (copy) CDUnknownBlockType rotatingIdentifierChangedHandler; // @synthesize rotatingIdentifierChangedHandler=_rotatingIdentifierChangedHandler;
+@property (readonly, copy) NSData *rotatingIdentifierData;
 @property (readonly) BOOL screenLocked;
 @property (copy) CDUnknownBlockType screenLockedChangedHandler; // @synthesize screenLockedChangedHandler=_screenLockedChangedHandler;
 @property (readonly) BOOL screenOn;

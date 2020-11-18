@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSData, NSDictionary, NSMutableDictionary, NSString, VCNetworkAddress;
+@class NSData, NSDictionary, NSMutableDictionary, NSString, VCMediaStreamMultiwayConfig, VCNetworkAddress;
 
 __attribute__((visibility("hidden")))
 @interface VCMediaStreamConfig : NSObject
@@ -24,6 +24,9 @@ __attribute__((visibility("hidden")))
     long long _SRTPCipherSuite;
     BOOL _rtpTimeOutEnabled;
     double _rtpTimeOutInterval;
+    BOOL _decryptionTimeOutEnabled;
+    double _decryptionTimeOutInterval;
+    unsigned int _cellularUniqueTag;
     BOOL _rtcpEnabled;
     double _rtcpSendInterval;
     long long _SRTCPCipherSuite;
@@ -31,15 +34,18 @@ __attribute__((visibility("hidden")))
     double _rtcpTimeOutInterval;
     unsigned short _rtcpRemotePort;
     BOOL _rateAdaptationEnabled;
-    unsigned int _datagramChannelToken;
+    VCMediaStreamMultiwayConfig *_multiwayConfig;
 }
 
 @property (nonatomic) long long SRTCPCipherSuite; // @synthesize SRTCPCipherSuite=_SRTCPCipherSuite;
 @property (nonatomic) long long SRTPCipherSuite; // @synthesize SRTPCipherSuite=_SRTPCipherSuite;
 @property (copy, nonatomic) NSString *cName; // @synthesize cName=_cName;
-@property (nonatomic) unsigned int datagramChannelToken; // @synthesize datagramChannelToken=_datagramChannelToken;
+@property (nonatomic) unsigned int cellularUniqueTag; // @synthesize cellularUniqueTag=_cellularUniqueTag;
+@property (nonatomic, getter=isDecryptionTimeOutEnabled) BOOL decryptionTimeOutEnabled; // @synthesize decryptionTimeOutEnabled=_decryptionTimeOutEnabled;
+@property (nonatomic) double decryptionTimeOutInterval; // @synthesize decryptionTimeOutInterval=_decryptionTimeOutInterval;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (strong, nonatomic) VCNetworkAddress *localAddress; // @synthesize localAddress=_localAddress;
+@property (strong, nonatomic) VCMediaStreamMultiwayConfig *multiwayConfig; // @synthesize multiwayConfig=_multiwayConfig;
 @property (readonly, nonatomic) long long primaryTxCodecType;
 @property (nonatomic, getter=isRateAdaptationEnabled) BOOL rateAdaptationEnabled; // @synthesize rateAdaptationEnabled=_rateAdaptationEnabled;
 @property (strong, nonatomic) NSData *receiveMasterKey; // @synthesize receiveMasterKey=_receiveMasterKey;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface MFMailSignatureController : NSObject
 {
@@ -13,6 +13,7 @@
 - (id)_signatureStringForSender:(id)arg1;
 - (void)addSignatureForSender:(id)arg1 bodyField:(id)arg2 prepend:(BOOL)arg3;
 - (void)finalizeSignatureForBodyField:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getDocument:(id)arg1 withHiddenSignatureHandler:(CDUnknownBlockType)arg2;
 - (BOOL)isDefaultSignatureForSender:(id)arg1;
 - (void)removeSignatureForSender:(id)arg1 bodyField:(id)arg2;
 - (void)updateSignatureForSender:(id)arg1 bodyField:(id)arg2;

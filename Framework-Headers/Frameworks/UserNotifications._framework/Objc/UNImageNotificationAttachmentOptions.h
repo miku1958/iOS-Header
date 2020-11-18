@@ -13,6 +13,7 @@
 @interface UNImageNotificationAttachmentOptions : UNNotificationAttachmentOptions <UNNotificationAttachmentThumbnailOptions>
 {
     BOOL _thumbnailHidden;
+    BOOL _hiddenFromDefaultExpandedView;
     NSNumber *_thumbnailFrameNumber;
     struct CGRect _thumbnailClippingRect;
 }
@@ -20,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL hiddenFromDefaultExpandedView; // @synthesize hiddenFromDefaultExpandedView=_hiddenFromDefaultExpandedView;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) struct CGRect thumbnailClippingRect; // @synthesize thumbnailClippingRect=_thumbnailClippingRect;
 @property (readonly, copy, nonatomic) NSNumber *thumbnailFrameNumber; // @synthesize thumbnailFrameNumber=_thumbnailFrameNumber;
@@ -31,7 +33,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithThumbnailHidden:(BOOL)arg1 thumbnailClippingRect:(struct CGRect)arg2 thumbnailFrameNumber:(id)arg3;
+- (id)initWithThumbnailHidden:(BOOL)arg1 thumbnailClippingRect:(struct CGRect)arg2 thumbnailFrameNumber:(id)arg3 hiddenFromDefaultExpandedView:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

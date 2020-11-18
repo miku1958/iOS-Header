@@ -31,10 +31,10 @@
     BOOL fEnableLatencyAlert;
     BOOL fEnableAudioAlert;
     int fLatencyAlertThreshold;
+    BOOL fDisplayState;
 }
 
 + (BOOL)hasSlowBootArgs;
-+ (BOOL)isWakeGestureAvailable;
 + (id)stringForGestureState:(long long)arg1;
 + (id)stringForMode:(unsigned char)arg1;
 + (id)stringForNotification:(unsigned char)arg1;

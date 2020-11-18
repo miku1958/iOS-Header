@@ -18,6 +18,7 @@
 @property (strong, nonatomic) NSDictionary *searchIndex; // @synthesize searchIndex=_searchIndex;
 
 - (void).cxx_destruct;
+- (void)fetchDataWithDataType:(long long)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)getAllIdentifiersFromTree:(id)arg1 withMaxDepth:(int)arg2;
 - (id)mergeDictionary:(id)arg1 withDictionary:(id)arg2;
 - (void)processData:(id)arg1 formattedData:(id)arg2;

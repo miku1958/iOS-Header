@@ -6,15 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class WBSPerSitePreferenceValue;
-
 @interface WBSPerSitePreferenceTimeout : NSObject
 {
     double _interval;
-    WBSPerSitePreferenceValue *_fallbackValue;
+    id _fallbackValue;
 }
 
-@property (readonly, nonatomic) WBSPerSitePreferenceValue *fallbackValue; // @synthesize fallbackValue=_fallbackValue;
+@property (readonly, nonatomic) id fallbackValue; // @synthesize fallbackValue=_fallbackValue;
 @property (readonly, nonatomic) double interval; // @synthesize interval=_interval;
 
 + (id)timeoutWithInterval:(double)arg1 fallbackValue:(id)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 @protocol CNManagedProfileConnection;
@@ -26,9 +26,10 @@
 - (id)accountForIdentifier:(id)arg1;
 - (BOOL)accountIsManaged:(id)arg1;
 - (BOOL)accountIsManagedForIdentifier:(id)arg1;
-- (BOOL)allowsLocalAccount;
 - (BOOL)canReadFromAccountWithIdentifier:(id)arg1;
+- (BOOL)canReadFromLocalAccount;
 - (BOOL)canWriteToAccountWithIdentifier:(id)arg1;
+- (BOOL)canWriteToLocalAccount;
 - (BOOL)deviceHasManagementRestrictions;
 - (id)initWithAuditToken:(CDStruct_6ad76789)arg1 managedProfileConnection:(id)arg2;
 - (id)initWithBundleIdentifier:(id)arg1 managedProfileConnection:(id)arg2;

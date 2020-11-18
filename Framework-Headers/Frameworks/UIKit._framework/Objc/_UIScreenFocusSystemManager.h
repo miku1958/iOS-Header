@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/BKSEventFocusObserving-Protocol.h>
-#import <UIKit/_UIFocusMovementPerformerDelegate-Protocol.h>
-#import <UIKit/_UIFocusSystemDelegate-Protocol.h>
+#import <UIKitCore/BKSEventFocusObserving-Protocol.h>
+#import <UIKitCore/_UIFocusMovementPerformerDelegate-Protocol.h>
+#import <UIKitCore/_UIFocusSystemDelegate-Protocol.h>
 
 @class NSString, UIFocusSystem, UIScreen, _UIFocusScrollManager;
 
@@ -31,11 +31,12 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_focusItemContainerForFocusSystem:(id)arg1;
 - (id)_focusMapContainerForFocusSystem:(id)arg1;
-- (void)_focusMovementPerformer:(id)arg1 didFailToPerformFocusMovement:(id)arg2;
 - (void)_focusSystem:(id)arg1 didFinishUpdatingFocusInContext:(id)arg2;
 - (BOOL)_focusSystem:(id)arg1 prefersDeferralForFocusUpdateInContext:(id)arg2;
 - (BOOL)_focusSystem:(id)arg1 shouldRestoreFocusInContext:(id)arg2;
+- (BOOL)_handleFailedFocusMovementRequest:(id)arg1 withPerformer:(id)arg2;
 - (id)_preferredFocusEnvironmentsForFocusSystem:(id)arg1;
 - (void)dealloc;
 - (void)focusedDeferralPropertiesDidChange:(id)arg1;

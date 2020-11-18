@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryiPhone.h>
+#import <UIKitCore/UIKBRenderFactoryiPhone.h>
 
 @class UIKBRenderFactory;
 
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (Class)_overlayFactoryClass;
+- (void)dealloc;
 - (id)initWithRenderingContext:(id)arg1 skipLayoutSegments:(BOOL)arg2;
 - (BOOL)isTallPopup;
 - (double)popupFontSize;

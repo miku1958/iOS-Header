@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIDragFeedbackGeneratorConfiguration.h>
+#import <UIKitCore/_UIDragFeedbackGeneratorConfiguration.h>
 
 @interface _UIFeedbackDragBehaviorConfiguration : _UIDragFeedbackGeneratorConfiguration
 {

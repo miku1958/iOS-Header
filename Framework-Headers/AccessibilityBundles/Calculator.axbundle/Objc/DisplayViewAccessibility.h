@@ -15,7 +15,9 @@
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityTextOperationAction:(id)arg1;
 - (id)_accessibilityTextOperations;
+- (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 
 @end

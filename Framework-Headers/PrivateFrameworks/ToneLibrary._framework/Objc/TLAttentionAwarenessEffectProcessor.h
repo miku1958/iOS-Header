@@ -32,6 +32,7 @@
 - (void)_assertRunningOnAccessQueue;
 - (float)_currentEffectMix;
 - (float)_sanitizeEffectMix:(float)arg1;
+- (void)dealloc;
 - (id)initWithProcessingFormat:(id)arg1 framesPerRender:(unsigned int)arg2 effectParameters:(CDStruct_4922f917)arg3;
 - (struct AudioBufferList *)render:(struct AudioBufferList *)arg1 numberOfFrames:(unsigned int)arg2;
 - (void)setEffectParameters:(CDStruct_4922f917)arg1 effectMixFadeDuration:(double)arg2;

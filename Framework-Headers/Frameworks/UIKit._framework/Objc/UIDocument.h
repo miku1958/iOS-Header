@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSFilePresenter-Protocol.h>
-#import <UIKit/NSProgressReporting-Protocol.h>
+#import <UIKitCore/NSFilePresenter-Protocol.h>
+#import <UIKitCore/NSProgressReporting-Protocol.h>
 
 @class NSDate, NSDocumentDifferenceSize, NSLock, NSMutableArray, NSOperationQueue, NSProgress, NSSet, NSString, NSTimer, NSURL, NSUndoManager, NSUserActivity;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;

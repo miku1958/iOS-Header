@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class KNBuildAttributeValue, KNBuildAttributes, NSArray, NSDictionary, NSString;
 
@@ -69,6 +69,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isEmphasisBuild;
 @property (readonly, nonatomic) BOOL isImplicitlyVisibleAtBeginning;
 @property (nonatomic) BOOL isInitialAmbientBuild; // @synthesize isInitialAmbientBuild=_isInitialAmbientBuild;
+@property (readonly, nonatomic) BOOL isLineDrawBuild;
 @property (readonly, nonatomic) BOOL isMagicChartBuild;
 @property (readonly, nonatomic) BOOL isParentBuild;
 @property (nonatomic) BOOL isVisibleAtBeginning; // @synthesize isVisibleAtBeginning=_isVisibleAtBeginning;

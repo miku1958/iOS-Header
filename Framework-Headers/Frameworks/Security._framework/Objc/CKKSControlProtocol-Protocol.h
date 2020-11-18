@@ -14,6 +14,7 @@
 - (void)rpcFetchAndProcessClassAChanges:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)rpcGetCKDeviceIDWithReply:(void (^)(NSString *))arg1;
 - (void)rpcPushOutgoingChanges:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)rpcResetCloudKit:(NSString *)arg1 reason:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)rpcResetCloudKit:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)rpcResetLocal:(NSString *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)rpcResync:(NSString *)arg1 reply:(void (^)(NSError *))arg2;

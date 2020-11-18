@@ -11,6 +11,7 @@
 - (id)wlk_arrayForKey:(id)arg1;
 - (id)wlk_artworkVariantListingForKey:(id)arg1;
 - (BOOL)wlk_boolForKey:(id)arg1 defaultValue:(BOOL)arg2;
+- (id)wlk_caseInsensitiveValueForKey:(id)arg1;
 - (id)wlk_dataForKey:(id)arg1;
 - (id)wlk_dateForKey:(id)arg1;
 - (id)wlk_dateFromMillisecondsSince1970ForKey:(id)arg1;

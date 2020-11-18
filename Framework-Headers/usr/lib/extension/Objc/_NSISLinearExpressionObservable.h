@@ -20,7 +20,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)observableForExpression:(id)arg1 inEngine:(id)arg2;
+- (void)_lazilyObserveVariablesIfNeeded;
+- (BOOL)_overrideUseFastBlockObservers;
 - (id)addObserver:(id)arg1;
+- (id)addObserverBlock:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)emitValueIfNeeded;
 - (id)initWithExpression:(id)arg1 inEngine:(id)arg2;

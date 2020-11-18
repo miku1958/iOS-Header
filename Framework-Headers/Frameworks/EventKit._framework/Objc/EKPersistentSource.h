@@ -27,12 +27,18 @@
 
 + (id)defaultPropertiesToLoad;
 + (id)relations;
+- (id)constraintsDescriptionPath;
+- (id)creatorBundleID;
+- (id)creatorCodeSigningIdentity;
 - (id)description;
 - (int)entityType;
 - (int)flags;
 - (id)lastSyncEndDate;
 - (unsigned long long)lastSyncError;
 - (id)lastSyncStartDate;
+- (void)setConstraintsDescriptionPath:(id)arg1;
+- (void)setCreatorBundleID:(id)arg1;
+- (void)setCreatorCodeSigningIdentity:(id)arg1;
 - (void)setFlags:(int)arg1;
 - (void)setLastSyncEndDate:(id)arg1;
 - (void)setLastSyncError:(unsigned long long)arg1;

@@ -11,16 +11,16 @@
 __attribute__((visibility("hidden")))
 @interface TSTListNode : TSTExpressionNode
 {
-    NSString *mWhitespaceAfterLeftParen;
-    NSArray *mWhitespaceAfterDelimiters;
+    NSString *_whitespaceAfterLeftParen;
+    NSArray *_whitespaceAfterDelimiters;
 }
 
-@property (strong, nonatomic) NSArray *whitespaceAfterDelimiters; // @synthesize whitespaceAfterDelimiters=mWhitespaceAfterDelimiters;
-@property (strong) NSString *whitespaceAfterLeftParen; // @synthesize whitespaceAfterLeftParen=mWhitespaceAfterLeftParen;
+@property (strong, nonatomic) NSArray *whitespaceAfterDelimiters; // @synthesize whitespaceAfterDelimiters=_whitespaceAfterDelimiters;
+@property (strong) NSString *whitespaceAfterLeftParen; // @synthesize whitespaceAfterLeftParen=_whitespaceAfterLeftParen;
 
-- (id)argumentSpec;
+- (void).cxx_destruct;
+- (struct TSCEFunctionArgSpec *)argumentSpec;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
-- (void)dealloc;
 - (id)description;
 - (id)initAsCopyOf:(id)arg1 intoContext:(id)arg2 children:(id)arg3;
 - (id)initWithContext:(id)arg1 children:(id)arg2 firstIndex:(unsigned long long)arg3 lastIndex:(unsigned long long)arg4;
@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqualToExpressionNode:(id)arg1;
 - (void)loadFromArchive:(const struct ListNodeArchive *)arg1 unarchiver:(id)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)mostSpecificNodeContainingIndex:(unsigned long long)arg1 correspondingIndex:(unsigned long long)arg2;
 - (struct TSTCSENodeData)recordHashesForSubexpressions:(id)arg1;
 - (void)saveToArchive:(struct ListNodeArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;

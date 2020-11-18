@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class ICStoreHLSAssetInfo, NSURL;
 
@@ -13,6 +13,9 @@
     ICStoreHLSAssetInfo *_internalInfo;
 }
 
+@property (readonly, copy, nonatomic) NSURL *alternateKeyCertificateURL;
+@property (readonly, copy, nonatomic) NSURL *alternateKeyServerURL;
+@property (readonly, copy, nonatomic) NSURL *alternatePlaylistURL;
 @property (readonly, nonatomic, getter=isiTunesStoreStream) BOOL iTunesStoreStream;
 @property (readonly, copy, nonatomic) NSURL *keyCertificateURL;
 @property (readonly, copy, nonatomic) NSURL *keyServerURL;

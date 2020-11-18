@@ -14,6 +14,7 @@
 @interface NRMutableStateBase : NSObject <NRMutableStateProtocol>
 {
     NSMutableSet *_observers;
+    struct os_unfair_lock_s _lock;
     id<NRMutableStateParentDelegate> _parentDelegate;
 }
 
@@ -35,9 +36,11 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)invalidate;
 - (BOOL)isEqual:(id)arg1;
 - (void)notifyObserversWithDiff:(id)arg1;
 - (void)notifyParentWithDiff:(id)arg1;
+- (id)observers;
 - (void)removeObserver:(id)arg1;
 
 @end

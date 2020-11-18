@@ -6,42 +6,34 @@
 
 #import <Preferences/PSListController.h>
 
-#import <PreferencesUI/PSUIWirelessDataOptionsDelegate-Protocol.h>
+#import <PreferencesUI/CoreTelephonyClientSubscriberDelegate-Protocol.h>
 
-@class AppWirelessDataUsageManager, NSString, WirelessDataUsageWorkspace;
+@class CoreTelephonyClient, NSString, PSSpecifier, PSUIAppCellularUsageGroup;
 
-@interface PSUIWirelessDataOptionsController : PSListController <PSUIWirelessDataOptionsDelegate>
+@interface PSUIWirelessDataOptionsController : PSListController <CoreTelephonyClientSubscriberDelegate>
 {
-    BOOL _cancelled;
-    BOOL _loading;
-    WirelessDataUsageWorkspace *_workspace;
-    AppWirelessDataUsageManager *_wirelessManager;
+    PSSpecifier *_groupSpecifier;
+    PSUIAppCellularUsageGroup *_perAppUsageController;
+    CoreTelephonyClient *_coreTelephonyClient;
 }
 
-@property (getter=isCancelled) BOOL cancelled; // @synthesize cancelled=_cancelled;
+@property (strong, nonatomic) CoreTelephonyClient *coreTelephonyClient; // @synthesize coreTelephonyClient=_coreTelephonyClient;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) PSSpecifier *groupSpecifier; // @synthesize groupSpecifier=_groupSpecifier;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL loading; // @synthesize loading=_loading;
+@property (strong, nonatomic) PSUIAppCellularUsageGroup *perAppUsageController; // @synthesize perAppUsageController=_perAppUsageController;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) AppWirelessDataUsageManager *wirelessManager; // @synthesize wirelessManager=_wirelessManager;
-@property (strong, nonatomic) WirelessDataUsageWorkspace *workspace; // @synthesize workspace=_workspace;
 
 - (void).cxx_destruct;
-- (void)_createAppSpecifiersForVisibleApps:(id)arg1 hiddenApps:(id)arg2 unknownApps:(id)arg3 internalProcesses:(id)arg4;
-- (id)_dataUsageForApplicationSpecifier:(id)arg1;
-- (id)_groupSpecifier;
 - (void)_handleCellularPlanChangedNotification:(id)arg1;
 - (void)_handleNewCarrierNotification:(id)arg1;
-- (void)_handleSIMStatusReadyNotification:(id)arg1;
 - (void)_handleWirelessDataUsageChangedNotification:(id)arg1;
-- (id)_specifierForApp:(id)arg1 enabled:(BOOL)arg2;
-- (void)cancel;
 - (void)dealloc;
 - (id)init;
+- (void)perAppSpecifiersFinishedLoading;
 - (BOOL)shouldReloadSpecifiersOnResume;
-- (id)specifierForSpecialCategory:(id)arg1 bytesUsed:(id)arg2;
-- (id)specifierForSystemApp:(id)arg1 bytesUsed:(id)arg2;
+- (void)simStatusDidChange:(id)arg1 status:(id)arg2;
 - (id)specifiers;
 
 @end

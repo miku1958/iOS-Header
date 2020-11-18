@@ -4,38 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class LAContext, NSArray, NSDate, NSMutableArray, NSString, NSTimer, TIKeyboardCandidate, UIKBBackgroundView, UIKBKeyView, UIKeyboardPredictionBarGrabber, UIKeyboardPredictionCell, UILabel, UITouch;
+@class LAContext, NSArray, NSDate, NSString, NSTimer, TIKeyboardCandidate, UIKBBackgroundView, UITouch;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardPredictionView : UIView
 {
     UIKBBackgroundView *m_backgroundView;
-    UIKeyboardPredictionBarGrabber *m_grabber;
     NSArray *m_predictionCells;
-    NSMutableArray *m_threeTextCells;
-    NSMutableArray *m_twoTextCells;
-    NSMutableArray *m_oneTextCells;
-    NSMutableArray *m_twoEmojiCells;
-    NSMutableArray *m_threeEmojiCells;
-    NSMutableArray *m_textAndTwoEmojiCells;
-    NSMutableArray *m_textAndThreeEmojiCells;
-    NSMutableArray *m_safariCredentialThreeExtraTextCells;
-    NSMutableArray *m_safariCredentialTwoExtraTextCells;
-    NSMutableArray *m_safariCredentialOneExtraTextCells;
-    NSMutableArray *m_safariCredentialZeroExtraTextCells;
-    UIKeyboardPredictionCell *m_lastCell;
+    long long m_predictionStyle;
+    unsigned long long m_visibleCellCount;
     unsigned long long m_activeIndex;
     long long m_pendingAutofillCandidateIndex;
-    double m_width;
     BOOL m_lightKeyboard;
     NSString *m_openQuote;
     NSString *m_closeQuote;
-    UIView *m_message;
-    UILabel *m_messageLabel;
-    UIKBKeyView *m_messageKeyView;
-    double m_messageShownTime;
     struct CGPoint m_initLocation;
     BOOL m_dragging;
     BOOL m_hasLongCandidates;
@@ -43,10 +27,7 @@ __attribute__((visibility("hidden")))
     unsigned long long m_autocorrectionCell;
     BOOL m_delayActive;
     BOOL m_isMinimized;
-    UIKBKeyView *m_collapsedView;
     int _notifyBatterySaverToken;
-    unsigned long long m_numberOfVisibleCells;
-    BOOL m_isSafariAutofill;
     LAContext *m_myContext;
     int _state;
     UITouch *_activeTouch;
@@ -68,22 +49,31 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TIKeyboardCandidate *scheduledAutocorrection; // @synthesize scheduledAutocorrection=_scheduledAutocorrection;
 @property (strong, nonatomic) NSArray *scheduledEmojiList; // @synthesize scheduledEmojiList=_scheduledEmojiList;
 @property (strong, nonatomic) NSArray *scheduledPredictions; // @synthesize scheduledPredictions=_scheduledPredictions;
-@property (nonatomic) BOOL show;
+@property (readonly, nonatomic) BOOL show;
 @property (nonatomic) int state; // @synthesize state=_state;
 @property (strong, nonatomic) NSTimer *updateTimer; // @synthesize updateTimer=_updateTimer;
 
++ (id)_activeInstances;
++ (void)_deregisterActiveInstance:(id)arg1;
++ (void)_registerActiveInstance:(id)arg1;
 + (id)activeInstance;
 + (id)cellWidthOptions;
-+ (unsigned long long)maxNumberOfAutofillCandidate;
 + (unsigned long long)numberOfCandidates;
 + (double)overlapHeight;
++ (double)predictionCellHeightForOrientation:(long long)arg1;
++ (double)predictionViewHeightForScreenTraits:(id)arg1 orientation:(long long)arg2;
 + (double)predictionViewHeightForState:(int)arg1 orientation:(long long)arg2;
 + (double)predictionViewHeightPaddingForOrientation:(long long)arg1;
 + (double)predictionViewWidthForOrientation:(long long)arg1;
 + (id)resultCountToSingleCellWidth;
 + (id)sharedInstance;
 - (void)_commitPrediction:(id)arg1;
+- (id)_designatedHostView;
+- (BOOL)_hostViewAlreadyContainsPredictionView:(id)arg1;
+- (BOOL)_predictionViewHostedByAssistantBar;
 - (void)_setPredictions:(id)arg1 autocorrection:(id)arg2 emojiList:(id)arg3;
+- (BOOL)_shouldUpdatePredictions;
+- (void)_updateAssistantBarForPredictionViewState:(int)arg1;
 - (void)acceptCandidate;
 - (void)acceptCandidateAtCell:(id)arg1;
 - (void)acceptPredictiveInput:(id)arg1;
@@ -91,7 +81,6 @@ __attribute__((visibility("hidden")))
 - (id)autocorrection;
 - (void)commitPrediction:(id)arg1;
 - (void)contentSizeDidChange:(id)arg1;
-- (id)createCells:(unsigned long long)arg1;
 - (void)deactivateCandidate;
 - (void)dealloc;
 - (void)delayActivateCellForPrediction:(id)arg1;
@@ -106,26 +95,21 @@ __attribute__((visibility("hidden")))
 - (void)initCells;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)inputModeDidChange;
+- (void)invalidateUpdateTimer;
 - (BOOL)isTextSuggestion;
 - (id)labelTextForPrediction:(id)arg1 typedString:(id)arg2;
-- (int)maxMessageCount;
-- (int)messageCount;
-- (unsigned long long)predictionCount;
-- (void)releaseMessage;
-- (void)removeMessage;
 - (void)setActiveCellWithIndex:(unsigned long long)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setFrameForCells;
-- (void)setFrameForCells:(id)arg1 start:(double)arg2 width:(double)arg3 height:(double)arg4;
+- (void)setFrameForCells:(id)arg1 start:(double)arg2 width:(double)arg3 cellCount:(unsigned long long)arg4;
 - (BOOL)setOriginalUserInput:(id)arg1 asTypedText:(id)arg2;
 - (void)setPredictionViewState:(int)arg1 animate:(BOOL)arg2;
 - (void)setPredictionViewState:(int)arg1 animate:(BOOL)arg2 notify:(BOOL)arg3;
+- (void)setPredictionViewState:(int)arg1 animate:(BOOL)arg2 notify:(BOOL)arg3 hostView:(id)arg4;
 - (void)setPredictions:(id)arg1 autocorrection:(id)arg2 emojiList:(id)arg3;
-- (void)setTouchedCellState:(int)arg1;
-- (void)showMessageWithSize:(struct CGSize)arg1;
+- (void)setTouchedCellActive:(BOOL)arg1;
 - (int)stateForCurrentPreferences;
 - (void)suppressLayoutSubviewsForCellLabels:(BOOL)arg1;
-- (void)suspend;
 - (void)touchUpdateTimer;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

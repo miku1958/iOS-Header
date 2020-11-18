@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSPFileCoordinatorDelegate-Protocol.h>
 #import <iWorkImport/TSPLazyReferenceDelegate-Protocol.h>
@@ -12,7 +12,7 @@
 #import <iWorkImport/TSPPassphraseConsumer-Protocol.h>
 #import <iWorkImport/TSPSupportDirectoryDelegate-Protocol.h>
 
-@class NSData, NSHashTable, NSMapTable, NSMutableArray, NSProgress, NSRecursiveLock, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPCancellationState, TSPComponentManager, TSPDataDownloadManager, TSPDataManager, TSPDocumentMetadata, TSPDocumentProperties, TSPDocumentRevision, TSPDocumentSaveOperationState, TSPObject, TSPObjectContainer, TSPObjectUUIDMap, TSPPackage, TSPPackageWriteCoordinator, TSPRegistry, TSPResourceContext, TSPSupportManager, TSPSupportMetadata, TSUTemporaryDirectory;
+@class NSData, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSProgress, NSRecursiveLock, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPCancellationState, TSPComponentManager, TSPDataDownloadManager, TSPDataManager, TSPDocumentMetadata, TSPDocumentProperties, TSPDocumentRevision, TSPDocumentSaveOperationState, TSPObject, TSPObjectContainer, TSPObjectUUIDMap, TSPPackage, TSPPackageWriteCoordinator, TSPRegistry, TSPResourceContext, TSPSupportManager, TSPSupportMetadata, TSUTemporaryDirectory;
 @protocol NSFilePresenter, OS_dispatch_group, OS_dispatch_queue, TSPObjectContextDelegate;
 
 __attribute__((visibility("hidden")))
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     TSPDocumentProperties *_documentProperties;
     NSMapTable *_objects;
     TSPObjectUUIDMap *_objectUUIDMap;
+    NSMutableSet *_deterministicObjectUUIDSet;
     TSPDocumentRevision *_documentRevision;
     long long _preferredPackageType;
     NSObject<OS_dispatch_queue> *_objectsQueue;
@@ -78,7 +79,6 @@ __attribute__((visibility("hidden")))
         unsigned int delegateRespondsToIgnoreDocumentSupport:1;
         unsigned int delegateRespondsToIsDocumentSupportTemporary:1;
         unsigned int delegateRespondsToShouldLoadAllComponents:1;
-        unsigned int delegateRespondsToNewObjectUUID:1;
         unsigned int delegateRespondsToIsInCollaborationModeForContext:1;
         unsigned int delegateRespondsToIsInReadOnlyModeForContext:1;
         unsigned int delegateRespondsToIsCollaborationOfflineForContext:1;
@@ -120,6 +120,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) TSPDocumentMetadata *documentMetadata; // @synthesize documentMetadata=_documentMetadata;
 @property (readonly, nonatomic) TSPObject *documentObject; // @synthesize documentObject=_documentObject;
 @property (readonly, nonatomic) TSPObjectContainer *documentObjectContainer; // @synthesize documentObjectContainer=_documentObjectContainer;
+@property (readonly, nonatomic) unsigned long long documentObjectSize;
 @property (readonly, nonatomic) TSPPackage *documentPackage;
 @property (readonly, nonatomic) NSString *documentPasswordHint; // @synthesize documentPasswordHint=_documentPasswordHint;
 @property (readonly, nonatomic) TSPDocumentProperties *documentProperties;
@@ -128,6 +129,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSURL *documentURL;
 @property (readonly, nonatomic) NSUUID *documentUUID;
 @property (readonly, nonatomic) id<NSFilePresenter> filePresenter;
+@property (readonly, nonatomic) BOOL hasCurrentFileFormatVersion;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL ignoreDocumentResourcesWhileReading;
 @property (readonly, nonatomic) BOOL ignoreDocumentSupport;
@@ -169,6 +171,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)isNativeOrTangierEditingFormatURL:(id)arg1;
 + (BOOL)isNativeOrTangierEditingFormatURL:(id)arg1 hasNativeUTI:(BOOL)arg2;
 + (BOOL)isNativeOrTangierEditingFormatURL:(id)arg1 hasNativeUTI:(BOOL)arg2 nestedDocumentFilename:(id)arg3;
++ (BOOL)isTangierEditingDirectoryFormatURL:(id)arg1;
 + (BOOL)isTangierEditingFormatURL:(id)arg1;
 + (void)purgeSharedDocumentResourceCache;
 + (id)releaseQueue;
@@ -200,8 +203,9 @@ __attribute__((visibility("hidden")))
 - (void)closeFromDealloc:(BOOL)arg1;
 - (void)conditionallyPerformResourceAccessUsingQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)containsDataConformingToUTI:(id)arg1;
+- (BOOL)continueReadingDocumentObjectFromDatabasePackageURL:(id)arg1 error:(id *)arg2;
 - (BOOL)continueReadingDocumentObjectFromPackageURL:(id)arg1 areExternalDataReferencesAllowed:(BOOL)arg2 error:(id *)arg3;
-- (BOOL)copyIfAppropriateFromOriginalURL:(id)arg1 toURL:(id)arg2 apfsMode:(BOOL)arg3 originalPackage:(id)arg4 packageType:(long long)arg5;
+- (BOOL)copyIfAppropriateFromOriginalURL:(id)arg1 toURL:(id)arg2 apfsMode:(BOOL)arg3 originalPackage:(id)arg4 packageType:(long long)arg5 inheritPermissions:(BOOL)arg6;
 - (void)createInternalMetadataIfNeeded;
 - (id)currentPackageDataWriter;
 - (id)dataWithContentsOfPackagePath:(id)arg1;
@@ -215,7 +219,6 @@ __attribute__((visibility("hidden")))
 - (void)didMoveToURL:(id)arg1;
 - (void)didReadDocumentObject:(id)arg1;
 - (void)didReadSupportObject:(id)arg1;
-- (unsigned long long)documentObjectSize;
 - (id)documentResourceDataForDigestString:(id)arg1 locator:(id)arg2 filename:(id)arg3 canDownload:(BOOL)arg4;
 - (id)documentRoot;
 - (void)endAssertOnModify;

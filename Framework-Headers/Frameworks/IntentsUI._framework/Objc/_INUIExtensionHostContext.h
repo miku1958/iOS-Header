@@ -11,6 +11,7 @@
 @class NSString;
 @protocol INUIExtensionHostContextDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _INUIExtensionHostContext : NSExtensionContext <_INUIExtensionContextHosting>
 {
     id<INUIExtensionHostContextDelegate> _extensionHostContextDelegate;

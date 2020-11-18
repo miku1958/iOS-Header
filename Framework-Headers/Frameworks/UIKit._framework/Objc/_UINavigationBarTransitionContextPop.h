@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UINavigationBarTransitionContext.h>
+#import <UIKitCore/_UINavigationBarTransitionContext.h>
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarTransitionContextPop : _UINavigationBarTransitionContext

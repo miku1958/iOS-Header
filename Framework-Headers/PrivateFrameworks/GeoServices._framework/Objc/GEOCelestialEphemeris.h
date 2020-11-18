@@ -23,6 +23,7 @@
     double _illuminatedFraction;
     double _elongation;
     double _parallacticAngle;
+    BOOL _highPrecision;
 }
 
 @property (readonly, nonatomic) GEOSolarEclipticCelestialBodyData *eclipticCoord;
@@ -40,6 +41,7 @@
 - (void)_getRightAscension:(double *)arg1 declination:(double *)arg2 forJulianDay:(double)arg3 forBody:(long long)arg4;
 - (struct CAARiseTransitSetDetails)_riseTransitSetForBody:(long long)arg1;
 - (id)initWithLocation:(CDStruct_c3b9c2ee)arg1 date:(id)arg2 body:(long long)arg3;
+- (id)initWithLocation:(CDStruct_c3b9c2ee)arg1 date:(id)arg2 body:(long long)arg3 useHighPrecision:(BOOL)arg4;
 
 @end
 

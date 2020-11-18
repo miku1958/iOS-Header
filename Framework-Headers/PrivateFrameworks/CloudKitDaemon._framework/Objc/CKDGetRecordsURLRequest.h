@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (int)operationType;
 - (void)requestDidParseNodeFailure:(id)arg1;
 - (id)requestDidParseProtobufObject:(id)arg1;
+- (BOOL)requestGETPreAuth;
 - (id)requestOperationClasses;
 - (id)zoneIDsToLock;
 

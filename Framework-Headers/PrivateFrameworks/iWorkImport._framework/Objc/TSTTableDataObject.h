@@ -4,10 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <iWorkImport/TSPCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
-@interface TSTTableDataObject : NSObject
+@interface TSTTableDataObject : NSObject <TSPCopying>
 {
     unsigned int _refCount;
 }
@@ -15,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int refCount; // @synthesize refCount=_refCount;
 
 - (void)addReferencesFromObject:(id)arg1;
+- (id)copyWithContext:(id)arg1;
 - (BOOL)dropReference;
 - (id)initWithRefCount:(unsigned int)arg1;
 - (void)takeReference;

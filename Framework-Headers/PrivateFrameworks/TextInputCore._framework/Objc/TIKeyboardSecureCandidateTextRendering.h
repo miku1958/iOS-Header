@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface TIKeyboardSecureCandidateTextRendering : NSObject
 {
@@ -18,7 +18,7 @@
 + (BOOL)_isAllSingleLineStrings:(id)arg1;
 + (struct __CFAttributedString *)_newAttributedStringWithText:(id)arg1 font:(struct __CTFont *)arg2 color:(struct CGColor *)arg3;
 + (struct CGColor *)_newCgColorWithRed:(double)arg1 green:(double)arg2 blue:(double)arg3 alpha:(double)arg4;
-+ (struct CGColor *)_newCgColorWithTraitsColor:(id)arg1 invertColor:(BOOL)arg2;
++ (struct CGColor *)_newCgColorWithTraitsColor:(id)arg1;
 + (id)_requestLayoutForSimplifiedTextRuns:(id)arg1 inWidthGroups:(id)arg2 steps:(unsigned long long)arg3;
 + (BOOL)_textRunsHaveFixedFontSize:(id)arg1;
 + (double)_totalWidthForCell:(unsigned long long)arg1 fromTextRunResponses:(id)arg2;

@@ -12,11 +12,6 @@
 
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *commands;
-@property (readonly, nonatomic) BOOL hasCardSectionId;
-@property (readonly, nonatomic) BOOL hasNextCard;
-@property (readonly, nonatomic) BOOL hasResultIdentifier;
-@property (readonly, nonatomic) BOOL hasType;
-@property (readonly, nonatomic) BOOL hasValue;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBCard *nextCard;
 @property (copy, nonatomic) NSArray *parameterKeyPaths;

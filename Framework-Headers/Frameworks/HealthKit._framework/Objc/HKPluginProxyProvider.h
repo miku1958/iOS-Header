@@ -4,29 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <HealthKit/HKProxyProvider.h>
 
-@class HKHealthStore, NSString, _HKXPCConnection;
-@protocol OS_dispatch_queue, _HKXPCExportable;
+@class NSString;
 
-@interface HKPluginProxyProvider : NSObject
+@interface HKPluginProxyProvider : HKProxyProvider
 {
-    _HKXPCConnection *_connection;
-    NSObject<OS_dispatch_queue> *_connectionQueue;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    HKHealthStore *_healthStore;
-    NSString *_pluginIdentifier;
-    id<_HKXPCExportable> _exportedObject;
 }
 
-@property (readonly, weak, nonatomic) id<_HKXPCExportable> exportedObject; // @synthesize exportedObject=_exportedObject;
-@property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
-@property (readonly, nonatomic) NSString *pluginIdentifier; // @synthesize pluginIdentifier=_pluginIdentifier;
+@property (readonly, nonatomic) NSString *pluginIdentifier;
 
-- (void).cxx_destruct;
-- (void)_resetConnection;
-- (void)dealloc;
 - (void)fetchPluginProxyWithHandler:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)fetchProxyServiceEndpointForIdentifier:(id)arg1 endpointHandler:(CDUnknownBlockType)arg2 errorHandler:(CDUnknownBlockType)arg3;
 - (id)initWithHealthStore:(id)arg1 pluginIdentifier:(id)arg2 exportedObject:(id)arg3;
 
 @end

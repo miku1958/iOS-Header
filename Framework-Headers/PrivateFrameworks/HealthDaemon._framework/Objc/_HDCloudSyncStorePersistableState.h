@@ -13,6 +13,7 @@
 @interface _HDCloudSyncStorePersistableState : NSObject <NSCopying>
 {
     BOOL _hasEncounteredGapInCurrentEpoch;
+    int _syncProtocolVersion;
     NSString *_ownerIdentifier;
     NSString *_containerIdentifier;
     CKServerChangeToken *_serverChangeToken;
@@ -32,10 +33,11 @@
 @property (readonly, nonatomic) NSString *ownerIdentifier; // @synthesize ownerIdentifier=_ownerIdentifier;
 @property (readonly, nonatomic) NSDate *rebaseDeadline; // @synthesize rebaseDeadline=_rebaseDeadline;
 @property (readonly, nonatomic) CKServerChangeToken *serverChangeToken; // @synthesize serverChangeToken=_serverChangeToken;
+@property (readonly, nonatomic) int syncProtocolVersion; // @synthesize syncProtocolVersion=_syncProtocolVersion;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithServerChangeToken:(id)arg1 baselineEpoch:(unsigned long long)arg2 rebaseDeadline:(id)arg3 lastSyncDate:(id)arg4 emptyZones:(id)arg5 lastCheckDate:(id)arg6 ownerIdentifier:(id)arg7 containerIdentifier:(id)arg8;
+- (id)initWithServerChangeToken:(id)arg1 baselineEpoch:(unsigned long long)arg2 rebaseDeadline:(id)arg3 lastSyncDate:(id)arg4 emptyZones:(id)arg5 lastCheckDate:(id)arg6 ownerIdentifier:(id)arg7 containerIdentifier:(id)arg8 syncProtocolVersion:(int)arg9;
 - (id)stateByRecordingLastCheckDate:(id)arg1;
 - (id)stateByRecordingLastSyncDate:(id)arg1;
 - (id)stateByResettingRebaselineDeadline;
@@ -43,6 +45,7 @@
 - (id)stateWithEmptyZones:(id)arg1;
 - (id)stateWithGapEncountered:(BOOL)arg1;
 - (id)stateWithServerChangeToken:(id)arg1;
+- (id)stateWithSyncProtocolVersion:(int)arg1;
 
 @end
 

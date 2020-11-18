@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)_keyDescriptors;
-- (id)initWithUserID:(id)arg1;
+- (id)initWithUserHandle:(id)arg1;
 
 @end
 

@@ -12,17 +12,16 @@
 #import <HomeKit/NSMutableCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessory, HMMediaProfile, HMMediaSystemRole, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMAccessory, HMFUnfairLock, HMMediaProfile, HMMediaSystemRole, NSString, NSUUID;
 
 @interface HMMediaSystemComponent : NSObject <HMFLogging, NSSecureCoding, HMObjectMerge, NSCopying, NSMutableCopying>
 {
+    HMFUnfairLock *_lock;
     HMMediaProfile *_mediaProfile;
     HMMediaSystemRole *_role;
     NSUUID *_uniqueIdentifier;
     HMAccessory *_accessory;
     NSUUID *_uuid;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
 }
 
 @property (weak, nonatomic) HMAccessory *accessory; // @synthesize accessory=_accessory;
@@ -30,7 +29,6 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) HMMediaProfile *mediaProfile; // @synthesize mediaProfile=_mediaProfile;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) HMMediaSystemRole *role; // @synthesize role=_role;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;

@@ -17,7 +17,7 @@
 @property (nonatomic) BOOL autoenablesDefaultLighting;
 @property (readonly, nonatomic) void *context;
 @property (nonatomic) unsigned long long debugOptions;
-@property (nonatomic) id<SCNSceneRendererDelegate> delegate;
+@property (weak, nonatomic) id<SCNSceneRendererDelegate> delegate;
 @property (nonatomic, getter=isJitteringEnabled) BOOL jitteringEnabled;
 @property (nonatomic) BOOL loops;
 @property (strong, nonatomic) SKScene *overlaySKScene;

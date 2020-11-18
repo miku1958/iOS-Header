@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class FBSSerialQueue;
 @protocol FBUIApplicationServiceDelegate;
@@ -15,17 +15,15 @@
     id<FBUIApplicationServiceDelegate> _delegate;
 }
 
-@property (nonatomic) id<FBUIApplicationServiceDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, strong, nonatomic) FBSSerialQueue *queue; // @synthesize queue=_queue;
+@property (weak, nonatomic) id<FBUIApplicationServiceDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, nonatomic) FBSSerialQueue *queue; // @synthesize queue=_queue;
 
 + (id)sharedInstance;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)handleApplication:(id)arg1 getBadgeValueWithCompletion:(CDUnknownBlockType)arg2;
 - (void)handleApplication:(id)arg1 setBadgeValue:(id)arg2;
-- (void)handleApplicationProcess:(id)arg1 requestBrightness:(double)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)handleApplicationProcess:(id)arg1 setNextWakeInterval:(double)arg2;
 - (void)handleDeleteAllSnapshotsForApplication:(id)arg1;
-- (void)handleGetActiveInterfaceOrientationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleSuspendApplicationProcess:(id)arg1;
 - (id)initWithQueue:(id)arg1;
 

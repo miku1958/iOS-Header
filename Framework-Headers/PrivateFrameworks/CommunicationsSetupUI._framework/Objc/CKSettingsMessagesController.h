@@ -10,7 +10,7 @@
 #import <CommunicationsSetupUI/CNFRegWizardControllerDelegate-Protocol.h>
 #import <CommunicationsSetupUI/IMCloudKitEventHandler-Protocol.h>
 
-@class CKFilteringListController, CKNSExtension, NSString;
+@class CKFilteringListController, CKMultipleCTSubscriptionsController, CKNSExtension, IMCTXPCServiceSubscriptionInfo, NSString;
 
 @interface CKSettingsMessagesController : CNFRegListController <CNFRegWizardControllerDelegate, AKAppleIDAuthenticationDelegate, IMCloudKitEventHandler>
 {
@@ -18,15 +18,21 @@
     int _profileToken;
     CKFilteringListController *_filteringController;
     id _beginMappingID;
+    CKMultipleCTSubscriptionsController *_mmsMessagingController;
+    CKMultipleCTSubscriptionsController *_mmsAllowsGroupMessagingController;
+    IMCTXPCServiceSubscriptionInfo *_ctSubscriptionInfo;
     CKNSExtension *_ckExtension;
 }
 
 @property (strong) id beginMappingID; // @synthesize beginMappingID=_beginMappingID;
 @property (strong, nonatomic) CKNSExtension *ckExtension; // @synthesize ckExtension=_ckExtension;
+@property (strong, nonatomic) IMCTXPCServiceSubscriptionInfo *ctSubscriptionInfo; // @synthesize ctSubscriptionInfo=_ctSubscriptionInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CKFilteringListController *filteringController; // @synthesize filteringController=_filteringController;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CKMultipleCTSubscriptionsController *mmsAllowsGroupMessagingController; // @synthesize mmsAllowsGroupMessagingController=_mmsAllowsGroupMessagingController;
+@property (strong, nonatomic) CKMultipleCTSubscriptionsController *mmsMessagingController; // @synthesize mmsMessagingController=_mmsMessagingController;
 @property (readonly) Class superclass;
 
 + (id)currentKeepMessages;
@@ -42,9 +48,12 @@
 - (id)_madridSettingsController;
 - (void)_setupAccountHandlers;
 - (void)_setupAccountHandlersForDisabling;
+- (void)_setupMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(BOOL)arg2;
+- (void)_setupMultipleSubscriptionsMMSGroupSpecifiers:(id)arg1 wantsMMSBasicGroup:(BOOL)arg2;
 - (void)_showAuthKitSignInIfNecessary;
 - (void)_showMadridSetupIfNecessary;
 - (void)_showMadridSetupIfNecessary:(BOOL)arg1;
+- (void)_showPrivacySheet:(id)arg1;
 - (void)_showSignInController;
 - (id)_smsRelayDevicesController;
 - (void)_startListeningForProfileChanges;
@@ -85,6 +94,7 @@
 - (BOOL)isPersonalCompanionEnabled;
 - (id)isSiriToneNotificationEnabled:(id)arg1;
 - (id)logName;
+- (id)madridAccountsMultipleSubscriptionsSpecifierIdentifiers;
 - (id)madridAccountsSpecifierIdentifiers;
 - (id)madridSigninButtonTextForSpecifier:(id)arg1;
 - (id)madridSigninSpecifiers;
@@ -115,6 +125,7 @@
 - (BOOL)shouldShowContactPhotoSettings;
 - (BOOL)shouldShowDeliveryReceipts;
 - (BOOL)shouldShowGenericSettings;
+- (BOOL)shouldShowIDSSubscriptions;
 - (BOOL)shouldShowMadridAccounts;
 - (BOOL)shouldShowMadridSignin;
 - (BOOL)shouldShowMadridSwitch;

@@ -7,7 +7,7 @@
 #import <UIKit/UIImage.h>
 
 @interface UIImage (SFWebClipImageUtilities)
-+ (id)_sf_fallbackFavicon;
++ (id)_sf_fallbackFaviconWithLightStyle:(BOOL)arg1;
 + (id)_sf_favoritesFaviconWithLightStyle:(BOOL)arg1;
 - (id)_sf_imageByResizingWithAccessibilityScale:(double)arg1;
 - (BOOL)_sf_isLaunchImageSizedForOrientation:(long long)arg1 includesStatusBar:(BOOL *)arg2;

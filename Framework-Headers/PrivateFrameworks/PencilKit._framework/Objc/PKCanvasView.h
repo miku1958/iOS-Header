@@ -6,23 +6,24 @@
 
 #import <UIKit/UIView.h>
 
+#import <PencilKit/PKDrawableView-Protocol.h>
 #import <PencilKit/PKInternalDrawingViewDelegate-Protocol.h>
 #import <PencilKit/PKSelectionDelegate-Protocol.h>
+#import <PencilKit/PKToolPickerDelegate-Protocol.h>
 #import <PencilKit/UIDropInteractionDelegate-Protocol.h>
 
-@class CHVisualizationManager, NSString, PKController, PKDrawing, PKInk, PKInkPicker, PKInternalDrawingView, PKRecognitionOverlayView, PKRendererController, PKSelectionController, UIGestureRecognizer, UIImage;
-@protocol PKCanvasViewDelegate, PKSelectionDelegate;
+@class CHVisualizationManager, NSString, PKController, PKDrawing, PKInk, PKInternalDrawingView, PKRecognitionOverlayView, PKSelectionController, UIColor, UIGestureRecognizer, UIImage;
+@protocol PKCanvasViewDelegate, PKRendererControllerProtocol, PKSelectionDelegate;
 
-@interface PKCanvasView : UIView <PKInternalDrawingViewDelegate, PKSelectionDelegate, UIDropInteractionDelegate>
+@interface PKCanvasView : UIView <PKInternalDrawingViewDelegate, PKSelectionDelegate, PKDrawableView, UIDropInteractionDelegate, PKToolPickerDelegate>
 {
     BOOL _layerFixedPixelSize;
-    BOOL _wantsThickerInks;
     BOOL __maintainsTransformsOnLayout;
     BOOL _visualizationsEnabled;
     double _fixedDrawingScale;
     id<PKCanvasViewDelegate> _delegate;
-    PKInkPicker *_managedInkPicker;
     UIImage *_backgroundImage;
+    UIColor *_backgroundColor;
     PKRecognitionOverlayView *_overlayView;
     PKSelectionController *_selectionController;
     PKInternalDrawingView *_drawingView;
@@ -36,7 +37,8 @@
 @property (readonly, nonatomic) BOOL _layerFixedPixelSize; // @synthesize _layerFixedPixelSize;
 @property (nonatomic) BOOL _maintainsTransformsOnLayout; // @synthesize _maintainsTransformsOnLayout=__maintainsTransformsOnLayout;
 @property (readonly, nonatomic) CHVisualizationManager *_recognitionVisualizationManager;
-@property (readonly, nonatomic) PKRendererController *_rendererController;
+@property (readonly, nonatomic) id<PKRendererControllerProtocol> _rendererController;
+@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKCanvasViewDelegate> delegate; // @synthesize delegate=_delegate;
@@ -53,7 +55,6 @@
 @property (copy, nonatomic) PKInk *ink;
 @property (readonly, nonatomic) BOOL isDrawing;
 @property (readonly, nonatomic) BOOL isRendering;
-@property (strong, nonatomic) PKInkPicker *managedInkPicker; // @synthesize managedInkPicker=_managedInkPicker;
 @property (nonatomic) double maximumZoomScale;
 @property (nonatomic) double minimumZoomScale;
 @property (strong, nonatomic) PKRecognitionOverlayView *overlayView; // @synthesize overlayView=_overlayView;
@@ -64,7 +65,6 @@
 @property (nonatomic) struct CGAffineTransform strokeTransform;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL visualizationsEnabled; // @synthesize visualizationsEnabled=_visualizationsEnabled;
-@property (nonatomic) BOOL wantsThickerInks; // @synthesize wantsThickerInks=_wantsThickerInks;
 
 - (void).cxx_destruct;
 - (void)_drawingDisplay;
@@ -78,10 +78,11 @@
 - (void)applyCommand:(id)arg1 toDrawing:(id)arg2;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canBeginDrawingWithTouch:(id)arg1;
+- (BOOL)canModifyWhitespace;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
+- (id)canvasViewForToolPicker:(id)arg1;
 - (struct CGPoint)closestPointForPastedSelectionRect:(struct CGRect)arg1 withDrawing:(id *)arg2;
 - (void)commitSelectionIfNecessaryWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)containsDrawingUUID:(id)arg1;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
 - (void)dealloc;
@@ -89,6 +90,7 @@
 - (void)didBeginDraggingSelection;
 - (void)didFinishRenderingStroke:(id)arg1 inDrawing:(id)arg2;
 - (void)drawStrokeWithPath:(struct CGPath *)arg1;
+- (void)drawStrokeWithPoints:(struct CGPoint *)arg1 count:(unsigned long long)arg2;
 - (void)drawingCancelled;
 - (void)drawingDidChange:(id)arg1;
 - (id)drawingForLiveAttachment;
@@ -96,7 +98,6 @@
 - (id)drawingForUUID:(id)arg1;
 - (void)duplicate:(id)arg1;
 - (void)eraseAll;
-- (struct CGImage *)image;
 - (struct CGAffineTransform)imageTransform;
 - (void)imageWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)initDrawingView;
@@ -112,11 +113,12 @@
 - (BOOL)liveDrawingIsAtEndOfDocument;
 - (void)paste:(id)arg1;
 - (void)performUndo:(id)arg1;
-- (void)pickInk;
 - (struct CGPoint)pointInStrokeSpace:(struct CGPoint)arg1 inDrawing:(id)arg2;
 - (void)renderingDidFinish;
+- (void)replaceWithStrokesFromDrawing:(id)arg1 transform:(struct CGAffineTransform)arg2;
 - (void)resetSelectedStrokeStateForRenderer;
 - (void)scrollContent:(struct CGPoint)arg1;
+- (id)selectedInkForToolPicker:(id)arg1;
 - (struct CGAffineTransform)selectionDrawingTransform;
 - (struct CGPoint)selectionOffsetForDrawing:(id)arg1;
 - (void)selectionRefreshWithChangeToDrawings:(id)arg1;
@@ -125,7 +127,10 @@
 - (void)setIsDrawing:(BOOL)arg1;
 - (void)setOpaque:(BOOL)arg1;
 - (void)simulateHIDPoints:(id)arg1;
-- (void)toggleSelectedStrokes:(id)arg1 hide:(BOOL)arg2 inDrawing:(id)arg3;
+- (void)toggleSelectedStrokes:(id)arg1 hide:(BOOL)arg2 inDrawing:(id)arg3 isErasing:(BOOL)arg4;
+- (void)toolPicker:(id)arg1 setSelectedInk:(id)arg2;
+- (id)undoManagerForToolPicker:(id)arg1;
+- (id)visibleStrokesOnscreen:(id)arg1 forDrawing:(id)arg2;
 - (void)willBeginDrawingWithTouch:(id)arg1;
 - (void)windowDidResize:(id)arg1;
 

@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSString *relayIdentifier; // @dynamic relayIdentifier;
 @property (strong, nonatomic) NSNumber *relayState; // @dynamic relayState;
 @property (strong, nonatomic) NSNumber *supportsRelay; // @dynamic supportsRelay;
+@property (strong, nonatomic) NSArray *targetUUIDs; // @dynamic targetUUIDs;
 @property (strong, nonatomic) NSArray *transportInformation; // @dynamic transportInformation;
 @property (strong, nonatomic) NSString *uniqueIdentifier; // @dynamic uniqueIdentifier;
 

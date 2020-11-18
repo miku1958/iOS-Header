@@ -11,6 +11,7 @@
 }
 
 + (BOOL)canPerformOnAssetCollection:(id)arg1 people:(id)arg2;
++ (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
 + (id)createPreviewActionForAssetCollection:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 + (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollection:(id)arg2 person:(id)arg3;
 - (void)performBackgroundTask;

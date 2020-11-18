@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NNMKSQLiteConnection, NSDate, NSString;
+@class NNMKSQLiteConnection, NSDate, NSNumber, NSString;
 
 @interface NNMKDeviceSyncRegistry : NSObject
 {
@@ -16,6 +16,7 @@
     BOOL _recreatedFromScratch;
     NSString *_path;
     unsigned long long _fullSyncVersion;
+    NSNumber *_supportsWebKit;
     double _deviceScreenWidth;
     double _deviceScreenScale;
     NSDate *_disconnectedSince;
@@ -34,6 +35,7 @@
 @property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
 @property (nonatomic) BOOL protectedContentChannelSupported; // @synthesize protectedContentChannelSupported=_protectedContentChannelSupported;
 @property (readonly, nonatomic) BOOL recreatedFromScratch; // @synthesize recreatedFromScratch=_recreatedFromScratch;
+@property (nonatomic) NSNumber *supportsWebKit; // @synthesize supportsWebKit=_supportsWebKit;
 
 - (void).cxx_destruct;
 - (void)_deleteAllObjectsFromTable:(id)arg1;
@@ -49,6 +51,10 @@
 - (id)_selectSyncedMessagesWhere:(id)arg1 blockForBinding:(CDUnknownBlockType)arg2;
 - (void)_setControlValueForKey:(id)arg1 withBlockForBinding:(CDUnknownBlockType)arg2;
 - (id)_ungroupGroupedValue:(id)arg1;
+- (id)accountIdForUsername:(id)arg1;
+- (unsigned long long)accountSourceTypeForAccountId:(id)arg1;
+- (unsigned long long)accountSourceTypeForMailboxId:(id)arg1;
+- (unsigned long long)accountSourceTypeForMessageId:(id)arg1;
 - (id)activeMailboxes;
 - (void)addObjectIds:(id)arg1 type:(id)arg2 resendInterval:(unsigned long long)arg3 forIDSIdentifierNotYetAckd:(id)arg4;
 - (void)addOrUpdateMailbox:(id)arg1;
@@ -102,6 +108,7 @@
 - (id)syncedMessagesForConversationWithId:(id)arg1;
 - (id)syncedMessagesKeyedByMessageIdAfterDateReceived:(id)arg1 mailboxId:(id)arg2;
 - (id)typeForIDSIdentifierNotYetAckd:(id)arg1;
+- (void)updateSourceType:(unsigned long long)arg1 forAccountId:(id)arg2;
 - (void)updateSyncActiveForMailbox:(id)arg1;
 - (void)updateSyncEnabledForMailbox:(id)arg1;
 - (void)updateSyncRequestedForMailbox:(id)arg1;

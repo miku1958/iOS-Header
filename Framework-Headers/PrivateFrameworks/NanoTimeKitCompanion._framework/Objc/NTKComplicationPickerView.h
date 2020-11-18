@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/NTKEditOptionPickerView.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, NTKComplication, NTKComplicationDisplayWrapperView;
+@class NSMutableDictionary, NSMutableSet, NSString, NTKComplication, NTKComplicationDisplayWrapperView, UIImage;
 @protocol NTKComplicationPickerViewDataSource;
 
 @interface NTKComplicationPickerView : NTKEditOptionPickerView
@@ -16,29 +16,40 @@
     NSMutableDictionary *_controllersByComplication;
     NSMutableDictionary *_layoutRulesByComplication;
     BOOL _needsReload;
+    BOOL _curvedInterior;
     long long _style;
     id<NTKComplicationPickerViewDataSource> _dataSource;
+    double _curvedRadius;
+    double _curvedAngle;
     NSString *_complicationSlot;
+    struct CGPoint _curvedCenter;
 }
 
-@property (strong, nonatomic) NSString *complicationSlot; // @synthesize complicationSlot=_complicationSlot;
+@property (readonly, nonatomic) NSString *complicationSlot; // @synthesize complicationSlot=_complicationSlot;
+@property (readonly, nonatomic) double curvedAngle; // @synthesize curvedAngle=_curvedAngle;
+@property (readonly, nonatomic) struct CGPoint curvedCenter; // @synthesize curvedCenter=_curvedCenter;
+@property (readonly, nonatomic) BOOL curvedInterior; // @synthesize curvedInterior=_curvedInterior;
+@property (strong, nonatomic) UIImage *curvedMask;
+@property (readonly, nonatomic) double curvedRadius; // @synthesize curvedRadius=_curvedRadius;
 @property (weak, nonatomic) id<NTKComplicationPickerViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, nonatomic) NTKComplication *selectedComplication;
 @property (readonly, nonatomic) NTKComplicationDisplayWrapperView *selectedComplicationDisplay;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
-- (void)_configureFaceView:(id)arg1 forOption:(id)arg2;
-- (Class)_cylinderFaceViewClass;
+- (void)_configureSideView:(id)arg1 forOption:(id)arg2;
 - (void)_detachComplicationDisplays;
 - (id)_displayByLoadingComplication:(id)arg1;
 - (void)_loadComplication:(id)arg1;
+- (id)_newContainerView;
 - (void)_reloadLayoutForComplication:(id)arg1;
-- (void)_willDisplayFaceView:(id)arg1;
+- (Class)_sideViewClass;
+- (void)_willDisplaySideView:(id)arg1;
 - (id)complicationAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
-- (id)initWithAllowedComplications:(id)arg1 selectedComplication:(id)arg2;
+- (id)initWithAllowedComplications:(id)arg1 selectedComplication:(id)arg2 complicationSlot:(id)arg3;
 - (void)reloadIfNeeded;
+- (void)setCurvedRadius:(double)arg1 curvedAngle:(double)arg2 curvedCenter:(struct CGPoint)arg3 curvedInterior:(BOOL)arg4;
 - (void)setNeedsReload;
 - (void)stealSelectedComplicationDisplay:(id *)arg1 controller:(id *)arg2;
 

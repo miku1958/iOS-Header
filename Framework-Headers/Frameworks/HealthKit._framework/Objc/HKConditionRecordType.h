@@ -10,8 +10,8 @@
 {
 }
 
++ (id)allTypes;
 + (id)conditionRecordType;
-- (Class)dataObjectClass;
 
 @end
 

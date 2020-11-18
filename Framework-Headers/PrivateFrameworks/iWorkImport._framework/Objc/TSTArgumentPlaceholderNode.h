@@ -11,24 +11,24 @@
 __attribute__((visibility("hidden")))
 @interface TSTArgumentPlaceholderNode : TSTExpressionNode
 {
-    short mMode;
-    NSString *mDetokenizedText;
+    NSString *_detokenizedText;
+    short _mode;
 }
 
-@property (nonatomic) short mode; // @synthesize mode=mMode;
+@property (nonatomic) short mode; // @synthesize mode=_mode;
 
-+ (id)argumentSpecForFunctionIndex:(int)arg1 argumentIndex:(int)arg2;
++ (struct TSCEFunctionArgSpec *)argumentSpecForFunctionIndex:(int)arg1 argumentIndex:(int)arg2;
+- (void).cxx_destruct;
 - (id)argumentName;
 - (id)bakedValue;
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
 - (id)copyIntoContext:(id)arg1 bakeModes:(BOOL)arg2 children:(id)arg3;
-- (void)dealloc;
 - (id)detokenizedText;
 - (id)exportString;
 - (id)formulaPlainText;
 - (BOOL)hasMenu;
 - (id)initAsCopyOf:(id)arg1 intoContext:(id)arg2 children:(id)arg3;
-- (id)initWithContext:(id)arg1 argumentSpec:(id)arg2 firstIndex:(unsigned long long)arg3 lastIndex:(unsigned long long)arg4;
+- (id)initWithContext:(id)arg1 argumentSpec:(struct TSCEFunctionArgSpec *)arg2 firstIndex:(unsigned long long)arg3 lastIndex:(unsigned long long)arg4;
 - (id)initWithContext:(id)arg1 children:(id)arg2 firstIndex:(unsigned long long)arg3 lastIndex:(unsigned long long)arg4;
 - (id)initWithContext:(id)arg1 firstIndex:(unsigned long long)arg2 lastIndex:(unsigned long long)arg3;
 - (void)insertFormulaText:(id)arg1 includeWhitespace:(BOOL)arg2;
@@ -40,7 +40,7 @@ __attribute__((visibility("hidden")))
 - (struct TSTCSENodeData)recordHashesForSubexpressions:(id)arg1;
 - (void)saveToArchive:(struct ArgumentPlaceholderNodeArchive *)arg1 archiver:(id)arg2;
 - (void)saveToArchiver:(id)arg1;
-- (void)setArgumentSpec:(id)arg1;
+- (void)setArgumentSpec:(struct TSCEFunctionArgSpec *)arg1;
 - (id)string;
 - (int)tokenType;
 

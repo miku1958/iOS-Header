@@ -80,7 +80,7 @@
 + (unsigned long long)daemonInterfaceHash;
 + (id)sharedService;
 - (void).cxx_destruct;
-- (void)_reset;
+- (void)_resetDetails;
 - (void)addObserver:(id)arg1;
 - (unsigned long long)alternateRouteIndexForRoute:(id)arg1;
 - (void)changeSettings:(id)arg1;
@@ -88,7 +88,7 @@
 - (id)displayETAForRoute:(id)arg1;
 - (unsigned long long)displayRemainingMinutesForRoute:(id)arg1;
 - (id)etaRouteForRoute:(id)arg1;
-- (id)init;
+- (id)initPrivate;
 - (BOOL)isOpenForClient:(id)arg1;
 - (void)navigationServiceProxy:(id)arg1 didActivateAudioSession:(BOOL)arg2;
 - (void)navigationServiceProxy:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;

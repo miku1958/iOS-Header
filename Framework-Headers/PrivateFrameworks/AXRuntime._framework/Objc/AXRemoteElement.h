@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet, NSString;
-@protocol AXRemoteElementChildrenDelegate, OS_dispatch_queue;
+@protocol AXRemoteElementChildrenDelegate;
 
 @interface AXRemoteElement : NSObject
 {
@@ -20,7 +20,6 @@
     unsigned int _machPort;
     id<AXRemoteElementChildrenDelegate> _remoteChildrenDelegate;
     id _accessibilityContainer;
-    NSObject<OS_dispatch_queue> *_remoteQueue;
 }
 
 @property (weak, nonatomic) id accessibilityContainer; // @synthesize accessibilityContainer=_accessibilityContainer;
@@ -30,7 +29,6 @@
 @property (nonatomic) BOOL onClientSide; // @synthesize onClientSide=_onClientSide;
 @property (weak, nonatomic) id<AXRemoteElementChildrenDelegate> remoteChildrenDelegate; // @synthesize remoteChildrenDelegate=_remoteChildrenDelegate;
 @property (nonatomic) int remotePid; // @synthesize remotePid=_remotePid;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *remoteQueue; // @synthesize remoteQueue=_remoteQueue;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 @property (readonly, nonatomic) unsigned long long uuidHash;
 
@@ -53,6 +51,7 @@
 - (struct CGRect)accessibilityFrame;
 - (void)dealloc;
 - (id)description;
+- (void)getLeafElementsFromRemoteSide:(CDUnknownBlockType)arg1;
 - (id)initWithUUID:(id)arg1 andRemotePid:(int)arg2 andContextId:(unsigned int)arg3;
 - (void)platformCleanup;
 - (void)unregister;

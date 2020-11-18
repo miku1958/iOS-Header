@@ -12,6 +12,7 @@
 
 @interface ADUserTargetingProperties : PBCodable <NSCopying>
 {
+    CDStruct_95bda58d _accountStates;
     CDStruct_95bda58d _accountTypes;
     CDStruct_95bda58d _deviceModes;
     double _clientClockTime;
@@ -63,6 +64,8 @@
     } _has;
 }
 
+@property (readonly, nonatomic) int *accountStates;
+@property (readonly, nonatomic) unsigned long long accountStatesCount;
 @property (readonly, nonatomic) int *accountTypes;
 @property (readonly, nonatomic) unsigned long long accountTypesCount;
 @property (strong, nonatomic) NSString *administrativeArea; // @synthesize administrativeArea=_administrativeArea;
@@ -137,16 +140,21 @@
 + (Class)targetingType;
 + (Class)userKeyboardType;
 - (void).cxx_destruct;
+- (int)StringAsAccountStates:(id)arg1;
 - (int)StringAsAccountTypes:(id)arg1;
 - (int)StringAsConnectionType:(id)arg1;
 - (int)StringAsDeviceModes:(id)arg1;
 - (int)StringAsRunState:(id)arg1;
+- (int)accountStateAtIndex:(unsigned long long)arg1;
+- (id)accountStatesAsString:(int)arg1;
 - (int)accountTypeAtIndex:(unsigned long long)arg1;
 - (id)accountTypesAsString:(int)arg1;
+- (void)addAccountState:(int)arg1;
 - (void)addAccountType:(int)arg1;
 - (void)addDeviceMode:(int)arg1;
 - (void)addTargeting:(id)arg1;
 - (void)addUserKeyboard:(id)arg1;
+- (void)clearAccountStates;
 - (void)clearAccountTypes;
 - (void)clearDeviceModes;
 - (void)clearTargetings;
@@ -164,6 +172,7 @@
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)runStateAsString:(int)arg1;
+- (void)setAccountStates:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setAccountTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setDeviceModes:(int *)arg1 count:(unsigned long long)arg2;
 - (id)targetingAtIndex:(unsigned long long)arg1;

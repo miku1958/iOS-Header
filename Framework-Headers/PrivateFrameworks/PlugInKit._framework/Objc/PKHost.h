@@ -28,7 +28,7 @@
 
 + (id)defaultHost;
 - (void).cxx_destruct;
-- (void)accessPlugIns:(id)arg1 flags:(unsigned long long)arg2 extensions:(CDUnknownBlockType)arg3;
+- (void)accessPlugIns:(id)arg1 synchronously:(BOOL)arg2 flags:(unsigned long long)arg3 extensions:(CDUnknownBlockType)arg4;
 - (id)activatePlugIn:(id)arg1;
 - (id)activePlugInForIdentifier:(id)arg1;
 - (void)cancelPlugInDiscovery:(id)arg1;
@@ -38,7 +38,7 @@
 - (void)findPlugInByPathURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)findPlugInByUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)init;
-- (void)readyPlugIns:(id)arg1 environment:(id)arg2 ready:(CDUnknownBlockType)arg3;
+- (void)readyPlugIns:(id)arg1 synchronously:(BOOL)arg2 environment:(id)arg3 ready:(CDUnknownBlockType)arg4;
 - (id)rewriteDiscoveryAttributes:(id)arg1 flags:(unsigned long long)arg2;
 - (void)setElection:(long long)arg1 forPlugIn:(id)arg2;
 - (void)setExtensionState:(id)arg1 forPlugIn:(id)arg2;

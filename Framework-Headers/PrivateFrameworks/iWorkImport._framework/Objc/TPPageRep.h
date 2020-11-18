@@ -7,17 +7,22 @@
 #import <iWorkImport/TSWPPageRep.h>
 
 #import <iWorkImport/TSDMasterDrawableDelegate-Protocol.h>
+#import <iWorkImport/TSKChangeSourceObserver-Protocol.h>
 
-@class CALayer, NSString, TPiOSMarginAdjustRep;
+@class CALayer, NSString, TPiOSMarginAdjustRep, TSDFill;
 
 __attribute__((visibility("hidden")))
-@interface TPPageRep : TSWPPageRep <TSDMasterDrawableDelegate>
+@interface TPPageRep : TSWPPageRep <TSKChangeSourceObserver, TSDMasterDrawableDelegate>
 {
     CALayer *_horizontalSeparatorLayer;
     CALayer *_verticalSeparatorLayer;
+    BOOL _backgroundFillRequiresLayerUpdate;
+    BOOL _fillCanApplyToCALayer;
     TPiOSMarginAdjustRep *_marginAdjustRep;
+    TSDFill *_cachedBackgroundFill;
 }
 
+@property (strong, nonatomic) TSDFill *cachedBackgroundFill; // @synthesize cachedBackgroundFill=_cachedBackgroundFill;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -25,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)backgroundFill;
 - (id)bodyReps;
 - (BOOL)childRepIsMasterDrawable:(id)arg1;
 - (BOOL)childRepIsOnDocSetupCanvas:(id)arg1;
@@ -32,12 +38,9 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (BOOL)directlyManagesLayerContent;
 - (void)drawInContext:(struct CGContext *)arg1;
-- (void)drawInLayerContext:(struct CGContext *)arg1;
-- (id)layerClass;
+- (BOOL)isOpaque;
 - (BOOL)masksToBounds;
 - (BOOL)p_pageRequiresHorizontalSeparator;
-- (void)setNeedsDisplay;
-- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)willBeRemoved;
 
 @end

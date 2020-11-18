@@ -11,13 +11,16 @@
 
 @interface NTKModularSmallRingTemplateView : NTKModularTemplateView
 {
-    NTKColoringLabel *_label;
-    NTKColoringImageView *_stateRing;
     UIView<NTKComplicationImageView> *_imageView;
     float _level;
     CLKProgressProvider *_progressProvider;
     struct NSNumber *_progressUpdateToken;
+    NTKColoringImageView *_stateRing;
+    NTKColoringLabel *_label;
 }
+
+@property (strong, nonatomic) NTKColoringLabel *label; // @synthesize label=_label;
+@property (strong, nonatomic) NTKColoringImageView *stateRing; // @synthesize stateRing=_stateRing;
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
 + (void)load;
@@ -27,11 +30,13 @@
 - (void)_configureContentSubviews;
 - (void)_enumerateForegroundColoringViewsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_layoutContentView;
+- (void)_refreshRingImage;
+- (void)_refreshRingImageWithRing:(id)arg1;
 - (void)_update;
+- (void)_updateRingWithRingDescription:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setIsXL:(BOOL)arg1;
 - (void)updateRingWithProgressProvider:(id)arg1;
-- (void)updateRingWithRingDescription:(id)arg1;
 
 @end
 

@@ -10,10 +10,12 @@
 
 @protocol PUPhotoEditResourceLoaderDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUPhotoEditResourceLoadRequest : NSObject <NSCopying>
 {
     BOOL _requireLocalResources;
     BOOL _requireAdjustments;
+    BOOL _assetLoadingAsRaw;
     id<PUPhotoEditResourceLoaderDelegate> _delegate;
     long long _version;
     long long __resolvedVersion;
@@ -21,6 +23,7 @@
 }
 
 @property (nonatomic, setter=_setResolvedVersion:) long long _resolvedVersion; // @synthesize _resolvedVersion=__resolvedVersion;
+@property (nonatomic) BOOL assetLoadingAsRaw; // @synthesize assetLoadingAsRaw=_assetLoadingAsRaw;
 @property (weak, nonatomic) id<PUPhotoEditResourceLoaderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL requireAdjustments; // @synthesize requireAdjustments=_requireAdjustments;
 @property (nonatomic) BOOL requireLocalResources; // @synthesize requireLocalResources=_requireLocalResources;
@@ -30,12 +33,12 @@
 - (void).cxx_destruct;
 - (id)_adjustmentsRequestOptions;
 - (void)_assertWorkVersionResolved;
-- (id)_imageRequestOptions;
-- (long long)_imageRequestVersion;
+- (id)_imageRequestOptionsWithAsset:(id)arg1;
+- (long long)_imageRequestVersionWithAsset:(id)arg1;
 - (BOOL)_isWorkVersionResolved;
 - (BOOL)_needsLoadAdjustments;
 - (void)_resolveVersionIfNeededWithAdjustmentsResult:(id)arg1;
-- (id)_videoRequestOptions;
+- (id)_videoRequestOptionsWithAsset:(id)arg1;
 - (long long)_videoRequestVersion;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 

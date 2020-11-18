@@ -13,35 +13,35 @@
 
 @interface HKProcedureRecord : HKMedicalRecord <NSSecureCoding, NSCopying>
 {
-    BOOL _notPerformed;
-    NSArray *_bodySitesCodings;
-    NSArray *_categoryCodings;
-    NSArray *_complicationsCodings;
-    HKMedicalDate *_executionEndDate;
-    HKMedicalDate *_executionStartDate;
-    NSArray *_followUpsCodings;
-    NSArray *_outcomeCodings;
-    NSArray *_performers;
     NSArray *_procedureCodings;
+    NSArray *_performers;
+    HKMedicalDate *_executionStartDate;
+    HKMedicalDate *_executionEndDate;
+    BOOL _notPerformed;
+    HKMedicalCoding *_statusCoding;
+    NSArray *_categoryCodings;
     NSArray *_reasonCodings;
     NSArray *_reasonsNotPerformedCodings;
-    HKMedicalCoding *_statusCoding;
+    NSArray *_outcomeCodings;
+    NSArray *_complicationsCodings;
+    NSArray *_followUpsCodings;
+    NSArray *_bodySitesCodings;
 }
 
-@property (readonly, copy, nonatomic) NSArray *bodySitesCodings; // @synthesize bodySitesCodings=_bodySitesCodings;
-@property (readonly, copy, nonatomic) NSArray *categoryCodings; // @synthesize categoryCodings=_categoryCodings;
-@property (readonly, copy, nonatomic) NSArray *complicationsCodings; // @synthesize complicationsCodings=_complicationsCodings;
-@property (readonly, copy, nonatomic) HKMedicalDate *executionEndDate; // @synthesize executionEndDate=_executionEndDate;
-@property (readonly, copy, nonatomic) HKMedicalDate *executionStartDate; // @synthesize executionStartDate=_executionStartDate;
-@property (readonly, copy, nonatomic) NSArray *followUpsCodings; // @synthesize followUpsCodings=_followUpsCodings;
-@property (readonly, nonatomic) BOOL notPerformed; // @synthesize notPerformed=_notPerformed;
-@property (readonly, copy, nonatomic) NSArray *outcomeCodings; // @synthesize outcomeCodings=_outcomeCodings;
-@property (readonly, copy, nonatomic) NSArray *performers; // @synthesize performers=_performers;
-@property (readonly, copy, nonatomic) NSArray *procedureCodings; // @synthesize procedureCodings=_procedureCodings;
-@property (readonly, nonatomic) HKProcedureRecordType *procedureRecordType;
-@property (readonly, copy, nonatomic) NSArray *reasonCodings; // @synthesize reasonCodings=_reasonCodings;
-@property (readonly, copy, nonatomic) NSArray *reasonsNotPerformedCodings; // @synthesize reasonsNotPerformedCodings=_reasonsNotPerformedCodings;
-@property (readonly, copy, nonatomic) HKMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
+@property (readonly, copy) NSArray *bodySitesCodings;
+@property (readonly, copy) NSArray *categoryCodings;
+@property (readonly, copy) NSArray *complicationsCodings;
+@property (readonly, copy) HKMedicalDate *executionEndDate;
+@property (readonly, copy) HKMedicalDate *executionStartDate;
+@property (readonly, copy) NSArray *followUpsCodings;
+@property (readonly) BOOL notPerformed;
+@property (readonly, copy) NSArray *outcomeCodings;
+@property (readonly, copy) NSArray *performers;
+@property (readonly, copy) NSArray *procedureCodings;
+@property (readonly, copy) HKProcedureRecordType *procedureRecordType;
+@property (readonly, copy) NSArray *reasonCodings;
+@property (readonly, copy) NSArray *reasonsNotPerformedCodings;
+@property (readonly, copy) HKMedicalCoding *statusCoding;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)bodySitesCodingsPreferredSystems;
@@ -51,14 +51,14 @@
 + (id)followUpsCodingsPreferredSystems;
 + (id)outcomeCodingsPreferredSystems;
 + (id)procedureCodingsPreferredSystems;
-+ (id)procedureRecordWithNote:(id)arg1 enteredInError:(BOOL)arg2 modifiedDate:(id)arg3 FHIRIdentifier:(id)arg4 extractionVersion:(long long)arg5 device:(id)arg6 metadata:(id)arg7 procedureCodings:(id)arg8 performers:(id)arg9 executionStartDate:(id)arg10 executionEndDate:(id)arg11 notPerformed:(BOOL)arg12 statusCoding:(id)arg13 categoryCodings:(id)arg14 reasonCodings:(id)arg15 reasonsNotPerformedCodings:(id)arg16 outcomeCodings:(id)arg17 complicationsCodings:(id)arg18 followUpsCodings:(id)arg19 bodySitesCodings:(id)arg20;
++ (id)procedureRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 procedureCodings:(id)arg9 performers:(id)arg10 executionStartDate:(id)arg11 executionEndDate:(id)arg12 notPerformed:(BOOL)arg13 statusCoding:(id)arg14 categoryCodings:(id)arg15 reasonCodings:(id)arg16 reasonsNotPerformedCodings:(id)arg17 outcomeCodings:(id)arg18 complicationsCodings:(id)arg19 followUpsCodings:(id)arg20 bodySitesCodings:(id)arg21;
++ (id)procedureRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 procedureCodings:(id)arg10 performers:(id)arg11 executionStartDate:(id)arg12 executionEndDate:(id)arg13 notPerformed:(BOOL)arg14 statusCoding:(id)arg15 categoryCodings:(id)arg16 reasonCodings:(id)arg17 reasonsNotPerformedCodings:(id)arg18 outcomeCodings:(id)arg19 complicationsCodings:(id)arg20 followUpsCodings:(id)arg21 bodySitesCodings:(id)arg22;
 + (id)reasonCodingsPreferredSystems;
 + (id)reasonsNotPerformedCodingsPreferredSystems;
 + (id)statusCodingPreferredSystems;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_setBodySitesCodings:(id)arg1;
 - (void)_setCategoryCodings:(id)arg1;
 - (void)_setComplicationsCodings:(id)arg1;

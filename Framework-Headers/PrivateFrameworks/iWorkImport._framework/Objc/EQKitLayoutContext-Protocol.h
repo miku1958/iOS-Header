@@ -10,8 +10,10 @@
 - (struct __CFString *)baseFontName;
 - (double)baseFontSize;
 - (struct CGSize)containerSize;
+- (struct CGSize)targetSize;
 
 @optional
 - (struct CGColor *)baseFontColor;
+- (double)textMacroFontSize;
 @end
 

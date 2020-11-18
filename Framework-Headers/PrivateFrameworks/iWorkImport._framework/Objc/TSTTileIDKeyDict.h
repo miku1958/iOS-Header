@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (void)enumerateTilesWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithArchive:(const struct TileStorage *)arg1 unarchiver:(id)arg2 owner:(id)arg3;
 - (id)initWithOwner:(id)arg1;
+- (id)p_tileForLazyReference:(id)arg1;
 - (void)removeAllTiles;
 - (void)removeTileForID:(CDStruct_d65e47c4)arg1;
 - (void)saveToArchive:(struct TileStorage *)arg1 archiver:(id)arg2;

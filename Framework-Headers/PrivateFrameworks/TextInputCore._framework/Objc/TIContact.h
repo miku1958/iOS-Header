@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString;
 
@@ -39,7 +39,7 @@
 @property (strong, nonatomic) NSArray *relations; // @synthesize relations=_relations;
 @property (nonatomic) float relevancyScore; // @synthesize relevancyScore=_relevancyScore;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)flatten;
 
 @end

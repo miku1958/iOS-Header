@@ -30,6 +30,7 @@
 - (void)_stopWorkout:(id)arg1;
 - (void)_teardown;
 - (void)_unregisterForWorkoutEvents;
+- (void)_userDismissedWorkoutAlert;
 - (void)dealloc;
 - (id)init;
 

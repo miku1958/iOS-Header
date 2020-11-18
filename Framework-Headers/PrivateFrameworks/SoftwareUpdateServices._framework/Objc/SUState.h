@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SoftwareUpdateServices/NSKeyedUnarchiverDelegate-Protocol.h>
 
@@ -32,6 +32,8 @@
     SUManagedDeviceUpdateDelay *_mdmDelay;
     SUInstallPolicy *_installPolicy;
     BOOL _manifestSubmitted;
+    NSString *_sessionID;
+    NSString *_lastDeletedSUAssetID;
 }
 
 @property (nonatomic) BOOL autodownloadNeedsOneTimeRetry; // @synthesize autodownloadNeedsOneTimeRetry=_autodownloadNeedsOneTimeRetry;
@@ -42,6 +44,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SUInstallPolicy *installPolicy; // @synthesize installPolicy=_installPolicy;
 @property (strong, nonatomic) _SUAutoInstallOperationModel *lastAutoInstallOperationModel; // @synthesize lastAutoInstallOperationModel=_lastAutoInstallOperationModel;
+@property (strong, nonatomic) NSString *lastDeletedSUAssetID; // @synthesize lastDeletedSUAssetID=_lastDeletedSUAssetID;
 @property (copy, nonatomic) SUDownload *lastDownload; // @synthesize lastDownload=_lastDownload;
 @property (strong, nonatomic) NSString *lastProductBuild; // @synthesize lastProductBuild=_lastProductBuild;
 @property (strong, nonatomic) NSString *lastProductType; // @synthesize lastProductType=_lastProductType;
@@ -55,6 +58,7 @@
 @property (strong, nonatomic) NSDate *scheduledAutodownloadPolicyChangeTime; // @synthesize scheduledAutodownloadPolicyChangeTime=_scheduledAutodownloadPolicyChangeTime;
 @property (strong, nonatomic) NSDate *scheduledAutodownloadWifiPeriodEndTime; // @synthesize scheduledAutodownloadWifiPeriodEndTime=_scheduledAutodownloadWifiPeriodEndTime;
 @property (strong, nonatomic) NSDate *scheduledManualDownloadWifiPeriodEndTime; // @synthesize scheduledManualDownloadWifiPeriodEndTime=_scheduledManualDownloadWifiPeriodEndTime;
+@property (strong, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (nonatomic) BOOL stashbagPersisted; // @synthesize stashbagPersisted=_stashbagPersisted;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSDictionary *unlockCallbacks; // @synthesize unlockCallbacks=_unlockCallbacks;

@@ -31,6 +31,7 @@
 @property (copy, nonatomic) NSString *originalDestinationDevice;
 @property (copy, nonatomic) NSString *outgoingResponseIdentifier;
 @property (strong, nonatomic) NSNumber *priority;
+@property (copy, nonatomic) NSString *senderCorrelationIdentifier;
 @property (readonly, nonatomic) NSDate *serverReceivedTime;
 @property (copy, nonatomic) NSNumber *serverTimestamp;
 @property (copy, nonatomic) NSString *serviceIdentifier;

@@ -19,6 +19,9 @@
     NSURL *_playlistURL;
 }
 
+@property (readonly, copy, nonatomic) NSURL *alternateKeyCertificateURL;
+@property (readonly, copy, nonatomic) NSURL *alternateKeyServerURL;
+@property (readonly, copy, nonatomic) NSURL *alternatePlaylistURL;
 @property (nonatomic, getter=isiTunesStoreStream) BOOL iTunesStoreStream; // @synthesize iTunesStoreStream=_isiTunesStoreStream;
 @property (copy, nonatomic) NSURL *keyCertificateURL; // @synthesize keyCertificateURL=_keyCertificateURL;
 @property (copy, nonatomic) NSURL *keyServerURL; // @synthesize keyServerURL=_keyServerURL;

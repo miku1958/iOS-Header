@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSKnownKeysDictionary, NSMutableDictionary, NSString;
 @protocol PLFileManager, PLPTPTransferableAsset;
@@ -26,7 +26,6 @@
 - (void)_buildCloudPhotosEnabledWithFirstAsset:(BOOL)arg1;
 - (BOOL)_buildDiagnosticRelatedFile:(id)arg1;
 - (BOOL)_buildDirectoryPathAndFilename;
-- (void)_buildEvent;
 - (void)_buildExifAvailable;
 - (void)_buildFileSize;
 - (void)_buildGPSInformation;

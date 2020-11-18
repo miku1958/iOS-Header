@@ -10,6 +10,7 @@
 {
 }
 
++ (id)_baseDataObjectPredicate;
 + (id)_companionNanoSyncPredicateConjunctionForSession:(id)arg1;
 + (id)_objectWithCodable:(id)arg1;
 + (Class)healthEntityClass;

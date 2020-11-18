@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
 #import <SpriteKit/NSCopying-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, SKTileGroup;
 
-@interface SKTileSet : NSObject <NSCopying, NSCoding>
+@interface SKTileSet : NSObject <NSCopying, NSSecureCoding>
 {
     NSMutableArray *_definitions;
     NSMutableArray *_groups;
@@ -33,6 +33,7 @@
 + (void)clearTileSetTableCache;
 + (id)findTileSetInBundleNamed:(id)arg1;
 + (id)recursivePathsForResourcesOfType:(id)arg1 inDirectory:(id)arg2;
++ (BOOL)supportsSecureCoding;
 + (id)tileSetFromURL:(id)arg1;
 + (id)tileSetNamed:(id)arg1;
 + (id)tileSetWithTileGroups:(id)arg1;
@@ -51,6 +52,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTileGroups:(id)arg1;
 - (id)initWithTileGroups:(id)arg1 tileSetType:(unsigned long long)arg2;
+- (BOOL)isEqualToNode:(id)arg1;
 - (void)lookForMissingDefinitionsInGroups;
 - (void)observeAllTileDefinitions;
 - (void)observeTileDefinition:(id)arg1;

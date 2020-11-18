@@ -21,6 +21,7 @@
 @property (nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
 @property (copy, nonatomic) UIColor *foregroundColor; // @synthesize foregroundColor=_foregroundColor;
 
++ (id)defaultDecoration;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

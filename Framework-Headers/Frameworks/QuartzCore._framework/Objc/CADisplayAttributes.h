@@ -4,21 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface CADisplayAttributes : NSObject
 {
-    long long _dolbyVision;
-    long long _pqEOTF;
-    long long _hdrStaticMetadataType1;
-    long long _bt2020YCC;
+    struct EDIDAttributes _edid_attributes;
 }
 
-@property (readonly) long long bt2020YCC; // @synthesize bt2020YCC=_bt2020YCC;
-@property (readonly) long long dolbyVision; // @synthesize dolbyVision=_dolbyVision;
-@property (readonly) long long hdrStaticMetadataType1; // @synthesize hdrStaticMetadataType1=_hdrStaticMetadataType1;
-@property (readonly) long long pqEOTF; // @synthesize pqEOTF=_pqEOTF;
+@property (readonly) long long bt2020YCC;
+@property (readonly) long long dolbyVision;
+@property (readonly) long long hdrStaticMetadataType1;
+@property (readonly) long long pqEOTF;
 
+- (id).cxx_construct;
+- (id)_initWithAttributes:(struct EDIDAttributes)arg1;
 
 @end
 

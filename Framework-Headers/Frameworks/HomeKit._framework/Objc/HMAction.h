@@ -8,36 +8,32 @@
 
 #import <HomeKit/HMObjectMerge-Protocol.h>
 
-@class HMActionSet, HMDelegateCaller, NSString, NSUUID;
-@protocol OS_dispatch_queue;
+@class HMActionSet, HMFUnfairLock, NSString, NSUUID, _HMContext;
 
 @interface HMAction : NSObject <HMObjectMerge>
 {
+    HMFUnfairLock *_lock;
     NSUUID *_uniqueIdentifier;
     NSUUID *_uuid;
     HMActionSet *_actionSet;
     unsigned long long _actionType;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    HMDelegateCaller *_delegateCaller;
+    _HMContext *_context;
 }
 
-@property (weak, nonatomic) HMActionSet *actionSet; // @synthesize actionSet=_actionSet;
+@property (weak) HMActionSet *actionSet; // @synthesize actionSet=_actionSet;
 @property (nonatomic) unsigned long long actionType; // @synthesize actionType=_actionType;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
+@property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) HMDelegateCaller *delegateCaller; // @synthesize delegateCaller=_delegateCaller;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (copy) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (id)_actionWithInfo:(id)arg1 home:(id)arg2;
 + (id)_lookupActionWithInfo:(id)arg1 inArray:(id)arg2;
 - (void).cxx_destruct;
-- (void)_configure:(id)arg1 actionSet:(id)arg2 clientQueue:(id)arg3 delegateCaller:(id)arg4;
+- (void)__configureWithContext:(id)arg1 actionSet:(id)arg2;
 - (BOOL)_handleUpdates:(id)arg1;
 - (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;

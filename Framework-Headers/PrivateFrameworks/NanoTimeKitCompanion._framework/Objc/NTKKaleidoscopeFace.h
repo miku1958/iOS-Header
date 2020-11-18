@@ -10,8 +10,8 @@
 {
 }
 
-+ (BOOL)_customEditMode:(long long)arg1 hasActionForOption:(id)arg2;
-+ (id)_localizedNameOverrideForCustomEditMode:(long long)arg1;
++ (BOOL)_customEditMode:(long long)arg1 hasActionForOption:(id)arg2 forDevice:(id)arg3;
++ (id)_localizedNameOverrideForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
 - (id)_complicationSlotDescriptors;
 - (id)_customEditModes;
 - (id)_defaultOptionForCustomEditMode:(long long)arg1 slot:(id)arg2;

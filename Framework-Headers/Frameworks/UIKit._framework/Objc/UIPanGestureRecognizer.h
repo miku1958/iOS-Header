@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGestureRecognizer.h>
+#import <UIKitCore/UIGestureRecognizer.h>
 
 @class NSMutableArray, UIPanGestureVelocitySample;
 
@@ -22,13 +22,13 @@
     double _hysteresis;
     double _allowableSeparation;
     struct CGPoint _lastUnadjustedSceneReferenceLocation;
+    double _allowableTouchTimeSeparation;
     unsigned int _failsPastMaxTouches:1;
     unsigned int _failsPastHysteresisWithoutMinTouches:1;
     unsigned int _canPanHorizontally:1;
     unsigned int _canPanVertically:1;
     unsigned int _ignoresStationaryTouches:1;
     unsigned int _multitouchTimerOn:1;
-    double _allowableTouchTimeSeparation;
     unsigned int _requiresImmediateMultipleTouches:1;
     NSMutableArray *_movingTouches;
     struct CGPoint _digitizerLocation;

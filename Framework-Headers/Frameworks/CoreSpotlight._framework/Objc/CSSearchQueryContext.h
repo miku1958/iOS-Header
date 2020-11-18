@@ -25,6 +25,7 @@
     NSArray *_markedTextArray;
     NSArray *_disableBundles;
     NSString *_userQuery;
+    NSArray *_filterQueries;
     NSString *_filterQuery;
     long long _strongRankingQueryCount;
     long long _dominantRankingQueryCount;
@@ -34,6 +35,7 @@
     long long _queryID;
     NSString *_completionString;
     NSArray *_completionAttributes;
+    double _currentTime;
     MISSING_TYPE *_fuzzyMask;
     MISSING_TYPE *_fuzzyMatch;
 }
@@ -45,10 +47,12 @@
 @property (nonatomic) long long completionResultCount; // @synthesize completionResultCount=_completionResultCount;
 @property (strong, nonatomic) NSString *completionString; // @synthesize completionString=_completionString;
 @property (nonatomic) BOOL counting;
+@property (nonatomic) double currentTime; // @synthesize currentTime=_currentTime;
 @property (strong, nonatomic) NSArray *disableBundles; // @synthesize disableBundles=_disableBundles;
 @property (nonatomic) long long dominantRankingQueryCount; // @synthesize dominantRankingQueryCount=_dominantRankingQueryCount;
 @property (nonatomic) long long dominatedRankingQueryCount; // @synthesize dominatedRankingQueryCount=_dominatedRankingQueryCount;
 @property (strong, nonatomic) NSArray *fetchAttributes; // @synthesize fetchAttributes=_fetchAttributes;
+@property (copy, nonatomic) NSArray *filterQueries; // @synthesize filterQueries=_filterQueries;
 @property (strong, nonatomic) NSString *filterQuery; // @synthesize filterQuery=_filterQuery;
 @property (nonatomic) unsigned char flags; // @synthesize flags=_flags;
 @property (nonatomic) MISSING_TYPE *fuzzyMask; // @synthesize fuzzyMask=_fuzzyMask;

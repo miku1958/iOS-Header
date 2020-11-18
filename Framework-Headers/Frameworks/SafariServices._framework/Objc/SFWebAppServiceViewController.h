@@ -8,7 +8,7 @@
 
 #import <SafariServices/SFWebAppServiceViewControllerProtocol-Protocol.h>
 
-@class NSMutableArray, NSString, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore;
+@class BKSApplicationStateMonitor, NSMutableArray, NSString, UIView, UIWebClip, WKProcessPool, WKWebsiteDataStore;
 
 __attribute__((visibility("hidden")))
 @interface SFWebAppServiceViewController : SFBrowserServiceViewController <SFWebAppServiceViewControllerProtocol>
@@ -18,6 +18,8 @@ __attribute__((visibility("hidden")))
     WKProcessPool *_processPool;
     WKWebsiteDataStore *_websiteDataStore;
     NSMutableArray *_fallbackURLs;
+    BKSApplicationStateMonitor *_stateMonitor;
+    unsigned int _hostState;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
 - (BOOL)_clientIsWebApp;
+- (void)_handleHostStateUpdate:(id)arg1;
 - (void)_hostApplicationDidEnterBackground;
 - (void)_initialLoadFinishedWithSuccess:(BOOL)arg1;
 - (BOOL)_isURLOutOfScope:(id)arg1;
@@ -38,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_privateBrowsingInitiallyEnabled;
 - (BOOL)_usesScrollToTopView;
 - (BOOL)canPrint;
+- (void)dealloc;
 - (void)loadWebAppWithIdentifier:(id)arg1;
 - (long long)preferredStatusBarStyle;
 - (id)processPool;

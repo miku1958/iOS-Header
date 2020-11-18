@@ -21,6 +21,7 @@
 - (BOOL)_canAddStroke;
 - (BOOL)_canInsertDrawing;
 - (BOOL)_canInsertDrawingInRange:(struct _NSRange)arg1;
+- (BOOL)_canSelectDrawing;
 - (void)_clearDrawingInfo;
 - (void)_didEndStroke;
 - (id)_drawingInfo;

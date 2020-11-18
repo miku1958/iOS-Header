@@ -6,29 +6,47 @@
 
 #import <ARKit/ARConfiguration.h>
 
-@class NSSet;
+@class ARWorldMap, NSSet, NSString;
 
 @interface ARWorldTrackingConfiguration : ARConfiguration
 {
     BOOL _relocalizationEnabled;
+    BOOL _mlModelEnabled;
+    BOOL _deliverRawSceneUnderstandingResults;
+    long long _environmentTexturing;
     unsigned long long _planeDetection;
+    ARWorldMap *_initialWorldMap;
     NSSet *_detectionImages;
+    long long _maximumNumberOfTrackedImages;
+    NSSet *_detectionObjects;
+    NSString *_slamConfiguration;
+    double _minVergenceAngle;
 }
 
 @property (nonatomic, getter=isAutoFocusEnabled) BOOL autoFocusEnabled; // @dynamic autoFocusEnabled;
+@property (nonatomic) BOOL deliverRawSceneUnderstandingResults; // @synthesize deliverRawSceneUnderstandingResults=_deliverRawSceneUnderstandingResults;
 @property (copy, nonatomic) NSSet *detectionImages; // @synthesize detectionImages=_detectionImages;
+@property (copy, nonatomic) NSSet *detectionObjects; // @synthesize detectionObjects=_detectionObjects;
+@property (nonatomic) long long environmentTexturing; // @synthesize environmentTexturing=_environmentTexturing;
+@property (strong, nonatomic) ARWorldMap *initialWorldMap; // @synthesize initialWorldMap=_initialWorldMap;
+@property (nonatomic) long long maximumNumberOfTrackedImages; // @synthesize maximumNumberOfTrackedImages=_maximumNumberOfTrackedImages;
+@property (nonatomic) double minVergenceAngle; // @synthesize minVergenceAngle=_minVergenceAngle;
+@property (nonatomic, getter=isMLModelEnabled) BOOL mlModelEnabled; // @synthesize mlModelEnabled=_mlModelEnabled;
 @property (nonatomic) unsigned long long planeDetection; // @synthesize planeDetection=_planeDetection;
 @property (nonatomic) BOOL relocalizationEnabled; // @synthesize relocalizationEnabled=_relocalizationEnabled;
+@property (copy, nonatomic) NSString *slamConfiguration; // @synthesize slamConfiguration=_slamConfiguration;
 
 + (BOOL)isSupported;
 + (id)new;
 + (id)supportedVideoFormats;
 - (void).cxx_destruct;
+- (id)_trackingOptions;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)createTechniquesWithParallelTechniques:(id)arg1 serialTechniques:(id)arg2;
 - (id)description;
+- (id)imageSensorSettings;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
-- (id)techniques;
 
 @end
 

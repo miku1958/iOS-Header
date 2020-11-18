@@ -13,6 +13,7 @@
     NSString *_guid;
     NSString *_path;
     BOOL _isSticker;
+    BOOL _isTransferComplete;
     NSDate *_createdDate;
 }
 
@@ -22,8 +23,9 @@
 - (id)fileTransfer;
 - (id)guid;
 - (id)initWithPath:(id)arg1 guid:(id)arg2;
-- (id)initWithPath:(id)arg1 guid:(id)arg2 createdDate:(id)arg3 isSticker:(BOOL)arg4;
+- (id)initWithPath:(id)arg1 guid:(id)arg2 createdDate:(id)arg3 isSticker:(BOOL)arg4 isTransferComplete:(BOOL)arg5;
 - (BOOL)isSticker;
+- (BOOL)isTransferComplete;
 - (id)path;
 
 @end

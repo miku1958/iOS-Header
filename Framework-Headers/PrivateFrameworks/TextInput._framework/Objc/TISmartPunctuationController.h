@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCharacterSet, TISmartPunctuationOptions;
 
@@ -36,17 +36,18 @@
 @property (nonatomic) BOOL smartQuotesEnabled; // @synthesize smartQuotesEnabled=_smartQuotesEnabled;
 
 + (id)_chineseContextualVariantMapping;
+- (void).cxx_destruct;
 - (id)_alternatingStringForInputString:(id)arg1 isLockedInput:(BOOL)arg2 hasMarkedText:(BOOL)arg3;
 - (id)_checkInput:(id)arg1 forContextualChinesePunctuationInDocumentState:(id)arg2;
 - (id)_checkInput:(id)arg1 forContextualDashesInDocumentState:(id)arg2;
 - (id)_checkInput:(id)arg1 forContextualQuotesInDocumentState:(id)arg2;
 - (void)_initializeDashCharacterSetsIfNecessary;
 - (void)_initializeQuoteCharacterSetsIfNecessary;
-- (void)dealloc;
 - (id)init;
 - (void)reset;
 - (id)smartPunctuationOutputForInput:(id)arg1 isLockedInput:(BOOL)arg2 documentState:(id)arg3;
 - (id)smartPunctuationResultsForString:(id)arg1;
+- (id)smartPunctuationedStringForString:(id)arg1;
 
 @end
 

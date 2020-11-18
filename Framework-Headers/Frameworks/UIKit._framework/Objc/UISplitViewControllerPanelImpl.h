@@ -4,20 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDimmingViewDelegate-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIPanelControllerDelegate-Protocol.h>
-#import <UIKit/UISplitViewControllerImpl-Protocol.h>
+#import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIPanelControllerDelegate-Protocol.h>
+#import <UIKitCore/UISplitViewControllerImpl-Protocol.h>
 
-@class NSArray, NSString, UIDimmingView, UIImage, UIPanGestureRecognizer, UIPanelController, UIResponder, UISlidingBarConfiguration, UISlidingBarState, UISlidingBarStateRequest, UISplitViewController, UISplitViewControllerPanelImplDisplayModeButtonItem, UITraitCollection, UIViewController;
+@class NSArray, NSString, UIDimmingView, UIImage, UIPanGestureRecognizer, UIPanelController, UIResponder, UISlidingBarConfiguration, UISlidingBarState, UISlidingBarStateRequest, UISplitViewController, UISplitViewControllerDisplayModeBarButtonItem, UITraitCollection, UIViewController;
 @protocol UISplitViewControllerDelegate;
 
 @interface UISplitViewControllerPanelImpl : NSObject <UIPanelControllerDelegate, UIDimmingViewDelegate, UIGestureRecognizerDelegate, UISplitViewControllerImpl>
 {
     UISplitViewController *_svc;
-    UISplitViewControllerPanelImplDisplayModeButtonItem *_displayModeButtonItem;
+    UISplitViewControllerDisplayModeBarButtonItem *_displayModeButtonItem;
     NSString *_displayModeButtonItemTitle;
     double _presentationGestureDirection;
     long long _lastNotifiedMode;
@@ -26,6 +26,10 @@
     BOOL _lastShouldAllowChange;
     BOOL _lastNotifiedIsCollapsed;
     UITraitCollection *_transitioningToTraitCollection;
+    struct {
+        unsigned int determinedPrimaryWasVisibleBeforeExpansion:1;
+        unsigned int primaryWasVisibleBeforeExpansion:1;
+    } _transitioningFlags;
     struct CGSize _transitioningToSize;
     long long _transitioningToOrientation;
     UITraitCollection *_suspendedTraitCollection;
@@ -42,6 +46,9 @@
         unsigned int hasPendingPreferredDisplayModeChange:1;
         unsigned int firstResponderChangedFromPostTransitionResponder:1;
         unsigned int firstResponderChangedFromPostTransitionResponderToNil:1;
+        unsigned int usesExtraWidePrimaryColumn:1;
+        unsigned int usesDeviceOverlayPreferences:1;
+        unsigned int prefersOverlayInRegularWidthPhone:1;
     } _flags;
     double _lastUserInitiatedPrimaryWidth;
     BOOL _presentsWithGesture;
@@ -80,11 +87,14 @@
 @property (readonly, nonatomic) NSArray *possibleStates;
 @property (nonatomic) long long preferredDisplayMode; // @synthesize preferredDisplayMode=_preferredDisplayMode;
 @property (nonatomic) double preferredPrimaryColumnWidthFraction; // @synthesize preferredPrimaryColumnWidthFraction=_preferredPrimaryColumnWidthFraction;
+@property (nonatomic) BOOL prefersOverlayInRegularWidthPhone;
 @property (nonatomic) BOOL presentsWithGesture; // @synthesize presentsWithGesture=_presentsWithGesture;
 @property (nonatomic) long long primaryEdge;
 @property (copy, nonatomic) UISlidingBarStateRequest *stateRequest;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIViewController *trailingViewController;
+@property (nonatomic) BOOL usesDeviceOverlayPreferences;
+@property (nonatomic, getter=_usesExtraWidePrimaryColumn, setter=_setUsesExtraWidePrimaryColumn:) BOOL usesExtraWidePrimaryColumn;
 @property (copy, nonatomic) NSArray *viewControllers;
 
 + (id)_withDisabledAppearanceTransitions:(BOOL)arg1 forVisibleDescendantsOf:(id)arg2 perform:(CDUnknownBlockType)arg3;
@@ -101,7 +111,7 @@
 - (void)_didEndSnapshotSession;
 - (void)_didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (BOOL)_disableAutomaticKeyboardBehavior;
-- (void)_displayModeButtonItemWasAddedForFirstTime;
+- (void)_displayModeBarButtonItemWasUsedForFirstTime:(id)arg1;
 - (long long)_displayModeForState:(id)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (long long)_effectiveTargetDisplayMode;
@@ -115,6 +125,7 @@
 - (BOOL)_handlesCounterRotationForPresentation;
 - (BOOL)_hasPreferredInterfaceOrientationForPresentation;
 - (BOOL)_iPadShouldUseOverlayInCurrentEnvironment;
+- (BOOL)_iPhoneShouldUseOverlayInCurrentEnvironment;
 - (void)_initWithCoder:(id)arg1;
 - (BOOL)_isCollapsed;
 - (BOOL)_isLeadingShown;
@@ -124,6 +135,7 @@
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (void)_popoverController:(id)arg1 didChangeFromVisible:(BOOL)arg2;
 - (void)_popoverController:(id)arg1 willChangeToVisible:(BOOL)arg2;
+- (struct CGSize)_predictedDetailSizeForPredictedEndState:(id)arg1;
 - (void)_presentationGestureRecognizerChanged:(id)arg1;
 - (id)_primaryContentResponder;
 - (id)_primaryDimmingView;
@@ -155,12 +167,13 @@
 - (void)loadView;
 - (id)masterViewController;
 - (void)panelController:(id)arg1 adjustLeadingViewController:(id)arg2 forKeyboardInfo:(id)arg3;
+- (void)panelController:(id)arg1 animateTransitionToStateRequest:(id)arg2 predictedEndState:(id)arg3 predictedDuration:(double)arg4;
 - (BOOL)panelController:(id)arg1 collapseOntoPrimaryViewController:(id)arg2;
 - (void)panelController:(id)arg1 collapsePrimaryViewController:(id)arg2 withFallbackSecondaryViewController:(id)arg3 transitionCoordinator:(id)arg4;
 - (void)panelController:(id)arg1 didChangeToState:(id)arg2;
 - (void)panelController:(id)arg1 didEndAnimatedTransitionToStateRequest:(id)arg2;
 - (id)panelController:(id)arg1 separateSecondaryViewControllerFromPrimaryViewController:(id)arg2;
-- (void)panelController:(id)arg1 willBeginAnimatedTransitionToStateRequest:(id)arg2 predictedEndState:(id)arg3;
+- (void)panelController:(id)arg1 willBeginAnimatedTransitionToStateRequest:(id)arg2 predictedEndState:(id)arg3 predictedDuration:(double)arg4;
 - (void)panelController:(id)arg1 willChangeToState:(id)arg2;
 - (CDUnknownBlockType)panelControllerWillUpdate:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
@@ -182,7 +195,6 @@
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)unloadViewForced:(BOOL)arg1;
 - (void)updateDisplayModeButtonItem;
-- (void)updateViewConstraints;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

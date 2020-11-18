@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIPopoverControllerDelegate-Protocol.h>
+#import <UIKitCore/UIPopoverControllerDelegate-Protocol.h>
 
 @class DOMNode, NSString, UIPopoverController;
 @protocol UIWebRotatingNodePopoverDelegate;

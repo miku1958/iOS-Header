@@ -11,6 +11,7 @@
 @class NSString;
 @protocol MLCustomLayer;
 
+__attribute__((visibility("hidden")))
 @interface MLCustomLayerWrapper : NSObject <EspressoBrick>
 {
     NSString *_className;

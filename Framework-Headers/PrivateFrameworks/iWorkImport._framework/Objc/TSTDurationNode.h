@@ -9,12 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface TSTDurationNode : TSTExpressionNode
 {
-    struct TSTDurationWrapper mValue;
-    BOOL mBlank;
+    BOOL _blank;
+    struct TSTDurationWrapper _value;
 }
 
-@property (nonatomic, getter=isBlank) BOOL blank; // @synthesize blank=mBlank;
-@property (nonatomic) struct TSTDurationWrapper value; // @synthesize value=mValue;
+@property (nonatomic, getter=isBlank) BOOL blank; // @synthesize blank=_blank;
+@property (nonatomic) struct TSTDurationWrapper value; // @synthesize value=_value;
 
 - (void)buildASTNodeArray:(struct TSCEASTNodeArray *)arg1 hostCell:(struct TSUCellCoord)arg2 symbolTable:(struct TSCESymbolTable *)arg3;
 - (id)date;

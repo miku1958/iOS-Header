@@ -30,7 +30,7 @@
 - (id)attachmentUTI;
 - (BOOL)canDragWithoutSelecting;
 - (void)detachView:(id)arg1 fromParentView:(id)arg2;
-- (void)fixAttachmentForAttributedString:(id)arg1 range:(struct _NSRange)arg2 forPlainText:(BOOL)arg3;
+- (void)fixAttachmentForAttributedString:(id)arg1 range:(struct _NSRange)arg2 forPlainText:(BOOL)arg3 forStandardizedText:(BOOL)arg4;
 - (id)initWithAttachment:(id)arg1;
 - (id)initWithData:(id)arg1 ofType:(id)arg2;
 - (BOOL)isEqualToModelComparable:(id)arg1;

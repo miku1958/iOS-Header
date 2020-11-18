@@ -12,7 +12,7 @@
 
 @interface MapsSuggestionsUniqueIdentifierDeduper : MapsSuggestionsBaseDeduper <MapsSuggestionsDeduper>
 {
-    unsigned long long _type;
+    long long _type;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,7 +23,7 @@
 
 + (BOOL)isEnabled;
 - (BOOL)dedupeByEnrichingEntry:(id)arg1 withEntry:(id)arg2;
-- (id)initWithType:(unsigned long long)arg1;
+- (id)initWithType:(long long)arg1;
 
 @end
 

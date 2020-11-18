@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, NSMutableURLRequest, NSString, NSURLRequest, __NSCFURLSession;
 
@@ -58,17 +58,19 @@ __attribute__((visibility("hidden")))
 - (id)_countOfPendingBytesReceivedEncoded;
 - (const struct XCookieStorage *)_createXCookieStorage;
 - (const struct XCredentialStorage *)_createXCredentialStorage;
-- (const struct XURLCache *)_createXURLCache;
 - (struct _CFURLRequest *)_currentCFURLRequest;
 - (struct __CFDictionary *)_dependencyInfo;
 - (id)_disallowCellular;
+- (long long)_discretionaryOverrride;
 - (id)_expectedWorkload;
 - (void)_getAuthenticationHeadersForResponse:(struct _CFURLResponse *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (struct __CFSet *)_getAuthenticatorStatusCodes;
 - (id)_incompleteTaskMetrics;
 - (void)_initializeTimingDataWithSessionConfiguration:(id)arg1;
+- (BOOL)_isTopLevelNavigation;
 - (id)_loggableDescription;
 - (id)_networkServiceType;
+- (id)_nw_activity;
 - (struct __PerformanceTiming *)_performanceTiming;
 - (BOOL)_preconnect;
 - (void)_prepareNewTimingDataContainer;
@@ -81,6 +83,7 @@ __attribute__((visibility("hidden")))
 - (struct __CFDictionary *)_proxySettings;
 - (void)_releasePreventIdleSleepAssertionIfAppropriate;
 - (long long)_requestPriority;
+- (BOOL)_requiresSecureHTTPSProxyConnection;
 - (void)_setAppleIDContext:(id)arg1;
 - (void)_setConnectionIsCellular:(BOOL)arg1;
 - (void)_setSocketProperties:(struct __CFDictionary *)arg1 connectionProperties:(struct __CFDictionary *)arg2;
@@ -89,6 +92,7 @@ __attribute__((visibility("hidden")))
 - (unsigned char)_shouldSkipPipelineProbe;
 - (BOOL)_shouldSkipPreferredClientCertificateLookup;
 - (unsigned char)_shouldUsePipelineHeuristics;
+- (id)_siteForCookies;
 - (struct __CFDictionary *)_sslSettings;
 - (id)_storagePartitionIdentifier;
 - (unsigned char)_strictContentLength;
@@ -99,6 +103,7 @@ __attribute__((visibility("hidden")))
 - (double)_timeoutInterval;
 - (id)_trailers;
 - (id)_transactionMetrics;
+- (void)_withXURLCache:(CDUnknownBlockType)arg1;
 - (id)countOfBytesExpectedToReceive;
 - (id)countOfBytesExpectedToSend;
 - (id)countOfBytesReceived;
@@ -116,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)set_TCPConnectionMetadata:(id)arg1;
 - (void)set_TLSNegotiatedCipherSuite:(unsigned short)arg1;
 - (void)set_allowsQUIC:(BOOL)arg1;
+- (void)set_discretionaryOverride:(long long)arg1;
 - (void)set_incompleteTaskMetrics:(id)arg1;
 - (void)set_preconnect:(BOOL)arg1;
 - (void)set_protocolForTask:(id)arg1;

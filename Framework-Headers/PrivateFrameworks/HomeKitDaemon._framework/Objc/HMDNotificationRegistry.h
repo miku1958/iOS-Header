@@ -8,20 +8,23 @@
 
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class NSMutableDictionary;
+@class HMFUnfairLock, NSMutableDictionary;
 
 @interface HMDNotificationRegistry : HMFObject <NSSecureCoding>
 {
+    HMFUnfairLock *_lock;
     NSMutableDictionary *_notificationRegistry;
 }
 
-@property (strong, nonatomic) NSMutableDictionary *notificationRegistry; // @synthesize notificationRegistry=_notificationRegistry;
+@property (readonly, nonatomic) NSMutableDictionary *notificationRegistry; // @synthesize notificationRegistry=_notificationRegistry;
 
++ (id)_createCharacteristicsMapForCharacteristics:(id)arg1;
 + (BOOL)doesKey:(id)arg1 matchMediaProfile:(id)arg2;
 + (id)keyForCharacteristic:(id)arg1;
 + (id)keyForProperty:(id)arg1 mediaProfile:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_delayedBlocksCollectedWhileDeregisteringUsers:(id)arg1 forHome:(id)arg2 isiOS:(BOOL)arg3 isResident:(BOOL)arg4;
 - (id)allCharacteristicIdentifiers;
 - (void)auditUsersForNotifications:(id)arg1 forHome:(id)arg2;
 - (void)deregisterUsers:(id)arg1 forHome:(id)arg2;

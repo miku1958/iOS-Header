@@ -13,9 +13,13 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityHasRequestedForceUpdate;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_accessibilitySetHasRequestedForceUpdate:(BOOL)arg1;
+- (void)_axApplyLabelToBackground;
 - (id)_axBackgroundActivityLabelKeysByType;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
+- (id)createDisplayItemForIdentifier:(id)arg1;
 
 @end
 

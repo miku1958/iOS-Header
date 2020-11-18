@@ -14,11 +14,12 @@
 + (id)_predicateWithSampleType:(id)arg1 predicate:(id)arg2;
 + (id)_predicateWithSampleType:(id)arg1 sourceIdentifier:(id)arg2 predicate:(id)arg3;
 + (id)anySampleOfType:(id)arg1 profile:(id)arg2 encodingOptions:(id)arg3 predicate:(id)arg4 error:(id *)arg5;
++ (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)columnNameForSortIdentifier:(id)arg1;
 + (id)columnNamesForTimeOffset;
-+ (id)columnsDefinition;
 + (long long)countOfSamplesWithType:(id)arg1 profile:(id)arg2 matchingPredicate:(id)arg3 withError:(id *)arg4;
 + (id)databaseTable;
++ (void)deleteSamplesWithPredicate:(id)arg1 limit:(unsigned long long)arg2 deletionContext:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (void)deleteSamplesWithPredicate:(id)arg1 limit:(unsigned long long)arg2 generateDeletedObjects:(BOOL)arg3 database:(id)arg4 profile:(id)arg5 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg6 completionHandler:(CDUnknownBlockType)arg7;
 + (void)deleteSamplesWithPredicate:(id)arg1 limit:(unsigned long long)arg2 generateDeletedObjects:(BOOL)arg3 profile:(id)arg4 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (void)deleteSamplesWithTypes:(id)arg1 sourceEntities:(id)arg2 profile:(id)arg3 recursiveDeleteAuthorizationBlock:(CDUnknownBlockType)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -27,6 +28,7 @@
 + (BOOL)enumerateAssociatedObjectsForIdentifier:(long long)arg1 inDatabase:(id)arg2 error:(id *)arg3 associatedObjectHandler:(CDUnknownBlockType)arg4;
 + (id)indices;
 + (id)insertDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 persistentID:(id)arg4 error:(id *)arg5;
++ (id)maxAnchorForSamplesWithType:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (id)mostRecentSampleWithType:(id)arg1 profile:(id)arg2 encodingOptions:(id)arg3 predicate:(id)arg4 anchor:(id *)arg5 error:(id *)arg6;
 + (CDUnknownBlockType)objectInsertionFilterForProfile:(id)arg1;
 + (id)oldestSampleWithType:(id)arg1 profile:(id)arg2 encodingOptions:(id)arg3 predicate:(id)arg4 error:(id *)arg5;

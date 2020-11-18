@@ -19,7 +19,8 @@
     struct __CFRunLoopTimer *fLocationRequestTimer;
     double fLocationRequestTimeout;
     struct __CFRunLoopTimer *fRangingRequestTimer;
-    double fRangingRequestTimeout;
+    double fLastRangingRequestTimeout;
+    unsigned long long fLastRangingRequestMachTime;
     int fHeadingOrientation;
     NSMutableSet *fRangedRegions;
 }
@@ -28,9 +29,11 @@
 
 - (int)PausesLocationUpdatesAutomatically;
 - (BOOL)allowsBackgroundLocationUpdates;
+- (void)cancelLingeringRangingRequest;
 - (void)cancelLocationRequest;
 - (void)cancelRangingRequest;
 - (void)dealloc;
+- (BOOL)hasLingeringRangingRequest;
 - (id)initWithInfo:(id)arg1 bundleIdentifier:(id)arg2 bundle:(id)arg3;
 - (void)performCourtesyPromptIfNeeded;
 - (void)setAllowsBackgroundLocationUpdates:(BOOL)arg1;

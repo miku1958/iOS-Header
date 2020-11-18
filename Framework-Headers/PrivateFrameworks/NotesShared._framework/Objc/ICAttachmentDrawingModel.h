@@ -11,12 +11,15 @@
 @interface ICAttachmentDrawingModel : ICAttachmentModel
 {
     ICDrawingVersionedDocument *_drawingDocument;
+    BOOL _observingAttachment;
 }
 
 @property (readonly, nonatomic) ICDrawing *drawing;
+@property (nonatomic) BOOL observingAttachment; // @synthesize observingAttachment=_observingAttachment;
 
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (void).cxx_destruct;
+- (void)attachmentIsDeallocating:(id)arg1;
 - (BOOL)canSaveURL;
 - (void)dealloc;
 - (id)drawingDocument;
@@ -34,6 +37,8 @@
 - (id)sharedDrawingController;
 - (BOOL)shouldSyncPreviewImageToCloud:(id)arg1;
 - (BOOL)showThumbnailInNoteList;
+- (void)startObservingAttachment;
+- (void)stopObservingAttachment:(id)arg1;
 - (BOOL)supportsQuickLook;
 - (void)writeMergeableData;
 

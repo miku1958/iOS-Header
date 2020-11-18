@@ -14,8 +14,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_fileq;
     _OSLogCollectionReference *_lcr;
     NSString *_file;
-    NSMutableArray *_files;
-    CDStruct_1936c231 _metadata;
+    CDStruct_42ec109f _metadata;
     BOOL _metadataValid;
     _OSLogEventStoreMetadata *_metadata2;
     struct _os_timesync_db_s *_tsdb;
@@ -31,13 +30,14 @@ __attribute__((visibility("hidden")))
 - (BOOL)_buildFileIndex:(id *)arg1;
 - (BOOL)_buildSingleFileIndex:(id *)arg1;
 - (void)_enumerateEntriesInRange:(struct os_timesync_range_s *)arg1 options:(unsigned int)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)_foreachIndexFile:(CDUnknownBlockType)arg1;
 - (BOOL)_openTimesyncDatabase:(id *)arg1;
 - (BOOL)_readArchiveMetadata:(id *)arg1;
 - (BOOL)addReferenceToIndex:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (void)enumerateEntriesFrom:(unsigned long long)arg1 to:(unsigned long long)arg2 options:(unsigned int)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateEntriesFromLastBootWithOptions:(unsigned int)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateEntriesInRange:(struct os_timesync_range_s *)arg1 options:(unsigned int)arg2 usingBlock:(CDUnknownBlockType)arg3;
+- (void)enumerateEntriesInRange:(struct os_timesync_range_s *)arg1 options:(unsigned int)arg2 usingCatalogFilter:(id)arg3 usingBlock:(CDUnknownBlockType)arg4;
 - (void)enumerateEntriesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateFilesUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;

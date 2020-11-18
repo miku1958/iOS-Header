@@ -21,7 +21,6 @@
 
 + (id)sharedDispatcher;
 - (void).cxx_destruct;
-- (id)_performStateDump;
 - (void)_setupAppleMusicAccountStoreIfNecessary;
 - (void)addAppleMusicAccountObserver:(id)arg1;
 - (id)init;

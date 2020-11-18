@@ -13,8 +13,11 @@
 @interface IMTypingIndicatorLayer : CALayer <IMTypingIndicatorLayerProtocol>
 {
     BOOL _hasDarkBackground;
-    id _iconImage;
+    struct UIColor *_bubbleColor;
     double _bubbleOpacity;
+    id _iconImage;
+    struct UIColor *_thinkingDotColor;
+    double _thinkingDotOpacity;
     struct UIColor *_customBubbleColor;
     CALayer *_bubbleContainer;
     CALayer *_smallBubble;
@@ -26,7 +29,7 @@
     CALayer *_iconImageLayer;
 }
 
-@property (readonly, nonatomic) UIColor *bubbleColor;
+@property (copy, nonatomic) UIColor *bubbleColor; // @synthesize bubbleColor=_bubbleColor;
 @property (strong, nonatomic) CALayer *bubbleContainer; // @synthesize bubbleContainer=_bubbleContainer;
 @property (nonatomic) double bubbleOpacity; // @synthesize bubbleOpacity=_bubbleOpacity;
 @property (copy, nonatomic) UIColor *customBubbleColor; // @synthesize customBubbleColor=_customBubbleColor;
@@ -41,13 +44,16 @@
 @property (strong, nonatomic) CALayer *smallBubble; // @synthesize smallBubble=_smallBubble;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CALayer *thinkingDot; // @synthesize thinkingDot=_thinkingDot;
+@property (copy, nonatomic) UIColor *thinkingDotColor; // @synthesize thinkingDotColor=_thinkingDotColor;
 @property (strong, nonatomic) CALayer *thinkingDotContainer; // @synthesize thinkingDotContainer=_thinkingDotContainer;
+@property (nonatomic) double thinkingDotOpacity; // @synthesize thinkingDotOpacity=_thinkingDotOpacity;
 @property (strong, nonatomic) CAReplicatorLayer *thinkingDots; // @synthesize thinkingDots=_thinkingDots;
 
-+ (struct UIColor *)darkBackgroundThinkingDotColor;
 + (struct UIColor *)defaultBubbleColor;
++ (double)defaultBubbleOpacity;
 + (struct CGSize)defaultSize;
 + (struct UIColor *)defaultThinkingDotColor;
++ (double)defaultThinkingDotOpacity;
 + (struct CGRect)iconImageFrame;
 + (double)iconImageTrailingSpace;
 + (struct CGRect)largeBubbleFrame;
@@ -71,10 +77,12 @@
 - (id)_smallBubbleGrowAnimationsWithSpeed:(double)arg1 offset:(struct CGPoint)arg2;
 - (id)_smallBubblePulseAnimationWithSpeed:(double)arg1 delay:(double)arg2;
 - (void)_updateBubbleColors;
+- (void)_updateBubbleOpacity;
 - (void)_updateForImage;
 - (double)convertedCurrentMediaTime;
 - (id)init;
 - (void)startGrowAnimation;
+- (void)startGrowAnimationWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)startPulseAnimation;
 - (void)startShrinkAnimationWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)stopAnimation;

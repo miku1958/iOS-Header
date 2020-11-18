@@ -58,6 +58,7 @@
     id<GEOServerFormattedString> _transitDescriptionFormatString;
     NSArray *_transitAdvisories;
     id<GEOServerFormattedString> _transitRouteBadge;
+    NSArray *_ticketedSegments;
     BOOL _isWalkingOnlyTransitRoute;
     GEOComposedWaypoint *_origin;
     GEOComposedWaypoint *_destination;
@@ -222,6 +223,7 @@
 - (id)stepForPointIndex:(unsigned int)arg1;
 - (unsigned long long)stepIndexForPointIndex:(unsigned long long)arg1;
 - (BOOL)supportsSnapping;
+- (id)ticketingSegmentsForSelectedRides;
 - (unsigned int)trafficColorForDistanceRemaining:(double)arg1;
 - (unsigned long long)trafficColorOffsetAtIndex:(unsigned long long)arg1;
 - (int)transportTypeForStep:(id)arg1;

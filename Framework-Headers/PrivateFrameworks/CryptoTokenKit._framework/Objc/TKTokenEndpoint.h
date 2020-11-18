@@ -9,19 +9,21 @@
 @class NSError, NSMapTable, NSString, NSXPCListenerEndpoint, TKToken;
 @protocol OS_dispatch_queue, OS_xpc_object;
 
+__attribute__((visibility("hidden")))
 @interface TKTokenEndpoint : NSObject
 {
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_xpc_object> *_listener;
     NSMapTable *_sessionMap;
     long long _clientCount;
-    NSError *_tokenError;
     NSString *_tokenID;
     TKToken *_token;
+    NSError *_tokenError;
 }
 
 @property (readonly) NSXPCListenerEndpoint *endpoint;
-@property (readonly) TKToken *token; // @synthesize token=_token;
+@property (strong) TKToken *token; // @synthesize token=_token;
+@property (strong) NSError *tokenError; // @synthesize tokenError=_tokenError;
 @property (readonly) NSString *tokenID; // @synthesize tokenID=_tokenID;
 
 - (void).cxx_destruct;
@@ -30,7 +32,7 @@
 - (void)dealloc;
 - (id)initWithTokenID:(id)arg1;
 - (void)resumeWithToken:(id)arg1 tokenError:(id)arg2;
-- (id)sessionForEvent:(id)arg1 error:(id *)arg2;
+- (id)sessionForEvent:(id)arg1 context:(id *)arg2 error:(id *)arg3;
 - (void)terminateAfterRemovingClientWithNotification:(CDUnknownBlockType)arg1;
 
 @end

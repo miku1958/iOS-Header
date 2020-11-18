@@ -7,12 +7,15 @@
 #import <objc/NSObject.h>
 
 #import <SetupAssistant/AKAppleIDAuthenticationDelegate-Protocol.h>
+#import <SetupAssistant/SUNetworkObserver-Protocol.h>
 
 @class AKAppleIDAuthenticationContext, NSString;
 
-@interface BYManagedAppleIDBootstrap : NSObject <AKAppleIDAuthenticationDelegate>
+@interface BYManagedAppleIDBootstrap : NSObject <AKAppleIDAuthenticationDelegate, SUNetworkObserver>
 {
     AKAppleIDAuthenticationContext *_authContext;
+    BOOL _shouldRetrySilentLoginUpgrade;
+    long long _silentLoginUpgradeRetryCount;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,6 +23,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL passwordChangeFlowNeedsToRun;
 @property (readonly, copy, nonatomic) NSString *shortLivedToken;
+@property (nonatomic) BOOL shouldRetrySilentLoginUpgrade; // @synthesize shouldRetrySilentLoginUpgrade=_shouldRetrySilentLoginUpgrade;
+@property (nonatomic) long long silentLoginUpgradeRetryCount; // @synthesize silentLoginUpgradeRetryCount=_silentLoginUpgradeRetryCount;
 @property (readonly) Class superclass;
 
 + (id)delegateBundleIDsForManagedAccount;
@@ -36,6 +41,7 @@
 - (id)init;
 - (BOOL)isLoginUser;
 - (BOOL)needsToUpgradeShortLivedToken;
+- (void)networkChangedFromNetworkType:(int)arg1 toNetworkType:(int)arg2;
 - (void)postUserSwitchContextHasBeenUsed;
 - (void)recoverEMCSWithCompletion:(CDUnknownBlockType)arg1;
 - (void)runSilentLoginUpgradeIfNeededWithCompletion:(CDUnknownBlockType)arg1;

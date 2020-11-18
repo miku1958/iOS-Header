@@ -63,6 +63,7 @@
 - (void)insertChildCollections:(id)arg1 atIndexes:(id)arg2;
 - (void)moveChildCollectionsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
+- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
 - (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeChildCollection:(id)arg1;
 - (void)removeChildCollectionFromChildCollectionsAtIndex:(unsigned long long)arg1;

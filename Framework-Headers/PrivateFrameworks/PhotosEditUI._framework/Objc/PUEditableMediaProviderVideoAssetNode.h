@@ -11,6 +11,7 @@
 @class AVAsset, NSArray, NSString, PUEditableMediaProvider;
 @protocol PUEditableAsset, PXRunNodeDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUEditableMediaProviderVideoAssetNode : PXRunNode <PUVideoAssetNode>
 {
     int _requestID;

@@ -15,6 +15,7 @@
     NSString *_bulletinType;
     long long _bulletinSource;
     NSString *_coalescingID;
+    NSString *_threadID;
     NSDate *_notBeforeDate;
     NSDate *_notAfterDate;
     NSDate *_publishedDate;
@@ -36,6 +37,7 @@
 @property (copy, nonatomic) NSDate *notAfterDate; // @synthesize notAfterDate=_notAfterDate;
 @property (copy, nonatomic) NSDate *notBeforeDate; // @synthesize notBeforeDate=_notBeforeDate;
 @property (copy, nonatomic) NSDate *publishedDate; // @synthesize publishedDate=_publishedDate;
+@property (copy, nonatomic) NSString *threadID; // @synthesize threadID=_threadID;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 

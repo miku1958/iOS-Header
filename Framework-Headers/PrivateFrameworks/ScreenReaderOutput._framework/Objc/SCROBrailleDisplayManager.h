@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ScreenReaderOutput/SCROBrailleDisplayDelegate-Protocol.h>
 
@@ -33,6 +33,7 @@
     BOOL _wordWrapEnabled;
     unsigned int _persistentKeyModifiers;
     long long _uiStringCachedLineOffset;
+    NSAttributedString *_uiEditingCachedString;
     NSMutableArray *_displayModeStack;
     SCROBrailleDisplayHistory *_history;
     NSAttributedString *_mainString;
@@ -47,14 +48,19 @@
     BOOL _isValid;
     int _inputAccessMode;
     NSAttributedString *_blankUIString;
+    CDUnknownBlockType _eventHandled;
+    CDUnknownBlockType _alertDisappeared;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType alertDisappeared; // @synthesize alertDisappeared=_alertDisappeared;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SCROSBrailleDisplayManagerDelegate> delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType eventHandled; // @synthesize eventHandled=_eventHandled;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int inputContractionMode;
 @property (nonatomic) BOOL inputEightDotBraille;
+@property (readonly, nonatomic) SCROBrailleDisplayManagedQueue *managedDisplayQueue; // @synthesize managedDisplayQueue=_managedDisplayQueue;
 @property (nonatomic) unsigned int persistentKeyModifiers;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL wordWrapEnabled;
@@ -101,7 +107,6 @@
 - (void)_simulateKeypressHandler:(id)arg1;
 - (void)_stopAlertTimer;
 - (void)_unloadStealthDisplay;
-- (void)_wordWrapEnabledHandler:(id)arg1;
 - (id)aggregatedStatus;
 - (BOOL)alwaysUsesNemethCodeForTechnicalText;
 - (BOOL)automaticBrailleTranslation;
@@ -175,6 +180,7 @@
 - (long long)tokenForRouterIndex:(long long)arg1 location:(long long *)arg2 appToken:(id *)arg3 forDisplayWithToken:(int)arg4;
 - (void)tokenizeString:(id)arg1 intoFormatter:(id)arg2 selection:(struct _NSRange *)arg3;
 - (int)virtualStatusAlignment;
+- (void)wordWrapEnabledHandler:(id)arg1;
 
 @end
 

@@ -4,9 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <HomeKitDaemon/NSObject-Protocol.h>
+
 @class HMDBackingStoreModelObject, HMFMessage;
 
-@protocol HMDBackingStoreObjectProtocol
+@protocol HMDBackingStoreObjectProtocol <NSObject>
 - (void)transactionObjectRemoved:(HMDBackingStoreModelObject *)arg1 message:(HMFMessage *)arg2;
 - (void)transactionObjectUpdated:(HMDBackingStoreModelObject *)arg1 newValues:(HMDBackingStoreModelObject *)arg2 message:(HMFMessage *)arg3;
 @end

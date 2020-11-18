@@ -8,16 +8,20 @@
 
 #import <PassKitCore/PKMicaResizableView-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface PKMicaLayer : CALayer <PKMicaResizableView>
 {
     CALayer *_rootLayer;
+    NSArray *_publishedColorLayers;
+    NSArray *_publishedColorShapeLayers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *publishedColorLayers; // @synthesize publishedColorLayers=_publishedColorLayers;
+@property (readonly, nonatomic) NSArray *publishedColorShapeLayers; // @synthesize publishedColorShapeLayers=_publishedColorShapeLayers;
 @property (readonly, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property (readonly) Class superclass;
 

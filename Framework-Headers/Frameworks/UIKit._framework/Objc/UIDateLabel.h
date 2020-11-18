@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UILabel.h>
+#import <UIKitCore/UILabel.h>
 
 @class NSCalendar, NSDate, NSString, UIFont;
 
@@ -63,7 +63,6 @@
 - (id)font;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidate;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)text;
 
 @end

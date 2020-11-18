@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUtils/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface CUPowerSource : NSObject <NSSecureCoding>
 {
@@ -26,6 +26,7 @@
     double _chargeLevel;
     long long _familyCode;
     NSString *_groupID;
+    NSArray *_LEDs;
     double _maxCapacity;
     NSString *_name;
     NSString *_partID;
@@ -49,6 +50,7 @@
     NSDictionary *_ioKitDescription;
 }
 
+@property (copy, nonatomic) NSArray *LEDs; // @synthesize LEDs=_LEDs;
 @property (copy, nonatomic) NSString *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
 @property (copy, nonatomic) NSString *accessoryID; // @synthesize accessoryID=_accessoryID;
 @property (nonatomic) long long adapterErrorFlags; // @synthesize adapterErrorFlags=_adapterErrorFlags;
@@ -86,6 +88,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_updateWithCoder:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)detailedDescription;
@@ -100,6 +103,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (int)publish;
 - (unsigned int)updateWithPowerAdapterDetails:(id)arg1;
+- (void)updateWithPowerSource:(id)arg1;
 - (unsigned int)updateWithPowerSourceDescription:(id)arg1;
 
 @end

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSXPCConnection;
 @protocol OS_xpc_object;
@@ -27,6 +27,7 @@
 - (void)rpcKnownBadState:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcPerformanceCounters:(CDUnknownBlockType)arg1;
 - (void)rpcPushOutgoingChanges:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)rpcResetCloudKit:(id)arg1 reason:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)rpcResetCloudKit:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcResetLocal:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)rpcResync:(id)arg1 reply:(CDUnknownBlockType)arg2;

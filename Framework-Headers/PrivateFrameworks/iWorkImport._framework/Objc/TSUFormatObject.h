@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 #import <iWorkImport/NSMutableCopying-Protocol.h>
@@ -19,13 +19,13 @@
 __attribute__((visibility("hidden")))
 @interface TSUFormatObject : NSObject <TSCHDataFormatter, TSCHDataFormatterPersistableStyleObject, TSCHDataFormatterSupportedClientFormatObject, TSCHFormatTypeSupport, TSCHCustomFormatSupport, NSCopying, NSMutableCopying>
 {
-    CDStruct_28403e59 mFormatStruct;
+    CDStruct_b1066b25 mFormatStruct;
     BOOL mUseExpandedContents;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) CDStruct_28403e59 formatStruct;
+@property (readonly, nonatomic) CDStruct_b1066b25 formatStruct;
 @property (readonly, nonatomic) int formatType; // @dynamic formatType;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -44,14 +44,14 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (id)initWithArchive:(const struct FormatStructArchive *)arg1 unarchiver:(id)arg2;
-- (id)initWithTSUFormatFormatStruct:(CDStruct_28403e59)arg1;
-- (id)initWithTSUFormatFormatStruct:(CDStruct_28403e59)arg1 useExpandedContents:(BOOL)arg2;
+- (id)initWithTSUFormatFormatStruct:(CDStruct_b1066b25)arg1;
+- (id)initWithTSUFormatFormatStruct:(CDStruct_b1066b25)arg1 useExpandedContents:(BOOL)arg2;
 - (BOOL)isCompatibleWithDataFormatter:(id)arg1;
 - (BOOL)isCustom;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (long long)numberOfDecimalPlaces;
-- (void)p_setFormatStruct:(CDStruct_28403e59)arg1;
+- (void)p_setFormatStruct:(CDStruct_b1066b25)arg1;
 - (void)saveToArchive:(struct FormatStructArchive *)arg1 archiver:(id)arg2;
 
 @end

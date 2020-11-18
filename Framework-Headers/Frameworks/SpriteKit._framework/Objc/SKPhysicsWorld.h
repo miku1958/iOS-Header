@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <SpriteKit/NSCoding-Protocol.h>
+#import <SpriteKit/NSSecureCoding-Protocol.h>
 
 @class MISSING_TYPE;
 @protocol SKPhysicsContactDelegate;
 
-@interface SKPhysicsWorld : NSObject <NSCoding>
+@interface SKPhysicsWorld : NSObject <NSSecureCoding>
 {
     double speed;
     id<SKPhysicsContactDelegate> _contactDelegate;
@@ -24,6 +24,7 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (id)copyWithZone:(struct _NSZone *)arg1;
++ (BOOL)supportsSecureCoding;
 - (void)addBody:(id)arg1;
 - (void)addJoint:(id)arg1;
 - (id)bodies;

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/SXVisiblePercentageProviding-Protocol.h>
+#import <Silex/SVVisiblePercentageProviding-Protocol.h>
 
 @class NSString;
 
-@interface SXVideoPlayerAdSlotVisiblePercentageProvider : NSObject <SXVisiblePercentageProviding>
+@interface SXVideoPlayerAdSlotVisiblePercentageProvider : NSObject <SVVisiblePercentageProviding>
 {
 }
 

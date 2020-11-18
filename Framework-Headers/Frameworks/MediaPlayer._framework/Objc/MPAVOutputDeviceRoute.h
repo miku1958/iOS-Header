@@ -19,13 +19,14 @@
 @property (readonly, nonatomic) NSArray *outputDevices; // @synthesize outputDevices=_outputDevices;
 
 + (id)localDeviceUID;
-+ (id)localOutputDeviceLocalizedName;
 + (void *)logicalLeaderFromOutputDevices:(id)arg1;
 + (long long)pickableRouteTypeForOutputDevice:(void *)arg1;
 - (void).cxx_destruct;
 - (BOOL)_anyOutputDevicePassesMRFunction:(CDUnknownFunctionPointerType)arg1;
 - (BOOL)_anyOutputDevicePassesTest:(CDUnknownBlockType)arg1;
 - (BOOL)canAccessRemoteAssets;
+- (BOOL)canFetchMediaDataFromSender;
+- (BOOL)canPlayEncryptedProgressiveDownloadAssets;
 - (id)description;
 - (id)groupUID;
 - (id)initWithOutputDevices:(id)arg1;
@@ -40,6 +41,7 @@
 - (BOOL)isVolumeControlAvailable;
 - (long long)pickableRouteType;
 - (id)playingPairedDeviceName;
+- (BOOL)presentsOptimizedUserInterfaceWhenPlayingFetchedAudioOnlyAssets;
 - (id)productIdentifier;
 - (BOOL)requiresPassword;
 - (id)routeName;

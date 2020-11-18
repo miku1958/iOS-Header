@@ -12,5 +12,8 @@
 
 @property (strong, nonatomic) TSKSelection *selection;
 
+
+@optional
+- (TSKSelection *)selectionWithParent:(TSKSelection *)arg1;
 @end
 

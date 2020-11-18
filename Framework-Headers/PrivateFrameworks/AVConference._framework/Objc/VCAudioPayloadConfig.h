@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray;
 
@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
     BOOL _useSBR;
     BOOL _isDTXEnabled;
     unsigned int _evsSIDPeriod;
+    unsigned short _evsChannelAwareOffset;
+    BOOL _evsHeaderFullOnly;
     BOOL _payloadOctetAligned;
 }
 
@@ -33,6 +35,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int blockSize; // @synthesize blockSize=_blockSize;
 @property (readonly, nonatomic) unsigned int bundleHeaderBytes; // @synthesize bundleHeaderBytes=_bundleHeaderBytes;
 @property (readonly, nonatomic) unsigned int codecSampleRate; // @synthesize codecSampleRate=_codecSampleRate;
+@property (readonly, nonatomic) unsigned short evsChannelAwareOffset; // @synthesize evsChannelAwareOffset=_evsChannelAwareOffset;
+@property (readonly, nonatomic) BOOL evsHeaderFullOnly; // @synthesize evsHeaderFullOnly=_evsHeaderFullOnly;
 @property (readonly, nonatomic) unsigned int evsSIDPeriod; // @synthesize evsSIDPeriod=_evsSIDPeriod;
 @property (readonly, nonatomic) unsigned int flags;
 @property (readonly, nonatomic) BOOL forcingBitrate; // @synthesize forcingBitrate=_forcingBitrate;

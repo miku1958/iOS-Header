@@ -12,9 +12,6 @@
 
 @property (nonatomic) double code;
 @property (copy, nonatomic) NSString *domain;
-@property (readonly, nonatomic) BOOL hasCode;
-@property (readonly, nonatomic) BOOL hasDomain;
-@property (readonly, nonatomic) BOOL hasReason;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *reason;
 

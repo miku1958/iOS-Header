@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosUI/PXSectionedDataSourceManagerObserver-Protocol.h>
+#import <PhotosUICore/PXSectionedDataSourceManagerObserver-Protocol.h>
 
 @protocol PXCollectionsDataSourceManagerObserver <PXSectionedDataSourceManagerObserver>
 @end

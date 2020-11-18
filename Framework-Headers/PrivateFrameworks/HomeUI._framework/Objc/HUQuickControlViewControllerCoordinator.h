@@ -15,6 +15,7 @@
 
 @interface HUQuickControlViewControllerCoordinator : NSObject <HFItemManagerDelegate, HFOverrideCharacteristicValueProvider, HUQuickControlViewControllerDelegate>
 {
+    BOOL _controlsVisible;
     BOOL _showIconOffState;
     BOOL _reachable;
     HMHome *_home;
@@ -41,6 +42,7 @@
 @property (readonly, nonatomic) HUQuickControlViewController *alternateViewController; // @synthesize alternateViewController=_alternateViewController;
 @property (readonly, nonatomic) HUQuickControlContentCharacteristicWritingUpdateAdapter *characteristicWritingAdapter; // @synthesize characteristicWritingAdapter=_characteristicWritingAdapter;
 @property (weak, nonatomic) id<HUQuickControlContentHosting> controlHost; // @synthesize controlHost=_controlHost;
+@property (nonatomic, getter=areControlsVisible) BOOL controlsVisible; // @synthesize controlsVisible=_controlsVisible;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUQuickControlViewControllerCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

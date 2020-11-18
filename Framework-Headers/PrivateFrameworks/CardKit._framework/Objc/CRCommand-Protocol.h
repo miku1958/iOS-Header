@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <CardKit/NSCopying-Protocol.h>
 #import <CardKit/NSObject-Protocol.h>
 
 @class NSDictionary;
 
-@protocol CRCommand <NSObject>
+@protocol CRCommand <NSObject, NSCopying>
 
+@property (nonatomic) unsigned long long commandDirection;
 @property (copy, nonatomic) NSDictionary *userInfo;
 
 @end

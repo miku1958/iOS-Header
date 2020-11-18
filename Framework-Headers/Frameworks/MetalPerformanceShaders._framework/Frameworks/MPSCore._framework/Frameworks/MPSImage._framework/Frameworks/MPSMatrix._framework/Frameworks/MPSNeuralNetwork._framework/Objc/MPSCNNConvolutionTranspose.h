@@ -27,6 +27,7 @@
 @property (nonatomic) long long kernelOffsetX; // @synthesize kernelOffsetX=_kernelOffsetX;
 @property (nonatomic) long long kernelOffsetY; // @synthesize kernelOffsetY=_kernelOffsetY;
 @property (readonly, nonatomic) unsigned long long outputFeatureChannels; // @synthesize outputFeatureChannels=_outputFeatureChannels;
+@property (readonly, nonatomic) unsigned long long weightsBufferLength;
 
 + (const struct MPSLibraryInfo *)libraryInfo;
 + (BOOL)supportsSecureCoding;

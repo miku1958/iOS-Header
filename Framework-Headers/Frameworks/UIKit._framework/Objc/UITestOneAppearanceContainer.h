@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIDeviceAppearanceContainer.h>
+#import <UIKitCore/UIDeviceAppearanceContainer.h>
 
 __attribute__((visibility("hidden")))
 @interface UITestOneAppearanceContainer : UIDeviceAppearanceContainer

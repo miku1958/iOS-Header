@@ -8,40 +8,38 @@
 
 #import <ConfigurationEngineModel/CEMRegisteredTypeProtocol-Protocol.h>
 
-@class NSDictionary, NSString;
+@class CEMApplicationControlDeclaration_InstallSchedule, CEMApplicationControlDeclaration_UpdateSchedule, NSString;
 
 @interface CEMApplicationControlDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
+    CEMApplicationControlDeclaration_InstallSchedule *_payloadInstallSchedule;
+    NSString *_payloadUpdatePolicy;
+    CEMApplicationControlDeclaration_UpdateSchedule *_payloadUpdateSchedule;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSDictionary *payloadInstallSchedule;
-@property (readonly, nonatomic) NSString *payloadUpdatePolicy;
-@property (readonly, nonatomic) NSDictionary *payloadUpdateSchedule;
+@property (copy, nonatomic) CEMApplicationControlDeclaration_InstallSchedule *payloadInstallSchedule; // @synthesize payloadInstallSchedule=_payloadInstallSchedule;
+@property (copy, nonatomic) NSString *payloadUpdatePolicy; // @synthesize payloadUpdatePolicy=_payloadUpdatePolicy;
+@property (copy, nonatomic) CEMApplicationControlDeclaration_UpdateSchedule *payloadUpdateSchedule; // @synthesize payloadUpdateSchedule=_payloadUpdateSchedule;
 @property (readonly) Class superclass;
 
-+ (id)InstallSchedule_allowedPayloadKeys;
-+ (id)UpdateSchedule_allowedPayloadKeys;
 + (id)allowedPayloadKeys;
-+ (id)allowedReasons;
-+ (id)allowedStatusKeys;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withInstallSchedule:(id)arg2 withUpdatePolicy:(id)arg3 withUpdateSchedule:(id)arg4;
 + (id)profileType;
-+ (id)registeredClass;
-+ (id)registeredType;
++ (id)registeredClassName;
++ (id)registeredIdentifier;
 + (id)restrictionPayloadKeys;
+- (void).cxx_destruct;
 - (int)activationLevel;
 - (id)assetReferences;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)loadPayload:(id)arg1 error:(id *)arg2;
 - (BOOL)multipleAllowed;
 - (BOOL)mustBeSupervised;
-- (id)serializePayload:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadInstallSchedule:(id)arg1 withAssetProviders:(id)arg2;
-- (id)serializePayloadUpdateSchedule:(id)arg1 withAssetProviders:(id)arg2;
-- (BOOL)validPayloadDictionary:(id)arg1 error:(id *)arg2;
-- (BOOL)validPayloadInstallSchedule_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validPayloadUpdateSchedule_Dictionary:(id)arg1 parentKeyPath:(id)arg2 error:(id *)arg3;
-- (BOOL)validStatusDictionary:(id)arg1 error:(id *)arg2;
+- (id)serializePayloadWithAssetProviders:(id)arg1;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MessageUI/MFMailCompositionUTITypes-Protocol.h>
 
@@ -20,7 +20,7 @@
     NSArray *_bccRecipients;
     NSString *_messageBody;
     int _composeType;
-    id _autosaveIdentifier;
+    NSString *_autosaveIdentifier;
     MFMailMessage *_originalMessage;
     NSString *_attachmentToMarkupContentID;
     id _originalContent;
@@ -44,7 +44,7 @@
 @property (copy, nonatomic) NSArray *UTITypes; // @synthesize UTITypes;
 @property (readonly, nonatomic) MFAttachmentCompositionContext *attachmentContext; // @synthesize attachmentContext=_attachmentContext;
 @property (strong, nonatomic) NSString *attachmentToMarkupContentID; // @synthesize attachmentToMarkupContentID=_attachmentToMarkupContentID;
-@property (readonly, nonatomic) id autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
+@property (readonly, nonatomic) NSString *autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
 @property (copy, nonatomic) NSArray *bccRecipients; // @synthesize bccRecipients=_bccRecipients;
 @property UIView<MFComposeBodyField> *bodyField; // @synthesize bodyField=_bodyField;
 @property (nonatomic) unsigned long long caretPosition; // @synthesize caretPosition=_caretPosition;
@@ -84,6 +84,7 @@
 - (id)initWithComposeType:(int)arg1;
 - (id)initWithComposeType:(int)arg1 RFC822Data:(id)arg2;
 - (id)initWithComposeType:(int)arg1 originalMessage:(id)arg2;
+- (id)initWithHandoffActivityPayload:(id)arg1;
 - (id)initWithURL:(id)arg1;
 - (id)initWithURL:(id)arg1 composeType:(int)arg2 originalMessage:(id)arg3;
 - (void)insertAttachmentWithData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIKBFocusGuideDelegate-Protocol.h>
-#import <UIKit/UIKeyboardImplGeometryDelegate-Protocol.h>
+#import <UIKitCore/UIKBFocusGuideDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardImplGeometryDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, UITextInputTraits;
 
@@ -26,8 +26,8 @@
     NSMutableDictionary *m_focusGuides;
     struct UIEdgeInsets m_unfocusedFocusGuideOutsets;
     BOOL _hasImpendingCursorLocation;
-    unsigned long long _requestedInteractionModel;
     unsigned long long _impendingCursorLocation;
+    unsigned long long _requestedInteractionModel;
 }
 
 @property (nonatomic) BOOL caretBlinks;
@@ -39,7 +39,7 @@
 @property (nonatomic) unsigned long long impendingCursorLocation; // @synthesize impendingCursorLocation=_impendingCursorLocation;
 @property (nonatomic) long long keyboardIdiom; // @synthesize keyboardIdiom=m_idiom;
 @property (nonatomic, getter=isMinimized) BOOL minimized;
-@property (readonly, nonatomic) unsigned long long requestedInteractionModel; // @synthesize requestedInteractionModel=_requestedInteractionModel;
+@property (nonatomic) unsigned long long requestedInteractionModel; // @synthesize requestedInteractionModel=_requestedInteractionModel;
 @property (nonatomic) BOOL showsCandidatesInline;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL typingEnabled;
@@ -47,20 +47,27 @@
 + (void)_clearActiveKeyboard;
 + (id)activeKeyboard;
 + (id)activeKeyboardForScreen:(id)arg1;
++ (BOOL)candidateDisplayIsExtended;
 + (void)clearActiveForScreen:(id)arg1;
 + (struct CGRect)defaultFrameForInterfaceOrientation:(long long)arg1;
 + (struct CGSize)defaultSize;
 + (struct CGSize)defaultSizeForInterfaceOrientation:(long long)arg1;
++ (id)homeGestureExclusionZones;
 + (void)initImplementationNow;
 + (BOOL)isInHardwareKeyboardMode;
 + (BOOL)isOnScreen;
 + (struct CGSize)keyboardSizeForInterfaceOrientation:(long long)arg1;
++ (struct UIEdgeInsets)keyplanePadding;
 + (void)makeKeyboardActive:(id)arg1 forScreen:(id)arg2;
++ (double)predictionViewHeightForCurrentInputMode;
++ (BOOL)predictionViewPrewarmsPredictiveCandidates;
 + (void)removeAllDynamicDictionaries;
 + (BOOL)respondsToProxGesture;
++ (void)setPredictionViewPrewarmsPredictiveCandidates:(BOOL)arg1;
 + (BOOL)shouldMinimizeForHardwareKeyboard;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1;
 + (struct CGSize)sizeForInterfaceOrientation:(long long)arg1 ignoreInputView:(BOOL)arg2;
++ (id)snapshotViewForPredictionViewTransition;
 + (BOOL)splitKeyboardEnabled;
 - (void)_acceptCurrentCandidate;
 - (id)_baseKeyForRepresentedString:(id)arg1;
@@ -90,6 +97,7 @@
 - (void)_setSplit:(BOOL)arg1;
 - (void)_setUndocked:(BOOL)arg1;
 - (void)_setUseRecentsAlert:(BOOL)arg1;
+- (void)_showAutofillExtras;
 - (id)_touchPoint:(struct CGPoint)arg1;
 - (BOOL)_touchesInsideShouldHideCalloutBar;
 - (id)_typeCharacter:(id)arg1 withError:(struct CGPoint)arg2 shouldTypeVariants:(BOOL)arg3 baseKeyForVariants:(BOOL)arg4;
@@ -158,7 +166,6 @@
 - (void)setNeedsDisplay;
 - (void)setOrientation:(long long)arg1;
 - (void)setReturnKeyEnabled:(BOOL)arg1;
-- (void)setShowPredictionBar:(BOOL)arg1;
 - (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1;
 - (void)setUnfocusedFocusGuideOutsets:(struct UIEdgeInsets)arg1 fromView:(id)arg2;
 - (void)setupKeyFocusGuides;
@@ -169,6 +176,7 @@
 - (void)takeSnapshot;
 - (id)targetWindow;
 - (int)textEffectsVisibilityLevel;
+- (void)textInputTraitsDidChange;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

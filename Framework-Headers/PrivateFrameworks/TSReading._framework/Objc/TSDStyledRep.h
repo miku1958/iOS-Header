@@ -58,7 +58,6 @@
 - (void)drawShadowInContext:(struct CGContext *)arg1 withChildren:(BOOL)arg2 withDrawableOpacity:(BOOL)arg3;
 - (void)invalidateShadowLayer;
 - (BOOL)isInvisible;
-- (id)magicMoveAttributesWithShapeAttributes:(BOOL)arg1;
 - (struct CGImage *)newShadowImageWithSize:(struct CGSize)arg1 shadow:(id)arg2 drawSelector:(SEL)arg3 unflipped:(BOOL)arg4;
 - (struct CGImage *)newShadowImageWithSize:(struct CGSize)arg1 unflipped:(BOOL)arg2 withChildren:(BOOL)arg3;
 - (struct CGRect)p_clipRectInRootForTransform:(struct CGAffineTransform)arg1;
@@ -72,7 +71,6 @@
 - (struct CGRect)rectWithEffectsAppliedToRect:(struct CGRect)arg1;
 - (struct CGRect)reflectionLayerFrame;
 - (struct CGRect)reflectionLayerFrameInRoot;
-- (void)setMagicMoveTextureAttributes:(id)arg1;
 - (void)setNeedsDisplay;
 - (BOOL)shouldHideSelectionHighlightDueToRectangularPath;
 - (BOOL)shouldShowReflection;

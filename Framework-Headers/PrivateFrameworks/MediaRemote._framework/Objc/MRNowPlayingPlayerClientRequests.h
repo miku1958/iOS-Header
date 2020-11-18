@@ -4,17 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <MediaRemote/MRNowPlayingClientState-Protocol.h>
 
-@class MRPlaybackQueuePlayerClient, NSMutableDictionary, NSOperationQueue, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueProtobuf;
+@class MRPlaybackQueueSubscriptionController, NSMutableDictionary, NSOperationQueue, _MRNowPlayingPlayerPathProtobuf, _MRPlaybackQueueProtobuf;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MRNowPlayingPlayerClientRequests : NSObject <MRNowPlayingClientState>
 {
     _MRPlaybackQueueProtobuf *_playbackQueue;
+    unsigned int _playbackState;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSObject<OS_dispatch_queue> *_responseQueue;
     NSMutableDictionary *_transactionCallbacks;
@@ -22,22 +23,17 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_transactions;
     NSOperationQueue *_enquedNowPlayingInfoRequests;
     NSOperationQueue *_enquedNowPlayingInfoAssetRequests;
-    unsigned int _playbackState;
     _MRNowPlayingPlayerPathProtobuf *_playerPath;
-    MRPlaybackQueuePlayerClient *_playbackQueueClient;
+    MRPlaybackQueueSubscriptionController *_subscriptionController;
 }
 
-@property (readonly, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue;
-@property (readonly, nonatomic) MRPlaybackQueuePlayerClient *playbackQueueClient; // @synthesize playbackQueueClient=_playbackQueueClient;
-@property (readonly, nonatomic) unsigned int playbackState; // @synthesize playbackState=_playbackState;
+@property (strong, nonatomic) _MRPlaybackQueueProtobuf *playbackQueue;
+@property (nonatomic) unsigned int playbackState;
 @property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (readonly, nonatomic) MRPlaybackQueueSubscriptionController *subscriptionController; // @synthesize subscriptionController=_subscriptionController;
 
 - (void).cxx_destruct;
-- (void)_handleContentItemArtworkDidChangeNotification:(id)arg1;
-- (void)_handleContentItemsDidChangeNotification:(id)arg1;
 - (void)_handleEnqueuedPlaybackQueueRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_handlePlaybackQueueDidChangeNotification:(id)arg1;
-- (void)_handlePlaybackStateDidChangeNotification:(id)arg1;
 - (void)_handleTransactionPackets:(id)arg1 packets:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_registerDefaultCallbacks;
 - (id)_transactionDestintationForName:(unsigned long long)arg1;
@@ -50,8 +46,10 @@ __attribute__((visibility("hidden")))
 - (void)receiveTransaction:(unsigned long long)arg1 fromMessage:(id)arg2;
 - (void)removePlaybackQueueCompletionForRequest:(id)arg1;
 - (void)restoreNowPlayingClientState;
-- (void)setPlaybackQueue:(id)arg1;
 - (id)transactionCallbacksForName:(unsigned long long)arg1;
+- (void)updateContentItemArtwork:(id)arg1;
+- (void)updateContentItems:(id)arg1;
+- (void)updatePlaybackQueue:(id)arg1;
 
 @end
 

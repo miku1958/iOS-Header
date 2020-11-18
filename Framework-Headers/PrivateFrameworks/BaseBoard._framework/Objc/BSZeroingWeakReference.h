@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface BSZeroingWeakReference : NSObject
 {
@@ -13,12 +13,12 @@
     unsigned long long _objectAddress;
 }
 
-@property (readonly, nonatomic) id object;
+@property (readonly, weak, nonatomic) id object;
 @property (nonatomic) unsigned long long objectAddress; // @synthesize objectAddress=_objectAddress;
 @property (nonatomic) Class objectClass; // @synthesize objectClass=_objectClass;
 
 + (id)referenceWithObject:(id)arg1;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
 - (id)init;

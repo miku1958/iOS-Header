@@ -4,26 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TPBackgroundLayoutControllerDelegate-Protocol.h>
-#import <iWorkImport/TPLayoutStateConsumer-Protocol.h>
-#import <iWorkImport/TPLayoutStateProvider-Protocol.h>
 #import <iWorkImport/TPPageLayoutInfoProvider-Protocol.h>
 #import <iWorkImport/TSKChangeSourceObserver-Protocol.h>
 #import <iWorkImport/TSWPLayoutOwner-Protocol.h>
 
-@class NSArray, NSMutableArray, NSString, TPDocumentRoot, TPFootnoteLayoutController, TPPageControllerCanvasDelegate, TPPageLayoutState, TPTextFlowLayoutController, TPTextWrapController, TSUMutablePointerSet, TSWPLayoutManager, TSWPLayoutMetricsCache, TSWPMutableDirtyRangeArray;
-@protocol TPPageControllerDelegate;
+@class NSArray, NSMutableArray, NSString, TPDocumentRoot, TPFootnoteLayoutController, TPPageControllerCanvasDelegate, TPPageLayoutState, TPTextFlowLayoutController, TPTextWrapController, TSUMutablePointerSet, TSWPLayoutManager, TSWPLayoutMetricsCache;
+@protocol TPPageControllerDelegate, TPPageControllerObserver;
 
 __attribute__((visibility("hidden")))
-@interface TPPageController : NSObject <TPPageLayoutInfoProvider, TSKChangeSourceObserver, TSWPLayoutOwner, TPLayoutStateConsumer, TPLayoutStateProvider, TPBackgroundLayoutControllerDelegate>
+@interface TPPageController : NSObject <TPPageLayoutInfoProvider, TSKChangeSourceObserver, TSWPLayoutOwner, TPBackgroundLayoutControllerDelegate>
 {
     _Atomic int _isScrolling;
     _Atomic int _isZooming;
     BOOL _isObservingNotifications;
     multimap_41f9c887 _pageLayoutCache;
-    TSWPMutableDirtyRangeArray *_dirtyRanges;
     TPPageControllerCanvasDelegate *_offscreenSearchDelegate;
     TPFootnoteLayoutController *_footnoteLayoutController;
     BOOL _checkedForBackUp;
@@ -45,10 +42,12 @@ __attribute__((visibility("hidden")))
     TPPageLayoutState *_layoutState;
     NSMutableArray *_sectionHints;
     id<TPPageControllerDelegate> _delegate;
+    id<TPPageControllerObserver> _observer;
     TSWPLayoutManager *_bodyLayoutManager;
 }
 
 @property (readonly, nonatomic) TSWPLayoutManager *bodyLayoutManager; // @synthesize bodyLayoutManager=_bodyLayoutManager;
+@property (readonly, nonatomic) TPTextWrapController *d_wrapController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -66,6 +65,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isPaginated;
 @property (readonly, nonatomic) TPPageLayoutState *layoutState; // @synthesize layoutState=_layoutState;
 @property (readonly, nonatomic) NSArray *numberOfPagesInEachSection;
+@property (weak, nonatomic) id<TPPageControllerObserver> observer; // @synthesize observer=_observer;
 @property (readonly, nonatomic) unsigned long long pageCount; // @synthesize pageCount=_lastKnownPageCount;
 @property (readonly, nonatomic) NSMutableArray *sectionHints; // @synthesize sectionHints=_sectionHints;
 @property (readonly) Class superclass;
@@ -77,17 +77,12 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)accquireLockAndPerformAction:(CDUnknownBlockType)arg1;
 - (void)addLayoutObserver:(id)arg1;
+- (unsigned long long)adjacentPageIndexForPageIndex:(unsigned long long)arg1;
 - (id)anchoredDrawablesOnPageIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2;
 - (struct _NSRange)anchoredRangeForPageIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2;
-- (BOOL)archivedLayoutState:(id)arg1 setBodyLength:(unsigned long long)arg2;
-- (void)archivedLayoutState:(id)arg1 setDocumentPageIndex:(unsigned long long)arg2;
-- (void)archivedLayoutState:(id)arg1 setLastPageCount:(unsigned long long)arg2;
-- (BOOL)archivedLayoutState:(id)arg1 setSectionHints:(id)arg2;
-- (void)archivedLayoutState:(id)arg1 setSectionIndex:(unsigned long long)arg2;
-- (void)archivedLayoutState:(id)arg1 setSectionPageIndex:(unsigned long long)arg2;
+- (id)backgroundFillForPageIndex:(unsigned long long)arg1;
 - (void)backgroundLayoutDidEnd;
 - (BOOL)backgroundLayoutWillBegin;
-- (unsigned long long)bodyLengthForArchivedLayoutState:(id)arg1;
 - (struct _NSRange)bodyRangeForPageIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2;
 - (unsigned long long)calculatePageIndexFromCanvasPoint:(struct CGPoint)arg1;
 - (BOOL)canProvideInfoForPageIndex:(unsigned long long)arg1;
@@ -97,12 +92,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)caresAboutStorageChanges;
 - (unsigned long long)contentFlagsForPageIndex:(unsigned long long)arg1;
 - (void)d_timeLayout;
-- (void)d_toggleWrapAnimation;
 - (void)dealloc;
 - (void)didLayoutChangingDirtyRanges;
 - (id)displayPageNumberForCharIndex:(unsigned long long)arg1;
 - (id)displayPageNumberForPageIndex:(unsigned long long)arg1;
-- (unsigned long long)documentPageIndexForArchivedLayoutState:(id)arg1;
 - (struct _NSRange)documentPageRangeOfSectionIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2;
 - (double)footerHeight;
 - (id)footnoteLayoutController;
@@ -120,6 +113,7 @@ __attribute__((visibility("hidden")))
 - (void)i_invalidatePageIndex:(unsigned long long)arg1;
 - (multimap_41f9c887 *)i_pageCache;
 - (id)i_pageHintForPageIndex:(unsigned long long)arg1;
+- (id)i_pageIndexPathForPageIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2 allowAfterLayoutPoint:(BOOL)arg3;
 - (void)i_rebuildCachedLayoutChildrenFromStartPage:(unsigned long long)arg1 toEndPage:(unsigned long long)arg2 setNeedsLayout:(BOOL)arg3;
 - (void)i_registerPageLayout:(id)arg1;
 - (void)i_setNeedsDynamicLayoutForLayoutController:(id)arg1 onPageIndex:(unsigned long long)arg2;
@@ -136,7 +130,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)isLayoutCompleteThroughPageIndex:(unsigned long long)arg1;
 - (BOOL)isLayoutInProgress;
 - (BOOL)isSectionInfo:(id)arg1 onPage:(unsigned long long)arg2;
-- (unsigned long long)lastPageCountForArchivedLayoutState:(id)arg1;
 - (void)layoutManager:(id)arg1 didClearDirtyRangeWithDelta:(long long)arg2 afterCharIndex:(unsigned long long)arg3;
 - (void)layoutManagerNeedsLayout:(id)arg1;
 - (void)layoutThroughPageIndex:(unsigned long long)arg1;
@@ -181,16 +174,15 @@ __attribute__((visibility("hidden")))
 - (void)p_notifyObserversWillLayoutWhileSyncing:(BOOL)arg1;
 - (id)p_pageHintForPageIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2 allowAfterLayoutPoint:(BOOL)arg3;
 - (id)p_pageHintForPageIndexPath:(id)arg1;
+- (unsigned long long)p_pageHintIndexForAnchoredCharIndex:(unsigned long long)arg1;
+- (unsigned long long)p_pageHintIndexForCharIndex:(unsigned long long)arg1;
 - (id)p_pageHintPrecedingPageIndexPath:(id)arg1;
 - (unsigned long long)p_pageIndexContainingIndex:(unsigned long long)arg1 ofType:(int)arg2;
 - (unsigned long long)p_pageIndexForAnchoredCharIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2 searchAfterLayoutPoint:(BOOL)arg3;
 - (unsigned long long)p_pageIndexForCharIndex:(unsigned long long)arg1 includeEmptyPages:(BOOL)arg2 caretAffinity:(int)arg3 forceLayout:(BOOL)arg4 searchAfterLayoutPoint:(BOOL)arg5;
 - (unsigned long long)p_pageIndexForFootnoteIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2 searchAfterLayoutPoint:(BOOL)arg3;
-- (BOOL)p_pageIndexIsAlternativePageNotInDocument:(unsigned long long)arg1;
-- (id)p_pageIndexPathForPageIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2 allowAfterLayoutPoint:(BOOL)arg3;
 - (id)p_pageIndicesForFlow:(id)arg1 withSelection:(id)arg2 forceLayout:(BOOL)arg3;
 - (id)p_pageIndicesForInfo:(id)arg1 withSelectionPath:(id)arg2 pageInfos:(inout id)arg3;
-- (Class)p_pageInfoClass;
 - (id)p_pageInfoForPageAtIndex:(unsigned long long)arg1;
 - (id)p_pageInfosForBodySelection:(id)arg1;
 - (id)p_pageInfosForFlow:(id)arg1 withSelection:(id)arg2;
@@ -246,11 +238,10 @@ __attribute__((visibility("hidden")))
 - (void)preprocessChanges:(id)arg1 forChangeSource:(id)arg2;
 - (void)processHeaderFooterPropertyChanged;
 - (void)removeLayoutObserver:(id)arg1;
+- (void)restoreFromLayoutState:(id)arg1;
+- (void)saveIntoLayoutState:(id)arg1;
 - (struct _NSRange)sectionBodyRangeForPageIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2;
-- (id)sectionHintsForArchivedLayoutState:(id)arg1;
-- (unsigned long long)sectionIndexForArchivedLayoutState:(id)arg1;
 - (unsigned long long)sectionIndexForPageIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2;
-- (unsigned long long)sectionPageIndexForArchivedLayoutState:(id)arg1;
 - (unsigned long long)sectionPageIndexForPageIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2;
 - (struct _NSRange)sectionPageRangeForPageIndex:(unsigned long long)arg1 forceLayout:(BOOL)arg2 outEndIsValid:(BOOL *)arg3;
 - (BOOL)shouldHeaderFooterBeVisibleForPageIndex:(unsigned long long)arg1;

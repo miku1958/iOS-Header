@@ -6,20 +6,21 @@
 
 #import <objc/NSObject.h>
 
+#import <Intents/INCacheableContainer-Protocol.h>
 #import <Intents/NSCopying-Protocol.h>
 #import <Intents/NSSecureCoding-Protocol.h>
 
 @class INPerson, NSDate, NSNumber, NSString;
 
-@interface INCallRecord : NSObject <NSCopying, NSSecureCoding>
+@interface INCallRecord : NSObject <INCacheableContainer, NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
     NSDate *_dateCreated;
     INPerson *_caller;
     long long _callRecordType;
-    long long _callCapability;
     NSNumber *_callDuration;
     NSNumber *_unseen;
+    long long _callCapability;
 }
 
 @property (readonly, nonatomic) long long callCapability; // @synthesize callCapability=_callCapability;
@@ -27,17 +28,21 @@
 @property (readonly, nonatomic) long long callRecordType; // @synthesize callRecordType=_callRecordType;
 @property (readonly, copy, nonatomic) INPerson *caller; // @synthesize caller=_caller;
 @property (readonly, copy, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSNumber *unseen; // @synthesize unseen=_unseen;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentation;
+- (id)_intents_cacheableObjects;
+- (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)descriptionAtIndent:(unsigned long long)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 dateCreated:(id)arg2 caller:(id)arg3 callRecordType:(long long)arg4 callCapability:(long long)arg5 callDuration:(id)arg6 unseen:(id)arg7;
 - (BOOL)isEqual:(id)arg1;

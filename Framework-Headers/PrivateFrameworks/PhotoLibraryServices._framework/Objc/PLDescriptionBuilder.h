@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableString, NSString, _PLDescriptionStyle;
 
@@ -13,6 +13,7 @@
     NSObject *_object;
     NSMutableString *_description;
     NSString *_separator;
+    long long _indent;
     NSString *_indentString;
     _PLDescriptionStyle *_style;
 }

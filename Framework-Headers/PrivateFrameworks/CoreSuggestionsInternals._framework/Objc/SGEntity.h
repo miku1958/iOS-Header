@@ -33,7 +33,7 @@
 }
 
 @property (strong, nonatomic) CSPerson *author; // @synthesize author=_author;
-@property (strong, nonatomic) NSString *content; // @synthesize content=_content;
+@property (copy, nonatomic) NSString *content; // @synthesize content=_content;
 @property (nonatomic) struct _NSRange contentRangeOfInterest; // @synthesize contentRangeOfInterest=_contentRangeOfInterest;
 @property (nonatomic) struct SGUnixTimestamp_ creationTimestamp; // @synthesize creationTimestamp=_creationTimestamp;
 @property (strong, nonatomic) SGDuplicateKey *duplicateKey; // @synthesize duplicateKey=_duplicateKey;
@@ -44,11 +44,11 @@
 @property (nonatomic) long long masterEntityId; // @synthesize masterEntityId=_masterEntityId;
 @property (nonatomic) double quality; // @synthesize quality=_quality;
 @property (strong, nonatomic) SGRecordId *recordId; // @synthesize recordId=_recordId;
-@property (strong, nonatomic) NSString *sourceKey; // @synthesize sourceKey=_sourceKey;
+@property (copy, nonatomic) NSString *sourceKey; // @synthesize sourceKey=_sourceKey;
 @property (nonatomic) unsigned int state; // @synthesize state=_state;
-@property (strong, nonatomic) NSData *structuredData; // @synthesize structuredData=_structuredData;
+@property (copy, nonatomic) NSData *structuredData; // @synthesize structuredData=_structuredData;
 @property (strong, nonatomic) SGSimpleTimeRange *timeRange; // @synthesize timeRange=_timeRange;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
 - (void)addTag:(id)arg1;

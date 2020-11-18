@@ -10,8 +10,6 @@
 
 @protocol _CPRange <NSObject>
 
-@property (readonly, nonatomic) BOOL hasLength;
-@property (readonly, nonatomic) BOOL hasLocation;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) unsigned long long length;
 @property (nonatomic) unsigned long long location;

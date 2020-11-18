@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIPickerViewDataSource-Protocol.h>
-#import <UIKit/UIPickerViewDelegate-Protocol.h>
-#import <UIKit/UITableViewDataSource-Protocol.h>
-#import <UIKit/UITableViewDelegate-Protocol.h>
+#import <UIKitCore/UIPickerViewDataSource-Protocol.h>
+#import <UIKitCore/UIPickerViewDelegate-Protocol.h>
+#import <UIKitCore/UITableViewDataSource-Protocol.h>
+#import <UIKitCore/UITableViewDelegate-Protocol.h>
 
 @class NSArray, NSString, UIPickerView, UIPrintPanelViewController, UITableView, UIView;
 

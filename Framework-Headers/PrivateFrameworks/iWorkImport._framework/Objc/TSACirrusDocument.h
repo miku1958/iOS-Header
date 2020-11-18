@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSPObjectContextDelegate-Protocol.h>
 
@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _isClosed;
     TSUTemporaryDirectory *_tempDirForSupport;
+    TSUTemporaryDirectory *_tempDirForCache;
     TSPObjectContext *_context;
     NSString *_documentPasswordHint;
     NSURL *_fileURL;

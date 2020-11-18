@@ -11,14 +11,17 @@
 @class NSString, NWConcrete_nw_connection;
 @protocol OS_nw_endpoint;
 
+__attribute__((visibility("hidden")))
 @interface NWConcrete_nw_unique_connection : NSObject <OS_nw_unique_connection>
 {
     NSObject<OS_nw_endpoint> *endpoint;
-    char service[430];
-    unsigned long long sequenceNumber;
+    char service[436];
+    unsigned long long receivedSequenceNumber;
+    unsigned long long uniqueID;
     unsigned char uuid[16];
     NWConcrete_nw_connection *connection;
-    BOOL isIncoming;
+    int dupedSocketFD;
+    unsigned int isIncoming:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

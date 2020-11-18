@@ -39,6 +39,7 @@
 - (id)dataConsumerForMimePart:(id)arg1;
 - (id)dataPathForMimePart:(id)arg1;
 - (void)dealloc;
+- (unsigned long long)fileSize;
 - (BOOL)hasTemporaryUid;
 - (unsigned long long)hash;
 - (id)initWithLibraryID:(unsigned int)arg1;

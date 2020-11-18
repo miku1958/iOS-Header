@@ -14,6 +14,7 @@
 + (id)fu_bodyShortFont;
 + (id)fu_boldSausageFontOfSize:(double)arg1;
 + (id)fu_fontByApplyingFeatureSettings:(id)arg1 toFont:(id)arg2;
++ (id)fu_heavySausageFontOfSize:(double)arg1;
 + (id)fu_lightSausageFontOfSize:(double)arg1;
 + (id)fu_lightSausageFontOfSize:(double)arg1 centeredColons:(BOOL)arg2;
 + (id)fu_mediumFontOfSize:(double)arg1;

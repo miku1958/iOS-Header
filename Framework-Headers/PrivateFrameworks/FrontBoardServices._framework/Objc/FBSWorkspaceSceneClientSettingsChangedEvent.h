@@ -17,7 +17,7 @@
 @property (strong, nonatomic) FBSSceneClientSettingsDiff *clientSettingsDiff; // @synthesize clientSettingsDiff=_clientSettings;
 @property (strong, nonatomic) FBSSceneTransitionContext *transitionContext; // @synthesize transitionContext=_transition;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)encodeWithXPCDictionary:(id)arg1;
 - (id)initWithXPCDictionary:(id)arg1;
 

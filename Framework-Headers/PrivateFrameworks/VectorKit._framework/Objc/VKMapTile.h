@@ -40,9 +40,9 @@ __attribute__((visibility("hidden")))
 - (id)detailedDescriptionDictionaryRepresentation;
 - (id)initWithKey:(const struct VKTileKey *)arg1;
 - (Box_3d7e3c2c)localBoundsForLayer:(unsigned char)arg1;
+- (id)metaDataForLayer:(unsigned char)arg1;
 - (void)populateDebugNode:(shared_ptr_eafb90f9)arg1;
 - (void)setTile:(id)arg1 state:(unsigned long long)arg2 metadata:(id)arg3 forLayer:(unsigned char)arg4;
-- (void)tileCountForOnline:(unsigned int *)arg1 offline:(unsigned int *)arg2;
 - (id)tileForLayer:(unsigned char)arg1;
 - (unsigned long long)tileStateForLayer:(unsigned char)arg1;
 - (double)timeTileEnteredStateForLayer:(unsigned char)arg1;

@@ -31,6 +31,7 @@
 @property (copy, nonatomic) NSArray *previewImageURLs; // @synthesize previewImageURLs=_previewImageURLs;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
++ (struct UIImage *)orientedImage:(struct UIImage *)arg1 withBackground:(int)arg2;
 + (struct UIImage *)orientedImage:(struct UIImage *)arg1 withTransform:(struct CGAffineTransform)arg2 background:(int)arg3 backgroundTransform:(struct CGAffineTransform)arg4;
 - (void).cxx_destruct;
 - (BOOL)canLoadImage;

@@ -9,7 +9,7 @@
 #import <SafariShared/WBSCompletionListItem-Protocol.h>
 #import <SafariShared/WBSParsecSearchResult-Protocol.h>
 
-@class MKMapItem, NSArray, NSString, NSURL, SFSearchResult, WBSParsecActionButton, WBSParsecImageRepresentation, WBSQuerySuggestion;
+@class MKMapItem, NSString, NSURL, SFSearchResult, WBSParsecActionButton, WBSParsecImageRepresentation, WBSQuerySuggestion;
 
 @interface WBSParsecLegacySearchResult : WBSParsecModel <WBSParsecSearchResult, WBSCompletionListItem>
 {
@@ -32,13 +32,11 @@
     NSString *_referrerForLoadingResult;
     WBSParsecActionButton *_actionButton;
     MKMapItem *_mapItem;
-    NSArray *_additionalMapItems;
     SFSearchResult *_sfSearchResultValue;
     NSString *_sectionBundleIdentifier;
 }
 
 @property (readonly, nonatomic) WBSParsecActionButton *actionButton; // @synthesize actionButton=_actionButton;
-@property (readonly, nonatomic) NSArray *additionalMapItems; // @synthesize additionalMapItems=_additionalMapItems;
 @property (readonly, nonatomic) NSURL *appPunchoutURL; // @synthesize appPunchoutURL=_appPunchoutURL;
 @property (readonly, nonatomic) NSString *completion; // @synthesize completion=_completion;
 @property (readonly, nonatomic) WBSParsecImageRepresentation *completionIcon; // @synthesize completionIcon=_completionIcon;

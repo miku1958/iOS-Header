@@ -24,14 +24,19 @@
 - (BOOL)containsMultipleItems;
 - (BOOL)couldObjectReferenceAppear:(id)arg1;
 - (id)description;
+- (BOOL)hasCurationForAssetCollection:(id)arg1;
 - (unsigned long long)identifier;
 - (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
 - (id)initWithImmutablePhotosDataSource:(id)arg1 withChange:(id)arg2;
 - (id)inputForItem:(id)arg1;
+- (BOOL)isAssetAtIndexPathPartOfCuratedSet:(struct PXSimpleIndexPath)arg1;
+- (id)keyAssetsForAssetCollectionAtSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)objectsInIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)photosGraphSuggestedContributions;
 - (void)prefetchIndexPaths:(id)arg1;
 - (id)startingAssetReference;
 

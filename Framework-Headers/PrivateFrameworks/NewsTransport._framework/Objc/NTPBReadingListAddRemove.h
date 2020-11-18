@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSData, NSMutableArray, NSString;
 
 @interface NTPBReadingListAddRemove : PBCodable <NSCopying>
 {
@@ -28,6 +28,7 @@
     NSMutableArray *_fractionalCohortMemberships;
     NSString *_groupFeedId;
     int _groupType;
+    NSData *_groupViewExposureId;
     NSString *_iadNativeAd;
     NSString *_iadNativeCampaign;
     NSString *_iadNativeCampaignAd;
@@ -105,6 +106,7 @@
 @property (nonatomic) BOOL fromNextArticleAffordanceTap; // @synthesize fromNextArticleAffordanceTap=_fromNextArticleAffordanceTap;
 @property (strong, nonatomic) NSString *groupFeedId; // @synthesize groupFeedId=_groupFeedId;
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
 @property (nonatomic) BOOL hasAddRemoveReadingListLocation;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (nonatomic) BOOL hasArticleType;
@@ -118,6 +120,7 @@
 @property (nonatomic) BOOL hasFromNextArticleAffordanceTap;
 @property (readonly, nonatomic) BOOL hasGroupFeedId;
 @property (nonatomic) BOOL hasGroupType;
+@property (readonly, nonatomic) BOOL hasGroupViewExposureId;
 @property (readonly, nonatomic) BOOL hasIadNativeAd;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaign;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaignAd;

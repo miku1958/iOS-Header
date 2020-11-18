@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray;
 
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)containsDocumentPageIndex:(unsigned long long)arg1;
 - (id)copyForArchiving;
+- (BOOL)hasEndOfTextLayoutBeforePageIndex:(unsigned long long)arg1;
 - (BOOL)hasPageHintOfKind:(long long)arg1 atPageIndex:(unsigned long long)arg2;
 - (BOOL)hasPageHintOfKind:(long long)arg1 beforePageIndex:(unsigned long long)arg2;
 - (id)init;

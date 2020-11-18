@@ -12,6 +12,7 @@
 @class BKSProcessAssertion, NSArray, NSString, NSXPCConnection, PGPictureInPictureApplication, PGPictureInPictureViewController, PGPlaybackProgress;
 @protocol OS_dispatch_queue, PGPictureInPictureRemoteObjectDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PGPictureInPictureRemoteObject : NSObject <PGPictureInPictureRemoteObjectInterface, PGPictureInPictureViewControllerDelegate>
 {
     NSXPCConnection *_connection;
@@ -39,6 +40,8 @@
         unsigned int pictureInPictureRemoteObject_willDestroyPictureInPictureViewController:1;
     } _delegateRespondsTo;
     PGPictureInPictureApplication *_pictureInPictureApplication;
+    struct CGSize _preferredContentSize;
+    struct CGRect _initialLayerFrame;
 }
 
 @property (readonly, nonatomic) NSXPCConnection *connection;
@@ -46,9 +49,11 @@
 @property (weak, nonatomic) id<PGPictureInPictureRemoteObjectDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) struct CGRect initialLayerFrame; // @synthesize initialLayerFrame=_initialLayerFrame;
 @property (readonly, nonatomic) BOOL isStartingStoppingOrCancellingPictureInPicture;
 @property (readonly, nonatomic) PGPictureInPictureApplication *pictureInPictureApplication; // @synthesize pictureInPictureApplication=_pictureInPictureApplication;
 @property (nonatomic, getter=isPictureInPicturePossible) BOOL pictureInPicturePossible;
+@property (readonly, nonatomic) struct CGSize preferredContentSize; // @synthesize preferredContentSize=_preferredContentSize;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue;
 @property (readonly, nonatomic) BOOL shouldStartPictureInPictureEnteringBackground;
 @property (readonly) Class superclass;
@@ -56,13 +61,12 @@
 - (void).cxx_destruct;
 - (id)_processAssertionForProcessIdentifier:(int)arg1;
 - (void)_tearDownAndNotifyClientAboutCancellation:(BOOL)arg1;
-- (oneway void)activateApplicationIfNeededWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (oneway void)cleanupWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithConnection:(id)arg1;
-- (oneway void)initializePictureInPictureWithControlsStyle:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (oneway void)initializePictureInPictureWithControlsStyle:(long long)arg1 preferredContentSize:(struct CGSize)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)invalidate;
 - (void)pictureInPictureInterruptionBegan;
 - (void)pictureInPictureInterruptionEnded;
@@ -79,11 +83,13 @@
 - (oneway void)setPlaybackProgress:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)setShouldShowAlternateActionButtonImage:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)setShouldShowLoadingIndicator:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (oneway void)setupAnimated:(BOOL)arg1 withHostedWindowHostingHandle:(id)arg2 preferredContentSize:(struct CGSize)arg3 initialLayerFrame:(struct CGRect)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (oneway void)setupStartAnimated:(BOOL)arg1 hostedWindowHostingHandle:(id)arg2 preferredContentSize:(struct CGSize)arg3 initialInterfaceOrientation:(long long)arg4 initialLayerFrame:(struct CGRect)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (oneway void)setupStopAnimated:(BOOL)arg1 activateApplicationIfNeeded:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (oneway void)startPictureInPictureAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)startPictureInPictureEnteringBackgroundAnimated:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (oneway void)stopPictureInPictureAnimated:(BOOL)arg1 withFinalLayerFrame:(struct CGRect)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (oneway void)stopPictureInPictureAnimated:(BOOL)arg1 withFinalInterfaceOrientation:(long long)arg2 finalLayerFrame:(struct CGRect)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)suspend;
+- (oneway void)updateInitialLayerFrameForInteractiveTransitionAnimationUponBackgrounding:(struct CGRect)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (oneway void)updatePreferredContentSize:(struct CGSize)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 
 @end

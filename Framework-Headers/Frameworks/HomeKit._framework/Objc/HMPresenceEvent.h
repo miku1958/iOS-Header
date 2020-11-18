@@ -10,7 +10,7 @@
 #import <HomeKit/NSMutableCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMPresenceEventActivation, HMThreadSafeMutableArrayCollection, NSString;
+@class HMMutableArray, HMPresenceEventActivation, NSString;
 
 @interface HMPresenceEvent : HMEvent <NSSecureCoding, NSCopying, NSMutableCopying>
 {
@@ -18,12 +18,12 @@
     HMPresenceEventActivation *_activation;
     unsigned long long _presenceEventType;
     unsigned long long _presenceUserType;
-    HMThreadSafeMutableArrayCollection *_observedUsers;
+    HMMutableArray *_observedUsers;
 }
 
 @property (strong, nonatomic) HMPresenceEventActivation *activation; // @synthesize activation=_activation;
 @property (readonly, nonatomic) unsigned long long activationGranularity;
-@property (readonly, nonatomic) HMThreadSafeMutableArrayCollection *observedUsers; // @synthesize observedUsers=_observedUsers;
+@property (readonly, nonatomic) HMMutableArray *observedUsers; // @synthesize observedUsers=_observedUsers;
 @property (readonly, nonatomic) unsigned long long presenceEventType; // @synthesize presenceEventType=_presenceEventType;
 @property (strong, nonatomic) NSString *presenceType; // @synthesize presenceType=_presenceType;
 @property (readonly, nonatomic) unsigned long long presenceUserType; // @synthesize presenceUserType=_presenceUserType;

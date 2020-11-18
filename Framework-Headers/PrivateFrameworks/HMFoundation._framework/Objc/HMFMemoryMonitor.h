@@ -6,16 +6,16 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSObject;
+@class HMFUnfairLock, NSObject;
 @protocol HMFMemoryMonitorDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMFMemoryMonitor : HMFObject
 {
+    HMFUnfairLock *_lock;
     BOOL _monitoring;
     long long _memoryState;
     id<HMFMemoryMonitorDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSObject<OS_dispatch_source> *_memoryPressure;
 }
 
@@ -24,13 +24,10 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_source> *memoryPressure; // @synthesize memoryPressure=_memoryPressure;
 @property (readonly, nonatomic) long long memoryState; // @synthesize memoryState=_memoryState;
 @property (nonatomic, getter=isMonitoring) BOOL monitoring; // @synthesize monitoring=_monitoring;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 
 - (void).cxx_destruct;
-- (void)_handleMemoryStateChange:(long long)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)setMemoryState:(long long)arg1;
 - (void)start;
 - (void)stop;
 

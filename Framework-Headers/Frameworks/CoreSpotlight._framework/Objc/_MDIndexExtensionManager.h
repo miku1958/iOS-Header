@@ -9,45 +9,45 @@
 #import <CoreSpotlight/CSIndexExtensionDelegate-Protocol.h>
 
 @class NSCondition, NSDictionary, NSString, _MDIndexExtensionLoader;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@protocol OS_dispatch_queue;
 
 @interface _MDIndexExtensionManager : NSObject <CSIndexExtensionDelegate>
 {
-    BOOL _isUnderMemoryPressure;
     NSObject<OS_dispatch_queue> *_notifyQueue;
     _MDIndexExtensionLoader *_extensionLoader;
     NSDictionary *_indexExtensionsByBundleID;
+    NSDictionary *_fileProviderBundleMap;
     NSObject<OS_dispatch_queue> *_queue;
     NSCondition *_extensionsCondition;
-    NSObject<OS_dispatch_source> *_memoryStatusSource;
+    NSObject<OS_dispatch_queue> *_extensionManagerQueue;
+    long long _loaderCallbackCount;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _MDIndexExtensionLoader *extensionLoader; // @synthesize extensionLoader=_extensionLoader;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *extensionManagerQueue; // @synthesize extensionManagerQueue=_extensionManagerQueue;
 @property (strong, nonatomic) NSCondition *extensionsCondition; // @synthesize extensionsCondition=_extensionsCondition;
+@property (strong, nonatomic) NSDictionary *fileProviderBundleMap; // @synthesize fileProviderBundleMap=_fileProviderBundleMap;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *indexExtensionsByBundleID; // @synthesize indexExtensionsByBundleID=_indexExtensionsByBundleID;
-@property BOOL isUnderMemoryPressure; // @synthesize isUnderMemoryPressure=_isUnderMemoryPressure;
-@property (strong, nonatomic) NSObject<OS_dispatch_source> *memoryStatusSource; // @synthesize memoryStatusSource=_memoryStatusSource;
+@property (nonatomic) long long loaderCallbackCount; // @synthesize loaderCallbackCount=_loaderCallbackCount;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *notifyQueue; // @synthesize notifyQueue=_notifyQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
++ (void)setMemoryPressureStatus:(unsigned long long)arg1;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_didRetryJobWithBundleID:(id)arg1;
-- (void)_didUpdateMemoryStatus:(unsigned long long)arg1;
-- (void)_filterExtensionsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_notifyForLoadedExtensions;
 - (void)_performJob:(id)arg1 extensions:(id)arg2 count:(unsigned long long)arg3 throttle:(id)arg4 perExtensionCompletionHandler:(CDUnknownBlockType)arg5;
 - (void)_performJob:(id)arg1 extensions:(id)arg2 perExtensionCompletionHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)_waitForLoadLocked;
 - (void)_willRunJobWithBundleID:(id)arg1;
 - (id)allExtensionsWithBlock:(CDUnknownBlockType)arg1;
 - (id)anyExtensionWithBlock:(CDUnknownBlockType)arg1;
-- (void)dealloc;
 - (id)extensions;
-- (id)fetchFileProviderBundleMap;
 - (void)findExtensionsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)indexRequestsPerformDataJob:(id)arg1 forBundle:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)indexRequestsPerformJob:(id)arg1 extensions:(id)arg2 perExtensionCompletionHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
@@ -55,7 +55,6 @@
 - (void)indexRequestsPerformJob:(id)arg1 perExtensionCompletionHandler:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)loadExtensions;
-- (void)loadExtensionsSynchronously;
 
 @end
 

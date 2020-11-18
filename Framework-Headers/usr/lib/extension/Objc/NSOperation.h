@@ -28,6 +28,7 @@
 @property (readonly, getter=isReady) BOOL ready;
 @property double threadPriority;
 
++ (BOOL)_removesDependenciesAfterFinish;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (id)currentOperation;
 + (id)keyPathsForValuesAffectingCancelled;
@@ -51,6 +52,7 @@
 - (id)init;
 - (void)main;
 - (void *)observationInfo;
+- (void)removeAllDependencies;
 - (void)removeDependency:(id)arg1;
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)setObservationInfo:(void *)arg1;

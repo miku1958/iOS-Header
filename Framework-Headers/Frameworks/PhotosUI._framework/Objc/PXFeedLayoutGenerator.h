@@ -21,6 +21,10 @@
     CDUnknownBlockType _tileMinimumSizeBlock;
     CDUnknownBlockType _tileHasCaptionBlock;
     CDUnknownBlockType _tileCaptionSizeBlock;
+    CDUnknownBlockType _tileHasLikesBlock;
+    CDUnknownBlockType _tileLikesSizeBlock;
+    CDUnknownBlockType _tileCommentCountBlock;
+    CDUnknownBlockType _tileCommentSizeBlock;
     CDUnknownBlockType _tileBatchIDBlock;
     long long _numberOfMagneticGuidelines;
     double _roundingScale;
@@ -48,18 +52,26 @@
 @property (nonatomic) BOOL shouldStop; // @synthesize shouldStop=_shouldStop;
 @property (copy, nonatomic) CDUnknownBlockType tileBatchIDBlock; // @synthesize tileBatchIDBlock=_tileBatchIDBlock;
 @property (copy, nonatomic) CDUnknownBlockType tileCaptionSizeBlock; // @synthesize tileCaptionSizeBlock=_tileCaptionSizeBlock;
+@property (copy, nonatomic) CDUnknownBlockType tileCommentCountBlock; // @synthesize tileCommentCountBlock=_tileCommentCountBlock;
+@property (copy, nonatomic) CDUnknownBlockType tileCommentSizeBlock; // @synthesize tileCommentSizeBlock=_tileCommentSizeBlock;
 @property (nonatomic) long long tileCount; // @synthesize tileCount=_tileCount;
 @property (copy, nonatomic) CDUnknownBlockType tileHasCaptionBlock; // @synthesize tileHasCaptionBlock=_tileHasCaptionBlock;
+@property (copy, nonatomic) CDUnknownBlockType tileHasLikesBlock; // @synthesize tileHasLikesBlock=_tileHasLikesBlock;
 @property (copy, nonatomic) CDUnknownBlockType tileImageSizeBlock; // @synthesize tileImageSizeBlock=_tileImageSizeBlock;
+@property (copy, nonatomic) CDUnknownBlockType tileLikesSizeBlock; // @synthesize tileLikesSizeBlock=_tileLikesSizeBlock;
 @property (copy, nonatomic) CDUnknownBlockType tileMinimumSizeBlock; // @synthesize tileMinimumSizeBlock=_tileMinimumSizeBlock;
 
 - (void).cxx_destruct;
 - (struct CGSize)captionSizeForTileAtIndex:(long long)arg1 proposedSize:(struct CGSize)arg2;
+- (struct CGSize)commentSizeForTileAtIndex:(long long)arg1 commentIndex:(long long)arg2 proposedSize:(struct CGSize)arg3;
 - (void)didParseTiles;
 - (void)enumerateFramesWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;
+- (struct CGSize)likesSizeForTileAtIndex:(long long)arg1 proposedSize:(struct CGSize)arg2;
 - (BOOL)parseNextTiles;
 - (void)parseTiles;
+- (void)parsedFrame:(struct CGRect)arg1 type:(long long)arg2 forCommentAtIndex:(long long)arg3;
+- (void)parsedFrame:(struct CGRect)arg1 type:(long long)arg2 forLikesAtIndex:(long long)arg3;
 - (void)parsedFrame:(struct CGRect)arg1 type:(long long)arg2 forTileAtIndex:(long long)arg3;
 - (BOOL)scanAnyTile:(struct PXTileInfo *)arg1;
 - (BOOL)scanTile:(struct PXTileInfo *)arg1 ofType:(long long)arg2;

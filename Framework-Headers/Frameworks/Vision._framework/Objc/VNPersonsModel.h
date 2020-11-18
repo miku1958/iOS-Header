@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class VNPersonsModelConfiguration;
+@class VNPersonsModelConfiguration, VNPersonsModelFaceModel;
+@protocol VNPersonsModelDataSource;
 
 @interface VNPersonsModel : NSObject
 {
     VNPersonsModelConfiguration *_configuration;
+    id<VNPersonsModelDataSource> _dataSource;
+    unsigned long long _lastDataChangeSequenceNumber;
+    VNPersonsModelFaceModel *_faceModel_DO_NOT_ACCESS_DIRECTLY;
 }
 
 @property (readonly, copy, nonatomic) VNPersonsModelConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -28,7 +32,6 @@
 + (id)modelFromURL:(id)arg1 options:(id)arg2 error:(id *)arg3;
 + (id)newModelFromVersion:(unsigned long long)arg1 objects:(id)arg2 error:(id *)arg3;
 + (BOOL)readObjectForVersion1Tag:(unsigned int)arg1 fromInputStream:(id)arg2 intoObjectDictionary:(id)arg3 md5Context:(struct CC_MD5state_st *)arg4 error:(id *)arg5;
-+ (BOOL)readObjectForVersion2Tag:(unsigned int)arg1 fromInputStream:(id)arg2 intoObjectDictionary:(id)arg3 md5Context:(struct CC_MD5state_st *)arg4 error:(id *)arg5;
 + (id)supportedReadVersions;
 + (id)versionNumbersEncodedInClass:(Class)arg1 withMethodNamePrefix:(id)arg2 suffix:(id)arg3;
 - (void).cxx_destruct;
@@ -36,9 +39,7 @@
 - (unsigned long long)faceCountForPersonWithUniqueIdentifier:(id)arg1;
 - (id)faceCountsForAllPersons;
 - (id)faceCountsForPersonsWithUniqueIdentifiers:(id)arg1;
-- (unsigned long long)faceprintCountForPersonWithUniqueIdentifier:(id)arg1;
-- (id)identitySerialNumberForPersonWithUniqueIdentifier:(id)arg1;
-- (id)initWithConfiguration:(id)arg1;
+- (id)initWithConfiguration:(id)arg1 dataSource:(id)arg2;
 - (unsigned long long)personCount;
 - (id)personUniqueIdentifiers;
 - (id)predictPersonFromFaceObservation:(id)arg1 limit:(unsigned long long)arg2 canceller:(id)arg3 error:(id *)arg4;

@@ -4,6 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class MISSING_TYPE;
+
 #pragma mark Function Pointers and Blocks
 
 typedef void (*CDUnknownFunctionPointerType)(void); // return type and parameters are unknown
@@ -253,6 +255,29 @@ struct __CUIThemeGradientRenditionInitializerStruct {
     id _field3;
 };
 
+struct _carextendedMetadata {
+    unsigned int _field1;
+    char _field2[256];
+    char _field3[256];
+    char _field4[256];
+    char _field5[256];
+};
+
+struct _carheader {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    char _field6[128];
+    char _field7[256];
+    unsigned char _field8[16];
+    unsigned int _field9;
+    unsigned int _field10;
+    unsigned int _field11;
+    unsigned int _field12;
+};
+
 struct _colordef {
     unsigned int _field1;
     unsigned int _field2;
@@ -278,7 +303,8 @@ struct _csicolor {
     unsigned int _field1;
     unsigned int _field2;
     unsigned int :8;
-    unsigned int :24;
+    unsigned int :3;
+    unsigned int :21;
     unsigned int _field3;
     double _field4[0];
 };
@@ -372,6 +398,19 @@ struct crmFlags {
     unsigned int scalesVertically:1;
     unsigned int scalesHorizontally:1;
     unsigned int reserved:14;
+};
+
+struct cuithemerenditionrenditionflags {
+    unsigned int isHeaderFlaggedFPO:1;
+    unsigned int isExcludedFromContrastFilter:1;
+    unsigned int isVectorBased:1;
+    unsigned int isOpaque:1;
+    unsigned int bitmapEncoding:4;
+    unsigned int optOutOfThinning:1;
+    unsigned int isFlippable:1;
+    unsigned int isTintable:1;
+    unsigned int preservedVectorRepresentation:1;
+    unsigned int reserved:20;
 };
 
 struct os_unfair_lock_s {
@@ -476,6 +515,10 @@ typedef struct {
     float _field5;
     float _field6;
 } CDStruct_3d979a67;
+
+typedef struct {
+    MISSING_TYPE *columns[4];
+} CDStruct_14d5dc5e;
 
 typedef struct {
     double top;
@@ -587,8 +630,9 @@ typedef struct {
     unsigned long long _field2;
     unsigned long long _field3;
     unsigned long long _field4;
-    CDStruct_c57d91d4 _field5[125];
-} CDStruct_32d4b02d;
+    unsigned long long _field5;
+    CDStruct_c57d91d4 _field6[125];
+} CDStruct_35a2250d;
 
 #pragma mark Typedef'd Unions
 

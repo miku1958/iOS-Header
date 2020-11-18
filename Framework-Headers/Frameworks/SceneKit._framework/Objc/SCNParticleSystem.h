@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -81,6 +81,7 @@
     double _speedFactor;
     double _fixedTimeStep;
     double _stretchFactor;
+    double _lightEmissionRadiusFactor;
     double _fresnelExponent;
     unsigned long long _imageSequenceColumnCount;
     unsigned long long _imageSequenceRowCount;
@@ -201,6 +202,7 @@
 - (id)initWithParticleSystemRef:(struct __C3DParticleSystem *)arg1;
 - (BOOL)isAnimationForKeyPaused:(id)arg1;
 - (BOOL)isPausedOrPausedByInheritance;
+- (double)lightEmissionRadiusFactor;
 - (BOOL)lightingEnabled;
 - (id)name;
 - (id)particleGeometries;
@@ -210,6 +212,7 @@
 - (id)presentationInstance;
 - (id)referenceName;
 - (void)removeAllAnimations;
+- (void)removeAllBindings;
 - (void)removeAllModifiers;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
@@ -224,6 +227,7 @@
 - (void)setFixedTimeStep:(double)arg1;
 - (void)setIdentifier:(id)arg1;
 - (void)setIsLocal:(BOOL)arg1;
+- (void)setLightEmissionRadiusFactor:(double)arg1;
 - (void)setName:(id)arg1;
 - (void)setParticleGeometries:(id)arg1;
 - (void)setPhysicsCollisionsEnabled:(BOOL)arg1;

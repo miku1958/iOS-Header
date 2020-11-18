@@ -32,7 +32,6 @@
 @property (strong, nonatomic) NSThread *myThread; // @synthesize myThread=_myThread;
 @property (readonly) Class superclass;
 
-+ (id)createLocationHandler;
 + (id)sharedHandler;
 - (void).cxx_destruct;
 - (void)_initializeLocationProperties;

@@ -6,7 +6,7 @@
 
 #import <CallKit/NSObject-Protocol.h>
 
-@class CXTransaction, NSDictionary, NSString;
+@class CXTransaction, NSDictionary;
 @protocol CXCallObserverDataSourceDelegate;
 
 @protocol CXCallObserverDataSource <NSObject>
@@ -16,6 +16,6 @@
 - (void)addDelegate:(id<CXCallObserverDataSourceDelegate>)arg1;
 - (void)invalidate;
 - (void)removeDelegate:(id<CXCallObserverDataSourceDelegate>)arg1;
-- (void)requestTransaction:(CXTransaction *)arg1 forExtensionIdentifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)requestTransaction:(CXTransaction *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

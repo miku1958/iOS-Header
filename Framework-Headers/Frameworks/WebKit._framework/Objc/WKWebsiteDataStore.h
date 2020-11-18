@@ -9,7 +9,7 @@
 #import <WebKit/NSSecureCoding-Protocol.h>
 #import <WebKit/WKObject-Protocol.h>
 
-@class NSString, WKHTTPCookieStore;
+@class NSDictionary, NSString, WKHTTPCookieStore;
 
 @interface WKWebsiteDataStore : NSObject <WKObject, NSSecureCoding>
 {
@@ -21,6 +21,8 @@
 @property (nonatomic, setter=_setBoundInterfaceIdentifier:) NSString *_boundInterfaceIdentifier;
 @property (nonatomic, setter=_setCacheStorageDirectory:) NSString *_cacheStorageDirectory;
 @property (nonatomic, setter=_setCacheStoragePerOriginQuota:) unsigned long long _cacheStoragePerOriginQuota;
+@property (nonatomic, setter=_setProxyConfiguration:) NSDictionary *_proxyConfiguration;
+@property (nonatomic, setter=_setResourceLoadStatisticsDebugMode:) BOOL _resourceLoadStatisticsDebugMode;
 @property (nonatomic, setter=_setResourceLoadStatisticsEnabled:) BOOL _resourceLoadStatisticsEnabled;
 @property (nonatomic, setter=_setServiceWorkerRegistrationDirectory:) NSString *_serviceWorkerRegistrationDirectory;
 @property (readonly, copy) NSString *debugDescription;
@@ -38,37 +40,10 @@
 + (id)nonPersistentDataStore;
 + (BOOL)supportsSecureCoding;
 - (void)_fetchDataRecordsOfTypes:(id)arg1 withOptions:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_getAllStorageAccessEntriesFor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)_hasRegisteredServiceWorker;
 - (id)_initWithConfiguration:(id)arg1;
-- (void)_resourceLoadStatisticsClearInMemoryAndPersistentStore;
-- (void)_resourceLoadStatisticsClearInMemoryAndPersistentStoreModifiedSinceHours:(unsigned int)arg1;
-- (void)_resourceLoadStatisticsHadUserInteraction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_resourceLoadStatisticsIsGrandfathered:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_resourceLoadStatisticsIsPrevalentResource:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_resourceLoadStatisticsIsRegisteredAsRedirectingTo:(id)arg1 hostRedirectedTo:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_resourceLoadStatisticsIsRegisteredAsSubFrameUnder:(id)arg1 topFrameHost:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_resourceLoadStatisticsProcessStatisticsAndDataRecords;
-- (void)_resourceLoadStatisticsResetToConsistentState;
-- (void)_resourceLoadStatisticsSetGrandfatheringTime:(double)arg1;
-- (void)_resourceLoadStatisticsSetHadUserInteraction:(BOOL)arg1 forHost:(id)arg2;
-- (void)_resourceLoadStatisticsSetHasHadNonRecentUserInteractionForHost:(id)arg1;
-- (void)_resourceLoadStatisticsSetIsGrandfathered:(BOOL)arg1 forHost:(id)arg2;
-- (void)_resourceLoadStatisticsSetIsPrevalentResource:(BOOL)arg1 forHost:(id)arg2;
-- (void)_resourceLoadStatisticsSetLastSeen:(double)arg1 forHost:(id)arg2;
-- (void)_resourceLoadStatisticsSetMaxStatisticsEntries:(unsigned long long)arg1;
-- (void)_resourceLoadStatisticsSetMinimumTimeBetweenDataRecordsRemoval:(double)arg1;
-- (void)_resourceLoadStatisticsSetNotifyPagesWhenDataRecordsWereScanned:(BOOL)arg1;
-- (void)_resourceLoadStatisticsSetNotifyPagesWhenTelemetryWasCaptured:(BOOL)arg1;
-- (void)_resourceLoadStatisticsSetPruneEntriesDownTo:(unsigned long long)arg1;
-- (void)_resourceLoadStatisticsSetShouldClassifyResourcesBeforeDataRecordsRemoval:(BOOL)arg1;
-- (void)_resourceLoadStatisticsSetShouldPartitionCookies:(BOOL)arg1 forHost:(id)arg2;
 - (void)_resourceLoadStatisticsSetShouldSubmitTelemetry:(BOOL)arg1;
-- (void)_resourceLoadStatisticsSetSubframeUnderTopFrameOrigin:(id)arg1 forHost:(id)arg2;
-- (void)_resourceLoadStatisticsSetSubresourceUnderTopFrameOrigin:(id)arg1 forHost:(id)arg2;
-- (void)_resourceLoadStatisticsSetSubresourceUniqueRedirectTo:(id)arg1 forHost:(id)arg2;
-- (void)_resourceLoadStatisticsSetTimeToLiveCookiePartitionFree:(double)arg1;
-- (void)_resourceLoadStatisticsSetTimeToLiveUserInteraction:(double)arg1;
-- (void)_resourceLoadStatisticsSubmitTelemetry;
-- (void)_resourceLoadStatisticsUpdateCookiePartitioning;
 - (void)_setResourceLoadStatisticsTestingCallback:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;

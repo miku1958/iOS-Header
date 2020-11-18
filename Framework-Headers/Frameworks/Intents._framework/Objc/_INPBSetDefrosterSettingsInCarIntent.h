@@ -7,39 +7,42 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSetDefrosterSettingsInCarIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBIntentMetadata;
+@class NSString, _INPBDataString, _INPBIntentMetadata;
 
-@interface _INPBSetDefrosterSettingsInCarIntent : PBCodable <NSCopying>
+@interface _INPBSetDefrosterSettingsInCarIntent : PBCodable <_INPBSetDefrosterSettingsInCarIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    int _defroster;
-    _INPBIntentMetadata *_intentMetadata;
-    BOOL _enable;
     struct {
         unsigned int defroster:1;
         unsigned int enable:1;
     } _has;
+    BOOL _enable;
+    int _defroster;
+    _INPBDataString *_carName;
+    _INPBIntentMetadata *_intentMetadata;
 }
 
+@property (strong, nonatomic) _INPBDataString *carName; // @synthesize carName=_carName;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) int defroster; // @synthesize defroster=_defroster;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enable; // @synthesize enable=_enable;
+@property (readonly, nonatomic) BOOL hasCarName;
 @property (nonatomic) BOOL hasDefroster;
 @property (nonatomic) BOOL hasEnable;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (int)StringAsDefroster:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)defrosterAsString:(int)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

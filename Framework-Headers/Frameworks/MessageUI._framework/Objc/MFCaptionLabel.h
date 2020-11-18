@@ -25,7 +25,9 @@
 @property (strong, nonatomic) NSArray *fromSenders; // @synthesize fromSenders=_fromSenders;
 @property (strong, nonatomic) NSArray *toRecipients; // @synthesize toRecipients=_toRecipients;
 
++ (id)attributedStringsCache;
 - (void).cxx_destruct;
+- (id)_formattedAttributedString;
 - (void)_setNeedsLabelUpdate;
 - (id)_stringAtIndexForCombinedRecipientLists:(unsigned long long)arg1;
 - (void)dealloc;

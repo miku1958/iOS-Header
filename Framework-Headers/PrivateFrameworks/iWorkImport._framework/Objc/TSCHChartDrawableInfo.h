@@ -18,7 +18,7 @@
 #import <iWorkImport/TSSPresetSource-Protocol.h>
 #import <iWorkImport/TSSStyleClient-Protocol.h>
 
-@class NSString, TSCHChartDrawableInfoProxy, TSCHChartInfo, TSCHChunkManager, TSPObject;
+@class NSString, TSCHChartInfo, TSCHChunkManager, TSPObject;
 @protocol TSCHMediatorProvider;
 
 __attribute__((visibility("hidden")))
@@ -27,11 +27,9 @@ __attribute__((visibility("hidden")))
     TSCHChartInfo *mChart;
     TSPObject<TSCHMediatorProvider> *mMediatorPersistentObject;
     TSCHChunkManager *mChunkManager;
-    TSCHChartDrawableInfoProxy *_chartDrawableInfoProxy;
 }
 
 @property (readonly, nonatomic) TSCHChartInfo *chart; // @synthesize chart=mChart;
-@property (weak, nonatomic) TSCHChartDrawableInfoProxy *chartDrawableInfoProxy; // @synthesize chartDrawableInfoProxy=_chartDrawableInfoProxy;
 @property (readonly, nonatomic) TSCHChunkManager *chunkManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -94,7 +92,7 @@ __attribute__((visibility("hidden")))
 - (void)reassignPasteboardCustomFormatKeys;
 - (id)referencedStyles;
 - (BOOL)registerLast;
-- (void)registerWithCalculationEngineForDocumentLoad:(id)arg1;
+- (void)registerWithCalcEngineForDocumentLoad:(id)arg1;
 - (Class)repClass;
 - (void)replaceReferencedStylesUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)requiresStagesBuildingInReverse;
@@ -113,7 +111,7 @@ __attribute__((visibility("hidden")))
 - (id)textureDeliveryStylesLocalized:(BOOL)arg1 animationFilter:(id)arg2;
 - (id)transformedGeometryWithTransform:(struct CGAffineTransform)arg1 inBounds:(struct CGRect)arg2;
 - (void)tsaMoveToPosition:(struct CGPoint)arg1 size:(struct CGSize)arg2;
-- (void)unregisterFromCalculationEngine:(id)arg1;
+- (void)unregisterFromCalcEngine:(id)arg1;
 - (void)upgradeFormatsForCustomFormatListU2_0;
 - (BOOL)validatedLoadFromUnarchiver:(id)arg1;
 - (struct CGRect)visibleBoundsForPositioning;

@@ -8,10 +8,11 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSString, NTPBAlternateHeadline;
 
 @interface NTPBTodayWidgetHeadlineExposure : PBCodable <NSCopying>
 {
+    NTPBAlternateHeadline *_alternateHeadline;
     NSString *_articleId;
     NSString *_sourceChannelId;
     NSString *_webEmbedId;
@@ -32,7 +33,9 @@
     } _has;
 }
 
+@property (strong, nonatomic) NTPBAlternateHeadline *alternateHeadline; // @synthesize alternateHeadline=_alternateHeadline;
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
+@property (readonly, nonatomic) BOOL hasAlternateHeadline;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
 @property (readonly, nonatomic) BOOL hasWebEmbedId;

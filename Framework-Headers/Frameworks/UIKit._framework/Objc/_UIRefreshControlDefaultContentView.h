@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIRefreshControlContentView.h>
+#import <UIKitCore/_UIRefreshControlContentView.h>
 
-#import <UIKit/CAAnimationDelegate-Protocol.h>
+#import <UIKitCore/CAAnimationDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString, UIActivityIndicatorView, UIImageView, UILabel;
 

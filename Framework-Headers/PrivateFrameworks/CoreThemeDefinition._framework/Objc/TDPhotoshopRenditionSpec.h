@@ -6,12 +6,14 @@
 
 #import <CoreThemeDefinition/TDRenditionSpec.h>
 
-@class TDPhotoshopLayer;
+@class TDImageColorHistogram, TDPhotoshopLayer;
 
 @interface TDPhotoshopRenditionSpec : TDRenditionSpec
 {
+    TDImageColorHistogram *_histogram;
 }
 
+@property (strong, nonatomic) TDImageColorHistogram *histogram; // @synthesize histogram=_histogram;
 @property (nonatomic) BOOL isTintable; // @dynamic isTintable;
 @property (strong, nonatomic) TDPhotoshopLayer *photoshopLayer; // @dynamic photoshopLayer;
 
@@ -25,8 +27,9 @@
 - (id)copyDataFromAttributes;
 - (id)createCSIRepresentationFromGradientPSDImage:(id)arg1 withCompression:(BOOL)arg2 colorSpaceID:(unsigned long long)arg3;
 - (id)createCSIRepresentationFromPSDImage:(id)arg1 withCompression:(BOOL)arg2 colorSpaceID:(unsigned long long)arg3;
-- (id)createCSIRepresentationFromPSDImage:(id)arg1 withCompression:(BOOL)arg2 edgeMetricsMask:(id)arg3 textMetricsMask:(id)arg4 baselineMetricsMask:(id)arg5 auxiliary1MetricsMask:(id)arg6 auxiliary2MetricsMask:(id)arg7 colorSpaceID:(unsigned long long)arg8;
+- (id)createCSIRepresentationFromPSDImage:(id)arg1 withCompression:(BOOL)arg2 edgeMetricsMask:(id)arg3 textMetricsMask:(id)arg4 baselineMetricsMask:(id)arg5 auxiliary1MetricsMask:(id)arg6 auxiliary2MetricsMask:(id)arg7 colorSpaceID:(unsigned long long)arg8 allowsPaletteImageCompression:(BOOL)arg9 allowsHevcCompression:(BOOL)arg10 allowsDeepmapImageCompression:(BOOL)arg11;
 - (id)createCSIRepresentationWithCompression:(BOOL)arg1 colorSpaceID:(unsigned long long)arg2 document:(id)arg3;
+- (void)dealloc;
 - (id)debugDescription;
 - (void)drawPackableRenditionInContext:(struct CGContext *)arg1 withDocument:(id)arg2;
 - (int)psdSliceNumberForRenditionRow:(int)arg1 sliceRow:(int)arg2 renditionColumn:(int)arg3 sliceColumn:(int)arg4 rowsPerRendition:(int)arg5 columnsPerRendition:(int)arg6 renditionColumnCount:(int)arg7;

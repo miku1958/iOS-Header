@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSArray, UISUISecurityContext;
 
@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     BOOL _canExcludeExtensionActivities;
     BOOL _canShowShareSheetPlugIns;
     BOOL __unitTest_disableExcludingSourceApplicationFromOpenActivities;
+    double _preferredWidth;
     NSArray *_hostActivityConfigurations;
     NSArray *_activityItemValueClassNames;
     NSArray *_activityTypesToCreateInShareService;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property (strong, nonatomic) NSArray *hostActivityConfigurations; // @synthesize hostActivityConfigurations=_hostActivityConfigurations;
 @property (strong, nonatomic) NSArray *includedActivityTypes; // @synthesize includedActivityTypes=_includedActivityTypes;
+@property (nonatomic) double preferredWidth; // @synthesize preferredWidth=_preferredWidth;
 @property (strong, nonatomic) UISUISecurityContext *securityScopedURLsForMatching; // @synthesize securityScopedURLsForMatching=_securityScopedURLsForMatching;
 @property (nonatomic) BOOL shouldExcludeiCloudAddToDriveActivity; // @synthesize shouldExcludeiCloudAddToDriveActivity=_shouldExcludeiCloudAddToDriveActivity;
 @property (nonatomic) BOOL shouldExcludeiCloudSharingActivity; // @synthesize shouldExcludeiCloudSharingActivity=_shouldExcludeiCloudSharingActivity;

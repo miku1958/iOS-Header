@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CFNetwork/NSURLStorageCacheClient-Protocol.h>
 
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)deleteResponseForRequestWithKey:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)deleteResponsesSinceDate:(id)arg1;
 - (BOOL)ensureNetworkStorageDaemonConnection;
+- (void)flushWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)getPath;
 - (id)initWithCache:(shared_ptr_25027cf4)arg1;
 - (void)notifyCacheClientOfTimeRelativeResponses:(id)arg1;

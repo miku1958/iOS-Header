@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSCopying-Protocol.h>
 #import <SceneKit/NSSecureCoding-Protocol.h>
@@ -59,6 +59,7 @@
     long long _exposureAdaptationMode;
     float _bloomIntensity;
     float _bloomThreshold;
+    int _bloomIteration;
     float _bloomBlurRadius;
     float _motionBlurIntensity;
     float _vignettingPower;
@@ -161,6 +162,7 @@
 - (id)animationPlayerForKey:(id)arg1;
 - (double)aspectRatio;
 - (void)bindAnimatablePath:(id)arg1 toObject:(id)arg2 withKeyPath:(id)arg3 options:(id)arg4;
+- (long long)bloomIteration;
 - (struct __C3DCamera *)cameraRef;
 - (id)copy;
 - (id)copyAnimationChannelForKeyPath:(id)arg1 animation:(id)arg2;
@@ -189,6 +191,7 @@
 - (id)presentationInstance;
 - (struct SCNMatrix4)projectionTransformWithViewportSize:(struct CGSize)arg1;
 - (void)removeAllAnimations;
+- (void)removeAllBindings;
 - (void)removeAnimationForKey:(id)arg1;
 - (void)removeAnimationForKey:(id)arg1 blendOutDuration:(double)arg2;
 - (void)removeAnimationForKey:(id)arg1 fadeOutDuration:(double)arg2;
@@ -198,6 +201,7 @@
 - (long long)screenSpaceAmbientOcclusionDownSample;
 - (long long)screenSpaceAmbientOcclusionSampleCount;
 - (void)setAspectRatio:(double)arg1;
+- (void)setBloomIteration:(long long)arg1;
 - (void)setDofIntensity:(float)arg1;
 - (void)setExposureAdaptationDuration:(double)arg1;
 - (void)setExposureAdaptationHistogramRangeHighProbability:(double)arg1;

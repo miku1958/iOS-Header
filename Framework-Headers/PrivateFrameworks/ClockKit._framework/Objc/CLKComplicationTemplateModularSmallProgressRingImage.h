@@ -19,6 +19,7 @@
 @property (copy, nonatomic) CLKProgressProvider *progressProvider; // @synthesize progressProvider=_progressProvider;
 @property (nonatomic) long long ringStyle; // @synthesize ringStyle=_ringStyle;
 
++ (struct CGSize)imageSize;
 - (void).cxx_destruct;
 - (void)_enumerateImageProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateIntegerKeysWithBlock:(CDUnknownBlockType)arg1;

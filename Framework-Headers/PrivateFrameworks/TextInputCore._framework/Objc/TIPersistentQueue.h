@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSURL;
 
@@ -13,7 +13,7 @@
     NSURL *_presentedItemURL;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)dequeueObjects:(CDUnknownBlockType)arg1;
 - (void)enqueueObjects:(CDUnknownBlockType)arg1;
 - (id)initWithURL:(id)arg1;

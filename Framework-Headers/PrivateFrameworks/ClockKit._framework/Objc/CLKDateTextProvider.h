@@ -14,6 +14,7 @@
     NSArray *_templateSeries;
     BOOL _shortUnits;
     BOOL _allowsNarrowUnits;
+    BOOL _narrowStandaloneWeekdayDay;
     NSDate *_date;
     unsigned long long _calendarUnits;
     NSTimeZone *_timeZone;
@@ -26,6 +27,7 @@
 @property (nonatomic) unsigned long long calendarUnits; // @synthesize calendarUnits=_calendarUnits;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (nonatomic) long long formattingContext; // @synthesize formattingContext=_formattingContext;
+@property (nonatomic) BOOL narrowStandaloneWeekdayDay; // @synthesize narrowStandaloneWeekdayDay=_narrowStandaloneWeekdayDay;
 @property (nonatomic) BOOL shortUnits; // @synthesize shortUnits=_shortUnits;
 @property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 

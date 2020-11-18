@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/MTLPipelineCache-Protocol.h>
 
@@ -14,11 +14,13 @@
 {
     BOOL _writable;
     struct MTLCompilerCache *_compilerCache;
+    BOOL _disableRunTimeCompilation;
 }
 
 @property (readonly) struct MTLCompilerCache *cache; // @synthesize cache=_compilerCache;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property BOOL disableRunTimeCompilation; // @synthesize disableRunTimeCompilation=_disableRunTimeCompilation;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly) BOOL writable; // @synthesize writable=_writable;

@@ -6,7 +6,7 @@
 
 #import <CloudKitDaemon/NSObject-Protocol.h>
 
-@class CKAccountOverrideInfo, CKContainerID, CKDMescalSession, CKDOperation, CKDServerConfiguration, CKDURLRequest, NSBundle, NSDictionary, NSString, NSURL;
+@class CKAccountOverrideInfo, CKContainerID, CKDMescalSession, CKDOperation, CKDServerConfiguration, CKDURLRequest, NSDictionary, NSString, NSURL;
 
 @protocol CKDAccountInfoProvider <NSObject>
 
@@ -19,7 +19,6 @@
 @property (readonly, nonatomic) BOOL isUnitTestingAccount;
 @property (readonly, nonatomic) BOOL isiCloudDevEnvironmentAccount;
 
-- (NSBundle *)applicationBundle;
 - (NSURL *)baseURLForServerType:(long long)arg1 partitionType:(long long)arg2;
 - (NSString *)bundleID;
 - (void)cloudKitAuthTokenWithCompletionHandler:(void (^)(NSString *, NSError *))arg1;
@@ -27,6 +26,7 @@
 - (CKContainerID *)containerID;
 - (NSString *)containerScopedUserID;
 - (NSString *)deviceName;
+- (NSString *)displayedHostname;
 - (NSString *)dsid;
 - (void)fetchConfigurationForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(CKDServerConfiguration *, NSError *))arg2;
 - (void)fetchDeviceIDForOperation:(CKDOperation *)arg1 withCompletionHandler:(void (^)(NSString *, NSError *))arg2;
@@ -44,6 +44,7 @@
 - (void)renewiCloudAuthTokenWithReason:(NSString *)arg1 shouldForce:(BOOL)arg2 failedToken:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)resetMescalSession;
 - (NSString *)serverPreferredPushEnvironment;
+- (NSString *)sharingURLHostname;
 - (BOOL)shouldFailAllTasks;
 - (NSString *)trafficContainerIdentifier;
 

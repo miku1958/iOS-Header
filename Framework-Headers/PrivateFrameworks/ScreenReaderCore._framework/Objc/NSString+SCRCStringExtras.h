@@ -16,6 +16,7 @@
 - (BOOL)hasMultipleWordsWithLocaleName:(const char *)arg1 ignorePunctuation:(BOOL)arg2;
 - (struct _NSRange)nextWordFromPosition:(long long)arg1;
 - (struct _NSRange)previousWordFromPosition:(long long)arg1;
+- (id)scrStringByTrimmingTrailingNewlines;
 - (struct _NSRange)sentenceBreakInDirection:(BOOL)arg1 fromIndex:(unsigned long long)arg2 skipCurrent:(BOOL)arg3;
 - (id)stringByReplacingCharactersInSet:(id)arg1 withString:(id)arg2;
 - (id)stringByTrimmingEmptySpaceEdges;

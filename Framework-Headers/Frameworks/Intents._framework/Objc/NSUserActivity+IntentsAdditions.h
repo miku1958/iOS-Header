@@ -4,15 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/NSUserActivity.h>
+#import <CoreServices/NSUserActivity.h>
 
-@class INInteraction;
+@class INInteraction, NSString;
 
 @interface NSUserActivity (IntentsAdditions)
 
 @property (readonly, nonatomic) INInteraction *interaction;
+@property (copy, nonatomic) NSString *suggestedInvocationPhrase;
 
+- (BOOL)_accessedInteraction;
+- (long long)_executionContext;
+- (BOOL)_hasInteraction;
+- (id)_initWithIntent:(id)arg1;
 - (id)_intentsIdentifier;
+- (BOOL)_isEligibleForPrediction;
+- (void)_setAccessedInteraction:(BOOL)arg1;
+- (void)_setEligibleForPrediction:(BOOL)arg1;
+- (void)_setExecutionContext:(long long)arg1;
 - (void)_setInteraction:(id)arg1 donate:(BOOL)arg2;
 - (void)setInteraction:(id)arg1;
 @end

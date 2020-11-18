@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeUI/HUQuickControlSingleControlViewController.h>
+#import <HomeUI/HUQuickControlViewController.h>
 
 #import <HomeUI/HUQuickControlDetailsViewControllerVendor-Protocol.h>
 
 @class NSString;
 
-@interface HUQuickControlAlarmDetailsViewController : HUQuickControlSingleControlViewController <HUQuickControlDetailsViewControllerVendor>
+@interface HUQuickControlAlarmDetailsViewController : HUQuickControlViewController <HUQuickControlDetailsViewControllerVendor>
 {
 }
 
@@ -19,11 +19,12 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (Class)controlItemClass;
++ (id)controlItemPredicate;
+- (id)controlItem;
 - (id)createDetailsViewController;
-- (id)createInteractionCoordinator;
+- (id)initWithControlItems:(id)arg1 home:(id)arg2 itemUpdater:(id)arg3;
 - (id)secondaryQuickControlPresentationStyle;
-- (BOOL)shouldShowControlWhenUnreachable;
+- (BOOL)shouldShowContentForReachabilityState:(BOOL)arg1;
 
 @end
 

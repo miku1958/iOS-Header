@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)invalidRangeRef;
 - (id).cxx_construct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithRangeCoord:(struct TSCERangeCoordinate)arg1 tableID:(id)arg2;

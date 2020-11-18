@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MIDINetworkHost;
 
@@ -13,7 +13,7 @@
     void *_imp;
 }
 
-@property (readonly, strong, nonatomic) MIDINetworkHost *host;
+@property (readonly, nonatomic) MIDINetworkHost *host;
 
 + (id)connectionWithHost:(id)arg1;
 - (void)dealloc;

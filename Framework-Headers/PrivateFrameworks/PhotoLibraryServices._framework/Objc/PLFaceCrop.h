@@ -6,18 +6,22 @@
 
 #import <PhotoLibraryServices/PLManagedObject.h>
 
+#import <PhotoLibraryServices/PLCloudDeletable-Protocol.h>
 #import <PhotoLibraryServices/PLSyncableObject-Protocol.h>
 
 @class NSData, NSString, PLDetectedFace, PLManagedAsset, PLPerson;
 
-@interface PLFaceCrop : PLManagedObject <PLSyncableObject>
+@interface PLFaceCrop : PLManagedObject <PLSyncableObject, PLCloudDeletable>
 {
     BOOL _needsPersistenceUpdate;
 }
 
 @property (strong, nonatomic) PLManagedAsset *asset; // @dynamic asset;
+@property (nonatomic) short cloudDeleteState; // @dynamic cloudDeleteState;
+@property (readonly) long long cloudDeletionType;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
 @property (nonatomic) unsigned short cloudType; // @dynamic cloudType;
+@property (readonly, copy) NSString *cloudUUIDForDeletion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) PLDetectedFace *face; // @dynamic face;
@@ -38,6 +42,8 @@
 + (int)_nameSourceForFaceFromFaceCrop:(id)arg1;
 + (int)_trainingFaceTypeForFaceFromFaceCrop:(id)arg1;
 + (id)allFaceCropsInPhotoLibrary:(id)arg1;
++ (long long)cloudDeletionTypeForTombstone:(id)arg1;
++ (id)cloudUUIDKeyForDeletion;
 + (id)entityInManagedObjectContext:(id)arg1;
 + (id)entityName;
 + (id)faceCropsToUploadInPhotoLibrary:(id)arg1 limit:(unsigned long long)arg2;
@@ -52,6 +58,7 @@
 - (id)cplFaceCropChange;
 - (id)cplFullRecord;
 - (BOOL)isSyncableChange;
+- (id)momentShare;
 - (void)prepareForDeletion;
 - (BOOL)supportsCloudUpload;
 - (void)willSave;

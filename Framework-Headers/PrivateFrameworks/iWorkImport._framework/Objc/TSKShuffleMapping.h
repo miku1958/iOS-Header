@@ -4,47 +4,55 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/NSCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface TSKShuffleMapping : NSObject <NSCopying>
 {
-    unsigned short mStartIndex;
-    unsigned short mEndIndex;
-    unsigned short *mMapping;
-    BOOL mIsVertical;
-    BOOL mIsMoveOperation;
-    unsigned short mFirstMovedIndex;
-    unsigned short mDestinationIndexForMove;
-    unsigned short mNumberOfIndicesMoved;
+    vector_12da65de _mapping;
+    BOOL _isMoveOperation;
+    BOOL _isVertical;
+    unsigned int _startIndex;
+    unsigned int _endIndex;
+    unsigned int _firstMovedIndex;
+    unsigned int _destinationIndexForMove;
+    unsigned int _numberOfIndexesMoved;
 }
 
-@property (readonly, nonatomic) unsigned short endIndex; // @synthesize endIndex=mEndIndex;
+@property (nonatomic) unsigned int destinationIndexForMove; // @synthesize destinationIndexForMove=_destinationIndexForMove;
+@property (readonly, nonatomic) unsigned int endIndex; // @synthesize endIndex=_endIndex;
+@property (nonatomic) unsigned int firstMovedIndex; // @synthesize firstMovedIndex=_firstMovedIndex;
 @property (readonly, nonatomic) BOOL isIdentityMapping;
-@property (readonly, nonatomic) unsigned short *mapping; // @synthesize mapping=mMapping;
-@property (readonly, nonatomic) unsigned short mappingSize; // @dynamic mappingSize;
-@property (readonly, nonatomic) unsigned short startIndex; // @synthesize startIndex=mStartIndex;
+@property (readonly, nonatomic) BOOL isMoveOperation; // @synthesize isMoveOperation=_isMoveOperation;
+@property (nonatomic) BOOL isVertical; // @synthesize isVertical=_isVertical;
+@property (readonly, nonatomic) vector_12da65de *mapping; // @synthesize mapping=_mapping;
+@property (readonly, nonatomic) unsigned int mappingSize;
+@property (nonatomic) unsigned int numberOfIndexesMoved; // @synthesize numberOfIndexesMoved=_numberOfIndexesMoved;
+@property (readonly, nonatomic) unsigned int startIndex; // @synthesize startIndex=_startIndex;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (void)applyMappingToIndexSet:(id)arg1;
 - (id)copyInverse;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
+- (void)enumerateMappingFollowingSwapsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMappingRange:(struct _NSRange)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (id)initForMovedIndicesStartingAtIndex:(unsigned short)arg1 destinationIndex:(unsigned short)arg2 numberOfIndices:(unsigned short)arg3 vertical:(BOOL)arg4;
+- (id)initForMovedIndexesStartingAtIndex:(unsigned int)arg1 destinationIndex:(unsigned int)arg2 numberOfIndexes:(unsigned int)arg3 vertical:(BOOL)arg4;
 - (id)initWithArchive:(const struct ShuffleMappingArchive *)arg1;
-- (id)initWithStartIndex:(unsigned short)arg1 endIndex:(unsigned short)arg2;
-- (id)initWithStartIndex:(unsigned short)arg1 endIndex:(unsigned short)arg2 mapping:(unsigned short *)arg3;
-- (void)insert:(unsigned short)arg1 indicesAtIndex:(unsigned short)arg2 insertingBefore:(BOOL)arg3;
+- (id)initWithStartIndex:(unsigned int)arg1 endIndex:(unsigned int)arg2;
+- (id)initWithStartIndex:(unsigned int)arg1 endIndex:(unsigned int)arg2 mapping:(const vector_12da65de *)arg3;
+- (void)insert:(unsigned int)arg1 IndexesAtIndex:(unsigned int)arg2 insertingBefore:(BOOL)arg3;
 - (BOOL)isMove;
-- (BOOL)isVertical;
 - (struct TSUCellCoord)mapCoordinate:(struct TSUCellCoord)arg1;
-- (unsigned short)mapIndex:(unsigned short)arg1;
-- (void)remove:(unsigned short)arg1 indicesAtIndex:(unsigned short)arg2;
+- (unsigned int)mapIndex:(unsigned int)arg1;
+- (void)remove:(unsigned int)arg1 IndexesAtIndex:(unsigned int)arg2;
 - (struct TSUCellCoord)reverseMapCoordinate:(struct TSUCellCoord)arg1;
-- (unsigned short)reverseMapIndex:(unsigned short)arg1;
+- (unsigned int)reverseMapIndex:(unsigned int)arg1;
 - (void)saveToArchive:(struct ShuffleMappingArchive *)arg1;
-- (void)swapIndex:(unsigned short)arg1 withIndex:(unsigned short)arg2;
+- (id)sourceIndexes;
+- (void)swapIndex:(unsigned int)arg1 withIndex:(unsigned int)arg2;
 
 @end
 

@@ -15,22 +15,24 @@ __attribute__((visibility("hidden")))
 {
     NSItemProvider *_itemProvider;
     NSDictionary *_loadedItems;
+    CDStruct_4c969caf _destinationProcessAuditToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) CDStruct_4c969caf destinationProcessAuditToken; // @synthesize destinationProcessAuditToken=_destinationProcessAuditToken;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) NSItemProvider *itemProvider; // @synthesize itemProvider=_itemProvider;
 @property (strong, nonatomic) NSDictionary *loadedItems; // @synthesize loadedItems=_loadedItems;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
-- (id)_loadItemsForTypeIdentifiers:(id)arg1 itemProvider:(id)arg2;
-- (id)_sandboxedResourceForItemIfNeeded:(id)arg1 error:(id *)arg2;
+- (id)_loadItemsForTypeIdentifiers:(id)arg1 auditToken:(CDStruct_4c969caf)arg2 itemProvider:(id)arg3;
+- (id)_sandboxedResourceForItemIfNeeded:(id)arg1 auditToken:(CDStruct_4c969caf)arg2 error:(id *)arg3;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithItemProvider:(id)arg1;
+- (id)initWithItemProvider:(id)arg1 destinationProcessAuditToken:(CDStruct_4c969caf)arg2;
 - (void)loadItemForTypeIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2 expectedValueClass:(Class)arg3 options:(id)arg4;
 - (void)loadPreviewImageWithCompletionHandler:(CDUnknownBlockType)arg1 expectedValueClass:(Class)arg2 options:(id)arg3;
 

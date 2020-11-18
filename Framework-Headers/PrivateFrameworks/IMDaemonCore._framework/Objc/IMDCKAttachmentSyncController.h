@@ -53,6 +53,7 @@
 - (void)_deleteAttachmentsWithRecordIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_deleteStingRayToken;
 - (BOOL)_deviceConditionsAllowsMessageSync;
+- (BOOL)_deviceConditionsAllowsMessageSyncForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (BOOL)_deviceConditionsAllowsMessageSyncIgnoreFeatureEnabled:(BOOL)arg1;
 - (void)_downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(BOOL)arg2 useNonHSA2ManateeDatabase:(BOOL)arg3 retryCount:(unsigned long long)arg4 numAttachmentsDownloaded:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)_downloadAttachmentAssetsWithActivity:(id)arg1 restoringAttachments:(BOOL)arg2 useNonHSA2ManateeDatabase:(BOOL)arg3 retryCount:(unsigned long long)arg4 numAttachmentsDownloaded:(unsigned long long)arg5 transfers:(id)arg6 completion:(CDUnknownBlockType)arg7;
@@ -90,6 +91,7 @@
 - (BOOL)_shouldMarkAttachmentsAsNeedingReupload;
 - (void)_updateAllAttachmentsAsNotNeedingReUpload;
 - (id)_updateAttachmentGUIDIfNeededAndReturnTransfersToForceMarkAsSync:(id)arg1 transfersToSyncRowIDs:(id)arg2;
+- (void)_updateDeviceCondictionsToCheckIfNeededForCurrentBatchCount:(long long)arg1 maxBatchCount:(long long)arg2;
 - (void)_updateTransferUsingCKRecord:(id)arg1 wasFetched:(BOOL)arg2;
 - (void)_validateTransferFromCloudKit:(id)arg1 localTransfer:(id)arg2 validateCompletion:(CDUnknownBlockType)arg3;
 - (void)_writeAttachmentsToCloudKit:(CDUnknownBlockType)arg1;

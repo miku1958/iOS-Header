@@ -6,9 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeSharing/ICEnvironmentMonitorObserver-Protocol.h>
+
+@class NSString;
 @protocol OS_dispatch_queue;
 
-@interface HSWiFiManager : NSObject
+@interface HSWiFiManager : NSObject <ICEnvironmentMonitorObserver>
 {
     struct __SCPreferences *_wifiPreferences;
     NSObject<OS_dispatch_queue> *_accessQueue;
@@ -16,6 +19,10 @@
     BOOL _wiFiAssociated;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (nonatomic, getter=isWiFiAssociated) BOOL wiFiAssociated; // @synthesize wiFiAssociated=_wiFiAssociated;
 @property (nonatomic, getter=isWiFiEnabled) BOOL wiFiEnabled; // @synthesize wiFiEnabled=_wiFiEnabled;
 
@@ -26,6 +33,7 @@
 - (id)_processIdentifier;
 - (void)_wifiCallBack:(unsigned int)arg1;
 - (void)dealloc;
+- (void)environmentMonitorDidChangeNetworkReachability:(id)arg1;
 - (id)init;
 
 @end

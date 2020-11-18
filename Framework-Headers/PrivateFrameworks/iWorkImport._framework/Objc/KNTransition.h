@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL customMotionBlur;
 @property (readonly, nonatomic) long long customTextDelivery;
 @property (readonly, nonatomic) long long customTimingCurve;
+@property (readonly, nonatomic) float customTravelDistance;
 @property (readonly, nonatomic) float customTwist;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double delay;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL supportsCustomEffectTimingCurve3;
 @property (readonly, nonatomic) BOOL supportsDirection;
 @property (readonly, nonatomic) BOOL supportsDuration;
+@property (readonly, nonatomic) BOOL supportsTravelDistance;
 @property (readonly, nonatomic) BOOL supportsTwist;
 
 + (id)attributeKeyForBindingKeyPath:(id)arg1;

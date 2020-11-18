@@ -9,6 +9,7 @@
 @class AVAssetExportSession, NSString, NSTimer, PFVideoAdjustments, PUMediaDestination, PUVideoEditMakerOptions, PUVideoEditModel;
 @protocol PUEditableAsset;
 
+__attribute__((visibility("hidden")))
 @interface PUVideoEditMaker : NSObject
 {
     BOOL _isExportInProgress;

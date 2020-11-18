@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLPhotoBakedThumbnailsDelegate-Protocol.h>
 
@@ -51,6 +51,7 @@
 - (void)_incrementJobCount:(id)arg1;
 - (BOOL)_isHighPriorityJob:(id)arg1;
 - (id)_pathForFilteredPreviewWithBaseName:(id)arg1 imageData:(id)arg2 orImage:(id)arg3;
+- (id)_pathForNewAssetWithPath:(id)arg1 withExtension:(id)arg2;
 - (void)_photoIrisPairingDidSucceed:(BOOL)arg1 fileIndicatorPath:(id)arg2 photoAsset:(id)arg3 photoLibrary:(id)arg4;
 - (void)_postJobQueueNotificationIsAvailable:(BOOL)arg1;
 - (void)_processAutodeleteEmptyAlbumJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -70,6 +71,7 @@
 - (void)_processSyncedVideoSaveJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processVideoJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processVideoSaveJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_processXPCDaemonJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeInProgressExtendedAttributesForFileAtURL:(id)arg1;
 - (void)_removeTransientKeys:(id)arg1;
 - (void)_setAdjustmentsForNewVideo:(id)arg1 withAdjustmentsDictionary:(id)arg2;
@@ -82,6 +84,7 @@
 - (BOOL)enqueueJob:(id)arg1;
 - (id)init;
 - (id)pathForNewAssetPathAtAlbumDirectoryPath:(id)arg1 assetType:(unsigned int)arg2 extension:(id)arg3;
+- (id)pathForNewAssetWithDirectoryPath:(id)arg1 fileName:(id)arg2 extension:(id)arg3;
 - (void)setAvalancheInProgress:(BOOL)arg1 uuid:(id)arg2;
 
 @end

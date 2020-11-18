@@ -46,12 +46,14 @@
 
 - (void).cxx_destruct;
 - (id)_decompressData:(id)arg1;
+- (void)_onQueue_stop;
 - (void)_writeAvailablePendingData;
 - (id)init;
 - (id)initWithOutputStream:(id)arg1 queue:(id)arg2;
 - (id)initWithQueue:(id)arg1;
 - (void)start;
 - (void)stop;
+- (void)stopWithCompletion:(CDUnknownBlockType)arg1;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 - (BOOL)writeAllData:(id)arg1 error:(id *)arg2;
 - (void)writeAllData:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

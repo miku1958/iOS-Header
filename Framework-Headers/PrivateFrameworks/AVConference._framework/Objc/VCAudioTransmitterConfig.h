@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class AVCStatisticsCollector, NSMutableArray, VCAudioPayload, VCTransportSession;
+@class AVCStatisticsCollector, NSArray, NSMutableArray, VCAudioPayload, VCTransportSession;
 
 __attribute__((visibility("hidden")))
 @interface VCAudioTransmitterConfig : NSObject
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     VCAudioPayload *_chosenAudioPayload;
     VCAudioPayload *_chosenDTXPayload;
     unsigned char _packetsPerBundle;
-    BOOL _useAFRC;
+    BOOL _useRateControl;
     int _bundlingScheme;
     BOOL _isUseCaseWatchContinuity;
     BOOL _allowAudioSwitching;
@@ -36,8 +36,15 @@ __attribute__((visibility("hidden")))
     int _operatingMode;
     struct AudioStreamBasicDescription _inputFormat;
     struct opaqueRTCReporting *_reportingAgent;
+    int _reportingParentID;
     VCTransportSession *_transportSession;
     BOOL _ignoreSilence;
+    unsigned int _maxIDSStreamIdCount;
+    NSArray *_streamIDs;
+    unsigned int _tierNetworkBitrate;
+    NSArray *_supportedNumRedundantPayload;
+    BOOL _sendActiveVoiceOnly;
+    BOOL _currentDTXEnable;
 }
 
 @property (nonatomic) struct tagHANDLE *afrcHandle; // @synthesize afrcHandle=_afrcHandle;
@@ -48,10 +55,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VCAudioPayload *chosenDTXPayload; // @synthesize chosenDTXPayload=_chosenDTXPayload;
 @property (nonatomic) int chosenRedPayloadType; // @synthesize chosenRedPayloadType=_chosenRedPayloadType;
 @property (nonatomic) void *controlInfoGenerator; // @synthesize controlInfoGenerator=_controlInfoGenerator;
+@property (nonatomic, getter=isCurrentDTXEnabled) BOOL currentDTXEnable; // @synthesize currentDTXEnable=_currentDTXEnable;
 @property (nonatomic) BOOL ignoreSilence; // @synthesize ignoreSilence=_ignoreSilence;
 @property (nonatomic) BOOL includeRedSequenceOffset; // @synthesize includeRedSequenceOffset=_includeRedSequenceOffset;
 @property (nonatomic) struct AudioStreamBasicDescription inputFormat; // @synthesize inputFormat=_inputFormat;
 @property (nonatomic) BOOL isUseCaseWatchContinuity; // @synthesize isUseCaseWatchContinuity=_isUseCaseWatchContinuity;
+@property (nonatomic) unsigned int maxIDSStreamIdCount; // @synthesize maxIDSStreamIdCount=_maxIDSStreamIdCount;
 @property (nonatomic) struct tagHANDLE *mediaQueue; // @synthesize mediaQueue=_mediaQueue;
 @property (nonatomic) BOOL needsPacketThread; // @synthesize needsPacketThread=_needsPacketThread;
 @property (nonatomic) int operatingMode; // @synthesize operatingMode=_operatingMode;
@@ -60,13 +69,18 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int redMaxDelay20ms; // @synthesize redMaxDelay20ms=_redMaxDelay20ms;
 @property (nonatomic) unsigned int redNumPayloads; // @synthesize redNumPayloads=_redNumPayloads;
 @property (nonatomic) struct opaqueRTCReporting *reportingAgent; // @synthesize reportingAgent=_reportingAgent;
+@property (nonatomic) int reportingParentID; // @synthesize reportingParentID=_reportingParentID;
 @property (nonatomic) struct tagHANDLE *rtpHandle; // @synthesize rtpHandle=_rtpHandle;
 @property (nonatomic) struct tagHANDLE *rtpVideo; // @synthesize rtpVideo=_rtpVideo;
+@property (nonatomic) BOOL sendActiveVoiceOnly; // @synthesize sendActiveVoiceOnly=_sendActiveVoiceOnly;
 @property (strong, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
+@property (strong, nonatomic) NSArray *streamIDs; // @synthesize streamIDs=_streamIDs;
+@property (strong, nonatomic) NSArray *supportedNumRedundantPayload; // @synthesize supportedNumRedundantPayload=_supportedNumRedundantPayload;
 @property (nonatomic) BOOL supportsAdaptation; // @synthesize supportsAdaptation=_supportsAdaptation;
+@property (nonatomic) unsigned int tierNetworkBitrate; // @synthesize tierNetworkBitrate=_tierNetworkBitrate;
 @property (nonatomic) BOOL transmitROC; // @synthesize transmitROC=_transmitROC;
 @property (strong, nonatomic) VCTransportSession *transportSession; // @synthesize transportSession=_transportSession;
-@property (nonatomic) BOOL useAFRC; // @synthesize useAFRC=_useAFRC;
+@property (nonatomic) BOOL useRateControl; // @synthesize useRateControl=_useRateControl;
 
 - (void)dealloc;
 - (id)description;

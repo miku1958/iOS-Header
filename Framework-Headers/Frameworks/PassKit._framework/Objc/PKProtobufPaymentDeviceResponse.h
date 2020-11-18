@@ -18,6 +18,7 @@
     unsigned int _protocolVersion;
     BOOL _deviceDisabled;
     BOOL _locked;
+    BOOL _supportsFaceID;
     BOOL _userDisabled;
     struct {
         unsigned int defaultPaymentInstrumentIndex:1;
@@ -25,6 +26,7 @@
         unsigned int protocolVersion:1;
         unsigned int deviceDisabled:1;
         unsigned int locked:1;
+        unsigned int supportsFaceID:1;
         unsigned int userDisabled:1;
     } _has;
 }
@@ -36,11 +38,13 @@
 @property (nonatomic) BOOL hasLocked;
 @property (nonatomic) BOOL hasNearby;
 @property (nonatomic) BOOL hasProtocolVersion;
+@property (nonatomic) BOOL hasSupportsFaceID;
 @property (nonatomic) BOOL hasUserDisabled;
 @property (nonatomic) BOOL locked; // @synthesize locked=_locked;
 @property (nonatomic) int nearby; // @synthesize nearby=_nearby;
 @property (strong, nonatomic) NSMutableArray *paymentInstruments; // @synthesize paymentInstruments=_paymentInstruments;
 @property (nonatomic) unsigned int protocolVersion; // @synthesize protocolVersion=_protocolVersion;
+@property (nonatomic) BOOL supportsFaceID; // @synthesize supportsFaceID=_supportsFaceID;
 @property (nonatomic) BOOL userDisabled; // @synthesize userDisabled=_userDisabled;
 
 + (Class)paymentInstrumentsType;

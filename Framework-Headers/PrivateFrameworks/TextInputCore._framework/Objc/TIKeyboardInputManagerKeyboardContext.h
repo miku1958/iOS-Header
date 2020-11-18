@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TIKeyboardOutput, TIKeyboardState, TIRevisionHistory;
 
@@ -19,9 +19,9 @@
 @property (readonly, nonatomic) TIKeyboardOutput *output; // @synthesize output=_output;
 @property (strong, nonatomic) TIRevisionHistory *revisionHistory; // @synthesize revisionHistory=_revisionHistory;
 
+- (void).cxx_destruct;
 - (void)acceptCandidate:(id)arg1;
 - (void)clearInputForMarkedText;
-- (void)dealloc;
 - (void)deleteBackward:(unsigned long long)arg1;
 - (void)deleteForward:(unsigned long long)arg1;
 - (void)deleteHandwritingStrokes:(id)arg1;

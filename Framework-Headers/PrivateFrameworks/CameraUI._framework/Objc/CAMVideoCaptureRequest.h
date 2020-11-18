@@ -21,6 +21,7 @@
     id<CAMVideoCaptureRequestDelegate> _delegate;
     long long _captureVideoConfiguration;
     long long _torchMode;
+    double _userInitationTimestamp;
 }
 
 @property (readonly, nonatomic) long long captureVideoConfiguration; // @synthesize captureVideoConfiguration=_captureVideoConfiguration;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) BOOL shouldGenerateVideoPreviewImage; // @synthesize shouldGenerateVideoPreviewImage=_shouldGenerateVideoPreviewImage;
 @property (readonly, nonatomic, getter=isTimelapse) BOOL timelapse; // @synthesize timelapse=_timelapse;
 @property (readonly, nonatomic) long long torchMode; // @synthesize torchMode=_torchMode;
+@property (readonly, nonatomic) double userInitationTimestamp; // @synthesize userInitationTimestamp=_userInitationTimestamp;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

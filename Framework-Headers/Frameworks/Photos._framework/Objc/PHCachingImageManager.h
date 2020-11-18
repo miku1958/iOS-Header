@@ -15,9 +15,11 @@
 
 - (id)_fireCloudDownloadOfImageForAsset:(id)arg1 format:(int)arg2 optimalSourcePixelSize:(struct CGSize)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)_highPriorityRequestWaitGroup;
+- (id)_modernCachingImageManager;
 - (BOOL)canAvoidTouchingAssetsWithTargetSize:(struct CGSize)arg1 contentMode:(long long)arg2 options:(id)arg3 outBestFormat:(int *)arg4 outBestFormatIsTable:(BOOL *)arg5 outDegradedFormat:(int *)arg6 outDegradedFormatIsTable:(BOOL *)arg7;
 - (id)description;
 - (id)init;
+- (int)requestImageForAsset:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (void)startCachingImagesForAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
 - (void)startCachingImagesForImageLoadingAssets:(id)arg1 targetSize:(struct CGSize)arg2 contentMode:(long long)arg3 options:(id)arg4;
 - (void)stopCachingImagesForAllAssets;

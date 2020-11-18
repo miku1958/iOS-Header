@@ -8,12 +8,10 @@
 
 @interface CLSScoreItem : CLSActivityItem
 {
-    double __score;
-    double __maxScore;
+    double _score;
+    double _maxScore;
 }
 
-@property (nonatomic) double _maxScore; // @synthesize _maxScore=__maxScore;
-@property (nonatomic) double _score; // @synthesize _score=__score;
 @property (nonatomic) double maxScore;
 @property (nonatomic) double score;
 

@@ -38,6 +38,7 @@
 @property (nonatomic, getter=isFinished) BOOL finished; // @synthesize finished=_finished;
 @property (nonatomic, getter=isFirstRun) BOOL firstRun; // @synthesize firstRun=_firstRun;
 @property (strong, nonatomic) NSDate *firstSampleDate; // @synthesize firstSampleDate=_firstSampleDate;
+@property (readonly, nonatomic, getter=isHiking) BOOL hiking;
 @property (strong, nonatomic) NSDate *lastRunDate; // @synthesize lastRunDate=_lastRunDate;
 @property (strong, nonatomic) NSDate *lastSampleDate; // @synthesize lastSampleDate=_lastSampleDate;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;

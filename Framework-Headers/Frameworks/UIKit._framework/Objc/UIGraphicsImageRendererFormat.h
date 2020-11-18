@@ -4,26 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGraphicsRendererFormat.h>
+#import <UIKitCore/UIGraphicsRendererFormat.h>
 
 @interface UIGraphicsImageRendererFormat : UIGraphicsRendererFormat
 {
     struct CGColorSpace *_overrideColorSpace;
-    BOOL _wantsAlphaMask;
-    BOOL _grayscale;
     BOOL _opaque;
-    BOOL _prefersExtendedRange;
     long long _overrideBitsPerComponent;
     double _scale;
+    long long _preferredRange;
 }
 
 @property (readonly, nonatomic, getter=_contextScale) double _contextScale;
-@property (nonatomic, getter=_grayscale, setter=_setGrayscale:) BOOL _grayscale; // @synthesize _grayscale;
+@property (nonatomic, getter=_grayscale, setter=_setGrayscale:) BOOL _grayscale;
 @property (nonatomic, getter=_overrideBitsPerComponent, setter=_setOverrideBitsPerComponent:) long long _overrideBitsPerComponent; // @synthesize _overrideBitsPerComponent;
 @property (nonatomic, getter=_overrideColorSpace, setter=_setOverrideColorSpace:) struct CGColorSpace *_overrideColorSpace;
-@property (nonatomic, getter=_wantsAlphaMask, setter=_setWantsAlphaMask:) BOOL _wantsAlphaMask; // @synthesize _wantsAlphaMask;
+@property (nonatomic, getter=_wantsAlphaMask, setter=_setWantsAlphaMask:) BOOL _wantsAlphaMask;
 @property (nonatomic) BOOL opaque; // @synthesize opaque=_opaque;
-@property (nonatomic) BOOL prefersExtendedRange; // @synthesize prefersExtendedRange=_prefersExtendedRange;
+@property (nonatomic) long long preferredRange; // @synthesize preferredRange=_preferredRange;
+@property (nonatomic) BOOL prefersExtendedRange;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
 + (id)defaultFormat;

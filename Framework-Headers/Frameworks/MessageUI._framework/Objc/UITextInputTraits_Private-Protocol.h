@@ -33,6 +33,7 @@
 @property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
 @property (nonatomic) BOOL hasDefaultContents;
+@property (nonatomic) BOOL hidePrediction;
 @property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
 @property (strong, nonatomic) UIColor *insertionPointColor;
 @property (nonatomic) unsigned long long insertionPointWidth;

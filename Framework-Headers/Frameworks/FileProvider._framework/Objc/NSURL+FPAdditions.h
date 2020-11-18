@@ -7,9 +7,8 @@
 #import <Foundation/NSURL.h>
 
 @interface NSURL (FPAdditions)
-+ (id)fp_containerPrefixURL;
 + (id)fp_homeDirectory;
-+ (id)fp_localStoragePrefixURL;
++ (id)fp_homeDirectoryForUserID:(unsigned int)arg1;
 + (id)fp_supportDirectory;
 - (id)fp_addDocumentTrackingWithError:(id *)arg1;
 - (BOOL)fp_associateThumbnailFromDocumentAtURL:(id)arg1 error:(id *)arg2;
@@ -20,8 +19,10 @@
 - (BOOL)fp_isFolder;
 - (id)fp_issueSandboxExtensionOfClass:(const char *)arg1 error:(id *)arg2;
 - (BOOL)fp_makeWritableWithError:(id *)arg1;
-- (BOOL)fp_matchesFileProviderURL;
-- (BOOL)fp_matchesLocalStorageURL;
+- (BOOL)fp_matchesCloudDocsURL:(id)arg1;
+- (BOOL)fp_matchesFileProviderHeuristics:(unsigned int)arg1;
+- (BOOL)fp_matchesFileProviderURL:(id)arg1;
+- (BOOL)fp_matchesLocalStorageURL:(id)arg1;
 - (id)fp_moveToTempFolderWithFilename:(id)arg1 byCopying:(BOOL)arg2 error:(id *)arg3;
 - (id)fp_moveToTempFolderWithFilename:(id)arg1 error:(id *)arg2;
 - (long long)fp_relationshipToItemAtURL:(id)arg1;

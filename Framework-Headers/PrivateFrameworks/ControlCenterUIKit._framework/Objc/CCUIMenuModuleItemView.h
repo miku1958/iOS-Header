@@ -28,15 +28,25 @@
 @property (nonatomic) BOOL useTallLayout; // @synthesize useTallLayout=_useTallLayout;
 
 - (void).cxx_destruct;
+- (void)_contentSizeCategoryDidChange;
 - (double)_glyphMargin;
 - (struct NSDirectionalEdgeInsets)_labelInsets;
+- (id)_preferredFontForTextStyle:(id)arg1 hiFontStyle:(long long)arg2;
+- (double)_separatorHeight;
 - (void)_setContinuousCornerRadius:(double)arg1;
-- (BOOL)_shouldCenterText;
+- (BOOL)_shouldHorizontallyCenterText;
+- (BOOL)_shouldLimitContentSizeCategory;
+- (BOOL)_shouldUseTallLayout;
+- (id)_subtitleFont;
+- (double)_textHeightForLabel:(id)arg1 width:(double)arg2;
 - (double)_titleBaselineToBottom;
 - (double)_titleBaselineToTop;
+- (id)_titleFont;
 - (void)_updateForStateChange;
+- (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)initWithTitle:(id)arg1 glyphImage:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)initWithTitle:(id)arg1 subtitle:(id)arg2 glyphImage:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (id)initWithTitle:(id)arg1 subtitle:(id)arg2 glyphImage:(id)arg3 useTallLayout:(BOOL)arg4 handler:(CDUnknownBlockType)arg5;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setEnabled:(BOOL)arg1;

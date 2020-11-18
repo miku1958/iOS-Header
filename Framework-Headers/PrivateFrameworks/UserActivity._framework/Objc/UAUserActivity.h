@@ -9,7 +9,7 @@
 #import <UserActivity/SFCompanionAdvertiserDelegate-Protocol.h>
 
 @class CSSearchableItemAttributeSet, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSURL, NSUUID, NSUserActivity, SFCompanionAdvertiser, UAUserActivityManager;
-@protocol OS_dispatch_queue, UAUserActivityDelegate;
+@protocol OS_dispatch_group, OS_dispatch_queue, UAUserActivityDelegate;
 
 @interface UAUserActivity : NSObject <SFCompanionAdvertiserDelegate>
 {
@@ -18,6 +18,7 @@
     NSURL *_webpageURL;
     NSURL *_referrerURL;
     SFCompanionAdvertiser *_advertiser;
+    NSObject<OS_dispatch_group> *_advertiserCompletedGroup;
     SFCompanionAdvertiser *_resumerAdvertiser;
     NSMutableSet *_dirtyPayloadIdentifiers;
     double _lastSaveTime;
@@ -45,6 +46,11 @@
     BOOL _eligibleForSearch;
     BOOL _eligibleForReminders;
     BOOL _eligibleForPublicIndexing;
+    BOOL _eligibleForPrediction;
+    NSString *_persistentIdentifier;
+    id<UAUserActivityDelegate> _delegate;
+    unsigned int _userInfoChangeCount;
+    NSDictionary *_savedUserInfo;
     BOOL _invalidated;
     BOOL _userInfoContainsFileURLs;
     BOOL _canCreateStreams;
@@ -52,7 +58,6 @@
     NSSet *_keywords;
     NSSet *_requiredUserInfoKeys;
     NSDictionary *_userInfo;
-    id<UAUserActivityDelegate> _delegate;
     UAUserActivityManager *_manager;
     NSString *_typeIdentifier;
     NSString *_dynamicIdentifier;
@@ -75,12 +80,13 @@
 @property BOOL createsNewUUIDIfSaved; // @synthesize createsNewUUIDIfSaved=_createsNewUUIDIfSaved;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong) NSError *decodeUserInfoError; // @synthesize decodeUserInfoError=_decodeUserInfoError;
-@property id<UAUserActivityDelegate> delegate; // @synthesize delegate=_delegate;
+@property id<UAUserActivityDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property BOOL dirty; // @dynamic dirty;
 @property (strong) NSMutableSet *dirtyPayloadIdentifiers; // @synthesize dirtyPayloadIdentifiers=_dirtyPayloadIdentifiers;
 @property (copy) NSString *dynamicIdentifier; // @synthesize dynamicIdentifier=_dynamicIdentifier;
 @property (getter=isEligibleForHandoff) BOOL eligibleForHandoff; // @dynamic eligibleForHandoff;
+@property (getter=isEligibleForPrediction) BOOL eligibleForPrediction; // @dynamic eligibleForPrediction;
 @property (getter=isEligibleForPublicIndexing) BOOL eligibleForPublicIndexing; // @dynamic eligibleForPublicIndexing;
 @property (getter=isEligibleForReminders) BOOL eligibleForReminders; // @dynamic eligibleForReminders;
 @property (getter=isEligibleForSearch) BOOL eligibleForSearch; // @dynamic eligibleForSearch;
@@ -102,6 +108,7 @@
 @property (strong) NSMutableDictionary *payloadDataCache; // @synthesize payloadDataCache=_payloadDataCache;
 @property (strong) NSMutableDictionary *payloadObjects; // @synthesize payloadObjects=_payloadObjects;
 @property (strong) NSMutableDictionary *payloadUpdateBlocks; // @synthesize payloadUpdateBlocks=_payloadUpdateBlocks;
+@property (copy) NSString *persistentIdentifier;
 @property (copy) NSURL *referrerURL; // @dynamic referrerURL;
 @property (copy) NSSet *requiredUserInfoKeys; // @dynamic requiredUserInfoKeys;
 @property (copy) NSSet *requiredUserInfoKeys; // @synthesize requiredUserInfoKeys=_requiredUserInfoKeys;
@@ -116,10 +123,12 @@
 @property (copy) NSString *typeIdentifier; // @synthesize typeIdentifier=_typeIdentifier;
 @property (readonly, copy) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property (readonly) unsigned long long userInfoChangeCount;
 @property BOOL userInfoContainsFileURLs; // @synthesize userInfoContainsFileURLs=_userInfoContainsFileURLs;
 @property (copy) NSURL *webpageURL; // @dynamic webpageURL;
 @property (readonly, strong) NSObject<OS_dispatch_queue> *willCallSaveSerializationQueue; // @synthesize willCallSaveSerializationQueue=_willCallSaveSerializationQueue;
 
++ (id)_decodeFromEntireString:(id)arg1;
 + (id)_decodeFromScanner:(id)arg1;
 + (id)_decodeFromString:(id)arg1;
 + (id)_encodeKeyAndValueIntoString:(id)arg1 value:(id)arg2;
@@ -130,11 +139,15 @@
 + (BOOL)checkWebpageURL:(id)arg1 actionType:(unsigned long long)arg2 throwIfFailed:(BOOL)arg3;
 + (id)currentUserActivityUUID;
 + (BOOL)currentUserActivityUUIDWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (void)deleteAllSavedUserActivitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
++ (void)deleteSavedUserActivitiesWithPersistentIdentifiers:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)determineIfUserActivityIsCurrent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)fetchUserActivityWithUUID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)fetchUserActivityWithUUID:(id)arg1 intervalToWaitForDocumentSynchronizationToComplete:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (BOOL)isIndexPendingForUUID:(id)arg1;
++ (id)mainBundleIdentifier;
 + (id)observers;
++ (BOOL)registerAsProxyForApplication:(int)arg1 options:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (id)registerForSuggestedActionNudgeOfType:(unsigned long long)arg1 withOptions:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (void)removeDynamicUserActivity:(id)arg1 matching:(id)arg2;
 + (void)removeUserActivityObserver:(id)arg1;
@@ -148,6 +161,7 @@
 - (BOOL)_encodeIntoUserActivityDataWithSave:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_encodeIntoUserActivityStringWithSave:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_resignCurrent;
+- (void)_setWebpageURL:(id)arg1 throwOnFailure:(BOOL)arg2;
 - (void)addContentAttribute:(id)arg1 forKey:(id)arg2;
 - (void)addKeywordsFromArray:(id)arg1;
 - (void)addUserInfoEntriesFromDictionary:(id)arg1;
@@ -155,6 +169,7 @@
 - (BOOL)archiveURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)archiver:(id)arg1 willEncodeObject:(id)arg2;
 - (void)becomeCurrent;
+- (unsigned long long)beginUserInfoUpdate:(id)arg1;
 - (id)callWillSaveDelegateIfDirtyAndPackageUpData:(BOOL)arg1 clearDirty:(BOOL)arg2;
 - (id)contentAttributes;
 - (id)contentType;
@@ -170,6 +185,7 @@
 - (id)encodeUserInfo:(id)arg1;
 - (BOOL)encodeUserInfo:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)encodeUserInfo:(id)arg1 error:(id *)arg2;
+- (BOOL)finishUserInfoUpdate;
 - (void)getContinuationStreamsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)indexActivity:(double)arg1 forceIndexing:(BOOL)arg2;
 - (id)init;

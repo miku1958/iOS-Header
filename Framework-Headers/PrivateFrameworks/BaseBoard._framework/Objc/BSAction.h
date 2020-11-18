@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BaseBoard/BSDescriptionProviding-Protocol.h>
 #import <BaseBoard/BSInvalidatable-Protocol.h>
@@ -12,7 +12,7 @@
 #import <BaseBoard/BSXPCCoding-Protocol.h>
 #import <BaseBoard/NSSecureCoding-Protocol.h>
 
-@class BSActionResponse, BSAuditHistory, BSMachPortReceiveRight, BSMachPortTransferableSendRight, BSPortDeathSentinel, BSSettings, BSTimer, NSString;
+@class BSActionListenerToken, BSActionResponse, BSAuditHistory, BSMachPortReceiveRight, BSMachPortTransferableSendRight, BSPortDeathSentinel, BSSettings, BSTimer, NSString;
 @protocol OS_dispatch_queue;
 
 @interface BSAction : NSObject <BSXPCCoding, NSSecureCoding, BSSettingDescriptionProvider, BSDescriptionProviding, BSInvalidatable>
@@ -26,7 +26,7 @@
     BOOL _queue_hasBeenNeutered;
     BOOL _queue_invalidated;
     CDUnknownBlockType _queue_handler;
-    CDStruct_28fcad39 _queue_listenerTokens;
+    BSActionListenerToken *_queue_listenerToken;
     BSTimer *_queue_timer;
     CDUnknownBlockType _queue_invalidationHandler;
     BSActionResponse *_queue_response;

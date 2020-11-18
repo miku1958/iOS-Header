@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface TSCHRenderUtilities : NSObject
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (void)addTextSubselectionHalosToArray:(id)arg1 rect:(struct CGRect)arg2 transform:(struct CGAffineTransform)arg3;
 + (void)addTextSubselectionKnobsToArray:(id)arg1 rect:(struct CGRect)arg2 transform:(struct CGAffineTransform)arg3;
++ (CDStruct_d230bf23)barElementsRendererValueRangeForModelCache:(id)arg1 groupIndex:(unsigned long long)arg2;
 + (BOOL)centerPointForSeries:(id)arg1 index:(unsigned long long)arg2 frame:(struct CGRect)arg3 point:(struct CGPoint *)arg4;
 + (BOOL)centerPointForSeries:(id)arg1 index:(unsigned long long)arg2 frame:(struct CGRect)arg3 point:(struct CGPoint *)arg4 nullsUseIntercept:(BOOL)arg5;
 + (void)drawFill:(id)arg1 inContext:(struct CGContext *)arg2 frame:(struct CGRect)arg3;
@@ -23,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (struct CGRect)integralFillRenderingRectFromElementRect:(struct CGRect)arg1;
 + (struct CGRect)labelRectFromClipRect:(struct CGRect)arg1 elementSize:(struct CGSize)arg2;
 + (id)lightenFillOrStroke:(id)arg1 byPercent:(double)arg2;
++ (struct CGLayer *)newCGLayerForUserSpaceRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2 outUserSpaceLayerBounds:(struct CGRect *)arg3;
 + (struct CGPath *)newClipPathForSymbol:(int)arg1 at:(struct CGPoint)arg2 width:(double)arg3 stroke:(id)arg4;
 + (struct CGImage *)newImageFromFills:(id)arg1 size:(struct CGSize)arg2 spaceBetween:(struct CGSize)arg3 scale:(double)arg4 borderColor:(id)arg5 outFillRects:(struct CGRect **)arg6;
 + (struct CGColor *)newLightenedColor:(struct CGColor *)arg1 byPercent:(double)arg2;
@@ -39,6 +41,7 @@ __attribute__((visibility("hidden")))
 + (struct CGPath *)p_newYieldPath:(struct CGPoint)arg1 width:(double)arg2 pathLocation:(long long)arg3 stroke:(id)arg4;
 + (id)printCGPath:(struct CGPath *)arg1;
 + (struct CGRect)scaleRect:(struct CGRect)arg1 toFit:(struct CGRect)arg2;
++ (void)updateStackRectsDictionary:(id)arg1 withElementRect:(struct CGRect)arg2 groupIndex:(unsigned long long)arg3 barModelCache:(id)arg4;
 
 @end
 

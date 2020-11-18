@@ -8,24 +8,24 @@
 
 #import <NewsToday/NSCopying-Protocol.h>
 
-@class FRPersonalizationFeature;
+@class FCPersonalizationFeature;
 
 @interface NTSectionPresencePersonalizationRelativeRequest : NSObject <NSCopying>
 {
-    FRPersonalizationFeature *_targetSectionFeature;
+    FCPersonalizationFeature *_targetSectionFeature;
     double _targetSectionFeatureClickPrior;
     double _targetSectionFeatureImpressionPrior;
-    FRPersonalizationFeature *_competingSectionFeature;
+    FCPersonalizationFeature *_competingSectionFeature;
     double _competingSectionFeatureClickPrior;
     double _competingSectionFeatureImpressionPrior;
     double _scalar;
 }
 
-@property (copy, nonatomic) FRPersonalizationFeature *competingSectionFeature; // @synthesize competingSectionFeature=_competingSectionFeature;
+@property (copy, nonatomic) FCPersonalizationFeature *competingSectionFeature; // @synthesize competingSectionFeature=_competingSectionFeature;
 @property (nonatomic) double competingSectionFeatureClickPrior; // @synthesize competingSectionFeatureClickPrior=_competingSectionFeatureClickPrior;
 @property (nonatomic) double competingSectionFeatureImpressionPrior; // @synthesize competingSectionFeatureImpressionPrior=_competingSectionFeatureImpressionPrior;
 @property (nonatomic) double scalar; // @synthesize scalar=_scalar;
-@property (copy, nonatomic) FRPersonalizationFeature *targetSectionFeature; // @synthesize targetSectionFeature=_targetSectionFeature;
+@property (copy, nonatomic) FCPersonalizationFeature *targetSectionFeature; // @synthesize targetSectionFeature=_targetSectionFeature;
 @property (nonatomic) double targetSectionFeatureClickPrior; // @synthesize targetSectionFeatureClickPrior=_targetSectionFeatureClickPrior;
 @property (nonatomic) double targetSectionFeatureImpressionPrior; // @synthesize targetSectionFeatureImpressionPrior=_targetSectionFeatureImpressionPrior;
 

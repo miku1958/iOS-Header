@@ -14,7 +14,7 @@
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)arg1 performAction:(int)arg2;
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)arg1 shareElementWithURL:(NSURL *)arg2 rect:(struct CGRect)arg3;
 - (BOOL)actionSheetAssistant:(WKActionSheetAssistant *)arg1 shouldIncludeAppLinkActionsForElement:(_WKActivatedElementInfo *)arg2;
-- (optional_184d31a8)positionInformationForActionSheetAssistant:(WKActionSheetAssistant *)arg1;
+- (optional_2cdb8358)positionInformationForActionSheetAssistant:(WKActionSheetAssistant *)arg1;
 
 @optional
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)arg1 getAlternateURLForImage:(UIImage *)arg2 completion:(void (^)(NSURL *, NSDictionary *))arg3;

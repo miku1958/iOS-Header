@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PhotoLibraryServices/PLManagedObjectContextPTPNotificationDelegate-Protocol.h>
 
-@class NSFileManager, NSMutableSet, NSSet, NSString, PFMediaCapabilities, PLManagedObjectContext, PLPTPdFormatConversionManager, PLPhotoLibrary;
+@class NSFileManager, NSMutableSet, NSSet, NSString, PFMediaCapabilities, PLPTPdFormatConversionManager, PLPhotoLibrary;
 @protocol OS_dispatch_queue, PhotoLibraryPTPDelegate;
 
 @interface PLPTPdAssetManager : NSObject <PLManagedObjectContextPTPNotificationDelegate>
@@ -29,7 +29,6 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSFileManager *fileManager; // @synthesize fileManager;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong) PLManagedObjectContext *managedObjectContext;
 @property (strong) PFMediaCapabilities *peerMediaCapabilities;
 @property (readonly, strong, nonatomic) PLPhotoLibrary *photoLibrary;
 @property (readonly) Class superclass;
@@ -65,8 +64,10 @@
 - (id)infoForAsset:(struct NSObject *)arg1;
 - (id)init;
 - (BOOL)libraryIsAvailable;
+- (id)managedObjectContext;
 - (void)managedObjectContext:(id)arg1 libraryChangedWithInsertedAssetIDs:(id)arg2 deletedAssetIDs:(id)arg3 changedAssetIDs:(id)arg4 adjustedAssetIDs:(id)arg5;
 - (void)markSignpostForAsset:(id)arg1 endMarker:(BOOL)arg2 adjusted:(BOOL)arg3 arg4:(unsigned long long)arg4;
+- (struct CGSize)masterThumbSize;
 - (id)ptpAssetReaderForAssetHandle:(id)arg1;
 - (BOOL)ptpCanDeleteFiles;
 - (BOOL)ptpDeletePhotoForAssetHandle:(id)arg1;
@@ -81,6 +82,7 @@
 - (id)ptpThumbnailForAssetHandle:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
 - (id)ptpThumbnailForPhotoWithKey:(id)arg1;
 - (id)ptpThumbnailForPhotoWithKey:(id)arg1 size:(struct CGSize)arg2 compressionQuality:(float)arg3;
+- (BOOL)requestedSize:(struct CGSize)arg1 fitsInSourceSize:(struct CGSize)arg2;
 - (void)setPtpDelegate:(id)arg1;
 
 @end

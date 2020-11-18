@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIFormPeripheral-Protocol.h>
+#import <UIKitCore/UIFormPeripheral-Protocol.h>
 
 @class DOMHTMLSelectElement;
 @protocol UIWebFormControl;

@@ -11,19 +11,26 @@
 @interface IMSPIHandle : NSObject
 {
     NSString *_address;
-    IMPerson *_person;
-    int _abIdentifier;
+    NSString *_countryCode;
+    BOOL _isMe;
+    IMPerson *_imPerson;
+    BOOL _haveFetchedIMPerson;
 }
 
-@property int abIdentifier; // @synthesize abIdentifier=_abIdentifier;
-@property (strong) NSString *address; // @synthesize address=_address;
+@property (readonly) NSString *address; // @synthesize address=_address;
+@property (readonly) NSString *businessName;
 @property (readonly) NSString *cnContactID;
+@property (readonly) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (readonly) NSString *displayName;
-@property (readonly) NSString *identifier;
-@property (strong) IMPerson *person; // @synthesize person=_person;
+@property (readonly) BOOL isBusiness;
+@property (readonly) BOOL isMe; // @synthesize isMe=_isMe;
 
 - (void).cxx_destruct;
 - (id)description;
+- (unsigned long long)hash;
+- (id)initWithAddress:(id)arg1 countryCode:(id)arg2 isMe:(BOOL)arg3;
+- (BOOL)isEqual:(id)arg1;
+- (id)person;
 
 @end
 

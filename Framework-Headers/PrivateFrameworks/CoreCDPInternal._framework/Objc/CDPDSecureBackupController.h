@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) NSDictionary *cachedAccountInfo; // @synthesize cachedAccountInfo=_cachedAccountInfo;
 @property (strong, nonatomic) CDPDSecureBackupConfiguration *configuration; // @synthesize configuration=_configuration;
-@property (strong, nonatomic) CDPContext *context; // @synthesize context=_context;
+@property (readonly, nonatomic) CDPContext *context; // @synthesize context=_context;
 @property (weak, nonatomic) id<CDPDSecureBackupDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL fakeNearlyDepletedRecords; // @synthesize fakeNearlyDepletedRecords=_fakeNearlyDepletedRecords;
 @property (strong, nonatomic) id<CDPDSecureBackupProxy> secureBackupProxy; // @synthesize secureBackupProxy=_secureBackupProxy;
@@ -47,7 +47,6 @@
 - (void)accountInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)authenticatedEnableSecureBackupWithRecoveryKey:(id)arg1 error:(id *)arg2;
 - (void)backupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg1;
-- (void)cdpBackupRecordsArePresentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)checkAndRemoveExistingThenEnableSecureBackupRecordWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)checkForExistingRecord:(CDUnknownBlockType)arg1;
 - (void)checkForExistingRecordMatchingPredicate:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -60,7 +59,6 @@
 - (void)enableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)enableSecureBackupWithRecoveryKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getBackupRecordDevicesWithCompletion:(CDUnknownBlockType)arg1;
-- (id)init;
 - (id)initWithContext:(id)arg1 proxy:(id)arg2;
 - (id)initWithContext:(id)arg1 uiProvider:(id)arg2 delegate:(id)arg3;
 - (void)isEligibleForCDPWithCompletion:(CDUnknownBlockType)arg1;

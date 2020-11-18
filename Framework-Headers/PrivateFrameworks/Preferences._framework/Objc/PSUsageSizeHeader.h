@@ -4,25 +4,33 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKit/UITableViewHeaderFooterView.h>
 
 #import <Preferences/PSHeaderFooterView-Protocol.h>
 
-@class UILabel;
+@class NSLayoutConstraint, UILabel;
 
-@interface PSUsageSizeHeader : UIView <PSHeaderFooterView>
+@interface PSUsageSizeHeader : UITableViewHeaderFooterView <PSHeaderFooterView>
 {
     UILabel *_sizeLabel;
     UILabel *_titleLabel;
-    double _height;
+    NSLayoutConstraint *_labelLeadingConstraint;
+    NSLayoutConstraint *_labelTrailingConstraint;
 }
+
+@property (strong, nonatomic) NSLayoutConstraint *labelLeadingConstraint; // @synthesize labelLeadingConstraint=_labelLeadingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *labelTrailingConstraint; // @synthesize labelTrailingConstraint=_labelTrailingConstraint;
+@property (strong, nonatomic) UILabel *sizeLabel; // @synthesize sizeLabel=_sizeLabel;
+@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
 - (id)initWithSpecifier:(id)arg1;
-- (void)layoutSubviews;
-- (double)preferredHeightForWidth:(double)arg1;
+- (double)preferredHeightForWidth:(double)arg1 inTableView:(id)arg2;
 - (void)setSize:(id)arg1;
 - (void)setSizeLabelHidden:(BOOL)arg1;
+- (void)setTableView:(id)arg1;
+- (void)setupConstraints;
+- (void)updateConstraints;
 
 @end
 

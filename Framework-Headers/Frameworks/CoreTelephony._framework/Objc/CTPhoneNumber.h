@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreTelephony/CTMessageAddress-Protocol.h>
 #import <CoreTelephony/NSCopying-Protocol.h>
@@ -16,6 +16,7 @@
     NSString *_digits;
     NSString *_countryCode;
     BOOL _isShortCode;
+    long long _slot;
 }
 
 @property (readonly) NSString *countryCode; // @synthesize countryCode=_countryCode;
@@ -25,13 +26,16 @@
 + (BOOL)isValidPhoneNumber:(id)arg1;
 + (BOOL)isValidPhoneNumberChar:(unsigned short)arg1;
 + (id)phoneNumberWithDigits:(id)arg1 countryCode:(id)arg2;
++ (id)phoneNumberWithDigits:(long long)arg1 digits:(id)arg2 countryCode:(id)arg3;
 - (id)canonicalFormat;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)encodedString;
 - (id)formatForCallingCountry:(id)arg1;
 - (id)initWithDigits:(id)arg1 countryCode:(id)arg2;
+- (id)initWithDigits:(long long)arg1 digits:(id)arg2 countryCode:(id)arg3;
 - (long long)numberOfDigitsForShortCodeNumber;
+- (long long)numberOfDigitsForShortCodeNumber:(long long)arg1;
 
 @end
 

@@ -10,12 +10,18 @@
 
 @property (nonatomic) BOOL neverCacheContentLayoutSize;
 
+- (void)_didInvalidateIntrinsicContentSize;
 - (long long)_nui_isUIButtonType;
+- (struct CGSize)calculateLayoutSizeFittingSize:(struct CGSize)arg1;
 - (id)contentLayoutSizeCacheDescription;
 - (struct UIEdgeInsets)effectiveAlignmentRectInsets;
+- (double)effectiveBaselineOffsetFromBottom;
 - (double)effectiveBaselineOffsetFromContentBottom;
 - (double)effectiveFirstBaselineOffsetFromContentTop;
-- (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
+- (double)effectiveFirstBaselineOffsetFromTop;
+- (struct CGSize)effectiveMaximumLayoutContentSize;
+- (struct CGSize)effectiveMinimumLayoutContentSize;
+- (double)effectiveScreenScale;
 - (double)systemSpacingToAdjecentSiblingView:(id)arg1 axis:(long long)arg2 baselineRelative:(BOOL)arg3 multiplier:(double)arg4;
 - (double)systemSpacingToContainerView:(id)arg1 edge:(unsigned long long)arg2 baselineRelative:(BOOL)arg3 multiplier:(double)arg4;
 @end

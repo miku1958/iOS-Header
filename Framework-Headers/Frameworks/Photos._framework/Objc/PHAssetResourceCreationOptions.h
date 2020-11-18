@@ -8,16 +8,20 @@
 
 #import <Photos/NSCopying-Protocol.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface PHAssetResourceCreationOptions : NSObject <NSCopying>
 {
     BOOL _shouldMoveFile;
+    BOOL _shouldIngestInPlace;
+    NSDate *_alternateImportImageDate;
     NSString *_originalFilename;
     NSString *_uniformTypeIdentifier;
 }
 
+@property (strong, nonatomic) NSDate *alternateImportImageDate; // @synthesize alternateImportImageDate=_alternateImportImageDate;
 @property (copy, nonatomic) NSString *originalFilename; // @synthesize originalFilename=_originalFilename;
+@property (nonatomic) BOOL shouldIngestInPlace; // @synthesize shouldIngestInPlace=_shouldIngestInPlace;
 @property (nonatomic) BOOL shouldMoveFile; // @synthesize shouldMoveFile=_shouldMoveFile;
 @property (copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 

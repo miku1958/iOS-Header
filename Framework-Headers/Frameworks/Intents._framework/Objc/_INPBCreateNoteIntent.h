@@ -7,12 +7,14 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBCreateNoteIntent-Protocol.h>
 
-@class PBUnknownFields, _INPBDataString, _INPBIntentMetadata, _INPBNoteContent;
+@class NSString, _INPBDataString, _INPBIntentMetadata, _INPBNoteContent;
 
-@interface _INPBCreateNoteIntent : PBCodable <NSCopying>
+@interface _INPBCreateNoteIntent : PBCodable <_INPBCreateNoteIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBNoteContent *_content;
     _INPBDataString *_groupName;
     _INPBIntentMetadata *_intentMetadata;
@@ -20,23 +22,22 @@
 }
 
 @property (strong, nonatomic) _INPBNoteContent *content; // @synthesize content=_content;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDataString *groupName; // @synthesize groupName=_groupName;
 @property (readonly, nonatomic) BOOL hasContent;
 @property (readonly, nonatomic) BOOL hasGroupName;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
 @property (readonly, nonatomic) BOOL hasTitle;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBDataString *title; // @synthesize title=_title;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

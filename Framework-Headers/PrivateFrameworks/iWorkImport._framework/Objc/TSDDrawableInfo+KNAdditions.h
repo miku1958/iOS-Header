@@ -18,6 +18,8 @@
 @property (readonly, nonatomic) KNBuild *buildIn;
 @property (readonly, nonatomic) KNBuild *buildOut;
 @property (readonly, nonatomic) NSSet *builds;
+@property (readonly, nonatomic) BOOL canBeDefinedAsMediaPlaceholder;
+@property (readonly, nonatomic) BOOL canBeDefinedAsTextPlaceholder;
 @property (readonly, nonatomic) NSSet *contentBuilds;
 @property (readonly, nonatomic) NSArray *ghostInfos;
 @property (readonly, nonatomic) BOOL hasActionBuilds;

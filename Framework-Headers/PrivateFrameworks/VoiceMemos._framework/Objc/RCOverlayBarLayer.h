@@ -6,24 +6,36 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class UIColor;
+@class UIColor, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface RCOverlayBarLayer : CALayer
 {
     CALayer *_topKnob;
     CALayer *_bar;
     CALayer *_bottomKnob;
     UIColor *_color;
+    BOOL _barWidthMatchesKnobs;
+    UIImage *_barGlyph;
+    double _widthMultiplier;
 }
 
+@property (strong, nonatomic) UIImage *barGlyph; // @synthesize barGlyph=_barGlyph;
+@property (nonatomic) BOOL barWidthMatchesKnobs; // @synthesize barWidthMatchesKnobs=_barWidthMatchesKnobs;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
+@property (nonatomic) double widthMultiplier; // @synthesize widthMultiplier=_widthMultiplier;
 
++ (double)_internalSelectionBarWidth;
++ (double)_internalSelectionKnobRadius;
 + (double)selectionBarWidth;
 + (double)selectionKnobRadius;
 - (void).cxx_destruct;
 - (void)_loadWithColor:(id)arg1 selectionExtentIncludingKnobs:(double)arg2 topKnob:(BOOL)arg3 bottomKnob:(BOOL)arg4;
 - (id)barComponents;
-- (id)initWithColor:(id)arg1 selectionExtentIncludingKnobs:(double)arg2 topKnob:(BOOL)arg3 bottomKnob:(BOOL)arg4;
+- (id)initWithColor:(id)arg1 selectionExtentIncludingKnobs:(double)arg2 topKnob:(BOOL)arg3 bottomKnob:(BOOL)arg4 widthMultiplier:(double)arg5 barWidthMatchesKnobs:(BOOL)arg6;
+- (void)layoutSublayers;
+- (double)selectionBarWidth;
+- (double)selectionKnobRadius;
 
 @end
 

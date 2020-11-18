@@ -11,24 +11,22 @@
 #import <HomeKit/HMFMessageReceiver-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessorySettings, NSArray, NSMutableSet, NSString, NSUUID, _HMContext;
+@class HMAccessorySettings, HMFUnfairLock, NSArray, NSMutableSet, NSString, NSUUID, _HMContext;
 @protocol OS_dispatch_queue, _HMAccesorySettingGroupDelegate;
 
 @interface _HMAccessorySettingGroup : NSObject <HMFLogging, HMFMessageReceiver, NSSecureCoding, HMFMerging>
 {
+    HMFUnfairLock *_lock;
     NSMutableSet *_settings;
     NSMutableSet *_groups;
     id<_HMAccesorySettingGroupDelegate> _delegate;
     NSUUID *_identifier;
     NSString *_name;
     _HMContext *_context;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMAccessorySettings *_accessorySettings;
 }
 
 @property (strong, nonatomic) HMAccessorySettings *accessorySettings; // @synthesize accessorySettings=_accessorySettings;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<_HMAccesorySettingGroupDelegate> delegate; // @synthesize delegate=_delegate;
@@ -39,7 +37,6 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, copy) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, copy) NSArray *settings;
 @property (readonly) Class superclass;
 
@@ -58,6 +55,7 @@
 - (void)addGroup:(id)arg1 toGroup:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)addSetting:(id)arg1;
 - (void)addSetting:(id)arg1 toGroup:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)clientQueue;
 - (void)configureWithAccessorySettings:(id)arg1 context:(id)arg2;
 - (void)dealloc;
 - (id)descriptionWithPointer:(BOOL)arg1;

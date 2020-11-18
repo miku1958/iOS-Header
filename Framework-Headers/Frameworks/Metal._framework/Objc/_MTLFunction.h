@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/MTLFunctionSPI-Protocol.h>
 
@@ -24,6 +24,7 @@
     NSString *_label;
     MTLType *_returnType;
     NSArray *_arguments;
+    NSString *_unpackedFilePath;
 }
 
 @property NSArray *arguments; // @dynamic arguments;
@@ -45,14 +46,17 @@
 @property (readonly) BOOL needsFunctionConstantValues; // @dynamic needsFunctionConstantValues;
 @property (readonly) long long patchControlPointCount; // @dynamic patchControlPointCount;
 @property (readonly) unsigned long long patchType; // @dynamic patchType;
+@property (readonly) unsigned long long renderTargetArrayIndexType; // @dynamic renderTargetArrayIndexType;
 @property MTLType *returnType; // @dynamic returnType;
 @property (readonly) NSArray *stageInputAttributes; // @dynamic stageInputAttributes;
 @property (readonly) Class superclass;
+@property (copy) NSString *unpackedFilePath; // @synthesize unpackedFilePath=_unpackedFilePath;
 @property (readonly) id vendorPrivate; // @synthesize vendorPrivate=_vendorPrivate;
 @property NSArray *vertexAttributes; // @dynamic vertexAttributes;
 
 - (unsigned long long)bitCodeFileSize;
 - (const CDStruct_41a22ec7 *)bitCodeHash;
+- (id)bitcodeData;
 - (void)dealloc;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)initWithName:(id)arg1 type:(unsigned long long)arg2 libraryData:(struct MTLLibraryData *)arg3 device:(id)arg4;

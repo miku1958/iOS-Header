@@ -10,16 +10,17 @@
 {
 }
 
-+ (BOOL)_getAnchorsForProperty:(id)arg1 set:(id)arg2 store:(id)arg3 profile:(id)arg4 error:(id *)arg5;
++ (BOOL)_getAnchorsForProperty:(id)arg1 anchorMap:(id)arg2 store:(id)arg3 profile:(id)arg4 error:(id *)arg5;
 + (id)_predicateForSyncEntityIdentifier:(id)arg1;
 + (id)_predicateForSyncEntityIdentifier:(id)arg1 syncStore:(id)arg2;
 + (id)_predicateForSyncStore:(id)arg1;
 + (BOOL)_setSyncAnchor:(long long)arg1 options:(unsigned long long)arg2 updatePolicy:(long long)arg3 entityIdentifier:(id)arg4 store:(id)arg5 database:(id)arg6 error:(id *)arg7;
 + (BOOL)_setSyncAnchor:(long long)arg1 options:(unsigned long long)arg2 updatePolicy:(long long)arg3 entityIdentifier:(id)arg4 store:(id)arg5 profile:(id)arg6 error:(id *)arg7;
 + (long long)_syncAnchorForProperty:(id)arg1 entityIdentifier:(id)arg2 store:(id)arg3 profile:(id)arg4 error:(id *)arg5;
-+ (id)columnsDefinition;
++ (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
 + (BOOL)enumerateSyncAnchorsForStoreID:(long long)arg1 database:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
++ (BOOL)getAckedAnchorsWithMap:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (BOOL)getNextAnchorsWithMap:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (BOOL)getReceivedAnchorsWithMap:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (long long)nextSyncAnchorForEntityIdentifier:(id)arg1 store:(id)arg2 profile:(id)arg3 error:(id *)arg4;

@@ -19,10 +19,10 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)dataForBundle:(id)arg1 createIfRequired:(BOOL)arg2;
-- (void)_waitForDaemon;
+- (BOOL)_waitForDaemon;
 - (void)addExtensionEndpoint:(id)arg1;
-- (void)assetPacksBecameAvailable:(id)arg1;
-- (void)assetPacksBecameUnavailable:(id)arg1;
+- (BOOL)assetPacksBecameAvailable:(id)arg1 error:(id *)arg2;
+- (BOOL)assetPacksBecameUnavailable:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)description;
 - (id)initWithBundle:(id)arg1;

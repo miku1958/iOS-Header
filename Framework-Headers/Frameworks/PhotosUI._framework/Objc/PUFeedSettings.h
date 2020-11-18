@@ -24,6 +24,8 @@
     BOOL _forceLivePhotoBadges;
     BOOL _simulateSharedStreamsEnabled;
     BOOL _vitalityEnabled;
+    BOOL _showGroupIDHeaders;
+    BOOL _loopsEnabled;
     double _smallTileSizeTolerance;
     long long _maximumScrollRegimeForQualityImageFormats;
     double _speedometerMediumUpperThreshold;
@@ -51,6 +53,7 @@
 @property (nonatomic) BOOL ignoresCaptions; // @synthesize ignoresCaptions=_ignoresCaptions;
 @property (nonatomic) long long infiniteScrollingWindowSizeIncrement; // @synthesize infiniteScrollingWindowSizeIncrement=_infiniteScrollingWindowSizeIncrement;
 @property (nonatomic) long long initialWindowSize; // @synthesize initialWindowSize=_initialWindowSize;
+@property (nonatomic) BOOL loopsEnabled; // @synthesize loopsEnabled=_loopsEnabled;
 @property (nonatomic) long long maximumScrollRegimeForQualityImageFormats; // @synthesize maximumScrollRegimeForQualityImageFormats=_maximumScrollRegimeForQualityImageFormats;
 @property (nonatomic) double mediumScrollPreheatingWindowSize; // @synthesize mediumScrollPreheatingWindowSize=_mediumScrollPreheatingWindowSize;
 @property (nonatomic) BOOL parallaxEnabled; // @synthesize parallaxEnabled=_parallaxEnabled;
@@ -62,6 +65,7 @@
 @property (nonatomic) BOOL shouldPreheatCoreData; // @synthesize shouldPreheatCoreData=_shouldPreheatCoreData;
 @property (nonatomic) BOOL shouldUseJPEGFastFormatForLargeTiles; // @synthesize shouldUseJPEGFastFormatForLargeTiles=_shouldUseJPEGFastFormatForLargeTiles;
 @property (nonatomic) BOOL shouldUseJPEGFastFormatForMediumTiles; // @synthesize shouldUseJPEGFastFormatForMediumTiles=_shouldUseJPEGFastFormatForMediumTiles;
+@property (nonatomic) BOOL showGroupIDHeaders; // @synthesize showGroupIDHeaders=_showGroupIDHeaders;
 @property (nonatomic) BOOL simulateSharedStreamsEnabled; // @synthesize simulateSharedStreamsEnabled=_simulateSharedStreamsEnabled;
 @property (nonatomic) double slowScrollPreheatingWindowSize; // @synthesize slowScrollPreheatingWindowSize=_slowScrollPreheatingWindowSize;
 @property (nonatomic) double smallTileSizeTolerance; // @synthesize smallTileSizeTolerance=_smallTileSizeTolerance;

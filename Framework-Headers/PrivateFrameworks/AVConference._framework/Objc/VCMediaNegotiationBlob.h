@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     VCMediaNegotiationBlobCaptionsSettings *_captionsSettings;
     VCMediaNegotiationBlobMomentsSettings *_momentsSettings;
     NSMutableArray *_multiwayAudioStreams;
+    NSMutableArray *_multiwayVideoStreams;
     VCMediaNegotiationBlobVideoSettings *_screenSettings;
     NSString *_userAgent;
     VCMediaNegotiationBlobVideoSettings *_videoSettings;
@@ -58,6 +59,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasVideoSettings;
 @property (strong, nonatomic) VCMediaNegotiationBlobMomentsSettings *momentsSettings; // @synthesize momentsSettings=_momentsSettings;
 @property (strong, nonatomic) NSMutableArray *multiwayAudioStreams; // @synthesize multiwayAudioStreams=_multiwayAudioStreams;
+@property (strong, nonatomic) NSMutableArray *multiwayVideoStreams; // @synthesize multiwayVideoStreams=_multiwayVideoStreams;
 @property (nonatomic) unsigned long long ntpTime; // @synthesize ntpTime=_ntpTime;
 @property (strong, nonatomic) VCMediaNegotiationBlobVideoSettings *screenSettings; // @synthesize screenSettings=_screenSettings;
 @property (strong, nonatomic) NSString *userAgent; // @synthesize userAgent=_userAgent;
@@ -65,12 +67,15 @@ __attribute__((visibility("hidden")))
 
 + (Class)bandwidthSettingsType;
 + (Class)multiwayAudioStreamsType;
++ (Class)multiwayVideoStreamType;
 - (void)addBandwidthSettings:(id)arg1;
 - (void)addMultiwayAudioStreams:(id)arg1;
+- (void)addMultiwayVideoStream:(id)arg1;
 - (id)bandwidthSettingsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)bandwidthSettingsCount;
 - (void)clearBandwidthSettings;
 - (void)clearMultiwayAudioStreams;
+- (void)clearMultiwayVideoStreams;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
@@ -81,9 +86,13 @@ __attribute__((visibility("hidden")))
 - (void)mergeFrom:(id)arg1;
 - (id)multiwayAudioStreamsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)multiwayAudioStreamsCount;
+- (id)multiwayVideoStreamAtIndex:(unsigned long long)arg1;
+- (unsigned long long)multiwayVideoStreamsCount;
 - (void)printBandwidthSettingsWithLogFile:(void *)arg1;
 - (void)printCaptionsSettingsWithLogFile:(void *)arg1;
 - (void)printMomentsSettingsWithLogFile:(void *)arg1;
+- (void)printMultiwayAudioStreamsWithLogFile:(void *)arg1;
+- (void)printMultiwayVideoStreamsWithLogFile:(void *)arg1;
 - (void)printWithTitle:(id)arg1 blobSize:(unsigned int)arg2 logFile:(void *)arg3;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

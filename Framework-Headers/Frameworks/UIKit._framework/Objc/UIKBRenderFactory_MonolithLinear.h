@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory_Monolith.h>
+#import <UIKitCore/UIKBRenderFactory_Monolith.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactory_MonolithLinear : UIKBRenderFactory_Monolith

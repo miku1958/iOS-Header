@@ -11,6 +11,7 @@
 @class NSString;
 @protocol INIntentResponseObserver;
 
+__attribute__((visibility("hidden")))
 @interface INExtensionContextGetRideStatusIntentResponseObserver : NSObject <INGetRideStatusIntentResponseObserver>
 {
     id<INIntentResponseObserver> _remoteObserver;

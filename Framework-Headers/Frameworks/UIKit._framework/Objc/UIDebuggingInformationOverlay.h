@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIWindow.h>
+#import <UIKitCore/UIWindow.h>
 
-#import <UIKit/UISplitViewControllerDelegate-Protocol.h>
+#import <UIKitCore/UISplitViewControllerDelegate-Protocol.h>
 
 @class NSMutableArray, UIDebuggingInformationOverlayViewController, UIDebuggingInformationRootTableViewController, UIEvent;
 

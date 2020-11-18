@@ -41,8 +41,9 @@
 - (void)clientRemote_updateIngestionState:(long long)arg1;
 - (void)conceptForCodings:(id)arg1 preferredSystems:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connectionInvalidated;
-- (void)createStaticAccountWithTitle:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)createStaticAccountWithTitle:(id)arg1 subtitle:(id)arg2 description:(id)arg3 onlyIfNeededForSimulatedGatewayID:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)deleteAccountWithIdentifier:(struct NSUUID *)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)deregisterAppSourceFromClinicalUnlimitedAuthorizationModeConfirmation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dispatchIngestionStateChange;
 - (void)displayStringForMedicalCodingSystem:(id)arg1 code:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)displayStringForMedicalCodingSystem:(id)arg1 code:(id)arg2 version:(id)arg3 completion:(CDUnknownBlockType)arg4;
@@ -52,6 +53,7 @@
 - (void)fetchAccountsForGateways:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchAllAccountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchClinicalOptInDataCollectionFilePathsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchExportedPropertiesForHealthRecord:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchFHIRJSONDocumentWithAccountIdentifier:(struct NSUUID *)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchLogoDataForBrand:(id)arg1 scaleKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)fetchLogoDataForFeaturedBrandsAtScaleKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -68,6 +70,7 @@
 - (void)notifyForNewHealthRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performCodingTasks:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)pruneAuthenticationDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)registerAppSourceForClinicalUnlimitedAuthorizationModeConfirmation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)remoteInterface;
 - (void)replaceAccountWithNewAccountForAccountWithIdentifier:(struct NSUUID *)arg1 usingCredentialWithPersistentID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)resetClinicalContentAnalyticsAnchorsWithCompletion:(CDUnknownBlockType)arg1;

@@ -59,7 +59,6 @@
 - (id)detailedFeatureElementInfoAtPoint:(struct CGPoint)arg1;
 - (id)initWithAccessibilityContainer:(id)arg1;
 - (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_58d0ca89 *)arg2 featureTypeContext:(void *)arg3 ignoreMissingName:(BOOL)arg4 useLocalizedLabels:(BOOL)arg5;
-- (BOOL)isEqual:(id)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1;
 - (id)pointsFromFeature:(id)arg1;
 - (void)startLocationInformationRequest:(struct CGPoint)arg1;

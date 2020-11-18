@@ -10,5 +10,6 @@
 
 @property (readonly) BOOL tsu_isSuccess;
 
++ (BOOL)tsu_isSuccessStatusCode:(long long)arg1;
 @end
 

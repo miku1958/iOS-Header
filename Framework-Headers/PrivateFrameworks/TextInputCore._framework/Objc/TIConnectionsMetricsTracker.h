@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class PETGoalConversionEventTracker, PETScalarEventTracker;
 
@@ -20,7 +20,7 @@
 @property (strong, nonatomic) PETScalarEventTracker *textFieldEntryTracker; // @synthesize textFieldEntryTracker=_textFieldEntryTracker;
 
 + (id)sharedInstance;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)init;
 - (BOOL)isIgnoredTrigger:(id)arg1;
 - (void)trackPredictionEngagmentWithConversion:(BOOL)arg1 age:(unsigned long long)arg2 fieldType:(id)arg3 resultType:(id)arg4 fromBundleId:(id)arg5 targetApp:(id)arg6 linguistic:(BOOL)arg7 semantic:(BOOL)arg8;

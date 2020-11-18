@@ -27,7 +27,6 @@
 @property (readonly, nonatomic) CDStruct_3c058996 alignmentEdgeInsets;
 @property (readonly, nonatomic) int blendMode;
 @property (readonly, nonatomic) struct CGImage *croppedImage;
-@property (readonly, nonatomic) long long displayGamut;
 @property (readonly, nonatomic) CDStruct_3c058996 edgeInsets;
 @property (readonly, nonatomic) int exifOrientation;
 @property (readonly, nonatomic) BOOL hasAlignmentInformation;
@@ -39,7 +38,6 @@
 @property (readonly, nonatomic) BOOL isStructured;
 @property (readonly, nonatomic) BOOL isTemplate;
 @property (readonly, nonatomic) BOOL isVectorBased;
-@property (readonly, nonatomic) long long layoutDirection;
 @property (readonly, nonatomic) double opacity;
 @property (readonly, nonatomic) BOOL preservedVectorRepresentation;
 @property (readonly, nonatomic) long long resizingMode;
@@ -52,15 +50,10 @@
 - (id)baseKey;
 - (struct CGImage *)createImageFromPDFRenditionWithScale:(double)arg1;
 - (id)description;
-- (long long)graphicsClass;
-- (long long)idiom;
-- (long long)memoryClass;
+- (id)initWithName:(id)arg1 usingRenditionKey:(id)arg2 fromTheme:(unsigned long long)arg3;
 - (struct CGSize)originalUncroppedSize;
 - (double)positionOfSliceBoundary:(unsigned int)arg1;
 - (long long)resizingModeWithSubtype:(long long)arg1;
-- (long long)sizeClassHorizontal;
-- (long long)sizeClassVertical;
-- (unsigned long long)subtype;
 
 @end
 

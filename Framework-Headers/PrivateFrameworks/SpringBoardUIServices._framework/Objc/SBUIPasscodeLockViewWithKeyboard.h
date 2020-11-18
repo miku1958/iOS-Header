@@ -64,7 +64,9 @@
 - (id)_viewForKeyboardTracking;
 - (void)becomeActiveWithAnimationSettings:(id)arg1;
 - (BOOL)becomeFirstResponder;
+- (void)beginTransitionToState:(long long)arg1;
 - (void)dealloc;
+- (void)didEndTransitionToState:(long long)arg1;
 - (id)initWithLightStyle:(BOOL)arg1;
 - (void)layoutSubviews;
 - (id)passcode;
@@ -73,10 +75,12 @@
 - (void)passcodeEntryFieldDidCancelEntry:(id)arg1;
 - (BOOL)passcodeEntryFieldShouldShowSystemKeyboard:(id)arg1;
 - (void)passcodeEntryFieldTextDidChange:(id)arg1;
+- (void)resignActiveWithAnimationSettings:(id)arg1;
 - (BOOL)resignFirstResponder;
 - (void)setShowsEmergencyCallButton:(BOOL)arg1;
 - (void)setShowsStatusField:(BOOL)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateForTransitionToPasscodeView:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateStatusText:(id)arg1 subtitle:(id)arg2 animated:(BOOL)arg3;
 
 @end

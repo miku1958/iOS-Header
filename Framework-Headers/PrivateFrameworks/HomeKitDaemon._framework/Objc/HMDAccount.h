@@ -6,63 +6,80 @@
 
 #import <HMFoundation/HMFObject.h>
 
+#import <HomeKitDaemon/HMDBackingStoreModelBackedObjectProtocol-Protocol.h>
+#import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMerging-Protocol.h>
+#import <HomeKitDaemon/NSFastEnumeration-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSMutableSet, NSObject, NSString, NSUUID;
-@protocol HMDAccountDelegate, OS_dispatch_queue;
+@class CNContact, HMDAccountHandle, HMDAccountIdentifier, HMFUnfairLock, NSArray, NSMutableSet, NSObject, NSSet, NSString, NSUUID;
+@protocol HMDAccountManager, OS_dispatch_queue;
 
-@interface HMDAccount : HMFObject <HMFLogging, HMFMerging, NSSecureCoding>
+@interface HMDAccount : HMFObject <HMFLogging, HMFMerging, HMDBackingStoreObjectProtocol, HMDBackingStoreModelBackedObjectProtocol, NSFastEnumeration, NSSecureCoding>
 {
+    NSObject<OS_dispatch_queue> *_queue;
+    HMFUnfairLock *_lock;
+    NSSet *_handles;
     NSMutableSet *_devices;
-    id<HMDAccountDelegate> _delegate;
-    NSUUID *_identifier;
-    NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
-    NSString *_destination;
+    HMDAccountIdentifier *_identifier;
+    id<HMDAccountManager> _manager;
 }
 
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (readonly, nonatomic, getter=isCurrentAccount) BOOL currentAccount;
+@property (readonly, getter=isAuthenticated) BOOL authenticated;
+@property (readonly, copy) CNContact *contact;
+@property (readonly, getter=isCurrentAccount) BOOL currentAccount;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak) id<HMDAccountDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy, nonatomic) NSString *destination; // @synthesize destination=_destination;
-@property (readonly, nonatomic) NSArray *devices;
+@property (readonly, copy) NSString *destination;
+@property (readonly, copy) NSArray *devices;
+@property (readonly, copy) NSArray *handles;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
+@property (readonly, copy) HMDAccountIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy) NSArray *identities;
+@property (weak) id<HMDAccountManager> manager; // @synthesize manager=_manager;
+@property (readonly, nonatomic) NSUUID *modelIdentifier;
+@property (readonly, nonatomic) NSUUID *modelParentIdentifier;
+@property (readonly, copy) NSString *name;
+@property (readonly, copy) HMDAccountHandle *primaryHandle;
+@property (readonly) BOOL shouldCache;
 @property (readonly) Class superclass;
 
-+ (id)accountDestinationForDestination:(id)arg1;
 + (id)accountWithDestination:(id)arg1;
-+ (id)destinationForAccount:(id)arg1;
-+ (id)iCloudAccountDestination;
-+ (id)identifierFromAccount:(id)arg1 error:(id *)arg2;
-+ (id)identifierFromAddressDestination:(id)arg1 error:(id *)arg2;
-+ (void)initialize;
-+ (BOOL)isValidAccountDestination:(id)arg1;
++ (id)accountWithHandle:(id)arg1;
 + (id)logCategory;
-+ (id)namespace;
-+ (id)shortDescription;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__notifyDelegateUpdatedDevice:(id)arg1;
+- (id)accountHandleWithModelIdentifier:(id)arg1;
 - (void)addDevice:(id)arg1;
-- (id)descriptionWithPointer:(BOOL)arg1;
+- (void)addHandle:(id)arg1;
+- (id)attributeDescriptions;
+- (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (id)currentDevice;
+- (id)deviceForHandle:(id)arg1;
+- (id)deviceForIdentifier:(id)arg1;
+- (id)deviceWithModelIdentifier:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIDSService:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 destination:(id)arg2 devices:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 handles:(id)arg2 devices:(id)arg3;
+- (id)initWithObjectModel:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToAccount:(id)arg1;
+- (BOOL)isRelatedToAccount:(id)arg1;
 - (id)logIdentifier;
 - (BOOL)mergeObject:(id)arg1;
-- (void)notifyDelegateAddedDevice:(id)arg1;
-- (void)notifyDelegateOfUpdatedDevice:(id)arg1;
-- (void)notifyDelegateRemovedDevice:(id)arg1;
+- (id)modelBackedObjects;
+- (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (void)removeDevice:(id)arg1;
+- (void)removeHandle:(id)arg1;
+- (void)setHandles:(id)arg1;
 - (id)shortDescription;
+- (BOOL)shouldMergeObject:(id)arg1;
+- (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
+- (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 
 @end
 

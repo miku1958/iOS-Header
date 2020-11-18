@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <Metal/NSCopying-Protocol.h>
 
@@ -13,21 +13,18 @@
 
 @interface MTLRenderPassDescriptor : NSObject <NSCopying>
 {
-    unsigned long long _renderTargetArrayLength;
     unsigned long long _imageblockSampleLength;
     unsigned long long _threadgroupMemoryLength;
     unsigned long long _tileWidth;
     unsigned long long _tileHeight;
-    unsigned long long _defaultSampleCount;
     unsigned long long _defaultRasterSampleCount;
 }
 
 @property (readonly) MTLRenderPassColorAttachmentDescriptorArray *colorAttachments; // @dynamic colorAttachments;
 @property (nonatomic) unsigned long long defaultRasterSampleCount; // @synthesize defaultRasterSampleCount=_defaultRasterSampleCount;
-@property (nonatomic) unsigned long long defaultSampleCount; // @synthesize defaultSampleCount=_defaultSampleCount;
 @property (copy, nonatomic) MTLRenderPassDepthAttachmentDescriptor *depthAttachment; // @dynamic depthAttachment;
 @property (nonatomic) unsigned long long imageblockSampleLength; // @synthesize imageblockSampleLength=_imageblockSampleLength;
-@property (nonatomic) unsigned long long renderTargetArrayLength; // @synthesize renderTargetArrayLength=_renderTargetArrayLength;
+@property (nonatomic) unsigned long long renderTargetArrayLength; // @dynamic renderTargetArrayLength;
 @property (nonatomic) unsigned long long renderTargetHeight; // @dynamic renderTargetHeight;
 @property (nonatomic) unsigned long long renderTargetWidth; // @dynamic renderTargetWidth;
 @property (copy, nonatomic) MTLRenderPassStencilAttachmentDescriptor *stencilAttachment; // @dynamic stencilAttachment;

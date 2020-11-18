@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <QuartzCore/NSSecureCoding-Protocol.h>
 
@@ -18,7 +18,6 @@
 
 @property (readonly) NSString *name;
 
-+ (void)CAMLParserEndElement:(id)arg1 content:(id)arg2;
 + (void)CAMLParserStartElement:(id)arg1;
 + (id)functionWithName:(id)arg1;
 + (BOOL)supportsSecureCoding;

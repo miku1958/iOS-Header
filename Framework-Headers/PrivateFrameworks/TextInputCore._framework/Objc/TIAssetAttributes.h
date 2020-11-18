@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <TextInputCore/NSCopying-Protocol.h>
 
@@ -26,6 +26,7 @@
 + (BOOL)_dictionary:(id)arg1 matches:(id)arg2 acceptUnspecifiedAttribute:(BOOL)arg3 lenientMatch:(BOOL)arg4;
 + (BOOL)_string:(id)arg1 matches:(id)arg2 acceptUnspecifiedValue:(BOOL)arg3;
 + (id)assetAttributesWithType:(id)arg1 inputModeLevel:(id)arg2 region:(id)arg3;
+- (void).cxx_destruct;
 - (BOOL)containMatchingAttributes:(id)arg1;
 - (BOOL)containMatchingInputModeLevel:(id)arg1;
 - (BOOL)containMatchingInputModeLevelIn:(id)arg1;
@@ -33,7 +34,6 @@
 - (BOOL)containMatchingType:(id)arg1;
 - (BOOL)containMatchingTypeIn:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)description;
 - (unsigned long long)hash;
 - (id)initWithType:(id)arg1 inputModeLevel:(id)arg2 region:(id)arg3;

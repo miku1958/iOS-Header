@@ -10,8 +10,6 @@
 
 @protocol _SFPBTitleSubtitleTuple <NSObject>
 
-@property (readonly, nonatomic) BOOL hasSubtitle;
-@property (readonly, nonatomic) BOOL hasTitle;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *subtitle;
 @property (copy, nonatomic) NSString *title;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIFocusSoundPlayer-Protocol.h>
+#import <UIKitCore/_UIFocusSoundPlayer-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;

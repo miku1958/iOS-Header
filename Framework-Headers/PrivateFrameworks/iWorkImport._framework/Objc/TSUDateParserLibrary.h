@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCondition, NSMutableArray, TSULocale;
 
@@ -19,8 +19,8 @@ __attribute__((visibility("hidden")))
     NSCondition *mParserLibraryConditionVariable;
 }
 
+- (void).cxx_destruct;
 - (id)checkoutDateParser;
-- (void)dealloc;
 - (id)initWithLocale:(id)arg1;
 - (void)prepareDateParserInBackground;
 - (void)returnDateParser:(id)arg1;

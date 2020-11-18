@@ -33,6 +33,7 @@
 - (id)accountsMatchingPredicate:(id)arg1 error:(id *)arg2;
 - (id)changeHistoryWithFetchRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)clearChangeHistoryForClientIdentifier:(id)arg1 toChangeAnchor:(id)arg2 error:(id *)arg3;
+- (id)contactCountForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)contactObservableForFetchRequest:(id)arg1;
 - (id)contactWithUserActivityUserInfo:(id)arg1 keysToFetch:(id)arg2;
 - (id)containersMatchingPredicate:(id)arg1 error:(id *)arg2;
@@ -41,6 +42,7 @@
 - (id)executeFetchRequest:(id)arg1 progressiveResults:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)executeSaveRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)executeSaveRequest:(id)arg1 response:(id *)arg2 error:(id *)arg3;
+- (id)favoritesEntryDictionariesAtPath:(id)arg1 error:(id *)arg2;
 - (BOOL)fetchAndDecodeEncodedContactsForFetchRequest:(id)arg1 error:(id *)arg2 cancelationToken:(id)arg3 batchHandler:(CDUnknownBlockType)arg4;
 - (BOOL)fetchContactsForFetchRequest:(id)arg1 error:(id *)arg2 batchHandler:(CDUnknownBlockType)arg3;
 - (BOOL)fetchEncodedContactsForFetchRequest:(id)arg1 error:(id *)arg2 cancelationToken:(id)arg3 batchHandler:(CDUnknownBlockType)arg4;
@@ -68,6 +70,7 @@
 - (BOOL)unregisterChangeHistoryClientIdentifier:(id)arg1 error:(id *)arg2;
 - (id)userActivityUserInfoForContact:(id)arg1;
 - (id)verifyIndexWithError:(id *)arg1;
+- (BOOL)writeFavoritesPropertyListData:(id)arg1 toPath:(id)arg2 error:(id *)arg3;
 
 @end
 

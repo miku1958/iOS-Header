@@ -4,24 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <iAd/ADAdSheetConnectionDelegate-Protocol.h>
+#import <iAd/ADAdServingDaemonConnectionDelegate-Protocol.h>
 #import <iAd/ADSession_RPC-Protocol.h>
 
-@class ADAdSheetConnection, NSMutableArray, NSString;
+@class ADAdServingDaemonConnection, ADDeviceInfo, NSMutableArray, NSString;
 @protocol ADSSession_RPC, OS_dispatch_queue;
 
-@interface ADSession : NSObject <ADSession_RPC, ADAdSheetConnectionDelegate>
+@interface ADSession : NSObject <ADSession_RPC, ADAdServingDaemonConnectionDelegate>
 {
     BOOL _applicationCanReceiveBackgroundAds;
     BOOL _appExtensionCanReceiveAds;
     BOOL _applicationCanRecieveAds;
     int _classicUnavailableToken;
     NSMutableArray *_adSpaces;
-    ADAdSheetConnection *_connection;
+    ADAdServingDaemonConnection *_connection;
     NSString *_bundleIdentifier;
     NSObject<OS_dispatch_queue> *_adSpaceQueue;
+    ADDeviceInfo *_deviceInfo;
 }
 
 @property (nonatomic) NSObject<OS_dispatch_queue> *adSpaceQueue; // @synthesize adSpaceQueue=_adSpaceQueue;
@@ -31,9 +32,10 @@
 @property (nonatomic) BOOL applicationCanRecieveAds; // @synthesize applicationCanRecieveAds=_applicationCanRecieveAds;
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (nonatomic) int classicUnavailableToken; // @synthesize classicUnavailableToken=_classicUnavailableToken;
-@property (strong, nonatomic) ADAdSheetConnection *connection; // @synthesize connection=_connection;
+@property (strong, nonatomic) ADAdServingDaemonConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) ADDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<ADSSession_RPC> rpcProxy;
 @property (readonly) Class superclass;
@@ -53,6 +55,7 @@
 - (void)_remote_contentProxyURLConnectDidChange:(id)arg1;
 - (void)_remote_contentProxyURLDidChange:(id)arg1;
 - (void)_remote_creativeWithAdSpaceIdentifier:(id)arg1 didFailWithError:(id)arg2;
+- (void)_remote_deviceInfo:(CDUnknownBlockType)arg1;
 - (void)_remote_dismissViewControllerForAdSpaceWithIdentifier:(id)arg1;
 - (void)_remote_dismissViewControllerForAdSpaceWithIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_remote_openURL:(id)arg1 forAdSpaceWithIdentifier:(id)arg2;
@@ -63,23 +66,26 @@
 - (void)_remote_updateActionViewControllerOrientation:(unsigned long long)arg1 forAdSpaceWithIdentifier:(id)arg2;
 - (void)_reportAdSubscriptionEvent:(id)arg1;
 - (void)adAnalyticsEventReceived:(id)arg1;
-- (void)adSheetConnectionEstablished;
-- (void)adSheetConnectionLost;
-- (id)adSheetMachServiceName;
+- (void)adServingDaemonConnectionEstablished;
+- (void)adServingDaemonConnectionLost;
+- (id)adServingDaemonMachServiceName;
 - (void)addClientToSegments:(id)arg1 replaceExisting:(BOOL)arg2;
 - (void)addClientToSegments:(id)arg1 replaceExisting:(BOOL)arg2 privateSegment:(BOOL)arg3;
-- (id)additionalAdSheetLaunchOptions;
+- (id)additionalAdServingDaemonLaunchOptions;
 - (void)configureConnection:(id)arg1;
 - (void)dealloc;
+- (void)establishRPCConnection;
 - (id)init;
+- (void)orientationChanged:(id)arg1;
 - (void)performWhenConnected:(CDUnknownBlockType)arg1;
 - (void)prepareForAdRequests;
 - (void)registerAdSpace:(id)arg1;
 - (void)reportPrerollRequest;
 - (id)rpcProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)segmentDataForSignedInUserWithBlock:(CDUnknownBlockType)arg1;
-- (BOOL)shouldConnectToAdSheet;
+- (BOOL)shouldConnectToAdServingDaemon;
 - (void)unregisterAdSpace:(id)arg1;
+- (void)updateDeviceInfo;
 
 @end
 

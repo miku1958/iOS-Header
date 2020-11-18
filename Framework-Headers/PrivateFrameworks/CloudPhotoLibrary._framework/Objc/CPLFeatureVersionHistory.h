@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <CloudPhotoLibrary/NSSecureCoding-Protocol.h>
+
 @class NSMutableDictionary;
 
-@interface CPLFeatureVersionHistory : NSObject
+@interface CPLFeatureVersionHistory : NSObject <NSSecureCoding>
 {
     NSMutableDictionary *_anchorToVersion;
     NSMutableDictionary *_versionToAnchor;
@@ -17,13 +19,16 @@
 
 @property (readonly, nonatomic) long long currentFeatureVersion; // @synthesize currentFeatureVersion=_currentFeatureVersion;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)addSyncAnchor:(id)arg1 forFeatureVersion:(long long)arg2;
+- (void)addSyncAnchor:(struct NSData *)arg1 forFeatureVersion:(long long)arg2;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (void)enumerateHistoryWithBlock:(CDUnknownBlockType)arg1;
-- (long long)featureVersionForSyncAnchor:(id)arg1;
+- (long long)featureVersionForSyncAnchor:(struct NSData *)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithCurrentFeatureVersion:(long long)arg1;
-- (id)syncAnchorForFeatureVersion:(long long)arg1;
+- (struct NSData *)syncAnchorForFeatureVersion:(long long)arg1;
 
 @end
 

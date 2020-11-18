@@ -14,6 +14,7 @@
 @interface PGPictureInPictureProxy : NSObject <PGPictureInPictureExportedInterface>
 {
     struct CGSize _preferredContentSize;
+    struct CGRect _initialLayerFrame;
     BOOL _isPictureInPicturePossible;
     BOOL _isPictureInPictureActive;
     BOOL _isPictureInPictureSuspended;
@@ -32,6 +33,7 @@
     BOOL _isHostedWindowSizeChangeDuringPinchGesture;
     id<PGPictureInPictureProxyDelegate> _delegate;
     struct {
+        unsigned int pictureInPictureProxyInterfaceOrientationForTransitionAnimation:1;
         unsigned int pictureInPictureProxyViewFrameForTransitionAnimation:1;
         unsigned int pictureInPictureProxy_willStartPictureInPictureWithAnimationType:1;
         unsigned int pictureInPictureProxy_didStartPictureInPictureWithAnimationType:1;
@@ -64,6 +66,7 @@
 + (BOOL)isPictureInPictureSupported;
 + (id)pictureInPictureProxyWithControlsStyle:(long long)arg1 viewController:(id)arg2;
 - (void).cxx_destruct;
+- (long long)_interfaceOrientationForTransitionAnimationAssumeApplicationActive:(BOOL)arg1;
 - (void)_startPictureInPictureAnimated:(BOOL)arg1 enteringBackground:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)_stopPictureInPictureAnimated:(BOOL)arg1 activateApplicationIfNeededAndRestoreUserInterface:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (struct CGRect)_viewFrameForTransitionAnimationAssumeApplicationActive:(BOOL)arg1;
@@ -93,6 +96,7 @@
 - (void)stopPictureInPictureAndRestoreUserInterface:(BOOL)arg1;
 - (oneway void)updateHostedWindowSize:(struct CGSize)arg1 animationType:(long long)arg2 initialSpringVelocity:(double)arg3 synchronizationFence:(id)arg4;
 - (oneway void)updatePictureInPicturePossible:(BOOL)arg1;
+- (void)viewFrameForInteractiveTransitionAnimationWhenEnteringBackgroundDidChangeForViewController;
 
 @end
 

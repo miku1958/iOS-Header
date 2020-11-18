@@ -6,15 +6,15 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXImageRequester, PXUIMediaProvider, UIImage;
-@protocol PXDisplayAsset;
+@class PXImageRequester, UIImage;
+@protocol PXDisplayAsset, PXUIImageProvider;
 
 @protocol PXMutableImageRequester <NSObject>
 
 @property (strong, nonatomic) id<PXDisplayAsset> asset;
 @property (nonatomic) struct CGSize contentSize;
 @property (nonatomic) struct CGRect desiredContentsRect;
-@property (strong, nonatomic) PXUIMediaProvider *mediaProvider;
+@property (strong, nonatomic) id<PXUIImageProvider> mediaProvider;
 @property (nonatomic) double scale;
 @property (nonatomic) struct CGSize viewportSize;
 

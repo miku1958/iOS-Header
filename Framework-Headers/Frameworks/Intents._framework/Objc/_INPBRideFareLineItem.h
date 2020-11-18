@@ -7,33 +7,34 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBRideFareLineItem-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBDecimalNumberValue;
+@class NSString, _INPBDecimalNumberValue;
 
-@interface _INPBRideFareLineItem : PBCodable <NSCopying>
+@interface _INPBRideFareLineItem : PBCodable <_INPBRideFareLineItem, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     NSString *_currencyCode;
     _INPBDecimalNumberValue *_price;
     NSString *_title;
 }
 
-@property (strong, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
+@property (copy, nonatomic) NSString *currencyCode; // @synthesize currencyCode=_currencyCode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCurrencyCode;
 @property (readonly, nonatomic) BOOL hasPrice;
 @property (readonly, nonatomic) BOOL hasTitle;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBDecimalNumberValue *price; // @synthesize price=_price;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

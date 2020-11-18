@@ -23,6 +23,7 @@
 - (void)removeAllSAs;
 - (BOOL)removeSA:(id)arg1;
 - (void)setDelegateQueue:(id)arg1;
+- (void)startBlackholeDetection:(unsigned int)arg1 incomingSA:(id)arg2 outgoingSA:(id)arg3;
 - (void)startIdleTimeout:(unsigned int)arg1 incomingSA:(id)arg2 outgoingSA:(id)arg3;
 - (BOOL)updateSA:(id)arg1;
 

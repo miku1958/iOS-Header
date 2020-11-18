@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXMutablePhotosDetailsViewModel-Protocol.h>
 
-@class NSString, PXSectionedSelectionManager;
+@class NSSet, NSString, PXSectionedSelectionManager;
 
 @interface PXPhotosDetailsViewModel : PXObservable <PXMutablePhotosDetailsViewModel>
 {
@@ -17,10 +17,12 @@
     BOOL _supportsFaceMode;
     BOOL _faceModeEnabled;
     PXSectionedSelectionManager *_selectionManager;
+    NSSet *_disabledActionTypes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSSet *disabledActionTypes; // @synthesize disabledActionTypes=_disabledActionTypes;
 @property (readonly, nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled; // @synthesize faceModeEnabled=_faceModeEnabled;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isSelecting) BOOL selecting; // @synthesize selecting=_selecting;
@@ -32,6 +34,7 @@
 - (void).cxx_destruct;
 - (id)mutableChangeObject;
 - (void)performChanges:(CDUnknownBlockType)arg1;
+- (void)setDisabledActionTypes:(id)arg1;
 - (void)setFaceModeEnabled:(BOOL)arg1;
 - (void)setSelecting:(BOOL)arg1;
 - (void)setSelectionManager:(id)arg1;

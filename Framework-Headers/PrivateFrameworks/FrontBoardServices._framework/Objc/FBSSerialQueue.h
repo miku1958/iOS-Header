@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
@@ -25,6 +25,7 @@
 
 + (id)queueWithDispatchQueue:(id)arg1;
 + (id)queueWithMainRunLoopModes:(id)arg1;
+- (void).cxx_destruct;
 - (BOOL)_hasNext;
 - (id)_initWithDispatchQueue:(id)arg1 mainRunLoopModes:(id)arg2;
 - (BOOL)_performNext;

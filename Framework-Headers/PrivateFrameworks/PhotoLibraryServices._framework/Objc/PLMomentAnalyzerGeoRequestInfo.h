@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSString, PLRevGeoLocationInfo;
 @protocol GEOMapServiceTicket, NSCopying;
@@ -20,6 +20,7 @@
     NSArray *_extraAssetIds;
     NSArray *_extraLocations;
     PLRevGeoLocationInfo *_revGeoLocationInfo;
+    unsigned long long _signpostId;
 }
 
 @property (copy, nonatomic) NSArray *assetIds; // @synthesize assetIds=_assetIds;
@@ -32,6 +33,7 @@
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (strong, nonatomic) PLRevGeoLocationInfo *revGeoLocationInfo; // @synthesize revGeoLocationInfo=_revGeoLocationInfo;
 @property (strong, nonatomic) id<GEOMapServiceTicket> reverseGeocodeRequest; // @synthesize reverseGeocodeRequest=_reverseGeocodeRequest;
+@property (nonatomic) unsigned long long signpostId; // @synthesize signpostId=_signpostId;
 
 - (void)dealloc;
 - (id)description;

@@ -25,6 +25,7 @@
 @property (nonatomic) unsigned long long mutationCount; // @synthesize mutationCount=_mutationCount;
 @property (readonly, nonatomic) NSString *resourceDirectory; // @synthesize resourceDirectory=_resourceDirectory;
 
++ (id)readerForMemoriesWithResourceDirectory:(id)arg1;
 + (id)readerForResourceDirectory:(id)arg1;
 + (id)readerForSyncedAlbumWithResourceDirectory:(id)arg1;
 - (void).cxx_destruct;

@@ -6,25 +6,31 @@
 
 #import <UIKit/UITableViewController.h>
 
+#import <ToneKit/PSStateRestoration-Protocol.h>
 #import <ToneKit/TKTonePickerTableViewLayoutMarginsObserver-Protocol.h>
 #import <ToneKit/TKTonePickerTableViewSeparatorObserver-Protocol.h>
 
 @class NSString, TKTonePickerItem;
 @protocol TKTonePickerTableViewControllerHelper;
 
-@interface TKToneClassicsTableViewController : UITableViewController <TKTonePickerTableViewLayoutMarginsObserver, TKTonePickerTableViewSeparatorObserver>
+@interface TKToneClassicsTableViewController : UITableViewController <PSStateRestoration, TKTonePickerTableViewLayoutMarginsObserver, TKTonePickerTableViewSeparatorObserver>
 {
     TKTonePickerItem *_classicTonesHeaderItem;
     id<TKTonePickerTableViewControllerHelper> _tonePickerTableViewControllerHelper;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<TKTonePickerTableViewControllerHelper> tonePickerTableViewControllerHelper; // @synthesize tonePickerTableViewControllerHelper=_tonePickerTableViewControllerHelper;
 
 - (void).cxx_destruct;
+- (BOOL)canBeShownFromSuspendedState;
 - (void)dealloc;
 - (void)didReloadTones;
 - (void)didUpdateCheckedStatus:(BOOL)arg1 ofToneClassicsPickerItem:(id)arg2;

@@ -11,13 +11,12 @@
 #import <EventKitUI/UITableViewDataSource-Protocol.h>
 #import <EventKitUI/UITableViewDelegate-Protocol.h>
 
-@class EKCalendarItem, EKStructuredLocation, EKUIConferenceRoom, EKUILocationSearchModel, NSString, UISearchBar, UITableView, _UINavigationControllerPalette;
+@class EKCalendarItem, EKStructuredLocation, EKUIConferenceRoom, EKUILocationSearchModel, NSString, UISearchBar, UITableView;
 
 @interface EKLocationEditItemViewController : EKEditItemViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, EKUILocationSearchModelDelegate>
 {
     UISearchBar *_searchBar;
     UITableView *_tableView;
-    _UINavigationControllerPalette *_palette;
     EKUILocationSearchModel *_searchModel;
     EKCalendarItem *_calendarItem;
     struct CGSize _preferredContentSize;
@@ -80,6 +79,7 @@
 - (id)title;
 - (void)updateViewConstraints;
 - (void)useAsString:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 

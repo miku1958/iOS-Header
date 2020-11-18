@@ -8,20 +8,21 @@
 
 #import <CoreHAP/HMFMerging-Protocol.h>
 
-@class CBCharacteristic, HAPCharacteristicMetadata, HAPService, NSDate, NSNumber, NSString;
+@class CBCharacteristic, HAPCharacteristicMetadata, HAPService, HMFUnfairLock, NSDate, NSNumber, NSString;
 
 @interface HAPCharacteristic : HMFObject <HMFMerging>
 {
+    HMFUnfairLock *_lock;
     BOOL _eventNotificationsEnabled;
     BOOL _shouldValidateValueAfterReading;
+    NSDate *_valueUpdatedTime;
+    id _value;
+    NSNumber *_stateNumber;
     NSString *_type;
     NSNumber *_instanceID;
     HAPService *_service;
     unsigned long long _properties;
     HAPCharacteristicMetadata *_metadata;
-    id _value;
-    NSDate *_valueUpdatedTime;
-    NSNumber *_stateNumber;
     HAPCharacteristicMetadata *_accessoryMetadata;
 }
 
@@ -51,6 +52,7 @@
 - (BOOL)isEqualToCharacteristic:(id)arg1;
 - (BOOL)mergeObject:(id)arg1;
 - (id)propertiesDescription;
+- (void)setStateNumber:(id)arg1;
 - (BOOL)shouldMergeObject:(id)arg1;
 - (id)validateValue:(id)arg1 outValue:(id *)arg2;
 

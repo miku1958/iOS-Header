@@ -43,6 +43,7 @@
 + (id)requiredLibraryAddStatusObservationProperties;
 + (BOOL)supportsLibraryAddStatusObservation;
 - (id)artworkCatalog;
+- (id)humanDescription;
 - (struct MPLibraryAddStatusObserverConfiguration)libraryAddStatusObserverConfiguration;
 
 @end

@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
 @interface UITraitCollection : NSObject <NSCopying, NSSecureCoding>
 {
-    CDStruct_759b680f _builtinTraits;
+    CDStruct_477bbee4 _builtinTraits;
     NSDictionary *_clientDefinedTraits;
 }
 
@@ -33,6 +33,7 @@
 + (id)_emptyTraitCollection;
 + (id)_traitCollectionWithValue:(id)arg1 forTraitNamed:(id)arg2;
 + (BOOL)supportsSecureCoding;
++ (id)traitCollectionWithArtworkSubtype:(unsigned long long)arg1;
 + (id)traitCollectionWithBarMetrics:(long long)arg1;
 + (id)traitCollectionWithBarPosition:(long long)arg1;
 + (id)traitCollectionWithDisplayCornerRadius:(double)arg1;
@@ -51,11 +52,14 @@
 + (id)traitCollectionWithVerticalSizeClass:(long long)arg1;
 - (BOOL)_changedContentSizeCategoryFromTraitCollection:(id)arg1;
 - (long long)_compare:(id)arg1;
-- (id)_initWithBuiltinTraitStorage:(CDStruct_759b680f *)arg1 clientDefinedTraits:(id)arg2;
+- (id)_description;
+- (id)_descriptionWithPrivateTraits:(BOOL)arg1;
+- (id)_initWithBuiltinTraitStorage:(CDStruct_477bbee4 *)arg1 clientDefinedTraits:(id)arg2;
 - (BOOL)_matchesIntersectionWithTraitCollection:(id)arg1;
 - (id)_namedImageDescription;
 - (id)_traitCollectionByReplacingValue:(id)arg1 forTraitName:(id)arg2;
 - (id)_valueForTraitNamed:(id)arg1;
+- (unsigned long long)artworkSubtype;
 - (BOOL)containsTraitsInCollection:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

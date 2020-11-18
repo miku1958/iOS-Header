@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <BackBoardServices/NSSecureCoding-Protocol.h>
 
@@ -17,14 +17,14 @@
     BKSEventFocusDeferralProperties *_deferredProperties;
 }
 
-@property (readonly, strong, nonatomic) BKSEventFocusDeferralProperties *deferredProperties; // @synthesize deferredProperties=_deferredProperties;
+@property (readonly, nonatomic) BKSEventFocusDeferralProperties *deferredProperties; // @synthesize deferredProperties=_deferredProperties;
 @property (readonly, nonatomic) BOOL isCycle;
 @property (readonly, nonatomic) int priority; // @synthesize priority=_priority;
-@property (readonly, strong, nonatomic) BKSEventFocusDeferralProperties *properties; // @synthesize properties=_properties;
+@property (readonly, nonatomic) BKSEventFocusDeferralProperties *properties; // @synthesize properties=_properties;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)conciseDescription;
-- (void)dealloc;
 - (id)deferredPropertiesForProperties:(id)arg1;
 - (BOOL)defersProperties:(id)arg1;
 - (id)description;

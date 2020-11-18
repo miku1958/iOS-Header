@@ -9,25 +9,30 @@
 #import <QuickLook/QLDownloadingItemViewControllerDelegate-Protocol.h>
 #import <QuickLook/QLItemViewControllerPresentingDelegate-Protocol.h>
 
-@class NSString, QLDownloadingItemViewController, QLErrorItemViewController, QLItem, QLItemViewController, QLLoadingItemViewController;
+@class NSString, QLDownloadingItemViewController, QLErrorItemViewController, QLItem, QLItemViewController, QLLoadingItemViewController, QLPreviewContext;
 
 __attribute__((visibility("hidden")))
 @interface QLItemPresenterViewController : QLItemAggregatedViewController <QLDownloadingItemViewControllerDelegate, QLItemViewControllerPresentingDelegate>
 {
-    QLItem *_previewItem;
     BOOL _shouldDeferAppearanceUpdates;
     BOOL _isPeekingSession;
-    BOOL _failedToShowPreview;
+    BOOL _failureOccurred;
     BOOL _isReadyForDisplay;
+    BOOL _shouldHandleLoadingView;
     CDUnknownBlockType _readyBlock;
     QLItemViewController *_previewProvider;
     QLErrorItemViewController *_errorViewController;
     QLLoadingItemViewController *_loadingViewController;
     QLDownloadingItemViewController *_downloadingController;
     CDUnknownBlockType _completionHandler;
+    QLItem *_previewItem;
+    id _contents;
+    QLPreviewContext *_context;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (strong) id contents; // @synthesize contents=_contents;
+@property (strong) QLPreviewContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) QLDownloadingItemViewController *downloadingController; // @synthesize downloadingController=_downloadingController;
@@ -35,31 +40,34 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) QLItemPresenterViewController *itemPresenterViewController;
 @property (strong, nonatomic) QLLoadingItemViewController *loadingViewController; // @synthesize loadingViewController=_loadingViewController;
+@property (strong, nonatomic) QLItem *previewItem; // @synthesize previewItem=_previewItem;
 @property (strong, nonatomic) QLItemViewController *previewProvider; // @synthesize previewProvider=_previewProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_cancelAllDeferredApperanceUpdates;
 - (void)_performReadyBlockIfNedded;
-- (void)_showLoadingViewControllerDeferred;
+- (void)_showLoadingViewControllerDeferredIfNeeded;
+- (void)_showReadyToDisplayPreviewViewControllerDeferredIfNeeded:(id)arg1;
 - (void)_startLoadingPreviewWithContents:(id)arg1;
+- (id)additionalItemViewControllerDescription;
 - (void)downloadingItemViewControllerDidFinishLoadingPreviewItem:(id)arg1 withContents:(id)arg2;
 - (id)init;
 - (BOOL)isLoaded;
 - (BOOL)isLoading;
-- (BOOL)isPresentingPreviewItemViewController:(id)arg1;
 - (void)isReadyForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)loadingFailed;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
-- (id)previewItem;
 - (void)previewItemViewController:(id)arg1 didFailWithError:(id)arg2;
 - (void)previewWillAppear:(BOOL)arg1;
 - (void)previewWillDisappear:(BOOL)arg1;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)showErrorViewController;
 - (void)showPreviewViewController:(id)arg1;
+- (void)showPreviewViewController:(id)arg1 animatingWithCrossfade:(BOOL)arg2;
+- (void)showPreviewViewController:(id)arg1 animatingWithCrossfade:(BOOL)arg2 updatingIsReadyForDisplay:(BOOL)arg3;
 - (void)transitionDidFinish:(BOOL)arg1 didComplete:(BOOL)arg2;
 - (void)transitionDidStart:(BOOL)arg1;
 - (void)transitionWillFinish:(BOOL)arg1 didComplete:(BOOL)arg2;

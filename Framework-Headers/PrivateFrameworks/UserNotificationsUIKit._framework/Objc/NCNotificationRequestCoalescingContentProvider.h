@@ -6,11 +6,12 @@
 
 #import <UserNotificationsUIKit/NCNotificationRequestContentProvider.h>
 
-@class NSMutableArray, NSNumberFormatter;
+@class NCNotificationSummaryBuilder, NSMutableArray, NSNumberFormatter;
 
 @interface NCNotificationRequestCoalescingContentProvider : NCNotificationRequestContentProvider
 {
     NSNumberFormatter *_decimalFormatter;
+    NCNotificationSummaryBuilder *_summaryBuilder;
     BOOL _deviceAuthenticated;
     NSMutableArray *_coalescedNotificationRequests;
 }
@@ -22,16 +23,20 @@
 - (unsigned long long)_indexOfMatchingNotificationRequest:(id)arg1;
 - (id)_localizedStringWithPlaceholderFormat:(id)arg1 count:(unsigned long long)arg2;
 - (id)_placeholderSecondaryText;
-- (void)_updateNotificationRequest;
+- (BOOL)_shouldShowContent;
+- (BOOL)_shouldShowNotificationBody;
+- (void)_updateSummaryText;
 - (unsigned long long)coalesceCount;
 - (void)coalesceNotificationRequest:(id)arg1;
 - (BOOL)containsMatchingCoalescedNotificationRequest:(id)arg1;
 - (id)init;
 - (id)initWithNotificationRequest:(id)arg1;
+- (id)notificationRequest;
 - (id)primarySubtitleText;
 - (id)primaryText;
 - (void)removeCoalescedNotificationRequest:(id)arg1;
 - (id)secondaryText;
+- (id)summaryText;
 - (id)thumbnail;
 - (void)updateCoalescedNotificationRequest:(id)arg1;
 

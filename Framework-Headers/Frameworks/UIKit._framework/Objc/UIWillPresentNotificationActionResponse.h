@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/BSActionResponse.h>
+#import <BaseBoard/BSActionResponse.h>
 
 @interface UIWillPresentNotificationActionResponse : BSActionResponse
 {

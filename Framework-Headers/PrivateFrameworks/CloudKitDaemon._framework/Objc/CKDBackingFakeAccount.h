@@ -18,7 +18,9 @@ __attribute__((visibility("hidden")))
     NSString *_primaryEmail;
     NSString *_password;
     NSDictionary *_accountBag;
+    NSDictionary *_propertyOverrides;
     NSObject<OS_dispatch_queue> *_fakeAccountInfoQueue;
+    NSDictionary *_overridesByDataclass;
 }
 
 @property (strong, nonatomic) NSDictionary *accountBag; // @synthesize accountBag=_accountBag;
@@ -26,11 +28,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *dsid; // @synthesize dsid=_dsid;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *fakeAccountInfoQueue; // @synthesize fakeAccountInfoQueue=_fakeAccountInfoQueue;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSDictionary *overridesByDataclass; // @synthesize overridesByDataclass=_overridesByDataclass;
 @property (strong, nonatomic) NSString *password; // @synthesize password=_password;
 @property (strong, nonatomic) NSString *primaryEmail; // @synthesize primaryEmail=_primaryEmail;
+@property (strong, nonatomic) NSDictionary *propertyOverrides; // @synthesize propertyOverrides=_propertyOverrides;
 
 + (Class)_platformBackingAccountClass;
-+ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2;
++ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 propertyOverrides:(id)arg3 overridesByDataclass:(id)arg4;
 - (void).cxx_destruct;
 - (void)_checkAndLogIfAccountError;
 - (id)_initFakeAccountWithEmail:(id)arg1 password:(id)arg2;
@@ -39,10 +43,12 @@ __attribute__((visibility("hidden")))
 - (id)ckAccount;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
 - (void)dealloc;
+- (id)displayedHostname;
 - (id)iCloudAuthTokenWithError:(id *)arg1;
 - (BOOL)iCloudDriveAllowsCellularAccess;
 - (BOOL)isDataclassEnabled:(id)arg1;
 - (BOOL)isFakeAccount;
+- (id)objectForKeyedSubscript:(id)arg1;
 - (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)username;

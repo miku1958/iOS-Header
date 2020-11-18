@@ -17,8 +17,10 @@
 
 @property (strong, nonatomic) ASClientAccount *account; // @synthesize account=_account;
 
++ (struct _opaque_pthread_t *)_actorPThread;
 + (struct __CFRunLoop *)_actorRunLoop;
 + (BOOL)_actorRunLoopInitialized;
++ (void)_initializeActorRunLoop;
 + (void)_runActorThreadWithStartupLock:(id)arg1;
 - (void).cxx_destruct;
 - (oneway void)_daemonDiedNotification:(id)arg1;

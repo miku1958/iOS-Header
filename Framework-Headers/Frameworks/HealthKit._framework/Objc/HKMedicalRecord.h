@@ -45,16 +45,12 @@
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_redactedCopyForEnteredInError;
-- (id)_redactedCopyForEnteredInErrorWithConfig:(CDUnknownBlockType)arg1;
-- (void)_setEndDate:(id)arg1;
 - (void)_setEnteredInError:(BOOL)arg1;
 - (void)_setExtractionVersion:(long long)arg1;
 - (void)_setFHIRIdentifier:(id)arg1;
 - (void)_setModifiedDate:(id)arg1;
 - (void)_setNote:(id)arg1;
 - (void)_setSortDate:(id)arg1;
-- (void)_setStartDate:(id)arg1;
 - (id)_validateConfiguration;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

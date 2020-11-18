@@ -37,10 +37,11 @@
 @property (readonly) long long requestType; // @synthesize requestType=_requestType;
 @property (readonly) Class superclass;
 
-+ (id)_resourceInfoForAsset:(id)arg1 resourcesToShare:(id)arg2 fulfillOnDemandResources:(BOOL)arg3;
++ (id)_resourceInfoForAsset:(id)arg1 resourcesToShare:(id)arg2 fulfillOnDemandResources:(BOOL)arg3 error:(id *)arg4;
 + (id)_resourcesToShareForAsset:(id)arg1 error:(id *)arg2;
-+ (id)_resourcesToShareForAsset:(id)arg1 treatLivePhotoAsStill:(BOOL)arg2 error:(id *)arg3;
++ (id)_resourcesToShareForAsset:(id)arg1 options:(id)arg2 error:(id *)arg3;
 + (id)indexesForAssetsRequiringDownload:(id)arg1 requestType:(long long)arg2;
++ (id)indexesForAssetsWithoutThumbnails:(id)arg1 requestType:(long long)arg2;
 + (id)resourceInfoForAsset:(id)arg1 requestType:(long long)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (void)_cancelActiveAssetResourceRequests;

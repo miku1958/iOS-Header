@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
+@property (readonly, nonatomic, getter=_searchQuery) NSString *searchQuery; // @synthesize searchQuery=_searchQuery;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) GEOMapServiceTraits *traits;
 

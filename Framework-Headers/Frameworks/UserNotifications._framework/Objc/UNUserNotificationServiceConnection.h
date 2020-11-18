@@ -33,19 +33,17 @@
 - (void).cxx_destruct;
 - (void)_invalidate;
 - (void)_queue_addObserver:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)_queue_didChangePendingNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)_queue_didDeliverNotifications:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)_queue_didReceiveDeviceToken:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)_queue_ensureConnection;
+- (id)_queue_ensureConnection;
 - (void)_queue_interruptedConnection;
 - (void)_queue_invalidatedConnection;
 - (void)_queue_removeObserver:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)addNotificationRequest:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
-- (void)addNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)addObserver:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)didChangePendingNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)didDeliverNotifications:(id)arg1 forBundleIdentifier:(id)arg2;
+- (BOOL)allowsRemoteNotificationsForBundleIdentifier:(id)arg1;
+- (id)badgeNumberForBundleIdentifier:(id)arg1;
 - (void)didReceiveDeviceToken:(id)arg1 forBundleIdentifier:(id)arg2;
+- (void)extracted:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getAllowsRemoteNotificationsForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)getBadgeNumberForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)getDeliveredNotificationsForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
@@ -54,18 +52,22 @@
 - (void)getPendingNotificationRequestsForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)invalidateTokenForRemoteNotificationsForBundleIdentifier:(id)arg1;
+- (id)notificationCategoriesForBundleIdentifier:(id)arg1;
+- (id)notificationSettingsForBundleIdentifier:(id)arg1;
+- (id)pendingNotificationRequestsForBundleIdentifier:(id)arg1;
 - (void)removeAllDeliveredNotificationsForBundleIdentifier:(id)arg1;
 - (void)removeAllPendingNotificationRequestsForBundleIdentifier:(id)arg1;
 - (void)removeDeliveredNotificationsWithIdentifiers:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)removeObserver:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)removePendingNotificationRequestsWithIdentifiers:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)removeSimilarNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)removeSimilarNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2;
+- (void)replaceContentForRequestWithIdentifier:(id)arg1 bundleIdentifier:(id)arg2 replacementContent:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)requestAuthorizationWithOptions:(unsigned long long)arg1 forBundleIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestTokenForRemoteNotificationsForBundleIdentifier:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)setBadgeNumber:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)setBadgeString:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)setNotificationCategories:(id)arg1 forBundleIdentifier:(id)arg2;
-- (void)setNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
+- (void)setNotificationRequests:(id)arg1 forBundleIdentifier:(id)arg2;
 - (void)setObservingUserNotifications:(BOOL)arg1 forBundleIdentifier:(id)arg2;
 
 @end

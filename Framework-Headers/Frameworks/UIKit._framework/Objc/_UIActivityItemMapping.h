@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIActivityItemMapping : NSObject
@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)_activeActivityViewControllers;
++ (id)_activityViewControllerForActivityItem:(id)arg1;
 + (void)_addActivityItem:(id)arg1 activityViewController:(id)arg2 originalActivityItem:(id)arg3;
 + (void)_addToActiveActivityViewControllers:(id)arg1;
 + (id)_attachmentNameForActivityItem:(id)arg1 activityType:(id)arg2;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)_openURLAnnotationForActivityItem:(id)arg1 activityType:(id)arg2;
 + (void)_removeFromActiveActivityViewControllers:(id)arg1;
 + (id)_subjectForActivityItem:(id)arg1 activityType:(id)arg2;
++ (id)_thumbnailImageDataForActivityItem:(id)arg1 thumbnailSize:(struct CGSize)arg2 activityType:(id)arg3;
 + (id)_thumbnailImageForActivityItem:(id)arg1 thumbnailSize:(struct CGSize)arg2 activityType:(id)arg3;
 
 @end

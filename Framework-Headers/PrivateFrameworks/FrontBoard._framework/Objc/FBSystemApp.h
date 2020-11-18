@@ -13,7 +13,7 @@
 
 @class FBDisplayLayoutTransition, FBSceneClientProviderInvalidationAction, NSMapTable, NSMutableDictionary, NSString;
 
-@interface FBSystemApp : UIApplication <FBSceneClient, FBSSceneUpdater, BKSSystemApplicationDelegate, FBSceneClientProvider>
+@interface FBSystemApp : UIApplication <BKSSystemApplicationDelegate, FBSceneClient, FBSSceneUpdater, FBSceneClientProvider>
 {
     struct __CFBoolean *_darkboot;
     struct __CFBoolean *_wasDarkboot;
@@ -21,6 +21,7 @@
     FBSceneClientProviderInvalidationAction *_invalidationAction;
     NSMutableDictionary *_localSceneInfoByIdentifier;
     NSMapTable *_hostsByIdentifier;
+    id _didFinishLaunchingObserver;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,18 +29,21 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)_instantiateAppInfoProvider;
 + (id)_newApplicationLibrary;
 + (void)initializeSystemServices;
 + (void)postFrontBoardInitializationHook;
 + (void)preFrontBoardInitializationHook;
 + (BOOL)registerAsSystemApp;
 + (BOOL)rendersLocally;
++ (id)sharedApplicationInfoProvider;
 + (id)sharedApplicationLibrary;
 + (BOOL)shouldCheckInWithBackboard;
 + (BOOL)shouldFixMainThreadPriority;
 + (long long)startupInterfaceOrientation;
 + (BOOL)systemApplicationIsAliveForWatchdog:(id)arg1;
 + (double)systemIdleSleepInterval;
+- (void).cxx_destruct;
 - (long long)_interfaceOrientationRotationDirectionFromOrientation:(long long)arg1 toOrientation:(long long)arg2;
 - (id)_newSceneForWindow:(id)arg1 oldDisplay:(id)arg2 newDisplay:(id)arg3;
 - (BOOL)_openURL:(id)arg1;

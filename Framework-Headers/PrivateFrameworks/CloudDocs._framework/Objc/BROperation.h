@@ -19,6 +19,7 @@
     id _executionTransation;
     BOOL _finished;
     BOOL _waitForRemoteToBeCancelled;
+    BOOL _nonDiscretionary;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_queue;
@@ -27,6 +28,7 @@
 @property (readonly, getter=isExecuting) BOOL executing;
 @property (readonly, getter=isFinished) BOOL finished; // @synthesize finished=_finished;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL nonDiscretionary; // @synthesize nonDiscretionary=_nonDiscretionary;
 @property (strong, nonatomic) NSObject<BRCancellable> *remoteOperation; // @synthesize remoteOperation=_remoteOperation;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL waitForRemoteToBeCancelled; // @synthesize waitForRemoteToBeCancelled=_waitForRemoteToBeCancelled;

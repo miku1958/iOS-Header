@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSSet;
+@class ACAccount, ACDAccountStore;
 
 @protocol ACDAccountStoreDelegate
-- (void)accountStoreDidSaveAccounts:(NSSet *)arg1;
+- (void)accountStore:(ACDAccountStore *)arg1 didSaveAccount:(ACAccount *)arg2;
 @end
 

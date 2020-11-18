@@ -19,7 +19,8 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_callReplyWithID:(unsigned long long)arg1 blockInvocation:(const struct UserData *)arg2;
-- (id)_initWithMessageSender:(struct MessageSender *)arg1;
+- (id)_initWithWebPage:(struct WebPage *)arg1;
+- (id)_initWithWebPageProxy:(struct WebPageProxy *)arg1;
 - (void)_invalidate;
 - (void)_invokeMethod:(const struct RemoteObjectInvocation *)arg1;
 - (void)_releaseReplyWithID:(unsigned long long)arg1;

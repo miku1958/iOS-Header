@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreImage/NSCopying-Protocol.h>
 #import <CoreImage/NSSecureCoding-Protocol.h>
@@ -41,6 +41,9 @@
 + (id)vectorWithX:(double)arg1 Y:(double)arg2;
 + (id)vectorWithX:(double)arg1 Y:(double)arg2 Z:(double)arg3;
 + (id)vectorWithX:(double)arg1 Y:(double)arg2 Z:(double)arg3 W:(double)arg4;
+- (float)_dot:(id)arg1;
+- (float)_norm;
+- (id)_orthonormalizeTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

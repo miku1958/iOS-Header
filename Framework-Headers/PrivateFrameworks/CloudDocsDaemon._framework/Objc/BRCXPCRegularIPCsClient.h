@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (void)boostFilePresenterAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)capabilityWhenTryingToReparentItemAtURL:(id)arg1 toNewParent:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (oneway void)checkinAskClientIfUsingUbiquity:(BOOL)arg1;
-- (void)computePurgableSpaceWithUrgency:(int)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)computePurgeableSpaceForAllUrgenciesWithReply:(CDUnknownBlockType)arg1;
 - (void)copyBulkShareIDsAtURLs:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)copyCurrentUserIdentifierWithReply:(CDUnknownBlockType)arg1;
 - (void)copyCurrentUserNameAndDisplayHandleWithReply:(CDUnknownBlockType)arg1;

@@ -26,6 +26,7 @@
 - (BOOL)barRegistration:(id)arg1 canHandleLongPressForBarItem:(long long)arg2;
 - (void)barRegistration:(id)arg1 didReceiveLongPressForBarItem:(long long)arg2;
 - (void)barRegistration:(id)arg1 didReceiveTapForBarItem:(long long)arg2;
+- (void)barRegistration:(id)arg1 didReceiveTouchDownForBarItem:(long long)arg2;
 - (id)init;
 - (BOOL)isBarItemEnabled:(long long)arg1;
 - (void)registerToolbar:(id)arg1 withLayout:(long long)arg2 persona:(unsigned long long)arg3;

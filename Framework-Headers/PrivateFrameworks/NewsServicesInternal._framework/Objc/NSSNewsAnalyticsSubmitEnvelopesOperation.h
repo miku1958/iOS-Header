@@ -7,13 +7,16 @@
 #import <NewsCore/FCOperation.h>
 
 @class NSArray;
+@protocol FCNewsAppConfigurationManager><FCCoreConfigurationManager;
 
 @interface NSSNewsAnalyticsSubmitEnvelopesOperation : FCOperation
 {
     NSArray *_envelopes;
     CDUnknownBlockType _submissionCompletion;
+    id<FCNewsAppConfigurationManager><FCCoreConfigurationManager> _appConfigurationManager;
 }
 
+@property (strong, nonatomic) id<FCNewsAppConfigurationManager><FCCoreConfigurationManager> appConfigurationManager; // @synthesize appConfigurationManager=_appConfigurationManager;
 @property (copy, nonatomic) NSArray *envelopes; // @synthesize envelopes=_envelopes;
 @property (copy, nonatomic) CDUnknownBlockType submissionCompletion; // @synthesize submissionCompletion=_submissionCompletion;
 

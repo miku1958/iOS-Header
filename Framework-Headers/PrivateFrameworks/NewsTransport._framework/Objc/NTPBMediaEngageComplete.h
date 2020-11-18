@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSData, NSMutableArray, NSString, NTPBWidgetEngagement;
+@class NSData, NSMutableArray, NSString, NTPBAlternateHeadline, NTPBWidgetEngagement;
 
 @interface NTPBMediaEngageComplete : PBCodable <NSCopying>
 {
@@ -18,6 +18,7 @@
     long long _personalizationTreatmentId;
     long long _previousArticlePublisherArticleVersion;
     long long _publisherArticleVersionInt64;
+    NTPBAlternateHeadline *_alternateHeadline;
     NSString *_articleId;
     NSData *_articleSessionId;
     int _articleType;
@@ -44,6 +45,7 @@
     NSString *_previousArticleId;
     NSString *_previousArticleVersion;
     int _publisherArticleVersion;
+    int _rankInVideoPlaylist;
     NSString *_referencedArticleId;
     NSString *_sectionHeadlineId;
     NSString *_sourceChannelId;
@@ -73,6 +75,7 @@
         unsigned int mediaPlayLocation:1;
         unsigned int mediaType:1;
         unsigned int publisherArticleVersion:1;
+        unsigned int rankInVideoPlaylist:1;
         unsigned int videoType:1;
         unsigned int adSupportedChannel:1;
         unsigned int isBreakingNewsArticle:1;
@@ -84,6 +87,7 @@
 }
 
 @property (nonatomic) BOOL adSupportedChannel; // @synthesize adSupportedChannel=_adSupportedChannel;
+@property (strong, nonatomic) NTPBAlternateHeadline *alternateHeadline; // @synthesize alternateHeadline=_alternateHeadline;
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
 @property (strong, nonatomic) NSData *articleSessionId; // @synthesize articleSessionId=_articleSessionId;
 @property (nonatomic) int articleType; // @synthesize articleType=_articleType;
@@ -99,6 +103,7 @@
 @property (nonatomic) int groupType; // @synthesize groupType=_groupType;
 @property (strong, nonatomic) NSData *groupViewExposureId; // @synthesize groupViewExposureId=_groupViewExposureId;
 @property (nonatomic) BOOL hasAdSupportedChannel;
+@property (readonly, nonatomic) BOOL hasAlternateHeadline;
 @property (readonly, nonatomic) BOOL hasArticleId;
 @property (readonly, nonatomic) BOOL hasArticleSessionId;
 @property (nonatomic) BOOL hasArticleType;
@@ -134,6 +139,7 @@
 @property (readonly, nonatomic) BOOL hasPreviousArticleVersion;
 @property (nonatomic) BOOL hasPublisherArticleVersion;
 @property (nonatomic) BOOL hasPublisherArticleVersionInt64;
+@property (nonatomic) BOOL hasRankInVideoPlaylist;
 @property (readonly, nonatomic) BOOL hasReferencedArticleId;
 @property (readonly, nonatomic) BOOL hasSectionHeadlineId;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
@@ -165,6 +171,7 @@
 @property (strong, nonatomic) NSString *previousArticleVersion; // @synthesize previousArticleVersion=_previousArticleVersion;
 @property (nonatomic) int publisherArticleVersion; // @synthesize publisherArticleVersion=_publisherArticleVersion;
 @property (nonatomic) long long publisherArticleVersionInt64; // @synthesize publisherArticleVersionInt64=_publisherArticleVersionInt64;
+@property (nonatomic) int rankInVideoPlaylist; // @synthesize rankInVideoPlaylist=_rankInVideoPlaylist;
 @property (strong, nonatomic) NSString *referencedArticleId; // @synthesize referencedArticleId=_referencedArticleId;
 @property (strong, nonatomic) NSString *sectionHeadlineId; // @synthesize sectionHeadlineId=_sectionHeadlineId;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;

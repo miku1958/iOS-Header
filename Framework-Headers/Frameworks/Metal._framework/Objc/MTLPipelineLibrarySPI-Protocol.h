@@ -12,6 +12,7 @@
 @protocol MTLPipelineLibrarySPI <MTLPipelineLibrary>
 
 @property (readonly) id<MTLDevice> device;
+@property BOOL disableRunTimeCompilation;
 @property (readonly, nonatomic) id<MTLPipelineCache> functionCache;
 @property (copy) NSString *label;
 @property (readonly, nonatomic) id<MTLPipelineCache> pipelineCache;

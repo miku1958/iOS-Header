@@ -16,8 +16,10 @@
 @class NSArray, NSData, NSString, NSURL, PUEditableMediaProviderImageDataNode, PUEditableMediaProviderVideoURLNode, PUImageDataRenderNode, PUPhotoEditIrisModel, PUVideoExportNode;
 @protocol PXRunNodeDelegate;
 
+__attribute__((visibility("hidden")))
 @interface PUReviewInternalSaveNode : PXRunNode <PUImageInfoNode, PUVideoURLExportNode, PUAdjustmentURLNode, PUReviewImageURLNode, PUReviewVideoURLNode, PUImageDataRenderNode>
 {
+    BOOL _useEmbeddedPreview;
     NSURL *_imageDataURL;
     long long _imageExifOrientation;
     NSURL *_providedFullsizeImageURL;
@@ -61,6 +63,7 @@
 @property (readonly, getter=isRunning) BOOL running;
 @property (readonly) unsigned long long state;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL useEmbeddedPreview; // @synthesize useEmbeddedPreview=_useEmbeddedPreview;
 @property (readonly, nonatomic) PUVideoExportNode *videoRenderNode; // @synthesize videoRenderNode=_videoRenderNode;
 @property (readonly, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 @property (readonly, nonatomic) PUEditableMediaProviderVideoURLNode *videoURLNode; // @synthesize videoURLNode=_videoURLNode;

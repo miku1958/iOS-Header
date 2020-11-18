@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class AVAudioSessionPortDescription, AVAudioSessionRouteDescription, NSArray, NSString;
 
@@ -23,6 +23,7 @@
 @property (readonly) NSString *mode;
 @property (readonly, getter=isOtherAudioPlaying) BOOL otherAudioPlaying;
 @property (readonly) AVAudioSessionPortDescription *preferredInput;
+@property (readonly) unsigned long long recordPermission;
 @property (readonly) unsigned long long routeSharingPolicy;
 @property (readonly) BOOL secondaryAudioShouldBeSilencedHint;
 
@@ -32,6 +33,7 @@
 + (id)sharedInstance;
 - (double)IOBufferDuration;
 - (unsigned long long)IOBufferFrameSize;
+- (void)activateWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)activeSessionDisplayIDs;
 - (BOOL)allowAllBuiltInDataSources;
 - (id)audioClockDevice;
@@ -62,6 +64,7 @@
 - (double)inputSafetyOffset;
 - (double)inputSampleRate;
 - (long long)interruptionPriority;
+- (BOOL)isDolbyAtmosAvailable;
 - (BOOL)isDolbyDigitalEncoderAvailable;
 - (BOOL)isEarpieceActiveNoiseCancelationEnabled;
 - (BOOL)isHardwareFormatFixedToMultiChannel;
@@ -89,7 +92,6 @@
 - (long long)preferredOutputNumberOfChannels;
 - (double)preferredOutputSampleRate;
 - (double)preferredSampleRate;
-- (id)privateConfigureRouteDescription:(id)arg1;
 - (id)privateGetDataSources:(BOOL)arg1;
 - (struct AVAudioSessionImpl *)privateGetImplementation;
 - (id)privateGetSelectedDataSource:(BOOL)arg1;
@@ -101,6 +103,7 @@
 - (void)privateInputIsAvailableChanged:(id)arg1;
 - (void)privateInterruptionWithInfo:(id)arg1;
 - (void)privateMarkKVOPropertiesDirty:(unsigned long long)arg1;
+- (BOOL)privateNeedsTranslationForNoSpeakerCategory:(id)arg1;
 - (id)privateRefreshAvailableInputs;
 - (BOOL)privateSetOptions:(unsigned long long)arg1 forCategory:(id)arg2 error:(id *)arg3;
 - (BOOL)privateSetPropertyValue:(unsigned int)arg1 withBool:(BOOL)arg2 error:(id *)arg3;
@@ -116,7 +119,6 @@
 - (void)privateUpdatePiPAvailabilityChange:(id)arg1;
 - (void)privateUpdatePromptStyle:(id)arg1;
 - (unsigned long long)promptStyle;
-- (unsigned long long)recordPermission;
 - (oneway void)release;
 - (void)requestRecordPermission:(CDUnknownBlockType)arg1;
 - (id)retain;

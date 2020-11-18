@@ -16,7 +16,7 @@
 
 @property (strong, nonatomic) UIColor *legibilityTextColor; // @synthesize legibilityTextColor=_legibilityTextColor;
 
-+ (id)attributedStringForIdentifier:(id)arg1;
++ (void)requestAttributedStringForIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 + (id)widgetAttributionIDsInOrder;
 - (void).cxx_destruct;
 - (id)_attributionBackgroundColor;

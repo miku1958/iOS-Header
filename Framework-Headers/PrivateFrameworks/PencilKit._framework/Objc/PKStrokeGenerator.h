@@ -83,13 +83,16 @@
 @property (nonatomic) struct PKVelocityCalculationFilter *velocityFilter; // @synthesize velocityFilter=_velocityFilter;
 
 + (void)initialize;
-+ (vector_58517711)inputPointsFromPath:(struct CGPath *)arg1;
++ (vector_58517711)inputPointsFromPath:(struct CGPath *)arg1 velocityForDistanceFunction:(CDUnknownBlockType)arg2;
++ (vector_58517711)inputPointsFromPoints:(vector_e1abc270)arg1 velocityForDistanceFunction:(CDUnknownBlockType)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (void)_drawingAddPoint:(CDStruct_f17e9403)arg1;
+- (id)_strokeFromInputPoints:(vector_58517711 *)arg1 ink:(id)arg2 inputScale:(double)arg3;
 - (void)addPoint:(CDStruct_f17e9403)arg1;
 - (void)addPoints:(vector_58517711)arg1;
 - (void)allowSnappingToRuler:(struct CGAffineTransform)arg1 width:(double)arg2;
+- (void)closeStroke;
 - (unsigned long long)copyInputUpdatedRangeFromIndex:(unsigned long long)arg1 into:(vector_58517711 *)arg2;
 - (void)dealloc;
 - (double)distanceToRulerCenter:(struct CGPoint)arg1;
@@ -112,7 +115,8 @@
 - (BOOL)shouldSnapPointToRuler:(struct CGPoint)arg1;
 - (struct CGPoint)snapPointToRuler:(struct CGPoint)arg1;
 - (void)snapToRuler;
-- (id)strokeFromPath:(struct CGPath *)arg1 ink:(id)arg2 inputScale:(double)arg3;
+- (id)strokeFromPath:(struct CGPath *)arg1 ink:(id)arg2 inputScale:(double)arg3 velocityForDistanceFunction:(CDUnknownBlockType)arg4;
+- (id)strokeFromPoints:(struct CGPoint *)arg1 count:(unsigned long long)arg2 ink:(id)arg3 inputScale:(double)arg4;
 - (void)updateImmutableCount;
 - (void)updateRulerSnapping;
 

@@ -6,16 +6,19 @@
 
 #import <UIKit/UINavigationController.h>
 
+#import <PhotosUI/PLDismissableViewController-Protocol.h>
 #import <PhotosUI/UINavigationControllerDelegate-Protocol.h>
 
 @class NSString, PUAbstractNavigationBanner, UIViewController, _UINavigationControllerPalette;
+@protocol PXNavigationRoot;
 
-@interface PUNavigationController : UINavigationController <UINavigationControllerDelegate>
+@interface PUNavigationController : UINavigationController <PLDismissableViewController, UINavigationControllerDelegate>
 {
     BOOL _pu_preventsAutorotation;
     CDUnknownBlockType _ppt_onDidShowViewControllerBlock;
     PUAbstractNavigationBanner *__banner;
     _UINavigationControllerPalette *__palette;
+    id<PXNavigationRoot> _navigationRoot;
     unsigned long long _pu_supportedInterfaceOrientations;
     long long __barStyle;
     UIViewController *__currentToolbarViewController;
@@ -28,16 +31,19 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) id<PXNavigationRoot> navigationRoot; // @synthesize navigationRoot=_navigationRoot;
 @property (copy, nonatomic, setter=ppt_setOnDidShowViewControllerBlock:) CDUnknownBlockType ppt_onDidShowViewControllerBlock; // @synthesize ppt_onDidShowViewControllerBlock=_ppt_onDidShowViewControllerBlock;
-@property (nonatomic) BOOL pu_preventsAutorotation; // @synthesize pu_preventsAutorotation=_pu_preventsAutorotation;
-@property (nonatomic) unsigned long long pu_supportedInterfaceOrientations; // @synthesize pu_supportedInterfaceOrientations=_pu_supportedInterfaceOrientations;
+@property (readonly, nonatomic) BOOL pu_preventsAutorotation; // @synthesize pu_preventsAutorotation=_pu_preventsAutorotation;
+@property (readonly, nonatomic) unsigned long long pu_supportedInterfaceOrientations; // @synthesize pu_supportedInterfaceOrientations=_pu_supportedInterfaceOrientations;
 @property (readonly) Class superclass;
 
 + (BOOL)_shouldForwardViewWillTransitionToSize;
 - (void).cxx_destruct;
 - (void)_commonPUNavigationControllerInitialization;
 - (id)_extendedToolbar;
+- (void)_insertNavigationDisplayModeButtonItem;
 - (BOOL)_navigationControllerShouldUseBuiltinInteractionController:(id)arg1;
+- (void)_removeNavigationDisplayModeButtonItem;
 - (void)_setCurrentToolbarViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateBarStyle;
 - (id)initWithNavigationBarClass:(Class)arg1 toolbarClass:(Class)arg2;
@@ -46,9 +52,11 @@
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 - (id)navigationController:(id)arg1 interactionControllerForAnimationController:(id)arg2;
 - (void)navigationController:(id)arg1 willShowViewController:(id)arg2 animated:(BOOL)arg3;
+- (BOOL)prepareForDismissingForced:(BOOL)arg1;
 - (void)pu_navigationTransitionDidEnd:(id)arg1;
 - (void)pu_setPreventsAutorotation:(BOOL)arg1;
 - (void)pu_setSupportedInterfaceOrientations:(unsigned long long)arg1;
+- (void)pushViewController:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldAutorotate;
 - (BOOL)shouldAutorotateToInterfaceOrientation:(long long)arg1;
 - (unsigned long long)supportedInterfaceOrientations;

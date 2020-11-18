@@ -14,14 +14,17 @@
 - (void)_conversationDidChangeWithConversationState:(_MSConversationState *)arg1;
 - (void)_didCancelSendingMessage:(MSMessage *)arg1 conversationState:(_MSConversationState *)arg2;
 - (void)_didReceiveMessage:(MSMessage *)arg1 conversationState:(_MSConversationState *)arg2;
+- (void)_didRemoveAssetArchiveWithIdentifier:(NSString *)arg1;
 - (void)_didStartSendingMessage:(MSMessage *)arg1 conversationState:(_MSConversationState *)arg2;
 - (void)_handleTextInputPayload:(NSDictionary *)arg1 withPayloadID:(NSString *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)_hostDidBeginDeferredTeardown;
+- (void)_prepareForPresentationWithCompletionHandler:(void (^)(BOOL))arg1;
 - (void)_presentationDidChangeToPresentationState:(_MSPresentationState *)arg1;
 - (void)_presentationWillChangeToPresentationState:(_MSPresentationState *)arg1;
 - (void)_requestContentSizeThatFits:(NSValue *)arg1 presentationStyle:(NSNumber *)arg2 completionHandler:(void (^)(struct CGSize))arg3;
 - (void)_requestSnapshotWithCompletion:(void (^)(NSData *))arg1;
 - (void)_resignActive;
+- (void)_volumeButtonPressed:(BOOL)arg1;
 - (void)beginDisablingUserInteraction;
 - (void)endDisablingUserInteraction;
 @end

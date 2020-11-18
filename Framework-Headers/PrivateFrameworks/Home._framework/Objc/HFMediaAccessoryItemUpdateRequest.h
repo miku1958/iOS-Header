@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)_disambiguateMultipleAccessoryResponses:(id)arg1 forMediaSystem:(id)arg2;
+- (id)_parentMediaSystem;
 - (id)accessories;
 - (id)init;
 - (id)initWithMediaProfileContainer:(id)arg1 valueSource:(id)arg2;

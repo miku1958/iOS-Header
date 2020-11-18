@@ -24,6 +24,8 @@
 - (void)_accessibilityTimeAnnouncementDidFinish;
 - (id)_accessibilityTimeTravelDate;
 - (BOOL)_accessibilityTimeTravelEnabled;
+- (void)_axAnnotateComplications;
+- (void)_axApplyAnnotationsToComplicationControllers:(id)arg1;
 - (BOOL)_axIsDoneAnnouncing;
 - (BOOL)_axIsWaitingToAnnounce;
 - (void)_axMakeTimeViewFirstElement;
@@ -31,6 +33,7 @@
 - (void)_axSetIsWaitingToAnnounce:(BOOL)arg1;
 - (void)dealloc;
 - (void)endScrubbingAnimated:(BOOL)arg1;
+- (void)layoutSubviews;
 - (void)scrubToDate:(id)arg1 animated:(BOOL)arg2;
 - (void)setTimeView:(id)arg1;
 - (void)startScrubbingAnimated:(BOOL)arg1;

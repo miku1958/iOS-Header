@@ -12,12 +12,13 @@
 #import <CoreDuet/_DKKnowledgeQuerying-Protocol.h>
 #import <CoreDuet/_DKKnowledgeSaving-Protocol.h>
 
-@class NSHashTable, NSString, NSURL, NSUUID, _DKCoreDataStorage, _DKPreferences;
+@class NSHashTable, NSString, NSURL, NSUUID, _DKCoreDataStorage, _DKPreferences, _DKTombstonePolicy;
 @protocol OS_dispatch_queue;
 
 @interface _DKKnowledgeStorage : NSObject <_DKCoreDataStorageDelegate, _DKKnowledgeEventStreamDeleting, _DKKnowledgeSaving, _DKKnowledgeDeleting, _DKKnowledgeQuerying>
 {
     NSObject<OS_dispatch_queue> *_executionQueue;
+    NSObject<OS_dispatch_queue> *_readQueue;
     NSObject<OS_dispatch_queue> *_defaultResponseQueue;
     NSString *_directory;
     NSURL *_modelURL;
@@ -26,34 +27,52 @@
     NSUUID *_deviceUUID;
     BOOL _localOnly;
     _DKCoreDataStorage *_syncStorage;
+    _DKTombstonePolicy *_tombstonePolicy;
     _DKCoreDataStorage *_storage;
     _DKPreferences *_defaults;
 }
 
 @property (readonly, nonatomic) _DKPreferences *defaults; // @synthesize defaults=_defaults;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *executionQueue; // @synthesize executionQueue=_executionQueue;
 @property (readonly, nonatomic) unsigned long long finalMigrationVersion;
 @property (readonly, nonatomic) BOOL localOnly; // @synthesize localOnly=_localOnly;
 @property (readonly, nonatomic) _DKCoreDataStorage *storage; // @synthesize storage=_storage;
 @property (readonly, nonatomic) _DKCoreDataStorage *syncStorage; // @synthesize syncStorage=_syncStorage;
+@property (strong) _DKTombstonePolicy *tombstonePolicy; // @synthesize tombstonePolicy=_tombstonePolicy;
 
++ (id)sourceDeviceIdentityFromDeviceID:(id)arg1;
++ (id)sourceDeviceIdentityFromObject:(id)arg1;
 + (id)storageWithDirectory:(id)arg1 readOnly:(BOOL)arg2;
 + (id)storageWithDirectory:(id)arg1 readOnly:(BOOL)arg2 localOnly:(BOOL)arg3;
 + (id)storeWithDirectory:(id)arg1 readOnly:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)_databaseChangedWithNotification:(id)arg1;
+- (unsigned long long)_deleteAllEventsMatchingPredicate:(id)arg1 error:(id *)arg2;
+- (BOOL)_deleteObjects:(id)arg1 error:(id *)arg2;
+- (id)_executeQuery:(id)arg1 error:(id *)arg2;
 - (id)_requestForChangeSinceDate:(id)arg1;
+- (BOOL)_saveObjects:(id)arg1 error:(id *)arg2;
 - (void)_sendEventsNotificationName:(id)arg1 withObjects:(id)arg2;
 - (void)_sendInsertEventsNotificationWithObjects:(id)arg1;
+- (void)_sendTombstoneNotificationsForRequirementIdentifiers:(id)arg1;
+- (void)_sendTombstoneNotificationsWithStreamNameCounts:(id)arg1;
+- (void)_tombstoneObjects:(id)arg1 error:(id *)arg2;
+- (void)_tombstoneObjectsMatchingPredicate:(id)arg1 batchSize:(unsigned long long)arg2 error:(id *)arg3;
 - (void)addKnowledgeStorageEventNotificationDelegate:(id)arg1;
 - (void)closeStorage;
 - (void)closeSyncStorage;
+- (void)configureDeviceUUID;
 - (BOOL)copyValueToManagedObject:(id)arg1;
 - (BOOL)coreDataStorage:(id)arg1 didAutoMigratePersistentStore:(id)arg2 toManagedObjectModel:(id)arg3 havingVersion:(unsigned long long)arg4 error:(id *)arg5;
 - (id)coreDataStorage:(id)arg1 needsManagedObjectModelNameForVersion:(unsigned long long)arg2;
 - (BOOL)coreDataStorage:(id)arg1 shouldCallDelegateAfterAutoMigrationToManagedObjectModelHavingVersion:(unsigned long long)arg2;
+- (BOOL)coreDataStorage:(id)arg1 shouldCallDelegateBeforeAutoMigrationFromManagedObjectModelHavingVersion:(unsigned long long)arg2;
+- (BOOL)coreDataStorage:(id)arg1 willAutoMigrateStoreAtURL:(id)arg2 fromManagedObjectModel:(id)arg3 havingVersion:(unsigned long long)arg4 error:(id *)arg5;
 - (void)decrementInsertsAndDeletesObserverCount;
 - (unsigned long long)deleteAllEventsInEventStream:(id)arg1 error:(id *)arg2;
+- (void)deleteAllEventsInEventStream:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (unsigned long long)deleteAllEventsMatchingPredicate:(id)arg1 error:(id *)arg2;
+- (void)deleteAllEventsMatchingPredicate:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (unsigned long long)deleteEventsMatchingPredicate:(id)arg1 limit:(unsigned long long)arg2;
 - (unsigned long long)deleteEventsStartingEarlierThanDate:(id)arg1 limit:(unsigned long long)arg2;
 - (unsigned long long)deleteHistogram:(id)arg1;
@@ -61,8 +80,8 @@
 - (void)deleteObjects:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (unsigned long long)deleteObjectsInEventStream:(id)arg1 ifNeededToLimitEventCount:(unsigned long long)arg2 batchLimit:(unsigned long long)arg3;
 - (unsigned long long)deleteObjectsInEventStreams:(id)arg1 olderThanDate:(id)arg2 limit:(unsigned long long)arg3;
-- (unsigned long long)deleteObjectsOlderThanDate:(id)arg1 limit:(unsigned long long)arg2;
-- (unsigned long long)deleteOldObjectsIfNeededToLimitTotalNumber:(unsigned long long)arg1 limit:(unsigned long long)arg2;
+- (unsigned long long)deleteObjectsOlderThanDate:(id)arg1 excludingPredicate:(id)arg2 limit:(unsigned long long)arg3;
+- (unsigned long long)deleteOldObjectsIfNeededToLimitTotalNumber:(unsigned long long)arg1 excludingPredicate:(id)arg2 limit:(unsigned long long)arg3;
 - (unsigned long long)deleteOrphanedEntities;
 - (BOOL)deleteStorage;
 - (BOOL)deleteSyncStorage;
@@ -75,23 +94,34 @@
 - (void)executeQuery:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)fetchLocalChangesSinceDate:(id)arg1 error:(id *)arg2;
 - (id)fetchSyncChangesSinceDate:(id)arg1 error:(id *)arg2;
-- (void)handleNilArrayError:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (void)incrementInsertsAndDeletesObserverCount;
 - (id)initWithDirectory:(id)arg1 readOnly:(BOOL)arg2 localOnly:(BOOL)arg3;
+- (id)keyValueObjectForKey:(id)arg1 domain:(id)arg2;
+- (id)keyValueStoreForDomain:(id)arg1;
 - (id)lastChangeSetWithEntityName:(id)arg1 error:(id *)arg2;
 - (unsigned long long)lastSequenceNumberForChangeSetWithEntityName:(id)arg1 error:(id *)arg2;
+- (id)nilArrayError;
 - (id)removeBadObjects:(id)arg1;
+- (void)removeKeyValueObjectForKey:(id)arg1 domain:(id)arg2;
 - (void)removeKnowledgeStorageEventNotificationDelegate:(id)arg1;
+- (void)removeSyncPeer:(id)arg1;
 - (BOOL)saveChangeSetsForSync:(id)arg1 error:(id *)arg2;
 - (void)saveHistogram:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)saveObjects:(id)arg1 error:(id *)arg2;
 - (void)saveObjects:(id)arg1 responseQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (BOOL)saveSyncPeer:(id)arg1 error:(id *)arg2;
+- (void)setKeyValueObject:(id)arg1 forKey:(id)arg2 domain:(id)arg3;
+- (id)sourceDeviceIdentity;
 - (void)startSyncDownFromCloudWithResponseQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)startSyncUpToCloudWithResponseQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)syncPeersWithError:(id *)arg1;
 - (id)syncStorageAssertion;
 - (id)syncStorageIfAvailable;
-- (BOOL)updateDataAfterAutoMigrationToFinalVersionInPersistentStore:(id)arg1 error:(id *)arg2;
+- (BOOL)updateDataAfterAutoMigrationToVersion:(unsigned long long)arg1 inPersistentStore:(id)arg2 error:(id *)arg3;
+- (BOOL)updateDataBeforeAutoMigrationFromVersion:(unsigned long long)arg1 inStoreAtURL:(id)arg2 error:(id *)arg3;
 - (void)updateToFinalMetadata:(id)arg1;
+- (id)versionsRequiringManualMigration;
+- (id)versionsRequiringManualSetup;
 
 @end
 

@@ -9,6 +9,7 @@
 @interface SCNBillboardConstraint : SCNConstraint
 {
     unsigned long long _freeAxes;
+    BOOL _preserveScale;
 }
 
 @property (nonatomic) unsigned long long freeAxes; // @synthesize freeAxes=_freeAxes;
@@ -19,6 +20,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)preserveScale;
+- (void)setPreserveScale:(BOOL)arg1;
 
 @end
 

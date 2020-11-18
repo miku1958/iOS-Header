@@ -6,17 +6,18 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCAppConfigurationManager, FCFlintResourceManager, NUEmbedConfigurationOperationResult;
+@class FCFlintResourceManager, NUEmbedConfigurationOperationResult;
+@protocol FCNewsAppConfigurationManager;
 
 @interface NUEmbedConfigurationOperation : FCOperation
 {
     CDUnknownBlockType _completion;
-    FCAppConfigurationManager *_appConfigurationManager;
+    id<FCNewsAppConfigurationManager> _appConfigurationManager;
     FCFlintResourceManager *_flintResourceManager;
     NUEmbedConfigurationOperationResult *_result;
 }
 
-@property (strong, nonatomic) FCAppConfigurationManager *appConfigurationManager; // @synthesize appConfigurationManager=_appConfigurationManager;
+@property (strong, nonatomic) id<FCNewsAppConfigurationManager> appConfigurationManager; // @synthesize appConfigurationManager=_appConfigurationManager;
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (strong, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
 @property (strong, nonatomic) NUEmbedConfigurationOperationResult *result; // @synthesize result=_result;

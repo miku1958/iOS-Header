@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIWebDocumentView.h>
+#import <UIKitCore/UIWebDocumentView.h>
 
-#import <UIKit/UIWebFormAccessoryDelegate-Protocol.h>
-#import <UIKit/UIWebTouchEventsGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/_UIWebRotationDelegate-Protocol.h>
+#import <UIKitCore/UIWebFormAccessoryDelegate-Protocol.h>
+#import <UIKitCore/UIWebTouchEventsGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIWebRotationDelegate-Protocol.h>
 
 @class DOMNode, NSHashTable, NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, UIResponder, UIWebFormAccessory, UIWebFormDelegate, UIWebTouchEventsGestureRecognizer;
 @protocol UIFormPeripheral, UIWebAutoFillDelegate;

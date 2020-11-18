@@ -32,14 +32,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL destroyed; // @synthesize destroyed=_destroyed;
 @property (readonly) unsigned long long hash;
-@property (readonly, strong, nonatomic) FBSSceneSettings *newSettings; // @dynamic newSettings;
-@property (readonly, strong, nonatomic) FBScene *scene; // @dynamic scene;
-@property (readonly, strong, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneID;
-@property (readonly, strong, nonatomic) FBSSceneSettings *settings; // @dynamic settings;
-@property (readonly, strong, nonatomic) FBSSceneSpecification *specification; // @dynamic specification;
+@property (readonly, nonatomic) FBSSceneSettings *newSettings; // @dynamic newSettings;
+@property (readonly, nonatomic) FBScene *scene; // @dynamic scene;
+@property (readonly, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneID;
+@property (readonly, nonatomic) FBSSceneSettings *settings; // @dynamic settings;
+@property (readonly, nonatomic) FBSSceneSpecification *specification; // @dynamic specification;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<FBSynchronizedTransactionDelegate> synchronizationDelegate; // @synthesize synchronizationDelegate=_synchronizationDelegate;
-@property (readonly, strong, nonatomic) FBSSceneTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
+@property (readonly, nonatomic) FBSSceneTransitionContext *transitionContext; // @synthesize transitionContext=_transitionContext;
 @property (nonatomic) BOOL waitsForSceneCommit; // @synthesize waitsForSceneCommit=_waitsForSceneCommit;
 
 - (void).cxx_destruct;

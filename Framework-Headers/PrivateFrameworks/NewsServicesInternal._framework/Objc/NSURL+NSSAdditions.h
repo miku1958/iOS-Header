@@ -11,7 +11,11 @@
 + (id)nss_NewsURLForArticleID:(id)arg1 internal:(BOOL)arg2 targetIsVideo:(BOOL)arg3;
 + (id)nss_NewsURLForArticleID:(id)arg1 targetIsVideo:(BOOL)arg2;
 + (id)nss_NewsURLForArticleID:(id)arg1 title:(id)arg2;
++ (id)nss_NewsURLForFavoritesPicker;
 + (id)nss_NewsURLForForYou;
++ (id)nss_NewsURLForHistory;
++ (id)nss_NewsURLForManageNotifications;
++ (id)nss_NewsURLForSaved;
 + (id)nss_NewsURLForTagID:(id)arg1;
 + (id)nss_NewsURLForWebLinkURL:(id)arg1;
 + (id)nss_NewsURLForWidgetVideoPlaylist;

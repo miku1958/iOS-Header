@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-@property (nonatomic) unsigned short columnOrRowIndex; // @dynamic columnOrRowIndex;
+@property (nonatomic) unsigned int columnOrRowIndex; // @dynamic columnOrRowIndex;
 
 - (void)appendStroke:(id)arg1 inRange:(struct TSTSimpleRange)arg2 order:(int)arg3;
 - (void)flattenStrokeOrder;

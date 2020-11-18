@@ -9,7 +9,6 @@
 @class NSArray;
 @protocol MNLocationHistoryProvider;
 
-__attribute__((visibility("hidden")))
 @interface MNLocationHistory : NSObject
 {
     id<MNLocationHistoryProvider> _locationHistoryProvider;

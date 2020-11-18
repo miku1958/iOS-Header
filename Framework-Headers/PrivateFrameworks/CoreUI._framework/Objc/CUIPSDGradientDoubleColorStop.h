@@ -8,7 +8,6 @@
 
 #import <CoreUI/NSCoding-Protocol.h>
 
-__attribute__((visibility("hidden")))
 @interface CUIPSDGradientDoubleColorStop : CUIPSDGradientColorStop <NSCoding>
 {
     struct _psdGradientColor leadOutColor;

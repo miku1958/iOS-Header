@@ -8,10 +8,11 @@
 
 #import <NanoTimeKitCompanion/NTKTimeView-Protocol.h>
 
-@class NSString, NTKDigitalTimeLabel;
+@class CLKDevice, NSString, NTKDigitalTimeLabel;
 
 @interface NTKExtraLargeTimeView : UIView <NTKTimeView>
 {
+    CLKDevice *_device;
     BOOL _statusBarVisible;
     BOOL _frozen;
     NTKDigitalTimeLabel *_timeHourView;
@@ -29,7 +30,7 @@
 - (void).cxx_destruct;
 - (void)cancelWristRaiseAnimation;
 - (void)cleanupAfterZoom;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 forDevice:(id)arg2;
 - (void)layoutSubviews;
 - (void)performWristRaiseAnimation;
 - (void)prepareToZoom;

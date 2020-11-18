@@ -26,7 +26,9 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDictionary *variants; // @synthesize variants=_variants;
 
++ (id)assetExportLog;
 + (id)exportRequestForAsset:(id)arg1 error:(id *)arg2;
++ (id)exportRequestForAsset:(id)arg1 variants:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (void)exportWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;

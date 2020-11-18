@@ -14,7 +14,6 @@
 + (id)nodeWithSource:(id)arg1 a:(float)arg2;
 - (id)initWithSource:(id)arg1;
 - (id)initWithSource:(id)arg1 a:(float)arg2;
-- (struct FilterGraphNode *)newFilterNode;
 
 @end
 

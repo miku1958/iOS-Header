@@ -10,5 +10,6 @@
 
 @protocol FCAppActivityMonitor <NSObject>
 - (void)addObserver:(id<FCAppActivityObserving>)arg1;
+- (void)removeObserver:(id<FCAppActivityObserving>)arg1;
 @end
 

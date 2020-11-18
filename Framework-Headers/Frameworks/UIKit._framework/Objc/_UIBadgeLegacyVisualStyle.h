@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBadgeVisualStyle.h>
+#import <UIKitCore/_UIBadgeVisualStyle.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIBadgeLegacyVisualStyle : _UIBadgeVisualStyle

@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-#import <PhysicsKit/NSCoding-Protocol.h>
+#import <PhysicsKit/NSSecureCoding-Protocol.h>
 
 @class PKPhysicsBody;
 
-@interface PKPhysicsJoint : NSObject <NSCoding>
+@interface PKPhysicsJoint : NSObject <NSSecureCoding>
 {
     BOOL _inUse;
     BOOL _implicit;
@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) struct CGVector reactionForce;
 @property (readonly, nonatomic) double reactionTorque;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_implicit;
 - (BOOL)_inUse;
@@ -33,6 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqualToJoint:(id)arg1;
 - (void)set_implicit:(BOOL)arg1;
 - (void)set_inUse:(BOOL)arg1;
 

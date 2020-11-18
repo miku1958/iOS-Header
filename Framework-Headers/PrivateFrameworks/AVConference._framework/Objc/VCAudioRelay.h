@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class VCAudioRelayIO;
 @protocol OS_dispatch_source;
@@ -13,11 +13,7 @@
 {
     BOOL _isRelayRunning;
     double _IOBufferDuration;
-    struct _opaque_pthread_t {
-        long long _field1;
-        struct __darwin_pthread_handler_rec *_field2;
-        char _field3[8176];
-    } *_relayThread;
+    struct _opaque_pthread_t *_relayThread;
     struct _opaque_pthread_cond_t _wakeUpCondition;
     struct _opaque_pthread_mutex_t _wakeUpMutex;
     struct OpaqueAudioConverter *_clientToRemoteConverter;

@@ -9,11 +9,10 @@
 #import <NetAppsUtilities/NAPromise-Protocol.h>
 
 @class NSError, NSMutableArray, NSString;
-@protocol OS_dispatch_queue;
 
 @interface NAFuture : NSObject <NAPromise>
 {
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    struct os_unfair_lock_s _lock;
     BOOL _finished;
     NSMutableArray *_completionBlocks;
     id _resultValue;

@@ -9,7 +9,7 @@
 #import <PDFKit/NSCoding-Protocol.h>
 #import <PDFKit/NSCopying-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, NSURL, PDFAction, PDFAnnotationPopup, PDFAnnotationPrivateVars, PDFBorder, PDFDestination, PDFPage, UIColor, UIFont;
+@class NSArray, NSDate, NSDictionary, NSString, NSURL, PDFAction, PDFAnnotationPrivateVars, PDFBorder, PDFDestination, PDFPage, UIColor, UIFont;
 
 @interface PDFAnnotation : NSObject <NSCopying, NSCoding>
 {
@@ -50,7 +50,7 @@
 @property (nonatomic, getter=isOpen) BOOL open;
 @property (weak, nonatomic) PDFPage *page;
 @property (readonly, nonatomic) NSArray *paths;
-@property (strong, nonatomic) PDFAnnotationPopup *popup;
+@property (strong, nonatomic) PDFAnnotation *popup;
 @property (copy, nonatomic) NSArray *quadrilateralPoints;
 @property (nonatomic) BOOL radiosInUnison;
 @property (nonatomic, getter=isReadOnly) BOOL readOnly;
@@ -86,6 +86,7 @@
 - (void)_generateFormFieldName;
 - (BOOL)_isValidAnnotationKey:(id)arg1;
 - (void)_printDictionary:(id)arg1 atDepth:(int)arg2;
+- (void)_releaseDictionaryRef;
 - (void)_restorePropertiesAfterSetBounds;
 - (void *)_sanitizeValue:(id)arg1 forKey:(id)arg2;
 - (void)_savePropertiesBeforeSetBounds;

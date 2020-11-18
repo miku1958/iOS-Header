@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoardServices/BSDescriptionProviding-Protocol.h>
 #import <FrontBoardServices/FBSProcessInternal-Protocol.h>
@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)currentProcess;
+- (void).cxx_destruct;
 - (id)_initForCurrentProcess;
 - (id)_initWithPID:(int)arg1 bundleID:(id)arg2;
 - (void)_terminateWithRequest:(id)arg1 forWatchdog:(id)arg2;

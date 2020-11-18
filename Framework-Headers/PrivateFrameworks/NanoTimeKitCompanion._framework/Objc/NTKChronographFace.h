@@ -10,10 +10,10 @@
 {
 }
 
-+ (id)_dateComplicationSlot;
-+ (unsigned long long)_dateComplicationSlotSupportedStyles;
-+ (id)_defaultSelectedComplicationSlot;
-+ (id)_localizedNameOverrideForCustomEditMode:(long long)arg1;
++ (id)_dateComplicationSlotForDevice:(id)arg1;
++ (unsigned long long)_dateComplicationSlotSupportedStylesForDevice:(id)arg1;
++ (id)_defaultSelectedComplicationSlotForDevice:(id)arg1;
++ (id)_localizedNameOverrideForCustomEditMode:(long long)arg1 forDevice:(id)arg2;
 - (id)_chronoDefaultOption;
 - (id)_complicationSlotDescriptors;
 - (long long)_customEditModeForUniqueConfiguration;
@@ -26,7 +26,6 @@
 - (Class)_optionClassForCustomEditMode:(long long)arg1;
 - (id)_orderedComplicationSlots;
 - (BOOL)_wantsUnadornedSnapshot;
-- (long long)complicationPickerStyle;
 
 @end
 

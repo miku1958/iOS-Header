@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/FBSDisplayObserving-Protocol.h>
 #import <FrontBoard/FBSceneDelegate-Protocol.h>
@@ -31,7 +31,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<FBSceneManagerDelegate> delegate;
+@property (weak, nonatomic) id<FBSceneManagerDelegate> delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -39,6 +39,7 @@
 + (BOOL)_isSynchronizingSceneUpdates;
 + (id)sharedInstance;
 + (void)synchronizeChanges:(CDUnknownBlockType)arg1;
+- (void).cxx_destruct;
 - (void)_appendCommonDescriptionItemsToBuilder:(id)arg1;
 - (void)_applyMutableSettings:(id)arg1 toScene:(id)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_beginSynchronizationBlock;

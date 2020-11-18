@@ -33,6 +33,7 @@
 @property (strong, nonatomic) PKImage *stripImage; // @synthesize stripImage=_stripImage;
 @property (strong, nonatomic) PKImage *thumbnailImage; // @synthesize thumbnailImage=_thumbnailImage;
 
++ (id)archiveName;
 + (long long)imageSetType;
 + (BOOL)shouldCache;
 + (BOOL)supportsSecureCoding;

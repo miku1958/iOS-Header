@@ -14,7 +14,7 @@
 @property (readonly, weak, nonatomic) CLIntersiloRecordingProxy *peer; // @synthesize peer=_peer;
 
 - (void).cxx_destruct;
-- (id)initWithProxiedInterface:(id)arg1 delegateObject:(id)arg2 delegateSilo:(id)arg3 andUninitializedPeer:(id)arg4;
+- (id)initWithDelegateObject:(id)arg1 delegateSilo:(id)arg2 uninitializedPeer:(id)arg3;
 
 @end
 

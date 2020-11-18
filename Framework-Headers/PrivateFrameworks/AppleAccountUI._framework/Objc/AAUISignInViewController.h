@@ -11,12 +11,11 @@
 #import <AppleAccountUI/UITableViewDataSource-Protocol.h>
 #import <AppleAccountUI/UITableViewDelegate-Protocol.h>
 #import <AppleAccountUI/UITextFieldDelegate-Protocol.h>
-#import <AppleAccountUI/UITextViewDelegate-Protocol.h>
 
 @class AAUIBuddyView, AAUIHeaderView, NSArray, NSString, UILabel, UITableView, UITableViewCell, UITableViewHeaderFooterView;
 @protocol AAUISignInViewControllerDelegate;
 
-@interface AAUISignInViewController : UIViewController <AKAppleIDAuthenticationInAppContextPasswordDelegate, RemoteUIControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UITextViewDelegate>
+@interface AAUISignInViewController : UIViewController <AKAppleIDAuthenticationInAppContextPasswordDelegate, RemoteUIControllerDelegate, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {
     UITableView *_tableView;
     UITableViewCell *_usernameCell;
@@ -74,9 +73,9 @@
 - (void)_nextButtonSelected:(id)arg1;
 - (id)_passwordCell;
 - (id)_passwordFieldIndexPath;
-- (void)_presentAppleIDPrivacyInformationPane;
 - (void)_presentCreateAppleIDPane;
 - (void)_presentForgotAppleIDPane;
+- (void)_prewarmSignInFlowIfApplicable;
 - (void)_repairCloudAccountWithAuthenticationResults:(id)arg1;
 - (void)_setEnabled:(BOOL)arg1;
 - (void)_setPasswordFieldHidden:(BOOL)arg1;
@@ -108,7 +107,6 @@
 - (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (BOOL)textFieldShouldReturn:(id)arg1;
-- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

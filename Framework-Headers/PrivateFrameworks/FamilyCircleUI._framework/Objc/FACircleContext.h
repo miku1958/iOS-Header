@@ -9,7 +9,7 @@
 #import <FamilyCircleUI/NSCoding-Protocol.h>
 #import <FamilyCircleUI/NSSecureCoding-Protocol.h>
 
-@class NSData, NSDictionary, NSString;
+@class NSData, NSDictionary, NSString, NSURL;
 
 @interface FACircleContext : NSObject <NSCoding, NSSecureCoding>
 {
@@ -17,6 +17,7 @@
     NSString *_clientName;
     NSString *_clientBundleID;
     NSDictionary *_additionalParameters;
+    NSURL *_urlForContext;
 }
 
 @property (copy, nonatomic) NSDictionary *additionalParameters; // @synthesize additionalParameters=_additionalParameters;
@@ -24,6 +25,7 @@
 @property (copy, nonatomic) NSString *clientName; // @synthesize clientName=_clientName;
 @property (readonly, copy, nonatomic) NSData *dataRepresentation;
 @property (readonly, copy, nonatomic) NSString *eventType; // @synthesize eventType=_eventType;
+@property (copy, nonatomic) NSURL *urlForContext; // @synthesize urlForContext=_urlForContext;
 
 + (id)contextWithData:(id)arg1;
 + (BOOL)supportsSecureCoding;

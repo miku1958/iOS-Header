@@ -36,11 +36,14 @@
 + (id)recordIDsWithZoneID:(id)arg1;
 + (id)recordWithCKRecord:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (void)_unitTest_setChildRecordCount:(unsigned long long)arg1;
 - (id)description;
+- (unsigned long long)hash;
 - (void)incrementChangeIndex;
 - (void)incrementChildRecordCount;
 - (id)initForSequenceSlot:(long long)arg1 syncAnchorMap:(id)arg2 active:(BOOL)arg3 changeIndex:(unsigned long long)arg4 childRecordCount:(unsigned long long)arg5 baselineEpoch:(unsigned long long)arg6 includedIdentifiers:(id)arg7 protocolVersion:(int)arg8 storeRecordID:(id)arg9 record:(id)arg10 schemaVersion:(long long)arg11;
 - (id)initForSequenceSlot:(long long)arg1 syncAnchorMap:(id)arg2 changeIndex:(unsigned long long)arg3 baselineEpoch:(unsigned long long)arg4 includedIdentifiers:(id)arg5 storeRecord:(id)arg6;
+- (BOOL)isEqual:(id)arg1;
 - (void)setProtocolVersion:(int)arg1;
 - (void)updateSyncAnchorMapWithSyncAnchorMap:(id)arg1;
 

@@ -11,9 +11,6 @@
 @protocol _CPCustomFeedback <NSObject>
 
 @property (nonatomic) int feedbackType;
-@property (readonly, nonatomic) BOOL hasFeedbackType;
-@property (readonly, nonatomic) BOOL hasJsonFeedback;
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSData *jsonFeedback;
 @property (nonatomic) unsigned long long timestamp;

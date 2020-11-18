@@ -24,6 +24,7 @@
     IDSMPPublicLegacyIdentity *_publicMessageProtectionIdentity;
     IDSPublicDeviceIdentity *_devicePublicIdentity;
     IDSEndpointCapabilities *_capabilities;
+    NSString *_senderCorrelationIdentifier;
 }
 
 @property (readonly, strong, nonatomic) IDSURI *URI; // @synthesize URI=_URI;
@@ -36,6 +37,7 @@
 @property (readonly, strong, nonatomic) IDSMPPublicLegacyIdentity *publicMessageProtectionIdentity; // @synthesize publicMessageProtectionIdentity=_publicMessageProtectionIdentity;
 @property (readonly, strong, nonatomic) NSData *pushToken; // @synthesize pushToken=_pushToken;
 @property (readonly, nonatomic) NSDate *refreshDate; // @synthesize refreshDate=_refreshDate;
+@property (readonly, nonatomic) NSString *senderCorrelationIdentifier; // @synthesize senderCorrelationIdentifier=_senderCorrelationIdentifier;
 @property (readonly, nonatomic) NSData *sessionToken; // @synthesize sessionToken=_sessionToken;
 @property (readonly, nonatomic) BOOL verifiedBusiness; // @synthesize verifiedBusiness=_verifiedBusiness;
 
@@ -46,11 +48,13 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7;
-- (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7 anonymizedSenderID:(id)arg8 verifiedBusiness:(BOOL)arg9;
-- (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7 anonymizedSenderID:(id)arg8 verifiedBusiness:(BOOL)arg9 serializedPublicMessageProtectionIdentity:(id)arg10;
+- (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7 anonymizedSenderID:(id)arg8 verifiedBusiness:(BOOL)arg9 senderCorrelationIdentifier:(id)arg10;
+- (id)initWithURI:(id)arg1 clientData:(id)arg2 pushToken:(id)arg3 sessionToken:(id)arg4 expireDate:(id)arg5 refreshDate:(id)arg6 accountKeyHistory:(id)arg7 anonymizedSenderID:(id)arg8 verifiedBusiness:(BOOL)arg9 serializedPublicMessageProtectionIdentity:(id)arg10 senderCorrelationIdentifier:(id)arg11;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToEndpoint:(id)arg1;
 
 @end
 

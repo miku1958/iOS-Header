@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIRemoteViewController.h>
+#import <UIKitCore/_UIRemoteViewController.h>
 
-#import <UIKit/_UIShareInvitationViewControllerHost-Protocol.h>
+#import <UIKitCore/_UIShareInvitationViewControllerHost-Protocol.h>
 
 @class NSString, UIViewController;
 @protocol _UISharingPublicController;

@@ -7,34 +7,35 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBDateTimeRangeList-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBCondition;
+@class NSArray, NSString, _INPBCondition;
 
-@interface _INPBDateTimeRangeList : PBCodable <NSCopying>
+@interface _INPBDateTimeRangeList : PBCodable <_INPBDateTimeRangeList, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBCondition *_condition;
-    NSMutableArray *_dateRanges;
+    NSArray *_dateRanges;
 }
 
 @property (strong, nonatomic) _INPBCondition *condition; // @synthesize condition=_condition;
-@property (strong, nonatomic) NSMutableArray *dateRanges; // @synthesize dateRanges=_dateRanges;
+@property (copy, nonatomic) NSArray *dateRanges; // @synthesize dateRanges=_dateRanges;
+@property (readonly, nonatomic) unsigned long long dateRangesCount;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasCondition;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (Class)dateRangeType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addDateRange:(id)arg1;
 - (void)clearDateRanges;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dateRangeAtIndex:(unsigned long long)arg1;
-- (unsigned long long)dateRangesCount;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

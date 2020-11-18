@@ -27,7 +27,10 @@ __attribute__((visibility("hidden")))
     BOOL _canDisplayLoadingIndicators;
     BOOL _shouldDisplayEmptyPlaceholder;
     BOOL _shouldUseCompactCommentsTitle;
+    BOOL _shouldCounterrotateReviewScreenBars;
     BOOL _shouldPinContentToTop;
+    BOOL _shouldLayoutReviewScreenControlBarVertically;
+    BOOL _shouldPlaceScrubberInScrubberBar;
     unsigned long long _options;
     double _maximumToolbarHeight;
     double _maximumAccessoryToolbarHeight;
@@ -39,6 +42,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BOOL allowAccessoryVisibility;
 @property (readonly, nonatomic) BOOL allowDoneButton;
+@property (readonly, nonatomic) BOOL allowSuggestions;
 @property (readonly, nonatomic) BOOL allowTapOnTitle;
 @property (readonly, nonatomic) struct CGSize assetExplorerReviewScreenProgressIndicatorSize;
 @property (strong, nonatomic, setter=_setBackgroundColorOverride:) UIColor *backgroundColorOverride; // @synthesize backgroundColorOverride=_backgroundColorOverride;
@@ -54,16 +58,21 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGSize playButtonSize;
 @property (nonatomic, setter=_setProgressIndicatorSize:) struct CGSize progressIndicatorSize; // @synthesize progressIndicatorSize=_progressIndicatorSize;
 @property (nonatomic, setter=_setShouldAutoplayOnAppear:) BOOL shouldAutoplayOnAppear; // @synthesize shouldAutoplayOnAppear=_shouldAutoplayOnAppear;
+@property (nonatomic, setter=_setShouldCounterrotateReviewScreenBars:) BOOL shouldCounterrotateReviewScreenBars; // @synthesize shouldCounterrotateReviewScreenBars=_shouldCounterrotateReviewScreenBars;
+@property (readonly, nonatomic) BOOL shouldDisableNavigationBarsVisibility;
 @property (nonatomic, setter=_setShouldDisplayAssetExplorerReviewScreenBadges:) BOOL shouldDisplayAssetExplorerReviewScreenBadges; // @synthesize shouldDisplayAssetExplorerReviewScreenBadges=_shouldDisplayAssetExplorerReviewScreenBadges;
 @property (readonly, nonatomic) BOOL shouldDisplayAssetExplorerReviewScreenProgressIndicators;
-@property (readonly, nonatomic) BOOL shouldDisplayAssetExplorerReviewScreenSelectionIndicators;
 @property (nonatomic, setter=_setShouldDisplayBadges:) BOOL shouldDisplayBadges; // @synthesize shouldDisplayBadges=_shouldDisplayBadges;
 @property (nonatomic, setter=_setShouldDisplayBufferingIndicators:) BOOL shouldDisplayBufferingIndicators; // @synthesize shouldDisplayBufferingIndicators=_shouldDisplayBufferingIndicators;
 @property (nonatomic, setter=_setShouldDisplayEmptyPlaceholder:) BOOL shouldDisplayEmptyPlaceholder; // @synthesize shouldDisplayEmptyPlaceholder=_shouldDisplayEmptyPlaceholder;
 @property (nonatomic, setter=_setShouldDisplayPlayButtons:) BOOL shouldDisplayPlayButtons; // @synthesize shouldDisplayPlayButtons=_shouldDisplayPlayButtons;
 @property (nonatomic, setter=_setShouldDisplayProgressIndicators:) BOOL shouldDisplayProgressIndicators; // @synthesize shouldDisplayProgressIndicators=_shouldDisplayProgressIndicators;
+@property (readonly, nonatomic) BOOL shouldDisplayReviewScreenBars;
+@property (readonly, nonatomic) BOOL shouldDisplaySelectionIndicators;
+@property (nonatomic, setter=_setShouldLayoutReviewScreenControlBarVertically:) BOOL shouldLayoutReviewScreenControlBarVertically; // @synthesize shouldLayoutReviewScreenControlBarVertically=_shouldLayoutReviewScreenControlBarVertically;
 @property (nonatomic, setter=_setShouldPinContentToTop:) BOOL shouldPinContentToTop; // @synthesize shouldPinContentToTop=_shouldPinContentToTop;
 @property (nonatomic, setter=_setShouldPlaceButtonsInNavigationBar:) BOOL shouldPlaceButtonsInNavigationBar; // @synthesize shouldPlaceButtonsInNavigationBar=_shouldPlaceButtonsInNavigationBar;
+@property (nonatomic, setter=_setShouldPlaceScrubberInScrubberBar:) BOOL shouldPlaceScrubberInScrubberBar; // @synthesize shouldPlaceScrubberInScrubberBar=_shouldPlaceScrubberInScrubberBar;
 @property (readonly, nonatomic) BOOL shouldShowTitleView;
 @property (nonatomic, setter=_setShouldUseCompactCommentsTitle:) BOOL shouldUseCompactCommentsTitle; // @synthesize shouldUseCompactCommentsTitle=_shouldUseCompactCommentsTitle;
 @property (nonatomic, setter=_setShouldUseCompactTitleView:) BOOL shouldUseCompactTitleView; // @synthesize shouldUseCompactTitleView=_shouldUseCompactTitleView;
@@ -73,6 +82,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_isAssetExplorerReviewScreen;
+- (BOOL)_shouldForceBlackBackground;
 - (id)initWithOptions:(unsigned long long)arg1;
 - (id)newSpecChange;
 - (void)updateIfNeeded;

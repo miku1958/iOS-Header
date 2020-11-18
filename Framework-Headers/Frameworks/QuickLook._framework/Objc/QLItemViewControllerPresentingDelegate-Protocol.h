@@ -10,7 +10,6 @@
 
 @property (readonly) QLItemPresenterViewController *itemPresenterViewController;
 
-- (BOOL)isPresentingPreviewItemViewController:(QLItemViewController *)arg1;
 - (void)previewItemViewController:(QLItemViewController *)arg1 didFailWithError:(NSError *)arg2;
 @end
 

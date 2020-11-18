@@ -24,6 +24,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStore:(id)arg1 expandedClientBatch:(id)arg2 expandedCloudBatch:(id)arg3;
+- (id)pendingRecordChangeForClientCacheWithLocalScopedIdentifier:(id)arg1;
 - (id)statusDescription;
 - (id)storageForStatusInStore:(id)arg1;
 

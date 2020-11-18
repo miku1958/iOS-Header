@@ -6,20 +6,27 @@
 
 #import <Preferences/PSTableCell.h>
 
+@class PSUIBadgeView, UILabel;
+
 @interface PSUICellularPlanTableCell : PSTableCell
 {
+    PSUIBadgeView *_badgeView;
+    UILabel *_nameLabel;
+    UILabel *_numberLabel;
+    UILabel *_statusLabel;
 }
 
-+ (id)checkIcon;
-+ (id)spacerIcon;
-- (id)accessoryText;
+@property (strong, nonatomic) PSUIBadgeView *badgeView; // @synthesize badgeView=_badgeView;
+@property (strong, nonatomic) UILabel *nameLabel; // @synthesize nameLabel=_nameLabel;
+@property (strong, nonatomic) UILabel *numberLabel; // @synthesize numberLabel=_numberLabel;
+@property (strong, nonatomic) UILabel *statusLabel; // @synthesize statusLabel=_statusLabel;
+
++ (long long)cellStyle;
+- (void).cxx_destruct;
 - (BOOL)canBeChecked;
-- (id)detailText;
-- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
-- (id)primaryText;
+- (BOOL)canReload;
+- (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
-- (void)setChecked:(BOOL)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

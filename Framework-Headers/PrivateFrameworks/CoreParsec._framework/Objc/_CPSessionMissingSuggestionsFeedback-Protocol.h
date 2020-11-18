@@ -10,7 +10,6 @@
 
 @protocol _CPSessionMissingSuggestionsFeedback <NSObject>
 
-@property (readonly, nonatomic) BOOL hasTimestamp;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSArray *suggestions;
 @property (nonatomic) unsigned long long timestamp;

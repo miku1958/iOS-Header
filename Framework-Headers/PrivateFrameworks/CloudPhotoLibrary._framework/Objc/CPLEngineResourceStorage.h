@@ -8,13 +8,13 @@
 
 #import <CloudPhotoLibrary/CPLAbstractObject-Protocol.h>
 
-@class CPLEngineFileStorage, CPLPlatformObject, NSCountedSet, NSDate, NSMutableSet, NSObject, NSString, NSURL;
+@class CPLEngineFileStorage, CPLPlatformObject, NSCountedSet, NSDate, NSMutableDictionary, NSObject, NSString, NSURL;
 @protocol OS_dispatch_queue;
 
 @interface CPLEngineResourceStorage : CPLEngineStorage <CPLAbstractObject>
 {
-    NSMutableSet *_identitiesToCommit;
-    NSMutableSet *_identitiesToDelete;
+    NSMutableDictionary *_identitiesToCommit;
+    NSMutableDictionary *_identitiesToDelete;
     NSURL *_tempFolderURL;
     NSObject<OS_dispatch_queue> *_pruneStatsQueue;
     NSCountedSet *_successfulPruneStatsPerResourceType;
@@ -44,11 +44,13 @@
 - (BOOL)releaseFileURL:(id)arg1 forResource:(id)arg2 error:(id *)arg3;
 - (BOOL)resetWithError:(id *)arg1;
 - (id)retainFileURLForResource:(id)arg1 error:(id *)arg2;
+- (unsigned long long)scopeType;
 - (unsigned long long)sizeOfOriginalResourcesToUpload;
 - (unsigned long long)sizeOfResourcesToUpload;
 - (id)status;
 - (id)statusDictionary;
 - (BOOL)storeDownloadedResource:(id)arg1 atURL:(id)arg2 error:(id *)arg3;
+- (BOOL)storeResourceCopyForUpload:(id)arg1 error:(id *)arg2;
 - (BOOL)storeResourceForUpload:(id)arg1 error:(id *)arg2;
 - (void)writeTransactionDidFail;
 - (void)writeTransactionDidSucceed;

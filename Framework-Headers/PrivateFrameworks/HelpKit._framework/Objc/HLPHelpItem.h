@@ -12,18 +12,22 @@
 
 @interface HLPHelpItem : NSObject <NSCopying>
 {
+    NSString *_decodedName;
     HLPHelpItem *_parent;
+    long long _serverType;
     long long _level;
     NSURL *_iconURL;
     NSString *_name;
     NSString *_identifier;
 }
 
+@property (readonly, nonatomic) NSString *decodedName;
 @property (copy, nonatomic) NSURL *iconURL; // @synthesize iconURL=_iconURL;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long level; // @synthesize level=_level;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (weak, nonatomic) HLPHelpItem *parent; // @synthesize parent=_parent;
+@property (nonatomic) long long serverType; // @synthesize serverType=_serverType;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

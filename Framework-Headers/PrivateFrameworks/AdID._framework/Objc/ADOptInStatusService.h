@@ -26,8 +26,10 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)advertisingIdentifier:(CDUnknownBlockType)arg1;
 - (void)advertisingIdentifierChanged:(CDUnknownBlockType)arg1;
 - (void)callOptInStatusCompletionHandler:(long long)arg1 refreshWeakToken:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)clearAdvertisingIdentifier;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (long long)optInStatusFromRecord:(id)arg1;

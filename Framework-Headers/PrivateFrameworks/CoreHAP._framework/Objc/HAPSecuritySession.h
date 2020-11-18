@@ -6,7 +6,7 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class NSData, NSMutableData, NSObject;
+@class HAPSecuritySessionEncryption, NSData, NSObject;
 @protocol HAPSecuritySessionDelegate, OS_dispatch_queue;
 
 @interface HAPSecuritySession : HMFObject
@@ -19,21 +19,15 @@
     NSObject<OS_dispatch_queue> *_clientQueue;
     NSObject<OS_dispatch_queue> *_propertyQueue;
     struct PairingSessionPrivate *_pairingSession;
-    NSData *_inputKey;
-    NSMutableData *_inputNonce;
-    NSData *_outputKey;
-    NSMutableData *_outputNonce;
+    HAPSecuritySessionEncryption *_encryption;
 }
 
 @property (strong, nonatomic) NSData *broadcastKey; // @synthesize broadcastKey=_broadcastKey;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
 @property (readonly, weak) id<HAPSecuritySessionDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) NSData *inputKey; // @synthesize inputKey=_inputKey;
-@property (strong, nonatomic) NSMutableData *inputNonce; // @synthesize inputNonce=_inputNonce;
+@property (strong, nonatomic) HAPSecuritySessionEncryption *encryption; // @synthesize encryption=_encryption;
 @property (readonly, getter=isOpen) BOOL open;
 @property (readonly, getter=isOpening) BOOL opening;
-@property (strong, nonatomic) NSData *outputKey; // @synthesize outputKey=_outputKey;
-@property (strong, nonatomic) NSMutableData *outputNonce; // @synthesize outputNonce=_outputNonce;
 @property (nonatomic) struct PairingSessionPrivate *pairingSession; // @synthesize pairingSession=_pairingSession;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) unsigned long long resumeSessionID; // @synthesize resumeSessionID=_resumeSessionID;

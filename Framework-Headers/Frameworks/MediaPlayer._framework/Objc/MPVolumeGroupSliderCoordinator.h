@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MPVolumeSlider, NSArray, NSMapTable, NSMutableSet;
 
@@ -17,11 +17,13 @@
     NSMapTable *_optimisticScales;
     int _inFlightDisableOptimisticStateRequests;
     BOOL _shouldOverrideTracking;
+    BOOL _synced;
     MPVolumeSlider *_masterVolumeSlider;
 }
 
 @property (readonly, copy, nonatomic) NSArray *individualVolumeSliders;
 @property (readonly, nonatomic) MPVolumeSlider *masterVolumeSlider; // @synthesize masterVolumeSlider=_masterVolumeSlider;
+@property (readonly, nonatomic) BOOL synced; // @synthesize synced=_synced;
 
 - (void).cxx_destruct;
 - (void)_addControlEventsForVolumeSlider:(id)arg1;
@@ -29,6 +31,7 @@
 - (float)_maxOptimisticValue;
 - (void)_removeControlEventsForVolumeSlider:(id)arg1;
 - (void)_removeControlEventsForVolumeSliders:(id)arg1;
+- (void)_resetMasterVolumeSlider;
 - (void)_resetOptimisticScales;
 - (void)_setControlEventsForVolumeSlider:(id)arg1 add:(BOOL)arg2;
 - (void)_updateOptimisticValueCache;
@@ -36,6 +39,7 @@
 - (id)initWithMasterVolumeSlider:(id)arg1 individualVolumeSliders:(id)arg2;
 - (void)removeAllIndividualVolumeSliders;
 - (void)removeIndividualVolumeSlider:(id)arg1;
+- (void)syncSliders:(BOOL)arg1;
 - (void)volumeSliderDidEndTracking:(id)arg1;
 - (void)volumeSliderValueChanged:(id)arg1;
 

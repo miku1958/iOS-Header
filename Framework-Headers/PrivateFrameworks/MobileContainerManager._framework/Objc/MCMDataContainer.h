@@ -10,6 +10,7 @@
 {
 }
 
++ (long long)typeContainerClass;
 - (BOOL)wipeAllMyContainerContent:(id *)arg1;
 
 @end

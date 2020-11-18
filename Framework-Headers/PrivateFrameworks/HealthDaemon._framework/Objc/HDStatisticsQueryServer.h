@@ -18,11 +18,13 @@
 @property (readonly, nonatomic) unsigned long long mergeStrategy; // @synthesize mergeStrategy=_mergeStrategy;
 @property (readonly, nonatomic) unsigned long long statisticsOptions; // @synthesize statisticsOptions=_statisticsOptions;
 
++ (Class)queryClass;
++ (id)requiredEntitlements;
++ (BOOL)supportsAnchorBasedAuthorization;
 - (void).cxx_destruct;
 - (id)_queue_fetchStatisticsWithError:(id *)arg1;
 - (void)_queue_start;
-- (id)initWithQueryUUID:(id)arg1 configuration:(id)arg2 clientProxy:(id)arg3 client:(id)arg4 delegate:(id)arg5 profile:(id)arg6;
-- (id)requiredEntitlements;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 profile:(id)arg4 delegate:(id)arg5;
 
 @end
 

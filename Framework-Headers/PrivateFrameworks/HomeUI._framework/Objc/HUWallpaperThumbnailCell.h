@@ -6,23 +6,40 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class NSLayoutConstraint, UIImage, UIImageView;
+#import <HomeUI/UIDropInteractionDelegate-Protocol.h>
 
-@interface HUWallpaperThumbnailCell : UITableViewCell
+@class NSLayoutConstraint, NSString, UIDropInteraction, UIImage, UIImageView;
+@protocol HUWallpaperThumbnailCellDelegate;
+
+@interface HUWallpaperThumbnailCell : UITableViewCell <UIDropInteractionDelegate>
 {
+    id<HUWallpaperThumbnailCellDelegate> _delegate;
     UIImageView *_imageThumbnailView;
     NSLayoutConstraint *_imageWidthConstraint;
     NSLayoutConstraint *_imageHeightConstraint;
+    UIDropInteraction *_dropInteraction;
     struct CGSize _imageSize;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<HUWallpaperThumbnailCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIDropInteraction *dropInteraction; // @synthesize dropInteraction=_dropInteraction;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image;
 @property (strong, nonatomic) NSLayoutConstraint *imageHeightConstraint; // @synthesize imageHeightConstraint=_imageHeightConstraint;
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property (strong, nonatomic) UIImageView *imageThumbnailView; // @synthesize imageThumbnailView=_imageThumbnailView;
 @property (strong, nonatomic) NSLayoutConstraint *imageWidthConstraint; // @synthesize imageWidthConstraint=_imageWidthConstraint;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
+- (void)dropInteraction:(id)arg1 performDrop:(id)arg2;
+- (void)dropInteraction:(id)arg1 sessionDidEnd:(id)arg2;
+- (void)dropInteraction:(id)arg1 sessionDidEnter:(id)arg2;
+- (void)dropInteraction:(id)arg1 sessionDidExit:(id)arg2;
+- (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
 

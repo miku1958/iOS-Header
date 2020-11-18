@@ -6,27 +6,74 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class PUPhotoView, UIActivityIndicatorView, UIImageView;
+#import <PhotosUI/PXChangeObserver-Protocol.h>
 
-@interface PUCameraImportItemCell : UICollectionViewCell
+@class NSString, PUImportItemViewModel, PUPhotoView, UIActivityIndicatorView, UIImageView, UITextField;
+@protocol PUImportDisplayDelegate;
+
+__attribute__((visibility("hidden")))
+@interface PUCameraImportItemCell : UICollectionViewCell <PXChangeObserver>
 {
-    PUPhotoView *_photoView;
-    UIImageView *_badgeImageView;
+    struct CGRect _badgeTapZone;
+    BOOL _needsThumbnailRefresh;
+    BOOL _selectable;
+    BOOL _needsBadgeUpdate;
+    id<PUImportDisplayDelegate> _displayDelegate;
+    PUImportItemViewModel *_representedImportItem;
     long long _badgeType;
+    UIImageView *_badgeImageView;
     UIActivityIndicatorView *_spinner;
+    PUPhotoView *_photoView;
+    UITextField *_debugTextField;
+    long long _thumbnailRequestID;
+    struct CGRect _scaledDisplayRect;
 }
 
 @property (strong, nonatomic) UIImageView *badgeImageView; // @synthesize badgeImageView=_badgeImageView;
 @property (nonatomic) long long badgeType; // @synthesize badgeType=_badgeType;
+@property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) UITextField *debugTextField; // @synthesize debugTextField=_debugTextField;
+@property (readonly, copy) NSString *description;
+@property (weak, nonatomic) id<PUImportDisplayDelegate> displayDelegate; // @synthesize displayDelegate=_displayDelegate;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL needsBadgeUpdate; // @synthesize needsBadgeUpdate=_needsBadgeUpdate;
+@property (readonly, nonatomic) BOOL needsThumbnailRefresh; // @synthesize needsThumbnailRefresh=_needsThumbnailRefresh;
 @property (strong, nonatomic) PUPhotoView *photoView; // @synthesize photoView=_photoView;
+@property (strong, nonatomic) PUImportItemViewModel *representedImportItem; // @synthesize representedImportItem=_representedImportItem;
+@property (nonatomic) struct CGRect scaledDisplayRect; // @synthesize scaledDisplayRect=_scaledDisplayRect;
+@property (nonatomic) BOOL selectable; // @synthesize selectable=_selectable;
 @property (strong, nonatomic) UIActivityIndicatorView *spinner; // @synthesize spinner=_spinner;
+@property (readonly) Class superclass;
+@property (nonatomic) long long thumbnailRequestID; // @synthesize thumbnailRequestID=_thumbnailRequestID;
 
++ (double)alphaForSelectedCells;
 - (void).cxx_destruct;
-- (void)_createSpinnerIfNecessary;
+- (void)_enterOneUpAction;
+- (void)_fetchThumbnailReady;
+- (struct CGRect)_filledPhotosRectForImage:(id)arg1;
+- (void)_selectAction;
+- (id)accessibilityCustomActions;
+- (void)accessibilityElementDidBecomeFocused;
+- (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
+- (id)badgeView;
+- (void)cancelThumbnailLoadIfActive;
+- (void)clearImage;
+- (void)dealloc;
+- (long long)dragState;
+- (void)handleTapGesture:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)isAccessibilityElement;
 - (void)layoutSubviews;
+- (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prepareForReuse;
-- (void)setPhotoImage:(id)arg1 withSize:(struct CGSize)arg2 fillMode:(long long)arg3 videoDuration:(id)arg4;
+- (void)refreshThumbnail;
+- (void)setCachedImage:(id)arg1 isPlaceholder:(BOOL)arg2;
+- (void)setPhotoImage:(id)arg1 withSize:(struct CGSize)arg2 fillMode:(long long)arg3 videoDuration:(double)arg4 isPlaceholder:(BOOL)arg5;
+- (BOOL)shouldBeginGestureForPoint:(struct CGPoint)arg1;
+- (void)showActivityBadge:(BOOL)arg1;
+- (void)updateBadgeUIIfNeeded;
+- (void)updateDebugLabel:(id)arg1;
 
 @end
 

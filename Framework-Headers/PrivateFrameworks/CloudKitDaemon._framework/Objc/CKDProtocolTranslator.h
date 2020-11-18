@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKDPIdentifier, NSString;
+@class CKDPIdentifier, NSMutableDictionary, NSString;
 @protocol CKDProtocolTranslatorIdentityDelegate;
 
 @interface CKDProtocolTranslator : NSObject
@@ -18,12 +18,14 @@
     id<CKDProtocolTranslatorIdentityDelegate> _identityDelegate;
     NSString *_containerScopedUserID;
     NSString *_overriddenContainerScopedUserID;
+    NSMutableDictionary *_downloadPreauthorizationMap;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *containerScopedUserID; // @synthesize containerScopedUserID=_containerScopedUserID;
 @property (readonly, nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 @property (nonatomic) BOOL dontCreateValidatingParentReferences; // @synthesize dontCreateValidatingParentReferences=_dontCreateValidatingParentReferences;
+@property (strong, nonatomic) NSMutableDictionary *downloadPreauthorizationMap; // @synthesize downloadPreauthorizationMap=_downloadPreauthorizationMap;
 @property (weak, nonatomic) id<CKDProtocolTranslatorIdentityDelegate> identityDelegate; // @synthesize identityDelegate=_identityDelegate;
 @property (copy, nonatomic) NSString *orgAdminUserID; // @synthesize orgAdminUserID=_orgAdminUserID;
 @property (copy, nonatomic) NSString *overriddenContainerScopedUserID; // @synthesize overriddenContainerScopedUserID=_overriddenContainerScopedUserID;
@@ -39,6 +41,7 @@
 - (id)ancestorFromPAncestor:(id)arg1 error:(id *)arg2;
 - (id)assetFromPAsset:(id)arg1 error:(id *)arg2;
 - (unsigned long long)capabilitiesFromPZoneCapabilities:(id)arg1;
+- (void)consumeResponseHeader:(id)arg1;
 - (id)containerPrivacySettingsFromPContainerPrivacySettings:(id)arg1;
 - (id)deltaPRecordFromRecord:(id)arg1 withAllFields:(BOOL)arg2 outDeletedMergeFields:(id *)arg3 outKeysToSend:(id *)arg4;
 - (id)encryptedFieldValueOfType:(int)arg1 withObject:(id)arg2;
@@ -49,6 +52,7 @@
 - (int)fieldValueTypeFromEncryptedDataObject:(id)arg1 isInList:(BOOL)arg2;
 - (int)fieldValueTypeFromObject:(id)arg1;
 - (id)identityFromPUser:(id)arg1;
+- (id)initWithBundleIdentifier:(id)arg1 databaseScope:(long long)arg2;
 - (id)initWithContainerScopedUserID:(id)arg1 orgAdminUserID:(id)arg2 bundleIdentifier:(id)arg3 databaseScope:(long long)arg4;
 - (id)locationFieldValueWithLatitude:(double)arg1 longitude:(double)arg2;
 - (id)notificationFromPPushMessage:(id)arg1;

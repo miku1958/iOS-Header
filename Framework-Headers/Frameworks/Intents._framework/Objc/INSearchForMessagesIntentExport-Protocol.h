@@ -12,6 +12,7 @@
 @protocol INSearchForMessagesIntentExport <NSObject, JSExport>
 
 @property (nonatomic) unsigned long long attributes;
+@property (copy, nonatomic) NSArray *conversationIdentifiers;
 @property (copy, nonatomic) INDateComponentsRange *dateTimeRange;
 @property (copy, nonatomic) NSArray *identifiers;
 @property (copy, nonatomic) NSArray *notificationIdentifiers;

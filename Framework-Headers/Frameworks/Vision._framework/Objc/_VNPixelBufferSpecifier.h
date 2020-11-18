@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)initWithCVPixelBuffer:(struct __CVBuffer *)arg1;
 - (id)newImageBufferWithOptions:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
 - (struct __CVBuffer *)pixelBuffer;
 
 @end

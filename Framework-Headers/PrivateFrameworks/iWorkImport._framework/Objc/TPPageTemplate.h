@@ -9,13 +9,16 @@
 #import <iWorkImport/TPMasterDrawableProvider-Protocol.h>
 #import <iWorkImport/TSDDrawableContainerInfo-Protocol.h>
 #import <iWorkImport/TSKDocumentObject-Protocol.h>
+#import <iWorkImport/TSKModel-Protocol.h>
+#import <iWorkImport/TSKModelRootIndexProvider-Protocol.h>
 #import <iWorkImport/TSSPropertySource-Protocol.h>
+#import <iWorkImport/TSWPStorageParentStatisticsFilter-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSObject, NSString, TPDrawablesZOrder, TSDInfoGeometry;
+@class NSArray, NSMutableArray, NSMutableDictionary, NSObject, NSString, TPDrawablesZOrder, TSDFill, TSDInfoGeometry;
 @protocol TSDContainerInfo, TSDOwningAttachment;
 
 __attribute__((visibility("hidden")))
-@interface TPPageTemplate : TSPObject <TSKDocumentObject, TSDDrawableContainerInfo, TPMasterDrawableProvider, TSSPropertySource>
+@interface TPPageTemplate : TSPObject <TSKDocumentObject, TSDDrawableContainerInfo, TPMasterDrawableProvider, TSSPropertySource, TSKModelRootIndexProvider, TSKModel, TSWPStorageParentStatisticsFilter>
 {
     BOOL _headersFootersMatchPreviousPage;
     BOOL _hideHeadersFooters;
@@ -23,10 +26,12 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_placeholderDrawables;
     TPDrawablesZOrder *_drawablesZOrder;
     NSString *_name;
+    TSDFill *_backgroundFill;
 }
 
 @property (readonly, nonatomic, getter=isAnchoredToText) BOOL anchoredToText;
 @property (readonly, nonatomic, getter=isAttachedToBodyText) BOOL attachedToBodyText;
+@property (strong, nonatomic) TSDFill *backgroundFill; // @synthesize backgroundFill=_backgroundFill;
 @property (readonly, nonatomic) NSArray *childInfos;
 @property (readonly, nonatomic) unsigned long long countOfMasterDrawables;
 @property (readonly, copy) NSString *debugDescription;
@@ -56,7 +61,9 @@ __attribute__((visibility("hidden")))
 - (void)addMasterDrawables:(id)arg1 atIndex:(unsigned long long)arg2 insertContext:(id)arg3 suppressDOLC:(BOOL)arg4;
 - (void)applyTag:(id)arg1 toPlaceholder:(id)arg2;
 - (id)boxedObjectForProperty:(int)arg1;
+- (id)childEnumerator;
 - (void)clearBackPointerToParentInfoIfNeeded:(id)arg1;
+- (BOOL)containsModelObject:(id)arg1;
 - (BOOL)containsProperty:(int)arg1;
 - (id)copyWithContext:(id)arg1;
 - (double)doubleValueForProperty:(int)arg1;
@@ -73,14 +80,17 @@ __attribute__((visibility("hidden")))
 - (Class)layoutClass;
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)masterDrawablesSortedByZOrder:(id)arg1;
+- (long long)modelRootIndex;
 - (id)objectForProperty:(int)arg1;
 - (void)removeMasterDrawable:(id)arg1 suppressDOLC:(BOOL)arg2;
 - (Class)repClass;
 - (void)saveToArchiver:(id)arg1;
 - (void)setPrimitiveGeometry:(id)arg1;
+- (BOOL)statisticsShouldExcludeContainedStorage:(id)arg1;
 - (id)tagForDrawable:(id)arg1;
 - (unsigned long long)templateIndex;
 - (unsigned long long)templatePreviewPageIndex;
+- (id)topLevelParentInfoForInfo:(id)arg1;
 - (id)userDefinedTagForDrawable:(id)arg1;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;

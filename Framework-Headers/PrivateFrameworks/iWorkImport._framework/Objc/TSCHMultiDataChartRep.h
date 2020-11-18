@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) BOOL shouldDisableMultiDataControls; // @synthesize shouldDisableMultiDataControls=_shouldDisableMultiDataControls;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)didEndZooming;
 - (BOOL)frameInUnscaledCanvasNeedsPaddingForShadows;

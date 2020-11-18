@@ -16,6 +16,7 @@
     struct __CVBuffer *_pixelBufferRef;
     float _lightIntensity;
     float _temperature;
+    struct ExponentialSmoother<float> _smoother;
     ARFaceTrackingData *_lastFaceData;
     CDStruct_14d5dc5e _lastCameraTransform;
     BOOL _cameraTransformAvailable;
@@ -27,11 +28,9 @@
 }
 
 + (float)_computeShSmoothingAlpha:(double)arg1;
-+ (ImageViewT_0571eb02)_cvPixelBufferToACVGray:(struct __CVBuffer *)arg1;
-+ (shared_ptr_c68b61c3)_transformFaceTrackingData:(id)arg1;
++ (shared_ptr_9a05b847)_transformFaceTrackingData:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_computeLightIntensity:(float)arg1 samplingInterval:(double)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)processData:(id)arg1;

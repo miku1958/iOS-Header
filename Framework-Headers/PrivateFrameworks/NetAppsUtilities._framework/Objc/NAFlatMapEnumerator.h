@@ -6,6 +6,7 @@
 
 #import <Foundation/NSEnumerator.h>
 
+__attribute__((visibility("hidden")))
 @interface NAFlatMapEnumerator : NSEnumerator
 {
     NSEnumerator *_enumerator;

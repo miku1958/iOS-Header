@@ -12,9 +12,12 @@
 {
     BOOL _interfaceOrientationIsPortrait;
     UIImageView *_imageView;
+    UIImageView *_legibilityTreatedImageView;
     UIView *_textContainer;
     SBUIActionViewLabel *_titleLabel;
+    SBUIActionViewLabel *_legibilityTreatedTitleLabel;
     SBUIActionViewLabel *_subtitleLabel;
+    SBUIActionViewLabel *_legibilityTreatedSubtitleLabel;
     NSArray *_imageViewLayoutConstraints;
     BOOL _highlighted;
     SBUIAction *_action;
@@ -26,12 +29,15 @@
 @property (nonatomic) long long imagePosition; // @synthesize imagePosition=_imagePosition;
 
 - (void).cxx_destruct;
+- (void)_constrainView:(id)arg1 toView:(id)arg2;
+- (id)_createLegibilityTreatedLabelForLabel:(id)arg1;
 - (void)_setupSubviews;
 - (void)_updateImageViewLayoutConstraints;
 - (void)didMoveToSuperview;
 - (id)initWithAction:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)needsLegibilityCompensation;
 - (void)setHighlighted:(BOOL)arg1 withFeedbackRetargetBehavior:(id)arg2;
 
 @end

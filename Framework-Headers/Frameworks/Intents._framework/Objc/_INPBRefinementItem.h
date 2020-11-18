@@ -7,30 +7,31 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBRefinementItem-Protocol.h>
 
-@class NSString, PBUnknownFields, _INPBSelectionItem;
+@class NSString, _INPBSelectionItem;
 
-@interface _INPBRefinementItem : PBCodable <NSCopying>
+@interface _INPBRefinementItem : PBCodable <_INPBRefinementItem, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBSelectionItem *_item;
     NSString *_subKeyPath;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasItem;
 @property (readonly, nonatomic) BOOL hasSubKeyPath;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBSelectionItem *item; // @synthesize item=_item;
-@property (strong, nonatomic) NSString *subKeyPath; // @synthesize subKeyPath=_subKeyPath;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSString *subKeyPath; // @synthesize subKeyPath=_subKeyPath;
+@property (readonly) Class superclass;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

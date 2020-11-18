@@ -6,6 +6,7 @@
 
 #import <SiriUI/SiriUISnippetViewController.h>
 
+#import <SiriUI/CRKCardPresentationDelegate-Protocol.h>
 #import <SiriUI/CRKCardViewControllerDelegate-Protocol.h>
 #import <SiriUI/SiriUICardLoadingObserver-Protocol.h>
 #import <SiriUI/SiriUICardSnippetViewDataSource-Protocol.h>
@@ -13,10 +14,10 @@
 #import <SiriUI/SiriUIModalContainerViewControllerDelegate-Protocol.h>
 #import <SiriUI/_SiriUICardLoaderDelegate-Protocol.h>
 
-@class CRKCardViewController, NSMutableDictionary, NSObject, NSString, SACardSnippet, SiriUICardSnippetView, SiriUIModalContainerViewController, _SiriUICardLoader;
-@protocol OS_dispatch_group;
+@class CRKCardPresentation, NSMutableDictionary, NSObject, NSString, SACardSnippet, SiriUICardSnippetView, SiriUIModalContainerViewController, UIViewController, _SiriUICardLoader;
+@protocol CRKCardViewControllerDelegate, CRKCardViewControlling, OS_dispatch_group;
 
-@interface SiriUICardSnippetViewController : SiriUISnippetViewController <_SiriUICardLoaderDelegate, SiriUICardLoadingObserver, SiriUIModalContainerViewControllerDelegate, SiriUICardSnippetViewDataSource, SiriUICardSnippetViewDelegate, CRKCardViewControllerDelegate>
+@interface SiriUICardSnippetViewController : SiriUISnippetViewController <_SiriUICardLoaderDelegate, SiriUICardLoadingObserver, SiriUIModalContainerViewControllerDelegate, CRKCardPresentationDelegate, SiriUICardSnippetViewDataSource, SiriUICardSnippetViewDelegate, CRKCardViewControllerDelegate>
 {
     SACardSnippet *_snippet;
     struct CGSize _contentSize;
@@ -26,10 +27,13 @@
     SACardSnippet *_newlyLoadedCardSnippet;
     _SiriUICardLoader *_cardLoader;
     SiriUIModalContainerViewController *_presentedModalContainerViewController;
-    CRKCardViewController *_cardViewController;
+    UIViewController<CRKCardViewControlling> *_cardViewController;
+    CRKCardPresentation *_cardPresentation;
 }
 
-@property (strong, nonatomic, setter=_setCardViewController:) CRKCardViewController *_cardViewController; // @synthesize _cardViewController;
+@property (strong, nonatomic, getter=_cardPresentation, setter=_setCardPresentation:) CRKCardPresentation *cardPresentation; // @synthesize cardPresentation=_cardPresentation;
+@property (strong, nonatomic, getter=_cardViewController, setter=_setCardViewController:) UIViewController<CRKCardViewControlling> *cardViewController; // @synthesize cardViewController=_cardViewController;
+@property (readonly, nonatomic) id<CRKCardViewControllerDelegate> cardViewControllerDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -40,6 +44,8 @@
 - (void).cxx_destruct;
 - (void)_addCardViewControllerAsChildViewController:(id)arg1;
 - (void)_beginMonitoringForNextCardWithBlock:(CDUnknownBlockType)arg1;
+- (void)_forwardProgressEvent:(unsigned long long)arg1 toCardViewController:(id)arg2 animated:(BOOL)arg3;
+- (void)_forwardProgressEventToCardViewController:(unsigned long long)arg1;
 - (id)_metricsContextOfEventsForCard:(id)arg1;
 - (id)_metricsContextOfEventsForCardSection:(id)arg1 inCard:(id)arg2;
 - (void)_removeCardViewControllerFromParentViewController:(id)arg1;
@@ -61,6 +67,7 @@
 - (void)cardViewDidDisappearForCard:(id)arg1 withDisappearanceFeedback:(id)arg2;
 - (void)cardViewWillAppearForCard:(id)arg1 withAppearanceFeedback:(id)arg2;
 - (void)configureReusableTransparentHeaderView:(id)arg1;
+- (double)contentHeightForWidth:(double)arg1;
 - (void)controllerForCard:(id)arg1 didReceiveAsyncCard:(id)arg2 withAsyncCardReceiptFeedback:(id)arg3;
 - (void)controllerForCard:(id)arg1 didRequestAsyncCard:(id)arg2 withAsyncCardRequestFeedback:(id)arg3;
 - (struct UIEdgeInsets)defaultViewInsets;
@@ -81,6 +88,8 @@
 - (id)requestContext;
 - (id)sashItemForCardSnippetView:(id)arg1;
 - (void)setSnippet:(id)arg1;
+- (void)siriDidDeactivate;
+- (void)siriDidReceiveViewsWithDialogPhase:(id)arg1;
 - (void)siriDidStartSpeakingWithIdentifier:(id)arg1;
 - (void)siriDidStopSpeakingWithIdentifier:(id)arg1 speechQueueIsEmpty:(BOOL)arg2;
 - (id)snippet;
@@ -91,6 +100,7 @@
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (void)wasAddedToTranscript;
 - (void)willCancel;
+- (void)willConfirm;
 
 @end
 

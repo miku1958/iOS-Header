@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) BOOL canContributeToCloudSharedAlbum;
 @property (readonly, nonatomic) BOOL canShowAvalancheStacks;
 @property (readonly, nonatomic) BOOL canShowComments;
+@property (nonatomic) short cloudDeleteState; // @dynamic cloudDeleteState;
 @property (strong, nonatomic) NSString *cloudGUID; // @dynamic cloudGUID;
 @property (nonatomic) short cloudLocalState;
 @property (nonatomic) short cloudLocalState; // @dynamic cloudLocalState;
@@ -62,7 +63,6 @@
 @property (readonly, nonatomic) BOOL isSmartAlbum;
 @property (readonly, nonatomic) BOOL isStandInAlbum;
 @property (readonly, nonatomic) BOOL isUserLibraryAlbum;
-@property (readonly, nonatomic) BOOL isWallpaperAlbum;
 @property (strong, nonatomic) PLManagedAsset *keyAsset; // @dynamic keyAsset;
 @property (readonly, strong, nonatomic) NSNumber *kind;
 @property (nonatomic) int kindValue;
@@ -156,13 +156,12 @@
 + (id)trashBinAlbumInLibrary:(id)arg1;
 + (id)userLibraryAlbumInLibrary:(id)arg1;
 + (id)uuidFromGroupURL:(id)arg1;
-+ (id)wallpaperAlbumInLibrary:(id)arg1;
 - (void)_applyTrashedState:(short)arg1 date:(BOOL)arg2:(id)arg3 cascade:(BOOL)arg4;
 - (id)_compactDebugDescription;
-- (id)_itemIdentifier;
 - (id)_kindDescription;
 - (id)_prettyDescription;
 - (void)_repairTitleIfEmpty;
+- (id)_scopedIdentifier;
 - (void)applyPropertiesFromAlbumChange:(id)arg1;
 - (void)applyTrashedState:(short)arg1 cascade:(BOOL)arg2;
 - (id)assetsByObjectIDAtIndexes:(id)arg1;
@@ -183,6 +182,7 @@
 - (void)enumerateDerivedIndexMappers:(CDUnknownBlockType)arg1;
 - (BOOL)hasDerivedIndexMappers;
 - (BOOL)isSyncableChange;
+- (id)momentShare;
 - (void)reducePendingItemsCountBy:(unsigned long long)arg1;
 - (void)registerDerivedAlbum:(struct NSObject *)arg1;
 - (void)registerForChanges;

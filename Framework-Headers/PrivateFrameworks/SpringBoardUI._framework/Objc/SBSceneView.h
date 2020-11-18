@@ -11,7 +11,7 @@
 #import <SpringBoardUI/SBScenePlaceholderContentViewProviderDelegate-Protocol.h>
 
 @class NSString, SBSceneHandle;
-@protocol FBSceneHostView, SBScenePlaceholderContentContext, SBScenePlaceholderContentView, SBScenePlaceholderContentViewProvider;
+@protocol FBSceneHostView, SBScenePlaceholderContentContext, SBScenePlaceholderContentView, SBScenePlaceholderContentViewProvider, SBSceneViewDelegate;
 
 @interface SBSceneView : UIView <SBSceneHandleObserver, SBScenePlaceholderContentViewProviderDelegate, BSInvalidatable>
 {
@@ -32,11 +32,13 @@
     UIView *_backgroundView;
     BOOL _placeholderContentEnabled;
     id<SBScenePlaceholderContentViewProvider> _placeholderContentProvider;
+    id<SBSceneViewDelegate> _delegate;
 }
 
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (strong, nonatomic) UIView *customContentView; // @synthesize customContentView=_customContentView;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<SBSceneViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long displayMode; // @synthesize displayMode=_requestedDisplayMode;
 @property (readonly, nonatomic) long long effectiveDisplayMode; // @synthesize effectiveDisplayMode=_effectiveDisplayMode;

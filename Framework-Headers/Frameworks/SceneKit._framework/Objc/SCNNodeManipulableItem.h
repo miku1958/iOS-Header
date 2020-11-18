@@ -6,6 +6,7 @@
 
 #import <SceneKit/SCNManipulableItem.h>
 
+__attribute__((visibility("hidden")))
 @interface SCNNodeManipulableItem : SCNManipulableItem
 {
 }
@@ -19,6 +20,7 @@
 - (struct SCNVector3)scale;
 - (void)setPosition:(struct SCNVector3)arg1;
 - (void)setTransform:(struct SCNMatrix4)arg1;
+- (void)setWorldTransform:(struct SCNMatrix4)arg1;
 - (struct SCNMatrix4)transform;
 - (void)validateClone;
 - (struct SCNMatrix4)worldTransform;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class MFMailboxUid, NSMutableArray, NSString;
 
@@ -21,6 +21,7 @@
     NSMutableArray *_onMergeEnvelopeUpdates;
 }
 
++ (BOOL)hasEntries;
 + (void)initialize;
 + (id)journalForMailbox:(id)arg1;
 + (id)legacyJournal;

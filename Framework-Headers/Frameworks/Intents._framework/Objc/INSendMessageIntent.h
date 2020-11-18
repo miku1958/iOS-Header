@@ -14,6 +14,7 @@
 {
 }
 
+@property (copy, nonatomic) NSArray *attachments;
 @property (readonly, copy, nonatomic) NSString *content;
 @property (readonly, copy, nonatomic) NSString *conversationIdentifier;
 @property (readonly, copy) NSString *debugDescription;
@@ -25,10 +26,21 @@
 @property (readonly, copy, nonatomic) INSpeakableString *speakableGroupName;
 @property (readonly) Class superclass;
 
++ (id)_ignoredParameters;
+- (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
+- (long long)_intentCategory;
+- (BOOL)_isUserConfirmationRequired;
+- (BOOL)_isValidSubProducer:(id)arg1;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
+- (id)_redactedDictionaryRepresentation;
+- (void)_setMetadata:(id)arg1;
+- (id)_spotlightContentType;
+- (BOOL)_supportsBackgroundExecution;
 - (id)_typedBackingStore;
+- (id)_validParameterCombinationsWithSchema:(id)arg1;
+- (BOOL)configureAttributeSet:(id)arg1 includingData:(BOOL)arg2;
 - (id)domain;
 - (id)groupName;
 - (id)initWithRecipients:(id)arg1 content:(id)arg2 groupName:(id)arg3 serviceName:(id)arg4 sender:(id)arg5;

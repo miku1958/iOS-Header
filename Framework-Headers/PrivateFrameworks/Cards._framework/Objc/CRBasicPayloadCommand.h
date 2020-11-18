@@ -9,22 +9,25 @@
 #import <Cards/CRPayloadCommand-Protocol.h>
 
 @class NSDictionary, NSString;
-@protocol NSSecureCoding;
+@protocol NSSecureCoding><NSCopying;
 
 @interface CRBasicPayloadCommand : NSObject <CRPayloadCommand>
 {
-    id<NSSecureCoding> payload;
+    id<NSSecureCoding><NSCopying> payload;
     NSDictionary *userInfo;
+    unsigned long long commandDirection;
 }
 
+@property (nonatomic) unsigned long long commandDirection; // @synthesize commandDirection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<NSSecureCoding> payload; // @synthesize payload;
+@property (strong, nonatomic) id<NSSecureCoding><NSCopying> payload; // @synthesize payload;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

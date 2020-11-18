@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInputViewSetPlacementOnScreen.h>
+#import <UIKitCore/UIInputViewSetPlacementOnScreen.h>
 
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface UIInputViewSetPlacementOnScreenWithAccessory : UIInputViewSetPlacementOnScreen <NSSecureCoding>

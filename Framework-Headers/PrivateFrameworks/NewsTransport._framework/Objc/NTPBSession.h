@@ -12,6 +12,8 @@
 
 @interface NTPBSession : PBCodable <NSCopying>
 {
+    CDStruct_95bda58d _userSegmentationSegmentSetIds;
+    CDStruct_5df41632 _userSegmentationTreatmentIds;
     long long _appBuild;
     long long _appConfigTreatmentId;
     long long _lastAppOpenDate;
@@ -49,6 +51,7 @@
     NSString *_personalizationPortraitVariantName;
     NSString *_previousAppVersion;
     NSString *_previousOsVersion;
+    NSString *_productType;
     int _reachabilityStatus;
     NSData *_sessionId;
     NSData *_sessionIdWatch;
@@ -58,10 +61,16 @@
     int _utcOffset;
     NSString *_watchSessionId;
     int _widgetDisplayMode;
+    int _widgetDisplayModeSessionEnd;
     int _widgetModeType;
     NSData *_widgetSessionId;
     NSString *_widgetUserId;
+    BOOL _iosSettingsNotificationsBadgeAppIconEnabled;
     BOOL _iosSettingsNotificationsEnabled;
+    BOOL _iosSettingsNotificationsShowAsBannersEnabled;
+    BOOL _iosSettingsNotificationsShowInHistoryEnabled;
+    BOOL _iosSettingsNotificationsShowOnLockScreenEnabled;
+    BOOL _iosSettingsNotificationsSoundEnabled;
     BOOL _isNewUser;
     BOOL _isPaidSubscriber;
     BOOL _isPaidSubscriberFromAppStore;
@@ -97,8 +106,14 @@
         unsigned int textSize:1;
         unsigned int utcOffset:1;
         unsigned int widgetDisplayMode:1;
+        unsigned int widgetDisplayModeSessionEnd:1;
         unsigned int widgetModeType:1;
+        unsigned int iosSettingsNotificationsBadgeAppIconEnabled:1;
         unsigned int iosSettingsNotificationsEnabled:1;
+        unsigned int iosSettingsNotificationsShowAsBannersEnabled:1;
+        unsigned int iosSettingsNotificationsShowInHistoryEnabled:1;
+        unsigned int iosSettingsNotificationsShowOnLockScreenEnabled:1;
+        unsigned int iosSettingsNotificationsSoundEnabled:1;
         unsigned int isNewUser:1;
         unsigned int isPaidSubscriber:1;
         unsigned int isPaidSubscriberFromAppStore:1;
@@ -157,7 +172,12 @@
 @property (nonatomic) BOOL hasGenderConfidenceLevel;
 @property (nonatomic) BOOL hasIncomeBracket;
 @property (nonatomic) BOOL hasIncomeBracketConfidenceLevel;
+@property (nonatomic) BOOL hasIosSettingsNotificationsBadgeAppIconEnabled;
 @property (nonatomic) BOOL hasIosSettingsNotificationsEnabled;
+@property (nonatomic) BOOL hasIosSettingsNotificationsShowAsBannersEnabled;
+@property (nonatomic) BOOL hasIosSettingsNotificationsShowInHistoryEnabled;
+@property (nonatomic) BOOL hasIosSettingsNotificationsShowOnLockScreenEnabled;
+@property (nonatomic) BOOL hasIosSettingsNotificationsSoundEnabled;
 @property (nonatomic) BOOL hasIsNewUser;
 @property (nonatomic) BOOL hasIsPaidSubscriber;
 @property (nonatomic) BOOL hasIsPaidSubscriberFromAppStore;
@@ -180,6 +200,7 @@
 @property (readonly, nonatomic) BOOL hasPreviousOsVersion;
 @property (nonatomic) BOOL hasPrivateDataEncrypted;
 @property (nonatomic) BOOL hasPrivateDataSyncOn;
+@property (readonly, nonatomic) BOOL hasProductType;
 @property (nonatomic) BOOL hasProgressivePersonalizationAllowed;
 @property (nonatomic) BOOL hasReachabilityStatus;
 @property (nonatomic) BOOL hasRunningObsolete;
@@ -195,12 +216,18 @@
 @property (nonatomic) BOOL hasUtcOffset;
 @property (readonly, nonatomic) BOOL hasWatchSessionId;
 @property (nonatomic) BOOL hasWidgetDisplayMode;
+@property (nonatomic) BOOL hasWidgetDisplayModeSessionEnd;
 @property (nonatomic) BOOL hasWidgetModeType;
 @property (readonly, nonatomic) BOOL hasWidgetSessionId;
 @property (readonly, nonatomic) BOOL hasWidgetUserId;
 @property (nonatomic) int incomeBracket; // @synthesize incomeBracket=_incomeBracket;
 @property (nonatomic) float incomeBracketConfidenceLevel; // @synthesize incomeBracketConfidenceLevel=_incomeBracketConfidenceLevel;
+@property (nonatomic) BOOL iosSettingsNotificationsBadgeAppIconEnabled; // @synthesize iosSettingsNotificationsBadgeAppIconEnabled=_iosSettingsNotificationsBadgeAppIconEnabled;
 @property (nonatomic) BOOL iosSettingsNotificationsEnabled; // @synthesize iosSettingsNotificationsEnabled=_iosSettingsNotificationsEnabled;
+@property (nonatomic) BOOL iosSettingsNotificationsShowAsBannersEnabled; // @synthesize iosSettingsNotificationsShowAsBannersEnabled=_iosSettingsNotificationsShowAsBannersEnabled;
+@property (nonatomic) BOOL iosSettingsNotificationsShowInHistoryEnabled; // @synthesize iosSettingsNotificationsShowInHistoryEnabled=_iosSettingsNotificationsShowInHistoryEnabled;
+@property (nonatomic) BOOL iosSettingsNotificationsShowOnLockScreenEnabled; // @synthesize iosSettingsNotificationsShowOnLockScreenEnabled=_iosSettingsNotificationsShowOnLockScreenEnabled;
+@property (nonatomic) BOOL iosSettingsNotificationsSoundEnabled; // @synthesize iosSettingsNotificationsSoundEnabled=_iosSettingsNotificationsSoundEnabled;
 @property (nonatomic) BOOL isNewUser; // @synthesize isNewUser=_isNewUser;
 @property (nonatomic) BOOL isPaidSubscriber; // @synthesize isPaidSubscriber=_isPaidSubscriber;
 @property (nonatomic) BOOL isPaidSubscriberFromAppStore; // @synthesize isPaidSubscriberFromAppStore=_isPaidSubscriberFromAppStore;
@@ -223,6 +250,7 @@
 @property (strong, nonatomic) NSString *previousOsVersion; // @synthesize previousOsVersion=_previousOsVersion;
 @property (nonatomic) BOOL privateDataEncrypted; // @synthesize privateDataEncrypted=_privateDataEncrypted;
 @property (nonatomic) BOOL privateDataSyncOn; // @synthesize privateDataSyncOn=_privateDataSyncOn;
+@property (strong, nonatomic) NSString *productType; // @synthesize productType=_productType;
 @property (nonatomic) BOOL progressivePersonalizationAllowed; // @synthesize progressivePersonalizationAllowed=_progressivePersonalizationAllowed;
 @property (nonatomic) int reachabilityStatus; // @synthesize reachabilityStatus=_reachabilityStatus;
 @property (nonatomic) BOOL runningObsolete; // @synthesize runningObsolete=_runningObsolete;
@@ -233,11 +261,16 @@
 @property (nonatomic) int textSize; // @synthesize textSize=_textSize;
 @property (nonatomic) BOOL upgradedFromObsolete; // @synthesize upgradedFromObsolete=_upgradedFromObsolete;
 @property (strong, nonatomic) NSString *userId; // @synthesize userId=_userId;
+@property (readonly, nonatomic) int *userSegmentationSegmentSetIds;
+@property (readonly, nonatomic) unsigned long long userSegmentationSegmentSetIdsCount;
+@property (readonly, nonatomic) long long *userSegmentationTreatmentIds;
+@property (readonly, nonatomic) unsigned long long userSegmentationTreatmentIdsCount;
 @property (nonatomic) long long userStartDate; // @synthesize userStartDate=_userStartDate;
 @property (strong, nonatomic) NSString *userStorefrontId; // @synthesize userStorefrontId=_userStorefrontId;
 @property (nonatomic) int utcOffset; // @synthesize utcOffset=_utcOffset;
 @property (strong, nonatomic) NSString *watchSessionId; // @synthesize watchSessionId=_watchSessionId;
 @property (nonatomic) int widgetDisplayMode; // @synthesize widgetDisplayMode=_widgetDisplayMode;
+@property (nonatomic) int widgetDisplayModeSessionEnd; // @synthesize widgetDisplayModeSessionEnd=_widgetDisplayModeSessionEnd;
 @property (nonatomic) int widgetModeType; // @synthesize widgetModeType=_widgetModeType;
 @property (strong, nonatomic) NSData *widgetSessionId; // @synthesize widgetSessionId=_widgetSessionId;
 @property (strong, nonatomic) NSString *widgetUserId; // @synthesize widgetUserId=_widgetUserId;
@@ -249,10 +282,16 @@
 - (int)StringAsOsInstallVariant:(id)arg1;
 - (int)StringAsReachabilityStatus:(id)arg1;
 - (int)StringAsWidgetDisplayMode:(id)arg1;
+- (int)StringAsWidgetDisplayModeSessionEnd:(id)arg1;
 - (int)StringAsWidgetModeType:(id)arg1;
+- (void)addUserSegmentationSegmentSetIds:(int)arg1;
+- (void)addUserSegmentationTreatmentIds:(long long)arg1;
 - (id)campaignTypeAsString:(int)arg1;
 - (id)cellularRadioAccessTechnologyAsString:(int)arg1;
+- (void)clearUserSegmentationSegmentSetIds;
+- (void)clearUserSegmentationTreatmentIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
@@ -262,7 +301,12 @@
 - (id)osInstallVariantAsString:(int)arg1;
 - (id)reachabilityStatusAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setUserSegmentationSegmentSetIds:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setUserSegmentationTreatmentIds:(long long *)arg1 count:(unsigned long long)arg2;
+- (int)userSegmentationSegmentSetIdsAtIndex:(unsigned long long)arg1;
+- (long long)userSegmentationTreatmentIdsAtIndex:(unsigned long long)arg1;
 - (id)widgetDisplayModeAsString:(int)arg1;
+- (id)widgetDisplayModeSessionEndAsString:(int)arg1;
 - (id)widgetModeTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

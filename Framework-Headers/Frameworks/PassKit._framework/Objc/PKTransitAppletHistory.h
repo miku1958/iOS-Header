@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSDate, NSDecimalNumber, NSNumber, NSString;
+@class NSArray, NSDate, NSDecimalNumber, NSNumber, NSSet, NSString;
 
 @interface PKTransitAppletHistory : NSObject <NSSecureCoding>
 {
     BOOL _blacklisted;
-    BOOL _inStation;
     long long _source;
     NSString *_serviceProvider;
     NSString *_currency;
@@ -22,14 +21,16 @@
     NSDate *_expirationDate;
     NSArray *_historyRecords;
     NSArray *_inStationDetails;
+    NSSet *_enrouteTransitTypes;
 }
 
 @property (copy, nonatomic) NSDecimalNumber *balance; // @synthesize balance=_balance;
 @property (nonatomic, getter=isBlacklisted) BOOL blacklisted; // @synthesize blacklisted=_blacklisted;
 @property (copy, nonatomic) NSString *currency; // @synthesize currency=_currency;
+@property (copy, nonatomic) NSSet *enrouteTransitTypes; // @synthesize enrouteTransitTypes=_enrouteTransitTypes;
 @property (strong, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (copy, nonatomic) NSArray *historyRecords; // @synthesize historyRecords=_historyRecords;
-@property (nonatomic, getter=isInStation) BOOL inStation; // @synthesize inStation=_inStation;
+@property (readonly, nonatomic, getter=isInStation) BOOL inStation; // @dynamic inStation;
 @property (copy, nonatomic) NSArray *inStationDetails; // @synthesize inStationDetails=_inStationDetails;
 @property (copy, nonatomic) NSNumber *loyaltyBalance; // @synthesize loyaltyBalance=_loyaltyBalance;
 @property (copy, nonatomic) NSString *serviceProvider; // @synthesize serviceProvider=_serviceProvider;

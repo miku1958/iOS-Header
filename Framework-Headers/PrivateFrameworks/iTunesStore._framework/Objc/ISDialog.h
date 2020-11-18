@@ -71,6 +71,9 @@
 @property (copy) NSString *touchIDContinueToken; // @synthesize touchIDContinueToken=_touchIDContinueToken;
 @property long long unlockActionButtonIndex; // @synthesize unlockActionButtonIndex=_unlockActionButtonIndex;
 
++ (void)_initializeStaticButtonTitleKeyAndTagMapping;
++ (unsigned long long)buttonTagForCFUserNotificationButtonTitleKey:(struct __CFString *)arg1;
++ (struct __CFString *)buttonTitleKeyForCFUserNotificationButtonTag:(unsigned long long)arg1;
 + (long long)displayCountForKey:(id)arg1;
 - (void).cxx_destruct;
 - (long long)_kindForString:(id)arg1;
@@ -88,6 +91,7 @@
 - (id)initWithTitle:(id)arg1 message:(id)arg2;
 - (id)initWithXPCEncoding:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)orderedButtonTitleKeysForCFUserNotification;
 - (void)setButtonsWithTitles:(id)arg1;
 - (void)setValue:(void *)arg1 forCFUserNotificationKey:(struct __CFString *)arg2;
 - (void)setValue:(id)arg1 forUserInfoKey:(id)arg2;

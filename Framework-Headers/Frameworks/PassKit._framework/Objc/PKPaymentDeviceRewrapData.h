@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
@@ -14,10 +14,12 @@
 {
     NSString *_deviceIdentifier;
     PKSecureElementCertificateSet *_certificates;
+    NSString *_kextBlacklistVersion;
 }
 
 @property (copy, nonatomic) PKSecureElementCertificateSet *certificates; // @synthesize certificates=_certificates;
 @property (copy, nonatomic) NSString *deviceIdentifier; // @synthesize deviceIdentifier=_deviceIdentifier;
+@property (copy, nonatomic) NSString *kextBlacklistVersion; // @synthesize kextBlacklistVersion=_kextBlacklistVersion;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

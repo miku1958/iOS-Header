@@ -16,7 +16,6 @@
 - (BOOL)canAddOrShowComment;
 - (BOOL)canHandleGesture:(id)arg1;
 - (int)canPerformEditorAction:(SEL)arg1 withSender:(id)arg2;
-- (void)copy:(id)arg1;
 - (id)editingReps;
 - (id)editorKeyboardLanguage;
 - (id)extraMenuItems;

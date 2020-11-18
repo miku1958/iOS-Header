@@ -13,11 +13,13 @@
 @interface RCWaveformSegment : NSObject <NSSecureCoding>
 {
     NSData *_averagePowerLevelData;
+    BOOL _isRendered;
     CDStruct_73a5d3ca _timeRange;
 }
 
 @property (readonly, nonatomic) const float *averagePowerLevels;
 @property (readonly, nonatomic) long long averagePowerLevelsCount;
+@property (nonatomic) BOOL isRendered; // @synthesize isRendered=_isRendered;
 @property (readonly, nonatomic) CDStruct_73a5d3ca timeRange; // @synthesize timeRange=_timeRange;
 
 + (id)_discontinuityRepairedSegmentsByGrowingToFillGapsInSegments:(id)arg1;
@@ -28,6 +30,7 @@
 + (id)emptySegmentWithTimeRange:(CDStruct_73a5d3ca)arg1;
 + (void)initialize;
 + (id)segmentsByMergingSegments:(id)arg1 preferredSegmentDuration:(double)arg2;
++ (id)segmentsByMergingSegments:(id)arg1 preferredSegmentDuration:(double)arg2 beforeTime:(double)arg3 andThenUsePreferredSegmentDuration:(double)arg4;
 + (id)segmentsByReparingDiscontinuitiesInSegments:(id)arg1;
 + (id)segmentsByShiftingSegments:(id)arg1 byTimeOffset:(double)arg2;
 + (BOOL)supportsSecureCoding;

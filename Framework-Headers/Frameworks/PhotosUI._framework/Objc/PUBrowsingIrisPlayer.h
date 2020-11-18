@@ -12,7 +12,6 @@
 @class ISLivePhotoPlayer, ISWrappedAVPlayer, NSArray, NSMutableSet, NSString, PHLivePhoto, PUMediaProvider;
 @protocol PUDisplayAsset;
 
-__attribute__((visibility("hidden")))
 @interface PUBrowsingIrisPlayer : PUViewModel <ISChangeObserver, PXVideoScrubberControllerTarget>
 {
     struct {

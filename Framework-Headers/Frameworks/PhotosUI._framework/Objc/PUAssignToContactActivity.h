@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)_activityBundleImageConfiguration;
 - (id)_embeddedActivityViewController;
 - (id)activityViewController;
 - (unsigned long long)navigationControllerSupportedInterfaceOrientations:(id)arg1;

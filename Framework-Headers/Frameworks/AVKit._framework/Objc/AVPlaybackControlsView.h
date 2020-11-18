@@ -6,19 +6,18 @@
 
 #import <UIKit/UIView.h>
 
-#import <AVKit/AVPlaybackControlsViewItemAvailabilityObserver-Protocol.h>
+@class AVBackdropView, AVButton, AVPlaybackControlsRoutePickerView, AVPlayerViewControllerCustomControlsView, AVScrubber, AVStyleSheet, AVTransportControlsView, AVView, AVVolumeButtonControl, AVVolumeSlider, NSArray, NSLayoutConstraint, NSUUID, UIViewPropertyAnimator, _UIVisualEffectBackdropView;
 
-@class AVBackdropView, AVButton, AVPlaybackControlsRoutePickerView, AVScrubber, AVTransportControlsView, AVView, AVVolumeButtonControl, AVVolumeSlider, NSArray, NSLayoutConstraint, NSString, UIViewPropertyAnimator;
-@protocol AVPlaybackControlsViewDelegate;
-
-@interface AVPlaybackControlsView : UIView <AVPlaybackControlsViewItemAvailabilityObserver>
+@interface AVPlaybackControlsView : UIView
 {
     BOOL _fullScreen;
-    BOOL _canHideInteractiveContentOverlayView;
-    BOOL _showsProminentPlayButton;
     BOOL _doubleRowLayoutEnabled;
     BOOL _needsIntialLayout;
+    BOOL _topAreaLayoutGuideExpanded;
+    AVPlayerViewControllerCustomControlsView *_customControlsView;
+    AVStyleSheet *_styleSheet;
     long long _preferredUnobscuredArea;
+    long long _includedContainers;
     UIView *_volumeControlsContainer;
     UIView *_playbackControlsContainer;
     AVBackdropView *_screenModeControls;
@@ -30,46 +29,58 @@
     AVButton *_fullScreenButton;
     AVButton *_videoGravityButton;
     AVButton *_pictureInPictureButton;
+    NSArray *_customDisplayModeButtons;
     AVVolumeButtonControl *_volumeButton;
     AVVolumeSlider *_volumeSlider;
+    NSArray *_customAudioButtons;
     AVButton *_prominentPlayButton;
     AVButton *_miniPlayPauseButton;
     AVTransportControlsView *_transportControlsView;
     AVButton *_standardPlayPauseButton;
     AVButton *_skipForwardButton;
     AVButton *_skipBackButton;
+    AVButton *_startLeftwardContentTransitionButton;
+    AVButton *_startRightwardContentTransitionButton;
     AVScrubber *_scrubber;
     AVPlaybackControlsRoutePickerView *_routePickerView;
     AVButton *_mediaSelectionButton;
-    UIView *_interactiveContentOverlayView;
-    id<AVPlaybackControlsViewDelegate> _delegate;
-    NSArray *_playbackControlsViewItems;
+    NSArray *_customMediaButtons;
+    NSArray *_customControlItems;
+    NSArray *_defaultAudioControls;
+    NSArray *_defaultDisplayModeControls;
     NSLayoutConstraint *_volumeButtonBottomToLayoutMarginsGuideBottomConstraint;
     NSLayoutConstraint *_volumeTopToLayoutGuideTopConstraint;
     NSLayoutConstraint *_volumeTopToViewTopConstraint;
     NSLayoutConstraint *_screenModeControlsToVolumeControlsSpacingConstraint;
-    UIViewPropertyAnimator *_showsProminentPlayButtonVisibilityAnimator;
-    struct UIEdgeInsets _interactiveContentOverlayViewLayoutMargins;
+    UIViewPropertyAnimator *_playbackControlsVisibilityAnimator;
+    NSUUID *_mostRecentAnimationCompletionsID;
+    _UIVisualEffectBackdropView *_captureView;
 }
 
-@property (nonatomic) BOOL canHideInteractiveContentOverlayView; // @synthesize canHideInteractiveContentOverlayView=_canHideInteractiveContentOverlayView;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<AVPlaybackControlsViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) _UIVisualEffectBackdropView *captureView; // @synthesize captureView=_captureView;
+@property (readonly, nonatomic) NSArray *customAudioButtons; // @synthesize customAudioButtons=_customAudioButtons;
+@property (copy, nonatomic) NSArray *customControlItems; // @synthesize customControlItems=_customControlItems;
+@property (readonly, nonatomic) AVPlayerViewControllerCustomControlsView *customControlsView; // @synthesize customControlsView=_customControlsView;
+@property (readonly, nonatomic) NSArray *customDisplayModeButtons; // @synthesize customDisplayModeButtons=_customDisplayModeButtons;
+@property (readonly, nonatomic) NSArray *customMediaButtons; // @synthesize customMediaButtons=_customMediaButtons;
+@property (readonly, nonatomic) NSArray *defaultAudioControls; // @synthesize defaultAudioControls=_defaultAudioControls;
+@property (readonly, nonatomic) NSArray *defaultDisplayModeControls; // @synthesize defaultDisplayModeControls=_defaultDisplayModeControls;
 @property (readonly, nonatomic) AVButton *doneButton; // @synthesize doneButton=_doneButton;
 @property (nonatomic, getter=isDoubleRowLayoutEnabled) BOOL doubleRowLayoutEnabled; // @synthesize doubleRowLayoutEnabled=_doubleRowLayoutEnabled;
 @property (nonatomic, getter=isFullScreen) BOOL fullScreen; // @synthesize fullScreen=_fullScreen;
 @property (readonly, nonatomic) AVButton *fullScreenButton; // @synthesize fullScreenButton=_fullScreenButton;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIView *interactiveContentOverlayView; // @synthesize interactiveContentOverlayView=_interactiveContentOverlayView;
-@property (nonatomic) struct UIEdgeInsets interactiveContentOverlayViewLayoutMargins; // @synthesize interactiveContentOverlayViewLayoutMargins=_interactiveContentOverlayViewLayoutMargins;
+@property (nonatomic) long long includedContainers; // @synthesize includedContainers=_includedContainers;
 @property (readonly, nonatomic) AVButton *mediaSelectionButton; // @synthesize mediaSelectionButton=_mediaSelectionButton;
 @property (readonly, nonatomic) AVButton *miniPlayPauseButton; // @synthesize miniPlayPauseButton=_miniPlayPauseButton;
 @property (readonly, nonatomic) AVBackdropView *miniPlayPauseButtonBackdropView; // @synthesize miniPlayPauseButtonBackdropView=_miniPlayPauseButtonBackdropView;
+@property (strong, nonatomic) NSUUID *mostRecentAnimationCompletionsID; // @synthesize mostRecentAnimationCompletionsID=_mostRecentAnimationCompletionsID;
 @property (nonatomic) BOOL needsIntialLayout; // @synthesize needsIntialLayout=_needsIntialLayout;
 @property (readonly, nonatomic) AVButton *pictureInPictureButton; // @synthesize pictureInPictureButton=_pictureInPictureButton;
 @property (readonly, nonatomic) UIView *playbackControlsContainer; // @synthesize playbackControlsContainer=_playbackControlsContainer;
-@property (readonly, nonatomic) NSArray *playbackControlsViewItems; // @synthesize playbackControlsViewItems=_playbackControlsViewItems;
+@property (readonly, nonatomic) BOOL playbackControlsIncludeDisplayModeControls;
+@property (readonly, nonatomic) BOOL playbackControlsIncludeTransportControls;
+@property (readonly, nonatomic) BOOL playbackControlsIncludeVolumeControls;
+@property (strong, nonatomic) UIViewPropertyAnimator *playbackControlsVisibilityAnimator; // @synthesize playbackControlsVisibilityAnimator=_playbackControlsVisibilityAnimator;
 @property (nonatomic) long long preferredUnobscuredArea; // @synthesize preferredUnobscuredArea=_preferredUnobscuredArea;
 @property (readonly, nonatomic) AVButton *prominentPlayButton; // @synthesize prominentPlayButton=_prominentPlayButton;
 @property (readonly, nonatomic) AVBackdropView *prominentPlayButtonBackdropView; // @synthesize prominentPlayButtonBackdropView=_prominentPlayButtonBackdropView;
@@ -77,12 +88,14 @@
 @property (readonly, nonatomic) AVBackdropView *screenModeControls; // @synthesize screenModeControls=_screenModeControls;
 @property (readonly, nonatomic) NSLayoutConstraint *screenModeControlsToVolumeControlsSpacingConstraint; // @synthesize screenModeControlsToVolumeControlsSpacingConstraint=_screenModeControlsToVolumeControlsSpacingConstraint;
 @property (readonly, nonatomic) AVScrubber *scrubber; // @synthesize scrubber=_scrubber;
-@property (nonatomic) BOOL showsProminentPlayButton; // @synthesize showsProminentPlayButton=_showsProminentPlayButton;
-@property (strong, nonatomic) UIViewPropertyAnimator *showsProminentPlayButtonVisibilityAnimator; // @synthesize showsProminentPlayButtonVisibilityAnimator=_showsProminentPlayButtonVisibilityAnimator;
+@property (readonly, nonatomic) BOOL showsProminentPlayButton;
 @property (readonly, nonatomic) AVButton *skipBackButton; // @synthesize skipBackButton=_skipBackButton;
 @property (readonly, nonatomic) AVButton *skipForwardButton; // @synthesize skipForwardButton=_skipForwardButton;
 @property (readonly, nonatomic) AVButton *standardPlayPauseButton; // @synthesize standardPlayPauseButton=_standardPlayPauseButton;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) AVButton *startLeftwardContentTransitionButton; // @synthesize startLeftwardContentTransitionButton=_startLeftwardContentTransitionButton;
+@property (readonly, nonatomic) AVButton *startRightwardContentTransitionButton; // @synthesize startRightwardContentTransitionButton=_startRightwardContentTransitionButton;
+@property (strong, nonatomic) AVStyleSheet *styleSheet; // @synthesize styleSheet=_styleSheet;
+@property (nonatomic, getter=isTopAreaLayoutGuideExpanded) BOOL topAreaLayoutGuideExpanded; // @synthesize topAreaLayoutGuideExpanded=_topAreaLayoutGuideExpanded;
 @property (readonly, nonatomic) AVView *transportControlsContainerView; // @synthesize transportControlsContainerView=_transportControlsContainerView;
 @property (readonly, nonatomic) AVTransportControlsView *transportControlsView; // @synthesize transportControlsView=_transportControlsView;
 @property (readonly, nonatomic) AVButton *videoGravityButton; // @synthesize videoGravityButton=_videoGravityButton;
@@ -95,25 +108,29 @@
 @property (readonly, nonatomic) NSLayoutConstraint *volumeTopToViewTopConstraint; // @synthesize volumeTopToViewTopConstraint=_volumeTopToViewTopConstraint;
 
 - (void).cxx_destruct;
-- (struct UIEdgeInsets)_interactiveContentOverlayViewLayoutMargins;
+- (id)_buttonsForControlItems:(id)arg1 withType:(long long)arg2 limit:(unsigned long long)arg3;
+- (id)_customControlsViewIfLoaded;
 - (BOOL)_isDescendantOfNonPagingScrollView;
+- (id)_playbackControlsViewItems;
 - (void)_setupInitialLayout;
 - (void)_statusBarFrameDidChange:(id)arg1;
 - (void)_statusBarFrameWillChange:(id)arg1;
 - (void)_statusBarHiddenDidChange:(id)arg1;
 - (void)_statusBarOrientationWillChange:(id)arg1;
-- (void)_updateDoubleRowTransportControlsEnabled;
+- (void)_updateAreVolumeAndTransportControlsVisible;
+- (void)_updateDoubleRowLayoutEnabled;
 - (void)_updateLayoutMargins;
 - (void)_updateLayoutMargins:(struct CGRect)arg1;
-- (void)animateAlongsideVisibilityChangeIfNeeded;
+- (void)_updatePlaybackControlsVisibility;
+- (void)animateAlongsideVisibilityAnimationsWithAnimationCoordinator:(id)arg1 appearingViews:(id)arg2 disappearingViews:(id)arg3;
 - (void)dealloc;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 styleSheet:(id)arg2 captureView:(id)arg3;
 - (void)layoutSubviews;
-- (void)playbackControlsViewItemChangedAvailability:(id)arg1;
 - (void)safeAreaInsetsDidChange;
+- (void)setupInitialLayout;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateInteractiveContentOverlayViewLayoutMargins;
+- (void)updateLayoutForChangedControlsVisibility;
 
 @end
 

@@ -34,7 +34,6 @@
 - (void)logEngagement:(id)arg1 forInput:(id)arg2 completion:(id)arg3;
 - (void)logResultsShown:(unsigned long long)arg1 serverOverride:(BOOL)arg2;
 - (void)logResultsShown:(unsigned long long)arg1 serverOverride:(BOOL)arg2 forInput:(id)arg3;
-- (void)logResultsSuppressed;
 - (void)logTransactionSuccessfulForInput:(id)arg1;
 - (void)logTransactionSuccessfulForInput:(id)arg1 completion:(id)arg2;
 - (id)queriesMatching:(id)arg1;

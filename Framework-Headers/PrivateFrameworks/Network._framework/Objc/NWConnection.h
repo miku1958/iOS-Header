@@ -44,6 +44,7 @@
 - (void)cancelCurrentEndpoint;
 - (id)copyCurrentPath;
 - (id)copyError;
+- (id)description;
 - (void)dumpTimestamps;
 - (void)forceCancel;
 - (int)getConnectedSocket;
@@ -51,7 +52,6 @@
 - (id)initWithEndpoint:(id)arg1 parameters:(id)arg2;
 - (id)initWithInternalConnection:(id)arg1;
 - (void)start;
-- (BOOL)startTLSWithSessionID:(id)arg1;
 
 @end
 

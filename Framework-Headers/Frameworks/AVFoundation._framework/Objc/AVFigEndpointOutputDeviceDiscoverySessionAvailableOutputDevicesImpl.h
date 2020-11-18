@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <AVFoundation/AVOutputDeviceDiscoverySessionAvailableOutputDevicesImpl-Protocol.h>
 
 @class NSArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface AVFigEndpointOutputDeviceDiscoverySessionAvailableOutputDevicesImpl : NSObject <AVOutputDeviceDiscoverySessionAvailableOutputDevicesImpl>
 {
     NSArray *_figEndpoints;

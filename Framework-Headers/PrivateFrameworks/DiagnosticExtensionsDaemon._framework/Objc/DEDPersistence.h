@@ -24,6 +24,7 @@
 - (void).cxx_destruct;
 - (id)_indexKeyForBugSession:(id)arg1;
 - (id)_indexKeyForBugSessionIdentifier:(id)arg1;
+- (BOOL)canProceedWithDevice:(id)arg1;
 - (id)init;
 - (id)loadSavedBugSessions;
 - (id)loadSavedSessionsFromPlist:(id)arg1;

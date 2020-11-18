@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (void)_accessibilityTableView:(id)arg1 endRowActionHandlingForIndexPath:(id)arg2;
 - (void)_accessibilityTableView:(id)arg1 prepareForRowActionHandlingForIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;

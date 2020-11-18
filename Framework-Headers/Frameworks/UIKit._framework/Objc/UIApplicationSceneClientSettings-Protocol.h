@@ -4,13 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
-@class FBSDisplayMode, NSString;
+@class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSString;
 
 @protocol UIApplicationSceneClientSettings <NSObject>
 
+@property (readonly, nonatomic) NSArray *audioCategoriesDisablingVolumeHUD;
 @property (readonly, nonatomic) long long backgroundStyle;
+@property (readonly, nonatomic) double brightnessLevel;
 @property (readonly, nonatomic) long long compatibilityMode;
 @property (readonly, nonatomic) double controlCenterAmbiguousActivationMargin;
 @property (readonly, nonatomic) long long controlCenterRevealMode;
@@ -19,17 +21,18 @@
 @property (readonly, nonatomic) BOOL defaultStatusBarHidden;
 @property (readonly, nonatomic) long long defaultStatusBarStyle;
 @property (readonly, nonatomic) BOOL deviceOrientationEventsEnabled;
+@property (readonly, nonatomic) BOOL disablesMirroring;
+@property (readonly, copy, nonatomic) FBSDisplayConfigurationRequest *displayConfigurationRequest;
 @property (readonly, nonatomic) BOOL homeIndicatorAutoHidden;
 @property (readonly, nonatomic) BOOL idleModeVisualEffectsEnabled;
 @property (readonly, nonatomic) BOOL idleTimerDisabled;
 @property (readonly, nonatomic) long long interfaceOrientation;
 @property (readonly, nonatomic) BOOL interfaceOrientationChangesDisabled;
 @property (readonly, nonatomic) long long notificationCenterRevealMode;
-@property (readonly, nonatomic) long long overscanCompensation;
 @property (readonly, nonatomic) struct UIEdgeInsets primaryWindowOverlayInsets;
 @property (readonly, nonatomic) unsigned long long proximityDetectionModes;
 @property (readonly, nonatomic, getter=isReachabilitySupported) BOOL reachabilitySupported;
-@property (readonly, nonatomic) FBSDisplayMode *requestedDisplayMode;
+@property (readonly, copy, nonatomic) FBSDisplayMode *requestedDisplayMode;
 @property (readonly, nonatomic) unsigned long long screenEdgesDeferringSystemGestures;
 @property (readonly, nonatomic) unsigned int statusBarContextID;
 @property (readonly, nonatomic, getter=isStatusBarForegroundTransparent) BOOL statusBarForegroundTransparent;
@@ -37,6 +40,7 @@
 @property (readonly, nonatomic) long long statusBarStyle;
 @property (readonly, nonatomic) unsigned long long supportedInterfaceOrientations;
 @property (readonly, nonatomic) long long userInterfaceStyle;
+@property (readonly, nonatomic) unsigned long long visibleMiniAlertCount;
 @property (readonly, nonatomic) BOOL wantsExclusiveForeground;
 @property (readonly, nonatomic) long long whitePointAdaptivityStyle;
 

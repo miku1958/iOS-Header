@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 @class UISlidingBarConfiguration;
 
@@ -16,7 +16,6 @@
     BOOL __treatLeadingHiddenAsOverlaps;
     double _leadingWidth;
     double _trailingWidth;
-    double _bounce;
     double _leadingDragOffset;
     double _trailingDragOffset;
     UISlidingBarConfiguration *_configuration;
@@ -29,7 +28,6 @@
 @property (nonatomic) double _keyboardAdjustment; // @synthesize _keyboardAdjustment=__keyboardAdjustment;
 @property (nonatomic, setter=_setLeadingOverlayWidth:) double _leadingOverlayWidth; // @synthesize _leadingOverlayWidth=__leadingOverlayWidth;
 @property (nonatomic, setter=_setTreatLeadingHiddenAsOverlaps:) BOOL _treatLeadingHiddenAsOverlaps; // @synthesize _treatLeadingHiddenAsOverlaps=__treatLeadingHiddenAsOverlaps;
-@property (nonatomic) double bounce; // @synthesize bounce=_bounce;
 @property (readonly, nonatomic, getter=isCollapsed) BOOL collapsed;
 @property (strong, nonatomic) UISlidingBarConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, nonatomic) BOOL isLeadingVisible;

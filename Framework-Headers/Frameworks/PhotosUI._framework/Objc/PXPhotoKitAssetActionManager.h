@@ -31,10 +31,11 @@
 - (void)_handleBarButtonItem:(id)arg1;
 - (void)_handlePreviewAction:(id)arg1 previewViewController:(id)arg2 actionType:(id)arg3;
 - (id)actionPerformerForActionType:(id)arg1;
+- (id)alertActionForActionType:(id)arg1;
 - (id)barButtonItemForActionType:(id)arg1;
 - (BOOL)canPerformActionType:(id)arg1;
 - (BOOL)canPerformAssetVariationActions;
-- (id)initWithSelectionSnapshot:(id)arg1;
+- (id)initWithSelectionManager:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (id)previewActionForActionType:(id)arg1;
 - (void)registerPerformerClass:(Class)arg1 forType:(id)arg2;

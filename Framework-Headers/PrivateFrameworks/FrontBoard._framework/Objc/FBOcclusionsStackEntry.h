@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSOrderedSet, NSSet, NSString;
 
@@ -21,7 +21,7 @@
 @property (copy, nonatomic) NSSet *occlusions;
 @property (readonly, copy, nonatomic) NSOrderedSet *orderedOcclusions; // @synthesize orderedOcclusions=_orderedOcclusions;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;

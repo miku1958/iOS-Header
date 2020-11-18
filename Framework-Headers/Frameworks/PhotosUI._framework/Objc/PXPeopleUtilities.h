@@ -19,6 +19,7 @@
 + (id)alertControllerForRemovingNumberOfPeople:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (id)alertControllerForResettingPeopleWithCompletion:(CDUnknownBlockType)arg1;
 + (id)assetCollectionListFetchResultForPerson:(id)arg1;
++ (id)bootstrapContextForPersonSuggestion:(id)arg1 type:(unsigned long long)arg2;
 + (id)bootstrapViewControllerForContext:(id)arg1 delegate:(id)arg2;
 + (BOOL)changePeople:(id)arg1 toPersonType:(long long)arg2 error:(id *)arg3;
 + (id)changePerson:(id)arg1 toPersonType:(long long)arg2;
@@ -31,6 +32,7 @@
 + (void)markHandledBootstrapForPerson:(id)arg1;
 + (void)mergePersons:(id)arg1 withPerson:(id)arg2;
 + (id)modelObjectsFromPersonItemArray:(id)arg1;
++ (id)peopleWithPersonUris:(id)arg1;
 + (id)personWithLocalIdentifier:(id)arg1;
 + (id)personWithPersonUri:(id)arg1;
 + (id)sharedContactStore;

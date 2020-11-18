@@ -9,31 +9,33 @@
 #import <ARKit/ARInternalSessionObserver-Protocol.h>
 #import <ARKit/ARReplaySensorDelegate-Protocol.h>
 
-@class ARQATraceDataBuilder, ARScreenRecording, NSString, UILabel;
-@protocol ARQATracerDelegate;
+@class ARScreenRecording, NSMutableData, NSMutableDictionary, NSOutputStream, NSString, UILabel;
+@protocol ARQATracerDelegate, OS_dispatch_queue;
 
 @interface ARQATracer : NSObject <ARInternalSessionObserver, ARReplaySensorDelegate>
 {
     unsigned long long _frameIndex;
-    unsigned long long _cameraMovedAtFrame;
-    unsigned long long _featureCapturedAtFrame;
-    unsigned long long _firstPlaneAtFrame;
-    unsigned long long _firstFaceAtFrame;
-    unsigned char _isTracing;
-    struct CGPoint _offset;
-    unsigned char _forceQuitApp;
+    BOOL _isTracing;
+    NSMutableDictionary *_traceHeader;
+    NSMutableData *_dataBuffer;
+    NSOutputStream *_framesStreamToFile;
+    NSObject<OS_dispatch_queue> *_processingQueue;
+    BOOL _forceQuitApp;
+    BOOL _recordScreen;
     id<ARQATracerDelegate> _delegate;
     NSString *_traceOutputFilePath;
     UILabel *_replayFrameLabel;
-    ARQATraceDataBuilder *_dataBuilder;
     ARScreenRecording *_screenRecorder;
+    struct CGPoint _offset;
 }
 
-@property (strong, nonatomic) ARQATraceDataBuilder *dataBuilder; // @synthesize dataBuilder=_dataBuilder;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ARQATracerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL forceQuitApp; // @synthesize forceQuitApp=_forceQuitApp;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
+@property (nonatomic) BOOL recordScreen; // @synthesize recordScreen=_recordScreen;
 @property (strong, nonatomic) UILabel *replayFrameLabel; // @synthesize replayFrameLabel=_replayFrameLabel;
 @property (strong, nonatomic) ARScreenRecording *screenRecorder; // @synthesize screenRecorder=_screenRecorder;
 @property (readonly) Class superclass;
@@ -42,21 +44,18 @@
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
 - (void)addFrameLabel:(id)arg1;
-- (void)captureFaceData:(id)arg1 frameDataDict:(id)arg2;
-- (void)capturePlanesDate:(id)arg1 frameDataDict:(id)arg2;
-- (void)createTraceOutputDirectory;
-- (id)getARKitVersion;
-- (id)getAppleCV3DVersion;
-- (id)getSceneKitVersion;
+- (id)createTraceOutputDirectory;
+- (void)flushDataBufferToFile;
+- (id)init;
 - (void)receiveDefaults;
 - (void)replaySensorDidFinishReplayingData;
 - (void)session:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (void)session:(id)arg1 didUpdateFrame:(id)arg2;
 - (void)start:(id)arg1;
 - (void)stop;
-- (void)traceARFrame:(id)arg1;
-- (void)traceCompleted;
 - (void)update:(id)arg1;
+- (void)writeJSONObjectToStream:(id)arg1 prefix:(id)arg2;
+- (void)writeStringToOutputStream:(id)arg1;
 
 @end
 

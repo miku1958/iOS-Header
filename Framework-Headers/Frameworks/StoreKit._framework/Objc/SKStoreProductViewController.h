@@ -6,10 +6,12 @@
 
 #import <UIKit/UIViewController.h>
 
-@class NSDictionary, NSString, SKInvocationQueueProxy, SKRemoteProductViewController, _UIAsyncInvocation;
+#import <StoreKit/SKScreenTrackingDelegate-Protocol.h>
+
+@class NSDictionary, NSString, SKInvocationQueueProxy, SKRemoteProductViewController, SKScrollDetector, _UIAsyncInvocation;
 @protocol SKStoreProductViewControllerDelegate, SKStoreProductViewControllerDelegatePrivate, SKUIServiceProductPageViewController;
 
-@interface SKStoreProductViewController : UIViewController
+@interface SKStoreProductViewController : UIViewController <SKScreenTrackingDelegate>
 {
     NSString *_additionalBuyParameters;
     NSString *_affiliateIdentifier;
@@ -29,6 +31,8 @@
     BOOL _showsRightBarButton;
     BOOL _askToBuy;
     NSString *_promptString;
+    SKScrollDetector *_scrollDetector;
+    BOOL _viewWasOnScreen;
 }
 
 @property (copy, nonatomic) NSString *additionalBuyParameters; // @synthesize additionalBuyParameters=_additionalBuyParameters;
@@ -37,18 +41,23 @@
 @property (nonatomic) BOOL automaticallyDismisses; // @synthesize automaticallyDismisses=_automaticallyDismisses;
 @property (copy, nonatomic) NSString *cancelButtonTitle; // @synthesize cancelButtonTitle=_cancelButtonTitle;
 @property (copy, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-@property (nonatomic) id<SKStoreProductViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<SKStoreProductViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long productPageStyle; // @synthesize productPageStyle=_productPageStyle;
 @property (copy, nonatomic) NSString *promptString; // @synthesize promptString=_promptString;
 @property (copy, nonatomic) NSString *rightBarButtonTitle; // @synthesize rightBarButtonTitle=_rightBarButtonTitle;
 @property (copy, nonatomic) NSDictionary *scriptContextDictionary; // @synthesize scriptContextDictionary=_scriptContextDictionary;
 @property (nonatomic) BOOL showsRightBarButton; // @synthesize showsRightBarButton=_showsRightBarButton;
 @property (nonatomic) BOOL showsStoreButton; // @synthesize showsStoreButton=_showsStoreButton;
+@property (readonly) Class superclass;
 
 + (id)_defaultIXStoreSheetDictionary;
 + (void)_validateURL:(id)arg1 withSheetInfo:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 + (void)getCanLoadURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (void)getCanLoadURL:(id)arg1 withURLBag:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 - (void)_addRemoteView;
 - (void)_didFinish;
 - (void)_didFinishWithResult:(long long)arg1;
@@ -74,11 +83,14 @@
 - (void)loadProductWithURL:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)loadView;
 - (long long)preferredStatusBarStyle;
+- (void)sk_didBecomeOffScreen:(id)arg1;
+- (void)sk_didBecomeOnScreen:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

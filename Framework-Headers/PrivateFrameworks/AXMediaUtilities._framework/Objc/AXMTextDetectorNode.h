@@ -42,6 +42,7 @@
 - (void)nodeInitialize;
 - (BOOL)requiresVisionFramework;
 - (BOOL)shouldEvaluate:(id)arg1;
+- (BOOL)validateVisionKitSoftLinkSymbols;
 
 @end
 

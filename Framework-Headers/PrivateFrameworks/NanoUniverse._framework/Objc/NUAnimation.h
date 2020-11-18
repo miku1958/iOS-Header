@@ -11,27 +11,27 @@
 
 @interface NUAnimation : NSObject
 {
-    MISSING_TYPE *_from;
-    MISSING_TYPE *_to;
     MISSING_TYPE *_ctrl1;
     MISSING_TYPE *_ctrl2;
     MISSING_TYPE *_values[75];
     int _valuesCount;
-    int _frameInterval;
-    float _startTime;
-    float _duration;
     float _prevTime;
     float _pauseTime;
-    float _delay;
-    unsigned long long _key;
-    id<NUAnimatable> _animatable;
     BOOL _repeat;
     BOOL _paused;
-    id<NUAnimationObserver> _observer;
+    float _startTime;
+    float _duration;
+    float _delay;
+    int _frameInterval;
     unsigned long long _function;
+    unsigned long long _key;
+    id<NUAnimatable> _animatable;
+    id<NUAnimationObserver> _observer;
+    MISSING_TYPE *_from;
+    MISSING_TYPE *_to;
 }
 
-@property (strong, nonatomic) id<NUAnimatable> animatable; // @synthesize animatable=_animatable;
+@property (weak, nonatomic) id<NUAnimatable> animatable; // @synthesize animatable=_animatable;
 @property (nonatomic) float delay; // @synthesize delay=_delay;
 @property (nonatomic) float duration; // @synthesize duration=_duration;
 @property (nonatomic) int frameInterval; // @synthesize frameInterval=_frameInterval;
@@ -39,12 +39,13 @@
 @property (nonatomic) unsigned long long function; // @synthesize function=_function;
 @property (nonatomic) unsigned long long key; // @synthesize key=_key;
 @property (weak, nonatomic) id<NUAnimationObserver> observer; // @synthesize observer=_observer;
-@property (nonatomic) BOOL pause; // @dynamic pause;
-@property (nonatomic) BOOL repeat; // @synthesize repeat=_repeat;
+@property (nonatomic, getter=isPaused) BOOL paused; // @synthesize paused=_paused;
+@property (nonatomic, getter=isRepeat) BOOL repeat; // @synthesize repeat=_repeat;
 @property (nonatomic) float startTime; // @synthesize startTime=_startTime;
 @property (nonatomic) MISSING_TYPE *to; // @synthesize to=_to;
 
 - (void).cxx_destruct;
+- (void)apply:(float)arg1;
 - (id)initWithAnimatable:(id)arg1 from:(unsigned long long)arg2 to:ctrl1:ctrl2:key: /* Error: Ran out of types for this method. */;
 - (id)initWithAnimatable:(id)arg1 from:(unsigned long long)arg2 to:key: /* Error: Ran out of types for this method. */;
 - (id)initWithAnimatable:(id)arg1 value:(unsigned long long)arg2 key: /* Error: Ran out of types for this method. */;

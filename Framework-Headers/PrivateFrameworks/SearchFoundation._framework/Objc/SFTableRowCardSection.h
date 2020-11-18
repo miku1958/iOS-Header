@@ -28,6 +28,7 @@
     NSString *_punchoutPickerDismissText;
     NSString *_type;
     SFColor *_backgroundColor;
+    NSArray *_richData;
     NSString *_tableIdentifier;
     SFTableAlignmentSchema *_alignmentSchema;
     NSArray *_data;
@@ -57,6 +58,7 @@
 @property (copy, nonatomic) NSString *punchoutPickerTitle;
 @property (nonatomic) BOOL reducedRowHeight; // @synthesize reducedRowHeight=_reducedRowHeight;
 @property (copy, nonatomic) NSString *resultIdentifier;
+@property (copy, nonatomic) NSArray *richData; // @synthesize richData=_richData;
 @property (nonatomic) int separatorStyle;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *tabGroupIdentifier; // @synthesize tabGroupIdentifier=_tabGroupIdentifier;

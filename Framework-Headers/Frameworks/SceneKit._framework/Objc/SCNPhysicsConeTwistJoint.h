@@ -33,6 +33,7 @@
 
 + (id)jointWithBody:(id)arg1 frame:(struct SCNMatrix4)arg2;
 + (id)jointWithBodyA:(id)arg1 frameA:(struct SCNMatrix4)arg2 bodyB:(id)arg3 frameB:(struct SCNMatrix4)arg4;
++ (BOOL)supportsSecureCoding;
 - (void)_addToPhysicsWorld:(id)arg1;
 - (void)_willRemoveFromPhysicsWorld:(id)arg1;
 - (void)dealloc;

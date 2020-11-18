@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class UIAlertControllerDescriptor, UIInterfaceActionVisualStyle, UITraitCollection;
 
@@ -49,7 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)configureAttributesForImageView:(id)arg1 imageProperty:(id)arg2 actionViewState:(id)arg3;
 - (void)configureAttributesForTitleLabel:(id)arg1 classificationLabel:(id)arg2 actionViewState:(id)arg3;
 - (double)contentHorizontalMargin;
-- (struct UIEdgeInsets)contentInsets;
+- (struct UIEdgeInsets)contentInsetsForContainerView:(id)arg1;
 - (double)contentVerticalMargin;
 - (id)defaultActionFont;
 - (id)dimmingViewForAlertController:(id)arg1;

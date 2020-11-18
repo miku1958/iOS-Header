@@ -9,7 +9,7 @@
 #import <ControlCenterServices/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
 @class NSArray, NSDictionary, NSHashTable, NSSet, NSString;
-@protocol BSDefaultObserver;
+@protocol BSDefaultObserver, OS_dispatch_queue;
 
 @interface CCSModuleRepository : NSObject <LSApplicationWorkspaceObserverProtocol>
 {
@@ -21,15 +21,16 @@
     struct MGNotificationTokenStruct *_mobileGestaltNotificationToken;
     NSHashTable *_observers;
     NSObject<BSDefaultObserver> *_internalDefaultsObserver;
-    BOOL _ignoreWhitelist;
     NSSet *_loadableModuleIdentifiers;
+    BOOL _ignoreWhitelist;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSObject<OS_dispatch_queue> *_callOutQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL ignoreWhitelist; // @synthesize ignoreWhitelist=_ignoreWhitelist;
-@property (readonly, copy, nonatomic) NSSet *loadableModuleIdentifiers; // @synthesize loadableModuleIdentifiers=_loadableModuleIdentifiers;
+@property (readonly, copy, nonatomic) NSSet *loadableModuleIdentifiers;
 @property (readonly) Class superclass;
 
 + (id)_defaultModuleDirectories;
@@ -38,30 +39,33 @@
 + (id)repositoryWithDefaults;
 - (void).cxx_destruct;
 - (void)_applicationsDidChange:(id)arg1;
-- (BOOL)_arrayContainsInterestingApplicationProxy:(id)arg1;
-- (id)_associatedBundleIdentifiersForModuleMetadata:(id)arg1;
-- (id)_filterModuleMetadataByAssociatedBundleAvailability:(id)arg1;
-- (id)_filterModuleMetadataByGestalt:(id)arg1;
-- (id)_filterModuleMetadataByVisibilityPreference:(id)arg1;
-- (id)_gestaltQuestionsForModuleMetadata:(id)arg1;
 - (id)_initWithDirectoryURLs:(id)arg1 whitelistedModuleIdentifiers:(id)arg2;
-- (id)_loadAllModuleMetadata;
-- (id)_moduleIdentifiersForMetadata:(id)arg1;
-- (void)_registerForInternalPreferenceChanges;
-- (void)_registerForVisiblityPreferenceChanges;
-- (void)_runBlockOnObservers:(CDUnknownBlockType)arg1;
-- (void)_startObservingMobileGestaltQuestions:(id)arg1 withChangeHandler:(CDUnknownBlockType)arg2;
-- (void)_stopObservingGestaltQuestions;
-- (void)_unregisterForInternalPreferenceChanges;
-- (void)_unregisterForVisiblityPreferenceChanges;
+- (BOOL)_queue_arrayContainsInterestingApplicationProxy:(id)arg1;
+- (id)_queue_associatedBundleIdentifiersForModuleMetadata:(id)arg1;
+- (id)_queue_filterModuleMetadataByAssociatedBundleAvailability:(id)arg1;
+- (id)_queue_filterModuleMetadataByGestalt:(id)arg1;
+- (id)_queue_filterModuleMetadataByVisibilityPreference:(id)arg1;
+- (id)_queue_gestaltQuestionsForModuleMetadata:(id)arg1;
+- (id)_queue_loadAllModuleMetadata;
+- (id)_queue_moduleIdentifiersForMetadata:(id)arg1;
+- (void)_queue_registerForInternalPreferenceChanges;
+- (void)_queue_registerForVisiblityPreferenceChanges;
+- (void)_queue_runBlockOnObservers:(CDUnknownBlockType)arg1;
+- (void)_queue_setIgnoreWhitelist:(BOOL)arg1;
+- (void)_queue_startObservingMobileGestaltQuestions:(id)arg1 withChangeHandler:(CDUnknownBlockType)arg2;
+- (void)_queue_stopObservingGestaltQuestions;
+- (void)_queue_unregisterForInternalPreferenceChanges;
+- (void)_queue_unregisterForVisiblityPreferenceChanges;
+- (void)_queue_updateAllModuleMetadata;
+- (void)_queue_updateAllModuleMetadataForAllModuleMetadata:(id)arg1;
+- (void)_queue_updateAvailableModuleMetadata;
+- (void)_queue_updateAvailableModuleMetadataForAllModuleMetadata:(id)arg1;
+- (void)_queue_updateGestaltQuestionsForModuleMetadata:(id)arg1;
+- (void)_queue_updateInterestingBundleIdentifiersForModuleMetadata:(id)arg1;
+- (void)_queue_updateLoadableModuleMetadata;
+- (void)_queue_updateLoadableModuleMetadataForAvailableModuleMetadata:(id)arg1;
 - (void)_updateAllModuleMetadata;
-- (void)_updateAllModuleMetadataForAllModuleMetadata:(id)arg1;
 - (void)_updateAvailableModuleMetadata;
-- (void)_updateAvailableModuleMetadataForAllModuleMetadata:(id)arg1;
-- (void)_updateGestaltQuestionsForModuleMetadata:(id)arg1;
-- (void)_updateInterestingBundleIdentifiersForModuleMetadata:(id)arg1;
-- (void)_updateLoadableModuleMetadata;
-- (void)_updateLoadableModuleMetadataForAvailableModuleMetadata:(id)arg1;
 - (void)addObserver:(id)arg1;
 - (void)applicationStateDidChange:(id)arg1;
 - (void)applicationsDidInstall:(id)arg1;

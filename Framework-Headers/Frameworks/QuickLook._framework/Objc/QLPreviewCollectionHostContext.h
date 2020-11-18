@@ -8,6 +8,7 @@
 
 #import <QuickLook/QLPreviewCollectionServiceProtocol-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface QLPreviewCollectionHostContext : NSExtensionContext <QLPreviewCollectionServiceProtocol>
 {
 }
@@ -22,11 +23,12 @@
 - (void)hostApplicationDidBecomeActive;
 - (void)hostApplicationDidEnterBackground:(BOOL)arg1;
 - (void)hostViewControlerTransitionToState:(unsigned long long)arg1 animated:(BOOL)arg2;
-- (void)invalidatePreviewCollection;
+- (void)invalidateService;
 - (void)keyCommandWasPerformed:(id)arg1;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)setAllowInteractiveTransitions:(BOOL)arg1;
 - (void)setAppearance:(id)arg1 animated:(BOOL)arg2;
 - (void)setCurrentPreviewItemIndex:(long long)arg1 animated:(BOOL)arg2;

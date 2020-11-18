@@ -7,15 +7,16 @@
 #import <objc/NSObject.h>
 
 #import <SpotlightServices/NSCopying-Protocol.h>
-#import <SpotlightServices/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface PRSL2FeatureVector : NSObject <NSSecureCoding, NSCopying>
+@interface PRSL2FeatureVector : NSObject <NSCopying>
 {
-    float _features[1145];
-    float *_expanded_floating_point_features;
-    unsigned long long _expanded_floating_point_features_count;
+    struct PRSL2FeatureScoreSmallCache _cache;
+    void *_featureData;
+    unsigned short _featureDataSize;
+    unsigned char _flags;
+    unsigned char _values;
     float _originalL2Score;
     float _experimentalScore;
     NSString *_bundleID;
@@ -26,15 +27,21 @@
 
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
 @property (strong, nonatomic) NSString *device_type; // @synthesize device_type=_device_type;
+@property (nonatomic) BOOL displayNameFuzzySpecialInsertion;
 @property (nonatomic) float experimentalScore; // @synthesize experimentalScore=_experimentalScore;
 @property (nonatomic) struct ranking_index_score_t indexScore; // @synthesize indexScore=_indexScore;
+@property (nonatomic) BOOL isAppInDock;
+@property (nonatomic) BOOL isSiriAction;
 @property (nonatomic) float originalL2Score; // @synthesize originalL2Score=_originalL2Score;
+@property (readonly, nonatomic) BOOL receiverIsVip;
 @property (strong, nonatomic) NSDictionary *searchThroughCEPData; // @synthesize searchThroughCEPData=_searchThroughCEPData;
+@property (readonly, nonatomic) BOOL senderIsVip;
+@property (readonly, nonatomic) BOOL vipSenderMatchesQuery;
 
 + (id)contextWithFeatureOrder:(id)arg1 withInflation:(unsigned long long)arg2 withInflatedIndexToSize:(id)arg3;
-+ (unsigned long long)featureForName:(id)arg1;
++ (struct FeatureInfo *)featureForName:(id)arg1;
++ (struct __CFSet *)getL2FeatureSet;
 + (void)initialize;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_dictionaryRepresentationWithoutDefaultValues:(BOOL)arg1;
 - (void)cleanup;
@@ -43,16 +50,11 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (id)dictionaryRepresentationWithoutDefaultValues;
-- (void)encodeWithCoder:(id)arg1;
-- (id)expandedArrayRepresentation;
+- (float *)getAllScores:(float [1186])arg1;
 - (id)init;
-- (id)initWithCoder:(id)arg1;
-- (void)setExpandedSet:(float *)arg1 expandedCount:(unsigned long long)arg2;
-- (void)setFeatureName:(id)arg1 value:(float)arg2;
-- (void)setFloat:(float)arg1 forFeature:(unsigned long long)arg2;
-- (void)setValue:(id)arg1 forFeature:(unsigned long long)arg2;
-- (float)valueForFeature:(unsigned long long)arg1;
-- (float)valueForFeatureName:(id)arg1;
+- (float)scoreForFeature:(unsigned short)arg1;
+- (BOOL)serializeToJSON:(void *)arg1 valuesOnly:(BOOL)arg2 ignoreDefaultValues:(BOOL)arg3;
+- (void)setScores:(float *)arg1 forFeatures:(unsigned short *)arg2 count:(unsigned long long)arg3;
 
 @end
 

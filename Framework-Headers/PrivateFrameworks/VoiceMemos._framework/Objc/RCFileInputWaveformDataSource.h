@@ -15,14 +15,18 @@
     double _cachedDuration;
     float _loadingProgress;
     NSURL *_AVFileURL;
+    double _destinationBeginTime;
+    CDStruct_73a5d3ca _sourceTimeRange;
 }
 
 @property (readonly, copy, nonatomic) NSURL *AVFileURL; // @synthesize AVFileURL=_AVFileURL;
+@property (nonatomic) double destinationBeginTime; // @synthesize destinationBeginTime=_destinationBeginTime;
 @property (readonly, nonatomic) BOOL savesGeneratedWaveform; // @dynamic savesGeneratedWaveform;
+@property (nonatomic) CDStruct_73a5d3ca sourceTimeRange; // @synthesize sourceTimeRange=_sourceTimeRange;
 
 - (void).cxx_destruct;
 - (double)duration;
-- (void)finishLoadingWithCompletionTimeoutDate:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)finishLoadingWithCompletionTimeout:(unsigned long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)initWithAVFileURL:(id)arg1;
 - (id)initWithAVFileURL:(id)arg1 savesGeneratedWaveform:(BOOL)arg2 segmentFlushInterval:(double)arg3;
 - (float)loadingProgress;

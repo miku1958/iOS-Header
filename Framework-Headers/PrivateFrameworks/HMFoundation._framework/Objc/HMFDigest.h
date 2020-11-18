@@ -10,7 +10,7 @@
 #import <HMFoundation/NSCopying-Protocol.h>
 #import <HMFoundation/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString;
+@class NSArray, NSData, NSString;
 
 @interface HMFDigest : HMFObject <HMFObject, NSCopying, NSSecureCoding>
 {
@@ -19,10 +19,13 @@
 }
 
 @property (readonly) long long algorithm; // @synthesize algorithm=_algorithm;
+@property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 @property (readonly, copy) NSData *value; // @synthesize value=_value;
 

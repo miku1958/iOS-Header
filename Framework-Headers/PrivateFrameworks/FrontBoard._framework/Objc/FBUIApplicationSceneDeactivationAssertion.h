@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <FrontBoard/BSDescriptionProviding-Protocol.h>
 
@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) double sceneLevel; // @synthesize sceneLevel=_sceneLevel;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
 - (id)_initWithReason:(long long)arg1 sceneLevel:(double)arg2 forDisplayWithIdentity:(id)arg3;
 - (void)acquire;
 - (void)acquireWithPredicate:(CDUnknownBlockType)arg1;

@@ -4,21 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, NSURL;
+@class NSDictionary, NSMutableDictionary, NSURL;
 
 @interface PKRemoteAssetManifest : NSObject
 {
     NSURL *_fileURL;
+    NSURL *_passURL;
     NSMutableDictionary *_remoteAssets;
-    NSString *_name;
 }
 
 @property (readonly, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
-@property (readonly, weak, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSDictionary *remoteAssets; // @synthesize remoteAssets=_remoteAssets;
 
++ (Class)_remoteAssestManifestItemClassWithValues:(id)arg1;
 - (void).cxx_destruct;
 - (id)deviceSpecificAsset;
 - (id)deviceSpecificAssetForScreenScale:(double)arg1 suffix:(id)arg2;

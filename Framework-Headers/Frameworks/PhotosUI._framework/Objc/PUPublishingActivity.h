@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
 
 + (long long)activityCategory;
 - (void).cxx_destruct;
-- (id)_activityImage;
 - (void)_cleanup;
 - (BOOL)_dismissActivityFromViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_presentActivityOnViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

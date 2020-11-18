@@ -24,6 +24,7 @@
 
 + (id)provisionWithAllowance:(CDStruct_4e83c7bf)arg1;
 + (id)provisionWithResourceType:(long long)arg1 timeInterval:(double)arg2;
+- (void).cxx_destruct;
 - (void)_beginMonitoring;
 - (double)_getElapsedCPUTimeForTaskPort:(unsigned int)arg1;
 - (void)_prepareForReuse;

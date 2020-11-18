@@ -8,57 +8,18 @@
 
 #import <VoiceMemos/NSCopying-Protocol.h>
 
-@class NSString, UIColor;
+@class NSString;
 
 @interface RCUIConfiguration : NSObject <NSCopying>
 {
-    BOOL _waveformBoundaryLineDimInSelectionMode;
-    BOOL _showsWaveformCenterline;
-    float _minimumDecibelDisplayRange;
-    float _maximumDecibelDisplayRange;
     NSString *_debugIdentifier;
-    UIColor *_backgroundColor;
-    UIColor *_waveformBackgroundColor;
-    UIColor *_waveformColor;
-    UIColor *_waveformBoundaryLineColor;
-    UIColor *_waveformHighlightColor;
-    UIColor *_timeLineMarkerColor;
-    UIColor *_timeLineTimeColor;
-    UIColor *_acousticValueColor;
-    UIColor *_acousticGradientMaskEndColor;
-    double _acousticAnnotationVerticalMargin;
-    UIColor *_playbackPositionBarColor;
-    UIColor *_playbackPositionTimeColor;
-    UIColor *_selectionOverlayColor;
-    UIColor *_selectionOverlayEndpointBarColor;
-    UIColor *_selectionOverlayEndpointTimeColor;
 }
 
-@property (nonatomic) double acousticAnnotationVerticalMargin; // @synthesize acousticAnnotationVerticalMargin=_acousticAnnotationVerticalMargin;
-@property (strong, nonatomic) UIColor *acousticGradientMaskEndColor; // @synthesize acousticGradientMaskEndColor=_acousticGradientMaskEndColor;
-@property (strong, nonatomic) UIColor *acousticValueColor; // @synthesize acousticValueColor=_acousticValueColor;
-@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) NSString *debugIdentifier; // @synthesize debugIdentifier=_debugIdentifier;
-@property (nonatomic) float maximumDecibelDisplayRange; // @synthesize maximumDecibelDisplayRange=_maximumDecibelDisplayRange;
-@property (nonatomic) float minimumDecibelDisplayRange; // @synthesize minimumDecibelDisplayRange=_minimumDecibelDisplayRange;
-@property (strong, nonatomic) UIColor *playbackPositionBarColor; // @synthesize playbackPositionBarColor=_playbackPositionBarColor;
-@property (strong, nonatomic) UIColor *playbackPositionTimeColor; // @synthesize playbackPositionTimeColor=_playbackPositionTimeColor;
-@property (strong, nonatomic) UIColor *selectionOverlayColor; // @synthesize selectionOverlayColor=_selectionOverlayColor;
-@property (strong, nonatomic) UIColor *selectionOverlayEndpointBarColor; // @synthesize selectionOverlayEndpointBarColor=_selectionOverlayEndpointBarColor;
-@property (strong, nonatomic) UIColor *selectionOverlayEndpointTimeColor; // @synthesize selectionOverlayEndpointTimeColor=_selectionOverlayEndpointTimeColor;
-@property (nonatomic) BOOL showsWaveformCenterline; // @synthesize showsWaveformCenterline=_showsWaveformCenterline;
-@property (strong, nonatomic) UIColor *timeLineMarkerColor; // @synthesize timeLineMarkerColor=_timeLineMarkerColor;
-@property (strong, nonatomic) UIColor *timeLineTimeColor; // @synthesize timeLineTimeColor=_timeLineTimeColor;
-@property (strong, nonatomic) UIColor *waveformBackgroundColor; // @synthesize waveformBackgroundColor=_waveformBackgroundColor;
-@property (strong, nonatomic) UIColor *waveformBoundaryLineColor; // @synthesize waveformBoundaryLineColor=_waveformBoundaryLineColor;
-@property (nonatomic) BOOL waveformBoundaryLineDimInSelectionMode; // @synthesize waveformBoundaryLineDimInSelectionMode=_waveformBoundaryLineDimInSelectionMode;
-@property (strong, nonatomic) UIColor *waveformColor; // @synthesize waveformColor=_waveformColor;
-@property (strong, nonatomic) UIColor *waveformHighlightColor; // @synthesize waveformHighlightColor=_waveformHighlightColor;
 
 + (id)defaultConfiguration;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 
 @end
 

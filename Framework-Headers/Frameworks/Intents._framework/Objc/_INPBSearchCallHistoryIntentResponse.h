@@ -7,31 +7,41 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBSearchCallHistoryIntentResponse-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields;
+@class NSArray, NSString;
 
-@interface _INPBSearchCallHistoryIntentResponse : PBCodable <NSCopying>
+@interface _INPBSearchCallHistoryIntentResponse : PBCodable <_INPBSearchCallHistoryIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
-    NSMutableArray *_callRecords;
+    struct _has;
+    NSArray *_callRecords;
+    NSString *_dateCreated;
+    NSString *_status;
+    NSString *_targetContact;
 }
 
-@property (strong, nonatomic) NSMutableArray *callRecords; // @synthesize callRecords=_callRecords;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (copy, nonatomic) NSArray *callRecords; // @synthesize callRecords=_callRecords;
+@property (readonly, nonatomic) unsigned long long callRecordsCount;
+@property (copy, nonatomic) NSString *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasDateCreated;
+@property (readonly, nonatomic) BOOL hasStatus;
+@property (readonly, nonatomic) BOOL hasTargetContact;
+@property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *status; // @synthesize status=_status;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *targetContact; // @synthesize targetContact=_targetContact;
 
 + (Class)callRecordsType;
-+ (id)options;
 - (void).cxx_destruct;
 - (void)addCallRecords:(id)arg1;
 - (id)callRecordsAtIndex:(unsigned long long)arg1;
-- (unsigned long long)callRecordsCount;
 - (void)clearCallRecords;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

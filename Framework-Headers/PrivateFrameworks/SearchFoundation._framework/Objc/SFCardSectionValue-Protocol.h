@@ -6,26 +6,31 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSData, NSDictionary, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAudioPlaybackCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFlightCardSection, SFImagesCardSection, SFKeyValueDataCardSection, SFMapCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFNowPlayingCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFStockChartCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFWatchListCardSection, SFWebCardSection;
+@class NSData, NSDictionary, SFActivityIndicatorCardSection, SFAppLinkCardSection, SFAudioPlaybackCardSection, SFButtonCardSection, SFDescriptionCardSection, SFDetailedRowCardSection, SFFlightCardSection, SFHorizontalButtonCardSection, SFHorizontalScrollCardSection, SFImagesCardSection, SFKeyValueDataCardSection, SFMapCardSection, SFMapsDetailedRowCardSection, SFMediaInfoCardSection, SFMediaPlayerCardSection, SFMessageCardSection, SFMetaInfoCardSection, SFNowPlayingCardSection, SFProductCardSection, SFRichTitleCardSection, SFRowCardSection, SFScoreboardCardSection, SFSectionHeaderCardSection, SFSelectableGridCardSection, SFSocialMediaPostCardSection, SFStockChartCardSection, SFSuggestionCardSection, SFTableHeaderRowCardSection, SFTableRowCardSection, SFTextColumnsCardSection, SFTitleCardSection, SFTrackListCardSection, SFVerticalLayoutCardSection, SFWatchListCardSection, SFWebCardSection;
 
 @protocol SFCardSectionValue <NSObject>
 
 @property (strong, nonatomic) SFActivityIndicatorCardSection *activityIndicatorCardSection;
 @property (strong, nonatomic) SFAppLinkCardSection *appLinkCardSection;
 @property (strong, nonatomic) SFAudioPlaybackCardSection *audioPlaybackCardSection;
+@property (strong, nonatomic) SFButtonCardSection *buttonCardSection;
 @property (strong, nonatomic) SFDescriptionCardSection *descriptionCardSection;
 @property (strong, nonatomic) SFDetailedRowCardSection *detailedRowCardSection;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (strong, nonatomic) SFFlightCardSection *flightCardSection;
+@property (strong, nonatomic) SFHorizontalButtonCardSection *horizontalButtonCardSection;
+@property (strong, nonatomic) SFHorizontalScrollCardSection *horizontalScrollCardSection;
 @property (strong, nonatomic) SFImagesCardSection *imagesCardSection;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SFKeyValueDataCardSection *keyValueDataCardSection;
 @property (strong, nonatomic) SFMapCardSection *mapCardSection;
+@property (strong, nonatomic) SFMapsDetailedRowCardSection *mapsDetailedRowCardSection;
 @property (strong, nonatomic) SFMediaInfoCardSection *mediaInfoCardSection;
 @property (strong, nonatomic) SFMediaPlayerCardSection *mediaPlayerCardSection;
 @property (strong, nonatomic) SFMessageCardSection *messageCardSection;
 @property (strong, nonatomic) SFMetaInfoCardSection *metaInfoCardSection;
 @property (strong, nonatomic) SFNowPlayingCardSection *nowPlayingCardSection;
+@property (strong, nonatomic) SFProductCardSection *productCardSection;
 @property (strong, nonatomic) SFRichTitleCardSection *richTitleCardSection;
 @property (strong, nonatomic) SFRowCardSection *rowCardSection;
 @property (strong, nonatomic) SFScoreboardCardSection *scoreboardCardSection;
@@ -39,6 +44,7 @@
 @property (strong, nonatomic) SFTextColumnsCardSection *textColumnsCardSection;
 @property (strong, nonatomic) SFTitleCardSection *titleCardSection;
 @property (strong, nonatomic) SFTrackListCardSection *trackListCardSection;
+@property (strong, nonatomic) SFVerticalLayoutCardSection *verticalLayoutCardSection;
 @property (strong, nonatomic) SFWatchListCardSection *watchListCardSection;
 @property (strong, nonatomic) SFWebCardSection *webCardSection;
 

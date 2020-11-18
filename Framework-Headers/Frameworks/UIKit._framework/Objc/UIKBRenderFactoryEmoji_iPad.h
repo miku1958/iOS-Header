@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryEmoji_iPhone.h>
+#import <UIKitCore/UIKBRenderFactoryEmoji_iPhone.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryEmoji_iPad : UIKBRenderFactoryEmoji_iPhone

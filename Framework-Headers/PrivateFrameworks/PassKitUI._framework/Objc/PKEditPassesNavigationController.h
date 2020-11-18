@@ -6,17 +6,13 @@
 
 #import <UIKit/UINavigationController.h>
 
-@protocol PKEditPassesNavigationControllerDelegate;
-
 @interface PKEditPassesNavigationController : UINavigationController
 {
-    id<PKEditPassesNavigationControllerDelegate> _editPassesControllerDelegate;
 }
 
-- (void).cxx_destruct;
 - (void)_done;
 - (id)init;
-- (id)initInEditingMode:(BOOL)arg1 delegate:(id)arg2;
+- (id)initWithExistingGroupsController:(id)arg1;
 - (long long)modalPresentationStyle;
 - (long long)modalTransitionStyle;
 - (unsigned long long)supportedInterfaceOrientations;

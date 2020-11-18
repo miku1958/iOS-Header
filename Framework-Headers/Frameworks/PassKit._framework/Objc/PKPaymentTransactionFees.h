@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 #import <PassKitCore/PKCloudStoreCoding-Protocol.h>
@@ -22,6 +22,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
@@ -31,6 +32,7 @@
 - (id)initWithJsonString:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToFees:(id)arg1;
+- (unsigned long long)itemType;
 - (id)jsonArrayRepresentation;
 - (id)jsonString;
 - (id)recordTypesAndNames;

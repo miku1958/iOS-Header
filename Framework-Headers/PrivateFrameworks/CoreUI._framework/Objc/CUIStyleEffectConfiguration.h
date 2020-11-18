@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <CoreUI/NSCopying-Protocol.h>
 
@@ -13,6 +13,7 @@
     long long _state;
     long long _presentationState;
     long long _value;
+    unsigned long long _dimension1;
     BOOL _useSimplifiedEffect;
     BOOL _foregroundColorShouldTintEffects;
     double _brightnessMultiplier;
@@ -22,6 +23,7 @@
 
 @property (nonatomic) double brightnessMultiplier; // @synthesize brightnessMultiplier=_brightnessMultiplier;
 @property (nonatomic) unsigned long long colorTemperature; // @synthesize colorTemperature=_colorTemperature;
+@property (nonatomic) unsigned long long dimension1; // @synthesize dimension1=_dimension1;
 @property (nonatomic) double effectScale; // @synthesize effectScale=_effectScale;
 @property (nonatomic) BOOL foregroundColorShouldTintEffects; // @synthesize foregroundColorShouldTintEffects=_foregroundColorShouldTintEffects;
 @property (nonatomic) long long presentationState; // @synthesize presentationState=_presentationState;

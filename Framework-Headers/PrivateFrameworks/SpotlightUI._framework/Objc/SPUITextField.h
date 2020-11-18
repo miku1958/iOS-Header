@@ -14,11 +14,13 @@
     NSArray *_suggestions;
     UIImage *_clearButtonImage;
     UIButton *_microphoneButton;
+    long long _activeInterfaceOrientation;
     SPUIHeaderBlurView *_blurView;
     UIView *_tintView;
     struct CGSize _imageSize;
 }
 
+@property long long activeInterfaceOrientation; // @synthesize activeInterfaceOrientation=_activeInterfaceOrientation;
 @property (strong) SPUIHeaderBlurView *blurView; // @synthesize blurView=_blurView;
 @property (strong) UIImage *clearButtonImage; // @synthesize clearButtonImage=_clearButtonImage;
 @property BOOL ignoreRepresentedObjectUpdate; // @synthesize ignoreRepresentedObjectUpdate=_ignoreRepresentedObjectUpdate;
@@ -33,6 +35,7 @@
 - (id)_textWithRepresentedObjects:(id)arg1;
 - (id)init;
 - (struct CGSize)intrinsicContentSize;
+- (BOOL)needsLandscapeHeight;
 - (void)setText:(id)arg1;
 - (id)text;
 - (id)textFromMarkedTextRange:(struct _NSRange)arg1 markedTextReplacement:(id)arg2;

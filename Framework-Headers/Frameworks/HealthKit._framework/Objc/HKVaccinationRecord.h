@@ -13,37 +13,37 @@
 
 @interface HKVaccinationRecord : HKMedicalRecord <NSSecureCoding, NSCopying>
 {
-    BOOL _notGiven;
-    BOOL _patientReported;
-    HKMedicalDate *_administrationDate;
-    NSArray *_bodySiteCoding;
+    NSArray *_vaccinationCodings;
+    HKMedicalDate *_expirationDate;
     NSString *_doseNumber;
     NSString *_doseQuantity;
-    HKMedicalDate *_expirationDate;
     NSString *_performer;
+    NSArray *_bodySiteCoding;
     NSString *_reaction;
+    BOOL _notGiven;
+    HKMedicalDate *_administrationDate;
+    HKMedicalCoding *_statusCoding;
+    BOOL _patientReported;
+    NSArray *_routeCodings;
     NSArray *_reasonsCodings;
     NSArray *_reasonsNotGivenCodings;
-    NSArray *_routeCodings;
-    HKMedicalCoding *_statusCoding;
-    NSArray *_vaccinationCodings;
 }
 
-@property (readonly, copy, nonatomic) HKMedicalDate *administrationDate; // @synthesize administrationDate=_administrationDate;
-@property (readonly, copy, nonatomic) NSArray *bodySiteCoding; // @synthesize bodySiteCoding=_bodySiteCoding;
-@property (readonly, copy, nonatomic) NSString *doseNumber; // @synthesize doseNumber=_doseNumber;
-@property (readonly, copy, nonatomic) NSString *doseQuantity; // @synthesize doseQuantity=_doseQuantity;
-@property (readonly, copy, nonatomic) HKMedicalDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property (readonly, nonatomic) BOOL notGiven; // @synthesize notGiven=_notGiven;
-@property (readonly, nonatomic) BOOL patientReported; // @synthesize patientReported=_patientReported;
-@property (readonly, copy, nonatomic) NSString *performer; // @synthesize performer=_performer;
-@property (readonly, copy, nonatomic) NSString *reaction; // @synthesize reaction=_reaction;
-@property (readonly, copy, nonatomic) NSArray *reasonsCodings; // @synthesize reasonsCodings=_reasonsCodings;
-@property (readonly, copy, nonatomic) NSArray *reasonsNotGivenCodings; // @synthesize reasonsNotGivenCodings=_reasonsNotGivenCodings;
-@property (readonly, copy, nonatomic) NSArray *routeCodings; // @synthesize routeCodings=_routeCodings;
-@property (readonly, copy, nonatomic) HKMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
-@property (readonly, copy, nonatomic) NSArray *vaccinationCodings; // @synthesize vaccinationCodings=_vaccinationCodings;
-@property (readonly, nonatomic) HKVaccinationRecordType *vaccinationRecordType;
+@property (readonly, copy) HKMedicalDate *administrationDate;
+@property (readonly, copy) NSArray *bodySiteCoding;
+@property (readonly, copy) NSString *doseNumber;
+@property (readonly, copy) NSString *doseQuantity;
+@property (readonly, copy) HKMedicalDate *expirationDate;
+@property (readonly) BOOL notGiven;
+@property (readonly) BOOL patientReported;
+@property (readonly, copy) NSString *performer;
+@property (readonly, copy) NSString *reaction;
+@property (readonly, copy) NSArray *reasonsCodings;
+@property (readonly, copy) NSArray *reasonsNotGivenCodings;
+@property (readonly, copy) NSArray *routeCodings;
+@property (readonly, copy) HKMedicalCoding *statusCoding;
+@property (readonly, copy) NSArray *vaccinationCodings;
+@property (readonly, copy) HKVaccinationRecordType *vaccinationRecordType;
 
 + (BOOL)_isConcreteObjectClass;
 + (id)bodySiteCodingPreferredSystems;
@@ -55,9 +55,9 @@
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 + (id)vaccinationCodingsPreferredSystems;
-+ (id)vaccinationRecordWithNote:(id)arg1 enteredInError:(BOOL)arg2 modifiedDate:(id)arg3 FHIRIdentifier:(id)arg4 extractionVersion:(long long)arg5 device:(id)arg6 metadata:(id)arg7 vaccinationCodings:(id)arg8 expirationDate:(id)arg9 doseNumber:(id)arg10 doseQuantity:(id)arg11 performer:(id)arg12 bodySiteCoding:(id)arg13 reaction:(id)arg14 notGiven:(BOOL)arg15 administrationDate:(id)arg16 statusCoding:(id)arg17 patientReported:(BOOL)arg18 routeCodings:(id)arg19 reasonsCodings:(id)arg20 reasonsNotGivenCodings:(id)arg21;
++ (id)vaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 sortDate:(id)arg9 vaccinationCodings:(id)arg10 expirationDate:(id)arg11 doseNumber:(id)arg12 doseQuantity:(id)arg13 performer:(id)arg14 bodySiteCoding:(id)arg15 reaction:(id)arg16 notGiven:(BOOL)arg17 administrationDate:(id)arg18 statusCoding:(id)arg19 patientReported:(BOOL)arg20 routeCodings:(id)arg21 reasonsCodings:(id)arg22 reasonsNotGivenCodings:(id)arg23;
++ (id)vaccinationRecordWithType:(id)arg1 note:(id)arg2 enteredInError:(BOOL)arg3 modifiedDate:(id)arg4 FHIRIdentifier:(id)arg5 extractionVersion:(long long)arg6 device:(id)arg7 metadata:(id)arg8 vaccinationCodings:(id)arg9 expirationDate:(id)arg10 doseNumber:(id)arg11 doseQuantity:(id)arg12 performer:(id)arg13 bodySiteCoding:(id)arg14 reaction:(id)arg15 notGiven:(BOOL)arg16 administrationDate:(id)arg17 statusCoding:(id)arg18 patientReported:(BOOL)arg19 routeCodings:(id)arg20 reasonsCodings:(id)arg21 reasonsNotGivenCodings:(id)arg22;
 - (void).cxx_destruct;
-- (id)_init;
 - (void)_setAdministrationDate:(id)arg1;
 - (void)_setBodySiteCoding:(id)arg1;
 - (void)_setDoseNumber:(id)arg1;

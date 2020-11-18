@@ -4,20 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @interface SKProductSubscriptionPeriod : NSObject
 {
-    unsigned long long _numberOfUnits;
-    unsigned long long _unit;
+    id _internal;
 }
 
 @property (readonly, nonatomic) unsigned long long numberOfUnits;
 @property (readonly, nonatomic) unsigned long long unit;
 
+- (void).cxx_destruct;
 - (void)_setNumberOfUnits:(unsigned long long)arg1;
 - (void)_setUnit:(unsigned long long)arg1;
 - (id)copyXPCEncoding;
+- (id)init;
+- (id)initWithISO8601String:(id)arg1;
 - (id)initWithXPCEncoding:(id)arg1;
 
 @end

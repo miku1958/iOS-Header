@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <SceneKit/NSSecureCoding-Protocol.h>
 
@@ -27,6 +27,7 @@
     BOOL _paused;
     NSURL *_sourceURL;
     BOOL _pausedForEditing;
+    BOOL _allowsDefaultLightingEnvironmentFallback;
     SCNAuthoringEnvironment *_authoringEnvironment;
 }
 
@@ -60,13 +61,17 @@
 + (id)supportedFileUTIsForImport;
 + (BOOL)supportsSecureCoding;
 - (const void *)__CFObject;
+- (BOOL)_allowsDefaultLightingEnvironmentFallback;
+- (void)_clearSceneRef;
 - (void)_customDecodingOfSCNScene:(id)arg1;
 - (void)_customEncodingOfSCNScene:(id)arg1;
 - (void)_didDecodeSCNScene:(id)arg1;
 - (void)_didEncodeSCNScene:(id)arg1;
+- (void)_dumpToDisk;
 - (id)_exportAsMovieOperationWithDestinationURL:(id)arg1 size:(struct CGSize)arg2 attributes:(id)arg3 delegate:(id)arg4 didEndSelector:(SEL)arg5 userInfo:(void *)arg6;
 - (id)_nodeWithIndexPath:(id)arg1;
 - (id)_physicsWorldCreateIfNeeded:(BOOL)arg1;
+- (void)_prettifyForPreview;
 - (void)_resetSceneTimeRange;
 - (void)_scaleSceneBy:(double)arg1;
 - (id)_scenes;
@@ -113,6 +118,7 @@
 - (void)setStartTime:(double)arg1;
 - (void)setUpAxis:(struct SCNVector3)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
+- (void)set_allowsDefaultLightingEnvironmentFallback:(BOOL)arg1;
 - (double)startTime;
 - (void)unlock;
 - (struct SCNVector3)upAxis;

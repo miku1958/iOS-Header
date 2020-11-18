@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBackdropViewSettingsLight.h>
+#import <UIKitCore/_UIBackdropViewSettingsLight.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIBackdropViewSettingsAdaptiveLight : _UIBackdropViewSettingsLight

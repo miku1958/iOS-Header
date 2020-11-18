@@ -7,12 +7,14 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBPayBillIntentResponse-Protocol.h>
 
-@class PBUnknownFields, _INPBBillDetailsValue, _INPBDateTimeRange, _INPBFinancialAccountValue, _INPBPaymentAmountValue, _INPBString;
+@class NSString, _INPBBillDetailsValue, _INPBDateTimeRange, _INPBFinancialAccountValue, _INPBPaymentAmountValue, _INPBString;
 
-@interface _INPBPayBillIntentResponse : PBCodable <NSCopying>
+@interface _INPBPayBillIntentResponse : PBCodable <_INPBPayBillIntentResponse, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    struct _has;
     _INPBBillDetailsValue *_billDetails;
     _INPBFinancialAccountValue *_fromAccount;
     _INPBPaymentAmountValue *_transactionAmount;
@@ -21,25 +23,24 @@
 }
 
 @property (strong, nonatomic) _INPBBillDetailsValue *billDetails; // @synthesize billDetails=_billDetails;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBFinancialAccountValue *fromAccount; // @synthesize fromAccount=_fromAccount;
 @property (readonly, nonatomic) BOOL hasBillDetails;
 @property (readonly, nonatomic) BOOL hasFromAccount;
 @property (readonly, nonatomic) BOOL hasTransactionAmount;
 @property (readonly, nonatomic) BOOL hasTransactionNote;
 @property (readonly, nonatomic) BOOL hasTransactionScheduledDate;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _INPBPaymentAmountValue *transactionAmount; // @synthesize transactionAmount=_transactionAmount;
 @property (strong, nonatomic) _INPBString *transactionNote; // @synthesize transactionNote=_transactionNote;
 @property (strong, nonatomic) _INPBDateTimeRange *transactionScheduledDate; // @synthesize transactionScheduledDate=_transactionScheduledDate;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
-+ (id)options;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 @interface TSTTableStylePreset : TSPObject <TSSPreset, TSSStyleClient, TSKModel>
 {
     TSTTableStyleNetwork *_styleNetwork;
-    unsigned long long _tempUpgradePresetID;
     BOOL _tableHasStrongOwnership;
+    unsigned long long _tempUpgradePresetID;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,9 +28,10 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) TSTTableStyleNetwork *styleNetwork;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL tableHasStrongOwnership; // @synthesize tableHasStrongOwnership=_tableHasStrongOwnership;
+@property (nonatomic) unsigned long long tempUpgradePresetID; // @synthesize tempUpgradePresetID=_tempUpgradePresetID;
 
 + (BOOL)needsObjectUUID;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)drawSwatchInRect:(struct CGRect)arg1 inContext:(struct CGContext *)arg2;
 - (id)initWithContext:(id)arg1;
 - (id)initWithStyleNetwork:(id)arg1;

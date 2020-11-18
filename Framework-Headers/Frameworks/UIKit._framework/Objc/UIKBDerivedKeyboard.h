@@ -4,17 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
 @interface UIKBDerivedKeyboard : NSObject
 {
+    BOOL _addsSupplementaryControlKeys;
     NSString *_derivedKBStarPrefixName;
     struct CGSize _keyboardSize;
 }
 
+@property (nonatomic) BOOL addsSupplementaryControlKeys; // @synthesize addsSupplementaryControlKeys=_addsSupplementaryControlKeys;
 @property (copy, nonatomic) NSString *derivedKBStarPrefixName; // @synthesize derivedKBStarPrefixName=_derivedKBStarPrefixName;
 @property (nonatomic) struct CGSize keyboardSize; // @synthesize keyboardSize=_keyboardSize;
 

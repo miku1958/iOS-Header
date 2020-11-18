@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)addSession:(id)arg1;
 - (id)init;
 - (void)pruneSessionsNotInIdentifierArray:(id)arg1 agressive:(BOOL)arg2;
+- (id)urlSessionForIdentifier:(id)arg1;
 - (id)urlSessionForRequest:(id)arg1;
 
 @end

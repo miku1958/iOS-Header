@@ -13,11 +13,13 @@
     BOOL _depthDataDeliveryEnabled;
     BOOL _filterRenderingEnabled;
     NSArray *_filters;
+    float _simulatedAperture;
 }
 
 @property (nonatomic) BOOL depthDataDeliveryEnabled; // @synthesize depthDataDeliveryEnabled=_depthDataDeliveryEnabled;
 @property (nonatomic) BOOL filterRenderingEnabled; // @synthesize filterRenderingEnabled=_filterRenderingEnabled;
 @property (copy, nonatomic) NSArray *filters; // @synthesize filters=_filters;
+@property (nonatomic) float simulatedAperture; // @synthesize simulatedAperture=_simulatedAperture;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyXPCEncoding;

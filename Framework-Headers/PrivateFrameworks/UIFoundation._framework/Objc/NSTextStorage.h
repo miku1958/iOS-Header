@@ -33,6 +33,7 @@
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
 + (void)initialize;
++ (BOOL)supportsSecureCoding;
 - (BOOL)_attributeFixingInProgress;
 - (BOOL)_forceFixAttributes;
 - (BOOL)_isEditing;

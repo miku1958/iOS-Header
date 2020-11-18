@@ -11,7 +11,6 @@
 @protocol _SFPBURL <NSObject>
 
 @property (copy, nonatomic) NSString *address;
-@property (readonly, nonatomic) BOOL hasAddress;
 @property (readonly, nonatomic) NSData *jsonData;
 
 - (id)initWithDictionary:(NSDictionary *)arg1;

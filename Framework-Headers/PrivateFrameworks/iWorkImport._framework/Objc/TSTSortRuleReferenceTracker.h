@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <iWorkImport/TSCEReferenceTrackerDelegate-Protocol.h>
 
@@ -32,11 +32,11 @@ __attribute__((visibility("hidden")))
 - (id)initFromArchive:(const struct SortRuleReferenceTrackerArchive *)arg1 unarchiver:(id)arg2;
 - (id)initWithTableInfo:(id)arg1 context:(id)arg2;
 - (UUIDData_5fbc143e)ownerUID;
-- (unsigned char)p_columnForTrackedReference:(id)arg1;
-- (struct TSCESpanningRangeRef)p_referenceForColumnIndex:(unsigned char)arg1;
+- (unsigned short)p_columnForTrackedReference:(id)arg1;
+- (struct TSCESpanningRangeRef)p_referenceForColumnIndex:(unsigned short)arg1;
 - (id)p_ruleReferenceForTrackedReference:(id)arg1;
 - (void)referencedCellWasModified:(id)arg1;
-- (void)registerWithCalculationEngine:(id)arg1;
+- (void)registerWithCalcEngine:(id)arg1;
 - (void)setOwnerUID:(const UUIDData_5fbc143e *)arg1;
 - (BOOL)shouldRewriteOnCellMerge;
 - (BOOL)shouldRewriteOnRangeMove;
@@ -45,7 +45,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)shouldRewriteOnTectonicShift;
 - (BOOL)shouldRewriteOnTranspose;
 - (void)trackedReferenceWasDeleted:(id)arg1 fromOwnerUID:(const UUIDData_5fbc143e *)arg2;
-- (void)unregisterFromCalculationEngine;
+- (void)unregisterFromCalcEngine;
 - (void)updateForSortRules:(id)arg1;
 
 @end

@@ -8,28 +8,33 @@
 
 #import <iWorkImport/TSPCopying-Protocol.h>
 
-@class NSMutableArray;
+@class NSArray, NSMutableArray;
 
 __attribute__((visibility("hidden")))
 @interface TSTConditionalStyleSet : TSPObject <TSPCopying>
 {
-    NSMutableArray *mConditionalStyleSetRules;
+    NSMutableArray *_conditionalStyleSetRules;
 }
 
+@property (readonly, nonatomic) NSArray *currentRules; // @synthesize currentRules=_conditionalStyleSetRules;
+
+- (void).cxx_destruct;
 - (BOOL)containsUidReferences;
 - (id)copyByClearingUids:(id)arg1 containingTableUID:(const UUIDData_5fbc143e *)arg2;
-- (id)copyByOffsettingRelativeReferencesWithColumnOffset:(short)arg1 rowOffset:(int)arg2;
+- (id)copyByConvertingToRelativeAncestorsWithRewriteContext:(id)arg1;
+- (id)copyByOffsettingRelativeReferencesWithOffset:(CDStruct_1ef3fb1f)arg1;
 - (id)copyByRemappingHostCellAgnosticOwnerUIDsWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2 ownerUID:(const UUIDData_5fbc143e *)arg3 error:(BOOL *)arg4;
 - (id)copyByRemappingOwnerUIDsWithMap:(const UUIDMap_b66c2694 *)arg1 calcEngine:(id)arg2 error:(BOOL *)arg3;
 - (id)copyByRepairingBadReferences:(id)arg1;
+- (id)copyByReparenting:(id)arg1 groupByUID:(const UUIDData_5fbc143e *)arg2 rewriteContext:(id)arg3;
+- (id)copyByResolvingRelativeAncestorsWithRewriteContext:(id)arg1;
+- (id)copyByRewritingWithContext:(id)arg1 rewriteBlock:(CDUnknownBlockType)arg2;
 - (id)copyByRewritingWithSpec:(id)arg1 inOwner:(id)arg2 inCellCoordinate:(struct TSUCellCoord)arg3;
 - (id)copyByUpdatingHostCellRef:(const struct TSCECellRef *)arg1;
 - (id)copyByUpgradingToLinkedRefAtHostCellRef:(const struct TSCECellRef *)arg1;
-- (id)copyToGeometricFormForTableInfo:(id)arg1 inCellCoordinate:(struct TSUCellCoord)arg2 rewriteFlags:(unsigned char)arg3;
 - (id)copyToGeometricFormWithRewriteContext:(id)arg1;
 - (id)copyToUidFormForTableInfo:(id)arg1 inCellCoordinate:(struct TSUCellCoord)arg2 preserveHostCell:(BOOL)arg3;
 - (id)copyWithContext:(id)arg1;
-- (void)dealloc;
 - (id)description;
 - (BOOL)hasBadRefWithUidInfo;
 - (unsigned long long)hash;
@@ -37,7 +42,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithContext:(id)arg1 rules:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualForInspector:(id)arg1;
+- (void)iterateFormulasWithContext:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)loadFromUnarchiver:(id)arg1;
+- (id)precedentsWithCalcEngine:(id)arg1 hostOwnerUID:(const UUIDData_5fbc143e *)arg2 hostCellID:(const struct TSUCellCoord *)arg3;
 - (id)ruleAtIndex:(unsigned long long)arg1;
 - (unsigned long long)ruleCount;
 - (id)rules;

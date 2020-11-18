@@ -6,7 +6,7 @@
 
 #import <Preferences/PSTableCell.h>
 
-@class NSMutableArray, UIImage, UIImageView, UILabel;
+@class NSMutableArray, UIImageView, UILabel;
 
 @interface PSStorageAppCell : PSTableCell
 {
@@ -15,7 +15,6 @@
     UILabel *_titleLabel;
     UILabel *_infoLabel;
     UILabel *_sizeLabel;
-    UIImage *_icon;
     long long _size;
 }
 
@@ -25,9 +24,7 @@
 + (id)specifierForStorageApp:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2 specifier:(id)arg3;
-- (id)lastSizeStringForAppID:(id)arg1;
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
-- (void)setLastSizeString:(id)arg1 forAppID:(id)arg2;
 - (void)updateConstraints;
 
 @end

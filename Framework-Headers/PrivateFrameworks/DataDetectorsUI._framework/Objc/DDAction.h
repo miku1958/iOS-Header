@@ -41,10 +41,12 @@
 + (BOOL)actionAvailableForContact:(id)arg1;
 + (id)actionWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 + (id)actionsWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
++ (id)clientActionsDelegate;
 + (id)contextByAddingValue:(id)arg1 toKey:(id)arg2 inContext:(id)arg3;
 + (id)defaultActionWithURL:(id)arg1 result:(struct __DDResult *)arg2 context:(id)arg3;
 + (id)encodableContextWithContext:(id)arg1;
 + (BOOL)isAvailable;
++ (void)setClientActionsDelegate:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_copyStringOnly:(id)arg1;

@@ -32,8 +32,8 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *token; // @synthesize token=_token;
 
-+ (BOOL)acceptsComplicationFamily:(long long)arg1;
-+ (BOOL)acceptsComplicationType:(unsigned long long)arg1;
++ (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
++ (BOOL)acceptsComplicationType:(unsigned long long)arg1 forDevice:(id)arg2;
 - (void).cxx_destruct;
 - (id)_animationGroupForDate:(id)arg1 showingSunrise:(BOOL)arg2 constantSun:(long long)arg3;
 - (id)_animationGroupForDate:(id)arg1 showingSunrise:(BOOL)arg2 constantSun:(long long)arg3 haveLocation:(BOOL)arg4;
@@ -58,7 +58,7 @@
 - (void)getTimelineEntriesAfterDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getTimelineEntriesBeforeDate:(id)arg1 limit:(unsigned long long)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getTimelineStartDateWithHandler:(CDUnknownBlockType)arg1;
-- (id)initWithComplication:(id)arg1 family:(long long)arg2;
+- (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (id)loadEntryModelsForDay:(id)arg1;
 - (BOOL)supportsTapAction;
 - (unsigned long long)timelineAnimationBehavior;

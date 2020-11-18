@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableSet, SCNGeometry, SCNNode, SCNRenderer, UIColor;
+@class NSMutableSet, SCNGeometry, SCNManipulator, SCNNode, SCNRenderer, UIColor;
 
 @interface SCNAuthoringEnvironment2 : NSObject
 {
     NSMutableSet *_selection;
     struct __C3DScene *_scene;
     SCNNode *_layerRoot;
+    SCNNode *_overlayLayerRoot;
     SCNNode *_lightRoot;
     SCNNode *_cameraRoot;
     SCNNode *_particlesRoot;
@@ -26,12 +27,12 @@
     SCNRenderer *_renderer;
     SCNGeometry *_lightGeometry;
     SCNGeometry *_cameraFrustumGeometry;
+    SCNGeometry *_cameraOrthographicFrustumGeometry;
     SCNGeometry *_cameraGeometry;
     SCNGeometry *_cameraNearPlaneGeometry;
     SCNGeometry *_particlesGeometry;
     SCNGeometry *_fieldGeometry;
     long long _displayMask;
-    long long _readDepthMask;
     UIColor *_paleGreen;
     UIColor *_paleBlue;
     UIColor *_red;
@@ -45,12 +46,18 @@
     UIColor *_grayMedium;
     UIColor *_grayDark;
     UIColor *_white;
+    SCNManipulator *_manipulator;
 }
 
+@property (readonly, nonatomic) SCNNode *authoringLayer;
+@property (readonly, nonatomic) SCNNode *authoringOverlayLayer;
 @property long long displayMask;
-@property long long readDepthMask;
+@property (readonly, nonatomic) SCNManipulator *manipulator;
 
 + (id)authoringEnvironmentForScene:(id)arg1;
++ (id)authoringEnvironmentForScene:(id)arg1 createIfNeeded:(BOOL)arg2;
+- (void)_resetLightAuthoringWithContainerNode:(id)arg1 source:(id)arg2 light:(id)arg3;
+- (void)_updateRootsVisibility;
 - (void)addCameraNode:(id)arg1;
 - (void)addLightNode:(id)arg1;
 - (void)addNodeToSelection:(id)arg1;
@@ -62,12 +69,13 @@
 - (id)cameraFrustumGeometry;
 - (id)cameraGeometry;
 - (id)cameraNearPlaneGeometry;
+- (id)cameraOrthographicFrustumGeometry;
 - (void)cancelSelection;
 - (void)dealloc;
 - (BOOL)didTapAtPoint:(struct CGPoint)arg1;
 - (id)fieldGeometry;
+- (id)geometryForLightType:(id)arg1;
 - (id)initWithScene:(id)arg1;
-- (id)lightGeometry;
 - (id)particlesGeometry;
 - (void)prepareScene:(id)arg1;
 - (void)removeCameraNode:(id)arg1;
@@ -78,10 +86,11 @@
 - (void)selectNode:(id)arg1;
 - (void)selectNodes:(id)arg1;
 - (void)setAuthoringCamera:(long long)arg1 forView:(id)arg2;
+- (void)setupParticleMeshEmitter:(id)arg1 authoringNode:(id)arg2;
 - (void)updateCameraNode:(id)arg1 withSourceNode:(id)arg2;
 - (void)updateFieldNode:(id)arg1 withSourceNode:(id)arg2;
 - (void)updateLightNode:(id)arg1 withSourceNode:(id)arg2;
-- (void)updateLightTypeForNode:(id)arg1 source:(id)arg2 light:(id)arg3 andRatio:(float)arg4;
+- (void)updateLightTypeForNode:(id)arg1 source:(id)arg2 light:(id)arg3 screenspaceScalingFactor:(float)arg4;
 - (void)updateParticlesNode:(id)arg1 withSourceNode:(id)arg2;
 - (void)updateWithRenderer:(id)arg1;
 

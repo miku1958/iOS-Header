@@ -8,19 +8,19 @@
 
 #import <NewsToday/NSCopying-Protocol.h>
 
-@class FRPersonalizationFeature;
+@class FCPersonalizationFeature;
 @protocol NTAbsolutePersonalizedSectionPresenceConfig;
 
 @interface NTSectionPresencePersonalizationAbsoluteRequest : NSObject <NSCopying>
 {
-    FRPersonalizationFeature *_feature;
+    FCPersonalizationFeature *_feature;
     double _featureClickPrior;
     double _featureImpressionPrior;
     NSObject<NTAbsolutePersonalizedSectionPresenceConfig> *_absolutePresenceConfig;
 }
 
 @property (copy, nonatomic) NSObject<NTAbsolutePersonalizedSectionPresenceConfig> *absolutePresenceConfig; // @synthesize absolutePresenceConfig=_absolutePresenceConfig;
-@property (copy, nonatomic) FRPersonalizationFeature *feature; // @synthesize feature=_feature;
+@property (copy, nonatomic) FCPersonalizationFeature *feature; // @synthesize feature=_feature;
 @property (nonatomic) double featureClickPrior; // @synthesize featureClickPrior=_featureClickPrior;
 @property (nonatomic) double featureImpressionPrior; // @synthesize featureImpressionPrior=_featureImpressionPrior;
 

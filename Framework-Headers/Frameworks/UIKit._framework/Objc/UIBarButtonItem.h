@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIBarItem.h>
+#import <UIKitCore/UIBarItem.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
 @class NSArray, NSDictionary, NSSet, NSString, UIBarButtonItemGroup, UIColor, UIImage, UILayoutGuide, UINavigationItem, UIToolbarButton, UIView;
 @protocol _UIBarButtonItemViewOwner;

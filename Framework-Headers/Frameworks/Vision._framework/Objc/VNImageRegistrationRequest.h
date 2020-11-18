@@ -17,11 +17,11 @@
 + (id)optionNameForTargetedImageSpecifyingObject;
 + (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
+- (BOOL)allowsCachingOfResults;
 - (id)cachedFloatingImageBufferReturningError:(id *)arg1;
 - (id)cachedFloatingImageRegistrationSignatureReturningError:(id *)arg1;
 - (BOOL)getReferenceImageBuffer:(id *)arg1 registrationSignature:(id *)arg2 forRequestPerformingContext:(id)arg3 options:(id)arg4 error:(id *)arg5;
 - (BOOL)internalPerformInContext:(id)arg1 error:(id *)arg2;
-- (id)observationsCacheKey;
 - (BOOL)wantsSequencedRequestObservationsRecording;
 - (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
 

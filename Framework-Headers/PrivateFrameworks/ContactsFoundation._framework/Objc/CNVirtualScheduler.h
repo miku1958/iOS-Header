@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <ContactsFoundation/CNScheduler-Protocol.h>
 
@@ -24,7 +24,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isPerforming; // @synthesize isPerforming=_isPerforming;
+@property (readonly, nonatomic) BOOL isStarted; // @synthesize isStarted=_isStarted;
+@property (readonly, nonatomic) unsigned long long nextSchedulableTick; // @synthesize nextSchedulableTick=_nextSchedulableTick;
+@property (readonly, nonatomic) CNQueue *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) unsigned long long stopTime; // @synthesize stopTime=_stopTime;
 @property (readonly) Class superclass;
+@property (readonly) double timestamp;
 
 + (id)providerWithScheduler:(id)arg1;
 + (unsigned long long)timeWithDelay:(double)arg1 fromClock:(unsigned long long)arg2;
@@ -44,7 +50,6 @@
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1 qualityOfService:(unsigned long long)arg2;
 - (void)start;
 - (void)stop;
-- (double)timestamp;
 
 @end
 

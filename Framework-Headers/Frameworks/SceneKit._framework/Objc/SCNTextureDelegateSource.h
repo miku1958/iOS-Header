@@ -6,6 +6,7 @@
 
 #import <SceneKit/SCNTextureOffscreenRenderingSource.h>
 
+__attribute__((visibility("hidden")))
 @interface SCNTextureDelegateSource : SCNTextureOffscreenRenderingSource
 {
     id _delegate;

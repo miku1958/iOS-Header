@@ -13,6 +13,7 @@
 
 @interface TUCallProviderManager : NSObject <TUCallProviderManagerDataSourceDelegate>
 {
+    unsigned long long _type;
     NSObject<OS_dispatch_queue> *_queue;
     id<TUCallProviderManagerDataSource> _dataSource;
     NSMapTable *_delegateToQueue;
@@ -31,16 +32,20 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) TUCallProvider *telephonyProvider;
+@property (readonly, nonatomic) TUCallProvider *tinCanProvider;
+@property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (readonly, nonatomic) TUCallProvider *voicemailProvider;
 
 + (id)defaultProviders;
 + (int)serviceForProvider:(id)arg1 video:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
-- (void)blockUntilInitialStateReceivedIfNecessary;
 - (void)dealloc;
 - (id)init;
-- (id)initWithDataSource:(id)arg1 queue:(id)arg2;
+- (id)initWithDataSource:(id)arg1 type:(unsigned long long)arg2 queue:(id)arg3;
+- (id)initWithLocalProviders;
+- (id)initWithPairedHostDeviceProviders;
+- (id)initWithType:(unsigned long long)arg1;
 - (void)launchAppForDialRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)providerForFavoritesEntry:(id)arg1;
 - (id)providerForFavoritesEntryActionBundleIdentifier:(id)arg1;

@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
     long long _expectedContentSize;
     struct RetainPtr<NSData> _data;
     BOOL _complete;
-    struct Vector<WTF::RetainPtr<AVAssetResourceLoadingRequest>, 0, WTF::CrashOnOverflow, 16, WTF::FastMalloc> _requests;
+    struct Vector<WTF::RetainPtr<AVAssetResourceLoadingRequest>, 0, WTF::CrashOnOverflow, 16> _requests;
     struct Lock _dataLock;
 }
 

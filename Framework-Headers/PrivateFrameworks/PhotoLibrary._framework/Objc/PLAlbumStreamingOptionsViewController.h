@@ -16,7 +16,6 @@
 
 @interface PLAlbumStreamingOptionsViewController : UIViewController <PLComposeRecipientViewControllerDelegate, PLInvitationRecordsObserver, UITableViewDataSource, UITableViewDelegate>
 {
-    NSArray *_visibleInvitationRecords;
     NSString *_visiblePublicURL;
     BOOL _showShareLink;
     PLCloudSharedAlbum *_album;
@@ -40,6 +39,7 @@
     BOOL __shouldScrollToTopOnNextViewLayout;
     BOOL _albumIsFamilyStream;
     NSString *_albumName;
+    NSArray *_sharedAlbumSubscribers;
     PLCloudSharedAlbumInvitationRecord *__selectedSubscriberInvitationRecord;
     NSString *__lastPublicURLSectionFooterTitle;
     NSString *__lastMultiContributorsSectionFooterTitle;
@@ -57,6 +57,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isPresentedModally; // @synthesize isPresentedModally=_isPresentedModally;
+@property (strong, nonatomic) NSArray *sharedAlbumSubscribers; // @synthesize sharedAlbumSubscribers=_sharedAlbumSubscribers;
 @property (nonatomic) BOOL streamOwner; // @synthesize streamOwner=_streamOwner;
 @property (readonly) Class superclass;
 
@@ -76,22 +77,20 @@
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
 - (BOOL)_multipleContributorsEnabled;
-- (id)_personMatchingEmail:(id)arg1 orPhone:(id)arg2 withFirstName:(id)arg3 lastName:(id)arg4 outMatchingKey:(id *)arg5 outMatchingIdentifier:(id *)arg6 keysToFetch:(id)arg7;
-- (id)_personViewControllerWithEmail:(id)arg1 phone:(id)arg2 firstName:(id)arg3 lastName:(id)arg4 canResendInvitation:(BOOL)arg5 canRemoveSubscriber:(BOOL)arg6;
+- (id)_personViewControllerSubscriberInfo:(id)arg1 canResendInvitation:(BOOL)arg2 canRemoveSubscriber:(BOOL)arg3;
 - (BOOL)_publicURLEnabled;
 - (void)_removeSelectedSubscriber;
 - (void)_resendInvitationToSelectedSubscriber;
 - (void)_setShowingMultipleContributorSpinner:(BOOL)arg1;
 - (void)_setShowingPublicURLActivitySpinner:(BOOL)arg1;
 - (BOOL)_shouldShowPublicURLActivitySpinner;
-- (id)_suppresionContexts;
+- (id)_suppressionContexts;
 - (void)_updateAllControls;
 - (void)_updateMultipleContributorsState;
 - (void)_updatePublicURLStateIfNecessaryAnimated:(BOOL)arg1;
 - (void)_updateWantsAcceptCloudNotificationField;
 - (void)_updateWantsMultipleContributorsField;
 - (void)_updateWantsPublicWebsiteField;
-- (id)_visibleInvitationRecordsForStreamOwner:(BOOL)arg1;
 - (id)backingNavigationControllerForComposeRecipientViewController:(id)arg1;
 - (struct CGSize)contentSizeForViewInPopover;
 - (void)dealloc;

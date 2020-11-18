@@ -8,21 +8,21 @@
 
 #import <PhotosUI/PUAssetViewModelChangeObserver-Protocol.h>
 #import <PhotosUI/PUBrowsingVideoPlayerChangeObserver-Protocol.h>
-#import <PhotosUI/PUVideoPlayerViewDelegate-Protocol.h>
 
-@class ISWrappedAVPlayer, NSString, PUAssetViewModel, PUBrowsingVideoPlayer, PUMediaProvider, PUVideoPlayerView;
+@class ISWrappedAVPlayer, NSString, PUAssetViewModel, PUBrowsingVideoPlayer, PUMediaProvider, PXVideoPlayerView, UIImage;
 @protocol PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
-@interface PUVideoTileViewController : PUTileViewController <PUAssetViewModelChangeObserver, PUVideoPlayerViewDelegate, PUBrowsingVideoPlayerChangeObserver>
+@interface PUVideoTileViewController : PUTileViewController <PUAssetViewModelChangeObserver, PUBrowsingVideoPlayerChangeObserver>
 {
     id _playerObserver;
+    UIImage *_preloadedImage;
     BOOL _canPlayVideo;
     BOOL __isDisplayingFullQualityImage;
     int __currentImageRequestID;
     PUAssetViewModel *_assetViewModel;
     PUMediaProvider *_mediaProvider;
-    PUVideoPlayerView *__playerView;
+    PXVideoPlayerView *__playerView;
     id<PUDisplayAsset> _asset;
     PUBrowsingVideoPlayer *__browsingVideoPlayer;
     ISWrappedAVPlayer *__player;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setDisplayingFullQualityImage:) BOOL _isDisplayingFullQualityImage; // @synthesize _isDisplayingFullQualityImage=__isDisplayingFullQualityImage;
 @property (readonly, nonatomic) BOOL _isDisplayingVideo;
 @property (strong, nonatomic, setter=_setPlayer:) ISWrappedAVPlayer *_player; // @synthesize _player=__player;
-@property (strong, nonatomic, setter=_setPlayerView:) PUVideoPlayerView *_playerView; // @synthesize _playerView=__playerView;
+@property (strong, nonatomic, setter=_setPlayerView:) PXVideoPlayerView *_playerView; // @synthesize _playerView=__playerView;
 @property (copy, nonatomic, setter=_setReadyForDisplayCompletionHandler:) CDUnknownBlockType _readyForDisplayCompletionHandler; // @synthesize _readyForDisplayCompletionHandler=__readyForDisplayCompletionHandler;
 @property (nonatomic, setter=_setTargetSize:) struct CGSize _targetSize; // @synthesize _targetSize=__targetSize;
 @property (nonatomic, setter=_setThumbnailRequestNumber:) long long _thumbnailRequestNumber; // @synthesize _thumbnailRequestNumber=__thumbnailRequestNumber;
@@ -66,7 +66,7 @@ __attribute__((visibility("hidden")))
 - (void)removeAllAnimations;
 - (void)setEdgeAntialiasingEnabled:(BOOL)arg1;
 - (void)setPreloadedImage:(id)arg1;
-- (void)videoPlayerView:(id)arg1 isReadyForDisplayDidChange:(BOOL)arg2;
+- (void)videoPlayerView:(id)arg1 isDisplayingPlaceholerDidChange:(BOOL)arg2;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 
 @end

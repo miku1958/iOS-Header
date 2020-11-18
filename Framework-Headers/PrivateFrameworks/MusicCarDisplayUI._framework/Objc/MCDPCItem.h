@@ -12,11 +12,12 @@
 {
     void *_contentItem;
     BOOL _currentlyPlaying;
+    UIImage *_artworkImage;
     MCDPCModel *_model;
 }
 
 @property (readonly, nonatomic) NSData *artworkData;
-@property (readonly, nonatomic) UIImage *artworkImage;
+@property (strong, nonatomic) UIImage *artworkImage; // @synthesize artworkImage=_artworkImage;
 @property (nonatomic) void *contentItem; // @synthesize contentItem=_contentItem;
 @property (nonatomic) BOOL currentlyPlaying; // @synthesize currentlyPlaying=_currentlyPlaying;
 @property (readonly, nonatomic) NSString *identifier;

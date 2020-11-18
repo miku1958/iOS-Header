@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber, NSString, NSURL;
+@class NSDictionary, NSNumber, NSString, NSURL;
 
 @interface _WKLinkIconParameters : NSObject
 {
@@ -14,8 +14,10 @@
     long long _iconType;
     struct RetainPtr<NSString> _mimeType;
     struct RetainPtr<NSNumber> _size;
+    struct RetainPtr<NSMutableDictionary> _attributes;
 }
 
+@property (readonly, copy, nonatomic) NSDictionary *attributes;
 @property (readonly, nonatomic) long long iconType;
 @property (readonly, copy, nonatomic) NSString *mimeType;
 @property (readonly, copy, nonatomic) NSNumber *size;

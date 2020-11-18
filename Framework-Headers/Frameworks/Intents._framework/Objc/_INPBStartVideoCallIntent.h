@@ -7,43 +7,48 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <Intents/NSCopying-Protocol.h>
+#import <Intents/NSSecureCoding-Protocol.h>
+#import <Intents/_INPBStartVideoCallIntent-Protocol.h>
 
-@class NSMutableArray, PBUnknownFields, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBIntentMetadata;
 
-@interface _INPBStartVideoCallIntent : PBCodable <NSCopying>
+@interface _INPBStartVideoCallIntent : PBCodable <_INPBStartVideoCallIntent, NSSecureCoding, NSCopying>
 {
-    PBUnknownFields *_unknownFields;
+    CDStruct_fbf2c6cd _has;
     int _audioRoute;
-    NSMutableArray *_contacts;
+    NSArray *_contacts;
     _INPBIntentMetadata *_intentMetadata;
-    struct {
-        unsigned int audioRoute:1;
-    } _has;
+    NSArray *_targetContacts;
 }
 
 @property (nonatomic) int audioRoute; // @synthesize audioRoute=_audioRoute;
-@property (strong, nonatomic) NSMutableArray *contacts; // @synthesize contacts=_contacts;
+@property (copy, nonatomic) NSArray *contacts; // @synthesize contacts=_contacts;
+@property (readonly, nonatomic) unsigned long long contactsCount;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasAudioRoute;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSArray *targetContacts; // @synthesize targetContacts=_targetContacts;
+@property (readonly, nonatomic) unsigned long long targetContactsCount;
 
 + (Class)contactType;
-+ (id)options;
++ (Class)targetContactsType;
 - (void).cxx_destruct;
 - (int)StringAsAudioRoute:(id)arg1;
 - (void)addContact:(id)arg1;
+- (void)addTargetContacts:(id)arg1;
 - (id)audioRouteAsString:(int)arg1;
 - (void)clearContacts;
+- (void)clearTargetContacts;
 - (id)contactAtIndex:(unsigned long long)arg1;
-- (unsigned long long)contactsCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)targetContactsAtIndex:(unsigned long long)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

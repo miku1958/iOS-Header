@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/UITextInputTraits-Protocol.h>
-#import <UIKit/UITextInputTraits_Private-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/UITextInputTraits-Protocol.h>
+#import <UIKitCore/UITextInputTraits_Private-Protocol.h>
 
-@class NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory;
+@class NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory, UITextInputPasswordRules;
 
 @interface UITextInputTraits : NSObject <UITextInputTraits, UITextInputTraits_Private, NSCopying>
 {
@@ -24,6 +24,7 @@
     BOOL secureTextEntry;
     BOOL devicePasscodeEntry;
     NSString *textContentType;
+    UITextInputPasswordRules *passwordRules;
     long long smartInsertDeleteType;
     long long smartQuotesType;
     long long smartDashesType;
@@ -69,6 +70,7 @@
     BOOL hasDefaultContents;
     BOOL acceptsPayloads;
     BOOL displaySecureEditsUsingPlainText;
+    BOOL hidePrediction;
     BOOL loadKeyboardsForSiriLanguage;
     NSIndexSet *PINEntrySeparatorIndexes;
     long long forceDictationKeyboardType;
@@ -103,6 +105,7 @@
 @property (nonatomic) BOOL forceEnableDictation; // @synthesize forceEnableDictation;
 @property (nonatomic) BOOL hasDefaultContents; // @synthesize hasDefaultContents;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hidePrediction; // @synthesize hidePrediction;
 @property (strong, nonatomic) UIInputContextHistory *inputContextHistory; // @synthesize inputContextHistory;
 @property (strong, nonatomic) UIColor *insertionPointColor; // @synthesize insertionPointColor;
 @property (nonatomic) unsigned long long insertionPointWidth; // @synthesize insertionPointWidth;
@@ -113,6 +116,7 @@
 @property (nonatomic) BOOL learnsCorrections; // @synthesize learnsCorrections;
 @property (nonatomic) BOOL loadKeyboardsForSiriLanguage; // @synthesize loadKeyboardsForSiriLanguage;
 @property (nonatomic) BOOL manageRecentInputs; // @synthesize manageRecentInputs;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules; // @synthesize passwordRules;
 @property (copy, nonatomic) NSString *recentInputIdentifier; // @synthesize recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext; // @synthesize responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder; // @synthesize returnKeyGoesToNextResponder;
@@ -144,17 +148,30 @@
 + (id)defaultTextInputTraits;
 + (BOOL)keyboardTypeRequiresASCIICapable:(long long)arg1;
 + (id)traitsByAdoptingTraits:(id)arg1;
++ (id)traitsByAdoptingTraits:(id)arg1 lightweight:(BOOL)arg2;
++ (long long)translateToUIAutocapitalizationType:(unsigned long long)arg1;
++ (long long)translateToUIAutocorrectionType:(unsigned long long)arg1;
++ (long long)translateToUIKeyboardAppearance:(unsigned long long)arg1;
++ (long long)translateToUIKeyboardType:(unsigned long long)arg1;
++ (long long)translateToUIReturnKeyType:(unsigned long long)arg1;
++ (long long)translateToUISmartInsertDeleteEnabled:(BOOL)arg1;
++ (long long)translateToUISpellCheckingType:(unsigned long long)arg1;
++ (long long)translateToUITextScriptType:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_setColorsToMatchTintColor:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
+- (void)extendedPathToObtainTraitsFrom:(id)arg1 lightweight:(BOOL)arg2;
+- (void)fastPathToObtainTraitsFrom:(id)arg1;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (void)overlayWithTITextInputTraits:(id)arg1;
 - (BOOL)publicTraitsMatchTraits:(id)arg1;
 - (void)setToDefaultValues;
 - (void)setToSecureValues;
 - (void)takeTraitsFrom:(id)arg1;
+- (void)takeTraitsFrom:(id)arg1 lightweight:(BOOL)arg2;
 - (long long)updateResultComparedToTraits:(id)arg1;
 
 @end

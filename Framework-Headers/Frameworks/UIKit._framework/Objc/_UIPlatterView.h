@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSValue, _DUIPreview, _UIPlatterShadowView, _UIPortalView, _UIShapeView;
 

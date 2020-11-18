@@ -24,8 +24,10 @@
 - (void).cxx_destruct;
 - (unsigned int)gradientTextureFrom:(double)arg1;
 - (id)init;
+- (unsigned int)loadTexture:(int *)arg1 image:(struct CGImage *)arg2 wrap:(BOOL)arg3;
 - (unsigned int)loadTexture:(int *)arg1 name:(id)arg2 forInk:(BOOL)arg3;
 - (unsigned int)loadTexture:(int *)arg1 name:(id)arg2 wrap:(BOOL)arg3 forInk:(BOOL)arg4;
+- (unsigned int)textureWithImage:(struct CGImage *)arg1 textureName:(id)arg2 wrap:(BOOL)arg3;
 - (unsigned int)textureWithName:(id)arg1;
 - (unsigned int)textureWithName:(id)arg1 forInk:(BOOL)arg2;
 - (unsigned int)textureWithName:(id)arg1 wrap:(BOOL)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
@@ -27,13 +27,15 @@
     long long _state;
     NSString *_suspendedReason;
     NSArray *_supportedExpressModes;
-    NSArray *_supportsExpressModes;
+    NSArray *_automaticSelectionCriteria;
     NSString *_appletCurrencyCode;
     long long _paymentNetworkIdentifier;
     NSDecimalNumber *_inAppPINRequiredAmount;
     NSString *_inAppPINRequiredCurrency;
     unsigned long long _paymentType;
     NSString *_displayName;
+    long long _contactlessPriority;
+    long long _inAppPriority;
     NSString *_appletDataFormat;
     PKTransitPassProperties *_transitProperties;
 }
@@ -41,14 +43,18 @@
 @property (copy, nonatomic) NSString *appletCurrencyCode; // @synthesize appletCurrencyCode=_appletCurrencyCode;
 @property (copy, nonatomic) NSString *appletDataFormat; // @synthesize appletDataFormat=_appletDataFormat;
 @property (copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
+@property (copy, nonatomic) NSArray *automaticSelectionCriteria; // @synthesize automaticSelectionCriteria=_automaticSelectionCriteria;
 @property (nonatomic, getter=isAuxiliary) BOOL auxiliary; // @synthesize auxiliary=_auxiliary;
+@property (nonatomic) long long contactlessPriority; // @synthesize contactlessPriority=_contactlessPriority;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (copy, nonatomic, setter=setDPANIdentifier:) NSString *dpanIdentifier; // @synthesize dpanIdentifier=_dpanIdentifier;
 @property (copy, nonatomic, setter=setDPANSuffix:) NSString *dpanSuffix; // @synthesize dpanSuffix=_dpanSuffix;
 @property (copy, nonatomic) PKFelicaPassProperties *felicaProperties;
+@property (readonly, nonatomic) BOOL generatesLocalTransactions;
 @property (nonatomic) BOOL inAppPINRequired; // @synthesize inAppPINRequired=_inAppPINRequired;
 @property (copy, nonatomic) NSDecimalNumber *inAppPINRequiredAmount; // @synthesize inAppPINRequiredAmount=_inAppPINRequiredAmount;
 @property (copy, nonatomic) NSString *inAppPINRequiredCurrency; // @synthesize inAppPINRequiredCurrency=_inAppPINRequiredCurrency;
+@property (nonatomic) long long inAppPriority; // @synthesize inAppPriority=_inAppPriority;
 @property (readonly, nonatomic, getter=isParsedTransitApplication) BOOL parsedTransitApplication;
 @property (nonatomic) long long paymentNetworkIdentifier; // @synthesize paymentNetworkIdentifier=_paymentNetworkIdentifier;
 @property (nonatomic) unsigned long long paymentType; // @synthesize paymentType=_paymentType;
@@ -60,7 +66,6 @@
 @property (readonly, nonatomic) NSString *stationCodeProvider;
 @property (copy, nonatomic) NSArray *supportedExpressModes; // @synthesize supportedExpressModes=_supportedExpressModes;
 @property (nonatomic) BOOL supportsContactlessPayment; // @synthesize supportsContactlessPayment=_supportsContactlessPayment;
-@property (copy, nonatomic) NSArray *supportsExpressModes; // @synthesize supportsExpressModes=_supportsExpressModes;
 @property (readonly, nonatomic) BOOL supportsExpressSuica;
 @property (readonly, nonatomic) BOOL supportsExpressTransit;
 @property (nonatomic) BOOL supportsInAppPayment; // @synthesize supportsInAppPayment=_supportsInAppPayment;
@@ -73,7 +78,7 @@
 + (id)applicationWithProtobuf:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)_expressModesIncludeTransit:(id)arg1;
+- (void)_createAutomaticSelectionCriteriaIfNecessary;
 - (BOOL)acceptedForNonWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3;
 - (BOOL)acceptedForNonWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 paymentApplicationStates:(id)arg4;
 - (BOOL)acceptedForWebPaymentWithSupportedNetworkIdentifiers:(id)arg1 merchantCapabilities:(unsigned long long)arg2 paymentMode:(long long)arg3 webService:(id)arg4;
@@ -87,6 +92,8 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToPaymentApplication:(id)arg1;
 - (id)protobuf;
+- (BOOL)supportsExpress;
+- (BOOL)supportsExpressForAutomaticPresentationTechnologyType:(long long)arg1;
 - (BOOL)supportsExpressMode:(id)arg1;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2;
 - (BOOL)supportsWebPaymentMode:(long long)arg1 withExclusionList:(id)arg2 clientOSVersion:(id)arg3;

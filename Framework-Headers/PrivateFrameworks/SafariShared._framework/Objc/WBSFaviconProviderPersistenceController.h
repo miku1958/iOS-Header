@@ -22,6 +22,8 @@
     CDUnknownBlockType _setUpCompletionHandler;
     NSObject<OS_dispatch_queue> *_internalQueue;
     long long _controllerState;
+    struct CGSize _preferredIconSize;
+    BOOL _isReadOnly;
     NSURL *_databaseURL;
     NSURL *_diskCacheURL;
 }
@@ -48,15 +50,17 @@
 - (void)iconInfoForIconURLString:(id)arg1 includingPrivateData:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)iconInfoForPageURLString:(id)arg1 includingPrivateData:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
-- (id)initWithPersistenceBaseURL:(id)arg1 databaseName:(id)arg2;
+- (id)initWithPersistenceBaseURL:(id)arg1 databaseName:(id)arg2 preferredIconSize:(struct CGSize)arg3 isReadOnly:(BOOL)arg4;
 - (void)linkPageURLString:(id)arg1 toIconURLString:(id)arg2 isPrivate:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)openAndCheckIntegrity:(BOOL)arg1 createIfNeeded:(BOOL)arg2 fallBackToMemoryStoreIfError:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)pageURLStringsPrefixedWithVariantsOfDomainString:(id)arg1 includingPrivateData:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)rejectedResourceInfoForPageURLString:(id)arg1 iconURLString:(id)arg2 includingPrivateData:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)removeAllIconsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeIconWithPageURLString:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeIconsWithURLStringsNotFoundIn:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)savePendingChangesBeforeTermination;
-- (void)setIconData:(id)arg1 forPageURLString:(id)arg2 iconURLString:(id)arg3 iconSize:(struct CGSize)arg4 isPrivate:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)setIconData:(id)arg1 forPageURLString:(id)arg2 iconURLString:(id)arg3 iconSize:(struct CGSize)arg4 hasGeneratedResolutions:(BOOL)arg5 isPrivate:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
+- (void)setIconIsRejectedResource:(BOOL)arg1 forPageURLString:(id)arg2 iconURLString:(id)arg3 isPrivate:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)sqliteStoreDidFailDatabaseIntegrityCheck:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)sqliteStoreDidFallBackToInMemoryStore:(id)arg1;
 
