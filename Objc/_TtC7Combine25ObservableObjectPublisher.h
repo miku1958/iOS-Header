@@ -10,7 +10,9 @@
 
 @interface _TtC7Combine25ObservableObjectPublisher : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *subject;
+    MISSING_TYPE *lock;
+    MISSING_TYPE *connections;
+    MISSING_TYPE *identifier;
 }
 
 @end
