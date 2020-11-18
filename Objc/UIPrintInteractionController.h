@@ -76,7 +76,6 @@
 - (void)_generatePrintPreview:(CDUnknownBlockType)arg1;
 - (id)_getChosenPaperFromDelegateForPaperList:(id)arg1;
 - (double)_getCutLengthFromDelegateForPaper:(id)arg1;
-- (id)_init;
 - (void)_manualPrintPage;
 - (id)_newPDFPreviewURLWithPath:(id)arg1 isContentManaged:(BOOL)arg2;
 - (struct CGContext *)_newSaveContext:(id)arg1 withMediaRect:(struct CGRect)arg2;

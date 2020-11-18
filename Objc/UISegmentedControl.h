@@ -19,6 +19,7 @@
     NSMutableArray *_segments;
     long long _selectedSegment;
     long long _highlightedSegment;
+    long long _selectionIndicatorSegment;
     UIView *_removedSegment;
     UISegment *_focusedSegment;
     long long _barStyle;
@@ -92,6 +93,7 @@
 - (double)_backgroundVerticalPositionAdjustmentForBarMetrics:(long long)arg1;
 - (id)_badgeValueForSegmentAtIndex:(unsigned long long)arg1;
 - (double)_barHeight;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_cancelDelayedFocusAction;
 - (void)_clearSelectedSegment;
@@ -116,7 +118,7 @@
 - (id)_preferredFocusEnvironmentsForFocusSystem:(id)arg1;
 - (void)_resetForAppearanceChange;
 - (id)_segmentAtIndex:(int)arg1;
-- (id)_segmentToHighlight:(BOOL *)arg1;
+- (long long)_segmentIndexToHighlight:(BOOL *)arg1;
 - (void)_selectFocusedSegment;
 - (void)_sendDelayedFocusActionIfNecessary;
 - (void)_setAppearanceIsTiled:(BOOL)arg1 leftCapWidth:(unsigned long long)arg2 rightCapWidth:(unsigned long long)arg3;
@@ -148,8 +150,9 @@
 - (void)_updateAxLongPressGestureRecognizer;
 - (void)_updateDividerImageForSegmentAtIndex:(unsigned long long)arg1;
 - (void)_updateSelectionIndicator;
-- (void)_updateSelectionToSegment:(id)arg1 highlight:(BOOL)arg2 shouldAnimate:(BOOL)arg3;
+- (void)_updateSelectionToSegment:(id)arg1 highlight:(BOOL)arg2 shouldAnimate:(BOOL)arg3 sameSegment:(BOOL)arg4;
 - (BOOL)_usesNewAnimations;
+- (id)_viewForLoweringBaselineLayoutAttribute:(int)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1 traitCollection:(id)arg2;
 - (void)addSegmentWithTitle:(id)arg1;

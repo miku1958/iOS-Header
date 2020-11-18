@@ -17,10 +17,12 @@ __attribute__((visibility("hidden")))
     BOOL interactivelyCancelled;
     BOOL _isLegacy;
     BOOL force;
+    BOOL _dontMerge;
 }
 
 @property (nonatomic) BOOL animated; // @synthesize animated;
 @property (readonly, nonatomic) BOOL canDismissWithScrollView;
+@property (nonatomic) BOOL dontMerge; // @synthesize dontMerge=_dontMerge;
 @property (nonatomic) double duration; // @synthesize duration;
 @property (nonatomic) unsigned long long extraOptions; // @synthesize extraOptions;
 @property (nonatomic) BOOL force; // @synthesize force;

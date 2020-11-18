@@ -96,5 +96,6 @@
 - (BOOL)_isInteractiveTextSelectionDisabled;
 - (struct CGRect)_lastRectForRange:(UITextRange *)arg1;
 - (void)_setInternalGestureRecognizers;
+- (BOOL)_shouldSuppressSelectionHandles;
 @end
 

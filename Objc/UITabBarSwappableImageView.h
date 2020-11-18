@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)setImage:(id)arg1;
 - (void)setLandscape:(BOOL)arg1;
 - (void)showAlternateImage:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

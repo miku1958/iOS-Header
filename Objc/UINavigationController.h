@@ -217,7 +217,7 @@
 - (CDStruct_1c6ce877)_calculateTopLayoutInfoForViewController:(id)arg1;
 - (void)_calculateTopViewFramesForExpandedLayoutWithViewController:(id)arg1 contentScrollView:(id)arg2 gettingNavBarFrame:(struct CGRect *)arg3 topPaletteFrame:(struct CGRect *)arg4;
 - (void)_calculateTopViewFramesForLayoutWithViewController:(id)arg1 contentScrollView:(id)arg2 navBarFrame:(struct CGRect *)arg3 topPaletteFrame:(struct CGRect *)arg4 topLayoutType:(long long)arg5;
-- (void)_calculateTopViewFramesForPushPopIncomingLayoutWithViewController:(id)arg1 contentScrollView:(id)arg2 gettingNavBarFrame:(struct CGRect *)arg3 topPaletteFrame:(struct CGRect *)arg4;
+- (void)_calculateTopViewFramesFromLayoutHeightsWithViewController:(id)arg1 contentScrollView:(id)arg2 preservingContentInset:(BOOL)arg3 respectFullExtension:(BOOL)arg4 gettingNavBarFrame:(struct CGRect *)arg5 topPaletteFrame:(struct CGRect *)arg6;
 - (BOOL)_canHostRefreshControlOwnedByScrollView:(id)arg1;
 - (BOOL)_canRestoreFocusAfterTransitionToRecalledItem:(id)arg1 inViewController:(id)arg2;
 - (BOOL)_canUpdateTopViewFramesToMatchScrollView;
@@ -291,7 +291,9 @@
 - (BOOL)_isNavigationBarEffectivelyVisible;
 - (BOOL)_isNavigationBarVisible;
 - (BOOL)_isPerformingLayoutToLayoutTransition;
+- (BOOL)_isPopping;
 - (BOOL)_isPresentationContextByDefault;
+- (BOOL)_isPushing;
 - (BOOL)_isPushingOrPopping;
 - (BOOL)_isPushingOrPoppingUsingLayoutToLayoutNavigationTransition;
 - (BOOL)_isSupportedInterfaceOrientation:(long long)arg1;
@@ -314,6 +316,7 @@
 - (id)_moreListTitle;
 - (id)_navControllerToCreateManagedSearchPaletteForNavController:(id)arg1;
 - (BOOL)_navbarIsAppearingInteractively;
+- (BOOL)_navigationBar:(id)arg1 getContentOffsetOfObservedScrollViewIfApplicable:(struct CGPoint *)arg2;
 - (void)_navigationBar:(id)arg1 itemEnabledAutoScrollTransition:(id)arg2;
 - (double)_navigationBar:(id)arg1 preferredHeightForTransitionToHeightRange:(CDStruct_39925896)arg2;
 - (void)_navigationBarChangedSize:(id)arg1;
@@ -399,6 +402,7 @@
 - (void)_setClipUnderlapWhileTransitioning:(BOOL)arg1;
 - (void)_setClipsToBounds:(BOOL)arg1;
 - (void)_setContentInset:(struct UIEdgeInsets)arg1;
+- (void)_setContentOverlayInsets:(struct UIEdgeInsets)arg1;
 - (void)_setCustomTransition:(BOOL)arg1;
 - (void)_setDefinesPresentationContextIfNecessaryForViewController:(id)arg1;
 - (void)_setIsWrappingDuringAdaptation:(BOOL)arg1;
@@ -482,6 +486,7 @@
 - (void)_updateSearchPaletteSettingsForTopViewController:(id)arg1;
 - (void)_updateToolbarItemsFromViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_updateTopViewFramesForViewController:(id)arg1;
+- (void)_updateTopViewFramesForViewController:(id)arg1 isCancelledTransition:(BOOL)arg2 isOrientationChange:(BOOL)arg3;
 - (void)_updateTopViewFramesToMatchScrollOffsetInViewController:(id)arg1 contentScrollView:(id)arg2 topLayoutType:(long long)arg3;
 - (BOOL)_useCrossFadeForGestureHiding;
 - (BOOL)_useCurrentStatusBarHeight;

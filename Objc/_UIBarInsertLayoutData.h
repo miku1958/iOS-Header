@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _collapsible;
     BOOL _prefersExpanded;
+    BOOL _ignoredForCollapsingBehaviors;
     BOOL _active;
     NSString *_identifier;
     double _minimumHeight;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isCollapsible) BOOL collapsible; // @synthesize collapsible=_collapsible;
 @property (readonly, nonatomic) double collapsingHeight; // @synthesize collapsingHeight=_collapsingHeight;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (nonatomic) BOOL ignoredForCollapsingBehaviors; // @synthesize ignoredForCollapsingBehaviors=_ignoredForCollapsingBehaviors;
 @property (readonly, nonatomic) double layoutMinimumHeight;
 @property (nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property (nonatomic) long long order; // @synthesize order=_order;

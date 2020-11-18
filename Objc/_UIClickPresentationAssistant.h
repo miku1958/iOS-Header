@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 {
     id<UIViewControllerContextTransitioning> _currentContext;
     UIViewPropertyAnimator *_presentationAnimator;
-    CDUnknownBlockType dismissalCompletion;
+    CDUnknownBlockType lifecycleCompletion;
     _UIClickPresentation *presentation;
     _UIPortalView *_presentationSourcePortalView;
     UITargetedPreview *_sourcePreview;
@@ -30,8 +30,8 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) CDUnknownBlockType dismissalCompletion; // @synthesize dismissalCompletion;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) CDUnknownBlockType lifecycleCompletion; // @synthesize lifecycleCompletion;
 @property (strong, nonatomic) _UIClickPresentation *presentation; // @synthesize presentation;
 @property (readonly, nonatomic) UIViewPropertyAnimator *presentationAnimator; // @synthesize presentationAnimator=_presentationAnimator;
 @property (strong, nonatomic) _UIPortalView *presentationSourcePortalView; // @synthesize presentationSourcePortalView=_presentationSourcePortalView;
@@ -60,7 +60,7 @@ __attribute__((visibility("hidden")))
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)dismissWithReason:(unsigned long long)arg1 alongsideActions:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithClickPresentation:(id)arg1;
-- (void)presentFromViewController:(id)arg1 sourcePreview:(id)arg2 dismissalCompletion:(CDUnknownBlockType)arg3;
+- (void)presentFromSourcePreview:(id)arg1 lifecycleCompletion:(CDUnknownBlockType)arg2;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (double)transitionDuration:(id)arg1;
 

@@ -37,6 +37,7 @@
 @property (weak, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 @property (readonly) Class superclass;
 
++ (double)bluetoothPaddingInset;
 + (double)cornerRadius;
 + (double)expandedItemSpacing;
 + (BOOL)hasCellularCapability;

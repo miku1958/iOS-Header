@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) NSArray *unstablePlacements; // @synthesize unstablePlacements=_unstablePlacements;
 
 + (id)activityItemDisplayIdentifier;
-+ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2;
++ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2 bluetoothPaddingInset:(double)arg3;
 - (void).cxx_destruct;
 
 @end

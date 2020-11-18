@@ -21,14 +21,18 @@
         unsigned int supportsBlockGeneration:1;
         unsigned int disconnectedFromAssetManager:1;
     } _assetFlags;
+    CUINamedLayerStack *_layerStack;
+    id _unpinObserver;
+    CDUnknownBlockType _rebuildStackImage;
     CDUnknownBlockType _creationBlock;
     NSString *_assetName;
-    CUINamedLayerStack *__layerStack;
 }
 
 @property (readonly, weak, nonatomic) _UIAssetManager *_assetManager; // @synthesize _assetManager;
 @property (readonly, nonatomic) UITraitCollection *_defaultTraitCollection;
-@property (strong, nonatomic) CUINamedLayerStack *_layerStack; // @synthesize _layerStack=__layerStack;
+@property (strong, nonatomic, setter=_setLayerStack:) CUINamedLayerStack *_layerStack; // @synthesize _layerStack;
+@property (copy, nonatomic, setter=_setRebuildStackImage:) CDUnknownBlockType _rebuildStackImage; // @synthesize _rebuildStackImage;
+@property (weak, nonatomic, setter=_setUnpinObserver:) id _unpinObserver; // @synthesize _unpinObserver;
 @property (copy, nonatomic) NSString *assetName; // @synthesize assetName=_assetName;
 @property (copy, nonatomic) CDUnknownBlockType creationBlock; // @synthesize creationBlock=_creationBlock;
 

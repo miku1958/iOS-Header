@@ -70,6 +70,8 @@
     BOOL __shouldHideArrow;
     BOOL _shouldDisableInteractionDuringTransitions;
     BOOL __ignoreBarButtonItemSiblings;
+    BOOL __softAssertWhenNoSourceViewOrBarButtonItemSpecified;
+    BOOL __allowsSourceViewInDifferentWindowThanInitialPresentationViewController;
     unsigned long long _permittedArrowDirections;
     unsigned long long _popoverArrowDirection;
     UIView *_sourceOverlayView;
@@ -80,6 +82,7 @@
     struct UIEdgeInsets _popoverLayoutMargins;
 }
 
+@property (nonatomic, setter=_setAllowsSourceViewInDifferentWindowThanInitialPresentationViewController:) BOOL _allowsSourceViewInDifferentWindowThanInitialPresentationViewController; // @synthesize _allowsSourceViewInDifferentWindowThanInitialPresentationViewController=__allowsSourceViewInDifferentWindowThanInitialPresentationViewController;
 @property (nonatomic, getter=_arrowOffset, setter=_setArrowOffset:) double _arrowOffset;
 @property (nonatomic, getter=_centersPopoverIfSourceViewNotSet, setter=_setCentersPopoverIfSourceViewNotSet:) BOOL _centersPopoverIfSourceViewNotSet; // @synthesize _centersPopoverIfSourceViewNotSet=__centersPopoverIfSourceViewNotSet;
 @property (nonatomic, setter=_setDimmingViewTopEdgeInset:) double _dimmingViewTopEdgeInset; // @synthesize _dimmingViewTopEdgeInset=__dimmingViewTopEdgeInset;
@@ -87,6 +90,7 @@
 @property (nonatomic, setter=_setIgnoresKeyboardNotifications:) BOOL _ignoresKeyboardNotifications; // @dynamic _ignoresKeyboardNotifications;
 @property (nonatomic, setter=_setPopoverBackgroundStyle:) long long _popoverBackgroundStyle;
 @property (nonatomic, getter=_shouldHideArrow, setter=_setShouldHideArrow:) BOOL _shouldHideArrow; // @synthesize _shouldHideArrow=__shouldHideArrow;
+@property (nonatomic, setter=_setSoftAssertWhenNoSourceViewOrBarButtonItemSpecified:) BOOL _softAssertWhenNoSourceViewOrBarButtonItemSpecified; // @synthesize _softAssertWhenNoSourceViewOrBarButtonItemSpecified=__softAssertWhenNoSourceViewOrBarButtonItemSpecified;
 @property (readonly, nonatomic) unsigned long long arrowDirection;
 @property (copy, nonatomic) UIColor *backgroundColor;
 @property (strong, nonatomic) UIBarButtonItem *barButtonItem; // @dynamic barButtonItem;
@@ -133,7 +137,6 @@
 - (struct CGRect)_calculateContainingFrame;
 - (struct CGPoint)_centerPointForScale:(double)arg1 frame:(struct CGRect)arg2 anchor:(struct CGPoint)arg3;
 - (void)_clearCachedPopoverContentSize;
-- (void)_commonPresentPopoverFromRect:(struct CGRect)arg1 inView:(id)arg2 permittedArrowDirections:(unsigned long long)arg3 animated:(BOOL)arg4;
 - (CDUnknownBlockType)_completionBlockForDismissalWhenNotifyingDelegate:(BOOL)arg1;
 - (struct CGSize)_currentPopoverContentSize;
 - (Class)_defaultChromeViewClass;
@@ -204,7 +207,7 @@
 - (void)_updateShadowFrame;
 - (void)_updateSourceOverlayViewConstraints;
 - (id)arrowBackgroundColor;
-- (void)containerViewDidLayoutSubviews;
+- (void)containerViewWillLayoutSubviews;
 - (void)dealloc;
 - (void)dimmingViewWasTapped:(id)arg1;
 - (void)dimmingViewWasTapped:(id)arg1 withDismissCompletion:(CDUnknownBlockType)arg2;

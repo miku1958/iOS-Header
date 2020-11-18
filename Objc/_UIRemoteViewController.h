@@ -113,7 +113,8 @@
 - (void)__showServiceForType:(long long)arg1 withContext:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
 - (void)__trampolineButtonPressData:(id)arg1 canceled:(BOOL)arg2;
 - (void)__updateDeferralPropertiesForScreen:(id)arg1;
-- (void)__viewServiceCompleteInteractiveSheetTransitionInHost:(BOOL)arg1 immediately:(BOOL)arg2 offset:(double)arg3 duration:(double)arg4 timingCurve:(id)arg5;
+- (void)__viewServiceCompleteInteractiveSheetTransitionInHost:(BOOL)arg1 offset:(double)arg2 duration:(double)arg3 timingCurve:(id)arg4;
+- (void)__viewServiceDidChangeKeyWindow:(BOOL)arg1;
 - (void)__viewServiceDidPromoteFirstResponder;
 - (void)__viewServiceDidRegisterScrollToTopView;
 - (void)__viewServiceDidUnregisterScrollToTopView;
@@ -160,6 +161,7 @@
 - (void)_noteWindowState:(BOOL)arg1;
 - (int)_preferredStatusBarVisibility;
 - (void)_prepareTouchDeliveryPolicy;
+- (void)_removeTextEffectsRemoteViews;
 - (BOOL)_requiresKeyboardWindowWhenFirstResponder;
 - (void)_restoreTextEffectsRemoteView;
 - (void)_screenDidConnect:(id)arg1;

@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
         unsigned int hasShadow:1;
         unsigned int needsToCalculateVibrantEffect:1;
     } _flags;
+    UIVibrancyEffect *_shadowViewEffect;
     UIVibrancyEffect *_defaultVibrancyEffect;
     NSArray *_backgroundEffects;
     UIColor *_backgroundColor;
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
     long long _backgroundImageContentMode;
     UIColor *_shadowColor;
     UIImage *_shadowImage;
+    UIVibrancyEffect *_shadowEffect;
 }
 
 @property (copy, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
@@ -35,8 +37,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasBackground;
 @property (readonly, nonatomic) BOOL hasShadow;
 @property (copy, nonatomic) UIColor *shadowColor; // @synthesize shadowColor=_shadowColor;
+@property (copy, nonatomic) UIVibrancyEffect *shadowEffect; // @synthesize shadowEffect=_shadowEffect;
 @property (strong, nonatomic) UIImage *shadowImage; // @synthesize shadowImage=_shadowImage;
 @property (readonly, nonatomic) UIColor *shadowViewBackgroundColor;
+@property (readonly, nonatomic) UIVibrancyEffect *shadowViewEffect; // @synthesize shadowViewEffect=_shadowViewEffect;
 @property (readonly, nonatomic) UIColor *shadowViewTintColor;
 
 + (id)decodeFromCoder:(id)arg1 prefix:(id)arg2;
@@ -48,6 +52,8 @@ __attribute__((visibility("hidden")))
 - (void)_updateShadowFlags;
 - (long long)behaviorForTransitioningTo:(id)arg1;
 - (BOOL)checkEqualTo:(id)arg1;
+- (void)configureWithDefaultShadow;
+- (void)configureWithoutShadow;
 - (void)describeInto:(id)arg1;
 - (void)encodeToCoder:(id)arg1 prefix:(id)arg2;
 - (long long)hashInto:(long long)arg1;

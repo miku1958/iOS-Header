@@ -79,7 +79,7 @@
 - (void)_cancelDrag;
 - (void)_cancelLift;
 - (long long)_dataOwnerOfDragFromView:(id)arg1;
-- (void)_endLift;
+- (void)_endLiftWithoutDragging;
 - (void)_finalizeLiftCancellation;
 - (void)_gestureRecognizerFailed:(id)arg1;
 - (void)_handoffSession:(id)arg1;

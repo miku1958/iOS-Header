@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (void)appendDescriptionTo:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)implementationReplacingTintColor:(id)arg1;
 - (id)initWithCompositingMode:(long long)arg1 compositingColor:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 

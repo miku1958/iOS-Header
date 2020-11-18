@@ -21,13 +21,15 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL automaticKeyboardFrameTrackingDisabled; // @synthesize automaticKeyboardFrameTrackingDisabled=_automaticKeyboardFrameTrackingDisabled;
 
++ (struct CGRect)_endFrameForNotification:(id)arg1 inView:(id)arg2;
++ (struct CGRect)_frameInBoundsForKeyboardFrame:(struct CGRect)arg1 inView:(id)arg2;
++ (BOOL)_shouldIgnoreFrameChangeNotification:(id)arg1 inView:(id)arg2;
 - (void).cxx_destruct;
 - (void)_createConstraints;
 - (struct CGRect)_frameInBoundsForKeyboardFrame:(struct CGRect)arg1;
 - (void)_keyboardChanged:(id)arg1;
 - (void)_matchInitialKeyboardFrame;
 - (void)_removeConstraints;
-- (BOOL)_shouldIgnoreFrameChangeNotification:(id)arg1;
 - (BOOL)_shouldOverrideAnimationForFrameChangeNotification:(id)arg1;
 - (void)_startObservingKeyboardNotificationsForScreen:(id)arg1;
 - (void)_stopObservingKeyboardNotifications;

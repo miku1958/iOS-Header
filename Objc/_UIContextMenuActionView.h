@@ -14,30 +14,36 @@ __attribute__((visibility("hidden")))
     BOOL _disabled;
     BOOL _destructive;
     UIStackView *_labelStackView;
-    UILabel *_titleLabel;
     UILabel *_subtitleLabel;
     UIImageView *_imageView;
     NSLayoutConstraint *_topToFirstBaseline;
     NSLayoutConstraint *_lastBaselineToBottom;
-    NSLayoutConstraint *_imageCenterXToTrailing;
-    NSLayoutConstraint *_labelStackViewTrailingToImageCenterX;
+    NSLayoutConstraint *_trailingViewCenterXToTrailing;
+    NSLayoutConstraint *_labelStackViewTrailingToTrailingViewCenterX;
+    NSLayoutConstraint *_nonSymbolImageWidth;
+    NSLayoutConstraint *_nonSymbolImageHeight;
+    UILabel *_titleLabel;
 }
 
 @property (nonatomic) BOOL destructive; // @synthesize destructive=_destructive;
 @property (nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
-@property (strong, nonatomic) NSLayoutConstraint *imageCenterXToTrailing; // @synthesize imageCenterXToTrailing=_imageCenterXToTrailing;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) UIStackView *labelStackView; // @synthesize labelStackView=_labelStackView;
-@property (strong, nonatomic) NSLayoutConstraint *labelStackViewTrailingToImageCenterX; // @synthesize labelStackViewTrailingToImageCenterX=_labelStackViewTrailingToImageCenterX;
+@property (strong, nonatomic) NSLayoutConstraint *labelStackViewTrailingToTrailingViewCenterX; // @synthesize labelStackViewTrailingToTrailingViewCenterX=_labelStackViewTrailingToTrailingViewCenterX;
 @property (strong, nonatomic) NSLayoutConstraint *lastBaselineToBottom; // @synthesize lastBaselineToBottom=_lastBaselineToBottom;
+@property (strong, nonatomic) NSLayoutConstraint *nonSymbolImageHeight; // @synthesize nonSymbolImageHeight=_nonSymbolImageHeight;
+@property (strong, nonatomic) NSLayoutConstraint *nonSymbolImageWidth; // @synthesize nonSymbolImageWidth=_nonSymbolImageWidth;
 @property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
-@property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
+@property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) NSLayoutConstraint *topToFirstBaseline; // @synthesize topToFirstBaseline=_topToFirstBaseline;
+@property (readonly, nonatomic) UIView *trailingView;
+@property (strong, nonatomic) NSLayoutConstraint *trailingViewCenterXToTrailing; // @synthesize trailingViewCenterXToTrailing=_trailingViewCenterXToTrailing;
 
 - (void).cxx_destruct;
 - (id)_colorReflectingActionStateForColor:(id)arg1;
 - (id)_imageTintColor;
 - (id)_imageViewForImage:(id)arg1;
+- (struct CGSize)_maxImageSize;
 - (id)_primaryTitleLabel;
 - (id)_subtitleLabel;
 - (id)_subtitleLabelFilterForCurrentTraits;

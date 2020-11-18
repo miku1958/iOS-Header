@@ -58,6 +58,7 @@
 - (id)backgroundTraitsForKeyplane:(id)arg1;
 - (id)biuKeyImageName;
 - (id)boldKeyImageName;
+- (Class)contentViewClassForPopupKey:(id)arg1;
 - (id)controlKeyBackgroundColorName;
 - (id)controlKeyForegroundColorName;
 - (id)controlKeyShadowColorName;
@@ -105,6 +106,7 @@
 - (id)passcodeKeyEdgeColorName;
 - (id)passcodeShiftedControlKeyTraits;
 - (id)pasteKeyImageName;
+- (BOOL)popupKeyUsesCustomKeyContentView:(id)arg1;
 - (id)rightArrowKeyImageName;
 - (void)scaleTraits:(id)arg1;
 - (void)setupLayoutSegments;

@@ -13,11 +13,12 @@ __attribute__((visibility("hidden")))
 {
     double _scale;
     double _size;
+    unsigned long long _options;
 }
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
-- (id)initWithSize:(double)arg1 scale:(double)arg2;
+- (id)initWithSize:(double)arg1 scale:(double)arg2 options:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCacheKey:(id)arg1;
 

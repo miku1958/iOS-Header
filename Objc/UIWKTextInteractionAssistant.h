@@ -45,6 +45,7 @@
 - (BOOL)containerIsBrowserView;
 - (BOOL)containerIsPlainStyleAtom;
 - (void)dealloc;
+- (void)didEndScrollingOverflow;
 - (void)hideTextStyleOptions;
 - (id)initWithView:(id)arg1;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect)arg2;
@@ -81,6 +82,7 @@
 - (void)updateSelectionWithPoint:(struct CGPoint)arg1;
 - (void)updateWithMagnifierTerminalPoint:(BOOL)arg1;
 - (BOOL)wantsLinkInteraction;
+- (void)willStartScrollingOverflow;
 
 @end
 

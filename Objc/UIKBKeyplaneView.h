@@ -57,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (BOOL)_canDrawContent;
+- (id)_existingVariantsKeyViewForKey:(id)arg1;
 - (void)_generateFactoryIfNeeded;
 - (void)_generateRenderingContextIfNeeded;
 - (BOOL)_shouldAllowKey:(id)arg1;
@@ -92,6 +93,7 @@ __attribute__((visibility("hidden")))
 - (void)purgeSubviews;
 - (void)removeFromSuperview;
 - (void)removeKeyFromDelayedDeactivationSet:(id)arg1;
+- (void)retestSelectedVariantIndexForKey:(id)arg1 atPoint:(struct CGPoint)arg2;
 - (void)scheduleDelayedDeactivation;
 - (void)setContentScaleFactor:(double)arg1;
 - (void)setState:(int)arg1 forKey:(id)arg2;

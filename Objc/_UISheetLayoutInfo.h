@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
         unsigned int depthLevel:1;
         unsigned int bottomAttached:1;
         unsigned int percentFullScreen:1;
+        unsigned int effectiveKeyboardFrame:1;
         unsigned int floatingUntransformedFrame:1;
         unsigned int bottomAttachedUntransformedFrame:1;
         unsigned int fullHeightUntransformedFrame:1;
@@ -99,6 +100,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *__mutableActiveDetentValues;
     NSMutableArray *__mutableActiveReversedDetentIndexes;
     struct CGSize __preferredSize;
+    struct CGRect __effectiveKeyboardFrame;
     struct CGRect __floatingUntransformedFrame;
     struct CGRect __bottomAttachedUntransformedFrame;
     struct CGRect __fullHeightUntransformedFrame;
@@ -137,6 +139,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setDismissSourceFrame:) struct CGRect _dismissSourceFrame; // @synthesize _dismissSourceFrame=__dismissSourceFrame;
 @property (nonatomic, getter=_isDragging, setter=_setDragging:) BOOL _dragging; // @synthesize _dragging=__dragging;
 @property (nonatomic, getter=_isDraggingAndDismissing, setter=_setDraggingAndDismissing:) BOOL _draggingAndDismissing; // @synthesize _draggingAndDismissing=__draggingAndDismissing;
+@property (readonly, nonatomic) struct CGRect _effectiveKeyboardFrame; // @synthesize _effectiveKeyboardFrame=__effectiveKeyboardFrame;
 @property (readonly, nonatomic) struct CGRect _floatingUntransformedFrame; // @synthesize _floatingUntransformedFrame=__floatingUntransformedFrame;
 @property (readonly, nonatomic) struct CGRect _fullHeightUntransformedFrame; // @synthesize _fullHeightUntransformedFrame=__fullHeightUntransformedFrame;
 @property (readonly, nonatomic) double _grabberAlpha; // @synthesize _grabberAlpha=__grabberAlpha;

@@ -73,6 +73,7 @@ __attribute__((visibility("hidden")))
     NSString *_fallbackDictationLanguage;
     unsigned long long _dictationSourceType;
     NSString *_currentKeyboardPrimaryLanguage;
+    unsigned long long _stateHandler;
     struct _NSRange _insertionRange;
 }
 
@@ -110,6 +111,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL selectionEndWasInitiallyAtParagraphBoundaryForAsyncDelegate; // @synthesize selectionEndWasInitiallyAtParagraphBoundaryForAsyncDelegate=_selectionEndWasInitiallyAtParagraphBoundaryForAsyncDelegate;
 @property (nonatomic) BOOL selectionStartWasInitiallyAtParagraphBoundaryForAsyncDelegate; // @synthesize selectionStartWasInitiallyAtParagraphBoundaryForAsyncDelegate=_selectionStartWasInitiallyAtParagraphBoundaryForAsyncDelegate;
 @property (copy) NSString *smartLanguageSelectionOverrideLanguage; // @synthesize smartLanguageSelectionOverrideLanguage=_smartLanguageSelectionOverrideLanguage;
+@property (nonatomic) unsigned long long stateHandler; // @synthesize stateHandler=_stateHandler;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *targetHypothesis; // @synthesize targetHypothesis=_targetHypothesis;
 @property (nonatomic) BOOL wantsAvailabilityMonitoringWhenAppActive; // @synthesize wantsAvailabilityMonitoringWhenAppActive=_wantsAvailabilityMonitoringWhenAppActive;
@@ -166,7 +168,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)usingTypeAndTalk;
 + (int)viewMode;
 + (id)whitelistedDictationMetadataKeys;
-- (BOOL)_allowsMicsInSearchFieldForLocales:(id)arg1;
+- (BOOL)_allowsMicsInSearchFieldForLanguageIdentifiers:(id)arg1;
 - (id)_assistantCompatibleLanguageCodeForInputMode:(id)arg1;
 - (void)_beginEnableDictationPrompt;
 - (void)_beginOfflineMetricsSession;
@@ -182,12 +184,14 @@ __attribute__((visibility("hidden")))
 - (void)_endOfflineMetricsSession;
 - (id)_getBestHypothesisRangeGivenHintRange:(id)arg1 inputDelegate:(id)arg2 hypothesisRange:(struct _NSRange *)arg3 documentTextInRange:(id *)arg4;
 - (struct _NSRange)_getRangeOfString:(id)arg1 inDocumentText:(id)arg2;
+- (void)_handleDataSharingSheetDecision;
 - (void)_handlePrivacySheetDismissal;
 - (id)_hypothesisRangeFromSelectionRange:(id)arg1 inputDelegate:(id)arg2;
 - (void)_markOfflineDictationInputMetricEvent;
-- (void)_presentOptInAlertForDictationInputMode;
+- (void)_presentAlertForDictationInputModeOfType:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)_presentDataSharingOptInAlertWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_presentOptInAlertWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_presentPrivacySheetWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_presentPrivacySheetForType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_rangeByExtendingRange:(id)arg1 backward:(long long)arg2 forward:(long long)arg3 inputDelegate:(id)arg4;
 - (void)_restartDictation;
 - (void)_runFinalizeOperation;
@@ -211,6 +215,7 @@ __attribute__((visibility("hidden")))
 - (void)completeStartConnectionForFileAtURL:(id)arg1 forInputModeIdentifier:(id)arg2;
 - (id)connectionForStatisticsLogging;
 - (BOOL)currentViewModeSupportsDictationMics;
+- (BOOL)dataSharingDecided;
 - (void)dealloc;
 - (CDUnknownBlockType)dictationBlockForToken:(id)arg1;
 - (id)dictationConnection;
@@ -238,6 +243,7 @@ __attribute__((visibility("hidden")))
 - (void)dictationPrivacySheetControllerDidFinish:(id)arg1;
 - (BOOL)dictationSearchFieldUIEnabled;
 - (BOOL)dictationSearchFieldUISupportsTraitCollection:(id)arg1;
+- (id)dictationUIState;
 - (void)didShowAlternatives:(id)arg1;
 - (BOOL)disabledDueToTelephonyActivity;
 - (void)dismissDictationView:(id)arg1;
@@ -266,7 +272,7 @@ __attribute__((visibility("hidden")))
 - (id)postfixTextForInputDelegate:(id)arg1;
 - (id)prefixTextForInputDelegate:(id)arg1;
 - (void)preheatIfNecessary;
-- (void)presentOptInAlertWithCompletion:(CDUnknownBlockType)arg1;
+- (void)presentAlertOfType:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)releaseConnection;
 - (void)releaseConnectionAfterDictationRequest;

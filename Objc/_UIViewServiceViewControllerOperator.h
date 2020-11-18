@@ -118,7 +118,7 @@ __attribute__((visibility("hidden")))
 - (id)_appearanceSource;
 - (BOOL)_canShowTextServices;
 - (double)_canvasSystemMinimumMargin;
-- (void)_completeInteractiveSheetTransitionInHost:(BOOL)arg1 immediately:(BOOL)arg2 offset:(double)arg3 duration:(double)arg4 timingCurve:(id)arg5;
+- (void)_completeInteractiveSheetTransitionInHost:(BOOL)arg1 offset:(double)arg2 duration:(double)arg3 timingCurve:(id)arg4;
 - (struct UIEdgeInsets)_customBasePresentationInsetsForView:(id)arg1;
 - (id)_dataFromPressesEvent:(id)arg1;
 - (void)_didBecomeContentViewControllerOfPopover:(id)arg1;
@@ -157,6 +157,7 @@ __attribute__((visibility("hidden")))
 - (void)_willBecomeContentViewControllerOfPopover:(id)arg1;
 - (void)_willResignContentViewControllerOfPopover:(id)arg1;
 - (id)_window;
+- (void)_windowDidBecomeKey:(id)arg1;
 - (void)_windowDidRegisterScrollToTopView;
 - (void)_windowDidUnregisterScrollToTopView;
 - (void)addDeputyRotationDelegate:(id)arg1;

@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (void)_addShortcut:(id)arg1;
 - (void)_beginSessionWithType:(long long)arg1 sender:(id)arg2;
 - (void)_define:(id)arg1;
-- (void)_removeDefinitionController;
 - (void)_removeShareController;
 - (void)_removeShortcutController;
 - (void)_share:(id)arg1;

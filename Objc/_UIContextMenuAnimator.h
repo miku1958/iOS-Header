@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *completions; // @synthesize completions=_completions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasAnyActions;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long preferredCommitStyle; // @synthesize preferredCommitStyle=_preferredCommitStyle;
 @property (readonly, nonatomic) UIViewController *previewViewController; // @synthesize previewViewController=_previewViewController;

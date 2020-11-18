@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/UIPopoverControllerDelegate-Protocol.h>
+#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSString, UIPopoverController, UIView, UIViewController;
+@class NSString, UIResponder, UIView, UIViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UITextServiceSession : NSObject <UIPopoverControllerDelegate>
+@interface _UITextServiceSession : NSObject <UIPopoverPresentationControllerDelegate>
 {
     long long _type;
     UIViewController *_modalViewController;
-    UIPopoverController *_popoverController;
     UIView *_contextView;
-    BOOL _isTextEffectsWindow;
+    UIResponder *_pinnedResponder;
     BOOL _dismissed;
     CDUnknownBlockType _dismissedHandler;
 }
@@ -29,7 +28,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)canShowTextServices;
-+ (BOOL)shouldPresentAsPopoverForServiceOfType:(long long)arg1 inView:(id)arg2;
++ (BOOL)shouldPresentServiceInSameWindowAsView:(id)arg1;
 + (id)showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 + (id)showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
 + (id)showServiceForType:(long long)arg1 withContext:(id)arg2;
@@ -40,7 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithType:(long long)arg1;
 - (BOOL)isDisplaying;
-- (void)popoverControllerDidDismissPopover:(id)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)sessionDidDismiss;
 - (long long)type;
 

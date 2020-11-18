@@ -38,6 +38,7 @@
     } _controllerFlags;
     BOOL _obscuresBackgroundDuringPresentation;
     BOOL _hidesNavigationBarDuringPresentation;
+    BOOL __tabBarHidden;
     BOOL __showResultsForEmptySearch;
     BOOL __shouldRespectPreferredContentSize;
     UIView *_resultsControllerViewContainer;
@@ -70,6 +71,7 @@
 @property (nonatomic, getter=_showsSearchResultsController, setter=_setShowsSearchResultsController:) BOOL _showsSearchResultsController;
 @property (strong, nonatomic) UIView *_systemInputMarginView; // @synthesize _systemInputMarginView=__systemInputMarginView;
 @property (readonly, nonatomic) UISystemInputViewController *_systemInputViewController;
+@property (nonatomic) BOOL _tabBarHidden; // @synthesize _tabBarHidden=__tabBarHidden;
 @property (nonatomic, getter=isActive) BOOL active;
 @property (nonatomic) BOOL automaticallyShowsCancelButton;
 @property (nonatomic) BOOL automaticallyShowsScopeBar;
@@ -176,6 +178,7 @@
 - (void)setModalPresentationStyle:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (double)transitionDuration:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;

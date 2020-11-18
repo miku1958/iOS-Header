@@ -49,6 +49,7 @@
     NSArray *_subviewCache;
     UIViewController *_viewDelegate;
     double _cachedScreenScale;
+    double _layoutEngineWidth;
     struct {
         unsigned int userInteractionDisabled:1;
         unsigned int implementsDrawRect:1;
@@ -141,6 +142,7 @@
         unsigned int needsTraitCollectionDidChangePropagation:1;
         unsigned int isRootOfTraitCollectionDidChangePropagation:1;
         unsigned int implementsTraitCollectionForChildEnvironment:1;
+        unsigned int implementsBaselineOffsetsAtSize:1;
         unsigned int coloredViewBounds:1;
         unsigned int coloredAlignmentRects:1;
         unsigned int preservesSuperviewMargins:4;
@@ -219,6 +221,7 @@
 @property (nonatomic, getter=_ancestorDefinesTintColor, setter=_setAncestorDefinesTintColor:) BOOL _ancestorDefinesTintColor;
 @property (nonatomic, getter=_ancestorIgnoresInvertColors, setter=_setAncestorIgnoresInvertColors:) BOOL _ancestorIgnoresInvertColors;
 @property (readonly, nonatomic) BOOL _areLayoutMarginsDirectional;
+@property (readonly, nonatomic) unsigned long long _axesForDerivingIntrinsicContentSizeFromLayoutSize;
 @property (readonly, nonatomic) UIView *_backdropMaskViewForColorTint; // @dynamic _backdropMaskViewForColorTint;
 @property (readonly, nonatomic) UIView *_backdropMaskViewForFilters; // @dynamic _backdropMaskViewForFilters;
 @property (readonly, nonatomic) UIView *_backdropMaskViewForGrayscaleTint; // @dynamic _backdropMaskViewForGrayscaleTint;
@@ -247,6 +250,7 @@
 @property (strong, nonatomic, setter=_setLastNotifiedTraitCollection:) UITraitCollection *_lastNotifiedTraitCollection; // @synthesize _lastNotifiedTraitCollection=__lastNotifiedTraitCollection;
 @property (copy, nonatomic, setter=_setLayoutDebuggingIdentifier:) NSString *_layoutDebuggingIdentifier;
 @property (strong, nonatomic, setter=_setLayoutEngine:) NSISEngine *_layoutEngine; // @synthesize _layoutEngine;
+@property (readonly, nonatomic) BOOL _layoutHeightDependsOnWidth;
 @property (nonatomic, setter=_setLayoutMarginsGuideIgnoresSystemMinimumMargins:) BOOL _layoutMarginsGuideIgnoresSystemMinimumMargins;
 @property (readonly, nonatomic) NSMapTable *_lfld_constraintsAffectingVariableValueChanges;
 @property (readonly, nonatomic) long long _lfld_count;
@@ -282,6 +286,7 @@
 @property (readonly, nonatomic) UIView *_ui_view;
 @property (nonatomic, getter=_userInterfaceIdiom, setter=_setUserInterfaceIdiom:) long long _userInterfaceIdiom;
 @property (nonatomic, setter=_setViewDelegateContentOverlayInsetsAreClean:) BOOL _viewDelegateContentOverlayInsetsAreClean;
+@property (readonly, nonatomic) BOOL _wantsConstraintBasedLayout;
 @property (nonatomic) BOOL accessibilityIgnoresInvertColors; // @dynamic accessibilityIgnoresInvertColors;
 @property (nonatomic) BOOL allowsGroupBlending;
 @property (nonatomic) BOOL allowsGroupOpacity;
@@ -673,6 +678,7 @@
 - (id)_backgroundColor;
 - (double)_baselineOffsetFromBottom;
 - (double)_baselineOffsetFromNearestEdgeForLayoutAttribute:(long long)arg1;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (id)_baselineViewForConstraint:(id)arg1 forFirstItem:(BOOL)arg2 withOffset:(double *)arg3;
 - (id)_basicAnimationWithKeyPath:(id)arg1;
 - (BOOL)_becomeFirstResponderWhenPossible;
@@ -923,6 +929,7 @@
 - (void)_invalidateAppearanceForSubviewsOfClass:(Class)arg1;
 - (void)_invalidateAppearanceForTraitCollection:(id)arg1;
 - (void)_invalidateAutoresizingConstraints;
+- (void)_invalidateBaselineConstraints;
 - (void)_invalidateEngineHostConstraints;
 - (void)_invalidateIntrinsicContentSizeNeedingLayout:(BOOL)arg1;
 - (void)_invalidateLayerContents;
@@ -985,6 +992,7 @@
 - (void)_layoutMarginsDidChangeFromOldMargins:(struct UIEdgeInsets)arg1;
 - (id)_layoutMarginsGuideIfExists;
 - (id)_layoutRect;
+- (struct CGSize)_layoutSizeThatFits:(struct CGSize)arg1 fixedAxes:(unsigned long long)arg2;
 - (id)_layoutVariablesWithAmbiguousValue;
 - (BOOL)_legacy_isEligibleForFocusInteraction;
 - (id)_legendEntryForDescriptionForLayout;
@@ -1006,6 +1014,7 @@
 - (void)_makeSubtreePerformSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3 copySublayers:(BOOL)arg4;
 - (void)_makeTemporaryInternalConstraintsWithEngine:(id)arg1 ignoreAutoresizingMaskConstraints:(BOOL)arg2 returningConstraintsForViewsNeedingSecondPass:(id *)arg3 currentTargetWidth:(double)arg4;
 - (void)_markClippingDetected;
+- (void)_measureViewWithSize:(struct CGSize)arg1 temporaryConstraints:(id)arg2 suspendingSystemConstraints:(BOOL)arg3 withOptimizedEngineBlock:(CDUnknownBlockType)arg4;
 - (void)_mergeConstraintsBrokenWhileUnsatisfiableConstraintsLoggingSuspendedToAncestor:(id)arg1;
 - (void)_monitoredView:(id)arg1 didMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
 - (void)_monitoredView:(id)arg1 willMoveFromSuperview:(id)arg2 toSuperview:(id)arg3;
@@ -1031,6 +1040,8 @@
 - (void)_nsis_center:(struct CGPoint *)arg1 bounds:(struct CGRect *)arg2 inEngine:(id)arg3 forLayoutGuide:(id)arg4;
 - (struct CGRect)_nsis_compatibleBoundsInEngine:(id)arg1;
 - (struct CGSize)_nsis_contentSize;
+- (struct CGRect)_nsis_layoutRectFromHostingViewInEngine:(id)arg1;
+- (struct CGSize)_nsis_layoutSizeInEngine:(id)arg1;
 - (struct CGPoint)_nsis_origin;
 - (void)_nsis_origin:(struct CGPoint *)arg1 bounds:(struct CGRect *)arg2 inEngine:(id)arg3;
 - (void)_observeScrollViewDidScroll:(id)arg1;
@@ -1141,6 +1152,7 @@
 - (struct UIEdgeInsets)_safeAreaInsetsInSuperview:(id)arg1;
 - (id)_safeAreaLayoutGuideIfExists;
 - (void)_scheduleFaultingInGuidesForConstraint:(id)arg1;
+- (void)_scheduleUpdateConstraintsPassAsEngineHostNeedingLayout:(BOOL)arg1;
 - (id)_screen;
 - (id)_scriptingInfo;
 - (id)_scrollViewWantingUpdateInConstraint:(id)arg1;
@@ -1179,6 +1191,7 @@
 - (void)_setFocusableContentMargins:(struct UIEdgeInsets)arg1;
 - (void)_setFrameForBackdropMaskViews:(struct CGRect)arg1;
 - (void)_setFrameForBackdropMaskViews:(struct CGRect)arg1 convertFrame:(BOOL)arg2;
+- (void)_setFrameWithAlignmentRect:(struct CGRect)arg1;
 - (void)_setHiddenForBackdropMaskViews:(BOOL)arg1;
 - (void)_setHiddenForReuse:(BOOL)arg1;
 - (void)_setHostsLayoutEngine:(BOOL)arg1;
@@ -1232,6 +1245,7 @@
 - (BOOL)_shouldEnclosedScrollViewFlashIndicators:(id)arg1;
 - (BOOL)_shouldIgnoreAutofillSave;
 - (BOOL)_shouldInheritScreenScaleAsContentScaleFactor;
+- (BOOL)_shouldInvalidateBaselineConstraintsForSize:(struct CGSize)arg1 oldSize:(struct CGSize)arg2;
 - (BOOL)_shouldNotifyGeometryObservers;
 - (BOOL)_shouldResignFirstResponderWithInteractionDisabled;
 - (BOOL)_shouldSkipNormalLayoutForSakeOfTemplateLayout;
@@ -1255,6 +1269,7 @@
 - (void)_subscribeToScrollNotificationsIfNecessary:(id)arg1;
 - (id)_subviewAtIndex:(long long)arg1;
 - (BOOL)_subviewWantsAutolayout;
+- (BOOL)_subviewsNeedAxisFlipping;
 - (id)_superDescription;
 - (BOOL)_supportsBecomeFirstResponderWhenPossible;
 - (BOOL)_supportsContentDimensionVariables;

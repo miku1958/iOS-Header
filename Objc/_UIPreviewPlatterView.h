@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIView.h>
 
-@class UITargetedPreview, UIViewFloatAnimatableProperty, _UICutoutShadowView, _UIPlatterSoftShadowView, _UIPlatterTransformView;
+@class UITargetedPreview, UIViewFloatAnimatableProperty, _UIPlatterSoftShadowView, _UIPlatterTransformView, _UIRoundedRectShadowView;
 
 __attribute__((visibility("hidden")))
 @interface _UIPreviewPlatterView : UIView
@@ -27,21 +27,29 @@ __attribute__((visibility("hidden")))
     UIView *_expandedClippingView;
     _UIPlatterTransformView *_expandedTransformView;
     _UIPlatterSoftShadowView *_pathShadowView;
-    _UICutoutShadowView *_rectangularShadowView;
+    _UIRoundedRectShadowView *_rectangularShadowView;
     UIViewFloatAnimatableProperty *_expansionProgress;
     UIViewFloatAnimatableProperty *_platterWidth;
     UIViewFloatAnimatableProperty *_platterHeight;
+    UIViewFloatAnimatableProperty *_collapsedContentWidth;
+    UIViewFloatAnimatableProperty *_collapsedContentHeight;
+    UIViewFloatAnimatableProperty *_expandedContentWidth;
+    UIViewFloatAnimatableProperty *_expandedContentHeight;
 }
 
 @property (nonatomic) BOOL allowsUserInteractionInExpandedPreview;
 @property (nonatomic) BOOL alwaysCompact; // @synthesize alwaysCompact=_alwaysCompact;
 @property (readonly, nonatomic) BOOL bothViewsAreLikelyOpaque;
 @property (strong, nonatomic) UIView *collapsedClippingView; // @synthesize collapsedClippingView=_collapsedClippingView;
+@property (strong, nonatomic) UIViewFloatAnimatableProperty *collapsedContentHeight; // @synthesize collapsedContentHeight=_collapsedContentHeight;
+@property (strong, nonatomic) UIViewFloatAnimatableProperty *collapsedContentWidth; // @synthesize collapsedContentWidth=_collapsedContentWidth;
 @property (strong, nonatomic) UITargetedPreview *collapsedPreview; // @synthesize collapsedPreview=_collapsedPreview;
 @property (strong, nonatomic) _UIPlatterTransformView *collapsedTransformView; // @synthesize collapsedTransformView=_collapsedTransformView;
 @property (nonatomic) BOOL contentSizeDidChange; // @synthesize contentSizeDidChange=_contentSizeDidChange;
 @property (nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
 @property (strong, nonatomic) UIView *expandedClippingView; // @synthesize expandedClippingView=_expandedClippingView;
+@property (strong, nonatomic) UIViewFloatAnimatableProperty *expandedContentHeight; // @synthesize expandedContentHeight=_expandedContentHeight;
+@property (strong, nonatomic) UIViewFloatAnimatableProperty *expandedContentWidth; // @synthesize expandedContentWidth=_expandedContentWidth;
 @property (strong, nonatomic) UITargetedPreview *expandedPreview; // @synthesize expandedPreview=_expandedPreview;
 @property (strong, nonatomic) _UIPlatterTransformView *expandedTransformView; // @synthesize expandedTransformView=_expandedTransformView;
 @property (strong, nonatomic) UIViewFloatAnimatableProperty *expansionProgress; // @synthesize expansionProgress=_expansionProgress;
@@ -53,20 +61,20 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIViewFloatAnimatableProperty *platterWidth; // @synthesize platterWidth=_platterWidth;
 @property (nonatomic) int preferredMorphingAxis; // @synthesize preferredMorphingAxis=_preferredMorphingAxis;
 @property (nonatomic) BOOL preventPreviewRasterization; // @synthesize preventPreviewRasterization=_preventPreviewRasterization;
-@property (strong, nonatomic) _UICutoutShadowView *rectangularShadowView; // @synthesize rectangularShadowView=_rectangularShadowView;
+@property (strong, nonatomic) _UIRoundedRectShadowView *rectangularShadowView; // @synthesize rectangularShadowView=_rectangularShadowView;
 @property (nonatomic) BOOL shouldMorphContents; // @synthesize shouldMorphContents=_shouldMorphContents;
 
 - (void).cxx_destruct;
 - (void)_installPreview:(id)arg1 inClippingView:(id)arg2 transformView:(id)arg3;
+- (void)_modelUpdates;
 - (double)_pathShadowAlphaForExpansionProgress:(double)arg1;
 - (void)_prepareAnimatableProperties;
 - (BOOL)_previewIsLikelyOpaque:(id)arg1;
 - (double)_rectangularShadowAlphaForExpansionProgress:(double)arg1;
-- (void)_setPresentationTransformForMorphingView:(id)arg1 toBounds:(struct CGRect)arg2 alongAxis:(int)arg3 elastic:(BOOL)arg4;
 - (void)_updateClippingViews;
 - (void)_updateCollapsedChrome;
 - (void)_updatePathShadow;
-- (void)_updateShadows;
+- (void)_updatePathShadowTransform;
 - (void)didTearOffForDrag;
 - (void)freezeExpandedPreview;
 - (id)initWithFrame:(struct CGRect)arg1;

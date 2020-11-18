@@ -7,18 +7,14 @@
 #import <UIKitCore/_UITextSimpleLinkInteraction.h>
 
 #import <UIKitCore/UIContextMenuInteractionDelegate-Protocol.h>
-#import <UIKitCore/_UIRotatingAlertControllerDelegate-Protocol.h>
 
-@class NSMapTable, NSString, UIContextMenuInteraction, UIWindow, _UIRotatingAlertController, _UITextInteractableItem;
+@class NSMapTable, NSString, UIContextMenuInteraction;
 
 __attribute__((visibility("hidden")))
-@interface _UITextMenuLinkInteraction : _UITextSimpleLinkInteraction <UIContextMenuInteractionDelegate, _UIRotatingAlertControllerDelegate>
+@interface _UITextMenuLinkInteraction : _UITextSimpleLinkInteraction <UIContextMenuInteractionDelegate>
 {
     UIContextMenuInteraction *_contextMenuInteraction;
     NSMapTable *_configurationItems;
-    _UITextInteractableItem *_actionSheetInteractableItem;
-    _UIRotatingAlertController *_actionSheetViewController;
-    UIWindow *_windowForActionSheetPresentation;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,20 +24,15 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_contextMenuInteraction:(id)arg1 overrideSuggestedActionsForConfiguration:(id)arg2;
+- (BOOL)_contextMenuInteraction:(id)arg1 shouldAttemptToPresentConfiguration:(id)arg2;
 - (id)_contextMenuInteraction:(id)arg1 styleForMenuWithConfiguration:(id)arg2;
-- (BOOL)_presentActionsForTextInteractableItem:(id)arg1;
-- (BOOL)_showActionSheetForTextInteractableItem:(id)arg1;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForDismissingMenuWithConfiguration:(id)arg2;
 - (id)contextMenuInteraction:(id)arg1 previewForHighlightingMenuWithConfiguration:(id)arg2;
 - (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)contextMenuInteraction:(id)arg1 willPerformPreviewActionForMenuWithConfiguration:(id)arg2 animator:(id)arg3;
 - (void)didMoveToView:(id)arg1;
-- (id)hostViewForSheet:(id)arg1;
 - (id)init;
-- (struct CGRect)initialPresentationRectInHostViewForSheet:(id)arg1;
-- (struct CGRect)presentationRectInHostViewForSheet:(id)arg1;
-- (void)sheet:(id)arg1 presentingViewControllerDidChange:(id)arg2;
 - (void)willMoveToView:(id)arg1;
 
 @end

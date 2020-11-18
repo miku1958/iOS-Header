@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldRetryFetchingAnimojiRecents;
     BOOL _useWideAnimojiCell;
     BOOL _hasShownAnimojiCell;
+    double _frameInset;
     CDUnknownBlockType _completionBlock;
     UIResponder<UIKBEmojiHitTestResponder> *_hitTestResponder;
 }
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldReverseLayoutDirection;
 - (BOOL)_shouldShowRecentlyUsedMedia;
 - (BOOL)_userHasSelectedSkinToneEmoji;
+- (BOOL)baseStringIsCoupleEmoji:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
@@ -77,7 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)setContentScaleFactor:(double)arg1;
 - (void)shouldDismissModalDisplayView:(id)arg1;
 - (BOOL)skinToneWasUsedForEmoji:(id)arg1;
-- (double)snappedXOffsetForOffset:(double)arg1;
+- (double)snappedXOffsetForOffset:(double)arg1 scrubbing:(BOOL)arg2;
 - (id)subTreeHitTest:(struct CGPoint)arg1;
 - (void)updateToCategory:(long long)arg1;
 - (long long)updateToCategoryWithOffsetPercentage:(double)arg1;

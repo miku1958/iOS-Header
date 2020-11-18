@@ -189,6 +189,7 @@ __attribute__((visibility("hidden")))
 - (void)registerPowerLogEvent:(BOOL)arg1;
 - (void)resetBackdropHeight;
 - (id)screenSnapshotOfView:(id)arg1;
+- (void)setDisableUpdateMaskForSecureTextEntry:(BOOL)arg1;
 - (void)setExclusiveTouch:(BOOL)arg1;
 - (void)setHostingNeedsLayout;
 - (void)setInputView:(id)arg1 accessoryView:(id)arg2 assistantView:(id)arg3;
@@ -215,7 +216,6 @@ __attribute__((visibility("hidden")))
 - (void)updateInputAssistantViewForInputViewSet:(id)arg1;
 - (void)updateKeyboardDockViewVisibility;
 - (void)updateKeyboardSizeClass;
-- (void)updateRootViewConstraintsForSceneFrame:(struct CGRect)arg1 bounds:(struct CGRect)arg2;
 - (void)updateSupportsDockViewController;
 - (void)updateToPlacement:(id)arg1 withNormalAnimationsAndNotifications:(BOOL)arg2;
 - (void)updateViewConstraints;

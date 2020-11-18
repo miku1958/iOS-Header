@@ -37,6 +37,7 @@
     long long _textInteractionMode;
     UITextInteraction *_externalInteractions;
     UITouch *_synthesizedTouchForLollipopForwarding;
+    BOOL _detaching;
 }
 
 @property (nonatomic) struct CGPoint autoscrollUntransformedExtentPoint;
@@ -99,7 +100,7 @@
 - (void)dealloc;
 - (void)detach;
 - (void)detach:(BOOL)arg1;
-- (void)didEndScrollingOverflow;
+- (void)didEndScrollingOrZooming;
 - (void)didEndSelectionInteraction;
 - (BOOL)didUseStashedSelection;
 - (void)endFloatingCursor;
@@ -143,6 +144,7 @@
 - (void)selectionChanged;
 - (Class)selectionInteractionClass;
 - (void)setFirstResponderIfNecessary;
+- (void)setFirstResponderIfNecessaryActivatingSelection:(BOOL)arg1;
 - (void)setGestureRecognizers;
 - (void)setSelectionWithPoint:(struct CGPoint)arg1;
 - (void)setSuppressSystemUI:(BOOL)arg1;
@@ -164,7 +166,7 @@
 - (BOOL)wantsLinkInteraction;
 - (void)willBeginFloatingCursor:(BOOL)arg1;
 - (void)willBeginSelectionInteraction;
-- (void)willStartScrollingOverflow;
+- (void)willStartScrollingOrZooming;
 
 @end
 

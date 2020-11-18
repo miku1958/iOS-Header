@@ -56,6 +56,7 @@
 @property (nonatomic, getter=_useLiveMasking, setter=_setUseLiveMasking:) BOOL useLiveMasking; // @synthesize useLiveMasking=_useLiveMasking;
 @property (nonatomic, getter=_useReducedTransparencyForContentEffects, setter=_setUseReducedTransparencyForContentEffects:) BOOL useReducedTransparencyForContentEffects;
 
++ (Class)_contentViewClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;

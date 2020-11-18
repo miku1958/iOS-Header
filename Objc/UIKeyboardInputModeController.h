@@ -89,6 +89,7 @@
 @property (strong) NSArray *userSelectableKeyboardInputModes; // @synthesize userSelectableKeyboardInputModes=_userSelectableKeyboardInputModes;
 
 + (id)ASCIICapableInputModeIdentifierForPreferredLanguages;
++ (id)disallowedDictationLanguagesForDeviceLanguage;
 + (id)hardwareInputModeAutomaticHardwareLayout;
 + (id)inputModeIdentifierForPreferredLanguages:(id)arg1 passingTest:(CDUnknownBlockType)arg2;
 + (id)sharedInputModeController;

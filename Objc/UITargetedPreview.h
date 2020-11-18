@@ -9,7 +9,7 @@
 #import <UIKitCore/NSCopying-Protocol.h>
 
 @class UIPreviewParameters, UIPreviewTarget, UIView;
-@protocol _UIPreviewProvider;
+@protocol NSCopying><NSObject, _UIPreviewProvider;
 
 @interface UITargetedPreview : NSObject <NSCopying>
 {
@@ -21,6 +21,7 @@
     UIPreviewParameters *_parameters;
     UIView *_viewToSnapshot;
     id<_UIPreviewProvider> __PreviewProvider;
+    id<NSCopying><NSObject> _internalIdentifer;
     UIView *_overridePositionTrackingView;
 }
 
@@ -28,6 +29,7 @@
 @property (nonatomic) BOOL _springboardPlatterStyle;
 @property (nonatomic, getter=_isDefaultPreview, setter=_setDefaultPreview:) BOOL defaultPreview; // @synthesize defaultPreview=_defaultPreview;
 @property (readonly, nonatomic) BOOL hasCustomTarget; // @synthesize hasCustomTarget=_hasCustomTarget;
+@property (copy, nonatomic) id<NSCopying><NSObject> internalIdentifer; // @synthesize internalIdentifer=_internalIdentifer;
 @property (strong, nonatomic, setter=_setOverridePositionTrackingView:) UIView *overridePositionTrackingView; // @synthesize overridePositionTrackingView=_overridePositionTrackingView;
 @property (readonly, copy, nonatomic) UIPreviewParameters *parameters; // @synthesize parameters=_parameters;
 @property (nonatomic, getter=_previewMode, setter=_setPreviewMode:) long long previewMode;
@@ -45,6 +47,7 @@
 - (id)initWithView:(id)arg1;
 - (id)initWithView:(id)arg1 parameters:(id)arg2;
 - (id)initWithView:(id)arg1 parameters:(id)arg2 target:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 - (void)platterAnimator_getBounds:(struct CGRect *)arg1 center:(struct CGPoint *)arg2 transform:(struct CGAffineTransform *)arg3 forContainer:(id)arg4;
 - (BOOL)platterAnimator_isValidPreview;
 - (id)retargetedPreviewWithTarget:(id)arg1;

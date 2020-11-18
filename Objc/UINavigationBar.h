@@ -70,6 +70,7 @@
 @property (nonatomic, setter=_setOverrideBackgroundExtension:) double _overrideBackgroundExtension; // @synthesize _overrideBackgroundExtension=__overrideBackgroundExtension;
 @property (nonatomic, setter=_setRequestedMaxBackButtonWidth:) double _requestedMaxBackButtonWidth; // @synthesize _requestedMaxBackButtonWidth;
 @property (nonatomic, setter=_setShadowAlpha:) double _shadowAlpha;
+@property (readonly, nonatomic) struct CGSize _sizeForRestoringFromCancelledTransition;
 @property (readonly, nonatomic) _UINavigationBarItemStack *_stack;
 @property (readonly, nonatomic) BOOL _startedAnimationTracking; // @synthesize _startedAnimationTracking=__startedAnimationTracking;
 @property (nonatomic, setter=_setTitleOpacity:) double _titleOpacity;
@@ -257,6 +258,7 @@
 - (BOOL)_suppressBackIndicator;
 - (BOOL)_titleAutoresizesToFit;
 - (id)_titleTextColor;
+- (void)_traitCollectionDidChangeOnSubtreeInternal:(const struct _UITraitCollectionChangeDescription *)arg1;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (int)_transitionForOldItems:(id)arg1 newItems:(id)arg2;
 - (void)_uikit_applyValueFromTraitStorage:(id)arg1 forKeyPath:(id)arg2;

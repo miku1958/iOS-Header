@@ -82,6 +82,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) UISlidingBarStateRequest *stateRequest;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIViewController *trailingViewController;
+@property (readonly, nonatomic) NSArray *uncachedPossibleStates;
 @property (strong, nonatomic) UILayoutContainerView *view; // @synthesize view=_view;
 
 + (id)_withDisabledAppearanceTransitions:(BOOL)arg1 forVisibleDescendantsOf:(id)arg2 perform:(CDUnknownBlockType)arg3;

@@ -8,14 +8,16 @@
 
 #import <UIKitCore/_UITextItemInteractionHandler-Protocol.h>
 
-@class NSString, UIView;
+@class NSString, UIAction, UIView;
 @protocol _UITextContent;
 
 __attribute__((visibility("hidden")))
 @interface _UITextDataDetectedLinkInteractionHandler : NSObject <_UITextItemInteractionHandler>
 {
     struct _NSRange _range;
+    struct CGRect _rect;
     UIView<_UITextContent> *_view;
+    UIAction *_defaultAction;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,14 +26,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_defaultAction;
 - (id)_defaultDDAction;
-- (id)actionSheetActionsForAlertController:(id)arg1;
 - (id)actionSheetTitle;
 - (id)contextMenuConfiguration;
 - (id)defaultAction;
-- (id)initWithRange:(struct _NSRange)arg1 textContentView:(id)arg2;
+- (id)initWithRange:(struct _NSRange)arg1 rect:(struct CGRect)arg2 inTextContentView:(id)arg3;
 - (unsigned long long)preferredContextMenuLayout;
-- (BOOL)shouldShowActionSheet;
 
 @end
 

@@ -91,6 +91,8 @@
 + (id)traitCollectionWithVerticalSizeClass:(long long)arg1;
 - (long long)_backgroundLevel;
 - (BOOL)_changedContentSizeCategoryFromTraitCollection:(id)arg1;
+- (BOOL)_changedContentSizeCategoryOrLegibilityWeightFromTraitCollection:(id)arg1;
+- (BOOL)_changedLegibilityWeightFromTraitCollection:(id)arg1;
 - (long long)_compare:(id)arg1;
 - (long long)_contrast;
 - (long long)_countOfIntersectionWithTraitCollection:(id)arg1;

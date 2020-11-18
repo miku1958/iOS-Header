@@ -418,6 +418,7 @@
 - (BOOL)_allowNestedNavigationControllers;
 - (BOOL)_allowsAutorotation;
 - (BOOL)_allowsFreezeLayoutForOrientationChangeOnDismissal;
+- (BOOL)_allowsUserInteractionWhenPreviewedInContextMenu;
 - (BOOL)_ancestorViewControllerIsInPopover;
 - (id)_ancestorViewControllerOfClass:(Class)arg1 allowModalParent:(BOOL)arg2;
 - (id)_animatorForOperation:(long long)arg1 fromViewController:(id)arg2 toViewController:(id)arg3;

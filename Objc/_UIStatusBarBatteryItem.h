@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _UIStatusBarBatteryItem : _UIStatusBarItem
 {
     BOOL _highlighted;
+    BOOL _disableAlwaysShowPercentageWhenExpanded;
     _UIBatteryView *_batteryView;
     _UIStaticBatteryView *_staticBatteryView;
     _UIStatusBarImageView *_chargingView;
@@ -20,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) _UIBatteryView *batteryView; // @synthesize batteryView=_batteryView;
 @property (strong, nonatomic) _UIStatusBarImageView *chargingView; // @synthesize chargingView=_chargingView;
+@property (nonatomic) BOOL disableAlwaysShowPercentageWhenExpanded; // @synthesize disableAlwaysShowPercentageWhenExpanded=_disableAlwaysShowPercentageWhenExpanded;
 @property (nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property (strong, nonatomic) _UIStatusBarStringView *percentView; // @synthesize percentView=_percentView;
 @property (strong, nonatomic) _UIStaticBatteryView *staticBatteryView; // @synthesize staticBatteryView=_staticBatteryView;

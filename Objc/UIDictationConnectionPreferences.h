@@ -19,12 +19,14 @@ __attribute__((visibility("hidden")))
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)afPreferencesChanged:(id)arg1;
+- (long long)dataSharingOptInStatus;
 - (BOOL)dictationIsEnabled;
 - (id)dictationSLSEnabledLanguages;
 - (BOOL)ignoreServerManualEndpointingThreshold;
 - (id)initSingleton;
 - (id)languageCode;
 - (id)manualEndpointingThreshold;
+- (BOOL)suppressDataSharingOptIn;
 - (BOOL)suppressDictationOptIn;
 
 @end

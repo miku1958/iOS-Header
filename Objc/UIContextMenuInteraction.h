@@ -19,17 +19,19 @@
     struct {
         BOOL previewForHighlighting;
         BOOL previewForDismissing;
-        BOOL willCommit;
-        BOOL willPresent;
-        BOOL didEnd;
         BOOL willPerformPreviewActionForMenuWithConfiguration;
         BOOL willDisplayMenuForConfiguration;
         BOOL willEndForConfiguration;
+        BOOL styleForMenuWithConfiguration;
+        BOOL accessoriesForMenuWithConfiguration;
         BOOL asyncConfigurationForMenuAtLocation;
         BOOL overrideSuggestedActions;
-        BOOL styleForMenuWithConfiguration;
         BOOL shouldAllowDragAfterDismiss;
         BOOL interactionEffectForTargetedPreview;
+        BOOL shouldAttemptToPresentConfiguration;
+        BOOL willCommit;
+        BOOL willPresent;
+        BOOL didEnd;
     } _delegateImplements;
     UIView *_view;
     id<UIContextMenuInteractionDelegate> _delegate;
@@ -56,7 +58,9 @@
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
++ (id)_deferredMenuPlaceholder;
 - (void).cxx_destruct;
+- (id)_accessoryViewsForPreviewPlatterPresentationController:(id)arg1 layoutAnchor:(CDStruct_6f807b77)arg2;
 - (unsigned long long)_actualLayoutForPreferredLayout:(unsigned long long)arg1 withConfiguration:(id)arg2;
 - (void)_clickPresentationInteraction:(id)arg1 dragSessionDidEndForItems:(id)arg2;
 - (id)_clickPresentationInteraction:(id)arg1 interactionEffectForTargetedPreview:(id)arg2;
@@ -67,8 +71,8 @@
 - (BOOL)_clickPresentationInteractionShouldAllowDragAfterDismiss:(id)arg1;
 - (BOOL)_clickPresentationInteractionShouldAllowRapidRestart:(id)arg1;
 - (id)_delegate_configurationForMenuAtLocation:(struct CGPoint)arg1;
+- (id)_delegate_contextMenuInteractionWillDisplayForConfiguration:(id)arg1;
 - (id)_delegate_contextMenuInteractionWillEndForConfiguration:(id)arg1 presentation:(id)arg2;
-- (id)_delegate_contextMenuInteractionWillPresentForConfiguration:(id)arg1;
 - (id)_delegate_previewForDismissingForConfiguration:(id)arg1;
 - (id)_delegate_previewForHighlightingForConfiguration:(id)arg1;
 - (void)_delegate_tappedPreviewForConfiguration:(id)arg1 withAnimator:(id)arg2;

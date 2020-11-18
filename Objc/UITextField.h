@@ -300,6 +300,7 @@
 - (id)_backgroundView;
 - (double)_baselineLayoutConstraintConstantForBounds:(struct CGRect)arg1;
 - (struct CGRect)_baselineLeftViewRectForBounds:(struct CGRect)arg1;
+- (CDStruct_c3b9c2ee)_baselineOffsetsAtSize:(struct CGSize)arg1;
 - (void)_becomeFirstResponder;
 - (long long)_blurEffectStyle;
 - (long long)_blurEffectStyleForAppearance;
@@ -341,6 +342,7 @@
 - (id)_dictationInterpretations;
 - (void)_didAttachFieldEditor;
 - (void)_didChangeSecureTextEntry;
+- (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (void)_didSetFont:(id)arg1;
 - (void)_didUpdateAfterDetachingFieldEditor;
 - (void)_disableClipToBoundsForBorderStyleNone;
@@ -474,6 +476,7 @@
 - (BOOL)_shouldObscureInput;
 - (BOOL)_shouldResignOnEditingDidEndOnExit;
 - (BOOL)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
+- (BOOL)_shouldSuppressSelectionHandles;
 - (BOOL)_shouldUnobscureTextWithContentCover;
 - (void)_showTextStyleOptions:(id)arg1;
 - (BOOL)_showsAtomBackground;

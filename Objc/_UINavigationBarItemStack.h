@@ -24,10 +24,12 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<_UINavigationItemChangeObserver> changeObserver; // @synthesize changeObserver=_changeObserver;
 @property (readonly, nonatomic) long long itemCount;
 @property (readonly, copy, nonatomic) NSArray *items;
+@property (readonly, nonatomic, getter=isPopping) BOOL popping;
 @property (readonly, nonatomic) _UINavigationBarItemStackEntry *previousBackEntry;
 @property (readonly, nonatomic) UINavigationItem *previousBackItem;
 @property (readonly, nonatomic) _UINavigationBarItemStackEntry *previousTopEntry;
 @property (readonly, nonatomic) UINavigationItem *previousTopItem;
+@property (readonly, nonatomic, getter=isPushing) BOOL pushing;
 @property (readonly, nonatomic, getter=isPushingOrPopping) BOOL pushingOrPopping;
 @property (readonly, nonatomic) int state; // @synthesize state=_state;
 @property (readonly, nonatomic) _UINavigationBarItemStackEntry *topEntry;

@@ -15,7 +15,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL _disableSearchBarContainerViewOrdering; // @synthesize _disableSearchBarContainerViewOrdering=__disableSearchBarContainerViewOrdering;
 
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
+- (void)_ensureCarPlayLimitedUIIsOnTop;
 - (void)_ensureContainerIsOnTop;
+- (void)_ensureViewOfClassIsOnTop:(Class)arg1;
 - (void)bringSubviewToFront:(id)arg1;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)sendSubviewToBack:(id)arg1;
