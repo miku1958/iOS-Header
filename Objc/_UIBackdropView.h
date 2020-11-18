@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class CAFilter, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, UIColor, UIImage, _UIBackdropEffectView, _UIBackdropViewSettings;
 @protocol _UIBackdropViewGraphicsQualityChangeDelegate, _UIBackdropViewObserver;
@@ -31,7 +31,7 @@
     BOOL _simulatesMasks;
     BOOL _backdropVisibilitySetOnce;
     BOOL _blurRadiusSetOnce;
-    BOOL _disablesOccludedBackdropBlurs;
+    BOOL _transitioningBetweenMaterialsRequiringRasterizationAndAlphaHack;
     BOOL __backdropVisible;
     long long _style;
     NSHashTable *_observers;
@@ -126,7 +126,6 @@
 @property (strong, nonatomic) UIView *darkeningTintMaskViewContainer; // @synthesize darkeningTintMaskViewContainer=_darkeningTintMaskViewContainer;
 @property (strong, nonatomic) NSMutableDictionary *darkeningTintMaskViewMap; // @synthesize darkeningTintMaskViewMap=_darkeningTintMaskViewMap;
 @property (strong, nonatomic) UIView *darkeningTintView; // @synthesize darkeningTintView=_darkeningTintView;
-@property (nonatomic) BOOL disablesOccludedBackdropBlurs; // @synthesize disablesOccludedBackdropBlurs=_disablesOccludedBackdropBlurs;
 @property (readonly, nonatomic) UIView *effectView; // @dynamic effectView;
 @property (strong, nonatomic) UIImage *filterMaskImage; // @synthesize filterMaskImage=_filterMaskImage;
 @property (strong, nonatomic) UIView *filterMaskViewContainer; // @synthesize filterMaskViewContainer=_filterMaskViewContainer;
@@ -153,6 +152,7 @@
 @property (nonatomic) BOOL simulatesMasks; // @synthesize simulatesMasks=_simulatesMasks;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) CAFilter *tintFilter; // @synthesize tintFilter=_tintFilter;
+@property (nonatomic) BOOL transitioningBetweenMaterialsRequiringRasterizationAndAlphaHack; // @synthesize transitioningBetweenMaterialsRequiringRasterizationAndAlphaHack=_transitioningBetweenMaterialsRequiringRasterizationAndAlphaHack;
 @property (nonatomic) BOOL updateMaskViewsForViewReentrancyGuard; // @synthesize updateMaskViewsForViewReentrancyGuard=_updateMaskViewsForViewReentrancyGuard;
 
 + (void)adjustGraphicsQualityForAccessibilityIfNeeded:(id)arg1;
@@ -192,6 +192,7 @@
 - (void)didCallRenderInContextOnBackdropViewLayer;
 - (void)didMoveToSuperview;
 - (void)didMoveToWindow;
+- (BOOL)disablesOccludedBackdropBlurs;
 - (void)ensureProperSubviewOrdering;
 - (id)filters;
 - (id)init;
@@ -215,6 +216,7 @@
 - (void)setBlurQuality:(id)arg1;
 - (void)setBlurRadius:(double)arg1;
 - (void)setColorOffsetFilterForSettings:(id)arg1;
+- (void)setDisablesOccludedBackdropBlurs:(BOOL)arg1;
 - (void)setMaskImage:(id)arg1 onLayer:(id)arg2;
 - (void)setSaturationDeltaFactor:(double)arg1;
 - (void)setShouldRasterizeEffectsView:(BOOL)arg1;

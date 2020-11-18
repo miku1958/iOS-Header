@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPopoverController.h>
+#import <UIKitCore/UIPopoverController.h>
 
 @protocol _UIViewServiceDummyPopoverControllerDelegate;
 

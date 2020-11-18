@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIActionSheetPresentationControllerDelegate-Protocol.h>
-#import <UIKit/_UISharingPublicController-Protocol.h>
+#import <UIKitCore/UIActionSheetPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/_UISharingPublicController-Protocol.h>
 
 @class CKContainer, CKShare, NSDictionary, NSObject, NSString, _UIResilientRemoteViewContainerViewController, _UIShareInvitationRemoteViewController;
 @protocol OS_dispatch_semaphore, UICloudSharingControllerDelegate, _UICloudSharingControllerDelegate_Internal;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewDropDelegate-Protocol.h>
+#import <UIKitCore/UITableViewDropDelegate-Protocol.h>
 
 @class NSIndexPath, UITableView;
 @protocol UIDropSession;

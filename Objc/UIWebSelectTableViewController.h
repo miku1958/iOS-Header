@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
-#import <UIKit/UIKeyInput-Protocol.h>
+#import <UIKitCore/UIKeyInput-Protocol.h>
 
-@class DOMHTMLSelectElement, NSArray, NSString, UIWebSelectPopover;
+@class DOMHTMLSelectElement, NSArray, NSString, UITextInputPasswordRules, UIWebSelectPopover;
 
 __attribute__((visibility("hidden")))
 @interface UIWebSelectTableViewController : UITableViewController <UIKeyInput>
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long keyboardAppearance;
 @property (nonatomic) long long keyboardType;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (nonatomic) long long smartDashesType;

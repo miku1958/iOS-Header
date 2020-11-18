@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/CAAnimationDelegate-Protocol.h>
+#import <UIKitCore/CAAnimationDelegate-Protocol.h>
 
 @class NSArray, NSAttributedString, NSString;
 
 @interface _UIExpandingGlyphsView : UIView <CAAnimationDelegate>
 {
     BOOL _expandsFromLeftToRight;
+    BOOL _fadesOut;
     int _remainingAnimationCount;
     NSAttributedString *_attributedString;
     double _baselineOffset;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL expandsFromLeftToRight; // @synthesize expandsFromLeftToRight=_expandsFromLeftToRight;
+@property (nonatomic) BOOL fadesOut; // @synthesize fadesOut=_fadesOut;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *imageViews; // @synthesize imageViews=_imageViews;
 @property (nonatomic) struct CGSize intrinsicSize; // @synthesize intrinsicSize=_intrinsicSize;
@@ -36,6 +38,7 @@
 - (void).cxx_destruct;
 - (void)animateCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

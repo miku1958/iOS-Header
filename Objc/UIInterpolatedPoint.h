@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIVectorOperatable-Protocol.h>
+#import <UIKitCore/UIVectorOperatable-Protocol.h>
 
 @class NSString;
 

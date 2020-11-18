@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UILabel.h>
+#import <UIKitCore/UILabel.h>
 
 @class UIColor, UITabBarButton, _UITabBarItemAppearanceStorage;
 
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (id)_titleTextAttributesForState:(unsigned long long)arg1;
 - (void)_updateForFontChangeWithIdiom:(long long)arg1;
 - (void)_updateLabelsVibrancy;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (void)sizeToFitBounds:(struct CGRect)arg1;

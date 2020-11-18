@@ -6,7 +6,7 @@
 
 #import <Foundation/NSObservationSource.h>
 
-#import <UIKit/NSObserver-Protocol.h>
+#import <UIKitCore/NSObserver-Protocol.h>
 
 @class CADisplayLink, NSObservation, NSSet, NSString, UIView, _UITouchesObservingGestureRecognizer;
 

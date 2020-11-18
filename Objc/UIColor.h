@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSItemProviderReading-Protocol.h>
-#import <UIKit/NSItemProviderWriting-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
-#import <UIKit/UIItemProviderReading-Protocol.h>
-#import <UIKit/UIItemProviderWriting-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSItemProviderReading-Protocol.h>
+#import <UIKitCore/NSItemProviderWriting-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
+#import <UIKitCore/UIItemProviderReading-Protocol.h>
+#import <UIKitCore/UIItemProviderWriting-Protocol.h>
 
 @class CIColor, NSArray, NSString;
 
@@ -35,6 +35,7 @@
 @property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 @property (readonly, copy, nonatomic) NSArray *writableTypeIdentifiersForItemProvider;
 
++ (id)__darkSystemColorForColor:(id)arg1;
 + (id)__halfTransparentBlackColor;
 + (id)__halfTransparentWhiteColor;
 + (id)_accessibilityButtonShapesBackgroundColorOnDark;
@@ -43,6 +44,7 @@
 + (id)_accessibilityButtonShapesNoBlendModeBackgroundColorOnDark;
 + (id)_accessibilityButtonShapesNoBlendModeBackgroundColorOnLight;
 + (id)_accessibilityDarkenedColorForColor:(id)arg1;
++ (id)_accessibilityLightenedColorForColor:(id)arg1;
 + (id)_alternateSystemInteractionTintColor;
 + (id)_barHairlineShadowColor;
 + (id)_barStyleBlackHairlineShadowColor;
@@ -123,22 +125,43 @@
 + (id)selectionGrabberColor;
 + (id)selectionHighlightColor;
 + (BOOL)supportsSecureCoding;
++ (id)systemBlackColor;
 + (id)systemBlueColor;
 + (id)systemDarkBlueColor;
++ (id)systemDarkExtraLightGrayColor;
++ (id)systemDarkExtraLightGrayTintColor;
++ (id)systemDarkGrayColor;
++ (id)systemDarkGrayTintColor;
 + (id)systemDarkGreenColor;
++ (id)systemDarkLightGrayColor;
++ (id)systemDarkLightGrayTintColor;
++ (id)systemDarkLightMidGrayColor;
++ (id)systemDarkLightMidGrayTintColor;
++ (id)systemDarkMidGrayColor;
++ (id)systemDarkMidGrayTintColor;
 + (id)systemDarkOrangeColor;
 + (id)systemDarkPinkColor;
++ (id)systemDarkPurpleColor;
 + (id)systemDarkRedColor;
 + (id)systemDarkTealColor;
 + (id)systemDarkYellowColor;
++ (id)systemExtraLightGrayColor;
++ (id)systemExtraLightGrayTintColor;
 + (id)systemGrayColor;
++ (id)systemGrayTintColor;
 + (id)systemGreenColor;
++ (id)systemLightGrayColor;
++ (id)systemLightGrayTintColor;
++ (id)systemLightMidGrayColor;
++ (id)systemLightMidGrayTintColor;
 + (id)systemMidGrayColor;
++ (id)systemMidGrayTintColor;
 + (id)systemOrangeColor;
 + (id)systemPinkColor;
 + (id)systemPurpleColor;
 + (id)systemRedColor;
 + (id)systemTealColor;
++ (id)systemWhiteColor;
 + (id)systemYellowColor;
 + (id)tableBackgroundColor;
 + (id)tableCellBackgroundColor;

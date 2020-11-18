@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <UIKitCore/UIActivity.h>
 
-#import <UIKit/UIActivityExtensionItemDataSource-Protocol.h>
-#import <UIKit/UIActivityExtensionItemDataTarget-Protocol.h>
+#import <UIKitCore/UIActivityExtensionItemDataSource-Protocol.h>
+#import <UIKitCore/UIActivityExtensionItemDataTarget-Protocol.h>
 
-@class NSDate, NSExtension, NSExtensionItem, NSString, UIImage, UIViewController, _UIActivityBundleHelper;
+@class NSDate, NSExtension, NSExtensionItem, NSString, UIViewController, _UIActivityBundleHelper;
 
 @interface UIApplicationExtensionActivity : UIActivity <UIActivityExtensionItemDataSource, UIActivityExtensionItemDataTarget>
 {
@@ -20,9 +20,6 @@
     UIViewController *_presenterViewController;
     CDUnknownBlockType _presenterCompletion;
     _UIActivityBundleHelper *_activityBundleHelper;
-    NSString *_localizedExtensionBundleName;
-    UIImage *_renderedActivityImage;
-    UIImage *_renderedActivitySettingsImage;
     CDUnknownBlockType _extensionRequestCleanupCompletion;
     NSDate *_installationDate;
 }
@@ -37,11 +34,8 @@
 @property (strong, nonatomic) UIViewController *extensionViewController; // @synthesize extensionViewController=_extensionViewController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSDate *installationDate; // @synthesize installationDate=_installationDate;
-@property (copy, nonatomic) NSString *localizedExtensionBundleName; // @synthesize localizedExtensionBundleName=_localizedExtensionBundleName;
 @property (copy, nonatomic) CDUnknownBlockType presenterCompletion; // @synthesize presenterCompletion=_presenterCompletion;
 @property (weak, nonatomic) UIViewController *presenterViewController; // @synthesize presenterViewController=_presenterViewController;
-@property (strong, nonatomic) UIImage *renderedActivityImage; // @synthesize renderedActivityImage=_renderedActivityImage;
-@property (strong, nonatomic) UIImage *renderedActivitySettingsImage; // @synthesize renderedActivitySettingsImage=_renderedActivitySettingsImage;
 @property (readonly) Class superclass;
 
 + (id)_activityExtensionItemsForActivityItemValues:(id)arg1 extensionItemDataRequest:(id)arg2;

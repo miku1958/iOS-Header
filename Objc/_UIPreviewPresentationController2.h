@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPreviewPresentationController.h>
+#import <UIKitCore/UIPreviewPresentationController.h>
 
 @class UIViewPropertyAnimator, _UIPreviewPresentationPlatterView;
 @protocol UIViewControllerPreviewing_Internal, _UIPreviewInteractionHighlighting;

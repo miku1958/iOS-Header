@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString;
 
@@ -13,11 +13,17 @@ __attribute__((visibility("hidden")))
 {
     int _alternativeSelectionCount;
     int _characterModificationCount;
+    int _characterInsertionCount;
+    int _characterDeletionCount;
+    int _characterSubstitutionCount;
     NSString *_correctedText;
 }
 
 @property (nonatomic) int alternativeSelectionCount; // @synthesize alternativeSelectionCount=_alternativeSelectionCount;
+@property (nonatomic) int characterDeletionCount; // @synthesize characterDeletionCount=_characterDeletionCount;
+@property (nonatomic) int characterInsertionCount; // @synthesize characterInsertionCount=_characterInsertionCount;
 @property (nonatomic) int characterModificationCount; // @synthesize characterModificationCount=_characterModificationCount;
+@property (nonatomic) int characterSubstitutionCount; // @synthesize characterSubstitutionCount=_characterSubstitutionCount;
 @property (copy, nonatomic) NSString *correctedText; // @synthesize correctedText=_correctedText;
 
 - (void).cxx_destruct;

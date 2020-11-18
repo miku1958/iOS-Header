@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIRemoteViewController.h>
+#import <UIKitCore/_UIRemoteViewController.h>
 
-#import <UIKit/_UIScreenRoutePickerRemoteViewControllerHost-Protocol.h>
+#import <UIKitCore/_UIScreenRoutePickerRemoteViewControllerHost-Protocol.h>
 
 @class NSExtension, NSString, _UIScreenRoutePickerViewController;
 @protocol NSCopying><NSObject;

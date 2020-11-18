@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/_UIQueuingScrollViewDataSource-Protocol.h>
-#import <UIKit/_UIQueuingScrollViewDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIQueuingScrollViewDataSource-Protocol.h>
+#import <UIKitCore/_UIQueuingScrollViewDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSHashTable, NSMutableArray, NSMutableDictionary, NSString, UIPanGestureRecognizer, UITapGestureRecognizer, _UIPageCurl, _UIPageViewControllerContentView, _UIQueuingScrollView;
 @protocol UIPageViewControllerDataSource, UIPageViewControllerDelegate;

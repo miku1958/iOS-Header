@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UICanvasLifecycleMonitor.h>
+#import <UIKitCore/_UICanvasLifecycleMonitor.h>
 
 __attribute__((visibility("hidden")))
 @interface __UICanvasLifecycleMonitor_Compatability : _UICanvasLifecycleMonitor

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardInputMode.h>
+#import <UIKitCore/UISpecializedInputMode.h>
 
-@class UITouch;
+@class UIKeyboardInputMode, UITouch;
 
-@interface UIDictationInputMode : UIKeyboardInputMode
+@interface UIDictationInputMode : UISpecializedInputMode
 {
     UITouch *_triggeringTouch;
     UIKeyboardInputMode *_currentInputModeForDictation;
@@ -16,10 +16,11 @@
 
 @property (strong, nonatomic) UIKeyboardInputMode *currentInputModeForDictation; // @synthesize currentInputModeForDictation=_currentInputModeForDictation;
 @property (strong, nonatomic) UITouch *triggeringTouch; // @synthesize triggeringTouch=_triggeringTouch;
-@property (readonly, nonatomic) Class viewControllerClass;
 
 + (BOOL)currentInputModeSupportsDictation;
 - (void)dealloc;
+- (BOOL)includeBarHeight;
+- (Class)viewControllerClass;
 
 @end
 

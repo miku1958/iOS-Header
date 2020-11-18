@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-#import <UIKit/UITextFieldDelegate-Protocol.h>
+#import <UIKitCore/UITextFieldDelegate-Protocol.h>
 
 @class NSString, UIImageView, UILabel, UIPasscodeField, UITextField;
 

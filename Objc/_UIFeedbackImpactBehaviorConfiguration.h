@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIImpactFeedbackGeneratorConfiguration.h>
+#import <UIKitCore/_UIImpactFeedbackGeneratorConfiguration.h>
 
 @interface _UIFeedbackImpactBehaviorConfiguration : _UIImpactFeedbackGeneratorConfiguration
 {

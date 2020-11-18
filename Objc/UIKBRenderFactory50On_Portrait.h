@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory10Key.h>
+#import <UIKitCore/UIKBRenderFactory10Key_Round.h>
 
 __attribute__((visibility("hidden")))
-@interface UIKBRenderFactory50On_Portrait : UIKBRenderFactory10Key
+@interface UIKBRenderFactory50On_Portrait : UIKBRenderFactory10Key_Round
 {
 }
 
@@ -15,15 +15,18 @@ __attribute__((visibility("hidden")))
 - (id)_traitsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (double)controlColumnWidthFactor;
 - (double)deleteKeyFontSize;
+- (unsigned long long)edgesWithInsetsForKey:(id)arg1 onKeyplane:(id)arg2;
 - (double)keyCornerRadius;
 - (double)keyplaneSwitchKeyFontSize;
 - (id)lightKeycapsFontName;
 - (id)messagesWriteboardKeyImageName;
 - (double)returnKeyFontSize;
+- (int)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
 - (void)setupLayoutSegments;
 - (BOOL)shouldShowBottomRowEdge;
 - (BOOL)shouldShowTopRowEdge;
 - (double)spaceKeyFontSize;
+- (struct UIEdgeInsets)symbolFrameInsets;
 - (id)thinKeycapsFontName;
 
 @end

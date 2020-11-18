@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFormSheetPresentationController.h>
+#import <UIKitCore/_UIFormSheetPresentationController.h>
 
 @interface _UIPageSheetPresentationController : _UIFormSheetPresentationController
 {

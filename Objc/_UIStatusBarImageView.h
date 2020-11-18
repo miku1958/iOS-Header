@@ -4,24 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKitCore/UIImageView.h>
 
-#import <UIKit/_UIStatusBarDisplayable-Protocol.h>
+#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
 
 @class NSString, UIAccessibilityHUDItem, UIImage;
 
 @interface _UIStatusBarImageView : UIImageView <_UIStatusBarDisplayable>
 {
     BOOL _useDisabledAppearanceForAccessibilityHUD;
+    double _iconScale;
     UIImage *_accessibilityHUDImage;
 }
 
 @property (strong, nonatomic) UIImage *accessibilityHUDImage; // @synthesize accessibilityHUDImage=_accessibilityHUDImage;
 @property (readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
-@property (readonly, nonatomic) double baselineOffset;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double iconScale; // @synthesize iconScale=_iconScale;
+@property (readonly, nonatomic) long long overriddenVerticalAlignment;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useDisabledAppearanceForAccessibilityHUD; // @synthesize useDisabledAppearanceForAccessibilityHUD=_useDisabledAppearanceForAccessibilityHUD;
 @property (readonly, nonatomic) BOOL wantsCrossfade;
@@ -29,6 +31,7 @@
 - (void).cxx_destruct;
 - (void)applyStyleAttributes:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 
 @end
 

@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIScrollView.h>
+#import <UIKitCore/UIScrollView.h>
 
-#import <UIKit/UIDragInteractionDelegate_Private-Protocol.h>
-#import <UIKit/UIDropInteractionDelegate_Private-Protocol.h>
-#import <UIKit/UIPreviewItemDelegate-Protocol.h>
-#import <UIKit/UITextInput-Protocol.h>
-#import <UIKit/UITextLinkInteraction-Protocol.h>
-#import <UIKit/UIWebDraggingDelegate-Protocol.h>
-#import <UIKit/WebEditingDelegate-Protocol.h>
-#import <UIKit/WebPolicyDelegate-Protocol.h>
+#import <UIKitCore/UIDragInteractionDelegate_Private-Protocol.h>
+#import <UIKitCore/UIDropInteractionDelegate_Private-Protocol.h>
+#import <UIKitCore/UIPreviewItemDelegate-Protocol.h>
+#import <UIKitCore/UITextInput-Protocol.h>
+#import <UIKitCore/UITextLinkInteraction-Protocol.h>
+#import <UIKitCore/UIWebDraggingDelegate-Protocol.h>
+#import <UIKitCore/WebEditingDelegate-Protocol.h>
+#import <UIKitCore/WebPolicyDelegate-Protocol.h>
 
-@class NSAttributedString, NSDictionary, NSString, UIColor, UIFont, UITextPosition, UITextRange, UIView;
+@class NSAttributedString, NSDictionary, NSString, UIColor, UIFont, UITextInputPasswordRules, UITextPosition, UITextRange, UIView;
 @protocol UITextInputDelegate, UITextInputTokenizer, UITextViewDelegate;
 
 @interface _UICompatibilityTextView : UIScrollView <UITextLinkInteraction, WebEditingDelegate, WebPolicyDelegate, UIPreviewItemDelegate, UIWebDraggingDelegate, UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, UITextInput>
@@ -52,6 +52,7 @@
 @property (nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry; // @dynamic secureTextEntry;
 @property (nonatomic) struct _NSRange selectedRange;
@@ -126,7 +127,6 @@
 - (struct CGPoint)constrainedPoint:(struct CGPoint)arg1;
 - (id)contentAsHTMLString;
 - (void)copy:(id)arg1;
-- (struct CGImage *)createSnapshotWithRect:(struct CGRect)arg1;
 - (void)cut:(id)arg1;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
@@ -178,6 +178,7 @@
 - (void)layoutSubviews;
 - (double)lineHeight;
 - (void)makeTextWritingDirectionLeftToRight:(id)arg1;
+- (void)makeTextWritingDirectionNatural:(id)arg1;
 - (void)makeTextWritingDirectionRightToLeft:(id)arg1;
 - (int)marginTop;
 - (id)metadataDictionariesForDictationResults;
@@ -187,6 +188,7 @@
 - (struct CGPoint)offset;
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (void)paste:(id)arg1;
+- (void)pasteAndMatchStyle:(id)arg1;
 - (void)performBecomeEditableTasks;
 - (id)positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3;
 - (id)positionFromPosition:(id)arg1 offset:(long long)arg2;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString, NSUUID;
 
@@ -20,6 +20,7 @@
     NSUUID *_activityUUID;
     NSString *_activityType;
     long long _activityCategory;
+    long long _maxPreviews;
     NSString *_extensionIdentifier;
     NSDictionary *_activitySpecificMetadata;
     struct CGSize _thumbnailSize;
@@ -33,6 +34,7 @@
 @property (readonly, nonatomic) Class classForPreparingExtensionItemData; // @synthesize classForPreparingExtensionItemData=_classForPreparingExtensionItemData;
 @property (nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
 @property (nonatomic) BOOL isAirDropActivity; // @synthesize isAirDropActivity=_isAirDropActivity;
+@property (nonatomic) long long maxPreviews; // @synthesize maxPreviews=_maxPreviews;
 @property (nonatomic) struct CGSize thumbnailSize; // @synthesize thumbnailSize=_thumbnailSize;
 @property (nonatomic) BOOL wantsAttachmentURLItemData; // @synthesize wantsAttachmentURLItemData=_wantsAttachmentURLItemData;
 @property (nonatomic) BOOL wantsThumbnailItemData; // @synthesize wantsThumbnailItemData=_wantsThumbnailItemData;

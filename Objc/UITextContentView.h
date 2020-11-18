@@ -4,18 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIDragInteractionDelegate_Private-Protocol.h>
-#import <UIKit/UIDropInteractionDelegate_Private-Protocol.h>
-#import <UIKit/UITextInput-Protocol.h>
-#import <UIKit/UITextInputTraits-Protocol.h>
-#import <UIKit/UITextLinkInteraction-Protocol.h>
-#import <UIKit/UIWebDraggingDelegate-Protocol.h>
-#import <UIKit/WebEditingDelegate-Protocol.h>
-#import <UIKit/WebPolicyDelegate-Protocol.h>
+#import <UIKitCore/UIDragInteractionDelegate_Private-Protocol.h>
+#import <UIKitCore/UIDropInteractionDelegate_Private-Protocol.h>
+#import <UIKitCore/UITextInput-Protocol.h>
+#import <UIKitCore/UITextInputTraits-Protocol.h>
+#import <UIKitCore/UITextLinkInteraction-Protocol.h>
+#import <UIKitCore/UIWebDraggingDelegate-Protocol.h>
+#import <UIKitCore/WebEditingDelegate-Protocol.h>
+#import <UIKitCore/WebPolicyDelegate-Protocol.h>
 
-@class DOMHTMLElement, NSAttributedString, NSDictionary, NSString, UIColor, UIDragInteraction, UIDropInteraction, UIFont, UITextInteractionAssistant, UITextPosition, UITextRange, UIWebDocumentView, WebFrame;
+@class DOMHTMLElement, NSAttributedString, NSDictionary, NSString, UIColor, UIDragInteraction, UIDropInteraction, UIFont, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIWebDocumentView, WebFrame;
 @protocol UITextContentViewDelegate, UITextInputDelegate, UITextInputTokenizer;
 
 @interface UITextContentView : UIView <WebPolicyDelegate, WebEditingDelegate, UIWebDraggingDelegate, UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private, UITextInput, UITextLinkInteraction, UITextInputTraits>
@@ -42,6 +42,7 @@
     long long m_textAlignment;
     UIDragInteraction *m_dragInteraction;
     UIDropInteraction *m_dropInteraction;
+    BOOL _dragInteractionEnabled;
 }
 
 @property (nonatomic) BOOL allowsEditingTextAttributes;
@@ -52,6 +53,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UITextContentViewDelegate> delegate; // @synthesize delegate=m_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDragInteractionEnabled) BOOL dragInteractionEnabled; // @synthesize dragInteractionEnabled=_dragInteractionEnabled;
 @property (nonatomic, getter=isEditable) BOOL editable;
 @property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing=m_editing;
 @property (nonatomic) BOOL enablesReturnKeyAutomatically; // @dynamic enablesReturnKeyAutomatically;
@@ -65,6 +67,7 @@
 @property (nonatomic) long long keyboardType; // @dynamic keyboardType;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType; // @dynamic returnKeyType;
 @property (nonatomic) BOOL scrollsSelectionOnWebDocumentChanges; // @synthesize scrollsSelectionOnWebDocumentChanges=m_scrollsSelectionOnWebDocumentChanges;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry; // @dynamic secureTextEntry;
@@ -182,6 +185,7 @@
 - (void)keyboardInputChangedSelection:(id)arg1;
 - (BOOL)keyboardInputShouldDelete:(id)arg1;
 - (void)makeTextWritingDirectionLeftToRight:(id)arg1;
+- (void)makeTextWritingDirectionNatural:(id)arg1;
 - (void)makeTextWritingDirectionRightToLeft:(id)arg1;
 - (int)marginTop;
 - (id)metadataDictionariesForDictationResults;
@@ -191,6 +195,7 @@
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (unsigned long long)offsetInMarkedTextForSelection:(id)arg1;
 - (void)paste:(id)arg1;
+- (void)pasteAndMatchStyle:(id)arg1;
 - (void)performBecomeEditableTasks;
 - (void)performScrollSelectionToVisible:(BOOL)arg1;
 - (id)positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3;
@@ -223,7 +228,6 @@
 - (void)setContentToAttributedString:(id)arg1;
 - (void)setContentToHTMLString:(id)arg1;
 - (void)setDataDetectorTypes:(unsigned long long)arg1;
-- (void)setDragInteractionEnabled:(BOOL)arg1;
 - (void)setFrame:(struct CGRect)arg1;
 - (void)setMarginTop:(int)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;

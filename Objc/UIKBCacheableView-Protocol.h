@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, NSDictionary, NSString;
 
 @protocol UIKBCacheableView <NSObject>
 
+@property (readonly, nonatomic) long long cacheDeferPriority;
 @property (readonly, nonatomic) BOOL cacheDeferable;
 @property (readonly, nonatomic) NSString *cacheKey;
 @property (readonly, nonatomic) double cachedWidth;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedback.h>
+#import <UIKitCore/_UIFeedback.h>
 
-#import <UIKit/_UIFeedbackContinuousPlayable-Protocol.h>
+#import <UIKitCore/_UIFeedbackContinuousPlayable-Protocol.h>
 
 @class NSString;
 
@@ -29,7 +29,7 @@
 + (id)type;
 - (id)_debugDictionary;
 - (unsigned long long)_effectiveEventType;
-- (void)_playAtTime:(double)arg1;
+- (void)_playAtTime:(double)arg1 engine:(id)arg2;
 - (id)_playableProtocol;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;

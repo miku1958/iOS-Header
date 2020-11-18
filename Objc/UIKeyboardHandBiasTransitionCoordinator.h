@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, UIKeyboardHandBiasTransitionContext, UIKeyboardSquishTransition, UIPanGestureRecognizer;
 @protocol UIKeyboardHandBiasTransitionCoordinatorDelegate;

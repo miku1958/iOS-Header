@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIDynamicReferenceSystem-Protocol.h>
+#import <UIKitCore/_UIDynamicReferenceSystem-Protocol.h>
 
 @class NSString, UIDynamicAnimator, UIDynamicItemBehavior, UIPushBehavior, _UIDynamicTransformer, _UISpringBehavior;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatesFeedbackGeneratorPreviewConfiguration.h>
+#import <UIKitCore/_UIStatesFeedbackGeneratorPreviewConfiguration.h>
 
 @interface _UIFeedbackPreviewStatesBehaviorConfiguration : _UIStatesFeedbackGeneratorPreviewConfiguration
 {

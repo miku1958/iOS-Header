@@ -4,16 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
+
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface _UIObjectIdentifierPathProxy : NSObject
+@interface _UIObjectIdentifierPathProxy : NSObject <NSSecureCoding>
 {
     NSString *_identifierPath;
 }
 
++ (BOOL)supportsSecureCoding;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

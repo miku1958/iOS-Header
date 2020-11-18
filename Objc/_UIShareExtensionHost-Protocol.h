@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @class NSString, NSUUID, UISUIActivityExtensionItemData, UISUIActivityExtensionItemDataRequest;
 
@@ -15,7 +15,6 @@
 - (void)shareExtensionServiceChangeSheetDismissButtonTitle:(NSString *)arg1;
 - (void)shareExtensionServiceDidFinishPerformingInServiceActivityWithUUID:(NSUUID *)arg1 responseData:(UISUIActivityExtensionItemData *)arg2;
 - (void)shareExtensionServiceDisableSheetAvoidsKeyboardUntilContentSizeUpdate;
-- (void)shareExtensionServicePreferredContentSizeUpdated:(struct CGSize)arg1;
 - (void)shareExtensionServiceRequestPerformActivityInHostForActivityUUID:(NSUUID *)arg1;
 - (void)shareExtensionServiceRequestPerformActivityInHostForExtensionActivityWithBundleIdentifier:(NSString *)arg1;
 - (void)shareExtensionServiceWillPerformInServiceActivityWithDataRequest:(UISUIActivityExtensionItemDataRequest *)arg1 dismissPresentation:(BOOL)arg2 completion:(void (^)(UISUIActivityExtensionItemData *))arg3;

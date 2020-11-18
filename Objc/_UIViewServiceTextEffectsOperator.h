@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIHostedWindowDelegate-Protocol.h>
-#import <UIKit/_UIViewServiceDeputy-Protocol.h>
-#import <UIKit/_UIViewServiceDeputyRotationDelegate-Protocol.h>
-#import <UIKit/_UIViewServiceTextEffectsOperator_RemoteViewControllerInterface-Protocol.h>
+#import <UIKitCore/_UIHostedWindowDelegate-Protocol.h>
+#import <UIKitCore/_UIViewServiceDeputy-Protocol.h>
+#import <UIKitCore/_UIViewServiceDeputyRotationDelegate-Protocol.h>
+#import <UIKitCore/_UIViewServiceTextEffectsOperator_RemoteViewControllerInterface-Protocol.h>
 
 @class NSArray, NSString, _UIAsyncInvocation, _UIHostedWindow;
 

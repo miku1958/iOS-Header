@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIDraggable-Protocol.h>
-#import <UIKit/_UIExcludable-Protocol.h>
-#import <UIKit/_UIForceLevelClassifierDelegate-Protocol.h>
-#import <UIKit/_UITouchable-Protocol.h>
+#import <UIKitCore/_UIDraggable-Protocol.h>
+#import <UIKitCore/_UIExcludable-Protocol.h>
+#import <UIKitCore/_UIForceLevelClassifierDelegate-Protocol.h>
+#import <UIKitCore/_UITouchable-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableSet, NSObservation, NSObservationSource, NSSet, NSString, UIGestureEnvironment, UIView, _UIForceLevelClassifier, _UITouchForceObservable;
 @protocol UIGestureRecognizerDelegate;
@@ -86,6 +86,7 @@
     UIGestureEnvironment *_gestureEnvironment;
 }
 
+@property (readonly, nonatomic) NSMutableSet *__pairedGestureIdentifiers;
 @property (readonly, nonatomic) NSSet *_failureDependents;
 @property (readonly, nonatomic) NSSet *_failureRequirements;
 @property (nonatomic, setter=_setKeepTouchesOnContinuation:) BOOL _keepTouchesOnContinuation; // @synthesize _keepTouchesOnContinuation;
@@ -115,7 +116,9 @@
 + (BOOL)_shouldUseLinearForceLevelClassifier;
 + (BOOL)_supportsTouchContinuation;
 - (void).cxx_destruct;
+- (id)__pairedGestureIdentifiersAndCreate:(BOOL)arg1;
 - (BOOL)_acceptsFailureRequirements;
+- (id)_activeEvents;
 - (id)_activeTouchesForEvent:(id)arg1;
 - (void)_addFailureDependent:(id)arg1;
 - (void)_addForceTarget:(id)arg1 action:(SEL)arg2;
@@ -203,6 +206,7 @@
 - (BOOL)_shouldReceiveDragEvent:(id)arg1;
 - (BOOL)_shouldReceivePress:(id)arg1;
 - (BOOL)_shouldReceiveTouch:(id)arg1 recognizerView:(id)arg2 touchView:(id)arg3;
+- (BOOL)_shouldReceiveTouch:(id)arg1 withEvent:(id)arg2;
 - (id)_touchForceObservable;
 - (BOOL)_touchTypeIsAllowed:(id)arg1;
 - (void)_touchWasCancelled:(id)arg1;

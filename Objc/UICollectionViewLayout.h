@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCoding-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
 
 @class NSArray, NSIndexSet, NSMutableDictionary, NSMutableIndexSet, UICollectionView, UICollectionViewLayoutInvalidationContext, UIDynamicAnimator, _UICollectionViewCompositionLayout;
 
@@ -70,6 +70,7 @@
 - (struct CGPoint)_contentOffsetFromProposedContentOffset:(struct CGPoint)arg1 forScrollingToItemAtIndexPath:(id)arg2 atScrollPosition:(unsigned long long)arg3;
 - (id)_decorationViewForLayoutAttributes:(id)arg1;
 - (void)_didFinishLayoutTransitionAnimations:(BOOL)arg1;
+- (void)_didPerformUpdateVisibleCellsPass;
 - (id)_dynamicAnimator;
 - (struct CGRect)_dynamicReferenceBounds;
 - (BOOL)_estimatesSizes;
@@ -100,6 +101,7 @@
 - (BOOL)_shouldScrollToContentBeginningInRightToLeft;
 - (BOOL)_supportsAdvancedTransitionAnimations;
 - (BOOL)_wantsRightToLeftHorizontalMirroringIfNeeded;
+- (void)_willPerformUpdateVisibleCellsPass;
 - (BOOL)canBeEdited;
 - (struct CGSize)collectionViewContentSize;
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromLayout:(id)arg2;

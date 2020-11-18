@@ -4,33 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class UIBezierPath, UIScreen;
+@class UIScreen;
 
 __attribute__((visibility("hidden")))
 @interface _UIScreenBoundingPathUtilities : NSObject
 {
     UIScreen *_screen;
-    UIBezierPath *_pathPortrait;
-    UIBezierPath *_pathPortraitUpsideDown;
-    UIBezierPath *_pathLandscapeLeft;
-    UIBezierPath *_pathLandscapeRight;
 }
 
-@property (strong, nonatomic, getter=_pathLandscapeLeft, setter=_setPathLandscapeLeft:) UIBezierPath *pathLandscapeLeft; // @synthesize pathLandscapeLeft=_pathLandscapeLeft;
-@property (strong, nonatomic, getter=_pathLandscapeRight, setter=_setPathLandscapeRight:) UIBezierPath *pathLandscapeRight; // @synthesize pathLandscapeRight=_pathLandscapeRight;
-@property (strong, nonatomic, getter=_pathPortrait, setter=_setPathPortrait:) UIBezierPath *pathPortrait; // @synthesize pathPortrait=_pathPortrait;
-@property (strong, nonatomic, getter=_pathPortraitUpsideDown, setter=_setPathPortraitUpsideDown:) UIBezierPath *pathPortraitUpsideDown; // @synthesize pathPortraitUpsideDown=_pathPortraitUpsideDown;
 @property (weak, nonatomic, getter=_screen) UIScreen *screen; // @synthesize screen=_screen;
 
 + (id)boundingPathUtilitiesForScreen:(id)arg1;
 - (void).cxx_destruct;
-- (id)_bezierPathForCurrentOrientation;
-- (struct CGRect)_inscribedRectInBoundingPathByInsettingRect:(struct CGRect)arg1 onEdges:(unsigned long long)arg2 inCoordinateSpace:(id)arg3 withOptions:(unsigned long long)arg4;
-- (struct CGRect)_inscribedRectInScreenBounds:(struct CGRect)arg1 coordinateSpaceBoundsInScreen:(struct CGRect)arg2 byInsettingRectInScreen:(struct CGRect)arg3 onEdges:(unsigned long long)arg4;
-- (struct CGRect)_largestInscribedRectInBoundingPathWithCenter:(struct CGPoint)arg1 aspectRatio:(double)arg2 inCoordinateSpace:(id)arg3;
-- (struct CGRect)_largestInscribedRectInScreenBounds:(struct CGRect)arg1 coordinateSpaceBoundsInScreen:(struct CGRect)arg2 withCenterInScreen:(struct CGPoint)arg3 aspectRatio:(double)arg4;
+- (id)boundingPathForWindow:(id)arg1;
 - (id)initWithScreen:(id)arg1;
 
 @end

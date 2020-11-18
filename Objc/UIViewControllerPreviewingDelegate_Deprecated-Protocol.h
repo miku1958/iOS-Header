@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewControllerPreviewingDelegate_Private-Protocol.h>
+#import <UIKitCore/UIViewControllerPreviewingDelegate_Private-Protocol.h>
 
 @class UIPreviewMenuItem, UIView, UIViewController;
 

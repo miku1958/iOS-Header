@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKitCore/UICollectionReusableView.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/_UILayoutEngineSuspending-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UILayoutEngineSuspending-Protocol.h>
 
 @class NSString, UILongPressGestureRecognizer, UIView, _UIFloatingContentView;
 
@@ -26,6 +26,7 @@
         unsigned int showingMenu:1;
         unsigned int clearSelectionWhenMenuDisappears:1;
         unsigned int waitingForSelectionAnimationHalfwayPoint:1;
+        unsigned int contentViewWantsSystemLayoutSizeFittingSize:1;
     } _collectionCellFlags;
     long long _dragState;
     BOOL _selected;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UITextDropRequest-Protocol.h>
+#import <UIKitCore/UITextDropRequest-Protocol.h>
 
 @class NSString, UITextDropProposal, UITextPosition;
 @protocol UIDropSession;

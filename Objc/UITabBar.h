@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UIShadowedView-Protocol.h>
+#import <UIKitCore/_UIShadowedView-Protocol.h>
 
-@class NSArray, NSString, UIColor, UIImage, UITabBarItem, _UITabBarAppearanceStorage, _UITabBarVisualProvider;
+@class NSArray, NSString, UIColor, UIImage, UITabBarCustomizeView, UITabBarItem, _UITabBarAppearanceStorage, _UITabBarVisualProvider;
 @protocol UITabBarDelegate;
 
 @interface UITabBar : UIView <_UIShadowedView>
 {
-    UIView *_customizeView;
+    UITabBarCustomizeView *_customizeView;
     id<UITabBarDelegate> _delegate;
     NSArray *_items;
     UITabBarItem *_selectedItem;

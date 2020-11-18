@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionLayoutGeometryAttribute.h>
+#import <UIKitCore/UICollectionLayoutGeometryAttribute.h>
 
 @interface UICollectionLayoutGeometryGroupItemAttribute : UICollectionLayoutGeometryAttribute
 {

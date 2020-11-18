@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewDropItem-Protocol.h>
+#import <UIKitCore/UITableViewDropItem-Protocol.h>
 
 @protocol _UITableViewDropItem <UITableViewDropItem>
 @end

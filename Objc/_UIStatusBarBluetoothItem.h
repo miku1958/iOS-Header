@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarIndicatorItem.h>
+#import <UIKitCore/_UIStatusBarIndicatorItem.h>
 
 @class _UIStatusBarImageView;
 

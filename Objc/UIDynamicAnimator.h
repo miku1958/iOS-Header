@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CADisplayLink, NSArray, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, PKExtendedPhysicsWorld, UIDynamicAnimatorTicker, UIDynamicsDebug, UIView;
 @protocol UIDynamicAnimatorDelegate, _UIDynamicReferenceSystem;

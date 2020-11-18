@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableString, NSString;
 
@@ -23,6 +23,7 @@
 + (id)descriptionBuilderWithObject:(id)arg1;
 + (id)descriptionForObject:(id)arg1 keys:(id)arg2;
 + (id)descriptionForObject:(id)arg1 namesAndObjects:(id)arg2;
++ (id)lightDescriptionForObject:(id)arg1;
 - (void).cxx_destruct;
 - (id)appendKey:(id)arg1;
 - (id)appendKeys:(id)arg1;

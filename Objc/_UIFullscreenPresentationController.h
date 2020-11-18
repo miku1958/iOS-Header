@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UICurrentContextPresentationController.h>
+#import <UIKitCore/_UICurrentContextPresentationController.h>
 
 @class UIView;
 

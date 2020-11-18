@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardEmojiKeyView.h>
+#import <UIKitCore/UIKeyboardEmojiKeyView.h>
 
-#import <UIKit/UITableViewDataSource-Protocol.h>
-#import <UIKit/UITableViewDelegate-Protocol.h>
+#import <UIKitCore/UITableViewDataSource-Protocol.h>
+#import <UIKitCore/UITableViewDelegate-Protocol.h>
 
 @class NSString, UITableView;
 

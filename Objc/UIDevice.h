@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSString, NSUUID;
 
@@ -45,6 +45,7 @@
 @property (readonly, nonatomic) NSString *systemVersion;
 @property (readonly, nonatomic) long long userInterfaceIdiom;
 
++ (BOOL)_hasHomeButton;
 + (BOOL)_isLowEnd;
 + (BOOL)_isWatch;
 + (BOOL)_isWatchCompanion;

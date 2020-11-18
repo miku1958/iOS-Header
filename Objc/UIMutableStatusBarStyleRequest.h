@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarStyleRequest.h>
+#import <UIKitCore/UIStatusBarStyleRequest.h>
 
 @class NSNumber, UIColor;
 

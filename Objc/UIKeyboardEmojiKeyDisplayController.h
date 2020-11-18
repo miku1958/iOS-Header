@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIKeyboardEmojiCategoryUpdateDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardEmojiCategoryUpdateDelegate-Protocol.h>
 
 @class NSString, UIKeyboardEmojiCategory, UIKeyboardEmojiKeyView;
 

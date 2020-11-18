@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIPickerViewScrollTesting-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIPickerViewScrollTesting-Protocol.h>
 
 @class NSCalendar, NSDate, NSLocale, NSTimeZone, UIColor, _UIDatePickerView;
 

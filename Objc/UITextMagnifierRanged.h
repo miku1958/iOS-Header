@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextMagnifier.h>
+#import <UIKitCore/UITextMagnifier.h>
 
 __attribute__((visibility("hidden")))
 @interface UITextMagnifierRanged : UITextMagnifier

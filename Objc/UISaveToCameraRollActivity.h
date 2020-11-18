@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <UIKitCore/UIActivity.h>
 
 @interface UISaveToCameraRollActivity : UIActivity
 {
@@ -19,6 +19,7 @@
 
 + (unsigned long long)_xpcAttributes;
 - (id)_activityImage;
+- (CDUnknownBlockType)_backgroundPreheatBlock;
 - (id)activityTitle;
 - (id)activityType;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

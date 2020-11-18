@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIScrollView.h>
+#import <UIKitCore/UIScrollView.h>
 
-#import <UIKit/UIDataSourceTranslating-Protocol.h>
-#import <UIKit/_UIDataSourceBackedView-Protocol.h>
-#import <UIKit/_UIKeyboardAutoRespondingScrollView-Protocol.h>
+#import <UIKitCore/UIDataSourceTranslating-Protocol.h>
+#import <UIKitCore/_UIDataSourceBackedView-Protocol.h>
+#import <UIKitCore/_UIKeyboardAutoRespondingScrollView-Protocol.h>
 
 @class NSArray, NSHashTable, NSIndexPath, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSTimer, UICollectionReusableView, UICollectionViewCell, UICollectionViewData, UICollectionViewLayout, UICollectionViewLayoutAttributes, UICollectionViewUpdate, UIFocusContainerGuide, UITouch, UIView, _UICollectionViewDragAndDropController, _UICollectionViewDragDestinationController, _UICollectionViewDragSourceController, _UICollectionViewPrefetchingContext, _UIDragSnappingFeedbackGenerator, _UIDynamicAnimationGroup, _UIVelocityIntegrator;
 @protocol UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDataSource_Private, UICollectionViewDelegate, UICollectionViewDragDelegate, UICollectionViewDragDelegate_Private, UICollectionViewDragDestination, UICollectionViewDragSource, UICollectionViewDropDelegate, UICollectionViewDropDelegate_Private;
@@ -127,6 +127,7 @@
         unsigned int dataSourceCanMoveItemAtIndexPath:1;
         unsigned int dataSourceMoveItemAtIndexPath:1;
         unsigned int dataSourceSectionIndexTitlesSPI:1;
+        unsigned int dataSourceSectionIndexTitlesTrimmedToCountSPI:1;
         unsigned int dataSourceIndexPathForSectionIndexSPI:1;
         unsigned int dataSourceIndexTitles:1;
         unsigned int dataSourceIndexPathForIndex:1;
@@ -248,6 +249,7 @@
 
 + (id)_reuseKeyForSupplementaryViewOfKind:(id)arg1 withReuseIdentifier:(id)arg2;
 - (void).cxx_destruct;
+- (void)_accessibilitySetInterfaceStyleIntent:(unsigned long long)arg1;
 - (void)_addContainerScrollViewForNotifications:(id)arg1;
 - (void)_addControlledSubview:(id)arg1 atZIndex:(long long)arg2 forced:(BOOL)arg3;
 - (void)_addEntriesFromDictionary:(id)arg1 inDictionary:(id)arg2;
@@ -261,6 +263,7 @@
 - (void)_applyBlockToAllReusableViews:(CDUnknownBlockType)arg1;
 - (void)_applyLayoutAttributes:(id)arg1 toView:(id)arg2;
 - (id)_arrayForUpdateAction:(int)arg1;
+- (void)_autoScrollAssistantUpdateContentOffset:(struct CGPoint)arg1;
 - (void)_autoscrollForReordering:(id)arg1;
 - (BOOL)_beginInteractiveMovementForItemAtIndexPath:(id)arg1;
 - (BOOL)_beginReorderingItemAtIndexPath:(id)arg1;
@@ -303,6 +306,7 @@
 - (long long)_dataSourceNumberOfSections;
 - (id)_dataSourceProxy;
 - (long long)_dataSourceSectionIndexForPresentationSectionIndex:(long long)arg1;
+- (id)_dataSourceSectionIndexTitles;
 - (void)_decrementSuspendLayoutCount;
 - (id)_delegateActual;
 - (id)_delegatePreferredIndexPath;
@@ -338,6 +342,7 @@
 - (void)_ensureViewsAreLoadedInRect:(struct CGRect)arg1;
 - (void)_finishInteractiveTransitionShouldFinish:(BOOL)arg1 finalAnimation:(BOOL)arg2;
 - (void)_finishInteractiveTransitionWithFinalAnimation:(BOOL)arg1;
+- (double)_focusFastScrollingBarZPosition;
 - (id)_focusFastScrollingDestinationItemAtContentEnd;
 - (id)_focusFastScrollingDestinationItemAtContentStart;
 - (id)_focusFastScrollingDestinationItemForIndexEntry:(id)arg1;
@@ -359,6 +364,7 @@
 - (BOOL)_highlightItemAtIndexPath:(id)arg1 animated:(BOOL)arg2 scrollPosition:(long long)arg3 notifyDelegate:(BOOL)arg4;
 - (void)_highlightSpringLoadedItemAtIndexPath:(id)arg1;
 - (void)_incrementSuspendLayoutCount;
+- (id)_indexBarEntries;
 - (id)_indexPathAfterShadowUpdatesForIndexPath:(id)arg1;
 - (id)_indexPathBeforeShadowUpdatesForIndexPath:(id)arg1;
 - (id)_indexPathForCell:(id)arg1;
@@ -421,6 +427,7 @@
 - (long long)_presentationSectionIndexForDataSourceSectionIndex:(long long)arg1;
 - (void)_pruneCachedPrefetchViewsForCacheValidationBounds:(struct CGRect)arg1;
 - (void)_pruneCachedPrefetchViewsForVelocity:(struct CGVector)arg1;
+- (void)_purgeReuseQueues;
 - (void)_registerForGeometryChangesIfInSupeview;
 - (void)_registeredSupplementaryViewKind:(id)arg1;
 - (void)_reloadDataIfNeeded;

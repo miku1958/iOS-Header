@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIStatusBarPrioritized-Protocol.h>
+#import <UIKitCore/_UIStatusBarPrioritized-Protocol.h>
 
-@class NSMutableArray, NSMutableSet, NSSet, NSString, _UIStatusBar, _UIStatusBarAnimation, _UIStatusBarDisplayItemPlacementState;
+@class NSMutableArray, NSMutableSet, NSSet, _UIStatusBar, _UIStatusBarAnimation, _UIStatusBarDisplayItemPlacementState, _UIStatusBarIdentifier, _UIStatusBarStyleAttributes;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarDisplayItemState : NSObject <_UIStatusBarPrioritized>
@@ -16,13 +16,16 @@ __attribute__((visibility("hidden")))
     BOOL _wasEnabled;
     BOOL _wasVisible;
     BOOL _dataEnabled;
-    BOOL _updated;
     BOOL _floating;
-    NSString *_identifier;
+    _UIStatusBarIdentifier *_identifier;
     _UIStatusBar *_statusBar;
     NSMutableArray *_placementStates;
+    long long _preferredPlacementStateIndex;
     long long _currentPlacementStateIndex;
+    _UIStatusBarStyleAttributes *_overriddenStyleAttributes;
     long long _previousPlacementStateIndex;
+    long long _dataUpdateStatus;
+    long long _placementUpdateStatus;
     long long _enabilityStatus;
     long long _visibilityStatus;
     _UIStatusBarAnimation *_addingAnimation;
@@ -36,41 +39,46 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) _UIStatusBarDisplayItemPlacementState *currentPlacementState;
 @property (nonatomic) long long currentPlacementStateIndex; // @synthesize currentPlacementStateIndex=_currentPlacementStateIndex;
 @property (nonatomic) BOOL dataEnabled; // @synthesize dataEnabled=_dataEnabled;
+@property (nonatomic) long long dataUpdateStatus; // @synthesize dataUpdateStatus=_dataUpdateStatus;
 @property (nonatomic) long long enabilityStatus; // @synthesize enabilityStatus=_enabilityStatus;
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
 @property (readonly, nonatomic, getter=isEnabledIgnoringAnimations) BOOL enabledIgnoringAnimations;
 @property (nonatomic) BOOL floating; // @synthesize floating=_floating;
-@property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) _UIStatusBarIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) _UIStatusBarStyleAttributes *overriddenStyleAttributes; // @synthesize overriddenStyleAttributes=_overriddenStyleAttributes;
 @property (strong, nonatomic) NSMutableArray *placementStates; // @synthesize placementStates=_placementStates;
+@property (nonatomic) long long placementUpdateStatus; // @synthesize placementUpdateStatus=_placementUpdateStatus;
 @property (readonly, copy, nonatomic) NSSet *potentialPlacementRegionIdentifiers;
+@property (nonatomic) long long preferredPlacementStateIndex; // @synthesize preferredPlacementStateIndex=_preferredPlacementStateIndex;
 @property (nonatomic) long long previousPlacementStateIndex; // @synthesize previousPlacementStateIndex=_previousPlacementStateIndex;
 @property (readonly, nonatomic) long long priority;
 @property (strong, nonatomic) _UIStatusBarAnimation *removingAnimation; // @synthesize removingAnimation=_removingAnimation;
 @property (weak, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
-@property (nonatomic) BOOL updated; // @synthesize updated=_updated;
 @property (nonatomic) long long visibilityStatus; // @synthesize visibilityStatus=_visibilityStatus;
 @property (nonatomic) BOOL wasEnabled; // @synthesize wasEnabled=_wasEnabled;
 @property (nonatomic) BOOL wasVisible; // @synthesize wasVisible=_wasVisible;
 
-+ (void)setupExclusionsBetweenDisplayItemStates:(id)arg1 visualProvider:(id)arg2;
++ (void)setupRelationsBetweenDisplayItemStates:(id)arg1 visualProvider:(id)arg2;
 + (id)stateForDisplayItemWithIdentifier:(id)arg1 statusBar:(id)arg2;
 - (void).cxx_destruct;
 - (id)_animationForDisplayItem:(id)arg1 withUpdateAnimation:(id)arg2;
 - (void)_cancelObsoleteAnimations;
-- (BOOL)_itemMayBeEnabled:(id)arg1;
+- (id)_effectiveStyleAttributesFromStyleAttributes:(id)arg1;
+- (BOOL)_resolveDependentItemStatesWithBlock:(CDUnknownBlockType)arg1;
 - (id)_updateForItem:(id)arg1 data:(id)arg2 styleAttributes:(id)arg3;
 - (id)_updateForUpdatedData:(id)arg1 updatedStyleAttributes:(id)arg2 updatedEnability:(id)arg3;
-- (void)_updatePlacementWithRecursionBlock:(CDUnknownBlockType)arg1;
+- (BOOL)_updatePlacementWithRecursionBlock:(CDUnknownBlockType)arg1;
 - (void)_updateStatuses;
-- (BOOL)_updateToEnabledPlacementState;
+- (BOOL)_updateToNextPlacementStateIfNeeded;
 - (void)addPlacement:(id)arg1 inRegion:(id)arg2;
 - (id)description;
 - (BOOL)hasRunningAnimations;
 - (BOOL)isCurrentPlacement:(id)arg1;
 - (id)placementStateForPlacement:(id)arg1;
 - (BOOL)prepareAnimation:(id)arg1 withDisplayItem:(id)arg2;
-- (void)prepareForUpdate;
-- (void)updatePlacement;
+- (void)prepareForDataUpdate;
+- (void)resetToPreferredPlacement;
+- (BOOL)updatePlacement;
 - (void)updateToNextEnabledPlacement;
 - (id)updateWithData:(id)arg1 styleAttributes:(id)arg2;
 

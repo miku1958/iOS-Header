@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIFeedbackGenerator.h>
+#import <UIKitCore/UIFeedbackGenerator.h>
 
-#import <UIKit/UIFeedbackGeneratorUserInteractionDriven-Protocol.h>
+#import <UIKitCore/UIFeedbackGeneratorUserInteractionDriven-Protocol.h>
 
 @class _UIEdgeFeedbackGeneratorConfiguration, _UIFeedback, _UIFeedbackEngine;
 @protocol _UIFeedbackContinuousPlayable;

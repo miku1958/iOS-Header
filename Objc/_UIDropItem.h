@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIDragItem.h>
+#import <UIKitCore/UIDragItem.h>
 
 @class NSItemProvider, _UIDropSessionImpl;
 @protocol _UIDraggingItemVisualTarget;

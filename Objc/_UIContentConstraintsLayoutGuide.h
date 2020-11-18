@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UILayoutGuide.h>
+#import <UIKitCore/UILayoutGuide.h>
 
 @class NSLayoutConstraint;
 

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
-#import <UIKit/UIDebuggingInformationViewController-Protocol.h>
+#import <UIKitCore/UIDebuggingInformationViewController-Protocol.h>
 
 @class NSObject;
 

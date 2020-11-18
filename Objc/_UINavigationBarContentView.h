@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBarContentView.h>
+#import <UIKitCore/_UIBarContentView.h>
 
-#import <UIKit/_UIBarButtonItemViewOwner-Protocol.h>
-#import <UIKit/_UIButtonBarButtonChangeObserver-Protocol.h>
-#import <UIKit/_UINavigationBarTitleViewDataSource-Protocol.h>
-#import <UIKit/_UINavigationBarTransitionContextParticipant-Protocol.h>
+#import <UIKitCore/_UIBarButtonItemViewOwner-Protocol.h>
+#import <UIKitCore/_UIButtonBarButtonChangeObserver-Protocol.h>
+#import <UIKitCore/_UINavigationBarTitleViewDataSource-Protocol.h>
+#import <UIKitCore/_UINavigationBarTransitionContextParticipant-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableArray, NSString, UIBarButtonItem, UIColor, UIImage, UIView, _UINavigationBarContentViewLayout, _UINavigationBarTransitionContext;
 @protocol _UINavigationBarContentViewDelegate;
@@ -95,7 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)_itemStandardViewNeedsUpdate:(id)arg1;
 - (id)_newLayout;
 - (struct CGRect)_overlayRectForView:(id)arg1 inTargetView:(id)arg2;
-- (void)_runAllScheduledAnimations;
+- (void)_runAllScheduledAnimations:(BOOL)arg1;
 - (void)_setupBackButtonAnimated:(BOOL)arg1;
 - (void)_setupLeadingButtonBarAnimated:(BOOL)arg1;
 - (void)_setupTitleViewAnimated:(BOOL)arg1;

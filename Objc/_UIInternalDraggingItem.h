@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSItemProvider, UITargetedDragPreview, UIView, _DUIItemDetail, _DUIPreview, _DUIVisibleDroppedItem, _UIDraggingItem;
 @protocol _UIDraggingItemVisualTarget;
@@ -58,7 +58,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)druidImageComponentsWithSlotOwner:(id)arg1;
-- (id)initWithPasteboardItem:(id)arg1 detail:(id)arg2;
+- (id)initWithItemProvider:(id)arg1 detail:(id)arg2;
 - (id)initWithPublicDraggingItem:(id)arg1;
 - (id)resolvedImageComponents;
 - (id)resolvedPreview;

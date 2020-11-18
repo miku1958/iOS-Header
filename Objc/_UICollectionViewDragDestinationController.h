@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDropInteractionDelegate_Private-Protocol.h>
-#import <UIKit/_UICollectionViewShadowUpdatesRebaseApplicable-Protocol.h>
+#import <UIKitCore/UIDropInteractionDelegate_Private-Protocol.h>
+#import <UIKitCore/_UICollectionViewShadowUpdatesRebaseApplicable-Protocol.h>
 
 @class CADisplayLink, NSIndexPath, NSString, UICollectionView, UICollectionViewDropProposal, UIDropInteraction, _UIDragDestinationControllerDropProposalState, _UIDragDestinationControllerReorderingState, _UIDragDestinationControllerSessionState;
 @protocol UIDropSession, _UICollectionViewDragDestinationControllerDelegate;

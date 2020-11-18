@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITargetedProxy.h>
+#import <UIKitCore/_UITargetedProxy.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIUserNotificationAlertViewRestrictedTextField : _UITargetedProxy

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewDropPlaceholderContext-Protocol.h>
+#import <UIKitCore/UITableViewDropPlaceholderContext-Protocol.h>
 
 @protocol _UITableViewPlaceholderContext <UITableViewDropPlaceholderContext>
 @end

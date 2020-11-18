@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
 @class UIButton, UIWindow;
 
@@ -21,11 +21,10 @@ __attribute__((visibility("hidden")))
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1 forWindow:(id)arg2;
 - (void)_setupPositioningAndRotationForInterfaceOrientation:(long long)arg1 offscreen:(BOOL)arg2;
 - (void)_suspendAnimationStarted:(id)arg1;
-- (void)_updateZoomButtonTitle;
+- (void)_updateZoomButton;
 - (id)_window;
 - (void)_zoomOrientationAnimationFinished:(id)arg1 finished:(BOOL)arg2 context:(void *)arg3;
 - (void)_zoomOrientationChange:(id)arg1;
-- (id)_zoomText:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;
 - (BOOL)isClassicControlWindow:(id)arg1;

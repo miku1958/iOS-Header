@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIFocusEnvironment-Protocol.h>
+#import <UIKitCore/UIFocusEnvironment-Protocol.h>
 
 @class NSArray;
 @protocol UIFocusEnvironment;
@@ -13,11 +13,11 @@
 
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
 @property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
-@property (readonly, weak, nonatomic, getter=_parentFocusEnvironment) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 
 
 @optional
+- (id<UIFocusEnvironment>)_parentFocusEnvironment;
 - (BOOL)_reversesLinearFocusWrapping;
 - (void)_setNeedsNonDeferredFocusUpdate;
 @end

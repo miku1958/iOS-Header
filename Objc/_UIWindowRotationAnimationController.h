@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIWindowAnimationController.h>
+#import <UIKitCore/_UIWindowAnimationController.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIWindowRotationAnimationController : _UIWindowAnimationController

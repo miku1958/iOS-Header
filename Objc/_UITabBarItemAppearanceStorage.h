@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBarItemAppearanceStorage.h>
+#import <UIKitCore/_UIBarItemAppearanceStorage.h>
 
 @class NSMutableDictionary, UIColor;
 

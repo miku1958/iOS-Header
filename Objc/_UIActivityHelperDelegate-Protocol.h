@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSString, _UIActivityHelper, _UIActivityMatchingContext, _UIActivityMatchingResults;
+@class NSArray, NSString, _UIActivityHelper, _UIActivityMatchingContext;
 
 @protocol _UIActivityHelperDelegate <NSObject>
-- (void)activityHelper:(_UIActivityHelper *)arg1 didUpdateActivityMatchingResults:(_UIActivityMatchingResults *)arg2;
 - (BOOL)activityHelper:(_UIActivityHelper *)arg1 matchingWithContext:(_UIActivityMatchingContext *)arg2 shouldIncludeSystemActivityType:(NSString *)arg3;
 
 @optional

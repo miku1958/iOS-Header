@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIApplicationExtensionActivity.h>
+#import <UIKitCore/UIApplicationExtensionActivity.h>
 
-#import <UIKit/UIManagedConfigurationRestrictableActivity-Protocol.h>
+#import <UIKitCore/UIManagedConfigurationRestrictableActivity-Protocol.h>
 
 @class NSString, SLComposeViewController;
 
@@ -35,6 +35,7 @@
 - (struct CGSize)_thumbnailSize;
 - (BOOL)_wantsAttachmentURLItemData;
 - (BOOL)_wantsThumbnailItemData;
+- (void)_willBePerformedOrPresented;
 - (id)activityType;
 - (id)activityViewController;
 - (BOOL)canPerformWithActivityItems:(id)arg1;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPresentationController.h>
+#import <UIKitCore/UIPresentationController.h>
 
-#import <UIKit/_UISearchControllerPresenting-Protocol.h>
+#import <UIKitCore/_UISearchControllerPresenting-Protocol.h>
 
 @class NSString, UIView, _UISearchPresentationAssistant;
 @protocol _UISearchControllerPresenting;
@@ -50,11 +50,13 @@ __attribute__((visibility("hidden")))
 - (void)_transitionToPresentationController:(id)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_transitionToWillBegin;
 - (long long)adaptivePresentationStyle;
+- (void)containerViewWillLayoutSubviews;
 - (void)dealloc;
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;
 - (void)dismissalTransitionWillBegin;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (id)initWithPresentedViewController:(id)arg1 presentingViewController:(id)arg2;
+- (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)presentationTransitionDidEnd:(BOOL)arg1;
 - (void)presentationTransitionWillBegin;
 - (id)presentedView;

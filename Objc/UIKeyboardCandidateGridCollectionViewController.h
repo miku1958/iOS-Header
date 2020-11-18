@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UICollectionViewDataSource-Protocol.h>
-#import <UIKit/UIKeyboardCandidateGridLayoutDelegate-Protocol.h>
-#import <UIKit/UIKeyboardCandidateList-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateGridLayoutDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateList-Protocol.h>
 
 @class NSArray, NSString, TIKeyboardCandidateResultSet, UIButton, UIKBCandidateCollectionView, UIKeyboardCandidateGridCollectionView, UIKeyboardCandidateGridLayout, UISelectionFeedbackGenerator, UIView;
 @protocol UIKeyboardCandidateGridCollectionViewControllerDelegate, UIKeyboardCandidateListDelegate;
@@ -130,6 +130,7 @@ __attribute__((visibility("hidden")))
 - (void)updateHeaderView;
 - (void)updateIndexTitles;
 - (void)viewDidLoad;
+- (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
 
 @end
 

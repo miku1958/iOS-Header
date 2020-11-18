@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPreviewForceInteractionProgress.h>
+#import <UIKitCore/UIPreviewForceInteractionProgress.h>
 
 @interface _UITouchForceInteractionProgress : UIPreviewForceInteractionProgress
 {

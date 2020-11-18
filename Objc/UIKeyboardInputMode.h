@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextInputMode.h>
+#import <UIKitCore/UITextInputMode.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 @class NSArray, NSBundle, NSExtension, NSString;
 
@@ -14,8 +14,8 @@
 {
     BOOL isDisplayed;
     BOOL _extensionInputModeHasDictation;
-    NSString *primaryLanguage;
-    NSString *languageWithRegion;
+    NSString *_primaryLanguage;
+    NSString *_languageWithRegion;
     NSString *identifier;
     NSString *normalizedIdentifier;
     NSString *softwareLayout;
@@ -40,14 +40,15 @@
 @property (nonatomic) BOOL isDisplayed; // @synthesize isDisplayed;
 @property (readonly, nonatomic) BOOL isExtensionInputMode;
 @property (readonly, nonatomic) BOOL isStalledExtensionInputMode;
-@property (strong, nonatomic) NSString *languageWithRegion; // @synthesize languageWithRegion;
+@property (strong, nonatomic) NSString *languageWithRegion; // @synthesize languageWithRegion=_languageWithRegion;
 @property (strong, nonatomic) NSArray *multilingualLanguages; // @synthesize multilingualLanguages=_multilingualLanguages;
 @property (strong, nonatomic) NSString *normalizedIdentifier; // @synthesize normalizedIdentifier;
 @property (readonly, strong, nonatomic) NSArray *normalizedIdentifierLevels;
-@property (strong, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage;
+@property (strong, nonatomic) NSString *primaryLanguage; // @synthesize primaryLanguage=_primaryLanguage;
 @property (strong, nonatomic) NSString *softwareLayout; // @synthesize softwareLayout;
 
 + (id)autofillFallbackInputMode;
++ (id)autofillSignupInputMode;
 + (id)canonicalLanguageIdentifierFromIdentifier:(id)arg1;
 + (id)dictationInputMode;
 + (id)hardwareLayoutFromIdentifier:(id)arg1;
@@ -58,6 +59,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)includeBarHeight;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (BOOL)isAllowedForTraits:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIInterfaceActionBlendingSeparatorView.h>
+#import <UIKitCore/_UIInterfaceActionBlendingSeparatorView.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIInterfaceActionItemSeparatorView_iOS : _UIInterfaceActionBlendingSeparatorView

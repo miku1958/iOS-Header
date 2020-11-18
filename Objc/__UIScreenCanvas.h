@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UICanvas.h>
+#import <UIKitCore/_UICanvas.h>
 
 __attribute__((visibility("hidden")))
 @interface __UIScreenCanvas : _UICanvas
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)_unassociatedCanvasForScreen:(id)arg1 create:(BOOL)arg2;
 + (BOOL)alwaysKeepContexts;
 + (id)settingsDiffActions;
+- (id)_displayEdgeInfoProvider;
 - (void)_invalidateScreen;
 - (id)_lookupKey;
 - (void)detachWindow:(id)arg1;

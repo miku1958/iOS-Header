@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarRegionLinearLayout.h>
+#import <UIKitCore/_UIStatusBarRegionLinearLayout.h>
 
 @interface _UIStatusBarRegionCenteringLayout : _UIStatusBarRegionLinearLayout
 {
@@ -15,7 +15,7 @@
 @property (nonatomic) double interspace; // @synthesize interspace=_interspace;
 @property (nonatomic) long long maxNumberOfItems; // @synthesize maxNumberOfItems=_maxNumberOfItems;
 
-- (id)_horizontalConstraintsForViews:(id)arg1 layoutGuides:(id)arg2;
+- (id)_horizontalConstraintsForLayoutItems:(id)arg1 layoutGuides:(id)arg2;
 - (id)init;
 - (BOOL)mayFitDisplayItems:(id)arg1;
 

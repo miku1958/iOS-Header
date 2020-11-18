@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/_UIRemoteViewController_ViewControllerOperatorInterface-Protocol.h>
+#import <UIKitCore/_UIRemoteViewController_ViewControllerOperatorInterface-Protocol.h>
 
 @class BKSTouchDeliveryPolicyAssertion, FBSDisplayIdentity, NSArray, NSError, NSString, UIAlertView, UIDimmingView, UIView, _UIAsyncInvocation, _UIRemoteView, _UIRemoteViewService, _UISizeTrackingView, _UITextEffectsRemoteView, _UITextServiceSession, _UIViewServiceInterface;
 
@@ -98,12 +98,14 @@
 - (void)__handleFocusMovementAction:(id)arg1;
 - (BOOL)__interdictServiceViewTouches;
 - (void)__setInterdictServiceViewTouches:(BOOL)arg1;
+- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__setSupportedInterfaceOrientations:(id)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (BOOL)__shouldRemoteViewControllerFenceOperations;
 - (void)__showEditAlertViewWithToken:(long long)arg1 canUndo:(BOOL)arg2 canRedo:(BOOL)arg3;
 - (void)__showServiceForText:(id)arg1 selectedTextRangeValue:(id)arg2 type:(long long)arg3 fromRectValue:(id)arg4 replyHandler:(CDUnknownBlockType)arg5;
 - (void)__showServiceForText:(id)arg1 type:(long long)arg2 fromRectValue:(id)arg3 replyHandler:(CDUnknownBlockType)arg4;
+- (void)__showServiceForType:(long long)arg1 withContext:(id)arg2 replyHandler:(CDUnknownBlockType)arg3;
 - (void)__trampolineButtonPressData:(id)arg1 canceled:(BOOL)arg2;
 - (void)__updateDeferralPropertiesForScreen:(id)arg1;
 - (void)__viewServiceDidPromoteFirstResponder;
@@ -133,6 +135,7 @@
 - (void)_cancelProxiedEditAlertViewAnimated:(BOOL)arg1;
 - (id)_cancelTouchesForCurrentEventInHostedContent;
 - (id)_clientDeferralProperties;
+- (void)_configureSizeViewConstraintsForWindow:(id)arg1 interfaceOrientation:(long long)arg2;
 - (BOOL)_customizesForPresentationInPopover;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (void)_didRotateFromInterfaceOrientation:(long long)arg1 forwardToChildControllers:(BOOL)arg2 skipSelf:(BOOL)arg3;

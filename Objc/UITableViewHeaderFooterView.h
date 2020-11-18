@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UITableViewSubviewReusing-Protocol.h>
+#import <UIKitCore/UITableViewSubviewReusing-Protocol.h>
 
 @class NSString, UIImage, UILabel, UITableView, _UITableViewHeaderFooterViewLabel;
 @protocol UITable, UITableConstants;

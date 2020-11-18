@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UINavigationItemView.h>
+#import <UIKitCore/_UINavigationItemView.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSString, UIColor, UIImageView, _UIBarButtonItemAppearanceStorage;
 
@@ -89,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (id)image;
 - (struct CGSize)imageSize;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithNavigationItem:(id)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)pressed;

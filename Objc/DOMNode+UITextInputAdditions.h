@@ -6,17 +6,18 @@
 
 #import <WebKitLegacy/DOMNode.h>
 
-#import <UIKit/UIKeyInput-Protocol.h>
-#import <UIKit/UIKeyboardInput-Protocol.h>
-#import <UIKit/UITextInputPrivate-Protocol.h>
-#import <UIKit/UITextInputTokenizer-Protocol.h>
+#import <UIKitCore/UIKeyInput-Protocol.h>
+#import <UIKitCore/UIKeyboardInput-Protocol.h>
+#import <UIKitCore/UITextInputPrivate-Protocol.h>
+#import <UIKitCore/UITextInputTokenizer-Protocol.h>
 
-@class NSDictionary, NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory, UITextInteractionAssistant, UITextPosition, UITextRange, UIView;
+@class NSDictionary, NSIndexSet, NSString, RTIInputSystemSourceSession, UIColor, UIImage, UIInputContextHistory, UITextInputPasswordRules, UITextInteractionAssistant, UITextPosition, UITextRange, UIView;
 @protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer;
 
 @interface DOMNode (UITextInputAdditions) <UIKeyboardInput, UITextInputPrivate, UIKeyInput, UITextInputTokenizer>
 
 @property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
+@property (readonly, nonatomic) RTIInputSystemSourceSession *_rtiSourceSession;
 @property (nonatomic) long long _textInputSource;
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
@@ -47,6 +48,7 @@
 @property (nonatomic) BOOL hasDefaultContents;
 @property (readonly, nonatomic) BOOL hasText;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hidePrediction;
 @property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate;
 @property (readonly, nonatomic) id insertDictationResultPlaceholder;
@@ -61,6 +63,7 @@
 @property (nonatomic) BOOL loadKeyboardsForSiriLanguage;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder;

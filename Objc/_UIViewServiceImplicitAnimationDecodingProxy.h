@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITargetedProxy.h>
+#import <UIKitCore/_UITargetedProxy.h>
 
-#import <UIKit/_UIViewServiceImplicitAnimationDecodingProxy_EncodingProxyInterface-Protocol.h>
+#import <UIKitCore/_UIViewServiceImplicitAnimationDecodingProxy_EncodingProxyInterface-Protocol.h>
 
 @class NSString, _UIViewAnimationAttributes;
 

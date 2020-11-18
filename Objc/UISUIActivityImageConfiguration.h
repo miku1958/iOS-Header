@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSString, UIImage;
+@class NSString, UIImage, _UIActivityBundleImageConfiguration;
 
 __attribute__((visibility("hidden")))
 @interface UISUIActivityImageConfiguration : NSObject <NSSecureCoding>
 {
+    _UIActivityBundleImageConfiguration *_bundleImageConfiguration;
     UIImage *_image;
     NSString *_imageCreationBundleIdentifier;
     BOOL _isSettingsVariant;
@@ -22,12 +23,13 @@ __attribute__((visibility("hidden")))
 
 + (id)configurationWithDefaultImage;
 + (id)configurationWithImageSpecifiedByBundleIdentifier:(id)arg1;
++ (id)configurationWithImageSpecifiedBySpecificBundleImage:(id)arg1;
 + (id)configurationWithImageSpecifiedBySpecificImage:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithImage:(id)arg1 imageCreationBundleIdentifier:(id)arg2 isSettingsVariant:(BOOL)arg3;
+- (id)initWithImage:(id)arg1 bundleImageConfiguration:(id)arg2 imageCreationBundleIdentifier:(id)arg3 isSettingsVariant:(BOOL)arg4;
 - (id)loadedActivityImage;
 
 @end

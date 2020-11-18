@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKitCore/UIImageView.h>
 
-#import <UIKit/UIKeyboardCandidateList-Protocol.h>
-#import <UIKit/_UIDynamicCaretDocumentContentDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateList-Protocol.h>
+#import <UIKitCore/_UIDynamicCaretDocumentContentDelegate-Protocol.h>
 
 @class NSString, TIKeyboardCandidateResultSet, _UIDynamicCaretAlternatives, _UIDynamicCaretHelpLabel, _UIDynamicCaretInput, _UIDynamicCaretNoContentView;
 @protocol UIKeyboardCandidateListDelegate;

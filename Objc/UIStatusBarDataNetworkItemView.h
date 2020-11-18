@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarItemView.h>
+#import <UIKitCore/UIStatusBarItemView.h>
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarDataNetworkItemView : UIStatusBarItemView
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)_dataNetworkImage;
 - (id)_dataNetworkImageName;
 - (id)_stringForRSSI;
+- (BOOL)_updateWithData:(CDStruct_1916f467 *)arg1 networkType:(int)arg2;
 - (id)accessibilityHUDRepresentation;
 - (id)contentsImage;
 - (double)extraLeftPadding;

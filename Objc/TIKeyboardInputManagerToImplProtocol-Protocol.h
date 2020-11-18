@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
-@class NSDictionary;
+@class NSDictionary, TIAutocorrectionList, TICandidateRequestToken;
 
 @protocol TIKeyboardInputManagerToImplProtocol <NSObject>
 - (void)processPayloadInfo:(NSDictionary *)arg1;
+- (void)pushAutocorrections:(TIAutocorrectionList *)arg1 requestToken:(TICandidateRequestToken *)arg2;
 @end
 

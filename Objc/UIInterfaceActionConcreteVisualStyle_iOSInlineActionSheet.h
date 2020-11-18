@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInterfaceActionConcreteVisualStyle_iOSSheet.h>
+#import <UIKitCore/UIInterfaceActionConcreteVisualStyle_iOSSheet.h>
 
 @class _UIDimmingKnockoutBackdropView;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory_Car.h>
+#import <UIKitCore/UIKBRenderFactory_Car.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactory_CarLinear : UIKBRenderFactory_Car

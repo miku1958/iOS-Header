@@ -4,20 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIInputViewControllerNeedSceneSize-Protocol.h>
-#import <UIKit/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <UIKit/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <UIKit/_SFAppAutoFillPasswordViewControllerDelegate-Protocol.h>
+#import <UIKitCore/UIInputViewControllerNeedSceneSize-Protocol.h>
+#import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSString, UIView, _SFAppAutoFillPasswordViewController;
+@class NSString, UIView, _SFPasswordViewController;
 
 __attribute__((visibility("hidden")))
-@interface UIKeyboardHiddenViewController : UIViewController <_SFAppAutoFillPasswordViewControllerDelegate, UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate, UIInputViewControllerNeedSceneSize>
+@interface UIKeyboardHiddenViewController : UIViewController <UIViewControllerTransitioningDelegate, UIPopoverPresentationControllerDelegate, UIInputViewControllerNeedSceneSize>
 {
-    _SFAppAutoFillPasswordViewController *_autofillVC;
-    BOOL presentedAutofill;
+    _SFPasswordViewController *_autofillVC;
+    BOOL _presentedAutofill;
     BOOL _focusWasDeferredBeforeDeactivation;
     BOOL _isFocusDeferred;
     unsigned int _deferredContextID;
@@ -25,9 +24,11 @@ __attribute__((visibility("hidden")))
     UIView *_sourceView;
 }
 
+@property (strong, nonatomic) _SFPasswordViewController *autofillVC; // @synthesize autofillVC=_autofillVC;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL presentedAutofill; // @synthesize presentedAutofill=_presentedAutofill;
 @property (nonatomic) UIView *sourceView; // @synthesize sourceView=_sourceView;
 @property (readonly) Class superclass;
 
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)_applicationWillDeactivate:(id)arg1;
 - (id)_clientDeferralProperties;
 - (id)_deferredPropertiesForClientContext:(unsigned int)arg1;
+- (void)_deviceWillLock:(id)arg1;
 - (BOOL)_formSheetObeysContentContainerSize;
 - (id)_hostDeferralProperties;
 - (void)_localAuthenticationUIDismissed;
@@ -42,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_sceneDidChange;
 - (void)_setDeferred:(BOOL)arg1 forDisplayUUID:(id)arg2;
 - (void)_willChangeToFirstResponder:(id)arg1;
+- (long long)customModalPresentationStyle;
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)passwordViewControllerDidFinish:(id)arg1;
@@ -49,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (void)presentAutofillVCWithAnimation:(BOOL)arg1;
 - (void)presentSelfWithAnimation:(BOOL)arg1;
+- (void)presentViewController:(BOOL)arg1;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
 - (BOOL)shouldPresentAsPopover;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInputViewSetPlacementOnScreen.h>
+#import <UIKitCore/UIInputViewSetPlacementOnScreen.h>
 
 __attribute__((visibility("hidden")))
 @interface UIInputViewSetPlacementPlaceholder : UIInputViewSetPlacementOnScreen

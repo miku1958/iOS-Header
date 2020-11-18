@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMutableArray, NSMutableSet, _UIFlowLayoutInfo;
 
@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)addRowAtEnd:(BOOL)arg1;
 - (void)computeLayout;
 - (void)computeLayoutInRect:(struct CGRect)arg1 forSection:(long long)arg2 invalidating:(BOOL)arg3 invalidationContext:(id)arg4;
+- (void)computeLayoutValidatingForwardForIndexPath:(id)arg1;
 - (id)copyFromLayoutInfo:(id)arg1;
 - (long long)estimatedIndexOfItemAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)frameForItemAtIndexPath:(id)arg1;
@@ -94,6 +95,7 @@ __attribute__((visibility("hidden")))
 - (void)sizeChangedForItem:(id)arg1 atIndexPath:(id)arg2 inRow:(id)arg3;
 - (id)snapshot;
 - (void)updateEstimatedSizeForSection:(long long)arg1;
+- (void)updateSize:(struct CGSize)arg1 forItemAtIndexPath:(id)arg2;
 
 @end
 

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UICanvasSettingsDiffAction-Protocol.h>
+#import <UIKitCore/_UICanvasSettingsDiffAction-Protocol.h>
 
 @class NSString, UIApplicationSceneSettingsDiffInspector;
 
@@ -24,7 +24,6 @@ __attribute__((visibility("hidden")))
 
 + (void)configureInitialDeactivationReasons:(unsigned long long)arg1;
 - (void).cxx_destruct;
-- (void)_updateForcedStatusBarForegroundTransparentWithSceneSettings:(id)arg1 transitionContext:(id)arg2;
 - (void)performActionsForCanvas:(id)arg1 withUpdatedScene:(id)arg2 settingsDiff:(id)arg3 fromSettings:(id)arg4 transitionContext:(id)arg5;
 
 @end

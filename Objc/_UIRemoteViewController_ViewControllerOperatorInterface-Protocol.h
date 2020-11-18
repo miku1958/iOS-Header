@@ -4,16 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class BKSAnimationFenceHandle, BSAnimationSettings, NSArray, NSData, NSString, NSValue, UIColor, UIFocusMovementAction;
+@class BKSAnimationFenceHandle, BSAnimationSettings, NSArray, NSData, NSString, NSValue, UIColor, UIFocusMovementAction, _UITextServiceSessionContext;
 
 @protocol _UIRemoteViewController_ViewControllerOperatorInterface
 - (void)__dismissTextServiceSessionAnimated:(BOOL)arg1;
 - (void)__handleFocusMovementAction:(UIFocusMovementAction *)arg1;
+- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__setSupportedInterfaceOrientations:(NSArray *)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (void)__showEditAlertViewWithToken:(long long)arg1 canUndo:(BOOL)arg2 canRedo:(BOOL)arg3;
 - (void)__showServiceForText:(NSString *)arg1 selectedTextRangeValue:(NSValue *)arg2 type:(long long)arg3 fromRectValue:(NSValue *)arg4 replyHandler:(void (^)(id, NSError *))arg5;
 - (void)__showServiceForText:(NSString *)arg1 type:(long long)arg2 fromRectValue:(NSValue *)arg3 replyHandler:(void (^)(id, NSError *))arg4;
+- (void)__showServiceForType:(long long)arg1 withContext:(_UITextServiceSessionContext *)arg2 replyHandler:(void (^)(id, NSError *))arg3;
 - (void)__trampolineButtonPressData:(NSData *)arg1 canceled:(BOOL)arg2;
 - (void)__viewServiceDidPromoteFirstResponder;
 - (void)__viewServiceDidRegisterScrollToTopView;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIButton.h>
+#import <UIKitCore/UIButton.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardDockItemButton : UIButton
@@ -15,6 +15,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGRect tapActionRegion; // @synthesize tapActionRegion=_tapActionRegion;
 
 - (struct CGRect)imageRectForContentRect:(struct CGRect)arg1;
+- (struct CGRect)rectWithSize:(struct CGSize)arg1 forContentRect:(struct CGRect)arg2;
+- (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
 
 @end
 

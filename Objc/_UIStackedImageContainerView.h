@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UIImageViewOverlayViewDelegate-Protocol.h>
+#import <UIKitCore/_UIImageViewOverlayViewDelegate-Protocol.h>
 
 @class NSObject, NSString, UIImage, UIMotionEffectGroup, _UIStackedImageConfiguration;
 @protocol UINamedLayerStack;

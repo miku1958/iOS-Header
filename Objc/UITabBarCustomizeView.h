@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class NSArray, NSMutableArray, UIImageView, UILabel, UISnapshotView, UITabBar, UITabBarItem, UITabBarItemProxy;
+@class NSArray, NSMutableArray, UIImageView, UILabel, UINavigationBar, UISnapshotView, UITabBar, UITabBarItem, UITabBarItemProxy;
 
 __attribute__((visibility("hidden")))
 @interface UITabBarCustomizeView : UIView
@@ -27,9 +27,11 @@ __attribute__((visibility("hidden")))
     UITabBarItem *_selectedBeforeItem;
     BOOL _isBeingDismissed;
     NSArray *_availableItems;
+    UINavigationBar *_navigationBar;
 }
 
 @property (strong, nonatomic) NSArray *availableItems; // @synthesize availableItems=_availableItems;
+@property (strong, nonatomic) UINavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 
 - (void).cxx_destruct;
 - (long long)_barMetrics;

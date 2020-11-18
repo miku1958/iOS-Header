@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGestureGraphElement.h>
+#import <UIKitCore/UIGestureGraphElement.h>
 
 @class NSMapTable, NSMutableSet, NSSet;
 

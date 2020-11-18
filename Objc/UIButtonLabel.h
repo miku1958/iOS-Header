@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UILabel.h>
+#import <UIKitCore/UILabel.h>
 
 @class NSDictionary, UIButton;
 
@@ -27,7 +27,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldAnimatePropertyWithKey:(id)arg1;
 - (void)_updateTextColorWithFallbackColorIfNeeded;
 - (struct CGSize)intrinsicContentSize;
-- (void)invalidateIntrinsicContentSize;
 - (void)setAdjustsFontSizeToFitWidth:(BOOL)arg1;
 - (void)setFont:(id)arg1;
 - (void)setLineBreakMode:(long long)arg1;

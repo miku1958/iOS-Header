@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarButtonActionItemView.h>
+#import <UIKitCore/UIStatusBarButtonActionItemView.h>
 
 @class NSString;
 
@@ -12,29 +12,17 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarCarPlayTimeItemView : UIStatusBarButtonActionItemView
 {
     NSString *_timeString;
-    BOOL _isInternalInstall;
-    BOOL _radarItemEnabled;
-    BOOL _currentlyGatheringLogs;
 }
 
 - (void).cxx_destruct;
-- (void)_gatheringLogsDidChangeStatusNotification:(id)arg1;
-- (BOOL)_showRadarButtonForInternalInstalls;
 - (id)_timeImageSet;
-- (BOOL)allowsUserInteraction;
-- (long long)buttonType;
-- (BOOL)canBecomeFocused;
+- (id)_timeImageSetForColor:(id)arg1;
 - (id)contentsImage;
-- (void)dealloc;
 - (double)extraLeftPadding;
 - (double)extraRightPadding;
-- (id)highlightImage;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (double)neededSizeForImageSet:(id)arg1;
-- (BOOL)showsTouchWhenHighlighted;
 - (long long)textStyle;
 - (BOOL)updateForNewData:(id)arg1 actions:(int)arg2;
-- (BOOL)usesAdvancedActions;
 
 @end
 

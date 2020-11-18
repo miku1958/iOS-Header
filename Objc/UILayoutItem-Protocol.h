@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITraitEnvironment-Protocol.h>
+#import <UIKitCore/UITraitEnvironment-Protocol.h>
 
 @class NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, UIView;
 @protocol UILayoutItem;
@@ -12,13 +12,16 @@
 @protocol UILayoutItem <UITraitEnvironment>
 
 @property (readonly, nonatomic) struct CGRect _ui_bounds;
-@property (readonly, nonatomic) struct CGRect _ui_frame;
+@property (nonatomic) struct CGRect _ui_frame;
 @property (readonly, nonatomic) UIView *_ui_superview;
+@property (nonatomic) BOOL _ui_usesManualLayout;
 @property (readonly, nonatomic) UIView *_ui_view;
 @property (readonly, nonatomic) NSLayoutYAxisAnchor *bottomAnchor;
 @property (readonly, nonatomic) NSLayoutXAxisAnchor *centerXAnchor;
 @property (readonly, nonatomic) NSLayoutYAxisAnchor *centerYAnchor;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *firstBaselineAnchor;
 @property (readonly, nonatomic) NSLayoutDimension *heightAnchor;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *lastBaselineAnchor;
 @property (readonly, nonatomic) NSLayoutXAxisAnchor *leadingAnchor;
 @property (readonly, nonatomic) NSLayoutXAxisAnchor *leftAnchor;
 @property (readonly, nonatomic) NSLayoutXAxisAnchor *rightAnchor;

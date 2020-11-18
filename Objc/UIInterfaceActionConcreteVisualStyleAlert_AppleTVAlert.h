@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInterfaceActionConcreteVisualStyle_AppleTV.h>
+#import <UIKitCore/UIInterfaceActionConcreteVisualStyle_AppleTV.h>
 
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionConcreteVisualStyleAlert_AppleTVAlert : UIInterfaceActionConcreteVisualStyle_AppleTV

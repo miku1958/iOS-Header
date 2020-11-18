@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSNumber, UIStatusBarForegroundView, UIStatusBarItemView;
 
@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface UIStatusBarLayoutManager : NSObject
 {
     int _region;
-    UIStatusBarItemView *_itemViews[41];
+    UIStatusBarItemView *_itemViews[47];
     BOOL _persistentAnimationsEnabled;
     BOOL _usesVerticalLayout;
     UIStatusBarForegroundView *_foregroundView;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (double)_startPosition;
 - (BOOL)_updateItemView:(id)arg1 withData:(id)arg2 actions:(int)arg3 animated:(BOOL)arg4;
 - (id)_viewForItem:(id)arg1;
+- (id)allItemViews;
 - (void)clearOverlapFromItems:(id)arg1;
 - (void)dealloc;
 - (double)distributeOverlap:(double)arg1 amongItems:(id)arg2;

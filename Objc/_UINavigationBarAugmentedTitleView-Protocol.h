@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @class UINavigationItem;
 @protocol _UINavigationBarTitleViewDataSource;
@@ -17,8 +17,8 @@
 @property (readonly, nonatomic) BOOL _hideNavigationBarTrailingBarButtons;
 @property (readonly, nonatomic) double _navigationBarBackButtonMaximumWidth;
 @property (readonly, nonatomic) double _navigationBarContentHeight;
+@property (readonly, nonatomic) long long _preferredAlignment;
 @property (readonly, nonatomic) BOOL _underlayNavigationBarContent;
-@property (readonly, nonatomic) int preferredAlignment;
 
 - (void)_contentDidChange;
 - (void)_performTransition:(long long)arg1 willBeDisplayed:(BOOL)arg2;

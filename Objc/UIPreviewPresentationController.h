@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPresentationController.h>
+#import <UIKitCore/UIPresentationController.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSArray, NSHashTable, NSString, UIResponder, UITapGestureRecognizer, UIView, UIVisualEffectView, UIWindow;
 @protocol UIPreviewPresentationControllerDelegate;
@@ -19,7 +19,7 @@
     UIVisualEffectView *_presentationContainerEffectView;
     UIWindow *_statusBarWindow;
     UIView *_statusBarSnapshotView;
-    NSArray *_keyboardSnapshotViews;
+    NSArray *_keyboardSnapshotters;
     NSHashTable *_keyboardWindows;
     UIResponder *_currentPinnedResponder;
     UIWindow *_presentationWindow;
@@ -37,7 +37,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *dismissGestureRecognizer; // @synthesize dismissGestureRecognizer=_dismissGestureRecognizer;
 @property (copy, nonatomic) CDUnknownBlockType dismissalTransitionDidEndBlock; // @synthesize dismissalTransitionDidEndBlock=_dismissalTransitionDidEndBlock;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSArray *keyboardSnapshotViews; // @synthesize keyboardSnapshotViews=_keyboardSnapshotViews;
+@property (copy, nonatomic) NSArray *keyboardSnapshotters; // @synthesize keyboardSnapshotters=_keyboardSnapshotters;
 @property (copy, nonatomic) NSHashTable *keyboardWindows; // @synthesize keyboardWindows=_keyboardWindows;
 @property (strong, nonatomic) UIVisualEffectView *presentationContainerEffectView; // @synthesize presentationContainerEffectView=_presentationContainerEffectView;
 @property (weak, nonatomic) UIWindow *presentationWindow; // @synthesize presentationWindow=_presentationWindow;
@@ -48,6 +48,7 @@
 
 + (id)_backgroundEffectForTraitCollection:(id)arg1 interactive:(BOOL)arg2;
 + (BOOL)_shouldApplyVisualEffectsToPresentingView;
++ (BOOL)_shouldInterdictServiceViewTouches;
 - (void).cxx_destruct;
 - (void)_animatePreviewTransitionIfNeeded:(id)arg1;
 - (void)_applyVisualEffectsForPresentationPhase:(unsigned long long)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivityViewController.h>
+#import <UIKitCore/UIActivityViewController.h>
 
 @class NSString, UIDocumentInteractionController;
 @protocol _UIDICActivityViewControllerDelegate;

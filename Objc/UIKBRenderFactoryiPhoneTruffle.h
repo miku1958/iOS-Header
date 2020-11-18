@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryiPhone.h>
+#import <UIKitCore/UIKBRenderFactoryiPhone.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryiPhoneTruffle : UIKBRenderFactoryiPhone

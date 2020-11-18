@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInputViewControllerInterface.h>
+#import <UIKitCore/UIInputViewControllerInterface.h>
 
-#import <UIKit/UITextDocumentProxy-Protocol.h>
+#import <UIKitCore/UITextDocumentProxy-Protocol.h>
 
-@class NSString, NSUUID, TIDocumentState, TIKeyboardOutput, TITextInputTraits, UITextInputMode, _UIInputViewControllerOutput, _UIInputViewControllerState;
+@class NSString, NSUUID, TIDocumentState, TIKeyboardOutput, TITextInputTraits, UITextInputMode, UITextInputPasswordRules, _UIInputViewControllerOutput, _UIInputViewControllerState;
 @protocol _UITextDocumentInterfaceDelegate;
 
 __attribute__((visibility("hidden")))
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long keyboardAppearance;
 @property (readonly, nonatomic, getter=_keyboardOutput) TIKeyboardOutput *keyboardOutput; // @synthesize keyboardOutput=_keyboardOutput;
 @property (nonatomic) long long keyboardType;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (nonatomic) long long returnKeyType;
 @property (nonatomic, getter=isSecureTextEntry) BOOL secureTextEntry;
 @property (readonly, nonatomic) NSString *selectedText;
@@ -55,6 +56,7 @@ __attribute__((visibility("hidden")))
 - (void)_setHasDictation:(BOOL)arg1;
 - (void)_setInputModeList:(long long)arg1 touchBegan:(double)arg2 fromLocation:(struct CGPoint)arg3 updatePoint:(struct CGPoint)arg4;
 - (void)_setPrimaryLanguage:(id)arg1;
+- (void)_setProceedShouldReturnIfPossibleForASP;
 - (void)_setShouldAdvanceInputMode;
 - (void)_setShouldDismiss;
 - (void)_willPerformOutputOperation;
@@ -62,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)deleteBackward;
 - (void)insertText:(id)arg1;
+- (BOOL)needsInputModeSwitchKey;
 - (void)setForwardingInterface:(id)arg1;
 
 @end

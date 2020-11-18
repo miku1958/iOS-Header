@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGraphicsRenderer.h>
+#import <UIKitCore/UIGraphicsRenderer.h>
 
 @interface UIGraphicsImageRenderer : UIGraphicsRenderer
 {

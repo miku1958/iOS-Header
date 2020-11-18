@@ -4,19 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 @interface UISlidingBarStateRequest : NSObject <NSCopying>
 {
     BOOL _userInitiated;
     double _leadingWidth;
     double _trailingWidth;
-    double _bounce;
 }
 
-@property (nonatomic) double bounce; // @synthesize bounce=_bounce;
 @property (nonatomic) double leadingWidth; // @synthesize leadingWidth=_leadingWidth;
 @property (nonatomic) double trailingWidth; // @synthesize trailingWidth=_trailingWidth;
 @property (nonatomic) BOOL userInitiated; // @synthesize userInitiated=_userInitiated;

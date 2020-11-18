@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITable-Protocol.h>
+#import <UIKitCore/UITable-Protocol.h>
 
 @class NSIndexPath, NSString, UIView;
 @protocol UITableConstants;

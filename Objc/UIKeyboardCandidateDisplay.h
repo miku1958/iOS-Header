@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateDisplay : NSObject
@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedCandidateView;
 + (id)sharedCandidateViewForInlineView;
 + (id)sharedCandidateViewForInlineView:(BOOL)arg1;
++ (id)snapshot;
 
 @end
 

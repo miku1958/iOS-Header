@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, UICollectionView, UICollectionViewLayout;
 
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
     struct {
         unsigned int contentSizeIsValid:1;
         unsigned int itemCountsAreValid:1;
+        unsigned int layoutIsPreparing:1;
         unsigned int layoutIsPrepared:1;
         unsigned int layoutLocked:1;
     } _collectionViewDataFlags;
@@ -68,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)invalidateSupplementaryIndexPaths:(id)arg1;
 - (BOOL)isGlobalIndexValid:(long long)arg1;
 - (BOOL)isIndexPathValid:(id)arg1;
+- (BOOL)isIndexPathValid:(id)arg1 validateItemCounts:(BOOL)arg2;
 - (id)knownDecorationElementKinds;
 - (id)knownSupplementaryElementKinds;
 - (id)layoutAttributesForCellsInRect:(struct CGRect)arg1 validateLayout:(BOOL)arg2;

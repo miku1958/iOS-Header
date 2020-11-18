@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
-@class NSArray, NSCoder, NSString, UIBarButtonItem, UIDimmingView, UIFocusAnimationCoordinator, UIFocusUpdateContext, UIPopoverController, UIPresentationController, UIResponder, UISplitViewController, UITraitCollection, UIView, UIViewController;
+@class NSArray, NSCoder, NSString, UIBarButtonItem, UIDimmingView, UIFocusAnimationCoordinator, UIFocusUpdateContext, UIPopoverController, UIPresentationController, UIResponder, UISplitViewController, UISplitViewControllerDisplayModeBarButtonItem, UITraitCollection, UIView, UIViewController;
 @protocol UIContentContainer, UISplitViewControllerDelegate, UIViewControllerTransitionCoordinator;
 
 @protocol UISplitViewControllerImpl <NSObject>
@@ -21,8 +21,11 @@
 @property (nonatomic) double minimumPrimaryColumnWidth;
 @property (nonatomic) long long preferredDisplayMode;
 @property (nonatomic) double preferredPrimaryColumnWidthFraction;
+@property (nonatomic) BOOL prefersOverlayInRegularWidthPhone;
 @property (nonatomic) BOOL presentsWithGesture;
 @property (nonatomic) long long primaryEdge;
+@property (nonatomic) BOOL usesDeviceOverlayPreferences;
+@property (nonatomic, getter=_usesExtraWidePrimaryColumn, setter=_setUsesExtraWidePrimaryColumn:) BOOL usesExtraWidePrimaryColumn;
 @property (copy, nonatomic) NSArray *viewControllers;
 
 - (NSArray *)_additionalViewControllersToCheckForUserActivity;
@@ -36,14 +39,17 @@
 - (void)_didEndSnapshotSession;
 - (void)_didUpdateFocusInContext:(UIFocusUpdateContext *)arg1 withAnimationCoordinator:(UIFocusAnimationCoordinator *)arg2;
 - (BOOL)_disableAutomaticKeyboardBehavior;
+- (void)_displayModeBarButtonItemWasUsedForFirstTime:(UISplitViewControllerDisplayModeBarButtonItem *)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(UIViewController *)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (struct CGRect)_frameForChildContentContainer:(id<UIContentContainer>)arg1;
 - (void)_getRotationContentSettings:(CDStruct_8bdd0ba6 *)arg1;
 - (BOOL)_handlesCounterRotationForPresentation;
 - (BOOL)_hasPreferredInterfaceOrientationForPresentation;
+- (BOOL)_iPhoneShouldUseOverlayInCurrentEnvironment;
 - (void)_initWithCoder:(NSCoder *)arg1;
 - (BOOL)_isCollapsed;
 - (BOOL)_isRotating;
+- (BOOL)_layoutPrimaryOnRight;
 - (void)_marginInfoForChild:(UIViewController *)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (void)_popoverController:(UIPopoverController *)arg1 didChangeFromVisible:(BOOL)arg2;
@@ -93,6 +99,5 @@
 @optional
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id<UIContentContainer>)arg1;
 - (void)removeChildViewController:(UIViewController *)arg1;
-- (void)updateViewConstraints;
 @end
 

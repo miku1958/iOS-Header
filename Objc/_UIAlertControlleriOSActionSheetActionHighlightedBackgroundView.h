@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
-#import <UIKit/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
+#import <UIKitCore/UIInterfaceActionVisualBackgroundDisplaying-Protocol.h>
+#import <UIKitCore/UIInterfaceActionVisualGroupBackgroundDisplaying-Protocol.h>
 
 @class NSString, UIVisualEffectView;
 

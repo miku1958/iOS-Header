@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIBlurEffect.h>
+#import <UIKitCore/UIBlurEffect.h>
 
 @class UIColor, _UIBackdropViewSettings;
 

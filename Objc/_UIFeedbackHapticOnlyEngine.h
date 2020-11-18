@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIFeedbackHapticEngine.h>
+#import <UIKitCore/_UIFeedbackHapticEngine.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIFeedbackHapticOnlyEngine : _UIFeedbackHapticEngine

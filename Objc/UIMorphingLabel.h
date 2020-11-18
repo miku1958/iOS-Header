@@ -4,11 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSMutableArray, NSString, UIColor, UIFont, UIMorphingLabelGlyphSet, _UIViewAnimationAttributes;
 
-__attribute__((visibility("hidden")))
 @interface UIMorphingLabel : UIView
 {
     UIMorphingLabelGlyphSet *_srcGlyphSet;
@@ -35,17 +34,24 @@ __attribute__((visibility("hidden")))
     UIFont *_font;
     UIColor *_textColor;
     long long _textAlignment;
+    double _initialScale;
+    double _glyphScaleAnimationSpeed;
+    double _rippleDuration;
     struct CGRect _visibleRect;
 }
 
 @property (nonatomic) BOOL enableAnimation; // @synthesize enableAnimation=_enableAnimation;
 @property (strong, nonatomic) UIFont *font; // @synthesize font=_font;
+@property (nonatomic) double glyphScaleAnimationSpeed; // @synthesize glyphScaleAnimationSpeed=_glyphScaleAnimationSpeed;
+@property (nonatomic) double initialScale; // @synthesize initialScale=_initialScale;
+@property (nonatomic) double rippleDuration; // @synthesize rippleDuration=_rippleDuration;
 @property (nonatomic) BOOL suppressLayoutSubviews; // @synthesize suppressLayoutSubviews=_suppressLayoutSubviews;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (nonatomic) long long textAlignment; // @synthesize textAlignment=_textAlignment;
 @property (strong, nonatomic) UIColor *textColor; // @synthesize textColor=_textColor;
 @property (nonatomic) struct CGRect visibleRect; // @synthesize visibleRect=_visibleRect;
 
+- (double)_rippleDurationForEndInsertion:(BOOL)arg1;
 - (double)alphaForFrame:(struct CGRect)arg1;
 - (void)animateAlignmentHunkAtIndex:(unsigned long long)arg1;
 - (void)animateChangeInWidthOutsideAlignmentHunkAtIndex:(unsigned long long)arg1;

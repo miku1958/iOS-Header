@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAppearanceContainer-Protocol.h>
+#import <UIKitCore/UIAppearanceContainer-Protocol.h>
 
 @protocol _UIAppearanceRestriction <UIAppearanceContainer>
 + (BOOL)_preventsAppearanceProxyCustomization;

@@ -4,26 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIInteraction-Protocol.h>
+#import <UIKitCore/UIInteraction-Protocol.h>
+#import <UIKitCore/_UIClickInteractionProgressProvidingDelegate-Protocol.h>
 
-@class NSString, UITouchForceGestureRecognizer, UIView, _UIClickFeedbackGenerator, _UIPreviewInteractionHighlighter;
-@protocol UIClickInteractionDelegate;
+@class NSString, UIView, _UIClickFeedbackGenerator, _UIPreviewInteractionHighlighter;
+@protocol UIClickInteractionDelegate, _UIClickInteractionProgressProviding;
 
-@interface UIClickInteraction : NSObject <UIGestureRecognizerDelegate, UIInteraction>
+@interface UIClickInteraction : NSObject <_UIClickInteractionProgressProvidingDelegate, UIInteraction>
 {
-    UIView *_view;
-    UITouchForceGestureRecognizer *_touchForceGestureRecognizer;
     _UIClickFeedbackGenerator *_feedbackGenerator;
     BOOL _interactive;
     long long _state;
     _UIPreviewInteractionHighlighter *_interactionEffect;
     BOOL _latching;
     BOOL _selected;
-    UIView *view;
+    UIView *_view;
     id<UIClickInteractionDelegate> _delegate;
+    id<_UIClickInteractionProgressProviding> _progressProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -31,19 +30,23 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isLatching) BOOL latching; // @synthesize latching=_latching;
+@property (strong, nonatomic) id<_UIClickInteractionProgressProviding> progressProvider; // @synthesize progressProvider=_progressProvider;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
 @property (readonly) Class superclass;
-@property (readonly, weak, nonatomic) UIView *view; // @synthesize view;
+@property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
 - (void)_createFeedbackGenerator;
 - (void)_endInteractionIfNeeded;
-- (void)_handleTouchForceGestureRecognizer:(id)arg1;
+- (void)_playFeedbackForTransitionFromState:(long long)arg1 toState:(long long)arg2;
 - (void)_prepareForInteraction;
-- (void)_updateInteractionForGestureRecognizer:(id)arg1;
+- (Class)_progressProviderClass;
+- (void)_updateProgressProvider;
 - (void)cancelInteraction;
+- (void)clickProgressProvider:(id)arg1 didUpdateWithOverallProgress:(double)arg2 currentState:(long long)arg3;
+- (void)clickProgressProviderDidBegin:(id)arg1;
+- (void)clickProgressProviderDidEnd:(id)arg1;
 - (void)didMoveToView:(id)arg1;
-- (id)init;
 - (void)willMoveToView:(id)arg1;
 
 @end

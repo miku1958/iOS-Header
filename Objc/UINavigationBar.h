@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIAccessibilityHUDGestureHosting-Protocol.h>
-#import <UIKit/UIBarPositioning-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIStatusBarTinting-Protocol.h>
-#import <UIKit/_UIBarPositioningInternal-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIAccessibilityHUDGestureDelegate-Protocol.h>
+#import <UIKitCore/UIBarPositioning-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIStatusBarTinting-Protocol.h>
+#import <UIKitCore/_UIBarPositioningInternal-Protocol.h>
 
 @class NSArray, NSDictionary, NSString, UIAccessibilityHUDGestureManager, UIColor, UIImage, UILayoutGuide, UINavigationItem, _UINavigationBarItemStack, _UINavigationBarVisualProvider, _UINavigationBarVisualStyle, _UINavigationControllerRefreshControlHost, _UINavigationItemButtonView, _UIViewControllerTransitionContext;
 @protocol UINavigationBarDelegate, _UINavigationBarDelegatePrivate;
 
-@interface UINavigationBar : UIView <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureHosting, UIStatusBarTinting, _UIBarPositioningInternal, NSCoding, UIBarPositioning>
+@interface UINavigationBar : UIView <UIGestureRecognizerDelegate, UIAccessibilityHUDGestureDelegate, UIStatusBarTinting, _UIBarPositioningInternal, NSCoding, UIBarPositioning>
 {
     _UINavigationBarItemStack *_stack;
     id<_UINavigationBarDelegatePrivate> _delegate;
@@ -112,6 +112,7 @@
 @property (nonatomic, getter=isTranslucent) BOOL translucent;
 
 + (id)_defaultVisualStyleForOrientation:(long long)arg1;
++ (BOOL)_forceLegacyVisualProvider;
 + (void)_initializeForIdiom:(long long)arg1;
 + (void)_setUseCustomBackButtonAction:(BOOL)arg1;
 + (id)_statusBarBaseTintColorForStyle:(long long)arg1 translucent:(BOOL)arg2 tintColor:(id)arg3;
@@ -131,6 +132,7 @@
 - (id)_accessibilityHUDGestureManager:(id)arg1 HUDItemForPoint:(struct CGPoint)arg2;
 - (void)_accessibilityHUDGestureManager:(id)arg1 gestureLiftedAtPoint:(struct CGPoint)arg2;
 - (BOOL)_accessibilityHUDGestureManager:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)_accessibilityHUDGestureManagerShouldBegin:(id)arg1;
 - (id)_accessibility_contentsOfNavigationBar;
 - (void)_accessibility_navigationBarContentsDidChange;
 - (id)_accessibility_navigationController;
@@ -152,6 +154,7 @@
 - (void)_barSizeDidChange:(struct CGSize)arg1;
 - (long long)_barStyle;
 - (BOOL)_canHandleStatusBarTouchAtLocation:(struct CGPoint)arg1;
+- (BOOL)_canShowBackgroundEffects;
 - (void)_cancelInProgressPushOrPop;
 - (void)_cancelInteractiveTransition;
 - (void)_cancelInteractiveTransition:(double)arg1 completionSpeed:(double)arg2 completionCurve:(long long)arg3;
@@ -177,6 +180,7 @@
 - (void)_disableAnimation;
 - (void)_displayItemsKeepingOwningNavigationBar:(id)arg1;
 - (double)_effectiveBackIndicatorLeftMargin;
+- (id)_effectiveBackgroundEffects;
 - (id)_effectiveBarTintColor;
 - (void)_effectiveBarTintColorDidChangeWithPreviousColor:(id)arg1;
 - (id)_effectiveDelegate;
@@ -190,6 +194,7 @@
 - (BOOL)_hasBackButton;
 - (BOOL)_hasCustomAutolayoutNeighborSpacingForAttribute:(long long *)arg1;
 - (BOOL)_hasLegacyProvider;
+- (BOOL)_heightDependentOnOrientation;
 - (CDStruct_c3b9c2ee)_heightRangeForNavigationItem:(id)arg1 fittingWidth:(double)arg2;
 - (BOOL)_hostsLayoutEngineAllowsTAMIC_NO;
 - (struct CGRect)_incomingNavigationBarFrame;

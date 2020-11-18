@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UISwipeAction.h>
+#import <UIKitCore/UISwipeAction.h>
 
 @interface UICollectionViewTableLayoutSwipeAction : UISwipeAction
 {

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UINavigationBarAugmentedTitleView-Protocol.h>
+#import <UIKitCore/_UINavigationBarAugmentedTitleView-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSString, UINavigationItem, _UINavigationBarTitleViewOverlayRects;
 @protocol _UINavigationBarTitleViewDataSource;
@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) BOOL _hideNavigationBarTrailingBarButtons;
 @property (readonly, nonatomic) double _navigationBarBackButtonMaximumWidth;
 @property (readonly, nonatomic) double _navigationBarContentHeight;
+@property (readonly, nonatomic) long long _preferredAlignment;
 @property (readonly, nonatomic) BOOL _underlayNavigationBarContent;
 @property (nonatomic) double backButtonMaximumWidth; // @synthesize backButtonMaximumWidth=_backButtonMaximumWidth;
 @property (readonly, copy, nonatomic) NSArray *contentOverlayRects;
@@ -45,7 +46,6 @@
 @property (nonatomic) BOOL hideStandardTitle; // @synthesize hideStandardTitle=_hideStandardTitle;
 @property (nonatomic) BOOL hideTrailingBarButtons; // @synthesize hideTrailingBarButtons=_hideTrailingBarButtons;
 @property (readonly, weak, nonatomic) UINavigationItem *navigationItem; // @synthesize navigationItem=_navigationItem;
-@property (readonly, nonatomic) int preferredAlignment;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long titleLocation; // @synthesize titleLocation=_titleLocation;
 @property (nonatomic) BOOL underlayBarContent; // @synthesize underlayBarContent=_underlayBarContent;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, UIColor, UIFont, UIPhraseBoundaryGestureRecognizer, UIResponder, UITextInputArrowKeyHistory, UITextPosition, UITextRange, UIView;
+@class NSAttributedString, NSString, UIColor, UIFont, UIPhraseBoundaryGestureRecognizer, UIResponder, UITextInputArrowKeyHistory, UITextPosition, UITextRange, UIView;
 @protocol UITextInput, UITextInputPrivate;
 
 @protocol UITextInput_Internal
@@ -58,6 +58,7 @@
 - (UITextPosition *)_positionWithinRange:(UITextRange *)arg1 farthestInDirection:(long long)arg2;
 - (BOOL)_range:(UITextRange *)arg1 containsRange:(UITextRange *)arg2;
 - (BOOL)_range:(UITextRange *)arg1 intersectsRange:(UITextRange *)arg2;
+- (UITextRange *)_rangeFromCurrentRangeWithDelta:(struct _NSRange)arg1;
 - (UITextRange *)_rangeOfEnclosingWord:(UITextPosition *)arg1;
 - (UITextRange *)_rangeOfLineEnclosingPosition:(UITextPosition *)arg1;
 - (UITextRange *)_rangeOfParagraphEnclosingPosition:(UITextPosition *)arg1;
@@ -76,10 +77,12 @@
 - (BOOL)_selectionAtDocumentStart;
 - (BOOL)_selectionAtWordStart;
 - (struct CGRect)_selectionClipRect;
+- (void)_setAttributedMarkedText:(NSAttributedString *)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)_setCaretSelectionAtEndOfSelection;
 - (void)_setGestureRecognizers;
 - (void)_setMarkedText:(NSString *)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)_setSelectedTextRange:(UITextRange *)arg1 withAffinityDownstream:(BOOL)arg2;
+- (void)_setSelectionToPosition:(UITextPosition *)arg1;
 - (BOOL)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(NSString *)arg2 checkAutocorrection:(BOOL)arg3;
 - (UIColor *)_textColorForCaretSelection;
 - (UITextRange *)_textRangeFromNSRange:(struct _NSRange)arg1;

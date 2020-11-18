@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPopoverPresentationController.h>
+#import <UIKitCore/UIPopoverPresentationController.h>
 
-#import <UIKit/_UIActionSheetCompactPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIActionSheetCompactPresentationControllerDelegate-Protocol.h>
 
 @class NSString, _UIActionSheetCompactPresentationController;
 @protocol UIActionSheetPresentationControllerDelegate;

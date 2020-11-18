@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @protocol _UIFocusMovementPerformerDelegate;
 
@@ -20,11 +20,11 @@ __attribute__((visibility("hidden")))
 - (id)_bestCandidateForFocusMovement:(id)arg1;
 - (id)_bestCandidateForLinearFocusMovement:(id)arg1;
 - (id)_bestCandidateForNonLinearFocusMovement:(id)arg1;
-- (id)_findFocusCandidateByExhaustivelySearchingScrollView:(id)arg1 forRequest:(id)arg2;
+- (id)_findFocusCandidateByExhaustivelySearchingScrollableContainer:(id)arg1 forRequest:(id)arg2;
 - (id)_findFocusCandidateBySearchingLinearFocusMovementSequencesForRequest:(id)arg1;
-- (id)_findFocusCandidateWithoutLoadingScrollViewContent:(id)arg1 forRequest:(id)arg2 minimumSearchArea:(struct CGRect)arg3;
-- (void)_loadScrollViewContentForFocusMovement:(id)arg1;
-- (struct CGRect)_minimumSearchAreaForContainerView:(id)arg1 inWindow:(id)arg2;
+- (id)_findFocusCandidateWithoutLoadingScrollableContent:(id)arg1 forRequest:(id)arg2 minimumSearchArea:(struct CGRect)arg3;
+- (void)_loadScrollableContentForFocusMovement:(id)arg1;
+- (struct CGRect)_minimumSearchAreaForContainer:(id)arg1 inWindow:(id)arg2;
 - (BOOL)_shouldRecordDestinationItemDistanceOffscreenInWindow:(id)arg1;
 - (BOOL)performFocusMovement:(id)arg1;
 - (id)viewForFocusHeading:(unsigned long long)arg1 fromView:(id)arg2;

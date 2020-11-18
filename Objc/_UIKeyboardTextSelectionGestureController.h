@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, UIDelayedAction, UITextMagnifierTimeWeightedPoint, _UIStatesFeedbackGenerator;
 @protocol _UIKeyboardTextSelectionGestureControllerDelegate;
@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     BOOL _didSuppressSelectionGrabbers;
     BOOL _isLongPressing;
     BOOL _isPanning;
+    BOOL _isSpacePan;
+    BOOL _hadSpacePanTap;
     BOOL _didFloatCursor;
     int _previousForcePressCount;
     id<_UIKeyboardTextSelectionGestureControllerDelegate> _delegate;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
     double _twoFingerTapTimestamp;
     long long _previousRepeatedGranularity;
     long long _panGestureState;
+    double _spacePanDistance;
     NSMutableArray *_activeGestures;
     UIDelayedAction *_tapLogTimer;
     UIDelayedAction *_longForcePressAction;
@@ -45,14 +48,17 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL didFloatCursor; // @synthesize didFloatCursor=_didFloatCursor;
 @property (nonatomic) BOOL didSuppressSelectionGrabbers; // @synthesize didSuppressSelectionGrabbers=_didSuppressSelectionGrabbers;
 @property (strong, nonatomic) _UIStatesFeedbackGenerator *feedbackBehaviour; // @synthesize feedbackBehaviour=_feedbackBehaviour;
+@property (nonatomic) BOOL hadSpacePanTap; // @synthesize hadSpacePanTap=_hadSpacePanTap;
 @property (nonatomic) BOOL isLongPressing; // @synthesize isLongPressing=_isLongPressing;
 @property (nonatomic) BOOL isPanning; // @synthesize isPanning=_isPanning;
+@property (nonatomic) BOOL isSpacePan; // @synthesize isSpacePan=_isSpacePan;
 @property (nonatomic) struct CGPoint lastPanTranslation; // @synthesize lastPanTranslation=_lastPanTranslation;
 @property (nonatomic) double lastPressTimestamp; // @synthesize lastPressTimestamp=_lastPressTimestamp;
 @property (strong, nonatomic) UIDelayedAction *longForcePressAction; // @synthesize longForcePressAction=_longForcePressAction;
 @property (nonatomic) long long panGestureState; // @synthesize panGestureState=_panGestureState;
 @property (nonatomic) int previousForcePressCount; // @synthesize previousForcePressCount=_previousForcePressCount;
 @property (nonatomic) long long previousRepeatedGranularity; // @synthesize previousRepeatedGranularity=_previousRepeatedGranularity;
+@property (nonatomic) double spacePanDistance; // @synthesize spacePanDistance=_spacePanDistance;
 @property (nonatomic) BOOL suppressTwoFingerPan; // @synthesize suppressTwoFingerPan=_suppressTwoFingerPan;
 @property (strong, nonatomic) UIDelayedAction *tapLogTimer; // @synthesize tapLogTimer=_tapLogTimer;
 @property (nonatomic) double twoFingerTapTimestamp; // @synthesize twoFingerTapTimestamp=_twoFingerTapTimestamp;
@@ -62,9 +68,11 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (void)_cleanupDeadGesturesIfNecessary;
+- (BOOL)_longPressAllowedForView:(id)arg1;
 - (id)addDeallocationHandler:(CDUnknownBlockType)arg1;
-- (id)addOneFingerTextSelectionGesturesToView:(id)arg1;
-- (id)addTwoFingerTextSelectionGesturesToView:(id)arg1;
+- (id)addLongPressTextSelectionInteractionsToView:(id)arg1;
+- (id)addOneFingerTextSelectionInteractionsToView:(id)arg1;
+- (id)addTwoFingerTextSelectionInteractionsToView:(id)arg1;
 - (BOOL)allowOneFingerDeepPress;
 - (void)configureOneFingerForcePressRecognizer:(id)arg1;
 - (void)configureTwoFingerPanGestureRecognizer:(id)arg1;
@@ -72,7 +80,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didRemoveSelectionController;
 - (void)enableEnclosingScrollViewNestedPinching;
-- (Class)gestureCluster;
 - (id)init;
 - (double)oneFingerForcePressAllowableMovement;
 - (double)oneFingerForcePressMinimumDuration;
@@ -81,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (void)redisableEnclosingScrollViewNestedPinching;
 - (void)removeDeallocationHandler:(id)arg1;
 - (id)selectionController;
+- (Class)textInteractionClass;
 - (void)willRemoveSelectionController;
 
 @end

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UILayoutGuide.h>
+#import <UIKitCore/UILayoutGuide.h>
 
-#import <UIKit/_UIFocusGuideRegionDelegate-Protocol.h>
-#import <UIKit/_UIFocusRegionContainer-Protocol.h>
-#import <UIKit/_UILegacyFocusRegion-Protocol.h>
+#import <UIKitCore/_UIFocusGuideRegionDelegate-Protocol.h>
+#import <UIKitCore/_UIFocusRegionContainer-Protocol.h>
+#import <UIKitCore/_UILegacyFocusRegion-Protocol.h>
 
 @class NSArray, NSString, UIView;
-@protocol UIFocusEnvironment;
+@protocol UIFocusEnvironment, UIFocusItemContainer;
 
 @interface UIFocusGuide : UILayoutGuide <_UILegacyFocusRegion, _UIFocusRegionContainer, _UIFocusGuideRegionDelegate>
 {
@@ -28,9 +28,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic, getter=_linearFocusMovementSequences) NSArray *linearFocusMovementSequences;
-@property (readonly, weak, nonatomic, getter=_parentFocusEnvironment) id<UIFocusEnvironment> parentFocusEnvironment;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (copy, nonatomic) NSArray *preferredFocusEnvironments; // @synthesize preferredFocusEnvironments=_preferredFocusEnvironments;
 @property (readonly, nonatomic, getter=_preferredFocusMovementStyle) long long preferredFocusMovementStyle;
 @property (weak, nonatomic) UIView *preferredFocusedView;

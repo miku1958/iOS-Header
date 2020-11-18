@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UICollectionLayoutGeometryGroupConfiguration-Protocol.h>
+#import <UIKitCore/UICollectionLayoutGeometryGroupConfiguration-Protocol.h>
 
 @class NSArray, NSString, UICollectionLayoutGeometryGroupItemConfiguration;
 

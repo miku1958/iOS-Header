@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIPreviewPresentationControllerDelegate-Protocol.h>
-#import <UIKit/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <UIKit/UIViewControllerTransitioningDelegate-Protocol.h>
+#import <UIKitCore/UIPreviewPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
+#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class NSString, UIView, UIViewController, UIWindow, _UIPreviewInteractionHighlighter, _UIPreviewInteractionViewControllerPresentation;
 @protocol UIViewControllerContextTransitioning;

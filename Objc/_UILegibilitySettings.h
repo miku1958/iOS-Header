@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSString, UIColor;
 
-@interface _UILegibilitySettings : NSObject <NSSecureCoding>
+@interface _UILegibilitySettings : NSObject <NSSecureCoding, NSCopying>
 {
     long long _style;
     UIColor *_contentColor;
@@ -37,7 +38,9 @@
 
 + (id)sharedInstanceForStyle:(long long)arg1;
 + (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContentColor:(id)arg1;

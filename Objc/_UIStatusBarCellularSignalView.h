@@ -4,30 +4,35 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarSignalView.h>
+#import <UIKitCore/_UIStatusBarSignalView.h>
 
 @class _UIStatusBarCycleAnimation;
 
 @interface _UIStatusBarCellularSignalView : _UIStatusBarSignalView
 {
+    BOOL _needsCycleAnimationUpdate;
     _UIStatusBarCycleAnimation *_cycleAnimation;
 }
 
 @property (strong, nonatomic) _UIStatusBarCycleAnimation *cycleAnimation; // @synthesize cycleAnimation=_cycleAnimation;
+@property (nonatomic) BOOL needsCycleAnimationUpdate; // @synthesize needsCycleAnimationUpdate=_needsCycleAnimationUpdate;
 
++ (double)_barCornerRadiusForIconSize:(long long)arg1;
++ (double)_barWidthForIconSize:(long long)arg1;
++ (double)_heightForNormalBarAtIndex:(long long)arg1 iconSize:(long long)arg2;
++ (double)_interspaceForIconSize:(long long)arg1;
++ (struct CGSize)_intrinsicContentSizeForNumberOfBars:(long long)arg1 iconSize:(long long)arg2;
 - (void).cxx_destruct;
-- (double)_barCornerRadius;
-- (double)_barWidth;
 - (void)_colorsDidChange;
 - (double)_heightForBarAtIndex:(long long)arg1;
 - (double)_heightForBarAtIndex:(long long)arg1 mode:(long long)arg2;
-- (double)_interspace;
+- (void)_iconSizeDidChange;
+- (void)_setNeedsUpdateCycleAnimation;
 - (void)_updateActiveBars;
 - (void)_updateBars;
-- (void)_updateCycleAnimation;
-- (void)_updateCycleAnimationVisibility;
+- (void)_updateCycleAnimationIfNeeded;
+- (void)_updateCycleAnimationNow;
 - (void)_updateFromMode:(long long)arg1;
-- (void)_visibilityDidChange;
 - (id)accessibilityHUDRepresentation;
 - (void)didMoveToWindow;
 - (struct CGSize)intrinsicContentSize;

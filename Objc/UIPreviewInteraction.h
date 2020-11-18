@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CADisplayLink, NSHashTable, UIView, _UIDeepPressAnalyzer, _UIPreviewInteractionHighlighter, _UIPreviewInteractionStateRecognizer, _UIPreviewInteractionViewControllerHelper, _UIStatesFeedbackGenerator;
 @protocol UIPreviewInteractionDelegate, _UIPreviewInteractionTouchForceProviding;

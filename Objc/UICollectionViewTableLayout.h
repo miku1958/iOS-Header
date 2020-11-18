@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewLayout.h>
+#import <UIKitCore/UICollectionViewLayout.h>
 
-#import <UIKit/UICollectionViewTableAttributes-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UISwipeActionHost-Protocol.h>
-#import <UIKit/UITable_Internal-Protocol.h>
+#import <UIKitCore/UICollectionViewTableAttributes-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UISwipeActionHost-Protocol.h>
+#import <UIKitCore/UITable_Internal-Protocol.h>
 
 @class NSIndexPath, NSMutableArray, NSSet, NSString, UIColor, UIScrollView, UISwipeActionController, UISwipeActionDeleteScanlineView, UITableViewRowData, UITraitCollection, UIView, UIVisualEffect;
 @protocol UICollectionViewDataSourceTableLayout, UICollectionViewDelegateTableLayout, UITableConstants;
@@ -212,7 +212,7 @@
 - (void)prepareLayout;
 - (void)resetSwipedRowWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
-- (void)swipeActionController:(id)arg1 animateView:(id)arg2 actionsView:(id)arg3 forDestructiveAction:(id)arg4 atIndexPath:(id)arg5 withSwipeInfo:(CDStruct_b06b0113)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)swipeActionController:(id)arg1 animateView:(id)arg2 actionsView:(id)arg3 forDestructiveAction:(id)arg4 atIndexPath:(id)arg5 withSwipeInfo:(CDStruct_9b6dff2a)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)swipeActionController:(id)arg1 didEndSwipeForItemAtIndexPath:(id)arg2;
 - (id)swipeActionController:(id)arg1 indexPathForTouchLocation:(struct CGPoint)arg2;
 - (id)swipeActionController:(id)arg1 leadingSwipeConfigurationForItemAtIndexPath:(id)arg2;

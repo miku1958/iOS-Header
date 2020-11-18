@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewDragDelegate-Protocol.h>
+#import <UIKitCore/UITableViewDragDelegate-Protocol.h>
 
 @class NSIndexPath, UITableView;
 @protocol UIDragSession;

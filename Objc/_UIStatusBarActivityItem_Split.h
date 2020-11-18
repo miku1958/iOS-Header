@@ -4,28 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarActivityItem.h>
+#import <UIKitCore/_UIStatusBarActivityItem_SyncOnly.h>
 
-@class UIActivityIndicatorView, _UIStatusBarActivityView;
+@class _UIStatusBarActivityIndicator, _UIStatusBarActivityView;
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarActivityItem_Split : _UIStatusBarActivityItem
+@interface _UIStatusBarActivityItem_Split : _UIStatusBarActivityItem_SyncOnly
 {
     _UIStatusBarActivityView *_activityView;
-    UIActivityIndicatorView *_syncStartView;
+    _UIStatusBarActivityIndicator *_syncStartView;
 }
 
 @property (strong, nonatomic) _UIStatusBarActivityView *activityView; // @synthesize activityView=_activityView;
-@property (strong, nonatomic) UIActivityIndicatorView *syncStartView; // @synthesize syncStartView=_syncStartView;
+@property (strong, nonatomic) _UIStatusBarActivityIndicator *syncStartView; // @synthesize syncStartView=_syncStartView;
 
 + (id)pillDisplayIdentifier;
 + (id)syncStartDisplayIdentifier;
 - (void).cxx_destruct;
-- (BOOL)_enableForType:(long long)arg1;
 - (struct UIEdgeInsets)activityIndicatorAlignmentRectInsets;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
-- (id)init;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 

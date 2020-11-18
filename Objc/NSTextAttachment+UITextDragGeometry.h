@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "NSTextAttachment.h"
+#import <UIFoundation/NSTextAttachment.h>
 
 @interface NSTextAttachment (UITextDragGeometry)
 + (BOOL)_attachmentHasImage:(id)arg1;

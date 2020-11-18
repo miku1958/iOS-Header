@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UIButtonBarAppearanceDelegate-Protocol.h>
+#import <UIKitCore/_UIButtonBarAppearanceDelegate-Protocol.h>
 
-@class UIColor, UIImage;
+@class NSString, UIColor, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface _UIBarContentView : UIView <_UIButtonBarAppearanceDelegate>
@@ -30,9 +30,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) long long barType;
 @property (nonatomic) BOOL barWantsLetterpress; // @synthesize barWantsLetterpress=_barWantsLetterpress;
 @property (nonatomic) BOOL centerTextButtons; // @synthesize centerTextButtons=_centerTextButtons;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double defaultEdgeSpacing;
 @property (readonly, nonatomic) double defaultTextPadding;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isRTL;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) UIColor *tintColor; // @dynamic tintColor;
 
 - (void).cxx_destruct;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKitCore/UIImageView.h>
 
 @class NSArray, NSString, UIView, _UIBadgeView, _UIFloatingContentView, _UISegmentedControlAppearanceStorage;
 
@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_hasSelectedColor;
 - (double)_idealWidth;
 - (void)_invalidateInfoConstraints;
+- (BOOL)_isContainedInHostedFocusSystem;
 - (BOOL)_isInMiniBar;
 - (struct CGSize)_maximumTextSize;
 - (struct UIEdgeInsets)_paddingInsets;

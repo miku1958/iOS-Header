@@ -4,24 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <UIKitCore/_UIStatusBarVisualProvider_Phone.h>
 
-#import <UIKit/_UIStatusBarVisualProvider-Protocol.h>
+@class NSDictionary, NSLayoutConstraint, NSTimer, UILayoutGuide, _UIStatusBarDisplayItemPlacement, _UIStatusBarDisplayItemPlacementGroup;
 
-@class NSDictionary, NSLayoutConstraint, NSString, NSTimer, UILayoutGuide, _UIStatusBar, _UIStatusBarDisplayItemPlacement, _UIStatusBarStyleAttributes;
-
-__attribute__((visibility("hidden")))
-@interface _UIStatusBarVisualProvider_Split : NSObject <_UIStatusBarVisualProvider>
+@interface _UIStatusBarVisualProvider_Split : _UIStatusBarVisualProvider_Phone
 {
-    BOOL _expanded;
-    _UIStatusBar *_statusBar;
     NSDictionary *_orderedDisplayItemPlacements;
     _UIStatusBarDisplayItemPlacement *_serviceNamePlacement;
+    _UIStatusBarDisplayItemPlacement *_dualServiceNamePlacement;
+    _UIStatusBarDisplayItemPlacementGroup *_lowerWifiGroup;
     _UIStatusBarDisplayItemPlacement *_pillIconPlacement;
     _UIStatusBarDisplayItemPlacement *_batteryChargingPlacement;
     UILayoutGuide *_cutoutLayoutGuide;
     UILayoutGuide *_mainRegionsLayoutGuide;
     NSLayoutConstraint *_leadingBottomConstraint;
+    NSLayoutConstraint *_expandedLeadingLowerTopConstraint;
+    NSLayoutConstraint *_expandedTrailingBottomConstraint;
     NSTimer *_pillTimer;
     NSTimer *_systemUpdatesTimer;
     NSTimer *_batteryExpansionTimer;
@@ -32,34 +31,48 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *batteryChargingPlacement; // @synthesize batteryChargingPlacement=_batteryChargingPlacement;
 @property (strong, nonatomic) NSTimer *batteryExpansionTimer; // @synthesize batteryExpansionTimer=_batteryExpansionTimer;
 @property (strong, nonatomic) UILayoutGuide *cutoutLayoutGuide; // @synthesize cutoutLayoutGuide=_cutoutLayoutGuide;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (nonatomic) BOOL expanded; // @synthesize expanded=_expanded;
-@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *dualServiceNamePlacement; // @synthesize dualServiceNamePlacement=_dualServiceNamePlacement;
+@property (strong, nonatomic) NSLayoutConstraint *expandedLeadingLowerTopConstraint; // @synthesize expandedLeadingLowerTopConstraint=_expandedLeadingLowerTopConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *expandedTrailingBottomConstraint; // @synthesize expandedTrailingBottomConstraint=_expandedTrailingBottomConstraint;
 @property (strong, nonatomic) NSLayoutConstraint *leadingBottomConstraint; // @synthesize leadingBottomConstraint=_leadingBottomConstraint;
+@property (strong, nonatomic) _UIStatusBarDisplayItemPlacementGroup *lowerWifiGroup; // @synthesize lowerWifiGroup=_lowerWifiGroup;
 @property (strong, nonatomic) UILayoutGuide *mainRegionsLayoutGuide; // @synthesize mainRegionsLayoutGuide=_mainRegionsLayoutGuide;
 @property (strong, nonatomic) NSDictionary *orderedDisplayItemPlacements; // @synthesize orderedDisplayItemPlacements=_orderedDisplayItemPlacements;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *pillIconPlacement; // @synthesize pillIconPlacement=_pillIconPlacement;
 @property (strong, nonatomic) NSTimer *pillTimer; // @synthesize pillTimer=_pillTimer;
 @property (strong, nonatomic) _UIStatusBarDisplayItemPlacement *serviceNamePlacement; // @synthesize serviceNamePlacement=_serviceNamePlacement;
-@property (weak, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
-@property (readonly, nonatomic) _UIStatusBarStyleAttributes *styleAttributes;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) NSTimer *systemUpdatesTimer; // @synthesize systemUpdatesTimer=_systemUpdatesTimer;
 
++ (struct NSDirectionalEdgeInsets)_edgeInsetsFromCenteringEdgeInset:(double)arg1 trailing:(BOOL)arg2;
++ (double)baseIconScale;
++ (double)baselineBottomInset;
++ (double)cornerRadius;
++ (struct NSDirectionalEdgeInsets)expandedEdgeInsets;
++ (id)expandedFont;
++ (double)height;
 + (struct CGSize)intrinsicContentSizeForOrientation:(long long)arg1;
++ (double)leadingCenteringEdgeInset;
++ (struct NSDirectionalEdgeInsets)leadingEdgeInsets;
++ (double)lowerExpandedBaselineOffset;
++ (id)normalFont;
++ (double)notchBottomCornerRadius;
++ (struct CGSize)notchSize;
++ (double)notchTopCornerRadius;
++ (double)pillCenteringEdgeInset;
++ (id)pillFont;
++ (struct CGSize)pillSize;
++ (double)referenceScale;
++ (double)referenceWidth;
++ (double)trailingCenteringEdgeInset;
++ (struct NSDirectionalEdgeInsets)trailingEdgeInsets;
++ (Class)visualProviderSubclassForScreen:(id)arg1;
 - (void).cxx_destruct;
 - (id)_additionAnimationForBatteryCharging;
-- (id)_animationForAirplaneMode;
 - (id)_animationForBackgroundActivityIcon;
 - (id)_animationForBackgroundActivityPill;
-- (void)_applyToAppearingRegions:(BOOL)arg1 block:(CDUnknownBlockType)arg2;
-- (void)_applyToRegionWithIdentifiers:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_collapseBattery;
 - (struct CGAffineTransform)_collapseChargingBoltTransformForDisplayItem:(id)arg1;
-- (id)_defaultAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (void)_disableSystemUpdates;
-- (id)_entryKeysDelayedDuringBatteryExpansion;
 - (struct CGAffineTransform)_expandedChargingBoltTransformForDisplayItem:(id)arg1;
 - (id)_removalAnimationForBatteryCharging;
 - (void)_resetBattery;
@@ -70,21 +83,34 @@ __attribute__((visibility("hidden")))
 - (void)_updateBackgroundActivityWithEntry:(id)arg1 timeEntry:(id)arg2 needsUpdate:(BOOL)arg3;
 - (void)_updateDataForBackgroundActivity:(id)arg1;
 - (void)_updateDataForBatteryCharging:(id)arg1;
-- (void)_updateDataForService:(id)arg1;
-- (void)_updateDataForSystemNavigation:(id)arg1;
 - (void)_updateDataForSystemUpdates:(id)arg1;
+- (void)_updateExpandedTrailingRegion;
+- (void)_updateLowerRegionsWithData:(id)arg1;
 - (void)_updateSystemNavigationWithData:(id)arg1;
+- (void)actionable:(id)arg1 highlighted:(BOOL)arg2 initialPress:(BOOL)arg3;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
+- (double)airplaneObstacleFadeOutDuration;
+- (double)airplaneShouldFadeForAnimationType:(long long)arg1;
+- (double)airplaneSpeedForAnimationType:(long long)arg1;
+- (double)airplaneTravelOffsetInProposedPartWithIdentifier:(id *)arg1 animationType:(long long)arg2;
+- (id)animationForAirplaneMode;
+- (BOOL)canFixupDisplayItemAttributes;
 - (void)dataUpdated:(id)arg1;
+- (id)defaultAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (id)displayItemIdentifiersForPartWithIdentifier:(id)arg1;
-- (void)modeUpdatedFromMode:(long long)arg1;
 - (id)orderedDisplayItemPlacementsInRegionWithIdentifier:(id)arg1;
-- (void)region:(id)arg1 highlighted:(BOOL)arg2 initialPress:(BOOL)arg3;
+- (void)orientationUpdatedFromOrientation:(long long)arg1;
+- (id)overriddenStyleAttributesForDisplayItemWithIdentifier:(id)arg1;
 - (id)region:(id)arg1 willSetDisplayItems:(id)arg2;
 - (id)regionIdentifiersForPartWithIdentifier:(id)arg1;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1 itemAnimation:(id)arg2;
+- (void)setExpanded:(BOOL)arg1;
 - (id)setupInContainerView:(id)arg1;
+- (void)statusBarRegionsUpdated;
+- (id)styleAttributes;
 - (void)styleUpdatedFromStyle:(long long)arg1;
+- (void)updateDataForService:(id)arg1;
+- (void)updateDataForSystemNavigation:(id)arg1;
 - (id)willUpdateWithData:(id)arg1;
 
 @end

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UINavigationController.h>
+#import <UIKitCore/UINavigationController.h>
 
-#import <UIKit/NSCoding-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
 
 @class NSArray, NSExtension, NSMutableDictionary, NSObject, NSString, UIView, UIViewController;
 @protocol OS_dispatch_queue, UINavigationControllerDelegate><UIImagePickerControllerDelegate;

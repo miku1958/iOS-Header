@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewAnimating-Protocol.h>
+#import <UIKitCore/UIViewAnimating-Protocol.h>
 
 @protocol UITimingCurveProvider;
 

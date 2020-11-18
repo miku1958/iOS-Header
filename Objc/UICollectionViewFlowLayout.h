@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewLayout.h>
+#import <UIKitCore/UICollectionViewLayout.h>
 
-@class NSDictionary, NSMutableArray, NSMutableDictionary, _UIFlowLayoutInfo;
+@class NSDictionary, NSMutableArray, NSMutableDictionary, _UIFlowLayoutInfo, _UIUpdateVisibleCellsContext;
 
 @interface UICollectionViewFlowLayout : UICollectionViewLayout
 {
@@ -26,6 +26,8 @@
         unsigned int sectionFootersFloat:1;
         unsigned int headerFollowsSectionMargins:1;
         unsigned int footerFollowsSectionMargins:1;
+        unsigned int fetchingItemsInfoForRect:1;
+        unsigned int isInUpdateVisibleCellsPass:1;
     } _gridLayoutFlags;
     double _interitemSpacing;
     double _lineSpacing;
@@ -49,6 +51,7 @@
     NSMutableArray *_indexPathsToValidate;
     NSMutableDictionary *_cachedItemAttributes;
     NSMutableDictionary *_cachedItemFrames;
+    _UIUpdateVisibleCellsContext *_updateVisibleCellsContext;
     long long _sectionInsetReference;
 }
 
@@ -72,6 +75,7 @@
 - (void)_calculateAttributesForRect:(struct CGRect)arg1;
 - (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (struct CGPoint)_contentOffsetForScrollingToSection:(long long)arg1;
+- (void)_didPerformUpdateVisibleCellsPass;
 - (double)_dimensionFromCollectionView;
 - (struct CGSize)_effectiveEstimatedItemSize;
 - (id)_existingLayoutAttributesForItemAtIndexPath:(id)arg1;
@@ -102,6 +106,7 @@
 - (void)_updateContentSizeScrollingDimensionWithDelta:(double)arg1;
 - (void)_updateDelegateFlags;
 - (void)_updateItemsLayoutForRect:(struct CGRect)arg1 allowsPartialUpdate:(BOOL)arg2;
+- (void)_willPerformUpdateVisibleCellsPass;
 - (struct CGSize)collectionViewContentSize;
 - (long long)developmentLayoutDirection;
 - (void)encodeWithCoder:(id)arg1;

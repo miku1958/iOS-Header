@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIImageView.h>
+#import <UIKitCore/UIImageView.h>
 
-#import <UIKit/UIInterfaceActionDisplayPropertyObserver-Protocol.h>
+#import <UIKitCore/UIInterfaceActionDisplayPropertyObserver-Protocol.h>
 
 @class NSLayoutConstraint, NSString, UIInterfaceAction;
 

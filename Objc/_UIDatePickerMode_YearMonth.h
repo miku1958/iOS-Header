@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIDatePickerMode_Date.h>
+#import <UIKitCore/_UIDatePickerMode_Date.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIDatePickerMode_YearMonth : _UIDatePickerMode_Date

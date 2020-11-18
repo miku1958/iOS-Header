@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
-#import <UIKit/UIScrollViewDelegate-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
+#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
 
 @class NSArray, NSIndexPath, NSString, UIFocusAnimationCoordinator, UISwipeActionsConfiguration, UITableView, UITableViewCell, UITableViewFocusUpdateContext, UIView;
 @protocol UISpringLoadedInteractionContext;

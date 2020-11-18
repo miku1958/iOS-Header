@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/UIInteractionProgressObserver-Protocol.h>
-#import <UIKit/UIViewAnimatingPrivate-Protocol.h>
-#import <UIKit/UIViewImplicitlyAnimating-Protocol.h>
-#import <UIKit/_UIBasicAnimationFactory-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/UIInteractionProgressObserver-Protocol.h>
+#import <UIKitCore/UIViewAnimatingPrivate-Protocol.h>
+#import <UIKitCore/UIViewImplicitlyAnimating-Protocol.h>
+#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
 
 @class CAMediaTimingFunction, NSArray, NSMutableArray, NSMutableDictionary, NSString, NSUUID, UIViewAnimationState, UIViewPropertyAnimatorTrackingState, _UIAppCACommitFuture, _UICompoundObjectMap;
 @protocol UITimingCurveProvider;

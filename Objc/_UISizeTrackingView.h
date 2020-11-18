@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UIRemoteViewFocusProxy-Protocol.h>
-#import <UIKit/_UIScrollToTopView-Protocol.h>
+#import <UIKitCore/_UIRemoteViewFocusProxy-Protocol.h>
+#import <UIKitCore/_UIScrollToTopView-Protocol.h>
+#import <UIKitCore/_UIViewBoundingPathChangeObserver-Protocol.h>
 
 @class NSString, _UIRemoteViewController;
 
 __attribute__((visibility("hidden")))
-@interface _UISizeTrackingView : UIView <_UIScrollToTopView, _UIRemoteViewFocusProxy>
+@interface _UISizeTrackingView : UIView <_UIScrollToTopView, _UIRemoteViewFocusProxy, _UIViewBoundingPathChangeObserver>
 {
     _UIRemoteViewController *_remoteViewController;
     id _viewControllerOperatorProxy;
@@ -20,6 +21,9 @@ __attribute__((visibility("hidden")))
     BOOL _hasIntrinsicContentSize;
     struct CGSize _intrinsicContentSize;
     struct CGRect _formerTextEffectsContentFrame;
+    BOOL _observingBoundingPathChanges;
+    BOOL _needsRemoteViewServiceBoundingPathUpdate;
+    BOOL _remoteViewServiceBoundingPathUpdateScheduled;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,7 +34,11 @@ __attribute__((visibility("hidden")))
 
 + (id)viewWithRemoteViewController:(id)arg1 viewControllerOperatorProxy:(id)arg2 textEffectsOperatorProxy:(id)arg3;
 - (void).cxx_destruct;
+- (id)_boundingPathForRemoteViewService;
+- (void)_boundingPathMayHaveChangedForView:(id)arg1 relativeToBoundsOriginOnly:(BOOL)arg2;
+- (BOOL)_canSendViewServiceActualBoundingPath;
 - (id)_childFocusRegionsInRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;
+- (void)_clearNeedsRemoteViewServiceBoundingPathUpdate;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (BOOL)_fencingEffectsAreVisible;
 - (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
@@ -38,9 +46,11 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (BOOL)_needsTextEffectsUpdateToFrame:(struct CGRect)arg1;
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (void)_setNeedsRemoteViewServiceBoundingPathUpdate;
 - (void)_updateSceneGeometries:(id)arg1 forOrientation:(long long)arg2;
 - (void)_updateTextEffectsGeometries:(struct CGRect)arg1;
 - (void)_updateTextEffectsGeometriesImmediately;
+- (void)_willMoveToWindow:(id)arg1;
 - (BOOL)canBecomeFocused;
 - (void)dealloc;
 - (BOOL)isScrollEnabled;

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAlertControllerVisualStyleActionSheet.h>
+#import <UIKitCore/UIAlertControllerVisualStyleActionSheet.h>
 
 __attribute__((visibility("hidden")))
 @interface UIAlertControllerVisualStyleActionSheetCar : UIAlertControllerVisualStyleActionSheet
 {
 }
 
-- (struct UIEdgeInsets)contentInsets;
+- (struct UIEdgeInsets)contentInsetsForContainerView:(id)arg1;
 - (double)marginAboveTitleLabelFirstBaseline;
 - (double)marginBelowLastLabelLastBaseline;
 - (long long)maximumNumberOfLinesInMessageLabel;

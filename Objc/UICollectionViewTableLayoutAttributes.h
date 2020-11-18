@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewLayoutAttributes.h>
+#import <UIKitCore/UICollectionViewLayoutAttributes.h>
 
-#import <UIKit/UICollectionViewTableAllRowAttributes-Protocol.h>
-#import <UIKit/UICollectionViewTableSectionHeaderFooterAttributes-Protocol.h>
+#import <UIKitCore/UICollectionViewTableAllRowAttributes-Protocol.h>
+#import <UIKitCore/UICollectionViewTableSectionHeaderFooterAttributes-Protocol.h>
 
 @class UIColor, UIVisualEffect;
 

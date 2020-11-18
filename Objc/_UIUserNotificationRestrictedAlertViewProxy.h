@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITargetedProxy.h>
+#import <UIKitCore/_UITargetedProxy.h>
 
-#import <UIKit/UIAlertViewDelegate-Protocol.h>
+#import <UIKitCore/UIAlertViewDelegate-Protocol.h>
 
 @class NSString;
 

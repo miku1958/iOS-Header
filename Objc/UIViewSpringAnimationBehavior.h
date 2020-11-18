@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIViewSpringAnimationBehaviorDescribing-Protocol.h>
+#import <UIKitCore/UIViewSpringAnimationBehaviorDescribing-Protocol.h>
 
 @interface UIViewSpringAnimationBehavior : NSObject <UIViewSpringAnimationBehaviorDescribing>
 {

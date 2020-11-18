@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBCacheToken.h>
+#import <UIKitCore/UIKBCacheToken.h>
 
 @class NSString;
 

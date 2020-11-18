@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIEdgeFeedbackGenerator.h>
+#import <UIKitCore/_UIEdgeFeedbackGenerator.h>
 
 @interface _UIFeedbackEdgeBehavior : _UIEdgeFeedbackGenerator
 {

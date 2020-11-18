@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 @class UIImageView, UITableViewCell, _UITableViewCellEditControlMinusView;
 
@@ -31,7 +31,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)_controlEventsForActionTriggered;
 - (id)_currentImage;
 - (id)_deleteImage:(double)arg1;
-- (id)_deleteImageBackground:(double)arg1;
 - (id)_imageView;
 - (id)_insertImage:(double)arg1;
 - (struct CGRect)_minusRect;

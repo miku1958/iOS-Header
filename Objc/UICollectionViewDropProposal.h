@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIDropProposal.h>
+#import <UIKitCore/UIDropProposal.h>
 
 @interface UICollectionViewDropProposal : UIDropProposal
 {

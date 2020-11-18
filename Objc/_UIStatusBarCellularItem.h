@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarItem.h>
+#import <UIKitCore/_UIStatusBarItem.h>
 
-@class _UIStatusBarCellularSignalView, _UIStatusBarImageView, _UIStatusBarStringView;
+@class NSString, _UIStatusBarCellularSignalView, _UIStatusBarImageView, _UIStatusBarStringView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarCellularItem : _UIStatusBarItem
@@ -15,26 +15,33 @@ __attribute__((visibility("hidden")))
     _UIStatusBarCellularSignalView *_signalView;
     _UIStatusBarStringView *_networkTypeView;
     _UIStatusBarImageView *_sosView;
+    _UIStatusBarImageView *_warningView;
+    _UIStatusBarImageView *_callForwardingView;
 }
 
+@property (strong, nonatomic) _UIStatusBarImageView *callForwardingView; // @synthesize callForwardingView=_callForwardingView;
+@property (readonly, nonatomic) NSString *cellularDataEntryKey;
 @property (strong, nonatomic) _UIStatusBarStringView *networkTypeView; // @synthesize networkTypeView=_networkTypeView;
 @property (strong, nonatomic) _UIStatusBarStringView *serviceNameView; // @synthesize serviceNameView=_serviceNameView;
 @property (strong, nonatomic) _UIStatusBarCellularSignalView *signalView; // @synthesize signalView=_signalView;
 @property (strong, nonatomic) _UIStatusBarImageView *sosView; // @synthesize sosView=_sosView;
+@property (strong, nonatomic) _UIStatusBarImageView *warningView; // @synthesize warningView=_warningView;
 
++ (id)callForwardingDisplayIdentifier;
++ (id)groupWithHighPriority:(long long)arg1 lowPriority:(long long)arg2;
 + (id)nameDisplayIdentifier;
 + (id)signalStrengthDisplayIdentifier;
 + (id)sosDisplayIdentifier;
 + (id)typeDisplayIdentifier;
++ (id)warningDisplayIdentifier;
 - (void).cxx_destruct;
 - (id)_backgroundColorForUpdate:(id)arg1;
 - (id)_fillColorForUpdate:(id)arg1;
-- (id)_fontForEntry:(id)arg1 baselineOffset:(double *)arg2;
 - (id)_stringForCellularType:(long long)arg1;
-- (id)applyStyleAttributes:(id)arg1 toDisplayItem:(id)arg2;
+- (BOOL)_updateSignalView:(id)arg1 withUpdate:(id)arg2 entry:(id)arg3;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)dependentEntryKeys;
-- (id)init;
+- (id)entryForDisplayItemWithIdentifier:(id)arg1;
 - (void)prepareAnimation:(id)arg1 forDisplayItem:(id)arg2;
 - (id)viewForIdentifier:(id)arg1;
 

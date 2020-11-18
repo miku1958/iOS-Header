@@ -4,22 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/BSAction.h>
+#import <BaseBoard/BSAction.h>
 
-@class NSDictionary, NSObject, NSString, UILocalNotification;
-@protocol OS_dispatch_semaphore;
+@class NSDictionary, NSString, UILocalNotification;
 
 @interface UIHandleLocalNotificationAction : BSAction
 {
-    NSObject<OS_dispatch_semaphore> *_decodeSemaphore;
-    UILocalNotification *_cachedNotification;
 }
 
 @property (readonly, copy, nonatomic) NSString *action;
 @property (readonly, copy, nonatomic) UILocalNotification *notification;
 @property (readonly, copy, nonatomic) NSDictionary *userResponse;
 
-- (void).cxx_destruct;
 - (long long)UIActionType;
 - (id)_initWithNotification:(id)arg1 action:(id)arg2 userResponse:(id)arg3 type:(long long)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;

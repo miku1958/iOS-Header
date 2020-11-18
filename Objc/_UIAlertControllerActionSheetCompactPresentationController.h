@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIAlertControllerPresentationController.h>
+#import <UIKitCore/_UIAlertControllerPresentationController.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIAlertControllerActionSheetCompactPresentationController : _UIAlertControllerPresentationController

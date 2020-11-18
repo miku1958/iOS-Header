@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class _UIStatusBarDataActivityEntry, _UIStatusBarDataBackgroundActivityEntry, _UIStatusBarDataBatteryEntry, _UIStatusBarDataBluetoothEntry, _UIStatusBarDataBoolEntry, _UIStatusBarDataCellularEntry, _UIStatusBarDataEntry, _UIStatusBarDataIntegerEntry, _UIStatusBarDataLocationEntry, _UIStatusBarDataLockEntry, _UIStatusBarDataStringEntry, _UIStatusBarDataTetheringEntry, _UIStatusBarDataThermalEntry, _UIStatusBarDataWifiEntry;
 
@@ -18,6 +18,7 @@
     _UIStatusBarDataStringEntry *_dateEntry;
     _UIStatusBarDataStringEntry *_personNameEntry;
     _UIStatusBarDataCellularEntry *_cellularEntry;
+    _UIStatusBarDataCellularEntry *_secondaryCellularEntry;
     _UIStatusBarDataWifiEntry *_wifiEntry;
     _UIStatusBarDataBatteryEntry *_mainBatteryEntry;
     _UIStatusBarDataBluetoothEntry *_bluetoothEntry;
@@ -33,8 +34,8 @@
     _UIStatusBarDataEntry *_ttyEntry;
     _UIStatusBarDataEntry *_nikeEntry;
     _UIStatusBarDataEntry *_assistantEntry;
+    _UIStatusBarDataEntry *_studentEntry;
     _UIStatusBarDataEntry *_vpnEntry;
-    _UIStatusBarDataEntry *_callForwardingEntry;
     _UIStatusBarDataEntry *_liquidDetectionEntry;
     _UIStatusBarDataEntry *_airPlayEntry;
     _UIStatusBarDataEntry *_carPlayEntry;
@@ -53,7 +54,6 @@
 @property (copy, nonatomic) _UIStatusBarDataStringEntry *backNavigationEntry; // @synthesize backNavigationEntry=_backNavigationEntry;
 @property (copy, nonatomic) _UIStatusBarDataBackgroundActivityEntry *backgroundActivityEntry; // @synthesize backgroundActivityEntry=_backgroundActivityEntry;
 @property (copy, nonatomic) _UIStatusBarDataBluetoothEntry *bluetoothEntry; // @synthesize bluetoothEntry=_bluetoothEntry;
-@property (copy, nonatomic) _UIStatusBarDataEntry *callForwardingEntry; // @synthesize callForwardingEntry=_callForwardingEntry;
 @property (copy, nonatomic) _UIStatusBarDataEntry *carPlayEntry; // @synthesize carPlayEntry=_carPlayEntry;
 @property (copy, nonatomic) _UIStatusBarDataCellularEntry *cellularEntry; // @synthesize cellularEntry=_cellularEntry;
 @property (copy, nonatomic) _UIStatusBarDataStringEntry *dateEntry; // @synthesize dateEntry=_dateEntry;
@@ -68,7 +68,9 @@
 @property (copy, nonatomic) _UIStatusBarDataStringEntry *personNameEntry; // @synthesize personNameEntry=_personNameEntry;
 @property (copy, nonatomic) _UIStatusBarDataBoolEntry *quietModeEntry; // @synthesize quietModeEntry=_quietModeEntry;
 @property (copy, nonatomic) _UIStatusBarDataEntry *rotationLockEntry; // @synthesize rotationLockEntry=_rotationLockEntry;
+@property (copy, nonatomic) _UIStatusBarDataCellularEntry *secondaryCellularEntry; // @synthesize secondaryCellularEntry=_secondaryCellularEntry;
 @property (copy, nonatomic) _UIStatusBarDataStringEntry *shortTimeEntry; // @synthesize shortTimeEntry=_shortTimeEntry;
+@property (copy, nonatomic) _UIStatusBarDataEntry *studentEntry; // @synthesize studentEntry=_studentEntry;
 @property (copy, nonatomic) _UIStatusBarDataTetheringEntry *tetheringEntry; // @synthesize tetheringEntry=_tetheringEntry;
 @property (copy, nonatomic) _UIStatusBarDataThermalEntry *thermalEntry; // @synthesize thermalEntry=_thermalEntry;
 @property (copy, nonatomic) _UIStatusBarDataStringEntry *timeEntry; // @synthesize timeEntry=_timeEntry;

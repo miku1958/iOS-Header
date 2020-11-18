@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableArray;
+@class NSArray, NSDictionary, NSMutableArray, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface _UIVisualEffectNode : NSObject
@@ -16,10 +16,14 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_underlays;
     NSMutableArray *_overlays;
     BOOL _textShouldRenderWithTintColor;
+    BOOL _disableInPlaceFiltering;
+    UIVisualEffectView *_hostEffectView;
     NSDictionary *_options;
 }
 
+@property (nonatomic) BOOL disableInPlaceFiltering; // @synthesize disableInPlaceFiltering=_disableInPlaceFiltering;
 @property (copy, nonatomic) NSArray *filterEntries; // @synthesize filterEntries=_filterEntries;
+@property (weak, nonatomic) UIVisualEffectView *hostEffectView; // @synthesize hostEffectView=_hostEffectView;
 @property (readonly, copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property (copy, nonatomic) NSArray *overlays; // @synthesize overlays=_overlays;
 @property (nonatomic) BOOL textShouldRenderWithTintColor; // @synthesize textShouldRenderWithTintColor=_textShouldRenderWithTintColor;

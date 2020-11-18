@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIButtonFeedbackGeneratorConfiguration.h>
+#import <UIKitCore/_UIButtonFeedbackGeneratorConfiguration.h>
 
 @interface _UIFeedbackButtonBehaviorConfiguration : _UIButtonFeedbackGeneratorConfiguration
 {

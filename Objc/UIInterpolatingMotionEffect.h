@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIMotionEffect.h>
+#import <UIKitCore/UIMotionEffect.h>
 
 @class NSString;
 

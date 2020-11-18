@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIHostedWindow.h>
+#import <UIKitCore/_UIHostedWindow.h>
 
 __attribute__((visibility("hidden")))
 @interface _UISecureHostedWindow : _UIHostedWindow

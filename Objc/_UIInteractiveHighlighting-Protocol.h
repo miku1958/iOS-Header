@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @protocol UIInteraction;
 
@@ -13,6 +13,7 @@
 
 @optional
 - (void)_highlightDidEndForInteraction:(id<UIInteraction>)arg1;
+- (BOOL)_highlightsAlongsideDefaultEffect;
 - (long long)_preferredHighlightAnimationStyleForInteraction:(id<UIInteraction>)arg1;
 - (void)_prepareHighlightForInteraction:(id<UIInteraction>)arg1;
 @end

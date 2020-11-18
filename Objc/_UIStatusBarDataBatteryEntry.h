@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarDataEntry.h>
+#import <UIKitCore/_UIStatusBarDataEntry.h>
 
 @class NSString;
 
 @interface _UIStatusBarDataBatteryEntry : _UIStatusBarDataEntry
 {
     BOOL _saverModeActive;
+    BOOL _prominentlyShowsDetailString;
     long long _capacity;
     long long _state;
     NSString *_detailString;
@@ -18,6 +19,7 @@
 
 @property (nonatomic) long long capacity; // @synthesize capacity=_capacity;
 @property (copy, nonatomic) NSString *detailString; // @synthesize detailString=_detailString;
+@property (nonatomic) BOOL prominentlyShowsDetailString; // @synthesize prominentlyShowsDetailString=_prominentlyShowsDetailString;
 @property (nonatomic) BOOL saverModeActive; // @synthesize saverModeActive=_saverModeActive;
 @property (nonatomic) long long state; // @synthesize state=_state;
 

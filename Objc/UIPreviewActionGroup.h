@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/UIPreviewActionItem-Protocol.h>
-#import <UIKit/UIPreviewActionItem_Internal-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/UIPreviewActionItem-Protocol.h>
+#import <UIKitCore/UIPreviewActionItem_Internal-Protocol.h>
 
 @class NSArray, NSString, UIColor, UIImage;
 

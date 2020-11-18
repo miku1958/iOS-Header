@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/_UIFocusMovementActionForwarding-Protocol.h>
-#import <UIKit/_UIHostedTextServiceSessionDelegate-Protocol.h>
-#import <UIKit/_UIViewServiceDeputy-Protocol.h>
-#import <UIKit/_UIViewServiceDeputyRotationSource-Protocol.h>
-#import <UIKit/_UIViewServiceDummyPopoverControllerDelegate-Protocol.h>
-#import <UIKit/_UIViewServiceViewControllerOperator_RemoteViewControllerInterface-Protocol.h>
+#import <UIKitCore/_UIFocusMovementActionForwarding-Protocol.h>
+#import <UIKitCore/_UIHostedTextServiceSessionDelegate-Protocol.h>
+#import <UIKitCore/_UIViewServiceDeputy-Protocol.h>
+#import <UIKitCore/_UIViewServiceDeputyRotationSource-Protocol.h>
+#import <UIKitCore/_UIViewServiceDummyPopoverControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIViewServiceViewControllerOperator_RemoteViewControllerInterface-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, NSUndoManager, UIPopoverController, _UIAsyncInvocation, _UIHostedTextServiceSession, _UIHostedWindow, _UIViewControllerOneToOneTransitionContext, _UIViewServiceDummyPopoverController;
 @protocol _UIViewServiceViewControllerOperatorDelegate;
@@ -91,7 +91,7 @@ __attribute__((visibility("hidden")))
 - (void)__hostViewDidMoveToScreenWithFBSDisplayIdentity:(id)arg1 newHostingHandleReplyHandler:(CDUnknownBlockType)arg2;
 - (void)__hostViewWillAppear:(BOOL)arg1 inInterfaceOrientation:(long long)arg2 traitCollection:(id)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (void)__hostViewWillDisappear:(BOOL)arg1;
-- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(id)arg2 statusBarHeight:(double)arg3 underlapsStatusBar:(BOOL)arg4 whenDone:(CDUnknownBlockType)arg5;
+- (void)__hostViewWillTransitionToSize:(struct CGSize)arg1 withContextDescription:(id)arg2 boundingPath:(id)arg3 statusBarHeight:(double)arg4 underlapsStatusBar:(BOOL)arg5 whenDone:(CDUnknownBlockType)arg6;
 - (void)__hostWillAnimateRotationToInterfaceOrientation:(long long)arg1 duration:(double)arg2 skipSelf:(BOOL)arg3;
 - (void)__hostWillEnterForeground;
 - (void)__hostWillResignActive;
@@ -103,8 +103,9 @@ __attribute__((visibility("hidden")))
 - (void)__restoreStateForSession:(id)arg1 restorationAnchor:(id)arg2;
 - (void)__saveStateForSession:(id)arg1 restorationAnchor:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)__scrollToTopFromTouchAtViewLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
-- (void)__setContentSize:(struct CGSize)arg1;
-- (void)__setContentSize:(struct CGSize)arg1 withFence:(id)arg2;
+- (void)__setBoundingPath:(id)arg1;
+- (void)__setContentSize:(struct CGSize)arg1 boundingPath:(id)arg2;
+- (void)__setContentSize:(struct CGSize)arg1 boundingPath:(id)arg2 withFence:(id)arg3;
 - (void)__setHostTintColor:(id)arg1 tintAdjustmentMode:(long long)arg2;
 - (void)__setHostTraitCollection:(id)arg1 deferIfAnimated:(BOOL)arg2;
 - (void)__setHostViewUnderlapsStatusBar:(BOOL)arg1;
@@ -114,6 +115,7 @@ __attribute__((visibility("hidden")))
 - (void)__undoActionWithToken:(long long)arg1;
 - (id)_appearanceSource;
 - (BOOL)_canShowTextServices;
+- (double)_canvasSystemMinimumMargin;
 - (struct UIEdgeInsets)_customBasePresentationInsetsForView:(id)arg1;
 - (id)_dataFromPressesEvent:(id)arg1;
 - (void)_didBecomeContentViewControllerOfPopover:(id)arg1;
@@ -141,6 +143,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldForwardLegacyRotationOnly;
 - (id)_showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 - (id)_showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
+- (id)_showServiceForType:(long long)arg1 withContext:(id)arg2;
 - (id)_supportedInterfaceOrientationsForViewController:(id)arg1;
 - (BOOL)_tryRetain;
 - (void)_updateSupportedInterfaceOrientationsIfNecessary;
@@ -191,6 +194,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)systemLayoutFittingSizeDidChangeForChildViewController:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillMoveToWindow:(id)arg1;
 - (void)window:(id)arg1 statusBarWillChangeFromHeight:(double)arg2 toHeight:(double)arg3;
 
 @end

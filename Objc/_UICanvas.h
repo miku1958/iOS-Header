@@ -4,16 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIResponder.h>
+#import <UIKitCore/UIResponder.h>
 
-#import <UIKit/FBSSceneDelegate-Protocol.h>
-#import <UIKit/UICoordinateSpace-Protocol.h>
-#import <UIKit/_UICanvasLifecycleStateMonitoring-Protocol.h>
+#import <UIKitCore/FBSSceneDelegate-Protocol.h>
+#import <UIKitCore/UICoordinateSpace-Protocol.h>
+#import <UIKitCore/_UICanvasLifecycleStateMonitoring-Protocol.h>
+#import <UIKitCore/_UIContextBinderDelegate-Protocol.h>
 
-@class FBSScene, FBSSceneSettings, NSArray, NSPointerArray, NSString, UIScreen, _UIContextBinder, __UISceneSubstrate;
+@class FBSDisplayConfigurationRequest, FBSScene, FBSSceneSettings, NSArray, NSPointerArray, NSString, UIScreen, _UIContextBinder, __UISceneSubstrate;
 @protocol UICoordinateSpace, _UIAnimationFenceCoordinating, _UICanvasDelegate, _UICanvasMetricsUpdating;
 
-@interface _UICanvas : UIResponder <UICoordinateSpace, FBSSceneDelegate, _UICanvasLifecycleStateMonitoring>
+@interface _UICanvas : UIResponder <UICoordinateSpace, _UIContextBinderDelegate, FBSSceneDelegate, _UICanvasLifecycleStateMonitoring>
 {
     _UIContextBinder *_binder;
     UIScreen *_screen;
@@ -34,6 +35,8 @@
 }
 
 @property (readonly, nonatomic) NSArray *_allWindows;
+@property (readonly, nonatomic) struct UIEdgeInsets _peripheryInsets;
+@property (readonly, nonatomic) double _systemMinimumMargin;
 @property (readonly, nonatomic) NSArray *_visibleWindows;
 @property (nonatomic, getter=_isActive, setter=_setIsActive:) BOOL active;
 @property (readonly, nonatomic) id<_UIAnimationFenceCoordinating> animationFencingCoordinator;
@@ -42,11 +45,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<_UICanvasDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic, getter=_displayConfigurationRequest, setter=_setDisplayConfigurationRequest:) FBSDisplayConfigurationRequest *displayConfigurationRequest;
 @property (readonly, nonatomic, getter=_effectiveSettings) FBSSceneSettings *effectiveSettings;
 @property (readonly, nonatomic, getter=_hasLifecycle) BOOL hasLifecycle;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL keepContextAssociationInBackground;
 @property (readonly, nonatomic, getter=_oldSettings) FBSSceneSettings *oldSettings; // @synthesize oldSettings=_oldSettings;
+@property (nonatomic, getter=_requestedDisplayPixelSize, setter=_setRequestedDisplayPixelSize:) struct CGSize requestedDisplayPixelSize; // @dynamic requestedDisplayPixelSize;
+@property (readonly, nonatomic, getter=_requestedHDRMode) long long requestedHDRMode; // @dynamic requestedHDRMode;
+@property (nonatomic, getter=_requestedOverscanCompensation, setter=_setRequestedOverscanCompensation:) long long requestedOverscanCompensation; // @dynamic requestedOverscanCompensation;
+@property (readonly, nonatomic, getter=_requestedRefreshRate) double requestedRefreshRate; // @dynamic requestedRefreshRate;
 @property (nonatomic, getter=_isRespondingToLifecycleEvent, setter=_setIsRespondingToLifecycleEvent:) BOOL respondingToLifecycleEvent; // @synthesize respondingToLifecycleEvent;
 @property (nonatomic, getter=_runningInTaskSwitcher, setter=_setRunningInTaskSwitcher:) BOOL runningInTaskSwitcher; // @synthesize runningInTaskSwitcher;
 @property (readonly, nonatomic) FBSScene *scene; // @synthesize scene=_scene;
@@ -72,8 +80,12 @@
 + (void)setActiveSettingsTransaction:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_addInheritingCanvas:(id)arg1;
+- (struct UIEdgeInsets)_canvasPeripheryInsets;
+- (struct UIEdgeInsets)_canvasSafeAreaInsetsForInterfaceOrientation:(long long)arg1;
+- (double)_canvasSystemMinimumMargin;
 - (void)_computeMetrics:(BOOL)arg1;
 - (void)_didBecomeActive;
+- (id)_displayEdgeInfoProvider;
 - (void)_enumerateWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2 asCopy:(BOOL)arg3 stopped:(BOOL *)arg4 withBlock:(CDUnknownBlockType)arg5;
 - (void)_enumerateWindowsIncludingInternalWindows:(BOOL)arg1 onlyVisibleWindows:(BOOL)arg2 asCopy:(BOOL)arg3 withBlock:(CDUnknownBlockType)arg4;
 - (id)_inheritingWindowsIncludingInvisible:(BOOL)arg1;
@@ -86,6 +98,8 @@
 - (struct CGRect)_referenceBounds;
 - (struct CGRect)_referenceBoundsForOrientation:(long long)arg1;
 - (void)_removeInheritingCanvas:(id)arg1;
+- (struct UIEdgeInsets)_safeAreaInsetsForInterfaceOrientation:(long long)arg1;
+- (void)_setRequestedRefreshRate:(double)arg1 HDRMode:(long long)arg2;
 - (void)_updateVisibleWindowOrderWithTest:(CDUnknownBlockType)arg1;
 - (void)_willAttach;
 - (void)_willResignActive;
@@ -99,6 +113,7 @@
 - (struct CGRect)convertRect:(struct CGRect)arg1 fromCoordinateSpace:(id)arg2;
 - (struct CGRect)convertRect:(struct CGRect)arg1 toCoordinateSpace:(id)arg2;
 - (void)detachWindow:(id)arg1;
+- (void)enrolledBindablesDidChangeForBinder:(id)arg1;
 - (void)inheritSettingsFromCanvas:(id)arg1;
 - (id)initWithScene:(id)arg1;
 - (void)scene:(id)arg1 didReceiveActions:(id)arg2;

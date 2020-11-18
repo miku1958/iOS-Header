@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardMotionSupport.h>
+#import <UIKitCore/UIKeyboardMotionSupport.h>
 
-#import <UIKit/UIScrollViewIntersectionDelegate-Protocol.h>
+#import <UIKitCore/UIScrollViewIntersectionDelegate-Protocol.h>
 
 @class UIInputViewSetNotificationInfo, UIScrollView;
 

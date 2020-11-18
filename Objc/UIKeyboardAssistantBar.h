@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIGroupedBar.h>
+#import <UIKitCore/_UIGroupedBar.h>
 
 @class NSLayoutConstraint, UIBarButtonItem, UIBarButtonItemGroup, UIKeyboardBIUImageGenerator, UIKeyboardCandidatePocketShadow, UITextInputAssistantItem;
 
@@ -75,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)hasItems;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutSubviews;
 - (id)newAssistantItemWithDefaultItems;
 - (BOOL)pointInside:(struct CGPoint)arg1 forEvent:(struct __GSEvent *)arg2;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;

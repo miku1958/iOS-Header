@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UISelectionInteractionAssistant-Protocol.h>
-#import <UIKit/_UIKeyboardTextSelectionGestureControllerDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UISelectionInteractionAssistant-Protocol.h>
+#import <UIKitCore/_UIKeyboardTextSelectionGestureControllerDelegate-Protocol.h>
 
-@class NSString, UIKeyboardTaskQueue, UILongPressGestureRecognizer, UITapAndAHalfRecognizer, UIView, UIWebSelection, UIWebSelectionView, _UIKeyboardBasedNonEditableTextSelectionGestureController, _UIKeyboardTextSelectionController;
+@class NSString, UIKeyboardTaskQueue, UILongPressGestureRecognizer, UITapAndAHalfRecognizer, UITextInteraction, UIView, UIWebSelection, UIWebSelectionView, _UIKeyboardBasedNonEditableTextSelectionGestureController, _UIKeyboardTextSelectionController;
 
 __attribute__((visibility("hidden")))
 @interface UIWebSelectionAssistant : NSObject <UIGestureRecognizerDelegate, _UIKeyboardTextSelectionGestureControllerDelegate, UISelectionInteractionAssistant>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     UILongPressGestureRecognizer *_longPressGestureRecognizer;
     UITapAndAHalfRecognizer *_tapAndAHalfGestureRecognizer;
     UILongPressGestureRecognizer *_forcePressGestureRecognizer;
+    UITextInteraction *_textInteractions;
     _UIKeyboardTextSelectionController *_textSelectionController;
     _UIKeyboardBasedNonEditableTextSelectionGestureController *_textSelectionGestureController;
     BOOL _enabled;

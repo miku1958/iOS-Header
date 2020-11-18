@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewTableSeparatorAttributes-Protocol.h>
+#import <UIKitCore/UICollectionViewTableSeparatorAttributes-Protocol.h>
 
 @class UIColor;
 

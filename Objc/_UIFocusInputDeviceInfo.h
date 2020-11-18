@@ -4,18 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
-@interface _UIFocusInputDeviceInfo : NSObject
+#import <UIKitCore/BSXPCCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+
+@class NSString;
+
+@interface _UIFocusInputDeviceInfo : NSObject <NSCopying, BSXPCCoding>
 {
     unsigned long long _senderID;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long senderID; // @synthesize senderID=_senderID;
+@property (readonly) Class superclass;
 
 + (id)infoWithSenderID:(unsigned long long)arg1;
++ (BOOL)supportsSecureCoding;
 - (id)_initWithSenderID:(unsigned long long)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)encodeWithXPCDictionary:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1;
 
 @end
 

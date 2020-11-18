@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarAnimationParameters.h>
+#import <UIKitCore/UIStatusBarAnimationParameters.h>
 
 @interface UIStatusBarHideAnimationParameters : UIStatusBarAnimationParameters
 {

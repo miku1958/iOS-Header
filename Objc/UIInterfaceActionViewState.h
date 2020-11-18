@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInterfaceActionVisualStyleViewState.h>
+#import <UIKitCore/UIInterfaceActionVisualStyleViewState.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 @class UIColor, UIInterfaceAction;
 

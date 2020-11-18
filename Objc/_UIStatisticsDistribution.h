@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatistics.h>
+#import <UIKitCore/_UIStatistics.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIStatisticsDistribution : _UIStatistics

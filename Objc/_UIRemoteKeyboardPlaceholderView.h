@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UISplittableInputView-Protocol.h>
-#import <UIKit/_UIRemoteKeyboardInputViewPlaceholder-Protocol.h>
+#import <UIKitCore/UISplittableInputView-Protocol.h>
+#import <UIKitCore/_UIRemoteKeyboardInputViewPlaceholder-Protocol.h>
 
 @class NSString;
 

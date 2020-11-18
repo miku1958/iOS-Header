@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class LSBundleProxy;
 
@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 - (id)imageForApplicationIconFormat:(int)arg1 activityCategory:(long long)arg2;
 - (id)init;
 - (id)initWithBundleProxy:(id)arg1;
-- (id)localizedName;
 - (double)preferredImageScale;
 
 @end

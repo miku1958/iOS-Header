@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIActionSheetPresentationControllerDismissActionView-Protocol.h>
+#import <UIKitCore/UIActionSheetPresentationControllerDismissActionView-Protocol.h>
 
 @class NSString, UIButton;
 

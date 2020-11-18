@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIContentContainer-Protocol.h>
+#import <UIKitCore/UIContentContainer-Protocol.h>
 
 @class UIViewController;
 @protocol UIContentContainer;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivityItemProvider.h>
+#import <UIKitCore/UIActivityItemProvider.h>
 
 @class UIDocumentInteractionController;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryNumberPad.h>
+#import <UIKitCore/UIKBRenderFactoryNumberPad.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryNumberPadLandscape : UIKBRenderFactoryNumberPad

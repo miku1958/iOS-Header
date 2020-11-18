@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class UISlidingBarStateRequest, _UIDynamicValueAnimation;
+@class UISlidingBarStateRequest, UIViewPropertyAnimator;
 
 __attribute__((visibility("hidden")))
 @interface _UIPanelAnimationState : NSObject
@@ -15,19 +15,19 @@ __attribute__((visibility("hidden")))
     UISlidingBarStateRequest *_toRequest;
     double _progress;
     long long _affectedSides;
-    _UIDynamicValueAnimation *_animation;
+    UIViewPropertyAnimator *_animator;
 }
 
 @property (nonatomic) long long affectedSides; // @synthesize affectedSides=_affectedSides;
-@property (strong, nonatomic) _UIDynamicValueAnimation *animation; // @synthesize animation=_animation;
+@property (strong, nonatomic) UIViewPropertyAnimator *animator; // @synthesize animator=_animator;
 @property (copy, nonatomic) UISlidingBarStateRequest *fromRequest; // @synthesize fromRequest=_fromRequest;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) UISlidingBarStateRequest *stateRequest;
 @property (copy, nonatomic) UISlidingBarStateRequest *toRequest; // @synthesize toRequest=_toRequest;
 
++ (double)defaultDuration;
++ (id)timingCurveProvider;
 - (void).cxx_destruct;
-- (void)startWithCallback:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)stop;
 
 @end
 

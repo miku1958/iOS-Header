@@ -4,13 +4,17 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableIndexSet, NSOrderedSet, NSSet, NSString, UILayoutGuide, UIView, _UIStatusBar, _UIStatusBarAction, _UIStatusBarDisplayItem, _UIStatusBarStyleAttributes;
+#import <UIKitCore/_UIStatusBarActionable-Protocol.h>
+
+@class NSArray, NSDictionary, NSLayoutConstraint, NSMutableIndexSet, NSOrderedSet, NSSet, NSString, UILayoutGuide, UIView, _UIStatusBar, _UIStatusBarAction, _UIStatusBarDisplayItem, _UIStatusBarStyleAttributes;
 @protocol UILayoutItem, _UIStatusBarRegionLayout;
 
-@interface _UIStatusBarRegion : NSObject
+@interface _UIStatusBarRegion : NSObject <_UIStatusBarActionable>
 {
+    BOOL _offsetable;
+    _UIStatusBarAction *_action;
     NSString *_identifier;
     _UIStatusBar *_statusBar;
     id<_UIStatusBarRegionLayout> _layout;
@@ -20,11 +24,13 @@
     UIView *_contentView;
     UIView *_backgroundView;
     UIView *_highlightView;
-    _UIStatusBarAction *_action;
     NSOrderedSet *_displayItems;
     NSMutableIndexSet *_disablingTokens;
     UILayoutGuide *_layoutGuide;
+    NSLayoutConstraint *_centerXConstraint;
+    NSLayoutConstraint *_centerYConstraint;
     UIView *_frozenView;
+    struct UIOffset _offset;
     struct UIEdgeInsets _actionInsets;
 }
 
@@ -32,10 +38,15 @@
 @property (nonatomic) struct UIEdgeInsets actionInsets; // @synthesize actionInsets=_actionInsets;
 @property (nonatomic) double alpha; // @synthesize alpha=_alpha;
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) NSLayoutConstraint *centerXConstraint; // @synthesize centerXConstraint=_centerXConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *centerYConstraint; // @synthesize centerYConstraint=_centerYConstraint;
+@property (readonly, nonatomic) id<UILayoutItem> containerItem;
 @property (readonly, nonatomic) UIView *containerView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, nonatomic) NSArray *currentEnabledDisplayItems;
+@property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSSet *dependentRegionIdentifiers; // @synthesize dependentRegionIdentifiers=_dependentRegionIdentifiers;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableIndexSet *disablingTokens; // @synthesize disablingTokens=_disablingTokens;
 @property (readonly, copy, nonatomic) NSDictionary *displayItemAbsoluteFrames;
 @property (strong, nonatomic) NSOrderedSet *displayItems; // @synthesize displayItems=_displayItems;
@@ -43,20 +54,23 @@
 @property (readonly, nonatomic) NSArray *enabledDisplayItems;
 @property (nonatomic, getter=isFrozen) BOOL frozen;
 @property (strong, nonatomic) UIView *frozenView; // @synthesize frozenView=_frozenView;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *highlightView; // @synthesize highlightView=_highlightView;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) id<_UIStatusBarRegionLayout> layout; // @synthesize layout=_layout;
 @property (strong, nonatomic) UILayoutGuide *layoutGuide; // @synthesize layoutGuide=_layoutGuide;
 @property (readonly, nonatomic) id<UILayoutItem> layoutItem;
+@property (nonatomic) struct UIOffset offset; // @synthesize offset=_offset;
+@property (nonatomic) BOOL offsetable; // @synthesize offsetable=_offsetable;
 @property (readonly, nonatomic) _UIStatusBarDisplayItem *overflowedDisplayItem;
 @property (strong, nonatomic) _UIStatusBarStyleAttributes *overriddenStyleAttributes; // @synthesize overriddenStyleAttributes=_overriddenStyleAttributes;
 @property (weak, nonatomic) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_addSubview:(id)arg1 atBack:(BOOL)arg2;
-- (id)description;
 - (void)disableWithToken:(unsigned long long)arg1;
-- (id)displayItemForHUDAtPointInContentView:(struct CGPoint)arg1;
+- (id)displayItemForHUDAtPoint:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2;
 - (void)enableWithToken:(unsigned long long)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (void)setIdentifier:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CADisplayLink, NSMutableArray, NSMutableDictionary;
 @protocol UIEventFetcherSink;
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _gameControllerEventFilterGenerator;
     CDUnknownBlockType _watchSystemAppFilter;
     NSMutableArray *_eventFilters;
+    int _displayLinkIdleTicks;
     CADisplayLink *_displayLink;
     long long _countOfDigitizerEventsReceivedSinceLastDisplayLinkCallback;
     BOOL _didDispatchOneMoveEventSinceLastDisplayLinkCallback;

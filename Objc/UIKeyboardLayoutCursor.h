@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardLayoutStar.h>
+#import <UIKitCore/UIKeyboardLayoutStar.h>
 
-#import <UIKit/UIKBAlertControllerDelegate-Protocol.h>
+#import <UIKitCore/UIKBAlertControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, UIAlertController, UIKBTree, UILabel, UILexicon, UIView;
 

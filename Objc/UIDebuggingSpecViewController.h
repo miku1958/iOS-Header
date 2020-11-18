@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UICollectionViewDataSource-Protocol.h>
-#import <UIKit/UICollectionViewDelegate-Protocol.h>
-#import <UIKit/UIDebuggingInformationViewController-Protocol.h>
-#import <UIKit/UIImagePickerControllerDelegate-Protocol.h>
-#import <UIKit/UINavigationControllerDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UIDebuggingInformationViewController-Protocol.h>
+#import <UIKitCore/UIImagePickerControllerDelegate-Protocol.h>
+#import <UIKitCore/UINavigationControllerDelegate-Protocol.h>
 
 @class NSMutableArray, NSString, UICollectionView, UICollectionViewFlowLayout, UIView;
 

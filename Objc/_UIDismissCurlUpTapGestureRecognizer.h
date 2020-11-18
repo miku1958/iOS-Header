@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITapGestureRecognizer.h>
+#import <UIKitCore/UITapGestureRecognizer.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIDismissCurlUpTapGestureRecognizer : UITapGestureRecognizer

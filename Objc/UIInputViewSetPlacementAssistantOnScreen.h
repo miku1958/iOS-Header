@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInputViewSetPlacement.h>
+#import <UIKitCore/UIInputViewSetPlacement.h>
 
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface UIInputViewSetPlacementAssistantOnScreen : UIInputViewSetPlacement <NSSecureCoding>
 {
 }
 
++ (double)extraHeightForInputViewSet:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (BOOL)accessoryViewWillAppear;
 - (Class)applicatorClassForKeyboard:(BOOL)arg1;

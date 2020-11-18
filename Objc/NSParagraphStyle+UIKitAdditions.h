@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "NSParagraphStyle.h"
+#import <UIFoundation/NSParagraphStyle.h>
 
 @interface NSParagraphStyle (UIKitAdditions)
 - (long long)_ui_resolvedTextAlignment;

@@ -6,7 +6,7 @@
 
 #import <Foundation/NSProxy.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIActivityPlaceholderItemProxy : NSProxy <NSCopying>

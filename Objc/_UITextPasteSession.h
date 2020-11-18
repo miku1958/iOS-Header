@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UITextPasteSession-Protocol.h>
+#import <UIKitCore/UITextPasteSession-Protocol.h>
 
 @class NSAttributedString, NSString, UITextPasteController, UITextPasteCoordinator, UITextRange;
 @protocol UITextPasteSessionDelegate, _UITextPasteProgressSupport;

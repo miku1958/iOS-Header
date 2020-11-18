@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardSplitTransitionView.h>
+#import <UIKitCore/UIKeyboardSplitTransitionView.h>
 
 @class CALayer, NSMutableDictionary, UIKBCacheToken;
 

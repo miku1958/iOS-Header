@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarIndicatorItem.h>
+#import <UIKitCore/_UIStatusBarIndicatorItem.h>
 
 @class _UIStatusBarBackgroundActivityView;
 
@@ -12,20 +12,25 @@ __attribute__((visibility("hidden")))
 @interface _UIStatusBarBackgroundActivityItem : _UIStatusBarIndicatorItem
 {
     _UIStatusBarBackgroundActivityView *_backgroundView;
+    _UIStatusBarBackgroundActivityView *_combinedView;
 }
 
 @property (strong, nonatomic) _UIStatusBarBackgroundActivityView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) _UIStatusBarBackgroundActivityView *combinedView; // @synthesize combinedView=_combinedView;
 
 + (id)backgroundDisplayIdentifier;
++ (id)combinedDisplayIdentifier;
 + (BOOL)shouldKeepIconVisibleForActivityType:(long long)arg1;
 - (void).cxx_destruct;
 - (id)_backgroundColorForActivityType:(long long)arg1;
 - (id)_imageNameForActivityType:(long long)arg1;
+- (struct CGSize)_pillSizeAndBaselineOffset:(double *)arg1;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
+- (id)createDisplayItemForIdentifier:(id)arg1;
 - (id)imageForUpdate:(id)arg1;
 - (id)imageNameForUpdate:(id)arg1;
 - (id)indicatorEntryKey;
-- (id)init;
+- (BOOL)shouldUpdateIndicatorForIdentifier:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

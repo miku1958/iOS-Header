@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
 @class NSArray, UIScreen, UIView, _UIFocusRegion;
 @protocol UIFocusItem;
@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
         unsigned int hasResolvedFocusedRegion:1;
     } _flags;
     BOOL _focusMovementFlippedHorizontally;
-    NSArray *_containingScrollViews;
+    NSArray *_ancestorScrollableContainers;
     long long _inheritedFocusMovementStyle;
     long long _focusSound;
     double _focusSoundPan;
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
     UIView *_containingView;
 }
 
-@property (readonly, copy, nonatomic) NSArray *containingScrollViews; // @synthesize containingScrollViews=_containingScrollViews;
+@property (readonly, copy, nonatomic) NSArray *ancestorScrollableContainers; // @synthesize ancestorScrollableContainers=_ancestorScrollableContainers;
 @property (readonly, weak, nonatomic) UIView *containingView; // @synthesize containingView=_containingView;
 @property (readonly, nonatomic, getter=isFocusMovementFlippedHorizontally) BOOL focusMovementFlippedHorizontally; // @synthesize focusMovementFlippedHorizontally=_focusMovementFlippedHorizontally;
 @property (readonly, nonatomic) long long focusSound; // @synthesize focusSound=_focusSound;

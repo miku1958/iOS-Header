@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIInteraction-Protocol.h>
-#import <UIKit/_UIViewDraggingSourceDelegatePrivate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIInteraction-Protocol.h>
+#import <UIKitCore/_UIViewDraggingSourceDelegatePrivate-Protocol.h>
 
 @class NSArray, NSString, UIDragInteractionContextImpl, UIView, _UIDragAcceleratorGestureRecognizer, _UIDragAddItemsGesture, _UIDragLiftGestureRecognizer, _UIDragSessionImpl, _UIRelationshipGestureRecognizer;
 @protocol UIDragInteractionDelegate, UIDragInteractionEffect;
@@ -17,6 +17,7 @@
 {
     BOOL _didSetEnabled;
     BOOL _enabled;
+    struct CGPoint _deferredLiftPointInWindow;
     _UIDragSessionImpl *_preliminarySession;
     _UIDragSessionImpl *_sessionForAddingItems;
     UIDragInteractionContextImpl *_interactionContext;
@@ -91,7 +92,8 @@
 - (struct CGPoint)_locationInView:(id)arg1;
 - (void)_openCompetingGestureRecognizerGateCancelingGestures:(id)arg1;
 - (void)_prepareForLiftAtPoint:(struct CGPoint)arg1 usingAccessibility:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)_queryDelegate:(id)arg1 forItemsForAddingToSession:(id)arg2 atPoint:(struct CGPoint)arg3;
+- (void)_prepareToLiftWithGesture:(id)arg1 atPoint:(struct CGPoint)arg2;
+- (BOOL)_queryDelegate:(id)arg1 forItemsForAddingToSession:(id)arg2 atPoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_queryDelegate:(id)arg1 forItemsForBeginningSession:(id)arg2;
 - (void)_queryDelegate:(id)arg1 forLiftPreviewsUsingItems:(id)arg2 session:(id)arg3;
 - (id)_requiredContextIDsForDragSessionInView:(id)arg1;
@@ -127,7 +129,6 @@
 - (void)setDelegate:(id)arg1;
 - (void)setDragCancellationDelay:(double)arg1;
 - (void)setLiftDelay:(double)arg1;
-- (void)setLiftMoveHysteresis:(double)arg1;
 - (void)view:(id)arg1 failedToDragSourceWithIndex:(unsigned long long)arg2;
 - (id)view:(id)arg1 itemsForDragSourceWithIndex:(unsigned long long)arg2;
 - (void)view:(id)arg1 willBeginDraggingSourceWithIndex:(unsigned long long)arg2 withSession:(id)arg3;

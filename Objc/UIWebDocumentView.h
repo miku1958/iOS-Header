@@ -4,27 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIWebTiledView.h>
+#import <UIKitCore/UIWebTiledView.h>
 
-#import <UIKit/DDDetectionControllerInteractionDelegate-Protocol.h>
-#import <UIKit/UIAutoscrollContainer-Protocol.h>
-#import <UIKit/UIDragInteractionDelegate-Protocol.h>
-#import <UIKit/UIDropInteractionDelegate-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIKeyInput-Protocol.h>
-#import <UIKit/UIKeyboardInput-Protocol.h>
-#import <UIKit/UIPreviewItemDelegate-Protocol.h>
-#import <UIKit/UITextAutoscrolling-Protocol.h>
-#import <UIKit/UITextInputMultiDocument-Protocol.h>
-#import <UIKit/UITextInputPrivate-Protocol.h>
-#import <UIKit/UITextInputTokenizer-Protocol.h>
-#import <UIKit/UIWebFileUploadPanelDelegate-Protocol.h>
-#import <UIKit/WebEditingDelegate-Protocol.h>
-#import <UIKit/WebFrameLoadDelegate-Protocol.h>
-#import <UIKit/_UIRotatingAlertControllerDelegate-Protocol.h>
-#import <UIKit/_UIWebDoubleTapDelegate-Protocol.h>
+#import <UIKitCore/DDDetectionControllerInteractionDelegate-Protocol.h>
+#import <UIKitCore/UIAutoscrollContainer-Protocol.h>
+#import <UIKitCore/UIDragInteractionDelegate-Protocol.h>
+#import <UIKitCore/UIDropInteractionDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIKeyInput-Protocol.h>
+#import <UIKitCore/UIKeyboardInput-Protocol.h>
+#import <UIKitCore/UIPreviewItemDelegate-Protocol.h>
+#import <UIKitCore/UITextAutoscrolling-Protocol.h>
+#import <UIKitCore/UITextInputMultiDocument-Protocol.h>
+#import <UIKitCore/UITextInputPrivate-Protocol.h>
+#import <UIKitCore/UITextInputTokenizer-Protocol.h>
+#import <UIKitCore/UIWebFileUploadPanelDelegate-Protocol.h>
+#import <UIKitCore/WebEditingDelegate-Protocol.h>
+#import <UIKitCore/WebFrameLoadDelegate-Protocol.h>
+#import <UIKitCore/_UIRotatingAlertControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIWebDoubleTapDelegate-Protocol.h>
 
-@class CALayer, DOMElement, DOMHTMLElement, DOMNode, DOMRange, NSArray, NSDictionary, NSIndexSet, NSString, NSTimer, NSURL, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPreviewItemController, UITapGestureRecognizer, UITextChecker, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFileUploadPanel, UIWebPlaybackTargetPicker, UIWebRotatingAlertController, UIWebSelectionAssistant, WebHistoryItem, WebThreadSafeUndoManager, WebView, _UITextDragCaretView, _UITextServiceSession, _UIWebHighlightLongPressGestureRecognizer, _UIWebViewportHandler;
+@class CALayer, DOMElement, DOMHTMLElement, DOMNode, DOMRange, NSArray, NSDictionary, NSIndexSet, NSString, NSTimer, NSURL, RTIInputSystemSourceSession, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIImage, UIInputContextHistory, UILongPressGestureRecognizer, UIPanGestureRecognizer, UIPreviewItemController, UITapGestureRecognizer, UITextChecker, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, UIWebFileUploadPanel, UIWebPlaybackTargetPicker, UIWebRotatingAlertController, UIWebSelectionAssistant, WebHistoryItem, WebThreadSafeUndoManager, WebView, _UITextDragCaretView, _UITextServiceSession, _UIWebHighlightLongPressGestureRecognizer, _UIWebViewportHandler;
 @protocol UITextInputDelegate, UITextInputSuggestionDelegate, UITextInputTokenizer, UIWebDraggingDelegate;
 
 @interface UIWebDocumentView : UIWebTiledView <DDDetectionControllerInteractionDelegate, UIDragInteractionDelegate, UIDropInteractionDelegate, UIPreviewItemDelegate, _UIRotatingAlertControllerDelegate, UITextAutoscrolling, UIAutoscrollContainer, UIGestureRecognizerDelegate, UIKeyboardInput, UITextInputPrivate, UIKeyInput, UITextInputTokenizer, UITextInputMultiDocument, _UIWebDoubleTapDelegate, UIWebFileUploadPanelDelegate, WebEditingDelegate, WebFrameLoadDelegate>
@@ -178,6 +178,7 @@
 
 @property (copy, nonatomic) NSIndexSet *PINEntrySeparatorIndexes;
 @property (getter=_acceptsFirstResponder, setter=_setAcceptsFirstResponder:) BOOL _acceptsFirstResponder;
+@property (readonly, nonatomic) RTIInputSystemSourceSession *_rtiSourceSession;
 @property (nonatomic) long long _textInputSource;
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji; // @dynamic acceptsEmoji;
@@ -224,6 +225,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hidePrediction;
 @property (strong, nonatomic) UIView *initialDropSnapshotView; // @synthesize initialDropSnapshotView=_initialDropSnapshotView;
 @property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate;
@@ -241,6 +243,7 @@
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
 @property (nonatomic) BOOL mediaPlaybackAllowsAirPlay;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (strong, nonatomic) DOMRange *rangeToRestoreAfterDictation; // @synthesize rangeToRestoreAfterDictation=_rangeToRestoreAfterDictation;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (readonly, nonatomic) unsigned long long renderTreeSize; // @synthesize renderTreeSize=_renderTreeSize;
@@ -411,6 +414,7 @@
 - (void)_shareText:(id)arg1 fromRect:(struct CGRect)arg2;
 - (struct CGRect)_shortcutPresentationRect;
 - (BOOL)_shouldFlattenContentLayersForRect:(struct CGRect)arg1;
+- (BOOL)_shouldPaste;
 - (BOOL)_shouldResetForNewPage;
 - (BOOL)_shouldUpdateSubviewCachesForPlugins;
 - (void)_showDataDetectorsSheet;
@@ -508,7 +512,6 @@
 - (struct CGRect)convertRectFromSelectedFrameCoordinates:(struct CGRect)arg1;
 - (struct CGRect)convertRectWithDocumentScale:(struct CGRect)arg1;
 - (void)copy:(id)arg1;
-- (struct CGImage *)createSnapshotWithRect:(struct CGRect)arg1;
 - (double)currentDocumentScale;
 - (void)cut:(id)arg1;
 - (unsigned long long)dataDetectorTypes;
@@ -632,6 +635,7 @@
 - (void)loadRequest:(id)arg1;
 - (BOOL)loadsSynchronously;
 - (void)makeTextWritingDirectionLeftToRight:(id)arg1;
+- (void)makeTextWritingDirectionNatural:(id)arg1;
 - (void)makeTextWritingDirectionRightToLeft:(id)arg1;
 - (BOOL)makeWKFirstResponder;
 - (double)maximumDoubleTapScale;
@@ -648,6 +652,7 @@
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (unsigned long long)offsetInMarkedTextForSelection:(id)arg1;
 - (void)paste:(id)arg1;
+- (void)pasteAndMatchStyle:(id)arg1;
 - (void)performClick:(id)arg1;
 - (void)performInteractionSelector:(SEL)arg1 afterDelay:(double)arg2;
 - (BOOL)performTwoStepDrop:(id)arg1 atDestination:(id)arg2 isMove:(BOOL)arg3;

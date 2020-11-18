@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarSystemNavigationItemView.h>
+#import <UIKitCore/UIStatusBarSystemNavigationItemView.h>
 
 @class NSString, UISystemNavigationAction;
 

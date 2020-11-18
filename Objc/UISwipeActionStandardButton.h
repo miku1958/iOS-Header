@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UISwipeActionButton.h>
+#import <UIKitCore/UISwipeActionButton.h>
 
 __attribute__((visibility("hidden")))
 @interface UISwipeActionStandardButton : UISwipeActionButton

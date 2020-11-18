@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCoding-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
 
 @class NSArray, NSMutableDictionary, NSString, UIBarButtonItem, UIImageView, UINavigationBar, UISearchController, UIView;
 @protocol _UINavigationItemChangeObserver;
@@ -106,7 +106,7 @@
 + (id)defaultFont;
 - (void).cxx_destruct;
 - (BOOL)_accumulateViewsFromItems:(id)arg1 isLeft:(BOOL)arg2 refreshViews:(BOOL)arg3;
-- (void)_addDefaultTitleViewToNavigationBarIfNecessary;
+- (id)_addDefaultTitleViewToNavigationBarIfNecessary:(id)arg1;
 - (id)_barButtonForBackButtonIndicator;
 - (id)_buttonForBackButtonIndicator;
 - (void)_cleanupFrozenTitleView;

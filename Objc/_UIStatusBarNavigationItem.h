@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarItem.h>
+#import <UIKitCore/_UIStatusBarItem.h>
 
 @class _UIStatusBarStringView;
 
@@ -17,10 +17,9 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) _UIStatusBarStringView *nameView; // @synthesize nameView=_nameView;
 
 - (void).cxx_destruct;
-- (id)applyStyleAttributes:(id)arg1 toDisplayItem:(id)arg2;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
+- (id)createDisplayItemForIdentifier:(id)arg1;
 - (id)dependentEntryKeys;
-- (id)init;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

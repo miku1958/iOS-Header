@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory10Key_Portrait.h>
+#import <UIKitCore/UIKBRenderFactory10Key_Portrait.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactory10Key_PortraitTruffle : UIKBRenderFactory10Key_Portrait

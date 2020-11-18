@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPanGestureRecognizer.h>
+#import <UIKitCore/UIPanGestureRecognizer.h>
 
 @class UIScrollView, UIScrollViewDirectionalPressGestureRecognizer;
 
@@ -35,10 +35,12 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (struct CGPoint)_adjustSceneReferenceLocation:(struct CGPoint)arg1;
+- (void)_beginScroll;
 - (BOOL)_canTransferTrackingFromParentPagingScrollView;
 - (void)_centroidMovedTo:(struct CGPoint)arg1 atTime:(double)arg2;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 fromSceneReferenceCoordinatesToView:(id)arg2;
 - (struct CGPoint)_convertPoint:(struct CGPoint)arg1 toSceneReferenceCoordinatesFromView:(id)arg2;
+- (void)_handleCaughtDeceleratingScrollViewWithEvent:(id)arg1;
 - (double)_hysteresis;
 - (void)_resetGestureRecognizer;
 - (void)_scrollViewDidEndZooming;

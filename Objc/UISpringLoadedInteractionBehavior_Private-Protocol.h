@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UISpringLoadedInteractionBehavior-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionBehavior-Protocol.h>
 
 @protocol UISpringLoadedInteractionBehaviorDelegate;
 

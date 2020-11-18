@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UITabBarControllerInterruptibleTransitioning-Protocol.h>
+#import <UIKitCore/_UITabBarControllerInterruptibleTransitioning-Protocol.h>
 
 @class NSString;
 @protocol UIViewControllerContextTransitioning;

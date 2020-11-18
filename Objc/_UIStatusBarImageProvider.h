@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarImageProvider : NSObject
@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 + (id)sharedProvider;
 - (struct UIEdgeInsets)_alignmentInsetsForImageNamed:(id)arg1 styleAttributes:(id)arg2;
 - (BOOL)_automaticallyFlipRightToLeftLayoutDirectionForImageNamed:(id)arg1 styleAttributes:(id)arg2;
+- (BOOL)_suppressHairlineThickeningForImageName:(id)arg1 styleAttributes:(id)arg2;
 - (id)imageNamed:(id)arg1 styleAttributes:(id)arg2;
 
 @end

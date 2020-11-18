@@ -4,16 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDataSourceModelAssociation-Protocol.h>
-#import <UIKit/UITableViewDataSourcePrefetching-Protocol.h>
-#import <UIKit/UITableViewDataSourcePrivate-Protocol.h>
-#import <UIKit/UITableViewDelegatePrivate-Protocol.h>
-#import <UIKit/UITableViewDragDelegate_Private-Protocol.h>
-#import <UIKit/UITableViewDragDestinationDelegate_Internal-Protocol.h>
-#import <UIKit/UITableViewDragSourceDelegate-Protocol.h>
-#import <UIKit/UITableViewDropDelegate_Private-Protocol.h>
+#import <UIKitCore/UIDataSourceModelAssociation-Protocol.h>
+#import <UIKitCore/UITableViewDataSourcePrefetching-Protocol.h>
+#import <UIKitCore/UITableViewDataSourcePrivate-Protocol.h>
+#import <UIKitCore/UITableViewDelegatePrivate-Protocol.h>
+#import <UIKitCore/UITableViewDragDelegate_Private-Protocol.h>
+#import <UIKitCore/UITableViewDragDestinationDelegate_Internal-Protocol.h>
+#import <UIKitCore/UITableViewDragSourceDelegate-Protocol.h>
+#import <UIKitCore/UITableViewDropDelegate_Private-Protocol.h>
 
 @class NSMutableArray, NSString, UITableView, _UIDataSourceSnapshotter, _UIDataSourceUpdateMap;
 
@@ -79,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (id)_tableView:(id)arg1 itemsForAddingToDragSession:(id)arg2 atIndexPath:(id)arg3 point:(struct CGPoint)arg4;
 - (id)_tableView:(id)arg1 itemsForBeginningDragSession:(id)arg2 atIndexPath:(id)arg3;
 - (void)_tableView:(id)arg1 performDropWithCoordinator:(id)arg2;
+- (id)_tableView:(id)arg1 sectionIndexTitlesTrimmedToCount:(unsigned long long)arg2;
 - (BOOL)_tableView:(id)arg1 shouldSpringLoadRowAtIndexPath:(id)arg2 withContext:(id)arg3;
 - (id)_tableView:(id)arg1 targetIndexPathForProposedIndexPath:(id)arg2 currentIndexPath:(id)arg3 dropSession:(id)arg4;
 - (id)_tableView:(id)arg1 templateLayoutCellForCellsWithReuseIdentifier:(id)arg2;

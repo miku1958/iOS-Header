@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIKeyboardChangedInformation.h>
+#import <UIKitCore/_UIKeyboardChangedInformation.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardChangedInformationWithFencing : _UIKeyboardChangedInformation

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UILayoutEngineSuspending-Protocol.h>
+#import <UIKitCore/_UILayoutEngineSuspending-Protocol.h>
 
 @class CALayer, NSString;
 

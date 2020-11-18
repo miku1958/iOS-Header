@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UIGeometryChangeObserver-Protocol.h>
+#import <UIKitCore/_UIGeometryChangeObserver-Protocol.h>
 
 @class NSLayoutConstraint, NSString, UILayoutGuide;
 

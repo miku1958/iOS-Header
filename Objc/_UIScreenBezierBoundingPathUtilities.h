@@ -4,28 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIScreenBoundingPathUtilities.h>
+#import <UIKitCore/_UIScreenBoundingPathUtilities.h>
 
-@class NSData;
+@class _UIBoundingPathBitmap;
 
 __attribute__((visibility("hidden")))
 @interface _UIScreenBezierBoundingPathUtilities : _UIScreenBoundingPathUtilities
 {
     long long _type;
-    NSData *_bitmapData;
-    struct _UIScreenBoundingPathBitmapInfo _bitmapInfo;
+    _UIBoundingPathBitmap *_bitmap;
 }
 
 + (BOOL)isScreenSupported:(id)arg1;
 - (void).cxx_destruct;
-- (struct CGRect)_inscribedRectInBoundingPathByInsettingRect:(struct CGRect)arg1 onEdges:(unsigned long long)arg2 inCoordinateSpace:(id)arg3 withOptions:(unsigned long long)arg4;
-- (struct CGRect)_largestInscribedRectInBoundingPathWithCenter:(struct CGPoint)arg1 aspectRatio:(double)arg2 inCoordinateSpace:(id)arg3;
-- (struct CGRect)_largestInscribedRectWithPortraitPixelRectInScreen:(struct CGRect)arg1 withPortraitAspectRatio:(double)arg2;
-- (void)_loadBezierPathsForScreen:(id)arg1 type:(long long)arg2;
 - (void)_loadBitmapForScreen:(id)arg1 type:(long long)arg2;
-- (struct CGRect)_rectByHorizontallyInsettingPortraitPixelRectInScreen:(struct CGRect)arg1 fromEdges:(unsigned long long)arg2 performCompleteTest:(BOOL)arg3;
-- (struct CGRect)_rectByVerticallyInsettingPortraitPixelRectInScreen:(struct CGRect)arg1 fromEdges:(unsigned long long)arg2 performCompleteTest:(BOOL)arg3;
-- (void)_validateLoadedBitmapDataSize;
+- (id)boundingPathForWindow:(id)arg1;
 - (id)initWithScreen:(id)arg1;
 
 @end

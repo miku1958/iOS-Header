@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-#import <UIKit/UIMovieScrubberTrackViewDataSource-Protocol.h>
-#import <UIKit/UIMovieScrubberTrackViewDelegate-Protocol.h>
+#import <UIKitCore/UIMovieScrubberTrackViewDataSource-Protocol.h>
+#import <UIKitCore/UIMovieScrubberTrackViewDelegate-Protocol.h>
 
 @class NSString, UIImage, UIImageView, UILabel, UIMovieScrubberEditingView, UIMovieScrubberTrackView, UIPanGestureRecognizer;
 @protocol UIMovieScrubberDataSource, UIMovieScrubberDelegate;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UITableConstants-Protocol.h>
+#import <UIKitCore/UITableConstants-Protocol.h>
 
 @class NSString;
 
@@ -22,16 +22,19 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL useOffWhiteEtchedLook;
 
 + (id)sharedConstants;
+- (void)_cacheImage:(id)arg1 tintColor:(id)arg2 forEditingStyle:(long long)arg3;
+- (id)_cachedImageForEditingStyle:(long long)arg1 tintColor:(id)arg2;
+- (id)_defaultImageForEditingStyle:(long long)arg1 cell:(id)arg2 tableView:(id)arg3;
 - (double)_defaultMarginWidthForTableView:(id)arg1 canUseLayoutMargins:(BOOL)arg2;
 - (double)defaultAlphaForDraggingCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultAlphaForReorderingCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultBackgroundColorForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultBackgroundColorForTableViewStyle:(long long)arg1;
+- (id)defaultBackgroundEffectsForTableViewStyle:(long long)arg1;
 - (id)defaultCheckmarkImageForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultContentAccessoryPaddingForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultContentEditPaddingForCell:(id)arg1 inTableView:(id)arg2;
 - (double)defaultContentReorderPaddingForCell:(id)arg1 inTableView:(id)arg2;
-- (id)defaultDeleteBackgroundImageForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultDeleteImageForCell:(id)arg1 inTableView:(id)arg2;
 - (struct CGRect)defaultDeleteMinusRectForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultDetailTextColorForCell:(id)arg1 inTableView:(id)arg2;
@@ -73,6 +76,7 @@ __attribute__((visibility("hidden")))
 - (double)defaultRowHeightForTableView:(id)arg1 cellStyle:(long long)arg2;
 - (double)defaultSectionFooterHeightForTableView:(id)arg1;
 - (double)defaultSectionHeaderHeightForTableView:(id)arg1;
+- (id)defaultSelectionEffectsForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultSelectionTintColorForCell:(id)arg1 inTableView:(id)arg2;
 - (id)defaultSeparatorColorForTableViewStyle:(long long)arg1;
 - (long long)defaultSeparatorStyleForTableViewStyle:(long long)arg1;
@@ -83,7 +87,9 @@ __attribute__((visibility("hidden")))
 - (double)defaultTrailingCellMarginWidthForTableView:(id)arg1;
 - (BOOL)imageViewOffsetByLayoutMarginsForCell:(id)arg1 inTableView:(id)arg2;
 - (BOOL)reorderingCellWantsShadows:(id)arg1 inTableView:(id)arg2;
+- (id)sidebarVariant;
 - (BOOL)supportsUserInterfaceStyles;
+- (id)variantForActive:(BOOL)arg1 dark:(BOOL)arg2;
 
 @end
 

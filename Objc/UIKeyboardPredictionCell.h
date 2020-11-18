@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-@class TIKeyboardCandidate, UIKBKeyView, UILabel, UIMorphingLabel;
+@class TIKeyboardCandidate, UILabel, UIMorphingLabel;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardPredictionCell : UIView
@@ -14,50 +14,46 @@ __attribute__((visibility("hidden")))
     UIMorphingLabel *m_label;
     UILabel *m_suggestionLabel;
     UIView *m_maskView;
-    UIKBKeyView *m_activeKeyView;
-    UIKBKeyView *m_enabledKeyView;
+    UIView *m_activeView;
     BOOL m_lightKeyboard;
-    struct CGSize m_keyViewSize;
     double m_maskViewMargin;
+    BOOL _active;
     BOOL _isAutocorrection;
     BOOL _isTypedString;
-    BOOL _isCenter;
     BOOL _isLongCandidate;
     BOOL _isEmoji;
-    int _state;
     unsigned int _slotID;
     TIKeyboardCandidate *_prediction;
+    UIView *_leftSeperatorView;
+    UIView *_rightSeperatorView;
     long long _candidateType;
-    struct CGRect _collapsedFrame;
-    struct CGRect _baseFrame;
-    struct CGRect _activeFrame;
+    long long _state;
 }
 
-@property (nonatomic) struct CGRect activeFrame; // @synthesize activeFrame=_activeFrame;
-@property (nonatomic) struct CGRect baseFrame; // @synthesize baseFrame=_baseFrame;
+@property (nonatomic) BOOL active; // @synthesize active=_active;
 @property (nonatomic) long long candidateType; // @synthesize candidateType=_candidateType;
-@property (nonatomic) struct CGRect collapsedFrame; // @synthesize collapsedFrame=_collapsedFrame;
 @property (nonatomic) BOOL isAutocorrection; // @synthesize isAutocorrection=_isAutocorrection;
-@property (nonatomic) BOOL isCenter; // @synthesize isCenter=_isCenter;
 @property (nonatomic) BOOL isEmoji; // @synthesize isEmoji=_isEmoji;
 @property (nonatomic) BOOL isLongCandidate; // @synthesize isLongCandidate=_isLongCandidate;
 @property (nonatomic) BOOL isTypedString; // @synthesize isTypedString=_isTypedString;
+@property (strong, nonatomic) UIView *leftSeperatorView; // @synthesize leftSeperatorView=_leftSeperatorView;
 @property (readonly, strong, nonatomic) TIKeyboardCandidate *prediction; // @synthesize prediction=_prediction;
+@property (strong, nonatomic) UIView *rightSeperatorView; // @synthesize rightSeperatorView=_rightSeperatorView;
 @property (nonatomic) unsigned int slotID; // @synthesize slotID=_slotID;
-@property (nonatomic) int state; // @synthesize state=_state;
+@property (nonatomic) long long state; // @synthesize state=_state;
 
 + (double)fontSizeForSingleLineLayout;
-+ (id)newKeyViewWithSize:(struct CGSize)arg1 state:(int)arg2 needsBackground:(BOOL)arg3;
-- (void)clearKeyViewForState:(int)arg1;
++ (double)predictionCellTopPadding;
 - (void)dealloc;
 - (void)dimKeys:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)label;
+- (BOOL)needsUpdateForRenderConfig:(id)arg1;
 - (void)scrollLabelWithText:(id)arg1 force:(BOOL)arg2;
+- (void)setActive:(BOOL)arg1 withAttrText:(id)arg2;
+- (void)setActive:(BOOL)arg1 withText:(id)arg2;
 - (void)setCellAttributes;
-- (void)setKeyViewForState:(int)arg1;
-- (void)setState:(int)arg1 withAttrText:(id)arg2;
-- (void)setState:(int)arg1 withText:(id)arg2;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)setText:(id)arg1 prediction:(id)arg2 active:(BOOL)arg3 isEmoji:(BOOL)arg4;
 - (void)setVisibleRect;
 - (BOOL)shouldDisplayAsSuggestion:(id)arg1;
@@ -66,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (void)touchMoved:(double)arg1;
 - (void)updateBackgroundWithRenderConfig:(id)arg1;
 - (struct CGRect)visibleRect;
-- (void)willMoveToSuperview:(id)arg1;
 
 @end
 

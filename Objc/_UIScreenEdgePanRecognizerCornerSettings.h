@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UISettings.h>
+#import <UIKitCore/_UISettings.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIScreenEdgePanRecognizerCornerSettings : _UISettings

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBackdropViewSettingsNonAdaptive.h>
+#import <UIKitCore/_UIBackdropViewSettingsNonAdaptive.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIBackdropViewSettingsUltraDark : _UIBackdropViewSettingsNonAdaptive

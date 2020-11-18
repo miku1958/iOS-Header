@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPercentDrivenInteractiveTransition.h>
+#import <UIKitCore/UIPercentDrivenInteractiveTransition.h>
 
-#import <UIKit/UIForceInteractionController-Protocol.h>
-#import <UIKit/UIInteractionProgressObserver-Protocol.h>
+#import <UIKitCore/UIForceInteractionController-Protocol.h>
+#import <UIKitCore/UIInteractionProgressObserver-Protocol.h>
 
 @class NSString, UIAlertController;
 @protocol UIViewControllerContextTransitioning;

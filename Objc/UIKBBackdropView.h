@@ -4,30 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIBackdropView.h>
+#import <UIKitCore/UIVisualEffectView.h>
 
-@class NSMutableArray, UIImage;
+@class UIImage;
 
-__attribute__((visibility("hidden")))
-@interface UIKBBackdropView : _UIBackdropView
+@interface UIKBBackdropView : UIVisualEffectView
 {
-    NSMutableArray *_secondaryBackdrops;
     UIImage *_imageForCorners;
 }
 
-@property (readonly, nonatomic) BOOL _hasUpdatedFrame;
 @property (strong, nonatomic) UIImage *imageForCorners; // @synthesize imageForCorners=_imageForCorners;
 
-- (void)_applyCornerRadiusToSubviews;
+- (BOOL)_applyCornerMaskToSelf;
 - (id)_generateCornerContentsImage:(int)arg1;
 - (void)_setRenderConfig:(id)arg1;
 - (void)dealloc;
-- (void)didCallRenderInContextOnBackdropViewLayer;
-- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2 primaryBackdrop:(BOOL)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 style:(long long)arg2;
 - (void)setFrame:(struct CGRect)arg1;
 - (int)textEffectsVisibilityLevel;
+- (void)transitionToStyle:(long long)arg1;
 - (void)updateFrame:(struct CGRect)arg1 withCorners:(int)arg2;
-- (void)willCallRenderInContextOnBackdropViewLayer;
 
 @end
 

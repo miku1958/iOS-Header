@@ -4,20 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 __attribute__((visibility("hidden")))
 @interface UIAlertControllerDescriptor : NSObject
 {
+    BOOL _hasHeaderContentViewController;
     BOOL _hasTitle;
     BOOL _hasMessage;
     BOOL _hasContentViewController;
     BOOL _applicationIsFullscreen;
     long long _numberOfActions;
+    struct UIEdgeInsets _containerViewSafeAreaInsets;
 }
 
 @property BOOL applicationIsFullscreen; // @synthesize applicationIsFullscreen=_applicationIsFullscreen;
+@property struct UIEdgeInsets containerViewSafeAreaInsets; // @synthesize containerViewSafeAreaInsets=_containerViewSafeAreaInsets;
 @property BOOL hasContentViewController; // @synthesize hasContentViewController=_hasContentViewController;
+@property BOOL hasHeaderContentViewController; // @synthesize hasHeaderContentViewController=_hasHeaderContentViewController;
 @property BOOL hasMessage; // @synthesize hasMessage=_hasMessage;
 @property BOOL hasTitle; // @synthesize hasTitle=_hasTitle;
 @property long long numberOfActions; // @synthesize numberOfActions=_numberOfActions;

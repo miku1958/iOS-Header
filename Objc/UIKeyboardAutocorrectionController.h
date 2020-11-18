@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class TIAutocorrectionList, TIKeyboardCandidate;
 
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     TIAutocorrectionList *_autocorrectionList;
     TIAutocorrectionList *_textSuggestionList;
+    unsigned int _signpostToken;
     BOOL _needsAutocorrection;
     BOOL _deferredAutocorrection;
     BOOL _requestedAutocorrection;

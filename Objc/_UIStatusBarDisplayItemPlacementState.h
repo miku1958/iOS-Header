@@ -4,26 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIStatusBarPrioritized-Protocol.h>
+#import <UIKitCore/_UIStatusBarPrioritized-Protocol.h>
 
-@class NSMutableSet, _UIStatusBarDisplayItemPlacement, _UIStatusBarRegion;
+@class NSMutableArray, _UIStatusBarDisplayItemPlacement, _UIStatusBarRegion;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarDisplayItemPlacementState : NSObject <_UIStatusBarPrioritized>
 {
     _UIStatusBarDisplayItemPlacement *_placement;
     _UIStatusBarRegion *_region;
-    NSMutableSet *_exclusions;
+    NSMutableArray *_relations;
 }
 
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
-@property (readonly, nonatomic, getter=isExcluded) BOOL excluded;
-@property (strong, nonatomic) NSMutableSet *exclusions; // @synthesize exclusions=_exclusions;
 @property (readonly, nonatomic) _UIStatusBarDisplayItemPlacement *placement; // @synthesize placement=_placement;
 @property (readonly, nonatomic) long long priority;
 @property (readonly, weak, nonatomic) _UIStatusBarRegion *region; // @synthesize region=_region;
+@property (strong, nonatomic) NSMutableArray *relations; // @synthesize relations=_relations;
+@property (readonly, nonatomic, getter=areRelationsFulfilled) BOOL relationsFulfilled;
 
 + (id)stateForDisplayItemPlacement:(id)arg1 region:(id)arg2;
 - (void).cxx_destruct;

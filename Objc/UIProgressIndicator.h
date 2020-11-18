@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivityIndicatorView.h>
+#import <UIKitCore/UIActivityIndicatorView.h>
 
 @interface UIProgressIndicator : UIActivityIndicatorView
 {

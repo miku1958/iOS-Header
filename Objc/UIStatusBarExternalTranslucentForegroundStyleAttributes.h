@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarExternalForegroundStyleAttributes.h>
+#import <UIKitCore/UIStatusBarExternalForegroundStyleAttributes.h>
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarExternalTranslucentForegroundStyleAttributes : UIStatusBarExternalForegroundStyleAttributes

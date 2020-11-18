@@ -4,18 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/BSAction.h>
+#import <BaseBoard/BSAction.h>
 
-@class _UIFocusMovementInfo;
+@class _UIFocusInputDeviceInfo, _UIFocusMovementInfo;
 
 @interface UIFocusMovementAction : BSAction
 {
 }
 
 @property (readonly, nonatomic) _UIFocusMovementInfo *focusMovementInfo;
+@property (readonly, nonatomic) _UIFocusInputDeviceInfo *inputDeviceInfo;
+@property (readonly, nonatomic) BOOL shouldPerformHapticFeedback;
 
 - (long long)UIActionType;
 - (id)initWithFocusMovementInfo:(id)arg1;
+- (id)initWithFocusMovementInfo:(id)arg1 inputDeviceInfo:(id)arg2 shouldPerformHapticFeedback:(BOOL)arg3;
 
 @end
 

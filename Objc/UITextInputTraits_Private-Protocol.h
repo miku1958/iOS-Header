@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
-#import <UIKit/UITextInputTraits-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
+#import <UIKitCore/UITextInputTraits-Protocol.h>
 
 @class NSIndexSet, NSString, UIColor, UIImage, UIInputContextHistory;
 @protocol UITextInputTraits;
@@ -33,6 +33,7 @@
 @property (nonatomic) BOOL forceDisableDictation;
 @property (nonatomic) BOOL forceEnableDictation;
 @property (nonatomic) BOOL hasDefaultContents;
+@property (nonatomic) BOOL hidePrediction;
 @property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
 @property (strong, nonatomic) UIColor *insertionPointColor;
 @property (nonatomic) unsigned long long insertionPointWidth;

@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @class UIAccessibilityHUDItem, _UIStatusBarStyleAttributes;
 
 @protocol _UIStatusBarDisplayable <NSObject>
 
 @property (readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
-@property (readonly, nonatomic) double baselineOffset;
+@property (readonly, nonatomic) long long overriddenVerticalAlignment;
 @property (readonly, nonatomic) BOOL wantsCrossfade;
 
 

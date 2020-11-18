@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAlertController.h>
+#import <UIKitCore/UIAlertController.h>
 
 @class UIViewController;
 @protocol UIPopoverPresentationControllerDelegate, _UIRotatingAlertControllerDelegate;

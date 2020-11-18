@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGestureRecognizer.h>
+#import <UIKitCore/UIGestureRecognizer.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIFocusPressGestureRecognizer : UIGestureRecognizer

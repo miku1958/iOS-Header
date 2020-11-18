@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @class _UIFocusMovementPerformer, _UIFocusMovementRequest;
 
 @protocol _UIFocusMovementPerformerDelegate <NSObject>
-- (void)_focusMovementPerformer:(_UIFocusMovementPerformer *)arg1 didFailToPerformFocusMovement:(_UIFocusMovementRequest *)arg2;
+- (BOOL)_handleFailedFocusMovementRequest:(_UIFocusMovementRequest *)arg1 withPerformer:(_UIFocusMovementPerformer *)arg2;
 @end
 

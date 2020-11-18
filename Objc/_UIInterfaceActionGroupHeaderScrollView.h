@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIAlertControllerShadowedScrollView.h>
+#import <UIKitCore/_UIAlertControllerShadowedScrollView.h>
 
 @class NSArray, UIView;
 

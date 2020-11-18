@@ -6,7 +6,7 @@
 
 #import <TextInput/TIKeyboardInputManagerStub.h>
 
-#import <UIKit/_UIIVCInterface-Protocol.h>
+#import <UIKitCore/_UIIVCInterface-Protocol.h>
 
 @class NSString, _UIInputViewControllerState;
 @protocol _UIIVCInterface, _UIIVCResponseDelegate;

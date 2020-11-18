@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextDroppable-Protocol.h>
-#import <UIKit/UITextPasteConfigurationSupporting-Protocol.h>
+#import <UIKitCore/UITextDroppable-Protocol.h>
+#import <UIKitCore/UITextPasteConfigurationSupporting-Protocol.h>
 
 @class NSMutableAttributedString;
 
@@ -15,6 +15,7 @@
 
 - (BOOL)allowsEditingTextAttributes;
 - (void)becomeDropResponder;
+- (BOOL)canBecomeDropResponder;
 - (void)droppingFinished;
 - (void)droppingStarted;
 - (void)resignDropResponderWithDropPerformed:(BOOL)arg1;

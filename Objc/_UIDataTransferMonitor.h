@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSItemProviderDataTransferDelegate-Protocol.h>
-#import <UIKit/NSProgressReporting-Protocol.h>
+#import <UIKitCore/NSItemProviderDataTransferDelegate-Protocol.h>
+#import <UIKitCore/NSProgressReporting-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSProgress, NSString;
 @protocol _UIDataTransferMonitorDelegate;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/UIPDFAnnotationControllerDelegate-Protocol.h>
-#import <UIKit/UIPDFPageViewDelegate-Protocol.h>
-#import <UIKit/UIPopoverControllerDelegate-Protocol.h>
-#import <UIKit/WebPDFViewPlaceholderDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIPDFAnnotationControllerDelegate-Protocol.h>
+#import <UIKitCore/UIPDFPageViewDelegate-Protocol.h>
+#import <UIKitCore/UIPopoverControllerDelegate-Protocol.h>
+#import <UIKitCore/WebPDFViewPlaceholderDelegate-Protocol.h>
 
 @class NSArray, NSData, NSMutableArray, NSObject, NSString, NSURL, UIColor, UIPDFDocument, UITapGestureRecognizer, WebPDFViewPlaceholder;
 @protocol UIWebPDFViewDelegate;

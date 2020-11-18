@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/_UIStatusBarDisplayable-Protocol.h>
+#import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
 
 @class CAGradientLayer, CALayer, NSString, UIAccessibilityHUDItem, UIColor, _UIStatusBarCycleAnimation;
 
@@ -23,7 +23,6 @@
 
 @property (readonly, nonatomic) UIAccessibilityHUDItem *accessibilityHUDRepresentation;
 @property (strong, nonatomic) CAGradientLayer *barLayer; // @synthesize barLayer=_barLayer;
-@property (readonly, nonatomic) double baselineOffset;
 @property (copy, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (strong, nonatomic) _UIStatusBarCycleAnimation *cycleAnimation; // @synthesize cycleAnimation=_cycleAnimation;
 @property (readonly, copy) NSString *debugDescription;
@@ -31,6 +30,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isSlow; // @synthesize isSlow=_isSlow;
 @property (strong, nonatomic) CALayer *mainLayer; // @synthesize mainLayer=_mainLayer;
+@property (readonly, nonatomic) long long overriddenVerticalAlignment;
 @property (strong, nonatomic) CALayer *pointLayer; // @synthesize pointLayer=_pointLayer;
 @property (readonly) Class superclass;
 @property (nonatomic) double thickness; // @synthesize thickness=_thickness;
@@ -41,7 +41,6 @@
 - (void)_stopAnimatingWithStoppingAnimations:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (double)_thicknessForTraitCollection:(id)arg1;
 - (void)applyStyleAttributes:(id)arg1;
-- (void)didMoveToWindow;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

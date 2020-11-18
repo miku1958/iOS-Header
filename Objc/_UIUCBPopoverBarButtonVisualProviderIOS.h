@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIUCBBarButtonVisualProviderIOS.h>
+#import <UIKitCore/_UIUCBBarButtonVisualProviderIOS.h>
 
 @class UIColor, UIView;
 

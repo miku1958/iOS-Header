@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
 __attribute__((visibility("hidden")))
 @interface UIRemoveControlMinusButton : UIControl

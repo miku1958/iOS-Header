@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIVisualEffectViewSubviewMonitoring-Protocol.h>
+#import <UIKitCore/_UIVisualEffectViewSubviewMonitoring-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, _UIVisualEffectBackdropView, _UIVisualEffectNode, _UIVisualEffectSubview, _UIVisualEffectViewBackdropCaptureGroup;
 
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_applyRequestedNodeEffect;
 - (id)_cloneFilters:(id)arg1;
 - (void)_configureEffectNode:(id)arg1;
+- (void)_evaluateInPlaceFiltering;
 - (void)_updateAdjustTintColors;
 - (void)_updateView:(id)arg1 shouldDrawWithTintColor:(BOOL)arg2;
 - (void)_view:(id)arg1 willGainDescendent:(id)arg2;

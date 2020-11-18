@@ -4,21 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSPointerArray, NSString;
 
 @interface _UIVisualEffectViewBackdropCaptureGroup : NSObject
 {
     NSPointerArray *_backdrops;
+    BOOL _disableInPlaceFiltering;
     NSString *_groupName;
     double _scale;
+    double _minimumScale;
 }
 
+@property (nonatomic) BOOL disableInPlaceFiltering; // @synthesize disableInPlaceFiltering=_disableInPlaceFiltering;
 @property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
+@property (nonatomic) double minimumScale; // @synthesize minimumScale=_minimumScale;
 @property (nonatomic) double scale; // @synthesize scale=_scale;
 
 - (void).cxx_destruct;
+- (BOOL)_allowInPlaceFiltering;
 - (void)_applyScaleHint:(double)arg1;
 - (void)addBackdrop:(id)arg1 update:(BOOL)arg2;
 - (id)description;

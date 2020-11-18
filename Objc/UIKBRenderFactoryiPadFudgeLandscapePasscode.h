@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactoryiPadFudgeLandscape.h>
+#import <UIKitCore/UIKBRenderFactoryiPadFudgeLandscape.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactoryiPadFudgeLandscapePasscode : UIKBRenderFactoryiPadFudgeLandscape

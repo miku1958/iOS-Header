@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPresentationController.h>
+#import <UIKitCore/UIPresentationController.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardVCPresentationController : UIPresentationController

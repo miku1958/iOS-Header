@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIDiscreteFeedback.h>
+#import <UIKitCore/_UIDiscreteFeedback.h>
 
 __attribute__((visibility("hidden")))
 @interface _UICustomDiscreteFeedback : _UIDiscreteFeedback

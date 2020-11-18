@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSHashTable, UIScreen, _UIFocusDisplayLinkScrollAnimator;
 
@@ -12,28 +12,28 @@ __attribute__((visibility("hidden")))
 @interface _UIFocusScrollManager : NSObject
 {
     UIScreen *_screen;
-    _UIFocusDisplayLinkScrollAnimator *_scrollViewAnimator;
-    NSHashTable *_activelyScrollingScrollViews;
+    _UIFocusDisplayLinkScrollAnimator *_scrollAnimator;
+    NSHashTable *_activelyScrollingContainers;
 }
 
-@property (readonly, nonatomic) NSHashTable *activelyScrollingScrollViews; // @synthesize activelyScrollingScrollViews=_activelyScrollingScrollViews;
+@property (readonly, nonatomic) NSHashTable *activelyScrollingContainers; // @synthesize activelyScrollingContainers=_activelyScrollingContainers;
 @property (readonly, weak, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
-@property (readonly, nonatomic) _UIFocusDisplayLinkScrollAnimator *scrollViewAnimator; // @synthesize scrollViewAnimator=_scrollViewAnimator;
+@property (readonly, nonatomic) _UIFocusDisplayLinkScrollAnimator *scrollAnimator; // @synthesize scrollAnimator=_scrollAnimator;
 
 - (void).cxx_destruct;
-- (struct CGPoint)_contentOffsetForScrollView:(id)arg1 toShowFocusItemWithInfo:(id)arg2;
-- (struct CGPoint)_contentOffsetForScrollView:(id)arg1 toShowFocusItemWithInfo:(id)arg2 itemFrame:(struct CGRect)arg3 targetOffset:(struct CGPoint)arg4 targetBounds:(struct CGRect)arg5;
-- (void)_ensureFocusItemIsOnscreen:(id)arg1 inScrollView:(id)arg2;
-- (void)_scrollToFocusItemWithInfo:(id)arg1 offset:(struct CGPoint)arg2 inScrollView:(id)arg3;
-- (void)animateOffsetOfScrollView:(id)arg1 toShowFocusItem:(id)arg2;
-- (void)cancelScrollingForScrollView:(id)arg1;
-- (struct CGPoint)contentOffsetForScrollView:(id)arg1 toShowFocusItem:(id)arg2 targetOffset:(struct CGPoint)arg3 targetBounds:(struct CGRect)arg4;
-- (struct CGPoint)contentOffsetForScrollView:(id)arg1 toShowRect:(struct CGRect)arg2 targetOffset:(struct CGPoint)arg3 targetBounds:(struct CGRect)arg4;
-- (struct CGPoint)currentVelocityForScrollView:(id)arg1;
+- (struct CGPoint)_contentOffsetForScrollableContainer:(id)arg1 toShowFocusItemWithInfo:(id)arg2;
+- (struct CGPoint)_contentOffsetForScrollableContainer:(id)arg1 toShowFocusItemWithInfo:(id)arg2 itemFrame:(struct CGRect)arg3 targetOffset:(struct CGPoint)arg4 targetBounds:(struct CGRect)arg5;
+- (void)_ensureFocusItemIsOnscreen:(id)arg1 inScrollableContainer:(id)arg2;
+- (void)_scrollToFocusItemWithInfo:(id)arg1 offset:(struct CGPoint)arg2 inScrollableContainer:(id)arg3;
+- (void)animateOffsetOfScrollableContainer:(id)arg1 toShowFocusItem:(id)arg2;
+- (void)cancelScrollingForScrollableContainer:(id)arg1;
+- (struct CGPoint)contentOffsetForScrollableContainer:(id)arg1 toShowFocusItem:(id)arg2 targetOffset:(struct CGPoint)arg3 targetBounds:(struct CGRect)arg4;
+- (struct CGPoint)contentOffsetForScrollableContainer:(id)arg1 toShowRect:(struct CGRect)arg2 targetOffset:(struct CGPoint)arg3 targetBounds:(struct CGRect)arg4;
+- (struct CGPoint)currentVelocityForScrollableContainer:(id)arg1;
 - (id)initWithScreen:(id)arg1;
-- (BOOL)isScrollingScrollView:(id)arg1;
+- (BOOL)isScrollingScrollableContainer:(id)arg1;
 - (void)performScrollingIfNeededForFocusUpdateInContext:(id)arg1;
-- (struct CGPoint)targetContentOffsetForScrollView:(id)arg1;
+- (struct CGPoint)targetContentOffsetForScrollableContainer:(id)arg1;
 
 @end
 

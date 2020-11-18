@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class CADisplayLink, NSString;
 
@@ -19,9 +19,11 @@ __attribute__((visibility("hidden")))
     int _axis;
     CADisplayLink *_displayLink;
     CDUnknownBlockType _extraResultsBlock;
+    CDUnknownBlockType _completionBlock;
 }
 
 @property (nonatomic) int axis; // @synthesize axis=_axis;
+@property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property (strong, nonatomic) NSString *currentTest; // @synthesize currentTest=_currentTest;
 @property (nonatomic) int delta; // @synthesize delta=_delta;
 @property (strong, nonatomic) CADisplayLink *displayLink; // @synthesize displayLink=_displayLink;

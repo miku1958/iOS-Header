@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIDraggingImageSlotOwner.h>
+#import <UIKitCore/_UIDraggingImageSlotOwner.h>
 
-@class NSArray, NSSet, NSXPCListenerEndpoint, PBItemCollection, UIDragEvent, UIView, UIWindow, _DUITouchRoutingPolicy, _UIDragSetDownAnimation, _UIDraggingSession, _UIDruidSourceConnection;
+@class NSArray, NSSet, NSXPCListenerEndpoint, PBItemCollection, UIDragEvent, UIView, UIWindow, _DUITouchRoutingPolicy, _UIDragSetDownAnimation, _UIDraggingSession;
+@protocol _UIDruidSourceConnection;
 
 __attribute__((visibility("hidden")))
 @interface _UIInternalDraggingSessionSource : _UIDraggingImageSlotOwner
 {
     struct CGPoint _lastNotifiedCentroid;
-    BOOL _hasProvidedFenceOnce;
+    BOOL _didHandOffDragImage;
     PBItemCollection *_pbItemCollection;
     _DUITouchRoutingPolicy *_touchRoutingPolicy;
     _UIDragSetDownAnimation *_setDownAnimation;
@@ -33,7 +34,7 @@ __attribute__((visibility("hidden")))
     UIWindow *_centroidWindow;
     unsigned long long _withinAppSourceOperationMask;
     unsigned long long _outsideAppSourceOperationMask;
-    _UIDruidSourceConnection *_druidConnection;
+    id<_UIDruidSourceConnection> _druidConnection;
     struct CGPoint _centroid;
 }
 
@@ -42,8 +43,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct CGPoint centroid; // @synthesize centroid=_centroid;
 @property (readonly, nonatomic) UIWindow *centroidWindow; // @synthesize centroidWindow=_centroidWindow;
 @property (nonatomic) long long dataOwner; // @synthesize dataOwner=_dataOwner;
+@property (readonly, nonatomic) BOOL didHandOffDragImage;
 @property (weak, nonatomic) UIDragEvent *dragEvent; // @synthesize dragEvent=_dragEvent;
-@property (strong, nonatomic) _UIDruidSourceConnection *druidConnection; // @synthesize druidConnection=_druidConnection;
+@property (strong, nonatomic) id<_UIDruidSourceConnection> druidConnection; // @synthesize druidConnection=_druidConnection;
 @property (copy, nonatomic) NSArray *internalItems; // @synthesize internalItems=_internalItems;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) unsigned long long outsideAppSourceOperationMask; // @synthesize outsideAppSourceOperationMask=_outsideAppSourceOperationMask;

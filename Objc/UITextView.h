@@ -4,30 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIScrollView.h>
+#import <UIKitCore/UIScrollView.h>
 
-#import <UIKit/UIContentSizeCategoryAdjusting-Protocol.h>
-#import <UIKit/UIKeyboardInput-Protocol.h>
-#import <UIKit/UIPreviewItemDelegate-Protocol.h>
-#import <UIKit/UITextAutoscrolling-Protocol.h>
-#import <UIKit/UITextDragSupporting-Protocol.h>
-#import <UIKit/UITextDraggable-Protocol.h>
-#import <UIKit/UITextDropSupporting-Protocol.h>
-#import <UIKit/UITextDroppable-Protocol.h>
-#import <UIKit/UITextInput-Protocol.h>
-#import <UIKit/UITextInputControllerDelegate-Protocol.h>
-#import <UIKit/UITextInputTraits_Private-Protocol.h>
-#import <UIKit/UITextLinkInteraction-Protocol.h>
-#import <UIKit/UITextPasteConfigurationSupporting-Protocol.h>
-#import <UIKit/UITextPasteConfigurationSupporting_Internal-Protocol.h>
-#import <UIKit/UIViewGhostedRangeSupporting-Protocol.h>
-#import <UIKit/_UILayoutBaselineUpdating-Protocol.h>
-#import <UIKit/_UIMultilineTextContentSizing-Protocol.h>
-#import <UIKit/_UITextContainerViewDelegate-Protocol.h>
-#import <UIKit/_UITextViewContentPaddingDelegate-Protocol.h>
-#import <UIKit/_UIViewBaselineSpacing-Protocol.h>
+#import <UIKitCore/UIContentSizeCategoryAdjusting-Protocol.h>
+#import <UIKitCore/UIKeyboardInput-Protocol.h>
+#import <UIKitCore/UIPreviewItemDelegate-Protocol.h>
+#import <UIKitCore/UITextAutoscrolling-Protocol.h>
+#import <UIKitCore/UITextDragSupporting-Protocol.h>
+#import <UIKitCore/UITextDraggable-Protocol.h>
+#import <UIKitCore/UITextDropSupporting-Protocol.h>
+#import <UIKitCore/UITextDroppable-Protocol.h>
+#import <UIKitCore/UITextInput-Protocol.h>
+#import <UIKitCore/UITextInputControllerDelegate-Protocol.h>
+#import <UIKitCore/UITextInputTraits_Private-Protocol.h>
+#import <UIKitCore/UITextLinkInteraction-Protocol.h>
+#import <UIKitCore/UITextPasteConfigurationSupporting-Protocol.h>
+#import <UIKitCore/UITextPasteConfigurationSupporting_Internal-Protocol.h>
+#import <UIKitCore/UIViewGhostedRangeSupporting-Protocol.h>
+#import <UIKitCore/_UILayoutBaselineUpdating-Protocol.h>
+#import <UIKitCore/_UIMultilineTextContentSizing-Protocol.h>
+#import <UIKitCore/_UITextContainerViewDelegate-Protocol.h>
+#import <UIKitCore/_UITextViewContentPaddingDelegate-Protocol.h>
+#import <UIKitCore/_UIViewBaselineSpacing-Protocol.h>
 
-@class CUICatalog, NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIFont, UIImage, UIInputContextHistory, UILabel, UIPasteConfiguration, UITextInputController, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UISiriStreamingManager, _UITextContainerView, _UITextViewContentPadding, _UITextViewRestorableScrollPosition, _UITextViewVisualStyle;
+@class CUICatalog, NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIFont, UIImage, UIInputContextHistory, UILabel, UIPasteConfiguration, UITextInputController, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UISiriStreamingManager, _UITextContainerView, _UITextSizeCache, _UITextViewContentPadding, _UITextViewRestorableScrollPosition, _UITextViewVisualStyle;
 @protocol UITextDragDelegate, UITextDragDropSupport, UITextDropDelegate, UITextInputDelegate, UITextInputTokenizer, UITextPasteDelegate, UITextViewDelegate;
 
 @interface UITextView : UIScrollView <_UIViewBaselineSpacing, UITextLinkInteraction, UIPreviewItemDelegate, _UITextContainerViewDelegate, _UITextViewContentPaddingDelegate, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UIViewGhostedRangeSupporting, UITextPasteConfigurationSupporting_Internal, UITextDragSupporting, UITextDropSupporting, UITextDraggable, UITextDroppable, UITextPasteConfigurationSupporting, UITextInput, UIContentSizeCategoryAdjusting>
@@ -58,6 +58,7 @@
         unsigned int disableUpdateTextColorOnTraitCollectionChange:1;
         unsigned int containerViewSizeInvalid:1;
         unsigned int usesAttributedText:1;
+        unsigned int textSizeCacheEnabled:1;
     } _tvFlags;
     long long _contentSizeUpdateSeqNo;
     _UITextViewRestorableScrollPosition *_scrollTarget;
@@ -77,6 +78,7 @@
     NSDictionary *_siriParameters;
     double _firstBaselineOffsetFromTop;
     double _lastBaselineOffsetFromBottom;
+    _UITextSizeCache *_intrinsicSizeCache;
     CUICatalog *_cuiCatalog;
     struct UIEdgeInsets _beforeFreezingTextContainerInset;
     struct UIEdgeInsets _duringFreezingTextContainerInset;
@@ -145,6 +147,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL hidePrediction;
 @property (strong) UIView *inputAccessoryView;
 @property (strong, nonatomic) UIInputContextHistory *inputContextHistory;
 @property (weak, nonatomic) id<UITextInputDelegate> inputDelegate;
@@ -162,6 +165,7 @@
 @property (nonatomic) BOOL loadKeyboardsForSiriLanguage;
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
+@property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (copy, nonatomic) UIPasteConfiguration *pasteConfiguration; // @dynamic pasteConfiguration;
 @property (weak, nonatomic) id<UITextPasteDelegate> pasteDelegate; // @synthesize pasteDelegate=_pasteDelegate;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
@@ -273,6 +277,7 @@
 - (BOOL)_isDisplayingShareViewController;
 - (BOOL)_isDisplayingShortcutViewController;
 - (BOOL)_isInteractiveTextSelectionDisabled;
+- (BOOL)_isTextSizeCacheEnabled;
 - (void)_keyboardDidShow:(id)arg1;
 - (struct CGPoint)_lastGlyphBaselineLeftPointWithLayoutManager:(id)arg1;
 - (struct CGPoint)_lastGlyphBaselineRightPointWithLayoutManager:(id)arg1;
@@ -333,6 +338,7 @@
 - (void)_setSiriAnimationDictationStyleWithCharacterInsertionRate:(double)arg1 minimumDurationBetweenHypotheses:(double)arg2;
 - (void)_setSiriAnimationStyle:(long long)arg1;
 - (void)_setTextColor:(id)arg1;
+- (void)_setTextSizeCacheEnabled:(BOOL)arg1;
 - (void)_setWhitelistedTypingAttributes:(id)arg1;
 - (void)_share:(id)arg1;
 - (BOOL)_shouldObscureInput;
@@ -371,6 +377,7 @@
 - (BOOL)allowsAttachments;
 - (BOOL)allowsDraggingAttachments;
 - (id)attributedPlaceholder;
+- (id)attributedTextInRange:(id)arg1;
 - (id)automaticallySelectedOverlay;
 - (long long)baseWritingDirectionForPosition:(id)arg1 inDirection:(long long)arg2;
 - (void)becomeDropResponder;
@@ -380,6 +387,7 @@
 - (void)beginSelectionChange;
 - (double)beginSnapshotSeparationOfHeight:(double)arg1 atYOffset:(double)arg2;
 - (id)bottomContentPadding;
+- (BOOL)canBecomeDropResponder;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canBecomeFocused;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
@@ -398,6 +406,7 @@
 - (void)decodeRestorableStateWithCoder:(id)arg1;
 - (void)decreaseSize:(id)arg1;
 - (void)deleteBackward;
+- (void)didMoveToSuperview;
 - (void)disableClearsOnInsertion;
 - (void)draggingFinished:(id)arg1;
 - (void)draggingStarted;
@@ -420,6 +429,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 font:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
+- (void)insertAttributedText:(id)arg1;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (void)insertText:(id)arg1;
 - (id)interactionAssistant;
@@ -439,6 +449,7 @@
 - (double)lineHeight;
 - (id)linkTextAttributesForTextContainerView:(id)arg1;
 - (void)makeTextWritingDirectionLeftToRight:(id)arg1;
+- (void)makeTextWritingDirectionNatural:(id)arg1;
 - (void)makeTextWritingDirectionRightToLeft:(id)arg1;
 - (unsigned long long)marginTop;
 - (double)maxTileHeight;
@@ -447,6 +458,7 @@
 - (BOOL)mightHaveLinks;
 - (long long)offsetFromPosition:(id)arg1 toPosition:(id)arg2;
 - (void)paste:(id)arg1;
+- (void)pasteAndMatchStyle:(id)arg1;
 - (void)pasteItemProviders:(id)arg1;
 - (id)positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3;
 - (id)positionFromPosition:(id)arg1 offset:(long long)arg2;
@@ -469,6 +481,7 @@
 - (id)selectedText;
 - (id)selectionRectsForRange:(id)arg1;
 - (id)selectionView;
+- (void)setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)setAttributedPlaceholder:(id)arg1;
 - (void)setBaseWritingDirection:(long long)arg1 forRange:(id)arg2;
 - (void)setBecomesEditableWithGestures:(BOOL)arg1;
@@ -482,6 +495,8 @@
 - (void)setMarginTop:(unsigned long long)arg1;
 - (void)setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)setMaxTileHeight:(double)arg1;
+- (void)setNeedsDisplay;
+- (void)setNeedsDisplayInRect:(struct CGRect)arg1;
 - (void)setScrollEnabled:(BOOL)arg1;
 - (void)setShouldAutoscrollAboveBottom:(BOOL)arg1;
 - (void)setShouldPresentSheetsInAWindowLayeredAboveTheKeyboard:(BOOL)arg1;
@@ -517,6 +532,7 @@
 - (void)updateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (void)updateSelection;
 - (void)updateSelectionForTextContainerView:(id)arg1;
+- (void)updateSelectionImmediately;
 - (BOOL)usesTiledViews;
 - (void)validateInteractionWithLinkAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)visibleRect;

@@ -6,7 +6,7 @@
 
 #import <WebKitLegacy/DOMNode.h>
 
-#import <UIKit/UITextInput_Internal-Protocol.h>
+#import <UIKitCore/UITextInput_Internal-Protocol.h>
 
 @class UIResponder, UIView;
 @protocol UITextInput, UITextInputPrivate;
@@ -64,6 +64,7 @@
 - (id)_positionWithinRange:(id)arg1 farthestInDirection:(long long)arg2;
 - (BOOL)_range:(id)arg1 containsRange:(id)arg2;
 - (BOOL)_range:(id)arg1 intersectsRange:(id)arg2;
+- (id)_rangeFromCurrentRangeWithDelta:(struct _NSRange)arg1;
 - (id)_rangeOfEnclosingWord:(id)arg1;
 - (id)_rangeOfLineEnclosingPosition:(id)arg1;
 - (id)_rangeOfParagraphEnclosingPosition:(id)arg1;
@@ -83,12 +84,14 @@
 - (BOOL)_selectionAtDocumentStart;
 - (BOOL)_selectionAtWordStart;
 - (struct CGRect)_selectionClipRect;
+- (void)_setAttributedMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)_setCaretSelectionAtEndOfSelection;
 - (void)_setGestureRecognizers;
 - (id)_setHistory:(id)arg1 withExtending:(BOOL)arg2 withAnchor:(int)arg3 withAffinityDownstream:(BOOL)arg4;
 - (void)_setMarkedText:(id)arg1 selectedRange:(struct _NSRange)arg2;
 - (void)_setSelectedTextRange:(id)arg1 withAffinityDownstream:(BOOL)arg2;
 - (id)_setSelectionRangeWithHistory:(id)arg1;
+- (void)_setSelectionToPosition:(id)arg1;
 - (BOOL)_shouldPerformUICalloutBarButtonReplaceAction:(SEL)arg1 forText:(id)arg2 checkAutocorrection:(BOOL)arg3;
 - (id)_textColorForCaretSelection;
 - (id)_textRangeFromNSRange:(struct _NSRange)arg1;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/AFDictationDelegate-Protocol.h>
+#import <UIKitCore/AFDictationDelegate-Protocol.h>
 
 @class AFDictationConnection, NSString;
-@protocol UIDictationConnectionDelegate, UIDictationConnectionTokenFilterProtocol;
+@protocol OS_dispatch_queue, UIDictationConnectionDelegate, UIDictationConnectionTokenFilterProtocol;
 
 __attribute__((visibility("hidden")))
 @interface UIDictationConnection : NSObject <AFDictationDelegate>
@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
     id<UIDictationConnectionDelegate> _delegate;
     id<UIDictationConnectionTokenFilterProtocol> _tokenFilter;
     AFDictationConnection *_connection;
+    NSObject<OS_dispatch_queue> *_analyticsQueue;
 }
 
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *analyticsQueue; // @synthesize analyticsQueue=_analyticsQueue;
 @property (strong, nonatomic) AFDictationConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIDictationConnectionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 
 + (void)_updateFromGlobalOptions:(id)arg1;
 + (void)afDelegate:(id)arg1 didReceiveSearchResults:(id)arg2 recognizedText:(id)arg3 stable:(BOOL)arg4 final:(BOOL)arg5;
++ (id)analytics;
 + (void)cacheSupportedDictationLanguages;
 + (BOOL)dictationIsSupportedForLanguageCode:(id)arg1 error:(id *)arg2;
 + (BOOL)dictationRestricted;
@@ -59,14 +62,16 @@ __attribute__((visibility("hidden")))
 - (void)dictationConnnectionDidChangeAvailability:(id)arg1;
 - (BOOL)dictationIsAvailableForLanguage:(id)arg1;
 - (void)endSession;
+- (void)logDidAcceptDictationResult:(id)arg1 reason:(id)arg2 result:(id)arg3 correctionIdentifier:(id)arg4;
+- (void)logDidSelectAlternative:(id)arg1 correctionIdentifier:(id)arg2;
+- (void)logDidShowAlternatives:(id)arg1 correctionIdentifier:(id)arg2;
 - (void)preheat;
 - (void)restartDictation;
 - (void)sendSpeechCorrection:(id)arg1 forIdentifier:(id)arg2;
-- (void)setSuppressStopAlert:(BOOL)arg1;
+- (long long)speechEventTypeForDictationActivationType:(unsigned long long)arg1;
 - (void)start;
 - (void)startForFileAtURL:(id)arg1 forLanguage:(id)arg2;
-- (void)stopSpeech;
-- (void)stopSpeechWithoutAlert;
+- (void)stopSpeech:(id)arg1 activationType:(unsigned long long)arg2 result:(id)arg3 suppressAlert:(BOOL)arg4;
 
 @end
 

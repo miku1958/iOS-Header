@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UINavigationController.h>
+#import <UIKitCore/UINavigationController.h>
 
-#import <UIKit/_UIDocumentPickerExtensionViewController-Protocol.h>
+#import <UIKitCore/_UIDocumentPickerExtensionViewController-Protocol.h>
 
 @class NSString;
 

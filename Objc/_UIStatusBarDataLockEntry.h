@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarDataBoolEntry.h>
+#import <UIKitCore/_UIStatusBarDataEntry.h>
 
-@interface _UIStatusBarDataLockEntry : _UIStatusBarDataBoolEntry
+@interface _UIStatusBarDataLockEntry : _UIStatusBarDataEntry
 {
     long long _unlockFailureCount;
 }
@@ -14,6 +14,12 @@
 @property (nonatomic) long long unlockFailureCount; // @synthesize unlockFailureCount=_unlockFailureCount;
 
 + (BOOL)supportsSecureCoding;
+- (id)_ui_descriptionBuilder;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

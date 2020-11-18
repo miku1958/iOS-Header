@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
-@class NSArray, UIImage, _UIActivityUserDefaults;
+#import <UIKitCore/UITableViewDataSourcePrefetching-Protocol.h>
+
+@class NSArray, NSString, UIImage, _UIActivityUserDefaults;
 
 __attribute__((visibility("hidden")))
-@interface _UIActivityUserDefaultsViewController : UITableViewController
+@interface _UIActivityUserDefaultsViewController : UITableViewController <UITableViewDataSourcePrefetching>
 {
     NSArray *_activities;
     _UIActivityUserDefaults *_userDefaults;
@@ -17,18 +19,22 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSArray *activities; // @synthesize activities=_activities;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) _UIActivityUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 
 - (void).cxx_destruct;
 - (id)activityForRowAtIndexPath:(id)arg1;
 - (id)initWithActivities:(id)arg1 userDefaults:(id)arg2;
 - (long long)preferredActivityCategory;
-- (id)settingsImageForActivity:(id)arg1;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 moveRowAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (void)tableView:(id)arg1 prefetchRowsAtIndexPaths:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (void)toggleActivityHiddenForControl:(id)arg1;
 - (void)toggleActivityHiddenForRowAtIndexPath:(id)arg1;

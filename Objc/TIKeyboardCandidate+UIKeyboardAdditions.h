@@ -8,6 +8,7 @@
 
 @interface TIKeyboardCandidate (UIKeyboardAdditions)
 
+@property (readonly, nonatomic) BOOL isAutofillCandidate;
 @property (readonly, nonatomic) BOOL isSlottedCandidate;
 
 @end

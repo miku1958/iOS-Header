@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardCandidateBarCell.h>
+#import <UIKitCore/UIKeyboardCandidateBarCell.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardCandidateBarCell_SecondaryCandidate : UIKeyboardCandidateBarCell
@@ -14,9 +14,13 @@ __attribute__((visibility("hidden")))
 + (struct UIEdgeInsets)cacheInsets;
 + (id)font;
 + (BOOL)highlightAffectsBackground;
++ (double)labelOffset;
 + (id)reuseIdentifier;
-+ (id)textColorWithHighlight:(BOOL)arg1 whiteText:(BOOL)arg2;
+- (void)_attachLine:(id)arg1 toEdge:(unsigned long long)arg2;
+- (void)_setShowsLinesOnEdges:(unsigned long long)arg1 color:(id)arg2;
 - (void)drawRect:(struct CGRect)arg1;
+- (int)style;
+- (void)updateLabels;
 
 @end
 

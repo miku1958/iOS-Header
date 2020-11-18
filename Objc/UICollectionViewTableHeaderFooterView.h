@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionReusableView.h>
+#import <UIKitCore/UICollectionReusableView.h>
 
 @class UICollectionViewTableLayout, UICollectionViewTableLayoutAttributes, UIColor, UILabel, UITableViewHeaderFooterView, UIView;
 

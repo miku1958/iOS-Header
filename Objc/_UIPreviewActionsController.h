@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIPlatterMenuDynamicsControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIPlatterMenuDynamicsControllerDelegate-Protocol.h>
 
 @class NSArray, NSString, UIImageView, UIPreviewAction, UIView, UIViewController, _UIPlatterMenuDynamicsController, _UIPreviewActionSheetView, _UIPreviewQuickActionView, _UIStatesFeedbackGenerator;
 @protocol _UIPreviewActionsControllerDelegate;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIPopoverControllerDelegate-Protocol.h>
+#import <UIKitCore/UIPopoverControllerDelegate-Protocol.h>
 
 @class NSString, UIPopoverController, UIViewController;
 
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)shouldPresentAsPopoverForServiceOfType:(long long)arg1 inView:(id)arg2;
 + (id)showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 + (id)showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
++ (id)showServiceForType:(long long)arg1 withContext:(id)arg2;
 + (id)textServiceSessionForType:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_endSession;

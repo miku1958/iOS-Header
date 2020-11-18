@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, NSISEngine, NSISLinearExpression, NSISVariable, NSLayoutAnchor, NSLayoutConstraint, NSLayoutRect, NSString;
 @protocol NSLayoutItem;
@@ -33,7 +33,6 @@
 - (NSISVariable *)nsli_boundsWidthVariable;
 - (BOOL)nsli_canHostIndependentVariableAnchor;
 - (struct CGSize)nsli_engineToUserScalingCoefficients;
-- (NSISVariable *)nsli_heightVariable;
 - (NSArray *)nsli_installedConstraints;
 - (BOOL)nsli_isLegalConstraintItem;
 - (BOOL)nsli_isRTL;
@@ -46,6 +45,5 @@
 - (NSISVariable *)nsli_minXVariable;
 - (NSISVariable *)nsli_minYVariable;
 - (BOOL)nsli_removeConstraint:(NSLayoutConstraint *)arg1;
-- (NSISVariable *)nsli_widthVariable;
 @end
 

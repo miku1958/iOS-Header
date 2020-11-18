@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIEvent.h>
+#import <UIKitCore/UIEvent.h>
 
 @class NSHashTable, NSMutableSet, NSSet, UIEventEnvironment, UIView, UIWindow, _UIDragEventSample, _UIDropSessionImpl, _UIInternalDraggingSessionDestination, _UIInternalDraggingSessionSource;
 
@@ -55,7 +55,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isReadyForReset;
 - (void)_removeGestureRecognizer:(id)arg1;
 - (void)_reset;
-- (void)_sendEventToGestureRecognizer:(id)arg1;
+- (BOOL)_sendEventToGestureRecognizer:(id)arg1;
 - (void)_sendIfNeeded;
 - (void)_setHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)_setNeedsHitTestReset;

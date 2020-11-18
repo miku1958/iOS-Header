@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MobileCoreServices/LSResourceProxy.h>
+#import <CoreServices/LSResourceProxy.h>
 
 @interface LSResourceProxy (UIKitPrivate)
 + (struct CGSize)_applicationIconCanvasSize;

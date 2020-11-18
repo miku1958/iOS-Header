@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIViewAnimationComposing-Protocol.h>
+#import <UIKitCore/UIViewAnimationComposing-Protocol.h>
 
 @class NSString;
 @protocol UIVectorOperatable;
@@ -28,8 +28,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id<UIVectorOperatable> targetVelocity; // @synthesize targetVelocity=_targetVelocity;
 
 - (void).cxx_destruct;
-- (id)composeAnimation:(id)arg1 withNewAnimationDescription:(id)arg2 interactive:(BOOL)arg3 currentValue:(id)arg4 targetValueGetter:(CDUnknownBlockType)arg5;
-- (id)createAnimationFromDescription:(id)arg1 currentValue:(id)arg2 velocity:(id)arg3 targetValueGetter:(CDUnknownBlockType)arg4;
+- (id)composeAnimation:(id)arg1 withNewAnimationDescription:(id)arg2 interactive:(BOOL)arg3 currentValue:(id)arg4 targetValue:(id)arg5;
+- (id)createAnimationFromDescription:(id)arg1 currentValue:(id)arg2 velocity:(id)arg3 targetValue:(id)arg4;
 - (id)init;
 - (BOOL)isActive;
 - (id)projectValue:(id)arg1 decelerationFactor:(double)arg2;

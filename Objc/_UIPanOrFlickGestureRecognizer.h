@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPanGestureRecognizer.h>
+#import <UIKitCore/UIPanGestureRecognizer.h>
 
 @class UIDelayedAction;
 @protocol _UIPanOrFlickGestureRecognizerDelegate;
@@ -13,6 +13,7 @@
 {
     unsigned long long _touchCount;
     BOOL _didLongPress;
+    BOOL _longPressOnly;
     unsigned long long _allowedFlickDirections;
     double _maximumFlickDuration;
     double _minimumFlickDistance;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) BOOL didLongPress; // @synthesize didLongPress=_didLongPress;
 @property (strong, nonatomic) UIDelayedAction *elapsedAction; // @synthesize elapsedAction=_elapsedAction;
 @property (nonatomic) struct CGPoint initialCentroidLocation; // @synthesize initialCentroidLocation=_initialCentroidLocation;
+@property (nonatomic) BOOL longPressOnly; // @synthesize longPressOnly=_longPressOnly;
 @property (nonatomic) double maximumFlickDuration; // @synthesize maximumFlickDuration=_maximumFlickDuration;
 @property (nonatomic) double minimumFlickDistance; // @synthesize minimumFlickDistance=_minimumFlickDistance;
 @property (nonatomic) double minimumPressDuration; // @synthesize minimumPressDuration=_minimumPressDuration;
@@ -42,6 +44,7 @@
 @property (nonatomic) double timestampOfLastEvent; // @synthesize timestampOfLastEvent=_timestampOfLastEvent;
 
 - (void).cxx_destruct;
+- (BOOL)_shouldTryToBeginWithEvent:(id)arg1;
 - (void)clearTimer;
 - (void)dealloc;
 - (void)enoughTimeElapsed:(id)arg1;

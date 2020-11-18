@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPresentationController.h>
+#import <UIKitCore/UIPresentationController.h>
 
-#import <UIKit/_UISearchControllerPresenting-Protocol.h>
+#import <UIKitCore/_UISearchControllerPresenting-Protocol.h>
 
 @class NSMapTable, NSString, UIView, _UISearchPresentationAssistant;
 @protocol _UISearchControllerPresenting;
@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)_placeSearchBarBackIntoOriginalContext;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
+- (BOOL)_shouldDisableInteractionDuringTransitions;
 - (BOOL)_shouldKeepCurrentFirstResponder;
 - (BOOL)_shouldRespectDefinesPresentationContext;
 - (void)_transitionFromDidEnd;

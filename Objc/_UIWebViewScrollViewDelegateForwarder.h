@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIScrollViewDelegate-Protocol.h>
+#import <UIKitCore/UIScrollViewDelegate-Protocol.h>
 
 @class NSString, UIWebView;
 @protocol UIScrollViewDelegate;

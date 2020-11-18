@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAlertControllerVisualStyleActionSheet.h>
+#import <UIKitCore/UIAlertControllerVisualStyleActionSheet.h>
 
 @class UIView, UIVisualEffectView, _UIPreviewPresentationEffectView;
 

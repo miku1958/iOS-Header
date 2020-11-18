@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInputViewSetPlacementOwner-Protocol.h>
-#import <UIKit/_UIRemoteKeyboardViewSource-Protocol.h>
+#import <UIKitCore/UIInputViewSetPlacementOwner-Protocol.h>
+#import <UIKitCore/_UIRemoteKeyboardViewSource-Protocol.h>
 
 @class UIInputViewSetNotificationInfo, UIInputViewSetPlacement, UIView, UIViewController;
 @protocol UIInputViewSetPlacementApplicator;

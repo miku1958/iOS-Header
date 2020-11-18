@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
 
 @class NSIndexPath, UICollectionView, UICollectionViewLayout, UIView;
 

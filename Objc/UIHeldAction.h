@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIDelayedAction.h>
+#import <UIKitCore/UIDelayedAction.h>
 
 @class NSDate;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class UIImageView, UITouch, UIWebSelectionView;
 
@@ -34,10 +34,8 @@ __attribute__((visibility("hidden")))
 - (void)drawRect:(struct CGRect)arg1;
 - (void)dropActiveTouch;
 - (id)initWithPosition:(int)arg1 selectionView:(id)arg2;
-- (double)offsetInDirectionOfHandleFromFirstPoint:(struct CGPoint)arg1 toSecondPoint:(struct CGPoint)arg2;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)snapToCornerOfRange:(id)arg1 atStart:(BOOL)arg2;
-- (struct CGPoint)suggestedHandlePositionOnRect:(struct CGRect)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardCandidateView.h>
+#import <UIKitCore/UIKeyboardCandidateView.h>
 
-#import <UIKit/UICollectionViewDelegate-Protocol.h>
-#import <UIKit/UIKeyboardCandidateBarDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateBarDelegate-Protocol.h>
 
 @class NSString, UIKBInputBackdropView, UIKeyboardCandidatePageControl;
 

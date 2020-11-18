@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarItem.h>
+#import <UIKitCore/_UIStatusBarItem.h>
 
 @class NSArray, NSString, _UIStatusBarImageView;
 
@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSArray *currentImageNamePrefixes; // @synthesize currentImageNamePrefixes=_currentImageNamePrefixes;
-@property (readonly, nonatomic) _UIStatusBarImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) _UIStatusBarImageView *imageView; // @synthesize imageView=_imageView;
 @property (readonly, nonatomic) NSString *indicatorEntryKey;
 @property (readonly, nonatomic) BOOL isTemplateImage;
 
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)dependentEntryKeys;
 - (id)imageForUpdate:(id)arg1;
 - (id)imageNameForUpdate:(id)arg1;
-- (id)init;
+- (BOOL)shouldUpdateIndicatorForIdentifier:(id)arg1;
 - (id)viewForIdentifier:(id)arg1;
 
 @end

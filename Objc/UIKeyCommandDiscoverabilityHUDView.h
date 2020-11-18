@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UICollectionViewDataSource-Protocol.h>
-#import <UIKit/UICollectionViewDelegate-Protocol.h>
-#import <UIKit/UICollectionViewDelegateFlowLayout-Protocol.h>
-#import <UIKit/UIKeyCommandDiscoverabilityHUDColumnViewDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDelegateFlowLayout-Protocol.h>
+#import <UIKitCore/UIKeyCommandDiscoverabilityHUDColumnViewDelegate-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSString, UIBlurEffect, UICollectionView, UICollectionViewFlowLayout, UIKeyCommandDiscoverabilityHUDVisualStyle, UIPageControl, UIVibrancyEffect, UIVisualEffectView;
 

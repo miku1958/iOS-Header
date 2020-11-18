@@ -4,14 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class CADisplayMode, FBSDisplayMode;
+@class FBSDisplayMode;
 
 @interface UIScreenMode : NSObject
 {
     FBSDisplayMode *_mode;
-    CADisplayMode *_caMode;
     BOOL _mainScreen;
 }
 
@@ -19,13 +18,13 @@
 @property (readonly, nonatomic) double pixelAspectRatio;
 @property (readonly, nonatomic) struct CGSize size;
 
-+ (id)_screenModeForDisplayMode:(id)arg1 CADisplayMode:(id)arg2 mainScreen:(BOOL)arg3;
++ (id)_screenModeForDisplayMode:(id)arg1 mainScreen:(BOOL)arg2;
 - (void).cxx_destruct;
-- (id)_CADisplayMode;
 - (id)_displayMode;
 - (struct CGSize)_sizeWithLevel:(unsigned long long)arg1;
 - (id)description;
-- (id)initWithDisplayMode:(id)arg1 CADisplayMode:(id)arg2 mainScreen:(BOOL)arg3;
+- (id)initWithDisplayMode:(id)arg1 mainScreen:(BOOL)arg2;
+- (id)valueForKey:(id)arg1;
 
 @end
 

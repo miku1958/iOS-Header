@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @class NSISEngine, NSISVariable, NSString;
 
 @protocol NSISVariableDelegate <NSObject>
 - (NSString *)nsis_descriptionOfVariable:(NSISVariable *)arg1;
-- (BOOL)nsis_shouldIntegralizeVariable:(NSISVariable *)arg1;
 - (void)nsis_valueOfVariable:(NSISVariable *)arg1 didChangeInEngine:(NSISEngine *)arg2;
 - (BOOL)nsis_valueOfVariableIsUserObservable:(NSISVariable *)arg1;
+
+@optional
+- (int)nsis_orientationHintForVariable:(NSISVariable *)arg1;
 @end
 

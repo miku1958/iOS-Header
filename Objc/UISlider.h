@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIControl.h>
+#import <UIKitCore/UIControl.h>
 
-#import <UIKit/NSCoding-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
 
 @class NSArray, UIColor, UIImage, UIImageView, UIView, _UIEdgeFeedbackGenerator, _UIModulationFeedbackGenerator;
 
@@ -70,6 +70,7 @@
 - (void)_buildTrackArtwork;
 - (id)_contentForState:(unsigned long long)arg1;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
+- (void)_contentSizeCategoryChanged:(id)arg1;
 - (unsigned long long)_controlEventsForActionTriggered;
 - (void)_controlTouchBegan:(id)arg1 withEvent:(id)arg2;
 - (void)_controlTouchEnded:(id)arg1 withEvent:(id)arg2;
@@ -80,6 +81,7 @@
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (BOOL)_isThumbEnabled;
 - (void)_layoutSubviewsForBoundsChange:(BOOL)arg1;
+- (void)_listenForContentSizeCategoryChangesIfNecessary;
 - (id)_maxTrackView;
 - (id)_maxValueView;
 - (id)_maximumTrackImageForState:(unsigned long long)arg1;

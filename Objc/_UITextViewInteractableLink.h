@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITextViewInteractableItem.h>
+#import <UIKitCore/_UITextViewInteractableItem.h>
 
-#import <UIKit/DDDetectionControllerInteractionDelegate-Protocol.h>
+#import <UIKitCore/DDDetectionControllerInteractionDelegate-Protocol.h>
 
 @class LSAppLink, NSString, NSURL;
 

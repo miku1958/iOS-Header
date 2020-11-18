@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 @class NSArray, NSTimer, UITextInteractionAssistant, UITextRangeView, UITextSelection;
 
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     struct __CFRunLoopObserver *m_observer;
     BOOL m_activeCaret;
     BOOL m_isSuspended;
+    int m_showingCommandsCounterForRotate;
     BOOL m_forceRangeView;
 }
 
@@ -46,6 +47,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL visible; // @synthesize visible=m_visible;
 
 - (void).cxx_destruct;
+- (void)_showCommandsWithReplacements:(id)arg1 isForContextMenu:(BOOL)arg2;
+- (void)_showSelectionCommandsForContextMenu:(BOOL)arg1;
 - (void)activate;
 - (BOOL)affectedByScrollerNotification:(id)arg1;
 - (void)animateBoxShrinkOn:(id)arg1;
@@ -65,6 +68,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)clippedTargetRect:(struct CGRect)arg1;
 - (void)configureForHighlightMode;
 - (void)configureForReplacementMode;
+- (void)configureForRevealHighlightMode;
 - (void)configureForSelectionMode;
 - (void)deactivate;
 - (void)dealloc;
@@ -94,6 +98,7 @@ __attribute__((visibility("hidden")))
 - (void)inputViewWillMove:(id)arg1;
 - (void)installIfNecessary;
 - (void)invalidate;
+- (BOOL)isValid;
 - (void)layoutChangedByScrolling:(BOOL)arg1;
 - (void)prepareForMagnification;
 - (void)removeFromSuperview;
@@ -127,6 +132,7 @@ __attribute__((visibility("hidden")))
 - (void)updateSelectionRects;
 - (void)updateSelectionRectsIfNeeded;
 - (void)updateSelectionWithDocumentPoint:(struct CGPoint)arg1;
+- (void)validateWithInteractionAssistant:(id)arg1;
 - (void)viewAnimate:(id)arg1;
 - (void)wilLResume:(id)arg1;
 - (void)willRotate:(id)arg1;

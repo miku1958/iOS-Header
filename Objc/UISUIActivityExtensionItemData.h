@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSDictionary, NSMutableDictionary;
 
@@ -18,6 +18,7 @@
     NSMutableDictionary *_attachmentNamesByItemUUID;
     NSMutableDictionary *_subjectsByItemUUID;
     NSMutableDictionary *_previewImagesByItemUUID;
+    NSMutableDictionary *_previewImageDataByItemUUID;
     NSMutableDictionary *_dataTypesByItemUUID;
 }
 
@@ -26,10 +27,11 @@
 @property (strong, nonatomic) NSArray *extensionItems; // @synthesize extensionItems=_extensionItems;
 @property (readonly, nonatomic) struct __CFDictionary *itemProviderOrExtensionItemWithMetadataToUUID; // @synthesize itemProviderOrExtensionItemWithMetadataToUUID=_itemProviderOrExtensionItemWithMetadataToUUID;
 @property (strong, nonatomic) NSDictionary *openURLAnnotationsByURL; // @synthesize openURLAnnotationsByURL=_openURLAnnotationsByURL;
+@property (readonly, nonatomic) NSMutableDictionary *previewImageDataByItemUUID; // @synthesize previewImageDataByItemUUID=_previewImageDataByItemUUID;
 @property (readonly, nonatomic) NSMutableDictionary *previewImagesByItemUUID; // @synthesize previewImagesByItemUUID=_previewImagesByItemUUID;
 @property (readonly, nonatomic) NSMutableDictionary *subjectsByItemUUID; // @synthesize subjectsByItemUUID=_subjectsByItemUUID;
 
-+ (id)_onBackgroundQueue_extensionItemsByPreparingToSendExtensionItems:(id)arg1 toDestinationExtension:(id)arg2;
++ (id)_extensionItemsByPreparingToSendExtensionItems:(id)arg1 toDestinationExtension:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_appendTemporaryUUIDMappingAttachmentToExtensionItem:(id)arg1;
@@ -42,15 +44,18 @@
 - (void)addAttachmentName:(id)arg1 forItem:(id)arg2;
 - (void)addDataType:(id)arg1 forItem:(id)arg2;
 - (void)addPreviewImage:(id)arg1 forItem:(id)arg2;
+- (void)addPreviewImageData:(id)arg1 forItem:(id)arg2;
 - (void)addSubject:(id)arg1 forItem:(id)arg2;
 - (id)allDataTypes;
 - (id)attachmentNameForItem:(id)arg1;
 - (id)dataTypeForItem:(id)arg1;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (void)prepareForSendingAsCompletionWithExtensionContext:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;
-- (void)prepareForSendingToExtension:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;
+- (void)prepareForSendingAsCompletionToHostWithAuditToken:(CDStruct_4c969caf)arg1;
+- (void)prepareForSendingToExtension:(id)arg1;
+- (id)previewImageDataForItem:(id)arg1;
 - (id)previewImageForItem:(id)arg1;
 - (id)subjectForItem:(id)arg1;
 

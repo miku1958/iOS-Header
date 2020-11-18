@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIViewLFLDChangeRecord.h>
+#import <UIKitCore/_UIViewLFLDChangeRecord.h>
 
 @class NSISVariable, UIView;
 

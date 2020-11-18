@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewDragDestination-Protocol.h>
+#import <UIKitCore/UICollectionViewDragDestination-Protocol.h>
 
 @class NSIndexPath, UICollectionView;
 @protocol UIDropSession;

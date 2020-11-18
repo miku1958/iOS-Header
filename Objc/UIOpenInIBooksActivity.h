@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIActivity.h>
+#import <UIKitCore/UIActivity.h>
 
-#import <UIKit/LSOpenResourceOperationDelegate-Protocol.h>
-#import <UIKit/UIManagedConfigurationRestrictableActivity-Protocol.h>
+#import <UIKitCore/LSOpenResourceOperationDelegate-Protocol.h>
+#import <UIKitCore/UIManagedConfigurationRestrictableActivity-Protocol.h>
 
 @class LSApplicationProxy, NSOperation, NSString, NSURL;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITextFieldRoundedRectBackgroundViewNeue.h>
+#import <UIKitCore/_UITextFieldRoundedRectBackgroundViewNeue.h>
 
 __attribute__((visibility("hidden")))
 @interface _UISearchBarSearchFieldBackgroundView : _UITextFieldRoundedRectBackgroundViewNeue

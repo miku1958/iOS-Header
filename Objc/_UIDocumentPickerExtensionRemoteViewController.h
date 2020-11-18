@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIDocumentPickerRemoteViewController.h>
+#import <UIKitCore/_UIDocumentPickerRemoteViewController.h>
 
-#import <UIKit/_UIDocumentPickerViewControllerExtensionHost-Protocol.h>
+#import <UIKitCore/_UIDocumentPickerViewControllerExtensionHost-Protocol.h>
 
 @class NSString;
 

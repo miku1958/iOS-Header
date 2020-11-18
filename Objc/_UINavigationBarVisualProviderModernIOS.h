@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UINavigationBarVisualProvider.h>
+#import <UIKitCore/_UINavigationBarVisualProvider.h>
 
-#import <UIKit/_UIBasicAnimationFactory-Protocol.h>
-#import <UIKit/_UINavigationBarContentViewDelegate-Protocol.h>
-#import <UIKit/_UINavigationControllerRefreshControlHostDelegate-Protocol.h>
-#import <UIKit/_UINavigationItemChangeObserver-Protocol.h>
+#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
+#import <UIKitCore/_UINavigationBarContentViewDelegate-Protocol.h>
+#import <UIKitCore/_UINavigationControllerRefreshControlHostDelegate-Protocol.h>
+#import <UIKitCore/_UINavigationItemChangeObserver-Protocol.h>
 
 @class NSString, UILabel, UIView, _UIBarBackground, _UINavigationBarContentView, _UINavigationBarLargeTitleView, _UINavigationBarModernPromptView, _UINavigationBarTransitionContext, _UINavigationControllerRefreshControlHost;
 

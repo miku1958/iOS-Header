@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray, NSString, UIFocusAnimationCoordinator, UIFocusUpdateContext, UIView;
+@protocol UIFocusEnvironment, UIFocusItemContainer;
 
 @protocol UIFocusEnvironment <NSObject>
 
+@property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
+@property (readonly, weak, nonatomic) id<UIFocusEnvironment> parentFocusEnvironment;
 @property (readonly, copy, nonatomic) NSArray *preferredFocusEnvironments;
 @property (readonly, weak, nonatomic) UIView *preferredFocusedView;
 

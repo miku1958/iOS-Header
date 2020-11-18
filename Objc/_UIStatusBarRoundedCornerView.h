@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/_UIStatusBarPersistentAnimationView.h>
 
 __attribute__((visibility("hidden")))
-@interface _UIStatusBarRoundedCornerView : UIView
+@interface _UIStatusBarRoundedCornerView : _UIStatusBarPersistentAnimationView
 {
 }
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIRemoteView.h>
+#import <UIKitCore/_UIRemoteView.h>
 
 @class _UIRemoteViewController;
 

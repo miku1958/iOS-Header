@@ -6,16 +6,18 @@
 
 #import <FrontBoardServices/FBSMutableSceneClientSettings.h>
 
-#import <UIKit/UIApplicationSceneClientSettings-Protocol.h>
+#import <UIKitCore/UIApplicationSceneClientSettings-Protocol.h>
 
-@class FBSDisplayMode, NSString;
+@class FBSDisplayConfigurationRequest, FBSDisplayMode, NSArray, NSString;
 
 @interface UIMutableApplicationSceneClientSettings : FBSMutableSceneClientSettings <UIApplicationSceneClientSettings>
 {
     BOOL _statusBarForegroundTransparent;
 }
 
+@property (strong, nonatomic) NSArray *audioCategoriesDisablingVolumeHUD;
 @property (nonatomic) long long backgroundStyle;
+@property (nonatomic) double brightnessLevel;
 @property (nonatomic) long long compatibilityMode;
 @property (nonatomic) double controlCenterAmbiguousActivationMargin;
 @property (nonatomic) long long controlCenterRevealMode;
@@ -26,6 +28,8 @@
 @property (nonatomic) long long defaultStatusBarStyle;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL deviceOrientationEventsEnabled;
+@property (nonatomic) BOOL disablesMirroring;
+@property (copy, nonatomic) FBSDisplayConfigurationRequest *displayConfigurationRequest;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL homeIndicatorAutoHidden;
 @property (nonatomic) BOOL idleModeVisualEffectsEnabled;
@@ -33,11 +37,10 @@
 @property (nonatomic) long long interfaceOrientation;
 @property (nonatomic) BOOL interfaceOrientationChangesDisabled;
 @property (nonatomic) long long notificationCenterRevealMode;
-@property (nonatomic) long long overscanCompensation;
 @property (nonatomic) struct UIEdgeInsets primaryWindowOverlayInsets;
 @property (nonatomic) unsigned long long proximityDetectionModes;
 @property (nonatomic, getter=isReachabilitySupported) BOOL reachabilitySupported;
-@property (strong, nonatomic) FBSDisplayMode *requestedDisplayMode;
+@property (copy, nonatomic) FBSDisplayMode *requestedDisplayMode;
 @property (nonatomic) unsigned long long screenEdgesDeferringSystemGestures;
 @property (nonatomic) unsigned int statusBarContextID;
 @property (nonatomic, getter=isStatusBarForegroundTransparent) BOOL statusBarForegroundTransparent; // @synthesize statusBarForegroundTransparent=_statusBarForegroundTransparent;
@@ -46,6 +49,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long supportedInterfaceOrientations;
 @property (nonatomic) long long userInterfaceStyle;
+@property (nonatomic) unsigned long long visibleMiniAlertCount;
 @property (nonatomic) BOOL wantsExclusiveForeground;
 @property (nonatomic) long long whitePointAdaptivityStyle;
 

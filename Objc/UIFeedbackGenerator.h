@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableDictionary, NSSet, NSString, _UIFeedbackGeneratorConfiguration;
 @protocol OS_dispatch_source, UICoordinateSpace;
@@ -19,7 +19,7 @@
     double _currentDelay;
     NSSet *_usedFeedbacks;
     BOOL _activated;
-    BOOL _hasMutableFeedbackKeyPaths;
+    BOOL _usesCustomActivation;
     long long _activationCount;
     long long _externalActivationCount;
     id<UICoordinateSpace> _coordinateSpace;
@@ -37,8 +37,8 @@
 @property (readonly, nonatomic, getter=_isEnabled) BOOL enabled;
 @property (readonly, nonatomic) NSSet *engines; // @synthesize engines=_engines;
 @property (nonatomic) long long externalActivationCount; // @synthesize externalActivationCount=_externalActivationCount;
-@property (readonly, nonatomic, getter=_hasMutableFeedbackKeyPaths) BOOL hasMutableFeedbackKeyPaths; // @synthesize hasMutableFeedbackKeyPaths=_hasMutableFeedbackKeyPaths;
 @property (nonatomic, getter=_isMuted, setter=_setMuted:) BOOL muted;
+@property (nonatomic) BOOL usesCustomActivation; // @synthesize usesCustomActivation=_usesCustomActivation;
 
 + (Class)_configurationClass;
 + (id)_defaultCoordinateSpace;

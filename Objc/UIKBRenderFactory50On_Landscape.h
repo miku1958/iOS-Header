@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory50On_Portrait.h>
+#import <UIKitCore/UIKBRenderFactory50On_Portrait.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactory50On_Landscape : UIKBRenderFactory50On_Portrait
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)messagesWriteboardKeyImageName;
 - (double)returnKeyFontSize;
 - (double)spaceKeyFontSize;
+- (struct UIEdgeInsets)symbolFrameInsets;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class UIScreen;
 
@@ -17,12 +17,14 @@
     UIScreen *_screen;
     long long _orientation;
     double _keyboardWidth;
+    double _keyboardBarHeight;
     struct CGRect _bounds;
 }
 
 @property (nonatomic) struct CGRect bounds; // @synthesize bounds=_bounds;
 @property (readonly, nonatomic) long long idiom;
 @property (readonly, nonatomic) BOOL isKeyboardMinorEdgeWidth; // @synthesize isKeyboardMinorEdgeWidth=_isKeyboardMinorEdgeWidth;
+@property (nonatomic) double keyboardBarHeight; // @synthesize keyboardBarHeight=_keyboardBarHeight;
 @property (nonatomic) double keyboardWidth; // @synthesize keyboardWidth=_keyboardWidth;
 @property (readonly, nonatomic) BOOL knobInput; // @synthesize knobInput=_knobInput;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;

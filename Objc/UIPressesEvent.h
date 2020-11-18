@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIEvent.h>
+#import <UIKitCore/UIEvent.h>
 
 @class NSHashTable, NSMutableSet, NSSet, UIPress;
 
@@ -34,6 +34,7 @@
 - (void)_registerForTerminalEvent:(id)arg1;
 - (void)_removePhysicalButton:(id)arg1;
 - (id)_respondersForWindow:(id)arg1;
+- (BOOL)_sendEventToGestureRecognizer:(id)arg1;
 - (id)_terminalRegistrantsForPressType:(long long)arg1;
 - (void)_unregisterForTerminalEvent:(id)arg1;
 - (id)_windows;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSArray, NSLayoutConstraint, UIBarButtonItemGroup, UIFont, UILabel, UILayoutGuide, UIView, _UIButtonBar, _UIButtonBarButton, _UINavigationBarContentView, _UITAMICAdaptorView;
 @protocol _UINavigationBarAugmentedTitleView;
@@ -33,18 +33,19 @@ __attribute__((visibility("hidden")))
     BOOL _hasFakedBackButton;
     BOOL _active;
     BOOL _keepsSnapshotsInHierarchy;
-    int _alignment;
     _UINavigationBarContentView *_contentView;
     UILayoutGuide *_backButtonGuide;
     UILayoutGuide *_leadingBarGuide;
     UILayoutGuide *_titleViewGuide;
     UILayoutGuide *_trailingBarGuide;
+    long long _alignment;
     long long _currentContentSize;
     double _overrideSize;
     UIFont *_activeFontForScaling;
     double _resolvedSize;
+    long long _resolvedAlignment;
     _UIButtonBarButton *_backButton;
-    double _preferredBackButtonWidth;
+    double _minimumBackButtonWidth;
     UILabel *_inlineTitleView;
     UIView *_titleView;
     _UITAMICAdaptorView *_titleViewWrapperView;
@@ -57,7 +58,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
 @property (strong, nonatomic) UIFont *activeFontForScaling; // @synthesize activeFontForScaling=_activeFontForScaling;
-@property (nonatomic) int alignment; // @synthesize alignment=_alignment;
+@property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
 @property (strong, nonatomic) UIView<_UINavigationBarAugmentedTitleView> *augmentedTitleView; // @synthesize augmentedTitleView=_augmentedTitleView;
 @property (strong, nonatomic) _UIButtonBarButton *backButton; // @synthesize backButton=_backButton;
 @property (readonly, nonatomic) UILayoutGuide *backButtonGuide; // @synthesize backButtonGuide=_backButtonGuide;
@@ -74,8 +75,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UILayoutGuide *leadingBarGuide; // @synthesize leadingBarGuide=_leadingBarGuide;
 @property (strong, nonatomic) NSArray *leadingBarItems;
 @property (readonly, nonatomic) UIView *leadingBarSnapshot; // @synthesize leadingBarSnapshot=_leadingBarSnapshot;
+@property (nonatomic) double minimumBackButtonWidth; // @synthesize minimumBackButtonWidth=_minimumBackButtonWidth;
 @property (nonatomic) double overrideSize; // @synthesize overrideSize=_overrideSize;
-@property (nonatomic) double preferredBackButtonWidth; // @synthesize preferredBackButtonWidth=_preferredBackButtonWidth;
+@property (readonly, nonatomic) long long resolvedAlignment; // @synthesize resolvedAlignment=_resolvedAlignment;
 @property (readonly, nonatomic) double resolvedSize; // @synthesize resolvedSize=_resolvedSize;
 @property (nonatomic) double titleVerticalPositionAdjustment; // @synthesize titleVerticalPositionAdjustment=_titleVerticalPositionAdjustment;
 @property (strong, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
@@ -89,13 +91,15 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)_activateAllConstraints;
-- (double)_baseHeightForContentSize:(long long)arg1;
+- (double)_baseHeight;
+- (double)_contentHeight;
 - (void)_deactivateAllConstraints;
 - (void)_disableLayoutFlushing:(BOOL)arg1;
 - (void)_keepConstraintsActiveIfNecessary:(id *)arg1 updateLayout:(CDUnknownBlockType)arg2;
 - (void)_prepareTitleViewAndWrapIfNecessary;
 - (void)_updateAlignmentConstraints;
 - (void)_updateAugmentedTitleViewConstraints;
+- (void)_updateAugmentedTitleViewLayout;
 - (void)_updateBackButtonConstraints;
 - (void)_updateHeightConstraints;
 - (void)_updateLeadingBarConstraints;
@@ -117,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)setContentHidden:(BOOL)arg1;
 - (void)unfreeze;
 - (void)updateAugmentedTitleViewHeight;
+- (void)updateAugmentedTitleViewLayout;
 - (void)updateSpacingConstraints;
 - (void)updateTitleHeight;
 

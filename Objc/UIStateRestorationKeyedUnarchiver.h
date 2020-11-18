@@ -16,7 +16,9 @@ __attribute__((visibility("hidden")))
 
 - (void)dealloc;
 - (id)decodeObjectForKey:(id)arg1;
-- (id)initForReadingWithData:(id)arg1 defaultValues:(id)arg2;
+- (id)decodeObjectOfClasses:(id)arg1 forKey:(id)arg2;
+- (id)decodeTopLevelObjectOfClasses:(id)arg1 forKey:(id)arg2 error:(id *)arg3;
+- (id)initForReadingWithData:(id)arg1 defaultValues:(id)arg2 requiresSecureCoding:(BOOL)arg3;
 
 @end
 

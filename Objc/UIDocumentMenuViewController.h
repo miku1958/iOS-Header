@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIActionSheetPresentationControllerDelegate-Protocol.h>
-#import <UIKit/_UIDocumentPickerRemoteViewControllerContaining-Protocol.h>
+#import <UIKitCore/UIActionSheetPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/_UIDocumentPickerRemoteViewControllerContaining-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, NSURL, _UIDocumentPickerRemoteViewController, _UIResilientRemoteViewContainerViewController;
 @protocol UIDocumentMenuDelegate;

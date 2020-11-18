@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIPanOrFlickGestureRecognizer.h>
+#import <UIKitCore/_UIPanOrFlickGestureRecognizer.h>
 
 @interface _UIEditableTextSelectionTwoFingerPanGesture : _UIPanOrFlickGestureRecognizer
 {

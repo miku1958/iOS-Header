@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITraitEnvironment-Protocol.h>
+#import <UIKitCore/UITraitEnvironment-Protocol.h>
 
 @class UITraitCollection;
 @protocol UITraitEnvironment;

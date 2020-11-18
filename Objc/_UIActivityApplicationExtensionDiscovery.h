@@ -4,30 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, _UIMatchingExtensionsResult;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface _UIActivityApplicationExtensionDiscovery : NSObject
 {
-    BOOL _performsInitialMatching;
     NSArray *_extensionPointIdentifiers;
-    id _extensionMatchingContext;
+    NSObject<OS_dispatch_queue> *_primedExtensionsQueue;
+    _UIMatchingExtensionsResult *_primedExtensionsResult;
 }
 
-@property (strong) id extensionMatchingContext; // @synthesize extensionMatchingContext=_extensionMatchingContext;
 @property (copy, nonatomic) NSArray *extensionPointIdentifiers; // @synthesize extensionPointIdentifiers=_extensionPointIdentifiers;
-@property BOOL performsInitialMatching; // @synthesize performsInitialMatching=_performsInitialMatching;
+@property (strong) NSObject<OS_dispatch_queue> *primedExtensionsQueue; // @synthesize primedExtensionsQueue=_primedExtensionsQueue;
+@property (strong) _UIMatchingExtensionsResult *primedExtensionsResult; // @synthesize primedExtensionsResult=_primedExtensionsResult;
 
 + (id)extensionBasedActivityForExtension:(id)arg1;
 + (id)extensionMatchingDictionariesForExtensionItems:(id)arg1;
 - (void).cxx_destruct;
-- (id)activitiesForMatchingContext:(id)arg1 error:(id *)arg2 updateBlock:(CDUnknownBlockType)arg3;
-- (void)cancelActivityMatchingUpdates;
+- (id)activitiesForMatchingContext:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)initWithExtensionPointIdentifiers:(id)arg1;
+- (void)primeWithDiscoveryContext:(id)arg1;
 
 @end
 

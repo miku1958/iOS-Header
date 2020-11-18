@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIDocumentMenuDelegate-Protocol.h>
-#import <UIKit/UIDocumentPickerDelegate-Protocol.h>
-#import <UIKit/UIImagePickerControllerDelegate-Protocol.h>
-#import <UIKit/UINavigationControllerDelegate-Protocol.h>
-#import <UIKit/UIPopoverControllerDelegate-Protocol.h>
+#import <UIKitCore/UIDocumentMenuDelegate-Protocol.h>
+#import <UIKitCore/UIDocumentPickerDelegate-Protocol.h>
+#import <UIKitCore/UIImagePickerControllerDelegate-Protocol.h>
+#import <UIKitCore/UINavigationControllerDelegate-Protocol.h>
+#import <UIKitCore/UIPopoverControllerDelegate-Protocol.h>
 
 @class DOMNode, NSArray, NSObject, NSString, UIDocumentMenuViewController, UIImagePickerController, UIPopoverController, UIWebDocumentView;
 @protocol UIWebFileUploadPanelDelegate, WebOpenPanelResultListener;

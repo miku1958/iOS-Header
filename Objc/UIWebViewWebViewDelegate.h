@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/WebFrameLoadDelegate-Protocol.h>
-#import <UIKit/WebPolicyDelegate-Protocol.h>
-#import <UIKit/WebResourceLoadDelegate-Protocol.h>
-#import <UIKit/WebUIDelegate-Protocol.h>
+#import <UIKitCore/WebFrameLoadDelegate-Protocol.h>
+#import <UIKitCore/WebPolicyDelegate-Protocol.h>
+#import <UIKitCore/WebResourceLoadDelegate-Protocol.h>
+#import <UIKitCore/WebUIDelegate-Protocol.h>
 
 @class NSString, UIWebView;
 

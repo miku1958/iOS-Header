@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UITransitionState.h>
+#import <UIKitCore/_UITransitionState.h>
 
-#import <UIKit/CAAnimationDelegate-Protocol.h>
+#import <UIKitCore/CAAnimationDelegate-Protocol.h>
 
 @class NSString, UIView, _UIPageCurl;
 

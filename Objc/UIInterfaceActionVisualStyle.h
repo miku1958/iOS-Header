@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/UIInterfaceActionConcreteVisualStyleImpl-Protocol.h>
-#import <UIKit/UIInterfaceActionConcreteVisualStyleImplInternal-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/UIInterfaceActionConcreteVisualStyleImpl-Protocol.h>
+#import <UIKitCore/UIInterfaceActionConcreteVisualStyleImplInternal-Protocol.h>
 
 @class NSString, UIInterfaceActionConcreteVisualStyle, UIInterfaceActionGroupViewState, UIInterfaceActionOverrideVisualStyle;
 @protocol UIInterfaceActionConcreteVisualStyleImpl;

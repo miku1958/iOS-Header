@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardLayout.h>
+#import <UIKitCore/UIKeyboardLayout.h>
 
-#import <UIKit/UIKBEmojiHitTestResponder-Protocol.h>
-#import <UIKit/UIKeyboardHandBiasTransitionCoordinatorDelegate-Protocol.h>
-#import <UIKit/UIKeyboardPinchGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIKBEmojiHitTestResponder-Protocol.h>
+#import <UIKitCore/UIKeyboardHandBiasTransitionCoordinatorDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardPinchGestureRecognizerDelegate-Protocol.h>
 
 @class CADisplayLink, NSDate, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSTimer, UIButton, UIDelayedAction, UIGestureKeyboardIntroduction, UIKBBackgroundView, UIKBKeyViewAnimator, UIKBKeyplaneView, UIKBRenderConfig, UIKBTree, UIKeyboardEmojiKeyDisplayController, UIKeyboardHandBiasTransitionCoordinator, UIKeyboardPinchGestureRecognizer, UIKeyboardSplitTransitionView, UISelectionFeedbackGenerator, UISwipeGestureRecognizer, UIView, _UIKeyboardTypingSpeedLogger;
 
@@ -121,6 +121,8 @@ __attribute__((visibility("hidden")))
     UIButton *_biasEscapeButton;
     NSLayoutConstraint *_biasEscapeButtonLeftConstraint;
     NSLayoutConstraint *_biasEscapeButtonRightConstraint;
+    NSMutableSet *_keyplaneTransformations;
+    BOOL _externalDictationAndInternationalKeys;
     BOOL _muteNextKeyClickSound;
     int playKeyClickSoundOn;
     UIKBRenderConfig *_renderConfig;
@@ -162,24 +164,32 @@ __attribute__((visibility("hidden")))
 + (id)keyboardWithName:(id)arg1 screenTraits:(id)arg2;
 + (id)sharedPunctuationCharacterSet;
 + (id)sharedRivenKeyplaneGenerator;
+- (void)_addExtraControlKeysIfNecessary;
 - (BOOL)_allowPaddle;
 - (id)_appendingSecondaryStringToVariantsTop:(id)arg1 secondaryString:(id)arg2 withDirection:(id)arg3;
 - (void)_autoSplit:(id)arg1;
+- (id)_currentKeyplaneTransformationContext;
 - (void)_didChangeKeyplaneWithContext:(id)arg1;
 - (void)_didTapBiasEscapeButton:(id)arg1;
 - (BOOL)_handRestRecognizerCancelShouldBeEnd;
 - (BOOL)_handleTouchForEmojiInputView;
+- (id)_keyboardLongPressInteractionRegions;
 - (id)_keyplaneVariantsKeyForString:(id)arg1;
 - (struct CGRect)_paddedKeyUnionFrame;
+- (BOOL)_pointAllowedInStaticHitBuffer:(struct CGPoint)arg1;
 - (void)_recordKeystrokeStatisticForKeyPress;
 - (void)_setBiasEscapeButtonVisible:(BOOL)arg1;
 - (void)_setReturnKeyEnabled:(BOOL)arg1 withDisplayName:(id)arg2 withType:(int)arg3;
+- (BOOL)_shouldAttemptToAddSupplementaryControlKeys;
+- (BOOL)_shouldInheritScreenScaleAsContentScaleFactor;
 - (BOOL)_stringContainsCurrencyCharacters:(id)arg1;
+- (void)_updateSupplementaryKeys;
 - (id)_variantsByAppendingDualStringKey:(id)arg1 toVariants:(id)arg2;
 - (void)accessibilitySensitivityChanged;
 - (id)activationIndicatorView;
 - (id)activeMultitapCompleteKey;
 - (id)activeTouchInfoForShift;
+- (BOOL)allKeyplanesHaveSameHeight;
 - (void)annotateKeysWithDeveloperPunctuation;
 - (void)annotateWriteboardDisplayTypeHintForKeyIfNeeded;
 - (struct CGPoint)applyError:(struct CGPoint)arg1 toKey:(id)arg2;
@@ -441,6 +451,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)supportsEmoji;
 - (void)swipeDetected:(id)arg1;
 - (id)synthesizeTouchUpEventForKey:(id)arg1;
+- (void)tearDownSplitTransitionView;
 - (unsigned long long)textEditingKeyMask;
 - (void)touchCancelled:(id)arg1 executionContext:(id)arg2;
 - (void)touchCancelled:(id)arg1 forResting:(BOOL)arg2 executionContext:(id)arg3;

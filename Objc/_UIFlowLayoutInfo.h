@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray, UICollectionViewFlowLayout;
 
@@ -48,8 +48,10 @@ __attribute__((visibility("hidden")))
 - (void)invalidate:(BOOL)arg1;
 - (id)invalidatedIndexPaths;
 - (id)setSize:(struct CGSize)arg1 forItemAtIndexPath:(id)arg2;
+- (void)setSizes:(id)arg1 forItemsAtIndexPaths:(id)arg2;
 - (id)snapshot;
 - (id)specifiedItemSizes;
+- (void)updateEstimatedSizeForSize:(struct CGSize)arg1;
 
 @end
 

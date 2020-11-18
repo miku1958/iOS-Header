@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInterfaceAction.h>
+#import <UIKitCore/UIInterfaceAction.h>
 
-#import <UIKit/UIAlertActionMutablePropertyObservering-Protocol.h>
+#import <UIKitCore/UIAlertActionMutablePropertyObservering-Protocol.h>
 
 @class NSString, UIAlertAction, _UIAlertControllerActionView;
 

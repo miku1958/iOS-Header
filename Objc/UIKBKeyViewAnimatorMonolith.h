@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBKeyViewAnimator.h>
+#import <UIKitCore/UIKBKeyViewAnimator.h>
 
-#import <UIKit/_UIFloatingContentViewDelegate-Protocol.h>
+#import <UIKitCore/_UIFloatingContentViewDelegate-Protocol.h>
 
 @class NSMutableDictionary, NSString;
 

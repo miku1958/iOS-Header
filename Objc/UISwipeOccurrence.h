@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UISwipeActionPullViewDelegate-Protocol.h>
+#import <UIKitCore/UISwipeActionPullViewDelegate-Protocol.h>
 
 @class NSDictionary, NSIndexPath, NSString, UIContextualAction, UISwipeActionController, UISwipeActionPullView, UIView;
 
@@ -24,12 +24,14 @@
     NSDictionary *_swipeDirectionToPullView;
     struct CGPoint _swipedViewInitialPosition;
     struct UIEdgeInsets _extraInsets;
+    CDStruct_9b6dff2a _currentSwipeInfo;
 }
 
 @property (nonatomic) BOOL active; // @synthesize active=_active;
 @property (weak, nonatomic) UISwipeActionController *controller; // @synthesize controller=_controller;
 @property (strong, nonatomic) UIContextualAction *currentAction; // @synthesize currentAction=_currentAction;
 @property (nonatomic) unsigned long long currentDirection; // @synthesize currentDirection=_currentDirection;
+@property (nonatomic) CDStruct_9b6dff2a currentSwipeInfo; // @synthesize currentSwipeInfo=_currentSwipeInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) struct UIEdgeInsets extraInsets; // @synthesize extraInsets=_extraInsets;
@@ -46,20 +48,21 @@
 - (void).cxx_destruct;
 - (void)_createPullViewsIfNeeded;
 - (struct CGRect)_frameForPullView:(id)arg1 inSwipedItem:(id)arg2 withContainer:(id)arg3;
-- (void)_performSwipeAction:(id)arg1 inPullview:(id)arg2 swipeInfo:(CDStruct_b06b0113)arg3;
+- (void)_performSwipeAction:(id)arg1 inPullview:(id)arg2 swipeInfo:(CDStruct_9b6dff2a)arg3;
 - (id)_pullViewForSwipeDirection:(unsigned long long)arg1;
-- (void)_resetItemWithSwipeInfo:(CDStruct_b06b0113)arg1 animated:(BOOL)arg2 deletion:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_resetItemWithSwipeInfo:(CDStruct_9b6dff2a)arg1 animated:(BOOL)arg2 deletion:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_resetPullViewsImmediately;
 - (unsigned long long)_swipeDirectionForPullView:(id)arg1;
+- (void)_updateLayoutUsingCurrentSwipeInfo:(BOOL)arg1;
 - (void)_updatePullView:(id)arg1;
 - (void)beginSwipe;
 - (double)confirmationDistanceForPrimaryActionInSwipeActionPullView:(id)arg1;
 - (void)endSwipe;
 - (id)initWithController:(id)arg1 indexPath:(id)arg2;
-- (void)moveItemWithSwipeInfo:(CDStruct_b06b0113)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)performPrimaryActionWithSwipeInfo:(CDStruct_b06b0113)arg1;
+- (void)moveItemWithSwipeInfo:(CDStruct_9b6dff2a)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performPrimaryActionWithSwipeInfo:(CDStruct_9b6dff2a)arg1;
 - (CDStruct_324b76a9)prepareWithSwipeDirection:(unsigned long long)arg1 configuration:(id)arg2;
-- (void)resetItemWithSwipeInfo:(CDStruct_b06b0113)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)resetItemWithSwipeInfo:(CDStruct_9b6dff2a)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)shouldDismissWithTouchLocation:(struct CGPoint)arg1;
 - (void)swipeActionPullView:(id)arg1 tappedAction:(id)arg2;
 - (void)updateLayout;

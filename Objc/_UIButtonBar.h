@@ -4,22 +4,22 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/_UIBarButtonItemGroupOwner-Protocol.h>
-#import <UIKit/_UIBarButtonItemViewOwner-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/_UIBarButtonItemGroupOwner-Protocol.h>
+#import <UIKitCore/_UIBarButtonItemViewOwner-Protocol.h>
 
-@class NSArray, NSLayoutConstraint, NSMapTable, NSMutableArray, NSString, UIBarButtonItem, UILayoutGuide, UIView, _UIButtonBarButtonVisualProvider, _UIButtonBarLayoutMetrics, _UIButtonBarStackView;
+@class NSArray, NSLayoutConstraint, NSLayoutDimension, NSMapTable, NSMutableArray, NSString, UIBarButtonItem, UIView, _UIButtonBarButtonVisualProvider, _UIButtonBarLayoutMetrics, _UIButtonBarStackView;
 @protocol _UIButtonBarAppearanceDelegate, _UIButtonBarDelegate;
 
 @interface _UIButtonBar : NSObject <_UIBarButtonItemViewOwner, _UIBarButtonItemGroupOwner, NSCoding>
 {
     _UIButtonBarStackView *_stackView;
-    UILayoutGuide *_flexibleSpaceEqualSizeLayoutGuide;
-    UILayoutGuide *_minimumInterItemSpaceLayoutGuide;
+    NSLayoutDimension *_flexibleSpaceEqualSizeAnchor;
+    NSLayoutDimension *_minimumInterItemSpaceAnchor;
     NSLayoutConstraint *_minimumInterItemSpaceConstraint;
-    UILayoutGuide *_minimumInterGroupSpaceLayoutGuide;
+    NSLayoutDimension *_minimumInterGroupSpaceAnchor;
     NSLayoutConstraint *_minimumInterGroupSpaceConstraint;
     UIView *_centeredView;
     NSLayoutConstraint *_centeringConstraint;

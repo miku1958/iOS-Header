@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPercentDrivenInteractiveTransition.h>
+#import <UIKitCore/UIPercentDrivenInteractiveTransition.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class CADisplayLink, NSString, UIGestureRecognizer, UIPanGestureRecognizer, UIView, UIViewController, _UINavigationParallaxTransition;
 @protocol _UINavigationInteractiveTransitionBaseDelegate;

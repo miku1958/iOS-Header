@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSLayoutItem-Protocol.h>
+#import <UIKitCore/NSLayoutItem-Protocol.h>
 
-@class NSISEngine, NSISVariable, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMutableSet, NSObservation;
+@class NSISEngine, NSISVariable, NSLayoutConstraint, NSLayoutDimension, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMutableArray, NSObservation;
 
 @protocol _UILayoutItem <NSLayoutItem>
 
@@ -23,11 +23,12 @@
 
 - (NSISVariable *)_boundsHeightVariable;
 - (NSISVariable *)_boundsWidthVariable;
+- (void)_faultInGuidesForConstraint:(NSLayoutConstraint *)arg1;
 - (NSISVariable *)_minXVariable;
 - (NSISVariable *)_minYVariable;
 - (void *)_referenceView;
-- (NSMutableSet *)_uili_existingBaseFrameVariables;
-- (NSMutableSet *)_uili_existingLayoutVariables;
+- (NSMutableArray *)_uili_existingBaseFrameVariables;
+- (NSMutableArray *)_uili_existingObservationEligibleLayoutVariables;
 - (BOOL)_uili_isFocusGuide;
 - (NSISEngine *)_uili_observableLayoutEngineForBaseFrameVariables:(BOOL)arg1;
 - (void)_uili_removeLayoutVariableObservationsOnlyToSupportTAMICChange:(BOOL)arg1;

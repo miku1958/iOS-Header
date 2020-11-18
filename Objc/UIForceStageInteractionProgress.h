@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInteractionProgress.h>
+#import <UIKitCore/UIInteractionProgress.h>
 
-#import <UIKit/NSObservable-Protocol.h>
-#import <UIKit/NSObserver-Protocol.h>
+#import <UIKitCore/NSObservable-Protocol.h>
+#import <UIKitCore/NSObserver-Protocol.h>
 
 @class NSObservation, NSString;
 

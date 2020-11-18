@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewCell.h>
+#import <UIKitCore/UICollectionViewCell.h>
 
 @class UIImageView, _UIActivityGroupActivityCellTitleLabel;
 
 __attribute__((visibility("hidden")))
 @interface _UIActivityGroupActivityCell : UICollectionViewCell
 {
+    unsigned long long _sequence;
     _UIActivityGroupActivityCellTitleLabel *_titleLabel;
     UIImageView *_imageView;
     UIImageView *_highlightedImageView;
@@ -18,8 +19,10 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) UIImageView *highlightedImageView; // @synthesize highlightedImageView=_highlightedImageView;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
+@property (nonatomic) unsigned long long sequence; // @synthesize sequence=_sequence;
 @property (strong, nonatomic) _UIActivityGroupActivityCellTitleLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
++ (void)invalidatePreferredSizes;
 + (struct CGSize)preferredSizeForSheetWidth:(double)arg1 sizeCategory:(id)arg2 titleLabelText:(id)arg3 screenScale:(double)arg4;
 - (void).cxx_destruct;
 - (id)draggingView;

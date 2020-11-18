@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIVisualEffectSubview.h>
+#import <UIKitCore/_UIVisualEffectSubview.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIVisualEffectContentView : _UIVisualEffectSubview

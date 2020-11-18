@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewControllerContextTransitioning-Protocol.h>
+#import <UIKitCore/UIViewControllerContextTransitioning-Protocol.h>
 
 @class NSArray;
 

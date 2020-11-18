@@ -4,21 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSSet, NSString;
+@class NSMutableDictionary, NSSet, _UIStatusBar, _UIStatusBarIdentifier;
 
 @interface _UIStatusBarItem : NSObject
 {
     BOOL _needsUpdate;
-    NSString *_identifier;
+    _UIStatusBarIdentifier *_identifier;
     NSMutableDictionary *_displayItems;
+    _UIStatusBar *_statusBar;
 }
 
-@property (readonly) NSSet *dependentEntryKeys;
+@property (readonly, nonatomic) NSSet *dependentEntryKeys;
 @property (strong, nonatomic) NSMutableDictionary *displayItems; // @synthesize displayItems=_displayItems;
-@property (copy) NSString *identifier; // @synthesize identifier=_identifier;
-@property (readonly) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
+@property (readonly, nonatomic) _UIStatusBarIdentifier *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
+@property (readonly, weak) _UIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 
 + (id)createItemForIdentifier:(id)arg1 visualProvider:(id)arg2;
 + (id)defaultDisplayIdentifier;
@@ -31,11 +33,13 @@
 - (void).cxx_destruct;
 - (id)_applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
 - (id)additionAnimationForDisplayItemWithIdentifier:(id)arg1;
-- (id)applyStyleAttributes:(id)arg1 toDisplayItem:(id)arg2;
+- (void)applyStyleAttributes:(id)arg1 toDisplayItem:(id)arg2;
 - (id)applyUpdate:(id)arg1 toDisplayItem:(id)arg2;
+- (BOOL)canEnableDisplayItem:(id)arg1 fromData:(id)arg2;
+- (id)createDisplayItemForIdentifier:(id)arg1;
 - (id)description;
 - (id)displayItemForIdentifier:(id)arg1;
-- (id)init;
+- (id)initWithIdentifier:(id)arg1 statusBar:(id)arg2;
 - (void)prepareAnimation:(id)arg1 forDisplayItem:(id)arg2;
 - (id)removalAnimationForDisplayItemWithIdentifier:(id)arg1;
 - (void)setNeedsUpdate;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSSecureCoding-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSIndexSet, NSMutableArray, NSSet, NSString, Protocol, _UIFeedbackParameters, _UIFeedbackPattern;
+@class NSArray, NSDictionary, NSIndexSet, NSMutableArray, NSString, Protocol, _UIFeedbackParameters, _UIFeedbackPattern;
 @protocol UICoordinateSpace, _UIFeedbackPlayer;
 
 @interface _UIFeedback : NSObject <NSCopying, NSSecureCoding>
@@ -32,7 +32,7 @@
 }
 
 @property (readonly, nonatomic, getter=_allEventTypes) NSIndexSet *allEventTypes;
-@property (readonly, nonatomic, getter=_allFeedbacks) NSSet *allFeedbacks;
+@property (readonly, nonatomic, getter=_allFeedbacks) NSArray *allFeedbacks;
 @property (readonly, nonatomic, getter=_allSystemSoundIDs) NSIndexSet *allSystemSoundIDs;
 @property (nonatomic) long long audioOutputMode; // @synthesize audioOutputMode=_audioOutputMode;
 @property (readonly, nonatomic) _UIFeedbackParameters *audioParameters; // @synthesize audioParameters=_audioParameters;
@@ -66,7 +66,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)type;
 - (void).cxx_destruct;
-- (void)_playAtTime:(double)arg1;
+- (void)_playAtTime:(double)arg1 engine:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

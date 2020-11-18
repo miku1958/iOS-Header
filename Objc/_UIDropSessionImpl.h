@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDropSession-Protocol.h>
-#import <UIKit/_UIDragDropSessionInternal-Protocol.h>
+#import <UIKitCore/UIDropSession-Protocol.h>
+#import <UIKitCore/_UIDragDropSessionInternal-Protocol.h>
 
 @class NSArray, NSProgress, NSString, _UIInternalDraggingSessionDestination;
 @protocol UIDragSession;

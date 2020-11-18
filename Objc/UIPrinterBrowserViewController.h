@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <UIKitCore/UITableViewController.h>
 
-#import <UIKit/PKPrinterBrowserDelegate-Protocol.h>
+#import <UIKitCore/PKPrinterBrowserDelegate-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString, PKPrinter, PKPrinterBrowser, UIPrinterSearchingView;
 @protocol UIPrinterBrowserOwner;

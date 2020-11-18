@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
-#import <UIKit/UICollectionViewDataSource-Protocol.h>
-#import <UIKit/UIKeyboardCandidateBarLayoutDelegate-Protocol.h>
-#import <UIKit/UIKeyboardCandidateList-Protocol.h>
-#import <UIKit/UIKeyboardCandidateListDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSource-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateBarLayoutDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateList-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateListDelegate-Protocol.h>
 
 @class NSArray, NSDictionary, NSIndexPath, NSString, TIKeyboardCandidateResultSet, UIImageView, UIKBCandidateCollectionView, UIKBThemedView, UIKeyboardCandidatePocketShadow;
 @protocol UIKeyboardCandidateBarDelegate, UIKeyboardCandidateListDelegate;
@@ -116,7 +116,9 @@ __attribute__((visibility("hidden")))
 - (void)candidateListShouldBeDismissed:(id)arg1;
 - (void)candidatesDidChange;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didHighlightItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (void)collectionView:(id)arg1 didUnhighlightItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
@@ -146,6 +148,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)selectedSortIndex;
 - (void)setCandidates:(id)arg1 inlineText:(id)arg2 inlineRect:(struct CGRect)arg3 maxX:(double)arg4 layout:(BOOL)arg5;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setPocketShadowHidden:(BOOL)arg1 inCollectionView:(id)arg2 nearHighlightItemAtIndexPath:(id)arg3;
 - (void)setUIKeyboardCandidateListDelegate:(id)arg1;
 - (BOOL)showCandidate:(id)arg1;
 - (void)showCandidateAtIndex:(unsigned long long)arg1;

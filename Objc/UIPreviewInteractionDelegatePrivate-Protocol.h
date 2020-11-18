@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPreviewInteractionDelegate-Protocol.h>
+#import <UIKitCore/UIPreviewInteractionDelegate-Protocol.h>
 
 @class UIPreviewInteraction, UIView, UIViewController, _UIPreviewInteractionHighlighter, _UIPreviewInteractionViewControllerPresentation;
 @protocol _UIPreviewInteractionViewControllerTransition;

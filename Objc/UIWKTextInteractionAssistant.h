@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextInteractionAssistant.h>
+#import <UIKitCore/UITextInteractionAssistant.h>
 
-#import <UIKit/UIResponderStandardEditActions-Protocol.h>
+#import <UIKitCore/UIResponderStandardEditActions-Protocol.h>
 
 @class NSString, UILongPressGestureRecognizer, UITapGestureRecognizer, UITextChecker, _UITextServiceSession;
 
@@ -19,6 +19,7 @@
     _UITextServiceSession *_lookupSession;
     UITextChecker *_textChecker;
     unsigned long long _options;
+    BOOL _shouldDelayActivatingSelectionView;
     NSString *_wordBeforeTap;
     struct CGRect _caretBeforeTap;
 }
@@ -26,13 +27,16 @@
 @property (nonatomic) struct CGRect caretBeforeTap; // @synthesize caretBeforeTap=_caretBeforeTap;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) UILongPressGestureRecognizer *forcePressGesture; // @dynamic forcePressGesture;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UILongPressGestureRecognizer *loupeGesture; // @dynamic loupeGesture;
+@property (nonatomic) BOOL shouldDelayActivatingSelectionView; // @synthesize shouldDelayActivatingSelectionView=_shouldDelayActivatingSelectionView;
 @property (readonly, nonatomic) UITapGestureRecognizer *singleTapGesture; // @dynamic singleTapGesture;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *wordBeforeTap; // @synthesize wordBeforeTap=_wordBeforeTap;
 
 - (id)_asText;
+- (void)addGestureRecognizersToView:(id)arg1;
 - (BOOL)containerAllowsSelection;
 - (BOOL)containerAllowsSelectionTintOnly;
 - (BOOL)containerIsAtom;
@@ -43,7 +47,7 @@
 - (id)initWithView:(id)arg1;
 - (void)lookup:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)lookup:(id)arg1 withRange:(struct _NSRange)arg2 fromRect:(struct CGRect)arg3;
-- (Class)loupeClusterClass;
+- (Class)loupeInteractionClass;
 - (BOOL)overrideGestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)overrideGestureRecognizerShouldBegin:(id)arg1;
 - (void)rangeSelectionCanceled;
@@ -60,18 +64,18 @@
 - (void)selectTextForReplacement:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)selectWord;
 - (void)selectionChanged;
-- (void)selectionChangedWithGestureAt:(struct CGPoint)arg1 withGesture:(long long)arg2 withState:(long long)arg3;
 - (void)selectionChangedWithGestureAt:(struct CGPoint)arg1 withGesture:(long long)arg2 withState:(long long)arg3 withFlags:(long long)arg4;
-- (void)selectionChangedWithTouchAt:(struct CGPoint)arg1 withSelectionTouch:(long long)arg2;
 - (void)selectionChangedWithTouchAt:(struct CGPoint)arg1 withSelectionTouch:(long long)arg2 withFlags:(long long)arg3;
-- (Class)selectionClusterClass;
+- (Class)selectionInteractionClass;
 - (BOOL)shouldEnqueueObserverUpdates;
 - (BOOL)shouldTryReplacementsForText:(id)arg1 withOptions:(unsigned long long)arg2;
 - (void)showDictionaryFor:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)showReplacementsForText:(id)arg1 withOptions:(unsigned long long)arg2;
+- (void)showSelectionView;
 - (void)showShareSheetFor:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)showTextServiceFor:(id)arg1 fromRect:(struct CGRect)arg2;
 - (void)showTextStyleOptions;
+- (void)updateActivatingSelectionView;
 - (void)updateSelectionWithPoint:(struct CGPoint)arg1;
 - (void)updateWithMagnifierTerminalPoint:(BOOL)arg1;
 

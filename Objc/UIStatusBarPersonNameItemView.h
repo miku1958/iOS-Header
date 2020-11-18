@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarItemView.h>
+#import <UIKitCore/UIStatusBarItemView.h>
 
 @class NSString;
 
@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 - (id)accessibilityHUDRepresentation;
 - (double)addContentOverlap:(double)arg1;
 - (id)contentsImage;
+- (double)extraRightPadding;
 - (long long)legibilityStyle;
 - (double)resetContentOverlap;
 - (double)standardPadding;

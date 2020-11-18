@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIActivityItemSource-Protocol.h>
+#import <UIKitCore/UIActivityItemSource-Protocol.h>
 
 @class NSString, UICloudSharingController;
 

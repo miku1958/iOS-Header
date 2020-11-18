@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIConstantConstraintSet.h>
+#import <UIKitCore/_UIConstantConstraintSet.h>
 
 @class NSLayoutConstraint;
 

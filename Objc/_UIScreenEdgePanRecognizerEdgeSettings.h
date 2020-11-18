@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UISettings.h>
+#import <UIKitCore/_UISettings.h>
 
 @interface _UIScreenEdgePanRecognizerEdgeSettings : _UISettings
 {
@@ -12,12 +12,14 @@
     double _edgeRegionSize;
     double _bottomEdgeRegionSize;
     double _edgeAngleWindow;
+    double _bottomEdgeAngleWindow;
     double _edgeAngleWindowDecayTime;
     double _restrictedEdgeRegionTimeInterval;
     double _restrictedEdgeRegionMinimumWeight;
     double _maximumSwipeDuration;
 }
 
+@property (nonatomic) double bottomEdgeAngleWindow; // @synthesize bottomEdgeAngleWindow=_bottomEdgeAngleWindow;
 @property (nonatomic) double bottomEdgeRegionSize; // @synthesize bottomEdgeRegionSize=_bottomEdgeRegionSize;
 @property (nonatomic) double edgeAngleWindow; // @synthesize edgeAngleWindow=_edgeAngleWindow;
 @property (nonatomic) double edgeAngleWindowDecayTime; // @synthesize edgeAngleWindowDecayTime=_edgeAngleWindowDecayTime;

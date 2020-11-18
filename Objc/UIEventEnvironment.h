@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSCountedSet, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, UIApplication, UIPhysicalKeyboardEvent, UIPressesEvent, UITouch, UITouchesEvent, UIWheelEvent, _UIGameControllerEvent;
 
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
     double _commitTimeForTouchEvents;
     NSMutableArray *_afterNewTouchDownActions;
     NSMutableSet *_windowsWithActiveTouchMaps;
-    BOOL _hasSeenAnyStylusEvents;
+    BOOL _hasSeenAnyPencilEvents;
     long long _disableTouchCoalescingCount;
     NSMutableDictionary *_estimatedTouchRecordsByContextIDAndEstimationIndex;
     NSMutableArray *_estimatedTouchRecordsInIncomingOrder;

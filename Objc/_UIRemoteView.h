@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UILayerHostView.h>
+#import <UIKitCore/_UILayerHostView.h>
 
-#import <UIKit/UIStatusBarTinting-Protocol.h>
+#import <UIKitCore/UIStatusBarTinting-Protocol.h>
 
 @class NSString, UIColor, _UIHostedWindowHostingHandle;
 

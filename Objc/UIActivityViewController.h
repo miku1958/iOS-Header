@@ -4,29 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIActionSheetPresentationControllerDelegate-Protocol.h>
-#import <UIKit/UIAlertControllerContaining-Protocol.h>
-#import <UIKit/UIAlertControllerVisualStyleProviding-Protocol.h>
-#import <UIKit/UIViewControllerRestoration-Protocol.h>
-#import <UIKit/_UIActivityHelperDelegate-Protocol.h>
-#import <UIKit/_UIShareExtensionHost-Protocol.h>
+#import <UIKitCore/UIActionSheetPresentationControllerDelegate-Protocol.h>
+#import <UIKitCore/UIAlertControllerContaining-Protocol.h>
+#import <UIKitCore/UIAlertControllerVisualStyleProviding-Protocol.h>
+#import <UIKitCore/UIViewControllerRestoration-Protocol.h>
+#import <UIKitCore/_UIActivityHelperDelegate-Protocol.h>
+#import <UIKitCore/_UIShareExtensionHost-Protocol.h>
 
-@class NSArray, NSExtension, NSMutableDictionary, NSOperationQueue, NSString, UIActivity, UIAlertAction, UIAlertController, UISUIActivityViewControllerConfiguration, _UIActivityHelper, _UIAlertControllerShimPresenter, _UIShareExtensionRemoteViewController;
+@class NSArray, NSExtension, NSMutableDictionary, NSOperationQueue, NSString, UIActivity, UIAlertAction, UIAlertController, UISUIActivityViewControllerConfiguration, _UIActivityGroupListViewController, _UIActivityHelper, _UIAlertControllerShimPresenter, _UIShareExtensionRemoteViewController;
 @protocol NSCopying, UIActivityViewControllerDelegate, _UIShareExtensionService;
 
 @interface UIActivityViewController : UIViewController <UIAlertControllerContaining, UIAlertControllerVisualStyleProviding, UIViewControllerRestoration, UIActionSheetPresentationControllerDelegate, _UIActivityHelperDelegate, _UIShareExtensionHost>
 {
     BOOL _waitingForInitialShareServicePreferredContentSize;
     BOOL _shareServicePreferredContentSizeIsValid;
+    BOOL __viewServiceBeganConnecting;
     BOOL _dismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
     BOOL _willDismissActivityViewController;
     BOOL _performActivityForStateRestoration;
     BOOL _shouldMatchOnlyUserElectedExtensions;
     BOOL _hasPerformedInitialPresentation;
     BOOL _isPerformingPresentation;
-    BOOL _presentationWasDelayed;
     BOOL _allowsEmbedding;
     BOOL _showKeyboardAutomatically;
     BOOL _sourceIsManaged;
@@ -38,6 +38,7 @@
     id<NSCopying> _extensionRequestIdentifier;
     id<_UIShareExtensionService> _shareExtensionService;
     UISUIActivityViewControllerConfiguration *_activityViewControllerConfiguration;
+    _UIActivityGroupListViewController *_placeholderViewController;
     NSArray *_activityItems;
     NSArray *_applicationActivities;
     NSMutableDictionary *_activitiesByUUID;
@@ -45,6 +46,7 @@
     long long _originalPopoverBackgroundStyle;
     Class _originalPopoverBackgroundViewClass;
     CDUnknownBlockType __popoverDismissalAction;
+    CDUnknownBlockType _activityPresentationCompletionHandler;
     UIAlertController *_activityAlertController;
     _UIAlertControllerShimPresenter *_activityAlertControllerShimPresenter;
     UIAlertAction *_activityAlertCancelAction;
@@ -54,10 +56,13 @@
     long long _completedProviderCount;
     unsigned long long _backgroundTaskIdentifier;
     NSString *_subject;
-    unsigned long long _beginShareUIConnectionTimestamp;
+    unsigned long long _clientAttemptedInitialPresentationOrEmbeddingTimestamp;
     unsigned long long _beginPerformingActivityTimestamp;
+    unsigned long long _viewWillAppearTimestamp;
+    unsigned long long _readyToInteractTimestamp;
     NSArray *_activityTypesToCreateInShareService;
     NSArray *_resolvedActivityItemsForCurrentActivity;
+    CDUnknownBlockType _shareSheetReadyToInteractHandler;
     CDUnknownBlockType _preCompletionHandler;
     NSArray *_includedActivityTypes;
     long long _excludedActivityCategories;
@@ -68,6 +73,7 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType _popoverDismissalAction; // @synthesize _popoverDismissalAction=__popoverDismissalAction;
+@property (nonatomic) BOOL _viewServiceBeganConnecting; // @synthesize _viewServiceBeganConnecting=__viewServiceBeganConnecting;
 @property (strong, nonatomic) NSMutableDictionary *activitiesByUUID; // @synthesize activitiesByUUID=_activitiesByUUID;
 @property (strong, nonatomic) UIActivity *activity; // @synthesize activity=_activity;
 @property (strong, nonatomic) UIAlertAction *activityAlertCancelAction; // @synthesize activityAlertCancelAction=_activityAlertCancelAction;
@@ -77,6 +83,7 @@
 @property (strong, nonatomic) NSOperationQueue *activityItemProviderOperationQueue; // @synthesize activityItemProviderOperationQueue=_activityItemProviderOperationQueue;
 @property (strong, nonatomic) NSArray *activityItemProviderOperations; // @synthesize activityItemProviderOperations=_activityItemProviderOperations;
 @property (copy, nonatomic) NSArray *activityItems; // @synthesize activityItems=_activityItems;
+@property (copy, nonatomic, getter=_activityPresentationCompletionHandler, setter=_setActivityPresentationCompletionHandler:) CDUnknownBlockType activityPresentationCompletionHandler; // @synthesize activityPresentationCompletionHandler=_activityPresentationCompletionHandler;
 @property (copy, nonatomic) NSArray *activityTypeOrder; // @synthesize activityTypeOrder=_activityTypeOrder;
 @property (strong, nonatomic) NSArray *activityTypesToCreateInShareService; // @synthesize activityTypesToCreateInShareService=_activityTypesToCreateInShareService;
 @property (strong, nonatomic) UIViewController *activityViewController; // @synthesize activityViewController=_activityViewController;
@@ -86,7 +93,7 @@
 @property (copy, nonatomic) NSArray *applicationActivities; // @synthesize applicationActivities=_applicationActivities;
 @property (nonatomic) unsigned long long backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
 @property (nonatomic, getter=_beginPerformingActivityTimestamp, setter=_setBeginPerformingActivityTimestamp:) unsigned long long beginPerformingActivityTimestamp; // @synthesize beginPerformingActivityTimestamp=_beginPerformingActivityTimestamp;
-@property (nonatomic, getter=_beginShareUIConnectionTimestamp, setter=_setBeginShareUIConnectionTimestamp:) unsigned long long beginShareUIConnectionTimestamp; // @synthesize beginShareUIConnectionTimestamp=_beginShareUIConnectionTimestamp;
+@property (nonatomic, getter=_clientAttemptedInitialPresentationOrEmbeddingTimestamp, setter=_setClientAttemptedInitialPresentationOrEmbeddingTimestamp:) unsigned long long clientAttemptedInitialPresentationOrEmbeddingTimestamp; // @synthesize clientAttemptedInitialPresentationOrEmbeddingTimestamp=_clientAttemptedInitialPresentationOrEmbeddingTimestamp;
 @property (nonatomic) long long completedProviderCount; // @synthesize completedProviderCount=_completedProviderCount;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (copy, nonatomic) CDUnknownBlockType completionWithItemsHandler; // @synthesize completionWithItemsHandler=_completionWithItemsHandler;
@@ -104,22 +111,26 @@
 @property (nonatomic) long long originalPopoverBackgroundStyle; // @synthesize originalPopoverBackgroundStyle=_originalPopoverBackgroundStyle;
 @property (strong, nonatomic) Class originalPopoverBackgroundViewClass; // @synthesize originalPopoverBackgroundViewClass=_originalPopoverBackgroundViewClass;
 @property (nonatomic) BOOL performActivityForStateRestoration; // @synthesize performActivityForStateRestoration=_performActivityForStateRestoration;
+@property (strong, nonatomic, getter=_placeholderViewController, setter=_setPlaceholderViewController:) _UIActivityGroupListViewController *placeholderViewController; // @synthesize placeholderViewController=_placeholderViewController;
 @property (copy, nonatomic) CDUnknownBlockType preCompletionHandler; // @synthesize preCompletionHandler=_preCompletionHandler;
-@property (nonatomic, getter=_presentationWasDelayed, setter=_setPresentationWasDelayed:) BOOL presentationWasDelayed; // @synthesize presentationWasDelayed=_presentationWasDelayed;
+@property (nonatomic, getter=_readyToInteractTimestamp, setter=_setReadyToInteractTimestamp:) unsigned long long readyToInteractTimestamp; // @synthesize readyToInteractTimestamp=_readyToInteractTimestamp;
 @property (strong, nonatomic) _UIShareExtensionRemoteViewController *remoteContentViewController; // @synthesize remoteContentViewController=_remoteContentViewController;
 @property (readonly, nonatomic) NSArray *resolvedActivityItemsForCurrentActivity; // @synthesize resolvedActivityItemsForCurrentActivity=_resolvedActivityItemsForCurrentActivity;
 @property (strong, nonatomic) NSExtension *shareExtension; // @synthesize shareExtension=_shareExtension;
 @property (strong, nonatomic) id<_UIShareExtensionService> shareExtensionService; // @synthesize shareExtensionService=_shareExtensionService;
 @property (nonatomic) BOOL shareServicePreferredContentSizeIsValid; // @synthesize shareServicePreferredContentSizeIsValid=_shareServicePreferredContentSizeIsValid;
+@property (copy, nonatomic, getter=_shareSheetReadyToInteractHandler, setter=_setShareSheetReadyToInteractHandler:) CDUnknownBlockType shareSheetReadyToInteractHandler; // @synthesize shareSheetReadyToInteractHandler=_shareSheetReadyToInteractHandler;
 @property (nonatomic) BOOL shouldMatchOnlyUserElectedExtensions; // @synthesize shouldMatchOnlyUserElectedExtensions=_shouldMatchOnlyUserElectedExtensions;
 @property (nonatomic) BOOL showKeyboardAutomatically; // @synthesize showKeyboardAutomatically=_showKeyboardAutomatically;
 @property (nonatomic) BOOL sourceIsManaged; // @synthesize sourceIsManaged=_sourceIsManaged;
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
 @property (readonly) Class superclass;
 @property (nonatomic) long long totalProviderCount; // @synthesize totalProviderCount=_totalProviderCount;
+@property (nonatomic, getter=_viewWillAppearTimestamp, setter=_setViewWillAppearTimestamp:) unsigned long long viewWillAppearTimestamp; // @synthesize viewWillAppearTimestamp=_viewWillAppearTimestamp;
 @property (nonatomic) BOOL waitingForInitialShareServicePreferredContentSize; // @synthesize waitingForInitialShareServicePreferredContentSize=_waitingForInitialShareServicePreferredContentSize;
 @property (nonatomic) BOOL willDismissActivityViewController; // @synthesize willDismissActivityViewController=_willDismissActivityViewController;
 
++ (double)_asyncPresentationTimeout;
 + (BOOL)_popoverPresentationUsesModernPresentation;
 + (BOOL)_usesActionSheetPresentationController;
 + (id)viewControllerWithRestorationIdentifierPath:(id)arg1 coder:(id)arg2;
@@ -140,48 +151,61 @@
 - (void)_cleanupActivityWithSuccess:(BOOL)arg1 items:(id)arg2 error:(id)arg3;
 - (void)_clearActivity;
 - (id)_configurationForActivity:(id)arg1;
-- (void)_connectToRemoteViewService;
+- (void)_connectToRemoteViewServiceOnceWithPriming:(BOOL)arg1 previousAttempts:(long long)arg2;
 - (id)_containedAlertController;
+- (void)_createAndInstallPlaceholderViewControllerIfNeeded;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (double)_displayHeight;
-- (void)_embedRemoteContentViewController;
+- (void)_embedRemoteContentViewControllerAndPerformAfterCompletingFencedCommit:(CDUnknownBlockType)arg1;
+- (void)_emitInteractionTelemetry:(BOOL)arg1 error:(id)arg2;
 - (void)_endDismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
 - (void)_endInProgressActivityExecutionForcedStrongReference;
 - (void)_executeActivity;
 - (void)_insertIntoActivitiesByUUID:(id)arg1;
 - (void)_installViewController:(id)arg1;
-- (void)_loadOrPreheatActivityViewControllerConfiguration;
+- (BOOL)_isActionRowExcluded;
+- (BOOL)_isAirDropExcludedWithActivityItemValues:(id)arg1;
+- (BOOL)_isSharingRowExcluded;
+- (void)_loadActivityViewControllerConfiguration;
+- (id)_newActivityMatchingContext;
 - (id)_newShareUIConfigurationForCurrentState;
 - (id)_newShareUIConfigurationWithMatchingResults:(id)arg1;
-- (id)_orderedAvailableActivitiesByPerformingMatching;
 - (void)_performActivity:(id)arg1;
 - (void)_performActivityOfType:(id)arg1 executionEnvironment:(long long)arg2;
 - (void)_performDismissWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)_placeholderActivityItemValues;
+- (void)_preheatActivitiesIfNeeded;
+- (void)_preheatActivityViewControllerConfiguration;
 - (void)_preloadInitialConfigurationLocallyIfNeeded;
 - (void)_prepareActivity:(id)arg1;
 - (void)_prepareActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentationControllerDismissalTransitionDidEndNotification:(id)arg1;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
+- (void)_presentationOrEmbeddingDidBegin:(BOOL)arg1;
+- (void)_primeExtensionDiscovery;
 - (BOOL)_queueBackgroundOperationsForActivityItems:(id)arg1 activityBeingPerformed:(id)arg2;
 - (void)_removeFromActivitiesByUUID:(id)arg1;
+- (void)_removePlaceholderViewControllerIfNeeded;
 - (BOOL)_requiresCustomPresentationController;
 - (void)_resetAfterActivity:(BOOL)arg1;
+- (void)_retryRemoteViewServiceConnectionIfPossibleWithPriming:(BOOL)arg1 previousAttempts:(long long)arg2;
 - (id)_securityScopedURLsForMatching;
 - (void)_sendInitialShareServiceConfigurationAndUpdatePreferredContentSize;
 - (void)_setPopoverController:(id)arg1;
 - (void)_setupLegacyAlertPresentationControllers;
+- (void)_shareExtensionServicePreferredContentSizeUpdated:(struct CGSize)arg1;
 - (void)_shareServiceFinishedInitialPreferredContentSizeUpdate;
+- (void)_shareSheetReadyToInteractAfterCACommit:(BOOL)arg1;
 - (BOOL)_shouldExecuteItemOperation:(id)arg1 forActivity:(id)arg2;
+- (BOOL)_shouldIncludeTagsUIPlaceholderWithActivityItemValues:(id)arg1;
 - (BOOL)_shouldShowSystemActivityType:(id)arg1;
 - (id)_titleForActivity:(id)arg1;
 - (void)_updateActivityItems:(id)arg1;
-- (void)_updatePreferredContentSizes;
+- (void)_updateActivityViewControllerConfiguration;
+- (void)_updatePlaceholderPreferredContentSize;
 - (void)_updateSourceIsManagedForURLs;
-- (BOOL)_waitForShareExtensionServiceWithTimeout:(double)arg1 requireValidShareServicePreferredContentSize:(BOOL)arg2;
 - (void)_willPerformInServiceActivityType:(id)arg1 activitySpecificMetadata:(id)arg2;
 - (void)actionSheetPresentationControllerDidDismissActionSheet:(id)arg1;
-- (void)activityHelper:(id)arg1 didUpdateActivityMatchingResults:(id)arg2;
 - (BOOL)activityHelper:(id)arg1 matchingWithContext:(id)arg2 shouldIncludeSystemActivityType:(id)arg3;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
@@ -201,7 +225,6 @@
 - (void)shareExtensionServiceChangeSheetDismissButtonTitle:(id)arg1;
 - (void)shareExtensionServiceDidFinishPerformingInServiceActivityWithUUID:(id)arg1 responseData:(id)arg2;
 - (void)shareExtensionServiceDisableSheetAvoidsKeyboardUntilContentSizeUpdate;
-- (void)shareExtensionServicePreferredContentSizeUpdated:(struct CGSize)arg1;
 - (void)shareExtensionServiceRequestPerformActivityInHostForActivityUUID:(id)arg1;
 - (void)shareExtensionServiceRequestPerformActivityInHostForExtensionActivityWithBundleIdentifier:(id)arg1;
 - (void)shareExtensionServiceWillPerformInServiceActivityWithDataRequest:(id)arg1 dismissPresentation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
@@ -209,11 +232,11 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 - (id)visualStyleForAlertControllerStyle:(long long)arg1 traitCollection:(id)arg2 descriptor:(id)arg3;
-- (void)willRotateToInterfaceOrientation:(long long)arg1 duration:(double)arg2;
 
 @end
 

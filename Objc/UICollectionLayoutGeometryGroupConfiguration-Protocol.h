@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSCopying-Protocol.h>
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @class NSArray;
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIWindow.h>
+#import <UIKitCore/UIWindow.h>
 
 @class UIStatusBar, UIStatusBarCorners;
 
@@ -23,6 +23,7 @@
 + (struct CGRect)_defaultStatusBarSceneReferenceBounds;
 + (struct CGRect)_defaultStatusBarSceneReferenceBoundsForOrientation:(long long)arg1;
 + (BOOL)_isSystemWindow;
++ (BOOL)_statusBarNeedsFrameUpdateOnRotation;
 + (BOOL)isIncludedInClassicJail;
 + (struct CGRect)statusBarWindowFrame;
 - (void).cxx_destruct;
@@ -34,11 +35,13 @@
 - (void)_rotate;
 - (BOOL)_shouldAdjustSizeClassesAndResizeWindow;
 - (BOOL)_shouldZoom;
+- (struct CGRect)_statusBarFrameForOrientation:(long long)arg1;
 - (void)_updateTransformLayerForClassicPresentation;
 - (void)dealloc;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (long long)orientation;
+- (struct UIEdgeInsets)safeAreaInsets;
 - (void)setCornersHidden:(BOOL)arg1 animationParameters:(id)arg2;
 - (void)setOrientation:(long long)arg1 animationParameters:(id)arg2;
 - (void)setStatusBar:(id)arg1;

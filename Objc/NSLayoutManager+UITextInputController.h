@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import "NSLayoutManager.h"
+#import <UIFoundation/NSLayoutManager.h>
 
 @interface NSLayoutManager (UITextInputController)
 - (id)_commonTextInputController;

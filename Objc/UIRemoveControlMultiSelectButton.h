@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIRemoveControlMinusButton.h>
+#import <UIKitCore/UIRemoveControlMinusButton.h>
 
 __attribute__((visibility("hidden")))
 @interface UIRemoveControlMultiSelectButton : UIRemoveControlMinusButton

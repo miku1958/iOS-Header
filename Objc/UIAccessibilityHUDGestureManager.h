@@ -4,27 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIGestureRecognizerDelegatePrivate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 
 @class NSMutableArray, NSString, UILongPressGestureRecognizer, UIView, UIViewController;
-@protocol UIAccessibilityHUDGestureHosting;
+@protocol UIAccessibilityHUDGestureDelegate;
 
-__attribute__((visibility("hidden")))
 @interface UIAccessibilityHUDGestureManager : NSObject <UIGestureRecognizerDelegatePrivate>
 {
-    UIView<UIAccessibilityHUDGestureHosting> *_view;
+    UIView *_view;
+    id<UIAccessibilityHUDGestureDelegate> _delegate;
     UIViewController *_viewControllerDisplayingHUD;
     UILongPressGestureRecognizer *_recognizer;
     NSMutableArray *_subscribedConcurrentGestureRecognizers;
-    BOOL _viewDirectlyShowsHUD;
+    BOOL _delegateDirectlyShowsHUD;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (readonly, weak, nonatomic) UIView *view; // @synthesize view=_view;
 
 - (void).cxx_destruct;
 - (id)_bestViewControllerForView;
@@ -37,7 +38,8 @@ __attribute__((visibility("hidden")))
 - (void)_showAccessibilityHUDItem:(id)arg1;
 - (id)_subscribedConcurrentGestureRecognizers;
 - (void)dealloc;
-- (id)initWithView:(id)arg1;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (id)initWithView:(id)arg1 delegate:(id)arg2;
 
 @end
 

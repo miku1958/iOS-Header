@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIStatusBarForegroundStyleAttributes.h>
+#import <UIKitCore/UIStatusBarForegroundStyleAttributes.h>
 
 __attribute__((visibility("hidden")))
 @interface UIStatusBarExternalForegroundStyleAttributes : UIStatusBarForegroundStyleAttributes
@@ -14,9 +14,10 @@ __attribute__((visibility("hidden")))
 - (long long)activityIndicatorStyleWithSyncActivity:(BOOL)arg1;
 - (struct UIEdgeInsets)edgeInsetsForBatteryInsides;
 - (struct UIEdgeInsets)edgeInsetsForBluetoothBatteryInsides;
-- (double)edgePadding;
+- (double)leftEdgePadding;
 - (id)makeTextFontForStyle:(long long)arg1;
 - (double)middlePadding;
+- (double)rightEdgePadding;
 - (double)scale;
 - (double)standardPadding;
 - (id)textForNetworkType:(int)arg1;

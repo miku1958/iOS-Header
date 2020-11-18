@@ -4,20 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIResponder.h>
+#import <UIKitCore/UIResponder.h>
 
-#import <UIKit/FBSDisplayLayoutObserver-Protocol.h>
-#import <UIKit/FBSUIApplicationSystemServiceDelegate-Protocol.h>
-#import <UIKit/FBSUIApplicationWorkspaceDelegate-Protocol.h>
-#import <UIKit/UIActivityContinuationManagerApplicationContext-Protocol.h>
-#import <UIKit/UIApplicationSnapshotPreparing-Protocol.h>
-#import <UIKit/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
-#import <UIKit/UNRemoteNotificationRegistrarDelegate-Protocol.h>
+#import <UIKitCore/FBSDisplayLayoutObserver-Protocol.h>
+#import <UIKitCore/FBSUIApplicationWorkspaceDelegate-Protocol.h>
+#import <UIKitCore/UIActivityContinuationManagerApplicationContext-Protocol.h>
+#import <UIKitCore/UIApplicationSnapshotPreparing-Protocol.h>
+#import <UIKitCore/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
+#import <UIKitCore/UNRemoteNotificationRegistrarDelegate-Protocol.h>
 
-@class BKSAnimationFenceHandle, BKSProcessAssertion, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSString, NSTimer, SBSApplicationShortcutService, UIActivityContinuationManager, UIAlertController, UIColor, UIEvent, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UIMoveEvent, UINotificationFeedbackGenerator, UIRepeatedAction, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIIdleModeController;
+@class BKSAnimationFenceHandle, BKSProcessAssertion, FBSDisplayLayoutMonitor, NSArray, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSObject, NSString, NSTimer, SBSApplicationShortcutService, UIActivityContinuationManager, UIAlertController, UIColor, UIEvent, UIEventDispatcher, UIEventFetcher, UIForceStageObservable, UIGestureEnvironment, UIMoveEvent, UINotificationFeedbackGenerator, UIRepeatedAction, UISApplicationState, UIStatusBar, UIStatusBarWindow, UISystemNavigationAction, UIWindow, _UIIdleModeController;
 @protocol OS_dispatch_queue, UIApplicationDelegate;
 
-@interface UIApplication : UIResponder <FBSUIApplicationWorkspaceDelegate, FBSUIApplicationSystemServiceDelegate, FBSDisplayLayoutObserver, UNRemoteNotificationRegistrarDelegate, UIActivityContinuationManagerApplicationContext, UIApplicationSnapshotPreparing, UIStatusBarStyleDelegate_SpringBoardOnly>
+@interface UIApplication : UIResponder <FBSUIApplicationWorkspaceDelegate, FBSDisplayLayoutObserver, UNRemoteNotificationRegistrarDelegate, UIActivityContinuationManagerApplicationContext, UIApplicationSnapshotPreparing, UIStatusBarStyleDelegate_SpringBoardOnly>
 {
     id<UIApplicationDelegate> _delegate;
     UIEvent *_event;
@@ -161,8 +160,10 @@
     NSObject<OS_dispatch_queue> *_HIDGameControllerEventQueue;
     UINotificationFeedbackGenerator *_motionNotificationGenerator;
     int _simulatorShakeNotificationToken;
+    UISApplicationState *_appState;
     BOOL optOutOfRTL;
     BOOL _isDisplayingActivityContinuationUI;
+    BOOL _applicationWantsGESEvents;
     SBSApplicationShortcutService *_shortcutService;
     CDUnknownBlockType ___queuedOrientationChange;
     long long __expectedViewOrientation;
@@ -175,6 +176,7 @@
 @property (nonatomic) long long applicationIconBadgeNumber;
 @property (readonly, nonatomic) long long applicationState;
 @property (nonatomic) BOOL applicationSupportsShakeToEdit;
+@property (getter=_applicationWantsGESEvents, setter=_setApplicationWantsGESEvents:) BOOL applicationWantsGESEvents; // @synthesize applicationWantsGESEvents=_applicationWantsGESEvents;
 @property (readonly, nonatomic) long long backgroundRefreshStatus;
 @property (readonly, nonatomic) double backgroundTimeRemaining;
 @property (readonly, copy) NSString *debugDescription;
@@ -214,6 +216,7 @@
 + (BOOL)_isSystemUIService;
 + (void)_screensHaveConnected;
 + (BOOL)_shouldBigify;
++ (BOOL)_shouldForceClassicForExtensions;
 + (void)_startStatusBarServerIfNecessary;
 + (void)_startWindowServerIfNecessary;
 + (Class)_statusBarClass;
@@ -243,6 +246,7 @@
 - (void).cxx_destruct;
 - (struct __GSKeyboard *)GSKeyboardForHWLayout:(id)arg1 forceRebuild:(BOOL)arg2;
 - (BOOL)_UIApplicationLegacyVoipAllowed;
+- (unsigned long long)__beginBackgroundTaskWithExpirationHandler:(CDUnknownBlockType)arg1;
 - (void)__completeAndRunAsPlugin;
 - (void)__forceEndIgnoringInteractionEvents;
 - (BOOL)_accessibilityApplicationIsSystemWideServer;
@@ -257,6 +261,7 @@
 - (void)_addDocument:(id)arg1 forUserActivity:(id)arg2;
 - (void)_addResponder:(id)arg1 forUserActivity:(id)arg2;
 - (void)_addViewControllerForLockingStatusBarTintColor:(id)arg1;
+- (void)_alertItemStateChanged;
 - (BOOL)_alwaysHitTestsForMainScreen;
 - (void)_applicationDidEnterBackground;
 - (void)_applicationHandleIntentForwardingAction:(id)arg1;
@@ -302,6 +307,7 @@
 - (void)_configureLaunchOptions:(id)arg1;
 - (void)_configureSnapshotContext:(id)arg1 forScreen:(id)arg2 sceneSettings:(id)arg3;
 - (id)_createSnapshotContextForScene:(id)arg1 withName:(id)arg2 performLayoutWithSettings:(id)arg3;
+- (id)_createSnapshotContextForSceneRemoval:(id)arg1 withName:(id)arg2;
 - (void)_createStatusBarWithRequestedStyle:(long long)arg1 orientation:(long long)arg2 hidden:(BOOL)arg3;
 - (long long)_currentExpectedInterfaceOrientation;
 - (id)_currentFrameCountForTestDisplay;
@@ -322,7 +328,6 @@
 - (id)_dragEvents;
 - (void)_eatCurrentTouch;
 - (long long)_effectiveUserInterfaceStyle;
-- (unsigned long long)_enabledRemoteNotificationTypes;
 - (void)_endBackgroundTask:(unsigned long long)arg1;
 - (void)_endFenceTask:(id)arg1;
 - (void)_endNoPresentingViewControllerAlertController:(id)arg1;
@@ -348,12 +353,8 @@
 - (unsigned int)_frontmostApplicationPort;
 - (id)_gameControllerEvent;
 - (id)_gestureEnvironment;
-- (void)_getEnabledRemoteNotificationTypesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (unsigned char)_getIOHIDKeyboardTypeForGSKeyboardType:(unsigned char)arg1;
-- (void)_getScheduledLocalNotificationsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)_getSpringBoardOrientation;
-- (void)_getUserNotificationCategorieWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_getUserNotificationTypesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_handleApplicationLaunchEventWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleApplicationShortcutAction:(id)arg1;
 - (void)_handleDaemonApplicationActivationWithScene:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -456,6 +457,7 @@
 - (long long)_physicalButtonTypeForKeyCode:(long long)arg1 isTextual:(BOOL *)arg2;
 - (id)_physicalKeyboardEvent;
 - (void)_pipStateDidChange;
+- (void)_popRunLoopMode:(id)arg1 requester:(id)arg2 reason:(id)arg3;
 - (void)_popStatusBarTintColorLock;
 - (void)_popTintViewDuration;
 - (void)_postSimpleRemoteNotificationForAction:(long long)arg1 andContext:(long long)arg2 trackID:(id)arg3;
@@ -468,6 +470,7 @@
 - (id)_pressesEvent;
 - (void)_purgeSharedInstances;
 - (struct __CFMessagePort *)_purplePPTServerPort;
+- (void)_pushRunLoopMode:(id)arg1 requester:(id)arg2 reason:(id)arg3;
 - (void)_pushStatusBarTintColorLock;
 - (void)_pushTintViewDuration:(double)arg1;
 - (void)_receivedMemoryNotification;
@@ -490,6 +493,7 @@
 - (void)_removeResponder:(id)arg1 forUserActivity:(id)arg2;
 - (void)_removeViewControllerForLockingStatusBarTintColor:(id)arg1;
 - (void)_reportMainSceneUpdateFinished:(CDUnknownBlockType)arg1;
+- (void)_reportMainSceneUpdateFinishedPossiblyDeferredPortions;
 - (void)_reportResults:(id)arg1;
 - (void)_requestDeviceUnlockWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_requiresHighResolution;
@@ -582,6 +586,7 @@
 - (void)_showEditAlertViewWithUndoManager:(id)arg1 window:(id)arg2;
 - (id)_showServiceForText:(id)arg1 selectedTextRange:(struct _NSRange)arg2 type:(long long)arg3 fromRect:(struct CGRect)arg4 inView:(id)arg5;
 - (id)_showServiceForText:(id)arg1 type:(long long)arg2 fromRect:(struct CGRect)arg3 inView:(id)arg4;
+- (id)_showServiceForType:(long long)arg1 withContext:(id)arg2;
 - (id)_statusBarControllingWindow;
 - (BOOL)_statusBarOrientationFollowsWindow:(id)arg1;
 - (long long)_statusBarOrientationForWindow:(id)arg1;
@@ -630,8 +635,6 @@
 - (void)_updateStateRestorationArchiveForBackgroundEvent:(CDUnknownBlockType)arg1 saveState:(BOOL)arg2 exitIfCouldNotRestoreState:(BOOL)arg3 updateSnapshot:(BOOL)arg4 canvas:(id)arg5;
 - (id)_urlWithSettingsPrivateURLSchemeIfNeeded:(id)arg1;
 - (id)_userInterfaceControllingWindow;
-- (id)_userNotificationCategories;
-- (unsigned long long)_userNotificationTypes;
 - (BOOL)_usesEmoji;
 - (BOOL)_usesPreMTAlertBehavior;
 - (void)_wakeTimerFired;
@@ -695,7 +698,6 @@
 - (id)currentUserNotificationSettings;
 - (void)dealloc;
 - (double)defaultImageSnapshotExpiration;
-- (void)didDismissActionSheet;
 - (void)didDismissMiniAlert;
 - (void)didReceiveMemoryWarning;
 - (int)doubleHeightMode;
@@ -739,7 +741,6 @@
 - (void)headsetAvailabilityChanged:(struct __GSEvent *)arg1;
 - (void)headsetButtonDown:(struct __GSEvent *)arg1;
 - (void)headsetButtonUp:(struct __GSEvent *)arg1;
-- (BOOL)homeScreenCanAddIcons;
 - (id)idleTimerDisabledReasons;
 - (void)ignoreSnapshotOnNextApplicationLaunch;
 - (BOOL)ignoresInteractionEvents;
@@ -812,7 +813,6 @@
 - (void)removeStatusBarItem:(int)arg1;
 - (void)removeStatusBarStyleOverrides:(int)arg1;
 - (BOOL)reportApplicationSuspended;
-- (void)requestDeviceUnlock;
 - (void)resetIdleTimerAndUndim;
 - (void)restoreApplicationPreservationStateWithSessionIdentifier:(id)arg1 viewController:(id)arg2 beginHandler:(CDUnknownBlockType)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)resultsForTest:(id)arg1;
@@ -890,7 +890,6 @@
 - (BOOL)shouldRecordExtendedLaunchTime;
 - (void)showKeyboardUsingBlock:(CDUnknownBlockType)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)showNetworkPromptsIfNecessary:(BOOL)arg1;
-- (void)showTTYPromptForNumber:(id)arg1 withID:(int)arg2;
 - (void)significantTimeChange;
 - (void)startCHUDRecording:(id)arg1;
 - (void)startLeaking;
@@ -901,6 +900,7 @@
 - (id)statusBar;
 - (void)statusBar:(id)arg1 didAnimateFromHeight:(double)arg2 toHeight:(double)arg3 animation:(int)arg4;
 - (int)statusBar:(id)arg1 effectiveStyleOverridesForRequestedStyle:(long long)arg2 overrides:(int)arg3;
+- (long long)statusBar:(id)arg1 styleForRequestedStyle:(long long)arg2 overrides:(int)arg3;
 - (void)statusBar:(id)arg1 willAnimateFromHeight:(double)arg2 toHeight:(double)arg3 duration:(double)arg4 animation:(int)arg5;
 - (struct CGRect)statusBarFrameForOrientation:(long long)arg1;
 - (double)statusBarHeight;
@@ -930,7 +930,6 @@
 - (BOOL)usesBackgroundNetwork;
 - (void)vibrateForDuration:(int)arg1;
 - (void)volumeChanged:(struct __GSEvent *)arg1;
-- (void)willDismissMiniAlert;
 - (void)willDisplayMiniAlert;
 - (double)windowRotationDuration;
 - (void)workspace:(id)arg1 didCreateScene:(id)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;

@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIDragInteractionDelegate_Private-Protocol.h>
-#import <UIKit/UIDropInteractionDelegate_Private-Protocol.h>
-#import <UIKit/UITextDragDropSupport-Protocol.h>
-#import <UIKit/UITextPasteSessionDelegate-Protocol.h>
-#import <UIKit/_UITextPasteProgressSupport-Protocol.h>
+#import <UIKitCore/UIDragInteractionDelegate_Private-Protocol.h>
+#import <UIKitCore/UIDropInteractionDelegate_Private-Protocol.h>
+#import <UIKitCore/UITextDragDropSupport-Protocol.h>
+#import <UIKitCore/UITextPasteSessionDelegate-Protocol.h>
+#import <UIKitCore/_UITextPasteProgressSupport-Protocol.h>
 
 @class NSArray, NSMapTable, NSString, NSTextStorage, UIDragInteraction, UIDragItem, UIDropInteraction, UITargetedDragPreview, UITextDraggableGeometrySameViewDropOperationResult, UITextDropProposal, UITextPasteController, UITextPosition, UITextRange, UIView, _UITextDragCaretView;
 @protocol UIDragSession, UIDropSession, UITextDragSupporting><UITextDropSupporting, UITextDraggableGeometry, UITextDraggableGeometrySameViewDropOperation, UITextPasteSession;
@@ -112,7 +112,6 @@ __attribute__((visibility("hidden")))
 - (void)_textStorageDidProcessEditing;
 - (void)_updateDropCaretToPosition:(id)arg1;
 - (void)_updateDropProposalForPosition:(id)arg1 inSession:(id)arg2 allowCancel:(BOOL)arg3;
-- (void)_viewBecomeFirstResponderIfNeededAfterDrop;
 - (BOOL)_viewHasOtherDragInteraction;
 - (BOOL)accessibilityCanDrag;
 - (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;

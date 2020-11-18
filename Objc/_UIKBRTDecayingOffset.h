@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIKBRTDecayingObject.h>
+#import <UIKitCore/_UIKBRTDecayingObject.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIKBRTDecayingOffset : _UIKBRTDecayingObject

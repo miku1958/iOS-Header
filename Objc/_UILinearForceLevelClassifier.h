@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIForceLevelClassifier.h>
+#import <UIKitCore/_UIForceLevelClassifier.h>
 
-#import <UIKit/UIDebuggingInformationObserver-Protocol.h>
+#import <UIKitCore/UIDebuggingInformationObserver-Protocol.h>
 
 @class NSString;
 

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKeyboardCandidateView_iPhone.h>
+#import <UIKitCore/UIKeyboardCandidateView_iPhone.h>
 
-#import <UIKit/UIKeyboardCandidateViewInline-Protocol.h>
+#import <UIKitCore/UIKeyboardCandidateViewInline-Protocol.h>
 
 @class NSString;
 

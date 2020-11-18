@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSUserActivityDelegate-Protocol.h>
+#import <UIKitCore/NSUserActivityDelegate-Protocol.h>
 
 @class NSProgress, NSString;
 @protocol UIActivityContinuationManagerApplicationContext;

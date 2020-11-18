@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/UIAppearanceContainer-Protocol.h>
-#import <UIKit/UIDimmingViewDelegate-Protocol.h>
-#import <UIKit/UIGestureRecognizerDelegatePrivate-Protocol.h>
+#import <UIKitCore/UIAppearanceContainer-Protocol.h>
+#import <UIKitCore/UIDimmingViewDelegate-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegatePrivate-Protocol.h>
 
 @class NSArray, NSString, UIBarButtonItem, UIColor, UIDimmingView, UIPanGestureRecognizer, UIPopoverPresentationController, UIView, UIViewController, _UIPopoverLayoutInfo, _UIPopoverView;
 @protocol UIPopoverControllerDelegate;

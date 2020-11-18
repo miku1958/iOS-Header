@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/UIViewControllerAnimatedTransitioning-Protocol.h>
-#import <UIKit/UIViewControllerPresenting-Protocol.h>
-#import <UIKit/UIViewControllerTransitioningDelegate-Protocol.h>
-#import <UIKit/_UIScrollViewScrollObserver_Internal-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
+#import <UIKitCore/UIViewControllerPresenting-Protocol.h>
+#import <UIKitCore/UIViewControllerTransitioningDelegate-Protocol.h>
+#import <UIKitCore/_UIScrollViewScrollObserver_Internal-Protocol.h>
 
-@class NSString, UISearchBar, UISystemInputViewController, UITapGestureRecognizer, UIView, _UINavigationControllerManagedSearchPalette, _UISearchControllerDidScrollDelegate;
+@class NSArray, NSString, UISearchBar, UISystemInputViewController, UITapGestureRecognizer, UIView, _UINavigationControllerManagedSearchPalette, _UISearchControllerDidScrollDelegate;
 @protocol UISearchControllerDelegate, UISearchResultsUpdating, UIViewControllerAnimatedTransitioning;
 
 @interface UISearchController : UIViewController <UIViewControllerPresenting, _UIScrollViewScrollObserver_Internal, NSCoding, UIViewControllerTransitioningDelegate, UIViewControllerAnimatedTransitioning>
@@ -31,9 +31,13 @@
         unsigned int searchBarWasTableHeaderView:1;
         unsigned int searchBarWasFirstResponder:1;
     } _controllerFlags;
+    BOOL _showsSearchResultsController;
+    BOOL _automaticallyShowsCancelButton;
     BOOL _obscuresBackgroundDuringPresentation;
     BOOL _hidesNavigationBarDuringPresentation;
     BOOL __showResultsForEmptySearch;
+    BOOL __shouldRespectPreferredContentSize;
+    BOOL _automaticallyShowsSearchResultsController;
     UIView *_resultsControllerViewContainer;
     _UINavigationControllerManagedSearchPalette *_managedPalette;
     id<UISearchResultsUpdating> _searchResultsUpdater;
@@ -41,17 +45,25 @@
     UIViewController *_searchResultsController;
     long long __previousSearchBarPosition;
     double __resultsContentScrollViewPresentationOffset;
+    UIView *__systemInputMarginView;
+    unsigned long long __requestedInteractionModel;
 }
 
+@property (nonatomic, setter=_setAutomaticallyShowsCancelButton:) BOOL _automaticallyShowsCancelButton; // @synthesize _automaticallyShowsCancelButton;
 @property (readonly, nonatomic) int _barPresentationStyle; // @synthesize _barPresentationStyle;
 @property (readonly, strong, nonatomic) _UINavigationControllerManagedSearchPalette *_managedPalette; // @synthesize _managedPalette;
 @property (nonatomic) long long _previousSearchBarPosition; // @synthesize _previousSearchBarPosition=__previousSearchBarPosition;
+@property (nonatomic, setter=_setRequestedInteractionModel:) unsigned long long _requestedInteractionModel; // @synthesize _requestedInteractionModel=__requestedInteractionModel;
 @property (nonatomic) double _resultsContentScrollViewPresentationOffset; // @synthesize _resultsContentScrollViewPresentationOffset=__resultsContentScrollViewPresentationOffset;
 @property (strong, nonatomic) UIView *_resultsControllerViewContainer; // @synthesize _resultsControllerViewContainer;
 @property (readonly, nonatomic) BOOL _searchbarWasTableHeaderView;
+@property (nonatomic, setter=_setShouldRespectPreferredContentSize:) BOOL _shouldRespectPreferredContentSize; // @synthesize _shouldRespectPreferredContentSize=__shouldRespectPreferredContentSize;
 @property (nonatomic, setter=_setShowResultsForEmptySearch:) BOOL _showResultsForEmptySearch; // @synthesize _showResultsForEmptySearch=__showResultsForEmptySearch;
+@property (strong, nonatomic) UIView *_systemInputMarginView; // @synthesize _systemInputMarginView=__systemInputMarginView;
 @property (readonly, nonatomic) UISystemInputViewController *_systemInputViewController;
+@property (readonly, nonatomic) NSArray *_tokens;
 @property (nonatomic, getter=isActive) BOOL active;
+@property (nonatomic, getter=_automaticallyShowsSearchResultsController, setter=_setAutomaticallyShowsSearchResultsController:) BOOL automaticallyShowsSearchResultsController; // @synthesize automaticallyShowsSearchResultsController=_automaticallyShowsSearchResultsController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UISearchControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -62,6 +74,7 @@
 @property (readonly, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property (readonly, nonatomic) UIViewController *searchResultsController; // @synthesize searchResultsController=_searchResultsController;
 @property (weak, nonatomic) id<UISearchResultsUpdating> searchResultsUpdater; // @synthesize searchResultsUpdater=_searchResultsUpdater;
+@property (nonatomic, getter=_showsSearchResultsController, setter=_setShowsSearchResultsController:) BOOL showsSearchResultsController; // @synthesize showsSearchResultsController=_showsSearchResultsController;
 @property (readonly) Class superclass;
 
 + (void)_resignSearchBarAsFirstResponder:(id)arg1;
@@ -70,7 +83,10 @@
 - (void)_adjustSearchBarSizeForOrientation:(long long)arg1 oldPaletteFrame:(struct CGRect)arg2;
 - (BOOL)_allowFormSheetStylePresentation;
 - (id)_animatorForBarPresentationStyle:(int)arg1 dismissing:(BOOL)arg2;
+- (id)_atomViewForRepresentedObject:(id)arg1;
 - (void)_beginWatchingPresentingController;
+- (id)_carPlayLimitedUIToken;
+- (id)_carPlayLimitedUIViewController;
 - (void)_commonInit;
 - (void)_connectSearchBar:(id)arg1;
 - (BOOL)_containedInNavigationPaletteAndNotHidden;
@@ -83,18 +99,26 @@
 - (void)_dismissFromBackButton:(id)arg1;
 - (void)_dismissPresentation:(BOOL)arg1;
 - (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
+- (void)_enableTokens;
 - (void)_endWatchingPresentingController;
+- (void)_insertToken:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_installBackGestureRecognizer;
 - (void)_installDoneGestureRecognizer;
 - (void)_keyboardWillHide:(id)arg1;
 - (void)_keyboardWillShow:(id)arg1;
+- (void)_limitedUIDidChangeAnimated:(BOOL)arg1;
 - (id)_locatePresentingViewController;
+- (id)_locatePresentingViewControllerIfInManagedPalette;
 - (void)_navigationControllerWillShowViewController:(id)arg1;
 - (void)_observeScrollViewDidScroll:(id)arg1;
 - (void)_performAutomaticPresentation;
+- (void)_preferredContentSizeDidChangeForChildViewController:(id)arg1;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)_presentingViewControllerDidChange:(id)arg1;
 - (void)_presentingViewControllerWillChange:(id)arg1;
+- (void)_removeCarPlayLimitedUIObserver;
+- (void)_removeTokenAtIndex:(unsigned long long)arg1;
+- (void)_replaceSearchTextWithToken:(id)arg1;
 - (BOOL)_requiresCustomPresentationController;
 - (void)_resizeResultsControllerWithDelta:(struct CGSize)arg1;
 - (BOOL)_resultsControllerWillLayoutVisibleUnderContainerView;
@@ -105,6 +129,8 @@
 - (void)_searchBarSuperviewChanged;
 - (void)_searchBarTextDidBeginEditing:(id)arg1;
 - (id)_searchPresentationController;
+- (void)_setCarPlayLimitedUIToken:(id)arg1;
+- (void)_setCarPlayLimitedUIViewController:(id)arg1;
 - (void)_sizeSearchViewToPresentingViewController:(id)arg1;
 - (void)_startManagingPalette:(id)arg1;
 - (void)_stopManagingPalette;
@@ -129,9 +155,11 @@
 - (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
+- (id)focusItemContainer;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSearchResultsController:(id)arg1;
 - (void)loadView;
+- (struct CGSize)preferredContentSize;
 - (id)preferredFocusEnvironments;
 - (void)setModalPresentationStyle:(long long)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIViewControllerTransitionContext.h>
+#import <UIKitCore/_UIViewControllerTransitionContext.h>
 
 @class UIView, UIViewController;
 

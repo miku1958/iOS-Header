@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIDictationLayoutView.h>
+#import <UIKitCore/UIDictationLayoutView.h>
 
 __attribute__((visibility("hidden")))
 @interface UIDictationSplitLayoutView : UIDictationLayoutView

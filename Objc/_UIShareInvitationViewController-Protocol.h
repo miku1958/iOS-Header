@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
 @class CKContainerID, CKShare, FPSandboxingURLWrapper, NSData, NSDictionary, NSString, UIColor, UIImage, UITraitCollection;
 

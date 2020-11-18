@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIStatusBarDataEntry.h>
+#import <UIKitCore/_UIStatusBarDataEntry.h>
 
 @interface _UIStatusBarDataIntegerEntry : _UIStatusBarDataEntry
 {

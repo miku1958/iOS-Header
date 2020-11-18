@@ -6,7 +6,7 @@
 
 #import <Foundation/NSLayoutConstraint.h>
 
-#import <UIKit/NSCoding-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
 
 @class NSNumber;
 

@@ -6,7 +6,7 @@
 
 #import <QuartzCore/CALayer.h>
 
-#import <UIKit/CALayerDelegate-Protocol.h>
+#import <UIKitCore/CALayerDelegate-Protocol.h>
 
 @class CATransformLayer, NSArray, NSString, UIView, _UIStackedImageConfiguration, _UIStackedImageLayerDelegate;
 @protocol UINamedLayerStack;

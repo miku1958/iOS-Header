@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIGestureRecognizer.h>
+#import <UIKitCore/UIGestureRecognizer.h>
 
 @class CADisplayLink, NSDate, _UIVelocityIntegrator;
 
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithTarget:(id)arg1 action:(SEL)arg2;
 - (void)recognize;
 - (void)reset;
+- (void)setView:(id)arg1;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

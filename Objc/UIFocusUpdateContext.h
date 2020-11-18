@@ -4,25 +4,29 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-@class NSArray, UIFocusGuide, UIImage, UIScrollView, UIView, _UIDebugIssueReport, _UIDebugLogReport, _UIFocusItemInfo, _UIFocusMapSearchInfo, _UIFocusMovementInfo;
-@protocol UIFocusEnvironment, UIFocusItem, _UIFocusUpdateRequesting;
+@class NSArray, UIFocusGuide, UIImage, UIView, _UIDebugIssueReport, _UIDebugLogReport, _UIFocusItemInfo, _UIFocusMapSearchInfo, _UIFocusMovementInfo;
+@protocol UIFocusEnvironment, UIFocusItem, UIFocusItemScrollableContainer, _UIFocusUpdateRequesting;
 
 @interface UIFocusUpdateContext : NSObject
 {
-    BOOL _isValid;
-    BOOL _hasValidated;
-    BOOL _shouldUpdateDestinationItem;
-    BOOL _sourceItemMayRemainFocused;
+    struct {
+        unsigned int isValid:1;
+        unsigned int hasValidated:1;
+        unsigned int shouldUpdateDestinationItem:1;
+        unsigned int sourceItemMayRemainFocused:1;
+        unsigned int didResolveCommonAncestorEnvironment:1;
+    } _flags;
     _UIFocusItemInfo *_destinationItemInfo;
+    id<UIFocusEnvironment> _commonAncestorEnvironment;
     UIImage *_regionMapSnapshotsVisualRepresentation;
     id<_UIFocusUpdateRequesting> _request;
     _UIFocusItemInfo *_sourceItemInfo;
     _UIFocusMovementInfo *_focusMovement;
     _UIFocusMapSearchInfo *_focusMapSearchInfo;
     id<UIFocusEnvironment> _initialDestinationEnvironment;
-    UIScrollView *_commonScrollView;
+    id<UIFocusItemScrollableContainer> _commonScrollableContainer;
     double _destinationViewDistanceOffscreen;
     NSArray *_regionMapSnapshots;
     _UIDebugLogReport *_preferredFocusReport;
@@ -30,7 +34,8 @@
     UIFocusGuide *_focusedGuide;
 }
 
-@property (strong, nonatomic, getter=_commonScrollView, setter=_setCommonScrollView:) UIScrollView *commonScrollView; // @synthesize commonScrollView=_commonScrollView;
+@property (readonly, weak, nonatomic, getter=_commonAncestorEnvironment) id<UIFocusEnvironment> commonAncestorEnvironment; // @synthesize commonAncestorEnvironment=_commonAncestorEnvironment;
+@property (strong, nonatomic, getter=_commonScrollableContainer, setter=_setCommonScrollableContainer:) id<UIFocusItemScrollableContainer> commonScrollableContainer; // @synthesize commonScrollableContainer=_commonScrollableContainer;
 @property (readonly, copy, nonatomic, getter=_destinationItemInfo) _UIFocusItemInfo *destinationItemInfo; // @synthesize destinationItemInfo=_destinationItemInfo;
 @property (nonatomic, getter=_destinationViewDistanceOffscreen, setter=_setDestinationViewDistanceOffscreen:) double destinationViewDistanceOffscreen; // @synthesize destinationViewDistanceOffscreen=_destinationViewDistanceOffscreen;
 @property (readonly, nonatomic) unsigned long long focusHeading;

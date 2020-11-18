@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UINavigationBarVisualProvider.h>
+#import <UIKitCore/_UINavigationBarVisualProvider.h>
 
-#import <UIKit/_UIBasicAnimationFactory-Protocol.h>
-#import <UIKit/_UINavigationBarGestureHandlerDelegate-Protocol.h>
+#import <UIKitCore/_UIBasicAnimationFactory-Protocol.h>
+#import <UIKitCore/_UINavigationBarGestureHandlerDelegate-Protocol.h>
 
 @class NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIFocusContainerGuide, UIImageView, UILayoutGuide, UIView, _UIBarBackground, _UINavBarPrompt, _UINavigationBarGestureHandler, _UINavigationBarLegacyContentView;
 @protocol UIViewControllerTransitionCoordinator;

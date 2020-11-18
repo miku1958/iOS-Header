@@ -4,20 +4,21 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/NSCoding-Protocol.h>
-#import <UIKit/NSISVariableDelegate-Protocol.h>
-#import <UIKit/UILayoutItem_Internal-Protocol.h>
-#import <UIKit/_UILayoutItem-Protocol.h>
+#import <UIKitCore/NSCoding-Protocol.h>
+#import <UIKitCore/NSISVariableDelegate-Protocol.h>
+#import <UIKitCore/UILayoutItem_Internal-Protocol.h>
+#import <UIKitCore/_UILayoutItem-Protocol.h>
 
-@class NSArray, NSISVariable, NSLayoutDimension, NSLayoutRect, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMapTable, NSString, UITraitCollection, UIView;
+@class NSArray, NSISVariable, NSLayoutDimension, NSLayoutRect, NSLayoutXAxisAnchor, NSLayoutYAxisAnchor, NSMapTable, NSMutableArray, NSString, UITraitCollection, UIView;
 
 @interface UILayoutGuide : NSObject <UILayoutItem_Internal, _UILayoutItem, NSISVariableDelegate, NSCoding>
 {
     NSLayoutRect *_layoutRect;
     struct CGRect _layoutFrame;
     BOOL _isLayoutFrameValid;
+    NSMutableArray *_constraintsToBeProcessedAfterDecoding;
     UIView *_unsafeUnretainedOwningView;
     BOOL _allowOwningViewSetting;
     BOOL _isLockedToOwningView;
@@ -55,8 +56,9 @@
 @property (readonly, strong, nonatomic) NSMapTable *_stashedLayoutVariableObservations; // @synthesize _stashedLayoutVariableObservations;
 @property (strong, nonatomic, setter=_setSystemConstraints:) NSArray *_systemConstraints; // @synthesize _systemConstraints;
 @property (readonly, nonatomic) struct CGRect _ui_bounds;
-@property (readonly, nonatomic) struct CGRect _ui_frame;
+@property (nonatomic) struct CGRect _ui_frame;
 @property (readonly, nonatomic) UIView *_ui_superview;
+@property (nonatomic) BOOL _ui_usesManualLayout;
 @property (readonly, nonatomic) UIView *_ui_view;
 @property (readonly, nonatomic) BOOL _useManualLayoutFrame; // @synthesize _useManualLayoutFrame;
 @property (readonly, nonatomic) NSLayoutYAxisAnchor *bottomAnchor;
@@ -69,12 +71,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *firstBaselineAnchor;
 @property (readonly, nonatomic) BOOL hasAmbiguousLayout;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSLayoutDimension *heightAnchor;
 @property (readonly, nonatomic) NSLayoutDimension *heightAnchor; // @synthesize heightAnchor=_heightAnchor;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSLayoutYAxisAnchor *lastBaselineAnchor;
 @property (readonly, nonatomic) struct CGRect layoutFrame;
 @property (readonly, nonatomic) NSLayoutXAxisAnchor *leadingAnchor;
 @property (readonly, nonatomic) NSLayoutXAxisAnchor *leadingAnchor; // @synthesize leadingAnchor=_leadingAnchor;
@@ -96,6 +100,7 @@
 
 + (double)_defaultSpacingBetweenGuidesForResolvingSymbolicConstant;
 - (void).cxx_destruct;
+- (void)_addConstraintToBeProcessedAfterDecoding:(id)arg1;
 - (id)_autolayoutTraceAtLevel:(long long)arg1 recursively:(BOOL)arg2;
 - (id)_createAnchorWithClass:(Class)arg1 attribute:(long long)arg2;
 - (id)_descriptionForLayoutTrace;
@@ -111,7 +116,7 @@
 - (void)_ui_insertSubLayoutItem:(id)arg1 atIndex:(long long)arg2;
 - (void)_ui_removeFromParentLayoutItem;
 - (id)_uili_existingBaseFrameVariables;
-- (id)_uili_existingLayoutVariables;
+- (id)_uili_existingObservationEligibleLayoutVariables;
 - (BOOL)_uili_isFocusGuide;
 - (id)_uili_observableLayoutEngineForBaseFrameVariables:(BOOL)arg1;
 - (void)_uili_removeLayoutVariableObservationsOnlyToSupportTAMICChange:(BOOL)arg1;
@@ -126,6 +131,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (id)nsis_descriptionOfVariable:(id)arg1;
+- (int)nsis_orientationHintForVariable:(id)arg1;
 - (BOOL)nsis_shouldIntegralizeVariable:(id)arg1;
 - (void)nsis_valueOfVariable:(id)arg1 didChangeInEngine:(id)arg2;
 - (BOOL)nsis_valueOfVariableIsUserObservable:(id)arg1;
@@ -139,6 +145,7 @@
 - (struct CGSize)nsli_convertSizeToEngineSpace:(struct CGSize)arg1;
 - (id)nsli_description;
 - (BOOL)nsli_descriptionIncludesPointer;
+- (struct CGSize)nsli_engineToUserScalingCoefficients;
 - (id)nsli_heightVariable;
 - (id)nsli_installedConstraints;
 - (BOOL)nsli_isCollectingConstraintChangesForLaterCoordinatedFlush:(id)arg1;

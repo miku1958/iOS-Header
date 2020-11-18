@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAlertControllerVisualStyleAlert.h>
+#import <UIKitCore/UIAlertControllerVisualStyleAlert.h>
 
 __attribute__((visibility("hidden")))
 @interface UIAlertControllerVisualStyleAlertTV : UIAlertControllerVisualStyleAlert
@@ -19,7 +19,7 @@ __attribute__((visibility("hidden")))
 - (double)_minimumButtonWidth;
 - (double)actionWidthForMinimumActionWidth:(double)arg1;
 - (void)animateAlertControllerView:(id)arg1 ofAlertController:(id)arg2 forPresentation:(BOOL)arg3 inContainerView:(id)arg4 descendantOfContainerView:(id)arg5 duration:(double)arg6 completionBlock:(CDUnknownBlockType)arg7;
-- (struct UIEdgeInsets)contentInsets;
+- (struct UIEdgeInsets)contentInsetsForContainerView:(id)arg1;
 - (id)dimmingViewForAlertController:(id)arg1;
 - (BOOL)hideCancelAction:(id)arg1 inAlertController:(id)arg2;
 - (double)marginAboveMessageLabelFirstBaseline;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewDropCoordinator-Protocol.h>
+#import <UIKitCore/UICollectionViewDropCoordinator-Protocol.h>
 
 @class NSIndexPath, NSString, UICollectionViewDropProposal, UIDragItem, UIDragPreviewTarget;
 @protocol UIDropSession, _UICollectionViewDropPlaceholderContext;

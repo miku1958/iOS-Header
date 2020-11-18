@@ -8,6 +8,7 @@
 
 @interface TIKeyboardCandidateResultSet (UIKeyboardAdditions)
 
+@property (readonly, nonatomic) BOOL hasOnlyCompletionCandidates;
 @property (readonly, nonatomic) BOOL hasOnlySlottedCandidates;
 @property (readonly, nonatomic) unsigned long long slottedCandidatesCount;
 

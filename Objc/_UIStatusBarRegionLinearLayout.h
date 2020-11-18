@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
-#import <UIKit/_UIStatusBarRegionLayout-Protocol.h>
+#import <UIKitCore/_UIStatusBarRegionLayout-Protocol.h>
 
 @class NSArray, NSString, UIView, _UIStatusBarRegion;
 
@@ -34,7 +34,7 @@
 @property (copy, nonatomic) NSArray *verticalConstraints; // @synthesize verticalConstraints=_verticalConstraints;
 
 - (void).cxx_destruct;
-- (id)_horizontalConstraintsForViews:(id)arg1 layoutGuides:(id)arg2;
+- (id)_horizontalConstraintsForLayoutItems:(id)arg1 layoutGuides:(id)arg2;
 - (void)_updateConstraints;
 - (id)_verticalConstraintsForDisplayItem:(id)arg1;
 - (id)init;

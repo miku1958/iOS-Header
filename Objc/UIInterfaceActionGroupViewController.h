@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <UIKitCore/UIViewController.h>
 
-#import <UIKit/UIInterfaceActionGroupDisplaying-Protocol.h>
-#import <UIKit/UIInterfaceActionHandlerInvocationDelegate-Protocol.h>
-#import <UIKit/UISpringLoadedInteractionSupporting-Protocol.h>
+#import <UIKitCore/UIInterfaceActionGroupDisplaying-Protocol.h>
+#import <UIKitCore/UIInterfaceActionHandlerInvocationDelegate-Protocol.h>
+#import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
 @class NSString, UIInterfaceActionGroup, UIInterfaceActionGroupView, UIInterfaceActionVisualStyle;
 @protocol UIInterfaceActionVisualStyleProviding;

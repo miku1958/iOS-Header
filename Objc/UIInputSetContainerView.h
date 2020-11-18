@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInputSetHostView.h>
+#import <UIKitCore/UIInputSetHostView.h>
 
-#import <UIKit/_UIViewHost-Protocol.h>
+#import <UIKitCore/_UIViewHost-Protocol.h>
 
 @class NSMutableDictionary, NSString, UIKBRenderConfig, UIScreen;
 

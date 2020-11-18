@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewLayoutInvalidationContext.h>
+#import <UIKitCore/UICollectionViewLayoutInvalidationContext.h>
 
 @interface UICollectionViewTableLayoutInvalidationContext : UICollectionViewLayoutInvalidationContext
 {

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <UIKitCore/UIView.h>
 
 __attribute__((visibility("hidden")))
 @interface UIPanelWrapperView : UIView
@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 + (id)existingWrapperViewForView:(id)arg1;
 + (id)wrapperViewForView:(id)arg1;
+- (void)layoutSubviews;
 
 @end
 

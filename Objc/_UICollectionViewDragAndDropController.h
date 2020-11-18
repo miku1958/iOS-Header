@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UICollectionViewShadowUpdatesController.h>
+#import <UIKitCore/_UICollectionViewShadowUpdatesController.h>
 
-#import <UIKit/UICollectionViewDropCoordinator-Protocol.h>
-#import <UIKit/_UICollectionViewDragDestinationControllerDelegate-Protocol.h>
-#import <UIKit/_UICollectionViewDragSourceControllerDelegate-Protocol.h>
-#import <UIKit/_UICollectionViewDropCoordinator-Protocol.h>
-#import <UIKit/_UICollectionViewPlaceholderContextDelegate-Protocol.h>
+#import <UIKitCore/UICollectionViewDropCoordinator-Protocol.h>
+#import <UIKitCore/_UICollectionViewDragDestinationControllerDelegate-Protocol.h>
+#import <UIKitCore/_UICollectionViewDragSourceControllerDelegate-Protocol.h>
+#import <UIKitCore/_UICollectionViewDropCoordinator-Protocol.h>
+#import <UIKitCore/_UICollectionViewPlaceholderContextDelegate-Protocol.h>
 
 @class NSArray, NSIndexPath, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID, UICollectionViewDropProposal, _UICollectionViewDragDestinationController, _UICollectionViewDragSourceController, _UICollectionViewPlaceholderContext, _UIDropAnimationHandlers;
 @protocol UIDropSession;
@@ -89,6 +89,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_removeMoveShadowUpdateMatchingReorderedItem:(id)arg1;
 - (void)_removeReorderedItemsCellsFromViewHierarchy;
 - (void)_resetAllAnimationHandlers;
+- (void)_resetAnyDragStateModifiedVisibleCells;
 - (void)_resetReorderedItems;
 - (void)_rollbackCurrentDropInsertion;
 - (id)_shadowUpdateReuseIdentifierForItemItemAtIndexPath:(id)arg1;

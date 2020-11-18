@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIDragSnappingFeedbackGenerator.h>
+#import <UIKitCore/_UIDragSnappingFeedbackGenerator.h>
 
 @interface _UIFeedbackDragSnappingBehavior : _UIDragSnappingFeedbackGenerator
 {

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/FBSWorkspaceDelegate-Protocol.h>
+#import <UIKitCore/FBSWorkspaceDelegate-Protocol.h>
 
 @class FBSSceneTransitionContext, FBSUIApplicationWorkspace;
 

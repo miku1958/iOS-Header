@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITextInput-Protocol.h>
-#import <UIKit/UITextPasteConfigurationSupporting-Protocol.h>
+#import <UIKitCore/UITextInput-Protocol.h>
+#import <UIKitCore/UITextPasteConfigurationSupporting-Protocol.h>
 
 @class UIDropInteraction;
 @protocol UITextDropDelegate;

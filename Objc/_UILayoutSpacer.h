@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UILayoutGuide.h>
+#import <UIKitCore/UILayoutGuide.h>
 
-#import <UIKit/UILayoutSupport-Protocol.h>
+#import <UIKitCore/UILayoutSupport-Protocol.h>
 
 @class NSArray, NSLayoutDimension, NSLayoutYAxisAnchor, NSString;
 

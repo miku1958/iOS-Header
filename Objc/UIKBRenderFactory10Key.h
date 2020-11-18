@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIKBRenderFactory.h>
+#import <UIKitCore/UIKBRenderFactory.h>
 
 __attribute__((visibility("hidden")))
 @interface UIKBRenderFactory10Key : UIKBRenderFactory
@@ -33,6 +33,7 @@ __attribute__((visibility("hidden")))
 - (struct CGPoint)numberPadKeyPrimaryTextOffset;
 - (struct CGPoint)numberPadKeySecondaryTextOffset;
 - (struct CGPoint)numberPadVBarSecondaryTextOffset;
+- (int)roundCornersForKey:(id)arg1 onKeyplane:(id)arg2;
 - (void)setupColumnLayoutSegmentsWithControlWidth:(double)arg1;
 - (id)shiftedControlKeyTraits;
 - (id)shiftedWhiteControlKeyTraits;

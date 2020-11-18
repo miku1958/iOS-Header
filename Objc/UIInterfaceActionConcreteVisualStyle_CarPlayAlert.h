@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInterfaceActionConcreteVisualStyle_CarPlay.h>
+#import <UIKitCore/UIInterfaceActionConcreteVisualStyle_CarPlay.h>
 
 __attribute__((visibility("hidden")))
 @interface UIInterfaceActionConcreteVisualStyle_CarPlayAlert : UIInterfaceActionConcreteVisualStyle_CarPlay

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIAutoRotatingWindow.h>
+#import <UIKitCore/UIAutoRotatingWindow.h>
 
-#import <UIKit/_UIScreenBasedObject-Protocol.h>
+#import <UIKitCore/_UIScreenBasedObject-Protocol.h>
 
 @class NSDictionary, NSString, UIScreen;
 

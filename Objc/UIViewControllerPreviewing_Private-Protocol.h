@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewControllerPreviewing-Protocol.h>
+#import <UIKitCore/UIViewControllerPreviewing-Protocol.h>
 
 @class UIView;
 

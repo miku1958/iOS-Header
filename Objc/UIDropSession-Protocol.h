@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSProgressReporting-Protocol.h>
-#import <UIKit/UIDragDropSession-Protocol.h>
+#import <UIKitCore/NSProgressReporting-Protocol.h>
+#import <UIKitCore/UIDragDropSession-Protocol.h>
 
 @class NSProgress;
 @protocol UIDragSession;

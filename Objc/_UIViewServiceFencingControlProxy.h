@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIQueueingProxy.h>
+#import <UIKitCore/_UIQueueingProxy.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIViewServiceFencingControlProxy : _UIQueueingProxy

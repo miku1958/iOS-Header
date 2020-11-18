@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewControllerAnimatedTransitioning-Protocol.h>
+#import <UIKitCore/UIViewControllerAnimatedTransitioning-Protocol.h>
 
 @protocol _UITabBarControllerInterruptibleTransitioning <UIViewControllerAnimatedTransitioning>
 - (void)interruptTabBarControllerTransition;

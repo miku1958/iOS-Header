@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UINavigationItem.h>
+#import <UIKitCore/UINavigationItem.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIDocumentPickerNavigationItem : UINavigationItem

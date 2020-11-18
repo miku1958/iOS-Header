@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIPresentationController.h>
+#import <UIKitCore/UIPresentationController.h>
 
 @class NSString, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView, _UIAnimationCoordinator, _UIDimmingKnockoutBackdropView;
 @protocol UIActionSheetPresentationControllerDismissActionView, UIActionSheetPresentationControllerVisualStyle, _UIActionSheetCompactPresentationControllerDelegate;
@@ -46,6 +46,7 @@ __attribute__((visibility("hidden")))
 - (struct UIEdgeInsets)_baseContentInsetsWithLeftMargin:(double *)arg1 rightMargin:(double *)arg2;
 - (CDStruct_758ece87)_currentLayoutGeometry;
 - (void)_dismiss;
+- (struct CGRect)_frameOfPresentedViewControllerViewInSuperview;
 - (void)_handleDismiss:(id)arg1;
 - (void)_keyboardChanged:(id)arg1;
 - (void)_layoutViews;

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UICanvas.h>
+#import <UIKitCore/_UICanvas.h>
 
-#import <UIKit/_UICanvasLifecycleStateTransitioning-Protocol.h>
-#import <UIKit/_UICanvasUILifecycleStateMonitoring-Protocol.h>
+#import <UIKitCore/_UICanvasLifecycleStateTransitioning-Protocol.h>
+#import <UIKitCore/_UICanvasUILifecycleStateMonitoring-Protocol.h>
 
 @class NSString, UIStatusBarWindow, _UICanvasLifecycleMonitor;
 
@@ -38,7 +38,6 @@
 + (id)mostActiveCanvas;
 - (void).cxx_destruct;
 - (BOOL)_isMainSceneCanvas;
-- (void)_setOverscanCompensation:(long long)arg1;
 - (void)_transitionLifecycleStateWithTransitionContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_willAttach;
 - (void)_willResignActive;

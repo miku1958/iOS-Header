@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIRemoteViewController.h>
+#import <UIKitCore/_UIRemoteViewController.h>
 
-#import <UIKit/_UIShareExtensionHost-Protocol.h>
+#import <UIKitCore/_UIShareExtensionHost-Protocol.h>
 
 @class NSExtension, NSString, NSUUID;
 @protocol NSCopying><NSObject, _UIShareExtensionHost;
@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface _UIShareExtensionRemoteViewController : _UIRemoteViewController <_UIShareExtensionHost>
 {
+    BOOL _shouldUseFences;
     id<_UIShareExtensionHost> _shareExtensionHost;
     NSExtension *_extension;
     id<NSCopying><NSObject> _extensionRequestIdentifier;
@@ -27,13 +28,15 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSUUID *extensionServicePresentedActivityUUID; // @synthesize extensionServicePresentedActivityUUID=_extensionServicePresentedActivityUUID;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<_UIShareExtensionHost> shareExtensionHost; // @synthesize shareExtensionHost=_shareExtensionHost;
+@property (nonatomic) BOOL shouldUseFences; // @synthesize shouldUseFences=_shouldUseFences;
 @property (readonly) Class superclass;
 
 + (id)exportedInterface;
-+ (id)instantiateViewControllerWithInputItems:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
++ (void)instantiateViewControllerWithInputItems:(id)arg1 connectionHandler:(CDUnknownBlockType)arg2;
 + (id)serviceViewControllerInterface;
 + (BOOL)shouldPropagateAppearanceCustomizations;
 - (void).cxx_destruct;
+- (BOOL)__shouldRemoteViewControllerFenceOperations;
 - (void)_cancelPendingExtensionRequests;
 - (void)invalidate;
 - (id)shareExtensionService;
@@ -43,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)shareExtensionServiceChangeSheetDismissButtonTitle:(id)arg1;
 - (void)shareExtensionServiceDidFinishPerformingInServiceActivityWithUUID:(id)arg1 responseData:(id)arg2;
 - (void)shareExtensionServiceDisableSheetAvoidsKeyboardUntilContentSizeUpdate;
-- (void)shareExtensionServicePreferredContentSizeUpdated:(struct CGSize)arg1;
 - (void)shareExtensionServiceRequestPerformActivityInHostForActivityUUID:(id)arg1;
 - (void)shareExtensionServiceRequestPerformActivityInHostForExtensionActivityWithBundleIdentifier:(id)arg1;
 - (void)shareExtensionServiceWillPerformInServiceActivityWithDataRequest:(id)arg1 dismissPresentation:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

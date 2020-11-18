@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_UIKeyboardTextSelectionController.h>
+#import <UIKitCore/_UIKeyboardTextSelectionController.h>
 
 __attribute__((visibility("hidden")))
 @interface _UIKeyboardAsyncTextSelectionController : _UIKeyboardTextSelectionController
@@ -22,7 +22,10 @@ __attribute__((visibility("hidden")))
 - (void)selectPositionAtPoint:(struct CGPoint)arg1 executionContext:(id)arg2;
 - (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)selectTextWithGranularity:(long long)arg1 atPoint:(struct CGPoint)arg2 executionContext:(id)arg3;
+- (void)setRangedSelectionShouldShowGrabbers:(BOOL)arg1;
+- (BOOL)shouldAllowSelectionGestureWithTouchType:(long long)arg1 atPoint:(struct CGPoint)arg2 toProgressToState:(long long)arg3;
 - (void)showSelectionCommands;
+- (void)showSelectionView;
 - (void)updateFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (void)updateSelectionWithExtentAtBoundary:(long long)arg1 inDirection:(long long)arg2 executionContext:(id)arg3;
 - (void)updateSelectionWithExtentPoint:(struct CGPoint)arg1 executionContext:(id)arg2;

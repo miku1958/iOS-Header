@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIInterfaceActionConcreteVisualStyleImpl-Protocol.h>
+#import <UIKitCore/UIInterfaceActionConcreteVisualStyleImpl-Protocol.h>
 
 @protocol UIInterfaceActionConcreteVisualStyleImplInternal <UIInterfaceActionConcreteVisualStyleImpl>
 - (double)actionTitleLabelMinimumScaleFactor;

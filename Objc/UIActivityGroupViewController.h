@@ -4,15 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UICollectionViewController.h>
+#import <UIKitCore/UICollectionViewController.h>
 
-#import <UIKit/UIGestureRecognizerDelegate-Protocol.h>
-#import <UIKit/_UIActivityGroupViewDelegateFlowLayout-Protocol.h>
+#import <UIKitCore/UICollectionViewDataSourcePrefetching-Protocol.h>
+#import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
+#import <UIKitCore/_UIActivityGroupViewDelegateFlowLayout-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, UILongPressGestureRecognizer, _UIActivityUserDefaults, _UIUserDefaultsActivity;
+@class NSArray, NSIndexPath, NSString, UILongPressGestureRecognizer, _UIActivityUserDefaults, _UIPlaceholderActivity, _UIUserDefaultsActivity;
 @protocol UIActivityGroupViewControllerDataSource, UIActivityGroupViewControllerDelegate;
 
-@interface UIActivityGroupViewController : UICollectionViewController <_UIActivityGroupViewDelegateFlowLayout, UIGestureRecognizerDelegate>
+@interface UIActivityGroupViewController : UICollectionViewController <_UIActivityGroupViewDelegateFlowLayout, UICollectionViewDataSourcePrefetching, UIGestureRecognizerDelegate>
 {
     BOOL _hasActivities;
     BOOL _activityIndexDidChangeWhileDragging;
@@ -24,6 +25,7 @@
     long long _activityCategory;
     NSArray *_activities;
     NSArray *_visibleActivities;
+    _UIPlaceholderActivity *_placeholderGroupActivity;
     _UIActivityUserDefaults *_userDefaults;
     _UIUserDefaultsActivity *_userDefaultsActivity;
     UILongPressGestureRecognizer *_editingGestureRecognizer;
@@ -49,15 +51,15 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSIndexPath *indexPathForMenuActivity; // @synthesize indexPathForMenuActivity=_indexPathForMenuActivity;
 @property (nonatomic) struct CGPoint initialDraggingLocation; // @synthesize initialDraggingLocation=_initialDraggingLocation;
+@property (readonly, nonatomic) BOOL isPlaceholderGroup;
 @property (nonatomic, getter=isPicker) BOOL picker; // @synthesize picker=_picker;
+@property (strong, nonatomic) _UIPlaceholderActivity *placeholderGroupActivity; // @synthesize placeholderGroupActivity=_placeholderGroupActivity;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) _UIActivityUserDefaults *userDefaults; // @synthesize userDefaults=_userDefaults;
 @property (strong, nonatomic) _UIUserDefaultsActivity *userDefaultsActivity; // @synthesize userDefaultsActivity=_userDefaultsActivity;
 @property (copy, nonatomic) NSArray *visibleActivities; // @synthesize visibleActivities=_visibleActivities;
 
-+ (void)contentSizeCategoryDidChange;
 - (void).cxx_destruct;
-- (struct CGSize)_cachedPreferredItemSizeForString:(id)arg1;
 - (void)_dismissPresentedMenuControllers;
 - (void)_performHideActivityForMenuController:(id)arg1;
 - (void)_setActivities:(id)arg1 animated:(BOOL)arg2;
@@ -75,6 +77,7 @@
 - (id)collectionView:(id)arg1 layout:(id)arg2 needsContainerViewForDraggingItemAtIndexPath:(id)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 preferredSizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
+- (void)collectionView:(id)arg1 prefetchItemsAtIndexPaths:(id)arg2;
 - (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
@@ -83,6 +86,7 @@
 - (void)handleEditingGesture:(id)arg1;
 - (void)hideItemAtIndexPath:(id)arg1;
 - (void)ignoreUserDefaultsChangesWhileUsingBlock:(CDUnknownBlockType)arg1;
+- (id)initPlaceholderGroupWithActivityCategory:(long long)arg1;
 - (id)initWithActivityCategory:(long long)arg1 userDefaults:(id)arg2;
 - (id)initWithActivityCategory:(long long)arg1 userDefaults:(id)arg2 userDefaultsIdentifier:(id)arg3;
 - (id)initWithCoder:(id)arg1;

@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/NSObject-Protocol.h>
+#import <UIKitCore/NSObject-Protocol.h>
 
-@protocol UIIntervalAnimating;
+@protocol UIIntervalAnimating, UIVectorOperatable;
 
 @protocol UIViewAnimationComposing <NSObject>
-- (id<UIIntervalAnimating>)composeAnimation:(id<UIIntervalAnimating>)arg1 withNewAnimationDescription:(id)arg2 interactive:(BOOL)arg3 currentValue:(id)arg4 targetValueGetter:(id (^)(void))arg5;
+- (id<UIIntervalAnimating>)composeAnimation:(id<UIIntervalAnimating>)arg1 withNewAnimationDescription:(id)arg2 interactive:(BOOL)arg3 currentValue:(id<UIVectorOperatable>)arg4 targetValue:(id<UIVectorOperatable>)arg5;
 - (BOOL)isActive;
 @end
 

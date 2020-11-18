@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSObject.h>
+#import <objc/NSObject.h>
 
 @class NSMutableArray;
 @protocol TIKeyboardInputManager, _UIIVCResponseDelegateImpl;
@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)removeAllClients;
 - (void)removeClient:(id)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
-- (void)setSystemInputManagerFromKeyboardState:(id)arg1 devicePasscodeEntry:(BOOL)arg2;
+- (void)setSystemInputManagerFromTextInputTraits:(id)arg1 autofillMode:(long long)arg2;
 - (void)updateClientResponseDelegatesWithDelegate:(id)arg1;
 
 @end

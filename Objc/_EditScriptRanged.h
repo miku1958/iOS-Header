@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/_EditScript.h>
+#import <UIKitCore/_EditScript.h>
 
 @class NSString, _EditScriptRangedAtom;
 
