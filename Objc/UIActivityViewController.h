@@ -19,6 +19,7 @@
 @interface UIActivityViewController : UIViewController <UIAlertControllerContaining, UIAlertControllerVisualStyleProviding, UIViewControllerRestoration, UIActionSheetPresentationControllerDelegate, _UIActivityViewControllerContentControllerDelegate, _UIActivityHelperDelegate>
 {
     BOOL _willDismissActivityViewController;
+    BOOL _dismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
     BOOL _performActivityForStateRestoration;
     BOOL _shouldMatchOnlyUserElectedExtensions;
     BOOL _useBlackPopoverStyle;
@@ -75,6 +76,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType dismissCompletionHandler;
+@property (nonatomic) BOOL dismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel; // @synthesize dismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel=_dismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
 @property (nonatomic) long long excludedActivityCategories; // @synthesize excludedActivityCategories=_excludedActivityCategories;
 @property (copy, nonatomic) NSArray *excludedActivityTypes; // @synthesize excludedActivityTypes=_excludedActivityTypes;
 @property (readonly) unsigned long long hash;
@@ -104,7 +106,8 @@
 - (id)_availableActivitiesForItems:(id)arg1;
 - (id)_availableActivitiesForItems:(id)arg1 applicationExtensionActivities:(id)arg2;
 - (id)_availableActivitiesMatchingOnlyUserElectedExtensions:(BOOL)arg1;
-- (void)_beginPresentedViewControllerActivityForcedStrongReference;
+- (void)_beginDismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
+- (void)_beginInProgressActivityExecutionForcedStrongReference;
 - (void)_cancel;
 - (void)_changeActionButtonToDone;
 - (void)_cleanupActivityWithSuccess:(BOOL)arg1;
@@ -112,7 +115,8 @@
 - (id)_containedAlertController;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (double)_displayHeight;
-- (void)_endPresentedViewControllerActivityForcedStrongReference;
+- (void)_endDismissalDetectionOfViewControllerForSelectedActivityShouldAutoCancel;
+- (void)_endInProgressActivityExecutionForcedStrongReference;
 - (void)_executeActivity;
 - (void)_mailAutosaveWithHandler:(CDUnknownBlockType)arg1;
 - (void)_notifyReloadImageForActivity:(id)arg1;
@@ -123,6 +127,7 @@
 - (void)_prepareActivity:(id)arg1;
 - (void)_prepareActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_presentUserDefaultsController:(id)arg1;
+- (void)_presentationControllerDismissalTransitionDidEndNotification:(id)arg1;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (void)_reloadImageForActivity:(id)arg1;
 - (BOOL)_requiresCustomPresentationController;
@@ -141,7 +146,6 @@
 - (void)airDropActivityDidSuccessfullyStartTransfer;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
-- (void)didDismissViewController:(id)arg1;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)encodeRestorableStateWithCoder:(id)arg1;
 - (id)init;

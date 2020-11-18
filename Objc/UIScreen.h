@@ -159,7 +159,6 @@
 - (long long)_effectiveUserInterfaceStyle;
 - (void)_enableScreenUpdates;
 - (void)_endObservingBacklightLevelNotifications;
-- (void)_ensureConnectedIfPossible;
 - (void)_enumerateWindowsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_focusEnvironmentWillDisappear:(id)arg1;
 - (id)_focusedItem;
