@@ -30,9 +30,9 @@
     CNContact *_preferredForNameMeContact;
     BOOL _shouldDisplayMeContactBanner;
     BOOL _shouldAutoHideMeContactBanner;
-    BOOL _allowsSearching;
     BOOL _shouldDisplayInfoContentView;
     BOOL _presentsSearchUI;
+    BOOL _isHandlingSearch;
     BOOL _pendingSearchControllerActivation;
     BOOL _shouldUseLargeTitle;
     BOOL _shouldDisplayGroupsGrid;
@@ -69,7 +69,6 @@
     CNContactListStyleApplier *_contactListStyleApplier;
 }
 
-@property (nonatomic) BOOL allowsSearching; // @synthesize allowsSearching=_allowsSearching;
 @property (strong, nonatomic) CNAvatarCardController *cardController; // @synthesize cardController=_cardController;
 @property (strong, nonatomic) CNContactFormatter *contactFormatter; // @synthesize contactFormatter=_contactFormatter;
 @property (strong, nonatomic) CNContactListStyleApplier *contactListStyleApplier; // @synthesize contactListStyleApplier=_contactListStyleApplier;
@@ -85,6 +84,7 @@
 @property (strong, nonatomic) INKContent *infoContent; // @synthesize infoContent=_infoContent;
 @property (strong, nonatomic) INKContentController *infoContentController; // @synthesize infoContentController=_infoContentController;
 @property (strong, nonatomic) UIView *infoContentView; // @synthesize infoContentView=_infoContentView;
+@property (nonatomic) BOOL isHandlingSearch; // @synthesize isHandlingSearch=_isHandlingSearch;
 @property (strong, nonatomic) CNAvatarViewController *meBannerAvatarController; // @synthesize meBannerAvatarController=_meBannerAvatarController;
 @property (strong, nonatomic) CNContactListBannerView *meContactBanner; // @synthesize meContactBanner=_meContactBanner;
 @property (copy, nonatomic) NSString *meContactBannerFootnoteLabel; // @synthesize meContactBannerFootnoteLabel=_meContactBannerFootnoteLabel;
@@ -156,6 +156,7 @@
 - (void)didDismissSearchController:(id)arg1;
 - (void)didPresentSearchController:(id)arg1;
 - (void)didUpdateContentForAvatarViewController:(id)arg1;
+- (void)disableSearchUI;
 - (id)dragItemsForIndexPath:(id)arg1;
 - (id)getVisibleIndexPaths;
 - (BOOL)hasNoContacts;
@@ -166,7 +167,6 @@
 - (id)initWithStyle:(long long)arg1;
 - (BOOL)isContactWithIdentifierEmergencyContact:(id)arg1;
 - (BOOL)isContactWithIdentifierMeContactOrLinkedToMeContact:(id)arg1;
-- (BOOL)isHandlingSearch;
 - (void)loadView;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

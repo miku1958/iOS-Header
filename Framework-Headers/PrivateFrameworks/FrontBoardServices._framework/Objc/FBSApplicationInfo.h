@@ -28,6 +28,7 @@
     NSArray *_customMachServices;
     BOOL _hasViewServicesEntitlement;
     NSString *_appIDEntitlement;
+    NSString *_shortVersionString;
     unsigned long long _type;
     NSArray *_requiredCapabilities;
     NSArray *_tags;
@@ -95,6 +96,7 @@
 @property (readonly, nonatomic, getter=isRestricted) BOOL restricted; // @synthesize restricted=_restricted;
 @property (readonly, nonatomic) NSURL *sandboxURL; // @synthesize sandboxURL=_sandboxURL;
 @property (readonly, copy, nonatomic) NSString *sdkVersion; // @synthesize sdkVersion=_sdkVersion;
+@property (readonly, copy, nonatomic) NSString *shortVersionString; // @synthesize shortVersionString=_shortVersionString;
 @property (readonly, copy, nonatomic) NSString *signerIdentity; // @synthesize signerIdentity=_signerIdentity;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long supportedInterfaceOrientations; // @synthesize supportedInterfaceOrientations=_supportedInterfaceOrientations;

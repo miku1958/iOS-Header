@@ -16,6 +16,7 @@
 }
 
 @property (readonly, nonatomic, getter=isBundleSubscriber) BOOL bundleSubscriber;
+@property (readonly, nonatomic, getter=isBundleTrialEligible) BOOL bundleTrialEligible;
 @property (readonly, nonatomic, getter=isChannelSubscriber) BOOL channelSubscriber;
 @property (readonly, nonatomic) double contentScaleFactor;
 @property (readonly, nonatomic) NSString *contentSizeCategory;

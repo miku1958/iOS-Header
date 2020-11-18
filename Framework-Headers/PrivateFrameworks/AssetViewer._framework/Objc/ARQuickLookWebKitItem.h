@@ -8,15 +8,17 @@
 
 #import <AssetViewer/QLPreviewItemPrivateCustomExtensionHandling-Protocol.h>
 
-@class ARQuickLookPreviewItem, NSString;
+@class ARQuickLookPreviewItem, NSDictionary, NSString;
 @protocol ARQuickLookWebKitItemDelegate;
 
 @interface ARQuickLookWebKitItem : QLItem <QLPreviewItemPrivateCustomExtensionHandling>
 {
     id<ARQuickLookWebKitItemDelegate> _delegate;
+    NSDictionary *_additionalParameters;
     ARQuickLookPreviewItem *_previewItem;
 }
 
+@property (copy, nonatomic) NSDictionary *additionalParameters; // @synthesize additionalParameters=_additionalParameters;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<ARQuickLookWebKitItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

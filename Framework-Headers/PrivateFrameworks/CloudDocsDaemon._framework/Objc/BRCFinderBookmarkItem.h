@@ -12,9 +12,11 @@ __attribute__((visibility("hidden")))
 }
 
 - (id)asFinderBookmark;
+- (id)asShareableItem;
 - (id)baseContentsRecord;
 - (id)contentsRecordID;
 - (BOOL)isFinderBookmark;
+- (BOOL)isShareableItem;
 
 @end
 

@@ -15,7 +15,6 @@
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *subscriptionController;
     MISSING_TYPE *followingManager;
-    MISSING_TYPE *alertPresenter;
 }
 
 @end

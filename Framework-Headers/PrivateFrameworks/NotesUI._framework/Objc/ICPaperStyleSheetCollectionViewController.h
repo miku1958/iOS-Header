@@ -18,6 +18,7 @@
 @property (weak, nonatomic) id<ICPaperStyleSheetCollectionViewControllerDelegate> paperStyleDelegate; // @synthesize paperStyleDelegate=_paperStyleDelegate;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (BOOL)accessibilityPerformEscape;
 - (void)cancelAction:(id)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;

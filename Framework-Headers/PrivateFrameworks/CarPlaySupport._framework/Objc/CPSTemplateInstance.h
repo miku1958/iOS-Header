@@ -76,6 +76,7 @@
 - (void)pushMapTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)pushSearchTemplate:(id)arg1 withProxyDelegate:(id)arg2 animated:(id)arg3 presentationStyle:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)requestBannerProviderWithReply:(CDUnknownBlockType)arg1;
+- (void)requestNavigationProviderForMapTemplate:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)setHostPrefersDarkUserInterfaceStyle:(BOOL)arg1;
 - (void)templateViewControllerDidDismiss:(id)arg1;
 - (void)templateViewControllerDidPop:(id)arg1;

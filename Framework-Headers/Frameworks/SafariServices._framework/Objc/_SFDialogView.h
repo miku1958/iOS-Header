@@ -23,6 +23,7 @@
     id<_SFDialogViewDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (weak, nonatomic) id<_SFDialogViewDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;

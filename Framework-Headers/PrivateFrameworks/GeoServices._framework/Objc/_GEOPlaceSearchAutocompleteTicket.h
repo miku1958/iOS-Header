@@ -8,12 +8,13 @@
 
 #import <GeoServices/GEOMapServiceCompletionTicket-Protocol.h>
 
-@class GEOMapServiceTraits, NSDictionary, NSString;
+@class GEOAutocompleteSessionData, GEOMapServiceTraits, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOPlaceSearchAutocompleteTicket : GEOAbstractRequestResponseTicket <GEOMapServiceCompletionTicket>
 {
     NSString *_searchQuery;
+    GEOAutocompleteSessionData *_sessionData;
 }
 
 @property (readonly, nonatomic, getter=isCancelled) BOOL cancelled;
@@ -32,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)autocompleteTopSectionIsQuerySuggestions;
 - (id)clientRankingModel;
 - (BOOL)hasShouldDisplayNoResults;
-- (id)initWithRequest:(id)arg1 traits:(id)arg2 searchQuery:(id)arg3;
+- (id)initWithRequest:(id)arg1 traits:(id)arg2 searchQuery:(id)arg3 sessionData:(id)arg4;
 - (BOOL)isRapEnabled;
 - (BOOL)matchesFragment:(id)arg1;
 - (double)retainSearchTime;

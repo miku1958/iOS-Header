@@ -23,6 +23,7 @@
 + (id)pinchOutGestureWithPoint:(struct CGPoint)arg1 bounds:(struct CGRect)arg2;
 + (id)rotateLeftGestureWithPoint:(struct CGPoint)arg1 bounds:(struct CGRect)arg2;
 + (id)rotateRightGestureWithPoint:(struct CGPoint)arg1 bounds:(struct CGRect)arg2;
++ (id)scrollGestureFromPoint:(struct CGPoint)arg1 toPoint:(struct CGPoint)arg2 duration:(double)arg3;
 + (id)tapGestureAtPoint:(struct CGPoint)arg1;
 + (id)tapGestureAtPoint:(struct CGPoint)arg1 isDoubleTap:(BOOL)arg2 numberOfFingers:(unsigned long long)arg3;
 @end

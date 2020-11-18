@@ -6,8 +6,14 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7NewsUI231MagazineFeedPaywallViewRenderer : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *imageProvider;
+    MISSING_TYPE *imageCache;
+    MISSING_TYPE *paywallLayoutAttributesFactory;
+    MISSING_TYPE *renderToken;
 }
 
 @end

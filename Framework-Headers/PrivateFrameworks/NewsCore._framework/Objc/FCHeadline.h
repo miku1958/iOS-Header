@@ -245,6 +245,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isGap;
 - (void)overrideDisplayDate:(id)arg1;
+- (void)overrideShortExcerpt:(id)arg1;
 - (void)overrideTitle:(id)arg1;
 
 @end

@@ -17,7 +17,6 @@
 - (void)_axAnnotateDictationButton;
 - (BOOL)accessibilityScroll:(long long)arg1;
 - (id)init;
-- (void)searchForQuery:(id)arg1 forSuggestions:(BOOL)arg2;
 
 @end
 

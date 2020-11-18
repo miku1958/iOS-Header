@@ -67,6 +67,8 @@
 - (void)_displayAlertController:(id)arg1;
 - (void)_displayViewController:(id)arg1;
 - (void)_displayViewController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_handleASTMenuCustomizeAddDwell:(BOOL)arg1 addScroll:(BOOL)arg2;
+- (void)_handleASTMenuFullForInstance:(id)arg1;
 - (void)_handleAlertActionPress:(id)arg1;
 - (void)_handleConfirmRebootDevice;
 - (void)_handleDisableBrightnessFiltersAlert:(id)arg1;
@@ -176,6 +178,7 @@
 - (void)openCommandAndControlVocabularyWithServerInstance:(id)arg1;
 - (void)openCustomGestureCreationForASTWithServerInstance:(id)arg1;
 - (void)openCustomGestureCreationForSCATWithServerInstance:(id)arg1;
+- (void)openMenuCustomizationForASTWithServerInstance:(id)arg1;
 - (void)openVoiceControlWithServerInstance:(id)arg1;
 - (int)purpleBuddyPIDWithServerInstance:(id)arg1;
 - (double)reachabilityOffsetWithServerInstance:(id)arg1;

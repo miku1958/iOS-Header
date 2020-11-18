@@ -9,7 +9,7 @@
 #import <ContactsUI/CNContactNavigationControllerDelegate-Protocol.h>
 #import <ContactsUI/CNContactPickerContentViewController-Protocol.h>
 
-@class CNContactNavigationController, CNContactStoreDataSource, CNManagedConfiguration, FAFamilyMember, NSArray, NSMutableArray, NSPredicate, NSString, UINavigationController;
+@class CNContactNavigationController, CNContactStoreDataSource, CNManagedConfiguration, FAFamilyMember, NSArray, NSMutableArray, NSPredicate, NSString, UIBarButtonItem, UINavigationController;
 @protocol CNContactPickerContentDelegate;
 
 __attribute__((visibility("hidden")))
@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
     NSArray *_prohibitedPropertyKeys;
 }
 
+@property (readonly, nonatomic) UIBarButtonItem *addContactBarButtonItem;
 @property (nonatomic) BOOL allowsCancel; // @synthesize allowsCancel=_allowsCancel;
 @property (nonatomic) BOOL allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
 @property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;

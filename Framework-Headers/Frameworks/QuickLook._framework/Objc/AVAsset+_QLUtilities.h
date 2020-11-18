@@ -9,5 +9,6 @@
 @interface AVAsset (_QLUtilities)
 + (void)assetIsAutoloopMedia:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)ql_canBeRotated;
+- (struct CGSize)ql_imageSizeOfFirstVideoTrack;
 @end
 

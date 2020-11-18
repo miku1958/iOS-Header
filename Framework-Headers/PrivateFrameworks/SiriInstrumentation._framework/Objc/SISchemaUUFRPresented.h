@@ -6,29 +6,23 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaUUFRPresented-Protocol.h>
-
 @class NSData, NSString, SISchemaViewContainer;
 
-@interface SISchemaUUFRPresented : PBCodable <SISchemaUUFRPresented, NSSecureCoding>
+@interface SISchemaUUFRPresented : PBCodable
 {
     int _errorCode;
     SISchemaViewContainer *_viewContainer;
     NSString *_errorDomain;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) int errorCode; // @synthesize errorCode=_errorCode;
 @property (copy, nonatomic) NSString *errorDomain; // @synthesize errorDomain=_errorDomain;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

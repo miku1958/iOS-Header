@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     CKDContainerInfo *_containerInfo;
 }
 
-@property (nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
+@property (copy, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property (copy, nonatomic) CKDContainerInfo *containerInfo; // @synthesize containerInfo=_containerInfo;
 @property (nonatomic) BOOL requireUserIDs; // @synthesize requireUserIDs=_requireUserIDs;
 

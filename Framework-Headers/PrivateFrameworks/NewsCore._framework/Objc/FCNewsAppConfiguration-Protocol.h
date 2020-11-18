@@ -28,11 +28,11 @@
 @property (readonly, nonatomic) long long corryBarMaxArticleCountForArticleList;
 @property (readonly, nonatomic) long long corryBarMaxArticleCountForSingleArticle;
 @property (readonly, nonatomic) long long criticalStorageThreshold;
-@property (readonly, nonatomic) NSString *description;
 @property (readonly, nonatomic) BOOL disableThumbnailsForArticleRecirculation;
 @property (readonly, nonatomic) long long emailSignupRequiredAppLaunchCount;
 @property (readonly, nonatomic) NSString *embedConfigurationAssetID;
 @property (readonly, nonatomic) BOOL enableBadgeInSpotlightTabBar;
+@property (readonly, nonatomic) BOOL enableLocationBasedAutofavorites;
 @property (readonly, nonatomic) NSString *exploreArticleID;
 @property (readonly, nonatomic) NSArray *externalAnalyticsConfigurations;
 @property (readonly, nonatomic) long long feedContentExposureTestMaximumInterval;
@@ -42,6 +42,7 @@
 @property (readonly, nonatomic) BOOL isExpired;
 @property (readonly, nonatomic) NSString *issueArticleRecirculationConfigJSON;
 @property (readonly, nonatomic) unsigned long long likeDislikeBehavior;
+@property (readonly, nonatomic) NSString *localAreasMappingResourceId;
 @property (readonly, nonatomic) long long lowStorageThreshold;
 @property (readonly, nonatomic) long long maximumTrendingGroupSizeiPad;
 @property (readonly, nonatomic) long long maximumTrendingGroupSizeiPhone;
@@ -66,6 +67,7 @@
 @property (readonly, nonatomic) NSString *translationMapResourceID;
 @property (readonly, nonatomic) unsigned long long trendingStyle;
 @property (readonly, nonatomic) BOOL universalLinksEnabled;
+@property (readonly, nonatomic) NSString *webEmbedContentBlockerOverrides;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockers;
 @property (readonly, nonatomic) NSString *widgetConfigID;
 @property (readonly, nonatomic) long long widgetMinimumArticleExposureDurationToBePreseenInMilliseconds;

@@ -19,9 +19,11 @@
     NSNumber *_replyTextId;
     NSString *_replyText;
     NSString *_language;
+    NSNumber *_isCustomResponse;
 }
 
 @property (readonly, nonatomic) NSNumber *categoryId; // @synthesize categoryId=_categoryId;
+@property (readonly, nonatomic) NSNumber *isCustomResponse; // @synthesize isCustomResponse=_isCustomResponse;
 @property (readonly, nonatomic) NSString *language; // @synthesize language=_language;
 @property (readonly, nonatomic) NSNumber *modelId; // @synthesize modelId=_modelId;
 @property (readonly, nonatomic) NSNumber *replySubgroupId; // @synthesize replySubgroupId=_replySubgroupId;
@@ -34,7 +36,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithCategoryId:(id)arg1 modelId:(id)arg2 responseClassId:(id)arg3 replySubgroupId:(id)arg4 replyTextId:(id)arg5 replyText:(id)arg6 language:(id)arg7;
+- (id)initWithCategoryId:(id)arg1 modelId:(id)arg2 responseClassId:(id)arg3 replySubgroupId:(id)arg4 replyTextId:(id)arg5 replyText:(id)arg6 language:(id)arg7 isCustomResponse:(id)arg8;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToResponseItem:(id)arg1;

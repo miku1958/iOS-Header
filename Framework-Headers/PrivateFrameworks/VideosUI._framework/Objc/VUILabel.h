@@ -30,6 +30,7 @@
 - (double)baselineHeight;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
 - (double)bottomMarginWithBaselineMargin:(double)arg1 maximumContentSizeCategory:(id)arg2;
+- (unsigned long long)numberOfLinesRequiredForTextWidth:(double)arg1;
 - (BOOL)requiresMoreThanOneLineForTextWidth:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;

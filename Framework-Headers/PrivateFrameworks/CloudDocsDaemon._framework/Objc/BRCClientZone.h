@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/BRCReachabilityDelegate-Protocol.h>
 #import <CloudDocsDaemon/BRCZone-Protocol.h>
 
-@class BRCAccountSession, BRCCreateZoneAndSubscribeOperation, BRCDeadlineSource, BRCItemID, BRCPQLConnection, BRCServerZone, BRCSyncBudgetThrottle, BRCSyncDownOperation, BRCSyncOperationThrottle, BRCSyncUpOperation, BRCThrottleBase, BRCZoneRowID, BRMangledID, CKOperationGroup, NSArray, NSDate, NSError, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSString, brc_task_tracker;
+@class BRCAccountSession, BRCCreateZoneAndSubscribeOperation, BRCDeadlineSource, BRCItemID, BRCPQLConnection, BRCServerZone, BRCSyncBudgetThrottle, BRCSyncDownOperation, BRCSyncOperationThrottle, BRCSyncUpOperation, BRCThrottleBase, BRCZoneRowID, BRMangledID, CKOperationGroup, NSArray, NSDate, NSDictionary, NSError, NSMutableArray, NSMutableDictionary, NSMutableIndexSet, NSMutableSet, NSSet, NSString, brc_task_tracker;
 @protocol BRCClientZoneDelegate, NSObject, OS_dispatch_queue, OS_dispatch_source;
 
 __attribute__((visibility("hidden")))
@@ -48,9 +48,13 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_source> *_resetTimer;
     NSMutableDictionary *_syncDownBlockToPerformForBookmarkData;
     BOOL _shouldShowiCloudDriveAppInstallationNotification;
+    NSMutableSet *_itemIDsBlockedFromSyncForCZMProcessing;
+    NSMutableDictionary *_itemsBlockedByAssociationForCZMProcessing;
+    NSMutableArray *_blocksWaitingOnCrossZoneMoveProcessing;
     NSMutableDictionary *_onDiskBlockToPerformForItemID;
     NSMutableDictionary *_downloadedBlockToPerformForItemID;
     NSMutableDictionary *_syncDownBlockToPerformForItemID;
+    NSMutableDictionary *_parentsOfCZMFaults;
     NSMutableArray *_nextSyncDownBarriers;
     NSMutableArray *_currentSyncDownBarriers;
     id<NSObject> _hasWorkDidUpdateObserver;
@@ -87,11 +91,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isForeground;
 @property (readonly, nonatomic) BOOL isPrivateZone;
 @property (readonly, nonatomic) BOOL isSharedZone;
+@property (readonly, nonatomic) NSSet *itemIDsBlockedFromSyncForCZMProcessing; // @synthesize itemIDsBlockedFromSyncForCZMProcessing=_itemIDsBlockedFromSyncForCZMProcessing;
 @property (strong, nonatomic) NSDate *lastAttemptedSyncDownDate; // @synthesize lastAttemptedSyncDownDate=_lastAttemptedSyncDownDate;
 @property (readonly, nonatomic) long long lastInsertedRank; // @synthesize lastInsertedRank=_lastInsertedRank;
 @property (readonly, nonatomic) BRMangledID *mangledID; // @synthesize mangledID=_mangledID;
 @property (nonatomic) BOOL needsSave; // @synthesize needsSave=_needsSave;
 @property (readonly, nonatomic) NSString *osNameRequiredToSync; // @synthesize osNameRequiredToSync=_osNameRequiredToSync;
+@property (readonly, nonatomic) NSDictionary *parentsOfCZMFaults; // @synthesize parentsOfCZMFaults=_parentsOfCZMFaults;
 @property (readonly, nonatomic) NSMutableDictionary *plist;
 @property (readonly, nonatomic) BRCItemID *rootItemID;
 @property (strong, nonatomic) BRCServerZone *serverZone; // @synthesize serverZone=_serverZone;
@@ -118,6 +124,7 @@ __attribute__((visibility("hidden")))
 - (void)_dumpRecursivePropertiesOfItemByRowID:(unsigned long long)arg1 context:(id)arg2 depth:(int)arg3;
 - (void)_enumerateFaultsWithBlock:(CDUnknownBlockType)arg1 rowID:(unsigned long long)arg2 batchSize:(unsigned long long)arg3;
 - (struct PQLResultSet *)_faultsEnumeratorFromRow:(unsigned long long)arg1 batchSize:(unsigned long long)arg2;
+- (void)_finishedProcessingItemThatMovedToThisZone:(id)arg1;
 - (void)_finishedReset:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fixupMissingCrossMovedItems;
 - (void)_forDBUpgrade_setStateBits:(unsigned int)arg1 clearStateBits:(unsigned int)arg2;
@@ -132,12 +139,16 @@ __attribute__((visibility("hidden")))
 - (void)_performAfterResetServerAndClientTruthsAndUnlinkDataAndPurgeTheZone:(CDUnknownBlockType)arg1;
 - (void)_performResetAndWantsUnlink:(BOOL)arg1 clientTruthBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_prepareForForegroundSyncDown;
+- (id)_refreshItemFromDB:(id)arg1;
 - (void)_removeAllShareAcceptanceBlocks;
 - (void)_removeDownloadedBlockToPerformForItemID:(id)arg1;
+- (void)_removeItemAndProcess:(id)arg1;
+- (void)_removeItemFromCZMProcessingIfNotAssociated:(id)arg1;
 - (void)_removeOnDiskBlockToPerformForItemID:(id)arg1;
 - (void)_removeTargetedAliasesWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_reset:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_resetItemsTable;
+- (void)_startDownloadingItemIfNecessary:(id)arg1;
 - (void)_startSync;
 - (void)_syncUpOfRecords:(id)arg1 createdAppLibraryNames:(id)arg2 didFinishWithError:(id)arg3;
 - (void)_t_addItemID:(id)arg1 blockedForSyncUpUntilOSName:(id)arg2;
@@ -214,6 +225,8 @@ __attribute__((visibility("hidden")))
 - (id)itemByRowID:(unsigned long long)arg1;
 - (id)itemByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (id)itemCountPendingUploadOrSyncUpAndReturnError:(id *)arg1;
+- (void)itemCrossZoneMoved:(id)arg1 toParentID:(id)arg2;
+- (void)itemMovedIntoShareInThisZone:(id)arg1 associatedItemID:(id)arg2;
 - (BOOL)itemTypeByItemID:(id)arg1 db:(id)arg2;
 - (struct PQLResultSet *)itemsEnumeratorWithDB:(id)arg1;
 - (struct PQLResultSet *)itemsParentedToThisZoneButLivingInAnOtherZone;
@@ -263,13 +276,16 @@ __attribute__((visibility("hidden")))
 - (void)signalFaultingWatchersWithError:(id)arg1;
 - (id)sizeOfItemsNeedingSyncUpOrUploadAndReturnError:(id *)arg1;
 - (BOOL)supportsKeepingClientItemsDuringReset;
+- (id)syncDownAnalyticsError;
 - (id)syncDownImmediately;
 - (void)syncDownOperation:(id)arg1 didFinishWithError:(id)arg2 status:(long long)arg3;
+- (id)syncUpAnalyticsError;
 - (long long)throttleHashWithItemID:(id)arg1;
 - (void)unregisterAllItemsDidUploadTracker:(id)arg1;
 - (void)updateWithPlist:(id)arg1;
 - (BOOL)validateItemsLoggingToFile:(struct __sFILE *)arg1 db:(id)arg2;
 - (BOOL)validateStructureLoggingToFile:(struct __sFILE *)arg1 db:(id)arg2;
+- (void)waitForCrossZoneMoveProcessingWithCompletion:(CDUnknownBlockType)arg1;
 - (id)xattrForSignature:(id)arg1;
 - (id)xattrForSignature:(id)arg1 db:(id)arg2;
 

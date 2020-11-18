@@ -122,7 +122,7 @@
 - (void)notificationGroupList:(id)arg1 requestsScrollToTopOfGroupWithCompletion:(CDUnknownBlockType)arg2;
 - (void)notificationGroupListDidRemoveAllNotificationRequests:(id)arg1;
 - (BOOL)notificationGroupListShouldScrollToTop:(id)arg1;
-- (id)notificationGroupListsForMigrationPassingTest:(CDUnknownBlockType)arg1;
+- (id)notificationGroupListsForMigrationPassingTest:(CDUnknownBlockType)arg1 filterPersistentRequests:(BOOL)arg2;
 - (double)notificationListView:(id)arg1 heightForItemAtIndex:(unsigned long long)arg2;
 - (id)notificationListView:(id)arg1 viewForItemAtIndex:(unsigned long long)arg2;
 - (BOOL)notificationListViewIsGroup:(id)arg1;

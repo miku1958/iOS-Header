@@ -104,6 +104,7 @@
 - (BOOL)_broadcastPlistDictionaryWithTestName:(id)arg1 testOptions:(id)arg2;
 - (BOOL)_buttonIdentifierIsHoldToTalkTrigger:(long long)arg1;
 - (void)_callIsActiveDidChangeNotification:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_cancelPendingActivationWithReason:(unsigned long long)arg1;
 - (BOOL)_cancelPendingPhoneCall;
 - (void)_carSiriButtonHoldToTalkIntervalFiredWithButtonIdentifier:(long long)arg1;

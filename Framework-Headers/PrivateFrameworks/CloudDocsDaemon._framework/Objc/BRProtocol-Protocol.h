@@ -38,6 +38,8 @@
 - (void)addExternalDocumentReferenceTo:(NSURL *)arg1 inContainer:(NSString *)arg2 underParent:(NSURL *)arg3 reply:(void (^)(NSURL *, NSURL *, NSData *, NSURL *, NSData *, NSError *))arg4;
 - (void)boostFilePresenterAtURL:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)capabilityWhenTryingToReparentItemAtURL:(NSURL *)arg1 toNewParent:(NSURL *)arg2 reply:(void (^)(unsigned short, NSError *))arg3;
+- (void)checkIfFolderSharingEnabledWithReply:(void (^)(BOOL, NSError *))arg1;
+- (void)checkIfItemIsShareableWithInode:(unsigned long long)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (oneway void)checkinAskClientIfUsingUbiquity:(BOOL)arg1;
 - (void)computePurgeableSpaceForAllUrgenciesWithReply:(void (^)(NSDictionary *, NSNumber *, NSError *))arg1;
 - (void)copyBulkShareIDsAtURLs:(NSArray *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
@@ -89,6 +91,7 @@
 - (void)getNonLocalVersionSenderWithReceiver:(id<BRNonLocalVersionReceiving>)arg1 documentURL:(NSURL *)arg2 includeCachedVersions:(BOOL)arg3 reply:(void (^)(id<BRNonLocalVersionSending>, NSURL *, NSError *))arg4;
 - (void)getPublishedURLForItemAtURL:(NSURL *)arg1 forStreaming:(BOOL)arg2 requestedTTL:(unsigned long long)arg3 reply:(void (^)(NSURL *, NSDate *, NSError *))arg4;
 - (void)getQueryItemForURL:(NSURL *)arg1 reply:(void (^)(BRQueryItem *, NSError *))arg2;
+- (void)getShareOptionsOfItemIdentifier:(NSString *)arg1 reply:(void (^)(BOOL, BOOL, BOOL, NSString *, NSError *))arg2;
 - (void)getTotalApplicationDocumentUsageWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getiWorkNeedsShareMigrateAtURL:(NSURL *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)getiWorkPublishingBadgingStatusAtURL:(NSURL *)arg1 reply:(void (^)(int, NSError *))arg2;
@@ -125,7 +128,6 @@
 - (void)setupInstanceWithDict:(NSDictionary *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)simulateHealthIssueWithContainer:(NSString *)arg1 status:(NSString *)arg2 brokenStructure:(BOOL)arg3 reply:(void (^)(NSError *))arg4;
 - (void)startDownloadItemsAtURLs:(NSArray *)arg1 options:(unsigned long long)arg2 reply:(void (^)(NSError *))arg3;
-- (void)startOperation:(NSObject<BROperationClient> *)arg1 toCleanShareSubitemsAtURL:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyAvailableQuotaWithReply:(void (^)(NSNumber *, NSError *))arg2;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyDocumentURLForRecordID:(CKRecordID *)arg2 syncIfNeeded:(BOOL)arg3 reply:(void (^)(FPSandboxingURLWrapper *, NSError *))arg4;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toCopyEtagAtURL:(NSURL *)arg2 reply:(void (^)(NSString *, NSError *))arg3;
@@ -141,6 +143,7 @@
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toLookupShareParticipants:(NSArray *)arg2 reply:(void (^)(NSArray *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toModifyRecordAccessAtURL:(NSURL *)arg2 allowAccess:(BOOL)arg3 reply:(void (^)(NSData *, NSString *, NSError *))arg4;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toPrepFolderForSharingAt:(NSURL *)arg2 reply:(void (^)(NSError *))arg3;
+- (void)startOperation:(NSObject<BROperationClient> *)arg1 toProcessSubitemsAtURL:(NSURL *)arg2 maxSubsharesFailures:(unsigned long long)arg3 processType:(unsigned long long)arg4 reply:(void (^)(NSError *))arg5;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toSaveSharingInfo:(CKShare *)arg2 reply:(void (^)(CKShare *, NSError *))arg3;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toUnshareShare:(CKShare *)arg2 forceDelete:(BOOL)arg3 reply:(void (^)(NSError *))arg4;
 - (void)startOperation:(NSObject<BROperationClient> *)arg1 toUploadAllFilesInContainer:(NSString *)arg2 reply:(void (^)(NSError *))arg3;

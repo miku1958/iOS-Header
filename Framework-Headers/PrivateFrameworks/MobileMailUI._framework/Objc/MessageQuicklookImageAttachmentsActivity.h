@@ -7,19 +7,18 @@
 #import <UIKit/UIActivity.h>
 
 @class NSURL;
-@protocol MFAttachmentHandlingDelegate;
+@protocol ContentRepresentationHandlingDelegate;
 
 @interface MessageQuicklookImageAttachmentsActivity : UIActivity
 {
-    id<MFAttachmentHandlingDelegate> _delegate;
+    id<ContentRepresentationHandlingDelegate> _delegate;
     NSURL *_url;
 }
 
-@property (weak, nonatomic) id<MFAttachmentHandlingDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<ContentRepresentationHandlingDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;
 
 - (void).cxx_destruct;
-- (id)_beforeActivity;
 - (void)_cleanup;
 - (id)activityImage;
 - (id)activityTitle;

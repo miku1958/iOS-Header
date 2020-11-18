@@ -18,7 +18,7 @@
 #import <ChatKit/UINavigationControllerDelegate-Protocol.h>
 #import <ChatKit/UISplitViewControllerDelegate-Protocol.h>
 
-@class CKAlertUtilities, CKConversation, CKConversationListController, CKCoreChatController, CKNavigationController, CKOnboardingController, CKViewController, NSMutableArray, NSSet, NSString, UIViewController;
+@class CKAlertUtilities, CKConversation, CKConversationListController, CKCoreChatController, CKInboxViewController, CKNavigationController, CKOnboardingController, CKViewController, NSMutableArray, NSSet, NSString, UIViewController;
 @protocol CKBrowserViewControllerProtocol, CKMessagesControllerDelegate;
 
 @interface CKMessagesController : UISplitViewController <UISplitViewControllerDelegate, UIActionSheetDelegate, CKCoreChatControllerDelegate, UINavigationControllerDelegate, UIAlertViewDelegate, CKChatControllerDelegate, CKComposeChatControllerDelegate, CKBrowserViewControllerStoreSendDelegate, CKOnboardingControllerDelegate, CKAlertUtilitiesProtocol, CKAlertSuppressionContextsProviding>
@@ -29,18 +29,19 @@
     unsigned int _attachmentPreviewQosClass;
     BOOL _isInitialLoad;
     id<CKMessagesControllerDelegate> _messagesControllerDelegate;
-    CKConversationListController *_conversationListController;
     CKCoreChatController *_chatController;
     CKCoreChatController *_composeChatController;
-    CKNavigationController *_conversationListNavigationController;
-    CKNavigationController *_chatNavigationController;
     CKNavigationController *_composeChatNavigationController;
     CDUnknownBlockType _deferredHandleURLBlock;
+    CKConversationListController *_conversationListController;
     CKOnboardingController *_onboardingController;
+    CKNavigationController *_conversationListNavigationController;
+    CKNavigationController *_chatNavigationController;
     CKViewController *_blankViewController;
     UIViewController *_statusBarStyleViewController;
     UIViewController<CKBrowserViewControllerProtocol> *_prewarmedCameraBrowser;
     CKAlertUtilities *_alertUtilities;
+    CKInboxViewController *_inboxViewController;
 }
 
 @property (readonly, nonatomic) NSSet *alertSuppressionContexts;
@@ -58,6 +59,7 @@
 @property (copy, nonatomic) CDUnknownBlockType deferredHandleURLBlock; // @synthesize deferredHandleURLBlock=_deferredHandleURLBlock;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) CKInboxViewController *inboxViewController; // @synthesize inboxViewController=_inboxViewController;
 @property (nonatomic) BOOL isInitialLoad; // @synthesize isInitialLoad=_isInitialLoad;
 @property (readonly, nonatomic) BOOL isShowingConversationListController;
 @property (weak, nonatomic) id<CKMessagesControllerDelegate> messagesControllerDelegate; // @synthesize messagesControllerDelegate=_messagesControllerDelegate;
@@ -71,6 +73,7 @@
 - (void)_appStateChange:(id)arg1;
 - (void)_chatItemsDidChange:(id)arg1;
 - (void)_chatRegistryDidLoad:(id)arg1;
+- (void)_conversationFilteringStateChangedNotification:(id)arg1;
 - (void)_conversationLeft:(id)arg1;
 - (BOOL)_hasCurrentConversations;
 - (void)_hideConversationListForIPadPPTTest;
@@ -130,6 +133,7 @@
 - (BOOL)isShowingChatController;
 - (BOOL)isShowingChatControllerWithUnsentText;
 - (BOOL)isShowingDirtyComposeModalView;
+- (BOOL)isShowingInboxViewController;
 - (void)keyCommandCompose:(id)arg1;
 - (void)keyCommandDeleteConversation:(id)arg1;
 - (void)keyCommandNextConversation:(id)arg1;
@@ -168,6 +172,7 @@
 - (void)showConversationAndMessageForChatGUID:(id)arg1 messageGUID:(id)arg2 animate:(BOOL)arg3;
 - (void)showConversationAndMessageForSearchURL:(id)arg1;
 - (void)showConversationList:(BOOL)arg1;
+- (void)showInboxViewController:(BOOL)arg1;
 - (void)showNewMessageCompositionPanelWithRecipients:(id)arg1 composition:(id)arg2 animated:(BOOL)arg3;
 - (void)showNewMessageCompositionPanelWithRecipients:(id)arg1 composition:(id)arg2 animated:(BOOL)arg3 bizIntent:(id)arg4 launchPluginWithBundleID:(id)arg5 pluginLaunchPayload:(id)arg6;
 - (void)showStoreForURL:(id)arg1 fromSourceApplication:(id)arg2;
@@ -179,6 +184,7 @@
 - (void)startEditingPayload:(id)arg1 dismiss:(BOOL)arg2;
 - (unsigned long long)supportedInterfaceOrientations;
 - (void)teardownCamera;
+- (void)updateConversationListNavigationControllerViewStack;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

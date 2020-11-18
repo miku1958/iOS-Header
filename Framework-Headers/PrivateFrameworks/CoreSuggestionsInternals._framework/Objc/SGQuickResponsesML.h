@@ -16,6 +16,7 @@
     NSMutableDictionary *_perLanguageRecorders;
 }
 
++ (id)_getMergedPrompt:(id)arg1 withParams:(id)arg2;
 + (BOOL)_isImageAttachment:(id)arg1;
 + (BOOL)_isSharingSenderLocation:(id)arg1 senderName:(id)arg2;
 - (void).cxx_destruct;

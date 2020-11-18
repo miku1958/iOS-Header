@@ -8,7 +8,6 @@
 
 @interface AVTFunCamAvatarPickerStyle : NSObject
 {
-    BOOL _centerVertically;
     double _interitemSpacing;
     struct CGSize _cellSize;
     struct CGSize _engagedCellSize;
@@ -16,7 +15,6 @@
 }
 
 @property (nonatomic) struct CGSize cellSize; // @synthesize cellSize=_cellSize;
-@property (nonatomic) BOOL centerVertically; // @synthesize centerVertically=_centerVertically;
 @property (nonatomic) struct CGSize engagedCellSize; // @synthesize engagedCellSize=_engagedCellSize;
 @property (nonatomic) struct UIEdgeInsets gridEdgeInsets; // @synthesize gridEdgeInsets=_gridEdgeInsets;
 @property (nonatomic) double interitemSpacing; // @synthesize interitemSpacing=_interitemSpacing;
@@ -26,7 +24,7 @@
 - (double)edgeLengthFittingWidth:(double)arg1 environment:(id)arg2;
 - (CDUnknownBlockType)imageItemInsetsForGrid;
 - (CDUnknownBlockType)imageItemInsetsForList;
-- (id)initWithCellSize:(struct CGSize)arg1 engagedCellSize:(struct CGSize)arg2 interitemSpacing:(double)arg3 gridEdgeInsets:(struct UIEdgeInsets)arg4 centerVertically:(BOOL)arg5;
+- (id)initWithCellSize:(struct CGSize)arg1 engagedCellSize:(struct CGSize)arg2 interitemSpacing:(double)arg3 gridEdgeInsets:(struct UIEdgeInsets)arg4;
 
 @end
 

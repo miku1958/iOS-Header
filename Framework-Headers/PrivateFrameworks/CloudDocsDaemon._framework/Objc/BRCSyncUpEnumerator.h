@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _batchSize;
     unsigned int _maxDepth;
+    unsigned int _should2PhasePCSChain;
     BRCClientZone *_clientZone;
     NSMutableSet *_whitelist;
     NSMutableSet *_itemIDsLostOrThrottled;
@@ -25,20 +26,21 @@ __attribute__((visibility("hidden")))
     unsigned long long _retryAfter;
     BRCLocalItem *_itemNeedingPCSChaining;
     NSMutableSet *_chainedParentIDWhitelist;
-    NSMutableSet *_shareRecordIDsNeedingDelete;
+    NSMutableArray *_itemsNeedingUnshare;
 }
 
 @property (readonly, nonatomic) unsigned int batchSize; // @synthesize batchSize=_batchSize;
 @property (readonly, nonatomic) NSMutableSet *chainedParentIDWhitelist; // @synthesize chainedParentIDWhitelist=_chainedParentIDWhitelist;
 @property (readonly, nonatomic) BRCLocalItem *itemNeedingPCSChaining; // @synthesize itemNeedingPCSChaining=_itemNeedingPCSChaining;
+@property (readonly, nonatomic) NSMutableArray *itemsNeedingUnshare; // @synthesize itemsNeedingUnshare=_itemsNeedingUnshare;
 @property (readonly, nonatomic) unsigned long long retryAfter; // @synthesize retryAfter=_retryAfter;
-@property (readonly, nonatomic) NSMutableSet *shareRecordIDsNeedingDelete; // @synthesize shareRecordIDsNeedingDelete=_shareRecordIDsNeedingDelete;
 
 - (void).cxx_destruct;
 - (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3;
 - (void)_blackListDescendantStack:(id)arg1 parentItem:(id)arg2 andAddToSet:(id)arg3 descendantBlock:(CDUnknownBlockType)arg4;
 - (BOOL)_blackListDescendantStackAndItemIfThrottledOrNeedsOSUpgrade:(id)arg1 now:(unsigned long long)arg2;
 - (struct PQLResultSet *)_documentsOrAliasesNeedingSyncUpEnumerator;
+- (BOOL)_handleSharedItemWhichMovedToNewShare:(id)arg1 rootItem:(id)arg2;
 - (struct PQLResultSet *)_liveOrNewDirectoriesNeedingSyncUpEnumerator;
 - (id)_nextLiveItem;
 - (id)_nextTombstone;

@@ -17,6 +17,7 @@
     BOOL isHistorical;
     BOOL shouldSaveCurrentEventOnShutdown;
     NSString *name;
+    NSString *formattedName;
     NSString *knowledgeBaseName;
     NSString *knowledgeBaseMetadataClass;
     NSString *descriptionString;
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) unsigned long long domainAvailability; // @synthesize domainAvailability;
 @property (readonly, nonatomic) long long eventCountLimit; // @synthesize eventCountLimit;
 @property (readonly, nonatomic) long long eventsPerPeriod; // @synthesize eventsPerPeriod;
+@property (readonly, nonatomic) NSString *formattedName; // @synthesize formattedName;
 @property (readonly, nonatomic) BOOL isAvailable; // @synthesize isAvailable;
 @property (readonly, nonatomic) BOOL isHistorical; // @synthesize isHistorical;
 @property (readonly, nonatomic) BOOL isInstant; // @synthesize isInstant;

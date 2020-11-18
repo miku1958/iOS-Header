@@ -21,8 +21,9 @@
 @property (readonly, nonatomic) NSString *issueListID; // @synthesize issueListID=_issueListID;
 
 - (void).cxx_destruct;
+- (id)allEmitterClasses;
 - (id)backingChannel;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (long long)feedType;
 - (id)initWithChannel:(id)arg1 articleListID:(id)arg2 issueListID:(id)arg3;
 - (id)name;

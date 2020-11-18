@@ -26,6 +26,7 @@
 - (double)fingerInnerCircleInnerRadius;
 - (double)fingerInnerRadius;
 - (double)fingerOuterRadius;
+- (id)pressedCircularProgressFillColor;
 - (id)selectedFillColor;
 - (id)selectedStrokeColor;
 - (id)strokeOutlineColor;

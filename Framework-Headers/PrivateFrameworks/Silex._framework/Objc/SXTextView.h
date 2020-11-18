@@ -6,14 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-#import <Silex/STTextCanvasRenderSource-Protocol.h>
-#import <Silex/STTextTangierRepAccessibilityDataSource-Protocol.h>
+#import <Silex/SXTextCanvasRenderSource-Protocol.h>
+#import <Silex/SXTextTangierRepAccessibilityDataSource-Protocol.h>
 #import <Silex/TSDRepDirectLayerHosting-Protocol.h>
 
-@class CALayer, NSString, STTextTangierContainerInfo, STTextTangierFlowRep, SXTextLayouter, SXTextSource, TSDCanvas, TSDLayoutController;
-@protocol STTextTangierRepAccessibilityElement, SXTextViewDelegate;
+@class CALayer, NSString, SXTextLayouter, SXTextSource, SXTextTangierContainerInfo, SXTextTangierFlowRep, TSDCanvas, TSDLayoutController;
+@protocol SXTextTangierRepAccessibilityElement, SXTextViewDelegate;
 
-@interface SXTextView : UIView <STTextTangierRepAccessibilityDataSource, TSDRepDirectLayerHosting, STTextCanvasRenderSource>
+@interface SXTextView : UIView <SXTextTangierRepAccessibilityDataSource, TSDRepDirectLayerHosting, SXTextCanvasRenderSource>
 {
     BOOL _isSelectable;
     BOOL _shouldHyphenate;
@@ -21,8 +21,8 @@
     SXTextLayouter *_textLayouter;
     id<SXTextViewDelegate> _delegate;
     SXTextSource *_textSource;
-    STTextTangierContainerInfo *_textInfo;
-    STTextTangierFlowRep<STTextTangierRepAccessibilityElement> *_rep;
+    SXTextTangierContainerInfo *_textInfo;
+    SXTextTangierFlowRep<SXTextTangierRepAccessibilityElement> *_rep;
     TSDLayoutController *_layoutController;
     CALayer *_repContainerLayer;
     CALayer *_overlayContainerLayer;
@@ -42,11 +42,11 @@
 @property (nonatomic) BOOL mightBeVisuallyMisplaced; // @synthesize mightBeVisuallyMisplaced=_mightBeVisuallyMisplaced;
 @property (strong, nonatomic) CALayer *overlayContainerLayer; // @synthesize overlayContainerLayer=_overlayContainerLayer;
 @property (nonatomic) struct CGRect parentFrame; // @synthesize parentFrame=_parentFrame;
-@property (weak, nonatomic) STTextTangierFlowRep<STTextTangierRepAccessibilityElement> *rep; // @synthesize rep=_rep;
+@property (weak, nonatomic) SXTextTangierFlowRep<SXTextTangierRepAccessibilityElement> *rep; // @synthesize rep=_rep;
 @property (strong, nonatomic) CALayer *repContainerLayer; // @synthesize repContainerLayer=_repContainerLayer;
 @property (nonatomic) BOOL shouldHyphenate; // @synthesize shouldHyphenate=_shouldHyphenate;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) STTextTangierContainerInfo *textInfo; // @synthesize textInfo=_textInfo;
+@property (readonly, nonatomic) SXTextTangierContainerInfo *textInfo; // @synthesize textInfo=_textInfo;
 @property (strong, nonatomic) SXTextLayouter *textLayouter; // @synthesize textLayouter=_textLayouter;
 @property (readonly, nonatomic) SXTextSource *textSource; // @synthesize textSource=_textSource;
 

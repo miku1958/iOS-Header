@@ -48,6 +48,7 @@
 - (void)requestSummaryForMessageObjectID:(id)arg1;
 - (void)start;
 - (void)tearDown;
+- (void)test_tearDown;
 
 @end
 

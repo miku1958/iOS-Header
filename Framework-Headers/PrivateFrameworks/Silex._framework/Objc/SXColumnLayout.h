@@ -14,8 +14,8 @@
 {
     id<SXDocumentLayout> _documentLayout;
     long long _layoutWidth;
-    long long _leftMargin;
-    long long _rightMargin;
+    double _leftMargin;
+    double _rightMargin;
     long long _gutter;
     unsigned long long _numberOfColumns;
     double _columnWidth;
@@ -42,14 +42,14 @@
 @property (readonly, nonatomic) long long layoutWidth; // @synthesize layoutWidth=_layoutWidth;
 @property (readonly, nonatomic) long long leftColumnOffset; // @synthesize leftColumnOffset=_leftColumnOffset;
 @property (nonatomic) double leftInset; // @synthesize leftInset=_leftInset;
-@property (readonly, nonatomic) long long leftMargin; // @synthesize leftMargin=_leftMargin;
+@property (readonly, nonatomic) double leftMargin; // @synthesize leftMargin=_leftMargin;
 @property (readonly, nonatomic) double leftScreenMargin; // @synthesize leftScreenMargin=_leftScreenMargin;
 @property (nonatomic) double minimumHeight; // @synthesize minimumHeight=_minimumHeight;
 @property (nonatomic) double minimumViewportWidthForLooseLayout; // @synthesize minimumViewportWidthForLooseLayout=_minimumViewportWidthForLooseLayout;
 @property (readonly, nonatomic) unsigned long long numberOfColumns; // @synthesize numberOfColumns=_numberOfColumns;
 @property (nonatomic) long long rightColumnOffset; // @synthesize rightColumnOffset=_rightColumnOffset;
 @property (nonatomic) double rightInset; // @synthesize rightInset=_rightInset;
-@property (readonly, nonatomic) long long rightMargin; // @synthesize rightMargin=_rightMargin;
+@property (readonly, nonatomic) double rightMargin; // @synthesize rightMargin=_rightMargin;
 @property (readonly, nonatomic) double rightScreenMargin; // @synthesize rightScreenMargin=_rightScreenMargin;
 @property (readonly, nonatomic) struct CGSize viewportSize; // @synthesize viewportSize=_viewportSize;
 

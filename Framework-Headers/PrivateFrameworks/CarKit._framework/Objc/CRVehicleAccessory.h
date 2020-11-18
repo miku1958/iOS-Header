@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class EAAccessory, NSArray, NSData, NSNumber, NSString;
+@class EAAccessory, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 @interface CRVehicleAccessory : NSObject
 {
@@ -22,6 +22,8 @@
     NSString *_PPID;
     NSNumber *_connectionID;
     EAAccessory *_accessory;
+    NSDictionary *_vehicleInfoDataCache;
+    NSDictionary *_vehicleAccessoryInfoKeysCache;
 }
 
 @property (strong, nonatomic) NSString *PPID; // @synthesize PPID=_PPID;
@@ -34,6 +36,8 @@
 @property (nonatomic) BOOL supportsUSBCarPlay; // @synthesize supportsUSBCarPlay=_supportsUSBCarPlay;
 @property (nonatomic) BOOL supportsWiredBluetoothPairing; // @synthesize supportsWiredBluetoothPairing=_supportsWiredBluetoothPairing;
 @property (nonatomic) BOOL supportsWirelessCarPlay; // @synthesize supportsWirelessCarPlay=_supportsWirelessCarPlay;
+@property (copy, nonatomic) NSDictionary *vehicleAccessoryInfoKeysCache; // @synthesize vehicleAccessoryInfoKeysCache=_vehicleAccessoryInfoKeysCache;
+@property (copy, nonatomic) NSDictionary *vehicleInfoDataCache; // @synthesize vehicleInfoDataCache=_vehicleInfoDataCache;
 @property (strong, nonatomic) NSString *vehicleModelName; // @synthesize vehicleModelName=_vehicleModelName;
 @property (strong, nonatomic) NSString *vehicleName; // @synthesize vehicleName=_vehicleName;
 

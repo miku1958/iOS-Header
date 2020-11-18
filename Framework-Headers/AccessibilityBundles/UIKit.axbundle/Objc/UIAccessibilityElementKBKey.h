@@ -23,6 +23,7 @@
 + (id)variantKeysForKey:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_accessibilityActivateForPanAlternate:(BOOL)arg1 isSecondAlternate:(BOOL)arg2;
+- (BOOL)_accessibilityActivateForPanAlternate:(BOOL)arg1 isSecondAlternate:(BOOL)arg2 isSecondaryActivate:(BOOL)arg3;
 - (BOOL)_accessibilityActivatePanAlternate:(id)arg1;
 - (BOOL)_accessibilityAllowsAlternativeCharacterActivation;
 - (unsigned long long)_accessibilityAutomationType;
@@ -39,8 +40,10 @@
 - (id)_accessibilityLabel;
 - (id)_accessibilityLayoutCursorKeyplaneComponentName;
 - (id)_accessibilityLocalizedStringForKeyboardLocale:(id)arg1;
+- (BOOL)_accessibilitySecondaryActivate;
 - (id)_accessibilitySupportGesturesAttributes;
 - (BOOL)_accessibilitySupportsActivateAction;
+- (BOOL)_accessibilitySupportsSecondaryActivateAction;
 - (id)_accessibilityVariantKeys;
 - (BOOL)_accessibilityWasForcedToUseForeignKB;
 - (BOOL)_allowCachingAccessibilityLabel;

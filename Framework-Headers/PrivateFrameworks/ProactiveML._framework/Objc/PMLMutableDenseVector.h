@@ -26,7 +26,9 @@
 - (id)initWithMutableData:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (void)processValuesInPlaceWithBlock:(CDUnknownBlockType)arg1;
+- (void)scaleInPlaceWithFactor:(float)arg1;
 - (void)scaleInPlaceWithInversedFactor:(float)arg1;
+- (void)sumInPlaceWithVector:(id)arg1;
 
 @end
 

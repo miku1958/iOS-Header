@@ -13,6 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface STCommunicationLimitsListController : STPINListViewController <CNUIFamilyMemberContactsPresentation>
 {
+    BOOL _syncingiCloudContacts;
     PSSpecifier *_duringScreenTimeSpecifier;
     PSSpecifier *_duringDowntimeSpecifier;
     PSSpecifier *_manageContactsGroupSpecifier;
@@ -33,17 +34,24 @@ __attribute__((visibility("hidden")))
 @property (strong) PSSpecifier *manageContactsGroupSpecifier; // @synthesize manageContactsGroupSpecifier=_manageContactsGroupSpecifier;
 @property (strong) PSSpecifier *manageContactsSpecifier; // @synthesize manageContactsSpecifier=_manageContactsSpecifier;
 @property (readonly) Class superclass;
+@property BOOL syncingiCloudContacts; // @synthesize syncingiCloudContacts=_syncingiCloudContacts;
 
 - (void).cxx_destruct;
 - (id)_allowContactEditing:(id)arg1;
 - (void)_communicationLimitsDidChangeFrom:(id)arg1 to:(id)arg2;
+- (void)_didCancelSyncingiCloudContacts;
+- (void)_didFinishSyncingiCloudContacts;
+- (void)_didStartSyncingiCloudContacts;
+- (void)_indicateiCloudContactsSyncingStatus;
 - (id)_manageContacts:(id)arg1;
-- (id)_numberOfFamilyMemberContacts:(id)arg1;
+- (id)_manageContactsGroupFooterText;
 - (void)_setAllowContactEditing:(id)arg1 specifier:(id)arg2;
 - (void)_setManageContacts:(id)arg1 specifier:(id)arg2;
-- (void)_showOrHideiCloudContactsSpecifier:(long long)arg1;
+- (void)_startSyncingiCloudContacts;
 - (id)_statusPendingDetailText:(id)arg1;
+- (id)_totaliCloudContactsDetailText:(id)arg1;
 - (void)_updateAllowContactEditing:(id)arg1;
+- (void)_updateManageContactsGroupFooterView;
 - (void)dealloc;
 - (void)dismissPresentedViewController:(id)arg1;
 - (void)familyMemberContactsDidChange;
@@ -53,6 +61,8 @@ __attribute__((visibility("hidden")))
 - (void)setCoordinator:(id)arg1;
 - (id)specifiers;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (void)viewDidLoad;
 
 @end
 

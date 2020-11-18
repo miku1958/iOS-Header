@@ -22,6 +22,7 @@
 
 - (void).cxx_destruct;
 - (void)adjustTailRelativeSiblingViewFrame:(struct CGRect)arg1;
+- (void)adjustTailRelativeSiblingViewFrame:(struct CGRect)arg1 pickerFrame:(struct CGRect)arg2;
 - (struct CGRect)calculateFrameRelativeToSiblingViewFrame:(struct CGRect)arg1 withinBounds:(struct CGRect)arg2;
 - (id)initWithChatItem:(id)arg1;
 - (void)loadView;

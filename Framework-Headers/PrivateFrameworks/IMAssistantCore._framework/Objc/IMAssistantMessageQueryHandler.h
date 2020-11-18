@@ -25,6 +25,7 @@
 - (void)handlesAndServicesForChatGuids:(id)arg1 handles:(id *)arg2 services:(id *)arg3;
 - (void)handlesAndServicesForPersons:(id)arg1 handles:(id *)arg2 services:(id *)arg3;
 - (id)messageContentsPredicate:(id)arg1;
+- (BOOL)messageIsFromBlackholedChat:(id)arg1;
 - (void)messagesMatchingMessageIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)recipientsPredicate:(id)arg1;
 - (id)resolveDateTimeRange:(id)arg1;

@@ -46,7 +46,6 @@
     long long _zoomLevelBeforeBackNavigationTransition;
     PXGTransition *_backNavigationTransition;
     PXRelaxedScreenEdgePanGestureRecognizer *_screenEdgePanGestureRecognizer;
-    long long _trackedScrollZoomLevel;
     PXSwipeSelectionManager *_swipeSelectionManager;
     PXAssetReference *_navigatedAssetReference;
     PXMovieProvider *_movieProvider;
@@ -58,6 +57,7 @@
     PXAssetReference *__interactionAssetReference;
     UITargetedPreview *__interactionTargetedPreview;
     UIViewController *__interactionPreviewViewController;
+    CDStruct_0c606d9b _trackedScrollContext;
 }
 
 @property (strong, nonatomic, setter=_setContextMenuInteraction:) UIContextMenuInteraction *_contextMenuInteraction; // @synthesize _contextMenuInteraction=__contextMenuInteraction;
@@ -92,7 +92,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PXSwipeSelectionManager *swipeSelectionManager; // @synthesize swipeSelectionManager=_swipeSelectionManager;
 @property (readonly, nonatomic) UITapGestureRecognizer *tapGesture; // @synthesize tapGesture=_tapGesture;
-@property (nonatomic) long long trackedScrollZoomLevel; // @synthesize trackedScrollZoomLevel=_trackedScrollZoomLevel;
+@property (nonatomic) CDStruct_0c606d9b trackedScrollContext; // @synthesize trackedScrollContext=_trackedScrollContext;
 @property (readonly, nonatomic) long long userInterfaceFeature;
 @property (readonly, nonatomic) PXCuratedLibraryViewProvider *viewProvider; // @synthesize viewProvider=_viewProvider;
 @property (readonly, nonatomic) PXCuratedLibraryViewProvider *viewProviderIfLoaded;
@@ -198,7 +198,6 @@
 - (void)px_didTransitionBars;
 - (void)px_navigateToStateAllowingTabSwitchingWithOptions:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)px_willTransitionBars;
-- (void)scrollViewControllerDidEndScrolling:(id)arg1;
 - (void)scrollViewControllerDidScroll:(id)arg1;
 - (BOOL)scrollViewControllerShouldScrollToTop:(id)arg1;
 - (void)scrollViewControllerWillBeginScrolling:(id)arg1;

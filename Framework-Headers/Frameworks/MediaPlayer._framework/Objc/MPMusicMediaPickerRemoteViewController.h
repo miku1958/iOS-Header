@@ -24,6 +24,7 @@
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)remoteMediaPickerDidCancel;
 - (void)remoteMediaPickerDidPickMediaItems:(id)arg1;
 - (void)remoteMediaPickerDidPickPlaybackArchive:(id)arg1;

@@ -7,6 +7,7 @@
 #import <UIKit/UIFont.h>
 
 @interface UIFont (MessageUI)
++ (double)mf_defaultComposeFontPixelSize;
 + (id)mf_messageHeaderSenderLabelFont;
 + (id)mf_messageHeaderSenderLabelFontForMailActionHeader;
 + (id)mf_messageHeaderSummaryLabelFont;

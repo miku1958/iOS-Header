@@ -22,7 +22,6 @@ __attribute__((visibility("hidden")))
     VCAudioUnitProperties *_currentAudioUnitProperties;
     NSDictionary *_vpOperatingModeToAudioSessionMediaFormatMapping;
     NSMutableArray *_allClients;
-    NSMutableArray *_suspendedClients;
     NSMutableArray *_startingIOClients;
     AVAudioDevice *_inputDevice;
     AVAudioDevice *_outputDevice;
@@ -58,10 +57,11 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedInstance;
 - (void)_cleanupDeadClients;
-- (void)_resumeSuspendedClients;
-- (void)_suspendAllClients;
+- (void)activateStartingClient:(id)arg1 applyControllerFormat:(BOOL)arg2;
 - (BOOL)addClient:(id)arg1;
+- (void)applyControllerFormatToClients:(id)arg1;
 - (void)cleanupInterruptThread;
+- (void)completeStartForAllStartingClients;
 - (void)computeHardwarePreferences;
 - (void)dealloc;
 - (void)didSessionEnd;
@@ -69,6 +69,7 @@ __attribute__((visibility("hidden")))
 - (void)didSessionResume;
 - (void)didSessionStop;
 - (void)didUpdateBasebandCodec:(const struct _VCRemoteCodecInfo *)arg1;
+- (void)enterStateStarted;
 - (void)flushEventQueue:(struct opaqueCMSimpleQueue *)arg1;
 - (void)getPreferredFormat:(struct AudioStreamBasicDescription *)arg1 blockSize:(double *)arg2 vpOperatingMode:(unsigned int *)arg3 forOperatingMode:(int)arg4 deviceRole:(int)arg5 suggestedFormat:(struct AudioStreamBasicDescription *)arg6;
 - (id)init;
@@ -94,9 +95,17 @@ __attribute__((visibility("hidden")))
 - (void)startClient:(id)arg1;
 - (void)startInterruptThread;
 - (BOOL)stateIdleWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int *)arg4;
+- (BOOL)stateInterruptedShouldGoToRunning:(id)arg1;
+- (BOOL)stateInterruptedShouldGoToStarted:(id)arg1;
+- (BOOL)stateInterruptedWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int *)arg4;
+- (BOOL)stateRunningShouldTransitionToInterrupted:(id)arg1;
+- (BOOL)stateRunningShouldTransitionToStarted:(id)arg1;
 - (void)stateRunningToSessionStarted;
 - (BOOL)stateRunningWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int *)arg4;
 - (BOOL)stateSessionStartedWithAudioUnitProperties:(id)arg1 sessionProperties:(id)arg2 client:(id)arg3 newState:(unsigned int *)arg4;
+- (void)stateTransitionInterruptedToRunning;
+- (void)stateTransitionInterruptedToStarted;
+- (void)stateTransitionRunningToInterrupted;
 - (void)stopAUIO;
 - (void)stopAudioSession;
 - (void)stopClient:(id)arg1;

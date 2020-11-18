@@ -6,14 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <MapKit/GEOResourceManifestTileGroupObserver-Protocol.h>
+@class MKMapSnapshotter, UIImage;
 
-@class GEOActiveTileGroup, MKMapSnapshotter, NSString, UIImage;
-
-@interface MKPlaceholderGridCache : NSObject <GEOResourceManifestTileGroupObserver>
+@interface MKPlaceholderGridCache : NSObject
 {
     struct os_unfair_lock_s _lock;
-    GEOActiveTileGroup *_activeTileGroup;
+    struct os_unfair_lock_s _snapshotterLock;
     MKMapSnapshotter *_lightSnapshotter;
     MKMapSnapshotter *_darkSnapshotter;
     UIImage *_lightGrid;
@@ -21,21 +19,15 @@
 }
 
 @property (readonly, nonatomic) UIImage *darkGrid; // @synthesize darkGrid=_darkGrid;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIImage *lightGrid; // @synthesize lightGrid=_lightGrid;
-@property (readonly) Class superclass;
 
 + (id)unretainedInstance;
 - (void).cxx_destruct;
 - (void)_cancelSnapshots;
 - (void)_saveDarkGrid:(id)arg1;
 - (void)_saveLightGrid:(id)arg1;
-- (void)dealloc;
 - (id)init;
 - (void)loadPlaceholderGridImages;
-- (void)resourceManifestManager:(id)arg1 didChangeActiveTileGroup:(id)arg2 fromOldTileGroup:(id)arg3;
 
 @end
 

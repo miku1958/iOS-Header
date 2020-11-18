@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)pinInstructionsPrompt;
 - (void)setPIN:(id)arg1;
 - (BOOL)validatePIN:(id)arg1;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

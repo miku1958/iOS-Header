@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <AppleMediaServices/AMSFinanceActionHandling-Protocol.h>
+#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
 
 @class ACAccount, AMSURLTaskInfo, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceActionResponse : NSObject <AMSFinanceActionHandling>
+@interface AMSFinanceActionResponse : NSObject <AMSFinancePerformable>
 {
     ACAccount *_account;
     NSString *_creditString;
@@ -23,7 +23,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (strong, nonatomic) NSString *creditString; // @synthesize creditString=_creditString;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long kind; // @synthesize kind=_kind;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) AMSURLTaskInfo *taskInfo; // @synthesize taskInfo=_taskInfo;
 
 + (id)actionWithActionDictionary:(id)arg1 taskInfo:(id)arg2;
@@ -33,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (id)_performGotoURL;
 - (id)_performOpenURL;
 - (id)initWithTaskInfo:(id)arg1;
-- (id)runAction;
+- (id)performWithTaskInfo:(id)arg1;
 
 @end
 

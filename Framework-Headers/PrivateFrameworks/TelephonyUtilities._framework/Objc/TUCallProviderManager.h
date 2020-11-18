@@ -42,6 +42,7 @@
 - (void)addDelegate:(id)arg1 queue:(id)arg2;
 - (void)dealloc;
 - (id)dialRequestForRecentCall:(id)arg1;
+- (void)donateUserIntentForProviderWithIdentifier:(id)arg1;
 - (id)init;
 - (id)initWithDataSource:(id)arg1 type:(unsigned long long)arg2 queue:(id)arg3;
 - (id)initWithLocalProviders;

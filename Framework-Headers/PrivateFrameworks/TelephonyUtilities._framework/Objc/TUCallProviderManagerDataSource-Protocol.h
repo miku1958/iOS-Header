@@ -6,7 +6,7 @@
 
 #import <TelephonyUtilities/NSObject-Protocol.h>
 
-@class NSDictionary, NSURL, TUDialRequest;
+@class NSDictionary, NSString, NSURL, TUDialRequest;
 @protocol TUCallProviderManagerDataSourceDelegate;
 
 @protocol TUCallProviderManagerDataSource <NSObject>
@@ -18,6 +18,7 @@
 @property (readonly, copy, nonatomic) NSDictionary *providersByIdentifier;
 
 - (void)blockUntilInitialStateReceived;
+- (void)donateUserIntentForProviderWithIdentifier:(NSString *)arg1;
 - (void)invalidate;
 - (void)launchAppForDialRequest:(TUDialRequest *)arg1 completion:(void (^)(NSError *))arg2;
 - (BOOL)openURL:(NSURL *)arg1 isSensitive:(BOOL)arg2 error:(id *)arg3;

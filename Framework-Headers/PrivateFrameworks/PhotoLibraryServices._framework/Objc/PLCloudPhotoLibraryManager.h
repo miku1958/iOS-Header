@@ -193,6 +193,7 @@
 - (void)getStreamingURLForAsset:(id)arg1 resourceType:(unsigned long long)arg2 intent:(unsigned long long)arg3 hints:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)getSystemBudgetsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithLibraryServicesManager:(id)arg1;
+- (void)invalidate;
 - (BOOL)isConnectedToChangeTracker;
 - (BOOL)isResourceTransferTaskAliveWithTaskWithIdentifier:(id)arg1;
 - (id)lastKnownCloudVersionFromDisk;

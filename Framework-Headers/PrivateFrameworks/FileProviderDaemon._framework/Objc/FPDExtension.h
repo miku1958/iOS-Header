@@ -40,7 +40,6 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)reindexAllSearchableItemsForRequest:(id)arg1 acknowledgementHandler:(CDUnknownBlockType)arg2;
 - (void)removeTrashedItemsOlderThanDate:(id)arg1 request:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)writeCheckReportTo:(id)arg1 limitNumberOfItems:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

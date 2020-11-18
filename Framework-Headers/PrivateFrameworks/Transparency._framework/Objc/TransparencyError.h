@@ -14,6 +14,7 @@
 + (id)errorWithDomain:(id)arg1 code:(long long)arg2 errorLevel:(unsigned long long)arg3 underlyingError:(id)arg4 description:(id)arg5;
 + (id)errorWithDomain:(id)arg1 code:(long long)arg2 errorLevel:(unsigned long long)arg3 underlyingError:(id)arg4 description:(id)arg5 arguments:(struct __va_list_tag [1])arg6;
 + (id)errorWithDomain:(id)arg1 code:(long long)arg2 underlyingError:(id)arg3 description:(id)arg4;
++ (BOOL)hasUnknownSPKIHashError:(id *)arg1;
 
 @end
 

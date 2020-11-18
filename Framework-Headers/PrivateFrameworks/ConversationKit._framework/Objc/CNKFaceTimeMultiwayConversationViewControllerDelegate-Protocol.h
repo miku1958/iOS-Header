@@ -10,5 +10,6 @@
 - (void)viewController:(UIViewController *)arg1 setStatusBarHidden:(BOOL)arg2;
 - (void)viewControllerDidRequestAddParticipants:(UIViewController *)arg1;
 - (void)viewControllerDidRequestRoutePickerFrom:(UIView *)arg1;
+- (void)viewControllerDidRequestTemporaryPreventSuspension:(UIViewController *)arg1;
 @end
 

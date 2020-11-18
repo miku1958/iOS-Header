@@ -121,6 +121,7 @@
 - (void)_adjustScrollViewContentOffsetForInsets;
 - (void)_adjustZoomForEnteringMode:(BOOL)arg1;
 - (float)_calculateZoomScale:(BOOL)arg1 inView:(id)arg2;
+- (BOOL)_canShowWhileLocked;
 - (void)_centerImageInScrollView;
 - (BOOL)_clientIsWallpaper;
 - (void)_configureViews;

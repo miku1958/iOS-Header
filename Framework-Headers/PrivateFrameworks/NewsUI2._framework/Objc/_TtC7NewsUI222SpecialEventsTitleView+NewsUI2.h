@@ -10,6 +10,7 @@
 
 @interface _TtC7NewsUI222SpecialEventsTitleView (NewsUI2)
 
+@property (nonatomic) struct CGPoint accessibilityActivationPoint;
 @property (nonatomic, copy) NSString *accessibilityLabel;
 @property (nonatomic) BOOL isAccessibilityElement;
 

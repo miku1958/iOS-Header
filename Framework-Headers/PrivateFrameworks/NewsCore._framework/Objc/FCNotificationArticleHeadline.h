@@ -104,7 +104,7 @@
 - (id)iAdKeywords;
 - (id)iAdSectionIDs;
 - (id)identifier;
-- (id)initWithArticlePayload:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3 rapidUpdatesTimeout:(long long)arg4;
+- (id)initWithArticlePayload:(id)arg1 sourceChannel:(id)arg2 assetManager:(id)arg3;
 - (BOOL)isBoundToContext;
 - (BOOL)isBundlePaid;
 - (BOOL)isDeleted;

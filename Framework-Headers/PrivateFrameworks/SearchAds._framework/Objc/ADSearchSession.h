@@ -47,9 +47,10 @@
 - (id)requestedTemplateTypeParameter;
 - (id)sponsoredSearchRequestForLanguageLocale:(id)arg1;
 - (BOOL)startUpdatingIDs;
+- (void)updateClickData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateClickDataWith:(id)arg1;
+- (void)updateDESRecord:(id)arg1 forEvent:(long long)arg2;
 - (void)updateFrequencyCapData:(id)arg1;
-- (void)updateSponsoredFrequencyCapData:(id)arg1;
 - (void)updateToroDownloadData:(id)arg1 forType:(long long)arg2;
 - (id)userTargetingProperties;
 

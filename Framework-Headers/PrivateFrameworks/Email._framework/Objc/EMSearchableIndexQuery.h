@@ -12,7 +12,7 @@
 #import <Email/EMSearchableIndexQueryBuilder-Protocol.h>
 #import <Email/NSProgressReporting-Protocol.h>
 
-@class CSSearchQuery, EFPromise, EMSearchableIndexQueryExpression, NSArray, NSLock, NSProgress, NSString;
+@class CSSearchQuery, EFPromise, EMSearchableIndexQueryExpression, NSArray, NSError, NSLock, NSProgress, NSString;
 
 @interface EMSearchableIndexQuery : NSObject <EFLoggable, EMSearchableIndexQueryBuilder, EFSignpostable, EFCancelable, NSProgressReporting>
 {
@@ -41,6 +41,7 @@
     NSString *_logPrefixString;
     NSString *_queryStatus;
     long long _count;
+    NSError *_simulatedFailedQueryError;
     CSSearchQuery *_query;
 }
 
@@ -57,6 +58,7 @@
 @property (copy, nonatomic) NSArray *fetchAttributes; // @synthesize fetchAttributes=_fetchAttributes;
 @property (copy, nonatomic) CDUnknownBlockType gatheredBlock; // @synthesize gatheredBlock=_gatheredBlock;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isCancelled;
 @property (readonly, nonatomic) BOOL isFinished;
 @property (nonatomic) BOOL live; // @synthesize live=_live;
 @property (nonatomic) BOOL liveQueryDidGather; // @synthesize liveQueryDidGather=_liveQueryDidGather;
@@ -72,6 +74,7 @@
 @property (copy, nonatomic) CDUnknownBlockType removedItemsBlock; // @synthesize removedItemsBlock=_removedItemsBlock;
 @property (copy, nonatomic) CDUnknownBlockType resultsBlock; // @synthesize resultsBlock=_resultsBlock;
 @property (readonly) unsigned long long signpostID;
+@property (strong, nonatomic) NSError *simulatedFailedQueryError; // @synthesize simulatedFailedQueryError=_simulatedFailedQueryError;
 @property (readonly) Class superclass;
 
 + (id)_modifierStringFromModifiers:(unsigned long long)arg1;
@@ -88,6 +91,7 @@
 + (id)signpostLog;
 - (void).cxx_destruct;
 - (void)_cancel;
+- (void)_cancelQuery;
 - (void)_changeCount:(long long)arg1;
 - (void)_changedItems:(id)arg1;
 - (void)_completed;
@@ -114,6 +118,7 @@
 - (void)dealloc;
 - (id)init;
 - (id)initWithExpression:(id)arg1 builder:(CDUnknownBlockType)arg2;
+- (void)simulateFailedQueryWithError:(id)arg1;
 - (void)start;
 
 @end

@@ -5,11 +5,13 @@
 //
 
 #import <NewsCore/NFCopying-Protocol.h>
+#import <NewsCore/NSObject-Protocol.h>
 
 @class FCForYouGroupsConfiguration, FCNotificationsConfiguration, FCPaidBundleConfiguration, FCPersonalizationTreatment, FCTopStoriesConfiguration, FCVideoGroupsConfig, NSArray, NSDictionary, NSNumber, NSString, NTPBTodayConfig;
 
-@protocol FCCoreConfiguration <NFCopying>
+@protocol FCCoreConfiguration <NSObject, NFCopying>
 
+@property (readonly, nonatomic) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
 @property (readonly, nonatomic) long long appConfigRefreshRate;
 @property (readonly, nonatomic) long long articleRapidUpdatesTimeout;
 @property (readonly, nonatomic) NSString *breakingNewsChannelID;
@@ -69,6 +71,7 @@
 @property (readonly, nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds;
 @property (readonly, nonatomic) long long subscriptionsPlacardGlobalMaximumPerDay;
 @property (readonly, nonatomic) long long subscriptionsPlacardPublisherFrequencyInSeconds;
+@property (readonly, nonatomic) NSString *todayFeedKnobs;
 @property (readonly, nonatomic) FCTopStoriesConfiguration *topStoriesConfig;
 @property (readonly, nonatomic) NSString *topVideosChannelID;
 @property (readonly, nonatomic) NSString *trendingTagID;

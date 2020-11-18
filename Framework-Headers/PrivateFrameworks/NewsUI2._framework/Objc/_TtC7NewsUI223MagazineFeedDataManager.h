@@ -22,6 +22,7 @@
     MISSING_TYPE *lastRefreshDate;
     MISSING_TYPE *tagService;
     MISSING_TYPE *notificationManager;
+    MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *subscriptionService;
 }
 

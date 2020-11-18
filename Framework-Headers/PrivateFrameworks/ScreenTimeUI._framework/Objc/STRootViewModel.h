@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL isSharingUsageData;
 @property (copy, nonatomic) STUIUser *me; // @synthesize me=_me;
 @property (readonly, nonatomic, getter=isScreenTimeEnabled) BOOL screenTimeEnabled;
+@property (readonly, nonatomic) BOOL shouldShowCompatibilityAlerts;
 @property (readonly, nonatomic, getter=isWebUsageEnabled) BOOL webUsageEnabled;
 
 + (id)keyPathsForValuesAffectingCanSetUpFamily;

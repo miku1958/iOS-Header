@@ -15,6 +15,7 @@
 {
     BOOL _pressed;
     double _force;
+    unsigned long long _shape;
     AXPIFingerLayer *_cursorLayer;
     id<AXPIFingerAppearanceDelegate> _appearanceDelegate;
     CAShapeLayer *_progressLayer;
@@ -31,11 +32,11 @@
 @property (nonatomic, getter=isPressed) BOOL pressed; // @synthesize pressed=_pressed;
 @property (strong, nonatomic) CAShapeLayer *progressLayer; // @synthesize progressLayer=_progressLayer;
 @property (nonatomic, getter=isSelected) BOOL selected;
+@property (nonatomic) unsigned long long shape; // @synthesize shape=_shape;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_createProgressLayerWithDuration:(double)arg1 center:(struct CGPoint)arg2 radius:(double)arg3;
-- (struct CGPath *)_drawFullCircleWithCenter:(struct CGPoint)arg1 radius:(double)arg2 clockwise:(BOOL)arg3;
+- (id)_createProgressLayerWithDuration:(double)arg1 inRect:(struct CGRect)arg2;
 - (double)_iconScaleForForce:(double)arg1;
 - (BOOL)accessibilityIgnoresInvertColors;
 - (void)animateCircularProgressWithDuration:(double)arg1 completion:(CDUnknownBlockType)arg2;

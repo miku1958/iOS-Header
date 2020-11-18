@@ -31,10 +31,12 @@
     unsigned long long _sendProgressSendCount;
     unsigned long long _sendProgressTotalCount;
     CKFullScreenBalloonViewController *_fullScreenBalloonViewController;
+    long long _acknowledgmentToSend;
     CDUnknownBlockType _overrideScrollBlock;
     STLockoutViewController *_lockoutViewController;
 }
 
+@property (nonatomic) long long acknowledgmentToSend; // @synthesize acknowledgmentToSend=_acknowledgmentToSend;
 @property (readonly, nonatomic) double balloonMaxWidth;
 @property (readonly, nonatomic) IMChat *chat;
 @property (readonly, nonatomic) CKTranscriptCollectionView *collectionView;
@@ -96,6 +98,7 @@
 - (void)chat:(id)arg1 progressDidChange:(float)arg2 sendingMessages:(id)arg3 sendCount:(unsigned long long)arg4 totalCount:(unsigned long long)arg5 finished:(BOOL)arg6;
 - (void)contentInsetDidChange;
 - (void)contentInsetWillChange:(struct UIEdgeInsets)arg1 animated:(BOOL)arg2 duration:(double)arg3;
+- (BOOL)conversationAllowedByScreenTime;
 - (void)dealloc;
 - (struct CGRect)fullScreenBalloonViewController:(id)arg1 balloonFrameForChatItem:(id)arg2;
 - (void)fullScreenBalloonViewController:(id)arg1 didAppearAnimated:(BOOL)arg2;

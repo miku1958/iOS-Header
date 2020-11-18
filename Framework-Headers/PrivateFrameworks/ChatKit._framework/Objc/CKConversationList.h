@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKConversation, NSMutableArray;
+@class CKConversation, NSMutableArray, NSMutableDictionary;
 
 @interface CKConversationList : NSObject
 {
@@ -14,17 +14,26 @@
     BOOL _loadingConversations;
     BOOL _loadedConversations;
     BOOL _remergingConversations;
+    BOOL _holdingWasKnownSenderUpdates;
     CKConversation *_pendingConversation;
+    NSMutableDictionary *_conversationsDictionary;
+    unsigned long long _filteredConversationCount;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *conversationsDictionary; // @synthesize conversationsDictionary=_conversationsDictionary;
+@property (nonatomic) unsigned long long filteredConversationCount; // @synthesize filteredConversationCount=_filteredConversationCount;
+@property (nonatomic) BOOL holdingWasKnownSenderUpdates; // @synthesize holdingWasKnownSenderUpdates=_holdingWasKnownSenderUpdates;
 @property (readonly, nonatomic) BOOL loadedConversations; // @synthesize loadedConversations=_loadedConversations;
 @property (readonly, nonatomic) BOOL loadingConversations; // @synthesize loadingConversations=_loadingConversations;
 @property (strong, nonatomic) CKConversation *pendingConversation; // @synthesize pendingConversation=_pendingConversation;
 @property (nonatomic) BOOL remergingConversations; // @synthesize remergingConversations=_remergingConversations;
 
 + (void)_handleRegistryDidLoadNotification:(id)arg1;
++ (id)conversationListAlertSuppressionContextForFilterMode:(unsigned long long)arg1;
 + (void)initialize;
++ (id)numberForFilterMode:(unsigned long long)arg1;
 + (id)sharedConversationList;
++ (id)stringForFilterMode:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)_abChanged:(id)arg1;
 - (void)_abPartialChanged:(id)arg1;
@@ -47,12 +56,19 @@
 - (void)_handleRegistryWillUnregisterChatNotification:(id)arg1;
 - (BOOL)_isUnreadChat:(id)arg1 ignoringMessages:(id)arg2;
 - (BOOL)_messageFilteringEnabled;
+- (BOOL)_messageIsFromFilteredSenderServiceIsSMS:(BOOL)arg1 lastMessageIsSMS:(BOOL)arg2 isContact:(BOOL)arg3 isFiltered:(BOOL)arg4 isSpam:(BOOL)arg5 unknownFilteringEnabled:(BOOL)arg6 smsSpamFilteringEnabled:(BOOL)arg7;
+- (BOOL)_messageSpamFilteringEnabled;
+- (BOOL)_messageUnknownFilteringEnabled;
 - (void)_postConversationListChangedNotification;
 - (void)_postConversationListUpdateVisibleConversationsNotificationForUID:(id)arg1;
+- (void)_setConversations:(id)arg1 forFilterMode:(unsigned long long)arg2;
 - (BOOL)_shouldBailBeginTrackingForCurrentProcess;
+- (BOOL)_shouldCleanupFilter;
 - (BOOL)_shouldFilterForParticipants:(id)arg1;
+- (BOOL)_shouldShowInboxView;
 - (id)_testingTrackedConversations;
 - (void)beginTrackingConversation:(id)arg1 forChat:(id)arg2;
+- (void)beginWasKnownSenderHold;
 - (id)conversationForExistingChat:(id)arg1;
 - (id)conversationForExistingChatWithGUID:(id)arg1;
 - (id)conversationForExistingChatWithGroupID:(id)arg1;
@@ -61,23 +77,31 @@
 - (id)conversationForHandles:(id)arg1 displayName:(id)arg2 joinedChatsOnly:(BOOL)arg3 create:(BOOL)arg4;
 - (id)conversationForHandles:(id)arg1 displayName:(id)arg2 lastAddressedHandle:(id)arg3 lastAddressedSIMID:(id)arg4 joinedChatsOnly:(BOOL)arg5 create:(BOOL)arg6;
 - (id)conversations;
+- (id)conversationsForFilterMode:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)deleteConversation:(id)arg1;
 - (void)deleteConversations:(id)arg1;
 - (id)description;
+- (unsigned long long)filterModeForConversation:(id)arg1;
 - (id)firstUnreadFilteredConversationIgnoringMessages:(id)arg1;
 - (BOOL)hasActiveConversations;
 - (id)init;
+- (BOOL)isHoldingWasKnownSenderUpdates;
 - (id)pendingConversationCreatingIfNecessary;
+- (void)releaseWasKnownSenderHold;
+- (void)removeConversation:(id)arg1;
 - (void)resetCaches;
 - (void)resort;
 - (void)setNeedsReload;
 - (void)stopTrackingConversation:(id)arg1;
 - (id)topMostConversation;
 - (void)unpendConversation;
-- (long long)unreadCount;
+- (long long)unreadCountForFilterMode:(unsigned long long)arg1;
 - (long long)unreadFilteredConversationCountIgnoringMessages:(id)arg1;
 - (id)unreadLastMessages;
+- (void)updateConversationFilteredFlagsAndReportSpam;
+- (void)updateConversationListsAndSortIfEnabled;
+- (void)updateConversationsWasKnownSender;
 
 @end
 

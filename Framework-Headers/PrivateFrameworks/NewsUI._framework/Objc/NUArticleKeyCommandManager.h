@@ -12,16 +12,19 @@
 
 @interface NUArticleKeyCommandManager : NSObject <NUArticleKeyCommandManager>
 {
+    BOOL _hasBeenTraversed;
     UIScrollView *_scrollView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL hasBeenTraversed; // @synthesize hasBeenTraversed=_hasBeenTraversed;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)handleKey:(id)arg1 flags:(long long)arg2;
 - (void)handleKeyCommand:(id)arg1;
 - (id)keyCommandsWithSelector:(SEL)arg1;
 - (void)registerScrollView:(id)arg1;

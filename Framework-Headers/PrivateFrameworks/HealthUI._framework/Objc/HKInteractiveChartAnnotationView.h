@@ -15,18 +15,20 @@
     UIStackView *_columnStack;
     UIStackView *_containerStack;
     UIStackView *_marginStack;
+    long long _context;
 }
 
 @property (strong, nonatomic) UIStackView *columnStack; // @synthesize columnStack=_columnStack;
 @property (strong, nonatomic) UIStackView *containerStack; // @synthesize containerStack=_containerStack;
+@property (nonatomic) long long context; // @synthesize context=_context;
 @property (weak, nonatomic) id<HKInteractiveChartAnnotationViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (strong, nonatomic) UIStackView *marginStack; // @synthesize marginStack=_marginStack;
 
 - (void).cxx_destruct;
 - (void)_configureStacks;
 - (id)_createSeparatorView;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithContext:(long long)arg1;
 - (void)lowerPriorityConstraint:(id)arg1;
 - (void)reloadData;
 

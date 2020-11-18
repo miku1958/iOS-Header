@@ -62,7 +62,7 @@ __attribute__((visibility("hidden")))
 - (void)_setCKInfo:(id)arg1;
 - (void)_setItemScope:(unsigned char)arg1;
 - (void)_setParentID:(id)arg1;
-- (void)_updateMetadataFromFSAtPath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3 isPackageFault:(BOOL)arg4;
+- (void)_updateMetadataFromFSAtPath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3 isPackageFault:(BOOL)arg4 readonlyShareChild:(BOOL)arg5;
 - (void)_updateStatMeta:(id)arg1;
 - (BOOL)checkStateWithItemID:(id)arg1 logToFile:(struct __sFILE *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -79,9 +79,8 @@ __attribute__((visibility("hidden")))
 - (void)setFilename:(id)arg1;
 - (void)setFilename:(id)arg1 forcePhysicalName:(id)arg2 serverName:(id)arg3;
 - (void)updateAsAppLibraryRoot:(id)arg1;
-- (void)updateFromFSAtPath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3 isPackageFault:(BOOL)arg4;
-- (void)updateItemModeFromSharingOptions:(unsigned long long)arg1;
-- (void)updateLocationAndMetaFromFSAtPath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3 isPackageFault:(BOOL)arg4;
+- (void)updateFromFSAtPath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3 isPackageFault:(BOOL)arg4 readonlyShareChild:(BOOL)arg5;
+- (void)updateLocationAndMetaFromFSAtPath:(id)arg1 itemID:(id)arg2 parentGlobalID:(id)arg3 isPackageFault:(BOOL)arg4 readonlyShareChild:(BOOL)arg5;
 
 @end
 

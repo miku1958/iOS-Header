@@ -46,6 +46,7 @@
 - (void).cxx_destruct;
 - (id)_allContentViewControllers;
 - (id)_allViewControllers;
+- (BOOL)_canShowWhileLocked;
 - (id)_controlItemsForItem:(id)arg1;
 - (id)_createCellContainerForViewController:(id)arg1 forItem:(id)arg2;
 - (void)_propagateInteractiveContentStateForChildViewControllers:(id)arg1;

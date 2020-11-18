@@ -215,6 +215,7 @@
 @property (readonly, nonatomic) BOOL faceTimeVideoIsWhitelisted;
 @property (readonly, nonatomic) UIImage *facetimeAudioIcon;
 @property (readonly, nonatomic) double fadeInBubbleAnimationDuration;
+@property (readonly, nonatomic) UIFont *filterCellTitleFont;
 @property (readonly, nonatomic) UIImage *forwardImage;
 @property (readonly, nonatomic) UIImage *genericDocumentIcon;
 @property (readonly, nonatomic) UIImage *grayA1AckImage;
@@ -273,6 +274,7 @@
 @property (readonly, nonatomic) double maxTranscriptPortraitHeight;
 @property (readonly, nonatomic) double maxTranscriptPortraitWidth;
 @property (readonly, nonatomic) double mediumTranscriptSpace;
+@property (readonly, nonatomic) double messageAcknowledgementVotingViewHeight;
 @property (readonly, nonatomic) struct CGSize messageAcknowledgmentPickerBarAcknowledgmentImageSize;
 @property (readonly, nonatomic) struct CGSize messageAcknowledgmentPickerBarAcknowledgmentItemBalloonSize;
 @property (readonly, nonatomic) NSArray *messageAcknowledgmentPickerBarAcknowledgmentOrder;
@@ -616,6 +618,8 @@
 - (id)red_chevronImage;
 - (struct CGSize)roundBalloonMaskSizeWithTailShape:(BOOL)arg1;
 - (id)roundBalloonName;
+- (void)setupNavBarAppearanceWithNavigationController:(id)arg1;
+- (void)setupNavBarAppearanceWithNavigationController:(id)arg1 withBackgroundColor:(id)arg2;
 - (BOOL)shouldShowAvatarForWidth:(double)arg1;
 - (id)siri_chevronImage;
 - (struct UIEdgeInsets)skinnyBalloonMaskCapInsets;

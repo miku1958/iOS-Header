@@ -15,10 +15,13 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *coordinator;
     MISSING_TYPE *dataManager;
     MISSING_TYPE *blueprintProvider;
-    MISSING_TYPE *pageBlueprintProvider;
+    MISSING_TYPE *pageBlueprintManager;
     MISSING_TYPE *pageBlueprintFactory;
     MISSING_TYPE *sharingIntentFactory;
     MISSING_TYPE *followingManager;
+    MISSING_TYPE *interstitialAdManager;
+    MISSING_TYPE *insertAdvertisementBlueprintModifier;
+    MISSING_TYPE *pageTracker;
 }
 
 - (void).cxx_destruct;

@@ -16,7 +16,7 @@
 
 @interface HMDResidentDevice : HMFObject <HMDDeviceControllerDelegate, HMDBackingStoreObjectProtocol, HMFDumpState, HMFLogging, NSSecureCoding>
 {
-    HMFUnfairLock *__lock;
+    HMFUnfairLock *_lock;
     HMDDevice *_device;
     HMDDeviceController *_deviceController;
     BOOL _enabled;
@@ -32,7 +32,7 @@
 @property (nonatomic) long long batteryState; // @synthesize batteryState=_batteryState;
 @property (readonly, getter=isBlocked) BOOL blocked;
 @property (readonly, nonatomic) unsigned long long capabilities;
-@property (nonatomic, getter=isConfirmed) BOOL confirmed; // @synthesize confirmed=_confirmed;
+@property (readonly, nonatomic, getter=isConfirmed) BOOL confirmed; // @synthesize confirmed=_confirmed;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HMDDevice *device; // @synthesize device=_device;

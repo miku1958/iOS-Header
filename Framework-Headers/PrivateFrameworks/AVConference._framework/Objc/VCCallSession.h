@@ -387,7 +387,6 @@ __attribute__((visibility("hidden")))
 - (void)handlePrimaryConnectionChanged:(id)arg1 oldPrimaryConnection:(id)arg2;
 - (void)handleReceivedPiggybackBlobIDS:(id)arg1;
 - (void)handleReceivedPiggybackBlobLegacy:(id)arg1;
-- (BOOL)handshakeComplete:(struct SSLContext *)arg1 withError:(struct __CFError **)arg2;
 - (id)init;
 - (id)initWithDeviceRole:(int)arg1 transportType:(unsigned int)arg2 isGKVoiceChat:(BOOL)arg3 reportingHierarchyToken:(id)arg4;
 - (void)initWithRelevantStorebagEntries;

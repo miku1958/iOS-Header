@@ -11,7 +11,9 @@
 @protocol AMSMultiUserServiceProtocol <NSObject>
 - (void)generateInfoWithCompletion:(void (^)(NSString *, NSError *))arg1;
 - (void)iTunesAccountForHomeWithIdentifier:(NSUUID *)arg1 completion:(void (^)(ACAccount *, NSError *))arg2;
+- (void)multiUserTokenForAccount:(ACAccount *)arg1 completion:(void (^)(NSString *, NSError *))arg2;
 - (void)refreshAfterTimeInterval:(double)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)setiTunesAccount:(ACAccount *)arg1 forHomeWithIdentifier:(NSUUID *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
+- (void)updateMultiUserTokenForAccount:(ACAccount *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 @end
 

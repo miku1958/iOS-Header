@@ -61,6 +61,7 @@
 
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)allModelsObservable;
 - (void)checkinLaunchTasksForUndiscoverableActionsForContact:(id)arg1;
 - (void)contactActionsController:(id)arg1 didSelectAction:(id)arg2;

@@ -17,16 +17,17 @@
     NSString *_providerName;
 }
 
-@property (readonly, nonatomic) NSAttributedString *disclosureArrow;
 @property (readonly, nonatomic) UIImage *providerImage; // @synthesize providerImage=_providerImage;
 @property (readonly, nonatomic) NSString *providerName; // @synthesize providerName=_providerName;
 @property (readonly, nonatomic) NSString *providerString; // @synthesize providerString=_providerString;
 @property (readonly, nonatomic) NSAttributedString *string; // @synthesize string=_string;
 @property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
++ (id)attributionUrlFromRegionalAttributions:(id)arg1;
 - (void).cxx_destruct;
 - (id)attributedStringWithImage:(id)arg1;
-- (id)initWithStringAttributes:(id)arg1 regionalAttributions:(id)arg2 globalAttributions:(id)arg3 scale:(double)arg4 allowMultiLine:(BOOL)arg5;
+- (id)disclosureArrow;
+- (id)initWithStringAttributes:(id)arg1 regionalAttributions:(id)arg2 underlineText:(BOOL)arg3 applyLinkAttribution:(BOOL)arg4 scale:(double)arg5;
 
 @end
 

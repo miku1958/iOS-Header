@@ -12,7 +12,7 @@
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
 #import <NewsUI/SXScrollViewControllerDelegate-Protocol.h>
 
-@class FCObservable, NFEventManager, NFMultiDelegate, NSHashTable, NSString, NUArticleAdManager, SXScrollViewController, UIResponder, UIScrollView;
+@class FCObservable, NFEventManager, NFMultiDelegate, NSHashTable, NSString, NUArticleAdManager, NUArticleContext, SXScrollViewController, SXVideoPlayerViewControllerManager, UIResponder, UIScrollView;
 @protocol NUANFDebugSettingsProvider, NUArticleDataProvider, NUArticleKeyCommandManager, NUDocumentSectionBlueprintProvider, NUEndOfArticleDataProvider, NULoadingDelegate, SXAnalyticsReporting;
 
 @interface NUArticleViewController : UIViewController <SXScrollViewControllerDelegate, SXAnalyticsReporting, NUANFDebugSettingsObserver, NULoadable, NUBarCompressible>
@@ -27,6 +27,7 @@
     NFMultiDelegate *_multiScrollViewDelegate;
     UIScrollView *_scrollView;
     NSString *_anchorFragment;
+    NUArticleContext *_articleContext;
     SXScrollViewController *_scrollViewController;
     id<NUArticleDataProvider> _articleDataProvider;
     id<NUEndOfArticleDataProvider> _endOfArticleDataProvider;
@@ -37,11 +38,13 @@
     id<NUDocumentSectionBlueprintProvider> _documentSectionBlueprintProvider;
     id<NUANFDebugSettingsProvider> _debugSettingsProvider;
     unsigned long long _presentationMode;
+    SXVideoPlayerViewControllerManager *_videoPlayerViewControllerManager;
 }
 
 @property (readonly, nonatomic) NUArticleAdManager *adManager; // @synthesize adManager=_adManager;
 @property (weak, nonatomic) id<SXAnalyticsReporting> analyticsReporting; // @synthesize analyticsReporting=_analyticsReporting;
 @property (copy, nonatomic) NSString *anchorFragment; // @synthesize anchorFragment=_anchorFragment;
+@property (strong, nonatomic) NUArticleContext *articleContext; // @synthesize articleContext=_articleContext;
 @property (readonly, nonatomic) id<NUArticleDataProvider> articleDataProvider; // @synthesize articleDataProvider=_articleDataProvider;
 @property (nonatomic) BOOL articleIsPresentingFullscreen; // @synthesize articleIsPresentingFullscreen=_articleIsPresentingFullscreen;
 @property (readonly, nonatomic) FCObservable *articleViewStyler; // @synthesize articleViewStyler=_articleViewStyler;
@@ -64,6 +67,7 @@
 @property (readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly, nonatomic) SXScrollViewController *scrollViewController; // @synthesize scrollViewController=_scrollViewController;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) SXVideoPlayerViewControllerManager *videoPlayerViewControllerManager; // @synthesize videoPlayerViewControllerManager=_videoPlayerViewControllerManager;
 
 + (id)_parentOrPresentingViewControllerFor:(id)arg1;
 - (void).cxx_destruct;
@@ -71,7 +75,7 @@
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
 - (id)currentPresentationAttributes;
-- (id)initWithArticleDataProvider:(id)arg1 scrollViewController:(id)arg2 articleAdManager:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 loadingListeners:(id)arg6 headerBlueprintProvider:(id)arg7 debugSettingsProvider:(id)arg8;
+- (id)initWithArticleDataProvider:(id)arg1 scrollViewController:(id)arg2 articleAdManager:(id)arg3 appStateMonitor:(id)arg4 keyCommandManager:(id)arg5 loadingListeners:(id)arg6 headerBlueprintProvider:(id)arg7 debugSettingsProvider:(id)arg8 videoPlayerViewControllerManager:(id)arg9;
 - (BOOL)isPreviewingOrShowingHardPaywall;
 - (double)navigationBarHeightForScrollViewController:(id)arg1;
 - (long long)preferredStatusBarStyle;
@@ -80,6 +84,7 @@
 - (BOOL)resignFirstResponder;
 - (void)restoreScrollPositionIfNeeded;
 - (void)scrollToTopAnimated:(BOOL)arg1;
+- (void)scrollViewController:(id)arg1 didApplyDocumentStyle:(id)arg2;
 - (void)scrollViewController:(id)arg1 enableNavigation:(BOOL)arg2;
 - (BOOL)scrollViewController:(id)arg1 shouldOccludeAccessibilityElement:(id)arg2;
 - (void)scrollViewControllerDidLayoutContent:(id)arg1;

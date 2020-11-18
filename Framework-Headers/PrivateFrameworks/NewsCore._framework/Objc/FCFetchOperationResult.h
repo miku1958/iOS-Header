@@ -6,21 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class NSError;
+@class NSError, NSSet;
 
 @interface FCFetchOperationResult : NSObject
 {
-    BOOL _anyMissingObjects;
     id _fetchedObject;
     unsigned long long _status;
     unsigned long long _fetchResult;
     NSError *_error;
+    NSSet *_missingObjectDescriptions;
 }
 
-@property (nonatomic) BOOL anyMissingObjects; // @synthesize anyMissingObjects=_anyMissingObjects;
+@property (readonly, nonatomic) BOOL anyMissingObjects;
 @property (readonly, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) unsigned long long fetchResult; // @synthesize fetchResult=_fetchResult;
 @property (readonly, nonatomic) id fetchedObject; // @synthesize fetchedObject=_fetchedObject;
+@property (copy, nonatomic) NSSet *missingObjectDescriptions; // @synthesize missingObjectDescriptions=_missingObjectDescriptions;
 @property (readonly, nonatomic) unsigned long long status; // @synthesize status=_status;
 
 + (id)resultWithStatus:(unsigned long long)arg1 fetchedObject:(id)arg2 error:(id)arg3;

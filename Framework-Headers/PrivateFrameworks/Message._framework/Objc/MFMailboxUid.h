@@ -27,7 +27,7 @@
     NSString *_realFullPath;
     NSArray *_extraAttributes;
     NSNumber *_pendingLevel;
-    int _type;
+    _Atomic int _type;
     NSMutableDictionary *_userInfo;
 }
 
@@ -39,6 +39,7 @@
 @property (readonly, copy, nonatomic) NSString *ef_publicDescription;
 @property (strong, nonatomic) NSArray *extraAttributes; // @synthesize extraAttributes=_extraAttributes;
 @property (readonly) unsigned long long hash;
+@property int mailboxType;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) EMObjectID *objectID;
 @property (readonly, copy, nonatomic) NSString *persistentID;
@@ -106,7 +107,6 @@
 - (BOOL)isValid;
 - (BOOL)isVisible;
 - (long long)mailboxID;
-- (int)mailboxType;
 - (BOOL)mergeWithUserInfo:(id)arg1;
 - (id)mutableCopyOfChildren;
 - (id)mutableDictionaryRepresentation;
@@ -126,7 +126,6 @@
 - (void)setAttributes:(unsigned int)arg1;
 - (BOOL)setChildren:(id)arg1;
 - (void)setCriterion:(id)arg1;
-- (void)setMailboxType:(int)arg1;
 - (void)setName:(id)arg1;
 - (void)setParent:(id)arg1;
 - (void)setRepresentedAccount:(id)arg1;

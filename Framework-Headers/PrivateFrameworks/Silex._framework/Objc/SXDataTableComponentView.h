@@ -11,7 +11,7 @@
 #import <Silex/SXViewportChangeListener-Protocol.h>
 #import <Silex/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CALayer, NSString, STScrollView, SXDataTableBlueprint, SXDataTableComponentController, SXDataTableDictionary, SXDataTableView, SXTangierController;
+@class CALayer, NSString, SXDataTableBlueprint, SXDataTableComponentController, SXDataTableDictionary, SXDataTableView, SXScrollView, SXTangierController;
 @protocol SXComponentActionHandler, SXComponentController, SXImageViewFactory, SXTextComponentLayoutHosting;
 
 @interface SXDataTableComponentView : SXComponentView <SXDataTableViewDataSource, SXTangierControllerDelegate, SXViewportChangeListener, UIGestureRecognizerDelegate>
@@ -25,7 +25,7 @@
     SXDataTableBlueprint *_blueprint;
     SXDataTableDictionary *_textViews;
     SXDataTableDictionary *_imageViews;
-    STScrollView *_scrollView;
+    SXScrollView *_scrollView;
     SXTangierController *_tangierController;
     CALayer *_rightShadow;
     CALayer *_leftShadow;
@@ -42,7 +42,7 @@
 @property (strong, nonatomic) SXDataTableDictionary *imageViews; // @synthesize imageViews=_imageViews;
 @property (strong, nonatomic) CALayer *leftShadow; // @synthesize leftShadow=_leftShadow;
 @property (strong, nonatomic) CALayer *rightShadow; // @synthesize rightShadow=_rightShadow;
-@property (strong, nonatomic) STScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property (strong, nonatomic) SXScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SXDataTableView *tableView; // @synthesize tableView=_tableView;
 @property (strong, nonatomic) SXTangierController *tangierController; // @synthesize tangierController=_tangierController;

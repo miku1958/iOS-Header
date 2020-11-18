@@ -444,6 +444,7 @@
 - (void)_togglePictureInPicture;
 - (void)_toggleStrikeThrough:(id)arg1;
 - (void)_transliterateChinese:(id)arg1;
+- (void)_triggerSystemPreviewActionOnElement:(unsigned long long)arg1 document:(unsigned long long)arg2 page:(unsigned long long)arg3;
 - (void)_updateMediaPlaybackControlsManager;
 - (void)_updateScrollViewBackground;
 - (void)_updateScrollViewInsetAdjustmentBehavior;

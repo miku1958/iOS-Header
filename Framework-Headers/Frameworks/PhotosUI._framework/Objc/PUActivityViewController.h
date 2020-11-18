@@ -102,6 +102,7 @@
 - (void)_presentCMMSuggestionAlertForActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_presentConfidentialityWarningIfNeededForActivity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeRemakerProgressView;
+- (void)_sendCPAnalyticsShareEventWithActivityType:(id)arg1 didComplete:(BOOL)arg2;
 - (void)_sharingManagerDidBeginPublishing:(id)arg1;
 - (void)_sharingStyleDidChangeToExpanded:(id)arg1;
 - (BOOL)_shouldAutomaticallySendAsCMMForActivity:(id)arg1;

@@ -8,14 +8,16 @@
 
 #import <ScreenTimeCore/NSFetchedResultsControllerDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSDateInterval, NSFetchedResultsController, NSManagedObjectID, NSString;
+@class NSArray, NSDate, NSDateInterval, NSFetchedResultsController, NSNumber, NSSet, NSString;
 
 @interface STUsageReporter : NSObject <NSFetchedResultsControllerDelegate>
 {
     BOOL _includeTotalUsageDetailItem;
     NSDateInterval *_dateInterval;
-    NSManagedObjectID *_userManagedObjectID;
+    NSNumber *_userDSID;
     NSFetchedResultsController *_fetchedResultsController;
+    NSFetchedResultsController *_installedAppsController;
+    NSSet *_installedBundleIdentifiers;
 }
 
 @property (readonly, copy) NSArray *applicationAndWebUsage;
@@ -27,19 +29,23 @@
 @property (readonly, copy) NSDate *firstPickup;
 @property (readonly) unsigned long long hash;
 @property BOOL includeTotalUsageDetailItem; // @synthesize includeTotalUsageDetailItem=_includeTotalUsageDetailItem;
+@property (strong, nonatomic) NSFetchedResultsController *installedAppsController; // @synthesize installedAppsController=_installedAppsController;
+@property (copy) NSSet *installedBundleIdentifiers; // @synthesize installedBundleIdentifiers=_installedBundleIdentifiers;
 @property (readonly, copy) NSArray *notifications;
 @property (readonly, copy) NSArray *pickups;
 @property (readonly) Class superclass;
 @property (readonly) long long totalNotifications;
 @property (readonly) long long totalPickups;
 @property (readonly) double totalScreenTime;
-@property (readonly, copy) NSManagedObjectID *userManagedObjectID; // @synthesize userManagedObjectID=_userManagedObjectID;
+@property (readonly, copy) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
 
++ (id)keyPathsForValuesAffectingNotifications;
 - (void).cxx_destruct;
 - (id)_categoryUsageWithoutAllUsageItem;
 - (void)_enumerateUsageBlocksWithUnitGranularity:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)_firstPickupFromUsageBlocks:(id)arg1;
 - (id)_ratiosForCategory:(id)arg1 perCalendarUnit:(unsigned long long)arg2 useTotalScreenTime:(BOOL)arg3;
+- (void)_updateInstalledBundleIdentifiers;
 - (id)categoryRatiosPerCalendarUnit:(unsigned long long)arg1 numberOfCategories:(unsigned long long)arg2;
 - (void)controllerDidChangeContent:(id)arg1;
 - (id)firstPickupOfIntervalWithMostPickups:(unsigned long long *)arg1 perCalendarUnit:(unsigned long long)arg2;

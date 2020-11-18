@@ -9,11 +9,9 @@
 #import <NewsCore/FCFeedViewportRemoveGroupOperationType-Protocol.h>
 
 @class FCFeedDescriptor, FCFeedViewport, FCFeedViewportDiff, NSString;
-@protocol FCCoreConfiguration;
 
 @interface FCFeedViewportRemoveGroupOperation : FCOperation <FCFeedViewportRemoveGroupOperationType>
 {
-    id<FCCoreConfiguration> _configuration;
     FCFeedViewport *_viewport;
     NSString *_groupID;
     FCFeedDescriptor *_feedDescriptor;
@@ -22,7 +20,6 @@
     FCFeedViewportDiff *_viewportDiff;
 }
 
-@property (copy, nonatomic) id<FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) FCFeedDescriptor *feedDescriptor; // @synthesize feedDescriptor=_feedDescriptor;

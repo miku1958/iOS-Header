@@ -173,7 +173,6 @@
 - (void)_enableMultiUserWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_enableNotification:(BOOL)arg1 forCharacteristics:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_enableNotifications:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_enableRemoteAccess:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_executeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_findUserWithID:(id)arg1;
 - (id)_getContainerForAppData:(id)arg1;
@@ -253,7 +252,6 @@
 - (void)_notifyUpdatedSupportedFeatures;
 - (void)_performBatchCharacteristicRequest:(id)arg1;
 - (id)_privateDelegate;
-- (void)_queryRemoteAccessWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_registerNotificationHandlers;
 - (void)_removeAccessory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_removeActionSet:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

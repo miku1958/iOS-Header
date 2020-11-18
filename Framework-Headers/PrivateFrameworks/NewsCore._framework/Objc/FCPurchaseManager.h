@@ -11,11 +11,12 @@
 #import <NewsCore/FCPurchaseManagerType-Protocol.h>
 
 @class FCKeyValueStore, FCPurchaseController, NSMutableDictionary, NSString;
-@protocol FCBundleSubscriptionManagerType, FCCoreConfigurationManager, FCPaymentTransactionManager, FCPurchaseIntegrityChecker, FCPurchaseManagerDelegate, FCPurchaseReceiptProvider;
+@protocol FCBundleSubscriptionManagerType, FCCoreConfigurationManager, FCPaymentTransactionManager, FCPurchaseFlowOverrideProviderType, FCPurchaseIntegrityChecker, FCPurchaseManagerDelegate, FCPurchaseReceiptProvider;
 
 @interface FCPurchaseManager : NSObject <FCAppActivityObserving, FCPaymentTransactionManagerDelegate, FCPurchaseManagerType>
 {
     id<FCPurchaseManagerDelegate> _delegate;
+    id<FCPurchaseFlowOverrideProviderType> purchaseFlowOverrideProvider;
     FCKeyValueStore *_localStore;
     id<FCPaymentTransactionManager> _paymentTransactionManager;
     id<FCPurchaseIntegrityChecker> _purchaseIntegrityChecker;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) NSMutableDictionary *ongoingPurchaseEntriesByProductID; // @synthesize ongoingPurchaseEntriesByProductID=_ongoingPurchaseEntriesByProductID;
 @property (readonly, nonatomic) id<FCPaymentTransactionManager> paymentTransactionManager; // @synthesize paymentTransactionManager=_paymentTransactionManager;
 @property (readonly, nonatomic) FCPurchaseController *purchaseController; // @synthesize purchaseController=_purchaseController;
+@property (strong, nonatomic) id<FCPurchaseFlowOverrideProviderType> purchaseFlowOverrideProvider; // @synthesize purchaseFlowOverrideProvider;
 @property (readonly, nonatomic) id<FCPurchaseIntegrityChecker> purchaseIntegrityChecker; // @synthesize purchaseIntegrityChecker=_purchaseIntegrityChecker;
 @property (readonly, nonatomic) id<FCPurchaseReceiptProvider> purchaseReceiptProvider; // @synthesize purchaseReceiptProvider=_purchaseReceiptProvider;
 @property (readonly) Class superclass;

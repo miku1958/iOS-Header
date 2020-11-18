@@ -60,7 +60,6 @@
 - (void)updateLastUsedDateForFileURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)valuesForAttributes:(id)arg1 forItemAtURL:(id)arg2 error:(id *)arg3;
 - (void)wakeUpForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)writeCheckReportTo:(id)arg1 limitNumberOfItems:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

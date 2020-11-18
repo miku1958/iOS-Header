@@ -46,6 +46,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (double)_separatorHeight;
 - (void)bluetoothAvailabilityDidChange:(id)arg1;
 - (void)contentCategoryDidChange:(id)arg1;

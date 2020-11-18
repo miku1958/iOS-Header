@@ -10,6 +10,7 @@
 
 @interface _TtC5TeaUI45StackedBlueprintLayoutCollectionSectionSolver : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *supplementarySolver;
     MISSING_TYPE *layoutDirection;
     MISSING_TYPE *layoutOptions;
     MISSING_TYPE *fillStyle;

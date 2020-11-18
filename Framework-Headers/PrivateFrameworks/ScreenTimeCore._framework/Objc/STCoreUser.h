@@ -32,6 +32,8 @@
 @property (copy, nonatomic) NSNumber *dsid; // @dynamic dsid;
 @property (readonly, copy) NSString *effectivePasscode;
 @property (copy) NSString *effectivePasscode;
+@property (readonly, copy) NSString *effectiveRecoveryAltDSID;
+@property (copy) NSString *effectiveRecoveryAltDSID;
 @property (copy, nonatomic) NSString *familyMemberType; // @dynamic familyMemberType;
 @property (copy, nonatomic) NSString *familyName; // @dynamic familyName;
 @property (strong, nonatomic) STFamilyOrganizationSettings *familySettings; // @dynamic familySettings;
@@ -78,6 +80,7 @@
 + (id)keyPathsForValuesAffectingCommunicationWhileLimitedPolicy;
 + (id)keyPathsForValuesAffectingContactManagementState;
 + (id)keyPathsForValuesAffectingEffectivePasscode;
++ (id)keyPathsForValuesAffectingEffectiveRecoveryAltDSID;
 + (id)keyPathsForValuesAffectingLocalizedFullName;
 + (id)keyPathsForValuesAffectingManaged;
 + (id)keyPathsForValuesAffectingManaging;

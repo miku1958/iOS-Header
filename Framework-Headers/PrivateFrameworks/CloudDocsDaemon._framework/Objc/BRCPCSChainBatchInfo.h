@@ -6,25 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class BRCAppLibrary, NSArray, NSMutableArray, NSMutableDictionary;
+@class BRCAppLibrary, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet;
 
 __attribute__((visibility("hidden")))
 @interface BRCPCSChainBatchInfo : NSObject
 {
     NSMutableArray *_fullyChainRecordBatch;
     NSMutableDictionary *_fullyChainRecordInfoMap;
-    NSMutableDictionary *_halfChainedParentMap;
+    NSMutableDictionary *_halfChainedRecordMap;
+    NSMutableSet *_alreadyHalfChainedRecords;
+    NSMutableArray *_recordsForFirstPhase;
     BRCAppLibrary *_appLibrary;
+    BOOL _should2PhasePCSChain;
 }
 
 @property (readonly, nonatomic) unsigned long long batchCount;
-@property (readonly, copy, nonatomic) NSArray *records;
+@property (readonly, nonatomic) NSDictionary *halfChainedRecordMap; // @synthesize halfChainedRecordMap=_halfChainedRecordMap;
+@property (readonly, nonatomic) NSArray *recordsForFirstPhase;
+@property (readonly, nonatomic) NSArray *recordsForSecondPhase;
+@property (readonly, nonatomic) BOOL should2PhasePCSChain;
 
 - (void).cxx_destruct;
+- (void)_chainPreppedRecordToParent:(id)arg1;
 - (void)addFullyChainedRecordInfo:(id)arg1;
 - (void)chainPreparedRecordBatch:(id)arg1;
 - (BOOL)containsRecordInfo:(id)arg1;
 - (id)initWithAppLibrary:(id)arg1;
+- (void)prepareFirstPhaseRecordBatch;
 
 @end
 

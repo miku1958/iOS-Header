@@ -42,6 +42,7 @@
 - (id)_annotationView;
 - (void)_callCompletionHandler;
 - (CDStruct_c3b9c2ee)_clampCoordinateSpan:(CDStruct_c3b9c2ee)arg1;
+- (id)_customAnnotation;
 - (id)_deriveSnapshotOptions:(BOOL)arg1;
 - (void)_fetchMuninViewforMapItem:(id)arg1;
 - (void)_getParentItem;
@@ -64,6 +65,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)loadMapItem:(id)arg1 coordinateSpan:(CDStruct_c3b9c2ee)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)shouldHideMuninForParsec;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)triggerAnimation;
 

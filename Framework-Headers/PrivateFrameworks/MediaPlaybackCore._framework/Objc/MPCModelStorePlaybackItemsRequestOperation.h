@@ -22,6 +22,8 @@
 @property (readonly, copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;
 
 - (void).cxx_destruct;
+- (void)_executeWithUserIdentity:(id)arg1;
+- (void)_validateUserIdentityForRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (void)execute;
 - (id)initWithRequest:(id)arg1 responseHandler:(CDUnknownBlockType)arg2;

@@ -7,6 +7,7 @@
 #import <NewsArticles/FCTagRanking-Protocol.h>
 
 @class FCFeedPersonalizedItems, NSArray, NSString;
+@protocol FCFeedPersonalizingItem;
 
 @protocol FCFeedPersonalizing <FCTagRanking>
 - (double)decayedPublisherDiversificationPenalty;
@@ -21,7 +22,8 @@
 
 @optional
 - (NSArray *)bestOfGroupFromItems:(NSArray *)arg1 configurationSet:(long long)arg2;
-- (double)personalizedScoreForFeatureWithIdentifier:(NSString *)arg1 items:(NSArray *)arg2 baselineClicksMultiplier:(double)arg3;
+- (void)fetchAggregateMapForPersonalizingItem:(id<FCFeedPersonalizingItem>)arg1 completion:(void (^)(NSDictionary *))arg2;
+- (double)personalizedScoreForFeatureWithIdentifier:(NSString *)arg1 items:(NSArray *)arg2;
 - (void)prepareFavorites:(void (^)(void))arg1;
 - (id)scoreProfilesForItems:(NSArray *)arg1 configurationSet:(long long)arg2;
 - (FCFeedPersonalizedItems *)sortItems:(NSArray *)arg1 configurationSet:(long long)arg2;

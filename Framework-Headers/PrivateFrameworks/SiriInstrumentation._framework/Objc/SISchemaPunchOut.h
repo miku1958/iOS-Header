@@ -6,12 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaPunchOut-Protocol.h>
-
 @class NSData, NSString, SISchemaViewContainer;
 
-@interface SISchemaPunchOut : PBCodable <SISchemaPunchOut, NSSecureCoding>
+@interface SISchemaPunchOut : PBCodable
 {
     NSString *_appID;
     NSString *_urlScheme;
@@ -20,17 +17,14 @@
 }
 
 @property (copy, nonatomic) NSString *appID; // @synthesize appID=_appID;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *urlScheme; // @synthesize urlScheme=_urlScheme;
 @property (strong, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
 @property (copy, nonatomic) NSData *viewElementID; // @synthesize viewElementID=_viewElementID;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

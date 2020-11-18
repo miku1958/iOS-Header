@@ -6,24 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-@class NSDictionary, UIImageView, UILabel;
+@class NSDictionary, NSTextAttachment, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface CNContactDowntimeView : UIView
 {
     NSDictionary *_ab_textAttributes;
     UILabel *_downtimeLabel;
-    UIImageView *_lockImageView;
+    NSTextAttachment *_imageAttachment;
 }
 
 @property (copy, nonatomic) NSDictionary *ab_textAttributes; // @synthesize ab_textAttributes=_ab_textAttributes;
 @property (readonly, nonatomic) UILabel *downtimeLabel; // @synthesize downtimeLabel=_downtimeLabel;
-@property (readonly, nonatomic) UIImageView *lockImageView; // @synthesize lockImageView=_lockImageView;
+@property (readonly, nonatomic) NSTextAttachment *imageAttachment; // @synthesize imageAttachment=_imageAttachment;
 
++ (id)lockImageAttachment;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
+- (void)invalidateIntrinsicContentSize;
+- (void)setupAttributedText;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

@@ -9,11 +9,12 @@
 #import <EmailDaemon/EDMessageQueryHelperDelegate-Protocol.h>
 #import <EmailDaemon/EFContentProtectionObserver-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
+#import <EmailDaemon/EMCollectionItemIDStateCapturerDelegate-Protocol.h>
 
-@class EDMessageQueryHelper, EDThreadReloadSummaryHelper, EDUpdateThrottler, EDVIPManager, EMMailboxScope, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString;
+@class EDMessageQueryHelper, EDThreadReloadSummaryHelper, EDUpdateThrottler, EDVIPManager, EMCollectionItemIDStateCapturer, EMMailboxScope, NSArray, NSMutableDictionary, NSMutableOrderedSet, NSObject, NSString;
 @protocol EDRemoteSearchProvider, EFScheduler, EMMessageListItemQueryResultsObserver, OS_dispatch_queue;
 
-@interface EDInMemoryThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver>
+@interface EDInMemoryThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver, EMCollectionItemIDStateCapturerDelegate>
 {
     NSMutableOrderedSet *_conversationIDs;
     NSMutableDictionary *_threadsByConversationID;
@@ -35,6 +36,7 @@
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
     NSObject<OS_dispatch_queue> *_resultQueue;
     EMMailboxScope *_mailboxScope;
+    EMCollectionItemIDStateCapturer *_stateCapturer;
 }
 
 @property (readonly, nonatomic) CDUnknownBlockType comparator; // @synthesize comparator=_comparator;
@@ -54,6 +56,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *resultQueue; // @synthesize resultQueue=_resultQueue;
 @property (readonly, nonatomic) id<EMMessageListItemQueryResultsObserver> resultsObserverIfNotPaused;
 @property (readonly, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
+@property (readonly, nonatomic) EMCollectionItemIDStateCapturer *stateCapturer; // @synthesize stateCapturer=_stateCapturer;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) EDUpdateThrottler *updateThrottler; // @synthesize updateThrottler=_updateThrottler;
 @property (readonly, nonatomic) EDVIPManager *vipManager; // @synthesize vipManager=_vipManager;
@@ -90,6 +93,8 @@
 - (void)contentProtectionStateChanged:(int)arg1 previousState:(int)arg2;
 - (void)dealloc;
 - (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 vipManager:(id)arg4 remoteSearchProvider:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7;
+- (id)itemIDsForStateCaptureWithErrorString:(id *)arg1;
+- (id)labelForStateCapture;
 - (id)messagesForThread:(id)arg1;
 - (void)queryHelper:(id)arg1 conversationIDDidChangeForMessages:(id)arg2 fromConversationID:(long long)arg3;
 - (void)queryHelper:(id)arg1 conversationNotificationLevelDidChangeForConversation:(long long)arg2 conversationID:(long long)arg3;
@@ -104,6 +109,7 @@
 - (void)queryHelperNeedsRestart:(id)arg1;
 - (void)start;
 - (void)tearDown;
+- (void)test_tearDown;
 - (id)threadForObjectID:(id)arg1 error:(id *)arg2;
 
 @end

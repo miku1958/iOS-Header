@@ -437,6 +437,7 @@
 - (void)adjustPreferredContentSize;
 - (id)alreadyPickedGroups;
 - (id)applyContactStyle;
+- (void)authorizeSave;
 - (void)blockListDidChange:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
 - (void)cancelAsyncLookups;
@@ -491,6 +492,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)initializeTableViewsForHeaderHeight;
 - (struct UIEdgeInsets)insetsForContactTableView:(id)arg1;
+- (BOOL)isHeaderViewPhotoProhibited;
 - (BOOL)isModalInPresentation;
 - (BOOL)isNicknameProhibited;
 - (BOOL)isOutOfProcess;

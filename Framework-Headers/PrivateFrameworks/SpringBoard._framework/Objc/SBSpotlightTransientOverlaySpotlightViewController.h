@@ -10,6 +10,7 @@
 {
 }
 
+- (BOOL)_canShowWhileLocked;
 - (unsigned long long)level;
 - (unsigned long long)remoteSearchViewPresentationSource;
 

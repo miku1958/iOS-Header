@@ -24,7 +24,7 @@
     BOOL _dirty;
     BOOL _payloadAvailable;
     BOOL _payloadRequested;
-    BOOL _isActive;
+    BOOL _active;
     NSUUID *_uuid;
     unsigned long long _type;
     NSString *_title;
@@ -51,6 +51,7 @@
     _LSUserActivityWasContinuedInfo *_wasContinuedInfo;
 }
 
+@property BOOL active; // @synthesize active=_active;
 @property (copy) NSString *activityType; // @synthesize activityType=_activityType;
 @property (copy) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy) NSString *contentUserAction; // @synthesize contentUserAction=_contentUserAction;
@@ -67,7 +68,6 @@
 @property (copy) NSDictionary *encodingOptions; // @synthesize encodingOptions=_encodingOptions;
 @property (copy) NSError *error; // @synthesize error=_error;
 @property (copy) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property BOOL isActive; // @synthesize isActive=_isActive;
 @property (copy) NSSet *keywords; // @synthesize keywords=_keywords;
 @property (copy) NSDate *lastInterestingTime; // @synthesize lastInterestingTime=_lastInterestingTime;
 @property (copy) NSDictionary *options; // @synthesize options=_options;

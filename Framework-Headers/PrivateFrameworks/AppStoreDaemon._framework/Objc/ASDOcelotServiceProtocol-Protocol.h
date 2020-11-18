@@ -22,6 +22,7 @@
 - (void)sbsyncWithDuration:(NSNumber *)arg1 completionBlock:(void (^)(BOOL, NSError *))arg2;
 - (void)sendPayoutMetricsWithCompletionBlock:(void (^)(BOOL, NSError *))arg1;
 - (void)sendSummaryMetricsWithCompletionBlock:(void (^)(BOOL, NSError *))arg1;
+- (void)subscriptionDetailsWithCompletionBlock:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)subscriptionStateWithCompletionBlock:(void (^)(BOOL, NSError *))arg1;
 - (void)topAppsForAccount:(ACAccount *)arg1 completionBlock:(void (^)(NSArray *, NSError *))arg2;
 @end

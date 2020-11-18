@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactStore, NSArray, NSSet, NSUserDefaults, _CDInteractionCache, _CDInteractionStore, _PSHeuristics, _PSInteractionAndContactMonitor, _PSKNNModel, _PSRuleMiningModel;
+@class CNContactStore, NSArray, NSDictionary, NSSet, NSString, NSUserDefaults, _CDInteractionCache, _CDInteractionStore, _PSHeuristics, _PSInteractionAndContactMonitor, _PSKNNModel, _PSRuleMiningModel;
 @protocol _DKKnowledgeQuerying><_DKKnowledgeSaving;
 
 @interface _PSEnsembleModel : NSObject
@@ -19,6 +19,7 @@
     NSUserDefaults *_peopleSuggesterDefaults;
     CNContactStore *_contactStore;
     NSArray *_defaultContactKeysToFetch;
+    NSString *_trialID;
     _PSRuleMiningModel *_ruleMiningModel;
     _PSKNNModel *_knnModel;
     _PSKNNModel *_knnMapsModel;
@@ -27,6 +28,7 @@
     _PSHeuristics *_heuristics;
     _PSInteractionAndContactMonitor *_contactMonitor;
     NSSet *_cachedSupportedBundleIDs;
+    NSDictionary *_psConfig;
 }
 
 @property (strong, nonatomic) NSSet *cachedSupportedBundleIDs; // @synthesize cachedSupportedBundleIDs=_cachedSupportedBundleIDs;
@@ -42,13 +44,17 @@
 @property (strong, nonatomic) id<_DKKnowledgeQuerying><_DKKnowledgeSaving> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 @property (strong, nonatomic) _CDInteractionCache *messageInteractionCache; // @synthesize messageInteractionCache=_messageInteractionCache;
 @property (strong, nonatomic) NSUserDefaults *peopleSuggesterDefaults; // @synthesize peopleSuggesterDefaults=_peopleSuggesterDefaults;
+@property (strong) NSDictionary *psConfig; // @synthesize psConfig=_psConfig;
 @property (strong, nonatomic) _PSRuleMiningModel *ruleMiningModel; // @synthesize ruleMiningModel=_ruleMiningModel;
 @property (strong, nonatomic) _CDInteractionCache *shareInteractionCache; // @synthesize shareInteractionCache=_shareInteractionCache;
+@property (strong, nonatomic) NSString *trialID; // @synthesize trialID=_trialID;
 
 - (void).cxx_destruct;
 - (id)appExtensionSuggestionsFromContext:(id)arg1;
 - (id)fetchShareSheetSupportedBundleIDs;
 - (id)init;
+- (void)loadDefaultPSConfig;
+- (BOOL)loadPSConfig:(id)arg1;
 - (id)mapsSuggestionArrayWithArray:(id)arg1 appendingUniqueElementsFromArray:(id)arg2 contactResolver:(id)arg3 meContactId:(id)arg4;
 - (void)populateCaches;
 - (void)populateCachesWithSupportedBundleIDs:(id)arg1;
@@ -60,6 +66,7 @@
 - (id)rankedNameSuggestionsWithPredictionContext:(id)arg1 name:(id)arg2;
 - (id)suggestZKWMessagesSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)suggestionsFromSuggestionProxies:(id)arg1 supportedBundleIDs:(id)arg2 contactKeysToFetch:(id)arg3 meContactIdentifier:(id)arg4 maxSuggestions:(unsigned long long)arg5;
+- (void)updateTrialID:(id)arg1;
 
 @end
 

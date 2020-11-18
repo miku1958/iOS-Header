@@ -8,7 +8,7 @@
 
 #import <Email/EFLoggable-Protocol.h>
 
-@class EFObservable, EMRemoteConnection, NSProgress, NSString;
+@class EFObservable, EMRemoteConnection, NSString;
 @protocol EFObserver;
 
 @interface EMClientState : NSObject <EFLoggable>
@@ -16,11 +16,9 @@
     BOOL _isForeground;
     EFObservable<EFObserver> *_foregroundObservable;
     EMRemoteConnection *_connection;
-    NSProgress *_daemonBooster;
 }
 
 @property (strong) EMRemoteConnection *connection; // @synthesize connection=_connection;
-@property (strong) NSProgress *daemonBooster; // @synthesize daemonBooster=_daemonBooster;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) EFObservable<EFObserver> *foregroundObservable; // @synthesize foregroundObservable=_foregroundObservable;
@@ -34,6 +32,7 @@
 - (void)_handleApplicationDidEnterBackground;
 - (void)_handleApplicationWillEnterForeground;
 - (void)_updateRemoteInterface;
+- (id)daemonBoosterWithDescription:(id)arg1;
 - (id)initWithRemoteConnection:(id)arg1;
 - (void)setCurrentlyVisibleMailboxes:(id)arg1;
 

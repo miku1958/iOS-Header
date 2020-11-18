@@ -21,7 +21,5 @@
 @property (readonly, nonatomic) NSString *identifier; // @dynamic identifier;
 @property (readonly) Class superclass;
 
-- (id)URLWithValue:(id)arg1 withType:(int)arg2;
-
 @end
 

@@ -25,11 +25,10 @@
 - (void).cxx_destruct;
 - (void)_dynamicUserInterfaceTraitDidChange;
 - (void)didMoveToWindow;
+- (struct CGSize)effectiveLayoutSizeFittingSize:(struct CGSize)arg1;
 - (id)init;
-- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tlk_updateForAppearance:(id)arg1;
 
 @end

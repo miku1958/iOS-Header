@@ -7,7 +7,7 @@
 #import <CloudDocsDaemon/NSCopying-Protocol.h>
 #import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
 
-@class BRCAccountSession, BRCClientZone, BRCItemID, BRCServerZone, BRCStatInfo, NSNumber;
+@class BRCAccountSession, BRCClientZone, BRCItemID, BRCServerZone, BRCStatInfo, BRCUserRowID;
 
 @protocol BRCItem <NSCopying, NSSecureCoding>
 
@@ -23,7 +23,7 @@
 @property (readonly, nonatomic) BOOL isSymLink;
 @property (readonly, nonatomic) BOOL isZoneRoot;
 @property (readonly, nonatomic) BRCItemID *itemID;
-@property (readonly, nonatomic) NSNumber *ownerKey;
+@property (readonly, nonatomic) BRCUserRowID *ownerKey;
 @property (readonly, nonatomic) BRCServerZone *serverZone;
 @property (readonly, nonatomic) BRCAccountSession *session;
 @property (nonatomic) unsigned long long sharingOptions;

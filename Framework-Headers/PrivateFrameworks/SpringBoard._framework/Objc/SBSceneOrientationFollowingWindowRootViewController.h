@@ -10,6 +10,7 @@
 {
 }
 
+- (BOOL)_canShowWhileLocked;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)viewWillLayoutSubviews;
 

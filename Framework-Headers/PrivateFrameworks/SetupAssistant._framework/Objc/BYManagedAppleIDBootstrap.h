@@ -29,6 +29,7 @@
 
 + (id)delegateBundleIDsForManagedAccount;
 + (BOOL)isFirstTimeLogin;
++ (BOOL)isManagedAppleIDSignedIn;
 + (BOOL)isMultiUser;
 + (BOOL)isSettingUpMultiUser;
 + (id)sharedManager;

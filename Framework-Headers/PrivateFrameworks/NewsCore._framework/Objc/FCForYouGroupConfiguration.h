@@ -29,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (long long)compareGroupPosition:(id)arg1;
+- (id)copyWithGroupPosition:(unsigned long long)arg1 precedingGroupsCount:(unsigned long long)arg2 precedingGroupsCountForFirstGroup:(unsigned long long)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

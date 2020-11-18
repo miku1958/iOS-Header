@@ -37,7 +37,6 @@
 + (id)keysToFetch;
 + (id)meContactFromStore:(id)arg1 schedulerProvider:(id)arg2;
 - (void).cxx_destruct;
-- (void)commonInitWithMainContactStoreFacade:(id)arg1 fetchFamilyCircleRequest:(id)arg2 matchFamilyMembersWithContacts:(BOOL)arg3 schedulerProvider:(id)arg4;
 - (id)createFamilyFuture;
 - (id)familyInfo;
 - (id)init;

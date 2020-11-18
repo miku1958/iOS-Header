@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long eventCode;
+@property (readonly, nonatomic) NSString *eventName;
 @property (readonly, nonatomic) NSMutableDictionary *eventPayload;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned int sessionID; // @synthesize sessionID=_sessionID;

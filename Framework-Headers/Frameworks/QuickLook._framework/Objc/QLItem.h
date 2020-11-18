@@ -29,6 +29,7 @@
     BOOL _shouldUseExtensionPreview;
     BOOL _hasDeterminedShouldUseExtensionThumbnail;
     BOOL _shouldUseExtensionThumbnail;
+    BOOL _hasDeterminedPredictedPreferredContentSizeForOrbPlatter;
     BOOL _needsAccessToExternalResources;
     NSNumber *_previewItemProviderProgress;
     FPItem *_fpItem;
@@ -58,6 +59,7 @@
     unsigned long long _editedFileBehavior;
     FPSandboxingURLWrapper *_sandboxingURLWrapper;
     NSDictionary *_clientPreviewOptions;
+    struct CGSize _preferredContentSizeForOrbPlatter;
 }
 
 @property (readonly) NSString *MIMEType;
@@ -79,6 +81,7 @@
 @property (nonatomic) long long editingMode; // @synthesize editingMode=_editingMode;
 @property (strong, nonatomic) QLItemFetcher *fetcher; // @synthesize fetcher=_fetcher;
 @property (strong) FPItem *fpItem; // @synthesize fpItem=_fpItem;
+@property (nonatomic) BOOL hasDeterminedPredictedPreferredContentSizeForOrbPlatter; // @synthesize hasDeterminedPredictedPreferredContentSizeForOrbPlatter=_hasDeterminedPredictedPreferredContentSizeForOrbPlatter;
 @property (nonatomic) BOOL hasDeterminedShouldUseExtensionPreview; // @dynamic hasDeterminedShouldUseExtensionPreview;
 @property (nonatomic) BOOL hasDeterminedShouldUseExtensionPreview; // @synthesize hasDeterminedShouldUseExtensionPreview=_hasDeterminedShouldUseExtensionPreview;
 @property (nonatomic) BOOL hasDeterminedShouldUseExtensionThumbnail; // @dynamic hasDeterminedShouldUseExtensionThumbnail;
@@ -93,6 +96,7 @@
 @property (nonatomic) BOOL originalContentWasUpdated; // @synthesize originalContentWasUpdated=_originalContentWasUpdated;
 @property (strong, nonatomic) id<QLPreviewItemPrivateProtocol> originalPreviewItem; // @synthesize originalPreviewItem=_originalPreviewItem;
 @property (strong) NSString *password; // @synthesize password=_password;
+@property (nonatomic) struct CGSize preferredContentSizeForOrbPlatter; // @synthesize preferredContentSizeForOrbPlatter=_preferredContentSizeForOrbPlatter;
 @property (strong, nonatomic) NSString *previewItemContentType; // @synthesize previewItemContentType=_previewItemContentType;
 @property (strong) NSData *previewItemData; // @synthesize previewItemData=_previewItemData;
 @property (strong) id<QLPreviewItemDataProvider> previewItemDataProvider; // @synthesize previewItemDataProvider=_previewItemDataProvider;
@@ -145,6 +149,7 @@
 - (void)dealloc;
 - (long long)defaultWhitePointAdaptivityStyle;
 - (void)encodeWithCoder:(id)arg1;
+- (struct CGSize)imageRawSizeOfContents:(id)arg1 withPreviewItemType:(unsigned long long)arg2 imageIsAnimated:(BOOL *)arg3;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithData:(id)arg1 contentType:(id)arg2 previewTitle:(id)arg3;
@@ -161,6 +166,8 @@
 - (BOOL)isStandardQuickLookType;
 - (double)maxLoadingTime;
 - (unsigned long long)maximumNumberOfCachedPreviews;
+- (struct CGSize)predictedPreferredContentSizeForOrbPlatter;
+- (struct CGSize)preferredContentSizeForOrbPlatterWithURL:(id)arg1;
 - (void)prepareSaveURL:(CDUnknownBlockType)arg1;
 - (void)prepareShareableURL:(CDUnknownBlockType)arg1;
 - (id)previewItemPrintingViewControllerClassName;

@@ -47,6 +47,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_isSinglePagePDFWithContentURL:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

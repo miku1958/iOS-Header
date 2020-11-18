@@ -20,7 +20,7 @@
 @property (strong) NSMutableDictionary *mapProtectionClassToBundleIdToItem; // @synthesize mapProtectionClassToBundleIdToItem=_mapProtectionClassToBundleIdToItem;
 @property (strong) NSMutableArray *sectionCSItems; // @synthesize sectionCSItems=_sectionCSItems;
 
-+ (id)getRenderEngagementCounts;
++ (id)copyRenderEngagementCounts;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_indexItemWithIdentifier:(id)arg1 bundleID:(id)arg2 startDate:(id)arg3 pc:(id)arg4;

@@ -4,18 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXAction.h>
+#import <objc/NSObject.h>
+
+#import <Silex/SXAction-Protocol.h>
 
 @class NSString;
 
-@interface SXEmailAction : SXAction
+@interface SXEmailAction : NSObject <SXAction>
 {
     NSString *_recipient;
     NSString *_subject;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *recipient; // @synthesize recipient=_recipient;
 @property (readonly, nonatomic) NSString *subject; // @synthesize subject=_subject;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *type;
 
 - (void).cxx_destruct;
 - (id)initWithRecipient:(id)arg1 subject:(id)arg2;

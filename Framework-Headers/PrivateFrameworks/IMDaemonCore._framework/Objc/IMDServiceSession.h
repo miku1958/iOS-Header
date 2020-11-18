@@ -178,6 +178,7 @@
 - (id)broadcaster;
 - (id)broadcasterForACConferenceListeners;
 - (id)broadcasterForAVConferenceListeners;
+- (id)broadcasterForBlackholeStatus:(BOOL)arg1;
 - (id)broadcasterForChatListeners;
 - (id)broadcasterForChatObserverListeners;
 - (id)broadcasterForListenersWithCapabilities:(unsigned int)arg1;

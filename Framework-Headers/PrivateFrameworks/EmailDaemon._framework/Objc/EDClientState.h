@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <EmailDaemon/EDForegroundReporting-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface EDClientState : NSObject <EFLoggable>
+@interface EDClientState : NSObject <EDForegroundReporting, EFLoggable>
 {
     BOOL _isForeground;
     NSArray *_visibleMailboxesObjectIds;

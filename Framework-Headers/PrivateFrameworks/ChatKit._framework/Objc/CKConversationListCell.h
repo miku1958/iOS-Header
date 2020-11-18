@@ -57,6 +57,7 @@
 - (BOOL)showingEditControl;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (id)summaryAttributedTextForBlockedConversationWithIcon:(BOOL)arg1;
+- (unsigned long long)unreadMessageCount;
 - (void)updateBlockedSummaryLabelIfNeeded;
 - (void)updateContentsForConversation:(id)arg1;
 - (void)updateContentsForConversation:(id)arg1 fastPreview:(BOOL)arg2;

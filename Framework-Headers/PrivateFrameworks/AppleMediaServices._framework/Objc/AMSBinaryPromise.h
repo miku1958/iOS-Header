@@ -31,6 +31,7 @@
 - (BOOL)cancel;
 - (id)catchWithBlock:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)completionHandlerAdapter;
+- (id)continueWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)finishWithError:(id)arg1;
 - (BOOL)finishWithPromise:(id)arg1;
 - (BOOL)finishWithSuccess;

@@ -52,6 +52,7 @@
 - (id)_xpcSyncStorePerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)acceptCalDAVSharedList:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)acceptShareWithMetadata:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)compressedDistributedEvaluationDataWithOptions:(id)arg1 error:(id *)arg2;
 - (unsigned long long)countForFetchRequest:(id)arg1 error:(id *)arg2;
 - (id)createShareForListWithID:(id)arg1 error:(id *)arg2;
 - (id)debugDescription;

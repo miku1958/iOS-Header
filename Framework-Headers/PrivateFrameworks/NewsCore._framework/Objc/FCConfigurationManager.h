@@ -29,7 +29,6 @@
     FCNewsAppConfig *_currentAppConfiguration;
     NSArray *_treatmentIDs;
     NSArray *_segmentSetIDs;
-    NSArray *_widgetChangeTags;
     NSDictionary *_cachedWidgetConfigurationDict;
     NSData *_currentMagazinesConfiguration;
     NSHashTable *_appConfigObservers;
@@ -64,7 +63,6 @@
 @property (nonatomic) BOOL shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *treatmentIDs; // @synthesize treatmentIDs=_treatmentIDs;
-@property (copy, nonatomic) NSArray *widgetChangeTags; // @synthesize widgetChangeTags=_widgetChangeTags;
 
 + (id)internalOverrideAdditionalSegmentSetIDs;
 + (id)internalOverrideSegmentSetIDs;
@@ -76,7 +74,6 @@
 - (void)_configurationDidChangeSignificantConfigChange:(BOOL)arg1;
 - (id)_configurationSettingsWithRequestInfos:(id)arg1 feldsparID:(id)arg2 storefrontID:(id)arg3 contextConfiguration:(id)arg4 useBackgroundRefreshRate:(BOOL)arg5;
 - (unsigned long long)_configurationSourceForSourceName:(id)arg1;
-- (id)_deserializeChangeTags:(id)arg1;
 - (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 forceRefresh:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchRemoteAppWidgetConfigurationIfNeededUseBackgroundRefreshRate:(BOOL)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchRemoteMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -89,7 +86,6 @@
 - (unsigned long long)_remoteConfigurationEnvironmentForContextIdentifier:(long long)arg1;
 - (id)_requestInfoForRequestKey:(id)arg1 storefrontID:(id)arg2 additionalChangeTags:(id)arg3;
 - (id)_responseKeyForRequestKey:(id)arg1;
-- (id)_serializeChangeTags:(id)arg1;
 - (id)_storefrontID;
 - (void)addAppConfigObserver:(id)arg1;
 - (void)addObserver:(id)arg1;

@@ -206,6 +206,7 @@
 - (void)tryToAutoCollectLogsWithErrorString:(NSString *)arg1 sendLogsTo:(NSString *)arg2;
 - (void)tryToDisableAllDevices;
 - (void)unEnrollDeviceForSMSRelay:(NSString *)arg1 account:(NSString *)arg2;
+- (void)unblackholeAndLoadChatWithHandleIDs:(NSArray *)arg1;
 - (void)unregisterAccount:(NSString *)arg1;
 - (void)unvalidateAliases:(NSArray *)arg1 account:(NSString *)arg2;
 - (void)updateAttachmentFileSizes;

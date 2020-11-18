@@ -285,6 +285,7 @@
 - (void)_updateUserActivitySoon;
 - (void)_updateUserActivityTimerFired;
 - (void)_updateUsesNarrowLayout;
+- (void)_updateWebKitExperimentalFeatures;
 - (void)_updateWebViewLayoutSize;
 - (void)_updateWebViewShrinkToFit;
 - (void)_viewDidTransitionToSize:(struct CGSize)arg1;

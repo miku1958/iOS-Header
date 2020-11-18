@@ -25,7 +25,6 @@
 @property (readonly, nonatomic) NSString *remoteAddressAndPort;
 @property (readonly, nonatomic) id<GEORequestCounterTicket> requestCounterTicket;
 @property (readonly, nonatomic) unsigned long long requestedMultipathServiceType;
-@property (readonly, nonatomic) unsigned int taskIdentifier;
 
 - (void)cancel;
 - (void)start;

@@ -19,6 +19,7 @@
 - (void)disableWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)enableWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)getAccountInfoWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
+- (void)getCertificatesWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSData *, NSError *))arg2;
 - (void)getCountrySMSCodesWithRequest:(SecureBackup *)arg1 reply:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)notificationInfoWithReply:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)prepareHSA2EscrowRecordContents:(SecureBackup *)arg1 usesComplexPassphrase:(BOOL)arg2 reply:(void (^)(NSError *))arg3;

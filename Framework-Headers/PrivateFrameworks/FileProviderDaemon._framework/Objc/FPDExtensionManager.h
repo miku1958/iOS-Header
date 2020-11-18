@@ -51,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (id)providerDomainsByIDFromExtensionsByID:(id)arg1;
 - (id)providerWithIdentifier:(id)arg1;
 - (id)providerWithTopLevelBundleIdentifier:(id)arg1;
-- (void)reconnectProviderForURLIfNeeded:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setAlternateContentsURL:(id)arg1 forItemID:(id)arg2;
 - (id)uniquedExtensions:(id)arg1;
 - (id)xattrForName:(id)arg1 url:(id)arg2;

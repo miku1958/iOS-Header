@@ -266,25 +266,10 @@
 	// Properties
 	var n : Int
 	var options : UInt64
-	var mulmod_prime : @convention(c) (_:_:_:_:_:)?
+	var funcs : OpaquePointer?
  }
 
  struct __C.__Unnamed_union_state { }
-
- struct __C.cczp {
-
-	// Properties
-	var n : Int
-	var options : UInt64
-	var mulmod_prime : @convention(c) (_:_:_:_:_:)?
- }
-
- struct __C.cc_ws {
-
-	// Properties
-	var start : UnsafeMutablePointer<UInt64>?
-	var end : UnsafeMutablePointer<UInt64>?
- }
 
  class CryptoKit.Context : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
@@ -293,9 +278,9 @@
 	let mode : UnsafePointer<ccmode_gcm> // +0x18 (0x8)
 
 	// Swift methods
-	0x2790  func CoreCryptoGCMImpl.Context.authenticate<A>(data:) // method 
-	0x2d10  func CoreCryptoGCMImpl.Context.processBlock<A>(data:) // method 
-	0x3300  func CoreCryptoGCMImpl.Context.isValidTag(tag:) // method 
+	0x28b0  func CoreCryptoGCMImpl.Context.authenticate<A>(data:) // method 
+	0x2e30  func CoreCryptoGCMImpl.Context.processBlock<A>(data:) // method 
+	0x3420  func CoreCryptoGCMImpl.Context.isValidTag(tag:) // method 
  }
 
  struct CryptoKit.CoreCryptoGCMImpl {
@@ -413,10 +398,18 @@
 	let digest : A.HashFunction.Digest
  }
 
+ class CryptoKit.Backing {
+ struct CryptoKit.BackingHeader {
+
+	// Properties
+	var count : Int // +0x0
+	var capacity : Int // +0x8
+ }
+
  struct CryptoKit.SecureBytes {
 
 	// Properties
-	var backing : Backing // +0x0
+	var backing : SecureBytes.Backing? // +0x0
  }
 
  struct CryptoKit.Index {
@@ -425,14 +418,6 @@
 	var offset : Int // +0x0
  }
 
- struct CryptoKit.BackingHeader {
-
-	// Properties
-	var count : Int // +0x0
-	var capacity : Int // +0x8
- }
-
- class CryptoKit.Backing {
  struct CryptoKit.CoreCryptoNISTCurvePrivateKeyImpl {
 
 	// Properties
@@ -558,9 +543,9 @@
 	let ctx : UnsafeMutablePointer<ccchacha20poly1305_ctx> // +0x10 (0x8)
 
 	// Swift methods
-	0x210a0  func CoreCryptoChaChaPolyImpl.Context.authenticate<A>(data:) // method 
-	0x21620  func CoreCryptoChaChaPolyImpl.Context.encryptBlockAndAuthenticate<A>(data:) // method 
-	0x21d80  func CoreCryptoChaChaPolyImpl.Context.isValidTag(tag:) // method 
+	0x1e6d0  func CoreCryptoChaChaPolyImpl.Context.authenticate<A>(data:) // method 
+	0x1ec50  func CoreCryptoChaChaPolyImpl.Context.encryptBlockAndAuthenticate<A>(data:) // method 
+	0x1f3b0  func CoreCryptoChaChaPolyImpl.Context.isValidTag(tag:) // method 
  }
 
  struct CryptoKit.CoreCryptoChaChaPolyImpl {

@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, getter=isThreeDTouchEnabled) BOOL threeDTouchEnabled; // @synthesize threeDTouchEnabled=_threeDTouchEnabled;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)contacts;
 - (id)descriptorForRequiredKeys;
 - (void)didUpdateContentForAvatarView:(id)arg1;

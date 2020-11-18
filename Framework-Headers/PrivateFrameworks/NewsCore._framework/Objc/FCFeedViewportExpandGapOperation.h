@@ -48,7 +48,7 @@
 
 + (id)_sanitizeViewport:(id)arg1 context:(id)arg2 feedDescriptor:(id)arg3 configuration:(id)arg4;
 - (void).cxx_destruct;
-- (id)_groupEmitterWithIdentifier:(id)arg1;
+- (void)_fetchAssetsForInsertedGroup:(id)arg1 cachedOnly:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

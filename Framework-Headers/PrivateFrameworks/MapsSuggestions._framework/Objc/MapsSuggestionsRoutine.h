@@ -52,9 +52,11 @@
 - (double)distanceToNearest:(long long)arg1;
 - (BOOL)fetchEntriesForLocation:(id)arg1 period:(struct NSDateInterval *)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)fetchLocationsSinceDate:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (BOOL)fetchSuggestedShortcutsForType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
+- (BOOL)fetchSuggestedShortcutsForType:(long long)arg1 minVisits:(unsigned long long)arg2 maxAge:(double)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithRoutineRequester:(id)arg1 networkRequester:(id)arg2;
+- (id)networkRequester;
+- (BOOL)readMeCardWithMinVisits:(unsigned long long)arg1 maxAge:(double)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)removeParkedCarsAllowingFeature:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)routineRequester;
 - (BOOL)startParkedCarEventsWithHandler:(CDUnknownBlockType)arg1;

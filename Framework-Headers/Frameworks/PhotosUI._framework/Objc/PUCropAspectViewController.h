@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PUCropToolControllerSpec *spec; // @synthesize spec=_spec;
 
 - (void).cxx_destruct;
-- (BOOL)_canShowWhileLocked;
 - (void)aspectButtonPressed:(id)arg1;
 - (id)initWithLayoutOrientation:(long long)arg1 originalSize:(struct CGSize)arg2 currentSize:(struct CGSize)arg3 currentCropAspect:(id)arg4 spec:(id)arg5;
 - (id)matchingCropAspectTo:(id)arg1;

@@ -41,7 +41,7 @@
 - (void)dealloc;
 - (void)destroyAnchor;
 - (void)layoutWithContext:(const struct LayoutContext *)arg1;
-- (struct CGPoint)pointInLayer:(id)arg1;
+- (struct CGPoint)pointInLayer:(id)arg1 bound:(struct CGRect)arg2;
 - (double)pointOffsetForDistanceOffset:(double)arg1;
 - (void)updateIfNeeded;
 

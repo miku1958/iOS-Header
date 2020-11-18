@@ -24,6 +24,7 @@
     BOOL _tetheredCaptureEnabled;
     BOOL _contentReceived;
     BOOL _basicMediaModel;
+    BOOL _ready;
     BOOL _accessRestrictedAppleDevice;
     BOOL _allowsSyncingClock;
     BOOL _isEnumeratingContent;
@@ -33,6 +34,8 @@
     double _timeOffset;
     unsigned long long _batteryLevel;
     CDUnknownBlockType _ptpEventHandler;
+    unsigned long long _estimatedCountOfMediafiles;
+    long long _preflightCountOfObjects;
     double _downloadCancelTimestamp;
     NSMutableIndexSet *_enumeratedObjectIndexes;
     NSMutableArray *_originalMediaFiles;
@@ -92,6 +95,7 @@
 @property (strong, nonatomic) NSMutableIndexSet *enumeratedObjectIndexes; // @synthesize enumeratedObjectIndexes=_enumeratedObjectIndexes;
 @property (nonatomic) long long enumerationOrder; // @synthesize enumerationOrder=_enumerationOrder;
 @property (nonatomic) unsigned long long estMediaObjectCount; // @synthesize estMediaObjectCount=_estMediaObjectCount;
+@property unsigned long long estimatedCountOfMediafiles; // @synthesize estimatedCountOfMediafiles=_estimatedCountOfMediafiles;
 @property (nonatomic) BOOL iCloudPhotosEnabled; // @synthesize iCloudPhotosEnabled=_iCloudPhotosEnabled;
 @property (strong, nonatomic) NSMutableOrderedSet *indexedCameraFiles; // @synthesize indexedCameraFiles=_indexedCameraFiles;
 @property (strong, nonatomic) NSMutableOrderedSet *indexedCameraFolders; // @synthesize indexedCameraFolders=_indexedCameraFolders;
@@ -103,11 +107,13 @@
 @property (readonly, nonatomic) NSString *mountPoint; // @synthesize mountPoint=_mountPoint;
 @property (readonly, nonatomic) unsigned long long numberOfDownloadableItems;
 @property (strong, nonatomic) NSMutableArray *originalMediaFiles; // @synthesize originalMediaFiles=_originalMediaFiles;
+@property long long preflightCountOfObjects; // @synthesize preflightCountOfObjects=_preflightCountOfObjects;
 @property (nonatomic) BOOL preheatMetadata; // @synthesize preheatMetadata=_preheatMetadata;
 @property (readonly) NSString *productType;
 @property (readonly) NSString *productVersion; // @synthesize productVersion=_productVersion;
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (copy, nonatomic) CDUnknownBlockType ptpEventHandler; // @synthesize ptpEventHandler=_ptpEventHandler;
+@property (nonatomic) BOOL ready; // @synthesize ready=_ready;
 @property (readonly) NSArray *supportedSidecarFiles; // @synthesize supportedSidecarFiles=_supportedSidecarFiles;
 @property (readonly, nonatomic) BOOL tetheredCaptureEnabled; // @synthesize tetheredCaptureEnabled=_tetheredCaptureEnabled;
 @property (readonly) double timeOffset; // @synthesize timeOffset=_timeOffset;
@@ -126,6 +132,7 @@
 - (id)cameraFileWithObjectID:(unsigned long long)arg1;
 - (id)cameraFolderWithObjectID:(unsigned long long)arg1;
 - (void)cancelDownload;
+- (unsigned long long)countOfObjects;
 - (void)dealloc;
 - (id)description;
 - (void)discardCameraFiles:(id)arg1;
@@ -172,6 +179,8 @@
 - (BOOL)supportsMediaFormatCatalog;
 - (void)unlockContents;
 - (void)unlockMediaFiles;
+- (void)updateContentCatalogPercentCompleted;
+- (void)updateMediaFilesCount:(id)arg1;
 - (BOOL)updateMediaPresentation;
 
 @end

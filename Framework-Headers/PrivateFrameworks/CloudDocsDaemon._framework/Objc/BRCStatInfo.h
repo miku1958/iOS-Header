@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/NSCopying-Protocol.h>
 #import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
 
-@class BRCItemID, BRFieldCKInfo, BRMangledID, NSData, NSString;
+@class BRCItemID, BRCUserRowID, BRFieldCKInfo, BRMangledID, NSData, NSString;
 
 @interface BRCStatInfo : NSObject <NSCopying, NSSecureCoding>
 {
@@ -29,12 +29,14 @@
     NSData *_finderTags;
     NSString *_trashPutBackPath;
     BRCItemID *_trashPutBackParentID;
+    BRCUserRowID *_creatorRowID;
 }
 
 @property (readonly, nonatomic) BRMangledID *_aliasTargetMangledID;
 @property (readonly, nonatomic) NSString *aliasTarget; // @synthesize aliasTarget=_aliasTarget;
 @property (nonatomic) long long birthtime; // @synthesize birthtime=_birthtime;
 @property (strong, nonatomic) BRFieldCKInfo *ckInfo; // @synthesize ckInfo=_ckInfo;
+@property (strong, nonatomic) BRCUserRowID *creatorRowID; // @synthesize creatorRowID=_creatorRowID;
 @property (nonatomic) long long favoriteRank; // @synthesize favoriteRank=_favoriteRank;
 @property (strong, nonatomic) NSData *finderTags; // @synthesize finderTags=_finderTags;
 @property (nonatomic, getter=isHiddenExt) BOOL hiddenExt; // @synthesize hiddenExt=_hiddenExt;

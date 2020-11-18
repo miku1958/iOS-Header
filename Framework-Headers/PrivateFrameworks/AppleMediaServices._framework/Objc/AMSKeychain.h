@@ -20,7 +20,6 @@
 + (id)_primaryConstraintsForMac;
 + (id)_primaryConstraintsForWatch;
 + (id)_primaryConstraintsWithOptions:(id)arg1;
-+ (void)_writeACLVersionForOptions:(id)arg1;
 + (id)certificateChainForOptions:(id)arg1 error:(id *)arg2;
 + (id)certificateKeychainLabelsForOptions:(id)arg1;
 + (struct __SecKey *)copyPrivateKeyWithContext:(id)arg1 options:(id)arg2 error:(id *)arg3;

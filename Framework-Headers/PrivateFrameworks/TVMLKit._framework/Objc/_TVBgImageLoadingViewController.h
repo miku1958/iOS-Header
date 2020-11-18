@@ -44,6 +44,7 @@
 - (long long)_blurEffectStyle;
 - (void)_dismissViewController:(id)arg1;
 - (BOOL)_isBackdropNeeded;
+- (BOOL)_isNewiOSTVApp;
 - (long long)_overrideLargeTitleDisplayMode;
 - (void)_reparentNavigationItem:(id)arg1;
 - (BOOL)_shouldLoadBackgroundImageAsynchronously;

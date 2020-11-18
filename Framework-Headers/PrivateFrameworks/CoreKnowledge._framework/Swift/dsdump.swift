@@ -117,6 +117,8 @@
 
  enum __C.INIntentHandlingStatus { }
 
+ enum __C.INInteractionDirection { }
+
  enum __C.INPersonHandleType { }
 
  struct __C.Options {
@@ -132,32 +134,32 @@
 	var numberOfDiscardedDonationsByIntentTypeAndBundleId : [String : [String : Double]] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6e40  @objc CKAppInteractionsContext.init <stripped>
-	0x7290  @objc CKAppInteractionsContext.encodeWithCoder: <stripped>
-	0x77d0  @objc CKAppInteractionsContext.initWithCoder: <stripped>
-	0x78d0  @objc CKAppInteractionsContext.copyWithZone: <stripped>
-	0x7dc0  @objc CKAppInteractionsContext.updateDiscardedDonations:forIntentType:andBundleId: <stripped>
-	0x7ed0  @objc CKAppInteractionsContext..cxx_destruct <stripped>
+	0x6f30  @objc CKAppInteractionsContext.init <stripped>
+	0x7380  @objc CKAppInteractionsContext.encodeWithCoder: <stripped>
+	0x78c0  @objc CKAppInteractionsContext.initWithCoder: <stripped>
+	0x79c0  @objc CKAppInteractionsContext.copyWithZone: <stripped>
+	0x7eb0  @objc CKAppInteractionsContext.updateDiscardedDonations:forIntentType:andBundleId: <stripped>
+	0x7fc0  @objc CKAppInteractionsContext..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6b50  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.getter // getter 
-	0x6b70  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.setter // setter 
-	0x6b90  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.modify // modifyCoroutine 
-	0x6bd0  func CKAppInteractionsContext.outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.getter // getter 
-	0x6c30  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.getter // getter 
-	0x6c90  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.setter // setter 
-	0x6cf0  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.modify // modifyCoroutine 
-	0x6f20  class func CKAppInteractionsContext.__allocating_init(_:) // init 
-	0x7090  func CKAppInteractionsContext.encode(with:) // method 
-	0x72e0  class func CKAppInteractionsContext.__allocating_init(coder:) // init 
-	0x7830  func CKAppInteractionsContext.copy(with:) // method 
-	0x7910  func CKAppInteractionsContext.incrementNumberOfOutOfAppLaunchBoundaryDonations(forBundleId:intent:) // method 
-	0x7db0  func CKAppInteractionsContext.updateDiscardedDonations(_:forIntentType:andBundleId:) // method 
+	0x6c40  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.getter // getter 
+	0x6c60  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.setter // setter 
+	0x6c80  func CKAppInteractionsContext._outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.modify // modifyCoroutine 
+	0x6cc0  func CKAppInteractionsContext.outOfAppLaunchBoundaryDonationsCountByIntentTypeAndBundleId.getter // getter 
+	0x6d20  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.getter // getter 
+	0x6d80  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.setter // setter 
+	0x6de0  func CKAppInteractionsContext.numberOfDiscardedDonationsByIntentTypeAndBundleId.modify // modifyCoroutine 
+	0x7010  class func CKAppInteractionsContext.__allocating_init(_:) // init 
+	0x7180  func CKAppInteractionsContext.encode(with:) // method 
+	0x73d0  class func CKAppInteractionsContext.__allocating_init(coder:) // init 
+	0x7920  func CKAppInteractionsContext.copy(with:) // method 
+	0x7a00  func CKAppInteractionsContext.incrementNumberOfOutOfAppLaunchBoundaryDonations(forBundleId:intent:) // method 
+	0x7ea0  func CKAppInteractionsContext.updateDiscardedDonations(_:forIntentType:andBundleId:) // method 
  }
 
  class CoreKnowledge.CKKnowledgeStoreUtils : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xc650  @objc CKKnowledgeStoreUtils.init <stripped>
+	0xc830  @objc CKKnowledgeStoreUtils.init <stripped>
  }
 
  class CoreKnowledge.CKUserDefaultsBackingStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -166,34 +168,34 @@
 	var kv : NSUserDefaults // +0x10 (0x8)
 
 	// Swift methods
-	0xcab0  func CKUserDefaultsBackingStore.name.getter // getter 
-	0xcad0  func CKUserDefaultsBackingStore.name.setter // setter 
-	0xcae0  func CKUserDefaultsBackingStore.name.modify // modifyCoroutine 
-	0xcb20  class func CKUserDefaultsBackingStore.__allocating_init() // init 
-	0xce60  func CKUserDefaultsBackingStore.synchronize() // method 
-	0xce80  func CKUserDefaultsBackingStore.keys() // method 
-	0xd0a0  func CKUserDefaultsBackingStore.keys(matching:) // method 
-	0xd3c0  func CKUserDefaultsBackingStore._value(forKey:) // method 
-	0xd490  func CKUserDefaultsBackingStore.values() // method 
-	0xd520  func CKUserDefaultsBackingStore.values(forKeys:) // method 
-	0xd7f0  func CKUserDefaultsBackingStore.values(forKeysMatching:) // method 
-	0xddd0  func CKUserDefaultsBackingStore.dictionaryRepresentation() // method 
-	0xde40  func CKUserDefaultsBackingStore.dictionaryRepresentation(forKeysMatching:) // method 
-	0xe3c0  func CKUserDefaultsBackingStore.triplesComponents(matching:) // method 
-	0xe500  func CKUserDefaultsBackingStore.verify(path:completionHandler:) // method 
-	0xe660  func CKUserDefaultsBackingStore.setValue(_:forKey:completionHandler:) // method 
-	0xe670  func CKUserDefaultsBackingStore.writeBatch() // method 
-	0x11480  func CKUserDefaultsBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0xe720  func CKUserDefaultsBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0xe880  func CKUserDefaultsBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
-	0xe9e0  func CKUserDefaultsBackingStore.removeValue(forKey:) // method 
-	0xea80  func CKUserDefaultsBackingStore.removeValues(forKeys:) // method 
-	0xeb80  func CKUserDefaultsBackingStore.removeValues(matching:) // method 
-	0xedf0  func CKUserDefaultsBackingStore.removeAllValues() // method 
-	0xef90  func CKUserDefaultsBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
-	0xf0f0  func CKUserDefaultsBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
-	0xf250  func CKUserDefaultsBackingStore.dropLinks(between:and:completionHandler:) // method 
-	0xf3b0  func CKUserDefaultsBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
+	0xcc90  func CKUserDefaultsBackingStore.name.getter // getter 
+	0xccb0  func CKUserDefaultsBackingStore.name.setter // setter 
+	0xccc0  func CKUserDefaultsBackingStore.name.modify // modifyCoroutine 
+	0xcd00  class func CKUserDefaultsBackingStore.__allocating_init() // init 
+	0xd040  func CKUserDefaultsBackingStore.synchronize() // method 
+	0xd060  func CKUserDefaultsBackingStore.keys() // method 
+	0xd280  func CKUserDefaultsBackingStore.keys(matching:) // method 
+	0xd5a0  func CKUserDefaultsBackingStore._value(forKey:) // method 
+	0xd670  func CKUserDefaultsBackingStore.values() // method 
+	0xd700  func CKUserDefaultsBackingStore.values(forKeys:) // method 
+	0xd9d0  func CKUserDefaultsBackingStore.values(forKeysMatching:) // method 
+	0xdfb0  func CKUserDefaultsBackingStore.dictionaryRepresentation() // method 
+	0xe020  func CKUserDefaultsBackingStore.dictionaryRepresentation(forKeysMatching:) // method 
+	0xe5a0  func CKUserDefaultsBackingStore.triplesComponents(matching:) // method 
+	0xe6e0  func CKUserDefaultsBackingStore.verify(path:completionHandler:) // method 
+	0xe840  func CKUserDefaultsBackingStore.setValue(_:forKey:completionHandler:) // method 
+	0xe850  func CKUserDefaultsBackingStore.writeBatch() // method 
+	0x11660  func CKUserDefaultsBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0xe900  func CKUserDefaultsBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0xea60  func CKUserDefaultsBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
+	0xebc0  func CKUserDefaultsBackingStore.removeValue(forKey:) // method 
+	0xec60  func CKUserDefaultsBackingStore.removeValues(forKeys:) // method 
+	0xed60  func CKUserDefaultsBackingStore.removeValues(matching:) // method 
+	0xefd0  func CKUserDefaultsBackingStore.removeAllValues() // method 
+	0xf170  func CKUserDefaultsBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
+	0xf2d0  func CKUserDefaultsBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
+	0xf430  func CKUserDefaultsBackingStore.dropLinks(between:and:completionHandler:) // method 
+	0xf590  func CKUserDefaultsBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
  }
 
  class CoreKnowledge.SaveInteraction : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -203,13 +205,13 @@
 	let dkEventUUID : UUID // +0x25 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x11630  @objc SaveInteraction.initWithInteraction:dkEventUUID: <stripped>
-	0x11990  @objc SaveInteraction.main <stripped>
-	0x11af0  @objc SaveInteraction.init <stripped>
-	0x11b60  @objc SaveInteraction..cxx_destruct <stripped>
+	0x11810  @objc SaveInteraction.initWithInteraction:dkEventUUID: <stripped>
+	0x11b70  @objc SaveInteraction.main <stripped>
+	0x11cd0  @objc SaveInteraction.init <stripped>
+	0x11d40  @objc SaveInteraction..cxx_destruct <stripped>
 
 	// Swift methods
-	0x114e0  class func SaveInteraction.__allocating_init(interaction:dkEventUUID:) // init 
+	0x116c0  class func SaveInteraction.__allocating_init(interaction:dkEventUUID:) // init 
  }
 
  class CoreKnowledge.INInteractionEncoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -218,13 +220,13 @@
 	let interaction : INInteraction
 
 	// Swift methods
-	0x11de0  class func INInteractionEncoder.__allocating_init(_:) // init 
-	0x11e60  func INInteractionEncoder.base64() // method 
+	0x11fc0  class func INInteractionEncoder.__allocating_init(_:) // init 
+	0x12040  func INInteractionEncoder.base64() // method 
  }
 
  class CoreKnowledge.INInteractionDecoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x120b0  class func INInteractionDecoder.__allocating_init() // init 
+	0x12290  class func INInteractionDecoder.__allocating_init() // init 
  }
 
  class CoreKnowledge.CKPermanentEventStore : NSObject /usr/lib/libobjc.A.dylib {
@@ -233,12 +235,12 @@
 	let knowledgeStore : CKKnowledgeStore
 
 	// ObjC -> Swift bridged methods
-	0x12220  @objc CKPermanentEventStore.initWithKnowledgeStore: <stripped>
-	0x12460  @objc CKPermanentEventStore.init <stripped>
-	0x124e0  @objc CKPermanentEventStore..cxx_destruct <stripped>
+	0x12400  @objc CKPermanentEventStore.initWithKnowledgeStore: <stripped>
+	0x12640  @objc CKPermanentEventStore.init <stripped>
+	0x126c0  @objc CKPermanentEventStore..cxx_destruct <stripped>
 
 	// Swift methods
-	0x12150  class func CKPermanentEventStore.__allocating_init(knowledgeStore:) // init 
+	0x12330  class func CKPermanentEventStore.__allocating_init(knowledgeStore:) // init 
  }
 
  class CoreKnowledge.CKInMemoryBackingStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -247,33 +249,33 @@
 	let inMemoryStoreHandler : CKPersistentStoreHandler // +0x10 (0x8)
 
 	// Swift methods
-	0x12fc0  func CKInMemoryBackingStore.name.getter // getter 
-	0x12fe0  func CKInMemoryBackingStore.name.setter // setter 
-	0x12ff0  func CKInMemoryBackingStore.name.modify // modifyCoroutine 
-	0x13040  class func CKInMemoryBackingStore.__allocating_init() // init 
-	0x13200  func CKInMemoryBackingStore.keys(completionHandler:) // method 
-	0x132f0  func CKInMemoryBackingStore.keys(matching:completionHandler:) // method 
-	0x133d0  func CKInMemoryBackingStore.value(forKey:completionHandler:) // method 
-	0x13610  func CKInMemoryBackingStore.values(completionHandler:) // method 
-	0x13700  func CKInMemoryBackingStore.values(forKeys:completionHandler:) // method 
-	0x13810  func CKInMemoryBackingStore.values(forKeysMatching:completionHandler:) // method 
-	0x138f0  func CKInMemoryBackingStore.dictionaryRepresentation(completionHandler:) // method 
-	0x139e0  func CKInMemoryBackingStore.dictionaryRepresentation(forKeysMatching:completionHandler:) // method 
-	0x13ac0  func CKInMemoryBackingStore.triplesComponents(matching:completionHandler:) // method 
-	0x13be0  func CKInMemoryBackingStore.verify(path:completionHandler:) // method 
-	0x13ca0  func CKInMemoryBackingStore.setValue(_:forKey:completionHandler:) // method 
-	0x13d70  func CKInMemoryBackingStore.writeBatch() // method 
-	0x13e20  func CKInMemoryBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
-	0x13ee0  func CKInMemoryBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0x14160  func CKInMemoryBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0x143e0  func CKInMemoryBackingStore.removeValue(forKey:completionHandler:) // method 
-	0x145a0  func CKInMemoryBackingStore.removeValues(forKeys:completionHandler:) // method 
-	0x14760  func CKInMemoryBackingStore.removeValues(matching:completionHandler:) // method 
-	0x14930  func CKInMemoryBackingStore.removeAllValues(completionHandler:) // method 
-	0x149e0  func CKInMemoryBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
-	0x14a90  func CKInMemoryBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
-	0x14b40  func CKInMemoryBackingStore.dropLinks(between:and:completionHandler:) // method 
-	0x14bf0  func CKInMemoryBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
+	0x131a0  func CKInMemoryBackingStore.name.getter // getter 
+	0x131c0  func CKInMemoryBackingStore.name.setter // setter 
+	0x131d0  func CKInMemoryBackingStore.name.modify // modifyCoroutine 
+	0x13220  class func CKInMemoryBackingStore.__allocating_init() // init 
+	0x133e0  func CKInMemoryBackingStore.keys(completionHandler:) // method 
+	0x134d0  func CKInMemoryBackingStore.keys(matching:completionHandler:) // method 
+	0x135b0  func CKInMemoryBackingStore.value(forKey:completionHandler:) // method 
+	0x137f0  func CKInMemoryBackingStore.values(completionHandler:) // method 
+	0x138e0  func CKInMemoryBackingStore.values(forKeys:completionHandler:) // method 
+	0x139f0  func CKInMemoryBackingStore.values(forKeysMatching:completionHandler:) // method 
+	0x13ad0  func CKInMemoryBackingStore.dictionaryRepresentation(completionHandler:) // method 
+	0x13bc0  func CKInMemoryBackingStore.dictionaryRepresentation(forKeysMatching:completionHandler:) // method 
+	0x13ca0  func CKInMemoryBackingStore.triplesComponents(matching:completionHandler:) // method 
+	0x13dc0  func CKInMemoryBackingStore.verify(path:completionHandler:) // method 
+	0x13e80  func CKInMemoryBackingStore.setValue(_:forKey:completionHandler:) // method 
+	0x13f50  func CKInMemoryBackingStore.writeBatch() // method 
+	0x14000  func CKInMemoryBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
+	0x140c0  func CKInMemoryBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0x14340  func CKInMemoryBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0x145c0  func CKInMemoryBackingStore.removeValue(forKey:completionHandler:) // method 
+	0x14780  func CKInMemoryBackingStore.removeValues(forKeys:completionHandler:) // method 
+	0x14940  func CKInMemoryBackingStore.removeValues(matching:completionHandler:) // method 
+	0x14b10  func CKInMemoryBackingStore.removeAllValues(completionHandler:) // method 
+	0x14bc0  func CKInMemoryBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
+	0x14c70  func CKInMemoryBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
+	0x14d20  func CKInMemoryBackingStore.dropLinks(between:and:completionHandler:) // method 
+	0x14dd0  func CKInMemoryBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
  }
 
  class CoreKnowledge.BackgroundQueue : NSOperationQueue /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -282,12 +284,12 @@
 	var lock : OS_dispatch_semaphore // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x15320  @objc BackgroundQueue.init <stripped>
-	0x15710  @objc BackgroundQueue..cxx_destruct <stripped>
+	0x15500  @objc BackgroundQueue.init <stripped>
+	0x158f0  @objc BackgroundQueue..cxx_destruct <stripped>
 
 	// Swift methods
-	0x153a0  func BackgroundQueue.pause() // method 
-	0x156a0  func BackgroundQueue.resume() // method 
+	0x15580  func BackgroundQueue.pause() // method 
+	0x15880  func BackgroundQueue.resume() // method 
  }
 
  enum CoreKnowledge.SQLTableType {
@@ -305,71 +307,71 @@
 	var connection : Connection? // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1e830  @objc CKPersistentStoreHandler.init <stripped>
-	0x1f280  @objc CKPersistentStoreHandler.initWithName: <stripped>
-	0x1fa80  @objc CKPersistentStoreHandler.keysAndReturnError: <stripped>
-	0x20490  @objc CKPersistentStoreHandler.keysMatching:error: <stripped>
-	0x20d70  @objc CKPersistentStoreHandler.valuesAndReturnError: <stripped>
-	0x217c0  @objc CKPersistentStoreHandler.valuesForKeysMatching:error: <stripped>
-	0x221c0  @objc CKPersistentStoreHandler.keysAndValuesAndReturnError: <stripped>
-	0x22d50  @objc CKPersistentStoreHandler.keysAndValuesForKeysMatching:error: <stripped>
-	0x23830  @objc CKPersistentStoreHandler._valuesForKeys:error: <stripped>
-	0x24cd0  @objc CKPersistentStoreHandler.saveKeysAndValues:error: <stripped>
-	0x25400  @objc CKPersistentStoreHandler.removeValueForKey:error: <stripped>
-	0x25e60  @objc CKPersistentStoreHandler.removeValuesForKeys:error: <stripped>
-	0x26950  @objc CKPersistentStoreHandler.removeValuesMatching:error: <stripped>
-	0x27210  @objc CKPersistentStoreHandler.removeAllValuesAndReturnError: <stripped>
-	0x27fb0  @objc CKPersistentStoreHandler.tripleComponentsMatching:error: <stripped>
-	0x280b0  @objc CKPersistentStoreHandler.setWeightForLinkWithLabel:between:and:toValue:error: <stripped>
-	0x28230  @objc CKPersistentStoreHandler.increaseWeightForLinkWithLabel:between:and: <stripped>
-	0x28260  @objc CKPersistentStoreHandler.decreaseWeightForLinkWithLabel:between:and: <stripped>
-	0x28b40  @objc CKPersistentStoreHandler.dropLinkWithLabel:between:and:error: <stripped>
-	0x28cc0  @objc CKPersistentStoreHandler.dropLinksWithLabel:from:error: <stripped>
-	0x292c0  @objc CKPersistentStoreHandler.dropLinksBetween:and:error: <stripped>
-	0x29a20  @objc CKPersistentStoreHandler..cxx_destruct <stripped>
+	0x1ea10  @objc CKPersistentStoreHandler.init <stripped>
+	0x1f460  @objc CKPersistentStoreHandler.initWithName: <stripped>
+	0x1fc60  @objc CKPersistentStoreHandler.keysAndReturnError: <stripped>
+	0x20670  @objc CKPersistentStoreHandler.keysMatching:error: <stripped>
+	0x20f50  @objc CKPersistentStoreHandler.valuesAndReturnError: <stripped>
+	0x219a0  @objc CKPersistentStoreHandler.valuesForKeysMatching:error: <stripped>
+	0x223a0  @objc CKPersistentStoreHandler.keysAndValuesAndReturnError: <stripped>
+	0x22f30  @objc CKPersistentStoreHandler.keysAndValuesForKeysMatching:error: <stripped>
+	0x23a10  @objc CKPersistentStoreHandler._valuesForKeys:error: <stripped>
+	0x24eb0  @objc CKPersistentStoreHandler.saveKeysAndValues:error: <stripped>
+	0x255e0  @objc CKPersistentStoreHandler.removeValueForKey:error: <stripped>
+	0x26040  @objc CKPersistentStoreHandler.removeValuesForKeys:error: <stripped>
+	0x26b30  @objc CKPersistentStoreHandler.removeValuesMatching:error: <stripped>
+	0x273f0  @objc CKPersistentStoreHandler.removeAllValuesAndReturnError: <stripped>
+	0x28190  @objc CKPersistentStoreHandler.tripleComponentsMatching:error: <stripped>
+	0x28290  @objc CKPersistentStoreHandler.setWeightForLinkWithLabel:between:and:toValue:error: <stripped>
+	0x28410  @objc CKPersistentStoreHandler.increaseWeightForLinkWithLabel:between:and: <stripped>
+	0x28440  @objc CKPersistentStoreHandler.decreaseWeightForLinkWithLabel:between:and: <stripped>
+	0x28d20  @objc CKPersistentStoreHandler.dropLinkWithLabel:between:and:error: <stripped>
+	0x28ea0  @objc CKPersistentStoreHandler.dropLinksWithLabel:from:error: <stripped>
+	0x294a0  @objc CKPersistentStoreHandler.dropLinksBetween:and:error: <stripped>
+	0x29c00  @objc CKPersistentStoreHandler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1e5b0  func CKPersistentStoreHandler.connection.getter // getter 
-	0x1e5f0  func CKPersistentStoreHandler.connection.setter // setter 
-	0x1e640  func CKPersistentStoreHandler.connection.modify // modifyCoroutine 
-	0x1e690  class func static CKPersistentStoreHandler.inMemoryHandler() // method 
-	0x1e8b0  class func CKPersistentStoreHandler.__allocating_init(name:) // init 
-	0x1f2b0  func CKPersistentStoreHandler.keys() // method 
-	0x1fb20  func CKPersistentStoreHandler.keys(matching:) // method 
-	0x20560  func CKPersistentStoreHandler.values() // method 
-	0x20e10  func CKPersistentStoreHandler.values(forKeysMatching:) // method 
-	0x21890  func CKPersistentStoreHandler.keysAndValues() // method 
-	0x22270  func CKPersistentStoreHandler.keysAndValues(forKeysMatching:) // method 
-	0x22e30  func CKPersistentStoreHandler.selectQuery(project:whereField:isIn:) // method 
-	0x22e40  func CKPersistentStoreHandler._values(forKeys:) // method 
-	0x23910  func CKPersistentStoreHandler.save(keysAndValues:) // method 
-	0x24db0  func CKPersistentStoreHandler.removeValue(forKey:) // method 
-	0x254d0  func CKPersistentStoreHandler._removeValues(forKeys:) // method 
-	0x25d10  func CKPersistentStoreHandler.removeValues(forKeys:) // method 
-	0x25f30  func CKPersistentStoreHandler._removeValues(matching:) // method 
-	0x267e0  func CKPersistentStoreHandler.removeValues(matching:) // method 
-	0x269f0  func CKPersistentStoreHandler.removeAllValues() // method 
-	0x27330  func CKPersistentStoreHandler.tripleComponents(matching:) // method 
-	0x28080  func CKPersistentStoreHandler.setWeight(forLinkWithLabel:between:and:toValue:) // method 
-	0x28210  func CKPersistentStoreHandler.increaseWeight(forLinkWithLabel:between:and:) // method 
-	0x28250  func CKPersistentStoreHandler.decreaseWeight(forLinkWithLabel:between:and:) // method 
-	0x28370  func CKPersistentStoreHandler.decreaseWeights(between:and:) // method 
-	0x28b20  func CKPersistentStoreHandler.dropLink(withLabel:between:and:) // method 
-	0x28ca0  func CKPersistentStoreHandler.dropLinks(withLabel:from:) // method 
-	0x28dd0  func CKPersistentStoreHandler.dropLinks(between:and:) // method 
-	0x293e0  func CKPersistentStoreHandler.deserializeValue(_:) // method 
+	0x1e790  func CKPersistentStoreHandler.connection.getter // getter 
+	0x1e7d0  func CKPersistentStoreHandler.connection.setter // setter 
+	0x1e820  func CKPersistentStoreHandler.connection.modify // modifyCoroutine 
+	0x1e870  class func static CKPersistentStoreHandler.inMemoryHandler() // method 
+	0x1ea90  class func CKPersistentStoreHandler.__allocating_init(name:) // init 
+	0x1f490  func CKPersistentStoreHandler.keys() // method 
+	0x1fd00  func CKPersistentStoreHandler.keys(matching:) // method 
+	0x20740  func CKPersistentStoreHandler.values() // method 
+	0x20ff0  func CKPersistentStoreHandler.values(forKeysMatching:) // method 
+	0x21a70  func CKPersistentStoreHandler.keysAndValues() // method 
+	0x22450  func CKPersistentStoreHandler.keysAndValues(forKeysMatching:) // method 
+	0x23010  func CKPersistentStoreHandler.selectQuery(project:whereField:isIn:) // method 
+	0x23020  func CKPersistentStoreHandler._values(forKeys:) // method 
+	0x23af0  func CKPersistentStoreHandler.save(keysAndValues:) // method 
+	0x24f90  func CKPersistentStoreHandler.removeValue(forKey:) // method 
+	0x256b0  func CKPersistentStoreHandler._removeValues(forKeys:) // method 
+	0x25ef0  func CKPersistentStoreHandler.removeValues(forKeys:) // method 
+	0x26110  func CKPersistentStoreHandler._removeValues(matching:) // method 
+	0x269c0  func CKPersistentStoreHandler.removeValues(matching:) // method 
+	0x26bd0  func CKPersistentStoreHandler.removeAllValues() // method 
+	0x27510  func CKPersistentStoreHandler.tripleComponents(matching:) // method 
+	0x28260  func CKPersistentStoreHandler.setWeight(forLinkWithLabel:between:and:toValue:) // method 
+	0x283f0  func CKPersistentStoreHandler.increaseWeight(forLinkWithLabel:between:and:) // method 
+	0x28430  func CKPersistentStoreHandler.decreaseWeight(forLinkWithLabel:between:and:) // method 
+	0x28550  func CKPersistentStoreHandler.decreaseWeights(between:and:) // method 
+	0x28d00  func CKPersistentStoreHandler.dropLink(withLabel:between:and:) // method 
+	0x28e80  func CKPersistentStoreHandler.dropLinks(withLabel:from:) // method 
+	0x28fb0  func CKPersistentStoreHandler.dropLinks(between:and:) // method 
+	0x295c0  func CKPersistentStoreHandler.deserializeValue(_:) // method 
  }
 
  class CoreKnowledge.CKSiriRemembers : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x328f0  @objc CKSiriRemembers.init <stripped>
-	0x32990  @objc CKSiriRemembers..cxx_destruct <stripped>
+	0x32ad0  @objc CKSiriRemembers.init <stripped>
+	0x32b70  @objc CKSiriRemembers..cxx_destruct <stripped>
 
 	// Swift methods
-	0x31ef0  class func static CKSiriRemembers.saveInteraction(interaction:) // method 
-	0x31f70  class func static CKSiriRemembers.findAppMatches(forIntent:candidateBundleIDs:completionHandler:) // method 
-	0x320b0  class func static CKSiriRemembers.findAppMatches(forJSONIntent:candidateBundleIDs:completionHandler:) // method 
-	0x321d0  class func static CKSiriRemembers.findRelativeAppUsageProbabilities(bundleIDs:days:completionHandler:) // method 
+	0x320d0  class func static CKSiriRemembers.saveInteraction(interaction:) // method 
+	0x32150  class func static CKSiriRemembers.findAppMatches(forIntent:candidateBundleIDs:completionHandler:) // method 
+	0x32290  class func static CKSiriRemembers.findAppMatches(forJSONIntent:candidateBundleIDs:completionHandler:) // method 
+	0x323b0  class func static CKSiriRemembers.findRelativeAppUsageProbabilities(bundleIDs:days:completionHandler:) // method 
  }
 
  class CoreKnowledge.DeferrableXPCOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -380,21 +382,21 @@
 	var completionKVObservation : NSKeyValueObservation? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3f230  @objc DeferrableXPCOperation.init <stripped>
-	0x3f590  @objc DeferrableXPCOperation..cxx_destruct <stripped>
+	0x3f4b0  @objc DeferrableXPCOperation.init <stripped>
+	0x3f810  @objc DeferrableXPCOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x3ed70  func DeferrableXPCOperation.activity.getter // getter 
-	0x3edb0  func DeferrableXPCOperation.activity.setter // setter 
-	0x3ee00  func DeferrableXPCOperation.activity.modify // modifyCoroutine 
-	0x3eee0  func DeferrableXPCOperation.isDeferred.getter // getter 
-	0x3ef10  func DeferrableXPCOperation.isDeferred.setter // setter 
-	0x3ef50  func DeferrableXPCOperation.isDeferred.modify // modifyCoroutine 
-	0x3f040  func DeferrableXPCOperation.completionKVObservation.getter // getter 
-	0x3f080  func DeferrableXPCOperation.completionKVObservation.setter // setter 
-	0x3f0d0  func DeferrableXPCOperation.completionKVObservation.modify // modifyCoroutine 
-	0x3f250  class func DeferrableXPCOperation.__allocating_init(activity:) // init 
-	0x3f3a0  func DeferrableXPCOperation.isCancelledOrDeferred.getter // getter 
+	0x3eff0  func DeferrableXPCOperation.activity.getter // getter 
+	0x3f030  func DeferrableXPCOperation.activity.setter // setter 
+	0x3f080  func DeferrableXPCOperation.activity.modify // modifyCoroutine 
+	0x3f160  func DeferrableXPCOperation.isDeferred.getter // getter 
+	0x3f190  func DeferrableXPCOperation.isDeferred.setter // setter 
+	0x3f1d0  func DeferrableXPCOperation.isDeferred.modify // modifyCoroutine 
+	0x3f2c0  func DeferrableXPCOperation.completionKVObservation.getter // getter 
+	0x3f300  func DeferrableXPCOperation.completionKVObservation.setter // setter 
+	0x3f350  func DeferrableXPCOperation.completionKVObservation.modify // modifyCoroutine 
+	0x3f4d0  class func DeferrableXPCOperation.__allocating_init(activity:) // init 
+	0x3f620  func DeferrableXPCOperation.isCancelledOrDeferred.getter // getter 
  }
 
  class CoreKnowledge.CKSQLBackingStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -404,47 +406,48 @@
 	let connection : NSXPCConnection // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x3ff00  @objc CKSQLBackingStore.initWithName: <stripped>
+	0x40180  @objc CKSQLBackingStore.initWithName: <stripped>
 
 	// Swift methods
-	0x3fc80  func CKSQLBackingStore.name.getter // getter 
-	0x3fcc0  func CKSQLBackingStore.name.setter // setter 
-	0x3fd00  func CKSQLBackingStore.name.modify // modifyCoroutine 
-	0x3fd50  class func CKSQLBackingStore.__allocating_init(name:) // init 
-	0x3ffb0  class func static CKSQLBackingStore.mainInstance() // method 
-	0x40010  func CKSQLBackingStore.daemon(errorHandler:) // method 
-	0x40a80  func CKSQLBackingStore.keys(completionHandler:) // method 
-	0x40d00  func CKSQLBackingStore.keys(matching:completionHandler:) // method 
-	0x40f10  func CKSQLBackingStore.value(forKey:completionHandler:) // method 
-	0x411d0  func CKSQLBackingStore.values(completionHandler:) // method 
-	0x41480  func CKSQLBackingStore.values(forKeys:completionHandler:) // method 
-	0x418f0  func CKSQLBackingStore.values(forKeysMatching:completionHandler:) // method 
-	0x41b00  func CKSQLBackingStore.dictionaryRepresentation(completionHandler:) // method 
-	0x41dc0  func CKSQLBackingStore.dictionaryRepresentation(forKeysMatching:completionHandler:) // method 
-	0x41fd0  func CKSQLBackingStore.triplesComponents(matching:completionHandler:) // method 
-	0x42280  func CKSQLBackingStore.verify(path:completionHandler:) // method 
-	0x423e0  func CKSQLBackingStore.setValue(_:forKey:completionHandler:) // method 
-	0x427d0  func CKSQLBackingStore.writeBatch() // method 
-	0x42850  func CKSQLBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
-	0x42af0  func CKSQLBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0x42e30  func CKSQLBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
-	0x43110  func CKSQLBackingStore.removeValue(forKey:completionHandler:) // method 
-	0x43330  func CKSQLBackingStore.removeValues(forKeys:completionHandler:) // method 
-	0x43550  func CKSQLBackingStore.removeValues(matching:completionHandler:) // method 
-	0x43740  func CKSQLBackingStore.removeAllValues(completionHandler:) // method 
-	0x43920  func CKSQLBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
-	0x43bc0  func CKSQLBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
-	0x43e50  func CKSQLBackingStore.dropLinks(between:and:completionHandler:) // method 
-	0x440c0  func CKSQLBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
+	0x3ff00  func CKSQLBackingStore.name.getter // getter 
+	0x3ff40  func CKSQLBackingStore.name.setter // setter 
+	0x3ff80  func CKSQLBackingStore.name.modify // modifyCoroutine 
+	0x3ffd0  class func CKSQLBackingStore.__allocating_init(name:) // init 
+	0x40230  class func static CKSQLBackingStore.mainInstance() // method 
+	0x40290  func CKSQLBackingStore.daemon(errorHandler:) // method 
+	0x40d00  func CKSQLBackingStore.keys(completionHandler:) // method 
+	0x40f80  func CKSQLBackingStore.keys(matching:completionHandler:) // method 
+	0x41190  func CKSQLBackingStore.value(forKey:completionHandler:) // method 
+	0x41450  func CKSQLBackingStore.values(completionHandler:) // method 
+	0x41700  func CKSQLBackingStore.values(forKeys:completionHandler:) // method 
+	0x41b70  func CKSQLBackingStore.values(forKeysMatching:completionHandler:) // method 
+	0x41d80  func CKSQLBackingStore.dictionaryRepresentation(completionHandler:) // method 
+	0x42040  func CKSQLBackingStore.dictionaryRepresentation(forKeysMatching:completionHandler:) // method 
+	0x42250  func CKSQLBackingStore.triplesComponents(matching:completionHandler:) // method 
+	0x42500  func CKSQLBackingStore.verify(path:completionHandler:) // method 
+	0x42660  func CKSQLBackingStore.setValue(_:forKey:completionHandler:) // method 
+	0x42a50  func CKSQLBackingStore.writeBatch() // method 
+	0x42ad0  func CKSQLBackingStore.setWeight(forLinkWithLabel:between:and:toValue:completionHandler:) // method 
+	0x42d70  func CKSQLBackingStore.increaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0x430b0  func CKSQLBackingStore.decreaseWeight(forLinkWithLabel:between:and:completionHandler:) // method 
+	0x43390  func CKSQLBackingStore.removeValue(forKey:completionHandler:) // method 
+	0x435b0  func CKSQLBackingStore.removeValues(forKeys:completionHandler:) // method 
+	0x437d0  func CKSQLBackingStore.removeValues(matching:completionHandler:) // method 
+	0x439c0  func CKSQLBackingStore.removeAllValues(completionHandler:) // method 
+	0x43ba0  func CKSQLBackingStore.dropLink(withLabel:between:and:completionHandler:) // method 
+	0x43e40  func CKSQLBackingStore.dropLinks(withLabel:from:completionHandler:) // method 
+	0x440d0  func CKSQLBackingStore.dropLinks(between:and:completionHandler:) // method 
+	0x44340  func CKSQLBackingStore.disableSyncAndDeleteCloudData(completionHandler:) // method 
  }
 
  struct CoreKnowledge.MemorableEntity {
 
 	// Properties
 	let paramName : String // +0x0
-	let entityType : String // +0x10
-	let siriRemembersID : String? // +0x20
-	let siriRemembersTokens : [String] // +0x30
+	let paramSize : Int // +0x10
+	let entityType : String // +0x18
+	let siriRemembersID : String? // +0x28
+	let siriRemembersTokens : [String] // +0x38
  }
 
  struct CoreKnowledge.MemorableEntityIterator {
@@ -452,11 +455,12 @@
 	// Properties
 	var inner : [String : Any].Iterator // +0x0
 	var memoized : Memorable // +0x28
+	var memoizedCount : Int // +0x40
  }
 
  class CoreKnowledge.SRInternalDatabaseManager : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x47d00  @objc SRInternalDatabaseManager.init <stripped>
+	0x47eb0  @objc SRInternalDatabaseManager.init <stripped>
  }
 
  enum CoreKnowledge.SRDatabaseManager { }
@@ -477,7 +481,7 @@
 	var $__lazy_storage_$_queueContext : Int? // +0x60 (0x9)
 
 	// Swift methods
-	0x4d610  class func Connection.__allocating_init(_:readonly:) // init 
+	0x4d800  class func Connection.__allocating_init(_:readonly:) // init 
  }
 
  enum CoreKnowledge.Location {
@@ -529,10 +533,10 @@
 
  class CoreKnowledge.CKCloudKitBackingStore : CKSQLBackingStore {
 	// ObjC -> Swift bridged methods
-	0x61b40  @objc CKCloudKitBackingStore.initWithName: <stripped>
+	0x61d30  @objc CKCloudKitBackingStore.initWithName: <stripped>
 
 	// Swift methods
-	0x60020  func CKCloudKitBackingStore.triplesComponents(matching:) // method 
+	0x60210  func CKCloudKitBackingStore.triplesComponents(matching:) // method 
  }
 
  class CoreKnowledge.CKTriple : NSObject /usr/lib/libobjc.A.dylib {
@@ -541,29 +545,29 @@
 	let value : (String, String, String, Int) // +0x8 (0x38)
 
 	// ObjC -> Swift bridged methods
-	0x62050  @objc CKTriple.subject <stripped>
-	0x620e0  @objc CKTriple.predicate <stripped>
-	0x621b0  @objc CKTriple.object <stripped>
-	0x62280  @objc CKTriple.weight <stripped>
-	0x622c0  @objc CKTriple.description <stripped>
-	0x626b0  @objc CKTriple.hash <stripped>
-	0x63150  @objc CKTriple.isEqual: <stripped>
-	0x63400  @objc CKTriple.initWithSubject:predicate:object:weight: <stripped>
-	0x637e0  @objc CKTriple.encodeWithCoder: <stripped>
-	0x63d40  @objc CKTriple.initWithCoder: <stripped>
-	0x64110  @objc CKTriple.init <stripped>
-	0x64190  @objc CKTriple..cxx_destruct <stripped>
+	0x62240  @objc CKTriple.subject <stripped>
+	0x622d0  @objc CKTriple.predicate <stripped>
+	0x623a0  @objc CKTriple.object <stripped>
+	0x62470  @objc CKTriple.weight <stripped>
+	0x624b0  @objc CKTriple.description <stripped>
+	0x628a0  @objc CKTriple.hash <stripped>
+	0x63340  @objc CKTriple.isEqual: <stripped>
+	0x635f0  @objc CKTriple.initWithSubject:predicate:object:weight: <stripped>
+	0x639d0  @objc CKTriple.encodeWithCoder: <stripped>
+	0x63f30  @objc CKTriple.initWithCoder: <stripped>
+	0x64300  @objc CKTriple.init <stripped>
+	0x64380  @objc CKTriple..cxx_destruct <stripped>
 
 	// Swift methods
-	0x620b0  func CKTriple.subject.getter // getter 
-	0x62160  func CKTriple.predicate.getter // getter 
-	0x62230  func CKTriple.object.getter // getter 
-	0x622a0  func CKTriple.weight.getter // getter 
-	0x631f0  class func CKTriple.__allocating_init(tuple:) // init 
-	0x61ef0  class func CKTriple.__allocating_init(subject:predicate:object:weight:) // init 
-	0x63560  func CKTriple.encode(with:) // method 
-	0x63830  class func CKTriple.__allocating_init(coder:) // init 
-	0x63da0  func CKTriple.dictionary() // method 
+	0x622a0  func CKTriple.subject.getter // getter 
+	0x62350  func CKTriple.predicate.getter // getter 
+	0x62420  func CKTriple.object.getter // getter 
+	0x62490  func CKTriple.weight.getter // getter 
+	0x633e0  class func CKTriple.__allocating_init(tuple:) // init 
+	0x620e0  class func CKTriple.__allocating_init(subject:predicate:object:weight:) // init 
+	0x63750  func CKTriple.encode(with:) // method 
+	0x63a20  class func CKTriple.__allocating_init(coder:) // init 
+	0x63f90  func CKTriple.dictionary() // method 
  }
 
  struct CoreKnowledge.SendMessage: SiriKitIntent {
@@ -700,20 +704,20 @@
 	let oldestDate : Date? // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x6e750  @objc ScrubDeletedRecords.initSinceDate: <stripped>
-	0x6f820  @objc ScrubDeletedRecords.main <stripped>
-	0x6f8a0  @objc ScrubDeletedRecords.init <stripped>
-	0x6f930  @objc ScrubDeletedRecords..cxx_destruct <stripped>
+	0x6e940  @objc ScrubDeletedRecords.initSinceDate: <stripped>
+	0x6fa10  @objc ScrubDeletedRecords.main <stripped>
+	0x6fa90  @objc ScrubDeletedRecords.init <stripped>
+	0x6fb20  @objc ScrubDeletedRecords..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6e5b0  class func ScrubDeletedRecords.__allocating_init(sinceDate:) // init 
+	0x6e7a0  class func ScrubDeletedRecords.__allocating_init(sinceDate:) // init 
  }
 
  struct CoreKnowledge.CKOntology { }
 
  class CoreKnowledge.CoreKnowledgeXPCUtils : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x761a0  @objc CoreKnowledgeXPCUtils.init <stripped>
+	0x76390  @objc CoreKnowledgeXPCUtils.init <stripped>
  }
 
  enum CoreKnowledge.JSONLDParseError {
@@ -730,16 +734,16 @@
 	let queue : OS_dispatch_queue // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x79b30  @objc CKJSONLDGraph.initWithEntities: <stripped>
-	0x79b80  @objc CKJSONLDGraph.entities <stripped>
-	0x7a8c0  @objc CKJSONLDGraph.linkedDataWithCompletionHandler: <stripped>
-	0x7aa30  @objc CKJSONLDGraph.init <stripped>
-	0x7aab0  @objc CKJSONLDGraph..cxx_destruct <stripped>
+	0x79d20  @objc CKJSONLDGraph.initWithEntities: <stripped>
+	0x79d70  @objc CKJSONLDGraph.entities <stripped>
+	0x7aab0  @objc CKJSONLDGraph.linkedDataWithCompletionHandler: <stripped>
+	0x7ac20  @objc CKJSONLDGraph.init <stripped>
+	0x7aca0  @objc CKJSONLDGraph..cxx_destruct <stripped>
 
 	// Swift methods
-	0x79aa0  class func CKJSONLDGraph.__allocating_init(withEntities:) // init 
-	0x79be0  func CKJSONLDGraph.entities.getter // getter 
-	0x79e90  func CKJSONLDGraph.linkedData(completionHandler:) // method 
+	0x79c90  class func CKJSONLDGraph.__allocating_init(withEntities:) // init 
+	0x79dd0  func CKJSONLDGraph.entities.getter // getter 
+	0x7a080  func CKJSONLDGraph.linkedData(completionHandler:) // method 
  }
 
  class CoreKnowledge.CKEphemeralEventSequence : NSObject /usr/lib/libobjc.A.dylib {
@@ -748,11 +752,11 @@
 	let queue : OS_dispatch_queue // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x87c90  @objc CKEphemeralEventSequence.init <stripped>
-	0x87d90  @objc CKEphemeralEventSequence..cxx_destruct <stripped>
+	0x87e80  @objc CKEphemeralEventSequence.init <stripped>
+	0x87f80  @objc CKEphemeralEventSequence..cxx_destruct <stripped>
 
 	// Swift methods
-	0x87cb0  func CKEphemeralEventSequence.historyStartEvent.getter // getter 
+	0x87ea0  func CKEphemeralEventSequence.historyStartEvent.getter // getter 
  }
 
  class CoreKnowledge.XPCTaskScheduler : NSObject /usr/lib/libobjc.A.dylib {
@@ -761,15 +765,15 @@
 	let queue : BackgroundQueue // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8a170  @objc XPCTaskScheduler.initWithQueue: <stripped>
-	0x8a3c0  @objc XPCTaskScheduler.scheduleAllTasks <stripped>
-	0x8ac00  @objc XPCTaskScheduler.init <stripped>
-	0x8ac80  @objc XPCTaskScheduler..cxx_destruct <stripped>
+	0x8a360  @objc XPCTaskScheduler.initWithQueue: <stripped>
+	0x8a5b0  @objc XPCTaskScheduler.scheduleAllTasks <stripped>
+	0x8adf0  @objc XPCTaskScheduler.init <stripped>
+	0x8ae70  @objc XPCTaskScheduler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8a070  class func XPCTaskScheduler.__allocating_init(queue:) // init 
-	0x8a1e0  func XPCTaskScheduler.scheduleAllTasks() // method 
-	0x8a460  func XPCTaskScheduler.add(id:repeatInterval:makeOp:) // method 
+	0x8a260  class func XPCTaskScheduler.__allocating_init(queue:) // init 
+	0x8a3d0  func XPCTaskScheduler.scheduleAllTasks() // method 
+	0x8a650  func XPCTaskScheduler.add(id:repeatInterval:makeOp:) // method 
  }
 
  enum CoreKnowledge.RepeatInterval {
@@ -797,11 +801,11 @@
 	var $__lazy_storage_$_sql : String?
 
 	// Swift methods
-	0x8bf10  class func Matcher.__allocating_init(_:value:) // init 
-	0x8bfb0  func Matcher.evaluate(on:) // method 
-	0x8c550  func Matcher.sql.getter // getter 
-	0x8c840  func Matcher.sql.setter // setter 
-	0x8c860  func Matcher.sql.modify // modifyCoroutine 
+	0x8c100  class func Matcher.__allocating_init(_:value:) // init 
+	0x8c1a0  func Matcher.evaluate(on:) // method 
+	0x8c740  func Matcher.sql.getter // getter 
+	0x8ca30  func Matcher.sql.setter // setter 
+	0x8ca50  func Matcher.sql.modify // modifyCoroutine 
  }
 
  class CoreKnowledge.CKGenericCondition : NSObject /usr/lib/libobjc.A.dylib {
@@ -812,32 +816,32 @@
 	var $__lazy_storage_$_sql : String?
 
 	// ObjC -> Swift bridged methods
-	0x8c9c0  @objc CKGenericCondition.predicate <stripped>
-	0x8cc60  @objc CKGenericCondition.description <stripped>
-	0x8cf00  @objc CKGenericCondition.initWithValue: <stripped>
-	0x8d080  @objc CKGenericCondition.initWithMatchType:value:negated: <stripped>
-	0x8d320  @objc CKGenericCondition.and: <stripped>
-	0x8d440  @objc CKGenericCondition.or: <stripped>
-	0x8e100  @objc CKGenericCondition.evaluateOn: <stripped>
-	0x8e280  @objc CKGenericCondition.copyWithZone: <stripped>
-	0x8e720  @objc CKGenericCondition.encodeWithCoder: <stripped>
-	0x8ee90  @objc CKGenericCondition.initWithCoder: <stripped>
-	0x8eef0  @objc CKGenericCondition.init <stripped>
-	0x8ef40  @objc CKGenericCondition..cxx_destruct <stripped>
+	0x8cbb0  @objc CKGenericCondition.predicate <stripped>
+	0x8ce50  @objc CKGenericCondition.description <stripped>
+	0x8d0f0  @objc CKGenericCondition.initWithValue: <stripped>
+	0x8d270  @objc CKGenericCondition.initWithMatchType:value:negated: <stripped>
+	0x8d510  @objc CKGenericCondition.and: <stripped>
+	0x8d630  @objc CKGenericCondition.or: <stripped>
+	0x8e2f0  @objc CKGenericCondition.evaluateOn: <stripped>
+	0x8e470  @objc CKGenericCondition.copyWithZone: <stripped>
+	0x8e910  @objc CKGenericCondition.encodeWithCoder: <stripped>
+	0x8f080  @objc CKGenericCondition.initWithCoder: <stripped>
+	0x8f0e0  @objc CKGenericCondition.init <stripped>
+	0x8f130  @objc CKGenericCondition..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8cac0  func CKGenericCondition.predicate.getter // getter 
-	0x8cdd0  class func CKGenericCondition.__allocating_init(value:) // init 
-	0x8b6f0  class func CKGenericCondition.__allocating_init(_:value:negated:) // init 
-	0x8d220  func CKGenericCondition.and(_:) // method 
-	0x8d340  func CKGenericCondition.or(_:) // method 
-	0x8d570  func CKGenericCondition.sql.getter // getter 
-	0x8dd10  func CKGenericCondition.sql.setter // setter 
-	0x8dd40  func CKGenericCondition.sql.modify // modifyCoroutine 
-	0x8de70  func CKGenericCondition.evaluate(on:) // method 
-	0x8e1a0  func CKGenericCondition.copy(with:) // method 
-	0x8e3e0  func CKGenericCondition.encode(with:) // method 
-	0x8e770  class func CKGenericCondition.__allocating_init(coder:) // init 
+	0x8ccb0  func CKGenericCondition.predicate.getter // getter 
+	0x8cfc0  class func CKGenericCondition.__allocating_init(value:) // init 
+	0x8b8e0  class func CKGenericCondition.__allocating_init(_:value:negated:) // init 
+	0x8d410  func CKGenericCondition.and(_:) // method 
+	0x8d530  func CKGenericCondition.or(_:) // method 
+	0x8d760  func CKGenericCondition.sql.getter // getter 
+	0x8df00  func CKGenericCondition.sql.setter // setter 
+	0x8df30  func CKGenericCondition.sql.modify // modifyCoroutine 
+	0x8e060  func CKGenericCondition.evaluate(on:) // method 
+	0x8e390  func CKGenericCondition.copy(with:) // method 
+	0x8e5d0  func CKGenericCondition.encode(with:) // method 
+	0x8e960  class func CKGenericCondition.__allocating_init(coder:) // init 
  }
 
  class CoreKnowledge.CKTripleCondition : NSObject /usr/lib/libobjc.A.dylib {
@@ -846,29 +850,29 @@
 	var rawCondition : CKGenericCondition
 
 	// ObjC -> Swift bridged methods
-	0x8f100  @objc CKTripleCondition.description <stripped>
-	0x8f620  @objc CKTripleCondition.initWithValue: <stripped>
-	0x92780  @objc CKTripleCondition.initWithSubject:predicate:object: <stripped>
-	0x92960  @objc CKTripleCondition.and: <stripped>
-	0x92bb0  @objc CKTripleCondition.or: <stripped>
-	0x92da0  @objc CKTripleCondition.evaluateOn: <stripped>
-	0x92f50  @objc CKTripleCondition.copyWithZone: <stripped>
-	0x93210  @objc CKTripleCondition.encodeWithCoder: <stripped>
-	0x935b0  @objc CKTripleCondition.initWithCoder: <stripped>
-	0x93630  @objc CKTripleCondition.init <stripped>
-	0x936c0  @objc CKTripleCondition..cxx_destruct <stripped>
+	0x8f2f0  @objc CKTripleCondition.description <stripped>
+	0x8f810  @objc CKTripleCondition.initWithValue: <stripped>
+	0x92970  @objc CKTripleCondition.initWithSubject:predicate:object: <stripped>
+	0x92b50  @objc CKTripleCondition.and: <stripped>
+	0x92da0  @objc CKTripleCondition.or: <stripped>
+	0x92f90  @objc CKTripleCondition.evaluateOn: <stripped>
+	0x93140  @objc CKTripleCondition.copyWithZone: <stripped>
+	0x93400  @objc CKTripleCondition.encodeWithCoder: <stripped>
+	0x937a0  @objc CKTripleCondition.initWithCoder: <stripped>
+	0x93820  @objc CKTripleCondition.init <stripped>
+	0x938b0  @objc CKTripleCondition..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8f020  func CKTripleCondition.rawCondition.getter // getter 
-	0x8f060  func CKTripleCondition.rawCondition.setter // setter 
-	0x8f0b0  func CKTripleCondition.rawCondition.modify // modifyCoroutine 
-	0x8f250  class func CKTripleCondition.__allocating_init(_:) // init 
-	0x92820  func CKTripleCondition.and(_:) // method 
-	0x92a70  func CKTripleCondition.or(_:) // method 
-	0x92cc0  func CKTripleCondition.evaluate(on:) // method 
-	0x92e70  func CKTripleCondition.copy(with:) // method 
-	0x93170  func CKTripleCondition.encode(with:) // method 
-	0x932b0  class func CKTripleCondition.__allocating_init(coder:) // init 
+	0x8f210  func CKTripleCondition.rawCondition.getter // getter 
+	0x8f250  func CKTripleCondition.rawCondition.setter // setter 
+	0x8f2a0  func CKTripleCondition.rawCondition.modify // modifyCoroutine 
+	0x8f440  class func CKTripleCondition.__allocating_init(_:) // init 
+	0x92a10  func CKTripleCondition.and(_:) // method 
+	0x92c60  func CKTripleCondition.or(_:) // method 
+	0x92eb0  func CKTripleCondition.evaluate(on:) // method 
+	0x93060  func CKTripleCondition.copy(with:) // method 
+	0x93360  func CKTripleCondition.encode(with:) // method 
+	0x934a0  class func CKTripleCondition.__allocating_init(coder:) // init 
  }
 
  struct CoreKnowledge.LegacySendMessageIntent {
@@ -964,77 +968,78 @@
 	let intentUUID : String // +0x0 (0x10)
 	let dkEventUUID : UUID? // +0x0 (0x0)
 	let bundleID : String? // +0x0 (0x10)
+	let direction : INInteractionDirection // +0x0 (0x8)
 	let inintentHandlingStatus : INIntentHandlingStatus? // +0x0 (0x9)
 	let engagementSignals : [String : Any]? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x9ebf0  @objc SRIngestor.init <stripped>
-	0x9ec60  @objc SRIngestor..cxx_destruct <stripped>
+	0x9ee80  @objc SRIngestor.init <stripped>
+	0x9eef0  @objc SRIngestor..cxx_destruct <stripped>
 
 	// Swift methods
-	0x9bfa0  func SRIngestor.saveInteraction() // method 
-	0x9c590  func SRIngestor.upsertIntent() // method 
-	0x9d210  func SRIngestor.upsertEntity(_:entity:) // method 
-	0x9bdf0  class func SRIngestor.__allocating_init(db:interaction:dkEventUUID:) // init 
+	0x9c190  func SRIngestor.saveInteraction() // method 
+	0x9c7a0  func SRIngestor.upsertIntent() // method 
+	0x9d450  func SRIngestor.upsertEntity(_:entity:) // method 
+	0x9bfe0  class func SRIngestor.__allocating_init(db:interaction:dkEventUUID:) // init 
  }
 
  class CoreKnowledge.CKHistoricEvent : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 	let identifier : String // +0x8 (0x10)
-	var _firstSeen : Date // +0x1666a6 (0x0)
-	var _lastSeen : Date // +0x20d0 (0x0)
+	var _firstSeen : Date // +0x16aec6 (0x0)
+	var _lastSeen : Date // +0x21c0 (0x0)
 	var _frequency : Int // +0x0 (0x8)
 	var _lastDuration : Double // +0x80000400 (0x8)
 	var _totalDuration : Double // +0x0 (0x8)
 	var _metadata : [String : Any] // +0x74735f5f (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x9f8d0  @objc CKHistoricEvent.identifier <stripped>
-	0xa0220  @objc CKHistoricEvent.firstSeen <stripped>
-	0xa0310  @objc CKHistoricEvent.lastSeen <stripped>
-	0xa0400  @objc CKHistoricEvent.frequency <stripped>
-	0xa04b0  @objc CKHistoricEvent.lastDuration <stripped>
-	0xa0560  @objc CKHistoricEvent.totalDuration <stripped>
-	0xa0610  @objc CKHistoricEvent.metadata <stripped>
-	0xa0d50  @objc CKHistoricEvent.encodeWithCoder: <stripped>
-	0xa1a00  @objc CKHistoricEvent.initWithCoder: <stripped>
-	0xa1af0  @objc CKHistoricEvent.init: <stripped>
-	0xa1b90  @objc CKHistoricEvent.initFrom:withIdentifier: <stripped>
-	0xa1ca0  @objc CKHistoricEvent.copyWithZone: <stripped>
-	0xa1d30  @objc CKHistoricEvent.init <stripped>
-	0xa1da0  @objc CKHistoricEvent..cxx_destruct <stripped>
+	0x9fb80  @objc CKHistoricEvent.identifier <stripped>
+	0xa04d0  @objc CKHistoricEvent.firstSeen <stripped>
+	0xa05c0  @objc CKHistoricEvent.lastSeen <stripped>
+	0xa06b0  @objc CKHistoricEvent.frequency <stripped>
+	0xa0760  @objc CKHistoricEvent.lastDuration <stripped>
+	0xa0810  @objc CKHistoricEvent.totalDuration <stripped>
+	0xa08c0  @objc CKHistoricEvent.metadata <stripped>
+	0xa1000  @objc CKHistoricEvent.encodeWithCoder: <stripped>
+	0xa1cb0  @objc CKHistoricEvent.initWithCoder: <stripped>
+	0xa1da0  @objc CKHistoricEvent.init: <stripped>
+	0xa1e40  @objc CKHistoricEvent.initFrom:withIdentifier: <stripped>
+	0xa1f50  @objc CKHistoricEvent.copyWithZone: <stripped>
+	0xa1fe0  @objc CKHistoricEvent.init <stripped>
+	0xa2050  @objc CKHistoricEvent..cxx_destruct <stripped>
 
 	// Swift methods
-	0x9fa20  func CKHistoricEvent._firstSeen.getter // getter 
-	0x9fa40  func CKHistoricEvent._firstSeen.setter // setter 
-	0x9fa60  func CKHistoricEvent._firstSeen.modify // modifyCoroutine 
-	0x9fb80  func CKHistoricEvent._lastSeen.getter // getter 
-	0x9fbf0  func CKHistoricEvent._lastSeen.setter // setter 
-	0x9fc70  func CKHistoricEvent._lastSeen.modify // modifyCoroutine 
-	0x9fd50  func CKHistoricEvent._frequency.getter // getter 
-	0x9fd80  func CKHistoricEvent._frequency.setter // setter 
-	0x9fdc0  func CKHistoricEvent._frequency.modify // modifyCoroutine 
-	0x9fea0  func CKHistoricEvent._lastDuration.getter // getter 
-	0x9fec0  func CKHistoricEvent._lastDuration.setter // setter 
-	0x9fee0  func CKHistoricEvent._lastDuration.modify // modifyCoroutine 
-	0x9ffc0  func CKHistoricEvent._totalDuration.getter // getter 
-	0xa0010  func CKHistoricEvent._totalDuration.setter // setter 
-	0xa0070  func CKHistoricEvent._totalDuration.modify // modifyCoroutine 
-	0xa0150  func CKHistoricEvent._metadata.getter // getter 
-	0xa0190  func CKHistoricEvent._metadata.setter // setter 
-	0xa01e0  func CKHistoricEvent._metadata.modify // modifyCoroutine 
-	0xa02a0  func CKHistoricEvent.firstSeen.getter // getter 
-	0xa0390  func CKHistoricEvent.lastSeen.getter // getter 
-	0xa0450  func CKHistoricEvent.frequency.getter // getter 
-	0xa0500  func CKHistoricEvent.lastDuration.getter // getter 
-	0xa05b0  func CKHistoricEvent.totalDuration.getter // getter 
-	0xa0690  func CKHistoricEvent.metadata.getter // getter 
-	0x9f530  class func CKHistoricEvent.__allocating_init(identifier:firstSeen:lastSeen:frequency:lastDuration:totalDuration:metadata:) // init 
-	0xa08b0  func CKHistoricEvent.encode(with:) // method 
-	0xa0da0  class func CKHistoricEvent.__allocating_init(coder:) // init 
-	0xa1a60  class func CKHistoricEvent.__allocating_init(_:) // init 
-	0xa1be0  func CKHistoricEvent.copy(with:) // method 
+	0x9fcd0  func CKHistoricEvent._firstSeen.getter // getter 
+	0x9fcf0  func CKHistoricEvent._firstSeen.setter // setter 
+	0x9fd10  func CKHistoricEvent._firstSeen.modify // modifyCoroutine 
+	0x9fe30  func CKHistoricEvent._lastSeen.getter // getter 
+	0x9fea0  func CKHistoricEvent._lastSeen.setter // setter 
+	0x9ff20  func CKHistoricEvent._lastSeen.modify // modifyCoroutine 
+	0xa0000  func CKHistoricEvent._frequency.getter // getter 
+	0xa0030  func CKHistoricEvent._frequency.setter // setter 
+	0xa0070  func CKHistoricEvent._frequency.modify // modifyCoroutine 
+	0xa0150  func CKHistoricEvent._lastDuration.getter // getter 
+	0xa0170  func CKHistoricEvent._lastDuration.setter // setter 
+	0xa0190  func CKHistoricEvent._lastDuration.modify // modifyCoroutine 
+	0xa0270  func CKHistoricEvent._totalDuration.getter // getter 
+	0xa02c0  func CKHistoricEvent._totalDuration.setter // setter 
+	0xa0320  func CKHistoricEvent._totalDuration.modify // modifyCoroutine 
+	0xa0400  func CKHistoricEvent._metadata.getter // getter 
+	0xa0440  func CKHistoricEvent._metadata.setter // setter 
+	0xa0490  func CKHistoricEvent._metadata.modify // modifyCoroutine 
+	0xa0550  func CKHistoricEvent.firstSeen.getter // getter 
+	0xa0640  func CKHistoricEvent.lastSeen.getter // getter 
+	0xa0700  func CKHistoricEvent.frequency.getter // getter 
+	0xa07b0  func CKHistoricEvent.lastDuration.getter // getter 
+	0xa0860  func CKHistoricEvent.totalDuration.getter // getter 
+	0xa0940  func CKHistoricEvent.metadata.getter // getter 
+	0x9f7e0  class func CKHistoricEvent.__allocating_init(identifier:firstSeen:lastSeen:frequency:lastDuration:totalDuration:metadata:) // init 
+	0xa0b60  func CKHistoricEvent.encode(with:) // method 
+	0xa1050  class func CKHistoricEvent.__allocating_init(coder:) // init 
+	0xa1d10  class func CKHistoricEvent.__allocating_init(_:) // init 
+	0xa1e90  func CKHistoricEvent.copy(with:) // method 
  }
 
  class CoreKnowledge.CKClosure : NSObject /usr/lib/libobjc.A.dylib, CKExecutableClosure {
@@ -1044,15 +1049,15 @@
 	let entity : CKEntity // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa3490  @objc CKClosure.initWithCoder: <stripped>
-	0xa3700  @objc CKClosure.encodeWithCoder: <stripped>
-	0xa37b0  @objc CKClosure.init <stripped>
-	0xa3830  @objc CKClosure..cxx_destruct <stripped>
+	0xa3740  @objc CKClosure.initWithCoder: <stripped>
+	0xa39b0  @objc CKClosure.encodeWithCoder: <stripped>
+	0xa3a60  @objc CKClosure.init <stripped>
+	0xa3ae0  @objc CKClosure..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa2cd0  class func CKClosure.__allocating_init(coder:) // init 
-	0xa34c0  func CKClosure.encode(with:) // method 
-	0xa3750  func CKClosure.execute() // method 
+	0xa2f80  class func CKClosure.__allocating_init(coder:) // init 
+	0xa3770  func CKClosure.encode(with:) // method 
+	0xa3a00  func CKClosure.execute() // method 
  }
 
  enum CoreKnowledge.CKLogicError {
@@ -1069,27 +1074,27 @@
 	var negatedBody : [(predicate: String?, object: CKEntity)] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa5500  @objc CKLogic.hash <stripped>
-	0xa5b00  @objc CKLogic.identifier <stripped>
-	0xa6200  @objc CKLogic.andExistsLink:to:error: <stripped>
-	0xa6810  @objc CKLogic.andNotExistsLink:to:error: <stripped>
-	0xa6bb0  @objc CKLogic.and: <stripped>
-	0xa6c60  @objc CKLogic.init <stripped>
-	0xa6ce0  @objc CKLogic..cxx_destruct <stripped>
+	0xa57b0  @objc CKLogic.hash <stripped>
+	0xa5db0  @objc CKLogic.identifier <stripped>
+	0xa64b0  @objc CKLogic.andExistsLink:to:error: <stripped>
+	0xa6ac0  @objc CKLogic.andNotExistsLink:to:error: <stripped>
+	0xa6e60  @objc CKLogic.and: <stripped>
+	0xa6f10  @objc CKLogic.init <stripped>
+	0xa6f90  @objc CKLogic..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa52d0  func CKLogic.body.getter // getter 
-	0xa52f0  func CKLogic.body.setter // setter 
-	0xa5310  func CKLogic.body.modify // modifyCoroutine 
-	0xa53f0  func CKLogic.negatedBody.getter // getter 
-	0xa5450  func CKLogic.negatedBody.setter // setter 
-	0xa54b0  func CKLogic.negatedBody.modify // modifyCoroutine 
-	0xa5b60  func CKLogic.identifier.getter // getter 
-	0xa5c90  class func static CKLogic.ifExistsLink(_:to:) // method 
-	0xa5cc0  func CKLogic.andExistsLink(_:to:) // method 
-	0xa6220  class func static CKLogic.ifNotExistsLink(_:to:) // method 
-	0xa62d0  func CKLogic.andNotExistsLink(_:to:) // method 
-	0xa6920  func CKLogic.and(_:) // method 
+	0xa5580  func CKLogic.body.getter // getter 
+	0xa55a0  func CKLogic.body.setter // setter 
+	0xa55c0  func CKLogic.body.modify // modifyCoroutine 
+	0xa56a0  func CKLogic.negatedBody.getter // getter 
+	0xa5700  func CKLogic.negatedBody.setter // setter 
+	0xa5760  func CKLogic.negatedBody.modify // modifyCoroutine 
+	0xa5e10  func CKLogic.identifier.getter // getter 
+	0xa5f40  class func static CKLogic.ifExistsLink(_:to:) // method 
+	0xa5f70  func CKLogic.andExistsLink(_:to:) // method 
+	0xa64d0  class func static CKLogic.ifNotExistsLink(_:to:) // method 
+	0xa6580  func CKLogic.andNotExistsLink(_:to:) // method 
+	0xa6bd0  func CKLogic.and(_:) // method 
  }
 
  enum CoreKnowledge.ErrorTracker { }
@@ -1100,12 +1105,12 @@
 	let cutoffDate : Date? // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0xac0c0  @objc ScrubOldRecords.main <stripped>
-	0xac140  @objc ScrubOldRecords.init <stripped>
-	0xac1d0  @objc ScrubOldRecords..cxx_destruct <stripped>
+	0xac370  @objc ScrubOldRecords.main <stripped>
+	0xac3f0  @objc ScrubOldRecords.init <stripped>
+	0xac480  @objc ScrubOldRecords..cxx_destruct <stripped>
 
 	// Swift methods
-	0xab170  class func ScrubOldRecords.__allocating_init(olderThan:) // init 
+	0xab420  class func ScrubOldRecords.__allocating_init(olderThan:) // init 
  }
 
  struct CoreKnowledge.CKPath {
@@ -1125,51 +1130,51 @@
 	let store : CKKnowledgeStore // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xb30d0  @objc CKEntity.isEqual: <stripped>
-	0xb3170  @objc CKEntity.hash <stripped>
-	0xb3340  @objc CKEntity.description <stripped>
-	0xb39a0  @objc CKEntity.valueForKey: <stripped>
-	0xb3aa0  @objc CKEntity.valueForKey:completionHandler: <stripped>
-	0xb4440  @objc CKEntity.valuesForKeys:completionHandler: <stripped>
-	0xb4810  @objc CKEntity.setValue:forKey:completionHandler: <stripped>
-	0xb5170  @objc CKEntity.setValuesForKeys:completionHandler: <stripped>
-	0xb5280  @objc CKEntity.removeValueForKey:completionHandler: <stripped>
-	0xb6350  @objc CKEntity.linkTo:withPredicate:completionHandler: <stripped>
-	0xb6820  @objc CKEntity.linkTo:withPredicate:error: <stripped>
-	0xb6a40  @objc CKEntity.unlinkTo:withPredicate:ignoreWeights:completionHandler: <stripped>
-	0xb6fa0  @objc CKEntity.removeWithCompletionHandler: <stripped>
-	0xbb860  @objc CKEntity.linksTo:matchType:completionHandler: <stripped>
-	0xbbd30  @objc CKEntity.linksTo:matchType:error: <stripped>
-	0xbbe50  @objc CKEntity.init <stripped>
-	0xbbed0  @objc CKEntity..cxx_destruct <stripped>
+	0xb3380  @objc CKEntity.isEqual: <stripped>
+	0xb3420  @objc CKEntity.hash <stripped>
+	0xb35f0  @objc CKEntity.description <stripped>
+	0xb3c50  @objc CKEntity.valueForKey: <stripped>
+	0xb3d50  @objc CKEntity.valueForKey:completionHandler: <stripped>
+	0xb46f0  @objc CKEntity.valuesForKeys:completionHandler: <stripped>
+	0xb4ac0  @objc CKEntity.setValue:forKey:completionHandler: <stripped>
+	0xb5420  @objc CKEntity.setValuesForKeys:completionHandler: <stripped>
+	0xb5530  @objc CKEntity.removeValueForKey:completionHandler: <stripped>
+	0xb6600  @objc CKEntity.linkTo:withPredicate:completionHandler: <stripped>
+	0xb6ad0  @objc CKEntity.linkTo:withPredicate:error: <stripped>
+	0xb6cf0  @objc CKEntity.unlinkTo:withPredicate:ignoreWeights:completionHandler: <stripped>
+	0xb7250  @objc CKEntity.removeWithCompletionHandler: <stripped>
+	0xbbb10  @objc CKEntity.linksTo:matchType:completionHandler: <stripped>
+	0xbbfe0  @objc CKEntity.linksTo:matchType:error: <stripped>
+	0xbc100  @objc CKEntity.init <stripped>
+	0xbc180  @objc CKEntity..cxx_destruct <stripped>
 
 	// Swift methods
-	0xb2dc0  class func CKEntity.__allocating_init(identifier:knowledgeStore:) // init 
-	0xb3a60  func CKEntity.value(forKey:completionHandler:) // method 
-	0xb3b80  func CKEntity.values(forKeys:completionHandler:) // method 
-	0xb3d90  func CKEntity.values(forKeys:completionHandler:) // method 
-	0xb44f0  func CKEntity.setValue(_:forKey:completionHandler:) // method 
-	0xb4900  func CKEntity.setValues(forKeys:completionHandler:) // method 
-	0xb5240  func CKEntity.removeValue(forKey:completionHandler:) // method 
-	0xb5e10  func CKEntity.link(to:withPredicate:completionHandler:) // method 
-	0xb6410  func CKEntity.link(to:withPredicate:) // method 
-	0xb6910  func CKEntity.unlink(to:withPredicate:ignoreWeights:completionHandler:) // method 
-	0xb6b20  func CKEntity.unlink(to:withPredicate:ignoreWeights:) // method 
-	0xb6f20  func CKEntity.remove(completionHandler:) // method 
-	0xb7080  func CKEntity.remove() // method 
-	0xb7410  func CKEntity.path(to:withRadius:completionHandler:) // method 
-	0xb79a0  func CKEntity.path(to:withRadius:) // method 
-	0xb79c0  func CKEntity.path(to:radius:) // method 
-	0xb8680  func CKEntity.linkedEntities(withPredicate:matchType:complement:completionHandler:) // method 
-	0xb8c90  func CKEntity.linkedEntities(withPredicate:matchType:complement:) // method 
-	0xb8ca0  func CKEntity.linkedEntities(completionHandler:) // method 
-	0xb96d0  func CKEntity.linkedEntities() // method 
-	0xb9aa0  func CKEntity.linkingEntities(withPredicate:matchType:complement:completionHandler:) // method 
-	0xba0a0  func CKEntity.linkingEntities(withPredicate:matchType:complement:) // method 
-	0xba0b0  func CKEntity.linkingEntities(completionHandler:) // method 
-	0xba4b0  func CKEntity.linkingEntities() // method 
-	0xbaeb0  func CKEntity.links(to:matchType:completionHandler:) // method 
-	0xbb8e0  func CKEntity.links(to:matchType:) // method 
+	0xb3070  class func CKEntity.__allocating_init(identifier:knowledgeStore:) // init 
+	0xb3d10  func CKEntity.value(forKey:completionHandler:) // method 
+	0xb3e30  func CKEntity.values(forKeys:completionHandler:) // method 
+	0xb4040  func CKEntity.values(forKeys:completionHandler:) // method 
+	0xb47a0  func CKEntity.setValue(_:forKey:completionHandler:) // method 
+	0xb4bb0  func CKEntity.setValues(forKeys:completionHandler:) // method 
+	0xb54f0  func CKEntity.removeValue(forKey:completionHandler:) // method 
+	0xb60c0  func CKEntity.link(to:withPredicate:completionHandler:) // method 
+	0xb66c0  func CKEntity.link(to:withPredicate:) // method 
+	0xb6bc0  func CKEntity.unlink(to:withPredicate:ignoreWeights:completionHandler:) // method 
+	0xb6dd0  func CKEntity.unlink(to:withPredicate:ignoreWeights:) // method 
+	0xb71d0  func CKEntity.remove(completionHandler:) // method 
+	0xb7330  func CKEntity.remove() // method 
+	0xb76c0  func CKEntity.path(to:withRadius:completionHandler:) // method 
+	0xb7c50  func CKEntity.path(to:withRadius:) // method 
+	0xb7c70  func CKEntity.path(to:radius:) // method 
+	0xb8930  func CKEntity.linkedEntities(withPredicate:matchType:complement:completionHandler:) // method 
+	0xb8f40  func CKEntity.linkedEntities(withPredicate:matchType:complement:) // method 
+	0xb8f50  func CKEntity.linkedEntities(completionHandler:) // method 
+	0xb9980  func CKEntity.linkedEntities() // method 
+	0xb9d50  func CKEntity.linkingEntities(withPredicate:matchType:complement:completionHandler:) // method 
+	0xba350  func CKEntity.linkingEntities(withPredicate:matchType:complement:) // method 
+	0xba360  func CKEntity.linkingEntities(completionHandler:) // method 
+	0xba760  func CKEntity.linkingEntities() // method 
+	0xbb160  func CKEntity.links(to:matchType:completionHandler:) // method 
+	0xbbb90  func CKEntity.links(to:matchType:) // method 
  }
 
  class CoreKnowledge.CKTimedDispatch : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1182,16 +1187,16 @@
 	var _group : OS_dispatch_group? // +0x0 (0x8)
 
 	// Swift methods
-	0xc0f10  func CKTimedDispatch._interruptError.getter // getter 
-	0xc0f40  func CKTimedDispatch._interruptError.setter // setter 
-	0xc0f80  func CKTimedDispatch._interruptError.modify // modifyCoroutine 
-	0xc1080  func CKTimedDispatch._group.getter // getter 
-	0xc10c0  func CKTimedDispatch._group.setter // setter 
-	0xc1110  func CKTimedDispatch._group.modify // modifyCoroutine 
-	0xc1150  func CKTimedDispatch.group.getter // getter 
-	0xc0180  class func CKTimedDispatch.__allocating_init(timeout:) // init 
-	0xc14a0  func CKTimedDispatch.interrupt(_:) // method 
-	0xc1520  func CKTimedDispatch.wait() // method 
+	0xc11c0  func CKTimedDispatch._interruptError.getter // getter 
+	0xc11f0  func CKTimedDispatch._interruptError.setter // setter 
+	0xc1230  func CKTimedDispatch._interruptError.modify // modifyCoroutine 
+	0xc1330  func CKTimedDispatch._group.getter // getter 
+	0xc1370  func CKTimedDispatch._group.setter // setter 
+	0xc13c0  func CKTimedDispatch._group.modify // modifyCoroutine 
+	0xc1400  func CKTimedDispatch.group.getter // getter 
+	0xc0430  class func CKTimedDispatch.__allocating_init(timeout:) // init 
+	0xc1750  func CKTimedDispatch.interrupt(_:) // method 
+	0xc17d0  func CKTimedDispatch.wait() // method 
  }
 
  enum CoreKnowledge.CKError {
@@ -1214,28 +1219,28 @@
 	var delegate : CKKnowledgeStoreDelegate? // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xc2f50  @objc CKKnowledgeStore.delegate <stripped>
-	0xc2fa0  @objc CKKnowledgeStore.setDelegate: <stripped>
-	0xc3000  @objc CKKnowledgeStore.name <stripped>
-	0xc31e0  @objc CKKnowledgeStore.filePathURL <stripped>
-	0xc3270  @objc CKKnowledgeStore.hash <stripped>
-	0xc3530  @objc CKKnowledgeStore.isEqual: <stripped>
-	0xc3820  @objc CKKnowledgeStore.init <stripped>
-	0xc38a0  @objc CKKnowledgeStore..cxx_destruct <stripped>
+	0xc3200  @objc CKKnowledgeStore.delegate <stripped>
+	0xc3250  @objc CKKnowledgeStore.setDelegate: <stripped>
+	0xc32b0  @objc CKKnowledgeStore.name <stripped>
+	0xc3490  @objc CKKnowledgeStore.filePathURL <stripped>
+	0xc3520  @objc CKKnowledgeStore.hash <stripped>
+	0xc37e0  @objc CKKnowledgeStore.isEqual: <stripped>
+	0xc3ad0  @objc CKKnowledgeStore.init <stripped>
+	0xc3b50  @objc CKKnowledgeStore..cxx_destruct <stripped>
 
 	// Swift methods
-	0xc1ff0  func CKKnowledgeStore.delegate.getter // getter 
-	0xc2030  func CKKnowledgeStore.delegate.setter // setter 
-	0xc2080  func CKKnowledgeStore.delegate.modify // modifyCoroutine 
-	0xc20d0  func CKKnowledgeStore.name.getter // getter 
-	0xc2110  func CKKnowledgeStore.filePath.getter // getter 
-	0xc23a0  class func static CKKnowledgeStore.defaultKnowledgeStore() // method 
-	0xc2480  class func static CKKnowledgeStore.defaultSynchedKnowledgeStore() // method 
-	0xc24d0  class func static CKKnowledgeStore.inMemoryKnowledgeStore() // method 
-	0xc2520  class func static CKKnowledgeStore.userDefaultsKnowledgeStore() // method 
-	0xc2570  class func static CKKnowledgeStore.knowledgeStore(withName:) // method 
-	0xc2580  class func static CKKnowledgeStore.synchedKnowledgeStore(withName:) // method 
-	0xc25f0  class func static CKKnowledgeStore.store(_:) // method 
+	0xc22a0  func CKKnowledgeStore.delegate.getter // getter 
+	0xc22e0  func CKKnowledgeStore.delegate.setter // setter 
+	0xc2330  func CKKnowledgeStore.delegate.modify // modifyCoroutine 
+	0xc2380  func CKKnowledgeStore.name.getter // getter 
+	0xc23c0  func CKKnowledgeStore.filePath.getter // getter 
+	0xc2650  class func static CKKnowledgeStore.defaultKnowledgeStore() // method 
+	0xc2730  class func static CKKnowledgeStore.defaultSynchedKnowledgeStore() // method 
+	0xc2780  class func static CKKnowledgeStore.inMemoryKnowledgeStore() // method 
+	0xc27d0  class func static CKKnowledgeStore.userDefaultsKnowledgeStore() // method 
+	0xc2820  class func static CKKnowledgeStore.knowledgeStore(withName:) // method 
+	0xc2830  class func static CKKnowledgeStore.synchedKnowledgeStore(withName:) // method 
+	0xc28a0  class func static CKKnowledgeStore.store(_:) // method 
  }
 
  enum CoreKnowledge.Location {
@@ -1249,32 +1254,34 @@
 
  class CoreKnowledge.AppUsageProbabilityFinder : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0xc4d50  @objc AppUsageProbabilityFinder.init <stripped>
+	0xc5000  @objc AppUsageProbabilityFinder.init <stripped>
 
 	// Swift methods
-	0xc4a80  class func static AppUsageProbabilityFinder.relativeAppUsageProbabilities(bundleIDs:days:) // method 
+	0xc4d30  class func static AppUsageProbabilityFinder.relativeAppUsageProbabilities(bundleIDs:days:) // method 
  }
 
  class CoreKnowledge.SRAppMatcher : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	var db : Connection // +0x8 (0x8)
-	var domain : String // +0x10 (0x10)
-	var allowedBundleIDs : [String] // +0x20 (0x8)
-	var memorableEntities : [MemorableEntity] // +0x28 (0x8)
+	var db : Connection
+	var domain : String
+	var allowedBundleIDs : [String]
+	var entitySet : RequestEntity
+	var memorableEntities : [MemorableEntity]
 
 	// ObjC -> Swift bridged methods
-	0xc9350  @objc SRAppMatcher.init <stripped>
-	0xc93d0  @objc SRAppMatcher..cxx_destruct <stripped>
+	0xcbe80  @objc SRAppMatcher.init <stripped>
+	0xcbf00  @objc SRAppMatcher..cxx_destruct <stripped>
 
 	// Swift methods
-	0xc65b0  func SRAppMatcher.appMatches() // method 
-	0xc6da0  func SRAppMatcher.findEntitySignals() // method 
-	0xc7460  func SRAppMatcher.findMatchingEntities(forEntity:) // method 
-	0xc81d0  func SRAppMatcher.findIntentSignals(entitySignals:) // method 
-	0xc9080  func SRAppMatcher.findEntityMatchSignals(allIntentSignals:) // method 
-	0xc9230  func SRAppMatcher.decideResult(entityMatchSignals:appUsageSignals:) // method 
-	0xc92e0  func SRAppMatcher.decide(byEntityMatch:withAppUsageSignals:) // method 
+	0xc6ed0  func SRAppMatcher.appMatches() // method 
+	0xc72c0  func SRAppMatcher.findEntitySignals() // method 
+	0xc78e0  func SRAppMatcher.findMatchingEntities(forEntity:) // method 
+	0xc8730  func SRAppMatcher.findIntentSignals(entityIDs:) // method 
+	0xc8a90  func SRAppMatcher.findBaseIntentSignals(entityIDs:) // method 
+	0xc9e50  func SRAppMatcher.calculateEntityMatchSignals(intentSignals:) // method 
+	0xcbc60  func SRAppMatcher.findAppSignals(intentSignals:) // method 
+	0xcbe10  func SRAppMatcher.makeDecision(appSignals:) // method 
  }
 
  struct CoreKnowledge.EntitySignals {
@@ -1282,32 +1289,83 @@
 	// Properties
 	let intentIndex : Int // +0x0
 	let idfScore : Double // +0x8
+	let paramSize : Int // +0x10
  }
 
- struct CoreKnowledge.IntentSignals {
+ class CoreKnowledge.IntentSignals : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let intentRowID : Int64
-	let entityRowID : Int64
-	let entityIndex : Int
-	let bundleID : String
-	let modifiedAt : Date
-	let recencyOrder : Int
-	var idfScore : Double
+	let intentID : Int64 // +0x10 (0x8)
+	var entities : IntentParameter // +0x18 (0x8)
+	let bundleID : String // +0x20 (0x10)
+	let direction : INInteractionDirection // +0x30 (0x8)
+	let modifiedAt : Date // +0x80000400 (0x0)
+	var recencyOrder : Int // +0x0 (0x8)
+	var ftsRankings : [Double] // +0x1654 (0x8)
+	var requestEntityMatchRates : [Double] // +0x0 (0x8)
+	var intentEntityMatchRates : [Double] // +0x16dde4 (0x8)
+	var maxEntityMatchRate : Double // +0x16dde4 (0x8)
+
+	// Swift methods
+	0xcc040  func IntentSignals.entities.getter // getter 
+	0xcc070  func IntentSignals.entities.setter // setter 
+	0xcc0b0  func IntentSignals.entities.modify // modifyCoroutine 
+	0xcc1d0  func IntentSignals.recencyOrder.getter // getter 
+	0xcc200  func IntentSignals.recencyOrder.setter // setter 
+	0xcc240  func IntentSignals.recencyOrder.modify // modifyCoroutine 
+	0xcc310  func IntentSignals.ftsRankings.getter // getter 
+	0xcc330  func IntentSignals.ftsRankings.setter // setter 
+	0xcc350  func IntentSignals.ftsRankings.modify // modifyCoroutine 
+	0xcc430  func IntentSignals.requestEntityMatchRates.getter // getter 
+	0xcc450  func IntentSignals.requestEntityMatchRates.setter // setter 
+	0xcc470  func IntentSignals.requestEntityMatchRates.modify // modifyCoroutine 
+	0xcc540  func IntentSignals.intentEntityMatchRates.getter // getter 
+	0xcc5a0  func IntentSignals.intentEntityMatchRates.setter // setter 
+	0xcc600  func IntentSignals.intentEntityMatchRates.modify // modifyCoroutine 
+	0xcc6d0  func IntentSignals.maxEntityMatchRate.getter // getter 
+	0xcc700  func IntentSignals.maxEntityMatchRate.setter // setter 
+	0xcc740  func IntentSignals.maxEntityMatchRate.modify // modifyCoroutine 
+	0xc9dd0  class func IntentSignals.__allocating_init(intentID:entities:bundleID:direction:modifiedAt:recencyOrder:) // init 
  }
 
- struct CoreKnowledge.EntityMatchSignals {
+ struct CoreKnowledge.IntentParameter {
+
+	// Properties
+	var cardinality : Int64 // +0x0
+	var entityIDs : [Int64] // +0x8
+ }
+
+ class CoreKnowledge.RequestEntity : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let entity : MemorableEntity // +0x10 (0x40)
+	var matches : DBEntityMatch // +0x50 (0x8)
+
+	// Swift methods
+	0xccbb0  func RequestEntity.matches.getter // getter 
+	0xccbe0  func RequestEntity.matches.setter // setter 
+	0xccc20  func RequestEntity.matches.modify // modifyCoroutine 
+	0xc6490  class func RequestEntity.__allocating_init(entity:) // init 
+ }
+
+ struct CoreKnowledge.DBEntityMatch {
+
+	// Properties
+	let entityID : Int64 // +0x0
+	let ftsRank : Double // +0x8
+ }
+
+ struct CoreKnowledge.AppSignals {
 
 	// Properties
 	let bundleID : String // +0x0
 	let recencyOrder : Int // +0x10
 	let isMostRecentAppForEntity : Bool // +0x18
-	let maxIDFScore : Double // +0x20
-	let frequency : Int // +0x28
-	let secondsAgo : Double // +0x30
-	let relevanceScore : Double // +0x38
-	let frequencyScore : Double // +0x40
-	let overallScore : Double // +0x48
+	let frequency : Int // +0x20
+	let secondsAgo : Double // +0x28
+	let relevanceScore : Double // +0x30
+	let frequencyScore : Double // +0x38
+	let overallScore : Double // +0x40
  }
 
  struct CoreKnowledge.AppUsageSignals {
@@ -1322,8 +1380,13 @@
  struct CoreKnowledge.AppMatchSignals {
 
 	// Properties
-	let entityMatchSignals : EntityMatchSignals // +0x0
-	let appUsageSignals : AppUsageSignals // +0x8
+	let appSignals : AppSignals // +0x0
+ }
+
+ enum CoreKnowledge.CodingKeys {
+
+	// Properties
+	case appSignals  
  }
 
  enum CoreKnowledge.CodingKeys {
@@ -1341,19 +1404,11 @@
 	case bundleID  
 	case recencyOrder  
 	case isMostRecentAppForEntity  
-	case maxIDFScore  
 	case frequency  
 	case secondsAgo  
 	case relevanceScore  
 	case frequencyScore  
 	case overallScore  
- }
-
- enum CoreKnowledge.CodingKeys {
-
-	// Properties
-	case entityMatchSignals  
-	case appUsageSignals  
  }
 
  class CoreKnowledge.Statement : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FailableIterator {
@@ -1366,7 +1421,7 @@
 	var $__lazy_storage_$_row : Cursor // +0x38 (0x10)
 
 	// Swift methods
-	0xd82a0  class func Statement.__allocating_init(_:_:) // init 
+	0xdcbe0  class func Statement.__allocating_init(_:_:) // init 
  }
 
  struct CoreKnowledge.Cursor {
@@ -1382,11 +1437,11 @@
 	let store : CKKnowledgeStore // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xdbb20  @objc CKDeviceActivityStore.init <stripped>
-	0xdbba0  @objc CKDeviceActivityStore..cxx_destruct <stripped>
+	0xe0460  @objc CKDeviceActivityStore.init <stripped>
+	0xe04e0  @objc CKDeviceActivityStore..cxx_destruct <stripped>
 
 	// Swift methods
-	0xdb8d0  class func CKDeviceActivityStore.__allocating_init(store:) // init 
+	0xe0210  class func CKDeviceActivityStore.__allocating_init(store:) // init 
  }
 
  class CoreKnowledge.CKAbstractWriteBatch : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1396,34 +1451,34 @@
 	let backingStore : CKBackingStore
 
 	// ObjC -> Swift bridged methods
-	0xdcc10  @objc CKAbstractWriteBatch.setObject:forKey: <stripped>
+	0xe1550  @objc CKAbstractWriteBatch.setObject:forKey: <stripped>
 
 	// Swift methods
-	0xdca60  func CKAbstractWriteBatch.buffer.getter // getter 
-	0xdca90  func CKAbstractWriteBatch.buffer.setter // setter 
-	0xdcad0  func CKAbstractWriteBatch.buffer.modify // modifyCoroutine 
-	0xdcb20  class func CKAbstractWriteBatch.__allocating_init(backingStore:) // init 
-	0xdcc00  func CKAbstractWriteBatch.setObject(_:forKey:) // method 
+	0xe13a0  func CKAbstractWriteBatch.buffer.getter // getter 
+	0xe13d0  func CKAbstractWriteBatch.buffer.setter // setter 
+	0xe1410  func CKAbstractWriteBatch.buffer.modify // modifyCoroutine 
+	0xe1460  class func CKAbstractWriteBatch.__allocating_init(backingStore:) // init 
+	0xe1540  func CKAbstractWriteBatch.setObject(_:forKey:) // method 
  }
 
  class CoreKnowledge.CKInMemoryWriteBatch : CKAbstractWriteBatch {
 	// ObjC -> Swift bridged methods
-	0xdcdc0  @objc CKInMemoryWriteBatch.writeWithCompletionHandler: <stripped>
-	0xdd7c0  @objc CKInMemoryWriteBatch.writeAndReturnError: <stripped>
+	0xe1700  @objc CKInMemoryWriteBatch.writeWithCompletionHandler: <stripped>
+	0xe2100  @objc CKInMemoryWriteBatch.writeAndReturnError: <stripped>
 
 	// Swift methods
-	0xdcd20  func CKInMemoryWriteBatch.write(completionHandler:) // method 
-	0xdce70  func CKInMemoryWriteBatch.write() // method 
+	0xe1660  func CKInMemoryWriteBatch.write(completionHandler:) // method 
+	0xe17b0  func CKInMemoryWriteBatch.write() // method 
  }
 
  class CoreKnowledge.CKUserDefaultsWriteBatch : CKAbstractWriteBatch {
 	// ObjC -> Swift bridged methods
-	0xdcdc0  @objc CKUserDefaultsWriteBatch.writeWithCompletionHandler: <stripped>
-	0xde2c0  @objc CKUserDefaultsWriteBatch.writeAndReturnError: <stripped>
+	0xe1700  @objc CKUserDefaultsWriteBatch.writeWithCompletionHandler: <stripped>
+	0xe2c00  @objc CKUserDefaultsWriteBatch.writeAndReturnError: <stripped>
 
 	// Swift methods
-	0xdd880  func CKUserDefaultsWriteBatch.write(completionHandler:) // method 
-	0xdd920  func CKUserDefaultsWriteBatch.write() // method 
+	0xe21c0  func CKUserDefaultsWriteBatch.write(completionHandler:) // method 
+	0xe2260  func CKUserDefaultsWriteBatch.write() // method 
  }
 
  class CoreKnowledge.CKSQLWriteBatch : CKAbstractWriteBatch {
@@ -1432,20 +1487,20 @@
 	var queue : OS_dispatch_queue
 
 	// ObjC -> Swift bridged methods
-	0xdf870  @objc CKSQLWriteBatch.writeWithCompletionHandler: <stripped>
-	0xdfdf0  @objc CKSQLWriteBatch.writeAndReturnError: <stripped>
+	0xe41b0  @objc CKSQLWriteBatch.writeWithCompletionHandler: <stripped>
+	0xe4730  @objc CKSQLWriteBatch.writeAndReturnError: <stripped>
 
 	// Swift methods
-	0xde3b0  func CKSQLWriteBatch.queue.getter // getter 
-	0xde3e0  func CKSQLWriteBatch.queue.setter // setter 
-	0xde420  func CKSQLWriteBatch.queue.modify // modifyCoroutine 
-	0xdee50  func CKSQLWriteBatch.write(completionHandler:) // method 
-	0xdf890  func CKSQLWriteBatch.write() // method 
+	0xe2cf0  func CKSQLWriteBatch.queue.getter // getter 
+	0xe2d20  func CKSQLWriteBatch.queue.setter // setter 
+	0xe2d60  func CKSQLWriteBatch.queue.modify // modifyCoroutine 
+	0xe3790  func CKSQLWriteBatch.write(completionHandler:) // method 
+	0xe41d0  func CKSQLWriteBatch.write() // method 
  }
 
  class CoreKnowledge.CKCloudKitWriteBatch : CKSQLWriteBatch {
 	// ObjC -> Swift bridged methods
-	0xe1520  @objc CKCloudKitWriteBatch.writeWithCompletionHandler: <stripped>
+	0xe5e60  @objc CKCloudKitWriteBatch.writeWithCompletionHandler: <stripped>
  }
 
  class CoreKnowledge.BackfillInteractions : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -1454,12 +1509,12 @@
 	let handler : (_:)? // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0xe39d0  @objc BackfillInteractions.main <stripped>
-	0xe3ae0  @objc BackfillInteractions.init <stripped>
-	0xe3b60  @objc BackfillInteractions..cxx_destruct <stripped>
+	0xe8310  @objc BackfillInteractions.main <stripped>
+	0xe8420  @objc BackfillInteractions.init <stripped>
+	0xe84a0  @objc BackfillInteractions..cxx_destruct <stripped>
 
 	// Swift methods
-	0xe2d30  class func BackfillInteractions.__allocating_init(handler:) // init 
+	0xe7670  class func BackfillInteractions.__allocating_init(handler:) // init 
  }
 
  enum CoreKnowledge.Configs { }
@@ -1478,12 +1533,12 @@
 	let osLog : OS_os_log // +0x10 (0x8)
 
 	// Swift methods
-	0xeb1f0  class func CKLogger.__allocating_init(_:) // init 
-	0xeb260  func CKLogger.debug(_:_:) // method 
-	0xeb280  func CKLogger.info(_:_:) // method 
-	0xeb2a0  func CKLogger.error(_:_:) // method 
-	0xeb2c0  func CKLogger.fault(_:_:) // method 
-	0xeb320  func CKLogger.log(type:_:_:) // method 
+	0xefb30  class func CKLogger.__allocating_init(_:) // init 
+	0xefba0  func CKLogger.debug(_:_:) // method 
+	0xefbc0  func CKLogger.info(_:_:) // method 
+	0xefbe0  func CKLogger.error(_:_:) // method 
+	0xefc00  func CKLogger.fault(_:_:) // method 
+	0xefc60  func CKLogger.log(type:_:_:) // method 
  }
 
  class CoreKnowledge.SRAppMatches : NSObject /usr/lib/libobjc.A.dylib {
@@ -1494,23 +1549,23 @@
 	let signalsJSON : Data // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0xebb60  @objc SRAppMatches.matchType <stripped>
-	0xebba0  @objc SRAppMatches.bundleIDs <stripped>
-	0xebc00  @objc SRAppMatches.signalsJSON <stripped>
-	0xebe40  @objc SRAppMatches.initWithMatchType:bundleIDs:signalsJSON: <stripped>
-	0xebf60  @objc SRAppMatches.description <stripped>
-	0xec2b0  @objc SRAppMatches.copyWithZone: <stripped>
-	0xec5b0  @objc SRAppMatches.encodeWithCoder: <stripped>
-	0xecb90  @objc SRAppMatches.initWithCoder: <stripped>
-	0xecc10  @objc SRAppMatches.init <stripped>
-	0xecc90  @objc SRAppMatches..cxx_destruct <stripped>
+	0xf0490  @objc SRAppMatches.matchType <stripped>
+	0xf04d0  @objc SRAppMatches.bundleIDs <stripped>
+	0xf0530  @objc SRAppMatches.signalsJSON <stripped>
+	0xf0a50  @objc SRAppMatches.initWithMatchType:bundleIDs:signalsJSON: <stripped>
+	0xf0b70  @objc SRAppMatches.description <stripped>
+	0xf0ec0  @objc SRAppMatches.copyWithZone: <stripped>
+	0xf11c0  @objc SRAppMatches.encodeWithCoder: <stripped>
+	0xf17a0  @objc SRAppMatches.initWithCoder: <stripped>
+	0xf1820  @objc SRAppMatches.init <stripped>
+	0xf18a0  @objc SRAppMatches..cxx_destruct <stripped>
 
 	// Swift methods
-	0xebac0  class func SRAppMatches.__allocating_init(matchType:bundleIDs:signals:) // init 
-	0xebc90  class func SRAppMatches.__allocating_init(matchType:bundleIDs:signalsJSON:) // init 
-	0xec190  func SRAppMatches.copy(with:) // method 
-	0xec450  func SRAppMatches.encode(with:) // method 
-	0xec600  class func SRAppMatches.__allocating_init(coder:) // init 
+	0xf0400  class func SRAppMatches.__allocating_init(matchType:bundleIDs:signals:) // init 
+	0xf08a0  class func SRAppMatches.__allocating_init(matchType:bundleIDs:signalsJSON:) // init 
+	0xf0da0  func SRAppMatches.copy(with:) // method 
+	0xf1060  func SRAppMatches.encode(with:) // method 
+	0xf1210  class func SRAppMatches.__allocating_init(coder:) // init 
  }
 
  enum CoreKnowledge.SRAppMatchesType { }

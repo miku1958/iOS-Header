@@ -76,6 +76,7 @@
     long long _chromeVisibilityAnimationCount;
     PXInfoUpdater *_selectedAssetsTypeCountUpdater;
     NSObject<OS_dispatch_queue> *_countUpdateQueue;
+    long long _viewTimeSignpostID;
     struct CGPoint _lastScrollDirection;
     CDStruct_15189878 _selectedAssetsTypedCount;
     CDStruct_7c4e768e _pinchState;
@@ -132,6 +133,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PXUpdater *updater; // @synthesize updater=_updater;
 @property (readonly, nonatomic) BOOL viewBasedDecorationsEnabled; // @synthesize viewBasedDecorationsEnabled=_viewBasedDecorationsEnabled;
+@property (nonatomic) long long viewTimeSignpostID; // @synthesize viewTimeSignpostID=_viewTimeSignpostID;
 @property (readonly, nonatomic) NSArray *views;
 @property (readonly, nonatomic) NSSet *visibleAssetCollections;
 @property (readonly, nonatomic) BOOL wantsDarkStatusBar; // @synthesize wantsDarkStatusBar=_wantsDarkStatusBar;
@@ -149,6 +151,7 @@
 - (long long)_closestColumnIndexForColumnWidth:(double)arg1;
 - (double)_columnIndexForItemWidth:(double)arg1;
 - (double)_columnWidthForDesiredColumnIndex:(double)arg1;
+- (id)_cpAnalyticsClassNameWithZoomLevel:(long long)arg1;
 - (void)_handleIsSelectingChange;
 - (void)_handleSelectionManagerChange:(unsigned long long)arg1;
 - (void)_handleSpecChange;
@@ -195,6 +198,7 @@
 - (void)curatedLibraryAssetsDataSourceManager:(id)arg1 willTransitionFromZoomLevel:(long long)arg2 toZoomLevel:(long long)arg3;
 - (void)didPerformChanges;
 - (void)endAnimationToToggleChromeVisibility;
+- (void)endCPAnalyticsViewWithZoomLevel:(long long)arg1;
 - (void)infoUpdaterDidUpdate:(id)arg1;
 - (id)init;
 - (id)initWithAssetsDataSourceManagerConfiguration:(id)arg1 zoomLevel:(long long)arg2 specManager:(id)arg3 styleGuide:(id)arg4;
@@ -234,6 +238,7 @@
 - (void)setZoomLevel:(long long)arg1;
 - (void)setZoomLevelTransitionPhase:(long long)arg1;
 - (void)startAnimationToToggleChromeVisibility;
+- (void)startCPAnalyticsViewWithZoomLevel:(long long)arg1;
 - (void)toggleSelectionForAssetCollectionReference:(id)arg1;
 - (void)toggleSelectionForAssetReference:(id)arg1;
 - (void)toggleSelectionForIndexPath:(struct PXSimpleIndexPath)arg1;

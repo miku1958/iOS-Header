@@ -6,12 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaDeviceDynamicContext-Protocol.h>
-
 @class NSData, NSString, SISchemaLocation;
 
-@interface SISchemaDeviceDynamicContext : PBCodable <SISchemaDeviceDynamicContext, NSSecureCoding>
+@interface SISchemaDeviceDynamicContext : PBCodable
 {
     SISchemaLocation *_location;
     NSString *_countryCode;
@@ -19,16 +16,13 @@
 }
 
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaLocation *location; // @synthesize location=_location;
-@property (readonly) Class superclass;
 @property (nonatomic) double timeIntervalSince1970; // @synthesize timeIntervalSince1970=_timeIntervalSince1970;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

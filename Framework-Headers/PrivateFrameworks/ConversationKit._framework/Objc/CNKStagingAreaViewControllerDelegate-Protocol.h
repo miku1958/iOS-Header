@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CNKStagingAreaViewController;
+@class CNKStagingAreaViewController, UIViewController;
 
 @protocol CNKStagingAreaViewControllerDelegate
 - (void)didRequestTransitionToCanvasFromStagingAreaViewController:(CNKStagingAreaViewController *)arg1;
+- (void)viewControllerDidRequestTemporaryPreventSuspension:(UIViewController *)arg1;
 @end
 

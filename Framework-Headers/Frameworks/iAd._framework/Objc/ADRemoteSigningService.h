@@ -23,6 +23,7 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)signedCredentialForRequest:(id)arg1 withPersistence:(unsigned long long)arg2;
+- (id)signedCredentialForUrl:(id)arg1 userAgent:(id)arg2 withPersistence:(unsigned long long)arg3;
 
 @end
 

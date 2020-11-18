@@ -22,6 +22,7 @@
 + (id)loadableFontWithName:(id)arg1 url:(id)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 

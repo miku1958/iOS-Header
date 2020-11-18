@@ -14,6 +14,7 @@
 {
     BOOL _isSticker;
     BOOL _hideAttachment;
+    BOOL _isDirectory;
     NSString *_guid;
     NSURL *_fileURL;
     NSDictionary *_transcoderUserInfo;
@@ -38,6 +39,7 @@
 @property (readonly, copy, nonatomic) NSString *guid; // @synthesize guid=_guid;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hideAttachment; // @synthesize hideAttachment=_hideAttachment;
+@property (readonly, nonatomic) BOOL isDirectory; // @synthesize isDirectory=_isDirectory;
 @property (readonly, nonatomic) BOOL isSticker; // @synthesize isSticker=_isSticker;
 @property (readonly, nonatomic, getter=isRestoring) BOOL restoring;
 @property (readonly, copy, nonatomic) NSDictionary *stickerUserInfo; // @synthesize stickerUserInfo=_stickerUserInfo;

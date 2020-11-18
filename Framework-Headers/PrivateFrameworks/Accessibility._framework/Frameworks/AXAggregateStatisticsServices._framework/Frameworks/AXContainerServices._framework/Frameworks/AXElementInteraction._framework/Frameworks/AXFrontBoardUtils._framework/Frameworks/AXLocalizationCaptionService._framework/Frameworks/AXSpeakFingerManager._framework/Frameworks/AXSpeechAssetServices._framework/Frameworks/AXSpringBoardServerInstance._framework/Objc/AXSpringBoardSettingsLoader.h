@@ -29,6 +29,7 @@
 + (void)_checkAssistiveTouchSetByiTunes;
 + (void)_checkClosedCaptioningSetByiTunes;
 + (void)_checkContrastSetting;
++ (void)_checkForDataResetFile;
 + (void)_checkForHomeButtonBreakage:(BOOL)arg1;
 + (void)_checkInvertColorsSetByiTunes;
 + (void)_checkMonoAudioSetByiTunes;

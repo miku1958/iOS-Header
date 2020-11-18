@@ -31,7 +31,9 @@
 - (BOOL)brc_isBatchRequestFailed;
 - (BOOL)brc_isBlacklistError;
 - (BOOL)brc_isCloudKitAssetFileModified;
+- (BOOL)brc_isCloudKitAtomicFailure;
 - (BOOL)brc_isCloudKitCancellationError;
+- (BOOL)brc_isCloudKitErrorChainedToNewParent:(id *)arg1;
 - (BOOL)brc_isCloudKitErrorImplyingZoneNeedsCreation;
 - (BOOL)brc_isCloudKitErrorNeedsPCSPrep;
 - (BOOL)brc_isCloudKitErrorRequiringAssetRescan;
@@ -44,11 +46,14 @@
 - (BOOL)brc_isCloudKitErrorZoneUndergoingMigration;
 - (BOOL)brc_isCloudKitOutOfQuota;
 - (BOOL)brc_isCloudKitPCSDecryptionFailure;
+- (BOOL)brc_isCloudKitPCSError;
 - (BOOL)brc_isCloudKitUnknownItemError;
 - (BOOL)brc_isEverRetriable;
+- (BOOL)brc_isIndividualItemBlacklistError;
 - (BOOL)brc_isOutOfSpaceError;
 - (BOOL)brc_isResetError;
 - (BOOL)brc_isRetriable;
+- (BOOL)brc_isUserInitiatedRetriable;
 - (id)brc_staleUpdateRecordIDs;
 - (id)brc_strippedError;
 - (int)brc_syncOperationErrorKind;

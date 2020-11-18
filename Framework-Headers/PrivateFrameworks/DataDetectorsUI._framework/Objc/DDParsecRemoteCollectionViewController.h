@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (BOOL)canBecomeFirstResponder;
 - (void)getStatusBarHidden:(CDUnknownBlockType)arg1;
 - (void)interactionEnded;

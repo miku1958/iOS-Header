@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)feedbackPayload;
+- (id)getTrialID;
 - (id)initWithFeedbackAction:(id)arg1 predictionContext:(id)arg2 suggestions:(id)arg3;
 - (id)knowledgeEvent;
 

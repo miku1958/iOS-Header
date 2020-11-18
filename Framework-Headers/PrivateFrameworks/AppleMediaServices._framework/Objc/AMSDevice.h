@@ -66,6 +66,7 @@
 + (void)registerCompanionWithSerialNumber:(id)arg1;
 + (void)removeDeviceOfferWithIdentifier:(id)arg1 account:(id)arg2 bag:(id)arg3 logKey:(id)arg4;
 + (void)removeDeviceOfferWithIdentifier:(id)arg1 account:(id)arg2 bagContract:(id)arg3 logKey:(id)arg4;
++ (void)saveDeviceOfferEligibility:(id)arg1;
 + (BOOL)saveDeviceOffersForAccount:(id)arg1 response:(id)arg2 logKey:(id)arg3;
 + (id)screenScale;
 + (id)serialNumber;

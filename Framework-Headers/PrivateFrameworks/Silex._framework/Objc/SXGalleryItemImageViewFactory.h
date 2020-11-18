@@ -9,18 +9,18 @@
 #import <Silex/SXGalleryItemImageViewFactory-Protocol.h>
 
 @class NSString;
-@protocol SXReachabilityProvider, SXResourceDataSourceProvider;
+@protocol SWReachabilityProvider, SXResourceDataSourceProvider;
 
 @interface SXGalleryItemImageViewFactory : NSObject <SXGalleryItemImageViewFactory>
 {
     id<SXResourceDataSourceProvider> _resourceDataSourceProvider;
-    id<SXReachabilityProvider> _reachabilityProvider;
+    id<SWReachabilityProvider> _reachabilityProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
+@property (readonly, nonatomic) id<SWReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 @property (readonly, nonatomic) id<SXResourceDataSourceProvider> resourceDataSourceProvider; // @synthesize resourceDataSourceProvider=_resourceDataSourceProvider;
 @property (readonly) Class superclass;
 

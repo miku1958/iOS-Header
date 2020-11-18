@@ -10,6 +10,7 @@
 {
 }
 
+- (BOOL)isEqual:(id)arg1;
 - (id)loadImage;
 
 @end

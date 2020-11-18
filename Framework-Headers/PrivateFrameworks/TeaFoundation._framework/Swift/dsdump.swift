@@ -136,6 +136,11 @@
  {
 	// getter
  }
+ protocol TeaFoundation.Versionable // 2 requirements
+ {
+	// getter
+	// getter
+ }
  protocol TeaFoundation.StartupTaskType // 2 requirements
  {
 	// getter
@@ -202,7 +207,7 @@
 	var cacheUserDefaultsEntries : UserDefaultsEntry // +0x18 (0x8)
 
 	// Swift methods
-	0x23c0  class func DebugCacheRegistry.__allocating_init() // init 
+	0x2440  class func DebugCacheRegistry.__allocating_init() // init 
  }
 
  struct TeaFoundation.UserDefaultsEntry {
@@ -251,7 +256,7 @@
 	var objects : [Swift.AnyObject] // +0x18 (0x8)
 
 	// Swift methods
-	0x8850  class func DisposableBag.__allocating_init(disposeOn:) // init 
+	0x88d0  class func DisposableBag.__allocating_init(disposeOn:) // init 
  }
 
  class TeaFoundation.Localized : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -276,13 +281,6 @@
  }
 
  class TeaFoundation.Promise {
- struct TeaFoundation.FirstBlockRunner {
-
-	// Properties
-	var firstBlockHasRun : Bool
-	var serialQueue : OS_dispatch_queue
- }
-
  class TeaFoundation.StartupTaskManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -291,7 +289,7 @@
 	var state : State // +0x20 (0x1)
 
 	// Swift methods
-	0x18f80  class func StartupTaskManager.__allocating_init() // init 
+	0x11810  class func StartupTaskManager.__allocating_init() // init 
  }
 
  enum TeaFoundation.State {
@@ -333,7 +331,7 @@
 	var monitors : DisposableMonitor
 
 	// Swift methods
-	0x23550  class func ApplicationStateManagerIOS.__allocating_init() // init 
+	0x1c0f0  class func ApplicationStateManagerIOS.__allocating_init() // init 
  }
 
  class TeaFoundation.ApplicationStateManagerMacOS : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ApplicationStateManagerType {
@@ -344,11 +342,11 @@
 	var isBecomingActive : Bool
 
 	// ObjC -> Swift bridged methods
-	0x26d90  @objc ApplicationStateManagerMacOS.windowDidBecomeFrontmostNotification <stripped>
-	0x26db0  @objc ApplicationStateManagerMacOS.windowDidLoseFrontmostNotification <stripped>
+	0x1f930  @objc ApplicationStateManagerMacOS.windowDidBecomeFrontmostNotification <stripped>
+	0x1f950  @objc ApplicationStateManagerMacOS.windowDidLoseFrontmostNotification <stripped>
 
 	// Swift methods
-	0x255b0  class func ApplicationStateManagerMacOS.__allocating_init() // init 
+	0x1e150  class func ApplicationStateManagerMacOS.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposableMonitor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -381,7 +379,7 @@
 	var whenActiveBlocks : [()]
 
 	// Swift methods
-	0x286f0  class func RemoteNotificationManager.__allocating_init() // init 
+	0x21290  class func RemoteNotificationManager.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposableHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -428,6 +426,13 @@
 
  struct TeaFoundation.Random { }
 
+ struct TeaFoundation.VersionQualifier {
+
+	// Properties
+	let name : String // +0x0
+	let version : VersionNumber? // +0x10
+ }
+
  enum TeaFoundation.DeviceStorageDataClass {
 
 	// Properties
@@ -452,7 +457,7 @@
 	let lock : UnfairLock
 
 	// Swift methods
-	0x33f40  class func DeviceStorageManager.__allocating_init() // init 
+	0x2ded0  class func DeviceStorageManager.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposablePurgeable : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -529,7 +534,7 @@
 
  class TeaFoundation.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x42980  @objc ManagerAssembly.init <stripped>
+	0x3c910  @objc ManagerAssembly.init <stripped>
  }
 
  struct TeaFoundation.SignpostRecorder {
@@ -537,6 +542,12 @@
 	// Properties
 	let createdDate : Date
 	var signposts : [Signpost<A>]
+ }
+
+ struct TeaFoundation.VersionNumber {
+
+	// Properties
+	let numbers : [Int] // +0x0
  }
 
  class TeaFoundation.ProxyContainer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -548,7 +559,7 @@
 	let callback : CallbackRegistrationType // +0x28 (0x28)
 
 	// Swift methods
-	0x433c0  class func ProxyContainer.__allocating_init(registry:publicContainer:) // init 
+	0x3f100  class func ProxyContainer.__allocating_init(registry:publicContainer:) // init 
  }
 
  class TeaFoundation.AsyncBlockOperation {
@@ -585,13 +596,20 @@
 	case cancelled  
  }
 
+ struct TeaFoundation.FirstBlockRunner {
+
+	// Properties
+	var firstBlockHasRun : Bool
+	var serialQueue : OS_dispatch_queue
+ }
+
  class TeaFoundation.Synchronizer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SynchronizerType {
 
 	// Properties
 	let group : OS_dispatch_group // +0x10 (0x8)
 
 	// Swift methods
-	0x50a20  class func Synchronizer.__allocating_init() // init 
+	0x552f0  class func Synchronizer.__allocating_init() // init 
  }
 
  class TeaFoundation.RegistrationContainer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -610,6 +628,17 @@
 	// Properties
 	let value : A
 	let enteredAt : Date
+ }
+
+ class TeaFoundation.URLSessionPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let sessions : [NSURLSession] // +0x10 (0x8)
+	var nextSessionIndex : Int // +0x18 (0x8)
+	let lock : UnfairLock // +0x20 (0x8)
+
+	// Swift methods
+	0x58f20  class func URLSessionPool.__allocating_init(size:configuration:delegate:delegateQueue:) // init 
  }
 
  struct TeaFoundation.SignpostReporter {
@@ -634,7 +663,7 @@
 	var workers : DisposableWorker
 
 	// Swift methods
-	0x56b20  class func BackgroundFetchManager.__allocating_init() // init 
+	0x5be70  class func BackgroundFetchManager.__allocating_init() // init 
  }
 
  class TeaFoundation.DisposableWorker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -661,7 +690,7 @@
 	var context : Context? // +0x28 (0x8)
 
 	// Swift methods
-	0x5a180  class func ProxyResolver.__allocating_init(objcResolver:publicResolver:privateResolver:) // init 
+	0x5f4d0  class func ProxyResolver.__allocating_init(objcResolver:publicResolver:privateResolver:) // init 
  }
 
  class TeaFoundation.Accessor {
@@ -708,6 +737,8 @@
 	// Swift methods
  }
 
+ struct TeaFoundation.Merging { }
+
  class TeaFoundation.Context : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ContextType {
 
 	// Properties
@@ -724,7 +755,8 @@
  struct TeaFoundation.Version {
 
 	// Properties
-	let numbers : [Int] // +0x0
+	let base : VersionNumber // +0x0
+	let qualifier : VersionQualifier? // +0x8
  }
 
  enum TeaFoundation.CollectionChange {
@@ -734,6 +766,37 @@
 	case removing : A
 	case reordering : (A, toIndex: Int)
  }
+
+ struct TeaFoundation.SafeishArray {
+
+	// Properties
+	let items : [A]
+ }
+
+ struct TeaFoundation.SafeishKeyedDecodingContainer {
+
+	// Properties
+	let safe : Bool
+	let container : KeyedDecodingContainer<A>
+ }
+
+ struct TeaFoundation.SafeishSingleValueDecodingContainer {
+
+	// Properties
+	let safe : Bool // +0x0
+	let container : SingleValueDecodingContainer // +0x8
+ }
+
+ struct TeaFoundation.SafeishUnkeyedDecodingContainer {
+
+	// Properties
+	let safe : Bool // +0x0
+	var container : UnkeyedDecodingContainer // +0x8
+ }
+
+ struct TeaFoundation.Anything { }
+
+ enum TeaFoundation.CodingKeys { }
 
  class TeaFoundation.Lazy {
  struct TeaFoundation.LazyOptions {
@@ -776,6 +839,8 @@
 	// Properties
 	var childToParentTable : [String : A]
  }
+
+ enum TeaFoundation.SemVer { }
 
  enum TeaFoundation.CallbackScope {
 
@@ -841,9 +906,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7c4d0  @objc Assembly.assemblies <stripped>
-	0x7c6b0  @objc Assembly.init <stripped>
-	0x7c800  @objc Assembly..cxx_destruct <stripped>
+	0x8cec0  @objc Assembly.assemblies <stripped>
+	0x8d0a0  @objc Assembly.init <stripped>
+	0x8d1f0  @objc Assembly..cxx_destruct <stripped>
  }
 
  class TeaFoundation.Node {
@@ -857,8 +922,8 @@
 	let context : Context // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x837d0  @objc ProxyContext.init <stripped>
-	0x83850  @objc ProxyContext..cxx_destruct <stripped>
+	0x947b0  @objc ProxyContext.init <stripped>
+	0x94830  @objc ProxyContext..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -897,7 +962,7 @@
 	let options : os_unfair_lock_options_t
 
 	// Swift methods
-	0x869b0  class func UnfairLock.__allocating_init(options:) // init 
+	0x97990  class func UnfairLock.__allocating_init(options:) // init 
  }
 
  struct TeaFoundation.Options {
@@ -912,7 +977,7 @@
 	var mutex : _opaque_pthread_mutex_t
 
 	// Swift methods
-	0x86b50  class func MutexLock.__allocating_init() // init 
+	0x97b30  class func MutexLock.__allocating_init() // init 
  }
 
  class TeaFoundation.JSONDeserializer {

@@ -13,8 +13,8 @@
 @interface _TtC5TeaUI28PatternSectionDecorationView : UICollectionReusableView <TUGutterViewBoundsObserver>
 {
     MISSING_TYPE *patternView;
-    MISSING_TYPE *gradientView;
-    MISSING_TYPE *currentAsset;
+    MISSING_TYPE *model;
+    MISSING_TYPE *token;
 }
 
 - (void).cxx_destruct;

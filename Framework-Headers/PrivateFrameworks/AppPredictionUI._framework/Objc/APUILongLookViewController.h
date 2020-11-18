@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) UIView *viewWithContent;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_dismissButtonTapped:(id)arg1;
 - (void)_platterDidReceiveTap:(id)arg1;
 - (void)_platterUtilityButtonTapped:(id)arg1;

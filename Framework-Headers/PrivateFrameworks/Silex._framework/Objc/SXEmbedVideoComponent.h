@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) NSString *caption; // @dynamic caption;
 
 + (id)typeString;
-- (id)URLWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)traits;
 
 @end

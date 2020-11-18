@@ -72,7 +72,5 @@
 - (id)br_typeIdentifierWithError:(id *)arg1;
 - (BOOL)br_wouldBeExcludedFromSync;
 - (id)brc_issueSandboxExtensionOfClass:(const char *)arg1 error:(id *)arg2;
-- (id)icd_documentRecordIDWithError:(id *)arg1;
-- (id)icd_itemID;
 @end
 

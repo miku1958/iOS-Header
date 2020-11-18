@@ -20,14 +20,16 @@
 @property (readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (readonly, nonatomic) id<CardDAVDelegateInfoProvider> delegateProvider; // @synthesize delegateProvider=_delegateProvider;
 
++ (void)finishFutures:(id)arg1;
 - (void).cxx_destruct;
 - (id)account;
 - (id)addChildWithDelegateInfo:(id)arg1;
 - (id)collectDelegateInfo;
+- (id)collectExpiredDelegateInfo;
 - (id)existingChildAccountsWithProperty:(id)arg1;
 - (id)initWithDelegateInfoProvider:(id)arg1 accountID:(id)arg2;
 - (id)removeAccount:(id)arg1;
-- (id)updateAccount:(id)arg1;
+- (id)saveAccount:(id)arg1;
 - (void)updateDelegates;
 
 @end

@@ -21,6 +21,8 @@
     BOOL _highlightedPropertyImportant;
     BOOL _requiresSetup;
     BOOL _showingMeContact;
+    BOOL _shouldDrawNavigationBar;
+    BOOL _editingProposedInformation;
     BOOL _allowsDisplayModePickerActions;
     BOOL _allowsEditPhoto;
     BOOL _ignoresParentalRestrictions;
@@ -44,6 +46,7 @@
     CNContact *_additionalContact;
     id<CNContactViewControllerPPTDelegate> _pptDelegate;
     NSArray *_prohibitedPropertyKeys;
+    NSString *_initialPrompt;
     long long _displayMode;
     long long _editMode;
     long long _actions;
@@ -79,6 +82,7 @@
 @property (nonatomic) long long displayMode; // @synthesize displayMode=_displayMode;
 @property (copy, nonatomic) NSArray *displayedPropertyKeys; // @synthesize displayedPropertyKeys=_displayedPropertyKeys;
 @property (nonatomic) long long editMode; // @synthesize editMode=_editMode;
+@property (nonatomic) BOOL editingProposedInformation; // @synthesize editingProposedInformation=_editingProposedInformation;
 @property (strong, nonatomic) NSArray *extraBarButtonItems; // @synthesize extraBarButtonItems=_extraBarButtonItems;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *highlightedPropertyIdentifier; // @synthesize highlightedPropertyIdentifier=_highlightedPropertyIdentifier;
@@ -86,6 +90,7 @@
 @property (strong, nonatomic) NSString *highlightedPropertyKey; // @synthesize highlightedPropertyKey=_highlightedPropertyKey;
 @property (nonatomic) BOOL ignoresParentalRestrictions; // @synthesize ignoresParentalRestrictions=_ignoresParentalRestrictions;
 @property (copy, nonatomic) NSString *importantMessage; // @synthesize importantMessage=_importantMessage;
+@property (strong, nonatomic) NSString *initialPrompt; // @synthesize initialPrompt=_initialPrompt;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
 @property (strong, nonatomic) CNContainer *parentContainer; // @synthesize parentContainer=_parentContainer;
@@ -98,6 +103,7 @@
 @property (strong, nonatomic) NSArray *prohibitedPropertyKeys; // @synthesize prohibitedPropertyKeys=_prohibitedPropertyKeys;
 @property (strong, nonatomic) CNContactRecentsReference *recentsData; // @synthesize recentsData=_recentsData;
 @property (nonatomic) BOOL requiresSetup; // @synthesize requiresSetup=_requiresSetup;
+@property (nonatomic) BOOL shouldDrawNavigationBar; // @synthesize shouldDrawNavigationBar=_shouldDrawNavigationBar;
 @property (nonatomic) BOOL shouldShowLinkedContacts; // @synthesize shouldShowLinkedContacts=_shouldShowLinkedContacts;
 @property (nonatomic) BOOL showingMeContact; // @synthesize showingMeContact=_showingMeContact;
 @property (readonly) Class superclass;

@@ -27,9 +27,8 @@
     struct z_stream_s *_inflater;
     char *_zbuffer;
     unsigned int _readBytesNotLogged;
-    unsigned int _isFetching:1;
-    unsigned int _allowFallbacks:1;
-    unsigned int _compressionEnabled:1;
+    _Atomic BOOL _isFetching;
+    BOOL _compressionEnabled;
     NSString *_accountLogString;
 }
 
@@ -41,7 +40,7 @@
 @property (readonly, nonatomic) BOOL hasBytesAvailable;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isCellularConnection;
-@property (nonatomic) BOOL isFetching;
+@property BOOL isFetching;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) double lastUsedTime;
 @property (readonly, nonatomic) BOOL loginDisabled;
@@ -82,7 +81,6 @@
 - (void)logReadChars:(const char *)arg1 length:(unsigned long long)arg2;
 - (BOOL)readBytesIntoData:(id)arg1 desiredLength:(unsigned long long)arg2;
 - (BOOL)readLineIntoData:(id)arg1;
-- (void)setAllowsFallbacks:(BOOL)arg1;
 - (void)setConnectionSettings:(id)arg1;
 - (void)setDesiredReadBufferLength:(unsigned long long)arg1;
 - (BOOL)startCompression;

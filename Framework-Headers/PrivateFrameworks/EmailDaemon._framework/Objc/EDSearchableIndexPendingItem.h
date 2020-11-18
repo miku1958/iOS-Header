@@ -18,7 +18,7 @@
 
 @property (readonly, nonatomic) unsigned long long estimatedSizeInBytes;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
-@property (copy, nonatomic) NSMutableArray *items; // @synthesize items=_items;
+@property (strong, nonatomic) NSMutableArray *items; // @synthesize items=_items;
 @property (readonly, nonatomic) id<EDIndexableItem> referenceItem; // @synthesize referenceItem=_referenceItem;
 @property (readonly, nonatomic) BOOL requiresPreprocessing;
 

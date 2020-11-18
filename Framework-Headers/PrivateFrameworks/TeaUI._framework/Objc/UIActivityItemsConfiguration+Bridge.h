@@ -8,5 +8,6 @@
 
 @interface UIActivityItemsConfiguration (Bridge)
 - (id)initTSWithActivityItemSources:(id)arg1;
+- (void)ts_setExcludedActivityTypes:(id)arg1;
 @end
 

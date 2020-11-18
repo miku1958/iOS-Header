@@ -6,10 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSTimer, TVPContentKeySession, TVPStateMachine;
+#import <VideosUI/TVPDownloadDelegate-Protocol.h>
+#import <VideosUI/VUIStoreFPSKeyLoaderDelegate-Protocol.h>
+
+@class NSMutableArray, NSString, NSTimer, TVPContentKeySession, TVPStateMachine;
 
 __attribute__((visibility("hidden")))
-@interface VUIOfflineKeyRenewalManager : NSObject
+@interface VUIOfflineKeyRenewalManager : NSObject <VUIStoreFPSKeyLoaderDelegate, TVPDownloadDelegate>
 {
     BOOL _networkErrorOccurredDuringInvalidation;
     TVPStateMachine *_stateMachine;
@@ -18,27 +21,36 @@ __attribute__((visibility("hidden")))
     NSTimer *_expirationTimer;
     TVPContentKeySession *_contentKeySession;
     unsigned long long _backgroundTaskIdentifier;
+    NSMutableArray *_downloadsForRepairingKeys;
 }
 
 @property (nonatomic) unsigned long long backgroundTaskIdentifier; // @synthesize backgroundTaskIdentifier=_backgroundTaskIdentifier;
 @property (strong, nonatomic) TVPContentKeySession *contentKeySession; // @synthesize contentKeySession=_contentKeySession;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSMutableArray *downloadsForRepairingKeys; // @synthesize downloadsForRepairingKeys=_downloadsForRepairingKeys;
 @property (strong, nonatomic) NSTimer *expirationTimer; // @synthesize expirationTimer=_expirationTimer;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *keyLoaders; // @synthesize keyLoaders=_keyLoaders;
 @property (strong, nonatomic) NSTimer *keyRenewalTimer; // @synthesize keyRenewalTimer=_keyRenewalTimer;
 @property (nonatomic) BOOL networkErrorOccurredDuringInvalidation; // @synthesize networkErrorOccurredDuringInvalidation=_networkErrorOccurredDuringInvalidation;
 @property (strong, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
+@property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_applicationDidEnterBackground:(id)arg1;
 - (void)_applicationWillEnterForeground:(id)arg1;
 - (void)_expirationTimerDidFire:(id)arg1;
+- (void)_fetchNewKeysForVideosWithBrokenKeys:(id)arg1;
 - (void)_isPlaybackUIBeingShownDidChange:(id)arg1;
 - (void)_networkReachbilityDidChange:(id)arg1;
 - (void)_registerStateMachineHandlers;
 - (void)_renewalTimerDidFire:(id)arg1;
 - (void)_sendRenewalRequestForFirstArray:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)download:(id)arg1 didChangeStateTo:(long long)arg2;
 - (id)init;
+- (void)storeFPSKeyLoader:(id)arg1 didLoadOfflineKeyData:(id)arg2 forKeyRequest:(id)arg3;
 - (void)updateKeyRenewalAndExpiration;
 
 @end

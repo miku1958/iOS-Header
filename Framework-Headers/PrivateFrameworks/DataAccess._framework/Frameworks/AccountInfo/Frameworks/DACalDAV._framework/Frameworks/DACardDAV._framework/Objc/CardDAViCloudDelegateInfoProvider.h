@@ -25,10 +25,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)delegateInfoForFamilyMembers:(id)arg1;
 - (void).cxx_destruct;
+- (id)adultsInFamily;
 - (id)appleIDsOfExistingDelegates:(id)arg1;
 - (id)cardDAVAccounts;
 - (id)collectDelegatesForAccount:(id)arg1;
+- (id)collectExpiredDelgatesForAccount:(id)arg1;
 - (id)familyMembersPromise;
 - (id)init;
 - (BOOL)isGuardianAccount:(id)arg1;

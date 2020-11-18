@@ -131,6 +131,7 @@
 - (void)_addActivityAssetItem:(id)arg1;
 - (id)_assetAtIndexPath:(id)arg1;
 - (void)_beginZoomingForCellAtIndexPath:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_cancel:(id)arg1;
 - (struct CGRect)_collectionViewContentFrame;
 - (id)_createActivityViewControllerForCurrentSelection;

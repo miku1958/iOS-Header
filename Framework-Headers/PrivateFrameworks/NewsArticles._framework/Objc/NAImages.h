@@ -10,28 +10,20 @@
 {
 }
 
-+ (id)blockActivity;
 + (id)copyLinkActivity;
 + (id)downloadIssueActivity;
-+ (id)followChannelActivity;
 + (id)iconTextSizeControl;
 + (id)iconTextSizeControlCompact;
-+ (id)nextArrow;
++ (id)ignoreSuggestionActivity;
++ (id)leftArrow;
 + (id)openChannelActivity;
 + (id)openInSafariActivity;
 + (id)removeIssueActivity;
 + (id)removeIssueFromMyMagazinesActivity;
 + (id)reportActivity;
-+ (id)saveActivity;
-+ (id)saveSelectedActivity;
++ (id)rightArrow;
 + (id)sharrow;
 + (id)sharrowCompact;
-+ (id)showLessActivity;
-+ (id)showLessSelectedActivity;
-+ (id)showMoreActivity;
-+ (id)showMoreSelectedActivity;
-+ (id)unblockActivity;
-+ (id)unfollowChannelActivity;
 - (void).cxx_destruct;
 - (id)init;
 

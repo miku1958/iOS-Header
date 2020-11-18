@@ -12,7 +12,7 @@
 #import <HomeKitDaemon/HMFDumpState-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMDHome, HMFMessageDispatcher, NSArray, NSMutableDictionary, NSNumber, NSObject, NSSet, NSString, NSUUID;
+@class HMDApplicationData, HMDBulletinBoardNotification, HMDHAPAccessory, HMFMessageDispatcher, NSArray, NSMutableDictionary, NSNumber, NSObject, NSSet, NSString, NSUUID;
 @protocol HMDServiceOwner, HMFLocking, OS_dispatch_queue;
 
 @interface HMDService : HMFObject <HMDBulletinIdentifiers, NSSecureCoding, HMFDumpState, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver>
@@ -66,7 +66,6 @@
 @property (copy, nonatomic) NSString *expectedConfiguredName; // @synthesize expectedConfiguredName=_expectedConfiguredName;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHidden) BOOL hidden; // @synthesize hidden=_hidden;
-@property (readonly, nonatomic) HMDHome *home;
 @property (copy, nonatomic) NSNumber *instanceID; // @synthesize instanceID=_instanceID;
 @property (strong, nonatomic) NSNumber *labelIndex; // @synthesize labelIndex=_labelIndex;
 @property (strong, nonatomic) NSNumber *labelNamespace; // @synthesize labelNamespace=_labelNamespace;
@@ -141,6 +140,7 @@
 - (id)getConfiguredName;
 - (id)getConfiguredNameForXPCClients;
 - (id)getLastSeenConfiguredName;
+- (id)home;
 - (id)init;
 - (id)initWithAccessory:(id)arg1 owner:(id)arg2 instance:(id)arg3 uuid:(id)arg4;
 - (id)initWithCoder:(id)arg1;

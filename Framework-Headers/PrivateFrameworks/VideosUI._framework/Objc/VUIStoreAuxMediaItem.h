@@ -7,16 +7,19 @@
 #import <TVPlayback/TVPBaseMediaItem.h>
 
 #import <VideosUI/TVPContentKeyLoading-Protocol.h>
+#import <VideosUI/TVPMediaItemReporting-Protocol.h>
+#import <VideosUI/TVPMediaItemReportingDelegate-Protocol.h>
 #import <VideosUI/VUIStoreFPSKeyLoaderDelegate-Protocol.h>
 
 @class NSDictionary, NSError, NSNumber, NSObject, NSString, NSURL, TVPPlayer, VUIMutableBookmark, VUIStoreFPSKeyLoader, VUIVideoManagedObject;
 
-@interface VUIStoreAuxMediaItem : TVPBaseMediaItem <VUIStoreFPSKeyLoaderDelegate, TVPContentKeyLoading>
+@interface VUIStoreAuxMediaItem : TVPBaseMediaItem <VUIStoreFPSKeyLoaderDelegate, TVPContentKeyLoading, TVPMediaItemReporting, TVPMediaItemReportingDelegate>
 {
     BOOL _isAudioOnly;
     BOOL _disableResumeMenu;
     BOOL _disableScrubbing;
     BOOL _sharedPurchase;
+    BOOL _ignoreExistingOfflineKeyData;
     BOOL _isHLS;
     BOOL _isForStartingDownload;
     NSURL *_fpsCertificateURL;
@@ -46,6 +49,7 @@
 @property (strong, nonatomic) NSError *fpsKeyError; // @synthesize fpsKeyError=_fpsKeyError;
 @property (copy, nonatomic) NSURL *fpsKeyServerURL; // @synthesize fpsKeyServerURL=_fpsKeyServerURL;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoreExistingOfflineKeyData; // @synthesize ignoreExistingOfflineKeyData=_ignoreExistingOfflineKeyData;
 @property (nonatomic) BOOL isAudioOnly; // @synthesize isAudioOnly=_isAudioOnly;
 @property (nonatomic) BOOL isForStartingDownload; // @synthesize isForStartingDownload=_isForStartingDownload;
 @property (nonatomic) BOOL isHLS; // @synthesize isHLS=_isHLS;
@@ -75,10 +79,12 @@
 - (BOOL)isEqualToMediaItem:(id)arg1;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)mediaItem:(id)arg1 errorDidOccur:(id)arg2 player:(id)arg3;
 - (id)mediaItemMetadataForProperty:(id)arg1;
 - (id)mediaItemURL;
 - (void)prepareForLoadingWithCompletion:(CDUnknownBlockType)arg1;
 - (id)replacementErrorForPlaybackError:(id)arg1;
+- (id)reportingDelegate;
 - (void)storeFPSKeyLoader:(id)arg1 didLoadOfflineKeyData:(id)arg2 forKeyRequest:(id)arg3;
 - (void)storeFPSKeyLoader:(id)arg1 willFailWithError:(id)arg2 forKeyRequest:(id)arg3;
 - (void)updateBookmarkWithSuggestedTime:(double)arg1 forElapsedTime:(double)arg2 duration:(double)arg3 playbackOfMediaItemIsEnding:(BOOL)arg4;

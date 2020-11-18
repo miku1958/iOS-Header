@@ -30,8 +30,10 @@
 - (void)_sendMessage:(id)arg1 object:(id)arg2 info:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)activate;
 - (void)activate:(CDUnknownBlockType)arg1;
+- (void)barrierOnXPC:(CDUnknownBlockType)arg1;
 - (void)cancelQuery:(id)arg1;
 - (void)clearInput:(id)arg1;
+- (id)connectionQueue;
 - (void)deactivate;
 - (void)dealloc;
 - (id)init;

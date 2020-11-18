@@ -19,6 +19,7 @@
 @interface SXVideoPlayerViewController : UIViewController <SXVideoPlaybackObserver, AVPlayerViewControllerDelegate_WebKitOnly, AVPlayerViewControllerDelegatePrivate, SXAutomaticFullscreenVideoPlaybackBehaviorManagerDelegate, UIGestureRecognizerDelegate, SXVideoAdViewControllerProviding>
 {
     BOOL _fullscreen;
+    BOOL _playButtonTapped;
     id<SXVideoPlayerViewControllerDelegate> _delegate;
     id<SXVideoPlayerViewControllerDataSource> _dataSource;
     unsigned long long _mode;
@@ -51,6 +52,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SVLearnMoreButton *learnMoreButton; // @synthesize learnMoreButton=_learnMoreButton;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property (nonatomic) BOOL playButtonTapped; // @synthesize playButtonTapped=_playButtonTapped;
 @property (strong, nonatomic) AVPlayerViewController *playerViewController; // @synthesize playerViewController=_playerViewController;
 @property (readonly, nonatomic, getter=isPlaying) BOOL playing;
 @property (strong, nonatomic) SXVideoPlaybackQueue *queue; // @synthesize queue=_queue;
@@ -77,7 +79,7 @@
 - (void)learnMoreButtonTapped:(id)arg1;
 - (void)loadView;
 - (void)pause;
-- (void)play;
+- (void)playWithButtonTapped:(BOOL)arg1;
 - (BOOL)playbackAllowedForPlaybackCoordinator:(id)arg1;
 - (void)playbackCoordinator:(id)arg1 playbackFailedWithError:(id)arg2;
 - (void)playbackCoordinator:(id)arg1 timeElapsed:(double)arg2 duration:(double)arg3;

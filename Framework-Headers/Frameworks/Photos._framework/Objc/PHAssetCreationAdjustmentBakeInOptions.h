@@ -17,8 +17,10 @@
     BOOL _shouldBakeInIfTimelineTrimmed;
     BOOL _shouldBakeInIfPortraitDepthEffectEnabled;
     BOOL _shouldBakeInIfContainsPenultimateResources;
+    BOOL _flattenLivePhotoToStillIfNeeded;
 }
 
+@property (nonatomic) BOOL flattenLivePhotoToStillIfNeeded; // @synthesize flattenLivePhotoToStillIfNeeded=_flattenLivePhotoToStillIfNeeded;
 @property (nonatomic) BOOL shouldBakeInIfAdjustedByThirdParty; // @synthesize shouldBakeInIfAdjustedByThirdParty=_shouldBakeInIfAdjustedByThirdParty;
 @property (nonatomic) BOOL shouldBakeInIfContainsPenultimateResources; // @synthesize shouldBakeInIfContainsPenultimateResources=_shouldBakeInIfContainsPenultimateResources;
 @property (nonatomic) BOOL shouldBakeInIfCropped; // @synthesize shouldBakeInIfCropped=_shouldBakeInIfCropped;

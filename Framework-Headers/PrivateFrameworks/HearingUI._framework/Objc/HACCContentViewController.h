@@ -36,6 +36,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_handleTapGestureRecognizer:(id)arg1;
 - (void)_updateMenuItemsForViewController:(id)arg1;
 - (void)_updatePresentedMenuViewControllerIfNecessary;

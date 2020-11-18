@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (BOOL)_canShowWhileLocked;
 - (id)hu_prepareForDismissalAnimated:(BOOL)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)viewDidLoad;

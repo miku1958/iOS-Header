@@ -55,6 +55,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property BOOL deleted; // @synthesize deleted=_deleted;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long estimatedSize;
 @property (copy) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
 @property (readonly) unsigned long long hash;
 @property BOOL hiddenFromLibraryAndSync; // @synthesize hiddenFromLibraryAndSync=_hiddenFromLibraryAndSync;

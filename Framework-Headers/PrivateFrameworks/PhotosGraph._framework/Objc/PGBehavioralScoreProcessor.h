@@ -30,9 +30,12 @@
 - (void)_writeBehavioralScoresToPhotosDatabase:(id)arg1 assets:(id)arg2;
 - (id)behavioralScoreByAssetUUIDForAssets:(id)arg1 algorithmProcessor:(id)arg2 personalHighAestheticsThreshold:(double)arg3 personalGoodAestheticsThreshold:(double)arg4;
 - (float)behavioralScoreFromBaseScore:(float)arg1 semanticScore:(float)arg2;
+- (id)goldAssetUUIDs;
 - (id)initWithGraphManager:(id)arg1 algorithm:(long long)arg2;
 - (BOOL)needBehavioralScoreReprocessingUsingCurrentGoldAssetsUUIDs:(id)arg1 previousGoldAssetUUIDs:(id)arg2;
+- (id)peopleFeatures;
 - (void)processBehavioralScoresWithProgressBlock:(CDUnknownBlockType)arg1;
+- (id)sceneFeatures;
 - (float)semanticScoreFromBehavioralScore:(float)arg1;
 
 @end

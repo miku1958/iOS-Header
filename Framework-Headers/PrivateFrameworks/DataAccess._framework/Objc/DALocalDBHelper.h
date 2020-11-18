@@ -20,6 +20,7 @@
     void *_abDB;
     CNContactStore *_contactStore;
     NSString *_familyDelegateAltDSID;
+    NSString *_familyDelegateACAccountID;
     NSMutableArray *_saveRequests;
     struct CalDatabase *_calDB;
     NSString *_clientIdentifier;
@@ -34,6 +35,7 @@
 @property (copy, nonatomic) CDUnknownBlockType calUnitTestCallbackBlock; // @synthesize calUnitTestCallbackBlock=_calUnitTestCallbackBlock;
 @property (strong, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
+@property (strong, nonatomic) NSString *familyDelegateACAccountID; // @synthesize familyDelegateACAccountID=_familyDelegateACAccountID;
 @property (strong, nonatomic) NSString *familyDelegateAltDSID; // @synthesize familyDelegateAltDSID=_familyDelegateAltDSID;
 @property (nonatomic) int noteConnectionCount; // @synthesize noteConnectionCount=_noteConnectionCount;
 @property (strong, nonatomic) NoteContext *noteDB; // @synthesize noteDB=_noteDB;
@@ -72,10 +74,11 @@
 - (void)dealloc;
 - (void)executeAllSaveRequests;
 - (id)init;
-- (id)initWithContactsFamilyDelegateAltDSID:(id)arg1;
+- (id)initWithContactsFamilyDelegateAltDSID:(id)arg1 familyDelegateACAccountID:(id)arg2;
 - (BOOL)noteCloseDBAndSave:(BOOL)arg1;
 - (void)noteOpenDB;
 - (BOOL)noteSaveDB;
+- (void)removeDelegateDatabasesNotMatchingAltDSIDs:(id)arg1;
 - (BOOL)useContacts;
 
 @end

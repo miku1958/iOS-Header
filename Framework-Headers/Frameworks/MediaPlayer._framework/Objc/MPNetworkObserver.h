@@ -15,13 +15,12 @@
     long long _networkUsageCount;
     NSObject<OS_dispatch_queue> *_accessQueue;
     BOOL _videosAllowsCellularStreaming;
-    BOOL _isMusicCellularDownloadingAllowed;
 }
 
-@property (readonly, nonatomic) BOOL isMusicCellularDownloadingAllowed; // @synthesize isMusicCellularDownloadingAllowed=_isMusicCellularDownloadingAllowed;
-@property (readonly, nonatomic) BOOL isMusicCellularStreamingAllowed;
-@property (readonly, nonatomic) BOOL isStoreCellularNetworkingAllowed;
 @property (readonly, nonatomic) BOOL isUsingNetwork;
+@property (nonatomic, getter=isMusicCellularDownloadingAllowed) BOOL musicCellularDownloadingAllowed;
+@property (nonatomic, getter=isMusicCellularStreamingAllowed) BOOL musicCellularStreamingAllowed;
+@property (readonly, nonatomic, getter=isStoreCellularNetworkingAllowed) BOOL storeCellularNetworkingAllowed;
 @property (nonatomic, getter=isVideoCellularStreamingAllowed) BOOL videoCellularStreamingAllowed;
 
 + (id)sharedNetworkObserver;
@@ -31,7 +30,6 @@
 - (void)dealloc;
 - (void)endUsingNetwork;
 - (id)init;
-- (BOOL)isMusicCellularDownloadsAllowed;
 
 @end
 

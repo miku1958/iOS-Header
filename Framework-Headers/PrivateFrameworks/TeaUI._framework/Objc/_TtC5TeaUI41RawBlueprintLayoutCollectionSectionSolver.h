@@ -10,6 +10,7 @@
 
 @interface _TtC5TeaUI41RawBlueprintLayoutCollectionSectionSolver : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *supplementarySolver;
     MISSING_TYPE *layoutDirection;
     MISSING_TYPE *layoutOptions;
 }

@@ -24,7 +24,7 @@
 @property (copy, nonatomic) NSData *_address; // @synthesize _address=__address;
 @property (readonly, copy, nonatomic) NSData *address;
 @property (copy, nonatomic) NSData *advertisementData; // @synthesize advertisementData=_advertisementData;
-@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
+@property (copy, nonatomic) NSData *data; // @synthesize data=_data;
 @property (copy, nonatomic) NSData *reserved; // @synthesize reserved=_reserved;
 @property (nonatomic) long long rssi; // @synthesize rssi=_rssi;
 @property (copy, nonatomic) NSDate *scanDate; // @synthesize scanDate=_scanDate;

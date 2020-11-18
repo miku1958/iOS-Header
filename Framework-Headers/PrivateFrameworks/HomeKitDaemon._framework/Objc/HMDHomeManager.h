@@ -352,7 +352,6 @@
 - (void)_handleHomesConfigSync:(id)arg1;
 - (void)_handleIdmsAccountUsernameModified:(id)arg1;
 - (void)_handleLogAppViewEvent:(id)arg1;
-- (void)_handleLogControl:(id)arg1;
 - (void)_handleMetadataSync:(id)arg1;
 - (void)_handleNetworkFirewallAddOverridesRequest:(id)arg1;
 - (void)_handleNetworkFirewallDumpCloudRecordsRequest:(id)arg1;

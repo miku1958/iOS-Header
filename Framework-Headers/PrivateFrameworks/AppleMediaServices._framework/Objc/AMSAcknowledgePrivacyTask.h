@@ -17,11 +17,14 @@
 @property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (copy, nonatomic) NSSet *privacyIdentifiers; // @synthesize privacyIdentifiers=_privacyIdentifiers;
 
++ (id)_accountStoreForPrivacyIdentifier:(id)arg1;
 + (unsigned long long)_contentVersionForPrivacyIdentifier:(id)arg1;
 + (id)_multiplexPrivacyIdentifier:(id)arg1 contentVersion:(unsigned long long)arg2;
 + (id)_storePrivacyIdentifiers;
 + (BOOL)acknowledgementNeededForPrivacyIdentifier:(id)arg1;
 + (BOOL)acknowledgementNeededForPrivacyIdentifier:(id)arg1 account:(id)arg2;
++ (BOOL)hasPreviouslyAcknowledgedPrivacyIdentifier:(id)arg1;
++ (BOOL)hasPreviouslyAcknowledgedPrivacyIdentifier:(id)arg1 account:(id)arg2;
 - (void).cxx_destruct;
 - (id)acknowledgePrivacy;
 - (id)initWithPrivacyIdentifier:(id)arg1;

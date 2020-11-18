@@ -6,28 +6,24 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaUIStateTransition-Protocol.h>
+@class NSData;
 
-@class NSData, NSString;
-
-@interface SISchemaUIStateTransition : PBCodable <SISchemaUIStateTransition, NSSecureCoding>
+@interface SISchemaUIStateTransition : PBCodable
 {
     int _currentState;
     int _previousState;
     int _siriPresentationType;
+    int _dismissalReason;
 }
 
 @property (nonatomic) int currentState; // @synthesize currentState=_currentState;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (nonatomic) int dismissalReason; // @synthesize dismissalReason=_dismissalReason;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int previousState; // @synthesize previousState=_previousState;
 @property (nonatomic) int siriPresentationType; // @synthesize siriPresentationType=_siriPresentationType;
-@property (readonly) Class superclass;
 
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

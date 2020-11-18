@@ -82,12 +82,16 @@
 - (void)_tellSpeechDelegateDidRecognizeSpeechPhrases:(id)arg1 utterances:(id)arg2 languageModel:(id)arg3 correctionIdentifier:(id)arg4 audioAnalytics:(id)arg5;
 - (void)_tellSpeechDelegateDidRecognizeSpeechTokens:(id)arg1 languageModel:(id)arg2;
 - (void)_tellSpeechDelegateDidRecognizeTranscriptionObjects:(id)arg1 languageModel:(id)arg2;
+- (void)_tellSpeechDelegateLanguageDetected:(id)arg1 confidenceScores:(id)arg2 isConfident:(BOOL)arg3;
+- (void)_tellSpeechDelegateLanguageDetectorDidFail:(id)arg1;
+- (void)_tellSpeechDelegateMultilingualSpeechRecognized:(id)arg1;
 - (void)_tellSpeechDelegateRecognitionDidFail:(id)arg1;
 - (void)_tellSpeechDelegateRecordingDidBegin;
 - (void)_tellSpeechDelegateRecordingDidCancel;
 - (void)_tellSpeechDelegateRecordingDidEnd;
 - (void)_tellSpeechDelegateRecordingDidFail:(id)arg1;
 - (void)_tellSpeechDelegateRecordingWillBegin;
+- (void)_tellSpeechDelegateSearchResultsReceived:(id)arg1 recognitionText:(id)arg2 stable:(BOOL)arg3 final:(BOOL)arg4;
 - (void)_tellSpeechDelegateSpeechRecognitionDidSucceed;
 - (void)_updateBufferFlushTimerWithDelay:(double)arg1;
 - (void)_willCancelDictation;

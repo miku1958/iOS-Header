@@ -22,6 +22,7 @@
 @property (copy, nonatomic) NSArray *sources; // @synthesize sources=_sources;
 
 - (void).cxx_destruct;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
 - (BOOL)_isSourceSelectable:(id)arg1;
 - (id)_sourceCellForRow:(unsigned long long)arg1 tableView:(id)arg2;
 - (id)_sourceForRow:(long long)arg1;

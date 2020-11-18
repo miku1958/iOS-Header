@@ -275,14 +275,14 @@
 	var simulationState : __RKSimulationSceneCoordinatorState // +0x20 (0x1)
 
 	// Swift methods
-	0xd8c0  class func __RKSimulationSceneCoordinator.__allocating_init() // init 
-	0xdb60  func __RKSimulationSceneCoordinator.delegate.getter // getter 
-	0xdb90  func __RKSimulationSceneCoordinator.delegate.setter // setter 
-	0xdbe0  func __RKSimulationSceneCoordinator.delegate.modify // modifyCoroutine 
-	0xdd60  func __RKSimulationSceneCoordinator.simulationState.getter // getter 
-	0xdd90  func __RKSimulationSceneCoordinator.simulationState.setter // setter 
-	0xddd0  func __RKSimulationSceneCoordinator.simulationState.modify // modifyCoroutine 
-	0xde10  func __RKSimulationSceneCoordinator.changeToScene(with:) // method 
+	0xd9c0  class func __RKSimulationSceneCoordinator.__allocating_init() // init 
+	0xdc60  func __RKSimulationSceneCoordinator.delegate.getter // getter 
+	0xdc90  func __RKSimulationSceneCoordinator.delegate.setter // setter 
+	0xdce0  func __RKSimulationSceneCoordinator.delegate.modify // modifyCoroutine 
+	0xde60  func __RKSimulationSceneCoordinator.simulationState.getter // getter 
+	0xde90  func __RKSimulationSceneCoordinator.simulationState.setter // setter 
+	0xded0  func __RKSimulationSceneCoordinator.simulationState.modify // modifyCoroutine 
+	0xdf10  func __RKSimulationSceneCoordinator.changeToScene(with:) // method 
  }
 
  class RealityKit.IntrospectionDataCleanupHelper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -310,17 +310,24 @@
 
 	// Properties
 	let duration : Float // +0x64 (0x4)
-	let direction : SIMD3<Float> // +0x70 (0x10)
-	let upVector : SIMD3<Float> // +0x80 (0x10)
-	var updateSubscription : Cancellable? // +0x90 (0x28)
-	var deadline : Double // +0xb8 (0x8)
+	let animationDuration : Float // +0x68 (0x4)
+	let face : SIMD3<Float> // +0x70 (0x10)
+	let rotation : Float // +0x80 (0x4)
+	let axis : SIMD3<Float> // +0x90 (0x10)
+	let loops : Bool // +0xa0 (0x1)
+	var updateSubscription : Cancellable? // +0xa8 (0x28)
+	var deadline : Double // +0xd0 (0x8)
+	var animationDeadline : Double // +0xd8 (0x8)
+	var currentAnimation : UInt64? // +0xe0 (0x9)
+	var didInit : Bool // +0xe9 (0x1)
+	var faceRotation : simd_quatf // +0xf0 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x173e0  @objc __RKEntityLookAtCameraAction.copy(with:)
+	0x17af0  @objc __RKEntityLookAtCameraAction.copy(with:)
 
 	// Swift methods
-	0x168a0  class func __RKEntityLookAtCameraAction.__allocating_init(targetEntity:duration:direction:upVector:) // init 
-	0x16a70  func __RKEntityLookAtCameraAction.update() // method 
+	0x16a20  class func __RKEntityLookAtCameraAction.__allocating_init(targetEntity:duration:animationDuration:direction:rotation:upVector:loops:) // init 
+	0x16dc0  func __RKEntityLookAtCameraAction.createLookAtAnimation() // method 
  }
 
  class RealityKit.__RealityFileURLResolver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -331,16 +338,16 @@
 	var resolvedURLByAssetPathPrefix : [String : String] // +0x30 (0x8)
 
 	// Swift methods
-	0x177e0  class func __RealityFileURLResolver.__allocating_init() // init 
-	0x17cc0  func __RealityFileURLResolver.schemePrefix.getter // getter 
-	0x17db0  func __RealityFileURLResolver.registerRealityFileResolver(assetService:) // method 
-	0x17ed0  func __RealityFileURLResolver.unregisterRealityFileResolver() // method 
-	0x181a0  func __RealityFileURLResolver.resolvedURL(for:) // method 
-	0x186c0  func __RealityFileURLResolver.resolvedURL(group:name:) // method 
-	0x18bf0  func __RealityFileURLResolver.setResolvedURLPath(_:for:) // method 
-	0x18c70  func __RealityFileURLResolver.createSchemePrefix(with:) // method 
-	0x18e10  func __RealityFileURLResolver.createSubAssetPath(with:) // method 
-	0x18ef0  func __RealityFileURLResolver.createFullSchemePath(group:name:) // method 
+	0x18320  class func __RealityFileURLResolver.__allocating_init() // init 
+	0x18800  func __RealityFileURLResolver.schemePrefix.getter // getter 
+	0x188f0  func __RealityFileURLResolver.registerRealityFileResolver(assetService:) // method 
+	0x18a10  func __RealityFileURLResolver.unregisterRealityFileResolver() // method 
+	0x18ce0  func __RealityFileURLResolver.resolvedURL(for:) // method 
+	0x19200  func __RealityFileURLResolver.resolvedURL(group:name:) // method 
+	0x19730  func __RealityFileURLResolver.setResolvedURLPath(_:for:) // method 
+	0x197b0  func __RealityFileURLResolver.createSchemePrefix(with:) // method 
+	0x19950  func __RealityFileURLResolver.createSubAssetPath(with:) // method 
+	0x19a30  func __RealityFileURLResolver.createFullSchemePath(group:name:) // method 
  }
 
  enum RealityKit.__RKEmphasisFlipVariant {
@@ -645,8 +652,11 @@
 	// Properties
 	var target : UUID
 	var duration : Float?
+	var animationDuration : Float?
 	var direction : SIMD3<Float>?
+	var rotation : Float?
 	var upVector : SIMD3<Float>?
+	var loops : Bool?
  }
 
  struct RealityKit.__RKEntityInteractionSpecification {
@@ -668,8 +678,11 @@
 	// Properties
 	case target  
 	case duration  
+	case animationDuration  
 	case direction  
+	case rotation  
 	case upVector  
+	case loops  
  }
 
  enum RealityKit.CodingKeys {
@@ -982,10 +995,10 @@
 	var currentAnimation : UInt64? // +0xa0 (0x9)
 
 	// ObjC -> Swift bridged methods
-	0x5b1e0  @objc __RKEntityEmphasisAction.copy(with:)
+	0x5c740  @objc __RKEntityEmphasisAction.copy(with:)
 
 	// Swift methods
-	0x5a0c0  class func __RKEntityEmphasisAction.__allocating_init(targetEntity:duration:iterations:animationStyle:emphasisAnimationType:) // init 
+	0x5b620  class func __RKEntityEmphasisAction.__allocating_init(targetEntity:duration:iterations:animationStyle:emphasisAnimationType:) // init 
  }
 
  struct RealityKit.__RKSceneUUIDComponent {
@@ -1019,12 +1032,12 @@
 	let session : MCSession // +0x30 (0x8)
 
 	// Swift methods
-	0x5ce50  class func MultipeerConnectivityService.__allocating_init(session:) // init 
-	0x5cf40  func MultipeerConnectivityService.entity(for:) // method 
-	0x5cf70  func MultipeerConnectivityService.owner(of:) // method 
-	0x5d0a0  func MultipeerConnectivityService.giveOwnership(of:toPeer:) // method 
-	0x5d1b0  func MultipeerConnectivityService.__fromCore(peerID:) // method 
-	0x5d2c0  func MultipeerConnectivityService.__toCore(peerID:) // method 
+	0x5e3b0  class func MultipeerConnectivityService.__allocating_init(session:) // init 
+	0x5e4a0  func MultipeerConnectivityService.entity(for:) // method 
+	0x5e4d0  func MultipeerConnectivityService.owner(of:) // method 
+	0x5e600  func MultipeerConnectivityService.giveOwnership(of:toPeer:) // method 
+	0x5e710  func MultipeerConnectivityService.__fromCore(peerID:) // method 
+	0x5e820  func MultipeerConnectivityService.__toCore(peerID:) // method 
  }
 
  enum RealityKit.SynchronizationError {
@@ -1039,7 +1052,7 @@
 	let coreAsset : OpaquePointer // +0x10 (0x8)
 
 	// Swift methods
-	0x5d7f0  func TextureResource.__coreAsset.getter // getter 
+	0x5ed50  func TextureResource.__coreAsset.getter // getter 
  }
 
  enum RealityKit.LoadError {
@@ -1060,17 +1073,17 @@
 	var stopped : Bool // +0x90 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x65a60  @objc __RKEntityActionGroup.copy(with:)
+	0x66ec0  @objc __RKEntityActionGroup.copy(with:)
 
 	// Swift methods
-	0x61450  func __RKEntityActionGroup.actions.getter // getter 
-	0x61520  func __RKEntityActionGroup.ordering.getter // getter 
-	0x615d0  func __RKEntityActionGroup.loopCount.getter // getter 
-	0x61600  class func __RKEntityActionGroup.__allocating_init(actions:ordering:loopCount:) // init 
-	0x61900  func __RKEntityActionGroup.checkForCompletion(with:) // method 
-	0x61c90  func __RKEntityActionGroup.performConcurrentActions(with:) // method 
-	0x62160  func __RKEntityActionGroup.performSequentialAction(at:context:) // method 
-	0x62730  func __RKEntityActionGroup.allActions() // method 
+	0x629b0  func __RKEntityActionGroup.actions.getter // getter 
+	0x62a80  func __RKEntityActionGroup.ordering.getter // getter 
+	0x62b30  func __RKEntityActionGroup.loopCount.getter // getter 
+	0x62b60  class func __RKEntityActionGroup.__allocating_init(actions:ordering:loopCount:) // init 
+	0x62e60  func __RKEntityActionGroup.checkForCompletion(with:) // method 
+	0x631f0  func __RKEntityActionGroup.performConcurrentActions(with:) // method 
+	0x636c0  func __RKEntityActionGroup.performSequentialAction(at:context:) // method 
+	0x63c90  func __RKEntityActionGroup.allActions() // method 
  }
 
  enum RealityKit.Ordering {
@@ -1184,10 +1197,10 @@
 	var completionHandler : ()? // +0x70 (0x10)
 
 	// Swift methods
-	0x84d80  func AudioPlaybackController.entity.getter // getter 
-	0x851e0  func AudioPlaybackController.completionHandler.getter // getter 
-	0x85220  func AudioPlaybackController.completionHandler.setter // setter 
-	0x85270  func AudioPlaybackController.completionHandler.modify // modifyCoroutine 
+	0x861e0  func AudioPlaybackController.entity.getter // getter 
+	0x86640  func AudioPlaybackController.completionHandler.getter // getter 
+	0x86680  func AudioPlaybackController.completionHandler.setter // setter 
+	0x866d0  func AudioPlaybackController.completionHandler.modify // modifyCoroutine 
  }
 
  struct RealityKit.__REAssetIdentifier {
@@ -1210,9 +1223,9 @@
 	let handle : OpaquePointer
 
 	// Swift methods
-	0x87400  func __REAsset.debugDescription.getter // getter 
-	0x87540  func __REAsset.__hasSubsceneComponents.getter // getter 
-	0x87700  func __REAsset.__handle.getter // getter 
+	0x88860  func __REAsset.debugDescription.getter // getter 
+	0x889a0  func __REAsset.__hasSubsceneComponents.getter // getter 
+	0x88b60  func __REAsset.__handle.getter // getter 
  }
 
  class RealityKit.__REAssetManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, __REAssetService {
@@ -1222,13 +1235,13 @@
 	let handle : OpaquePointer // +0x3 (0x8)
 
 	// Swift methods
-	0x87880  class func __REAssetManager.__allocating_init(handle:) // init 
-	0x879f0  func __REAssetManager.engineQueue.getter // getter 
-	0x87a10  func __REAssetManager.mainBundle.getter // getter 
-	0x880b0  func __REAssetManager.loadBundle(at:) // method 
-	0x881d0  func __REAssetManager.makeBundle() // method 
-	0x88250  func __REAssetManager.__getDependencies(asset:) // method 
-	0x883f0  func __REAssetManager.__handle.getter // getter 
+	0x88ce0  class func __REAssetManager.__allocating_init(handle:) // init 
+	0x88e50  func __REAssetManager.engineQueue.getter // getter 
+	0x88e70  func __REAssetManager.mainBundle.getter // getter 
+	0x89510  func __REAssetManager.loadBundle(at:) // method 
+	0x89630  func __REAssetManager.makeBundle() // method 
+	0x896b0  func __REAssetManager.__getDependencies(asset:) // method 
+	0x89850  func __REAssetManager.__handle.getter // getter 
  }
 
  class RealityKit.__AssetLoadRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1291,9 +1304,9 @@
 	var uuidToRESceneAsset : NSMapTable<NSUUID, __REAsset> // +0x10 (0x8)
 
 	// Swift methods
-	0x8d4f0  func __RKSceneAssetLookupTable.reSceneAsset(for:) // method 
-	0x8d560  func __RKSceneAssetLookupTable.registerRESceneAsset(_:for:) // method 
-	0x8d5e0  func __RKSceneAssetLookupTable.removeAllRESceneAssets() // method 
+	0x8e950  func __RKSceneAssetLookupTable.reSceneAsset(for:) // method 
+	0x8e9c0  func __RKSceneAssetLookupTable.registerRESceneAsset(_:for:) // method 
+	0x8ea40  func __RKSceneAssetLookupTable.removeAllRESceneAssets() // method 
  }
 
  class RealityKit.__RKVisibilityShowRiseAnimation : __RKVisibilityBaseAnimation { }
@@ -1416,10 +1429,10 @@
 	var deadline : Double
 
 	// ObjC -> Swift bridged methods
-	0xa3dc0  @objc __RKEntityTransformAction.copy(with:)
+	0xa5220  @objc __RKEntityTransformAction.copy(with:)
 
 	// Swift methods
-	0xa2420  class func __RKEntityTransformAction.__allocating_init(targetEntity:location:orientation:scale:duration:moveType:ease:easeType:respectPhysics:physicsAngularCoefficient:physicsLinearCoefficient:) // init 
+	0xa3880  class func __RKEntityTransformAction.__allocating_init(targetEntity:location:orientation:scale:duration:moveType:ease:easeType:respectPhysics:physicsAngularCoefficient:physicsLinearCoefficient:) // init 
  }
 
  class RealityKit.MotionStateEventContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1447,9 +1460,9 @@
 	let asset : __REAsset // +0x10 (0x8)
 
 	// Swift methods
-	0xaeca0  func __RERenderGraphEmitter.unsetup(mgr:) // method 
-	0xaf1a0  func __RERenderGraphEmitter.setup(mgr:) // method 
-	0xaf650  func __RERenderGraphEmitter.__handle.getter // getter 
+	0xb0100  func __RERenderGraphEmitter.unsetup(mgr:) // method 
+	0xb0600  func __RERenderGraphEmitter.setup(mgr:) // method 
+	0xb0ab0  func __RERenderGraphEmitter.__handle.getter // getter 
  }
 
  struct RealityKit.EmitterAssetKey {
@@ -1465,7 +1478,7 @@
 	var coreAsset : OpaquePointer // +0x10 (0x8)
 
 	// Swift methods
-	0xb0c20  func __MaterialResource.__coreAsset.getter // getter 
+	0xb2080  func __MaterialResource.__coreAsset.getter // getter 
  }
 
  struct RealityKit.SimpleMaterial: Material {
@@ -1571,39 +1584,39 @@
 	var multiplePerformBehaviour : __RKEntityActionMultiplePerformBehavior // +0x61 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0xbcd50  @objc __RKEntityAction.copy(with:)
+	0xbe1b0  @objc __RKEntityAction.copy(with:)
 
 	// Swift methods
-	0xbc140  class func __RKEntityAction.__allocating_init(targetEntity:) // init 
-	0xbaa20  func __RKEntityAction.targetEntity.getter // getter 
-	0xbaa50  func __RKEntityAction.targetEntity.setter // setter 
-	0xbaa90  func __RKEntityAction.targetEntity.modify // modifyCoroutine 
-	0xbaac0  func __RKEntityAction.completionHandler.getter // getter 
-	0xbab20  func __RKEntityAction.completionHandler.setter // setter 
-	0xbab70  func __RKEntityAction.completionHandler.modify // modifyCoroutine 
-	0xbaba0  func __RKEntityAction.isAlternate.getter // getter 
-	0xbabd0  func __RKEntityAction.isAlternate.setter // setter 
-	0xbac00  func __RKEntityAction.isAlternate.modify // modifyCoroutine 
-	0xbac40  func __RKEntityAction.isExclusive.getter // getter 
-	0xbac70  func __RKEntityAction.isExclusive.setter // setter 
-	0xbaca0  func __RKEntityAction.isExclusive.modify // modifyCoroutine 
-	0xbacd0  func __RKEntityAction.state.getter // getter 
-	0xbad10  func __RKEntityAction.state.setter // setter 
-	0xbad90  func __RKEntityAction.state.modify // modifyCoroutine 
-	0xbaed0  func __RKEntityAction.multiplePerformBehaviour.getter // getter 
-	0xbaf00  func __RKEntityAction.multiplePerformBehaviour.setter // setter 
-	0xbaf40  func __RKEntityAction.multiplePerformBehaviour.modify // modifyCoroutine 
-	0xbaf70  func __RKEntityAction.performAction(with:) // method 
-	0xbb660  func __RKEntityAction.shouldContinueOnPerform() // method 
-	0xbb6e0  func __RKEntityAction.preloadAssets() // method 
-	0xbcc30  func __RKEntityAction.perform(with:) // method 
-	0xbb6f0  func __RKEntityAction.addStateObserver(_:) // method 
-	0xbb790  func __RKEntityAction.removeStateObserver(_:) // method 
-	0xbccb0  func __RKEntityAction.reversed() // method 
-	0xbb7f0  func __RKEntityAction.description.getter // getter 
-	0xbb9a0  func __RKEntityAction.stop() // method 
-	0xbba50  func __RKEntityAction.isExclusiveWith(action:) // method 
-	0xbccc0  func __RKEntityAction.copy(with:) // method 
+	0xbd5a0  class func __RKEntityAction.__allocating_init(targetEntity:) // init 
+	0xbbe80  func __RKEntityAction.targetEntity.getter // getter 
+	0xbbeb0  func __RKEntityAction.targetEntity.setter // setter 
+	0xbbef0  func __RKEntityAction.targetEntity.modify // modifyCoroutine 
+	0xbbf20  func __RKEntityAction.completionHandler.getter // getter 
+	0xbbf80  func __RKEntityAction.completionHandler.setter // setter 
+	0xbbfd0  func __RKEntityAction.completionHandler.modify // modifyCoroutine 
+	0xbc000  func __RKEntityAction.isAlternate.getter // getter 
+	0xbc030  func __RKEntityAction.isAlternate.setter // setter 
+	0xbc060  func __RKEntityAction.isAlternate.modify // modifyCoroutine 
+	0xbc0a0  func __RKEntityAction.isExclusive.getter // getter 
+	0xbc0d0  func __RKEntityAction.isExclusive.setter // setter 
+	0xbc100  func __RKEntityAction.isExclusive.modify // modifyCoroutine 
+	0xbc130  func __RKEntityAction.state.getter // getter 
+	0xbc170  func __RKEntityAction.state.setter // setter 
+	0xbc1f0  func __RKEntityAction.state.modify // modifyCoroutine 
+	0xbc330  func __RKEntityAction.multiplePerformBehaviour.getter // getter 
+	0xbc360  func __RKEntityAction.multiplePerformBehaviour.setter // setter 
+	0xbc3a0  func __RKEntityAction.multiplePerformBehaviour.modify // modifyCoroutine 
+	0xbc3d0  func __RKEntityAction.performAction(with:) // method 
+	0xbcac0  func __RKEntityAction.shouldContinueOnPerform() // method 
+	0xbcb40  func __RKEntityAction.preloadAssets() // method 
+	0xbe090  func __RKEntityAction.perform(with:) // method 
+	0xbcb50  func __RKEntityAction.addStateObserver(_:) // method 
+	0xbcbf0  func __RKEntityAction.removeStateObserver(_:) // method 
+	0xbe110  func __RKEntityAction.reversed() // method 
+	0xbcc50  func __RKEntityAction.description.getter // getter 
+	0xbce00  func __RKEntityAction.stop() // method 
+	0xbceb0  func __RKEntityAction.isExclusiveWith(action:) // method 
+	0xbe120  func __RKEntityAction.copy(with:) // method 
  }
 
  enum RealityKit.State {
@@ -1650,18 +1663,18 @@
 	var shouldFireAlternate : Bool // +0x12 (0x1)
 
 	// Swift methods
-	0xbfe70  class func __RKEntityTrigger.__allocating_init() // init 
-	0xbf800  func __RKEntityTrigger.reversible.getter // getter 
-	0xbf830  func __RKEntityTrigger.reversible.setter // setter 
-	0xbf860  func __RKEntityTrigger.reversible.modify // modifyCoroutine 
-	0xbf8a0  func __RKEntityTrigger.shouldReverse.getter // getter 
-	0xbf8d0  func __RKEntityTrigger.shouldReverse.setter // setter 
-	0xbf900  func __RKEntityTrigger.shouldReverse.modify // modifyCoroutine 
-	0xbf930  func __RKEntityTrigger.shouldFireAlternate.getter // getter 
-	0xbf960  func __RKEntityTrigger.shouldFireAlternate.setter // setter 
-	0xbf990  func __RKEntityTrigger.shouldFireAlternate.modify // modifyCoroutine 
-	0xbf9c0  func __RKEntityTrigger.matches(with:) // method 
-	0xbfd90  func __RKEntityTrigger.description.getter // getter 
+	0xc12d0  class func __RKEntityTrigger.__allocating_init() // init 
+	0xc0c60  func __RKEntityTrigger.reversible.getter // getter 
+	0xc0c90  func __RKEntityTrigger.reversible.setter // setter 
+	0xc0cc0  func __RKEntityTrigger.reversible.modify // modifyCoroutine 
+	0xc0d00  func __RKEntityTrigger.shouldReverse.getter // getter 
+	0xc0d30  func __RKEntityTrigger.shouldReverse.setter // setter 
+	0xc0d60  func __RKEntityTrigger.shouldReverse.modify // modifyCoroutine 
+	0xc0d90  func __RKEntityTrigger.shouldFireAlternate.getter // getter 
+	0xc0dc0  func __RKEntityTrigger.shouldFireAlternate.setter // setter 
+	0xc0df0  func __RKEntityTrigger.shouldFireAlternate.modify // modifyCoroutine 
+	0xc0e20  func __RKEntityTrigger.matches(with:) // method 
+	0xc11f0  func __RKEntityTrigger.description.getter // getter 
  }
 
  class RealityKit.REEventDispatcher {
@@ -1682,7 +1695,7 @@
 	var customArguments : [String : String]
 
 	// Swift methods
-	0xc3860  class func __RKCustomTrigger.__allocating_init(identifier:customArguments:) // init 
+	0xc4cc0  class func __RKCustomTrigger.__allocating_init(identifier:customArguments:) // init 
  }
 
  class RealityKit.__RKEntityCustomTrigger : __RKEntityTrigger {
@@ -1693,10 +1706,10 @@
 	var targetEntity : Entity?
 
 	// Swift methods
-	0xc3ed0  func __RKEntityCustomTrigger.targetEntity.getter // getter 
-	0xc3f00  func __RKEntityCustomTrigger.targetEntity.setter // setter 
-	0xc3f40  func __RKEntityCustomTrigger.targetEntity.modify // modifyCoroutine 
-	0xc3f80  class func __RKEntityCustomTrigger.__allocating_init(targetEntity:identifier:customArguments:) // init 
+	0xc5330  func __RKEntityCustomTrigger.targetEntity.getter // getter 
+	0xc5360  func __RKEntityCustomTrigger.targetEntity.setter // setter 
+	0xc53a0  func __RKEntityCustomTrigger.targetEntity.modify // modifyCoroutine 
+	0xc53e0  class func __RKEntityCustomTrigger.__allocating_init(targetEntity:identifier:customArguments:) // init 
  }
 
  class RealityKit.RERenderFrameWorkload : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1729,12 +1742,12 @@
 	var hasRenderedThisFrame : Bool
 
 	// Swift methods
-	0xcb810  func __Engine.__coreEngine.getter // getter 
-	0xcb8c0  func __Engine.services.getter // getter 
-	0xcaf20  class func __Engine.__allocating_init(configuration:) // init 
-	0xcbec0  class func __Engine.__allocating_init(coreEngine:) // init 
-	0xcc310  func __Engine.__start() // method 
-	0xcc340  func __Engine.__stop() // method 
+	0xcc9d0  func __Engine.__coreEngine.getter // getter 
+	0xcca80  func __Engine.services.getter // getter 
+	0xcc240  class func __Engine.__allocating_init(configuration:) // init 
+	0xcd080  class func __Engine.__allocating_init(coreEngine:) // init 
+	0xcd4d0  func __Engine.__start() // method 
+	0xcd500  func __Engine.__stop() // method 
  }
 
  struct RealityKit.Configuration {
@@ -1793,8 +1806,8 @@
 	var triggers : [__RKEntityTrigger] // +0x18 (0x8)
 
 	// Swift methods
-	0xce230  func __RKEntityTriggerGroup.triggers.getter // getter 
-	0xce260  class func __RKEntityTriggerGroup.__allocating_init(triggers:) // init 
+	0xcf3e0  func __RKEntityTriggerGroup.triggers.getter // getter 
+	0xcf410  class func __RKEntityTriggerGroup.__allocating_init(triggers:) // init 
  }
 
  class RealityKit.__RKEntitySwapEntityAction : __RKEntityAction {
@@ -1807,15 +1820,15 @@
 	var deadline : Double // +0xa8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd0630  @objc __RKEntitySwapEntityAction.copy(with:)
+	0xd17e0  @objc __RKEntitySwapEntityAction.copy(with:)
 
 	// Swift methods
-	0xcfda0  class func __RKEntitySwapEntityAction.__allocating_init(targetEntity:newEntity:buildOutAction:buildInAction:) // init 
+	0xd0f50  class func __RKEntitySwapEntityAction.__allocating_init(targetEntity:newEntity:buildOutAction:buildInAction:) // init 
  }
 
  class RealityKit.AnchorEntity : Entity {
 	// Swift methods
-	0xd1f00  class func AnchorEntity.__allocating_init(_:) // init 
+	0xd3150  class func AnchorEntity.__allocating_init(_:) // init 
  }
 
  class RealityKit.PerspectiveCamera : Entity { }
@@ -1830,14 +1843,14 @@
 
  class RealityKit.ModelEntity : Entity {
 	// Swift methods
-	0xd23a0  class func ModelEntity.__allocating_init(mesh:materials:) // init 
-	0xd24b0  class func ModelEntity.__allocating_init(mesh:materials:collisionShape:mass:) // init 
-	0xd2760  class func ModelEntity.__allocating_init(mesh:materials:collisionShapes:mass:) // init 
+	0xd35f0  class func ModelEntity.__allocating_init(mesh:materials:) // init 
+	0xd3700  class func ModelEntity.__allocating_init(mesh:materials:collisionShape:mass:) // init 
+	0xd39b0  class func ModelEntity.__allocating_init(mesh:materials:collisionShapes:mass:) // init 
  }
 
  class RealityKit.TriggerVolume : Entity {
 	// Swift methods
-	0xd2bf0  class func TriggerVolume.__allocating_init(shapes:filter:) // init 
+	0xd3e40  class func TriggerVolume.__allocating_init(shapes:filter:) // init 
  }
 
  struct RealityKit.PointLightComponent {
@@ -1855,13 +1868,13 @@
 	var rootEntity : Entity? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xd4780  @objc __RKChangeSceneAction.copy(with:)
+	0xd59d0  @objc __RKChangeSceneAction.copy(with:)
 
 	// Swift methods
-	0xd3be0  func __RKChangeSceneAction.rootEntity.getter // getter 
-	0xd3c20  func __RKChangeSceneAction.rootEntity.setter // setter 
-	0xd3c70  func __RKChangeSceneAction.rootEntity.modify // modifyCoroutine 
-	0xd3cc0  class func __RKChangeSceneAction.__allocating_init(rootEntity:targetSceneIdentifier:) // init 
+	0xd4e30  func __RKChangeSceneAction.rootEntity.getter // getter 
+	0xd4e70  func __RKChangeSceneAction.rootEntity.setter // setter 
+	0xd4ec0  func __RKChangeSceneAction.rootEntity.modify // modifyCoroutine 
+	0xd4f10  class func __RKChangeSceneAction.__allocating_init(rootEntity:targetSceneIdentifier:) // init 
  }
 
  struct RealityKit.__REECSManagerRef: __CoreConvertible {
@@ -1989,10 +2002,10 @@
 	var targetEntity : Entity?
 
 	// Swift methods
-	0xe0db0  func __RKEntityTapTrigger.targetEntity.getter // getter 
-	0xe0de0  func __RKEntityTapTrigger.targetEntity.setter // setter 
-	0xe0e20  func __RKEntityTapTrigger.targetEntity.modify // modifyCoroutine 
-	0xe0e60  class func __RKEntityTapTrigger.__allocating_init(targetEntity:reversible:) // init 
+	0xe2000  func __RKEntityTapTrigger.targetEntity.getter // getter 
+	0xe2030  func __RKEntityTapTrigger.targetEntity.setter // setter 
+	0xe2070  func __RKEntityTapTrigger.targetEntity.modify // modifyCoroutine 
+	0xe20b0  class func __RKEntityTapTrigger.__allocating_init(targetEntity:reversible:) // init 
  }
 
  class RealityKit.__RKEntityOrbitEntityAction : __RKEntityAction {
@@ -2015,11 +2028,11 @@
 	var originalPose : REPoseF? // +0xf0 (0x21)
 
 	// ObjC -> Swift bridged methods
-	0xe2f30  @objc __RKEntityOrbitEntityAction.copy(with:)
+	0xe4360  @objc __RKEntityOrbitEntityAction.copy(with:)
 
 	// Swift methods
-	0xe16a0  class func __RKEntityOrbitEntityAction.__allocating_init(targetEntity:pivotEntity:duration:rotations:orbitalAxis:orientToPath:spinDirection:respectPhysics:physicsAngularCoefficient:physicsLinearCoefficient:) // init 
-	0xe18f0  func __RKEntityOrbitEntityAction.update() // method 
+	0xe28f0  class func __RKEntityOrbitEntityAction.__allocating_init(targetEntity:pivotEntity:duration:rotations:orbitalAxis:orientToPath:spinDirection:respectPhysics:physicsAngularCoefficient:physicsLinearCoefficient:) // init 
+	0xe2b40  func __RKEntityOrbitEntityAction.update() // method 
  }
 
  class RealityKit.LoadManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2115,12 +2128,12 @@
 	var exitFired : Bool // +0x26 (0x1)
 
 	// Swift methods
-	0xea5c0  func __RKEntityProximityTrigger.__targetEntity.getter // getter 
-	0xea650  func __RKEntityProximityTrigger.distance.getter // getter 
-	0xea720  func __RKEntityProximityTrigger.type.getter // getter 
-	0xea7d0  func __RKEntityProximityTrigger.enterFired.getter // getter 
-	0xea880  func __RKEntityProximityTrigger.exitFired.getter // getter 
-	0xea8b0  class func __RKEntityProximityTrigger.__allocating_init(targetEntity:distance:type:) // init 
+	0xeb9f0  func __RKEntityProximityTrigger.__targetEntity.getter // getter 
+	0xeba80  func __RKEntityProximityTrigger.distance.getter // getter 
+	0xebb50  func __RKEntityProximityTrigger.type.getter // getter 
+	0xebc00  func __RKEntityProximityTrigger.enterFired.getter // getter 
+	0xebcb0  func __RKEntityProximityTrigger.exitFired.getter // getter 
+	0xebce0  class func __RKEntityProximityTrigger.__allocating_init(targetEntity:distance:type:) // init 
  }
 
  enum RealityKit.ExitType {
@@ -2161,66 +2174,66 @@
 	var __disableStatisticsRendering : Bool // +0x114 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0xed290  @objc ARView.init(coder:)
-	0xed7e0  @objc ARView.init(frame:)
-	0xee200  @objc ARView.__deallocating_deinit
-	0xee220  @objc ARView.__ivar_destroyer
+	0xee6c0  @objc ARView.init(coder:)
+	0xeec10  @objc ARView.init(frame:)
+	0xef630  @objc ARView.__deallocating_deinit
+	0xef650  @objc ARView.__ivar_destroyer
 
 	// Swift methods
-	0xec070  func ARView.__services.getter // getter 
-	0xec090  func ARView.scene.getter // getter 
-	0xec170  func ARView.__delegatePrivate.getter // getter 
-	0xec1b0  func ARView.__delegatePrivate.setter // setter 
-	0xec210  func ARView.__delegatePrivate.modify // modifyCoroutine 
-	0xec360  func ARView.__automaticallyInvokesStartTrigger.getter // getter 
-	0xec440  func ARView.__automaticallyInvokesStartTrigger.setter // setter 
-	0xec520  func ARView.__automaticallyInvokesStartTrigger.modify // modifyCoroutine 
-	0xec710  func ARView.debugOptions.getter // getter 
-	0xec750  func ARView.debugOptions.setter // setter 
-	0xec7d0  func ARView.debugOptions.modify // modifyCoroutine 
-	0xec920  func ARView.startEngine() // method 
-	0xec980  func ARView.stopEngine() // method 
-	0xecaa0  func ARView.environment.getter // getter 
-	0xecae0  func ARView.environment.setter // setter 
-	0xecb40  func ARView.environment.modify // modifyCoroutine 
-	0xecc60  func ARView.cameraTransform.getter // getter 
-	0xece10  func ARView.audioListener.getter // getter 
-	0xece60  func ARView.audioListener.setter // setter 
-	0xece80  func ARView.audioListener.modify // modifyCoroutine 
-	0xecf80  func ARView.__environmentEntity.getter // getter 
-	0xecfa0  func ARView.__environmentEntity.setter // setter 
-	0xecff0  func ARView.__environmentEntity.modify // modifyCoroutine 
-	0xed070  func ARView.__enableAutomaticFrameRate.getter // getter 
-	0xed090  func ARView.__enableAutomaticFrameRate.setter // setter 
-	0xed0b0  func ARView.__enableAutomaticFrameRate.modify // modifyCoroutine 
-	0xed170  func ARView.__preferredFrameRate.getter // getter 
-	0xed1a0  func ARView.__preferredFrameRate.setter // setter 
-	0xed1e0  func ARView.__preferredFrameRate.modify // modifyCoroutine 
-	0xed810  func ARView.__customizeMetalLayer() // method 
-	0xed930  func ARView.__renderGraphEmitter.getter // getter 
-	0xed990  func ARView.__renderGraphEmitter.setter // setter 
-	0xed9b0  func ARView.__renderGraphEmitter.modify // modifyCoroutine 
-	0xeda90  func ARView.__setWireframeMode(displayWireframe:) // method 
-	0xedae0  func ARView.__targetIdentifier.getter // getter 
-	0xedb00  func ARView.__didInitializeEngine() // method 
-	0xedb50  func ARView.__disableComposition.getter // getter 
-	0xedb70  func ARView.__disableComposition.setter // setter 
-	0xedb90  func ARView.__disableComposition.modify // modifyCoroutine 
-	0xedc50  func ARView.__nonARKitDevices.getter // getter 
-	0xedc70  func ARView.__nonARKitDevices.setter // setter 
-	0xedcd0  func ARView.__nonARKitDevices.modify // modifyCoroutine 
-	0xef3f0  func ARView.__handleTapAtPoint(point:) // method 
-	0xeff90  func ARView.__statisticsOptions.getter // getter 
-	0xeffd0  func ARView.__statisticsOptions.setter // setter 
-	0xf0050  func ARView.__statisticsOptions.modify // modifyCoroutine 
-	0xf0230  func ARView.__disableStatisticsRendering.getter // getter 
-	0xf0280  func ARView.__disableStatisticsRendering.setter // setter 
-	0xf02f0  func ARView.__disableStatisticsRendering.modify // modifyCoroutine 
-	0xf0390  func ARView.__getStatisticsStringForSingleOption(statisticOption:) // method 
-	0xf03d0  func ARView.__frameTime() // method 
-	0xf0780  func ARView.snapshot(saveToHDR:completion:) // method 
-	0xf1690  func ARView.__startAudioEngine() // method 
-	0xf16b0  func ARView.__stopAudioEngine() // method 
+	0xed4a0  func ARView.__services.getter // getter 
+	0xed4c0  func ARView.scene.getter // getter 
+	0xed5a0  func ARView.__delegatePrivate.getter // getter 
+	0xed5e0  func ARView.__delegatePrivate.setter // setter 
+	0xed640  func ARView.__delegatePrivate.modify // modifyCoroutine 
+	0xed790  func ARView.__automaticallyInvokesStartTrigger.getter // getter 
+	0xed870  func ARView.__automaticallyInvokesStartTrigger.setter // setter 
+	0xed950  func ARView.__automaticallyInvokesStartTrigger.modify // modifyCoroutine 
+	0xedb40  func ARView.debugOptions.getter // getter 
+	0xedb80  func ARView.debugOptions.setter // setter 
+	0xedc00  func ARView.debugOptions.modify // modifyCoroutine 
+	0xedd50  func ARView.startEngine() // method 
+	0xeddb0  func ARView.stopEngine() // method 
+	0xeded0  func ARView.environment.getter // getter 
+	0xedf10  func ARView.environment.setter // setter 
+	0xedf70  func ARView.environment.modify // modifyCoroutine 
+	0xee090  func ARView.cameraTransform.getter // getter 
+	0xee240  func ARView.audioListener.getter // getter 
+	0xee290  func ARView.audioListener.setter // setter 
+	0xee2b0  func ARView.audioListener.modify // modifyCoroutine 
+	0xee3b0  func ARView.__environmentEntity.getter // getter 
+	0xee3d0  func ARView.__environmentEntity.setter // setter 
+	0xee420  func ARView.__environmentEntity.modify // modifyCoroutine 
+	0xee4a0  func ARView.__enableAutomaticFrameRate.getter // getter 
+	0xee4c0  func ARView.__enableAutomaticFrameRate.setter // setter 
+	0xee4e0  func ARView.__enableAutomaticFrameRate.modify // modifyCoroutine 
+	0xee5a0  func ARView.__preferredFrameRate.getter // getter 
+	0xee5d0  func ARView.__preferredFrameRate.setter // setter 
+	0xee610  func ARView.__preferredFrameRate.modify // modifyCoroutine 
+	0xeec40  func ARView.__customizeMetalLayer() // method 
+	0xeed60  func ARView.__renderGraphEmitter.getter // getter 
+	0xeedc0  func ARView.__renderGraphEmitter.setter // setter 
+	0xeede0  func ARView.__renderGraphEmitter.modify // modifyCoroutine 
+	0xeeec0  func ARView.__setWireframeMode(displayWireframe:) // method 
+	0xeef10  func ARView.__targetIdentifier.getter // getter 
+	0xeef30  func ARView.__didInitializeEngine() // method 
+	0xeef80  func ARView.__disableComposition.getter // getter 
+	0xeefa0  func ARView.__disableComposition.setter // setter 
+	0xeefc0  func ARView.__disableComposition.modify // modifyCoroutine 
+	0xef080  func ARView.__nonARKitDevices.getter // getter 
+	0xef0a0  func ARView.__nonARKitDevices.setter // setter 
+	0xef100  func ARView.__nonARKitDevices.modify // modifyCoroutine 
+	0xf0820  func ARView.__handleTapAtPoint(point:) // method 
+	0xf13c0  func ARView.__statisticsOptions.getter // getter 
+	0xf1400  func ARView.__statisticsOptions.setter // setter 
+	0xf1480  func ARView.__statisticsOptions.modify // modifyCoroutine 
+	0xf1660  func ARView.__disableStatisticsRendering.getter // getter 
+	0xf16b0  func ARView.__disableStatisticsRendering.setter // setter 
+	0xf1720  func ARView.__disableStatisticsRendering.modify // modifyCoroutine 
+	0xf17c0  func ARView.__getStatisticsStringForSingleOption(statisticOption:) // method 
+	0xf1800  func ARView.__frameTime() // method 
+	0xf1bb0  func ARView.snapshot(saveToHDR:completion:) // method 
+	0xf2ac0  func ARView.__startAudioEngine() // method 
+	0xf2ae0  func ARView.__stopAudioEngine() // method 
  }
 
  struct RealityKit.DebugOptions {
@@ -2252,12 +2265,12 @@
 	var observers : __RKActiveSceneObserver // +0x18 (0x8)
 
 	// Swift methods
-	0xf74e0  class func __RKActiveSceneManager.__allocating_init() // init 
-	0xf77a0  func __RKActiveSceneManager.activeScene.getter // getter 
-	0xf77d0  func __RKActiveSceneManager.activeScene.setter // setter 
-	0xf77f0  func __RKActiveSceneManager.activeScene.modify // modifyCoroutine 
-	0xf7a90  func __RKActiveSceneManager.addObserver(observer:) // method 
-	0xf7b80  func __RKActiveSceneManager.removeObserver(observer:) // method 
+	0xf8910  class func __RKActiveSceneManager.__allocating_init() // init 
+	0xf8bd0  func __RKActiveSceneManager.activeScene.getter // getter 
+	0xf8c00  func __RKActiveSceneManager.activeScene.setter // setter 
+	0xf8c20  func __RKActiveSceneManager.activeScene.modify // modifyCoroutine 
+	0xf8ec0  func __RKActiveSceneManager.addObserver(observer:) // method 
+	0xf8fb0  func __RKActiveSceneManager.removeObserver(observer:) // method 
  }
 
  struct RealityKit.Environment {
@@ -2503,8 +2516,8 @@
 	let handle : OpaquePointer // +0x10 (0x8)
 
 	// Swift methods
-	0x118fc0  func __Archiving.Operation.archive(to:) // method 
-	0x118fe0  func __Archiving.Operation.unarchive(to:) // method 
+	0x11a530  func __Archiving.Operation.archive(to:) // method 
+	0x11a550  func __Archiving.Operation.unarchive(to:) // method 
  }
 
  enum RealityKit.ArchivingError {
@@ -2634,26 +2647,26 @@
 	var synchronizationService : SynchronizationService? // +0x78 (0x10)
 
 	// Swift methods
-	0x133060  func Scene.__coreScene.getter // getter 
-	0x133070  func Scene.name.getter // getter 
-	0x133110  func Scene.__audioListener.getter // getter 
-	0x133140  func Scene.__audioListener.setter // setter 
-	0x133160  func Scene.__audioListener.modify // modifyCoroutine 
-	0x1333a0  func Scene.__defaultCamera.getter // getter 
-	0x1333b0  func Scene.internalActiveCamera.getter // getter 
-	0x133520  func Scene.__entities.getter // getter 
-	0x1335b0  func Scene.anchors.getter // getter 
-	0x1335d0  func Scene.anchors.setter // setter 
-	0x133610  func Scene.anchors.modify // modifyCoroutine 
-	0x133650  func Scene.addAnchor(_:) // method 
-	0x1336a0  func Scene.removeAnchor(_:) // method 
-	0x133740  func Scene.eventService.getter // getter 
-	0x133890  func Scene.engineEventService.getter // getter 
-	0x133b70  func Scene.findEntity(named:) // method 
-	0x133d00  func Scene.__interactionService.getter // getter 
-	0x133f70  func Scene.synchronizationService.getter // getter 
-	0x133fc0  func Scene.synchronizationService.setter // setter 
-	0x134050  func Scene.synchronizationService.modify // modifyCoroutine 
+	0x134670  func Scene.__coreScene.getter // getter 
+	0x134680  func Scene.name.getter // getter 
+	0x134720  func Scene.__audioListener.getter // getter 
+	0x134750  func Scene.__audioListener.setter // setter 
+	0x134770  func Scene.__audioListener.modify // modifyCoroutine 
+	0x1349b0  func Scene.__defaultCamera.getter // getter 
+	0x1349c0  func Scene.internalActiveCamera.getter // getter 
+	0x134b30  func Scene.__entities.getter // getter 
+	0x134bc0  func Scene.anchors.getter // getter 
+	0x134be0  func Scene.anchors.setter // setter 
+	0x134c20  func Scene.anchors.modify // modifyCoroutine 
+	0x134c60  func Scene.addAnchor(_:) // method 
+	0x134cb0  func Scene.removeAnchor(_:) // method 
+	0x134d50  func Scene.eventService.getter // getter 
+	0x134ea0  func Scene.engineEventService.getter // getter 
+	0x135180  func Scene.findEntity(named:) // method 
+	0x135310  func Scene.__interactionService.getter // getter 
+	0x135580  func Scene.synchronizationService.getter // getter 
+	0x1355d0  func Scene.synchronizationService.setter // setter 
+	0x135660  func Scene.synchronizationService.modify // modifyCoroutine 
  }
 
  class RealityKit.__RKEntityAnimateAction : __RKEntityAction {
@@ -2669,13 +2682,14 @@
 	var animationComponents : [OpaquePointer]
 
 	// ObjC -> Swift bridged methods
-	0x139330  @objc __RKEntityAnimateAction.copy(with:)
+	0x13ab00  @objc __RKEntityAnimateAction.copy(with:)
 
 	// Swift methods
-	0x138660  func __RKEntityAnimateAction.setupAnimations(on:andPlay:) // method 
-	0x138760  func __RKEntityAnimateAction.setupAnimations(entity:assetManager:addToComponentArray:andPlay:) // method 
-	0x138a00  func __RKEntityAnimateAction.setupSkeletalAnimation(on:queryResultsArray:animationLibraryComponent:assetManager:addToComponentArray:andPlay:) // method 
-	0x138e70  func __RKEntityAnimateAction.setupTransformAnimation(on:transformAnimationAsset:assetManager:addToComponentArray:andPlay:) // method 
+	0x139c70  func __RKEntityAnimateAction.setupAnimations(on:andPlay:) // method 
+	0x139d60  func __RKEntityAnimateAction.setupAnimations(entity:assetManager:addToComponentArray:andPlay:) // method 
+	0x139f50  func __RKEntityAnimateAction.setupSkeletalAnimation(on:queryResultsArray:animationLibraryComponent:assetManager:addToComponentArray:andPlay:) // method 
+	0x13a340  func __RKEntityAnimateAction.setupTransformAnimation(on:transformAnimationAsset:assetManager:addToComponentArray:andPlay:) // method 
+	0x13a600  func __RKEntityAnimateAction.findDuration(entity:assetManager:) // method 
  }
 
  class RealityKit.__RKEntityStartAnimateAction : __RKEntityAnimateAction {
@@ -2685,20 +2699,20 @@
 	var deadline : Double
 
 	// ObjC -> Swift bridged methods
-	0x139de0  @objc __RKEntityStartAnimateAction.copy(with:)
+	0x13b5f0  @objc __RKEntityStartAnimateAction.copy(with:)
 
 	// Swift methods
-	0x1394a0  class func __RKEntityStartAnimateAction.__allocating_init(targetEntity:loopCount:multiplePerformBehavior:clipStart:clipDuration:clipReversed:animationSpeed:clipReverses:) // init 
+	0x13ac70  class func __RKEntityStartAnimateAction.__allocating_init(targetEntity:loopCount:multiplePerformBehavior:clipStart:clipDuration:clipReversed:animationSpeed:clipReverses:) // init 
  }
 
  class RealityKit.__RKEntityStopAnimateAction : __RKEntityAnimateAction {
 	// ObjC -> Swift bridged methods
-	0x13a170  @objc __RKEntityStopAnimateAction.copy(with:)
+	0x13b980  @objc __RKEntityStopAnimateAction.copy(with:)
  }
 
  class RealityKit.__RKEntityToggleAnimateAction : __RKEntityAnimateAction {
 	// ObjC -> Swift bridged methods
-	0x13aa10  @objc __RKEntityToggleAnimateAction.copy(with:)
+	0x13c280  @objc __RKEntityToggleAnimateAction.copy(with:)
  }
 
  struct RealityKit.__RKScenePhysics {
@@ -2725,15 +2739,15 @@
 
  class RealityKit.__RCInteractionsController : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x13d4d0  @objc __RCInteractionsController.init()
+	0x13ed40  @objc __RCInteractionsController.init()
 
 	// Swift methods
  }
 
  class RealityKit.__RCEntity : Entity {
 	// Swift methods
-	0x13d570  func __RCEntity.invokeCustomTrigger(named:overrides:) // method 
-	0x13d6b0  func __RCEntity.registerCustomAction(named:action:) // method 
+	0x13ede0  func __RCEntity.invokeCustomTrigger(named:overrides:) // method 
+	0x13ef20  func __RCEntity.registerCustomAction(named:action:) // method 
  }
 
  struct RealityKit.PhysicsMotionComponent {
@@ -2749,10 +2763,10 @@
 
 	// Properties
 	let rootEntity : Entity? // +0x10 (0x8)
-	let targetSceneIdentifier : UUID // +0x27c000 (0x0)
+	let targetSceneIdentifier : UUID // +0x27f000 (0x0)
 
 	// Swift methods
-	0x13e6e0  func RKChangeSceneActionBasicTechnique.switchScenes() // method 
+	0x13ff50  func RKChangeSceneActionBasicTechnique.switchScenes() // method 
  }
 
  class RealityKit.__RKEntityFadeAction : __RKEntityAction {
@@ -2762,10 +2776,10 @@
 	let duration : Float
 
 	// ObjC -> Swift bridged methods
-	0x13e990  @objc __RKEntityFadeAction.copy(with:)
+	0x140200  @objc __RKEntityFadeAction.copy(with:)
 
 	// Swift methods
-	0x13e820  class func __RKEntityFadeAction.__allocating_init(targetEntity:targetOpacity:duration:) // init 
+	0x140090  class func __RKEntityFadeAction.__allocating_init(targetEntity:targetOpacity:duration:) // init 
  }
 
  class RealityKit.__RKFadeSceneAction : __RKEntityAction {
@@ -2775,10 +2789,10 @@
 	let duration : Float
 
 	// ObjC -> Swift bridged methods
-	0x13ec50  @objc __RKFadeSceneAction.copy(with:)
+	0x1404c0  @objc __RKFadeSceneAction.copy(with:)
 
 	// Swift methods
-	0x13ea50  class func __RKFadeSceneAction.__allocating_init(targetOpacity:duration:) // init 
+	0x1402c0  class func __RKFadeSceneAction.__allocating_init(targetOpacity:duration:) // init 
  }
 
  class RealityKit.RKChangeSceneActionRuntimeTechnique : RKChangeSceneActionBasicTechnique {
@@ -2788,10 +2802,10 @@
 	var subcomponent : OpaquePointer? // +0x0 (0x8)
 
 	// Swift methods
-	0x13fd20  func RKChangeSceneActionRuntimeTechnique.findSceneRootWithRootEntitySubTechnique() // method 
-	0x13ffc0  func RKChangeSceneActionRuntimeTechnique.unloadScene() // method 
-	0x1401c0  func RKChangeSceneActionRuntimeTechnique.loadScene(_:) // method 
-	0x140f30  func RKChangeSceneActionRuntimeTechnique.stopAnimations(rootEntity:) // method 
+	0x141590  func RKChangeSceneActionRuntimeTechnique.findSceneRootWithRootEntitySubTechnique() // method 
+	0x141830  func RKChangeSceneActionRuntimeTechnique.unloadScene() // method 
+	0x141a30  func RKChangeSceneActionRuntimeTechnique.loadScene(_:) // method 
+	0x1427a0  func RKChangeSceneActionRuntimeTechnique.stopAnimations(rootEntity:) // method 
  }
 
  enum RealityKit.__RKEntityAudioActionType {
@@ -2823,11 +2837,11 @@
 	var audioAssetRef : OpaquePointer? // +0xa8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x143c60  @objc __RKEntityAudioAction.copy(with:)
+	0x1454d0  @objc __RKEntityAudioAction.copy(with:)
 
 	// Swift methods
-	0x142c60  class func __RKEntityAudioAction.__allocating_init(targetEntity:type:path:volume:loops:spatialMode:multiplePerformBehavior:) // init 
-	0x142f80  func __RKEntityAudioAction.createFileAssetRef() // method 
+	0x1444d0  class func __RKEntityAudioAction.__allocating_init(targetEntity:type:path:volume:loops:spatialMode:multiplePerformBehavior:) // init 
+	0x1447f0  func __RKEntityAudioAction.createFileAssetRef() // method 
  }
 
  class RealityKit.__RKVisibilityShowMoveInAnimation : __RKVisibilityBaseAnimation { }
@@ -2839,15 +2853,15 @@
 	var entity : weak Entity? // +0x18 (0x8)
 
 	// Swift methods
-	0x1497c0  func AnimationPlaybackController.__identifier.getter // getter 
-	0x149850  func AnimationPlaybackController.entity.getter // getter 
-	0x149880  func AnimationPlaybackController.isPaused.getter // getter 
-	0x1498a0  func AnimationPlaybackController.isComplete.getter // getter 
-	0x149950  func AnimationPlaybackController.hash(into:) // method 
-	0x1499b0  func AnimationPlaybackController.pause() // method 
-	0x1499d0  func AnimationPlaybackController.resume() // method 
-	0x1499f0  func AnimationPlaybackController.stop() // method 
-	0x149ab0  func AnimationPlaybackController.hashValue.getter // getter 
+	0x14b030  func AnimationPlaybackController.__identifier.getter // getter 
+	0x14b0c0  func AnimationPlaybackController.entity.getter // getter 
+	0x14b0f0  func AnimationPlaybackController.isPaused.getter // getter 
+	0x14b110  func AnimationPlaybackController.isComplete.getter // getter 
+	0x14b1c0  func AnimationPlaybackController.hash(into:) // method 
+	0x14b220  func AnimationPlaybackController.pause() // method 
+	0x14b240  func AnimationPlaybackController.resume() // method 
+	0x14b260  func AnimationPlaybackController.stop() // method 
+	0x14b320  func AnimationPlaybackController.hashValue.getter // getter 
  }
 
  struct RealityKit.ComponentSet {
@@ -2862,11 +2876,11 @@
 	var uuidToEntity : [UUID : Entity] // +0x10 (0x8)
 
 	// Swift methods
-	0x14b3f0  class func __RKEntityLookupTable.__allocating_init() // init 
-	0x14b4e0  func __RKEntityLookupTable.entity(for:) // method 
-	0x14b580  func __RKEntityLookupTable.uuid(for:) // method 
-	0x14bbc0  func __RKEntityLookupTable.updateEntity(_:for:) // method 
-	0x14bc50  func __RKEntityLookupTable.removeAllEntities() // method 
+	0x14cc60  class func __RKEntityLookupTable.__allocating_init() // init 
+	0x14cd50  func __RKEntityLookupTable.entity(for:) // method 
+	0x14cdf0  func __RKEntityLookupTable.uuid(for:) // method 
+	0x14d430  func __RKEntityLookupTable.updateEntity(_:for:) // method 
+	0x14d4c0  func __RKEntityLookupTable.removeAllEntities() // method 
  }
 
  class RealityKit.Entity : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2876,24 +2890,24 @@
 	var swiftChildren : Entity // +0x18 (0x8)
 
 	// Swift methods
-	0x14dbd0  func Entity.__coreEntity.getter // getter 
-	0x14dbe0  func Entity.components.getter // getter 
-	0x14dc00  func Entity.components.setter // setter 
-	0x14dc20  func Entity.components.modify // modifyCoroutine 
-	0x14dcc0  func Entity.scene.getter // getter 
-	0x14dd30  func Entity.name.getter // getter 
-	0x14dd50  func Entity.name.setter // setter 
-	0x14de30  func Entity.name.modify // modifyCoroutine 
-	0x14e060  func Entity.__boundingBox.getter // getter 
-	0x14e0e0  func Entity.isActive.getter // getter 
-	0x14e0f0  func Entity.isAnchored.getter // getter 
-	0x14e100  func Entity.isEnabled.getter // getter 
-	0x14e110  func Entity.isEnabled.setter // setter 
-	0x14e130  func Entity.isEnabled.modify // modifyCoroutine 
-	0x14e190  func Entity.isEnabledInHierarchy.getter // getter 
-	0x14e1c0  class func Entity.__allocating_init() // init 
-	0x14e1a0  func Entity.didClone(from:) // method 
-	0x14e1b0  func Entity.findEntity(named:) // method 
+	0x14f440  func Entity.__coreEntity.getter // getter 
+	0x14f450  func Entity.components.getter // getter 
+	0x14f470  func Entity.components.setter // setter 
+	0x14f490  func Entity.components.modify // modifyCoroutine 
+	0x14f530  func Entity.scene.getter // getter 
+	0x14f5a0  func Entity.name.getter // getter 
+	0x14f5c0  func Entity.name.setter // setter 
+	0x14f6a0  func Entity.name.modify // modifyCoroutine 
+	0x14f8d0  func Entity.__boundingBox.getter // getter 
+	0x14f950  func Entity.isActive.getter // getter 
+	0x14f960  func Entity.isAnchored.getter // getter 
+	0x14f970  func Entity.isEnabled.getter // getter 
+	0x14f980  func Entity.isEnabled.setter // setter 
+	0x14f9a0  func Entity.isEnabled.modify // modifyCoroutine 
+	0x14fa00  func Entity.isEnabledInHierarchy.getter // getter 
+	0x14fa30  class func Entity.__allocating_init() // init 
+	0x14fa10  func Entity.didClone(from:) // method 
+	0x14fa20  func Entity.findEntity(named:) // method 
  }
 
  class RealityKit.__RKPhysics : Entity { }
@@ -2906,7 +2920,7 @@
 	var tags : [String] // +0x28 (0x8)
 
 	// Swift methods
-	0x14fb30  class func __RKEntityCollisionTrigger.__allocating_init(targetEntity:collidingEntities:tags:) // init 
+	0x1513a0  class func __RKEntityCollisionTrigger.__allocating_init(targetEntity:collidingEntities:tags:) // init 
  }
 
  class RealityKit.__RKWaitAction : __RKEntityAction {
@@ -2919,10 +2933,10 @@
 	var deadline : Double // +0xa8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x154990  @objc __RKWaitAction.copy(with:)
+	0x156200  @objc __RKWaitAction.copy(with:)
 
 	// Swift methods
-	0x1541f0  class func __RKWaitAction.__allocating_init(duration:block:) // init 
+	0x155a60  class func __RKWaitAction.__allocating_init(duration:block:) // init 
  }
 
  class RealityKit.__RKVisibilityShowPopAnimation : __RKVisibilityBaseAnimation { }
@@ -2940,16 +2954,16 @@
 	var customArgumentsBlock : (_:_:)? // +0x90 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x15b7c0  @objc __RKEntityCustomAction.copy(with:)
+	0x15d030  @objc __RKEntityCustomAction.copy(with:)
 
 	// Swift methods
-	0x15a290  func __RKEntityCustomAction.handler.getter // getter 
-	0x15a2f0  func __RKEntityCustomAction.handler.setter // setter 
-	0x15a360  func __RKEntityCustomAction.handler.modify // modifyCoroutine 
-	0x15a530  func __RKEntityCustomAction.customArgumentsBlock.getter // getter 
-	0x15a580  func __RKEntityCustomAction.customArgumentsBlock.setter // setter 
-	0x15a5e0  func __RKEntityCustomAction.customArgumentsBlock.modify // modifyCoroutine 
-	0x15a630  class func __RKEntityCustomAction.__allocating_init(targetEntity:actionIdentifier:handler:customArguments:customArgumentsBlock:) // init 
+	0x15bb00  func __RKEntityCustomAction.handler.getter // getter 
+	0x15bb60  func __RKEntityCustomAction.handler.setter // setter 
+	0x15bbd0  func __RKEntityCustomAction.handler.modify // modifyCoroutine 
+	0x15bda0  func __RKEntityCustomAction.customArgumentsBlock.getter // getter 
+	0x15bdf0  func __RKEntityCustomAction.customArgumentsBlock.setter // setter 
+	0x15be50  func __RKEntityCustomAction.customArgumentsBlock.modify // modifyCoroutine 
+	0x15bea0  class func __RKEntityCustomAction.__allocating_init(targetEntity:actionIdentifier:handler:customArguments:customArgumentsBlock:) // init 
  }
 
  enum RealityKit.__RKEmphasisFloatVariant {
@@ -3066,8 +3080,8 @@
 	let pose : REPoseF // +0x20 (0x20)
 
 	// Swift methods
-	0x196620  func ShapeResource.hash(into:) // method 
-	0x196710  func ShapeResource.hashValue.getter // getter 
+	0x1993c0  func ShapeResource.hash(into:) // method 
+	0x1994b0  func ShapeResource.hashValue.getter // getter 
  }
 
  class RealityKit.__RKEntityInteractionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, __RKEntityInteractionService {
@@ -3083,36 +3097,36 @@
 	var __interactions : [__RKEntityInteraction] // +0x48 (0x8)
 
 	// Swift methods
-	0x198c20  func __RKEntityInteractionManager.areInteractionsEnabled.getter // getter 
-	0x198c50  func __RKEntityInteractionManager.areInteractionsEnabled.setter // setter 
-	0x198c80  func __RKEntityInteractionManager.areInteractionsEnabled.modify // modifyCoroutine 
-	0x198cb0  func __RKEntityInteractionManager.customTriggerIdentifiers.getter // getter 
-	0x198ea0  func __RKEntityInteractionManager.customActionIdentifiers.getter // getter 
-	0x199090  func __RKEntityInteractionManager.performInteractions(matchingCustomTriggerWithIdentifier:customArguments:overrides:) // method 
-	0x1993c0  func __RKEntityInteractionManager.setCustomActionHandler(for:handler:) // method 
-	0x1993d0  func __RKEntityInteractionManager.applyOverrides(_:on:) // method 
-	0x199650  func __RKEntityInteractionManager.__performInteractions(matchingCustomTriggerWithIdentifier:with:on:) // method 
-	0x199740  func __RKEntityInteractionManager.__setCustomPackageActionHandler(withIdentifier:actionHandler:) // method 
-	0x1997d0  func __RKEntityInteractionManager.automaticallyInvokesStartTrigger.getter // getter 
-	0x199800  func __RKEntityInteractionManager.automaticallyInvokesStartTrigger.setter // setter 
-	0x199830  func __RKEntityInteractionManager.automaticallyInvokesStartTrigger.modify // modifyCoroutine 
-	0x1998f0  func __RKEntityInteractionManager.__entityLookupTable.getter // getter 
-	0x199920  func __RKEntityInteractionManager.__entityLookupTable.setter // setter 
-	0x199960  func __RKEntityInteractionManager.__entityLookupTable.modify // modifyCoroutine 
-	0x199a30  func __RKEntityInteractionManager.__simulationSceneCoordinator.getter // getter 
-	0x199a60  func __RKEntityInteractionManager.__simulationSceneCoordinator.setter // setter 
-	0x199aa0  func __RKEntityInteractionManager.__simulationSceneCoordinator.modify // modifyCoroutine 
-	0x199b60  func __RKEntityInteractionManager.__interactions.getter // getter 
-	0x199b90  func __RKEntityInteractionManager.__hasInteractionsForTrigger<A>(of:) // method 
-	0x199f00  func __RKEntityInteractionManager.__actions.getter // getter 
-	0x199f50  func __RKEntityInteractionManager.__addInteraction(_:) // method 
-	0x19a040  func __RKEntityInteractionManager.__removeInteraction(_:) // method 
-	0x19a260  func __RKEntityInteractionManager.__removeAllInteractions() // method 
-	0x19a2a0  func __RKEntityInteractionManager.__performInteractions(matching:on:) // method 
-	0x19b2d0  func __RKEntityInteractionManager.containsChangeSceneAction(action:) // method 
-	0x19b590  func __RKEntityInteractionManager.interactions(matching:entities:) // method 
-	0x19d370  func __RKEntityInteractionManager.targetEntity(for:) // method 
-	0x19d5a0  func __RKEntityInteractionManager.action(for:) // method 
+	0x19b9c0  func __RKEntityInteractionManager.areInteractionsEnabled.getter // getter 
+	0x19b9f0  func __RKEntityInteractionManager.areInteractionsEnabled.setter // setter 
+	0x19ba20  func __RKEntityInteractionManager.areInteractionsEnabled.modify // modifyCoroutine 
+	0x19ba50  func __RKEntityInteractionManager.customTriggerIdentifiers.getter // getter 
+	0x19bc40  func __RKEntityInteractionManager.customActionIdentifiers.getter // getter 
+	0x19be30  func __RKEntityInteractionManager.performInteractions(matchingCustomTriggerWithIdentifier:customArguments:overrides:) // method 
+	0x19c160  func __RKEntityInteractionManager.setCustomActionHandler(for:handler:) // method 
+	0x19c170  func __RKEntityInteractionManager.applyOverrides(_:on:) // method 
+	0x19c3f0  func __RKEntityInteractionManager.__performInteractions(matchingCustomTriggerWithIdentifier:with:on:) // method 
+	0x19c4e0  func __RKEntityInteractionManager.__setCustomPackageActionHandler(withIdentifier:actionHandler:) // method 
+	0x19c570  func __RKEntityInteractionManager.automaticallyInvokesStartTrigger.getter // getter 
+	0x19c5a0  func __RKEntityInteractionManager.automaticallyInvokesStartTrigger.setter // setter 
+	0x19c5d0  func __RKEntityInteractionManager.automaticallyInvokesStartTrigger.modify // modifyCoroutine 
+	0x19c690  func __RKEntityInteractionManager.__entityLookupTable.getter // getter 
+	0x19c6c0  func __RKEntityInteractionManager.__entityLookupTable.setter // setter 
+	0x19c700  func __RKEntityInteractionManager.__entityLookupTable.modify // modifyCoroutine 
+	0x19c7d0  func __RKEntityInteractionManager.__simulationSceneCoordinator.getter // getter 
+	0x19c800  func __RKEntityInteractionManager.__simulationSceneCoordinator.setter // setter 
+	0x19c840  func __RKEntityInteractionManager.__simulationSceneCoordinator.modify // modifyCoroutine 
+	0x19c900  func __RKEntityInteractionManager.__interactions.getter // getter 
+	0x19c930  func __RKEntityInteractionManager.__hasInteractionsForTrigger<A>(of:) // method 
+	0x19cca0  func __RKEntityInteractionManager.__actions.getter // getter 
+	0x19ccf0  func __RKEntityInteractionManager.__addInteraction(_:) // method 
+	0x19cde0  func __RKEntityInteractionManager.__removeInteraction(_:) // method 
+	0x19d000  func __RKEntityInteractionManager.__removeAllInteractions() // method 
+	0x19d040  func __RKEntityInteractionManager.__performInteractions(matching:on:) // method 
+	0x19e070  func __RKEntityInteractionManager.containsChangeSceneAction(action:) // method 
+	0x19e330  func __RKEntityInteractionManager.interactions(matching:entities:) // method 
+	0x1a0110  func __RKEntityInteractionManager.targetEntity(for:) // method 
+	0x1a0340  func __RKEntityInteractionManager.action(for:) // method 
  }
 
  enum RealityKit.CollisionCastQueryType {
@@ -3164,10 +3178,10 @@
 	var deadline : Double // +0xc0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1acc90  @objc __RKEntitySpinAction.copy(with:)
+	0x1af8e0  @objc __RKEntitySpinAction.copy(with:)
 
 	// Swift methods
-	0x1ab840  class func __RKEntitySpinAction.__allocating_init(targetEntity:duration:iterations:direction:axis:) // init 
+	0x1ae490  class func __RKEntitySpinAction.__allocating_init(targetEntity:duration:iterations:direction:axis:) // init 
  }
 
  struct RealityKit.PerspectiveCameraComponent {
@@ -3199,7 +3213,7 @@
 	var m_payload : Data
 
 	// Swift methods
-	0x1af9b0  func NetPassthroughEncoder.encode<A>(_:) // method 
+	0x1b2600  func NetPassthroughEncoder.encode<A>(_:) // method 
  }
 
  class RealityKit.NetPassthroughDecoder : _SwiftObject /usr/lib/swift/libswiftCore.dylib, RENetDecoder {
@@ -3209,7 +3223,7 @@
 	var m_payload : Data
 
 	// Swift methods
-	0x1afa50  func NetPassthroughDecoder.decode<A>(_:) // method 
+	0x1b26a0  func NetPassthroughDecoder.decode<A>(_:) // method 
  }
 
  enum RealityKit.LoadSceneDescriptorsError {
@@ -3341,12 +3355,12 @@
 	var updateSubscription : Cancellable? // +0xa8 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x1dc810  @objc __RKEntityForceAction.copy(with:)
+	0x1df510  @objc __RKEntityForceAction.copy(with:)
 
 	// Swift methods
-	0x1dbe30  func __RKEntityForceAction.force.getter // getter 
-	0x1dbf00  func __RKEntityForceAction.velocity.getter // getter 
-	0x1dbc30  class func __RKEntityForceAction.__allocating_init(targetEntity:force:velocity:) // init 
+	0x1deb30  func __RKEntityForceAction.force.getter // getter 
+	0x1dec00  func __RKEntityForceAction.velocity.getter // getter 
+	0x1de930  class func __RKEntityForceAction.__allocating_init(targetEntity:force:velocity:) // init 
  }
 
  struct RealityKit.REAngleF {
@@ -3377,7 +3391,7 @@
 	let name : String? // +0x18 (0x10)
 
 	// Swift methods
-	0x1e9e10  func AnimationResource.__coreAsset.getter // getter 
+	0x1ecb10  func AnimationResource.__coreAsset.getter // getter 
  }
 
  struct RealityKit.ARFrame {
@@ -3407,8 +3421,8 @@
 	let coreAsset : OpaquePointer?
 
 	// Swift methods
-	0x1ed0c0  func MeshResource.expectedMaterialCount.getter // getter 
-	0x1ed0e0  func MeshResource.bounds.getter // getter 
+	0x1efdc0  func MeshResource.expectedMaterialCount.getter // getter 
+	0x1efde0  func MeshResource.bounds.getter // getter 
  }
 
  class RealityKit.PlaneMeshResource : MeshResource {
@@ -3449,7 +3463,7 @@
 	let core : OpaquePointer
 
 	// Swift methods
-	0x1ed9f0  class func __MeshCompileOptions.__allocating_init() // init 
+	0x1f06f0  class func __MeshCompileOptions.__allocating_init() // init 
  }
 
  struct RealityKit.CollisionComponent {
@@ -3469,7 +3483,7 @@
 
  class RealityKit.InteractionNotificationsManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-	0x1f14c0  @objc InteractionNotificationsManager.notificationTriggerDidPost(notification:)
+	0x1f4260  @objc InteractionNotificationsManager.notificationTriggerDidPost(notification:)
 
 	// Swift methods
  }
@@ -3502,9 +3516,9 @@
 	var loadService : LoadManager // +0xc0 (0x8)
 
 	// Swift methods
-	0x1fc0d0  func __ServiceLocator.__engineRef.getter // getter 
-	0x1fc100  func __ServiceLocator.__sceneService.getter // getter 
-	0x1fc120  func __ServiceLocator.__assetService.getter // getter 
+	0x1fee70  func __ServiceLocator.__engineRef.getter // getter 
+	0x1feea0  func __ServiceLocator.__sceneService.getter // getter 
+	0x1feec0  func __ServiceLocator.__assetService.getter // getter 
  }
 
  struct RealityKit.Transform {
@@ -3521,9 +3535,9 @@
 	let assetRef : OpaquePointer
 
 	// Swift methods
-	0x1fd820  func AudioResource.inputMode.getter // getter 
-	0x1fd8a0  func AudioResource.inputMode.setter // setter 
-	0x1fd8c0  func AudioResource.inputMode.modify // modifyCoroutine 
+	0x2005c0  func AudioResource.inputMode.getter // getter 
+	0x200640  func AudioResource.inputMode.setter // setter 
+	0x200660  func AudioResource.inputMode.modify // modifyCoroutine 
  }
 
  enum RealityKit.InputMode {
@@ -3540,7 +3554,7 @@
 	let message : String
 
 	// Swift methods
-	0x1fd9a0  func AudioResource.AudioError.debugDescription.getter // getter 
+	0x200740  func AudioResource.AudioError.debugDescription.getter // getter 
  }
 
  class RealityKit.FileNotFound : AudioResource.AudioError {
@@ -3551,12 +3565,12 @@
 
  class RealityKit.AudioFileResource : AudioResource {
 	// Swift methods
-	0x1fdbc0  func AudioFileResource.loadingStrategy.getter // getter 
-	0x1fdbe0  func AudioFileResource.loadingStrategy.setter // setter 
-	0x1fdc00  func AudioFileResource.loadingStrategy.modify // modifyCoroutine 
-	0x1fdcd0  func AudioFileResource.shouldLoop.getter // getter 
-	0x1fdcf0  func AudioFileResource.shouldLoop.setter // setter 
-	0x1fdd10  func AudioFileResource.shouldLoop.modify // modifyCoroutine 
+	0x200960  func AudioFileResource.loadingStrategy.getter // getter 
+	0x200980  func AudioFileResource.loadingStrategy.setter // setter 
+	0x2009a0  func AudioFileResource.loadingStrategy.modify // modifyCoroutine 
+	0x200a70  func AudioFileResource.shouldLoop.getter // getter 
+	0x200a90  func AudioFileResource.shouldLoop.setter // setter 
+	0x200ab0  func AudioFileResource.shouldLoop.modify // modifyCoroutine 
  }
 
  enum RealityKit.LoadingStrategy {
@@ -3611,15 +3625,15 @@
 	var currentAnimation : UInt64?
 
 	// ObjC -> Swift bridged methods
-	0x2039e0  @objc __RKEntityVisibilityAction.copy(with:)
+	0x206780  @objc __RKEntityVisibilityAction.copy(with:)
 
 	// Swift methods
-	0x203480  func __RKEntityVisibilityAction.updateOpacity(to:enabled:) // method 
+	0x206220  func __RKEntityVisibilityAction.updateOpacity(to:enabled:) // method 
  }
 
  class RealityKit.__RKEntityToggleVisibilityAction : __RKEntityVisibilityAction {
 	// ObjC -> Swift bridged methods
-	0x203e00  @objc __RKEntityToggleVisibilityAction.copy(with:)
+	0x206ba0  @objc __RKEntityToggleVisibilityAction.copy(with:)
  }
 
  class RealityKit.__RKEntityShowAction : __RKEntityVisibilityAction {
@@ -3641,11 +3655,11 @@
 	var deadline : Double
 
 	// ObjC -> Swift bridged methods
-	0x2075f0  @objc __RKEntityShowAction.copy(with:)
+	0x20a390  @objc __RKEntityShowAction.copy(with:)
 
 	// Swift methods
-	0x201590  class func __RKEntityShowAction.__allocating_init(targetEntity:duration:distance:ease:easeType:fadeIn:finalOpacity:respectPhysics:physicsAngularCoefficient:physicsLinearCoefficient:animationStyle:buildInAnimationType:) // init 
-	0x204020  func __RKEntityShowAction.updateFadeIn(_:) // method 
+	0x204330  class func __RKEntityShowAction.__allocating_init(targetEntity:duration:distance:ease:easeType:fadeIn:finalOpacity:respectPhysics:physicsAngularCoefficient:physicsLinearCoefficient:animationStyle:buildInAnimationType:) // init 
+	0x206dc0  func __RKEntityShowAction.updateFadeIn(_:) // method 
  }
 
  class RealityKit.__RKEntityHideAction : __RKEntityVisibilityAction {
@@ -3667,12 +3681,12 @@
 	var deadline : Double
 
 	// ObjC -> Swift bridged methods
-	0x20a800  @objc __RKEntityHideAction.copy(with:)
+	0x20d5a0  @objc __RKEntityHideAction.copy(with:)
 
 	// Swift methods
-	0x201770  class func __RKEntityHideAction.__allocating_init(targetEntity:duration:distance:ease:easeType:fadeOut:finalOpacity:respectPhysics:physicsAngularCoefficient:physicsLinearCoefficient:animationStyle:buildOutAnimationType:) // init 
-	0x2077d0  func __RKEntityHideAction.updateFadeOut(_:) // method 
-	0x20a880  func __RKEntityHideAction.createBasicHidePopAnimation(_:scale:currentTranslation:currentOrientation:additive:) // method 
+	0x204510  class func __RKEntityHideAction.__allocating_init(targetEntity:duration:distance:ease:easeType:fadeOut:finalOpacity:respectPhysics:physicsAngularCoefficient:physicsLinearCoefficient:animationStyle:buildOutAnimationType:) // init 
+	0x20a570  func __RKEntityHideAction.updateFadeOut(_:) // method 
+	0x20d620  func __RKEntityHideAction.createBasicHidePopAnimation(_:scale:currentTranslation:currentOrientation:additive:) // method 
  }
 
  class RealityKit.__RKSoundTrigger : __RKEntityTrigger { }
@@ -3690,14 +3704,14 @@
 	var enabled : Bool // +0x28 (0x1)
 
 	// Swift methods
-	0x20e100  func __RKEntityInteraction.trigger.getter // getter 
-	0x20e1c0  func __RKEntityInteraction.action.getter // getter 
-	0x20e270  func __RKEntityInteraction.enabled.getter // getter 
-	0x20e2a0  func __RKEntityInteraction.enabled.setter // setter 
-	0x20e2d0  func __RKEntityInteraction.enabled.modify // modifyCoroutine 
-	0x20dfd0  class func __RKEntityInteraction.__allocating_init(trigger:action:) // init 
-	0x20e350  func __RKEntityInteraction.fire(context:) // method 
-	0x20e620  func __RKEntityInteraction.description.getter // getter 
+	0x210ea0  func __RKEntityInteraction.trigger.getter // getter 
+	0x210f60  func __RKEntityInteraction.action.getter // getter 
+	0x211010  func __RKEntityInteraction.enabled.getter // getter 
+	0x211040  func __RKEntityInteraction.enabled.setter // setter 
+	0x211070  func __RKEntityInteraction.enabled.modify // modifyCoroutine 
+	0x210d70  class func __RKEntityInteraction.__allocating_init(trigger:action:) // init 
+	0x2110f0  func __RKEntityInteraction.fire(context:) // method 
+	0x2113c0  func __RKEntityInteraction.description.getter // getter 
  }
 
  enum __C.CTLineBreakMode { }
@@ -3792,17 +3806,17 @@
 	var orientation : simd_quatf
  }
 
- struct __C.simd_quatf {
-
-	// Properties
-	var vector : SIMD4<Float>
- }
-
  struct __C.RESubscriptionHandle {
 
 	// Properties
 	var a : UInt64
 	var b : UInt64
+ }
+
+ struct __C.simd_quatf {
+
+	// Properties
+	var vector : SIMD4<Float>
  }
 
  class __C.CFError {

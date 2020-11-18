@@ -21,12 +21,14 @@
     UIButton *_optionsButton;
     id<PSPINEntryViewDelegate> _delegate;
     CDUnknownBlockType _passcodeOptionsHandler;
+    NSString *_optionsButtonTitle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PSPINEntryViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *optionsButtonTitle; // @synthesize optionsButtonTitle=_optionsButtonTitle;
 @property (copy, nonatomic) CDUnknownBlockType passcodeOptionsHandler; // @synthesize passcodeOptionsHandler=_passcodeOptionsHandler;
 @property (readonly) Class superclass;
 

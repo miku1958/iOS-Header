@@ -24,6 +24,7 @@
     BOOL _burstPicked;
     BOOL _imgHasThumbnail;
     BOOL _imgHasMetadata;
+    BOOL _useExtensionIcon;
     BOOL _fetchingThumbnail;
     BOOL _fetchingMetadata;
     BOOL _orientationOverridden;
@@ -102,10 +103,10 @@
 @property (copy, nonatomic) NSData *thumbnailData; // @synthesize thumbnailData=_thumbnailData;
 @property (nonatomic) BOOL timeLapse; // @synthesize timeLapse=_timeLapse;
 @property unsigned long long uTime; // @synthesize uTime=_uTime;
+@property (nonatomic) BOOL useExtensionIcon; // @synthesize useExtensionIcon=_useExtensionIcon;
 @property (nonatomic) long long width; // @synthesize width=_width;
 
 - (void)addSidecarFile:(id)arg1;
-- (void)addSubImageDict:(id)arg1;
 - (id)base;
 - (void)cacheThumbnailData:(id)arg1;
 - (long long)compareDate:(id)arg1;
@@ -157,11 +158,10 @@
 - (void)requestThumbnailWithOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setHasMetadata:(BOOL)arg1;
 - (void)setHasThumbnail:(BOOL)arg1;
-- (void)setKeywordPropertiesFromMetadata;
+- (void)setKeywordPropertiesFromDict:(id)arg1;
 - (BOOL)setMetadata:(id)arg1;
 - (void)setSpatialOverCaptureGroupID:(id)arg1;
 - (void)setUTI:(id)arg1;
-- (id)subImageDictForPixelWidth:(id)arg1;
 - (struct CGImage *)thumbnail;
 - (id)thumbnailDataUsingOrientation:(id)arg1 andSourceThumbnailData:(id)arg2;
 - (BOOL)universalFamily;

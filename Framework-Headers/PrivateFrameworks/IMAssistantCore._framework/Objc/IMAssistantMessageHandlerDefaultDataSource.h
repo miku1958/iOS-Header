@@ -27,6 +27,7 @@
 @property (nonatomic) BOOL didRegisterForContactStoreChangeNotifications; // @synthesize didRegisterForContactStoreChangeNotifications=_didRegisterForContactStoreChangeNotifications;
 @property (readonly, nonatomic) NSCache *handleToContactIdentifierCache;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInternationalSpamFilteringEnabled;
 @property (readonly, nonatomic) id<IMLocationManager> locationManagerDataSource;
 @property (readonly, nonatomic) NSCache *spiHandleToPersonCache;
 @property (readonly) Class superclass;
@@ -34,6 +35,8 @@
 - (void).cxx_destruct;
 - (void)contactStoreDidChange:(id)arg1;
 - (void)registerForContactStoreChangeNotificationsIfNecessary;
+- (BOOL)screentimeAllowedToShowChat:(id)arg1;
+- (BOOL)screentimeAllowedToShowConversationWithHandleIDs:(id)arg1;
 
 @end
 

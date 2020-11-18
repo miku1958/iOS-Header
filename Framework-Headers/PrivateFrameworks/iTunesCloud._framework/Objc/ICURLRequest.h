@@ -8,21 +8,21 @@
 
 #import <iTunesCloud/NSProgressReporting-Protocol.h>
 
-@class ICRequestContext, ICURLResponseHandler, NSData, NSDictionary, NSError, NSMutableArray, NSMutableData, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask;
+@class ICRequestContext, ICURLResponseHandler, NSData, NSDictionary, NSError, NSMutableArray, NSMutableData, NSMutableDictionary, NSProgress, NSString, NSURL, NSURLRequest, NSURLResponse, NSURLSessionTask;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface ICURLRequest : NSObject <NSProgressReporting>
 {
     NSMutableArray *_observers;
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    NSMutableDictionary *_maxRetryCounts;
+    NSMutableDictionary *_retryCounts;
+    struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_observerQueue;
     BOOL _prioritize;
     BOOL _cancelOnHTTPErrors;
     BOOL _extendedCertificateValidationRequired;
     NSProgress *_progress;
-    unsigned long long _maxRetryCount;
     ICRequestContext *_requestContext;
-    unsigned long long _retryCount;
     unsigned long long _redirectCount;
     double _retryDelay;
     long long _requestState;
@@ -39,6 +39,7 @@
     NSError *_error;
     NSDictionary *_avDownloadOptions;
     long long _handlingType;
+    NSString *_retryReason;
     double _startTime;
     double _lastUpdateTime;
     double _lastProgressUpdateTime;
@@ -57,7 +58,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double lastProgressUpdateTime; // @synthesize lastProgressUpdateTime=_lastProgressUpdateTime;
 @property (nonatomic) double lastUpdateTime; // @synthesize lastUpdateTime=_lastUpdateTime;
-@property (nonatomic) unsigned long long maxRetryCount; // @synthesize maxRetryCount=_maxRetryCount;
+@property (nonatomic) unsigned long long maxRetryCount;
 @property (nonatomic) BOOL prioritize; // @synthesize prioritize=_prioritize;
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (nonatomic) unsigned long long redirectCount; // @synthesize redirectCount=_redirectCount;
@@ -67,8 +68,9 @@
 @property (strong, nonatomic) NSURL *responseDataURL; // @synthesize responseDataURL=_responseDataURL;
 @property (strong, nonatomic) ICURLResponseHandler *responseHandler; // @synthesize responseHandler=_responseHandler;
 @property (readonly, copy, nonatomic) NSData *resumeData; // @synthesize resumeData=_resumeData;
-@property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
+@property (readonly, nonatomic) unsigned long long retryCount;
 @property (nonatomic) double retryDelay; // @synthesize retryDelay=_retryDelay;
+@property (strong, nonatomic) NSString *retryReason; // @synthesize retryReason=_retryReason;
 @property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSURLSessionTask *task; // @synthesize task=_task;
@@ -77,7 +79,13 @@
 @property (strong, nonatomic) NSURLResponse *urlResponse; // @synthesize urlResponse=_urlResponse;
 @property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *waitSemaphore; // @synthesize waitSemaphore=_waitSemaphore;
 
++ (unsigned long long)_defaultMaxRetryCountForReason:(id)arg1;
 - (void).cxx_destruct;
+- (void)_ensureValidRetryReason:(id)arg1;
+- (void)_incrementRetryCountForReason:(id)arg1;
+- (unsigned long long)_maxRetryCountForReason:(id)arg1;
+- (unsigned long long)_retryCountForReason:(id)arg1;
+- (void)_setMaxRetryCount:(unsigned long long)arg1 forReason:(id)arg2;
 - (void)addObserver:(id)arg1;
 - (void)buildURLRequestWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;

@@ -47,7 +47,7 @@
 - (void).cxx_destruct;
 - (void)_notifyUserInteractionEnabledChanged:(BOOL)arg1 routeType:(unsigned long long)arg2;
 - (void)_notifyVolumeChangedForVolumeController:(id)arg1 volumeControlAvailable:(BOOL)arg2 effectiveVolume:(float)arg3;
-- (id)_packageNameForRoute:(id)arg1 isRTL:(BOOL)arg2;
+- (id)_packageNameForRoute:(id)arg1 isRTL:(BOOL)arg2 isSlider:(BOOL)arg3;
 - (unsigned long long)_routeForVolumeController:(id)arg1;
 - (BOOL)_setupOutputDevicesAndVolumeControllersIfNeeded;
 - (id)_volumePackageNameForRTL:(BOOL)arg1;
@@ -56,7 +56,7 @@
 - (id)currentBluetoothListeningModeForRouteType:(unsigned long long)arg1;
 - (id)glyphStateForVolumeLevel:(double)arg1 packageName:(id)arg2;
 - (id)init;
-- (id)packageNameForRouteType:(unsigned long long)arg1 isRTL:(BOOL)arg2;
+- (id)packageNameForRouteType:(unsigned long long)arg1 isRTL:(BOOL)arg2 isSlider:(BOOL)arg3;
 - (void)removeObserver:(id)arg1;
 - (void)routeDidChangeNotification;
 - (id)routeNameForRouteType:(unsigned long long)arg1;

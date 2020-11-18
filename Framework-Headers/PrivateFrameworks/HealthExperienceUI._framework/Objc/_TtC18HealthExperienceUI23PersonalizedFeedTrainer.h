@@ -15,6 +15,7 @@
     MISSING_TYPE *tapEvents;
     MISSING_TYPE *sessionWasBackgrounded;
     MISSING_TYPE *delegate;
+    MISSING_TYPE *dwellPolicy;
 }
 
 - (void)appDidBecomeActive;

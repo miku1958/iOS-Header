@@ -13,6 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilitySpeakThisViews;
 - (BOOL)accessibilityPerformEscape;
 - (void)setShowingSidebar:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sidebarDimmingViewDismiss:(id)arg1;

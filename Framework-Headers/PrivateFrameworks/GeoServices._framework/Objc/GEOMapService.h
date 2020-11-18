@@ -40,7 +40,7 @@
 - (id)_searchable_ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 floor:(int)arg2 includeEntryPoints:(BOOL)arg3 shiftLocationsIfNeeded:(BOOL)arg4 preserveOriginalLocation:(BOOL)arg5 traits:(id)arg6;
 - (id)_searchable_ticketForReverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 includeEntryPoints:(BOOL)arg2 shiftLocationsIfNeeded:(BOOL)arg3 preserveOriginalLocation:(BOOL)arg4 traits:(id)arg5;
 - (void)_sendInvalidateDataToSiriAndParSec;
-- (id)_ticketForAutocompleteFragment:(id)arg1 type:(int)arg2 traits:(id)arg3 filters:(id)arg4 retainedSearch:(id)arg5 tappedQuerySuggestion:(id)arg6;
+- (id)_ticketForAutocompleteFragment:(id)arg1 type:(int)arg2 traits:(id)arg3 filters:(id)arg4 retainedSearch:(id)arg5 tappedQuerySuggestion:(id)arg6 sessionData:(id)arg7;
 - (id)_ticketForBatchReverseGeocodeLocations:(id)arg1 shiftLocationsIfNeeded:(BOOL)arg2 additionalPlaceTypes:(int *)arg3 additionalPlaceTypesCount:(unsigned int)arg4 traits:(id)arg5;
 - (id)_ticketForRefreshingHandle:(id)arg1 traits:(id)arg2;
 - (void)dealloc;
@@ -83,11 +83,11 @@
 - (id)ticketForIdentifiers:(id)arg1 includeETA:(BOOL)arg2 traits:(id)arg3;
 - (id)ticketForIdentifiers:(id)arg1 resultProviderID:(int)arg2 contentProvider:(id)arg3 traits:(id)arg4;
 - (id)ticketForIdentifiers:(id)arg1 traits:(id)arg2;
-- (id)ticketForInterleavedAutoCompletePoiAddressOnly:(id)arg1 traits:(id)arg2;
-- (id)ticketForInterleavedAutoCompleteSearchFragment:(id)arg1 filters:(id)arg2 traits:(id)arg3;
-- (id)ticketForInterleavedAutoCompleteWithBrowseSearchFragment:(id)arg1 filters:(id)arg2 retainedSearch:(id)arg3 tappedQuerySuggestion:(id)arg4 traits:(id)arg5;
-- (id)ticketForInterleavedInstantSearchFragment:(id)arg1 filters:(id)arg2 traits:(id)arg3;
-- (id)ticketForInterleavedLocalitiesAndLandmarksSearchFragment:(id)arg1 traits:(id)arg2;
+- (id)ticketForInterleavedAutoCompletePoiAddressOnly:(id)arg1 sessionData:(id)arg2 traits:(id)arg3;
+- (id)ticketForInterleavedAutoCompleteSearchFragment:(id)arg1 filters:(id)arg2 sessionData:(id)arg3 traits:(id)arg4;
+- (id)ticketForInterleavedAutoCompleteWithBrowseSearchFragment:(id)arg1 filters:(id)arg2 retainedSearch:(id)arg3 tappedQuerySuggestion:(id)arg4 sessionData:(id)arg5 traits:(id)arg6;
+- (id)ticketForInterleavedInstantSearchFragment:(id)arg1 filters:(id)arg2 sessionData:(id)arg3 traits:(id)arg4;
+- (id)ticketForInterleavedLocalitiesAndLandmarksSearchFragment:(id)arg1 sessionData:(id)arg2 traits:(id)arg3;
 - (id)ticketForMUIDs:(id)arg1 includeETA:(BOOL)arg2 traits:(id)arg3;
 - (id)ticketForMUIDs:(id)arg1 resultProviderID:(int)arg2 contentProvider:(id)arg3 traits:(id)arg4;
 - (id)ticketForMUIDs:(id)arg1 traits:(id)arg2;
@@ -121,9 +121,9 @@
 - (id)ticketForSearchQuery:(id)arg1 filters:(id)arg2 completionItem:(id)arg3 retainedSearch:(id)arg4 maxResults:(unsigned int)arg5 suppressResultsRequiringAttribution:(BOOL)arg6 traits:(id)arg7;
 - (id)ticketForSearchQuery:(id)arg1 filters:(id)arg2 maxResults:(unsigned int)arg3 suppressResultsRequiringAttribution:(BOOL)arg4 traits:(id)arg5;
 - (id)ticketForSearchQuery:(id)arg1 filters:(id)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
-- (id)ticketForSectionedAutoCompleteSearchFragment:(id)arg1 filters:(id)arg2 traits:(id)arg3;
-- (id)ticketForSectionedInstantSearchFragment:(id)arg1 filters:(id)arg2 traits:(id)arg3;
-- (id)ticketForSectionedLocalitiesAndLandmarksSearchFragment:(id)arg1 traits:(id)arg2;
+- (id)ticketForSectionedAutoCompleteSearchFragment:(id)arg1 filters:(id)arg2 sessionData:(id)arg3 traits:(id)arg4;
+- (id)ticketForSectionedInstantSearchFragment:(id)arg1 filters:(id)arg2 sessionData:(id)arg3 traits:(id)arg4;
+- (id)ticketForSectionedLocalitiesAndLandmarksSearchFragment:(id)arg1 sessionData:(id)arg2 traits:(id)arg3;
 - (id)ticketForSpatialEventLookupParameters:(id)arg1 traits:(id)arg2;
 - (id)ticketForSpatialLookupParameters:(id)arg1 traits:(id)arg2;
 - (id)ticketForSpatialPlaceLookupParameters:(id)arg1 traits:(id)arg2;

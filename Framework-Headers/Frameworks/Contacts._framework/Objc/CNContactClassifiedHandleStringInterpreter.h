@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     CNHandleStringClassification *_classification;
     NSMutableArray *_emailAddressesImpl;
     NSMutableArray *_phoneNumbersImpl;
-    NSMutableArray *_postalAddressesImpl;
     NSMutableArray *_unconvertableHandles;
 }
 
@@ -25,8 +24,6 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasBeenInterpreted; // @synthesize hasBeenInterpreted=_hasBeenInterpreted;
 @property (readonly) NSArray *phoneNumbers;
 @property (readonly, nonatomic) NSMutableArray *phoneNumbersImpl; // @synthesize phoneNumbersImpl=_phoneNumbersImpl;
-@property (readonly) NSArray *postalAddresses;
-@property (readonly, nonatomic) NSMutableArray *postalAddressesImpl; // @synthesize postalAddressesImpl=_postalAddressesImpl;
 @property (readonly, nonatomic) NSMutableArray *unconvertableHandles; // @synthesize unconvertableHandles=_unconvertableHandles;
 
 - (void).cxx_destruct;
@@ -35,7 +32,6 @@ __attribute__((visibility("hidden")))
 - (id)initWithHandleStringClassification:(id)arg1;
 - (void)interpretEmailAddresses;
 - (void)interpretPhoneNumbers;
-- (void)interpretPostalAddresses;
 - (void)interpretUnknownsAsEmailAddresses;
 - (void)interpretValues;
 

@@ -39,12 +39,15 @@ __attribute__((visibility("hidden")))
 - (long long)_closestRowToDate:(id)arg1;
 - (void)_dataProviderDidUpdate;
 - (BOOL)_dataProviderEnabled;
-- (id)_defaultCellForTableView:(id)arg1 cellStyle:(long long)arg2 indexPath:(id)arg3 text:(id)arg4 secondaryText:(id)arg5 icon:(id)arg6;
+- (id)_defaultCellForTableView:(id)arg1 cellStyle:(long long)arg2 indexPath:(id)arg3 object:(id)arg4;
 - (void)_deleteAllButtonTapped:(id)arg1;
 - (void)_deleteAllWithOptions:(unsigned long long)arg1;
 - (void)_deleteAssociatedSamplesConfirmationPlural:(BOOL)arg1 deleteBlock:(CDUnknownBlockType)arg2;
 - (void)_displayTypeStringsChanged:(id)arg1;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 fetchError:(id)arg4;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
 - (BOOL)_hasSpinnerRowRowAtIndexPath:(id)arg1;
+- (void)_loadIconForSourceObject:(id)arg1 onCell:(id)arg2 ofTableView:(id)arg3;
 - (void)_localeDidChange:(id)arg1;
 - (id)_quantityCellForTableView:(id)arg1 dataObjectSource:(id)arg2;
 - (void)_reloadAllData;
@@ -53,7 +56,6 @@ __attribute__((visibility("hidden")))
 - (id)_sampleAtIndexPath:(id)arg1;
 - (id)_sampleTypesForDeleteAll;
 - (BOOL)_shouldShowSpinnerRowInSection:(long long)arg1;
-- (id)_sourceIconForObject:(id)arg1;
 - (void)_updateActivityForViewDidAppear;
 - (void)_updateRightBarButtonItems;
 - (void)applyChangeActivity:(id)arg1;

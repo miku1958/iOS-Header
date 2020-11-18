@@ -6,23 +6,26 @@
 
 #import <objc/NSObject.h>
 
+@class NSDictionary;
 @protocol OS_dispatch_queue;
 
 @interface HMDCameraRecordingSessionRetryContext : NSObject
 {
     double _retryInterval;
+    NSDictionary *_homePresenceByPairingIdentity;
     double _maxRetryInterval;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
+@property (readonly) NSDictionary *homePresenceByPairingIdentity; // @synthesize homePresenceByPairingIdentity=_homePresenceByPairingIdentity;
 @property (readonly) double maxRetryInterval; // @synthesize maxRetryInterval=_maxRetryInterval;
 @property double retryInterval; // @synthesize retryInterval=_retryInterval;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
 - (void)computeNextRetryInterval;
-- (id)initWithWorkQueue:(id)arg1;
-- (id)initWithWorkQueue:(id)arg1 preferences:(id)arg2;
+- (id)initWithWorkQueue:(id)arg1 homePresenceByPairingIdentity:(id)arg2;
+- (id)initWithWorkQueue:(id)arg1 homePresenceByPairingIdentity:(id)arg2 preferences:(id)arg3;
 
 @end
 

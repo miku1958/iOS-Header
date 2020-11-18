@@ -8,22 +8,24 @@
 
 #import <GeoServices/GEOCompletion-Protocol.h>
 
-@class NSArray, NSString;
+@class GEOAutocompleteSessionData, NSArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface _GEOPlaceSearchCompletion : NSObject <GEOCompletion>
 {
     NSArray *_groups;
+    GEOAutocompleteSessionData *_sessionData;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *groups; // @synthesize groups=_groups;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) GEOAutocompleteSessionData *sessionData; // @synthesize sessionData=_sessionData;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)initWithResponse:(id)arg1 traits:(id)arg2 mapItems:(id)arg3;
+- (id)initWithResponse:(id)arg1 traits:(id)arg2 sessionData:(id)arg3 mapItems:(id)arg4;
 
 @end
 

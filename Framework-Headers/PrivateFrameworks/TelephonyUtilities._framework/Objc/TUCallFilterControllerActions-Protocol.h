@@ -9,10 +9,11 @@
 @class NSDictionary, NSSet, NSString, TUHandle;
 
 @protocol TUCallFilterControllerActions <NSObject>
-- (BOOL)containsRestrictedHandle:(TUHandle *)arg1 forBundleIdentifier:(NSString *)arg2;
+- (BOOL)containsRestrictedHandle:(TUHandle *)arg1 forBundleIdentifier:(NSString *)arg2 performSynchronously:(BOOL)arg3;
+- (unsigned long long)filterStatusForAddresses:(NSSet *)arg1 forBundleIdentifier:(NSString *)arg2;
 - (BOOL)isUnknownAddress:(NSString *)arg1 normalizedAddress:(NSString *)arg2 forBundleIdentifier:(NSString *)arg3;
 - (NSDictionary *)policyForAddresses:(NSSet *)arg1 forBundleIdentifier:(NSString *)arg2;
-- (BOOL)shouldRestrictAddresses:(NSSet *)arg1 forBundleIdentifier:(NSString *)arg2;
+- (BOOL)shouldRestrictAddresses:(NSSet *)arg1 forBundleIdentifier:(NSString *)arg2 performSynchronously:(BOOL)arg3;
 - (BOOL)willRestrictAddresses:(NSSet *)arg1 forBundleIdentifier:(NSString *)arg2;
 @end
 

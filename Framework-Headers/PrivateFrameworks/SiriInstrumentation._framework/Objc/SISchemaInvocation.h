@@ -6,29 +6,23 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaInvocation-Protocol.h>
+@class NSData, SISchemaViewContainer;
 
-@class NSData, NSString, SISchemaViewContainer;
-
-@interface SISchemaInvocation : PBCodable <SISchemaInvocation, NSSecureCoding>
+@interface SISchemaInvocation : PBCodable
 {
     int _invocationAction;
     int _invocationSource;
     SISchemaViewContainer *_viewContainer;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) int invocationAction; // @synthesize invocationAction=_invocationAction;
 @property (nonatomic) int invocationSource; // @synthesize invocationSource=_invocationSource;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

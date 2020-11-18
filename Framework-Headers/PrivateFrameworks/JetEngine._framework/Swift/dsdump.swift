@@ -551,11 +551,11 @@
 	var delegate : ApplicationStatePresenterDelegate // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x37610  @objc ApplicationStatePresenter.applicationDidBecomeActive <stripped>
-	0x376b0  @objc ApplicationStatePresenter.applicationDidResignActive <stripped>
+	0x37620  @objc ApplicationStatePresenter.applicationDidBecomeActive <stripped>
+	0x376c0  @objc ApplicationStatePresenter.applicationDidResignActive <stripped>
 
 	// Swift methods
-	0x37020  class func ApplicationStatePresenter.__allocating_init(isEnabled:) // init 
+	0x37030  class func ApplicationStatePresenter.__allocating_init(isEnabled:) // init 
  }
 
  class JetEngine.JSWeakReference : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -565,7 +565,7 @@
 	let weakValue : UnsafeRawPointer // +0x18 (0x8)
 
 	// Swift methods
-	0x37750  class func JSWeakReference.__allocating_init(_:) // init 
+	0x37760  class func JSWeakReference.__allocating_init(_:) // init 
  }
 
  struct JetEngine.SyncTaskScheduler: TaskScheduler { }
@@ -639,17 +639,17 @@
 	let backing : AMSBagProtocol // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x4b3b0  @objc MescalBagContract.mescalCertificateURL <stripped>
-	0x4b410  @objc MescalBagContract.mescalSetupURL <stripped>
-	0x4b470  @objc MescalBagContract.mescalPrimingURL <stripped>
-	0x4b4d0  @objc MescalBagContract.mescalSignedActions <stripped>
-	0x4b530  @objc MescalBagContract.mescalSignSapRequests <stripped>
-	0x4b590  @objc MescalBagContract.mescalSignSapResponses <stripped>
-	0x4b720  @objc MescalBagContract.init <stripped>
-	0x4b7a0  @objc MescalBagContract..cxx_destruct <stripped>
+	0x4b3c0  @objc MescalBagContract.mescalCertificateURL <stripped>
+	0x4b420  @objc MescalBagContract.mescalSetupURL <stripped>
+	0x4b480  @objc MescalBagContract.mescalPrimingURL <stripped>
+	0x4b4e0  @objc MescalBagContract.mescalSignedActions <stripped>
+	0x4b540  @objc MescalBagContract.mescalSignSapRequests <stripped>
+	0x4b5a0  @objc MescalBagContract.mescalSignSapResponses <stripped>
+	0x4b730  @objc MescalBagContract.init <stripped>
+	0x4b7b0  @objc MescalBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4b2b0  class func MescalBagContract.__allocating_init(_:) // init 
+	0x4b2c0  class func MescalBagContract.__allocating_init(_:) // init 
  }
 
  class JetEngine.NestedPreferences : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -696,7 +696,7 @@
 	var rawMessages : Message // +0x18 (0x8)
 
 	// Swift methods
-	0x4e4a0  class func ReplayLogger.__allocating_init() // init 
+	0x4e4b0  class func ReplayLogger.__allocating_init() // init 
  }
 
  struct JetEngine.Message {
@@ -737,10 +737,10 @@
 	var unlockedActiveiTunesAccount : ACAccount? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x51320  @objc Accounts.accountStoreDidChange: <stripped>
+	0x51330  @objc Accounts.accountStoreDidChange: <stripped>
 
 	// Swift methods
-	0x50e90  class func Unstable.Accounts.__allocating_init(_:) // init 
+	0x50ea0  class func Unstable.Accounts.__allocating_init(_:) // init 
  }
 
  class JetEngine.Atomic {
@@ -756,7 +756,7 @@
 	let managedValue : JSManagedValue // +0x10 (0x8)
 
 	// Swift methods
-	0x53050  class func JSConditionalReference.__allocating_init(value:ownedBy:) // init 
+	0x53060  class func JSConditionalReference.__allocating_init(value:ownedBy:) // init 
  }
 
  enum JetEngine.Result {
@@ -791,16 +791,16 @@
 	var bag : Bag // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x58560  @objc JSBagObject.registerBagKeys: <stripped>
-	0x58c20  @objc JSBagObject.string: <stripped>
-	0x59260  @objc JSBagObject.double: <stripped>
-	0x598b0  @objc JSBagObject.integer: <stripped>
-	0x59ef0  @objc JSBagObject.boolean: <stripped>
-	0x5a560  @objc JSBagObject.array: <stripped>
-	0x5abe0  @objc JSBagObject.dictionary: <stripped>
-	0x5b370  @objc JSBagObject.url: <stripped>
-	0x5b4a0  @objc JSBagObject.init <stripped>
-	0x5b520  @objc JSBagObject..cxx_destruct <stripped>
+	0x58570  @objc JSBagObject.registerBagKeys: <stripped>
+	0x58c30  @objc JSBagObject.string: <stripped>
+	0x59270  @objc JSBagObject.double: <stripped>
+	0x598c0  @objc JSBagObject.integer: <stripped>
+	0x59f00  @objc JSBagObject.boolean: <stripped>
+	0x5a570  @objc JSBagObject.array: <stripped>
+	0x5abf0  @objc JSBagObject.dictionary: <stripped>
+	0x5b380  @objc JSBagObject.url: <stripped>
+	0x5b4b0  @objc JSBagObject.init <stripped>
+	0x5b530  @objc JSBagObject..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -873,10 +873,10 @@
 
  class JetEngine.JSRandomObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x625d0  @objc JSRandomObject.nextBoolean <stripped>
-	0x62630  @objc JSRandomObject.nextNumber <stripped>
-	0x62670  @objc JSRandomObject.nextUUID <stripped>
-	0x62710  @objc JSRandomObject.init <stripped>
+	0x625e0  @objc JSRandomObject.nextBoolean <stripped>
+	0x62640  @objc JSRandomObject.nextNumber <stripped>
+	0x62680  @objc JSRandomObject.nextUUID <stripped>
+	0x62720  @objc JSRandomObject.init <stripped>
  }
 
  struct JetEngine.ActionTypes {
@@ -920,7 +920,7 @@
 	var storage : [String : Any] // +0x10 (0x8)
 
 	// Swift methods
-	0x66800  class func TransientPreferences.__allocating_init() // init 
+	0x66810  class func TransientPreferences.__allocating_init() // init 
  }
 
  class JetEngine.OverriddenAMSBag : AMSSnapshotBag /System/Library/PrivateFrameworks/AppleMediaServices.framework/AppleMediaServices {
@@ -930,22 +930,22 @@
 	let overrides : [AMSBagKey : AnyAMSBagValue] // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x67330  @objc OverriddenAMSBag.dealloc <stripped>
-	0x67500  @objc OverriddenAMSBag.forwardSnapshotBagExpiredValueAccessed: <stripped>
-	0x675a0  @objc OverriddenAMSBag.isExpired <stripped>
-	0x675d0  @objc OverriddenAMSBag.expirationDate <stripped>
-	0x67720  @objc OverriddenAMSBag.profile <stripped>
-	0x67740  @objc OverriddenAMSBag.profileVersion <stripped>
-	0x67800  @objc OverriddenAMSBag.arrayForKey: <stripped>
-	0x67820  @objc OverriddenAMSBag.boolForKey: <stripped>
-	0x678b0  @objc OverriddenAMSBag.doubleForKey: <stripped>
-	0x678d0  @objc OverriddenAMSBag.integerForKey: <stripped>
-	0x678f0  @objc OverriddenAMSBag.stringForKey: <stripped>
-	0x67910  @objc OverriddenAMSBag.URLForKey: <stripped>
-	0x679d0  @objc OverriddenAMSBag.dictionaryForKey: <stripped>
-	0x67bc0  @objc OverriddenAMSBag.createSnapshotWithCompletion: <stripped>
-	0x67c30  @objc OverriddenAMSBag.init <stripped>
-	0x673e0  @objc OverriddenAMSBag..cxx_destruct <stripped>
+	0x67340  @objc OverriddenAMSBag.dealloc <stripped>
+	0x67510  @objc OverriddenAMSBag.forwardSnapshotBagExpiredValueAccessed: <stripped>
+	0x675b0  @objc OverriddenAMSBag.isExpired <stripped>
+	0x675e0  @objc OverriddenAMSBag.expirationDate <stripped>
+	0x67730  @objc OverriddenAMSBag.profile <stripped>
+	0x67750  @objc OverriddenAMSBag.profileVersion <stripped>
+	0x67810  @objc OverriddenAMSBag.arrayForKey: <stripped>
+	0x67830  @objc OverriddenAMSBag.boolForKey: <stripped>
+	0x678c0  @objc OverriddenAMSBag.doubleForKey: <stripped>
+	0x678e0  @objc OverriddenAMSBag.integerForKey: <stripped>
+	0x67900  @objc OverriddenAMSBag.stringForKey: <stripped>
+	0x67920  @objc OverriddenAMSBag.URLForKey: <stripped>
+	0x679e0  @objc OverriddenAMSBag.dictionaryForKey: <stripped>
+	0x67bd0  @objc OverriddenAMSBag.createSnapshotWithCompletion: <stripped>
+	0x67c40  @objc OverriddenAMSBag.init <stripped>
+	0x673f0  @objc OverriddenAMSBag..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -972,9 +972,9 @@
 	let requestInterceptor : JSNetworkRequestInterceptor? // +0x20 (0x28)
 
 	// ObjC -> Swift bridged methods
-	0x69fa0  @objc JSNetworkObject.fetch: <stripped>
-	0x6a000  @objc JSNetworkObject.init <stripped>
-	0x6a080  @objc JSNetworkObject..cxx_destruct <stripped>
+	0x69fb0  @objc JSNetworkObject.fetch: <stripped>
+	0x6a010  @objc JSNetworkObject.init <stripped>
+	0x6a090  @objc JSNetworkObject..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1026,9 +1026,9 @@
 	let process : AMSProcessInfo // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x73290  @objc JSPlatformObject.lookup: <stripped>
-	0x732f0  @objc JSPlatformObject.init <stripped>
-	0x73370  @objc JSPlatformObject..cxx_destruct <stripped>
+	0x732a0  @objc JSPlatformObject.lookup: <stripped>
+	0x73300  @objc JSPlatformObject.init <stripped>
+	0x73380  @objc JSPlatformObject..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1040,21 +1040,21 @@
 	var name : String // +0x18 (0x10)
 
 	// Swift methods
-	0x73f30  class func BaseObjectGraph.__allocating_init(name:dependencies:) // init 
-	0x74120  func BaseObjectGraph.adding(allDependenciesOf:) // method 
-	0x742a0  func BaseObjectGraph.adding<A>(allDependencies:) // method 
-	0x74420  func BaseObjectGraph.adding(dependency:) // method 
-	0x745b0  func BaseObjectGraph.adding(uniqueDependenciesOf:) // method 
-	0x74770  func BaseObjectGraph.subtracting<A>(dependenciesFor:) // method 
-	0x74a90  func BaseObjectGraph.subtracting(dependencyFor:) // method 
-	0x74c30  func BaseObjectGraph.subtracting<A>(allDependenciesExcept:) // method 
-	0x74f50  func BaseObjectGraph.availableCandidates.getter // getter 
-	0x75400  func BaseObjectGraph.errorDescription<A>(forNoMemberSatisfying:) // method 
-	0x75880  func BaseObjectGraph.noMemberFound<A>(toSatisfy:) // method 
-	0x75930  func BaseObjectGraph.name.getter // getter 
-	0x75970  func BaseObjectGraph.name.setter // setter 
-	0x759b0  func BaseObjectGraph.name.modify // modifyCoroutine 
-	0x759f0  func BaseObjectGraph.description.getter // getter 
+	0x73f40  class func BaseObjectGraph.__allocating_init(name:dependencies:) // init 
+	0x74130  func BaseObjectGraph.adding(allDependenciesOf:) // method 
+	0x742b0  func BaseObjectGraph.adding<A>(allDependencies:) // method 
+	0x74430  func BaseObjectGraph.adding(dependency:) // method 
+	0x745c0  func BaseObjectGraph.adding(uniqueDependenciesOf:) // method 
+	0x74780  func BaseObjectGraph.subtracting<A>(dependenciesFor:) // method 
+	0x74aa0  func BaseObjectGraph.subtracting(dependencyFor:) // method 
+	0x74c40  func BaseObjectGraph.subtracting<A>(allDependenciesExcept:) // method 
+	0x74f60  func BaseObjectGraph.availableCandidates.getter // getter 
+	0x75410  func BaseObjectGraph.errorDescription<A>(forNoMemberSatisfying:) // method 
+	0x75890  func BaseObjectGraph.noMemberFound<A>(toSatisfy:) // method 
+	0x75940  func BaseObjectGraph.name.getter // getter 
+	0x75980  func BaseObjectGraph.name.setter // setter 
+	0x759c0  func BaseObjectGraph.name.modify // modifyCoroutine 
+	0x75a00  func BaseObjectGraph.description.getter // getter 
  }
 
  enum JetEngine.ValueOverride {
@@ -1130,11 +1130,11 @@
 	let backing : AMSBagProtocol // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x7f330  @objc LookupBagContract.unpersonalizedLookupURL <stripped>
-	0x7f4a0  @objc LookupBagContract..cxx_destruct <stripped>
+	0x7f340  @objc LookupBagContract.unpersonalizedLookupURL <stripped>
+	0x7f4b0  @objc LookupBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7f3c0  func LookupBagContract.unpersonalizedLookupURL.getter // getter 
+	0x7f3d0  func LookupBagContract.unpersonalizedLookupURL.getter // getter 
  }
 
  struct JetEngine.MutableStateRef {
@@ -1186,7 +1186,7 @@
 	let weakOwner : JSWeakReference // +0x20 (0x8)
 
 	// Swift methods
-	0x80f10  class func JSBoundReference.__allocating_init(value:ownedBy:) // init 
+	0x80f20  class func JSBoundReference.__allocating_init(value:ownedBy:) // init 
  }
 
  class JetEngine.JSNotifyObject : NSObject /usr/lib/libobjc.A.dylib {
@@ -1195,11 +1195,11 @@
 	var observersByName : [String : [JSCallable]] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x81ff0  @objc JSNotifyObject.init <stripped>
-	0x82700  @objc JSNotifyObject.register:: <stripped>
-	0x82ab0  @objc JSNotifyObject.unregister:: <stripped>
-	0x82b50  @objc JSNotifyObject.post: <stripped>
-	0x82bf0  @objc JSNotifyObject..cxx_destruct <stripped>
+	0x82000  @objc JSNotifyObject.init <stripped>
+	0x82710  @objc JSNotifyObject.register:: <stripped>
+	0x82ac0  @objc JSNotifyObject.unregister:: <stripped>
+	0x82b60  @objc JSNotifyObject.post: <stripped>
+	0x82c00  @objc JSNotifyObject..cxx_destruct <stripped>
  }
 
  class JetEngine.DeferredLazy {
@@ -1219,9 +1219,9 @@
 
  class JetEngine.JSCryptoObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x89350  @objc JSCryptoObject.supports: <stripped>
-	0x89620  @objc JSCryptoObject.hash:: <stripped>
-	0x89690  @objc JSCryptoObject.init <stripped>
+	0x89360  @objc JSCryptoObject.supports: <stripped>
+	0x89630  @objc JSCryptoObject.hash:: <stripped>
+	0x896a0  @objc JSCryptoObject.init <stripped>
  }
 
  struct JetEngine.JSSource {
@@ -1240,7 +1240,7 @@
 	var pageMetrics : PageMetrics? // +0x48 (0x8)
 
 	// Swift methods
-	0x8ac70  class func PageMetricsPresenter.__allocating_init(eventDispatcher:pageMetrics:) // init 
+	0x8ac80  class func PageMetricsPresenter.__allocating_init(eventDispatcher:pageMetrics:) // init 
  }
 
  struct JetEngine.JSONDictionary {
@@ -1251,14 +1251,14 @@
 
  class JetEngine.JSHostObject : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x8d620  @objc JSHostObject.platform <stripped>
-	0x8d650  @objc JSHostObject.osBuild <stripped>
-	0x8d730  @objc JSHostObject.deviceModel <stripped>
-	0x8d750  @objc JSHostObject.deviceLocalizedModel <stripped>
-	0x8d830  @objc JSHostObject.clientIdentifier <stripped>
-	0x8d910  @objc JSHostObject.clientVersion <stripped>
-	0x8d950  @objc JSHostObject.isOSAtLeast::: <stripped>
-	0x8da80  @objc JSHostObject.init <stripped>
+	0x8d630  @objc JSHostObject.platform <stripped>
+	0x8d660  @objc JSHostObject.osBuild <stripped>
+	0x8d740  @objc JSHostObject.deviceModel <stripped>
+	0x8d760  @objc JSHostObject.deviceLocalizedModel <stripped>
+	0x8d840  @objc JSHostObject.clientIdentifier <stripped>
+	0x8d920  @objc JSHostObject.clientVersion <stripped>
+	0x8d960  @objc JSHostObject.isOSAtLeast::: <stripped>
+	0x8da90  @objc JSHostObject.init <stripped>
  }
 
  struct JetEngine.SwiftLogger {
@@ -1273,11 +1273,11 @@
 	let backing : AMSBagProtocol // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8e410  @objc FamilyInfoLookupBagContract.familyInfoURL <stripped>
-	0x8e560  @objc FamilyInfoLookupBagContract..cxx_destruct <stripped>
+	0x8e420  @objc FamilyInfoLookupBagContract.familyInfoURL <stripped>
+	0x8e570  @objc FamilyInfoLookupBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0x8e490  func FamilyInfoLookupBagContract.familyInfoURL.getter // getter 
+	0x8e4a0  func FamilyInfoLookupBagContract.familyInfoURL.getter // getter 
  }
 
  struct JetEngine.JSTypedArray {
@@ -1310,16 +1310,16 @@
 	var tasks : [()] // +0x38 (0x8)
 
 	// Swift methods
-	0x90780  class func RunLoopWorkerThread.__allocating_init(name:) // init 
-	0x90a90  func RunLoopWorkerThread.isRunning.getter // getter 
-	0x90b60  func RunLoopWorkerThread.start() // method 
-	0x90e50  func RunLoopWorkerThread.stop() // method 
-	0x91070  func <stripped> // method 
-	0x917e0  func RunLoopWorkerThread.scheduleAfter(delay:execute:) // method 
-	0x92080  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
-	0x92470  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
-	0x92590  func RunLoopWorkerThread.schedule(task:) // method 
-	0x92790  func RunLoopWorkerThread.description.getter // getter 
+	0x90790  class func RunLoopWorkerThread.__allocating_init(name:) // init 
+	0x90aa0  func RunLoopWorkerThread.isRunning.getter // getter 
+	0x90b70  func RunLoopWorkerThread.start() // method 
+	0x90e60  func RunLoopWorkerThread.stop() // method 
+	0x91080  func <stripped> // method 
+	0x917f0  func RunLoopWorkerThread.scheduleAfter(delay:execute:) // method 
+	0x92090  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
+	0x92480  func RunLoopWorkerThread.scheduleSync<A>(task:) // method 
+	0x925a0  func RunLoopWorkerThread.schedule(task:) // method 
+	0x927a0  func RunLoopWorkerThread.description.getter // getter 
  }
 
  struct JetEngine.PendingTask {
@@ -1339,7 +1339,7 @@
 	let sampling : MetricsSamplingLottery // +0x40 (0x30)
 
 	// Swift methods
-	0x93cc0  class func MetricsLogger.__allocating_init(loggerName:configuration:) // init 
+	0x93cd0  class func MetricsLogger.__allocating_init(loggerName:configuration:) // init 
  }
 
  struct JetEngine.Configuration {
@@ -1358,36 +1358,36 @@
 	let mescalContract : AMSMescalBagContract // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x964f0  @objc URLBagContract.guidRegexes <stripped>
-	0x96520  @objc URLBagContract.guidSchemes <stripped>
-	0x96550  @objc URLBagContract.storefrontSuffix <stripped>
-	0x96580  @objc URLBagContract.trustedDomains <stripped>
-	0x965b0  @objc URLBagContract.metricsContract <stripped>
-	0x965d0  @objc URLBagContract.mescalContract <stripped>
-	0x96620  @objc URLBagContract.TLSSamplingPercentage <stripped>
-	0x96650  @objc URLBagContract.TLSSamplingSessionDuration <stripped>
-	0x96680  @objc URLBagContract.TFOSamplingPercentage <stripped>
-	0x966b0  @objc URLBagContract.TFOSamplingSessionDuration <stripped>
-	0x966e0  @objc URLBagContract.apsEnabledPatterns <stripped>
-	0x96710  @objc URLBagContract.apsSamplingPercent <stripped>
-	0x96740  @objc URLBagContract.metricsURL <stripped>
-	0x96770  @objc URLBagContract.metricsDictionary <stripped>
-	0x96870  @objc URLBagContract.init <stripped>
-	0x968f0  @objc URLBagContract..cxx_destruct <stripped>
+	0x96500  @objc URLBagContract.guidRegexes <stripped>
+	0x96530  @objc URLBagContract.guidSchemes <stripped>
+	0x96560  @objc URLBagContract.storefrontSuffix <stripped>
+	0x96590  @objc URLBagContract.trustedDomains <stripped>
+	0x965c0  @objc URLBagContract.metricsContract <stripped>
+	0x965e0  @objc URLBagContract.mescalContract <stripped>
+	0x96630  @objc URLBagContract.TLSSamplingPercentage <stripped>
+	0x96660  @objc URLBagContract.TLSSamplingSessionDuration <stripped>
+	0x96690  @objc URLBagContract.TFOSamplingPercentage <stripped>
+	0x966c0  @objc URLBagContract.TFOSamplingSessionDuration <stripped>
+	0x966f0  @objc URLBagContract.apsEnabledPatterns <stripped>
+	0x96720  @objc URLBagContract.apsSamplingPercent <stripped>
+	0x96750  @objc URLBagContract.metricsURL <stripped>
+	0x96780  @objc URLBagContract.metricsDictionary <stripped>
+	0x96880  @objc URLBagContract.init <stripped>
+	0x96900  @objc URLBagContract..cxx_destruct <stripped>
 
 	// Swift methods
-	0x96420  class func URLBagContract.__allocating_init(_:) // init 
-	0x96160  func URLBagContract.guidRegexes.getter // getter 
-	0x96190  func URLBagContract.guidSchemes.getter // getter 
-	0x961c0  func URLBagContract.storefrontSuffix.getter // getter 
-	0x961f0  func URLBagContract.trustedDomains.getter // getter 
-	0x96220  func URLBagContract.metricsContract.getter // getter 
-	0x96240  func URLBagContract.tlsSamplingPercentage.getter // getter 
-	0x96270  func URLBagContract.tlsSamplingSessionDuration.getter // getter 
-	0x962a0  func URLBagContract.tfoSamplingPercentage.getter // getter 
-	0x962d0  func URLBagContract.tfoSamplingSessionDuration.getter // getter 
-	0x96300  func URLBagContract.apsEnabledPatterns.getter // getter 
-	0x96330  func URLBagContract.apsSamplingPercent.getter // getter 
-	0x96360  func URLBagContract.metricsURL.getter // getter 
-	0x96390  func URLBagContract.metricsDictionary.getter // getter 
+	0x96430  class func URLBagContract.__allocating_init(_:) // init 
+	0x96170  func URLBagContract.guidRegexes.getter // getter 
+	0x961a0  func URLBagContract.guidSchemes.getter // getter 
+	0x961d0  func URLBagContract.storefrontSuffix.getter // getter 
+	0x96200  func URLBagContract.trustedDomains.getter // getter 
+	0x96230  func URLBagContract.metricsContract.getter // getter 
+	0x96250  func URLBagContract.tlsSamplingPercentage.getter // getter 
+	0x96280  func URLBagContract.tlsSamplingSessionDuration.getter // getter 
+	0x962b0  func URLBagContract.tfoSamplingPercentage.getter // getter 
+	0x962e0  func URLBagContract.tfoSamplingSessionDuration.getter // getter 
+	0x96310  func URLBagContract.apsEnabledPatterns.getter // getter 
+	0x96340  func URLBagContract.apsSamplingPercent.getter // getter 
+	0x96370  func URLBagContract.metricsURL.getter // getter 
+	0x963a0  func URLBagContract.metricsDictionary.getter // getter 
  }

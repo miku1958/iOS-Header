@@ -18,15 +18,16 @@
 @property (readonly, nonatomic) BOOL isRequiredByFollowingEmitters;
 @property (readonly, nonatomic) long long requiredForYouContentTypes;
 @property (readonly, nonatomic) BOOL requiresHeavyweightContent;
+@property (readonly, nonatomic) BOOL shouldEmitContentInFavoritesOnlyMode;
 
 + (NSString *)groupEmitterIdentifier;
 - (FCFeedGroupEmittingOperation *)operationToEmitGroupWithContext:(FCFeedGroupEmittingContext *)arg1 fromCursor:(FCFeedGroupEmittingCursor *)arg2 toCursor:(FCFeedGroupEmittingCursor *)arg3;
 - (BOOL)wantsToEmitGroupInContext:(FCFeedGroupEmittingContext *)arg1 fromCursor:(FCFeedGroupEmittingCursor *)arg2 toCursor:(FCFeedGroupEmittingCursor *)arg3;
 
 @optional
++ (BOOL)canMergeGroupsUnconditionally;
 - (NSString *)backingChannelTagIDWithConfiguration:(id<FCCoreConfiguration>)arg1;
 - (BOOL)canDeferEmittingGroupInContext:(FCFeedGroupEmittingContext *)arg1;
-- (BOOL)canMergeGroupsUnconditionally;
 - (BOOL)canMergeHeadlinesFromGroup:(id<FCFeedGroupOutlining>)arg1 intoGroup:(id<FCFeedGroupOutlining>)arg2;
 - (BOOL)supportsPagination;
 @end

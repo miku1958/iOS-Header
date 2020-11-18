@@ -45,6 +45,7 @@
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;
+- (BOOL)accessibilityParentDiscardsChildrenContainerGroupingBehavior;
 - (BOOL)accessibilityPerformEscape;
 - (unsigned long long)accessibilityTraits;
 - (BOOL)canBecomeFocused;

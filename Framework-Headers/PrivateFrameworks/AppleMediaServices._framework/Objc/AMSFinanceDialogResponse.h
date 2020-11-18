@@ -6,11 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
+
 @class ACAccount, AMSDialogRequest, AMSProcessInfo, NSDictionary, NSString;
 @protocol AMSBagProtocol;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceDialogResponse : NSObject
+@interface AMSFinanceDialogResponse : NSObject <AMSFinancePerformable>
 {
     BOOL _containsCommerceUIURL;
     NSDictionary *_dialogDictionary;
@@ -25,9 +27,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
 @property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (readonly, nonatomic) BOOL containsCommerceUIURL; // @synthesize containsCommerceUIURL=_containsCommerceUIURL;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSDictionary *dialogDictionary; // @synthesize dialogDictionary=_dialogDictionary;
 @property (readonly, nonatomic) AMSDialogRequest *dialogRequest; // @synthesize dialogRequest=_dialogRequest;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *proxyBundleId; // @synthesize proxyBundleId=_proxyBundleId;
+@property (readonly) Class superclass;
 
 + (id)_URLForCommerceUIFromURL:(id)arg1 account:(id)arg2;
 + (long long)_actionTypeFromButtonDictionary:(id)arg1;

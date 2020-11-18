@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *textItemViews; // @synthesize textItemViews=_textItemViews;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (double)currentMaxWidth;
 - (void)infoCardThemeChanged;

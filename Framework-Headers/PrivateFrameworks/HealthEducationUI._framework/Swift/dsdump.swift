@@ -33,14 +33,14 @@
 	var attributes : HealthEducationTextAttributes? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x20e0  @objc DynamicHeightLabelView.initWithFrame: <stripped>
-	0x2110  @objc DynamicHeightLabelView.initWithCoder: <stripped>
-	0x2470  @objc DynamicHeightLabelView.traitCollectionDidChange: <stripped>
-	0x2690  @objc DynamicHeightLabelView..cxx_destruct <stripped>
+	0x1fe0  @objc DynamicHeightLabelView.initWithFrame: <stripped>
+	0x2010  @objc DynamicHeightLabelView.initWithCoder: <stripped>
+	0x2370  @objc DynamicHeightLabelView.traitCollectionDidChange: <stripped>
+	0x2590  @objc DynamicHeightLabelView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x24c0  func <stripped> // method 
-	0x25e0  func <stripped> // method 
+	0x23c0  func <stripped> // method 
+	0x24e0  func <stripped> // method 
  }
 
  class HealthEducationUI.LinkedTextView : ParagraphView {
@@ -51,18 +51,18 @@
 	var linkedURL : URL? // +0xfeedfacf (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x3320  @objc LinkedTextView.initWithFrame: <stripped>
-	0x3350  @objc LinkedTextView.initWithCoder: <stripped>
-	0x35a0  @objc LinkedTextView..cxx_destruct <stripped>
+	0x3220  @objc LinkedTextView.initWithFrame: <stripped>
+	0x3250  @objc LinkedTextView.initWithCoder: <stripped>
+	0x34a0  @objc LinkedTextView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x33e0  func <stripped> // getter 
+	0x32e0  func <stripped> // getter 
  }
 
  class HealthEducationUI.TitleView : DynamicHeightLabelView {
 	// ObjC -> Swift bridged methods
-	0x41a0  @objc TitleView.initWithFrame: <stripped>
-	0x4220  @objc TitleView.initWithCoder: <stripped>
+	0x40a0  @objc TitleView.initWithFrame: <stripped>
+	0x4120  @objc TitleView.initWithCoder: <stripped>
  }
 
  struct HealthEducationUI.SoundLevelModel {
@@ -82,13 +82,13 @@
 	var headerStackView : UIStackView? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x48a0  @objc SoundLevelView.initWithCoder: <stripped>
-	0x4b00  @objc SoundLevelView.traitCollectionDidChange: <stripped>
-	0x4c00  @objc SoundLevelView.initWithFrame: <stripped>
-	0x4c80  @objc SoundLevelView..cxx_destruct <stripped>
+	0x47a0  @objc SoundLevelView.initWithCoder: <stripped>
+	0x4a00  @objc SoundLevelView.traitCollectionDidChange: <stripped>
+	0x4b00  @objc SoundLevelView.initWithFrame: <stripped>
+	0x4b80  @objc SoundLevelView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x4810  class func SoundLevelView.__allocating_init(model:) // init 
+	0x4710  class func SoundLevelView.__allocating_init(model:) // init 
  }
 
  struct HealthEducationUI.HealthEducationTileViewModel {
@@ -112,13 +112,13 @@
 	var $__lazy_storage_$_sashView : TileSashView? // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6a40  @objc HealthEducationTileView.initWithFrame: <stripped>
-	0x6ae0  @objc HealthEducationTileView.initWithCoder: <stripped>
-	0x75b0  @objc HealthEducationTileView..cxx_destruct <stripped>
+	0x6940  @objc HealthEducationTileView.initWithFrame: <stripped>
+	0x69e0  @objc HealthEducationTileView.initWithCoder: <stripped>
+	0x74b0  @objc HealthEducationTileView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x6b20  func HealthEducationTileView.update(viewModel:) // method 
-	0x6ef0  func HealthEducationTileView.setHighlighted(_:animated:) // method 
+	0x6a20  func HealthEducationTileView.update(viewModel:) // method 
+	0x6df0  func HealthEducationTileView.setHighlighted(_:animated:) // method 
  }
 
  enum HealthEducationUI.HealthEducationComponent {
@@ -139,8 +139,8 @@
 
  class HealthEducationUI.ParagraphView : DynamicHeightTextView {
 	// ObjC -> Swift bridged methods
-	0xb850  @objc ParagraphView.initWithFrame: <stripped>
-	0xb8d0  @objc ParagraphView.initWithCoder: <stripped>
+	0xb750  @objc ParagraphView.initWithFrame: <stripped>
+	0xb7d0  @objc ParagraphView.initWithCoder: <stripped>
  }
 
  class HealthEducationUI.HealthEducationViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -151,21 +151,21 @@
 	var $__lazy_storage_$_contentView : UIStackView? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xddd0  @objc HealthEducationViewController.initWithCoder: <stripped>
-	0xde90  @objc HealthEducationViewController.viewDidLoad <stripped>
-	0xe900  @objc HealthEducationViewController.initWithNibName:bundle: <stripped>
-	0xe980  @objc HealthEducationViewController..cxx_destruct <stripped>
+	0xdcd0  @objc HealthEducationViewController.initWithCoder: <stripped>
+	0xdd90  @objc HealthEducationViewController.viewDidLoad <stripped>
+	0xe800  @objc HealthEducationViewController.initWithNibName:bundle: <stripped>
+	0xe880  @objc HealthEducationViewController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xdaf0  func HealthEducationViewController.componentViews.getter // getter 
-	0xdcb0  class func HealthEducationViewController.__allocating_init(title:components:) // init 
-	0xdf00  func HealthEducationViewController.setUpScrollingContentView() // method 
+	0xd9f0  func HealthEducationViewController.componentViews.getter // getter 
+	0xdbb0  class func HealthEducationViewController.__allocating_init(title:components:) // init 
+	0xde00  func HealthEducationViewController.setUpScrollingContentView() // method 
  }
 
  class HealthEducationUI.SectionHeaderView : DynamicHeightLabelView {
 	// ObjC -> Swift bridged methods
-	0x10530  @objc SectionHeaderView.initWithFrame: <stripped>
-	0x105b0  @objc SectionHeaderView.initWithCoder: <stripped>
+	0x10430  @objc SectionHeaderView.initWithFrame: <stripped>
+	0x104b0  @objc SectionHeaderView.initWithCoder: <stripped>
  }
 
  class HealthEducationUI.ImageView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -174,12 +174,12 @@
 	let imageView : UIImageView // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x108b0  @objc ImageView.initWithFrame: <stripped>
-	0x108e0  @objc ImageView.initWithCoder: <stripped>
-	0x10a70  @objc ImageView..cxx_destruct <stripped>
+	0x107b0  @objc ImageView.initWithFrame: <stripped>
+	0x107e0  @objc ImageView.initWithCoder: <stripped>
+	0x10970  @objc ImageView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x10900  func <stripped> // method 
+	0x10800  func <stripped> // method 
  }
 
  class HealthEducationUI.DynamicHeightTextView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -190,14 +190,14 @@
 	var attributes : HealthEducationTextAttributes? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x117e0  @objc DynamicHeightTextView.initWithFrame: <stripped>
-	0x11810  @objc DynamicHeightTextView.initWithCoder: <stripped>
-	0x11b50  @objc DynamicHeightTextView.traitCollectionDidChange: <stripped>
-	0x11bf0  @objc DynamicHeightTextView..cxx_destruct <stripped>
+	0x116e0  @objc DynamicHeightTextView.initWithFrame: <stripped>
+	0x11710  @objc DynamicHeightTextView.initWithCoder: <stripped>
+	0x11a50  @objc DynamicHeightTextView.traitCollectionDidChange: <stripped>
+	0x11af0  @objc DynamicHeightTextView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x112b0  func <stripped> // getter 
-	0x11470  func <stripped> // method 
+	0x111b0  func <stripped> // getter 
+	0x11370  func <stripped> // method 
  }
 
  struct HealthEducationUI.HorizontalMeterViewModel {
@@ -218,13 +218,13 @@
 	var foregroundViewWidth : NSLayoutConstraint? // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x12c10  @objc HorizontalMeterView.initWithCoder: <stripped>
-	0x12d80  @objc HorizontalMeterView.layoutSubviews <stripped>
-	0x12e60  @objc HorizontalMeterView.initWithFrame: <stripped>
-	0x12ee0  @objc HorizontalMeterView..cxx_destruct <stripped>
+	0x12b10  @objc HorizontalMeterView.initWithCoder: <stripped>
+	0x12c80  @objc HorizontalMeterView.layoutSubviews <stripped>
+	0x12d60  @objc HorizontalMeterView.initWithFrame: <stripped>
+	0x12de0  @objc HorizontalMeterView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x11f20  class func HorizontalMeterView.__allocating_init(model:) // init 
+	0x11e20  class func HorizontalMeterView.__allocating_init(model:) // init 
  }
 
  enum HealthEducationUI.HealthEducationTextAttributes {

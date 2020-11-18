@@ -24,13 +24,14 @@
 @property (copy, nonatomic) id<FCTagProviding> tag; // @synthesize tag=_tag;
 
 - (void).cxx_destruct;
+- (id)allEmitterClasses;
 - (id)backingChannel;
 - (id)backingChannelID;
 - (id)backingSectionID;
 - (id)backingTag;
 - (id)backingTopicID;
 - (long long)feedFilterOptions;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (long long)feedPersonalizationConfigurationSet;
 - (long long)feedSortMethod;
 - (long long)feedType;

@@ -6,17 +6,26 @@
 
 #import <WorkflowKit/WFAction.h>
 
-@class HFTriggerActionSetsBuilder;
+#import <WorkflowKit/WFHomeManagerEventObserver-Protocol.h>
 
-@interface WFHomeAccessoryAction : WFAction
+@class HFTriggerActionSetsBuilder, NSString;
+
+@interface WFHomeAccessoryAction : WFAction <WFHomeManagerEventObserver>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) HFTriggerActionSetsBuilder *triggerActionSetsBuilder;
 
 + (id)homeAccessoryActionWithHome:(id)arg1;
 + (id)homeAccessoryActionWithTriggerActionSetsBuilder:(id)arg1;
+- (void)dealloc;
+- (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)homeName;
+- (void)initializeParameters;
 - (id)localizedAttribution;
 - (id)localizedDescriptionSummary;
 - (id)localizedName;

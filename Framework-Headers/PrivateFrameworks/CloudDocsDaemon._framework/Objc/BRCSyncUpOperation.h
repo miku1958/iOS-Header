@@ -8,7 +8,7 @@
 
 #import <CloudDocsDaemon/BRCOperationSubclass-Protocol.h>
 
-@class BRCLocalItem, BRCServerZone, NSMutableArray, NSMutableDictionary, NSString;
+@class BRCLocalItem, BRCServerZone, NSMutableArray, NSMutableDictionary, NSMutableOrderedSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface BRCSyncUpOperation : _BRCOperation <BRCOperationSubclass>
@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_recordsToSave;
     NSMutableArray *_packagesInFlight;
     NSMutableArray *_createdAppLibraryNames;
-    NSMutableArray *_deletedRecordIDs;
+    NSMutableOrderedSet *_deletedRecordIDs;
     NSMutableArray *_iworkUnsharedShareIDs;
     NSMutableDictionary *_renamedShareIDsToNames;
     NSMutableArray *_recordsNeedingNewSharingProtectionInfo;
@@ -36,7 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) float cost; // @synthesize cost=_cost;
 @property (readonly, nonatomic) NSMutableArray *createdAppLibraryNames; // @synthesize createdAppLibraryNames=_createdAppLibraryNames;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) NSMutableArray *deletedRecordIDs; // @synthesize deletedRecordIDs=_deletedRecordIDs;
+@property (strong, nonatomic) NSMutableOrderedSet *deletedRecordIDs; // @synthesize deletedRecordIDs=_deletedRecordIDs;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) BRCLocalItem *itemNeedingPCSChaining; // @synthesize itemNeedingPCSChaining=_itemNeedingPCSChaining;

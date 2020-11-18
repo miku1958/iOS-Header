@@ -15,6 +15,8 @@
 @property (nonatomic, readonly) NSString *defaultSectionID;
 @property (nonatomic, readonly) BOOL isWhitelisted;
 @property (nonatomic, readonly) NSArray *sectionIDs;
+@property (nonatomic, readonly) NSString *supergroupConfigJson;
+@property (nonatomic, readonly) NSString *supergroupKnobsJson;
 @property (nonatomic, readonly) BOOL supportsNotifications;
 
 - (NSString *)freeFeedIDForSection:(NSString *)arg1 bin:(long long)arg2;

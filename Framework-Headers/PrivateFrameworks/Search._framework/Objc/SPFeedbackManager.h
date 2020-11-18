@@ -24,6 +24,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (void)bumpPriorityOnQueue:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
++ (void)flushFeedbackWithCompletion:(CDUnknownBlockType)arg1;
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)_sendFeedback:(id)arg1 type:(long long)arg2;

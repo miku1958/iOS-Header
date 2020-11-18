@@ -10,7 +10,6 @@
 
 @interface TSKeyCommand : NSObject
 {
-    MISSING_TYPE *invalidator;
     MISSING_TYPE *key;
     MISSING_TYPE *title;
     MISSING_TYPE *flags;

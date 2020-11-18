@@ -27,6 +27,7 @@
 - (void)pushMapTemplate:(CPMapTemplate *)arg1 withProxyDelegate:(id<CPMapClientTemplateDelegate>)arg2 animated:(NSNumber *)arg3 presentationStyle:(unsigned long long)arg4 reply:(void (^)(id<CPMapTemplateProviding>))arg5;
 - (void)pushSearchTemplate:(CPSearchTemplate *)arg1 withProxyDelegate:(id<CPSearchClientTemplateDelegate>)arg2 animated:(NSNumber *)arg3 presentationStyle:(unsigned long long)arg4 reply:(void (^)(id<CPSearchTemplateProviding>))arg5;
 - (void)requestBannerProviderWithReply:(void (^)(id<CPBannerProviding>))arg1;
+- (void)requestNavigationProviderForMapTemplate:(CPMapTemplate *)arg1 withReply:(void (^)(id<CPNavigationSessionProviding>))arg2;
 - (void)setHostPrefersDarkUserInterfaceStyle:(BOOL)arg1;
 @end
 

@@ -14,7 +14,6 @@
 
 @property (readonly, nonatomic) NSURL *URL; // @dynamic URL;
 
-- (id)URLWithValue:(id)arg1 withType:(int)arg2;
 - (id)action;
 
 @end

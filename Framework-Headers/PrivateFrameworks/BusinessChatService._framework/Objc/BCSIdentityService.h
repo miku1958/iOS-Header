@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class IDSAccount;
+@class IDSAccount, NSMutableDictionary;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,13 +14,18 @@ __attribute__((visibility("hidden")))
 {
     IDSAccount *_businessChatAccount;
     NSObject<OS_dispatch_queue> *_serialDispatchQueue;
+    NSMutableDictionary *_idStatusCompletionBlocks;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *idStatusCompletionBlocks; // @synthesize idStatusCompletionBlocks=_idStatusCompletionBlocks;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialDispatchQueue; // @synthesize serialDispatchQueue=_serialDispatchQueue;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)addIDSIDQueryControllerDelegate;
 - (id)businessChatAccount;
+- (void)handleIDStatusCompletionBlocksForBizID:(id)arg1 idStatus:(long long)arg2;
+- (void)idStatusUpdatedForDestinations:(id)arg1 service:(id)arg2;
 - (void)refreshIDStatusForBizID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)warmBusinessChatAccountCache;
 

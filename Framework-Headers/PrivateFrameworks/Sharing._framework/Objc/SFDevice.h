@@ -27,6 +27,7 @@
     BOOL _wifiP2P;
     unsigned char _osVersion;
     BOOL _paired;
+    BOOL _testMode;
     unsigned int _deviceFlags;
     unsigned int _hotspotInfo;
     unsigned int _systemPairState;
@@ -78,6 +79,7 @@
 @property (readonly, nonatomic) NSString *rapportIdentifier; // @synthesize rapportIdentifier=_rapportIdentifier;
 @property (copy, nonatomic) NSString *requestSSID; // @synthesize requestSSID=_requestSSID;
 @property (nonatomic) unsigned int systemPairState; // @synthesize systemPairState=_systemPairState;
+@property (nonatomic) BOOL testMode; // @synthesize testMode=_testMode;
 @property (nonatomic) BOOL wakeDevice; // @synthesize wakeDevice=_wakeDevice;
 @property (nonatomic) BOOL watchLocked; // @synthesize watchLocked=_watchLocked;
 @property (readonly, nonatomic) BOOL wifiP2P; // @synthesize wifiP2P=_wifiP2P;

@@ -19,5 +19,6 @@
 - (void)getSearchableIndexInterface:(void (^)(id<EMSearchableIndexInterface>))arg1;
 - (void)getVIPManagerInterface:(void (^)(id<EMVIPManagerInterface>))arg1;
 - (void)launchForEarlyRecovery:(void (^)(void))arg1;
+- (void)setAllowsBackgroundResume:(BOOL)arg1;
 @end
 

@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSManagedObjectID *userObjectID; // @synthesize userObjectID=_userObjectID;
 @property (readonly) STTimeAllowancesViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
++ (BOOL)saveAllowance:(id)arg1 forUser:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)_iCloudAccountPredicate;
 - (void)_registerForPersistentStoreNotifications;

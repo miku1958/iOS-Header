@@ -45,10 +45,12 @@
 @property (readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_dismissMediaControlsVolumeViewController;
 - (void)_performWithoutAnimationWhileHidden:(CDUnknownBlockType)arg1;
 - (void)_primarySliderValueDidChange:(id)arg1;
 - (void)_secondarySliderValueDidChange:(id)arg1;
+- (void)_updateGlyphPackageDescription;
 - (void)_updateVisibility;
 - (void)dealloc;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;

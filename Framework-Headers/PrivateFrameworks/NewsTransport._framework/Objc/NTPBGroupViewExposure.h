@@ -13,7 +13,9 @@
 @interface NTPBGroupViewExposure : PBCodable <NSCopying>
 {
     NSData *_articleViewingSessionId;
+    NSString *_curatedBatchId;
     int _curatedContentType;
+    NSString *_curatedSubtype;
     int _feedAutoSubscribeType;
     NSData *_feedViewExposureId;
     int _groupArticleCountInForYou;
@@ -30,7 +32,9 @@
     NSData *_groupViewExposureId;
     NSMutableArray *_groupedArticleIds;
     NSMutableArray *_groupedIssueIds;
+    NSMutableArray *_layoutIds;
     int _screenfulsFromTop;
+    NSMutableArray *_sectionIds;
     int _topStoryMandatoryArticleCount;
     int _topStoryOptionalArticleCount;
     BOOL _isIssueContext;
@@ -57,7 +61,9 @@
 }
 
 @property (strong, nonatomic) NSData *articleViewingSessionId; // @synthesize articleViewingSessionId=_articleViewingSessionId;
+@property (strong, nonatomic) NSString *curatedBatchId; // @synthesize curatedBatchId=_curatedBatchId;
 @property (nonatomic) int curatedContentType; // @synthesize curatedContentType=_curatedContentType;
+@property (strong, nonatomic) NSString *curatedSubtype; // @synthesize curatedSubtype=_curatedSubtype;
 @property (nonatomic) int feedAutoSubscribeType; // @synthesize feedAutoSubscribeType=_feedAutoSubscribeType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
 @property (nonatomic) int groupArticleCountInForYou; // @synthesize groupArticleCountInForYou=_groupArticleCountInForYou;
@@ -75,7 +81,9 @@
 @property (strong, nonatomic) NSMutableArray *groupedArticleIds; // @synthesize groupedArticleIds=_groupedArticleIds;
 @property (strong, nonatomic) NSMutableArray *groupedIssueIds; // @synthesize groupedIssueIds=_groupedIssueIds;
 @property (readonly, nonatomic) BOOL hasArticleViewingSessionId;
+@property (readonly, nonatomic) BOOL hasCuratedBatchId;
 @property (nonatomic) BOOL hasCuratedContentType;
+@property (readonly, nonatomic) BOOL hasCuratedSubtype;
 @property (nonatomic) BOOL hasFeedAutoSubscribeType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
 @property (nonatomic) BOOL hasGroupArticleCountInForYou;
@@ -98,13 +106,17 @@
 @property (nonatomic) BOOL hasTopStoryOptionalArticleCount;
 @property (nonatomic) BOOL isIssueContext; // @synthesize isIssueContext=_isIssueContext;
 @property (nonatomic) BOOL isSubscribedToGroupFeed; // @synthesize isSubscribedToGroupFeed=_isSubscribedToGroupFeed;
+@property (strong, nonatomic) NSMutableArray *layoutIds; // @synthesize layoutIds=_layoutIds;
 @property (nonatomic) BOOL reachedEndOfGroup; // @synthesize reachedEndOfGroup=_reachedEndOfGroup;
 @property (nonatomic) int screenfulsFromTop; // @synthesize screenfulsFromTop=_screenfulsFromTop;
+@property (strong, nonatomic) NSMutableArray *sectionIds; // @synthesize sectionIds=_sectionIds;
 @property (nonatomic) int topStoryMandatoryArticleCount; // @synthesize topStoryMandatoryArticleCount=_topStoryMandatoryArticleCount;
 @property (nonatomic) int topStoryOptionalArticleCount; // @synthesize topStoryOptionalArticleCount=_topStoryOptionalArticleCount;
 
 + (Class)groupedArticleIdsType;
 + (Class)groupedIssueIdsType;
++ (Class)layoutIdsType;
++ (Class)sectionIdsType;
 - (void).cxx_destruct;
 - (int)StringAsCuratedContentType:(id)arg1;
 - (int)StringAsFeedAutoSubscribeType:(id)arg1;
@@ -115,8 +127,12 @@
 - (int)StringAsGroupType:(id)arg1;
 - (void)addGroupedArticleIds:(id)arg1;
 - (void)addGroupedIssueIds:(id)arg1;
+- (void)addLayoutIds:(id)arg1;
+- (void)addSectionIds:(id)arg1;
 - (void)clearGroupedArticleIds;
 - (void)clearGroupedIssueIds;
+- (void)clearLayoutIds;
+- (void)clearSectionIds;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)curatedContentTypeAsString:(int)arg1;
 - (id)description;
@@ -133,8 +149,12 @@
 - (unsigned long long)groupedIssueIdsCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
+- (id)layoutIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)layoutIdsCount;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)sectionIdsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)sectionIdsCount;
 - (void)writeTo:(id)arg1;
 
 @end

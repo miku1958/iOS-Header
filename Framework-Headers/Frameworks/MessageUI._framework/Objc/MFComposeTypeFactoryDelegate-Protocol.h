@@ -6,15 +6,15 @@
 
 #import <MessageUI/NSObject-Protocol.h>
 
-@class EFFuture, MFMailAccountProxy, MFMutableMessageHeaders, NSArray, NSString, UIView;
-@protocol MFComposeBodyField, MFMailAccountProxyGenerator;
+@class EFFuture, MFComposeWebView, MFMailAccountProxy, MFMutableMessageHeaders, NSArray, NSString;
+@protocol MFMailAccountProxyGenerator;
 
 @protocol MFComposeTypeFactoryDelegate <NSObject>
 - (id<MFMailAccountProxyGenerator>)accountProxyGenerator;
 - (NSArray *)attachments;
 - (NSArray *)bccRecipients;
-- (UIView<MFComposeBodyField> *)bodyField;
 - (NSArray *)ccRecipients;
+- (MFComposeWebView *)composeWebView;
 - (MFMutableMessageHeaders *)savedHeaders;
 - (MFMailAccountProxy *)sendingAccountProxy;
 - (NSString *)sendingEmailAddress;

@@ -83,7 +83,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL wantsZoomAndPanEnabled;
 
 - (void).cxx_destruct;
-- (BOOL)_canShowWhileLocked;
 - (void)_layoutToolGradient;
 - (id)_newTimeMapper;
 - (void)_updateTraitCollectionAndLayoutReferenceSize;

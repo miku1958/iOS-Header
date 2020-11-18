@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 + (id)diffContainer:(id)arg1 to:(id)arg2;
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithUpdates:(id)arg1;
 
 @end

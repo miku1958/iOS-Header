@@ -6,12 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaTextToSpeechBegin-Protocol.h>
-
 @class NSData, NSString;
 
-@interface SISchemaTextToSpeechBegin : PBCodable <SISchemaTextToSpeechBegin, NSSecureCoding>
+@interface SISchemaTextToSpeechBegin : PBCodable
 {
     int _audioOutputRoute;
     NSString *_aceID;
@@ -19,14 +16,11 @@
 
 @property (copy, nonatomic) NSString *aceID; // @synthesize aceID=_aceID;
 @property (nonatomic) int audioOutputRoute; // @synthesize audioOutputRoute=_audioOutputRoute;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

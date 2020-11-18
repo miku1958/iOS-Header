@@ -29,6 +29,7 @@
 @property (strong, nonatomic) MediaControlsVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_configureOptionsButton:(id)arg1 forRouteType:(unsigned long long)arg2;
 - (void)_configurePrimaryOptionsButtonIfNeeded;
 - (void)_configureRouteView:(id)arg1 forRouteType:(unsigned long long)arg2;

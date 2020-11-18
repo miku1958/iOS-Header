@@ -24,6 +24,7 @@
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)configureWithCompletion:(CDUnknownBlockType)arg1;
 - (void)invalidateWithCompletion:(CDUnknownBlockType)arg1;
 

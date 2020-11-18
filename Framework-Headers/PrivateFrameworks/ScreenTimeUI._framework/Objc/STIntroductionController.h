@@ -13,15 +13,19 @@ __attribute__((visibility("hidden")))
 {
     BOOL _allowParentalControls;
     BOOL _forceParentalControls;
+    BOOL _askForRecoveryAppleID;
     BOOL _skipWelcome;
     BOOL _isModalPresentation;
     NSString *_childName;
+    NSString *_altDSID;
     CDUnknownBlockType _completionBlock;
     STIntroductionModel *_introductionModel;
     UINavigationController *_navigationController;
 }
 
 @property BOOL allowParentalControls; // @synthesize allowParentalControls=_allowParentalControls;
+@property (copy) NSString *altDSID; // @synthesize altDSID=_altDSID;
+@property BOOL askForRecoveryAppleID; // @synthesize askForRecoveryAppleID=_askForRecoveryAppleID;
 @property (copy) NSString *childName; // @synthesize childName=_childName;
 @property (copy) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
 @property BOOL forceParentalControls; // @synthesize forceParentalControls=_forceParentalControls;

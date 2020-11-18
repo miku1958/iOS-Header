@@ -56,6 +56,7 @@
 - (void)cancelPresentationOfDetailsOfFamilyMemberContactItem:(id)arg1;
 - (BOOL)contactManagementEnabled;
 - (void)contactPicker:(id)arg1 didSelectContacts:(id)arg2;
+- (void)contactPickerDidCancel:(id)arg1;
 - (void)contactViewController:(id)arg1 didCompleteWithContact:(id)arg2;
 - (void)contactViewController:(id)arg1 didDeleteContact:(id)arg2;
 - (void)contactViewControllerDidExecuteDeleteFromDowntimeWhitelistAction:(id)arg1;

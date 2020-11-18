@@ -20,6 +20,7 @@
 @property (strong, nonatomic) NSPredicate *entryPredicateWithUpdateTimestamp; // @synthesize entryPredicateWithUpdateTimestamp=_entryPredicateWithUpdateTimestamp;
 
 - (void).cxx_destruct;
+- (BOOL)_updateHasPicture:(BOOL)arg1 forEntry:(id)arg2;
 - (id)cachedContactForContactIdentifier:(id)arg1;
 - (id)dataModelName;
 - (void)enumerateCachedEntriesUsingBlock:(CDUnknownBlockType)arg1;

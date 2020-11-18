@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CNContact, CNContactStore, NSArray, NSString;
+@class CNContact, CNContactStore, NSArray, NSMutableArray, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CNUIFamilyMemberDowntimeContactDataSource : NSObject
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSArray *_familyMembers;
     NSArray *_filteredSections;
     NSArray *_sections;
+    NSMutableArray *_selectedContactItems;
     NSArray *_requiredKeys;
 }
 
@@ -28,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL meContactNeedsUpdate; // @synthesize meContactNeedsUpdate=_meContactNeedsUpdate;
 @property (readonly, nonatomic) NSArray *requiredKeys; // @synthesize requiredKeys=_requiredKeys;
 @property (strong, nonatomic) NSArray *sections; // @synthesize sections=_sections;
+@property (strong, nonatomic) NSMutableArray *selectedContactItems; // @synthesize selectedContactItems=_selectedContactItems;
 @property (strong, nonatomic) CNContactStore *store; // @synthesize store=_store;
 
 + (BOOL)isErrorPossiblyRelatedToExtraStores:(id)arg1;
@@ -44,6 +46,8 @@ __attribute__((visibility("hidden")))
 - (void)postProcessForFamilyMembersWithContacts:(id)arg1;
 - (id)preferredForNameMeContactIdentifier;
 - (id)preferredForNameMeContactWithKeysToFetch:(id)arg1;
+- (id)selectedContacts;
+- (void)setContactItemSelected:(BOOL)arg1 forIndexPath:(id)arg2;
 - (long long)sortOrder;
 - (id)titleForSection:(long long)arg1;
 

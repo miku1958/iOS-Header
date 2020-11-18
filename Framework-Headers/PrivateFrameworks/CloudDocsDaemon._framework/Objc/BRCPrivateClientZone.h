@@ -6,7 +6,7 @@
 
 #import <CloudDocsDaemon/BRCClientZone.h>
 
-@class BRCAppLibrary, BRCPrivateServerZone, BRCProblemReport, BRCServerZoneHealthState, NSMutableArray, NSMutableSet, NSSet;
+@class BRCAppLibrary, BRCPrivateServerZone, BRCProblemReport, BRCServerZoneHealthState, NSMapTable, NSMutableArray, NSMutableSet, NSSet;
 
 __attribute__((visibility("hidden")))
 @interface BRCPrivateClientZone : BRCClientZone
@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_faultsLiveBarriers;
     NSMutableSet *_appLibraries;
     BRCAppLibrary *_defaultAppLibrary;
+    NSMapTable *_pcsChainFolderOperations;
 }
 
 @property (readonly, nonatomic) NSSet *appLibraries; // @synthesize appLibraries=_appLibraries;
@@ -39,16 +40,17 @@ __attribute__((visibility("hidden")))
 - (BOOL)dumpTablesToContext:(id)arg1 includeAllItems:(BOOL)arg2 error:(id *)arg3;
 - (struct BRCDirectoryItem *)fetchZoneRootItemInDB:(id)arg1;
 - (id)initWithMangledID:(id)arg1 dbRowID:(id)arg2 db:(id)arg3 plist:(id)arg4 session:(id)arg5 initialCreation:(BOOL)arg6;
-- (BOOL)isItemIDMarkedChained:(id)arg1;
 - (void)notifyClient:(id)arg1 whenFaultingIsDone:(CDUnknownBlockType)arg2;
 - (BOOL)parentIDHasLiveUnchainedChildren:(id)arg1;
+- (id)pcsChainOperationForItemID:(id)arg1;
+- (unsigned int)pcsChainStateForItem:(id)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1 whenSyncDownCompletesLookingForAliasWithBookmarkData:(id)arg2;
 - (id)plist;
 - (id)prepareProblemReportForSyncWithRequestID:(long long)arg1;
 - (BOOL)recomputeAppSyncBlockState;
+- (void)registerPCSChainingOperation:(id)arg1;
 - (void)removeAppLibrary:(id)arg1;
 - (BOOL)removeSyncDownForAliasData:(id)arg1;
-- (struct PQLResultSet *)reparentedItemsNeedingChaining;
 - (void)reportProblemWithType:(int)arg1 recordName:(id)arg2;
 - (id)resolveClashOfAlias:(id)arg1 atPath:(id)arg2 withAlias:(id)arg3 atPath:(id)arg4;
 - (void)resume;

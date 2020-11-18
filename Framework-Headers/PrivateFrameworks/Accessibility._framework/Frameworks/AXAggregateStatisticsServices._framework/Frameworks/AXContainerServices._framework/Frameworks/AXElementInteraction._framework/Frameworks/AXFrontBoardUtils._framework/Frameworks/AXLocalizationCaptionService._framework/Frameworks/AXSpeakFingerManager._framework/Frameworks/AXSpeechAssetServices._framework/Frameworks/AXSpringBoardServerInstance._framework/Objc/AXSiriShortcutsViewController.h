@@ -26,6 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)_automaticallyPerformShortcutIfPossible;
+- (BOOL)_canShowWhileLocked;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)initWithShortcutIdentifier:(id)arg1 bundleID:(id)arg2;

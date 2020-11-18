@@ -18,6 +18,7 @@
 
 + (double)_preferredContentSizeWidth;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_segmentedControlDidChangeValue:(id)arg1;
 - (void)loadView;
 - (struct CGSize)preferredContentSize;

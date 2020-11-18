@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *headline;
     MISSING_TYPE *purchaseProvider;
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *observers;
     MISSING_TYPE *bundleSubscriptionStatus;
     MISSING_TYPE *channelSubscriptionStatus;

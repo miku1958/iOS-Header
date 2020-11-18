@@ -8,13 +8,14 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, NTPBDate, NTPBFeedViewportEdition;
+@class NSMutableArray, NSString, NTPBDate, NTPBFeedRefreshSessionForYouConfig, NTPBFeedViewportEdition;
 
 @interface NTPBFeedViewportGap : PBCodable <NSCopying>
 {
     CDStruct_95bda58d _activeGroupEmitterIDRefs;
     CDStruct_95bda58d _groupEmitterIDRefs;
     NSMutableArray *_cursors;
+    NTPBFeedRefreshSessionForYouConfig *_forYouConfig;
     NSString *_identifier;
     NTPBFeedViewportEdition *_lastCompletedEdition;
     NTPBDate *_modificationDate;
@@ -31,8 +32,10 @@
 @property (readonly, nonatomic) int *activeGroupEmitterIDRefs;
 @property (readonly, nonatomic) unsigned long long activeGroupEmitterIDRefsCount;
 @property (strong, nonatomic) NSMutableArray *cursors; // @synthesize cursors=_cursors;
+@property (strong, nonatomic) NTPBFeedRefreshSessionForYouConfig *forYouConfig; // @synthesize forYouConfig=_forYouConfig;
 @property (readonly, nonatomic) int *groupEmitterIDRefs;
 @property (readonly, nonatomic) unsigned long long groupEmitterIDRefsCount;
+@property (readonly, nonatomic) BOOL hasForYouConfig;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (nonatomic) BOOL hasIsOffline;
 @property (readonly, nonatomic) BOOL hasLastCompletedEdition;

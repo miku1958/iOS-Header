@@ -31,13 +31,14 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_sortedEditorialGroupEmittersWithForYouGroupsConfiguration:(id)arg1;
+- (id)_sortedConfigurableGroupEmittersWithForYouGroupsConfiguration:(id)arg1 forYouConfig:(id)arg2;
+- (id)allEmitterClasses;
 - (void)d_fetchAllHeadlinesWithCloudContext:(id)arg1 sinceDate:(id)arg2 filter:(BOOL)arg3 personalize:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (BOOL)derivesContentsFromExplicitSubscriptions;
 - (id)editionAtDate:(id)arg1;
 - (id)editionFollowingEdition:(id)arg1;
 - (long long)feedFilterOptions;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (id)feedPaginator;
 - (long long)feedPersonalizationConfigurationSet;
 - (long long)feedSortMethod;
@@ -46,7 +47,8 @@
 - (id)initWithIdentifier:(id)arg1 savedStoriesCount:(long long)arg2 configurationManager:(id)arg3 subscriptionList:(id)arg4 feedPersonalizer:(id)arg5 paidAccessChecker:(id)arg6;
 - (id)languagesWithSubscriptionController:(id)arg1;
 - (id)name;
-- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1;
+- (BOOL)needsForYouConfig;
+- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (void)prepareToProvideFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)shouldFilterFeedGroupEmitter:(id)arg1 withConfiguration:(id)arg2;
 

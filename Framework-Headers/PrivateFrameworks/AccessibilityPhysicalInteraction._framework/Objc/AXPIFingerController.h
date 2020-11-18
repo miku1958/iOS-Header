@@ -61,6 +61,7 @@
 - (void)didUpdateLocationForFingerModel:(id)arg1;
 - (void)didUpdatePressStateForFingerModel:(id)arg1;
 - (void)didUpdateSelectedStateForFingerModel:(id)arg1;
+- (void)didUpdateShapeForFingerModel:(id)arg1;
 - (void)endUpdates;
 - (void)enumerateFingersUsingBlock:(CDUnknownBlockType)arg1;
 - (id)fingerModelAtPoint:(struct CGPoint)arg1;

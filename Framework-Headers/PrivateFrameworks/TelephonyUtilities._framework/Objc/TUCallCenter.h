@@ -102,6 +102,7 @@
 - (void)answerCallWithHoldMusic:(id)arg1;
 - (void)answerWithRequest:(id)arg1;
 - (BOOL)anyCallPassesTest:(CDUnknownBlockType)arg1;
+- (void)applicationWillLaunchForStartCallInteraction:(id)arg1;
 - (id)audioAndVideoCallsWithStatus:(int)arg1;
 - (id)audioOrVideoCallWithStatus:(int)arg1;
 - (id)callPassingTest:(CDUnknownBlockType)arg1;

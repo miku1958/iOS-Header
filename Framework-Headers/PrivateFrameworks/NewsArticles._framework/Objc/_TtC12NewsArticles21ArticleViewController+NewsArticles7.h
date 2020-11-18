@@ -7,15 +7,8 @@
 #import <NewsArticles/_TtC12NewsArticles21ArticleViewController.h>
 
 @interface _TtC12NewsArticles21ArticleViewController (NewsArticles7)
-- (BOOL)canDecreaseTextSize;
-- (BOOL)canIncreaseTextSize;
-- (BOOL)canResetZoom;
-- (BOOL)canZoomIn;
-- (BOOL)canZoomOut;
-- (void)decreaseTextSize;
-- (void)increaseTextSize;
-- (void)resetZoom;
-- (void)zoomIn;
-- (void)zoomOut;
+- (BOOL)accessibilityShouldScroll:(id)arg1;
+- (BOOL)accessibilityShouldScroll:(id)arg1 defaultValue:(BOOL)arg2;
+- (BOOL)shouldOccludeAccessibilityElement:(id)arg1;
 @end
 

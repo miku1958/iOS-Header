@@ -29,6 +29,7 @@
 @property (strong, nonatomic) FCReadingList *readingList; // @synthesize readingList=_readingList;
 @property (readonly, nonatomic) long long requiredForYouContentTypes;
 @property (readonly, nonatomic) BOOL requiresHeavyweightContent;
+@property (readonly, nonatomic) BOOL shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
 + (id)groupEmitterIdentifier;

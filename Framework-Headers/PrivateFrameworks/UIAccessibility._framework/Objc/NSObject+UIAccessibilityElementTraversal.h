@@ -693,6 +693,7 @@
 - (BOOL)_accessibilityShouldBeExplorerElementWithoutSystemFocus;
 - (BOOL)_accessibilityShouldBeProcessed:(id)arg1;
 - (BOOL)_accessibilityShouldBeScannedIfAncestorCanScroll;
+- (BOOL)_accessibilityShouldHitTestStatusBarWindow;
 - (BOOL)_accessibilityShouldIgnoreOpaqueElementProviders;
 - (BOOL)_accessibilityShouldIgnoreSoundForFailedMoveAttempt;
 - (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
@@ -761,6 +762,7 @@
 - (BOOL)_accessibilitySupportsMultipleCustomRotorTitles;
 - (BOOL)_accessibilitySupportsPressedState;
 - (BOOL)_accessibilitySupportsRangeForLineNumber;
+- (BOOL)_accessibilitySupportsSecondaryActivateAction;
 - (BOOL)_accessibilitySupportsSemanticContext;
 - (BOOL)_accessibilitySupportsTextInsertionAndDeletion;
 - (id)_accessibilitySwipeIsland;
@@ -961,6 +963,7 @@
 - (id)accessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (unsigned long long)accessibilityBlockquoteLevel;
 - (struct CGRect)accessibilityBoundsForTextMarkers:(id)arg1;
+- (BOOL)accessibilityChildrenContainerGroupingBehaviorHasOverridingParentDelegate;
 - (unsigned long long)accessibilityColumnCount;
 - (struct _NSRange)accessibilityColumnRange;
 - (long long)accessibilityCompareGeometry:(id)arg1;
@@ -1004,6 +1007,7 @@
 - (id)accessibilityMenuActions;
 - (id)accessibilityNextTextNavigationElement;
 - (id)accessibilityPageContent;
+- (BOOL)accessibilityParentDiscardsChildrenContainerGroupingBehavior;
 - (BOOL)accessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (BOOL)accessibilityPerformCustomAction:(long long)arg1;
 - (id)accessibilityPlaceholderValue;

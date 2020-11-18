@@ -127,6 +127,7 @@
 @property (strong, nonatomic) id<EFCancelable> loadingSpinnerTailspinToken; // @synthesize loadingSpinnerTailspinToken=_loadingSpinnerTailspinToken;
 @property (strong, nonatomic) MFMessageContentLoadingView *loadingView; // @synthesize loadingView=_loadingView;
 @property (strong, nonatomic) MFMailboxProvider *mailboxProvider; // @synthesize mailboxProvider=_mailboxProvider;
+@property (readonly, nonatomic) BOOL mayShareToUnmanaged;
 @property (nonatomic) long long messageBlockingReason; // @synthesize messageBlockingReason=_messageBlockingReason;
 @property (strong, nonatomic) UIView *previousContentSnapshot; // @synthesize previousContentSnapshot=_previousContentSnapshot;
 @property (strong, nonatomic) _MFMessageContentResizeWrapperView *resizingWrapperView; // @synthesize resizingWrapperView=_resizingWrapperView;
@@ -154,6 +155,7 @@
 - (void)_addScriptHandlerForKey:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_adjustHeaderOffsetForZoom;
 - (double)_adjustWebViewInsetsToAccomodateHeaderAndFooter;
+- (struct CGRect)_adjustedRectForAttachmentRect:(struct CGRect)arg1;
 - (void)_alertMailDropDownloadIsTooLargeForCell:(BOOL)arg1;
 - (BOOL)_allAttachmentsArePhotosOrVideos;
 - (id)_attachmentPreviewsFromData:(id)arg1;
@@ -183,7 +185,6 @@
 - (void)_loadBlockedMessageContactWarningWithRepresentation:(id)arg1;
 - (void)_logRequestFinishWithSuccess:(BOOL)arg1;
 - (id)_mailboxForBanner:(id)arg1;
-- (BOOL)_mayShareToUnmanaged;
 - (void)_notifyDelegateScrollViewSizeChanged:(struct CGSize)arg1;
 - (BOOL)_objectContainsNonEmptyString:(id)arg1;
 - (void)_observeBlockedSenderListChangedNotification;
@@ -234,6 +235,7 @@
 - (void)didTapBlockedSenderBannerView:(id)arg1;
 - (void)didTapHasMoreContentBannerView:(id)arg1;
 - (void)dismissPresentedViewController:(id)arg1;
+- (id)downloadFutureForContentItem:(id)arg1;
 - (void)endResizing;
 - (void)footerViewDidChangeHeight:(id)arg1;
 - (void)generateSnapshotImageWithCompletion:(CDUnknownBlockType)arg1;
@@ -268,6 +270,7 @@
 - (void)webProcessDidFailLoadingResourceWithURL:(id)arg1;
 - (void)webProcessDidFinishDocumentLoadForURL:(id)arg1;
 - (void)webProcessDidFinishLoadForURL:(id)arg1;
+- (void)webView:(id)arg1 contextMenuForElement:(id)arg2 willCommitWithAnimator:(id)arg3;
 - (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 decidePolicyForNavigationResponse:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 didCommitNavigation:(id)arg2;

@@ -36,6 +36,7 @@
 
 - (void).cxx_destruct;
 - (void)_addBatteryChargingView;
+- (BOOL)_canShowWhileLocked;
 - (void)_cleanupBatteryChargingViewWithAnimationDuration:(double)arg1;
 - (id)_displayLayoutElementIdentifier;
 - (void)_fadeViewsForChargingViewVisible:(BOOL)arg1;

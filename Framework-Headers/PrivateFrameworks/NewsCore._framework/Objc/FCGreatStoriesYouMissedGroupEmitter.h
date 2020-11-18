@@ -28,6 +28,7 @@
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 @property (readonly, nonatomic) long long requiredForYouContentTypes;
 @property (readonly, nonatomic) BOOL requiresHeavyweightContent;
+@property (readonly, nonatomic) BOOL shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
 + (BOOL)greatStoriesMayEmit:(id)arg1;

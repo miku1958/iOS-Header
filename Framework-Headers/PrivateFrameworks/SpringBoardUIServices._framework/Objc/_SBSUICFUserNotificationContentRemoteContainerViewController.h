@@ -27,6 +27,7 @@
 + (BOOL)_isSecureForRemoteViewService;
 + (id)_remoteViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_trackChildViewController:(id)arg1;
 - (void)_updatePreferredContentSize;
 - (void)addChildViewController:(id)arg1;

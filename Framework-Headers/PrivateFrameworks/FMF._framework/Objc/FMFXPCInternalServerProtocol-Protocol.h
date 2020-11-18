@@ -18,6 +18,7 @@
 - (oneway void)sendIDSPacket:(NSString *)arg1 toHandle:(FMFHandle *)arg2;
 - (oneway void)sessionHandleReport:(void (^)(NSDictionary *))arg1;
 - (oneway void)setSessionClientBundleId:(NSString *)arg1;
+- (oneway void)showMeDeviceAlert;
 - (oneway void)showShareMyLocationiCloudSettingsOffAlert;
 @end
 

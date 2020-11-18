@@ -8,7 +8,6 @@
 
 @class NSOrderedSet;
 
-__attribute__((visibility("hidden")))
 @interface PUSearchHistoryManager : NSObject
 {
     NSOrderedSet *_recentSearches;
@@ -18,6 +17,10 @@ __attribute__((visibility("hidden")))
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (id)_readRecentSearchesFromURL:(id)arg1;
+- (id)_readRecentSearchesFromUserDefaults;
+- (id)_recentSearchesFileURL;
+- (BOOL)_writeRecentSearches:(id)arg1 toURL:(id)arg2 error:(out id *)arg3;
 - (void)clearRecentSearches;
 - (void)saveRecentSearch:(id)arg1;
 

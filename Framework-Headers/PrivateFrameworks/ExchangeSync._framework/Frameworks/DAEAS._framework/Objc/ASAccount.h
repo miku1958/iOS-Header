@@ -23,6 +23,7 @@
     BOOL _useLocalhostForAutodiscoveryTesting;
     BOOL _oneAutodiscoverAtATime;
     BOOL _isValidating;
+    BOOL _reminderAccountMissing;
     int _asAccountVersion;
 }
 
@@ -35,6 +36,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int mailNumberOfPastDaysToSync;
 @property (readonly, nonatomic) int mailNumberOfPastDaysToSyncUpperLimit;
+@property (nonatomic) BOOL reminderAccountMissing; // @synthesize reminderAccountMissing=_reminderAccountMissing;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) ASTaskManager *taskManager;

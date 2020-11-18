@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_configureCell:(id)arg1 withBlockingTask:(id)arg2;
 - (id)_tableView;
 - (void)loadView;

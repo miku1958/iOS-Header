@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSSet *disabledDataSources;
 @property (readonly, nonatomic) BOOL hasMigratedDisabledDataSources; // @synthesize hasMigratedDisabledDataSources=_hasMigratedDisabledDataSources;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isUpNextFaceCurrentlyActive;
 @property (strong, nonatomic) NSSet *phoneThirdPartyDataSources;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL watchHasMigratedAvailableDataSources;

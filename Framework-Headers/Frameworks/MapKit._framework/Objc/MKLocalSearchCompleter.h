@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CLLocation, GEOClientRankingModel, GEOMapServiceTraits, GEORetainedSearchMetadata, GEOSearchCategory, GEOSortPriorityMapping, MKLocalSearchCompletion, MKPointOfInterestFilter, NSArray, NSMutableArray, NSString, NSTimer;
+@class CLLocation, GEOAutocompleteSessionData, GEOClientRankingModel, GEOMapServiceTraits, GEORetainedSearchMetadata, GEOSearchCategory, GEOSortPriorityMapping, MKLocalSearchCompletion, MKPointOfInterestFilter, NSArray, NSMutableArray, NSString, NSTimer;
 @protocol MKAutocompleteAnalyticsProvider, MKLocalSearchCompleterDelegate, MKLocationManagerOperation;
 
 @interface MKLocalSearchCompleter : NSObject
@@ -37,6 +37,8 @@
     unsigned long long _maxNumberOfConcurrentRequests;
     NSMutableArray *_inFlightTickets;
     NSMutableArray *_pendingTickets;
+    BOOL _statefulQueriesEnabled;
+    GEOAutocompleteSessionData *_autocompleteSessionData;
     BOOL _shouldDisplayNoResults;
     BOOL _shouldEnableRAPForNoResults;
     BOOL _autocompleteTopSectionIsQuerySuggestions;
@@ -78,6 +80,7 @@
 @property (nonatomic, getter=_shouldPreloadTransitInfo, setter=_setShouldPreloadTransitInfo:) BOOL shouldPreloadTransitInfo; // @synthesize shouldPreloadTransitInfo=_shouldPreloadTransitInfo;
 @property (readonly, nonatomic, getter=_showAutocompleteClientSource) BOOL showAutocompleteClientSource; // @synthesize showAutocompleteClientSource=_showAutocompleteClientSource;
 @property (readonly, nonatomic, getter=_sortPriorityMapping) GEOSortPriorityMapping *sortPriorityMapping; // @synthesize sortPriorityMapping=_sortPriorityMapping;
+@property (nonatomic) BOOL statefulQueriesEnabled;
 @property (strong, nonatomic, getter=_tappedQuerySuggestionCompletion, setter=_setTappedQuerySuggestionCompletion:) MKLocalSearchCompletion *tappedQuerySuggestionCompletion; // @synthesize tappedQuerySuggestionCompletion=_tappedQuerySuggestionCompletion;
 @property (nonatomic) double timeSinceLastInBoundingRegion; // @synthesize timeSinceLastInBoundingRegion=_timeSinceLastInBoundingRegion;
 @property (strong, nonatomic) GEOMapServiceTraits *traits; // @synthesize traits=_traits;
@@ -96,6 +99,7 @@
 - (void)_scheduleRequestWithTimeToNextRequest:(double)arg1;
 - (void)_updateFilters;
 - (void)cancel;
+- (void)clearQueryState;
 - (void)dealloc;
 - (id)init;
 - (BOOL)resultsAreCurrent;

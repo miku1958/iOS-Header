@@ -41,7 +41,6 @@
 - (void).cxx_destruct;
 - (void)_commonInitWithAccountRepository:(id)arg1;
 - (id)_filterIDsFromMailbox:(id)arg1 withQuery:(id)arg2;
-- (id)_init;
 - (id)_mailboxesFuture;
 - (void)_prepareMailboxes:(id)arg1;
 - (id)_remoteMailboxObjectIDsForMailboxType:(long long)arg1;
@@ -51,6 +50,7 @@
 - (void)dealloc;
 - (id)initForTesting;
 - (id)initForTestingWithAccountRepository:(id)arg1;
+- (id)initInternal;
 - (id)initWithRemoteConnection:(id)arg1 accountRepository:(id)arg2;
 - (id)mailboxForObjectID:(id)arg1;
 - (void)mailboxListChanged:(id)arg1;

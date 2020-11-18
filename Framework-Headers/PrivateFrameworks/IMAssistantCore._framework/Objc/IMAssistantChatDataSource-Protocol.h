@@ -11,6 +11,7 @@
 @protocol IMAssistantChatDataSource <NSObject>
 
 @property (readonly, nonatomic) NSArray *allExistingChats;
+@property (readonly, nonatomic) BOOL blackholedChatsExist;
 
 - (IMChat *)chatForIMHandle:(IMHandle *)arg1;
 - (IMChat *)chatForIMHandles:(NSArray *)arg1;

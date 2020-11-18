@@ -15,15 +15,16 @@
 
 @property (readonly, nonatomic) NSMutableSet *inFlightAnimations; // @synthesize inFlightAnimations=_inFlightAnimations;
 
-+ (void)_scrollAnimationOccurredInZoomLevel:(long long)arg1 isBegin:(BOOL)arg2;
-+ (void)scrollAnimationDidBeginInZoomLevel:(long long)arg1;
-+ (void)scrollAnimationDidEndInZoomLevel:(long long)arg1;
++ (void)_scrollAnimationOccurredWithContext:(CDStruct_0c606d9b)arg1 isBegin:(BOOL)arg2;
++ (void)scrollAnimationDidBeginWithScrollContext:(CDStruct_0c606d9b)arg1;
++ (void)scrollAnimationDidEndWithScrollContext:(CDStruct_0c606d9b)arg1;
 + (id)sharedTracker;
 - (void).cxx_destruct;
-- (void)_zoomLevelTransitionOccurred:(id)arg1 isBegin:(BOOL)arg2;
+- (void)_zoomLevelTransitionOccurred:(id)arg1 isPreparation:(BOOL)arg2 isBegin:(BOOL)arg3;
 - (id)init;
 - (void)zoomLevelTransitionDidBegin:(id)arg1;
 - (void)zoomLevelTransitionDidEnd:(id)arg1;
+- (void)zoomLevelTransitionPreparationDidBegin:(id)arg1;
 - (void)zoomLevelTransitionsDidEndEarly;
 
 @end

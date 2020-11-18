@@ -9,11 +9,11 @@
 #import <Silex/SXWebContentComponentInteractionManagerFactory-Protocol.h>
 
 @class NSString;
-@protocol SXComponentInteractionHandlerManager, SXWebContentComponentInteractionHandlerFactory, SXWebContentInteractionProvider;
+@protocol SWInteractionProvider, SXComponentInteractionHandlerManager, SXWebContentComponentInteractionHandlerFactory;
 
 @interface SXWebContentComponentInteractionManagerFactory : NSObject <SXWebContentComponentInteractionManagerFactory>
 {
-    id<SXWebContentInteractionProvider> _interactionProvider;
+    id<SWInteractionProvider> _interactionProvider;
     id<SXComponentInteractionHandlerManager> _interactionHandlerManager;
     id<SXWebContentComponentInteractionHandlerFactory> _componentInteractionHandlerFactory;
 }
@@ -23,7 +23,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<SXComponentInteractionHandlerManager> interactionHandlerManager; // @synthesize interactionHandlerManager=_interactionHandlerManager;
-@property (readonly, nonatomic) id<SXWebContentInteractionProvider> interactionProvider; // @synthesize interactionProvider=_interactionProvider;
+@property (readonly, nonatomic) id<SWInteractionProvider> interactionProvider; // @synthesize interactionProvider=_interactionProvider;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

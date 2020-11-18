@@ -14,6 +14,7 @@
 - (void)_mf_checkToAllowStrictProgressionWithLock:(id)arg1;
 - (void)_mf_dumpLockCallStacks:(unsigned long long)arg1 ordering:(id)arg2;
 - (id)_mf_lockOrderingForType:(int)arg1;
+- (void)_mf_ntsCheckToAllowLock:(id)arg1;
 - (BOOL)_mf_ntsIsLocked;
 - (id)mf_exclusiveLocks;
 - (void)mf_lock;

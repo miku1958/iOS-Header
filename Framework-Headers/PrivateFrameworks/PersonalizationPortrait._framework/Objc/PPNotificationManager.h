@@ -23,6 +23,7 @@
 + (id)sharedInstance;
 + (void)unsetSharedManager;
 - (void).cxx_destruct;
+- (void)_registerForEventKitChangeTrackingWithGuardedData:(id)arg1;
 - (void)addContactsChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
 - (void)addEventKitChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
 - (void)addMeCardChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;

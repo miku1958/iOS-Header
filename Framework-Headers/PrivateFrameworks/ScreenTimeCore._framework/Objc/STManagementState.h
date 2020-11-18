@@ -35,6 +35,7 @@
 - (void)isRestrictionsPasscodeSet:(CDUnknownBlockType)arg1;
 - (BOOL)performMigrationFromMCXSettings:(id)arg1 error:(id *)arg2;
 - (BOOL)permitWebFilterURL:(id)arg1 pageTitle:(id)arg2 error:(id *)arg3;
+- (id)primaryiCloudCardDAVAccountIdentifierWithError:(id *)arg1;
 - (void)requestToManageContactsForDSID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)screenTimeStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)screenTimeSyncStateWithCompletionHandler:(CDUnknownBlockType)arg1;

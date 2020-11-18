@@ -57,6 +57,7 @@
 - (id)_groupMessageObjectIDsByMailboxScope:(id)arg1;
 - (void)_setCachedMetadataJSON:(id)arg1 forKey:(id)arg2 messageIDHash:(id)arg3;
 - (id)_threadQueryForThreadObjectID:(id)arg1;
+- (id)cachedDatabaseIDsDictionaryForMessageIDHashes:(id)arg1;
 - (id)cachedMetadataJSONForKey:(id)arg1 messageID:(id)arg2;
 - (long long)countOfMessagesMatchingQuery:(id)arg1;
 - (long long)countOfMessagesWithMessageIDHeaderHash:(id)arg1 matchingQuery:(id)arg2;

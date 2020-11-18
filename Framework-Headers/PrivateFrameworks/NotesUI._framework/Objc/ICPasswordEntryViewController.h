@@ -42,6 +42,7 @@
 @property (weak, nonatomic) UIButton *unlockButton; // @synthesize unlockButton=_unlockButton;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)beginAuthentication;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;

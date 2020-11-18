@@ -13,6 +13,7 @@
     MISSING_TYPE *group;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *magazineConfigurationService;
+    MISSING_TYPE *personalizationService;
 }
 
 @end

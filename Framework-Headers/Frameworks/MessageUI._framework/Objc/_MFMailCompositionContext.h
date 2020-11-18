@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <MessageUI/EMCollectionChangeObserver-Protocol.h>
 #import <MessageUI/MFMailCompositionAdditionalDonating-Protocol.h>
 #import <MessageUI/MFMailCompositionShareSheetRecipients-Protocol.h>
 
-@class EMMessage, MFAttachmentComposeManager, MFAttachmentCompositionContext, MFAttachmentManager, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString, UIView;
-@protocol MFComposeBodyField;
+@class EMMessage, EMMessageList, MFAttachmentComposeManager, MFAttachmentCompositionContext, MFAttachmentManager, MFComposeWebView, MFMailMessage, MFMessageLoadingContext, NSArray, NSMutableArray, NSString;
+@protocol EFScheduler, _MFMailCompositionContextDelegate;
 
-@interface _MFMailCompositionContext : NSObject <MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients>
+@interface _MFMailCompositionContext : NSObject <EMCollectionChangeObserver, MFMailCompositionAdditionalDonating, MFMailCompositionShareSheetRecipients>
 {
     NSString *_sendingAddress;
     NSString *_subject;
@@ -36,6 +37,7 @@
     MFAttachmentComposeManager *_attachmentManager;
     NSMutableArray *_deferredAttachments;
     BOOL _registeredForDraw;
+    EMMessageList *_messageList;
     BOOL _usingDefaultAccount;
     BOOL _prefersFirstLineSelection;
     int _sourceAccountManagement;
@@ -50,7 +52,9 @@
     unsigned long long _defaultContentVariationIndex;
     NSString *_contentVariationAttachmentCID;
     NSString *_originatingBundleID;
-    UIView<MFComposeBodyField> *_bodyField;
+    id<_MFMailCompositionContextDelegate> _delegate;
+    MFComposeWebView *_composeWebView;
+    id<EFScheduler> _observationScheduler;
 }
 
 @property (copy, nonatomic) NSArray *UTITypes; // @synthesize UTITypes=_UTITypes;
@@ -59,22 +63,27 @@
 @property (strong, nonatomic) NSString *attachmentToMarkupContentID; // @synthesize attachmentToMarkupContentID=_attachmentToMarkupContentID;
 @property (readonly, nonatomic) NSString *autosaveIdentifier; // @synthesize autosaveIdentifier=_autosaveIdentifier;
 @property (copy, nonatomic) NSArray *bccRecipients; // @synthesize bccRecipients=_bccRecipients;
-@property UIView<MFComposeBodyField> *bodyField; // @synthesize bodyField=_bodyField;
 @property (nonatomic) unsigned long long caretPosition; // @synthesize caretPosition=_caretPosition;
 @property (copy, nonatomic) NSArray *ccRecipients; // @synthesize ccRecipients=_ccRecipients;
 @property (copy, nonatomic) NSArray *cloudPhotoIDs; // @synthesize cloudPhotoIDs=_cloudPhotoIDs;
 @property (readonly, nonatomic) int composeType; // @synthesize composeType=_composeType;
+@property MFComposeWebView *composeWebView; // @synthesize composeWebView=_composeWebView;
 @property (copy, nonatomic) NSArray *contentText; // @synthesize contentText=_contentText;
 @property (copy, nonatomic) NSArray *contentURLs; // @synthesize contentURLs=_contentURLs;
-@property (strong, nonatomic) NSString *contentVariationAttachmentCID; // @synthesize contentVariationAttachmentCID=_contentVariationAttachmentCID;
+@property (copy, nonatomic) NSString *contentVariationAttachmentCID; // @synthesize contentVariationAttachmentCID=_contentVariationAttachmentCID;
 @property (copy, nonatomic) NSArray *contentVariations; // @synthesize contentVariations=_contentVariations;
 @property (readonly, nonatomic) NSString *contextID;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long defaultContentVariationIndex; // @synthesize defaultContentVariationIndex=_defaultContentVariationIndex;
+@property (weak, nonatomic) id<_MFMailCompositionContextDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL includeAttachments; // @synthesize includeAttachments=_includeAttachments;
 @property (nonatomic) BOOL includeAttachmentsWhenAdding; // @synthesize includeAttachmentsWhenAdding=_includeAttachmentsWhenAdding;
 @property (readonly, nonatomic) MFMailMessage *legacyMessage; // @synthesize legacyMessage=_legacyMessage;
 @property (nonatomic) BOOL loadRest; // @synthesize loadRest=_loadRest;
 @property (strong, nonatomic) MFMessageLoadingContext *loadingContext; // @synthesize loadingContext=_loadingContext;
+@property (strong, nonatomic) id<EFScheduler> observationScheduler; // @synthesize observationScheduler=_observationScheduler;
 @property (strong, nonatomic) id originalContent; // @synthesize originalContent=_originalContent;
 @property (readonly, nonatomic) EMMessage *originalMessage; // @synthesize originalMessage=_originalMessage;
 @property (copy, nonatomic) NSString *originatingBundleID; // @synthesize originatingBundleID=_originatingBundleID;
@@ -86,6 +95,7 @@
 @property (nonatomic) BOOL showKeyboardImmediately; // @synthesize showKeyboardImmediately=_showKeyboardImmediately;
 @property (nonatomic) int sourceAccountManagement; // @synthesize sourceAccountManagement=_sourceAccountManagement;
 @property (copy, nonatomic) NSString *subject; // @synthesize subject=_subject;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSArray *toRecipients; // @synthesize toRecipients=_toRecipients;
 @property (nonatomic) BOOL usingDefaultAccount; // @synthesize usingDefaultAccount=_usingDefaultAccount;
 
@@ -95,6 +105,13 @@
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3;
 - (id)addAttachmentData:(id)arg1 mimeType:(id)arg2 fileName:(id)arg3 contentID:(id)arg4;
 - (id)attachments;
+- (void)collection:(id)arg1 addedItemIDs:(id)arg2 after:(id)arg3;
+- (void)collection:(id)arg1 addedItemIDs:(id)arg2 before:(id)arg3;
+- (void)collection:(id)arg1 changedItemIDs:(id)arg2;
+- (void)collection:(id)arg1 deletedItemIDs:(id)arg2;
+- (void)collection:(id)arg1 movedItemIDs:(id)arg2 after:(id)arg3;
+- (void)collection:(id)arg1 movedItemIDs:(id)arg2 before:(id)arg3;
+- (void)collection:(id)arg1 replacedExistingItemID:(id)arg2 withNewItemID:(id)arg3;
 - (void)dealloc;
 - (BOOL)hasDuetDonationContext;
 - (id)init;
@@ -113,7 +130,7 @@
 - (id)initWithURL:(id)arg1 composeType:(int)arg2 originalMessage:(id)arg3 legacyMessage:(id)arg4;
 - (void)insertAttachmentWithData:(id)arg1 fileName:(id)arg2 mimeType:(id)arg3 contentID:(id)arg4;
 - (void)insertAttachmentWithURL:(id)arg1;
-- (void)insertDeferredAttachmentsIntoBodyField:(id)arg1;
+- (void)insertDeferredAttachmentsIntoComposeWebView:(id)arg1;
 - (id)messageBody;
 - (void)recordPasteboardAttachmentsForURLs:(id)arg1;
 - (void)recordUndoAttachmentsForURLs:(id)arg1;

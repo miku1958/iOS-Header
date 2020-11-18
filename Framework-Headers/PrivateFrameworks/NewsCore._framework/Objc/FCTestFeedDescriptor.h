@@ -19,7 +19,8 @@
 
 + (id)descriptorWithContext:(id)arg1;
 + (id)descriptorWithContext:(id)arg1 tag:(id)arg2;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)allEmitterClasses;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 
 @end
 

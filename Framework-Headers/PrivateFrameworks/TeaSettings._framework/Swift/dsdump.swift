@@ -70,7 +70,7 @@
 	var apply : (_:) // +0x18 (0x10)
 
 	// Swift methods
-	0x1a80  class func Preset.__allocating_init(extends:apply:) // init 
+	0x1820  class func Preset.__allocating_init(extends:apply:) // init 
  }
 
  class TeaSettings.SettingGroup : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -79,9 +79,9 @@
 	var enabledSetting : Setting<Bool>? // +0x10 (0x8)
 
 	// Swift methods
-	0x1bd0  func <stripped> // getter 
-	0x1c10  func <stripped> // method 
-	0x1cc0  class func SettingGroup.__allocating_init(key:defaultValue:access:) // init 
+	0x1970  func <stripped> // getter 
+	0x19b0  func <stripped> // method 
+	0x1a60  class func SettingGroup.__allocating_init(key:defaultValue:access:) // init 
  }
 
  enum TeaSettings.Access {
@@ -123,6 +123,7 @@
 	case switch : ChangeBehavior
 	case toggle : (actions: [SettingAction], active: (), change: (_:))
 	case textField : (value: String, actions: [SettingAction], change: (_:))
+	case secureTextField : (value: String, actions: [SettingAction], change: (_:))
 	case stepper : (value: Float, stepValue: Float, min: Float, max: Float, actions: [SettingAction], change: (_:))
 	case slider : (value: Float, min: Float, max: Float, actions: [SettingAction], change: (_:))
 	case page : (pageLayout: [Group])
@@ -195,9 +196,9 @@
 	let actions : [SettingAction] // +0x28 (0x8)
 
 	// Swift methods
-	0xeda0  class func PresetItem.__allocating_init(_:label:actions:) // init 
-	0xee60  func <stripped> // getter 
-	0xf100  func <stripped> // getter 
+	0xeb60  class func PresetItem.__allocating_init(_:label:actions:) // init 
+	0xec20  func <stripped> // getter 
+	0xeec0  func <stripped> // getter 
  }
 
  class TeaSettings.OptionItem {
@@ -235,12 +236,12 @@
 	let closure : (_:)?
 
 	// Swift methods
-	0x12ab0  func <stripped> // getter 
-	0x12ae0  func <stripped> // setter 
-	0x12b20  func <stripped> // modifyCoroutine 
-	0x127e0  class func SettingAction.__allocating_init(_:_:) // init 
-	0x12bc0  func <stripped> // method 
-	0x12c50  func <stripped> // method 
+	0x129b0  func <stripped> // getter 
+	0x129e0  func <stripped> // setter 
+	0x12a20  func <stripped> // modifyCoroutine 
+	0x126e0  class func SettingAction.__allocating_init(_:_:) // init 
+	0x12ac0  func <stripped> // method 
+	0x12b50  func <stripped> // method 
  }
 
  enum TeaSettings.PostInstruction {
@@ -260,7 +261,7 @@
 	var presets : [String : [Preset]] // +0x20 (0x8)
 
 	// Swift methods
-	0x13410  class func PresetManager.__allocating_init() // init 
+	0x13310  class func PresetManager.__allocating_init() // init 
  }
 
  enum TeaSettings.Domain {
@@ -276,8 +277,8 @@
 	let presetManager : PresetManagerType // +0x10 (0x28)
 
 	// Swift methods
-	0x14dd0  class func PresetStartupTask.__allocating_init(presetManager:) // init 
-	0x14eb0  func <stripped> // method 
+	0x14cd0  class func PresetStartupTask.__allocating_init(presetManager:) // init 
+	0x14db0  func <stripped> // method 
  }
 
  class TeaSettings.ResetItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -289,7 +290,7 @@
 	let layout : [Group] // +0x28 (0x8)
 
 	// Swift methods
-	0x15a60  class func ResetItem.__allocating_init(layout:) // init 
+	0x15960  class func ResetItem.__allocating_init(layout:) // init 
  }
 
  class TeaSettings.Presets : _SwiftObject /usr/lib/swift/libswiftCore.dylib {

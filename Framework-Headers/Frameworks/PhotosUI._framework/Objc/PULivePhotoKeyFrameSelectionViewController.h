@@ -21,7 +21,6 @@
 @property (copy, nonatomic) NSString *selectionTitle; // @synthesize selectionTitle=_selectionTitle;
 
 - (void).cxx_destruct;
-- (BOOL)_canShowWhileLocked;
 - (void)_updateButtonTitle;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

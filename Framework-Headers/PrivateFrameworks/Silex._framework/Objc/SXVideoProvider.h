@@ -19,6 +19,7 @@
     SVTimeline *_timeline;
     double _pausedAtTime;
     NSString *_mediaIdentifier;
+    unsigned long long _playMethod;
 }
 
 @property (readonly, nonatomic) NSURL *URL; // @synthesize URL=_URL;
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) NSString *mediaIdentifier; // @synthesize mediaIdentifier=_mediaIdentifier;
 @property (weak, nonatomic) id<SVVideoMetadata> metadata; // @synthesize metadata=_metadata;
 @property (nonatomic) double pausedAtTime; // @synthesize pausedAtTime=_pausedAtTime;
+@property (nonatomic) unsigned long long playMethod; // @synthesize playMethod=_playMethod;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) SVTimeline *timeline; // @synthesize timeline=_timeline;
 
@@ -39,7 +41,7 @@
 - (void)muteStateChanged:(BOOL)arg1;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
-- (void)playbackInitiated;
+- (void)playbackInitiatedWithButtonTapped:(BOOL)arg1;
 - (void)playbackPaused;
 - (void)playbackPausedAtTime:(double)arg1;
 - (void)playbackResumed;

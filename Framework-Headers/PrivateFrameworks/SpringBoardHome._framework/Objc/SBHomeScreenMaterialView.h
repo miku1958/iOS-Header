@@ -21,6 +21,7 @@
 }
 
 @property (nonatomic) struct UIEdgeInsets backgroundInsets; // @synthesize backgroundInsets=_backgroundInsets;
+@property (readonly, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
 @property (nonatomic) double brightness;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted; // @synthesize highlighted=_highlighted;
 

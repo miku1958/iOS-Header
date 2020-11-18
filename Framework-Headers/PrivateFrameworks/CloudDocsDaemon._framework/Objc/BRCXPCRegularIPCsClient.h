@@ -59,6 +59,8 @@ __attribute__((visibility("hidden")))
 - (void)addExternalDocumentReferenceTo:(id)arg1 inContainer:(id)arg2 underParent:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)boostFilePresenterAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)capabilityWhenTryingToReparentItemAtURL:(id)arg1 toNewParent:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)checkIfFolderSharingEnabledWithReply:(CDUnknownBlockType)arg1;
+- (void)checkIfItemIsShareableWithInode:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (oneway void)checkinAskClientIfUsingUbiquity:(BOOL)arg1;
 - (void)computePurgeableSpaceForAllUrgenciesWithReply:(CDUnknownBlockType)arg1;
 - (void)copyBulkShareIDsAtURLs:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -110,6 +112,7 @@ __attribute__((visibility("hidden")))
 - (void)getNonLocalVersionSenderWithReceiver:(id)arg1 documentURL:(id)arg2 includeCachedVersions:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)getPublishedURLForItemAtURL:(id)arg1 forStreaming:(BOOL)arg2 requestedTTL:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)getQueryItemForURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)getShareOptionsOfItemIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getTotalApplicationDocumentUsageWithReply:(CDUnknownBlockType)arg1;
 - (void)getiWorkNeedsShareMigrateAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getiWorkPublishingBadgingStatusAtURL:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -147,7 +150,6 @@ __attribute__((visibility("hidden")))
 - (void)setupInstanceWithDict:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)simulateHealthIssueWithContainer:(id)arg1 status:(id)arg2 brokenStructure:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)startDownloadItemsAtURLs:(id)arg1 options:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)startOperation:(id)arg1 toCleanShareSubitemsAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toCopyAvailableQuotaWithReply:(CDUnknownBlockType)arg2;
 - (void)startOperation:(id)arg1 toCopyDocumentURLForRecordID:(id)arg2 syncIfNeeded:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)startOperation:(id)arg1 toCopyEtagAtURL:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -163,6 +165,7 @@ __attribute__((visibility("hidden")))
 - (void)startOperation:(id)arg1 toLookupShareParticipants:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toModifyRecordAccessAtURL:(id)arg2 allowAccess:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)startOperation:(id)arg1 toPrepFolderForSharingAt:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)startOperation:(id)arg1 toProcessSubitemsAtURL:(id)arg2 maxSubsharesFailures:(unsigned long long)arg3 processType:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)startOperation:(id)arg1 toSaveSharingInfo:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)startOperation:(id)arg1 toUnshareShare:(id)arg2 forceDelete:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)startOperation:(id)arg1 toUploadAllFilesInContainer:(id)arg2 reply:(CDUnknownBlockType)arg3;

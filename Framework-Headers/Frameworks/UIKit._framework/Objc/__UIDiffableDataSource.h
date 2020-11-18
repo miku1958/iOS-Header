@@ -78,6 +78,7 @@
 - (void)_commitStateAtomicallyWithIdentifiers:(id)arg1 sections:(id)arg2 dataSourceSnapshot:(id)arg3 shouldAdvanceGenerationalUUID:(BOOL)arg4 shouldCopy:(BOOL)arg5;
 - (void)_commitUpdate:(id)arg1;
 - (void)_commitUpdate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)_isDiffableDataSource;
 - (long long)_numberOfItemsInSection:(long long)arg1 collectionView:(id)arg2;
 - (long long)_numberOfItemsInSectionDeprecatedSPI:(long long)arg1 collectionView:(id)arg2;
 - (long long)_numberOfRowsInSection:(long long)arg1 tableView:(id)arg2;

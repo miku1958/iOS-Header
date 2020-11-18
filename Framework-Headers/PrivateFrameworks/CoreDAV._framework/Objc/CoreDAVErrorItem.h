@@ -20,6 +20,7 @@
     CoreDAVItemWithNoChildren *_maxImageSize;
     CoreDAVItemWithNoChildren *_invalidImageType;
     CoreDAVItemWithNoChildren *_imageError;
+    CoreDAVItemWithNoChildren *_guardianRestricted;
     CoreDAVItemWithNoChildren *_maxAttendees;
     CoreDAVItemWithNoChildren *_quotaExceeded;
     CoreDAVItemWithNoChildren *_maxResources;
@@ -29,6 +30,7 @@
 }
 
 @property (strong, nonatomic) CoreDAVItemWithNoChildren *ctagOkay; // @synthesize ctagOkay=_ctagOkay;
+@property (strong, nonatomic) CoreDAVItemWithNoChildren *guardianRestricted; // @synthesize guardianRestricted=_guardianRestricted;
 @property (strong, nonatomic) CoreDAVItemWithNoChildren *imageError; // @synthesize imageError=_imageError;
 @property (strong, nonatomic) CoreDAVItemWithNoChildren *invalidImageType; // @synthesize invalidImageType=_invalidImageType;
 @property (strong, nonatomic) CoreDAVItemWithNoChildren *maxAttendees; // @synthesize maxAttendees=_maxAttendees;

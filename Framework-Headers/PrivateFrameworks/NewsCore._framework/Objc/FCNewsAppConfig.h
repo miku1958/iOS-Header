@@ -37,6 +37,7 @@
     FCWidgetConfig *_widgetConfig;
 }
 
+@property (readonly, nonatomic) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
 @property (readonly, nonatomic) NSDictionary *analyticsContentTypeConfigsByContentTypeByEnvironment; // @synthesize analyticsContentTypeConfigsByContentTypeByEnvironment=_analyticsContentTypeConfigsByContentTypeByEnvironment;
 @property (readonly, nonatomic) long long analyticsEndpointMaxPayloadSize;
 @property (readonly, nonatomic) NSString *anfRenderingConfiguration;
@@ -62,8 +63,9 @@
 @property (readonly, nonatomic) long long corryBarMaxArticleCountForSingleArticle;
 @property (readonly, nonatomic) long long criticalStorageThreshold;
 @property (readonly, nonatomic) NSNumber *currentTreatment;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double delayBeforeRetryingDroppedFeeds;
-@property (readonly, nonatomic) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL disableThumbnailsForArticleRecirculation;
 @property (readonly, nonatomic) BOOL diversifyOptionalTopStories;
 @property (readonly, nonatomic) NSString *editorialChannelID;
@@ -71,6 +73,7 @@
 @property (readonly, nonatomic) long long emailSignupRequiredAppLaunchCount;
 @property (readonly, nonatomic) NSString *embedConfigurationAssetID;
 @property (readonly, nonatomic) BOOL enableBadgeInSpotlightTabBar;
+@property (readonly, nonatomic) BOOL enableLocationBasedAutofavorites;
 @property (readonly, nonatomic) long long endOfArticleMaxInaccessiblePaidArticleCount;
 @property (readonly, nonatomic) double endOfArticleMinPaidHeadlineRatio;
 @property (readonly, nonatomic) NSDictionary *endpointConfigsByEnvironment; // @synthesize endpointConfigsByEnvironment=_endpointConfigsByEnvironment;
@@ -87,6 +90,7 @@
 @property (readonly, nonatomic) FCForYouGroupsConfiguration *forYouGroupsConfiguration; // @synthesize forYouGroupsConfiguration=_forYouGroupsConfiguration;
 @property (readonly, nonatomic) NSString *forYouRecordConfigID;
 @property (readonly, copy, nonatomic) FCVideoGroupsConfig *forYouVideoGroupsConfig; // @synthesize forYouVideoGroupsConfig=_forYouVideoGroupsConfig;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSArray *hiddenFeedIDs;
 @property (readonly, nonatomic) FCIAdConfiguration *iAdConfig; // @synthesize iAdConfig=_iAdConfig;
 @property (readonly, nonatomic) double interstitialAdLoadDelay;
@@ -97,6 +101,7 @@
 @property (readonly, nonatomic) NSDictionary *languageConfigDictionary; // @synthesize languageConfigDictionary=_languageConfigDictionary;
 @property (readonly, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
 @property (readonly, nonatomic) unsigned long long likeDislikeBehavior;
+@property (readonly, nonatomic) NSString *localAreasMappingResourceId;
 @property (readonly, nonatomic) long long lowStorageThreshold;
 @property (readonly, nonatomic) NSString *magazinesConfigRecordID;
 @property (readonly, nonatomic) long long maxRetriesForDroppedFeeds;
@@ -152,8 +157,10 @@
 @property (readonly, nonatomic) long long subscriptionsGracePeriodForTokenVerificationSeconds;
 @property (readonly, nonatomic) long long subscriptionsPlacardGlobalMaximumPerDay;
 @property (readonly, nonatomic) long long subscriptionsPlacardPublisherFrequencyInSeconds;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL terminateAppOnBackgroundAfterJoiningOrLeavingExperiment;
 @property (readonly, nonatomic) double tileProminenceScoreBalanceValue;
+@property (readonly, nonatomic) NSString *todayFeedKnobs;
 @property (readonly, nonatomic) FCTopStoriesConfiguration *topStoriesConfig; // @synthesize topStoriesConfig=_topStoriesConfig;
 @property (readonly, copy, nonatomic) NSArray *topStoriesPublishDates;
 @property (readonly, nonatomic) NSString *topVideosChannelID;
@@ -163,6 +170,7 @@
 @property (readonly, nonatomic) long long trendingTopicsRefreshRate;
 @property (readonly, nonatomic) BOOL universalLinksEnabled;
 @property (readonly, nonatomic) BOOL useSecureConnectionForAssets;
+@property (readonly, nonatomic) NSString *webEmbedContentBlockerOverrides;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockers;
 @property (readonly, nonatomic) FCWidgetConfig *widgetConfig; // @synthesize widgetConfig=_widgetConfig;
 @property (readonly, nonatomic) NSString *widgetConfigID;

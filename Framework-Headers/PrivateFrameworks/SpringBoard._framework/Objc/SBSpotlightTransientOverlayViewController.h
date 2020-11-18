@@ -25,6 +25,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)dealloc;
 - (void)dismissSearchView;
 - (BOOL)handleHomeButtonPress;

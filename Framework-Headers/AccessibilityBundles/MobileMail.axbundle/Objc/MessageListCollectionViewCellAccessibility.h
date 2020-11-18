@@ -28,6 +28,7 @@
 - (long long)_accessibilityScannerActivateBehavior;
 - (id)_accessibilityScrollStatus;
 - (unsigned long long)_accessibilityThreadCount;
+- (id)_accessibilityThreadedDisclosureButton;
 - (BOOL)_accessibilityToggleFlagAction:(id)arg1;
 - (BOOL)_accessibilityToggleReadAction:(id)arg1;
 - (BOOL)_accessibilityToggleThreadAction:(id)arg1;

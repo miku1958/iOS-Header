@@ -6,8 +6,6 @@
 
 #import <WebKit/WKWebView.h>
 
-#import <MessageUI/MFComposeBodyField-Protocol.h>
-#import <MessageUI/MFComposeBodyFieldInternal-Protocol.h>
 #import <MessageUI/MFComposeBodyFieldObserver-Protocol.h>
 #import <MessageUI/WKNavigationDelegate-Protocol.h>
 #import <MessageUI/WKUIDelegatePrivate-Protocol.h>
@@ -16,7 +14,7 @@
 @class NSArray, NSMutableDictionary, NSString, UIBarButtonItemGroup, _WKRemoteObjectInterface;
 @protocol MFComposeBodyFieldController, MFComposeWebViewDelegate, MFMailComposeViewDelegate, MFMailSignatureController, _WKFormInputSession;
 
-@interface MFComposeWebView : WKWebView <MFComposeBodyFieldInternal, MFComposeBodyFieldObserver, WKNavigationDelegate, _WKInputDelegate, WKUIDelegatePrivate, MFComposeBodyField>
+@interface MFComposeWebView : WKWebView <MFComposeBodyFieldObserver, WKNavigationDelegate, _WKInputDelegate, WKUIDelegatePrivate>
 {
     id<MFMailComposeViewDelegate> _mailComposeViewDelegate;
     NSString *_compositionContextID;
@@ -60,8 +58,9 @@
 
 + (id)_webViewConfiguration;
 - (void).cxx_destruct;
+- (void)_addAdditionalItemsToCalloutBar;
 - (void)_addAttachment:(id)arg1;
-- (id)_addInlineAttachmentWithData:(id)arg1 fileName:(id)arg2 type:(id)arg3;
+- (id)_addInlineAttachmentWithData:(id)arg1 fileName:(id)arg2 type:(id)arg3 contentID:(id)arg4;
 - (id)_attachmentInfoByIdentifier;
 - (id)_attachmentInfoByURL;
 - (id)_bodyFieldProxy;
@@ -70,14 +69,16 @@
 - (void)_decreaseQuoteLevel:(id)arg1;
 - (void)_decreaseQuoteLevelKeyCommandInvoked:(id)arg1;
 - (void)_didTapCameraButton:(id)arg1;
-- (void)_didTapFormatAccessoryViewButton:(id)arg1;
 - (void)_didTapImportDocumentButton:(id)arg1;
 - (void)_didTapInsertDrawingOrMarkupButton:(id)arg1;
 - (void)_didTapInsertPhotoButton:(id)arg1;
 - (void)_didTapScanDocumentButton:(id)arg1;
+- (id)_filenameForVideoAttachmentAtURL:(id)arg1;
+- (BOOL)_getExtensionAndMimeTypeForImageData:(id)arg1 outExtension:(id *)arg2 outMimeType:(id *)arg3;
 - (void)_increaseQuoteLevel:(id)arg1;
 - (void)_increaseQuoteLevelKeyCommandInvoked:(id)arg1;
 - (void)_insertDocumentFromData:(id)arg1 isImage:(BOOL)arg2 contentID:(id)arg3;
+- (id)_makeAttachmentDataWithFileURL:(id)arg1 type:(id)arg2;
 - (void)_menuDidHide:(id)arg1;
 - (void)_pasteAsQuotationKeyCommandInvoked:(id)arg1;
 - (void)_removeAttachment:(id)arg1;
@@ -123,14 +124,16 @@
 - (id)keyCommands;
 - (void)layoutWithMinimumSize;
 - (void)markupSelectedAttachment;
+- (id)mimeTypeForFilename:(id)arg1;
 - (id)nextAttachmentName;
 - (void)placeCaretAtStartOfBodyField;
 - (id)plainTextContent;
+- (void)prepareDataForDocumentAtURLForInsertion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)prependMarkupString:(id)arg1 quote:(BOOL)arg2;
 - (void)prependPreamble:(id)arg1 quote:(BOOL)arg2;
 - (void)prependString:(id)arg1;
 - (struct CGRect)rectOfElementWithID:(id)arg1;
-- (void)releaseFocusAfterDismissing;
+- (void)releaseFocusAfterDismissing:(BOOL)arg1;
 - (void)removeDropPlaceholders;
 - (void)removeMediaWithAssetIdentifier:(id)arg1;
 - (void)replaceAttachment:(id)arg1 withDocumentAtURL:(id)arg2 completion:(CDUnknownBlockType)arg3;

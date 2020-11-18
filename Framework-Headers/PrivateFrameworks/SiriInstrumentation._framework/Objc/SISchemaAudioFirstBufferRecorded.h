@@ -6,24 +6,18 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaAudioFirstBufferRecorded-Protocol.h>
+@class NSData;
 
-@class NSData, NSString;
-
-@interface SISchemaAudioFirstBufferRecorded : PBCodable <SISchemaAudioFirstBufferRecorded, NSSecureCoding>
+@interface SISchemaAudioFirstBufferRecorded : PBCodable
 {
     int _audioInputRoute;
 }
 
 @property (nonatomic) int audioInputRoute; // @synthesize audioInputRoute=_audioInputRoute;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly) Class superclass;
 
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

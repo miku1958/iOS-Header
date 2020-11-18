@@ -15,6 +15,8 @@
 
 + (id)_localStoreURLForFileData:(id)arg1 contentID:(id)arg2;
 + (id)_placeholderMagic;
++ (id)attachmentPlaceholderForData:(id)arg1 fileName:(id)arg2 type:(id)arg3 contentID:(id)arg4;
++ (id)attachmentPlaceholderForFileURL:(id)arg1 fileName:(id)arg2 fileSize:(long long)arg3 type:(id)arg4 contentID:(id)arg5;
 + (void)cloneFileAtURL:(id)arg1 toPlaceholderURL:(id)arg2;
 + (id)dataForPlaceholder:(id)arg1;
 + (BOOL)hasPlaceholderRepresentation:(id)arg1;

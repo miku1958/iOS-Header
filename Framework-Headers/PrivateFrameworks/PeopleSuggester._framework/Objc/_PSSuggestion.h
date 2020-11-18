@@ -20,6 +20,7 @@
     NSString *_derivedIntentIdentifier;
     NSString *_reason;
     NSString *_reasonType;
+    NSString *_trialID;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -30,6 +31,7 @@
 @property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (copy, nonatomic) NSString *reasonType; // @synthesize reasonType=_reasonType;
 @property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
+@property (copy, nonatomic) NSString *trialID; // @synthesize trialID=_trialID;
 
 + (id)suggestionForBundleID:(id)arg1 derivedIntentIdentifier:(id)arg2 knowledgeStore:(id)arg3 contactResolver:(id)arg4 reason:(id)arg5 reasonType:(id)arg6;
 + (BOOL)supportsSecureCoding;

@@ -24,6 +24,7 @@
     BOOL _removing;
     BOOL _hasSafeAreaInsetOverride;
     PKDiscoveryArticleLayout *_articleLayout;
+    long long _priority;
     id<PKDiscoveryCardViewDelegate> _delegate;
     long long _displayType;
     CDUnknownBlockType _callToActionTappedOverride;
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) CDUnknownBlockType dismissAction; // @synthesize dismissAction=_dismissAction;
 @property (nonatomic) long long displayType; // @synthesize displayType=_displayType;
 @property (nonatomic) BOOL hasSafeAreaInsetOverride; // @synthesize hasSafeAreaInsetOverride=_hasSafeAreaInsetOverride;
+@property (readonly, nonatomic) long long priority; // @synthesize priority=_priority;
 @property (nonatomic, getter=isRemoving) BOOL removing; // @synthesize removing=_removing;
 @property (nonatomic) struct UIEdgeInsets safeAreaOverrideInsets; // @synthesize safeAreaOverrideInsets=_safeAreaOverrideInsets;
 

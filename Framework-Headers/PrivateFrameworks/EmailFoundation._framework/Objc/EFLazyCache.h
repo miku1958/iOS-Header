@@ -30,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)_exchangeOriginalObject:(id)arg1 forKey:(id)arg2 withObject:(id)arg3;
 - (void)cache:(id)arg1 willEvictObject:(id)arg2;
+- (id)cachedObjectForKey:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (id)initWithCountLimit:(unsigned long long)arg1;

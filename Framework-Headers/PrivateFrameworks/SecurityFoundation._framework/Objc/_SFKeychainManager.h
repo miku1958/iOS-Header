@@ -7,25 +7,32 @@
 #import <objc/NSObject.h>
 
 @class _SFCredentialStore;
+@protocol OS_dispatch_queue;
 
 @interface _SFKeychainManager : NSObject
 {
-    id _keychainManagerInternal;
+    _SFCredentialStore *_credentialStore;
+    NSObject<OS_dispatch_queue> *_keychainManagerQueue;
+    NSObject<OS_dispatch_queue> *_keychainReplyQueue;
 }
 
-@property (readonly) _SFCredentialStore *credentialStore;
+@property (strong) _SFCredentialStore *credentialStore; // @synthesize credentialStore=_credentialStore;
+@property (strong) NSObject<OS_dispatch_queue> *keychainManagerQueue; // @synthesize keychainManagerQueue=_keychainManagerQueue;
+@property (strong) NSObject<OS_dispatch_queue> *keychainReplyQueue; // @synthesize keychainReplyQueue=_keychainReplyQueue;
 
 + (id)defaultManager;
++ (id)defaultOverCommitManager;
 - (void).cxx_destruct;
 - (struct __CFDictionary *)_certificateAttributesForIdentityIdentifier:(id)arg1 accessPolicy:(id)arg2;
 - (struct __CFDictionary *)_commonKeyAttributesForIdentityIdentifier:(id)arg1 accessPolicy:(id)arg2 key:(id)arg3;
-- (id)_init;
 - (struct __CFDictionary *)_privateKeyAttributesForIdentityIdentifier:(id)arg1 accessPolicy:(id)arg2 key:(id)arg3;
 - (struct __CFDictionary *)_publicKeyAttributesForIdentityIdentifier:(id)arg1 accessPolicy:(id)arg2 key:(id)arg3;
 - (id)_symmetricKeyAttributesForIdentifier:(id)arg1 accessPolicy:(id)arg2 key:(id)arg3;
 - (void)dataForIdentifier:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)identitiesFilteredBy:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)identityForIdentifier:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (id)initManager;
+- (id)initOverCommitManager;
 - (void)keyForIdentifier:(id)arg1 specifier:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)keysFilteredBy:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)removeItemWithIdentifier:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;

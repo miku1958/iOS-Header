@@ -21,7 +21,7 @@
     long long _mailboxID;
     long long _originalMailboxID;
     NSString *_messageID;
-    unsigned long long _conversationFlags;
+    _Atomic unsigned long long _conversationFlags;
     NSArray *_references;
 }
 

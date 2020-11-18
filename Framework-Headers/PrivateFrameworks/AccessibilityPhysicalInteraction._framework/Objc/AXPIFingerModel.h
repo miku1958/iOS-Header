@@ -13,6 +13,7 @@
     BOOL _pressed;
     BOOL _selected;
     double _force;
+    unsigned long long _shape;
     id<AXPIFingerModelDelegate> _delegate;
     struct CGPoint _location;
 }
@@ -22,6 +23,7 @@
 @property (nonatomic) struct CGPoint location; // @synthesize location=_location;
 @property (nonatomic, getter=isPressed) BOOL pressed; // @synthesize pressed=_pressed;
 @property (nonatomic, getter=isSelected) BOOL selected; // @synthesize selected=_selected;
+@property (nonatomic) unsigned long long shape; // @synthesize shape=_shape;
 
 + (id)fingerModelForLocation:(struct CGPoint)arg1;
 - (void).cxx_destruct;

@@ -7,8 +7,8 @@
 #import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCPurchaseOfferableConfiguration, FCSubscriptionButtonConfiguration, NSArray, NSData, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
-@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagProviding, FCTopicProviding;
+@class FCAssetHandle, FCColor, FCPaywallConfiguration, FCPurchaseOfferableConfiguration, NSArray, NSData, NSDate, NSString, NSURL, NTPBPublisherPaidDescriptionStrings;
+@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagProviding, FCTagStocksFields, FCTopicProviding;
 
 @protocol FCTagProviding <NSObject, NFCopying>
 
@@ -48,7 +48,7 @@
 @property (readonly, nonatomic) FCAssetHandle *nameImageCompactAssetHandle;
 @property (readonly, nonatomic) FCAssetHandle *nameImageMaskWidgetHQAssetHandle;
 @property (readonly, nonatomic) FCAssetHandle *nameImageMaskWidgetLQAssetHandle;
-@property (readonly, copy, nonatomic) FCSubscriptionButtonConfiguration *paidBundleSubscriptionButtonConfiguration;
+@property (readonly, copy, nonatomic) FCPaywallConfiguration *paidBundlePaywallConfiguration;
 @property (readonly, copy, nonatomic) NSString *primaryAudience;
 @property (readonly, copy, nonatomic) NSString *publisherPaidAuthorizationURL;
 @property (readonly, nonatomic) NSArray *publisherPaidBundlePurchaseIDs;
@@ -63,6 +63,7 @@
 @property (readonly, nonatomic) NSDate *publisherSpecifiedArticleIDsModifiedDate;
 @property (readonly, copy, nonatomic) NSString *replacementID;
 @property (readonly, nonatomic) long long score;
+@property (readonly, nonatomic) id<FCTagStocksFields> stocksFields;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly, nonatomic) unsigned long long tagType;
 @property (readonly, copy, nonatomic) id<FCFeedTheming> theme;

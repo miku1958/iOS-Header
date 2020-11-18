@@ -22,6 +22,7 @@
 @property (readonly, copy, nonatomic) NSString *filename;
 @property (readonly, copy, nonatomic) NSString *guid;
 @property (readonly, nonatomic) BOOL hideAttachment;
+@property (readonly, nonatomic) BOOL isDirectory;
 @property (readonly, nonatomic) BOOL isSticker;
 @property (readonly, nonatomic, getter=isRestoring) BOOL restoring;
 @property (readonly, copy, nonatomic) NSDictionary *stickerUserInfo;

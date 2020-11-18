@@ -32,6 +32,7 @@ __attribute__((visibility("hidden")))
 - (void)_adjustFooterHeight;
 - (void)_fetchAuthorizationRecordsBySourceForCharacteristic:(id)arg1;
 - (void)_gatherDataAndRefreshUI;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
 - (id)_sourceForIndexPath:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;

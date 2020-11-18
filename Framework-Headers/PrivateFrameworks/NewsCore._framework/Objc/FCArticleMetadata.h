@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSDate *displayDate; // @synthesize displayDate=_displayDate;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isTreatedAsNew;
+@property (readonly, nonatomic) NSString *shortExcerpt;
 @property (readonly, nonatomic) NSString *storyType;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *title;

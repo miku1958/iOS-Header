@@ -55,6 +55,7 @@
 - (id)initWithStoreContainerToken:(id)arg1 userInteractive:(BOOL)arg2;
 - (void)invalidate;
 - (id)syncChangeTrackingPerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (id)syncDebugPerformerWithErrorHandler:(CDUnknownBlockType)arg1;
 - (id)syncDebugPerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)syncIndexingPerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (id)syncStorePerformerWithReason:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;

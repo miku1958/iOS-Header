@@ -82,10 +82,8 @@
 - (BOOL)isFirstResponder;
 - (BOOL)isOnDarkBackground;
 - (void)performActionAfterCommit:(CDUnknownBlockType)arg1;
-- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(long long)arg3;
+- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(unsigned long long)arg3;
 - (void)returnKeyPressed;
-- (BOOL)searchFieldIsFocused;
-- (void)searchForQuery:(id)arg1 forSuggestions:(BOOL)arg2;
 - (void)searchForSuggestion:(id)arg1;
 - (void)setSearchEntity:(id)arg1 fromSuggestion:(BOOL)arg2;
 - (void)setupKeyboardSupportForResultViewController:(id)arg1;

@@ -50,6 +50,7 @@
 - (void)_updateProvidersByIdentifier:(id)arg1 localProvidersByIdentifier:(id)arg2 pairedHostDeviceProvidersByIdentifier:(id)arg3;
 - (void)blockUntilInitialStateReceived;
 - (void)dealloc;
+- (void)donateUserIntentForProviderWithIdentifier:(id)arg1;
 - (id)init;
 - (void)invalidate;
 - (void)launchAppForDialRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;

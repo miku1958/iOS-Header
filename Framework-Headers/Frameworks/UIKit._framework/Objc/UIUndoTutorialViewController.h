@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIUndoTutorialView *tutorialView; // @synthesize tutorialView=_tutorialView;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)doneButtonPressed;
 - (id)initWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)viewDidLoad;

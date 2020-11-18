@@ -6,7 +6,8 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
-@class SXAction, SXScrollViewController;
+@class SXScrollViewController;
+@protocol SXAction, SXDocumentStyle;
 
 @protocol SXScrollViewControllerDelegate <NSObject>
 
@@ -14,9 +15,10 @@
 - (BOOL)accessibilityShouldScrollForScrollViewController:(SXScrollViewController *)arg1;
 - (BOOL)accessibilityShouldScrollForScrollViewController:(SXScrollViewController *)arg1 defaultValue:(BOOL)arg2;
 - (double)navigationBarHeightForScrollViewController:(SXScrollViewController *)arg1;
+- (void)scrollViewController:(SXScrollViewController *)arg1 didApplyDocumentStyle:(id<SXDocumentStyle>)arg2;
 - (void)scrollViewController:(SXScrollViewController *)arg1 enableNavigation:(BOOL)arg2;
 - (BOOL)scrollViewController:(SXScrollViewController *)arg1 shouldOccludeAccessibilityElement:(id)arg2;
-- (void)scrollViewController:(SXScrollViewController *)arg1 triggerAction:(SXAction *)arg2;
+- (void)scrollViewController:(SXScrollViewController *)arg1 triggerAction:(id<SXAction>)arg2;
 - (void)scrollViewControllerDidLayoutContent:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerDidScroll:(SXScrollViewController *)arg1;
 - (void)scrollViewControllerDidStopScrolling:(SXScrollViewController *)arg1;

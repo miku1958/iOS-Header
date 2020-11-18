@@ -129,7 +129,7 @@
 - (id)initForSearchFieldPlaceholderWithTraits:(id)arg1;
 - (id)initForSpotlightCategoryListWithTraits:(id)arg1;
 - (id)initForWifiFingerprintLookupWithLocations:(id)arg1 wifiAccessPoints:(id)arg2 maxLabels:(unsigned int)arg3 entryTime:(unsigned long long)arg4 exitTime:(unsigned long long)arg5 traits:(id)arg6;
-- (id)initWithAutocompleteFragment:(id)arg1 type:(int)arg2 traits:(id)arg3 filters:(id)arg4 retainedSearch:(id)arg5 tappedQuerySuggestion:(id)arg6 error:(id *)arg7;
+- (id)initWithAutocompleteFragment:(id)arg1 type:(int)arg2 traits:(id)arg3 filters:(id)arg4 retainedSearch:(id)arg5 tappedQuerySuggestion:(id)arg6 sessionData:(id)arg7 error:(id *)arg8;
 - (id)initWithBatchPopularNearbySearchCategories:(id)arg1 maxResults:(unsigned int)arg2 traits:(id)arg3;
 - (id)initWithBrandMUID:(unsigned long long)arg1 traits:(id)arg2;
 - (id)initWithCanonicalLocationSearchQueryString:(id)arg1 traits:(id)arg2;

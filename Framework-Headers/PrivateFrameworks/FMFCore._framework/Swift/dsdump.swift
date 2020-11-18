@@ -123,17 +123,17 @@
 	let features : FMFFeatures? // +0x45545f5f (0x9)
 	let myInfo : FMFMyInfo? // +0x0 (0x39)
 	let config : FMFConfig? // +0x0 (0xf0)
-	let locations : [FMFLocation]? // +0xe9000 (0x8)
+	let locations : [FMFLocation]? // +0xea000 (0x8)
 	let locatesInProgress : [FMFLocateInProgress]? // +0x0 (0x8)
-	let following : [FMFIntermediateFriend]? // +0xe9000 (0x8)
+	let following : [FMFIntermediateFriend]? // +0xea000 (0x8)
 	let followers : [FMFIntermediateFriend]? // +0x5 (0x8)
 	let futureFollowing : [FMFIntermediateFriend]? // +0x14 (0x8)
 	let futureFollowers : [FMFIntermediateFriend]? // +0x65745f5f (0x8)
 	let pendingOffers : [FMFIntermediateFriend]? // +0x0 (0x8)
 	let locationAlertsOnMeByMe : [FMFLocationAlert]? // +0x45545f5f (0x8)
 	let locationAlertsOnMeByFriends : [FMFLocationAlert]? // +0x0 (0x8)
-	let locationAlertsOnFriendsByMe : [FMFLocationAlert]? // +0x1c70 (0x8)
-	let locationAlertsOnFriendsByFriends : [FMFLocationAlert]? // +0xcc270 (0x8)
+	let locationAlertsOnFriendsByMe : [FMFLocationAlert]? // +0x1a60 (0x8)
+	let locationAlertsOnFriendsByFriends : [FMFLocationAlert]? // +0xcd2c0 (0x8)
  }
 
  enum FMFCore.InitRefreshCodingKeys {
@@ -163,7 +163,7 @@
 
 	// Properties
 	var delegate : FMFRefreshControllerDelegate // +0x10 (0x10)
-	var selectedFriend : FMFFriend? // +0x1c70 (0x0)
+	var selectedFriend : FMFFriend? // +0x1a60 (0x0)
 	var refreshReason : FMFRefreshReason? // +0x0 (0x1)
 	let serverInteractionController : FMFServerInteractionController // +0x0 (0x8)
 	let apsConnectionHandler : FMAPSConnectionHandler // +0x0 (0x8)
@@ -179,15 +179,15 @@
 	var isRefreshing : Bool // +0x80000400 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x9f80  @objc FMFRefreshController.refreshTimerFired <stripped>
+	0x9d70  @objc FMFRefreshController.refreshTimerFired <stripped>
 
 	// Swift methods
-	0x8450  func <stripped> // setter 
-	0x8ab0  func <stripped> // method 
-	0x8e00  func <stripped> // method 
-	0x91d0  func <stripped> // method 
-	0x9b60  func <stripped> // method 
-	0xa5c0  func <stripped> // method 
+	0x8240  func <stripped> // setter 
+	0x88a0  func <stripped> // method 
+	0x8bf0  func <stripped> // method 
+	0x8fc0  func <stripped> // method 
+	0x9950  func <stripped> // method 
+	0xa3b0  func <stripped> // method 
  }
 
  class FMFCore.FMLocationShiftingRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -207,7 +207,7 @@
 	let processingQueue : OS_dispatch_queue
 
 	// Swift methods
-	0xc6c0  func <stripped> // method 
+	0xc4b0  func <stripped> // method 
  }
 
  struct FMFCore.FMFSimpleLocation {
@@ -269,7 +269,7 @@
 	let labels : [String] // +0x10 (0x8)
 
 	// Swift methods
-	0x162a0  class func FMFRemoveLabelsAction.__allocating_init(labels:) // init 
+	0x16090  class func FMFRemoveLabelsAction.__allocating_init(labels:) // init 
  }
 
  class FMFCore.FMFShowHideLocationAction : FMFBaseAction {
@@ -278,7 +278,7 @@
 	let hideLocation : Bool // +0x10 (0x1)
 
 	// Swift methods
-	0x16650  class func FMFShowHideLocationAction.__allocating_init(hideLocation:) // init 
+	0x16440  class func FMFShowHideLocationAction.__allocating_init(hideLocation:) // init 
  }
 
  class FMFCore.FMFUpdateMeDeviceAction : FMFBaseAction {
@@ -287,7 +287,7 @@
 	let meDevice : FMFDevice // +0x10 (0x21)
 
 	// Swift methods
-	0x16910  class func FMFUpdateMeDeviceAction.__allocating_init(meDevice:) // init 
+	0x16700  class func FMFUpdateMeDeviceAction.__allocating_init(meDevice:) // init 
  }
 
  class FMFCore.FMFUpdateLocationAlertAction : FMFBaseAction {
@@ -296,7 +296,7 @@
 	let locationAlert : FMFLocationAlert // +0x0 (0x0)
 
 	// Swift methods
-	0x16c70  class func FMFUpdateLocationAlertAction.__allocating_init(locationAlert:location:radius:address:label:triggerType:isOn:repeating:phoneNumbers:emails:schedule:ckRecordName:ckRecordZoneOwnerName:acceptanceStatus:) // init 
+	0x16a60  class func FMFUpdateLocationAlertAction.__allocating_init(locationAlert:location:radius:address:label:triggerType:isOn:repeating:phoneNumbers:emails:schedule:ckRecordName:ckRecordZoneOwnerName:acceptanceStatus:) // init 
  }
 
  class FMFCore.FMFAddLocationAlertAction : FMFBaseAction {
@@ -305,7 +305,7 @@
 	let locationAlert : FMFLocationAlert // +0x74735f5f (0x0)
 
 	// Swift methods
-	0x17ed0  class func FMFAddLocationAlertAction.__allocating_init(friendId:followerIds:emails:phoneNumbers:location:address:label:addressType:radius:locationAlertTarget:triggerType:repeating:schedule:ckRecordName:ckRecordZoneOwnerName:acceptanceStatus:) // init 
+	0x17cc0  class func FMFAddLocationAlertAction.__allocating_init(friendId:followerIds:emails:phoneNumbers:location:address:label:addressType:radius:locationAlertTarget:triggerType:repeating:schedule:ckRecordName:ckRecordZoneOwnerName:acceptanceStatus:) // init 
  }
 
  class FMFCore.FMFSystemStateController : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -316,10 +316,10 @@
 	var isFMFRestricted : Bool // +0x28 (0x1)
 
 	// ObjC -> Swift bridged methods
-	0x19db0  @objc FMFSystemStateController.refreshFMFRestricted <stripped>
+	0x19ba0  @objc FMFSystemStateController.refreshFMFRestricted <stripped>
 
 	// Swift methods
-	0x19b10  func <stripped> // method 
+	0x19900  func <stripped> // method 
  }
 
  enum FMFCore.FMFShareLocationDuration {
@@ -338,7 +338,7 @@
 	let expiry : Date? // +0x0 (0x0)
 
 	// Swift methods
-	0x1a390  class func FMFShareLocationAction.__allocating_init(handles:friendId:expiry:duration:) // init 
+	0x1a180  class func FMFShareLocationAction.__allocating_init(handles:friendId:expiry:duration:) // init 
  }
 
  enum FMFCore.ArgumentsError {
@@ -370,16 +370,16 @@
 	let alertType : FMFAlertType // +0x45545f5f (0x1)
 
 	// Swift methods
-	0x1bbe0  func FMFAlert.title.getter // getter 
-	0x1bd20  func FMFAlert.message.getter // getter 
-	0x1bda0  func FMFAlert.okButtonLabel.getter // getter 
-	0x1bec0  func FMFAlert.cancelButtonLabel.getter // getter 
-	0x1bfe0  func FMFAlert.displayAlert.getter // getter 
-	0x1c460  class func FMFAlert.__allocating_init(from:) // init 
-	0x1cab0  class func FMFAlert.__allocating_init(alertId:title:message:okButtonLabel:okButtonURL:cancelButtonLabel:cancelButtonURL:alertType:) // init 
-	0x1cc60  func FMFAlert.handleOkAction(urlHandler:) // method 
-	0x1cd80  func FMFAlert.handleCancelAction(urlHandler:) // method 
-	0x1ce70  func FMFAlert.debugDescription.getter // getter 
+	0x1b9d0  func FMFAlert.title.getter // getter 
+	0x1bb10  func FMFAlert.message.getter // getter 
+	0x1bb90  func FMFAlert.okButtonLabel.getter // getter 
+	0x1bcb0  func FMFAlert.cancelButtonLabel.getter // getter 
+	0x1bdd0  func FMFAlert.displayAlert.getter // getter 
+	0x1c250  class func FMFAlert.__allocating_init(from:) // init 
+	0x1c8a0  class func FMFAlert.__allocating_init(alertId:title:message:okButtonLabel:okButtonURL:cancelButtonLabel:cancelButtonURL:alertType:) // init 
+	0x1ca50  func FMFAlert.handleOkAction(urlHandler:) // method 
+	0x1cb70  func FMFAlert.handleCancelAction(urlHandler:) // method 
+	0x1cc60  func FMFAlert.debugDescription.getter // getter 
  }
 
  enum FMFCore.CodingKeys {
@@ -567,7 +567,7 @@
 	let prefs : FMFPreferences // +0x10 (0x20)
 
 	// Swift methods
-	0x397f0  class func FMFUpdatePrefsAction.__allocating_init(prefs:) // init 
+	0x396e0  class func FMFUpdatePrefsAction.__allocating_init(prefs:) // init 
  }
 
  struct FMFCore.FMFContact {
@@ -634,13 +634,13 @@
 	var clientContext : [String : Any] // +0x65706c65 (0x8)
 	var serverContext : [String : Any] // +0x45545f5f (0x8)
 	var dataContext : [String : Any] // +0x0 (0x8)
-	var lastActiveTimestamp : Date // +0xce5e8 (0x0)
+	var lastActiveTimestamp : Date // +0xcf43c (0x0)
 
 	// Swift methods
-	0x4a2d0  func <stripped> // getter 
-	0x4a5c0  func <stripped> // method 
-	0x4a7b0  func <stripped> // method 
-	0x4b910  func <stripped> // method 
+	0x4a1c0  func <stripped> // getter 
+	0x4a4b0  func <stripped> // method 
+	0x4a6a0  func <stripped> // method 
+	0x4b800  func <stripped> // method 
  }
 
  class FMFCore.FMFAddUpdateLabelAction : FMFBaseAction {
@@ -650,7 +650,7 @@
 	let label : FMFLabel? // +0xd8 (0x12)
 
 	// Swift methods
-	0x4ce70  class func FMFAddUpdateLabelAction.__allocating_init(locationToLabel:label:) // init 
+	0x4cd60  class func FMFAddUpdateLabelAction.__allocating_init(locationToLabel:label:) // init 
  }
 
  struct FMFCore.FMFFavoriteFriend {
@@ -804,10 +804,10 @@
  class FMFCore.FMFRemoveLocationAlertAction : FMFBaseAction {
 
 	// Properties
-	let locationAlert : FMFLocationAlert // +0xbc8 (0x0)
+	let locationAlert : FMFLocationAlert // +0xbe6 (0x0)
 
 	// Swift methods
-	0x5cfb0  class func FMFRemoveLocationAlertAction.__allocating_init(locationAlert:) // init 
+	0x5cea0  class func FMFRemoveLocationAlertAction.__allocating_init(locationAlert:) // init 
  }
 
  struct FMFCore.FMFConfig {
@@ -885,7 +885,7 @@
  class FMFCore.FMFNotNowRequest : FMFBaseRequest {
 
 	// Properties
-	let friendId : String // +0xce5e8 (0x10)
+	let friendId : String // +0xcf43c (0x10)
 
 	// Swift methods
  }
@@ -897,7 +897,7 @@
 	let order : Int? // +0x80000400 (0x9)
 
 	// Swift methods
-	0x604b0  class func FMFSetFavoriteAction.__allocating_init(friend:order:) // init 
+	0x603a0  class func FMFSetFavoriteAction.__allocating_init(friend:order:) // init 
  }
 
  struct FMFCore.FMFLocateInProgress {
@@ -989,12 +989,12 @@
 	var dataManager : FMFDataManager // +0x48 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6bd10  @objc FMFGenericResponseHandler.init <stripped>
-	0x6bd90  @objc FMFGenericResponseHandler..cxx_destruct <stripped>
+	0x6bc00  @objc FMFGenericResponseHandler.init <stripped>
+	0x6bc80  @objc FMFGenericResponseHandler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x69880  func <stripped> // method 
-	0x6bb10  func <stripped> // method 
+	0x69770  func <stripped> // method 
+	0x6ba00  func <stripped> // method 
  }
 
  class FMFCore.FMFContactsDataController : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1009,20 +1009,21 @@
 	let keysToFetch : CNKeyDescriptor // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x6ccc0  @objc FMFContactsDataController.contactStoreChangedWithNotification: <stripped>
+	0x6cbb0  @objc FMFContactsDataController.contactStoreChangedWithNotification: <stripped>
 
 	// Swift methods
-	0x6c8c0  class func FMFContactsDataController.__allocating_init() // init 
-	0x6cd60  func FMFContactsDataController.matchContacts(for:currentMatching:) // method 
-	0x6d6c0  func FMFContactsDataController.contact(for:) // method 
-	0x6d6d0  func FMFContactsDataController.searchInStore(name:) // method 
-	0x6db70  func FMFContactsDataController.searchInStore(handle:) // method 
-	0x6db80  func <stripped> // method 
+	0x6c7b0  class func FMFContactsDataController.__allocating_init() // init 
+	0x6cc50  func FMFContactsDataController.matchContacts(for:currentMatching:) // method 
+	0x6d5b0  func FMFContactsDataController.contact(for:) // method 
+	0x6d5c0  func FMFContactsDataController.searchInStore(name:) // method 
+	0x6da60  func FMFContactsDataController.searchInStore(handle:) // method 
+	0x6da70  func FMFContactsDataController.fetchMeContact(handles:) // method 
+	0x6e200  func <stripped> // method 
  }
 
  class FMFCore.FMFBaseAction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x70e40  func FMFBaseAction.debugDescription.getter // getter 
+	0x71510  func FMFBaseAction.debugDescription.getter // getter 
  }
 
  class FMFCore.FMFManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1042,41 +1043,41 @@
 	var isInitialized : Bool // +0x0 (0x1)
 
 	// Swift methods
-	0x71330  func FMFManager.delegate.getter // getter 
-	0x71360  func FMFManager.delegate.setter // setter 
-	0x713e0  func FMFManager.delegate.modify // modifyCoroutine 
-	0x714d0  func FMFManager.friends.getter // getter 
-	0x717f0  func FMFManager.selectedFriend.getter // getter 
-	0x71830  func FMFManager.selectedFriend.setter // setter 
-	0x718e0  func FMFManager.selectedFriend.modify // modifyCoroutine 
-	0x71e60  func FMFManager.isInitialized.getter // getter 
-	0x71e90  func FMFManager.locations.getter // getter 
-	0x71ee0  func FMFManager.myLocation.getter // getter 
-	0x72170  func FMFManager.features.getter // getter 
-	0x72190  func FMFManager.preferences.getter // getter 
-	0x72230  func FMFManager.myInfo.getter // getter 
-	0x723c0  func FMFManager.config.getter // getter 
-	0x724a0  func FMFManager.devices.getter // getter 
-	0x724c0  func FMFManager.labels.getter // getter 
-	0x724e0  func FMFManager.locationAlerts.getter // getter 
-	0x72510  func FMFManager.labelledLocations.getter // getter 
-	0x72530  func FMFManager.contactsController.getter // getter 
-	0x72550  func FMFManager.friendsOperationsRestricted.getter // getter 
-	0x72560  class func FMFManager.__allocating_init() // init 
-	0x72ca0  func FMFManager.initialize() // method 
-	0x73020  func FMFManager.startRefreshing() // method 
-	0x73060  func FMFManager.updateLastActiveTimestamp() // method 
-	0x73100  func FMFManager.stopRefreshing() // method 
-	0x73140  func FMFManager.refresh() // method 
-	0x73180  func FMFManager.perform(action:completion:) // method 
-	0x735a0  func FMFManager.getInfoForURL(url:completion:) // method 
-	0x73be0  func FMFManager.unshiftedLocation(for:) // method 
+	0x71a00  func FMFManager.delegate.getter // getter 
+	0x71a30  func FMFManager.delegate.setter // setter 
+	0x71ab0  func FMFManager.delegate.modify // modifyCoroutine 
+	0x71ba0  func FMFManager.friends.getter // getter 
+	0x71ec0  func FMFManager.selectedFriend.getter // getter 
+	0x71f00  func FMFManager.selectedFriend.setter // setter 
+	0x71fb0  func FMFManager.selectedFriend.modify // modifyCoroutine 
+	0x72530  func FMFManager.isInitialized.getter // getter 
+	0x72560  func FMFManager.locations.getter // getter 
+	0x725b0  func FMFManager.myLocation.getter // getter 
+	0x72840  func FMFManager.features.getter // getter 
+	0x72860  func FMFManager.preferences.getter // getter 
+	0x72900  func FMFManager.myInfo.getter // getter 
+	0x72a90  func FMFManager.config.getter // getter 
+	0x72b70  func FMFManager.devices.getter // getter 
+	0x72b90  func FMFManager.labels.getter // getter 
+	0x72bb0  func FMFManager.locationAlerts.getter // getter 
+	0x72be0  func FMFManager.labelledLocations.getter // getter 
+	0x72c00  func FMFManager.contactsController.getter // getter 
+	0x72c20  func FMFManager.friendsOperationsRestricted.getter // getter 
+	0x72c30  class func FMFManager.__allocating_init() // init 
+	0x73370  func FMFManager.initialize() // method 
+	0x736f0  func FMFManager.startRefreshing() // method 
+	0x73730  func FMFManager.updateLastActiveTimestamp() // method 
+	0x737d0  func FMFManager.stopRefreshing() // method 
+	0x73810  func FMFManager.refresh() // method 
+	0x73850  func FMFManager.perform(action:completion:) // method 
+	0x73c70  func FMFManager.getInfoForURL(url:completion:) // method 
+	0x742b0  func FMFManager.unshiftedLocation(for:) // method 
  }
 
  class FMFCore.FMFAddUpdateLabelRequest : FMFBaseRequest {
 
 	// Properties
-	let labelledLocation : FMFLabelledLocation // +0xcf1b0 (0x0)
+	let labelledLocation : FMFLabelledLocation // +0xd0030 (0x0)
 
 	// Swift methods
  }
@@ -1084,8 +1085,8 @@
  class FMFCore.FMFRespondToInviteRequest : FMFBaseRequest {
 
 	// Properties
-	let friendId : String // +0x6152 (0x10)
-	let accepted : Bool // +0xcf1b0 (0x1)
+	let friendId : String // +0x6222 (0x10)
+	let accepted : Bool // +0xd0030 (0x1)
 
 	// Swift methods
  }
@@ -1105,6 +1106,7 @@
 	var delegate : weak FMFDataUpdateDelegate?
 	let dataManagerUpdateQueue : OS_dispatch_queue
 	let dataManagerDelegateQueue : OS_dispatch_queue
+	let cacheBlobQueue : OS_dispatch_queue
 	let pendingDataManager : FMFPendingDataManager
 	var following : [FMFIntermediateFriend]
 	var followers : [FMFIntermediateFriend]
@@ -1122,8 +1124,8 @@
 	var locationAlertsOnFriendsByFriends : [FMFLocationAlert]
 	var internalLocationAlerts : [FMFLocationAlert]?
 	var permanentDataCache : FMDiskIO<FriendCacheData>
-	var cacheBlob : FriendCacheData
-	let initializedFromCache : Bool
+	var _cacheBlob : FriendCacheData
+	var initializedFromCache : Bool
 	let contactsController : FMFContactsDataController
 	var contactMatchingCache : [String : FMFContact]
 	var prefetchedContactCache : [String : FMFContact]
@@ -1136,23 +1138,23 @@
 	var labels : [FMFLabel]
 
 	// Swift methods
-	0x78e70  func <stripped> // method 
-	0x78fe0  func <stripped> // method 
-	0x79150  func <stripped> // method 
-	0x792c0  func <stripped> // method 
-	0x79430  func <stripped> // method 
-	0x795a0  func <stripped> // method 
-	0x79710  func <stripped> // method 
-	0x79880  func <stripped> // method 
-	0x799f0  func <stripped> // method 
-	0x79b60  func <stripped> // method 
-	0x7b4c0  func <stripped> // method 
-	0x7cc60  func <stripped> // method 
-	0x7d2a0  func <stripped> // method 
-	0x7e070  func <stripped> // getter 
-	0x86040  func <stripped> // getter 
-	0x86870  func <stripped> // getter 
-	0x88520  func <stripped> // method 
+	0x79c10  func <stripped> // method 
+	0x79d80  func <stripped> // method 
+	0x79ef0  func <stripped> // method 
+	0x7a060  func <stripped> // method 
+	0x7a1d0  func <stripped> // method 
+	0x7a340  func <stripped> // method 
+	0x7a4b0  func <stripped> // method 
+	0x7a620  func <stripped> // method 
+	0x7a790  func <stripped> // method 
+	0x7a900  func <stripped> // method 
+	0x7c270  func <stripped> // method 
+	0x7da10  func <stripped> // method 
+	0x7e060  func <stripped> // method 
+	0x7ee30  func <stripped> // getter 
+	0x86e00  func <stripped> // getter 
+	0x87630  func <stripped> // getter 
+	0x892f0  func <stripped> // method 
  }
 
  class FMFCore.FMFPendingDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1181,7 +1183,7 @@
 	let friend : FMFFriend // +0x67 (0x0)
 
 	// Swift methods
-	0x9c080  class func FMFStopSharingAction.__allocating_init(friend:) // init 
+	0x9cec0  class func FMFStopSharingAction.__allocating_init(friend:) // init 
  }
 
  class FMFCore.FMFCoreHelper : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1194,7 +1196,7 @@
 	let friend : FMFFriend // +0x45545f5f (0x0)
 
 	// Swift methods
-	0x9c4f0  class func FMFStopFollowingAction.__allocating_init(friend:) // init 
+	0x9d330  class func FMFStopFollowingAction.__allocating_init(friend:) // init 
  }
 
  enum FMFCore.FMWindowStatePrefKeys {
@@ -1241,13 +1243,13 @@
 	var publicAPSToken : String? // +0x60 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x9f4f0  @objc FMAPSConnectionHandler.dealloc <stripped>
-	0x9f940  @objc FMAPSConnectionHandler.init <stripped>
-	0x9f510  @objc FMAPSConnectionHandler..cxx_destruct <stripped>
+	0xa0330  @objc FMAPSConnectionHandler.dealloc <stripped>
+	0xa0780  @objc FMAPSConnectionHandler.init <stripped>
+	0xa0350  @objc FMAPSConnectionHandler..cxx_destruct <stripped>
 
 	// Swift methods
-	0x9f5a0  func <stripped> // method 
-	0x9f6d0  func <stripped> // method 
+	0xa03e0  func <stripped> // method 
+	0xa0510  func <stripped> // method 
  }
 
  class FMFCore.FMLocalize : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1285,17 +1287,17 @@
 	let authenticationProvider : FMNAuthenticationProvider // +0x50 (0x8)
 	let serverInteractionQueue : OS_dispatch_queue // +0x58 (0x8)
 	var networkInitializationCompleted : Bool // +0x60 (0x1)
-	var lastActiveTimestamp : Date // +0xd5302 (0x0)
+	var lastActiveTimestamp : Date // +0xd6252 (0x0)
 	var delegate : FMFServerInteractionControllerDelegate // +0x4 (0x10)
-	var alertDelegate : weak FMFAlertTypeDelegate? // +0xd5302 (0x10)
+	var alertDelegate : weak FMFAlertTypeDelegate? // +0xd6252 (0x10)
 	var serverContext : [String : Any]? // +0x0 (0x8)
 	var dataContext : [String : Any]? // +0x0 (0x8)
 
 	// Swift methods
-	0xa4920  func <stripped> // method 
-	0xa54c0  func <stripped> // method 
-	0xa5670  func <stripped> // method 
-	0xa57f0  func <stripped> // method 
+	0xa5760  func <stripped> // method 
+	0xa6300  func <stripped> // method 
+	0xa64b0  func <stripped> // method 
+	0xa6630  func <stripped> // method 
  }
 
  class FMFCore.FMFMyLocationController : NSObject /usr/lib/libobjc.A.dylib {
@@ -1311,11 +1313,11 @@
 	let serverInteractionController : FMFServerInteractionController // +0x118 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xa8030  @objc FMFMyLocationController.init <stripped>
-	0xa80b0  @objc FMFMyLocationController..cxx_destruct <stripped>
+	0xa8e70  @objc FMFMyLocationController.init <stripped>
+	0xa8ef0  @objc FMFMyLocationController..cxx_destruct <stripped>
 
 	// Swift methods
-	0xa7020  func <stripped> // method 
+	0xa7e60  func <stripped> // method 
  }
 
  class FMFCore.FMFNotNowAction : FMFBaseAction {
@@ -1324,7 +1326,7 @@
 	let friend : FMFFriend // +0x0 (0x0)
 
 	// Swift methods
-	0xa8ff0  class func FMFNotNowAction.__allocating_init(friend:) // init 
+	0xa9e30  class func FMFNotNowAction.__allocating_init(friend:) // init 
  }
 
  class FMFCore.FMDiskIO {
@@ -1334,7 +1336,7 @@
 	let friend : FMFFriend // +0x6f635f5f (0x0)
 
 	// Swift methods
-	0xad3d0  class func FMFAskToFollowAction.__allocating_init(friend:) // init 
+	0xae210  class func FMFAskToFollowAction.__allocating_init(friend:) // init 
  }
 
  class FMFCore.FMFGetURLInfoAction : FMFBaseAction {
@@ -1343,7 +1345,7 @@
 	let url : URL // +0x0 (0x0)
 
 	// Swift methods
-	0xad740  class func FMFGetURLInfoAction.__allocating_init(url:) // init 
+	0xae580  class func FMFGetURLInfoAction.__allocating_init(url:) // init 
  }
 
  class FMFCore.FMFRespondToInviteAction : FMFBaseAction {
@@ -1353,7 +1355,7 @@
 	let accepted : Bool // +0x20 (0x1)
 
 	// Swift methods
-	0xadbe0  class func FMFRespondToInviteAction.__allocating_init(friendId:accepted:) // init 
+	0xaea20  class func FMFRespondToInviteAction.__allocating_init(friendId:accepted:) // init 
  }
 
  enum FMFCore.FMFActionStatus {
@@ -1384,12 +1386,12 @@
 	let systemStateController : FMFSystemStateController // +0x30 (0x8)
 
 	// Swift methods
-	0xaf5e0  func <stripped> // method 
-	0xb8ad0  func <stripped> // method 
-	0xb98a0  func <stripped> // method 
-	0xb9b00  func <stripped> // method 
-	0xba150  func <stripped> // method 
-	0xba7f0  func <stripped> // method 
+	0xb0420  func <stripped> // method 
+	0xb9910  func <stripped> // method 
+	0xba6e0  func <stripped> // method 
+	0xba940  func <stripped> // method 
+	0xbaf90  func <stripped> // method 
+	0xbb630  func <stripped> // method 
  }
 
  class FMFCore.FMFGarbageCollector : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1402,12 +1404,12 @@
 	let paths : [String] // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xc2b10  @objc FMFGarbageCollector.scheduleAccountVerification <stripped>
+	0xc3950  @objc FMFGarbageCollector.scheduleAccountVerification <stripped>
 
 	// Swift methods
-	0xc1ea0  func <stripped> // method 
-	0xc2590  func <stripped> // method 
-	0xc2b40  func <stripped> // method 
+	0xc2ce0  func <stripped> // method 
+	0xc33d0  func <stripped> // method 
+	0xc3980  func <stripped> // method 
  }
 
  class FMFCore.FMFInitRefreshClientRequest : FMFBaseRequest {
@@ -1429,7 +1431,7 @@
  class FMFCore.FMFRemoveLabelsRequest : FMFBaseRequest {
 
 	// Properties
-	let labels : [String] // +0xd5310 (0x8)
+	let labels : [String] // +0xd6260 (0x8)
 
 	// Swift methods
  }
@@ -1473,7 +1475,7 @@
  class FMFCore.FMFRemoveFriendRequest : FMFBaseRequest {
 
 	// Properties
-	let friendId : String // +0x7e30 (0x10)
+	let friendId : String // +0x7e60 (0x10)
 
 	// Swift methods
  }
@@ -1483,12 +1485,12 @@
 	// Properties
 	let serverContext : [String : Any] // +0x10 (0x8)
 	let dataContext : [String : Any] // +0x18 (0x8)
-	let commandResponse : FMFCommandResponseFragment? // +0xd5310 (0x0)
+	let commandResponse : FMFCommandResponseFragment? // +0xd6260 (0x0)
 	let alert : FMFAlert? // +0x0 (0x8)
 	let fetchStatus : Int // +0x0 (0x8)
 
 	// Swift methods
-	0xc9990  class func <stripped> // init 
+	0xca7d0  class func <stripped> // init 
  }
 
  enum FMFCore.FMFBaseResponseError {
@@ -1522,7 +1524,7 @@
 	let friend : FMFFriend // +0x77735f5f (0x0)
 
 	// Swift methods
-	0xcc020  class func FMFRemoveFriendAction.__allocating_init(friend:) // init 
+	0xcce60  class func FMFRemoveFriendAction.__allocating_init(friend:) // init 
  }
 
  struct FMFCore.FMFMyInfo {

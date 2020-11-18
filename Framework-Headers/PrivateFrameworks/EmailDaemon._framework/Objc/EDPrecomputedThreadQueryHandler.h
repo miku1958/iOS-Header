@@ -9,11 +9,12 @@
 #import <EmailDaemon/EDMessageChangeHookResponder-Protocol.h>
 #import <EmailDaemon/EDThreadChangeHookResponder-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
+#import <EmailDaemon/EMCollectionItemIDStateCapturerDelegate-Protocol.h>
 
-@class EDThreadPersistence, EDThreadReloadSummaryHelper, EDUpdateThrottler, EFCancelationToken, EMMailboxScope, EMThreadScope, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class EDThreadPersistence, EDThreadReloadSummaryHelper, EDUpdateThrottler, EFCancelationToken, EMCollectionItemIDStateCapturer, EMMailboxScope, EMThreadScope, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol EFCancelable, EFScheduler;
 
-@interface EDPrecomputedThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageChangeHookResponder, EDThreadChangeHookResponder, EFLoggable>
+@interface EDPrecomputedThreadQueryHandler : EDMessageRepositoryQueryHandler <EDMessageChangeHookResponder, EDThreadChangeHookResponder, EFLoggable, EMCollectionItemIDStateCapturerDelegate>
 {
     EMThreadScope *_threadScope;
     EDThreadPersistence *_threadPersistence;
@@ -29,6 +30,7 @@
     EDUpdateThrottler *_updateThrottler;
     EDThreadReloadSummaryHelper *_reloadSummaryHelper;
     EMMailboxScope *_mailboxScope;
+    EMCollectionItemIDStateCapturer *_stateCapturer;
 }
 
 @property (readonly, nonatomic) id<EFScheduler> backgroundWorkScheduler; // @synthesize backgroundWorkScheduler=_backgroundWorkScheduler;
@@ -43,6 +45,7 @@
 @property (strong, nonatomic) NSMutableArray *pendingPositionChanges; // @synthesize pendingPositionChanges=_pendingPositionChanges;
 @property (readonly, nonatomic) EDThreadReloadSummaryHelper *reloadSummaryHelper; // @synthesize reloadSummaryHelper=_reloadSummaryHelper;
 @property (strong, nonatomic) NSMutableDictionary *reportedJournaledObjectIDs; // @synthesize reportedJournaledObjectIDs=_reportedJournaledObjectIDs;
+@property (readonly, nonatomic) EMCollectionItemIDStateCapturer *stateCapturer; // @synthesize stateCapturer=_stateCapturer;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) EDThreadPersistence *threadPersistence; // @synthesize threadPersistence=_threadPersistence;
 @property (readonly, nonatomic) EMThreadScope *threadScope; // @synthesize threadScope=_threadScope;
@@ -63,6 +66,8 @@
 - (void)_persistenceIsChangingThreadWithObjectID:(id)arg1 changedKeyPaths:(id)arg2;
 - (void)cancel;
 - (id)initWithQuery:(id)arg1 threadScope:(id)arg2 messagePersistence:(id)arg3 threadPersistence:(id)arg4 hookRegistry:(id)arg5 observer:(id)arg6 observationIdentifier:(id)arg7;
+- (id)itemIDsForStateCaptureWithErrorString:(id *)arg1;
+- (id)labelForStateCapture;
 - (void)persistenceDidChangeConversationNotificationLevel:(long long)arg1 conversationID:(long long)arg2 generationWindow:(id)arg3;
 - (void)persistenceDidChangeMessageIDHeaderHash:(id)arg1 oldConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
 - (void)persistenceDidFinishThreadUpdates;

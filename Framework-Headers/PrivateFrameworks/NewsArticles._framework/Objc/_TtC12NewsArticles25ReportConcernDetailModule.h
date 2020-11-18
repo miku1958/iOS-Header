@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles25ReportConcernDetailModule : NSObject
 {
     MISSING_TYPE *resolver;
+    MISSING_TYPE *tracker;
 }
 
 - (void).cxx_destruct;

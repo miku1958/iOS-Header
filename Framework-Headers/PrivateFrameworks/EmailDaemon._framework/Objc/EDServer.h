@@ -35,7 +35,7 @@
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)removeRemoteClient:(id)arg1;
 - (void)start;
-- (void)tearDown;
+- (void)test_tearDown;
 
 @end
 

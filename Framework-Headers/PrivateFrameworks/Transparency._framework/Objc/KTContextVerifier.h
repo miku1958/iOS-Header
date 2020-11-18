@@ -23,6 +23,7 @@
 
 + (void)addClientDataVRFOutput:(id)arg1 toLoggableDatas:(id)arg2 forClientData:(id)arg3;
 + (void)addDeviceIdVRFOutput:(id)arg1 toLoggableDatas:(id)arg2 forDeviceId:(id)arg3;
++ (long long)verifyMutation:(id)arg1 record:(id)arg2;
 + (BOOL)verifyReceivedWitnessesForLoggableDatas:(id)arg1 error:(id *)arg2;
 + (BOOL)verifyServerLoggableDatas:(id)arg1 againstSyncedLoggableDatas:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;

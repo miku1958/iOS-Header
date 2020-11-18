@@ -47,6 +47,10 @@
 @property (readonly, nonatomic) BOOL hasGenerousMargins;
 @property (readonly, nonatomic) double headerBottomPadding; // @synthesize headerBottomPadding=_headerBottomPadding;
 @property (nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
+@property (readonly, nonatomic) double mailActionCardLargerMediumDetentCoverage;
+@property (readonly, nonatomic) double mailActionCardMaximumContainerViewHeightForLargerMediumDetent;
+@property (readonly, nonatomic) double mailActionCardPreferredHeightForPad;
+@property (readonly, nonatomic) double mailActionCardSmallerMediumDetentCoverage;
 @property (readonly, nonatomic) double messageBottomPaddingInConversation;
 @property (readonly, nonatomic) double messageBottomPaddingInConversationForMailActionHeader;
 @property (readonly, nonatomic) double messageTopPaddingInConversation;

@@ -9,11 +9,12 @@
 #import <Message/EDMessageChangeHookResponder-Protocol.h>
 #import <Message/EDProtectedDataReconciliationHookResponder-Protocol.h>
 #import <Message/EFContentProtectionObserver-Protocol.h>
+#import <Message/EFSignpostable-Protocol.h>
 
 @class EDMessageQueryParser, EDPersistence, EDPersistenceHookRegistry, EDSearchableIndexScheduler, MFFileCompressionQueue, MFLibrarySearchableIndex, MFMessageChangeManager_iOS, MFPersistenceDatabase_iOS, MFWeakObjectCache, NSCache, NSMutableDictionary, NSMutableSet, NSObject, NSString, _MFMailMessageLibraryStatistics;
 @protocol EFSQLExpressable, EFScheduler, OS_dispatch_queue;
 
-@interface MFMailMessageLibrary : MFMessageLibrary <EDMessageChangeHookResponder, EDProtectedDataReconciliationHookResponder, EFContentProtectionObserver>
+@interface MFMailMessageLibrary : MFMessageLibrary <EDMessageChangeHookResponder, EDProtectedDataReconciliationHookResponder, EFSignpostable, EFContentProtectionObserver>
 {
     MFWeakObjectCache *_libraryMessageCache;
     NSMutableDictionary *_mailboxCache;
@@ -61,6 +62,7 @@
 @property (strong, nonatomic) EDMessageQueryParser *queryParser; // @synthesize queryParser=_queryParser;
 @property (strong, nonatomic) id<EFScheduler> reconciliationCleanupScheduler; // @synthesize reconciliationCleanupScheduler=_reconciliationCleanupScheduler;
 @property (strong, nonatomic) EDSearchableIndexScheduler *searchableIndexScheduler; // @synthesize searchableIndexScheduler=_searchableIndexScheduler;
+@property (readonly) unsigned long long signpostID;
 @property (readonly) Class superclass;
 
 + (void)_renameLibraryAtPath:(id)arg1;
@@ -71,6 +73,7 @@
 + (id)propertyMapper;
 + (void)removeLibraryOnNextLaunch;
 + (void)setDefaultInstance:(id)arg1;
++ (id)signpostLog;
 - (void).cxx_destruct;
 - (id)UIDsToDeleteInMailbox:(id)arg1;
 - (id)_activeAccountsClause;
@@ -223,7 +226,7 @@
 - (id)loadMeetingMetadataForMessage:(id)arg1;
 - (long long)loadMoreMessagesForThreadContainingMessage:(id)arg1 hasNoMoreMessages:(BOOL *)arg2;
 - (long long)mailboxIDForURLString:(id)arg1;
-- (long long)mailboxIDForURLString:(id)arg1 createIfNecesary:(BOOL)arg2;
+- (long long)mailboxIDForURLString:(id)arg1 createIfNecessary:(BOOL)arg2;
 - (id)mailboxURLForMessage:(id)arg1;
 - (id)mailboxURLsForIDs:(id)arg1;
 - (id)mailboxUidForMessage:(id)arg1;

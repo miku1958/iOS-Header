@@ -61,7 +61,7 @@
 - (void)prewarmWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)registerAudioResource:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (BOOL)resourceIsRegistered:(unsigned long long)arg1;
-- (void)setMetricsTestModeEnabled:(BOOL)arg1;
+- (void)setMetricsTestModeEnabled;
 - (BOOL)startAndReturnError:(id *)arg1;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stopPrewarm;

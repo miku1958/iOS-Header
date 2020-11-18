@@ -18,7 +18,6 @@
     MISSING_TYPE *locationController;
     MISSING_TYPE *serverInteractionController;
     MISSING_TYPE *actionsController;
-    MISSING_TYPE *trackingAvoidance;
     MISSING_TYPE *ownerSession;
     MISSING_TYPE *ownerInterface;
     MISSING_TYPE *beaconManager;

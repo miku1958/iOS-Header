@@ -98,7 +98,7 @@
 - (void)setCachedMetadataJSON:(id)arg1 forKey:(id)arg2 messageID:(id)arg3;
 - (unsigned long long)signpostID;
 - (void)startCountingQuery:(id)arg1 includingServerCountsForMailboxScope:(id)arg2 withObserver:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)tearDown;
+- (void)test_tearDown;
 - (void)threadQueryHandlerStateDidChange:(id)arg1;
 
 @end

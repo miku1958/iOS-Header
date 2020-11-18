@@ -9,5 +9,6 @@
 @interface CNKStagingAreaViewController (ConversationKit)
 - (void)didCreateTableViewForInCallControlsViewController:(id)arg1;
 - (void)inCallControlsViewController:(id)arg1 didTap:(long long)arg2;
+- (void)resetEffectsState;
 @end
 

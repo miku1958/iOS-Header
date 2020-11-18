@@ -6,13 +6,14 @@
 
 #import <UIKit/UIButton.h>
 
-@class SBHomeScreenMaterialView;
+@class SBHomeScreenMaterialView, UIView;
 
 @interface SBHomeScreenButton : UIButton
 {
     SBHomeScreenMaterialView *_materialView;
 }
 
+@property (readonly, nonatomic) UIView *backgroundView;
 @property (readonly, nonatomic) SBHomeScreenMaterialView *materialView; // @synthesize materialView=_materialView;
 
 + (struct UIEdgeInsets)backgroundInsets;

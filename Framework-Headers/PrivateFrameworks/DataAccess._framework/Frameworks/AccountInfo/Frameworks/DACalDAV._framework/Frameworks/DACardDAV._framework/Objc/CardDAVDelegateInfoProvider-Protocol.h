@@ -10,5 +10,6 @@
 
 @protocol CardDAVDelegateInfoProvider <NSObject>
 - (NSArray *)collectDelegatesForAccount:(ACAccount *)arg1;
+- (NSArray *)collectExpiredDelgatesForAccount:(ACAccount *)arg1;
 @end
 

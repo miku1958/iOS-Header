@@ -29,6 +29,7 @@
 - (void)initializeSecureElement:(void (^)(BOOL))arg1;
 - (void)initializeSecureElementIfNecessaryWithHandler:(void (^)(BOOL, NSData *, NSData *))arg1;
 - (void)insertOrUpdatePaymentTransaction:(PKPaymentTransaction *)arg1 forPassUniqueIdentifier:(NSString *)arg2 paymentApplication:(PKPaymentApplication *)arg3 handler:(void (^)(PKPaymentTransaction *))arg4;
+- (void)installmentPlanTransactionsForPassUniqueIdentifier:(NSString *)arg1 accountIdentifier:(NSString *)arg2 withRedemptionType:(long long)arg3 startDate:(NSDate *)arg4 endDate:(NSDate *)arg5 completion:(void (^)(NSSet *))arg6;
 - (void)installmentPlansWithTransactionReferenceIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)installmentTransactionsForInstallmentPlanIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)mapsMerchantsWithCompletion:(void (^)(NSSet *))arg1;

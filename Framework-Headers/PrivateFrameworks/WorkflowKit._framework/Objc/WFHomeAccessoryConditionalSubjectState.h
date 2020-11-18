@@ -11,9 +11,6 @@
 @interface WFHomeAccessoryConditionalSubjectState : WFConditionalSubjectParameterState
 {
     BOOL _negatesValue;
-    HMHome *_home;
-    HMService *_service;
-    HMCharacteristic *_characteristic;
     NSDictionary *_serializedWFHMServiceParameter;
     NSDictionary *_serializedWFHMCharacteristicSubstitutableState;
     WFHMServiceParameterState *_serviceParameterState;
@@ -21,14 +18,14 @@
     NSFormatter *_characteristicValueFormatter;
 }
 
-@property (readonly, nonatomic) HMCharacteristic *characteristic; // @synthesize characteristic=_characteristic;
+@property (readonly, nonatomic) HMCharacteristic *characteristic;
 @property (strong, nonatomic) WFHMCharacteristicSubstitutableState *characteristicSubstitutableState; // @synthesize characteristicSubstitutableState=_characteristicSubstitutableState;
 @property (strong, nonatomic) NSFormatter *characteristicValueFormatter; // @synthesize characteristicValueFormatter=_characteristicValueFormatter;
-@property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
+@property (readonly, nonatomic) HMHome *home;
 @property (readonly, nonatomic) BOOL negatesValue; // @synthesize negatesValue=_negatesValue;
 @property (strong, nonatomic) NSDictionary *serializedWFHMCharacteristicSubstitutableState; // @synthesize serializedWFHMCharacteristicSubstitutableState=_serializedWFHMCharacteristicSubstitutableState;
 @property (strong, nonatomic) NSDictionary *serializedWFHMServiceParameter; // @synthesize serializedWFHMServiceParameter=_serializedWFHMServiceParameter;
-@property (readonly, nonatomic) HMService *service; // @synthesize service=_service;
+@property (readonly, nonatomic) HMService *service;
 @property (strong, nonatomic) WFHMServiceParameterState *serviceParameterState; // @synthesize serviceParameterState=_serviceParameterState;
 
 + (id)subjectType;

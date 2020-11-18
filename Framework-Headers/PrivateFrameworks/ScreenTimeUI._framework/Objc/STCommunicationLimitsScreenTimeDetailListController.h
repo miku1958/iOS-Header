@@ -24,11 +24,13 @@ __attribute__((visibility("hidden")))
 @property (strong) PSSpecifier *allowedCommunicationGroupSpecifier; // @synthesize allowedCommunicationGroupSpecifier=_allowedCommunicationGroupSpecifier;
 @property (strong) STCommunicationLimits *communicationLimits; // @synthesize communicationLimits=_communicationLimits;
 
++ (void)showCompatibilityAlertIfNeededWithCoordinator:(id)arg1 presentingViewController:(id)arg2;
 - (void).cxx_destruct;
 - (id)_allowIntroductions:(id)arg1;
 - (void)_didFinishEditingCommunicationLimit;
 - (void)_setAllowIntroductions:(id)arg1 specifier:(id)arg2;
 - (id)specifiers;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)willResignActive;

@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) SBFolderContainerView *view;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)dismissPresentedFolderControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadView;
 - (double)minimumHomeScreenScaleForFolderControllerBackgroundView:(id)arg1;

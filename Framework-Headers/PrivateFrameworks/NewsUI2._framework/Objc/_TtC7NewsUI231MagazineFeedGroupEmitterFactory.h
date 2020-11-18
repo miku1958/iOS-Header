@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI231MagazineFeedGroupEmitterFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *tagService;
+    MISSING_TYPE *headlineService;
     MISSING_TYPE *topicClusteringService;
     MISSING_TYPE *personalizationService;
     MISSING_TYPE *magazineCategoryService;
@@ -22,6 +23,11 @@
     MISSING_TYPE *diversityPenalty;
     MISSING_TYPE *issueModelFactory;
     MISSING_TYPE *issueService;
+    MISSING_TYPE *sectionHeadlinesService;
+    MISSING_TYPE *channelPromotedArticlesService;
+    MISSING_TYPE *newspaperGroupService;
+    MISSING_TYPE *formatService;
+    MISSING_TYPE *feedPersonalizingEngine;
 }
 
 @end

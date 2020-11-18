@@ -6,15 +6,11 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaClientEvent-Protocol.h>
+@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationContext, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRPresented;
 
-@class NSData, NSString, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationContext, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRPresented;
-
-@interface SISchemaClientEvent : PBCodable <SISchemaClientEvent, NSSecureCoding>
+@interface SISchemaClientEvent : PBCodable
 {
-    SISchemaClientEventMetadata *_eventMetadata;
-    SISchemaClientTransportEventMetadata *_transportMetadata;
+    unsigned long long _whichEvent_Type;
     SISchemaAudioFirstBufferRecorded *_audioFirstBufferRecorded;
     SISchemaAudioStopRecording *_audioStopRecording;
     SISchemaConversationTrace *_clientConversationTrace;
@@ -32,28 +28,25 @@
     SISchemaUIStateTransition *_uiStateTransition;
     SISchemaClientFlow *_clientFlow;
     SISchemaDialogOutput *_dialogOutput;
-    unsigned long long _whichEvent_Type;
+    SISchemaClientEventMetadata *_eventMetadata;
+    SISchemaClientTransportEventMetadata *_transportMetadata;
 }
 
 @property (strong, nonatomic) SISchemaAudioFirstBufferRecorded *audioFirstBufferRecorded; // @synthesize audioFirstBufferRecorded=_audioFirstBufferRecorded;
 @property (strong, nonatomic) SISchemaAudioStopRecording *audioStopRecording; // @synthesize audioStopRecording=_audioStopRecording;
 @property (strong, nonatomic) SISchemaConversationTrace *clientConversationTrace; // @synthesize clientConversationTrace=_clientConversationTrace;
 @property (strong, nonatomic) SISchemaClientFlow *clientFlow; // @synthesize clientFlow=_clientFlow;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SISchemaDeviceDynamicContext *deviceDynamicContext; // @synthesize deviceDynamicContext=_deviceDynamicContext;
 @property (strong, nonatomic) SISchemaDeviceFixedContext *deviceFixedContext; // @synthesize deviceFixedContext=_deviceFixedContext;
 @property (strong, nonatomic) SISchemaDialogOutput *dialogOutput; // @synthesize dialogOutput=_dialogOutput;
 @property (strong, nonatomic) SISchemaDictationContext *dictationContext; // @synthesize dictationContext=_dictationContext;
 @property (strong, nonatomic) SISchemaClientEventMetadata *eventMetadata; // @synthesize eventMetadata=_eventMetadata;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) SISchemaInvocation *invocation; // @synthesize invocation=_invocation;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) SISchemaPunchOut *punchOut; // @synthesize punchOut=_punchOut;
 @property (strong, nonatomic) SISchemaSiriCue *siriCue; // @synthesize siriCue=_siriCue;
 @property (strong, nonatomic) SISchemaSpeechTranscription *speechTranscription; // @synthesize speechTranscription=_speechTranscription;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) SISchemaTextToSpeechBegin *textToSpeechBegin; // @synthesize textToSpeechBegin=_textToSpeechBegin;
 @property (strong, nonatomic) SISchemaTextToSpeechEnd *textToSpeechEnd; // @synthesize textToSpeechEnd=_textToSpeechEnd;
 @property (strong, nonatomic) SISchemaClientTransportEventMetadata *transportMetadata; // @synthesize transportMetadata=_transportMetadata;
@@ -65,6 +58,8 @@
 + (id)getTagForEventTypeClass:(Class)arg1;
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (int)getAnyEventType;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

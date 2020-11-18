@@ -23,6 +23,7 @@
 @property (strong, nonatomic) UIWindow *rotationDecider; // @synthesize rotationDecider=_rotationDecider;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_dismissViewControllerWithTransition:(int)arg1 from:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_preparePresentationControllerForPresenting:(id)arg1;
 - (void)_presentViewController:(id)arg1 sendingView:(id)arg2 animated:(BOOL)arg3;

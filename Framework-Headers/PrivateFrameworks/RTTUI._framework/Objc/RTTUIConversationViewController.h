@@ -50,6 +50,7 @@
 + (id)viewControllerForCall:(id)arg1;
 + (id)viewControllerForConversation:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_define:(id)arg1;
 - (void)_processRealtimeTimeout;
 - (void)_scrollToIndexPathIfNecessary:(id)arg1 animated:(BOOL)arg2;

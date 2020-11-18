@@ -81,6 +81,7 @@
 @property (readonly, copy, nonatomic) NSArray *moreFromPublisherArticleIDs;
 @property (readonly, nonatomic) BOOL needsRapidUpdates;
 @property (readonly, nonatomic) unsigned long long order;
+@property (readonly, copy, nonatomic) id<FCHeadlineProviding> originalHeadline;
 @property (readonly, nonatomic, getter=isPaid) BOOL paid;
 @property (readonly, nonatomic, getter=isPressRelease) BOOL pressRelease;
 @property (readonly, copy, nonatomic) NSString *primaryAudience;

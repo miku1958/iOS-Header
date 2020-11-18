@@ -696,6 +696,7 @@
 - (void)locationManagerUpdatedLocation:(id)arg1;
 - (id)mapAttributionWithStringAttributes:(id)arg1;
 - (id)mapAttributionWithStringAttributes:(id)arg1 allowMultiLine:(BOOL)arg2;
+- (id)mapAttributionWithStringAttributes:(id)arg1 underlineText:(BOOL)arg2;
 - (void)mapLayer:(id)arg1 arSessionWasInterrupted:(unsigned long long)arg2;
 - (void)mapLayer:(id)arg1 arTrackingStateDidChange:(unsigned long long)arg2 reason:(unsigned long long)arg3;
 - (void)mapLayer:(id)arg1 canShowFlyoverDidChange:(BOOL)arg2;
@@ -799,6 +800,7 @@
 - (void)toggleLocationConsole:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateLayoutGuides;
+- (id)urlForMapAttribution;
 - (void)valueChangedForGEOConfigKey:(CDStruct_35640fce)arg1;
 - (id)venueWithID:(unsigned long long)arg1;
 - (id)viewForAnnotation:(id)arg1;

@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) BOOL internalBuild; // @synthesize internalBuild=_internalBuild;
 @property (strong, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;
 @property (nonatomic) BOOL isInternalBuild; // @synthesize isInternalBuild=_isInternalBuild;
+@property (nonatomic) BOOL logSensitiveText;
 @property (strong, nonatomic) NSString *ospreyEndpointURL;
 @property (nonatomic) float serverTTSTimeout;
 @property (nonatomic) float streamBufferDuration;

@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
     NSNumber *_generationID;
     BRContainer *_containerMetadata;
     NSString *_containerMetadataEtag;
+    NSNumber *_rootQuotaUsage;
 }
 
 @property (readonly, nonatomic) NSString *absolutePath;
@@ -76,6 +77,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *pathRelativeToRoot;
 @property (readonly, nonatomic) NSMutableDictionary *plist;
 @property (readonly, nonatomic) BRCRelativePath *root;
+@property (strong, nonatomic) NSNumber *rootQuotaUsage; // @synthesize rootQuotaUsage=_rootQuotaUsage;
 @property (strong, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 @property (readonly, nonatomic) BOOL shouldEvictUploadedItems;
 @property (readonly, nonatomic) unsigned int state; // @synthesize state=_state;
@@ -155,8 +157,8 @@ __attribute__((visibility("hidden")))
 - (id)itemByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (id)itemIDByRowID:(unsigned long long)arg1;
 - (id)itemIDByRowID:(unsigned long long)arg1 db:(id)arg2;
-- (struct PQLResultSet *)itemsEnumeratorChildOf:(id)arg1 rankMin:(unsigned long long)arg2 rankMax:(unsigned long long)arg3 count:(unsigned long long)arg4 db:(id)arg5;
-- (struct PQLResultSet *)itemsEnumeratorWithRankMin:(unsigned long long)arg1 rankMax:(unsigned long long)arg2 namePrefix:(id)arg3 shouldIncludeFolders:(BOOL)arg4 shouldIncludeOnlyFolders:(BOOL)arg5 shouldIncludeDocumentsScope:(BOOL)arg6 shouldIncludeDataScope:(BOOL)arg7 shouldIncludeExternalScope:(BOOL)arg8 shouldIncludeTrashScope:(BOOL)arg9 count:(unsigned long long)arg10 db:(id)arg11;
+- (struct PQLResultSet *)itemsEnumeratorChildOf:(id)arg1 withDeadItems:(BOOL)arg2 rankMin:(unsigned long long)arg3 rankMax:(unsigned long long)arg4 count:(unsigned long long)arg5 db:(id)arg6;
+- (struct PQLResultSet *)itemsEnumeratorWithRankMin:(unsigned long long)arg1 rankMax:(unsigned long long)arg2 namePrefix:(id)arg3 withDeadItems:(BOOL)arg4 shouldIncludeFolders:(BOOL)arg5 shouldIncludeOnlyFolders:(BOOL)arg6 shouldIncludeDocumentsScope:(BOOL)arg7 shouldIncludeDataScope:(BOOL)arg8 shouldIncludeExternalScope:(BOOL)arg9 shouldIncludeTrashScope:(BOOL)arg10 count:(unsigned long long)arg11 db:(id)arg12;
 - (struct PQLResultSet *)liveAliasesEnumeratorTargetingThisAppLibrary;
 - (BOOL)markChildrenLostForItemID:(id)arg1 inZone:(id)arg2 fileID:(id)arg3;
 - (BOOL)markChildrenLostForItemID:(id)arg1 inZone:(id)arg2 fileID:(id)arg3 startingFromRow:(unsigned long long)arg4 hasMoreWork:(BOOL *)arg5;

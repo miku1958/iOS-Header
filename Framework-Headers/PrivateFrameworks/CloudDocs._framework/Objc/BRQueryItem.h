@@ -23,6 +23,7 @@
     NSString *_bookmarkData;
     BRFileObjectID *_fileObjectID;
     BRFileObjectID *_parentFileObjectID;
+    BRFileObjectID *_shareRootFileObjectID;
     NSNumber *_size;
     NSNumber *_mtime;
     NSNumber *_btime;
@@ -51,6 +52,10 @@
             unsigned int isTrashed:1;
             unsigned int itemMode:3;
             unsigned int fromReadOnlyDB:1;
+            unsigned int isSharedFolderSubItem:1;
+            unsigned int possiblyContainsSharedToMeItem:1;
+            unsigned int possiblyContainsSharedByMeItem:1;
+            unsigned int editedSinceShared:1;
             unsigned char BRQueryItemKind;
             unsigned char kind;
         } ;
@@ -83,6 +88,7 @@
 @property (readonly, nonatomic, getter=isDownloaded) BOOL downloaded;
 @property (readonly, nonatomic, getter=isDownloading) BOOL downloading;
 @property (readonly, copy, nonatomic) NSError *downloadingError;
+@property (readonly, nonatomic) BOOL editedSinceShared;
 @property (readonly, nonatomic, getter=isExcludedFromSync) BOOL excludedFromSync;
 @property (readonly, nonatomic) NSDictionary *extendedAttributes;
 @property (readonly, nonatomic) NSNumber *favoriteRank;
@@ -162,6 +168,8 @@
 + (void)initialize;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)_isInSharedZone;
+- (BOOL)_isSharedFolderSubItem;
 - (void)_mergeAttrs:(id)arg1;
 - (void)_mergeURL:(id)arg1;
 - (void)attachLogicalExtension:(id)arg1 physicalExtension:(id)arg2;

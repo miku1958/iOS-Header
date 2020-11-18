@@ -37,6 +37,7 @@
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsEdgeSwipeBackGesture; // @synthesize supportsEdgeSwipeBackGesture=_supportsEdgeSwipeBackGesture;
+@property (readonly, nonatomic) long long transitionIdentifier;
 @property (nonatomic, getter=isTransitioningToDetail) BOOL transitioningToDetail; // @synthesize transitioningToDetail=_transitioningToDetail;
 
 + (BOOL)isTransitionSupportedWithMasterViewController:(id)arg1 detailViewController:(id)arg2;
@@ -48,6 +49,7 @@
 - (void)installTransitionAnimationCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)installTransitionAnimationStartHandler:(CDUnknownBlockType)arg1;
 - (double)transitionDuration:(id)arg1;
+- (long long)transitionIdentifierForTransitionMode:(unsigned long long)arg1;
 - (void)willEndTransition;
 - (void)willStartTransition;
 

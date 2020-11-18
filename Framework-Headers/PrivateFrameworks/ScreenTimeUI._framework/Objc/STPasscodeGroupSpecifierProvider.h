@@ -6,19 +6,24 @@
 
 #import <ScreenTimeUI/STRootGroupSpecifierProvider.h>
 
-@class PSSpecifier;
+@class PSListController, PSSpecifier;
 
 __attribute__((visibility("hidden")))
 @interface STPasscodeGroupSpecifierProvider : STRootGroupSpecifierProvider
 {
     PSSpecifier *_togglePasscodeSpecifier;
+    PSListController *_listController;
 }
 
+@property (readonly, weak) PSListController *listController; // @synthesize listController=_listController;
 @property (strong, nonatomic) PSSpecifier *togglePasscodeSpecifier; // @synthesize togglePasscodeSpecifier=_togglePasscodeSpecifier;
 
++ (id)providerWithCoordinator:(id)arg1 listController:(id)arg2;
 - (void).cxx_destruct;
+- (id)_authenticationContextWithReasonKey:(id)arg1;
+- (void)_promptForRecoveryAppleIDWithPINController:(id)arg1 passcode:(id)arg2;
 - (void)_removeManagedPasscode;
-- (id)_removePasscodeAction;
+- (id)_removePasscodeActionWithPINOptionsTitle:(id)arg1 pinOptionsHandler:(CDUnknownBlockType)arg2 pinValidationHandler:(CDUnknownBlockType)arg3;
 - (void)_setManagedPasscode;
 - (void)changeOrRemovePasscode:(id)arg1;
 - (id)init;

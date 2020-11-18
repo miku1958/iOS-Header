@@ -42,7 +42,6 @@
 + (id)jsonPropertyNameForObjCPropertyName:(id)arg1;
 + (id)typeString;
 + (CDUnknownBlockType)valueClassBlockForPropertyWithName:(id)arg1;
-- (id)URLWithValue:(id)arg1 withType:(int)arg2;
 
 @end
 

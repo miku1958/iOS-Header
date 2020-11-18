@@ -47,7 +47,7 @@
     NSString *_nameImageMaskWidgetLQURL;
     NSData *_nameImageMetadata;
     NSString *_nameImageURL;
-    NSString *_paidBundleSubscriptionButtonConfigurationJson;
+    NSString *_paidBundlePaywallConfigurationJson;
     NSString *_parentID;
     NSString *_primaryAudience;
     NSString *_publisherPaidAuthorizationURL;
@@ -60,7 +60,10 @@
     NTPBDate *_publisherSpecifiedArticleIdsModifiedDate;
     NSMutableArray *_purchaseOfferableConfigurations;
     NSString *_replacementID;
+    NSString *_stocksFeedConfigurationJson;
     NSString *_subtitle;
+    NSString *_supergroupConfigJson;
+    NSString *_supergroupKnobsJson;
     NSString *_templateJson;
     int _type;
     BOOL _hideAccessoryText;
@@ -139,7 +142,7 @@
 @property (readonly, nonatomic) BOOL hasNameImageMetadata;
 @property (nonatomic) BOOL hasNameImageScaleFactor;
 @property (readonly, nonatomic) BOOL hasNameImageURL;
-@property (readonly, nonatomic) BOOL hasPaidBundleSubscriptionButtonConfigurationJson;
+@property (readonly, nonatomic) BOOL hasPaidBundlePaywallConfigurationJson;
 @property (readonly, nonatomic) BOOL hasParentID;
 @property (readonly, nonatomic) BOOL hasPrimaryAudience;
 @property (readonly, nonatomic) BOOL hasPublisherPaidAuthorizationURL;
@@ -151,7 +154,10 @@
 @property (readonly, nonatomic) BOOL hasPublisherSpecifiedArticleIdsModifiedDate;
 @property (readonly, nonatomic) BOOL hasReplacementID;
 @property (nonatomic) BOOL hasScore;
+@property (readonly, nonatomic) BOOL hasStocksFeedConfigurationJson;
 @property (readonly, nonatomic) BOOL hasSubtitle;
+@property (readonly, nonatomic) BOOL hasSupergroupConfigJson;
+@property (readonly, nonatomic) BOOL hasSupergroupKnobsJson;
 @property (readonly, nonatomic) BOOL hasTemplateJson;
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) BOOL hideAccessoryText; // @synthesize hideAccessoryText=_hideAccessoryText;
@@ -179,7 +185,7 @@
 @property (strong, nonatomic) NSData *nameImageMetadata; // @synthesize nameImageMetadata=_nameImageMetadata;
 @property (nonatomic) double nameImageScaleFactor; // @synthesize nameImageScaleFactor=_nameImageScaleFactor;
 @property (strong, nonatomic) NSString *nameImageURL; // @synthesize nameImageURL=_nameImageURL;
-@property (strong, nonatomic) NSString *paidBundleSubscriptionButtonConfigurationJson; // @synthesize paidBundleSubscriptionButtonConfigurationJson=_paidBundleSubscriptionButtonConfigurationJson;
+@property (strong, nonatomic) NSString *paidBundlePaywallConfigurationJson; // @synthesize paidBundlePaywallConfigurationJson=_paidBundlePaywallConfigurationJson;
 @property (strong, nonatomic) NSString *parentID; // @synthesize parentID=_parentID;
 @property (strong, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
 @property (strong, nonatomic) NSString *publisherPaidAuthorizationURL; // @synthesize publisherPaidAuthorizationURL=_publisherPaidAuthorizationURL;
@@ -195,7 +201,10 @@
 @property (strong, nonatomic) NSMutableArray *purchaseOfferableConfigurations; // @synthesize purchaseOfferableConfigurations=_purchaseOfferableConfigurations;
 @property (strong, nonatomic) NSString *replacementID; // @synthesize replacementID=_replacementID;
 @property (nonatomic) long long score; // @synthesize score=_score;
+@property (strong, nonatomic) NSString *stocksFeedConfigurationJson; // @synthesize stocksFeedConfigurationJson=_stocksFeedConfigurationJson;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
+@property (strong, nonatomic) NSString *supergroupConfigJson; // @synthesize supergroupConfigJson=_supergroupConfigJson;
+@property (strong, nonatomic) NSString *supergroupKnobsJson; // @synthesize supergroupKnobsJson=_supergroupKnobsJson;
 @property (strong, nonatomic) NSString *templateJson; // @synthesize templateJson=_templateJson;
 @property (nonatomic) int type; // @synthesize type=_type;
 

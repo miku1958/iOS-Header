@@ -9,16 +9,15 @@
 #import <WorkflowKit/HMHomeManagerDelegate-Protocol.h>
 #import <WorkflowKit/WFApplicationStateObserver-Protocol.h>
 
-@class HMHomeManager, NSArray, NSHashTable, NSMutableArray, NSString;
-@protocol OS_dispatch_group, OS_dispatch_queue;
+@class HMHomeManager, NSArray, NSHashTable, NSString;
+@protocol OS_dispatch_group;
 
 @interface WFHomeManager : NSObject <HMHomeManagerDelegate, WFApplicationStateObserver>
 {
     BOOL _hasLoadedHomes;
+    BOOL _loading;
     NSArray *_homes;
     NSHashTable *_eventObservers;
-    NSObject<OS_dispatch_queue> *_updatesHomesQueue;
-    NSMutableArray *_updateHomesCompletionHandlers;
     HMHomeManager *_homeManager;
     NSObject<OS_dispatch_group> *_loadHomesGroup;
 }
@@ -26,23 +25,23 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSHashTable *eventObservers; // @synthesize eventObservers=_eventObservers;
-@property (nonatomic) BOOL hasLoadedHomes; // @synthesize hasLoadedHomes=_hasLoadedHomes;
+@property (readonly, nonatomic) BOOL hasLoadedHomes; // @synthesize hasLoadedHomes=_hasLoadedHomes;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (readonly, nonatomic) NSArray *homes; // @synthesize homes=_homes;
 @property (readonly, nonatomic) NSArray *homesToWhichWeCanAddHomeAutomations;
 @property (readonly, nonatomic) NSArray *homesToWhichWeHaveAdminAccess;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *loadHomesGroup; // @synthesize loadHomesGroup=_loadHomesGroup;
+@property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
 @property (readonly, nonatomic) unsigned long long status;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSMutableArray *updateHomesCompletionHandlers; // @synthesize updateHomesCompletionHandlers=_updateHomesCompletionHandlers;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *updatesHomesQueue; // @synthesize updatesHomesQueue=_updatesHomesQueue;
 
 + (id)sharedManager;
 - (void).cxx_destruct;
 - (void)addEventObserver:(id)arg1;
 - (void)applicationContext:(id)arg1 applicationStateDidChange:(long long)arg2;
 - (void)dealloc;
+- (void)ensureHomesAreLoadedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)homeNamed:(id)arg1;
 - (id)homeWithIdentifier:(id)arg1;
@@ -52,7 +51,6 @@
 - (void)removeEventObserver:(id)arg1;
 - (id)sceneNamed:(id)arg1 inHome:(id)arg2;
 - (id)serviceWithIdentifier:(id)arg1 inHome:(id)arg2;
-- (void)updateHomesWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

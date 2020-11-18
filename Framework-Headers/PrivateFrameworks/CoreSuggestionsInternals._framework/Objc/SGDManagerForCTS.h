@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class SGServiceContext, SGSqlEntityStore;
+@class NSCache, NSDate, NSFileManager, NSMutableDictionary, NSString, PETEventTracker2, SGCustomResponsesParameters, SGServiceContext, SGSqlEntityStore;
 @protocol OS_dispatch_queue, OS_dispatch_semaphore, OS_dispatch_source, SGXPCActivityManagerProtocol;
 
 @interface SGDManagerForCTS : NSObject
@@ -20,11 +20,23 @@
     struct SGDSuggestManagerCTSCriteriaState _ctsCriteriaState;
     struct _opaque_pthread_mutex_t _geocodeLock;
     double _lastFrontfillFinishTime;
+    PETEventTracker2 *_pet2tracker;
     id<SGXPCActivityManagerProtocol> _xpcActivityManager;
     NSObject<OS_dispatch_source> *_adjustActivitySource;
+    NSFileManager *_fManager;
+    NSString *_customResponsesCKPTFullPath;
+    NSString *_preferredLanguage;
+    int _customResponsesStep;
+    NSDate *_customResponsesLatestProcessedDate;
+    NSString *_customResponsesModelFilePath;
+    NSString *_customResponsesModelConfigPath;
+    SGCustomResponsesParameters *_customResponsesParameters;
+    NSCache *_perLanguageEmbedderCache;
+    NSMutableDictionary *_embedderExistsForLanguage;
 }
 
 + (void)_logCallInteractions:(id)arg1;
++ (void)clearCustomResponsesCheckpointForTesting;
 + (id)defaultInstance;
 + (id)sharedSingletonInstance;
 - (void).cxx_destruct;
@@ -54,6 +66,8 @@
 - (void)dealloc;
 - (void)drainDefaultQueueCompletely;
 - (BOOL)drainHarvestQueue:(id)arg1 highPriorityOnly:(BOOL)arg2 continuingWhile:(CDUnknownBlockType)arg3;
+- (id)getCustomResponsesLatestProcessedDateForTesting;
+- (int)getCustomResponsesStepForTesting;
 - (BOOL)hasAlreadyHarvestedSearchableItem:(id)arg1;
 - (struct SGMEventICSSourceType_)icsTypeForBundle:(id)arg1;
 - (id)initWithHarvestStore:(id)arg1 xpcActivityManager:(id)arg2;
@@ -64,6 +78,9 @@
 - (void)registerForCTS;
 - (void)resetLastFrontfillFinishTimeForTesting;
 - (void)resumeFrontfillForTesting;
+- (void)setCustomResponsesLatestProcessedDateForTesting:(id)arg1;
+- (void)setCustomResponsesStepForTesting:(int)arg1;
+- (void)setPet2TrackerForTesting:(id)arg1;
 - (void)suspendFrontfillForTesting;
 - (void)triggerFrontfillHarvest;
 - (void)waitForXpcActivityQueue;

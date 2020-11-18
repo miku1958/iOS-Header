@@ -56,7 +56,9 @@
 - (id)_contactsByHandle:(id)arg1 error:(id *)arg2;
 - (void)_contactsStoreDidChange;
 - (void)_currentApplicationStateDidChange;
+- (BOOL)_doesContainAtLeastOneContactInHandles:(id)arg1 contactsByHandle:(id)arg2;
 - (void)_emergencyModeDidChange;
+- (id)_filteredArrayForKnownHandlesInArray:(id)arg1;
 - (void)_populateAllowedContactsByHandlesForContactHandles:(id)arg1 context:(id)arg2;
 - (void)_screenTimePolicyDidChange;
 - (BOOL)_shouldGeneralScreenTimeAllowHandles:(id)arg1 context:(id)arg2;

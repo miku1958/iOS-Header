@@ -26,11 +26,15 @@
 + (id)brc_errorDocumentWithFilename:(id)arg1 size:(long long)arg2 isTooLargeToUpload:(long long)arg3;
 + (id)brc_errorDriveDisabledOrAppLibraryDisabled;
 + (id)brc_errorFolderHasSharedSubitems;
++ (id)brc_errorFolderHasSharedSubitemsWithSharedByMeURLs:(id)arg1 sharedToMeURLs:(id)arg2;
++ (id)brc_errorFolderHierarchyTooDeep;
 + (id)brc_errorInvalidParameter:(id)arg1 value:(id)arg2;
 + (id)brc_errorItemAlreadyPartOfAShare;
 + (id)brc_errorItemChanged;
 + (id)brc_errorItemInTrash;
++ (id)brc_errorItemIneligibleFromSyncForInode:(id)arg1;
 + (id)brc_errorItemNotFound:(id)arg1;
++ (id)brc_errorItemNotShareable;
 + (id)brc_errorLoggedOut;
 + (id)brc_errorMethodNotImplemented:(SEL)arg1;
 + (id)brc_errorNoAppLibraryForBundle:(id)arg1;

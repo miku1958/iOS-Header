@@ -6,21 +6,25 @@
 
 #import <UIKit/UIView.h>
 
+@class UIWindow;
+
 __attribute__((visibility("hidden")))
 @interface PUPhotosSharingProgressOverlay : UIView
 {
     BOOL _isShowing;
     UIView *_progressView;
+    UIWindow *_cachedMainWindow;
 }
 
+@property (weak, nonatomic) UIWindow *cachedMainWindow; // @synthesize cachedMainWindow=_cachedMainWindow;
 @property (strong, nonatomic) UIView *progressView; // @synthesize progressView=_progressView;
 
 - (void).cxx_destruct;
 - (id)_grayScaleImageFromImage:(id)arg1;
 - (void)_installInStatusBarWindow;
+- (id)_mainWindow;
 - (id)_screenshotImage;
 - (void)_setupOverlayAnimated:(BOOL)arg1;
-- (id)_statusBarWindow;
 - (void)_tearDownOverlayAnimated:(BOOL)arg1;
 - (void)addProgressView:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

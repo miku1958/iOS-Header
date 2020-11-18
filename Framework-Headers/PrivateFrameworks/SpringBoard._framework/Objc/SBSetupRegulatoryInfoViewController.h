@@ -15,6 +15,7 @@
 }
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)loadView;
 
 @end

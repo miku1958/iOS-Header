@@ -47,6 +47,7 @@
 @property (readonly, nonatomic) EMMailboxObjectID *parentID; // @synthesize parentID=_parentID;
 @property (readonly, copy, nonatomic) NSString *redactedName; // @synthesize redactedName=_redactedName;
 @property (strong, nonatomic) EMMailboxRepository *repository;
+@property (readonly, nonatomic) BOOL shouldArchiveByDefault;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL supportsSelectAll;
 @property (nonatomic) long long type; // @synthesize type=_type;
@@ -72,6 +73,7 @@
 - (void).cxx_destruct;
 - (BOOL)_canArchiveForMailboxType:(long long)arg1;
 - (void)_commonInitName:(id)arg1 accountIdentifier:(id)arg2 type:(long long)arg3 canContainMessages:(BOOL)arg4 children:(id)arg5 parentID:(id)arg6 builder:(CDUnknownBlockType)arg7;
+- (BOOL)_shouldArchiveByDefault;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

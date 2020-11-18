@@ -6,19 +6,18 @@
 
 #import <UIKit/UIActivity.h>
 
-@protocol MFAttachmentHandlingDelegate;
+@protocol ContentRepresentationHandlingDelegate;
 
 @interface MessageMarkupDocumentActivity : UIActivity
 {
-    id<MFAttachmentHandlingDelegate> _attachmentHandlingDelegate;
+    id<ContentRepresentationHandlingDelegate> _delegate;
     long long _context;
 }
 
-@property (weak, nonatomic) id<MFAttachmentHandlingDelegate> attachmentHandlingDelegate; // @synthesize attachmentHandlingDelegate=_attachmentHandlingDelegate;
 @property (nonatomic) long long context; // @synthesize context=_context;
+@property (weak, nonatomic) id<ContentRepresentationHandlingDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (id)_beforeActivity;
 - (id)activityImage;
 - (id)activityTitle;
 - (id)activityType;

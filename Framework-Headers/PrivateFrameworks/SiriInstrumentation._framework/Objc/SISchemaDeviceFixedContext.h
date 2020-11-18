@@ -6,12 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaDeviceFixedContext-Protocol.h>
-
 @class NSData, NSString;
 
-@interface SISchemaDeviceFixedContext : PBCodable <SISchemaDeviceFixedContext, NSSecureCoding>
+@interface SISchemaDeviceFixedContext : PBCodable
 {
     NSString *_deviceType;
     NSString *_systemBuild;
@@ -22,21 +19,18 @@
     NSString *_speechID;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *siriDeviceID; // @synthesize siriDeviceID=_siriDeviceID;
 @property (copy, nonatomic) NSString *siriInputLanguage; // @synthesize siriInputLanguage=_siriInputLanguage;
 @property (copy, nonatomic) NSString *siriVoiceLanguage; // @synthesize siriVoiceLanguage=_siriVoiceLanguage;
 @property (copy, nonatomic) NSString *speechID; // @synthesize speechID=_speechID;
-@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *systemBuild; // @synthesize systemBuild=_systemBuild;
 @property (copy, nonatomic) NSString *systemLocale; // @synthesize systemLocale=_systemLocale;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

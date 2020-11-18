@@ -10,6 +10,7 @@
 {
 }
 
++ (id)checkoutFragment;
 + (id)defaultPlanePosition;
 + (BOOL)forceDisableRayTracedAmbientOcclusion;
 + (id)preferencesValueforKey:(struct __CFString *)arg1 domain:(struct __CFString *)arg2;
@@ -18,6 +19,7 @@
 + (BOOL)wantsDebugVisualizationEnabled;
 + (BOOL)wantsObjectPlacedWithoutPlane;
 + (BOOL)wantsOpenInObjectMode;
++ (BOOL)wantsParentToCameraInARAndEnableProbes;
 + (BOOL)wantsRayTracedAmbientOcclusionEnabled;
 + (BOOL)wantsSTAREnabled;
 + (BOOL)wantsStatisticsShown;

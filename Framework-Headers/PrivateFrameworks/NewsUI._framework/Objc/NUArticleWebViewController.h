@@ -10,7 +10,7 @@
 #import <NewsUI/UIScrollViewDelegate-Protocol.h>
 #import <NewsUI/WKNavigationDelegatePrivate-Protocol.h>
 
-@class FCArticle, NSString, SXWebCrashRetryThrottler, WKWebView;
+@class FCArticle, NSString, SWCrashRetryThrottler, WKWebView;
 @protocol NULoadingDelegate;
 
 @interface NUArticleWebViewController : UIViewController <UIScrollViewDelegate, WKNavigationDelegatePrivate, NULoadable>
@@ -18,7 +18,7 @@
     id<NULoadingDelegate> _loadingDelegate;
     FCArticle *_article;
     WKWebView *_webView;
-    SXWebCrashRetryThrottler *_webCrashRetryThrottler;
+    SWCrashRetryThrottler *_webCrashRetryThrottler;
 }
 
 @property (readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
@@ -27,7 +27,7 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<NULoadingDelegate> loadingDelegate; // @synthesize loadingDelegate=_loadingDelegate;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) SXWebCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
+@property (readonly, nonatomic) SWCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
 @property (readonly, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
 + (id)webViewConfiguration;

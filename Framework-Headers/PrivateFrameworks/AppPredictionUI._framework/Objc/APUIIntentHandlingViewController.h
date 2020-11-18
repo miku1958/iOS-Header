@@ -46,6 +46,7 @@
 @property (strong, nonatomic) APUIWFLIntentController *wfIntentController; // @synthesize wfIntentController=_wfIntentController;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (unsigned long long)_cardFormatForContentRequest:(id)arg1;
 - (void)_constructCardViewControllerForInteraction:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_contentForCardRequestWithInteraction:(id)arg1;

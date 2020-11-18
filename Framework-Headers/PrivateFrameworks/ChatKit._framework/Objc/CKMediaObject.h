@@ -89,6 +89,7 @@
 - (id)icon;
 - (id)initWithTransfer:(id)arg1 isFromMe:(BOOL)arg2 suppressPreview:(BOOL)arg3 forceInlinePreview:(BOOL)arg4;
 - (Class)inlineStickerBalloonViewClass;
+- (BOOL)isDirectory;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPreviewable;
 - (BOOL)isPromisedItem;

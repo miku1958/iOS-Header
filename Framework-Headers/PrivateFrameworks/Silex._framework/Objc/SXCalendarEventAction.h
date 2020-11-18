@@ -4,11 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXAction.h>
+#import <objc/NSObject.h>
+
+#import <Silex/SXAction-Protocol.h>
 
 @class NSDate, NSString, NSTimeZone, NSURL, SXFormattedText;
 
-@interface SXCalendarEventAction : SXAction
+@interface SXCalendarEventAction : NSObject <SXAction>
 {
     BOOL _allDay;
     NSDate *_startDate;
@@ -22,12 +24,17 @@
 
 @property (copy, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (nonatomic) BOOL allDay; // @synthesize allDay=_allDay;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *location; // @synthesize location=_location;
 @property (copy, nonatomic) SXFormattedText *notes; // @synthesize notes=_notes;
 @property (readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, nonatomic) NSString *type;
 
 - (void).cxx_destruct;
 - (id)initWithStartDate:(id)arg1;

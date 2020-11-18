@@ -37,6 +37,7 @@
 + (id)readValueFromKeyValuePair:(id)arg1;
 - (long long)fc_GregorianCalendarDaysSinceDate:(id)arg1;
 - (id)fc_adjustToRecentDate;
+- (id)fc_dateByRoundingDownToNearestQuarterHour;
 - (id)fc_dateBySubtractingTimeInterval:(double)arg1;
 - (id)fc_dateOfEarliestGregorianCalendarDay;
 - (BOOL)fc_isEarlierThan:(id)arg1;

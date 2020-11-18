@@ -34,7 +34,7 @@
     NSMutableDictionary *_retryCountsByOperationType;
     NSMutableSet *_objectIDsToProcess;
     ICSelectorDelayer *_processingSelectorDelayer;
-    ICSelectorDelayer *_pollingSelectorDelayer;
+    ICSelectorDelayer *_syncSelectorDelayer;
     NSDictionary *_containersByAccountID;
     NSMutableDictionary *_accountZoneIDsNeedingFetchChanges;
     NSMutableDictionary *_accountZoneIDsFetchingChanges;
@@ -65,7 +65,6 @@
 @property (strong, nonatomic) NSMutableSet *objectIDsToProcess; // @synthesize objectIDsToProcess=_objectIDsToProcess;
 @property (strong, nonatomic) NSMutableSet *objectIDsToRetry; // @synthesize objectIDsToRetry=_objectIDsToRetry;
 @property (strong, nonatomic) NSOperationQueue *operationQueue; // @synthesize operationQueue=_operationQueue;
-@property (strong) ICSelectorDelayer *pollingSelectorDelayer; // @synthesize pollingSelectorDelayer=_pollingSelectorDelayer;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 @property (strong) ICSelectorDelayer *processingSelectorDelayer; // @synthesize processingSelectorDelayer=_processingSelectorDelayer;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;
@@ -73,6 +72,7 @@
 @property (strong) NSTimer *retryTimer; // @synthesize retryTimer=_retryTimer;
 @property (strong) NSMutableSet *subscribedSubscriptionIDs; // @synthesize subscribedSubscriptionIDs=_subscribedSubscriptionIDs;
 @property (nonatomic) BOOL syncDisabledByServer; // @synthesize syncDisabledByServer=_syncDisabledByServer;
+@property (strong) ICSelectorDelayer *syncSelectorDelayer; // @synthesize syncSelectorDelayer=_syncSelectorDelayer;
 
 + (id)allZoneIDsInAccountZoneIDs:(id)arg1;
 + (void)batchRecordsToSave:(id)arg1 delete:(id)arg2 maxRecordCountPerBatch:(unsigned long long)arg3 maxRecordSizePerBatch:(unsigned long long)arg4 withBlock:(CDUnknownBlockType)arg5;
@@ -157,7 +157,7 @@
 - (void)fetchUserRecordWithAccountID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchUserRecordWithContainer:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)finishOperationsForRecordID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)firePollingSyncRequest;
+- (void)fireSyncRequest;
 - (void)handleDatabaseNotification:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)handleGenericPartialFailuresForError:(id)arg1 operation:(id)arg2;
 - (void)handleNotification:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -191,7 +191,6 @@
 - (id)operationsToModifyRecordsToSave:(id)arg1 delete:(id)arg2 rootRecordIDsByShareID:(id)arg3 database:(id)arg4;
 - (BOOL)partialError:(id)arg1 containsErrorCode:(long long)arg2;
 - (void)pauseCloudSyncWhileSynchronouslyPerformingBlock:(CDUnknownBlockType)arg1;
-- (void)pollIfNecessary;
 - (void)printOperationQueue;
 - (void)processAllCloudObjectsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)processObjectIDs:(id)arg1 operationQueue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -211,6 +210,7 @@
 - (id)serverChangeTokenForRecordZoneID:(id)arg1 databaseScope:(long long)arg2 accountID:(id)arg3;
 - (void)startRetryTimerIfNecessaryWithError:(id)arg1;
 - (id)subscriptionForDatabase:(id)arg1;
+- (void)syncIfNeeded;
 - (void)syncWithReason:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)syncWithReason:(id)arg1 onlyIfReachable:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (double)timeIntervalToRetryAfterFromError:(id)arg1;

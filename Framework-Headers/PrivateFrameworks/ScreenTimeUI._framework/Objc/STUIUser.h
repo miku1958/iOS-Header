@@ -23,6 +23,7 @@
     NSString *_altDSID;
     unsigned long long _type;
     NSString *_passcode;
+    NSString *_recoveryAltDSID;
     NSManagedObjectID *_userObjectID;
 }
 
@@ -35,7 +36,9 @@
 @property (readonly, nonatomic) BOOL isParent;
 @property (nonatomic, getter=isManaged) BOOL managed; // @synthesize managed=_managed;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) BOOL needsRecoveryAppleID;
 @property (copy, nonatomic) NSString *passcode; // @synthesize passcode=_passcode;
+@property (copy, nonatomic) NSString *recoveryAltDSID; // @synthesize recoveryAltDSID=_recoveryAltDSID;
 @property (nonatomic, getter=isRemoteUser) BOOL remoteUser; // @synthesize remoteUser=_remoteUser;
 @property (nonatomic, getter=isScreenTimeEnabled) BOOL screenTimeEnabled; // @synthesize screenTimeEnabled=_screenTimeEnabled;
 @property (nonatomic) unsigned long long source; // @synthesize source=_source;

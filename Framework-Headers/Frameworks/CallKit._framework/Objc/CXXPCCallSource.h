@@ -31,6 +31,7 @@
 - (id)init;
 - (id)initWithConnection:(id)arg1;
 - (BOOL)isConnected;
+- (BOOL)isPermittedToUseBluetoothAccessories;
 - (BOOL)isPermittedToUsePrivateAPI;
 - (BOOL)isPermittedToUsePublicAPI;
 - (int)processIdentifier;

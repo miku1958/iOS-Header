@@ -6,12 +6,13 @@
 
 #import <ScreenTimeUI/NSObject-Protocol.h>
 
-@class NSNumber, STAllowance, STAlwaysAllowList, STDeviceBedtime, STTimeAllowancesViewModel, STUIAskForTimeRequestResponse;
+@class NSNumber, STAllowance, STAlwaysAllowList, STCoreUser, STDeviceBedtime, STTimeAllowancesViewModel, STUIAskForTimeRequestResponse;
 
 @protocol STTimeAllowancesViewModelCoordinator <NSObject>
 
 @property (readonly) STTimeAllowancesViewModel *viewModel;
 
++ (BOOL)saveAllowance:(STAllowance *)arg1 forUser:(STCoreUser *)arg2 error:(id *)arg3;
 - (void)deleteAllowance:(STAllowance *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)respondToAskForTime:(STUIAskForTimeRequestResponse *)arg1 withApproval:(BOOL)arg2 timeApproved:(NSNumber *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (void)saveAllAllowancesEnabled:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;

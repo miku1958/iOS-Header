@@ -17,6 +17,7 @@
     NSHashTable *_connections;
     long long _connectionState;
     id<EFCancelable> _daemonLaunchToken;
+    BOOL _allowsBackgroundResume;
     struct os_unfair_lock_s _lock;
     EMMessageRepository *_messageRepository;
     EMOutgoingMessageRepository *_outgoingMessageRepository;
@@ -35,6 +36,7 @@
 
 @property (readonly) EMAccountRepository *accountRepository; // @synthesize accountRepository=_accountRepository;
 @property (readonly) EMActivityRegistry *activityRegistry; // @synthesize activityRegistry=_activityRegistry;
+@property BOOL allowsBackgroundResume;
 @property (readonly) EMBlockedSenderManager *blockedSenderManager; // @synthesize blockedSenderManager=_blockedSenderManager;
 @property (readonly) EMClientState *clientState; // @synthesize clientState=_clientState;
 @property (readonly, copy) NSString *debugDescription;
@@ -66,7 +68,7 @@
 - (id)initForTesting;
 - (id)initWithProxyCreator:(id)arg1;
 - (void)resetProtocolConnections;
-- (void)tearDown;
+- (void)test_tearDown;
 
 @end
 

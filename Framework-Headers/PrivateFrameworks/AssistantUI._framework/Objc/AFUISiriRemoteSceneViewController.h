@@ -36,6 +36,7 @@
 + (id)remoteObjectInterface;
 - (void).cxx_destruct;
 - (void)_audioCategoriesDisablingVolumeHUDDidChangeTo:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (id)_connection;
 - (void)_handleInvalidationForReason:(unsigned long long)arg1 explanation:(id)arg2;
 - (void)_interrupted;

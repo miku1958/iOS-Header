@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (id).cxx_construct;
-- (id)initWithSystemPreviewController:(struct SystemPreviewController *)arg1 fromRect:(struct IntRect)arg2;
+- (id)initWithSystemPreviewController:(struct SystemPreviewController *)arg1;
 - (id)presentingViewController;
 - (struct CGRect)previewController:(id)arg1 frameForPreviewItem:(id)arg2 inSourceView:(id *)arg3;
 - (id)previewController:(id)arg1 transitionImageForPreviewItem:(id)arg2 contentRect:(struct CGRect *)arg3;

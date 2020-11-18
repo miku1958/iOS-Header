@@ -23,10 +23,11 @@
 @property (readonly, nonatomic) BOOL isRequiredByFollowingEmitters;
 @property (readonly, nonatomic) long long requiredForYouContentTypes;
 @property (readonly, nonatomic) BOOL requiresHeavyweightContent;
+@property (readonly, nonatomic) BOOL shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
++ (BOOL)canMergeGroupsUnconditionally;
 + (id)groupEmitterIdentifier;
-- (BOOL)canMergeGroupsUnconditionally;
 - (Class)classForGroupEmittingOperation;
 - (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (BOOL)wantsToEmitGroupInContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;

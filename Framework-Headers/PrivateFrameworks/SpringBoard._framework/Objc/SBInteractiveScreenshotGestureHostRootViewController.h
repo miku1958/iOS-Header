@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_reloadLayerHostView;
 - (id)initWithScreen:(id)arg1;
 - (void)invalidate;

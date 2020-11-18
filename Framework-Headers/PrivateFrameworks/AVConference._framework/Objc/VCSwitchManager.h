@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 - (void)setupLocalOnOffSwitches;
 - (void)setupLocalOnOffSwitchesFromMasterSwitch;
 - (void)setupLocalRateControlTestGroupSwitches;
-- (void)setupLocalSwitchesForTesting;
+- (void)setupLocalSwitchesIndividually;
 - (void)setupLocalVideoTestGroupSwitches;
 - (void)updateDuplicationEnhancementSwitches;
 

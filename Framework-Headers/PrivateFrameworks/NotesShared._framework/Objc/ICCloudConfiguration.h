@@ -10,8 +10,9 @@
 
 @interface ICCloudConfiguration : NSObject
 {
+    BOOL _shouldSyncWhenEnteringForeground;
     ICCloudThrottlingPolicy *_throttlingPolicy;
-    double _pollingInterval;
+    double _syncInterval;
     unsigned long long _maxInlineAssetSizeBytes;
     unsigned long long _maxAttachmentsPerNote;
     unsigned long long _maxSubAttachmentsPerAttachment;
@@ -27,8 +28,9 @@
 @property (nonatomic) unsigned long long maxSubAttachmentsPerAttachment; // @synthesize maxSubAttachmentsPerAttachment=_maxSubAttachmentsPerAttachment;
 @property (strong, nonatomic) NSNumber *maximumAttachmentSizeMB; // @synthesize maximumAttachmentSizeMB=_maximumAttachmentSizeMB;
 @property (copy, nonatomic) NSString *minimumClientVersion; // @synthesize minimumClientVersion=_minimumClientVersion;
-@property (nonatomic) double pollingInterval; // @synthesize pollingInterval=_pollingInterval;
 @property (nonatomic) unsigned long long resultsLimitPerSyncOperation; // @synthesize resultsLimitPerSyncOperation=_resultsLimitPerSyncOperation;
+@property (nonatomic) BOOL shouldSyncWhenEnteringForeground; // @synthesize shouldSyncWhenEnteringForeground=_shouldSyncWhenEnteringForeground;
+@property (nonatomic) double syncInterval; // @synthesize syncInterval=_syncInterval;
 @property (strong, nonatomic) ICCloudThrottlingPolicy *throttlingPolicy; // @synthesize throttlingPolicy=_throttlingPolicy;
 
 + (id)availableConfigurationURLs;

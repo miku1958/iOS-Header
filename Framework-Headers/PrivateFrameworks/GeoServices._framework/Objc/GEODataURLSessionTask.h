@@ -8,12 +8,11 @@
 
 #import <GeoServices/GEODataSessionTask-Protocol.h>
 #import <GeoServices/GEODataSessionUpdatableTask-Protocol.h>
-#import <GeoServices/GEOStateCapturing-Protocol.h>
 
 @class GEOClientMetrics, GEODataRequest, NSData, NSDate, NSError, NSHTTPURLResponse, NSMutableData, NSString, NSURL, NSURLRequest, NSURLSessionTask, NSURLSessionTaskMetrics;
 @protocol GEODataSessionTaskDelegate, GEORequestCounterTicket, NSObject, OS_dispatch_queue, OS_os_activity, OS_voucher;
 
-@interface GEODataURLSessionTask : NSObject <GEOStateCapturing, GEODataSessionTask, GEODataSessionUpdatableTask>
+@interface GEODataURLSessionTask : NSObject <GEODataSessionTask, GEODataSessionUpdatableTask>
 {
     id<GEODataSessionTaskDelegate> _delegate;
     GEODataRequest *_request;
@@ -27,10 +26,8 @@
     double _startTime;
     double _endTime;
     CDStruct_d1a7ebee _requestKind;
-    unsigned int _taskIdentifier;
     BOOL _mptcpNegotiated;
     BOOL _receivedRNFNotification;
-    unsigned long long _stateCaptureHandle;
     float _priority;
     unsigned int _sessionIdentifier;
     BOOL _backingTaskNeedsResume;
@@ -50,10 +47,8 @@
 @property (readonly, nonatomic) unsigned long long contentLength;
 @property (readonly, nonatomic) NSString *contentLengthString;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<GEODataSessionTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSURL *downloadedFileURL;
 @property (readonly, nonatomic) double elapsedTime;
@@ -62,7 +57,6 @@
 @property (readonly, nonatomic) BOOL failedDueToCancel;
 @property (readonly, nonatomic) BOOL failedDueToCancel;
 @property (readonly, nonatomic) BOOL finished; // @synthesize finished=_finished;
-@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long incomingPayloadSize;
 @property (readonly, nonatomic) double loadTime;
@@ -84,8 +78,6 @@
 @property (nonatomic) unsigned int sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly, nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned int taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property (readonly, nonatomic) NSURLSessionTaskMetrics *urlTaskMetrics; // @synthesize urlTaskMetrics=_urlTaskMetrics;
 
 - (void).cxx_destruct;
@@ -93,12 +85,10 @@
 - (void)_prepareForRestart;
 - (void)_start;
 - (void)cancel;
-- (id)captureStateWithHints:(struct os_state_hints_s *)arg1;
 - (id)createURLRequest;
 - (id)createURLSessionTaskWithSession:(id)arg1 request:(id)arg2;
 - (void)dataSession:(id)arg1 taskDidCompleteWithError:(id)arg2;
 - (void)dataSession:(id)arg1 willSendRequestForEstablishedConnection:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)dealloc;
 - (void)delegateAsync:(CDUnknownBlockType)arg1;
 - (void)didCollectMetrics:(id)arg1;
 - (void)didReceiveData:(id)arg1;

@@ -12,8 +12,12 @@
 
 @interface NTPBInAppWebEmbedExposure : PBCodable <NSCopying>
 {
+    int _articleDisplayRankInGroup;
     NSString *_articleId;
+    int _displayRank;
+    int _feedType;
     NSData *_feedViewExposureId;
+    int _groupType;
     int _moduleEventType;
     NSData *_moduleExposureId;
     int _moduleItemCount;
@@ -22,6 +26,10 @@
     NSString *_webEmbedId;
     int _webEmbedLocation;
     struct {
+        unsigned int articleDisplayRankInGroup:1;
+        unsigned int displayRank:1;
+        unsigned int feedType:1;
+        unsigned int groupType:1;
         unsigned int moduleEventType:1;
         unsigned int moduleItemCount:1;
         unsigned int moduleItemPosition:1;
@@ -30,10 +38,18 @@
     } _has;
 }
 
+@property (nonatomic) int articleDisplayRankInGroup; // @synthesize articleDisplayRankInGroup=_articleDisplayRankInGroup;
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
+@property (nonatomic) int displayRank; // @synthesize displayRank=_displayRank;
+@property (nonatomic) int feedType; // @synthesize feedType=_feedType;
 @property (strong, nonatomic) NSData *feedViewExposureId; // @synthesize feedViewExposureId=_feedViewExposureId;
+@property (nonatomic) int groupType; // @synthesize groupType=_groupType;
+@property (nonatomic) BOOL hasArticleDisplayRankInGroup;
 @property (readonly, nonatomic) BOOL hasArticleId;
+@property (nonatomic) BOOL hasDisplayRank;
+@property (nonatomic) BOOL hasFeedType;
 @property (readonly, nonatomic) BOOL hasFeedViewExposureId;
+@property (nonatomic) BOOL hasGroupType;
 @property (nonatomic) BOOL hasModuleEventType;
 @property (readonly, nonatomic) BOOL hasModuleExposureId;
 @property (nonatomic) BOOL hasModuleItemCount;
@@ -50,12 +66,16 @@
 @property (nonatomic) int webEmbedLocation; // @synthesize webEmbedLocation=_webEmbedLocation;
 
 - (void).cxx_destruct;
+- (int)StringAsFeedType:(id)arg1;
+- (int)StringAsGroupType:(id)arg1;
 - (int)StringAsModuleEventType:(id)arg1;
 - (int)StringAsModuleLocation:(id)arg1;
 - (int)StringAsWebEmbedLocation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (id)feedTypeAsString:(int)arg1;
+- (id)groupTypeAsString:(int)arg1;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;

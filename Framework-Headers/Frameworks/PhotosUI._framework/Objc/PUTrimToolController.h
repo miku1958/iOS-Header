@@ -106,7 +106,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_allowsKeyFrameCreation;
-- (BOOL)_canShowWhileLocked;
 - (void)_createRendererIfNeeded;
 - (CDStruct_1b6d18a9)_currentPlayerScaledTimeFromOriginalTime:(CDStruct_1b6d18a9)arg1;
 - (id)_currentVideoAsset;

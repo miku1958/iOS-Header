@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)carrierDefaultBoolForKey:(id)arg1;
 + (BOOL)carrierDefaultBoolForKey:(id)arg1 defaultValue:(BOOL)arg2;
 + (BOOL)deviceHasMultipleSubscriptions;
 + (id)deviceSpecificNameForKey:(id)arg1;

@@ -33,12 +33,13 @@
 @property (copy, nonatomic) NSNumber *usefulnessScore; // @synthesize usefulnessScore=_usefulnessScore;
 
 + (id)_aceObjectWithMutableDictionary:(id)arg1 context:(id)arg2;
-+ (id)_filteredDictionaryForKeySet:(struct __CFSet *)arg1 plistData:(id)arg2;
++ (id)_filteredDictionaryForKeySet:(id)arg1 plistData:(id)arg2;
 + (id)_newAceObjectWithMutableDictionary:(id)arg1;
 + (id)aceObjectArrayWithDictionaryArray:(id)arg1 baseClass:(Class)arg2 context:(id)arg3;
 + (id)aceObjectArrayWithDictionaryArray:(id)arg1 baseProtocol:(id)arg2 context:(id)arg3;
 + (id)aceObjectDictionaryWithDictionary:(id)arg1 baseClass:(Class)arg2 context:(id)arg3;
 + (id)aceObjectDictionaryWithDictionary:(id)arg1 baseProtocol:(id)arg2 context:(id)arg3;
++ (id)aceObjectWithDictionary:(id)arg1;
 + (id)aceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)aceObjectWithGenericCommand:(id)arg1 context:(id)arg2;
 + (id)aceObjectWithPlistData:(id)arg1;
@@ -47,6 +48,7 @@
 + (id)newAceObjectWithDictionary:(id)arg1 context:(id)arg2;
 + (id)newAceObjectWithGenericCommand:(id)arg1 context:(id)arg2;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_appendDescriptionOfObject:(id)arg1 toString:(id)arg2 atDepth:(unsigned long long)arg3 withPrefixes:(id)arg4 hint:(id)arg5;
 - (id)_descriptionHint;
 - (void)_deserializeFromPlistData;
@@ -56,7 +58,6 @@
 - (BOOL)_isDeserialized;
 - (id)_serializedData;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)deserializationDuration;
 - (id)dictionary;
 - (void)encodeWithCoder:(id)arg1;

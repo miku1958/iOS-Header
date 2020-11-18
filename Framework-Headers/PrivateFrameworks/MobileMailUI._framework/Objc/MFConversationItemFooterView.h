@@ -14,6 +14,7 @@
     BOOL _shouldArchiveByDefault;
     UIVisualEffectView *_backgroundView;
     UIButton *_seeMoreButton;
+    UIButton *_revealActionsButton;
     id<MFMessageFooterViewDelegate> _delegate;
     MFMessageDisplayMetrics *_displayMetrics;
     NSString *_senderName;
@@ -22,7 +23,6 @@
     double _defaultSeeMoreButtonOriginY;
     UIButton *_trashButton;
     EMCachingContactStore *_contactStore;
-    UIButton *_revealActionsButton;
 }
 
 @property (strong, nonatomic) UIVisualEffectView *backgroundView; // @synthesize backgroundView=_backgroundView;

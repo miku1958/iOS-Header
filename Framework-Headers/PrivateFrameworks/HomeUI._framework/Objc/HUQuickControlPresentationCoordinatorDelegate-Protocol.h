@@ -32,5 +32,6 @@
 - (BOOL)presentationCoordinatorShouldDisablePullToUnlockSettings:(HUQuickControlPresentationCoordinator *)arg1;
 - (BOOL)presentationCoordinatorShouldProvideCancellationFeedback:(HUQuickControlPresentationCoordinator *)arg1;
 - (void)presentationCoordinatorWillBeginDismissalTransition:(HUQuickControlPresentationCoordinator *)arg1;
+- (BOOL)shouldOverrideTraitCollectionForPresentationCoordinator:(HUQuickControlPresentationCoordinator *)arg1;
 @end
 

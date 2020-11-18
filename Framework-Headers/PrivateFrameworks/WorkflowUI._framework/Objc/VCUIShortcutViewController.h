@@ -72,8 +72,10 @@
 - (void)didTapCancel;
 - (void)didTapPrimaryButton;
 - (void)didTapSecondaryButton;
+- (int)eventSource;
 - (id)headerImage;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2 mode:(unsigned long long)arg3;
+- (BOOL)isUpdatingExistingShortcut;
 - (void)keyboardWillChange:(id)arg1;
 - (id)nameCell;
 - (id)nameSectionTitle;
@@ -97,6 +99,7 @@
 - (void)textFieldDidChange:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
 - (id)title;
+- (void)trackAddEvent;
 - (void)updateCustomView;
 - (void)updatePrimaryButton;
 - (void)viewDidAppear:(BOOL)arg1;

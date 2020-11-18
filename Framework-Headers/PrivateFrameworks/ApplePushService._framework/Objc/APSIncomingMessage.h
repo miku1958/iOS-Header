@@ -17,6 +17,7 @@
 @property (nonatomic, getter=wasFromStorage) BOOL fromStorage;
 @property (nonatomic, getter=wasLastMessageFromStorage) BOOL lastMessageFromStorage;
 @property (nonatomic) long long priority;
+@property (nonatomic) unsigned int pushFlags;
 @property (nonatomic) unsigned long long pushType;
 @property (copy, nonatomic) NSDate *timestamp;
 @property (copy, nonatomic) NSData *token;

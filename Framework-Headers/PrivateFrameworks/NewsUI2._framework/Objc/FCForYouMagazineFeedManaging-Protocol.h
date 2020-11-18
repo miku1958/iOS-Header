@@ -4,13 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString;
-@protocol FCForYouMagazineFeedCursor, FCForYouMagazineFeedGroup;
+#import <NewsUI2/FCForYouBridgedFeedGroupStore-Protocol.h>
 
-@protocol FCForYouMagazineFeedManaging
+@class NSString;
+@protocol FCForYouMagazineFeedCursor;
+
+@protocol FCForYouMagazineFeedManaging <FCForYouBridgedFeedGroupStore>
 - (id<FCForYouMagazineFeedCursor>)cursorForTopOfFeed;
-- (void)fetchNextGroupFromCursor:(id<FCForYouMagazineFeedCursor>)arg1 completion:(void (^)(id<FCForYouMagazineFeedGroup>, id<FCForYouMagazineFeedCursor>, NSError *))arg2;
+- (void)fetchNextGroupFromCursor:(id<FCForYouMagazineFeedCursor>)arg1 completion:(void (^)(id<FCForYouBridgedFeedGroup>, id<FCForYouMagazineFeedCursor>, NSError *))arg2;
 - (id<FCForYouMagazineFeedCursor>)knownCursorForIdentifier:(NSString *)arg1;
-- (id<FCForYouMagazineFeedGroup>)knownGroupForIdentifier:(NSString *)arg1;
 @end
 

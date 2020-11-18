@@ -110,6 +110,7 @@
 - (void)_sheetLayoutInfoLayout:(id)arg1;
 - (void)_sheetLayoutInfoPrelayout:(id)arg1;
 - (BOOL)_shouldOccludeDuringPresentation;
+- (BOOL)_shouldPreserveFirstResponder;
 - (void)_startInteractiveTransitionFromRemoteWithProgress:(double)arg1 offset:(double)arg2;
 - (void)_startInteractiveTransitionWithProgress:(double)arg1;
 - (void)_tryToConnectToRemoteViewController:(id)arg1;

@@ -19,28 +19,30 @@ __attribute__((visibility("hidden")))
     long long _nextRank;
     NSDate *_lastSyncDownDate;
     BRCServerChangeState *_sharedDatabaseChangeState;
+    unsigned long long _minLastUsedTime;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDate *lastSyncDownDate; // @synthesize lastSyncDownDate=_lastSyncDownDate;
+@property (nonatomic) unsigned long long minLastUsedTime; // @synthesize minLastUsedTime=_minLastUsedTime;
 @property (nonatomic) long long nextRank; // @synthesize nextRank=_nextRank;
 @property (strong) BRCServerChangeState *sharedDatabaseChangeState; // @synthesize sharedDatabaseChangeState=_sharedDatabaseChangeState;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (BOOL)containerIDIsPendingMigration:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)dumpMigrationQueriesForContainerID:(id)arg1;
+- (id)dumpMigrationQueriesForMangledID:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithState:(id)arg1;
-- (void)initiateMigrationQueryForContainerIDs:(id)arg1 key:(id)arg2;
-- (void)migrationQueryForContainerID:(id)arg1 key:(id)arg2 didCompleteWithContinuationCursor:(id)arg3;
-- (id)migrationQueryKeyForContainerID:(id)arg1 continuationCursor:(id *)arg2;
+- (void)initiateMigrationQueryForMangledIDs:(id)arg1 key:(id)arg2;
+- (BOOL)mangledIDIsPendingMigration:(id)arg1;
+- (void)migrationQueryForMangledID:(id)arg1 key:(id)arg2 didUpdateWithCursor:(id)arg3;
+- (id)migrationQueryKeyForMangledID:(id)arg1 continuationCursor:(id *)arg2;
 - (void)saveToDB:(id)arg1;
 - (void)sqliteBind:(struct sqlite3_stmt *)arg1 index:(int)arg2;
 

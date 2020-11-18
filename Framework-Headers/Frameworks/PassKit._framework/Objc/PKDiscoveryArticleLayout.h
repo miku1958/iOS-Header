@@ -19,6 +19,7 @@
     PKDiscoveryCard *_card;
     NSArray *_shelves;
     PKDiscoveryCallToAction *_footerLockup;
+    long long _priority;
     CDUnknownBlockType _actionOnDismiss;
 }
 
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) PKDiscoveryCard *card; // @synthesize card=_card;
 @property (readonly, nonatomic) PKDiscoveryCallToAction *footerLockup; // @synthesize footerLockup=_footerLockup;
 @property (strong, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
+@property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic, getter=hasRequestedBadge) BOOL requestedBadge; // @synthesize requestedBadge=_requestedBadge;
 @property (readonly, nonatomic) NSArray *shelves; // @synthesize shelves=_shelves;
 @property (readonly, nonatomic) long long variant; // @synthesize variant=_variant;

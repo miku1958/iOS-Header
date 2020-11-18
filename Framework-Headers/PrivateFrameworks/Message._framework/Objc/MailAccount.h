@@ -25,6 +25,7 @@
         unsigned int disableCacheWrite:1;
         unsigned int _UNUSED_:13;
     } _flags;
+    struct os_unfair_lock_s _flagsLock;
     MFMailboxUid *_inboxMailboxUid;
     MFMailboxUid *_draftsMailboxUid;
     MFMailboxUid *_sentMessagesMailboxUid;
@@ -45,6 +46,7 @@
     MFLocalActionReplayHandler *_replayHandler;
 }
 
+@property BOOL cacheHasBeenRead;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) NSString *defaultPath;
 @property (readonly, copy) NSString *description;
@@ -171,6 +173,7 @@
 - (id)_deliveryAccountCreateIfNeeded:(BOOL)arg1;
 - (void)_didBecomeActive:(BOOL)arg1;
 - (int)_emptyFrequencyForKey:(id)arg1 defaultValue:(id)arg2;
+- (void)_incrementCacheDirtyCount;
 - (id)_infoForMatchingURL:(id)arg1;
 - (void)_invalidateAndDeleteAccountData:(BOOL)arg1;
 - (void)_invalidateCachedMailboxen;
@@ -227,7 +230,9 @@
 - (BOOL)containsMailboxWithURL:(id)arg1;
 - (id)copyDataForRemoteEncryptionCertificatesForAddress:(id)arg1 error:(id *)arg2;
 - (id)copyDataForRemoteEncryptionCertificatesForAddresses:(id)arg1 errors:(id *)arg2;
+- (id)copyReceivingEmailAddresses;
 - (id)customSignature;
+- (void)dealloc;
 - (id)defaultEmailAddress;
 - (void)deleteDeliveryAccountIfNeeded;
 - (BOOL)deleteInPlaceForAllMailboxes;

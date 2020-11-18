@@ -10,6 +10,10 @@
  {
 	// method
  }
+ protocol NewsAnalytics.ArticleLikeLocationEventTranslator // 1 requirements
+ {
+	// method
+ }
 
  struct __C.NSKeyValueChangeKey {
 
@@ -281,6 +285,7 @@
 	let feedData : EventProperty<FeedData>
 	let viewData : EventProperty<ViewData>
 	let tagData : EventProperty<TagData>
+	let newspaperData : EventProperty<NewspaperData>
  }
 
  struct NewsAnalytics.Model {
@@ -292,6 +297,7 @@
 	let feedData : FeedData
 	let viewData : ViewData
 	let tagData : TagData?
+	let newspaperData : NewspaperData?
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -303,6 +309,11 @@
 	case feedData  
 	case viewData  
 	case tagData  
+	case newspaperData  
+ }
+
+ class NewsAnalytics.WebEmbedExposureEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
  }
 
  class NewsAnalytics.ReplicaAdvertisementViewEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -592,9 +603,9 @@
 	let assemblies : [NFAssembly] // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x49080  @objc Assembly.assemblies <stripped>
-	0x49280  @objc Assembly.init <stripped>
-	0x493f0  @objc Assembly..cxx_destruct <stripped>
+	0x4bd40  @objc Assembly.assemblies <stripped>
+	0x4bf40  @objc Assembly.init <stripped>
+	0x4c0b0  @objc Assembly..cxx_destruct <stripped>
  }
 
  class NewsAnalytics.MediaEngageCompleteEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -714,7 +725,7 @@
 
  class NewsAnalytics.TrackerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x55360  @objc TrackerAssembly.init <stripped>
+	0x587c0  @objc TrackerAssembly.init <stripped>
  }
 
  class NewsAnalytics.SessionAccess : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -723,7 +734,7 @@
 	let accessorQueue : OS_dispatch_queue // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x56cb0  @objc SessionAccess.accessorQueue <stripped>
+	0x5a110  @objc SessionAccess.accessorQueue <stripped>
 
 	// Swift methods
  }
@@ -804,6 +815,45 @@
 	case unknown  
 	case iOS  
 	case macOS  
+ }
+
+ struct NewsAnalytics.EOAFeedViewEvent {
+
+	// Properties
+	let eventData : EventProperty<EventData>
+	let timedData : EventProperty<TimedData>
+	let viewData : EventProperty<ViewData>
+	let feedData : EventProperty<FeedData>
+	let orientationData : EventProperty<OrientationData>
+	let hostArticleViewData : EventProperty<ArticleViewData>
+	let hostArticleNewsArticleData : EventProperty<ArticleData>
+	let hostArticleChannelData : EventProperty<ChannelData>
+ }
+
+ struct NewsAnalytics.Model {
+
+	// Properties
+	let eventData : EventData
+	let timedData : TimedData
+	let viewData : ViewData
+	let feedData : FeedData
+	let orientationData : OrientationData
+	let hostArticleViewData : ArticleViewData
+	let hostArticleNewsArticleData : ArticleData
+	let hostArticleChannelData : ChannelData
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case eventData  
+	case timedData  
+	case viewData  
+	case feedData  
+	case orientationData  
+	case hostArticleViewData  
+	case hostArticleNewsArticleData  
+	case hostArticleChannelData  
  }
 
  struct NewsAnalytics.ScrollStartData {
@@ -1177,21 +1227,29 @@
  struct NewsAnalytics.ArticleData {
 
 	// Properties
-	let articleID : String // +0x0
-	let articleAccessType : ArticleAccessType // +0x10
-	let publisherArticleVersion : Int64 // +0x18
-	let articleType : ArticleType // +0x20
-	let role : Role // +0x21
+	let alternateHeadlineData : AlternateHeadlineData // +0x0
+	let articleID : String // +0x8
+	let articleAccessType : ArticleAccessType // +0x18
+	let backendArticleVersion : Int64 // +0x20
+	let hasVideo : Bool // +0x28
+	let publisherArticleVersion : Int64 // +0x30
+	let articleType : ArticleType // +0x38
+	let role : Role // +0x39
+	let referencedArticleID : String? // +0x40
  }
 
  enum NewsAnalytics.CodingKeys {
 
 	// Properties
+	case alternateHeadlineData  
 	case articleID  
 	case articleAccessType  
+	case backendArticleVersion  
+	case hasVideo  
 	case publisherArticleVersion  
 	case articleType  
 	case role  
+	case referencedArticleID  
  }
 
  struct NewsAnalytics.CampaignData {
@@ -1330,7 +1388,7 @@
 
  class NewsAnalytics.DebugAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-	0x9f430  @objc DebugAssembly.init <stripped>
+	0xaae60  @objc DebugAssembly.init <stripped>
  }
 
  class NewsAnalytics.ANFComponentExposureEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1448,9 +1506,9 @@
 	var window : UIWindow? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xb34d0  @objc SessionObserver.dealloc <stripped>
-	0xb3800  @objc SessionObserver.init <stripped>
-	0xb34f0  @objc SessionObserver..cxx_destruct <stripped>
+	0xbf740  @objc SessionObserver.dealloc <stripped>
+	0xbfa70  @objc SessionObserver.init <stripped>
+	0xbf760  @objc SessionObserver..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -1467,6 +1525,42 @@
 	// Properties
 	case notificationID  
 	case viewFromNotification  
+ }
+
+ struct NewsAnalytics.EOAGroupExposureEvent {
+
+	// Properties
+	let eventData : EventProperty<EventData>
+	let timedData : EventProperty<TimedData>
+	let groupData : EventProperty<GroupData>
+	let feedData : EventProperty<FeedData>
+	let hostArticleViewData : EventProperty<ArticleViewData>
+	let hostArticleNewsArticleData : EventProperty<ArticleData>
+	let hostArticleChannelData : EventProperty<ChannelData>
+ }
+
+ struct NewsAnalytics.Model {
+
+	// Properties
+	let eventData : EventData
+	let timedData : TimedData
+	let groupData : GroupData
+	let feedData : FeedData
+	let hostArticleViewData : ArticleViewData
+	let hostArticleNewsArticleData : ArticleData
+	let hostArticleChannelData : ChannelData
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case eventData  
+	case timedData  
+	case groupData  
+	case feedData  
+	case hostArticleViewData  
+	case hostArticleNewsArticleData  
+	case hostArticleChannelData  
  }
 
  class NewsAnalytics.ArticleScrollEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1710,6 +1804,7 @@
 	case pdfReplica  
 	case pdfReplicaViewer  
 	case pdfReplicaTableOfContents  
+	case reportConcern  
 	case root  
 	case saved  
 	case search  
@@ -1719,6 +1814,7 @@
 	case specialEvents  
 	case videoPlayer  
 	case welcome  
+	case endOfArticle  
  }
 
  struct NewsAnalytics.UserChannelContextData {
@@ -2063,7 +2159,7 @@
 	// Swift methods
  }
 
- class NewsAnalytics.ArticleLikeEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class NewsAnalytics.ArticleLikeEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleLikeLocationEventTranslator {
 	// Swift methods
  }
 
@@ -2073,6 +2169,14 @@
 	case unknown  
 	case subscribed  
 	case notSubscribed  
+ }
+
+ enum NewsAnalytics.MediaPlayMethod {
+
+	// Properties
+	case unknown  
+	case autoplay  
+	case playButtonPress  
  }
 
  struct NewsAnalytics.SubscribeButtonTapEvent {
@@ -2139,6 +2243,8 @@
 
 	// Properties
 	case unknown  
+	case curated  
+	case newspaper  
 	case trending  
 	case myMagazines  
 	case featuredIssue  
@@ -2154,6 +2260,10 @@
 	case articleList  
 	case orderedArticleList  
 	case bestOfBundle  
+	case channel  
+	case topStories  
+	case moreFrom  
+	case related  
  }
 
  struct NewsAnalytics.ResultData {
@@ -2418,6 +2528,18 @@
 	case landscapeRight  
  }
 
+ struct NewsAnalytics.ArticleViewData {
+
+	// Properties
+	let viewSessionID : String // +0x0
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case viewSessionID  
+ }
+
  enum NewsAnalytics.SubscribeButtonTargetType {
 
 	// Properties
@@ -2459,23 +2581,29 @@
  struct NewsAnalytics.GroupData {
 
 	// Properties
-	let groupType : GroupType // +0x0
+	let groupLocation : GroupLocation // +0x0
+	let groupType : GroupType // +0x1
 	let groupID : String // +0x8
 	let groupCount : Int32 // +0x18
 	let groupPosition : Int32 // +0x1c
 	let groupedArticleIDs : [String]? // +0x20
 	let groupedIssueIDs : [String]? // +0x28
+	let curatedSubtype : String? // +0x30
+	let layoutIDs : [String]? // +0x40
  }
 
  enum NewsAnalytics.CodingKeys {
 
 	// Properties
+	case groupLocation  
 	case groupType  
 	case groupID  
 	case groupCount  
 	case groupPosition  
 	case groupedArticleIDs  
 	case groupedIssueIDs  
+	case curatedSubtype  
+	case layoutIDs  
  }
 
  class NewsAnalytics.ArticleEngagementEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2484,6 +2612,14 @@
 
  class NewsAnalytics.ArticleSaveEventEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
+ }
+
+ enum NewsAnalytics.GroupLocation {
+
+	// Properties
+	case article  
+	case feed  
+	case endOfArticle  
  }
 
  enum NewsAnalytics.AlternateHeadlineTreatmentStateData {
@@ -2524,6 +2660,7 @@
 	case channel  
 	case topic  
 	case myMagazines  
+	case eoa  
  }
 
  struct NewsAnalytics.DeviceData {
@@ -2744,6 +2881,18 @@
 	case issueSessionID  
  }
 
+ struct NewsAnalytics.NewspaperData {
+
+	// Properties
+	let sectionIDs : [String]? // +0x0
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case sectionIDs  
+ }
+
  enum NewsAnalytics.Role {
 
 	// Properties
@@ -2754,6 +2903,7 @@
 	case campaignLandingPage  
 	case spotlight  
 	case feature  
+	case endOfIssue  
  }
 
  struct NewsAnalytics.MediaEngagementData {
@@ -2762,6 +2912,7 @@
 	let mediaTimePlayed : Int64 // +0x0
 	let mediaUserAction : MediaUserAction // +0x8
 	let position : Int32 // +0xc
+	let mediaPlayMethod : MediaPlayMethod? // +0x10
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -2770,6 +2921,7 @@
 	case mediaTimePlayed  
 	case mediaUserAction  
 	case position  
+	case mediaPlayMethod  
  }
 
  struct NewsAnalytics.ArticleScrollEvent {
@@ -2910,4 +3062,52 @@
 	case orientationData  
 	case campaignData  
 	case referralData  
+ }
+
+ struct NewsAnalytics.WebEmbedData {
+
+	// Properties
+	let embedUrl : String // +0x0
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case embedUrl  
+ }
+
+ struct NewsAnalytics.WebEmbedExposureEvent {
+
+	// Properties
+	let eventData : EventProperty<EventData>
+	let timedData : EventProperty<TimedData>
+	let groupData : EventProperty<GroupData>
+	let feedData : EventProperty<FeedData>
+	let feedPositionData : EventProperty<FeedPositionData>
+	let inGroupPositionData : EventProperty<InGroupPositionData>
+	let webEmbedData : EventProperty<WebEmbedData>
+ }
+
+ struct NewsAnalytics.Model {
+
+	// Properties
+	let eventData : EventData
+	let timedData : TimedData
+	let groupData : GroupData?
+	let feedData : FeedData
+	let feedPositionData : FeedPositionData
+	let inGroupPositionData : InGroupPositionData?
+	let webEmbedData : WebEmbedData
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case eventData  
+	case timedData  
+	case groupData  
+	case feedData  
+	case feedPositionData  
+	case inGroupPositionData  
+	case webEmbedData  
  }

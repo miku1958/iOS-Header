@@ -28,8 +28,10 @@
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     unsigned int _dataSet;
+    unsigned int _linkDisplayStringIndex;
     struct {
         unsigned int has_dataSet:1;
+        unsigned int has_linkDisplayStringIndex:1;
         unsigned int read_unknownFields:1;
         unsigned int read_regions:1;
         unsigned int read_badgeChecksum:1;
@@ -49,6 +51,7 @@
         unsigned int wrote_resources:1;
         unsigned int wrote_url:1;
         unsigned int wrote_dataSet:1;
+        unsigned int wrote_linkDisplayStringIndex:1;
     } _flags;
 }
 
@@ -58,10 +61,12 @@
 @property (readonly, nonatomic) BOOL hasBadge;
 @property (readonly, nonatomic) BOOL hasBadgeChecksum;
 @property (nonatomic) BOOL hasDataSet;
+@property (nonatomic) BOOL hasLinkDisplayStringIndex;
 @property (readonly, nonatomic) BOOL hasLogo;
 @property (readonly, nonatomic) BOOL hasLogoChecksum;
 @property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasUrl;
+@property (nonatomic) unsigned int linkDisplayStringIndex;
 @property (strong, nonatomic) NSString *logo;
 @property (strong, nonatomic) NSString *logoChecksum;
 @property (strong, nonatomic) NSString *name;

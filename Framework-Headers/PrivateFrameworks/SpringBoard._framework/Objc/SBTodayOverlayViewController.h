@@ -34,6 +34,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (struct CGSize)_suggestedTodayViewSizeForBounds:(struct CGRect)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewDidLoad;

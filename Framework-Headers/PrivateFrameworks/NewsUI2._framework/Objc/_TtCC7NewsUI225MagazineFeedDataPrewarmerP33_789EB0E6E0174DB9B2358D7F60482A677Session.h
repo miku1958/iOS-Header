@@ -15,6 +15,7 @@
     MISSING_TYPE *$__lazy_storage_$_name;
     MISSING_TYPE *identifier;
     MISSING_TYPE *feedRules;
+    MISSING_TYPE *feedManager;
     MISSING_TYPE *feedServiceConfigFetcher;
     MISSING_TYPE *feedService;
     MISSING_TYPE *feedConfigurationService;

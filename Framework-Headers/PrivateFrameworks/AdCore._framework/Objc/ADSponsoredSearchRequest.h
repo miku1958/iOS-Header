@@ -13,14 +13,18 @@
 @interface ADSponsoredSearchRequest : PBRequest <NSCopying>
 {
     ADUserTargetingProperties *_properties;
+    BOOL _enableImagesForDupes;
     BOOL _isBaseline;
     BOOL _isTest;
     struct {
+        unsigned int enableImagesForDupes:1;
         unsigned int isBaseline:1;
         unsigned int isTest:1;
     } _has;
 }
 
+@property (nonatomic) BOOL enableImagesForDupes; // @synthesize enableImagesForDupes=_enableImagesForDupes;
+@property (nonatomic) BOOL hasEnableImagesForDupes;
 @property (nonatomic) BOOL hasIsBaseline;
 @property (nonatomic) BOOL hasIsTest;
 @property (readonly, nonatomic) BOOL hasProperties;

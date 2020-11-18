@@ -34,6 +34,8 @@
 - (void).cxx_destruct;
 - (id)_accountForAuthentication;
 - (id)_accountStoreForAuthentication;
+- (id)_attemptMultiUserTokenAuthenticationForAccount:(id)arg1;
+- (id)_attemptPasswordReuseAuthenticationForAccount:(id)arg1;
 - (id)_createVerifyCredentialOptionsWithCredentialSource:(unsigned long long)arg1;
 - (id)_performAuthenticationUsingAccount:(id)arg1 credentialSource:(unsigned long long)arg2 error:(id *)arg3;
 - (id)_updateAccountWithAuthKit:(id)arg1 error:(id *)arg2;

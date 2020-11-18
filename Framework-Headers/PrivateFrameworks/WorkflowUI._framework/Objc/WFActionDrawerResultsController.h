@@ -25,13 +25,12 @@
 - (id)actionsForCategory:(id)arg1;
 - (BOOL)filteringForResidentCompatibleActions;
 - (void)getDeveloperSuggestedResultsForAppIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)getHomeSectionsIncludingRelatedActions:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getResultsForAppWithBundleIdentifier:(id)arg1 legacyIdentifier:(id)arg2 shouldFilterForAppsViewController:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)getResultsForCategory:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSiriSuggestedGroupedResultsRefreshingCache:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getSiriSuggestedResultsForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)homeSectionsIncludingRelatedActions:(BOOL)arg1;
 - (id)initWithActionRegistry:(id)arg1;
-- (id)resultsForAppWithBundleIdentifier:(id)arg1 legacyIdentifier:(id)arg2 shouldFilterForAppsViewController:(BOOL)arg3;
-- (id)resultsForCategory:(id)arg1;
 - (id)resultsForFavorites;
 - (void)resultsForSearchQuery:(id)arg1 includingSiriSuggestedResults:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)resultsForSuggestionsWithWorkflow:(id)arg1;

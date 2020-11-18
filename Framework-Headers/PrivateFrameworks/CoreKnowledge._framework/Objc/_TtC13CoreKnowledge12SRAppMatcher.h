@@ -13,6 +13,7 @@
     MISSING_TYPE *db;
     MISSING_TYPE *domain;
     MISSING_TYPE *allowedBundleIDs;
+    MISSING_TYPE *entitySet;
     MISSING_TYPE *memorableEntities;
 }
 

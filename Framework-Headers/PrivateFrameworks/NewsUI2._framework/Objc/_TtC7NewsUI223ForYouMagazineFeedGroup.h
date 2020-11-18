@@ -6,18 +6,25 @@
 
 #import <objc/NSObject.h>
 
-#import <NewsUI2/FCForYouMagazineFeedGroup-Protocol.h>
+#import <NewsUI2/FCForYouBridgedFeedGroup-Protocol.h>
 
-@class MISSING_TYPE, NSString;
+@class MISSING_TYPE, NSArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _TtC7NewsUI223ForYouMagazineFeedGroup : NSObject <FCForYouMagazineFeedGroup>
+@interface _TtC7NewsUI223ForYouMagazineFeedGroup : NSObject <FCForYouBridgedFeedGroup>
 {
     MISSING_TYPE *group;
     MISSING_TYPE *identifier;
+    MISSING_TYPE *headlines;
+    MISSING_TYPE *assetHandles;
 }
 
+@property (nonatomic, readonly) NSArray *assetHandles;
+@property (nonatomic, readonly) NSString *backingTagID;
+@property (nonatomic, readonly) NSSet *equivalentTopicIDs;
+@property (nonatomic, readonly) NSArray *headlines;
 @property (nonatomic, readonly) NSString *identifier;
+@property (nonatomic, readonly) NSArray *webEmbedURLs;
 
 - (void).cxx_destruct;
 - (id)init;

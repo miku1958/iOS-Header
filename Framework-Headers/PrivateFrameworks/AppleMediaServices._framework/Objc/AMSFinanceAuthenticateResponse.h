@@ -6,17 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class AMSAuthenticateRequest, AMSFinanceDialogResponse;
+#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
+
+@class AMSAuthenticateRequest, AMSFinanceDialogResponse, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinanceAuthenticateResponse : NSObject
+@interface AMSFinanceAuthenticateResponse : NSObject <AMSFinancePerformable>
 {
     AMSAuthenticateRequest *_authenticateRequest;
     AMSFinanceDialogResponse *_dialogResponse;
 }
 
 @property (readonly, nonatomic) AMSAuthenticateRequest *authenticateRequest; // @synthesize authenticateRequest=_authenticateRequest;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) AMSFinanceDialogResponse *dialogResponse; // @synthesize dialogResponse=_dialogResponse;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)_createRequestFromDictionary:(id)arg1 dialogRequest:(id)arg2 taskInfo:(id)arg3;
 - (void).cxx_destruct;

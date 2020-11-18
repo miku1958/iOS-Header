@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long estimatedSize;
 @property (readonly, nonatomic) WFFileRepresentation *file; // @synthesize file=_file;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WFWorkflowIcon *icon;

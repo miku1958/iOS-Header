@@ -28,6 +28,7 @@
 - (void)interstitialAd:(id)arg1 didFailWithError:(id)arg2;
 - (void)interstitialAdDidLoad:(id)arg1;
 - (void)interstitialAdDidUnload:(id)arg1;
+- (void)missedOpportunityToFill;
 
 @end
 

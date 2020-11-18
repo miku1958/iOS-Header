@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <Silex/STTextTangierInteractiveCanvasControllerDelegate-Protocol.h>
+#import <Silex/SXTextTangierInteractiveCanvasControllerDelegate-Protocol.h>
 #import <Silex/TSWPEditingControllerDelegate-Protocol.h>
 
-@class NSString, STTextTangierCanvasViewController, STTextTangierInteractiveCanvasController, TSDCanvasView, TSKDocumentRoot;
+@class NSString, SXTextTangierCanvasViewController, SXTextTangierInteractiveCanvasController, TSDCanvasView, TSKDocumentRoot;
 @protocol SXAutoSizedCanvasControllerDelegate, SXComponentActionHandler, SXTangierDragItemProvider;
 
-@interface SXAutoSizedCanvasController : NSObject <TSWPEditingControllerDelegate, STTextTangierInteractiveCanvasControllerDelegate>
+@interface SXAutoSizedCanvasController : NSObject <TSWPEditingControllerDelegate, SXTextTangierInteractiveCanvasControllerDelegate>
 {
     TSKDocumentRoot *_documentRoot;
     struct CGRect _frame;
     id<SXAutoSizedCanvasControllerDelegate> _delegate;
-    STTextTangierInteractiveCanvasController *_icc;
-    STTextTangierCanvasViewController *_cvc;
+    SXTextTangierInteractiveCanvasController *_icc;
+    SXTextTangierCanvasViewController *_cvc;
     double _lineHeight;
     id<SXComponentActionHandler> _actionHandler;
     id<SXTangierDragItemProvider> _dragItemProvider;
@@ -28,7 +28,7 @@
 @property (readonly, nonatomic) BOOL allowEditMenuToAppear;
 @property (readonly, nonatomic) BOOL allowTextEditingToBegin;
 @property (readonly, nonatomic) TSDCanvasView *canvasView;
-@property (readonly, nonatomic) STTextTangierCanvasViewController *cvc; // @synthesize cvc=_cvc;
+@property (readonly, nonatomic) SXTextTangierCanvasViewController *cvc; // @synthesize cvc=_cvc;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SXAutoSizedCanvasControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -44,7 +44,7 @@
 @property (readonly, nonatomic) BOOL editorAllowsRubyInteraction;
 @property (readonly, nonatomic) BOOL editorShouldAlwaysBeInParagraphMode;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) STTextTangierInteractiveCanvasController *icc; // @synthesize icc=_icc;
+@property (readonly, nonatomic) SXTextTangierInteractiveCanvasController *icc; // @synthesize icc=_icc;
 @property (readonly, nonatomic) BOOL interactiveCanvasControllerAllowsHyperlinkInteraction;
 @property (readonly, nonatomic) BOOL isCanvasInteractive;
 @property (readonly, nonatomic) BOOL isPrintingCanvas;

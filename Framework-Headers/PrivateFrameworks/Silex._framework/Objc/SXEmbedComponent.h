@@ -15,7 +15,6 @@
 @property (readonly, nonatomic) NSString *embedType; // @dynamic embedType;
 @property (readonly, nonatomic) NSString *resourceIdentifier; // @dynamic resourceIdentifier;
 
-- (id)URLWithValue:(id)arg1 withType:(int)arg2;
 - (unsigned long long)traits;
 
 @end

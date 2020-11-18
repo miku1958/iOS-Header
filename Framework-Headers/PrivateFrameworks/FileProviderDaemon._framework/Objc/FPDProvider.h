@@ -78,7 +78,6 @@
 - (void)setEjectable:(BOOL)arg1 forDomainIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setEnabled:(BOOL)arg1 forDomainIdentifier:(id)arg2 request:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)startWithCompletion:(CDUnknownBlockType)arg1;
-- (void)writeCheckReportTo:(id)arg1 limitNumberOfItems:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)writeDomainProperties;
 
 @end

@@ -17,15 +17,16 @@ __attribute__((visibility("hidden")))
 - (id)descriptionForItem:(id)arg1 context:(id)arg2;
 - (unsigned long long)finishSyncUpForItem:(id)arg1 inZone:(id)arg2 success:(BOOL)arg3;
 - (unsigned long long)inFlightDiffsForItem:(id)arg1;
-- (unsigned long long)inFlightDiffsForItem:(id)arg1 zone:(id)arg2;
+- (unsigned long long)inFlightDiffsForItem:(id)arg1 zoneRowID:(id)arg2;
 - (id)initWithAccountSession:(id)arg1;
 - (BOOL)isItemInSyncUpAndInFlight:(id)arg1;
 - (BOOL)isItemInSyncUpAndInFlight:(id)arg1 inZone:(id)arg2;
 - (BOOL)isItemPendingSyncUp:(id)arg1;
 - (void)performFirstSchedulingAfterStartupInDB:(id)arg1;
-- (void)postponeSyncUpForItem:(id)arg1 inZone:(id)arg2;
+- (unsigned long long)postponeSyncUpForItem:(id)arg1 inZone:(id)arg2;
 - (void)prepareItemForSyncUp:(id)arg1 inFlightDiffs:(unsigned long long)arg2 inZone:(id)arg3;
 - (void)schedule;
+- (void)setState:(int)arg1 forItem:(id)arg2 zone:(id)arg3;
 
 @end
 

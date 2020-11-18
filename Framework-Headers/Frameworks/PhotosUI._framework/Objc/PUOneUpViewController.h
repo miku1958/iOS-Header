@@ -42,7 +42,7 @@
 #import <PhotosUI/PXSettingsKeyObserver-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
-@class CEKBadgeTextView, NSArray, NSString, NSTimer, NSUserActivity, PUAccessoryVisibilityInteractionController, PUAggregateDictionaryTracer, PUAssetDisplayDescriptorNavigationRequest, PUBrowsingBackgroundTileViewController, PUBrowsingOneUpVisibilityHelper, PUBrowsingSession, PUDoubleTapZoomController, PUInteractivePinchDismissalController, PUInteractiveSwipeDismissalController, PULoadingIndicatorController, PUOneUpAccessoryViewControllersManager, PUOneUpBarsController, PUOneUpGestureRecognizerCoordinator, PUOneUpSuggestionsController, PUOneUpViewControllerSpec, PUOverOneUpPresentationSession, PUParallaxComputer, PUPreviewActionController, PUReviewScreenBarsModel, PUReviewScreenControlBarTileViewController, PUReviewScreenScrubberBarTileViewController, PUReviewScreenTopBarTileViewController, PUTilingView, PXUserEventTracker, UIScrollView;
+@class CEKBadgeTextView, NSArray, NSString, NSTimer, NSUserActivity, PUAccessoryVisibilityInteractionController, PUAggregateDictionaryTracer, PUAssetDisplayDescriptorNavigationRequest, PUBrowsingBackgroundTileViewController, PUBrowsingOneUpVisibilityHelper, PUBrowsingSession, PUCPAnalyticsBrowsingViewModelChangeObserver, PUDoubleTapZoomController, PUInteractivePinchDismissalController, PUInteractiveSwipeDismissalController, PULoadingIndicatorController, PUOneUpAccessoryViewControllersManager, PUOneUpBarsController, PUOneUpGestureRecognizerCoordinator, PUOneUpSuggestionsController, PUOneUpViewControllerSpec, PUOverOneUpPresentationSession, PUParallaxComputer, PUPreviewActionController, PUReviewScreenBarsModel, PUReviewScreenControlBarTileViewController, PUReviewScreenScrubberBarTileViewController, PUReviewScreenTopBarTileViewController, PUTilingView, PXUserEventTracker, UIScrollView;
 
 @interface PUOneUpViewController : UIViewController <PUViewControllerSpecChangeObserver, PUBrowsingViewModelChangeObserver, PUTilingViewTileSource, PUTilingViewTileTransitionDelegate, PUTilingViewScrollDelegate, UIScrollViewDelegate, PUOneUpTilingLayoutDelegate, PUInteractiveDismissalControllerDelegate, PUBarsControllerDelegate, PUOneUpBarsControllerDelegate, PUUserTransformTileViewControllerDelegate, PUPlayButtonTileViewControllerDelegate, PUDoubleTapZoomControllerDelegate, PUAccessoryVisibilityInteractionControllerDelegate, PHAirPlayControllerContentProvider, PUTilingViewTileUseDelegate, PUAccessoryTileViewControllerDelegate, PUOneUpAccessoryViewControllersManagerDelegate, PUOverOneUpPresentationSessionDelegate, PUOverOneUpPresentationSessionViewController, PUOneUpGestureRecognizerCoordinatorDelegate, PUOneUpAssetTransitionViewController, PUAssetDisplayDescriptorNavigator, PXSettingsKeyObserver, PXDiagnosticsEnvironment, PUIrisImageTileViewControllerDelegate, PXPurgeableController, PXContextualNotificationDelegate, PUOneUpSuggestionsControllerDelegate, PUPreviewActionControllerDelegate, PUAssetActionPerformerDelegate, PXForcedDismissableViewController, PXGestureProviderDelegate, PULivePhotoVideoOverlayTileViewControllerDelegate, PUTilingViewControllerTransitionEndPoint>
 {
@@ -107,6 +107,7 @@
     NSUserActivity *_siriActionActivity;
     CEKBadgeTextView *_originalBadgeView;
     PUBrowsingOneUpVisibilityHelper *_browsingOneUpVisibilityHelper;
+    PUCPAnalyticsBrowsingViewModelChangeObserver *_cpAnalyticsChangeObserver;
     struct CGSize __layoutReferenceSize;
     struct CGSize __pendingViewTransitionSize;
     struct UIEdgeInsets __layoutSafeAreaInsets;
@@ -163,6 +164,7 @@
 @property (nonatomic) BOOL appearanceTransitionAnimationsDisabled; // @synthesize appearanceTransitionAnimationsDisabled=_appearanceTransitionAnimationsDisabled;
 @property (strong, nonatomic) PUBrowsingOneUpVisibilityHelper *browsingOneUpVisibilityHelper; // @synthesize browsingOneUpVisibilityHelper=_browsingOneUpVisibilityHelper;
 @property (readonly, nonatomic) PUBrowsingSession *browsingSession; // @synthesize browsingSession=_browsingSession;
+@property (readonly, nonatomic) PUCPAnalyticsBrowsingViewModelChangeObserver *cpAnalyticsChangeObserver; // @synthesize cpAnalyticsChangeObserver=_cpAnalyticsChangeObserver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

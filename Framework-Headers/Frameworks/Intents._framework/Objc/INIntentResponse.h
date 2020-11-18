@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCacheableContainer-Protocol.h>
-#import <Intents/INFileEnumerable-Protocol.h>
+#import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INGenericIntentResponse-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INIntentResponseExport-Protocol.h>
@@ -19,7 +19,7 @@
 
 @class INCodableDescription, INImage, INIntentResponseCodableCode, INIntentResponseDescription, NSDictionary, NSString, NSUserActivity, PBCodable, _INPBIntentResponse;
 
-@interface INIntentResponse : NSObject <INImageProxyInjecting, INIntentSlotComposing, INCacheableContainer, INFileEnumerable, INKeyImageProducing, INIntentResponseExport, INGenericIntentResponse, INRuntimeObject, NSCopying, NSSecureCoding>
+@interface INIntentResponse : NSObject <INImageProxyInjecting, INIntentSlotComposing, INCacheableContainer, INEnumerable, INKeyImageProducing, INIntentResponseExport, INGenericIntentResponse, INRuntimeObject, NSCopying, NSSecureCoding>
 {
     BOOL __userConfirmationRequired;
     long long _code;
@@ -89,14 +89,13 @@
 - (BOOL)_commonInit;
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
 - (id)_dictionaryRepresentation;
-- (void)_enumerateWithValueProcessingBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (BOOL)_enumerateWithValueProcessingBlock:(CDUnknownBlockType)arg1;
 - (id)_inCodable;
 - (id)_initWithCode:(long long)arg1 userActivity:(id)arg2;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)_intentHandlingStatus;
 - (id)_intents_cacheableObjects;
-- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
-- (void)_intents_enumerateFilesWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (BOOL)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (BOOL)_isValidKey:(id)arg1;
 - (id)_originatingBundleIdentifier;

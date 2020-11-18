@@ -7,12 +7,13 @@
 #import <UIKit/UIViewController.h>
 
 #import <ContactsUI/CNContactPickerContentDelegate-Protocol.h>
+#import <ContactsUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <ContactsUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class CNContact, FAFamilyMember, NSArray, NSPredicate, NSString, UINavigationController, _UIRemoteViewController;
+@class CNContact, FAFamilyMember, NSArray, NSPredicate, NSString, UIBarButtonItem, UINavigationController, _UIRemoteViewController;
 @protocol CNContactPickerContentViewController, CNContactPickerDelegate;
 
-@interface CNContactPickerViewController : UIViewController <CNContactPickerContentDelegate, _UIRemoteViewControllerContaining>
+@interface CNContactPickerViewController : UIViewController <CNContactPickerContentDelegate, _UIRemoteViewControllerContaining, UIAdaptivePresentationControllerDelegate>
 {
     BOOL _ignoreViewWillBePresented;
     BOOL _hidesSearchableSources;
@@ -42,6 +43,7 @@
 }
 
 @property (readonly, nonatomic) _UIRemoteViewController *_containedRemoteViewController;
+@property (readonly, nonatomic) UIBarButtonItem *addContactBarButtonItem;
 @property (nonatomic) BOOL allowsCancel; // @synthesize allowsCancel=_allowsCancel;
 @property (nonatomic) BOOL allowsDeletion; // @synthesize allowsDeletion=_allowsDeletion;
 @property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
@@ -86,11 +88,13 @@
 - (void)dealloc;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)invalidateSelectionAnimated:(BOOL)arg1;
+- (void)notifyDelegateForCancellation;
 - (void)pickerDidCancel;
 - (void)pickerDidSelectAddNewContact;
 - (void)pickerDidSelectContact:(id)arg1 property:(id)arg2;
 - (void)pickerDidSelectContacts:(id)arg1 properties:(id)arg2;
 - (void)popToDefaultViewController:(BOOL)arg1;
+- (void)presentationControllerDidDismiss:(id)arg1;
 - (void)scrollToClosestContactMatching:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

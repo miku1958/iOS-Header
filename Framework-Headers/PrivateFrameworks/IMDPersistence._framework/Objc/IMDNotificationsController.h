@@ -44,7 +44,7 @@
 + (int)reminderAlertCount;
 + (id)sharedInstance;
 + (int)validateAlertCount:(int)arg1;
-- (void)__postNotifications:(BOOL)arg1 isMostActiveDevice:(BOOL)arg2;
+- (void)__postNotificationsIsMostActiveDevice:(BOOL)arg1;
 - (BOOL)_amIMentionedInMessage:(id)arg1;
 - (id)_chatDictionaryForMessageRecord:(struct _IMDMessageRecordStruct *)arg1;
 - (BOOL)_chatHasDNDSet:(id)arg1;
@@ -54,12 +54,11 @@
 - (id)_displayNameForHandle:(struct _IMDHandleRecordStruct *)arg1 andContact:(id)arg2;
 - (BOOL)_filteringSettingConfirmed;
 - (id)_generateNotificationRequestForDeliveryError:(struct _IMDMessageRecordStruct *)arg1 isCarouselUITriggered:(BOOL)arg2;
-- (id)_generateNotificationRequestForMessageRecord:(struct _IMDMessageRecordStruct *)arg1 isUrgentMessage:(BOOL)arg2 downTimeEnabled:(BOOL)arg3 isCarouselUITriggered:(BOOL)arg4 isMostActive:(BOOL)arg5 shouldAdvanceLastAlertedMessageDate:(BOOL *)arg6;
+- (id)_generateNotificationRequestForMessageRecord:(struct _IMDMessageRecordStruct *)arg1 isUrgentMessage:(BOOL)arg2 isCarouselUITriggered:(BOOL)arg3 isMostActive:(BOOL)arg4 shouldAdvanceLastAlertedMessageDate:(BOOL *)arg5;
 - (unsigned long long)_getMessagesSpokenWhitelistLevel:(BOOL *)arg1;
 - (unsigned long long)_getSpokenMessageWhitelistLevelVersion;
 - (id)_groupHashForHandles:(id)arg1 lastAddressedHandle:(id)arg2;
 - (BOOL)_handleIsSpokenMessageWhitelisted:(struct _IMDHandleRecordStruct *)arg1 chat:(id)arg2 message:(id)arg3;
-- (BOOL)_handleIsWhitelisted:(struct _IMDHandleRecordStruct *)arg1;
 - (BOOL)_hasMigratedPreferences;
 - (BOOL)_haveMigrated;
 - (void)_isMostActiveDeviceWithCompletionBlock:(CDUnknownBlockType)arg1;
@@ -98,12 +97,12 @@
 - (void)_populateTitleForNotificationContent:(id)arg1 chatDictionary:(id)arg2 messageDictionary:(id)arg3;
 - (void)_populateUserInfoForMessageContent:(id)arg1 messageDictionary:(id)arg2 messageIsAddressedToMe:(BOOL)arg3;
 - (void)_populateUserInfoOnContentForWatch:(id)arg1 messageDictionary:(id)arg2 chatDictionary:(id)arg3 isCarouselUITriggered:(BOOL)arg4;
-- (void)_postNotifications:(id)arg1;
+- (void)_postNotifications;
 - (id)_previewFileURLForTransferURL:(id)arg1;
 - (id)_previewFileURLForTransferURL:(id)arg1 utiType:(id)arg2;
 - (void)_proceedMostActiveDevice:(BOOL)arg1 isBlockCalled:(BOOL *)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_registerUserNotificationsForFailedDeliveryMessageRecords:(id)arg1 isCarouselUITriggered:(BOOL)arg2;
-- (void)_registerUserNotificationsForMessageRecords:(id)arg1 newerThanDate:(long long)arg2 areUrgentMessages:(BOOL)arg3 downTimeEnabled:(BOOL)arg4 isCarouselUITriggered:(BOOL)arg5 isMostActiveDevice:(BOOL)arg6;
+- (void)_registerUserNotificationsForMessageRecords:(id)arg1 newerThanDate:(long long)arg2 areUrgentMessages:(BOOL)arg3 isCarouselUITriggered:(BOOL)arg4 isMostActiveDevice:(BOOL)arg5;
 - (void)_setContactInMessageDictionary:(struct _IMDHandleRecordStruct *)arg1 messageDictionary:(id)arg2;
 - (void)_setHasMigratedPreferenceTrue;
 - (void)_setLastPostedDateFromMigration:(id)arg1;
@@ -127,10 +126,11 @@
 - (id)defaultsSharedInstance;
 - (id)init;
 - (void)postFirstUnlockMessage:(id)arg1 forIdentifier:(id)arg2;
-- (void)postNotifications:(BOOL)arg1;
+- (void)postNotifications;
 - (void)postUrgentNotificationForMessages:(id)arg1;
 - (void)repostNotificationsFromFirstUnlock;
 - (void)retractNotificationsForReadMessages:(id)arg1;
+- (unsigned long long)screenTimeNotificationOptionsForChatDictionary:(id)arg1;
 
 @end
 

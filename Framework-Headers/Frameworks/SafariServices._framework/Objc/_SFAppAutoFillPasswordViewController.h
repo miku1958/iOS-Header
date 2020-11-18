@@ -16,6 +16,7 @@
 }
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_connectToServiceWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_remoteViewController;
 - (void)_sceneDidEnterBackground:(id)arg1;

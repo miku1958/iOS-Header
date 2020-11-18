@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *layeredMediaAssetHandlesProvider;
+    MISSING_TYPE *highPriorityDownloadQueue;
 }
 
 @end

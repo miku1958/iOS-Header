@@ -39,6 +39,7 @@
 - (void)handleSignpostInterval:(id)arg1;
 - (void)handleSignpostIntervalBegin:(id)arg1;
 - (id)init;
+- (id)newConfiguredExtractor;
 
 @end
 

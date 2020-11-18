@@ -44,12 +44,12 @@
 - (void)_runOnWorkQueueWithTransaction:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_startPrefetchNextBatch;
 - (void)_writeDownloadFinishedMarkerIfNeeded;
-- (void)dealloc;
 - (long long)diskSpaceBudgetForNonThumbnails;
 - (long long)diskSpaceBudgetForThumbnails;
 - (void)handleOptimizeModeChange;
 - (id)init;
 - (id)initWithCPLManager:(id)arg1 pruneManager:(id)arg2 library:(id)arg3;
+- (void)invalidate;
 - (void)prefetchResourcesWithPredicates:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)prefetchStatusForDebug:(BOOL)arg1;
 - (void)startAutomaticPrefetch;

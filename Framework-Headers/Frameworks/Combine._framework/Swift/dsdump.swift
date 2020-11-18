@@ -134,9 +134,9 @@
 	var _cancel : ()? // +0x10 (0x10)
 
 	// Swift methods
-	0x4830  class func AnyCancellable.__allocating_init(_:) // init 
-	0x48d0  class func AnyCancellable.__allocating_init<A>(_:) // init 
-	0x4be0  func AnyCancellable.hashValue.getter // getter 
+	0x5740  class func AnyCancellable.__allocating_init(_:) // init 
+	0x57e0  class func AnyCancellable.__allocating_init<A>(_:) // init 
+	0x5af0  func AnyCancellable.hashValue.getter // getter 
  }
 
  enum Combine.SubscriptionStatus {
@@ -457,10 +457,33 @@
  class Combine.ObservableObjectPublisher : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let subject : PassthroughSubject<(), Never> // +0x10 (0x8)
+	let lock : UnsafeMutablePointer<os_unfair_lock_s>
+	var connections : Conduit
+	let identifier : ObjectIdentifier?
 
 	// Swift methods
-	0x38440  class func ObservableObjectPublisher.__allocating_init() // init 
+	0x397e0  class func ObservableObjectPublisher.__allocating_init() // init 
+ }
+
+ class Combine.Conduit : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+	0x38fe0  func ObservableObjectPublisher.Conduit.send() // method 
+ }
+
+ class Combine.Inner {
+ enum Combine.State {
+
+	// Properties
+	case initialized  
+	case active  
+	case terminal  
+ }
+
+ struct Combine.Storage {
+
+	// Properties
+	var object : weak Swift.AnyObject? // +0x0
+	var identifier : ObjectIdentifier // +0x8
  }
 
  struct Combine.PrefixWhile {

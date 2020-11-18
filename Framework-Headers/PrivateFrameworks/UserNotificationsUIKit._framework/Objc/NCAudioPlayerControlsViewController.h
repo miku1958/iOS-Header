@@ -28,6 +28,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)detailSlider:(id)arg1 didChangeValue:(float)arg2;
 - (void)detailSliderTrackingDidBegin:(id)arg1;
 - (void)detailSliderTrackingDidCancel:(id)arg1;

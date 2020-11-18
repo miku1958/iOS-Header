@@ -25,6 +25,7 @@
 @property (nonatomic) unsigned long long minPrecedingTopicGroups; // @synthesize minPrecedingTopicGroups=_minPrecedingTopicGroups;
 @property (readonly, nonatomic) long long requiredForYouContentTypes;
 @property (readonly, nonatomic) BOOL requiresHeavyweightContent;
+@property (readonly, nonatomic) BOOL shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
 + (id)groupEmitterIdentifier;

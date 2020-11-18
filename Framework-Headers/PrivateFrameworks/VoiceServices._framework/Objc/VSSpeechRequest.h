@@ -78,6 +78,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (BOOL)canLogRequestText;
 - (id)contextInfoString;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

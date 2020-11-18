@@ -16,6 +16,7 @@
     MISSING_TYPE *intentUUID;
     MISSING_TYPE *dkEventUUID;
     MISSING_TYPE *bundleID;
+    MISSING_TYPE *direction;
     MISSING_TYPE *inintentHandlingStatus;
     MISSING_TYPE *engagementSignals;
 }

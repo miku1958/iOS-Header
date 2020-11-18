@@ -20,13 +20,27 @@
 - (void)addDisplayedToResponses:(id)arg1 language:(id)arg2;
 - (void)addSelectedToResponse:(id)arg1 language:(id)arg2;
 - (void)addWrittenToResponse:(id)arg1 language:(id)arg2 isMatch:(BOOL)arg3;
+- (BOOL)addingMessageExceedsBatchLimit:(unsigned long long)arg1 tableLimit:(unsigned long long)arg2 message:(id)arg3 language:(id)arg4 prompt:(id)arg5 recipientHandle:(id)arg6 sentAt:(id)arg7;
+- (unsigned long long)countCustomResponsesAfterPruningWithMinimumCountThreshold:(unsigned long long)arg1;
+- (void)decayAllCustomResponsesWithDecayFactor:(double)arg1 filteringBatchSize:(int)arg2;
+- (void)designateFilteringBatch:(unsigned long long)arg1;
 - (void)destroyInstanceInMemory;
+- (id)embeddingForPrompt:(id)arg1 inLanguage:(id)arg2 withEmbedder:(CDUnknownBlockType)arg3;
+- (void)filterBatchWithMinimumDistinctRecipients:(unsigned long long)arg1 minimumReplyOccurences:(unsigned long long)arg2;
 - (BOOL)frailReadTransaction:(CDUnknownBlockType)arg1;
 - (BOOL)frailWriteTransaction:(CDUnknownBlockType)arg1;
+- (id)getModelVersion;
+- (id)getProfanityLocale;
 - (id)init;
 - (id)initInDirectory:(id)arg1 inMemory:(BOOL)arg2 withMigration:(BOOL)arg3;
 - (id)initInDirectory:(id)arg1 inMemory:(BOOL)arg2 withMigration:(BOOL)arg3 forTools:(BOOL)arg4;
+- (void)markFilteringBatchCompleted;
+- (id)nearestCustomResponsesToPromptEmbedding:(id)arg1 withLimit:(unsigned long long)arg2 withinRadius:(float)arg3 responseCountExponent:(float)arg4 minimumDecayedCount:(float)arg5 compatibilityVersion:(unsigned long long)arg6 inLanguage:(id)arg7 inLocale:(id)arg8 allowProfanity:(BOOL)arg9 minimumTimeInterval:(double)arg10;
+- (void)recordKnownCustomResponsesInBatchWithEmbedder:(CDUnknownBlockType)arg1 compatibilityVersion:(unsigned long long)arg2;
+- (void)recordMessagesInBatchAsCustomResponsesWithEmbedder:(CDUnknownBlockType)arg1 compatibilityVersion:(unsigned long long)arg2;
 - (id)recordsForResponses:(id)arg1 language:(id)arg2;
+- (BOOL)resetDbIfNeededCompareWithCompatibilityVersion:(unsigned long long)arg1;
+- (void)setProfanityLocale:(id)arg1 andModelVersion:(long long)arg2;
 
 @end
 

@@ -6,8 +6,8 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKBalloonView, CKBrowserItemPayload, CKChatItem, CKFullScreenEffect, CKMessageStatusChatItem, CKTranscriptCollectionViewController, IMSticker, NSArray, NSIndexPath, NSString, UITraitCollection;
-@protocol CKSendAnimationContext;
+@class CKBalloonView, CKBrowserItemPayload, CKChatItem, CKFullScreenEffect, CKMessageStatusChatItem, CKTranscriptCollectionViewController, IMSticker, NSArray, NSIndexPath, NSString, UIContextMenuConfiguration, UITargetedPreview, UITraitCollection, _UIContextMenuStyle;
+@protocol CKSendAnimationContext, UIContextMenuInteractionAnimating, UIContextMenuInteractionCommitAnimating;
 
 @protocol CKTranscriptCollectionViewControllerDelegate <NSObject>
 - (UITraitCollection *)traitCollectionForTranscriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1;
@@ -43,7 +43,14 @@
 - (void)transcriptCollectionViewControllerWillScrollToBottom:(CKTranscriptCollectionViewController *)arg1;
 
 @optional
+- (NSArray *)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 accessoriesForContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 layoutAnchor:(CDStruct_4bcfbbae)arg3;
+- (UIContextMenuConfiguration *)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 contextMenuConfigurationForItemAtIndexPath:(NSIndexPath *)arg2 point:(struct CGPoint)arg3;
+- (UITargetedPreview *)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 previewForDismissingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
+- (UITargetedPreview *)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 previewForHighlightingContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
+- (_UIContextMenuStyle *)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 styleForContextMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 willDisplayBalloonForGUID:(NSString *)arg2;
+- (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 willEndContextMenuInteractionWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id<UIContextMenuInteractionAnimating>)arg3;
+- (void)transcriptCollectionViewController:(CKTranscriptCollectionViewController *)arg1 willPerformPreviewActionForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 animator:(id<UIContextMenuInteractionCommitAnimating>)arg3;
 - (BOOL)transcriptCollectionViewControllerShouldForceOpaqueMask:(CKTranscriptCollectionViewController *)arg1;
 - (void)transcriptCollectionViewDidBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg1;
 - (BOOL)transcriptCollectionViewShouldBeginMultipleSelectionInteractionAtIndexPath:(NSIndexPath *)arg1;

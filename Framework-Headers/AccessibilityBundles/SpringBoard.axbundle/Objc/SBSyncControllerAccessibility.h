@@ -13,8 +13,7 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (void)_updateiTunesAXOptions;
-- (void)resetService:(id)arg1 didCompleteDataResetMode:(long long)arg2 withError:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_accessibilityWriteOutDataResetForAXSettings:(id)arg1;
 - (void)resetService:(id)arg1 willBeginDataResetWithMode:(long long)arg2;
 
 @end

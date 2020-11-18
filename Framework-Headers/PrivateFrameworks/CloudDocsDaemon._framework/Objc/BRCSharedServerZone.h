@@ -20,10 +20,11 @@
 - (void).cxx_destruct;
 - (long long)_propagateDeleteToChildrenOfItemID:(id)arg1;
 - (BOOL)_propagateFolderDeletesToTheirChildren;
-- (BOOL)allocateRanks;
+- (BOOL)allocateRanksWhenCaughtUp:(BOOL)arg1;
 - (id)asSharedZone;
 - (id)initWithMangledID:(id)arg1 dbRowID:(id)arg2 plist:(id)arg3 session:(id)arg4;
 - (id)ownerName;
+- (void)sideCarZoneWasReset;
 - (BOOL)validateItemsLoggingToFile:(struct __sFILE *)arg1 db:(id)arg2;
 - (BOOL)validateStructureLoggingToFile:(struct __sFILE *)arg1 db:(id)arg2;
 

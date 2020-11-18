@@ -6,12 +6,12 @@
 
 #import <Intents/INIntent.h>
 
-#import <Intents/INFileEnumerable-Protocol.h>
+#import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INRunVoiceCommandIntentExport-Protocol.h>
 
 @class INIntentExecutionResult, INSpeakableString, INVoiceCommandDeviceInformation, NSString;
 
-@interface INRunVoiceCommandIntent : INIntent <INFileEnumerable, INRunVoiceCommandIntentExport>
+@interface INRunVoiceCommandIntent : INIntent <INEnumerable, INRunVoiceCommandIntentExport>
 {
 }
 
@@ -29,8 +29,7 @@
 @property (readonly, copy, nonatomic) INSpeakableString *voiceCommand;
 
 - (id)_dictionaryRepresentation;
-- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
-- (void)_intents_enumerateFilesWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (BOOL)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_metadata;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(id)arg2;
 - (void)_setMetadata:(id)arg1;

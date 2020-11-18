@@ -19,7 +19,6 @@
     BOOL _currentIdentityProviderSupportsSTB;
     BOOL _currentIdentityProviderIsFullySupported;
     BOOL _fetchedSetTopBoxProfile;
-    BOOL _hasSetTopBoxProfile;
     MTMetricsKit *_mainMetricsKit;
     AMSBag *_bag;
     NSObject<OS_dispatch_queue> *_eventQueue;
@@ -38,7 +37,6 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *eventQueue; // @synthesize eventQueue=_eventQueue;
 @property (nonatomic) BOOL fetchedSetTopBoxProfile; // @synthesize fetchedSetTopBoxProfile=_fetchedSetTopBoxProfile;
-@property (nonatomic) BOOL hasSetTopBoxProfile; // @synthesize hasSetTopBoxProfile=_hasSetTopBoxProfile;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MTMetricsKit *mainMetricsKit; // @synthesize mainMetricsKit=_mainMetricsKit;
 @property (nonatomic) BOOL optedIn; // @synthesize optedIn=_optedIn;
@@ -63,6 +61,7 @@
 - (void)fetchSetTopBoxProfile;
 - (id)flexibleBaseFields;
 - (id)hardwareModel:(id)arg1;
+- (BOOL)hasSetTopBoxProfile;
 - (id)init;
 - (id)isSignedIn:(id)arg1;
 - (id)mutableBaseFieldsWithUserID:(BOOL)arg1;

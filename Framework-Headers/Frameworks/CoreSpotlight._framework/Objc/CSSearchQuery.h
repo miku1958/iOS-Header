@@ -84,7 +84,7 @@
 - (void)_finishWithError:(id)arg1;
 - (void)_removeIdentifiers:(id)arg1 withBundleID:(id)arg2 andQueryID:(long long)arg3;
 - (BOOL)addOrUpdateLiveOID:(long long)arg1 bundleID:(id)arg2 identifier:(id)arg3;
-- (void)addOrUpdateUserFSLiveOID:(long long)arg1 userFSDomain:(id)arg2 identifier:(id)arg3;
+- (id)addOrUpdateUserFSLiveOID:(long long)arg1 userFSDomain:(id)arg2 identifier:(id)arg3;
 - (BOOL)attribute;
 - (id)bundleIDs;
 - (void)cancel;
@@ -115,7 +115,7 @@
 - (void)processCompletionsResultsData:(id)arg1 protectionClass:(id)arg2;
 - (void)processLiveResultsData:(id)arg1 oidData:(id)arg2 protectionClass:(id)arg3;
 - (void)processRemoveResultsData:(id)arg1 protectionClass:(id)arg2;
-- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 addItems:(id *)arg6 updateItems:(id *)arg7;
+- (void)processResultFromPlist:(id)arg1 atIndex:(unsigned long long)arg2 protectionClass:(id)arg3 oids:(long long *)arg4 oidCount:(unsigned int)arg5 addItems:(id *)arg6 updateItems:(id *)arg7 moveItems:(id *)arg8;
 - (void)processResultsData:(id)arg1 protectionClass:(id)arg2;
 - (BOOL)removeLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;
 - (BOOL)removeUserFSLiveOID:(long long)arg1 outBundleID:(id *)arg2 outIdentifier:(id *)arg3;

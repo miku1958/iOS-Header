@@ -23,9 +23,10 @@ __attribute__((visibility("hidden")))
 + (void)_addTransaction:(id)arg1 forBuyParams:(id)arg2;
 + (void)_removeTransactionForBuyParams:(id)arg1;
 + (id)_skuDownloadKind:(long long)arg1;
++ (void)displayConfirmationNotificationWithTitle:(id)arg1 andBody:(id)arg2 forChannelName:(id)arg3;
++ (id)extractSalableAdamIDFromBuyParams:(id)arg1;
 + (BOOL)isTransactionInProgressForBuyParams:(id)arg1;
 - (void).cxx_destruct;
-- (void)_displayConfirmationNotificationWithTitle:(id)arg1 andBody:(id)arg2 forChannelName:(id)arg3;
 - (void)_postPurchaseNotification:(id)arg1 error:(id)arg2;
 - (void)_postSubscriptionNotificationWithChannelName:(id)arg1 buyParams:(id)arg2 error:(id)arg3;
 - (void)_postTransactionDidStartNotificationWithBuyParams:(id)arg1;

@@ -6,44 +6,35 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaServerEvent-Protocol.h>
+@class NSData, SISchemaConversationTrace, SISchemaDeviceFixedContext, SISchemaServerEventMetadata, SISchemaSpeechResultSelected, SISchemaTurnInteraction, SISchemaUserSpeechDuration;
 
-@class NSData, NSString, SISchemaConversationTrace, SISchemaDeviceFixedContext, SISchemaServerEventMetadata, SISchemaSpeechResultSelected, SISchemaTurnInteraction, SISchemaUserSpeechDuration;
-
-@interface SISchemaServerEvent : PBCodable <SISchemaServerEvent, NSSecureCoding>
+@interface SISchemaServerEvent : PBCodable
 {
-    SISchemaServerEventMetadata *_eventMetadata;
+    unsigned long long _whichEvent_Type;
     SISchemaUserSpeechDuration *_userSpeechDuration;
     SISchemaConversationTrace *_serverConversationTrace;
     SISchemaTurnInteraction *_turnInteraction;
     SISchemaSpeechResultSelected *_speechResultSelected;
     SISchemaDeviceFixedContext *_serverDeviceFixedContext;
-    unsigned long long _whichEvent_Type;
+    SISchemaServerEventMetadata *_eventMetadata;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SISchemaServerEventMetadata *eventMetadata; // @synthesize eventMetadata=_eventMetadata;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaConversationTrace *serverConversationTrace; // @synthesize serverConversationTrace=_serverConversationTrace;
 @property (strong, nonatomic) SISchemaDeviceFixedContext *serverDeviceFixedContext; // @synthesize serverDeviceFixedContext=_serverDeviceFixedContext;
 @property (strong, nonatomic) SISchemaSpeechResultSelected *speechResultSelected; // @synthesize speechResultSelected=_speechResultSelected;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) SISchemaTurnInteraction *turnInteraction; // @synthesize turnInteraction=_turnInteraction;
 @property (strong, nonatomic) SISchemaUserSpeechDuration *userSpeechDuration; // @synthesize userSpeechDuration=_userSpeechDuration;
 @property (readonly, nonatomic) unsigned long long whichEvent_Type; // @synthesize whichEvent_Type=_whichEvent_Type;
 
-+ (Class)getEventTypeClassForTag:(int)arg1;
-+ (id)getTagForEventTypeClass:(Class)arg1;
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
-- (void)setEventType:(id)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

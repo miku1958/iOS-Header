@@ -39,7 +39,6 @@
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)provideInfosLayoutTo:(id)arg1;
 - (void)receivedInfo:(id)arg1 fromLayoutingPhaseWithIdentifier:(id)arg2;
-- (void)renderContents;
 - (void)setAbsoluteFrame:(struct CGRect)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setPresentationFrame:(struct CGRect)arg1;

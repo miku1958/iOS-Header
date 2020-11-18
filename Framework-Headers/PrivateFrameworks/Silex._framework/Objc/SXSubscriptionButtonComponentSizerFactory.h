@@ -4,33 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <Silex/SXButtonComponentSizerFactory.h>
 
-#import <Silex/SXComponentSizerFactory-Protocol.h>
-
-@class NSString;
-@protocol SXButtonComponentTextProvider, SXTextComponentLayoutHosting, SXTextSourceFactory;
-
-@interface SXSubscriptionButtonComponentSizerFactory : NSObject <SXComponentSizerFactory>
+@interface SXSubscriptionButtonComponentSizerFactory : SXButtonComponentSizerFactory
 {
-    id<SXButtonComponentTextProvider> _textProvider;
-    id<SXTextComponentLayoutHosting> _textComponentLayoutHosting;
-    id<SXTextSourceFactory> _textSourceFactory;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) int role;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) id<SXTextComponentLayoutHosting> textComponentLayoutHosting; // @synthesize textComponentLayoutHosting=_textComponentLayoutHosting;
-@property (readonly, nonatomic) id<SXButtonComponentTextProvider> textProvider; // @synthesize textProvider=_textProvider;
-@property (readonly, nonatomic) id<SXTextSourceFactory> textSourceFactory; // @synthesize textSourceFactory=_textSourceFactory;
-@property (readonly, nonatomic) NSString *type;
-
-- (void).cxx_destruct;
-- (id)initWithTextProvider:(id)arg1 textComponentLayoutHosting:(id)arg2 textSourceFactory:(id)arg3;
-- (id)sizerForComponent:(id)arg1 componentLayout:(id)arg2 layoutOptions:(id)arg3 DOMObjectProvider:(id)arg4;
+- (int)role;
 
 @end
 

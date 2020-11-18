@@ -91,10 +91,10 @@
 
  class DocumentManagerExecutables.DOCPostLaunchBuffer : DOCOperationBuffer {
 	// ObjC -> Swift bridged methods
-	0x7b80  @objc DOCPostLaunchBuffer..cxx_destruct <stripped>
+	0x7be0  @objc DOCPostLaunchBuffer..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7a60  func DOCPostLaunchBuffer.performAfterLaunch(_:) // method 
+	0x7ac0  func DOCPostLaunchBuffer.performAfterLaunch(_:) // method 
  }
 
  class DocumentManagerExecutables.DOCOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -107,22 +107,22 @@
 	var finishedBlock : (_:_:)? // +0x20 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x8090  @objc DOCOperation.init <stripped>
-	0x8630  @objc DOCOperation.start <stripped>
-	0x8660  @objc DOCOperation.isAsynchronous <stripped>
-	0x8690  @objc DOCOperation.isFinished <stripped>
-	0x87f0  @objc DOCOperation.setFinished: <stripped>
-	0x8b00  @objc DOCOperation.isExecuting <stripped>
-	0x8ca0  @objc DOCOperation.setExecuting: <stripped>
-	0x8fc0  @objc DOCOperation.cancel <stripped>
-	0x9910  @objc DOCOperation..cxx_destruct <stripped>
+	0x80f0  @objc DOCOperation.init <stripped>
+	0x8690  @objc DOCOperation.start <stripped>
+	0x86c0  @objc DOCOperation.isAsynchronous <stripped>
+	0x86f0  @objc DOCOperation.isFinished <stripped>
+	0x8850  @objc DOCOperation.setFinished: <stripped>
+	0x8b60  @objc DOCOperation.isExecuting <stripped>
+	0x8d00  @objc DOCOperation.setExecuting: <stripped>
+	0x9020  @objc DOCOperation.cancel <stripped>
+	0x9970  @objc DOCOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x7b90  func DOCOperation.finishedBlock.getter // getter 
-	0x7c00  func DOCOperation.finishedBlock.setter // setter 
-	0x7c80  func DOCOperation.finishedBlock.modify // modifyCoroutine 
-	0x9030  func DOCOperation._finishIfCanceled() // method 
-	0x9440  func DOCOperation.completed(with:error:) // method 
+	0x7bf0  func DOCOperation.finishedBlock.getter // getter 
+	0x7c60  func DOCOperation.finishedBlock.setter // setter 
+	0x7ce0  func DOCOperation.finishedBlock.modify // modifyCoroutine 
+	0x9090  func DOCOperation._finishIfCanceled() // method 
+	0x94a0  func DOCOperation.completed(with:error:) // method 
  }
 
  class DocumentManagerExecutables.DOCChainOperation : DOCOperation {
@@ -135,15 +135,15 @@
 	var mode : DOCChainOperationMode
 
 	// ObjC -> Swift bridged methods
-	0xace0  @objc DOCChainOperation.main <stripped>
-	0xad60  @objc DOCChainOperation.init <stripped>
-	0xae00  @objc DOCChainOperation..cxx_destruct <stripped>
+	0xad40  @objc DOCChainOperation.main <stripped>
+	0xadc0  @objc DOCChainOperation.init <stripped>
+	0xae60  @objc DOCChainOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x9db0  func DOCChainOperation.mode.getter // getter 
-	0x9de0  func DOCChainOperation.mode.setter // setter 
-	0x9e20  func DOCChainOperation.mode.modify // modifyCoroutine 
-	0x9e70  class func DOCChainOperation.__allocating_init(operations:) // init 
+	0x9e10  func DOCChainOperation.mode.getter // getter 
+	0x9e40  func DOCChainOperation.mode.setter // setter 
+	0x9e80  func DOCChainOperation.mode.modify // modifyCoroutine 
+	0x9ed0  class func DOCChainOperation.__allocating_init(operations:) // init 
  }
 
  enum DocumentManagerExecutables.DOCChainOperationMode {
@@ -160,12 +160,12 @@
 	var chainOperation : DOCChainOperation
 
 	// ObjC -> Swift bridged methods
-	0xaf30  @objc DOCChainableOperation.main <stripped>
-	0xafd0  @objc DOCChainableOperation.init <stripped>
-	0xb0b0  @objc DOCChainableOperation..cxx_destruct <stripped>
+	0xaf90  @objc DOCChainableOperation.main <stripped>
+	0xb030  @objc DOCChainableOperation.init <stripped>
+	0xb110  @objc DOCChainableOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0xaf60  func DOCChainableOperation.main(with:previousOperationError:) // method 
+	0xafc0  func DOCChainableOperation.main(with:previousOperationError:) // method 
  }
 
  struct DocumentManagerExecutables.DOCUTIDescriptor {
@@ -186,13 +186,13 @@
 	let gatheringQueue : OS_dispatch_queue // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0xc890  @objc DOCUTIDescriptorCollector.init <stripped>
-	0xed00  @objc DOCUTIDescriptorCollector..cxx_destruct <stripped>
+	0xc8f0  @objc DOCUTIDescriptorCollector.init <stripped>
+	0xed60  @objc DOCUTIDescriptorCollector..cxx_destruct <stripped>
 
 	// Swift methods
-	0xc8b0  func DOCUTIDescriptorCollector.filteredUTIs(matching:allowedUTIs:completion:) // method 
-	0xce70  func DOCUTIDescriptorCollector.cancelGathering() // method 
-	0xcf10  func <stripped> // method 
+	0xc910  func DOCUTIDescriptorCollector.filteredUTIs(matching:allowedUTIs:completion:) // method 
+	0xced0  func DOCUTIDescriptorCollector.cancelGathering() // method 
+	0xcf70  func <stripped> // method 
  }
 
  class DocumentManagerExecutables.DOCQuickLookInfoPreview : QLPreviewController /System/Library/Frameworks/QuickLook.framework/QuickLook {
@@ -202,18 +202,18 @@
 	var qlItem : QLPreviewItem? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x14c50  @objc DOCQuickLookInfoPreview.init <stripped>
-	0x14cf0  @objc DOCQuickLookInfoPreview.presentationMode <stripped>
-	0x14de0  @objc DOCQuickLookInfoPreview.initWithCoder: <stripped>
-	0x15510  @objc DOCQuickLookInfoPreview.initWithNibName:bundle: <stripped>
-	0x15600  @objc DOCQuickLookInfoPreview.initWithPreviewItems: <stripped>
-	0x15680  @objc DOCQuickLookInfoPreview..cxx_destruct <stripped>
+	0x14cb0  @objc DOCQuickLookInfoPreview.init <stripped>
+	0x14d50  @objc DOCQuickLookInfoPreview.presentationMode <stripped>
+	0x14e40  @objc DOCQuickLookInfoPreview.initWithCoder: <stripped>
+	0x15570  @objc DOCQuickLookInfoPreview.initWithNibName:bundle: <stripped>
+	0x15660  @objc DOCQuickLookInfoPreview.initWithPreviewItems: <stripped>
+	0x156e0  @objc DOCQuickLookInfoPreview..cxx_destruct <stripped>
 
 	// Swift methods
-	0x149e0  func DOCQuickLookInfoPreview.item.getter // getter 
-	0x14a20  func DOCQuickLookInfoPreview.item.setter // setter 
-	0x14af0  func DOCQuickLookInfoPreview.item.modify // modifyCoroutine 
-	0x14e70  func DOCQuickLookInfoPreview.needsUpdate(for:) // method 
+	0x14a40  func DOCQuickLookInfoPreview.item.getter // getter 
+	0x14a80  func DOCQuickLookInfoPreview.item.setter // setter 
+	0x14b50  func DOCQuickLookInfoPreview.item.modify // modifyCoroutine 
+	0x14ed0  func DOCQuickLookInfoPreview.needsUpdate(for:) // method 
  }
 
  enum DocumentManagerExecutables.SharingStatusStringType {
@@ -236,20 +236,20 @@
 	var lastSelectedItem : FPItem? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1a9d0  @objc DOCInteractionManager.lastOpenedItem <stripped>
-	0x1aa10  @objc DOCInteractionManager.setLastOpenedItem: <stripped>
-	0x1ae60  @objc DOCInteractionManager.lastSelectedItem <stripped>
-	0x1af20  @objc DOCInteractionManager.setLastSelectedItem: <stripped>
-	0x1b560  @objc DOCInteractionManager.init <stripped>
-	0x1b650  @objc DOCInteractionManager..cxx_destruct <stripped>
+	0x1aa30  @objc DOCInteractionManager.lastOpenedItem <stripped>
+	0x1aa70  @objc DOCInteractionManager.setLastOpenedItem: <stripped>
+	0x1aec0  @objc DOCInteractionManager.lastSelectedItem <stripped>
+	0x1af80  @objc DOCInteractionManager.setLastSelectedItem: <stripped>
+	0x1b5c0  @objc DOCInteractionManager.init <stripped>
+	0x1b6b0  @objc DOCInteractionManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1a9f0  func DOCInteractionManager.lastOpenedItem.getter // getter 
-	0x1aa30  func DOCInteractionManager.lastOpenedItem.setter // setter 
-	0x1ade0  func DOCInteractionManager.lastOpenedItem.modify // modifyCoroutine 
-	0x1aec0  func DOCInteractionManager.lastSelectedItem.getter // getter 
-	0x1afd0  func DOCInteractionManager.lastSelectedItem.setter // setter 
-	0x1b3b0  func DOCInteractionManager.lastSelectedItem.modify // modifyCoroutine 
+	0x1aa50  func DOCInteractionManager.lastOpenedItem.getter // getter 
+	0x1aa90  func DOCInteractionManager.lastOpenedItem.setter // setter 
+	0x1ae40  func DOCInteractionManager.lastOpenedItem.modify // modifyCoroutine 
+	0x1af20  func DOCInteractionManager.lastSelectedItem.getter // getter 
+	0x1b030  func DOCInteractionManager.lastSelectedItem.setter // setter 
+	0x1b410  func DOCInteractionManager.lastSelectedItem.modify // modifyCoroutine 
  }
 
  struct DocumentManagerExecutables.DOCLog { }
@@ -272,13 +272,13 @@
 	var $__lazy_storage_$_queue : OS_dispatch_queue? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x1fc80  @objc DOCOperationBuffer.init <stripped>
-	0x1fd00  @objc DOCOperationBuffer..cxx_destruct <stripped>
+	0x1fce0  @objc DOCOperationBuffer.init <stripped>
+	0x1fd60  @objc DOCOperationBuffer..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1f8c0  class func DOCOperationBuffer.__allocating_init(label:targetQueue:) // init 
-	0x1f500  func DOCOperationBuffer.signal() // method 
-	0x1f610  func DOCOperationBuffer.buffer(_:) // method 
+	0x1f920  class func DOCOperationBuffer.__allocating_init(label:targetQueue:) // init 
+	0x1f560  func DOCOperationBuffer.signal() // method 
+	0x1f670  func DOCOperationBuffer.buffer(_:) // method 
  }
 
  class DocumentManagerExecutables.DOCImageContainerFittingView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -290,30 +290,30 @@
 	let imageView : DOCFittingImageView
 
 	// ObjC -> Swift bridged methods
-	0x1fd50  @objc DOCImageContainerFittingView.contentOffsetFromTop <stripped>
-	0x1fd90  @objc DOCImageContainerFittingView.setContentOffsetFromTop: <stripped>
-	0x20390  @objc DOCImageContainerFittingView.initWithFrame: <stripped>
-	0x203d0  @objc DOCImageContainerFittingView.initWithCoder: <stripped>
-	0x20690  @objc DOCImageContainerFittingView.systemLayoutSizeFittingSize: <stripped>
-	0x206e0  @objc DOCImageContainerFittingView.intrinsicContentSize <stripped>
-	0x209b0  @objc DOCImageContainerFittingView.layoutSubviews <stripped>
-	0x20da0  @objc DOCImageContainerFittingView..cxx_destruct <stripped>
+	0x1fdb0  @objc DOCImageContainerFittingView.contentOffsetFromTop <stripped>
+	0x1fdf0  @objc DOCImageContainerFittingView.setContentOffsetFromTop: <stripped>
+	0x203f0  @objc DOCImageContainerFittingView.initWithFrame: <stripped>
+	0x20430  @objc DOCImageContainerFittingView.initWithCoder: <stripped>
+	0x206f0  @objc DOCImageContainerFittingView.systemLayoutSizeFittingSize: <stripped>
+	0x20740  @objc DOCImageContainerFittingView.intrinsicContentSize <stripped>
+	0x20a10  @objc DOCImageContainerFittingView.layoutSubviews <stripped>
+	0x20e00  @objc DOCImageContainerFittingView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x1fdd0  func DOCImageContainerFittingView.isShadowHidden.getter // getter 
-	0x1fdf0  func DOCImageContainerFittingView.isShadowHidden.setter // setter 
-	0x1fe20  func DOCImageContainerFittingView.isShadowHidden.modify // modifyCoroutine 
-	0x1fe80  func DOCImageContainerFittingView.imageIsFolder.getter // getter 
-	0x1feb0  func DOCImageContainerFittingView.imageIsFolder.setter // setter 
-	0x1fef0  func DOCImageContainerFittingView.imageIsFolder.modify // modifyCoroutine 
-	0x203f0  func DOCImageContainerFittingView.fittingSize.getter // getter 
-	0x20410  func DOCImageContainerFittingView.fittingSize.setter // setter 
-	0x20440  func DOCImageContainerFittingView.fittingSize.modify // modifyCoroutine 
-	0x204d0  func DOCImageContainerFittingView.image.getter // getter 
-	0x20500  func DOCImageContainerFittingView.image.setter // setter 
-	0x20560  func DOCImageContainerFittingView.image.modify // modifyCoroutine 
-	0x209e0  func DOCImageContainerFittingView.updateContentFrame() // method 
-	0x20bf0  func <stripped> // getter 
+	0x1fe30  func DOCImageContainerFittingView.isShadowHidden.getter // getter 
+	0x1fe50  func DOCImageContainerFittingView.isShadowHidden.setter // setter 
+	0x1fe80  func DOCImageContainerFittingView.isShadowHidden.modify // modifyCoroutine 
+	0x1fee0  func DOCImageContainerFittingView.imageIsFolder.getter // getter 
+	0x1ff10  func DOCImageContainerFittingView.imageIsFolder.setter // setter 
+	0x1ff50  func DOCImageContainerFittingView.imageIsFolder.modify // modifyCoroutine 
+	0x20450  func DOCImageContainerFittingView.fittingSize.getter // getter 
+	0x20470  func DOCImageContainerFittingView.fittingSize.setter // setter 
+	0x204a0  func DOCImageContainerFittingView.fittingSize.modify // modifyCoroutine 
+	0x20530  func DOCImageContainerFittingView.image.getter // getter 
+	0x20560  func DOCImageContainerFittingView.image.setter // setter 
+	0x205c0  func DOCImageContainerFittingView.image.modify // modifyCoroutine 
+	0x20a40  func DOCImageContainerFittingView.updateContentFrame() // method 
+	0x20c50  func <stripped> // getter 
  }
 
  class DocumentManagerExecutables.DOCContainerFittingView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -326,20 +326,20 @@
 	var observationContext : NSKeyValueObservation?
 
 	// ObjC -> Swift bridged methods
-	0x21050  @objc DOCContainerFittingView.contentOffsetFromTop <stripped>
-	0x21100  @objc DOCContainerFittingView.setContentOffsetFromTop: <stripped>
-	0x216a0  @objc DOCContainerFittingView.layoutSubviews <stripped>
-	0x21720  @objc DOCContainerFittingView.initWithCoder: <stripped>
-	0x21740  @objc DOCContainerFittingView.intrinsicContentSize <stripped>
-	0x21800  @objc DOCContainerFittingView.systemLayoutSizeFittingSize: <stripped>
-	0x218f0  @objc DOCContainerFittingView.initWithFrame: <stripped>
-	0x21980  @objc DOCContainerFittingView..cxx_destruct <stripped>
+	0x210b0  @objc DOCContainerFittingView.contentOffsetFromTop <stripped>
+	0x21160  @objc DOCContainerFittingView.setContentOffsetFromTop: <stripped>
+	0x21700  @objc DOCContainerFittingView.layoutSubviews <stripped>
+	0x21780  @objc DOCContainerFittingView.initWithCoder: <stripped>
+	0x217a0  @objc DOCContainerFittingView.intrinsicContentSize <stripped>
+	0x21860  @objc DOCContainerFittingView.systemLayoutSizeFittingSize: <stripped>
+	0x21950  @objc DOCContainerFittingView.initWithFrame: <stripped>
+	0x219e0  @objc DOCContainerFittingView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x20f30  func DOCContainerFittingView.fittingSize.getter // getter 
-	0x20f70  func DOCContainerFittingView.fittingSize.setter // setter 
-	0x20fd0  func DOCContainerFittingView.fittingSize.modify // modifyCoroutine 
-	0x211c0  class func DOCContainerFittingView.__allocating_init(containedViewController:) // init 
+	0x20f90  func DOCContainerFittingView.fittingSize.getter // getter 
+	0x20fd0  func DOCContainerFittingView.fittingSize.setter // setter 
+	0x21030  func DOCContainerFittingView.fittingSize.modify // modifyCoroutine 
+	0x21220  class func DOCContainerFittingView.__allocating_init(containedViewController:) // init 
  }
 
  class DocumentManagerExecutables.DOCThreadSafeState {
@@ -358,12 +358,12 @@
 	let setTagsOperationTimeout : DispatchTimeInterval
 
 	// ObjC -> Swift bridged methods
-	0x25c20  @objc DOCTagManager.init <stripped>
-	0x25e80  @objc DOCTagManager..cxx_destruct <stripped>
+	0x25c80  @objc DOCTagManager.init <stripped>
+	0x25ee0  @objc DOCTagManager..cxx_destruct <stripped>
 
 	// Swift methods
-	0x23d20  func DOCTagManager.scheduleAction(_:completionBlock:) // method 
-	0x24f40  func <stripped> // method 
+	0x23d80  func DOCTagManager.scheduleAction(_:completionBlock:) // method 
+	0x24fa0  func <stripped> // method 
  }
 
  class DocumentManagerExecutables.DOCTagCollectionObserver : NSObject /usr/lib/libobjc.A.dylib {
@@ -378,18 +378,18 @@
 	var collectionObservationContext : Int
 
 	// ObjC -> Swift bridged methods
-	0x27720  @objc DOCTagCollectionObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
-	0x27930  @objc DOCTagCollectionObserver.collection:didInsertItemsAtIndexPaths: <stripped>
-	0x27890  @objc DOCTagCollectionObserver.collection:didMoveItemsFromIndexPaths:toIndexPaths: <stripped>
-	0x27930  @objc DOCTagCollectionObserver.collection:didDeleteItemsAtIndexPaths: <stripped>
-	0x279b0  @objc DOCTagCollectionObserver.collection:didUpdateItemsAtIndexPaths:changes: <stripped>
-	0x27b10  @objc DOCTagCollectionObserver.dataForCollectionShouldBeReloaded: <stripped>
-	0x27b80  @objc DOCTagCollectionObserver.collection:didPerformBatchUpdateWithReplayBlock: <stripped>
-	0x27f50  @objc DOCTagCollectionObserver.init <stripped>
-	0x27fd0  @objc DOCTagCollectionObserver..cxx_destruct <stripped>
+	0x27780  @objc DOCTagCollectionObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
+	0x27990  @objc DOCTagCollectionObserver.collection:didInsertItemsAtIndexPaths: <stripped>
+	0x278f0  @objc DOCTagCollectionObserver.collection:didMoveItemsFromIndexPaths:toIndexPaths: <stripped>
+	0x27990  @objc DOCTagCollectionObserver.collection:didDeleteItemsAtIndexPaths: <stripped>
+	0x27a10  @objc DOCTagCollectionObserver.collection:didUpdateItemsAtIndexPaths:changes: <stripped>
+	0x27b70  @objc DOCTagCollectionObserver.dataForCollectionShouldBeReloaded: <stripped>
+	0x27be0  @objc DOCTagCollectionObserver.collection:didPerformBatchUpdateWithReplayBlock: <stripped>
+	0x27fb0  @objc DOCTagCollectionObserver.init <stripped>
+	0x28030  @objc DOCTagCollectionObserver..cxx_destruct <stripped>
 
 	// Swift methods
-	0x26480  func <stripped> // method 
+	0x264e0  func <stripped> // method 
  }
 
  struct DocumentManagerExecutables.DOCCollectionEdit {
@@ -423,12 +423,12 @@
 	let block : (_:) // +0x30 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x2d290  @objc DOCBlockOperation.main <stripped>
-	0x2d370  @objc DOCBlockOperation.init <stripped>
-	0x2d410  @objc DOCBlockOperation..cxx_destruct <stripped>
+	0x2d2f0  @objc DOCBlockOperation.main <stripped>
+	0x2d3d0  @objc DOCBlockOperation.init <stripped>
+	0x2d470  @objc DOCBlockOperation..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2d0c0  class func DOCBlockOperation.__allocating_init(block:) // init 
+	0x2d120  class func DOCBlockOperation.__allocating_init(block:) // init 
  }
 
  class DocumentManagerExecutables.DOCSafeCenteringContainerView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -440,12 +440,12 @@
 	var scrollContainerViewMinHeightConstraint : NSLayoutConstraint? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x2ddd0  @objc DOCSafeCenteringContainerView.initWithCoder: <stripped>
-	0x2df30  @objc DOCSafeCenteringContainerView.safeAreaInsetsDidChange <stripped>
-	0x2df60  @objc DOCSafeCenteringContainerView.frame <stripped>
-	0x2dfd0  @objc DOCSafeCenteringContainerView.setFrame: <stripped>
-	0x2e270  @objc DOCSafeCenteringContainerView.initWithFrame: <stripped>
-	0x2e2f0  @objc DOCSafeCenteringContainerView..cxx_destruct <stripped>
+	0x2de30  @objc DOCSafeCenteringContainerView.initWithCoder: <stripped>
+	0x2df90  @objc DOCSafeCenteringContainerView.safeAreaInsetsDidChange <stripped>
+	0x2dfc0  @objc DOCSafeCenteringContainerView.frame <stripped>
+	0x2e030  @objc DOCSafeCenteringContainerView.setFrame: <stripped>
+	0x2e2d0  @objc DOCSafeCenteringContainerView.initWithFrame: <stripped>
+	0x2e350  @objc DOCSafeCenteringContainerView..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -458,15 +458,15 @@
 	let completionBlock : (_:) // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x2e890  @objc OpenAppDelegate.openResourceOperation:didFinishCopyingResource: <stripped>
-	0x2ec00  @objc OpenAppDelegate.openResourceOperationDidComplete: <stripped>
-	0x2f010  @objc OpenAppDelegate.openResourceOperation:didFailWithError: <stripped>
-	0x2f080  @objc OpenAppDelegate.init <stripped>
-	0x2f100  @objc OpenAppDelegate..cxx_destruct <stripped>
+	0x2e8f0  @objc OpenAppDelegate.openResourceOperation:didFinishCopyingResource: <stripped>
+	0x2ec60  @objc OpenAppDelegate.openResourceOperationDidComplete: <stripped>
+	0x2f070  @objc OpenAppDelegate.openResourceOperation:didFailWithError: <stripped>
+	0x2f0e0  @objc OpenAppDelegate.init <stripped>
+	0x2f160  @objc OpenAppDelegate..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2e960  func <stripped> // method 
-	0x2ec50  func <stripped> // method 
+	0x2e9c0  func <stripped> // method 
+	0x2ecb0  func <stripped> // method 
  }
 
  class DocumentManagerExecutables.DOCTypeToFocusController : UIResponder /System/Library/Frameworks/UIKit.framework/UIKit {

@@ -10,8 +10,7 @@
 #import <MessageUI/UITableViewDataSource-Protocol.h>
 #import <MessageUI/UITableViewDelegate-Protocol.h>
 
-@class MFAttachment, MFFromAddressTableView, MFMailAccountProxy, MFMailComposeView, MFMailPopoverManager, NSArray, NSDictionary, NSString, UIBarButtonItem, UIPickerView, UIView, UIViewController, _MFMailCompositionContext;
-@protocol MFComposeBodyField;
+@class MFAttachment, MFComposeWebView, MFFromAddressTableView, MFMailAccountProxy, MFMailComposeView, MFMailPopoverManager, NSArray, NSDictionary, NSString, UIBarButtonItem, UIPickerView, UIView, UIViewController, _MFMailCompositionContext;
 
 @protocol MFMailComposeViewDelegate <UIPickerViewDelegate, UITableViewDelegate, UITableViewDataSource, UIDocumentPickerDelegate, UIPopoverPresentationControllerDelegate>
 - (BOOL)bccAddressesDirtied;
@@ -24,6 +23,7 @@
 - (NSString *)currentScaleImageSize;
 - (void)didInsertAttachment:(MFAttachment *)arg1;
 - (void)didInsertBodyText:(NSString *)arg1;
+- (void)didRemoveAttachment:(MFAttachment *)arg1;
 - (NSArray *)emailAddresses;
 - (BOOL)hasAttachments;
 - (void)importDocument;
@@ -44,12 +44,12 @@
 - (void)updateSignature;
 
 @optional
-- (struct UIEdgeInsets)additionalContentInsetForBodyField:(UIView<MFComposeBodyField> *)arg1;
+- (struct UIEdgeInsets)additionalContentInsetForComposeWebView:(MFComposeWebView *)arg1;
 - (BOOL)canShowContentVariationPicker;
-- (void)composeBodyFieldDidChangeFontAttributes:(NSDictionary *)arg1;
-- (void)composeBodyFieldDidFinishLoad;
-- (void)composeBodyFieldDidResignFirstResponder;
 - (void)composeViewBodyTextChanged:(MFMailComposeView *)arg1;
+- (void)composeWebViewDidChangeFontAttributes:(NSDictionary *)arg1;
+- (void)composeWebViewDidFinishLoad;
+- (void)composeWebViewDidResignFirstResponder;
 - (NSString *)contentVariationName;
 - (void)showContentVariationPickerFromRect:(struct CGRect)arg1 inView:(UIView *)arg2;
 - (void)showMissingAttachmentDataAlert;

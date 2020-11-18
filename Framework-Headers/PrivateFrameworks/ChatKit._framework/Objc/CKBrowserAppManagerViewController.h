@@ -29,9 +29,11 @@
 - (void).cxx_destruct;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (id)animationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
+- (BOOL)appAllowedByScreenTimeWithBundleIdentifier:(id)arg1;
 - (void)appManagerViewControllerDidFinish:(id)arg1;
 - (void)browserAppManagerDidSelectPlugin:(id)arg1;
 - (long long)browserPresentationStyle;
+- (void)delegate_BrowserAppManagerDidSelectPlugin:(id)arg1;
 - (void)dismiss;
 - (BOOL)isDismissing;
 - (BOOL)isLoaded;

@@ -18,11 +18,12 @@
 - (id)_axARModeControlsForEntityController:(id)arg1 isRTL:(BOOL)arg2;
 - (id)_axARView;
 - (void)_axAdjustScaleByMultiplier:(float)arg1 entityController:(id)arg2;
+- (void)_axAnnotateAsControl:(id)arg1;
 - (float)_axAssetScaleForAnnouncementsForEntityController:(id)arg1;
 - (float)_axAssetScaleForEntityController:(id)arg1;
 - (struct CGRect)_axBoundingRectForEntityController:(id)arg1;
 - (struct CGRect)_axBoundsForControls;
-- (void)_axCheckForAppearanceOfEntityControllerWithTimer:(id)arg1;
+- (void)_axCheckForAppearanceOfEntityControllersWithTimer:(id)arg1;
 - (id)_axControlForRotationWithDeltaYaw:(float)arg1 deltaPitch:(float)arg2 nameFormat:(id)arg3 hintFormat:(id)arg4 shouldUseArrows:(BOOL)arg5 entityController:(id)arg6;
 - (id)_axControlForScalingForEntityController:(id)arg1;
 - (id)_axControlForTranslationForLevitation:(BOOL)arg1 delta:(id)arg2 nameFormat:(id)arg3 entityController: /* Error: Ran out of types for this method. */;
@@ -39,7 +40,7 @@
 - (void)_axGetAccessibilityFrame:(struct CGRect *)arg1 path:(id *)arg2 forArrowTowardsEdge:(unsigned long long)arg3 isDoubleArrow:(BOOL)arg4;
 - (void)_axGetAccessibilityFrame:(struct CGRect *)arg1 path:(id *)arg2 forRotationControlClockwise:(BOOL)arg3;
 - (BOOL)_axHasHandledLoadAX;
-- (BOOL)_axIsOffScreen;
+- (BOOL)_axIsOffScreenForEntityController:(id)arg1;
 - (float)_axLevitationHeightForEntityController:(id)arg1;
 - (id)_axNameForEntityController:(id)arg1;
 - (id)_axObjectModeControls;
@@ -49,12 +50,14 @@
 - (void)_axSetARModeControls:(id)arg1;
 - (void)_axSetHasHandledLoadAX:(BOOL)arg1;
 - (void)_axSetObjectModeControls:(id)arg1;
-- (void)_axSetOffScreen:(BOOL)arg1;
+- (void)_axSetOffScreen:(BOOL)arg1 forEntityController:(id)arg2;
 - (void)_axSetTimerForVisibilityAnnouncements:(id)arg1;
+- (BOOL)_axShouldExposeControls;
+- (void)_axStartVisibilityAnnouncementsIfStopped;
+- (void)_axStopVisibilityAnnouncements;
 - (id)_axTimerForVisibilityAnnouncements;
 - (id)_axUnifiedGestureRecognizerForEntityController:(id)arg1;
 - (void)_axUpdateARViewAccessibilityElements;
-- (void)_axUpdateForARMode;
 - (void)_axUpdateForOldEmitterMode:(long long)arg1;
 - (double)_valueForPercentageFromRawValue:(double)arg1;
 - (void)entityController:(id)arg1 doubleTappedAt:(struct CGPoint)arg2;
@@ -65,6 +68,8 @@
 - (void)stageBackToHologram;
 - (void)transitionToARMode;
 - (void)transitionToObjectMode;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

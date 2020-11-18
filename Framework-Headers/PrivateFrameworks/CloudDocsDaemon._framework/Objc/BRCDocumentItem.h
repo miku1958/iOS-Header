@@ -93,13 +93,14 @@
 - (BOOL)isDocument;
 - (BOOL)isFault;
 - (BOOL)isPackage;
-- (void)learnItemID:(id)arg1 ownerKey:(id)arg2 path:(id)arg3 markLost:(BOOL)arg4;
+- (BOOL)isShareableItem;
+- (void)learnItemID:(id)arg1 ownerKey:(id)arg2 sharingOptions:(unsigned long long)arg3 path:(id)arg4 markLost:(BOOL)arg5;
 - (void)learnThumbnailSignatureFromLiveVersion:(id)arg1;
 - (void)markDead;
 - (void)markForceNeedsSyncUp;
 - (void)markForceUpload;
 - (void)markItemForgottenByServer;
-- (BOOL)markLatestRequestAcknowledgedInZone:(id)arg1;
+- (BOOL)markLatestSyncRequestAcknowledgedInZone:(id)arg1;
 - (void)markLatestSyncRequestRejectedInZone:(id)arg1;
 - (void)markLiveFromStageWithPath:(id)arg1;
 - (void)markNeedsReading;

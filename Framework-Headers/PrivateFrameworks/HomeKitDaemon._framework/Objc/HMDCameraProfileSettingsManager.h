@@ -41,7 +41,7 @@
 @property (readonly, getter=isCameraManuallyDisabled) BOOL cameraManuallyDisabled;
 @property (readonly) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (readonly) unsigned long long currentAccessMode; // @synthesize currentAccessMode=_currentAccessMode;
-@property (readonly, getter=isCurrentDevicePrimaryResident) BOOL currentDevicePrimaryResident;
+@property (readonly, getter=isCurrentDeviceConfirmedPrimaryResident) BOOL currentDeviceConfirmedPrimaryResident;
 @property (readonly) HMDCameraProfileSettingsModel *currentSettingsModel;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly) HMDCameraProfileSettingsModel *defaultSettingsModel;

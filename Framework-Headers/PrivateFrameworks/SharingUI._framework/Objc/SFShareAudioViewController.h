@@ -27,6 +27,7 @@
 
 + (id)instantiateViewController;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_imageForPID:(unsigned int)arg1 colorCode:(unsigned int)arg2;
 - (void)_reportCompletion:(id)arg1 mediaRouteID:(id)arg2;
 - (void)_sessionProgressEvent:(int)arg1 info:(id)arg2;

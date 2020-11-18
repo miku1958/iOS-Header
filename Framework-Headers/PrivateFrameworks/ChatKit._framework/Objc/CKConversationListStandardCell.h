@@ -17,6 +17,7 @@
 + (id)identifierForConversation:(id)arg1;
 - (void).cxx_destruct;
 - (void)_calculateLayoutFrames;
+- (BOOL)_shouldShowAvatarForWidth:(double)arg1;
 - (void)_updateAvatarView;
 - (id)avatarView;
 - (id)avatarView:(id)arg1 orderedPropertiesForProperties:(id)arg2 category:(id)arg3;

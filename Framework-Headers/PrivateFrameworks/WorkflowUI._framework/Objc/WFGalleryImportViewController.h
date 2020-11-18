@@ -61,6 +61,7 @@
 - (void)didTapCancel;
 - (void)didTapManageSharing;
 - (void)didTapShare;
+- (int)eventSourceForShortcut;
 - (void)importQuestionViewControllerDidSelectBack:(id)arg1;
 - (void)importQuestionViewControllerDidSelectCancel:(id)arg1;
 - (void)importQuestionViewControllerDidSelectNext:(id)arg1;
@@ -77,6 +78,7 @@
 - (void)shortcutViewControllerDidCancel:(id)arg1;
 - (void)showNextImportQuestion;
 - (void)showNextImportQuestionAnimated:(BOOL)arg1 backButtonHidden:(BOOL)arg2;
+- (void)trackAddEvent;
 - (void)unshareSharedShortcut;
 - (void)updateBarButtonItems;
 - (void)updateView;

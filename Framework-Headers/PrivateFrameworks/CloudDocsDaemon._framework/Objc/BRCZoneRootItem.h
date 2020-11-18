@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 - (id)fileID;
 - (id)initWithZoneRootItemID:(id)arg1 session:(id)arg2;
 - (BOOL)isFSRoot;
+- (BOOL)isShareableItem;
 - (BOOL)isZoneRoot;
 - (id)parentItemID;
 - (id)parentItemOnFS;

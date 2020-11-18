@@ -10,6 +10,7 @@
 
 @interface MSVLyricsLine : MSVLyricsTextElement
 {
+    BOOL _instrumentalBreak;
     long long _lineIndex;
     long long _originalLineIndex;
     MSVLyricsSection *_parentSection;
@@ -18,6 +19,7 @@
     NSString *_translationKey;
 }
 
+@property (nonatomic, getter=isInstrumentalBreak) BOOL instrumentalBreak; // @synthesize instrumentalBreak=_instrumentalBreak;
 @property (nonatomic) long long lineIndex; // @synthesize lineIndex=_lineIndex;
 @property (strong, nonatomic) MSVLyricsLine *nextLine; // @synthesize nextLine=_nextLine;
 @property (nonatomic) long long originalLineIndex; // @synthesize originalLineIndex=_originalLineIndex;

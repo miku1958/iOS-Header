@@ -10,7 +10,7 @@
 #import <CloudDocsDaemon/BRCJobsMatching-Protocol.h>
 #import <CloudDocsDaemon/BRCSyncThrottleItemProtocol-Protocol.h>
 
-@class BRCAccountSession, BRCAliasItem, BRCAppLibrary, BRCClientZone, BRCDirectoryItem, BRCDocumentItem, BRCFinderBookmarkItem, BRCItemID, BRCLocalStatInfo, BRCPQLConnection, BRCServerZone, BRCShareAcceptationFault, BRCSymlinkItem, BRCZoneRowID, BRFileObjectID, NSError, NSMutableSet, NSNumber, NSString;
+@class BRCAccountSession, BRCAliasItem, BRCAppLibrary, BRCClientZone, BRCDirectoryItem, BRCDocumentItem, BRCFinderBookmarkItem, BRCItemID, BRCLocalStatInfo, BRCPQLConnection, BRCServerZone, BRCShareAcceptationFault, BRCSymlinkItem, BRCUserRowID, BRCZoneRowID, BRFieldCKInfo, BRFileObjectID, NSError, NSMutableSet, NSNumber, NSString;
 @protocol BRCFSRooted, BRCSharedToMeTopLevel, BRCTopLevelShareable;
 
 @interface BRCLocalItem : NSObject <BRCJobsMatching, BRCSyncThrottleItemProtocol, BRCItem>
@@ -22,7 +22,7 @@
     BRCAppLibrary *_appLibrary;
     BRCItemID *_itemID;
     BRCZoneRowID *_parentZoneRowID;
-    NSNumber *_ownerKey;
+    BRCUserRowID *_ownerKey;
     BRCLocalStatInfo *_st;
     unsigned int _syncUpState;
     BRCLocalItem *_orig;
@@ -32,6 +32,7 @@
     unsigned long long _dbRowID;
     unsigned long long _notifsRank;
     unsigned long long _sharingOptions;
+    BRFieldCKInfo *_sideCarCKInfo;
     NSNumber *_knownByServer;
     NSNumber *_isInDocumentScope;
     NSNumber *_parentFileID;
@@ -93,6 +94,7 @@
 @property (readonly, nonatomic) BOOL isRejected;
 @property (readonly, nonatomic) BOOL isReserved;
 @property (readonly, nonatomic) BOOL isShareAcceptationFault;
+@property (readonly, nonatomic) BOOL isShareableItem;
 @property (readonly, nonatomic) BOOL isSharedByMe;
 @property (readonly, nonatomic) BOOL isSharedToMe;
 @property (readonly, nonatomic) BOOL isSharedToMeChildItem;
@@ -100,6 +102,7 @@
 @property (readonly, nonatomic) BOOL isSymLink;
 @property (readonly, nonatomic) BOOL isZoneRoot;
 @property (readonly, nonatomic) BRCItemID *itemID; // @synthesize itemID=_itemID;
+@property (readonly, nonatomic) unsigned char itemScope;
 @property (readonly, nonatomic) unsigned long long localDiffs; // @synthesize localDiffs=_localDiffs;
 @property (readonly, nonatomic) NSString *logicalName;
 @property (readonly, nonatomic) BOOL needsInsert;
@@ -109,7 +112,7 @@
 @property (readonly, nonatomic) BOOL needsUpload;
 @property (readonly, nonatomic) unsigned long long notifsRank; // @synthesize notifsRank=_notifsRank;
 @property (readonly, nonatomic) BRCLocalItem *orig; // @synthesize orig=_orig;
-@property (readonly, nonatomic) NSNumber *ownerKey; // @synthesize ownerKey=_ownerKey;
+@property (readonly, nonatomic) BRCUserRowID *ownerKey; // @synthesize ownerKey=_ownerKey;
 @property (readonly, nonatomic) BRCClientZone *parentClientZone;
 @property (readonly, nonatomic) NSNumber *parentFileID;
 @property (readonly, nonatomic) BRFileObjectID *parentFileObjectID;
@@ -132,6 +135,7 @@
 + (id)itemResolutionStringWithRelativePath:(id)arg1;
 + (id)newItemWithPath:(id)arg1 parentGlobalID:(id)arg2;
 + (BOOL)parseBookmarkData:(id)arg1 inAccountSession:(id)arg2 docID:(id *)arg3 itemID:(id *)arg4 mangledID:(id *)arg5 unsaltedBookmarkData:(id *)arg6 error:(id *)arg7;
++ (BOOL)parseUnsaltedBookmarkData:(id)arg1 itemID:(id *)arg2 mangledID:(id *)arg3 error:(id *)arg4;
 + (BOOL)supportsSecureCoding;
 + (id)unsaltedBookmarkDataWithItemResolutionString:(id)arg1 serverZone:(id)arg2;
 + (id)unsaltedBookmarkDataWithRelativePath:(id)arg1 serverZone:(id)arg2;
@@ -151,13 +155,13 @@
 - (BOOL)_isIndexable;
 - (BOOL)_isInterestingUpdateForNotifs;
 - (BOOL)_isInterestingUpdateForNotifsWithDiffs:(unsigned long long)arg1;
+- (BOOL)_isReadonlyShareChild;
 - (void)_markLostWhenReplacedByItem:(id)arg1 backoffMode:(unsigned char)arg2;
 - (void)_markNeedsSyncingUp;
-- (void)_queueParentIDUpdate:(id)arg1;
 - (void)_refreshAppLibraryFromParent;
 - (void)_sendNotificationIfNeededWithDiffs:(unsigned long long)arg1 regather:(BOOL)arg2;
 - (id)_setOfParentIDs;
-- (id)_syncZones;
+- (id)_syncZoneRowIDs;
 - (void)_updateAppLibraryPristineStatesAfterCreationOrUpdate;
 - (void)_updateAppLibraryPristineStatesAfterMarkingDead;
 - (BOOL)_updateInDB:(id)arg1 diffs:(unsigned long long)arg2;
@@ -165,6 +169,7 @@
 - (void)_updateSharedZoneBoostingWithDiffs:(unsigned long long)arg1;
 - (void)_updateSyncUpSchedulerWithDiffs:(unsigned long long)arg1;
 - (void)applyMetadataOnFileID:(unsigned long long)arg1 liveFD:(unsigned long long)arg2 sharingOptions:(unsigned long long)arg3;
+- (id)baseSideCarRecord;
 - (id)baseStructureRecord;
 - (void)beginBounceAndSaveToDBWithBounceNumber:(unsigned long long)arg1;
 - (void)bouncePhysicalNameToRepresentableName;
@@ -193,7 +198,7 @@
 - (id)itemParentGlobalID;
 - (id)itemResolutionString;
 - (id)jobsDescription;
-- (void)learnItemID:(id)arg1 ownerKey:(id)arg2 path:(id)arg3 markLost:(BOOL)arg4;
+- (void)learnItemID:(id)arg1 ownerKey:(id)arg2 sharingOptions:(unsigned long long)arg3 path:(id)arg4 markLost:(BOOL)arg5;
 - (BOOL)learnStagedInfoFromDownloadStageID:(id)arg1 error:(id *)arg2;
 - (void)markBounceFailed;
 - (void)markBounceFinished;
@@ -203,7 +208,7 @@
 - (void)markForceRejected;
 - (void)markFound;
 - (void)markItemForgottenByServer;
-- (BOOL)markLatestRequestAcknowledgedInZone:(id)arg1;
+- (BOOL)markLatestSyncRequestAcknowledgedInZone:(id)arg1;
 - (void)markLatestSyncRequestFailedInZone:(id)arg1;
 - (void)markLatestSyncRequestRejectedInZone:(id)arg1;
 - (void)markLiveFromStageWithPath:(id)arg1;
@@ -216,11 +221,11 @@
 - (void)markNeedsOSUpgradeToSyncUpWithName:(id)arg1;
 - (void)markNeedsUploadOrSyncingUp;
 - (void)markRemovedFromFilesystemForServerEdit:(BOOL)arg1;
-- (void)markRenamedUsingServerItem:(id)arg1 toRelpath:(id)arg2 logicalName:(id)arg3 filename:(id)arg4;
+- (void)markRenamedUsingServerItem:(id)arg1 toRelpath:(id)arg2 logicalName:(id)arg3 filename:(id)arg4 forContentApplyOnly:(BOOL)arg5;
 - (void)markReserved;
 - (void)markStagedWithFileID:(unsigned long long)arg1 generationID:(unsigned int)arg2;
 - (void)markStagedWithFileID:(unsigned long long)arg1 generationID:(unsigned int)arg2 documentID:(unsigned int)arg3;
-- (unsigned long long)maskForDiffsToSyncUpForZone:(id)arg1;
+- (unsigned long long)maskForDiffsToSyncUpForZone:(id)arg1 sideCarZone:(BOOL)arg2 whenClearing:(BOOL)arg3;
 - (id)matchingJobsWhereSQLClause;
 - (unsigned long long)metadataSyncUpMask;
 - (void)moveAsideLocally;
@@ -228,15 +233,18 @@
 - (id)parentItemIDInZone;
 - (id)parentItemOnFS;
 - (void)prepareForSyncUpInZone:(id)arg1;
+- (void)prepareForSyncUpSideCarZone;
 - (void)resetAfterSyncJobsDeletion;
 - (BOOL)saveToDB;
 - (BOOL)saveToDBForServerEdit:(BOOL)arg1 keepAliases:(BOOL)arg2;
 - (void)scheduleSyncDownForOOBModifyRecordsAck;
 - (void)serializeStructuralPluginHints:(id)arg1;
 - (id)sharedAliasItemID;
+- (id)sideCarInfo;
+- (id)sideCarRecordID;
 - (BOOL)startDownloadInTask:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
-- (id)structureRecordBeingDeadInServerTruth:(BOOL)arg1 pcsChained:(BOOL)arg2 inZone:(id)arg3;
-- (id)structureRecordBeingDeadInServerTruth:(BOOL)arg1 stageID:(id)arg2 pcsChained:(BOOL)arg3;
+- (id)structureRecordBeingDeadInServerTruth:(BOOL)arg1 shouldPCSChainStatus:(unsigned char)arg2 inZone:(id)arg3;
+- (id)structureRecordBeingDeadInServerTruth:(BOOL)arg1 stageID:(id)arg2 shouldPCSChainStatus:(unsigned char)arg3;
 - (id)structureRecordID;
 - (id)structureRecordIDInZone:(id)arg1;
 - (void)triggerNotificationIfNeeded;

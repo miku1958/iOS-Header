@@ -11,6 +11,7 @@
 @protocol FCHeadlineMetadata <NSObject>
 
 @property (nonatomic, readonly) NSDate *displayDate;
+@property (nonatomic, readonly) NSString *shortExcerpt;
 @property (nonatomic, readonly) NSString *storyType;
 @property (nonatomic, readonly) NSString *title;
 

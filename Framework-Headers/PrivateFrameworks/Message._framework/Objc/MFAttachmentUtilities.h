@@ -11,7 +11,10 @@
 }
 
 + (id)_temporaryDirectoryUniqueURL;
++ (id)makeAttachmentPlaceholder:(id)arg1 fileSize:(long long)arg2 mimeType:(id)arg3 contentID:(id)arg4;
 + (id)mimeTypeForFileName:(id)arg1;
++ (id)securityScopeForFileURL:(id)arg1;
++ (BOOL)shouldCreatePlaceholderAttachmentForAttachmentWithSize:(long long)arg1;
 + (id)temporaryDirectory;
 + (id)temporaryFileURLWithExtension:(id)arg1;
 + (id)writeData:(id)arg1 toTemporaryFileURLWithFileName:(id)arg2;

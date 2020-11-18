@@ -33,6 +33,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (struct CGRect)compactModeFrameForContentModuleContainerViewController:(id)arg1;
 - (BOOL)contentModuleContainerViewController:(id)arg1 canBeginInteractionWithModule:(id)arg2;
 - (void)contentModuleContainerViewController:(id)arg1 didBeginInteractionWithModule:(id)arg2;

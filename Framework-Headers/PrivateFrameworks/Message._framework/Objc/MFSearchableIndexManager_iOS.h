@@ -12,6 +12,7 @@
 
 @interface MFSearchableIndexManager_iOS : EDSearchableIndexManager <EDSearchableIndexReasonProvider>
 {
+    struct os_unfair_lock_s _indexLock;
     EDSearchableIndex *_index;
     EDSearchableIndexPersistence *_persistence;
     EDSearchableIndexScheduler *_scheduler;
@@ -31,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (void)enableIndexingAndBeginScheduling:(BOOL)arg1;
+- (void)enableIndexingAndBeginScheduling:(BOOL)arg1 budgetConfiguration:(id)arg2;
 - (id)initWithDatabase:(id)arg1 hookResponder:(id)arg2;
 
 @end

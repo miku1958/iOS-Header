@@ -24,6 +24,7 @@
 @property (strong) NSString *searchWebQuery; // @synthesize searchWebQuery=_searchWebQuery;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)loadView;
 - (void)manageDictionaries:(id)arg1;
 - (id)manageDictionariesURL;

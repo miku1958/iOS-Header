@@ -32,7 +32,6 @@
 - (void).cxx_destruct;
 - (id)_currentAccountsByObjectIDMap;
 - (void)_fetchAccountsAndObserveChanges;
-- (id)_init;
 - (void)_postAccountChangedNotification;
 - (id)accountForAccountIdentifier:(id)arg1;
 - (id)accountForIdentifier:(id)arg1;
@@ -44,6 +43,7 @@
 - (id)deliveryAccounts;
 - (void)didBeginObserving;
 - (void)didEndObserving;
+- (id)initInternal;
 - (id)initWithRemoteConnection:(id)arg1;
 - (id)receivingAccounts;
 

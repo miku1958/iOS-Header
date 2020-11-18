@@ -35,6 +35,7 @@
 @property float minRateForAudioPlayback;
 @property (copy) NSString *multichannelAudioStrategy;
 @property (nonatomic) unsigned long long preferredVideoDecoderGPURegistryID;
+@property (nonatomic, getter=_preservesAudioSessionSampleRate, setter=_setPreservesAudioSessionSampleRate:) BOOL preservesAudioSessionSampleRate;
 @property (nonatomic) BOOL preventsDisplaySleepDuringVideoPlayback;
 @property (readonly, nonatomic) long long status;
 

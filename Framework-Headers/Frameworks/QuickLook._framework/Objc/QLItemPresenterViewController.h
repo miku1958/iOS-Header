@@ -85,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (void)isReadyForDisplayWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)loadingFailed;
+- (struct CGSize)preferredContentSize;
 - (void)previewDidAppear:(BOOL)arg1;
 - (void)previewDidDisappear:(BOOL)arg1;
 - (void)previewItemViewController:(id)arg1 didFailWithError:(id)arg2;

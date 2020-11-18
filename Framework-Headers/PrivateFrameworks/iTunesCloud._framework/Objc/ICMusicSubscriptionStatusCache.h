@@ -29,12 +29,12 @@
 - (void)_persistCachePostingGlobalNotification:(BOOL)arg1;
 - (void)_postLocalChangeNotificationWithUserInfo:(id)arg1;
 - (id)_statusChangeUserInfoForUserIdentity:(id)arg1 oldStatus:(id)arg2 newStatus:(id)arg3;
-- (void)_updateBaseCacheKey;
 - (void)dealloc;
 - (void)getCachedSubscriptionStatusResponseForRequestContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setCachedSubscriptionStatusResponse:(id)arg1 forRequestContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setCachedSubscriptionStatusResponseNeedsReloadForAllRequestContextsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setCachedSubscriptionStatusResponseNeedsReloadForRequestContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updateBaseCacheKey;
 
 @end
 

@@ -10,12 +10,13 @@
 #import <NewsCore/FCFeedTheming-Protocol.h>
 #import <NewsCore/FCSectionProviding-Protocol.h>
 #import <NewsCore/FCTagProviding-Protocol.h>
+#import <NewsCore/FCTagStocksFields-Protocol.h>
 #import <NewsCore/FCTopicProviding-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCHeadlineTemplate, FCInterestToken, FCSubscriptionButtonConfiguration, FCTagBanner, FCTextInfo, NSArray, NSData, NSDate, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBTagRecord;
-@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTopicProviding;
+@class FCAssetHandle, FCColor, FCHeadlineTemplate, FCInterestToken, FCPaywallConfiguration, FCSectionSupergroupKnobs, FCTagBanner, FCTextInfo, NSArray, NSData, NSDate, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBTagRecord;
+@protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagStocksFields, FCTopicProviding;
 
-@interface FCTag : NSObject <FCTagProviding, FCChannelProviding, FCSectionProviding, FCTopicProviding, FCFeedTheming>
+@interface FCTag : NSObject <FCTagStocksFields, FCTagProviding, FCChannelProviding, FCSectionProviding, FCTopicProviding, FCFeedTheming>
 {
     BOOL _isPublic;
     BOOL _isDeprecated;
@@ -79,7 +80,10 @@
     unsigned long long _groupingEligibility;
     NSArray *_publisherSpecifiedArticleIDs;
     NSDate *_publisherSpecifiedArticleIDsModifiedDate;
-    FCSubscriptionButtonConfiguration *_paidBundleSubscriptionButtonConfiguration;
+    FCPaywallConfiguration *_paidBundlePaywallConfiguration;
+    NSString *_supergroupConfigJson;
+    NSString *_supergroupKnobsJson;
+    FCSectionSupergroupKnobs *_supergroupKnobs;
     NSString *_pptFeedIDOverride;
     FCInterestToken *_tagInterestToken;
     NTPBFeedConfiguration *_feedConfiguration;
@@ -182,7 +186,7 @@
 @property (readonly, nonatomic) FCAssetHandle *nameImageMaskWidgetHQAssetHandle; // @synthesize nameImageMaskWidgetHQAssetHandle=_nameImageMaskWidgetHQAssetHandle;
 @property (readonly, nonatomic) FCAssetHandle *nameImageMaskWidgetLQAssetHandle; // @synthesize nameImageMaskWidgetLQAssetHandle=_nameImageMaskWidgetLQAssetHandle;
 @property (nonatomic) struct CGSize nameImageSize; // @synthesize nameImageSize=_nameImageSize;
-@property (readonly, copy, nonatomic) FCSubscriptionButtonConfiguration *paidBundleSubscriptionButtonConfiguration; // @synthesize paidBundleSubscriptionButtonConfiguration=_paidBundleSubscriptionButtonConfiguration;
+@property (readonly, copy, nonatomic) FCPaywallConfiguration *paidBundlePaywallConfiguration; // @synthesize paidBundlePaywallConfiguration=_paidBundlePaywallConfiguration;
 @property (readonly, copy, nonatomic) NSString *parentID; // @synthesize parentID=_parentID;
 @property (copy, nonatomic) NSString *pptFeedIDOverride; // @synthesize pptFeedIDOverride=_pptFeedIDOverride;
 @property (readonly, copy, nonatomic) NSString *primaryAudience; // @synthesize primaryAudience=_primaryAudience;
@@ -201,8 +205,13 @@
 @property (readonly, nonatomic) long long score; // @synthesize score=_score;
 @property (copy, nonatomic) NSArray *sectionFeedConfigurations; // @synthesize sectionFeedConfigurations=_sectionFeedConfigurations;
 @property (readonly, copy, nonatomic) NSArray *sectionIDs; // @synthesize sectionIDs=_sectionIDs;
+@property (readonly, copy, nonatomic) NSString *stocksFeedConfigJSON;
+@property (readonly, nonatomic) id<FCTagStocksFields> stocksFields;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *supergroupConfigJson; // @synthesize supergroupConfigJson=_supergroupConfigJson;
+@property (readonly, nonatomic) FCSectionSupergroupKnobs *supergroupKnobs; // @synthesize supergroupKnobs=_supergroupKnobs;
+@property (readonly, nonatomic) NSString *supergroupKnobsJson; // @synthesize supergroupKnobsJson=_supergroupKnobsJson;
 @property (readonly, nonatomic) BOOL supportsNotifications;
 @property (strong, nonatomic) FCInterestToken *tagInterestToken; // @synthesize tagInterestToken=_tagInterestToken;
 @property (readonly, nonatomic) NTPBTagRecord *tagRecord; // @synthesize tagRecord=_tagRecord;

@@ -6,24 +6,18 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaAudioStopRecording-Protocol.h>
+@class NSData;
 
-@class NSData, NSString;
-
-@interface SISchemaAudioStopRecording : PBCodable <SISchemaAudioStopRecording, NSSecureCoding>
+@interface SISchemaAudioStopRecording : PBCodable
 {
     int _endpointType;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) int endpointType; // @synthesize endpointType=_endpointType;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
-@property (readonly) Class superclass;
 
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

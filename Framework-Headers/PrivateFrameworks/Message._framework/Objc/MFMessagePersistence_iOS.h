@@ -6,15 +6,17 @@
 
 #import <EmailDaemon/EDMessagePersistence.h>
 
+#import <Message/EDMessageChangeHookResponder-Protocol.h>
 #import <Message/EFLoggable-Protocol.h>
 
-@class EDMailDropMetadataGeneratorFactory, MFMailMessageLibrary, MFMailMessageLibraryQueryTransformer, MFMessageTransformer, NSMutableDictionary, NSObject, NSString;
+@class EDMailDropMetadataGeneratorFactory, EFLazyCache, MFMailMessageLibrary, MFMailMessageLibraryQueryTransformer, MFMessageTransformer, NSMutableDictionary, NSObject, NSString;
 @protocol EFScheduler, MFMessageSummaryLoaderProvider, OS_dispatch_queue;
 
-@interface MFMessagePersistence_iOS : EDMessagePersistence <EFLoggable>
+@interface MFMessagePersistence_iOS : EDMessagePersistence <EFLoggable, EDMessageChangeHookResponder>
 {
     struct os_unfair_lock_s _summaryLock;
     NSMutableDictionary *_summaryLoaders;
+    EFLazyCache *_obsoleteMessageIDHeaderHashToDatabaseIDMap;
     EDMailDropMetadataGeneratorFactory *_maildropContentItemGeneratorFactory;
     id<MFMessageSummaryLoaderProvider> _summaryLoaderProvider;
     MFMailMessageLibrary *_library;
@@ -43,17 +45,19 @@
 - (unsigned long long)_countOfMessagesMatchingCriteria:(id)arg1 includingDuplicates:(BOOL)arg2;
 - (void)_iterateMessagesMatchingQuery:(id)arg1 cancelationToken:(id)arg2 resultHandler:(id)arg3 monitor:(id)arg4;
 - (id)_requestSummaryForLibraryMessage:(id)arg1;
+- (id)cachedDatabaseIDsDictionaryForMessageIDHashes:(id)arg1;
 - (long long)countOfMessagesMatchingQuery:(id)arg1;
 - (long long)countOfMessagesWithMessageIDHeaderHash:(id)arg1 matchingQuery:(id)arg2;
 - (id)enabledAccountMailboxesExpression;
 - (id)groupedMessagesCountByMailboxMatchingQuery:(unsigned long long)arg1 variable:(id)arg2;
-- (id)initWithMailboxPersistence:(id)arg1 database:(id)arg2 library:(id)arg3;
+- (id)initWithMailboxPersistence:(id)arg1 database:(id)arg2 hookRegistry:(id)arg3 library:(id)arg4;
 - (void)iterateMessagesMatchingQuery:(id)arg1 batchSize:(long long)arg2 firstBatchSize:(long long)arg3 limit:(long long)arg4 cancelationToken:(id)arg5 handler:(CDUnknownBlockType)arg6;
 - (void)iteratePersistedMessagesMatchingQuery:(id)arg1 limit:(long long)arg2 cancelationToken:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)libraryMessageForMessageObjectID:(id)arg1;
 - (id)messagesForPersistedMessages:(id)arg1 mailboxScope:(id)arg2;
 - (id)persistedMessageForOutgoingMessage:(id)arg1 isDraft:(BOOL)arg2;
 - (id)persistedMessagesForDatabaseIDs:(id)arg1 requireProtectedData:(BOOL)arg2 temporarilyUnavailableDatabaseIDs:(id *)arg3;
+- (void)persistenceDidChangeMessageIDHeaderHash:(id)arg1 oldConversationID:(long long)arg2 message:(id)arg3 generationWindow:(id)arg4;
 - (id)requestContentForMessageObjectID:(id)arg1 requestID:(unsigned long long)arg2 options:(id)arg3 delegate:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)requestSummaryForMessageObjectID:(id)arg1;
 

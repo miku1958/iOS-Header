@@ -14,18 +14,20 @@
 #import <SafariServices/_SFDialogViewControllerPresenting-Protocol.h>
 #import <SafariServices/_SFWebViewDelegate-Protocol.h>
 #import <SafariServices/_WKInputDelegate-Protocol.h>
+#import <SafariServices/_WKWebAuthenticationPanelDelegate-Protocol.h>
 
-@class NSString, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialogController, _SFFormAutoFillController;
-@protocol SFWebViewControllerDelegate;
+@class NSString, WKWebView, WKWebViewConfiguration, _SFAuthenticationContext, _SFDialog, _SFDialogController, _SFFormAutoFillController;
+@protocol SFWebViewControllerDelegate, _SFAuthenticatorDialog;
 
 __attribute__((visibility("hidden")))
-@interface SFWebViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFWebViewDelegate, _WKInputDelegate, _SFDialogPresenting>
+@interface SFWebViewController : UIViewController <SFFormAutoFillControllerDelegate, WKNavigationDelegatePrivate, WKUIDelegatePrivate, _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFWebViewDelegate, _WKInputDelegate, _WKWebAuthenticationPanelDelegate, _SFDialogPresenting>
 {
     _SFFormAutoFillController *_autoFillController;
     BOOL _didFirstLayout;
     BOOL _didFinishDocumentLoad;
     BOOL _shouldSuppressDialogsThatBlockWebProcess;
     NSString *_domainWhereUserDeclinedAutomaticStrongPassword;
+    _SFDialog<_SFAuthenticatorDialog> *_authenticatorDialog;
     BOOL _loading;
     BOOL _didFirstVisuallyNonEmptyLayout;
     BOOL _hasFocusedInputFieldOnCurrentPage;
@@ -80,6 +82,7 @@ __attribute__((visibility("hidden")))
 - (void)_webView:(id)arg1 requestGeolocationAuthorizationForURL:(id)arg2 frame:(id)arg3 decisionHandler:(CDUnknownBlockType)arg4;
 - (void)_webView:(id)arg1 requestStorageAccessPanelForDomain:(id)arg2 underCurrentDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_webView:(id)arg1 requestUserMediaAuthorizationForDevices:(unsigned long long)arg2 url:(id)arg3 mainFrameURL:(id)arg4 decisionHandler:(CDUnknownBlockType)arg5;
+- (void)_webView:(id)arg1 runWebAuthenticationPanel:(id)arg2 initiatedByFrame:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (BOOL)_webView:(id)arg1 shouldIncludeAppLinkActionsForElement:(id)arg2;
 - (void)_webView:(id)arg1 willPerformClientRedirectToURL:(id)arg2 delay:(double)arg3;
 - (void)_webView:(id)arg1 willStartInputSession:(id)arg2;
@@ -105,6 +108,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithWebViewConfiguration:(id)arg1;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)panel:(id)arg1 dismissWebAuthenticationPanelWithResult:(long long)arg2;
+- (void)panel:(id)arg1 updateWebAuthenticationPanel:(long long)arg2;
 - (void)presentDialog:(id)arg1 sender:(id)arg2;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)sfWebView:(id)arg1 didStartDownload:(id)arg2;

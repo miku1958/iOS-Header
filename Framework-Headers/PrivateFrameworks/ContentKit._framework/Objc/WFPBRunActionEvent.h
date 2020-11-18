@@ -13,7 +13,7 @@
 __attribute__((visibility("hidden")))
 @interface WFPBRunActionEvent : PBCodable <NSCopying>
 {
-    NSString *_actionName;
+    NSString *_actionIdentifier;
     NSString *_key;
     NSString *_runSource;
     int _source;
@@ -24,9 +24,9 @@ __attribute__((visibility("hidden")))
     } _has;
 }
 
-@property (strong, nonatomic) NSString *actionName; // @synthesize actionName=_actionName;
+@property (strong, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
 @property (nonatomic) BOOL completed; // @synthesize completed=_completed;
-@property (readonly, nonatomic) BOOL hasActionName;
+@property (readonly, nonatomic) BOOL hasActionIdentifier;
 @property (nonatomic) BOOL hasCompleted;
 @property (readonly, nonatomic) BOOL hasKey;
 @property (readonly, nonatomic) BOOL hasRunSource;

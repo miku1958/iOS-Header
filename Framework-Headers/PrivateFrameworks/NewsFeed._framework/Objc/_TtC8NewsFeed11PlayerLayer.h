@@ -12,14 +12,15 @@
 {
     MISSING_TYPE *stillImageLayer;
     MISSING_TYPE *playerLayer;
-    MISSING_TYPE *loopBehavior;
     MISSING_TYPE *looper;
     MISSING_TYPE *readyToDisplayObservation;
+    MISSING_TYPE *statusObservation;
     MISSING_TYPE *nonAnimatingDelegate;
 }
 
 @property (nonatomic, readonly) AVPlayerLayer *playerLayer; // @synthesize playerLayer;
 
++ (id)defaultActionForKey:(id)arg1;
 - (void).cxx_destruct;
 - (void)applicationDidEnterBackground;
 - (void)applicationWillEnterForeground;

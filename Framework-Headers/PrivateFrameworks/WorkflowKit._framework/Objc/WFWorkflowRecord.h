@@ -35,6 +35,7 @@
     NSString *_lastMigratedClientVersion;
     long long _lastSyncedHash;
     NSString *_lastSavedOnDeviceName;
+    unsigned long long _estimatedSize;
     NSSet *_accessResourcePerWorkflowStates;
     long long _remoteQuarantineStatus;
     NSNumber *_location;
@@ -48,6 +49,7 @@
 @property (nonatomic) unsigned long long cachedSyncHash; // @synthesize cachedSyncHash=_cachedSyncHash;
 @property (readonly, nonatomic, getter=isConflictOfOtherWorkflow) BOOL conflictOfOtherWorkflow; // @synthesize conflictOfOtherWorkflow=_conflictOfOtherWorkflow;
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
+@property (readonly, nonatomic) unsigned long long estimatedSize; // @synthesize estimatedSize=_estimatedSize;
 @property (copy, nonatomic) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
 @property (nonatomic) BOOL hiddenFromLibraryAndSync; // @synthesize hiddenFromLibraryAndSync=_hiddenFromLibraryAndSync;
 @property (nonatomic) BOOL hiddenInComplication; // @synthesize hiddenInComplication=_hiddenInComplication;

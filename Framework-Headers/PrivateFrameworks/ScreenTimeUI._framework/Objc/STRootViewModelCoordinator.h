@@ -26,7 +26,7 @@
     NSNumber *_userDSID;
     NSString *_deviceIdentifier;
     NSNumber *_usageReportType;
-    long long _usageHistoryType;
+    long long _usageContext;
     NSString *_userName;
 }
 
@@ -44,8 +44,8 @@
 @property (readonly) STAdminPersistenceController *persistenceController; // @synthesize persistenceController=_persistenceController;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<STTimeAllowancesViewModelCoordinator> *timeAllowancesCoordinator; // @synthesize timeAllowancesCoordinator=_timeAllowancesCoordinator;
+@property (readonly) long long usageContext; // @synthesize usageContext=_usageContext;
 @property (readonly) NSObject<STUsageDetailsViewModelCoordinator> *usageDetailsCoordinator; // @synthesize usageDetailsCoordinator=_usageDetailsCoordinator;
-@property (readonly) long long usageHistoryType; // @synthesize usageHistoryType=_usageHistoryType;
 @property (readonly, copy) NSNumber *usageReportType; // @synthesize usageReportType=_usageReportType;
 @property (copy, nonatomic) NSNumber *userDSID; // @synthesize userDSID=_userDSID;
 @property (copy, nonatomic) NSString *userName; // @synthesize userName=_userName;
@@ -58,17 +58,19 @@
 - (void)_passcodeSessionHasEnded:(id)arg1;
 - (void)_registerForPersistentStoreNotifications;
 - (void)_registerForWillResignActiveNotifications;
+- (void)_setPIN:(id)arg1 recoveryAltDSID:(id)arg2 shouldSetRecoveryAppleID:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)coordinatorForChild:(id)arg1 deviceIdentifier:(id)arg2 usageReportType:(id)arg3;
-- (void)enableScreenTimeWithPIN:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)enableScreenTimeWithPIN:(id)arg1 recoveryAltDSID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)groupResultsControllerDidChangeContents:(id)arg1;
 - (id)init;
-- (id)initWithUserDSID:(id)arg1 deviceIdentifier:(id)arg2 usageReportType:(id)arg3 usageHistoryType:(long long)arg4;
+- (id)initWithUserDSID:(id)arg1 deviceIdentifier:(id)arg2 usageReportType:(id)arg3 usageContext:(long long)arg4;
 - (void)loadViewModelRightNow;
 - (void)loadViewModelWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)organizationIdentifierForManagement;
 - (id)organizationIdentifierForUsage;
 - (void)saveViewModel:(id)arg1;
 - (void)setPIN:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)setPIN:(id)arg1 recoveryAltDSID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setScreenTimeEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setScreenTimeSyncingEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setShareWebUsageEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

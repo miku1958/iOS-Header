@@ -22,17 +22,23 @@
 @property (strong) SPUISearchViewController *searchViewController; // @synthesize searchViewController=_searchViewController;
 @property (strong) SPUIPPTTypingHelper *typingHelper; // @synthesize typingHelper=_typingHelper;
 
++ (id)indexPathsOfRowsForSectionTitle:(id)arg1 needsCard:(BOOL)arg2 forTableModel:(id)arg3;
 - (void).cxx_destruct;
 - (BOOL)canPerformTest:(id)arg1;
 - (void)finishLaunchTestIfNeeded;
 - (id)initWithSearchViewController:(id)arg1;
 - (void)performCardScrollTest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performPushPopCardsOnTest:(id)arg1 options:(id)arg2 needsCard:(BOOL)arg3 sectionHeader:(id)arg4 atDesk:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
 - (void)performTest:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)scrollForSectionHeader:(id)arg1 forSearchString:(id)arg2 testName:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scrollMainResultsForTest:(id)arg1 forQuery:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)searchForString:(id)arg1 testName:(id)arg2 event:(unsigned long long)arg3 sourcePreference:(long long)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)searchManyStringsForTestName:(id)arg1 options:(id)arg2 event:(unsigned long long)arg3 sourcePreference:(long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchForString:(id)arg1 testName:(id)arg2 event:(unsigned long long)arg3 sourcePreference:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchManyStringsForTestName:(id)arg1 options:(id)arg2 event:(unsigned long long)arg3 sourcePreference:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchString:(id)arg1 andOpenResultsUnderSection:(id)arg2 testName:(id)arg3 needsCard:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchStrings:(id)arg1 andOpenResultsUnderSection:(id)arg2 testName:(id)arg3 needsCard:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)searchViewFinishedGettingAllResultsAndFinishedDrawsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setDefaultsForSearchVC;
+- (void)tapIndexsPathsAndPopViewControllersAfter2Seconds:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

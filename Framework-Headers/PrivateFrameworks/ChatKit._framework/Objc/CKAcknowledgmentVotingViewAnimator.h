@@ -24,7 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithCollectionView:(id)arg1 animatorModelItems:(id)arg2 acknowledgmentTypes:(id)arg3;
-- (void)startAnimation;
+- (void)startAnimationWithDelay:(double)arg1;
 
 @end
 

@@ -109,6 +109,7 @@
 @property (copy, nonatomic) NSString *verificationToken; // @synthesize verificationToken=_verificationToken;
 
 + (id)_ClassCreateSecureBackupConcurrentConnection;
++ (void)asyncRequestEscrowRecordUpdate;
 + (unsigned int)daemonPasscodeRequestOpinion:(id *)arg1;
 + (unsigned int)needPasscodeForHSA2EscrowRecordUpdate:(id *)arg1;
 + (BOOL)supportsSecureCoding;
@@ -143,6 +144,7 @@
 - (void)getAccountInfoWithInfo:(id)arg1 completionBlockWithResults:(CDUnknownBlockType)arg2;
 - (id)getAccountInfoWithInfo:(id)arg1 results:(id *)arg2;
 - (void)getAccountInfoWithResults:(CDUnknownBlockType)arg1;
+- (void)getCertificates:(CDUnknownBlockType)arg1;
 - (void)getCountrySMSCodesWithInfo:(id)arg1 completionBlockWithResults:(CDUnknownBlockType)arg2;
 - (void)getCountrySMSCodesWithResults:(CDUnknownBlockType)arg1;
 - (id)init;

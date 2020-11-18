@@ -6,12 +6,9 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaViewContainer-Protocol.h>
-
 @class NSData, NSString;
 
-@interface SISchemaViewContainer : PBCodable <SISchemaViewContainer, NSSecureCoding>
+@interface SISchemaViewContainer : PBCodable
 {
     NSString *_viewID;
     NSString *_snippetClass;
@@ -19,18 +16,15 @@
     NSString *_dialogPhase;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *dialogIdentifier; // @synthesize dialogIdentifier=_dialogIdentifier;
 @property (copy, nonatomic) NSString *dialogPhase; // @synthesize dialogPhase=_dialogPhase;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *snippetClass; // @synthesize snippetClass=_snippetClass;
-@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *viewID; // @synthesize viewID=_viewID;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

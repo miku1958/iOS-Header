@@ -6,32 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class DMFApplicationPolicyMonitor, DMFCategoryPolicyMonitor, NSArray, NSDictionary, NSUUID;
+@class DMFApplicationPolicyMonitor, NSArray, NSDictionary, NSUUID;
 
 @interface DMFCommunicationPolicyMonitor : NSObject
 {
     BOOL _didFetchInitialPolicies;
     NSDictionary *_policiesByBundleIdentifier;
     DMFApplicationPolicyMonitor *_applicationPolicyMonitor;
-    DMFCategoryPolicyMonitor *_categoryPolicyMonitor;
     NSArray *_policyTypes;
     NSUUID *_identifier;
 }
 
 @property (readonly, nonatomic) DMFApplicationPolicyMonitor *applicationPolicyMonitor; // @synthesize applicationPolicyMonitor=_applicationPolicyMonitor;
-@property (readonly, nonatomic) DMFCategoryPolicyMonitor *categoryPolicyMonitor; // @synthesize categoryPolicyMonitor=_categoryPolicyMonitor;
 @property (nonatomic) BOOL didFetchInitialPolicies; // @synthesize didFetchInitialPolicies=_didFetchInitialPolicies;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSDictionary *policiesByBundleIdentifier; // @synthesize policiesByBundleIdentifier=_policiesByBundleIdentifier;
 @property (readonly, copy, nonatomic) NSArray *policyTypes; // @synthesize policyTypes=_policyTypes;
 
-+ (id)_calculateCommunicationPoliciesWithApplicationPoliciesByBundleIdentifier:(id)arg1 socialNetworkingCategoryPolicy:(long long)arg2;
-+ (id)_communicationBundleIdentifiers;
++ (id)_calculateCommunicationPoliciesWithApplicationPoliciesByBundleIdentifier:(id)arg1 categoryEffectivePolicy:(id)arg2;
++ (id)_categoryForCommunicationBundleIdentifier:(id)arg1;
 + (id)_equivalentCommunicationBundleIdentifiersForCommunicationBundleIdentifier:(id)arg1;
 + (id)_transformEffectivePoliciesIntoCommunicationPolicies:(id)arg1;
++ (id)communicationBundleIdentifiers;
++ (unsigned long long)communicationPolicyForApplicationPolicy:(id)arg1 downtimeEnforced:(BOOL)arg2 communicationLimitsEnabled:(BOOL)arg3;
 - (void).cxx_destruct;
 - (void)_updatePoliciesByBundleIdentifier;
-- (void)_updateWithPoliciesByBundleIdentifier:(id)arg1 policiesByCategoryIdentifier:(id)arg2;
+- (void)_updateWithPoliciesByBundleIdentifier:(id)arg1 categoryEffectivePolicy:(id)arg2;
 - (void)dealloc;
 - (id)init;
 - (id)initWithPolicyChangeHandler:(CDUnknownBlockType)arg1;

@@ -66,6 +66,7 @@
 + (id)_sourceViewTransitionAnimationSettingsForPresenting:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)_backButtonPressed:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_controlDidDismiss;
 - (void)_createControlContainerViewWithSourceRect:(struct CGRect)arg1;
 - (id)_dismissDetailsViewControllerAnimated:(BOOL)arg1 dismissControl:(BOOL)arg2;

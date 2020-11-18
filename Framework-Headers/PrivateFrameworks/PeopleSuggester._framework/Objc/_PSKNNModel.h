@@ -18,8 +18,18 @@
     NSArray *_filterBundleIds;
     _CDInteractionCache *_messageInteractionCache;
     _CDInteractionCache *_shareInteractionCache;
+    unsigned long long __PSKnnTopKShares;
+    unsigned long long __PSKnnMessagesZkwTopNFilter;
+    unsigned long long __PSKnnModelRecencyMarginToPromoteShares;
+    unsigned long long __PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId;
+    unsigned long long __PSKnnModelRecencyMarginToRetainShares;
 }
 
+@property (nonatomic) unsigned long long _PSKnnMessagesZkwTopNFilter; // @synthesize _PSKnnMessagesZkwTopNFilter=__PSKnnMessagesZkwTopNFilter;
+@property (nonatomic) unsigned long long _PSKnnModelRecencyMarginToPromoteShares; // @synthesize _PSKnnModelRecencyMarginToPromoteShares=__PSKnnModelRecencyMarginToPromoteShares;
+@property (nonatomic) unsigned long long _PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId; // @synthesize _PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId=__PSKnnModelRecencyMarginToPromoteSharesMatchingBundleId;
+@property (nonatomic) unsigned long long _PSKnnModelRecencyMarginToRetainShares; // @synthesize _PSKnnModelRecencyMarginToRetainShares=__PSKnnModelRecencyMarginToRetainShares;
+@property (nonatomic) unsigned long long _PSKnnTopKShares; // @synthesize _PSKnnTopKShares=__PSKnnTopKShares;
 @property (readonly, nonatomic) _PSContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property (readonly, nonatomic) NSArray *filterBundleIds; // @synthesize filterBundleIds=_filterBundleIds;
 @property (readonly, nonatomic) _CDInteractionStore *interactionStore; // @synthesize interactionStore=_interactionStore;
@@ -60,6 +70,7 @@
 - (long long)suggestionExists:(id)arg1 withValue:(id)arg2 inArray:(id)arg3;
 - (id)suggestionProxiesWithPredictionContext:(id)arg1;
 - (id)targetBundleIdsForFilterBundlesIds:(id)arg1;
+- (void)updateModelProperities:(id)arg1;
 
 @end
 

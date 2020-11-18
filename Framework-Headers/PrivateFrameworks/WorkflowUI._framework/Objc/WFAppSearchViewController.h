@@ -19,20 +19,23 @@
     id<WFAppSearchViewControllerDelegate> _delegate;
     UITableView *_tableView;
     UISearchBar *_searchBar;
+    long long _appSearchType;
+    NSArray *_omittedAppBundleIDs;
     NSArray *_apps;
     NSMutableOrderedSet *_selectedApps;
     NSMutableDictionary *_cachedAppIconForBundleId;
     UIImage *_placeholderImage;
 }
 
-@property (nonatomic) BOOL allowMultipleSelection; // @synthesize allowMultipleSelection=_allowMultipleSelection;
-@property (readonly, nonatomic) NSArray *apps; // @synthesize apps=_apps;
+@property (readonly, nonatomic) BOOL allowMultipleSelection; // @synthesize allowMultipleSelection=_allowMultipleSelection;
+@property (readonly, nonatomic) long long appSearchType; // @synthesize appSearchType=_appSearchType;
+@property (copy, nonatomic) NSArray *apps; // @synthesize apps=_apps;
 @property (strong, nonatomic) NSMutableDictionary *cachedAppIconForBundleId; // @synthesize cachedAppIconForBundleId=_cachedAppIconForBundleId;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFAppSearchViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) NSArray *filteredApps;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *omittedAppBundleIDs; // @synthesize omittedAppBundleIDs=_omittedAppBundleIDs;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property (weak, nonatomic) UISearchBar *searchBar; // @synthesize searchBar=_searchBar;
 @property (strong, nonatomic) NSMutableOrderedSet *selectedApps; // @synthesize selectedApps=_selectedApps;
@@ -45,10 +48,12 @@
 - (void)cancel;
 - (void)dealloc;
 - (void)done;
+- (id)filteredApps;
 - (id)init;
 - (id)initWithAppSearchType:(long long)arg1;
 - (id)initWithAppSearchType:(long long)arg1 allowMultipleSelection:(BOOL)arg2 selectedApps:(id)arg3;
 - (id)initWithAppSearchType:(long long)arg1 omittedAppBundleIDs:(id)arg2 allowMultipleSelection:(BOOL)arg3 selectedApps:(id)arg4;
+- (void)loadApps;
 - (void)loadView;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
 - (void)searchBarSearchButtonClicked:(id)arg1;

@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) PUPhotoEditToolPickerSpec *toolPickerSpec; // @synthesize toolPickerSpec=_toolPickerSpec;
 
 - (void).cxx_destruct;
-- (BOOL)_canShowWhileLocked;
 - (void)createSelectionIndicatorView;
 - (id)initWithLayoutDirection:(long long)arg1 style:(long long)arg2;
 - (void)loadView;

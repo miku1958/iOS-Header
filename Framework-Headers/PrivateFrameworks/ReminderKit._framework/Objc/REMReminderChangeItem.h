@@ -105,7 +105,7 @@
 - (void)insertRecurrenceRule:(id)arg1 afterRecurrenceRule:(id)arg2;
 - (void)insertRecurrenceRule:(id)arg1 beforeRecurrenceRule:(id)arg2;
 - (BOOL)isSubtask;
-- (double)nextRecurrentAdvanceAmountAfter:(id)arg1;
+- (double)nextRecurrentAdvanceAmountForDateComponents:(id)arg1 afterDate:(id)arg2;
 - (id)nextRecurrentDueDateComponentsAfter:(id)arg1;
 - (void)rejectForSiriFoundInApps;
 - (void)removeAlarm:(id)arg1;

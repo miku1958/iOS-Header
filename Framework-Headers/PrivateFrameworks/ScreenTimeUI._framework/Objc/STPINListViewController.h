@@ -38,7 +38,7 @@
 - (void)showPINSheet:(id)arg1;
 - (void)showPINSheet:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (BOOL)validatePIN:(id)arg1;
+- (BOOL)validatePIN:(id)arg1 forPINController:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 
 @end

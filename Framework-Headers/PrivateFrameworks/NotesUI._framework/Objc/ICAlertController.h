@@ -22,6 +22,7 @@
 @property (copy, nonatomic) CDUnknownBlockType dissmissWithoutActionBlock; // @synthesize dissmissWithoutActionBlock=_dissmissWithoutActionBlock;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)dealloc;
 - (void)dismissWhenPossible;
 

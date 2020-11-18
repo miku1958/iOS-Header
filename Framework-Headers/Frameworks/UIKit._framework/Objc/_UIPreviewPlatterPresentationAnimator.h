@@ -8,15 +8,12 @@
 
 #import <UIKitCore/_UIClickPresentationTransition-Protocol.h>
 
-@class NSArray, NSString, UITargetedPreview, UIViewFloatAnimatableProperty, UIViewPropertyAnimator, _UIContextMenuAnimator, _UIPortalView, _UIPreviewPlatterPresentationController;
+@class NSArray, NSString, UITargetedPreview, UIViewFloatAnimatableProperty, UIViewPropertyAnimator, _UIContextMenuAnimator, _UIContextMenuLayoutArbiterOutput, _UIPortalView, _UIPreviewPlatterPresentationController;
 @protocol _UIPreviewPlatterPresentationAnimatorDelegate;
 
 __attribute__((visibility("hidden")))
 @interface _UIPreviewPlatterPresentationAnimator : NSObject <_UIClickPresentationTransition>
 {
-    struct CGRect _expandedPlatterFrame;
-    struct CGRect _expandedActionsFrame;
-    CDStruct_6f807b77 _layoutAnchor;
     BOOL _isDismissTransition;
     BOOL _reparentsInDestinationContainer;
     UITargetedPreview *_sourcePreview;
@@ -32,6 +29,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _reparentingAnimationBlock;
     CDUnknownBlockType _backgroundAnimationBlock;
     CDUnknownBlockType _accessoryAnimationBlock;
+    _UIContextMenuLayoutArbiterOutput *_expandedLayout;
     struct UIEdgeInsets _preferredBackgroundInsets;
 }
 
@@ -45,6 +43,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<_UIPreviewPlatterPresentationAnimatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) unsigned long long dismissalStyle; // @synthesize dismissalStyle=_dismissalStyle;
+@property (strong, nonatomic) _UIContextMenuLayoutArbiterOutput *expandedLayout; // @synthesize expandedLayout=_expandedLayout;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isDismissTransition; // @synthesize isDismissTransition=_isDismissTransition;
 @property (strong, nonatomic) NSArray *preferredBackgroundEffects; // @synthesize preferredBackgroundEffects=_preferredBackgroundEffects;

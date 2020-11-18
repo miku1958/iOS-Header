@@ -6,17 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class AMSFinanceAuthenticateResponse, AMSPaymentSheetRequest;
+#import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
+
+@class AMSFinanceAuthenticateResponse, AMSPaymentSheetRequest, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSFinancePaymentSheetResponse : NSObject
+@interface AMSFinancePaymentSheetResponse : NSObject <AMSFinancePerformable>
 {
     AMSPaymentSheetRequest *_paymentSheetRequest;
     AMSFinanceAuthenticateResponse *_authenticateResponse;
 }
 
 @property (readonly, nonatomic) AMSFinanceAuthenticateResponse *authenticateResponse; // @synthesize authenticateResponse=_authenticateResponse;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) AMSPaymentSheetRequest *paymentSheetRequest; // @synthesize paymentSheetRequest=_paymentSheetRequest;
+@property (readonly) Class superclass;
 
 + (id)_attributedStringForSalableInfoStringArray:(id)arg1 account:(id)arg2 shouldUppercase:(BOOL)arg3;
 + (id)_attributedStringForStringArray:(id)arg1 useGrey:(BOOL)arg2 account:(id)arg3 shouldUppercase:(BOOL)arg4;

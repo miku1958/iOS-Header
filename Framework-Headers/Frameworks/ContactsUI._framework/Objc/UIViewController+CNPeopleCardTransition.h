@@ -17,6 +17,7 @@
 - (BOOL)_ab_isInPopoverRecursive:(BOOL)arg1;
 - (id)_cardViewControllerTransitioning;
 - (void)cnui_addChildViewController:(id)arg1;
+- (id)cnui_appropriatePresentationController;
 - (void)set_cardViewControllerTransitioning:(id)arg1;
 @end
 

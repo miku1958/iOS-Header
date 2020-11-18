@@ -35,6 +35,7 @@
 
 + (id)instantiateViewController;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)handleCancelButton:(id)arg1;
 - (void)handlePairManuallyButton:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;

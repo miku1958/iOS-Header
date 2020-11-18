@@ -23,10 +23,12 @@
 - (void)kvsPerformanceCounters:(void (^)(NSDictionary *))arg1;
 - (void)myPeerInfo:(void (^)(NSData *, NSError *))arg1;
 - (void)rateLimitingPerformanceCounters:(void (^)(NSDictionary *))arg1;
+- (void)rpcTriggerBackup:(NSArray *)arg1 complete:(void (^)(NSError *))arg2;
+- (void)rpcTriggerRingUpdate:(void (^)(NSError *))arg1;
+- (void)rpcTriggerSync:(NSArray *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)setWatchdogParmeters:(NSDictionary *)arg1 complete:(void (^)(NSError *))arg2;
 - (void)stashAccountCredential:(NSData *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)stashedCredentialPublicKey:(void (^)(NSData *, NSError *))arg1;
-- (void)triggerSync:(NSArray *)arg1 complete:(void (^)(BOOL, NSError *))arg2;
 - (void)userPublicKey:(void (^)(BOOL, NSData *, NSError *))arg1;
 - (void)validatedStashedAccountCredential:(void (^)(NSData *, NSError *))arg1;
 @end

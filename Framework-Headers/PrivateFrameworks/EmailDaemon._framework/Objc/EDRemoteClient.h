@@ -9,11 +9,12 @@
 #import <EmailDaemon/EFLoggable-Protocol.h>
 #import <EmailDaemon/EMDaemonInterfaceXPC-Protocol.h>
 
-@class EDAccountRepository, EDActivityRegistry, EDClientState, EDDaemonInterfaceFactory, EDFetchController, EDInteractionLogger, EDMailboxRepository, EDMessageRepository, EDOutgoingMessageRepository, EDSearchableIndex, NSString, NSXPCConnection;
+@class EDAccountRepository, EDActivityRegistry, EDClientResumer, EDClientState, EDDaemonInterfaceFactory, EDFetchController, EDInteractionLogger, EDMailboxRepository, EDMessageRepository, EDOutgoingMessageRepository, EDSearchableIndex, NSString, NSXPCConnection;
 @protocol EMVIPManagerInterface;
 
 @interface EDRemoteClient : NSObject <EFLoggable, EMDaemonInterfaceXPC>
 {
+    EDClientResumer *_clientResumer;
     struct os_unfair_lock_s _lock;
     EDAccountRepository *_accountRepository;
     EDMailboxRepository *_mailboxRepository;
@@ -32,7 +33,7 @@
 @property (readonly, nonatomic) EDAccountRepository *accountRepository; // @synthesize accountRepository=_accountRepository;
 @property (readonly, nonatomic) EDActivityRegistry *activityRegistry; // @synthesize activityRegistry=_activityRegistry;
 @property (readonly, nonatomic) NSXPCConnection *clientConnection; // @synthesize clientConnection=_clientConnection;
-@property (strong, nonatomic) EDClientState *clientState; // @synthesize clientState=_clientState;
+@property (readonly, nonatomic) EDClientState *clientState; // @synthesize clientState=_clientState;
 @property (readonly, nonatomic) EDDaemonInterfaceFactory *daemonInterfaceFactory; // @synthesize daemonInterfaceFactory=_daemonInterfaceFactory;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -49,6 +50,7 @@
 + (id)exportedInterface;
 + (id)log;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (void)debugStatusWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getAccountRepositoryInterface:(CDUnknownBlockType)arg1;
 - (void)getActivityRegistryInterface:(CDUnknownBlockType)arg1;
@@ -62,7 +64,8 @@
 - (void)getVIPManagerInterface:(CDUnknownBlockType)arg1;
 - (id)initWithConnection:(id)arg1 daemonInterfaceFactory:(id)arg2;
 - (void)launchForEarlyRecovery:(CDUnknownBlockType)arg1;
-- (void)tearDown;
+- (void)setAllowsBackgroundResume:(BOOL)arg1;
+- (void)test_tearDown;
 
 @end
 

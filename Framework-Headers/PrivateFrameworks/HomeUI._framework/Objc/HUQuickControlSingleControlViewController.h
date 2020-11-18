@@ -45,6 +45,7 @@
 + (Class)controlItemClass;
 + (id)controlItemPredicate;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_setModelValue:(id)arg1 writeValue:(BOOL)arg2;
 - (void)_updateControlTransform;
 - (void)_updateControlViewReachabilityState;

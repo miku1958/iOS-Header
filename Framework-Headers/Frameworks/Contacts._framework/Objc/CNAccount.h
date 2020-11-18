@@ -26,9 +26,12 @@
 + (id)localAccount;
 + (id)makeIdentifier;
 + (id)makeIdentifierString;
++ (id)os_log;
 + (id)predicateForAccountForContainerWithIdentifier:(id)arg1;
 + (id)predicateForAccountWithExternalIdentifier:(id)arg1;
 + (id)predicateForAccountsWithIdentifiers:(id)arg1;
++ (BOOL)requestAccountSyncWithDefaultOptions;
++ (BOOL)requestAccountSyncWithOptions:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

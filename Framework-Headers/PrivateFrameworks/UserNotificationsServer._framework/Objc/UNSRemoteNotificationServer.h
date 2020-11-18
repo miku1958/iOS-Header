@@ -25,6 +25,7 @@
     NSObject<OS_dispatch_queue> *_apsQueue;
     NSMutableSet *_cloudKitBundleIdentifiers;
     NSMutableSet *_contentAvailableBundleIdentifiers;
+    NSMutableSet *_quietServiceExtensionBundleIdentifiers;
     NSMutableSet *_foregroundBundleIdentifiers;
     NSMutableSet *_installedBundleIdentifiers;
     NSMutableSet *_restrictedBundleIdentifiers;
@@ -50,6 +51,7 @@
 - (id)_initWithSettingsService:(id)arg1 notificationRepository:(id)arg2 attachmentsService:(id)arg3 categoryRepository:(id)arg4 pushRegistrationRepository:(id)arg5 platform:(id)arg6 queue:(id)arg7 apsQueue:(id)arg8 duetActivityScheduler:(id)arg9 serviceExtensionManager:(id)arg10;
 - (id)_portNameForEnvironmentName:(id)arg1;
 - (id)_queue_allTopicsForApplication:(id)arg1;
+- (BOOL)_queue_allowServiceExtensionFilteringForMessage:(id)arg1;
 - (void)_queue_applicationDidBecomeBackground:(id)arg1;
 - (void)_queue_applicationDidBecomeForeground:(id)arg1;
 - (void)_queue_applicationDidLaunch:(id)arg1;
@@ -62,6 +64,7 @@
 - (void)_queue_connection:(id)arg1 didReceivePublicToken:(id)arg2;
 - (void)_queue_connection:(id)arg1 didReceiveToken:(id)arg2 forTopic:(id)arg3 identifier:(id)arg4;
 - (void)_queue_deliverNotificationRequest:(id)arg1 bundleIdentifier:(id)arg2 message:(id)arg3 enforcePushType:(BOOL)arg4;
+- (void)_queue_deliverNotificationRequest:(id)arg1 bundleIdentifier:(id)arg2 message:(id)arg3 enforcePushType:(BOOL)arg4 extensionStart:(id)arg5 extensionEnd:(id)arg6;
 - (void)_queue_didChangeApplicationState:(unsigned int)arg1 forBundleIdentifier:(id)arg2;
 - (void)_queue_didCompleteInitialization;
 - (void)_queue_didReceiveIncomingMessage:(id)arg1;

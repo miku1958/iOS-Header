@@ -67,6 +67,7 @@
 - (id)assetHandleForURL:(id)arg1 prefetchedFileURL:(id)arg2 importMethod:(long long)arg3 lifetimeHint:(long long)arg4;
 - (void)cacheCoordinator:(id)arg1 flushKeysWithWriteLock:(id)arg2;
 - (unsigned long long)cacheCoordinatorCurrentSizeWithReadLock:(id)arg1;
+- (void)d_resetAssetHandle:(id)arg1;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithName:(id)arg1 directory:(id)arg2 keyManager:(id)arg3 networkBehaviorMonitor:(id)arg4;

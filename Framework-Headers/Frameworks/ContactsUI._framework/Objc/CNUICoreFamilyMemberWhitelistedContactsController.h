@@ -57,7 +57,7 @@
 - (void)finishWhitelistedContactsTasks;
 - (id)init;
 - (id)initWithFamilyMember:(id)arg1 options:(id)arg2 schedulerProvider:(id)arg3;
-- (id)initWithModelFetcher:(id)arg1 familyMemberContactsUpdator:(id)arg2 schedulerProvider:(id)arg3 familyMemberScopedContactStoreFacade:(id)arg4 mainContactStoreFacade:(id)arg5;
+- (id)initWithModelFetcher:(id)arg1 familyMemberContactsUpdator:(id)arg2 familyMemberScopedContactStoreFacade:(id)arg3 mainContactStoreFacade:(id)arg4 schedulerProvider:(id)arg5;
 - (void)setupChangeNotificationResponse;
 - (void)triggerContactItemsFetch;
 - (void)updateWhitelistByAddingContacts:(id)arg1;

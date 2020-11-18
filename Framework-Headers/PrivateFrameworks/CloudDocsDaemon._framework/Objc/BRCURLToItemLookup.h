@@ -82,7 +82,7 @@
 - (BOOL)_bouncePathMatchIfNecessaryWithLookup:(id)arg1 localItem:(id)arg2 serverItem:(id)arg3 bounceNamespace:(unsigned char)arg4 applyNamespace:(unsigned char)arg5;
 - (BOOL)_canUpdatePathMatch:(const CDStruct_177058d5 *)arg1 hasAdditionsToApply:(BOOL)arg2;
 - (void)_clearNamespace:(unsigned char)arg1;
-- (void)_fetchFaultedPathMatch;
+- (void)_fetchFaultedMatch;
 - (void)_fetchIDMatch;
 - (void)_fetchPathMatch;
 - (void)_fetchRelPath;
@@ -95,6 +95,7 @@
 - (void)clearFaultedItem;
 - (void)clearReservedItem;
 - (void)closePaths;
+- (BOOL)copyItemAtURLToGenstore:(id)arg1 forItem:(id)arg2 error:(id *)arg3;
 - (id)description;
 - (void)didApplyChangesAtPath:(id)arg1 filename:(id)arg2 li:(id)arg3 si:(id)arg4;
 - (void)encodeWithCoder:(id)arg1;
@@ -110,6 +111,7 @@
 - (void)refreshFaultedDiffs;
 - (BOOL)resolveAndKeepOpenWithError:(id *)arg1;
 - (BOOL)resolveParentAndKeepOpenMustExist:(BOOL)arg1 errcode:(int *)arg2;
+- (BOOL)trashItemIfNecessary:(id)arg1 atURL:(id)arg2 error:(id *)arg3;
 - (BOOL)tryToDeleteItemInNamespace:(unsigned char)arg1;
 - (void)tryToUpdateItemInNamespace:(unsigned char)arg1 withDstLookup:(id)arg2;
 

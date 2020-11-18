@@ -8,12 +8,11 @@
 
 #import <GeoServices/GEODataSessionTask-Protocol.h>
 #import <GeoServices/GEODataSessionTaskDelegate-Protocol.h>
-#import <GeoServices/GEOStateCapturing-Protocol.h>
 
 @class GEOClientMetrics, GEODataSession, GEODataURLSessionTask, NSData, NSError, NSString, NSURL;
 @protocol GEODataSessionTask, GEODataSessionTaskDelegate, GEORequestCounterTicket, NSObject, OS_dispatch_queue, OS_os_activity;
 
-@interface GEODataSessionTask : NSObject <GEODataSessionTaskDelegate, GEOStateCapturing, GEODataSessionTask>
+@interface GEODataSessionTask : NSObject <GEODataSessionTaskDelegate, GEODataSessionTask>
 {
     id<GEODataSessionTaskDelegate> _delegate;
     GEODataSession *_session;
@@ -23,8 +22,6 @@
     id<GEODataSessionTask> _completedSubtask;
     GEODataURLSessionTask *_urlTask;
     CDStruct_d1a7ebee _requestKind;
-    unsigned long long _stateCaptureHandle;
-    unsigned int _taskIdentifier;
     double _startTime;
     double _endTime;
     BOOL _didStart;
@@ -36,10 +33,8 @@
 @property (strong, nonatomic) id<GEODataSessionTask> completedSubtask; // @synthesize completedSubtask=_completedSubtask;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<GEODataSessionTaskDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
-@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSURL *downloadedFileURL;
@@ -48,7 +43,6 @@
 @property (readonly, nonatomic) NSError *error;
 @property (readonly, nonatomic) NSError *error;
 @property (readonly, nonatomic) BOOL failedDueToCancel;
-@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long incomingPayloadSize;
@@ -73,17 +67,13 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *sessionIsolation; // @synthesize sessionIsolation=_sessionIsolation;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
-@property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned int taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property (strong, nonatomic) GEODataURLSessionTask *urlTask; // @synthesize urlTask=_urlTask;
 
 - (void).cxx_destruct;
 - (void)_didCompleteSubtask:(id)arg1;
 - (void)cancel;
-- (id)captureStateWithHints:(struct os_state_hints_s *)arg1;
 - (void)dataSession:(id)arg1 didCompleteTask:(id)arg2;
 - (void)dataSession:(id)arg1 willSendRequest:(id)arg2 forTask:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)dealloc;
 - (BOOL)didValidateEntityTagForData:(id *)arg1 entityTag:(id *)arg2;
 - (BOOL)getHeaderValue:(id *)arg1 forField:(id)arg2;
 - (id)initWithSession:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 requestKind:(CDStruct_d1a7ebee)arg4 requestCounterTicket:(id)arg5;

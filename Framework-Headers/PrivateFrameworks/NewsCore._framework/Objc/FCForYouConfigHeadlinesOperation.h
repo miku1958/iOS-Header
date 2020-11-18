@@ -7,7 +7,7 @@
 #import <NewsCore/FCOperation.h>
 
 @class FCCachePolicy, FCForYouConfig, NSArray, NSDictionary;
-@protocol FCContentContext, FCCoreConfiguration, FCFeedPersonalizing;
+@protocol FCContentContext, FCCoreConfiguration, FCFeedPersonalizing, FCForYouBridgedConfigurationParser;
 
 @interface FCForYouConfigHeadlinesOperation : FCOperation
 {
@@ -15,6 +15,7 @@
     id<FCCoreConfiguration> _configuration;
     id<FCContentContext> _context;
     id<FCFeedPersonalizing> _personalizer;
+    id<FCForYouBridgedConfigurationParser> _bridgedConfigurationParser;
     long long _fields;
     NSArray *_additionalArticleListIDs;
     NSArray *_additionalTagIDs;
@@ -33,6 +34,7 @@
 @property (copy, nonatomic) NSArray *additionalArticleListIDs; // @synthesize additionalArticleListIDs=_additionalArticleListIDs;
 @property (copy, nonatomic) NSArray *additionalTagIDs; // @synthesize additionalTagIDs=_additionalTagIDs;
 @property (strong, nonatomic) FCCachePolicy *articleListCachePolicy; // @synthesize articleListCachePolicy=_articleListCachePolicy;
+@property (strong, nonatomic) id<FCForYouBridgedConfigurationParser> bridgedConfigurationParser; // @synthesize bridgedConfigurationParser=_bridgedConfigurationParser;
 @property (copy, nonatomic) id<FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (strong, nonatomic) FCCachePolicy *editorialSectionTagCachePolicy; // @synthesize editorialSectionTagCachePolicy=_editorialSectionTagCachePolicy;

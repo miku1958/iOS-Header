@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
     BOOL _scrollToNotes;
     BOOL _canHideDoneAndCancelButtons;
     BOOL _timeImplicitlySet;
+    BOOL _isTextEditing;
     id<EKCalendarItemEditorDelegate> _editorDelegate;
     EKEventStore *_store;
     EKCalendarItem *_calendarItem;
@@ -57,6 +58,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<EKCalendarItemEditorDelegate> editorDelegate; // @synthesize editorDelegate=_editorDelegate;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isTextEditing; // @synthesize isTextEditing=_isTextEditing;
 @property (nonatomic) double navBarLeftContentInset;
 @property (nonatomic) double navBarRightContentInset;
 @property (strong, nonatomic) EKChangeSet *originalChangeSet; // @synthesize originalChangeSet=_originalChangeSet;

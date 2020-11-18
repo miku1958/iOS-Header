@@ -18,6 +18,7 @@
 - (oneway void)getOfflineDictationStatusIgnoringCache:(BOOL)arg1 withCompletion:(void (^)(NSDictionary *, NSError *))arg2;
 - (oneway void)preheatSpeechRecognitionWithLanguage:(NSString *)arg1;
 - (oneway void)purgeInstalledAssetsWithCompletion:(void (^)(NSNumber *, NSError *))arg1;
+- (oneway void)readProfileAndUserDataWithLanguage:(NSString *)arg1 allowOverride:(BOOL)arg2 completion:(void (^)(NSData *, NSString *))arg3;
 - (oneway void)runAdaptationRecipeEvaluation:(NSDictionary *)arg1 recordData:(NSData *)arg2 attachments:(NSArray *)arg3 completion:(void (^)(NSDictionary *, NSData *, NSError *))arg4;
 - (oneway void)startRequestActivityWithCompletion:(void (^)(void))arg1;
 - (oneway void)startSpeechRecognitionWithLanguage:(NSString *)arg1 task:(NSString *)arg2 context:(NSArray *)arg3 profile:(NSData *)arg4 narrowband:(BOOL)arg5 detectUtterances:(BOOL)arg6 censorSpeech:(BOOL)arg7 maximumRecognitionDuration:(double)arg8 farField:(BOOL)arg9 overrides:(NSDictionary *)arg10 modelOverrideURL:(NSURL *)arg11 secureOfflineOnly:(BOOL)arg12 originalAudioFileURL:(NSURL *)arg13 didStartHandler:(void (^)(NSString *, NSError *))arg14;

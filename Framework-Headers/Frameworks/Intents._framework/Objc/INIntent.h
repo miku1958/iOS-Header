@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INFileEnumerable-Protocol.h>
+#import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INGenericIntent-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INIntentExport-Protocol.h>
@@ -18,7 +18,7 @@
 
 @class INImage, INIntentCodableDescription, INIntentKeyParameter, INParameterContexts, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSOrderedSet, NSString, NSUUID, PBCodable, _INPBIntentMetadata;
 
-@interface INIntent : NSObject <INImageProxyInjecting, INIntentSlotComposing, INKeyImageProducing, INFileEnumerable, INIntentExport, INGenericIntent, INRuntimeObject, NSCopying, NSSecureCoding>
+@interface INIntent : NSObject <INImageProxyInjecting, INIntentSlotComposing, INKeyImageProducing, INEnumerable, INIntentExport, INGenericIntent, INRuntimeObject, NSCopying, NSSecureCoding>
 {
     NSMutableDictionary *_intentInstanceDescriptionMapping;
     NSArray *_parameterImages;
@@ -129,7 +129,7 @@
 - (id)_dictionaryRepresentation;
 - (id)_displayOrderedNonNilParameters;
 - (id)_emptyCopy;
-- (void)_enumerateWithValueProcessingBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (BOOL)_enumerateWithValueProcessingBlock:(CDUnknownBlockType)arg1;
 - (id)_imageForParameter:(id)arg1;
 - (id)_inCodable;
 - (id)_init;
@@ -144,8 +144,7 @@
 - (id)_intents_bestBundleIdentifier;
 - (id)_intents_bundleIdForDisplay;
 - (id)_intents_bundleIdForLaunching;
-- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
-- (void)_intents_enumerateFilesWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (BOOL)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_intents_launchIdForCurrentPlatform;
 - (BOOL)_isValidKey:(id)arg1;
 - (BOOL)_isValueValidForKey:(id)arg1 unsupportedReason:(id *)arg2;

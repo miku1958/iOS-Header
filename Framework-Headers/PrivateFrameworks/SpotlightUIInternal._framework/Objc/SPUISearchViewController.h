@@ -33,6 +33,7 @@
     double _timeAtDismissal;
     SPUITestingHelper *_testingHelper;
     unsigned long long _queryId;
+    unsigned long long _feedbackBackgroundTaskIdentifier;
 }
 
 @property (strong) NSMutableSet *allHeaderViews; // @synthesize allHeaderViews=_allHeaderViews;
@@ -40,6 +41,7 @@
 @property (weak, nonatomic) id<SPUISearchViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) double distanceToTopOfAppIcons;
+@property unsigned long long feedbackBackgroundTaskIdentifier; // @synthesize feedbackBackgroundTaskIdentifier=_feedbackBackgroundTaskIdentifier;
 @property (strong) SPUISearchFirstTimeViewController *firstTimeExperienceViewController; // @synthesize firstTimeExperienceViewController=_firstTimeExperienceViewController;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SPUISearchHeader *headerView;
@@ -84,6 +86,7 @@
 - (void)didUpdateContentScrolledOffScreenStatus:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)dismissCancelButtonAnimated;
 - (void)dismissIfNecessaryForIconDrag;
+- (void)endBackgroundTaskIfNeeded;
 - (void)firstTimeExperienceContinueButtonPressed;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -92,9 +95,8 @@
 - (void)hideKeyboard;
 - (id)init;
 - (void)launchSiriWithUtteranceText:(id)arg1 source:(long long)arg2;
-- (void)performSearchWithQuery:(id)arg1 forSuggestions:(BOOL)arg2;
 - (void)performSearchWithSuggestion:(id)arg1;
-- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(long long)arg3;
+- (void)performTestSearchWithQuery:(id)arg1 event:(unsigned long long)arg2 sourcePreference:(unsigned long long)arg3;
 - (id)proactiveResultsTestingObject;
 - (void)purgeMemory;
 - (void)queryContextDidChange:(id)arg1 fromSearchHeader:(id)arg2 allowZKW:(BOOL)arg3;
@@ -118,6 +120,7 @@
 - (void)shortLookViewController:(id)arg1 willDisplayLongLookWithReason:(long long)arg2;
 - (id)shortLookViewControllerForResult:(id)arg1;
 - (void)showVerticalScrollIndicators:(BOOL)arg1;
+- (void)spotlightDidBackground;
 - (void)updateHeaderViewsWithBlock:(CDUnknownBlockType)arg1;
 - (id)userActivityFromIntent:(id)arg1;
 - (id)viewControllerForPresenting;

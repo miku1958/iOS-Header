@@ -46,6 +46,7 @@
 @property (readonly, nonatomic) NSArray *auxiliaryDevices; // @synthesize auxiliaryDevices=_auxiliaryDevices;
 @property (readonly, nonatomic) NSDictionary *avRouteDescription;
 @property (readonly, nonatomic, getter=isB298Route) BOOL b298Route;
+@property (readonly, nonatomic, getter=isB364Route) BOOL b364Route;
 @property (readonly, nonatomic, getter=isB419Route) BOOL b419Route;
 @property (readonly, nonatomic, getter=isB444Route) BOOL b444Route;
 @property (readonly, nonatomic) MPAVBatteryLevel *batteryLevel; // @synthesize batteryLevel=_batteryLevel;

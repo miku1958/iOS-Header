@@ -8,33 +8,17 @@
 
 #import <ContactsUICore/CNUICoreScreentimePasscodeCheck-Protocol.h>
 
-@class CNFuture, NSString;
-@protocol CNCancelable, CNSchedulerProvider;
+@class NSString;
 
 @interface CNUICoreScreentimePasscodeInspector : NSObject <CNUICoreScreentimePasscodeCheck>
 {
-    CNFuture *_isPasscodeEnabledFuture;
-    CNFuture *_managementState;
-    id<CNCancelable> _managementStateDidChangeToken;
-    id<CNSchedulerProvider> _schedulerProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) CNFuture *isPasscodeEnabledFuture; // @synthesize isPasscodeEnabledFuture=_isPasscodeEnabledFuture;
-@property (readonly, nonatomic) CNFuture *managementState; // @synthesize managementState=_managementState;
-@property (readonly, nonatomic) id<CNCancelable> managementStateDidChangeToken; // @synthesize managementStateDidChangeToken=_managementStateDidChangeToken;
-@property (readonly, nonatomic) id<CNSchedulerProvider> schedulerProvider; // @synthesize schedulerProvider=_schedulerProvider;
 @property (readonly) Class superclass;
 
-+ (id)managementStateDidChangeObservableWithSchedulerProvider:(id)arg1;
-- (void).cxx_destruct;
-- (void)clearIsPasscodeEnabledFuture;
-- (void)dealloc;
-- (id)init;
-- (id)initWithManagementState:(id)arg1 managementStateChangedObservable:(id)arg2 schedulerProvider:(id)arg3;
-- (id)makeIsPasscodeEnabledFuture;
 - (unsigned long long)screentimePasscodeStatus;
 - (unsigned long long)screentimePasscodeStatusOfDelegateWithInfo:(id)arg1;
 

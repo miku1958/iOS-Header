@@ -41,7 +41,7 @@
 + (id)documentProxyForURL:(id)arg1 sourceIsManaged:(BOOL)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (optional_59acb226)_bindingEvaluatorWithAuditToken:(const CDStruct_4c969caf *)arg1;
+- (optional_084b935d)_bindingEvaluatorWithAuditToken:(const CDStruct_4c969caf *)arg1;
 - (id)_boundIconInfo;
 - (id)applicationsAvailableForOpeningByDraggingAndDroppingWithError:(id *)arg1;
 - (id)applicationsAvailableForOpeningFromAirDropWithError:(id *)arg1;

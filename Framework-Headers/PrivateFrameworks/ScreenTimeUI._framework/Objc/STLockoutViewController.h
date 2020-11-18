@@ -9,7 +9,7 @@
 #import <ScreenTimeUI/CNContactViewControllerDelegate-Protocol.h>
 #import <ScreenTimeUI/STLockoutPolicyControllerDelegate-Protocol.h>
 
-@class NSObject, NSString, SBSLockScreenService, STBlockingBackdropView, STHourglassView, STLockoutPolicyController, UIAlertController, UIButton, UILabel;
+@class NSObject, NSString, SBSLockScreenService, STHourglassView, STLockoutPolicyController, UIAlertController, UIButton, UILabel, UIResponder, UIVisualEffectView;
 @protocol OS_dispatch_group, STLockoutViewControllerDelegate;
 
 @interface STLockoutViewController : UIViewController <CNContactViewControllerDelegate, STLockoutPolicyControllerDelegate>
@@ -30,7 +30,9 @@
     BOOL _mainButtonAlwaysHidden;
     BOOL _forSnapshot;
     BOOL _didFinishDismissing;
+    UIResponder *_customNextResponder;
     STLockoutPolicyController *_policyController;
+    NSString *_applicationName;
     STHourglassView *_hourglassView;
     UILabel *_titleLabel;
     UILabel *_messageLabel;
@@ -40,7 +42,9 @@
     id<STLockoutViewControllerDelegate> _viewControllerDelegate;
 }
 
+@property (readonly) NSString *applicationName; // @synthesize applicationName=_applicationName;
 @property (copy, nonatomic) NSString *bundleIdentifier;
+@property (weak, nonatomic) UIResponder *customNextResponder; // @synthesize customNextResponder=_customNextResponder;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL didFinishDismissing; // @synthesize didFinishDismissing=_didFinishDismissing;
@@ -50,15 +54,16 @@
 @property (weak) UIButton *mainButton; // @synthesize mainButton=_mainButton;
 @property (nonatomic) BOOL mainButtonAlwaysHidden; // @synthesize mainButtonAlwaysHidden=_mainButtonAlwaysHidden;
 @property (weak) UILabel *messageLabel; // @synthesize messageLabel=_messageLabel;
+@property (weak, nonatomic) UIResponder *nextResponder;
 @property (weak) UIButton *okButton; // @synthesize okButton=_okButton;
 @property long long okButtonAction; // @synthesize okButtonAction=_okButtonAction;
 @property (nonatomic) BOOL okButtonAlwaysHidden; // @synthesize okButtonAlwaysHidden=_okButtonAlwaysHidden;
 @property (strong, nonatomic) STLockoutPolicyController *policyController; // @synthesize policyController=_policyController;
 @property (readonly) Class superclass;
 @property (weak) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (strong, nonatomic) STBlockingBackdropView *view;
+@property (strong, nonatomic) UIVisualEffectView *view;
 @property (weak, nonatomic) id<STLockoutViewControllerDelegate> viewControllerDelegate; // @synthesize viewControllerDelegate=_viewControllerDelegate;
-@property (readonly, nonatomic) STBlockingBackdropView *viewIfLoaded;
+@property (readonly, nonatomic) UIVisualEffectView *viewIfLoaded;
 
 + (id)_applicationNameForBundleIdentifier:(id)arg1;
 + (id)_applicationNameForWebsiteURL:(id)arg1;
@@ -68,6 +73,7 @@
 + (id)lockoutViewControllerWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2;
 + (id)lockoutViewControllerWithBundleIdentifier:(id)arg1 conversationContext:(id)arg2 contactStore:(id)arg3;
 + (id)lockoutViewControllerWithCategoryIdentifier:(id)arg1;
++ (id)lockoutViewControllerWithConversationContext:(id)arg1 bundleIdentifier:(id)arg2 contactStore:(id)arg3 applicationName:(id)arg4;
 + (id)lockoutViewControllerWithWebsiteURL:(id)arg1;
 + (id)messageForApplicationName:(id)arg1 style:(long long)arg2;
 + (id)messageForBundleIdentifier:(id)arg1 style:(long long)arg2;
@@ -83,6 +89,7 @@
 - (BOOL)_actionUnlockedEnterScreenTimePasscodeActionSheet;
 - (BOOL)_authenticatedApproveActionSheet;
 - (void)_authenticatedApproveForAdditionalTime:(double)arg1;
+- (BOOL)_canShowWhileLocked;
 - (void)_changeMainButtonToAddContact;
 - (void)_changeMainButtonToAskForMore;
 - (void)_changeMainButtonToEnterScreenTimePasscode;
@@ -131,7 +138,6 @@
 - (id)initWithBundleIdentifier:(id)arg1 contactsHandles:(id)arg2;
 - (id)initWithBundleIdentifier:(id)arg1 conversationContext:(id)arg2 contactStore:(id)arg3;
 - (id)initWithWebsiteURL:(id)arg1;
-- (id)nextResponder;
 - (void)setDidFinishDismissing:(BOOL)arg1;
 - (void)stateDidChange:(unsigned long long)arg1;
 - (void)viewDidAppear:(BOOL)arg1;

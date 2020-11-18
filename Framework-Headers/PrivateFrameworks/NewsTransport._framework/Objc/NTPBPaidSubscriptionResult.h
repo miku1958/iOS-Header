@@ -28,6 +28,7 @@
     int _resultType;
     NSString *_sectionId;
     NSString *_sourceChannelId;
+    int _storekitError;
     NSData *_subscriptionPurchaseSessionId;
     BOOL _arrivedFromAd;
     BOOL _sawSubscriptionSheet;
@@ -37,6 +38,7 @@
         unsigned int paidSubscriptionConversionPointType:1;
         unsigned int parentFeedType:1;
         unsigned int resultType:1;
+        unsigned int storekitError:1;
         unsigned int arrivedFromAd:1;
         unsigned int sawSubscriptionSheet:1;
         unsigned int subscriptionOnlyArticlePreview:1;
@@ -69,6 +71,7 @@
 @property (nonatomic) BOOL hasSawSubscriptionSheet;
 @property (readonly, nonatomic) BOOL hasSectionId;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
+@property (nonatomic) BOOL hasStorekitError;
 @property (nonatomic) BOOL hasSubscriptionOnlyArticlePreview;
 @property (readonly, nonatomic) BOOL hasSubscriptionPurchaseSessionId;
 @property (strong, nonatomic) NSString *iadQtoken; // @synthesize iadQtoken=_iadQtoken;
@@ -81,6 +84,7 @@
 @property (nonatomic) BOOL sawSubscriptionSheet; // @synthesize sawSubscriptionSheet=_sawSubscriptionSheet;
 @property (strong, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
+@property (nonatomic) int storekitError; // @synthesize storekitError=_storekitError;
 @property (nonatomic) BOOL subscriptionOnlyArticlePreview; // @synthesize subscriptionOnlyArticlePreview=_subscriptionOnlyArticlePreview;
 @property (strong, nonatomic) NSData *subscriptionPurchaseSessionId; // @synthesize subscriptionPurchaseSessionId=_subscriptionPurchaseSessionId;
 
@@ -88,6 +92,7 @@
 - (int)StringAsGroupType:(id)arg1;
 - (int)StringAsPaidSubscriptionConversionPointType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
+- (int)StringAsStorekitError:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -98,6 +103,7 @@
 - (id)paidSubscriptionConversionPointTypeAsString:(int)arg1;
 - (id)parentFeedTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)storekitErrorAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

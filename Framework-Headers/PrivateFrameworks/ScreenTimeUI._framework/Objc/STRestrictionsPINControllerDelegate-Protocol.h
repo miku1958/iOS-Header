@@ -6,9 +6,9 @@
 
 #import <ScreenTimeUI/DevicePINControllerDelegate-Protocol.h>
 
-@class NSString;
+@class NSString, STRestrictionsPINController;
 
 @protocol STRestrictionsPINControllerDelegate <DevicePINControllerDelegate>
-- (BOOL)validatePIN:(NSString *)arg1;
+- (BOOL)validatePIN:(NSString *)arg1 forPINController:(STRestrictionsPINController *)arg2;
 @end
 

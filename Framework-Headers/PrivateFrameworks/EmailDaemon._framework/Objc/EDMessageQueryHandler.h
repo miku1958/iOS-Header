@@ -9,11 +9,12 @@
 #import <EmailDaemon/EDMessageQueryHelperDelegate-Protocol.h>
 #import <EmailDaemon/EFContentProtectionObserver-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
+#import <EmailDaemon/EMCollectionItemIDStateCapturerDelegate-Protocol.h>
 
-@class EDMessageQueryHelper, EFCancelationToken, NSMutableDictionary, NSObject, NSString;
+@class EDMessageQueryHelper, EFCancelationToken, EMCollectionItemIDStateCapturer, NSMutableDictionary, NSObject, NSString;
 @protocol EDRemoteSearchProvider, EFScheduler, OS_dispatch_queue;
 
-@interface EDMessageQueryHandler : EDMessageRepositoryQueryHandler <EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver>
+@interface EDMessageQueryHandler : EDMessageRepositoryQueryHandler <EMCollectionItemIDStateCapturerDelegate, EDMessageQueryHelperDelegate, EFLoggable, EFContentProtectionObserver>
 {
     BOOL _didCancel;
     BOOL _isInitialized;
@@ -24,6 +25,7 @@
     NSObject<OS_dispatch_queue> *_resultQueue;
     NSMutableDictionary *_oldestMessageIDsByMailboxObjectIDs;
     EFCancelationToken *_updateOldestMessagesCancelationToken;
+    EMCollectionItemIDStateCapturer *_stateCapturer;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *contentProtectionQueue; // @synthesize contentProtectionQueue=_contentProtectionQueue;
@@ -37,6 +39,7 @@
 @property (readonly, nonatomic) id<EDRemoteSearchProvider> remoteSearchProvider; // @synthesize remoteSearchProvider=_remoteSearchProvider;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *resultQueue; // @synthesize resultQueue=_resultQueue;
 @property (readonly, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
+@property (readonly, nonatomic) EMCollectionItemIDStateCapturer *stateCapturer; // @synthesize stateCapturer=_stateCapturer;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) EFCancelationToken *updateOldestMessagesCancelationToken; // @synthesize updateOldestMessagesCancelationToken=_updateOldestMessagesCancelationToken;
 
@@ -59,6 +62,8 @@
 - (void)dealloc;
 - (id)findMessagesByPreviousObjectIDForAddedMessages:(id)arg1 helper:(id)arg2;
 - (id)initWithQuery:(id)arg1 messagePersistence:(id)arg2 hookRegistry:(id)arg3 remoteSearchProvider:(id)arg4 observer:(id)arg5 observationIdentifier:(id)arg6;
+- (id)itemIDsForStateCaptureWithErrorString:(id *)arg1;
+- (id)labelForStateCapture;
 - (void)queryHelper:(id)arg1 conversationIDDidChangeForMessages:(id)arg2 fromConversationID:(long long)arg3;
 - (void)queryHelper:(id)arg1 conversationNotificationLevelDidChangeForConversation:(long long)arg2 conversationID:(long long)arg3;
 - (void)queryHelper:(id)arg1 didAddMessages:(id)arg2;

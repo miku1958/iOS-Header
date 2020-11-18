@@ -10,7 +10,7 @@
 #import <NewsCore/FCFeedGroupOutlining-Protocol.h>
 
 @class FCColor, FCColorGradient, FCFeedEdition, FCSharedStringIndex, NSArray, NSDate, NSString, NTPBDiscoverMoreVideosInfo, NTPBFeedViewportGroup;
-@protocol FCForYouMagazineFeedGroup;
+@protocol FCCardStyleProviding, FCForYouBridgedFeedGroup;
 
 @interface FCDeflatedFeedGroup : NSObject <FCFeedElement, FCFeedGroupOutlining>
 {
@@ -22,12 +22,12 @@
 
 @property (readonly, copy, nonatomic) FCColorGradient *backgroundGradient;
 @property (readonly, copy, nonatomic) NSString *backingTagID;
-@property (readonly, copy, nonatomic) FCColor *cardBackgroundColor;
+@property (readonly, nonatomic) id<FCForYouBridgedFeedGroup> bridgedGroup;
+@property (readonly, copy, nonatomic) id<FCCardStyleProviding> cardStyle;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy, nonatomic) NSString *ctaText;
+@property (readonly, copy, nonatomic) id<FCCardStyleProviding> darkCardStyle;
 @property (readonly, copy, nonatomic) FCColorGradient *darkStyleBackgroundGradient;
-@property (readonly, copy, nonatomic) FCColor *darkStyleCardBackgroundColor;
-@property (readonly, copy, nonatomic) FCColorGradient *darkStyleSauceGradient;
 @property (readonly, copy, nonatomic) FCColor *darkStyleTitleColor;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -40,17 +40,16 @@
 @property (readonly, copy, nonatomic) NSArray *headlines; // @synthesize headlines=_headlines;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, copy, nonatomic) NSArray *issueIDs;
-@property (readonly, nonatomic) id<FCForYouMagazineFeedGroup> magazineGroup;
 @property (readonly, nonatomic) unsigned long long mergeID;
 @property (readonly, nonatomic) unsigned long long options;
 @property (readonly, nonatomic) NTPBFeedViewportGroup *pbGroup; // @synthesize pbGroup=_pbGroup;
-@property (readonly, copy, nonatomic) FCColorGradient *sauceGradient;
 @property (readonly, nonatomic) FCSharedStringIndex *sharedStrings; // @synthesize sharedStrings=_sharedStrings;
 @property (readonly, copy, nonatomic) NSString *sourceIdentifier;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) FCColor *titleColor;
+@property (readonly, nonatomic) BOOL usesPlaceholderHeadlines;
 @property (readonly, copy, nonatomic) NSArray *videoPlaylistHeadlines; // @synthesize videoPlaylistHeadlines=_videoPlaylistHeadlines;
 
 - (void).cxx_destruct;

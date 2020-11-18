@@ -40,6 +40,7 @@
 - (id)_addAccountWithType:(long long)arg1 name:(id)arg2;
 - (id)_addAccountWithType:(long long)arg1 name:(id)arg2 accountObjectID:(id)arg3;
 - (void)_addAlarmsToReminderChangeItem:(id)arg1 withICSAlarm:(id)arg2 icsCalendar:(id)arg3;
+- (BOOL)_changeItemsAreAllEmpty;
 - (id)_copyReminder:(id)arg1 toListChangeItem:(id)arg2;
 - (id)_copyReminder:(id)arg1 toReminderSubtaskContextChangeItem:(id)arg2;
 - (id)_copyReminderChangeItem:(id)arg1 toListChangeItem:(id)arg2;

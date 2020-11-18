@@ -12,12 +12,13 @@
 __attribute__((visibility("hidden")))
 @interface _TtC7NewsUI233MagazineFeedPaywallViewController : UIViewController
 {
+    MISSING_TYPE *configurationManager;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *config;
-    MISSING_TYPE *layoutOptionsProvider;
-    MISSING_TYPE *layoutAttributesFactory;
-    MISSING_TYPE *renderer;
+    MISSING_TYPE *blueprintLayoutOptionsProvider;
+    MISSING_TYPE *paywallLayoutAttributesFactory;
+    MISSING_TYPE *paywallRenderer;
     MISSING_TYPE *paywallView;
     MISSING_TYPE *imageCache;
     MISSING_TYPE *assetManager;
@@ -26,7 +27,9 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *purchasingSpinnerViewControllerFactory;
     MISSING_TYPE *$__lazy_storage_$_spinnerViewController;
     MISSING_TYPE *purchasePresenter;
-    MISSING_TYPE *renderToken;
+    MISSING_TYPE *lastRenderedVerticalContentOffset;
+    MISSING_TYPE *imageResult;
+    MISSING_TYPE *videoFilePath;
 }
 
 @property (nonatomic) BOOL isBeingUsedAsPlugin; // @synthesize isBeingUsedAsPlugin;

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)altitude;
 + (id)identifier;
 + (id)latitude;
 + (id)longitude;

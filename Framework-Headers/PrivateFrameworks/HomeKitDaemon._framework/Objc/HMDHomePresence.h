@@ -21,8 +21,9 @@
 @property (readonly, nonatomic) NSArray *authorizedUsers;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL hasPresenceRegionForAllUsers;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HMDHome *home; // @synthesize home=_home;
+@property (readonly, weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) HMDDevice *lastUpdateByDevice; // @synthesize lastUpdateByDevice=_lastUpdateByDevice;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDictionary *userPresenceMap; // @synthesize userPresenceMap=_userPresenceMap;
@@ -35,6 +36,7 @@
 - (BOOL)isAnyUserAtHome;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isNoUserAtHome;
+- (BOOL)isPresenceRegionKnownForUser:(id)arg1;
 - (BOOL)isUserAtHome:(id)arg1;
 - (BOOL)isUserNotAtHome:(id)arg1;
 - (id)logIdentifier;

@@ -95,6 +95,7 @@
 
 - (void).cxx_destruct;
 - (void)_autoscrollOverlayIfNecessary;
+- (BOOL)_canShowWhileLocked;
 - (struct CGRect)_frameForTimeMarkerView:(id)arg1;
 - (BOOL)_isScrubbing;
 - (BOOL)_isScrubbingSelectionTimeRange;

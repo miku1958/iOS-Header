@@ -17,9 +17,11 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *title;
     MISSING_TYPE *displayDate;
     MISSING_TYPE *storyType;
+    MISSING_TYPE *shortExcerpt;
 }
 
 @property (nonatomic, readonly) NSDate *displayDate;
+@property (nonatomic, readonly) NSString *shortExcerpt;
 @property (nonatomic, readonly) NSString *storyType;
 @property (nonatomic, readonly) NSString *title;
 

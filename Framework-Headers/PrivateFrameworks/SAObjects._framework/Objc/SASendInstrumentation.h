@@ -21,6 +21,7 @@
 @property (copy, nonatomic) NSString *eventTransmittedTimestampRefId;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *instrumentationBatch;
+@property (copy, nonatomic) NSString *payloadVersion;
 @property (copy, nonatomic) NSString *refId; // @dynamic refId;
 @property (readonly) Class superclass;
 

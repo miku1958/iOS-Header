@@ -8,7 +8,7 @@
 
 @protocol HMDDataStreamBulkSendSession <NSObject>
 
-@property (readonly) BOOL hasMoreData;
+@property (readonly, getter=isActive) BOOL active;
 
 - (void)cancelWithReason:(unsigned short)arg1;
 - (void)read:(void (^)(NSDictionary *, NSError *))arg1;

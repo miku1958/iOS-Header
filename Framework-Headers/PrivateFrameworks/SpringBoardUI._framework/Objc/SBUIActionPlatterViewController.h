@@ -39,6 +39,7 @@
 @property (nonatomic) unsigned long long systemInteractionStartIndex; // @synthesize systemInteractionStartIndex=_systemInteractionStartIndex;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_handleLongPressGestureRecognizer:(id)arg1;
 - (void)_updateKeylineViews;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;

@@ -11,7 +11,7 @@
 #import <NewsUI/NUPageable-Protocol.h>
 #import <NewsUI/SXAnalyticsReporting-Protocol.h>
 
-@class FCArticle, FCIssue, FCObservable, NFMultiDelegate, NSHashTable, NSString, UIResponder, UIScrollView, UIView;
+@class FCArticle, FCIssue, FCObservable, NFMultiDelegate, NSHashTable, NSString, NUArticleContext, UIResponder, UIScrollView, UIView;
 @protocol NUAnalyticsReporting, NUArticleContentSizeManager, NUArticleViewControllerFactory, NUErrorMessageFactory, NULoadingDelegate, NULoadingViewProviding, NUSettings;
 
 @interface NUArticleHostViewController : UIViewController <NULoadingDelegate, SXAnalyticsReporting, NUPageable, NUBarCompressible>
@@ -19,6 +19,7 @@
     NSString *_pageIdentifier;
     id<NULoadingDelegate> _loadingDelegate;
     FCObservable *_articleViewStyler;
+    NUArticleContext *_articleContext;
     UIResponder *_responder;
     FCArticle *_article;
     FCIssue *_issue;
@@ -34,6 +35,7 @@
 
 @property (readonly, nonatomic) id<NUAnalyticsReporting> analyticsReporting; // @synthesize analyticsReporting=_analyticsReporting;
 @property (readonly, nonatomic) FCArticle *article; // @synthesize article=_article;
+@property (strong, nonatomic) NUArticleContext *articleContext; // @synthesize articleContext=_articleContext;
 @property (readonly, nonatomic) id<NUArticleViewControllerFactory> articleViewControllerFactory; // @synthesize articleViewControllerFactory=_articleViewControllerFactory;
 @property (readonly, nonatomic) FCObservable *articleViewStyler; // @synthesize articleViewStyler=_articleViewStyler;
 @property (nonatomic) long long contentScale;

@@ -8,13 +8,14 @@
 
 #import <Security/OS_sec_experiment-Protocol.h>
 
-@class NSString;
+@class NSString, SecExperiment;
 
 __attribute__((visibility("hidden")))
 @interface SecExpConcrete_sec_experiment : NSObject <OS_sec_experiment>
 {
-    const char *identifier;
-    BOOL sampling_disabled;
+    SecExperiment *innerExperiment;
+    unsigned long long numRuns;
+    unsigned long long successRuns;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,7 +23,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)initWithBundle:(const char *)arg1;
+- (void).cxx_destruct;
+- (id)copyExperimentConfiguration;
+- (BOOL)experimentIsAllowedForProcess;
+- (const char *)identifier;
+- (id)initWithInnerExperiment:(id)arg1;
+- (id)initWithName:(const char *)arg1;
+- (BOOL)isSamplingDisabled;
+- (BOOL)isSamplingDisabledWithDefault:(BOOL)arg1;
+- (const char *)name;
 
 @end
 

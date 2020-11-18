@@ -32,6 +32,7 @@
 - (void)_updateCachedBundleInfoWithAdamID:(id)arg1;
 - (id)_value:(id)arg1 withDefault:(id)arg2;
 - (void)dealloc;
+- (void)enqueueIdentityProviderAppsQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueueInfoQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueueSetTopBoxProfileProviderQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;

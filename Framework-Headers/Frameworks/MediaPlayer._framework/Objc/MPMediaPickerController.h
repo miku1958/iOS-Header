@@ -36,6 +36,7 @@
 + (BOOL)useNewPicker;
 - (void).cxx_destruct;
 - (void)_addRemoteView;
+- (BOOL)_canShowWhileLocked;
 - (void)_checkLibraryAuthorization;
 - (void)_forceDismissal;
 - (BOOL)_hasAddedRemoteView;
@@ -70,10 +71,12 @@
 - (void)setPlaybackArchiveConfiguration:(id)arg1;
 - (void)setShowsCatalogContent:(BOOL)arg1;
 - (void)setShowsLibraryContent:(BOOL)arg1;
+- (void)setSupportsUnavailableContent:(BOOL)arg1;
 - (void)setWatchCompatibilityVersion:(unsigned int)arg1;
 - (BOOL)showsCatalogContent;
 - (BOOL)showsLibraryContent;
 - (unsigned long long)supportedInterfaceOrientations;
+- (BOOL)supportsUnavailableContent;
 - (id)typeIdentifiers;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;

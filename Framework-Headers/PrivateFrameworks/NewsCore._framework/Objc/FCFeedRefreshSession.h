@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @class FCFeedEdition, NSArray, NSDate, NSDictionary, NSSet, NSString;
+@protocol FCFeedRefreshSessionForYouConfig;
 
 @interface FCFeedRefreshSession : NSObject
 {
@@ -20,10 +21,12 @@
     NSArray *_pendingGroups;
     NSSet *_activeGroupEmitterIDs;
     FCFeedEdition *_lastCompletedEdition;
+    id<FCFeedRefreshSessionForYouConfig> _forYouConfig;
 }
 
 @property (readonly, copy, nonatomic) NSSet *activeGroupEmitterIDs; // @synthesize activeGroupEmitterIDs=_activeGroupEmitterIDs;
 @property (readonly, copy, nonatomic) NSDictionary *cursorsByGroupEmitterID; // @synthesize cursorsByGroupEmitterID=_cursorsByGroupEmitterID;
+@property (readonly, copy, nonatomic) id<FCFeedRefreshSessionForYouConfig> forYouConfig; // @synthesize forYouConfig=_forYouConfig;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isNewEdition; // @synthesize isNewEdition=_isNewEdition;
 @property (readonly, nonatomic) BOOL isOffline; // @synthesize isOffline=_isOffline;
@@ -33,6 +36,7 @@
 @property (readonly, nonatomic) BOOL reachedEnd; // @synthesize reachedEnd=_reachedEnd;
 @property (readonly, nonatomic) NSDate *refreshDate; // @synthesize refreshDate=_refreshDate;
 
++ (id)currentEditionWithRefreshDate:(id)arg1 lastCompletedEdition:(id)arg2 fromPaginator:(id)arg3;
 - (void).cxx_destruct;
 - (id)copyByRemovingPendingGroupIdenticalTo:(id)arg1;
 - (id)copyByRemovingPendingGroupsAtIndexes:(id)arg1;
@@ -43,8 +47,8 @@
 - (id)currentEditionFromPaginator:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithIdentifier:(id)arg1 refreshDate:(id)arg2 modificationDate:(id)arg3 lastCompletedEdition:(id)arg4 cursorsByGroupEmitterID:(id)arg5 pendingGroups:(id)arg6 activeGroupEmitterIDs:(id)arg7 reachedEnd:(BOOL)arg8 isOffline:(BOOL)arg9;
-- (id)initWithRefreshDate:(id)arg1 activeGroupEmitterIDs:(id)arg2 isOffline:(BOOL)arg3;
+- (id)initWithIdentifier:(id)arg1 refreshDate:(id)arg2 modificationDate:(id)arg3 lastCompletedEdition:(id)arg4 cursorsByGroupEmitterID:(id)arg5 pendingGroups:(id)arg6 activeGroupEmitterIDs:(id)arg7 reachedEnd:(BOOL)arg8 isOffline:(BOOL)arg9 forYouConfig:(id)arg10;
+- (id)initWithRefreshDate:(id)arg1 activeGroupEmitterIDs:(id)arg2 isOffline:(BOOL)arg3 forYouConfig:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 
 @end

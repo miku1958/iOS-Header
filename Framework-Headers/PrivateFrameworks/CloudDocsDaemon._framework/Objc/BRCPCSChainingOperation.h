@@ -31,6 +31,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)_buildRecordListWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_sendRecordBatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_sendRecordBatch:(id)arg1 recursed:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)createActivity;
 - (void)finishWithResult:(id)arg1 error:(id)arg2;
 - (id)initWithRootItem:(id)arg1 appLibrary:(id)arg2;
 - (void)main;

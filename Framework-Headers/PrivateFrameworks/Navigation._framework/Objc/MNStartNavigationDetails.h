@@ -48,6 +48,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_findRouteWithUUID:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

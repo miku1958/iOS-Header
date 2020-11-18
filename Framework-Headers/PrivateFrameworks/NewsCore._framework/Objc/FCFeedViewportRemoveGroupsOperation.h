@@ -7,11 +7,9 @@
 #import <NewsCore/FCOperation.h>
 
 @class FCFeedDescriptor, FCFeedViewport, FCFeedViewportDiff;
-@protocol FCCoreConfiguration;
 
 @interface FCFeedViewportRemoveGroupsOperation : FCOperation
 {
-    id<FCCoreConfiguration> _configuration;
     FCFeedViewport *_viewport;
     CDUnknownBlockType _groupRemovalTestBlock;
     FCFeedDescriptor *_feedDescriptor;
@@ -20,7 +18,6 @@
     FCFeedViewportDiff *_viewportDiff;
 }
 
-@property (copy, nonatomic) id<FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) FCFeedDescriptor *feedDescriptor; // @synthesize feedDescriptor=_feedDescriptor;
 @property (copy, nonatomic) CDUnknownBlockType groupRemovalTestBlock; // @synthesize groupRemovalTestBlock=_groupRemovalTestBlock;
 @property (copy, nonatomic) CDUnknownBlockType removeGroupsCompletionHandler; // @synthesize removeGroupsCompletionHandler=_removeGroupsCompletionHandler;

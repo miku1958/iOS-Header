@@ -12,6 +12,7 @@
 
 @property (nonatomic, readonly) UIViewController *controller;
 
+- (void)popOrDismissViewControllerAnimated:(BOOL)arg1;
 - (void)presentViewController:(UIViewController *)arg1 animated:(BOOL)arg2;
 - (void)presentViewController:(UIViewController *)arg1 animated:(BOOL)arg2 sourceView:(UIView *)arg3 sourceRect:(struct CGRect)arg4;
 @end

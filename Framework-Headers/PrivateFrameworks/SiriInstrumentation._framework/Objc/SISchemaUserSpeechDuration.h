@@ -6,27 +6,21 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaUserSpeechDuration-Protocol.h>
-
 @class NSData, NSString;
 
-@interface SISchemaUserSpeechDuration : PBCodable <SISchemaUserSpeechDuration, NSSecureCoding>
+@interface SISchemaUserSpeechDuration : PBCodable
 {
     long long _durationMs;
     NSString *_resultCandidateId;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) long long durationMs; // @synthesize durationMs=_durationMs;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *resultCandidateId; // @synthesize resultCandidateId=_resultCandidateId;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

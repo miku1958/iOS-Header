@@ -4,16 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXAction.h>
+#import <objc/NSObject.h>
+
+#import <Silex/SXAction-Protocol.h>
 
 @class NSString;
 
-@interface SXPhoneNumberAction : SXAction
+@interface SXPhoneNumberAction : NSObject <SXAction>
 {
     NSString *_phoneNumber;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *phoneNumber; // @synthesize phoneNumber=_phoneNumber;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *type;
 
 - (void).cxx_destruct;
 - (id)initWithPhoneNumber:(id)arg1;

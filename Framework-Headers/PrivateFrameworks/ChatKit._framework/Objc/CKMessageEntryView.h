@@ -188,6 +188,7 @@
 - (void)_addMessageToInputContextHistory:(id)arg1;
 - (void)_animateExpandForManualToggle:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_animateToCompactLayoutCollapsing:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_contactLimitsChanged:(id)arg1;
 - (id)_currentInputDelegate;
 - (unsigned long long)_durationBucketForAudioComposition:(id)arg1;
 - (void)_dynamicUserInterfaceTraitDidChange;
@@ -238,6 +239,7 @@
 - (void)conversationPreferredServiceChanged:(id)arg1;
 - (struct CGRect)coverFrameThatFitsInSize:(struct CGSize)arg1;
 - (void)dealloc;
+- (void)deferredSetup;
 - (void)dismissAudioActionMenuAnimated:(BOOL)arg1;
 - (void)endDeferringEntryFieldCollapsedStateChanges;
 - (void)expandGestureRecongnized;

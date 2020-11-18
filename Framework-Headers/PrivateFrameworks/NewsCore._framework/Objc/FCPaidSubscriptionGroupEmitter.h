@@ -9,9 +9,11 @@
 #import <NewsCore/FCFeedGroupEmitting-Protocol.h>
 
 @class NSSet, NSString;
+@protocol FCFeedGroupInsertionDescriptor;
 
 @interface FCPaidSubscriptionGroupEmitter : NSObject <FCFeedGroupEmitting>
 {
+    id<FCFeedGroupInsertionDescriptor> _insertionDescriptor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,12 +22,17 @@
 @property (readonly, nonatomic) BOOL emitsSingletonGroups;
 @property (readonly, copy, nonatomic) NSSet *emittableGroupTypes;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) id<FCFeedGroupInsertionDescriptor> insertionDescriptor; // @synthesize insertionDescriptor=_insertionDescriptor;
 @property (readonly, nonatomic) BOOL isRequiredByFollowingEmitters;
 @property (readonly, nonatomic) long long requiredForYouContentTypes;
 @property (readonly, nonatomic) BOOL requiresHeavyweightContent;
+@property (readonly, nonatomic) BOOL shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
 + (id)groupEmitterIdentifier;
+- (void).cxx_destruct;
+- (id)init;
+- (id)initWithInsertionDescriptor:(id)arg1;
 - (BOOL)insertEveryRefreshSession;
 - (id)operationToEmitGroupWithContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;
 - (BOOL)wantsToEmitGroupInContext:(id)arg1 fromCursor:(id)arg2 toCursor:(id)arg3;

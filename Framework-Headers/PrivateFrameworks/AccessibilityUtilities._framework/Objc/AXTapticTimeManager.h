@@ -54,9 +54,9 @@
 - (void)_informObserversWillOutputSSID:(long long)arg1 hapticsDescriptions:(id)arg2;
 - (BOOL)_is24HourTime;
 - (void)_localeDidChange:(id)arg1;
-- (long long)_numberOfTapHoursForClockTime;
+- (long long)_numberOfTapHoursForClockTimeWithEncoding:(long long)arg1;
 - (long long)_numberOfTapMinutesForClockTime;
-- (long long)_numberOfTapsForHourNumber:(long long)arg1;
+- (long long)_numberOfTapsForHourNumber:(long long)arg1 withEncoding:(long long)arg2;
 - (void)_outputWithEnqueueBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_preStartCheck;
 - (BOOL)_startPowerAssertion;

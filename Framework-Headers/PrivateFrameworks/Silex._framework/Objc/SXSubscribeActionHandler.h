@@ -19,7 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)handleSubscribeActionOnPresenter:(id)arg1;
+- (void)handleSubscribeActionOnPresenter:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -16,6 +16,7 @@
 + (id)computeLEQFromAudioExposureValues:(id)arg1;
 + (id)localizedDisplayNameForClassification:(unsigned long long)arg1;
 + (id)localizedDisplayNameForClassification:(unsigned long long)arg1 isEmbedded:(BOOL)arg2;
++ (double)maximumDurationInSecondsForLEQ:(double)arg1 days:(long long)arg2;
 
 @end
 

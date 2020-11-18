@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *controller;
     MISSING_TYPE *resolver;
+    MISSING_TYPE *router;
     MISSING_TYPE *hasVisitedTableOfContents;
 }
 

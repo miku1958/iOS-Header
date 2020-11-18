@@ -20,7 +20,6 @@
 @property (strong, nonatomic) CSTopHitSearchQuery *topHitSearchQuery; // @synthesize topHitSearchQuery=_topHitSearchQuery;
 
 - (void).cxx_destruct;
-- (id)conversationIDForLibraryIndex:(long long)arg1;
 - (id)initWithTopHitSearchQuery:(id)arg1 foundItems:(id)arg2;
 - (long long)rankingIndexForConversationID:(id)arg1;
 - (long long)rankingIndexForMessageLibraryID:(id)arg1;

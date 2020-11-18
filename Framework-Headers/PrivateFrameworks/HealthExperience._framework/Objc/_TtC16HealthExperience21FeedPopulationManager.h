@@ -15,6 +15,7 @@
     MISSING_TYPE *requestCoalesceQueue;
     MISSING_TYPE *queue;
     MISSING_TYPE *relevanceEngineCoordinator;
+    MISSING_TYPE *debounceInterval;
     MISSING_TYPE *$__lazy_storage_$_liveFeedsPopulationDebouncer;
     MISSING_TYPE *$__lazy_storage_$_highlightsFeedPopulationDebouncer;
     MISSING_TYPE *trainingAnalyticsCache;

@@ -23,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) WFDatabaseObjectDescriptor *descriptor;
+@property (readonly, nonatomic) unsigned long long estimatedSize;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *objectIdentifier;
 @property (copy, nonatomic) WFRecord *record; // @synthesize record=_record;

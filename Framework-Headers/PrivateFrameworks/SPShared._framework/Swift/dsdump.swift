@@ -28,6 +28,24 @@
 	// class base protocol
  }
 
+ enum SPShared.NetworkReachabilityStatus {
+
+	// Properties
+	case notReachable  
+	case reachableViaWiFi  
+	case reachableViaWWAN  
+ }
+
+ class SPShared.NetworkReachability : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var reachability : SCNetworkReachabilityRef? // +0x10 (0x8)
+
+	// Swift methods
+	0x51d0  func NetworkReachability.status.getter // getter 
+	0x5410  class func NetworkReachability.__allocating_init() // init 
+ }
+
  class SPShared.UserDefaultsObserver : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
@@ -36,15 +54,15 @@
 	var notify : (_:) // +0x18 (0x10)
 
 	// ObjC -> Swift bridged methods
-	0x7cb0  @objc UserDefaultsObserver.dealloc <stripped>
-	0x7f90  @objc UserDefaultsObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
-	0x8190  @objc UserDefaultsObserver.init <stripped>
-	0x7d10  @objc UserDefaultsObserver..cxx_destruct <stripped>
+	0x7e70  @objc UserDefaultsObserver.dealloc <stripped>
+	0x8150  @objc UserDefaultsObserver.observeValueForKeyPath:ofObject:change:context: <stripped>
+	0x8350  @objc UserDefaultsObserver.init <stripped>
+	0x7ed0  @objc UserDefaultsObserver..cxx_destruct <stripped>
 
 	// Swift methods
-	0x79d0  class func UserDefaultsObserver.__allocating_init(keys:defaults:notificationBlock:) // init 
-	0x7d60  func UserDefaultsObserver.start() // method 
-	0x7e40  func UserDefaultsObserver.stop() // method 
+	0x7b90  class func UserDefaultsObserver.__allocating_init(keys:defaults:notificationBlock:) // init 
+	0x7f20  func UserDefaultsObserver.start() // method 
+	0x8000  func UserDefaultsObserver.stop() // method 
  }
 
  enum SPShared.FutureError {
@@ -67,10 +85,10 @@
 	let block : () // +0x40 (0x10)
 
 	// Swift methods
-	0xbc10  func DispatchTimer.isCancelled.getter // getter 
-	0xbc50  class func DispatchTimer.__allocating_init(queue:deadline:repeating:leeway:block:) // init 
-	0xbe80  func DispatchTimer.resume() // method 
-	0xbeb0  func DispatchTimer.cancel() // method 
+	0xbe00  func DispatchTimer.isCancelled.getter // getter 
+	0xbe40  class func DispatchTimer.__allocating_init(queue:deadline:repeating:leeway:block:) // init 
+	0xc070  func DispatchTimer.resume() // method 
+	0xc0a0  func DispatchTimer.cancel() // method 
  }
 
  class SPShared.DarwinNotificationManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -79,9 +97,9 @@
 	var helpers : [DarwinNotificationHelper] // +0x10 (0x8)
 
 	// Swift methods
-	0xc6b0  func DarwinNotificationManager.registerHelper(helper:) // method 
-	0xc7a0  func DarwinNotificationManager.unregisterHelper(helper:) // method 
-	0xc9e0  func DarwinNotificationManager.setUp() // method 
+	0xc8a0  func DarwinNotificationManager.registerHelper(helper:) // method 
+	0xc990  func DarwinNotificationManager.unregisterHelper(helper:) // method 
+	0xcbd0  func DarwinNotificationManager.setUp() // method 
  }
 
  enum SPShared.Relativity {
@@ -115,6 +133,15 @@
 	let shouldAccept : (_:)? // +0x30
 	let interruptionHandler : (_:)? // +0x40
 	let invalidationHandler : (_:)? // +0x50
+ }
+
+ struct SPShared.SystemVersionNumber {
+
+	// Properties
+	let baseNumber : Int // +0x0
+	let baseLetter : Character // +0x8
+	let buildNumber : Int // +0x18
+	let suffix : Character? // +0x20
  }
 
  enum SPShared.PrivilegeDropper { }
@@ -207,13 +234,12 @@
 
 	// Properties
 	var _isCanceled : Bool
-	var _cancellationBlocks : [()]?
+	var _cancellationBlocks : [()]
 	let accessQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x23640  func <stripped> // modifyCoroutine 
-	0x23680  func <stripped> // method 
-	0x23850  func <stripped> // getter 
+	0x24b30  func <stripped> // method 
+	0x24d00  func <stripped> // getter 
  }
 
  class SPShared._ImmediateScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -222,8 +248,8 @@
 
  class SPShared._MainThreadScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
 	// Swift methods
-	0x23f00  func <stripped> // method 
-	0x24100  func <stripped> // method 
+	0x253c0  func <stripped> // method 
+	0x255c0  func <stripped> // method 
  }
 
  class SPShared._QueueScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -232,9 +258,9 @@
 	let queue : OS_dispatch_queue
 
 	// Swift methods
-	0x24800  func <stripped> // method 
-	0x24a50  func <stripped> // method 
-	0x24db0  func <stripped> // method 
+	0x25cc0  func <stripped> // method 
+	0x25f10  func <stripped> // method 
+	0x26270  func <stripped> // method 
  }
 
  class SPShared._OperationQueueScheduler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SchedulerProtocol {
@@ -243,8 +269,8 @@
 	let queue : NSOperationQueue
 
 	// Swift methods
-	0x25190  func <stripped> // method 
-	0x25300  func <stripped> // method 
+	0x26650  func <stripped> // method 
+	0x267c0  func <stripped> // method 
  }
 
  enum SPShared.LegacyResult {
@@ -260,8 +286,8 @@
 	var notificationHandlers : [CFStringRef : ()] // +0x10 (0x8)
 
 	// Swift methods
-	0x268a0  class func DarwinNotificationHelper.__allocating_init(notificationHandlers:) // init 
-	0x273d0  func DarwinNotificationHelper.onNotification(notificationName:) // method 
+	0x27d40  class func DarwinNotificationHelper.__allocating_init(notificationHandlers:) // init 
+	0x28870  func DarwinNotificationHelper.onNotification(notificationName:) // method 
  }
 
  enum SPShared.DispatchUtilities { }
@@ -274,9 +300,9 @@
 	var duration : Double // +0x0 (0x8)
 
 	// Swift methods
-	0x29350  func PerformanceCapture.duration.getter // getter 
-	0x29380  class func PerformanceCapture.__allocating_init(flag:) // init 
-	0x29520  func PerformanceCapture.finished() // method 
+	0x2a9d0  func PerformanceCapture.duration.getter // getter 
+	0x2aa00  class func PerformanceCapture.__allocating_init(flag:) // init 
+	0x2aba0  func PerformanceCapture.finished() // method 
  }
 
  class SPShared.XPCSessionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -288,8 +314,8 @@
 	var listeners : ListenerRecord
 
 	// Swift methods
-	0x29bd0  class func XPCSessionManager.__allocating_init(name:) // init 
-	0x29c90  func XPCSessionManager.register(service:) // method 
+	0x2b250  class func XPCSessionManager.__allocating_init(name:) // init 
+	0x2b310  func XPCSessionManager.register(service:) // method 
  }
 
  class SPShared._XPCListenerDelegateTrampoline : NSObject /usr/lib/libobjc.A.dylib {
@@ -298,9 +324,9 @@
 	var sessionManager : XPCSessionManager
 
 	// ObjC -> Swift bridged methods
-	0x2a8d0  @objc _XPCListenerDelegateTrampoline.listener:shouldAcceptNewConnection: <stripped>
-	0x2a970  @objc _XPCListenerDelegateTrampoline.init <stripped>
-	0x2a9f0  @objc _XPCListenerDelegateTrampoline..cxx_destruct <stripped>
+	0x2bf50  @objc _XPCListenerDelegateTrampoline.listener:shouldAcceptNewConnection: <stripped>
+	0x2bff0  @objc _XPCListenerDelegateTrampoline.init <stripped>
+	0x2c070  @objc _XPCListenerDelegateTrampoline..cxx_destruct <stripped>
 
 	// Swift methods
  }
@@ -319,10 +345,29 @@
 	let rawValue : UInt
  }
 
+ class __C.SCNetworkReachability {
  struct __C.NSKeyValueChangeKey {
 
 	// Properties
 	var _rawValue : NSString
+ }
+
+ struct __C.sockaddr {
+
+	// Properties
+	var sa_len : UInt8
+	var sa_family : UInt8
+	var sa_data : (Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8)
+ }
+
+ struct __C.sockaddr_in {
+
+	// Properties
+	var sin_len : UInt8
+	var sin_family : UInt8
+	var sin_port : UInt16
+	var sin_addr : in_addr
+	var sin_zero : (Int8, Int8, Int8, Int8, Int8, Int8, Int8, Int8)
  }
 
  struct __C.DirectoryEnumerationOptions {
@@ -335,4 +380,10 @@
 
 	// Properties
 	var _rawValue : NSString
+ }
+
+ struct __C.in_addr {
+
+	// Properties
+	var s_addr : UInt32
  }

@@ -32,7 +32,6 @@
 
 + (void)flushAllInvocationQueues;
 + (id)sharedInvocationQueue;
-+ (unsigned long long)totalInvocationCount;
 - (void).cxx_destruct;
 - (void)_drainQueue:(id)arg1;
 - (void)addInvocation:(id)arg1;

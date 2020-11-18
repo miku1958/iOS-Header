@@ -8,24 +8,36 @@
 
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class FCColor, FCMultiResolutionImage;
+@class FCColor, FCMultiResolutionImage, NSURL;
 
 @interface FCPaywallVisualSpecConfiguration : NSObject <NSCopying>
 {
     FCMultiResolutionImage *_multiResolutionImage;
     FCMultiResolutionImage *_darkStyleMultiResolutionImage;
+    NSURL *_videoURL;
+    long long _videoWidth;
+    long long _videoHeight;
     double _gradientPercentHeight;
     long long _textTopPadding;
     FCColor *_backgroundColor;
     FCColor *_darkStyleBackgroundColor;
+    FCColor *_mastheadTextColor;
+    FCColor *_largeTextColor;
+    FCColor *_smallTextColor;
 }
 
 @property (strong, nonatomic) FCColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) FCColor *darkStyleBackgroundColor; // @synthesize darkStyleBackgroundColor=_darkStyleBackgroundColor;
 @property (strong, nonatomic) FCMultiResolutionImage *darkStyleMultiResolutionImage; // @synthesize darkStyleMultiResolutionImage=_darkStyleMultiResolutionImage;
 @property (nonatomic) double gradientPercentHeight; // @synthesize gradientPercentHeight=_gradientPercentHeight;
+@property (strong, nonatomic) FCColor *largeTextColor; // @synthesize largeTextColor=_largeTextColor;
+@property (strong, nonatomic) FCColor *mastheadTextColor; // @synthesize mastheadTextColor=_mastheadTextColor;
 @property (strong, nonatomic) FCMultiResolutionImage *multiResolutionImage; // @synthesize multiResolutionImage=_multiResolutionImage;
+@property (strong, nonatomic) FCColor *smallTextColor; // @synthesize smallTextColor=_smallTextColor;
 @property (nonatomic) long long textTopPadding; // @synthesize textTopPadding=_textTopPadding;
+@property (nonatomic) long long videoHeight; // @synthesize videoHeight=_videoHeight;
+@property (strong, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
+@property (nonatomic) long long videoWidth; // @synthesize videoWidth=_videoWidth;
 
 + (id)defaultMagazineFeedPaywallVisualSpecConfigurationLarge;
 + (id)defaultMagazineFeedPaywallVisualSpecConfigurationMedium;
@@ -36,7 +48,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithConfigDictionary:(id)arg1;
-- (id)initWithMultiResolutionImage:(id)arg1 darkStyleMultiResolutionImage:(id)arg2 gradientPercentHeight:(double)arg3 textTopPadding:(long long)arg4 backgroundColor:(id)arg5 darkStyleBackgroundColor:(id)arg6;
+- (id)initWithMultiResolutionImage:(id)arg1 darkStyleMultiResolutionImage:(id)arg2 videoURL:(id)arg3 videoWidth:(long long)arg4 videoHeight:(long long)arg5 gradientPercentHeight:(double)arg6 textTopPadding:(long long)arg7 backgroundColor:(id)arg8 darkStyleBackgroundColor:(id)arg9 mastheadTextColor:(id)arg10 largeTextColor:(id)arg11 smallTextColor:(id)arg12;
 - (BOOL)isEqual:(id)arg1;
 
 @end

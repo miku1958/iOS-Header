@@ -26,7 +26,7 @@
 - (id)_nameForMailboxUid:(id)arg1;
 - (BOOL)_shouldConfigureMailboxCache;
 - (int)cachePolicy;
-- (id)connectionForStore:(id)arg1 delegate:(id)arg2 options:(int)arg3;
+- (id)connectionForStore:(id)arg1 delegate:(id)arg2 options:(int)arg3 failedToSelectMailbox:(BOOL *)arg4;
 - (id)debugDescription;
 - (id)description;
 - (void)didFinishActionForChokePoint:(id)arg1 coalescePoint:(id)arg2 withResult:(id)arg3;

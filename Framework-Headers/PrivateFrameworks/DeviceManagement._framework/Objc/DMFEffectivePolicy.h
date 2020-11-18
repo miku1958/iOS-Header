@@ -23,10 +23,13 @@
 @property (readonly, copy, nonatomic) NSDictionary *currentPoliciesByIdentifier; // @synthesize currentPoliciesByIdentifier=_currentPoliciesByIdentifier;
 @property (readonly, nonatomic) long long defaultPolicy; // @synthesize defaultPolicy=_defaultPolicy;
 @property (readonly, nonatomic) unsigned long long defaultPriority; // @synthesize defaultPriority=_defaultPriority;
+@property (readonly, nonatomic) BOOL downtimeEnforced;
 @property (readonly, copy, nonatomic) NSDictionary *prioritiesByIdentifier; // @synthesize prioritiesByIdentifier=_prioritiesByIdentifier;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 
++ (id)downtimeCategoryIdentifiers;
 + (BOOL)supportsSecureCoding;
++ (id)systemCategoryIdentifiers;
 + (id)unblockableBundleIdentifiers;
 + (id)unblockableCategoryIdentifiers;
 - (void).cxx_destruct;

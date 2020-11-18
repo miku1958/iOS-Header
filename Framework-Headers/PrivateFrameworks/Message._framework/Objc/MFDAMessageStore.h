@@ -49,6 +49,7 @@
 - (void)setFlagsForAllMessagesFromDictionary:(id)arg1;
 - (BOOL)shouldDownloadBodyDataForMessage:(id)arg1;
 - (BOOL)shouldGrowFetchWindow;
+- (id)storeData:(id)arg1 forMimePart:(id)arg2 isComplete:(BOOL)arg3;
 - (id)storeSearchResultMatchingSearchText:(id)arg1 criterion:(id)arg2 limit:(unsigned int)arg3 offset:(id)arg4 error:(id *)arg5;
 - (BOOL)wantsLineEndingConversionForMIMEPart:(id)arg1;
 

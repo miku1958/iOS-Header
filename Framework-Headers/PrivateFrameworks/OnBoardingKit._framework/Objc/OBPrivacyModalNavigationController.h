@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 @property (copy) CDUnknownBlockType dismissButtonPressedHandler; // @synthesize dismissButtonPressedHandler=_dismissButtonPressedHandler;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_doneButtonPressed;
 - (void)addDismissButtonWithPressedHandler:(CDUnknownBlockType)arg1;
 - (long long)preferredUserInterfaceStyle;

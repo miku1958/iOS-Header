@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (nonatomic) BOOL numberOfMatchesExceededLimit; // @synthesize numberOfMatchesExceededLimit=_numberOfMatchesExceededLimit;
 
++ (BOOL)isSupported;
 - (void).cxx_destruct;
 - (void)_finishWithError:(id)arg1;
 - (id)_processGroupsInResults:(id)arg1;

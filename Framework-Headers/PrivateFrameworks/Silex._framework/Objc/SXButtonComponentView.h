@@ -27,6 +27,9 @@
 - (struct CGRect)absoluteTextViewFrame;
 - (id)accessibilityContextualLabelForTextView:(id)arg1;
 - (id)accessibilityCustomRotorMembershipForTextView:(id)arg1;
+- (id)accessibilityHint;
+- (id)accessibilityLabel;
+- (id)accessibilityValue;
 - (id)componentIdentifierForTextView:(id)arg1;
 - (void)didMoveToSuperview;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4;

@@ -8,7 +8,7 @@
 
 #import <IMCore/TUCallProviderManagerDelegate-Protocol.h>
 
-@class DMFApplicationPolicyMonitor, NSMutableDictionary, NSSet, NSString, TUCallProviderManager;
+@class DMFApplicationPolicyMonitor, IMCommLimitsPolicyCache, NSMutableDictionary, NSSet, NSString, TUCallProviderManager;
 @protocol OS_dispatch_queue;
 
 @interface IMWhitelistController : NSObject <TUCallProviderManagerDelegate>
@@ -16,9 +16,7 @@
     TUCallProviderManager *_callProviderManager;
     NSObject<OS_dispatch_queue> *_screenTimeDispatchQueue;
     NSSet *_emergencyNumbersSet;
-    NSMutableDictionary *_participantIDsHashToConversationContext;
-    NSMutableDictionary *_conversationContextToParticipantIDsHash;
-    NSMutableDictionary *_participantIDsHashToChat;
+    IMCommLimitsPolicyCache *_policyCache;
     NSMutableDictionary *_bundleIDPolicyMap;
     DMFApplicationPolicyMonitor *_appPolicyMonitor;
 }
@@ -26,13 +24,11 @@
 @property (strong, nonatomic) DMFApplicationPolicyMonitor *appPolicyMonitor; // @synthesize appPolicyMonitor=_appPolicyMonitor;
 @property (strong, nonatomic) NSMutableDictionary *bundleIDPolicyMap; // @synthesize bundleIDPolicyMap=_bundleIDPolicyMap;
 @property (strong, nonatomic) TUCallProviderManager *callProviderManager; // @synthesize callProviderManager=_callProviderManager;
-@property (strong, nonatomic) NSMutableDictionary *conversationContextToParticipantIDsHash; // @synthesize conversationContextToParticipantIDsHash=_conversationContextToParticipantIDsHash;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSSet *emergencyNumbersSet; // @synthesize emergencyNumbersSet=_emergencyNumbersSet;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSMutableDictionary *participantIDsHashToChat; // @synthesize participantIDsHashToChat=_participantIDsHashToChat;
-@property (strong, nonatomic) NSMutableDictionary *participantIDsHashToConversationContext; // @synthesize participantIDsHashToConversationContext=_participantIDsHashToConversationContext;
+@property (strong, nonatomic) IMCommLimitsPolicyCache *policyCache; // @synthesize policyCache=_policyCache;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *screenTimeDispatchQueue; // @synthesize screenTimeDispatchQueue=_screenTimeDispatchQueue;
 @property (readonly) Class superclass;
 
@@ -41,8 +37,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_addObserversToChat:(id)arg1;
-- (void)_participantStateForChatChanged:(id)arg1;
-- (void)_participantsForChatChanged:(id)arg1;
+- (void)_participantsForChatDidChange:(id)arg1;
 - (BOOL)allowedToShowAppExtensionWithBundleIdentifier:(id)arg1;
 - (BOOL)allowedToShowConversationForChat:(id)arg1 sync:(BOOL)arg2;
 - (BOOL)allowedToShowConversationWithHandleIDs:(id)arg1 sync:(BOOL)arg2 context:(id *)arg3;
@@ -50,10 +45,8 @@
 - (void)fetchScreenTimeAppPolicy;
 - (id)init;
 - (void)initializeContext:(id)arg1 participantIDsHash:(id)arg2;
-- (BOOL)isFetchingScreenTimeContextForParticipantIDsHash:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)providersChangedForProviderManager:(id)arg1;
-- (void)refetchScreenTimePolicyForChat:(id)arg1;
 - (void)registerForScreenTimeNotifications;
 - (void)reloadEmergencyNumbersSet;
 

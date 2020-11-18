@@ -8,9 +8,13 @@
 
 @interface TSTableView : UITableView
 {
+    BOOL _tsaxPrefersCustomReorderMessage;
 }
 
+@property (nonatomic) BOOL tsaxPrefersCustomReorderMessage; // @synthesize tsaxPrefersCustomReorderMessage=_tsaxPrefersCustomReorderMessage;
+
 + (long long)ts_preferredStyleForStyle:(long long)arg1;
+- (id)_accessibilityReorderMessageForNewIndexPath:(id)arg1 swappedWithRow:(long long)arg2 movingDown:(BOOL)arg3;
 - (id)contextualActionForDeletingRowAtIndexPath:(id)arg1;
 
 @end

@@ -70,6 +70,5 @@
 - (void)updateLastUsedDate:(NSURL *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)valuesForAttributes:(NSArray *)arg1 forItemAtURL:(NSURL *)arg2 completionHandler:(void (^)(NSDictionary *, NSError *))arg3;
 - (void)wakeUpForURL:(NSURL *)arg1 completionHandler:(void (^)(NSError *, id<FPDWakeupTransaction>))arg2;
-- (void)writeCheckReportTo:(NSFileHandle *)arg1 limitNumberOfItems:(BOOL)arg2 completionHandler:(void (^)(NSError *))arg3;
 @end
 

@@ -41,10 +41,13 @@
 + (id)defaultMagazineFeedSoftPaywallLargePaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultMagazineFeedSoftPaywallMediumPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultMagazineFeedSoftPaywallSmallPaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultMagazineFeedVideoSoftPaywallLargePaywallWithLandingPageArticleID:(id)arg1;
++ (id)defaultMagazineFeedVideoSoftPaywallSmallPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultPDFHardPaywallWithLandingPageArticleID:(id)arg1;
 + (id)defaultPaywallDescription;
 + (id)defaultPaywallTitle;
 + (id)defaultPaywallTopOffsetConfiguration;
++ (id)defaultSmallPaywallTitle;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;

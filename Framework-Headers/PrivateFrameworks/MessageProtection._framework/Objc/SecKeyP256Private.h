@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) SecKeyP256Public *publicKey; // @synthesize publicKey=_publicKey;
 @property (readonly) Class superclass;
 
++ (const struct __CFString *)defaultProtectionClassForPlatform;
 + (id)generate;
 + (id)generateWithAccessControl:(struct __CFString *)arg1;
 - (void).cxx_destruct;

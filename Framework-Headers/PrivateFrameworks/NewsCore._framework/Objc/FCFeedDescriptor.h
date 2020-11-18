@@ -48,14 +48,16 @@
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isSubscribable;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) BOOL needsForYouConfig;
 @property (strong, nonatomic) NSArray *otherArticleIDs; // @synthesize otherArticleIDs=_otherArticleIDs;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<FCFeedTheming> theme;
 
 - (void).cxx_destruct;
+- (id)allEmitterClasses;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)d_fetchAllHeadlinesWithCloudContext:(id)arg1 sinceDate:(id)arg2 filter:(BOOL)arg3 personalize:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id)feedGroupEmittersWithConfiguration:(id)arg1;
+- (id)feedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (void)fetchHeadlinesWithContext:(id)arg1 forIdentifiers:(id)arg2 downloadAssets:(BOOL)arg3 qualityOfService:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)fetchOperationForHeadlinesWithIDs:(id)arg1 context:(id)arg2;
 - (BOOL)hasNotificationsEnabledWithSubscriptionController:(id)arg1;
@@ -66,7 +68,7 @@
 - (BOOL)isSubscribedToWithSubscriptionController:(id)arg1;
 - (id)languagesWithSubscriptionController:(id)arg1;
 - (id)latestHeadlineResultsWithContext:(id)arg1;
-- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1;
+- (id)offlineFeedGroupEmittersWithConfiguration:(id)arg1 forYouConfig:(id)arg2;
 - (void)prepareToProvideFeedGroupEmittersWithCallbackQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)shouldFilterFeedGroupEmitter:(id)arg1 withConfiguration:(id)arg2;
 - (id)streamOfHeadlinesWithIDs:(id)arg1 context:(id)arg2 cachedOnly:(BOOL)arg3 maxCachedAge:(double)arg4;

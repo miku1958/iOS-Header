@@ -10,25 +10,29 @@
 #import <ChatKit/CKMessageEntryViewInputDelegate-Protocol.h>
 #import <ChatKit/UITextInputPayloadDelegate-Protocol.h>
 
-@class CKFullScreenBalloonViewControllerNotification, CKMessageEntryView, CKMessageEntryViewController, CKRaiseGesture, CKScheduledUpdater, NSExtensionContext, NSString;
+@class CKFullScreenBalloonViewControllerNotification, CKMessageEntryView, CKMessageEntryViewController, CKRaiseGesture, CKScheduledUpdater, NSExtensionContext, NSString, STLockoutViewController;
 @protocol CKNotificationChatControllerDelegate;
 
 @interface CKNotificationChatController : CKCoreChatController <UITextInputPayloadDelegate, CKMessageEntryViewDelegate, CKMessageEntryViewInputDelegate>
 {
     BOOL _shouldAllowReplyFromLockScreen;
+    BOOL _allowedByScreenTime;
     NSExtensionContext *_urlOpenContext;
     CKFullScreenBalloonViewControllerNotification *_notificationFullScreenBalloonController;
     CKMessageEntryViewController *_entryViewController;
     CKScheduledUpdater *_typingUpdater;
     CKRaiseGesture *_raiseGesture;
+    STLockoutViewController *_lockoutViewController;
 }
 
+@property (nonatomic) BOOL allowedByScreenTime; // @synthesize allowedByScreenTime=_allowedByScreenTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CKNotificationChatControllerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) CKMessageEntryView *entryView;
 @property (strong, nonatomic) CKMessageEntryViewController *entryViewController; // @synthesize entryViewController=_entryViewController;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) STLockoutViewController *lockoutViewController; // @synthesize lockoutViewController=_lockoutViewController;
 @property (weak, nonatomic) CKFullScreenBalloonViewControllerNotification *notificationFullScreenBalloonController; // @synthesize notificationFullScreenBalloonController=_notificationFullScreenBalloonController;
 @property (strong, nonatomic) CKRaiseGesture *raiseGesture; // @synthesize raiseGesture=_raiseGesture;
 @property (nonatomic) BOOL shouldAllowReplyFromLockScreen; // @synthesize shouldAllowReplyFromLockScreen=_shouldAllowReplyFromLockScreen;
@@ -37,6 +41,8 @@
 @property (weak, nonatomic) NSExtensionContext *urlOpenContext; // @synthesize urlOpenContext=_urlOpenContext;
 
 - (void).cxx_destruct;
+- (void)__raiseGestureRecognized:(id)arg1;
+- (void)_allowedByScreenTimeChanged:(id)arg1;
 - (BOOL)_canShowWhileLocked;
 - (BOOL)_deviceIsPasscodeLocked;
 - (void)_dismissFullScreenBubbleViewControllerWithSendAnimation:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -71,6 +77,7 @@
 - (id)inputAccessoryViewController;
 - (BOOL)inputAccessoryViewControllerEnabled;
 - (id)launchURLForInputMode:(id)arg1;
+- (Class)lockoutViewControllerClass;
 - (BOOL)messageEntryShouldHideCaret:(id)arg1;
 - (void)messageEntryView:(id)arg1 didTapMediaObject:(id)arg2;
 - (BOOL)messageEntryView:(id)arg1 shouldInsertMediaObjects:(id)arg2;

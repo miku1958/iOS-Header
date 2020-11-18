@@ -8,13 +8,14 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class GEOAutomobileOptions, MapsSuggestionsManager, MapsSuggestionsShortcutManager, NSString;
+@class GEOAutomobileOptions, MapsSuggestionsManager, MapsSuggestionsShortcutManager, MapsSuggestionsUser, NSString;
 @protocol OS_dispatch_queue;
 
 @interface MapsSuggestionsEngine : NSObject <MapsSuggestionsObject>
 {
     MapsSuggestionsManager *_entryManager;
     MapsSuggestionsShortcutManager *_shortcutManager;
+    MapsSuggestionsUser *_user;
     NSObject<OS_dispatch_queue> *_optionsSerialQueue;
     int _mapType;
     GEOAutomobileOptions *_automobileOptions;
@@ -55,6 +56,7 @@
 - (BOOL)topSuggestionsForSink:(id)arg1 count:(unsigned long long)arg2 transportType:(int)arg3 callback:(CDUnknownBlockType)arg4 onQueue:(id)arg5;
 - (struct NSArray *)topSuggestionsFromStorageFile:(id)arg1 sink:(id)arg2 count:(unsigned long long)arg3 transportType:(int)arg4;
 - (BOOL)topSuggestionsFromStorageFile:(id)arg1 sink:(id)arg2 count:(unsigned long long)arg3 transportType:(int)arg4 callback:(CDUnknownBlockType)arg5 onQueue:(id)arg6;
+- (id)user;
 
 @end
 

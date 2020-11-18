@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSString, REMFetchRequest, REMObjectID, REMStoreInvocation, REMStoreSwiftInvocation;
+@class CKShare, CKShareMetadata, NSArray, NSData, NSDictionary, NSString, REMDistributedEvaluationCollectionOptions, REMFetchRequest, REMObjectID, REMStoreInvocation, REMStoreSwiftInvocation;
 
 @protocol REMXPCStorePerformer
 - (void)acceptCalDAVShareWithCalendarURL:(NSString *)arg1 acAccountID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)acceptShareWithMetadata:(CKShareMetadata *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
+- (void)compressedDistributedEvaluationDataWithOptions:(REMDistributedEvaluationCollectionOptions *)arg1 completion:(void (^)(NSData *, NSError *))arg2;
 - (void)createShareForObjectWithID:(REMObjectID *)arg1 completion:(void (^)(CKShare *, NSError *))arg2;
 - (void)executeFetchRequest:(REMFetchRequest *)arg1 completion:(void (^)(REMFetchResult *, NSError *))arg2;
 - (void)fetchReplicaManagerForAccountID:(REMObjectID *)arg1 completion:(void (^)(REMReplicaManagerSerializedData *, NSError *))arg2;

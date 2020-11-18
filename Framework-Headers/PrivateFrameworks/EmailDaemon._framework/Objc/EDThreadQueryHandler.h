@@ -70,6 +70,7 @@
 - (void)requestSummaryForMessageObjectID:(id)arg1;
 - (void)start;
 - (void)tearDown;
+- (void)test_tearDown;
 - (id)threadForObjectID:(id)arg1 isPersisted:(BOOL *)arg2 error:(id *)arg3;
 - (void)threadMigratorDidComplete:(id)arg1;
 - (void)triggerMigration;

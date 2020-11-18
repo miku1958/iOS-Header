@@ -14,11 +14,12 @@
 #import <EmailDaemon/EDProtectedDataReconciliationHookResponder-Protocol.h>
 #import <EmailDaemon/EDThreadScopeManagerDataSource-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
+#import <EmailDaemon/EFSignpostable-Protocol.h>
 
 @class EDMessagePersistence, EDPersistenceDatabase, EDPersistenceHookRegistry, EDThreadScopeManager, EFDebouncer, EMBlockedSenderManager, NSMutableArray, NSMutableSet, NSString;
 @protocol EFScheduler, EMVIPManager;
 
-@interface EDThreadPersistence : NSObject <EDDatabaseChangeHookResponder, EDAccountChangeHookResponder, EDMailboxChangeHookResponder, EDMessageChangeHookResponder, EDProtectedDataReconciliationHookResponder, EDThreadScopeManagerDataSource, EDPersistenceDatabaseSchemaProvider, EFLoggable>
+@interface EDThreadPersistence : NSObject <EDDatabaseChangeHookResponder, EDAccountChangeHookResponder, EDMailboxChangeHookResponder, EDMessageChangeHookResponder, EDProtectedDataReconciliationHookResponder, EDThreadScopeManagerDataSource, EFSignpostable, EDPersistenceDatabaseSchemaProvider, EFLoggable>
 {
     NSMutableSet *_threadObjectIDsToRecompute;
     struct os_unfair_lock_s _threadRecomputationLock;
@@ -43,6 +44,7 @@
 @property (readonly, nonatomic) EDPersistenceHookRegistry *hookRegistry; // @synthesize hookRegistry=_hookRegistry;
 @property (readonly, nonatomic) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
 @property (strong, nonatomic) id<EFScheduler> reconciliationCleanupScheduler; // @synthesize reconciliationCleanupScheduler=_reconciliationCleanupScheduler;
+@property (readonly) unsigned long long signpostID;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) EFDebouncer *threadRecomputationDebouncer; // @synthesize threadRecomputationDebouncer=_threadRecomputationDebouncer;
 @property (strong, nonatomic) id<EFScheduler> threadRecomputationScheduler; // @synthesize threadRecomputationScheduler=_threadRecomputationScheduler;
@@ -50,6 +52,7 @@
 @property (readonly, nonatomic) id<EMVIPManager> vipManager; // @synthesize vipManager=_vipManager;
 
 + (id)log;
++ (id)signpostLog;
 + (id)tablesAndForeignKeysToResolve:(id *)arg1 associationsToResolve:(id *)arg2;
 + (id)threadMailboxesTableSchema;
 + (id)threadRecipientsTableSchema;
@@ -116,7 +119,7 @@
 - (id)_sendersForThreadDatabaseID:(id)arg1;
 - (id)_sendersFromMessagesForThreadObjectID:(id)arg1;
 - (BOOL)_setPriorityForDisplayMessageSenderForThreadObjectID:(id)arg1;
-- (id)_statementForOldestThreadInMailbox:(id)arg1 threadScope:(id)arg2;
+- (id)_statementForOldestThreadInMailbox:(id)arg1 threadScope:(id)arg2 createMailboxDatabaseIDIfNecessary:(BOOL)arg3;
 - (id)_threadDatabaseIDExpressionForThreadScopeDatabaseID:(long long)arg1 conversation:(long long)arg2;
 - (id)_threadExpressionForThreadScopeDatabaseID:(long long)arg1 conversation:(long long)arg2;
 - (id)_threadForWrappedMessages:(id)arg1 objectID:(id)arg2;

@@ -8,7 +8,7 @@
 
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class NSString, NSURL;
+@class FCColor, NSString, NSURL;
 
 @interface FCSubscriptionButtonConfiguration : NSObject <NSCopying>
 {
@@ -20,8 +20,12 @@
     unsigned long long _postPurchaseActionType;
     NSURL *_postPurchaseURL;
     NSString *_landingPageArticleID;
+    FCColor *_buttonColor;
+    FCColor *_buttonTextColor;
 }
 
+@property (strong, nonatomic) FCColor *buttonColor; // @synthesize buttonColor=_buttonColor;
+@property (strong, nonatomic) FCColor *buttonTextColor; // @synthesize buttonTextColor=_buttonTextColor;
 @property (nonatomic, getter=shouldDismissLandingPagePostPurchase) BOOL dismissLandingPagePostPurchase; // @synthesize dismissLandingPagePostPurchase=_dismissLandingPagePostPurchase;
 @property (copy, nonatomic) NSString *landingPageArticleID; // @synthesize landingPageArticleID=_landingPageArticleID;
 @property (copy, nonatomic) NSString *nonTrialText; // @synthesize nonTrialText=_nonTrialText;
@@ -44,7 +48,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithConfigDictionary:(id)arg1;
-- (id)initWithSubscriptionButtonType:(unsigned long long)arg1 trialText:(id)arg2 nonTrialText:(id)arg3 targetType:(unsigned long long)arg4 postPurchaseActionType:(unsigned long long)arg5 postPurchaseURL:(id)arg6 landingPageArticleID:(id)arg7 dismissLandingPagePostPurchase:(BOOL)arg8;
+- (id)initWithSubscriptionButtonType:(unsigned long long)arg1 trialText:(id)arg2 nonTrialText:(id)arg3 buttonColor:(id)arg4 buttonTextColor:(id)arg5 targetType:(unsigned long long)arg6 postPurchaseActionType:(unsigned long long)arg7 postPurchaseURL:(id)arg8 landingPageArticleID:(id)arg9 dismissLandingPagePostPurchase:(BOOL)arg10;
 - (BOOL)isEqual:(id)arg1;
 
 @end

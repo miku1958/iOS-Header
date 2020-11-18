@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles42NextAffordanceArticleViewerFeatureProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *nextAffordanceVisibilityProvider;
+    MISSING_TYPE *styler;
 }
 
 @end

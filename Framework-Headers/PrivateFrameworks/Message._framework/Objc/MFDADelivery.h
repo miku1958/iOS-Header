@@ -6,9 +6,11 @@
 
 #import <Message/MFMailDelivery.h>
 
+#import <Message/EFLoggable-Protocol.h>
+
 @class DAMailAccount, MFMessageLibrary, NSString;
 
-@interface MFDADelivery : MFMailDelivery
+@interface MFDADelivery : MFMailDelivery <EFLoggable>
 {
     DAMailAccount *_DAMailAccount;
     MFMessageLibrary *_library;
@@ -18,6 +20,12 @@
     NSString *_originalLongID;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
++ (id)log;
 - (void).cxx_destruct;
 - (void)_updateBasedOnOriginalMessage:(id)arg1;
 - (id)deliverSynchronously;

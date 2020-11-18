@@ -58,8 +58,8 @@
 - (BOOL)_isJournalMalformedForSchema:(id)arg1 connection:(id)arg2;
 - (BOOL)_isRecoverableError:(id)arg1;
 - (long long)_maxRowIDForColumn:(id)arg1 withConnection:(id)arg2;
-- (unsigned long long)_mergeSchema:(id)arg1 connection:(id)arg2;
-- (unsigned long long)_mergeTable:(id)arg1 connection:(id)arg2;
+- (unsigned long long)_mergeSchema:(id)arg1 connection:(id)arg2 journaledRows:(unsigned long long *)arg3 newRows:(unsigned long long *)arg4;
+- (unsigned long long)_mergeTable:(id)arg1 connection:(id)arg2 journaledRows:(unsigned long long *)arg3 newRows:(unsigned long long *)arg4;
 - (BOOL)_performOnDemandReconciliationForConnection:(id)arg1 withSchema:(id)arg2;
 - (unsigned long long)_reconcileJournalsWithSchema:(id)arg1 connection:(id)arg2;
 - (BOOL)_removeExistingDatabaseIDs:(id)arg1 withColumn:(id)arg2 connection:(id)arg3;

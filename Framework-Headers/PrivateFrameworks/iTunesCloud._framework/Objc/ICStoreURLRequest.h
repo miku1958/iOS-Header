@@ -28,6 +28,7 @@
 @property (nonatomic) BOOL shouldUseMescalSigning; // @synthesize shouldUseMescalSigning=_shouldUseMescalSigning;
 @property (readonly, copy, nonatomic) ICStoreRequestContext *storeRequestContext;
 
++ (unsigned long long)_defaultMaxRetryCountForReason:(id)arg1;
 + (id)currentConnectionTypeHeader;
 - (void).cxx_destruct;
 - (void)_getSignatureDataForRequest:(id)arg1 urlBag:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

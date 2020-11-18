@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (BOOL)allowCopyingOfURL:(id)arg1;
 - (BOOL)allowOpenInSafariForURL:(id)arg1;
 
 @end

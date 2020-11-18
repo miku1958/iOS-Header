@@ -10,10 +10,12 @@
 {
 }
 
++ (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityOverridesInvalidFrames;
 - (struct CGRect)accessibilityFrame;
+- (BOOL)continueTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 
 @end
 

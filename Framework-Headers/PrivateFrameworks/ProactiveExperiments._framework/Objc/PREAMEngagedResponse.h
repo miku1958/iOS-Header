@@ -28,6 +28,7 @@
     NSString *_treatmentModelName;
     BOOL _hasQuestionMark;
     BOOL _isApricotDevice;
+    BOOL _isCustomResponse;
     struct {
         unsigned int ageGroup:1;
         unsigned int generationStatus:1;
@@ -39,6 +40,7 @@
         unsigned int responseClassId:1;
         unsigned int hasQuestionMark:1;
         unsigned int isApricotDevice:1;
+        unsigned int isCustomResponse:1;
     } _has;
 }
 
@@ -52,6 +54,7 @@
 @property (readonly, nonatomic) BOOL hasHostProcess;
 @property (nonatomic) BOOL hasInputMethod;
 @property (nonatomic) BOOL hasIsApricotDevice;
+@property (nonatomic) BOOL hasIsCustomResponse;
 @property (readonly, nonatomic) BOOL hasLang;
 @property (readonly, nonatomic) BOOL hasLocale;
 @property (nonatomic) BOOL hasModelId;
@@ -65,6 +68,7 @@
 @property (strong, nonatomic) NSString *hostProcess; // @synthesize hostProcess=_hostProcess;
 @property (nonatomic) int inputMethod; // @synthesize inputMethod=_inputMethod;
 @property (nonatomic) BOOL isApricotDevice; // @synthesize isApricotDevice=_isApricotDevice;
+@property (nonatomic) BOOL isCustomResponse; // @synthesize isCustomResponse=_isCustomResponse;
 @property (strong, nonatomic) NSString *lang; // @synthesize lang=_lang;
 @property (strong, nonatomic) NSString *locale; // @synthesize locale=_locale;
 @property (nonatomic) unsigned int modelId; // @synthesize modelId=_modelId;

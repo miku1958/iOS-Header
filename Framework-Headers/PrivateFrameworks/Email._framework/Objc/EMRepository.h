@@ -21,7 +21,7 @@
 @property (strong, nonatomic) id<EFScheduler> observerScheduler; // @synthesize observerScheduler=_observerScheduler;
 
 - (void).cxx_destruct;
-- (id)_init;
+- (id)initInternal;
 - (id)performQuery:(id)arg1 withObserver:(id)arg2;
 - (void)prepareRepositoryObjects:(id)arg1;
 - (id)trampoliningObserverForObserver:(id)arg1;

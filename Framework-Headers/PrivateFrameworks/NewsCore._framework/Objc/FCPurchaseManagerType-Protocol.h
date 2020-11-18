@@ -5,11 +5,12 @@
 //
 
 @class FCPurchase, NFPromise, NSError, NSString;
-@protocol FCPurchaseManagerDelegate;
+@protocol FCPurchaseFlowOverrideProviderType, FCPurchaseManagerDelegate;
 
 @protocol FCPurchaseManagerType
 
 @property (weak, nonatomic) id<FCPurchaseManagerDelegate> delegate;
+@property (strong, nonatomic) id<FCPurchaseFlowOverrideProviderType> purchaseFlowOverrideProvider;
 
 - (BOOL)anyOngoingPurchases;
 - (void)authenticateAppleIDWithCompletion:(void (^)(BOOL, NSError *))arg1;

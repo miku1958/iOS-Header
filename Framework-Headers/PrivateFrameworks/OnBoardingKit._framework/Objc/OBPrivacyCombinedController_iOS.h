@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSLayoutConstraint *tableViewHeightConstraint; // @synthesize tableViewHeightConstraint=_tableViewHeightConstraint;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)initWithIdentifiers:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (void)showPrivacyGateway:(id)arg1;

@@ -4,15 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXComponentClassification.h>
+#import <Silex/SXButtonComponentClassification.h>
 
-@interface SXSubscriptionButtonComponentClassification : SXComponentClassification
+@interface SXSubscriptionButtonComponentClassification : SXButtonComponentClassification
 {
 }
 
 + (int)role;
 + (id)roleString;
-+ (id)typeString;
 - (id)accessibilityContextualLabel;
 - (Class)componentModelClass;
 

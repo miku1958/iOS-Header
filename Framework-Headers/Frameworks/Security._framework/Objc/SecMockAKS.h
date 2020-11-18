@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (void)failNextDecryptRefKey:(id)arg1;
 + (BOOL)isLocked:(int)arg1;
 + (BOOL)isSEPDown;
 + (unsigned int)keybag_state;
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (void)lockClassA_C;
 + (id)lockedStates;
 + (id)mutabilityQueue;
++ (id)popDecryptRefKeyFailure;
 + (void)reset;
 + (void)setKeybag_state:(unsigned int)arg1;
 + (void)trapdoor;

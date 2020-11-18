@@ -6,19 +6,20 @@
 
 #import <UIKit/UIImageView.h>
 
-#import <Silex/STAXCustomRotorItemProvider-Protocol.h>
+#import <Silex/SWReachabilityObserver-Protocol.h>
+#import <Silex/SXAXCustomRotorItemProvider-Protocol.h>
 #import <Silex/SXAnimatedImageDelegate-Protocol.h>
 #import <Silex/SXDraggable-Protocol.h>
-#import <Silex/SXReachabilityObserver-Protocol.h>
 
 @class NSMapTable, NSString, NSTimer, SXAnimatedImage, SXImageResource, UIActivityIndicatorView, UIImage, UILongPressGestureRecognizer, UIView;
-@protocol NSItemProviderWriting, SXImageViewDelegate, SXReachabilityProvider, SXResourceDataSource;
+@protocol NSItemProviderWriting, SWReachabilityProvider, SXImageViewDelegate, SXResourceDataSource;
 
-@interface SXImageView : UIImageView <STAXCustomRotorItemProvider, SXAnimatedImageDelegate, SXReachabilityObserver, SXDraggable>
+@interface SXImageView : UIImageView <SXAXCustomRotorItemProvider, SXAnimatedImageDelegate, SWReachabilityObserver, SXDraggable>
 {
     BOOL _shouldShowLoadingIndicator;
     BOOL _scrubbingEnabled;
     BOOL _isScrubbing;
+    BOOL _isDecorative;
     BOOL _autoPlayEnabled;
     BOOL _shouldResume;
     BOOL _shouldResumeAfterLoad;
@@ -29,7 +30,7 @@
     unsigned long long _frameIndex;
     CDUnknownBlockType _frameChangeBlock;
     id<SXResourceDataSource> _resourceDataSource;
-    id<SXReachabilityProvider> _reachabilityProvider;
+    id<SWReachabilityProvider> _reachabilityProvider;
     CDUnknownBlockType _preferredQualityImageRequestCancelHandler;
     CDUnknownBlockType _highQualityImageRequestCancelHandler;
     UIImage *_preferredQualityImage;
@@ -69,6 +70,7 @@
 @property (readonly, nonatomic) SXImageResource *imageResource; // @synthesize imageResource=_imageResource;
 @property (nonatomic) unsigned long long intendedFrameIndex; // @synthesize intendedFrameIndex=_intendedFrameIndex;
 @property (strong, nonatomic) NSMapTable *interestTable; // @synthesize interestTable=_interestTable;
+@property (nonatomic) BOOL isDecorative; // @synthesize isDecorative=_isDecorative;
 @property (nonatomic) BOOL isScrubbing; // @synthesize isScrubbing=_isScrubbing;
 @property (nonatomic) long long loadingIndicatorStyle;
 @property (nonatomic) BOOL paused; // @synthesize paused=_paused;
@@ -80,7 +82,7 @@
 @property (nonatomic) struct CGSize preferredQualityLoadingImageSize; // @synthesize preferredQualityLoadingImageSize=_preferredQualityLoadingImageSize;
 @property (readonly, nonatomic) BOOL prefersHighQuality;
 @property (nonatomic) struct CGPoint previousPoint; // @synthesize previousPoint=_previousPoint;
-@property (readonly, nonatomic) id<SXReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
+@property (readonly, nonatomic) id<SWReachabilityProvider> reachabilityProvider; // @synthesize reachabilityProvider=_reachabilityProvider;
 @property (readonly, weak, nonatomic) id<SXResourceDataSource> resourceDataSource; // @synthesize resourceDataSource=_resourceDataSource;
 @property (strong, nonatomic) UILongPressGestureRecognizer *scrubGesture; // @synthesize scrubGesture=_scrubGesture;
 @property (nonatomic) BOOL scrubbingEnabled; // @synthesize scrubbingEnabled=_scrubbingEnabled;

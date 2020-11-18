@@ -46,6 +46,7 @@
 
 + (id)splashPageWithBundleIdentifier:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_defaultButtonTitle;
 - (void)_initializeFromBundle;
 - (void)defaultButtonPressed:(id)arg1;

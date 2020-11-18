@@ -45,7 +45,7 @@
 - (BOOL)isContactBlocked:(id)arg1;
 - (BOOL)isEmailAddressBlocked:(id)arg1;
 - (BOOL)isTokenAddressIsBlocked:(id)arg1;
-- (void)tearDown;
+- (void)test_tearDown;
 - (void)unblockContact:(id)arg1;
 - (void)unblockEmailAddress:(id)arg1;
 - (void)unblockEmailAddresses:(id)arg1;

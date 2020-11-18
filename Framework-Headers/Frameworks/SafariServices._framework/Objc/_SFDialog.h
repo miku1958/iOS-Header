@@ -26,6 +26,7 @@
 + (id)_dialogWithTitle:(id)arg1 message:(id)arg2 primaryAction:(id)arg3 secondaryAction:(id)arg4 applicationModal:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)allowDownloadDialogWithDownload:(id)arg1 initiatingURL:(id)arg2 allowViewAction:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)authenticationDialogWithAuthenticationChallenge:(id)arg1 committedURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)authenticatorDialogForRelyingPartyID:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 + (id)blockedPopupWindowDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)continuePrintingDialogWithTitle:(id)arg1 message:(id)arg2 applicationModal:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)dialogWithWebUIAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

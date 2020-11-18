@@ -6,25 +6,19 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaLanguageProfile-Protocol.h>
+@class NSData;
 
-@class NSData, NSString;
-
-@interface SISchemaLanguageProfile : PBCodable <SISchemaLanguageProfile, NSSecureCoding>
+@interface SISchemaLanguageProfile : PBCodable
 {
     NSData *_l;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSData *l; // @synthesize l=_l;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

@@ -21,7 +21,6 @@ __attribute__((visibility("hidden")))
     HKHealthStore *_healthStore;
     WDSourceOrderController *_sourceOrderController;
     NSMutableSet *_dataSources;
-    NSMutableArray *_orderedDataSources;
     NSArray *_preEditSourcesOrdered;
     NSArray *_readerAppSources;
     NSArray *_readerResearchStudySources;
@@ -32,6 +31,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldInsetSectionContentForDataSourceDataList;
     HKSourceListDataSource *_sourceListDataSource;
     NSArray *_loadedOrderedDataSources;
+    NSMutableArray *_orderedDataSources;
     NSSet *_loadedAllDataSources;
     NSDictionary *_loadedAuthorizationRecordsBySource;
 }
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSSet *loadedAllDataSources; // @synthesize loadedAllDataSources=_loadedAllDataSources;
 @property (copy, nonatomic) NSDictionary *loadedAuthorizationRecordsBySource; // @synthesize loadedAuthorizationRecordsBySource=_loadedAuthorizationRecordsBySource;
 @property (copy, nonatomic) NSArray *loadedOrderedDataSources; // @synthesize loadedOrderedDataSources=_loadedOrderedDataSources;
+@property (strong, nonatomic) NSMutableArray *orderedDataSources; // @synthesize orderedDataSources=_orderedDataSources;
 @property (nonatomic) BOOL shouldInsetSectionContentForDataSourceDataList; // @synthesize shouldInsetSectionContentForDataSourceDataList=_shouldInsetSectionContentForDataSourceDataList;
 @property (strong, nonatomic) HKSourceListDataSource *sourceListDataSource; // @synthesize sourceListDataSource=_sourceListDataSource;
 
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)_fetchDataSourcesForSampleType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchOrderedSourcesForType:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_gatherDataFromDataSource:(id)arg1;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
 - (void)_loadDataSource;
 - (id)_noneTableViewCell;
 - (id)_readerSourceCellForTableView:(id)arg1 sourceArray:(id)arg2 row:(unsigned long long)arg3;

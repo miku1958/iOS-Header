@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <Intents/INFileEnumerable-Protocol.h>
+#import <Intents/INEnumerable-Protocol.h>
 #import <Intents/INImageProxyInjecting-Protocol.h>
 #import <Intents/INInteractionExport-Protocol.h>
 #import <Intents/INKeyImageProducing-Protocol.h>
@@ -15,7 +15,7 @@
 
 @class CSSearchableItem, INImage, INIntent, INIntentResponse, NSDate, NSDateInterval, NSString, NSUUID, SAUISnippet;
 
-@interface INInteraction : NSObject <INFileEnumerable, INInteractionExport, INImageProxyInjecting, INKeyImageProducing, NSSecureCoding, NSCopying>
+@interface INInteraction : NSObject <INEnumerable, INInteractionExport, INImageProxyInjecting, INKeyImageProducing, NSSecureCoding, NSCopying>
 {
     INIntent *_intent;
     INIntentResponse *_intentResponse;
@@ -67,8 +67,7 @@
 - (void)_donateInteractionWithBundleId:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_init;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_intents_enumerateFileURLsWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
-- (void)_intents_enumerateFilesWithBlock:(CDUnknownBlockType)arg1 mutate:(BOOL)arg2;
+- (BOOL)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_searchableItemIncludingData:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionAtIndent:(unsigned long long)arg1;

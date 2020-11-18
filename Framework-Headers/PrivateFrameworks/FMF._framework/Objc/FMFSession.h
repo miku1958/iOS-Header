@@ -171,6 +171,7 @@
 - (void)setHideMyLocationEnabled:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)setLocations:(id)arg1;
 - (BOOL)shouldHandleErrorInFWK:(id)arg1;
+- (void)showMeDeviceAlert;
 - (void)showShareMyLocationRestrictedAlert;
 - (void)showShareMyLocationiCloudSettingsOffAlert;
 - (void)stopSharingMyLocationWithHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 completion:(CDUnknownBlockType)arg4;

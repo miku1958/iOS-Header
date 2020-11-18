@@ -13,6 +13,7 @@
     BOOL _allowCriticalAlerts;
     BOOL _allowPrivateProperties;
     BOOL _allowUnlimitedContentBody;
+    BOOL _allowServiceExtensionFiltering;
     BOOL _hideSettings;
     BOOL _automaticallyShowSettings;
     BOOL _suppressDismissalSync;
@@ -53,6 +54,7 @@
 
 @property (nonatomic) BOOL allowCriticalAlerts; // @synthesize allowCriticalAlerts=_allowCriticalAlerts;
 @property (nonatomic) BOOL allowPrivateProperties; // @synthesize allowPrivateProperties=_allowPrivateProperties;
+@property (nonatomic) BOOL allowServiceExtensionFiltering; // @synthesize allowServiceExtensionFiltering=_allowServiceExtensionFiltering;
 @property (nonatomic) BOOL allowUnlimitedContentBody; // @synthesize allowUnlimitedContentBody=_allowUnlimitedContentBody;
 @property (nonatomic) BOOL allowUnlimitedPendingNotifications; // @synthesize allowUnlimitedPendingNotifications=_allowUnlimitedPendingNotifications;
 @property (nonatomic) BOOL automaticallyShowSettings; // @synthesize automaticallyShowSettings=_automaticallyShowSettings;
@@ -94,7 +96,7 @@
 + (id)_validEnvironmentFromEnvironment:(id)arg1;
 + (id)applicationSourceDescriptionWithApplication:(id)arg1;
 + (id)applicationSourceDescriptionWithBundleIdentifier:(id)arg1;
-+ (id)descriptionWithBundleIdentifier:(id)arg1 path:(id)arg2;
++ (id)descriptionWithBundleIdentifier:(id)arg1 path:(id)arg2 allowServiceExtensionFiltering:(BOOL)arg3;
 + (id)sourceDescriptionWithBundleIdentifier:(id)arg1;
 + (id)systemSourceDescriptionWithBundleIdentifier:(id)arg1;
 + (id)systemSourceDescriptionWithBundleURL:(id)arg1;

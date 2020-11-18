@@ -43,6 +43,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
+- (id)valueForKey:(id)arg1;
 
 @end
 

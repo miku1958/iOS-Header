@@ -62,6 +62,7 @@
 - (BOOL)activateAccounts:(id)arg1 force:(BOOL)arg2 locally:(BOOL)arg3;
 - (BOOL)activateAndHandleReconnectAccount:(id)arg1;
 - (BOOL)activateAndHandleReconnectAccounts:(id)arg1;
+- (long long)activeAccountsAreEligibleForSpamFilter;
 - (id)activeAccountsForService:(id)arg1;
 - (BOOL)addAccount:(id)arg1;
 - (BOOL)addAccount:(id)arg1 atIndex:(int)arg2;

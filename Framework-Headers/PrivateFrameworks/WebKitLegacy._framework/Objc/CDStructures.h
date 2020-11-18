@@ -376,6 +376,13 @@ struct Element {
     struct RefPtr<WebCore::ElementData, WTF::DumbPtrTraits<WebCore::ElementData>> _field14;
 };
 
+struct ElementContext {
+    struct FloatRect _field1;
+    struct ObjectIdentifier<WebCore::PageIdentifierType> _field2;
+    struct ObjectIdentifier<WebCore::DocumentIdentifierType> _field3;
+    struct ObjectIdentifier<WebCore::ElementIdentifierType> _field4;
+};
+
 struct ElementData;
 
 struct Event;
@@ -1485,6 +1492,10 @@ struct ObjectIdentifier<WebCore::DocumentIdentifierType> {
     unsigned long long _field1;
 };
 
+struct ObjectIdentifier<WebCore::ElementIdentifierType> {
+    unsigned long long _field1;
+};
+
 struct ObjectIdentifier<WebCore::PageIdentifierType> {
     unsigned long long _field1;
 };
@@ -1624,6 +1635,11 @@ struct Optional<WebCore::ServiceWorkerData> {
 struct Optional<WebCore::ServiceWorkerRegistrationData> {
     BOOL _field1;
     union storage_t<WebCore::ServiceWorkerRegistrationData> _field2;
+};
+
+struct Optional<WebCore::SystemPreviewInfo> {
+    BOOL _field1;
+    union constexpr_storage_t<WebCore::SystemPreviewInfo> _field2;
 };
 
 struct Optional<WebCore::TextIndicatorData> {
@@ -2381,9 +2397,8 @@ struct ResourceRequest {
     BOOL _field19;
     BOOL _field20;
     BOOL _field21;
-    BOOL _field22;
-    struct IntRect _field23;
-    struct RetainPtr<NSURLRequest> _field24;
+    struct Optional<WebCore::SystemPreviewInfo> _field22;
+    struct RetainPtr<NSURLRequest> _field23;
 };
 
 struct ResourceResponse {
@@ -2615,6 +2630,12 @@ struct SubstituteData {
     struct URL _field2;
     struct ResourceResponse _field3;
     int _field4;
+};
+
+struct SystemPreviewInfo {
+    struct ElementContext _field1;
+    struct IntRect _field2;
+    BOOL _field3;
 };
 
 struct TaskDispatcher<WebCore::Timer> {
@@ -3678,6 +3699,11 @@ union constexpr_storage_t<WebCore::NavigationAction::MouseEventData> {
 union constexpr_storage_t<WebCore::NavigationAction::UIEventWithKeyStateData> {
     unsigned char _field1;
     struct UIEventWithKeyStateData _field2;
+};
+
+union constexpr_storage_t<WebCore::SystemPreviewInfo> {
+    unsigned char _field1;
+    struct SystemPreviewInfo _field2;
 };
 
 union constexpr_storage_t<WebCore::ViewportArguments> {

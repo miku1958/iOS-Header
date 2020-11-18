@@ -10,6 +10,7 @@
 {
 }
 
+- (BOOL)_canShowWhileLocked;
 - (BOOL)displaysLabel;
 - (id)init;
 

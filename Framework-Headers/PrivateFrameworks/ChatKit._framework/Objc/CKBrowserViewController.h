@@ -84,6 +84,7 @@
 - (void)loadView;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)startPPTTestNamed:(id)arg1;
+- (void)tearDownRemoteViewIfNeeded;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidTransitionToCompactPresentation;

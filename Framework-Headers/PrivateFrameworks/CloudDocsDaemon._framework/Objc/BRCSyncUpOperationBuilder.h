@@ -11,26 +11,24 @@
 __attribute__((visibility("hidden")))
 @interface BRCSyncUpOperationBuilder : NSObject
 {
+    NSMutableSet *_fullyChainedParentIDWhitelist;
+    NSMutableSet *_halfChainedParentIDWhitelist;
     BRCAccountSession *_session;
     BRCSyncUpOperation *_op;
-    NSMutableSet *_chainedParentID;
     BRCUserDefaults *_defaults;
 }
 
-@property (strong, nonatomic) NSMutableSet *chainedParentID; // @synthesize chainedParentID=_chainedParentID;
 @property (strong, nonatomic) BRCUserDefaults *defaults; // @synthesize defaults=_defaults;
 @property (strong, nonatomic) BRCSyncUpOperation *op; // @synthesize op=_op;
 @property (strong, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
 
-+ (BOOL)shouldPCSChainItemID:(id)arg1 withParentItemID:(id)arg2 givenChainedParentID:(id)arg3 inZone:(id)arg4 canOptimisticallyChain:(BOOL)arg5 andGetIsChained:(BOOL *)arg6 defaults:(id)arg7;
 - (void).cxx_destruct;
 - (float)addDeletionOfDirectory:(id)arg1;
 - (float)addDeletionOfDocument:(id)arg1;
 - (float)addDeletionOfFinderBookmark:(id)arg1;
 - (float)addDeletionOfItem:(id)arg1;
-- (float)addDeletionOfRecordID:(id)arg1 etag:(id)arg2 previousZoneEtag:(id)arg3;
+- (float)addDeletionOfRecordID:(id)arg1 ckInfo:(id)arg2;
 - (float)addDeletionOfSharedTopLevelItem:(id)arg1;
-- (float)addEditOfAlias:(id)arg1;
 - (float)addEditOfDirectory:(id)arg1;
 - (float)addEditOfDocument:(id)arg1;
 - (float)addEditOfFinderBookmark:(id)arg1;
@@ -41,10 +39,9 @@ __attribute__((visibility("hidden")))
 - (float)fakeSyncForItem:(id)arg1 inZone:(id)arg2;
 - (void)handleDeletionOfSharedItem:(id)arg1;
 - (void)handleEditOfSharedItem:(id)arg1;
+- (id)init;
 - (void)prepareAppLibraryRootSyncUpForItem:(id)arg1;
-- (BOOL)shouldPCSChainDirectory:(id)arg1;
-- (BOOL)shouldPCSChainItem:(id)arg1;
-- (BOOL)shouldPCSChainItem:(id)arg1 canOptimisticallyChain:(BOOL)arg2 andGetIsChained:(BOOL *)arg3;
+- (unsigned char)shouldPCSChainStatusForItem:(id)arg1;
 
 @end
 

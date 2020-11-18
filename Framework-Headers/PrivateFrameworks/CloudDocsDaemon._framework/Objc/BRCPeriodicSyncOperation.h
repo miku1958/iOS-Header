@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
     BRCContainerScheduler *_scheduler;
     CKServerChangeToken *_metadataChangeToken;
     CKServerChangeToken *_zoneHealthChangeToken;
+    CKServerChangeToken *_sideCarChangeToken;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,12 +24,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CKServerChangeToken *metadataChangeToken; // @synthesize metadataChangeToken=_metadataChangeToken;
 @property (readonly, nonatomic) BRCContainerScheduler *scheduler; // @synthesize scheduler=_scheduler;
+@property (readonly, nonatomic) CKServerChangeToken *sideCarChangeToken; // @synthesize sideCarChangeToken=_sideCarChangeToken;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CKServerChangeToken *zoneHealthChangeToken; // @synthesize zoneHealthChangeToken=_zoneHealthChangeToken;
 
 - (void).cxx_destruct;
 - (id)createActivity;
-- (id)initWithContainerScheduler:(id)arg1 metadataChangeToken:(id)arg2 zoneHealthChangeToken:(id)arg3;
+- (id)initWithContainerScheduler:(id)arg1 metadataChangeToken:(id)arg2 zoneHealthChangeToken:(id)arg3 sideCarChangeToken:(id)arg4;
 - (void)main;
 - (BOOL)scheduleSyncDownIfNeededForZoneID:(id)arg1 zoneIfAny:(id)arg2;
 - (BOOL)shouldRetryForError:(id)arg1;

@@ -522,6 +522,13 @@ struct DocumentLoader;
 
 struct Editor;
 
+struct ElementContext {
+    struct FloatRect _field1;
+    struct ObjectIdentifier<WebCore::PageIdentifierType> _field2;
+    struct ObjectIdentifier<WebCore::DocumentIdentifierType> _field3;
+    struct ObjectIdentifier<WebCore::ElementIdentifierType> _field4;
+};
+
 struct ElementData;
 
 struct EventHandler;
@@ -1675,6 +1682,14 @@ struct ObjectIdentifier<WebCore::DocumentIdentifierType> {
     unsigned long long _field1;
 };
 
+struct ObjectIdentifier<WebCore::ElementIdentifierType> {
+    unsigned long long _field1;
+};
+
+struct ObjectIdentifier<WebCore::PageIdentifierType> {
+    unsigned long long _field1;
+};
+
 struct ObjectIdentifier<WebCore::ServiceWorkerRegistrationIdentifierType> {
     unsigned long long _field1;
 };
@@ -1734,6 +1749,11 @@ struct Optional<WebCore::RealtimeMediaSourceCapabilities> {
 struct Optional<WebCore::RealtimeMediaSourceSettings> {
     BOOL _field1;
     union storage_t<WebCore::RealtimeMediaSourceSettings> _field2;
+};
+
+struct Optional<WebCore::SystemPreviewInfo> {
+    BOOL _field1;
+    union constexpr_storage_t<WebCore::SystemPreviewInfo> _field2;
 };
 
 struct Optional<int> {
@@ -2294,9 +2314,8 @@ struct ResourceRequest {
     BOOL _field19;
     BOOL _field20;
     BOOL _field21;
-    BOOL _field22;
-    struct IntRect _field23;
-    struct RetainPtr<NSURLRequest> _field24;
+    struct Optional<WebCore::SystemPreviewInfo> _field22;
+    struct RetainPtr<NSURLRequest> _field23;
 };
 
 struct ResourceResponse {
@@ -2717,6 +2736,12 @@ struct StringImpl;
 
 struct Strong<JSC::JSGlobalObject> {
     struct JSValue *_field1;
+};
+
+struct SystemPreviewInfo {
+    struct ElementContext _field1;
+    struct IntRect _field2;
+    BOOL _field3;
 };
 
 struct SystemSleepListener;
@@ -3731,6 +3756,11 @@ union constexpr_storage_t<WebCore::FloatRect> {
 union constexpr_storage_t<WebCore::IntSize> {
     unsigned char _field1;
     struct IntSize _field2;
+};
+
+union constexpr_storage_t<WebCore::SystemPreviewInfo> {
+    unsigned char _field1;
+    struct SystemPreviewInfo _field2;
 };
 
 union constexpr_storage_t<int> {

@@ -40,7 +40,7 @@
 - (BOOL)hasAffiliationWithClassification:(id)arg1 forDirection:(long long)arg2;
 - (id)init;
 - (BOOL)isCollapsible;
-- (void)setupStyleIdentifiersForRole:(id)arg1;
+- (void)setupStyleIdentifiers;
 
 @end
 

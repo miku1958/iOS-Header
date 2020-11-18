@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *sharingActivityItemFactory;
     MISSING_TYPE *subscriptionController;
+    MISSING_TYPE *backButton;
     MISSING_TYPE *nextButton;
     MISSING_TYPE *barVisibilityAnimator;
     MISSING_TYPE *pageSheetPresentationObserver;

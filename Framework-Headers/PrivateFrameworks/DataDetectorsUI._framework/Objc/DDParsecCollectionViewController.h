@@ -46,6 +46,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_allowsStylingSheetsAsCards;
+- (BOOL)_canShowWhileLocked;
 - (void)_interactionEnded;
 - (void)_updatePreferredContentSize;
 - (void)appDidEnterBackground;

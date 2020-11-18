@@ -73,6 +73,7 @@
 - (struct _NSRange)_accessibilityRangeForTextMarker:(id)arg1;
 - (struct _NSRange)_accessibilityRangeForTextMarkers:(id)arg1;
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
+- (BOOL)_accessibilityReplaceTextInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (BOOL)_accessibilityRequiresContextIdConversion;
 - (id)_accessibilityRoleDescription;
 - (id)_accessibilityScrollAncestor;

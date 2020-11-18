@@ -91,6 +91,7 @@
 + (id)MoveToNextTable;
 + (id)MoveToNextUnderlineText;
 + (id)MoveToNextVisitedLink;
++ (id)MoveToNextWord;
 + (id)MoveToPreviousBlockquote;
 + (id)MoveToPreviousBoldText;
 + (id)MoveToPreviousCharacter;
@@ -119,6 +120,7 @@
 + (id)MoveToPreviousTable;
 + (id)MoveToPreviousUnderlineText;
 + (id)MoveToPreviousVisitedLink;
++ (id)MoveToPreviousWord;
 + (id)MoveToStatusBar;
 + (id)MoveToSystemFocusedElement;
 + (id)MoveToTopOfCurrentContainer;

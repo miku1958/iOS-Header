@@ -121,6 +121,7 @@
 - (BOOL)itemDidShowDefaultUIAtLocation:(struct CGPoint)arg1;
 - (BOOL)itemWasDoubleClickedWithHitTestResult:(id)arg1;
 - (BOOL)itemWasRightClickedWithHitTestResult:(id)arg1 location:(struct CGPoint)arg2;
+- (void)notifySelectedCellsChanged;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)ppt_cleanUpAfterTest:(id)arg1 isScrollTest:(BOOL)arg2;
 - (void)ppt_prepareForTest:(id)arg1 withOptions:(id)arg2 isScrollTest:(BOOL)arg3;

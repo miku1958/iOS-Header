@@ -17,6 +17,7 @@
 
 + (id)keyframesKey;
 + (id)stabCropRectKey;
+- (id)copyKeyframesTrimmingToTimeRange:(CDStruct_5c5366e1)arg1;
 - (BOOL)isEqual:(id)arg1 forKeys:(id)arg2;
 
 @end

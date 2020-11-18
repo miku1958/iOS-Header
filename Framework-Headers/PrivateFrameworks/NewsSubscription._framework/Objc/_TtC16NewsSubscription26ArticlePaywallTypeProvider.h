@@ -14,6 +14,7 @@
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *subscriptionAccessMeter;
     MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *articleSoftPaywallMeter;
 }
 
 @end

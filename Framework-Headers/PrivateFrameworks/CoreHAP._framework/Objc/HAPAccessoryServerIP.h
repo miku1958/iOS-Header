@@ -154,8 +154,6 @@
 - (BOOL)_isSessionEstablished;
 - (id)_joinAccessoryNetworkWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_listPairingsWithCompletionQueue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)_mergeExistingAccessory:(id)arg1 withNewAccessory:(id)arg2;
-- (BOOL)_mergeExistingService:(id)arg1 withNewService:(id)arg2;
 - (void)_notifyDelegateNeedsOwnershipToken;
 - (void)_notifyDelegatesOfAddAccessoryFailure;
 - (void)_notifyDelegatesPairingStopped:(id)arg1;
@@ -208,6 +206,7 @@
 - (void)discoverAccessories;
 - (void)enableEvents:(BOOL)arg1 forCharacteristics:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3 queue:(id)arg4;
 - (void)getAccessoryInfo:(CDUnknownBlockType)arg1;
+- (void)handleHTTPClientUnavailableErrorWithCompletion:(CDUnknownBlockType)arg1 serializationType:(unsigned long long)arg2;
 - (void)handleUpdatesForCharacteristics:(id)arg1 stateNumber:(id)arg2;
 - (BOOL)hasBonjourDeviceInfo;
 - (void)httpClient:(id)arg1 didReceiveEvent:(id)arg2;
@@ -235,6 +234,9 @@
 - (void)requestResource:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resetPostSoftAuthWAC;
 - (void)resolveLocalHostnameWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)sendGETRequestToURL:(id)arg1 timeout:(double)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)sendPOSTRequestToURL:(id)arg1 request:(id)arg2 serializationType:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)sendPUTRequestToURL:(id)arg1 request:(id)arg2 serializationType:(unsigned long long)arg3 timeout:(double)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (id)services;
 - (void)startPairingWithConsentRequired:(BOOL)arg1 config:(id)arg2 ownershipToken:(id)arg3;
 - (void)startReprovisioningWiFiConfig:(id)arg1;

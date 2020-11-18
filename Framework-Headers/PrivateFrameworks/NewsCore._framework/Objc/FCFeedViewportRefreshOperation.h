@@ -6,12 +6,13 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCFeedDescriptor, FCFeedViewport, FCFeedViewportDiff;
+@class FCCloudContext, FCFeedDescriptor, FCFeedViewport, FCFeedViewportDiff;
 @protocol FCCoreConfiguration;
 
 @interface FCFeedViewportRefreshOperation : FCOperation
 {
     id<FCCoreConfiguration> _configuration;
+    FCCloudContext *_context;
     FCFeedViewport *_viewport;
     FCFeedDescriptor *_feedDescriptor;
     CDUnknownBlockType _refreshCompletionHandler;
@@ -20,6 +21,7 @@
 }
 
 @property (copy, nonatomic) id<FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
+@property (strong, nonatomic) FCCloudContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) FCFeedDescriptor *feedDescriptor; // @synthesize feedDescriptor=_feedDescriptor;
 @property (copy, nonatomic) CDUnknownBlockType refreshCompletionHandler; // @synthesize refreshCompletionHandler=_refreshCompletionHandler;
 @property (strong, nonatomic) FCFeedViewportDiff *resultDiff; // @synthesize resultDiff=_resultDiff;
@@ -27,6 +29,7 @@
 @property (strong, nonatomic) FCFeedViewport *viewport; // @synthesize viewport=_viewport;
 
 - (void).cxx_destruct;
+- (void)_continueWithRefreshDate:(id)arg1 forYouConfig:(id)arg2;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
 - (BOOL)validateOperation;

@@ -38,6 +38,7 @@
 - (void)sbsyncWithDuration:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)sendPayoutWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)sendSummaryWithCompletionBlock:(CDUnknownBlockType)arg1;
+- (void)subscriptionDetailsWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)subscriptionStateWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)topAppsForAccount:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 

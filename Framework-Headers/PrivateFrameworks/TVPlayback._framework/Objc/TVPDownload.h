@@ -13,6 +13,7 @@
 
 @interface TVPDownload : NSObject <AVAssetDownloadDelegate>
 {
+    BOOL _performKeyFetchOnly;
     BOOL _downloadIsComplete;
     NSObject<TVPMediaItem> *_mediaItem;
     long long _state;
@@ -47,6 +48,7 @@
 @property (strong, nonatomic) NSMapTable *mediaSelectionToProgressMap; // @synthesize mediaSelectionToProgressMap=_mediaSelectionToProgressMap;
 @property (nonatomic) unsigned long long numMediaSelectionsCompleted; // @synthesize numMediaSelectionsCompleted=_numMediaSelectionsCompleted;
 @property (nonatomic) unsigned long long numMediaSelectionsThatWillReceiveDownloadProgress; // @synthesize numMediaSelectionsThatWillReceiveDownloadProgress=_numMediaSelectionsThatWillReceiveDownloadProgress;
+@property (nonatomic) BOOL performKeyFetchOnly; // @synthesize performKeyFetchOnly=_performKeyFetchOnly;
 @property (readonly, nonatomic) double progress;
 @property (strong, nonatomic) TVPReportingSession *reportingSession; // @synthesize reportingSession=_reportingSession;
 @property (nonatomic) long long state; // @synthesize state=_state;

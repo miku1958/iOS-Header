@@ -37,6 +37,7 @@
 - (id)init;
 - (id)loadAllChats;
 - (id)newestChatWithOriginalGroupID:(id)arg1 onService:(id)arg2;
+- (void)remapMessageError:(unsigned int)arg1 toError:(unsigned int)arg2 forChat:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)removeMessageWithGUID:(id)arg1 fromChat:(id)arg2;
 - (void)setChatIsFiltered:(BOOL)arg1 withChatGuid:(id)arg2;
 - (id)storeChat:(id)arg1;

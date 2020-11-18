@@ -36,7 +36,6 @@
 - (void)getReturnValue:(void *)arg1;
 - (id)init;
 - (void)invoke;
-- (void)invokeSuper;
 - (void)invokeUsingIMP:(CDUnknownFunctionPointerType)arg1;
 - (void)invokeWithTarget:(id)arg1;
 - (void)retainArguments;

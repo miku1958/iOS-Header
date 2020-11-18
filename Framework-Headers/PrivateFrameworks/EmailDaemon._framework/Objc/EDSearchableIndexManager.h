@@ -35,6 +35,7 @@
 - (void)_removeAllItemsFromIndexAndWait:(BOOL)arg1 options:(unsigned long long)arg2;
 - (void)_removeItemsForIndexableMessages:(id)arg1;
 - (void)enableIndexingAndBeginScheduling:(BOOL)arg1;
+- (void)enableIndexingAndBeginScheduling:(BOOL)arg1 budgetConfiguration:(id)arg2;
 - (id)initWithDatabase:(id)arg1 hookResponder:(id)arg2;
 - (void)persistenceDidAddLabels:(id)arg1 removeLabels:(id)arg2 messages:(id)arg3 generationWindow:(id)arg4;
 - (void)persistenceDidAddMessages:(id)arg1 generationWindow:(id)arg2;

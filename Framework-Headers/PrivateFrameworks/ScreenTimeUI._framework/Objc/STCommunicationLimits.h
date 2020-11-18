@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
 @property long long downtimeCommunicationLimit; // @synthesize downtimeCommunicationLimit=_downtimeCommunicationLimit;
 @property long long screenTimeCommunicationLimit; // @synthesize screenTimeCommunicationLimit=_screenTimeCommunicationLimit;
 
++ (BOOL)hasShownCompatibilityAlertForDSID:(id)arg1;
++ (void)setHasShownCompatibilityAlert:(BOOL)arg1 forDSID:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

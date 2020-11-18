@@ -77,11 +77,11 @@
 - (void)loadedTimeRangesChanged;
 - (void)muteStateChanged;
 - (void)pause;
-- (void)play;
+- (void)playWithButtonTapped:(BOOL)arg1;
 - (void)playbackBufferFullStateChanged;
 - (void)playbackFailedWithError:(id)arg1;
 - (void)playbackFinished;
-- (void)playbackInitiated;
+- (void)playbackInitiatedWithButtonTapped:(BOOL)arg1;
 - (void)playbackLikelyToKeepUpStateChanged;
 - (void)playbackPaused;
 - (void)playbackResumed;

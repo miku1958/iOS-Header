@@ -28,7 +28,7 @@
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <PhotosUI/UIScrollViewDelegate-Protocol.h>
 
-@class CEKBadgeTextView, CEKLightingControl, CEKLightingNameBadge, NSArray, NSObject, NSString, NSTimer, NSURL, NUBufferRenderClient, NUComposition, NUMediaView, PHContentEditingInput, PICompositionController, PLEditSource, PLPhotoEditRenderer, PUAdjustmentsToolController, PUAutoAdjustmentController, PUCropToolController, PUEditPluginSession, PUEditableMediaProvider, PUEnterEditPerformanceEventBuilder, PUExitEditPerformanceEventBuilder, PUFilterToolController, PULivePhotoEffectsToolController, PUMediaDestination, PUPhotoEditAggregateSession, PUPhotoEditButtonCenteredToolbar, PUPhotoEditIrisModel, PUPhotoEditLivePhotoVideoToolController, PUPhotoEditPerfHUD, PUPhotoEditPortraitToolController, PUPhotoEditReframeHUD, PUPhotoEditResourceLoader, PUPhotoEditSnapshot, PUPhotoEditToolController, PUPhotoEditToolPickerController, PUPhotoEditToolbar, PUPhotoEditValuesCalculator, PUPhotoEditViewControllerSpec, PUProgressIndicatorView, PURedeyeToolController, PUTimeInterval, PUTouchingGestureRecognizer, PXImageLayerModulator, PXUIAssetBadgeView, UIAlertController, UIButton, UIImageView, UIPencilInteraction, UITapGestureRecognizer, UIView, UIViewController, _PPTState;
+@class CEKBadgeTextView, CEKLightingControl, CEKLightingNameBadge, NSArray, NSMutableSet, NSObject, NSString, NSTimer, NSURL, NUBufferRenderClient, NUComposition, NUMediaView, PHContentEditingInput, PICompositionController, PLEditSource, PLPhotoEditRenderer, PUAdjustmentsToolController, PUAutoAdjustmentController, PUCropToolController, PUEditPluginSession, PUEditableMediaProvider, PUEnterEditPerformanceEventBuilder, PUExitEditPerformanceEventBuilder, PUFilterToolController, PULivePhotoEffectsToolController, PUMediaDestination, PUPhotoEditAggregateSession, PUPhotoEditButtonCenteredToolbar, PUPhotoEditIrisModel, PUPhotoEditLivePhotoVideoToolController, PUPhotoEditPerfHUD, PUPhotoEditPortraitToolController, PUPhotoEditReframeHUD, PUPhotoEditResourceLoader, PUPhotoEditSnapshot, PUPhotoEditToolController, PUPhotoEditToolPickerController, PUPhotoEditToolbar, PUPhotoEditValuesCalculator, PUPhotoEditViewControllerSpec, PUProgressIndicatorView, PURedeyeToolController, PUTimeInterval, PUTouchingGestureRecognizer, PXImageLayerModulator, PXUIAssetBadgeView, UIAlertController, UIButton, UIImageView, UIPencilInteraction, UITapGestureRecognizer, UIView, UIViewController, _PPTState;
 @protocol NUImageProperties, OS_dispatch_source, PUEditableAsset, PUPhotoEditViewControllerPresentationDelegate, PUPhotoEditViewControllerSessionDelegate;
 
 @interface PUPhotoEditViewController : PUEditViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, UIPencilInteractionDelegate, PUPhotoEditToolControllerDelegate, PUVideoEditPluginSessionDataSource, PUImageEditPluginSessionDataSource, PUEditPluginSessionDelegate, PXPhotoLibraryUIChangeObserver, PUOneUpAssetTransitionViewController, PXForcedDismissableViewController, PUPhotoEditIrisModelChangeObserver, PHLivePhotoViewDelegate, PUPhotoEditResourceLoaderDelegate, PUViewControllerSpecChangeObserver, NUMediaViewDelegatePrivate, PUPhotoEditToolbarDelegate, PXChangeObserver, PICompositionControllerDelegate, PXTrimToolPlayerWrapperNUMediaViewPlayerItemSource, PUPhotoEditLayoutSource>
@@ -115,11 +115,13 @@
     BOOL _shouldShowPortraitTool;
     CEKLightingControl *_lightingControl;
     CEKLightingNameBadge *_lightingNameBadge;
+    NSMutableSet *_assetsWaitingForLibraryNotification;
     BOOL __hasLoadedRaw;
     BOOL __penultimateAvailable;
     BOOL _runningAutoCalculators;
     BOOL __revertingToOriginal;
     BOOL __shouldBePreviewingOriginal;
+    BOOL _burningInTrim;
     long long _layoutOrientation;
     PUPhotoEditViewControllerSpec *_photoEditSpec;
     NSObject<PUEditableAsset> *_photo;
@@ -160,6 +162,7 @@
     UIAlertController *__revertConfirmationAlert;
     UIAlertController *__jpegPreviewForRawConfirmationAlert;
     UIAlertController *__irisRevertConfirmationAlert;
+    UIAlertController *__saveTrimOptionsAlert;
     long long _mediaViewEdgeInsetsUpdateDisableCount;
     UIPencilInteraction *_pencilInteraction;
     PUPhotoEditPerfHUD *_perfHUD;
@@ -213,12 +216,14 @@
 @property (weak, nonatomic, setter=_setRevertConfirmationAlert:) UIAlertController *_revertConfirmationAlert; // @synthesize _revertConfirmationAlert=__revertConfirmationAlert;
 @property (nonatomic, getter=_isRevertingToOriginal, setter=_setRevertingToOriginal:) BOOL _revertingToOriginal; // @synthesize _revertingToOriginal=__revertingToOriginal;
 @property (nonatomic, setter=_setSaveCompletionDismissalState:) long long _saveCompetionDismissalState; // @synthesize _saveCompetionDismissalState=__saveCompetionDismissalState;
+@property (weak, nonatomic, setter=_setSaveTrimOptionsAlert:) UIAlertController *_saveTrimOptionsAlert; // @synthesize _saveTrimOptionsAlert=__saveTrimOptionsAlert;
 @property (nonatomic, setter=_setShouldBePreviewingOriginal:) BOOL _shouldBePreviewingOriginal; // @synthesize _shouldBePreviewingOriginal=__shouldBePreviewingOriginal;
 @property (copy, nonatomic, setter=_setUneditedComposition:) NUComposition *_uneditedComposition; // @synthesize _uneditedComposition=__uneditedComposition;
 @property (strong, nonatomic, setter=_setValuesCalculator:) PUPhotoEditValuesCalculator *_valuesCalculator; // @synthesize _valuesCalculator=__valuesCalculator;
 @property (nonatomic, setter=_setWorkImageVersion:) long long _workImageVersion; // @synthesize _workImageVersion=__workImageVersion;
 @property (strong, nonatomic) NSTimer *assetChangeTimeoutTimer; // @synthesize assetChangeTimeoutTimer=_assetChangeTimeoutTimer;
 @property (strong, nonatomic) PUTimeInterval *autoCalcInterval; // @synthesize autoCalcInterval=_autoCalcInterval;
+@property (nonatomic) BOOL burningInTrim; // @synthesize burningInTrim=_burningInTrim;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) long long editSourceSelection; // @synthesize editSourceSelection=_editSourceSelection;
@@ -266,8 +271,8 @@
 + (void)preheatEditDependenciesIfNeeded;
 - (void).cxx_destruct;
 - (id)_allTools;
+- (void)_askToSaveCopyIfNecessary:(CDUnknownBlockType)arg1;
 - (BOOL)_canCompositionControllerBeReverted:(id)arg1;
-- (BOOL)_canShowWhileLocked;
 - (void)_cancelInProgressSaveRequest;
 - (void)_captureSnapshotOfBasePhotoWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_chooseInitialEditingTool;
@@ -342,6 +347,7 @@
 - (int)_revertToEmptyCompositionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_runFinalizerWithDebugMessages:(BOOL)arg1;
 - (int)_saveRevertedComposition:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)_saveTrimAsCopyForCompositionController:(id)arg1 withCallback:(CDUnknownBlockType)arg2;
 - (void)_setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 - (void)_setOriginalURL:(id)arg1 originalEditSource:(id)arg2 originalOvercaptureSource:(id)arg3;
 - (void)_setPlaceholderImage:(id)arg1 filters:(id)arg2;
@@ -358,7 +364,7 @@
 - (void)_startMarkupSession;
 - (void)_startMonitoringSaveProgressIfNeeded;
 - (void)_startTimeoutTimerForAssetChange;
-- (void)_startWaitingForAssetChange;
+- (void)_startWaitingForAssetChange:(id)arg1;
 - (void)_startWaitingForSaveRequestID:(int)arg1;
 - (void)_stopMonitoringSaveProgress;
 - (void)_stopWaitingForAssetChangeWithAsset:(id)arg1 success:(BOOL)arg2;

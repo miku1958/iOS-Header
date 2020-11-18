@@ -26,7 +26,7 @@
 - (id)activityProviderForAction:(id)arg1;
 - (id)init;
 - (id)previewActivityForAction:(id)arg1;
-- (void)registerActionActivityProvider:(id)arg1 actionType:(Class)arg2;
+- (void)registerActionActivityProvider:(id)arg1 actionType:(id)arg2;
 
 @end
 

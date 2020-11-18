@@ -21,6 +21,8 @@
     NSString *_moreVideosArticleListID;
     NSMutableArray *_specialEventArticleIDs;
     NSString *_spotlightArticleID;
+    NSString *_todayFeedConfiguration;
+    NSMutableArray *_todayFeedTopStoriesArticleIDs;
     NSMutableArray *_topStoriesCombinedArticleIDs;
     NSMutableArray *_topVideosArticleIDs;
     NSString *_trendingArticleListID;
@@ -37,10 +39,13 @@
 @property (readonly, nonatomic) BOOL hasCoverArticlesArticleListID;
 @property (readonly, nonatomic) BOOL hasMoreVideosArticleListID;
 @property (readonly, nonatomic) BOOL hasSpotlightArticleID;
+@property (readonly, nonatomic) BOOL hasTodayFeedConfiguration;
 @property (readonly, nonatomic) BOOL hasTrendingArticleListID;
 @property (strong, nonatomic) NSString *moreVideosArticleListID; // @synthesize moreVideosArticleListID=_moreVideosArticleListID;
 @property (strong, nonatomic) NSMutableArray *specialEventArticleIDs; // @synthesize specialEventArticleIDs=_specialEventArticleIDs;
 @property (strong, nonatomic) NSString *spotlightArticleID; // @synthesize spotlightArticleID=_spotlightArticleID;
+@property (strong, nonatomic) NSString *todayFeedConfiguration; // @synthesize todayFeedConfiguration=_todayFeedConfiguration;
+@property (strong, nonatomic) NSMutableArray *todayFeedTopStoriesArticleIDs; // @synthesize todayFeedTopStoriesArticleIDs=_todayFeedTopStoriesArticleIDs;
 @property (strong, nonatomic) NSMutableArray *topStoriesCombinedArticleIDs; // @synthesize topStoriesCombinedArticleIDs=_topStoriesCombinedArticleIDs;
 @property (strong, nonatomic) NSMutableArray *topVideosArticleIDs; // @synthesize topVideosArticleIDs=_topVideosArticleIDs;
 @property (strong, nonatomic) NSString *trendingArticleListID; // @synthesize trendingArticleListID=_trendingArticleListID;
@@ -49,12 +54,14 @@
 + (Class)editorialArticleListIDsType;
 + (Class)editorialSectionTagIDsType;
 + (Class)specialEventArticleIDsType;
++ (Class)todayFeedTopStoriesArticleIDsType;
 + (Class)topStoriesCombinedArticleIDsType;
 + (Class)topVideosArticleIDsType;
 - (void)addBreakingNewsArticleIDs:(id)arg1;
 - (void)addEditorialArticleListIDs:(id)arg1;
 - (void)addEditorialSectionTagIDs:(id)arg1;
 - (void)addSpecialEventArticleIDs:(id)arg1;
+- (void)addTodayFeedTopStoriesArticleIDs:(id)arg1;
 - (void)addTopStoriesCombinedArticleIDs:(id)arg1;
 - (void)addTopVideosArticleIDs:(id)arg1;
 - (id)breakingNewsArticleIDsAtIndex:(unsigned long long)arg1;
@@ -63,6 +70,7 @@
 - (void)clearEditorialArticleListIDs;
 - (void)clearEditorialSectionTagIDs;
 - (void)clearSpecialEventArticleIDs;
+- (void)clearTodayFeedTopStoriesArticleIDs;
 - (void)clearTopStoriesCombinedArticleIDs;
 - (void)clearTopVideosArticleIDs;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -79,6 +87,8 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)specialEventArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)specialEventArticleIDsCount;
+- (id)todayFeedTopStoriesArticleIDsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)todayFeedTopStoriesArticleIDsCount;
 - (id)topStoriesCombinedArticleIDsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)topStoriesCombinedArticleIDsCount;
 - (id)topVideosArticleIDsAtIndex:(unsigned long long)arg1;

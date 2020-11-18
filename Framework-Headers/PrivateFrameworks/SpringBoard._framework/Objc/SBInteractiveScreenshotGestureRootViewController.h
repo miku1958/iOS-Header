@@ -68,6 +68,7 @@
 - (void).cxx_destruct;
 - (void)_addGestureUpdateWithCommitProgress:(double)arg1 timestamp:(double)arg2;
 - (struct CATransform3D)_anchoredTransformForAnchorPoint:(struct CGPoint)arg1 bounds:(struct CGRect)arg2 center:(struct CGPoint)arg3 transform:(struct CATransform3D)arg4;
+- (BOOL)_canShowWhileLocked;
 - (void)_cancellationCommitProgressAnimatablePropertyPresentationValueDidChange;
 - (struct CATransform3D)_contentTransformForCommitProgress:(double)arg1 contentInsets:(struct UIEdgeInsets)arg2 additionalContentTranslation:(struct CGPoint)arg3;
 - (id)_createFlashViewWithFrame:(struct CGRect)arg1;

@@ -6,28 +6,22 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaLocation-Protocol.h>
+@class NSData;
 
-@class NSData, NSString;
-
-@interface SISchemaLocation : PBCodable <SISchemaLocation, NSSecureCoding>
+@interface SISchemaLocation : PBCodable
 {
     float _latitude;
     float _longitude;
     float _horizontalAccuracyInMeters;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (nonatomic) float horizontalAccuracyInMeters; // @synthesize horizontalAccuracyInMeters=_horizontalAccuracyInMeters;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) float latitude; // @synthesize latitude=_latitude;
 @property (nonatomic) float longitude; // @synthesize longitude=_longitude;
-@property (readonly) Class superclass;
 
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

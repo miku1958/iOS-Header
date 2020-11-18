@@ -68,6 +68,7 @@
 - (BOOL)_addURL:(id)arg1 type:(long long)arg2 preview:(id)arg3;
 - (BOOL)_addVideoAsset:(id)arg1 preview:(id)arg2;
 - (BOOL)_addVideoData:(id)arg1 preview:(id)arg2;
+- (BOOL)_canShowWhileLocked;
 - (void)_handleRemoteViewFailure;
 - (void)_instantiateAndBeginExtensionIfNeeded;
 - (void)_instantiateAndBeginExtensionIfNeededWithCompletion:(CDUnknownBlockType)arg1;

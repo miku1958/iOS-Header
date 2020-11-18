@@ -67,6 +67,7 @@
 
 - (void).cxx_destruct;
 - (long long)_actionTypeForMetrics;
+- (BOOL)_canShowWhileLocked;
 - (id)_cardContentWithIntentResponse:(id)arg1;
 - (id)_debugStringForNSUA;
 - (id)_defaults;

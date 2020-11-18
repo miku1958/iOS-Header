@@ -12,6 +12,10 @@
 {
     MISSING_TYPE *colorPaletteProvider;
     MISSING_TYPE *featuredIssueSupplementaryViewRenderer;
+    MISSING_TYPE *formatLayoutViewRenderer;
+    MISSING_TYPE *internalErrorViewRenderer;
+    MISSING_TYPE *formatHeaderRegistrationIdentifiers;
+    MISSING_TYPE *formatFooterRegistrationIdentifiers;
 }
 
 @end

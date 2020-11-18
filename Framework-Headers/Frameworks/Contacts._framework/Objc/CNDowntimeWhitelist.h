@@ -18,6 +18,7 @@
 @property (readonly) id<NSObject> contactStoreDidChangeNotificationToken; // @synthesize contactStoreDidChangeNotificationToken=_contactStoreDidChangeNotificationToken;
 @property (readonly) CNContactStore *store; // @synthesize store=_store;
 
++ (BOOL)isWhitelistedContact:(id)arg1;
 + (id)os_log;
 - (void).cxx_destruct;
 - (id)allWhitelistedContacts;
@@ -27,7 +28,6 @@
 - (id)init;
 - (id)initWithContactStore:(id)arg1;
 - (BOOL)isHandleStringWhitelisted:(id)arg1;
-- (BOOL)isWhitelisted:(id)arg1;
 - (id)keys;
 - (id)whitelistedHandleStringsFromHandleStrings:(id)arg1;
 

@@ -29,6 +29,7 @@
 
 - (void).cxx_destruct;
 - (void)_addStatusBar;
+- (BOOL)_canShowWhileLocked;
 - (void)_continueTapped:(id)arg1;
 - (void)_laterTapped:(id)arg1;
 - (void)_removeStatusBar;

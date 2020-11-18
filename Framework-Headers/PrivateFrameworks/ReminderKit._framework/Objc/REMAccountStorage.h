@@ -22,6 +22,7 @@
     BOOL _listsDADisplayOrderChanged;
     BOOL _inactive;
     BOOL _didChooseToMigrate;
+    BOOL _didChooseToMigrateLocally;
     BOOL _didFinishMigration;
     BOOL _daAllowsCalendarAddDeleteModify;
     BOOL _daSupportsSharedCalendars;
@@ -46,6 +47,7 @@
 @property (copy, nonatomic) NSString *daSyncToken; // @synthesize daSyncToken;
 @property (nonatomic) BOOL daWasMigrated; // @synthesize daWasMigrated=_daWasMigrated;
 @property (nonatomic) BOOL didChooseToMigrate; // @synthesize didChooseToMigrate=_didChooseToMigrate;
+@property (nonatomic) BOOL didChooseToMigrateLocally; // @synthesize didChooseToMigrateLocally=_didChooseToMigrateLocally;
 @property (nonatomic) BOOL didFinishMigration; // @synthesize didFinishMigration=_didFinishMigration;
 @property (readonly, nonatomic) NSString *displayName;
 @property (copy, nonatomic) NSString *externalIdentifier; // @synthesize externalIdentifier;

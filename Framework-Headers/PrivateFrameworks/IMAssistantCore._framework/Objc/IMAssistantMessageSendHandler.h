@@ -34,6 +34,7 @@
 - (id)initWithDataSource:(id)arg1 delegate:(id)arg2 intentIdentifier:(id)arg3;
 - (BOOL)isMemberOfChat:(id)arg1;
 - (id)recipientDisambiguationResultsFromMultipleRelevantChats:(id)arg1;
+- (BOOL)recipientHandleResolutionResultsAllowedByScreentime:(id)arg1;
 - (id)recipientsResolutionFailureResultWithResult:(id)arg1 forRecipient:(id)arg2 amongRecipients:(id)arg3;
 - (void)resolveContentForSendMessage:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)resolveMessageContentWithString:(id)arg1;

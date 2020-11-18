@@ -13,6 +13,7 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManagerUpdateQueue;
     MISSING_TYPE *dataManagerDelegateQueue;
+    MISSING_TYPE *cacheBlobQueue;
     MISSING_TYPE *pendingDataManager;
     MISSING_TYPE *following;
     MISSING_TYPE *followers;
@@ -30,7 +31,7 @@
     MISSING_TYPE *locationAlertsOnFriendsByFriends;
     MISSING_TYPE *internalLocationAlerts;
     MISSING_TYPE *permanentDataCache;
-    MISSING_TYPE *cacheBlob;
+    MISSING_TYPE *_cacheBlob;
     MISSING_TYPE *initializedFromCache;
     MISSING_TYPE *contactsController;
     MISSING_TYPE *contactMatchingCache;

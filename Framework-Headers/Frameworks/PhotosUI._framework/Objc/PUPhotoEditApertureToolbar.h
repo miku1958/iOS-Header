@@ -50,7 +50,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UILabel *valueLabel; // @synthesize valueLabel=_valueLabel;
 
 - (void).cxx_destruct;
-- (BOOL)_canShowWhileLocked;
 - (void)_updateBackgroundAnimated:(BOOL)arg1;
 - (void)apertureSliderDidChangeApertureValue:(id)arg1;
 - (id)init;

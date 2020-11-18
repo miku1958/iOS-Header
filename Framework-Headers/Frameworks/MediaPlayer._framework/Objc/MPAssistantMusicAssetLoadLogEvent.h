@@ -14,6 +14,7 @@
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 
 - (long long)eventCode;
+- (id)eventName;
 - (id)eventPayload;
 
 @end

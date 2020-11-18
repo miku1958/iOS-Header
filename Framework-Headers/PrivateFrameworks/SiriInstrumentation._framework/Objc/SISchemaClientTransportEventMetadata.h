@@ -6,29 +6,25 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-#import <SiriInstrumentation/NSSecureCoding-Protocol.h>
-#import <SiriInstrumentation/SISchemaClientTransportEventMetadata-Protocol.h>
-
 @class NSData, NSString;
 
-@interface SISchemaClientTransportEventMetadata : PBCodable <SISchemaClientTransportEventMetadata, NSSecureCoding>
+@interface SISchemaClientTransportEventMetadata : PBCodable
 {
     NSString *_eventTransmittedTimestampRefId;
     long long _eventTransmittedRelativeToBootTimeTimestampNs;
     long long _serverArrivedTimestampNs;
+    NSString *_arrivedServerPod;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *arrivedServerPod; // @synthesize arrivedServerPod=_arrivedServerPod;
 @property (nonatomic) long long eventTransmittedRelativeToBootTimeTimestampNs; // @synthesize eventTransmittedRelativeToBootTimeTimestampNs=_eventTransmittedRelativeToBootTimeTimestampNs;
 @property (copy, nonatomic) NSString *eventTransmittedTimestampRefId; // @synthesize eventTransmittedTimestampRefId=_eventTransmittedTimestampRefId;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) long long serverArrivedTimestampNs; // @synthesize serverArrivedTimestampNs=_serverArrivedTimestampNs;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
+- (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

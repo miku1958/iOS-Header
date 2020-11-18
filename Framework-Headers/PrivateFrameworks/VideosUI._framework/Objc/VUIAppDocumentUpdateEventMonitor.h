@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_handlePlaybackReportNotification;
 - (void)_handlePreferredVideoFormatDidChangeNotification:(id)arg1;
 - (void)_handlePurchaseFlowDidFinishNotification:(id)arg1;
+- (void)_handlePurchaseRequestSucceededNotification:(id)arg1;
 - (void)_handleRemoveFromPlayHistoryRequestDidFinishNotification:(id)arg1;
 - (void)_handleRestrictionsDidChangeNotification:(id)arg1;
 - (void)_handleSettingsDidChangeNotification:(id)arg1;
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (id)_init;
 - (void)_notifyObserver:(id)arg1 ofRefreshEvent:(id)arg2;
 - (void)_notifyObserversOfEvent:(id)arg1;
+- (void)_postSubscriptionNotification:(id)arg1 interruptedOfferDetails:(id)arg2 error:(id)arg3;
 - (void)addObserver:(id)arg1 forEventDescriptors:(id)arg2;
 - (void)dealloc;
 - (id)init;

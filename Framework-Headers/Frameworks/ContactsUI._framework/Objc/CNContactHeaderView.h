@@ -19,6 +19,7 @@
     BOOL _shouldUseConstrainedMaxHeight;
     BOOL _alwaysShowsMonogram;
     BOOL _visibleToScrollViews;
+    BOOL _showMonogramsOnly;
     BOOL _shouldShowBelowNavigationTitle;
     NSDictionary *_nameTextAttributes;
     id<CNPresenterDelegate> _presenterDelegate;
@@ -54,6 +55,7 @@
 @property (weak, nonatomic) id<CNPresenterDelegate> presenterDelegate; // @synthesize presenterDelegate=_presenterDelegate;
 @property (nonatomic) BOOL shouldShowBelowNavigationTitle; // @synthesize shouldShowBelowNavigationTitle=_shouldShowBelowNavigationTitle;
 @property (nonatomic) BOOL shouldUseConstrainedMaxHeight; // @synthesize shouldUseConstrainedMaxHeight=_shouldUseConstrainedMaxHeight;
+@property (nonatomic) BOOL showMonogramsOnly; // @synthesize showMonogramsOnly=_showMonogramsOnly;
 @property (strong, nonatomic) CNContactHeaderViewSizeAttributes *sizeAttributes; // @synthesize sizeAttributes=_sizeAttributes;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL visibleToScrollViews; // @synthesize visibleToScrollViews=_visibleToScrollViews;

@@ -20,6 +20,7 @@
     BOOL _fileURLFinalized;
     BOOL _restoring;
     BOOL _hideAttachment;
+    BOOL _isDirectory;
     NSString *_guid;
     NSURL *_fileURL;
     NSString *_filename;
@@ -49,6 +50,7 @@
 @property (readonly, copy, nonatomic) NSString *guid; // @synthesize guid=_guid;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hideAttachment; // @synthesize hideAttachment=_hideAttachment;
+@property (readonly, nonatomic) BOOL isDirectory; // @synthesize isDirectory=_isDirectory;
 @property (readonly, nonatomic) BOOL isSticker; // @synthesize isSticker=_isSticker;
 @property (copy, nonatomic) NSURL *linkFileURL; // @synthesize linkFileURL=_linkFileURL;
 @property (readonly, nonatomic, getter=isRestoring) BOOL restoring; // @synthesize restoring=_restoring;

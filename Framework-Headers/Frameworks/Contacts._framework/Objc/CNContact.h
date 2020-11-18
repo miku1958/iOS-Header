@@ -275,6 +275,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)unifyContacts:(id)arg1;
 + (id)writableTypeIdentifiersForItemProvider;
++ (void)you_used_a_property_that_you_didnt_request_when_you_fetched_the_contact;
 - (void).cxx_destruct;
 - (id)_filteredArrayForValidValues:(id)arg1;
 - (id)_searchableItemIncludingInternalAttributes:(BOOL)arg1;

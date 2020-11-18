@@ -49,10 +49,12 @@
 - (void)_handleLongFrameLifetimeBegin:(id)arg1;
 - (void)_handleRenderInterval:(id)arg1;
 - (id)_stateForFrameSeed:(unsigned int)arg1;
+- (void)handleDeviceReboot;
 - (BOOL)handleSignpostEvent:(id)arg1;
 - (BOOL)handleSignpostInterval:(id)arg1;
 - (void)handleSignpostIntervalBegin:(id)arg1;
 - (id)init;
+- (id)newConfiguredExtractor;
 
 @end
 

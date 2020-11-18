@@ -42,7 +42,6 @@
 - (NSProgress *)startProvidingItemAtURL:(NSURL *)arg1 readingOptions:(unsigned long long)arg2 request:(FPDRequest *)arg3 completionHandler:(void (^)(NSError *))arg4;
 - (BOOL)updateRootAfterDomainChangeWithError:(id *)arg1;
 - (void)valuesForAttributes:(NSArray *)arg1 forURL:(NSURL *)arg2 request:(FPDRequest *)arg3 completionHandler:(void (^)(NSDictionary *, NSError *))arg4;
-- (void)writeCheckReportTo:(FPCTLTermDumper *)arg1 limitNumberOfItems:(BOOL)arg2 completionHandler:(void (^)(NSError *))arg3;
 
 @optional
 + (void)registerXPCActivities;

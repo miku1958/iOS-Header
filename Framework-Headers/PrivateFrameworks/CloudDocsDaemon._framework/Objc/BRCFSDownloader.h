@@ -31,7 +31,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_appLibraryForDownload:(id)arg1 kind:(int)arg2 operationID:(id)arg3;
-- (void)_bumpThrottleForDownload:(id)arg1 throttle:(id)arg2;
+- (unsigned long long)_bumpThrottleForDownload:(id)arg1 throttle:(id)arg2;
 - (void)_cancelJobs:(id)arg1 state:(int)arg2;
 - (void)_close;
 - (void)_createDownloadingJobForItem:(id)arg1 state:(int)arg2 kind:(int)arg3 etag:(id)arg4 userInitiated:(BOOL)arg5;
@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)_finishedDownload:(id)arg1 syncContext:(id)arg2 operationID:(id)arg3 error:(id)arg4;
 - (BOOL)_hasLosersToDelete:(id)arg1 serverItem:(id)arg2;
 - (void)_postponeLoserForWinner:(long long)arg1 etag:(id)arg2;
+- (void)_reportDownloadErrorForDocument:(id)arg1 error:(id)arg2;
 - (id)_sanitizeRecord:(id)arg1;
 - (void)_sendContentsBatch:(id)arg1 sizeHint:(long long)arg2 maxRecordsCount:(unsigned long long)arg3;
 - (void)_sendLosersBatch:(id)arg1 sizeHint:(long long)arg2 maxRecordsCount:(unsigned long long)arg3;

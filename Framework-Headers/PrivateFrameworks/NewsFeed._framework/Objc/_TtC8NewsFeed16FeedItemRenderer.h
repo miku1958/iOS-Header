@@ -20,6 +20,10 @@
     MISSING_TYPE *issueViewRenderer;
     MISSING_TYPE *coverIssueViewRenderer;
     MISSING_TYPE *coverChannelViewRenderer;
+    MISSING_TYPE *formatLayoutViewRenderer;
+    MISSING_TYPE *webEmbedViewRenderer;
+    MISSING_TYPE *webEmbedViewControllerReuseManager;
+    MISSING_TYPE *formatRegistrationIdentifiers;
 }
 
 @end

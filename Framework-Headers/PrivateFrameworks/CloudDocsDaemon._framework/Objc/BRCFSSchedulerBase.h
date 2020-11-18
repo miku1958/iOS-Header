@@ -56,7 +56,7 @@ __attribute__((visibility("hidden")))
 - (struct brc_job_update)insertOrUpdateJobID:(id)arg1 throttle:(id)arg2 withState:(int)arg3 insertedSQLColumn:(id)arg4 insertedSQLValues:(id)arg5 updatedSQLValues:(id)arg6;
 - (int)jobStateFor:(id)arg1;
 - (void)performFirstSchedulingAfterStartupInDB:(id)arg1;
-- (void)postponeJobID:(id)arg1 withThrottle:(id)arg2;
+- (unsigned long long)postponeJobID:(id)arg1 withThrottle:(id)arg2;
 - (void)rescheduleSuspendedJobsMatching:(id)arg1 inState:(int)arg2;
 - (void)resetBackoffForJobWithID:(id)arg1;
 - (void)resume;

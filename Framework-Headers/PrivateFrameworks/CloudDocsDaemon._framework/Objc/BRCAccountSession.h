@@ -141,11 +141,14 @@
 @property (readonly, nonatomic) BRCVolume *volume; // @synthesize volume=_volume;
 
 + (BOOL)_checkIntegrity:(id)arg1 serverTruth:(BOOL)arg2 session:(id)arg3 skipBackupDetection:(BOOL)arg4 error:(id *)arg5;
++ (id)_classesForClientState;
 + (BOOL)_openConnection:(id)arg1 databaseName:(id)arg2 baseURL:(id)arg3 readonly:(BOOL)arg4 error:(id *)arg5;
 + (BOOL)_openConnection:(id)arg1 serverTruth:(BOOL)arg2 databaseName:(id)arg3 baseURL:(id)arg4 initialVersion:(unsigned int *)arg5 lastCurrentVersion:(unsigned int *)arg6 error:(id *)arg7;
 + (void)_registerLastBootIfNeeded:(id)arg1 table:(struct NSObject *)arg2;
 + (BOOL)_registerStaticDBFunctions:(id)arg1 error:(id *)arg2;
 + (BOOL)_validateDatabase:(id)arg1 baseURL:(id)arg2 session:(id)arg3 serverTruth:(BOOL)arg4 initialVersion:(unsigned int)arg5 lastCurrentVersion:(unsigned int)arg6 error:(id *)arg7;
++ (id)nameComponentsForKey:(id)arg1 db:(id)arg2;
++ (id)nameComponentsForName:(id)arg1 db:(id)arg2;
 + (BOOL)openAndValidateDatabase:(id)arg1 serverTruth:(BOOL)arg2 session:(id)arg3 baseURL:(id)arg4 skipBackupDetection:(BOOL)arg5 error:(id *)arg6;
 + (id)sessionForBackingUpDatabasesAtURL:(id)arg1;
 + (id)sessionForDumpingDatabasesAtURL:(id)arg1;
@@ -184,6 +187,7 @@
 - (void)_loadClientZonesFromDisk;
 - (id)_old_privateAppLibraryByZoneName:(id)arg1 db:(id)arg2;
 - (BOOL)_openConnection:(id)arg1 databaseName:(id)arg2 readonly:(BOOL)arg3 error:(id *)arg4;
+- (void)_pcsChainAllItemsWithActivity:(id)arg1;
 - (id)_privateClientZoneByID:(id)arg1 db:(id)arg2;
 - (id)_privateClientZoneByName:(id)arg1 db:(id)arg2;
 - (struct PQLResultSet *)_privateClientZonesEnumerator:(id)arg1;
@@ -191,6 +195,7 @@
 - (struct PQLResultSet *)_privateServerZonesEnumerator:(id)arg1;
 - (void)_recreateSymlinkIfNecessaryForDocumentsPath:(id)arg1 folderName:(id)arg2 destinationPath:(id)arg3;
 - (BOOL)_recursivelyPrepareFolderForLogOutAtURL:(id)arg1 pruneEmptyFolders:(BOOL)arg2 pruneEmptyTopLevelFolder:(BOOL)arg3 maxDepth:(unsigned long long)arg4;
+- (void)_registerBackgroundXPCActivities;
 - (BOOL)_registerDynamicDBFunctions:(id)arg1 error:(id *)arg2;
 - (id)_reserveRowIDForLibrary:(id)arg1;
 - (void)_resolvePathInMobileDocsRoot:(id)arg1 appLibrary:(id *)arg2;
@@ -245,6 +250,7 @@
 - (id)createRootForSyncedFolderType:(unsigned long long)arg1;
 - (BOOL)createServerZone:(id)arg1;
 - (id)createUserKeyForName:(id)arg1;
+- (id)currentUserRecordName;
 - (void)dbBecameCorrupted;
 - (void)dealloc;
 - (id)defaultSyncContext;
@@ -268,14 +274,16 @@
 - (void)enumerateAppLibraries:(CDUnknownBlockType)arg1;
 - (void)enumerateClientZones:(CDUnknownBlockType)arg1;
 - (void)enumerateFileTypesWithFilterBlock:(CDUnknownBlockType)arg1 enumerationBlock:(CDUnknownBlockType)arg2;
-- (void)enumerateItemsWithShareIDUnderParent:(id)arg1 db:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (void)enumerateItemsWithShareIDUnderParent:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)enumeratePrivateClientZones:(CDUnknownBlockType)arg1;
 - (void)enumeratePrivateServerZones:(CDUnknownBlockType)arg1;
 - (void)enumerateServerZones:(CDUnknownBlockType)arg1;
 - (void)enumerateSharedClientZones:(CDUnknownBlockType)arg1;
+- (void)enumerateSideFaultsUnderParent:(id)arg1 db:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)enumerateSupportedFolderTypes:(CDUnknownBlockType)arg1;
 - (id)fallbackAppLibraryForClientZone:(id)arg1 extension:(id)arg2;
 - (id)fetchAccountWaitOperationWithAccountReady:(BOOL *)arg1;
+- (void)fetchUserRecordIDWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (struct PQLResultSet *)foldersNeedingTransmogrifyEnumerator;
 - (id)fsEventsMonitorForAppLibraryID:(id)arg1;
 - (id)fsEventsMonitorForSyncedFolderType:(unsigned long long)arg1;
@@ -301,6 +309,7 @@
 - (id)itemIDByRowID:(unsigned long long)arg1;
 - (id)itemIDByRowID:(unsigned long long)arg1 db:(id)arg2;
 - (struct PQLResultSet *)itemsNeedingIndexingEnumeratorFromNotifRank:(unsigned long long)arg1 batchSize:(unsigned long long)arg2;
+- (struct PQLResultSet *)itemsWithSideCarInFlightDiffsEnumerator;
 - (void)learnOwnerIdentityForShare:(id)arg1 forceUpdate:(BOOL)arg2;
 - (id)localAliasForSharedItem:(id)arg1 inZone:(id)arg2;
 - (void)markAccountMigrationComplete;
@@ -353,9 +362,11 @@
 - (void)setupDatabase;
 - (id)sharedClientZoneByMangledID:(id)arg1;
 - (id)sharedServerZoneByMangledID:(id)arg1;
+- (id)sharedServerZoneRowIDsByOwnerNamePrefix:(id)arg1;
 - (id)sharedSyncContext;
 - (BOOL)shouldPathBeDesktopSymlink:(id)arg1;
 - (BOOL)shouldPerformPCSMigration;
+- (id)sideCarSyncContext;
 - (id)singleAppLibraryMatchingSearchString:(id)arg1 error:(id *)arg2;
 - (id)singleClientZoneMatchingSearchString:(id)arg1 error:(id *)arg2;
 - (struct PQLResultSet *)stagedItemsEnumerator;

@@ -9,19 +9,19 @@
 #import <Silex/SXComponentSizerFactory-Protocol.h>
 
 @class NSString;
-@protocol SXDOMObjectProviding, SXWebContentLoadingPolicyProvider;
+@protocol SWLoadingPolicyProvider, SXDOMObjectProviding;
 
 @interface SXWebContentComponentSizerFactory : NSObject <SXComponentSizerFactory>
 {
     id<SXDOMObjectProviding> _DOMObjectProvider;
-    id<SXWebContentLoadingPolicyProvider> _loadingPolicyProvider;
+    id<SWLoadingPolicyProvider> _loadingPolicyProvider;
 }
 
 @property (readonly, nonatomic) id<SXDOMObjectProviding> DOMObjectProvider; // @synthesize DOMObjectProvider=_DOMObjectProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<SXWebContentLoadingPolicyProvider> loadingPolicyProvider; // @synthesize loadingPolicyProvider=_loadingPolicyProvider;
+@property (readonly, nonatomic) id<SWLoadingPolicyProvider> loadingPolicyProvider; // @synthesize loadingPolicyProvider=_loadingPolicyProvider;
 @property (readonly, nonatomic) int role;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *type;

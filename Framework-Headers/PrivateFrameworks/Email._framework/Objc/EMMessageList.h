@@ -9,12 +9,13 @@
 #import <Email/EFContentProtectionObserver-Protocol.h>
 #import <Email/EFLoggable-Protocol.h>
 #import <Email/EMCollectionChangeObserver-Protocol.h>
+#import <Email/EMCollectionItemIDStateCapturerDelegate-Protocol.h>
 #import <Email/EMMessageListQueryResultsObserver-Protocol.h>
 
-@class EFLazyCache, EMMailboxScope, EMMessageListChangeObserverHelper, EMMessageRepository, EMObjectID, EMThreadScope, NSMapTable, NSMutableDictionary, NSObject, NSSet, NSString;
+@class EFLazyCache, EMCollectionItemIDStateCapturer, EMMailboxScope, EMMessageListChangeObserverHelper, EMMessageRepository, EMObjectID, EMThreadScope, NSMapTable, NSMutableDictionary, NSObject, NSSet, NSString;
 @protocol EFScheduler, OS_dispatch_queue;
 
-@interface EMMessageList : EMCollection <EFContentProtectionObserver, EFLoggable, EMCollectionChangeObserver, EMMessageListQueryResultsObserver>
+@interface EMMessageList : EMCollection <EFContentProtectionObserver, EFLoggable, EMCollectionChangeObserver, EMCollectionItemIDStateCapturerDelegate, EMMessageListQueryResultsObserver>
 {
     NSMutableDictionary *_expandedThreads;
     NSMapTable *_messageListItemsForRetry;
@@ -26,6 +27,8 @@
     NSObject<OS_dispatch_queue> *_contentProtectionQueue;
     EMMessageList *_unfilteredMessageList;
     EMMessageListChangeObserverHelper *_changeObserverHelper;
+    NSSet *_recentlyCollapsedItemIDs;
+    EMCollectionItemIDStateCapturer *_stateCapturer;
 }
 
 @property (readonly, nonatomic) EFLazyCache *cache; // @synthesize cache=_cache;
@@ -39,7 +42,9 @@
 @property (readonly, nonatomic) EMMailboxScope *mailboxScope; // @synthesize mailboxScope=_mailboxScope;
 @property (readonly, copy, nonatomic) EMObjectID *objectID;
 @property (readonly, nonatomic) id<EFScheduler> observerScheduler; // @synthesize observerScheduler=_observerScheduler;
+@property (strong, nonatomic) NSSet *recentlyCollapsedItemIDs; // @synthesize recentlyCollapsedItemIDs=_recentlyCollapsedItemIDs;
 @property (readonly, nonatomic) EMMessageRepository *repository;
+@property (readonly, nonatomic) EMCollectionItemIDStateCapturer *stateCapturer; // @synthesize stateCapturer=_stateCapturer;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) EMThreadScope *threadScope; // @synthesize threadScope=_threadScope;
 @property (strong, nonatomic) EMMessageList *unfilteredMessageList; // @synthesize unfilteredMessageList=_unfilteredMessageList;
@@ -57,6 +62,7 @@
 - (BOOL)_threadIsExpandedForItemID:(id)arg1;
 - (id)_unreadItemIDsFromExtraInfo:(id)arg1;
 - (BOOL)anyExpandedThreadContainsItemID:(id)arg1;
+- (void)clearRecentlyCollapsedThread;
 - (void)collapseThread:(id)arg1;
 - (void)collection:(id)arg1 addedItemIDs:(id)arg2 after:(id)arg3;
 - (void)collection:(id)arg1 addedItemIDs:(id)arg2 before:(id)arg3;
@@ -74,12 +80,15 @@
 - (void)expandThreadsFromThreadItemIDs:(id)arg1;
 - (id)filteredMessageListWithPredicate:(id)arg1;
 - (void)finishRecovery;
+- (id)initWithMailboxes:(id)arg1 repository:(id)arg2 targetClass:(Class)arg3 shouldTrackOldestItems:(BOOL)arg4 labelPrefix:(id)arg5;
 - (id)initWithObjectID:(id)arg1 query:(id)arg2 repository:(id)arg3;
 - (id)initWithQuery:(id)arg1 repository:(id)arg2;
 - (void)invalidateCacheForItemIDs:(id)arg1;
 - (id)itemIDForObjectID:(id)arg1;
 - (id)itemIDOfFirstMessageListItemMatchingPredicate:(id)arg1;
 - (id)itemIDOfMessageListItemWithDisplayMessage:(id)arg1;
+- (id)itemIDsForStateCaptureWithErrorString:(id *)arg1;
+- (id)labelForStateCapture;
 - (id)messageListItemForItemID:(id)arg1;
 - (id)messageListItemForItemID:(id)arg1 ifAvailable:(BOOL)arg2;
 - (id)messageListItemsForItemIDs:(id)arg1;
@@ -93,6 +102,7 @@
 - (void)queryMatchedMovedObjectIDs:(id)arg1 after:(id)arg2;
 - (void)queryMatchedMovedObjectIDs:(id)arg1 before:(id)arg2;
 - (void)queryMatchedOldestItemsUpdatedForMailboxesObjectIDs:(id)arg1;
+- (BOOL)recentlyCollapsedThreadContainsItemID:(id)arg1;
 - (void)removeItemIDs:(id)arg1;
 - (void)setRepository:(id)arg1;
 - (void)stopObserving:(id)arg1;

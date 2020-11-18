@@ -42,6 +42,7 @@
 - (unsigned long long)_backoffBeforeProcessingLostItemWithStamp:(unsigned long long)arg1 appLibrary:(id)arg2;
 - (void)_cancelScan;
 - (void)_close;
+- (BOOL)_createSharedZoneIfNecessaryWithLookup:(id)arg1;
 - (void)_delayJobID:(id)arg1 by:(double)arg2;
 - (void)_didResolvedDocumentID:(unsigned int)arg1 fileID:(unsigned long long)arg2 zone:(id)arg3;
 - (BOOL)_fetchNextLostItemID:(id *)arg1 parentID:(id *)arg2 appLibraryRowID:(id *)arg3 tooManyScans:(BOOL *)arg4 stamp:(long long *)arg5;

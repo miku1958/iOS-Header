@@ -52,7 +52,9 @@
 + (id)voicemailDeleteGlyphImage;
 + (id)voicemailDialRequestGlyphImage;
 + (id)voicemailGlyphForSymbolType:(long long)arg1;
++ (id)voicemailPauseGlyphDisabledImage;
 + (id)voicemailPauseGlyphImage;
++ (id)voicemailPlayGlyphDisabledImage;
 + (id)voicemailPlayGlyphImage;
 + (id)voicemailReportFeedbackGlyphImage;
 + (id)voicemailUndeleteGlyphImage;

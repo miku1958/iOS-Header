@@ -51,6 +51,7 @@
 - (void)showConfirmationForInteraction:(id)arg1 confirmationRequired:(BOOL)arg2 authenticationRequired:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)startConnectionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)updateIntentWithItemToConfirm:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
 
 @end
 

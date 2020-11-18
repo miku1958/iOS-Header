@@ -23,6 +23,7 @@
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_getPreferredContentSizeWithReplyBlock:(CDUnknownBlockType)arg1;
 - (id)description;
 - (void)viewServiceDidTerminateWithError:(id)arg1;

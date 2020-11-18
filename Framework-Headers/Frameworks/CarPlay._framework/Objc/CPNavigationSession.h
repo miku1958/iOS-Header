@@ -7,18 +7,18 @@
 #import <objc/NSObject.h>
 
 @class CPMapTemplate, CPTrip, NSArray;
-@protocol CPNavigationSessionProviding;
+@protocol CPNavigationSessionManaging;
 
 @interface CPNavigationSession : NSObject
 {
     NSArray *_upcomingManeuvers;
     CPTrip *_trip;
-    id<CPNavigationSessionProviding> _provider;
+    id<CPNavigationSessionManaging> _manager;
     CPMapTemplate *_mapTemplate;
 }
 
+@property (strong, nonatomic) id<CPNavigationSessionManaging> manager; // @synthesize manager=_manager;
 @property (weak, nonatomic) CPMapTemplate *mapTemplate; // @synthesize mapTemplate=_mapTemplate;
-@property (strong, nonatomic) id<CPNavigationSessionProviding> provider; // @synthesize provider=_provider;
 @property (strong, nonatomic) CPTrip *trip; // @synthesize trip=_trip;
 @property (copy, nonatomic) NSArray *upcomingManeuvers; // @synthesize upcomingManeuvers=_upcomingManeuvers;
 
@@ -26,7 +26,7 @@
 - (id)_currentTripId;
 - (void)cancelTrip;
 - (void)finishTrip;
-- (id)initWithTrip:(id)arg1 provider:(id)arg2 mapTemplate:(id)arg3;
+- (id)initWithTrip:(id)arg1 manager:(id)arg2 mapTemplate:(id)arg3;
 - (void)pauseTripForReason:(unsigned long long)arg1 description:(id)arg2;
 - (void)updateTravelEstimates:(id)arg1 forManeuver:(id)arg2;
 

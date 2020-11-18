@@ -15,6 +15,8 @@
 + (id)bundlePathForResource:(id)arg1 ofType:(id)arg2;
 + (id)contentProviderBundlePaths;
 + (id)contentProvidersPath;
++ (id)defaultDirectoryPathForDataCollection;
++ (id)defaultSessionPathForDataCollection;
 + (id)defaultSleepPath;
 + (id)eventPlistPath;
 + (id)interactionCopyDirectory;

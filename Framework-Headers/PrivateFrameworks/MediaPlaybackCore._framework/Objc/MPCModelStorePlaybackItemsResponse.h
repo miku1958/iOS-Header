@@ -34,6 +34,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_activeUserDidChangeNotification:(id)arg1;
 - (void)_allowsExplicitContentDidChangeNotification:(id)arg1;
 - (void)_invalidate;
 - (void)_personalizationResponseDidInvalidateNotification:(id)arg1;

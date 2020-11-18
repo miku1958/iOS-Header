@@ -41,6 +41,7 @@
 - (void)_accessibilitySetShouldLoadAXInfoOnAppLaunchFinish:(BOOL)arg1;
 - (void)_accessibilitySetSpeakScreenGestureRecognizer:(id)arg1;
 - (BOOL)_accessibilityShouldCallAXStatusChangedOnAppLaunchFinish;
+- (BOOL)_accessibilityShouldHitTestStatusBarWindow;
 - (BOOL)_accessibilityShouldLoadAXInfoOnAppLaunchFinish;
 - (id)_accessibilitySideAppDividerElement;
 - (id)_accessibilitySoftwareMimicKeyboard;

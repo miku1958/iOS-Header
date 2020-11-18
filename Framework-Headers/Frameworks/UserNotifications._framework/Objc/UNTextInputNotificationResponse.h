@@ -26,6 +26,7 @@
 + (id)responseWithNotification:(id)arg1 actionIdentifier:(id)arg2 userText:(id)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_initWithNotification:(id)arg1 actionIdentifier:(id)arg2 originIdentifier:(id)arg3 targetConnectionEndpoint:(id)arg4 targetSceneIdentifier:(id)arg5;
 - (id)_initWithNotification:(id)arg1 actionIdentifier:(id)arg2 originIdentifier:(id)arg3 targetConnectionEndpoint:(id)arg4 targetSceneIdentifier:(id)arg5 userText:(id)arg6;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

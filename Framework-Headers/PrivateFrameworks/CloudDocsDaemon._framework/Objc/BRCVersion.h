@@ -9,7 +9,7 @@
 #import <CloudDocsDaemon/NSCopying-Protocol.h>
 #import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
 
-@class BRFieldCKInfo, NSData, NSNumber, NSSet, NSString;
+@class BRCUserRowID, BRFieldCKInfo, NSData, NSNumber, NSSet, NSString;
 
 @interface BRCVersion : NSObject <NSCopying, NSSecureCoding>
 {
@@ -24,6 +24,7 @@
     NSData *_quarantineInfo;
     NSSet *_conflictLoserEtags;
     NSData *_lazyXattr;
+    NSNumber *_editedSinceShared;
     NSNumber *_lastEditorDeviceOrUserRowID;
     NSString *_lastEditorDeviceName;
 }
@@ -31,12 +32,13 @@
 @property (strong, nonatomic) BRFieldCKInfo *ckInfo; // @synthesize ckInfo=_ckInfo;
 @property (strong, nonatomic) NSSet *conflictLoserEtags; // @synthesize conflictLoserEtags=_conflictLoserEtags;
 @property (strong, nonatomic) NSData *contentSignature; // @synthesize contentSignature=_contentSignature;
+@property (strong, nonatomic) NSNumber *editedSinceShared; // @synthesize editedSinceShared=_editedSinceShared;
 @property (readonly, nonatomic) BOOL hasThumbnail;
 @property (readonly, nonatomic) BOOL isPackage;
 @property (strong, nonatomic) NSString *lastEditorDeviceName; // @synthesize lastEditorDeviceName=_lastEditorDeviceName;
 @property (strong, nonatomic) NSNumber *lastEditorDeviceOrUserRowID; // @synthesize lastEditorDeviceOrUserRowID=_lastEditorDeviceOrUserRowID;
 @property (strong, nonatomic) NSNumber *lastEditorDeviceRowID;
-@property (strong, nonatomic) NSNumber *lastEditorRowID;
+@property (strong, nonatomic) BRCUserRowID *lastEditorRowID;
 @property (strong, nonatomic) NSData *lazyXattr; // @synthesize lazyXattr=_lazyXattr;
 @property (nonatomic) long long mtime; // @synthesize mtime=_mtime;
 @property (strong, nonatomic) NSString *originalPOSIXName; // @synthesize originalPOSIXName=_originalPOSIXName;

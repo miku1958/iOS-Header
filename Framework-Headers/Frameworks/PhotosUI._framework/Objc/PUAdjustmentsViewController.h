@@ -63,7 +63,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_backgroundImageForItemAtIndexPath:(id)arg1;
-- (BOOL)_canShowWhileLocked;
 - (id)_circularImageWithSize:(struct CGSize)arg1 color:(id)arg2;
 - (void)_performFeedbackIfNeeded;
 - (void)_resetControlsAtIndexPath:(id)arg1;

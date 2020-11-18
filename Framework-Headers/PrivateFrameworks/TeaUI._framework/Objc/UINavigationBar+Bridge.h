@@ -10,6 +10,8 @@
 - (id)ts_barButtonViews;
 - (void)ts_clearAccessibilityElementsCache;
 - (id)ts_contentView;
+- (id)ts_fetchTitleView;
+- (void)ts_resetButtonTransforms;
 - (void)ts_setBackgroundEffects:(id)arg1;
 - (void)ts_setBlurthroughBackground;
 @end

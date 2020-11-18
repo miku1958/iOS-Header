@@ -8,18 +8,18 @@
 #import <NewsCore/NSObject-Protocol.h>
 
 @class FCColor, FCColorGradient, FCFeedEdition, NSArray, NSDate, NSString, NTPBDiscoverMoreVideosInfo;
-@protocol FCForYouMagazineFeedGroup;
+@protocol FCCardStyleProviding, FCForYouBridgedFeedGroup;
 
 @protocol FCFeedGroupOutlining <NSObject, FCFeedElement>
 
 @property (readonly, copy, nonatomic) FCColorGradient *backgroundGradient;
 @property (readonly, copy, nonatomic) NSString *backingTagID;
-@property (readonly, copy, nonatomic) FCColor *cardBackgroundColor;
+@property (readonly, nonatomic) id<FCForYouBridgedFeedGroup> bridgedGroup;
+@property (readonly, copy, nonatomic) id<FCCardStyleProviding> cardStyle;
 @property (readonly, nonatomic) NSDate *creationDate;
 @property (readonly, copy, nonatomic) NSString *ctaText;
+@property (readonly, copy, nonatomic) id<FCCardStyleProviding> darkCardStyle;
 @property (readonly, copy, nonatomic) FCColorGradient *darkStyleBackgroundGradient;
-@property (readonly, copy, nonatomic) FCColor *darkStyleCardBackgroundColor;
-@property (readonly, copy, nonatomic) FCColorGradient *darkStyleSauceGradient;
 @property (readonly, copy, nonatomic) FCColor *darkStyleTitleColor;
 @property (readonly, copy, nonatomic) NTPBDiscoverMoreVideosInfo *discoverMoreVideosInfo;
 @property (readonly, copy, nonatomic) FCFeedEdition *edition;
@@ -28,14 +28,13 @@
 @property (readonly, copy, nonatomic) NSArray *headlines;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, copy, nonatomic) NSArray *issueIDs;
-@property (readonly, nonatomic) id<FCForYouMagazineFeedGroup> magazineGroup;
 @property (readonly, nonatomic) unsigned long long mergeID;
 @property (readonly, nonatomic) unsigned long long options;
-@property (readonly, copy, nonatomic) FCColorGradient *sauceGradient;
 @property (readonly, copy, nonatomic) NSString *sourceIdentifier;
 @property (readonly, copy, nonatomic) NSString *subtitle;
 @property (readonly, copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) FCColor *titleColor;
+@property (readonly, nonatomic) BOOL usesPlaceholderHeadlines;
 @property (readonly, copy, nonatomic) NSArray *videoPlaylistHeadlines;
 
 @end

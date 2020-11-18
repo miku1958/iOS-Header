@@ -15,6 +15,7 @@
 - (void)animateZoomTransition:(id)arg1 withInitialVelocity:(struct PXDisplayVelocity)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)supportsEdgeSwipeBackGesture;
 - (double)transitionDuration:(id)arg1;
+- (long long)transitionIdentifierForTransitionMode:(unsigned long long)arg1;
 
 @end
 

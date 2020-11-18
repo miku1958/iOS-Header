@@ -39,6 +39,7 @@
 + (id)hmbProperties;
 + (id)hmbQueries;
 + (id)incompleteClipsQuery;
++ (void)load;
 + (id)sentinelParentUUID;
 - (id)createClip;
 - (id)createClipWithSignificantEvents:(id)arg1;

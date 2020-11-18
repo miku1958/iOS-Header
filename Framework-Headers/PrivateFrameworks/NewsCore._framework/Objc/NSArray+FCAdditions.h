@@ -76,6 +76,7 @@
 - (id)fc_safeObjectAtIndex:(unsigned long long)arg1;
 - (id)fc_safeSubarrayWithCountFromBack:(unsigned long long)arg1;
 - (id)fc_safeSubarrayWithCountFromFront:(unsigned long long)arg1;
+- (id)fc_setByCollectingObjectsWithBlock:(CDUnknownBlockType)arg1;
 - (id)fc_setByTransformingWithBlock:(CDUnknownBlockType)arg1;
 - (id)fc_setOfObjectsPassingTest:(CDUnknownBlockType)arg1;
 - (id)fc_sortedArrayStartingWithElementsSatisfying:(CDUnknownBlockType)arg1 sortedBy:(CDUnknownBlockType)arg2;

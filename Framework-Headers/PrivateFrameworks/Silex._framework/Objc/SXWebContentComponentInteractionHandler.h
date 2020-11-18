@@ -9,17 +9,17 @@
 #import <Silex/SXComponentInteractionHandler-Protocol.h>
 
 @class NSString;
-@protocol SXWebContentInteraction;
+@protocol SWInteraction;
 
 @interface SXWebContentComponentInteractionHandler : NSObject <SXComponentInteractionHandler>
 {
-    id<SXWebContentInteraction> _interaction;
+    id<SWInteraction> _interaction;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) id<SXWebContentInteraction> interaction; // @synthesize interaction=_interaction;
+@property (readonly, nonatomic) id<SWInteraction> interaction; // @synthesize interaction=_interaction;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

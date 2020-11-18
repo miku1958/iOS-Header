@@ -13,7 +13,7 @@
     BOOL _muted;
     unsigned long long _userAction;
     double _mediaTimePlayed;
-    NSString *_mediaPlayMethod;
+    unsigned long long _mediaPlayMethod;
     NSString *_mediaPauseMethod;
     NSString *_mediaResumeMethod;
     unsigned long long _mediaPausePosition;
@@ -29,7 +29,7 @@
 @property (nonatomic) double mediaFrameRate; // @synthesize mediaFrameRate=_mediaFrameRate;
 @property (strong, nonatomic) NSString *mediaPauseMethod; // @synthesize mediaPauseMethod=_mediaPauseMethod;
 @property (nonatomic) unsigned long long mediaPausePosition; // @synthesize mediaPausePosition=_mediaPausePosition;
-@property (strong, nonatomic) NSString *mediaPlayMethod; // @synthesize mediaPlayMethod=_mediaPlayMethod;
+@property (nonatomic) unsigned long long mediaPlayMethod; // @synthesize mediaPlayMethod=_mediaPlayMethod;
 @property (strong, nonatomic) NSString *mediaResumeMethod; // @synthesize mediaResumeMethod=_mediaResumeMethod;
 @property (nonatomic) unsigned long long mediaResumePosition; // @synthesize mediaResumePosition=_mediaResumePosition;
 @property (nonatomic) double mediaTimePlayed; // @synthesize mediaTimePlayed=_mediaTimePlayed;

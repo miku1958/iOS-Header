@@ -79,6 +79,7 @@
 - (BOOL)headerVisible;
 - (id)initWithWidgetDiscoveryController:(id)arg1 listSettings:(struct WGWidgetListSettings)arg2;
 - (void)resizeWidgetWrapperView:(id)arg1 toSize:(struct CGSize)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)scrollViewDidChangeAdjustedContentInset:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)setContainerView:(id)arg1;

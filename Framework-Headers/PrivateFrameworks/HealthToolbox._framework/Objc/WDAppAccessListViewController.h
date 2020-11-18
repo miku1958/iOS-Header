@@ -24,9 +24,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) HKSample *sample; // @synthesize sample=_sample;
 
 - (void).cxx_destruct;
+- (void)_handleReturnedImage:(id)arg1 forSource:(id)arg2 cell:(id)arg3 tableView:(id)arg4 fetchError:(id)arg5;
 - (id)_identifierForCellInSection:(long long)arg1;
-- (id)_imageForCellAtIndexPath:(id)arg1;
+- (void)_loadIconForSource:(id)arg1 onCell:(id)arg2 ofTableView:(id)arg3;
 - (void)_refreshAppAuthorizationData;
+- (id)_sourceForIndexPath:(id)arg1;
 - (id)_textForCellAtIndexPath:(id)arg1;
 - (id)initWithSample:(id)arg1 healthStore:(id)arg2;
 - (long long)numberOfSectionsInTableView:(id)arg1;

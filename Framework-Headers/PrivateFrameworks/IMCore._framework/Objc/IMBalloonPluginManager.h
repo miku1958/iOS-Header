@@ -12,7 +12,6 @@
 {
     Class _richLinksDataSourceClass;
     NSMutableDictionary *_pluginsMap;
-    NSMutableDictionary *_pluginsBundleIDMap;
     id _extensionMatchingContext;
     id _highMemoryExtensionMatchingContext;
     NSString *_pluginMetaDataFolder;
@@ -30,7 +29,6 @@
 @property (strong, nonatomic) NSUUID *localParticipantID2; // @synthesize localParticipantID2=_localParticipantID2;
 @property (strong, nonatomic) NSMutableDictionary *pluginIDToMetadataCache; // @synthesize pluginIDToMetadataCache=_pluginIDToMetadataCache;
 @property (strong, nonatomic) NSString *pluginMetaDataFolder; // @synthesize pluginMetaDataFolder=_pluginMetaDataFolder;
-@property (strong, nonatomic) NSMutableDictionary *pluginsBundleIDMap; // @synthesize pluginsBundleIDMap=_pluginsBundleIDMap;
 @property (strong, nonatomic) NSMutableDictionary *pluginsMap; // @synthesize pluginsMap=_pluginsMap;
 @property (strong, nonatomic) NSMutableSet *pluginsToRemoveAfterExtensionsUpdate; // @synthesize pluginsToRemoveAfterExtensionsUpdate=_pluginsToRemoveAfterExtensionsUpdate;
 @property (readonly, strong, nonatomic) Class richLinksDataSourceClass; // @synthesize richLinksDataSourceClass=_richLinksDataSourceClass;

@@ -48,6 +48,7 @@
     int _coverArticleDisplayRank;
     int _coverArticleFeatureType;
     NSString *_creativeId;
+    NSString *_curatedBatchId;
     int _curatedContentType;
     int _displayRank;
     NSString *_exposedGroupSourceChannelId;
@@ -67,6 +68,7 @@
     int _groupPresentationReason;
     int _groupType;
     NSData *_groupViewExposureId;
+    int _heroArticleType;
     NSString *_iadNativeAd;
     NSString *_iadNativeCampaign;
     NSString *_iadNativeCampaignAd;
@@ -116,6 +118,7 @@
     int _topStoryType;
     NSString *_userActivityType;
     NSString *_viewFrameInScreen;
+    NSString *_webEmbedId;
     int _widgetArticleRank;
     NTPBWidgetEngagement *_widgetEngagement;
     int _widgetSection;
@@ -144,7 +147,7 @@
     BOOL _isVideoInFeed;
     BOOL _subscriptionOnlyArticle;
     BOOL _viewFromNotificationDirectOpen;
-    CDStruct_803929fe _has;
+    CDStruct_c335251c _has;
 }
 
 @property (nonatomic) int activeTimeSpent; // @synthesize activeTimeSpent=_activeTimeSpent;
@@ -176,6 +179,7 @@
 @property (nonatomic) int coverArticleDisplayRank; // @synthesize coverArticleDisplayRank=_coverArticleDisplayRank;
 @property (nonatomic) int coverArticleFeatureType; // @synthesize coverArticleFeatureType=_coverArticleFeatureType;
 @property (strong, nonatomic) NSString *creativeId; // @synthesize creativeId=_creativeId;
+@property (strong, nonatomic) NSString *curatedBatchId; // @synthesize curatedBatchId=_curatedBatchId;
 @property (nonatomic) int curatedContentType; // @synthesize curatedContentType=_curatedContentType;
 @property (nonatomic) BOOL didBounce; // @synthesize didBounce=_didBounce;
 @property (nonatomic) BOOL didExpandDuringView; // @synthesize didExpandDuringView=_didExpandDuringView;
@@ -230,6 +234,7 @@
 @property (nonatomic) BOOL hasCoverArticleDisplayRank;
 @property (nonatomic) BOOL hasCoverArticleFeatureType;
 @property (readonly, nonatomic) BOOL hasCreativeId;
+@property (readonly, nonatomic) BOOL hasCuratedBatchId;
 @property (nonatomic) BOOL hasCuratedContentType;
 @property (nonatomic) BOOL hasDidBounce;
 @property (nonatomic) BOOL hasDidExpandDuringView;
@@ -254,6 +259,7 @@
 @property (nonatomic) BOOL hasGroupPresentationReason;
 @property (nonatomic) BOOL hasGroupType;
 @property (readonly, nonatomic) BOOL hasGroupViewExposureId;
+@property (nonatomic) BOOL hasHeroArticleType;
 @property (readonly, nonatomic) BOOL hasIadNativeAd;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaign;
 @property (readonly, nonatomic) BOOL hasIadNativeCampaignAd;
@@ -326,10 +332,12 @@
 @property (nonatomic) BOOL hasUserFeedbackScore;
 @property (readonly, nonatomic) BOOL hasViewFrameInScreen;
 @property (nonatomic) BOOL hasViewFromNotificationDirectOpen;
+@property (readonly, nonatomic) BOOL hasWebEmbedId;
 @property (nonatomic) BOOL hasWidgetArticleRank;
 @property (readonly, nonatomic) BOOL hasWidgetEngagement;
 @property (nonatomic) BOOL hasWidgetSection;
 @property (nonatomic) BOOL hasWidgetSectionArticleRank;
+@property (nonatomic) int heroArticleType; // @synthesize heroArticleType=_heroArticleType;
 @property (strong, nonatomic) NSString *iadNativeAd; // @synthesize iadNativeAd=_iadNativeAd;
 @property (strong, nonatomic) NSString *iadNativeCampaign; // @synthesize iadNativeCampaign=_iadNativeCampaign;
 @property (strong, nonatomic) NSString *iadNativeCampaignAd; // @synthesize iadNativeCampaignAd=_iadNativeCampaignAd;
@@ -404,6 +412,7 @@
 @property (nonatomic) double userFeedbackScore; // @synthesize userFeedbackScore=_userFeedbackScore;
 @property (strong, nonatomic) NSString *viewFrameInScreen; // @synthesize viewFrameInScreen=_viewFrameInScreen;
 @property (nonatomic) BOOL viewFromNotificationDirectOpen; // @synthesize viewFromNotificationDirectOpen=_viewFromNotificationDirectOpen;
+@property (strong, nonatomic) NSString *webEmbedId; // @synthesize webEmbedId=_webEmbedId;
 @property (nonatomic) int widgetArticleRank; // @synthesize widgetArticleRank=_widgetArticleRank;
 @property (strong, nonatomic) NTPBWidgetEngagement *widgetEngagement; // @synthesize widgetEngagement=_widgetEngagement;
 @property (nonatomic) int widgetSection; // @synthesize widgetSection=_widgetSection;

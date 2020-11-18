@@ -51,7 +51,6 @@
 
 - (void).cxx_destruct;
 - (void)_collectTombstoneForRank:(unsigned long long)arg1;
-- (long long)_fixupSharingOptions:(unsigned long long)arg1 underParentID:(id)arg2;
 - (BOOL)_markItemDeadForRecordID:(id)arg1;
 - (BOOL)_markShareIDDead:(id)arg1;
 - (void)_reportCantSaveProblem:(id)arg1 record:(id)arg2;
@@ -66,8 +65,9 @@
 - (BOOL)_saveEditedShareRecords:(id)arg1 deletedShareRecordIDs:(id)arg2 zonesNeedingAllocRanks:(id)arg3;
 - (BOOL)_saveEditedStructureRecords:(id)arg1 zonesNeedingAllocRanks:(id)arg2;
 - (BOOL)_saveEditedSymlinkRecord:(id)arg1 error:(id *)arg2;
-- (BOOL)_saveItemID:(id)arg1 stat:(id)arg2 record:(id)arg3 error:(id *)arg4;
-- (BOOL)_saveItemID:(id)arg1 stat:(id)arg2 record:(id)arg3 origName:(id)arg4 base:(id)arg5 no:(id)arg6 ext:(id)arg7;
+- (unsigned long long)_saveInconsistentStateWithRequestID:(unsigned long long)arg1 serverChangeToken:(id)arg2 editedRecords:(id)arg3 deletedRecordIDs:(id)arg4 deletedShareRecordIDs:(id)arg5 syncStatus:(long long)arg6;
+- (BOOL)_saveItemID:(id)arg1 stat:(id)arg2 serverMetrics:(id)arg3 record:(id)arg4 error:(id *)arg5;
+- (BOOL)_saveItemID:(id)arg1 stat:(id)arg2 serverMetrics:(id)arg3 record:(id)arg4 origName:(id)arg5 base:(id)arg6 no:(id)arg7 ext:(id)arg8;
 - (BOOL)_saveItemID:(id)arg1 version:(id)arg2 record:(id)arg3 iWorkSharingOptions:(unsigned long long)arg4;
 - (BOOL)_savePendingChangesDeletedRecordIDsIgnoringRecordIDs:(id)arg1;
 - (BOOL)_savePendingChangesEditedContentRecordsIgnoringRecordIDs:(id)arg1 zonesNeedingAllocRanks:(id)arg2;
@@ -76,7 +76,7 @@
 - (id)_structurePrefixForType:(BOOL)arg1;
 - (void)activateWithClientZone:(id)arg1 offline:(BOOL)arg2;
 - (void)addForegroundClient:(id)arg1;
-- (BOOL)allocateRanks;
+- (BOOL)allocateRanksWhenCaughtUp:(BOOL)arg1;
 - (id)asPrivateZone;
 - (id)asSharedZone;
 - (void)clearStateBits:(unsigned int)arg1;
@@ -86,11 +86,10 @@
 - (id)deleteAllContentsOperation;
 - (id)descriptionWithContext:(id)arg1;
 - (void)destroyPendingChangesDBOnQueue:(BOOL)arg1;
-- (unsigned long long)didSyncDownRequestID:(unsigned long long)arg1 serverChangeToken:(id)arg2 editedRecords:(id)arg3 deletedRecordIDs:(id)arg4 deletedShareRecordIDs:(id)arg5 movedZoneNames:(id)arg6 allocRankZones:(id *)arg7 syncStatus:(long long)arg8;
+- (unsigned long long)didSyncDownRequestID:(unsigned long long)arg1 serverChangeToken:(id)arg2 editedRecords:(id)arg3 deletedRecordIDs:(id)arg4 deletedShareRecordIDs:(id)arg5 movedZoneNames:(id)arg6 allocRankZones:(id *)arg7 syncStatus:(long long)arg8 savedDirectly:(BOOL *)arg9;
 - (struct PQLResultSet *)directDirectoryChildItemIDsOfParentEnumerator:(id)arg1;
 - (BOOL)dumpStatusToContext:(id)arg1 error:(id *)arg2;
 - (BOOL)dumpTablesToContext:(id)arg1 includeAllItems:(BOOL)arg2 error:(id *)arg3;
-- (BOOL)fixupLocalSharingOptions;
 - (void)forceMoveToCloudDocs;
 - (void)handleBrokenStructure;
 - (BOOL)hasXattrWithSignature:(id)arg1;

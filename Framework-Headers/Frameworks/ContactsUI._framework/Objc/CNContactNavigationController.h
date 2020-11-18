@@ -13,7 +13,7 @@
 #import <ContactsUI/CNContactViewControllerAddContactPresenter-Protocol.h>
 #import <ContactsUI/CNContactViewControllerDelegate-Protocol.h>
 
-@class CNAccountsAndGroupsDataSource, CNAccountsAndGroupsViewController, CNContactListStyleApplier, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, CNUIUserActivityManager, NSArray, NSString, UIAlertController, UIKeyCommand;
+@class CNAccountsAndGroupsDataSource, CNAccountsAndGroupsViewController, CNContactListStyleApplier, CNContactListViewController, CNContactStore, CNContactStoreDataSource, CNContactStyle, CNContactViewController, CNUIUserActivityManager, NSArray, NSString, UIAlertController, UIBarButtonItem, UIKeyCommand;
 @protocol CNContactDataSource, CNContactNavigationControllerDelegate, CNScheduler;
 
 @interface CNContactNavigationController : UINavigationController <CNContactListViewControllerDelegate, CNContactListViewControllerDelegateInternal, CNContactViewControllerDelegate, CNContactContentViewControllerDelegate, CNAccountsAndGroupsViewControllerDelegate, CNContactViewControllerAddContactPresenter>
@@ -43,11 +43,13 @@
     CNUIUserActivityManager *_activityManager;
     CNContactListStyleApplier *_contactListStyleApplier;
     NSArray *_prohibitedPropertyKeys;
+    UIBarButtonItem *_addContactBarButtonItem;
 }
 
 @property (strong, nonatomic) CNAccountsAndGroupsDataSource *accountsAndGroupsDataSource; // @synthesize accountsAndGroupsDataSource=_accountsAndGroupsDataSource;
 @property (weak, nonatomic) CNAccountsAndGroupsViewController *accountsAndGroupsViewController; // @synthesize accountsAndGroupsViewController=_accountsAndGroupsViewController;
 @property (strong, nonatomic) CNUIUserActivityManager *activityManager; // @synthesize activityManager=_activityManager;
+@property (strong, nonatomic) UIBarButtonItem *addContactBarButtonItem; // @synthesize addContactBarButtonItem=_addContactBarButtonItem;
 @property (strong, nonatomic) UIKeyCommand *addKeyCommand; // @synthesize addKeyCommand=_addKeyCommand;
 @property (nonatomic) BOOL allowsCanceling; // @synthesize allowsCanceling=_allowsCanceling;
 @property (nonatomic) BOOL allowsCardDeletion; // @synthesize allowsCardDeletion=_allowsCardDeletion;

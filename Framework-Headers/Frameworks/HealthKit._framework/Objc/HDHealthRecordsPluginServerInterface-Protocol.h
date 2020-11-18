@@ -50,6 +50,6 @@
 - (void)remote_stringifyExtractionFailureReasonsForRecord:(HKMedicalRecord *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)remote_triggerClinicalContentAnalyticsForReason:(long long)arg1 options:(unsigned long long)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)remote_triggerClinicalOptInDataCollectionForReason:(long long)arg1 completion:(void (^)(BOOL, NSError *))arg2;
-- (void)remote_triggerHealthCloudUploadWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)remote_triggerHealthCloudUploadWithCompletion:(void (^)(BOOL, NSString *, NSError *))arg1;
 @end
 

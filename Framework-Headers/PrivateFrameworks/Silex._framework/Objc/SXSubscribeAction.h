@@ -4,11 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXAction.h>
+#import <objc/NSObject.h>
 
-@interface SXSubscribeAction : SXAction
+#import <Silex/SXSubscribeAction-Protocol.h>
+
+@class NSString;
+@protocol SXAction;
+
+@interface SXSubscribeAction : NSObject <SXSubscribeAction>
 {
+    id<SXAction> postPurchaseAction;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) id<SXAction> postPurchaseAction; // @synthesize postPurchaseAction;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *type;
+
+- (void).cxx_destruct;
 
 @end
 

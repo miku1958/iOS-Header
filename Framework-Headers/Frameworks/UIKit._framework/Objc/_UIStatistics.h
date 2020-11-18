@@ -53,8 +53,6 @@ __attribute__((visibility("hidden")))
 + (id)recentsInputViewNumberOfItems;
 + (id)recentsInputViewPresentationCount;
 + (id)scrollBounceCount;
-+ (id)scrollViewVerticalVelocityInteractive;
-+ (id)scrollViewVerticalVelocityNoninteractive;
 + (id)scrubberUsageCount;
 + (id)scrubberUsageTime;
 + (id)zoomGestureCount;

@@ -205,6 +205,7 @@
 - (id)_newGeniusDBConnectionAtPath:(id)arg1;
 - (id)_nonPurgeableAlbumsQuerySQLWithUrgency:(unsigned long long)arg1;
 - (id)_notInKeepLocalCollectionPredicate;
+- (void)_onQueue_updateDatabaseConnectionsProfilingLevel;
 - (void)_postClientNotificationWithDistributedName:(id)arg1 localName:(id)arg2;
 - (BOOL)_prepareForAccountChange:(id *)arg1;
 - (id)_purgeableAlbumsQuerySQLWithUrgency:(unsigned long long)arg1;
@@ -224,7 +225,6 @@
 - (void)_teardownMediaLibraryDatabaseConnection:(id)arg1;
 - (unsigned long long)_totalSizeForAllNonCacheTracks;
 - (BOOL)_updateBestArtworkTokensForArtworkToken:(id)arg1 artworkType:(long long)arg2 sourceType:(long long)arg3 preserveExistingAvailableToken:(BOOL)arg4 usingConnection:(id)arg5;
-- (void)_updateDatabaseConnectionsProfilingLevel;
 - (BOOL)_validateDatabaseUsingConnection:(id)arg1 error:(id *)arg2;
 - (void)accessSortKeyBuilder:(CDUnknownBlockType)arg1;
 - (id)accountCacheDatabase;

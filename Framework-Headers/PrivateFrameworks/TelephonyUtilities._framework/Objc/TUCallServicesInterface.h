@@ -69,7 +69,7 @@
 - (void)_updateCurrentCallsWithoutNotifications:(id)arg1;
 - (oneway void)answerCallWithRequest:(id)arg1;
 - (id)asynchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;
-- (BOOL)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2;
+- (BOOL)containsRestrictedHandle:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(BOOL)arg3;
 - (void)dealloc;
 - (id)dialWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)disconnectAllCalls;
@@ -78,6 +78,7 @@
 - (oneway void)enteredBackgroundForAllCalls;
 - (oneway void)enteredForegroundForCallWithUniqueProxyIdentifier:(id)arg1;
 - (void)fetchCurrentCalls;
+- (unsigned long long)filterStatusForAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
 - (oneway void)groupCallWithUniqueProxyIdentifier:(id)arg1 withOtherCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)handleCurrentCallsChanged:(id)arg1 callDisconnected:(id)arg2;
 - (oneway void)handleFrequencyChangedTo:(id)arg1 inDirection:(int)arg2 forCallsWithUniqueProxyIdentifiers:(id)arg3;
@@ -118,7 +119,7 @@
 - (oneway void)setRemoteVideoPresentationStateForCallWithUniqueProxyIdentifier:(id)arg1 presentationState:(int)arg2;
 - (oneway void)setTTYType:(int)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
 - (oneway void)setUplinkMuted:(BOOL)arg1 forCallWithUniqueProxyIdentifier:(id)arg2;
-- (BOOL)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2;
+- (BOOL)shouldRestrictAddresses:(id)arg1 forBundleIdentifier:(id)arg2 performSynchronously:(BOOL)arg3;
 - (oneway void)shouldSuppressInCallStatusBar:(BOOL)arg1;
 - (oneway void)swapCalls;
 - (id)synchronousServerWithErrorHandler:(CDUnknownBlockType)arg1;

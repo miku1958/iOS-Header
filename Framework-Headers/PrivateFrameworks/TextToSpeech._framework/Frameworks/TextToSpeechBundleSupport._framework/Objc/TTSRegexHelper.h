@@ -25,6 +25,7 @@
 + (id)sharedInstance;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)_addNSRule:(id)arg1 ruleApplication:(id)arg2 caseInsensitive:(BOOL)arg3;
 - (void)_addRules:(id)arg1;
 - (id)_boostApplyMatches:(id)arg1 rangeAdjustments:(id)arg2 text:(id)arg3 logging:(id)arg4;
 - (id)_boostApplyRulesForText:(id)arg1 rangeAdjustments:(id)arg2;

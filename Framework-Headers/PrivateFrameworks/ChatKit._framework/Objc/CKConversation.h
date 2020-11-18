@@ -20,6 +20,8 @@
     BOOL _needsReload;
     BOOL _hasLoadedAllMessages;
     BOOL _isReportedAsSpam;
+    BOOL _wasKnownSender;
+    BOOL _holdWasKnownSenderUpdates;
     int _wasDetectedAsSMSSpam;
     int _wasDetectedAsiMessageSpam;
     NSArray *_pendingHandles;
@@ -49,6 +51,7 @@
 @property (readonly, nonatomic) BOOL hasDisplayName;
 @property (nonatomic) BOOL hasLoadedAllMessages; // @synthesize hasLoadedAllMessages=_hasLoadedAllMessages;
 @property (readonly, nonatomic) BOOL hasUnreadMessages; // @dynamic hasUnreadMessages;
+@property (nonatomic) BOOL holdWasKnownSenderUpdates; // @synthesize holdWasKnownSenderUpdates=_holdWasKnownSenderUpdates;
 @property (nonatomic, getter=isIgnoringTypingUpdates) BOOL ignoringTypingUpdates; // @dynamic ignoringTypingUpdates;
 @property (readonly, nonatomic) BOOL isPreviewTextForAttachment;
 @property (nonatomic) BOOL isReportedAsSpam; // @synthesize isReportedAsSpam=_isReportedAsSpam;
@@ -70,6 +73,7 @@
 @property (strong, nonatomic) NSSet *pendingRecipients; // @synthesize pendingRecipients=_pendingRecipients;
 @property (nonatomic, getter=isPinned) BOOL pinned;
 @property (copy, nonatomic) NSString *previewText; // @synthesize previewText=_previewText;
+@property (readonly, nonatomic) NSString *rawAddressedName;
 @property (readonly, nonatomic) CKEntity *recipient; // @dynamic recipient;
 @property (readonly, nonatomic) unsigned long long recipientCount;
 @property (readonly, copy, nonatomic) NSArray *recipientStrings;
@@ -87,6 +91,7 @@
 @property (readonly, nonatomic) int wasDetectedAsSMSSpam; // @synthesize wasDetectedAsSMSSpam=_wasDetectedAsSMSSpam;
 @property (readonly, nonatomic) int wasDetectedAsSpam;
 @property (readonly, nonatomic) int wasDetectedAsiMessageSpam; // @synthesize wasDetectedAsiMessageSpam=_wasDetectedAsiMessageSpam;
+@property (nonatomic) BOOL wasKnownSender; // @synthesize wasKnownSender=_wasKnownSender;
 
 + (BOOL)_iMessage_canAcceptMediaObjectType:(int)arg1 givenMediaObjects:(id)arg2;
 + (BOOL)_iMessage_canSendComposition:(id)arg1 lastAddressedHandle:(id)arg2 lastAddressedSIMID:(id)arg3 currentService:(id)arg4 forceSMS:(BOOL)arg5 error:(id *)arg6;
@@ -157,8 +162,10 @@
 - (id)init;
 - (id)initWithChat:(id)arg1;
 - (BOOL)isAppleConversation;
+- (BOOL)isBlockedByCommunicationLimits;
 - (BOOL)isBusinessConversation;
 - (BOOL)isDowngraded;
+- (BOOL)isKnownSender;
 - (BOOL)isMakoConversation;
 - (BOOL)isPlaceholder;
 - (void)loadAllMessages;
@@ -172,6 +179,7 @@
 - (long long)maximumRecipientsForSendingService;
 - (id)messageWithComposition:(id)arg1;
 - (id)messagesFromComposition:(id)arg1;
+- (id)nameWithRawAddresses:(BOOL)arg1;
 - (BOOL)noAvailableServices;
 - (id)orderedContactsForAvatar3DTouchUIWithKeysToFetch:(id)arg1;
 - (id)orderedContactsForAvatarView;
@@ -200,6 +208,7 @@
 - (void)updateDisplayNameIfSMSSpam;
 - (void)updateLastViewedDate;
 - (void)updateUserActivity;
+- (void)updateWasKnownSender;
 - (void)willBecomeInactive;
 
 @end

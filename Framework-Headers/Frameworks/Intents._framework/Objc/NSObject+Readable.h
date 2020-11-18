@@ -7,17 +7,23 @@
 #import <objc/NSObject.h>
 
 #import <Intents/INCodableAttributeRelationComparing-Protocol.h>
+#import <Intents/INEnumerable-Protocol.h>
 
 @class NSString;
 
-@interface NSObject (Readable) <INCodableAttributeRelationComparing>
+@interface NSObject (Readable) <INCodableAttributeRelationComparing, INEnumerable>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 - (BOOL)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
+- (BOOL)_intents_enumerateObjectsOfClass:(Class)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_intents_indexingRepresentation;
 - (BOOL)_intents_isValidKey:(id)arg1;
 - (id)_intents_localizedCopyForLanguage:(id)arg1;

@@ -11,6 +11,7 @@
 @interface _TtC12NewsArticles30ReportConcernDetailDataManager : _TtCs12_SwiftObject
 {
     MISSING_TYPE *service;
+    MISSING_TYPE *historyService;
     MISSING_TYPE *headline;
     MISSING_TYPE *concern;
 }

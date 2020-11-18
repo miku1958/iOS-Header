@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 + (id)exportedInterface;
 + (id)passwordServiceViewControllerName;
 + (id)serviceViewControllerInterface;
+- (BOOL)_canShowWhileLocked;
 - (void)presentExternalPasswordCredentialRemoteViewController;
 
 @end

@@ -68,6 +68,7 @@
 @property (readonly, nonatomic) NSNumber *searchRenderTimeout;
 @property (readonly, nonatomic) NSURL *searchURL;
 @property (readonly, nonatomic) BOOL sendGeoEnvironmentHeader;
+@property (readonly, copy, nonatomic) NSArray *skuUploadWhitelist;
 @property (readonly, nonatomic) unsigned long long smartHistoryCompletionReturnCount;
 @property (readonly, nonatomic) BOOL smartHistoryEnabled;
 @property (readonly, nonatomic) BOOL smartHistoryFeatureFeedbackEnabled;

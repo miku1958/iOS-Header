@@ -8,7 +8,7 @@
 
 @protocol CRCarPlayAppService
 - (void)requestBlacklistUpdate;
-- (void)requestCarCapabilitiesStatus:(NSDictionary *)arg1 withReply:(void (^)(BOOL))arg2;
+- (void)requestCarCapabilitiesStatus:(NSDictionary *)arg1 withReply:(void (^)(CRCarPlayCapabilities *))arg2;
 - (void)requestCarCapabilitiesUpdate;
 @end
 

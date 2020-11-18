@@ -20,8 +20,9 @@
 @property (readonly, nonatomic) STRootViewModel *viewModel;
 
 - (id)coordinatorForChild:(STUIUser *)arg1 deviceIdentifier:(NSString *)arg2 usageReportType:(NSNumber *)arg3;
-- (void)enableScreenTimeWithPIN:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)enableScreenTimeWithPIN:(NSString *)arg1 recoveryAltDSID:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)setPIN:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
+- (void)setPIN:(NSString *)arg1 recoveryAltDSID:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)setScreenTimeEnabled:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setScreenTimeSyncingEnabled:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)setShareWebUsageEnabled:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;

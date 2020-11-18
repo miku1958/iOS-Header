@@ -391,7 +391,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_handleDOMPasteRequestWithResult:(unsigned char)arg1;
 - (BOOL)_handleDropByInsertingImagePlaceholders:(id)arg1 session:(id)arg2;
 - (void)_handleKeyUIEvent:(id)arg1;
-- (void)_handleSmartMagnificationInformationForPotentialTap:(unsigned long long)arg1 renderRect:(const struct FloatRect *)arg2 fitEntireRect:(BOOL)arg3 viewportMinimumScale:(double)arg4 viewportMaximumScale:(double)arg5;
+- (void)_handleSmartMagnificationInformationForPotentialTap:(unsigned long long)arg1 renderRect:(const struct FloatRect *)arg2 fitEntireRect:(BOOL)arg3 viewportMinimumScale:(double)arg4 viewportMaximumScale:(double)arg5 nodeIsRootLevel:(BOOL)arg6;
 - (void)_handleTouchActionsForTouchEvent:(const struct NativeWebTouchEvent *)arg1;
 - (void)_hardwareKeyboardAvailabilityChanged;
 - (BOOL)_hasValidOutstandingPositionInformationRequest:(const struct InteractionInformationRequest *)arg1;

@@ -5,7 +5,7 @@
  }
  protocol TeaTemplate.SizerType // 2 requirements
  {
-	// getter
+	// method
 	// method
  }
  protocol TeaTemplate.EmbedFactoryType // 5 requirements
@@ -23,7 +23,7 @@
  }
  protocol TeaTemplate.TextLinesSizerAttributedTextProviderType // 1 requirements
  {
-	// getter
+	// method
  }
  protocol TeaTemplate.ConditionType // 1 requirements
  {
@@ -77,13 +77,6 @@
 
  enum __C.UIUserInterfaceLayoutDirection { }
 
- struct __C.CGSize {
-
-	// Properties
-	var width : CGFloat
-	var height : CGFloat
- }
-
  struct __C.CGPoint {
 
 	// Properties
@@ -98,6 +91,13 @@
 	var size : CGSize
  }
 
+ struct __C.CGSize {
+
+	// Properties
+	var width : CGFloat
+	var height : CGFloat
+ }
+
  struct __C.UIEdgeInsets {
 
 	// Properties
@@ -106,6 +106,8 @@
 	var bottom : CGFloat
 	var right : CGFloat
  }
+
+ enum __C.UIUserInterfaceSizeClass { }
 
  struct __C.Key {
 
@@ -152,10 +154,11 @@
 
 	// Properties
 	case ambiguousSizing : String
-	case unspecifiedTraitCollection : UITraitCollection
+	case missingSpecFor : (UITraitCollection, viewportWidth: CGFloat)
 	case unknownTraitCollection : UITraitCollection
 	case missingConstrainingFrame : (forName: String)
 	case overlayMissingFrame : (forName: String)
+	case missingAltFrame : (identifier: String)
 	case unsupportedCanvas  
 	case ambiguousLayout  
 	case secondPassRequiresFirstPass  
@@ -188,16 +191,25 @@
 
 	// Properties
 	case offset : CGPoint
-	case flexibleArea  
 	case anchored  
+	case flexibleArea  
+	case positionOffset  
  }
 
  struct TeaTemplate.SizeToFitSizer { }
+
+ struct TeaTemplate.MinRatioSizer {
+
+	// Properties
+	let sizer : SizerType // +0x0
+	let adjustRatio : Ratio // +0x28
+ }
 
  enum TeaTemplate.DimensionSizing {
 
 	// Properties
 	case fixed : CGFloat
+	case scaledFixed : CGFloat
 	case columns : ColumnSize
 	case invert : DimensionSizing
 	case sizer : DimensionSizerType
@@ -233,6 +245,15 @@
 	let factory : A1
 	let model : EmbedFactoryType
 	let options : EmbedFactoryType
+ }
+
+ class TeaTemplate.Dynamic {
+ struct TeaTemplate.State {
+
+	// Properties
+	let cursor : Cursor<A>
+	let template : A
+	let context : LayoutContext
  }
 
  enum TeaTemplate.ColumnSystem {
@@ -283,16 +304,27 @@
 	let sizer : SizerType // +0x0
  }
 
+ struct TeaTemplate.AltText {
+
+	// Properties
+	let identifier : String // +0x0
+	let attributedText : NSAttributedString // +0x10
+	let logic : AltTextLogic // +0x18
+	let adjustedAttributedText : NSAttributedString // +0x20
+ }
+
  struct TeaTemplate.TextSizer {
 
 	// Properties
-	let attributedText : NSAttributedString // +0x0
+	let adjustedAttributedText : NSAttributedString // +0x0
  }
 
  struct TeaTemplate.LayoutContext {
 
 	// Properties
-	var frames : [String : CGRect] // +0x0
+	let name : String? // +0x0
+	var frames : [String : CGRect] // +0x10
+	var metadata : [String : [SizerResultMetadataKey : Any]] // +0x18
  }
 
  struct TeaTemplate.ColumnSpecSizer {
@@ -343,6 +375,7 @@
 	let initialOrigin : CGPoint
 	let direction : Direction
 	var pass : Pass
+	let isResizing : Bool
 	let bounds : CGRect
 	let layoutOptions : LayoutOptions
 	let canvasOptions : Canvas.Options
@@ -390,9 +423,12 @@
 
  struct TeaTemplate.SizeToFitDimensionSizer { }
 
- struct TeaTemplate.TeaTemplate { }
+ struct TeaTemplate.AltFlexibleTextSizer {
 
- struct TeaTemplate.Template { }
+	// Properties
+	let adjustedAttributedText : NSAttributedString // +0x0
+	let altTexts : [AltText] // +0x8
+ }
 
  enum TeaTemplate.CGRectTransform {
 
@@ -468,6 +504,12 @@
 	case max : Int
  }
 
+ struct TeaTemplate.DynamicSizer {
+
+	// Properties
+	let block : (_:)
+ }
+
  struct TeaTemplate.OffsetSizer {
 
 	// Properties
@@ -478,7 +520,7 @@
  struct TeaTemplate.FlexibleTextSizer {
 
 	// Properties
-	let attributedText : NSAttributedString // +0x0
+	let adjustedAttributedText : NSAttributedString // +0x0
  }
 
  enum TeaTemplate.SizerResult {
@@ -491,6 +533,7 @@
 	case nonIntegral : SizerResult
 	case processing : SizerResult
 	case postProcessing : SizerResult
+	case metadata : SizerResult
  }
 
  enum TeaTemplate.ProcessResult {
@@ -502,6 +545,13 @@
  }
 
  class TeaTemplate.BoxBuilder {
+ struct TeaTemplate.AltTextSizer {
+
+	// Properties
+	let adjustedAttributedText : NSAttributedString // +0x0
+	let altTexts : [AltText] // +0x8
+ }
+
  struct TeaTemplate.FlexibleMaxSizer {
 
 	// Properties
@@ -524,6 +574,8 @@
 	case size : CGSize
 	case width : CGFloat
 	case height : CGFloat
+	case scaledWidth : CGFloat
+	case scaledHeight : CGFloat
  }
 
  struct TeaTemplate.FixedSizer {
@@ -536,6 +588,7 @@
 
 	// Properties
 	let size : CGFloat // +0x0
+	let scaled : Bool // +0x8
  }
 
  class TeaTemplate.Prop {
@@ -596,9 +649,30 @@
 	// Properties
 	let sizer : SizerType
 	let anchor : Positioning<A>.Anchor
+	let resizing : Bool
  }
 
  class TeaTemplate.Box {
+ enum TeaTemplate.AltTextLogic {
+
+	// Properties
+	case textLines : Operator
+	case alt : AltTextLogic
+	case and : AltTextLogic
+	case or : AltTextLogic
+ }
+
+ enum TeaTemplate.Operator {
+
+	// Properties
+	case eq  
+	case neq  
+	case gt  
+	case gte  
+	case lt  
+	case lte  
+ }
+
  struct TeaTemplate.DimensionWiseSizer {
 
 	// Properties
@@ -623,13 +697,13 @@
 	let rightMarginView : UIView // +0x40 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x30700  @objc ColumnDebugView.initWithCoder: <stripped>
-	0x31190  @objc ColumnDebugView.layoutSubviews <stripped>
-	0x31270  @objc ColumnDebugView.initWithFrame: <stripped>
-	0x312f0  @objc ColumnDebugView..cxx_destruct <stripped>
+	0x3b3e0  @objc ColumnDebugView.initWithCoder: <stripped>
+	0x3be70  @objc ColumnDebugView.layoutSubviews <stripped>
+	0x3bf50  @objc ColumnDebugView.initWithFrame: <stripped>
+	0x3bfd0  @objc ColumnDebugView..cxx_destruct <stripped>
 
 	// Swift methods
-	0x2ff50  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
+	0x3ac30  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
  }
 
  class TeaTemplate.Layout {
@@ -651,6 +725,13 @@
 
 	// Properties
 	let sizer : DimensionSizerType // +0x0
+ }
+
+ struct TeaTemplate.AltTextSized {
+
+	// Properties
+	let altText : AltText // +0x0
+	let frame : CGRect // +0x28
  }
 
  struct TeaTemplate.MinMaxSizer {
@@ -699,20 +780,25 @@
 	case size : (width: DimensionSizing, height: DimensionSizing)
 	case width : CGFloat
 	case height : CGFloat
+	case scaledWidth : CGFloat
+	case scaledHeight : CGFloat
 	case ratio : Ratio
 	case flexiblePercentage : CGFloat
 	case flexibleMaxHeight : CGFloat
 	case flexibleMaxWidth : CGFloat
 	case flexibleText : (String?, font: UIFont)
 	case flexibleAttributedText : NSAttributedString?
+	case altFlexibleAttributedText : (NSAttributedString?, alts: [AltText])
 	case columns : Int
 	case columnPercentage : CGFloat
 	case columnSpec : ColumnSpec
 	case columnRowSpan : (Int, Ratio.Aspect)
 	case text : (String?, font: UIFont)
 	case attributedText : NSAttributedString?
+	case altAttributedText : (NSAttributedString?, alts: [AltText])
 	case sizer : SizerType
 	case if : Sizing
+	case dynamic : Sizing
 	case fill  
 	case sizeToFit  
 	case flexible  
@@ -757,6 +843,8 @@
 	case double : Double
 	case bool : Bool
 	case data : Data
+	case string : String
+	case nil  
  }
 
  enum TeaTemplate.Positioning {
@@ -765,12 +853,18 @@
 	case inset : UIEdgeInsets
 	case anchor : Anchor
 	case offset : CGPoint
+	case scaleOffset : CGPoint
 	case adjustWidth : PositioningAdjustment
 	case adjustHeight : PositioningAdjustment
 	case minWidth : CGFloat
 	case maxWidth : CGFloat
 	case minHeight : CGFloat
 	case maxHeight : CGFloat
+	case scaleHeight : CGFloat
+	case scaleWidth : CGFloat
+	case scaleHeightWithOrigin : CGFloat
+	case scaleWidthWithOrigin : CGFloat
+	case minAspectRatio : Ratio
 	case firstBaseline : UIFont
 	case baseline : UIFont
 	case otherFirstBaseline : (String, UIFont)
@@ -779,7 +873,9 @@
 	case otherBaselineIntegral : (String, UIFont)
 	case minTextLines : Int
 	case maxTextLines : Int
+	case resizeAnchor : Anchor
 	case resizeConstraining : (ResizeConstraint, to: String)
+	case dynamic : Positioning
 	case invert  
 	case resize  
 	case noIntegral  
@@ -812,11 +908,17 @@
 	case hSpacing  
  }
 
+ enum TeaTemplate.SizerResultMetadataKey {
+
+	// Properties
+	case altText  
+ }
+
  struct TeaTemplate.SizeAdjustSizer {
 
 	// Properties
 	let sizer : SizerType // +0x0
-	let adjust : Adjust // +0x28
+	let adjust : SizeAdjustSizer.Adjust // +0x28
  }
 
  enum TeaTemplate.Adjust {
@@ -824,6 +926,28 @@
 	// Properties
 	case width : PositioningAdjustment
 	case height : PositioningAdjustment
+ }
+
+ struct TeaTemplate.SizeScaleSizer {
+
+	// Properties
+	let sizer : SizerType // +0x0
+	let scale : SizeScaleSizer.Scale // +0x28
+	let adjustOrigin : Bool // +0x31
+ }
+
+ enum TeaTemplate.Scale {
+
+	// Properties
+	case width : CGFloat
+	case height : CGFloat
+ }
+
+ struct TeaTemplate.OffsetScaleSizer {
+
+	// Properties
+	let sizer : SizerType // +0x0
+	let scaleOffset : CGPoint // +0x28
  }
 
  struct TeaTemplate.FlexibleCondition {

@@ -157,7 +157,11 @@
 - (id)existingChatsForIDs:(id)arg1 onService:(id)arg2 style:(unsigned char)arg3;
 - (id)existingChatsWithGroupID:(id)arg1;
 - (id)existingOneOnOneChatsWithIdentifiers:(id)arg1;
+- (id)existingSMSChatForID:(id)arg1;
+- (id)existingSMSChatForID:(id)arg1 withChatStyle:(unsigned char)arg2;
 - (id)existingUnnamedGroupChatsContainingHandles:(id)arg1;
+- (id)existingiMessageChatForID:(id)arg1;
+- (id)existingiMessageChatForID:(id)arg1 withChatStyle:(unsigned char)arg2;
 - (struct NSArray *)findDuplicateChats:(struct NSArray *)arg1;
 - (struct NSArray *)findDuplicateUnnamedGroups:(struct NSArray *)arg1;
 - (id)groupChatsBasedOnIdentity:(id)arg1;

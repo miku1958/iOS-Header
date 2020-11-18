@@ -34,6 +34,7 @@
 - (unsigned long long)messageID;
 - (id)originator;
 - (long long)priority;
+- (unsigned int)pushFlags;
 - (unsigned long long)pushType;
 - (id)rawTimeoutTime;
 - (long long)sendInterface;
@@ -43,6 +44,7 @@
 - (void)setMessageID:(unsigned long long)arg1;
 - (void)setOriginator:(id)arg1;
 - (void)setPriority:(long long)arg1;
+- (void)setPushFlags:(unsigned int)arg1;
 - (void)setPushType:(unsigned long long)arg1;
 - (void)setSendInterface:(long long)arg1;
 - (void)setSent:(BOOL)arg1;

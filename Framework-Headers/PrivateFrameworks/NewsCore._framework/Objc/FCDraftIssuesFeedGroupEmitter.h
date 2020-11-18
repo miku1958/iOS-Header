@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSString *issueListID; // @synthesize issueListID=_issueListID;
 @property (readonly, nonatomic) long long requiredForYouContentTypes;
 @property (readonly, nonatomic) BOOL requiresHeavyweightContent;
+@property (readonly, nonatomic) BOOL shouldEmitContentInFavoritesOnlyMode;
 @property (readonly) Class superclass;
 
 + (id)groupEmitterIdentifier;

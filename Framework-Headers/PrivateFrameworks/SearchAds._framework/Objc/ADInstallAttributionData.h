@@ -26,7 +26,9 @@
 @property (readonly, copy, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
+- (id)dictionaryRepresentation;
 - (id)initWithDict:(id)arg1;
+- (void)recordStoreKitAdTap:(CDUnknownBlockType)arg1;
 
 @end
 

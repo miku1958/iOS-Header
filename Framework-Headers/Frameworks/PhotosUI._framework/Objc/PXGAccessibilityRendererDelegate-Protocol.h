@@ -23,6 +23,7 @@
 - (BOOL)itemDidShowDefaultUIAtLocation:(struct CGPoint)arg1;
 - (BOOL)itemWasDoubleClickedWithHitTestResult:(PXGHitTestResult *)arg1;
 - (BOOL)itemWasRightClickedWithHitTestResult:(PXGHitTestResult *)arg1 location:(struct CGPoint)arg2;
+- (void)notifySelectedCellsChanged;
 - (void)selectAssets:(NSArray *)arg1;
 @end
 

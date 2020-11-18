@@ -24,6 +24,9 @@
     HFStaticItemProvider *_itemProvider;
     UIViewController *_viewController;
     NSArray *_optionItems;
+    unsigned long long _upgradeState;
+    unsigned long long _offerState;
+    unsigned long long _numCamerasSupportRecordingService;
     HMHome *_home;
 }
 
@@ -37,11 +40,14 @@
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) HFStaticItemProvider *itemProvider; // @synthesize itemProvider=_itemProvider;
 @property (readonly, nonatomic) NSString *longestCameraUsageOptionItemTitle; // @synthesize longestCameraUsageOptionItemTitle=_longestCameraUsageOptionItemTitle;
+@property (nonatomic) unsigned long long numCamerasSupportRecordingService; // @synthesize numCamerasSupportRecordingService=_numCamerasSupportRecordingService;
+@property (nonatomic) unsigned long long offerState; // @synthesize offerState=_offerState;
 @property (strong, nonatomic) NSArray *optionItems; // @synthesize optionItems=_optionItems;
 @property (readonly, nonatomic) unsigned long long presenceEventType; // @synthesize presenceEventType=_presenceEventType;
 @property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (strong, nonatomic) HUCameraUsageOptionItemProvider *recordingSettingItemProvider; // @synthesize recordingSettingItemProvider=_recordingSettingItemProvider;
 @property (readonly) Class superclass;
+@property (nonatomic) unsigned long long upgradeState; // @synthesize upgradeState=_upgradeState;
 @property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
@@ -50,6 +56,7 @@
 - (void)_dispatchUpdateForCameraProfile:(id)arg1;
 - (id)_titleString;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
+- (unsigned long long)countCameraProfilesWithRecordingService;
 - (id)didSelectItem:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1 cameraProfiles:(id)arg2 presenceEventType:(unsigned long long)arg3;
@@ -59,8 +66,9 @@
 - (void)presentGenericError;
 - (void)presentInsufficientPrivilegesAlert;
 - (void)presentMissingSupportedHubAlert;
+- (void)sendCAMetricInfo;
 - (id)showOptionsItem;
-- (id)updateStreamingSetting:(unsigned long long)arg1;
+- (id)updateStreamingSetting:(unsigned long long)arg1 isRetry:(BOOL)arg2;
 - (void)upgradeFlowManagerDidCancel:(id)arg1;
 - (void)upgradeFlowManagerDidComplete:(id)arg1;
 

@@ -21,20 +21,20 @@
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _activeReadHandler;
     NSMutableArray *_pendingReads;
-    NSError *_receivedFailure;
+    NSError *_pendingError;
     NSString *_logIdentifier;
 }
 
+@property (readonly, getter=isActive) BOOL active;
 @property (copy, nonatomic) CDUnknownBlockType activeReadHandler; // @synthesize activeReadHandler=_activeReadHandler;
 @property (readonly, weak, nonatomic) HMDDataStreamBulkSendProtocol *bulkSendProtocol; // @synthesize bulkSendProtocol=_bulkSendProtocol;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly) BOOL hasMoreData;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property (strong, nonatomic) NSError *pendingError; // @synthesize pendingError=_pendingError;
 @property (strong, nonatomic) NSMutableArray *pendingReads; // @synthesize pendingReads=_pendingReads;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) NSError *receivedFailure; // @synthesize receivedFailure=_receivedFailure;
 @property (readonly, nonatomic) NSNumber *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly) Class superclass;
 

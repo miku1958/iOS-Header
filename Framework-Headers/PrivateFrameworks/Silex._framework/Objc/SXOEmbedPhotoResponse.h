@@ -17,7 +17,6 @@
 @property (readonly, nonatomic) struct CGSize size;
 @property (readonly, nonatomic) double width; // @dynamic width;
 
-- (id)URLWithValue:(id)arg1 withType:(int)arg2;
 
 @end
 

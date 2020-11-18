@@ -31,6 +31,7 @@
     DevicePINKeypadContainerView *_keypadContainerView;
     unsigned int _PINLength;
     CDUnknownBlockType _passcodeOptionsHandler;
+    NSString *_passcodeOptionsTitle;
 }
 
 @property (nonatomic) unsigned int PINLength; // @synthesize PINLength=_PINLength;
@@ -44,6 +45,7 @@
 @property (nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance=_keyboardAppearance;
 @property (nonatomic) long long keyboardType; // @synthesize keyboardType=_keyboardType;
 @property (copy, nonatomic) CDUnknownBlockType passcodeOptionsHandler; // @synthesize passcodeOptionsHandler=_passcodeOptionsHandler;
+@property (copy, nonatomic) NSString *passcodeOptionsTitle; // @synthesize passcodeOptionsTitle=_passcodeOptionsTitle;
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (strong, nonatomic) UIView<PINEntryView> *pinView; // @synthesize pinView=_pinView;
 @property (nonatomic) long long returnKeyType;

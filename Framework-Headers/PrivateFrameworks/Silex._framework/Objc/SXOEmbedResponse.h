@@ -25,12 +25,8 @@
 @property (readonly, nonatomic) NSString *version; // @dynamic version;
 
 + (id)jsonPropertyNameForObjCPropertyName:(id)arg1;
-- (id)URLFromValue:(id)arg1 type:(int)arg2;
-- (id)authorURLWithValue:(id)arg1 withType:(int)arg2;
 - (double)cacheAgeWithValue:(id)arg1 withType:(int)arg2;
 - (id)objectForKey:(id)arg1;
-- (id)providerURLWithValue:(id)arg1 withType:(int)arg2;
-- (id)thumbnailURLWithValue:(id)arg1 withType:(int)arg2;
 
 @end
 

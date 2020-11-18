@@ -66,7 +66,6 @@
     BOOL _isCurrentlyDownloadingPurgedAssets;
     BOOL _allowedByScreenTime;
     BOOL _hasSurfRequest;
-    NSString *_participantIDsHash;
     NSString *_personCentricID;
     NSDictionary *_bizIntent;
     NSString *_groupChatIdentifierUppercase;
@@ -160,7 +159,6 @@
 @property (nonatomic) unsigned long long numberOfMessagesToKeepLoaded;
 @property (strong, nonatomic) IMOrderingTools *orderingTools; // @synthesize orderingTools=_orderingTools;
 @property (readonly, nonatomic) unsigned long long overallChatStatus;
-@property (readonly, copy, nonatomic) NSString *participantIDsHash; // @synthesize participantIDsHash=_participantIDsHash;
 @property (readonly, nonatomic) NSArray *participants; // @synthesize participants=_participants;
 @property (readonly, nonatomic) NSString *persistentID;
 @property (strong, nonatomic) NSString *personCentricID; // @synthesize personCentricID=_personCentricID;
@@ -384,6 +382,7 @@
 - (id)messageForGUID:(id)arg1;
 - (id)messagesToReportAsSpamFromChatItems:(id)arg1;
 - (long long)numberOfTimesRespondedToThread;
+- (id)participantHandleIDs;
 - (id)participantsWithState:(unsigned long long)arg1;
 - (unsigned long long)paymentTypeForMessage:(id)arg1;
 - (void)refreshServiceForSending;
@@ -423,12 +422,10 @@
 - (void)updateMessage:(id)arg1 flags:(unsigned long long)arg2;
 - (void)updateShouldForceToSMS:(BOOL)arg1;
 - (void)updateWasDetectedAsSMSSpam:(BOOL)arg1;
-- (void)updateWasDetectedAsiMessageSpam:(BOOL)arg1;
 - (void)updateWatermarks;
 - (void)userToggledReadReceiptSwitch:(BOOL)arg1;
 - (id)valueForChatProperty:(id)arg1;
 - (id)valueForProperty:(id)arg1 ofParticipant:(id)arg2;
-- (void)verifyChatShouldBeSpamWithService:(id)arg1;
 - (void)verifyFiltering;
 - (void)watermarkInForScrutinyMode;
 - (void)watermarkOutForScrutinyMode;

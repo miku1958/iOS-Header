@@ -107,7 +107,10 @@
 - (void)_isSpeaking:(id)arg1;
 - (void)_pauseSpeaking:(id)arg1;
 - (id)_phonemeSubstitutionsForAction:(id)arg1;
+- (void)_processDidContinueCallback:(id)arg1;
+- (void)_processDidPauseCallback:(id)arg1;
 - (void)_processDidStartCallback:(id)arg1;
+- (void)_processWillSpeechRange:(id)arg1;
 - (void)_resetInterruptionTracking;
 - (void)_speechJobFinished:(BOOL)arg1 action:(id)arg2;
 - (void)_startNextSpeechJob;

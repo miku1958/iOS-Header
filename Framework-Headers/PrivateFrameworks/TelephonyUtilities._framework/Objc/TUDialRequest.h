@@ -12,7 +12,7 @@
 #import <TelephonyUtilities/TUFilteredRequest-Protocol.h>
 #import <TelephonyUtilities/TUVideoRequest-Protocol.h>
 
-@class BSProcessHandle, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentity, TUSenderIdentityClient;
+@class BSProcessHandle, CNGeminiManager, IDSDestination, NSArray, NSDate, NSString, NSURL, NSUUID, NSUserActivity, TUCallProvider, TUCallProviderManager, TUHandle, TUSenderIdentity, TUSenderIdentityClient;
 
 @interface TUDialRequest : NSObject <TUCallRequest, TUVideoRequest, TUFilteredRequest, NSSecureCoding, NSCopying>
 {
@@ -28,6 +28,7 @@
     BOOL _shouldSuppressInCallUI;
     NSString *_uniqueProxyIdentifier;
     TUSenderIdentityClient *_senderIdentityClient;
+    CNGeminiManager *_contactGeminiManager;
     TUCallProvider *_provider;
     long long _dialType;
     TUHandle *_handle;
@@ -54,6 +55,7 @@
 
 @property (readonly, nonatomic) NSURL *URL;
 @property (copy, nonatomic) NSString *audioSourceIdentifier; // @synthesize audioSourceIdentifier=_audioSourceIdentifier;
+@property (strong, nonatomic) CNGeminiManager *contactGeminiManager; // @synthesize contactGeminiManager=_contactGeminiManager;
 @property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (strong, nonatomic) NSDate *dateDialed; // @synthesize dateDialed=_dateDialed;
 @property (readonly, copy) NSString *debugDescription;

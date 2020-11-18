@@ -6,7 +6,7 @@
 
 #import <CarPlaySupport/CPBaseTemplateProviding-Protocol.h>
 
-@class CPImageSet, CPNavigationAlert, CPTravelEstimates, CPTrip, CPTripPreviewTextConfiguration, NSArray, NSUUID, UIColor, UIImage;
+@class CPImageSet, CPNavigationAlert, CPTravelEstimates, CPTripPreviewTextConfiguration, NSArray, NSUUID, UIColor, UIImage;
 
 @protocol CPMapTemplateProviding <CPBaseTemplateProviding>
 - (void)dismissNavigationAlertAnimated:(BOOL)arg1 completion:(void (^)(BOOL))arg2;
@@ -14,7 +14,6 @@
 - (void)hostSetMapButton:(NSUUID *)arg1 imageSet:(CPImageSet *)arg2;
 - (void)hostSetMapButtons:(NSArray *)arg1;
 - (void)hostSetPanInterfaceVisible:(BOOL)arg1 animated:(BOOL)arg2;
-- (void)hostStartNavigationSessionForTrip:(CPTrip *)arg1 reply:(void (^)(id<CPNavigationSessionProviding>))arg2;
 - (void)hostUpdateTravelEstimates:(CPTravelEstimates *)arg1 forTripIdentifier:(NSUUID *)arg2;
 - (void)setHostAutoHidesNavigationBar:(BOOL)arg1;
 - (void)setHostGuidanceBackgroundColor:(UIColor *)arg1;

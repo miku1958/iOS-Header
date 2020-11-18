@@ -25,7 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKPaymentAuthorizationCoordinator *paymentCoordinator; // @synthesize paymentCoordinator=_paymentCoordinator;
-@property (nonatomic) id<PKPaymentAuthorizationControllerPrivateDelegate> privateDelegate; // @synthesize privateDelegate=_privateDelegate;
+@property (weak, nonatomic) id<PKPaymentAuthorizationControllerPrivateDelegate> privateDelegate; // @synthesize privateDelegate=_privateDelegate;
 @property (readonly) Class superclass;
 
 + (BOOL)canMakePayments;

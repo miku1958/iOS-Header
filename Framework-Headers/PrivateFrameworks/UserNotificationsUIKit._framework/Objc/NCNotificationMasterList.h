@@ -69,7 +69,7 @@
 - (void)_insertNotificationRequest:(id)arg1;
 - (BOOL)_isNotificationRequestForHistorySection:(id)arg1;
 - (BOOL)_isNotificationRequestForIncomingSection:(id)arg1;
-- (void)_migrateNotificationsFromList:(id)arg1 toList:(id)arg2 passingTest:(CDUnknownBlockType)arg3 hideToList:(BOOL)arg4 clearRequests:(BOOL)arg5;
+- (void)_migrateNotificationsFromList:(id)arg1 toList:(id)arg2 passingTest:(CDUnknownBlockType)arg3 hideToList:(BOOL)arg4 clearRequests:(BOOL)arg5 filterPersistentRequests:(BOOL)arg6;
 - (id)_newMissedSectionListForReason:(unsigned long long)arg1;
 - (id)_newNotificationSectionListWithTitle:(id)arg1 notificationListViewRevealed:(BOOL)arg2 logDescription:(id)arg3;
 - (void)_regroupAllNotificationGroups;

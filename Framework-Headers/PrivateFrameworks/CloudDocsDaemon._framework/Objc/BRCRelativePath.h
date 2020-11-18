@@ -45,12 +45,14 @@
     unsigned int _isBRAlias:1;
     unsigned int _qtnResolved:1;
     unsigned int _xattrsResolved:1;
+    unsigned int _sharedBookmarkResolved:1;
     int _fd;
     _Atomic int _openRefCount;
     struct brc_mutex _mutex;
     BRCAccountSession *_session;
     NSData *_quarantineInfo;
     NSData *_xattrs;
+    NSString *_sharedItemBookmark;
 }
 
 @property (readonly, nonatomic) NSString *absolutePath;
@@ -99,6 +101,7 @@
 @property (readonly, nonatomic) NSData *quarantineInfo; // @synthesize quarantineInfo=_quarantineInfo;
 @property (readonly, nonatomic) BRCRelativePath *root;
 @property (readonly, nonatomic) BRCAccountSession *session; // @synthesize session=_session;
+@property (readonly, nonatomic) NSString *sharedItemBookmark; // @synthesize sharedItemBookmark=_sharedItemBookmark;
 @property (readonly, nonatomic) long long size;
 @property (readonly, nonatomic) NSString *symlinkContent;
 @property (nonatomic) unsigned short type; // @synthesize type=_type;

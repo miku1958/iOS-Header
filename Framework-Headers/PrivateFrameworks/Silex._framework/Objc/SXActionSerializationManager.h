@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 - (id)URLForAction:(id)arg1 type:(long long)arg2;
 - (id)init;
-- (void)registerSerializer:(id)arg1 actionType:(Class)arg2;
+- (void)registerSerializer:(id)arg1 actionType:(id)arg2;
 
 @end
 

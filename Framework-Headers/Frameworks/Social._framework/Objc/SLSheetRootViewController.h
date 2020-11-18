@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) UITableView *tableView;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (double)_preferredTableViewHeight;
 - (void)_updateCell:(id)arg1 withConfigurationItem:(id)arg2;
 - (void)_updateCellForConfigurationItem:(id)arg1;

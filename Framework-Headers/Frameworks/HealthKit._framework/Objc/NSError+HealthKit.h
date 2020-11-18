@@ -13,6 +13,8 @@
 + (id)_hk_OAuth2_errorForUnauthorizedStatusWithRequest:(id)arg1 response:(id)arg2;
 + (id)_hk_OAuth2_errorFromResponseData:(id)arg1 defaultError:(id)arg2 parseError:(out id *)arg3;
 + (id)_hk_OAuth2_rawErrorForRequest:(id)arg1 response:(id)arg2 data:(id)arg3;
++ (id)hk_HTTPErrorRepresentingResponse:(id)arg1 request:(id)arg2;
++ (id)hk_HTTPErrorWithHTTPStatusCode:(long long)arg1 URLResponse:(id)arg2;
 + (id)hk_OAuth2_error:(long long)arg1;
 + (id)hk_OAuth2_error:(long long)arg1 underlyingError:(id)arg2;
 + (id)hk_OAuth2_errorForRequest:(id)arg1 response:(id)arg2 data:(id)arg3;

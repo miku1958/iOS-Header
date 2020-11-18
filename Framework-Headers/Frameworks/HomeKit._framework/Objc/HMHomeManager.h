@@ -118,7 +118,6 @@
 - (void)_deleteDuetEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_determineCacheFiles;
 - (void)_dumpCaches:(id)arg1 metadata:(id)arg2;
-- (void)_dumpState:(id)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_eraseHomeDataAndDeleteMetadata:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_fetchHomeConfigurationWithRefreshRequested:(BOOL)arg1;
 - (void)_handleAccessAllowedWhenLockedUpdatedNotification:(id)arg1;
@@ -140,7 +139,6 @@
 - (id)_homeWithUUID:(id)arg1;
 - (BOOL)_isValidCachedHomeConfiguration:(id)arg1;
 - (void)_logAppViewEvent:(id)arg1 name:(id)arg2 uuid:(id)arg3 information:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)_logControl:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_mergeCurrentAppDataWithNewAppData:(id)arg1 operations:(id)arg2;
 - (void)_mergeCurrentHomeInvitationsWithNewHomeInvitations:(id)arg1 operations:(id)arg2;
 - (void)_mergeCurrentHomesWithNewHomes:(id)arg1 newPrimaryHome:(id)arg2 newCurrentHome:(id)arg3 newInvitations:(id)arg4 newAppData:(id)arg5 refreshRequested:(BOOL)arg6;
@@ -156,8 +154,6 @@
 - (id)_privateDelegate;
 - (void)_processHomeConfigurationRequest:(id)arg1 refreshRequested:(BOOL)arg2;
 - (void)_queryHomeKitUsageStateWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_queryMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_queryVersionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_queryiCloudSwitchStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_registerForMediaAccessoryControl:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_registerNotificationHandlers;
@@ -165,7 +161,6 @@
 - (void)_removeHome:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_requestRefresh;
 - (void)_requestRuntimeUpdate:(id)arg1;
-- (void)_setMetadata:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_setResidentProvisioningStatus:(unsigned long long)arg1;
 - (void)_shouldDisplayiCloudSwitchWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_updateAccessAllowedWhenLocked:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -194,7 +189,6 @@
 - (id)initWithHomeMangerConfiguration:(id)arg1;
 - (id)initWithOptions:(unsigned long long)arg1;
 - (void)logAppViewEvent:(id)arg1 name:(id)arg2 uuid:(id)arg3 information:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)logControl:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)notifyResidentCapableUpdated:(BOOL)arg1;
 - (void)notifyResidentEnabledUpdated:(BOOL)arg1;
 - (void)pairingIdentityForAccessoryWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

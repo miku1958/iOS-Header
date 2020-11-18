@@ -20,6 +20,7 @@
     EFObservable<EFObserver> *_inputObservable;
     EFObservable *_contentObservable;
     EFFuture *_futureContentRepresentation;
+    _Atomic BOOL _hasError;
     unsigned long long _retyAttempt;
     BOOL _includeSuggestionItems;
     struct os_unfair_lock_s _contentRepresentationLock;
@@ -36,6 +37,7 @@
 @property (readonly, nonatomic) EMMessage *message;
 @property (readonly, nonatomic) EFFuture *messageFuture; // @synthesize messageFuture=_messageFuture;
 @property (readonly) unsigned long long signpostID;
+@property (readonly) unsigned long long state;
 @property (readonly) Class superclass;
 
 + (id)defaultScheduler;

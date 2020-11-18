@@ -12,7 +12,7 @@
 __attribute__((visibility("hidden")))
 @interface AVFullScreenViewController : UIViewController
 {
-    id<AVFullScreenViewControllerDelegate> _delegate;
+    UIViewController<AVFullScreenViewControllerDelegate> *_delegate;
     AVFullScreenViewController *_associatedFullScreenViewController;
     AVFullScreenViewController *_sourceFullScreenViewController;
     UIView *_contentView;
@@ -20,10 +20,11 @@ __attribute__((visibility("hidden")))
 
 @property (weak, nonatomic) AVFullScreenViewController *associatedFullScreenViewController; // @synthesize associatedFullScreenViewController=_associatedFullScreenViewController;
 @property (weak, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
-@property (weak, nonatomic) id<AVFullScreenViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) UIViewController<AVFullScreenViewControllerDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (weak, nonatomic) AVFullScreenViewController *sourceFullScreenViewController; // @synthesize sourceFullScreenViewController=_sourceFullScreenViewController;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_presentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;
 - (BOOL)_requiresCustomPresentationController;
 - (void)attachContentView;

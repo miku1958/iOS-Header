@@ -36,6 +36,7 @@
 + (id)storeIdentifier;
 + (id)storeIdentifierFromContactIdentifier:(id)arg1;
 + (id)storeInfoClasses;
++ (id)storeWithDelegateInfo:(id)arg1;
 + (id)storeWithEnvironment:(id)arg1 options:(unsigned long long)arg2;
 + (id)storeWithOptions:(unsigned long long)arg1;
 - (void).cxx_destruct;

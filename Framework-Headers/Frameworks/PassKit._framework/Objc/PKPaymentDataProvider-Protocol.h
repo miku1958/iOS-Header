@@ -41,6 +41,7 @@
 - (NSSet *)expressPassesInformation;
 - (NSSet *)expressPassesInformationWithCardType:(long long)arg1;
 - (void)felicaStateWithPassUniqueIdentifier:(NSString *)arg1 paymentApplication:(PKPaymentApplication *)arg2 completion:(void (^)(PKFelicaTransitAppletState *))arg3;
+- (void)installmentPlanTransactionsForPassUniqueIdentifier:(NSString *)arg1 accountIdentifier:(NSString *)arg2 withRedemptionType:(long long)arg3 startDate:(NSDate *)arg4 endDate:(NSDate *)arg5 completion:(void (^)(NSSet *))arg6;
 - (void)installmentPlansWithTransactionReferenceIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)installmentTransactionsForInstallmentPlanIdentifier:(NSString *)arg1 completion:(void (^)(NSSet *))arg2;
 - (void)mapsMerchantsWithCompletion:(void (^)(NSSet *))arg1;

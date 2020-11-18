@@ -13,7 +13,7 @@
 #import <CarPlay/CPNavigationAlertUpdating-Protocol.h>
 
 @class CPBarButton, CPNavigationAlert, NAFuture, NSArray, NSMutableDictionary, NSString, UIColor;
-@protocol CPBannerProviding, CPMapTemplateDelegate;
+@protocol CPBannerProviding, CPMapTemplateDelegate, CPNavigationSessionProviding;
 
 @interface CPMapTemplate : CPTemplate <CPMapButtonDelegate, CPMapClientTemplateDelegate, CPBannerDelegate, CPNavigationAlertUpdating, CPBarButtonProviding>
 {
@@ -25,7 +25,9 @@
     id<CPMapTemplateDelegate> _mapDelegate;
     CPNavigationAlert *_currentNavigationAlert;
     NSMutableDictionary *_postedBannerObjects;
+    NAFuture *_navigationSessionProviderFuture;
     id<CPBannerProviding> _bannerProvider;
+    id<CPNavigationSessionProviding> _navigationSessionProvider;
     NSArray *_tripPreviews;
 }
 
@@ -41,6 +43,8 @@
 @property (strong, nonatomic) NSArray *leadingNavigationBarButtons;
 @property (strong, nonatomic) NSArray *mapButtons; // @synthesize mapButtons=_mapButtons;
 @property (weak, nonatomic) id<CPMapTemplateDelegate> mapDelegate; // @synthesize mapDelegate=_mapDelegate;
+@property (strong, nonatomic) id<CPNavigationSessionProviding> navigationSessionProvider; // @synthesize navigationSessionProvider=_navigationSessionProvider;
+@property (strong, nonatomic) NAFuture *navigationSessionProviderFuture; // @synthesize navigationSessionProviderFuture=_navigationSessionProviderFuture;
 @property (readonly, nonatomic, getter=isPanningInterfaceVisible) BOOL panningInterfaceVisible;
 @property (strong, nonatomic) NSMutableDictionary *postedBannerObjects; // @synthesize postedBannerObjects=_postedBannerObjects;
 @property (readonly) Class superclass;

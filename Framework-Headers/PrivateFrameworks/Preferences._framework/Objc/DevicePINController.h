@@ -35,6 +35,8 @@
     BOOL _shouldDismissWhenDone;
     BOOL _allowOptionsButton;
     NSString *_doneButtonTitle;
+    NSString *_passcodeOptionsTitle;
+    CDUnknownBlockType _passcodeOptionsHandler;
 }
 
 @property (nonatomic) BOOL allowOptionsButton; // @synthesize allowOptionsButton=_allowOptionsButton;
@@ -42,6 +44,8 @@
 @property (nonatomic) BOOL hidesCancelButton; // @synthesize hidesCancelButton=_hidesCancelButton;
 @property (nonatomic) BOOL hidesNavigationButtons; // @synthesize hidesNavigationButtons=_hidesNavigationButtons;
 @property (nonatomic, getter=isNumericPIN) BOOL numericPIN;
+@property (copy, nonatomic) CDUnknownBlockType passcodeOptionsHandler; // @synthesize passcodeOptionsHandler=_passcodeOptionsHandler;
+@property (copy, nonatomic) NSString *passcodeOptionsTitle; // @synthesize passcodeOptionsTitle=_passcodeOptionsTitle;
 @property (weak, nonatomic) id<DevicePINControllerDelegate> pinDelegate; // @synthesize pinDelegate=_pinDelegate;
 @property (nonatomic) int pinLength;
 @property (nonatomic) BOOL requiresKeyboard;

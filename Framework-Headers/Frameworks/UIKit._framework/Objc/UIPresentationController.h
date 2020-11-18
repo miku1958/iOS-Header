@@ -211,6 +211,7 @@
 - (BOOL)_shouldMakePresentedViewControllerFirstResponder;
 - (BOOL)_shouldOccludeDuringPresentation;
 - (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
+- (BOOL)_shouldPreserveFirstResponder;
 - (BOOL)_shouldRespectDefinesPresentationContext;
 - (BOOL)_shouldRestoreFirstResponder;
 - (BOOL)_shouldSavePresentedViewControllerForStateRestoration;

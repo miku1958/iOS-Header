@@ -37,22 +37,22 @@
 @property (nonatomic) BOOL shouldIncludeSpecialSources; // @synthesize shouldIncludeSpecialSources=_shouldIncludeSpecialSources;
 @property (readonly, nonatomic) HKSourceListDataModel *sources; // @synthesize sources=_sources;
 
++ (CDUnknownBlockType)_builtinIconFetchTransformer;
++ (CDUnknownBlockType)_builtinInstallationStatusTransformer;
++ (CDUnknownBlockType)_builtinPurposeStringsFetchTransformer;
++ (void)_performTransformations:(id)arg1 model:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)_remoteWatchAppPurposeStringsForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)fetchIconForSource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
-- (CDUnknownBlockType)_builtinIconFetchTransformer;
-- (CDUnknownBlockType)_builtinInstallationStatusTransformer;
-- (CDUnknownBlockType)_builtinPurposeStringsFetchTransformer;
 - (void)_didFetchSources:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fakeSourceForInstalledAppWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_notifyObserversForDataSourceUpdate;
-- (void)_performTransformations:(id)arg1 model:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_prependBuiltinTransformers;
-- (void)_remoteWatchAppPurposeStringsForBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_specialAppBundleIdentifiers;
 - (void)_throttledNotificationOfDataSourceUpdate;
 - (void)addFetchTransformer:(CDUnknownBlockType)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
-- (void)fetchIconForSource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchModelForSources:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSources;
 - (id)initWithHealthStore:(id)arg1;

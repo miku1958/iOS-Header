@@ -398,7 +398,6 @@
 - (void)_handleDisableNotificationsTimerFired;
 - (void)_handleEnableMultiUserRequest:(id)arg1;
 - (void)_handleEnableNotifications:(id)arg1;
-- (void)_handleEnableRemoteAccess:(id)arg1;
 - (void)_handleExecuteActionSet:(id)arg1;
 - (void)_handleExecuteConfirmationOfTrigger:(id)arg1;
 - (void)_handleFetchAccessories:(id)arg1;
@@ -414,7 +413,6 @@
 - (void)_handleMultipleCharacteristicWrite:(id)arg1;
 - (void)_handleOutgoingInvitations:(id)arg1;
 - (void)_handlePendingResponserTimerFired:(BOOL)arg1;
-- (void)_handleQueryRemoteAccess:(id)arg1;
 - (void)_handleQueryUserIsAdmin:(id)arg1;
 - (void)_handleReadMediaProperties:(struct NSDictionary *)arg1 source:(unsigned long long)arg2 message:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_handleReceivedNonCloudSourcedSharedHomeModel;
@@ -531,8 +529,8 @@
 - (void)_refreshCharacteristicValuesOnHomeNotificationEnable;
 - (void)_refreshUserDisplayNames;
 - (void)_registerDeviceForReachabilityNotification:(id)arg1 accessoryList:(id)arg2;
-- (void)_registerForInternalNotifications;
 - (void)_registerForMessages;
+- (void)_registerForNotifications;
 - (void)_registerForReachabilityChangeNotifications:(id)arg1 mode:(BOOL)arg2;
 - (void)_registerPairedAccessory:(id)arg1 btleTransport:(BOOL)arg2 airPlay:(BOOL)arg3;
 - (void)_registerStateHandler;
@@ -846,6 +844,7 @@
 - (id)triggerOwnedActionSetWithUUID:(id)arg1;
 - (id)triggerWithName:(id)arg1;
 - (id)triggerWithUUID:(id)arg1;
+- (void)unconfigure;
 - (void)updateActionSetExecutionDates:(id)arg1;
 - (void)updateAppData:(id)arg1 identifierKey:(id)arg2 lookup:(id)arg3;
 - (void)updateHomeConfigurationWithModel:(id)arg1 message:(id)arg2;

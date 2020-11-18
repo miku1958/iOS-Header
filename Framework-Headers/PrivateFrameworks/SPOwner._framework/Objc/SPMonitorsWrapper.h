@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface SPMonitorsWrapper : NSObject <SPPowerMonitorDelegate>
 {
+    BOOL _isRunning;
     id<SPMonitorsWrapperDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     SPNetworkMonitor *_networkMonitor;
@@ -26,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property BOOL isRunning; // @synthesize isRunning=_isRunning;
 @property (strong, nonatomic) NSDate *lastStateChangeDate; // @synthesize lastStateChangeDate=_lastStateChangeDate;
 @property (strong, nonatomic) SPNetworkMonitor *networkMonitor; // @synthesize networkMonitor=_networkMonitor;
 @property (strong, nonatomic) NSDate *nextStateChangeDate; // @synthesize nextStateChangeDate=_nextStateChangeDate;
@@ -34,7 +36,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithBeaconManager:(id)arg1 delegateQueueu:(id)arg2;
 - (BOOL)isNetworkUp;
+- (void)pause;
 - (unsigned long long)powerState;
+- (void)resume;
 - (void)start;
 - (void)stop;
 

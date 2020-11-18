@@ -44,6 +44,7 @@
 @property (nonatomic) BOOL suppressGroupSuggestions;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_conversationList;
 - (BOOL)_serviceColorForRecipients:(id)arg1;
 - (id)_statusQueryController;

@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIKeyCommandDiscoverabilityHUDView *view; // @dynamic view;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_updateVisualStyle;
 - (void)animateOutWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;

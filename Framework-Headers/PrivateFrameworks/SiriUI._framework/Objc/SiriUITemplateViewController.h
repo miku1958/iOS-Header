@@ -26,6 +26,7 @@
 
 + (id)templateViewControllerForTemplateModel:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_initWithTemplateModel:(id)arg1;
 - (void)loadView;
 - (void)prepareForDismissal;

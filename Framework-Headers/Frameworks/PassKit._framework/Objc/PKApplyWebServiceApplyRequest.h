@@ -6,7 +6,7 @@
 
 #import <PassKitCore/PKApplyWebServiceRequest.h>
 
-@class NSArray, NSString, NSURL;
+@class NSArray, NSDecimalNumber, NSString, NSURL;
 
 @interface PKApplyWebServiceApplyRequest : PKApplyWebServiceRequest
 {
@@ -18,6 +18,8 @@
     NSString *_coreIDVNextStepToken;
     NSString *_previousContextIdentifier;
     NSString *_actionIdentifier;
+    NSDecimalNumber *_installmentAmount;
+    NSString *_installmentCurrencyCode;
 }
 
 @property (copy, nonatomic) NSString *actionIdentifier; // @synthesize actionIdentifier=_actionIdentifier;
@@ -26,6 +28,8 @@
 @property (copy, nonatomic) NSArray *certificates; // @synthesize certificates=_certificates;
 @property (copy, nonatomic) NSString *coreIDVNextStepToken; // @synthesize coreIDVNextStepToken=_coreIDVNextStepToken;
 @property (nonatomic) unsigned long long featureIdentifier; // @synthesize featureIdentifier=_featureIdentifier;
+@property (strong, nonatomic) NSDecimalNumber *installmentAmount; // @synthesize installmentAmount=_installmentAmount;
+@property (copy, nonatomic) NSString *installmentCurrencyCode; // @synthesize installmentCurrencyCode=_installmentCurrencyCode;
 @property (nonatomic) BOOL isInstallment; // @synthesize isInstallment=_isInstallment;
 @property (copy, nonatomic) NSString *previousContextIdentifier; // @synthesize previousContextIdentifier=_previousContextIdentifier;
 

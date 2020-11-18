@@ -66,6 +66,7 @@
 + (id)_defaultLabelAttributesWithFont:(id)arg1 wrappingEnabled:(BOOL)arg2;
 + (id)_defaultLabelAttributesWithWrappingEnabled:(BOOL)arg1;
 + (id)_defaultTintColor;
++ (id)_downtimeBlockedTintColor;
 + (id)_failureTintColor;
 + (struct CGPoint)defaultBaselinePoint;
 + (id)defaultFont;

@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDate, NSString, PXAssetsDataSourceManager, PXCMMActionManager, PXCMMPeopleSuggestionsDataSourceManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSendBackSuggestionSource, PXRecipient, PXUIMediaProvider;
+@class NSArray, NSDate, NSDictionary, NSString, PXAssetsDataSourceManager, PXCMMActionManager, PXCMMPeopleSuggestionsDataSourceManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSendBackSuggestionSource, PXRecipient, PXUIMediaProvider;
 @protocol PXDisplayAsset, PXUIImageProvider;
 
 @interface PXCMMContext : NSObject
 {
     BOOL _hideActionMenu;
-    BOOL _publishOriginals;
     BOOL _ppt_presentComposeRecipientView;
     BOOL _ppt_scrollComposeRecipientsView;
     PXAssetsDataSourceManager *_dataSourceManager;
@@ -25,6 +24,7 @@
     NSString *_originalTitle;
     NSString *_title;
     NSString *_subtitle;
+    NSDictionary *_assetPreparationOptions;
     PXCMMSendBackSuggestionSource *_sendBackSuggestionSource;
     id<PXDisplayAsset> _posterAsset;
     id<PXUIImageProvider> _posterMediaProvider;
@@ -41,6 +41,7 @@
 
 @property (readonly, nonatomic) PXCMMActionManager *actionManager;
 @property (readonly, nonatomic) unsigned long long activityType; // @synthesize activityType=_activityType;
+@property (copy, nonatomic) NSDictionary *assetPreparationOptions; // @synthesize assetPreparationOptions=_assetPreparationOptions;
 @property (nonatomic) long long count; // @synthesize count=_count;
 @property (readonly, nonatomic) PXAssetsDataSourceManager *dataSourceManager; // @synthesize dataSourceManager=_dataSourceManager;
 @property (strong, nonatomic) NSDate *endDate; // @synthesize endDate=_endDate;
@@ -58,7 +59,6 @@
 @property (nonatomic) double ppt_delay; // @synthesize ppt_delay=_ppt_delay;
 @property (nonatomic) BOOL ppt_presentComposeRecipientView; // @synthesize ppt_presentComposeRecipientView=_ppt_presentComposeRecipientView;
 @property (nonatomic) BOOL ppt_scrollComposeRecipientsView; // @synthesize ppt_scrollComposeRecipientsView=_ppt_scrollComposeRecipientsView;
-@property (nonatomic) BOOL publishOriginals; // @synthesize publishOriginals=_publishOriginals;
 @property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
 @property (strong, nonatomic) PXCMMSendBackSuggestionSource *sendBackSuggestionSource; // @synthesize sendBackSuggestionSource=_sendBackSuggestionSource;
 @property (nonatomic) unsigned long long sourceType; // @synthesize sourceType=_sourceType;

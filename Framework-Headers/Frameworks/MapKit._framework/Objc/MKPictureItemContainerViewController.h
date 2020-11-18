@@ -35,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)didTapOnPictureItemView:(id)arg1;
 - (void)downloadImageForVisiblePictureItemViews;
 - (void)infoCardThemeChanged;

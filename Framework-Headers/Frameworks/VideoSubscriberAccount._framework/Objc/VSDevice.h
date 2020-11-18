@@ -28,6 +28,7 @@
 - (void).cxx_destruct;
 - (id)accountDeletionConfirmationMessageForIdentityProviderDisplayName:(id)arg1;
 - (id)developerIdentityProviderDeletionConfirmationMessage;
+- (void)fetchDeviceManagedSetTopBoxProfileWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSetTopBoxProfileWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 

@@ -47,7 +47,7 @@
 + (id)sharedSettings;
 + (void)synchronizeSettingsDefaultsForKeys:(id)arg1;
 - (void).cxx_destruct;
-- (void)_accountStoreChangedNotification:(id)arg1;
+- (void)_activeAccountChangedNotification:(id)arg1;
 - (id)_appsForChannelID:(id)arg1;
 - (void)_attemptCullingOfObsoleteApp:(id)arg1;
 - (id)_connection;

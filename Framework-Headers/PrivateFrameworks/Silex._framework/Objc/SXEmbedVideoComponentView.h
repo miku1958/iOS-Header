@@ -11,7 +11,7 @@
 #import <Silex/WKNavigationDelegatePrivate-Protocol.h>
 #import <Silex/WKUIDelegate-Protocol.h>
 
-@class NSString, SXWebCrashRetryThrottler, WKWebView, WKWebsiteDataStore;
+@class NSString, SWCrashRetryThrottler, UIActivityIndicatorView, WKWebView, WKWebsiteDataStore;
 @protocol SXComponentActionHandler;
 
 @interface SXEmbedVideoComponentView : SXMediaComponentView <WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegate, SXViewportChangeListener>
@@ -20,18 +20,20 @@
     BOOL _isPresentingFullscreen;
     id<SXComponentActionHandler> _actionHandler;
     WKWebView *_webView;
-    SXWebCrashRetryThrottler *_webCrashRetryThrottler;
+    SWCrashRetryThrottler *_webCrashRetryThrottler;
     WKWebsiteDataStore *_dataStore;
+    UIActivityIndicatorView *_activityIndicator;
 }
 
 @property (readonly, nonatomic) id<SXComponentActionHandler> actionHandler; // @synthesize actionHandler=_actionHandler;
+@property (readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (readonly, nonatomic) WKWebsiteDataStore *dataStore; // @synthesize dataStore=_dataStore;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isPresentingFullscreen; // @synthesize isPresentingFullscreen=_isPresentingFullscreen;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) SXWebCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
+@property (strong, nonatomic) SWCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
 @property (strong, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 @property (nonatomic) BOOL webViewIsLoaded; // @synthesize webViewIsLoaded=_webViewIsLoaded;
 
@@ -47,6 +49,7 @@
 - (void)handleError:(id)arg1;
 - (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7 websiteDataStore:(id)arg8;
 - (void)initializeWebViewWithURL:(id)arg1;
+- (void)layoutSubviews;
 - (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
 - (void)renderContents;
 - (BOOL)shouldAllowRequestToURL:(id)arg1;

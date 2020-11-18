@@ -9,14 +9,16 @@
 #import <Silex/SXActionActivityProvider-Protocol.h>
 
 @class NSString;
-@protocol SXSubscribeActionHandler, SXViewControllerPresenting;
+@protocol SXActionManager, SXSubscribeActionHandler, SXViewControllerPresenting;
 
 @interface SXSubscribeActionActivityProvider : NSObject <SXActionActivityProvider>
 {
     id<SXSubscribeActionHandler> _handler;
     id<SXViewControllerPresenting> _viewControllerPresenting;
+    id<SXActionManager> _actionManager;
 }
 
+@property (readonly, weak, nonatomic) id<SXActionManager> actionManager; // @synthesize actionManager=_actionManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) id<SXSubscribeActionHandler> handler; // @synthesize handler=_handler;
@@ -26,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (id)activityGroupForAction:(id)arg1;
-- (id)initWithHandler:(id)arg1 viewControllerPresenting:(id)arg2;
+- (id)initWithHandler:(id)arg1 viewControllerPresenting:(id)arg2 actionManager:(id)arg3;
 
 @end
 

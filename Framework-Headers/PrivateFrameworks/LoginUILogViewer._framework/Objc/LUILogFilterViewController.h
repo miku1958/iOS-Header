@@ -31,6 +31,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (void)_clearCellsSelection;
 - (void)_clearPredicateInput;
 - (void)_setupButtons;
