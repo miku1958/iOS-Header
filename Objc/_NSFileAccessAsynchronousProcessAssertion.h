@@ -4,27 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Foundation/NSOperation.h>
+#import <objc/NSObject.h>
 
 @class BKSProcessAssertion, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _NSFileAccessAsynchronousProcessAssertionOperation : NSOperation
+@interface _NSFileAccessAsynchronousProcessAssertion : NSObject
 {
     int _pid;
     NSString *_name;
     BKSProcessAssertion *_assertion;
-    struct os_unfair_lock_s _stateLock;
-    int _state;
-    BOOL _finishedBeforeExecuted;
 }
 
+@property (readonly) int PID; // @synthesize PID=_pid;
+
+- (void)beginAssertion;
 - (void)dealloc;
-- (void)finish;
 - (id)initWithPID:(int)arg1 name:(id)arg2;
-- (BOOL)isExecuting;
-- (BOOL)isFinished;
-- (void)main;
+- (void)invalidate;
 
 @end
 
